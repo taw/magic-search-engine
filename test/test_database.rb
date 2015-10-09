@@ -115,7 +115,7 @@ class CardDatabaseTest < Minitest::Test
       "Swamp",
       "Terramorphic Expanse"
     assert_search_results "cmc>=7 c:r", "Bogardan Hellkite", "Warp World"
-    assert_search_results "cmc=7 c=u", "Sphinx Ambassador"
+    assert_search_results "cmc=7 c:u", "Sphinx Ambassador"
   end
 
   def test_oracle_ignores_remainder_text
@@ -128,6 +128,8 @@ class CardDatabaseTest < Minitest::Test
 
   def test_flavor_text
     assert_search_results "ft:chandra", "Inferno Elemental", "Pyroclasm"
+    assert_search_results 'ft:only ft:to', "Acolyte of Xathrid", "Griffin Sentinel", "Wall of Faith", "Zephyr Sprite"
+    assert_search_results 'ft:"only to"', "Acolyte of Xathrid"
   end
 
   def test_artist
@@ -144,6 +146,12 @@ class CardDatabaseTest < Minitest::Test
     assert_search_results "restricted:modern"
     assert_search_results "restricted:legacy"
     assert_search_results "restricted:vintage", "Ponder"
+  end
+
+  def test_legal
+    assert_search_exclude "legal:modern"
+    assert_search_include "legal:legacy", "Ponder"
+    assert_search_exclude "legal:vintage"
   end
 
   def test_rarity
