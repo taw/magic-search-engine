@@ -84,7 +84,7 @@ class CardDatabaseTest < Minitest::Test
   def test_pow
     assert_search_results "pow=0 c:g", "Birds of Paradise", "Bramble Creeper", "Protean Hydra"
     assert_search_results "pow>=4 c:u", "Air Elemental", "Djinn of Wishes", "Sphinx Ambassador"
-    assert_search_results "pow>=4 c:u", "Sphinx Ambassador"
+    assert_search_results "pow>4 c:u", "Sphinx Ambassador"
     assert_search_results "pow<=4 c:c", "Ornithopter", "Platinum Angel"
     assert_search_results "pow<4 c:c", "Ornithopter"
     assert_search_results "pow=6", "Ball Lightning", "Capricious Efreet", "Craw Wurm"
@@ -156,7 +156,7 @@ class CardDatabaseTest < Minitest::Test
 
   def test_rarity
     assert_search_results "r:mythic c:c", "Darksteel Colossus", "Platinum Angel"
-    assert_search_results "r:rare t:land", "Dragonskull Summit", "Drowned Catacomb", "Gargoyle Castle", "Glacial Forest", "Rootbound Crag", "Sunpetal Grove"
+    assert_search_results "r:rare t:land", "Dragonskull Summit", "Drowned Catacomb", "Gargoyle Castle", "Glacial Fortress", "Rootbound Crag", "Sunpetal Grove"
     assert_search_results "r:uncommon t:equipment", "Gorgon Flail", "Whispersilk Cloak"
     assert_search_results "r:common t:land", "Terramorphic Expanse"
   end

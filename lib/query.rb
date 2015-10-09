@@ -25,7 +25,7 @@ class Query
       when :artist
         card.artist.downcase.include?(arg.downcase)
       when :oracle
-        card.text.downcase.include?(arg.downcase)
+        card.text.downcase.include?(arg.gsub("~", card.name).downcase)
       when :banned
         card.legality(arg) == "banned"
       when :restricted
@@ -33,7 +33,7 @@ class Query
       when :legal
         card.legality(arg) == "legal"
       when :rarity
-        card.rarity == arg
+        card.rarity == arg.downcase
       when :expr
         matches_expr?(card, *arg)
       else
