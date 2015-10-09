@@ -50,7 +50,6 @@ class CardDatabaseTest < Minitest::Test
     assert_search_results "Wall", "Wall of Bone", "Wall of Faith", "Wall of Fire", "Wall of Frost"
   end
 
-  # FIXME: I'm not sure I follow original logic here
   def test_filter_colors
     assert_search_include "c:u", "Ponder"
     assert_search_include "c!u", "Ponder"
@@ -63,11 +62,16 @@ class CardDatabaseTest < Minitest::Test
     assert_search_exclude "c:gcm", "Ponder"
   end
 
+  def test_filter_colors_multicolored
+    assert false
+  end
+
   def test_filter_type
     assert_search_results "t:Skeleton", "Drudge Skeletons", "Wall of Bone"
     assert_search_results "t:Basic", "Forest", "Island", "Mountain", "Plains", "Swamp"
     assert_search_include "t:Sorcery", "Act of Treason"
     assert_search_include "t:Jace", "Jace Beleren"
+    assert_search_results 't:"Basic Land"', "Forest", "Island", "Mountain", "Plains", "Swamp"
   end
 
   def test_queries_are_case_insensitive
@@ -75,5 +79,77 @@ class CardDatabaseTest < Minitest::Test
     assert_search_equal "c:b", "c:B"
     assert_search_equal "c:b", "C:B"
     assert_search_equal "c:c", "c!c"
+  end
+
+  def test_pow
+    assert_search_results "pow=0 c:g", "Birds of Paradise", "Bramble Creeper", "Protean Hydra"
+    assert_search_results "pow>=4 c:u", "Air Elemental", "Djinn of Wishes", "Sphinx Ambassador"
+    assert_search_results "pow>=4 c:u", "Sphinx Ambassador"
+    assert_search_results "pow<=4 c:c", "Ornithopter", "Platinum Angel"
+    assert_search_results "pow<4 c:c", "Ornithopter"
+    assert_search_results "pow=6", "Ball Lightning", "Capricious Efreet", "Craw Wurm"
+    assert_search_results "pow<tou c:r", "Dragon Whelp", "Goblin Artillery", "Stone Giant", "Wall of Fire"
+    assert_search_results "pow>cmc c:r", "Ball Lightning", "Jackal Familiar"
+  end
+
+  def test_tou
+    assert_search_results "tou<=cmc c:c", "Darksteel Colossus", "Platinum Angel"
+    assert_search_results "tou>=9", "Darksteel Colossus", "Kalonian Behemoth"
+    assert_search_results "tou>9", "Darksteel Colossus"
+  end
+
+  def test_cmc
+    assert_search_results "cmc=0",
+      "Dragonskull Summit",
+      "Drowned Catacomb",
+      "Forest",
+      "Gargoyle Castle",
+      "Glacial Fortress",
+      "Island",
+      "Mountain",
+      "Ornithopter",
+      "Plains",
+      "Rootbound Crag",
+      "Spellbook",
+      "Sunpetal Grove",
+      "Swamp",
+      "Terramorphic Expanse"
+    assert_search_results "cmc>=7 c:r", "Bogardan Hellkite", "Warp World"
+    assert_search_results "cmc=7 c=u", "Sphinx Ambassador"
+  end
+
+  def test_oracle_ignores_remainder_text
+    assert_search_results "c:g o:flying", "Birds of Paradise", "Windstorm"
+  end
+
+  def test_oracle_cardname
+    assert_search_results 'o:"whenever ~ deals combat damage"', "Lightwielder Paladin", "Sphinx Ambassador"
+  end
+
+  def test_flavor_text
+    assert_search_results "ft:chandra", "Inferno Elemental", "Pyroclasm"
+  end
+
+  def test_artist
+    assert_search_results "a:argyle", "Hive Mind"
+  end
+
+  def test_banned
+    assert_search_results "banned:modern", "Ponder"
+    assert_search_results "banned:legacy"
+    assert_search_results "banned:vintage"
+  end
+
+  def test_restricted
+    assert_search_results "restricted:modern"
+    assert_search_results "restricted:legacy"
+    assert_search_results "restricted:vintage", "Ponder"
+  end
+
+  def test_rarity
+    assert_search_results "r:mythic c:c", "Darksteel Colossus", "Platinum Angel"
+    assert_search_results "r:rare t:land", "Dragonskull Summit", "Drowned Catacomb", "Gargoyle Castle", "Glacial Forest", "Rootbound Crag", "Sunpetal Grove"
+    assert_search_results "r:uncommon t:equipment", "Gorgon Flail", "Whispersilk Cloak"
+    assert_search_results "r:common t:land", "Terramorphic Expanse"
   end
 end
