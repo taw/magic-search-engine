@@ -13,7 +13,9 @@ class Card
   end
 
   def rarity
-    @data["rarity"].downcase
+    r = @data["rarity"].downcase
+    return "mythic" if r == "mythic rare"
+    r
   end
 
   def legality(format)
