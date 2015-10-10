@@ -10,5 +10,6 @@ class CardDatabaseAlphaTest < Minitest::Test
     assert_search_equal "legal:edh", "legal:commander"
     assert_search_equal "f:legacy", "-banned:legacy"
     assert_search_equal "f:vintage", "-banned:vintage"
+    assert_search_equal "f:modern", "legal:modern"
   end
 end

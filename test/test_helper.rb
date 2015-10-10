@@ -7,6 +7,11 @@ class Minitest::Test
     assert_equal cards.sort, results.sort, "Search for #{query}"
   end
 
+  def assert_count_results(query, count)
+    results = @db.search(query)
+    assert_equal count, results.size, "Search for #{query}"
+  end
+
   def assert_search_include(query, *cards)
     results = @db.search(query)
     cards.each do |card|

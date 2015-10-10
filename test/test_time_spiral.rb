@@ -77,4 +77,8 @@ class CardDatabaseTimeSpiralTest < Minitest::Test
     assert_search_equal "not:new", "-is:new"
     assert_search_equal "not:old", "-is:old"
   end
+
+  def test_is_timeshifted
+    assert_count_results "is:timeshifted", 45
+  end
 end
