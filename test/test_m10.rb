@@ -134,4 +134,13 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_results "r:uncommon t:equipment", "Gorgon Flail", "Whispersilk Cloak"
     assert_search_results "r:common t:land", "Terramorphic Expanse"
   end
+
+  def test_is_permanent
+    assert_search_results "e:m10 -is:permanent r:mythic", "Time Warp"
+  end
+
+  def test_is_spell
+    assert_search_results "e:m10 r:rare ci:c is:spell", "Coat of Arms", "Howling Mine", "Magebane Armor", "Mirror of Fate", "Pithing Needle"
+    assert_search_results "e:m10 r:rare ci:c", "Coat of Arms", "Howling Mine", "Magebane Armor", "Mirror of Fate", "Pithing Needle", "Gargoyle Castle"
+  end
 end
