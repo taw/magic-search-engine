@@ -60,7 +60,9 @@ private
         tokens << [:expr, [s[1], s[2], s[3]]]
       elsif s.scan(/is:(split|vanilla|spell|permanent)\b/)
         tokens << [:"is_#{s[1]}"]
-      elsif s.scan(/([^-!<>=:"]+)(?=\s|$)/i)
+      elsif s.scan(/"(.*?)"/)
+        tokens << [:word, s[1]]
+      elsif s.scan(/([^-!<>=:"\s]+)(?=\s|$)/i)
         # No special characters here
         tokens << [:word, s[1]]
       else
