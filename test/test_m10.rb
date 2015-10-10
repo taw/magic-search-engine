@@ -1,8 +1,8 @@
 require_relative "test_helper"
 
-class CardDatabaseTest < Minitest::Test
+class CardDatabaseM10Test < Minitest::Test
   def setup
-    @db = CardDatabase.new("data/m10.json")
+    @db = CardDatabase.new(Pathname(__dir__) + "index/m10.json")
   end
 
   def assert_search_results(query, *cards)
@@ -60,10 +60,6 @@ class CardDatabaseTest < Minitest::Test
     assert_search_include "c!bu", "Ponder"
     assert_search_exclude "c:m", "Ponder"
     assert_search_exclude "c:gcm", "Ponder"
-  end
-
-  def test_filter_colors_multicolored
-    assert false
   end
 
   def test_filter_type
