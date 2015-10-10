@@ -86,6 +86,8 @@ class Card
   end
 
   def legality(format)
+    format = format.downcase
+    format = "commander" if format == "edh"
     leg = @data["legalities"].find{|leg| leg["format"].downcase == format}
     if leg
       leg["legality"].downcase

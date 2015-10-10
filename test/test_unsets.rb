@@ -38,15 +38,16 @@ class CardDatabaseUnsetsTest < Minitest::Test
     assert_search_exclude "cmc>1", "Little Girl"
   end
 
-  def test_half_cmc
-
-  end
-
-  def is_funny
+  def test_is_funny
     assert_search_include "is:funny", "Little Girl"
     assert_search_include "is:new", "Little Girl"
     assert_search_include "is:silver-bordered", "Little Girl"
     assert_search_include "not:black-bordered", "Little Girl"
     assert_search_include "not:white-bordered", "Little Girl"
+    assert_search_results "not:funny"
+    assert_search_results "not:new", "1996 World Champion", "Fraternal Exaltation", "Proposal", "Robot Chicken", "Shichifukujin Dragon", "Splendid Genesis"
+    assert_search_results "not:silver-bordered", "Forest", "Mountain", "Swamp", "Plains", "Island"
+    assert_search_results "is:black-bordered", "Forest", "Mountain", "Swamp", "Plains", "Island"
+    assert_search_results "is:white-bordered"
   end
 end
