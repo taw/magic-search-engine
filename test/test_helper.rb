@@ -4,20 +4,20 @@ require_relative "../lib/card_database"
 class Minitest::Test
   def assert_search_results(query, *cards)
     results = @db.search(query)
-    assert_equal cards.sort, @db.search(query).sort, "Search for #{query}"
+    assert_equal cards.sort, results.sort, "Search for #{query}"
   end
 
   def assert_search_include(query, *cards)
     results = @db.search(query)
     cards.each do |card|
-      assert_includes @db.search(query), card, "Search for #{query}"
+      assert_includes results, card, "Search for #{query}"
     end
   end
 
   def assert_search_exclude(query, *cards)
     results = @db.search(query)
     cards.each do |card|
-      refute_includes @db.search(query), card, "Search for #{query}"
+      refute_includes results, card, "Search for #{query}"
     end
   end
 
