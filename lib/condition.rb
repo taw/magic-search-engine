@@ -56,20 +56,14 @@ class Condition
       (card.types & ["instant", "sorcery"]).empty?
     when :is_spell
       (card.types & ["land"]).empty?
-    when :is_old
-      card.frame == "old"
-    when :is_new
-      card.frame == "new"
-    when :is_future
-      card.frame == "future"
-    when :"is_black-bordered"
-      card.border == "black"
-    when :"is_silver-bordered"
-      card.border == "silver"
-    when :"is_white-bordered"
-      card.border == "white"
+    when :frame
+      card.frame == arg
+    when :border
+      card.border == arg
     when :watermark
       card.watermark == arg
+    when :mana
+      match_mana?(card, *arg)
     else
       warn "Query error: #{cond} #{arg}"
       false
@@ -88,7 +82,61 @@ class Condition
   end
 
   def normalize_name(name)
-    name.downcase.gsub(/[Ææ]/, "ae").strip.split.join(" ")
+    name.downcase.gsub(/[Ææ]/, "ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu").strip.split.join(" ")
+  end
+
+  def match_mana?(card, op, mana)
+    query_mana = parse_query_mana(mana.downcase)
+    card_mana = parse_card_mana(card.mana_cost)
+    return false unless card_mana
+    op = "==" if op == "="
+    ["w", "u", "b", "r", "g", "c"].all? do |color|
+      card_mana[color].send(op, query_mana[color])
+    end
+  end
+
+  def parse_query_mana(mana)
+    pool = Hash.new(0)
+    mana = mana.gsub(/(\d+)|([wubrg])/) do
+      if $1
+        pool["c"] += $1.to_i
+      else
+        pool[$2] += 1
+      end
+      ""
+    end
+    raise "Mana query parse error: #{mana}" unless mana.empty?
+    pool
+  end
+
+  def parse_card_mana(mana)
+    return nil unless mana
+    pool = Hash.new(0)
+
+    mana = mana.gsub(/\{(.*?)\}/) do
+      m = $1
+      case m
+      when /\A\d+\z/
+        pool["c"] += m.to_i
+      when /\A[wubrg]\z/
+        pool[m] += 1
+      when /\Ah([wubrg])\z/
+        pool[$1] += 0.5
+      when "x", "y", "z"
+        # ignore
+      when /\A([wubrg])\/([wubrg])\z/
+        pool[m] += 1
+      when /\A([wubrg])\/p\z/
+        pool[m] += 1
+      when /\A2\/([wubrg])\z/
+        pool[m] += 1
+      else
+        raise "Unrecognized mana type: #{m}"
+      end
+      ""
+    end
+    raise "Mana query parse error: #{mana}" unless mana.empty?
+    pool
   end
 
   def match_colors?(card, colors_query)
@@ -152,6 +200,8 @@ class Condition
       card.toughness
     when "cmc"
       card.cmc
+    when "loyalty"
+      card.loyalty
     when /\A\d+\z/
       expr.to_i
     else

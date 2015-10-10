@@ -167,4 +167,40 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_results "e:m10 r:rare ci:c is:spell", "Coat of Arms", "Howling Mine", "Magebane Armor", "Mirror of Fate", "Pithing Needle"
     assert_search_results "e:m10 r:rare ci:c", "Coat of Arms", "Howling Mine", "Magebane Armor", "Mirror of Fate", "Pithing Needle", "Gargoyle Castle"
   end
+
+
+  def test_loyalty
+    assert_search_results "loyalty=5", "Liliana Vess"
+    assert_search_results "loyalty>cmc", "Chandra Nalaar"
+    assert_search_results "loyalty<=4", "Ajani Goldmane", "Garruk Wildspeaker", "Jace Beleren"
+  end
+
+  def test_mana
+    assert_search_results "mana>=2RR mana<=6RR",
+      "Bogardan Hellkite",
+      "Capricious Efreet",
+      "Chandra Nalaar",
+      "Dragon Whelp",
+      "Inferno Elemental",
+      "Magma Phoenix",
+      "Shivan Dragon",
+      "Siege-Gang Commander",
+      "Stone Giant"
+    assert_search_results "mana=4g",
+      "Bountiful Harvest",
+      "Bramble Creeper",
+      "Stampeding Rhino"
+    assert_search_results "mana=0",
+      "Ornithopter",
+      "Spellbook"
+    assert_search_results "mana>=3WW",
+      "Baneslayer Angel",
+      "Captain of the Watch",
+      "Lightwielder Paladin",
+      "Open the Vaults",
+      "Planar Cleansing",
+      "Serra Angel"
+    assert_search_results "mana=11",
+      "Darksteel Colossus"
+  end
 end

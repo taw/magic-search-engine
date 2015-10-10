@@ -8,7 +8,7 @@ class Card
   end
 
   def name
-    @data["name"].gsub("Æ", "Ae")
+    @data["name"].gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
   end
 
   def colors
@@ -17,6 +17,10 @@ class Card
 
   def timeshifted
     @data["timeshifted"] || false
+  end
+
+  def mana_cost
+    @data["manaCost"] ? @data["manaCost"].downcase : nil
   end
 
   def watermark
@@ -98,8 +102,10 @@ class Card
     @data["cmc"] || 0
   end
 
+  # Normalize unicode, remove remainder text
   def text
-    @data["text"] || ""
+    text = (@data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
+    text.gsub(/\([^\(\)]*\)/, "")
   end
 
   def flavor
@@ -112,6 +118,10 @@ class Card
 
   def toughness
     @data["toughness"] ?  @data["toughness"].to_i : nil
+  end
+
+  def loyalty
+    @data["loyalty"] ?  @data["loyalty"].to_i : nil
   end
 
   def method_missing(m)

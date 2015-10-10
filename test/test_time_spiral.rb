@@ -14,7 +14,8 @@ class CardDatabaseTimeSpiralTest < Minitest::Test
       "Blind Phantasm",
       "Fomori Nomad",
       "Mass of Ghouls",
-      "Nessian Courser"
+      "Nessian Courser",
+      "Dryad Arbor" # not sure if it ought to be so
   end
 
   def test_is_new
@@ -42,6 +43,12 @@ class CardDatabaseTimeSpiralTest < Minitest::Test
     assert_search_include "is:permanent", "Dryad Arbor"
     assert_search_exclude "is:spell", "Dryad Arbor"
     assert_search_results "t:land t:creature", "Dryad Arbor"
+  end
+
+  def test_ghostfire
+    assert_search_exclude "c:r", "Ghostfire"
+    assert_search_include "ci:r", "Ghostfire"
+    assert_search_include "c:c", "Ghostfire"
   end
 
   def test_non_ascii
