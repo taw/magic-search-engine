@@ -1,3 +1,6 @@
+# This class represents card from index point of view, not from data point of view
+# (thinking in solr/lucene terms)
+
 class Card
   attr_reader :data
   def initialize(data)
