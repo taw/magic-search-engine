@@ -97,6 +97,12 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_results "cmc=7 c:u", "Sphinx Ambassador"
   end
 
+  def test_extra_spaces_in_expr
+    assert_search_equal "cmc>=7", "cmc >= 7"
+    assert_search_equal "pow=cmc", "pow = cmc"
+    assert_search_equal "tou<3", "tou < 3"
+  end
+
   def test_oracle
     assert_search_results 'o:Flying r:rare',
       "Birds of Paradise",
