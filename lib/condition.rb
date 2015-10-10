@@ -25,7 +25,7 @@ class Condition
     when :exact
       normalize_name(card.name) == normalize_name(arg)
     when :word
-      card.name.downcase.split.include?(arg.downcase)
+      normalize_name(card.name).include?(normalize_name(arg))
     when :flavor
       card.flavor.downcase.include?(arg.downcase)
     when :artist
