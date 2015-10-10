@@ -52,14 +52,14 @@ class CardDatabase
       set_code = set["magicCardsInfoCode"] || set["code"]
       block = MagicBlocks.find{|c,n,*xx| xx.include?(set_code)} || []
       set["cards"].each do |card_data|
-        yield Card.new(card_data.merge(
+        yield Card.new({
           "set_code" => set_code,
           "set_name" => set["name"],
           "block_code" => block[0],
           "block_name" => block[1],
           "border" => set["border"],
           "year" => Date.parse(set["releaseDate"]).year,
-        ))
+        }.merge(card_data))
       end
     end
   end
