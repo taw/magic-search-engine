@@ -92,6 +92,25 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_results "cmc=7 c:u", "Sphinx Ambassador"
   end
 
+  def test_oracle
+    assert_search_results 'o:Flying r:rare',
+      "Birds of Paradise",
+      "Djinn of Wishes",
+      "Earthquake",
+      "Gargoyle Castle",
+      "Guardian Seraph",
+      "Hypnotic Specter",
+      "Magebane Armor",
+      "Magma Phoenix",
+      "Nightmare",
+      "Shivan Dragon"
+    assert_search_results 'o:"First strike" c:r',
+      "Kindled Fury",
+      "Viashino Spearhunter"
+    assert_search_results 'o:{T} o:"add one mana of any color"',
+      "Birds of Paradise"
+  end
+
   def test_oracle_ignores_remainder_text
     assert_search_results "c:g o:flying", "Birds of Paradise", "Windstorm"
   end
