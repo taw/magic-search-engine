@@ -26,8 +26,6 @@ private
         # tokens << [:and]
       elsif s.scan(/or\b/i)
         tokens << [:or]
-      elsif s.scan(/not/)
-        tokens << [:not]
       elsif s.scan(/-/)
         tokens << [:not]
       elsif s.scan(/\(/)
@@ -62,14 +60,19 @@ private
         tokens << [:expr, [s[1], s[2], s[3]]]
       elsif s.scan(/mana(>=|>|<=|<|=)([\dwubrg]+)/i)
         tokens << [:mana, [s[1], s[2]]]
-      elsif s.scan(/is:(split|vanilla|spell|permanent)\b/i)
-        tokens << [:"is_#{s[1]}"]
-      elsif s.scan(/is:(old|new|future)\b/)
-        tokens << [:frame, s[1].downcase]
-      elsif s.scan(/is:(black-bordered|silver-bordered|white-bordered)\b/i)
-        tokens << [:border, s[1].sub("-bordered", "").downcase]
+      elsif s.scan(/(is|not):(split|vanilla|spell|permanent|funny)\b/i)
+        tokens << [:not] if s[1].downcase == "not"
+        tokens << [:"is_#{s[2]}"]
+      elsif s.scan(/(is|not):(old|new|future)\b/)
+        tokens << [:not] if s[1].downcase == "not"
+        tokens << [:frame, s[2].downcase]
+      elsif s.scan(/(is|not):(black-bordered|silver-bordered|white-bordered)\b/i)
+        tokens << [:not] if s[1].downcase == "not"
+        tokens << [:border, s[2].sub("-bordered", "").downcase]
       elsif s.scan(/"(.*?)"/)
         tokens << [:word, s[1]]
+      elsif s.scan(/not/)
+        tokens << [:not]
       elsif s.scan(/([^-!<>=:"\s]+)(?=\s|$)/i)
         # No special characters here
         tokens << [:word, s[1]]
