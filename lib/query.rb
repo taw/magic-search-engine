@@ -46,6 +46,8 @@ private
         tokens << [:edition, s[1] || s[2]]
       elsif s.scan(/watermark:(?:"(.*?)"|(\w+))/i)
         tokens << [:watermark, s[1] || s[2]]
+      elsif s.scan(/f:(?:"(.*?)"|(\w+))/i)
+        tokens << [:format, s[1] || s[2]]
       elsif s.scan(/b:(?:"(.*?)"|(\S+))/i)
         tokens << [:block, s[1] || s[2]]
       elsif s.scan(/c:([wubrgcml]+)/i)

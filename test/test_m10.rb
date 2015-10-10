@@ -147,9 +147,15 @@ class CardDatabaseM10Test < Minitest::Test
   end
 
   def test_legal
-    assert_search_exclude "legal:modern"
+    assert_search_exclude "legal:modern", "ponder"
     assert_search_include "legal:legacy", "Ponder"
-    assert_search_exclude "legal:vintage"
+    assert_search_exclude "legal:vintage", "Ponder"
+  end
+
+  def test_format
+    assert_search_equal "legal:modern", "f:modern"
+    assert_search_equal "legal:legacy", "f:legacy"
+    assert_search_equal "legal:vintage or restricted:vintage", "f:vintage"
   end
 
   def test_rarity

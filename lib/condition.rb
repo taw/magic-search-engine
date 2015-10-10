@@ -32,6 +32,8 @@ class Condition
       card.artist.downcase.include?(arg.downcase)
     when :oracle
       card.text.downcase.include?(arg.gsub("~", card.name).downcase)
+    when :format
+      ["legal", "restricted"].include?(card.legality(arg))
     when :banned
       card.legality(arg) == "banned"
     when :restricted
@@ -56,6 +58,9 @@ class Condition
       (card.types & ["instant", "sorcery"]).empty?
     when :is_spell
       (card.types & ["land"]).empty?
+    when :is_funny
+      # There are some one off funny cards elsewhere
+      %W[uh ug uqc].include?(card.set_code.downcase)
     when :frame
       card.frame == arg
     when :border
