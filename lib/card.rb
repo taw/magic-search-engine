@@ -8,7 +8,25 @@ class Card
   end
 
   def colors
-    @data["colors"] || []
+    (@data["colors"] || []).map{|c| color_codes.fetch(c)}
+  end
+
+  def color_identity
+    ci = colors.dup
+    text.scan(/{(.*?)}/).each do |sym,|
+      case sym.downcase
+      when /\A(\d+|[txyz])\z/
+        # OK
+      when /\A([wubrg])\z/
+        ci << $1
+      when /\A([wubrg])\/([wubrg])\z/
+        ci << $1 << $2
+      else
+        warn sym
+        require 'pry'; binding.pry
+      end
+    end
+    ci.uniq
   end
 
   def types
@@ -64,5 +82,15 @@ class Card
 
   def inspect
     "Card(#{@data["name"]})"
+  end
+
+private
+
+  def color_names
+    {"g"=>"Green", "r"=>"Red", "b"=>"Black", "u"=>"Blue", "w"=>"White"}
+  end
+
+  def color_codes
+    {"White"=>"w", "Blue"=>"u", "Black"=>"b", "Red"=>"r", "Green"=>"g"}
   end
 end
