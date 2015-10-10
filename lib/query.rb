@@ -4,18 +4,18 @@ require_relative "condition"
 class Query
   def initialize(query_string)
     parse!(query_string)
+    # p [query_string, @query]
   end
 
   def match?(card)
-    @query.all? do |cond|
-      cond.match?(card)
-    end
+    @query.match?(card)
   end
 
 private
 
   # Tokens are:
-  # open, close, not, and, or, atom
+  # open, close, not, or, atom
+  # and token is ignored as it does literally nothing
   def tokenize(str)
     tokens = []
     s = StringScanner.new(str)
@@ -23,7 +23,7 @@ private
       if s.scan(/\s+/)
         # pass
       elsif s.scan(/and\b/i)
-        tokens << [:and]
+        # tokens << [:and]
       elsif s.scan(/or\b/i)
         tokens << [:or]
       elsif s.scan(/not/)
@@ -34,17 +34,17 @@ private
         tokens << [:open]
       elsif s.scan(/\)/)
         tokens << [:close]
-      elsif s.scan(/t:(?:"(.*?)"|(\S+))/i)
+      elsif s.scan(/t:(?:"(.*?)"|(\w+))/i)
         tokens << [:types, s[1] || s[2]]
-      elsif s.scan(/ft:(?:"(.*?)"|(\S+))/i)
+      elsif s.scan(/ft:(?:"(.*?)"|(\w+))/i)
         tokens << [:flavor, s[1] || s[2]]
-      elsif s.scan(/o:(?:"(.*?)"|(\S+))/i)
+      elsif s.scan(/o:(?:"(.*?)"|(\w+))/i)
         tokens << [:oracle, s[1] || s[2]]
-      elsif s.scan(/a:(?:"(.*?)"|(\S+))/i)
+      elsif s.scan(/a:(?:"(.*?)"|(\w+))/i)
         tokens << [:artist, s[1] || s[2]]
       elsif s.scan(/(banned|restricted|legal):(\S+)/)
         tokens << [s[1].to_sym, s[2]]
-      elsif s.scan(/e:(?:"(.*?)"|(\S+))/i)
+      elsif s.scan(/e:(?:"(.*?)"|(\w+))/i)
         tokens << [:edition, s[1] || s[2]]
       elsif s.scan(/b:(?:"(.*?)"|(\S+))/i)
         tokens << [:block, s[1] || s[2]]
@@ -58,6 +58,8 @@ private
         tokens << [:rarity, s[1]]
       elsif s.scan(/(pow|tou|cmc)(>=|>|<=|<|=)(pow|tou|cmc|\d+)\b/)
         tokens << [:expr, [s[1], s[2], s[3]]]
+      elsif s.scan(/is:(\w+)\b/)
+        tokens << [:is, s[1]]
       elsif s.scan(/([^-!<>=:"]+)(?=\s|$)/i)
         # No special characters here
         tokens << [:word, s[1]]
@@ -71,13 +73,88 @@ private
   end
 
   def parse!(str)
-    @query = []
     str = str.strip
     if str =~ /\A!(.*)\z/
-      @query = [Condition.new(:exact, $1)]
-      return
+      @query = Condition.new(:exact, $1)
+    else
+      @tokens = tokenize(str)
+      @query = parse_query
     end
-    tokens = tokenize(str)
-    @query = tokens.map{|c,a| Condition.new(c,a)}
+  end
+
+  private
+
+  def conds_to_query(conds)
+    if conds.empty?
+      nil
+    elsif conds.size == 1
+      conds[0]
+    else
+      Condition.new(:and, conds)
+    end
+  end
+
+  def parse_query
+    conds = []
+    until @tokens.empty?
+      case @tokens[0][0]
+      when :close
+        # Do ont eat token
+        break
+      when :or
+        @tokens.shift
+        # This is optimization,
+        #   Condition.new(:or, [conds, right_conds])
+        # would work just as well
+        if conds.empty?
+          # Ignore
+        else
+          right_query = parse_query
+          if right_query
+            return Condition.new(:or, [conds_to_query(conds), right_query])
+          else
+            break
+          end
+        end
+      # includes open / not
+      else
+        subquery = parse_cond
+        if subquery
+          conds << subquery
+        else
+          break
+        end
+      end
+    end
+    conds_to_query(conds)
+  end
+
+  def parse_cond
+    return nil if @tokens.empty?
+    case @tokens[0][0]
+    when :open
+      @tokens.shift
+      subquery = parse_query
+      @tokens.shift if @tokens[0] == [:close] # Ignore mismatched
+      subquery
+    when :close
+      return
+    when :not
+      @tokens.shift
+      cond = parse_cond
+      if cond
+        Condition.new(:not, cond)
+      else
+        # Parse error like "-)" or final "-"
+        nil
+      end
+    when :or
+      # Parse error like "- or"
+      @tokens.shift
+      parse_cond
+    else
+      t, a = @tokens.shift
+      Condition.new(t, a)
+    end
   end
 end

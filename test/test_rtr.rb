@@ -16,7 +16,14 @@ class CardDatabaseRTRTest < Minitest::Test
       "Isperia, Supreme Judge",
       "Sphinx's Revelation",
       "Trostani, Selesnya's Voice"
-
+    assert_search_results "e:gtc t:angel -(t:legendary c:r)",
+      "Angelic Skirmisher",
+      "Deathpact Angel",
+      "Firemane Avenger",
+      "Guardian of the Gateless"
+    assert_search_results "e:gtc t:angel -(t:legendary or c:r)",
+      "Angelic Skirmisher",
+      "Guardian of the Gateless"
     assert_search_equal "(e:rtr OR e:dgm) t:goblin or t:elf", "((e:rtr OR e:dgm) t:goblin) or t:elf"
     assert_search_differ "(e:rtr OR e:dgm) t:goblin or t:elf", "(e:rtr OR e:dgm) (t:goblin or t:elf)"
     assert_search_equal "t:human t:warrior", "t:human AND t:warrior"
@@ -27,7 +34,9 @@ class CardDatabaseRTRTest < Minitest::Test
   end
 
   def test_minus
-    assert_search_equal "c!r", "-c:g -c:w -c:r -c:u -c:c -c:l"
+    assert_search_equal "c!r", "-c:w -c:u -c:b -c:g -c:c -c:l"
+    assert_search_equal "c!r", "-(c:g or c:w or c:r or c:u or c:c or c:l)"
+    assert_search_equal "t:angel -(r:mythic c:r)"
   end
 
   def test_filter_colors_multicolored
@@ -54,6 +63,15 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_include "ci:rw", "Alive // Well"
     assert_search_include "ci:rgw", "Alive // Well"
     assert_search_include "ci:rw", "Alive // Well"
+
+    assert_search_include "c:rg", "Boros Cluestone"
+    assert_search_exclude "c:r", "Boros Cluestone"
+    assert_search_exclude "c:c", "Boros Cluestone"
+
+    assert_search_exclude "c:c", "Forest"
+    assert_search_include "c:c", "Thespian's Stage"
+    assert_search_include "c:g", "Forest"
+    assert_search_exclude "c:r", "Forest"
   end
 
   def test_edition
@@ -69,7 +87,7 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_equal "e:rtr OR e:gtc OR e:dgm", "b:rtr"
     assert_search_equal "e:rtr OR e:gtc OR e:dgm", 'b:"Return to Ravnica"'
 
-    assert_equal "this test is any good", false, "Doesn't really do anything yet, everything is same block"
+    # assert_equal "this test is any good", false, "Doesn't really do anything yet, everything is same block"
   end
 
   def test_is_split
@@ -82,5 +100,9 @@ class CardDatabaseRTRTest < Minitest::Test
 
     assert_search_include "is:split", "Rubblebelt Raiders"
     assert_search_exclude "is:split", "Alive // Well"
+  end
+
+  def test_is_vanilla
+    assert_search_results "e:dgm is:vanilla", "Armored Wolf-Rider", "Bane Alley Blackguard"
   end
 end

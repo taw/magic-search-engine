@@ -4,7 +4,7 @@ require_relative "../lib/card_database"
 class Minitest::Test
   def assert_search_results(query, *cards)
     results = @db.search(query)
-    assert_equal cards, @db.search(query)
+    assert_equal cards.sort, @db.search(query).sort
   end
 
   def assert_search_include(query, *cards)

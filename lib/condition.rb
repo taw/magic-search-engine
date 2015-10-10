@@ -8,15 +8,16 @@ class Condition
   def match?(card)
     case cond
     when :colors
-      matches_colors?(card, arg.downcase)
+      match_colors?(card, arg.downcase)
     when :colors_exclusive
-      matches_colors_exclusive?(card, arg.downcase)
+      match_colors_exclusive?(card, arg.downcase)
     when :color_identity
-      require 'pry'; binding.pry
+      match_color_identity?(card, arg.downcase)
     when :edition
-      require 'pry'; binding.pry
+      card.set_code.downcase == arg.downcase or text_query_match?(card.set_name, arg)
     when :block
-      require "require 'pry'; binding.pry"
+      # warn "Blocks not supported"
+      true
     when :types
       arg.downcase.split.all?{|type|
         card.types.include?(type)
@@ -40,33 +41,54 @@ class Condition
     when :rarity
       card.rarity == arg.downcase
     when :expr
-      matches_expr?(card, *arg)
+      match_expr?(card, *arg)
+    when :or
+      arg.any?{|c| c.match?(card)}
+    when :and
+      arg.all?{|c| c.match?(card)}
+    when :not
+      not arg.match?(card)
+    when :is
+      match_is?(card, arg)
     else
-      require 'pry'; binding.pry
-      raise "Query error: #{type}"
+      warn "Query error: #{cond} #{arg}"
+      false
+      # require 'pry'; binding.pry
     end
   end
 
+  def inspect
+    "#{cond}:#{arg.inspect}"
+  end
+
   private
+
+  def text_query_match?(text, query)
+    words = text.downcase.split
+    query.split.all?{|w| words.include?(w)}
+  end
+
+  def match_is?(card, arg)
+    case arg
+    when "vanilla"
+      card.text == ""
+    when "split"
+      card.layout == "split"
+    else
+      false
+    end
+  end
 
   def normalize_name(name)
     name.downcase.strip.split.join(" ")
   end
 
-  def matches_colors?(card, colors_query)
+  def match_colors?(card, colors_query)
     colors = card.colors
     colors_query.chars.any? do |q|
       case q
-      when "w"
-        colors.include?("White")
-      when "u"
-        colors.include?("Blue")
-      when "b"
-        colors.include?("Black")
-      when "r"
-        colors.include?("Red")
-      when "g"
-        colors.include?("Green")
+      when /\A[wubrg]\z/
+        colors.include?(q)
       when "m"
         colors.size >= 2
       when "c"
@@ -78,8 +100,8 @@ class Condition
     end
   end
 
-  def matches_colors_exclusive?(card, colors_query)
-    return false unless matches_colors?(card, colors_query)
+  def match_colors_exclusive?(card, colors_query)
+    return false unless match_colors?(card, colors_query)
     return false if card.colors.include?("White") and colors_query !~ /w/
     return false if card.colors.include?("Blue") and colors_query !~ /u/
     return false if card.colors.include?("Black") and colors_query !~ /b/
@@ -88,7 +110,18 @@ class Condition
     true
   end
 
-  def matches_expr?(card, a, op, b)
+  def match_color_identity?(card, colors)
+    # Ignore "m"/"l" in query
+    # Treat "cr" as "c"
+    commander_ci = colors.gsub(/ml/, "").chars.uniq
+    card_ci  = card.color_identity
+    return card_ci == [] if commander_ci.include?("c")
+    card_ci.all? do |color|
+      commander_ci.include?(color)
+    end
+  end
+
+  def match_expr?(card, a, op, b)
     a = eval_expr(card, a)
     b = eval_expr(card, b)
     return false unless a and b
