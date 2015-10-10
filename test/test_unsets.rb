@@ -50,4 +50,11 @@ class CardDatabaseUnsetsTest < Minitest::Test
     assert_search_results "is:black-bordered", "Forest", "Mountain", "Swamp", "Plains", "Island", "1996 World Champion", "Fraternal Exaltation", "Proposal", "Robot Chicken", "Shichifukujin Dragon", "Splendid Genesis"
     assert_search_results "is:white-bordered"
   end
+
+  def test_edition_shortcut_syntax
+    assert_search_equal "e:uh,ug", "e:uh or e:ug"
+    assert_search_equal "e:uh+ug", "t:basic"
+    assert_count_results "e:uh,ug", 227
+    assert_count_results "e:uh,ug -e:ug+ug", 222
+  end
 end
