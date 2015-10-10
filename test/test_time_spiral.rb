@@ -41,7 +41,7 @@ class CardDatabaseTimeSpiralTest < Minitest::Test
     assert_search_exclude "c:c", "Dryad Arbor"
     assert_search_include "is:permanent", "Dryad Arbor"
     assert_search_exclude "is:spell", "Dryad Arbor"
-    assert_search_results "t:land t:creature"
+    assert_search_results "t:land t:creature", "Dryad Arbor"
   end
 
   def test_non_ascii
