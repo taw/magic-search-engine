@@ -22,6 +22,11 @@ class CardDatabaseM10Test < Minitest::Test
   def test_search_basic
     assert_search_results "Ponder", "Ponder"
     assert_search_results "Wall", "Wall of Bone", "Wall of Faith", "Wall of Fire", "Wall of Frost"
+    assert_search_results "Wall of", "Wall of Bone", "Wall of Faith", "Wall of Fire", "Wall of Frost"
+    assert_search_results "of Wall", "Wall of Bone", "Wall of Faith", "Wall of Fire", "Wall of Frost"
+    assert_search_results '"Wall of"', "Wall of Bone", "Wall of Faith", "Wall of Fire", "Wall of Frost"
+    assert_search_results '"of Wall"'
+    assert_search_results '"of bo"', "Wall of Bone"
   end
 
   def test_filter_colors

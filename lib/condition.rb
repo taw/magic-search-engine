@@ -70,8 +70,7 @@ class Condition
   private
 
   def text_query_match?(text, query)
-    words = text.downcase.split
-    query.split.all?{|w| words.include?(w)}
+    normalize_name(text).include?(normalize_name(query))
   end
 
   def normalize_name(name)

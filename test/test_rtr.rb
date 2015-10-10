@@ -27,7 +27,7 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_equal "(e:rtr OR e:dgm) t:goblin or t:elf", "((e:rtr OR e:dgm) t:goblin) or t:elf"
     assert_search_differ "(e:rtr OR e:dgm) t:goblin or t:elf", "(e:rtr OR e:dgm) (t:goblin or t:elf)"
     assert_search_equal "t:human t:warrior", "t:human AND t:warrior"
-    assert_search_equal "t:human t:warrior", "t:human OR t:warrior"
+    assert_search_differ "t:human t:warrior", "t:human OR t:warrior"
     assert_search_equal "t:human t:warrior", 't:"human warrior"'
     assert_search_equal "t:human t:warrior", 't:"warrior human"'
     assert_search_equal "t:legendary t:angel", 't:"legendary angel"'
