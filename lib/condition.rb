@@ -61,6 +61,8 @@ class Condition
     when :is_funny
       # There are some one off funny cards elsewhere
       %W[uh ug uqc].include?(card.set_code.downcase)
+    when :is_timeshifted
+      card.timeshifted and card.set_code.downcase == "pc"
     when :frame
       card.frame == arg
     when :border

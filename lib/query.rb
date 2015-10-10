@@ -62,7 +62,7 @@ private
         tokens << [:expr, [s[1], s[2], s[3]]]
       elsif s.scan(/mana(>=|>|<=|<|=)([\dwubrg]+)/i)
         tokens << [:mana, [s[1], s[2]]]
-      elsif s.scan(/(is|not):(split|vanilla|spell|permanent|funny)\b/i)
+      elsif s.scan(/(is|not):(split|vanilla|spell|permanent|funny|timeshifted)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:"is_#{s[2]}"]
       elsif s.scan(/(is|not):(old|new|future)\b/)
