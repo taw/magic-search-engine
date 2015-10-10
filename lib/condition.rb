@@ -209,6 +209,8 @@ class Condition
       card.cmc
     when "loyalty"
       card.loyalty
+    when "year"
+      card.year
     when /\A\d+\z/
       expr.to_i
     when /\A\d*\.\d+\z/

@@ -1,13 +1,12 @@
 require "pathname"
 require "json"
-require "date"
 require_relative "card"
 require_relative "query"
 
 MagicBlocks = [
   # Sort of not really:
   ["ia", "Ice Age", "ia", "ai", "cs"],
-  ["shm", "Shadowmoor", "shm", "eve"], # Also included in Lorwyn
+  # ["shm", "Shadowmoor", "shm", "eve"], # Also included in Lorwyn
   ["mr", "Mirage", "mr", "vi", "wl"],
   ["tp", "Tempest", "tp", "sh", "ex"],
   ["us", "Urza's Saga", "us", "ul", "ud"],
@@ -58,7 +57,7 @@ class CardDatabase
           "block_code" => block[0],
           "block_name" => block[1],
           "border" => set["border"],
-          "year" => Date.parse(set["releaseDate"]).year,
+          "releaseDate" => set["releaseDate"],
         }.merge(card_data))
       end
     end

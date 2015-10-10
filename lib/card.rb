@@ -1,5 +1,6 @@
 # This class represents card from index point of view, not from data point of view
 # (thinking in solr/lucene terms)
+require "date"
 
 class Card
   attr_reader :data
@@ -29,6 +30,20 @@ class Card
     else
       nil
     end
+  end
+
+  def release_date
+    case @data["releaseDate"]
+    when /\A\d{4}-\d{2}\z/
+      # ...
+      "#{@data["releaseDate"]}-01"
+    else
+      @data["releaseDate"]
+    end
+  end
+
+  def year
+    Date.parse(release_date).year
   end
 
   def color_identity
