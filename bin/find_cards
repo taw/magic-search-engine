@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/card_database"
+
+class FindCards
+  def initialize
+    json_path = Pathname(__dir__) + "../data/AllSets-x.json"
+    @db = CardDatabase.new(json_path)
+  end
+
+  def run!(*query)
+    query = query.join(" ")
+    puts @db.search(query)
+  end
+end
+
+if ARGV.size == 0
+  STDERR.puts "Usage: #{$0} <query>"
+  exit 1
+end
+
+FindCards.new.run!(*ARGV)
