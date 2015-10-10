@@ -120,4 +120,8 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_include "watermark:boros", "Aurelia, the Warleader"
     assert_search_exclude "watermark:gruul", "Aurelia, the Warleader"
   end
+
+  def test_mana
+    assert_search_results "e:gtc mana=u", "Bioshift", "Cloudfin Raptor", "Gridlock", "Rapid Hybridization", "Realmwright"
+  end
 end

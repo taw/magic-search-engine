@@ -57,11 +57,17 @@ private
       elsif s.scan(/c!([wubrgcml]+)/i)
         tokens << [:colors_exclusive, s[1]]
       elsif s.scan(/r:(\S+)/)
-        tokens << [:rarity, s[1]]
-      elsif s.scan(/(pow|tou|cmc)(>=|>|<=|<|=)(pow|tou|cmc|\d+)\b/)
+        tokens << [:rarity, s[1].downcase]
+      elsif s.scan(/(pow|loyalty|tou|cmc)(>=|>|<=|<|=)(pow|tou|cmc|loyalty|\d+)\b/i)
         tokens << [:expr, [s[1], s[2], s[3]]]
-      elsif s.scan(/is:(split|vanilla|spell|permanent|old|new|future|black-bordered|silver-bordered|white-bordered)\b/)
+      elsif s.scan(/mana(>=|>|<=|<|=)([\dwubrg]+)/i)
+        tokens << [:mana, [s[1], s[2]]]
+      elsif s.scan(/is:(split|vanilla|spell|permanent)\b/i)
         tokens << [:"is_#{s[1]}"]
+      elsif s.scan(/is:(old|new|future)\b/)
+        tokens << [:frame, s[1].downcase]
+      elsif s.scan(/is:(black-bordered|silver-bordered|white-bordered)\b/i)
+        tokens << [:border, s[1].sub("-bordered", "").downcase]
       elsif s.scan(/"(.*?)"/)
         tokens << [:word, s[1]]
       elsif s.scan(/([^-!<>=:"\s]+)(?=\s|$)/i)
