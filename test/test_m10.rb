@@ -160,7 +160,14 @@ class CardDatabaseM10Test < Minitest::Test
   end
 
   def test_is_permanent
-    assert_search_results "e:m10 -is:permanent r:mythic", "Time Warp"
+    assert_search_results "-is:permanent r:mythic", "Time Warp"
+  end
+
+  def test_is_opposes_not
+    assert_search_equal "not:permanent", "-is:permanent"
+    assert_search_equal "not:spell", "-is:spell"
+    assert_search_results "not:black-bordered"
+    assert_search_equal "not:white-bordered", "not:silver-bordered"
   end
 
   def test_is_spell

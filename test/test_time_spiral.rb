@@ -71,4 +71,10 @@ class CardDatabaseTimeSpiralTest < Minitest::Test
     assert_search_results "sarpadian empires vol vii", "Sarpadian Empires, Vol. VII"
     assert_search_results "sarpadian empires", "Sarpadian Empires, Vol. VII"
   end
+
+  def test_is_opposes_not
+    assert_search_equal "not:future", "-is:future"
+    assert_search_equal "not:new", "-is:new"
+    assert_search_equal "not:old", "-is:old"
+  end
 end
