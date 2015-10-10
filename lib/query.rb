@@ -56,7 +56,7 @@ private
         tokens << [:colors_exclusive, s[1]]
       elsif s.scan(/r:(\S+)/)
         tokens << [:rarity, s[1].downcase]
-      elsif s.scan(/(pow|loyalty|tou|cmc)(>=|>|<=|<|=)(pow|tou|cmc|loyalty|\d+)\b/i)
+      elsif s.scan(/(pow|loyalty|tou|cmc)(>=|>|<=|<|=)(pow|tou|cmc|loyalty|\d+\.\d+|\.\d+|\d+|\d*½)\b/i)
         tokens << [:expr, [s[1], s[2], s[3]]]
       elsif s.scan(/mana(>=|>|<=|<|=)([\dwubrg]+)/i)
         tokens << [:mana, [s[1], s[2]]]

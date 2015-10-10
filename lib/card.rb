@@ -113,15 +113,15 @@ class Card
   end
 
   def power
-    @data["power"] ?  @data["power"].to_i : nil
+    @data["power"] ?  @data["power"].to_f : nil
   end
 
   def toughness
-    @data["toughness"] ?  @data["toughness"].to_i : nil
+    @data["toughness"] ?  @data["toughness"].to_f : nil
   end
 
   def loyalty
-    @data["loyalty"] ?  @data["loyalty"].to_i : nil
+    @data["loyalty"] ?  @data["loyalty"].to_f : nil
   end
 
   def method_missing(m)
