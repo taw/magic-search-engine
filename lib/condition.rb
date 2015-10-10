@@ -78,18 +78,18 @@ class Condition
   end
 
   def match_colors?(card, colors_query)
-    colors = card.colors
+    card_colors = card.colors
     colors_query.chars.any? do |q|
       case q
       when /\A[wubrg]\z/
-        colors.include?(q)
+        card_colors.include?(q)
       when "m"
-        colors.size >= 2
+        card_colors.size >= 2
       when "c"
-        colors.size == 0 and not card.types.include?("land")
+        card_colors.size == 0 and not card.types.include?("land")
       when "l"
         # Dryad Arbor is not c:l
-        colors.size == 0 and card.types.include?("land")
+        card_colors.size == 0 and card.types.include?("land")
       end
     end
   end
