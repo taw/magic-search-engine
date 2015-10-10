@@ -16,8 +16,8 @@ class Condition
     when :edition
       card.set_code.downcase == arg.downcase or text_query_match?(card.set_name, arg)
     when :block
-      # warn "Blocks not supported"
-      true
+      return false unless card.block_code and card.block_name
+      card.block_code.downcase == arg.downcase or text_query_match?(card.block_name, arg)
     when :types
       arg.downcase.split.all?{|type|
         card.types.include?(type)
