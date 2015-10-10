@@ -36,7 +36,8 @@ class CardDatabaseRTRTest < Minitest::Test
   def test_minus
     assert_search_equal "c!r", "-c:w -c:u -c:b -c:g -c:c -c:l"
     assert_search_equal "c!r", "-(c:w or c:u or c:b or c:g or c:c or c:l)"
-    assert_search_equal "t:angel -(r:mythic c:r)"
+    assert_search_equal "t:angel -(r:mythic and c:r)", "t:angel -(r:mythic c:r)"
+    assert_search_equal "t:angel -(r:mythic or c:r)", "t:angel -r:mythic -c:r"
   end
 
   def test_filter_colors_multicolored
@@ -49,7 +50,7 @@ class CardDatabaseRTRTest < Minitest::Test
 
     assert_search_exclude "c:w", "Rubblebelt Raiders"
     assert_search_exclude "c!g", "Rubblebelt Raiders"
-    assert_search_exclude "c!g", "Rubblebelt Raiders"
+    assert_search_exclude "c!r", "Rubblebelt Raiders"
     assert_search_exclude "c:c", "Rubblebelt Raiders"
     assert_search_exclude "c:l", "Rubblebelt Raiders"
   end
@@ -86,7 +87,7 @@ class CardDatabaseRTRTest < Minitest::Test
   def test_block
     assert_search_equal "e:rtr OR e:gtc OR e:dgm", "b:rtr"
     assert_search_equal "e:rtr OR e:gtc OR e:dgm", 'b:"Return to Ravnica"'
-
+    assert_search_results "b:Innistrad"
     # assert_equal "this test is any good", false, "Doesn't really do anything yet, everything is same block"
   end
 
@@ -112,5 +113,11 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_results "Aetherize", "Aetherize"
     assert_search_results "ætherize", "Aetherize"
     assert_search_results "aetherize", "Aetherize"
+  end
+
+  def test_watermark
+    assert_search_include "watermark:gruul", "Rubblebelt Raiders"
+    assert_search_include "watermark:boros", "Aurelia, the Warleader"
+    assert_search_exclude "watermark:gruul", "Aurelia, the Warleader"
   end
 end

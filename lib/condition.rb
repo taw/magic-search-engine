@@ -56,6 +56,20 @@ class Condition
       (card.types & ["instant", "sorcery"]).empty?
     when :is_spell
       (card.types & ["land"]).empty?
+    when :is_old
+      card.frame == "old"
+    when :is_new
+      card.frame == "new"
+    when :is_future
+      card.frame == "future"
+    when :"is_black-bordered"
+      card.border == "black"
+    when :"is_silver-bordered"
+      card.border == "silver"
+    when :"is_white-bordered"
+      card.border == "white"
+    when :watermark
+      card.watermark == arg
     else
       warn "Query error: #{cond} #{arg}"
       false
@@ -96,12 +110,7 @@ class Condition
 
   def match_colors_exclusive?(card, colors_query)
     return false unless match_colors?(card, colors_query)
-    return false if card.colors.include?("White") and colors_query !~ /w/
-    return false if card.colors.include?("Blue") and colors_query !~ /u/
-    return false if card.colors.include?("Black") and colors_query !~ /b/
-    return false if card.colors.include?("Red") and colors_query !~ /r/
-    return false if card.colors.include?("Green") and colors_query !~ /g/
-    true
+    (card.colors - colors_query.chars).empty?
   end
 
   def match_color_identity?(card, colors)

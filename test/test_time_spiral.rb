@@ -1,0 +1,67 @@
+require_relative "test_helper"
+
+class CardDatabaseTimeSpiralTest < Minitest::Test
+  def setup
+    @db = CardDatabase.new(Pathname(__dir__) + "index/time_spiral_block.json")
+  end
+
+  def test_is_future
+    assert_search_include "is:future", "Dryad Arbor"
+    assert_search_exclude "is:new", "Dryad Arbor"
+    assert_search_exclude "is:old", "Dryad Arbor"
+    assert_search_results "is:future is:vanilla",
+      "Blade of the Sixth Pride",
+      "Blind Phantasm",
+      "Fomori Nomad",
+      "Mass of Ghouls",
+      "Nessian Courser"
+  end
+
+  def test_is_new
+    assert_search_exclude "is:future", "Amrou Scout"
+    assert_search_include "is:new", "Amrou Scout"
+    assert_search_exclude "is:old", "Amrou Scout"
+  end
+
+  def test_is_old
+    assert_search_exclude "is:future", "Squire"
+    assert_search_exclude "is:new", "Squire"
+    assert_search_include "is:old", "Squire"
+  end
+
+  def test_is_borders
+    assert_search_include "is:black-bordered", "Dryad Arbor"
+    assert_search_exclude "is:white-bordered", "Dryad Arbor"
+    assert_search_exclude "is:silver-bordered", "Dryad Arbor"
+  end
+
+  def test_dryad_arbor
+    assert_search_include "c:g", "Dryad Arbor"
+    assert_search_exclude "c:l", "Dryad Arbor"
+    assert_search_exclude "c:c", "Dryad Arbor"
+    assert_search_include "is:permanent", "Dryad Arbor"
+    assert_search_exclude "is:spell", "Dryad Arbor"
+    assert_search_results "t:land t:creature"
+  end
+
+  def test_non_ascii
+    assert_search_results "Dralnu", "Dralnu, Lich Lord"
+    assert_search_results "Dralnu Lich Lord", "Dralnu, Lich Lord"
+    assert_search_results "Dralnu, Lich Lord", "Dralnu, Lich Lord"
+    assert_search_results "Dralnu , Lich Lord", "Dralnu, Lich Lord"
+    assert_search_results "Dandân", "Dandan"
+    assert_search_results "Dandan", "Dandan"
+    assert_search_results "Cutthroat il-Dal", "Cutthroat il-Dal"
+    assert_search_results "Cutthroat il Dal", "Cutthroat il-Dal"
+    assert_search_results "Cutthroat ildal", "Cutthroat il-Dal"
+    assert_search_results "Lim-Dûl the Necromancer", "Lim-Dûl the Necromancer"
+    assert_search_results "Lim-Dul the Necromancer", "Lim-Dûl the Necromancer"
+    assert_search_results "Lim Dul the Necromancer", "Lim-Dûl the Necromancer"
+    assert_search_results "Limdul the Necromancer", "Lim-Dûl the Necromancer"
+    assert_search_results "limdul necromancer", "Lim-Dûl the Necromancer"
+    assert_search_results "lim dul necromancer", "Lim-Dûl the Necromancer"
+    assert_search_results "Sarpadian Empires, Vol. VII", "Sarpadian Empires, Vol. VII"
+    assert_search_results "sarpadian empires vol vii", "Sarpadian Empires, Vol. VII"
+    assert_search_results "sarpadian empires", "Sarpadian Empires, Vol. VII"
+  end
+end
