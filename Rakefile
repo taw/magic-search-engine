@@ -19,4 +19,5 @@ task "index:generate" do
   indexer.save_subset! "test/index/m10.json", "M10"
   indexer.save_subset! "test/index/rtr_block.json", "RTR", "GTC", "DGM"
   indexer.save_subset! "test/index/time_spiral_block.json", "TSP", "TSB", "PLC", "FUT"
+  indexer.save_subset! "test/index/unsets.json", "UNG", "UNH"
 end

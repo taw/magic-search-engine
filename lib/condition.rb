@@ -204,6 +204,10 @@ class Condition
       card.loyalty
     when /\A\d+\z/
       expr.to_i
+    when /\A\d*\.\d+\z/
+      expr.to_f
+    when /\A(\d*)½\z/
+      $1.to_i + 0.5
     else
       raise "Expr variable parse error: #{expr}"
     end
