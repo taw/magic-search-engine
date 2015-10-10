@@ -16,14 +16,14 @@ class CardDatabaseRTRTest < Minitest::Test
       "Isperia, Supreme Judge",
       "Sphinx's Revelation",
       "Trostani, Selesnya's Voice"
-    assert_search_results "e:gtc t:angel -(t:legendary c:r)",
+    assert_search_results "e:gtc t:angel -(c:r tou=3)",
       "Angelic Skirmisher",
-      "Deathpact Angel",
-      "Firemane Avenger",
-      "Guardian of the Gateless"
-    assert_search_results "e:gtc t:angel -(t:legendary or c:r)",
+      "Aurelia, the Warleader",
+      "Guardian of the Gateless",
+      "Deathpact Angel"
+    assert_search_results "e:gtc t:angel -(c:r or tou=3)",
       "Angelic Skirmisher",
-      "Guardian of the Gateless"
+      "Deathpact Angel"
     assert_search_equal "(e:rtr OR e:dgm) t:goblin or t:elf", "((e:rtr OR e:dgm) t:goblin) or t:elf"
     assert_search_differ "(e:rtr OR e:dgm) t:goblin or t:elf", "(e:rtr OR e:dgm) (t:goblin or t:elf)"
     assert_search_equal "t:human t:warrior", "t:human AND t:warrior"
@@ -35,7 +35,7 @@ class CardDatabaseRTRTest < Minitest::Test
 
   def test_minus
     assert_search_equal "c!r", "-c:w -c:u -c:b -c:g -c:c -c:l"
-    assert_search_equal "c!r", "-(c:g or c:w or c:r or c:u or c:c or c:l)"
+    assert_search_equal "c!r", "-(c:w or c:u or c:b or c:g or c:c or c:l)"
     assert_search_equal "t:angel -(r:mythic c:r)"
   end
 
@@ -104,5 +104,13 @@ class CardDatabaseRTRTest < Minitest::Test
 
   def test_is_vanilla
     assert_search_results "e:dgm is:vanilla", "Armored Wolf-Rider", "Bane Alley Blackguard"
+  end
+
+  def test_ae
+    assert_search_results "Ætherize", "Aetherize"
+    assert_search_results "AEtherize", "Aetherize"
+    assert_search_results "Aetherize", "Aetherize"
+    assert_search_results "ætherize", "Aetherize"
+    assert_search_results "aetherize", "Aetherize"
   end
 end

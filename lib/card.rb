@@ -7,6 +7,10 @@ class Card
     @data = data
   end
 
+  def name
+    @data["name"].gsub("Æ", "Ae")
+  end
+
   def colors
     (@data["colors"] || []).map{|c| color_codes.fetch(c)}
   end
@@ -94,7 +98,7 @@ class Card
   end
 
   def inspect
-    "Card(#{@data["name"]})"
+    "Card(#{name})"
   end
 
 private

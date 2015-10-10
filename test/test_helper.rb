@@ -28,10 +28,10 @@ class Minitest::Test
     assert results1.size > 0, "This test is unreliable if results are empty: #{query1}"
   end
 
-  def assert_search_not_equal(query1, query2)
+  def assert_search_differ(query1, query2)
     results1 = @db.search(query1)
     results2 = @db.search(query2)
-    refuse_equal results1, results2, "Queries `#{query1}' and `#{query2}' should not return same results"
+    refute_equal results1, results2, "Queries `#{query1}' and `#{query2}' should not return same results"
     assert results1.size > 0, "This test is unreliable if results are empty: #{query1}"
     assert results2.size > 0, "This test is unreliable if results are empty: #{query2}"
   end

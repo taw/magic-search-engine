@@ -48,8 +48,14 @@ class Condition
       arg.all?{|c| c.match?(card)}
     when :not
       not arg.match?(card)
-    when :is
-      match_is?(card, arg)
+    when :is_vanilla
+      card.text == ""
+    when :is_split
+      card.layout == "split"
+    when :is_permanent
+      (card.types & ["instant", "sorcery"]).empty?
+    when :is_spell
+      (card.types & ["land"]).empty?
     else
       warn "Query error: #{cond} #{arg}"
       false
@@ -68,19 +74,8 @@ class Condition
     query.split.all?{|w| words.include?(w)}
   end
 
-  def match_is?(card, arg)
-    case arg
-    when "vanilla"
-      card.text == ""
-    when "split"
-      card.layout == "split"
-    else
-      false
-    end
-  end
-
   def normalize_name(name)
-    name.downcase.strip.split.join(" ")
+    name.downcase.gsub(/[Ææ]/, "ae").strip.split.join(" ")
   end
 
   def match_colors?(card, colors_query)

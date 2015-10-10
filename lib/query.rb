@@ -58,8 +58,8 @@ private
         tokens << [:rarity, s[1]]
       elsif s.scan(/(pow|tou|cmc)(>=|>|<=|<|=)(pow|tou|cmc|\d+)\b/)
         tokens << [:expr, [s[1], s[2], s[3]]]
-      elsif s.scan(/is:(\w+)\b/)
-        tokens << [:is, s[1]]
+      elsif s.scan(/is:(split|vanilla|spell|permanent)\b/)
+        tokens << [:"is_#{s[1]}"]
       elsif s.scan(/([^-!<>=:"]+)(?=\s|$)/i)
         # No special characters here
         tokens << [:word, s[1]]
