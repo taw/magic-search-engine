@@ -23,7 +23,7 @@ class CardDatabase
   def each_card
     @data.each do |set_code, set|
       set["cards"].each do |card_data|
-        yield Card.new(card_data.merge("set_code" => set_code, "set_name" => set["name"]))
+        yield Card.new(card_data.merge("set_code" => set["magicCardsInfoCode"], "set_name" => set["name"]))
       end
     end
   end
