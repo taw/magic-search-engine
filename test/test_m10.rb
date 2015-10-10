@@ -34,6 +34,10 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_include "c!bu", "Ponder"
     assert_search_exclude "c:m", "Ponder"
     assert_search_exclude "c:gcm", "Ponder"
+
+    # Only true for core sets
+    assert_search_equal "c:c", "t:artifact"
+    assert_search_equal "c:l", "t:land"
   end
 
   def test_filter_type

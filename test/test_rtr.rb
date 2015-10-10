@@ -23,6 +23,11 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_equal "t:human t:warrior", "t:human OR t:warrior"
     assert_search_equal "t:human t:warrior", 't:"human warrior"'
     assert_search_equal "t:human t:warrior", 't:"warrior human"'
+    assert_search_equal "t:legendary t:angel", 't:"legendary angel"'
+  end
+
+  def test_minus
+    assert_search_equal "c!r", "-c:g -c:w -c:r -c:u -c:c -c:l"
   end
 
   def test_filter_colors_multicolored
@@ -46,7 +51,6 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_include "ci:rug", "Rubblebelt Raiders"
     assert_search_exclude "ci:r", "Rubblebelt Raiders"
     assert_search_exclude "ci:c", "Rubblebelt Raiders"
-
     assert_search_include "ci:rw", "Alive // Well"
     assert_search_include "ci:rgw", "Alive // Well"
     assert_search_include "ci:rw", "Alive // Well"

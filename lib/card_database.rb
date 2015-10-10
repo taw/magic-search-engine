@@ -13,7 +13,7 @@ class CardDatabase
     query = Query.new(query_string)
     results = []
     each_card do |card|
-      if query.matches?(card)
+      if query.match?(card)
         results << card.name
       end
     end
