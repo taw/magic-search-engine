@@ -5,32 +5,6 @@ class CardDatabaseM10Test < Minitest::Test
     @db = CardDatabase.new(Pathname(__dir__) + "index/m10.json")
   end
 
-  def assert_search_results(query, *cards)
-    results = @db.search(query)
-    assert_equal cards, @db.search(query)
-  end
-
-  def assert_search_include(query, *cards)
-    results = @db.search(query)
-    cards.each do |card|
-      assert_includes @db.search(query), card
-    end
-  end
-
-  def assert_search_exclude(query, *cards)
-    results = @db.search(query)
-    cards.each do |card|
-      refute_includes @db.search(query), card
-    end
-  end
-
-  def assert_search_equal(query1, query2)
-    results1 = @db.search(query1)
-    results2 = @db.search(query2)
-    assert_equal results1, results2, "Queries `#{query1}' and `#{query2}' should return same results"
-    assert results1.size > 0, "This test is unreliable if results are empty"
-  end
-
   def test_db_loads_and_contains_sets
     assert_equal 249, @db.cards.size
   end
