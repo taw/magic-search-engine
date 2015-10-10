@@ -46,6 +46,8 @@ private
         tokens << [s[1].to_sym, s[2]]
       elsif s.scan(/e:(?:"(.*?)"|(\w+))/i)
         tokens << [:edition, s[1] || s[2]]
+      elsif s.scan(/watermark:(?:"(.*?)"|(\w+))/i)
+        tokens << [:watermark, s[1] || s[2]]
       elsif s.scan(/b:(?:"(.*?)"|(\S+))/i)
         tokens << [:block, s[1] || s[2]]
       elsif s.scan(/c:([wubrgcml]+)/i)
@@ -58,7 +60,7 @@ private
         tokens << [:rarity, s[1]]
       elsif s.scan(/(pow|tou|cmc)(>=|>|<=|<|=)(pow|tou|cmc|\d+)\b/)
         tokens << [:expr, [s[1], s[2], s[3]]]
-      elsif s.scan(/is:(split|vanilla|spell|permanent)\b/)
+      elsif s.scan(/is:(split|vanilla|spell|permanent|old|new|future|black-bordered|silver-bordered|white-bordered)\b/)
         tokens << [:"is_#{s[1]}"]
       elsif s.scan(/"(.*?)"/)
         tokens << [:word, s[1]]
