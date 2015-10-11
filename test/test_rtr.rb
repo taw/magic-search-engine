@@ -113,8 +113,12 @@ class CardDatabaseRTRTest < Minitest::Test
   def test_split_slash_slash
     assert_search_results "Alive // Well", "Alive", "Well"
     assert_search_results "!Alive // Well", "Alive", "Well"
-    assert_search_results "Alive // Well", "Alive", "Well"
-    assert_search_results "!Alive // Well", "Alive", "Well"
+    assert_search_results "Well // Alive", "Alive", "Well"
+    assert_search_results "!Well // Alive", "Alive", "Well"
+    assert_search_results "Alive & Well", "Alive", "Well"
+    assert_search_results "!Alive & Well", "Alive", "Well"
+    assert_search_results "Well & Alive", "Alive", "Well"
+    assert_search_results "!Well & Alive", "Alive", "Well"
   end
 
   def test_is_vanilla
