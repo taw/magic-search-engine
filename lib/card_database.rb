@@ -1,6 +1,7 @@
 require "pathname"
 require "json"
 require_relative "card"
+require_relative "card_set"
 require_relative "query"
 
 MagicBlocks = [
@@ -33,6 +34,7 @@ class CardDatabase
   def initialize(path)
     @path = Pathname(path)
     @data = JSON.parse(@path.open.read)
+    @sets = {}
     @cards = {}
     @ci = {}
     parse_data!
@@ -64,18 +66,19 @@ class CardDatabase
   private
 
   def parse_data!
-    @data.each do |set_code, set|
-      set_code = set["magicCardsInfoCode"] || set["code"]
+    @data.each do |set_code, set_data|
+      set_code = set_data["magicCardsInfoCode"] || set_data["code"]
       block = MagicBlocks.find{|c,n,*xx| xx.include?(set_code)} || []
-      set["cards"].each do |card_data|
-        card = Card.new({
-          "set_code" => set_code,
-          "set_name" => set["name"],
-          "block_code" => block[0],
-          "block_name" => block[1],
-          "border" => set["border"],
-          "releaseDate" => set["releaseDate"],
-        }.merge(card_data))
+      set = @sets[set_code] = CardSet.new(
+        "set_code" => set_code,
+        "set_name" => set_data["name"],
+        "block_code" => block[0],
+        "block_name" => block[1],
+        "border" => set_data["border"],
+        "releaseDate" => set_data["releaseDate"],
+      )
+      set_data["cards"].each do |card_data|
+        card = Card.new(card_data, set)
         @cards[card.name] ||= []
         @cards[card.name] << card
         @ci[card.name] ||= card.partial_color_identity
