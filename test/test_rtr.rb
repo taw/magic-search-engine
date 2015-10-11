@@ -61,18 +61,22 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_include "ci:rug", "Rubblebelt Raiders"
     assert_search_exclude "ci:r", "Rubblebelt Raiders"
     assert_search_exclude "ci:c", "Rubblebelt Raiders"
-    assert_search_include "ci:rw", "Alive // Well"
-    assert_search_include "ci:rgw", "Alive // Well"
-    assert_search_include "ci:rw", "Alive // Well"
+    assert_search_include "ci:gw", "Alive", "Well"
+    assert_search_include "ci:rgw", "Alive", "Well"
+    assert_search_exclude "ci:rw", "Alive", "Well"
+    assert_search_exclude "ci:g", "Alive", "Well"
+    assert_search_exclude "ci:w", "Alive", "Well"
 
-    assert_search_include "c:rg", "Boros Cluestone"
-    assert_search_exclude "c:r", "Boros Cluestone"
-    assert_search_exclude "c:c", "Boros Cluestone"
+    assert_search_include "ci:wubrg", "Boros Cluestone"
+    assert_search_include "ci:rw", "Boros Cluestone"
+    assert_search_exclude "ci:rg", "Boros Cluestone"
+    assert_search_exclude "ci:r", "Boros Cluestone"
+    assert_search_exclude "ci:c", "Boros Cluestone"
 
-    assert_search_exclude "c:c", "Forest"
-    assert_search_include "c:c", "Thespian's Stage"
-    assert_search_include "c:g", "Forest"
-    assert_search_exclude "c:r", "Forest"
+    assert_search_exclude "ci:c", "Forest"
+    assert_search_include "ci:c", "Thespian's Stage"
+    assert_search_include "ci:g", "Forest"
+    assert_search_exclude "ci:r", "Forest"
   end
 
   def test_edition
@@ -96,11 +100,9 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_results "!Alive // Well", "Alive // Well"
     assert_search_results "Alive", "Alive // Well"
     assert_search_results "Well", "Alive // Well"
-
     assert_search_include 'o:fuse o:centaur o:"gain 2 life"', "Alive // Well"
-
-    assert_search_include "is:split", "Rubblebelt Raiders"
-    assert_search_exclude "is:split", "Alive // Well"
+    assert_search_exclude "is:split", "Rubblebelt Raiders"
+    assert_search_include "is:split", "Alive // Well"
   end
 
   def test_is_vanilla

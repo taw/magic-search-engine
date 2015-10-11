@@ -46,7 +46,19 @@ class Card
     Date.parse(release_date).year
   end
 
+  attr_writer :color_identity
   def color_identity
+    @color_identity ||= begin
+      return partial_color_identity unless @data["names"]
+      raise "Multi-part cards need to have CI set by database"
+    end
+  end
+
+  def has_multiple_parts?
+    !!@data["names"]
+  end
+
+  def partial_color_identity
     ci = colors.dup
     text.scan(/{(.*?)}/).each do |sym,|
       case sym.downcase
