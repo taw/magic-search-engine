@@ -97,18 +97,20 @@ class Condition
     card_mana = parse_card_mana(card.mana_cost)
     return false unless card_mana
     op = "==" if op == "="
-    ["w", "u", "b", "r", "g", "c"].all? do |color|
+    (card_mana.keys | query_mana.keys).all? do |color|
       card_mana[color].send(op, query_mana[color])
     end
   end
 
   def parse_query_mana(mana)
     pool = Hash.new(0)
-    mana = mana.gsub(/(\d+)|([wubrg])/) do
+    mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrg])/) do
       if $1
-        pool["c"] += $1.to_i
+        pool[normalize_mana_symbol($1)] += 1
+      elsif $2
+        pool["c"] += $2.to_i
       else
-        pool[$2] += 1
+        pool[$3] += 1
       end
       ""
     end
@@ -132,11 +134,11 @@ class Condition
       when "x", "y", "z"
         # ignore
       when /\A([wubrg])\/([wubrg])\z/
-        pool[m] += 1
+        pool[normalize_mana_symbol(m)] += 1
       when /\A([wubrg])\/p\z/
-        pool[m] += 1
+        pool[normalize_mana_symbol(m)] += 1
       when /\A2\/([wubrg])\z/
-        pool[m] += 1
+        pool[normalize_mana_symbol(m)] += 1
       else
         raise "Unrecognized mana type: #{m}"
       end
@@ -144,6 +146,10 @@ class Condition
     end
     raise "Mana query parse error: #{mana}" unless mana.empty?
     pool
+  end
+
+  def normalize_mana_symbol(sym)
+    sym.downcase.tr("/{}", "").chars.sort.join
   end
 
   def match_colors?(card, colors_query)
