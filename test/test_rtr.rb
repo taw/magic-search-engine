@@ -95,14 +95,26 @@ class CardDatabaseRTRTest < Minitest::Test
     # assert_equal "this test is any good", false, "Doesn't really do anything yet, everything is same block"
   end
 
-  def test_is_split
-    assert_search_results "Alive // Well", "Alive // Well"
-    assert_search_results "!Alive // Well", "Alive // Well"
-    assert_search_results "Alive", "Alive // Well"
-    assert_search_results "Well", "Alive // Well"
-    assert_search_include 'o:fuse o:centaur o:"gain 2 life"', "Alive // Well"
+  def test_split_cards
     assert_search_exclude "is:split", "Rubblebelt Raiders"
-    assert_search_include "is:split", "Alive // Well"
+    assert_search_include "is:split", "Alive", "Well"
+    assert_search_results "Alive", "Alive"
+    assert_search_results "Well", "Well"
+    assert_search_results 'o:fuse o:centaur o:"gain 2 life"'
+    assert_search_results 'o:fuse o:centaur', "Alive"
+    assert_search_results 'o:fuse o:"gain 2 life"', "Well"
+    assert_search_equal "o:fuse", "is:split"
+    assert_search_equal "is:split", "layout:split"
+    assert_search_equal "not:split", "-layout:split"
+    assert_search_results "is:flip"
+    assert_search_results "is:dfc"
+  end
+
+  def test_split_slash_slash
+    assert_search_results "Alive // Well", "Alive", "Well"
+    assert_search_results "!Alive // Well", "Alive", "Well"
+    assert_search_results "Alive // Well", "Alive", "Well"
+    assert_search_results "!Alive // Well", "Alive", "Well"
   end
 
   def test_is_vanilla
