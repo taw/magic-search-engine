@@ -20,7 +20,7 @@ private
     tokens = []
     s = StringScanner.new(str)
     until s.eos?
-      if s.scan(/\s+/)
+      if s.scan(/[\s,]+/)
         # pass
       elsif s.scan(/and\b/i)
         # tokens << [:and]
@@ -84,9 +84,18 @@ private
         tokens << [:word, s[1]]
       elsif s.scan(/not/)
         tokens << [:not]
-      elsif s.scan(/([^-!<>=:"\s]+)(?=\s|$)/i)
-        # No special characters here
-        tokens << [:word, s[1]]
+      elsif s.scan(/([^-!<>=:"\s][^!<>=:"\s]*)(?=\s|$)/i)
+        # Veil-Cursed and similar silliness
+        words = s[1].split("-")
+        if words.size > 1
+          tokens << [:open]
+          words.each do |w|
+            tokens << [:word, w]
+          end
+          tokens << [:close]
+        else
+          tokens << [:word, s[1]]
+        end
       else
         warn "Query parse error: #{str}"
         s.scan(/(\S+)/)

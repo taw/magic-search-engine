@@ -27,6 +27,10 @@ class CardDatabaseInnistradTest < Minitest::Test
     assert_search_include "c!b", "Unhallowed Cathar"
   end
 
+  def test_midword_hyphen
+    assert_search_include "Garruk -Veil-Cursed", "Garruk Relentless"
+  end
+
   def test_dfc_search
     assert_search_include "t:Garruk", "Garruk Relentless", "Garruk, the Veil-Cursed"
     assert_search_include "t:Garruk c:g", "Garruk Relentless", "Garruk, the Veil-Cursed"
