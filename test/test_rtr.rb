@@ -124,4 +124,10 @@ class CardDatabaseRTRTest < Minitest::Test
   def test_mana
     assert_search_results "e:gtc mana=u", "Bioshift", "Cloudfin Raptor", "Gridlock", "Rapid Hybridization", "Realmwright"
   end
+
+  def test_extort_reminder_text_does_not_affect_ci
+    assert_search_results "o:extort ci:w", "Basilica Guards", "Blind Obedience", "Knight of Obligation", "Syndic of Tithes"
+    assert_search_results "o:extort ci:b", "Basilica Screecher", "Crypt Ghast", "Pontiff of Blight", "Syndicate Enforcer", "Thrull Parasite"
+    assert_search_results "o:extort ci:bw -ci:w -ci:b", "Kingpin's Pet", "Tithe Drinker", "Treasury Thrull", "Vizkopa Confessor"
+  end
 end
