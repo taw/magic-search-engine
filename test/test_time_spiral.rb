@@ -82,4 +82,13 @@ class CardDatabaseTimeSpiralTest < Minitest::Test
   def test_is_timeshifted
     assert_count_results "is:timeshifted", 45
   end
+
+  def test_manaless_suspend_cards
+    assert_search_results "cmc=0 o:suspend", "Ancestral Vision", "Hypergenesis", "Living End", "Lotus Bloom", "Restore Balance", "Wheel of Fate"
+    assert_search_results "cmc=0 o:suspend ci:c", "Lotus Bloom"
+    assert_search_results "cmc=0 o:suspend ci:u", "Lotus Bloom", "Ancestral Vision"
+    assert_search_results "cmc=0 o:suspend c:c", "Lotus Bloom"
+    assert_search_results "cmc=0 o:suspend c:u", "Ancestral Vision"
+    assert_search_results "cmc=0 o:suspend mana=0"
+  end
 end
