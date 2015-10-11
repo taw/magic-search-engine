@@ -4,8 +4,9 @@ require "date"
 
 class Card
   attr_reader :data
-  def initialize(data)
+  def initialize(data, set)
     @data = data
+    @set = set
   end
 
   def name
@@ -17,19 +18,19 @@ class Card
   end
 
   def set_code
-    @data["set_code"]
+    @set.set_code
   end
 
   def set_name
-    @data["set_name"]
+    @set.set_name
   end
 
   def block_code
-    @data["block_code"]
+    @set.block_code
   end
 
   def block_name
-    @data["block_name"]
+    @set.block_name
   end
 
   def layout
@@ -37,7 +38,7 @@ class Card
   end
 
   def border
-    @data["border"]
+    @data["border"] || @set.border
   end
 
   def colors
@@ -61,12 +62,12 @@ class Card
   end
 
   def release_date
-    case @data["releaseDate"]
+    case d = (@data["releaseDate"] || @set.release_date)
     when /\A\d{4}-\d{2}\z/
       # ...
-      "#{@data["releaseDate"]}-01"
+      "#{d}-01"
     else
-      @data["releaseDate"]
+      d
     end
   end
 
