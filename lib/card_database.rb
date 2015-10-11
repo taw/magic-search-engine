@@ -2,7 +2,16 @@ require "pathname"
 require "json"
 require_relative "card"
 require_relative "card_set"
+require_relative "card_printing"
 require_relative "query"
+
+# ActiveRecord FTW
+class Hash
+  def slice(*keys)
+    keys.map! { |key| convert_key(key) } if respond_to?(:convert_key, true)
+    keys.each_with_object(self.class.new) { |k, hash| hash[k] = self[k] if has_key?(k) }
+  end
+end
 
 MagicBlocks = [
   # Sort of not really:
@@ -52,8 +61,8 @@ class CardDatabase
   end
 
   def each_card
-    @cards.each do |name, printings|
-      printings.each do |printing|
+    @cards.each do |card_name, card|
+      card.printings.each do |printing|
         yield printing
       end
     end
@@ -78,13 +87,42 @@ class CardDatabase
         "releaseDate" => set_data["releaseDate"],
       )
       set_data["cards"].each do |card_data|
-        card = Card.new(card_data, set)
-        @cards[card.name] ||= []
-        @cards[card.name] << card
+        name = card_data["name"]
+        card = @cards[name] ||= begin
+          Card.new(card_data.slice(
+            "name",
+            "names",
+            "power",
+            "toughness",
+            "loyalty",
+            "manaCost",
+            "text",
+            "types",
+            "subtypes",
+            "supertypes",
+            "legalities",
+            "colors",
+            "cmc",
+            "layout",
+          ))
+        end
+        card.printings << CardPrinting.new(
+          card,
+          set,
+          card_data.slice(
+            "flavor",
+            "artist",
+            "border",
+            "releaseDate",
+            "rarity",
+            "timeshifted",
+            "watermark",
+          ),
+        )
         @ci[card.name] ||= card.partial_color_identity
       end
     end
-    each_card do |card|
+    @cards.each do |card_name, card|
       if card.has_multiple_parts?
         card.color_identity = card.names.map{|n| @ci[n]}.inject(&:|)
       end
