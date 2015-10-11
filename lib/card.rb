@@ -12,6 +12,34 @@ class Card
     @data["name"].gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
   end
 
+  def names
+    @data["names"]
+  end
+
+  def set_code
+    @data["set_code"]
+  end
+
+  def set_name
+    @data["set_name"]
+  end
+
+  def block_code
+    @data["block_code"]
+  end
+
+  def block_name
+    @data["block_name"]
+  end
+
+  def layout
+    @data["layout"]
+  end
+
+  def border
+    @data["border"]
+  end
+
   def colors
     (@data["colors"] || []).map{|c| color_codes.fetch(c)}
   end
@@ -155,14 +183,6 @@ class Card
 
   def loyalty
     @data["loyalty"] ?  @data["loyalty"].to_f : nil
-  end
-
-  def method_missing(m)
-    if @data.has_key?(m.to_s)
-      @data[m.to_s]
-    else
-      super
-    end
   end
 
   def inspect
