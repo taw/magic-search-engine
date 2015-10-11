@@ -86,6 +86,10 @@ class Card
         require 'pry'; binding.pry
       end
     end
+    types.each do |t|
+      tci = {"forest" => "g", "mountain" => "r", "plains" => "w", "island" => "u", "swamp" => "b"}[t]
+      ci << tci if tci
+    end
     ci.uniq
   end
 
