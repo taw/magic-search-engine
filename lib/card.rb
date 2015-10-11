@@ -22,7 +22,7 @@ class Card
   end
 
   def colors
-    (@data["colors"] || []).map{|c| color_codes.fetch(c)}
+    @data["colors"] || []
   end
 
   def mana_cost
@@ -83,12 +83,7 @@ class Card
   def legality(format)
     format = format.downcase
     format = "commander" if format == "edh"
-    leg = @data["legalities"].find{|leg| leg["format"].downcase == format}
-    if leg
-      leg["legality"].downcase
-    else
-      nil
-    end
+    @data["legalities"][format]
   end
 
   def cmc
@@ -115,15 +110,5 @@ class Card
 
   def inspect
     "Card(#{name})"
-  end
-
-private
-
-  def color_names
-    {"g"=>"Green", "r"=>"Red", "b"=>"Black", "u"=>"Blue", "w"=>"White"}
-  end
-
-  def color_codes
-    {"White"=>"w", "Blue"=>"u", "Black"=>"b", "Red"=>"r", "Green"=>"g"}
   end
 end
