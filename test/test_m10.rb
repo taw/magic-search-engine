@@ -219,6 +219,13 @@ class CardDatabaseM10Test < Minitest::Test
       "Open the Vaults",
       "Planar Cleansing",
       "Serra Angel"
+    assert_search_results "mana>2WW",
+      "Baneslayer Angel",
+      "Captain of the Watch",
+      "Lightwielder Paladin",
+      "Open the Vaults",
+      "Planar Cleansing",
+      "Serra Angel"
     assert_search_results "mana=11",
       "Darksteel Colossus"
   end

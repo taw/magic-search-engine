@@ -96,9 +96,20 @@ class Condition
     query_mana = parse_query_mana(mana.downcase)
     card_mana = parse_card_mana(card.mana_cost)
     return false unless card_mana
-    op = "==" if op == "="
-    (card_mana.keys | query_mana.keys).all? do |color|
-      card_mana[color].send(op, query_mana[color])
+    cmps = (card_mana.keys | query_mana.keys).map{|color| [card_mana[color], query_mana[color]]}
+    case op
+    when ">="
+      cmps.all?{|a,b| a>=b}
+    when ">"
+      cmps.all?{|a,b| a>=b} and not cmps.all?{|a,b| a==b}
+    when "="
+      cmps.all?{|a,b| a==b}
+    when "<"
+      cmps.all?{|a,b| a<=b} and not cmps.all?{|a,b| a==b}
+    when "<="
+      cmps.all?{|a,b| a<=b}
+    else
+      raise
     end
   end
 
