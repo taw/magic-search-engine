@@ -62,9 +62,18 @@ private
         tokens << [:expr, [s[1], s[2], s[3]]]
       elsif s.scan(/mana\s*(>=|>|<=|<|=)\s*((?:[\dwubrg]|\{.*?\})+)/i)
         tokens << [:mana, [s[1], s[2]]]
-      elsif s.scan(/(is|not):(split|vanilla|spell|permanent|funny|timeshifted)\b/i)
+      elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:"is_#{s[2]}"]
+      elsif s.scan(/(is|not):(split|flip|dfc)\b/i)
+        tokens << [:not] if s[1].downcase == "not"
+        layout = s[2]
+        layout = "double-faced" if layout == "dfc"
+        tokens << [:layout, layout]
+      elsif s.scan(/layout:(normal|leveler|vanguard|dfc|token|split|flip|plane|scheme|phenomenon)/)
+        layout = s[1]
+        layout = "double-faced" if layout == "dfc"
+        tokens << [:layout, layout]
       elsif s.scan(/(is|not):(old|new|future)\b/)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:frame, s[2].downcase]
