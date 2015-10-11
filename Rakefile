@@ -24,4 +24,5 @@ task "index:generate" do
   indexer.save_subset! "test/index/isd.json", "ISD", "DKA"
   indexer.save_subset! "test/index/al.json", "LEA"
   indexer.save_subset! "test/index/fnm.json", "pFNM"
+  indexer.save_subset! "test/index/dis.json", "DIS"
 end
