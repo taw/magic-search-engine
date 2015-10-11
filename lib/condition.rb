@@ -52,8 +52,8 @@ class Condition
       not arg.match?(card)
     when :is_vanilla
       card.text == ""
-    when :is_split
-      card.layout == "split"
+    when :layout
+      card.layout == arg
     when :is_permanent
       (card.types & ["instant", "sorcery"]).empty?
     when :is_spell
