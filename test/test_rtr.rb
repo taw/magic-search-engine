@@ -110,15 +110,26 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_results "is:dfc"
   end
 
+  def test_split_slash_slash_bang
+    assert_search_results "!Alive // Well", "Alive", "Well"
+    assert_search_results "!Well // Alive", "Alive", "Well"
+    assert_search_results "!Alive & Well", "Alive", "Well"
+    assert_search_results "!Well & Alive", "Alive", "Well"
+    assert_search_results "!Alive//Well", "Alive", "Well"
+    assert_search_results "!Well//Alive", "Alive", "Well"
+    assert_search_results "!Alive&Well", "Alive", "Well"
+    assert_search_results "!Well&Alive", "Alive", "Well"
+  end
+
   def test_split_slash_slash
     assert_search_results "Alive // Well", "Alive", "Well"
-    assert_search_results "!Alive // Well", "Alive", "Well"
     assert_search_results "Well // Alive", "Alive", "Well"
-    assert_search_results "!Well // Alive", "Alive", "Well"
     assert_search_results "Alive & Well", "Alive", "Well"
-    assert_search_results "!Alive & Well", "Alive", "Well"
     assert_search_results "Well & Alive", "Alive", "Well"
-    assert_search_results "!Well & Alive", "Alive", "Well"
+    assert_search_results "Alive//Well", "Alive", "Well"
+    assert_search_results "Well//Alive", "Alive", "Well"
+    assert_search_results "Alive&Well", "Alive", "Well"
+    assert_search_results "Well&Alive", "Alive", "Well"
   end
 
   def test_is_vanilla
