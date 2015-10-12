@@ -106,11 +106,11 @@ class Card
   end
 
   def power
-    @data["power"] ?  to_i_or_f(@data["power"]) : nil
+    @data["power"] ? smart_convert_powtou(@data["power"]) : nil
   end
 
   def toughness
-    @data["toughness"] ? to_i_or_f(@data["toughness"]) : nil
+    @data["toughness"] ? smart_convert_powtou(@data["toughness"]) : nil
   end
 
   def loyalty
@@ -132,8 +132,19 @@ class Card
 
   private
 
-  def to_i_or_f(val)
-    if val.to_i == val.to_f
+  def smart_convert_powtou(val)
+    if val !~ /\A-?[\d.]+\z/
+      # It just so happens that "1+*" > "*" asciibetically so we don't do any extra conversions,
+      # but we might need to setup some eventually
+      case val
+      when "*"
+        val
+      when "1+*"
+        val
+      else
+        raise "Unrecognized value #{val}"
+      end
+    elsif val.to_i == val.to_f
       val.to_i
     else
       val.to_f
