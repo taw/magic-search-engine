@@ -1,14 +1,16 @@
 require "pathname"
 require "json"
+require "set"
 require_relative "card"
 require_relative "card_set"
 require_relative "card_printing"
 require_relative "query"
 
 class CardDatabase
-  attr_reader :sets, :cards
+  attr_reader :sets, :cards, :blocks
   def initialize
     @sets = {}
+    @blocks = Set[]
     @cards = {}
     yield(self)
   end
@@ -61,6 +63,7 @@ class CardDatabase
   private
 
   def load_from_subset!(db, sets)
+    @blocks = db.blocks
     db.sets.each do |set_code, set|
       next unless sets.include?(set_code)
       @sets[set_code] = set
@@ -81,7 +84,13 @@ class CardDatabase
     multipart_cards = {}
     data = JSON.parse(path.open.read)
     data["sets"].each do |set_code, set_data|
-      @sets[set_code] = CardSet.new(set_data)
+      # It's OK to link to main one, it's only needed for set/block codes list
+      # and that might as well be hardcoded
+      @sets[set_code] = CardSet.new(set_data, self)
+      if set_data["block_code"]
+        @blocks << set_data["block_code"]
+        @blocks << normalize_name(set_data["block_name"])
+      end
     end
     data["cards"].each do |card_name, card_data|
       case card_data["layout"]
@@ -122,5 +131,16 @@ class CardDatabase
         end
       end
     end
+  end
+
+  private
+
+  # These method seem to occur in every single class out there
+  def normalize_text(text)
+    text.downcase.gsub(/[Ææ]/, "ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-").strip
+  end
+
+  def normalize_name(name)
+    normalize_text(name).split.join(" ")
   end
 end

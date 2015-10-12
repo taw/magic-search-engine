@@ -32,7 +32,7 @@ MagicBlocks = [
   ["on", "Onslaught", "on", "le", "sc"],
   ["mi", "Mirrodin", "mi", "ds", "5dn"],
   ["chk", "Champions of Kamigawa", "chk", "bok", "sok"],
-  ["rav", "Ravnica: City of Guilds", "rav", "gp", "di"],
+  ["rav", "Ravnica", "rav", "gp", "di"],
   ["ts", "Time Spiral", "ts", "tsts", "pc", "fut"],
   ["lw", "Lorwyn", "lw", "mt", "shm", "eve"],
   ["ala", "Shards of Alara", "ala", "cfx", "arb"],

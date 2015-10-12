@@ -21,9 +21,15 @@ class Condition
       @query_mana = parse_query_mana(mana.downcase)
     when :artist, :flavor, :rarity
       @arg = @arg.downcase
+    when :block
+      @arg = normalize_text(@arg)
+      @block_cache = Hash.new do |ht, set|
+        ht[set] = set.match_block?(@arg)
+      end
     when :edition
+      @arg = normalize_text(@arg)
       @edition_cache = Hash.new do |ht, set|
-        ht[set] = set.set_code.downcase == @arg.downcase || text_query_match?(set.set_name, @arg)
+        ht[set] = set.match_set?(@arg)
       end
     when :format, :legal, :banned, :restricted
       @arg = @arg.downcase
@@ -71,8 +77,7 @@ class Condition
     @edition_cache[card.set]
   end
   def match_block?(card)
-    return false unless card.block_code and card.block_name
-    card.block_code.downcase == arg.downcase or text_query_match?(card.block_name, arg)
+    @block_cache[card.set]
   end
   def match_types?(card)
     @arg.all?{|type|
