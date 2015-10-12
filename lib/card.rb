@@ -5,39 +5,34 @@ require "date"
 class Card
   attr_reader :data, :printings
   attr_writer :printings # For db subset
+
+  attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
+  attr_reader :partial_color_identity, :legality, :cmc, :text, :power, :toughness, :loyalty
   def initialize(data)
     @data = data
     @printings = []
-  end
 
-  def name
-    @data["name"].gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
-  end
-
-  def names
-    @data["names"]
-  end
-
-  def layout
-    @data["layout"]
-  end
-
-  def colors
-    @data["colors"] || []
-  end
-
-  def mana_cost
-    @data["manaCost"] ? @data["manaCost"].downcase : nil
-  end
-
-  def reserved
-    @data["reserved"] || false
+    @name = normalize_name(@data["name"])
+    @names = @data["names"] &&  @data["names"].map{|n| normalize_name(n)}
+    @layout = @data["layout"]
+    @colors = @data["colors"] || []
+    @text = (@data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü\u2212", "Aaaaaeeeioouuu-").gsub(/\([^\(\)]*\)/, "")
+    @mana_cost = @data["manaCost"] ? @data["manaCost"].downcase : nil
+    @reserved = @data["reserved"] || false
+    @types = ["types", "subtypes", "supertypes"].map{|t| @data[t] || []}.flatten.map(&:downcase)
+    @legality = @data["legalities"]
+    @cmc = @data["cmc"] || 0
+    # Normalize unicode, remove remainder text
+    @power = @data["power"] ? smart_convert_powtou(@data["power"]) : nil
+    @toughness = @data["toughness"] ? smart_convert_powtou(@data["toughness"]) : nil
+    @loyalty = @data["loyalty"] ?  @data["loyalty"].to_i : nil
+    @partial_color_identity = calculate_partial_color_identity
   end
 
   attr_writer :color_identity
   def color_identity
     @color_identity ||= begin
-      return partial_color_identity unless @data["names"]
+      return partial_color_identity unless @names
       raise "Multi-part cards need to have CI set by database"
     end
   end
@@ -46,7 +41,57 @@ class Card
     !!@data["names"]
   end
 
-  def partial_color_identity
+  def typeline
+    tl = [@data["supertypes"], @data["types"]].compact.flatten.join(" ")
+    if data["subtypes"]
+      tl += " - #{data["subtypes"].join(" ")}"
+    end
+    tl
+  end
+
+  def inspect
+    "Card(#{name})"
+  end
+
+  include Comparable
+  def <=>(other)
+    name <=> other.name
+  end
+
+  def to_s
+    inspect
+  end
+
+  private
+
+  def normalize_name(name)
+    name.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
+  end
+
+  def smart_convert_powtou(val)
+    if val !~ /\A-?[\d.]+\z/
+      # It just so happens that "2+*" > "1+*" > "*" asciibetically
+      # so we don't do any extra conversions,
+      # but we might need to setup some eventually
+      #
+      # Including uncards
+      # "*" < "*²" < "1+*" < "2+*"
+      # but let's not get anywhere near that
+      case val
+      when "*", "*²", "1+*", "2+*", "7-*"
+        val
+      else
+        require 'pry'; binding.pry
+        raise "Unrecognized value #{val}"
+      end
+    elsif val.to_i == val.to_f
+      val.to_i
+    else
+      val.to_f
+    end
+  end
+
+  def calculate_partial_color_identity
     ci = colors.dup
     text.scan(/{(.*?)}/).each do |sym,|
       case sym.downcase
@@ -79,82 +124,5 @@ class Card
       ci << tci if tci
     end
     ci.uniq
-  end
-
-  def types
-    ["types", "subtypes", "supertypes"].map{|t| @data[t] || []}.flatten.map(&:downcase)
-  end
-
-  def typeline
-    tl = [@data["supertypes"], @data["types"]].compact.flatten.join(" ")
-    if data["subtypes"]
-      tl += " - #{data["subtypes"].join(" ")}"
-    end
-    tl
-  end
-
-  def legality(format)
-    format = format.downcase
-    format = "commander" if format == "edh"
-    @data["legalities"][format]
-  end
-
-  def cmc
-    @data["cmc"] || 0
-  end
-
-  # Normalize unicode, remove remainder text
-  def text
-    text = (@data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü\u2212", "Aaaaaeeeioouuu-")
-    text.gsub(/\([^\(\)]*\)/, "")
-  end
-
-  def power
-    @data["power"] ? smart_convert_powtou(@data["power"]) : nil
-  end
-
-  def toughness
-    @data["toughness"] ? smart_convert_powtou(@data["toughness"]) : nil
-  end
-
-  def loyalty
-    @data["loyalty"] ?  @data["loyalty"].to_i : nil
-  end
-
-  def inspect
-    "Card(#{name})"
-  end
-
-  include Comparable
-  def <=>(other)
-    name <=> other.name
-  end
-
-  def to_s
-    inspect
-  end
-
-  private
-
-  def smart_convert_powtou(val)
-    if val !~ /\A-?[\d.]+\z/
-      # It just so happens that "2+*" > "1+*" > "*" asciibetically
-      # so we don't do any extra conversions,
-      # but we might need to setup some eventually
-      #
-      # Including uncards
-      # "*" < "*²" < "1+*" < "2+*"
-      # but let's not get anywhere near that
-      case val
-      when "*", "*²", "1+*", "2+*"
-        val
-      else
-        raise "Unrecognized value #{val}"
-      end
-    elsif val.to_i == val.to_f
-      val.to_i
-    else
-      val.to_f
-    end
   end
 end

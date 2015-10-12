@@ -26,11 +26,7 @@ class CardPrinting
   end
 
   def watermark
-    if @data["watermark"]
-      @data["watermark"].downcase
-    else
-      nil
-    end
+    @data["watermark"] && @data["watermark"].downcase
   end
 
   def artist
@@ -70,20 +66,22 @@ class CardPrinting
   end
 
   def frame
-    # Each promo needs to be manually checked
-    old_border_sets = %w"al be an un ced cedi drc aq rv lg dk mbp fe dcilm 4e ia ch hl ai arena uqc mr mgbc itp vi 5e pot po wl ptc tp sh po2 jr ex ug apac us at ul 6e p3k ud st guru wrl wotc mm br sus fnmp euro ne st2k pr bd in ps 7e mprp ap od dm tr ju on le sc rep tsts"
+    @frame ||= begin
+      # Each promo needs to be manually checked
+      old_border_sets = %w"al be an un ced cedi drc aq rv lg dk mbp fe dcilm 4e ia ch hl ai arena uqc mr mgbc itp vi 5e pot po wl ptc tp sh po2 jr ex ug apac us at ul 6e p3k ud st guru wrl wotc mm br sus fnmp euro ne st2k pr bd in ps 7e mprp ap od dm tr ju on le sc rep tsts"
 
-    if timeshifted and set_code == "fut"
-      "future"
-    elsif old_border_sets.include?(set_code)
-      "old"
-    else
-      "new"
+      if timeshifted and set_code == "fut"
+        "future"
+      elsif old_border_sets.include?(set_code)
+        "old"
+      else
+        "new"
+      end
     end
   end
 
-  def method_missing(m, *args)
-    @card.send(m, *args)
+  def method_missing(m)
+    @card.send(m)
   end
 
   include Comparable
