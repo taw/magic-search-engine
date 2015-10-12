@@ -86,6 +86,8 @@ private
         tokens << [:not]
       elsif s.scan(/other:/)
         tokens << [:other]
+      elsif s.scan(/part:/)
+        tokens << [:part]
       elsif s.scan(/([^-!<>=:"\s][^!<>=:"\s]*)(?=\s|$)/i)
         # Veil-Cursed and similar silliness
         words = s[1].split("-")
@@ -174,22 +176,13 @@ private
       subquery
     when :close
       return
-    when :not
-      @tokens.shift
+    when :not, :other, :part
+      tok, = @tokens.shift
       cond = parse_cond
       if cond
-        Condition.new(:not, cond)
+        Condition.new(tok, cond)
       else
         # Parse error like "-)" or final "-"
-        nil
-      end
-    when :other
-      @tokens.shift
-      cond = parse_cond
-      if cond
-        Condition.new(:other, cond)
-      else
-        # Parse error like "other:)" or final "other:"
         nil
       end
     when :or
