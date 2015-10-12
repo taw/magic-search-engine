@@ -23,7 +23,7 @@ class Condition
         card.types.include?(type)
       }
     when :exact
-      normalize_name(card.name) == normalize_name(arg)
+      match_exact?(card, arg)
     when :word
       normalize_name(card.name).include?(normalize_name(arg))
     when :flavor
@@ -89,6 +89,17 @@ class Condition
   end
 
   private
+
+  def match_exact?(card, query_name)
+    if query_name =~ %r[&|/]
+      return false unless card.names
+      query_parts = query_name.split(%r[(?:&|/)+]).map{|n| normalize_name(n)}
+      card_parts  = card.names.map{|n| normalize_name(n)}
+      (query_parts - card_parts).empty?
+    else
+      normalize_name(card.name) == normalize_name(query_name)
+    end
+  end
 
   def text_query_match?(text, query)
     normalize_name(text).include?(normalize_name(query))

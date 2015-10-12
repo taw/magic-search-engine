@@ -72,4 +72,9 @@ class CardDatabaseUnsetsTest < Minitest::Test
     assert_search_results "mana>=xyz", "The Ultimate Nightmare of Wizards of the Coast® Customer Service"
     assert_search_results "mana>={x}{z}", "The Ultimate Nightmare of Wizards of the Coast® Customer Service"
   end
+
+  def test_split_slash_slash_bang
+    assert_search_results "!When / Where // What && Why", "Who", "What", "When", "Where", "Why"
+    assert_search_results "!When // Where // Whatever"
+  end
 end
