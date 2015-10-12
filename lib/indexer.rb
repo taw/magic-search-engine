@@ -88,6 +88,9 @@ class Indexer
             "supertypes",
             "cmc",
             "layout",
+            "reserved",
+            "hand", # vanguard
+            "life", # vanguard
         ).merge(
           "printings" => [],
           "legalities" => format_legalities(card_data["legalities"]),
