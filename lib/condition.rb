@@ -75,6 +75,8 @@ class Condition
       card.others and card.others.any?{|c| arg.match?(c)}
     when :part
       card.others and (arg.match?(card) or card.others.any?{|c| arg.match?(c)})
+    when :is_reserved
+      card.reserved
     else
       warn "Query error: #{cond} #{arg}"
       false

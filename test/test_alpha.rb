@@ -12,4 +12,9 @@ class CardDatabaseAlphaTest < Minitest::Test
     assert_search_equal "e:al f:vintage", "e:al -banned:vintage"
     assert_search_equal "e:al f:modern", "e:al legal:modern"
   end
+
+  def test_reserved
+    assert_search_include "is:reserved", "Black Lotus"
+    assert_search_include "not:reserved", "Shivan Dragon"
+  end
 end

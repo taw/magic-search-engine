@@ -30,6 +30,10 @@ class Card
     @data["manaCost"] ? @data["manaCost"].downcase : nil
   end
 
+  def reserved
+    @data["reserved"] || false
+  end
+
   attr_writer :color_identity
   def color_identity
     @color_identity ||= begin
