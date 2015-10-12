@@ -1,9 +1,34 @@
+# This class is just asking to be turned into a class hierarchy
 class Condition
   attr_reader :cond, :arg
   def initialize(cond, arg)
     @cond = cond
     @msg  = :"match_#{cond}?"
     @arg = arg
+    case @cond
+    when :colors, :colors_exclusive
+      @colors_query = @arg.downcase.chars
+      @colors_c = @colors_query.include?("c")
+      @colors_l = @colors_query.include?("l")
+      @colors_m = @colors_query.include?("m")
+      @colors_query_actual_colors = @colors_query - ["l", "c", "m"]
+    when :color_identity
+      # Ignore "m"/"l" in query
+      # Treat "cr" as "c"
+      @commander_ci = @arg.gsub(/ml/, "").chars.uniq
+    when :mana
+      @op, mana = *arg
+      @query_mana = parse_query_mana(mana.downcase)
+    when :artist, :flavor, :rarity
+      @arg = @arg.downcase
+    when :edition
+      @edition_cache = Hash.new do |ht, set|
+        ht[set] = set.set_code.downcase == @arg.downcase || text_query_match?(set.set_name, @arg)
+      end
+    when :format, :legal, :banned, :restricted
+      @arg = @arg.downcase
+      @arg = "commander" if @arg == "edh"
+    end
   end
 
   def match?(card)
@@ -14,50 +39,28 @@ class Condition
   # This seems to be the logic as implemented
   def match_colors?(card)
     card_colors = card.colors
-    colors_query = @arg.downcase.chars
-
-    if colors_query.include?("c")
-      return true if card_colors.size == 0 and not card.types.include?("land")
-    end
-    if colors_query.include?("l")
-      # Dryad Arbor is not c:l
-      return true if card_colors.size == 0 and card.types.include?("land")
-    end
-    if colors_query.include?("m")
-      return false if card_colors.size <= 1
-    end
-    colors_query_actual_colors = colors_query - ["l", "c", "m"]
-    if colors_query.include?("m") and colors_query_actual_colors == []
-      return true
-    end
-
-    colors_query_actual_colors.any? do |q|
-      case q
-      when /\A[wubrg]\z/
-        card_colors.include?(q)
-      else
-        raise "Unknown color: #{q}"
-      end
+    return true if @colors_c and card_colors.size == 0 and not card.types.include?("land")
+    # Dryad Arbor is not c:l
+    return true if @colors_l and card_colors.size == 0 and card.types.include?("land")
+    return false if @colors_m and card_colors.size <= 1
+    return true if @colors_m and @colors_query_actual_colors.empty?
+    @colors_query_actual_colors.any? do |q|
+      raise "Unknown color: #{q}" unless q =~ /\A[wubrg]\z/
+      card_colors.include?(q)
     end
   end
   def match_colors_exclusive?(card)
-    return false unless match_colors?(card)
-    colors_query = arg.downcase
-    (card.colors - colors_query.chars).empty?
+    match_colors?(card) and (card.colors - @colors_query).empty?
   end
   def match_color_identity?(card)
-    colors = arg.downcase
-    # Ignore "m"/"l" in query
-    # Treat "cr" as "c"
-    commander_ci = colors.gsub(/ml/, "").chars.uniq
     card_ci  = card.color_identity
-    return card_ci == [] if commander_ci.include?("c")
+    return card_ci == [] if @commander_ci.include?("c")
     card_ci.all? do |color|
-      commander_ci.include?(color)
+      @commander_ci.include?(color)
     end
   end
   def match_edition?(card)
-    card.set_code.downcase == arg.downcase or text_query_match?(card.set_name, arg)
+    @edition_cache[card.set]
   end
   def match_block?(card)
     return false unless card.block_code and card.block_name
@@ -83,28 +86,29 @@ class Condition
     normalize_name(card.name).include?(normalize_name(arg))
   end
   def match_flavor?(card)
-    card.flavor.downcase.include?(arg.downcase)
+    card.flavor.downcase.include?(@arg)
   end
   def match_artist?(card)
-    card.artist.downcase.include?(arg.downcase)
+    card.artist.downcase.include?(@arg)
   end
   def match_oracle?(card)
-    normalize_text(card.text).include?(normalize_text(arg.gsub("~", card.name)))
+    normalize_text(card.text).include?(normalize_text(@arg.gsub("~", card.name)))
   end
   def match_format?(card)
-    ["legal", "restricted"].include?(card.legality(arg))
+    legality = card.legality[@arg]
+    legality == "legal" or legality == "restricted"
   end
   def match_banned?(card)
-    card.legality(arg) == "banned"
+    card.legality[@arg] == "banned"
   end
   def match_restricted?(card)
-    card.legality(arg) == "restricted"
+    card.legality[@arg] == "restricted"
   end
   def match_legal?(card)
-    card.legality(arg) == "legal"
+    card.legality[@arg] == "legal"
   end
   def match_rarity?(card)
-    card.rarity == arg.downcase
+    card.rarity == @arg
   end
   def match_expr?(card)
     a, op, b = *arg
@@ -146,7 +150,7 @@ class Condition
     (card.types & ["instant", "sorcery"]).empty?
   end
   def match_is_spell?(card)
-    (card.types & ["land"]).empty?
+    not card.types.include?("land")
   end
   def match_is_funny?(card)
     # There are some one off funny cards elsewhere
@@ -165,12 +169,10 @@ class Condition
     card.watermark == arg
   end
   def match_mana?(card)
-    op, mana = *arg
-    query_mana = parse_query_mana(mana.downcase)
     card_mana = parse_card_mana(card.mana_cost)
     return false unless card_mana
-    cmps = (card_mana.keys | query_mana.keys).map{|color| [card_mana[color], query_mana[color]]}
-    case op
+    cmps = (card_mana.keys | @query_mana.keys).map{|color| [card_mana[color], @query_mana[color]]}
+    case @op
     when ">="
       cmps.all?{|a,b| a>=b}
     when ">"
