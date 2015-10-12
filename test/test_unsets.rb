@@ -57,4 +57,14 @@ class CardDatabaseUnsetsTest < Minitest::Test
     assert_count_results "e:uh,ug", 227
     assert_count_results "e:uh,ug -e:ug+ug", 222
   end
+
+  def test_other
+    assert_search_results "other:c:g", "What", "Who", "When", "Where"
+    # Any other has cmc != 4
+    assert_search_results "other:-cmc=4", "Who", "What", "When", "Where", "Why"
+    # Doesn't have other side with cmc=4
+    # This includes Where (cmc=4) and all single-sided cards
+    assert_search_include "-other:cmc=4", "Where", "Chicken Egg"
+    assert_search_exclude "-other:cmc=4", "What", "Who", "Why", "When"
+  end
 end

@@ -153,4 +153,12 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_results "o:extort ci:b", "Basilica Screecher", "Crypt Ghast", "Pontiff of Blight", "Syndicate Enforcer", "Thrull Parasite"
     assert_search_results "o:extort ci:bw -ci:w -ci:b", "Kingpin's Pet", "Tithe Drinker", "Treasury Thrull", "Vizkopa Confessor"
   end
+
+  def test_other
+    assert_search_results "cmc=2 other: cmc=1", "Wear"
+    assert_search_results "other:(mana=w)", "Alive", "Wear"
+    assert_search_results "other:other:(cmc=1)", "Tear", "Well"
+    assert_search_results "c:b other:c:b", "Breaking", "Entering"
+    assert_search_results "c:b other:-c:b", "Away", "Down", "Flesh", "Loss", "Toil", "Willing"
+  end
 end

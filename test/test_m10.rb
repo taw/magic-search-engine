@@ -34,7 +34,7 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_include "c:u", "Ponder"
     assert_search_include "c!u", "Ponder"
     assert_search_include "c:ub", "Ponder"
-    assert_search_include "c:ucm", "Ponder"
+    assert_search_exclude "c:ucm", "Ponder" # Seriously?
     assert_search_include "c:c", "Howling Mine"
     assert_search_exclude "c:g", "Ponder"
     assert_search_include "c!bu", "Ponder"
