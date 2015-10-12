@@ -67,4 +67,9 @@ class CardDatabaseUnsetsTest < Minitest::Test
     assert_search_include "-other:cmc=4", "Where", "Chicken Egg"
     assert_search_exclude "-other:cmc=4", "What", "Who", "Why", "When"
   end
+
+  def test_mana_xyz
+    assert_search_results "mana>=xyz", "The Ultimate Nightmare of Wizards of the Coast® Customer Service"
+    assert_search_results "mana>={x}{z}", "The Ultimate Nightmare of Wizards of the Coast® Customer Service"
+  end
 end

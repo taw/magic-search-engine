@@ -141,7 +141,7 @@ class CardDatabaseRTRTest < Minitest::Test
 
   # {u/g} and {u} don't compare
   def test_mana
-    assert_search_results "e:gtc mana=u", "Cloudfin Raptor", "Gridlock", "Rapid Hybridization", "Realmwright"
+    assert_search_results "e:gtc mana=u", "Cloudfin Raptor", "Rapid Hybridization", "Realmwright"
     assert_search_results "e:gtc mana={UG}", "Bioshift"
     assert_search_results "e:gtc mana={u/g}", "Bioshift"
     assert_search_results "e:gtc mana={G/U}", "Bioshift"

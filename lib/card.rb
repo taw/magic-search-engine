@@ -136,10 +136,12 @@ class Card
     if val !~ /\A-?[\d.]+\z/
       # It just so happens that "1+*" > "*" asciibetically so we don't do any extra conversions,
       # but we might need to setup some eventually
+      #
+      # Including uncards
+      # "*" > "*²" > "1+*"
+      # but let's not get anywhere near that
       case val
-      when "*"
-        val
-      when "1+*"
+      when "*", "*²", "1+*"
         val
       else
         raise "Unrecognized value #{val}"

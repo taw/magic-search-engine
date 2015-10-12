@@ -119,7 +119,7 @@ class Condition
 
   def parse_query_mana(mana)
     pool = Hash.new(0)
-    mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrg])/) do
+    mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrgxyz])/) do
       if $1
         pool[normalize_mana_symbol($1)] += 1
       elsif $2
@@ -142,12 +142,11 @@ class Condition
       case m
       when /\A\d+\z/
         pool["c"] += m.to_i
-      when /\A[wubrg]\z/
+      when /\A[wubrgxyz]\z/
+        # x is basically a color for this kind of queries
         pool[m] += 1
       when /\Ah([wubrg])\z/
         pool[$1] += 0.5
-      when "x", "y", "z"
-        # ignore
       when /\A([wubrg])\/([wubrg])\z/
         pool[normalize_mana_symbol(m)] += 1
       when /\A([wubrg])\/p\z/

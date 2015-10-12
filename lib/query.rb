@@ -60,7 +60,7 @@ private
         tokens << [:rarity, s[1].downcase]
       elsif s.scan(/(pow|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow|tou|cmc|loyalty|year|-?\d+\.\d+|-?\.\d+|-?\d*½|-?\d+)\b/i)
         tokens << [:expr, [s[1], s[2], s[3]]]
-      elsif s.scan(/mana\s*(>=|>|<=|<|=)\s*((?:[\dwubrg]|\{.*?\})+)/i)
+      elsif s.scan(/mana\s*(>=|>|<=|<|=)\s*((?:[\dwubrgxyz]|\{.*?\})+)/i)
         tokens << [:mana, [s[1], s[2]]]
       elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted)\b/i)
         tokens << [:not] if s[1].downcase == "not"
