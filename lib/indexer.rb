@@ -1,3 +1,5 @@
+require_relative "card_legality"
+
 # ActiveRecord FTW
 class Hash
   def slice(*keys)
@@ -64,10 +66,17 @@ class Indexer
   def prepare_index(*set_filter)
     sets = {}
     cards = {}
+    legalities = {}
+    sets_code_translator = {}
 
     @data.each do |set_code, set_data|
+      sets_code_translator[set_code] = set_data["magicCardsInfoCode"] || set_data["code"].downcase
+    end
+
+    @data.each do |set_code, set_data|
+      set_code = sets_code_translator[set_code]
       next unless set_filter.empty? or set_filter.include?(set_code)
-      set_code = set_data["magicCardsInfoCode"] || set_data["code"]
+
       block = MagicBlocks.find{|c,n,*xx| xx.include?(set_code)} || []
       sets[set_code] = {
         "set_code" => set_code,
@@ -77,8 +86,19 @@ class Indexer
         "border" => set_data["border"],
         "releaseDate" => format_release_date(set_data["releaseDate"]),
       }.compact
+
       set_data["cards"].each do |card_data|
         name = card_data["name"]
+
+        sets_printed = card_data["printings"].map{|set_code| sets_code_translator[set_code]}
+        mtgjson_legalities = format_legalities(card_data)
+        algorithm_legalities = CardLegality.new(name, sets_printed, card_data["layout"]).legality
+
+        if mtgjson_legalities != algorithm_legalities
+          puts "#{match ? ' OK ' : 'FAIL' } #{name} #{mtgjson_legalities.sort.inspect} #{algorithm_legalities.sort.inspect}"
+          require 'pry'; binding.pry
+        end
+
         card = cards[name] ||= card_data.slice(
             "name",
             "names",
@@ -97,7 +117,7 @@ class Indexer
             "life", # vanguard
         ).merge(
           "printings" => [],
-          "legalities" => format_legalities(card_data["legalities"]),
+          "legalities" => mtgjson_legalities,
           "colors" => format_colors(card_data["colors"]),
         ).compact
         card["printings"] << [
@@ -145,8 +165,18 @@ class Indexer
     end
   end
 
-  def format_legalities(legalities)
-    Hash[(legalities||[]).map{|leg| [leg["format"].downcase, leg["legality"].downcase]}]
+  def format_legalities(card_data)
+    legalities = card_data["legalities"]
+    return {} if card_data["layout"] == "token"
+    Hash[
+      (legalities||[])
+      .map{|leg|
+        [leg["format"].downcase, leg["legality"].downcase]
+      }
+      .reject{|fmt, leg|
+        ["classic", "prismatic", "singleton 100", "freeform", "tribal wars legacy", "tribal wars standard"].include?(fmt)
+      }
+    ]
   end
 
   def format_colors(colors)
