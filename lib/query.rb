@@ -32,7 +32,7 @@ private
         tokens << [:open]
       elsif s.scan(/\)/)
         tokens << [:close]
-      elsif s.scan(/t:(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/t:(?:"(.*?)"|([’'\-\u2212\w]+))/i)
         tokens << [:types, s[1] || s[2]]
       elsif s.scan(/ft:(?:"(.*?)"|(\w+))/i)
         tokens << [:flavor, s[1] || s[2]]
