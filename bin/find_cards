@@ -8,15 +8,56 @@ class FindCards
     @db = CardDatabase.load(json_path)
   end
 
-  def run!(*query)
+  def print_results!(results)
+    cards = {}
+    results.each do |card_printing|
+      (cards[card_printing.name] ||= []) << card_printing
+    end
+    cards.each do |card_name, printings|
+      card = printings[0].card
+      match_codes = printings.map(&:set_code).sort.join(" ")
+      fail_printings = card.printings - printings
+      fail_codes = fail_printings.map(&:set_code).sort.join(" ")
+
+      puts "#{card.name} #{card.mana_cost}"
+
+      if fail_codes == ""
+        puts "[+#{match_codes}]"
+      else
+        puts "[+#{match_codes}] [-#{fail_codes}]"
+      end
+      puts card.typeline
+      puts "#{card.text}" if card.text != ""
+      puts "#{card.power}/#{card.toughness}" if card.power
+      puts "Loyalty: #{card.loyalty}" if card.loyalty
+
+      puts ""
+    end
+
+  end
+
+  def run!(verbose, *query)
     query = query.join(" ")
-    puts @db.search(query).map(&:name).uniq
+    results = @db.search(query)
+    if verbose
+      print_results!(results)
+    else
+      puts results.map(&:name).uniq
+    end
   end
 end
 
+# If it gets any more complex than this, just use trollop
+if ARGV[0] == "-v"
+  ARGV.shift
+  verbose = true
+else
+  verbose = false
+end
+
 if ARGV.size == 0
-  STDERR.puts "Usage: #{$0} <query>"
+  STDERR.puts "Usage: #{$0} [-v] <query>"
   exit 1
 end
 
-FindCards.new.run!(*ARGV)
+FindCards.new.run!(verbose, *ARGV)
