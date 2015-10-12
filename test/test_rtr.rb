@@ -88,13 +88,6 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_equal "e:dgm", "e:maze"
   end
 
-  def test_block
-    assert_search_equal "e:rtr OR e:gtc OR e:dgm", "b:rtr"
-    assert_search_equal "e:rtr OR e:gtc OR e:dgm", 'b:"Return to Ravnica"'
-    assert_search_results "b:Innistrad"
-    # assert_equal "this test is any good", false, "Doesn't really do anything yet, everything is same block"
-  end
-
   def test_split_cards
     assert_search_exclude "is:split", "Rubblebelt Raiders"
     assert_search_include "is:split", "Alive", "Well"
