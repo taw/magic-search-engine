@@ -38,7 +38,7 @@ class Condition
   # c: system is rather illogical
   # This seems to be the logic as implemented
   def match_colors?(card)
-    card_colors = card.colors
+    card_colors = card.colors.chars
     return true if @colors_c and card_colors.size == 0 and not card.types.include?("land")
     # Dryad Arbor is not c:l
     return true if @colors_l and card_colors.size == 0 and card.types.include?("land")
@@ -50,10 +50,10 @@ class Condition
     end
   end
   def match_colors_exclusive?(card)
-    match_colors?(card) and (card.colors - @colors_query).empty?
+    match_colors?(card) and (card.colors.chars - @colors_query).empty?
   end
   def match_color_identity?(card)
-    card_ci  = card.color_identity
+    card_ci  = card.color_identity.chars
     return card_ci == [] if @commander_ci.include?("c")
     card_ci.all? do |color|
       @commander_ci.include?(color)
