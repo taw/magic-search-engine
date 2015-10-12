@@ -81,6 +81,14 @@ class Card
     ["types", "subtypes", "supertypes"].map{|t| @data[t] || []}.flatten.map(&:downcase)
   end
 
+  def typeline
+    tl = [@data["supertypes"], @data["types"]].compact.flatten.join(" ")
+    if data["subtypes"]
+      tl += " - #{data["subtypes"].join(" ")}"
+    end
+    tl
+  end
+
   def legality(format)
     format = format.downcase
     format = "commander" if format == "edh"
@@ -98,15 +106,15 @@ class Card
   end
 
   def power
-    @data["power"] ?  @data["power"].to_f : nil
+    @data["power"] ?  to_i_or_f(@data["power"]) : nil
   end
 
   def toughness
-    @data["toughness"] ?  @data["toughness"].to_f : nil
+    @data["toughness"] ? to_i_or_f(@data["toughness"]) : nil
   end
 
   def loyalty
-    @data["loyalty"] ?  @data["loyalty"].to_f : nil
+    @data["loyalty"] ?  @data["loyalty"].to_i : nil
   end
 
   def inspect
@@ -120,5 +128,15 @@ class Card
 
   def to_s
     inspect
+  end
+
+  private
+
+  def to_i_or_f(val)
+    if val.to_i == val.to_f
+      val.to_i
+    else
+      val.to_f
+    end
   end
 end
