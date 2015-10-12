@@ -165,4 +165,8 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_results "c:b other:c:b", "Breaking", "Entering"
     assert_search_results "c:b other:-c:b", "Away", "Down", "Flesh", "Loss", "Toil", "Willing"
   end
+
+  def test_ability_word
+    assert_search_include "o:bloodrush", "Ghor-Clan Rampager"
+  end
 end
