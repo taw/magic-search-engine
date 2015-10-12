@@ -134,14 +134,15 @@ class Card
 
   def smart_convert_powtou(val)
     if val !~ /\A-?[\d.]+\z/
-      # It just so happens that "1+*" > "*" asciibetically so we don't do any extra conversions,
+      # It just so happens that "2+*" > "1+*" > "*" asciibetically
+      # so we don't do any extra conversions,
       # but we might need to setup some eventually
       #
       # Including uncards
-      # "*" > "*²" > "1+*"
+      # "*" < "*²" < "1+*" < "2+*"
       # but let's not get anywhere near that
       case val
-      when "*", "*²", "1+*"
+      when "*", "*²", "1+*", "2+*"
         val
       else
         raise "Unrecognized value #{val}"
