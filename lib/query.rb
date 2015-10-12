@@ -36,7 +36,7 @@ private
         tokens << [:types, s[1] || s[2]]
       elsif s.scan(/ft:(?:"(.*?)"|(\w+))/i)
         tokens << [:flavor, s[1] || s[2]]
-      elsif s.scan(/o:(?:"(.*?)"|([\w\{\}]+))/i)
+      elsif s.scan(/o:(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:oracle, s[1] || s[2]]
       elsif s.scan(/a:(?:"(.*?)"|(\w+))/i)
         tokens << [:artist, s[1] || s[2]]

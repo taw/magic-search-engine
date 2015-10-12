@@ -188,11 +188,19 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_results "e:m10 r:rare ci:c", "Coat of Arms", "Howling Mine", "Magebane Armor", "Mirror of Fate", "Pithing Needle", "Gargoyle Castle"
   end
 
-
   def test_loyalty
     assert_search_results "loyalty=5", "Liliana Vess"
     assert_search_results "loyalty>cmc", "Chandra Nalaar"
     assert_search_results "loyalty<=4", "Ajani Goldmane", "Garruk Wildspeaker", "Jace Beleren"
+  end
+
+  def test_unicode_hyphen
+    ascii_hyphen = "-"
+    unicode_hyphen = "\u2212"
+    assert_search_results %Q[o:"#{ascii_hyphen}2"],  "Liliana Vess", "Weakness"
+    assert_search_results %Q[o:"#{unicode_hyphen}2"], "Liliana Vess", "Weakness"
+    assert_search_results %Q[o:#{ascii_hyphen}2],  "Liliana Vess", "Weakness"
+    assert_search_results %Q[o:#{unicode_hyphen}2], "Liliana Vess", "Weakness"
   end
 
   def test_mana

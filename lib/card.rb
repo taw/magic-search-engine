@@ -101,7 +101,7 @@ class Card
 
   # Normalize unicode, remove remainder text
   def text
-    text = (@data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
+    text = (@data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü\u2212", "Aaaaaeeeioouuu-")
     text.gsub(/\([^\(\)]*\)/, "")
   end
 

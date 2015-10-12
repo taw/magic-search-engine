@@ -31,7 +31,7 @@ class Condition
     when :artist
       card.artist.downcase.include?(arg.downcase)
     when :oracle
-      card.text.downcase.include?(arg.gsub("~", card.name).downcase)
+      normalize_text(card.text).include?(normalize_text(arg.gsub("~", card.name)))
     when :format
       ["legal", "restricted"].include?(card.legality(arg))
     when :banned
@@ -92,8 +92,12 @@ class Condition
     normalize_name(text).include?(normalize_name(query))
   end
 
+  def normalize_text(text)
+    text.downcase.gsub(/[Ææ]/, "ae").tr("Äàáâäèéêíõöúûü\u2212", "Aaaaaeeeioouuu-").strip
+  end
+
   def normalize_name(name)
-    name.downcase.gsub(/[Ææ]/, "ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu").strip.split.join(" ")
+    normalize_text(name).split.join(" ")
   end
 
   def match_mana?(card, op, mana)
