@@ -73,6 +73,8 @@ class Condition
       match_mana?(card, *arg)
     when :other
       card.others and card.others.any?{|c| arg.match?(c)}
+    when :part
+      card.others and (arg.match?(card) or card.others.any?{|c| arg.match?(c)})
     else
       warn "Query error: #{cond} #{arg}"
       false
