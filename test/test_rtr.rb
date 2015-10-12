@@ -139,8 +139,13 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_exclude "watermark:gruul", "Aurelia, the Warleader"
   end
 
+  # {u/g} and {u} don't compare
   def test_mana
-    assert_search_results "e:gtc mana=u", "Bioshift", "Cloudfin Raptor", "Gridlock", "Rapid Hybridization", "Realmwright"
+    assert_search_results "e:gtc mana=u", "Cloudfin Raptor", "Gridlock", "Rapid Hybridization", "Realmwright"
+    assert_search_results "e:gtc mana={UG}", "Bioshift"
+    assert_search_results "e:gtc mana={u/g}", "Bioshift"
+    assert_search_results "e:gtc mana={G/U}", "Bioshift"
+    assert_search_results "e:gtc mana={gu}", "Bioshift"
   end
 
   def test_extort_reminder_text_does_not_affect_ci

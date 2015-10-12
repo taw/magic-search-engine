@@ -7,6 +7,7 @@ class CardDatabaseNewPhyrexiaTest < Minitest::Test
 
   def test_phyrexian_mana
     assert_search_results "mana>=3{GP}", "Birthing Pod", "Thundering Tanadon"
+    assert_search_results "mana>=3{p/g}", "Birthing Pod", "Thundering Tanadon"
   end
 
   def test_watermark
