@@ -2,7 +2,7 @@ require_relative "test_helper"
 
 class CardDatabaseFNMTest < Minitest::Test
   def setup
-    @db = CardDatabase.new(Pathname(__dir__) + "index/fnm.json")
+    @db = load_database("fnmp")
   end
 
   def test_year

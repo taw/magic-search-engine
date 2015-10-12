@@ -2,11 +2,12 @@ require_relative "test_helper"
 
 class CardDatabaseM10Test < Minitest::Test
   def setup
-    @db = CardDatabase.new(Pathname(__dir__) + "index/m10.json")
+    @db = load_database("m10")
   end
 
   def test_db_loads_and_contains_sets
-    assert_equal 249, @db.cards.size
+    assert_equal 234, @db.cards.size
+    assert_equal 249, @db.printings.size
   end
 
   def test_search_full_name

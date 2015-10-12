@@ -2,7 +2,7 @@ require_relative "test_helper"
 
 class CardDatabaseTimeSpiralTest < Minitest::Test
   def setup
-    @db = CardDatabase.new(Pathname(__dir__) + "index/time_spiral_block.json")
+    @db = load_database("ts", "tsts", "pc", "fut")
   end
 
   def test_is_future

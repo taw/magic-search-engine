@@ -2,7 +2,7 @@ require_relative "test_helper"
 
 class CardDatabaseInnistradTest < Minitest::Test
   def setup
-    @db = CardDatabase.new(Pathname(__dir__) + "index/isd.json")
+    @db = load_database("isd", "dka")
   end
 
   def test_dfg_color_identity_applies_to_both_sides_together

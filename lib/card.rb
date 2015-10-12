@@ -4,6 +4,7 @@ require "date"
 
 class Card
   attr_reader :data, :printings
+  attr_writer :printings # For db subset
   def initialize(data)
     @data = data
     @printings = []
@@ -110,5 +111,14 @@ class Card
 
   def inspect
     "Card(#{name})"
+  end
+
+  include Comparable
+  def <=>(other)
+    name <=> other.name
+  end
+
+  def to_s
+    inspect
   end
 end

@@ -2,7 +2,7 @@ require_relative "test_helper"
 
 class CardDatabaseUnsetsTest < Minitest::Test
   def setup
-    @db = CardDatabase.new(Pathname(__dir__) + "index/unsets.json")
+    @db = load_database("ug", "uh", "uqc")
   end
 
   def test_half_pow
@@ -13,9 +13,8 @@ class CardDatabaseUnsetsTest < Minitest::Test
     assert_search_include "pow<1", "Little Girl"
     assert_search_exclude "pow=1", "Little Girl"
     assert_search_exclude "pow>1", "Little Girl"
-
-    assert_search_include "pow=tou"
-    assert_search_include "pow=cmc"
+    assert_search_include "pow=tou", "Little Girl"
+    assert_search_include "pow=cmc", "Little Girl"
   end
 
   def test_half_tou
@@ -45,7 +44,8 @@ class CardDatabaseUnsetsTest < Minitest::Test
     assert_search_include "not:black-bordered", "Little Girl"
     assert_search_include "not:white-bordered", "Little Girl"
     assert_search_results "not:funny"
-    assert_search_results "not:new", "1996 World Champion", "Fraternal Exaltation", "Proposal", "Robot Chicken", "Shichifukujin Dragon", "Splendid Genesis"
+    assert_search_include "not:new", "1996 World Champion", "Fraternal Exaltation", "Proposal", "Robot Chicken", "Shichifukujin Dragon", "Splendid Genesis"
+    assert_search_equal "not:new", "-e:uh"
     assert_search_results "not:silver-bordered", "Forest", "Mountain", "Swamp", "Plains", "Island", "1996 World Champion", "Fraternal Exaltation", "Proposal", "Robot Chicken", "Shichifukujin Dragon", "Splendid Genesis"
     assert_search_results "is:black-bordered", "Forest", "Mountain", "Swamp", "Plains", "Island", "1996 World Champion", "Fraternal Exaltation", "Proposal", "Robot Chicken", "Shichifukujin Dragon", "Splendid Genesis"
     assert_search_results "is:white-bordered"

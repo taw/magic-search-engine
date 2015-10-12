@@ -2,7 +2,7 @@ require_relative "test_helper"
 
 class CardDatabaseRTRTest < Minitest::Test
   def setup
-    @db = CardDatabase.new(Pathname(__dir__) + "index/rtr_block.json")
+    @db = load_database("rtr", "gtc", "dgm")
   end
 
   def test_boolean

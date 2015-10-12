@@ -2,7 +2,7 @@ require_relative "test_helper"
 
 class CardDatabaseDissentionTest < Minitest::Test
   def setup
-    @db = CardDatabase.new(Pathname(__dir__) + "index/dis.json")
+    @db = load_database("di")
   end
 
   def test_transguild_courier
