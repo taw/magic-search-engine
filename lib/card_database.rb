@@ -78,6 +78,7 @@ class CardDatabase
 
   def load_from_json!(path)
     color_identity_cache = {}
+    multipart_cards = {}
     data = JSON.parse(path.open.read)
     data["sets"].each do |set_code, set_data|
       @sets[set_code] = CardSet.new(set_data)
@@ -93,7 +94,10 @@ class CardDatabase
         warn "Unknown card layout: #{rard_data["layout"]}"
       end
       card = @cards[card_name] = Card.new(card_data.reject{|k,_| k == "printings"})
-      color_identity_cache[card_name] ||= card.partial_color_identity
+      color_identity_cache[card_name] = card.partial_color_identity
+      if card_data["names"]
+        multipart_cards[card_name] = card_data["names"] - [card_name]
+      end
       card_data["printings"].each do |set_code, printing_data|
         card.printings << CardPrinting.new(
           card,
@@ -105,6 +109,17 @@ class CardDatabase
     @cards.each do |card_name, card|
       if card.has_multiple_parts?
         card.color_identity = card.names.map{|n| color_identity_cache[n]}.inject(&:|)
+      end
+    end
+    multipart_cards.each do |card_name, other_names|
+      card = @cards[card_name]
+      other_cards = other_names.map{|name| @cards[name] }
+      card.printings.each do |printing|
+        printing.others = other_cards.map do |other_card|
+          from_same_set = other_card.printings.select{|other_printing| other_printing.set_code == printing.set_code}
+          raise "Can't link other side" unless from_same_set.size == 1
+          from_same_set[0]
+        end
       end
     end
   end

@@ -71,6 +71,8 @@ class Condition
       card.watermark == arg
     when :mana
       match_mana?(card, *arg)
+    when :other
+      card.others and card.others.any?{|c| arg.match?(c)}
     else
       warn "Query error: #{cond} #{arg}"
       false
@@ -163,19 +165,33 @@ class Condition
     sym.downcase.tr("/{}", "").chars.sort.join
   end
 
+  # c: system is rather illogical
+  # This seems to be the logic as implemented
   def match_colors?(card, colors_query)
     card_colors = card.colors
-    colors_query.chars.any? do |q|
+    colors_query = colors_query.chars
+
+    if colors_query.include?("c")
+      return true if card_colors.size == 0 and not card.types.include?("land")
+    end
+    if colors_query.include?("l")
+      # Dryad Arbor is not c:l
+      return true if card_colors.size == 0 and card.types.include?("land")
+    end
+    if colors_query.include?("m")
+      return false if card_colors.size <= 1
+    end
+    colors_query_actual_colors = colors_query - ["l", "c", "m"]
+    if colors_query.include?("m") and colors_query_actual_colors == []
+      return true
+    end
+
+    colors_query_actual_colors.any? do |q|
       case q
       when /\A[wubrg]\z/
         card_colors.include?(q)
-      when "m"
-        card_colors.size >= 2
-      when "c"
-        card_colors.size == 0 and not card.types.include?("land")
-      when "l"
-        # Dryad Arbor is not c:l
-        card_colors.size == 0 and card.types.include?("land")
+      else
+        raise "Unknown color: #{q}"
       end
     end
   end

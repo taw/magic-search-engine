@@ -50,4 +50,11 @@ class CardDatabaseInnistradTest < Minitest::Test
     assert_search_equal "is:dfc", "layout:dfc"
     assert_search_equal "not:dfc", "-layout:dfc"
   end
+
+  def test_other
+    assert_search_results "c!bgm", "Garruk, the Veil-Cursed"
+    assert_search_results "other:c!bgm", "Garruk Relentless"
+    assert_search_results "other:(o:wolf o:token)", "Garruk Relentless", "Garruk, the Veil-Cursed", "Mayor of Avabruck", "Ravager of the Fells"
+    assert_search_results "other:-t:werewolf c:r", "Homicidal Brute"
+  end
 end

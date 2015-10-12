@@ -1,10 +1,12 @@
 class CardPrinting
   attr_reader :card, :set, :date
+  attr_accessor :others
 
   def initialize(card, set, data)
     @card = card
     @set = set
     @data = data
+    @others = nil
   end
 
   def set_code
