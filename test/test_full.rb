@@ -21,4 +21,8 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_results "part:cmc=1 part:cmc=2", "Death", "Life", "Tear", "Wear", "What", "When", "Where", "Who", "Why"
     assert_search_results "part:cmc=0 part:cmc=3 part:c:b", "Chosen of Markov", "Liliana, Defiant Necromancer", "Liliana, Heretical Healer", "Markov's Servant", "Screeching Bat", "Stalking Vampire"
   end
+
+  def test_color_identity
+     assert_search_results "ci:wu t:basic", "Island", "Plains", "Snow-Covered Island", "Snow-Covered Plains"
+   end
 end
