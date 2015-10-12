@@ -28,6 +28,14 @@ class Condition
     when :format, :legal, :banned, :restricted
       @arg = @arg.downcase
       @arg = "commander" if @arg == "edh"
+    when :types
+      @arg = @arg.downcase.tr("’\u2212", "'-").split.map do |type|
+        if type == "urza" # type line stemming ...
+          "urza's"
+        else
+          type
+        end
+      end
     end
   end
 
@@ -67,7 +75,7 @@ class Condition
     card.block_code.downcase == arg.downcase or text_query_match?(card.block_name, arg)
   end
   def match_types?(card)
-    arg.downcase.split.all?{|type|
+    @arg.all?{|type|
       card.types.include?(type)
     }
   end
@@ -208,7 +216,7 @@ class Condition
   end
 
   def normalize_text(text)
-    text.downcase.gsub(/[Ææ]/, "ae").tr("Äàáâäèéêíõöúûü\u2212", "Aaaaaeeeioouuu-").strip
+    text.downcase.gsub(/[Ææ]/, "ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-").strip
   end
 
   def normalize_name(name)
