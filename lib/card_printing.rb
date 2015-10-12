@@ -1,4 +1,6 @@
 class CardPrinting
+  attr_reader :card, :set, :date
+
   def initialize(card, set, data)
     @card = card
     @set = set
@@ -80,5 +82,18 @@ class CardPrinting
 
   def method_missing(m, *args)
     @card.send(m, *args)
+  end
+
+  include Comparable
+  def <=>(other)
+    [name, set] <=> [other.name, other.set]
+  end
+
+  def inspect
+    "CardPrinting(#{card.name}, #{set.set_code})"
+  end
+
+  def to_s
+    inspect
   end
 end

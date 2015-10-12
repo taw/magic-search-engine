@@ -2,14 +2,14 @@ require_relative "test_helper"
 
 class CardDatabaseAlphaTest < Minitest::Test
   def setup
-    @db = CardDatabase.new(Pathname(__dir__) + "index/al.json")
+    @db = load_database("al")
   end
 
   def test_legality
-    assert_search_equal "f:edh", "f:commander"
-    assert_search_equal "legal:edh", "legal:commander"
-    assert_search_equal "f:legacy", "-banned:legacy"
-    assert_search_equal "f:vintage", "-banned:vintage"
-    assert_search_equal "f:modern", "legal:modern"
+    assert_search_equal "e:al f:edh", "e:al f:commander"
+    assert_search_equal "e:al legal:edh", "e:al legal:commander"
+    assert_search_equal "e:al f:legacy", "e:al -banned:legacy"
+    assert_search_equal "e:al f:vintage", "e:al -banned:vintage"
+    assert_search_equal "e:al f:modern", "e:al legal:modern"
   end
 end

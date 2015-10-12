@@ -2,7 +2,7 @@ require_relative "test_helper"
 
 class CardDatabaseNewPhyrexiaTest < Minitest::Test
   def setup
-    @db = CardDatabase.new(Pathname(__dir__) + "index/nph.json")
+    @db = load_database("nph")
   end
 
   def test_phyrexian_mana

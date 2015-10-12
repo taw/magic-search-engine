@@ -5,12 +5,12 @@ require_relative "../lib/card_database"
 class FindCards
   def initialize
     json_path = Pathname(__dir__) + "../data/index.json"
-    @db = CardDatabase.new(json_path)
+    @db = CardDatabase.load(json_path)
   end
 
   def run!(*query)
     query = query.join(" ")
-    puts @db.search(query)
+    puts @db.search(query).map(&:name).uniq
   end
 end
 
