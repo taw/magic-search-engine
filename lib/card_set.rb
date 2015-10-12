@@ -6,7 +6,7 @@ class CardSet
     @block_name   = data["block_name"]
     @block_code   = data["block_code"]
     @border       = data["border"]
-    @release_date = data["releaseDate"]
+    @release_date = data["release_date"]
   end
 
   include Comparable

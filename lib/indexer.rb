@@ -4,6 +4,10 @@ class Hash
     keys.map! { |key| convert_key(key) } if respond_to?(:convert_key, true)
     keys.each_with_object(self.class.new) { |k, hash| hash[k] = self[k] if has_key?(k) }
   end
+
+  def compact
+    reject{|k,v| v.nil?}
+  end
 end
 
 class Pathname
@@ -71,8 +75,8 @@ class Indexer
         "block_code" => block[0],
         "block_name" => block[1],
         "border" => set_data["border"],
-        "releaseDate" => set_data["releaseDate"],
-      }
+        "releaseDate" => format_release_date(set_data["releaseDate"]),
+      }.compact
       set_data["cards"].each do |card_data|
         name = card_data["name"]
         card = cards[name] ||= card_data.slice(
@@ -95,22 +99,50 @@ class Indexer
           "printings" => [],
           "legalities" => format_legalities(card_data["legalities"]),
           "colors" => format_colors(card_data["colors"]),
-        )
+        ).compact
         card["printings"] << [
           set_code,
           card_data.slice(
             "flavor",
             "artist",
             "border",
-            "releaseDate",
-            "rarity",
             "timeshifted",
-            "watermark",
-          ),
+          ).merge(
+            "rarity" => format_rarity(card_data["rarity"]),
+            "release_date" => format_release_date(card_data["releaseDate"]),
+            "watermark" => format_watermark(card_data["watermark"]),
+          ).compact
         ]
       end
     end
     {"sets"=>sets, "cards"=>cards}
+  end
+
+  def format_release_date(date)
+    return nil unless date
+    case date
+    when /\A\d{4}-\d{2}-\d{2}\z/
+      date
+    when /\A\d{4}-\d{2}\z/
+      "#{date}-01"
+    when /\A\d{4}\z/
+      "#{date}-01-01"
+    else
+      raise "Release date format error: #{date}"
+    end
+  end
+
+  def format_watermark(watermark)
+    watermark && watermark.downcase
+  end
+
+  def format_rarity(rarity)
+    r = rarity.downcase
+    if r == "mythic rare"
+      "mythic"
+    else
+      r
+    end
   end
 
   def format_legalities(legalities)
@@ -119,6 +151,6 @@ class Indexer
 
   def format_colors(colors)
     color_codes = {"White"=>"w", "Blue"=>"u", "Black"=>"b", "Red"=>"r", "Green"=>"g"}
-    (colors||[]).map{|c| color_codes.fetch(c)}
+    (colors||[]).map{|c| color_codes.fetch(c)}.sort.join
   end
 end

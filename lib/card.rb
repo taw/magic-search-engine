@@ -15,7 +15,7 @@ class Card
     @name = normalize_name(@data["name"])
     @names = @data["names"] &&  @data["names"].map{|n| normalize_name(n)}
     @layout = @data["layout"]
-    @colors = @data["colors"] || []
+    @colors = @data["colors"] || ""
     @text = (@data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü\u2212", "Aaaaaeeeioouuu-").gsub(/\([^\(\)]*\)/, "")
     @mana_cost = @data["manaCost"] ? @data["manaCost"].downcase : nil
     @reserved = @data["reserved"] || false
@@ -92,7 +92,7 @@ class Card
   end
 
   def calculate_partial_color_identity
-    ci = colors.dup
+    ci = colors.chars
     text.scan(/{(.*?)}/).each do |sym,|
       case sym.downcase
       when /\A(\d+|[½∞txyzsqp])\z/
@@ -123,6 +123,6 @@ class Card
       tci = {"forest" => "g", "mountain" => "r", "plains" => "w", "island" => "u", "swamp" => "b"}[t]
       ci << tci if tci
     end
-    ci.uniq
+    ci.uniq.join
   end
 end

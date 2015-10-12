@@ -108,7 +108,7 @@ class CardDatabase
     end
     @cards.each do |card_name, card|
       if card.has_multiple_parts?
-        card.color_identity = card.names.map{|n| color_identity_cache[n]}.inject(&:|)
+        card.color_identity = card.names.map{|n| color_identity_cache[n].chars }.inject(&:|).sort.join
       end
     end
     multipart_cards.each do |card_name, other_names|

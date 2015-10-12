@@ -46,13 +46,7 @@ class CardPrinting
   end
 
   def release_date
-    case d = (@data["releaseDate"] || @set.release_date)
-    when /\A\d{4}-\d{2}\z/
-      # ...
-      "#{d}-01"
-    else
-      d
-    end
+    @data["release_date"] || @set.release_date
   end
 
   def year
@@ -60,9 +54,7 @@ class CardPrinting
   end
 
   def rarity
-    r = @data["rarity"].downcase
-    return "mythic" if r == "mythic rare"
-    r
+    @data["rarity"]
   end
 
   def frame
