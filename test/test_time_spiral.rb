@@ -91,4 +91,28 @@ class CardDatabaseTimeSpiralTest < Minitest::Test
     assert_search_results "cmc=0 o:suspend c:u", "Ancestral Vision"
     assert_search_results "cmc=0 o:suspend mana=0"
   end
+
+  # This goes against magiccards.info logic which treats * as 0
+  # I'm not sure yet if it makes any sense or not
+  def test_lhurgoyfs
+    assert_search_results "t:lhurgoyf", "Tarmogoyf", "Detritivore"
+    assert_search_results "t:lhurgoyf pow=0"
+    assert_search_results "t:lhurgoyf tou=0"
+    assert_search_results "t:lhurgoyf tou=1"
+    assert_search_results "t:lhurgoyf pow>=0"
+    assert_search_results "t:lhurgoyf tou>=0"
+    assert_search_results "t:lhurgoyf pow<tou", "Tarmogoyf"
+    assert_search_results "t:lhurgoyf pow<=tou", "Tarmogoyf", "Detritivore"
+    assert_search_results "t:lhurgoyf pow>=tou", "Detritivore"
+    assert_search_results "t:lhurgoyf pow=tou", "Detritivore"
+    assert_search_results "t:lhurgoyf pow>tou"
+  end
+
+  def test_negative
+    assert_search_results "pow=-1", "Char-Rumbler"
+    assert_search_results "pow<0", "Char-Rumbler"
+    assert_search_include "pow>=-1", "Char-Rumbler"
+    assert_search_include "pow>=-2", "Char-Rumbler"
+    assert_search_exclude "pow>-1", "Char-Rumbler"
+  end
 end
