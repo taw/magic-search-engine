@@ -7,7 +7,7 @@ class Card
   attr_writer :printings # For db subset
 
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
-  attr_reader :partial_color_identity, :legality, :cmc, :text, :power, :toughness, :loyalty
+  attr_reader :partial_color_identity, :legality, :cmc, :text, :power, :toughness, :loyalty, :extra
   def initialize(data)
     @data = data
     @printings = []
@@ -19,7 +19,7 @@ class Card
     @text = (@data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-").gsub(/\([^\(\)]*\)/, "")
     @mana_cost = @data["manaCost"] ? @data["manaCost"].downcase : nil
     @reserved = @data["reserved"] || false
-    @types = ["types", "subtypes", "supertypes"].map{|t| @data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-")}
+    @types = ["types", "subtypes", "supertypes"].map{|t| @data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "")}
     @legality = @data["legalities"]
     @cmc = @data["cmc"] || 0
     # Normalize unicode, remove remainder text
@@ -27,6 +27,7 @@ class Card
     @toughness = @data["toughness"] ? smart_convert_powtou(@data["toughness"]) : nil
     @loyalty = @data["loyalty"] ?  @data["loyalty"].to_i : nil
     @partial_color_identity = calculate_partial_color_identity
+    @extra = @data["extra"]
   end
 
   attr_writer :color_identity

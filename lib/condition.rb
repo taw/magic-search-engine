@@ -1,11 +1,17 @@
+require "set"
+
 # This class is just asking to be turned into a class hierarchy
 class Condition
   attr_reader :cond, :arg
   def initialize(cond, arg)
     @cond = cond
-    @msg  = :"match_#{cond}?"
     @arg = arg
+    @include_extras = false
     case @cond
+    when :and, :or
+      @include_extras = @arg.any?(&:include_extras?)
+    when :not
+      @include_extras = @arg.include_extras?
     when :colors, :colors_exclusive
       @colors_query = @arg.downcase.chars
       @colors_c = @colors_query.include?("c")
@@ -34,19 +40,44 @@ class Condition
     when :format, :legal, :banned, :restricted
       @arg = @arg.downcase
       @arg = "commander" if @arg == "edh"
+    when :exact
+      @include_extras = true
     when :types
-      @arg = @arg.downcase.tr("’\u2212", "'-").split.map do |type|
-        if type == "urza" # type line stemming ...
-          "urza's"
-        else
-          type
+      # urza's -> urza, same with serra's, bolas's
+      @arg = Set[*@arg.downcase.tr("’\u2212", "'-").gsub(/'s/, "").split]
+      if @arg.include?("*")
+        @cond = :yes
+        @arg = nil
+        @include_extras = true
+      else
+        extra_types = Set[
+          "alara", "arkhos", "azgol", "belenon", "bolas's meditation realm", "conspiracy",
+          "dominaria", "equilor", "ergamon", "fabacin", "innistrad", "iquatana", "ir",
+          "kaldheim", "kamigawa", "kephalai", "kolbahan", "kyneth", "lorwyn", "mercadia",
+          "mirrodin", "moag", "mongseng", "muraganda", "new phyrexia", "ongoing",
+          "phenomenon", "phyrexia", "plane", "rabiah", "rath", "ravnica", "regatha",
+          "scheme", "segovia", "serra's realm", "shadowmoor", "shandalar", "ulgrotha",
+          "valla", "vryn", "wildfire", "xerex", "zendikar",
+        ]
+        unless (@arg & extra_types).empty?
+          @include_extras = true
         end
       end
     end
+
+    @msg = :"match_#{@cond}?"
+  end
+
+  def include_extras?
+    @include_extras
   end
 
   def match?(card)
     send(@msg, card)
+  end
+
+  def match_yes?(card)
+    true
   end
 
   # c: system is rather illogical
