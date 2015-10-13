@@ -235,7 +235,12 @@ class Condition
     pool = Hash.new(0)
     mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrgxyz])/) do
       if $1
-        pool[normalize_mana_symbol($1)] += 1
+        m = normalize_mana_symbol($1)
+        if m =~ /h/
+          pool[m.sub("h", "")] += 0.5
+        else
+          pool[m] += 1
+        end
       elsif $2
         pool["c"] += $2.to_i
       else
