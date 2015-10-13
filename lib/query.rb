@@ -26,6 +26,8 @@ private
         # tokens << [:and]
       elsif s.scan(/or\b/i)
         tokens << [:or]
+      elsif s.scan(%r[[/&]+]i)
+        tokens << [:slash_slash]
       elsif s.scan(/-/)
         tokens << [:not]
       elsif s.scan(/\(/)
@@ -62,7 +64,7 @@ private
         tokens << [:expr, [s[1], s[2], s[3]]]
       elsif s.scan(/mana\s*(>=|>|<=|<|=)\s*((?:[\dwubrgxyz]|\{.*?\})+)/i)
         tokens << [:mana, [s[1], s[2]]]
-      elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted|reserved)\b/i)
+      elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted|reserved|multipart)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:"is_#{s[2]}"]
       elsif s.scan(/(is|not):(split|flip|dfc)\b/i)
@@ -88,7 +90,7 @@ private
         tokens << [:other]
       elsif s.scan(/part:/)
         tokens << [:part]
-      elsif s.scan(/([^-!<>=:"\s][^!<>=:"\s]*)(?=\s|$)/i)
+      elsif s.scan(/([^-!<>=:"\s&\/][^!<>=:"\s&\/]*)(?=$|[\s&\/()])/i)
         # Veil-Cursed and similar silliness
         words = s[1].split("-")
         if words.size > 1
@@ -151,6 +153,21 @@ private
             return Condition.new(:or, [conds_to_query(conds), right_query])
           else
             break
+          end
+        end
+      when :slash_slash
+        @tokens.shift
+        # This is semantically meaningful
+        left_query = conds_to_query(conds)
+        right_query = parse_query
+        if left_query and right_query
+          return Condition.new(:part, Condition.new(:and, [left_query, Condition.new(:other, right_query)]))
+        else
+          query = left_query || right_query
+          if query
+            return Condition.new(:part, query)
+          else
+            return Condition.new(:is_multipart, nil)
           end
         end
       # includes open / not
