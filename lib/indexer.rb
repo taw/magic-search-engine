@@ -95,7 +95,7 @@ class Indexer
         algorithm_legalities = CardLegality.new(name, sets_printed, card_data["layout"]).legality
 
         if mtgjson_legalities != algorithm_legalities
-          puts "#{match ? ' OK ' : 'FAIL' } #{name} #{mtgjson_legalities.sort.inspect} #{algorithm_legalities.sort.inspect}"
+          puts "FAIL #{name} #{mtgjson_legalities.sort.inspect} #{algorithm_legalities.sort.inspect}"
           require 'pry'; binding.pry
         end
 
