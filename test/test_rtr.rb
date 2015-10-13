@@ -125,6 +125,21 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_results "Well&Alive", "Alive", "Well"
   end
 
+  def test_split_one_side_only
+    assert_search_results "Alive //", "Alive", "Well"
+    assert_search_results "// Alive", "Alive", "Well"
+    assert_search_results "well //", "Alive", "Well"
+    assert_search_results "cmc=5 // cmc=2", "Blood", "Flesh"
+    assert_search_results "c:r // c:r", "Catch", "Release"
+    assert_search_equal "&", "is:split"
+  end
+
+  def test_nested_slash_slash
+    assert_search_results "(// c:mu) or (c:w // c:u)",
+      "Beck", "Call", "Breaking", "Entering", "Catch", "Release",
+      "Serve", "Protect"
+  end
+
   def test_is_vanilla
     assert_search_results "e:dgm is:vanilla", "Armored Wolf-Rider", "Bane Alley Blackguard"
   end

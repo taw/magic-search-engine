@@ -156,6 +156,9 @@ class Condition
   def match_is_vanilla?(card)
     card.text == ""
   end
+  def match_is_multipart?(card)
+    card.has_multiple_parts?
+  end
   def match_layout?(card)
     card.layout == arg
   end
