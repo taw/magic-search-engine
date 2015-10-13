@@ -213,9 +213,9 @@ class CardLegality
         formats << "standard" << "modern" << "tarkir block"
       when "bfz"
         formats << "standard" << "modern" # << "battle for zendikar block"
-      when "8e", "9e", "10e", "m10", "m11", "m12", "m13", "m14"
+      when "8e", "9e", "10e", "m10", "m11", "m12", "m13", "m14", "m15"
         formats << "modern"
-      when "m15", "ori"
+      when "ori"
         formats << "standard" << "modern"
       when "cns"
         # No easy test for draft cards
