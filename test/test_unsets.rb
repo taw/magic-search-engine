@@ -51,12 +51,13 @@ class CardDatabaseUnsetsTest < Minitest::Test
     assert_search_results "is:white-bordered"
   end
 
-  def test_edition_shortcut_syntax
-    assert_search_equal "e:uh,ug", "e:uh or e:ug"
-    assert_search_equal "e:uh+ug", "t:basic"
-    assert_count_results "e:uh,ug", 227
-    assert_count_results "e:uh,ug -e:ug+ug", 222
-  end
+  # I'm not sure I want this syntax
+  # def test_edition_shortcut_syntax
+  #   assert_search_equal "e:uh,ug", "e:uh or e:ug"
+  #   assert_search_equal "e:uh+ug", "t:basic"
+  #   assert_count_results "e:uh,ug", 227
+  #   assert_count_results "e:uh,ug -e:ug+ug", 222
+  # end
 
   def test_other
     assert_search_results "other:c:g", "What", "Who", "When", "Where"
@@ -76,5 +77,17 @@ class CardDatabaseUnsetsTest < Minitest::Test
   def test_split_slash_slash_bang
     assert_search_results "!When / Where // What && Why", "Who", "What", "When", "Where", "Why"
     assert_search_results "!When // Where // Whatever"
+  end
+
+  def test_split_slash_slash_bang
+    assert_search_results "//", "Who", "What", "When", "Where", "Why", "B.F.M. (Big Furry Monster)"
+    assert_search_results "When // Where // What", "Who", "What", "When", "Where", "Why"
+    assert_search_results "When // Where // Whatever"
+    assert_search_results "c:u // c:w // c:r", "Who", "What", "When", "Where", "Why"
+    assert_search_results "c:u // c:u"
+
+    # This is limitation of the syntax, I might change my mind about it,
+    # but it only affects this one uncard
+    assert_search_results "c:u // c:r // c:u", "Who", "What", "When", "Where", "Why"
   end
 end

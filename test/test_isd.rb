@@ -57,4 +57,9 @@ class CardDatabaseInnistradTest < Minitest::Test
     assert_search_results "other:(o:wolf o:token)", "Garruk Relentless", "Garruk, the Veil-Cursed", "Mayor of Avabruck", "Ravager of the Fells"
     assert_search_results "other:-t:werewolf c:r", "Homicidal Brute"
   end
+
+  def test_split_slash_slash
+    assert_search_results "t:planeswalker //", "Garruk Relentless", "Garruk, the Veil-Cursed"
+    assert_search_results "t:human // t:insect", "Delver of Secrets", "Insectile Aberration"
+  end
 end
