@@ -93,14 +93,12 @@ class CardDatabase
       end
     end
     data["cards"].each do |card_name, card_data|
-      case card_data["layout"]
-      when "token", "vanguard", "plane", "scheme", "phenomenon"
-        # Do not include in search results
-        next
-      when "normal", "leveler", "double-faced", "split", "flip"
-        # OK
-      else
-        warn "Unknown card layout: #{rard_data["layout"]}"
+      # Do not include ever
+      next if card_data["layout"] == "token"
+      if ["vanguard", "plane", "scheme", "phenomenon"].include?(card_data["layout"]) or
+         card_data["types"].include?("Conspiracy")
+        # Do not include in default search results
+        card_data["extra"] = true
       end
       card = @cards[card_name] = Card.new(card_data.reject{|k,_| k == "printings"})
       color_identity_cache[card_name] = card.partial_color_identity
