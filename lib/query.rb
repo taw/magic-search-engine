@@ -42,8 +42,8 @@ private
         tokens << [:oracle, s[1] || s[2]]
       elsif s.scan(/a:(?:"(.*?)"|(\w+))/i)
         tokens << [:artist, s[1] || s[2]]
-      elsif s.scan(/(banned|restricted|legal):(\S+)/)
-        tokens << [s[1].to_sym, s[2]]
+      elsif s.scan(/(banned|restricted|legal):(?:"(.*?)"|(\w+))/)
+        tokens << [s[1].to_sym, s[2] || s[3]]
       elsif s.scan(/e:(?:"(.*?)"|(\w+))/i)
         tokens << [:edition, s[1] || s[2]]
       elsif s.scan(/watermark:(?:"(.*?)"|(\w+))/i)
