@@ -10,22 +10,6 @@ class CardPrinting
     @release_date = @data["release_date"] ? Date.parse(@data["release_date"]) : @set.release_date
   end
 
-  def set_code
-    @set.set_code
-  end
-
-  def set_name
-    @set.set_name
-  end
-
-  def block_code
-    @set.block_code
-  end
-
-  def block_name
-    @set.block_name
-  end
-
   def watermark
     @data["watermark"] && @data["watermark"].downcase
   end
@@ -69,8 +53,20 @@ class CardPrinting
     end
   end
 
-  def method_missing(m,*args)
-    @card.send(m,*args)
+  # This is a bit too performance-critical to use method_missing
+  # It's not a huge difference, but no reason to waste ~5% of execution time on it
+  %W[set_code set_name block_code block_name].each do |m|
+    eval("def #{m}; @set.#{m}; end")
+  end
+  %W[name names layout colors mana_cost reserved types cmc text power
+    toughness loyalty extra color_identity has_multiple_parts? typeline
+    first_release_date last_release_date
+  ].each do |m|
+    eval("def #{m}; @card.#{m}; end")
+  end
+
+  def legality(format)
+    @card.legality(format)
   end
 
   include Comparable
