@@ -139,17 +139,17 @@ class Condition
     normalize_text(card.text).include?(normalize_text(@arg.gsub("~", card.name)))
   end
   def match_format?(card)
-    legality = card.legality[@arg]
+    legality = card.legality(@arg)
     legality == "legal" or legality == "restricted"
   end
   def match_banned?(card)
-    card.legality[@arg] == "banned"
+    card.legality(@arg) == "banned"
   end
   def match_restricted?(card)
-    card.legality[@arg] == "restricted"
+    card.legality(@arg) == "restricted"
   end
   def match_legal?(card)
-    card.legality[@arg] == "legal"
+    card.legality(@arg) == "legal"
   end
   def match_rarity?(card)
     card.rarity == @arg
