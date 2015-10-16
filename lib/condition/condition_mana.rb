@@ -1,4 +1,4 @@
-class ConditionMana < Condition
+class ConditionMana < ConditionSimple
   def initialize(op, mana)
     @op = op
     @query_mana = parse_query_mana(mana.downcase)

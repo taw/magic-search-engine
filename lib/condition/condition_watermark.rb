@@ -1,4 +1,4 @@
-class ConditionWatermark < Condition
+class ConditionWatermark < ConditionSimple
   def initialize(watermark)
     @watermark = watermark.downcase
   end

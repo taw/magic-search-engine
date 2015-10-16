@@ -1,4 +1,4 @@
-class ConditionArtist < Condition
+class ConditionArtist < ConditionSimple
   def initialize(artist)
     @artist = artist.downcase
   end

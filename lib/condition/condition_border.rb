@@ -1,4 +1,4 @@
-class ConditionBorder < Condition
+class ConditionBorder < ConditionSimple
   def initialize(border)
     @border = border.downcase
   end

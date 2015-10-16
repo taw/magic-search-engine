@@ -1,4 +1,4 @@
-class ConditionRarity < Condition
+class ConditionRarity < ConditionSimple
   def initialize(rarity)
     @rarity = rarity.downcase
   end

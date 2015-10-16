@@ -1,4 +1,4 @@
-class ConditionIsFunny < Condition
+class ConditionIsFunny < ConditionSimple
   # There are some one off funny cards elsewhere
   # Basic lands here aren't exactly funny
   # Shouldn't it just test border:silver ?

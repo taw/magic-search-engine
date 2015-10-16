@@ -1,4 +1,4 @@
-class ConditionColors < Condition
+class ConditionColors < ConditionSimple
   def initialize(colors)
     @colors_query = colors.downcase.chars
     @colors_c = @colors_query.include?("c")

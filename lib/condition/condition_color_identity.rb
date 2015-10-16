@@ -1,4 +1,4 @@
-class ConditionColorIdentity < Condition
+class ConditionColorIdentity < ConditionSimple
   def initialize(ci)
     # Ignore "m"/"l" in query
     # Treat "cr" as "c"

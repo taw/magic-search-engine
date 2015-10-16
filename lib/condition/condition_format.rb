@@ -1,4 +1,4 @@
-class ConditionFormat < Condition
+class ConditionFormat < ConditionSimple
   def initialize(format)
     @format = format.downcase
     @format = "commander" if @format == "edh"

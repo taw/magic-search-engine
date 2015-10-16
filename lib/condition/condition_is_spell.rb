@@ -1,4 +1,4 @@
-class ConditionIsSpell < Condition
+class ConditionIsSpell < ConditionSimple
   def match?(card)
     card.types.all?{|t| t != "land"}
   end
