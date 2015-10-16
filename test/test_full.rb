@@ -58,6 +58,12 @@ class CardDatabaseFullTest < Minitest::Test
   end
 
   def test_color_identity
-     assert_search_results "ci:wu t:basic", "Island", "Plains", "Snow-Covered Island", "Snow-Covered Plains"
-   end
+    assert_search_results "ci:wu t:basic", "Island", "Plains", "Snow-Covered Island", "Snow-Covered Plains"
+  end
+
+  def test_year
+    assert_search_results_printings "year=2013 t:jace",
+      ["Jace, Memory Adept", "m14", "mbp"],
+      ["Jace, the Mind Sculptor", "v13"]
+  end
 end
