@@ -9,7 +9,8 @@ class ConditionAnd < Condition
       end
     end.flatten
     raise if @conds.empty?
-    @simple_conds, @special_conds = @conds.partition{|c| c.is_a?(ConditionSimple) }
+    @simple_conds, @special_conds = @conds.partition(&:simple?)
+    @simple = @conds.all?(&:simple?)
   end
 
   def include_extras?
@@ -26,6 +27,15 @@ class ConditionAnd < Condition
       results = Set.new(results.select{|card| cond.match?(card) })
     end
     results
+  end
+
+  def match?(card)
+    raise unless @simple
+    @conds.all?{|cond| cond.match?(card)}
+  end
+
+  def simple?
+    @simple
   end
 
   def to_s

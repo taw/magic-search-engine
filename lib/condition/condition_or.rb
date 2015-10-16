@@ -9,6 +9,7 @@ class ConditionOr < Condition
       end
     end.flatten
     raise if @conds.empty?
+    @simple = @conds.all?(&:simple?)
   end
 
   def include_extras?
@@ -17,6 +18,15 @@ class ConditionOr < Condition
 
   def search(db)
     @conds.map{|cond| cond.search(db)}.inject(&:|)
+  end
+
+  def match?(card)
+    raise unless @simple
+    @conds.any?{|cond| cond.match?(card)}
+  end
+
+  def simple?
+    @simple
   end
 
   def to_s
