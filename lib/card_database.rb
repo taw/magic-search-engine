@@ -15,8 +15,8 @@ class CardDatabase
     yield(self)
   end
 
-  def search(query_string)
-    query = Query.new(query_string)
+  def search(query)
+    query = Query.new(query) unless query.is_a?(Query)
     results = []
     each_printing do |card|
       if query.match?(card)
