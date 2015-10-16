@@ -5,7 +5,7 @@ class ConditionSimple < Condition
     Set.new(db.printings.select{|card| match?(card)})
   end
 
-  def match?
+  def match?(card)
     raise "SubclassResponsibility"
   end
 end
