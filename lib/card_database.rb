@@ -33,7 +33,7 @@ class CardDatabase
   end
 
   def printings
-    @printings ||= Set.new(enum_for(:each_printing))
+    @printings ||= enum_for(:each_printing).to_set
   end
 
   def subset(sets)

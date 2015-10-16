@@ -24,9 +24,9 @@ class ConditionAnd < Condition
       results = @special_conds.map{|cond| cond.search(db)}.inject(&:&)
     end
     @simple_conds.each do |cond|
-      results = Set.new(results.select{|card| cond.match?(card) })
+      results = results.select{|card| cond.match?(card) }
     end
-    results
+    results.to_set
   end
 
   def match?(card)
