@@ -5,6 +5,7 @@ class Query
     @cond = QueryParser.new.parse(query_string)
     raise unless @cond
     @no_extras = !@cond.include_extras?
+    # puts "Parse #{query_string} -> #{@cond}"
   end
 
   def search(db)

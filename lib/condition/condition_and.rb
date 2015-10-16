@@ -1,6 +1,13 @@
 class ConditionAnd < Condition
+  attr_reader :conds
   def initialize(*conds)
-    @conds = *conds
+    @conds = conds.map do |c|
+      if c.is_a?(ConditionAnd)
+        c.conds
+      else
+        [c]
+      end
+    end.flatten
     raise if @conds.empty?
   end
 

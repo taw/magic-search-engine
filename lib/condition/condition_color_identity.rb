@@ -14,6 +14,6 @@ class ConditionColorIdentity < Condition
   end
 
   def to_s
-    "ci:#{@commander_ci}"
+    "ci:#{@commander_ci.join}"
   end
 end
