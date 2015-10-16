@@ -107,4 +107,18 @@ class CardDatabaseFullTest < Minitest::Test
       "Garruk Relentless", "Garruk, the Veil-Cursed", "Gideon Jura", "Liliana of the Veil",
       "Nissa Revane", "Sarkhan the Mad", "Sorin Markov", "Tezzeret, Agent of Bolas"
   end
+
+  def test_sort
+    assert_search_results "t:chandra sort:name",
+      "Chandra Ablaze", "Chandra Nalaar", "Chandra, Pyromaster", "Chandra, Roaring Flame", "Chandra, the Firebrand"
+    assert_search_results "t:chandra sort:new",
+      "Chandra, Roaring Flame", "Chandra, Pyromaster", "Chandra, the Firebrand", "Chandra Nalaar", "Chandra Ablaze"
+    # Jace v Chandra printing of Chandra Nalaar changes order
+    assert_search_results "t:chandra sort:newall",
+      "Chandra, Roaring Flame", "Chandra Nalaar", "Chandra, Pyromaster", "Chandra, the Firebrand", "Chandra Ablaze"
+    assert_search_results "t:chandra sort:old",
+      "Chandra Nalaar", "Chandra Ablaze", "Chandra, the Firebrand", "Chandra, Pyromaster", "Chandra, Roaring Flame"
+    assert_search_results "t:chandra sort:oldall",
+      "Chandra Nalaar", "Chandra Ablaze", "Chandra, the Firebrand", "Chandra, Pyromaster", "Chandra, Roaring Flame"
+  end
 end
