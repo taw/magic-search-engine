@@ -108,6 +108,11 @@ class CardDatabaseFullTest < Minitest::Test
       "Nissa Revane", "Sarkhan the Mad", "Sorin Markov", "Tezzeret, Agent of Bolas"
   end
 
+  def test_time_travel_basic
+    assert_search_equal "time:lw t:planeswalker", "e:lw t:planeswalker"
+    assert_search_results "time:wwk t:jace", "Jace Beleren", "Jace, the Mind Sculptor"
+  end
+
   def test_sort
     assert_search_results "t:chandra sort:name",
       "Chandra Ablaze", "Chandra Nalaar", "Chandra, Pyromaster", "Chandra, Roaring Flame", "Chandra, the Firebrand"

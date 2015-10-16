@@ -17,16 +17,18 @@ class ConditionAnd < Condition
     @conds.any?(&:include_extras?)
   end
 
-  def search(db)
+  def search(db, metadata)
     if @special_conds.empty?
       results = db.printings
     else
-      results = @special_conds.map{|cond| cond.search(db)}.inject(&:&)
+      results = @special_conds.map{|cond| cond.search(db, metadata)}.inject(&:&)
     end
     @simple_conds.each do |cond|
       results = results.select{|card| cond.match?(card) }
     end
     results.to_set
+  rescue
+    require 'pry'; binding.pry
   end
 
   def match?(card)

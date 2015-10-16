@@ -1,6 +1,9 @@
 class ConditionLegal < ConditionFormat
-  def match?(card)
-    card.legality(@format) == "legal"
+  def search(db, metadata)
+    db.printings.select do |card|
+      legality = card.legality(@format)
+      legality == "legal"
+    end.to_set
   end
 
   def to_s
