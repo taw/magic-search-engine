@@ -68,7 +68,7 @@ class Card
   end
 
   def legality(format)
-    @legality ||= CardLegality.new(@name, @printings.map(&:set_code), @layout).legality
+    @legality ||= CardLegality.new(@name, @printings.map(&:set_code), @layout, @types).legality
     @legality[format]
   end
 

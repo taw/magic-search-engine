@@ -132,31 +132,20 @@ BanLists = {
   "Worldfire"=>{"commander"=>"banned"},
   "Deathrite Shaman"=>{"modern"=>"banned"},
   "Sylvan Primordial"=>{"commander"=>"banned"},
-  "Advantageous Proclamation"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"},
-  "Backup Plan"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"},
-  "Brago's Favor"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"},
-  "Double Stroke"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"},
-  "Immediate Action"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"},
-  "Iterative Analysis"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"},
-  "Muzzio's Preparations"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"},
-  "Power Play"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"},
-  "Secret Summoning"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"},
-  "Secrets of Paradise"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"},
-  "Sentinel Dispatch"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"},
-  "Unexpected Potential"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"},
-  "Worldknit"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"},
   "Treasure Cruise"=>{"legacy"=>"banned", "modern"=>"banned", "vintage"=>"restricted"}
 }
 
 class CardLegality
-  def initialize(name, sets, layout)
+  def initialize(name, sets, layout, types)
     @card_name = name
     @sets = sets
     @layout = layout
+    @types = types
   end
 
   def legality
     return {} if ["vanguard", "token", "plane", "scheme", "phenomenon"].include?(@layout)
+    return {"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"} if @types.include?("conspiracy")
 
     formats = Set[]
     @sets.each do |set|
