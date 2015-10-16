@@ -8,6 +8,7 @@ class CardDatabasePlanechaseTest < Minitest::Test
   def test_plane
     assert_search_results "t:plane t:Dominaria", "Krosa", "Llanowar", "Academy at Tolaria West", "Isle of Vesuva", "Otaria", "Shiv", "Talon Gates"
     assert_search_results "t:Dominaria", "Krosa", "Llanowar", "Academy at Tolaria West", "Isle of Vesuva", "Otaria", "Shiv", "Talon Gates"
+    assert_search_equal "t:plane", "layout:plane"
   end
 
   def test_chaos_symbol
@@ -32,4 +33,3 @@ class CardDatabasePlanechaseTest < Minitest::Test
     assert_search_results %Q[o:"each player draws four cards"]
   end
 end
-
