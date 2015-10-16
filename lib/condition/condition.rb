@@ -7,6 +7,13 @@ class Condition
     to_s
   end
 
+  # For simple conditions
+  # cond.search(db) == db.select{|card| cond.match?(card)}
+  # This is extremely relevant for query optimization
+  def simple?
+    false
+  end
+
   private
 
   def normalize_text(text)

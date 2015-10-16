@@ -8,4 +8,8 @@ class ConditionSimple < Condition
   def match?(card)
     raise "SubclassResponsibility"
   end
+
+  def simple?
+    true
+  end
 end
