@@ -85,31 +85,37 @@ class CardDatabase
       end
     end
     data["cards"].each do |card_name, card_data|
-      # Do not include ever
-      next if card_data["layout"] == "token"
-      if ["vanguard", "plane", "scheme", "phenomenon"].include?(card_data["layout"]) or
-         card_data["types"].include?("Conspiracy")
-        # Do not include in default search results
-        card_data["extra"] = true
-      end
+      next if card_data["layout"] == "token" # Do not include tokens
       card = @cards[card_name] = Card.new(card_data.reject{|k,_| k == "printings"})
       color_identity_cache[card_name] = card.partial_color_identity
       if card_data["names"]
         multipart_cards[card_name] = card_data["names"] - [card_name]
       end
       card_data["printings"].each do |set_code, printing_data|
-        card.printings << CardPrinting.new(
+        printing = CardPrinting.new(
           card,
           @sets[set_code],
           printing_data
         )
+        card.printings << printing
+        @sets[set_code].printings << printing
       end
     end
+    fix_multipart_cards_color_identity!(color_identity_cache)
+    link_multipart_cards!(multipart_cards)
+  end
+
+  private
+
+  def fix_multipart_cards_color_identity!(color_identity_cache)
     @cards.each do |card_name, card|
       if card.has_multiple_parts?
         card.color_identity = card.names.map{|n| color_identity_cache[n].chars }.inject(&:|).sort.join
       end
     end
+  end
+
+  def link_multipart_cards!(multipart_cards)
     multipart_cards.each do |card_name, other_names|
       card = @cards[card_name]
       other_cards = other_names.map{|name| @cards[name] }
@@ -122,8 +128,6 @@ class CardDatabase
       end
     end
   end
-
-  private
 
   # These method seem to occur in every single class out there
   def normalize_text(text)

@@ -7,8 +7,7 @@ class ConditionEdition < Condition
   # "in" is code for "Invasion", don't substring match "Innistrad" etc.
   # "Mirrodin" is name for "Mirrodin", don't substring match "Scars of Mirrodin"
   def search(db)
-    sets = matching_sets(db)
-    Set.new(db.printings.select{|card| sets.include?(card.set_code) })
+    matching_sets(db).map(&:printings).inject(Set[], &:|)
   end
 
   def to_s
@@ -22,11 +21,11 @@ class ConditionEdition < Condition
     db.sets.each do |set_code, set|
       if db.sets[@edition]
         if set_code == @edition or normalize_name(set.set_name) == @edition
-          sets << set_code
+          sets << set
         end
       else
         if normalize_name(set.set_name).include?(@edition)
-          sets << set_code
+          sets << set
         end
       end
     end

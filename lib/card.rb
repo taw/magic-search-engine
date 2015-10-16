@@ -27,7 +27,11 @@ class Card
     @toughness = @data["toughness"] ? smart_convert_powtou(@data["toughness"]) : nil
     @loyalty = @data["loyalty"] ?  @data["loyalty"].to_i : nil
     @partial_color_identity = calculate_partial_color_identity
-    @extra = @data["extra"]
+    if ["vanguard", "plane", "scheme", "phenomenon"].include?(@layout) or @types.include?("conspiracy")
+      @extra = true
+    else
+      @extra = false
+    end
   end
 
   attr_writer :color_identity
