@@ -15,7 +15,7 @@ class ConditionTypes < ConditionSimple
         "mirrodin", "moag", "mongseng", "muraganda", "new phyrexia", "ongoing",
         "phenomenon", "phyrexia", "plane", "rabiah", "rath", "ravnica", "regatha",
         "scheme", "segovia", "serra's realm", "shadowmoor", "shandalar", "ulgrotha",
-        "valla", "vryn", "wildfire", "xerex", "zendikar",
+        "valla", "vanguard", "vryn", "wildfire", "xerex", "zendikar",
       ]
       unless (@types & extra_types).empty?
         @include_extras = true
