@@ -78,9 +78,7 @@ class CardDatabase
     multipart_cards = {}
     data = JSON.parse(path.open.read)
     data["sets"].each do |set_code, set_data|
-      # It's OK to link to main one, it's only needed for set/block codes list
-      # and that might as well be hardcoded
-      @sets[set_code] = CardSet.new(set_data, self)
+      @sets[set_code] = CardSet.new(set_data)
       if set_data["block_code"]
         @blocks << set_data["block_code"]
         @blocks << normalize_name(set_data["block_name"])
