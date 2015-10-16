@@ -56,6 +56,8 @@ private
         tokens << [:color_identity, s[1]]
       elsif s.scan(/c!([wubrgcml]+)/i)
         tokens << [:colors_exclusive, s[1]]
+      elsif s.scan(/(printed|firstprinted|lastprinted)\s*(>=|>|<=|<|=)\s*(\S+)/)
+        tokens << [s[1].to_sym, [s[2], s[3]]]
       elsif s.scan(/r:(\S+)/)
         tokens << [:rarity, s[1].downcase]
       elsif s.scan(/(pow|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow|tou|cmc|loyalty|year|-?\d+\.\d+|-?\.\d+|-?\d*½|-?\d+)\b/i)
