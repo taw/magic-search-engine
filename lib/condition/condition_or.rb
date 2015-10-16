@@ -16,8 +16,8 @@ class ConditionOr < Condition
     @conds.any?(&:include_extras?)
   end
 
-  def search(db)
-    @conds.map{|cond| cond.search(db)}.inject(&:|)
+  def search(db, metadata)
+    @conds.map{|cond| cond.search(db, metadata)}.inject(&:|)
   end
 
   def match?(card)

@@ -6,7 +6,7 @@ class ConditionEdition < Condition
   # For sets and blocks:
   # "in" is code for "Invasion", don't substring match "Innistrad" etc.
   # "Mirrodin" is name for "Mirrodin", don't substring match "Scars of Mirrodin"
-  def search(db)
+  def search(db, metadata)
     matching_sets(db).map(&:printings).inject(Set[], &:|)
   end
 

@@ -11,12 +11,17 @@ class Query
   def initialize(query_string)
     @cond, @metadata = QueryParser.new.parse(query_string)
     raise unless @cond
+
+    if @metadata[:time]
+      @cond = ConditionAnd.new(@cond, ConditionPrinted.new("<=", @metadata[:time]))
+    end
+
     @metadata[:no_extras] = !@cond.include_extras?
     # puts "Parse #{query_string} -> #{@cond}"
   end
 
   def search(db)
-    results = @cond.search(db)
+    results = @cond.search(db, @metadata)
     results = results.reject(&:extra) if @metadata[:no_extras]
 
     results = case @metadata[:sort]

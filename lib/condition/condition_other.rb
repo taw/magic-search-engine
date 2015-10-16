@@ -3,8 +3,8 @@ class ConditionOther < Condition
     @cond = cond
   end
 
-  def search(db)
-    @cond.search(db).map{|c| c.others ? Set[*c.others] : Set[]}.inject(Set[], &:|)
+  def search(db, metadata)
+    @cond.search(db, metadata).map{|c| c.others ? Set[*c.others] : Set[]}.inject(Set[], &:|)
   end
 
   def to_s

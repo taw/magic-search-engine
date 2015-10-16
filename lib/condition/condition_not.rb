@@ -8,8 +8,8 @@ class ConditionNot < Condition
     @cond.include_extras?
   end
 
-  def search(db)
-    db.printings - @cond.search(db)
+  def search(db, metadata)
+    db.printings - @cond.search(db, metadata)
   end
 
   def match?(card)
