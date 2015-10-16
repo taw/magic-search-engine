@@ -91,7 +91,9 @@ class CardDatabaseFullTest < Minitest::Test
       "Swamp", "Temur Ascendancy", "Thousand Winds", "Trail of Mystery", "Trap Essence",
       "Trumpet Blast", "Utter End", "Villainous Wealth", "Windstorm", "Windswept Heath",
       "Wooded Foothills", "Zurgo Helmsmasher"
-    assert_search_results "e:ktk lastprinted>ktk", "Forest", "Mountain", "?"
+
+    assert_search_results "e:ktk lastprinted>ktk", "Forest", "Mountain",
+      "Act of Treason", "Ainok Tracker", "Altar of the Brood", "Arc Lightning", "Bloodfell Caves", "Bloodstained Mire", "Blossoming Sands", "Briber's Purse", "Debilitating Injury", "Disdainful Stroke", "Dismal Backwater", "Dragonscale Boon", "Dutiful Return", "Flooded Strand", "Forest", "Ghostfire Blade", "Grim Haruspex", "Heir of the Wilds", "Hordeling Outburst", "Island", "Jeering Instigator", "Jungle Hollow", "Mountain", "Mystic of the Hidden Way", "Naturalize", "Plains", "Polluted Delta", "Rugged Highlands", "Ruthless Ripper", "Scoured Barrens", "Shatter", "Smite the Monstrous", "Sultai Charm", "Summit Prowler", "Suspension Field", "Swamp", "Swiftwater Cliffs", "Thornwood Falls", "Tormenting Voice", "Tranquil Cove", "Utter End", "Watcher of the Roost", "Weave Fate", "Wind-Scarred Crag", "Windstorm", "Windswept Heath", "Wooded Foothills"
   end
 
   def test_firstprinted
