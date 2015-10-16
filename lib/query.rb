@@ -7,9 +7,10 @@ class Query
     @no_extras = !@cond.include_extras?
   end
 
-  def match?(card)
-    return false if @no_extras and card.extra
-    @cond.match?(card)
+  def search(db)
+    results = @cond.search(db)
+    results = results.reject(&:extra) if @no_extras
+    results.sort
   end
 
   def to_s

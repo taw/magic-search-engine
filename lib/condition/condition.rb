@@ -7,6 +7,11 @@ class Condition
     to_s
   end
 
+  def search(db)
+    # Set#select should return damn set, it's dumb that it returns Array
+    Set.new(db.printings.select{|card| match?(card)})
+  end
+
   private
 
   def normalize_text(text)

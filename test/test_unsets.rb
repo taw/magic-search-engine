@@ -101,12 +101,12 @@ class CardDatabaseUnsetsTest < Minitest::Test
   end
 
   def test_dos_protection_other
-    assert_search_results("other:"*9 + "cmc=1", "Who", "What", "When", "Where", "Why")
-    assert_search_results("other:"*9 + "cmc=6")
+    assert_search_results("other:"*20 + "cmc=1", "Who", "What", "When", "Where", "Why")
+    assert_search_results("other:"*20 + "cmc=6")
   end
 
   def test_dos_protection_part
-    assert_search_results("part:"*9 + "cmc=1", "Who", "What", "When", "Where", "Why")
-    assert_search_results("part:"*9 + "cmc=6")
+    assert_search_results("part:"*20 + "cmc=1", "Who", "What", "When", "Where", "Why")
+    assert_search_results("part:"*20 + "cmc=6")
   end
 end

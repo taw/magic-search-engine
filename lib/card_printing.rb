@@ -1,5 +1,5 @@
 class CardPrinting
-  attr_reader :card, :set, :date
+  attr_reader :card, :set, :date, :release_date
   attr_accessor :others
 
   def initialize(card, set, data)
@@ -7,6 +7,7 @@ class CardPrinting
     @set = set
     @data = data
     @others = nil
+    @release_date = @data["release_date"] ? Date.parse(@data["release_date"]) : @set.release_date
   end
 
   def set_code
@@ -45,13 +46,8 @@ class CardPrinting
     @data["timeshifted"] || false
   end
 
-  def release_date
-    @data["release_date"] || @set.release_date
-  end
-
   def year
-    rd = release_date
-    rd && Date.parse(rd).year
+    release_date && release_date.year
   end
 
   def rarity

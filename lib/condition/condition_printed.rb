@@ -4,8 +4,9 @@ class ConditionPrinted < Condition
     @date = date
   end
 
-  def match?(card)
-    match_x_printed?(card, card.release_date)
+  def search(db)
+    query_date, precision = parse_query_date(db)
+    Set.new(db.printings.select{|card| match_date?(card.release_date, query_date, precision)})
   end
 
   def to_s
@@ -14,48 +15,49 @@ class ConditionPrinted < Condition
 
   private
 
-  def match_x_printed?(card, card_date)
-    return false unless card_date
-    card_date = Date.parse(card_date)
-
-    # This is hacky beyond reason
-    # This should go to initializer, but we don't have @db there
-    # The whole system is just silly
-    db = card.set.instance_eval{ @db }
+  def parse_query_date(db)
     date = @date
     db.sets[date.downcase].tap do |set|
-      date = set.release_date if set
+      return [set.release_date, 3] if set and set.release_date
     end
-
     # Fancy precision reduction algorithm is needed instead of placeholders like
     # "2001" -> "2001-01-01" as >=/> would require start of year, <=/< end of year
     # and = would require both anyway
     begin
       # Day date, keep full precision
-      date = Date.parse(date)
+      return [Date.parse(date), 3]
     rescue
       if date =~ /\A\d{4}\z/
         date = Date.parse("#{date}-01-01")
-        card_date = card_date.year
-        date = date.year
+        [date.year, 1]
       elsif date =~ /\A\d{4}-\d{1,2}\z/
         date = Date.parse("#{date}-01")
-        card_date = [card_date.year, card_date.month]
-        date = [date.year, date.month]
+        [[date.year, date.month], 2]
+      else
+        raise "Can't parse: #{date.inspect}"
       end
+    end
+  end
+
+  def match_date?(card_date, query_date, precision)
+    return false unless card_date
+    if precision == 1
+      card_date = card_date.year
+    elsif precision == 2
+      card_date = [card_date.year, card_date.month]
     end
 
     case @op
     when "="
-      card_date == date
+      card_date == query_date
     when ">="
-      card_date >= date
+      card_date >= query_date
     when ">"
-      card_date > date
+      card_date > query_date
     when "<="
-      card_date <= date
+      card_date <= query_date
     when "<"
-      card_date < date
+      card_date < query_date
     else
       raise
     end

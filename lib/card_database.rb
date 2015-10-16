@@ -17,13 +17,7 @@ class CardDatabase
 
   def search(query)
     query = Query.new(query) unless query.is_a?(Query)
-    results = []
-    each_printing do |card|
-      if query.match?(card)
-        results << card
-      end
-    end
-    results.sort
+    query.search(self)
   end
 
   def search_card_names(query_string)
@@ -39,7 +33,7 @@ class CardDatabase
   end
 
   def printings
-    enum_for(:each_printing).to_a
+    @printings ||= Set.new(enum_for(:each_printing))
   end
 
   def subset(sets)

@@ -3,8 +3,8 @@ class ConditionPart < Condition
     @cond = cond
   end
 
-  def match?(card)
-    card.others and (@cond.match?(card) or card.others.any?{|c| @cond.match?(c)})
+  def search(db)
+    @cond.search(db).map{|c| c.others ? Set[c, *c.others] : Set[]}.inject(Set[], &:|)
   end
 
   def to_s
