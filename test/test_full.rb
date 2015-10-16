@@ -66,4 +66,43 @@ class CardDatabaseFullTest < Minitest::Test
       ["Jace, Memory Adept", "m14", "mbp"],
       ["Jace, the Mind Sculptor", "v13"]
   end
+
+  def test_printed
+    assert_search_equal "t:planeswalker printed=m12", "t:planeswalker e:m12"
+    assert_search_results "t:jace printed=2013", "Jace, Memory Adept", "Jace, the Mind Sculptor"
+    assert_search_results "t:jace printed=2012", "Jace, Architect of Thought", "Jace, Memory Adept"
+    assert_search_results "t:jace firstprinted=2012", "Jace, Architect of Thought"
+
+    # This is fairly silly, as it includes prerelease promos etc.
+    assert_search_results "e:ktk firstprinted<ktk",
+      "Abzan Ascendancy", "Act of Treason", "Anafenza, the Foremost",
+      "Ankle Shanker", "Arc Lightning", "Avalanche Tusker", "Bloodsoaked Champion",
+      "Bloodstained Mire", "Butcher of the Horde", "Cancel", "Crackling Doom",
+      "Crater's Claws", "Crippling Chill", "Deflecting Palm", "Despise",
+      "Dig Through Time", "Dragon Throne of Tarkir", "Dragon-Style Twins", "Duneblast",
+      "Erase", "Flooded Strand", "Flying Crane Technique", "Forest", "Grim Haruspex",
+      "Hardened Scales", "Herald of Anafenza", "High Sentinels of Arashin", "Icy Blast", "Incremental Growth", "Island", "Ivorytusk Fortress", "Jeering Instigator",
+      "Jeskai Ascendancy", "Jeskai Elder", "Kheru Lich Lord", "Mardu Ascendancy",
+      "Mardu Heart-Piercer", "Master of Pearls", "Mountain", "Mystic Monastery",
+      "Narset, Enlightened Master", "Naturalize", "Necropolis Fiend", "Nomad Outpost",
+      "Plains", "Polluted Delta", "Rakshasa Vizier", "Rattleclaw Mystic",
+      "Sage of the Inward Eye", "Seek the Horizon", "Shatter", "Sidisi, Brood Tyrant",
+      "Siege Rhino", "Smite the Monstrous", "Sultai Ascendancy", "Surrak Dragonclaw",
+      "Swamp", "Temur Ascendancy", "Thousand Winds", "Trail of Mystery", "Trap Essence",
+      "Trumpet Blast", "Utter End", "Villainous Wealth", "Windstorm", "Windswept Heath",
+      "Wooded Foothills", "Zurgo Helmsmasher"
+    assert_search_results "e:ktk lastprinted>ktk", "Forest", "Mountain", "?"
+  end
+
+  def test_firstprinted
+    assert_search_results "t:planeswalker firstprinted=m12", "Chandra, the Firebrand", "Garruk, Primal Hunter", "Jace, Memory Adept"
+  end
+
+  def test_lastprinted
+    assert_search_results "t:planeswalker lastprinted<=roe", "Chandra Ablaze", "Sarkhan the Mad"
+    assert_search_results "t:planeswalker lastprinted<=2011",
+      "Ajani Goldmane", "Ajani Vengeant", "Chandra Ablaze", "Elspeth Tirel",
+      "Garruk Relentless", "Garruk, the Veil-Cursed", "Gideon Jura", "Liliana of the Veil",
+      "Nissa Revane", "Sarkhan the Mad", "Sorin Markov", "Tezzeret, Agent of Bolas"
+  end
 end

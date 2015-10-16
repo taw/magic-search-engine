@@ -25,6 +25,8 @@ class Condition
     when :mana
       @op, mana = *arg
       @query_mana = parse_query_mana(mana.downcase)
+    when :printed, :firstprinted, :lastprinted
+      @op, @date = *@arg
     when :artist, :flavor, :rarity
       @arg = @arg.downcase
     when :block
@@ -244,11 +246,70 @@ class Condition
     card.reserved
   end
 
+  def match_printed?(card)
+    match_x_printed?(card, card.release_date)
+  end
+
+  def match_lastprinted?(card)
+    match_x_printed?(card, card.last_release_date)
+  end
+
+  def match_firstprinted?(card)
+    match_x_printed?(card, card.first_release_date)
+  end
+
   def inspect
     "#{cond}:#{arg.inspect}"
   end
 
   private
+
+  def match_x_printed?(card, card_date)
+    return false unless card_date
+    card_date = Date.parse(card_date)
+
+    # This is hacky beyond reason
+    # This should go to initializer, but we don't have @db there
+    # The whole system is just silly
+    db = card.set.instance_eval{ @db }
+    date = @date
+    db.sets[date.downcase].tap do |set|
+      date = set.release_date if set
+    end
+
+    # Fancy precision reduction algorithm is needed instead of placeholders like
+    # "2001" -> "2001-01-01" as >=/> would require start of year, <=/< end of year
+    # and = would require both anyway
+    begin
+      # Day date, keep full precision
+      date = Date.parse(date)
+    rescue
+      if date =~ /\A\d{4}\z/
+        date = Date.parse("#{date}-01-01")
+        card_date = card_date.year
+        date = date.year
+      elsif date =~ /\A\d{4}-\d{1,2}\z/
+        date = Date.parse("#{date}-01")
+        card_date = [card_date.year, card_date.month]
+        date = [date.year, date.month]
+      end
+    end
+
+    case @op
+    when "="
+      card_date == date
+    when ">="
+      card_date >= date
+    when ">"
+      card_date > date
+    when "<="
+      card_date <= date
+    when "<"
+      card_date < date
+    else
+      raise
+    end
+  end
 
   def text_query_match?(text, query)
     normalize_name(text).include?(normalize_name(query))

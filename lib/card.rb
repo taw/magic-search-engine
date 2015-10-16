@@ -68,6 +68,14 @@ class Card
     @legality[format]
   end
 
+  def first_release_date
+    @printings.map(&:release_date).compact.min
+  end
+
+  def last_release_date
+    @printings.map(&:release_date).compact.max
+  end
+
   private
 
   def normalize_name(name)
