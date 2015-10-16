@@ -1,4 +1,4 @@
-class ConditionNot < Condition
+class ConditionNot < ConditionSimple
   def initialize(cond)
     @cond = cond
   end

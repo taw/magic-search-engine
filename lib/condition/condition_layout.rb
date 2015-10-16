@@ -1,4 +1,4 @@
-class ConditionLayout < Condition
+class ConditionLayout < ConditionSimple
   def initialize(layout)
     @layout = layout.downcase
     @layout = "double-faced" if @layout == "dfc"

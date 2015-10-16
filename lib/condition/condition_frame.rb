@@ -1,4 +1,4 @@
-class ConditionFrame < Condition
+class ConditionFrame < ConditionSimple
   def initialize(frame)
     @frame = frame.downcase
   end

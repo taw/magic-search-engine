@@ -1,4 +1,4 @@
-class ConditionExact < Condition
+class ConditionExact < ConditionSimple
   def initialize(name)
     @name = name
   end

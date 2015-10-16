@@ -1,4 +1,4 @@
-class ConditionFlavor < Condition
+class ConditionFlavor < ConditionSimple
   def initialize(flavor)
     @flavor = flavor.downcase
   end

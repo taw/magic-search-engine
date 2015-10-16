@@ -1,4 +1,4 @@
-class ConditionIsTimeshifted < Condition
+class ConditionIsTimeshifted < ConditionSimple
   def match?(card)
     card.timeshifted and card.set_code.downcase == "pc"
   end

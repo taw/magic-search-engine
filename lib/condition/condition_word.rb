@@ -1,4 +1,4 @@
-class ConditionWord < Condition
+class ConditionWord < ConditionSimple
   def initialize(word)
     @word = normalize_name(word)
   end

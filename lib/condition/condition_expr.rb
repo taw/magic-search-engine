@@ -1,4 +1,4 @@
-class ConditionExpr < Condition
+class ConditionExpr < ConditionSimple
   def initialize(a, op, b)
     @a = a
     @op = op

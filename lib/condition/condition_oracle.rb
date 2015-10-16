@@ -1,4 +1,4 @@
-class ConditionOracle < Condition
+class ConditionOracle < ConditionSimple
   def initialize(text)
     @text = text
   end

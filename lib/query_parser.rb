@@ -1,6 +1,7 @@
 require "strscan"
 # Where's autoloader when we need it
 require_relative "condition/condition"
+require_relative "condition/condition_simple"
 require_relative "condition/condition_format"
 require_relative "condition/condition_printed"
 Dir["#{__dir__}/condition/condition_*.rb"].each do |path| require_relative path end

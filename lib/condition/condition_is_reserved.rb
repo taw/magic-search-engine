@@ -1,4 +1,4 @@
-class ConditionIsReserved < Condition
+class ConditionIsReserved < ConditionSimple
   def match?(card)
     card.reserved
   end

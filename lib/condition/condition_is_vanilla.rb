@@ -1,4 +1,4 @@
-class ConditionIsVanilla < Condition
+class ConditionIsVanilla < ConditionSimple
   def match?(card)
     card.text == ""
   end
