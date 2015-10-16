@@ -6,7 +6,7 @@ class CardSet
     @block_name   = data["block_name"]
     @block_code   = data["block_code"] && data["block_code"].downcase
     @border       = data["border"]
-    @release_date = data["release_date"]
+    @release_date = data["release_date"] && Date.parse(data["release_date"])
     @db = db
   end
 
