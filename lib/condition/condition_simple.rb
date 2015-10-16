@@ -2,7 +2,7 @@
 class ConditionSimple < Condition
   def search(db)
     # Set#select should return damn set, it's dumb that it returns Array
-    Set.new(db.printings.select{|card| match?(card)})
+    db.printings.select{|card| match?(card)}.to_set
   end
 
   def match?(card)
