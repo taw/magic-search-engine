@@ -1,11 +1,15 @@
 require "strscan"
-require_relative "condition"
+# Where's autoloader when we need it
+require_relative "condition/condition"
+require_relative "condition/condition_format"
+require_relative "condition/condition_printed"
+Dir["#{__dir__}/condition/condition_*.rb"].each do |path| require_relative path end
 
 class QueryParser
   def parse(query_string)
     str = query_string.strip
     if str =~ /\A!(.*)\z/
-      Condition.new(:exact, $1)
+      ConditionExact.new($1)
     else
       @tokens = tokenize(str)
       parse_query
@@ -21,7 +25,7 @@ private
       if s.scan(/[\s,]+/)
         # pass
       elsif s.scan(/and\b/i)
-        # tokens << [:and]
+        # and is default, skip it
       elsif s.scan(/or\b/i)
         tokens << [:or]
       elsif s.scan(%r[[/&]+]i)
@@ -33,57 +37,56 @@ private
       elsif s.scan(/\)/)
         tokens << [:close]
       elsif s.scan(/t:(?:"(.*?)"|([’'\-\u2212\w\*]+))/i)
-        tokens << [:types, s[1] || s[2]]
+        tokens << [:test, ConditionTypes.new(s[1] || s[2])]
       elsif s.scan(/ft:(?:"(.*?)"|(\w+))/i)
-        tokens << [:flavor, s[1] || s[2]]
+        tokens << [:test, ConditionFlavor.new(s[1] || s[2])]
       elsif s.scan(/o:(?:"(.*?)"|([^\s\)]+))/i)
-        tokens << [:oracle, s[1] || s[2]]
+        tokens << [:test, ConditionOracle.new(s[1] || s[2])]
       elsif s.scan(/a:(?:"(.*?)"|(\w+))/i)
-        tokens << [:artist, s[1] || s[2]]
+        tokens << [:test, ConditionArtist.new(s[1] || s[2])]
       elsif s.scan(/(banned|restricted|legal):(?:"(.*?)"|(\w+))/)
-        tokens << [s[1].to_sym, s[2] || s[3]]
+        klass = Kernel.const_get("Condition#{s[1].capitalize}")
+        tokens << [:test, klass.new(s[2] || s[3])]
       elsif s.scan(/e:(?:"(.*?)"|(\w+))/i)
-        tokens << [:edition, s[1] || s[2]]
+        tokens << [:test, ConditionEdition.new(s[1] || s[2])]
       elsif s.scan(/watermark:(?:"(.*?)"|(\w+))/i)
-        tokens << [:watermark, s[1] || s[2]]
+        tokens << [:test, ConditionWatermark.new(s[1] || s[2])]
       elsif s.scan(/f:(?:"(.*?)"|(\w+))/i)
-        tokens << [:format, s[1] || s[2]]
+        tokens << [:test, ConditionFormat.new(s[1] || s[2])]
       elsif s.scan(/b:(?:"(.*?)"|(\S+))/i)
-        tokens << [:block, s[1] || s[2]]
+        tokens << [:test, ConditionBlock.new(s[1] || s[2])]
       elsif s.scan(/c:([wubrgcml]+)/i)
-        tokens << [:colors, s[1]]
+        tokens << [:test, ConditionColors.new(s[1])]
       elsif s.scan(/ci:([wubrgcml]+)/i)
-        tokens << [:color_identity, s[1]]
+        tokens << [:test, ConditionColorIdentity.new(s[1])]
       elsif s.scan(/c!([wubrgcml]+)/i)
-        tokens << [:colors_exclusive, s[1]]
+        tokens << [:test, ConditionColorsExclusive.new(s[1])]
       elsif s.scan(/(printed|firstprinted|lastprinted)\s*(>=|>|<=|<|=)\s*(\S+)/)
-        tokens << [s[1].to_sym, [s[2], s[3]]]
+        klass = Kernel.const_get("Condition#{s[1].capitalize}")
+        tokens << [:test, klass.new(s[2], s[3])]
       elsif s.scan(/r:(\S+)/)
-        tokens << [:rarity, s[1].downcase]
+        tokens << [:test, ConditionRarity.new(s[1])]
       elsif s.scan(/(pow|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow|tou|cmc|loyalty|year|-?\d+\.\d+|-?\.\d+|-?\d*½|-?\d+)\b/i)
-        tokens << [:expr, [s[1], s[2], s[3]]]
+        tokens << [:test, ConditionExpr.new(s[1], s[2], s[3])]
       elsif s.scan(/mana\s*(>=|>|<=|<|=)\s*((?:[\dwubrgxyz]|\{.*?\})+)/i)
-        tokens << [:mana, [s[1], s[2]]]
+        tokens << [:test, ConditionMana.new(s[1], s[2])]
       elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted|reserved|multipart)\b/i)
         tokens << [:not] if s[1].downcase == "not"
-        tokens << [:"is_#{s[2]}"]
+        klass = Kernel.const_get("ConditionIs#{s[2].capitalize}")
+        tokens << [:test, klass.new]
       elsif s.scan(/(is|not):(split|flip|dfc)\b/i)
         tokens << [:not] if s[1].downcase == "not"
-        layout = s[2]
-        layout = "double-faced" if layout == "dfc"
-        tokens << [:layout, layout]
+        tokens << [:test, ConditionLayout.new(s[2])]
       elsif s.scan(/layout:(normal|leveler|vanguard|dfc|token|split|flip|plane|scheme|phenomenon)/)
-        layout = s[1]
-        layout = "double-faced" if layout == "dfc"
-        tokens << [:layout, layout]
+        tokens << [:test, ConditionLayout.new(s[1])]
       elsif s.scan(/(is|not):(old|new|future)\b/)
         tokens << [:not] if s[1].downcase == "not"
-        tokens << [:frame, s[2].downcase]
+        tokens << [:test, ConditionFrame.new(s[2].downcase)]
       elsif s.scan(/(is|not):(black-bordered|silver-bordered|white-bordered)\b/i)
         tokens << [:not] if s[1].downcase == "not"
-        tokens << [:border, s[2].sub("-bordered", "").downcase]
+        tokens << [:test, ConditionBorder.new(s[2].sub("-bordered", "").downcase)]
       elsif s.scan(/"(.*?)"/)
-        tokens << [:word, s[1]]
+        tokens << [:test, ConditionWord.new(s[1])]
       elsif s.scan(/not/)
         tokens << [:not]
       elsif s.scan(/other:/)
@@ -96,16 +99,16 @@ private
         if words.size > 1
           tokens << [:open]
           words.each do |w|
-            tokens << [:word, w]
+            tokens << [:test, ConditionWord.new(w)]
           end
           tokens << [:close]
         else
-          tokens << [:word, s[1]]
+          tokens << [:test, ConditionWord.new(s[1])]
         end
       else
         warn "Query parse error: #{str}"
         s.scan(/(\S+)/)
-        tokens << [:word, s[1]]
+        tokens << [:test, ConditionWord.new(s[1])]
       end
     end
     tokens
@@ -117,7 +120,7 @@ private
     elsif conds.size == 1
       conds[0]
     else
-      Condition.new(:and, conds)
+      ConditionAnd.new(*conds)
     end
   end
 
@@ -138,7 +141,7 @@ private
         else
           right_query = parse_query
           if right_query
-            return Condition.new(:or, [conds_to_query(conds), right_query])
+            return ConditionOr.new(conds_to_query(conds), right_query)
           else
             break
           end
@@ -149,13 +152,13 @@ private
         left_query = conds_to_query(conds)
         right_query = parse_query
         if left_query and right_query
-          return Condition.new(:part, Condition.new(:and, [left_query, Condition.new(:other, right_query)]))
+          return ConditionPart.new(ConditionAnd.new(left_query, ConditionOther.new(right_query)))
         else
           query = left_query || right_query
           if query
-            return Condition.new(:part, query)
+            return ConditionPart.new(query)
           else
-            return Condition.new(:is_multipart, nil)
+            return ConditionIsMultipart.new
           end
         end
       # includes open / not
@@ -185,7 +188,8 @@ private
       tok, = @tokens.shift
       cond = parse_cond
       if cond
-        Condition.new(tok, cond)
+        klass = Kernel.const_get("Condition#{tok.capitalize}")
+        klass.new(cond)
       else
         # Parse error like "-)" or final "-"
         nil
@@ -194,9 +198,10 @@ private
       # Parse error like "- or"
       @tokens.shift
       parse_cond
+    when :test
+      @tokens.shift[1]
     else
-      t, a = @tokens.shift
-      Condition.new(t, a)
+      warn "Unknown token type #{@tokens[0]}"
     end
   end
 end
