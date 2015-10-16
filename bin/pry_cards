@@ -5,4 +5,4 @@ require_relative "../lib/card_database"
 json_path = Pathname(__dir__) + "../data/index.json"
 @db = CardDatabase.load(json_path)
 
-require 'pry'; binding.pry
+require 'pry'; binding.pry(@db)
