@@ -50,7 +50,8 @@ class CardPrinting
   end
 
   def year
-    Date.parse(release_date).year
+    rd = release_date
+    rd && Date.parse(rd).year
   end
 
   def rarity

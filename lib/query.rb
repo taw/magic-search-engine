@@ -16,9 +16,6 @@ class Query
 
 private
 
-  # Tokens are:
-  # open, close, not, or, atom
-  # and token is ignored as it does literally nothing
   def tokenize(str)
     tokens = []
     s = StringScanner.new(str)

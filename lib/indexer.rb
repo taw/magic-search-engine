@@ -84,7 +84,7 @@ class Indexer
         "block_code" => block[0],
         "block_name" => block[1],
         "border" => set_data["border"],
-        "releaseDate" => format_release_date(set_data["releaseDate"]),
+        "release_date" => format_release_date(set_data["releaseDate"]),
       }.compact
 
       set_data["cards"].each do |card_data|

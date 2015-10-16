@@ -7,6 +7,13 @@ class Minitest::Test
     assert_equal cards.sort, results.sort, "Search for #{query}"
   end
 
+  def assert_search_results_printings(query, *card_printings)
+    results = @db.search(query)
+    expected = card_printings.map{|name, *sets| [name, *sets.sort]}
+    actual   = results.group_by(&:name).map{|name, cards| [name, *cards.map(&:set_code).sort]}
+    assert_equal expected, actual, "Search for #{query}"
+  end
+
   def assert_count_results(query, count)
     results = @db.search_card_names(query)
     assert_equal count, results.size, "Search for #{query}"
