@@ -117,7 +117,6 @@ class Indexer
             "life", # vanguard
         ).merge(
           "printings" => [],
-          "legalities" => mtgjson_legalities,
           "colors" => format_colors(card_data["colors"]),
         ).compact
         card["printings"] << [

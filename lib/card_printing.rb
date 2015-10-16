@@ -73,8 +73,8 @@ class CardPrinting
     end
   end
 
-  def method_missing(m)
-    @card.send(m)
+  def method_missing(m,*args)
+    @card.send(m,*args)
   end
 
   include Comparable

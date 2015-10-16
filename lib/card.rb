@@ -1,13 +1,14 @@
 # This class represents card from index point of view, not from data point of view
 # (thinking in solr/lucene terms)
 require "date"
+require_relative "card_legality"
 
 class Card
   attr_reader :data, :printings
   attr_writer :printings # For db subset
 
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
-  attr_reader :partial_color_identity, :legality, :cmc, :text, :power, :toughness, :loyalty, :extra
+  attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
   def initialize(data)
     @data = data
     @printings = []
@@ -20,7 +21,6 @@ class Card
     @mana_cost = @data["manaCost"] ? @data["manaCost"].downcase : nil
     @reserved = @data["reserved"] || false
     @types = ["types", "subtypes", "supertypes"].map{|t| @data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "")}
-    @legality = @data["legalities"]
     @cmc = @data["cmc"] || 0
     # Normalize unicode, remove remainder text
     @power = @data["power"] ? smart_convert_powtou(@data["power"]) : nil
@@ -61,6 +61,11 @@ class Card
 
   def to_s
     inspect
+  end
+
+  def legality(format)
+    @legality ||= CardLegality.new(@name, @printings.map(&:set_code), @layout).legality
+    @legality[format]
   end
 
   private
