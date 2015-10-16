@@ -1,4 +1,4 @@
-class ConditionBlock < ConditionSimple
+class ConditionBlock < Condition
   def initialize(block)
     @block = normalize_name(block)
   end

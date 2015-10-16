@@ -1,4 +1,4 @@
-class ConditionPrinted < ConditionSimple
+class ConditionPrinted < Condition
   def initialize(op, date)
     @op = op
     @date = date
