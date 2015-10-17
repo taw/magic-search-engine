@@ -28,7 +28,7 @@ class ConditionFormat < Condition
   def card_legality(card, max_date)
     if max_date
       printings = card.printings.select{|c| c.release_date <= max_date}.map(&:set_code)
-      CardLegality.new(@name, printings, card.layout, card.types).legality[@format]
+      CardLegality.new(@name, printings, card.layout, card.types).legality(@format)
     else
       card.legality(@format)
     end

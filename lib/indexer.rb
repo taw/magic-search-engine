@@ -91,7 +91,7 @@ class Indexer
 
         sets_printed = card_data["printings"].map{|set_code| sets_code_translator[set_code]}
         mtgjson_legalities = format_legalities(card_data)
-        algorithm_legalities = CardLegality.new(name, sets_printed, card_data["layout"], (card_data["types"] || []).map(&:downcase)).legality
+        algorithm_legalities = CardLegality.new(name, sets_printed, card_data["layout"], (card_data["types"] || []).map(&:downcase)).all_legalities
 
         if mtgjson_legalities != algorithm_legalities
           puts "FAIL #{name} #{mtgjson_legalities.sort.inspect} #{algorithm_legalities.sort.inspect}"
