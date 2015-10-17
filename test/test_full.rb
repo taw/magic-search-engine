@@ -113,6 +113,14 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_results "time:wwk t:jace", "Jace Beleren", "Jace, the Mind Sculptor"
   end
 
+  def test_time_travel_printed
+    assert_search_equal "time:lw t:planeswalker", "e:lw t:planeswalker"
+    assert_search_results "t:jace lastprinted=wwk"
+    assert_search_results "t:jace printed=vma", "Jace, the Mind Sculptor"
+    assert_search_results "time:nph t:jace lastprinted=wwk", "Jace, the Mind Sculptor"
+    assert_search_results "time:nph t:jace printed=vma"
+  end
+
   def test_sort
     assert_search_results "t:chandra sort:name",
       "Chandra Ablaze", "Chandra Nalaar", "Chandra, Pyromaster", "Chandra, Roaring Flame", "Chandra, the Firebrand"

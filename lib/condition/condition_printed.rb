@@ -1,19 +1,32 @@
+# This condition checks printing, first/lastprinted check card.
+# Should they check same thing?
 class ConditionPrinted < Condition
   def initialize(op, date)
     @op = op
     @date = date
   end
 
-  def search(db, metadata)
+  def search(db)
     query_date, precision = parse_query_date(db)
-    db.printings.select{|card| match_date?(card.release_date, query_date, precision)}.to_set
+    max_date = db.sets[@time].release_date if @time
+    db.printings.select{|card| match_date?(get_date(card, max_date), query_date, precision)}.to_set
   end
 
   def to_s
     "printed#{@op}#{@date}"
   end
 
+  def metadata=(options)
+    @time = options[:time]
+  end
+
   private
+
+  # As it operates on printing level not card level we don't need to do any filtering here
+  # Query will filter it out anyway. This might need to change if semantics of this filter changes
+  def get_date(card, max_date)
+    card.release_date
+  end
 
   def parse_query_date(db)
     date = @date

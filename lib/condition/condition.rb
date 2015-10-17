@@ -14,6 +14,10 @@ class Condition
     false
   end
 
+  # Save only what's needed, by default nothing
+  def metadata=(options)
+  end
+
   private
 
   def normalize_text(text)

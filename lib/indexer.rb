@@ -20,7 +20,6 @@ class Pathname
 end
 
 MagicBlocks = [
-  # Sort of not really:
   ["ia", "Ice Age", "ia", "ai", "cs"],
   # ["shm", "Shadowmoor", "shm", "eve"], # Also included in Lorwyn
   ["mr", "Mirage", "mr", "vi", "wl"],
