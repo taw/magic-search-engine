@@ -27,8 +27,6 @@ class ConditionAnd < Condition
       results = results.select{|card| cond.match?(card) }
     end
     results.to_set
-  rescue
-    require 'pry'; binding.pry
   end
 
   def match?(card)
