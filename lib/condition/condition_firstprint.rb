@@ -1,6 +1,6 @@
-class ConditionFirstprinted < ConditionPrinted
+class ConditionFirstprint < ConditionPrint
   def to_s
-    "firstprinted#{@op}#{@date}"
+    "firstprint#{@op}#{@date}"
   end
 
   private

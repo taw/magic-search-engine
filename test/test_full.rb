@@ -67,14 +67,14 @@ class CardDatabaseFullTest < Minitest::Test
       ["Jace, the Mind Sculptor", "v13"]
   end
 
-  def test_printed
-    assert_search_equal "t:planeswalker printed=m12", "t:planeswalker e:m12"
-    assert_search_results "t:jace printed=2013", "Jace, Memory Adept", "Jace, the Mind Sculptor"
-    assert_search_results "t:jace printed=2012", "Jace, Architect of Thought", "Jace, Memory Adept"
-    assert_search_results "t:jace firstprinted=2012", "Jace, Architect of Thought"
+  def test_print
+    assert_search_equal "t:planeswalker print=m12", "t:planeswalker e:m12"
+    assert_search_results "t:jace print=2013", "Jace, Memory Adept", "Jace, the Mind Sculptor"
+    assert_search_results "t:jace print=2012", "Jace, Architect of Thought", "Jace, Memory Adept"
+    assert_search_results "t:jace firstprint=2012", "Jace, Architect of Thought"
 
     # This is fairly silly, as it includes prerelease promos etc.
-    assert_search_results "e:ktk firstprinted<ktk",
+    assert_search_results "e:ktk firstprint<ktk",
       "Abzan Ascendancy", "Act of Treason", "Anafenza, the Foremost",
       "Ankle Shanker", "Arc Lightning", "Avalanche Tusker", "Bloodsoaked Champion",
       "Bloodstained Mire", "Butcher of the Horde", "Cancel", "Crackling Doom",
@@ -92,17 +92,17 @@ class CardDatabaseFullTest < Minitest::Test
       "Trumpet Blast", "Utter End", "Villainous Wealth", "Windstorm", "Windswept Heath",
       "Wooded Foothills", "Zurgo Helmsmasher"
 
-    assert_search_results "e:ktk lastprinted>ktk",
+    assert_search_results "e:ktk lastprint>ktk",
       "Act of Treason", "Ainok Tracker", "Altar of the Brood", "Arc Lightning", "Bloodfell Caves", "Bloodstained Mire", "Blossoming Sands", "Briber's Purse", "Debilitating Injury", "Disdainful Stroke", "Dismal Backwater", "Dragonscale Boon", "Dutiful Return", "Flooded Strand", "Forest", "Ghostfire Blade", "Grim Haruspex", "Heir of the Wilds", "Hordeling Outburst", "Island", "Jeering Instigator", "Jungle Hollow", "Mountain", "Mystic of the Hidden Way", "Naturalize", "Plains", "Polluted Delta", "Rugged Highlands", "Ruthless Ripper", "Scoured Barrens", "Shatter", "Smite the Monstrous", "Sultai Charm", "Summit Prowler", "Suspension Field", "Swamp", "Swiftwater Cliffs", "Thornwood Falls", "Tormenting Voice", "Tranquil Cove", "Utter End", "Watcher of the Roost", "Weave Fate", "Wind-Scarred Crag", "Windstorm", "Windswept Heath", "Wooded Foothills"
   end
 
-  def test_firstprinted
-    assert_search_results "t:planeswalker firstprinted=m12", "Chandra, the Firebrand", "Garruk, Primal Hunter", "Jace, Memory Adept"
+  def test_firstprint
+    assert_search_results "t:planeswalker firstprint=m12", "Chandra, the Firebrand", "Garruk, Primal Hunter", "Jace, Memory Adept"
   end
 
-  def test_lastprinted
-    assert_search_results "t:planeswalker lastprinted<=roe", "Chandra Ablaze", "Sarkhan the Mad"
-    assert_search_results "t:planeswalker lastprinted<=2011",
+  def test_lastprint
+    assert_search_results "t:planeswalker lastprint<=roe", "Chandra Ablaze", "Sarkhan the Mad"
+    assert_search_results "t:planeswalker lastprint<=2011",
       "Ajani Goldmane", "Ajani Vengeant", "Chandra Ablaze", "Elspeth Tirel",
       "Garruk Relentless", "Garruk, the Veil-Cursed", "Gideon Jura", "Liliana of the Veil",
       "Nissa Revane", "Sarkhan the Mad", "Sorin Markov", "Tezzeret, Agent of Bolas"
@@ -115,10 +115,10 @@ class CardDatabaseFullTest < Minitest::Test
 
   def test_time_travel_printed
     assert_search_equal "time:lw t:planeswalker", "e:lw t:planeswalker"
-    assert_search_results "t:jace lastprinted=wwk"
-    assert_search_results "t:jace printed=vma", "Jace, the Mind Sculptor"
-    assert_search_results "time:nph t:jace lastprinted=wwk", "Jace, the Mind Sculptor"
-    assert_search_results "time:nph t:jace printed=vma"
+    assert_search_results "t:jace lastprint=wwk"
+    assert_search_results "t:jace print=vma", "Jace, the Mind Sculptor"
+    assert_search_results "time:nph t:jace lastprint=wwk", "Jace, the Mind Sculptor"
+    assert_search_results "time:nph t:jace print=vma"
   end
 
   def test_time_travel_standard_legal_reprints_activate_in_block

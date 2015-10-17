@@ -13,7 +13,7 @@ class Query
     raise unless @cond
 
     if @metadata[:time]
-      @cond = ConditionAnd.new(@cond, ConditionPrinted.new("<=", @metadata[:time]))
+      @cond = ConditionAnd.new(@cond, ConditionPrint.new("<=", @metadata[:time]))
     end
     @metadata[:no_extras] = !@cond.include_extras?
 

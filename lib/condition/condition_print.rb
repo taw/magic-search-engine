@@ -1,6 +1,6 @@
 # This condition checks printing, first/lastprinted check card.
 # Should they check same thing?
-class ConditionPrinted < Condition
+class ConditionPrint < Condition
   def initialize(op, date)
     @op = op
     @date = date
@@ -13,7 +13,7 @@ class ConditionPrinted < Condition
   end
 
   def to_s
-    "printed#{@op}#{@date}"
+    "print#{@op}#{@date}"
   end
 
   def metadata=(options)
