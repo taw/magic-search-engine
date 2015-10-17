@@ -3,7 +3,7 @@ require "strscan"
 require_relative "condition/condition"
 require_relative "condition/condition_simple"
 require_relative "condition/condition_format"
-require_relative "condition/condition_printed"
+require_relative "condition/condition_print"
 Dir["#{__dir__}/condition/condition_*.rb"].each do |path| require_relative path end
 
 class QueryParser
@@ -64,7 +64,7 @@ private
         @tokens << [:test, ConditionColorIdentity.new(s[1])]
       elsif s.scan(/c!([wubrgcml]+)/i)
         @tokens << [:test, ConditionColorsExclusive.new(s[1])]
-      elsif s.scan(/(printed|firstprinted|lastprinted)\s*(>=|>|<=|<|=)\s*(\S+)/)
+      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=)\s*(\S+)/)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         @tokens << [:test, klass.new(s[2], s[3])]
       elsif s.scan(/r:(\S+)/)
