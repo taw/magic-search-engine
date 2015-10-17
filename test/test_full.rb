@@ -121,6 +121,29 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_results "time:nph t:jace printed=vma"
   end
 
+  def test_time_travel_standard_legal_reprints_activate_in_block
+    assert_search_results 'f:"return to ravnica block" naturalize', "Naturalize"
+    assert_search_results 'time:rtr f:"return to ravnica block" naturalize'
+    assert_search_results 'time:gtc f:"return to ravnica block" naturalize', "Naturalize"
+    assert_search_results 'time:dgm f:"return to ravnica block" naturalize', "Naturalize"
+  end
+
+  def test_time_travel_standard_legal_reprints_activate_in_modern
+    assert_search_results "f:legacy rancor", "Rancor"
+    assert_search_results "f:modern rancor", "Rancor"
+    assert_search_results "time:m11 f:legacy rancor", "Rancor"
+    assert_search_results "time:m11 f:modern rancor"
+  end
+
+  def test_time_travel_eternal_formats_accept_all_sets
+    assert_search_equal "f:legacy t:jace", "t:jace"
+    assert_search_equal "f:legacy time:nph t:jace", "time:nph t:jace"
+    assert_search_equal "f:vintage t:jace", "t:jace"
+    assert_search_equal "f:vintage time:nph t:jace", "time:nph t:jace"
+    assert_search_equal "f:commander t:jace", "t:jace"
+    assert_search_equal "f:commander time:nph t:jace", "time:nph t:jace"
+  end
+
   def test_sort
     assert_search_results "t:chandra sort:name",
       "Chandra Ablaze", "Chandra Nalaar", "Chandra, Pyromaster", "Chandra, Roaring Flame", "Chandra, the Firebrand"
