@@ -222,46 +222,49 @@ class CardLegality
     @cache = {}
   end
 
-  # This is awful in that
-  # we use #all_legalities for sake of indexer validation that legalities are working
-  # then we use #legility for actual checks for performance reasons,
-  # and we just hope they show same stuff
-  # Moving some of that code to constructor makes it a bit less risky, but it's still silly
   def all_legalities
-    return {} if @extra_layout
-    return {"commander"=>"banned", "legacy"=>"banned", "vintage"=>"banned"} if @conspiracy
-
-    if @sets.empty?
-      formats = Set[]
-    else
-      formats = Set["commander", "legacy", "vintage"]
+    legalities = {}
+    [
+      "commander",
+      "ice age block",
+      "innistrad block",
+      "invasion block",
+      "kamigawa block",
+      "legacy",
+      "lorwyn-shadowmoor block",
+      "masques block",
+      "mirage block",
+      "mirrodin block",
+      "modern",
+      "odyssey block",
+      "onslaught block",
+      "ravnica block",
+      "return to ravnica block",
+      "scars of mirrodin block",
+      "shards of alara block",
+      "standard",
+      "tarkir block",
+      "tempest block",
+      "theros block",
+      "time spiral block",
+      "un-sets",
+      "urza block",
+      "vintage",
+      "zendikar block",
+    ].each do |format|
+      legalities[format] = legality(format)
     end
-    formats << "un-sets" if @unsets
-    formats << "legacy" << "vintage" if @cns
-    @sets.each do |set|
-      # Not real printings, presumably
-      if SetLegality[set]
-        SetLegality[set].each do |fmt|
-          formats << fmt
-        end
-      end
-    end
-    leg = {}
-    formats.each do |format|
-      leg[format] = "legal"
-    end
-    leg.merge!(BanLists[@card_name]) if BanLists[@card_name]
-    leg
+    legalities.compact
   end
 
   def legality(format)
     unless @cache.has_key?(format)
       @cache[format] = begin
         eternal_format = ["commander", "legacy", "vintage"].include?(format)
-        if format == "un-sets"
-          @unsets
-        elsif @extra_layout
+        if @extra_layout
           nil
+        elsif format == "un-sets"
+          @unsets ? "legal" : nil
         elsif @conspiracy
           eternal_format ? "banned" : nil
         else
