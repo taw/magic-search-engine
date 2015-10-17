@@ -4,11 +4,15 @@ class ConditionFormat < Condition
     @format = "commander" if @format == "edh"
   end
 
-  def search(db, metadata)
+  def search(db)
     db.printings.select do |card|
       legality = card.legality(@format)
       legality == "legal" or legality == "restricted"
     end.to_set
+  end
+
+  def metadata=(options)
+    @time = options[:time]
   end
 
   def to_s

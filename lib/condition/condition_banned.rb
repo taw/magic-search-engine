@@ -1,5 +1,5 @@
 class ConditionBanned < ConditionFormat
-  def search(db, metadata)
+  def search(db)
     db.printings.select do |card|
       legality = card.legality(@format)
       legality == "banned"

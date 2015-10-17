@@ -15,13 +15,16 @@ class Query
     if @metadata[:time]
       @cond = ConditionAnd.new(@cond, ConditionPrinted.new("<=", @metadata[:time]))
     end
-
     @metadata[:no_extras] = !@cond.include_extras?
+
+    # The only part that's used is time
+    @cond.metadata = @metadata
+
     # puts "Parse #{query_string} -> #{@cond}"
   end
 
   def search(db)
-    results = @cond.search(db, @metadata)
+    results = @cond.search(db)
     results = results.reject(&:extra) if @metadata[:no_extras]
 
     results = case @metadata[:sort]

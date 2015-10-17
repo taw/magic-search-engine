@@ -1,10 +1,15 @@
 class ConditionFirstprinted < ConditionPrinted
-  def search(db, metadata)
-    query_date, precision = parse_query_date(db)
-    db.printings.select{|card| match_date?(card.first_release_date, query_date, precision)}.to_set
-  end
-
   def to_s
     "firstprinted#{@op}#{@date}"
+  end
+
+  private
+
+  def get_date(card, max_date)
+    if max_date
+      card.card.printings.map(&:release_date).compact.select{|d| d <= max_date}.min
+    else
+      card.first_release_date
+    end
   end
 end

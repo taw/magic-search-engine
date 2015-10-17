@@ -16,13 +16,17 @@ class ConditionOr < Condition
     @conds.any?(&:include_extras?)
   end
 
-  def search(db, metadata)
-    @conds.map{|cond| cond.search(db, metadata)}.inject(&:|)
+  def search(db)
+    @conds.map{|cond| cond.search(db)}.inject(&:|)
   end
 
   def match?(card)
     raise unless @simple
     @conds.any?{|cond| cond.match?(card)}
+  end
+
+  def metadata=(options)
+    @conds.each{|cond| cond.metadata = options}
   end
 
   def simple?
