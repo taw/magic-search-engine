@@ -157,4 +157,59 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_results "t:chandra sort:oldall",
       "Chandra Nalaar", "Chandra Ablaze", "Chandra, the Firebrand", "Chandra, Pyromaster", "Chandra, Roaring Flame"
   end
+
+  def test_alt_rebecca_guay
+    assert_search_results %Q[a:"rebecca guay" alt:(-a:"rebecca guay")],
+      "Ancestral Memories",
+      "Angelic Page",
+      "Angelic Wall",
+      "Auramancer",
+      "Bitterblossom",
+      "Boomerang",
+      "Channel",
+      "Coral Merfolk",
+      "Dark Banishing",
+      "Dark Ritual",
+      "Elven Cache",
+      "Elvish Lyrist",
+      "Elvish Piper",
+      "Mana Breach",
+      "Memory Lapse",
+      "Mountain",
+      "Mulch",
+      "Path to Exile",
+      "Phantom Monster",
+      "Plains",
+      "Sea Sprite",
+      "Serra Angel",
+      "Spellstutter Sprite",
+      "Taunting Elf",
+      "Thoughtleech",
+      "Twiddle",
+      "Wall of Wood",
+      "Wanderlust",
+      "Wood Elves"
+  end
+
+  def test_alt_test_of_time
+    assert_search_results "year=1993 alt:year=2015",
+      "Counterspell",
+      "Dark Ritual",
+      "Disenchant",
+      "Forest",
+      "Island",
+      "Jayemdae Tome",
+      "Lightning Bolt",
+      "Mahamoti Djinn",
+      "Mountain",
+      "Nightmare",
+      "Plains",
+      "Sengir Vampire",
+      "Serra Angel",
+      "Shatter",
+      "Shivan Dragon",
+      "Spell Blast",
+      "Swamp",
+      "Tranquility"
+  end
 end
