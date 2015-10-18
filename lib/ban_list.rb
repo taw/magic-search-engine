@@ -163,6 +163,15 @@ class BanList
     status
   end
 
+  def full_ban_list(format, time)
+    result = {}
+    @bans.fetch(format, {}).keys.each do |card_name|
+      status = legality(format, card_name, time)
+      result[card_name] = status unless status == "legal"
+    end
+    result
+  end
+
   private
 
   def parse_changes(changes)
