@@ -131,7 +131,7 @@ class BanlistTest < Minitest::Test
   def test_banlist_2011
     # Weirdo exception for "War of Attrition" event deck ignored
     assert_banlist_changes "June 2011",
-      "standard banned", "Jace, the Mind Sculptop",
+      "standard banned", "Jace, the Mind Sculptor",
       "standard banned", "Stoneforge Mystic"
     assert_banlist_changes "September 2011",
       "extended banned", "Jace, the Mind Sculptor",
@@ -243,7 +243,7 @@ class BanlistTest < Minitest::Test
 
   def test_banlist_2006
     assert_banlist_changes "March 2006",
-      "mirrodin block banned", "AEther Vial",
+      "mirrodin block banned", "Aether Vial",
       "mirrodin block banned", "Ancient Den",
       "mirrodin block banned", "Arcbound Ravager",
       "mirrodin block banned", "Darksteel Citadel",
@@ -266,9 +266,6 @@ class BanlistTest < Minitest::Test
       "standard banned", "Vault of Whispers",
       "vintage restricted", "Trinisphere"
 
-    # Starter Level sets Starter 1999, Starter 2000, Portal, Portal Second Age, and Portal Three Kingdoms become legal in Legacy and Vintage in October.
-    assert false, "This should go to another test"
-
     assert_banlist_changes "September 2005",
       "extended banned", "Aether Vial",
       "extended banned", "Disciple of the Vault",
@@ -290,10 +287,35 @@ class BanlistTest < Minitest::Test
       "vintage unrestricted", "Braingeyser",
       "vintage unrestricted", "Doomsday",
       "vintage unrestricted", "Earthcraft",
-      "vintage unrestricted", "Fork"
-
-    # In September 2004 Legacy becomes independent of Vintage
-    # Full banlist in separate tests
+      "vintage unrestricted", "Fork",
+      # In September 2004 Legacy becomes independent of Vintage
+      "legacy unbanned", "Braingeyser",
+      "legacy unbanned", "Burning Wish",
+      "legacy unbanned", "Chrome Mox",
+      "legacy unbanned", "Crop Rotation",
+      "legacy unbanned", "Doomsday",
+      "legacy unbanned", "Enlightened Tutor",
+      "legacy unbanned", "Fact or Fiction",
+      "legacy unbanned", "Fork",
+      "legacy unbanned", "Lion's Eye Diamond",
+      "legacy unbanned", "Lotus Petal",
+      "legacy unbanned", "Mox Diamond",
+      "legacy unbanned", "Mystical Tutor",
+      "legacy unbanned", "Regrowth",
+      "legacy unbanned", "Stroke of Genius",
+      "legacy unbanned", "Voltaic Key",
+      "legacy banned", "Bazaar of Baghdad",
+      "legacy banned", "Goblin Recruiter",
+      "legacy banned", "Hermit Druid",
+      "legacy banned", "Illusionary Mask",
+      "legacy banned", "Land Tax",
+      "legacy banned", "Mana Drain",
+      "legacy banned", "Metalworker",
+      "legacy banned", "Mishra's Workshop",
+      "legacy banned", "Oath of Druids",
+      "legacy banned", "Replenish",
+      "legacy banned", "Skullclamp",
+      "legacy banned", "Worldgorger Dragon"
 
     assert_banlist_status "December 2004",
       "vintage unrestricted", "Stroke of Genius"
@@ -430,8 +452,6 @@ class BanlistTest < Minitest::Test
   end
 
   def test_banlist_1995
-    assert false, "'Summon Legend' cards were unrestricted."
-
     assert_banlist_changes "April 1995",
       "vintage+ restricted", "Balance",
       "standard restricted", "Balance"
@@ -572,6 +592,16 @@ class BanlistTest < Minitest::Test
         refute_equal legacy_banlist, vintage_plus_banlist, "Legacy is not Vintage+ at #{date}"
       end
     end
+  end
+
+  def test_legends_restricted
+    assert false, "summon legend restricted until 1995"
+  end
+
+  def test_format_legality_changes
+    # Starter Level sets Starter 1999, Starter 2000, Portal, Portal Second Age, and Portal Three Kingdoms become legal in Legacy and Vintage in October.
+    assert false, "This should go to another test"
+    # Also all Exended variants etc. None of that belongs here
   end
 
   ##################################################
