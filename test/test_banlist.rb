@@ -1,7 +1,6 @@
 require_relative "test_helper"
 
 class BanlistTest < Minitest::Test
-
   def setup
     @db = load_database
     @ban_list = BanList.new
@@ -15,11 +14,20 @@ class BanlistTest < Minitest::Test
     [prev_set, this_set]
   end
 
+  def assert_hash_equal(h1, h2, *msg)
+    # Surely there oucht to be a plugin which fixes that, right?
+    assert_equal(
+      h1.sort.map{|k,v| "#{k} #{v}\n"}.join,
+      h2.sort.map{|k,v| "#{k} #{v}\n"}.join,
+      *msg
+    )
+  end
+
   def assert_banlist_status(set, format, expected_legality, card_name)
     set_date = @db.sets[set].release_date
     card = @db.cards[card_name]
     actual_legality = @ban_list.legality(format, card_name, set_date) || "legal"
-    assert_equal expected_legality, actual_legality, "Legality of #{card_name} in #{format} during #{set}"
+    assert_equal expected_legality, actual_legality, "Legality of #{card_name} in #{format} during #{set} (#{set_date})"
   end
 
   def assert_banlist_change(prev_set, this_set, format, change, card)
@@ -71,7 +79,7 @@ class BanlistTest < Minitest::Test
       restricted_cards.map{|c| [c, "restricted"]}
     ]
     actual_banlist = @ban_list.full_ban_list(format, time)
-    assert_equal expected_banlist, actual_banlist, "Full banlist for #{format} at #{time}"
+    assert_hash_equal expected_banlist, actual_banlist, "Full banlist for #{format} at #{time}"
   end
 
   # Based on:
@@ -381,8 +389,75 @@ class BanlistTest < Minitest::Test
       "vintage+ restricted", "Necropotence"
   end
 
+
   def test_banlist_1999
-    assert false, "COMBO WINTER, WAY TOO MANY BANLIST CHANGES HERE."
+
+
+    assert_banlist_changes "mar 1999",
+      "standard banned", "Dream Halls",
+      "standard banned", "Earthcraft",
+      "standard banned", "Fluctuator",
+      "standard banned", "Lotus Petal",
+      "standard banned", "Recurring Nightmare",
+      "standard banned", "Time Spiral",
+      "standard banned", "Memory Jar", # banned retroactively in mid in mid March.
+      "extended banned", "Memory Jar", # banned retroactively in mid in mid March.
+      "urza block banned", "Time Spiral",
+      "urza block banned", "Memory Jar",
+      "urza block banned", "Windfall",
+      # This is literally impossible according to "legacy and vintage unlinked sep 2004" theory
+      # but that's what http://members.tripod.com/blue_midget/Gossip/banned.htm says
+      "legacy unbaned", "Candelabra of Tawnos",
+      "legacy unbaned", "Copy Artifact",
+      "legacy unbaned", "Maze of Ith",
+      "legacy unbaned", "Zuran Orb",
+      "legacy unbaned", "Mishra's Workshop",
+      "legacy banned", "Time Spiral",
+      "legacy banned", "Memory Jar",
+      "vintage unrestricted", "Maze of Ith",
+      "vintage restricted", "Time Spiral"
+
+
+    assert_banlist_changes "jun 1999",
+      "standard banned", "Mind Over Matter",
+      "extended banned", "Time Spiral",
+      "urza block banned", "Gaea's Cradle",
+      "urza block banned", "Serra's Sanctum",
+      "urza block banned", "Tolarian Academy",
+      "urza block banned", "Voltaic Key"
+
+    assert_banlist_changes "aug 1999",
+      "extended banned", "Yawgmoth's Bargain"
+
+    assert_banlist_changes "sep 1999",
+      "extended banned", "Dream Halls",
+      "extended banned", "Earthcraft",
+      "extended banned", "Lotus Petal",
+      "extended banned", "Mind Over Matter",
+      "extended banned", "Yawgmoth's Will",
+      "vintage+ unbanned", "Divine Intervention",
+      "vintage+ unbanned", "Shatrazad",
+      "vintage+ unrestricted", "Ivory Tower",
+      "vintage+ unrestricted", "Mirror Universe",
+      "vintage+ unrestricted", "Underworld Dreams",
+      "vintage+ restricted", "Crop Rotation",
+      "vintage+ restricted", "Doomsday",
+      "vintage+ restricted", "Dream Halls",
+      "vintage+ restricted", "Enlightened Tutor",
+      "vintage+ restricted", "Frantic Search",
+      "vintage+ restricted", "Grim Monolith",
+      "vintage+ restricted", "Hurkyl's Recall",
+      "vintage+ restricted", "Lotus Petal",
+      "vintage+ restricted", "Mana Crypt",
+      "vintage+ restricted", "Mana Vault",
+      "vintage+ restricted", "Mind Over Matter",
+      "vintage+ restricted", "Mox Diamond",
+      "vintage+ restricted", "Mystical Tutor",
+      "vintage+ restricted", "Tinker",
+      "vintage+ restricted", "Vampiric Tutor",
+      "vintage+ restricted", "Voltaic Key",
+      "vintage+ restricted", "Yawgmoth's Bargain",
+      "vintage+ restricted", "Yawgmoth's Will"
   end
 
   def test_banlist_1998
@@ -463,7 +538,23 @@ class BanlistTest < Minitest::Test
       "Darkpact",
       "Demonic Attorney",
       "Jeweled Bird",
+      "Bronze Tablet", # all ante cards are banned in advance
       "Shahrazad",
+    ] + [
+      # conspiracy
+      "Advantageous Proclamation",
+      "Backup Plan",
+      "Brago's Favor",
+      "Double Stroke",
+      "Immediate Action",
+      "Iterative Analysis",
+      "Muzzio's Preparations",
+      "Power Play",
+      "Secret Summoning",
+      "Secrets of Paradise",
+      "Sentinel Dispatch",
+      "Unexpected Potential",
+      "Worldknit",
     ], [
       "Ali from Cairo",
       "Ancestral Recall",
@@ -576,6 +667,21 @@ class BanlistTest < Minitest::Test
       "Worldgorger Dragon",
       "Yawgmoth's Bargain",
       "Yawgmoth's Will",
+    ] + [
+    # conspiracy cards
+      "Advantageous Proclamation",
+      "Backup Plan",
+      "Brago's Favor",
+      "Double Stroke",
+      "Immediate Action",
+      "Iterative Analysis",
+      "Muzzio's Preparations",
+      "Power Play",
+      "Secret Summoning",
+      "Secrets of Paradise",
+      "Sentinel Dispatch",
+      "Unexpected Potential",
+      "Worldknit",
     ]
   end
 
@@ -587,7 +693,7 @@ class BanlistTest < Minitest::Test
       vintage_banlist = @ban_list.full_ban_list("vintage", date)
       vintage_plus_banlist = Hash[vintage_banlist.map{|k,v| [k, v == "restricted" ? "banned" : v]}]
       if date < cutoff_date
-        assert_equal legacy_banlist, vintage_plus_banlist, "Legacy is Vintage+ at #{date}"
+        assert_hash_equal legacy_banlist, vintage_plus_banlist, "Legacy is Vintage+ at #{date}"
       else
         refute_equal legacy_banlist, vintage_plus_banlist, "Legacy is not Vintage+ at #{date}"
       end
