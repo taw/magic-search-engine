@@ -22,6 +22,21 @@ class BanlistTest < Minitest::Test
   end
 
   def assert_banlist_change(prev_set, this_set, format, change, card)
+    if format == "vintage+"
+      change_legacy = change
+      case change
+      when "banned", "restricted"
+        change_legacy = "banned"
+      when "unbanned", "unrestricted"
+        change_legacy = "unbanned"
+      else
+        raise
+      end
+      assert_banlist_change(prev_set, this_set, "vintage", change, card)
+      assert_banlist_change(prev_set, this_set, "legacy", change_legacy, card)
+      return
+    end
+
     case change
     when "banned"
       assert_banlist_status(prev_set, format, "legal", card)
@@ -48,13 +63,14 @@ class BanlistTest < Minitest::Test
     end
   end
 
-  # FIXME: This test only goes one way, it should check both ways
-  def assert_full_banlist(format, time, *cards)
+  def assert_full_banlist(format, time, banned_cards, restricted_cards=[])
     time = Date.parse(time)
-    cards.each do |card_name|
-      actual_legality = @ban_list.legality(format, card_name, time) || "legal"
-      assert_equal "banned", actual_legality, "#{card_name} should be banned in #{format} at #{time}"
-    end
+    expected_banlist = Hash[
+      banned_cards.map{|c| [c, "banned"]} +
+      restricted_cards.map{|c| [c, "restricted"]}
+    ]
+    actual_banlist = @ban_list.full_ban_list(format, time)
+    assert_equal expected_banlist, actual_banlist, "Full banlist for #{format} at #{time}"
   end
 
   # Based on:
@@ -137,7 +153,7 @@ class BanlistTest < Minitest::Test
 
   def test_initial_modern_banlist
     # August 2011
-    assert_full_banlist "modern", "August 2011",
+    assert_full_banlist "modern", "August 2011", [
       "Ancestral Vision",
       "Ancient Den",
       "Bitterblossom",
@@ -158,7 +174,8 @@ class BanlistTest < Minitest::Test
       "Tree of Tales",
       "Umezawa's Jitte",
       "Valakut, the Molten Pinnacle",
-      "Vault of Whispers"
+      "Vault of Whispers",
+    ]
   end
 
   def test_banlist_2010
@@ -249,6 +266,7 @@ class BanlistTest < Minitest::Test
       "vintage restricted", "Trinisphere"
 
     # Starter Level sets Starter 1999, Starter 2000, Portal, Portal Second Age, and Portal Three Kingdoms become legal in Legacy and Vintage in October.
+    assert false, "This should go to another test"
 
     assert_banlist_changes "September 2005",
       "extended banned", "Aether Vial",
@@ -273,8 +291,8 @@ class BanlistTest < Minitest::Test
       "vintage unrestricted", "Earthcraft",
       "vintage unrestricted", "Fork"
 
-    # assert_banlist_changes "September 2004",
-      # "Legacy becomes independent of Vintage"
+    # In September 2004 Legacy becomes independent of Vintage
+    # Full banlist in separate tests
 
     assert_banlist_status "December 2004",
       "vintage unrestricted", "Stroke of Genius"
@@ -282,22 +300,15 @@ class BanlistTest < Minitest::Test
 
   def test_banlist_2003
     assert_banlist_changes "March 2003",
-      "vintage unrestricted", "Berserk",
-      "vintage unrestricted", "Hurkyl's Recall",
-      "vintage unrestricted", "Recall" ,
-      "vintage restricted", "Earthcraft",
-      "vintage restricted", "Entomb",
-      "legacy unbanned", "Berserk",
-      "legacy unbanned", "Hurkyl's Recall",
-      "legacy unbanned", "Recall",
-      "legacy banned", "Earthcraft",
-      "legacy banned", "Entomb"
+      "vintage+ unrestricted", "Berserk",
+      "vintage+ unrestricted", "Hurkyl's Recall",
+      "vintage+ unrestricted", "Recall" ,
+      "vintage+ restricted", "Earthcraft",
+      "vintage+ restricted", "Entomb"
 
     assert_banlist_changes "June 2003",
-      "vintage restricted", "Gush",
-      "vintage restricted", "Mind's Desire",
-      "legacy banned", "Gush",
-      "legacy banned", "Mind's Desire"
+      "vintage+ restricted", "Gush",
+      "vintage+ restricted", "Mind's Desire"
 
     assert_banlist_changes "September 2003",
       "extended banned", "Goblin Lackey",
@@ -311,12 +322,9 @@ class BanlistTest < Minitest::Test
       "extended banned", "Hermit Druid",
       "extended banned", "Ancient Tomb",
       "extended banned", "Oath of Druids",
-      "vintage restricted", "Burning Wish",
-      "vintage restricted", "Chrome Mox",
-      "vintage restricted", "Lion's Eye Diamond",
-      "legacy banned", "Burning Wish",
-      "legacy banned", "Chrome Mox",
-      "legacy banned", "Lion's Eye Diamond"
+      "vintage+ restricted", "Burning Wish",
+      "vintage+ restricted", "Chrome Mox",
+      "vintage+ restricted", "Lion's Eye Diamond"
   end
 
   def test_banlist_2002
@@ -331,8 +339,7 @@ class BanlistTest < Minitest::Test
       "extended banned", "Demonic Consultation"
 
     assert_banlist_changes "December 2001",
-      "vintage restricted", "Fact or Fiction",
-      "legacy banned", "Fact or Fiction"
+      "vintage+ restricted", "Fact or Fiction"
   end
 
   def test_banlist_2000
@@ -345,19 +352,219 @@ class BanlistTest < Minitest::Test
       "masques block banned", "Rishadan Port"
 
     assert_banlist_changes "September 2000",
-      "vintage banned-to-restricte", "Channel",
-      "vintage banned-to-restricte", "Mind Twist",
-      "vintage restricted", "Demonic Consultation",
-      "vintage restricted", "Necropotence",
-      "legacy banned", "Demonic Consultation",
-      "legacy banned", "Necropotence"
+      "vintage banned-to-restricted", "Channel",
+      "vintage banned-to-restricted", "Mind Twist",
+      "vintage+ restricted", "Demonic Consultation",
+      "vintage+ restricted", "Necropotence"
   end
 
+  def test_banlist_1999
+    assert false, "COMBO WINTER, WAY TOO MANY BANLIST CHANGES HERE."
+  end
+
+  def test_banlist_1998
+    assert_banlist_changes "December 1998",
+      "standard banned", "Tolarian Academy",
+      "standard banned", "Windfall",
+      "extended banned", "Tolarian Academy",
+      "extended banned", "Windfall",
+      "extended unbanned", "Braingeyser",
+      "legacy banned", "Stroke of Genius",
+      "legacy banned", "Tolarian Academy",
+      "legacy banned", "Windfall",
+      "legacy unbanned", "Feldon's Cane",
+      "vintage restricted", "Stroke of Genius",
+      "vintage restricted", "Tolarian Academy",
+      "vintage restricted", "Windfall"
+
+    raise "vintage legacy desyng here"
+  end
+
+  def test_banlist_1997
+    assert_banlist_changes "April 1997",
+      "ice age block banned", "Thawing Glaciers",
+      "ice age block banned", "Zuran Orb"
+
+    assert_banlist_changes "June 1997",
+      "standard banned", "Zuran Orb",
+      "vintage+ restricted", "Black Vise",
+      "mirage block banned", "Squandered Resources"
+
+    assert_banlist_changes "September 1997",
+      "extended banned", "Hypnotic Specter",
+      "extended unbanned", "Juggernaut",
+      "vintage+ unrestricted", "Candelabra of Tawnos",
+      "vintage+ unrestricted", "Copy Artifact",
+      "vintage+ unrestricted", "Feldon's Cane",
+      "vintage+ unrestricted", "Mishra's Workshop",
+      "vintage+ unrestricted", "Zuran Orb"
+  end
+
+  def test_banlist_1996
+    assert_banlist_changes "January 1996",
+      "standard banned", "Mind Twist",
+      "standard restricted", "Black Vise",
+      "vintage+ banned", "Mind Twist",
+      "vintage+ restricted", "Black Vise"
+
+    assert_banlist_changes "March 1996",
+      "standard unrestricted", "Feldon's Cane",
+      "standard unrestricted", "Maze of Ith",
+      "standard unrestricted", "Recall",
+      "vintage+ unbanned", "Time Vault",
+      "vintage+ unrestricted", "Ali from Cairo",
+      "vintage+ unrestricted", "Black Vise",
+      "vintage+ unrestricted", "Sword of the Ages"
+
+    assert_banlist_changes "June 1996",
+      "standard restricted", "Land Tax"
+
+    assert_banlist_changes "September 1996",
+      "standard restricted", "Hymn to Tourach",
+      "standard restricted", "Strip Mine",
+      "vintage+ restricted", "Fastbond"
+
+    assert_banlist_changes "December 1996",
+      "Standard: All cards on the restricted list are moved to the banned list."
+  end
+
+  def test_banlist_1995
+
+    assert false, "'Summon Legend' cards were unrestricted."
+
+    assert_banlist_changes "April 1995",
+      "vintage+ restricted", "Balance",
+      "standard restricted", "Balance"
+  end
+
+  def test_banlist_1994
+    assert_full_banlist "vintage", "January 1, 1994", [
+      "Contract from Below",
+      "Darkpact",
+      "Demonic Attorney",
+      "Jeweled Bird",
+      "Shahrazad",
+    ], [
+      "Ali from Cairo",
+      "Ancestral Recall",
+      "Berserk",
+      "Black Lotus",
+      "Braingeyser",
+      "Dingus Egg",
+      "Gauntlet of Might",
+      "Icy Manipulator",
+      "Mox Pearl",
+      "Mox Emerald",
+      "Mox Ruby",
+      "Mox Sapphire",
+      "Mox Jet",
+      "Orcish Oriflamme",
+      "Rukh Egg",
+      "Sol Ring",
+      "Time Twister",
+      "Time Vault",
+      "Time Walk",
+    ]
+
+    assert false, "For flavor reasons, all 'Summon Legend' cards were restricted."
+
+    assert_banlist_changes "May 1994",
+      "vintage+ restricted", "Candelabra of Tawnos",
+      "vintage+ restricted", "Channel",
+      "vintage+ restricted", "Copy Artifact",
+      "vintage+ restricted", "Demonic Tutor",
+      "vintage+ restricted", "Feldon's Cane",
+      "vintage+ restricted", "Ivory Tower",
+      "vintage+ restricted", "Library of Alexandria",
+      "vintage+ restricted", "Regrowth",
+      "vintage+ restricted", "Wheel of Fortune",
+      "vintage+ banned", "Time Vault",
+      "vintage+ unrestricted", "Dingus Egg",
+      "vintage+ unrestricted", "Gauntlet of Might",
+      "vintage+ unrestricted", "Icy Manipulator",
+      "vintage+ unrestricted", "Orcish Oriflamme",
+      "vintage+ unrestricted", "Rukh Egg"
+  end
+
+  def test_banlist_1993
+    # Everything was legal back then
+  end
+
+  ##################################################
+
+  def test_legacy_vintage_split
+    assert_full_banlist "legacy", "September 20, 2004", [
+      "Amulet of Quoz",
+      "Ancestral Recall",
+      "Balance",
+      "Bazaar of Baghdad",
+      "Black Lotus",
+      "Black Vise",
+      "Bronze Tablet",
+      "Channel",
+      "Chaos Orb",
+      "Contract from Below",
+      "Darkpact",
+      "Demonic Attorney",
+      "Demonic Consultation",
+      "Demonic Tutor",
+      "Dream Halls",
+      "Earthcraft",
+      "Entomb",
+      "Falling Star",
+      "Fastbond",
+      "Frantic Search",
+      "Goblin Recruiter",
+      "Grim Monolith",
+      "Gush",
+      "Hermit Druid",
+      "Illusionary Mask",
+      "Jeweled Bird",
+      "Land Tax",
+      "Library of Alexandria",
+      "Mana Crypt",
+      "Mana Drain",
+      "Mana Vault",
+      "Memory Jar",
+      "Metalworker",
+      "Mind Over Matter",
+      "Mind Twist",
+      "Mind's Desire",
+      "Mishra's Workshop",
+      "Mox Emerald",
+      "Mox Jet",
+      "Mox Pearl",
+      "Mox Ruby",
+      "Mox Sapphire",
+      "Necropotence",
+      "Oath of Druids",
+      "Rebirth",
+      "Replenish",
+      "Skullclamp",
+      "Sol Ring",
+      "Strip Mine",
+      "Tempest Efreet",
+      "Time Spiral",
+      "Time Walk",
+      "Timetwister",
+      "Timmerian Fiends",
+      "Tinker",
+      "Tolarian Academy",
+      "Vampiric Tutor",
+      "Wheel of Fortune",
+      "Windfall",
+      "Worldgorger Dragon",
+      "Yawgmoth's Bargain",
+      "Yawgmoth's Will",
+    ]
+  end
+
+  ##################################################
   # Formats in mtgjson are verified by indexer
   # Formats not in mtgjson should all be listed here
 
   def test_pauper_banlist_now
-    assert_full_banlist "pauper", "1 October 2015",
+    assert_full_banlist "pauper", "1 October 2015", [
       "Cranial Plating",
       "Frantic Search",
       "Empty the Warrens",
@@ -365,11 +572,13 @@ class BanlistTest < Minitest::Test
       "Invigorate",
       "Cloudpost",
       "Temporal Fissure",
-      "Treasure Cruise"
+      "Treasure Cruise",
+    ]
   end
 
   def test_two_headed_giant_banlist_now
-    assert_full_banlist "two-headed giant", "1 October 2015",
-      "Erayo, Soratami Ascendant"
+    assert_full_banlist "two-headed giant", "1 October 2015", [
+      "Erayo, Soratami Ascendant",
+    ]
   end
 end
