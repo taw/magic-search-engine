@@ -66,6 +66,8 @@ class BanlistTest < Minitest::Test
       "legacy unbanned", "Black Vise",
       "vintage restricted", "Chalice of the Void",
       "vintage unrestricted", "Thirst for Knowledge"
+    assert_banlist_changes "March 2015",
+      "pauper banned", "Treasure Cruise"
     assert_banlist_changes "January 2015",
       "modern banned", "Dig Through Time",
       "modern banned", "Treasure Cruise",
@@ -349,5 +351,25 @@ class BanlistTest < Minitest::Test
       "vintage restricted", "Necropotence",
       "legacy banned", "Demonic Consultation",
       "legacy banned", "Necropotence"
+  end
+
+  # Formats in mtgjson are verified by indexer
+  # Formats not in mtgjson should all be listed here
+
+  def test_pauper_banlist_now
+    assert_full_banlist "pauper", "1 October 2015",
+      "Cranial Plating",
+      "Frantic Search",
+      "Empty the Warrens",
+      "Grapeshot",
+      "Invigorate",
+      "Cloudpost",
+      "Temporal Fissure",
+      "Treasure Cruise"
+  end
+
+  def test_two_headed_giant_banlist_now
+    assert_full_banlist "two-headed giant", "1 October 2015",
+      "Erayo, Soratami Ascendant"
   end
 end

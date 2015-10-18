@@ -7,6 +7,22 @@ SetReleaseDates = {
 
   # Regular announcements
 
+  # "mar 2004"
+  # "jun 2004"
+  # "sep 2004"
+  # "dec 2004"
+  # "mar 2005"
+  # "jun 2005"
+  "sep 2005" => "September 20, 2005",
+  # "dec 2005"
+  # "mar 2006"
+  # "jun 2006"
+  # "sep 2006"
+  # "dec 2006"
+  # "mar 2007"
+  # "jun 2007"
+  # "sep 2007"
+  # "dec 2007"
   # "mar 2008"
   # "jun 2008"
   # "sep 2008"
@@ -90,11 +106,25 @@ DynamicBanListData = {
     "Bloodbraid Elf"  => {"gtc" => "banned"},
     "Seething Song"   => {"gtc" => "banned"},
     "Second Sunrise"  => { "dgm" => "banned" },
-
   },
   "innistrad block" => {
     "Lingering Souls"    => {"start"=>"legal", "mar 2012"=>"banned"},
     "Intangible Virtue"  => {"start"=>"legal", "mar 2012"=>"banned"},
+  },
+  "pauper" => {
+    # No idea when Cranial Plating was banned,
+    # it says in Nov 2008 that it's already banned
+    "Cranial Plating"   => {"start" => "banned"},
+    "Frantic Search"    => {"jun 2011" => "banned"},
+    "Empty the Warrens" => {"gtc" => "banned"},
+    "Grapeshot"         => {"gtc" => "banned"},
+    "Invigorate"        => {"gtc" => "banned"},
+    "Cloudpost"         => {"ths" => "banned"},
+    "Temporal Fissure"  => {"ths" => "banned"},
+    "Treasure Cruise"   => {"dtk" => "banned"},
+  },
+  "two-headed giant" => {
+    "Erayo, Soratami Ascendant" => {"sep 2005" => "banned"},
   },
 
   # INCOMPLETE
