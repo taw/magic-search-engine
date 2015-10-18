@@ -1,6 +1,6 @@
 # Everything about it is wrong, only recently ban list changes are linked with set releases
 
-SetReleaseDates = {
+BanListChangeDates = {
   # magic min/max, might not end up being needed
   "start" => "1900-01-01",
   "end"   => "2999-12-31",
@@ -24,14 +24,23 @@ SetReleaseDates = {
   "sep 2000" => "October 1, 2000",
   "mar 2001" => "April 1, 2001",
   "dec 2001" => "January 1, 2002",
+  "mar 2003" => "April 1, 2003",
+  "jun 2003" => "July 1, 2003",
 
+  "sep 2003" => "October 1, 2003",
+  "dec 2003" => "January 1, 2004",
 
+  "sep 2004" => "September 20, 2004",
+  "dec 2004" => "December 20, 2004",
+  "mar 2005" => "March 20, 2005",
+  "jun 2007" => "June 20, 2007",
+  "jun 2008" => "June 20, 2008",
   "sep 2005" => "September 20, 2005",
-
   "jun 2004" => "June 20, 2004",
   "mar 2006" => "March 20, 2006",
-
+  "sep 2007" => "September 20, 2007",
   "sep 2008" => "September 20, 2008",
+
   "jun 2009" => "July 1, 2009",
   "sep 2009" => "October 1, 2009",
 
@@ -68,7 +77,7 @@ SetReleaseDates = {
 }
 
 DynamicBanListData = {
-  # THESE LISTS SHOULD BE COMPLETE
+  ### THESE LISTS SHOULD BE COMPLETE
   "modern" => {
     "Ancestral Vision" => "banned",
     "Ancient Den" => "banned",
@@ -166,24 +175,50 @@ DynamicBanListData = {
 
   ### IN PROGRESS
 
-  # INCOMPLETE
   "standard" => {
-    "Jace, the Mind Sculptor" => {"sep 2011" => "banned" },
-    "Stoneforge Mystic"       => {"sep 2011" => "banned" }, # ignoring Event Deck exception
+    "Jace, the Mind Sculptor" => { "sep 2011" => "banned" },
+    "Stoneforge Mystic"       => { "sep 2011" => "banned" }, # ignoring Event Deck exception
+    "Skullclamp"              => { "jun 2004" => "banned" },
+    "Arcbound Ravager"        => { "mar 2005" => "banned" },
+    "Disciple of the Vault"   => { "mar 2005" => "banned" },
+    "Darksteel Citadel"       => { "mar 2005" => "banned" },
+    "Ancient Den"             => { "mar 2005" => "banned" },
+    "Great Furnace"           => { "mar 2005" => "banned" },
+    "Seat of the Synod"       => { "mar 2005" => "banned" },
+    "Tree of Tales"           => { "mar 2005" => "banned" },
+    "Vault of Whispers"       => { "mar 2005" => "banned" },
   },
-  "extended" => {
-    "Aether Vial"             => {"sep 2005" => "banned"},
-    "Disciple of the Vault"   => {"sep 2005" => "banned"},
 
-    "Sensei's Divining Top"   => {"sep 2008" => "banned" },
-    "Sword of the Meek"       => {"jun 2010" => "banned" },
-    "Hypergenesis"            => {"jun 2010" => "banned" },
-    "Jace, the Mind Sculptor" => {"sep 2011" => "banned" },
-    "Mental Misstep"          => {"sep 2011" => "banned" },
-    "Ponder"                  => {"sep 2011" => "banned" },
-    "Preordain"               => {"sep 2011" => "banned" },
-    "Stoneforge Mystic"       => {"sep 2011" => "banned" },
+  "extended" => {
+    "Goblin Lackey"           => { "sep 2003" => "banned" },
+    "Entomb"                  => { "sep 2003" => "banned" },
+    "Frantic Search"          => { "sep 2003" => "banned" },
+    "Goblin Recruiter"        => { "dec 2003" => "banned" },
+    "Grim Monolith"           => { "dec 2003" => "banned" },
+    "Tinker"                  => { "dec 2003" => "banned" },
+    "Hermit Druid"            => { "dec 2003" => "banned" },
+    "Ancient Tomb"            => { "dec 2003" => "banned" },
+    "Oath of Druids"          => { "dec 2003" => "banned" },
+    "Necropotence"            => { "mar 2001" => "banned" },
+    "Replenish"               => { "mar 2001" => "banned" },
+    "Survival of the Fittest" => { "mar 2001" => "banned" },
+    "Demonic Consultation"    => { "mar 2001" => "banned" },
+    "Metalworker"             => { "sep 2004" => "banned" },
+    "Skullclamp"              => { "sep 2004" => "banned" },
+    "Aether Vial"             => { "sep 2005" => "banned" },
+    "Disciple of the Vault"   => { "sep 2005" => "banned" },
+    "Sensei's Divining Top"   => { "sep 2008" => "banned" },
+    "Sword of the Meek"       => { "jun 2010" => "banned" },
+    "Hypergenesis"            => { "jun 2010" => "banned" },
+    "Jace, the Mind Sculptor" => { "sep 2011" => "banned" },
+    "Mental Misstep"          => { "sep 2011" => "banned" },
+    "Ponder"                  => { "sep 2011" => "banned" },
+    "Preordain"               => { "sep 2011" => "banned" },
+    "Stoneforge Mystic"       => { "sep 2011" => "banned" },
   },
+
+  ### INCOMPLETE
+
   "legacy" => {
     "Advantageous Proclamation" => "banned",
     "Backup Plan" => "banned",
@@ -198,6 +233,13 @@ DynamicBanListData = {
     "Sentinel Dispatch" => "banned",
     "Unexpected Potential" => "banned",
     "Worldknit" => "banned",
+
+    "Imperial Seal"    => {"sep 2005" => "banned" },
+    "Flash"            => {"jun 2007" => "banned" },
+    "Mind Over Matter" => {"?" => "banned", "jun 2007" => "legal"},
+    "Replenish"        => {"?" => "banned", "jun 2007" => "legal"},
+    "Shahrazad"        => {"sep 2007" => "banned"},
+    "Time Vault"       => {"sep 2008" => "banned"},
 
     "Dream Halls"      => {"?"=>"banned", "sep 2009" => "legal"},
     "Entomb"           => {"?"=>"banned", "sep 2009" => "legal"},
@@ -230,26 +272,54 @@ DynamicBanListData = {
     "Unexpected Potential" => "banned",
     "Worldknit" => "banned",
 
+    "Berserk"              => {"?" => "restricted", "mar 2003" => "legal"},
+    "Black Vise"           => {"?" => "restricted", "jun 2007" => "legal"},
+    "Braingeyser"          => {"?" => "restricted", "sep 2004" => "legal"},
+    "Brainstorm"           => {"jun 2008" => "restricted"},
+    "Burning Wish"         => {"dec 2003" => "restricted", "sep 2012" => "legal"},
+    "Chalice of the Void"  => {"bfz"=>"restricted"},
+    "Chrome Mox"           => {"dec 2003" => "restricted", "sep 2008" => "legal"},
     "Crop Rotation"        => {"?" => "restricted", "jun 2009" => "legal"},
+    "Dig Through Time"     => {"bfz"=>"restricted"},
+    "Doomsday"             => {"?" => "restricted", "sep 2004" => "legal"},
+    "Dream Halls"          => {"?" => "restricted", "sep 2008" => "legal"},
+    "Earthcraft"           => {"mar 2003" => "restricted", "sep 2004" => "legal"},
     "Enlightened Tutor"    => {"?" => "restricted", "jun 2009" => "legal"},
-    "Entomb"               => {"?" => "restricted", "jun 2009" => "legal"},
-    "Grim Monolith"        => {"?" => "restricted", "jun 2009" => "legal"},
-    "Frantic Search"       => {"?" => "restricted", "sep 2010" => "legal"},
-    "Gush"                 => {"?" => "restricted", "sep 2010" => "legal"},
+    "Entomb"               => {"mar 2003" => "restricted", "jun 2009" => "legal"},
     "Fact or Fiction"      => {"dec 2001"=>"restricted", "sep 2011" => "legal"},
-    "Burning Wish"         => {"?" => "restricted", "sep 2012" => "legal"},
+    "Flash"                => {"jun 2008" => "restricted"},
+    "Fork"                 => {"?" => "restricted", "sep 2004" => "legal"},
+    "Frantic Search"       => {"?" => "restricted", "sep 2010" => "legal"},
+    "Gifts Ungiven"        => {"jun 2007"=>"restricted", "frf"=> "legal"},
+    "Grim Monolith"        => {"?" => "restricted", "jun 2009" => "legal"},
+    "Gush"                 => {"jun 2003" => "restricted", "jun 2007" => "legal", "jun 2008" => "restricted", "sep 2010" => "legal"},
+    "Hurkyl's Recall"      => {"?" => "restricted", "mar 2003" => "legal"},
+    "Imperial Seal"        => {"sep 2005" => "restricted"},
+    "Lion's Eye Diamond"   => {"dec 2003" => "restricted"},
+    "Merchant Scroll"      => {"jun 2008" => "restricted"},
+    "Mind Over Matter"     => {"?" => "restricted", "sep 2005" => "legal"},
+    "Mind Twist"           => {"?" => "restricted", "jun 2007" => "legal"},
+    "Mind's Desire"        => {"jun 2003" => "restricted"},
+    "Mox Diamond"          => {"?" => "restricted", "sep 2008" => "legal"},
+    "Personal Tutor"       => {"sep 2005" => "restricted", "sep 2008" => "legal"},
+    "Ponder"               => {"jun 2008" => "restricted"},
+    "Recall"               => {"?" => "restricted", "mar 2003" => "legal"},
     "Regrowth"             => {"?" => "restricted", "may 2013" => "legal"},
-    "Treasure Cruise"      => {"start"=>"legal", "frf"=> "restricted"},
-    "Gifts Ungiven"        => {"start"=>"restricted", "frf"=> "legal"},
-    "Chalice of the Void"  => {"start"=>"legal", "bfz"=>"restricted"},
-    "Dig Through Time"     => {"start"=>"legal", "bfz"=>"restricted"},
+    "Shahrazad"            => {"sep 2007" => "banned"},
+    "Stroke of Genius"     => {"?" => "restricted", "dec 2004" => "legal"},
     "Thirst for Knowledge" => {"jun 2009"=>"restricted", "bfz"=>"legal"},
+    "Time Spiral"          => {"?" => "restricted", "sep 2008" => "legal"},
+    "Time Vault"           => {"sep 2008" => "restricted"},
+    "Treasure Cruise"      => {"frf"=> "restricted"},
+    "Trinisphere"          => {"mar 2005" => "restricted"},
+    "Voltaic Key"          => {"?" => "restricted", "jun 2007" => "legal"},
   },
 }
 
 class BanList
+  attr_reader :dates, :bans
   def initialize
-    @dates = Hash[SetReleaseDates.map{|key, date| [key, Date.parse(date)]}]
+    @dates = Hash[BanListChangeDates.map{|key, date| [key, Date.parse(date)]}]
     @bans = Hash[DynamicBanListData.map do |format, changes|
       [format, parse_changes(changes)]
     end]
@@ -280,11 +350,16 @@ class BanList
   private
 
   def parse_changes(changes)
+    seen_warns = Set[]
     Hash[changes.map{|card, legalities|
       legalities = {"start" => legalities} if legalities.is_a?(String)
       legalities = legalities.map{|dat, leg|
-        next if dat == "?" # temporary until this list is finished
-        [@dates.fetch(dat), leg]
+        unless @dates[dat]
+          warn "Unknown date: #{dat}" unless seen_warns.include?(dat)
+          seen_warns << dat
+          next
+        end # temporary until this list is finished
+        [@dates[dat], leg]
       }.compact
       [card, legalities]
     }]
