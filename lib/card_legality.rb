@@ -1,6 +1,7 @@
 require "set"
+require_relative "ban_list"
 
-BanLists = {
+BanListData = {
   "Ancestral Recall"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"restricted"},
   "Balance"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"restricted"},
   "Black Lotus"=>{"commander"=>"banned", "legacy"=>"banned", "vintage"=>"restricted"},
@@ -276,7 +277,7 @@ class CardLegality
             legality = "legal" if @sets.any?{|set| SetLegality.fetch(set, []).include?(format) }
           end
           if legality
-            BanLists.fetch(@card_name, {}).fetch(format, legality)
+            BanListData.fetch(@card_name, {}).fetch(format, legality)
           else
             nil
           end
