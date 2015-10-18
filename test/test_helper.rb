@@ -2,6 +2,17 @@ require 'minitest/autorun'
 require_relative "../lib/card_database"
 
 class Minitest::Test
+  # minitest is shitty and doesn't report test results in ordered way
+  # because of some ridiculous fetishization of what was basically a workaround
+  # for fucking mysql 3 in rails 1
+  #
+  # randomized *reporting* of results is just going full retard,
+  # regardless of which order they're ran in - which should be predictable
+  # unless you're still running mysql 3 or some other nontransactional nonsense
+  def self.test_order
+    :alpha
+  end
+
   def assert_search_results(query_string, *cards)
     query = Query.new(query_string)
     results = @db.search_card_names(query)
