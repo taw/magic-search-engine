@@ -1,6 +1,7 @@
 require_relative "test_helper"
 
 class BanlistTest < Minitest::Test
+
   def setup
     @db = load_database
     @ban_list = BanList.new
@@ -429,7 +430,6 @@ class BanlistTest < Minitest::Test
   end
 
   def test_banlist_1995
-
     assert false, "'Summon Legend' cards were unrestricted."
 
     assert_banlist_changes "April 1995",
@@ -557,6 +557,21 @@ class BanlistTest < Minitest::Test
       "Yawgmoth's Bargain",
       "Yawgmoth's Will",
     ]
+  end
+
+  def test_legacy_was_just_vintage_plus_before_split
+    cutoff_date = @ban_list.dates["sep 2004"]
+    change_dates = @ban_list.dates.values.uniq.sort
+    change_dates.each do |date|
+      legacy_banlist  = @ban_list.full_ban_list("legacy", date)
+      vintage_banlist = @ban_list.full_ban_list("vintage", date)
+      vintage_plus_banlist = Hash[vintage_banlist.map{|k,v| [k, v == "restricted" ? "banned" : v]}]
+      if date < cutoff_date
+        assert_equal legacy_banlist, vintage_plus_banlist, "Legacy is Vintage+ at #{date}"
+      else
+        refute_equal legacy_banlist, vintage_plus_banlist, "Legacy is not Vintage+ at #{date}"
+      end
+    end
   end
 
   ##################################################
