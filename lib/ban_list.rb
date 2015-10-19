@@ -1,12 +1,7 @@
-# Everything about it is wrong, only recently ban list changes are linked with set releases
-
-
-
 BanListChangeDates = {
   # magic min/max, might not end up being needed
   "start" => "1900-01-01",
   "end"   => "2999-12-31",
-
 
   "mar 1994" => "1.4.1994", # guess
   # https://groups.google.com/forum/message/raw?msg=rec.games.deckmaster/P4K--JAyLvE/WCYfShI7arQJ
