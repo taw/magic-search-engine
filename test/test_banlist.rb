@@ -14,15 +14,6 @@ class BanlistTest < Minitest::Test
     [prev_set, this_set]
   end
 
-  def assert_hash_equal(h1, h2, *msg)
-    # Surely there oucht to be a plugin which fixes that, right?
-    assert_equal(
-      h1.sort.map{|k,v| "#{k} #{v}\n"}.join,
-      h2.sort.map{|k,v| "#{k} #{v}\n"}.join,
-      *msg
-    )
-  end
-
   def assert_banlist_status(date, format, expected_legality, card_name)
     if date.is_a?(Date)
       dsc = "#{date}"

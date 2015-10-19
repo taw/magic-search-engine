@@ -13,6 +13,15 @@ class Minitest::Test
     :alpha
   end
 
+  def assert_hash_equal(h1, h2, *msg)
+    # Surely there oucht to be a plugin which fixes that, right?
+    assert_equal(
+      h1.sort.map{|k,v| "#{k} #{v}\n"}.join,
+      h2.sort.map{|k,v| "#{k} #{v}\n"}.join,
+      *msg
+    )
+  end
+
   def assert_search_results(query_string, *cards)
     query = Query.new(query_string)
     results = @db.search_card_names(query)

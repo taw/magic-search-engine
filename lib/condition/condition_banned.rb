@@ -1,6 +1,6 @@
 class ConditionBanned < ConditionFormat
   def to_s
-    "banned:#{maybe_quote(@format)}"
+    "banned:#{maybe_quote(@format_name)}"
   end
 
   private
