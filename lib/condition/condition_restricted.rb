@@ -1,6 +1,6 @@
 class ConditionRestricted < ConditionFormat
   def to_s
-    "restricted:#{maybe_quote(@format)}"
+    "restricted:#{maybe_quote(@format_name)}"
   end
 
   private
