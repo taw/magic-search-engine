@@ -1,17 +1,17 @@
 require_relative "../format/format"
 
 class ConditionFormat < Condition
-  def initialize(format)
-    @format_name = format.downcase
+  def initialize(format_name)
+    @format_name = format_name.downcase
     @format_name = "commander" if @format_name == "edh"
   end
 
   def search(db)
     if @time
       max_date = db.sets[@time].release_date
-      @format = Format.new(@format_name, max_date)
+      @format = Format[@format_name].new(max_date)
     else
-      @format = Format.new(@format_name)
+      @format = Format[@format_name].new
     end
     db.printings.select do |card|
       legality_ok?(@format.legality(card))
@@ -19,7 +19,7 @@ class ConditionFormat < Condition
   end
 
   def metadata=(options)
-    @time= options[:time]
+    @time = options[:time]
   end
 
 

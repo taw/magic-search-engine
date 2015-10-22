@@ -525,7 +525,7 @@ class BanList
     legality = @bans.fetch(format, {}).fetch(card_name, {})
     status = "legal"
     legality.each do |change_time,leg|
-      break if change_time > time
+      break if time and change_time > time
       status = leg
     end
     status
