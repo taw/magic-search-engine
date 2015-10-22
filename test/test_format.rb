@@ -20,7 +20,8 @@ class FormatTest < Minitest::Test
   def assert_legality(format_name, time, card_name, status)
     time = @db.sets[time].release_date unless time.is_a?(Date)
     format = Format[format_name].new(time)
-    assert_equal status, format.legality(@db.cards[card_name]), "Legality of #{card_name} in #{format_name} at #{time}"
+    card = @db.cards[card_name] or raise "No such card: #{card_name}"
+    assert_equal status, format.legality(card), "Legality of #{card_name} in #{format_name} at #{time}"
   end
 
   def assert_block_composition_sequence(format_name, *sets)
@@ -168,7 +169,51 @@ class FormatTest < Minitest::Test
     assert_block_composition_sequence "unsets", "ug", "uh"
   end
 
-  ## Rotating formats
+  ## Modern
+
+  def test_modern
+    assert_block_composition "modern", "bfz", ["8e", "mi", "ds", "5dn", "chk", "bok", "sok", "9e", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut", "10e", "lw", "mt", "shm", "eve", "ala", "cfx", "arb", "m10", "zen", "wwk", "roe", "m11", "som", "mbs", "nph", "m12", "isd", "dka", "avr", "m13", "rtr", "gtc", "dgm", "m14", "ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori", "bfz"],
+      "Ancestral Vision" => "banned",
+      "Ancient Den" => "banned",
+      "Birthing Pod" => "banned",
+      "Blazing Shoal" => "banned",
+      "Bloodbraid Elf" => "banned",
+      "Chrome Mox" => "banned",
+      "Cloudpost" => "banned",
+      "Dark Depths" => "banned",
+      "Deathrite Shaman" => "banned",
+      "Dig Through Time" => "banned",
+      "Dread Return" => "banned",
+      "Glimpse of Nature" => "banned",
+      "Great Furnace" => "banned",
+      "Green Sun's Zenith" => "banned",
+      "Hypergenesis" => "banned",
+      "Jace, the Mind Sculptor" => "banned",
+      "Mental Misstep" => "banned",
+      "Ponder" => "banned",
+      "Preordain" => "banned",
+      "Punishing Fire" => "banned",
+      "Rite of Flame" => "banned",
+      "Seat of the Synod" => "banned",
+      "Second Sunrise" => "banned",
+      "Seething Song" => "banned",
+      "Sensei's Divining Top" => "banned",
+      "Skullclamp" => "banned",
+      "Stoneforge Mystic" => "banned",
+      "Sword of the Meek" => "banned",
+      "Treasure Cruise" => "banned",
+      "Tree of Tales" => "banned",
+      "Umezawa's Jitte" => "banned",
+      "Vault of Whispers" => "banned"
+    assert_legality "modern", "avr", "Rancor", nil
+    assert_legality "modern", "m13", "Rancor", "legal"
+    assert_legality "modern", "m12", "Wild Nacatl", "legal"
+    assert_legality "modern", "m13", "Wild Nacatl", "banned"
+    assert_legality "modern", "bng", "Wild Nacatl", "legal"
+    assert_legality "modern", "m13", "Lightning Bolt", "legal"
+  end
+
+  ## Standard
 
   def test_standard
     assert_block_composition "standard", "bfz",  ["ktk", "frf", "dtk", "ori", "bfz"]
@@ -331,21 +376,165 @@ class FormatTest < Minitest::Test
 
   ## Eternal formats
 
+  def test_legacy
+    assert_block_composition "legacy", "bfz", ["al", "be", "un", "an", "ced", "cedi", "drc", "aq", "rv", "lg", "dk", "fe", "dcilm", "mbp", "4e", "ia", "ch", "hl", "ai", "rqs", "arena", "uqc", "mr", "mgbc", "itp", "vi", "5e", "pot", "po", "van", "wl", "ptc", "tp", "sh", "po2", "jr", "ex", "ug", "apac", "us", "at", "ul", "6e", "p3k", "ud", "st", "guru", "wrl", "wotc", "mm", "br", "sus", "fnmp", "euro", "ne", "st2k", "pr", "bd", "in", "ps", "7e", "mprp", "ap", "od", "dm", "tr", "ju", "on", "le", "sc", "rep", "8e", "mi", "ds", "5dn", "chk", "uh", "bok", "sok", "9e", "rav", "thgt", "gp", "cp", "di", "cstd", "cs", "tsts", "ts", "hho", "pc", "pro", "gpx", "fut", "10e", "mgdc", "sum", "med", "lw", "evg", "mt", "mlp", "15ann", "shm", "eve", "fvd", "me2", "grc", "ala", "jvc", "cfx", "dvd", "arb", "m10", "fve", "pch", "me3", "zen", "gvl", "pds", "wwk", "pvc", "roe", "dpa", "arc", "m11", "fvr", "ddf", "som", "pd2", "me4", "mbs", "ddg", "nph", "cmd", "m12", "fvl", "ddh", "isd", "pd3", "dka", "ddi", "avr", "pc2", "m13", "v12", "ddj", "rtr", "cma", "gtc", "ddk", "wmcq", "dgm", "mma", "m14", "v13", "ddl", "ths", "c13", "bng", "ddm", "jou", "md1", "cns", "vma", "m15", "clash", "v14", "ddn", "ktk", "c14", "ddaevg", "ddadvd", "ddagvl", "ddajvc", "frf_ugin", "frf", "ddo", "dtk", "tpr", "mm2", "ori", "v15", "ddp", "bfz", "exp"],
+      "Advantageous Proclamation" => "banned",
+      "Amulet of Quoz" => "banned",
+      "Ancestral Recall" => "banned",
+      "Backup Plan" => "banned",
+      "Balance" => "banned",
+      "Bazaar of Baghdad" => "banned",
+      "Black Lotus" => "banned",
+      "Brago's Favor" => "banned",
+      "Bronze Tablet" => "banned",
+      "Channel" => "banned",
+      "Chaos Orb" => "banned",
+      "Contract from Below" => "banned",
+      "Darkpact" => "banned",
+      "Demonic Attorney" => "banned",
+      "Demonic Consultation" => "banned",
+      "Demonic Tutor" => "banned",
+      "Dig Through Time" => "banned",
+      "Double Stroke" => "banned",
+      "Earthcraft" => "banned",
+      "Falling Star" => "banned",
+      "Fastbond" => "banned",
+      "Flash" => "banned",
+      "Frantic Search" => "banned",
+      "Goblin Recruiter" => "banned",
+      "Gush" => "banned",
+      "Hermit Druid" => "banned",
+      "Immediate Action" => "banned",
+      "Imperial Seal" => "banned",
+      "Iterative Analysis" => "banned",
+      "Jeweled Bird" => "banned",
+      "Library of Alexandria" => "banned",
+      "Mana Crypt" => "banned",
+      "Mana Drain" => "banned",
+      "Mana Vault" => "banned",
+      "Memory Jar" => "banned",
+      "Mental Misstep" => "banned",
+      "Mind Twist" => "banned",
+      "Mind's Desire" => "banned",
+      "Mishra's Workshop" => "banned",
+      "Mox Emerald" => "banned",
+      "Mox Jet" => "banned",
+      "Mox Pearl" => "banned",
+      "Mox Ruby" => "banned",
+      "Mox Sapphire" => "banned",
+      "Muzzio's Preparations" => "banned",
+      "Mystical Tutor" => "banned",
+      "Necropotence" => "banned",
+      "Oath of Druids" => "banned",
+      "Power Play" => "banned",
+      "Rebirth" => "banned",
+      "Secret Summoning" => "banned",
+      "Secrets of Paradise" => "banned",
+      "Sentinel Dispatch" => "banned",
+      "Shahrazad" => "banned",
+      "Skullclamp" => "banned",
+      "Sol Ring" => "banned",
+      "Strip Mine" => "banned",
+      "Survival of the Fittest" => "banned",
+      "Tempest Efreet" => "banned",
+      "Time Vault" => "banned",
+      "Time Walk" => "banned",
+      "Timetwister" => "banned",
+      "Timmerian Fiends" => "banned",
+      "Tinker" => "banned",
+      "Tolarian Academy" => "banned",
+      "Treasure Cruise" => "banned",
+      "Unexpected Potential" => "banned",
+      "Vampiric Tutor" => "banned",
+      "Wheel of Fortune" => "banned",
+      "Windfall" => "banned",
+      "Worldknit" => "banned",
+      "Yawgmoth's Bargain" => "banned",
+      "Yawgmoth's Will" => "banned"
+    warn "test portal sets"
+    warn "unsets shouldn't be here"
+  end
+
+  def test_vintage
+    assert_block_composition "vintage", "bfz", ["al", "be", "un", "an", "ced", "cedi", "drc", "aq", "rv", "lg", "dk", "fe", "dcilm", "mbp", "4e", "ia", "ch", "hl", "ai", "rqs", "arena", "uqc", "mr", "mgbc", "itp", "vi", "5e", "pot", "po", "van", "wl", "ptc", "tp", "sh", "po2", "jr", "ex", "ug", "apac", "us", "at", "ul", "6e", "p3k", "ud", "st", "guru", "wrl", "wotc", "mm", "br", "sus", "fnmp", "euro", "ne", "st2k", "pr", "bd", "in", "ps", "7e", "mprp", "ap", "od", "dm", "tr", "ju", "on", "le", "sc", "rep", "8e", "mi", "ds", "5dn", "chk", "uh", "bok", "sok", "9e", "rav", "thgt", "gp", "cp", "di", "cstd", "cs", "tsts", "ts", "hho", "pc", "pro", "gpx", "fut", "10e", "mgdc", "sum", "med", "lw", "evg", "mt", "mlp", "15ann", "shm", "eve", "fvd", "me2", "grc", "ala", "jvc", "cfx", "dvd", "arb", "m10", "fve", "pch", "me3", "zen", "gvl", "pds", "wwk", "pvc", "roe", "dpa", "arc", "m11", "fvr", "ddf", "som", "pd2", "me4", "mbs", "ddg", "nph", "cmd", "m12", "fvl", "ddh", "isd", "pd3", "dka", "ddi", "avr", "pc2", "m13", "v12", "ddj", "rtr", "cma", "gtc", "ddk", "wmcq", "dgm", "mma", "m14", "v13", "ddl", "ths", "c13", "bng", "ddm", "jou", "md1", "cns", "vma", "m15", "clash", "v14", "ddn", "ktk", "c14", "ddaevg", "ddadvd", "ddagvl", "ddajvc", "frf_ugin", "frf", "ddo", "dtk", "tpr", "mm2", "ori", "v15", "ddp", "bfz", "exp"],
+      "Advantageous Proclamation" => "banned",
+      "Amulet of Quoz" => "banned",
+      "Backup Plan" => "banned",
+      "Brago's Favor" => "banned",
+      "Bronze Tablet" => "banned",
+      "Chaos Orb" => "banned",
+      "Contract from Below" => "banned",
+      "Darkpact" => "banned",
+      "Demonic Attorney" => "banned",
+      "Double Stroke" => "banned",
+      "Falling Star" => "banned",
+      "Immediate Action" => "banned",
+      "Iterative Analysis" => "banned",
+      "Jeweled Bird" => "banned",
+      "Muzzio's Preparations" => "banned",
+      "Power Play" => "banned",
+      "Rebirth" => "banned",
+      "Secret Summoning" => "banned",
+      "Secrets of Paradise" => "banned",
+      "Sentinel Dispatch" => "banned",
+      "Shahrazad" => "banned",
+      "Tempest Efreet" => "banned",
+      "Timmerian Fiends" => "banned",
+      "Unexpected Potential" => "banned",
+      "Worldknit" => "banned",
+      "Ancestral Recall" => "restricted",
+      "Balance" => "restricted",
+      "Black Lotus" => "restricted",
+      "Brainstorm" => "restricted",
+      "Chalice of the Void" => "restricted",
+      "Channel" => "restricted",
+      "Demonic Consultation" => "restricted",
+      "Demonic Tutor" => "restricted",
+      "Dig Through Time" => "restricted",
+      "Fastbond" => "restricted",
+      "Flash" => "restricted",
+      "Imperial Seal" => "restricted",
+      "Library of Alexandria" => "restricted",
+      "Lion's Eye Diamond" => "restricted",
+      "Lotus Petal" => "restricted",
+      "Mana Crypt" => "restricted",
+      "Mana Vault" => "restricted",
+      "Memory Jar" => "restricted",
+      "Merchant Scroll" => "restricted",
+      "Mind's Desire" => "restricted",
+      "Mox Emerald" => "restricted",
+      "Mox Jet" => "restricted",
+      "Mox Pearl" => "restricted",
+      "Mox Ruby" => "restricted",
+      "Mox Sapphire" => "restricted",
+      "Mystical Tutor" => "restricted",
+      "Necropotence" => "restricted",
+      "Ponder" => "restricted",
+      "Sol Ring" => "restricted",
+      "Strip Mine" => "restricted",
+      "Time Vault" => "restricted",
+      "Time Walk" => "restricted",
+      "Timetwister" => "restricted",
+      "Tinker" => "restricted",
+      "Tolarian Academy" => "restricted",
+      "Treasure Cruise" => "restricted",
+      "Trinisphere" => "restricted",
+      "Vampiric Tutor" => "restricted",
+      "Wheel of Fortune" => "restricted",
+      "Windfall" => "restricted",
+      "Yawgmoth's Bargain" => "restricted",
+      "Yawgmoth's Will" => "restricted"
+
+    warn "test portal sets"
+    warn "unsets shouldn't be here"
+  end
+
   ## Other formats
 
 
   ## TODO
 
   def test_commander
-  end
-
-  def test_legacy
-  end
-
-  def test_modern
-  end
-
-  def test_vintage
   end
 
   def test_pauper

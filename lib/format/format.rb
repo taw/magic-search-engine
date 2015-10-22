@@ -6,6 +6,7 @@ class Format
   end
 
   def legality(card)
+    raise unless card
     if in_format?(card)
       @ban_list.legality(format_name, card.name, @time)
     else
@@ -14,6 +15,7 @@ class Format
   end
 
   def in_format?(card)
+    raise unless card
     any_printing?(card){|printing| format_sets.include?(printing.set_code) }
   end
 
@@ -86,8 +88,13 @@ class Format
       "unsets"                      => FormatUnsets,
       "un-sets"                     => FormatUnsets,
       "standard"                    => FormatStandard,
+      "modern"                      => FormatModern,
+      "legacy"                      => FormatLegacy,
+      "vintage"                     => FormatVintage,
+      "commander"                   => FormatCommander,
     }[format] || FormatUnknown
   end
 end
 
+require_relative "format_vintage"
 Dir["#{__dir__}/format_*.rb"].each do |path| require_relative path end
