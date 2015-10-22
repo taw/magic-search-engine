@@ -1,10 +1,11 @@
 class CardPrinting
-  attr_reader :card, :set, :date, :release_date
+  attr_reader :card, :set, :date, :release_date, :set_code
   attr_accessor :others
 
   def initialize(card, set, data)
     @card = card
     @set = set
+    @set_code = @set.set_code # performance caching
     @data = data
     @others = nil
     @release_date = @data["release_date"] ? Date.parse(@data["release_date"]) : @set.release_date
@@ -55,7 +56,7 @@ class CardPrinting
 
   # This is a bit too performance-critical to use method_missing
   # It's not a huge difference, but no reason to waste ~5% of execution time on it
-  %W[set_code set_name block_code block_name].each do |m|
+  %W[set_name block_code block_name].each do |m|
     eval("def #{m}; @set.#{m}; end")
   end
   %W[name names layout colors mana_cost reserved types cmc text power
