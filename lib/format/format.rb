@@ -1,5 +1,5 @@
 class Format
-  def initialize(time)
+  def initialize(time=nil)
     raise ArgumentError unless time.nil? or time.is_a?(Date)
     @time = time
     @ban_list = BanList.new
@@ -83,6 +83,8 @@ class Format
       "ktk block"                   => FormatTarkirBlock,
       "battle for zendikar block"   => FormatBattleForZendikarBlock,
       "bfz block"                   => FormatBattleForZendikarBlock,
+      "unsets"                      => FormatUnsets,
+      "un-sets"                     => FormatUnsets,
     }[format].tap do |format_class|
       raise "Unknown format #{format}" unless format_class
     end
