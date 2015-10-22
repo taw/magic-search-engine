@@ -1,7 +1,7 @@
 # This class represents card from index point of view, not from data point of view
 # (thinking in solr/lucene terms)
 require "date"
-require_relative "card_legality"
+require_relative "ban_list"
 
 class Card
   attr_reader :data, :printings

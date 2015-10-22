@@ -7,6 +7,7 @@ class Format
 
   def legality(card)
     raise unless card
+    return nil if %W[vanguard plane phenomenon scheme token].include?(card.layout)
     if in_format?(card)
       @ban_list.legality(format_name, card.name, @time)
     else
@@ -25,6 +26,18 @@ class Format
 
   def format_sets
     raise "SubclassResponsibility"
+  end
+
+  def to_s
+    if @time
+      "<Format:#{format_name}:#{@time}>"
+    else
+      "<Format:#{format_name}>"
+    end
+  end
+
+  def inspect
+    to_s
   end
 
   private
