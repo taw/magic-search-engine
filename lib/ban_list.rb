@@ -195,7 +195,7 @@ DynamicBanListData = {
     "Skullclamp"              => { "jun 2004" => "banned" },
     "Arcbound Ravager"        => { "mar 2005" => "banned" },
     "Disciple of the Vault"   => { "mar 2005" => "banned" },
-    "Darksteel Citadel"       => { "mar 2005" => "banned" },
+    "Darksteel Citadel"       => { "mar 2005" => "banned", "jun 2011" => "legal" },  # de facto unbanned by rotation, just put random date there
     "Ancient Den"             => { "mar 2005" => "banned" },
     "Great Furnace"           => { "mar 2005" => "banned" },
     "Seat of the Synod"       => { "mar 2005" => "banned" },

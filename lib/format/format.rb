@@ -85,9 +85,8 @@ class Format
       "bfz block"                   => FormatBattleForZendikarBlock,
       "unsets"                      => FormatUnsets,
       "un-sets"                     => FormatUnsets,
-    }[format].tap do |format_class|
-      raise "Unknown format #{format}" unless format_class
-    end
+      "standard"                    => FormatStandard,
+    }[format] || FormatUnknown
   end
 end
 
