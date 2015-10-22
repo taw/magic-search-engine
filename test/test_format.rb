@@ -11,9 +11,7 @@ class FormatTest < Minitest::Test
     actual_legality = @db.cards.map do |card_name, card|
       [card.name, format.legality(card)]
     end.select(&:last)
-    expected_legality = Hash[sets.map{|set_code|
-      @db.sets[set_code].printings.map(&:card).to_set }.inject(&:|).map{|card| [card.name, "legal"]}
-    ].merge(exceptions)
+    expected_legality = compute_expected_legality(sets, exceptions)
     assert_hash_equal expected_legality, actual_legality, "Legality of #{format_name} at #{time}"
   end
 
@@ -31,14 +29,29 @@ class FormatTest < Minitest::Test
     end
   end
 
+  def compute_expected_legality(sets, exceptions)
+    expected_legality = {}
+    sets.each do |set_code|
+      @db.sets[set_code].printings.each do |card_printing|
+        next if %W[vanguard plane phenomenon scheme token].include?(card_printing.layout)
+        expected_legality[card_printing.name] = "legal"
+      end
+    end
+    expected_legality.merge!(exceptions)
+    expected_legality
+  end
+
   ## Block Constructed
 
   def test_ice_age_block
-    assert_block_composition "ice age block", "ia", ["ia"]
-    assert_block_composition "ice age block", "ai", ["ia", "ai"]
+    assert_block_composition "ice age block", "ia", ["ia"],
+      "Amulet of Quoz" => "banned"
+    assert_block_composition "ice age block", "ai", ["ia", "ai"],
+      "Amulet of Quoz" => "banned"
     assert_block_composition "ice age block", "cs", ["ia", "ai", "cs"],
       "Thawing Glaciers" => "banned",
-      "Zuran Orb" => "banned"
+      "Zuran Orb" => "banned",
+      "Amulet of Quoz" => "banned"
   end
 
   def test_mirage_block
@@ -46,7 +59,13 @@ class FormatTest < Minitest::Test
   end
 
   def test_tempest_block
-    assert_block_composition_sequence "tempest block", "tp", "sh", "ex"
+    # No idea when Cursed Scroll was banned exactly
+    assert_block_composition "tempest block", "tp", ["tp"],
+      "Cursed Scroll" => "banned"
+    assert_block_composition "tempest block", "sh", ["tp", "sh"],
+      "Cursed Scroll" => "banned"
+    assert_block_composition "tempest block", "ex", ["tp", "sh", "ex"],
+      "Cursed Scroll" => "banned"
   end
 
   def test_urza_block
@@ -377,7 +396,7 @@ class FormatTest < Minitest::Test
   ## Eternal formats
 
   def test_legacy
-    assert_block_composition "legacy", "bfz", ["al", "be", "un", "an", "ced", "cedi", "drc", "aq", "rv", "lg", "dk", "fe", "dcilm", "mbp", "4e", "ia", "ch", "hl", "ai", "rqs", "arena", "uqc", "mr", "mgbc", "itp", "vi", "5e", "pot", "po", "van", "wl", "ptc", "tp", "sh", "po2", "jr", "ex", "ug", "apac", "us", "at", "ul", "6e", "p3k", "ud", "st", "guru", "wrl", "wotc", "mm", "br", "sus", "fnmp", "euro", "ne", "st2k", "pr", "bd", "in", "ps", "7e", "mprp", "ap", "od", "dm", "tr", "ju", "on", "le", "sc", "rep", "8e", "mi", "ds", "5dn", "chk", "uh", "bok", "sok", "9e", "rav", "thgt", "gp", "cp", "di", "cstd", "cs", "tsts", "ts", "hho", "pc", "pro", "gpx", "fut", "10e", "mgdc", "sum", "med", "lw", "evg", "mt", "mlp", "15ann", "shm", "eve", "fvd", "me2", "grc", "ala", "jvc", "cfx", "dvd", "arb", "m10", "fve", "pch", "me3", "zen", "gvl", "pds", "wwk", "pvc", "roe", "dpa", "arc", "m11", "fvr", "ddf", "som", "pd2", "me4", "mbs", "ddg", "nph", "cmd", "m12", "fvl", "ddh", "isd", "pd3", "dka", "ddi", "avr", "pc2", "m13", "v12", "ddj", "rtr", "cma", "gtc", "ddk", "wmcq", "dgm", "mma", "m14", "v13", "ddl", "ths", "c13", "bng", "ddm", "jou", "md1", "cns", "vma", "m15", "clash", "v14", "ddn", "ktk", "c14", "ddaevg", "ddadvd", "ddagvl", "ddajvc", "frf_ugin", "frf", "ddo", "dtk", "tpr", "mm2", "ori", "v15", "ddp", "bfz", "exp"],
+    assert_block_composition "legacy", "bfz", ["al", "be", "un", "an", "ced", "cedi", "drc", "aq", "rv", "lg", "dk", "fe", "dcilm", "mbp", "4e", "ia", "ch", "hl", "ai", "rqs",  "mr", "mgbc", "itp", "vi", "5e", "pot", "po", "van", "wl", "ptc", "tp", "sh", "po2", "jr", "ex", "apac", "us", "at", "ul", "6e", "p3k", "ud", "st", "guru", "wrl", "wotc", "mm", "br", "sus", "fnmp", "euro", "ne", "st2k", "pr", "bd", "in", "ps", "7e", "mprp", "ap", "od", "dm", "tr", "ju", "on", "le", "sc", "8e", "mi", "ds", "5dn", "chk", "bok", "sok", "9e", "rav", "thgt", "gp", "cp", "di", "cstd", "cs", "tsts", "ts", "pc", "pro", "gpx", "fut", "10e", "mgdc", "sum", "med", "lw", "evg", "mt", "mlp", "15ann", "shm", "eve", "fvd", "me2", "grc", "ala", "jvc", "cfx", "dvd", "arb", "m10", "fve", "pch", "me3", "zen", "gvl", "pds", "wwk", "pvc", "roe", "dpa", "arc", "m11", "fvr", "ddf", "som", "pd2", "me4", "mbs", "ddg", "nph", "cmd", "m12", "fvl", "ddh", "isd", "pd3", "dka", "ddi", "avr", "pc2", "m13", "v12", "ddj", "rtr", "cma", "gtc", "ddk", "wmcq", "dgm", "mma", "m14", "v13", "ddl", "ths", "c13", "bng", "ddm", "jou", "md1", "cns", "vma", "m15", "clash", "v14", "ddn", "ktk", "c14", "ddaevg", "ddadvd", "ddagvl", "ddajvc", "frf_ugin", "frf", "ddo", "dtk", "tpr", "mm2", "ori", "v15", "ddp", "bfz", "exp"],
       "Advantageous Proclamation" => "banned",
       "Amulet of Quoz" => "banned",
       "Ancestral Recall" => "banned",
@@ -452,11 +471,10 @@ class FormatTest < Minitest::Test
       "Yawgmoth's Bargain" => "banned",
       "Yawgmoth's Will" => "banned"
     warn "test portal sets"
-    warn "unsets shouldn't be here"
   end
 
   def test_vintage
-    assert_block_composition "vintage", "bfz", ["al", "be", "un", "an", "ced", "cedi", "drc", "aq", "rv", "lg", "dk", "fe", "dcilm", "mbp", "4e", "ia", "ch", "hl", "ai", "rqs", "arena", "uqc", "mr", "mgbc", "itp", "vi", "5e", "pot", "po", "van", "wl", "ptc", "tp", "sh", "po2", "jr", "ex", "ug", "apac", "us", "at", "ul", "6e", "p3k", "ud", "st", "guru", "wrl", "wotc", "mm", "br", "sus", "fnmp", "euro", "ne", "st2k", "pr", "bd", "in", "ps", "7e", "mprp", "ap", "od", "dm", "tr", "ju", "on", "le", "sc", "rep", "8e", "mi", "ds", "5dn", "chk", "uh", "bok", "sok", "9e", "rav", "thgt", "gp", "cp", "di", "cstd", "cs", "tsts", "ts", "hho", "pc", "pro", "gpx", "fut", "10e", "mgdc", "sum", "med", "lw", "evg", "mt", "mlp", "15ann", "shm", "eve", "fvd", "me2", "grc", "ala", "jvc", "cfx", "dvd", "arb", "m10", "fve", "pch", "me3", "zen", "gvl", "pds", "wwk", "pvc", "roe", "dpa", "arc", "m11", "fvr", "ddf", "som", "pd2", "me4", "mbs", "ddg", "nph", "cmd", "m12", "fvl", "ddh", "isd", "pd3", "dka", "ddi", "avr", "pc2", "m13", "v12", "ddj", "rtr", "cma", "gtc", "ddk", "wmcq", "dgm", "mma", "m14", "v13", "ddl", "ths", "c13", "bng", "ddm", "jou", "md1", "cns", "vma", "m15", "clash", "v14", "ddn", "ktk", "c14", "ddaevg", "ddadvd", "ddagvl", "ddajvc", "frf_ugin", "frf", "ddo", "dtk", "tpr", "mm2", "ori", "v15", "ddp", "bfz", "exp"],
+    assert_block_composition "vintage", "bfz", ["al", "be", "un", "an", "ced", "cedi", "drc", "aq", "rv", "lg", "dk", "fe", "dcilm", "mbp", "4e", "ia", "ch", "hl", "ai", "rqs",  "mr", "mgbc", "itp", "vi", "5e", "pot", "po", "van", "wl", "ptc", "tp", "sh", "po2", "jr", "ex", "apac", "us", "at", "ul", "6e", "p3k", "ud", "st", "guru", "wrl", "wotc", "mm", "br", "sus", "fnmp", "euro", "ne", "st2k", "pr", "bd", "in", "ps", "7e", "mprp", "ap", "od", "dm", "tr", "ju", "on", "le", "sc", "8e", "mi", "ds", "5dn", "chk", "bok", "sok", "9e", "rav", "thgt", "gp", "cp", "di", "cstd", "cs", "tsts", "ts", "pc", "pro", "gpx", "fut", "10e", "mgdc", "sum", "med", "lw", "evg", "mt", "mlp", "15ann", "shm", "eve", "fvd", "me2", "grc", "ala", "jvc", "cfx", "dvd", "arb", "m10", "fve", "pch", "me3", "zen", "gvl", "pds", "wwk", "pvc", "roe", "dpa", "arc", "m11", "fvr", "ddf", "som", "pd2", "me4", "mbs", "ddg", "nph", "cmd", "m12", "fvl", "ddh", "isd", "pd3", "dka", "ddi", "avr", "pc2", "m13", "v12", "ddj", "rtr", "cma", "gtc", "ddk", "wmcq", "dgm", "mma", "m14", "v13", "ddl", "ths", "c13", "bng", "ddm", "jou", "md1", "cns", "vma", "m15", "clash", "v14", "ddn", "ktk", "c14", "ddaevg", "ddadvd", "ddagvl", "ddajvc", "frf_ugin", "frf", "ddo", "dtk", "tpr", "mm2", "ori", "v15", "ddp", "bfz", "exp"],
       "Advantageous Proclamation" => "banned",
       "Amulet of Quoz" => "banned",
       "Backup Plan" => "banned",
@@ -526,11 +544,9 @@ class FormatTest < Minitest::Test
       "Yawgmoth's Will" => "restricted"
 
     warn "test portal sets"
-    warn "unsets shouldn't be here"
   end
 
   ## Other formats
-
 
   ## TODO
 

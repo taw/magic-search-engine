@@ -1,4 +1,7 @@
-require_relative "card_legality"
+require_relative "ban_list"
+require_relative "format/format"
+require "date"
+require "ostruct"
 
 # ActiveRecord FTW
 class Hash
@@ -50,6 +53,60 @@ class Indexer
     @data = JSON.parse(json_path.read)
   end
 
+  def format_names
+    [
+      "commander",
+      "ice age block",
+      "innistrad block",
+      "invasion block",
+      "kamigawa block",
+      "legacy",
+      "lorwyn-shadowmoor block",
+      "masques block",
+      "mirage block",
+      "mirrodin block",
+      "modern",
+      "odyssey block",
+      "onslaught block",
+      "ravnica block",
+      "return to ravnica block",
+      "scars of mirrodin block",
+      "shards of alara block",
+      "standard",
+      "tarkir block",
+      "tempest block",
+      "theros block",
+      "time spiral block",
+      "un-sets",
+      "urza block",
+      "vintage",
+      "zendikar block",
+    ]
+  end
+
+  def formats
+    @formats ||= Hash[
+      format_names.map{|n| [n, Format[n].new]}
+    ]
+  end
+
+  def algorithm_legalities_for(card_data)
+    result = {}
+    sets_printed = card_data["printings"].map{|set_code| @sets_code_translator[set_code]}
+    card = OpenStruct.new(
+      name: normalize_name(card_data["name"]),
+      layout: card_data["layout"],
+      printings: sets_printed.map{|set_code|
+        OpenStruct.new(set_code: set_code)
+      },
+    )
+    formats.each do |format_name, format|
+      status = format.legality(card)
+      result[format_name] = status if status
+    end
+    result
+  end
+
   def save_all!(path)
     path = Pathname(path)
     path.parent.mkpath
@@ -66,14 +123,14 @@ class Indexer
     sets = {}
     cards = {}
     legalities = {}
-    sets_code_translator = {}
+    @sets_code_translator = {}
 
     @data.each do |set_code, set_data|
-      sets_code_translator[set_code] = set_data["magicCardsInfoCode"] || set_data["code"].downcase
+      @sets_code_translator[set_code] = set_data["magicCardsInfoCode"] || set_data["code"].downcase
     end
 
     @data.each do |set_code, set_data|
-      set_code = sets_code_translator[set_code]
+      set_code = @sets_code_translator[set_code]
       next unless set_filter.empty? or set_filter.include?(set_code)
 
       block = MagicBlocks.find{|c,n,*xx| xx.include?(set_code)} || []
@@ -89,13 +146,16 @@ class Indexer
 
       set_data["cards"].each do |card_data|
         name = card_data["name"]
-
-        sets_printed = card_data["printings"].map{|set_code| sets_code_translator[set_code]}
+        sets_printed = card_data["printings"].map{|set_code| @sets_code_translator[set_code]}
         mtgjson_legalities = format_legalities(card_data)
-        algorithm_legalities = CardLegality.new(name, sets_printed, card_data["layout"], (card_data["types"] || []).map(&:downcase)).all_legalities
+        # It seems incorrect
+        if sets_printed == ["cns"]
+          mtgjson_legalities["commander"] = mtgjson_legalities["vintage"]
+        end
+        algorithm_legalities = algorithm_legalities_for(card_data)
 
         if mtgjson_legalities != algorithm_legalities
-          puts "FAIL #{name} #{mtgjson_legalities.sort.inspect} #{algorithm_legalities.sort.inspect}"
+          puts "FAIL #{name} #{mtgjson_legalities.sort.inspect} != #{algorithm_legalities.sort.inspect}"
           require 'pry'; binding.pry
         end
 
@@ -181,5 +241,9 @@ class Indexer
   def format_colors(colors)
     color_codes = {"White"=>"w", "Blue"=>"u", "Black"=>"b", "Red"=>"r", "Green"=>"g"}
     (colors||[]).map{|c| color_codes.fetch(c)}.sort.join
+  end
+
+  def normalize_name(name)
+    name.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
   end
 end

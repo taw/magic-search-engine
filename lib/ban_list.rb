@@ -171,6 +171,7 @@ DynamicBanListData = {
   "ice age block" => {
     "Thawing Glaciers" => {"apr 1997" => "banned"},
     "Zuran Orb" => {"apr 1997" => "banned"},
+    "Amulet of Quoz" => "banned",
   },
   "mirage block" => {
     "Squandered Resources" => {"jun 1997" => "banned"},
@@ -183,6 +184,93 @@ DynamicBanListData = {
     "Serra's Sanctum"         => { "jun 1999" => "banned" },
     "Tolarian Academy"        => { "jun 1999" => "banned" },
     "Voltaic Key"             => { "jun 1999" => "banned" },
+  },
+
+  ### Nothing below this line is guaranteed to be complete
+  ### This should be possible to complete
+  "tempest block" => {
+    "Cursed Scroll" => "banned",
+  },
+
+  "commander" => {
+    # Conspiracy cards are all banned
+    "Advantageous Proclamation" => "banned",
+    "Backup Plan" => "banned",
+    "Brago's Favor" => "banned",
+    "Double Stroke" => "banned",
+    "Immediate Action" => "banned",
+    "Iterative Analysis" => "banned",
+    "Muzzio's Preparations" => "banned",
+    "Power Play" => "banned",
+    "Secret Summoning" => "banned",
+    "Secrets of Paradise" => "banned",
+    "Sentinel Dispatch" => "banned",
+    "Unexpected Potential" => "banned",
+    "Worldknit" => "banned",
+    # Gatherer claims these have nil legality, whatever that means
+    # "Aether Searcher" => nil,
+    # "Agent of Acquisitions" => nil,
+    # "Canal Dredger" => nil,
+    # "Cogwork Grinder" => nil,
+    # "Cogwork Librarian" => nil,
+    # "Cogwork Spy" => nil,
+    # "Cogwork Tracker" => nil,
+    # "Deal Broker" => nil,
+    # "Lore Seeker" => nil,
+    # "Lurking Automaton" => nil,
+    # "Paliano, the High City" => nil,
+    # "Whispergear Sneak" => nil,
+    # The rest
+    "Ancestral Recall" => "banned",
+    "Balance" => "banned",
+    "Black Lotus" => "banned",
+    "Channel" => "banned",
+    "Chaos Orb" => "banned",
+    "Contract from Below" => "banned",
+    "Darkpact" => "banned",
+    "Demonic Attorney" => "banned",
+    "Fastbond" => "banned",
+    "Mox Emerald" => "banned",
+    "Mox Jet" => "banned",
+    "Mox Pearl" => "banned",
+    "Mox Ruby" => "banned",
+    "Mox Sapphire" => "banned",
+    "Time Vault" => "banned",
+    "Time Walk" => "banned",
+    "Jeweled Bird" => "banned",
+    "Library of Alexandria" => "banned",
+    "Shahrazad" => "banned",
+    "Bronze Tablet" => "banned",
+    "Falling Star" => "banned",
+    "Karakas" => "banned",
+    "Rebirth" => "banned",
+    "Tempest Efreet" => "banned",
+    "Amulet of Quoz" => "banned",
+    "Timmerian Fiends" => "banned",
+    "Emrakul, the Aeons Torn" => "banned",
+    "Limited Resources" => "banned",
+    "Recurring Nightmare" => "banned",
+    "Tolarian Academy" => "banned",
+    "Tinker" => "banned",
+    "Rofellos, Llanowar Emissary" => "banned",
+    "Yawgmoth's Bargain" => "banned",
+    "Coalition Victory" => "banned",
+    "Braids, Cabal Minion" => "banned",
+    "Upheaval" => "banned",
+    "Biorhythm" => "banned",
+    "Trade Secrets" => "banned",
+    "Panoptic Mirror" => "banned",
+    "Sundering Titan" => "banned",
+    "Gifts Ungiven" => "banned",
+    "Sway of the Stars" => "banned",
+    "Erayo's Essence" => "banned",
+    "Erayo, Soratami Ascendant" => "banned",
+    "Protean Hulk" => "banned",
+    "Griselbrand" => "banned",
+    "Primeval Titan" => "banned",
+    "Painter's Servant" => "banned",
+    "Worldfire" => "banned",
+    "Sylvan Primordial" => "banned",
   },
 
   ### DATA IS PARTIALLY CORRUPT, CAN'T RECOVER OLD FORMATS
@@ -545,7 +633,7 @@ class BanList
   def parse_changes(changes)
     seen_warns = Set[]
     Hash[changes.map{|card, legalities|
-      legalities = {"start" => legalities} if legalities.is_a?(String)
+      legalities = {"start" => legalities} unless legalities.is_a?(Hash)
       legalities = legalities.map{|dat, leg|
         unless @dates[dat]
           warn "Unknown date: #{dat}" unless seen_warns.include?(dat)
