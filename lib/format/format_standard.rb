@@ -1,6 +1,9 @@
 class FormatStandard < Format
+  # no super call
   def initialize(time=nil)
-    super
+    raise ArgumentError unless time.nil? or time.is_a?(Date)
+    @time = time
+    @ban_list = BanList.new
     last_rotation = rotation_schedule.map do |rotation_time, rotation_sets|
       rotation_time = Date.parse(rotation_time)
       if !@time or @time >= rotation_time
@@ -9,10 +12,10 @@ class FormatStandard < Format
         nil
       end
     end.compact.max_by(&:first)
-    if last_rotation
-      @format_sets = last_rotation.last.to_set
+    @format_sets = if last_rotation
+      last_rotation.last.to_set
     else
-      @format_sets = Set[]
+      Set[]
     end
   end
 
@@ -21,7 +24,7 @@ class FormatStandard < Format
   end
 
   def format_sets
-    @format_sets
+    format_sets
   end
 
   def rotation_schedule
