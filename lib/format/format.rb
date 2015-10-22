@@ -3,6 +3,7 @@ class Format
     raise ArgumentError unless time.nil? or time.is_a?(Date)
     @time = time
     @ban_list = BanList.new
+    @format_sets = format_sets
   end
 
   def legality(card)
@@ -17,7 +18,11 @@ class Format
 
   def in_format?(card)
     raise unless card
-    any_printing?(card){|printing| format_sets.include?(printing.set_code) }
+    card.printings.each do |printing|
+      next if @time and printing.release_date > @time
+      return true if @format_sets.include?(printing.set_code)
+    end
+    false
   end
 
   def format_name
@@ -41,14 +46,6 @@ class Format
   end
 
   private
-
-  def any_printing?(card, &blk)
-    if @time
-      card.printings.select{|printing| printing.release_date <= @time}.any?(&blk)
-    else
-      card.printings.any?(&blk)
-    end
-  end
 
   def self.[](format)
     {
