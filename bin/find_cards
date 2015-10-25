@@ -15,25 +15,25 @@ class FindCards
     end
     cards.each do |card_name, printings|
       card = printings[0].card
-      match_codes = printings.map(&:set_code).sort.join(" ")
-      fail_printings = card.printings - printings
-      fail_codes = fail_printings.map(&:set_code).sort.join(" ")
-
-      puts "#{card.name} #{card.mana_cost}"
-
-      if fail_codes == ""
-        puts "[+#{match_codes}]"
+      if printings.size == card.printings.size
+        codes = printings.sort_by(&:release_date).map(&:set_code)
       else
-        puts "[+#{match_codes}] [-#{fail_codes}]"
+        codes = card.printings.sort_by(&:release_date).map do |cp|
+          if printings.include?(cp)
+            "+#{cp.set_code}"
+          else
+            "-#{cp.set_code}"
+          end
+        end
       end
+      puts "#{card.name} #{card.mana_cost}"
+      puts "[#{codes.join(" ")}]"
       puts card.typeline
       puts "#{card.text}" if card.text != ""
       puts "#{card.power}/#{card.toughness}" if card.power
       puts "Loyalty: #{card.loyalty}" if card.loyalty
-
       puts ""
     end
-
   end
 
   def run!(verbose, *query)
