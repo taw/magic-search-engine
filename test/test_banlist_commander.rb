@@ -20,7 +20,19 @@ class BanlistCommanderTest < Minitest::Test
   end
 
   def test_vintage_banned_means_commander_banned
-    raise
+    change_dates = @ban_list.dates.values.uniq.sort
+    change_dates.each do |date|
+      vintage_banlist  = @ban_list.full_ban_list("vintage", date)
+      commander_banlist = @ban_list.full_ban_list("commander", date)
+      vintage_plus_banlist = Hash[vintage_banlist.map{|k,v| [k, v == "restricted" ? "banned" : v]}]
+
+      vintage_banned = vintage_banlist.select{|c,s| s == "banned"}.map(&:first)
+      commander_banned = commander_banlist.select{|c,s| s == "banned"}.map(&:first)
+
+      vintage_only_banned = vintage_banned - commander_banned
+
+      assert_equal [], vintage_only_banned, "All Vintage banned cards should be EDH banned too (#{date})"
+    end
   end
 
   def test_2015
@@ -37,10 +49,10 @@ class BanlistCommanderTest < Minitest::Test
   def test_2014
     # http://www.mtgcommander.net/Forum/viewtopic.php?f=1&t=17210
     assert_commander_banlist_changes "September 2014",
-      "banned-to-restricted", "Braids, Cabal Minion",
-      "banned-to-restricted", "Rofellos, Llanowar Emissary",
-      "banned-to-restricted", "Erayo, Soratami Ascendent",
-      "unbanned", "Kokusho, the Evening Star",
+      "restricted-to-banned", "Braids, Cabal Minion",
+      "restricted-to-banned", "Rofellos, Llanowar Emissary",
+      "restricted-to-banned", "Erayo, Soratami Ascendant",
+      "unrestricted", "Kokusho, the Evening Star",
       "unbanned", "Metalworker"
 
     # http://www.mtgcommander.net/Forum/viewtopic.php?f=1&t=17093
@@ -82,9 +94,10 @@ class BanlistCommanderTest < Minitest::Test
 
   def test_2011
     assert_commander_banlist_changes "September 2011",
-      "banned", "Shahrazad",
       "restricted", "Erayo, Soratami Ascendant",
       "unbanned", "Lion's Eye Diamond"
+      # Specifically banned even though it's redundant due to vintage ban
+      # "banned", "Shahrazad"
 
     assert_commander_banlist_changes "June 2011",
       "unbanned", "Worldgorger Dragon"
@@ -118,7 +131,7 @@ class BanlistCommanderTest < Minitest::Test
       "banned", "Metalworker",
       "banned", "Tinker",
       "unbanned", "Crucible of Worlds",
-      "unbanned", "Rofellos, Llanowar Emissary"
+      "unrestricted", "Rofellos, Llanowar Emissary"
   end
 
   def test_2008
@@ -136,15 +149,15 @@ class BanlistCommanderTest < Minitest::Test
     assert_commander_banlist_changes "June 2008",
       "banned", "Limited Resources"
 
-
     assert_commander_banlist_changes "February 2008",
       "banned", "Recurring Nightmare",
       "banned", "Kokusho, the Evening Star"
   end
 
   def test_2007
-    assert_commander_banlist_changes "November 2007",
-      "banned", "Beacon of Immortality"
+    # So it says, but there's no unban announcement
+    # assert_commander_banlist_changes "November 2007",
+      # "unbanned", "Beacon of Immortality"
 
     # Shahrazad removed from the banned list (but still de facto banned, since it's banned in Vintage).
     assert_commander_banlist_changes "September 2007"
@@ -157,8 +170,12 @@ class BanlistCommanderTest < Minitest::Test
   def test_2006
     assert_commander_banlist_changes "November 2006",
       "unrestricted", "Niv-Mizzet, the Firemind",
-      "unrestricted", "Kaervek the Merciless",
       "unrestricted", "Heartless Hidetsugu"
+      # No evidence it was actually restricted ever...
+      # "unrestricted", "Kaervek the Merciless",
+
+    assert_commander_banlist_changes "May 2006",
+      "banned", "Yawgmoth's Bargain"
 
     assert_commander_banlist_changes "February 2006",
       "restricted", "Niv-Mizzet, the Firemind",
@@ -189,7 +206,14 @@ class BanlistCommanderTest < Minitest::Test
   end
 
   def test_2004
-    # no changes
+    assert_commander_banlist_changes "October 2004",
+      "unbanned", "Burning Wish",
+      "unbanned", "Cunning Wish",
+      "unbanned", "Death Wish",
+      "unbanned", "Enlightened Wish",
+      "unbanned", "Living Wish"
+      # No announcement actually banning it, presumably banned with wishes?
+      # "unbanned", "Ring of Ma'ruf"
   end
 
   def test_2003
@@ -209,5 +233,10 @@ class BanlistCommanderTest < Minitest::Test
     # Unique Portal and Starter cards are banned. (This means Portal and Starter cards that don't share a name with "standard" Magic cards.)
     # Vintage-illegal cards are banned.
     # Test of Endurance is banned.
+
+
+    # It's format start, not change...
+    assert_commander_banlist_changes "October 2002",
+      "banned", "Test of Endurance"
   end
 end
