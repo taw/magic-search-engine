@@ -5,8 +5,6 @@ class CardController < ApplicationController
     if $CardDatabase.sets[set]
       @card = $CardDatabase.sets[set].printings.find{|cp| cp.number == number}
     end
-    unless @card
-      render file: "#{Rails.root}/public/404.html", layout: false, status: 404
-    end
+    render_404 unless @card
   end
 end
