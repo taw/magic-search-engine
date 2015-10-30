@@ -56,7 +56,7 @@ private
         @tokens << [:test, ConditionWatermark.new(s[1] || s[2])]
       elsif s.scan(/f:(?:"(.*?)"|(\w+))/i)
         @tokens << [:test, ConditionFormat.new(s[1] || s[2])]
-      elsif s.scan(/b:(?:"(.*?)"|(\S+))/i)
+      elsif s.scan(/b:(?:"(.*?)"|(\w+))/i)
         @tokens << [:test, ConditionBlock.new(s[1] || s[2])]
       elsif s.scan(/c:([wubrgcml]+)/i)
         @tokens << [:test, ConditionColors.new(s[1])]
@@ -64,10 +64,10 @@ private
         @tokens << [:test, ConditionColorIdentity.new(s[1])]
       elsif s.scan(/c!([wubrgcml]+)/i)
         @tokens << [:test, ConditionColorsExclusive.new(s[1])]
-      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=)\s*(\S+)/)
+      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=)\s*(\w+)/)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         @tokens << [:test, klass.new(s[2], s[3])]
-      elsif s.scan(/r:(\S+)/)
+      elsif s.scan(/r:(\w+)/)
         @tokens << [:test, ConditionRarity.new(s[1])]
       elsif s.scan(/(pow|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow|tou|cmc|loyalty|year|-?\d+\.\d+|-?\.\d+|-?\d*½|-?\d+)\b/i)
         @tokens << [:test, ConditionExpr.new(s[1], s[2], s[3])]
@@ -88,9 +88,9 @@ private
       elsif s.scan(/(is|not):(black-bordered|silver-bordered|white-bordered)\b/i)
         @tokens << [:not] if s[1].downcase == "not"
         @tokens << [:test, ConditionBorder.new(s[2].sub("-bordered", "").downcase)]
-      elsif s.scan(/sort:(\S+)/)
+      elsif s.scan(/sort:(\w+)/)
         @metadata[:sort] = s[1].downcase
-      elsif s.scan(/time:(\S+)/)
+      elsif s.scan(/time:(\w+)/)
         @metadata[:time] = s[1].downcase
       elsif s.scan(/"(.*?)"/)
         @tokens << [:test, ConditionWord.new(s[1])]

@@ -212,4 +212,17 @@ class CardDatabaseFullTest < Minitest::Test
       "Swamp",
       "Tranquility"
   end
+
+  def test_alt_rarity
+    assert_search_include "r:common alt:r:uncommon", "Doom Blade"
+    assert_search_results "r:common alt:r:mythic",
+      "Chainer's Edict",
+      "Dark Ritual",
+      "Desert",
+      "Fyndhorn Elves",
+      "Hymn to Tourach",
+      "Impulse",
+      "Kird Ape",
+      "Lotus Petal"
+  end
 end

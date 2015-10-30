@@ -18,6 +18,13 @@ class Condition
   def metadata=(options)
   end
 
+  def ==(other)
+    # structural equality, subclass if you need something fancier
+    self.class == other.class and
+      instance_variables == other.instance_variables and
+      instance_variables.map{|ivar| instance_variable_get(ivar) == other.instance_variable_get(ivar) }
+  end
+
   private
 
   def normalize_text(text)
