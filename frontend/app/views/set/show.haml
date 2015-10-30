@@ -1,8 +1,8 @@
 %h3= @set.set_name
 
 %ul
-  - @set.printings.sort_by{|cp| [cp.number.to_i, cp.number]}.each do |card|
+  - @cards.each do |card|
     %li
-      = link_to(controller: 'card', action: 'show', set: @set.set_code, id: card.number) do
+      = link_to controller: 'card', action: 'show', set: @set.set_code, id: card.number do
         = card.number
         = card.name
