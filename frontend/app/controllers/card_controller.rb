@@ -7,4 +7,10 @@ class CardController < ApplicationController
     end
     render_404 unless @card
   end
+
+  def index
+    @search = params[:q]
+    @cards = $CardDatabase.search(@search)
+    # paginate etc.
+  end
 end

@@ -1,0 +1,7 @@
+- if @cards.present?
+  %ul
+    - @cards.each do |card|
+      %li
+        = link_to controller: 'card', action: 'show', set: card.set_code, id: card.number do
+          = card.number
+          = card.name

@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   #   end
 
   get 'card/:set/:id' => 'card#show'
+  get 'card' => 'card#index'
   get 'set/:id' => 'set#show'
   get 'set' => 'set#index'
 end
