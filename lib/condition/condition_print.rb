@@ -8,7 +8,7 @@ class ConditionPrint < Condition
 
   def search(db)
     query_date, precision = parse_query_date(db)
-    max_date = db.sets[@time].release_date if @time
+    max_date = db.resolve_time(@time)
     db.printings.select{|card| match_date?(get_date(card, max_date), query_date, precision)}.to_set
   end
 
@@ -30,6 +30,7 @@ class ConditionPrint < Condition
 
   def parse_query_date(db)
     date = @date
+    return [@date, 3] if @date.is_a?(Date)
     db.sets[date.downcase].tap do |set|
       return [set.release_date, 3] if set and set.release_date
     end

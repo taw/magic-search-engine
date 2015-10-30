@@ -43,6 +43,39 @@ class CardDatabase
     end
   end
 
+  def resolve_time(time)
+    return nil unless time
+    return time if time.is_a?(Date)
+    sets = resolve_editions(time)
+    case sets.size
+    when 0
+      nil
+    when 1
+      sets.first.release_date
+    else
+      require 'pry'; binding.pry
+    end
+  end
+
+  # For sets and blocks:
+  # "in" is code for "Invasion", don't substring match "Innistrad" etc.
+  # "Mirrodin" is name for "Mirrodin", don't substring match "Scars of Mirrodin"
+  def resolve_editions(edition)
+    matching_sets = Set[]
+    @sets.each do |set_code, set|
+      if @sets[edition]
+        if set_code == edition or normalize_name(set.set_name) == edition
+          matching_sets << set
+        end
+      else
+        if normalize_name(set.set_name).include?(edition)
+          matching_sets << set
+        end
+      end
+    end
+    matching_sets
+  end
+
   class <<self
     private :new
 
@@ -104,8 +137,6 @@ class CardDatabase
     fix_multipart_cards_color_identity!(color_identity_cache)
     link_multipart_cards!(multipart_cards)
   end
-
-  private
 
   def fix_multipart_cards_color_identity!(color_identity_cache)
     @cards.each do |card_name, card|
