@@ -548,12 +548,19 @@ class FormatTest < Minitest::Test
 
   ## Other formats
 
+  def test_pauper
+    assert_legality "pauper", "rav", "Blazing Torch", nil
+    assert_legality "pauper", "zen", "Blazing Torch", nil
+    assert_legality "pauper", "isd", "Blazing Torch", "legal"
+
+    assert_legality "vintage", "rav", "Blazing Torch", nil
+    assert_legality "vintage", "zen", "Blazing Torch", "legal"
+    assert_legality "vintage", "isd", "Blazing Torch", "legal"
+  end
+
   ## TODO
 
   def test_commander
-  end
-
-  def test_pauper
   end
 
   def test_extended
