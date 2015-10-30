@@ -102,6 +102,7 @@ class Format
       "legacy"                      => FormatLegacy,
       "vintage"                     => FormatVintage,
       "commander"                   => FormatCommander,
+      "pauper"                      => FormatPauper,
     }[format] || FormatUnknown
   end
 end
