@@ -1,0 +1,6 @@
+%h3 Magic Sets
+%ul
+  - @sets.each do |set|
+    %li
+      = link_to action: "show", id: set.set_code do
+        = set.set_name
