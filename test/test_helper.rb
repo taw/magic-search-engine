@@ -175,6 +175,10 @@ class Minitest::Test
   end
 
   def assert_search_parse(query1, query2)
-    assert_equal QueryParser.new.parse(query1), q1 = QueryParser.new.parse(query2), "`#{query1}' and `#{query2}' should be equivalent queries"
+    assert_equal Query.new(query1), Query.new(query2), "`#{query1}' and `#{query2}' should be equivalent queries"
+  end
+
+  def refute_search_parse(query1, query2)
+    refute_equal Query.new(query1), Query.new(query2), "`#{query1}' and `#{query2}' should not be equivalent queries"
   end
 end

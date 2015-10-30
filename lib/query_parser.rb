@@ -70,7 +70,7 @@ private
       elsif s.scan(/r:(\w+)/)
         @tokens << [:test, ConditionRarity.new(s[1])]
       elsif s.scan(/(pow|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow|tou|cmc|loyalty|year|-?\d+\.\d+|-?\.\d+|-?\d*½|-?\d+)\b/i)
-        @tokens << [:test, ConditionExpr.new(s[1], s[2], s[3])]
+        @tokens << [:test, ConditionExpr.new(s[1].downcase, s[2], s[3].downcase)]
       elsif s.scan(/mana\s*(>=|>|<=|<|=)\s*((?:[\dwubrgxyz]|\{.*?\})+)/i)
         @tokens << [:test, ConditionMana.new(s[1], s[2])]
       elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted|reserved|multipart)\b/i)
@@ -90,8 +90,9 @@ private
         @tokens << [:test, ConditionBorder.new(s[2].sub("-bordered", "").downcase)]
       elsif s.scan(/sort:(\w+)/)
         @metadata[:sort] = s[1].downcase
-      elsif s.scan(/time:(\w+)/)
-        @metadata[:time] = s[1].downcase
+      elsif s.scan(/time:(?:"(.*?)"|([\.\w]+))/i)
+        # Parsing is downstream responsibility
+        @metadata[:time] = (s[1] || s[2]).downcase
       elsif s.scan(/"(.*?)"/)
         @tokens << [:test, ConditionWord.new(s[1])]
       elsif s.scan(/not/)

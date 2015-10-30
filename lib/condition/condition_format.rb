@@ -7,12 +7,7 @@ class ConditionFormat < Condition
   end
 
   def search(db)
-    if @time
-      max_date = db.sets[@time].release_date
-      @format = Format[@format_name].new(max_date)
-    else
-      @format = Format[@format_name].new
-    end
+    @format = Format[@format_name].new(db.resolve_time(@time))
     db.printings.select do |card|
       legality_ok?(@format.legality(card))
     end.to_set
@@ -21,7 +16,6 @@ class ConditionFormat < Condition
   def metadata=(options)
     @time = options[:time]
   end
-
 
   def to_s
     "f:#{maybe_quote(@format_name)}"
