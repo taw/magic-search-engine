@@ -173,4 +173,8 @@ class Minitest::Test
     actual_banlist = @ban_list.full_ban_list(format, time)
     assert_hash_equal expected_banlist, actual_banlist, "Full banlist for #{format} at #{time}"
   end
+
+  def assert_search_parse(query1, query2)
+    assert_equal QueryParser.new.parse(query1), q1 = QueryParser.new.parse(query2), "`#{query1}' and `#{query2}' should be equivalent queries"
+  end
 end
