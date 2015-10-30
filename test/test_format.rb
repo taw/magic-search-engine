@@ -470,7 +470,9 @@ class FormatTest < Minitest::Test
       "Worldknit" => "banned",
       "Yawgmoth's Bargain" => "banned",
       "Yawgmoth's Will" => "banned"
-    warn "test portal sets"
+
+    assert_legality "legacy", Date.parse("2005.1.1"), "Zodiac Dog", nil
+    assert_legality "legacy", Date.parse("2006.1.1"), "Zodiac Dog", "legal"
   end
 
   def test_vintage
@@ -543,7 +545,13 @@ class FormatTest < Minitest::Test
       "Yawgmoth's Bargain" => "restricted",
       "Yawgmoth's Will" => "restricted"
 
-    warn "test portal sets"
+    assert_legality "legacy", Date.parse("2005.1.1"), "Zodiac Dog", nil
+    assert_legality "legacy", Date.parse("2006.1.1"), "Zodiac Dog", "legal"
+  end
+
+  def test_commander
+    assert_legality "legacy", Date.parse("2005.1.1"), "Zodiac Dog", nil
+    assert_legality "legacy", Date.parse("2006.1.1"), "Zodiac Dog", "legal"
   end
 
   ## Other formats
@@ -559,9 +567,6 @@ class FormatTest < Minitest::Test
   end
 
   ## TODO
-
-  def test_commander
-  end
 
   def test_extended
   end
