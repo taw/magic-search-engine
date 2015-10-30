@@ -15,6 +15,10 @@ class CardPrinting
     @data["watermark"] && @data["watermark"].downcase
   end
 
+  def number
+    @data["number"]
+  end
+
   def artist
     @data["artist"].downcase
   end

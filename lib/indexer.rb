@@ -186,6 +186,7 @@ class Indexer
             "artist",
             "border",
             "timeshifted",
+            "number",
           ).merge(
             "rarity" => format_rarity(card_data["rarity"]),
             "release_date" => format_release_date(card_data["releaseDate"]),
