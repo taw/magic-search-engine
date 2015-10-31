@@ -11,6 +11,6 @@ class CardDatabaseNewPhyrexiaTest < Minitest::Test
   end
 
   def test_watermark
-    assert_search_results "watermark:mirran c:g", "Greenhilt Trainee", "Melira, Sylvok Outcast", "Viridian Harvest"
+    assert_search_results "w:mirran c:g", "Greenhilt Trainee", "Melira, Sylvok Outcast", "Viridian Harvest"
   end
 end

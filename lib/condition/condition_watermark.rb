@@ -8,6 +8,6 @@ class ConditionWatermark < ConditionSimple
   end
 
   def to_s
-    "watermark:#{@watermark}"
+    "w:#{@watermark}"
   end
 end
