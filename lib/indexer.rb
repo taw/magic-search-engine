@@ -144,6 +144,8 @@ class Indexer
         "type" => set_data["type"],
       }.compact
 
+      ensure_set_has_card_numbers!(set_data)
+
       set_data["cards"].each do |card_data|
         name = card_data["name"]
         sets_printed = card_data["printings"].map{|set_code| @sets_code_translator[set_code]}
@@ -179,6 +181,11 @@ class Indexer
           "printings" => [],
           "colors" => format_colors(card_data["colors"]),
         ).compact
+
+        unless card_data["number"]
+          warn "No number for #{set_code} #{card_data["name"]}"
+        end
+
         card["printings"] << [
           set_code,
           card_data.slice(
@@ -246,5 +253,20 @@ class Indexer
 
   def normalize_name(name)
     name.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
+  end
+
+  def ensure_set_has_card_numbers!(set_data)
+    cards = set_data["cards"]
+    return if cards.all?{|c| c["number"] }
+    if cards.any?{|c| c["number"] }
+      min_number = cards.map{|c| c["number"].to_i}.max + 1
+      # Some but not all have numbers?
+    else
+      min_number = 1
+    end
+
+    cards.select{|c| c["number"].nil?}.each_with_index do |c, i|
+      c["number"] = "#{i+min_number}"
+    end
   end
 end

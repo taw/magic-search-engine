@@ -54,8 +54,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  get 'card/:set/:id' => 'card#show'
-  get 'card' => 'card#index'
-  get 'set/:id' => 'set#show'
-  get 'set' => 'set#index'
+  get "card/:set/:id" => "card#show"
+  get "card" => "card#index"
+  get "set/:id" => "set#show"
+  get "set" => "set#index"
+  get "help/syntax" => "help#syntax"
 end

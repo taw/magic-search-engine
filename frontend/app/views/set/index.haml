@@ -2,5 +2,5 @@
 %ul
   - @sets.each do |set|
     %li
-      = link_to action: "show", id: set.set_code do
+      = link_to_set(set) do
         = set.set_name

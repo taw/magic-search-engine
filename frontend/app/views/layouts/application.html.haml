@@ -12,3 +12,6 @@
       = text_field_tag(:q, @search)
       = submit_tag("Search")
     = yield
+    %div.footer
+      = link_to controller: "help", action: "syntax" do
+        Help
