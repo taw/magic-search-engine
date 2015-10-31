@@ -153,9 +153,9 @@ class CardDatabaseRTRTest < Minitest::Test
   end
 
   def test_watermark
-    assert_search_include "watermark:gruul", "Rubblebelt Raiders"
-    assert_search_include "watermark:boros", "Aurelia, the Warleader"
-    assert_search_exclude "watermark:gruul", "Aurelia, the Warleader"
+    assert_search_include "w:gruul", "Rubblebelt Raiders"
+    assert_search_include "w:boros", "Aurelia, the Warleader"
+    assert_search_exclude "w:gruul", "Aurelia, the Warleader"
   end
 
   # {u/g} and {u} don't compare
