@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require_relative "../lib/card_database"
+require_relative "../lib/cli_frontend"
 
 class Minitest::Test
   # minitest is shitty and doesn't report test results in ordered way
@@ -82,6 +83,11 @@ class Minitest::Test
     $card_database ||= {}
     $card_database[[]]   ||= CardDatabase.load(Pathname(__dir__) + "../data/index.json")
     $card_database[sets] ||= $card_database[[]].subset(sets)
+  end
+
+  def load_cli
+    # Don't load new database every time
+    $cli_frontend ||= CLIFrontend.new
   end
 
   def find_set_change_at_date(date)
