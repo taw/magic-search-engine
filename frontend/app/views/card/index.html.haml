@@ -1,7 +1,4 @@
 - if @cards.present?
-  %ul
-    - @cards.each do |card|
-      %li
-        = link_to_card(card) do
-          = card.number
-          = card.name
+  - @cards.each do |card|
+    = render 'card', card: card
+  = will_paginate @cards
