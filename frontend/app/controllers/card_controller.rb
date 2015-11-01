@@ -9,8 +9,12 @@ class CardController < ApplicationController
   end
 
   def index
-    @search = params[:q]
-    @cards = $CardDatabase.search(@search)
+    @search = params[:q] || ""
+    if @search.present?
+      @cards = $CardDatabase.search(@search)
+    else
+      @cards = []
+    end
     # paginate etc.
   end
 end

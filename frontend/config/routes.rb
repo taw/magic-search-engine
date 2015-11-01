@@ -59,4 +59,5 @@ Rails.application.routes.draw do
   get "set/:id" => "set#show"
   get "set" => "set#index"
   get "help/syntax" => "help#syntax"
+  get "/" => "card#index"
 end
