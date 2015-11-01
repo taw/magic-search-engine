@@ -115,6 +115,9 @@
   = search_help "restricted:vintage", "cards restricted in Vintage format"
   = search_help "f:vintage", "cards legal (or restricted) in Vintage format"
   = search_help %Q[banned:pauper], "cards banned in Pauper format (doesn't include cards which aren't in format in the first place)"
+  = search_help %Q[f:commander], "cards legal in Commander format"
+  = search_help %Q[f:edh], "cards legal in Commander format"
+  = search_help %Q[f:"innistrad block"], "cards legal in Innistrad Block Constructed format"
 
 %h4 Search by watermark
 %ul
@@ -155,11 +158,50 @@
 %h4 Search by printing time
 %div For printing time you can use set code, set name, or full date in more or less any format as long as it includes 4-digit year somewhere.
 
+%div firstprint: operator can be somewhat confusing, as a lot of cards which you'd technically consider to come out in a set technically came out in a Prerelease (dated one week before) or a Duel Deck (a few weeks before) that set. Online-only sets are included too.
+
 %ul
   = search_help "year=2003", "cards printed in year 2003"
   = search_help "year<=1995", "cards printed in year 1995 or before"
   = search_help "print>ktk", "cards printed after release of Khans of Tarkir"
   = search_help %Q[print="29 September 2012"], "cards printed on 29 September 2012 (Return to Ravnica prerelease)"
+  = search_help "firstprint=m10", "cards first printed in Magic 2010 set"
+  = search_help "lastprint=m10", "cards last printed in Magic 2010 set"
+  = search_help "lastprint<lw", "cards last printed in in Lorwyn set or earlier"
+
+%h4 Search by other part
+%div Every card part (of split, flip, or double-faced card) is treated as separate object, so search like cmc=2 cmc=3 won't return anything, as no part has cmc of 2 and 3 simultaneously. There's special syntax for that.
+
+%ul
+  = search_help "cmc=2 // cmc=3", "cards with converted mana cost 2 or one side and converted mana cost 3 on another (split spells)"
+  = search_help "t:creature // t:planeswalker", "cards where one side is a creature and the other side is a planeswalker (Magic Origins Planeswalkers)"
+  = search_help "t:creature //", "cards where one side is a creature, and there's other side"
+  = search_help "far // away", "card named Far on one side and Away on another side"
+
+%div There's also lower level syntax if you prefer that. Unlike // it will return only specifically requested side, not both.
+
+%ul
+  = search_help "cmc=2 other:w", "cards parts with converted mana cost 2, for which other side is white"
+  = search_help "cmc=2 part:w", "cards parts with converted mana cost 2, for which either side is white"
+
+
+%h4 Search by alternative printing
+%div Every card printing is treated as separate object, so you can't search for cards which were printing in both Magic 2010 and Magic 2011 with e:m10 e:m11. There's special syntax for that.
+
+%ul
+  = search_help "e:m10 alt:e:m11", "cards from Magic 2010 which were also printed in Magic 2011"
+  = search_help %Q[a:"Rebecca Guay" alt:(not a:"Rebecca Guay")], "cards drawn by Rebecca Guay which were also printed by someone who's not Rebecca Guay"
+
+%h4 Time travel
+%div You can travel to any time by specifying set code, set name, or full date (partial date like "1999" will be interpretted as "1 January 1999"). Cards printed since then won't be returned, and status of various formats will be as it was at that time. So if you want to argue about what was best Modern Pod deck back in that time just roll back the time to before the ban and enjoy.
+
+%div Formats should generally be fully accurate from 2004 onwards (Legacy/Vintage split), information about older times might contain inaccuracies.
+
+%ul
+  = search_help "time:rtr f:standard", "all cards in Standard at time of Return to Ravnica set"
+  = search_help %Q[time:"1 march 2009" banned:commander], "Commander banned cards as of 1 March 2009"
+  = search_help "time:m10 t:planeswalker", "All Planeswalker cards in existence as of printing of Magic 2010 set"
+  = search_help "time:2010 restricted:commander", %Q[Cards restricted in Commander as of beginning of 2010 (in Commander context "restricted" means historical contept of "banned as general"]
 
 %h4 Sort results
 %div Use sort: operator to order results in a different way. By default alphabetical sorting is used.
