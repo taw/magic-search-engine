@@ -165,6 +165,7 @@ class CardDatabaseRTRTest < Minitest::Test
     assert_search_results "e:gtc mana={u/g}", "Bioshift"
     assert_search_results "e:gtc mana={G/U}", "Bioshift"
     assert_search_results "e:gtc mana={gu}", "Bioshift"
+    assert_search_equal "mana={3}{r}{r}", "mana=3rr"
   end
 
   def test_extort_reminder_text_does_not_affect_ci
