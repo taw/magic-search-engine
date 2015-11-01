@@ -35,7 +35,9 @@ class ConditionMana < ConditionSimple
     mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrgxyz])/) do
       if $1
         m = normalize_mana_symbol($1)
-        if m =~ /h/
+        if m =~ /\A\d+\z/
+          pool["c"] += m.to_i
+        elsif m =~ /h/
           pool[m.sub("h", "")] += 0.5
         else
           pool[m] += 1
