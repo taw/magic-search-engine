@@ -64,9 +64,9 @@ private
         @tokens << [:test, ConditionColorIdentity.new(s[1])]
       elsif s.scan(/c!([wubrgcml]+)/i)
         @tokens << [:test, ConditionColorsExclusive.new(s[1])]
-      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=)\s*(\w+)/)
+      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|(\w+))/)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
-        @tokens << [:test, klass.new(s[2], s[3])]
+        @tokens << [:test, klass.new(s[2], s[3] || s[4])]
       elsif s.scan(/r:(\w+)/)
         @tokens << [:test, ConditionRarity.new(s[1])]
       elsif s.scan(/(pow|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow|tou|cmc|loyalty|year|-?\d+\.\d+|-?\.\d+|-?\d*½|-?\d+)\b/i)

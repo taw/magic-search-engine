@@ -67,6 +67,15 @@ class CardDatabaseFullTest < Minitest::Test
       ["Jace, the Mind Sculptor", "v13"]
   end
 
+  def test_print_date
+    assert_search_results %Q[print="29 september 2012"],
+      "Archon of the Triumvirate",
+      "Carnival Hellsteed",
+      "Corpsejack Menace",
+      "Grove of the Guardian",
+      "Hypersonic Dragon"
+  end
+
   def test_print
     assert_search_equal "t:planeswalker print=m12", "t:planeswalker e:m12"
     assert_search_results "t:jace print=2013", "Jace, Memory Adept", "Jace, the Mind Sculptor"
