@@ -23,6 +23,18 @@
   = search_help %Q[o:"destroy target creature"], %Q[search cards with "destroy target creature" in Oracle text]
   = search_help "o:flying", %Q[search cards with "flynig" in Oracle text - without cards with rearch simply in reminder text like ones with reach ability]
 
+%h4 Search by edition
+%ul
+  = search_help "e:bfz", %Q[cards from "Battle for Zendikar" set]
+  = search_help %Q[e:"scars of mirrodin"], %Q[cards from "Scars of Mirrodin" set]
+  = search_help %Q[e:ascension], %Q[cards from all sets including "ascension" in name (only if there's no exact match)]
+
+%h4 Search by block
+%ul
+  = search_help "b:zendikar", "cards from Zendikar block"
+  = search_help "b:isd", "cards from Innistrad block"
+  = search_help %Q[b:"return to ravnica"], %Q[cards from "Return to Ravnica" block]
+
 %h4 Search by color
 %ul
   = search_help "c:w", "white cards (possibly also other colors)"
@@ -89,8 +101,4 @@
   = search_help "watermark:izzet", "cards with Izzet watermark (Return to Ravnica block)"
   = search_help "watermark:phyrexian", "cards with Phyrexian watermark (Scars of Mirrodin block)"
 
-%h4 Search by edition
 %ul
-  = search_help "e:bfz", %Q[cards from "Battle for Zendikar" set]
-  = search_help %Q[e:"scars of mirrodin"], %Q[cards from "Scars of Mirrodin" set]
-  = search_help %Q[e:ascension], %Q[cards from all sets including "ascension" in name (only if there's no exact match)]
