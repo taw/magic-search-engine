@@ -1,51 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/card_database"
-
-class FindCards
-  def initialize
-    json_path = Pathname(__dir__) + "../data/index.json"
-    @db = CardDatabase.load(json_path)
-  end
-
-  def print_results!(results)
-    cards = {}
-    results.each do |card_printing|
-      (cards[card_printing.name] ||= []) << card_printing
-    end
-    cards.each do |card_name, printings|
-      card = printings[0].card
-      if printings.size == card.printings.size
-        codes = printings.sort_by(&:release_date).map(&:set_code)
-      else
-        codes = card.printings.sort_by(&:release_date).map do |cp|
-          if printings.include?(cp)
-            "+#{cp.set_code}"
-          else
-            "-#{cp.set_code}"
-          end
-        end
-      end
-      puts "#{card.name} #{card.mana_cost}"
-      puts "[#{codes.join(" ")}]"
-      puts card.typeline
-      puts "#{card.text}" if card.text != ""
-      puts "#{card.power}/#{card.toughness}" if card.power
-      puts "Loyalty: #{card.loyalty}" if card.loyalty
-      puts ""
-    end
-  end
-
-  def run!(verbose, *query)
-    query = query.join(" ")
-    results = @db.search(query)
-    if verbose
-      print_results!(results)
-    else
-      puts results.map(&:name).uniq
-    end
-  end
-end
+require_relative "../lib/cli_frontend"
 
 # If it gets any more complex than this, just use trollop
 if ARGV[0] == "-v"
@@ -60,4 +15,4 @@ if ARGV.size == 0
   exit 1
 end
 
-FindCards.new.run!(verbose, *ARGV)
+CLIFrontend.new.run!(verbose, ARGV.join(" "))

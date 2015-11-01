@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 
 require_relative "../lib/card_database"
+require 'pry'
 
 json_path = Pathname(__dir__) + "../data/index.json"
 @db = CardDatabase.load(json_path)
 
-require 'pry'; binding.pry(@db)
+binding.pry(@db)

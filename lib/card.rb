@@ -17,7 +17,7 @@ class Card
     @names = @data["names"] &&  @data["names"].map{|n| normalize_name(n)}
     @layout = @data["layout"]
     @colors = @data["colors"] || ""
-    @text = (@data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-").gsub(/\([^\(\)]*\)/, "")
+    @text = (@data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-").gsub(/\([^\(\)]*\)/, "").sub(/\s*\z/, "")
     @mana_cost = @data["manaCost"] ? @data["manaCost"].downcase : nil
     @reserved = @data["reserved"] || false
     @types = ["types", "subtypes", "supertypes"].map{|t| @data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "")}
