@@ -10,10 +10,17 @@
   = search_help %Q["sword of"], %Q[cards with "sword of" in name]
 
 %h4 Search by type
+%div By default non-Standard cards (planes, vanguard, conspiracies etc.) are not included.
+
 %ul
   = search_help "t:goblin", "search for Goblin cards"
   = search_help 't:"goblin warrior"', "search for Goblin Warrior cards"
   = search_help 't:"legendary land"', "search for Legendary Land cards"
+  = search_help "is:permanent", "search for permanent cards (that is not instant / sorceries)"
+  = search_help "is:spell", "search for spell cards (that is not lands)"
+  = search_help "t:*", "search in all cards, including special cards"
+  = search_help "t:plane", "search Plane cards (not included by default)"
+  = search_help "t:vryn", "search Plane cards with type Vryn (not included by default)"
 
 %h4 Search by Oracle text
 %div Reminder text is not included in Oracle search
@@ -56,12 +63,25 @@
   = search_help "cmc>=3", "cards with converted mana cost 3 or more"
   = search_help "cmc<2", "cards with converted mana cost less than 2"
 
-%h4 Search by power and toughness
+%h4 Search by mana cost
+%div For sake of this search every mana symbol is treated as non-comparable, so "{u}" is neither greater or less than "{u/b}" etc. There's a lot of flexibility, so "{up}", "{u/p}", "{P/U}" etc. all work for Phyrexian blue mana. Curly braces are only needed for non-standard mana types.
+
+%ul
+  = search_help "mana=0", "cards with mana cost {0} - does not include cards with no mana cost"
+  = search_help "mana<=4", "cards with mana cost {4} or less"
+  = search_help "mana=3uu", "cards with mana cost {3}{u}{u}"
+  = search_help "mana={3}{u}{u}", "cards with mana cost {3}{u}{u}"
+  = search_help "mana>={b/g}", "cards with mana cost including {b/g} hybrid mana"
+  = search_help "mana>={2/r}", "cards with mana cost including {2/r} Shadowmoor hybrid mana"
+  = search_help "mana={p/r}", "cards with mana cost equal {p/r} Phyrexian mana"
+
+%h4 Search by power, toughness, and loyalty
 %ul
   = search_help "pow=4", "creature cards with power 4"
   = search_help "tou>=5", "creature cards with toughness 5 or more"
   = search_help "pow>tou", "creature cards with power greater than toughness"
   = search_help "tou=cmc", "creature cards with toughness equal to converted mana cost"
+  = search_help "loyalty=3", "planeswalker cards with starting loyalty 3"
 
 %h4 Boolean expressions
 %ul
@@ -101,4 +121,52 @@
   = search_help "watermark:izzet", "cards with Izzet watermark (Return to Ravnica block)"
   = search_help "watermark:phyrexian", "cards with Phyrexian watermark (Scars of Mirrodin block)"
 
+%h4 Search by card frame features
+%div For each of these you can use not: as opposite of is:. Data might occasionally be inaccurate for some promo printings.
 %ul
+  = search_help "is:black-bordered", "cards with black borders"
+  = search_help "not:black-bordered", "cards with borders other than black"
+  = search_help "is:white-bordered", "cards with white borders"
+  = search_help "is:silver-bordered", "cards with silver borders"
+  = search_help "is:old", "cards with old-style frames"
+  = search_help "is:new", "cards with new-style frames"
+  = search_help "is:future", "cards with future-style frames"
+  = search_help "is:timeshifted", "timeshifted cards"
+  = search_help "is:split", "split cards"
+  = search_help "is:flip", "flip cards (Kamigawa)"
+  = search_help "is:dfc", "double-faced cards"
+  = search_help "is:multipart", "multi-part cards (split, flip, or dfc)"
+  = search_help "is:funny", "cards from funny sets"
+
+%h4 Search by card layout
+%div Selecting non-standard layout expands search to special cards as well
+
+%ul
+  = search_help "layout:normal", "cards with normal layout"
+  = search_help "layout:leveler", "cards with leveler layout"
+  = search_help "layout:vanguard", "cards with vanguard layout (not included by deafult)"
+  = search_help "layout:dfc", "cards with dfc layout"
+  = search_help "layout:split", "cards with split layout"
+  = search_help "layout:flip", "cards with flip layout"
+  = search_help "layout:plane", "cards with plane layout (not included by deafult)"
+  = search_help "layout:scheme", "cards with scheme layout (not included by deafult)"
+  = search_help "layout:phenomenon", "cards with phenomenon layout (not included by deafult)"
+
+%h4 Search by printing time
+%div For printing time you can use set code, set name, or full date in more or less any format as long as it includes 4-digit year somewhere.
+
+%ul
+  = search_help "year=2003", "cards printed in year 2003"
+  = search_help "year<=1995", "cards printed in year 1995 or before"
+  = search_help "print>ktk", "cards printed after release of Khans of Tarkir"
+  = search_help %Q[print="29 September 2012"], "cards printed on 29 September 2012 (Return to Ravnica prerelease)"
+
+%h4 Sort results
+%div Use sort: operator to order results in a different way. By default alphabetical sorting is used.
+
+%ul
+  = search_help "sort:name", "sort by name alphabetically (default)"
+  = search_help "sort:new", "sort results by most recent first, counting only regular sets for sake of order (other printings will go at end of results)"
+  = search_help "sort:newall", "sort results by most recent first, counting all printings"
+  = search_help "sort:ord", "sort results by oldest first, counting only regular sets for sake of order"
+  = search_help "sort:ordall", "sort results by oldest first, counting all printings"
