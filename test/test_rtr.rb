@@ -185,4 +185,9 @@ class CardDatabaseRTRTest < Minitest::Test
   def test_ability_word
     assert_search_include "o:bloodrush", "Ghor-Clan Rampager"
   end
+
+  def test_parentheses
+    assert_search_results "(far // away) or t:ral)",
+      "Far", "Away", "Ral Zarek"
+  end
 end

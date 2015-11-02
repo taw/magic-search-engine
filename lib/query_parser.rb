@@ -103,7 +103,7 @@ private
         @tokens << [:part]
       elsif s.scan(/alt:/)
         @tokens << [:alt]
-      elsif s.scan(/([^-!<>=:"\s&\/][^!<>=:"\s&\/]*)(?=$|[\s&\/()])/i)
+      elsif s.scan(/([^-!<>=:"\s&\/()][^!<>=:"\s&\/()]*)(?=$|[\s&\/()])/i)
         # Veil-Cursed and similar silliness
         words = s[1].split("-")
         if words.size > 1
