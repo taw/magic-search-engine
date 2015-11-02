@@ -26,7 +26,9 @@ td, th {
 
 .card {
   width: 450px;
+  margin-bottom: 0.5em;
   h3.card_tite {
+    margin-top: 0;
     margin-bottom: 0.5em;
   }
   .flavor {
@@ -82,4 +84,15 @@ a {
     color: #88f;
   }
   margin-bottom: 0.5em;
+}
+.mana {
+  background-image:url("/mana_symbols.png");
+  display:inline-block;
+  z-index:30;
+  cursor:default;
+  vertical-align:top;
+  font-size:0;
+  // background-position:-434px -16px;
+  // width:14px;
+  // height:14px;
 }
