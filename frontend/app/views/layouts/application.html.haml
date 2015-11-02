@@ -8,7 +8,7 @@
     = csrf_meta_tags
   %body
     %h1 Magic Search Engine
-    = form_tag("/card", method: :get) do
+    = form_tag("/card", method: :get, class: "search") do
       = text_field_tag(:q, @search)
       = submit_tag("Search")
     = yield
