@@ -60,7 +60,7 @@ class CardDatabaseTimeSpiralTest < Minitest::Test
     assert_search_results "Dandan", "Dandan"
     assert_search_results "Cutthroat il-Dal", "Cutthroat il-Dal"
     assert_search_results "Cutthroat il Dal", "Cutthroat il-Dal"
-    assert_search_results "Cutthroat ildal"
+    assert_search_results "Cutthroat ildal", "Cutthroat il-Dal" # Thanks to spelling corrections
     assert_search_results "Lim-Dûl the Necromancer", "Lim-Dul the Necromancer"
     assert_search_results "Lim-Dul the Necromancer", "Lim-Dul the Necromancer"
     assert_search_results "Lim Dul the Necromancer", "Lim-Dul the Necromancer"

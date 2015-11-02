@@ -16,6 +16,7 @@ class Condition
 
   # Save only what's needed, by default nothing
   def metadata=(options)
+    @logger = options[:logger]
   end
 
   def ==(other)
@@ -44,7 +45,6 @@ class Condition
   end
 
   def warning(warn)
-    @warnings ||= []
-    @warnings << warn
+    @logger << warn
   end
 end

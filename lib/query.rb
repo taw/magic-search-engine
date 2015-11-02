@@ -1,4 +1,5 @@
 require_relative "query_parser"
+require_relative "search_results"
 
 class Date
   # Any kind of key for sorting
@@ -34,8 +35,6 @@ class Query
     if @cond
       raise "No condition present for #{query_string}" unless @cond
       @metadata[:no_extras] = !@cond.include_extras?
-      # The only part that's used right now is time
-      @cond.metadata = @metadata
     else
       # No search query? OK, we'll just return all cards except extras
       @metadata[:no_extras] = true
@@ -44,9 +43,16 @@ class Query
     # puts "Parse #{query_string} -> #{@cond}"
   end
 
+  # What is being done with @cond.metadata= is awful beyond belief...
   def search(db)
+    logger = Set[]
     if @cond
+      @cond.metadata = @metadata.merge(fuzzy: nil, logger: logger)
       results = @cond.search(db)
+      if results.empty?
+        @cond.metadata = @metadata.merge(fuzzy: db, logger: logger)
+        results = @cond.search(db)
+      end
     else
       results = db.printings
     end
@@ -64,6 +70,7 @@ class Query
     else # "name" or unknown key
       results.sort_by{|c| [c.name, c.set.regular? ? 0 : 1, -c.release_date.to_i_sort]}
     end
+    SearchResults.new(results, logger)
   end
 
   def to_s

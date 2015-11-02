@@ -8,6 +8,7 @@ class ConditionPart < Condition
   end
 
   def metadata=(options)
+    super
     @cond.metadata = options
   end
 

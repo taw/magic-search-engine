@@ -14,6 +14,7 @@ class ConditionFormat < Condition
   end
 
   def metadata=(options)
+    super
     @time = options[:time]
   end
 

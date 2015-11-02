@@ -107,6 +107,36 @@ class TestCLIFrontend < Minitest::Test
     )
   end
 
+  def test_error_reporting
+    assert_cli(
+      search: "kolagan",
+      verbose: false,
+      output: <<-EOF,
+        Dragonlord Kolaghan
+        Kolaghan Aspirant
+        Kolaghan Forerunners
+        Kolaghan Monument
+        Kolaghan Skirmisher
+        Kolaghan Stormsinger
+        Kolaghan's Command
+        Kolaghan, the Storm's Fury
+        EOF
+      error: <<-EOF
+        Trying spelling "kolaghan" in addition to "kolagan"
+        EOF
+    )
+    assert_cli(
+      search: %Q[time:"Battle for Homelands" t:ral],
+      verbose: false,
+      output: <<-EOF,
+        Ral Zarek
+        EOF
+      error: <<-EOF
+        Doesn't look like correct date, ignored: "battle for homelands"
+        EOF
+    )
+  end
+
   # The interface could be extended to support things like:
   # * syntax error reporting
   # * spelling suggestions

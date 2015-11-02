@@ -9,16 +9,22 @@ class CLIFrontend
   def run!(verbose, query_string)
     query = Query.new(query_string)
     results = @db.search(query)
+
+    # Should this be only reported in verbose mode?
+    results.warnings.each do |w|
+      warn w
+    end
+
     if verbose
       print_results!(results)
     else
-      puts results.map(&:name).uniq
+      puts results.card_names
     end
   end
 
   def print_results!(results)
     cards = {}
-    results.each do |card_printing|
+    results.printings.each do |card_printing|
       (cards[card_printing.name] ||= []) << card_printing
     end
     cards.each_with_index do |(card_name, printings), i|
