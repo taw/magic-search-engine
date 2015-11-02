@@ -10,12 +10,15 @@ class CardController < ApplicationController
 
   def index
     @search = params[:q] || ""
+    page = [1, params[:page].to_i].max
+
+    query = Query.new(@search)
     if @search.present?
-      @cards = $CardDatabase.search(@search).uniq(&:name)
+      @cards = $CardDatabase.search(query).uniq(&:name)
     else
       @cards = []
     end
 
-    @cards = @cards.paginate(page: params[:page], per_page: 25)
+    @cards = @cards.paginate(page: page, per_page: 25)
   end
 end

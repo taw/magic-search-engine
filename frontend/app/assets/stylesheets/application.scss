@@ -20,23 +20,47 @@ form.search {
   }
 }
 
-.flavor {
-  font-style: italic;
-}
-
 .card {
   max-width: 800px;
+  h3.card_tite {
+    margin-bottom: 0.5em;
+  }
+  .flavor {
+    font-style: italic;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
+  .infolabel {
+    color: #444;
+    font-size: small;
+  }
+  .typeline {
+    margin-bottom: 0.25em;
+  }
+  .oracle {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
 }
 
 a {
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .footer {
   margin-top: 1em;
   text-align: center;
 }
+
+.pagination {
+  color: #888;
+  font-size: small;
+  text-align: center;
+  a {
+    color: #88f;
+  }
+}
+
