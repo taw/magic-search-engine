@@ -1,7 +1,5 @@
 %h3= @set.set_name
-%ul
+- if @cards.present?
   - @cards.each do |card|
-    %li
-      = link_to_card(card) do
-        = card.number
-        = card.name
+    = render 'card/card', card: card
+  = will_paginate @cards

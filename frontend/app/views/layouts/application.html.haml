@@ -13,5 +13,8 @@
       = submit_tag("Search")
     = yield
     %div.footer
+      = link_to controller: "set", action: "index" do
+        Sets
+      &bullet;
       = link_to controller: "help", action: "syntax" do
-        Help
+        Syntax Help

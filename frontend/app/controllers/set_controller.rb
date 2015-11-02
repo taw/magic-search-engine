@@ -8,5 +8,8 @@ class SetController < ApplicationController
     @set = $CardDatabase.sets[id]
     render_404 unless @set
     @cards = @set.printings.sort_by{|cp| [cp.number.to_i, cp.number]}
+
+    page = [1, params[:page].to_i].max
+    @cards = @cards.paginate(page: page, per_page: 25)
   end
 end

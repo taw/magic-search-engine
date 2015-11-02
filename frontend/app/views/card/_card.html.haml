@@ -1,10 +1,10 @@
-%h3
-  = link_to_card(card) do
-    = card.name
-  = card.mana_cost
-
 %div.card
-  %div= card.typeline
+  %h3.card_tite
+    = link_to_card(card) do
+      = card.name
+    = card.mana_cost
+
+  %div.typeline= card.typeline
 
   - if card.text.present?
     %div= h(card.text).gsub("\n", "<br/>").html_safe
@@ -17,5 +17,13 @@
 
   - if card.loyalty
     %div
-      Loyalty:
+      %span.infolabel
+        Loyalty:
       = card.loyalty
+
+  - if card.others.present?
+    %span.infolabel
+      Card has other parts:
+    - card.others.each do |other|
+      = link_to_card(other) do
+        = other.name
