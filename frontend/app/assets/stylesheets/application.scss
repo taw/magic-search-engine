@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+form.search {
+  input[type="text"] {
+    width: 300px;
+  }
+}
+
+.flavor {
+  font-style: italic;
+}
+
+.card {
+  max-width: 800px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  margin-top: 1em;
+  text-align: center;
+}

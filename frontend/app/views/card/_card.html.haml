@@ -3,18 +3,19 @@
     = card.name
   = card.mana_cost
 
-%div= card.typeline
+%div.card
+  %div= card.typeline
 
-- if card.text.present?
-  %div= h(card.text).gsub("\n", "<br/>").html_safe
+  - if card.text.present?
+    %div= h(card.text).gsub("\n", "<br/>").html_safe
 
-- if card.flavor.present?
-  %div{style: "font-style: italic"}= card.flavor
+  - if card.flavor.present?
+    %div.flavor= card.flavor
 
-- if card.power
-  %div= "#{card.power}/#{card.toughness}"
+  - if card.power
+    %div= "#{card.power}/#{card.toughness}"
 
-- if card.loyalty
-  %div
-    Loyalty:
-    = card.loyalty
+  - if card.loyalty
+    %div
+      Loyalty:
+      = card.loyalty
