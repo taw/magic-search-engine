@@ -10,4 +10,12 @@ module ApplicationHelper
   def link_to_search(search, &blk)
     link_to(controller: "card", action: "index", q: search, &blk)
   end
+
+  def format_oracle_text(card_text)
+    h(card_text).gsub("\n", "<br/>").gsub(/\{(.*?)\}/){
+      sym  = $&
+      mana = $1.gsub("/", "").downcase
+      %Q[<span class="mana mana-#{mana}">#{sym}</span>]
+    }.html_safe
+  end
 end
