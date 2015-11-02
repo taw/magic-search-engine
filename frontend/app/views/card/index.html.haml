@@ -1,3 +1,7 @@
+- if @warnings.present?
+  .warnings
+    - @warnings.each do |warning|
+      .warning= warning
 - if @cards.present?
   %table
     - @cards.each do |card, matching_printing|

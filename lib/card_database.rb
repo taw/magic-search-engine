@@ -21,10 +21,6 @@ class CardDatabase
     query.search(self)
   end
 
-  def search_card_names(query_string)
-    search(query_string).map(&:name).uniq
-  end
-
   def each_printing
     @cards.each do |card_name, card|
       card.printings.each do |printing|

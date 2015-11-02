@@ -17,18 +17,19 @@ class CardController < ApplicationController
     query = Query.new(@search)
     if @search.present?
       results = $CardDatabase.search(query)
+      @warnings = results.warnings
+      @cards = choose_best_printing(results.printings)
     else
-      results = []
+      @cards = []
     end
-
-    @cards = choose_best_printing(results).paginate(page: page, per_page: 25)
+    @cards = @cards.paginate(page: page, per_page: 25)
   end
 
   private
 
   def choose_best_printing(results)
-    results.group_by(&:name).map{|name, printings|
+    results.group_by(&:name).map do |name, printings|
       [printings[0], printings]
-    }
+    end
   end
 end

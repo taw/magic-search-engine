@@ -12,6 +12,8 @@ class SpellingSuggestions
   end
 
   def suggest(query)
+    # If "Rancor" is already in DB, do not suggest "Ranger" no matter what
+    return [] if @words.include?(query)
     results1 = []
     results2 = []
     query = normalize_text(query)

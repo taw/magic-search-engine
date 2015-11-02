@@ -35,6 +35,7 @@ class ConditionAnd < Condition
   end
 
   def metadata=(options)
+    super
     @conds.each{|cond| cond.metadata = options}
   end
 

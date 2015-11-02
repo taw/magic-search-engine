@@ -18,6 +18,7 @@ class ConditionAlt < Condition
   end
 
   def metadata=(options)
+    super
     @cond.metadata = options
   end
 

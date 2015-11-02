@@ -24,6 +24,13 @@ td, th {
   vertical-align: top;
 }
 
+.warnings {
+  font-size: small;
+  font-style: italic;
+  margin-bottom: 0.5em;
+  .warning {}
+}
+
 .card {
   width: 450px;
   margin-bottom: 0.5em;
