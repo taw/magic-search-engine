@@ -31,20 +31,25 @@ class Query
     if @metadata[:time]
       @cond = ConditionAnd.new(@cond, ConditionPrint.new("<=", @metadata[:time]))
     end
-    raise "No condition present for #{query_string}" unless @cond
-    @metadata[:no_extras] = !@cond.include_extras?
-
-    # FIXME: This still runs into problems if time resolves to nil by matching no set
-    #        like time:"battle for homeland"
-
-    # The only part that's used right now is time
-    @cond.metadata = @metadata
+    if @cond
+      raise "No condition present for #{query_string}" unless @cond
+      @metadata[:no_extras] = !@cond.include_extras?
+      # The only part that's used right now is time
+      @cond.metadata = @metadata
+    else
+      # No search query? OK, we'll just return all cards except extras
+      @metadata[:no_extras] = true
+    end
 
     # puts "Parse #{query_string} -> #{@cond}"
   end
 
   def search(db)
-    results = @cond.search(db)
+    if @cond
+      results = @cond.search(db)
+    else
+      results = db.printings
+    end
     results = results.reject(&:extra) if @metadata[:no_extras]
 
     results = case @metadata[:sort]

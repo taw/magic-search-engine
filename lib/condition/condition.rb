@@ -42,4 +42,9 @@ class Condition
       text.inspect
     end
   end
+
+  def warning(warn)
+    @warnings ||= []
+    @warnings << warn
+  end
 end

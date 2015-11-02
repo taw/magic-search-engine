@@ -8,8 +8,12 @@ class ConditionPrint < Condition
 
   def search(db)
     query_date, precision = parse_query_date(db)
-    max_date = db.resolve_time(@time)
-    db.printings.select{|card| match_date?(get_date(card, max_date), query_date, precision)}.to_set
+    if query_date
+      max_date = db.resolve_time(@time)
+      db.printings.select{|card| match_date?(get_date(card, max_date), query_date, precision)}.to_set
+    else
+      db.printings.to_set
+    end
   end
 
   def to_s
@@ -48,7 +52,8 @@ class ConditionPrint < Condition
         date = Date.parse("#{date}-01")
         [[date.year, date.month], 2]
       else
-        raise "Can't parse: #{date.inspect}"
+        warning %Q[Doesn't look like correct date, ignored: "#{date}"]
+        nil
       end
     end
   end
