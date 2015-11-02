@@ -5,6 +5,7 @@ require_relative "card"
 require_relative "card_set"
 require_relative "card_printing"
 require_relative "query"
+require_relative "spelling_suggestions"
 
 class CardDatabase
   attr_reader :sets, :cards, :blocks
@@ -87,6 +88,10 @@ class CardDatabase
     end
   end
 
+  def suggest_spelling(word)
+    spelling_suggestions.suggest(word)
+  end
+
   private
 
   def load_from_subset!(db, sets)
@@ -167,5 +172,15 @@ class CardDatabase
 
   def normalize_name(name)
     normalize_text(name).split.join(" ")
+  end
+
+  def spelling_suggestions
+    @spelling_suggestions ||= begin
+      ss = SpellingSuggestions.new
+      @cards.keys.each do |title|
+        ss << title
+      end
+      ss
+    end
   end
 end
