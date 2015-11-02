@@ -16,12 +16,16 @@
 
 form.search {
   input[type="text"] {
-    width: 300px;
+    width: 400px;
   }
 }
 
+td, th {
+  vertical-align: top;
+}
+
 .card {
-  max-width: 800px;
+  width: 450px;
   h3.card_tite {
     margin-bottom: 0.5em;
   }
@@ -43,6 +47,20 @@ form.search {
   }
 }
 
+.printings_box {
+  max-width: 200px;
+  font-size: xx-small;
+  .selected {
+    font-weight: bold;
+  }
+  .matching {
+    font-weight: bold;
+  }
+  .not_matching {
+    color: #888;
+  }
+}
+
 a {
   text-decoration: none;
   &:hover {
@@ -53,6 +71,7 @@ a {
 .footer {
   margin-top: 1em;
   text-align: center;
+  font-size: small;
 }
 
 .pagination {
@@ -62,5 +81,5 @@ a {
   a {
     color: #88f;
   }
+  margin-bottom: 0.5em;
 }
-

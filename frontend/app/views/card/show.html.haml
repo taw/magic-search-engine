@@ -1,1 +1,6 @@
-= render 'card', card: @card
+%table
+  %tr
+    %td
+      = render 'card', card: @card
+    %td
+      = render 'printings', card: @card, printings: @card.printings
