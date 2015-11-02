@@ -6,21 +6,22 @@ class ConditionExpr < ConditionSimple
   end
 
   def match?(card)
-    a = eval_expr(card, @a)
-    b = eval_expr(card, @b)
-    return false unless a and b
-    return false if a.is_a?(String) != b.is_a?(String)
+    ac, av = eval_expr(card, @a)
+    bc, bv = eval_expr(card, @b)
+    # p [:comparing, [@a, @op, @b], card.name, [ac, av], [bc, bv]]
+    return false unless ac and bc and ac == bc
+
     case @op
     when "="
-      a == b
+      av == bv
     when ">="
-      a >= b
+      av >= bv
     when ">"
-      a > b
+      av > bv
     when "<="
-      a <= b
+      av <= bv
     when "<"
-      a < b
+      av < bv
     else
       raise "Expr comparison parse error: #{@op}"
     end
@@ -35,28 +36,46 @@ class ConditionExpr < ConditionSimple
   def eval_expr(card, expr)
     case expr
     when "pow"
-      card.power
+      eval_card_value(card.power)
     when "tou"
-      card.toughness
+      eval_card_value(card.toughness)
     when "cmc"
-      card.cmc
+      eval_card_value(card.cmc)
     when "loyalty"
-      card.loyalty
+      eval_card_value(card.loyalty)
     when "year"
-      card.year
+      [:number, card.year]
+    else
+      eval_card_value(expr)
+    end
+  end
+
+  def eval_card_value(expr)
+    return [nil, nil] unless expr
+    return [:number, expr] unless expr.is_a?(String)
+    case expr
     when /\A-?\d+\z/
-      expr.to_i
+      [:number, expr.to_i]
     when /\A-?\d*\.\d+\z/
-      expr.to_f
+      [:number, expr.to_f]
     when /\A(-?\d*)½\z/
       # Negative half numbers never happen or real cards, but for sake of completeness
       if expr[0] == "-"
-        $1.to_i - 0.5
+        [:number, $1.to_i - 0.5]
       else
-        $1.to_i + 0.5
+        [:number, $1.to_i + 0.5]
       end
+    when "*"
+      [:star, 0]
+    when /\A\*([\+\-]\d+)\z/, /\A(\d+)\+\*\z/
+      [:star, $1.to_i]
+    when /\A(\d+)\-\*\z/
+      [:negstar, $1.to_i]
+    when /\A\*[2²]\z/
+      [:starsq, 0]
     else
-      raise "Expr variable parse error: #{expr}"
+      warn "Expr variable parse error: #{expr}"
+      [nil, nil]
     end
   end
 end

@@ -234,4 +234,29 @@ class CardDatabaseFullTest < Minitest::Test
       "Kird Ape",
       "Lotus Petal"
   end
+
+  def test_pow_special
+    assert_search_equal "pow=1+*", "pow=*+1"
+    assert_search_include "pow=*", "Krovikan Mist"
+    assert_search_results "pow=1+*",
+      "Gaea's Avenger", "Lost Order of Jarkeld", "Haunting Apparition", "Mwonvuli Ooze", "Allosaurus Rider"
+    assert_search_results "pow=2+*",
+      "Angry Mob", "Aysen Crusader"
+    assert_search_equal "pow>*", "pow>=1+*"
+    assert_search_equal "pow>1+*", "pow>=2+*"
+    assert_search_equal "pow>1+*", "pow=2+*"
+    assert_search_equal "pow=*2", "pow=*²"
+    assert_search_results "pow=*2",
+      "S.N.O.T."
+  end
+
+  def test_tou_special
+    # Mostly same as power except 7-*
+    assert_search_results "tou=7-*", "Shapeshifter"
+    assert_search_results "tou>8-*"
+    assert_search_results "tou>2-*", "Shapeshifter"
+    assert_search_results "tou>8-*"
+    assert_search_results "tou<=8-*", "Shapeshifter"
+    assert_search_results "tou<=2-*"
+  end
 end
