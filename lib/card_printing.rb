@@ -76,7 +76,7 @@ class CardPrinting
 
   include Comparable
   def <=>(other)
-    [name, set] <=> [other.name, other.set]
+    [name, set, number] <=> [other.name, other.set, other.number]
   end
 
   def inspect

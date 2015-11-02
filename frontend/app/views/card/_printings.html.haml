@@ -1,0 +1,15 @@
+- if printings.present?
+  .printings_box
+    - card.printings.each do |printing|
+      - if card == printing
+        .selected
+          = printing.set_name
+      - elsif printings.include?(printing)
+        .matching
+          = link_to_card(printing) do
+            = printing.set_name
+      - else
+        .not_matching
+          = link_to_card(printing) do
+            = printing.set_name
+
