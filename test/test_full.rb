@@ -259,4 +259,15 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_results "tou<=8-*", "Shapeshifter"
     assert_search_results "tou<=2-*"
   end
+
+  def test_error_handling
+    # Empty search returns all non-extras
+    assert_count_results("", 15383)
+    assert_count_results("sort:new", 15383)
+    assert_count_results("is:spell or t:land", 15383)
+    assert_count_results("time:3000", 15383)
+    assert_count_results(%Q[time:"battle for homelands"], 15383)
+    assert_count_results("time:1000", 0)
+    assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
+  end
 end
