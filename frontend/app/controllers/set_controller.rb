@@ -6,7 +6,11 @@ class SetController < ApplicationController
   def show
     id = params[:id]
     @set = $CardDatabase.sets[id]
-    render_404 unless @set
+    unless @set
+      render_404
+      return
+    end
+
     @cards = @set.printings.sort_by{|cp| [cp.number.to_i, cp.number]}
 
     page = [1, params[:page].to_i].max
