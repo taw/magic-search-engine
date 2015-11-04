@@ -1,7 +1,4 @@
 require "rake/testtask"
-require "pathname"
-require "json"
-require_relative "lib/indexer"
 
 task :default => :test
 
@@ -14,6 +11,5 @@ end
 
 desc "Generate index"
 task "index" do
-  indexer = Indexer.new
-  indexer.save_all! "data/index.json"
+  system "./bin/indexer"
 end
