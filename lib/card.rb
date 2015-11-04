@@ -67,9 +67,8 @@ class Card
     inspect
   end
 
-  def legality(format)
-    @legality ||= CardLegality.new(@name, @printings.map(&:set_code), @layout, @types)
-    @legality.legality(format)
+  def all_legalities(date=nil)
+    Format.all_legalities(self, date)
   end
 
   def first_release_date
