@@ -14,22 +14,25 @@ class SpellingSuggestions
   def suggest(query)
     # If "Rancor" is already in DB, do not suggest "Ranger" no matter what
     return [] if @words.include?(query)
-    results1 = []
-    results2 = []
     query = normalize_text(query)
+
+    if query.size <= 2
+      max_distance = 0
+    elsif query.size <= 4
+      max_distance = 1
+    else
+      max_distance = 2
+    end
+
+    results = (0...max_distance).map{ [] }
     @words.each do |word|
       d = DamerauLevenshtein.distance(word, query)
-      if d == 1
-        results1 << word
-      elsif d == 2
-        results2 << word
-      end
+      results[d-1] << word if d <= max_distance
     end
-    if results1.empty?
-      results2.sort
-    else
-      results1.sort
+    results.each do |r|
+      return r.sort unless r.empty?
     end
+    []
   end
 
   private
