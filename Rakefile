@@ -13,7 +13,7 @@ Rake::TestTask.new do |t|
 end
 
 desc "Generate index"
-task "index:generate" do
+task "index" do
   indexer = Indexer.new
   indexer.save_all! "data/index.json"
 end

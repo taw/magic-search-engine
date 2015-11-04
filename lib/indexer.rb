@@ -113,13 +113,57 @@ class Indexer
     path.write(prepare_index.to_json)
   end
 
-  def save_subset!(path, *sets)
-    path = Pathname(path)
-    path.parent.mkpath
-    path.write(prepare_index(*sets).to_json)
+  def index_set_data(set_code, set_data)
+    block = MagicBlocks.find{|c,n,*xx| xx.include?(set_code)} || []
+    {
+      "set_code" => set_code,
+      "set_name" => set_data["name"],
+      "block_code" => block[0],
+      "block_name" => block[1],
+      "border" => set_data["border"],
+      "release_date" => format_release_date(set_data["releaseDate"]),
+      "type" => set_data["type"],
+    }.compact
   end
 
-  def prepare_index(*set_filter)
+  def index_card_data(card_data)
+    card_data.slice(
+      "name",
+      "names",
+      "power",
+      "toughness",
+      "loyalty",
+      "manaCost",
+      "text",
+      "types",
+      "subtypes",
+      "supertypes",
+      "cmc",
+      "layout",
+      "reserved",
+      "hand", # vanguard
+      "life", # vanguard
+    ).merge(
+      "printings" => [],
+      "colors" => format_colors(card_data["colors"]),
+    ).compact
+  end
+
+  def index_printing_data(card_data)
+    card_data.slice(
+      "flavor",
+      "artist",
+      "border",
+      "timeshifted",
+      "number",
+    ).merge(
+      "rarity" => format_rarity(card_data["rarity"]),
+      "release_date" => format_release_date(card_data["releaseDate"]),
+      "watermark" => format_watermark(card_data["watermark"]),
+    ).compact
+  end
+
+  def prepare_index
     sets = {}
     cards = {}
     legalities = {}
@@ -131,18 +175,7 @@ class Indexer
 
     @data.each do |set_code, set_data|
       set_code = @sets_code_translator[set_code]
-      next unless set_filter.empty? or set_filter.include?(set_code)
-
-      block = MagicBlocks.find{|c,n,*xx| xx.include?(set_code)} || []
-      sets[set_code] = {
-        "set_code" => set_code,
-        "set_name" => set_data["name"],
-        "block_code" => block[0],
-        "block_name" => block[1],
-        "border" => set_data["border"],
-        "release_date" => format_release_date(set_data["releaseDate"]),
-        "type" => set_data["type"],
-      }.compact
+      sets[set_code] = index_set_data(set_code, set_data)
 
       ensure_set_has_card_numbers!(set_data)
 
@@ -160,46 +193,21 @@ class Indexer
           puts "FAIL #{name} #{mtgjson_legalities.sort.inspect} != #{algorithm_legalities.sort.inspect}"
           require 'pry'; binding.pry
         end
-
-        card = cards[name] ||= card_data.slice(
-            "name",
-            "names",
-            "power",
-            "toughness",
-            "loyalty",
-            "manaCost",
-            "text",
-            "types",
-            "subtypes",
-            "supertypes",
-            "cmc",
-            "layout",
-            "reserved",
-            "hand", # vanguard
-            "life", # vanguard
-        ).merge(
-          "printings" => [],
-          "colors" => format_colors(card_data["colors"]),
-        ).compact
+        card = index_card_data(card_data)
+        if cards[name]
+          unless card.select{|k,v| k != "printings"} == cards[name].select{|k,v| k != "printings"}
+            warn "#{name} is not coherent between versions"
+          end
+          card = cards[name]
+        else
+          cards[name] = card
+        end
 
         unless card_data["number"]
           warn "No number for #{set_code} #{card_data["name"]}"
         end
 
-        card["printings"] << [
-          set_code,
-          card_data.slice(
-            "flavor",
-            "artist",
-            "border",
-            "timeshifted",
-            "number",
-          ).merge(
-            "rarity" => format_rarity(card_data["rarity"]),
-            "release_date" => format_release_date(card_data["releaseDate"]),
-            "watermark" => format_watermark(card_data["watermark"]),
-          ).compact
-        ]
+        card["printings"] << [set_code, index_printing_data(card_data)]
       end
     end
     {"sets"=>sets, "cards"=>cards}
@@ -257,16 +265,22 @@ class Indexer
 
   def ensure_set_has_card_numbers!(set_data)
     cards = set_data["cards"]
-    return if cards.all?{|c| c["number"] }
-    if cards.any?{|c| c["number"] }
-      min_number = cards.map{|c| c["number"].to_i}.max + 1
-      # Some but not all have numbers?
-    else
-      min_number = 1
+    unless cards.all?{|c| c["number"] }
+      if cards.any?{|c| c["number"] }
+        min_number = cards.map{|c| c["number"].to_i}.max + 1
+        # Some but not all have numbers?
+      else
+        min_number = 1
+      end
+
+      cards.select{|c| c["number"].nil?}.each_with_index do |c, i|
+        c["number"] = "#{i+min_number}"
+      end
     end
 
-    cards.select{|c| c["number"].nil?}.each_with_index do |c, i|
-      c["number"] = "#{i+min_number}"
+    numbers = cards.map{|c| c["number"]}
+    if numbers.size != numbers.uniq.size
+      warn "Set #{set_data["name"]} has duplicate numbers"
     end
   end
 end
