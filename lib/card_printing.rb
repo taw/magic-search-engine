@@ -19,6 +19,10 @@ class CardPrinting
     @data["number"]
   end
 
+  def multiverseid
+    @data["multiverseid"]
+  end
+
   def artist
     @data["artist"].downcase
   end
@@ -65,7 +69,7 @@ class CardPrinting
   end
   %W[name names layout colors mana_cost reserved types cmc text power
     toughness loyalty extra color_identity has_multiple_parts? typeline
-    first_release_date last_release_date printings
+    first_release_date last_release_date printings life hand rulings
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
   end
@@ -74,6 +78,14 @@ class CardPrinting
     @card.all_legalities(time)
   end
 
+  def gatherer_link
+    return nil unless multiverseid
+    "http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=#{multiverseid}"
+  end
+
+  def magiccards_info_link
+    "http://magiccards.info/#{set_code}/en/#{number}.html"
+  end
 
   include Comparable
   def <=>(other)
@@ -81,7 +93,7 @@ class CardPrinting
   end
 
   def inspect
-    "CardPrinting(#{card.name}, #{set.set_code})"
+    "CardPrinting(#{name}, #{set_code})"
   end
 
   def to_s

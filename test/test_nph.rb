@@ -15,6 +15,20 @@ class CardDatabaseNewPhyrexiaTest < Minitest::Test
     assert_search_results "w:mirran c:g", "Greenhilt Trainee", "Melira, Sylvok Outcast", "Viridian Harvest"
   end
 
+  def test_gatherer_link
+    assert_equal(
+      "http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=218006",
+      @birthing_pod.gatherer_link
+    )
+  end
+
+  def test_magiccards_info_link
+    assert_equal(
+      "http://magiccards.info/nph/en/104.html",
+      @birthing_pod.magiccards_info_link
+    )
+  end
+
   def test_legalities
     assert_equal(
       {

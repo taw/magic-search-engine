@@ -2,6 +2,8 @@ require_relative "ban_list"
 require_relative "format/format"
 require "date"
 require "ostruct"
+require "json"
+require "set"
 
 # ActiveRecord FTW
 class Hash
@@ -12,6 +14,14 @@ class Hash
 
   def compact
     reject{|k,v| v.nil?}
+  end
+
+  def map_values
+    result = {}
+    each do |k,v|
+      result[k] = yield(v)
+    end
+    result
   end
 end
 
@@ -127,6 +137,17 @@ class Indexer
   end
 
   def index_card_data(card_data)
+    # mtgjson is being silly here
+    if card_data["name"] == "B.F.M. (Big Furry Monster)"
+      card_data["text"] = "You must play both B.F.M. cards to put B.F.M. into play. If either B.F.M. card leaves play, sacrifice the other.\nB.F.M. can be blocked only by three or more creatures."
+      card_data["cmc"] = 15
+      card_data["power"] = "99"
+      card_data["toughness"] = "99"
+      card_data["manaCost"] = "{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}"
+      card_data["types"] = ["Creature"]
+      card_data["subtypes"] = ["The-Biggest-Baddest-Nastiest-Scariest-Creature-You'll-Ever-See"]
+      card_data["colors"] = ["Black"]
+    end
     card_data.slice(
       "name",
       "names",
@@ -143,6 +164,7 @@ class Indexer
       "reserved",
       "hand", # vanguard
       "life", # vanguard
+      "rulings",
     ).merge(
       "printings" => [],
       "colors" => format_colors(card_data["colors"]),
@@ -150,12 +172,16 @@ class Indexer
   end
 
   def index_printing_data(card_data)
+    if card_data["name"] == "B.F.M. (Big Furry Monster)"
+      card_data["flavor"] = %Q["It was big. Really, really big. No, bigger than that. Even bigger. Keep going. More. No, more. Look, we're talking krakens and dreadnoughts for jewelry. It was big"\n-Arna Kennerd, skyknight]
+    end
     card_data.slice(
       "flavor",
       "artist",
       "border",
       "timeshifted",
       "number",
+      "multiverseid",
     ).merge(
       "rarity" => format_rarity(card_data["rarity"]),
       "release_date" => format_release_date(card_data["releaseDate"]),
@@ -177,7 +203,7 @@ class Indexer
       set_code = @sets_code_translator[set_code]
       sets[set_code] = index_set_data(set_code, set_data)
 
-      ensure_set_has_card_numbers!(set_data)
+      ensure_set_has_card_numbers!(set_code, set_data)
 
       set_data["cards"].each do |card_data|
         name = card_data["name"]
@@ -203,9 +229,9 @@ class Indexer
           cards[name] = card
         end
 
-        unless card_data["number"]
-          warn "No number for #{set_code} #{card_data["name"]}"
-        end
+        # unless card_data["number"]
+        #   warn "No number for #{set_code} #{card_data["name"]}"
+        # end
 
         card["printings"] << [set_code, index_printing_data(card_data)]
       end
@@ -263,24 +289,90 @@ class Indexer
     name.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
   end
 
-  def ensure_set_has_card_numbers!(set_data)
-    cards = set_data["cards"]
-    unless cards.all?{|c| c["number"] }
-      if cards.any?{|c| c["number"] }
-        min_number = cards.map{|c| c["number"].to_i}.max + 1
-        # Some but not all have numbers?
-      else
-        min_number = 1
-      end
+  # They really only have two goals:
+  # * be unique
+  # * allow linking to magiccards.info for debugging
+  #
+  # For uniqueness sake we could just allocate them ourselves easily
+  # But to make them compatible instead we use mci's numbers
+  #
+  # For cards with multiple printings it's not obvious how to get them arranged so pics match,
+  # but it's not a huge deal
+  #
+  # By the way ordering by multiverseid would probably be more sensible
+  # (alpha starts with Ankh of Mishra, not Animate Dead), but compatibilty etc.
 
-      cards.select{|c| c["number"].nil?}.each_with_index do |c, i|
-        c["number"] = "#{i+min_number}"
+  def ensure_set_has_card_numbers!(set_code, set_data)
+    cards = set_data["cards"]
+    numbers = cards.map{|c| c["number"]}
+
+    if numbers.compact.empty?
+      use_mci_numbers!(set_code, set_data)
+    end
+
+    case set_code
+    when "van"
+      set_data["cards"].sort_by{|c| c["multiverseid"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
+    when "pch", "arc", "pc2"
+      set_data["cards"].each do |card|
+        unless (card["types"] & ["Plane", "Phenomenon", "Scheme"]).empty?
+          card["number"] = (1000 + card["number"].to_i).to_s
+        end
       end
+    when "bfz"
+      # No idea if this is correct
+      basic_land_cards = set_data["cards"].select{|c| (c["supertypes"]||[]) .include?("Basic") }
+      basic_land_cards = basic_land_cards.sort_by{|c| [c["number"], c["multiverseid"]]}
+      basic_land_cards.each_slice(2) do |a,b|
+        raise unless a["number"] == b["number"]
+        b["number"] += "A"
+      end
+    when "rqs", "me4", "clash"
+      # Just brute force, investigate later wtf?
+      set_data["cards"].sort_by{|c| c["multiverseid"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
+    when "st2k"
+      # Just brute force, investigate later wtf?
+      set_data["cards"].each_with_index{|c,i| c["number"] = "#{i+1}"}
     end
 
     numbers = cards.map{|c| c["number"]}
-    if numbers.size != numbers.uniq.size
-      warn "Set #{set_data["name"]} has duplicate numbers"
+    if numbers.compact.size == 0
+      warn "Set #{set_code} #{set_data["name"]} has NO numbers"
+    elsif numbers.compact.size != numbers.size
+      warn "Set #{set_code} #{set_data["name"]} has cards without numbers"
+    end
+    if numbers.compact.size != numbers.compact.uniq.size
+      warn "Set #{set_code} #{set_data["name"]} has DUPLICATE numbers"
+    end
+  end
+
+  # Assume that if two Forests are 100 and 101
+  # then Forest with lower multiverse id gets 100
+  # No idea if that's correct
+  def use_mci_numbers!(set_code, set_data)
+    path = Pathname(__dir__) + "../data/collector_numbers/#{set_code}.txt"
+    return unless path.exist?
+    mci_numbers = path.readlines.map{|line|
+      number, name = line.chomp.split("\t", 2)
+      [number, name.downcase]
+    }.group_by(&:last).map_values{|x| x.map(&:first)}
+
+    cards = set_data["cards"]
+
+    if set_code == "ced" or set_code == "cedi"
+      # Not on Gatherer
+      cards.each do |card|
+        name = card["name"]
+        card["number"] = mci_numbers[name.downcase].shift
+      end
+    else
+      mvids = cards.map{|c| [c["name"], c["multiverseid"]]}.group_by(&:first).map_values{|x| x.map(&:last).sort}
+      cards.each do |card|
+        name = card["name"]
+        rel_idx = mvids[name].index(card["multiverseid"])
+        raise unless mci_numbers[name.downcase]
+        card["number"] = mci_numbers[name.downcase][rel_idx]
+      end
     end
   end
 end

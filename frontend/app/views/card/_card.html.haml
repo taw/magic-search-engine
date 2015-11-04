@@ -10,7 +10,7 @@
     %div.oracle= format_oracle_text(card.text)
 
   - if card.flavor.present?
-    %div.flavor= card.flavor
+    %div.flavor= format_oracle_text(card.flavor)
 
   - if card.power
     %div= "#{card.power}/#{card.toughness}"
@@ -20,6 +20,18 @@
       %span.infolabel
         Loyalty:
       = card.loyalty
+
+  - if card.hand
+    %div
+      %span.infolabel
+        Hand size bonus:
+      = card.hand
+
+  - if card.life
+    %div
+      %span.infolabel
+        Life bonus:
+      = card.life
 
   - if card.others.present?
     %span.infolabel
