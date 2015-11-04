@@ -70,9 +70,10 @@ class CardPrinting
     eval("def #{m}; @card.#{m}; end")
   end
 
-  def legality(format)
-    @card.legality(format)
+  def all_legalities(time=nil)
+    @card.all_legalities(time)
   end
+
 
   include Comparable
   def <=>(other)

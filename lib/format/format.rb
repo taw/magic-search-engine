@@ -45,65 +45,81 @@ class Format
     to_s
   end
 
-  private
+  class << self
+    def formats_index
+      {
+        "ia block"                    => FormatIceAgeBlock,
+        "ice age block"               => FormatIceAgeBlock,
+        "mr block"                    => FormatMirageBlock,
+        "mirage block"                => FormatMirageBlock,
+        "tp block"                    => FormatTempestBlock,
+        "tempest block"               => FormatTempestBlock,
+        "us block"                    => FormatUrzaBlock,
+        "urza block"                  => FormatUrzaBlock,
+        "mm block"                    => FormatMasquesBlock,
+        "masques block"               => FormatMasquesBlock,
+        "marcadian masques block"     => FormatMasquesBlock,
+        "in block"                    => FormatInvasionBlock,
+        "invasion block"              => FormatInvasionBlock,
+        "od block"                    => FormatOdysseyBlock,
+        "odyssey block"               => FormatOdysseyBlock,
+        "on block"                    => FormatOnslaughtBlock,
+        "onslaught block"             => FormatOnslaughtBlock,
+        "mi block"                    => FormatMirrodinBlock,
+        "mirrodin block"              => FormatMirrodinBlock,
+        "ts block"                    => FormatTimeSpiralBlock,
+        "time spiral block"           => FormatTimeSpiralBlock,
+        "rav block"                   => FormatRavinicaBlock,
+        "ravnica block"               => FormatRavinicaBlock,
+        "kamigawa block"              => FormatKamigawaBlock,
+        "chk block"                   => FormatKamigawaBlock,
+        "champions of kamigawa block" => FormatKamigawaBlock,
+        "lw block"                    => FormatLorwynShadowmoorBlock,
+        "lorwyn block"                => FormatLorwynShadowmoorBlock,
+        "lorwyn-shadowmoor block"     => FormatLorwynShadowmoorBlock,
+        "ala block"                   => FormatShardsOfAlaraBlock,
+        "alara block"                 => FormatShardsOfAlaraBlock,
+        "shards of alara block"       => FormatShardsOfAlaraBlock,
+        "zendikar block"              => FormatZendikarBlock,
+        "zen block"                   => FormatZendikarBlock,
+        "scars of mirrodin block"     => FormatScarsOfMirrodinBlock,
+        "som block"                   => FormatScarsOfMirrodinBlock,
+        "innistrad block"             => FormatInnistradBlock,
+        "isd block"                   => FormatInnistradBlock,
+        "return to ravnica block"     => FormatReturnToRavnicaBlock,
+        "rtr block"                   => FormatReturnToRavnicaBlock,
+        "theros block"                => FormatTherosBlock,
+        "ths block"                   => FormatTherosBlock,
+        "tarkir block"                => FormatTarkirBlock,
+        "ktk block"                   => FormatTarkirBlock,
+        "battle for zendikar block"   => FormatBattleForZendikarBlock,
+        "bfz block"                   => FormatBattleForZendikarBlock,
+        "unsets"                      => FormatUnsets,
+        "un-sets"                     => FormatUnsets,
+        "standard"                    => FormatStandard,
+        "modern"                      => FormatModern,
+        "legacy"                      => FormatLegacy,
+        "vintage"                     => FormatVintage,
+        "commander"                   => FormatCommander,
+        "pauper"                      => FormatPauper,
+      }
+    end
 
-  def self.[](format)
-    {
-      "ia block"                    => FormatIceAgeBlock,
-      "ice age block"               => FormatIceAgeBlock,
-      "mr block"                    => FormatMirageBlock,
-      "mirage block"                => FormatMirageBlock,
-      "tp block"                    => FormatTempestBlock,
-      "tempest block"               => FormatTempestBlock,
-      "us block"                    => FormatUrzaBlock,
-      "urza block"                  => FormatUrzaBlock,
-      "mm block"                    => FormatMasquesBlock,
-      "masques block"               => FormatMasquesBlock,
-      "marcadian masques block"     => FormatMasquesBlock,
-      "in block"                    => FormatInvasionBlock,
-      "invasion block"              => FormatInvasionBlock,
-      "od block"                    => FormatOdysseyBlock,
-      "odyssey block"               => FormatOdysseyBlock,
-      "on block"                    => FormatOnslaughtBlock,
-      "onslaught block"             => FormatOnslaughtBlock,
-      "mi block"                    => FormatMirrodinBlock,
-      "mirrodin block"              => FormatMirrodinBlock,
-      "ts block"                    => FormatTimeSpiralBlock,
-      "time spiral block"           => FormatTimeSpiralBlock,
-      "rav block"                   => FormatRavinicaBlock,
-      "ravnica block"               => FormatRavinicaBlock,
-      "kamigawa block"              => FormatKamigawaBlock,
-      "chk block"                   => FormatKamigawaBlock,
-      "champions of kamigawa block" => FormatKamigawaBlock,
-      "lw block"                    => FormatLorwynShadowmoorBlock,
-      "lorwyn block"                => FormatLorwynShadowmoorBlock,
-      "lorwyn-shadowmoor block"     => FormatLorwynShadowmoorBlock,
-      "ala block"                   => FormatShardsOfAlaraBlock,
-      "alara block"                 => FormatShardsOfAlaraBlock,
-      "shards of alara block"       => FormatShardsOfAlaraBlock,
-      "zendikar block"              => FormatZendikarBlock,
-      "zen block"                   => FormatZendikarBlock,
-      "scars of mirrodin block"     => FormatScarsOfMirrodinBlock,
-      "som block"                   => FormatScarsOfMirrodinBlock,
-      "innistrad block"             => FormatInnistradBlock,
-      "isd block"                   => FormatInnistradBlock,
-      "return to ravnica block"     => FormatReturnToRavnicaBlock,
-      "rtr block"                   => FormatReturnToRavnicaBlock,
-      "theros block"                => FormatTherosBlock,
-      "ths block"                   => FormatTherosBlock,
-      "tarkir block"                => FormatTarkirBlock,
-      "ktk block"                   => FormatTarkirBlock,
-      "battle for zendikar block"   => FormatBattleForZendikarBlock,
-      "bfz block"                   => FormatBattleForZendikarBlock,
-      "unsets"                      => FormatUnsets,
-      "un-sets"                     => FormatUnsets,
-      "standard"                    => FormatStandard,
-      "modern"                      => FormatModern,
-      "legacy"                      => FormatLegacy,
-      "vintage"                     => FormatVintage,
-      "commander"                   => FormatCommander,
-      "pauper"                      => FormatPauper,
-    }[format] || FormatUnknown
+    def [](format)
+      formats_index[format] || FormatUnknown
+    end
+
+    def all_legalities(card, time=nil)
+      result = {}
+      formats_index.values.uniq.each do |format_class|
+        format = format_class.new(time)
+        status = format.legality(card)
+        if status
+          result[format.format_name] = status
+        end
+      end
+      result
+    end
   end
 end
 
