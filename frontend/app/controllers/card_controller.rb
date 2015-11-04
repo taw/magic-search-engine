@@ -11,11 +11,11 @@ class CardController < ApplicationController
   # Logic tested in CLIFrontend, probably should be moved to database
   # as this untested copypasta is nasty
   def index
-    @search = params[:q] || ""
+    @search = (params[:q] || "").strip
     page = [1, params[:page].to_i].max
 
-    query = Query.new(@search)
     if @search.present?
+      query = Query.new(@search)
       results = $CardDatabase.search(query)
       @warnings = results.warnings
       @cards = choose_best_printing(results.printings)
