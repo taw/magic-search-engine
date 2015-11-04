@@ -23,6 +23,7 @@ class CardControllerTest < ActionController::TestCase
     get "index"
     assert_response 200
     assert_select ".card", 0
+    assert_select ".zero_results", 0
   end
 
   test "search all" do
@@ -31,10 +32,16 @@ class CardControllerTest < ActionController::TestCase
     assert_select ".card", 25
   end
 
+  test "nothing found" do
+    get "index", q: "optimus prime"
+    assert_response 200
+    assert_select ".card", 0
+    assert_select ".zero_results"
+  end
+
   test "search something" do
     get "index", q: "Karn Liberated"
     assert_response 200
     assert_select %Q[.card:contains("Karn Liberated")]
   end
 end
-

@@ -2,12 +2,16 @@
   .warnings
     - @warnings.each do |warning|
       .warning= warning
-- if @cards.present?
-  %table
-    - @cards.each do |card, matching_printing|
-      %tr
-        %td
-          = render 'card', card: card
-        %td
-          = render 'printings', card: card, printings: matching_printing
-  = will_paginate @cards
+- if @search.present?
+  - if @cards.present?
+    %table
+      - @cards.each do |card, matching_printing|
+        %tr
+          %td
+            = render 'card', card: card
+          %td
+            = render 'printings', card: card, printings: matching_printing
+    = will_paginate @cards
+  - else
+    .zero_results
+      No results found.
