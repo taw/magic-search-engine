@@ -24,7 +24,7 @@ class CardPrinting
   end
 
   def artist
-    @data["artist"].downcase
+    @data["artist"]
   end
 
   def flavor

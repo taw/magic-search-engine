@@ -1,6 +1,8 @@
 %table
   %tr
     %td
-      = render 'card', card: @card
+      %div.card
+        = render 'card', card: @card
+        = render 'card_extra', card: @card
     %td
       = render 'printings', card: @card, printings: @card.printings

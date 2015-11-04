@@ -1,0 +1,31 @@
+%div
+  %span.infolabel
+    Artist:
+  = card.artist
+
+%h5 Links
+%div
+  - if card.gatherer_link.present?
+    %span.infolabel
+      %a{href: card.gatherer_link}
+        Gatherer
+  - if card.magiccards_info_link.present?
+    %span.infolabel
+      %a{href: card.magiccards_info_link}
+        magiccards.info
+
+- if card.rulings.present?
+  %h5 Rulings
+  .rulings
+    - card.rulings.each do |ruling|
+      %div
+        = ruling["date"]
+        = format_oracle_text(ruling["text"])
+
+%h5 Legalities
+%ul.legalities
+- card.all_legalities.each do |format, status|
+  %li
+    = format
+    &mdash;
+    = status
