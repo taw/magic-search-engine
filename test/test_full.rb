@@ -6,8 +6,8 @@ class CardDatabaseFullTest < Minitest::Test
   end
 
   def test_stats
-    assert_equal 15629, @db.cards.size
-    assert_equal 29389, @db.printings.size
+    assert_equal 15685, @db.cards.size
+    assert_equal 29731, @db.printings.size
   end
 
   def test_formats
@@ -202,9 +202,12 @@ class CardDatabaseFullTest < Minitest::Test
 
   def test_alt_test_of_time
     assert_search_results "year=1993 alt:year=2015",
+      "Basalt Monolith",
       "Counterspell",
       "Dark Ritual",
+      "Desert Twister",
       "Disenchant",
+      "Earthquake",
       "Forest",
       "Island",
       "Jayemdae Tome",
@@ -217,6 +220,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Serra Angel",
       "Shatter",
       "Shivan Dragon",
+      "Sol Ring",
       "Spell Blast",
       "Swamp",
       "Tranquility"
@@ -262,11 +266,11 @@ class CardDatabaseFullTest < Minitest::Test
 
   def test_error_handling
     # Empty search returns all non-extras
-    assert_count_results("", 15383)
-    assert_count_results("sort:new", 15383)
-    assert_count_results("is:spell or t:land", 15383)
-    assert_count_results("time:3000", 15383)
-    assert_count_results(%Q[time:"battle for homelands"], 15383)
+    assert_count_results("", 15439)
+    assert_count_results("sort:new", 15439)
+    assert_count_results("is:spell or t:land", 15439)
+    assert_count_results("time:3000", 15439)
+    assert_count_results(%Q[time:"battle for homelands"], 15439)
     assert_count_results("time:1000", 0)
     assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
   end
