@@ -4,6 +4,7 @@ require "date"
 require "ostruct"
 require "json"
 require "set"
+require "pathname"
 
 # ActiveRecord FTW
 class Hash
