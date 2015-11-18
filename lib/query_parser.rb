@@ -73,7 +73,7 @@ private
         @tokens << [:test, ConditionExpr.new(s[1].downcase, s[2], s[3].downcase)]
       elsif s.scan(/mana\s*(>=|>|<=|<|=)\s*((?:[\dwubrgxyz]|\{.*?\})+)/i)
         @tokens << [:test, ConditionMana.new(s[1], s[2])]
-      elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted|reserved|multipart)\b/i)
+      elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted|reserved|multipart|promo)\b/i)
         @tokens << [:not] if s[1].downcase == "not"
         klass = Kernel.const_get("ConditionIs#{s[2].capitalize}")
         @tokens << [:test, klass.new]
