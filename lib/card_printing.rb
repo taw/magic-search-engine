@@ -49,14 +49,15 @@ class CardPrinting
 
   def frame
     @frame ||= begin
-      # Each promo needs to be manually checked
-      old_border_sets = %w"al be an un ced cedi drc aq rv lg dk mbp fe dcilm 4e ia ch hl ai arena uqc mr mgbc itp vi 5e pot po wl ptc tp sh po2 jr ex ug apac us at ul 6e p3k ud st guru wrl wotc mm br sus fnmp euro ne st2k pr bd in ps 7e mprp ap od dm tr ju on le sc rep tsts"
-
-      if timeshifted and set_code == "fut"
-        "future"
-      elsif old_border_sets.include?(set_code)
+      eight_edition_release_date = Date.parse("2003-07-28")
+      if @release_date < eight_edition_release_date
         "old"
+      elsif set_code == "tsts"
+        "old"
+      elsif timeshifted and set_code == "fut"
+        "future"
       else
+        # Were there any 8e+ old frame printings?
         "new"
       end
     end
