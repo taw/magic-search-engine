@@ -274,4 +274,10 @@ class CardDatabaseFullTest < Minitest::Test
     assert_count_results("time:1000", 0)
     assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
   end
+
+  def test_is_promo
+    # mtgjson has different idea what's promo,
+    # mci returns 1054 cards
+    assert_count_results("is:promo", 852)
+  end
 end
