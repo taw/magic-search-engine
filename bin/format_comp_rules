@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+
+class FormatCompRules
+  def run!
+    @output = ""
+    paras = text_rules.split(/\n{2,}/)
+    paras.each do |para|
+      @output << "<p>\n"
+      @output << h(para)
+      @output << "</p>\n\n"
+    end
+    save!
+  end
+
+  def h(txt)
+    raise if txt =~ /[<>]/
+    txt.gsub("&", "&amp;")
+  end
+
+  def save!
+    html_rules_path.write(@output)
+  end
+
+  def html_rules_path
+    Pathname(__dir__) + "../frontend/app/views/help/rules.html"
+  end
+
+  def text_rules_path
+    Pathname(__dir__) + "../data/MagicCompRules.txt"
+  end
+
+  def text_rules
+    @text_rules ||= text_rules_path
+                      .read
+                      .force_encoding("windows-1252")
+                      .encode("utf-8")
+                      .tr("\r", "")
+  end
+end
+
+FormatCompRules.new.run!

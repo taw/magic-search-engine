@@ -1,4 +1,7 @@
 class HelpController < ApplicationController
-  def help
+  def syntax
+  end
+
+  def rules
   end
 end
