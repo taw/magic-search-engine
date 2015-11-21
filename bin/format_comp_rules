@@ -44,14 +44,20 @@ class FormatCompRules
   ## Output formatting
 
   def ref(id)
-    "section-#{id.downcase.sub(/\.\z/, "").gsub(/[^a-z0-9]/, "-")}"
+    "section-#{ id.downcase.sub(/\.\z/, "").gsub(/[^a-z0-9]/, "-") }"
+  end
+
+  def resolve_references(text)
+    text.gsub(/\b\d{3}\.\d+[a-z]\b|\b\d{3}\.\d+\b|\b\d{3}\b/) do
+      %Q[<a href="##{ref($&)}">#{$&}</a>]
+    end
   end
 
   def glossary_entry!(text)
     term, definition = text.split("\n", 2)
     @output << ".glossary_entry"
     @output << "  .glossary_term #{term}"
-    @output << "  .glossary_definition #{definition.oneline}"
+    @output << "  .glossary_definition #{resolve_references(definition).oneline}"
   end
 
   def rule!(rule)
@@ -59,7 +65,7 @@ class FormatCompRules
     @output << ".rule{id: #{ref(rule_id).inspect}}"
     @output << "  .rule_id #{rule_id}"
     rule_text.split("\n").each do |rule_line|
-      @output << "  .rule_text #{rule_line}"
+      @output << "  .rule_text #{resolve_references(rule_line)}"
     end
   end
 
