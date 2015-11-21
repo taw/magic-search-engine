@@ -2,29 +2,104 @@
 
 require "pathname"
 
+class String
+  def oneline
+    gsub(/\s+/, " ")
+  end
+end
+
 class FormatCompRules
   def run!
-    @output = ""
+    @output = []
     paras = text_rules.split(/\n{2,}/)
-    paras.each do |para|
-      @output << "<p>\n"
-      @output << h(para)
-      @output << "</p>\n\n"
+
+    raise unless paras[0] == "Magic: The Gathering Comprehensive Rules"
+    primary_header! paras.shift
+    para! paras.shift while paras[0] != "Introduction"
+    secondary_header! paras.shift
+    para! paras.shift while paras[0] != "Contents"
+    secondary_header! paras.shift
+
+    while paras[0] != "1. Game Concepts"
+      tos_section! paras.shift
     end
+
+    while paras[0] =~ /\A\d/
+      rule! paras.shift
+    end
+
+    raise unless paras[0] == "Glossary"
+    secondary_header! paras.shift
+
+    while paras[0] != "Credits"
+      glossary_entry! paras.shift
+    end
+
+    secondary_header! paras.shift
+    para! paras.shift while paras[0]
+
     save!
   end
 
-  def h(txt)
-    raise if txt =~ /[<>]/
-    txt.gsub("&", "&amp;")
+  ## Output formatting
+
+  def ref(id)
+    "section-#{id.downcase.sub(/\.\z/, "").gsub(/[^a-z0-9]/, "-")}"
   end
 
+  def glossary_entry!(text)
+    term, definition = text.split("\n", 2)
+    @output << ".glossary_entry"
+    @output << "  .glossary_term #{term}"
+    @output << "  .glossary_definition #{definition.oneline}"
+  end
+
+  def rule!(rule)
+    rule_id, rule_text = rule.split(" ", 2)
+    @output << ".rule{id: #{ref(rule_id).inspect}}"
+    @output << "  .rule_id #{rule_id}"
+    rule_text.split("\n").each do |rule_line|
+      @output << "  .rule_text #{rule_line}"
+    end
+  end
+
+  def tos_entry!(tos_entry)
+    if tos_entry =~ /\A(\d+)/
+      section_ref = "section-#{$1}"
+    else
+      section_ref = "section-#{tos_entry.downcase}"
+    end
+    @output << "  %li"
+    @output << "    %a{href: '##{section_ref}'} #{tos_entry.oneline}"
+  end
+
+  def tos_section!(text)
+    @output << "%ul.tos_section"
+    text.split("\n").each do |tos_entry|
+      tos_entry! tos_entry
+    end
+  end
+
+  def primary_header!(text)
+    @output << "%h4 #{text.oneline}"
+  end
+
+  def secondary_header!(text)
+    @output << "%h3{id: #{ref(text).inspect}} #{text.oneline}"
+  end
+
+  def para!(text)
+    @output << "%p #{text.oneline}"
+  end
+
+  ## Everything else
+
   def save!
-    html_rules_path.write(@output)
+    html_rules_path.write(@output.join("\n")+"\n")
   end
 
   def html_rules_path
-    Pathname(__dir__) + "../frontend/app/views/help/rules.html"
+    Pathname(__dir__) + "../frontend/app/views/help/rules.html.haml"
   end
 
   def text_rules_path
@@ -32,11 +107,17 @@ class FormatCompRules
   end
 
   def text_rules
-    @text_rules ||= text_rules_path
+    @text_rules ||= html_escape(text_rules_path
                       .read
                       .force_encoding("windows-1252")
                       .encode("utf-8")
                       .tr("\r", "")
+                    )
+  end
+
+  def html_escape(txt)
+    raise if txt =~ /[<>]/
+    txt.gsub("&", "&amp;")
   end
 end
 

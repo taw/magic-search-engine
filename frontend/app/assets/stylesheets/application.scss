@@ -24,6 +24,20 @@ td, th {
   vertical-align: top;
 }
 
+.rule {
+  margin-bottom: 0.5em;
+  .rule_id {
+    font-weight: bold;
+  }
+}
+
+.glossary_entry {
+  margin-bottom: 0.5em;
+  .glossary_term {
+    font-weight: bold;
+  }
+}
+
 .warnings {
   font-size: small;
   font-style: italic;
