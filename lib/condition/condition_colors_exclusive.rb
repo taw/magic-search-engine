@@ -4,6 +4,6 @@ class ConditionColorsExclusive < ConditionColors
   end
 
   def to_s
-    "ci:#{@colors_query.join}"
+    "c!#{@colors_query.join}"
   end
 end

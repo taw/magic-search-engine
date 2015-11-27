@@ -8,6 +8,6 @@ class ConditionBorder < ConditionSimple
   end
 
   def to_s
-    "border:#{@border}"
+    "is:#{@border}-bordered"
   end
 end

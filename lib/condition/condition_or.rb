@@ -7,7 +7,7 @@ class ConditionOr < Condition
       else
         [c]
       end
-    end.flatten
+    end.flatten.uniq
     raise if @conds.empty?
     @simple = @conds.all?(&:simple?)
   end

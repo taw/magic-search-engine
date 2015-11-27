@@ -1,13 +1,13 @@
 class ConditionAnd < Condition
   attr_reader :conds
   def initialize(*conds)
-    @conds = conds.compact.map do |c|
+    @conds = conds.compact.uniq.map do |c|
       if c.is_a?(ConditionAnd)
         c.conds
       else
         [c]
       end
-    end.flatten
+    end.flatten.uniq
     raise if @conds.empty?
     @simple_conds, @special_conds = @conds.partition(&:simple?)
     @simple = @conds.all?(&:simple?)
