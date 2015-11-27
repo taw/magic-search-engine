@@ -26,6 +26,17 @@ class Condition
       instance_variables.all?{|ivar| instance_variable_get(ivar) == other.instance_variable_get(ivar) }
   end
 
+  def hash
+    [
+      self.class,
+      instance_variables.map{|ivar| [ivar, instance_variable_get(ivar)] }
+    ].hash
+  end
+
+  def eql?(other)
+    self == other
+  end
+
   private
 
   def normalize_text(text)
@@ -37,7 +48,9 @@ class Condition
   end
 
   def maybe_quote(text)
-    if text =~ /\A[a-zA-Z0-9]+\z/
+    if text.is_a?(Date)
+      '"%d.%d.%d"' % [text.year, text.month, text.day]
+    elsif text =~ /\A[a-zA-Z0-9]+\z/
       text
     else
       text.inspect

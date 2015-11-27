@@ -34,10 +34,9 @@ class Query
     end
     if @cond
       raise "No condition present for #{query_string}" unless @cond
-      @metadata[:no_extras] = !@cond.include_extras?
+      @metadata[:include_extras] = true if @cond.include_extras?
     else
       # No search query? OK, we'll just return all cards except extras
-      @metadata[:no_extras] = true
     end
 
     # puts "Parse #{query_string} -> #{@cond}"
@@ -56,7 +55,7 @@ class Query
     else
       results = db.printings
     end
-    results = results.reject(&:extra) if @metadata[:no_extras]
+    results = results.reject(&:extra) unless @metadata[:include_extras]
 
     results = case @metadata[:sort]
     when "new"
@@ -74,7 +73,11 @@ class Query
   end
 
   def to_s
-    @cond.to_s
+    [
+      @cond.to_s,
+      ("time:#{maybe_quote(@metadata[:time])}" if @metadata[:time]),
+      ("sort:#{@metadata[:sort]}" if @metadata[:sort]),
+    ].compact.join(" ")
   end
 
   def ==(other)
@@ -82,5 +85,17 @@ class Query
     self.class == other.class and
       instance_variables == other.instance_variables and
       instance_variables.all?{|ivar| instance_variable_get(ivar) == other.instance_variable_get(ivar) }
+  end
+
+  private
+
+  def maybe_quote(text)
+    if text.is_a?(Date)
+      '"%d.%d.%d"' % [text.year, text.month, text.day]
+    elsif text =~ /\A[a-zA-Z0-9]+\z/
+      text
+    else
+      text.inspect
+    end
   end
 end

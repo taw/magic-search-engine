@@ -3,7 +3,12 @@
 class ConditionPrint < Condition
   def initialize(op, date)
     @op = op
-    @date = date
+    # Just for ConditionPrint#==
+    if date.is_a?(Date)
+      @date = "%d.%d.%d" % [date.year, date.month, date.day]
+    else
+      @date = date
+    end
   end
 
   def search(db)
@@ -17,7 +22,7 @@ class ConditionPrint < Condition
   end
 
   def to_s
-    "print#{@op}#{@date}"
+    "print#{@op}#{maybe_quote(@date)}"
   end
 
   def metadata=(options)

@@ -8,6 +8,6 @@ class ConditionFrame < ConditionSimple
   end
 
   def to_s
-    "frame:#{@frame}"
+    "is:#{@frame}"
   end
 end
