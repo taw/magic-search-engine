@@ -4,7 +4,7 @@ require_relative "condition/condition"
 require_relative "condition/condition_simple"
 require_relative "condition/condition_format"
 require_relative "condition/condition_print"
-Dir["#{__dir__}/condition/condition_*.rb"].each do |path| require_relative path end
+Dir["#{__dir__}/condition/condition_*.rb"].sort.each do |path| require_relative path end
 
 class QueryParser
   def parse(query_string)
