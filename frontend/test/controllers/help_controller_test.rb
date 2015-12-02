@@ -12,4 +12,10 @@ class HelpControllerTest < ActionController::TestCase
     assert_response 200
     assert_select %Q[*:contains("Magic: The Gathering Comprehensive Rules")]
   end
+
+  test "contact" do
+    get "contact"
+    assert_response 200
+    assert_select %Q[div:contains("You can contact me by")]
+  end
 end
