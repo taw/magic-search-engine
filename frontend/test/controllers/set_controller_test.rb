@@ -5,6 +5,7 @@ class SetControllerTest < ActionController::TestCase
     get "index"
     assert_response 200
     assert_select %Q[a:contains("Magic 2010")]
+    assert_equal "mtg.wtf - Sets", html_document.title
   end
 
   test "actual set" do
@@ -12,6 +13,7 @@ class SetControllerTest < ActionController::TestCase
     assert_response 200
     assert_select %Q[h3:contains("New Phyrexia")]
     assert_select %Q[a:contains("Karn Liberated")]
+    assert_equal "mtg.wtf - New Phyrexia", html_document.title
   end
 
   test "fake set" do

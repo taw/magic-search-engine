@@ -5,7 +5,11 @@ class CardController < ApplicationController
     if $CardDatabase.sets[set]
       @card = $CardDatabase.sets[set].printings.find{|cp| cp.number == number}
     end
-    render_404 unless @card
+    if @card
+      @title = @card.name
+    else
+      render_404
+    end
   end
 
   # Logic tested in CLIFrontend, probably should be moved to database
@@ -16,6 +20,7 @@ class CardController < ApplicationController
 
     if @search.present?
       query = Query.new(@search)
+      @title = @search
       results = $CardDatabase.search(query)
       @warnings = results.warnings
       @cards = choose_best_printing(results.printings)
