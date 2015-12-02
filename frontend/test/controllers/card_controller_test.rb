@@ -6,6 +6,7 @@ class CardControllerTest < ActionController::TestCase
     get "show", set: "nph", id: "1"
     assert_response 200
     assert_select %Q[.card:contains("Karn Liberated")]
+    assert_equal "mtg.wtf - Karn Liberated", html_document.title
   end
 
   test "bad set" do
@@ -24,12 +25,14 @@ class CardControllerTest < ActionController::TestCase
     assert_response 200
     assert_select ".card", 0
     assert_select ".zero_results", 0
+    assert_equal "mtg.wtf", html_document.title
   end
 
   test "search all" do
     get "index", q: "sort:new"
     assert_response 200
     assert_select ".card", 25
+    assert_equal "mtg.wtf - sort:new", html_document.title
   end
 
   test "nothing found" do
@@ -37,11 +40,13 @@ class CardControllerTest < ActionController::TestCase
     assert_response 200
     assert_select ".card", 0
     assert_select ".zero_results"
+    assert_equal "mtg.wtf - optimus prime", html_document.title
   end
 
   test "search something" do
     get "index", q: "Karn Liberated"
     assert_response 200
     assert_select %Q[.card:contains("Karn Liberated")]
+    assert_equal "mtg.wtf - Karn Liberated", html_document.title
   end
 end
