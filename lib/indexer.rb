@@ -216,6 +216,11 @@ class Indexer
         end
         algorithm_legalities = algorithm_legalities_for(card_data)
 
+        # wrong in latest mtgjson
+        if sets_printed == ["c15"] and mtgjson_legalities == {}
+          mtgjson_legalities = algorithm_legalities
+        end
+
         if mtgjson_legalities != algorithm_legalities
           puts "FAIL #{name} #{mtgjson_legalities.sort.inspect} != #{algorithm_legalities.sort.inspect}"
           require 'pry'; binding.pry
