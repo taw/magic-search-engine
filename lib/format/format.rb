@@ -25,8 +25,12 @@ class Format
     false
   end
 
-  def format_name
+  def format_pretty_name
     raise "Subclass responsibility"
+  end
+
+  def format_name
+    format_pretty_name.downcase
   end
 
   def format_sets
@@ -115,7 +119,7 @@ class Format
         format = format_class.new(time)
         status = format.legality(card)
         if status
-          result[format.format_name] = status
+          result[format.format_pretty_name] = status
         end
       end
       result

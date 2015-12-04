@@ -1,6 +1,6 @@
 class FormatOnslaughtBlock < Format
-  def format_name
-    "onslaught block"
+  def format_pretty_name
+    "Onslaught Block"
   end
 
   def format_sets

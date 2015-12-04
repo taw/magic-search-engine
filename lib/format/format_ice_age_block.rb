@@ -1,6 +1,6 @@
 class FormatIceAgeBlock < Format
-  def format_name
-    "ice age block"
+  def format_pretty_name
+    "Ice Age Block"
   end
 
   def format_sets

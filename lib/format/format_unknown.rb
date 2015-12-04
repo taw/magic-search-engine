@@ -1,6 +1,6 @@
 class FormatUnknown < Format
-  def format_name
-    "unknown"
+  def format_pretty_name
+    "Unknown"
   end
 
   def format_sets

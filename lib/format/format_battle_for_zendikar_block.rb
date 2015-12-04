@@ -1,6 +1,6 @@
 class FormatBattleForZendikarBlock < Format
-  def format_name
-    "battle for zendikar block"
+  def format_pretty_name
+    "Battle for Zendikar Block"
   end
 
   def format_sets

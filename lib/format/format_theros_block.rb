@@ -1,6 +1,6 @@
 class FormatTherosBlock < Format
-  def format_name
-    "theros block"
+  def format_pretty_name
+    "Theros Block"
   end
 
   def format_sets

@@ -1,6 +1,6 @@
 class FormatRavinicaBlock < Format
-  def format_name
-    "ravnica block"
+  def format_pretty_name
+    "Ravnica Block"
   end
 
   def format_sets

@@ -1,6 +1,6 @@
 class FormatMasquesBlock < Format
-  def format_name
-    "masques block"
+  def format_pretty_name
+    "Masques Block"
   end
 
   def format_sets

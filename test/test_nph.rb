@@ -32,11 +32,11 @@ class CardDatabaseNewPhyrexiaTest < Minitest::Test
   def test_legalities
     assert_equal(
       {
-        "modern" => "banned",
-        "scars of mirrodin block" => "legal",
-        "legacy" => "legal",
-        "vintage" => "legal",
-        "commander" => "legal",
+        "Modern" => "banned",
+        "Scars of Mirrodin Block" => "legal",
+        "Legacy" => "legal",
+        "Vintage" => "legal",
+        "Commander" => "legal",
       },
       @birthing_pod.all_legalities
     )
@@ -46,11 +46,11 @@ class CardDatabaseNewPhyrexiaTest < Minitest::Test
     rtr_release_date = Date.parse("2012-10-05")
     assert_equal(
       {
-        "modern" => "legal",
-        "scars of mirrodin block" => "legal",
-        "legacy" => "legal",
-        "vintage" => "legal",
-        "commander" => "legal",
+        "Modern" => "legal",
+        "Scars of Mirrodin Block" => "legal",
+        "Legacy" => "legal",
+        "Vintage" => "legal",
+        "Commander" => "legal",
       },
       @birthing_pod.all_legalities(rtr_release_date)
     )

@@ -1,6 +1,6 @@
 class FormatInnistradBlock < Format
-  def format_name
-    "innistrad block"
+  def format_pretty_name
+    "Innistrad Block"
   end
 
   def format_sets

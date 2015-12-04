@@ -1,6 +1,6 @@
 class FormatUrzaBlock < Format
-  def format_name
-    "urza block"
+  def format_pretty_name
+    "Urza Block"
   end
 
   def format_sets
