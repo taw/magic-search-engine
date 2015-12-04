@@ -1,5 +1,6 @@
 require "rake/testtask"
 require "pathname"
+require "fileutils"
 
 task :default => :test
 
@@ -27,14 +28,22 @@ task "pics:gatherer" do
   json_path = Pathname(__dir__) + "data/index.json"
   db = CardDatabase.load(json_path)
 
-  Pathname("pics").mkpath
+  # Pathname("pics").mkpath
   db.printings.each do |c|
     if c.multiverseid
-      url = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=#{c.multiverseid}&type=card"
-      path = Pathname("pics/#{c.multiverseid}.png")
-      next if path.exist?
-      puts "Downloading #{c.name} #{c.set_code} #{c.multiverseid}"
-      system "wget", "-nv", "-nc", url, "-O", path.to_s
+      path = Pathname("pics/#{c.set_code}/#{c.number}.png")
+      mirror_path = Pathname("gatherer/#{c.multiverseid}.,png")
+
+      path.parent.mkpath
+      if path.exist?
+        # OK
+      elsif mirror_path.exist?
+        FileUtils.cp mirror_path, path
+      else
+        url = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=#{c.multiverseid}&type=card"
+        puts "Downloading #{c.name} #{c.set_code} #{c.multiverseid}"
+        system "wget", "-nv", "-nc", url, "-O", path.to_s
+      end
     end
   end
 end

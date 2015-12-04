@@ -29,8 +29,8 @@ module ApplicationHelper
 
   def card_picture_path(card)
     return nil unless card.multiverseid
-    file_path = Pathname(__dir__) + "../../public/cards/#{card.multiverseid}.png"
-    url = "/cards/#{card.multiverseid}.png"
+    url = "/cards/#{card.set_code}/#{card.number}.png"
+    file_path = Pathname(__dir__) + "../../public#{url}"
     if file_path.exist?
       url
     else
