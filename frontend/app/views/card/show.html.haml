@@ -1,6 +1,9 @@
 %table
   %tr
     %td
+      - if card_picture_path(@card)
+        %img.card_picture{src: card_picture_path(@card) }
+    %td
       %div.card
         = render 'card', card: @card
         = render 'card_extra', card: @card
