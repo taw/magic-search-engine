@@ -3,10 +3,11 @@
 %div
   Site by Tomasz Wegrzanowski (taw).
   You can contact me by
-  %a{href: "mailto:Tomasz.Wegrzanowski@gmail.com"} email
-  ,
-  %a{href: "http://twitter.com/t_a_w"} twitter
-  , or by my account on basically every social site imaginable.
+  = succeed "," do
+    %a{href: "mailto:Tomasz.Wegrzanowski@gmail.com"} email
+  = succeed "," do
+    %a{href: "http://twitter.com/t_a_w"} twitter
+  or by my account on basically every social site imaginable.
 
 %div
   I invite you to check out my
@@ -24,8 +25,8 @@
 
 %div
   Code is all on
-  %a{href: "https://github.com/taw/magic-search-engine"} github
-  \.
+  = succeed "." do
+    %a{href: "https://github.com/taw/magic-search-engine"} github
   If you want API access I'd recommend getting code from there instead of hammering the poor servers.
 
 %div
