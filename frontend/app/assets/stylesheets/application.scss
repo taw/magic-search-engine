@@ -50,12 +50,26 @@ td, th {
   margin-bottom: 0.5em;
 }
 
+
+img.card_picture {
+  max-width: 223px;
+  max-height: 310px;
+  margin-right: 10px;
+}
 .card {
   width: 450px;
   margin-bottom: 0.5em;
   h3.card_title {
     margin-top: 0;
     margin-bottom: 0.5em;
+  }
+  h5 {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
+  ul {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
   }
   .flavor {
     font-style: italic;
