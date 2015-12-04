@@ -11,7 +11,8 @@
     %link{rel: "search", href: "http://mtg.wtf/opensearchdescription.xml", type: "application/opensearchdescription+xml", title: "mtg.wtf"}
     = csrf_meta_tags
   %body
-    %h1 mtg.wtf
+    %h1
+      %a.site_logo{href: "/"} mtg.wtf
     = form_tag("/card", method: :get, class: "search") do
       = text_field_tag(:q, @search)
       = submit_tag("Search")
