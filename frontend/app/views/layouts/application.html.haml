@@ -6,7 +6,7 @@
       %title #{@title} - mtg.wtf
     - else
       %title mtg.wtf
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     %link{rel: "search", href: "http://mtg.wtf/opensearchdescription.xml", type: "application/opensearchdescription+xml", title: "mtg.wtf"}
     = csrf_meta_tags
@@ -14,7 +14,7 @@
     %h1
       %a.site_logo{href: "/"} mtg.wtf
     = form_tag("/card", method: :get, class: "search") do
-      = text_field_tag(:q, @search)
+      = text_field_tag(:q, @search, {autofocus: true})
       = submit_tag("Search")
     = yield
     %div.footer
