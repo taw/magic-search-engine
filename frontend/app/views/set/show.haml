@@ -1,6 +1,13 @@
 %h3= @set.set_name
 - if @cards.present?
-  - @cards.each do |card|
-    %div.card
-      = render 'card/card', card: card
+  %table
+    - @cards.each do |card|
+      %tr
+        %td
+          - if card_picture_path(card)
+            %img.card_picture{src: card_picture_path(card) }
+        %td
+          %div.card
+            = render 'card/card', card: card
+
   = will_paginate @cards
