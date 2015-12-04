@@ -26,4 +26,15 @@ module ApplicationHelper
   def good_mana_symbols
     @good_mana_symbols ||= Set["x", "y", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "15", "16", "20", "w", "u", "b", "r", "g", "wu", "wb", "rw", "gw", "ub", "ur", "gu", "br", "bg", "rg", "2w", "2u", "2b", "2r", "2g", "s", "q", "t", "wp", "up", "bp", "rp", "gp"]
   end
+
+  def card_picture_path(card)
+    return nil unless card.multiverseid
+    file_path = Pathname(__dir__) + "../../public/cards/#{card.multiverseid}.png"
+    url = "/cards/#{card.multiverseid}.png"
+    if file_path.exist?
+      url
+    else
+      nil
+    end
+  end
 end
