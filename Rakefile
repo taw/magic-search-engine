@@ -47,3 +47,16 @@ task "pics:gatherer" do
     end
   end
 end
+
+desc "Clanup Rails files"
+task "clean" do
+  [
+    "frontend/log/development.log",
+    "frontend/tmp",
+  ].each do |path|
+    system "trash", path if Pathname(path).exist?
+  end
+  Dir["**/.DS_Store"].each do |ds_store|
+    FileUtils.rm ds_store
+  end
+end
