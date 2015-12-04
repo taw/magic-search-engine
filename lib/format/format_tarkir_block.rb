@@ -1,6 +1,6 @@
 class FormatTarkirBlock < Format
-  def format_name
-    "tarkir block"
+  def format_pretty_name
+    "Tarkir Block"
   end
 
   def format_sets

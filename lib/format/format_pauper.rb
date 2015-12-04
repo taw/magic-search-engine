@@ -1,6 +1,6 @@
 class FormatPauper < FormatVintage
-  def format_name
-    "pauper"
+  def format_pretty_name
+    "Pauper"
   end
 
   def in_format?(card)

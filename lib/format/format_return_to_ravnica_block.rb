@@ -1,6 +1,6 @@
 class FormatReturnToRavnicaBlock < Format
-  def format_name
-    "return to ravnica block"
+  def format_pretty_name
+    "Return to Ravnica Block"
   end
 
   def format_sets

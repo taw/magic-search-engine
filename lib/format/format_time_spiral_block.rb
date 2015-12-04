@@ -1,6 +1,6 @@
 class FormatTimeSpiralBlock < Format
-  def format_name
-    "time spiral block"
+  def format_pretty_name
+    "Time Spiral Block"
   end
 
   def format_sets

@@ -1,6 +1,6 @@
 class FormatModern < Format
-  def format_name
-    "modern"
+  def format_pretty_name
+    "Modern"
   end
 
   def format_sets

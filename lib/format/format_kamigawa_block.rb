@@ -1,6 +1,6 @@
 class FormatKamigawaBlock < Format
-  def format_name
-    "kamigawa block"
+  def format_pretty_name
+    "Kamigawa Block"
   end
 
   def format_sets

@@ -1,6 +1,6 @@
 class FormatTempestBlock < Format
-  def format_name
-    "tempest block"
+  def format_pretty_name
+    "Tempest Block"
   end
 
   def format_sets

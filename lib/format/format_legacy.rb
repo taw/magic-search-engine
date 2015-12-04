@@ -1,5 +1,5 @@
 class FormatLegacy < FormatVintage
-  def format_name
-    "legacy"
+  def format_pretty_name
+    "Legacy"
   end
 end

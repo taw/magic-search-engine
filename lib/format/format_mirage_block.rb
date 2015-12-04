@@ -1,6 +1,6 @@
 class FormatMirageBlock < Format
-  def format_name
-    "mirage block"
+  def format_pretty_name
+    "Mirage Block"
   end
 
   def format_sets

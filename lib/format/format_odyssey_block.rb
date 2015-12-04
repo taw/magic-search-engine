@@ -1,6 +1,6 @@
 class FormatOdysseyBlock < Format
-  def format_name
-    "odyssey block"
+  def format_pretty_name
+    "Odyssey Block"
   end
 
   def format_sets

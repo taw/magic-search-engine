@@ -1,6 +1,6 @@
 class FormatZendikarBlock < Format
-  def format_name
-    "zendikar block"
+  def format_pretty_name
+    "Zendikar Block"
   end
 
   def format_sets

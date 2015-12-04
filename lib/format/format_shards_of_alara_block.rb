@@ -1,6 +1,6 @@
 class FormatShardsOfAlaraBlock < Format
-  def format_name
-    "shards of alara block"
+  def format_pretty_name
+    "Shards of Alara Block"
   end
 
   def format_sets

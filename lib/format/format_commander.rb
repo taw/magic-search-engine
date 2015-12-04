@@ -1,5 +1,5 @@
 class FormatCommander < FormatVintage
-  def format_name
-    "commander"
+  def format_pretty_name
+    "Commander"
   end
 end

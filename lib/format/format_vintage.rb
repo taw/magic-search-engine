@@ -1,6 +1,6 @@
 class FormatVintage < Format
-  def format_name
-    "vintage"
+  def format_pretty_name
+    "Vintage"
   end
 
   def format_sets

@@ -1,6 +1,6 @@
 class FormatInvasionBlock < Format
-  def format_name
-    "invasion block"
+  def format_pretty_name
+    "Invasion Block"
   end
 
   def format_sets

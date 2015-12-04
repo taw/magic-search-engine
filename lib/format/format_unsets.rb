@@ -1,6 +1,6 @@
 class FormatUnsets < Format
-  def format_name
-    "unsets"
+  def format_pretty_name
+    "Unsets"
   end
 
   def format_sets

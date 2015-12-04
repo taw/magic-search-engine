@@ -1,6 +1,6 @@
 class FormatMirrodinBlock < Format
-  def format_name
-    "mirrodin block"
+  def format_pretty_name
+    "Mirrodin Block"
   end
 
   def format_sets

@@ -19,8 +19,8 @@ class FormatStandard < Format
     end
   end
 
-  def format_name
-    "standard"
+  def format_pretty_name
+    "Standard"
   end
 
   def format_sets

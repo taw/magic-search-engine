@@ -1,6 +1,6 @@
 class FormatScarsOfMirrodinBlock < Format
-  def format_name
-    "scars of mirrodin block"
+  def format_pretty_name
+    "Scars of Mirrodin Block"
   end
 
   def format_sets
