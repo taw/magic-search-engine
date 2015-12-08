@@ -8,33 +8,27 @@ class InteractiveQueryBuilder
     @args.each do |cond, keys|
       case cond
       when :any
-        fragments = parse_fragments(keys)
-        fragments.each do |frag|
+        parse_fragments(keys).each do |frag|
           conds << "*:#{maybe_quote(frag)}"
         end
       when :title
-        fragments = parse_fragments(keys)
-        fragments.each do |frag|
+        parse_fragments(keys).each do |frag|
           conds << maybe_quote(frag)
         end
       when :type
-        fragments = parse_fragments(keys)
-        fragments.each do |frag|
+        parse_fragments(keys).each do |frag|
           conds << "t:#{maybe_quote(frag)}"
         end
       when :oracle
-        fragments = parse_fragments(keys)
-        fragments.each do |frag|
+        parse_fragments(keys).each do |frag|
           conds << "o:#{maybe_quote(frag)}"
         end
       when :flavor
-        fragments = parse_fragments(keys)
-        fragments.each do |frag|
+        parse_fragments(keys).each do |frag|
           conds << "ft:#{maybe_quote(frag)}"
         end
       when :artist
-        fragments = parse_fragments(keys)
-        fragments.each do |frag|
+        parse_fragments(keys).each do |frag|
           conds << "a:#{maybe_quote(frag)}"
         end
       else
