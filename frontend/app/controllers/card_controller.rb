@@ -30,6 +30,15 @@ class CardController < ApplicationController
     @cards = @cards.paginate(page: page, per_page: 25)
   end
 
+  def advanced
+    if params[:advanced]
+      query = InteractiveQueryBuilder.new(params[:advanced]).query
+      if query
+        redirect_to action: 'index', q: query
+      end
+    end
+  end
+
   private
 
   def choose_best_printing(results)
