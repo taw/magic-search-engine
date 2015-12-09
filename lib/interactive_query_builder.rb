@@ -6,33 +6,33 @@ class InteractiveQueryBuilder
   def query
     conds = []
     @args.each do |cond, keys|
-      case cond
-      when :any
+      case cond.to_s
+      when "any"
         parse_fragments(keys).each do |frag|
           conds << "*:#{maybe_quote(frag)}"
         end
-      when :title
+      when "title"
         parse_fragments(keys).each do |frag|
           conds << maybe_quote(frag)
         end
-      when :type
+      when "type"
         parse_fragments(keys).each do |frag|
           conds << "t:#{maybe_quote(frag)}"
         end
-      when :oracle
+      when "oracle"
         parse_fragments(keys).each do |frag|
           conds << "o:#{maybe_quote(frag)}"
         end
-      when :flavor
+      when "flavor"
         parse_fragments(keys).each do |frag|
           conds << "ft:#{maybe_quote(frag)}"
         end
-      when :artist
+      when "artist"
         parse_fragments(keys).each do |frag|
           conds << "a:#{maybe_quote(frag)}"
         end
       else
-        raise "Unknown key: #{key}"
+        raise "Unknown key: #{cond}"
       end
     end
     conds.join(" ")
@@ -40,7 +40,6 @@ class InteractiveQueryBuilder
 
   private
 
-  # TODO: Fix "lol"
   def parse_fragments(str)
     str.scan(/"(.*?)"|(\S+)/).flatten.compact
   end

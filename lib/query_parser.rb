@@ -5,6 +5,7 @@ require_relative "condition/condition_simple"
 require_relative "condition/condition_format"
 require_relative "condition/condition_print"
 Dir["#{__dir__}/condition/condition_*.rb"].sort.each do |path| require_relative path end
+require_relative "interactive_query_builder"
 
 class QueryParser
   def parse(query_string)

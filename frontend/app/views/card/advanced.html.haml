@@ -1,0 +1,22 @@
+= form_tag("/advanced", class: "advanced_search", method: :get) do
+  %div
+    %span Anywhere
+    = text_field_tag("advanced[any]")
+  %div
+    %span Card name
+    = text_field_tag("advanced[title]")
+  %div
+    %span Types (including supertypes and subtypes)
+    = text_field_tag("advanced[type]")
+  %div
+    %span Rules text
+    = text_field_tag("advanced[oracle]")
+  %div
+    %span Flavor Text
+    = text_field_tag("advanced[flavor]")
+  %div
+    %span Rules text
+    = text_field_tag("advanced[artist]")
+
+
+  = submit_tag("Search")

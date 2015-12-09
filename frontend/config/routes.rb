@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   get "help/syntax" => "help#syntax"
   get "help/rules" => "help#rules"
   get "help/contact" => "help#contact"
+  get "advanced" => "card#advanced"
   get "/" => "card#index"
 end
