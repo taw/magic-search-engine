@@ -52,6 +52,7 @@ desc "Clanup Rails files"
 task "clean" do
   [
     "frontend/log/development.log",
+    "frontend/log/test.log",
     "frontend/tmp",
   ].each do |path|
     system "trash", path if Pathname(path).exist?
