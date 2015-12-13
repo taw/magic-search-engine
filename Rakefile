@@ -53,24 +53,36 @@ end
 
 desc "Fetch HQ pics"
 task "pics:hq" do
-  db.printings.each do |card|
-    target_path = Pathname("frontend/public/cards_hq/#{card.set_code}/#{card.number}.png")
-    next if target_path.exist?
-    source_base = Pathname("/Users/taw/Downloads/mtg_hq2/CCGHQ MTG Pics/Fulls/Base and Expansion Sets")
-    source_dir = source_base + card.set.gatherer_code
-    next unless source_dir.exist?
+  source_base = Pathname("/Users/taw/Downloads/mtg_hq2/CCGHQ MTG Pics/Fulls/Base and Expansion Sets")
 
-    clean_name = card.name.tr(":", "")
-    if (source_dir + "#{clean_name}.jpg").exist?
-      # puts "Found #{card.set.gatherer_code} - #{card.name}"
-    elsif (source_dir + "#{clean_name}.full.jpg").exist?
-      # puts "Found #{card.set.gatherer_code} - #{card.name}"
-    else
-      has_lq = Pathname("frontend/public/cards/#{card.set_code}/#{card.number}.png").exist?
-      if has_lq
-        warn "LQ only: #{card.set.gatherer_code} - #{card.name}"
+  db.sets.each do |set_code, set|
+    source_dir = source_base + set.gatherer_code
+    next unless source_dir.exist?
+    nth_card = Hash.new(0)
+
+    set.printings.sort_by{|c| [c.number.to_i, c.number] }.each do |card|
+      nth_card[card.name] += 1
+      target_path = Pathname("frontend/public/cards_hq/#{card.set_code}/#{card.number}.png")
+      next if target_path.exist?
+
+      clean_name = card.name.tr(":", "")
+      candidate_names = [
+        "#{clean_name}.jpg",
+        "#{clean_name}.full.jpg",
+        "#{clean_name}#{nth_card[card.name]}.jpg",
+        "#{clean_name}#{nth_card[card.name]}.full.jpg",
+      ]
+      match = candidate_names.find{|bn| (source_dir + bn).exist?}
+
+      if match
+        # puts "Found #{card.set.gatherer_code} - #{card.name}"
       else
-        warn "No pic:  #{card.set.gatherer_code} - #{card.name}"
+        has_lq = Pathname("frontend/public/cards/#{card.set_code}/#{card.number}.png").exist?
+        if has_lq
+          warn "LQ only: #{card.set.gatherer_code} - #{card.name}"
+        else
+          warn "No pic:  #{card.set.gatherer_code} - #{card.name}"
+        end
       end
     end
   end
