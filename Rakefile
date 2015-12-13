@@ -51,6 +51,31 @@ task "pics:gatherer" do
   end
 end
 
+desc "Fetch HQ pics"
+task "pics:hq" do
+  db.printings.each do |card|
+    target_path = Pathname("frontend/public/cards_hq/#{card.set_code}/#{card.number}.png")
+    next if target_path.exist?
+    source_base = Pathname("/Users/taw/Downloads/mtg_hq2/CCGHQ MTG Pics/Fulls/Base and Expansion Sets")
+    source_dir = source_base + card.set.gatherer_code
+    next unless source_dir.exist?
+
+    clean_name = card.name.tr(":", "")
+    if (source_dir + "#{clean_name}.jpg").exist?
+      # puts "Found #{card.set.gatherer_code} - #{card.name}"
+    elsif (source_dir + "#{clean_name}.full.jpg").exist?
+      # puts "Found #{card.set.gatherer_code} - #{card.name}"
+    else
+      has_lq = Pathname("frontend/public/cards/#{card.set_code}/#{card.number}.png").exist?
+      if has_lq
+        warn "LQ only: #{card.set.gatherer_code} - #{card.name}"
+      else
+        warn "No pic:  #{card.set.gatherer_code} - #{card.name}"
+      end
+    end
+  end
+end
+
 desc "Print statistics about card pictures"
 task "pics:statistics" do
   total = Hash.new(0)
