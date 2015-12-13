@@ -1,6 +1,7 @@
 require "rake/testtask"
 require "pathname"
 require "fileutils"
+require "pp"
 
 def db
   @db ||= begin
@@ -54,13 +55,21 @@ end
 desc "Fetch HQ pics"
 task "pics:hq" do
   source_base = Pathname("/Users/taw/Downloads/mtg_hq2/CCGHQ MTG Pics/Fulls/Base and Expansion Sets")
+  total = Hash.new(0)
 
   db.sets.each do |set_code, set|
     source_dir = source_base + set.gatherer_code
-    next unless source_dir.exist?
     nth_card = Hash.new(0)
 
     set.printings.sort_by{|c| [c.number.to_i, c.number] }.each do |card|
+      total["all"] += 1
+      if source_dir.exist?
+        total["set_ok"] += 1
+      else
+        total["set_miss"] += 1
+        next
+      end
+
       nth_card[card.name] += 1
       target_path = Pathname("frontend/public/cards_hq/#{card.set_code}/#{card.number}.png")
       next if target_path.exist?
@@ -71,12 +80,16 @@ task "pics:hq" do
         "#{clean_name}.full.jpg",
         "#{clean_name}#{nth_card[card.name]}.jpg",
         "#{clean_name}#{nth_card[card.name]}.full.jpg",
-      ]
+        ("#{card.names.join(" - ")}.full.jpg" if card.names),
+        ("#{card.names.reverse.join(" - ")}.full.jpg" if card.names),
+      ].compact
       match = candidate_names.find{|bn| (source_dir + bn).exist?}
 
       if match
+        total["ok"] += 1
         # puts "Found #{card.set.gatherer_code} - #{card.name}"
       else
+        total["miss"] += 1
         has_lq = Pathname("frontend/public/cards/#{card.set_code}/#{card.number}.png").exist?
         if has_lq
           warn "LQ only: #{card.set.gatherer_code} - #{card.name}"
@@ -86,6 +99,7 @@ task "pics:hq" do
       end
     end
   end
+  pp total
 end
 
 desc "Print statistics about card pictures"
