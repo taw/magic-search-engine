@@ -15,7 +15,7 @@
       %a.site_logo{href: "/"} mtg.wtf
     = form_tag("/card", method: :get, class: "search") do
       = text_field_tag(:q, @search, {autofocus: true})
-      = submit_tag("Search")
+      = submit_tag("Search", name: nil)
     = yield
     %div.footer
       = link_to controller: "set", action: "index" do
