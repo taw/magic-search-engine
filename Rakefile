@@ -54,16 +54,24 @@ end
 
 desc "Fetch HQ pics"
 task "pics:hq" do
-  source_base = Pathname("/Users/taw/Downloads/mtg_hq2/CCGHQ MTG Pics/Fulls/Base and Expansion Sets")
+  source_base = Pathname("/Users/taw/Downloads/mtg_hq2/CCGHQ MTG Pics/Fulls/")
   total = Hash.new(0)
 
   db.sets.each do |set_code, set|
-    source_dir = source_base + set.gatherer_code
+    matching_dirs = source_base.children.select{|d| d.basename.to_s != "Tokens" and d.basename.to_s != "Emblems"}
+                    .flat_map(&:children).select{|d| d.basename.to_s == set.gatherer_code}
+    if matching_dirs.size == 0
+      source_dir = nil
+    elsif matching_dirs.size == 1
+      source_dir = matching_dirs[0]
+    else
+      require 'pry'; binding.pry
+    end
     nth_card = Hash.new(0)
 
     set.printings.sort_by{|c| [c.number.to_i, c.number] }.each do |card|
       total["all"] += 1
-      if source_dir.exist?
+      if source_dir and source_dir.exist?
         total["set_ok"] += 1
       else
         total["set_miss"] += 1
