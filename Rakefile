@@ -51,6 +51,21 @@ task "pics:gatherer" do
   end
 end
 
+desc "Print statistics about card pictures"
+task "pics:statistics" do
+  total = Hash.new(0)
+  db.printings.each do |card|
+    path_lq = Pathname("frontend/public/cards/#{card.set_code}/#{card.number}.png")
+    path_hq = Pathname("frontend/public/cards_hq/#{card.set_code}/#{card.number}.png")
+    total["all"] += 1
+    total["lq"]  += 1 if path_lq.exist?
+    total["hq"]  += 1 if path_hq.exist?
+  end
+  puts "Cards: #{total["all"]}"
+  puts "LQ: #{total["lq"]}"
+  puts "HQ: #{total["hq"]}"
+end
+
 desc "Clanup Rails files"
 task "clean" do
   [
