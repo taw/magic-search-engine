@@ -61,11 +61,11 @@ class CardDatabase
     matching_sets = Set[]
     @sets.each do |set_code, set|
       if @sets[edition]
-        if set_code == edition or normalize_name(set.set_name) == edition
+        if set_code == edition or normalize_name(set.name) == edition
           matching_sets << set
         end
       else
-        if normalize_name(set.set_name).include?(edition)
+        if normalize_name(set.name).include?(edition)
           matching_sets << set
         end
       end

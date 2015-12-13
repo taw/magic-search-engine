@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def link_to_set(set, &blk)
-    link_to(controller: "set", action: "show", id: set.set_code, &blk)
+    link_to(controller: "set", action: "show", id: set.code, &blk)
   end
 
   def link_to_search(search, &blk)
