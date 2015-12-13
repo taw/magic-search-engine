@@ -2,6 +2,14 @@ require "rake/testtask"
 require "pathname"
 require "fileutils"
 
+def db
+  @db ||= begin
+    require_relative "lib/card_database"
+    json_path = Pathname(__dir__) + "data/index.json"
+    CardDatabase.load(json_path)
+  end
+end
+
 task :default => :test
 
 Rake::TestTask.new do |t|
@@ -22,18 +30,13 @@ task "mtgjson:update" do
   Rake::Task["index"].invoke
 end
 
-desc "Fetch new mtgjson database"
+desc "Fetch Gatherer pics"
 task "pics:gatherer" do
-  require_relative "lib/card_database"
-  json_path = Pathname(__dir__) + "data/index.json"
-  db = CardDatabase.load(json_path)
-
   # Pathname("pics").mkpath
   db.printings.each do |c|
     if c.multiverseid
       path = Pathname("pics/#{c.set_code}/#{c.number}.png")
       mirror_path = Pathname("gatherer/#{c.multiverseid}.,png")
-
       path.parent.mkpath
       if path.exist?
         # OK
