@@ -28,13 +28,12 @@ module ApplicationHelper
   end
 
   def card_picture_path(card)
-    return nil unless card.multiverseid
-    url = "/cards/#{card.set_code}/#{card.number}.png"
-    file_path = Pathname(__dir__) + "../../public#{url}"
-    if file_path.exist?
-      url
-    else
-      nil
-    end
+    url_hq = "/cards_hq/#{card.set_code}/#{card.number}.png"
+    url_lq = "/cards/#{card.set_code}/#{card.number}.png"
+    path_hq = Pathname(__dir__) + "../../public#{url_hq}"
+    path_lq = Pathname(__dir__) + "../../public#{url_lq}"
+    return url_hq if path_hq.exist?
+    return url_lq if path_lq.exist?
+    nil
   end
 end

@@ -62,6 +62,7 @@ task "pics:hq" do
                     .flat_map(&:children).select{|d| d.basename.to_s == set.gatherer_code}
     if matching_dirs.size == 0
       source_dir = nil
+      # warn "Set missing: #{set_code}"
     elsif matching_dirs.size == 1
       source_dir = matching_dirs[0]
     else
@@ -82,7 +83,9 @@ task "pics:hq" do
       target_path = Pathname("frontend/public/cards_hq/#{card.set_code}/#{card.number}.png")
       next if target_path.exist?
 
-      clean_name = card.name.tr(":", "")
+      clean_name = card.name.tr("®", "r").tr(':"?', "")
+                       .sub(" (Big Furry Monster)", " ")
+                       .sub(" Shows That Players Like Really Long Card Names So We Made this Card to Have the Absolute Longest Card Name Ever Elemental", "")
       candidate_names = [
         "#{clean_name}.jpg",
         "#{clean_name}.full.jpg",
@@ -90,19 +93,25 @@ task "pics:hq" do
         "#{clean_name}#{nth_card[card.name]}.full.jpg",
         ("#{card.names.join(" - ")}.full.jpg" if card.names),
         ("#{card.names.reverse.join(" - ")}.full.jpg" if card.names),
+        ("#{card.names.join("_")}.full.jpg" if card.names),
+        ("#{card.names.reverse.join("_")}.full.jpg" if card.names),
       ].compact
+      candidate_names << "Who What When Where Why.full.jpg" if card.names and card.names.size == 5
+
       match = candidate_names.find{|bn| (source_dir + bn).exist?}
 
       if match
         total["ok"] += 1
         # puts "Found #{card.set.gatherer_code} - #{card.name}"
+        target_path.parent.mkpath
+        FileUtils.cp((source_dir+match), target_path)
       else
         total["miss"] += 1
         has_lq = Pathname("frontend/public/cards/#{card.set_code}/#{card.number}.png").exist?
         if has_lq
-          warn "LQ only: #{card.set.gatherer_code} - #{card.name}"
+          # warn "LQ only: #{card.set.gatherer_code} - #{card.name}"
         else
-          warn "No pic:  #{card.set.gatherer_code} - #{card.name}"
+          # warn "No pic:  #{card.set.gatherer_code} - #{card.name}"
         end
       end
     end
