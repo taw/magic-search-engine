@@ -13,7 +13,7 @@
   %body
     %h1
       %a.site_logo{href: "/"} mtg.wtf
-    = form_tag("/card", method: :get, class: "search") do
+    = form_tag("/card", method: :get, class: "search", enforce_utf8: false) do
       = text_field_tag(:q, @search, {autofocus: true})
       = submit_tag("Search", name: nil)
     = yield
