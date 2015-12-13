@@ -127,8 +127,9 @@ class Indexer
   def index_set_data(set_code, set_data)
     block = MagicBlocks.find{|c,n,*xx| xx.include?(set_code)} || []
     {
-      "set_code" => set_code,
-      "set_name" => set_data["name"],
+      "code" => set_code,
+      "name" => set_data["name"],
+      "gatherer_code" => set_data["code"],
       "block_code" => block[0],
       "block_name" => block[1],
       "border" => set_data["border"],

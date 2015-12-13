@@ -1,6 +1,6 @@
 class SetController < ApplicationController
   def index
-    @sets = $CardDatabase.sets.values.sort_by{|s| [s.release_date, s.set_name]}
+    @sets = $CardDatabase.sets.values.sort_by{|s| [s.release_date, s.name]}
     @title = "Sets"
   end
 
@@ -12,7 +12,7 @@ class SetController < ApplicationController
       return
     end
 
-    @title = @set.set_name
+    @title = @set.name
     @cards = @set.printings.sort_by{|cp| [cp.number.to_i, cp.number]}
 
     page = [1, params[:page].to_i].max
