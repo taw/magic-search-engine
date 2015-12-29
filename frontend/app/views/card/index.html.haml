@@ -13,6 +13,8 @@
           %td
             %div.card
               = render 'card', card: card
+              - if @cards.total_entries == 1
+                = render 'card_extra', card: card
           %td
             = render 'printings', card: card, printings: matching_printing
     = will_paginate @cards
