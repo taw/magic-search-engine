@@ -25,10 +25,12 @@ task "index" do
   system "./bin/indexer"
 end
 
-desc "Fetch new mtgjson database"
+desc "Fetch new mtgjson database and generate diffable files"
 task "mtgjson:update" do
   system *%W[wget http://mtgjson.com/json/AllSets-x.json -O data/AllSets-x.json]
+  system "json_pp <data/index.json >index-1.json"
   Rake::Task["index"].invoke
+  system "json_pp <data/index.json >index-2.json"
 end
 
 desc "Fetch Gatherer pics"
