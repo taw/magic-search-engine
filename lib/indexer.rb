@@ -55,7 +55,7 @@ MagicBlocks = [
   ["rtr", "Return to Ravnica", "rtr", "gtc", "dgm"],
   ["ths", "Theros", "ths", "bng", "jou"],
   ["ktk", "Khans of Tarkir", "ktk", "frf", "dtk"],
-  ["bfz", "Battle for Zendikar", "bfz"],
+  ["bfz", "Battle for Zendikar", "bfz", "ogw"],
 ]
 
 class Indexer
@@ -217,11 +217,6 @@ class Indexer
         end
         algorithm_legalities = algorithm_legalities_for(card_data)
 
-        # wrong in latest mtgjson
-        if sets_printed == ["c15"] and mtgjson_legalities == {}
-          mtgjson_legalities = algorithm_legalities
-        end
-
         if mtgjson_legalities != algorithm_legalities
           puts "FAIL #{name} #{mtgjson_legalities.sort.inspect} != #{algorithm_legalities.sort.inspect}"
           require 'pry'; binding.pry
@@ -236,13 +231,16 @@ class Indexer
           cards[name] = card
         end
 
-        # unless card_data["number"]
-        #   warn "No number for #{set_code} #{card_data["name"]}"
-        # end
-
         card["printings"] << [set_code, index_printing_data(card_data)]
       end
     end
+
+    # Output in canonical form, to minimize diffs between mtgjson updates
+    cards = Hash[cards.sort]
+    cards.each do |name, card|
+      card["printings"] = card["printings"].sort_by{|sc,d| [sets.keys.index(sc),d["number"],d["multiverseid"]] }
+    end
+
     {"sets"=>sets, "cards"=>cards}
   end
 
