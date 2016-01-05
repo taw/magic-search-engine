@@ -35,7 +35,7 @@ class ConditionMana < ConditionSimple
     @query_mana.each do |m,c|
       c = c.to_i if c == c.to_i
       case m
-      when "c"
+      when "?"
         res << "#{c}"
       else
         if m =~ /\A[wubrg]\z/
@@ -59,18 +59,18 @@ class ConditionMana < ConditionSimple
 
   def parse_query_mana(mana)
     pool = Hash.new(0)
-    mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrgxyz])/) do
+    mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrgxyzc])/) do
       if $1
         m = normalize_mana_symbol($1)
         if m =~ /\A\d+\z/
-          pool["c"] += m.to_i
+          pool["?"] += m.to_i
         elsif m =~ /h/
           pool[m.sub("h", "")] += 0.5
         else
           pool[m] += 1
         end
       elsif $2
-        pool["c"] += $2.to_i
+        pool["?"] += $2.to_i
       else
         pool[$3] += 1
       end
@@ -88,8 +88,8 @@ class ConditionMana < ConditionSimple
       m = $1
       case m
       when /\A\d+\z/
-        pool["c"] += m.to_i
-      when /\A[wubrgxyz]\z/
+        pool["?"] += m.to_i
+      when /\A[wubrgxyzc]\z/
         # x is basically a color for this kind of queries
         pool[m] += 1
       when /\Ah([wubrg])\z/
