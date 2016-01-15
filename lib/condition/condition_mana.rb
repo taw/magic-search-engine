@@ -38,7 +38,7 @@ class ConditionMana < ConditionSimple
       when "?"
         res << "#{c}"
       else
-        if m =~ /\A[wubrg]\z/
+        if m =~ /\A[wubrgc]\z/
           mx = m
         else
           mx = "{#{m}}"
