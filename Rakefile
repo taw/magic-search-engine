@@ -35,22 +35,15 @@ end
 
 desc "Fetch Gatherer pics"
 task "pics:gatherer" do
-  # Pathname("pics").mkpath
+  pics = Pathname("frontend/public/cards")
   db.printings.each do |c|
-    if c.multiverseid
-      path = Pathname("pics/#{c.set_code}/#{c.number}.png")
-      mirror_path = Pathname("gatherer/#{c.multiverseid}.,png")
-      path.parent.mkpath
-      if path.exist?
-        # OK
-      elsif mirror_path.exist?
-        FileUtils.cp mirror_path, path
-      else
-        url = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=#{c.multiverseid}&type=card"
-        puts "Downloading #{c.name} #{c.set_code} #{c.multiverseid}"
-        system "wget", "-nv", "-nc", url, "-O", path.to_s
-      end
-    end
+    next unless c.multiverseid
+    path = pics + Pathname("#{c.set_code}/#{c.number}.png")
+    path.parent.mkpath
+    next if path.exist?
+    url = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=#{c.multiverseid}&type=card"
+    puts "Downloading #{c.name} #{c.set_code} #{c.multiverseid}"
+    system "wget", "-nv", "-nc", url, "-O", path.to_s
   end
 end
 
