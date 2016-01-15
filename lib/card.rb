@@ -116,13 +116,14 @@ class Card
     ci = colors.chars
     text.scan(/{(.*?)}/).each do |sym,|
       case sym.downcase
-      when /\A(\d+|[½∞txyzsqp])\z/
+      when /\A(\d+|[½∞txyzsqpc])\z/
         # 12xyz - colorless
         # ½∞ - unset colorless
         # t - tap
         # q - untap
         # s - snow
         # p - generic Phyrexian mana (like on Rage Extractor text)
+        # c - colorless mana
       when /\A([wubrg])\z/
         ci << $1
       when /\A([wubrg])\/p\z/
