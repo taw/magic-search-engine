@@ -6,8 +6,8 @@ class CardDatabaseFullTest < Minitest::Test
   end
 
   def test_stats
-    assert_equal 15685, @db.cards.size
-    assert_equal 29731, @db.printings.size
+    assert_equal 15861, @db.cards.size
+    assert_equal 29937, @db.printings.size
   end
 
   def test_formats
@@ -58,7 +58,12 @@ class CardDatabaseFullTest < Minitest::Test
   end
 
   def test_color_identity
-    assert_search_results "ci:wu t:basic", "Island", "Plains", "Snow-Covered Island", "Snow-Covered Plains"
+    assert_search_results "ci:wu t:basic",
+      "Island",
+      "Plains",
+      "Snow-Covered Island",
+      "Snow-Covered Plains",
+      "Wastes"
   end
 
   def test_year
@@ -155,16 +160,41 @@ class CardDatabaseFullTest < Minitest::Test
 
   def test_sort
     assert_search_results "t:chandra sort:name",
-      "Chandra Ablaze", "Chandra Nalaar", "Chandra, Pyromaster", "Chandra, Roaring Flame", "Chandra, the Firebrand"
+      "Chandra Ablaze",
+      "Chandra Nalaar",
+      "Chandra, Flamecaller",
+      "Chandra, Pyromaster",
+      "Chandra, Roaring Flame",
+      "Chandra, the Firebrand"
     assert_search_results "t:chandra sort:new",
-      "Chandra, Roaring Flame", "Chandra, Pyromaster", "Chandra, the Firebrand", "Chandra Nalaar", "Chandra Ablaze"
+      "Chandra, Flamecaller",
+      "Chandra, Roaring Flame",
+      "Chandra, Pyromaster",
+      "Chandra, the Firebrand",
+      "Chandra Nalaar",
+      "Chandra Ablaze"
     # Jace v Chandra printing of Chandra Nalaar changes order
     assert_search_results "t:chandra sort:newall",
-      "Chandra, Roaring Flame", "Chandra Nalaar", "Chandra, Pyromaster", "Chandra, the Firebrand", "Chandra Ablaze"
+      "Chandra, Flamecaller",
+      "Chandra, Roaring Flame",
+      "Chandra Nalaar",
+      "Chandra, Pyromaster",
+      "Chandra, the Firebrand",
+      "Chandra Ablaze"
     assert_search_results "t:chandra sort:old",
-      "Chandra Nalaar", "Chandra Ablaze", "Chandra, the Firebrand", "Chandra, Pyromaster", "Chandra, Roaring Flame"
+      "Chandra Nalaar",
+      "Chandra Ablaze",
+      "Chandra, the Firebrand",
+      "Chandra, Pyromaster",
+      "Chandra, Roaring Flame",
+      "Chandra, Flamecaller"
     assert_search_results "t:chandra sort:oldall",
-      "Chandra Nalaar", "Chandra Ablaze", "Chandra, the Firebrand", "Chandra, Pyromaster", "Chandra, Roaring Flame"
+      "Chandra Nalaar",
+      "Chandra Ablaze",
+      "Chandra, the Firebrand",
+      "Chandra, Pyromaster",
+      "Chandra, Roaring Flame",
+      "Chandra, Flamecaller"
   end
 
   def test_alt_rebecca_guay
@@ -266,18 +296,18 @@ class CardDatabaseFullTest < Minitest::Test
 
   def test_error_handling
     # Empty search returns all non-extras
-    assert_count_results("", 15439)
-    assert_count_results("sort:new", 15439)
-    assert_count_results("is:spell or t:land", 15439)
-    assert_count_results("time:3000", 15439)
-    assert_count_results(%Q[time:"battle for homelands"], 15439)
-    assert_count_results("time:1000", 0)
+    assert_count_results "", 15615
+    assert_count_results "sort:new", 15615
+    assert_count_results "is:spell or t:land", 15615
+    assert_count_results "time:3000", 15615
+    assert_count_results %Q[time:"battle for homelands"], 15615
+    assert_count_results "time:1000", 0
     assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
   end
 
   def test_is_promo
     # mtgjson has different idea what's promo,
     # mci returns 1054 cards
-    assert_count_results("is:promo", 852)
+    assert_count_results "is:promo", 870
   end
 end
