@@ -72,7 +72,7 @@ private
         @tokens << [:test, ConditionRarity.new(s[1])]
       elsif s.scan(/(pow|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow\b|tou\b|cmc\b|loyalty\b|year\b|[²\d\.\-\*\+½]+)/i)
         @tokens << [:test, ConditionExpr.new(s[1].downcase, s[2], s[3].downcase)]
-      elsif s.scan(/mana\s*(>=|>|<=|<|=)\s*((?:[\dwubrgxyz]|\{.*?\})+)/i)
+      elsif s.scan(/mana\s*(>=|>|<=|<|=)\s*((?:[\dwubrgxyzc]|\{.*?\})+)/i)
         @tokens << [:test, ConditionMana.new(s[1], s[2])]
       elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted|reserved|multipart|promo)\b/i)
         @tokens << [:not] if s[1].downcase == "not"
