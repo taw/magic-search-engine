@@ -324,7 +324,7 @@ class Indexer
           card["number"] = (1000 + card["number"].to_i).to_s
         end
       end
-    when "bfz"
+    when "bfz", "ogw"
       # No idea if this is correct
       basic_land_cards = set_data["cards"].select{|c| (c["supertypes"]||[]) .include?("Basic") }
       basic_land_cards = basic_land_cards.sort_by{|c| [c["number"], c["multiverseid"]]}
