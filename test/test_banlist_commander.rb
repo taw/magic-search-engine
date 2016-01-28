@@ -35,6 +35,11 @@ class BanlistCommanderTest < Minitest::Test
     end
   end
 
+  def test_2016
+    assert_commander_banlist_changes "January 2016",
+      "banned", "Prophet of Kruphix"
+  end
+
   def test_2015
     # http://www.mtgcommander.net/Forum/viewtopic.php?f=1&t=17890
     assert_commander_banlist_changes "September 2015" # no changes
