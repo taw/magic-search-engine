@@ -13,7 +13,7 @@ class CardDatabaseFullTest < Minitest::Test
   def test_formats
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
-    assert_search_equal "f:standard", "e:ori or e:ktk or e:frf or e:dtk or e:bfz"
+    assert_search_equal "f:standard", "e:ori or e:ktk or e:frf or e:dtk or e:bfz or e:ogw"
     assert_search_equal 'f:"ravnica block"', "e:rav or e:gp or e:di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal 'f:"ravnica block"', 'b:ravnica'

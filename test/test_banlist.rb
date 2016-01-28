@@ -9,6 +9,13 @@ class BanlistTest < Minitest::Test
   # Based on:
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
+  def test_banlist_2016
+    assert_banlist_changes "January 2016",
+      "modern banned", "Splinter Twin",
+      "modern banned", "Summer Bloom",
+      "pauper banned", "Cloud of Faeries"
+  end
+
   def test_banlist_2015
     assert_banlist_changes "September 2015",
       "legacy banned",  "Dig Through Time",

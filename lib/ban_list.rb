@@ -82,6 +82,7 @@ BanListChangeDates = {
    "dtk"=>"2015-03-27",
    "ori"=>"2015-07-17",
    "bfz"=>"2015-10-02",
+   "ogw"=>"2016-01-22",
 
   # Aliases
   "may 2013" => "2013-05-03",
@@ -152,6 +153,9 @@ DynamicBanListData = {
     "Bloodbraid Elf"  => {"gtc" => "banned"},
     "Seething Song"   => {"gtc" => "banned"},
     "Second Sunrise"  => { "dgm" => "banned" },
+
+    "Summer Bloom"  => {"ogw" => "banned"},
+    "Splinter Twin" => {"ogw" => "banned"},
   },
   "innistrad block" => {
     "Lingering Souls"    => {"start"=>"legal", "mar 2012"=>"banned"},
@@ -168,6 +172,7 @@ DynamicBanListData = {
     "Cloudpost"         => {"ths" => "banned"},
     "Temporal Fissure"  => {"ths" => "banned"},
     "Treasure Cruise"   => {"dtk" => "banned"},
+    "Cloud of Faeries"  => {"ogw" => "banned"},
   },
   "two-headed giant" => {
     "Erayo, Soratami Ascendant" => {"sep 2005" => "banned"},
@@ -293,6 +298,7 @@ DynamicBanListData = {
     "Painter's Servant" => {"dec 2009" => "banned"},
     "Panoptic Mirror" => {"apr 2005" => "banned"},
     "Primeval Titan" => {"sep 2012" => "banned"},
+    "Prophet of Kruphix" => {"ogw" => "banned"},
     "Protean Hulk" => {"sep 2008" => "banned"},
     "Recurring Nightmare" => {"feb 2008" => "banned"},
     "Riftsweeper" => {"sep 2008" => "banned", "sep 2009" => "legal"},
