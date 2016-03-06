@@ -66,6 +66,7 @@ class Indexer
 
   def format_names
     [
+      "battle for zendikar block",
       "commander",
       "ice age block",
       "innistrad block",
@@ -218,8 +219,13 @@ class Indexer
         algorithm_legalities = algorithm_legalities_for(card_data)
 
         if mtgjson_legalities != algorithm_legalities
-          puts "FAIL #{name} #{mtgjson_legalities.sort.inspect} != #{algorithm_legalities.sort.inspect}"
-          require 'pry'; binding.pry
+          puts "FAIL #{name}"
+          # puts "FAIL #{name} #{mtgjson_legalities.sort.inspect} != #{algorithm_legalities.sort.inspect}"
+          puts "Extra formats (mtgjson):"
+          puts (mtgjson_legalities.sort - algorithm_legalities.sort)
+          puts "Extra formats (algo):"
+          puts (algorithm_legalities.sort - mtgjson_legalities.sort)
+          puts ""
         end
         card = index_card_data(card_data)
         if cards[name]

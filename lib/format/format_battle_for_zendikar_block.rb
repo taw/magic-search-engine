@@ -4,6 +4,6 @@ class FormatBattleForZendikarBlock < Format
   end
 
   def format_sets
-    Set["bfz"]
+    Set["bfz", "ogw"]
   end
 end
