@@ -96,6 +96,7 @@ class Format
         "ths block"                   => FormatTherosBlock,
         "tarkir block"                => FormatTarkirBlock,
         "ktk block"                   => FormatTarkirBlock,
+        "khans of tarkir block"       => FormatTarkirBlock,
         "battle for zendikar block"   => FormatBattleForZendikarBlock,
         "bfz block"                   => FormatBattleForZendikarBlock,
         "unsets"                      => FormatUnsets,
