@@ -56,6 +56,7 @@ MagicBlocks = [
   ["ths", "Theros", "ths", "bng", "jou"],
   ["ktk", "Khans of Tarkir", "ktk", "frf", "dtk"],
   ["bfz", "Battle for Zendikar", "bfz", "ogw"],
+  ["soi", "Shadows over Innistrad", "soi"],
 ]
 
 class Indexer
@@ -84,8 +85,9 @@ class Indexer
       "return to ravnica block",
       "scars of mirrodin block",
       "shards of alara block",
+      "shadows over innistrad block",
       "standard",
-      "tarkir block",
+      "tarkir block", # mtgjson inconsistently calls it khans of tarkir block sometimes
       "tempest block",
       "theros block",
       "time spiral block",
@@ -127,6 +129,9 @@ class Indexer
 
   def index_set_data(set_code, set_data)
     block = MagicBlocks.find{|c,n,*xx| xx.include?(set_code)} || []
+    if set_code == "w16"
+      set_data["releaseDate"] ||= "2016-03-30"
+    end
     {
       "code" => set_code,
       "name" => set_data["name"],
@@ -222,9 +227,9 @@ class Indexer
           puts "FAIL #{name}"
           # puts "FAIL #{name} #{mtgjson_legalities.sort.inspect} != #{algorithm_legalities.sort.inspect}"
           puts "Extra formats (mtgjson):"
-          puts (mtgjson_legalities.sort - algorithm_legalities.sort)
+          puts (mtgjson_legalities.sort - algorithm_legalities.sort).map(&:inspect)
           puts "Extra formats (algo):"
-          puts (algorithm_legalities.sort - mtgjson_legalities.sort)
+          puts (algorithm_legalities.sort - mtgjson_legalities.sort).map(&:inspect)
           puts ""
         end
         card = index_card_data(card_data)

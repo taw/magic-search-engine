@@ -238,6 +238,8 @@ class FormatTest < Minitest::Test
   ## Standard
 
   def test_standard
+    assert_block_composition "standard", "soi",  ["dtk", "ori", "bfz", "ogw", "soi"]
+    assert_block_composition "standard", "ogw",  ["ktk", "frf", "dtk", "ori", "bfz", "ogw"]
     assert_block_composition "standard", "bfz",  ["ktk", "frf", "dtk", "ori", "bfz"]
     assert_block_composition "standard", "ori",  ["ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori"]
     assert_block_composition "standard", "dtk",  ["ths", "bng", "jou", "m15", "ktk", "frf", "dtk"]
