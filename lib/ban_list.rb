@@ -83,6 +83,7 @@ BanListChangeDates = {
    "ori"=>"2015-07-17",
    "bfz"=>"2015-10-02",
    "ogw"=>"2016-01-22",
+   "soi"=>"2016-04-08",
 
   # Aliases
   "may 2013" => "2013-05-03",
@@ -113,7 +114,7 @@ DynamicBanListData = {
   ### THESE LISTS SHOULD BE COMPLETE AND ACCURATE
 
   "modern" => {
-    "Ancestral Vision" => "banned",
+    "Ancestral Vision" => {"start" => "banned", "soi" => "legal"},
     "Ancient Den" => "banned",
     "Bitterblossom" => {"start"=>"banned", "bng" => "legal"},
     "Chrome Mox" => "banned",
@@ -128,10 +129,11 @@ DynamicBanListData = {
     "Sensei's Divining Top" => "banned",
     "Skullclamp" => "banned",
     "Stoneforge Mystic" => "banned",
-    "Sword of the Meek" => "banned",
+    "Sword of the Meek" => {"start" => "banned", "soi" => "legal"},
     "Tree of Tales" => "banned",
     "Umezawa's Jitte" => "banned",
     "Vault of Whispers" => "banned",
+    "Eye of Ugin" => {"soi" => "banned"},
 
     "Deathrite Shaman"  => {"bng"=> "banned"},
     "Dig Through Time"  => {"frf"=> "banned"},
@@ -608,6 +610,7 @@ DynamicBanListData = {
     "Ivory Tower"             => { "may 1994" => "restricted", "sep 1999" => "legal" },
     "Library of Alexandria"   => { "may 1994" => "restricted" },
     "Lion's Eye Diamond"      => { "dec 2003" => "restricted" },
+    "Lodestone Golem"         => {"soi" => "restricted"},
     "Lotus Petal"             => { "sep 1999" => "restricted" },
     "Mana Crypt"              => { "sep 1999" => "restricted" },
     "Mana Vault"              => { "sep 1999" => "restricted" },

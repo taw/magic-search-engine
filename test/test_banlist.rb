@@ -14,6 +14,11 @@ class BanlistTest < Minitest::Test
       "modern banned", "Splinter Twin",
       "modern banned", "Summer Bloom",
       "pauper banned", "Cloud of Faeries"
+    assert_banlist_changes "April 2016",
+      "modern banned", "Eye of Ugin",
+      "modern unbanned", "Ancestral Vision",
+      "modern unbanned", "Sword of the Meek",
+      "vintage restricted", "Lodestone Golem"
   end
 
   def test_banlist_2015

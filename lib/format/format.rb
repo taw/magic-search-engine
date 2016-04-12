@@ -23,6 +23,8 @@ class Format
       return true if @format_sets.include?(printing.set_code)
     end
     false
+  rescue
+    binding.pry
   end
 
   def format_pretty_name
@@ -99,6 +101,8 @@ class Format
         "khans of tarkir block"       => FormatTarkirBlock,
         "battle for zendikar block"   => FormatBattleForZendikarBlock,
         "bfz block"                   => FormatBattleForZendikarBlock,
+        "soi block"                   => FormatShadowsOverInnistradBlock,
+        "shadows over innistrad block"=> FormatShadowsOverInnistradBlock,
         "unsets"                      => FormatUnsets,
         "un-sets"                     => FormatUnsets,
         "standard"                    => FormatStandard,
