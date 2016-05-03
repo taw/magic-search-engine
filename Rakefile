@@ -11,13 +11,14 @@ def db
   end
 end
 
-task :default => :test
+task "default" => "test"
 
 Rake::TestTask.new do |t|
   t.libs << "test"
   t.test_files = FileList['test/test*.rb']
   t.options = "-s0" # random order is just annoying
   t.verbose = true
+  t.warning = false
 end
 
 desc "Generate index"

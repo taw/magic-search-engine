@@ -105,7 +105,6 @@ class Minitest::Test
       dsc = "#{set} (#{set_date})"
       set_date = @db.sets[set].release_date
     end
-    card = @db.cards[card_name]
     actual_legality = @ban_list.legality(format, card_name, set_date) || "legal"
     assert_equal expected_legality, actual_legality, "Legality of #{card_name} in #{format} during #{dsc}"
   end
