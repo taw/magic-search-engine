@@ -1,6 +1,6 @@
 Search engine for Magic: The Gathering cards.
 
-== Ruby on Rails frontend ==
+### Ruby on Rails frontend
 
 To run frontend like http://mtg.wtf/
 
@@ -8,7 +8,7 @@ To run frontend like http://mtg.wtf/
     $ bundle
     $ bundle exec rails s
 
-== Command line ==
+### Command line
 
 To search card names from command line:
 
@@ -22,14 +22,16 @@ To explore card database from Ruby console:
 
     $ ./bin/pry_cards
 
-== Testing ==
+### Testing
 
 Tests for library and for Rails frontend are separate:
 
-    $ rake test
-    $ (cd frontend; rake test)
+    $ bundle install
+    $ bundle exec rake test
+    $ (cd frontend; bundle install)
+    $ (cd frontend; bundle exec rake test)
 
-== How to update database ==
+### How to update database
 
 Whenever new set is released:
 
@@ -45,11 +47,10 @@ Then import cards:
 
 Whenever banned and restricted list is announced:
 
-* Update BanlistTest and/or BanlistCommanderTest
-* Update Banlist data
+* Update `BanlistTest` and/or `BanlistCommanderTest`
+* Update `Banlist` data
 
 If Comprehensive rules changed:
 
 * Update `data/MagicCompRules.txt` with TXT format Comprehensive Rule
 * Run `./bin/format_comp_rules`
-
