@@ -89,7 +89,7 @@ class CardDatabaseUnsetsTest < Minitest::Test
     assert_search_results "!When // Where // Whatever"
   end
 
-  def test_split_slash_slash_bang
+  def test_split_slash_slash
     assert_search_results "//", "Who", "What", "When", "Where", "Why", "B.F.M. (Big Furry Monster)"
     assert_search_results "When // Where // What", "Who", "What", "When", "Where", "Why"
     assert_search_results "When // Where // Whatever"

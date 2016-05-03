@@ -3,6 +3,7 @@ class ConditionTypes < ConditionSimple
   def initialize(types)
     # urza's -> urza, same with serra's, bolas's
     @types = Set[*types.downcase.tr("’\u2212", "'-").gsub(/'s/, "").split]
+    @include_extras = false
     if @types.include?("*")
       @match_all = true
       @include_extras = true

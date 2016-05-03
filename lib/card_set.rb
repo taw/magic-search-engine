@@ -24,6 +24,6 @@ class CardSet
   end
 
   def hash
-    @set_code.hash
+    @code.hash
   end
 end

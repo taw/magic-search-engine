@@ -24,7 +24,6 @@ class BanlistCommanderTest < Minitest::Test
     change_dates.each do |date|
       vintage_banlist  = @ban_list.full_ban_list("vintage", date)
       commander_banlist = @ban_list.full_ban_list("commander", date)
-      vintage_plus_banlist = Hash[vintage_banlist.map{|k,v| [k, v == "restricted" ? "banned" : v]}]
 
       vintage_banned = vintage_banlist.select{|c,s| s == "banned"}.map(&:first)
       commander_banned = commander_banlist.select{|c,s| s == "banned"}.map(&:first)
