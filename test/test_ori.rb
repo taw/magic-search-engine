@@ -6,7 +6,7 @@ class CardDatabaseOriginsTest < Minitest::Test
   end
 
   def test_other
-    assert_search_results "other:cmc=3", "Chandra, Roaring Flame", "Liliana, Defiant Necromancer", "Nissa, Sage Animist"
+    assert_search_results "other:cmc=3", "Chandra, Fire of Kaladesh", "Chandra, Roaring Flame", "Liliana, Defiant Necromancer", "Liliana, Heretical Healer", "Nissa, Sage Animist", "Nissa, Vastwood Seer"
     assert_search_results "other:(a:eric)", "Chandra, Fire of Kaladesh", "Chandra, Roaring Flame"
   end
 end
