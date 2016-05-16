@@ -54,7 +54,8 @@ class CardDatabaseFullTest < Minitest::Test
 
   def test_part
     assert_search_results "part:cmc=1 part:cmc=2", "Death", "Life", "Tear", "Wear", "What", "When", "Where", "Who", "Why"
-    assert_search_results "part:cmc=0 part:cmc=3 part:c:b", "Chosen of Markov", "Demon-Possessed Witch", "Kindly Stranger", "Liliana, Defiant Necromancer", "Liliana, Heretical Healer", "Markov's Servant", "Pious Evangel", "Screeching Bat", "Stalking Vampire", "Wayward Disciple"
+    # Semantics of that changed
+    assert_search_results "part:cmc=0 part:cmc=3 part:c:b"
   end
 
   def test_color_identity

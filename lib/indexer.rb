@@ -197,10 +197,27 @@ class Indexer
     ).compact
   end
 
+  def report_legalities_fail(name, mtgjson_legalities, algorithm_legalities)
+    @reported_fail ||= {}
+    return if @reported_fail[name]
+    @reported_fail[name] = true
+    mtgjson_legalities = mtgjson_legalities.sort
+    algorithm_legalities = algorithm_legalities.sort
+    puts "FAIL #{name}"
+    unless (mtgjson_legalities - algorithm_legalities).empty?
+      puts "Extra formats (mtgjson):"
+      puts (mtgjson_legalities - algorithm_legalities).map(&:inspect)
+    end
+    unless (algorithm_legalities - mtgjson_legalities).empty?
+      puts "Extra formats (algo):"
+      puts (algorithm_legalities - mtgjson_legalities).map(&:inspect)
+    end
+    puts ""
+  end
+
   def prepare_index
     sets = {}
     cards = {}
-    legalities = {}
     @sets_code_translator = {}
 
     @data.each do |set_code, set_data|
@@ -224,13 +241,7 @@ class Indexer
         algorithm_legalities = algorithm_legalities_for(card_data)
 
         if mtgjson_legalities != algorithm_legalities
-          puts "FAIL #{name}"
-          # puts "FAIL #{name} #{mtgjson_legalities.sort.inspect} != #{algorithm_legalities.sort.inspect}"
-          puts "Extra formats (mtgjson):"
-          puts (mtgjson_legalities.sort - algorithm_legalities.sort).map(&:inspect)
-          puts "Extra formats (algo):"
-          puts (algorithm_legalities.sort - mtgjson_legalities.sort).map(&:inspect)
-          puts ""
+          report_legalities_fail(name, mtgjson_legalities, algorithm_legalities)
         end
         card = index_card_data(card_data)
         if cards[name]
@@ -250,6 +261,18 @@ class Indexer
     cards = Hash[cards.sort]
     cards.each do |name, card|
       card["printings"] = card["printings"].sort_by{|sc,d| [sets.keys.index(sc),d["number"],d["multiverseid"]] }
+    end
+    # Fix DFC cmc
+    cards.each do |name, card|
+      next unless card["layout"] == "double-faced" and not card["cmc"]
+      other_names = card["names"] - [name]
+      raise "DFCs should have 2 names" unless other_names.size == 1
+      other_cmc = cards[other_names[0]]["cmc"]
+      if other_cmc
+        card["cmc"] = other_cmc
+      else
+        # Westvale Abbey / Ormendahl, Profane Prince has no cmc on either side
+      end
     end
 
     {"sets"=>sets, "cards"=>cards}
