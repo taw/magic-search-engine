@@ -310,4 +310,8 @@ class CardDatabaseFullTest < Minitest::Test
     # mci returns 1054 cards
     assert_count_results "is:promo", 870
   end
+
+  def test_stemming
+    assert_search_equal "vision", "visions"
+  end
 end
