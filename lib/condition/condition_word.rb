@@ -1,11 +1,12 @@
 class ConditionWord < ConditionSimple
   def initialize(word)
     @word = normalize_name(word)
+    @stem_word = apply_stemming(@word)
   end
 
   def match?(card)
-    name = normalize_name(card.name)
-    return true if name.include?(@word)
+    name = apply_stemming(normalize_name(card.name))
+    return true if name.include?(@stem_word)
     @suggestions.each do |alt|
       if name.include?(alt)
         warning %Q[Trying spelling "#{alt}" in addition to "#{@word}"]
@@ -26,5 +27,11 @@ class ConditionWord < ConditionSimple
     else
       @suggestions = []
     end
+  end
+
+  private
+
+  def apply_stemming(s)
+    s.sub(/s\b/, "")
   end
 end
