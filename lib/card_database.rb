@@ -154,7 +154,9 @@ class CardDatabase
       card.printings.each do |printing|
         printing.others = other_cards.map do |other_card|
           from_same_set = other_card.printings.select{|other_printing| other_printing.set_code == printing.set_code}
-          raise "Can't link other side" unless from_same_set.size == 1
+          unless from_same_set.size == 1
+            raise "Can't link other side - #{card_name}"
+          end
           from_same_set[0]
         end
       end

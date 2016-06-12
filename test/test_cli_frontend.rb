@@ -58,7 +58,7 @@ class TestCLIFrontend < Minitest::Test
       verbose: true,
       output: <<-EOF,
         Siege Rhino {1}{w}{b}{g}
-        [ptc ktk]
+        [ptc ktk mbp]
         Creature - Rhino
         Trample
         When Siege Rhino enters the battlefield, each opponent loses 3 life and you gain 3 life.
@@ -97,7 +97,7 @@ class TestCLIFrontend < Minitest::Test
       verbose: true,
       output: <<-EOF,
         Bloodbraid Elf {2}{r}{g}
-        [-arb +fnmp +pc2]
+        [-arb +fnmp +pc2 -ema]
         Creature - Elf Berserker
         Haste
         Cascade

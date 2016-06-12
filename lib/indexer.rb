@@ -257,6 +257,49 @@ class Indexer
       end
     end
 
+    # This is apparently real, but mtgjson has no other side
+    # http://i.tcgplayer.com/100595_200w.jpg
+    [
+      "Chandra, Fire of Kaladesh",
+      "Jace, Vryn's Prodigy",
+      "Kytheon, Hero of Akros",
+      "Liliana, Heretical Healer",
+      "Nissa, Vastwood Seer",
+    ].each do |card_name|
+      cards[card_name]["printings"].delete_if{|c,| c == "ptc"}
+    end
+
+    # Fixing printing dates of promo cards
+    cards.each do |name, card|
+      # Prerelease
+      ptc_printing = card["printings"].find{|c,| c == "ptc" }
+      # Release
+      mlp_printing = card["printings"].find{|c,| c == "mlp" }
+      # Gameday
+      mgdc_printing = card["printings"].find{|c,| c == "mgdc" }
+      # Media inserts
+      mbp_printing = card["printings"].find{|c,| c == "mbp" }
+      real_printings = card["printings"].select{|c,| !["ptc", "mlp", "mgdc", "mbp"].include?(c) }
+      guess_date = real_printings.map{|c,d| d["release_date"] || sets[c]["release_date"] }.min
+      if ptc_printing and not ptc_printing[1]["release_date"]
+        raise "No guessable date for #{name}" unless guess_date
+        guess_ptc_date = (Date.parse(guess_date) - 6).to_s
+        ptc_printing[1]["release_date"] = guess_ptc_date
+      end
+      if mlp_printing and not mlp_printing[1]["release_date"]
+        raise "No guessable date for #{name}" unless guess_date
+        mlp_printing[1]["release_date"] = guess_date
+      end
+      if mgdc_printing and not mgdc_printing[1]["release_date"]
+        raise "No guessable date for #{name}" unless guess_date
+        mgdc_printing[1]["release_date"] = guess_date
+      end
+      if mbp_printing and not mbp_printing[1]["release_date"]
+        raise "No guessable date for #{name}" unless guess_date
+        mbp_printing[1]["release_date"] = guess_date
+      end
+    end
+
     # Output in canonical form, to minimize diffs between mtgjson updates
     cards = Hash[cards.sort]
     cards.each do |name, card|
