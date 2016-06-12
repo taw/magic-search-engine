@@ -7,7 +7,7 @@ class CardDatabaseFullTest < Minitest::Test
 
   def test_stats
     assert_equal 16161, @db.cards.size
-    assert_equal 30359, @db.printings.size
+    assert_equal 30797, @db.printings.size
   end
 
   def test_formats
@@ -94,7 +94,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Ankle Shanker", "Arc Lightning", "Avalanche Tusker", "Bloodsoaked Champion",
       "Bloodstained Mire", "Butcher of the Horde", "Cancel", "Crackling Doom",
       "Crater's Claws", "Crippling Chill", "Deflecting Palm", "Despise",
-      "Dig Through Time", "Dragon Throne of Tarkir", "Dragon-Style Twins", "Duneblast",
+      "Dig Through Time", "Dragon-Style Twins", "Duneblast",
       "Erase", "Flooded Strand", "Flying Crane Technique", "Forest", "Grim Haruspex",
       "Hardened Scales", "Herald of Anafenza", "High Sentinels of Arashin", "Icy Blast", "Incremental Growth", "Island", "Ivorytusk Fortress", "Jeering Instigator",
       "Jeskai Ascendancy", "Jeskai Elder", "Kheru Lich Lord", "Mardu Ascendancy",
@@ -108,7 +108,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Wooded Foothills", "Zurgo Helmsmasher"
 
     assert_search_results "e:ktk lastprint>ktk",
-      "Act of Treason", "Ainok Tracker", "Altar of the Brood", "Arc Lightning", "Bloodfell Caves", "Bloodstained Mire", "Blossoming Sands", "Briber's Purse", "Debilitating Injury", "Disdainful Stroke", "Dismal Backwater", "Dragonscale Boon", "Dutiful Return", "Flooded Strand", "Forest", "Ghostfire Blade", "Grim Haruspex", "Heir of the Wilds", "Hordeling Outburst", "Incremental Growth", "Island", "Jeering Instigator", "Jungle Hollow", "Mountain", "Mystic of the Hidden Way", "Naturalize", "Plains", "Polluted Delta", "Rugged Highlands", "Ruthless Ripper", "Scoured Barrens", "Shatter", "Smite the Monstrous", "Sultai Charm", "Summit Prowler", "Suspension Field", "Swamp", "Swiftwater Cliffs", "Thornwood Falls", "Throttle", "Tormenting Voice", "Tranquil Cove", "Utter End", "Watcher of the Roost", "Weave Fate", "Wind-Scarred Crag", "Windstorm", "Windswept Heath", "Wooded Foothills"
+      "Act of Treason", "Ainok Tracker", "Altar of the Brood", "Arc Lightning", "Bloodfell Caves", "Bloodstained Mire", "Blossoming Sands", "Briber's Purse", "Debilitating Injury", "Disdainful Stroke", "Dismal Backwater", "Dragonscale Boon", "Dutiful Return", "Flooded Strand", "Forest", "Ghostfire Blade", "Grim Haruspex", "Hordeling Outburst", "Incremental Growth", "Island", "Jeering Instigator", "Jungle Hollow", "Mountain", "Mystic of the Hidden Way", "Naturalize", "Plains", "Polluted Delta", "Rugged Highlands", "Ruthless Ripper", "Scoured Barrens", "Shatter", "Smite the Monstrous", "Sultai Charm", "Summit Prowler", "Suspension Field", "Swamp", "Swiftwater Cliffs", "Thornwood Falls", "Throttle", "Tormenting Voice", "Tranquil Cove", "Watcher of the Roost", "Weave Fate", "Wind-Scarred Crag", "Windstorm", "Windswept Heath", "Wooded Foothills"
   end
 
   def test_firstprint
@@ -309,7 +309,7 @@ class CardDatabaseFullTest < Minitest::Test
   def test_is_promo
     # mtgjson has different idea what's promo,
     # mci returns 1054 cards
-    assert_count_results "is:promo", 870
+    assert_count_results "is:promo", 1047
   end
 
   def test_stemming
