@@ -37,7 +37,7 @@ class FormatStandard < Format
     # ["al", "be", "an", "un", "aq", "rv", "lg", "dk", "fe", "4e", "ia", "hl", "ai", "mr", "vi", "5e", "wl", "tp", "sh", "ex", "us", "ul", "6e", "ud", "mm", "ne", "pr", "in", "ps", "7e", "ap", "od", "tr", "ju", "on", "le", "sc", "8e", "mi", "ds", "5dn", "chk", "bok", "sok", "9e", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut", "10e", "lw", "mt", "shm", "eve", "ala", "cfx", "arb", "m10"]
     {
       # 3 blocks system
-      "2016-04-08" => ["dtk", "ori", "bfz", "ogw", "soi"],                       # soi
+      "2016-04-08" => ["dtk", "ori", "bfz", "ogw", "soi", "emn"],                # soi
       "2015-10-02" => ["ktk", "frf", "dtk", "ori", "bfz", "ogw"],                # bfz
       # 2 blocks system
       "2014-09-26" => ["ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori"],  # ktk

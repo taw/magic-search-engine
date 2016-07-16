@@ -6,14 +6,14 @@ class CardDatabaseFullTest < Minitest::Test
   end
 
   def test_stats
-    assert_equal 16161, @db.cards.size
-    assert_equal 30831, @db.printings.size
+    assert_equal 16375, @db.cards.size
+    assert_equal 31054, @db.printings.size
   end
 
   def test_formats
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
-    assert_search_equal "f:standard", "e:dtk or e:ori or e:bfz or e:ogw or e:soi"
+    assert_search_equal "f:standard", "e:dtk or e:ori or e:bfz or e:ogw or e:soi or e:emn"
     assert_search_equal 'f:"ravnica block"', "e:rav or e:gp or e:di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal 'f:"ravnica block"', 'b:ravnica'
@@ -108,7 +108,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Wooded Foothills", "Zurgo Helmsmasher"
 
     assert_search_results "e:ktk lastprint>ktk",
-      "Act of Treason", "Ainok Tracker", "Altar of the Brood", "Arc Lightning", "Bloodfell Caves", "Bloodstained Mire", "Blossoming Sands", "Briber's Purse", "Debilitating Injury", "Disdainful Stroke", "Dismal Backwater", "Dragonscale Boon", "Dutiful Return", "Flooded Strand", "Forest", "Ghostfire Blade", "Grim Haruspex", "Hordeling Outburst", "Incremental Growth", "Island", "Jeering Instigator", "Jungle Hollow", "Mountain", "Mystic of the Hidden Way", "Naturalize", "Plains", "Polluted Delta", "Rugged Highlands", "Ruthless Ripper", "Scoured Barrens", "Shatter", "Smite the Monstrous", "Sultai Charm", "Summit Prowler", "Suspension Field", "Swamp", "Swiftwater Cliffs", "Thornwood Falls", "Throttle", "Tormenting Voice", "Tranquil Cove", "Watcher of the Roost", "Weave Fate", "Wind-Scarred Crag", "Windstorm", "Windswept Heath", "Wooded Foothills"
+      "Act of Treason", "Ainok Tracker", "Altar of the Brood", "Arc Lightning", "Bloodfell Caves", "Bloodstained Mire", "Blossoming Sands", "Briber's Purse", "Debilitating Injury", "Disdainful Stroke", "Dismal Backwater", "Dragonscale Boon", "Dutiful Return", "Flooded Strand", "Forest", "Ghostfire Blade", "Grim Haruspex", "Hordeling Outburst", "Incremental Growth", "Island", "Jeering Instigator", "Jungle Hollow", "Mountain", "Mystic of the Hidden Way", "Naturalize", "Plains", "Polluted Delta", "Ride Down", "Rugged Highlands", "Ruthless Ripper", "Scoured Barrens", "Shatter", "Smite the Monstrous", "Sultai Charm", "Summit Prowler", "Suspension Field", "Swamp", "Swiftwater Cliffs", "Thornwood Falls", "Throttle", "Tormenting Voice", "Tranquil Cove", "Watcher of the Roost", "Weave Fate", "Wind-Scarred Crag", "Windstorm", "Windswept Heath", "Wooded Foothills"
   end
 
   def test_firstprint
@@ -297,11 +297,11 @@ class CardDatabaseFullTest < Minitest::Test
 
   def test_error_handling
     # Empty search returns all non-extras
-    assert_count_results "", 15915
-    assert_count_results "sort:new", 15915
-    assert_count_results "is:spell or t:land", 15915
-    assert_count_results "time:3000", 15915
-    assert_count_results %Q[time:"battle for homelands"], 15915
+    assert_count_results "", 16129
+    assert_count_results "sort:new", 16129
+    assert_count_results "is:spell or t:land", 16129
+    assert_count_results "time:3000", 16129
+    assert_count_results %Q[time:"battle for homelands"], 16129
     assert_count_results "time:1000", 0
     assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
   end
