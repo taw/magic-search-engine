@@ -238,6 +238,10 @@ class Indexer
         if sets_printed == ["cns"]
           mtgjson_legalities["commander"] = mtgjson_legalities["vintage"]
         end
+
+        if mtgjson_legalities["khans of tarkir block"]
+          mtgjson_legalities["tarkir block"] = mtgjson_legalities.delete("khans of tarkir block")
+        end
         algorithm_legalities = algorithm_legalities_for(card_data)
 
         if mtgjson_legalities != algorithm_legalities
