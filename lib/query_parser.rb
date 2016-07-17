@@ -78,10 +78,10 @@ private
         @tokens << [:not] if s[1].downcase == "not"
         klass = Kernel.const_get("ConditionIs#{s[2].capitalize}")
         @tokens << [:test, klass.new]
-      elsif s.scan(/(is|not):(split|flip|dfc)\b/i)
+      elsif s.scan(/(is|not):(split|flip|dfc|meld)\b/i)
         @tokens << [:not] if s[1].downcase == "not"
         @tokens << [:test, ConditionLayout.new(s[2])]
-      elsif s.scan(/layout:(normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon)/)
+      elsif s.scan(/layout:(normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld)/)
         @tokens << [:test, ConditionLayout.new(s[1])]
       elsif s.scan(/(is|not):(old|new|future)\b/)
         @tokens << [:not] if s[1].downcase == "not"
