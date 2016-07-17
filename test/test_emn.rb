@@ -1,6 +1,6 @@
 require_relative "test_helper"
 
-class CardDatabaseAlphaTest < Minitest::Test
+class CardDatabaseEldrichMoonTest < Minitest::Test
   def setup
     @db = load_database("emn")
   end
