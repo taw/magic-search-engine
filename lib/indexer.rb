@@ -321,7 +321,14 @@ class Indexer
         # Westvale Abbey / Ormendahl, Profane Prince has no cmc on either side
       end
     end
-
+    # CMC of melded card is sum of front faces
+    cards.each do |name, card|
+      next unless card["layout"] == "meld"
+      other_names = card["names"] - [name]
+      next unless other_names.size == 2 # melded side
+      other_cmcs = other_names.map{|other_name| cards[other_name]["cmc"]}
+      card["cmc"] = other_cmcs.compact.inject(0, &:+)
+    end
     {"sets"=>sets, "cards"=>cards}
   end
 
