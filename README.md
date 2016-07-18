@@ -37,6 +37,7 @@ Whenever new set is released:
 
 * Add new set code to legalities in Vintage
 * Add new set code and date to legalities in Standard and Modern if applicable
+* Add new set code to appropriate block in indexer
 * Create new block format if applicable and add it to indexer and Format class
 * Update format tests
 
