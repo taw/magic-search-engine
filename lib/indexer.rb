@@ -1,5 +1,6 @@
 require_relative "ban_list"
 require_relative "format/format"
+require_relative "indexer/card_set"
 require "date"
 require "ostruct"
 require "json"
@@ -32,32 +33,6 @@ class Pathname
     write(content)
   end
 end
-
-MagicBlocks = [
-  ["ia", "Ice Age", "ia", "ai", "cs"],
-  # ["shm", "Shadowmoor", "shm", "eve"], # Also included in Lorwyn
-  ["mr", "Mirage", "mr", "vi", "wl"],
-  ["tp", "Tempest", "tp", "sh", "ex"],
-  ["us", "Urza's Saga", "us", "ul", "ud"],
-  ["mm", "Mercadian Masques", "mm", "ne", "pr"],
-  ["in", "Invasion", "in", "ps", "ap"],
-  ["od", "Odyssey", "od", "tr", "ju"],
-  ["on", "Onslaught", "on", "le", "sc"],
-  ["mi", "Mirrodin", "mi", "ds", "5dn"],
-  ["chk", "Champions of Kamigawa", "chk", "bok", "sok"],
-  ["rav", "Ravnica", "rav", "gp", "di"],
-  ["ts", "Time Spiral", "ts", "tsts", "pc", "fut"],
-  ["lw", "Lorwyn", "lw", "mt", "shm", "eve"],
-  ["ala", "Shards of Alara", "ala", "cfx", "arb"],
-  ["zen", "Zendikar", "zen", "wwk", "roe"],
-  ["som", "Scars of Mirrodin", "som", "mbs", "nph"],
-  ["isd", "Innistrad", "isd", "dka", "avr"],
-  ["rtr", "Return to Ravnica", "rtr", "gtc", "dgm"],
-  ["ths", "Theros", "ths", "bng", "jou"],
-  ["ktk", "Khans of Tarkir", "ktk", "frf", "dtk"],
-  ["bfz", "Battle for Zendikar", "bfz", "ogw"],
-  ["soi", "Shadows over Innistrad", "soi"],
-]
 
 class Indexer
   def initialize
@@ -127,23 +102,6 @@ class Indexer
     path.write(prepare_index.to_json)
   end
 
-  def index_set_data(set_code, set_data)
-    block = MagicBlocks.find{|c,n,*xx| xx.include?(set_code)} || []
-    if set_code == "w16"
-      set_data["releaseDate"] ||= "2016-03-30"
-    end
-    {
-      "code" => set_code,
-      "name" => set_data["name"],
-      "gatherer_code" => set_data["code"],
-      "block_code" => block[0],
-      "block_name" => block[1],
-      "border" => set_data["border"],
-      "release_date" => format_release_date(set_data["releaseDate"]),
-      "type" => set_data["type"],
-    }.compact
-  end
-
   def index_card_data(card_data)
     # mtgjson is being silly here
     if card_data["name"] == "B.F.M. (Big Furry Monster)"
@@ -192,7 +150,7 @@ class Indexer
       "multiverseid",
     ).merge(
       "rarity" => format_rarity(card_data["rarity"]),
-      "release_date" => format_release_date(card_data["releaseDate"]),
+      "release_date" => Indexer.format_release_date(card_data["releaseDate"]),
       "watermark" => format_watermark(card_data["watermark"]),
     ).compact
   end
@@ -226,7 +184,7 @@ class Indexer
 
     @data.each do |set_code, set_data|
       set_code = @sets_code_translator[set_code]
-      sets[set_code] = index_set_data(set_code, set_data)
+      sets[set_code] = Indexer::CardSet.new(set_code, set_data).to_json
 
       ensure_set_has_card_numbers!(set_code, set_data)
 
@@ -330,20 +288,6 @@ class Indexer
       card["cmc"] = other_cmcs.compact.inject(0, &:+)
     end
     {"sets"=>sets, "cards"=>cards}
-  end
-
-  def format_release_date(date)
-    return nil unless date
-    case date
-    when /\A\d{4}-\d{2}-\d{2}\z/
-      date
-    when /\A\d{4}-\d{2}\z/
-      "#{date}-01"
-    when /\A\d{4}\z/
-      "#{date}-01-01"
-    else
-      raise "Release date format error: #{date}"
-    end
   end
 
   def format_watermark(watermark)
@@ -466,6 +410,21 @@ class Indexer
         raise unless mci_numbers[name.downcase]
         card["number"] = mci_numbers[name.downcase][rel_idx]
       end
+    end
+  end
+
+  # FIXME: This really shouldn't be here
+  def self.format_release_date(date)
+    return nil unless date
+    case date
+    when /\A\d{4}-\d{2}-\d{2}\z/
+      date
+    when /\A\d{4}-\d{2}\z/
+      "#{date}-01"
+    when /\A\d{4}\z/
+      "#{date}-01-01"
+    else
+      raise "Release date format error: #{date}"
     end
   end
 end
