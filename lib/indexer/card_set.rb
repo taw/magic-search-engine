@@ -21,7 +21,7 @@ MagicBlocks = [
   ["ths", "Theros", "ths", "bng", "jou"],
   ["ktk", "Khans of Tarkir", "ktk", "frf", "dtk"],
   ["bfz", "Battle for Zendikar", "bfz", "ogw"],
-  ["soi", "Shadows over Innistrad", "soi"],
+  ["soi", "Shadows over Innistrad", "soi", "emn"],
 ]
 
 class Indexer
