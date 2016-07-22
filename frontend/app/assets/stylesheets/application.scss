@@ -75,13 +75,30 @@ td, th {
   }
   & .dfc {
   }
-  & .dfc_reverse {
-    transform: rotateY(180deg);
-  }
   &:hover .dfc {
     transform: rotateY(180deg);
   }
+  & .dfc_reverse {
+    transform: rotateY(180deg);
+  }
   &:hover .dfc_reverse {
+    transform: rotateY(360deg);
+  }
+  & .melded {
+  }
+  &:hover .melded {
+    transform: translate(112px) rotateY(180deg);
+  }
+  & .meld0 {
+    transform: rotateY(180deg);
+  }
+  & .meld1 {
+    transform: rotateY(180deg);
+  }
+  &:hover .meld0 {
+    transform: translate(225px) rotateY(360deg);
+  }
+  &:hover .meld1 {
     transform: rotateY(360deg);
   }
 }

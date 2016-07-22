@@ -9,5 +9,12 @@
     - elsif card.layout == "double-faced" and card.others.size == 1
       %img.card_picture.dfc{src: card_picture_path(card), alt: card.name }
       %img.card_picture.dfc_reverse{src: card_picture_path(card.others[0]), alt: card.others[0].name }
+    - elsif card.layout == "meld" and card.others.size == 1
+      %img.card_picture.dfc{src: card_picture_path(card), alt: card.name }
+      %img.card_picture.dfc_reverse{src: card_picture_path(card.others[0]), alt: card.others[0].name }
+    - elsif card.layout == "meld" and card.others.size == 2
+      %img.card_picture.melded{src: card_picture_path(card), alt: card.name }
+      %img.card_picture.meld0{src: card_picture_path(card.others[0]), alt: card.others[0].name }
+      %img.card_picture.meld1{src: card_picture_path(card.others[1]), alt: card.others[1].name }
     - else # Might need different layouts too
       %img.card_picture{src: card_picture_path(card), alt: card.name }
