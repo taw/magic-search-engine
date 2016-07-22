@@ -280,6 +280,20 @@ class Indexer
         # Westvale Abbey / Ormendahl, Profane Prince has no cmc on either side
       end
     end
+
+    # Unfortunately mtgjson changed its mind,
+    # and there's no way to distinguish front and back side of melded cards
+    [
+      "Brisela, Voice of Nightmares",
+      "Hanweir, the Writhing Township",
+      "Chittering Host",
+    ].each do |melded|
+      parts = cards[melded]["names"] - [melded]
+      parts.each do |n|
+        cards[n]["names"] -= (parts - [n])
+      end
+    end
+
     # CMC of melded card is sum of front faces
     cards.each do |name, card|
       next unless card["layout"] == "meld"
