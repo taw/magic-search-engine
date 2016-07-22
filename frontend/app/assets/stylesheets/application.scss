@@ -51,18 +51,38 @@ td, th {
   margin-bottom: 0.5em;
 }
 
+.card_picture_container {
+  width: 223px;
+  height: 310px;
+  position: relative;
 
-img.card_picture {
-  max-width: 223px;
-  max-height: 310px;
-  margin-right: 10px;
+  img.card_picture {
+    max-width: 223px;
+    max-height: 310px;
+    margin-right: 10px;
+    left: 0;
+    top: 0;
+    position: absolute;
+    transition: 0.5s ease;
+    backface-visibility: hidden;
 
-  transition: 0.5s ease;
-  &.flip:hover {
-    transform: rotateZ(180deg);
+    &.flip:hover {
+      transform: rotateZ(180deg);
+    }
+    &.split:hover {
+      transform: translateX(44px) rotateZ(90deg);
+    }
   }
-  &.split:hover {
-    transform: translateX(44px) rotateZ(90deg);
+  & .dfc {
+  }
+  & .dfc_reverse {
+    transform: rotateY(180deg);
+  }
+  &:hover .dfc {
+    transform: rotateY(180deg);
+  }
+  &:hover .dfc_reverse {
+    transform: rotateY(360deg);
   }
 }
 .card {
