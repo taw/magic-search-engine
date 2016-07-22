@@ -8,8 +8,7 @@
       - @cards.each do |card, matching_printing|
         %tr
           %td
-            - if card_picture_path(card)
-              %img.card_picture{src: card_picture_path(card), alt: card.name }
+            = render 'card/picture', card: card
           %td
             %div.card
               = render 'card', card: card

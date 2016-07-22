@@ -56,6 +56,14 @@ img.card_picture {
   max-width: 223px;
   max-height: 310px;
   margin-right: 10px;
+
+  transition: 0.5s ease;
+  &.flip:hover {
+    transform: rotateZ(180deg);
+  }
+  &.split:hover {
+    transform: translateX(44px) rotateZ(90deg);
+  }
 }
 .card {
   width: 450px;
