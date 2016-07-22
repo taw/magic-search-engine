@@ -43,7 +43,8 @@ class CardController < ApplicationController
 
   def choose_best_printing(results)
     results.group_by(&:name).map do |name, printings|
-      [printings[0], printings]
+      best_printing = printings.find{|cp| ApplicationHelper.card_picture_path(cp) } || printings[0]
+      [best_printing, printings]
     end
   end
 end

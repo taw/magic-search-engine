@@ -28,6 +28,10 @@ module ApplicationHelper
   end
 
   def card_picture_path(card)
+    ApplicationHelper.card_picture_path(card)
+  end
+
+  def self.card_picture_path(card)
     url_hq = "/cards_hq/#{card.set_code}/#{card.number}.png"
     url_lq = "/cards/#{card.set_code}/#{card.number}.png"
     path_hq = Pathname(__dir__) + "../../public#{url_hq}"
