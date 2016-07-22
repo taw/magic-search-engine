@@ -1,0 +1,13 @@
+- if card_picture_path(card)
+  .card_picture_container
+    - if card.layout == "flip"
+      %img.card_picture.flip{src: card_picture_path(card), alt: card.name }
+    - elsif card.layout == "split" and card.others.size == 1
+      %img.card_picture.split{src: card_picture_path(card), alt: card.name }
+    - elsif card.layout == "normal"
+      %img.card_picture{src: card_picture_path(card), alt: card.name }
+    - elsif card.layout == "double-faced" and card.others.size == 1
+      %img.card_picture.dfc{src: card_picture_path(card), alt: card.name }
+      %img.card_picture.dfc_reverse{src: card_picture_path(card.others[0]), alt: card.others[0].name }
+    - else # Might need different layouts too
+      %img.card_picture{src: card_picture_path(card), alt: card.name }
