@@ -1,6 +1,6 @@
 Magic: The Gathering Comprehensive Rules
 
-These rules are effective as of April 8, 2016.
+These rules are effective as of July 22, 2016.
 
 Introduction
 
@@ -132,12 +132,14 @@ Contents
 709. Flip Cards
 710. Leveler Cards
 711. Double-Faced Cards
-712. Controlling Another Player
-713. Ending the Turn
-714. Restarting the Game
-715. Subgames
-716. Taking Shortcuts
-717. Handling Illegal Actions
+712. Meld Cards
+713. Checklist Cards
+714. Controlling Another Player
+715. Ending the Turn
+716. Restarting the Game
+717. Subgames
+718. Taking Shortcuts
+719. Handling Illegal Actions
 
 8. Multiplayer Rules
 800. General
@@ -235,7 +237,7 @@ Example: A card reads “Each player sacrifices a creature.” First, the active pla
 
 103.1. At the start of a game, each player shuffles his or her deck so that the cards are in a random order. Each player may then shuffle or cut his or her opponents’ decks. The players’ decks become their libraries.
 
-103.1a If a player is using a sideboard (see rule 100.4) or double-faced cards being represented by checklist cards (see rule 711.3), those cards are set aside before shuffling.
+103.1a If a player is using a sideboard (see rule 100.4) or cards being represented by checklist cards (see rule 713), those cards are set aside before shuffling.
 
 103.1b In a Commander game, each player puts his or her commander from his or her deck face up into the command zone before shuffling. See rule 903.6.
 
@@ -321,7 +323,7 @@ Example: A card reads “Each player sacrifices a creature.” First, the active pla
 
 104.3i In an Emperor game, a team loses the game if its emperor loses the game. (See rule 809.5.)
 
-104.3j In a Commander game, a player that’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. (This is a state-based action. See rule 704. See also rule 903.11.)
+104.3j In a Commander game, a player that’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. (This is a state-based action. See rule 704. See also rule 903.10.)
 
 104.3k In a tournament, a player may lose the game as a result of a penalty given by a judge. See rule 100.6.
 
@@ -347,7 +349,7 @@ Example: A card reads “Each player sacrifices a creature.” First, the active pla
 
 104.5. If a player loses the game, he or she leaves the game. If the game is a draw for a player, he or she leaves the game. The multiplayer rules handle what happens when a player leaves the game; see rule 800.4.
 
-104.6. One card (Karn Liberated) restarts the game. All players still in the game when it restarts then immediately begin a new game. See rule 714, “Restarting the Game.”
+104.6. One card (Karn Liberated) restarts the game. All players still in the game when it restarts then immediately begin a new game. See rule 716, “Restarting the Game.”
 
 105. Colors
 
@@ -1013,7 +1015,15 @@ Example: A player casts Lightning Bolt, an instant that says “Lightning Bolt dea
 
 201.2. Two objects have the same name if the English versions of their names are identical.
 
-201.3. If an effect instructs a player to name a card, the player must choose the name of a card that exists in the Oracle card reference (see rule 108.1) and is legal in the format of the game the player is playing. (See rule 100.6.) If the player wants to name a split card, the player must choose the name of one of its halves, but not both. (See rule 708.) If the player wants to name a flip card’s alternative name, the player may do so. (See rule 709.) If the player wants to name the back face of a double-faced card, the player may do so. (See rule 711.) A player may not choose the name of a token unless it’s also the name of a card.
+201.3. If an effect instructs a player to name a card, the player must choose the name of a card that is legal in the format of the game the player is playing. (See rule 100.6.) A player may not choose the name of a token unless it’s also the name of a card.
+
+201.3a If a player wants to name a split card, the player must choose the name of one of its halves, but not both. (See rule 708.)
+
+201.3b If a player wants to name a flip card’s alternative name, the player may do so. (See rule 709.)
+
+201.3c If a player wants to name the back face of a double-faced card, the player may do so. (See rule 711.)
+
+201.3d If a player wants to name the combined back face of a meld pair, the player may do so. (See rule 712.)
 
 201.4. Text that refers to the object it’s on by name means just that particular object and not any other objects with that name, regardless of any name changes caused by game effects.
 
@@ -1056,20 +1066,22 @@ Example: An object with a mana cost of {2}{W} is white, an object with a mana co
 202.3. The converted mana cost of an object is a number equal to the total amount of mana in its mana cost, regardless of color.
 Example: A mana cost of {3}{U}{U} translates to a converted mana cost of 5.
 
-202.3a The converted mana cost of an object with no mana cost is 0, unless that object is the back face of a double-faced permanent.
+202.3a The converted mana cost of an object with no mana cost is 0, unless that object is the back face of a double-faced permanent or is a melded permanent.
 
 202.3b The converted mana cost of a double-faced permanent’s back face is calculated as though it had the mana cost of its front face. This is a change from previous rules. If a permanent is a copy of the back face of a double-faced card (even if the card representing that copy is itself a double-faced card), the converted mana cost of that permanent is 0.
 Example: Huntmaster of the Fells is a double-faced card with mana cost {2}{R}{G}. Its converted mana cost is 4. After it transforms to its other face (Ravager of the Fells), its converted mana cost remains 4.
 Example: A Clone enters the battlefield as a copy of Ravager of the Fells. Its converted mana cost is 0.
 Example: Insectile Aberration is the back face of a double-faced card whose front face has mana cost {U}. It becomes a copy of Ravager of the Fells. Its converted mana cost becomes 0.
 
-202.3c When calculating the converted mana cost of an object with an {X} in its mana cost, X is treated as 0 while the object is not on the stack, and X is treated as the number chosen for it while the object is on the stack.
+202.3c The converted mana cost of a melded permanent is calculated as though it had the combined mana cost of the front faces of each card that represents it. If a permanent is a copy of a melded permanent (even if that copy is represented by two other meld cards), the converted mana cost of the copy is 0.
 
-202.3d When calculating the converted mana cost of an object with a hybrid mana symbol in its mana cost, use the largest component of each hybrid symbol.
+202.3d When calculating the converted mana cost of an object with an {X} in its mana cost, X is treated as 0 while the object is not on the stack, and X is treated as the number chosen for it while the object is on the stack.
+
+202.3e When calculating the converted mana cost of an object with a hybrid mana symbol in its mana cost, use the largest component of each hybrid symbol.
 Example: The converted mana cost of a card with mana cost {1}{W/U}{W/U} is 3.
 Example: The converted mana cost of a card with mana cost {2/B}{2/B}{2/B} is 6.
 
-202.3e Each Phyrexian mana symbol in a card’s mana cost contributes 1 to its converted mana cost.
+202.3f Each Phyrexian mana symbol in a card’s mana cost contributes 1 to its converted mana cost.
 Example: The converted mana cost of a card with mana cost {1}{W/P}{W/P} is 3.
 
 202.4. Any additional cost listed in an object’s rules text or imposed by an effect isn’t part of the mana cost. (See rule 601, “Casting Spells.”) Such costs are paid at the same time as the spell’s other costs.
@@ -1544,7 +1556,7 @@ Example: “Basic Land — Mountain” means the card is a land with the subtype Mount
 
 401.3. Any player may count the number of cards remaining in any player’s library at any time.
 
-401.4. If an effect puts two or more cards on the top or bottom of a library at the same time, the owner of those cards may arrange them in any order. That library’s owner doesn’t reveal the order in which the cards go into his or her library.
+401.4. If an effect puts two or more cards in a specific position in a library at the same time, the owner of those cards may arrange them in any order. That library’s owner doesn’t reveal the order in which the cards go into his or her library.
 
 401.5. Some effects tell a player to play with the top card of his or her library revealed, or say that a player may look at the top card of his or her library. If the top card of the player’s library changes while a spell is being cast, the new top card won’t be revealed and can’t be looked at until the spell becomes cast (see rule 601.2i). The same is true with relation to an ability being activated.
 
@@ -1663,7 +1675,7 @@ Example: “Basic Land — Mountain” means the card is a land with the subtype Mount
 
 500.6. When a phase or step begins, any abilities that trigger “at the beginning of” that phase or step are added to the stack.
 
-500.7. Some effects can give a player extra turns. They do this by adding the turns directly after the current turn. If a player is given multiple extra turns, the extra turns are added one at a time. If multiple players are given extra turns, the extra turns are added one at a time, in APNAP order (see rule 101.4). The most recently created turn will be taken first.
+500.7. Some effects can give a player extra turns. They do this by adding the turns directly after the specified turn. If a player is given multiple extra turns, the extra turns are added one at a time. If multiple players are given extra turns, the extra turns are added one at a time, in APNAP order (see rule 101.4). The most recently created turn will be taken first.
 
 500.8. Some effects can add phases to a turn. They do this by adding the phases directly after the specified phase. If multiple extra phases are created after the same phase, the most recently created phase will occur first.
 
@@ -1777,7 +1789,7 @@ Example: “Basic Land — Mountain” means the card is a land with the subtype Mount
 
 508. Declare Attackers Step
 
-508.1. First, the active player declares attackers. This turn-based action doesn’t use the stack. To declare attackers, the active player follows the steps below, in order. If at any point during the declaration of attackers, the active player is unable to comply with any of the steps listed below, the declaration is illegal; the game returns to the moment before the declaration (see rule 717, “Handling Illegal Actions”).
+508.1. First, the active player declares attackers. This turn-based action doesn’t use the stack. To declare attackers, the active player follows the steps below, in order. If at any point during the declaration of attackers, the active player is unable to comply with any of the steps listed below, the declaration is illegal; the game returns to the moment before the declaration (see rule 719, “Handling Illegal Actions”).
 
 508.1a The active player chooses which creatures that he or she controls, if any, will attack. The chosen creatures must be untapped, and each one must either have haste or have been controlled by the active player continuously since the turn began.
 
@@ -1810,7 +1822,9 @@ Example: A permanent has the ability “Whenever a green creature attacks, destroy
 
 508.4. If a creature is put onto the battlefield attacking, its controller chooses which defending player or which planeswalker a defending player controls it’s attacking as it enters the battlefield (unless the effect that put it onto the battlefield specifies what it’s attacking). Such creatures are “attacking” but, for the purposes of trigger events and effects, they never “attacked.”
 
-508.4a If the effect that put a creature onto the battlefield attacking specifies it’s attacking a certain player, and that player is no longer in the game when the effect resolves, the creature is put onto the battlefield but is never considered an attacking creature. The same is true if the effect specifies a creature is put onto the battlefield attacking a planeswalker and that planeswalker is no longer on the battlefield or is no longer a planeswalker when the effect resolves.
+508.4a If the effect that puts a creature onto the battlefield attacking specifies it’s attacking a certain player, and that player is no longer in the game when the effect resolves, the creature is put onto the battlefield but is never considered an attacking creature. The same is true if the effect specifies a creature is put onto the battlefield attacking a planeswalker and that planeswalker is no longer on the battlefield or is no longer a planeswalker when the effect resolves.
+
+508.4b A creature that’s put onto the battlefield attacking isn’t affected by requirements or restrictions that apply to the declaration of attackers.
 
 508.5. If an ability of an attacking creature refers to a defending player, or a spell or ability refers to both an attacking creature and a defending player, then unless otherwise specified, the defending player it’s referring to is the player that creature was attacking at the time it became an attacking creature that combat, or the controller of the planeswalker that creature was attacking at the time it became an attacking creature that combat.
 
@@ -1820,7 +1834,7 @@ Example: A permanent has the ability “Whenever a green creature attacks, destroy
 
 509. Declare Blockers Step
 
-509.1. First, the defending player declares blockers. This turn-based action doesn’t use the stack. To declare blockers, the defending player follows the steps below, in order. If at any point during the declaration of blockers, the defending player is unable to comply with any of the steps listed below, the declaration is illegal; the game returns to the moment before the declaration (see rule 717, “Handling Illegal Actions”).
+509.1. First, the defending player declares blockers. This turn-based action doesn’t use the stack. To declare blockers, the defending player follows the steps below, in order. If at any point during the declaration of blockers, the defending player is unable to comply with any of the steps listed below, the declaration is illegal; the game returns to the moment before the declaration (see rule 719, “Handling Illegal Actions”).
 
 509.1a The defending player chooses which creatures that he or she controls, if any, will block. The chosen creatures must be untapped. For each of the chosen creatures, the defending player chooses one creature for it to block that’s attacking him, her, or a planeswalker he or she controls.
 
@@ -1874,6 +1888,10 @@ Example: A creature has the ability “Whenever this creature becomes blocked by a
 509.7. If a creature is put onto the battlefield blocking, its controller chooses which attacking creature it’s blocking as it enters the battlefield (unless the effect that put it onto the battlefield specifies what it’s blocking), then the active player announces the new creature’s placement in the blocked creature’s damage assignment order. The relative order among the remaining blocking creatures is unchanged. A creature put onto the battlefield this way is “blocking” but, for the purposes of trigger events and effects, it never “blocked.”
 Example: Giant Spider is blocked by Canyon Minotaur. The defending player casts Flash Foliage, which puts a Saproling token onto the battlefield blocking the Giant Spider. Giant Spider’s controller announces the Giant Spider’s damage assignment order as the Saproling token, then Canyon Minotaur.
 
+509.7a If the effect that puts a creature onto the battlefield blocking specifies it’s blocking a certain creature and that creature is no longer attacking, the creature is put onto the battlefield but is never considered a blocking creature. The same is true if the controller of the creature that’s put onto the battlefield blocking isn’t a defending player for the specified attacking creature.
+
+509.7b A creature that’s put onto the battlefield blocking isn’t affected by requirements or restrictions that apply to the declaration of blockers.
+
 510. Combat Damage Step
 
 510.1. First, the active player announces how each attacking creature assigns its combat damage, then the defending player announces how each blocking creature assigns its combat damage. This turn-based action doesn’t use the stack. A player assigns a creature’s combat damage according to the following rules:
@@ -1890,7 +1908,7 @@ Example: The damage assignment order of an attacking Enormous Baloth (a 7/7 crea
 
 510.1d A blocking creature assigns combat damage to the creatures it’s blocking. If it isn’t currently blocking any creatures (if, for example, they were destroyed or removed from combat), it assigns no combat damage. If it’s blocking exactly one creature, it assigns all its combat damage to that creature. If it’s blocking two or more creatures, it assigns its combat damage to those creatures according to the damage assignment order announced for it. This may allow the blocking creature to divide its combat damage. However, it can’t assign combat damage to a creature that it’s blocking unless, when combat damage assignments are complete, each creature that precedes that blocked creature is assigned lethal damage. When checking for assigned lethal damage, take into account damage already marked on the creature and damage from other creatures that’s being assigned during the same combat damage step, but not any abilities or effects that might change the amount of damage that’s actually dealt. An amount of damage that’s greater than a creature’s lethal damage may be assigned to it.
 
-510.1e Once a player has assigned combat damage from each attacking or blocking creature he or she controls, the total damage assignment (not solely the damage assignment of any individual attacking or blocking creature) is checked to see if it complies with the above rules. If it doesn’t, the combat damage assignment is illegal; the game returns to the moment before that player began to assign combat damage. (See rule 717, “Handling Illegal Actions”).
+510.1e Once a player has assigned combat damage from each attacking or blocking creature he or she controls, the total damage assignment (not solely the damage assignment of any individual attacking or blocking creature) is checked to see if it complies with the above rules. If it doesn’t, the combat damage assignment is illegal; the game returns to the moment before that player began to assign combat damage. (See rule 719, “Handling Illegal Actions”).
 
 510.2. Second, all combat damage that’s been assigned is dealt simultaneously. This turn-based action doesn’t use the stack. No player has the chance to cast spells or activate abilities between the time combat damage is assigned and the time it’s dealt.
 Example: Squadron Hawk (a 1/1 creature with flying) and Goblin Piker (a 2/1 creature) are attacking. Mogg Fanatic (a 1/1 creature with the ability “Sacrifice Mogg Fanatic: Mogg Fanatic deals 1 damage to target creature or player”) blocks the Goblin Piker. The defending player sacrifices Mogg Fanatic during the declare blockers step to deal 1 damage to the Squadron Hawk. The Hawk is destroyed. The Piker deals and is dealt no combat damage this turn. If the defending player instead left Mogg Fanatic on the battlefield, the Fanatic and the Piker would have dealt lethal damage to one another, but the Squadron Hawk couldn’t have been dealt damage.
@@ -1944,7 +1962,7 @@ Example: Squadron Hawk (a 1/1 creature with flying) and Goblin Piker (a 2/1 crea
 
 601.1a Some effects still refer to “playing” a card. “Playing a card” means playing that card as a land or casting that card as a spell, whichever is appropriate.
 
-601.2. To cast a spell is to take it from where it is (usually the hand), put it on the stack, and pay its costs, so that it will eventually resolve and have its effect. Casting a spell includes proposal of the spell (rules 601.2a–d) and determination and payment of costs (rules 601.2f–h). To cast a spell, a player follows the steps listed below, in order. A player must be legally allowed to cast the spell to begin this process, ignoring any effect that would prohibit that spell from being cast based on information determined during that spell’s proposal. (Such effects are considered during the check detailed in rule 601.2e.) If, at any point during the casting of a spell, a player is unable to comply with any of the steps listed below, the casting of the spell is illegal; the game returns to the moment before the casting of that spell was proposed (see rule 717, “Handling Illegal Actions”).
+601.2. To cast a spell is to take it from where it is (usually the hand), put it on the stack, and pay its costs, so that it will eventually resolve and have its effect. Casting a spell includes proposal of the spell (rules 601.2a–d) and determination and payment of costs (rules 601.2f–h). To cast a spell, a player follows the steps listed below, in order. A player must be legally allowed to cast the spell to begin this process (see rule 601.3), ignoring any effect that would prohibit that spell from being cast based on information determined during that spell’s proposal. (Such effects are considered during the check detailed in rule 601.2e.) If, at any point during the casting of a spell, a player is unable to comply with any of the steps listed below, the casting of the spell is illegal; the game returns to the moment before the casting of that spell was proposed (see rule 719, “Handling Illegal Actions”).
 
 601.2a To propose the casting of a spell, a player first moves that card (or that copy of a card) from where it is to the stack. It becomes the topmost object on the stack. It has all the characteristics of the card (or the copy of a card) associated with it, and that player becomes its controller. The spell remains on the stack until it’s countered, it resolves, or an effect moves it elsewhere.
 
@@ -1955,7 +1973,7 @@ Example: If a spell says “Tap two target creatures,” then the same creature can’
 
 601.2d If the spell requires the player to divide or distribute an effect (such as damage or counters) among one or more targets, the player announces the division. Each of these targets must receive at least one of whatever is being divided.
 
-601.2e The game checks to see if the proposed spell can legally be cast. If the proposed spell is illegal, the game returns to the moment before the casting of that spell was proposed (see rule 717, “Handling Illegal Actions”).
+601.2e The game checks to see if the proposed spell can legally be cast. If the proposed spell is illegal, the game returns to the moment before the casting of that spell was proposed (see rule 719, “Handling Illegal Actions”).
 
 601.2f The player determines the total cost of the spell. Usually this is just the mana cost. Some spells have additional or alternative costs. Some effects may increase or reduce the cost to pay, or may provide other alternative costs. Costs may include paying mana, tapping permanents, sacrificing permanents, discarding cards, and so on. The total cost is the mana cost or alternative cost (as determined in rule 601.2b), plus all additional costs and cost increases, and minus all cost reductions. If multiple cost reductions apply, the player may apply them in any order. If the mana component of the total cost is reduced to nothing by cost reduction effects, it is considered to be {0}. It can’t be reduced to less than {0}. Once the total cost is determined, any effects that directly affect the total cost are applied. Then the resulting total cost becomes “locked in.” If effects would change the total cost after this time, they have no effect.
 
@@ -1966,13 +1984,20 @@ Example: You cast Altar’s Reap, which costs {1}{B} and has an additional cost of
 
 601.2i Once the steps described in 601.2a–h are completed, the spell becomes cast. Any abilities that trigger when a spell is cast or put onto the stack trigger at this time. If the spell’s controller had priority before casting it, he or she gets priority.
 
-601.3. Some spells specify that one of their controller’s opponents does something the controller would normally do while it’s being cast, such as choose a mode or choose targets. In these cases, the opponent does so when the spell’s controller normally would do so.
+601.3. A player can’t begin to cast a spell unless a rule or effect allows that player to cast it. If that player is no longer allowed to cast that spell after completing its proposal, the casting of the spell is illegal and the game returns to the moment before the casting of that spell was proposed (see rule 719, “Handling Illegal Actions”).
 
-601.3a If there is more than one opponent who could make such a choice, the spell’s controller decides which of those opponents will make the choice.
+601.3a If an effect allows a player to cast a spell as though it had flash only if an alternative or additional cost is paid, that player may begin to cast that spell as though it had flash.
 
-601.3b If the spell instructs its controller and another player to do something at the same time as the spell is being cast, the spell’s controller goes first, then the other player. This is an exception to rule 101.4.
+601.3b If an effect allows a player to cast a spell with certain characteristics as though it had flash, that player may consider any choices to be made during that spell’s proposal that may cause it to have those characteristics. If any such choices could cause it to match these characteristics, that player may begin to cast that spell.
+Example: An effect says that you may cast Aura spells as though they had flash, and you have a creature card with bestow in your hand. Because choosing the bestow ability’s alternative cost causes that spell to become an Aura spell, you may legally begin to cast that spell as though it had flash.
 
-601.4. Casting a spell that alters costs won’t affect spells and abilities that are already on the stack.
+601.4. Some spells specify that one of their controller’s opponents does something the controller would normally do while it’s being cast, such as choose a mode or choose targets. In these cases, the opponent does so when the spell’s controller normally would do so.
+
+601.4a If there is more than one opponent who could make such a choice, the spell’s controller decides which of those opponents will make the choice.
+
+601.4b If the spell instructs its controller and another player to do something at the same time as the spell is being cast, the spell’s controller goes first, then the other player. This is an exception to rule 101.4.
+
+601.5. Casting a spell that alters costs won’t affect spells and abilities that are already on the stack.
 
 602. Activating Activated Abilities
 
@@ -1987,7 +2012,7 @@ Example: The activation cost of an ability that reads “{2}, {T}: You gain 1 life
 
 602.1d Previously, the action of using an activated ability was referred to on cards as “playing” that ability. Cards that were printed with that text have received errata in the Oracle card reference so they now refer to “activating” that ability.
 
-602.2. To activate an ability is to put it onto the stack and pay its costs, so that it will eventually resolve and have its effect. Only an object’s controller (or its owner, if it doesn’t have a controller) can activate its activated ability unless the object specifically says otherwise. Activating an ability follows the steps listed below, in order. If, at any point during the activation of an ability, a player is unable to comply with any of those steps, the activation is illegal; the game returns to the moment before that ability started to be activated (see rule 717, “Handling Illegal Actions”). Announcements and payments can’t be altered after they’ve been made.
+602.2. To activate an ability is to put it onto the stack and pay its costs, so that it will eventually resolve and have its effect. Only an object’s controller (or its owner, if it doesn’t have a controller) can activate its activated ability unless the object specifically says otherwise. Activating an ability follows the steps listed below, in order. If, at any point during the activation of an ability, a player is unable to comply with any of those steps, the activation is illegal; the game returns to the moment before that ability started to be activated (see rule 719, “Handling Illegal Actions”). Announcements and payments can’t be altered after they’ve been made.
 
 602.2a The player announces that he or she is activating the ability. If an activated ability is being activated from a hidden zone, the card that has that ability is revealed. That ability is created on the stack as an object that’s not a card. It becomes the topmost object on the stack. It has the text of the ability that created it, and no other characteristics. Its controller is the player who activated the ability. The ability remains on the stack until it’s countered, it resolves, or an effect moves it elsewhere.
 
@@ -2125,6 +2150,8 @@ Example: A permanent has an ability that reads “{T}: Add {G} to your mana pool f
 
 605.3b An activated mana ability doesn’t go on the stack, so it can’t be targeted, countered, or otherwise responded to. Rather, it resolves immediately after it is activated. (See rule 405.6c.)
 
+605.3c Once a player begins to activate a mana ability, that ability can’t be activated again until it has resolved.
+
 605.4. Triggered mana abilities follow all the rules for other triggered abilities (see rule 603, “Handling Triggered Abilities”), with the following exception:
 
 605.4a A triggered mana ability doesn’t go on the stack, so it can’t be targeted, countered, or otherwise responded to. Rather, it resolves immediately after the mana ability that triggered it, without waiting for priority.
@@ -2209,7 +2236,7 @@ Example: A spell’s instruction reads, “You may sacrifice a creature. If you don’
 
 608.2f If an effect gives a player the option to pay mana, he or she may activate mana abilities before taking that action. If an effect specifically instructs or allows a player to cast a spell during resolution, he or she does so by following the steps in rules 601.2a–i, except no player receives priority after it’s cast. That spell becomes the topmost object on the stack, and the currently resolving spell or ability continues to resolve, which may include casting other spells this way. No other spells can normally be cast and no other abilities can normally be activated during resolution.
 
-608.2g If an effect requires information from the game (such as the number of creatures on the battlefield), the answer is determined only once, when the effect is applied. If the effect requires information from a specific object, including the source of the ability itself or a target that’s become illegal, the effect uses the current information of that object if it’s in the public zone it was expected to be in; if it’s no longer in that zone, or if the effect has moved it from a public zone to a hidden zone, the effect uses the object’s last known information. See rule 112.7a. If an ability states that an object does something, it’s the object as it exists—or as it most recently existed—that does it, not the ability.
+608.2g If an effect requires information from the game (such as the number of creatures on the battlefield), the answer is determined only once, when the effect is applied. If the effect requires information from a specific object, including the source of the ability itself, the effect uses the current information of that object if it’s in the public zone it was expected to be in; if it’s no longer in that zone, or if the effect has moved it from a public zone to a hidden zone, the effect uses the object’s last known information. See rule 112.7a. If an ability states that an object does something, it’s the object as it exists—or as it most recently existed—that does it, not the ability.
 
 608.2h If an effect refers to certain characteristics, it checks only for the value of the specified characteristics, regardless of any related ones an object may also have.
 Example: An effect that reads “Destroy all black creatures” destroys a white-and-black creature, but one that reads “Destroy all nonblack creatures” doesn’t.
@@ -2451,8 +2478,8 @@ Example: Orb of Dreams is an artifact that says “Permanents enter the battlefiel
 
 614.13. An effect that modifies how a permanent enters the battlefield may cause other objects to change zones.
 
-614.13a When applying an effect that modifies how a permanent enters the battlefield, you can’t make a choice that would cause that permanent to go to a different zone and not enter the battlefield.
-Example: Sutured Ghoul says, in part, “As Sutured Ghoul enters the battlefield, exile any number of creature cards from your graveyard.” If Sutured Ghoul enters the battlefield from your graveyard, you can’t choose to exile Sutured Ghoul itself.
+614.13a While applying an effect that modifies how a permanent enters the battlefield, you may have to choose a number of objects that will also change zones. You can’t choose the object that will become that permanent or any other object entering the battlefield at the same time as that object.
+Example: Sutured Ghoul says, in part, “As Sutured Ghoul enters the battlefield, exile any number of creature cards from your graveyard.” If Sutured Ghoul and Runeclaw Bear enter the battlefield from your graveyard at the same time, you can’t choose to exile either of them when applying Sutured Ghoul’s replacement effect.
 
 614.13b The same object can’t be chosen to change zones more than once when applying replacement effects that modify how a single permanent enters the battlefield.
 Example: Jund (a plane card) says, “Whenever a player casts a black, red, or green creature spell, it gains devour 5.” A player controls Runeclaw Bear and casts Thunder-Thrash Elder, a red creature spell with devour 3. As Thunder-Thrash Elder enters the battlefield, its controller can choose to sacrifice Runeclaw Bear when applying the devour 3 effect or when applying the devour 5 effect, but not both. Thunder-Thrash Elder will enter the battlefield with zero, three, or five +1/+1 counters, depending on this choice.
@@ -2527,7 +2554,7 @@ Example: If an attacking creature is blocked by two creatures, this is one event
 
 700.2c If a spell or ability targets one or more targets only if a particular mode is chosen for it, its controller will need to choose those targets only if he or she chose that mode. Otherwise, the spell or ability is treated as though it did not have those targets. (See rule 601.2c.)
 
-700.2d If an effect allows a particular mode to be chosen more than once and that mode requires a target, the same player or object may be chosen as the target for each of those modes, or different targets may be chosen.
+700.2d If a player is allowed to choose more than one mode for a modal spell or ability, that player normally can’t choose the same mode more than once. However, a few modal spells include the instruction “You may choose the same mode more than once.” If a particular mode is chosen multiple times, the spell is treated as if that mode appeared that many times in sequence. If that mode requires a target, the same player or object may be chosen as the target for each of those modes, or different targets may be chosen.
 
 700.2e Some spells and abilities specify that a player other than their controller chooses a mode for it. In that case, the other player does so when the spell or ability’s controller normally would do so. If there is more than one other player who could make such a choice, the spell or ability’s controller decides which of those players will make the choice.
 
@@ -2602,7 +2629,7 @@ Example: Fact or Fiction reads, “Reveal the top five cards of your library. An o
 
 701.7b By default, effects that cause a player to discard a card allow the affected player to choose which card to discard. Some effects, however, require a random discard or allow another player to choose which card is discarded.
 
-701.7c If a card is discarded, but an effect causes it to be put into a hidden zone instead of into its owner’s graveyard without being revealed, all values of that card’s characteristics are considered to be undefined. If a card is discarded this way to pay a cost that specifies a characteristic about the discarded card, that cost payment is illegal; the game returns to the moment before the cost was paid (see rule 717, “Handling Illegal Actions”).
+701.7c If a card is discarded, but an effect causes it to be put into a hidden zone instead of into its owner’s graveyard without being revealed, all values of that card’s characteristics are considered to be undefined. If a card is discarded this way to pay a cost that specifies a characteristic about the discarded card, that cost payment is illegal; the game returns to the moment before the cost was paid (see rule 719, “Handling Illegal Actions”).
 
 701.8. Exchange
 
@@ -2686,7 +2713,7 @@ Example: Aven Mindcensor says, in part, “If an opponent would search a library, 
 
 701.16a To shuffle a library or a face-down pile of cards, randomize the cards within it so that no player knows their order.
 
-701.16b Some effects cause a player to search a library for a card or cards, shuffle that library, then put the found card or cards in a certain position in that library. Even though the found card or cards never leave that library, they aren’t included in the shuffle. Rather, all the cards in that library except those are shuffled. Abilities that trigger when a library is shuffled will still trigger.
+701.16b Some effects cause a player to search a library for a card or cards, shuffle that library, then put the found card or cards in a certain position in that library. Even though the found card or cards never leave that library, they aren’t included in the shuffle. Rather, all the cards in that library except those are shuffled. Abilities that trigger when a library is shuffled will still trigger. See also rule 401, “Library.”
 
 701.16c If an effect would cause a player to shuffle one or more specific objects into a library, that library is shuffled even if none of those objects are in the zone they’re expected to be in or an effect causes all of those objects to be moved to another zone or remain in their current zone.
 Example: Guile says, in part, “When Guile is put into a graveyard from anywhere, shuffle it into its owner’s library.” It’s put into a graveyard and its ability triggers, then a player exiles it from that graveyard in response. When the ability resolves, the library is shuffled.
@@ -2739,7 +2766,7 @@ Example: Loaming Shaman says “When Loaming Shaman enters the battlefield, target
 
 701.22b To set a scheme in motion, move it off the top of your scheme deck and turn it face up.
 
-701.22c Schemes may only be set in motion one at a time. If a player is instructed to set multiple schemes in motion, that player sets a scheme in motion that many times. 
+701.22c Schemes may only be set in motion one at a time. If a player is instructed to set multiple schemes in motion, that player sets a scheme in motion that many times.
 
 701.23. Abandon
 
@@ -2823,6 +2850,15 @@ Example: Loaming Shaman says “When Loaming Shaman enters the battlefield, target
 
 701.33a “Investigate” means “Put a colorless Clue artifact token onto the battlefield. It has ‘{2}, Sacrifice this artifact: Draw a card.’”
 
+701.34. Meld
+
+701.34a Meld is a keyword action that appears in an ability on one card in a meld pair. (See rule 712, “Meld Cards.”) To meld the two cards in a meld pair, put them onto the battlefield with their back faces up and combined. The resulting permanent is a single object represented by two cards.
+
+701.34b Only two cards belonging to the same meld pair can be melded. Tokens, cards that aren’t meld cards, or meld cards that don’t form a meld pair can’t be melded.
+
+701.34c If an effect instructs a player to meld cards that can’t be melded, they stay in their current zone.
+Example: A player owns and controls Midnight Scavengers and a token that’s a copy of Graf Rats. At the beginning of combat, both are exiled but can’t be melded. Midnight Scavengers remains exiled and the exiled token ceases to exist.
+
 702. Keyword Abilities
 
 702.1. Most abilities describe exactly what they do in the card’s rules text. Some, though, are very common or would require too much space to define on the card. In these cases, the object lists only the name of the ability as a “keyword”; sometimes reminder text summarizes the game rule.
@@ -2865,7 +2901,7 @@ Example: Loaming Shaman says “When Loaming Shaman enters the battlefield, target
 
 702.5a Enchant is a static ability, written “Enchant [object or player].” The enchant ability restricts what an Aura spell can target and what an Aura can enchant.
 
-702.5b For more information on Auras, see rule 303, “Enchantments.”
+702.5b For more information about Auras, see rule 303, “Enchantments.”
 
 702.5c If an Aura has multiple instances of enchant, all of them apply. The Aura’s target must follow the restrictions from all the instances of enchant. The Aura can enchant only objects or players that match all of its enchant abilities.
 
@@ -3197,7 +3233,7 @@ Example: You control a phased-out creature. You cast a spell that says “Destroy 
 
 702.36e Any time you have priority, you may turn a face-down permanent you control with a morph ability face up. This is a special action; it doesn’t use the stack (see rule 115). To do this, show all players what the permanent’s morph cost would be if it were face up, pay that cost, then turn the permanent face up. (If the permanent wouldn’t have a morph cost if it were face up, it can’t be turned face up this way.) The morph effect on it ends, and it regains its normal characteristics. Any abilities relating to the permanent entering the battlefield don’t trigger when it’s turned face up and don’t have any effect, because the permanent has already entered the battlefield.
 
-702.36f See rule 707, “Face-Down Spells and Permanents,” for more information on how to cast cards with a morph ability.
+702.36f See rule 707, “Face-Down Spells and Permanents,” for more information about how to cast cards with a morph ability.
 
 702.37. Amplify
 
@@ -3276,11 +3312,11 @@ Example: Glacial Ray is a red card with splice onto Arcane that reads, “Glacial 
 
 702.47. Offering
 
-702.47a Offering is a static ability of a card that functions in any zone from which the card can be cast. “[Subtype] offering” means “You may cast this card any time you could cast an instant by sacrificing a [subtype] permanent. If you do, the total cost to cast this card is reduced by the sacrificed permanent’s mana cost.”
+702.47a Offering is a static ability that functions while the spell with offering is on the stack. “[Subtype] offering” means “As an additional cost to cast this spell, you may sacrifice a [subtype] permanent. If you chose to pay the additional cost, this spell’s total cost is reduced by the sacrificed permanent’s mana cost, and you may cast this spell any time you could cast an instant.”
 
-702.47b The permanent is sacrificed at the same time the spell is announced (see rule 601.2a). The total cost of the spell is reduced by the sacrificed permanent’s mana cost (see rule 601.2f).
+702.47b You choose which permanent to sacrifice as you make choices for the spell (see rule 601.2b), and you sacrifice that permanent as you pay the total cost (see rule 601.2h).
 
-702.47c Generic mana in the sacrificed permanent’s mana cost reduces generic mana in the total cost to cast the card with offering. Colored mana in the sacrificed permanent’s mana cost reduces mana of the same color in the total cost to cast the card with offering. Colored mana in the sacrificed permanent’s mana cost that doesn’t match colored mana in the colored mana cost of the card with offering, or is in excess of the card’s colored mana cost, reduces that much generic mana in the total cost.
+702.47c Generic mana in the sacrificed permanent’s mana cost reduces generic mana in the spell’s total cost. Colored and colorless mana in the sacrificed permanent’s mana cost reduces mana of the same type in spell’s total cost, and any excess reduces that much generic mana in spell’s total cost.
 
 702.48. Ninjutsu
 
@@ -3738,6 +3774,16 @@ Example: Æther Storm is an enchantment with the ability “Creature spells can’t b
 
 702.117c Multiple instances of skulk on the same creature are redundant.
 
+702.118. Emerge
+
+702.118a Emerge represents two static abilities that function while the spell with emerge is on the stack. “Emerge [cost]” means “You may cast this spell by paying [cost] and sacrificing a creature rather than paying its mana cost” and “If you chose to pay this spell’s emerge cost, its total cost is reduced by an amount of generic mana equal to the sacrificed creature’s converted mana cost.” Paying a card’s emerge cost follows the rules for paying alternative costs in rules 601.2b and 601.2f–h.
+
+702.118b You choose which creature to sacrifice as you choose to pay a spell’s emerge cost (see rule 601.2b), and you sacrifice that creature as you pay the total cost (see rule 601.2h).
+
+702.119. Escalate
+
+702.119a Escalate is a static ability of modal spells (see rule 700.2) that functions while the spell with escalate is on the stack. “Escalate [cost]” means “For each mode you choose beyond the first as you cast this spell, you pay an additional [cost].” Paying a spell’s escalate cost follows the rules for paying additional costs in rules 601.2f–h.
+
 703. Turn-Based Actions
 
 703.1. Turn-based actions are game actions that happen automatically when certain steps or phases begin, or when each step and phase ends. Turn-based actions don’t use the stack.
@@ -3883,7 +3929,7 @@ Example: A Clone enters the battlefield as a copy of Adaptive Automaton. Adaptiv
 Example: Voice of All enters the battlefield and Unstable Shapeshifter copies it. Voice of All reads, in part, “As Voice of All enters the battlefield, choose a color.” and “Voice of All has protection from the chosen color.” Unstable Shapeshifter never had a chance for a color to be chosen for it, because it didn’t enter the battlefield as a Voice of All card, so the protection ability doesn’t protect it from anything at all.
 Example: A Vesuvan Doppelganger enters the battlefield as a copy of Voice of All, and the Doppelganger’s controller chooses blue. Later, the Doppelganger copies Quirion Elves, which has the ability, “{T}: Add one mana of the chosen color to your mana pool.” Even though a color was chosen for the Doppelganger, it wasn’t chosen for the ability linked to the mana ability copied from the Elves. If that mana ability of the Doppelganger is activated, it will not produce mana.
 
-706.8. When copying a double-faced permanent, only the copiable values of the face that’s currently up are copied. (See rule 711, “Double-Faced Cards.”)
+706.8. When copying a double-faced permanent, a face-up meld card, or a melded permanent, only the copiable values of the face that’s currently up are copied. (See rule 711, “Double-Faced Cards,” and rule 712, “Meld Cards.”)
 
 706.9. Copy effects may include modifications or exceptions to the copying process.
 
@@ -3907,6 +3953,8 @@ Example: Fling is an instant that reads, “As an additional cost to cast Fling, s
 706.10b A copy of an ability has the same source as the original ability. If the ability refers to its source by name, the copy refers to that same object and not to any other object with the same name. The copy is considered to be the same ability by effects that count how many times that ability has resolved during the turn.
 
 706.10c Some effects copy a spell or ability and state that its controller may choose new targets for the copy. The player may leave any number of the targets unchanged, even if those targets would be illegal. If the player chooses to change some or all of the targets, the new targets must be legal. Once the player has decided what the copy’s targets will be, the copy is put onto the stack with those targets.
+
+706.10d Some effects copy a spell or ability for each player or object it “could target.” The copies are put onto the stack with those targets in the order of their controller’s choice. If the spell or ability has more than one target, each of its targets must be the same player or object. If that player or object isn’t a legal target for each instance of the word “target,” a copy isn’t created for that player or object.
 
 706.11. If an effect refers to a permanent by name, the effect still tracks that permanent even if it changes names or becomes a copy of something else.
 Example: An Unstable Shapeshifter copies a Crazed Armodon. Crazed Armodon reads, “{G}: Crazed Armodon gets +3/+0 and gains trample until end of turn. Destroy Crazed Armodon at the beginning of the next end step. Activate this ability only once each turn.” If this ability of the Shapeshifter is activated, the Shapeshifter will be destroyed at the beginning of the next end step, even if it’s no longer a copy of Crazed Armodon at that time.
@@ -4013,23 +4061,17 @@ Example: Akki Lavarunner is a nonlegendary creature that flips into a legendary 
 
 711.1. A double-faced card has a Magic card face on each side rather than a Magic card face on one side and a Magic card back on the other. Each face may have abilities that allow the card to “transform,” or turn over to its other face. Tokens and cards with a Magic card back can’t transform. (See rule 701.25, “Transform.”)
 
-711.1a A double-faced card’s front face is marked by a front-face symbol in its upper left corner. On cards in the Innistrad block and Shadows over Innistrad set, the front-face symbol is a sun. On Magic Origins double-faced cards, the front-face symbol is a modified Planeswalker icon.
+711.1a A double-faced card’s front face is marked by a front-face symbol in its upper left corner. On Magic Origins double-faced cards, the front-face symbol is a modified Planeswalker icon. On cards in the Innistrad block and Shadows over Innistrad set, as well as on Ulrich of the Krallenhorde in the Eldritch Moon set, the front-face symbol is a sun. On other Eldritch Moon double-faced cards, the front-face symbol is a full moon.
 
-711.1b A double-faced card’s back face is marked by a back-face symbol in its upper left corner. On cards in the Innistrad block and Shadows over Innistrad set, the back-face symbol is a crescent moon. On Magic Origins double-faced cards, the back-face symbol is a full Planeswalker icon.
+711.1b A double-faced card’s back face is marked by a back-face symbol in its upper left corner. On Magic Origins double-faced cards, the back-face symbol is a full Planeswalker icon. On cards in the Innistrad block and Shadows over Innistrad set, as well as on Ulrich, Uncontested Alpha in the Eldritch Moon set, the back-face symbol is a crescent moon. On other Eldritch Moon double-faced cards, the back-face symbol is a stylized image of Emrakul.
 
 711.1c If the back face of a double-faced card is a creature, the front face of that card will have the back face’s power and toughness printed in gray above the power and toughness box. This is reminder text and has no effect on game play.
 
+711.1d Meld cards have a Magic card face on one side and half of an oversized Magic card face on the other. These aren’t double-faced cards and are subject to their own set of rules. See rule 712, “Meld Cards.”
+
 711.2. Players who are allowed to look at a double-faced card may look at both faces.
 
-711.3. Players must ensure that double-faced cards in hidden zones are indistinguishable from other cards in the same zone. To do this, the owner of a double-faced card may use completely opaque card sleeves or substitute a checklist card. Sanctioned tournaments have additional rules for playing with double-faced cards. See rule 100.6.
-
-711.3a A checklist card has a normal Magic card back. The face of a checklist card is divided into sections. Each section lists the name and mana cost of each double-faced card it could represent and includes a fill-in circle. Before a checklist card can be used, exactly one of the fill-in circles must be marked to denote which double-faced card the checklist card represents.
-
-711.3b If a checklist card is used in a deck, the double-faced card it represents is set aside prior to the beginning of the game (see rule 103.1a) and must remain available throughout the game. A checklist card can’t be included in a deck unless it is representing a double-faced card.
-
-711.3c For all game purposes, the checklist card is considered to be the double-faced card it’s representing.
-
-711.3d If the checklist card is face up in a public zone, it should be set aside and the double-faced card used instead.
+711.3. Players must ensure that double-faced cards in hidden zones are indistinguishable from other cards in the same zone. To do this, the owner of a double-faced card may use completely opaque card sleeves or substitute a checklist card (see rule 713). Sanctioned tournaments have additional rules for playing with double-faced cards. See rule 100.6.
 
 711.4. Each face of a double-faced card has its own set of characteristics.
 
@@ -4055,155 +4097,216 @@ Example: A player casts Cytoshape, causing a Kruin Outlaw (the front face of a d
 
 711.10. Double-faced permanents can’t be turned face down. If a spell or ability tries to turn a double-faced permanent face down, nothing happens.
 
-711.11. A double-faced card that is exiled face down remains hidden, using either a face-down checklist card or opaque sleeves. See rule 711.3.
+711.11. A double-faced card that is exiled face down remains hidden, using either a face-down checklist card or opaque sleeves. See rule 713, “Checklist Cards.”
 
 711.12. When a double-faced permanent transforms, it doesn’t become a new object. Any effects that applied to that permanent will continue to apply to it after it transforms.
 Example: An effect gives Village Ironsmith (the front face of a double-faced card) +2/+2 until end of turn and then Village Ironsmith transforms into Ironfang. Ironfang will continue to get +2/+2 until end of turn.
 
 711.13. If an effect instructs a player to name a card, the player may name either face of a double-faced card but not both.
 
-712. Controlling Another Player
+712. Meld Cards
 
-712.1. Some cards allow a player to control another player during that player’s next turn. This effect applies to the next turn that the affected player actually takes. The affected player is controlled during the entire turn; the effect doesn’t end until the beginning of the next turn.
+712.1. A meld card has a Magic card face on one side and half of an oversized Magic card face on the other. It doesn’t have a Magic card back.
 
-712.1a Multiple player-controlling effects that affect the same player overwrite each other. The last one to be created is the one that works.
+712.1a There are three specific meld pairs. Each meld pair consists of two specific cards whose back faces combine to form one oversized Magic card face: Midnight Scavengers and Graf Rats meld to form Chittering Host; Hanweir Garrison and Hanweir Battlements meld to form Hanweir, the Writhing Township; and Bruna, the Fading Light and Gisela, the Broken Blade meld to form Brisela, Voice of Nightmares.
 
-712.1b If a turn is skipped, any pending player-controlling effects wait until the player who would be affected actually takes a turn.
+712.1b A meld card isn’t a double-faced card. It can’t transform or enter the battlefield transformed. (See rule 711, “Double-Faced Cards.”)
 
-712.2. One card (Word of Command) allows a player to control another player for a limited duration.
+712.2. One card in each meld pair has an ability that exiles both that object and its counterpart and melds them. To meld the two cards in a meld pair, put them onto the battlefield with their back faces up and combined (see rule 701.34, “Meld”). The resulting permanent is a single object represented by two cards.
 
-712.3. Only control of the player changes. All objects are controlled by their normal controllers. A player who’s being controlled during his or her turn is still the active player.
+712.3. The front face of each meld card and the combined face formed by a meld pair each has its own set of characteristics.
 
-712.4. If information about an object would be visible to the player being controlled, it’s visible to both that player and the controller of the player.
+712.3a While a meld card is outside the game, in a zone other than the battlefield, or on the battlefield with its front face up, it has only the characteristics of its front face.
+
+712.3b While the two cards of a meld pair are on the battlefield as a melded permanent, the object represented by those cards has only the characteristics of the combined back face, and its converted mana cost is the sum of the converted mana costs of its front faces. If a permanent is copying a melded permanent, the converted mana cost of the copy is 0. See rule 202.3c.
+
+712.3c Anything that needs information about a meld card or a melded permanent sees only the information given by the face that is currently up.
+Example: A Clone enters the battlefield as a copy of Chittering Host (the combined back face of a meld pair). It has the characteristics of Chittering Host, even though the object it becomes is represented by only a single card, and its convered mana cost is 0.
+
+712.4. If a melded permanent leaves the battlefield, one permanent leaves the battlefield and two cards are put into the appropriate zone.
+Example: Chittering Host, a melded permanent, dies. An ability that triggers “whenever a creature dies” triggers once. An ability that triggers “whenever a card is put into a graveyard from anywhere” triggers twice.
+
+712.4a If a melded permanent is put into its owner’s graveyard or library, that player may arrange the two cards in any order. If it’s put into its owner’s library, that player doesn’t reveal the order.
+
+712.4b If a player exiles a melded permanent, that player determines the relative timestamp order of the two cards at that time. This is an exception to the procedure described in rule 613.6j.
+Example: Duplicant is a card with the abilities “When Duplicant enters the battlefield, you may exile target nontoken creature” and “As long as a card exiled with Duplicant is a creature card, Duplicant has the power, toughness, and creature types of the last creature card exiled with Duplicant. It’s still a Shapeshifter.” As Duplicant’s first ability exiles Chittering Host, a melded permanent, Duplicant’s controller chooses whether the last creature card exiled is Midnight Scavengers or Graf Rats.
+
+712.4c If an effect can find the new object that a melded permanent becomes as it leaves the battlefield, it finds both cards. (See rule 400.7.) If that effect causes actions to be taken upon those cards, the same actions are taken upon each of them.
+Example: Otherworldly Journey is an instant that reads “Exile target creature. At the beginning of the next end step, return that card to the battlefield under its owner’s control with a +1/+1 counter on it.” A player casts Otherworldly Journey targeting Chittering Host, a melded permanent. Chittering Host is exiled. At the beginning of the next end step, Midnight Scavengers and Graf Rats are both returned to the battlefield, each with a +1/+1 counter on it.
+Example: False Demise is an Aura with the ability “When enchanted creature dies, return that card to the battlefield under your control.” A Chittering Host enchanted by False Demise dies. The triggered ability returns both Midnight Scavengers and Graf Rats to the battlefield.
+Example: Mimic Vat is an artifact that reads, in part, “Whenever a nontoken creature dies, you may exile that card.” A Chittering Host dies. As Mimic Vat’s triggered ability resolves, its controller makes a single choice and both cards that represented Chittering Host are either exiled or not.
+
+712.4d If multiple replacement effects could be applied to the event of a melded permanent leaving the battlefield or being put into the new zone, applying one of those replacement effects to one of the two cards affects both cards. If the melded permanent is a commander, it may be exempt from this rule; see rule 903.9a.
+Example: Leyline of the Void is an enchantment that reads, in part, “If a card would be put into an opponent’s graveyard from anywhere, exile it instead.” Wheel of Sun and Moon is an Aura with enchant player and the ability “If a card would be put into enchanted player’s graveyard from anywhere, instead that card is revealed and put on the bottom of its owner’s library.” If the controller of Chittering Host is affected by both cards’ effects, that player chooses one effect to apply to the event and Midnight Scavengers and Graf Rats are both moved to the appropriate zone.
+
+712.5. Players who are allowed to look at a meld card may look at its half of the combined back face. Players may access Oracle text for the other member of the meld pair and the combined face at any time (see rule 108.1).
+
+712.6. Meld cards in a player’s deck may be represented by checklist cards. See rule 713, “Checklist Cards.”
+
+712.7. If a meld card is cast as a spell, it’s put on the stack with its front face up. See rule 601, “Casting Spells.”
+
+712.8. A meld card enters the battlefield with its front face up unless it’s being melded with its counterpart.
+
+712.9. If an effect allows a player to cast a meld card as a face-down spell, or if a meld card enters the battlefield face down, it will have the characteristics given to it by the rule or effect that caused it to be face down. That card remains hidden, using either a face-down checklist card or opaque sleeves. See rule 707, “Face-Down Spells and Permanents.”
+
+712.10. Meld cards on the battlefield and melded permanents can’t be turned face down. If a spell or ability tries to turn such a permanent face down, nothing happens.
+
+712.11. If an effect instructs a player to name a card, the player may name the front face of a meld card or the combined back face of a meld pair.
+
+713. Checklist Cards
+
+713.1. A checklist card is a game supplement that can be used to represent a double-faced card or meld card.
+
+713.2. A checklist card has a normal Magic card back. The face of a checklist card is divided into sections. Each section lists the name and mana cost of each double-faced card or meld card it could represent and includes a fill-in circle. Before a checklist card can be used, exactly one of the fill-in circles must be marked to denote which card the checklist card represents.
+
+713.3. If a checklist card is used in a deck, the card it represents is set aside prior to the beginning of the game (see rule 103.1a) and must remain available throughout the game. A checklist card can’t be included in a deck unless it is representing a double-faced card or a meld card.
+
+713.4. For all game purposes, the checklist card is considered to be the card it’s representing.
+
+713.5. If the checklist card is face up in a public zone, it should be set aside and the double-faced card or meld card that it represents should be used instead.
+
+714. Controlling Another Player
+
+714.1. Some cards allow a player to control another player during that player’s next turn. This effect applies to the next turn that the affected player actually takes. The affected player is controlled during the entire turn; the effect doesn’t end until the beginning of the next turn.
+
+714.1a Multiple player-controlling effects that affect the same player overwrite each other. The last one to be created is the one that works.
+
+714.1b If a turn is skipped, any pending player-controlling effects wait until the player who would be affected actually takes a turn.
+
+714.2. One card (Word of Command) allows a player to control another player for a limited duration.
+
+714.3. Only control of the player changes. All objects are controlled by their normal controllers. A player who’s being controlled during his or her turn is still the active player.
+
+714.4. If information about an object in the game would be visible to the player being controlled, it’s visible to both that player and the controller of the player. If information about cards outside the game would be visible to the player being controlled, it’s visible only to that player, not the controller of the player.
 Example: The controller of a player can see that player’s hand and the face of any face-down creatures he or she controls.
 
-712.5. While controlling another player, a player makes all choices and decisions the controlled player is allowed to make or is told to make by the rules or by any objects. This includes choices and decisions about what to play, and choices and decisions called for by spells and abilities.
+714.5. While controlling another player, a player makes all choices and decisions the controlled player is allowed to make or is told to make by the rules or by any objects. This includes choices and decisions about what to play, and choices and decisions called for by spells and abilities.
 Example: The controller of another player decides which spells that player casts and what those spells target, and makes any required decisions when those spells resolve.
 Example: The controller of another player during his or her turn decides which of that player’s creatures attack, which player or planeswalker each one attacks, what the damage assignment order of the creatures that block them is (if any of the attacking creatures are blocked by multiple creatures), and how those attacking creatures assign their combat damage.
 
-712.5a The controller of another player can use only that player’s resources (cards, mana, and so on) to pay costs for that player.
+714.5a The controller of another player can use only that player’s resources (cards, mana, and so on) to pay costs for that player.
 Example: If the controller of a player decides that the controlled player will cast a spell with an additional cost of discarding cards, the cards are discarded from the controlled player’s hand.
 
-712.5b The controller of another player can’t make choices or decisions for that player that aren’t called for by the rules or by any objects. The controller also can’t make any choices or decisions for the player that would be called for by the tournament rules.
+714.5b The controller of another player can’t make choices or decisions for that player that aren’t called for by the rules or by any objects. The controller also can’t make any choices or decisions for the player that would be called for by the tournament rules.
 Example: The player who’s being controlled still chooses whether he or she leaves to visit the restroom, trades a card to someone else, agrees to an intentional draw, or calls a judge about an error or infraction.
 
-712.6. The controller of another player can’t make that player concede. A player may concede the game at any time, even if he or she is controlled by another player. See rule 104.3a.
+714.6. The controller of another player can’t make that player concede. A player may concede the game at any time, even if he or she is controlled by another player. See rule 104.3a.
 
-712.7. The effect that gives control of a player to another player may restrict the actions the controlled player is allowed to take or specify actions that the controlled player must take.
+714.7. The effect that gives control of a player to another player may restrict the actions the controlled player is allowed to take or specify actions that the controlled player must take.
 
-712.8. A player who controls another player also continues to make his or her own choices and decisions.
+714.8. A player who controls another player also continues to make his or her own choices and decisions.
 
-712.9. A player may gain control of himself or herself. That player will make his or her own decisions and choices as normal.
+714.9. A player may gain control of himself or herself. That player will make his or her own decisions and choices as normal.
 
-713. Ending the Turn
+715. Ending the Turn
 
-713.1. Three cards (Time Stop, Sundial of the Infinite, and Day’s Undoing) end the turn. When an effect ends the turn, follow these steps in order, as they differ from the normal process for resolving spells and abilities (see rule 608, “Resolving Spells and Abilities”).
+715.1. Three cards (Time Stop, Sundial of the Infinite, and Day’s Undoing) end the turn. When an effect ends the turn, follow these steps in order, as they differ from the normal process for resolving spells and abilities (see rule 608, “Resolving Spells and Abilities”).
 
-713.1a If there are any triggered abilities that triggered before this process began but haven’t been put onto the stack yet, those abilities cease to exist. They won’t be put onto the stack. This rule does not apply to abilities that trigger during this process (see rule 713.2).
+715.1a If there are any triggered abilities that triggered before this process began but haven’t been put onto the stack yet, those abilities cease to exist. They won’t be put onto the stack. This rule does not apply to abilities that trigger during this process (see rule 715.2).
 
-713.1b Exile every object on the stack, including the object that’s resolving. Remove all creatures and planeswalkers (including those that are phased out) from combat. All objects not on the battlefield or in the command zone that aren’t represented by cards will cease to exist the next time state-based actions are checked (see rule 704, “State-Based Actions”).
+715.1b Exile every object on the stack, including the object that’s resolving. Remove all creatures and planeswalkers (including those that are phased out) from combat. All objects not on the battlefield or in the command zone that aren’t represented by cards will cease to exist the next time state-based actions are checked (see rule 704, “State-Based Actions”).
 
-713.1c Check state-based actions. No player gets priority, and no triggered abilities are put onto the stack.
+715.1c Check state-based actions. No player gets priority, and no triggered abilities are put onto the stack.
 
-713.1d The current phase and/or step ends. The game skips straight to the cleanup step; skip any phases or steps between this phase or step and the cleanup step. If an effect ends the turn during the cleanup step, a new cleanup step begins.
+715.1d The current phase and/or step ends. The game skips straight to the cleanup step; skip any phases or steps between this phase or step and the cleanup step. If an effect ends the turn during the cleanup step, a new cleanup step begins.
 
-713.2. No player gets priority during this process, so triggered abilities are not put onto the stack. If any triggered abilities have triggered since this process began, those abilities are put onto the stack during the cleanup step, then the active player gets priority and players can cast spells and activate abilities. Then there will be another cleanup step before the turn finally ends. If no triggered abilities have triggered during this process, no player gets priority during the cleanup step. See rule 514, “Cleanup Step.”
+715.2. No player gets priority during this process, so triggered abilities are not put onto the stack. If any triggered abilities have triggered since this process began, those abilities are put onto the stack during the cleanup step, then the active player gets priority and players can cast spells and activate abilities. Then there will be another cleanup step before the turn finally ends. If no triggered abilities have triggered during this process, no player gets priority during the cleanup step. See rule 514, “Cleanup Step.”
 
-713.3. Even though the turn ends, “at the beginning of the end step” triggered abilities don’t trigger because the end step is skipped.
+715.3. Even though the turn ends, “at the beginning of the end step” triggered abilities don’t trigger because the end step is skipped.
 
-714. Restarting the Game
+716. Restarting the Game
 
-714.1. One card (Karn Liberated) restarts the game. A game that is restarted immediately ends. No players in that game win, lose, or draw that game. All players in that game when it ended then start a new game following the procedures set forth in rule 103, “Starting the Game,” with the following exception:
+716.1. One card (Karn Liberated) restarts the game. A game that is restarted immediately ends. No players in that game win, lose, or draw that game. All players in that game when it ended then start a new game following the procedures set forth in rule 103, “Starting the Game,” with the following exception:
 
-714.1a The starting player in the new game is the player who controlled the spell or ability that restarted the game.
+716.1a The starting player in the new game is the player who controlled the spell or ability that restarted the game.
 
-714.2. All Magic cards involved in the game that was restarted when it ended, including phased-out permanents and nontraditional Magic cards, are involved in the new game, even if those cards were not originally involved in the restarted game. Ownership of cards in the new game doesn’t change, regardless of their location when the new game begins.
+716.2. All Magic cards involved in the game that was restarted when it ended, including phased-out permanents and nontraditional Magic cards, are involved in the new game, even if those cards were not originally involved in the restarted game. Ownership of cards in the new game doesn’t change, regardless of their location when the new game begins.
 Example: A player casts Living Wish, bringing a creature card into the game from outside the game. Then that game is restarted. The creature card will be part of that player’s library when the new game begins.
 
-714.3. Because each player draws seven cards when the new game begins, any player with fewer than seven cards in his or her library will lose the game when state-based actions are checked during the upkeep step of the first turn, regardless of any mulligans that player takes. (See rule 704, “State-Based Actions.”)
+716.3. Because each player draws seven cards when the new game begins, any player with fewer than seven cards in his or her library will lose the game when state-based actions are checked during the upkeep step of the first turn, regardless of any mulligans that player takes. (See rule 704, “State-Based Actions.”)
 
-714.4. The effect that restarts the game finishes resolving just before the first turn’s untap step. If the spell or ability that generated that effect has additional instructions, those instructions are followed at this time. No player has priority, and any triggered abilities that trigger as a result will go on the stack the next time a player receives priority, usually during the first turn’s upkeep step.
+716.4. The effect that restarts the game finishes resolving just before the first turn’s untap step. If the spell or ability that generated that effect has additional instructions, those instructions are followed at this time. No player has priority, and any triggered abilities that trigger as a result will go on the stack the next time a player receives priority, usually during the first turn’s upkeep step.
 
-714.5. Effects may exempt certain cards from the procedure that restarts the game. These cards are not in their owner’s deck as the new game begins.
+716.5. Effects may exempt certain cards from the procedure that restarts the game. These cards are not in their owner’s deck as the new game begins.
 
-714.5a In a Commander game, a commander that has been exempted from the procedure that restarts the game won’t begin the new game in the command zone. However, it remains that deck’s commander for the new game. See rule 903, “Commander.”
+716.5a In a Commander game, a commander that has been exempted from the procedure that restarts the game won’t begin the new game in the command zone. However, it remains that deck’s commander for the new game. See rule 903, “Commander.”
 
-714.6. If a Magic subgame (see rule 715) is restarted, the main game is unaffected. Main-game effects that refer to the winner or loser of the subgame now refer to the winner or loser of the restarted subgame.
+716.6. If a Magic subgame (see rule 717) is restarted, the main game is unaffected. Main-game effects that refer to the winner or loser of the subgame now refer to the winner or loser of the restarted subgame.
 
-714.7. If a multiplayer game using the limited range of influence option (see rule 801) is restarted, all players in the game are involved, regardless of the range of influence of the player who controls the ability that restarted the game.
+716.7. If a multiplayer game using the limited range of influence option (see rule 801) is restarted, all players in the game are involved, regardless of the range of influence of the player who controls the ability that restarted the game.
 
-715. Subgames
+717. Subgames
 
-715.1. One card (Shahrazad) allows players to play a Magic subgame.
+717.1. One card (Shahrazad) allows players to play a Magic subgame.
 
-715.1a A “subgame” is a completely separate Magic game created by an effect. Essentially, it’s a game within a game. The “main game” is the game in which the spell or ability that created the subgame was cast or activated. The main game is temporarily discontinued while the subgame is in progress. It resumes when the subgame ends.
+717.1a A “subgame” is a completely separate Magic game created by an effect. Essentially, it’s a game within a game. The “main game” is the game in which the spell or ability that created the subgame was cast or activated. The main game is temporarily discontinued while the subgame is in progress. It resumes when the subgame ends.
 
-715.1b No effects or definitions created in either the main game or the subgame have any meaning in the other, except as defined by the effect that created the subgame. For example, the effect may say that something happens in the main game to the winner or loser of the subgame.
+717.1b No effects or definitions created in either the main game or the subgame have any meaning in the other, except as defined by the effect that created the subgame. For example, the effect may say that something happens in the main game to the winner or loser of the subgame.
 
-715.2. As the subgame starts, an entirely new set of game zones is created. Each player takes all the cards in his or her main-game library, moves them to his or her subgame library, and shuffles them. No other cards in a main-game zone are moved to their corresponding subgame zone, except as specified in rules 715.2a–d. Randomly determine which player goes first. The subgame proceeds like a normal game, following all other rules in rule 103, “Starting the Game.”
+717.2. As the subgame starts, an entirely new set of game zones is created. Each player takes all the cards in his or her main-game library, moves them to his or her subgame library, and shuffles them. No other cards in a main-game zone are moved to their corresponding subgame zone, except as specified in rules 717.2a–d. Randomly determine which player goes first. The subgame proceeds like a normal game, following all other rules in rule 103, “Starting the Game.”
 
-715.2a As a subgame of a Planechase game starts, each player moves his or her planar deck from the main-game command zone to the subgame command zone and shuffles it. (Face-up plane and phenomenon cards remain in the main-game command zone.)
+717.2a As a subgame of a Planechase game starts, each player moves his or her planar deck from the main-game command zone to the subgame command zone and shuffles it. (Face-up plane and phenomenon cards remain in the main-game command zone.)
 
-715.2b As a subgame of a Vanguard game starts, each player moves his or her vanguard card from the main-game command zone to the subgame command zone.
+717.2b As a subgame of a Vanguard game starts, each player moves his or her vanguard card from the main-game command zone to the subgame command zone.
 
-715.2c As a subgame of a Commander game starts, each player moves his or her commander from the main-game command zone (if it’s there) to the subgame command zone.
+717.2c As a subgame of a Commander game starts, each player moves his or her commander from the main-game command zone (if it’s there) to the subgame command zone.
 
-715.2d As a subgame of an Archenemy game starts, the archenemy moves his or her scheme deck from the main-game command zone to the subgame command zone and shuffles it. (Face-up scheme cards remain in the main-game command zone.)
+717.2d As a subgame of an Archenemy game starts, the archenemy moves his or her scheme deck from the main-game command zone to the subgame command zone and shuffles it. (Face-up scheme cards remain in the main-game command zone.)
 
-715.3. Because each player draws seven cards when a game begins, any player with fewer than seven cards in his or her deck will lose the subgame when state-based actions are checked during the upkeep step of the first turn, regardless of any mulligans that player takes. (See rule 704, “State-Based Actions.”)
+717.3. Because each player draws seven cards when a game begins, any player with fewer than seven cards in his or her deck will lose the subgame when state-based actions are checked during the upkeep step of the first turn, regardless of any mulligans that player takes. (See rule 704, “State-Based Actions.”)
 
-715.4. All objects in the main game and all cards outside the main game are considered outside the subgame (except those specifically brought into the subgame). All players not currently in the subgame are considered outside the subgame.
+717.4. All objects in the main game and all cards outside the main game are considered outside the subgame (except those specifically brought into the subgame). All players not currently in the subgame are considered outside the subgame.
 
-715.4a Some effects can bring cards into a game from outside of it. If a card is brought into a subgame from a main game, abilities in the main game that trigger on objects leaving a main-game zone will trigger, but they won’t be put onto the stack until the main game resumes.
+717.4a Some effects can bring cards into a game from outside of it. If a card is brought into a subgame from a main game, abilities in the main game that trigger on objects leaving a main-game zone will trigger, but they won’t be put onto the stack until the main game resumes.
 
-715.4b A player’s main-game counters aren’t considered part of the subgame, although the player will still have them when the main game resumes. Similarly, any counters a player gets during a subgame will cease to exist when the subgame ends. 
+717.4b A player’s main-game counters aren’t considered part of the subgame, although the player will still have them when the main game resumes. Similarly, any counters a player gets during a subgame will cease to exist when the subgame ends.
 
-715.5. At the end of a subgame, each player takes all cards he or she owns that are in the subgame other than those in the subgame command zone, puts them into his or her main-game library, then shuffles them. This includes cards in the subgame’s exile zone. Except as specified in rules 715.5a–c, all other objects in the subgame cease to exist, as do the zones created for the subgame. The main game continues from the point at which it was discontinued: First, the spell or ability that created the subgame finishes resolving, even if it was created by a spell card that’s no longer on the stack. Then, if any main-game abilities triggered while the subgame was in progress due to cards being removed from the main game, those abilities are put onto the stack.
+717.5. At the end of a subgame, each player takes all cards he or she owns that are in the subgame other than those in the subgame command zone, puts them into his or her main-game library, then shuffles them. This includes cards in the subgame’s exile zone. Except as specified in rules 717.5a–c, all other objects in the subgame cease to exist, as do the zones created for the subgame. The main game continues from the point at which it was discontinued: First, the spell or ability that created the subgame finishes resolving, even if it was created by a spell card that’s no longer on the stack. Then, if any main-game abilities triggered while the subgame was in progress due to cards being removed from the main game, those abilities are put onto the stack.
 Example: If a card was brought into the subgame either from the main game or from outside the main game, that card will be put into its owner’s main-game library when the subgame ends.
 
-715.5a At the end of a subgame of a Planechase game, each face-up plane card or phenomenon card is turned face down and put on the bottom of its owner’s planar deck. Then each player moves his or her planar deck from the subgame command zone to the main-game command zone and shuffles it.
+717.5a At the end of a subgame of a Planechase game, each face-up plane card or phenomenon card is turned face down and put on the bottom of its owner’s planar deck. Then each player moves his or her planar deck from the subgame command zone to the main-game command zone and shuffles it.
 
-715.5b At the end of a subgame of a Vanguard game, each player moves his or her vanguard card from the subgame command zone to the main-game command zone. This is an exception to rule 311.2.
+717.5b At the end of a subgame of a Vanguard game, each player moves his or her vanguard card from the subgame command zone to the main-game command zone. This is an exception to rule 311.2.
 
-715.5c At the end of a subgame of a Commander game, each player moves his or her commander from the subgame command zone (if it’s there) to the main-game command zone.
+717.5c At the end of a subgame of a Commander game, each player moves his or her commander from the subgame command zone (if it’s there) to the main-game command zone.
 
-715.5d At the end of a subgame of an Archenemy game, any face-up scheme cards in the subgame command zone are turned face down and put on the bottom of their owner’s scheme deck. Then the archenemy moves his or her scheme deck from the subgame command zone to the main-game command zone and shuffles it.
+717.5d At the end of a subgame of an Archenemy game, any face-up scheme cards in the subgame command zone are turned face down and put on the bottom of their owner’s scheme deck. Then the archenemy moves his or her scheme deck from the subgame command zone to the main-game command zone and shuffles it.
 
-715.6. A subgame can be created within a subgame. The existing subgame becomes the main game in relation to the new subgame.
+717.6. A subgame can be created within a subgame. The existing subgame becomes the main game in relation to the new subgame.
 
-716. Taking Shortcuts
+718. Taking Shortcuts
 
-716.1. When playing a game, players typically make use of mutually understood shortcuts rather than explicitly identifying each game choice (either taking an action or passing priority) a player makes.
+718.1. When playing a game, players typically make use of mutually understood shortcuts rather than explicitly identifying each game choice (either taking an action or passing priority) a player makes.
 
-716.1a The rules for taking shortcuts are largely unformalized. As long as each player in the game understands the intent of each other player, any shortcut system they use is acceptable.
+718.1a The rules for taking shortcuts are largely informal. As long as each player in the game understands the intent of each other player, any shortcut system they use is acceptable.
 
-716.1b Occasionally the game gets into a state in which a set of actions could be repeated indefinitely (thus creating a “loop”). In that case, the shortcut rules can be used to determine how many times those actions are repeated without having to actually perform them, and how the loop is broken.
+718.1b Occasionally the game gets into a state in which a set of actions could be repeated indefinitely (thus creating a “loop”). In that case, the shortcut rules can be used to determine how many times those actions are repeated without having to actually perform them, and how the loop is broken.
 
-716.2. Taking a shortcut follows the following procedure.
+718.2. Taking a shortcut follows the following procedure.
 
-716.2a At any point in the game, the player with priority may suggest a shortcut by describing a sequence of game choices, for all players, that may be legally taken based on the current game state and the predictable results of the sequence of choices. This sequence may be a non-repetitive series of choices, a loop that repeats a specified number of times, multiple loops, or nested loops, and may even cross multiple turns. It can’t include conditional actions, where the outcome of a game event determines the next action a player takes. The ending point of this sequence must be a place where a player has priority, though it need not be the player proposing the shortcut.
+718.2a At any point in the game, the player with priority may suggest a shortcut by describing a sequence of game choices, for all players, that may be legally taken based on the current game state and the predictable results of the sequence of choices. This sequence may be a non-repetitive series of choices, a loop that repeats a specified number of times, multiple loops, or nested loops, and may even cross multiple turns. It can’t include conditional actions, where the outcome of a game event determines the next action a player takes. The ending point of this sequence must be a place where a player has priority, though it need not be the player proposing the shortcut.
 Example: A player controls a creature enchanted by Presence of Gond, which grants the creature the ability “{T}: Put a 1/1 green Elf Warrior creature token onto the battlefield,” and another player controls Intruder Alarm, which reads, in part, “Whenever a creature enters the battlefield, untap all creatures.” When the player has priority, he may suggest “I’ll create a million tokens,” indicating the sequence of activating the creature’s ability, all players passing priority, letting the creature’s ability resolve and put a token onto the battlefield (which causes Intruder Alarm’s ability to trigger), Intruder Alarm’s controller putting that triggered ability on the stack, all players passing priority, Intruder Alarm’s triggered ability resolving, all players passing priority until the player proposing the shortcut has priority, and repeating that sequence 999,999 more times, ending just after the last token-creating ability resolves.
 
-716.2b Each other player, in turn order starting after the player who suggested the shortcut, may either accept the proposed sequence, or shorten it by naming a place where he or she will make a game choice that’s different than what’s been proposed. (The player doesn’t need to specify at this time what the new choice will be.) This place becomes the new ending point of the proposed sequence.
+718.2b Each other player, in turn order starting after the player who suggested the shortcut, may either accept the proposed sequence, or shorten it by naming a place where he or she will make a game choice that’s different than what’s been proposed. (The player doesn’t need to specify at this time what the new choice will be.) This place becomes the new ending point of the proposed sequence.
 Example: The active player draws a card during her draw step, then says, “Go.” The nonactive player is holding Into the Fray (an instant that says “Target creature attacks this turn if able”) and says, “I’d like to cast a spell during your beginning of combat step.” The current proposed shortcut is that all players pass priority at all opportunities during the turn until the nonactive player has priority during the beginning of combat step.
 
-716.2c Once the last player has either accepted or shortened the shortcut proposal, the shortcut is taken. The game advances to the last proposed ending point, with all game choices contained in the shortcut proposal having been taken. If the shortcut was shortened from the original proposal, the player who now has priority must make a different game choice than what was originally proposed for that player.
+718.2c Once the last player has either accepted or shortened the shortcut proposal, the shortcut is taken. The game advances to the last proposed ending point, with all game choices contained in the shortcut proposal having been taken. If the shortcut was shortened from the original proposal, the player who now has priority must make a different game choice than what was originally proposed for that player.
 
-716.3. Sometimes a loop can be fragmented, meaning that each player involved in the loop performs an independent action that results in the same game state being reached multiple times. If that happens, the active player (or, if the active player is not involved in the loop, the first player in turn order who is involved) must then make a different game choice so the loop does not continue.
+718.3. Sometimes a loop can be fragmented, meaning that each player involved in the loop performs an independent action that results in the same game state being reached multiple times. If that happens, the active player (or, if the active player is not involved in the loop, the first player in turn order who is involved) must then make a different game choice so the loop does not continue.
 Example: In a two-player game, the active player controls a creature with the ability “{0}: [This creature] gains flying,” the nonactive player controls a permanent with the ability “{0}: Target creature loses flying,” and nothing in the game cares how many times an ability has been activated. Say the active player activates his creature’s ability, it resolves, then the nonactive player activates her permanent’s ability targeting that creature, and it resolves. This returns the game to a game state it was at before. The active player must make a different game choice (in other words, anything other than activating that creature’s ability again). The creature doesn’t have flying. Note that the nonactive player could have prevented the fragmented loop simply by not activating her permanent’s ability, in which case the creature would have had flying. The nonactive player always has the final choice and is therefore able to determine whether the creature has flying.
 
-716.4. If a loop contains only mandatory actions, the game is a draw. (See rules 104.4b and 104.4f.)
+718.4. If a loop contains only mandatory actions, the game is a draw. (See rules 104.4b and 104.4f.)
 
-716.5. No player can be forced to perform an action that would end a loop other than actions called for by objects involved in the loop.
+718.5. No player can be forced to perform an action that would end a loop other than actions called for by objects involved in the loop.
 Example: A player controls Seal of Cleansing, an enchantment that reads, “Sacrifice Seal of Cleansing: Destroy target artifact or enchantment.” A mandatory loop that involves an artifact begins. The player is not forced to sacrifice Seal of Cleansing to destroy the artifact and end the loop.
 
-716.6. If a loop contains an effect that says “[A] unless [B],” where [A] and [B] are each actions, no player can be forced to perform [B] to break the loop. If no player chooses to perform [B], the loop will continue as though [A] were mandatory.
+718.6. If a loop contains an effect that says “[A] unless [B],” where [A] and [B] are each actions, no player can be forced to perform [B] to break the loop. If no player chooses to perform [B], the loop will continue as though [A] were mandatory.
 
-717. Handling Illegal Actions
+719. Handling Illegal Actions
 
-717.1. If a player takes an illegal action or starts to take an action but can’t legally complete it, the entire action is reversed and any payments already made are canceled. No abilities trigger and no effects apply as a result of an undone action. If the action was casting a spell, the spell returns to the zone it came from. The player may also reverse any legal mana abilities activated while making the illegal play, unless mana from them or from any triggered mana abilities they triggered was spent on another mana ability that wasn’t reversed. Players may not reverse actions that moved cards to a library, moved cards from a library to any zone other than the stack, caused a library to be shuffled, or caused cards from a library to be revealed.
+719.1. If a player takes an illegal action or starts to take an action but can’t legally complete it, the entire action is reversed and any payments already made are canceled. No abilities trigger and no effects apply as a result of an undone action. If the action was casting a spell, the spell returns to the zone it came from. The player may also reverse any legal mana abilities activated while making the illegal play, unless mana from them or from any triggered mana abilities they triggered was spent on another mana ability that wasn’t reversed. Players may not reverse actions that moved cards to a library, moved cards from a library to any zone other than the stack, caused a library to be shuffled, or caused cards from a library to be revealed.
 
-717.2. When reversing illegal spells and abilities, the player who had priority retains it and may take another action or pass. The player may redo the reversed action in a legal way or take any other action allowed by the rules.
+719.2. When reversing illegal spells and abilities, the player who had priority retains it and may take another action or pass. The player may redo the reversed action in a legal way or take any other action allowed by the rules.
 
 8. Multiplayer Rules
 
@@ -4238,11 +4341,13 @@ Example: Astral Slide is an enchantment that reads, “Whenever a player cycles a 
 
 800.4h If a player leaves the game during his or her turn, that turn continues to its completion without an active player. If the active player would receive priority, instead the next player in turn order receives priority, or the top object on the stack resolves, or the phase or step ends, whichever is appropriate.
 
-800.4i When a player leaves the game, any continuous effects with durations that last until that player’s next turn or until a specific point in that turn will last until that turn would have begun. They neither expire immediately nor last indefinitely.
+800.4i If a player who has left the game would begin a turn, that turn doesn’t begin.
 
-800.4j When a player leaves the game, objects that player owns in the ante zone do not leave the game. This is an exception to rule 800.4a. See rule 407, “Ante.”
+800.4j When a player leaves the game, any continuous effects with durations that last until that player’s next turn or until a specific point in that turn will last until that turn would have begun. They neither expire immediately nor last indefinitely.
 
-800.4k In a Planechase game, if the player designated as the planar controller would leave the game, instead the next player in turn order that wouldn’t leave the game becomes the planar controller, then the old planar controller leaves the game. See rule 309.5.
+800.4k When a player leaves the game, objects that player owns in the ante zone do not leave the game. This is an exception to rule 800.4a. See rule 407, “Ante.”
+
+800.4m In a Planechase game, if the player designated as the planar controller would leave the game, instead the next player in turn order that wouldn’t leave the game becomes the planar controller, then the old planar controller leaves the game. See rule 309.5.
 
 800.5. In a multiplayer game, the first time a player takes a mulligan, he or she draws a new hand of as many cards as he or she had before. Subsequent hands decrease by one card as normal.
 
@@ -4319,7 +4424,7 @@ Example: Rob is within Alex’s range of influence, but Carissa is not. Carissa at
 
 801.16. If the game somehow enters a “loop” of mandatory actions, repeating a sequence of events with no way to stop, the game is a draw for each player who controls an object that’s involved in that loop, as well as for each player within the range of influence of any of those players. They leave the game. All remaining players continue to play the game.
 
-801.17. Effects that restart the game (see rule 714) are exempt from the limited range of influence option. All players in the game will be involved in the new game.
+801.17. Effects that restart the game (see rule 716) are exempt from the limited range of influence option. All players in the game will be involved in the new game.
 
 801.18. In multiplayer Planechase games other than Grand Melee games, plane cards and phenomenon cards are exempt from the limited range of influence option. Their abilities, and the effects of those abilities, affect all applicable objects and players in the game. See rule 901, “Planechase.”
 
@@ -4655,7 +4760,7 @@ Example: In an Alternating Teams game with three teams, A, B, and C, the seating
 
 901.11b The plane card that’s turned face up is the plane the player planeswalks to. The plane card or phenomenon card that’s turned face down, or that leaves the game, is the plane or phenomenon the player planeswalks away from.
 
-901.11c If a player planeswalks when there is more than one face-up plane card, that player planeswalks away from all such planes. 
+901.11c If a player planeswalks when there is more than one face-up plane card, that player planeswalks away from all such planes.
 
 901.12. A Two-Headed Giant Planechase game uses all the rules for the Two-Headed Giant multiplayer variant and all the rules for the Planechase casual variant, with the following additions.
 
@@ -4717,8 +4822,10 @@ Example: A commander that’s been turned face down (due to Ixidron’s effect, for 
 
 903.3a Some planeswalker cards have an ability that states the card can be your commander. This ability modifies the rules for deck construction, and it functions before the game begins. See also rule 112.6m.
 
+903.3b If a player’s commander is a meld card and it’s melded with the other member of its meld pair, the resulting melded permanent is that player’s commander.
+
 903.4. The Commander variant uses color identity to determine what cards can be in a deck with a certain commander. The color identity of a card is the color or colors of any mana symbols in that card’s mana cost or rules text, plus any colors defined by its characteristic-defining abilities (see rule 604.3) or color indicator (see rule 204).
-Example: Bosh, Iron Golem is a legendary artifact creature with mana cost {8} and the ability “{3}{R}, Sacrifice an artifact: Bosh, Iron Golem deals damage equal to the sacrificed artifact's converted mana cost to target creature or player.” Bosh’s color identity is red.
+Example: Bosh, Iron Golem is a legendary artifact creature with mana cost {8} and the ability “{3}{R}, Sacrifice an artifact: Bosh, Iron Golem deals damage equal to the sacrificed artifact’s converted mana cost to target creature or player.” Bosh’s color identity is red.
 
 903.4a Color identity is established before the game begins.
 
@@ -4747,11 +4854,11 @@ Example: Wort, the Raidmother’s color identity is red and green. A Wort Commande
 
 903.9. If a commander would be exiled from anywhere or put into its owner’s hand, graveyard, or library from anywhere, its owner may put it into the command zone instead. This replacement effect may apply more than once to the same event. This is an exception to rule 614.5.
 
-903.10. If a card is put into the exile zone face down from anywhere, and a player is allowed to look at that card in exile, the player must immediately do so. If it’s a commander owned by another player, the player that looked at it turns it face up and puts it into the command zone.
+903.9a If a commander is a melded permanent and its owner chooses to put it into the command zone this way, that permanent and the card representing it that isn’t a commander are put into the appropriate zone, and the card that represents it and is a commander is put into the command zone.
 
-903.11. The Commander variant includes the following specification for winning and losing the game. All other rules for ending the game also apply. (See rule 104.)
+903.10. The Commander variant includes the following specification for winning and losing the game. All other rules for ending the game also apply. (See rule 104.)
 
-903.11a A player that’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. (This is a state-based action. See rule 704.)
+903.10a A player that’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. (This is a state-based action. See rule 704.)
 
 904. Archenemy
 
@@ -5016,7 +5123,7 @@ Cascade
 A keyword ability that may let a player cast a random extra spell for no cost. See rule 702.84, “Cascade.”
 
 Cast
-To take a spell from where it is (usually the hand), put it on the stack, and pay its costs, so that it will eventually resolve and have its effect. See rule 601, “Casting Spells.”
+To take a card from where it is (usually the hand), put it on the stack, and pay its costs, so that it will eventually resolve and have its effect. See rule 601, “Casting Spells.”
 
 Caster (Obsolete)
 An obsolete term that referred to the player who cast a spell. In general, cards that were printed with the term “caster” have received errata in the Oracle card reference to say “controller.”
@@ -5044,6 +5151,9 @@ Information that defines an object. See rule 109.3.
 
 Characteristic-Defining Ability
 A kind of static ability that conveys information about an object’s characteristics that would normally be found elsewhere on that object (such as in its mana cost, type line, or power/toughness box). See rule 604.3.
+
+Checklist Card
+A game supplement with a Magic card back that can be used to represent a double-faced card or meld card. See rule 713, “Checklist Cards.”
 
 Cipher
 A keyword ability that allows you to encode a card on a creature and cast that card whenever that creature deals combat damage to a player. See rule 702.98, “Cipher.”
@@ -5112,7 +5222,7 @@ Control, Controller
 “Control” is the system that determines who gets to use an object in the game. An object’s “controller” is the player who currently controls it. See rule 108.4.
 
 Control Another Player
-To make all choices and decisions that player is allowed to make, or is told to make, by rules or by any objects. See rule 712, “Controlling Another Player.”
+To make all choices and decisions that player is allowed to make, or is told to make, by rules or by any objects. See rule 714, “Controlling Another Player.”
 
 Converted Mana Cost
 The total amount of mana in a mana cost, regardless of color. See rule 202.3.
@@ -5263,6 +5373,9 @@ Something that happens in the game as a result of a spell or ability. See rule 6
 Emblem
 An emblem is a marker used to represent an object that has one or more abilities, but no other characteristics. See rule 113, “Emblems.”
 
+Emerge
+A keyword ability that lets a player cast a spell for less by sacrificing a creature. See rule 702.118, “Emerge.”
+
 Emperor
 The middle player on each team in an Emperor game. See rule 809, “Emperor Variant.”
 
@@ -5291,7 +5404,7 @@ End Step
 Part of the turn. This step is the first step of the ending phase. See rule 513, “End Step.”
 
 End the Turn
-To “end the turn” as the result of an effect is to perform an expedited process that skips nearly everything else that would happen that turn. See rule 713, “Ending the Turn.”
+To “end the turn” as the result of an effect is to perform an expedited process that skips nearly everything else that would happen that turn. See rule 715, “Ending the Turn.”
 
 Ending Phase
 Part of the turn. This phase is the fifth and final phase of the turn. See rule 512, “Ending Phase.”
@@ -5310,6 +5423,9 @@ A keyword ability that lets a player attach an Equipment to a creature he or she
 
 Equipment
 An artifact subtype. Equipment can be attached to creatures. See rule 301, “Artifacts,” and rule 702.6, “Equip.”
+
+Escalate
+A keyword ability on some modal spells that adds a cost for choosing additional modes. See rule 702.119, “Escalate.”
 
 Evasion Ability
 An ability that restricts what creatures can block an attacking creature. See rules 509.1b–c.
@@ -5486,7 +5602,7 @@ If
 See Intervening “If” Clause.
 
 Illegal Action
-An action that violates the rules of the game and/or requirements or restrictions created by effects. See rule 717, “Handling Illegal Actions.”
+An action that violates the rules of the game and/or requirements or restrictions created by effects. See rule 719, “Handling Illegal Actions.”
 
 Illegal Target
 A target that no longer exists or no longer meets the specifications stated by the spell or ability that’s targeting it. See rule 608.2b.
@@ -5629,10 +5745,10 @@ Local Enchantment (Obsolete)
 An obsolete term for an Aura. Cards printed with this text have received errata in the Oracle card reference.
 
 Loop
-A set of actions that could be repeated indefinitely. See rule 716, “Taking Shortcuts.”
+A set of actions that could be repeated indefinitely. See rule 718, “Taking Shortcuts.”
 
 Lose the Game
-There are several ways to lose the game. See rule 104, “Ending the Game,” rule 810.8 (for additional rules for Two-Headed Giant games), rule 809.5 (for additional rules for Emperor games), and rule 903.11 (for an additional rule for Commander games).
+There are several ways to lose the game. See rule 104, “Ending the Game,” rule 810.8 (for additional rules for Two-Headed Giant games), rule 809.5 (for additional rules for Emperor games), and rule 903.10 (for an additional rule for Commander games).
 
 Loyalty
 1. Part of a card that only planeswalkers have. A planeswalker card’s loyalty is printed in its lower right corner. See rule 209, “Loyalty.”
@@ -5645,7 +5761,7 @@ Madness
 A keyword ability that lets a player cast a card he or she discards. See rule 702.34, “Madness.”
 
 Main Game
-The game in which a spell (or ability) that created a subgame was cast (or activated). See rule 715, “Subgames.”
+The game in which a spell (or ability) that created a subgame was cast (or activated). See rule 717, “Subgames.”
 
 Main Phase
 Part of the turn. The first, or precombat, main phase is the second phase of the turn. The second, or postcombat, main phase is the fourth phase of the turn. See rule 505, “Main Phase.”
@@ -5682,6 +5798,12 @@ The number of cards in hand a player must discard down to during his or her clea
 
 Megamorph
 A variant of the morph ability that puts a +1/+1 counter on the creature as it turns face up. See rule 702.36, “Morph.”
+
+Meld
+To turn two members of a meld pair so their back faces are up and combined into one oversized Magic card. See rule 701.34, “Meld.”
+
+Meld Cards
+Cards with a Magic card face on one side and half of an oversized Magic card face on the other. See rule 712, “Meld Cards.”
 
 Menace
 An evasion ability that makes creatures unblockable by a single creature. See rule 702.110, “Menace.”
@@ -6045,7 +6167,7 @@ Shared Team Turns Option
 An option that may be used in certain multiplayer variants, such as Two-Headed Giant and Archenemy. See rule 805, “Shared Team Turns Option.”
 
 Shortcut
-A mutually understood way for the game to advance forward a number of game choices (either taking an action or passing priority) without players needing to explicitly identify each such choice. See rule 716, “Taking Shortcuts.”
+A mutually understood way for the game to advance forward a number of game choices (either taking an action or passing priority) without players needing to explicitly identify each such choice. See rule 718, “Taking Shortcuts.”
 
 Shroud
 A keyword ability that precludes a permanent or player from being targeted. See rule 702.18, “Shroud.”
@@ -6144,7 +6266,7 @@ Storm
 A keyword ability that creates copies of a spell. See rule 702.39, “Storm.”
 
 Subgame
-A completely separate Magic game created by an effect. See rule 715, “Subgames.”
+A completely separate Magic game created by an effect. See rule 717, “Subgames.”
 
 Subtype
 A characteristic that appears after the card type and a long dash on a card’s type line. See rule 205.3, “Subtypes.”
@@ -6412,8 +6534,8 @@ Thanks to all our project team members and the many others too numerous to menti
 
 
 
-These rules are effective as of April 8, 2016.
+These rules are effective as of July 22, 2016.
 
-Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, and Magic: The Gathering—Conspiracy are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2016 Wizards. U.S. Pat. No. RE 37,957.
+Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, and Magic: The Gathering—Conspiracy are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2016 Wizards. U.S. Pat. No. RE 37,957.
 
 
