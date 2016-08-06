@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require_relative "../lib/card_database"
 require_relative "../lib/cli_frontend"
+require "pry"
 
 class Minitest::Test
   # minitest is shitty and doesn't report test results in ordered way
