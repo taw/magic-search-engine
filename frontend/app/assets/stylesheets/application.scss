@@ -65,6 +65,7 @@ td, th {
     position: absolute;
     transition: 0.5s ease;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 
     &.flip:hover {
       transform: rotateZ(180deg);
@@ -87,7 +88,7 @@ td, th {
   & .melded {
   }
   &:hover .melded {
-    transform: translate(112px) rotateY(180deg);
+    transform: translate(225px) rotateY(180deg);
   }
   & .meld0 {
     transform: rotateY(180deg);
