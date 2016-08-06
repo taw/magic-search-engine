@@ -114,7 +114,7 @@ class Card
 
   def calculate_partial_color_identity
     ci = colors.chars
-    text.scan(/{(.*?)}/).each do |sym,|
+    "#{mana_cost} #{text}".scan(/{(.*?)}/).each do |sym,|
       case sym.downcase
       when /\A(\d+|[½∞txyzsqpc])\z/
         # 12xyz - colorless

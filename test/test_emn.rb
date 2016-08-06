@@ -10,6 +10,23 @@ class CardDatabaseEldrichMoonTest < Minitest::Test
     assert_search_results "t:angel c:c", "Brisela, Voice of Nightmares"
   end
 
+  def test_meld_color_identity
+    assert_equal Hash[@db.search("is:meld").printings.map{|c| [c.name, c.color_identity]}], {
+      # Brisela
+      "Brisela, Voice of Nightmares"=>"w",
+      "Bruna, the Fading Light"=>"w",
+      "Gisela, the Broken Blade"=>"w",
+      # Chittering Host
+      "Chittering Host"=>"b",
+      "Graf Rats"=>"b",
+      "Midnight Scavengers"=>"b",
+      # Hanweir, the Writhing Township
+      "Hanweir Battlements"=>"r",
+      "Hanweir Garrison"=>"r",
+      "Hanweir, the Writhing Township"=>"r",
+    }
+  end
+
   def test_meld_cmc
     assert_search_results "is:meld cmc=0", "Hanweir Battlements"
     assert_search_results "is:meld cmc=2", "Graf Rats"
