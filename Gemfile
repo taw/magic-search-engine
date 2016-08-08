@@ -1,4 +1,5 @@
-source 'https://rubygems.org'
-gem 'rake'
-gem 'minitest'
-gem 'damerau-levenshtein'
+source "https://rubygems.org"
+gem "rake"
+gem "minitest"
+gem "damerau-levenshtein"
+gem "pry"
