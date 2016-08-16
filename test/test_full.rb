@@ -313,14 +313,25 @@ class CardDatabaseFullTest < Minitest::Test
   end
 
   def test_mana_variables
-    assert_search_equal "b:ravnica guildmage mana=HH", "b:ravnica guildmage c:m cmc=2"
-    assert_search_equal "e:rtr mana=H", "e:rtr c:m cmc=1"
-    assert_search_results "mana>MMMMM",
+    assert_search_equal "b:ravnica guildmage mana=hh", "b:ravnica guildmage c:m cmc=2"
+    assert_search_equal "e:rtr mana=h", "e:rtr c:m cmc=1"
+    assert_search_results "mana>mmmmm",
       "B.F.M. (Big Furry Monster)",
       "Khalni Hydra",
       "Primalcrux"
-    assert_count_results "e:ktk (charm OR ascendancy) mana=MNO", 10
-    assert_count_results "e:ktk mana=MNO", 15
+    assert_count_results "e:ktk (charm OR ascendancy) mana=mno", 10
+    assert_count_results "e:ktk mana=mno", 15
+    assert_search_results "mana=mmnnnoo",
+      "Brilliant Ultimatum",
+      "Clarion Ultimatum",
+      "Cruel Ultimatum",
+      "Titanic Ultimatum",
+      "Violent Ultimatum"
+    assert_search_results "mana=wwmmmnn",
+      "Brilliant Ultimatum",
+      "Titanic Ultimatum"
+    assert_search_equal "mana=mmnnnoo", "mana=nnooomm"
+    assert_search_equal "mana>nnnnn", "mana>ooooo"
   end
 
   def test_stemming

@@ -113,8 +113,8 @@ class ConditionMana < ConditionSimple
   end
 
   def resolve_variable_mana(card_mana, query_mana)
-    card_mana.sort_by {|_key, value| value}
-    query_mana.sort_by {|_key, value| value}
+    card_mana = card_mana.sort_by {|key, value| [value, key]}.to_h
+    query_mana = query_mana.sort_by {|key, value| [value, key]}.to_h
     q_mana = Hash.new(0)
     colors = %w(w u b r g c)
     hybrids = %w(uw bu br gr gw bw bg gu ru rw)
@@ -124,7 +124,9 @@ class ConditionMana < ConditionSimple
         when 'm','n','o'
           matched = false
           card_mana.each do |card_color, card_count|
-            if colors.include?(card_color) and !q_mana.keys.include?(card_color)
+            if colors.include?(card_color) &&
+              !q_mana.keys.include?(card_color) &&
+              !query_mana.keys.include?(card_color)
               q_mana[card_color] = count
               matched = true
               break
@@ -134,7 +136,9 @@ class ConditionMana < ConditionSimple
         when 'h'
           matched = false
           card_mana.each do |card_color, card_count|
-            if hybrids.include?(card_color) and !q_mana.keys.include?(card_color)
+            if hybrids.include?(card_color) &&
+              !q_mana.keys.include?(card_color) &&
+              !query_mana.keys.include?(card_color)
               q_mana[card_color] = count
               matched = true
               break
