@@ -59,6 +59,8 @@ private
         @tokens << [:test, ConditionFormat.new(s[1] || s[2])]
       elsif s.scan(/b:(?:"(.*?)"|(\w+))/i)
         @tokens << [:test, ConditionBlock.new(s[1] || s[2])]
+      elsif s.scan(/st:(?:"(.*?)"|(\w+))/i)
+        @tokens << [:test, ConditionSetType.new(s[1] || s[2])]
       elsif s.scan(/c:([wubrgcml]+)/i)
         @tokens << [:test, ConditionColors.new(s[1])]
       elsif s.scan(/ci:([wubrgcml]+)/i)
