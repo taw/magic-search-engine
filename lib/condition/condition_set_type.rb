@@ -21,7 +21,7 @@ class ConditionSetType < Condition
     type_list = get_type_list(@set_type)
     sets = Set[]
     db.sets.each do |set_code, set|
-      # CMA is a fixed set so
+      # CMA is a fixed set so include it for commander or fixed but not for deck
       if set.code == "cma"
         if type_list.include?("fixed")
           sets << set
@@ -29,6 +29,13 @@ class ConditionSetType < Condition
           sets << set
         end
         next
+      end
+
+      # starter sets fall into several categories
+      if (set.code == "clash" and type_list.include?("deck")) ||
+        (%w(p3k po po2 st).include?(set.code) and type_list.include?("booster")) ||
+        (%w(st2k w16 itp).include?(set.code) and type_list.include?("fixed"))
+        sets << set
       end
 
       if type_list.include?(set.type)
@@ -56,7 +63,7 @@ class ConditionSetType < Condition
   def get_type_list(set_type)
     type_list = [set_type]
     if set_type == "multi" then type_list = %W(archenemy commander conspiracy planechase vanguard multi)
-    elsif set_type == "booster" then type_list = %W(expansion conspiracy reprint core masters starter un booster)
+    elsif set_type == "booster" then type_list = %W(expansion conspiracy reprint core masters un booster)
     elsif set_type == "fixed" then type_list = %W(from\ the\ vault vanguard fixed)
     elsif set_type == "deck" then type_list = %W(archenemy commander duel\ deck premium\ deck planechase box deck)
     end
