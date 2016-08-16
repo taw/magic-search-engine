@@ -75,12 +75,26 @@ class Card
     Format.all_legalities(self, date)
   end
 
-  def first_release_date
-    @printings.map(&:release_date).compact.min
+  def first_release_date(filter="all")
+    case filter
+      when "full"
+        @printings.select{|pr| pr.set_type != 'promo'}.map(&:release_date).compact.min
+      when "expert"
+        @printings.select{|pr| %w(core expansion).include?(pr.set_type)}.map(&:release_date).compact.min
+      else
+        @printings.map(&:release_date).compact.min
+    end
   end
 
-  def last_release_date
-    @printings.map(&:release_date).compact.max
+  def last_release_date(filter="all")
+    case filter
+      when "full"
+        @printings.select{|pr| pr.set_type != 'promo'}.map(&:release_date).compact.max
+      when "expert"
+        @printings.select{|pr| %w(core expansion).include?(pr.set_type)}.map(&:release_date).compact.max
+      else
+        @printings.map(&:release_date).compact.max
+    end
   end
 
   private

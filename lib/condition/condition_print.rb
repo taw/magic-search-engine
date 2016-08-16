@@ -1,7 +1,7 @@
 # This condition checks printing, first/lastprinted check card.
 # Should they check same thing?
 class ConditionPrint < Condition
-  def initialize(op, date)
+  def initialize(op, date, type)
     @op = op
     # Just for ConditionPrint#==
     if date.is_a?(Date)
@@ -9,6 +9,9 @@ class ConditionPrint < Condition
     else
       @date = date
     end
+    types = {'' => 'full', '*' => 'all', '!' => 'expert'}
+    types.default('full')
+    @type = types[type]
   end
 
   def search(db)
