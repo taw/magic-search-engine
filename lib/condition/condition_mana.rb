@@ -7,7 +7,8 @@ class ConditionMana < ConditionSimple
   def match?(card)
     card_mana = parse_card_mana(card.mana_cost)
     return false unless card_mana
-    cmps = (card_mana.keys | @query_mana.keys).map{|color| [card_mana[color], @query_mana[color]]}
+    q_mana = resolve_variable_mana(card_mana, @query_mana)
+    cmps = (card_mana.keys | q_mana.keys).map{|color| [card_mana[color], q_mana[color]]}
     case @op
     when ">="
       cmps.all?{|a,b| a>=b}
@@ -59,7 +60,7 @@ class ConditionMana < ConditionSimple
 
   def parse_query_mana(mana)
     pool = Hash.new(0)
-    mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrgxyzc])/) do
+    mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrgxyzc])|([hmno])/) do
       if $1
         m = normalize_mana_symbol($1)
         if m =~ /\A\d+\z/
@@ -71,8 +72,10 @@ class ConditionMana < ConditionSimple
         end
       elsif $2
         pool["?"] += $2.to_i
-      else
+      elsif $3
         pool[$3] += 1
+      elsif $4
+        pool[$4] += 1
       end
       ""
     end
@@ -107,6 +110,42 @@ class ConditionMana < ConditionSimple
     end
     raise "Mana query parse error: #{mana}" unless mana.empty?
     pool
+  end
+
+  def resolve_variable_mana(card_mana, query_mana)
+    card_mana.sort_by {|_key, value| value}
+    query_mana.sort_by {|_key, value| value}
+    q_mana = Hash.new(0)
+    colors = %w(w u b r g c)
+    hybrids = %w(uw bu br gr gw bw bg gu ru rw)
+
+    query_mana.each do |color, count|
+      case color
+        when 'm','n','o'
+          matched = false
+          card_mana.each do |card_color, card_count|
+            if colors.include?(card_color) and !q_mana.keys.include?(card_color)
+              q_mana[card_color] = count
+              matched = true
+              break
+            end
+          end
+          q_mana[color] = count unless matched
+        when 'h'
+          matched = false
+          card_mana.each do |card_color, card_count|
+            if hybrids.include?(card_color) and !q_mana.keys.include?(card_color)
+              q_mana[card_color] = count
+              matched = true
+              break
+            end
+          end
+          q_mana[color] = count unless matched
+        else
+          q_mana[color] = count
+      end
+    end
+    q_mana
   end
 
   def normalize_mana_symbol(sym)
