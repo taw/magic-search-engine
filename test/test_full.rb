@@ -312,6 +312,17 @@ class CardDatabaseFullTest < Minitest::Test
     assert_count_results "is:promo", 1047
   end
 
+  def test_mana_variables
+    assert_search_equal "b:ravnica guildmage mana=HH", "b:ravnica guildmage c:m cmc=2"
+    assert_search_equal "e:rtr mana=H", "e:rtr c:m cmc=1"
+    assert_search_results "mana>MMMMM",
+      "B.F.M. (Big Furry Monster)",
+      "Khalni Hydra",
+      "Primalcrux"
+    assert_count_results "e:ktk (charm OR ascendancy) mana=MNO", 10
+    assert_count_results "e:ktk mana=MNO", 15
+  end
+
   def test_stemming
     assert_search_equal "vision", "visions"
   end
