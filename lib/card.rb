@@ -78,7 +78,7 @@ class Card
   def first_release_date(filter="all")
     case filter
       when "full"
-        @printings.select{|pr| pr.set_type != 'promo'}.map(&:release_date).compact.min
+        @printings.select{|pr| !%w(promo masters).include?(pr.set_type)}.map(&:release_date).compact.min
       when "expert"
         @printings.select{|pr| %w(core expansion).include?(pr.set_type)}.map(&:release_date).compact.min
       else
@@ -89,7 +89,7 @@ class Card
   def last_release_date(filter="all")
     case filter
       when "full"
-        @printings.select{|pr| pr.set_type != 'promo'}.map(&:release_date).compact.max
+        @printings.select{|pr| !%w(promo masters).include?(pr.set_type)}.map(&:release_date).compact.max
       when "expert"
         @printings.select{|pr| %w(core expansion).include?(pr.set_type)}.map(&:release_date).compact.max
       else

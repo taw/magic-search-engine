@@ -18,7 +18,11 @@ class ConditionPrint < Condition
     query_date, precision = parse_query_date(db)
     if query_date
       max_date = db.resolve_time(@time)
-      db.printings.select{|card| match_date?(get_date(card, max_date), query_date, precision)}.to_set
+      ps = db.printings.select{|card| match_date?(get_date(card, max_date), query_date, precision)}.to_set
+
+      # avoid getting an and un confused
+      ps.select!{|printing| printing.set_code == @date} unless @date.is_a?(Date) || @op != '='
+      ps
     else
       db.printings.to_set
     end

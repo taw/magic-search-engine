@@ -38,6 +38,15 @@ class ConditionSetType < Condition
         sets << set
       end
 
+      # file tempest remastered with "masters" sets
+      if set.code == "tpr"
+        if type_list.include?("masters")
+          sets << set
+        else
+          next
+        end
+      end
+
       if type_list.include?(set.type)
         sets << set
       end
