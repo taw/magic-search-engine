@@ -1,7 +1,7 @@
 # This condition checks printing, first/lastprinted check card.
 # Should they check same thing?
 class ConditionPrint < Condition
-  def initialize(op, date, type)
+  def initialize(op, date, type = '')
     @op = op
     # Just for ConditionPrint#==
     if date.is_a?(Date)
@@ -21,7 +21,7 @@ class ConditionPrint < Condition
       ps = db.printings.select{|card| match_date?(get_date(card, max_date), query_date, precision)}.to_set
 
       # avoid getting an and un confused
-      ps.select!{|printing| printing.set_code == @date} unless @date.is_a?(Date) || @op != '='
+      ps.select!{|printing| printing.set_code == @date} if %w(an un).include?(@date)
       ps
     else
       db.printings.to_set

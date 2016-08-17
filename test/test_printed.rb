@@ -35,6 +35,7 @@ class PrintedTest < Minitest::Test
       "Karn, Silver Golem",
       "Masticore",
       "Memory Jar",
+      "Mox Diamond",
       "Sundering Titan",
       "Zuran Orb"
     # excludes cards reprinted in vintage masters
@@ -48,6 +49,26 @@ class PrintedTest < Minitest::Test
 
     assert_count_results "lastprint!=un", 27
     assert_count_results "lastprint=un", 25
-    assert_count_results "lastprint=un", 5
+    assert_count_results "lastprint*=un", 5
+  end
+
+  def test_unique_scenarios
+    # all reserved list cards that have been reprinted in paper nonetheless
+    assert_search_results "(lastprint>ud is:reserved) OR (lastprint*>ud st:promo is:reserved)",
+      "Deranged Hermit",
+      "Intuition",
+      "Karn, Silver Golem",
+      "Lightning Dragon",
+      "Masticore",
+      "Memory Jar",
+      "Morphling",
+      "Mox Diamond",
+      "Phyrexian Dreadnought",
+      "Phyrexian Negator",
+      "Powder Keg",
+      "Survival of the Fittest",
+      "Thawing Glaciers",
+      "Wheel of Fortune",
+      "Yawgmoth's Will"
   end
 end
