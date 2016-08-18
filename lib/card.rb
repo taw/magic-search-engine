@@ -76,27 +76,11 @@ class Card
   end
 
   def first_release_date(filter="all")
-    case filter
-      when "full"
-        @printings.select{|pr| !%w(promo masters).include?(pr.set_type) && pr.set_code != 'tpr'}.map(&:release_date)
-          .compact.min
-      when "expert"
-        @printings.select{|pr| %w(core expansion).include?(pr.set_type)}.map(&:release_date).compact.min
-      else
-        @printings.map(&:release_date).compact.min
-    end
+    @printings.select{|pr| verify_set_type(pr, filter)}.map(&:release_date).compact.min
   end
 
   def last_release_date(filter="all")
-    case filter
-      when "full"
-        @printings.select{|pr| !%w(promo masters).include?(pr.set_type) && pr.set_code != 'tpr'}.map(&:release_date)
-          .compact.max
-      when "expert"
-        @printings.select{|pr| %w(core expansion).include?(pr.set_type)}.map(&:release_date).compact.max
-      else
-        @printings.map(&:release_date).compact.max
-    end
+    @printings.select{|pr| verify_set_type(pr, filter)}.map(&:release_date).compact.max
   end
 
   private
@@ -162,5 +146,16 @@ class Card
       ci << tci if tci
     end
     ci.uniq.join
+  end
+
+  def verify_set_type(pr, type)
+    case type
+      when "full"
+        !%w(promo masters).include?(pr.set_type) && pr.set_code != 'tpr'
+      when "expert"
+        %w(core expansion).include?(pr.set_type)
+      else
+        true
+    end
   end
 end
