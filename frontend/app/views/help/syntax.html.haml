@@ -1,222 +1,224 @@
-%h3 Search Help
+.row
+  .col-xs-12
+    %h3 Search Help
 
-%div
-  Most syntax from magiccards.info works here. Everything is case insensitive. All Unicode characters like "Æ" can be spelled with their plain equivalents like "Ae" as well.
+    %div
+      Most syntax from magiccards.info works here. Everything is case insensitive. All Unicode characters like "Æ" can be spelled with their plain equivalents like "Ae" as well.
 
-%h4 Search by name
-%ul
-  = search_help "channel", %Q[cards with "channel" in name]
-  = search_help "!channel", %Q[cards with name exactly "channel" (only works as complete query)]
-  = search_help %Q["sword of"], %Q[cards with "sword of" in name]
+    %h4 Search by name
+    %ul
+      = search_help "channel", %Q[cards with "channel" in name]
+      = search_help "!channel", %Q[cards with name exactly "channel" (only works as complete query)]
+      = search_help %Q["sword of"], %Q[cards with "sword of" in name]
 
-%h4 Search by type
-%div By default non-Standard cards (planes, vanguard, conspiracies etc.) are not included.
+    %h4 Search by type
+    %div By default non-Standard cards (planes, vanguard, conspiracies etc.) are not included.
 
-%ul
-  = search_help "t:goblin", "search for Goblin cards"
-  = search_help 't:"goblin warrior"', "search for Goblin Warrior cards"
-  = search_help 't:"legendary land"', "search for Legendary Land cards"
-  = search_help "is:permanent", "search for permanent cards (that is not instant / sorceries)"
-  = search_help "is:spell", "search for spell cards (that is not lands)"
-  = search_help "t:*", "search in all cards, including special cards"
-  = search_help "t:plane", "search Plane cards (not included by default)"
-  = search_help "t:vryn", "search Plane cards with type Vryn (not included by default)"
+    %ul
+      = search_help "t:goblin", "search for Goblin cards"
+      = search_help 't:"goblin warrior"', "search for Goblin Warrior cards"
+      = search_help 't:"legendary land"', "search for Legendary Land cards"
+      = search_help "is:permanent", "search for permanent cards (that is not instant / sorceries)"
+      = search_help "is:spell", "search for spell cards (that is not lands)"
+      = search_help "t:*", "search in all cards, including special cards"
+      = search_help "t:plane", "search Plane cards (not included by default)"
+      = search_help "t:vryn", "search Plane cards with type Vryn (not included by default)"
 
-%h4 Search by Oracle text
-%div Reminder text is not included in Oracle search
+    %h4 Search by Oracle text
+    %div Reminder text is not included in Oracle search
 
-%ul
-  = search_help "o:delve", %Q[search cards with "delve" in Oracle text]
-  = search_help %Q[o:"destroy target creature"], %Q[search cards with "destroy target creature" in Oracle text]
-  = search_help "o:flying", %Q[search cards with "flynig" in Oracle text - without cards with rearch simply in reminder text like ones with reach ability]
+    %ul
+      = search_help "o:delve", %Q[search cards with "delve" in Oracle text]
+      = search_help %Q[o:"destroy target creature"], %Q[search cards with "destroy target creature" in Oracle text]
+      = search_help "o:flying", %Q[search cards with "flynig" in Oracle text - without cards with rearch simply in reminder text like ones with reach ability]
 
-%h4 Search by edition
-%ul
-  = search_help "e:bfz", %Q[cards from "Battle for Zendikar" set]
-  = search_help %Q[e:"scars of mirrodin"], %Q[cards from "Scars of Mirrodin" set]
-  = search_help %Q[e:ascension], %Q[cards from all sets including "ascension" in name (only if there's no exact match)]
+    %h4 Search by edition
+    %ul
+      = search_help "e:bfz", %Q[cards from "Battle for Zendikar" set]
+      = search_help %Q[e:"scars of mirrodin"], %Q[cards from "Scars of Mirrodin" set]
+      = search_help %Q[e:ascension], %Q[cards from all sets including "ascension" in name (only if there's no exact match)]
 
-%h4 Search by block
-%ul
-  = search_help "b:zendikar", "cards from Zendikar block"
-  = search_help "b:isd", "cards from Innistrad block"
-  = search_help %Q[b:"return to ravnica"], %Q[cards from "Return to Ravnica" block]
+    %h4 Search by block
+    %ul
+      = search_help "b:zendikar", "cards from Zendikar block"
+      = search_help "b:isd", "cards from Innistrad block"
+      = search_help %Q[b:"return to ravnica"], %Q[cards from "Return to Ravnica" block]
 
-%h4 Search by color
-%ul
-  = search_help "c:w", "white cards (possibly also other colors)"
-  = search_help "c!w", "white cards (no other colors)"
-  = search_help "c:c", "colorless nonland cards"
-  = search_help "c:l", "colorless land cards"
-  = search_help "c:m", "multicolored cards"
-  = search_help "c:wu", "blue or white cards"
-  = search_help "c!wu", "blue or white cards (but other colors)"
+    %h4 Search by color
+    %ul
+      = search_help "c:w", "white cards (possibly also other colors)"
+      = search_help "c!w", "white cards (no other colors)"
+      = search_help "c:c", "colorless nonland cards"
+      = search_help "c:l", "colorless land cards"
+      = search_help "c:m", "multicolored cards"
+      = search_help "c:wu", "blue or white cards"
+      = search_help "c!wu", "blue or white cards (but other colors)"
 
-%h4 Search by color identity
-%ul
-  = search_help "ci:rg", "cards with color identity allowed in red/green commander deck"
-  = search_help "ci:c", "cards with color identity allowed in colorless commander deck"
+    %h4 Search by color identity
+    %ul
+      = search_help "ci:rg", "cards with color identity allowed in red/green commander deck"
+      = search_help "ci:c", "cards with color identity allowed in colorless commander deck"
 
-%h4 Search by converted mana cost
-%ul
-  = search_help "cmc=3", "cards with converted mana cost 3"
-  = search_help "cmc>=3", "cards with converted mana cost 3 or more"
-  = search_help "cmc<2", "cards with converted mana cost less than 2"
+    %h4 Search by converted mana cost
+    %ul
+      = search_help "cmc=3", "cards with converted mana cost 3"
+      = search_help "cmc>=3", "cards with converted mana cost 3 or more"
+      = search_help "cmc<2", "cards with converted mana cost less than 2"
 
-%h4 Search by mana cost
-%div For sake of this search every mana symbol is treated as non-comparable, so "{u}" is neither greater or less than "{u/b}" etc. There's a lot of flexibility, so "{up}", "{u/p}", "{P/U}" etc. all work for Phyrexian blue mana. Curly braces are only needed for non-standard mana types.
+    %h4 Search by mana cost
+    %div For sake of this search every mana symbol is treated as non-comparable, so "{u}" is neither greater or less than "{u/b}" etc. There's a lot of flexibility, so "{up}", "{u/p}", "{P/U}" etc. all work for Phyrexian blue mana. Curly braces are only needed for non-standard mana types.
 
-%ul
-  = search_help "mana=0", "cards with mana cost {0} - does not include cards with no mana cost"
-  = search_help "mana<=4", "cards with mana cost {4} or less"
-  = search_help "mana=3uu", "cards with mana cost {3}{u}{u}"
-  = search_help "mana={3}{u}{u}", "cards with mana cost {3}{u}{u}"
-  = search_help "mana>={b/g}", "cards with mana cost including {b/g} hybrid mana"
-  = search_help "mana>={2/r}", "cards with mana cost including {2/r} Shadowmoor hybrid mana"
-  = search_help "mana={p/r}", "cards with mana cost equal {p/r} Phyrexian mana"
+    %ul
+      = search_help "mana=0", "cards with mana cost {0} - does not include cards with no mana cost"
+      = search_help "mana<=4", "cards with mana cost {4} or less"
+      = search_help "mana=3uu", "cards with mana cost {3}{u}{u}"
+      = search_help "mana={3}{u}{u}", "cards with mana cost {3}{u}{u}"
+      = search_help "mana>={b/g}", "cards with mana cost including {b/g} hybrid mana"
+      = search_help "mana>={2/r}", "cards with mana cost including {2/r} Shadowmoor hybrid mana"
+      = search_help "mana={p/r}", "cards with mana cost equal {p/r} Phyrexian mana"
 
-%h4 Search by power, toughness, and loyalty
-%ul
-  = search_help "pow=4", "creature cards with power 4"
-  = search_help "tou>=5", "creature cards with toughness 5 or more"
-  = search_help "pow>tou", "creature cards with power greater than toughness"
-  = search_help "tou=cmc", "creature cards with toughness equal to converted mana cost"
-  = search_help "loyalty=3", "planeswalker cards with starting loyalty 3"
-  = search_help "pow=1+*", "creature cards with power equal 1+*"
-  = search_help "tou=7-*", "creature cards with toughness equal 7-*"
-  = search_help "pow>=*", "creature cards with power equal *, 1+*, or 2+*"
+    %h4 Search by power, toughness, and loyalty
+    %ul
+      = search_help "pow=4", "creature cards with power 4"
+      = search_help "tou>=5", "creature cards with toughness 5 or more"
+      = search_help "pow>tou", "creature cards with power greater than toughness"
+      = search_help "tou=cmc", "creature cards with toughness equal to converted mana cost"
+      = search_help "loyalty=3", "planeswalker cards with starting loyalty 3"
+      = search_help "pow=1+*", "creature cards with power equal 1+*"
+      = search_help "tou=7-*", "creature cards with toughness equal 7-*"
+      = search_help "pow>=*", "creature cards with power equal *, 1+*, or 2+*"
 
-%h4 Boolean expressions
-%ul
-  = search_help "t:goblin AND cmc=2", "cards which are Goblins and have converted mana cost 2"
-  = search_help "t:goblin AND cmc=2", "cards which are Goblins and have converted mana cost 2 (AND is optional)"
-  = search_help "t:goblin OR cmc=2", "cards which are Goblins or have converted mana cost 2"
-  = search_help "c:u (t:goblin OR t:elf)", "cards which are blue Goblins or blue Elves"
-  = search_help "t:goblin -cmc=2", "cards which are Goblins but do not have converted mana cost 2"
-  = search_help "t:goblin not cmc=2", "cards which are Goblins but do not have converted mana cost 2"
+    %h4 Boolean expressions
+    %ul
+      = search_help "t:goblin AND cmc=2", "cards which are Goblins and have converted mana cost 2"
+      = search_help "t:goblin AND cmc=2", "cards which are Goblins and have converted mana cost 2 (AND is optional)"
+      = search_help "t:goblin OR cmc=2", "cards which are Goblins or have converted mana cost 2"
+      = search_help "c:u (t:goblin OR t:elf)", "cards which are blue Goblins or blue Elves"
+      = search_help "t:goblin -cmc=2", "cards which are Goblins but do not have converted mana cost 2"
+      = search_help "t:goblin not cmc=2", "cards which are Goblins but do not have converted mana cost 2"
 
-%h4 Search by rarity
-%ul
-  = search_help "r:common", "common cards"
-  = search_help "r:uncommon", "uncommon cards"
-  = search_help "r:rare", "rare cards"
-  = search_help "r:mythic", "mythic rare cards"
+    %h4 Search by rarity
+    %ul
+      = search_help "r:common", "common cards"
+      = search_help "r:uncommon", "uncommon cards"
+      = search_help "r:rare", "rare cards"
+      = search_help "r:mythic", "mythic rare cards"
 
-%h4 Search by flavor text
-%ul
-  = search_help "ft:chandra", %Q[cards with "chandra" in flavor text]
-  = search_help %Q[ft:"Jaya Ballard"], %Q[cards with "Jaya Ballard" in flavor text]
+    %h4 Search by flavor text
+    %ul
+      = search_help "ft:chandra", %Q[cards with "chandra" in flavor text]
+      = search_help %Q[ft:"Jaya Ballard"], %Q[cards with "Jaya Ballard" in flavor text]
 
-%h4 Search by artist
-%ul
-  = search_help %Q[a:argyle"], "cards with art drawn by (Steve) Argyle"
-  = search_help %Q[a:"rebecca guay"], "cards with art drawn by Rebecca Guay"
+    %h4 Search by artist
+    %ul
+      = search_help %Q[a:argyle"], "cards with art drawn by (Steve) Argyle"
+      = search_help %Q[a:"rebecca guay"], "cards with art drawn by Rebecca Guay"
 
-%h4 Search by format
-%ul
-  = search_help "legal:standard", "cards legal in Standard format"
-  = search_help "restricted:vintage", "cards restricted in Vintage format"
-  = search_help "f:vintage", "cards legal (or restricted) in Vintage format"
-  = search_help %Q[banned:pauper], "cards banned in Pauper format (doesn't include cards which aren't in format in the first place)"
-  = search_help %Q[f:commander], "cards legal in Commander format"
-  = search_help %Q[f:edh], "cards legal in Commander format"
-  = search_help %Q[f:"innistrad block"], "cards legal in Innistrad Block Constructed format"
+    %h4 Search by format
+    %ul
+      = search_help "legal:standard", "cards legal in Standard format"
+      = search_help "restricted:vintage", "cards restricted in Vintage format"
+      = search_help "f:vintage", "cards legal (or restricted) in Vintage format"
+      = search_help %Q[banned:pauper], "cards banned in Pauper format (doesn't include cards which aren't in format in the first place)"
+      = search_help %Q[f:commander], "cards legal in Commander format"
+      = search_help %Q[f:edh], "cards legal in Commander format"
+      = search_help %Q[f:"innistrad block"], "cards legal in Innistrad Block Constructed format"
 
-%h4 Search by watermark
-%ul
-  = search_help "w:izzet", "cards with Izzet watermark (Return to Ravnica block)"
-  = search_help "w:phyrexian", "cards with Phyrexian watermark (Scars of Mirrodin block)"
+    %h4 Search by watermark
+    %ul
+      = search_help "w:izzet", "cards with Izzet watermark (Return to Ravnica block)"
+      = search_help "w:phyrexian", "cards with Phyrexian watermark (Scars of Mirrodin block)"
 
-%h4 Search by card frame features
-%div For each of these you can use not: as opposite of is:. Data might occasionally be inaccurate for some promo printings.
-%ul
-  = search_help "is:black-bordered", "cards with black borders"
-  = search_help "not:black-bordered", "cards with borders other than black"
-  = search_help "is:white-bordered", "cards with white borders"
-  = search_help "is:silver-bordered", "cards with silver borders"
-  = search_help "is:old", "cards with old-style frames"
-  = search_help "is:new", "cards with new-style frames"
-  = search_help "is:future", "cards with future-style frames"
-  = search_help "is:timeshifted", "timeshifted cards"
-  = search_help "is:split", "split cards"
-  = search_help "is:flip", "flip cards (Kamigawa)"
-  = search_help "is:dfc", "double-faced cards"
-  = search_help "is:multipart", "multi-part cards (split, flip, or dfc)"
-  = search_help "is:funny", "cards from funny sets"
-  = search_help "is:promo", "promotional cards"
-  = search_help "is:meld", "meld cards"
+    %h4 Search by card frame features
+    %div For each of these you can use not: as opposite of is:. Data might occasionally be inaccurate for some promo printings.
+    %ul
+      = search_help "is:black-bordered", "cards with black borders"
+      = search_help "not:black-bordered", "cards with borders other than black"
+      = search_help "is:white-bordered", "cards with white borders"
+      = search_help "is:silver-bordered", "cards with silver borders"
+      = search_help "is:old", "cards with old-style frames"
+      = search_help "is:new", "cards with new-style frames"
+      = search_help "is:future", "cards with future-style frames"
+      = search_help "is:timeshifted", "timeshifted cards"
+      = search_help "is:split", "split cards"
+      = search_help "is:flip", "flip cards (Kamigawa)"
+      = search_help "is:dfc", "double-faced cards"
+      = search_help "is:multipart", "multi-part cards (split, flip, or dfc)"
+      = search_help "is:funny", "cards from funny sets"
+      = search_help "is:promo", "promotional cards"
+      = search_help "is:meld", "meld cards"
 
-%h4 Search by reserved list status
-%ul
-  = search_help "is:reserved", "cards on reserved list"
-  = search_help "not:reserved", "cards not on reserved list"
+    %h4 Search by reserved list status
+    %ul
+      = search_help "is:reserved", "cards on reserved list"
+      = search_help "not:reserved", "cards not on reserved list"
 
-%h4 Search by card layout
-%div Selecting non-standard layout expands search to special cards as well
+    %h4 Search by card layout
+    %div Selecting non-standard layout expands search to special cards as well
 
-%ul
-  = search_help "layout:normal", "cards with normal layout"
-  = search_help "layout:leveler", "cards with leveler layout"
-  = search_help "layout:vanguard", "cards with vanguard layout (not included by deafult)"
-  = search_help "layout:dfc", "cards with dfc layout"
-  = search_help "layout:split", "cards with split layout"
-  = search_help "layout:flip", "cards with flip layout"
-  = search_help "layout:plane", "cards with plane layout (not included by deafult)"
-  = search_help "layout:scheme", "cards with scheme layout (not included by deafult)"
-  = search_help "layout:phenomenon", "cards with phenomenon layout (not included by deafult)"
+    %ul
+      = search_help "layout:normal", "cards with normal layout"
+      = search_help "layout:leveler", "cards with leveler layout"
+      = search_help "layout:vanguard", "cards with vanguard layout (not included by deafult)"
+      = search_help "layout:dfc", "cards with dfc layout"
+      = search_help "layout:split", "cards with split layout"
+      = search_help "layout:flip", "cards with flip layout"
+      = search_help "layout:plane", "cards with plane layout (not included by deafult)"
+      = search_help "layout:scheme", "cards with scheme layout (not included by deafult)"
+      = search_help "layout:phenomenon", "cards with phenomenon layout (not included by deafult)"
 
-%h4 Search by printing time
-%div For printing time you can use set code, set name, or full date in more or less any format as long as it includes 4-digit year somewhere.
+    %h4 Search by printing time
+    %div For printing time you can use set code, set name, or full date in more or less any format as long as it includes 4-digit year somewhere.
 
-%div firstprint: operator can be somewhat confusing, as a lot of cards which you'd technically consider to come out in a set technically came out in a Prerelease (dated one week before) or a Duel Deck (a few weeks before) that set. Online-only sets are included too.
+    %div firstprint: operator can be somewhat confusing, as a lot of cards which you'd technically consider to come out in a set technically came out in a Prerelease (dated one week before) or a Duel Deck (a few weeks before) that set. Online-only sets are included too.
 
-%ul
-  = search_help "year=2003", "cards printed in year 2003"
-  = search_help "year<=1995", "cards printed in year 1995 or before"
-  = search_help "print>ktk", "cards printed after release of Khans of Tarkir"
-  = search_help %Q[print="29 September 2012"], "cards printed on 29 September 2012 (Return to Ravnica prerelease)"
-  = search_help "firstprint=m10", "cards first printed in Magic 2010 set"
-  = search_help "lastprint=m10", "cards last printed in Magic 2010 set"
-  = search_help "lastprint<lw", "cards last printed in in Lorwyn set or earlier"
+    %ul
+      = search_help "year=2003", "cards printed in year 2003"
+      = search_help "year<=1995", "cards printed in year 1995 or before"
+      = search_help "print>ktk", "cards printed after release of Khans of Tarkir"
+      = search_help %Q[print="29 September 2012"], "cards printed on 29 September 2012 (Return to Ravnica prerelease)"
+      = search_help "firstprint=m10", "cards first printed in Magic 2010 set"
+      = search_help "lastprint=m10", "cards last printed in Magic 2010 set"
+      = search_help "lastprint<lw", "cards last printed in in Lorwyn set or earlier"
 
-%h4 Search by other part
-%div Every card part (of split, flip, or double-faced card) is treated as separate object, so search like cmc=2 cmc=3 won't return anything, as no part has cmc of 2 and 3 simultaneously. There's special syntax for that.
+    %h4 Search by other part
+    %div Every card part (of split, flip, or double-faced card) is treated as separate object, so search like cmc=2 cmc=3 won't return anything, as no part has cmc of 2 and 3 simultaneously. There's special syntax for that.
 
-%ul
-  = search_help "cmc=2 // cmc=3", "cards with converted mana cost 2 or one side and converted mana cost 3 on another (split spells)"
-  = search_help "t:creature // t:planeswalker", "cards where one side is a creature and the other side is a planeswalker (Magic Origins Planeswalkers)"
-  = search_help "t:creature //", "cards where one side is a creature, and there's other side"
-  = search_help "far // away", "card named Far on one side and Away on another side"
+    %ul
+      = search_help "cmc=2 // cmc=3", "cards with converted mana cost 2 or one side and converted mana cost 3 on another (split spells)"
+      = search_help "t:creature // t:planeswalker", "cards where one side is a creature and the other side is a planeswalker (Magic Origins Planeswalkers)"
+      = search_help "t:creature //", "cards where one side is a creature, and there's other side"
+      = search_help "far // away", "card named Far on one side and Away on another side"
 
-%div There's also lower level syntax if you prefer that. Unlike // it will return only specifically requested side, not both.
-%ul
-  = search_help "cmc=2 other:w", "cards parts with converted mana cost 2, for which other side is white"
-  = search_help "cmc=2 part:w", "cards parts with converted mana cost 2, for which either side is white"
+    %div There's also lower level syntax if you prefer that. Unlike // it will return only specifically requested side, not both.
+    %ul
+      = search_help "cmc=2 other:w", "cards parts with converted mana cost 2, for which other side is white"
+      = search_help "cmc=2 part:w", "cards parts with converted mana cost 2, for which either side is white"
 
-%h4 Search by alternative printing
-%div Every card printing is treated as separate object, so you can't search for cards which were printing in both Magic 2010 and Magic 2011 with e:m10 e:m11. There's special syntax for that.
+    %h4 Search by alternative printing
+    %div Every card printing is treated as separate object, so you can't search for cards which were printing in both Magic 2010 and Magic 2011 with e:m10 e:m11. There's special syntax for that.
 
-%ul
-  = search_help "e:m10 alt:e:m11", "cards from Magic 2010 which were also printed in Magic 2011"
-  = search_help %Q[a:"Rebecca Guay" alt:(not a:"Rebecca Guay")], "cards drawn by Rebecca Guay which were also printed by someone who's not Rebecca Guay"
+    %ul
+      = search_help "e:m10 alt:e:m11", "cards from Magic 2010 which were also printed in Magic 2011"
+      = search_help %Q[a:"Rebecca Guay" alt:(not a:"Rebecca Guay")], "cards drawn by Rebecca Guay which were also printed by someone who's not Rebecca Guay"
 
-%h4 Time travel
-%div You can travel to any time by specifying set code, set name, or full date (partial date like "1999" will be interpretted as "1 January 1999"). Cards printed since then won't be returned, and status of various formats will be as it was at that time. So if you want to argue about what was best Modern Pod deck back in that time just roll back the time to before the ban and enjoy.
+    %h4 Time travel
+    %div You can travel to any time by specifying set code, set name, or full date (partial date like "1999" will be interpretted as "1 January 1999"). Cards printed since then won't be returned, and status of various formats will be as it was at that time. So if you want to argue about what was best Modern Pod deck back in that time just roll back the time to before the ban and enjoy.
 
-%div Formats should generally be fully accurate from 2004 onwards (Legacy/Vintage split), information about older times might contain inaccuracies.
+    %div Formats should generally be fully accurate from 2004 onwards (Legacy/Vintage split), information about older times might contain inaccuracies.
 
-%ul
-  = search_help "time:rtr f:standard", "all cards in Standard at time of Return to Ravnica set"
-  = search_help %Q[time:"1 march 2009" banned:commander], "Commander banned cards as of 1 March 2009"
-  = search_help "time:m10 t:planeswalker", "All Planeswalker cards in existence as of printing of Magic 2010 set"
-  = search_help "time:2010 restricted:commander", %Q[Cards restricted in Commander as of beginning of 2010 (in Commander context "restricted" means historical contept of "banned as general"]
+    %ul
+      = search_help "time:rtr f:standard", "all cards in Standard at time of Return to Ravnica set"
+      = search_help %Q[time:"1 march 2009" banned:commander], "Commander banned cards as of 1 March 2009"
+      = search_help "time:m10 t:planeswalker", "All Planeswalker cards in existence as of printing of Magic 2010 set"
+      = search_help "time:2010 restricted:commander", %Q[Cards restricted in Commander as of beginning of 2010 (in Commander context "restricted" means historical contept of "banned as general"]
 
-%h4 Sort results
-%div Use sort: operator to order results in a different way. By default alphabetical sorting is used.
+    %h4 Sort results
+    %div Use sort: operator to order results in a different way. By default alphabetical sorting is used.
 
-%ul
-  = search_help "sort:name", "sort by name alphabetically (default)"
-  = search_help "sort:new", "sort results by most recent first, counting only regular sets for sake of order (other printings will go at end of results)"
-  = search_help "sort:newall", "sort results by most recent first, counting all printings"
-  = search_help "sort:ord", "sort results by oldest first, counting only regular sets for sake of order"
-  = search_help "sort:ordall", "sort results by oldest first, counting all printings"
+    %ul
+      = search_help "sort:name", "sort by name alphabetically (default)"
+      = search_help "sort:new", "sort results by most recent first, counting only regular sets for sake of order (other printings will go at end of results)"
+      = search_help "sort:newall", "sort results by most recent first, counting all printings"
+      = search_help "sort:ord", "sort results by oldest first, counting only regular sets for sake of order"
+      = search_help "sort:ordall", "sort results by oldest first, counting all printings"

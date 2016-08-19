@@ -1,22 +1,20 @@
 - if @warnings.present?
-  .warnings
-    - @warnings.each do |warning|
-      .warning= warning
+  .row
+    .col-xs-12.warnings
+      - @warnings.each do |warning|
+        .warning= warning
 - if @search.present?
-  - if @cards.present?
-    %table
-      - @cards.each do |card, matching_printing|
-        %tr
-          %td
-            = render 'card/picture', card: card
-          %td
-            %div.card
-              = render 'card', card: card
-              - if @cards.total_entries == 1
-                = render 'card_extra', card: card
-          %td
-            = render 'printings', card: card, printings: matching_printing
-    = will_paginate @cards
-  - else
-    .zero_results
-      No results found.
+  = render 'summary'
+  - @cards.each do |card, matching_printing|
+    .row.card_row
+      .col-xs-12.col-sm-6.col-md-4.card_picture_cell
+        = render 'card/picture', card: card
+      .col-xs-12.col-sm-6.cardinfo
+        = render 'card', card: card
+        - if @cards.total_entries == 1
+          = render 'card_extra', card: card
+      .hidden-sm-down.col-md-2
+        = render 'printings', card: card, printings: matching_printing
+  .row
+    .col-xs-12.pagination
+      = will_paginate @cards

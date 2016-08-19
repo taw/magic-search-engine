@@ -1,0 +1,6 @@
+.row.results_summary
+  .col-xs-12
+    - if @cards.present?
+      #{pluralize(@cards.total_entries, "card")} found
+    - else
+      No cards found
