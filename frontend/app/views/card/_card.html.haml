@@ -12,7 +12,8 @@
   %div.flavor= format_oracle_text(card.flavor)
 
 - if card.power
-  %div= "#{card.power}/#{card.toughness}"
+  %div.power_toughness
+    = "#{card.power}/#{card.toughness}"
 
 - if card.loyalty
   %div

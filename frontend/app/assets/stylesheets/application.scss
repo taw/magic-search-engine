@@ -1,42 +1,8 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+// Custom bootstrap variables must be set or imported before bootstrap itself.
+@import "bootstrap";
 
-form.search {
-  input[type="text"] {
-    width: 500px;
-    font-size: 120%;
-  }
-}
-
-td, th {
-  vertical-align: top;
-}
-
-.rule {
-  margin-bottom: 0.5em;
-  .rule_id {
-    font-weight: bold;
-  }
-}
-
-.glossary_entry {
-  margin-bottom: 0.5em;
-  .glossary_term {
-    font-weight: bold;
-  }
+a.site_logo {
+  color: black;
 }
 
 .warnings {
@@ -46,65 +12,56 @@ td, th {
   .warning {}
 }
 
-.zero_results {
+.results_summary {
   font-style: italic;
   margin-bottom: 0.5em;
 }
 
-.card_picture_container {
-  width: 223px;
-  height: 310px;
-  position: relative;
+div.pagination {
+  text-align: center;
+}
+.pagination {
+  color: #888;
+  font-size: small;
+  a {
+    color: #88f;
+  }
+  margin-bottom: 0.5em;
+}
 
-  img.card_picture {
-    max-width: 223px;
-    max-height: 310px;
-    margin-right: 10px;
-    left: 0;
-    top: 0;
-    position: absolute;
-    transition: 0.5s ease;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-
-    &.flip:hover {
-      transform: rotateZ(180deg);
-    }
-    &.split:hover {
-      transform: translateX(44px) rotateZ(90deg);
-    }
+form.search {
+  input[type="text"] {
+    width: 100%;
   }
-  & .dfc {
-  }
-  &:hover .dfc {
-    transform: rotateY(180deg);
-  }
-  & .dfc_reverse {
-    transform: rotateY(180deg);
-  }
-  &:hover .dfc_reverse {
-    transform: rotateY(360deg);
-  }
-  & .melded {
-  }
-  &:hover .melded {
-    transform: translate(225px) rotateY(180deg);
-  }
-  & .meld0 {
-    transform: rotateY(180deg);
-  }
-  & .meld1 {
-    transform: rotateY(180deg);
-  }
-  &:hover .meld0 {
-    transform: translate(225px) rotateY(360deg);
-  }
-  &:hover .meld1 {
-    transform: rotateY(360deg);
+  input[type="submit"] {
+    width: 100%;
   }
 }
-.card {
-  width: 450px;
+
+.search_form_row {
+  margin-bottom: 1em;
+}
+
+.nav_row {
+  margin-top: 1em;
+  text-align: center;
+}
+
+.glossary_entry {
+  margin-bottom: 0.5em;
+  .glossary_term {
+    font-weight: bold;
+  }
+}
+
+.rule {
+  margin-bottom: 0.5em;
+  .rule_id {
+    font-weight: bold;
+  }
+}
+
+.cardinfo {
   margin-bottom: 0.5em;
   h3.card_title {
     margin-top: 0;
@@ -129,10 +86,20 @@ td, th {
   }
   .typeline {
     margin-bottom: 0.25em;
+    font-weight: bold;
+  }
+  .power_toughness {
+    font-weight: bold;
   }
   .oracle {
     margin-top: 0.25em;
     margin-bottom: 0.25em;
+  }
+  .rulings {
+    font-size: small;
+    font-style: italic;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
   }
 }
 
@@ -149,33 +116,66 @@ td, th {
     color: #888;
   }
 }
+.card_row {
+  position: relative;
+}
+.card_picture_cell {
+  padding: 2%;
+}
+.card_picture_container {
+  position: relative;
+  img {
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: relative;
+    z-index: 1;
 
-a {
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
+    transition: 0.5s ease;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    &.flip:hover {
+      transform: rotateZ(180deg);
+    }
+    &.split:hover {
+      transform: translateX(20%) rotateZ(90deg);
+    }
+  }
+  & .dfc {
+  }
+  &:hover .dfc {
+    transform: rotateY(180deg);
+  }
+  & .dfc_reverse {
+    position: absolute;
+    transform: rotateY(180deg);
+  }
+  &:hover .dfc_reverse {
+    transform: rotateY(360deg);
+  }
+  & .melded {
+  }
+  &:hover .melded {
+    transform: translate(100%) rotateY(180deg);
+  }
+  & .meld0 {
+    position: absolute;
+    transform: rotateY(180deg);
+  }
+  & .meld1 {
+    position: absolute;
+    transform: rotateY(180deg);
+  }
+  &:hover .meld0 {
+    transform: translate(100%) rotateY(360deg);
+  }
+  &:hover .meld1 {
+    transform: rotateY(360deg);
   }
 }
 
-a.site_logo {
-  color: black;
-}
-
-.footer {
-  margin-top: 1em;
-  text-align: center;
-  font-size: small;
-}
-
-.pagination {
-  color: #888;
-  font-size: small;
-  text-align: center;
-  a {
-    color: #88f;
-  }
-  margin-bottom: 0.5em;
-}
+/* Mana symbols */
 .mana {
   background-image:url("/mana_symbols2.png");
   display:inline-block;
@@ -186,15 +186,50 @@ a.site_logo {
   width: 15px;
   height: 15px;
 }
-
-.rulings {
-  font-size: small;
-  font-style: italic;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-}
-
-div {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-}
+.mana-x { background-position: -0px 0; }
+.mana-y { background-position: -15px 0; }
+.mana-0 { background-position: -30px 0; }
+.mana-1 { background-position: -45px 0; }
+.mana-2 { background-position: -60px 0; }
+.mana-3 { background-position: -75px 0; }
+.mana-4 { background-position: -90px 0; }
+.mana-5 { background-position: -105px 0; }
+.mana-6 { background-position: -120px 0; }
+.mana-7 { background-position: -135px 0; }
+.mana-8 { background-position: -150px 0; }
+.mana-9 { background-position: -165px 0; }
+.mana-10 { background-position: -180px 0; }
+.mana-11 { background-position: -195px 0; }
+.mana-12 { background-position: -210px 0; }
+.mana-15 { background-position: -255px 0; }
+.mana-16 { background-position: -270px 0; }
+.mana-20 { background-position: -330px 0; }
+.mana-w { background-position: -345px 0; }
+.mana-u { background-position: -360px 0; }
+.mana-b { background-position: -375px 0; }
+.mana-r { background-position: -390px 0; }
+.mana-g { background-position: -405px 0; }
+.mana-wu { background-position: -420px 0; }
+.mana-wb { background-position: -435px 0; }
+.mana-rw { background-position: -450px 0; }
+.mana-gw { background-position: -465px 0; }
+.mana-ub { background-position: -480px 0; }
+.mana-ur { background-position: -495px 0; }
+.mana-gu { background-position: -510px 0; }
+.mana-br { background-position: -525px 0; }
+.mana-bg { background-position: -540px 0; }
+.mana-rg { background-position: -555px 0; }
+.mana-2w { background-position: -570px 0; }
+.mana-2u { background-position: -585px 0; }
+.mana-2b { background-position: -600px 0; }
+.mana-2r { background-position: -615px 0; }
+.mana-2g { background-position: -630px 0; }
+.mana-s { background-position: -645px 0; }
+.mana-q { background-position: -660px 0; }
+.mana-t { background-position: -675px 0; }
+.mana-wp { background-position: -690px 0; }
+.mana-up { background-position: -705px 0; }
+.mana-bp { background-position: -720px 0; }
+.mana-rp { background-position: -735px 0; }
+.mana-gp { background-position: -750px 0; }
+.mana-c { background-position: -765px 0; }

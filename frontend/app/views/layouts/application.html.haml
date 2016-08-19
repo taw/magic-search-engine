@@ -1,9 +1,11 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:name => "description", :content => "Advanced Search Engine for Magic: the Gathering cards"}/
-    %meta{:name => "keywords", :content => "mtg, magic the gathering, cards, search engine"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{"http-equiv" => "X-UA-Compatible", content: "IE=edge"}/
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}/
+    %meta{name: "description", content: "Advanced Search Engine for Magic: the Gathering cards"}/
+    %meta{name: "keywords", content: "mtg, magic the gathering, cards, search engine"}/
     - if @title
       %title #{@title} - mtg.wtf
     - else
@@ -13,21 +15,29 @@
     %link{rel: "search", href: "http://mtg.wtf/opensearchdescription.xml", type: "application/opensearchdescription+xml", title: "mtg.wtf"}
     = csrf_meta_tags
   %body
-    %h1
-      %a.site_logo{href: "/"} mtg.wtf
-    = form_tag("/card", method: :get, class: "search", enforce_utf8: false) do
-      = text_field_tag(:q, @search, {autofocus: true})
-      = submit_tag("Search", name: nil)
-    = yield
-    %div.footer
-      = link_to controller: "set", action: "index" do
-        Sets
-      &bullet;
-      = link_to controller: "help", action: "syntax" do
-        Syntax Help
-      &bullet;
-      = link_to controller: "help", action: "rules" do
-        Rules
-      &bullet;
-      = link_to controller: "help", action: "contact" do
-        Contact
+    .container
+      .row.logo_row
+        .col-xs-12
+          %h1
+            %a.site_logo{href: "/"} mtg.wtf
+      .row.search_form_row
+        = form_tag("/card", method: :get, class: "search", enforce_utf8: false) do
+          .col-xs-12.col-md-10
+            = text_field_tag(:q, @search, {autofocus: true})
+          .col-xs-12.col-md-2
+            = submit_tag("Search", name: nil, class: "btn btn-default")
+      = yield
+      .row.nav_row
+        .col-xs-12
+          %nav.footer
+            = link_to controller: "set", action: "index" do
+              Sets
+            &bullet;
+            = link_to controller: "help", action: "syntax" do
+              Syntax Help
+            &bullet;
+            = link_to controller: "help", action: "rules" do
+              Rules
+            &bullet;
+            = link_to controller: "help", action: "contact" do
+              Contact

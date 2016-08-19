@@ -1,6 +1,8 @@
-%h3 Magic Sets
-%ul
-  - @sets.each do |set|
-    %li
-      = link_to_set(set) do
-        = "#{set.name} (#{set.code})"
+.row
+  .col-xs-12
+    %h3 Magic Sets
+    %ul
+      - @sets.each do |set|
+        %li
+          = link_to_set(set) do
+            = "#{set.name} (#{set.code})"
