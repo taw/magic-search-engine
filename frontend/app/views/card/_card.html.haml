@@ -35,7 +35,13 @@
 
 - if card.others.present?
   %span.infolabel
-    Card has other parts:
-  - card.others.each do |other|
-    = link_to_card(other) do
-      = other.name
+    - if card.others.size == 1
+      Card has other part:
+    - else
+      Card has other parts:
+    - card.others.each_with_index do |other, i|
+      = link_to_card(other) do
+        = other.name
+      - if i != card.others.size - 1
+        %small
+          &bullet;

@@ -122,6 +122,7 @@ form.search {
 .card_picture_cell {
   padding: 2%;
 }
+/* meld and split only enabled on sm+ devices */
 .card_picture_container {
   position: relative;
   img {
@@ -138,8 +139,10 @@ form.search {
     &.flip:hover {
       transform: rotateZ(180deg);
     }
-    &.split:hover {
-      transform: translateX(20%) rotateZ(90deg);
+    @media(min-width: 544px) {
+      &.split:hover {
+        transform: translateX(20%) rotateZ(90deg);
+      }  
     }
   }
   & .dfc {
@@ -156,9 +159,6 @@ form.search {
   }
   & .melded {
   }
-  &:hover .melded {
-    transform: translate(100%) rotateY(180deg);
-  }
   & .meld0 {
     position: absolute;
     transform: rotateY(180deg);
@@ -167,11 +167,16 @@ form.search {
     position: absolute;
     transform: rotateY(180deg);
   }
-  &:hover .meld0 {
-    transform: translate(100%) rotateY(360deg);
-  }
-  &:hover .meld1 {
-    transform: rotateY(360deg);
+  @media(min-width: 544px) {
+    &:hover .melded {
+      transform: translate(100%) rotateY(180deg);
+    }
+    &:hover .meld0 {
+      transform: translate(100%) rotateY(360deg);
+    }
+    &:hover .meld1 {
+      transform: rotateY(360deg);
+    }
   }
 }
 

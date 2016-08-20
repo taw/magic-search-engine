@@ -23,7 +23,7 @@
       .row.search_form_row
         = form_tag("/card", method: :get, class: "search", enforce_utf8: false) do
           .col-xs-12.col-md-10
-            = text_field_tag(:q, @search, {autofocus: true})
+            = text_field_tag(:q, @search, {autofocus: true, class: 'form-control'})
           .col-xs-12.col-md-2
             = submit_tag("Search", name: nil, class: "btn btn-default")
       = yield
