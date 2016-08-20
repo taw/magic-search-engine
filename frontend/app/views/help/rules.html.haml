@@ -624,18 +624,18 @@
     .rule{id: "section-106-5"}
       .rule_id 106.5.
       .rule_text If an ability would produce one or more mana of an undefined type, it produces no mana instead.
-      .rule_text Example: Meteor Crater has the ability “{T}: Choose a color of a permanent you control. Add one mana of that color to your mana pool.” If you control no colored permanents, activating Meteor Crater’s mana ability produces no mana.
+      .rule_text Example: Meteor Crater has the ability “<span class="mana mana-t">{T}</span>: Choose a color of a permanent you control. Add one mana of that color to your mana pool.” If you control no colored permanents, activating Meteor Crater’s mana ability produces no mana.
     .rule{id: "section-106-6"}
       .rule_id 106.6.
       .rule_text Some spells or abilities that produce mana restrict how that mana can be spent, have an additional effect that affects the spell or ability that mana is spent on, or create a delayed triggered ability (see rule <a href="#section-603-7a">603.7a</a>) that triggers when that mana is spent. This doesn’t affect the mana’s type.
-      .rule_text Example: A player’s mana pool contains {R}{G} which can be spent only to cast creature spells. That player activates Doubling Cube’s ability, which reads “{3}, {T}: Double the amount of each type of mana in your mana pool.” The player’s mana pool now has {R}{R}{G}{G} in it, {R}{G} of which can be spent on anything.
+      .rule_text Example: A player’s mana pool contains <span class="mana mana-r">{R}</span><span class="mana mana-g">{G}</span> which can be spent only to cast creature spells. That player activates Doubling Cube’s ability, which reads “<span class="mana mana-3">{3}</span>, <span class="mana mana-t">{T}</span>: Double the amount of each type of mana in your mana pool.” The player’s mana pool now has <span class="mana mana-r">{R}</span><span class="mana mana-r">{R}</span><span class="mana mana-g">{G}</span><span class="mana mana-g">{G}</span> in it, <span class="mana mana-r">{R}</span><span class="mana mana-g">{G}</span> of which can be spent on anything.
     .rule{id: "section-106-6a"}
       .rule_id 106.6a
       .rule_text Some replacement effects increase the amount of mana produced by a spell or ability. In these cases, any restrictions or additional effects created by the spell or ability will apply to all mana produced. If the spell or ability creates a delayed triggered ability that triggers when the mana is spent, a separate delayed triggered ability is created for each mana produced.
     .rule{id: "section-106-7"}
       .rule_id 106.7.
       .rule_text Some abilities produce mana based on the type of mana another permanent or permanents “could produce.” The type of mana a permanent could produce at any time includes any type of mana that an ability of that permanent would produce if the ability were to resolve at that time, taking into account any applicable replacement effects in any possible order. Ignore whether any costs of the ability could or could not be paid. If that permanent wouldn’t produce any mana under these conditions, or no type of mana can be defined this way, there’s no type of mana it could produce.
-      .rule_text Example: Exotic Orchard has the ability “{T}: Add to your mana pool one mana of any color that a land an opponent controls could produce.” If your opponent controls no lands, activating Exotic Orchard’s mana ability will produce no mana. The same is true if you and your opponent each control no lands other than Exotic Orchards. However, if you control a Forest and an Exotic Orchard, and your opponent controls an Exotic Orchard, then each Exotic Orchard could produce {G}.
+      .rule_text Example: Exotic Orchard has the ability “<span class="mana mana-t">{T}</span>: Add to your mana pool one mana of any color that a land an opponent controls could produce.” If your opponent controls no lands, activating Exotic Orchard’s mana ability will produce no mana. The same is true if you and your opponent each control no lands other than Exotic Orchards. However, if you control a Forest and an Exotic Orchard, and your opponent controls an Exotic Orchard, then each Exotic Orchard could produce <span class="mana mana-g">{G}</span>.
     .rule{id: "section-106-8"}
       .rule_id 106.8.
       .rule_text If an effect would add mana represented by a hybrid mana symbol to a player’s mana pool, that player chooses one half of that symbol. If a colored half is chosen, one mana of that color is added to that player’s mana pool. If a colorless half is chosen, an amount of colorless mana represented by that half’s number is added to that player’s mana pool.
@@ -647,7 +647,7 @@
       .rule_text If an effect would add mana represented by a generic mana symbol to a player’s mana pool, that much colorless mana is added to that player’s mana pool.
     .rule{id: "section-106-11"}
       .rule_id 106.11.
-      .rule_text To “tap a permanent for mana” is to activate a mana ability of that permanent that includes the {T} symbol in its activation cost. See rule <a href="#section-605">605</a>, “Mana Abilities.”
+      .rule_text To “tap a permanent for mana” is to activate a mana ability of that permanent that includes the <span class="mana mana-t">{T}</span> symbol in its activation cost. See rule <a href="#section-605">605</a>, “Mana Abilities.”
     .rule{id: "section-106-11a"}
       .rule_id 106.11a
       .rule_text An ability that triggers whenever a permanent “is tapped for mana” or “is tapped for mana [of a specified type]” triggers whenever such a mana ability resolves and produces mana or the specified type of mana.
@@ -667,7 +667,7 @@
       .rule_id 107.1b
       .rule_text Most of the time, the Magic game uses only positive numbers and zero. You can’t choose a negative number, deal negative damage, gain negative life, and so on. However, it’s possible for a game value, such as a creature’s power, to be less than zero. If a calculation or comparison needs to use a negative value, it does so. If a calculation that would determine the result of an effect yields a negative number, zero is used instead, unless that effect sets a player’s life total to a specific value, doubles a player’s life total, sets a creature’s power or toughness to a specific value, or otherwise modifies a creature’s power or toughness.
       .rule_text Example: If a 3/4 creature gets -5/-0, it’s a -2/4 creature. It doesn’t assign damage in combat. Its total power and toughness is 2. You’d have to give it +3/+0 to raise its power to 1.
-      .rule_text Example: Viridian Joiner is a 1/2 creature with the ability “{T}: Add to your mana pool an amount of {G} equal to Viridian Joiner’s power.” An effect gives it -2/-0, then its ability is activated. The ability adds no mana to your mana pool.
+      .rule_text Example: Viridian Joiner is a 1/2 creature with the ability “<span class="mana mana-t">{T}</span>: Add to your mana pool an amount of <span class="mana mana-g">{G}</span> equal to Viridian Joiner’s power.” An effect gives it -2/-0, then its ability is activated. The ability adds no mana to your mana pool.
     .rule{id: "section-107-1c"}
       .rule_id 107.1c
       .rule_text If a rule or ability instructs a player to choose “any number,” that player may choose any positive number or zero, unless something (such as damage or counters) is being divided or distributed among “any number” of players and/or objects. In that case, a nonzero number of players and/or objects must be chosen if possible.
@@ -679,25 +679,25 @@
       .rule_text Many objects use the letter X as a placeholder for a number that needs to be determined. Some objects have abilities that define the value of X; the rest let their controller choose the value of X.
     .rule{id: "section-107-3a"}
       .rule_id 107.3a
-      .rule_text If a spell or activated ability has a mana cost, alternative cost, additional cost, and/or activation cost with an {X}, [-X], or X in it, and the value of X isn’t defined by the text of that spell or ability, the controller of that spell or ability chooses and announces the value of X as part of casting the spell or activating the ability. (See rule <a href="#section-601">601</a>, “Casting Spells.”) While a spell is on the stack, any X in its mana cost or in any alternative cost or additional cost it has equals the announced value. While an activated ability is on the stack, any X in its activation cost equals the announced value.
+      .rule_text If a spell or activated ability has a mana cost, alternative cost, additional cost, and/or activation cost with an <span class="mana mana-x">{X}</span>, [-X], or X in it, and the value of X isn’t defined by the text of that spell or ability, the controller of that spell or ability chooses and announces the value of X as part of casting the spell or activating the ability. (See rule <a href="#section-601">601</a>, “Casting Spells.”) While a spell is on the stack, any X in its mana cost or in any alternative cost or additional cost it has equals the announced value. While an activated ability is on the stack, any X in its activation cost equals the announced value.
     .rule{id: "section-107-3b"}
       .rule_id 107.3b
-      .rule_text If a player is casting a spell that has an {X} in its mana cost, the value of X isn’t defined by the text of that spell, and an effect lets that player cast that spell while paying neither its mana cost nor an alternative cost that includes X, then the only legal choice for X is 0. This doesn’t apply to effects that only reduce a cost, even if they reduce it to zero. See rule <a href="#section-601">601</a>, “Casting Spells.”
+      .rule_text If a player is casting a spell that has an <span class="mana mana-x">{X}</span> in its mana cost, the value of X isn’t defined by the text of that spell, and an effect lets that player cast that spell while paying neither its mana cost nor an alternative cost that includes X, then the only legal choice for X is 0. This doesn’t apply to effects that only reduce a cost, even if they reduce it to zero. See rule <a href="#section-601">601</a>, “Casting Spells.”
     .rule{id: "section-107-3c"}
       .rule_id 107.3c
-      .rule_text If a spell or activated ability has an {X}, [-X], or X in its cost and/or its text, and the value of X is defined by the text of that spell or ability, then that’s the value of X while that spell or ability is on the stack. The controller of that spell or ability doesn’t get to choose the value. Note that the value of X may change while that spell or ability is on the stack.
+      .rule_text If a spell or activated ability has an <span class="mana mana-x">{X}</span>, [-X], or X in its cost and/or its text, and the value of X is defined by the text of that spell or ability, then that’s the value of X while that spell or ability is on the stack. The controller of that spell or ability doesn’t get to choose the value. Note that the value of X may change while that spell or ability is on the stack.
     .rule{id: "section-107-3d"}
       .rule_id 107.3d
-      .rule_text If a cost associated with a special action, such as a suspend cost or a morph cost, has an {X} or an X in it, the value of X is chosen by the player taking the special action as he or she pays that cost.
+      .rule_text If a cost associated with a special action, such as a suspend cost or a morph cost, has an <span class="mana mana-x">{X}</span> or an X in it, the value of X is chosen by the player taking the special action as he or she pays that cost.
     .rule{id: "section-107-3e"}
       .rule_id 107.3e
       .rule_text Sometimes X appears in the text of a spell or ability but not in a mana cost, alternative cost, additional cost, or activation cost. If the value of X isn’t defined, the controller of the spell or ability chooses the value of X at the appropriate time (either as it’s put on the stack or as it resolves).
     .rule{id: "section-107-3f"}
       .rule_id 107.3f
-      .rule_text If a card in any zone other than the stack has an {X} in its mana cost, the value of {X} is treated as 0, even if the value of X is defined somewhere within its text.
+      .rule_text If a card in any zone other than the stack has an <span class="mana mana-x">{X}</span> in its mana cost, the value of <span class="mana mana-x">{X}</span> is treated as 0, even if the value of X is defined somewhere within its text.
     .rule{id: "section-107-3g"}
       .rule_id 107.3g
-      .rule_text If an effect instructs a player to pay an object’s mana cost that includes {X}, the value of X is treated as 0 unless the object is a spell on the stack. In that case, the value of X is the value chosen or determined for it as the spell was cast.
+      .rule_text If an effect instructs a player to pay an object’s mana cost that includes <span class="mana mana-x">{X}</span>, the value of X is treated as 0 unless the object is a spell on the stack. In that case, the value of X is the value chosen or determined for it as the spell was cast.
     .rule{id: "section-107-3h"}
       .rule_id 107.3h
       .rule_text Normally, all instances of X on an object have the same value at any given time. If an object gains an ability, the value of X within that ability is the value defined by that ability, or 0 if that ability doesn’t define a value of X.
@@ -706,39 +706,39 @@
       .rule_text Some objects use the letter Y in addition to the letter X. Y follows the same rules as X.
     .rule{id: "section-107-4"}
       .rule_id 107.4.
-      .rule_text The mana symbols are {W}, {U}, {B}, {R}, {G}, and {C}; the numerical symbols {0}, {1}, {2}, {3}, {4}, and so on; the variable symbol {X}; the hybrid symbols {W/U}, {W/B}, {U/B}, {U/R}, {B/R}, {B/G}, {R/G}, {R/W}, {G/W}, and {G/U}; the monocolored hybrid symbols {2/W}, {2/U}, {2/B}, {2/R}, and {2/G}; the Phyrexian mana symbols {W/P}, {U/P}, {B/P}, {R/P}, and {G/P}; and the snow symbol {S}.
+      .rule_text The mana symbols are <span class="mana mana-w">{W}</span>, <span class="mana mana-u">{U}</span>, <span class="mana mana-b">{B}</span>, <span class="mana mana-r">{R}</span>, <span class="mana mana-g">{G}</span>, and <span class="mana mana-c">{C}</span>; the numerical symbols <span class="mana mana-0">{0}</span>, <span class="mana mana-1">{1}</span>, <span class="mana mana-2">{2}</span>, <span class="mana mana-3">{3}</span>, <span class="mana mana-4">{4}</span>, and so on; the variable symbol <span class="mana mana-x">{X}</span>; the hybrid symbols <span class="mana mana-wu">{W/U}</span>, <span class="mana mana-wb">{W/B}</span>, <span class="mana mana-ub">{U/B}</span>, <span class="mana mana-ur">{U/R}</span>, <span class="mana mana-br">{B/R}</span>, <span class="mana mana-bg">{B/G}</span>, <span class="mana mana-rg">{R/G}</span>, <span class="mana mana-rw">{R/W}</span>, <span class="mana mana-gw">{G/W}</span>, and <span class="mana mana-gu">{G/U}</span>; the monocolored hybrid symbols <span class="mana mana-2w">{2/W}</span>, <span class="mana mana-2u">{2/U}</span>, <span class="mana mana-2b">{2/B}</span>, <span class="mana mana-2r">{2/R}</span>, and <span class="mana mana-2g">{2/G}</span>; the Phyrexian mana symbols <span class="mana mana-wp">{W/P}</span>, <span class="mana mana-up">{U/P}</span>, <span class="mana mana-bp">{B/P}</span>, <span class="mana mana-rp">{R/P}</span>, and <span class="mana mana-gp">{G/P}</span>; and the snow symbol <span class="mana mana-s">{S}</span>.
     .rule{id: "section-107-4a"}
       .rule_id 107.4a
-      .rule_text There are five primary colored mana symbols: {W} is white, {U} blue, {B} black, {R} red, and {G} green. These symbols are used to represent colored mana, and also to represent colored mana in costs. Colored mana in costs can be paid only with the appropriate color of mana. See rule <a href="#section-202">202</a>, “Mana Cost and Color.”
+      .rule_text There are five primary colored mana symbols: <span class="mana mana-w">{W}</span> is white, <span class="mana mana-u">{U}</span> blue, <span class="mana mana-b">{B}</span> black, <span class="mana mana-r">{R}</span> red, and <span class="mana mana-g">{G}</span> green. These symbols are used to represent colored mana, and also to represent colored mana in costs. Colored mana in costs can be paid only with the appropriate color of mana. See rule <a href="#section-202">202</a>, “Mana Cost and Color.”
     .rule{id: "section-107-4b"}
       .rule_id 107.4b
-      .rule_text Numerical symbols (such as {1}) and variable symbols (such as {X}) represent generic mana in costs. Generic mana in costs can be paid with any type of mana. For more information about {X}, see rule <a href="#section-107-3">107.3</a>.
+      .rule_text Numerical symbols (such as <span class="mana mana-1">{1}</span>) and variable symbols (such as <span class="mana mana-x">{X}</span>) represent generic mana in costs. Generic mana in costs can be paid with any type of mana. For more information about <span class="mana mana-x">{X}</span>, see rule <a href="#section-107-3">107.3</a>.
     .rule{id: "section-107-4c"}
       .rule_id 107.4c
-      .rule_text The colorless mana symbol {C} is used to represent one colorless mana, and also to represent a cost that can be paid only with one colorless mana.
+      .rule_text The colorless mana symbol <span class="mana mana-c">{C}</span> is used to represent one colorless mana, and also to represent a cost that can be paid only with one colorless mana.
     .rule{id: "section-107-4d"}
       .rule_id 107.4d
-      .rule_text The symbol {0} represents zero mana and is used as a placeholder for a cost that can be paid with no resources. (See rule <a href="#section-117-5">117.5</a>.)
+      .rule_text The symbol <span class="mana mana-0">{0}</span> represents zero mana and is used as a placeholder for a cost that can be paid with no resources. (See rule <a href="#section-117-5">117.5</a>.)
     .rule{id: "section-107-4e"}
       .rule_id 107.4e
-      .rule_text Hybrid mana symbols are also colored mana symbols. Each one represents a cost that can be paid in one of two ways, as represented by the two halves of the symbol. A hybrid symbol such as {W/U} can be paid with either white or blue mana, and a monocolored hybrid symbol such as {2/B} can be paid with either one black mana or two mana of any type. A hybrid mana symbol is all of its component colors.
-      .rule_text Example: {G/W}{G/W} can be paid by spending {G}{G}, {G}{W}, or {W}{W}.
+      .rule_text Hybrid mana symbols are also colored mana symbols. Each one represents a cost that can be paid in one of two ways, as represented by the two halves of the symbol. A hybrid symbol such as <span class="mana mana-wu">{W/U}</span> can be paid with either white or blue mana, and a monocolored hybrid symbol such as <span class="mana mana-2b">{2/B}</span> can be paid with either one black mana or two mana of any type. A hybrid mana symbol is all of its component colors.
+      .rule_text Example: <span class="mana mana-gw">{G/W}</span><span class="mana mana-gw">{G/W}</span> can be paid by spending <span class="mana mana-g">{G}</span><span class="mana mana-g">{G}</span>, <span class="mana mana-g">{G}</span><span class="mana mana-w">{W}</span>, or <span class="mana mana-w">{W}</span><span class="mana mana-w">{W}</span>.
     .rule{id: "section-107-4f"}
       .rule_id 107.4f
-      .rule_text Phyrexian mana symbols are colored mana symbols: {W/P} is white, {U/P} is blue, {B/P} is black, {R/P} is red, and {G/P} is green. A Phyrexian mana symbol represents a cost that can be paid either with one mana of its color or by paying 2 life.
-      .rule_text Example: {W/P}{W/P} can be paid by spending {W}{W}, by spending {W} and paying 2 life, or by paying 4 life.
+      .rule_text Phyrexian mana symbols are colored mana symbols: <span class="mana mana-wp">{W/P}</span> is white, <span class="mana mana-up">{U/P}</span> is blue, <span class="mana mana-bp">{B/P}</span> is black, <span class="mana mana-rp">{R/P}</span> is red, and <span class="mana mana-gp">{G/P}</span> is green. A Phyrexian mana symbol represents a cost that can be paid either with one mana of its color or by paying 2 life.
+      .rule_text Example: <span class="mana mana-wp">{W/P}</span><span class="mana mana-wp">{W/P}</span> can be paid by spending <span class="mana mana-w">{W}</span><span class="mana mana-w">{W}</span>, by spending <span class="mana mana-w">{W}</span> and paying 2 life, or by paying 4 life.
     .rule{id: "section-107-4g"}
       .rule_id 107.4g
       .rule_text In rules text, the Phyrexian symbol {P} with no colored background means any of the five Phyrexian mana symbols.
     .rule{id: "section-107-4h"}
       .rule_id 107.4h
-      .rule_text The snow mana symbol {S} represents one generic mana in a cost. This generic mana can be paid with one mana of any type produced by a snow permanent (see rule <a href="#section-205-4f">205.4f</a>). Effects that reduce the amount of generic mana you pay don’t affect {S} costs. (There is no such thing as “snow mana”; “snow” is not a type of mana.)
+      .rule_text The snow mana symbol <span class="mana mana-s">{S}</span> represents one generic mana in a cost. This generic mana can be paid with one mana of any type produced by a snow permanent (see rule <a href="#section-205-4f">205.4f</a>). Effects that reduce the amount of generic mana you pay don’t affect <span class="mana mana-s">{S}</span> costs. (There is no such thing as “snow mana”; “snow” is not a type of mana.)
     .rule{id: "section-107-5"}
       .rule_id 107.5.
-      .rule_text The tap symbol is {T}. The tap symbol in an activation cost means “Tap this permanent.” A permanent that’s already tapped can’t be tapped again to pay the cost. A creature’s activated ability with the tap symbol in its activation cost can’t be activated unless the creature has been under its controller’s control continuously since his or her most recent turn began. See rule <a href="#section-302-6">302.6</a>.
+      .rule_text The tap symbol is <span class="mana mana-t">{T}</span>. The tap symbol in an activation cost means “Tap this permanent.” A permanent that’s already tapped can’t be tapped again to pay the cost. A creature’s activated ability with the tap symbol in its activation cost can’t be activated unless the creature has been under its controller’s control continuously since his or her most recent turn began. See rule <a href="#section-302-6">302.6</a>.
     .rule{id: "section-107-6"}
       .rule_id 107.6.
-      .rule_text The untap symbol is {Q}. The untap symbol in an activation cost means “Untap this permanent.” A permanent that’s already untapped can’t be untapped again to pay the cost. A creature’s activated ability with the untap symbol in its activation cost can’t be activated unless the creature has been under its controller’s control continuously since his or her most recent turn began. See rule <a href="#section-302-6">302.6</a>.
+      .rule_text The untap symbol is <span class="mana mana-q">{Q}</span>. The untap symbol in an activation cost means “Untap this permanent.” A permanent that’s already untapped can’t be untapped again to pay the cost. A creature’s activated ability with the untap symbol in its activation cost can’t be activated unless the creature has been under its controller’s control continuously since his or her most recent turn began. See rule <a href="#section-302-6">302.6</a>.
     .rule{id: "section-107-7"}
       .rule_id 107.7.
       .rule_text Each activated ability of a planeswalker has a loyalty symbol in its cost. Positive loyalty symbols point upward and feature a plus sign followed by a number. Negative loyalty symbols point downward and feature a minus sign followed by a number or an X. Neutral loyalty symbols don’t point in either direction and feature a 0. [+N] means “Put N loyalty counters on this permanent,” [-N] means “Remove N loyalty counters from this permanent,” and [0] means “Put zero loyalty counters on this permanent.”
@@ -880,7 +880,7 @@
     .rule{id: "section-110-5b"}
       .rule_id 110.5b
       .rule_text The spell or ability that creates a token may define the values of any number of characteristics for the token. This becomes the token’s “text.” The characteristic values defined this way are functionally equivalent to the characteristic values that are printed on a card; for example, they define the token’s copiable values. A token doesn’t have any characteristics not defined by the spell or ability that created it.
-      .rule_text Example: Jade Mage has the ability “{2}{G}: Put a 1/1 green Saproling creature token onto the battlefield.” The resulting token has no mana cost, supertype, rules text, or abilities.
+      .rule_text Example: Jade Mage has the ability “<span class="mana mana-2">{2}</span><span class="mana mana-g">{G}</span>: Put a 1/1 green Saproling creature token onto the battlefield.” The resulting token has no mana cost, supertype, rules text, or abilities.
     .rule{id: "section-110-5c"}
       .rule_id 110.5c
       .rule_text A spell or ability that creates a token sets both its name and its subtype. If the spell or ability doesn’t specify the name of the token, its name is the same as its subtype(s). A “Goblin Scout creature token,” for example, is named “Goblin Scout” and has the creature subtypes Goblin and Scout. Once a token is on the battlefield, changing its name doesn’t change its subtype, and vice versa.
@@ -908,7 +908,7 @@
     .rule{id: "section-110-6c"}
       .rule_id 110.6c
       .rule_text A permanent retains its status until a spell, ability, or turn-based action changes it, even if that status is not relevant to it.
-      .rule_text Example: Dimir Doppelganger says “{1}{U}{B}: Exile target creature card from a graveyard. Dimir Doppelganger becomes a copy of that card and gains this ability.” It becomes a copy of Jushi Apprentice, a flip card. Through use of Jushi Apprentice’s ability, this creature flips, making it a copy of Tomoya the Revealer with the Dimir Doppelganger ability. If this permanent then becomes a copy of Runeclaw Bear, it will retain its flipped status even though that has no relevance to Runeclaw Bear. If its copy ability is activated again, this time targeting a Nezumi Shortfang card (another flip card), this permanent’s flipped status means it will have the characteristics of Stabwhisker the Odious (the flipped version of Nezumi Shortfang) with the Dimir Doppelganger ability.
+      .rule_text Example: Dimir Doppelganger says “<span class="mana mana-1">{1}</span><span class="mana mana-u">{U}</span><span class="mana mana-b">{B}</span>: Exile target creature card from a graveyard. Dimir Doppelganger becomes a copy of that card and gains this ability.” It becomes a copy of Jushi Apprentice, a flip card. Through use of Jushi Apprentice’s ability, this creature flips, making it a copy of Tomoya the Revealer with the Dimir Doppelganger ability. If this permanent then becomes a copy of Runeclaw Bear, it will retain its flipped status even though that has no relevance to Runeclaw Bear. If its copy ability is activated again, this time targeting a Nezumi Shortfang card (another flip card), this permanent’s flipped status means it will have the characteristics of Stabwhisker the Odious (the flipped version of Nezumi Shortfang) with the Dimir Doppelganger ability.
     .rule{id: "section-110-6d"}
       .rule_id 110.6d
       .rule_text Only permanents have status. Cards not on the battlefield do not. Although an exiled card may be face down, this has no correlation to the face-down status of a permanent. Similarly, cards not on the battlefield are neither tapped nor untapped, regardless of their physical state.
@@ -1020,7 +1020,7 @@
     .rule{id: "section-112-6k"}
       .rule_id 112.6k
       .rule_text An ability whose cost or effect specifies that it moves the object it’s on out of a particular zone functions only in that zone, unless that ability’s trigger condition, or a previous part of that ability’s cost or effect, specifies that the object is put into that zone. The same is true if the effect of that ability creates a delayed triggered ability whose effect moves the object out of a particular zone.
-      .rule_text Example: Reassembling Skeleton says “{1}{B}: Return Reassembling Skeleton from your graveyard to the battlefield tapped.” A player may activate this ability only if Reassembling Skeleton is in his or her graveyard.
+      .rule_text Example: Reassembling Skeleton says “<span class="mana mana-1">{1}</span><span class="mana mana-b">{B}</span>: Return Reassembling Skeleton from your graveyard to the battlefield tapped.” A player may activate this ability only if Reassembling Skeleton is in his or her graveyard.
     .rule{id: "section-112-6m"}
       .rule_id 112.6m
       .rule_text An ability that modifies the rules for deck construction functions before the game begins. Such an ability modifies not just the Comprehensive Rules, but also the Magic: The Gathering Tournament Rules and any other documents that set the deck construction rules for a specific format. However, such an ability can’t affect the format legality of a card, including whether it’s banned or restricted. The current Magic: The Gathering Tournament Rules can be found at WPN.Wizards.com/en/resources/rules-documents.
@@ -1261,16 +1261,16 @@
     .rule{id: "section-117-3c"}
       .rule_id 117.3c
       .rule_text Activating mana abilities is not mandatory, even if paying a cost is.
-      .rule_text Example: A player controls Lodestone Golem, which says “Nonartifact spells cost {1} more to cast.” Another player removes the last time counter from a suspended sorcery card. That player must cast that spell if able, but doing so costs {1}. The player is forced to pay that cost if enough mana is in his or her mana pool, but the player isn’t forced to activate a mana ability to produce that mana. If he or she doesn’t, the card simply remains exiled.
+      .rule_text Example: A player controls Lodestone Golem, which says “Nonartifact spells cost <span class="mana mana-1">{1}</span> more to cast.” Another player removes the last time counter from a suspended sorcery card. That player must cast that spell if able, but doing so costs <span class="mana mana-1">{1}</span>. The player is forced to pay that cost if enough mana is in his or her mana pool, but the player isn’t forced to activate a mana ability to produce that mana. If he or she doesn’t, the card simply remains exiled.
     .rule{id: "section-117-4"}
       .rule_id 117.4.
-      .rule_text Some costs include an {X} or an X. See rule <a href="#section-107-3">107.3</a>.
+      .rule_text Some costs include an <span class="mana mana-x">{X}</span> or an X. See rule <a href="#section-107-3">107.3</a>.
     .rule{id: "section-117-5"}
       .rule_id 117.5.
-      .rule_text Some costs are represented by {0}, or are reduced to {0}. The action necessary for a player to pay such a cost is the player’s acknowledgment that he or she is paying it. Even though such a cost requires no resources, it’s not automatically paid.
+      .rule_text Some costs are represented by <span class="mana mana-0">{0}</span>, or are reduced to <span class="mana mana-0">{0}</span>. The action necessary for a player to pay such a cost is the player’s acknowledgment that he or she is paying it. Even though such a cost requires no resources, it’s not automatically paid.
     .rule{id: "section-117-5a"}
       .rule_id 117.5a
-      .rule_text A spell whose mana cost is {0} must still be cast the same way as one with a cost greater than zero; it won’t cast itself automatically. The same is true for an activated ability whose cost is {0}.
+      .rule_text A spell whose mana cost is <span class="mana mana-0">{0}</span> must still be cast the same way as one with a cost greater than zero; it won’t cast itself automatically. The same is true for an activated ability whose cost is <span class="mana mana-0">{0}</span>.
     .rule{id: "section-117-6"}
       .rule_id 117.6.
       .rule_text Some mana costs contain no mana symbols. This represents an unpayable cost. An ability can also have an unpayable cost if its cost is based on the mana cost of an object with no mana cost. Attempting to cast a spell or activate an ability that has an unpayable cost is a legal action. However, attempting to pay an unpayable cost is an illegal action.
@@ -1279,7 +1279,7 @@
       .rule_text If an unpayable cost is increased by an effect or an additional cost is imposed, the cost is still unpayable. If an alternative cost is applied to an unpayable cost, including an effect that allows a player to cast a spell without paying its mana cost, the alternative cost may be paid.
     .rule{id: "section-117-7"}
       .rule_id 117.7.
-      .rule_text What a player actually needs to do to pay a cost may be changed or reduced by effects. If the mana component of a cost is reduced to nothing by cost reduction effects, it’s considered to be {0}. Paying a cost changed or reduced by an effect counts as paying the original cost.
+      .rule_text What a player actually needs to do to pay a cost may be changed or reduced by effects. If the mana component of a cost is reduced to nothing by cost reduction effects, it’s considered to be <span class="mana mana-0">{0}</span>. Paying a cost changed or reduced by an effect counts as paying the original cost.
     .rule{id: "section-117-7a"}
       .rule_id 117.7a
       .rule_text Effects that reduce a cost by an amount of generic mana affect only the generic mana component of that cost. They can’t affect the colored or colorless mana components of that cost.
@@ -1581,9 +1581,9 @@
     .rule{id: "section-201-4b"}
       .rule_id 201.4b
       .rule_text If an ability of an object refers to that object by name, and an object with a different name gains that ability, each instance of the first name in the gained ability that refers to the first object by name should be treated as the second name.
-      .rule_text Example: Quicksilver Elemental says, in part, “{U}: Quicksilver Elemental gains all activated abilities of target creature until end of turn.” If it gains an ability that says “{G}: Regenerate Cudgel Troll,” activating that ability will regenerate Quicksilver Elemental, not the Cudgel Troll it gained the ability from.
+      .rule_text Example: Quicksilver Elemental says, in part, “<span class="mana mana-u">{U}</span>: Quicksilver Elemental gains all activated abilities of target creature until end of turn.” If it gains an ability that says “<span class="mana mana-g">{G}</span>: Regenerate Cudgel Troll,” activating that ability will regenerate Quicksilver Elemental, not the Cudgel Troll it gained the ability from.
       .rule_text Example: Glacial Ray is an instant with “splice onto Arcane” that says “Glacial Ray deals 2 damage to target creature or player.” If it’s spliced onto a Kodama’s Reach, that Kodama’s Reach deals 2 damage to the target creature or player.
-      .rule_text Example: Dimir Doppelganger says “{1}{U}{B}: Exile target creature card from a graveyard. Dimir Doppelganger becomes a copy of that card and gains this ability.” Dimir Doppelganger’s ability is activated targeting a Runeclaw Bear card. The Doppelganger becomes a copy of Runeclaw Bear and gains an ability that should be treated as saying “{1}{U}{B}: Exile target creature card from a graveyard. Runeclaw Bear becomes a copy of that card and gains this ability.”
+      .rule_text Example: Dimir Doppelganger says “<span class="mana mana-1">{1}</span><span class="mana mana-u">{U}</span><span class="mana mana-b">{B}</span>: Exile target creature card from a graveyard. Dimir Doppelganger becomes a copy of that card and gains this ability.” Dimir Doppelganger’s ability is activated targeting a Runeclaw Bear card. The Doppelganger becomes a copy of Runeclaw Bear and gains an ability that should be treated as saying “<span class="mana mana-1">{1}</span><span class="mana mana-u">{U}</span><span class="mana mana-b">{B}</span>: Exile target creature card from a graveyard. Runeclaw Bear becomes a copy of that card and gains this ability.”
     .rule{id: "section-201-4c"}
       .rule_id 201.4c
       .rule_text Text printed on some legendary cards refers to that card by a shortened version of its name. Instances of a card’s shortened name used in this manner are treated as though they used the card’s full name.
@@ -1608,8 +1608,8 @@
       .rule_text An object is the color or colors of the mana symbols in its mana cost, regardless of the color of its frame.
     .rule{id: "section-202-2a"}
       .rule_id 202.2a
-      .rule_text The five colors are white, blue, black, red, and green. The white mana symbol is represented by {W}, blue by {U}, black by {B}, red by {R}, and green by {G}.
-      .rule_text Example: An object with a mana cost of {2}{W} is white, an object with a mana cost of {2} is colorless, and one with a mana cost of {2}{W}{B} is both white and black.
+      .rule_text The five colors are white, blue, black, red, and green. The white mana symbol is represented by <span class="mana mana-w">{W}</span>, blue by <span class="mana mana-u">{U}</span>, black by <span class="mana mana-b">{B}</span>, red by <span class="mana mana-r">{R}</span>, and green by <span class="mana mana-g">{G}</span>.
+      .rule_text Example: An object with a mana cost of <span class="mana mana-2">{2}</span><span class="mana mana-w">{W}</span> is white, an object with a mana cost of <span class="mana mana-2">{2}</span> is colorless, and one with a mana cost of <span class="mana mana-2">{2}</span><span class="mana mana-w">{W}</span><span class="mana mana-b">{B}</span> is both white and black.
     .rule{id: "section-202-2b"}
       .rule_id 202.2b
       .rule_text Objects with no colored mana symbols in their mana costs are colorless.
@@ -1628,31 +1628,31 @@
     .rule{id: "section-202-3"}
       .rule_id 202.3.
       .rule_text The converted mana cost of an object is a number equal to the total amount of mana in its mana cost, regardless of color.
-      .rule_text Example: A mana cost of {3}{U}{U} translates to a converted mana cost of 5.
+      .rule_text Example: A mana cost of <span class="mana mana-3">{3}</span><span class="mana mana-u">{U}</span><span class="mana mana-u">{U}</span> translates to a converted mana cost of 5.
     .rule{id: "section-202-3a"}
       .rule_id 202.3a
       .rule_text The converted mana cost of an object with no mana cost is 0, unless that object is the back face of a double-faced permanent or is a melded permanent.
     .rule{id: "section-202-3b"}
       .rule_id 202.3b
       .rule_text The converted mana cost of a double-faced permanent’s back face is calculated as though it had the mana cost of its front face. This is a change from previous rules. If a permanent is a copy of the back face of a double-faced card (even if the card representing that copy is itself a double-faced card), the converted mana cost of that permanent is 0.
-      .rule_text Example: Huntmaster of the Fells is a double-faced card with mana cost {2}{R}{G}. Its converted mana cost is 4. After it transforms to its other face (Ravager of the Fells), its converted mana cost remains 4.
+      .rule_text Example: Huntmaster of the Fells is a double-faced card with mana cost <span class="mana mana-2">{2}</span><span class="mana mana-r">{R}</span><span class="mana mana-g">{G}</span>. Its converted mana cost is 4. After it transforms to its other face (Ravager of the Fells), its converted mana cost remains 4.
       .rule_text Example: A Clone enters the battlefield as a copy of Ravager of the Fells. Its converted mana cost is 0.
-      .rule_text Example: Insectile Aberration is the back face of a double-faced card whose front face has mana cost {U}. It becomes a copy of Ravager of the Fells. Its converted mana cost becomes 0.
+      .rule_text Example: Insectile Aberration is the back face of a double-faced card whose front face has mana cost <span class="mana mana-u">{U}</span>. It becomes a copy of Ravager of the Fells. Its converted mana cost becomes 0.
     .rule{id: "section-202-3c"}
       .rule_id 202.3c
       .rule_text The converted mana cost of a melded permanent is calculated as though it had the combined mana cost of the front faces of each card that represents it. If a permanent is a copy of a melded permanent (even if that copy is represented by two other meld cards), the converted mana cost of the copy is 0.
     .rule{id: "section-202-3d"}
       .rule_id 202.3d
-      .rule_text When calculating the converted mana cost of an object with an {X} in its mana cost, X is treated as 0 while the object is not on the stack, and X is treated as the number chosen for it while the object is on the stack.
+      .rule_text When calculating the converted mana cost of an object with an <span class="mana mana-x">{X}</span> in its mana cost, X is treated as 0 while the object is not on the stack, and X is treated as the number chosen for it while the object is on the stack.
     .rule{id: "section-202-3e"}
       .rule_id 202.3e
       .rule_text When calculating the converted mana cost of an object with a hybrid mana symbol in its mana cost, use the largest component of each hybrid symbol.
-      .rule_text Example: The converted mana cost of a card with mana cost {1}{W/U}{W/U} is 3.
-      .rule_text Example: The converted mana cost of a card with mana cost {2/B}{2/B}{2/B} is 6.
+      .rule_text Example: The converted mana cost of a card with mana cost <span class="mana mana-1">{1}</span><span class="mana mana-wu">{W/U}</span><span class="mana mana-wu">{W/U}</span> is 3.
+      .rule_text Example: The converted mana cost of a card with mana cost <span class="mana mana-2b">{2/B}</span><span class="mana mana-2b">{2/B}</span><span class="mana mana-2b">{2/B}</span> is 6.
     .rule{id: "section-202-3f"}
       .rule_id 202.3f
       .rule_text Each Phyrexian mana symbol in a card’s mana cost contributes 1 to its converted mana cost.
-      .rule_text Example: The converted mana cost of a card with mana cost {1}{W/P}{W/P} is 3.
+      .rule_text Example: The converted mana cost of a card with mana cost <span class="mana mana-1">{1}</span><span class="mana mana-wp">{W/P}</span><span class="mana mana-wp">{W/P}</span> is 3.
     .rule{id: "section-202-4"}
       .rule_id 202.4.
       .rule_text Any additional cost listed in an object’s rules text or imposed by an effect isn’t part of the mana cost. (See rule <a href="#section-601">601</a>, “Casting Spells.”) Such costs are paid at the same time as the spell’s other costs.
@@ -2054,7 +2054,7 @@
       .rule_text Example: “Basic Land — Mountain” means the card is a land with the subtype Mountain.
     .rule{id: "section-305-6"}
       .rule_id 305.6.
-      .rule_text The basic land types are Plains, Island, Swamp, Mountain, and Forest. If an object uses the words “basic land type,” it’s referring to one of these subtypes. A land with a basic land type has the intrinsic ability “{T}: Add [mana symbol] to your mana pool,” even if the text box doesn’t actually contain that text or the object has no text box. For Plains, [mana symbol] is {W}; for Islands, {U}; for Swamps, {B}; for Mountains, {R}; and for Forests, {G}. See rule <a href="#section-107-4a">107.4a</a>. See also rule <a href="#section-605">605</a>, “Mana Abilities.”
+      .rule_text The basic land types are Plains, Island, Swamp, Mountain, and Forest. If an object uses the words “basic land type,” it’s referring to one of these subtypes. A land with a basic land type has the intrinsic ability “<span class="mana mana-t">{T}</span>: Add [mana symbol] to your mana pool,” even if the text box doesn’t actually contain that text or the object has no text box. For Plains, [mana symbol] is <span class="mana mana-w">{W}</span>; for Islands, <span class="mana mana-u">{U}</span>; for Swamps, <span class="mana mana-b">{B}</span>; for Mountains, <span class="mana mana-r">{R}</span>; and for Forests, <span class="mana mana-g">{G}</span>. See rule <a href="#section-107-4a">107.4a</a>. See also rule <a href="#section-605">605</a>, “Mana Abilities.”
     .rule{id: "section-305-7"}
       .rule_id 305.7.
       .rule_text If an effect sets a land’s subtype to one or more of the basic land types, the land no longer has its old land type. It loses all abilities generated from its rules text, its old land types, and any copy effects affecting that land, and it gains the appropriate mana ability for each new basic land type. Note that this doesn’t remove any abilities that were granted to the land by other effects. Setting a land’s subtype doesn’t add or remove any card types (such as creature) or supertypes (such as basic, legendary, and snow) the land may have. If a land gains one or more land types in addition to its own, it keeps its land types and rules text, and it gains the new land types and mana abilities.
@@ -2959,7 +2959,7 @@
       .rule_text To propose the casting of a spell, a player first moves that card (or that copy of a card) from where it is to the stack. It becomes the topmost object on the stack. It has all the characteristics of the card (or the copy of a card) associated with it, and that player becomes its controller. The spell remains on the stack until it’s countered, it resolves, or an effect moves it elsewhere.
     .rule{id: "section-601-2b"}
       .rule_id 601.2b
-      .rule_text If the spell is modal, the player announces the mode choice (see rule <a href="#section-700-2">700.2</a>). If the player wishes to splice any cards onto the spell (see rule <a href="#section-702-46">702.46</a>), he or she reveals those cards in his or her hand. If the spell has alternative or additional costs that will be paid as it’s being cast such as buyback or kicker costs (see rules <a href="#section-117-8">117.8</a> and <a href="#section-117-9">117.9</a>), the player announces his or her intentions to pay any or all of those costs (see rule <a href="#section-601-2f">601.2f</a>). A player can’t apply two alternative methods of casting or two alternative costs to a single spell. If the spell has a variable cost that will be paid as it’s being cast (such as an {X} in its mana cost; see rule <a href="#section-107-3">107.3</a>), the player announces the value of that variable. If a cost that will be paid as the spell is being cast includes hybrid mana symbols, the player announces the nonhybrid equivalent cost he or she intends to pay. If a cost that will be paid as the spell is being cast includes Phyrexian mana symbols, the player announces whether he or she intends to pay 2 life or the corresponding colored mana cost for each of those symbols. Previously made choices (such as choosing to cast a spell with flashback from a graveyard or choosing to cast a creature with morph face down) may restrict the player’s options when making these choices.
+      .rule_text If the spell is modal, the player announces the mode choice (see rule <a href="#section-700-2">700.2</a>). If the player wishes to splice any cards onto the spell (see rule <a href="#section-702-46">702.46</a>), he or she reveals those cards in his or her hand. If the spell has alternative or additional costs that will be paid as it’s being cast such as buyback or kicker costs (see rules <a href="#section-117-8">117.8</a> and <a href="#section-117-9">117.9</a>), the player announces his or her intentions to pay any or all of those costs (see rule <a href="#section-601-2f">601.2f</a>). A player can’t apply two alternative methods of casting or two alternative costs to a single spell. If the spell has a variable cost that will be paid as it’s being cast (such as an <span class="mana mana-x">{X}</span> in its mana cost; see rule <a href="#section-107-3">107.3</a>), the player announces the value of that variable. If a cost that will be paid as the spell is being cast includes hybrid mana symbols, the player announces the nonhybrid equivalent cost he or she intends to pay. If a cost that will be paid as the spell is being cast includes Phyrexian mana symbols, the player announces whether he or she intends to pay 2 life or the corresponding colored mana cost for each of those symbols. Previously made choices (such as choosing to cast a spell with flashback from a graveyard or choosing to cast a creature with morph face down) may restrict the player’s options when making these choices.
     .rule{id: "section-601-2c"}
       .rule_id 601.2c
       .rule_text The player announces his or her choice of an appropriate player, object, or zone for each target the spell requires. A spell may require some targets only if an alternative or additional cost (such as a buyback or kicker cost), or a particular mode, was chosen for it; otherwise, the spell is cast as though it did not require those targets. If the spell has a variable number of targets, the player announces how many targets he or she will choose before he or she announces those targets. In some cases, the number of targets will be defined by the spell’s text. Once the number of targets the spell has is determined, that number doesn’t change, even if the information used to determine the number of targets does. The same target can’t be chosen multiple times for any one instance of the word “target” on the spell. However, if the spell uses the word “target” in multiple places, the same object, player, or zone can be chosen once for each instance of the word “target” (as long as it fits the targeting criteria). If any effects say that an object or player must be chosen as a target, the player chooses targets so that he or she obeys the maximum possible number of such effects without violating any rules or effects that say that an object or player can’t be chosen as a target. The chosen players, objects, and/or zones each become a target of that spell. (Any abilities that trigger when those players, objects, and/or zones become the target of a spell trigger at this point; they’ll wait to be put on the stack until the spell has finished being cast.)
@@ -2972,14 +2972,14 @@
       .rule_text The game checks to see if the proposed spell can legally be cast. If the proposed spell is illegal, the game returns to the moment before the casting of that spell was proposed (see rule <a href="#section-719">719</a>, “Handling Illegal Actions”).
     .rule{id: "section-601-2f"}
       .rule_id 601.2f
-      .rule_text The player determines the total cost of the spell. Usually this is just the mana cost. Some spells have additional or alternative costs. Some effects may increase or reduce the cost to pay, or may provide other alternative costs. Costs may include paying mana, tapping permanents, sacrificing permanents, discarding cards, and so on. The total cost is the mana cost or alternative cost (as determined in rule <a href="#section-601-2b">601.2b</a>), plus all additional costs and cost increases, and minus all cost reductions. If multiple cost reductions apply, the player may apply them in any order. If the mana component of the total cost is reduced to nothing by cost reduction effects, it is considered to be {0}. It can’t be reduced to less than {0}. Once the total cost is determined, any effects that directly affect the total cost are applied. Then the resulting total cost becomes “locked in.” If effects would change the total cost after this time, they have no effect.
+      .rule_text The player determines the total cost of the spell. Usually this is just the mana cost. Some spells have additional or alternative costs. Some effects may increase or reduce the cost to pay, or may provide other alternative costs. Costs may include paying mana, tapping permanents, sacrificing permanents, discarding cards, and so on. The total cost is the mana cost or alternative cost (as determined in rule <a href="#section-601-2b">601.2b</a>), plus all additional costs and cost increases, and minus all cost reductions. If multiple cost reductions apply, the player may apply them in any order. If the mana component of the total cost is reduced to nothing by cost reduction effects, it is considered to be <span class="mana mana-0">{0}</span>. It can’t be reduced to less than <span class="mana mana-0">{0}</span>. Once the total cost is determined, any effects that directly affect the total cost are applied. Then the resulting total cost becomes “locked in.” If effects would change the total cost after this time, they have no effect.
     .rule{id: "section-601-2g"}
       .rule_id 601.2g
       .rule_text If the total cost includes a mana payment, the player then has a chance to activate mana abilities (see rule <a href="#section-605">605</a>, “Mana Abilities”). Mana abilities must be activated before costs are paid.
     .rule{id: "section-601-2h"}
       .rule_id 601.2h
       .rule_text The player pays the total cost in any order. Partial payments are not allowed. Unpayable costs can’t be paid.
-      .rule_text Example: You cast Altar’s Reap, which costs {1}{B} and has an additional cost of sacrificing a creature. You sacrifice Thunderscape Familiar, whose effect makes your black spells cost {1} less to cast. Because a spell’s total cost is “locked in” before payments are actually made, you pay {B}, not {1}{B}, even though you’re sacrificing the Familiar.
+      .rule_text Example: You cast Altar’s Reap, which costs <span class="mana mana-1">{1}</span><span class="mana mana-b">{B}</span> and has an additional cost of sacrificing a creature. You sacrifice Thunderscape Familiar, whose effect makes your black spells cost <span class="mana mana-1">{1}</span> less to cast. Because a spell’s total cost is “locked in” before payments are actually made, you pay <span class="mana mana-b">{B}</span>, not <span class="mana mana-1">{1}</span><span class="mana mana-b">{B}</span>, even though you’re sacrificing the Familiar.
     .rule{id: "section-601-2i"}
       .rule_id 601.2i
       .rule_text Once the steps described in <a href="#section-601-2a">601.2a</a>–h are completed, the spell becomes cast. Any abilities that trigger when a spell is cast or put onto the stack trigger at this time. If the spell’s controller had priority before casting it, he or she gets priority.
@@ -3014,7 +3014,7 @@
     .rule{id: "section-602-1a"}
       .rule_id 602.1a
       .rule_text The activation cost is everything before the colon (:). An ability’s activation cost must be paid by the player who is activating it.
-      .rule_text Example: The activation cost of an ability that reads “{2}, {T}: You gain 1 life” is two mana of any type plus tapping the permanent that has the ability.
+      .rule_text Example: The activation cost of an ability that reads “<span class="mana mana-2">{2}</span>, <span class="mana mana-t">{T}</span>: You gain 1 life” is two mana of any type plus tapping the permanent that has the ability.
     .rule{id: "section-602-1b"}
       .rule_id 602.1b
       .rule_text Some text after the colon of an activated ability states instructions that must be followed while activating that ability. Such text may state which players can activate that ability, may restrict when a player can activate the ability, or may define some aspect of the activation cost. This text is not part of the ability’s effect. It functions at all times. If an activated ability has any activation instructions, they appear last, after the ability’s effect.
@@ -3050,7 +3050,7 @@
       .rule_text A player can’t begin to activate an ability that’s prohibited from being activated.
     .rule{id: "section-602-5a"}
       .rule_id 602.5a
-      .rule_text A creature’s activated ability with the tap symbol ({T}) or the untap symbol ({Q}) in its activation cost can’t be activated unless the creature has been under its controller’s control since the start of his or her most recent turn. Ignore this rule for creatures with haste (see rule <a href="#section-702-10">702.10</a>).
+      .rule_text A creature’s activated ability with the tap symbol (<span class="mana mana-t">{T}</span>) or the untap symbol (<span class="mana mana-q">{Q}</span>) in its activation cost can’t be activated unless the creature has been under its controller’s control since the start of his or her most recent turn. Ignore this rule for creatures with haste (see rule <a href="#section-702-10">702.10</a>).
     .rule{id: "section-602-5b"}
       .rule_id 602.5b
       .rule_text If an activated ability has a restriction on its use (for example, “Activate this ability only once each turn”), the restriction continues to apply to that object even if its controller changes.
@@ -3215,7 +3215,7 @@
     .rule{id: "section-605-2"}
       .rule_id 605.2.
       .rule_text A mana ability remains a mana ability even if the game state doesn’t allow it to produce mana.
-      .rule_text Example: A permanent has an ability that reads “{T}: Add {G} to your mana pool for each creature you control.” This is still a mana ability even if you control no creatures or if the permanent is already tapped.
+      .rule_text Example: A permanent has an ability that reads “<span class="mana mana-t">{T}</span>: Add <span class="mana mana-g">{G}</span> to your mana pool for each creature you control.” This is still a mana ability even if you control no creatures or if the permanent is already tapped.
     .rule{id: "section-605-3"}
       .rule_id 605.3.
       .rule_text Activating an activated mana ability follows the rules for activating any other activated ability (see rule <a href="#section-602-2">602.2</a>), with the following exceptions:
@@ -3316,11 +3316,11 @@
     .rule{id: "section-607-4"}
       .rule_id 607.4.
       .rule_text An ability may be part of more than one pair of linked abilities.
-      .rule_text Example: Paradise Plume has the following three abilities: “As Paradise Plume enters the battlefield, choose a color,” “Whenever a player casts a spell of the chosen color, you may gain 1 life,” and “{T}: Add one mana of the chosen color to your mana pool.” The first and second abilities are linked. The first and third abilities are linked.
+      .rule_text Example: Paradise Plume has the following three abilities: “As Paradise Plume enters the battlefield, choose a color,” “Whenever a player casts a spell of the chosen color, you may gain 1 life,” and “<span class="mana mana-t">{T}</span>: Add one mana of the chosen color to your mana pool.” The first and second abilities are linked. The first and third abilities are linked.
     .rule{id: "section-607-5"}
       .rule_id 607.5.
       .rule_text If an object acquires a pair of linked abilities as part of the same effect, the abilities will be similarly linked to one another on that object even though they weren’t printed on that object. They can’t be linked to any other ability, regardless of what other abilities the object may currently have or may have had in the past.
-      .rule_text Example: Arc-Slogger has the ability “{R}, Exile the top ten cards of your library: Arc-Slogger deals 2 damage to target creature or player.” Sisters of Stone Death has the ability “{B}{G}: Exile target creature blocking or blocked by Sisters of Stone Death” and the ability “{2}{B}: Put a creature card exiled with Sisters of Stone Death onto the battlefield under your control.” Quicksilver Elemental has the ability “{U}: Quicksilver Elemental gains all activated abilities of target creature until end of turn.” If a player has Quicksilver Elemental gain Arc-Slogger’s ability, activates it, then has Quicksilver Elemental gain Sisters of Stone Death’s abilities, activates the exile ability, and then activates the return-to-the-battlefield ability, only the creature card Quicksilver Elemental exiled with Sisters of Stone Death’s ability can be returned to the battlefield. Creature cards Quicksilver Elemental exiled with Arc-Slogger’s ability can’t be returned.
+      .rule_text Example: Arc-Slogger has the ability “<span class="mana mana-r">{R}</span>, Exile the top ten cards of your library: Arc-Slogger deals 2 damage to target creature or player.” Sisters of Stone Death has the ability “<span class="mana mana-b">{B}</span><span class="mana mana-g">{G}</span>: Exile target creature blocking or blocked by Sisters of Stone Death” and the ability “<span class="mana mana-2">{2}</span><span class="mana mana-b">{B}</span>: Put a creature card exiled with Sisters of Stone Death onto the battlefield under your control.” Quicksilver Elemental has the ability “<span class="mana mana-u">{U}</span>: Quicksilver Elemental gains all activated abilities of target creature until end of turn.” If a player has Quicksilver Elemental gain Arc-Slogger’s ability, activates it, then has Quicksilver Elemental gain Sisters of Stone Death’s abilities, activates the exile ability, and then activates the return-to-the-battlefield ability, only the creature card Quicksilver Elemental exiled with Sisters of Stone Death’s ability can be returned to the battlefield. Creature cards Quicksilver Elemental exiled with Arc-Slogger’s ability can’t be returned.
     .rule{id: "section-608"}
       .rule_id 608.
       .rule_text Resolving Spells and Abilities
@@ -3752,7 +3752,7 @@
     .rule{id: "section-615-10"}
       .rule_id 615.10.
       .rule_text Some prevention effects prevent the next N damage that would be dealt to each of a number of untargeted creatures. Such an effect creates a prevention shield for each applicable creature when the spell or ability that generates that effect resolves.
-      .rule_text Example: Wojek Apothecary has an ability that says “{T}: Prevent the next 1 damage that would be dealt to target creature and each other creature that shares a color with it this turn.” When the ability resolves, it gives the target creature and each other creature on the battlefield that shares a color with it at that time a shield preventing the next 1 damage that would be dealt to it. Changing creatures’ colors after the ability resolves doesn’t add or remove shields, and creatures that enter the battlefield later in the turn don’t get the shield.
+      .rule_text Example: Wojek Apothecary has an ability that says “<span class="mana mana-t">{T}</span>: Prevent the next 1 damage that would be dealt to target creature and each other creature that shares a color with it this turn.” When the ability resolves, it gives the target creature and each other creature on the battlefield that shares a color with it at that time a shield preventing the next 1 damage that would be dealt to it. Changing creatures’ colors after the ability resolves doesn’t add or remove shields, and creatures that enter the battlefield later in the turn don’t get the shield.
     .rule{id: "section-615-11"}
       .rule_id 615.11.
       .rule_text Some effects state that damage “can’t be prevented.” If unpreventable damage would be dealt, any applicable prevention effects are still applied to it. Those effects won’t prevent any damage, but any additional effects they have will take place. Existing damage prevention shields won’t be reduced by damage that can’t be prevented.
@@ -4247,7 +4247,7 @@
       .rule_text Investigate
     .rule{id: "section-701-33a"}
       .rule_id 701.33a
-      .rule_text “Investigate” means “Put a colorless Clue artifact token onto the battlefield. It has ‘{2}, Sacrifice this artifact: Draw a card.’”
+      .rule_text “Investigate” means “Put a colorless Clue artifact token onto the battlefield. It has ‘<span class="mana mana-2">{2}</span>, Sacrifice this artifact: Draw a card.’”
     .rule{id: "section-701-34"}
       .rule_id 701.34.
       .rule_text Meld
@@ -4626,7 +4626,7 @@
     .rule{id: "section-702-23a"}
       .rule_id 702.23a
       .rule_text Cumulative upkeep is a triggered ability that imposes an increasing cost on a permanent. “Cumulative upkeep [cost]” means “At the beginning of your upkeep, if this permanent is on the battlefield, put an age counter on this permanent. Then you may pay [cost] for each age counter on it. If you don’t, sacrifice it.” If [cost] has choices associated with it, each choice is made separately for each age counter, then either the entire set of costs is paid, or none of them is paid. Partial payments aren’t allowed.
-      .rule_text Example: A creature has “Cumulative upkeep {W} or {U}” and two age counters on it. When its ability next triggers and resolves, the creature’s controller puts an age counter on it and then may pay {W}{W}{W}, {W}{W}{U}, {W}{U}{U}, or {U}{U}{U} to keep the creature on the battlefield.
+      .rule_text Example: A creature has “Cumulative upkeep <span class="mana mana-w">{W}</span> or <span class="mana mana-u">{U}</span>” and two age counters on it. When its ability next triggers and resolves, the creature’s controller puts an age counter on it and then may pay <span class="mana mana-w">{W}</span><span class="mana mana-w">{W}</span><span class="mana mana-w">{W}</span>, <span class="mana mana-w">{W}</span><span class="mana mana-w">{W}</span><span class="mana mana-u">{U}</span>, <span class="mana mana-w">{W}</span><span class="mana mana-u">{U}</span><span class="mana mana-u">{U}</span>, or <span class="mana mana-u">{U}</span><span class="mana mana-u">{U}</span><span class="mana mana-u">{U}</span> to keep the creature on the battlefield.
       .rule_text Example: A creature has “Cumulative upkeep—Sacrifice a creature” and one age counter on it. When its ability next triggers and resolves, its controller can’t choose the same creature to sacrifice twice. Either two different creatures must be sacrificed, or the creature with cumulative upkeep must be sacrificed.
     .rule{id: "section-702-23b"}
       .rule_id 702.23b
@@ -4804,13 +4804,13 @@
       .rule_text Morph
     .rule{id: "section-702-36a"}
       .rule_id 702.36a
-      .rule_text Morph is a static ability that functions in any zone from which you could play the card it’s on, and the morph effect works any time the card is face down. “Morph [cost]” means “You may cast this card as a 2/2 face-down creature with no text, no name, no subtypes, and no mana cost by paying {3} rather than paying its mana cost.” (See rule <a href="#section-707">707</a>, “Face-Down Spells and Permanents.”)
+      .rule_text Morph is a static ability that functions in any zone from which you could play the card it’s on, and the morph effect works any time the card is face down. “Morph [cost]” means “You may cast this card as a 2/2 face-down creature with no text, no name, no subtypes, and no mana cost by paying <span class="mana mana-3">{3}</span> rather than paying its mana cost.” (See rule <a href="#section-707">707</a>, “Face-Down Spells and Permanents.”)
     .rule{id: "section-702-36b"}
       .rule_id 702.36b
-      .rule_text Megamorph is a variant of the morph ability. “Megamorph [cost]” means “You may cast this card as a 2/2 face-down creature with no text, no name, no subtypes, and no mana cost by paying {3} rather than paying its mana cost” and “As this permanent is turned face up, put a +1/+1 counter on it if its megamorph cost was paid to turn it face up.” A megamorph cost is a morph cost.
+      .rule_text Megamorph is a variant of the morph ability. “Megamorph [cost]” means “You may cast this card as a 2/2 face-down creature with no text, no name, no subtypes, and no mana cost by paying <span class="mana mana-3">{3}</span> rather than paying its mana cost” and “As this permanent is turned face up, put a +1/+1 counter on it if its megamorph cost was paid to turn it face up.” A megamorph cost is a morph cost.
     .rule{id: "section-702-36c"}
       .rule_id 702.36c
-      .rule_text To cast a card using its morph ability, turn it face down. It becomes a 2/2 face-down creature card with no text, no name, no subtypes, and no mana cost. Any effects or prohibitions that would apply to casting a card with these characteristics (and not the face-up card’s characteristics) are applied to casting this card. These values are the copiable values of that object’s characteristics. (See rule <a href="#section-613">613</a>, “Interaction of Continuous Effects,” and rule <a href="#section-706">706</a>, “Copying Objects.”) Put it onto the stack (as a face-down spell with the same characteristics), and pay {3} rather than pay its mana cost. This follows the rules for paying alternative costs. You can use a morph ability to cast a card from any zone from which you could normally play it. When the spell resolves, it enters the battlefield with the same characteristics the spell had. The morph effect applies to the face-down object wherever it is, and it ends when the permanent is turned face up.
+      .rule_text To cast a card using its morph ability, turn it face down. It becomes a 2/2 face-down creature card with no text, no name, no subtypes, and no mana cost. Any effects or prohibitions that would apply to casting a card with these characteristics (and not the face-up card’s characteristics) are applied to casting this card. These values are the copiable values of that object’s characteristics. (See rule <a href="#section-613">613</a>, “Interaction of Continuous Effects,” and rule <a href="#section-706">706</a>, “Copying Objects.”) Put it onto the stack (as a face-down spell with the same characteristics), and pay <span class="mana mana-3">{3}</span> rather than pay its mana cost. This follows the rules for paying alternative costs. You can use a morph ability to cast a card from any zone from which you could normally play it. When the spell resolves, it enters the battlefield with the same characteristics the spell had. The morph effect applies to the face-down object wherever it is, and it ends when the permanent is turned face up.
     .rule{id: "section-702-36d"}
       .rule_id 702.36d
       .rule_text You can’t cast a card face down if it doesn’t have a morph ability.
@@ -4852,7 +4852,7 @@
       .rule_text Affinity
     .rule{id: "section-702-40a"}
       .rule_id 702.40a
-      .rule_text Affinity is a static ability that functions while the spell with affinity is on the stack. “Affinity for [text]” means “This spell costs you {1} less to cast for each [text] you control.”
+      .rule_text Affinity is a static ability that functions while the spell with affinity is on the stack. “Affinity for [text]” means “This spell costs you <span class="mana mana-1">{1}</span> less to cast for each [text] you control.”
     .rule{id: "section-702-40b"}
       .rule_id 702.40b
       .rule_text The affinity ability reduces only the amount of generic mana a spell’s controller has to pay; it doesn’t reduce how much colored mana that player has to pay.
@@ -4970,7 +4970,7 @@
     .rule{id: "section-702-50a"}
       .rule_id 702.50a
       .rule_text Convoke is a static ability that functions while the spell with convoke is on the stack. “Convoke” means “For each colored mana in this spell’s total cost, you may tap an untapped creature of that color you control rather than pay that mana. For each generic mana in this spell’s total cost, you may tap an untapped creature you control rather than pay that mana.” The convoke ability isn’t an additional or alternative cost and applies only after the total cost of the spell with convoke is determined.
-      .rule_text Example: Heartless Summoning says, in part, “Creature spells you cast cost {2} less to cast.” You control Heartless Summoning and cast Siege Wurm, a spell with convoke that costs {5}{G}{G}. The total cost to cast Siege Wurm is {3}{G}{G}. After activating mana abilities, you pay that total cost. You may tap up to two green creatures and up to three creatures of any color to pay that cost, and the remainder is paid with mana.
+      .rule_text Example: Heartless Summoning says, in part, “Creature spells you cast cost <span class="mana mana-2">{2}</span> less to cast.” You control Heartless Summoning and cast Siege Wurm, a spell with convoke that costs <span class="mana mana-5">{5}</span><span class="mana mana-g">{G}</span><span class="mana mana-g">{G}</span>. The total cost to cast Siege Wurm is <span class="mana mana-3">{3}</span><span class="mana mana-g">{G}</span><span class="mana mana-g">{G}</span>. After activating mana abilities, you pay that total cost. You may tap up to two green creatures and up to three creatures of any color to pay that cost, and the remainder is paid with mana.
     .rule{id: "section-702-50b"}
       .rule_id 702.50b
       .rule_text Multiple instances of convoke on the same spell are redundant.
@@ -5446,7 +5446,7 @@
       .rule_text Extort
     .rule{id: "section-702-100a"}
       .rule_id 702.100a
-      .rule_text Extort is a triggered ability. “Extort” means “Whenever you cast a spell, you may pay {W/B}. If you do, each opponent loses 1 life and you gain life equal to the total life lost this way.”
+      .rule_text Extort is a triggered ability. “Extort” means “Whenever you cast a spell, you may pay <span class="mana mana-wb">{W/B}</span>. If you do, each opponent loses 1 life and you gain life equal to the total life lost this way.”
     .rule{id: "section-702-100b"}
       .rule_id 702.100b
       .rule_text If a permanent has multiple instances of extort, each triggers separately.
@@ -5525,7 +5525,7 @@
       .rule_text Outlast
     .rule{id: "section-702-106a"}
       .rule_id 702.106a
-      .rule_text Outlast is an activated ability. “Outlast [cost]” means “[Cost], {T}: Put a +1/+1 counter on this creature. Activate this ability only any time you could cast a sorcery.”
+      .rule_text Outlast is an activated ability. “Outlast [cost]” means “[Cost], <span class="mana mana-t">{T}</span>: Put a +1/+1 counter on this creature. Activate this ability only any time you could cast a sorcery.”
     .rule{id: "section-702-107"}
       .rule_id 702.107.
       .rule_text Prowess
@@ -5817,8 +5817,8 @@
     .rule{id: "section-706-2"}
       .rule_id 706.2.
       .rule_text When copying an object, the copy acquires the copiable values of the original object’s characteristics and, for an object on the stack, choices made when casting or activating it (mode, targets, the value of X, whether it was kicked, how it will affect multiple targets, and so on). The “copiable values” are the values derived from the text printed on the object (that text being name, mana cost, color indicator, card type, subtype, supertype, rules text, power, toughness, and/or loyalty), as modified by other copy effects, by its face-down status, and by “as . . . enters the battlefield” and “as . . . is turned face up” abilities that set power and toughness (and may also set additional characteristics). Other effects (including type-changing and text-changing effects), status, and counters are not copied.
-      .rule_text Example: Chimeric Staff is an artifact that reads “{X}: Chimeric Staff becomes an X/X artifact creature until end of turn.” Clone is a creature that reads, “You may have Clone enter the battlefield as a copy of any creature on the battlefield.” After a Staff has become a 5/5 artifact creature, a Clone enters the battlefield as a copy of it. The Clone is an artifact, not a 5/5 artifact creature. (The copy has the Staff’s ability, however, and will become a creature if that ability is activated.)
-      .rule_text Example: Clone enters the battlefield as a copy of a face-down Grinning Demon (a creature with morph {2}{B}{B}). The Clone is a colorless 2/2 creature with no name, no types, no abilities, and no mana cost. It will still be face up. Its controller can’t pay {2}{B}{B} to turn it face up.
+      .rule_text Example: Chimeric Staff is an artifact that reads “<span class="mana mana-x">{X}</span>: Chimeric Staff becomes an X/X artifact creature until end of turn.” Clone is a creature that reads, “You may have Clone enter the battlefield as a copy of any creature on the battlefield.” After a Staff has become a 5/5 artifact creature, a Clone enters the battlefield as a copy of it. The Clone is an artifact, not a 5/5 artifact creature. (The copy has the Staff’s ability, however, and will become a creature if that ability is activated.)
+      .rule_text Example: Clone enters the battlefield as a copy of a face-down Grinning Demon (a creature with morph <span class="mana mana-2">{2}</span><span class="mana mana-b">{B}</span><span class="mana mana-b">{B}</span>). The Clone is a colorless 2/2 creature with no name, no types, no abilities, and no mana cost. It will still be face up. Its controller can’t pay <span class="mana mana-2">{2}</span><span class="mana mana-b">{B}</span><span class="mana mana-b">{B}</span> to turn it face up.
     .rule{id: "section-706-2a"}
       .rule_id 706.2a
       .rule_text A copy acquires the color of the object it’s copying because that value is derived from its mana cost or color indicator. A copy acquires the abilities of the object it’s copying because those values are derived from its rules text. A copy doesn’t wind up with two values of each ability (that is, it doesn’t copy the object’s abilities and its rules text, then have that rules text define a new set of abilities).
@@ -5827,7 +5827,7 @@
       .rule_text The copy’s copiable values become the copied information, as modified by the copy’s status (see rule <a href="#section-110-6">110.6</a>). Objects that copy the object will use the new copiable values.
       .rule_text Example: Vesuvan Doppelganger reads, “You may have Vesuvan Doppelganger enter the battlefield as a copy of any creature on the battlefield except it doesn’t copy that creature’s color and it gains ‘At the beginning of your upkeep, you may have this creature become a copy of target creature except it doesn’t copy that creature’s color. If you do, this creature gains this ability.’” A Vesuvan Doppelganger enters the battlefield as a copy of Runeclaw Bear (a 2/2 green Bear creature with no abilities). Then a Clone enters the battlefield as a copy of the Doppelganger. The Clone is a 2/2 blue Bear named Runeclaw Bear that has the Doppelganger’s upkeep-triggered ability.
       .rule_text Example: Tomoya the Revealer (a flipped flip card) becomes a copy of Nezumi Shortfang (an unflipped flip card). Tomoya’s characteristics become the characteristics of Stabwhisker the Odious, which is the flipped version of Nezumi Shortfang.
-      .rule_text Example: A face-down Grinning Demon (a creature with morph) becomes a copy of a face-up Branchsnap Lorian (a 4/1 green creature with trample and morph {G}). The Demon’s characteristics become the characteristics of Branchsnap Lorian. However, since the creature is face down, it remains a 2/2 colorless creature with no name, types, or abilities, and no mana cost. It can be turned face up for {G}. If it’s turned face up, it will have the characteristics of Branchsnap Lorian.
+      .rule_text Example: A face-down Grinning Demon (a creature with morph) becomes a copy of a face-up Branchsnap Lorian (a 4/1 green creature with trample and morph <span class="mana mana-g">{G}</span>). The Demon’s characteristics become the characteristics of Branchsnap Lorian. However, since the creature is face down, it remains a 2/2 colorless creature with no name, types, or abilities, and no mana cost. It can be turned face up for <span class="mana mana-g">{G}</span>. If it’s turned face up, it will have the characteristics of Branchsnap Lorian.
       .rule_text Example: A face-down Grinning Demon (a creature with morph) becomes a copy of Wandering Ones (a 1/1 blue Spirit creature that doesn’t have morph). It will be a face-down Wandering Ones. It remains a 2/2 colorless creature with no name, types, or abilities, and no mana cost. Its controller can’t turn it face up as a special action. If an effect turns it face up, it will have the characteristics of Wandering Ones.
     .rule{id: "section-706-4"}
       .rule_id 706.4.
@@ -5849,7 +5849,7 @@
       .rule_id 706.7a
       .rule_text If an ability causes a player to “choose a [value]” or “name a card,” and a second, linked ability refers to that choice, the second ability is the only ability that can refer to that choice. An object doesn’t “remember” that choice and use it for other abilities it may copy later. If an object copies an ability that refers to a choice, but either (a) doesn’t copy that ability’s linked ability or (b) does copy the linked ability but no choice is made for it, then the choice is considered to be “undefined.” If an ability refers to an undefined choice, that part of the ability won’t do anything.
       .rule_text Example: Voice of All enters the battlefield and Unstable Shapeshifter copies it. Voice of All reads, in part, “As Voice of All enters the battlefield, choose a color.” and “Voice of All has protection from the chosen color.” Unstable Shapeshifter never had a chance for a color to be chosen for it, because it didn’t enter the battlefield as a Voice of All card, so the protection ability doesn’t protect it from anything at all.
-      .rule_text Example: A Vesuvan Doppelganger enters the battlefield as a copy of Voice of All, and the Doppelganger’s controller chooses blue. Later, the Doppelganger copies Quirion Elves, which has the ability, “{T}: Add one mana of the chosen color to your mana pool.” Even though a color was chosen for the Doppelganger, it wasn’t chosen for the ability linked to the mana ability copied from the Elves. If that mana ability of the Doppelganger is activated, it will not produce mana.
+      .rule_text Example: A Vesuvan Doppelganger enters the battlefield as a copy of Voice of All, and the Doppelganger’s controller chooses blue. Later, the Doppelganger copies Quirion Elves, which has the ability, “<span class="mana mana-t">{T}</span>: Add one mana of the chosen color to your mana pool.” Even though a color was chosen for the Doppelganger, it wasn’t chosen for the ability linked to the mana ability copied from the Elves. If that mana ability of the Doppelganger is activated, it will not produce mana.
     .rule{id: "section-706-8"}
       .rule_id 706.8.
       .rule_text When copying a double-faced permanent, a face-up meld card, or a melded permanent, only the copiable values of the face that’s currently up are copied. (See rule <a href="#section-711">711</a>, “Double-Faced Cards,” and rule <a href="#section-712">712</a>, “Meld Cards.”)
@@ -5891,7 +5891,7 @@
     .rule{id: "section-706-11"}
       .rule_id 706.11.
       .rule_text If an effect refers to a permanent by name, the effect still tracks that permanent even if it changes names or becomes a copy of something else.
-      .rule_text Example: An Unstable Shapeshifter copies a Crazed Armodon. Crazed Armodon reads, “{G}: Crazed Armodon gets +3/+0 and gains trample until end of turn. Destroy Crazed Armodon at the beginning of the next end step. Activate this ability only once each turn.” If this ability of the Shapeshifter is activated, the Shapeshifter will be destroyed at the beginning of the next end step, even if it’s no longer a copy of Crazed Armodon at that time.
+      .rule_text Example: An Unstable Shapeshifter copies a Crazed Armodon. Crazed Armodon reads, “<span class="mana mana-g">{G}</span>: Crazed Armodon gets +3/+0 and gains trample until end of turn. Destroy Crazed Armodon at the beginning of the next end step. Activate this ability only once each turn.” If this ability of the Shapeshifter is activated, the Shapeshifter will be destroyed at the beginning of the next end step, even if it’s no longer a copy of Crazed Armodon at that time.
     .rule{id: "section-706-12"}
       .rule_id 706.12.
       .rule_text An effect that instructs a player to cast a copy of an object (and not just copy a spell) follows the rules for casting spells, except that the copy is created in the same zone the object is in and then cast while another spell or ability is resolving. Casting a copy of an object follows steps <a href="#section-601-2a">601.2a</a>–h of rule <a href="#section-601">601</a>, “Casting Spells,” and then the copy becomes cast. Once cast, the copy is a spell on the stack, and just like any other spell it can resolve or be countered.
@@ -5958,7 +5958,7 @@
     .rule{id: "section-708-5"}
       .rule_id 708.5.
       .rule_text Anything that asks for a particular characteristic of a split card while it’s in a zone other than the stack gets two answers (one for each of the split card’s two halves). Anything that asks for a particular characteristic of a fused split spell gets two answers. Anything that asks for a particular characteristic of a split card while it’s a spell on the stack or that asks for the converted mana cost of a fused split spell gets one answer.
-      .rule_text Example: Spell Blast says “Counter target spell with converted mana cost X.” If a player wants to cast Spell Blast and choose the fused split spell Breaking/Entering, which has mana costs {U}{B} and {4}{B}{R}, as the target, that player must choose 8 as the value of X.
+      .rule_text Example: Spell Blast says “Counter target spell with converted mana cost X.” If a player wants to cast Spell Blast and choose the fused split spell Breaking/Entering, which has mana costs <span class="mana mana-u">{U}</span><span class="mana mana-b">{B}</span> and <span class="mana mana-4">{4}</span><span class="mana mana-b">{B}</span><span class="mana mana-r">{R}</span>, as the target, that player must choose 8 as the value of X.
     .rule{id: "section-708-5a"}
       .rule_id 708.5a
       .rule_text If a spell or ability uses the converted mana cost of a split card not on the stack to determine part of its effect, but it doesn’t perform a comparison using those values, it uses the sum of the two converted mana costs.
@@ -5977,7 +5977,7 @@
     .rule{id: "section-708-6c"}
       .rule_id 708.6c
       .rule_text If anything performs a comparison involving multiple characteristics or values of one or more split cards in any zone other than the stack or involving multiple characteristics or values of one or more fused split spells, each characteristic or value is compared separately. If each of the individual comparisons would return a “yes” answer, the whole comparison returns a “yes” answer. The individual comparisons may involve different halves of the same split card.
-      .rule_text Example: Sunforger has an ability that reads, “{R}{W},Unattach Sunforger: Search your library for a red or white instant card with converted mana cost 4 or less and cast that card without paying its mana cost. Then shuffle your library.” This ability can be used to cast either half of Research/Development, as Research has converted mana cost 2 (even though Development has converted mana cost 5) and Development is red (even though Research is neither red nor white).
+      .rule_text Example: Sunforger has an ability that reads, “<span class="mana mana-r">{R}</span><span class="mana mana-w">{W}</span>,Unattach Sunforger: Search your library for a red or white instant card with converted mana cost 4 or less and cast that card without paying its mana cost. Then shuffle your library.” This ability can be used to cast either half of Research/Development, as Research has converted mana cost 2 (even though Development has converted mana cost 5) and Development is red (even though Research is neither red nor white).
     .rule{id: "section-708-7"}
       .rule_id 708.7.
       .rule_text Each split card has two names. If an effect instructs a player to name a card and the player wants to name a split card, the player must name one of those names and not both. An object has the chosen name if one of its names is the chosen name.
@@ -6371,7 +6371,7 @@
     .rule{id: "section-718-2a"}
       .rule_id 718.2a
       .rule_text At any point in the game, the player with priority may suggest a shortcut by describing a sequence of game choices, for all players, that may be legally taken based on the current game state and the predictable results of the sequence of choices. This sequence may be a non-repetitive series of choices, a loop that repeats a specified number of times, multiple loops, or nested loops, and may even cross multiple turns. It can’t include conditional actions, where the outcome of a game event determines the next action a player takes. The ending point of this sequence must be a place where a player has priority, though it need not be the player proposing the shortcut.
-      .rule_text Example: A player controls a creature enchanted by Presence of Gond, which grants the creature the ability “{T}: Put a 1/1 green Elf Warrior creature token onto the battlefield,” and another player controls Intruder Alarm, which reads, in part, “Whenever a creature enters the battlefield, untap all creatures.” When the player has priority, he may suggest “I’ll create a million tokens,” indicating the sequence of activating the creature’s ability, all players passing priority, letting the creature’s ability resolve and put a token onto the battlefield (which causes Intruder Alarm’s ability to trigger), Intruder Alarm’s controller putting that triggered ability on the stack, all players passing priority, Intruder Alarm’s triggered ability resolving, all players passing priority until the player proposing the shortcut has priority, and repeating that sequence <a href="#section-999">999</a>,<a href="#section-999">999</a> more times, ending just after the last token-creating ability resolves.
+      .rule_text Example: A player controls a creature enchanted by Presence of Gond, which grants the creature the ability “<span class="mana mana-t">{T}</span>: Put a 1/1 green Elf Warrior creature token onto the battlefield,” and another player controls Intruder Alarm, which reads, in part, “Whenever a creature enters the battlefield, untap all creatures.” When the player has priority, he may suggest “I’ll create a million tokens,” indicating the sequence of activating the creature’s ability, all players passing priority, letting the creature’s ability resolve and put a token onto the battlefield (which causes Intruder Alarm’s ability to trigger), Intruder Alarm’s controller putting that triggered ability on the stack, all players passing priority, Intruder Alarm’s triggered ability resolving, all players passing priority until the player proposing the shortcut has priority, and repeating that sequence <a href="#section-999">999</a>,<a href="#section-999">999</a> more times, ending just after the last token-creating ability resolves.
     .rule{id: "section-718-2b"}
       .rule_id 718.2b
       .rule_text Each other player, in turn order starting after the player who suggested the shortcut, may either accept the proposed sequence, or shorten it by naming a place where he or she will make a game choice that’s different than what’s been proposed. (The player doesn’t need to specify at this time what the new choice will be.) This place becomes the new ending point of the proposed sequence.
@@ -6382,7 +6382,7 @@
     .rule{id: "section-718-3"}
       .rule_id 718.3.
       .rule_text Sometimes a loop can be fragmented, meaning that each player involved in the loop performs an independent action that results in the same game state being reached multiple times. If that happens, the active player (or, if the active player is not involved in the loop, the first player in turn order who is involved) must then make a different game choice so the loop does not continue.
-      .rule_text Example: In a two-player game, the active player controls a creature with the ability “{0}: [This creature] gains flying,” the nonactive player controls a permanent with the ability “{0}: Target creature loses flying,” and nothing in the game cares how many times an ability has been activated. Say the active player activates his creature’s ability, it resolves, then the nonactive player activates her permanent’s ability targeting that creature, and it resolves. This returns the game to a game state it was at before. The active player must make a different game choice (in other words, anything other than activating that creature’s ability again). The creature doesn’t have flying. Note that the nonactive player could have prevented the fragmented loop simply by not activating her permanent’s ability, in which case the creature would have had flying. The nonactive player always has the final choice and is therefore able to determine whether the creature has flying.
+      .rule_text Example: In a two-player game, the active player controls a creature with the ability “<span class="mana mana-0">{0}</span>: [This creature] gains flying,” the nonactive player controls a permanent with the ability “<span class="mana mana-0">{0}</span>: Target creature loses flying,” and nothing in the game cares how many times an ability has been activated. Say the active player activates his creature’s ability, it resolves, then the nonactive player activates her permanent’s ability targeting that creature, and it resolves. This returns the game to a game state it was at before. The active player must make a different game choice (in other words, anything other than activating that creature’s ability again). The creature doesn’t have flying. Note that the nonactive player could have prevented the fragmented loop simply by not activating her permanent’s ability, in which case the creature would have had flying. The nonactive player always has the final choice and is therefore able to determine whether the creature has flying.
     .rule{id: "section-718-4"}
       .rule_id 718.4.
       .rule_text If a loop contains only mandatory actions, the game is a draw. (See rules <a href="#section-104-4b">104.4b</a> and <a href="#section-104-4f">104.4f</a>.)
@@ -6629,7 +6629,7 @@
       .rule_text The Emperor variant always uses the deploy creatures option, and it can be used in other variants that allow players to compete in teams. Multiplayer formats in which players compete as individuals usually don’t use this option.
     .rule{id: "section-804-2"}
       .rule_id 804.2.
-      .rule_text Each creature has the ability “{T}: Target teammate gains control of this creature. Activate this ability only any time you could cast a sorcery.”
+      .rule_text Each creature has the ability “<span class="mana mana-t">{T}</span>: Target teammate gains control of this creature. Activate this ability only any time you could cast a sorcery.”
     .rule{id: "section-805"}
       .rule_id 805.
       .rule_text Shared Team Turns Option
@@ -7156,7 +7156,7 @@
     .rule{id: "section-903-4"}
       .rule_id 903.4.
       .rule_text The Commander variant uses color identity to determine what cards can be in a deck with a certain commander. The color identity of a card is the color or colors of any mana symbols in that card’s mana cost or rules text, plus any colors defined by its characteristic-defining abilities (see rule <a href="#section-604-3">604.3</a>) or color indicator (see rule <a href="#section-204">204</a>).
-      .rule_text Example: Bosh, Iron Golem is a legendary artifact creature with mana cost {8} and the ability “{3}{R}, Sacrifice an artifact: Bosh, Iron Golem deals damage equal to the sacrificed artifact’s converted mana cost to target creature or player.” Bosh’s color identity is red.
+      .rule_text Example: Bosh, Iron Golem is a legendary artifact creature with mana cost <span class="mana mana-8">{8}</span> and the ability “<span class="mana mana-3">{3}</span><span class="mana mana-r">{R}</span>, Sacrifice an artifact: Bosh, Iron Golem deals damage equal to the sacrificed artifact’s converted mana cost to target creature or player.” Bosh’s color identity is red.
     .rule{id: "section-903-4a"}
       .rule_id 903.4a
       .rule_text Color identity is established before the game begins.
@@ -7166,7 +7166,7 @@
     .rule{id: "section-903-4c"}
       .rule_id 903.4c
       .rule_text The back face of a double-faced card (see rule <a href="#section-711">711</a>) is included when determining a card’s color identity. This is an exception to rule <a href="#section-711-4a">711.4a</a>.
-      .rule_text Example: Civilized Scholar is the front face of a double-faced card with mana cost {2}{U}. Homicidal Brute is the back face of that double-faced card and has a red color indicator. The card’s color identity is blue and red.
+      .rule_text Example: Civilized Scholar is the front face of a double-faced card with mana cost <span class="mana mana-2">{2}</span><span class="mana mana-u">{U}</span>. Homicidal Brute is the back face of that double-faced card and has a red color indicator. The card’s color identity is blue and red.
     .rule{id: "section-903-5"}
       .rule_id 903.5.
       .rule_text Each Commander deck is subject to the following deck construction rules.
@@ -7179,7 +7179,7 @@
     .rule{id: "section-903-5c"}
       .rule_id 903.5c
       .rule_text A card can be included in a Commander deck only if every color in its color identity is also found in the color identity of the deck’s commander.
-      .rule_text Example: Wort, the Raidmother is a legendary creature with mana cost {4}{R/G}{R/G}. Wort’s color identity is red and green. Each card in a Wort Commander deck must be only red, only green, both red and green, or have no color. Each mana symbol in the mana cost or rules text of a card in this deck must be only red, only green, both red and green, or have no color.
+      .rule_text Example: Wort, the Raidmother is a legendary creature with mana cost <span class="mana mana-4">{4}</span><span class="mana mana-rg">{R/G}</span><span class="mana mana-rg">{R/G}</span>. Wort’s color identity is red and green. Each card in a Wort Commander deck must be only red, only green, both red and green, or have no color. Each mana symbol in the mana cost or rules text of a card in this deck must be only red, only green, both red and green, or have no color.
     .rule{id: "section-903-5d"}
       .rule_id 903.5d
       .rule_text A card with a basic land type may be included in a Commander deck only if each color of mana it could produce is included in the commander’s color identity.
@@ -7192,7 +7192,7 @@
       .rule_text Once the starting player has been determined, each player sets his or her life total to 40 and draws a hand of seven cards.
     .rule{id: "section-903-8"}
       .rule_id 903.8.
-      .rule_text A player may cast a commander he or she owns from the command zone. A commander cast from the command zone costs an additional {2} for each previous time the player casting it has cast it from the command zone that game.
+      .rule_text A player may cast a commander he or she owns from the command zone. A commander cast from the command zone costs an additional <span class="mana mana-2">{2}</span> for each previous time the player casting it has cast it from the command zone that game.
     .rule{id: "section-903-9"}
       .rule_id 903.9.
       .rule_text If a commander would be exiled from anywhere or put into its owner’s hand, graveyard, or library from anywhere, its owner may put it into the command zone instead. This replacement effect may apply more than once to the same event. This is an exception to rule <a href="#section-614-5">614.5</a>.
@@ -7874,7 +7874,7 @@
       .glossary_definition A keyword ability that allows an activated ability to be activated from a player’s hand. See rule <a href="#section-702-56">702.56</a>, “Forecast.”
     .glossary_entry
       .glossary_term Forest
-      .glossary_definition One of the five basic land types. Any land with this subtype has the ability “{T}: Add {G} to your mana pool.” See rule <a href="#section-305-6">305.6</a>.
+      .glossary_definition One of the five basic land types. Any land with this subtype has the ability “<span class="mana mana-t">{T}</span>: Add <span class="mana mana-g">{G}</span> to your mana pool.” See rule <a href="#section-305-6">305.6</a>.
     .glossary_entry
       .glossary_term Forestcycling
       .glossary_definition See Typecycling.
@@ -7904,7 +7904,7 @@
       .glossary_definition Any player in the Emperor multiplayer variant who isn’t an emperor. See rule <a href="#section-809">809</a>, “Emperor Variant.”
     .glossary_entry
       .glossary_term Generic Mana
-      .glossary_definition Mana in a cost represented by numerical symbols (such as {1}) or variable symbols (such as {X}) that can be paid with mana of any type. See rule <a href="#section-107-4">107.4</a>.
+      .glossary_definition Mana in a cost represented by numerical symbols (such as <span class="mana mana-1">{1}</span>) or variable symbols (such as <span class="mana mana-x">{X}</span>) that can be paid with mana of any type. See rule <a href="#section-107-4">107.4</a>.
     .glossary_entry
       .glossary_term Global Enchantment (Obsolete)
       .glossary_definition An obsolete term for a non-Aura enchantment. Cards printed with this text have received errata in the Oracle card reference.
@@ -8009,7 +8009,7 @@
       .glossary_definition A keyword action that creates a Clue artifact token. See rule <a href="#section-701-33">701.33</a>, “Investigate.”
     .glossary_entry
       .glossary_term Island
-      .glossary_definition One of the five basic land types. Any land with this subtype has the ability “{T}: Add {U} to your mana pool.” See rule <a href="#section-305-6">305.6</a>.
+      .glossary_definition One of the five basic land types. Any land with this subtype has the ability “<span class="mana mana-t">{T}</span>: Add <span class="mana mana-u">{U}</span> to your mana pool.” See rule <a href="#section-305-6">305.6</a>.
     .glossary_entry
       .glossary_term Islandcycling
       .glossary_definition See Typecycling.
@@ -8189,7 +8189,7 @@
       .glossary_definition A keyword ability that lets a card be cast face down as a 2/2 creature. See rule <a href="#section-702-36">702.36</a>, “Morph,” and rule <a href="#section-707">707</a>, “Face-Down Spells and Permanents.”
     .glossary_entry
       .glossary_term Mountain
-      .glossary_definition One of the five basic land types. Any land with this subtype has the ability “{T}: Add {R} to your mana pool.” See rule <a href="#section-305-6">305.6</a>.
+      .glossary_definition One of the five basic land types. Any land with this subtype has the ability “<span class="mana mana-t">{T}</span>: Add <span class="mana mana-r">{R}</span> to your mana pool.” See rule <a href="#section-305-6">305.6</a>.
     .glossary_entry
       .glossary_term Mountaincycling
       .glossary_definition See Typecycling.
@@ -8315,7 +8315,7 @@
       .glossary_definition If a spell or ability refers to a counter being “placed” on a permanent, it means putting a counter on that permanent while it’s on the battlefield, or that permanent entering the battlefield with a counter on it. See rule <a href="#section-121">121</a>, “Counters.”
     .glossary_entry
       .glossary_term Plains
-      .glossary_definition One of the five basic land types. Any land with this subtype has the ability “{T}: Add {W} to your mana pool.” See rule <a href="#section-305-6">305.6</a>.
+      .glossary_definition One of the five basic land types. Any land with this subtype has the ability “<span class="mana mana-t">{T}</span>: Add <span class="mana mana-w">{W}</span> to your mana pool.” See rule <a href="#section-305-6">305.6</a>.
     .glossary_entry
       .glossary_term Plainscycling
       .glossary_definition See Typecycling.
@@ -8537,7 +8537,7 @@
       .glossary_definition A supertype that’s normally relevant on permanents. See rule <a href="#section-205-4">205.4</a>, “Supertypes.”
     .glossary_entry
       .glossary_term Snow Mana Symbol
-      .glossary_definition The snow mana symbol {S} represents a cost that can be paid with one mana produced by a snow permanent. See rule <a href="#section-107-4h">107.4h</a>.
+      .glossary_definition The snow mana symbol <span class="mana mana-s">{S}</span> represents a cost that can be paid with one mana produced by a snow permanent. See rule <a href="#section-107-4h">107.4h</a>.
     .glossary_entry
       .glossary_term Snow-Covered (Obsolete)
       .glossary_definition Some older cards were printed with the term “snow-covered” in their rules text. Except when referencing card names, such cards have received errata in the Oracle card reference to reference the supertype “snow” instead. See Snow.
@@ -8645,7 +8645,7 @@
       .glossary_definition A keyword ability that provides an alternative way to play a card. See rule <a href="#section-702-61">702.61</a>, “Suspend.” A card is “suspended” if it’s in the exile zone, has suspend, and has a time counter on it.
     .glossary_entry
       .glossary_term Swamp
-      .glossary_definition One of the five basic land types. Any land with this subtype has the ability “{T}: Add {B} to your mana pool.” See rule <a href="#section-305-6">305.6</a>.
+      .glossary_definition One of the five basic land types. Any land with this subtype has the ability “<span class="mana mana-t">{T}</span>: Add <span class="mana mana-b">{B}</span> to your mana pool.” See rule <a href="#section-305-6">305.6</a>.
     .glossary_entry
       .glossary_term Swampcycling
       .glossary_definition See Typecycling.
@@ -8660,7 +8660,7 @@
       .glossary_definition A status a permanent may have. See rule <a href="#section-110-6">110.6</a> and rule <a href="#section-701-17">701.17</a>, “Tap and Untap.” See also Untapped.
     .glossary_entry
       .glossary_term Tap Symbol
-      .glossary_definition The tap symbol {T} in an activation cost means “Tap this permanent.” See rule <a href="#section-107-5">107.5</a>.
+      .glossary_definition The tap symbol <span class="mana mana-t">{T}</span> in an activation cost means “Tap this permanent.” See rule <a href="#section-107-5">107.5</a>.
     .glossary_entry
       .glossary_term Target
       .glossary_definition A preselected object, player, and/or zone a spell or ability will affect. See rule <a href="#section-114">114</a>, “Targets.”
@@ -8798,7 +8798,7 @@
       .glossary_definition Part of the turn. This step is the first step of the beginning phase. See rule <a href="#section-502">502</a>, “Untap Step.”
     .glossary_entry
       .glossary_term Untap Symbol
-      .glossary_definition The untap symbol {Q} in an activation cost means “Untap this permanent.” See rule <a href="#section-107-6">107.6</a>.
+      .glossary_definition The untap symbol <span class="mana mana-q">{Q}</span> in an activation cost means “Untap this permanent.” See rule <a href="#section-107-6">107.6</a>.
     .glossary_entry
       .glossary_term Untapped
       .glossary_definition A default status a permanent may have. See rule <a href="#section-110-6">110.6</a> and rule <a href="#section-701-17">701.17</a>, “Tap and Untap.” See also Tapped.
