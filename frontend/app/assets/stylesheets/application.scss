@@ -142,7 +142,7 @@ form.search {
     @media(min-width: 544px) {
       &.split:hover {
         transform: translateX(20%) rotateZ(90deg);
-      }  
+      }
     }
   }
   & .dfc {
@@ -182,11 +182,11 @@ form.search {
 
 /* Mana symbols */
 .mana {
-  background-image:url("/mana_symbols2.png");
+  background-image: url("/mana_symbols2.png");
   display:inline-block;
-  z-index:30;
+  z-index:1;
   cursor:default;
-  vertical-align:top;
+  vertical-align: middle;
   font-size:0;
   width: 15px;
   height: 15px;
