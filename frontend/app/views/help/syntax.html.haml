@@ -124,6 +124,26 @@
       = search_help %Q[f:edh], "cards legal in Commander format"
       = search_help %Q[f:"innistrad block"], "cards legal in Innistrad Block Constructed format"
 
+    %h4 Search by set type
+    %div Set type includes both individual types of sets (like expansions, core sets, or duel decks) and broader categories (booster sets, multiplayer sets.)
+    %ul
+      = search_help "st:ex", "cards from standard expert-level expansions"
+      = search_help "st:core", "core sets"
+      = search_help "st:box", "boxed sets like the Anthologies box"
+      = search_help "st:ftv", "From The Vault sets"
+      = search_help "st:arc", "Archenemy sets"
+      = search_help "st:cmd", "Commander sets"
+      = search_help "st:cns", "Conspiracy sets"
+      = search_help "st:pc", "Planechase sets"
+      = search_help "st:rep", "Reprint sets like Chronicles or Modern Masters"
+      = search_help "st:st", "Introductory/starter sets"
+      = search_help "st:pds", "Premium Deck Series"
+      = search_help "st:masters", "Online Masters sets"
+      = search_help "st:multi", "All types of multiplayer sets"
+      = search_help "st:booster", "All sets sold in booster packs"
+      = search_help "st:fixed", "Non-deck sets with predetermined contents"
+      = search_help "st:deck", "All sets consisting of pre-built decks"
+
     %h4 Search by watermark
     %ul
       = search_help "w:izzet", "cards with Izzet watermark (Return to Ravnica block)"
@@ -220,5 +240,5 @@
       = search_help "sort:name", "sort by name alphabetically (default)"
       = search_help "sort:new", "sort results by most recent first, counting only regular sets for sake of order (other printings will go at end of results)"
       = search_help "sort:newall", "sort results by most recent first, counting all printings"
-      = search_help "sort:ord", "sort results by oldest first, counting only regular sets for sake of order"
-      = search_help "sort:ordall", "sort results by oldest first, counting all printings"
+      = search_help "sort:old", "sort results by oldest first, counting only regular sets for sake of order"
+      = search_help "sort:oldall", "sort results by oldest first, counting all printings"
