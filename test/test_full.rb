@@ -89,7 +89,7 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_results "t:jace firstprint=2012", "Jace, Architect of Thought"
 
     # This is fairly silly, as it includes prerelease promos etc.
-    assert_search_results "e:ktk firstprint<ktk",
+    assert_search_results "e:ktk firstprint*<ktk",
       "Abzan Ascendancy", "Act of Treason", "Anafenza, the Foremost",
       "Ankle Shanker", "Arc Lightning", "Avalanche Tusker", "Bloodsoaked Champion",
       "Bloodstained Mire", "Butcher of the Horde", "Cancel", "Crackling Doom",
@@ -107,7 +107,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Trumpet Blast", "Utter End", "Villainous Wealth", "Windstorm", "Windswept Heath",
       "Wooded Foothills", "Zurgo Helmsmasher"
 
-    assert_search_results "e:ktk lastprint>ktk",
+    assert_search_results "e:ktk lastprint*>ktk",
       "Act of Treason", "Ainok Tracker", "Altar of the Brood", "Arc Lightning", "Bloodfell Caves", "Bloodstained Mire", "Blossoming Sands", "Briber's Purse", "Debilitating Injury", "Disdainful Stroke", "Dismal Backwater", "Dragonscale Boon", "Dutiful Return", "Flooded Strand", "Forest", "Ghostfire Blade", "Grim Haruspex", "Hordeling Outburst", "Incremental Growth", "Island", "Jeering Instigator", "Jungle Hollow", "Mountain", "Mystic of the Hidden Way", "Naturalize", "Plains", "Polluted Delta", "Ride Down", "Rugged Highlands", "Ruthless Ripper", "Scoured Barrens", "Shatter", "Smite the Monstrous", "Sultai Charm", "Summit Prowler", "Suspension Field", "Swamp", "Swiftwater Cliffs", "Thornwood Falls", "Throttle", "Tormenting Voice", "Tranquil Cove", "Watcher of the Roost", "Weave Fate", "Wind-Scarred Crag", "Windstorm", "Windswept Heath", "Wooded Foothills"
   end
 
@@ -116,7 +116,7 @@ class CardDatabaseFullTest < Minitest::Test
   end
 
   def test_lastprint
-    assert_search_results "t:planeswalker lastprint<=roe", "Chandra Ablaze", "Sarkhan the Mad"
+    assert_search_results "t:planeswalker lastprint*<=roe", "Chandra Ablaze", "Sarkhan the Mad"
     assert_search_results "t:planeswalker lastprint<=2011",
       "Ajani Goldmane", "Ajani Vengeant", "Chandra Ablaze", "Elspeth Tirel",
       "Garruk Relentless", "Garruk, the Veil-Cursed", "Gideon Jura", "Liliana of the Veil",

@@ -75,12 +75,12 @@ class Card
     Format.all_legalities(self, date)
   end
 
-  def first_release_date
-    @printings.map(&:release_date).compact.min
+  def first_release_date(filter="all")
+    @printings.select{|pr| verify_set_type(pr, filter)}.map(&:release_date).compact.min
   end
 
-  def last_release_date
-    @printings.map(&:release_date).compact.max
+  def last_release_date(filter="all")
+    @printings.select{|pr| verify_set_type(pr, filter)}.map(&:release_date).compact.max
   end
 
   private
@@ -146,5 +146,16 @@ class Card
       ci << tci if tci
     end
     ci.uniq.join
+  end
+
+  def verify_set_type(pr, type)
+    case type
+      when "full"
+        !%w(promo masters).include?(pr.set_type) && pr.set_code != 'tpr'
+      when "expert"
+        %w(core expansion).include?(pr.set_type)
+      else
+        true
+    end
   end
 end

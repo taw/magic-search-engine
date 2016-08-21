@@ -47,6 +47,10 @@ class CardPrinting
     @data["rarity"]
   end
 
+  def set_type
+    @set.type
+  end
+
   def frame
     @frame ||= begin
       eight_edition_release_date = Date.parse("2003-07-28")

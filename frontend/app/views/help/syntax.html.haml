@@ -124,6 +124,26 @@
       = search_help %Q[f:edh], "cards legal in Commander format"
       = search_help %Q[f:"innistrad block"], "cards legal in Innistrad Block Constructed format"
 
+    %h4 Search by set type
+    %div Set type includes both individual types of sets (like expansions, core sets, or duel decks) and broader categories (booster sets, multiplayer sets.)
+    %ul
+      = search_help "st:ex", "cards from standard expert-level expansions"
+      = search_help "st:core", "core sets"
+      = search_help "st:box", "boxed sets like the Anthologies box"
+      = search_help "st:ftv", "From The Vault sets"
+      = search_help "st:arc", "Archenemy sets"
+      = search_help "st:cmd", "Commander sets"
+      = search_help "st:cns", "Conspiracy sets"
+      = search_help "st:pc", "Planechase sets"
+      = search_help "st:rep", "Reprint sets like Chronicles or Modern Masters"
+      = search_help "st:st", "Introductory/starter sets"
+      = search_help "st:pds", "Premium Deck Series"
+      = search_help "st:masters", "Online Masters sets"
+      = search_help "st:multi", "All types of multiplayer sets"
+      = search_help "st:booster", "All sets sold in booster packs"
+      = search_help "st:fixed", "Non-deck sets with predetermined contents"
+      = search_help "st:deck", "All sets consisting of pre-built decks"
+
     %h4 Search by watermark
     %ul
       = search_help "w:izzet", "cards with Izzet watermark (Return to Ravnica block)"
@@ -170,14 +190,16 @@
     %h4 Search by printing time
     %div For printing time you can use set code, set name, or full date in more or less any format as long as it includes 4-digit year somewhere.
 
-    %div firstprint: operator can be somewhat confusing, as a lot of cards which you'd technically consider to come out in a set technically came out in a Prerelease (dated one week before) or a Duel Deck (a few weeks before) that set. Online-only sets are included too.
+    %div firstprint/lastprint: these commands have three options as to which sets are included. By default, they exclude promo printings and online-only reprint sets. With an added !, only the first or last printing in a core or expansion set is counted. Finally, with an added *, all sets and promos of any type are considered.
 
     %ul
       = search_help "year=2003", "cards printed in year 2003"
       = search_help "year<=1995", "cards printed in year 1995 or before"
-      = search_help "print>ktk", "cards printed after release of Khans of Tarkir"
+      = search_help "print>m10", "cards printed after release of Magic 2010"
       = search_help %Q[print="29 September 2012"], "cards printed on 29 September 2012 (Return to Ravnica prerelease)"
-      = search_help "firstprint=m10", "cards first printed in Magic 2010 set"
+      = search_help "firstprint=ktk", "cards first printed in Khans of Tarkir (this includes cards released as pre-release promos, but not those previewed in Duel Decks: Speed vs Cunning)"
+      = search_help "firstprint!=ktk", "cards first printed in Khans of Tarkir, counting core/expansion printings only"
+      = search_help "firstprint*=ktk", "cards first printed in Khans of Tarkir, excluding pre-release promos and DD previews"
       = search_help "lastprint=m10", "cards last printed in Magic 2010 set"
       = search_help "lastprint<lw", "cards last printed in in Lorwyn set or earlier"
 

@@ -7,9 +7,9 @@ class ConditionLastprint < ConditionPrint
 
   def get_date(card, max_date)
     if max_date
-      card.printings.map(&:release_date).compact.select{|d| d <= max_date}.max
+      card.card.printings.map(&:release_date).compact.select{|d| d <= max_date}.max
     else
-      card.last_release_date
+      card.card.last_release_date @type
     end
   end
 end
