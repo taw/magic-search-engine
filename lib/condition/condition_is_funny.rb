@@ -3,7 +3,7 @@ class ConditionIsFunny < ConditionSimple
   # Basic lands here aren't exactly funny
   # Shouldn't it just test border:silver ?
   def match?(card)
-    %W[uh ug uqc].include?(card.set_code)
+    %W[uh ug uqc hho].include?(card.set_code)
   end
 
   def to_s

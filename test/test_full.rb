@@ -312,6 +312,23 @@ class CardDatabaseFullTest < Minitest::Test
     assert_count_results "is:promo", 1047
   end
 
+  def test_is_funny
+    assert_search_results "abyss is:funny", "Zzzyxas's Abyss"
+    assert_search_results "abyss not:funny",
+      "Abyssal Gatekeeper",
+      "Abyssal Horror",
+      "Abyssal Hunter",
+      "Abyssal Nightstalker",
+      "Abyssal Nocturnus",
+      "Abyssal Persecutor",
+      "Abyssal Specter",
+      "Magus of the Abyss",
+      "Reaper from the Abyss",
+      "The Abyss"
+    assert_search_results "snow is:funny", "Snow Mercy"
+    assert_search_results "tiger is:funny", "Paper Tiger", "Stocking Tiger"
+  end
+
   def test_stemming
     assert_search_equal "vision", "visions"
   end
