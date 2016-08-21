@@ -77,6 +77,17 @@
       = search_help "mana>={2/r}", "cards with mana cost including {2/r} Shadowmoor hybrid mana"
       = search_help "mana={p/r}", "cards with mana cost equal {p/r} Phyrexian mana"
 
+    %div This search supports variable symbols: "m", "n", and "o" each represent a single mana of any color but must each differ from the others; "h" represents a single hybrid mana.
+
+    %ul
+      = search_help "mana=m", "cards with mana cost of exactly 1 colored mana, of any color"
+      = search_help "mana>mm", "cards that cost at least two mana of any one color"
+      = search_help "mana={m}{n}", "cards that cost at exactly one mana each of any two colors"
+      = search_help "mana={m}{m}{n}{n}{n}{o}{o}", "cards that cost exactly two mana each of two colors and three of a third"
+      = search_help "mana={w}{w}{n}{n}{n}{o}{o}", "cards that cost two white mana, two of any one other color, and three of a third color"
+      = search_help "mana=hh", "cards that cost exactly two hybrid mana"
+      = search_help "mana>h", "cards with at least one hybrid mana in their mana cost"
+
     %h4 Search by power, toughness, and loyalty
     %ul
       = search_help "pow=4", "creature cards with power 4"
