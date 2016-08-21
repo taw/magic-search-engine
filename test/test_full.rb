@@ -332,6 +332,8 @@ class CardDatabaseFullTest < Minitest::Test
       "Titanic Ultimatum"
     assert_search_equal "mana=mmnnnoo", "mana=nnooomm"
     assert_search_equal "mana>nnnnn", "mana>ooooo"
+    assert_search_equal "mana=mno", "mana={m}{n}{o}"
+    assert_count_results "mana>=mh", 15
   end
 
   def test_stemming
