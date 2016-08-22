@@ -13,7 +13,6 @@
 
     %h4 Search by type
     %div By default non-Standard cards (planes, vanguard, conspiracies etc.) are not included.
-
     %ul
       = search_help "t:goblin", "search for Goblin cards"
       = search_help 't:"goblin warrior"', "search for Goblin Warrior cards"
@@ -26,7 +25,6 @@
 
     %h4 Search by Oracle text
     %div Reminder text is not included in Oracle search
-
     %ul
       = search_help "o:delve", %Q[search cards with "delve" in Oracle text]
       = search_help %Q[o:"destroy target creature"], %Q[search cards with "destroy target creature" in Oracle text]
@@ -67,7 +65,6 @@
 
     %h4 Search by mana cost
     %div For sake of this search every mana symbol is treated as non-comparable, so "{u}" is neither greater or less than "{u/b}" etc. There's a lot of flexibility, so "{up}", "{u/p}", "{P/U}" etc. all work for Phyrexian blue mana. Curly braces are only needed for non-standard mana types.
-
     %ul
       = search_help "mana=0", "cards with mana cost {0} - does not include cards with no mana cost"
       = search_help "mana<=4", "cards with mana cost {4} or less"
@@ -78,7 +75,6 @@
       = search_help "mana={p/r}", "cards with mana cost equal {p/r} Phyrexian mana"
 
     %div This search supports variable symbols: "m", "n", and "o" each represent a single mana of any color but must each differ from the others; "h" represents a single hybrid mana.
-
     %ul
       = search_help "mana=m", "cards with mana cost of exactly 1 colored mana, of any color"
       = search_help "mana>mm", "cards that cost at least two mana of any one color"
@@ -186,7 +182,6 @@
 
     %h4 Search by card layout
     %div Selecting non-standard layout expands search to special cards as well
-
     %ul
       = search_help "layout:normal", "cards with normal layout"
       = search_help "layout:leveler", "cards with leveler layout"
@@ -200,9 +195,7 @@
 
     %h4 Search by printing time
     %div For printing time you can use set code, set name, or full date in more or less any format as long as it includes 4-digit year somewhere.
-
     %div firstprint: operator can be somewhat confusing, as a lot of cards which you'd technically consider to come out in a set technically came out in a Prerelease (dated one week before) or a Duel Deck (a few weeks before) that set. Online-only sets are included too.
-
     %ul
       = search_help "year=2003", "cards printed in year 2003"
       = search_help "year<=1995", "cards printed in year 1995 or before"
@@ -228,7 +221,6 @@
 
     %h4 Search by alternative printing
     %div Every card printing is treated as separate object, so you can't search for cards which were printing in both Magic 2010 and Magic 2011 with e:m10 e:m11. There's special syntax for that.
-
     %ul
       = search_help "e:m10 alt:e:m11", "cards from Magic 2010 which were also printed in Magic 2011"
       = search_help %Q[a:"Rebecca Guay" alt:(not a:"Rebecca Guay")], "cards drawn by Rebecca Guay which were also printed by someone who's not Rebecca Guay"
@@ -237,7 +229,6 @@
     %div You can travel to any time by specifying set code, set name, or full date (partial date like "1999" will be interpretted as "1 January 1999"). Cards printed since then won't be returned, and status of various formats will be as it was at that time. So if you want to argue about what was best Modern Pod deck back in that time just roll back the time to before the ban and enjoy.
 
     %div Formats should generally be fully accurate from 2004 onwards (Legacy/Vintage split), information about older times might contain inaccuracies.
-
     %ul
       = search_help "time:rtr f:standard", "all cards in Standard at time of Return to Ravnica set"
       = search_help %Q[time:"1 march 2009" banned:commander], "Commander banned cards as of 1 March 2009"
@@ -246,7 +237,6 @@
 
     %h4 Sort results
     %div Use sort: operator to order results in a different way. By default alphabetical sorting is used.
-
     %ul
       = search_help "sort:name", "sort by name alphabetically (default)"
       = search_help "sort:new", "sort results by most recent first, counting only regular sets for sake of order (other printings will go at end of results)"
