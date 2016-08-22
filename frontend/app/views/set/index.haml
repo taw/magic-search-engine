@@ -2,7 +2,7 @@
   .col-xs-12
     %h3 Magic Sets
     %ul
-      - @sets.each do |set|
+      - @sets.sort_by{|s| [-s.release_date.to_i_sort, s.name] }.each do |set|
         %li
           = link_to_set(set) do
             = "#{set.name} (#{set.code})"
