@@ -7,11 +7,7 @@ class InteractiveQueryBuilder
     conds = []
     @args.each do |cond, keys|
       case cond.to_s
-      when "any"
-        parse_fragments(keys).each do |frag|
-          conds << "*:#{maybe_quote(frag)}"
-        end
-      when "title"
+      when "name"
         parse_fragments(keys).each do |frag|
           conds << maybe_quote(frag)
         end

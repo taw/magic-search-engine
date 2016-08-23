@@ -35,8 +35,11 @@ class CardController < ApplicationController
       query = InteractiveQueryBuilder.new(params[:advanced]).query
       if query
         redirect_to action: 'index', q: query
+        return
       end
     end
+
+    render "advanced", layout: "no_search_box"
   end
 
   private

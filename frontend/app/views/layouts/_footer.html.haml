@@ -1,0 +1,14 @@
+.row.nav_row
+  .col-xs-12
+    %nav.footer
+      = link_to controller: "set", action: "index" do
+        Sets
+      &bullet;
+      = link_to controller: "help", action: "syntax" do
+        Syntax Help
+      &bullet;
+      = link_to controller: "help", action: "rules" do
+        Rules
+      &bullet;
+      = link_to controller: "help", action: "contact" do
+        Contact
