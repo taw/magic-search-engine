@@ -51,8 +51,16 @@ class InteractiveQueryBuilderTest < Minitest::Test
     assert_interactive_query "(b:zen OR b:bfz)", block: ["zen", "bfz"]
   end
 
+  def test_set_and_block
+    assert_interactive_query "(b:isd OR e:zen)", block: ["isd"], set: ["zen"]
+    assert_interactive_query "(b:isd OR e:som OR e:nph)", block: ["isd"], set: ["som", "nph"]
+    assert_interactive_query "(b:isd OR b:zen OR e:som OR e:nph)", block: ["isd", "zen"], set: ["som", "nph"]
+  end
+
   def test_watermark
     assert_interactive_query "w:boros", watermark: ["boros"]
     assert_interactive_query "(w:izzet OR w:abzan)", watermark: ["izzet", "abzan"]
+    assert_interactive_query "-w:*", watermark: ["no"]
+    assert_interactive_query "w:*", watermark: ["yes"]
   end
 end

@@ -4,7 +4,11 @@ class ConditionWatermark < ConditionSimple
   end
 
   def match?(card)
-    card.watermark == @watermark
+    if @watermark == "*"
+      card.watermark != nil
+    else
+      card.watermark == @watermark
+    end
   end
 
   def to_s
