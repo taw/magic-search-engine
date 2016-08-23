@@ -313,6 +313,8 @@ class Indexer
     r = rarity.downcase
     if r == "mythic rare"
       "mythic"
+    elsif r == "basic land"
+      "basic"
     else
       r
     end
