@@ -1,19 +1,6 @@
 !!!
 %html
-  %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{"http-equiv" => "X-UA-Compatible", content: "IE=edge"}/
-    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}/
-    %meta{name: "description", content: "Advanced Search Engine for Magic: the Gathering cards"}/
-    %meta{name: "keywords", content: "mtg, magic the gathering, cards, search engine"}/
-    - if @title
-      %title #{@title} - mtg.wtf
-    - else
-      %title mtg.wtf
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    %link{rel: "search", href: "http://mtg.wtf/opensearchdescription.xml", type: "application/opensearchdescription+xml", title: "mtg.wtf"}
-    = csrf_meta_tags
+  = render "layouts/head"
   %body
     .container
       .row.logo_row
@@ -27,17 +14,4 @@
           .col-xs-12.col-md-2
             = submit_tag("Search", name: nil, class: "btn btn-default")
       = yield
-      .row.nav_row
-        .col-xs-12
-          %nav.footer
-            = link_to controller: "set", action: "index" do
-              Sets
-            &bullet;
-            = link_to controller: "help", action: "syntax" do
-              Syntax Help
-            &bullet;
-            = link_to controller: "help", action: "rules" do
-              Rules
-            &bullet;
-            = link_to controller: "help", action: "contact" do
-              Contact
+      = render "layouts/footer"
