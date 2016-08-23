@@ -6,16 +6,10 @@ class InteractiveQueryBuilderTest < Minitest::Test
     assert_equal expected_query, actual_query, args.to_s
   end
 
-  def test_any
-    assert_interactive_query "*:dragon", any: "dragon"
-    assert_interactive_query '*:green *:dragon', any: "green dragon"
-    assert_interactive_query '*:"green dragon"', any: '"green dragon"'
-  end
-
-  def test_title
-    assert_interactive_query "dragon", title: "dragon"
-    assert_interactive_query 'green dragon', title: "green dragon"
-    assert_interactive_query '"green dragon"', title: '"green dragon"'
+  def test_name
+    assert_interactive_query "dragon", name: "dragon"
+    assert_interactive_query 'green dragon', name: "green dragon"
+    assert_interactive_query '"green dragon"', name: '"green dragon"'
   end
 
   def test_type
