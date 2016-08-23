@@ -25,7 +25,13 @@ class InteractiveQueryBuilder
       when "block"
         set_block_conds.push *flag_condition("b:", keys)
       when "watermark"
-        conds.push *or_condition(flag_condition("w:", keys))
+        if keys.include?("yes")
+          conds.push "w:*"
+        elsif keys.include?("no")
+          conds.push "-w:*"
+        else
+          conds.push *or_condition(flag_condition("w:", keys))
+        end
       else
         raise "Unknown key: #{cond}"
       end

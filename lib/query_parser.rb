@@ -53,7 +53,7 @@ private
         @tokens << [:test, klass.new(s[2] || s[3])]
       elsif s.scan(/e:(?:"(.*?)"|(\w+))/i)
         @tokens << [:test, ConditionEdition.new(s[1] || s[2])]
-      elsif s.scan(/w:(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/w:(?:"(.*?)"|(\w+|\*))/i)
         @tokens << [:test, ConditionWatermark.new(s[1] || s[2])]
       elsif s.scan(/f:(?:"(.*?)"|(\w+))/i)
         @tokens << [:test, ConditionFormat.new(s[1] || s[2])]
