@@ -4,6 +4,6 @@ class FormatShadowsOverInnistradBlock < Format
   end
 
   def format_sets
-    Set["soi"]
+    Set["soi", "emn"]
   end
 end
