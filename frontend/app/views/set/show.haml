@@ -1,6 +1,10 @@
 .row
   .col-xs-12
     %h3= @set.name
+.row.results_summary
+  .col-xs-12
+    #{@set.name} contains #{pluralize(@cards.total_entries, "card")}
+
 - @cards.each do |card|
   .row.card_row
     .col-xs-12.col-sm-6.col-md-4.card_picture_cell
