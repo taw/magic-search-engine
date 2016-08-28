@@ -7,7 +7,7 @@ class CardDatabaseFullTest < Minitest::Test
 
   def test_stats
     assert_equal 16455, @db.cards.size
-    assert_equal 31275, @db.printings.size
+    assert_equal 31290, @db.printings.size
   end
 
   def test_formats
@@ -361,6 +361,7 @@ class CardDatabaseFullTest < Minitest::Test
   def test_alt_rarity
     assert_search_include "r:common alt:r:uncommon", "Doom Blade"
     assert_search_results "r:common alt:r:mythic",
+      "Cabal Ritual",
       "Chainer's Edict",
       "Dark Ritual",
       "Desert",
