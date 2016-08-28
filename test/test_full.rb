@@ -6,8 +6,8 @@ class CardDatabaseFullTest < Minitest::Test
   end
 
   def test_stats
-    assert_equal 16375, @db.cards.size
-    assert_equal 31054, @db.printings.size
+    assert_equal 16455, @db.cards.size
+    assert_equal 31275, @db.printings.size
   end
 
   def test_formats
@@ -90,25 +90,126 @@ class CardDatabaseFullTest < Minitest::Test
 
     # This is fairly silly, as it includes prerelease promos etc.
     assert_search_results "e:ktk firstprint<ktk",
-      "Abzan Ascendancy", "Act of Treason", "Anafenza, the Foremost",
-      "Ankle Shanker", "Arc Lightning", "Avalanche Tusker", "Bloodsoaked Champion",
-      "Bloodstained Mire", "Butcher of the Horde", "Cancel", "Crackling Doom",
-      "Crater's Claws", "Crippling Chill", "Deflecting Palm", "Despise",
-      "Dig Through Time", "Dragon-Style Twins", "Duneblast",
-      "Erase", "Flooded Strand", "Flying Crane Technique", "Forest", "Grim Haruspex",
-      "Hardened Scales", "Herald of Anafenza", "High Sentinels of Arashin", "Icy Blast", "Incremental Growth", "Island", "Ivorytusk Fortress", "Jeering Instigator",
-      "Jeskai Ascendancy", "Jeskai Elder", "Kheru Lich Lord", "Mardu Ascendancy",
-      "Mardu Heart-Piercer", "Master of Pearls", "Mountain", "Mystic Monastery",
-      "Narset, Enlightened Master", "Naturalize", "Necropolis Fiend", "Nomad Outpost",
-      "Plains", "Polluted Delta", "Rakshasa Vizier", "Rattleclaw Mystic",
-      "Sage of the Inward Eye", "Seek the Horizon", "Shatter", "Sidisi, Brood Tyrant",
-      "Siege Rhino", "Smite the Monstrous", "Sultai Ascendancy", "Surrak Dragonclaw",
-      "Swamp", "Temur Ascendancy", "Thousand Winds", "Trail of Mystery", "Trap Essence",
-      "Trumpet Blast", "Utter End", "Villainous Wealth", "Windstorm", "Windswept Heath",
-      "Wooded Foothills", "Zurgo Helmsmasher"
+                          "Abzan Ascendancy",
+                          "Act of Treason",
+                          "Anafenza, the Foremost",
+                          "Ankle Shanker",
+                          "Arc Lightning",
+                          "Avalanche Tusker",
+                          "Bloodsoaked Champion",
+                          "Bloodstained Mire",
+                          "Butcher of the Horde",
+                          "Cancel",
+                          "Crackling Doom",
+                          "Crater's Claws",
+                          "Crippling Chill",
+                          "Deflecting Palm",
+                          "Despise",
+                          "Dig Through Time",
+                          "Dragon-Style Twins",
+                          "Duneblast",
+                          "Erase",
+                          "Flooded Strand",
+                          "Flying Crane Technique",
+                          "Forest",
+                          "Grim Haruspex",
+                          "Hardened Scales",
+                          "Herald of Anafenza",
+                          "High Sentinels of Arashin",
+                          "Icy Blast",
+                          "Incremental Growth",
+                          "Island",
+                          "Ivorytusk Fortress",
+                          "Jeering Instigator",
+                          "Jeskai Ascendancy",
+                          "Jeskai Elder",
+                          "Kheru Lich Lord",
+                          "Mardu Ascendancy",
+                          "Mardu Heart-Piercer",
+                          "Master of Pearls",
+                          "Mountain",
+                          "Mystic Monastery",
+                          "Narset, Enlightened Master",
+                          "Naturalize",
+                          "Necropolis Fiend",
+                          "Nomad Outpost",
+                          "Plains",
+                          "Polluted Delta",
+                          "Rakshasa Vizier",
+                          "Rattleclaw Mystic",
+                          "Sage of the Inward Eye",
+                          "Seek the Horizon",
+                          "Shatter",
+                          "Sidisi, Brood Tyrant",
+                          "Siege Rhino",
+                          "Smite the Monstrous",
+                          "Sultai Ascendancy",
+                          "Surrak Dragonclaw",
+                          "Swamp",
+                          "Temur Ascendancy",
+                          "Thousand Winds",
+                          "Trail of Mystery",
+                          "Trap Essence",
+                          "Trumpet Blast",
+                          "Utter End",
+                          "Villainous Wealth",
+                          "Windstorm",
+                          "Windswept Heath",
+                          "Wooded Foothills",
+                          "Zurgo Helmsmasher"
 
     assert_search_results "e:ktk lastprint>ktk",
-      "Act of Treason", "Ainok Tracker", "Altar of the Brood", "Arc Lightning", "Bloodfell Caves", "Bloodstained Mire", "Blossoming Sands", "Briber's Purse", "Debilitating Injury", "Disdainful Stroke", "Dismal Backwater", "Dragonscale Boon", "Dutiful Return", "Flooded Strand", "Forest", "Ghostfire Blade", "Grim Haruspex", "Hordeling Outburst", "Incremental Growth", "Island", "Jeering Instigator", "Jungle Hollow", "Mountain", "Mystic of the Hidden Way", "Naturalize", "Plains", "Polluted Delta", "Ride Down", "Rugged Highlands", "Ruthless Ripper", "Scoured Barrens", "Shatter", "Smite the Monstrous", "Sultai Charm", "Summit Prowler", "Suspension Field", "Swamp", "Swiftwater Cliffs", "Thornwood Falls", "Throttle", "Tormenting Voice", "Tranquil Cove", "Watcher of the Roost", "Weave Fate", "Wind-Scarred Crag", "Windstorm", "Windswept Heath", "Wooded Foothills"
+                          "Act of Treason",
+                          "Ainok Tracker",
+                          "Altar of the Brood",
+                          "Arc Lightning",
+                          "Bloodfell Caves",
+                          "Bloodstained Mire",
+                          "Blossoming Sands",
+                          "Briber's Purse",
+                          "Burn Away",
+                          "Debilitating Injury",
+                          "Disdainful Stroke",
+                          "Dismal Backwater",
+                          "Dragonscale Boon",
+                          "Dutiful Return",
+                          "Flooded Strand",
+                          "Forest",
+                          "Ghostfire Blade",
+                          "Grim Haruspex",
+                          "Hordeling Outburst",
+                          "Incremental Growth",
+                          "Island",
+                          "Jeering Instigator",
+                          "Jungle Hollow",
+                          "Kill Shot",
+                          "Mountain",
+                          "Mystic of the Hidden Way",
+                          "Naturalize",
+                          "Plains",
+                          "Polluted Delta",
+                          "Ride Down",
+                          "Rugged Highlands",
+                          "Ruthless Ripper",
+                          "Scoured Barrens",
+                          "Shatter",
+                          "Smite the Monstrous",
+                          "Sultai Charm",
+                          "Summit Prowler",
+                          "Suspension Field",
+                          "Swamp",
+                          "Swiftwater Cliffs",
+                          "Thornwood Falls",
+                          "Throttle",
+                          "Tormenting Voice",
+                          "Tranquil Cove",
+                          "Trumpet Blast",
+                          "Watcher of the Roost",
+                          "Weave Fate",
+                          "Wind-Scarred Crag",
+                          "Windstorm",
+                          "Windswept Heath",
+                          "Wooded Foothills"
   end
 
   def test_firstprint
@@ -297,11 +398,11 @@ class CardDatabaseFullTest < Minitest::Test
 
   def test_error_handling
     # Empty search returns all non-extras
-    assert_count_results "", 16129
-    assert_count_results "sort:new", 16129
-    assert_count_results "is:spell or t:land", 16129
-    assert_count_results "time:3000", 16129
-    assert_count_results %Q[time:"battle for homelands"], 16129
+    assert_count_results "", 16197
+    assert_count_results "sort:new", 16197
+    assert_count_results "is:spell or t:land", 16197
+    assert_count_results "time:3000", 16197
+    assert_count_results %Q[time:"battle for homelands"], 16197
     assert_count_results "time:1000", 0
     assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
   end
