@@ -177,6 +177,7 @@ class Indexer
     sets = {}
     cards = {}
     @sets_code_translator = {}
+    foreign_names = {}
 
     @data.each do |set_code, set_data|
       @sets_code_translator[set_code] = set_data["magicCardsInfoCode"] || set_data["code"].downcase
@@ -194,7 +195,7 @@ class Indexer
         sets_printed = card_data["printings"].map{|set_code| @sets_code_translator[set_code]}
         mtgjson_legalities = format_legalities(card_data)
         # It seems incorrect
-        if sets_printed == ["cns"]
+        if sets_printed == ["cns"] or sets_printed == ["cn2"]
           mtgjson_legalities["commander"] = mtgjson_legalities["vintage"]
         end
 
@@ -217,6 +218,13 @@ class Indexer
         end
 
         card["printings"] << [set_code, index_printing_data(card_data)]
+
+        if card_data["foreignNames"]
+          foreign_names[name] ||= Set[]
+          foreign_names[name] |= card_data["foreignNames"].map{|c|
+            [c["language"], c["name"]]
+          }
+        end
       end
     end
 
@@ -230,6 +238,18 @@ class Indexer
       "Nissa, Vastwood Seer",
     ].each do |card_name|
       cards[card_name]["printings"].delete_if{|c,| c == "ptc"}
+    end
+
+    # Reassemble foreign names
+    # It turns out there's way too many inconsistencies,
+    # like Russian "Thran Golem"
+    cards.each do |card_name, card|
+      next unless foreign_names[card_name]
+      conflicts = foreign_names[card_name].group_by(&:first).map{|lang, names| [lang, names.map(&:last)]}
+      conflicts.each do |lang, names|
+        next if names.size == 1
+        #warn "#{card_name} in #{lang} has multiple names: #{names.join(" / ")}"
+      end
     end
 
     # Fixing printing dates of promo cards
