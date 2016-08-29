@@ -39,5 +39,4 @@ class SetTypeTest < Minitest::Test
     assert_search_results('alert shu st:booster', "Alert Shu Infantry")
     assert_search_results('knight errant st:fixed', "Knight Errant")
   end
-
 end
