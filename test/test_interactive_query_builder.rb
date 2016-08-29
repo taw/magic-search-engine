@@ -38,7 +38,7 @@ class InteractiveQueryBuilderTest < Minitest::Test
 
   def test_rarity
     assert_interactive_query "r:uncommon", rarity: ["uncommon"]
-    assert_interactive_query "(r:rare OR r:mythic)", rarity: ["rare", "mythic"]
+    assert_interactive_query "(r:mythic OR r:rare)", rarity: ["rare", "mythic"]
   end
 
   def test_set
@@ -48,18 +48,18 @@ class InteractiveQueryBuilderTest < Minitest::Test
 
   def test_block
     assert_interactive_query "b:isd", block: ["isd"]
-    assert_interactive_query "b:zen,bfz", block: ["zen", "bfz"]
+    assert_interactive_query "b:bfz,zen", block: ["zen", "bfz"]
   end
 
   def test_set_and_block
     assert_interactive_query "(b:isd OR e:zen)", block: ["isd"], set: ["zen"]
-    assert_interactive_query "(b:isd OR e:som,nph)", block: ["isd"], set: ["som", "nph"]
-    assert_interactive_query "(b:isd,zen OR e:som,nph)", block: ["isd", "zen"], set: ["som", "nph"]
+    assert_interactive_query "(b:isd OR e:nph,som)", block: ["isd"], set: ["som", "nph"]
+    assert_interactive_query "(b:isd,zen OR e:nph,som)", block: ["isd", "zen"], set: ["som", "nph"]
   end
 
   def test_watermark
     assert_interactive_query "w:boros", watermark: ["boros"]
-    assert_interactive_query "(w:izzet OR w:abzan)", watermark: ["izzet", "abzan"]
+    assert_interactive_query "(w:abzan OR w:izzet)", watermark: ["izzet", "abzan"]
     assert_interactive_query "-w:*", watermark: ["no"]
     assert_interactive_query "w:*", watermark: ["yes"]
   end

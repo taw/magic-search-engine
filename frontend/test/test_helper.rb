@@ -18,3 +18,5 @@ class ActionDispatch::IntegrationTest
     Capybara.use_default_driver
   end
 end
+
+Capybara.default_driver = :webkit
