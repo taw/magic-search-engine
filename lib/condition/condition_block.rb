@@ -1,6 +1,6 @@
 class ConditionBlock < Condition
-  def initialize(block)
-    @block = normalize_name(block)
+  def initialize(*blocks)
+    @blocks = blocks.map{|b| normalize_name(b)}
   end
 
   # For sets and blocks:
@@ -11,22 +11,24 @@ class ConditionBlock < Condition
   end
 
   def to_s
-    "b:#{maybe_quote(@block)}"
+    "b:#{@blocks.map{|b| maybe_quote(b)}.join(",")}"
   end
 
   private
 
   def matching_sets(db)
     sets = Set[]
-    db.sets.each do |set_code, set|
-      next unless set.block_code and set.block_name
-      if db.blocks.include?(@block)
-        if set.block_code == @block or normalize_name(set.block_name) == @block
-          sets << set
-        end
-      else
-        if normalize_name(set.block_name).include?(@block)
-          sets << set
+    @blocks.each do |block|
+      db.sets.each do |set_code, set|
+        next unless set.block_code and set.block_name
+        if db.blocks.include?(block)
+          if set.block_code == block or normalize_name(set.block_name) == block
+            sets << set
+          end
+        else
+          if normalize_name(set.block_name).include?(block)
+            sets << set
+          end
         end
       end
     end

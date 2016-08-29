@@ -475,4 +475,13 @@ class CardDatabaseFullTest < Minitest::Test
   def test_stemming
     assert_search_equal "vision", "visions"
   end
+
+  def test_comma_separated_set_list
+    assert_search_equal "e:cmd or e:cma or e:c13 or e:c14 or e:c15", "e:cmd,cma,c13,c14,c15"
+    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cma,c13,c14,c15 -alt:-e:cmd,cma,c13,c14,c15"
+  end
+
+  def test_command_separated_block_list
+    assert_search_equal "b:isd or b:soi", "b:isd,soi"
+  end
 end

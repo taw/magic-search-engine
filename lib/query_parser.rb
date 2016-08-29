@@ -52,13 +52,17 @@ private
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         @tokens << [:test, klass.new(s[2] || s[3])]
       elsif s.scan(/e:(?:"(.*?)"|(\w+))/i)
-        @tokens << [:test, ConditionEdition.new(s[1] || s[2])]
+        sets = [s[1] || s[2]]
+        sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|(\w+))/i)
+        @tokens << [:test, ConditionEdition.new(*sets)]
       elsif s.scan(/w:(?:"(.*?)"|(\w+|\*))/i)
         @tokens << [:test, ConditionWatermark.new(s[1] || s[2])]
       elsif s.scan(/f:(?:"(.*?)"|(\w+))/i)
         @tokens << [:test, ConditionFormat.new(s[1] || s[2])]
       elsif s.scan(/b:(?:"(.*?)"|(\w+))/i)
-        @tokens << [:test, ConditionBlock.new(s[1] || s[2])]
+        blocks = [s[1] || s[2]]
+        blocks << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|(\w+))/i)
+        @tokens << [:test, ConditionBlock.new(*blocks)]
       elsif s.scan(/st:(?:"(.*?)"|(\w+))/i)
         @tokens << [:test, ConditionSetType.new(s[1] || s[2])]
       elsif s.scan(/c:([wubrgcml]+)/i)
