@@ -31,6 +31,37 @@ module ApplicationHelper
     nil
   end
 
+  def set_names_and_codes
+    $CardDatabase
+      .sets
+      .values
+      .sort_by{|s| [-s.release_date.to_i_sort, s.name] }
+      .map{|set| [set.name, set.code]}
+  end
+
+  def block_names_codes_and_sets
+    blocks = {}
+    $CardDatabase
+      .sets
+      .values
+      .select(&:block_name)
+      .sort_by{|s| [-s.release_date.to_i_sort, s.name] }
+      .each do |set|
+      key = [set.block_name, set.block_code]
+      (blocks[key] ||= []) << set.name
+    end
+    blocks.map{|(name, code), sets| [name, code, sets.reverse.join(", ")] }
+  end
+
+  def watermarks
+    $CardDatabase
+      .printings
+      .sort_by(&:release_date)
+      .map(&:watermark)
+      .uniq
+      .compact
+  end
+
   private
 
   def format_mana_symbols(syms)
