@@ -43,18 +43,18 @@ class InteractiveQueryBuilderTest < Minitest::Test
 
   def test_set
     assert_interactive_query "e:ktk", set: ["ktk"]
-    assert_interactive_query "(e:ktk OR e:m10)", set: ["ktk", "m10"]
+    assert_interactive_query "e:ktk,m10", set: ["ktk", "m10"]
   end
 
   def test_block
     assert_interactive_query "b:isd", block: ["isd"]
-    assert_interactive_query "(b:zen OR b:bfz)", block: ["zen", "bfz"]
+    assert_interactive_query "b:zen,bfz", block: ["zen", "bfz"]
   end
 
   def test_set_and_block
     assert_interactive_query "(b:isd OR e:zen)", block: ["isd"], set: ["zen"]
-    assert_interactive_query "(b:isd OR e:som OR e:nph)", block: ["isd"], set: ["som", "nph"]
-    assert_interactive_query "(b:isd OR b:zen OR e:som OR e:nph)", block: ["isd", "zen"], set: ["som", "nph"]
+    assert_interactive_query "(b:isd OR e:som,nph)", block: ["isd"], set: ["som", "nph"]
+    assert_interactive_query "(b:isd,zen OR e:som,nph)", block: ["isd", "zen"], set: ["som", "nph"]
   end
 
   def test_watermark

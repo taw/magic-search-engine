@@ -21,9 +21,9 @@ class InteractiveQueryBuilder
       when "rarity"
         conds.push *or_condition(flag_condition("r:", keys))
       when "set"
-        set_block_conds.push *flag_condition("e:", keys)
+        set_block_conds.push *comma_condition("e:", keys)
       when "block"
-        set_block_conds.push *flag_condition("b:", keys)
+        set_block_conds.push *comma_condition("b:", keys)
       when "watermark"
         if keys.include?("yes")
           conds.push "w:*"
@@ -55,6 +55,10 @@ class InteractiveQueryBuilder
     keys.map do |frag|
       "#{prefix}#{maybe_quote(frag)}"
     end
+  end
+
+  def comma_condition(prefix, keys)
+    "#{prefix}#{ keys.map{|frag|"#{maybe_quote(frag)}"}.join(",")}"
   end
 
   def or_condition(conds)
