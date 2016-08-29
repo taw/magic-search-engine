@@ -22,4 +22,30 @@
         %h6 Flavor text
       = text_field_tag("advanced[artist]", "", class: "form-control", placeholder: 'rebecca guay')
 
+      %h6 Rarity
+      %div.btn-group{"data-toggle"=> "rarity"}
+        = render "checkbox", group: "rarity", label: "any", value: "", checked: true
+        - ["basic", "common", "uncommon", "rare", "mythic", "special"].each do |rarity|
+          = render "checkbox", group: "rarity", label: rarity, value: rarity
+
+      %h6 Set
+      %div.btn-group{"data-toggle"=> "set"}
+        = render "checkbox", group: "set", label: "any", value: "", checked: true
+        - set_names_and_codes.each do |set_name, set_code|
+          = render "checkbox", group: "set", label: set_name, value: set_code
+
+      %h6 Block
+      %div.btn-group{"data-toggle"=> "block"}
+        = render "checkbox", group: "block", label: "any", value: "", checked: true
+        - block_names_codes_and_sets.each do |block_name, block_code, sets|
+          = render "checkbox", group: "block", label: block_name, value: block_code, tooltip: sets
+
+      %h6 Watermark
+      %div.btn-group{"data-toggle"=> "watermark"}
+        = render "checkbox", group: "watermark", label: "any", value: "", checked: true
+        = render "checkbox", group: "watermark", label: "has watermark", value: "yes"
+        = render "checkbox", group: "watermark", label: "no watermark", value: "no"
+        - watermarks.each do |name|
+          = render "checkbox", group: "watermark", label: name.capitalize, value: name
+
       = submit_tag("Search", name: nil, class: "btn btn-default")

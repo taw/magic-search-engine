@@ -6,7 +6,10 @@ class InteractiveQueryBuilder
   def query
     conds = []
     set_block_conds = []
-    @args.each do |cond, keys|
+    @args.sort.each do |cond, keys|
+      if keys.is_a?(Array)
+        keys = keys.reject(&:empty?).sort
+      end
       case cond.to_s
       when "name"
         conds.push *text_and_condition("", keys)
@@ -58,7 +61,11 @@ class InteractiveQueryBuilder
   end
 
   def comma_condition(prefix, keys)
-    "#{prefix}#{ keys.map{|frag|"#{maybe_quote(frag)}"}.join(",")}"
+    if keys != []
+      "#{prefix}#{ keys.map{|frag|"#{maybe_quote(frag)}"}.join(",")}"
+    else
+      []
+    end
   end
 
   def or_condition(conds)
