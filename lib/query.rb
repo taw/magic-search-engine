@@ -66,6 +66,8 @@ class Query
       results.sort_by{|c| [-c.release_date.to_i_sort, c.name]}
     when "oldall"
       results.sort_by{|c| [c.release_date.to_i_sort, c.name]}
+    when "cmc"
+      results.sort_by{|c| [c.cmc, c.name]}
     else # "name" or unknown key
       results.sort_by{|c| [c.name, c.set.regular? ? 0 : 1, -c.release_date.to_i_sort]}
     end
