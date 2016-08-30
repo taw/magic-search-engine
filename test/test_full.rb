@@ -297,6 +297,13 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra, Pyromaster",
       "Chandra, Roaring Flame",
       "Chandra, Flamecaller"
+    assert_search_results "t:chandra sort:cmc",
+      "Chandra Ablaze",
+      "Chandra Nalaar",
+      "Chandra, Flamecaller",
+      "Chandra, Pyromaster",
+      "Chandra, Roaring Flame",
+      "Chandra, the Firebrand"
   end
 
   def test_alt_rebecca_guay
