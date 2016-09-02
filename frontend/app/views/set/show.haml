@@ -1,9 +1,13 @@
 .row
   .col-xs-12
     %h3= @set.name
+
 .row.results_summary
   .col-xs-12
-    #{@set.name} contains #{pluralize(@cards.total_entries, "card")}
+    #{@set.name} contains #{pluralize(@cards.total_entries, "card")}.
+  - if @set.block_name
+    .col-xs-12
+      It is part of #{@set.block_name} block.
 
 - @cards.each do |card|
   .row.card_row
