@@ -1,6 +1,13 @@
+- brief ||= false
 - if printings.present?
   .printings_box
-    - card.printings.reverse.group_by(&:set_name).each do |set_name, set_printings|
+    - printings_by_set = card.printings.reverse.group_by(&:set_name).to_a
+    - if brief and printings_by_set.size > 20
+      - printings_by_set = printings_by_set[0, 20]
+      - link_to_rest = true
+    - else
+      - list_to_rest = false
+    - printings_by_set.each do |set_name, set_printings|
       - if set_printings.size == 1
         - printing = set_printings[0]
         - if card == printing
@@ -31,3 +38,6 @@
               %span.not_matching
                 = link_to_card(printing) do
                   = printing.number
+    - if link_to_rest
+      = link_to_card(card) do
+        (and others)

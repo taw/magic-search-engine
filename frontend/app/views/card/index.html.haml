@@ -14,7 +14,10 @@
         - if @cards.total_entries == 1
           = render 'card_extra', card: card
       .hidden-sm-down.col-md-2
-        = render 'printings', card: card, printings: matching_printing
+        - if @cards.total_entries == 1
+          = render 'printings', card: card, printings: matching_printing
+        - else
+          = render 'printings', card: card, printings: matching_printing, brief: true
   .row
     .col-xs-12.pagination
       = will_paginate @cards
