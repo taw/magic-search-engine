@@ -24,7 +24,7 @@
 
 %h5 Legalities
 %ul.legalities
-- card.all_legalities.each do |format, status|
+- card.legality_information.to_h.sort.each do |format, status|
   %li
     = format
     &mdash;

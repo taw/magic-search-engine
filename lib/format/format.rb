@@ -9,6 +9,7 @@ class Format
   def legality(card)
     raise unless card
     return nil if %W[vanguard plane phenomenon scheme token].include?(card.layout)
+    return nil if card.types == ["conspiracy"]
     if in_format?(card)
       @ban_list.legality(format_name, card.name, @time)
     else
@@ -114,20 +115,12 @@ class Format
       }
     end
 
-    def [](format)
-      formats_index[format] || FormatUnknown
+    def all_format_classes
+      formats_index.values.uniq
     end
 
-    def all_legalities(card, time=nil)
-      result = {}
-      formats_index.values.uniq.each do |format_class|
-        format = format_class.new(time)
-        status = format.legality(card)
-        if status
-          result[format.format_pretty_name] = status
-        end
-      end
-      result
+    def [](format)
+      formats_index[format] || FormatUnknown
     end
   end
 end

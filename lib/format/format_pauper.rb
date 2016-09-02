@@ -7,7 +7,7 @@ class FormatPauper < FormatVintage
     raise unless card
     card.printings.each do |printing|
       next if @time and printing.release_date > @time
-      next unless printing.rarity == "common"
+      next unless printing.rarity == "common" or printing.rarity == "basic"
       return true if @format_sets.include?(printing.set_code)
     end
     false

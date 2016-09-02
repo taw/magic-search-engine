@@ -417,20 +417,6 @@ DynamicBanListData = {
   # There's huge deal of early history missing
 
   "legacy" => {
-    # conspiracy
-    "Advantageous Proclamation" => "banned",
-    "Backup Plan" => "banned",
-    "Brago's Favor" => "banned",
-    "Double Stroke" => "banned",
-    "Immediate Action" => "banned",
-    "Iterative Analysis" => "banned",
-    "Muzzio's Preparations" => "banned",
-    "Power Play" => "banned",
-    "Secret Summoning" => "banned",
-    "Secrets of Paradise" => "banned",
-    "Sentinel Dispatch" => "banned",
-    "Unexpected Potential" => "banned",
-    "Worldknit" => "banned",
     # ante
     "Bronze Tablet"           => "banned",
     "Contract from Below"     => "banned",
@@ -537,20 +523,6 @@ DynamicBanListData = {
     "Yawgmoth's Will"         => { "sep 1999" => "banned" },
   },
   "vintage" => {
-    # conspiracy
-    "Advantageous Proclamation" => "banned",
-    "Backup Plan" => "banned",
-    "Brago's Favor" => "banned",
-    "Double Stroke" => "banned",
-    "Immediate Action" => "banned",
-    "Iterative Analysis" => "banned",
-    "Muzzio's Preparations" => "banned",
-    "Power Play" => "banned",
-    "Secret Summoning" => "banned",
-    "Secrets of Paradise" => "banned",
-    "Sentinel Dispatch" => "banned",
-    "Unexpected Potential" => "banned",
-    "Worldknit" => "banned",
     # ante
     "Bronze Tablet"           => "banned",
     "Contract from Below"     => "banned",

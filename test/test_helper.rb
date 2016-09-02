@@ -186,4 +186,8 @@ class Minitest::Test
   def refute_search_parse(query1, query2)
     refute_equal Query.new(query1), Query.new(query2), "`#{query1}' and `#{query2}' should not be equivalent queries"
   end
+
+  def legality_information(name, date=nil)
+    @db.cards[name].legality_information(date)
+  end
 end

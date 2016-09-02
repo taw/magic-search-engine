@@ -40,7 +40,7 @@ class CardDatabaseNewPhyrexiaTest < Minitest::Test
         "Vintage" => "legal",
         "Commander" => "legal",
       },
-      @birthing_pod.all_legalities
+      @birthing_pod.legality_information.to_h
     )
   end
 
@@ -54,7 +54,7 @@ class CardDatabaseNewPhyrexiaTest < Minitest::Test
         "Vintage" => "legal",
         "Commander" => "legal",
       },
-      @birthing_pod.all_legalities(rtr_release_date)
+      @birthing_pod.legality_information(rtr_release_date).to_h
     )
   end
 end
