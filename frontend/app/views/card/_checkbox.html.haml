@@ -2,10 +2,10 @@
 - tooltip ||= nil
 - label_id = "advanced_#{group}_#{label.underscore.tr(" ", "_")}"
 - if tooltip
-  %label.btn.btn-secondary{id: label_id}
+  %label.btn.btn-secondary{id: label_id, "data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>tooltip}
     %input{type: "checkbox", value: value, name: "advanced[#{group}][]", checked: checked}
     = label
 - else
-  %label.btn.btn-secondary{id: label_id, "data-toggle"=>"tooltip", "data-placement"=>"bottom", "title"=>tooltip}
+  %label.btn.btn-secondary{id: label_id}
     %input{type: "checkbox", value: value, name: "advanced[#{group}][]", checked: checked}
     = label

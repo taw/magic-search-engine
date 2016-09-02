@@ -32,7 +32,7 @@
       %div.btn-group{"data-toggle"=> "set"}
         = render "checkbox", group: "set", label: "any", value: "", checked: true
         - set_names_and_codes.each do |set_name, set_code|
-          = render "checkbox", group: "set", label: set_name, value: set_code
+          = render "checkbox", group: "set", label: set_code.upcase, value: set_code, tooltip: set_name
 
       %h6 Block
       %div.btn-group{"data-toggle"=> "block"}
