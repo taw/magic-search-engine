@@ -704,4 +704,9 @@ class BanList
       [card, legalities]
     }]
   end
+
+  # BanList is singleton
+  def self.new
+    @instance ||= super
+  end
 end
