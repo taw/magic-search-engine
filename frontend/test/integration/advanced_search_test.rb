@@ -67,17 +67,17 @@ class AdvancedSearchTest < ActionDispatch::IntegrationTest
 
   test "set" do
     visit "/advanced"
-    click_checkbox("set", "magic_2010")
-    click_checkbox("set", "magic_2011")
+    click_checkbox("set", "m10")
+    click_checkbox("set", "m11")
     assert_redirected_to_search %Q[e:m10,m11]
   end
 
   test "set - any resets selection" do
     visit "/advanced"
-    click_checkbox("set", "magic_2010")
-    click_checkbox("set", "magic_2011")
+    click_checkbox("set", "m10")
+    click_checkbox("set", "m11")
     click_checkbox("set", "any")
-    click_checkbox("set", "magic_2012")
+    click_checkbox("set", "m12")
     assert_redirected_to_search %Q[e:m12]
   end
 
@@ -100,7 +100,7 @@ class AdvancedSearchTest < ActionDispatch::IntegrationTest
   test "set or block" do
     visit "/advanced"
     click_checkbox("block", "scars_of_mirrodin")
-    click_checkbox("set", "magic_2012")
+    click_checkbox("set", "m12")
     assert_redirected_to_search %Q[(b:som OR e:m12)]
   end
 
