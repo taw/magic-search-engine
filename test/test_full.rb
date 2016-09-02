@@ -491,4 +491,20 @@ class CardDatabaseFullTest < Minitest::Test
   def test_command_separated_block_list
     assert_search_equal "b:isd or b:soi", "b:isd,soi"
   end
+
+  def test_legal_everywhere
+    assert_equal true, legality_information("Island").legal_everywhere?
+    assert_equal false, legality_information("Giant Spider").legal_everywhere?
+    assert_equal false, legality_information("Birthing Pod").legal_everywhere?
+    assert_equal false, legality_information("Naya").legal_everywhere?
+    assert_equal false, legality_information("Backup Plan").legal_everywhere?
+  end
+
+  def test_legal_everywhere
+    assert_equal false, legality_information("Island").legal_nowhere?
+    assert_equal false, legality_information("Giant Spider").legal_nowhere?
+    assert_equal false, legality_information("Birthing Pod").legal_nowhere?
+    assert_equal true, legality_information("Naya").legal_nowhere?
+    assert_equal true, legality_information("Backup Plan").legal_nowhere?
+  end
 end

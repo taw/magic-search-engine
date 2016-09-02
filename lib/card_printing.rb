@@ -82,8 +82,8 @@ class CardPrinting
     eval("def #{m}; @card.#{m}; end")
   end
 
-  def all_legalities(time=nil)
-    @card.all_legalities(time)
+  def legality_information(time=nil)
+    @card.legality_information(time)
   end
 
   def gatherer_link

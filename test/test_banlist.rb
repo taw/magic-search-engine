@@ -475,21 +475,6 @@ class BanlistTest < Minitest::Test
       "Chaos Orb",
       "Falling Star",
       "Shahrazad",
-    ] + [
-      # conspiracy
-      "Advantageous Proclamation",
-      "Backup Plan",
-      "Brago's Favor",
-      "Double Stroke",
-      "Immediate Action",
-      "Iterative Analysis",
-      "Muzzio's Preparations",
-      "Power Play",
-      "Secret Summoning",
-      "Secrets of Paradise",
-      "Sentinel Dispatch",
-      "Unexpected Potential",
-      "Worldknit",
     ], [
       "Ali from Cairo",
       "Ancestral Recall",
@@ -600,21 +585,6 @@ class BanlistTest < Minitest::Test
       "Worldgorger Dragon",
       "Yawgmoth's Bargain",
       "Yawgmoth's Will",
-    ] + [
-    # conspiracy cards
-      "Advantageous Proclamation",
-      "Backup Plan",
-      "Brago's Favor",
-      "Double Stroke",
-      "Immediate Action",
-      "Iterative Analysis",
-      "Muzzio's Preparations",
-      "Power Play",
-      "Secret Summoning",
-      "Secrets of Paradise",
-      "Sentinel Dispatch",
-      "Unexpected Potential",
-      "Worldknit",
     ]
   end
 

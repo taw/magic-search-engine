@@ -2,6 +2,7 @@
 # (thinking in solr/lucene terms)
 require "date"
 require_relative "ban_list"
+require_relative "legality_information"
 
 class Card
   attr_reader :data, :printings
@@ -71,8 +72,8 @@ class Card
     inspect
   end
 
-  def all_legalities(date=nil)
-    Format.all_legalities(self, date)
+  def legality_information(date=nil)
+    LegalityInformation.new(self, date)
   end
 
   def first_release_date
