@@ -1,0 +1,18 @@
+.row
+  .col-xs-12
+    %h3= @artist
+
+.row.results_summary
+  .col-xs-12
+    #{@artist} drew #{pluralize(@cards.total_entries, "card")}.
+
+- @cards.each do |card|
+  .row.card_row
+    .col-xs-12.col-sm-6.col-md-4.card_picture_cell
+      = render 'card/picture', card: card
+    .col-xs-12.col-sm-6.cardinfo
+      %div
+        = render 'card/card', card: card
+.row
+  .col-xs-12.pagination
+    = will_paginate @cards

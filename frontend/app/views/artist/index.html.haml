@@ -1,0 +1,9 @@
+.row
+  .col-xs-12
+    %h3 Artists
+    %ul
+      - @artists.each do |artist|
+        %li
+          = link_to_artist(artist) do
+            = artist
+          = "(??? cards)"

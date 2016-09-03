@@ -7,6 +7,10 @@ module ApplicationHelper
     link_to(controller: "set", action: "show", id: set.code, &blk)
   end
 
+  def link_to_artist(artist, &blk)
+    link_to(controller: "artist", action: "show", id: artist, &blk)
+  end
+
   def link_to_search(search, &blk)
     link_to(controller: "card", action: "index", q: search, &blk)
   end
