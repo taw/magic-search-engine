@@ -1,6 +1,7 @@
 require "pathname"
 require "json"
 require "set"
+require_relative "artist"
 require_relative "card"
 require_relative "card_set"
 require_relative "card_printing"
@@ -13,6 +14,7 @@ class CardDatabase
     @sets = {}
     @blocks = Set[]
     @cards = {}
+    @artists = {}
     yield(self)
   end
 
@@ -137,6 +139,7 @@ class CardDatabase
     end
     fix_multipart_cards_color_identity!(color_identity_cache)
     link_multipart_cards!(multipart_cards)
+    setup_artists!
   end
 
   def fix_multipart_cards_color_identity!(color_identity_cache)
@@ -160,6 +163,16 @@ class CardDatabase
           from_same_set[0]
         end
       end
+    end
+  end
+
+  def setup_artists!
+    each_printing do |printing|
+      artist_name = printing.artist_name
+      artist_slug = artist_name.downcase.gsub(/[^a-z]+/, "_")
+      artist = (@artists[artist_slug] ||= Artist.new(artist_name))
+      artist.printings << printing
+      printing.artist = artist
     end
   end
 

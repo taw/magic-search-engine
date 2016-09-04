@@ -4,7 +4,7 @@ class ConditionArtist < ConditionSimple
   end
 
   def match?(card)
-    card.artist.downcase.include?(@artist)
+    card.artist_name.downcase.include?(@artist)
   end
 
   def to_s

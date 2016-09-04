@@ -57,4 +57,12 @@ class CardDatabaseNewPhyrexiaTest < Minitest::Test
       @birthing_pod.legality_information(rtr_release_date).to_h
     )
   end
+
+  def test_artists
+    alloy_myr = @db.cards["Alloy Myr"].printings[0]
+    pristine_talisman = @db.cards["Pristine Talisman"].printings[0]
+    assert_equal "Matt Cavotta", alloy_myr.artist_name
+    assert_equal "Matt Cavotta", alloy_myr.artist.name
+    assert_equal [alloy_myr, pristine_talisman], alloy_myr.artist.printings.select{|c| c.set_code == "nph"}
+  end
 end

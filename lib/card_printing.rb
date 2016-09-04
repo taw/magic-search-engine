@@ -1,6 +1,6 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date, :set_code
-  attr_accessor :others
+  attr_accessor :others, :artist
 
   def initialize(card, set, data)
     @card = card
@@ -23,7 +23,7 @@ class CardPrinting
     @data["multiverseid"]
   end
 
-  def artist
+  def artist_name
     @data["artist"]
   end
 
