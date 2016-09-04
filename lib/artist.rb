@@ -7,4 +7,9 @@ class Artist
     @slug = name.downcase.gsub(/[^a-z]+/, "_")
     @printings = Set[]
   end
+
+  include Comparable
+  def <=>(other)
+    @name <=> other.name
+  end
 end
