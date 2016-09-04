@@ -2,8 +2,8 @@
   .col-xs-12
     %h3 Artists
     %ul
-      - @artists.each do |artist|
+      - @artists.each do |artist, card_count|
         %li
           = link_to_artist(artist) do
             = artist
-          = "(??? cards)"
+          = "(#{pluralize(card_count, "card")})"
