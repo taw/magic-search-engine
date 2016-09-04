@@ -169,8 +169,17 @@ class CardDatabase
   def setup_artists!
     each_printing do |printing|
       artist_name = printing.artist_name
+      # Presumably same artist, just keep that consistent to simplify slug code
+      # We could even fix some unset artists here
+      if artist_name == "JOCK"
+        artist_name = "Jock"
+      end
       artist_slug = artist_name.downcase.gsub(/[^a-z]+/, "_")
-      artist = (@artists[artist_slug] ||= Artist.new(artist_name))
+      @artists[artist_slug] ||= Artist.new(artist_name)
+      artist = @artists[artist_slug]
+      unless artist_name == artist.name
+        warn "Different artists have same slug - `#{artist_name}' `#{artist.name}'"
+      end
       artist.printings << printing
       printing.artist = artist
     end
