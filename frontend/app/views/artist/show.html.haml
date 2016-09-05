@@ -1,16 +1,20 @@
 .row
   .col-xs-12
-    %h3= @artist
+    %h3= @artist.name
 
 .row.results_summary
   .col-xs-12
-    #{@artist} drew #{pluralize(@cards_total, "card")}.
+    #{@artist.name} drew #{pluralize(@printings.total_entries, "card")}.
 
-- @cards_by_set.each do |set, cards|
+- @printings.group_by(&:set).each do |set, printings|
   .row
     %h3.col-xs-12
       = set.name
   .row.multicard_row
-    - cards.each do |card|
+    - printings.each do |printing|
       .col-xs-12.col-sm-6.col-md-4.card_picture_cell
-        = render 'card/picture', card: card
+        = render 'card/picture', card: printing
+
+.row
+  .col-xs-12.pagination
+    = will_paginate @printings

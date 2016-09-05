@@ -12,18 +12,15 @@ class ArtistController < ApplicationController
 
   def show
     id = params[:id]
-    @artist = id
-    @cards_by_set = {}
-    sets = $CardDatabase.sets.values.sort_by{|s| [-s.release_date.to_i_sort, s.code]}
-    sets.each do |set|
-      cards = set.printings.select{|printing| printing.artist == id}
-      if cards.present?
-        @cards_by_set[set] ||= cards
-      end
+    @artist = $CardDatabase.artists[id]
+    unless @artist
+      render_404
+      return
     end
-    @cards_total = @cards_by_set.values.map(&:size).inject(0, &:+)
-    # @cards.sort_by{|cp| [cp.release_date, cp.number.to_i, cp.number]}
-    # page = [1, params[:page].to_i].max
-    # @cards = @cards.paginate(page: page, per_page: 25)
+
+    @title = @artist.name
+    @printings = @artist.printings.sort_by{|c| [-c.release_date.to_i_sort, c.set_name, c.name]}
+    page = [1, params[:page].to_i].max
+    @printings = @printings.paginate(page: page, per_page: 60)
   end
 end

@@ -9,7 +9,7 @@ require_relative "query"
 require_relative "spelling_suggestions"
 
 class CardDatabase
-  attr_reader :sets, :cards, :blocks
+  attr_reader :sets, :cards, :blocks, :artists
   def initialize
     @sets = {}
     @blocks = Set[]

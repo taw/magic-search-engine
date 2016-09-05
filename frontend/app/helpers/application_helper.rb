@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def link_to_artist(artist, &blk)
-    link_to(controller: "artist", action: "show", id: artist, &blk)
+    link_to(controller: "artist", action: "show", id: artist.slug, &blk)
   end
 
   def link_to_search(search, &blk)

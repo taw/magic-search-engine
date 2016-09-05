@@ -5,5 +5,5 @@
       - @artists.each do |artist, card_count|
         %li
           = link_to_artist(artist) do
-            = artist
+            = artist.name
           = "(#{pluralize(card_count, "card")})"
