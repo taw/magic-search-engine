@@ -130,12 +130,15 @@ form.search {
     left: 0;
     top: 0;
     position: relative;
-    z-index: 1;
+    z-index: 0;
 
     transition: 0.5s ease;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 
+    &:hover {
+      z-index: 1;
+    }
     &.flip:hover {
       transform: rotateZ(180deg);
     }
