@@ -1,7 +1,8 @@
 %div
   %span.infolabel
     Artist:
-  = card.artist
+  = link_to_artist(card.artist) do
+    = card.artist.name
 
 %h5 Legalities
 %ul.legalities
