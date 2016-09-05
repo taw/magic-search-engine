@@ -3,16 +3,16 @@
     = card.name
   = format_oracle_text(card.mana_cost)
 
-%div.typeline= card.typeline
+.typeline= card.typeline
 
 - if card.text.present?
-  %div.oracle= format_oracle_text(card.text)
+  .oracle= format_oracle_text(card.text)
 
 - if card.flavor.present?
-  %div.flavor= format_oracle_text(card.flavor)
+  .flavor= format_oracle_text(card.flavor)
 
 - if card.power
-  %div.power_toughness
+  .power_toughness
     = "#{card.power}/#{card.toughness}"
 
 - if card.loyalty
