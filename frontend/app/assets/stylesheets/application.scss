@@ -172,15 +172,15 @@ form.search {
   }
   @media(min-width: 544px) {
     &:hover .melded {
-      transform: translate(100%) rotateY(180deg);
+      transform: translate(0%, 0%) rotateY(180deg);
       z-index: 1;
     }
     &:hover .meld0 {
-      transform: translate(100%) rotateY(360deg);
+      transform: translate(0%, -50%) rotateY(360deg);
       z-index: 1;
     }
     &:hover .meld1 {
-      transform: rotateY(360deg);
+      transform: translate(0%, 50%) rotateY(360deg);
       z-index: 1;
     }
   }
