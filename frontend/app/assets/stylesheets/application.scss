@@ -142,9 +142,28 @@ form.search {
     &.flip:hover {
       transform: rotateZ(180deg);
     }
+    /* sm+ */
     @media(min-width: 544px) {
       &.split:hover {
         transform: translateX(20%) rotateZ(90deg);
+      }
+      .card_0_of_2 &.split:hover {
+        transform: translateX(20%) rotateZ(90deg);
+      }
+      .card_1_of_2 &.split:hover {
+        transform: translateX(-20%) rotateZ(90deg);
+      }
+    }
+    /* md+ */
+    @media(min-width: 768px) {
+      .card_0_of_3 &.split:hover {
+        transform: translateX(20%) rotateZ(90deg);
+      }
+      .card_1_of_3 &.split:hover {
+        transform: translateX(0%) rotateZ(90deg);
+      }
+      .card_2_of_3 &.split:hover {
+        transform: translateX(-20%) rotateZ(90deg);
       }
     }
   }
