@@ -13,7 +13,8 @@
   .row.multicard_row
     - printings.each do |printing|
       .col-xs-12.col-sm-6.col-md-4.card_picture_cell
-        = render 'card/picture', card: printing
+        = link_to_card(printing) do
+          = render 'card/picture', card: printing
 
 .row
   .col-xs-12.pagination
