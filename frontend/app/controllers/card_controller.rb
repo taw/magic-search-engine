@@ -24,9 +24,8 @@ class CardController < ApplicationController
       first_printing = @card.printings.first
       if @card == first_printing
         @title = @card.name
-        @printings = @card.printings.sort_by{|c| [-c.release_date.to_i_sort, c.set_name, c.name]}
         page = [1, params[:page].to_i].max
-        @printings = @printings.paginate(page: page, per_page: 60)
+        @printings = paginate_by_set(@card.printings, page)
       else
         redirect_to set: first_printing.set_code, id: first_printing.number
       end

@@ -19,8 +19,7 @@ class ArtistController < ApplicationController
     end
 
     @title = @artist.name
-    @printings = @artist.printings.sort_by{|c| [-c.release_date.to_i_sort, c.set_name, c.name]}
     page = [1, params[:page].to_i].max
-    @printings = @printings.paginate(page: page, per_page: 60)
+    @printings = paginate_by_set(@artist.printings, page)
   end
 end

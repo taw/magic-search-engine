@@ -6,7 +6,7 @@
   .col-xs-12
     #{@artist.name} drew #{pluralize(@printings.total_entries, "card")}.
 
-- @printings.group_by(&:set).each do |set, printings|
+- @printings.each do |set, printings|
   .row
     %h3.col-xs-12
       = set.name
