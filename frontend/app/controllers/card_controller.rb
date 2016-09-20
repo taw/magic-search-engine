@@ -12,6 +12,29 @@ class CardController < ApplicationController
     end
   end
 
+  def gallery
+    set = params[:set]
+    number = params[:id]
+    if $CardDatabase.sets[set]
+      @card = $CardDatabase.sets[set].printings.find{|cp| cp.number == number}
+    end
+
+
+    if @card
+      first_printing = @card.printings.first
+      if @card == first_printing
+        @title = @card.name
+        @printings = @card.printings.sort_by{|c| [-c.release_date.to_i_sort, c.set_name, c.name]}
+        page = [1, params[:page].to_i].max
+        @printings = @printings.paginate(page: page, per_page: 60)
+      else
+        redirect_to set: first_printing.set_code, id: first_printing.number
+      end
+    else
+      render_404
+    end
+  end
+
   # Logic tested in CLIFrontend, probably should be moved to database
   # as this untested copypasta is nasty
   def index
