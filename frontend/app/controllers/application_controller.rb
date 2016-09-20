@@ -7,4 +7,14 @@ class ApplicationController < ActionController::Base
   def render_404
     render file: "#{Rails.root}/public/404.html", layout: false, status: 404
   end
+
+  private
+
+  def paginate_by_set(printings, page)
+    printings
+             .sort_by{|c| [-c.release_date.to_i_sort, c.set_name, c.name]}
+             .group_by(&:set)
+             .to_a
+             .paginate(page: page, per_page: 10)
+  end
 end
