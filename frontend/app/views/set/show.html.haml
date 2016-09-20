@@ -11,9 +11,9 @@
 
 - @cards.each do |card|
   .row.card_row
-    .col-xs-12.col-sm-6.col-md-4.card_picture_cell
+    .col-xs-4.card_picture_cell
       = render 'card/picture', card: card
-    .col-xs-12.col-sm-6.cardinfo
+    .col-xs-8.col-md-6.cardinfo
       %div
         = render 'card/card', card: card
 .row

@@ -6,18 +6,10 @@
 - if @search.present?
   = render 'summary'
   - @cards.each do |card, matching_printing|
-    .row.card_row
-      .col-xs-12.col-sm-6.col-md-4.card_picture_cell
-        = render 'card/picture', card: card
-      .col-xs-12.col-sm-6.cardinfo
-        = render 'card', card: card
-        - if @cards.total_entries == 1
-          = render 'card_extra', card: card
-      .hidden-sm-down.col-md-2
-        - if @cards.total_entries == 1
-          = render 'printings', card: card, printings: matching_printing
-        - else
-          = render 'printings', card: card, printings: matching_printing, brief: true
+    - if @cards.total_entries == 1
+      = render "card_row_full", card: card
+    - else
+      = render "card_row_short", card: card, matching_printing: matching_printing
   .row
     .col-xs-12.pagination
       = will_paginate @cards
