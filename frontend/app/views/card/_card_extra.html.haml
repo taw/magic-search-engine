@@ -29,12 +29,14 @@
         = format_oracle_text(ruling["text"])
 
 %h5 Links
-%div
+%ul
+  %li.infolabel
+    = link_to "Gallery of all printings", card_gallery_path(@card)
   - if card.gatherer_link.present?
-    %span.infolabel
+    %li.infolabel
       %a{href: card.gatherer_link}
         Gatherer
   - if card.magiccards_info_link.present?
-    %span.infolabel
+    %li.infolabel
       %a{href: card.magiccards_info_link}
         magiccards.info
