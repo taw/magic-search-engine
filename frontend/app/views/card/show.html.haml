@@ -1,8 +1,1 @@
-.row.card_row
-  .col-xs-12.col-sm-6.col-md-4.card_picture_cell
-    = render 'card/picture', card: @card
-  .col-xs-12.col-sm-6.cardinfo
-    = render 'card', card: @card
-    = render 'card_extra', card: @card
-  .col-xs-12.col-sm-12.col-md-2
-    = render 'printings', card: @card, printings: @card.printings
+= render "card_row_full", card: @card

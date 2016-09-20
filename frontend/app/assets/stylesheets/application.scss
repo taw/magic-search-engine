@@ -142,20 +142,18 @@ form.search {
     &.flip:hover {
       transform: rotateZ(180deg);
     }
+    /* xs */
+    &.split:hover {
+      transform: translateX(20%) rotateZ(90deg);
+    }
+    .card_0_of_2 &.split:hover {
+      transform: translateX(20%) rotateZ(90deg);
+    }
+    .card_1_of_2 &.split:hover {
+      transform: translateX(-20%) rotateZ(90deg);
+    }
     /* sm+ */
     @media(min-width: 544px) {
-      &.split:hover {
-        transform: translateX(20%) rotateZ(90deg);
-      }
-      .card_0_of_2 &.split:hover {
-        transform: translateX(20%) rotateZ(90deg);
-      }
-      .card_1_of_2 &.split:hover {
-        transform: translateX(-20%) rotateZ(90deg);
-      }
-    }
-    /* md+ */
-    @media(min-width: 768px) {
       .card_0_of_3 &.split:hover {
         transform: translateX(20%) rotateZ(90deg);
       }
@@ -189,19 +187,17 @@ form.search {
     position: absolute;
     transform: rotateY(180deg);
   }
-  @media(min-width: 544px) {
-    &:hover .melded {
-      transform: rotateY(180deg);
-      z-index: 1;
-    }
-    &:hover .meld0 {
-      transform: translateY(-30%) rotateY(360deg);
-      z-index: 1;
-    }
-    &:hover .meld1 {
-      transform: translateY(72%) rotateY(360deg);
-      z-index: 1;
-    }
+  &:hover .melded {
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+  &:hover .meld0 {
+    transform: translateY(-30%) rotateY(360deg);
+    z-index: 1;
+  }
+  &:hover .meld1 {
+    transform: translateY(72%) rotateY(360deg);
+    z-index: 1;
   }
 }
 .picture_missing {

@@ -1,0 +1,7 @@
+.row.card_row
+  .col-xs-4.card_picture_cell
+    = render 'card/picture', card: card
+  .col-xs-8.col-md-6.cardinfo
+    = render 'card', card: card
+  .hidden-sm-down.col-md-2
+    = render 'printings', card: card, printings: matching_printing, brief: true
