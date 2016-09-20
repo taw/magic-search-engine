@@ -25,6 +25,11 @@ module ApplicationHelper
     ApplicationHelper.card_picture_path(card)
   end
 
+  def card_gallery_path(card)
+    first_printing = card.printings.first
+    "/card/gallery/#{first_printing.set_code}/#{first_printing.number}"
+  end
+
   def self.card_picture_path(card)
     url_hq = "/cards_hq/#{card.set_code}/#{card.number}.png"
     url_lq = "/cards/#{card.set_code}/#{card.number}.png"
