@@ -117,7 +117,7 @@ class Card
     ci = colors.chars
     "#{mana_cost} #{text}".scan(/{(.*?)}/).each do |sym,|
       case sym.downcase
-      when /\A(\d+|[½∞txyzsqpc])\z/
+      when /\A(\d+|[½∞txyzsqpce])\z/
         # 12xyz - colorless
         # ½∞ - unset colorless
         # t - tap
@@ -138,8 +138,7 @@ class Card
       when /\A([wubrg])\/([wubrg])\z/
         ci << $1 << $2
       else
-        warn sym
-        require 'pry'; binding.pry
+        raise "Unknown mana symbol `#{sym}'"
       end
     end
     types.each do |t|

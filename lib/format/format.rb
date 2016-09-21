@@ -104,6 +104,8 @@ class Format
         "bfz block"                   => FormatBattleForZendikarBlock,
         "soi block"                   => FormatShadowsOverInnistradBlock,
         "shadows over innistrad block"=> FormatShadowsOverInnistradBlock,
+        "kld block"                   => FormatKaladeshBlock,
+        "kaladesh block"              => FormatKaladeshBlock,
         "unsets"                      => FormatUnsets,
         "un-sets"                     => FormatUnsets,
         "standard"                    => FormatStandard,

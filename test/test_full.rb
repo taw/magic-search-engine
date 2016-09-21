@@ -6,14 +6,14 @@ class CardDatabaseFullTest < Minitest::Test
   end
 
   def test_stats
-    assert_equal 16455, @db.cards.size
-    assert_equal 31290, @db.printings.size
+    assert_equal 16701, @db.cards.size
+    assert_equal 31664, @db.printings.size
   end
 
   def test_formats
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
-    assert_search_equal "f:standard", "e:dtk or e:ori or e:bfz or e:ogw or e:soi or e:emn"
+    assert_search_equal "f:standard", "e:bfz or e:ogw or e:soi or e:emn or e:kld"
     assert_search_equal 'f:"ravnica block"', "e:rav or e:gp or e:di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal 'f:"ravnica block"', 'b:ravnica'
@@ -192,6 +192,7 @@ class CardDatabaseFullTest < Minitest::Test
                           "Rugged Highlands",
                           "Ruthless Ripper",
                           "Scoured Barrens",
+                          "Seek the Horizon",
                           "Shatter",
                           "Smite the Monstrous",
                           "Sultai Charm",
@@ -265,10 +266,14 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra Ablaze",
       "Chandra Nalaar",
       "Chandra, Flamecaller",
+      "Chandra, Pyrogenius",
       "Chandra, Pyromaster",
       "Chandra, Roaring Flame",
+      "Chandra, Torch of Defiance",
       "Chandra, the Firebrand"
     assert_search_results "t:chandra sort:new",
+      "Chandra, Pyrogenius",
+      "Chandra, Torch of Defiance",
       "Chandra, Flamecaller",
       "Chandra, Roaring Flame",
       "Chandra, Pyromaster",
@@ -277,6 +282,8 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra Ablaze"
     # Jace v Chandra printing of Chandra Nalaar changes order
     assert_search_results "t:chandra sort:newall",
+    "Chandra, Pyrogenius",
+    "Chandra, Torch of Defiance",
       "Chandra, Flamecaller",
       "Chandra, Roaring Flame",
       "Chandra Nalaar",
@@ -289,20 +296,26 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra, the Firebrand",
       "Chandra, Pyromaster",
       "Chandra, Roaring Flame",
-      "Chandra, Flamecaller"
+      "Chandra, Flamecaller",
+      "Chandra, Pyrogenius",
+      "Chandra, Torch of Defiance"
     assert_search_results "t:chandra sort:oldall",
       "Chandra Nalaar",
       "Chandra Ablaze",
       "Chandra, the Firebrand",
       "Chandra, Pyromaster",
       "Chandra, Roaring Flame",
-      "Chandra, Flamecaller"
+      "Chandra, Flamecaller",
+      "Chandra, Pyrogenius",
+      "Chandra, Torch of Defiance"
     assert_search_results "t:chandra sort:cmc",
       "Chandra Ablaze",
       "Chandra Nalaar",
       "Chandra, Flamecaller",
+      "Chandra, Pyrogenius",
       "Chandra, Pyromaster",
       "Chandra, Roaring Flame",
+      "Chandra, Torch of Defiance",
       "Chandra, the Firebrand"
   end
 
@@ -406,11 +419,11 @@ class CardDatabaseFullTest < Minitest::Test
 
   def test_error_handling
     # Empty search returns all non-extras
-    assert_count_results "", 16197
-    assert_count_results "sort:new", 16197
-    assert_count_results "is:spell or t:land", 16197
-    assert_count_results "time:3000", 16197
-    assert_count_results %Q[time:"battle for homelands"], 16197
+    assert_count_results "", 16443
+    assert_count_results "sort:new", 16443
+    assert_count_results "is:spell or t:land", 16443
+    assert_count_results "time:3000", 16443
+    assert_count_results %Q[time:"battle for homelands"], 16443
     assert_count_results "time:1000", 0
     assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
   end
