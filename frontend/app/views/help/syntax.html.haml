@@ -241,10 +241,14 @@
 
     %h4 Sort results
     %div Use sort: operator to order results in a different way. By default alphabetical sorting is used.
+    %div Results with equal sort key are then sorted by name.
+    %div Missing values (like cards with no cmc when sorting by cmc) go last.
     %ul
       = search_help "sort:name", "sort by name alphabetically (default)"
       = search_help "sort:new", "sort results by most recent first, counting only regular sets for sake of order (other printings will go at end of results)"
       = search_help "sort:newall", "sort results by most recent first, counting all printings"
       = search_help "sort:old", "sort results by oldest first, counting only regular sets for sake of order"
       = search_help "sort:oldall", "sort results by oldest first, counting all printings"
-      = search_help "sort:cmc", "sort results by converted mana cost"
+      = search_help "sort:cmc", "sort results by converted mana cost (highest first)"
+      = search_help "sort:pow", "sort results by power (highest first)"
+      = search_help "sort:tou", "sort results by toughness (highest first)"

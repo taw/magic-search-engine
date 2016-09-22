@@ -261,8 +261,8 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_equal "f:commander time:nph t:jace", "time:nph t:jace"
   end
 
-  def test_sort
-    assert_search_results "t:chandra sort:name",
+  def test_sort_name
+    assert_search_results_ordered "t:chandra sort:name",
       "Chandra Ablaze",
       "Chandra Nalaar",
       "Chandra, Flamecaller",
@@ -271,7 +271,10 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra, Roaring Flame",
       "Chandra, Torch of Defiance",
       "Chandra, the Firebrand"
-    assert_search_results "t:chandra sort:new",
+  end
+
+  def test_sort_new
+    assert_search_results_ordered "t:chandra sort:new",
       "Chandra, Pyrogenius",
       "Chandra, Torch of Defiance",
       "Chandra, Flamecaller",
@@ -280,8 +283,11 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra, the Firebrand",
       "Chandra Nalaar",
       "Chandra Ablaze"
+  end
+
+  def test_sort_newall
     # Jace v Chandra printing of Chandra Nalaar changes order
-    assert_search_results "t:chandra sort:newall",
+    assert_search_results_ordered "t:chandra sort:newall",
     "Chandra, Pyrogenius",
     "Chandra, Torch of Defiance",
       "Chandra, Flamecaller",
@@ -290,7 +296,10 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra, Pyromaster",
       "Chandra, the Firebrand",
       "Chandra Ablaze"
-    assert_search_results "t:chandra sort:old",
+  end
+
+  def test_sort_old
+    assert_search_results_ordered "t:chandra sort:old",
       "Chandra Nalaar",
       "Chandra Ablaze",
       "Chandra, the Firebrand",
@@ -299,7 +308,10 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra, Flamecaller",
       "Chandra, Pyrogenius",
       "Chandra, Torch of Defiance"
-    assert_search_results "t:chandra sort:oldall",
+  end
+
+  def test_sort_oldall
+    assert_search_results_ordered "t:chandra sort:oldall",
       "Chandra Nalaar",
       "Chandra Ablaze",
       "Chandra, the Firebrand",
@@ -308,15 +320,18 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra, Flamecaller",
       "Chandra, Pyrogenius",
       "Chandra, Torch of Defiance"
-    assert_search_results "t:chandra sort:cmc",
-      "Chandra Ablaze",
-      "Chandra Nalaar",
-      "Chandra, Flamecaller",
-      "Chandra, Pyrogenius",
-      "Chandra, Pyromaster",
-      "Chandra, Roaring Flame",
-      "Chandra, Torch of Defiance",
-      "Chandra, the Firebrand"
+  end
+
+  def test_sort_cmc
+    assert_search_results_ordered "t:chandra sort:cmc",
+      "Chandra Ablaze",             # 6
+      "Chandra, Flamecaller",       # 6
+      "Chandra, Pyrogenius",        # 6
+      "Chandra Nalaar",             # 5
+      "Chandra, Pyromaster",        # 4
+      "Chandra, Torch of Defiance", # 4
+      "Chandra, the Firebrand",     # 4
+      "Chandra, Roaring Flame"      # 3
   end
 
   def test_alt_rebecca_guay

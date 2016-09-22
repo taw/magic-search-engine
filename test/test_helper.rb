@@ -30,6 +30,12 @@ class Minitest::Test
     assert_equal cards.sort, results.sort, "Search for #{query_string} (#{query})"
   end
 
+  def assert_search_results_ordered(query_string, *cards)
+    query = Query.new(query_string)
+    results = query.search(@db).card_names
+    assert_equal cards, results, "Search for #{query_string} (#{query})"
+  end
+
   def assert_search_results_printings(query_string, *card_printings)
     query = Query.new(query_string)
     expected = card_printings.map{|name, *sets| [name, *sets.sort]}
