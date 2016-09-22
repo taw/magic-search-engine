@@ -67,7 +67,11 @@ class Query
     when "oldall"
       results.sort_by{|c| [c.release_date.to_i_sort, c.name]}
     when "cmc"
-      results.sort_by{|c| [c.cmc, c.name]}
+      results.sort_by{|c| [c.cmc ? 0 : 1, -c.cmc.to_i, c.name]}
+    when "pow"
+      results.sort_by{|c| [c.power ? 0 : 1, -c.power.to_i, c.name]}
+    when "tou"
+      results.sort_by{|c| [c.toughness ? 0 : 1, -c.toughness.to_i, c.name]}
     else # "name" or unknown key
       results.sort_by{|c| [c.name, c.set.regular? ? 0 : 1, -c.release_date.to_i_sort]}
     end
