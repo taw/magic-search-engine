@@ -6,8 +6,11 @@ class CardDatabaseEldrichMoonTest < Minitest::Test
   end
 
   def test_meld_color
-    assert_search_results "t:angel c:w", "Bruna, the Fading Light", "Gisela, the Broken Blade", "Subjugator Angel"
-    assert_search_results "t:angel c:c", "Brisela, Voice of Nightmares"
+    assert_search_results "t:angel c:w",
+      "Bruna, the Fading Light",
+      "Gisela, the Broken Blade", "Subjugator Angel"
+    assert_search_results "t:angel c:c",
+      "Brisela, Voice of Nightmares"
   end
 
   def test_meld_color_identity
@@ -38,7 +41,30 @@ class CardDatabaseEldrichMoonTest < Minitest::Test
   end
 
   def test_is_meld
-    assert_search_results "is:meld", "Brisela, Voice of Nightmares", "Bruna, the Fading Light", "Chittering Host", "Gisela, the Broken Blade", "Graf Rats", "Hanweir Battlements", "Hanweir Garrison", "Hanweir, the Writhing Township", "Midnight Scavengers"
+    assert_search_results "is:meld",
+      "Brisela, Voice of Nightmares",
+      "Bruna, the Fading Light",
+      "Chittering Host",
+      "Gisela, the Broken Blade",
+      "Graf Rats",
+      "Hanweir Battlements",
+      "Hanweir Garrison",
+      "Hanweir, the Writhing Township",
+      "Midnight Scavengers"
     assert_search_equal "layout:meld", "is:meld"
+  end
+
+  def test_is_primary
+    assert_search_results "is:primary layout:meld",
+      "Bruna, the Fading Light",
+      "Gisela, the Broken Blade",
+      "Graf Rats",
+      "Hanweir Battlements",
+      "Hanweir Garrison",
+      "Midnight Scavengers"
+    assert_search_results "not:primary layout:meld",
+      "Brisela, Voice of Nightmares",
+      "Chittering Host",
+      "Hanweir, the Writhing Township"
   end
 end
