@@ -32,4 +32,8 @@ class CardDatabaseCHKTest < Minitest::Test
     assert_search_results "not:primary t:fox",
       "Autumn-Tail, Kitsune Sage"
   end
+
+  def test_is_commander
+    assert_search_equal "is:commander", "is:primary t:legendary t:creature"
+  end
 end
