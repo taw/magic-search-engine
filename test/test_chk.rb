@@ -17,4 +17,19 @@ class CardDatabaseCHKTest < Minitest::Test
     assert_search_include "cmc=4", "Kitsune Mystic", "Autumn-Tail, Kitsune Sage"
     assert_search_include "mana=3w", "Kitsune Mystic", "Autumn-Tail, Kitsune Sage"
   end
+
+  def test_is_primary
+    assert_search_results "is:primary t:fox",
+      "Eight-and-a-Half-Tails",
+      "Kitsune Blademaster",
+      "Kitsune Diviner",
+      "Kitsune Healer",
+      "Kitsune Mystic",
+      "Kitsune Riftwalker",
+      "Pious Kitsune",
+      "Samurai of the Pale Curtain",
+      "Sensei Golden-Tail"
+    assert_search_results "not:primary t:fox",
+      "Autumn-Tail, Kitsune Sage"
+  end
 end
