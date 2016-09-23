@@ -178,6 +178,7 @@ class Indexer
   def prepare_index
     sets = {}
     cards = {}
+    card_printings = {}
     @sets_code_translator = {}
     foreign_names = {}
     oracle_verifier = OracleVerifier.new
@@ -211,14 +212,9 @@ class Indexer
           report_legalities_fail(name, mtgjson_legalities, algorithm_legalities)
         end
         card = index_card_data(card_data)
-        if cards[name]
-          oracle_verifier.add(set_code, card)
-          card = cards[name]
-        else
-          cards[name] = card
-        end
-
-        card["printings"] << [set_code, index_printing_data(card_data)]
+        oracle_verifier.add(set_code, card)
+        card_printings[name] ||= []
+        card_printings[name] << [set_code, index_printing_data(card_data)]
 
         if card_data["foreignNames"]
           foreign_names[name] ||= Set[]
@@ -228,7 +224,10 @@ class Indexer
         end
       end
     end
-    oracle_verifier.report!
+    oracle_verifier.verify!
+    card_printings.each do |card_name, printings|
+      cards[card_name] = oracle_verifier.canonical(card_name).merge("printings" => printings)
+    end
 
     # This is apparently real, but mtgjson has no other side
     # http://i.tcgplayer.com/100595_200w.jpg
