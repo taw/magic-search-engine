@@ -100,7 +100,8 @@ class Indexer
         warn "Set #{set_code} #{set_data["name"]} has cards without numbers"
       end
       if numbers.compact.size != numbers.compact.uniq.size
-        warn "Set #{set_code} #{set_data["name"]} has DUPLICATE numbers"
+        # This breaks the frontend, so it needs to be hard exception
+        raise "Set #{set_code} #{set_data["name"]} has DUPLICATE numbers"
       end
     end
 
