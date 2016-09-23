@@ -1,11 +1,13 @@
 require_relative "ban_list"
 require_relative "format/format"
 require_relative "indexer/card_set"
+require_relative "indexer/oracle_verifier"
 require "date"
 require "ostruct"
 require "json"
 require "set"
 require "pathname"
+require "pry"
 
 # ActiveRecord FTW
 class Hash
@@ -178,6 +180,7 @@ class Indexer
     cards = {}
     @sets_code_translator = {}
     foreign_names = {}
+    oracle_verifier = OracleVerifier.new
 
     @data.each do |set_code, set_data|
       @sets_code_translator[set_code] = set_data["magicCardsInfoCode"] || set_data["code"].downcase
@@ -209,9 +212,7 @@ class Indexer
         end
         card = index_card_data(card_data)
         if cards[name]
-          unless card.select{|k,v| k != "printings"} == cards[name].select{|k,v| k != "printings"}
-            warn "#{name} is not coherent between versions"
-          end
+          oracle_verifier.add(set_code, card)
           card = cards[name]
         else
           cards[name] = card
@@ -227,6 +228,7 @@ class Indexer
         end
       end
     end
+    oracle_verifier.report!
 
     # This is apparently real, but mtgjson has no other side
     # http://i.tcgplayer.com/100595_200w.jpg
