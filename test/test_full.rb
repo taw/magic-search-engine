@@ -535,4 +535,8 @@ class CardDatabaseFullTest < Minitest::Test
     assert_equal true, legality_information("Naya").legal_nowhere?
     assert_equal true, legality_information("Backup Plan").legal_nowhere?
   end
+
+  def test_is_commander
+    assert_search_equal "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14)"
+  end
 end
