@@ -47,6 +47,7 @@ class CardController < ApplicationController
       @warnings = results.warnings
       @cards = choose_best_printing(results.printings)
     else
+      @autofocus = true
       @cards = []
     end
     @cards = @cards.paginate(page: page, per_page: 25)
