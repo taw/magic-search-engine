@@ -116,6 +116,32 @@ class Indexer
       card_data["subtypes"] = ["The-Biggest-Baddest-Nastiest-Scariest-Creature-You'll-Ever-See"]
       card_data["colors"] = ["Black"]
     end
+    if card_data["names"]
+      # https://github.com/mtgjson/mtgjson/issues/227
+      if card_data["name"] == "B.F.M. (Big Furry Monster)"
+        # just give up on this one
+      elsif card_data["layout"] == "split"
+        # All primary
+      elsif card_data["layout"] == "double-faced"
+        if card_data["manaCost"] or card_data["name"] == "Westvale Abbey"
+          # Primary side
+        else
+          card_data["secondary"] = true
+        end
+      elsif card_data["layout"] == "flip"
+        raise unless card_data["number"] =~ /[ab]\z/
+        card_data["secondary"] = true if card_data["number"] =~ /b\z/
+      elsif card_data["layout"] == "meld"
+        if card_data["manaCost"] or card_data["name"] == "Hanweir Battlements"
+          # Primary side
+        else
+          card_data["secondary"] = true
+        end
+      else
+        binding.pry
+      end
+    end
+
     card_data.slice(
       "name",
       "names",
@@ -133,6 +159,7 @@ class Indexer
       "hand", # vanguard
       "life", # vanguard
       "rulings",
+      "secondary",
     ).merge(
       "printings" => [],
       "colors" => format_colors(card_data["colors"]),
