@@ -142,6 +142,12 @@ form.search {
     &.flip:hover {
       transform: rotateZ(180deg);
     }
+    &.flip_secondary {
+      transform: rotateZ(180deg);
+    }
+    &.flip_secondary:hover {
+      transform: rotateZ(0deg);
+    }
     /* xs */
     &.split:hover {
       transform: translateX(20%) rotateZ(90deg);
