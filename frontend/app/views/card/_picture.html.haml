@@ -1,7 +1,10 @@
 - if card_picture_path(card)
   .card_picture_container
     - if card.layout == "flip"
-      %img.card_picture.flip{src: card_picture_path(card), alt: card.name }
+      - if card.secondary
+        %img.card_picture.flip_secondary{src: card_picture_path(card), alt: card.name }
+      - else
+        %img.card_picture.flip{src: card_picture_path(card), alt: card.name }
     - elsif card.layout == "split" and card.others.size == 1
       %img.card_picture.split{src: card_picture_path(card), alt: card.name }
     - elsif card.layout == "normal"
