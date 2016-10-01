@@ -7,8 +7,8 @@ class ForeignNamesVerifier
 
   def language_name_to_code
     @language_name_to_code ||= {
-      "Chinese Simplified"  => "cn",
-      "Chinese Traditional" => "tw",
+      "Chinese Simplified"  => "cs",
+      "Chinese Traditional" => "ct",
       "French"              => "fr",
       "German"              => "de",
       "Italian"             => "it",

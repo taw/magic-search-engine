@@ -1,7 +1,10 @@
 require "unicode_utils"
 class ConditionForeign < ConditionSimple
   def initialize(lang, query)
-    @lang = lang
+    @lang = lang.downcase
+    # Support both Gatherer and MCI naming conventions
+    @lang = "ct" if @lang == "tw"
+    @lang = "cs" if @lang == "cn"
     @query = hard_normalize(query)
   end
 
