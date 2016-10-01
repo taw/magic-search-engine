@@ -232,6 +232,19 @@
       = search_help "e:m10 alt:e:m11", "cards from Magic 2010 which were also printed in Magic 2011"
       = search_help %Q[a:"Rebecca Guay" alt:(not a:"Rebecca Guay")], "cards drawn by Rebecca Guay which were also printed by someone who's not Rebecca Guay"
 
+    %h4 Search by foreign name
+    %ul
+      = search_help "cn:巨龙", %Q[cards with "巨龙" in Chinese Simplified name]
+      = search_help "tw:巨龍", %Q[cards with "巨龍" in Chinese Traditional name]
+      = search_help "fr:Intrusion", %Q[cards with "Intrusion" in French name]
+      = search_help "de:Wunderkind", %Q[cards with "Wunderkind" in German name]
+      = search_help "it:mostro", %Q[cards with "mostro" in Italian name]
+      = search_help "jp:エルフ", %Q[cards with "エルフ" in Japanese name]
+      = search_help "kr:우진", %Q[cards with "우진" in Korean name]
+      = search_help "pt:pesadelo", %Q[cards with "pesadelo" in Brazilian Portuguese name]
+      = search_help "ru:Дракон", %Q[cards with "Дракон" in Russian name]
+      = search_help %Q[sp:"Llave maestra"], %Q[cards with "Llave maestra" in Spanish name]
+
     %h4 Time travel
     %div You can travel to any time by specifying set code, set name, or full date (partial date like "1999" will be interpretted as "1 January 1999"). Cards printed since then won't be returned, and status of various formats will be as it was at that time. So if you want to argue about what was best Modern Pod deck back in that time just roll back the time to before the ban and enjoy.
 
