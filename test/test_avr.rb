@@ -22,6 +22,8 @@ class CardDatabaseAVRTest < Minitest::Test
 
   def test_fr
     assert_search_results "fr:Fragments", "Bone Splinters"
+    assert_search_results %Q[fr:"Lumière d'albâtre"], "Bruna, Light of Alabaster"
+    assert_search_results %Q[fr:"lumiere d'albatre"], "Bruna, Light of Alabaster"
   end
 
   def test_de
@@ -43,7 +45,7 @@ class CardDatabaseAVRTest < Minitest::Test
   end
 
   def test_jp
-    assert_search_results "jp:ウルリッチ", "Ulrich of the Krallenhorde"
+    assert_search_results "jp:ブルーナ", "Bruna, Light of Alabaster"
   end
 
   def test_kr
