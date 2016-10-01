@@ -88,4 +88,19 @@ module ApplicationHelper
   def good_mana_symbols
     @good_mana_symbols ||= Set["x", "y", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "15", "16", "20", "w", "u", "b", "r", "g", "wu", "wb", "rw", "gw", "ub", "ur", "gu", "br", "bg", "rg", "2w", "2u", "2b", "2r", "2g", "s", "q", "t", "wp", "up", "bp", "rp", "gp", "c"]
   end
+
+  def language_name(language_code)
+    {
+      "cn" => "Simplified Chinese",
+      "tw" => "Traditional Chinese",
+      "fr" => "French",
+      "de" => "German",
+      "it" => "Italian",
+      "jp" => "Japanese",
+      "kr" => "Korean",
+      "pt" => "Brazilian Portuguese",
+      "ru" => "Russian",
+      "sp" => "Spanish",
+    }.fetch(language_code)
+  end
 end

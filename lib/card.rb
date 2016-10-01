@@ -10,7 +10,7 @@ class Card
 
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
-  attr_reader :hand, :life, :rulings, :secondary
+  attr_reader :hand, :life, :rulings, :secondary, :foreign_names
   def initialize(data)
     @data = data
     @printings = []
@@ -38,6 +38,7 @@ class Card
     @life = @data["life"]
     @rulings = @data["rulings"]
     @secondary = @data["secondary"]
+    @foreign_names = @data["foreign_names"]
   end
 
   attr_writer :color_identity

@@ -20,6 +20,16 @@
         &mdash;
         = status
 
+- if card.foreign_names
+  %h5 Foreign names
+  %ul.foreign_names
+    - card.foreign_names.each do |language_code, foreign_names|
+      - foreign_names.each do |foreign_name|
+        %li
+          = foreign_name
+          &mdash;
+          %i.language_name= language_name(language_code)
+
 - if card.rulings.present?
   %h5 Rulings
   %ul.rulings
