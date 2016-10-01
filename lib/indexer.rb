@@ -2,6 +2,7 @@ require_relative "ban_list"
 require_relative "format/format"
 require_relative "indexer/card_set"
 require_relative "indexer/oracle_verifier"
+require_relative "indexer/foreign_names_verifier"
 require "date"
 require "ostruct"
 require "json"
@@ -207,7 +208,7 @@ class Indexer
     cards = {}
     card_printings = {}
     @sets_code_translator = {}
-    foreign_names = {}
+    foreign_names_verifier = ForeignNamesVerifier.new
     oracle_verifier = OracleVerifier.new
 
     @data.each do |set_code, set_data|
@@ -242,18 +243,20 @@ class Indexer
         oracle_verifier.add(set_code, card)
         card_printings[name] ||= []
         card_printings[name] << [set_code, index_printing_data(card_data)]
-
-        if card_data["foreignNames"]
-          foreign_names[name] ||= Set[]
-          foreign_names[name] |= card_data["foreignNames"].map{|c|
-            [c["language"], c["name"]]
-          }
-        end
+        foreign_names_verifier.add name, set_code, card_data["foreignNames"]
       end
     end
+
     oracle_verifier.verify!
     card_printings.each do |card_name, printings|
       cards[card_name] = oracle_verifier.canonical(card_name).merge("printings" => printings)
+    end
+
+    foreign_names_verifier.verify!
+    # Link foreign names
+    cards.each do |card_name, card|
+      foreign_names = foreign_names_verifier.foreign_names(card_name)
+      card["foreign_names"] = foreign_names if foreign_names
     end
 
     # This is apparently real, but mtgjson has no other side
@@ -268,17 +271,6 @@ class Indexer
       cards[card_name]["printings"].delete_if{|c,| c == "ptc"}
     end
 
-    # Reassemble foreign names
-    # It turns out there's way too many inconsistencies,
-    # like Russian "Thran Golem"
-    cards.each do |card_name, card|
-      next unless foreign_names[card_name]
-      conflicts = foreign_names[card_name].group_by(&:first).map{|lang, names| [lang, names.map(&:last)]}
-      conflicts.each do |lang, names|
-        next if names.size == 1
-        #warn "#{card_name} in #{lang} has multiple names: #{names.join(" / ")}"
-      end
-    end
 
     # Fixing printing dates of promo cards
     cards.each do |name, card|
