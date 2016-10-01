@@ -14,10 +14,16 @@ class CardDatabaseAVRTest < Minitest::Test
 
   def test_cn
     assert_search_results "cn:拱翼巨龙", "Archwing Dragon"
+    assert_search_results "cs:拱翼巨龙", "Archwing Dragon"
+    assert_search_results "tw:拱翼巨龙"
+    assert_search_results "ct:拱翼巨龙"
   end
 
-  def test_tw
+  def test_chinese_traditional
+    assert_search_results "ct:拱翼巨龍", "Archwing Dragon"
     assert_search_results "tw:拱翼巨龍", "Archwing Dragon"
+    assert_search_results "cs:拱翼巨龍"
+    assert_search_results "cn:拱翼巨龍"
   end
 
   def test_fr
