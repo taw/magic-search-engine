@@ -48,6 +48,8 @@ private
         @tokens << [:test, ConditionOracle.new(s[1] || s[2])]
       elsif s.scan(/a:(?:"(.*?)"|(\w+))/i)
         @tokens << [:test, ConditionArtist.new(s[1] || s[2])]
+      elsif s.scan(/(cn|tw|fr|de|it|jp|kr|pt|ru|sp):(?:"(.*?)"|([^\s\)]+))/i)
+        @tokens << [:test, ConditionForeign.new(s[1], s[2] || s[3])]
       elsif s.scan(/(banned|restricted|legal):(?:"(.*?)"|(\w+))/)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         @tokens << [:test, klass.new(s[2] || s[3])]
