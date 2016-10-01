@@ -91,8 +91,8 @@ module ApplicationHelper
 
   def language_name(language_code)
     {
-      "cn" => "Simplified Chinese",
-      "tw" => "Traditional Chinese",
+      "cs" => "Simplified Chinese",
+      "ct" => "Traditional Chinese",
       "fr" => "French",
       "de" => "German",
       "it" => "Italian",
