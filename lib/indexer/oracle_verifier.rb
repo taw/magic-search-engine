@@ -50,22 +50,32 @@ class OracleVerifier
           if fixed_variants.uniq.size == 1
             # Only reminder text differers, we strip it later anyway
             canonical_variant = fixed_variants[0]
+          elsif variants.keys.size == 2 and variants.keys.select{|v| v =~ /create.*token/i}.size == 1 and variants.keys.select{|v| v =~ /put.*token.*onto the battlefield/i}.size == 1
+            canonical_variant = variants.keys.select{|v| v =~ /create.*token/i}[0]
           else
             canonical_variant_source = case card_name
             when "Winter Orb"
               "ema"
-            # create vs put token onto battlefield
-            when "Priest of the Blood Rite", "Walker of the Grove", "Nissa, Voice of Zendikar",
-                  "Carrier Thrall", "Khalni Garden", "Quest for the Gravelord"
-              "ddr"
             when "Hamlet Captain"
               "emn"
             when "Jetting Glasskite"
               "ema"
             when "Vertigo Spawn", "Pariah", "Ascended Lawmage", "Affa Guard Hound"
               "cn2"
-            when "Hangarback Walker"
-              "mps"
+            when "Kira, Great Glass-Spinner"
+              "mma"
+            when "Nivix, Aerie of the Firemind"
+              "ddj"
+            when "Lion's Eye Diamond"
+              "vma"
+            when "Corrupt"
+              "gvl"
+            when "Personal Incarnation"
+              "me4"
+            when "Stormscape Battlemage"
+              "c13"
+            when "Mercurial Pretender", "Sword of Kaldra"
+              "ptc"
             else
               # FAIL, report
             end
