@@ -1,11 +1,11 @@
 class ConditionWord < ConditionSimple
   def initialize(word)
     @word = normalize_name(word)
-    @stem_word = apply_stemming(@word)
+    @stem_word = @word.gsub(/s\b/, "")
   end
 
   def match?(card)
-    name = apply_stemming(card.name.downcase)
+    name = card.stemmed_name
     return true if name.include?(@stem_word)
     @suggestions.each do |alt|
       if name.include?(alt)
@@ -27,11 +27,5 @@ class ConditionWord < ConditionSimple
     else
       @suggestions = []
     end
-  end
-
-  private
-
-  def apply_stemming(s)
-    s.gsub(/s\b/, "")
   end
 end
