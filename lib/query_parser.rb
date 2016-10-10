@@ -13,7 +13,12 @@ class QueryParser
     @tokens = []
     str = query_string.strip
     if str =~ /\A!(.*)\z/
-      cond = ConditionExact.new($1)
+      name = $1
+      if name =~ %r[&|/]
+        cond = ConditionExactMultipart.new(name)
+      else
+        cond = ConditionExact.new(name)
+      end
     else
       tokenize!(str)
       cond = parse_query
