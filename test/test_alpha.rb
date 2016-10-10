@@ -2,7 +2,7 @@ require_relative "test_helper"
 
 class CardDatabaseAlphaTest < Minitest::Test
   def setup
-    @db = load_database("al")
+    @db = load_database
   end
 
   def test_legality

@@ -23,10 +23,6 @@ class FormatStandard < Format
     "Standard"
   end
 
-  def format_sets
-    format_sets
-  end
-
   def rotation_schedule
     # http://archive.wizards.com/Magic/magazine/article.aspx?x=mtg/daily/feature/27a
     # for change in core set rotation - "Core sets will rotate as if they were part of the block preceding them."
