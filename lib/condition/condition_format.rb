@@ -8,7 +8,18 @@ class ConditionFormat < Condition
 
   def search(db)
     @format = Format[@format_name].new(db.resolve_time(@time))
-    db.cards.values.select do |card|
+    # This is just performance hack - Standard/Modern can use this hack
+    # Legacy/Vintage/Commander/etc. don't want it
+    if @format.format_sets.size < 100
+      cards_probably_in_format = @format.format_sets.flat_map do |set_code|
+        # This will only be nil in subset of db, so really only in tests
+        set = db.sets[set_code]
+        set ? set.printings.map(&:card) : []
+      end.to_set
+    else
+      cards_probably_in_format = db.cards.values
+    end
+    cards_probably_in_format.select do |card|
       legality_ok?(@format.legality(card))
     end.flat_map(&:printings).to_set
   end
