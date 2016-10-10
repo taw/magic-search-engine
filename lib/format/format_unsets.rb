@@ -3,7 +3,7 @@ class FormatUnsets < Format
     "Unsets"
   end
 
-  def format_sets
+  def build_format_sets
     Set["ug", "uh"]
   end
 end

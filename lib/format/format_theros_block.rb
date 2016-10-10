@@ -3,7 +3,7 @@ class FormatTherosBlock < Format
     "Theros Block"
   end
 
-  def format_sets
+  def build_format_sets
     Set["ths", "bng", "jou"]
   end
 end

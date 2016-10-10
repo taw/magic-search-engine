@@ -3,7 +3,7 @@ class FormatBattleForZendikarBlock < Format
     "Battle for Zendikar Block"
   end
 
-  def format_sets
+  def build_format_sets
     Set["bfz", "ogw"]
   end
 end

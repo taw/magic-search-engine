@@ -3,7 +3,7 @@ class FormatMirageBlock < Format
     "Mirage Block"
   end
 
-  def format_sets
+  def build_format_sets
     Set["mr", "vi", "wl"]
   end
 end
