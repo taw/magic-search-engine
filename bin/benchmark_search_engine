@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/card_database"
+require "benchmark"
+require "pry"
+
+json_path = Pathname(__dir__) + "../data/index.json"
+@db = CardDatabase.load(json_path)
+
+queries = ARGF.readlines.map(&:chomp)
+
+puts Benchmark.measure{
+  queries.each do |query|
+    @db.search(query)
+  end
+}
