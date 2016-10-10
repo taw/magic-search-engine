@@ -6,8 +6,8 @@ class CardDatabaseFullTest < Minitest::Test
   end
 
   def test_stats
-    assert_equal 16701, @db.cards.size
-    assert_equal 31664, @db.printings.size
+    assert_equal 16701, @db.number_of_cards
+    assert_equal 31664, @db.number_of_printings
   end
 
   def test_formats

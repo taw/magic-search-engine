@@ -194,6 +194,6 @@ class Minitest::Test
   end
 
   def legality_information(name, date=nil)
-    @db.cards[name].legality_information(date)
+    @db.cards[name.downcase].legality_information(date)
   end
 end

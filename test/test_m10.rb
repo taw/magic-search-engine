@@ -6,8 +6,8 @@ class CardDatabaseM10Test < Minitest::Test
   end
 
   def test_db_loads_and_contains_sets
-    assert_equal 234, @db.cards.size
-    assert_equal 249, @db.printings.size
+    assert_equal 234, @db.number_of_cards
+    assert_equal 249, @db.number_of_printings
   end
 
   def test_search_full_name

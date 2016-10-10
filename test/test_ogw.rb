@@ -13,7 +13,7 @@ class CardDatabaseOathGatewatchTest < Minitest::Test
   end
 
   def test_devoid_doesnt_affect_color_identity
-    assert_equal @db.cards["Abstruse Interference"].color_identity, "u"
+    assert_equal @db.cards["abstruse interference"].color_identity, "u"
     assert_search_include "ci:u", "Abstruse Interference"
     assert_search_exclude "ci:c", "Abstruse Interference"
   end
