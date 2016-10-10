@@ -1,17 +1,18 @@
 class ConditionExact < ConditionSimple
   def initialize(name)
     @name = name
+    if @name =~ %r[&|/]
+      @name_parts = @name.split(%r[(?:&|/)+]).map{|n| normalize_name(n)}
+    else
+      @normalized_name = normalize_name(@name)
+    end
   end
 
   def match?(card)
-    query_name = @name
-    if query_name =~ %r[&|/]
-      return false unless card.names
-      query_parts = query_name.split(%r[(?:&|/)+]).map{|n| normalize_name(n)}
-      card_parts  = card.names.map{|n| normalize_name(n)}
-      (query_parts - card_parts).empty?
+    if @name_parts
+      card.names and (@name_parts - card.names.map(&:downcase)).empty?
     else
-      normalize_name(card.name) == normalize_name(query_name)
+      card.name.downcase == @normalized_name
     end
   end
 
