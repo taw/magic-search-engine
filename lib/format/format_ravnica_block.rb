@@ -3,7 +3,7 @@ class FormatRavinicaBlock < Format
     "Ravnica Block"
   end
 
-  def format_sets
+  def build_format_sets
     Set["rav", "gp", "di"]
   end
 end

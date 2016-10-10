@@ -3,7 +3,7 @@ class FormatMirrodinBlock < Format
     "Mirrodin Block"
   end
 
-  def format_sets
+  def build_format_sets
     Set["mi", "ds", "5dn"]
   end
 end

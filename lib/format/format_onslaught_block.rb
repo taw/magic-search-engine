@@ -3,7 +3,7 @@ class FormatOnslaughtBlock < Format
     "Onslaught Block"
   end
 
-  def format_sets
+  def build_format_sets
     Set["on", "le", "sc"]
   end
 end

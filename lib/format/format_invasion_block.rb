@@ -3,7 +3,7 @@ class FormatInvasionBlock < Format
     "Invasion Block"
   end
 
-  def format_sets
+  def build_format_sets
     Set["in", "ps", "ap"]
   end
 end

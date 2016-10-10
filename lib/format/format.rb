@@ -1,9 +1,11 @@
 class Format
+  attr_reader :format_sets
+
   def initialize(time=nil)
     raise ArgumentError unless time.nil? or time.is_a?(Date)
     @time = time
     @ban_list = BanList.new
-    @format_sets = format_sets
+    @format_sets = build_format_sets
   end
 
   def legality(card)
@@ -17,11 +19,16 @@ class Format
   end
 
   def in_format?(card)
-    card.printings.each do |printing|
-      next if @time and printing.release_date > @time
-      return true if @format_sets.include?(printing.set_code)
+    if @time
+      relevant_printings = card.printings.select do |printing|
+        printing.release_date <= @time
+      end
+    else
+      relevant_printings = card.printings
     end
-    false
+    relevant_printings.any? do |printing|
+      @format_sets.include?(printing.set_code)
+    end
   end
 
   def format_pretty_name
@@ -32,7 +39,7 @@ class Format
     format_pretty_name.downcase
   end
 
-  def format_sets
+  def build_format_sets
     raise "SubclassResponsibility"
   end
 

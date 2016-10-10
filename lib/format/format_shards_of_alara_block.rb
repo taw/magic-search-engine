@@ -3,7 +3,7 @@ class FormatShardsOfAlaraBlock < Format
     "Shards of Alara Block"
   end
 
-  def format_sets
+  def build_format_sets
     Set["ala", "cfx", "arb"]
   end
 end

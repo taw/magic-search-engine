@@ -3,7 +3,7 @@ class FormatKamigawaBlock < Format
     "Kamigawa Block"
   end
 
-  def format_sets
+  def build_format_sets
     Set["chk", "bok", "sok"]
   end
 end

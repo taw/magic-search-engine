@@ -3,7 +3,7 @@ class FormatTempestBlock < Format
     "Tempest Block"
   end
 
-  def format_sets
+  def build_format_sets
     Set["tp", "sh", "ex"]
   end
 end

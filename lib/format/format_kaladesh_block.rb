@@ -3,7 +3,7 @@ class FormatKaladeshBlock < Format
     "Kaladesh Block"
   end
 
-  def format_sets
+  def build_format_sets
     Set["kld", "emn"]
   end
 end

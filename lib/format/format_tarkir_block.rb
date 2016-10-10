@@ -3,7 +3,7 @@ class FormatTarkirBlock < Format
     "Tarkir Block"
   end
 
-  def format_sets
+  def build_format_sets
     Set["ktk", "frf", "dtk"]
   end
 end
