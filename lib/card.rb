@@ -10,12 +10,13 @@ class Card
 
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
-  attr_reader :hand, :life, :rulings, :secondary, :foreign_names
+  attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name
   def initialize(data)
     @data = data
     @printings = []
 
     @name = normalize_name(@data["name"])
+    @stemmed_name = @name.downcase.gsub(/s\b/, "")
     @names = @data["names"] &&  @data["names"].map{|n| normalize_name(n)}
     @layout = @data["layout"]
     @colors = @data["colors"] || ""
@@ -39,10 +40,6 @@ class Card
     @rulings = @data["rulings"]
     @secondary = @data["secondary"]
     @foreign_names = @data["foreign_names"]
-  end
-
-  def stemmed_name
-    @stemmed_name ||= @name.downcase.gsub(/s\b/, "")
   end
 
   attr_writer :color_identity
