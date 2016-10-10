@@ -17,6 +17,7 @@ class CardQueryParser < Minitest::Test
     refute_search_parse "cmc=1 c:w", "cmc=1 -(-c:w)"
     refute_search_parse "cmc=1 c:w", "c:w cmc=1"
     refute_search_parse "c:uw", "c:wu"
+    refute_search_parse "ci:uw", "ci!wu"
   end
 
   def test_time
@@ -39,7 +40,6 @@ class CardQueryParser < Minitest::Test
 
       # It should simply be, but it's better to have extra feedback:
       # assert_equal query, query_2, query_string
-
 
       if query != query_2
         fails += 1
