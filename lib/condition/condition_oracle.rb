@@ -2,18 +2,24 @@ class ConditionOracle < ConditionSimple
   def initialize(text)
     @text = text
     @has_cardname = !!(@text =~ /~/)
-    @normalized_text = normalize_text(@text)
+    @regexp = build_regexp(normalize_text(@text))
   end
 
   def match?(card)
     if @has_cardname
-      card.text.downcase.include?(@text.gsub("~", normalize_text(card.name)))
+      card.text =~ build_regexp(normalize_text(@text.gsub("~", card.name)))
     else
-      card.text.downcase.include?(@normalized_text)
+      card.text =~ @regexp
     end
   end
 
   def to_s
     "o:#{maybe_quote(@text)}"
+  end
+
+  private
+
+  def build_regexp(text)
+    Regexp.new(Regexp.escape(text), Regexp::IGNORECASE)
   end
 end
