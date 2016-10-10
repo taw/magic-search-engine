@@ -9,9 +9,12 @@ class ConditionExact < Condition
   end
 
   def search(db)
-    db.cards.keys.select do |name|
-      name.downcase == @normalized_name
-    end.flat_map{|name| db.cards[name].printings}.to_set
+    card = db.cards[@normalized_name]
+    if card
+      card.printings.to_set
+    else
+      Set[]
+    end
   end
 
   def to_s

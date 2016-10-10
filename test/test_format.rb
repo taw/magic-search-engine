@@ -8,7 +8,7 @@ class FormatTest < Minitest::Test
   def assert_block_composition(format_name, time, sets, exceptions={})
     time = @db.sets[time].release_date if time.is_a?(String)
     format = Format[format_name].new(time)
-    actual_legality = @db.cards.map do |card_name, card|
+    actual_legality = @db.cards.values.map do |card|
       [card.name, format.legality(card)]
     end.select(&:last)
     expected_legality = compute_expected_legality(sets, exceptions)
@@ -18,7 +18,7 @@ class FormatTest < Minitest::Test
   def assert_legality(format_name, time, card_name, status)
     time = @db.sets[time].release_date unless time.is_a?(Date)
     format = Format[format_name].new(time)
-    card = @db.cards[card_name] or raise "No such card: #{card_name}"
+    card = @db.cards[card_name.downcase] or raise "No such card: #{card_name}"
     assert_equal status, format.legality(card), "Legality of #{card_name} in #{format_name} at #{time}"
   end
 

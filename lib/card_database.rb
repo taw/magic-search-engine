@@ -90,6 +90,14 @@ class CardDatabase
     spelling_suggestions.suggest(word)
   end
 
+  def number_of_cards
+    @cards.size
+  end
+
+  def number_of_printings
+    @printings.size
+  end
+
   private
 
   def load_from_subset!(db, sets)
@@ -122,7 +130,7 @@ class CardDatabase
     end
     data["cards"].each do |card_name, card_data|
       next if card_data["layout"] == "token" # Do not include tokens
-      card = @cards[card_name] = Card.new(card_data.reject{|k,_| k == "printings"})
+      card = @cards[card_name.downcase] = Card.new(card_data.reject{|k,_| k == "printings"})
       color_identity_cache[card_name] = card.partial_color_identity
       if card_data["names"]
         multipart_cards[card_name] = card_data["names"] - [card_name]
@@ -152,8 +160,8 @@ class CardDatabase
 
   def link_multipart_cards!(multipart_cards)
     multipart_cards.each do |card_name, other_names|
-      card = @cards[card_name]
-      other_cards = other_names.map{|name| @cards[name] }
+      card = @cards[card_name.downcase]
+      other_cards = other_names.map{|name| @cards[name.downcase] }
       card.printings.each do |printing|
         printing.others = other_cards.map do |other_card|
           from_same_set = other_card.printings.select{|other_printing| other_printing.set_code == printing.set_code}
