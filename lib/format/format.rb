@@ -7,7 +7,6 @@ class Format
   end
 
   def legality(card)
-    raise unless card
     return nil if %W[vanguard plane phenomenon scheme token].include?(card.layout)
     return nil if card.types == ["conspiracy"]
     if in_format?(card)
@@ -18,14 +17,11 @@ class Format
   end
 
   def in_format?(card)
-    raise unless card
     card.printings.each do |printing|
       next if @time and printing.release_date > @time
       return true if @format_sets.include?(printing.set_code)
     end
     false
-  rescue
-    binding.pry
   end
 
   def format_pretty_name

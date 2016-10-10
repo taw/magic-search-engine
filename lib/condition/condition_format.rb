@@ -8,9 +8,9 @@ class ConditionFormat < Condition
 
   def search(db)
     @format = Format[@format_name].new(db.resolve_time(@time))
-    db.printings.select do |card|
+    db.cards.values.select do |card|
       legality_ok?(@format.legality(card))
-    end.to_set
+    end.flat_map(&:printings).to_set
   end
 
   def metadata=(options)
