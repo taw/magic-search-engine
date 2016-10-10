@@ -41,6 +41,10 @@ class Card
     @foreign_names = @data["foreign_names"]
   end
 
+  def stemmed_name
+    @stemmed_name ||= @name.downcase.gsub(/s\b/, "")
+  end
+
   attr_writer :color_identity
   def color_identity
     @color_identity ||= begin
