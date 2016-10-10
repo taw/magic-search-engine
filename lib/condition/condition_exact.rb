@@ -1,4 +1,4 @@
-class ConditionExact < ConditionSimple
+class ConditionExact < Condition
   def initialize(name)
     @name = name
     if @name =~ %r[&|/]
@@ -8,16 +8,20 @@ class ConditionExact < ConditionSimple
     end
   end
 
-  def match?(card)
-    if @name_parts
-      card.names and (@name_parts - card.names.map(&:downcase)).empty?
-    else
-      card.name.downcase == @normalized_name
-    end
-  end
-
   def include_extras?
     true
+  end
+
+  def search(db)
+    if @name_parts
+      db.cards.values.select do |card|
+        card.names and (@name_parts - card.names.map(&:downcase)).empty?
+      end.flat_map(&:printings).to_set
+    else
+      db.cards.keys.select do |name|
+        name.downcase == @normalized_name
+      end.flat_map{|name| db.cards[name].printings}.to_set
+    end
   end
 
   def to_s
