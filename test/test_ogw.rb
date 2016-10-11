@@ -6,10 +6,13 @@ class CardDatabaseOathGatewatchTest < Minitest::Test
   end
 
   def test_colorless_mana_is_not_generic_mana
-    assert ConditionMana.new("=", "10").match?(OpenStruct.new(mana_cost: "{10}"))
-    refute ConditionMana.new("=", "10").match?(OpenStruct.new(mana_cost: "{8}{c}{c}"))
-    refute ConditionMana.new("=", "8{c}{c}").match?(OpenStruct.new(mana_cost: "{10}"))
-    assert ConditionMana.new("=", "8{c}{c}").match?(OpenStruct.new(mana_cost: "{8}{c}{c}"))
+    card_6  = @db.cards["kozilek's pathfinder"]
+    card_5c = @db.cards["endbringer"]
+
+    assert ConditionMana.new("=", "6").match?(card_6)
+    refute ConditionMana.new("=", "6").match?(card_5c)
+    refute ConditionMana.new("=", "5{c}").match?(card_6)
+    assert ConditionMana.new("=", "5{c}").match?(card_5c)
   end
 
   def test_devoid_doesnt_affect_color_identity
