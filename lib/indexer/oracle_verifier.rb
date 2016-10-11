@@ -101,7 +101,6 @@ class OracleVerifier
   def canonical(card_name)
     return @canonical[card_name] if @canonical[card_name]
     binding.pry
-
   end
 
   def verify!
