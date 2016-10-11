@@ -10,7 +10,7 @@ class Format
 
   def legality(card)
     return nil if %W[vanguard plane phenomenon scheme token].include?(card.layout)
-    return nil if card.types == ["conspiracy"]
+    return nil if card.types == Set["conspiracy"]
     if in_format?(card)
       @ban_list.legality(format_name, card.name, @time)
     else
