@@ -70,19 +70,19 @@ class Indexer
 
       case set_code
       when "mps" # broken on mtgjson
-        set_data["cards"].find{|c| c["name"] == "Cataclysmic Gearhulk"}["number"] = 1
+        set_data["cards"].find{|c| c["name"] == "Cataclysmic Gearhulk"}["number"] = "1"
         set_data["cards"].find{|c| c["name"] == "Cataclysmic Gearhulk"}["multiverseid"] = 420588
 
-        set_data["cards"].find{|c| c["name"] == "Torrential Gearhulk"}["number"] = 2
+        set_data["cards"].find{|c| c["name"] == "Torrential Gearhulk"}["number"] = "2"
         set_data["cards"].find{|c| c["name"] == "Torrential Gearhulk"}["multiverseid"] = 420589
 
-        set_data["cards"].find{|c| c["name"] == "Noxious Gearhulk"}["number"] = 3
+        set_data["cards"].find{|c| c["name"] == "Noxious Gearhulk"}["number"] = "3"
         set_data["cards"].find{|c| c["name"] == "Noxious Gearhulk"}["multiverseid"] = 420590
 
-        set_data["cards"].find{|c| c["name"] == "Combustible Gearhulk"}["number"] = 4
+        set_data["cards"].find{|c| c["name"] == "Combustible Gearhulk"}["number"] = "4"
         set_data["cards"].find{|c| c["name"] == "Combustible Gearhulk"}["multiverseid"] = 420591
 
-        set_data["cards"].find{|c| c["name"] == "Verdurous Gearhulk"}["number"] = 5
+        set_data["cards"].find{|c| c["name"] == "Verdurous Gearhulk"}["number"] = "5"
         set_data["cards"].find{|c| c["name"] == "Verdurous Gearhulk"}["multiverseid"] = 420592
 
       when "van"
