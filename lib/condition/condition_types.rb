@@ -30,9 +30,7 @@ class ConditionTypes < ConditionSimple
 
   def match?(card)
     return true if @match_all
-    @types.all? do |type|
-      card.types.include?(type)
-    end
+    card.types >= @types
   end
 
   def to_s
