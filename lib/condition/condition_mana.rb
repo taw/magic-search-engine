@@ -2,12 +2,17 @@ class ConditionMana < ConditionSimple
   def initialize(op, mana)
     @op = op
     @query_mana = parse_query_mana(mana.downcase)
+    @needs_resolution = !!(@query_mana.keys.join =~ /[mnoh]/)
   end
 
   def match?(card)
+    return false unless card.mana_cost
     card_mana = parse_card_mana(card.mana_cost)
-    return false unless card_mana
-    q_mana = resolve_variable_mana(card_mana, @query_mana)
+    if @needs_resolution
+      q_mana = resolve_variable_mana(card_mana, @query_mana)
+    else
+      q_mana = @query_mana
+    end
     cmps = (card_mana.keys | q_mana.keys).map{|color| [card_mana[color], q_mana[color]]}
     case @op
     when ">="
@@ -121,7 +126,7 @@ class ConditionMana < ConditionSimple
 
     query_mana.each do |color, count|
       case color
-      when 'm','n','o'
+      when "m", "n", "o"
         matched = false
         card_mana.each do |card_color, card_count|
           if colors.include?(card_color) &&
@@ -133,7 +138,7 @@ class ConditionMana < ConditionSimple
           end
         end
         q_mana[color] = count unless matched
-      when 'h'
+      when "h"
         matched = false
         card_mana.each do |card_color, card_count|
           if hybrids.include?(card_color) &&
