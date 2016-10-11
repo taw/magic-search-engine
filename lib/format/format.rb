@@ -9,7 +9,7 @@ class Format
   end
 
   def legality(card)
-    if card.legal_in_no_format or !in_format?(card)
+    if card.extra or !in_format?(card)
       nil
     else
       @ban_list.legality(format_name, card.name, @time)
