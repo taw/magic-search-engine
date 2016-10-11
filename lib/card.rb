@@ -10,7 +10,7 @@ class Card
 
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
-  attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name
+  attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name, :legal_in_no_format
   def initialize(data)
     @data = data
     @printings = []
@@ -40,6 +40,10 @@ class Card
     @rulings = @data["rulings"]
     @secondary = @data["secondary"]
     @foreign_names = @data["foreign_names"]
+    @legal_in_no_format = (
+      %W[vanguard plane phenomenon scheme token].include?(@layout) ||
+      @types == Set["conspiracy"]
+    )
   end
 
   attr_writer :color_identity
