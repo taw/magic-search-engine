@@ -6,8 +6,8 @@ class ConditionMana < ConditionSimple
   end
 
   def match?(card)
-    return false unless card.mana_cost
-    card_mana = parse_card_mana(card.mana_cost)
+    card_mana = card.mana_hash
+    return false unless card_mana
     if @needs_resolution
       q_mana = resolve_variable_mana(card_mana, @query_mana)
     else
@@ -81,35 +81,6 @@ class ConditionMana < ConditionSimple
         pool["?"] += $2.to_i
       elsif $3
         pool[$3] += 1
-      end
-      ""
-    end
-    raise "Mana query parse error: #{mana}" unless mana.empty?
-    pool
-  end
-
-  def parse_card_mana(mana)
-    return nil unless mana
-    pool = Hash.new(0)
-
-    mana = mana.gsub(/\{(.*?)\}/) do
-      m = $1
-      case m
-      when /\A\d+\z/
-        pool["?"] += m.to_i
-      when /\A[wubrgxyzc]\z/
-        # x is basically a color for this kind of queries
-        pool[m] += 1
-      when /\Ah([wubrg])\z/
-        pool[$1] += 0.5
-      when /\A([wubrg])\/([wubrg])\z/
-        pool[normalize_mana_symbol(m)] += 1
-      when /\A([wubrg])\/p\z/
-        pool[normalize_mana_symbol(m)] += 1
-      when /\A2\/([wubrg])\z/
-        pool[normalize_mana_symbol(m)] += 1
-      else
-        raise "Unrecognized mana type: #{m}"
       end
       ""
     end

@@ -10,7 +10,7 @@ class Card
 
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
-  attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name
+  attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name, :mana_hash
   def initialize(data)
     @data = data
     @printings = []
@@ -22,6 +22,7 @@ class Card
     @colors = @data["colors"] || ""
     @text = (@data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-").gsub(/\([^\(\)]*\)/, "").sub(/\s*\z/, "")
     @mana_cost = @data["manaCost"] ? @data["manaCost"].downcase : nil
+    calculate_mana_hash
     @reserved = @data["reserved"] || false
     @types = ["types", "subtypes", "supertypes"].map{|t| @data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "")}.to_set
     @cmc = @data["cmc"] || 0
@@ -51,7 +52,7 @@ class Card
   end
 
   def has_multiple_parts?
-    !!@data["names"]
+    !!@names
   end
 
   def typeline
@@ -88,6 +89,41 @@ class Card
   end
 
   private
+
+  def calculate_mana_hash
+    if @mana_cost.nil?
+      @mana_hash = nil
+      return
+    end
+    @mana_hash = Hash.new(0)
+
+    mana = @mana_cost.gsub(/\{(.*?)\}/) do
+      m = $1
+      case m
+      when /\A\d+\z/
+        @mana_hash["?"] += m.to_i
+      when /\A[wubrgxyzc]\z/
+        # x is basically a color for this kind of queries
+        @mana_hash[m] += 1
+      when /\Ah([wubrg])\z/
+        @mana_hash[$1] += 0.5
+      when /\A([wubrg])\/([wubrg])\z/
+        @mana_hash[normalize_mana_symbol(m)] += 1
+      when /\A([wubrg])\/p\z/
+        @mana_hash[normalize_mana_symbol(m)] += 1
+      when /\A2\/([wubrg])\z/
+        @mana_hash[normalize_mana_symbol(m)] += 1
+      else
+        raise "Unrecognized mana type: #{m}"
+      end
+      ""
+    end
+    raise "Mana query parse error: #{mana}" unless mana.empty?
+  end
+
+  def normalize_mana_symbol(sym)
+    sym.downcase.tr("/{}", "").chars.sort.join
+  end
 
   def normalize_name(name)
     name.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
