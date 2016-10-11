@@ -220,6 +220,11 @@ class Indexer
       set = Indexer::CardSet.new(set_code, set_data)
       sets[set_code] = set.to_json
 
+      # This is fixed in new mtgjson, but we must rollback:
+      set_data["cards"].each do |card_data|
+        card_data["name"].gsub!("Æ", "Ae")
+      end
+
       set.ensure_set_has_card_numbers!
 
       set_data["cards"].each do |card_data|
