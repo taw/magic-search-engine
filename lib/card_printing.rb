@@ -1,50 +1,38 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date, :set_code
   attr_accessor :others, :artist
+  attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number
 
   def initialize(card, set, data)
     @card = card
     @set = set
     @set_code = @set.code # performance caching
-    @data = data
     @others = nil
-    @release_date = @data["release_date"] ? Date.parse(@data["release_date"]) : @set.release_date
-  end
-
-  def watermark
-    @data["watermark"] && @data["watermark"].downcase
-  end
-
-  def number
-    @data["number"]
-  end
-
-  def multiverseid
-    @data["multiverseid"]
-  end
-
-  def artist_name
-    @data["artist"]
+    @release_date = data["release_date"] ? Date.parse(data["release_date"]) : @set.release_date
+    @watermark = data["watermark"] && data["watermark"].downcase
+    @number = data["number"]
+    @multiverseid = data["multiverseid"]
+    @artist_name = data["artist"]
+    @flavor = data["flavor"]
+    @border = data["border"]
+    @timeshifted = data["timeshifted"]
+    @rarity = data["rarity"]
   end
 
   def flavor
-    @data["flavor"] || ""
+    @flavor || ""
   end
 
   def border
-    @data["border"] || @set.border
+    @border || @set.border
   end
 
   def timeshifted
-    @data["timeshifted"] || false
+    @timeshifted || false
   end
 
   def year
     release_date && release_date.year
-  end
-
-  def rarity
-    @data["rarity"]
   end
 
   def set_type
@@ -72,6 +60,7 @@ class CardPrinting
   def set_name
     @set.name
   end
+
   %W[block_code block_name].each do |m|
     eval("def #{m}; @set.#{m}; end")
   end

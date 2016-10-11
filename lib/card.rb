@@ -10,37 +10,40 @@ class Card
 
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
-  attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name, :mana_hash
+  attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name, :mana_hash, :typeline
   def initialize(data)
-    @data = data
     @printings = []
 
-    @name = normalize_name(@data["name"])
+    @name = normalize_name(data["name"])
     @stemmed_name = @name.downcase.gsub(/s\b/, "")
-    @names = @data["names"] &&  @data["names"].map{|n| normalize_name(n)}
-    @layout = @data["layout"]
-    @colors = @data["colors"] || ""
-    @text = (@data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-").gsub(/\([^\(\)]*\)/, "").sub(/\s*\z/, "")
-    @mana_cost = @data["manaCost"] ? @data["manaCost"].downcase : nil
+    @names = data["names"] &&  data["names"].map{|n| normalize_name(n)}
+    @layout = data["layout"]
+    @colors = data["colors"] || ""
+    @text = (data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-").gsub(/\([^\(\)]*\)/, "").sub(/\s*\z/, "")
+    @mana_cost = data["manaCost"] ? data["manaCost"].downcase : nil
     calculate_mana_hash
-    @reserved = @data["reserved"] || false
-    @types = ["types", "subtypes", "supertypes"].map{|t| @data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "")}.to_set
-    @cmc = @data["cmc"] || 0
+    @reserved = data["reserved"] || false
+    @types = ["types", "subtypes", "supertypes"].map{|t| data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "")}.to_set
+    @cmc = data["cmc"] || 0
     # Normalize unicode, remove remainder text
-    @power = @data["power"] ? smart_convert_powtou(@data["power"]) : nil
-    @toughness = @data["toughness"] ? smart_convert_powtou(@data["toughness"]) : nil
-    @loyalty = @data["loyalty"] ?  @data["loyalty"].to_i : nil
+    @power = data["power"] ? smart_convert_powtou(data["power"]) : nil
+    @toughness = data["toughness"] ? smart_convert_powtou(data["toughness"]) : nil
+    @loyalty = data["loyalty"] ?  data["loyalty"].to_i : nil
     @partial_color_identity = calculate_partial_color_identity
     if ["vanguard", "plane", "scheme", "phenomenon"].include?(@layout) or @types.include?("conspiracy")
       @extra = true
     else
       @extra = false
     end
-    @hand = @data["hand"]
-    @life = @data["life"]
-    @rulings = @data["rulings"]
-    @secondary = @data["secondary"]
-    @foreign_names = @data["foreign_names"]
+    @hand = data["hand"]
+    @life = data["life"]
+    @rulings = data["rulings"]
+    @secondary = data["secondary"]
+    @foreign_names = data["foreign_names"]
+    @typeline = [data["supertypes"], data["types"]].compact.flatten.join(" ")
+    if data["subtypes"]
+      @typeline += " - #{data["subtypes"].join(" ")}"
+    end
   end
 
   attr_writer :color_identity
@@ -53,14 +56,6 @@ class Card
 
   def has_multiple_parts?
     !!@names
-  end
-
-  def typeline
-    tl = [@data["supertypes"], @data["types"]].compact.flatten.join(" ")
-    if data["subtypes"]
-      tl += " - #{data["subtypes"].join(" ")}"
-    end
-    tl
   end
 
   def inspect
