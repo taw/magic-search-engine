@@ -48,14 +48,31 @@ task "pics:gatherer" do
   end
 end
 
+desc "Connect links to HQ pics"
+task "link:pics" do
+  Pathname("frontend/public/cards_hq").mkpath
+  if ENV["RAILS_ENV"] == "production"
+    sources = Dir["/home/rails/magic-card-pics-hq-*/*/"]
+  else
+    sources = Dir["#{ENV['HOME']}/github/magic-card-pics-hq-*/*/"]
+  end
+  sources.each do |source|
+    source = Pathname(source)
+    set_name = source.basename.to_s
+    target_path = Pathname("frontend/public/cards_hq/#{set_name}")
+    next if target_path.exist?
+    # p [target_path, source]
+    target_path.make_symlink(source)
+  end
+end
+
 desc "Fetch HQ pics"
 task "pics:hq" do
-  source_base = Pathname("/Users/taw/Downloads/mtg_hq2/CCGHQ MTG Pics/Fulls/")
+  source_base = Pathname("/Users/taw/Downloads/hq_pics/") # "Full" resolution
   total = Hash.new(0)
 
   db.sets.each do |set_code, set|
-    matching_dirs = source_base.children.select{|d| d.basename.to_s != "Tokens" and d.basename.to_s != "Emblems"}
-                    .flat_map(&:children).select{|d| d.basename.to_s == set.gatherer_code}
+    matching_dirs = source_base.children.select{|d| d.basename.to_s != "Tokens" and d.basename.to_s != "Emblems"}.select(&:directory?).select{|d| d.basename.to_s == set.gatherer_code}
     if matching_dirs.size == 0
       source_dir = nil
       # warn "Set missing: #{set_code}"
@@ -64,6 +81,7 @@ task "pics:hq" do
     else
       require 'pry'; binding.pry
     end
+
     nth_card = Hash.new(0)
 
     set.printings.sort_by{|c| [c.number.to_i, c.number] }.each do |card|
@@ -87,6 +105,8 @@ task "pics:hq" do
         "#{clean_name}.full.jpg",
         "#{clean_name}#{nth_card[card.name]}.jpg",
         "#{clean_name}#{nth_card[card.name]}.full.jpg",
+        "#{clean_name} [#{nth_card[card.name]}].jpg",
+        "#{clean_name} [#{nth_card[card.name]}].full.jpg",
         ("#{card.names.join(" - ")}.full.jpg" if card.names),
         ("#{card.names.reverse.join(" - ")}.full.jpg" if card.names),
         ("#{card.names.join("_")}.full.jpg" if card.names),
@@ -105,9 +125,9 @@ task "pics:hq" do
         total["miss"] += 1
         has_lq = Pathname("frontend/public/cards/#{card.set_code}/#{card.number}.png").exist?
         if has_lq
-          # warn "LQ only: #{card.set.gatherer_code} - #{card.name}"
+          warn "LQ only: #{card.set.gatherer_code} - #{card.name}"
         else
-          # warn "No pic:  #{card.set.gatherer_code} - #{card.name}"
+          warn "No pic:  #{card.set.gatherer_code} - #{card.name}"
         end
       end
     end
@@ -147,13 +167,19 @@ task "pics:statistics:extra" do
       by_set[set]["none"] += 1
     end
   end
-  by_set.sort_by{|set, stats| [-stats["hq"]/stats["total"], -stats["lq"]/stats["total"], set]}.each do |set, stats|
+  by_set
+    .select{|set_name, stats| stats["lq"] + stats["none"] > 0 }
+    .sort_by{|set_name, stats|
+      set = db.sets[set_name]
+      [-set.release_date.to_i_sort, set.name]
+    }
+    .each do |set_name, stats|
     summary = [
       ("#{stats["hq"]} HQ" if stats["hq"] > 0),
       ("#{stats["lq"]} LQ" if stats["lq"] > 0),
       ("#{stats["none"]} No Picture" if stats["none"] > 0),
     ].compact.join(", ")
-    puts "#{set}: #{summary}"
+    puts "#{set_name}: #{summary}"
   end
 end
 
