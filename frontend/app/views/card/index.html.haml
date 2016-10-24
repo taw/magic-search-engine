@@ -5,11 +5,11 @@
         .warning= warning
 - if @search.present?
   = render 'summary'
-  - @cards.each do |card, matching_printing|
+  - @cards.each do |card, printings|
     - if @cards.total_entries == 1
-      = render "card_row_full", card: card
+      = render "card_row_full", card: card, printings: printings
     - else
-      = render "card_row_short", card: card, matching_printing: matching_printing
+      = render "card_row_short", card: card, printings: printings
   .row
     .col-xs-12.pagination
       = will_paginate @cards

@@ -30,6 +30,10 @@ module ApplicationHelper
     "/card/gallery/#{first_printing.set_code}/#{first_printing.number}"
   end
 
+  def printings_by_set(card)
+    card.printings.reverse.group_by(&:set_name).to_a
+  end
+
   def self.card_picture_path(card)
     url_hq = "/cards_hq/#{card.set_code}/#{card.number}.png"
     url_lq = "/cards/#{card.set_code}/#{card.number}.png"
