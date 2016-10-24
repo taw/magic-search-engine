@@ -1,0 +1,34 @@
+%h5 Printings
+%ul.printings_list
+  - all_printings = printings_by_set(card)
+  - all_printings.each do |set_name, set_printings|
+    - if set_printings.size == 1
+      - printing = set_printings[0]
+      - if card == printing
+        %li.selected
+          = printing.set_name
+      - elsif printings.include?(printing)
+        %li.matching
+          = link_to_card(printing) do
+            = printing.set_name
+      - else
+        %li.not_matching
+          = link_to_card(printing) do
+            = printing.set_name
+    - else
+      %li
+        %span.set_name
+          = set_name
+          &mdash;
+        - set_printings.reverse.each do |printing|
+          - if card == printing
+            %span.selected
+              = printing.number
+          - elsif printings.include?(printing)
+            %span.matching
+              = link_to_card(printing) do
+                = printing.number
+          - else
+            %span.not_matching
+              = link_to_card(printing) do
+                = printing.number

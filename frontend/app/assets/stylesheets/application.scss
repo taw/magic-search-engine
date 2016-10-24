@@ -101,6 +101,25 @@ form.search {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
+  .legalities {
+    font-size: small;
+  }
+  .foreign_names {
+    font-size: small;
+  }
+}
+
+.printings_list {
+  font-size: small;
+  .selected {
+    font-weight: bold;
+  }
+  .matching {
+    font-weight: bold;
+  }
+  .not_matching {
+    color: #888;
+  }
 }
 
 .printings_box {

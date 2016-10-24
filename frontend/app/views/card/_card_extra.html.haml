@@ -1,8 +1,13 @@
-%div
-  %span.infolabel
-    Artist:
-  = link_to_artist(card.artist) do
-    = card.artist.name
+%h5 Details
+%ul
+  %li.infolabel
+    %span
+      Artist:
+    = link_to_artist(card.artist) do
+      = card.artist.name
+  - if card.reserved
+    %li.infolabel
+      = "#{card.name} is on Reserved List."
 
 %h5 Legalities
 %ul.legalities
@@ -23,7 +28,7 @@
 - if card.foreign_names
   %h5 Foreign names
   %ul.foreign_names
-    - card.foreign_names.each do |language_code, foreign_names|
+    - card.foreign_names.sort.each do |language_code, foreign_names|
       - foreign_names.each do |foreign_name|
         %li
           = foreign_name
