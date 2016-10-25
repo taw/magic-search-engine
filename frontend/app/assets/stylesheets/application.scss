@@ -110,36 +110,42 @@ form.search {
 }
 
 .printings_list {
+  color: #888;
   font-size: small;
   .selected {
     font-weight: bold;
+    color: black;
   }
   .matching {
-    font-weight: bold;
+    color: black;
   }
-  .not_matching {
-    color: #888;
+  .not_matching a {
+    color: inherit;
+  }
+  .rarity {
   }
 }
 
 .printings_box {
+  color: #888;
   max-width: 200px;
   font-size: xx-small;
   .selected {
     font-weight: bold;
+    color: black;
   }
   .matching {
-    font-weight: bold;
+    color: black;
   }
-  .not_matching {
-    color: #888;
+  .not_matching a {
+    color: inherit;
   }
 }
 .card_row {
   position: relative;
 }
 .card_picture_cell {
-  padding: 2%;
+  padding: 0% 2% 2% 2%;
 }
 /* meld and split only enabled on sm+ devices */
 .card_picture_container {

@@ -36,11 +36,24 @@ module ApplicationHelper
       if cp == selected_printing
         [:selected, cp]
       elsif matching_printings.include?(cp)
-        [:matched, cp]
+        [:matching, cp]
       else
-        [:unmatched, cp]
+        [:not_matching, cp]
       end
     }.group_by{|type, cp| cp.set_name }.to_a.reverse
+  end
+
+  def printings_view_full(selected_printing, matching_printings)
+    matching_printings = matching_printings.to_set
+    selected_printing.printings.map{|cp|
+      if cp == selected_printing
+        [:selected, cp]
+      elsif matching_printings.include?(cp)
+        [:matching, cp]
+      else
+        [:not_matching, cp]
+      end
+    }.group_by{|type, cp| [cp.set_name, cp.rarity] }.to_a.reverse
   end
 
   def self.card_picture_path(card)
