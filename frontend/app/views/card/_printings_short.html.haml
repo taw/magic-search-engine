@@ -1,21 +1,21 @@
-.printings_box
+%ul.printings_box
   - printings[0,15].each do |set_name, set_printings|
     - if set_printings.size == 1
       - set_printings.each do |type, printing|
         - case type
         - when :selected
-          .selected
+          %li.selected
             = printing.set_name
         - when :matching
-          .matching
+          %li.matching
             = link_to_card(printing) do
               = printing.set_name
         - else
-          .not_matching
+          %li.not_matching
             = link_to_card(printing) do
               = printing.set_name
     - else
-      %div
+      %li
         %span.set_name
           = set_name
           &mdash;
