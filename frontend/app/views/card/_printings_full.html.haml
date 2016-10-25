@@ -1,24 +1,32 @@
 %h5 Printings
 %ul.printings_list
-  - printings.each do |set_name, set_printings|
-    - if set_printings.size == 1
-      - set_printings.each do |type, printing|
-        - case type
-        - when :selected
-          %li.selected
-            = printing.set_name
-        - when :matching
-          %li.matching
-            = link_to_card(printing) do
+  - printings.each do |(set_name, rarity), set_printings|
+    %li
+      - if set_printings.size == 1
+        - set_printings.each do |type, printing|
+          - case type
+          - when :selected
+            %span.selected
               = printing.set_name
+          - when :matching
+            %span.matching
+              = link_to_card(printing) do
+                = printing.set_name
+          - else
+            %span.not_matching
+              = link_to_card(printing) do
+                = printing.set_name
+          %span.rarity= "(#{rarity})"
+      - else
+        - if set_printings.map(&:first).any?{|type| type == :selected}
+          %span.selected
+            = set_name
+        - elsif set_printings.map(&:first).any?{|type| type == :matching}
+          %span.matching
+            = set_name
         - else
-          %li.not_matching
-            = link_to_card(printing) do
-              = printing.set_name
-    - else
-      %li
-        %span.set_name
-          = set_name
+          %span.not_matching
+            = set_name
           &mdash;
         - set_printings.each do |type, printing|
           - case type
@@ -33,3 +41,4 @@
             %span.not_matching
               = link_to_card(printing) do
                 = printing.number
+        %span.rarity= "(#{rarity})"
