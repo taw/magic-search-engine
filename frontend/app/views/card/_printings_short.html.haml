@@ -1,35 +1,30 @@
 .printings_box
-  - all_printings = printings_by_set(card)
-  - if all_printings.size > 20
-    - all_printings = all_printings[0, 20]
-    - link_to_rest = true
-  - else
-    - list_to_rest = false
-
-  - all_printings.each do |set_name, set_printings|
+  - printings[0,15].each do |set_name, set_printings|
     - if set_printings.size == 1
-      - printing = set_printings[0]
-      - if card == printing
-        .selected
-          = printing.set_name
-      - elsif printings.include?(printing)
-        .matching
-          = link_to_card(printing) do
+      - set_printings.each do |type, printing|
+        - case type
+        - when :selected
+          .selected
             = printing.set_name
-      - else
-        .not_matching
-          = link_to_card(printing) do
-            = printing.set_name
+        - when :matching
+          .matching
+            = link_to_card(printing) do
+              = printing.set_name
+        - else
+          .not_matching
+            = link_to_card(printing) do
+              = printing.set_name
     - else
       %div
         %span.set_name
           = set_name
           &mdash;
-        - set_printings.reverse.each do |printing|
-          - if card == printing
+        - set_printings.each do |type, printing|
+          - case type
+          - when :selected
             %span.selected
               = printing.number
-          - elsif printings.include?(printing)
+          - when :matching
             %span.matching
               = link_to_card(printing) do
                 = printing.number
@@ -38,6 +33,6 @@
               = link_to_card(printing) do
                 = printing.number
 
-  - if link_to_rest
+  - if printings.size > 15
     = link_to_card(card) do
       (and others)

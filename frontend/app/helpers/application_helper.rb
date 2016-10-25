@@ -30,8 +30,17 @@ module ApplicationHelper
     "/card/gallery/#{first_printing.set_code}/#{first_printing.number}"
   end
 
-  def printings_by_set(card)
-    card.printings.reverse.group_by(&:set_name).to_a
+  def printings_view(selected_printing, matching_printings)
+    matching_printings = matching_printings.to_set
+    selected_printing.printings.map{|cp|
+      if cp == selected_printing
+        [:selected, cp]
+      elsif matching_printings.include?(cp)
+        [:matched, cp]
+      else
+        [:unmatched, cp]
+      end
+    }.group_by{|type, cp| cp.set_name }.to_a.reverse
   end
 
   def self.card_picture_path(card)
