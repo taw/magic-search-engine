@@ -8,7 +8,9 @@
   - if card.reserved
     %li.infolabel
       = "#{card.name} is on Reserved List."
-
+  - if card.watermark
+    %li.infolabel
+      = "Watermark: #{card.watermark.capitalize}"
 %h5 Legalities
 %ul.legalities
   - legality = card.legality_information
