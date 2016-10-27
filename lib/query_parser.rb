@@ -72,7 +72,7 @@ private
         @tokens << [:test, ConditionBlock.new(*blocks)]
       elsif s.scan(/st:(?:"(.*?)"|(\w+))/i)
         @tokens << [:test, ConditionSetType.new(s[1] || s[2])]
-      elsif s.scan(/c:([wubrgcml]+)/i)
+      elsif s.scan(/(?:c|color):([wubrgcml]+)/i)
         @tokens << [:test, ConditionColors.new(s[1])]
       elsif s.scan(/ci[:!]([wubrgcml]+)/i)
         @tokens << [:test, ConditionColorIdentity.new(s[1])]
