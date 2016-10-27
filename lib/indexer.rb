@@ -229,7 +229,7 @@ class Indexer
 
       set_data["cards"].each do |card_data|
         name = card_data["name"]
-        sets_printed = card_data["printings"].map{|set_code| @sets_code_translator[set_code]}
+        sets_printed = card_data["printings"].map{|set_code2| @sets_code_translator[set_code2]}
         mtgjson_legalities = format_legalities(card_data)
         # It seems incorrect
         if sets_printed == ["cns"] or sets_printed == ["cn2"]
