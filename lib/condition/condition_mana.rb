@@ -26,7 +26,7 @@ class ConditionMana < ConditionSimple
     when "<="
       cmps.all?{|a,b| a<=b}
     else
-      raise
+      raise "Unrecognized comparison #{@op}"
     end
   end
 

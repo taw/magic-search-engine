@@ -14,6 +14,7 @@ class QueryParser
     str = query_string.strip
     if str =~ /\A!(.*)\z/
       name = $1
+      name = name.sub(/\A"(.*)"\z/) { $1 }
       if name =~ %r[&|/]
         cond = ConditionExactMultipart.new(name)
       else
@@ -85,8 +86,11 @@ private
         @tokens << [:test, ConditionRarity.new(s[1])]
       elsif s.scan(/(pow|loy|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow\b|tou\b|cmc\b|loy|loyalty\b|year\b|[²\d\.\-\*\+½]+)/i)
         @tokens << [:test, ConditionExpr.new(s[1].downcase, s[2], s[3].downcase)]
-      elsif s.scan(/mana\s*(>=|>|<=|<|=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})+)/i)
-        @tokens << [:test, ConditionMana.new(s[1], s[2])]
+      elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:)\s*((?:[\dwubrgxyzchmno]|\{.*?\})+)/i)
+        op = s[1]
+        op = "=" if op == ":"
+        mana = s[2]
+        @tokens << [:test, ConditionMana.new(op, mana)]
       elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted|reserved|multipart|promo|primary|commander)\b/i)
         @tokens << [:not] if s[1].downcase == "not"
         klass = Kernel.const_get("ConditionIs#{s[2].capitalize}")
@@ -96,7 +100,7 @@ private
         @tokens << [:test, ConditionLayout.new(s[2])]
       elsif s.scan(/layout:(normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld)/)
         @tokens << [:test, ConditionLayout.new(s[1])]
-      elsif s.scan(/(is|not):(old|new|future)\b/)
+      elsif s.scan(/(is|frame|not):(old|new|future)\b/)
         @tokens << [:not] if s[1].downcase == "not"
         @tokens << [:test, ConditionFrame.new(s[2].downcase)]
       elsif s.scan(/(is|not):(black-bordered|silver-bordered|white-bordered)\b/i)
