@@ -83,7 +83,7 @@ private
         @tokens << [:test, klass.new(s[2], s[3] || s[4])]
       elsif s.scan(/r:(\w+)/)
         @tokens << [:test, ConditionRarity.new(s[1])]
-      elsif s.scan(/(pow|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow\b|tou\b|cmc\b|loyalty\b|year\b|[²\d\.\-\*\+½]+)/i)
+      elsif s.scan(/(pow|loy|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow\b|tou\b|cmc\b|loy|loyalty\b|year\b|[²\d\.\-\*\+½]+)/i)
         @tokens << [:test, ConditionExpr.new(s[1].downcase, s[2], s[3].downcase)]
       elsif s.scan(/mana\s*(>=|>|<=|<|=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})+)/i)
         @tokens << [:test, ConditionMana.new(s[1], s[2])]
