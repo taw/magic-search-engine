@@ -65,7 +65,7 @@ class ConditionMana < ConditionSimple
 
   def parse_query_mana(mana)
     pool = Hash.new(0)
-    mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrgxyzchmnohmno])/) do
+    mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrgxyzchmno])/) do
       if $1
         m = normalize_mana_symbol($1)
         if m =~ /\A\d+\z/
