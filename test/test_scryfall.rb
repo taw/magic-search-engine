@@ -47,6 +47,16 @@ class ScryfallTest < Minitest::Test
       "Fire", "Ice"
   end
 
+  def test_reserved
+    # identical behaviour, at least until they abolish the damn list
+    assert_count_results "is:reserved", 571
+  end
+
+  def test_meld
+    # identical behaviour, count both parts and melded cards
+    assert_count_results "is:meld", 9
+  end
+
   def test_creature_type
     # scryfall includes changelings as every creature type
     assert_search_include "t:merfolk t:legendary",
@@ -63,12 +73,54 @@ class ScryfallTest < Minitest::Test
       "Ego Erasure"
   end
 
+  def test_banned_commander
+    # scryfall does the silly thing of counting conspiracies
+    # as "banned" instead of as non-cards
+    assert_search_include "banned:commander",
+      "Black Lotus"
+    assert_search_exclude "banned:commander",
+      "Backup Plan"
+  end
+
+  def test_restricted_vintage
+    # Identical results
+    assert_count_results "restricted:vintage", 43
+  end
+
+  def test_parentheses
+    # Identical results
+    assert_search_results "through (depths or sands or mists)",
+      "Peer Through Depths",
+      "Reach Through Mists",
+      "Sift Through Sands"
+  end
+
+  def test_pow_gt_8
+    # results differ in uncards / spoiled cards
+    assert_search_include "pow>=8",
+      "Akron Legionnaire",
+      "Aradara Express",
+      "Archdemon of Greed",
+      "Brisela, Voice of Nightmares",
+      "Crash of Rhinos",
+      "Uktabi Kong"
+  end
+
+  def test_loyalty
+    assert_search_equal "t:planeswalker loy=3", "t:planeswalker loyalty=3"
+    assert_search_include "t:planeswalker loy=3",
+      "Saheeli Rai",
+      "Arlinn Kord",
+      "Liliana, Defiant Necromancer"
+  end
+
   def test_scryfall_bug_cmc
     # meld cmc is sum of part cmcs, scryfall bug
     assert_search_exclude "c:c t:creature cmc=0", "Chittering Host"
   end
 
   def test_scryfall_bug_uncards
+    # scryfall doesn't include uncards at all
     assert_search_include "clay", "Clay Pigeon"
   end
 end
