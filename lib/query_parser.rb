@@ -12,6 +12,7 @@ class QueryParser
     @metadata = {}
     @tokens = []
     str = query_string.strip
+    str = str.sub(/\A\+\+/, "") # Disregard ++ for compatibility
     if str =~ /\A!(.*)\z/
       name = $1
       name = name.sub(/\A"(.*)"\z/) { $1 }
@@ -75,7 +76,7 @@ private
         @tokens << [:test, ConditionSetType.new(s[1] || s[2])]
       elsif s.scan(/(?:c|color):([wubrgcml]+)/i)
         @tokens << [:test, ConditionColors.new(s[1])]
-      elsif s.scan(/ci[:!]([wubrgcml]+)/i)
+      elsif s.scan(/(?:ci|id)[:!]([wubrgcml]+)/i)
         @tokens << [:test, ConditionColorIdentity.new(s[1])]
       elsif s.scan(/c!([wubrgcml]+)/i)
         @tokens << [:test, ConditionColorsExclusive.new(s[1])]
@@ -91,9 +92,11 @@ private
         op = "=" if op == ":"
         mana = s[2]
         @tokens << [:test, ConditionMana.new(op, mana)]
-      elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted|reserved|multipart|promo|primary|commander)\b/i)
+      elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted|colorshifted|reserved|multipart|promo|primary|commander)\b/i)
         @tokens << [:not] if s[1].downcase == "not"
-        klass = Kernel.const_get("ConditionIs#{s[2].capitalize}")
+        cond = s[2].capitalize
+        cond = "Timeshifted" if cond == "Colorshifted"
+        klass = Kernel.const_get("ConditionIs#{cond}")
         @tokens << [:test, klass.new]
       elsif s.scan(/(is|not):(split|flip|dfc|meld)\b/i)
         @tokens << [:not] if s[1].downcase == "not"
@@ -106,6 +109,8 @@ private
       elsif s.scan(/(is|not):(black-bordered|silver-bordered|white-bordered)\b/i)
         @tokens << [:not] if s[1].downcase == "not"
         @tokens << [:test, ConditionBorder.new(s[2].sub("-bordered", "").downcase)]
+      elsif s.scan(/border:(black|silver|white)\b/i)
+        @tokens << [:test, ConditionBorder.new(s[1].downcase)]
       elsif s.scan(/sort:(\w+)/)
         @metadata[:sort] = s[1].downcase
       elsif s.scan(/time:(?:"(.*?)"|([\.\w]+))/i)
