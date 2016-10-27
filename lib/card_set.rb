@@ -12,6 +12,11 @@ class CardSet
     @type          = data["type"]
     @release_date  = data["release_date"] && Date.parse(data["release_date"])
     @printings     = Set[]
+    @online_only   = data["online_only"]
+  end
+
+  def online_only?
+    !!@online_only
   end
 
   def regular?

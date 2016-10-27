@@ -16,7 +16,8 @@ class ScryfallTest < Minitest::Test
     # It's arguable which behaviour is better
   end
 
-  # FIXME: scryfall supports "c:red" too
+  # scryfall supports "c:red" too
+  # should I add that?
   def test_color_alias
     # color: is alias for c:
     assert_search_equal "color:uw -c:r", "(c:u OR c:w) -c:r"
@@ -407,5 +408,11 @@ class ScryfallTest < Minitest::Test
       "Abomination of Gudul"
     assert_search_exclude 'o:"draw" t:creature',
       "Tireless Tracker"
+  end
+
+  def test_is_digital
+    # scryfall includes "Gleemox" - https://scryfall.com/card/pgmx/1
+    # and I have no idea what's that
+    assert_search_equal "is:digital", "e:med OR e:me2 OR e:me3 OR e:me4 OR e:vma OR e:tpr"
   end
 end
