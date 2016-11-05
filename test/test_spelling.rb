@@ -14,6 +14,22 @@ class SpellingTest < Minitest::Test
     assert_spelling_suggestions "Ajuni", "ajani"
     assert_spelling_suggestions "Ætherise", "aetherize"
     assert_spelling_suggestions "ajuni's", "ajani"
+    # stemming and spelling interaction
+    assert_spelling_suggestions "pyrokynesis", "pyrokinesis"
+  end
+
+  def test_spelling_search
+    assert_search_results "kolagan",
+      "Dragonlord Kolaghan",
+      "Kolaghan Aspirant",
+      "Kolaghan Forerunners",
+      "Kolaghan Monument",
+      "Kolaghan Skirmisher",
+      "Kolaghan Stormsinger",
+      "Kolaghan's Command",
+      "Kolaghan, the Storm's Fury"
+    assert_search_results "pyrokynesis",
+      "Pyrokinesis"
   end
 
   def test_spelling_short_words
