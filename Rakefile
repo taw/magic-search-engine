@@ -10,8 +10,8 @@ def db
   end
 end
 
-task "default" => "test"
-task "spec" => "test"
+task "default" => "spec"
+task "test" => "spec"
 
 # Run specs
 task "spec" do
