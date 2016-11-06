@@ -1,25 +1,22 @@
-require_relative "test_helper"
+describe "Formats" do
+  include_context "db"
 
-class FormatTest < Minitest::Test
-  def setup
-    @db = load_database
-  end
-
+  # FIXME: All of this needs to be migrated to proper rspec
   def assert_block_composition(format_name, time, sets, exceptions={})
-    time = @db.sets[time].release_date if time.is_a?(String)
+    time = db.sets[time].release_date if time.is_a?(String)
     format = Format[format_name].new(time)
-    actual_legality = @db.cards.values.map do |card|
+    actual_legality = db.cards.values.map do |card|
       [card.name, format.legality(card)]
     end.select(&:last)
     expected_legality = compute_expected_legality(sets, exceptions)
-    assert_hash_equal expected_legality, actual_legality, "Legality of #{format_name} at #{time}"
+    expected_legality.to_h.should eq(actual_legality.to_h) # "Legality of #{format_name} at #{time}"
   end
 
   def assert_legality(format_name, time, card_name, status)
-    time = @db.sets[time].release_date unless time.is_a?(Date)
+    time = db.sets[time].release_date unless time.is_a?(Date)
     format = Format[format_name].new(time)
-    card = @db.cards[card_name.downcase] or raise "No such card: #{card_name}"
-    assert_equal status, format.legality(card), "Legality of #{card_name} in #{format_name} at #{time}"
+    card = db.cards[card_name.downcase] or raise "No such card: #{card_name}"
+    format.legality(card).should == status # "Legality of #{card_name} in #{format_name} at #{time}"
   end
 
   def assert_block_composition_sequence(format_name, *sets)
@@ -32,10 +29,10 @@ class FormatTest < Minitest::Test
   def compute_expected_legality(sets, exceptions)
     expected_legality = {}
     sets.each do |set_code|
-      unless @db.sets[set_code]
+      unless db.sets[set_code]
         require 'pry'; binding.pry
       end
-      @db.sets[set_code].printings.each do |card_printing|
+      db.sets[set_code].printings.each do |card_printing|
         next if %W[vanguard plane phenomenon scheme token].include?(card_printing.layout)
         next if card_printing.types == Set["conspiracy"]
         expected_legality[card_printing.name] = "legal"
@@ -47,7 +44,7 @@ class FormatTest < Minitest::Test
 
   ## Block Constructed
 
-  def test_ice_age_block
+  it "ice_age_block" do
     assert_block_composition "ice age block", "ia", ["ia"],
       "Amulet of Quoz" => "banned"
     assert_block_composition "ice age block", "ai", ["ia", "ai"],
@@ -58,11 +55,11 @@ class FormatTest < Minitest::Test
       "Amulet of Quoz" => "banned"
   end
 
-  def test_mirage_block
+  it "mirage_block" do
     assert_block_composition_sequence "mirage block", "mr", "vi", "wl"
   end
 
-  def test_tempest_block
+  it "tempest_block" do
     # No idea when Cursed Scroll was banned exactly
     assert_block_composition "tempest block", "tp", ["tp"],
       "Cursed Scroll" => "banned"
@@ -72,7 +69,7 @@ class FormatTest < Minitest::Test
       "Cursed Scroll" => "banned"
   end
 
-  def test_urza_block
+  it "urza_block" do
     assert_block_composition "urza block", "us", ["us"]
     assert_block_composition "urza block", "ul", ["us", "ul"]
     assert_block_composition "urza block", "ud", ["us", "ul", "ud"],
@@ -89,26 +86,26 @@ class FormatTest < Minitest::Test
       "Windfall" => "banned"
   end
 
-  def test_masques_block
+  it "masques_block" do
     assert_block_composition_sequence "masques block", "mm", "ne", "pr"
     assert_block_composition "masques block", nil, ["mm", "ne", "pr"],
       "Lin Sivvi, Defiant Hero" => "banned",
       "Rishadan Port" => "banned"
   end
 
-  def test_invasion_block
+  it "invasion_block" do
     assert_block_composition_sequence "invasion block", "in", "ps", "ap"
   end
 
-  def test_odyssey_block
+  it "odyssey_block" do
     assert_block_composition_sequence "odyssey block", "od", "tr", "ju"
   end
 
-  def test_onslaught_block
+  it "onslaught_block" do
     assert_block_composition_sequence "onslaught block", "on", "le", "sc"
   end
 
-  def test_mirrodin_block
+  it "mirrodin_block" do
     assert_block_composition_sequence "mirrodin block", "mi", "ds", "5dn"
     assert_block_composition "mirrodin block", nil, ["mi", "ds", "5dn"],
       "Aether Vial" => "banned",
@@ -123,7 +120,7 @@ class FormatTest < Minitest::Test
       "Vault of Whispers" => "banned"
   end
 
-  def test_time_spiral_block
+  it "time_spiral_block" do
     # Two sets released simultaneously
     assert_block_composition "time spiral block", "ts", ["ts", "tsts"]
     assert_block_composition "time spiral block", "tsts", ["ts", "tsts"]
@@ -131,32 +128,32 @@ class FormatTest < Minitest::Test
     assert_block_composition "time spiral block", "fut", ["ts", "tsts", "pc", "fut"]
   end
 
-  def test_ravnica_block
+  it "ravnica_block" do
     assert_block_composition_sequence "ravnica block", "rav", "gp", "di"
   end
 
-  def test_kamigawa_block
+  it "kamigawa_block" do
     assert_block_composition_sequence "kamigawa block", "chk", "bok", "sok"
   end
 
-  def test_lorwyn_shadowmoor_block
+  it "lorwyn_shadowmoor_block" do
     assert_block_composition_sequence "lorwyn-shadowmoor block", "lw", "mt", "shm", "eve"
     assert_block_composition_sequence "lorwyn block", "lw", "mt", "shm", "eve"
   end
 
-  def test_shards_of_alara_block
+  it "shards_of_alara_block" do
     assert_block_composition_sequence "shards of alara block", "ala", "cfx", "arb"
   end
 
-  def test_zendikar_block
+  it "zendikar_block" do
     assert_block_composition_sequence "zendikar block", "zen", "wwk", "roe"
   end
 
-  def test_scars_of_mirrodin_block
+  it "scars_of_mirrodin_block" do
     assert_block_composition_sequence "scars of mirrodin block", "som", "mbs", "nph"
   end
 
-  def test_innistrad_block
+  it "innistrad_block" do
     assert_block_composition "innistrad block", "isd", ["isd"]
     assert_block_composition "innistrad block", "dka", ["isd", "dka"]
     assert_block_composition "innistrad block", "avr", ["isd", "dka", "avr"],
@@ -172,29 +169,29 @@ class FormatTest < Minitest::Test
     assert_legality "innistrad block", "avr", "Intangible Virtue", "banned"
   end
 
-  def test_return_to_ravnica_block
+  it "return_to_ravnica_block" do
     assert_block_composition_sequence "return to ravnica block", "rtr", "gtc", "dgm"
   end
 
-  def test_theros_block
+  it "theros_block" do
     assert_block_composition_sequence "theros block", "ths", "bng", "jou"
   end
 
-  def test_tarkir_block
+  it "tarkir_block" do
     assert_block_composition_sequence "tarkir block", "ktk", "frf", "dtk"
   end
 
-  def test_battle_for_zendikar
+  it "battle_for_zendikar" do
     assert_block_composition_sequence "battle for zendikar block", "bfz"
   end
 
-  def test_unsets
+  it "unsets" do
     assert_block_composition_sequence "unsets", "ug", "uh"
   end
 
   ## Modern
 
-  def test_modern
+  it "modern" do
     assert_block_composition "modern", "bfz", ["8e", "mi", "ds", "5dn", "chk", "bok", "sok", "9e", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut", "10e", "lw", "mt", "shm", "eve", "ala", "cfx", "arb", "m10", "zen", "wwk", "roe", "m11", "som", "mbs", "nph", "m12", "isd", "dka", "avr", "m13", "rtr", "gtc", "dgm", "m14", "ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori", "bfz"],
       "Ancestral Vision" => "banned",
       "Ancient Den" => "banned",
@@ -238,7 +235,7 @@ class FormatTest < Minitest::Test
 
   ## Standard
 
-  def test_standard
+  it "standard" do
     assert_block_composition "standard", "soi",  ["dtk", "ori", "bfz", "ogw", "soi"]
     assert_block_composition "standard", "ogw",  ["ktk", "frf", "dtk", "ori", "bfz", "ogw"]
     assert_block_composition "standard", "bfz",  ["ktk", "frf", "dtk", "ori", "bfz"]
@@ -401,7 +398,7 @@ class FormatTest < Minitest::Test
 
   ## Eternal formats
 
-  def test_legacy
+  it "legacy" do
     assert_block_composition "legacy", "ema", ["al", "be", "un", "an", "ced", "cedi", "drc", "aq", "rv", "lg", "dk", "fe", "dcilm", "mbp", "4e", "ia", "ch", "hl", "ai", "rqs",  "mr", "mgbc", "itp", "vi", "5e", "pot", "po", "van", "wl", "ptc", "tp", "sh", "po2", "jr", "ex", "apac", "us", "at", "ul", "6e", "p3k", "ud", "st", "guru", "wrl", "wotc", "mm", "br", "sus", "fnmp", "euro", "ne", "st2k", "pr", "bd", "in", "ps", "7e", "mprp", "ap", "od", "dm", "tr", "ju", "on", "le", "sc", "8e", "mi", "ds", "5dn", "chk", "bok", "sok", "9e", "rav", "thgt", "gp", "cp", "di", "cstd", "cs", "tsts", "ts", "pc", "pro", "gpx", "fut", "10e", "mgdc", "sum", "med", "lw", "evg", "mt", "mlp", "15ann", "shm", "eve", "fvd", "me2", "grc", "ala", "jvc", "cfx", "dvd", "arb", "m10", "fve", "pch", "me3", "zen", "gvl", "pds", "wwk", "pvc", "roe", "dpa", "arc", "m11", "fvr", "ddf", "som", "pd2", "me4", "mbs", "ddg", "nph", "cmd", "m12", "fvl", "ddh", "isd", "pd3", "dka", "ddi", "avr", "pc2", "m13", "v12", "ddj", "rtr", "cma", "gtc", "ddk", "wmcq", "dgm", "mma", "m14", "v13", "ddl", "ths", "c13", "bng", "ddm", "jou", "md1", "cns", "vma", "m15", "clash", "v14", "ddn", "ktk", "c14", "ddaevg", "ddadvd", "ddagvl", "ddajvc", "ugin", "frf", "ddo", "dtk", "tpr", "mm2", "ori", "v15", "ddp", "bfz", "exp", "c15", "ogw", "ddq", "w16", "soi", "ema"],
       "Amulet of Quoz" => "banned",
       "Ancestral Recall" => "banned",
@@ -468,7 +465,7 @@ class FormatTest < Minitest::Test
     assert_legality "legacy", Date.parse("2006.1.1"), "Zodiac Dog", "legal"
   end
 
-  def test_vintage
+  it "vintage" do
     assert_block_composition "vintage", "ema", ["al", "be", "un", "an", "ced", "cedi", "drc", "aq", "rv", "lg", "dk", "fe", "dcilm", "mbp", "4e", "ia", "ch", "hl", "ai", "rqs",  "mr", "mgbc", "itp", "vi", "5e", "pot", "po", "van", "wl", "ptc", "tp", "sh", "po2", "jr", "ex", "apac", "us", "at", "ul", "6e", "p3k", "ud", "st", "guru", "wrl", "wotc", "mm", "br", "sus", "fnmp", "euro", "ne", "st2k", "pr", "bd", "in", "ps", "7e", "mprp", "ap", "od", "dm", "tr", "ju", "on", "le", "sc", "8e", "mi", "ds", "5dn", "chk", "bok", "sok", "9e", "rav", "thgt", "gp", "cp", "di", "cstd", "cs", "tsts", "ts", "pc", "pro", "gpx", "fut", "10e", "mgdc", "sum", "med", "lw", "evg", "mt", "mlp", "15ann", "shm", "eve", "fvd", "me2", "grc", "ala", "jvc", "cfx", "dvd", "arb", "m10", "fve", "pch", "me3", "zen", "gvl", "pds", "wwk", "pvc", "roe", "dpa", "arc", "m11", "fvr", "ddf", "som", "pd2", "me4", "mbs", "ddg", "nph", "cmd", "m12", "fvl", "ddh", "isd", "pd3", "dka", "ddi", "avr", "pc2", "m13", "v12", "ddj", "rtr", "cma", "gtc", "ddk", "wmcq", "dgm", "mma", "m14", "v13", "ddl", "ths", "c13", "bng", "ddm", "jou", "md1", "cns", "vma", "m15", "clash", "v14", "ddn", "ktk", "c14", "ddaevg", "ddadvd", "ddagvl", "ddajvc", "ugin", "frf", "ddo", "dtk", "tpr", "mm2", "ori", "v15", "ddp", "bfz", "exp", "c15", "ogw", "ddq", "w16", "soi", "ema"],
       "Amulet of Quoz" => "banned",
       "Ancestral Recall" => "restricted",
@@ -530,14 +527,14 @@ class FormatTest < Minitest::Test
     assert_legality "legacy", Date.parse("2006.1.1"), "Zodiac Dog", "legal"
   end
 
-  def test_commander
+  it "commander" do
     assert_legality "legacy", Date.parse("2005.1.1"), "Zodiac Dog", nil
     assert_legality "legacy", Date.parse("2006.1.1"), "Zodiac Dog", "legal"
   end
 
   ## Other formats
 
-  def test_pauper
+  it "pauper" do
     assert_legality "pauper", "rav", "Blazing Torch", nil
     assert_legality "pauper", "zen", "Blazing Torch", nil
     assert_legality "pauper", "isd", "Blazing Torch", "legal"
