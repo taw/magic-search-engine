@@ -24,14 +24,31 @@ end
 
 RSpec::Matchers.define :return_no_cards do |*cards|
   match do |query_string|
-    results = search(query_string)
-    results == []
+    search(query_string) == []
   end
 
   failure_message do
     results = search(query_string)
     "Expected `#{query_string}' to have no results, but got following cards:\n" +
       results.map{|c| "* #{c}\n"}.join
+  end
+end
+
+RSpec::Matchers.define :equal_search do |query_string2|
+  match do |query_string1|
+    results1 = search(query_string1)
+    results2 = search(query_string2)
+    results1 == results2 and results1 != []
+  end
+
+  failure_message do
+    results1 = search(query_string1)
+    results2 = search(query_string2)
+    if results1 != results2
+      "Expected `#{query_string1}' and `#{query_string2}' to return same results"
+    else results1 == []
+      "Test is unreliable because results are empty: #{query_string1}"
+    end
   end
 end
 
