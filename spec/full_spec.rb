@@ -1,16 +1,12 @@
-require_relative "test_helper"
+describe "Full Database Test" do
+  include_context "db"
 
-class CardDatabaseFullTest < Minitest::Test
-  def setup
-    @db = load_database
+  it "stats" do
+    db.number_of_cards.should eq(16701)
+    db.number_of_printings.should eq(31664)
   end
 
-  def test_stats
-    assert_equal 16701, @db.number_of_cards
-    assert_equal 31664, @db.number_of_printings
-  end
-
-  def test_formats
+  it "formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal "f:standard", "e:bfz or e:ogw or e:soi or e:emn or e:kld"
@@ -20,7 +16,7 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_differ 'f:"mirrodin block" t:land', 'b:"mirrodin" t:land'
   end
 
-  def test_block_codes
+  it "block_codes" do
     assert_search_equal "b:rtr", 'b:"Return to Ravnica"'
     assert_search_equal "b:in", 'b:Invasion'
     assert_search_equal "b:som", 'b:"Scars of Mirrodin"'
@@ -28,12 +24,12 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_equal "b:mi", 'b:Mirrodin'
   end
 
-  def test_block_special_characters
+  it "block_special_characters" do
     assert_search_equal %Q[b:us], "b:urza"
     assert_search_equal %Q[b:"Urza's"], "b:urza"
   end
 
-  def test_block_contents
+  it "block_contents" do
     assert_search_equal "e:rtr OR e:gtc OR e:dgm", "b:rtr"
     assert_search_equal "e:in or e:ps or e:ap", 'b:Invasion'
     assert_search_equal "e:isd or e:dka or e:avr", "b:Innistrad"
@@ -44,7 +40,7 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_equal 'f:"lorwyn-shadowmoor block"', "b:lorwyn"
   end
 
-  def test_edition_special_characters
+  it "edition_special_characters" do
     assert_search_equal "e:us", %Q[e:"Urza's Saga"]
     assert_search_equal "e:us", %Q[e:"Urza’s Saga"]
     assert_search_equal "e:us or e:ul or e:ud", %Q[e:"urza's"]
@@ -52,13 +48,13 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_equal "e:us or e:ul or e:ud", %Q[e:"urza"]
   end
 
-  def test_part
+  it "part" do
     assert_search_results "part:cmc=1 part:cmc=2", "Death", "Life", "Tear", "Wear", "What", "When", "Where", "Who", "Why"
     # Semantics of that changed
     assert_search_results "part:cmc=0 part:cmc=3 part:c:b"
   end
 
-  def test_color_identity
+  it "color_identity" do
     assert_search_results "ci:wu t:basic",
       "Island",
       "Plains",
@@ -67,13 +63,14 @@ class CardDatabaseFullTest < Minitest::Test
       "Wastes"
   end
 
-  def test_year
-    assert_search_results_printings "year=2013 t:jace",
+  it "year" do
+    Query.new("year=2013 t:jace").search(db).card_names_and_set_codes.should eq([
       ["Jace, Memory Adept", "m14", "mbp"],
-      ["Jace, the Mind Sculptor", "v13"]
+      ["Jace, the Mind Sculptor", "v13"],
+    ])
   end
 
-  def test_print_date
+  it "print_date" do
     assert_search_results %Q[print="29 september 2012"],
       "Archon of the Triumvirate",
       "Carnival Hellsteed",
@@ -82,7 +79,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Hypersonic Dragon"
   end
 
-  def test_print
+  it "print" do
     assert_search_equal "t:planeswalker print=m12", "t:planeswalker e:m12"
     assert_search_results "t:jace print=2013", "Jace, Memory Adept", "Jace, the Mind Sculptor"
     assert_search_results "t:jace print=2012", "Jace, Architect of Thought", "Jace, Memory Adept"
@@ -213,11 +210,11 @@ class CardDatabaseFullTest < Minitest::Test
                           "Wooded Foothills"
   end
 
-  def test_firstprint
+  it "firstprint" do
     assert_search_results "t:planeswalker firstprint=m12", "Chandra, the Firebrand", "Garruk, Primal Hunter", "Jace, Memory Adept"
   end
 
-  def test_lastprint
+  it "lastprint" do
     assert_search_results "t:planeswalker lastprint<=roe", "Chandra Ablaze", "Sarkhan the Mad"
     assert_search_results "t:planeswalker lastprint<=2011",
       "Ajani Goldmane", "Ajani Vengeant", "Chandra Ablaze", "Elspeth Tirel",
@@ -225,12 +222,12 @@ class CardDatabaseFullTest < Minitest::Test
       "Nissa Revane", "Sarkhan the Mad", "Sorin Markov", "Tezzeret, Agent of Bolas"
   end
 
-  def test_time_travel_basic
+  it "time_travel_basic" do
     assert_search_equal "time:lw t:planeswalker", "e:lw t:planeswalker"
     assert_search_results "time:wwk t:jace", "Jace Beleren", "Jace, the Mind Sculptor"
   end
 
-  def test_time_travel_printed
+  it "time_travel_printed" do
     assert_search_equal "time:lw t:planeswalker", "e:lw t:planeswalker"
     assert_search_results "t:jace lastprint=wwk"
     assert_search_results "t:jace print=vma", "Jace, the Mind Sculptor"
@@ -238,21 +235,21 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_results "time:nph t:jace print=vma"
   end
 
-  def test_time_travel_standard_legal_reprints_activate_in_block
+  it "time_travel_standard_legal_reprints_activate_in_block" do
     assert_search_results 'f:"return to ravnica block" naturalize', "Naturalize"
     assert_search_results 'time:rtr f:"return to ravnica block" naturalize'
     assert_search_results 'time:gtc f:"return to ravnica block" naturalize', "Naturalize"
     assert_search_results 'time:dgm f:"return to ravnica block" naturalize', "Naturalize"
   end
 
-  def test_time_travel_standard_legal_reprints_activate_in_modern
+  it "time_travel_standard_legal_reprints_activate_in_modern" do
     assert_search_results "f:legacy rancor", "Rancor"
     assert_search_results "f:modern rancor", "Rancor"
     assert_search_results "time:m11 f:legacy rancor", "Rancor"
     assert_search_results "time:m11 f:modern rancor"
   end
 
-  def test_time_travel_eternal_formats_accept_all_sets
+  it "time_travel_eternal_formats_accept_all_sets" do
     assert_search_equal "f:legacy t:jace", "t:jace"
     assert_search_equal "f:legacy time:nph t:jace", "time:nph t:jace"
     assert_search_equal "f:vintage t:jace", "t:jace"
@@ -261,7 +258,7 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_equal "f:commander time:nph t:jace", "time:nph t:jace"
   end
 
-  def test_sort_name
+  it "sort_name" do
     assert_search_results_ordered "t:chandra sort:name",
       "Chandra Ablaze",
       "Chandra Nalaar",
@@ -273,7 +270,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra, the Firebrand"
   end
 
-  def test_sort_new
+  it "sort_new" do
     assert_search_results_ordered "t:chandra sort:new",
       "Chandra, Pyrogenius",
       "Chandra, Torch of Defiance",
@@ -285,7 +282,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra Ablaze"
   end
 
-  def test_sort_newall
+  it "sort_newall" do
     # Jace v Chandra printing of Chandra Nalaar changes order
     assert_search_results_ordered "t:chandra sort:newall",
     "Chandra, Pyrogenius",
@@ -298,7 +295,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra Ablaze"
   end
 
-  def test_sort_old
+  it "sort_old" do
     assert_search_results_ordered "t:chandra sort:old",
       "Chandra Nalaar",
       "Chandra Ablaze",
@@ -310,7 +307,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra, Torch of Defiance"
   end
 
-  def test_sort_oldall
+  it "sort_oldall" do
     assert_search_results_ordered "t:chandra sort:oldall",
       "Chandra Nalaar",
       "Chandra Ablaze",
@@ -322,7 +319,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra, Torch of Defiance"
   end
 
-  def test_sort_cmc
+  it "sort_cmc" do
     assert_search_results_ordered "t:chandra sort:cmc",
       "Chandra Ablaze",             # 6
       "Chandra, Flamecaller",       # 6
@@ -334,7 +331,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Chandra, Roaring Flame"      # 3
   end
 
-  def test_alt_rebecca_guay
+  it "alt_rebecca_guay" do
     assert_search_results %Q[a:"rebecca guay" alt:(-a:"rebecca guay")],
       "Ancestral Memories",
       "Angelic Page",
@@ -367,7 +364,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Wood Elves"
   end
 
-  def test_alt_test_of_time
+  it "alt_test_of_time" do
     assert_search_results "year=1993 alt:year=2015",
       "Basalt Monolith",
       "Counterspell",
@@ -393,7 +390,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Tranquility"
   end
 
-  def test_alt_rarity
+  it "alt_rarity" do
     assert_search_include "r:common alt:r:uncommon", "Doom Blade"
     assert_search_results "r:common alt:r:mythic",
       "Cabal Ritual",
@@ -407,7 +404,7 @@ class CardDatabaseFullTest < Minitest::Test
       "Lotus Petal"
   end
 
-  def test_pow_special
+  it "pow_special" do
     assert_search_equal "pow=1+*", "pow=*+1"
     assert_search_include "pow=*", "Krovikan Mist"
     assert_search_results "pow=1+*",
@@ -422,7 +419,7 @@ class CardDatabaseFullTest < Minitest::Test
       "S.N.O.T."
   end
 
-  def test_tou_special
+  it "tou_special" do
     # Mostly same as power except 7-*
     assert_search_results "tou=7-*", "Shapeshifter"
     assert_search_results "tou>8-*"
@@ -432,7 +429,7 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_results "tou<=2-*"
   end
 
-  def test_error_handling
+  it "error_handling" do
     # Empty search returns all non-extras
     assert_count_results "", 16443
     assert_count_results "sort:new", 16443
@@ -443,13 +440,13 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
   end
 
-  def test_is_promo
+  it "is_promo" do
     # mtgjson has different idea what's promo,
     # mci returns 1054 cards
     assert_count_results "is:promo", 1047
   end
 
-  def test_is_funny
+  it "is_funny" do
     assert_search_results "abyss is:funny", "Zzzyxas's Abyss"
     assert_search_results "abyss not:funny",
       "Abyssal Gatekeeper",
@@ -466,7 +463,7 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_results "tiger is:funny", "Paper Tiger", "Stocking Tiger"
   end
 
-  def test_mana_variables
+  it "mana_variables" do
     assert_search_equal "b:ravnica guildmage mana=hh", "b:ravnica guildmage c:m cmc=2"
     assert_search_equal "e:rtr mana=h", "e:rtr c:m cmc=1"
     assert_search_results "mana>mmmmm",
@@ -507,36 +504,40 @@ class CardDatabaseFullTest < Minitest::Test
     assert_search_equal "mana={m}{w/b}", "mana={w}{w/b} OR mana={u}{w/b} OR mana={b}{w/b} OR mana={r}{w/b} OR mana={g}{w/b}"
   end
 
-  def test_stemming
+  it "stemming" do
     assert_search_equal "vision", "visions"
   end
 
-  def test_comma_separated_set_list
+  it "comma_separated_set_list" do
     assert_search_equal "e:cmd or e:cma or e:c13 or e:c14 or e:c15", "e:cmd,cma,c13,c14,c15"
     assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cma,c13,c14,c15 -alt:-e:cmd,cma,c13,c14,c15"
   end
 
-  def test_command_separated_block_list
+  it "command_separated_block_list" do
     assert_search_equal "b:isd or b:soi", "b:isd,soi"
   end
 
-  def test_legal_everywhere
-    assert_equal true, legality_information("Island").legal_everywhere?
-    assert_equal false, legality_information("Giant Spider").legal_everywhere?
-    assert_equal false, legality_information("Birthing Pod").legal_everywhere?
-    assert_equal false, legality_information("Naya").legal_everywhere?
-    assert_equal false, legality_information("Backup Plan").legal_everywhere?
+  it "legal_everywhere" do
+    legality_information("Island").should be_legal_everywhere
+    legality_information("Giant Spider").should_not be_legal_everywhere
+    legality_information("Birthing Pod").should_not be_legal_everywhere
+    legality_information("Naya").should_not be_legal_everywhere
+    legality_information("Backup Plan").should_not be_legal_everywhere
   end
 
-  def test_legal_everywhere
-    assert_equal false, legality_information("Island").legal_nowhere?
-    assert_equal false, legality_information("Giant Spider").legal_nowhere?
-    assert_equal false, legality_information("Birthing Pod").legal_nowhere?
-    assert_equal true, legality_information("Naya").legal_nowhere?
-    assert_equal true, legality_information("Backup Plan").legal_nowhere?
+  it "legal_nowhere" do
+    legality_information("Island").should_not be_legal_nowhere
+    legality_information("Giant Spider").should_not be_legal_nowhere
+    legality_information("Birthing Pod").should_not be_legal_nowhere
+    legality_information("Naya").should be_legal_nowhere
+    legality_information("Backup Plan").should be_legal_nowhere
   end
 
-  def test_is_commander
+  it "is_commander" do
     assert_search_equal "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14)"
+  end
+
+  def legality_information(name, date=nil)
+    db.cards[name.downcase].legality_information(date)
   end
 end
