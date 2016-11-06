@@ -124,4 +124,7 @@ shared_context "db" do |*sets|
   def assert_search_differ(query1, query2)
     query1.should_not equal_search(query2)
   end
+  def assert_count_results(query, count)
+    query.should have_result_count(count)
+  end
 end
