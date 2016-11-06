@@ -1,11 +1,7 @@
-require_relative "test_helper"
+describe "Set types" do
+  include_context "db"
 
-class SetTypeTest < Minitest::Test
-  def setup
-    @db = load_database
-  end
-
-  def test_basic_types
+  it "basic types" do
     assert_search_results "angel of wrath st:ftv", "Akroma, Angel of Wrath"
     assert_search_results "angel of wrath st:dd", "Akroma, Angel of Wrath"
     assert_search_results "angel of wrath st:expansion", "Akroma, Angel of Wrath"
@@ -15,7 +11,7 @@ class SetTypeTest < Minitest::Test
     assert_search_results "armageddon st:starter", "Armageddon"
   end
 
-  def test_abbreviations
+  it "abbreviations" do
     assert_search_equal "st:cmd", "st:commander"
     assert_search_equal "st:ex", "st:expansion"
     assert_search_equal "st:ftv", 'st:"from the vault"'
@@ -29,13 +25,13 @@ class SetTypeTest < Minitest::Test
     assert_search_equal "st:pc", "st:planechase"
   end
 
-  def test_cma_exception
-    assert_search_results "desertion st:fixed", "Desertion"
-    assert_search_results "desertion st:cmd", "Desertion"
-    assert_search_exclude "desertion st:deck", "Desertion"
+  it "cma exception" do
+    "desertion st:fixed".should return_cards "Desertion"
+    "desertion st:cmd"  .should return_cards "Desertion"
+    "desertion st:deck" .should return_no_cards
   end
 
-  def test_starter_sets
+  it "starter sets" do
     assert_search_results "alert shu st:booster", "Alert Shu Infantry"
     assert_search_results "knight errant st:fixed", "Knight Errant"
   end

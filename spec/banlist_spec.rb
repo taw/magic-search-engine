@@ -1,15 +1,11 @@
-require_relative "test_helper"
-
-class BanlistTest < Minitest::Test
-  def setup
-    @db = load_database
-    @ban_list = BanList.new
-  end
+describe "Banlist" do
+  include_context "db"
+  let(:ban_list) { BanList.new }
 
   # Based on:
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
-  def test_banlist_2016
+  it "banlist_2016" do
     assert_banlist_changes "January 2016",
       "modern banned", "Splinter Twin",
       "modern banned", "Summer Bloom",
@@ -21,7 +17,7 @@ class BanlistTest < Minitest::Test
       "vintage restricted", "Lodestone Golem"
   end
 
-  def test_banlist_2015
+  it "banlist_2015" do
     assert_banlist_changes "September 2015",
       "legacy banned",  "Dig Through Time",
       "legacy unbanned", "Black Vise",
@@ -39,14 +35,14 @@ class BanlistTest < Minitest::Test
       "vintage unrestricted", "Gifts Ungiven"
   end
 
-  def test_banlist_2014
+  it "banlist_2014" do
     assert_banlist_changes "February 2014",
       "modern banned", "Deathrite Shaman",
       "modern unbanned", "Wild Nacatl",
       "modern unbanned", "Bitterblossom"
   end
 
-  def test_banlist_2013
+  it "banlist_2013" do
     assert_banlist_changes "September 2013",
       "pauper banned", "Cloudpost",
       "pauper banned", "Temporal Fissure"
@@ -61,7 +57,7 @@ class BanlistTest < Minitest::Test
       "pauper banned", "Invigorate"
   end
 
-  def test_banlist_2012
+  it "banlist_2012" do
     assert_banlist_changes "September 2012",
       "modern unbanned", "Valakut, the Molten Pinnacle",
       "vintage unrestricted", "Burning Wish"
@@ -72,7 +68,7 @@ class BanlistTest < Minitest::Test
       "innistrad block banned", "Intangible Virtue"
   end
 
-  def test_banlist_2011
+  it "banlist_2011" do
     # Weirdo exception for "War of Attrition" event deck ignored
     assert_banlist_changes "June 2011",
       "standard banned", "Jace, the Mind Sculptor",
@@ -96,7 +92,7 @@ class BanlistTest < Minitest::Test
       "modern banned", "Wild Nacatl"
   end
 
-  def test_initial_modern_banlist
+  it "initial_modern_banlist" do
     # August 2011
     assert_full_banlist "modern", "August 2011", [
       "Ancestral Vision",
@@ -123,7 +119,7 @@ class BanlistTest < Minitest::Test
     ]
   end
 
-  def test_banlist_2010
+  it "banlist_2010" do
     assert_banlist_changes "June 2010",
       "extended banned", "Sword of the Meek",
       "extended banned", "Hypergenesis",
@@ -138,7 +134,7 @@ class BanlistTest < Minitest::Test
       "legacy unbanned", "Time Spiral"
   end
 
-  def test_banlist_2009
+  it "banlist_2009" do
     assert_banlist_changes "June 2009",
       "vintage restricted", "Thirst for Knowledge",
       "vintage unrestricted", "Crop Rotation",
@@ -151,7 +147,7 @@ class BanlistTest < Minitest::Test
       "legacy unbanned", "Metalworker"
   end
 
-  def test_banlist_2008
+  it "banlist_2008" do
     assert_banlist_changes "June 2008",
       "vintage restricted", "Brainstorm",
       "vintage restricted", "Flash",
@@ -169,7 +165,7 @@ class BanlistTest < Minitest::Test
       "vintage unrestricted", "Time Spiral"
   end
 
-  def test_banlist_2007
+  it "banlist_2007" do
     assert_banlist_changes "June 2007",
       "vintage restricted", "Gifts Ungiven",
       "vintage unrestricted", "Voltaic Key",
@@ -185,7 +181,7 @@ class BanlistTest < Minitest::Test
       "legacy banned", "Shahrazad"
   end
 
-  def test_banlist_2006
+  it "banlist_2006" do
     assert_banlist_changes "March 2006",
       "mirrodin block banned", "Aether Vial",
       "mirrodin block banned", "Ancient Den",
@@ -198,7 +194,7 @@ class BanlistTest < Minitest::Test
       "mirrodin block banned", "Vault of Whispers"
   end
 
-  def test_banlist_2005
+  it "banlist_2005" do
     assert_banlist_changes "March 2005",
       "standard banned", "Arcbound Ravager",
       "standard banned", "Disciple of the Vault",
@@ -220,7 +216,7 @@ class BanlistTest < Minitest::Test
       "two-headed giant banned", "Erayo, Soratami Ascendant"
   end
 
-  def test_banlist_2004
+  it "banlist_2004" do
     assert_banlist_changes "June 2004",
       "standard banned", "Skullclamp",
       "mirrodin block banned", "Skullclamp"
@@ -265,7 +261,7 @@ class BanlistTest < Minitest::Test
       "vintage unrestricted", "Stroke of Genius"
   end
 
-  def test_banlist_2003
+  it "banlist_2003" do
     assert_banlist_changes "March 2003",
       "vintage+ unrestricted", "Berserk",
       "vintage+ unrestricted", "Hurkyl's Recall",
@@ -294,11 +290,11 @@ class BanlistTest < Minitest::Test
       "vintage+ restricted", "Lion's Eye Diamond"
   end
 
-  def test_banlist_2002
+  it "banlist_2002" do
     # No changes whole year
   end
 
-  def test_banlist_2001
+  it "banlist_2001" do
     assert_banlist_changes "March 2001",
       "extended banned", "Necropotence",
       "extended banned", "Replenish",
@@ -309,7 +305,7 @@ class BanlistTest < Minitest::Test
       "vintage+ restricted", "Fact or Fiction"
   end
 
-  def test_banlist_2000
+  it "banlist_2000" do
     assert_banlist_changes "March 2000",
       "extended banned", "Dark Ritual",
       "extended banned", "Mana Vault"
@@ -326,7 +322,7 @@ class BanlistTest < Minitest::Test
   end
 
 
-  def test_banlist_1999
+  it "banlist_1999" do
     assert_banlist_changes "mar 1999",
       "standard banned", "Dream Halls",
       "standard banned", "Earthcraft",
@@ -393,7 +389,7 @@ class BanlistTest < Minitest::Test
       "vintage+ restricted", "Yawgmoth's Will"
   end
 
-  def test_banlist_1998
+  it "banlist_1998" do
     assert_banlist_changes "December 1998",
       "standard banned", "Tolarian Academy",
       "standard banned", "Windfall",
@@ -407,7 +403,7 @@ class BanlistTest < Minitest::Test
       "vintage+ restricted", "Windfall"
   end
 
-  def test_banlist_1997
+  it "banlist_1997" do
     assert_banlist_changes "April 1997",
       "ice age block banned", "Thawing Glaciers",
       "ice age block banned", "Zuran Orb"
@@ -427,7 +423,7 @@ class BanlistTest < Minitest::Test
       # "vintage+ unrestricted", "Zuran Orb"
   end
 
-  def test_banlist_1996
+  it "banlist_1996" do
     assert_banlist_changes "January 1996",
       "standard banned", "Mind Twist",
       "standard restricted", "Black Vise",
@@ -455,13 +451,13 @@ class BanlistTest < Minitest::Test
     # I added that to BanList, but reliability of data so old is so low that I'm not even going to test that
   end
 
-  def test_banlist_1995
+  it "banlist_1995" do
     assert_banlist_changes "April 1995",
       "vintage+ restricted", "Balance",
       "standard restricted", "Balance"
   end
 
-  def test_banlist_1994
+  it "banlist_1994" do
     assert_full_banlist "vintage", "January 1, 1994", [
       "Contract from Below",
       "Darkpact",
@@ -515,13 +511,13 @@ class BanlistTest < Minitest::Test
       "vintage+ unrestricted", "Rukh Egg"
   end
 
-  def test_banlist_1993
+  it "banlist_1993" do
     # Everything was legal back then
   end
 
   ##################################################
 
-  def test_legacy_vintage_split
+  it "legacy_vintage_split" do
     assert_full_banlist "legacy", "September 20, 2004", [
       "Amulet of Quoz",
       "Ancestral Recall",
@@ -588,26 +584,26 @@ class BanlistTest < Minitest::Test
     ]
   end
 
-  def test_legacy_was_just_vintage_plus_before_split
-    cutoff_date = @ban_list.dates["sep 2004"]
-    change_dates = @ban_list.dates.values.uniq.sort
+  it "legacy_was_just_vintage_plus_before_split" do
+    cutoff_date = ban_list.dates["sep 2004"]
+    change_dates = ban_list.dates.values.uniq.sort
     change_dates.each do |date|
-      legacy_banlist  = @ban_list.full_ban_list("legacy", date)
-      vintage_banlist = @ban_list.full_ban_list("vintage", date)
+      legacy_banlist  = ban_list.full_ban_list("legacy", date)
+      vintage_banlist = ban_list.full_ban_list("vintage", date)
       vintage_plus_banlist = Hash[vintage_banlist.map{|k,v| [k, v == "restricted" ? "banned" : v]}]
       if date < cutoff_date
-        assert_hash_equal legacy_banlist, vintage_plus_banlist, "Legacy is Vintage+ at #{date}"
+        legacy_banlist.should eq(vintage_plus_banlist)
       else
-        refute_equal legacy_banlist, vintage_plus_banlist, "Legacy is not Vintage+ at #{date}"
+        legacy_banlist.should_not eq(vintage_plus_banlist)
       end
     end
   end
 
-  def test_legends_restricted
+  it "legends_restricted" do
     # assert false, "summon legend restricted until 1995"
   end
 
-  def test_format_legality_changes
+  it "format_legality_changes" do
     # Starter Level sets Starter 1999, Starter 2000, Portal, Portal Second Age, and Portal Three Kingdoms become legal in Legacy and Vintage in October.
     # assert false, "This should go to another test"
     # Also all Exended variants etc. None of that belongs here
@@ -617,7 +613,7 @@ class BanlistTest < Minitest::Test
   # Formats in mtgjson are verified by indexer
   # Formats not in mtgjson should all be listed here
 
-  def test_pauper_banlist_now
+  it "pauper_banlist_now" do
     assert_full_banlist "pauper", "1 October 2015", [
       "Cranial Plating",
       "Frantic Search",
@@ -630,7 +626,7 @@ class BanlistTest < Minitest::Test
     ]
   end
 
-  def test_two_headed_giant_banlist_now
+  it "two_headed_giant_banlist_now" do
     assert_full_banlist "two-headed giant", "1 October 2015", [
       "Erayo, Soratami Ascendant",
     ]
