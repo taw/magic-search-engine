@@ -59,21 +59,31 @@ class CardDatabase
   # For sets and blocks:
   # "in" is code for "Invasion", don't substring match "Innistrad" etc.
   # "Mirrodin" is name for "Mirrodin", don't substring match "Scars of Mirrodin"
+  #
+  # Priority:
+  # * exact MCI code
+  # * exact gatherer code
+  # * name exact match
+  # * name substring match
   def resolve_editions(edition)
     edition = edition.downcase
-    matching_sets = Set[]
+    matching_mci_code = Set[]
+    matching_gatherer_code = Set[]
+    matching_name = Set[]
+    matching_name_part = Set[]
+
     @sets.each do |set_code, set|
-      if @sets[edition]
-        if set_code == edition or normalize_name(set.name) == edition
-          matching_sets << set
-        end
-      else
-        if normalize_name(set.name).include?(edition)
-          matching_sets << set
-        end
-      end
+      matching_mci_code      << set if set_code == edition
+      matching_gatherer_code << set if set.gatherer_code.downcase == edition
+      matching_name          << set if normalize_name(set.name).downcase == edition
+      matching_name_part     << set if normalize_name(set.name).downcase.include?(edition)
     end
-    matching_sets
+    [
+      matching_mci_code,
+      matching_gatherer_code,
+      matching_name,
+      matching_name_part
+    ].find{|s| s.size > 0} || Set[]
   end
 
   class <<self
