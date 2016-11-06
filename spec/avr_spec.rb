@@ -1,38 +1,34 @@
-require_relative "test_helper"
+describe "Avacyn Restored" do
+  include_context "db", "avr"
 
-class CardDatabaseAVRTest < Minitest::Test
-  def setup
-    @db = load_database("avr")
-  end
-
-  def test_mana_x
+  it "mana_x" do
     assert_search_results "mana>=xw", "Divine Deflection", "Entreat the Angels"
     assert_search_results "mana>xw", "Entreat the Angels"
     assert_search_results "mana>xx", "Entreat the Angels", "Bonfire of the Damned"
     assert_search_results "mana>={R}{X}", "Bonfire of the Damned"
   end
 
-  def test_cn
+  it "cn" do
     assert_search_results "cn:拱翼巨龙", "Archwing Dragon"
     assert_search_results "cs:拱翼巨龙", "Archwing Dragon"
     assert_search_results "tw:拱翼巨龙"
     assert_search_results "ct:拱翼巨龙"
   end
 
-  def test_chinese_traditional
+  it "chinese_traditional" do
     assert_search_results "ct:拱翼巨龍", "Archwing Dragon"
     assert_search_results "tw:拱翼巨龍", "Archwing Dragon"
     assert_search_results "cs:拱翼巨龍"
     assert_search_results "cn:拱翼巨龍"
   end
 
-  def test_fr
+  it "fr" do
     assert_search_results "fr:Fragments", "Bone Splinters"
     assert_search_results %Q[fr:"Lumière d'albâtre"], "Bruna, Light of Alabaster"
     assert_search_results %Q[fr:"lumiere d'albatre"], "Bruna, Light of Alabaster"
   end
 
-  def test_de
+  it "de" do
     assert_search_results "de:engel",
       "Angel of Glory's Rise",
       "Angel of Jubilation",
@@ -46,23 +42,23 @@ class CardDatabaseAVRTest < Minitest::Test
       "Restoration Angel"
   end
 
-  def test_it
+  it "it" do
     assert_search_results "it:clemenza", "Angel's Mercy"
   end
 
-  def test_jp
+  it "jp" do
     assert_search_results "jp:ブルーナ", "Bruna, Light of Alabaster"
   end
 
-  def test_kr
+  it "kr" do
     assert_search_results "kr:아바신", "Avacyn, Angel of Hope", "Scroll of Avacyn"
   end
 
-  def test_pt
+  it "pt" do
     assert_search_results "pt:estacas", "Bone Splinters"
   end
 
-  def test_ru
+  it "ru" do
     assert_search_results "ru:Ангел",
       "Angel of Glory's Rise",
       "Angel of Jubilation",
@@ -79,7 +75,7 @@ class CardDatabaseAVRTest < Minitest::Test
     assert_search_equal "ru:АНГЕЛ", "ru:Ангел"
   end
 
-  def test_sp
+  it "sp" do
     assert_search_results "sp:Astillas", "Bone Splinters"
   end
 end

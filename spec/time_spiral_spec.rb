@@ -1,11 +1,7 @@
-require_relative "test_helper"
+describe "Time Spiral block" do
+  include_context "db", "ts", "tsts", "pc", "fut"
 
-class CardDatabaseTimeSpiralTest < Minitest::Test
-  def setup
-    @db = load_database("ts", "tsts", "pc", "fut")
-  end
-
-  def test_is_future
+  it "is:future" do
     assert_search_include "is:future", "Dryad Arbor"
     assert_search_exclude "is:new", "Dryad Arbor"
     assert_search_exclude "is:old", "Dryad Arbor"
@@ -18,25 +14,25 @@ class CardDatabaseTimeSpiralTest < Minitest::Test
       "Dryad Arbor" # not sure if it ought to be so
   end
 
-  def test_is_new
+  it "is:new" do
     assert_search_exclude "is:future", "Amrou Scout"
     assert_search_include "is:new", "Amrou Scout"
     assert_search_exclude "is:old", "Amrou Scout"
   end
 
-  def test_is_old
+  it "is:old" do
     assert_search_exclude "is:future", "Squire"
     assert_search_exclude "is:new", "Squire"
     assert_search_include "is:old", "Squire"
   end
 
-  def test_is_borders
-    assert_search_include "is:black-bordered", "Dryad Arbor"
-    assert_search_exclude "is:white-bordered", "Dryad Arbor"
-    assert_search_exclude "is:silver-bordered", "Dryad Arbor"
+  it "is:*-bordered" do
+    "is:black-bordered" .should include_cards "Dryad Arbor"
+    "is:white-bordered" .should return_no_cards "Dryad Arbor"
+    "is:silver-bordered".should return_no_cards "Dryad Arbor"
   end
 
-  def test_dryad_arbor
+  it "Dryad Arbor" do
     assert_search_include "c:g", "Dryad Arbor"
     assert_search_exclude "c:l", "Dryad Arbor"
     assert_search_exclude "c:c", "Dryad Arbor"
@@ -45,13 +41,13 @@ class CardDatabaseTimeSpiralTest < Minitest::Test
     assert_search_results "t:land t:creature", "Dryad Arbor"
   end
 
-  def test_ghostfire
+  it "Ghostfire" do
     assert_search_exclude "c:r", "Ghostfire"
     assert_search_include "ci:r", "Ghostfire"
     assert_search_include "c:c", "Ghostfire"
   end
 
-  def test_non_ascii
+  it "Non-ASCII" do
     assert_search_results "Dralnu", "Dralnu, Lich Lord"
     assert_search_results "Dralnu Lich Lord", "Dralnu, Lich Lord"
     assert_search_results "Dralnu, Lich Lord", "Dralnu, Lich Lord"
@@ -73,17 +69,17 @@ class CardDatabaseTimeSpiralTest < Minitest::Test
     assert_search_results "sarpadian empires", "Sarpadian Empires, Vol. VII"
   end
 
-  def test_is_opposes_not
+  it "is: opposes not:" do
     assert_search_equal "not:future", "-is:future"
     assert_search_equal "not:new", "-is:new"
     assert_search_equal "not:old", "-is:old"
   end
 
-  def test_is_timeshifted
+  it "is:timeshifted" do
     assert_count_results "is:timeshifted", 45
   end
 
-  def test_manaless_suspend_cards
+  it "manaless suspend cards" do
     assert_search_results "cmc=0 o:suspend", "Ancestral Vision", "Hypergenesis", "Living End", "Lotus Bloom", "Restore Balance", "Wheel of Fate"
     assert_search_results "cmc=0 o:suspend ci:c", "Lotus Bloom"
     assert_search_results "cmc=0 o:suspend ci:u", "Lotus Bloom", "Ancestral Vision"
@@ -94,7 +90,7 @@ class CardDatabaseTimeSpiralTest < Minitest::Test
 
   # This goes against magiccards.info logic which treats * as 0
   # I'm not sure yet if it makes any sense or not
-  def test_lhurgoyfs
+  it "lhurgoyfs" do
     assert_search_results "t:lhurgoyf", "Tarmogoyf", "Detritivore"
     assert_search_results "t:lhurgoyf pow=0"
     assert_search_results "t:lhurgoyf tou=0"
@@ -108,7 +104,7 @@ class CardDatabaseTimeSpiralTest < Minitest::Test
     assert_search_results "t:lhurgoyf pow>tou"
   end
 
-  def test_negative
+  it "negative" do
     assert_search_results "pow=-1", "Char-Rumbler"
     assert_search_results "pow<0", "Char-Rumbler"
     assert_search_include "pow>=-1", "Char-Rumbler"
