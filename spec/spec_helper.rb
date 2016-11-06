@@ -22,7 +22,25 @@ RSpec::Matchers.define :include_cards do |*cards|
   end
 end
 
-RSpec::Matchers.define :return_no_cards do |*cards|
+RSpec::Matchers.define :exclude_cards do |*cards|
+  match do |query_string|
+    results = search(query_string)
+    results != [] and cards.none?{|card| results.include?(card)}
+  end
+
+  failure_message do
+    results = search(query_string)
+    fails = cards.select{|card| results.include?(card)}
+    if fails != []
+      "Expected `#{query_string}' to exclude following cards:\n" +
+        fails.map{|c| "* #{c}\n"}.join
+    else
+      "Test is unreliable because results are empty: #{query_string1}"
+    end
+  end
+end
+
+RSpec::Matchers.define :return_no_cards do
   match do |query_string|
     search(query_string) == []
   end
@@ -30,6 +48,21 @@ RSpec::Matchers.define :return_no_cards do |*cards|
   failure_message do
     results = search(query_string)
     "Expected `#{query_string}' to have no results, but got following cards:\n" +
+      results.map{|c| "* #{c}\n"}.join
+  end
+end
+
+RSpec::Matchers.define :return_cards do |*cards|
+  match do |query_string|
+    search(query_string).sort == cards.sort
+  end
+
+  # TODO: Better error message here
+  failure_message do
+    results = search(query_string)
+    "Expected `#{query_string}' to return:\n" +
+      cards.map{|c| "* #{c}\n"}.join +
+    "Instead got:" +
       results.map{|c| "* #{c}\n"}.join
   end
 end
@@ -46,7 +79,7 @@ RSpec::Matchers.define :equal_search do |query_string2|
     results2 = search(query_string2)
     if results1 != results2
       "Expected `#{query_string1}' and `#{query_string2}' to return same results"
-    else results1 == []
+    else
       "Test is unreliable because results are empty: #{query_string1}"
     end
   end
