@@ -107,4 +107,21 @@ shared_context "db" do |*sets|
   end
 
   let!(:db) { load_database(*sets) }
+
+  # Temporary hacks to make migration easier
+  def assert_search_results(query, *cards)
+    query.should return_cards(*cards)
+  end
+  def assert_search_include(query, *cards)
+    query.should include_cards(*cards)
+  end
+  def assert_search_exclude(query, *cards)
+    query.should exclude_cards(*cards)
+  end
+  def assert_search_equal(query1, query2)
+    query1.should equal_search(query2)
+  end
+  def assert_search_differ(query1, query2)
+    query1.should_not equal_search(query2)
+  end
 end
