@@ -1,14 +1,9 @@
 # Examples from https://scryfall.com/docs/syntax
 # and how they work on mtg.wtf
+describe "Scryfall" do
+  include_context "db"
 
-require_relative "test_helper"
-
-class ScryfallTest < Minitest::Test
-  def setup
-    @db = load_database
-  end
-
-  def test_crg_and_or
+  it "crg_and_or" do
     # we follow MCI style AND
     assert_search_equal "c:rg", "c:r OR c:g"
     # scryfall follows AND
@@ -18,14 +13,14 @@ class ScryfallTest < Minitest::Test
 
   # scryfall supports "c:red" too
   # should I add that?
-  def test_color_alias
+  it "color_alias" do
     # color: is alias for c:
     assert_search_equal "color:uw -c:r", "(c:u OR c:w) -c:r"
     # it's still OR, not AND
     assert_search_differ "color:uw -c:r", "(c:u AND c:w) -c:r"
   end
 
-  def test_colorless
+  it "colorless" do
     # results differ due to uncards, but functionality is overall the same
     assert_search_include "c:c t:creature",
       "Abundant Maw",
@@ -34,7 +29,7 @@ class ScryfallTest < Minitest::Test
       "Bastion Mastodon"
   end
 
-  def test_multicolor
+  it "multicolor" do
     # results are the same (except for scryfall including spoiler cards)
     assert_search_include "c:m t:instant",
       "Abrupt Decay",
@@ -48,22 +43,22 @@ class ScryfallTest < Minitest::Test
       "Fire", "Ice"
   end
 
-  def test_reserved
+  it "reserved" do
     # identical behaviour, at least until they abolish the damn list
     assert_count_results "is:reserved", 571
   end
 
-  def test_meld
+  it "meld" do
     # identical behaviour, count both parts and melded cards
     assert_count_results "is:meld", 9
   end
 
-  def test_ft_designed
+  it "ft_designed" do
     # identical results
     assert_count_results 'ft:"designed" e:m15', 15
   end
 
-  def test_ft_mishra
+  it "ft_mishra" do
     # results differ due to uncards
     assert_search_include 'ft:"mishra"',
       "Battering Ram",
@@ -71,7 +66,7 @@ class ScryfallTest < Minitest::Test
       "Mishra's Toy Workshop"
   end
 
-  def test_creature_type
+  it "creature_type" do
     # scryfall includes changelings as every creature type
     assert_search_include "t:merfolk t:legendary",
       "Jori En, Ruin Diver"
@@ -91,7 +86,7 @@ class ScryfallTest < Minitest::Test
       "Taurean Mauler"
   end
 
-  def test_tribal_type
+  it "tribal_type" do
     # scryfall includes changelings as every creature type
     assert_search_include "t:goblin -t:creature",
       "Tarfire"
@@ -99,7 +94,7 @@ class ScryfallTest < Minitest::Test
       "Ego Erasure"
   end
 
-  def test_banned_commander
+  it "banned_commander" do
     # scryfall does the silly thing of counting conspiracies
     # as "banned" instead of as non-cards
     assert_search_include "banned:commander",
@@ -108,32 +103,32 @@ class ScryfallTest < Minitest::Test
       "Backup Plan"
   end
 
-  def test_restricted_vintage
+  it "restricted_vintage" do
     # Identical results
     assert_count_results "restricted:vintage", 43
   end
 
-  def test_e_mm2
+  it "e_mm2" do
     # Identical results
     assert_count_results "e:mm2", 249
   end
 
-  def test_b_zen
+  it "b_zen" do
     # Identical results
     assert_count_results "b:zen", 607
   end
 
-  def test_b_wwk
+  it "b_wwk" do
     # scryfall allows any set code to be block code
     # maybe that's a good idea
     assert_count_results "b:wwk", 0
   end
 
-  def test_frame_future
+  it "frame_future" do
     assert_search_equal "frame:future", "is:future"
   end
 
-  def test_m_gg
+  it "m_gg" do
     # m: as extra alias for mana: is fine,
     # but what scryfall does with m: being symbol-level m>= is insanity
 
@@ -158,19 +153,19 @@ class ScryfallTest < Minitest::Test
       "Academy Elite"       # 3u
   end
 
-  def test_m_2ww
+  it "m_2ww" do
     # same problems as m:{g}{g}
     assert_search_equal "m:2WW", "cmc=4 c:w m:2ww"
   end
 
-  def test_m_up
+  it "m_up" do
     # same problems
     assert_search_results "m:{U/P}",
       "Gitaxian Probe",
       "Mental Misstep"
   end
 
-  def test_is_split
+  it "is_split" do
     # Results differ due to uncards
     assert_search_include "is:split",
       "Alive", "Well",
@@ -178,17 +173,17 @@ class ScryfallTest < Minitest::Test
       "Naughty", "Nice"
   end
 
-  def test_exact_fire
+  it "exact_fire" do
     assert_search_results "!Fire", "Fire"
   end
 
-  def test_exact_sift_through_sands
+  it "exact_sift_through_sands" do
     assert_search_results '!sift through sands', "Sift Through Sands"
     assert_search_results '!"sift through sands"', "Sift Through Sands"
   end
 
 
-  def test_is_commander
+  it "is_commander" do
     # arguable if banned cards should be included,
     # but there are multiple commander-like formats
     # with multiple banlists
@@ -213,7 +208,7 @@ class ScryfallTest < Minitest::Test
       "Elbrus, the Binding Blade"
   end
 
-  def test_parentheses
+  it "parentheses" do
     # Identical results
     assert_search_results "through (depths or sands or mists)",
       "Peer Through Depths",
@@ -221,7 +216,7 @@ class ScryfallTest < Minitest::Test
       "Sift Through Sands"
   end
 
-  def test_gideon_in_any_field
+  it "gideon_in_any_field" do
     # identical results
     assert_search_include "ft:gideon or o:gideon or t:gideon or gideon",
       "Call the Gatewatch", # ft:
@@ -231,7 +226,7 @@ class ScryfallTest < Minitest::Test
       "Kytheon, Hero of Akros"
   end
 
-  def test_pow_gt_8
+  it "pow_gt_8" do
     # results differ in uncards / spoiled cards
     assert_search_include "pow>=8",
       "Akron Legionnaire",
@@ -242,7 +237,7 @@ class ScryfallTest < Minitest::Test
       "Uktabi Kong"
   end
 
-  def test_loyalty
+  it "loyalty" do
     assert_search_equal "t:planeswalker loy=3", "t:planeswalker loyalty=3"
     assert_search_include "t:planeswalker loy=3",
       "Saheeli Rai",
@@ -250,7 +245,7 @@ class ScryfallTest < Minitest::Test
       "Liliana, Defiant Necromancer"
   end
 
-  def test_artist
+  it "artist" do
     # scryfall does t:*
     # it's arguable which way is better
     assert_search_include 'a:"proce"',
@@ -259,13 +254,13 @@ class ScryfallTest < Minitest::Test
       "Tazeem"
   end
 
-  def test_tazeem
+  it "tazeem" do
     # scryfall does t:*, including planes by default
     assert_search_results "tazeem",
       "Guardian of Tazeem"
   end
 
-  def test_is_colorshifted
+  it "is_colorshifted" do
     # MCI is:timeshifted is SF is:colorshifted
     # SF is:timeshifted is e:tsts
     # no good way out so we just alias is:colorshifted to is:timeshifted
@@ -273,7 +268,7 @@ class ScryfallTest < Minitest::Test
     assert_count_results "is:timeshifted", 45
   end
 
-  def test_oracle_tilde
+  it "oracle_tilde" do
     # identical results, except for spoilers
     assert_search_include 'o:"~ enters the battlefield tapped"',
       "Deadlock Trap",
@@ -281,25 +276,25 @@ class ScryfallTest < Minitest::Test
       "Izzet Boilerworks"
   end
 
-  def test_white_creature_standard
+  it "white_creature_standard" do
     # identical results
     assert_search_include 'c:w t:creature f:standard',
       "Aerial Responder",
       "Wispweaver Angel"
   end
 
-  def test_pow_gt_tou
+  it "pow_gt_tou" do
     # identical results except uncards and spoilers
     assert_search_include "pow>tou c:w t:creature",
       "Abzan Battle Priest"
       "Blade of the Sixth Pride"
   end
 
-  def test_border
+  it "border" do
     assert_search_equal "border:white t:creature", "is:white-bordered t:creature"
   end
 
-  def test_color_identity
+  it "color_identity" do
     # id: as alias for ci:
     # works the same except for uncards
     assert_search_equal "id:c t:land", "ci:c t:land"
@@ -323,7 +318,7 @@ class ScryfallTest < Minitest::Test
       "Abbey Griffin"         # w
   end
 
-  def test_identity_but_not_color
+  it "identity_but_not_color" do
     # this is correct behaviour:
     assert_search_include "-c:u id:u",
       "Abstruse Interference", # devoid card with u color identity
@@ -339,14 +334,14 @@ class ScryfallTest < Minitest::Test
 
   end
 
-  def test_br_spell_standard
+  it "br_spell_standard" do
     # MCI/mtg.wtf c: works as OR
     # scryfall c: works as AND
 
     assert_search_equal "c:br is:spell f:standard", "(c:b or c:r) is:spell f:standard"
   end
 
-  def test_ignore_plusplus
+  it "ignore_plusplus" do
     # ++ is display control directive, and right now they live on frontend side,
     # not on search engine side (except sort:, which lives in between)
     # It shouldn't affect the results
@@ -360,7 +355,7 @@ class ScryfallTest < Minitest::Test
     assert_search_equal '++e:all', 'e:all'
   end
 
-  def test_new_frame
+  it "new_frame" do
     # scryfall distinguishes "modern" and "new" frame
     # mtg.wtf and MCI treat them as same frame
     # maybe scryfall has a point here?
@@ -369,32 +364,32 @@ class ScryfallTest < Minitest::Test
     assert_search_equal "is:new r:mythic", "r:mythic"
   end
 
-  def test_scryfall_bug_cmc
+  it "scryfall_bug_cmc" do
     # meld cmc is sum of part cmcs
-    assert_search_exclude "c:c t:creature cmc=0", "Chittering Host"
+    "c:c t:creature cmc=0".should exclude_cards("Chittering Host")
     # flip cmc equals other part, weirdly it only affect some cards, not all
-    assert_search_exclude "ravager cmc=0", "Ravager of the Fells"
+    "ravager cmc=0".should return_no_cards # "Ravager of the Fells"
   end
 
-  def test_scryfall_bug_uncards
+  it "scryfall_bug_uncards" do
     # scryfall doesn't include uncards at all
     assert_search_include "clay", "Clay Pigeon"
   end
 
-  def test_red_creatures_with_cmc_2_or_less
+  it "red_creatures_with_cmc_2_or_less" do
     # scryfall currently failing due to cmc bugs
     assert_search_exclude "c:r t:creature cmc<=2",
       "Ravager of the Fells"
   end
 
-  def test_blue_cmc_5
+  it "blue_cmc_5" do
     # scryfall cmc errors again
     assert_search_include "c:u cmc=5",
       "Ghastly Haunting",
       "Soul Seizer"
   end
 
-  def test_common_artifact
+  it "common_artifact" do
     # differ due to uncards
     assert_search_include "r:common t:artifact",
       "Abzan Banner",
@@ -402,7 +397,7 @@ class ScryfallTest < Minitest::Test
       "Paper Tiger" # uncard
   end
 
-  def test_oracle_ignores_reminder_text
+  it "oracle_ignores_reminder_text" do
     # scryfall repeating MCI's mistakes and not cleaning up reminder text
     assert_search_include 'o:"draw" t:creature',
       "Abomination of Gudul"
@@ -410,7 +405,7 @@ class ScryfallTest < Minitest::Test
       "Tireless Tracker"
   end
 
-  def test_is_digital
+  it "is_digital" do
     # scryfall includes "Gleemox" - https://scryfall.com/card/pgmx/1
     # and I have no idea what's that
     assert_search_equal "is:digital", "e:med OR e:me2 OR e:me3 OR e:me4 OR e:vma OR e:tpr"

@@ -1,16 +1,12 @@
-require_relative "test_helper"
+describe "Magic 2010" do
+  include_context "db", "m10"
 
-class CardDatabaseM10Test < Minitest::Test
-  def setup
-    @db = load_database("m10")
+  it "db_loads_and_contains_sets" do
+    db.number_of_cards.should eq(234)
+    db.number_of_printings.should eq(249)
   end
 
-  def test_db_loads_and_contains_sets
-    assert_equal 234, @db.number_of_cards
-    assert_equal 249, @db.number_of_printings
-  end
-
-  def test_search_full_name
+  it "search_full_name" do
     assert_search_results "!Ponder", "Ponder"
     assert_search_results "!ponder", "Ponder"
     assert_search_results "!acidic slime", "Acidic Slime"
@@ -20,7 +16,7 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_results "!Acidic"
   end
 
-  def test_search_basic
+  it "search_basic" do
     assert_search_results "Ponder", "Ponder"
     assert_search_results "Wall", "Wall of Bone", "Wall of Faith", "Wall of Fire", "Wall of Frost"
     assert_search_results "Wall of", "Wall of Bone", "Wall of Faith", "Wall of Fire", "Wall of Frost"
@@ -30,7 +26,7 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_results '"of bo"', "Wall of Bone"
   end
 
-  def test_filter_colors
+  it "filter_colors" do
     assert_search_include "c:u", "Ponder"
     assert_search_include "c!u", "Ponder"
     assert_search_include "c:ub", "Ponder"
@@ -38,7 +34,7 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_include "c:c", "Howling Mine"
     assert_search_exclude "c:g", "Ponder"
     assert_search_include "c!bu", "Ponder"
-    assert_search_exclude "c:m", "Ponder"
+    "c:m".should return_no_cards # "Ponder"
     assert_search_exclude "c:gcm", "Ponder"
 
     # Only true for core sets
@@ -46,7 +42,7 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_equal "c:l", "t:land"
   end
 
-  def test_filter_type
+  it "filter_type" do
     assert_search_results "t:Skeleton", "Drudge Skeletons", "Wall of Bone"
     assert_search_results "t:Basic", "Forest", "Island", "Mountain", "Plains", "Swamp"
     assert_search_include "t:Sorcery", "Act of Treason"
@@ -54,14 +50,14 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_results 't:"Basic Land"', "Forest", "Island", "Mountain", "Plains", "Swamp"
   end
 
-  def test_queries_are_case_insensitive
+  it "queries_are_case_insensitive" do
     assert_search_equal "t:Sorcery", "t:sorcery"
     assert_search_equal "c:b", "c:B"
     assert_search_equal "c:b", "C:B"
     assert_search_equal "c:c", "c!c"
   end
 
-  def test_pow
+  it "pow" do
     assert_search_results "pow=0 c:g", "Birds of Paradise", "Bramble Creeper", "Protean Hydra"
     assert_search_results "pow>=4 c:u", "Air Elemental", "Djinn of Wishes", "Sphinx Ambassador"
     assert_search_results "pow>4 c:u", "Sphinx Ambassador"
@@ -72,13 +68,13 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_results "pow>cmc c:r", "Ball Lightning", "Jackal Familiar"
   end
 
-  def test_tou
+  it "tou" do
     assert_search_results "tou<=cmc c:c", "Darksteel Colossus", "Platinum Angel"
     assert_search_results "tou>=9", "Darksteel Colossus", "Kalonian Behemoth"
     assert_search_results "tou>9", "Darksteel Colossus"
   end
 
-  def test_cmc
+  it "cmc" do
     assert_search_results "cmc=0",
       "Dragonskull Summit",
       "Drowned Catacomb",
@@ -98,13 +94,13 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_results "cmc=7 c:u", "Sphinx Ambassador"
   end
 
-  def test_extra_spaces_in_expr
+  it "extra_spaces_in_expr" do
     assert_search_equal "cmc>=7", "cmc >= 7"
     assert_search_equal "pow=cmc", "pow = cmc"
     assert_search_equal "tou<3", "tou < 3"
   end
 
-  def test_oracle
+  it "oracle" do
     assert_search_results 'o:Flying r:rare',
       "Birds of Paradise",
       "Djinn of Wishes",
@@ -123,78 +119,78 @@ class CardDatabaseM10Test < Minitest::Test
       "Birds of Paradise"
   end
 
-  def test_oracle_ignores_remainder_text
+  it "oracle_ignores_remainder_text" do
     assert_search_results "c:g o:flying", "Birds of Paradise", "Windstorm"
   end
 
-  def test_oracle_cardname
+  it "oracle_cardname" do
     assert_search_results 'o:"whenever ~ deals combat damage"', "Lightwielder Paladin", "Sphinx Ambassador"
   end
 
-  def test_flavor_text
+  it "flavor_text" do
     assert_search_results "ft:chandra", "Inferno Elemental", "Pyroclasm"
     assert_search_results 'ft:only ft:to', "Acolyte of Xathrid", "Griffin Sentinel", "Wall of Faith", "Zephyr Sprite"
     assert_search_results 'ft:"only to"', "Acolyte of Xathrid"
   end
 
-  def test_artist
+  it "artist" do
     assert_search_results "a:argyle", "Hive Mind"
   end
 
-  def test_banned
+  it "banned" do
     assert_search_results "banned:modern", "Ponder"
     assert_search_results "banned:legacy"
     assert_search_results "banned:vintage"
   end
 
-  def test_restricted
+  it "restricted" do
     assert_search_results "restricted:modern"
     assert_search_results "restricted:legacy"
     assert_search_results "restricted:vintage", "Ponder"
   end
 
-  def test_legal
+  it "legal" do
     assert_search_exclude "legal:modern", "ponder"
     assert_search_include "legal:legacy", "Ponder"
     assert_search_exclude "legal:vintage", "Ponder"
   end
 
-  def test_format
+  it "format" do
     assert_search_equal "legal:modern", "f:modern"
     assert_search_equal "legal:legacy", "f:legacy"
     assert_search_equal "legal:vintage or restricted:vintage", "f:vintage"
   end
 
-  def test_rarity
+  it "rarity" do
     assert_search_results "r:mythic c:c", "Darksteel Colossus", "Platinum Angel"
     assert_search_results "r:rare t:land", "Dragonskull Summit", "Drowned Catacomb", "Gargoyle Castle", "Glacial Fortress", "Rootbound Crag", "Sunpetal Grove"
     assert_search_results "r:uncommon t:equipment", "Gorgon Flail", "Whispersilk Cloak"
     assert_search_results "r:common t:land", "Terramorphic Expanse"
   end
 
-  def test_is_permanent
+  it "is_permanent" do
     assert_search_results "-is:permanent r:mythic", "Time Warp"
   end
 
-  def test_is_opposes_not
+  it "is_opposes_not" do
     assert_search_equal "not:permanent", "-is:permanent"
     assert_search_equal "not:spell", "-is:spell"
     assert_search_results "not:black-bordered"
     assert_search_equal "not:white-bordered", "not:silver-bordered"
   end
 
-  def test_is_spell
+  it "is_spell" do
     assert_search_results "e:m10 r:rare ci:c is:spell", "Coat of Arms", "Howling Mine", "Magebane Armor", "Mirror of Fate", "Pithing Needle"
     assert_search_results "e:m10 r:rare ci:c", "Coat of Arms", "Howling Mine", "Magebane Armor", "Mirror of Fate", "Pithing Needle", "Gargoyle Castle"
   end
 
-  def test_loyalty
+  it "loyalty" do
     assert_search_results "loyalty=5", "Liliana Vess"
     assert_search_results "loyalty>cmc", "Chandra Nalaar"
     assert_search_results "loyalty<=4", "Ajani Goldmane", "Garruk Wildspeaker", "Jace Beleren"
   end
 
-  def test_unicode_hyphen
+  it "unicode_hyphen" do
     ascii_hyphen = "-"
     unicode_hyphen = "\u2212"
     assert_search_results %Q[o:"#{ascii_hyphen}2"],  "Liliana Vess", "Weakness"
@@ -203,7 +199,7 @@ class CardDatabaseM10Test < Minitest::Test
     assert_search_results %Q[o:#{unicode_hyphen}2], "Liliana Vess", "Weakness"
   end
 
-  def test_mana
+  it "mana" do
     assert_search_results "mana>=2RR mana<=6RR",
       "Bogardan Hellkite",
       "Capricious Efreet",
