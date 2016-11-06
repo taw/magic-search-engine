@@ -1,16 +1,12 @@
-require_relative "test_helper"
+describe "Kaladesh" do
+  include_context "db", "kld"
 
-class CardDatabaseKLDTest < Minitest::Test
-  def setup
-    @db = load_database("kld")
-  end
-
-  def test_vehicles
+  it "vehicles" do
     assert_search_results "pow=10", "Demolition Stomper", "Metalwork Colossus"
     assert_search_results "tou=7", "Accomplished Automaton", "Demolition Stomper"
   end
 
-  def test_sort_pow
+  it "sort:pow" do
     assert_search_results_ordered "r:mythic t:artifact sort:pow",
       "Combustible Gearhulk",          # 6
       "Skysovereign, Consul Flagship", # 6 vehicle
@@ -21,7 +17,7 @@ class CardDatabaseKLDTest < Minitest::Test
       "Aetherworks Marvel"             # nil
   end
 
-  def test_sort_tou
+  it "sort:tou" do
      assert_search_results_ordered "r:mythic t:artifact sort:tou",
        "Combustible Gearhulk",          # 6
        "Torrential Gearhulk",           # 6

@@ -67,6 +67,21 @@ RSpec::Matchers.define :return_cards do |*cards|
   end
 end
 
+RSpec::Matchers.define :return_cards_in_order do |*cards|
+  match do |query_string|
+    search(query_string) == cards
+  end
+
+  # TODO: Better error message here
+  failure_message do
+    results = search(query_string)
+    "Expected `#{query_string}' to return:\n" +
+      cards.map{|c| "* #{c}\n"}.join +
+    "Instead got:" +
+      results.map{|c| "* #{c}\n"}.join
+  end
+end
+
 RSpec::Matchers.define :equal_search do |query_string2|
   match do |query_string1|
     results1 = search(query_string1)
@@ -126,5 +141,8 @@ shared_context "db" do |*sets|
   end
   def assert_count_results(query, count)
     query.should have_result_count(count)
+  end
+  def assert_search_results_ordered(query, *results)
+    query.should return_cards_in_order(*results)
   end
 end
