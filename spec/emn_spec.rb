@@ -1,11 +1,7 @@
-require_relative "test_helper"
+describe "Eldrich Moon" do
+  include_context "db", "emn"
 
-class CardDatabaseEldrichMoonTest < Minitest::Test
-  def setup
-    @db = load_database("emn")
-  end
-
-  def test_meld_color
+  it "meld color" do
     assert_search_results "t:angel c:w",
       "Bruna, the Fading Light",
       "Gisela, the Broken Blade", "Subjugator Angel"
@@ -13,8 +9,8 @@ class CardDatabaseEldrichMoonTest < Minitest::Test
       "Brisela, Voice of Nightmares"
   end
 
-  def test_meld_color_identity
-    assert_equal Hash[@db.search("is:meld").printings.map{|c| [c.name, c.color_identity]}], {
+  it "meld color identity" do
+    Hash[db.search("is:meld").printings.map{|c| [c.name, c.color_identity]}].should == {
       # Brisela
       "Brisela, Voice of Nightmares"=>"w",
       "Bruna, the Fading Light"=>"w",
@@ -30,7 +26,7 @@ class CardDatabaseEldrichMoonTest < Minitest::Test
     }
   end
 
-  def test_meld_cmc
+  it "meld cmc" do
     assert_search_results "is:meld cmc=0", "Hanweir Battlements"
     assert_search_results "is:meld cmc=2", "Graf Rats"
     assert_search_results "is:meld cmc=3", "Hanweir Garrison", "Hanweir, the Writhing Township"
@@ -40,7 +36,7 @@ class CardDatabaseEldrichMoonTest < Minitest::Test
     assert_search_results "is:meld cmc=11", "Brisela, Voice of Nightmares"
   end
 
-  def test_is_meld
+  it "is:meld" do
     assert_search_results "is:meld",
       "Brisela, Voice of Nightmares",
       "Bruna, the Fading Light",
@@ -54,7 +50,7 @@ class CardDatabaseEldrichMoonTest < Minitest::Test
     assert_search_equal "layout:meld", "is:meld"
   end
 
-  def test_is_primary
+  it "is:primary" do
     assert_search_results "is:primary layout:meld",
       "Bruna, the Fading Light",
       "Gisela, the Broken Blade",
