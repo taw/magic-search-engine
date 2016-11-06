@@ -60,6 +60,7 @@ class CardDatabase
   # "in" is code for "Invasion", don't substring match "Innistrad" etc.
   # "Mirrodin" is name for "Mirrodin", don't substring match "Scars of Mirrodin"
   def resolve_editions(edition)
+    edition = edition.downcase
     matching_sets = Set[]
     @sets.each do |set_code, set|
       if @sets[edition]
@@ -95,7 +96,7 @@ class CardDatabase
   end
 
   def number_of_printings
-    @printings.size
+    printings.size
   end
 
   private

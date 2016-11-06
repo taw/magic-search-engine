@@ -1,14 +1,10 @@
-require_relative "test_helper"
+describe "Banlist" do
+  include_context "db"
+  let(:ban_list) { BanList.new }
 
 # Based on:
 # http://www.mtgsalvation.com/forums/the-game/commander-edh/204244-edh-banlist-timeline
 # except most recent ones where most recent announcements are explicitly linked
-
-class BanlistCommanderTest < Minitest::Test
-  def setup
-    @db = load_database
-    @ban_list = BanList.new
-  end
 
   def assert_commander_banlist_changes(date, *changes)
     assert_banlist_changes(
@@ -19,27 +15,28 @@ class BanlistCommanderTest < Minitest::Test
     )
   end
 
-  def test_vintage_banned_means_commander_banned
-    change_dates = @ban_list.dates.values.uniq.sort
+  it "vintage_banned_means_commander_banned" do
+    change_dates = ban_list.dates.values.uniq.sort
     change_dates.each do |date|
-      vintage_banlist  = @ban_list.full_ban_list("vintage", date)
-      commander_banlist = @ban_list.full_ban_list("commander", date)
+      vintage_banlist  = ban_list.full_ban_list("vintage", date)
+      commander_banlist = ban_list.full_ban_list("commander", date)
 
       vintage_banned = vintage_banlist.select{|c,s| s == "banned"}.map(&:first)
       commander_banned = commander_banlist.select{|c,s| s == "banned"}.map(&:first)
 
       vintage_only_banned = vintage_banned - commander_banned
 
-      assert_equal [], vintage_only_banned, "All Vintage banned cards should be EDH banned too (#{date})"
+      # "All Vintage banned cards should be EDH banned too (#{date})"
+      vintage_only_banned.should eq([])
     end
   end
 
-  def test_2016
+  it "2016" do
     assert_commander_banlist_changes "January 2016",
       "banned", "Prophet of Kruphix"
   end
 
-  def test_2015
+  it "2015" do
     # http://www.mtgcommander.net/Forum/viewtopic.php?f=1&t=17890
     assert_commander_banlist_changes "September 2015" # no changes
     # http://www.mtgcommander.net/Forum/viewtopic.php?f=1&t=17774
@@ -50,7 +47,7 @@ class BanlistCommanderTest < Minitest::Test
     assert_commander_banlist_changes "January 2015" # no changes
   end
 
-  def test_2014
+  it "2014" do
     # http://www.mtgcommander.net/Forum/viewtopic.php?f=1&t=17210
     assert_commander_banlist_changes "September 2014",
       "restricted-to-banned", "Braids, Cabal Minion",
@@ -70,7 +67,7 @@ class BanlistCommanderTest < Minitest::Test
       "banned", "Sylvan Primordial"
   end
 
-  def test_2013
+  it "2013" do
     # http://www.mtgcommander.net/Forum/viewtopic.php?f=1&t=16212
     assert_commander_banlist_changes "September 2013" # no changes
     #  http://www.mtgcommander.net/Forum/viewtopic.php?f=1&t=15972
@@ -85,7 +82,7 @@ class BanlistCommanderTest < Minitest::Test
     assert_commander_banlist_changes "January 2013"
   end
 
-  def test_2012
+  it "2012" do
     assert_commander_banlist_changes "September 2012",
       "banned", "Primeval Titan",
       "banned", "Worldfire",
@@ -96,7 +93,7 @@ class BanlistCommanderTest < Minitest::Test
       "banned", "Sundering Titan"
   end
 
-  def test_2011
+  it "2011" do
     assert_commander_banlist_changes "September 2011",
       "restricted", "Erayo, Soratami Ascendant",
       "unbanned", "Lion's Eye Diamond"
@@ -107,7 +104,7 @@ class BanlistCommanderTest < Minitest::Test
       "unbanned", "Worldgorger Dragon"
   end
 
-  def test_2010
+  it "2010" do
     assert_commander_banlist_changes "December 2010",
       "banned", "Emrakul, the Aeons Torn"
 
@@ -118,7 +115,7 @@ class BanlistCommanderTest < Minitest::Test
       "restricted", "Rofellos, Llanowar Emissary"
   end
 
-  def test_2009
+  it "2009" do
     assert_commander_banlist_changes "December 2009",
       "unbanned", "Grindstone",
       "banned", "Painter's Servant"
@@ -138,7 +135,7 @@ class BanlistCommanderTest < Minitest::Test
       "unrestricted", "Rofellos, Llanowar Emissary"
   end
 
-  def test_2008
+  it "2008" do
     assert_commander_banlist_changes "December 2008",
       "banned", "Time Vault"
 
@@ -158,7 +155,7 @@ class BanlistCommanderTest < Minitest::Test
       "banned", "Kokusho, the Evening Star"
   end
 
-  def test_2007
+  it "2007" do
     # So it says, but there's no unban announcement
     # assert_commander_banlist_changes "November 2007",
       # "unbanned", "Beacon of Immortality"
@@ -171,7 +168,7 @@ class BanlistCommanderTest < Minitest::Test
       "restricted", "Rofellos, Llanowar Emissary"
   end
 
-  def test_2006
+  it "2006" do
     assert_commander_banlist_changes "November 2006",
       "unrestricted", "Niv-Mizzet, the Firemind",
       "unrestricted", "Heartless Hidetsugu"
@@ -186,7 +183,7 @@ class BanlistCommanderTest < Minitest::Test
       "restricted", "Heartless Hidetsugu"
   end
 
-  def test_2005
+  it "2005" do
     assert_commander_banlist_changes "April 2005",
       "banned", "Ancestral Recall",
       "banned", "Balance",
@@ -209,7 +206,7 @@ class BanlistCommanderTest < Minitest::Test
       "banned", "Shahrazad"
   end
 
-  def test_2004
+  it "2004" do
     assert_commander_banlist_changes "October 2004",
       "unbanned", "Burning Wish",
       "unbanned", "Cunning Wish",
@@ -220,7 +217,7 @@ class BanlistCommanderTest < Minitest::Test
       # "unbanned", "Ring of Ma'ruf"
   end
 
-  def test_2003
+  it "2003" do
     assert_commander_banlist_changes "May 2003",
       "banned", "Burning Wish",
       "banned", "Cunning Wish",
@@ -229,7 +226,7 @@ class BanlistCommanderTest < Minitest::Test
       "banned", "Living Wish"
   end
 
-  def test_2002
+  it "2002" do
     # TODO:
     # Initial banlist
     # October 2002

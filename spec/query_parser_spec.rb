@@ -1,16 +1,20 @@
-require "pp"
+describe "QueryParser" do
+  def assert_search_parse(query1, query2)
+    Query.new(query1).should eq(Query.new(query2))
+  end
 
-require_relative "test_helper"
+  def refute_search_parse(query1, query2)
+    Query.new(query1).should_not eq(Query.new(query2))
+  end
 
-class CardQueryParser < Minitest::Test
-  def test_parsing_basics
+  it "parsing_basics" do
     assert_search_parse "r:common alt:r:uncommon", "r:common alt:(r:uncommon)"
     assert_search_parse "cmc=1 c:w", "cmc=1 AND c:w"
     refute_search_parse "cmc=1 OR c:w", "cmc=1 AND c:w"
     assert_search_parse "cmc=1 c:w", "CMC=1 C:W"
   end
 
-  def test_structural_equivalence
+  it "structural_equivalence" do
     assert_search_parse "cmc=1 c:w", "(cmc=1 (c:w))"
     assert_search_parse "(cmc=1 c:w) r:common", "cmc=1 (c:w r:common)"
     # Would be nice if this worked, doesn't work yet
@@ -20,7 +24,7 @@ class CardQueryParser < Minitest::Test
     refute_search_parse "ci:uw", "ci!wu"
   end
 
-  def test_time
+  it "time" do
     refute_search_parse "time:2010", "time:2011 r:common"
     assert_search_parse %Q[time:2010 r:common], %Q[time:2010.1.1 r:common]
     assert_search_parse %Q[time:2010.3.3 r:common], %Q[time:"3 march 2010" r:common]
@@ -28,7 +32,7 @@ class CardQueryParser < Minitest::Test
     assert_search_parse %Q[time:rtr r:common], %Q[time:RTR r:common]
   end
 
-  def test_query_to_s
+  it "query_to_s" do
     query_examples = (Pathname(__dir__) + "query_examples.txt").readlines.map(&:chomp)
 
     fails = 0
@@ -46,13 +50,13 @@ class CardQueryParser < Minitest::Test
         pp [:mismatch, query_string, query, query_string_2, query_2]
       elsif query_string != query_string_2
         # p [:partial, query_string, query, query_string_2]
-        assert_equal query, query_2
+        query.should eq query_2
       else
         # p [:perfect, query_string, query]
-        assert_equal query, query_2
+        query.should eq query_2
       end
     end
 
-    assert_equal 0, fails, "Total fails: #{fails}"
+    fails.should eq(0)
   end
 end

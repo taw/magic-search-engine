@@ -1,11 +1,7 @@
-require_relative "test_helper"
+describe "CLI Frontend" do
+  let(:cli) { $cli_frontend ||= CLIFrontend.new }
 
-class TestCLIFrontend < Minitest::Test
-  def setup
-    @cli = load_cli
-  end
-
-  def test_non_verbose
+  it "non_verbose" do
     assert_cli(
       search: "angel serenity",
       verbose: false,
@@ -38,7 +34,7 @@ class TestCLIFrontend < Minitest::Test
     )
   end
 
-  def test_verbose_all_sets
+  it "verbose_all_sets" do
     assert_cli(
       search: "jace beleren",
       verbose: true,
@@ -68,7 +64,7 @@ class TestCLIFrontend < Minitest::Test
     )
   end
 
-  def test_verbose_linebreaks
+  it "verbose_linebreaks" do
     assert_cli(
       search: "mana=4gg t:dragon",
       verbose: true,
@@ -91,7 +87,7 @@ class TestCLIFrontend < Minitest::Test
     )
   end
 
-  def test_verbose_some_sets
+  it "verbose_some_sets" do
     assert_cli(
       search: "bloodbraid elf a:steve",
       verbose: true,
@@ -107,7 +103,7 @@ class TestCLIFrontend < Minitest::Test
     )
   end
 
-  def test_error_reporting
+  it "error_reporting" do
     assert_cli(
       search: "kolagan",
       verbose: false,
@@ -144,12 +140,23 @@ class TestCLIFrontend < Minitest::Test
   def assert_cli(**args)
     expected_output = strip_indent(args[:output])
     expected_error  = strip_indent(args[:error])
-    out, err = capture_io{ @cli.run!(args[:verbose], args[:search]) }
-    assert_equal expected_error, err
-    assert_equal expected_output, out
+    out, err = capture_io{ cli.run!(args[:verbose], args[:search]) }
+    err.should eq(expected_error)
+    out.should eq(expected_output)
   end
 
   def strip_indent(str)
     str.gsub(/^ {8}/, "")
+  end
+
+  def capture_io
+    require "stringio"
+    orig_stdout, orig_stderr         = $stdout, $stderr
+    captured_stdout, captured_stderr = StringIO.new, StringIO.new
+    $stdout, $stderr                 = captured_stdout, captured_stderr
+    yield
+    [captured_stdout.string, captured_stderr.string]
+   ensure
+    $stdout, $stderr = orig_stdout, orig_stderr
   end
 end

@@ -1,6 +1,5 @@
 source "https://rubygems.org"
 gem "rake"
-gem "minitest"
 gem "damerau-levenshtein"
 gem "pry"
 gem "unicode_utils"

@@ -1,4 +1,3 @@
-require "rake/testtask"
 require "pathname"
 require "fileutils"
 require "pp"
@@ -12,14 +11,6 @@ def db
 end
 
 task "default" => "test"
-
-Rake::TestTask.new do |t|
-  t.libs << "test"
-  t.test_files = FileList['test/test*.rb']
-  t.options = "-s0" # random order is just annoying
-  t.verbose = true
-  t.warning = false
-end
 
 desc "Generate index"
 task "index" do
