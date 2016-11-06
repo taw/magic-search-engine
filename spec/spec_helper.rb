@@ -85,6 +85,16 @@ RSpec::Matchers.define :equal_search do |query_string2|
   end
 end
 
+RSpec::Matchers.define :have_result_count do |count|
+  match do |query_string|
+    search(query_string).size == count
+  end
+
+  failure_message do
+    "Expected `#{query_string}' to return #{count} results, got #{search(query_string).size} instead."
+  end
+end
+
 shared_context "db" do |*sets|
   def load_database(*sets)
     $card_database ||= {}
