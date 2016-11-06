@@ -11,6 +11,12 @@ def db
 end
 
 task "default" => "test"
+task "spec" => "test"
+
+# Run specs
+task "spec" do
+  system "rspec"
+end
 
 desc "Generate index"
 task "index" do
