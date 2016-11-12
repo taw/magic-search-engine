@@ -4,7 +4,7 @@
 
 .row.results_summary
   .col-xs-12
-    #{@card.name} has #{pluralize(@printings.total_entries, "printings")}.
+    #{@card.name} has #{pluralize(@total_printings, "printing")}.
 
 - @printings.each do |set, printings|
   .row
