@@ -17,7 +17,7 @@ RSpec::Matchers.define :include_cards do |*cards|
     cards.all?{|card| results.include?(card)}
   end
 
-  failure_message do
+  failure_message do |query_string|
     results = search(query_string)
     fails = cards.reject{|card| results.include?(card)}
     "Expected `#{query_string}' to include following cards:\n" +
@@ -60,13 +60,14 @@ RSpec::Matchers.define :return_cards do |*cards|
     search(query_string).sort == cards.sort
   end
 
-  # TODO: Better error message here
   failure_message do |query_string|
     results = search(query_string)
     "Expected `#{query_string}' to return:\n" +
-      cards.map{|c| "* #{c}\n"}.join +
-    "Instead got:" +
-      results.map{|c| "* #{c}\n"}.join
+      (cards | results).sort.map{|c|
+        (cards.include?(c) ? "[*]" : "[ ]") +
+        (results.include?(c) ? "[*]" : "[ ]") +
+        "#{c}\n"
+      }.join
   end
 end
 
@@ -80,7 +81,7 @@ RSpec::Matchers.define :return_cards_in_order do |*cards|
     results = search(query_string)
     "Expected `#{query_string}' to return:\n" +
       cards.map{|c| "* #{c}\n"}.join +
-    "Instead got:" +
+    "\nInstead got:" +
       results.map{|c| "* #{c}\n"}.join
   end
 end
