@@ -19,12 +19,12 @@ class CardController < ApplicationController
       @card = $CardDatabase.sets[set].printings.find{|cp| cp.number == number}
     end
 
-
     if @card
       first_printing = @card.printings.first
       if @card == first_printing
         @title = @card.name
         page = [1, params[:page].to_i].max
+        @total_printings = @card.printings.size
         @printings = paginate_by_set(@card.printings, page)
       else
         redirect_to set: first_printing.set_code, id: first_printing.number
