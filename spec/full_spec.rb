@@ -2,8 +2,8 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(16701)
-    db.number_of_printings.should eq(31664)
+    db.number_of_cards.should eq(16757)
+    db.number_of_printings.should eq(32018)
   end
 
   it "formats" do
@@ -86,128 +86,43 @@ describe "Full Database Test" do
     assert_search_results "t:jace firstprint=2012", "Jace, Architect of Thought"
 
     # This is fairly silly, as it includes prerelease promos etc.
-    assert_search_results "e:ktk firstprint<ktk",
-                          "Abzan Ascendancy",
-                          "Act of Treason",
-                          "Anafenza, the Foremost",
-                          "Ankle Shanker",
-                          "Arc Lightning",
-                          "Avalanche Tusker",
-                          "Bloodsoaked Champion",
-                          "Bloodstained Mire",
-                          "Butcher of the Horde",
-                          "Cancel",
-                          "Crackling Doom",
-                          "Crater's Claws",
-                          "Crippling Chill",
-                          "Deflecting Palm",
-                          "Despise",
-                          "Dig Through Time",
-                          "Dragon-Style Twins",
-                          "Duneblast",
-                          "Erase",
-                          "Flooded Strand",
-                          "Flying Crane Technique",
-                          "Forest",
-                          "Grim Haruspex",
-                          "Hardened Scales",
-                          "Herald of Anafenza",
-                          "High Sentinels of Arashin",
-                          "Icy Blast",
-                          "Incremental Growth",
-                          "Island",
-                          "Ivorytusk Fortress",
-                          "Jeering Instigator",
-                          "Jeskai Ascendancy",
-                          "Jeskai Elder",
-                          "Kheru Lich Lord",
-                          "Mardu Ascendancy",
-                          "Mardu Heart-Piercer",
-                          "Master of Pearls",
-                          "Mountain",
-                          "Mystic Monastery",
-                          "Narset, Enlightened Master",
-                          "Naturalize",
-                          "Necropolis Fiend",
-                          "Nomad Outpost",
-                          "Plains",
-                          "Polluted Delta",
-                          "Rakshasa Vizier",
-                          "Rattleclaw Mystic",
-                          "Sage of the Inward Eye",
-                          "Seek the Horizon",
-                          "Shatter",
-                          "Sidisi, Brood Tyrant",
-                          "Siege Rhino",
-                          "Smite the Monstrous",
-                          "Sultai Ascendancy",
-                          "Surrak Dragonclaw",
-                          "Swamp",
-                          "Temur Ascendancy",
-                          "Thousand Winds",
-                          "Trail of Mystery",
-                          "Trap Essence",
-                          "Trumpet Blast",
-                          "Utter End",
-                          "Villainous Wealth",
-                          "Windstorm",
-                          "Windswept Heath",
-                          "Wooded Foothills",
-                          "Zurgo Helmsmasher"
+    assert_search_results "e:soi firstprint<soi",
+      "Catalog",
+      "Compelling Deterrence",
+      "Dead Weight",
+      "Eerie Interlude",
+      "Fiery Temper",
+      "Forest",
+      "Ghostly Wings",
+      "Gloomwidow",
+      "Groundskeeper",
+      "Island",
+      "Lightning Axe",
+      "Macabre Waltz",
+      "Mad Prophet",
+      "Magmatic Chasm",
+      "Mindwrack Demon",
+      "Mountain",
+      "Plains",
+      "Pore Over the Pages",
+      "Puncturing Light",
+      "Reckless Scholar",
+      "Swamp",
+      "Throttle",
+      "Tooth Collector",
+      "Topplegeist",
+      "Tormenting Voice",
+      "Unruly Mob"
 
-    assert_search_results "e:ktk lastprint>ktk",
-                          "Act of Treason",
-                          "Ainok Tracker",
-                          "Altar of the Brood",
-                          "Arc Lightning",
-                          "Bloodfell Caves",
-                          "Bloodstained Mire",
-                          "Blossoming Sands",
-                          "Briber's Purse",
-                          "Burn Away",
-                          "Debilitating Injury",
-                          "Disdainful Stroke",
-                          "Dismal Backwater",
-                          "Dragonscale Boon",
-                          "Dutiful Return",
-                          "Flooded Strand",
-                          "Forest",
-                          "Ghostfire Blade",
-                          "Grim Haruspex",
-                          "Hordeling Outburst",
-                          "Incremental Growth",
-                          "Island",
-                          "Jeering Instigator",
-                          "Jungle Hollow",
-                          "Kill Shot",
-                          "Mountain",
-                          "Mystic of the Hidden Way",
-                          "Naturalize",
-                          "Plains",
-                          "Polluted Delta",
-                          "Ride Down",
-                          "Rugged Highlands",
-                          "Ruthless Ripper",
-                          "Scoured Barrens",
-                          "Seek the Horizon",
-                          "Shatter",
-                          "Smite the Monstrous",
-                          "Sultai Charm",
-                          "Summit Prowler",
-                          "Suspension Field",
-                          "Swamp",
-                          "Swiftwater Cliffs",
-                          "Thornwood Falls",
-                          "Throttle",
-                          "Tormenting Voice",
-                          "Tranquil Cove",
-                          "Trumpet Blast",
-                          "Watcher of the Roost",
-                          "Weave Fate",
-                          "Wind-Scarred Crag",
-                          "Windstorm",
-                          "Windswept Heath",
-                          "Wooded Foothills"
+    assert_search_results "e:soi lastprint>soi",
+      "Forest",
+      "Island",
+      "Mountain",
+      "Plains",
+      "Stone Quarry",
+      "Swamp",
+      "Tormenting Voice",
+      "Woodland Stream"
   end
 
   it "firstprint" do
@@ -346,6 +261,8 @@ describe "Full Database Test" do
       "Elven Cache",
       "Elvish Lyrist",
       "Elvish Piper",
+      "Forest",
+      "Island",
       "Mana Breach",
       "Memory Lapse",
       "Mountain",
@@ -356,6 +273,7 @@ describe "Full Database Test" do
       "Sea Sprite",
       "Serra Angel",
       "Spellstutter Sprite",
+      "Swamp",
       "Taunting Elf",
       "Thoughtleech",
       "Twiddle",
@@ -431,19 +349,21 @@ describe "Full Database Test" do
 
   it "error_handling" do
     # Empty search returns all non-extras
-    assert_count_results "", 16443
-    assert_count_results "sort:new", 16443
-    assert_count_results "is:spell or t:land", 16443
-    assert_count_results "time:3000", 16443
-    assert_count_results %Q[time:"battle for homelands"], 16443
+    assert_count_results "", 16499
+    assert_count_results "sort:new", 16499
+    assert_count_results "is:spell or t:land", 16499
+    assert_count_results "time:3000", 16499
+    assert_count_results %Q[time:"battle for homelands"], 16499
     assert_count_results "time:1000", 0
     assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
   end
 
   it "is_promo" do
     # mtgjson has different idea what's promo,
-    # mci returns 1054 cards
-    assert_count_results "is:promo", 1047
+    # mci returns 1058 cards
+    # scryfall returns 1044
+    # It might be a good idea to sort out edge cases
+    assert_count_results "is:promo", 1014
   end
 
   it "is_funny" do
@@ -509,8 +429,8 @@ describe "Full Database Test" do
   end
 
   it "comma_separated_set_list" do
-    assert_search_equal "e:cmd or e:cma or e:c13 or e:c14 or e:c15", "e:cmd,cma,c13,c14,c15"
-    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cma,c13,c14,c15 -alt:-e:cmd,cma,c13,c14,c15"
+    assert_search_equal "e:cmd or e:cma or e:c13 or e:c14 or e:c15 or e:c16", "e:cmd,cma,c13,c14,c15,c16"
+    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cma,c13,c14,c15,c16 -alt:-e:cmd,cma,c13,c14,c15,c16"
   end
 
   it "command_separated_block_list" do
