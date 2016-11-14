@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/card_database"
+require "benchmark"
+require "ruby-prof"
+require "pry"
+
+json_path = Pathname(__dir__) + "../data/index.json"
+@db = CardDatabase.load(json_path)
+
+queries = ARGF.readlines.map(&:chomp)
+
+RubyProf.start
+queries.each do |query|
+  @db.search(query)
+end
+result = RubyProf.stop
+# print a flat profile to text
+printer = RubyProf::FlatPrinter.new(result)
+printer.print(STDOUT, sort_method: :total_time)
