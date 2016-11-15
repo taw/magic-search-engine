@@ -3,7 +3,7 @@ class FormatScarsOfMirrodinBlock < Format
     "Scars of Mirrodin Block"
   end
 
-  def build_format_sets
+  def build_included_sets
     Set["som", "mbs", "nph"]
   end
 end

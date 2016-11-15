@@ -3,7 +3,7 @@ class FormatZendikarBlock < Format
     "Zendikar Block"
   end
 
-  def build_format_sets
+  def build_included_sets
     Set["zen", "wwk", "roe"]
   end
 end

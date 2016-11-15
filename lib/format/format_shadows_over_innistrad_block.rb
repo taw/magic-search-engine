@@ -3,7 +3,7 @@ class FormatShadowsOverInnistradBlock < Format
     "Shadows Over Innistrad Block"
   end
 
-  def build_format_sets
+  def build_included_sets
     Set["soi", "emn"]
   end
 end

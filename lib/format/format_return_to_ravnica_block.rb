@@ -3,7 +3,7 @@ class FormatReturnToRavnicaBlock < Format
     "Return to Ravnica Block"
   end
 
-  def build_format_sets
+  def build_included_sets
     Set["rtr", "gtc", "dgm"]
   end
 end

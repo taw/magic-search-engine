@@ -10,8 +10,8 @@ class ConditionFormat < Condition
     @format = Format[@format_name].new(db.resolve_time(@time))
     # This is just performance hack - Standard/Modern can use this hack
     # Legacy/Vintage/Commander/etc. don't want it
-    if @format.format_sets.size < 100
-      cards_probably_in_format = @format.format_sets.flat_map do |set_code|
+    if @format.included_sets
+      cards_probably_in_format = @format.included_sets.flat_map do |set_code|
         # This will only be nil in subset of db, so really only in tests
         set = db.sets[set_code]
         set ? set.printings.map(&:card) : []

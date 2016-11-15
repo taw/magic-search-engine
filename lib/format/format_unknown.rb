@@ -3,7 +3,7 @@ class FormatUnknown < Format
     "Unknown"
   end
 
-  def build_format_sets
+  def build_included_sets
     Set[]
   end
 end

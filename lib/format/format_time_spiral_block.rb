@@ -3,7 +3,7 @@ class FormatTimeSpiralBlock < Format
     "Time Spiral Block"
   end
 
-  def build_format_sets
+  def build_included_sets
     Set["ts", "tsts", "pc", "fut"]
   end
 end

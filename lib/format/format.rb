@@ -1,11 +1,17 @@
 class Format
-  attr_reader :format_sets
+  attr_reader :included_sets, :excluded_sets
 
   def initialize(time=nil)
     raise ArgumentError unless time.nil? or time.is_a?(Date)
     @time = time
     @ban_list = BanList.new
-    @format_sets = build_format_sets
+    if respond_to?(:build_included_sets)
+      @included_sets = build_included_sets
+      @excluded_sets = nil
+    else
+      @included_sets = nil
+      @excluded_sets = build_excluded_sets
+    end
   end
 
   def legality(card)
@@ -17,16 +23,16 @@ class Format
   end
 
   def in_format?(card)
-    if @time
-      relevant_printings = card.printings.select do |printing|
-        printing.release_date <= @time
+    card.printings.each do |printing|
+      next if @time and printing.release_date > @time
+      if @included_sets
+        next unless @included_sets.include?(printing.set_code)
+      else
+        next if @excluded_sets.include?(printing.set_code)
       end
-    else
-      relevant_printings = card.printings
+      return true
     end
-    relevant_printings.any? do |printing|
-      @format_sets.include?(printing.set_code)
-    end
+    false
   end
 
   def format_pretty_name
@@ -35,10 +41,6 @@ class Format
 
   def format_name
     format_pretty_name.downcase
-  end
-
-  def build_format_sets
-    raise "SubclassResponsibility"
   end
 
   def to_s
