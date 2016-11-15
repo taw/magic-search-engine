@@ -3,7 +3,7 @@ class FormatLorwynShadowmoorBlock < Format
     "Lorwyn-Shadowmoor Block"
   end
 
-  def build_format_sets
+  def build_included_sets
     Set["lw", "mt", "shm", "eve"]
   end
 end

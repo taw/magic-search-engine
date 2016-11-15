@@ -4,11 +4,10 @@ class FormatPauper < FormatVintage
   end
 
   def in_format?(card)
-    raise unless card
     card.printings.each do |printing|
       next if @time and printing.release_date > @time
-      next unless printing.rarity == "common" or printing.rarity == "basic"
-      return true if @format_sets.include?(printing.set_code)
+      next if @excluded_sets.include?(printing.set_code)
+      return true if printing.rarity == "common" or printing.rarity == "basic"
     end
     false
   end

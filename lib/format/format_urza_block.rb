@@ -3,7 +3,7 @@ class FormatUrzaBlock < Format
     "Urza Block"
   end
 
-  def build_format_sets
+  def build_included_sets
     Set["us", "ul", "ud"]
   end
 end

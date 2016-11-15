@@ -3,7 +3,7 @@ class FormatMasquesBlock < Format
     "Masques Block"
   end
 
-  def build_format_sets
+  def build_included_sets
     Set["mm", "ne", "pr"]
   end
 end

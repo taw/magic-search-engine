@@ -3,7 +3,7 @@ class FormatInnistradBlock < Format
     "Innistrad Block"
   end
 
-  def build_format_sets
+  def build_included_sets
     Set["isd", "dka", "avr"]
   end
 end

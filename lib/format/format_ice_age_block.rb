@@ -3,7 +3,7 @@ class FormatIceAgeBlock < Format
     "Ice Age Block"
   end
 
-  def build_format_sets
+  def build_included_sets
     Set["ia", "ai", "cs"]
   end
 end

@@ -3,7 +3,7 @@ class FormatOdysseyBlock < Format
     "Odyssey Block"
   end
 
-  def build_format_sets
+  def build_included_sets
     Set["od", "tr", "ju"]
   end
 end
