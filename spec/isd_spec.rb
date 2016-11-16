@@ -69,4 +69,15 @@ describe "Innistrad Block" do
       "Insectile Aberration",
     )
   end
+
+  it "! and unicode" do
+    "seance".should return_cards("Seance")
+    "séance".should return_cards("Seance")
+    "Seance".should return_cards("Seance")
+    "Séance".should return_cards("Seance")
+    "!seance".should return_cards("Seance")
+    "!séance".should return_cards("Seance")
+    "!Seance".should return_cards("Seance")
+    "!Séance".should return_cards("Seance")
+  end
 end
