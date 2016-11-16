@@ -141,7 +141,8 @@ class CardDatabase
     end
     data["cards"].each do |card_name, card_data|
       next if card_data["layout"] == "token" # Do not include tokens
-      card = @cards[card_name.downcase] = Card.new(card_data.reject{|k,_| k == "printings"})
+      normalized_name = card_name.downcase.tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
+      card = @cards[normalized_name] = Card.new(card_data.reject{|k,_| k == "printings"})
       color_identity_cache[card_name] = card.partial_color_identity
       if card_data["names"]
         multipart_cards[card_name] = card_data["names"] - [card_name]
