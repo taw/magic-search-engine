@@ -193,3 +193,8 @@ task "clean" do
     FileUtils.rm ds_store
   end
 end
+
+desc "Fetch Penny Dreadful card list"
+task "penny_dreadful:update" do
+  sh "wget", "http://pdmtgo.com/legal_cards.txt", "-O", "data/penny_dreadful_legal_cards.txt"
+end

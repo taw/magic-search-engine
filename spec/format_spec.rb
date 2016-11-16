@@ -551,5 +551,13 @@ describe "Formats" do
     assert_count_results 'restricted:"duel commander"', 9
   end
 
+  # We don't have historical legality for Petty Dreadful yet
+  it "penny dreadful" do
+    assert_search_include 'f:"penny dreadful"', *FormatPennyDreadful::PrimaryCards
+    assert_search_results 'f:"penny dreadful"', *FormatPennyDreadful.all_cards(db)
+    # If card is in Penny Dreadful, its other side is as well
+    assert_search_results 'f:pd other:-f:pd'
+  end
+
   ## TODO - Extended, and various weirdo formats
 end
