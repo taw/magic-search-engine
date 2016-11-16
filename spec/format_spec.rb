@@ -544,5 +544,12 @@ describe "Formats" do
     assert_legality "vintage", "isd", "Blazing Torch", "legal"
   end
 
+  # We don't have historical legality for Duel Commander yet,
+  # maybe add it at some later point
+  it "duel commander" do
+    assert_count_results 'banned:"duel commander"', 46
+    assert_count_results 'restricted:"duel commander"', 9
+  end
+
   ## TODO - Extended, and various weirdo formats
 end

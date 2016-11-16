@@ -117,6 +117,7 @@ class Format
         "vintage"                     => FormatVintage,
         "commander"                   => FormatCommander,
         "pauper"                      => FormatPauper,
+        "duel commander"              => FormatDuelCommander,
       }
     end
 
