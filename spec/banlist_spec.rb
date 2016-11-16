@@ -15,6 +15,8 @@ describe "Banlist" do
       "modern unbanned", "Ancestral Vision",
       "modern unbanned", "Sword of the Meek",
       "vintage restricted", "Lodestone Golem"
+    assert_banlist_changes "November 2016",
+      "pauper banned", "Peregrine Drake"
   end
 
   it "banlist_2015" do

@@ -85,6 +85,10 @@ BanListChangeDates = {
    "ogw"=>"2016-01-22",
    "soi"=>"2016-04-08",
 
+  # Irregular emergency ban
+  # http://magic.wizards.com/en/articles/archive/magic-online/pauper-banned-list-change-2016-11-03
+  "16 nov 2016" => "16 nov 2016",
+
   # Aliases
   "may 2013" => "2013-05-03",
 
@@ -175,6 +179,7 @@ DynamicBanListData = {
     "Temporal Fissure"  => {"ths" => "banned"},
     "Treasure Cruise"   => {"dtk" => "banned"},
     "Cloud of Faeries"  => {"ogw" => "banned"},
+    "Peregrine Drake"   => {"16 nov 2016" => "banned"},
   },
   "two-headed giant" => {
     "Erayo, Soratami Ascendant" => {"sep 2005" => "banned"},
