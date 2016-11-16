@@ -29,6 +29,7 @@ describe "New Phyrexia" do
       "Legacy" => "legal",
       "Vintage" => "legal",
       "Commander" => "legal",
+      "Duel Commander" => "legal",
     })
   end
 
@@ -40,6 +41,7 @@ describe "New Phyrexia" do
       "Legacy" => "legal",
       "Vintage" => "legal",
       "Commander" => "legal",
+      "Duel Commander" => "legal",
     })
   end
 
