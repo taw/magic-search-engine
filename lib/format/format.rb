@@ -118,6 +118,8 @@ class Format
         "commander"                   => FormatCommander,
         "pauper"                      => FormatPauper,
         "duel commander"              => FormatDuelCommander,
+        "penny dreadful"              => FormatPennyDreadful,
+        "pd"                          => FormatPennyDreadful,
       }
     end
 
