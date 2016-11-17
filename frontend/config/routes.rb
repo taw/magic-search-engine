@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "set" => "set#index"
   get "artist/:id" => "artist#show"
   get "artist" => "artist#index"
+  get "format" => "format#index"
   get "help/syntax" => "help#syntax"
   get "help/rules" => "help#rules"
   get "help/contact" => "help#contact"

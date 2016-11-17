@@ -1,0 +1,9 @@
+.row
+  .col-xs-12
+    %h3 Magic Formats
+    %p
+      Magic has a lot of official and unofficial formats. mtg.wtf contains legality information for the following:
+    %ul
+      - @formats.sort_by(&:format_pretty_name).each do |format|
+        %li
+          = format.format_pretty_name
