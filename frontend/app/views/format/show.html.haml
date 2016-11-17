@@ -1,0 +1,30 @@
+.row
+  .col-xs-12
+    %h3 Formats &mdash; #{@format.format_pretty_name}
+    - if @format.included_sets
+      %p
+        Format includes cards from the following sets:
+      %ul
+        - @included_sets.each do |set|
+          %li
+            = link_to set.name, controller: "set", action: "show", id: set.code
+
+    %h4 Banned cards
+    - if @banned.present?
+      %ul
+        - @banned.sort.each do |card|
+          %li
+            = link_to_card(card) do
+              = card.name
+    - else
+      %p There are no banned cards.
+
+    %h4 Restricted cards
+    - if @restricted.present?
+      %ul
+        - @restricted.sort.each do |card|
+          %li
+            = link_to_card(card) do
+              = card.name
+    - else
+      %p There are no restricted cards.
