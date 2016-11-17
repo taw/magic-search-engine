@@ -6,4 +6,4 @@
     %ul
       - @formats.sort_by(&:format_pretty_name).each do |format|
         %li
-          = format.format_pretty_name
+          = link_to format.format_pretty_name, action: "show", id: format.format_pretty_name.parameterize
