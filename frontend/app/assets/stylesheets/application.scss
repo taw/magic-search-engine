@@ -1,6 +1,18 @@
 // Custom bootstrap variables must be set or imported before bootstrap itself.
 @import "bootstrap";
 
+.container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.navbar {
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+  margin-top: auto;
+}
+
 a.site_logo {
   color: black;
 }
@@ -40,11 +52,6 @@ form.search {
 
 .search_form_row {
   margin-bottom: 1em;
-}
-
-.nav_row {
-  margin-top: 1em;
-  text-align: center;
 }
 
 .glossary_entry {
