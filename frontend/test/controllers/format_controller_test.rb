@@ -33,7 +33,7 @@ class FormatControllerTest < ActionController::TestCase
     assert_select %Q[h3:contains("Innistrad Block")]
     assert_select %Q[a:contains("Innistrad")]
     assert_select %Q[a:contains("Dark Ascension")]
-    assert_select %Q[a:contains("Avacyr Restored")]
+    assert_select %Q[a:contains("Avacyn Restored")]
     assert_select %Q[a:contains("Lingering Souls")]
     assert_select %Q[p:contains("There are no restricted cards.")]
   end
