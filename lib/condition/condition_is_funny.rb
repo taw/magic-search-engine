@@ -1,9 +1,6 @@
 class ConditionIsFunny < ConditionSimple
-  # There are some one off funny cards elsewhere
-  # Basic lands here aren't exactly funny
-  # Shouldn't it just test border:silver ?
   def match?(card)
-    %W[uh ug uqc hho].include?(card.set_code)
+    card.funny
   end
 
   def to_s
