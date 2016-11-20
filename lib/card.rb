@@ -10,7 +10,9 @@ class Card
 
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
-  attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name, :mana_hash, :typeline
+  attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name
+  attr_reader :mana_hash, :typeline, :funny
+
   def initialize(data)
     @printings = []
 
@@ -19,7 +21,11 @@ class Card
     @names = data["names"] &&  data["names"].map{|n| normalize_name(n)}
     @layout = data["layout"]
     @colors = data["colors"] || ""
-    @text = (data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-").gsub(/\([^\(\)]*\)/, "").sub(/\s*\z/, "")
+    @text = (data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
+    @funny = data["funny"]
+    unless @funny
+      @text = @text.gsub(/\([^\(\)]*\)/, "").sub(/\s*\z/, "")
+    end
     @mana_cost = data["manaCost"] ? data["manaCost"].downcase : nil
     calculate_mana_hash
     @reserved = data["reserved"] || false

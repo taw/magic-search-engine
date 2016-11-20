@@ -97,7 +97,12 @@ RSpec::Matchers.define :equal_search do |query_string2|
     results1 = search(query_string1)
     results2 = search(query_string2)
     if results1 != results2
-      "Expected `#{query_string1}' and `#{query_string2}' to return same results"
+      "Expected `#{query_string1}' and `#{query_string2}' to return same results, got:\n"+
+        (results1 | results2).sort.map{|c|
+        (results1.include?(c) ? "[*]" : "[ ]") +
+        (results2.include?(c) ? "[*]" : "[ ]") +
+        "#{c}\n"
+      }.join
     else
       "Test is unreliable because results are empty: #{query_string1}"
     end

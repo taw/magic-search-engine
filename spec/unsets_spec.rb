@@ -1,5 +1,5 @@
 describe "Unsets" do
-  include_context "db", "ug", "uh", "uqc"
+  include_context "db", "ug", "uh", "uqc", "hho"
 
   it "half power" do
     "pow=1"  .should exclude_cards "Little Girl"
@@ -39,7 +39,13 @@ describe "Unsets" do
     "is:silver-bordered".should include_cards "Little Girl"
     "not:black-bordered".should include_cards "Little Girl"
     "not:white-bordered".should include_cards "Little Girl"
-    "not:funny"         .should return_no_cards
+    "not:funny"         .should return_cards(
+      "Forest",
+      "Island",
+      "Mountain",
+      "Plains",
+      "Swamp",
+    )
     "not:new"           .should include_cards(
       "1996 World Champion",
       "Fraternal Exaltation",
@@ -47,7 +53,7 @@ describe "Unsets" do
       "Shichifukujin Dragon",
       "Splendid Genesis"
     )
-    "not:new".should equal_search "(-e:uh) -(Robot Chicken)"
+    "not:new".should equal_search "-e:uh,hho -(Robot Chicken)"
     "not:silver-bordered".should return_cards(
       "Forest",
       "Mountain",
@@ -88,7 +94,7 @@ describe "Unsets" do
   it "other:" do
     assert_search_results "other:c:g", "What", "Who", "When", "Where"
     # Any other has cmc != 4
-    assert_search_results "other:-cmc=4", "Who", "What", "When", "Where", "Why"
+    assert_search_results "other:-cmc=4", "Who", "What", "When", "Where", "Why", "Naughty", "Nice"
     # Doesn't have other side with cmc=4
     # This includes Where (cmc=4) and all single-sided cards
     assert_search_include "-other:cmc=4", "Where", "Chicken Egg"
@@ -115,7 +121,7 @@ describe "Unsets" do
   end
 
   it "//" do
-    assert_search_results "//", "Who", "What", "When", "Where", "Why", "B.F.M. (Big Furry Monster)"
+    assert_search_results "//", "Who", "What", "When", "Where", "Why", "B.F.M. (Big Furry Monster)", "Naughty", "Nice"
     assert_search_results "When // Where // What", "Who", "What", "When", "Where", "Why"
     assert_search_results "When // Where // Whatever"
     assert_search_results "c:u // c:w // c:r", "Who", "What", "When", "Where", "Why"
