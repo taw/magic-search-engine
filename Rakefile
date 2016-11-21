@@ -69,7 +69,9 @@ task "pics:hq" do
   total = Hash.new(0)
 
   db.sets.each do |set_code, set|
-    matching_dirs = source_base.children.select{|d| d.basename.to_s != "Tokens" and d.basename.to_s != "Emblems"}.select(&:directory?).select{|d| d.basename.to_s == set.gatherer_code}
+    matching_dirs = source_base.children.select{|d| d.basename.to_s != "Tokens" and d.basename.to_s != "Emblems"}.select(&:directory?).select{|d|
+      d.basename.to_s.downcase == set.code.downcase or d.basename.to_s.downcase == set.gatherer_code.downcase
+    }
     if matching_dirs.size == 0
       source_dir = nil
       # warn "Set missing: #{set_code}"
