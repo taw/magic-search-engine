@@ -36,20 +36,28 @@ class CardController < ApplicationController
 
   # Logic tested in CLIFrontend, probably should be moved to database
   # as this untested copypasta is nasty
+  # FIXME: And now it's not even the same anymore
   def index
     @search = (params[:q] || "").strip
     page = [1, params[:page].to_i].max
 
-    if @search.present?
-      query = Query.new(@search)
-      @title = @search
-      results = $CardDatabase.search(query)
-      @warnings = results.warnings
-      @cards = choose_best_printing(results.printings)
-    else
+    unless @search.present?
       @autofocus = true
       @cards = []
+      return
     end
+
+    @title = @search
+    query = Query.new(@search)
+    results = $CardDatabase.search(query)
+    @warnings = results.warnings
+
+    if query.ungrouped?
+      @cards = results.printings.map{|cp| [cp, [cp]]}
+    else
+      @cards = choose_best_printing(results.printings)
+    end
+
     @cards = @cards.paginate(page: page, per_page: 25)
   end
 

@@ -9,6 +9,10 @@ class Date
 end
 
 class Query
+  def ungrouped?
+    !!@metadata[:ungrouped]
+  end
+
   def initialize(query_string)
     @cond, @metadata = QueryParser.new.parse(query_string)
 
