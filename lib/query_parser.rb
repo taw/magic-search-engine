@@ -12,7 +12,6 @@ class QueryParser
     @metadata = {}
     @tokens = []
     str = query_string.strip
-    str = str.sub(/\A\+\+/, "") # Disregard ++ for compatibility
     if str =~ /\A!(.*)\z/
       name = $1
       name = name.sub(/\A"(.*)"\z/) { $1 }
@@ -113,6 +112,8 @@ private
         @tokens << [:test, ConditionBorder.new(s[1].downcase)]
       elsif s.scan(/sort:(\w+)/)
         @metadata[:sort] = s[1].downcase
+      elsif s.scan(/\+\+/)
+        @metadata[:ungrouped] = true
       elsif s.scan(/time:(?:"(.*?)"|([\.\w]+))/i)
         # Parsing is downstream responsibility
         @metadata[:time] = (s[1] || s[2]).downcase
