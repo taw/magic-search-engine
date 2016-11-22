@@ -79,7 +79,7 @@ class Query
         [c.toughness ? 0 : 1, -c.toughness.to_i]
       else # "name" or unknown key
         []
-      end + [c.name, c.set.regular? ? 0 : 1, -c.release_date.to_i_sort]
+      end + [c.name, c.set.regular? ? 0 : 1, -c.release_date.to_i_sort, c.set.name, c.number.to_i, c.number]
     end
     SearchResults.new(results, logger)
   end
