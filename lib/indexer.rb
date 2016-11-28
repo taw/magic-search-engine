@@ -1,14 +1,14 @@
-require_relative "ban_list"
-require_relative "format/format"
-require_relative "indexer/card_set"
-require_relative "indexer/oracle_verifier"
-require_relative "indexer/foreign_names_verifier"
 require "date"
 require "ostruct"
 require "json"
 require "set"
 require "pathname"
 require "pry"
+require_relative "ban_list"
+require_relative "format/format"
+require_relative "indexer/card_set"
+require_relative "indexer/oracle_verifier"
+require_relative "indexer/foreign_names_verifier"
 
 # ActiveRecord FTW
 class Hash
@@ -143,6 +143,15 @@ class Indexer
       end
     end
 
+    printings = card_data["printings"].map{|set_code| @sets_code_translator[set_code]}
+
+    # arena/rep are just reprints, and some are uncards
+    if printings.all?{|set_code| %W[uh ug uqc hho arena rep].include?(set_code) }
+      funny = true
+    else
+      funny = nil
+    end
+
     card_data.slice(
       "name",
       "names",
@@ -164,6 +173,7 @@ class Indexer
     ).merge(
       "printings" => [],
       "colors" => format_colors(card_data["colors"]),
+      "funny" => funny
     ).compact
   end
 
