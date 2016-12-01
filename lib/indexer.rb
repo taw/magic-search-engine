@@ -57,6 +57,7 @@ class Indexer
       "mirage block",
       "mirrodin block",
       "modern",
+      "frontier",
       "odyssey block",
       "onslaught block",
       "ravnica block",
