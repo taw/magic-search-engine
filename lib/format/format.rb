@@ -113,6 +113,7 @@ class Format
         "un-sets"                     => FormatUnsets,
         "standard"                    => FormatStandard,
         "modern"                      => FormatModern,
+        "frontier"                    => FormatFrontier,
         "legacy"                      => FormatLegacy,
         "vintage"                     => FormatVintage,
         "commander"                   => FormatCommander,
