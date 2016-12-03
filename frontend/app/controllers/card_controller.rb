@@ -42,7 +42,7 @@ class CardController < ApplicationController
     page = [1, params[:page].to_i].max
 
     unless @search.present?
-      @autofocus = true
+      @empty_page = true
       @cards = []
       return
     end
