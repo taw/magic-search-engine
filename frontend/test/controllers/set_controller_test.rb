@@ -6,7 +6,7 @@ class SetControllerTest < ActionController::TestCase
     assert_response 200
     assert_select %Q[a:contains("Magic 2015 Core Set")]
     assert_select %Q[li:contains("Magic 2015 Core Set\n(M15, 284 cards)")]
-    assert_equal "Sets - mtg.wtf", html_document.title
+    assert_equal "Sets - Lore Seeker", html_document.title
   end
 
   test "actual set" do
@@ -16,7 +16,7 @@ class SetControllerTest < ActionController::TestCase
     assert_select %Q[.results_summary:contains("It is part of Scars of Mirrodin block.")]
     assert_select %Q[h3:contains("New Phyrexia")]
     assert_select %Q[a:contains("Karn Liberated")]
-    assert_equal "New Phyrexia - mtg.wtf", html_document.title
+    assert_equal "New Phyrexia - Lore Seeker", html_document.title
   end
 
   test "fake set" do

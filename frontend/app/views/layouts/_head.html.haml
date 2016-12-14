@@ -5,10 +5,10 @@
   %meta{name: "description", content: "Advanced Search Engine for Magic: the Gathering cards"}/
   %meta{name: "keywords", content: "mtg, magic the gathering, cards, search engine"}/
   - if @title
-    %title #{@title} - mtg.wtf
+    %title #{@title} - Lore Seeker
   - else
-    %title mtg.wtf
+    %title Lore Seeker
   = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
-  %link{rel: "search", href: "http://mtg.wtf/opensearchdescription.xml", type: "application/opensearchdescription+xml", title: "mtg.wtf"}
+  %link{rel: "search", href: "http://loreseeker.fenhl.net/opensearchdescription.xml", type: "application/opensearchdescription+xml", title: "Lore Seeker"}
   = csrf_meta_tags

@@ -1,8 +1,8 @@
-Search engine for Magic: The Gathering cards.
+Search engine for official and custom Magic: The Gathering cards.
 
 ### Ruby on Rails frontend
 
-To run frontend like http://mtg.wtf/
+To run frontend like http://loreseeker.fenhl.net/
 
     $ cd frontend
     $ bundle

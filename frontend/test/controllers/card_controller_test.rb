@@ -6,7 +6,7 @@ class CardControllerTest < ActionController::TestCase
     get "show", set: "nph", id: "1"
     assert_response 200
     assert_select %Q[.cardinfo:contains("Karn Liberated")]
-    assert_equal "Karn Liberated - mtg.wtf", html_document.title
+    assert_equal "Karn Liberated - Lore Seeker", html_document.title
   end
 
   test "bad set" do
@@ -45,7 +45,7 @@ class CardControllerTest < ActionController::TestCase
   test "show card gallery - first card in first printing" do
     get "gallery", set: "al", id: "281"
     assert_response 200
-    assert_equal "Island - mtg.wtf", html_document.title
+    assert_equal "Island - Lore Seeker", html_document.title
   end
 
   # search
@@ -54,14 +54,14 @@ class CardControllerTest < ActionController::TestCase
     assert_response 200
     assert_select ".cardinfo", 0
     assert_select ".results_summary", 0
-    assert_equal "mtg.wtf", html_document.title
+    assert_equal "Lore Seeker", html_document.title
   end
 
   test "search all" do
     get "index", q: "sort:new"
     assert_response 200
     assert_select ".cardinfo", 25
-    assert_equal "sort:new - mtg.wtf", html_document.title
+    assert_equal "sort:new - Lore Seeker", html_document.title
   end
 
   test "nothing found" do
@@ -69,7 +69,7 @@ class CardControllerTest < ActionController::TestCase
     assert_response 200
     assert_select ".cardinfo", 0
     assert_select %Q[.results_summary:contains("No cards found")]
-    assert_equal "optimus prime - mtg.wtf", html_document.title
+    assert_equal "optimus prime - Lore Seeker", html_document.title
   end
 
   test "search something" do
@@ -77,7 +77,7 @@ class CardControllerTest < ActionController::TestCase
     assert_response 200
     assert_select %Q[.cardinfo:contains("Karn Liberated")]
     assert_select %Q[.results_summary:contains("1 card found")]
-    assert_equal "Karn Liberated - mtg.wtf", html_document.title
+    assert_equal "Karn Liberated - Lore Seeker", html_document.title
   end
 
   # color indicator
