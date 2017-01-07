@@ -11,7 +11,7 @@ class Card
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
   attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name
-  attr_reader :mana_hash, :typeline, :funny
+  attr_reader :mana_hash, :typeline, :funny, :color_indicator
 
   def initialize(data)
     @printings = []
@@ -28,6 +28,7 @@ class Card
     end
     @mana_cost = data["manaCost"] ? data["manaCost"].downcase : nil
     calculate_mana_hash
+    calculate_color_indicator
     @reserved = data["reserved"] || false
     @types = ["types", "subtypes", "supertypes"].map{|t| data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "")}.to_set
     @cmc = data["cmc"] || 0
@@ -186,5 +187,38 @@ class Card
       ci << tci if tci
     end
     ci.uniq.join
+  end
+
+  def calculate_color_indicator
+    colors_inferred_from_mana_cost = (@mana_hash || {}).keys
+      .flat_map do |x|
+        next [] if x =~ /[?xyzc]/
+        x = x.sub(/[p2]/, "")
+        if x =~ /\A[wubrg]+\z/
+          x.chars
+        else
+          raise "Unknown mana cost: #{x}"
+        end
+      end
+
+    actual_colors = @colors.chars
+
+    if colors_inferred_from_mana_cost.sort == actual_colors.sort
+      @color_indicator = nil
+    else
+      names = {"w" => "white", "u" => "blue", "b" => "black", "r" => "red", "g" => "green"}
+      color_indicator = names.map{|c,cv| actual_colors.include?(c) ? cv : nil}.compact
+      case color_indicator.size
+      when 5
+        @color_indicator = "all colors"
+      when 1, 2
+        @color_indicator = color_indicator.join(" and ")
+      when 0
+        # devoid and Ghostfire
+        @color_indicator = "colorless"
+      else # find phrasing for 3/4 colors
+        binding.pry
+      end
+    end
   end
 end

@@ -5,8 +5,12 @@
 
 .typeline= card.typeline
 
-- if card.text.present?
-  .oracle= format_oracle_text(card.text)
+- if card.color_indicator.present? or card.text.present?
+  .oracle
+    - if card.color_indicator.present?
+      .color_indicator= "(Color indicator: #{card.name} is #{card.color_indicator})"
+    - if card.text.present?
+      = format_oracle_text(card.text)
 
 - if card.flavor.present?
   .flavor= format_oracle_text(card.flavor)
