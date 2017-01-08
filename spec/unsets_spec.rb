@@ -115,6 +115,12 @@ describe "Unsets" do
     assert_search_equal "mana>{hw}", "mana>=w"
   end
 
+  it "! and weird card names" do
+    db.cards.values.each do |card|
+      "!#{card.name}".should return_cards(card.name)
+    end
+  end
+
   it "! //" do
     assert_search_results "!When / Where // What && Why", "Who", "What", "When", "Where", "Why"
     assert_search_results "!When // Where // Whatever"
