@@ -14,8 +14,15 @@ class QueryParser
     str = query_string.strip
     if str =~ /\A!(.*)\z/
       name = $1
-      name = name.sub(/\A"(.*)"\z/) { $1 }
-      if name =~ %r[&|/]
+      # These cards need special treatment:
+      # * "Ach! Hans, Run!"
+      # * Look at Me, I'm R&D
+      # * R&D's Secret Lair
+
+      unless name =~ /Ach.*Hans.*Run/
+        name = name.sub(/\A"(.*)"\z/) { $1 }
+      end
+      if name =~ %r[&|/] && name !~ /R&D/
         cond = ConditionExactMultipart.new(name)
       else
         cond = ConditionExact.new(name)
