@@ -121,6 +121,12 @@ describe "Unsets" do
     end
   end
 
+  it "name seacch and weird card names" do
+    db.cards.values.each do |card|
+      assert_search_include "#{card.name}", card.name
+    end
+  end
+
   it "! //" do
     assert_search_results "!When / Where // What && Why", "Who", "What", "When", "Where", "Why"
     assert_search_results "!When // Where // Whatever"

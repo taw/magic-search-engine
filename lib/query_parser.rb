@@ -45,6 +45,9 @@ private
         # and is default, skip it
       elsif s.scan(/or\b/i)
         @tokens << [:or]
+      elsif s.scan(%r[(R&D\b)]i)
+        # special case, not split cards
+        @tokens << [:test, ConditionWord.new(s[1])]
       elsif s.scan(%r[[/&]+]i)
         @tokens << [:slash_slash]
       elsif s.scan(/-/)
@@ -134,7 +137,7 @@ private
         @tokens << [:part]
       elsif s.scan(/alt:/)
         @tokens << [:alt]
-      elsif s.scan(/([^-!<>=:"\s&\/()][^!<>=:"\s&\/()]*)(?=$|[\s&\/()])/i)
+      elsif s.scan(/([^-!<>=:"\s&\/()][^<>="\s&\/()]*)(?=$|[\s&\/()])/i)
         # Veil-Cursed and similar silliness
         words = s[1].split("-")
         if words.size > 1
