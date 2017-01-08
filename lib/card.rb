@@ -214,10 +214,11 @@ class Card
       when 1, 2
         @color_indicator = color_indicator.join(" and ")
       when 0
-        # devoid and Ghostfire
-        @color_indicator = "colorless"
+        # devoid and Ghostfire - for some reason they use rules text, not color indicator
+        # @color_indicator = "colorless"
+        @color_indicator = nil
       else # find phrasing for 3/4 colors
-        binding.pry
+        raise
       end
     end
   end

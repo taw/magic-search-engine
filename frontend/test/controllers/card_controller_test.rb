@@ -79,4 +79,32 @@ class CardControllerTest < ActionController::TestCase
     assert_select %Q[.results_summary:contains("1 card found")]
     assert_equal "Karn Liberated - mtg.wtf", html_document.title
   end
+
+  # color indicator
+  test "devoid" do
+    get "index", q: "Complete Disregard"
+    assert_equal "Devoid Exile target creature with power 3 or less.",
+      html_document.at(".oracle").text.strip
+  end
+
+  test "color indicator" do
+    get "index", q: "Ancestral Vision"
+    assert_includes html_document.at(".oracle").text.strip, "(Color indicator: Ancestral Vision is blue)"
+  end
+
+  test "DFCs" do
+    get "index", q: "Garruk, the Veil-Cursed"
+    assert_includes html_document.at(".oracle").text.strip, "(Color indicator: Garruk, the Veil-Cursed is black and green)"
+  end
+
+  test "Transguild Courier" do
+    get "index", q: "Transguild Courier"
+    assert_includes html_document.at(".oracle").text.strip, "(Color indicator: Transguild Courier is all colors)"
+  end
+
+  test "Ghostfire" do
+    get "index", q: "Ghostfire"
+    assert_equal "Ghostfire is colorless.Ghostfire deals 3 damage to target creature or player.",
+      html_document.at(".oracle").text.strip
+  end
 end
