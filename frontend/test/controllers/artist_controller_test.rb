@@ -4,8 +4,8 @@ class ArtistControllerTest < ActionController::TestCase
   test "list of artists" do
     get "index"
     assert_response 200
-    assert_select %Q[a:contains("Steve Argyle")]
-    assert_select %Q[li:contains("Steve Argyle\n(99 cards)")]
+    assert_select %Q[a:contains("Yang Hong")]
+    assert_select %Q[li:contains("Yang Hong\n(8 cards)")]
     assert_equal "Artists - mtg.wtf", html_document.title
   end
 
