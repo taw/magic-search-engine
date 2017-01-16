@@ -1,7 +1,7 @@
 .row
   .col-xs-12
     %h4 Magic: The Gathering Comprehensive Rules
-    %p These rules are effective as of September 30, 2016.
+    %p These rules are effective as of November 11, 2016.
     %h3{id: "section-introduction"} Introduction
     %p This document is designed for people who’ve moved beyond the basics of the Magic: The Gathering® game. If you’re a beginning Magic™ player, you’ll probably find these rules intimidating. They’re intended to be the ultimate authority for the game, and you won’t usually need to refer to them except in specific cases or during competitive games.
     %p For casual play and most ordinary situations, you’ll find what you need in the Magic: The Gathering basic rules. You can download a copy of the basic rules PDF from the Wizards of the Coast® Magic rules website at Magic.Wizards.com/Rules. If you’re sure this is where you want to be, keep reading.
@@ -749,10 +749,10 @@
       .rule_text The text box of a leveler card contains two level symbols, each of which is a keyword ability that represents a static ability. The level symbol includes either a range of numbers, indicated here as “N1-N2,” or a single number followed by a plus sign, indicated here as “N3+.” Any abilities printed within the same text box striation as a level symbol are part of its static ability. The same is true of the power/toughness box printed within that striation, indicated here as “[P/T].” See rule <a href="#section-710">710</a>, “Leveler Cards.”
     .rule{id: "section-107-8a"}
       .rule_id 107.8a
-      .rule_text “<span class="manacost">{LEVEL N1-N2}</span> [Abilities] [P/T]” means “As long as this creature has at least N1 level counters on it, but no more than N2 level counters on it, it’s [P/T] and has [abilities].”
+      .rule_text “<span class="manacost">{LEVEL N1-N2}</span> [Abilities] [P/T]” means “As long as this creature has at least N1 level counters on it, but no more than N2 level counters on it, it has base power and toughness [P/T] and has [abilities].”
     .rule{id: "section-107-8b"}
       .rule_id 107.8b
-      .rule_text “<span class="manacost">{LEVEL N3+}</span> [Abilities] [P/T]” means “As long as this creature has N3 or more level counters on it, it’s [P/T] and has [abilities].”
+      .rule_text “<span class="manacost">{LEVEL N3+}</span> [Abilities] [P/T]” means “As long as this creature has N3 or more level counters on it, it has base power and toughness [P/T] and has [abilities].”
     .rule{id: "section-107-9"}
       .rule_id 107.9.
       .rule_text A tombstone icon appears to the left of the name of many Odyssey™ block cards with abilities that are relevant in a player’s graveyard. The purpose of the icon is to make those cards stand out when they’re in a graveyard. This icon has no effect on game play.
@@ -2925,7 +2925,7 @@
       .rule_text The end of combat step has no turn-based actions. Once it begins, the active player gets priority. (See rule <a href="#section-116">116</a>, “Timing and Priority.”)
     .rule{id: "section-511-2"}
       .rule_id 511.2.
-      .rule_text Abilities that trigger “at end of combat” trigger as the end of combat damage step begins. Abilities that last “until end of combat” expire at the end of the combat phase.
+      .rule_text Abilities that trigger “at end of combat” trigger as the end of combat step begins. Effects that last “until end of combat” expire at the end of the combat phase.
     .rule{id: "section-511-3"}
       .rule_id 511.3.
       .rule_text As soon as the end of combat step ends, all creatures and planeswalkers are removed from combat. After the end of combat step ends, the combat phase is over and the postcombat main phase begins (see rule <a href="#section-505">505</a>).
@@ -3008,7 +3008,7 @@
       .rule_text Example: You cast Altar’s Reap, which costs <span class="manacost"><span class="mana mana-1">{1}</span><span class="mana mana-b">{B}</span></span> and has an additional cost of sacrificing a creature. You sacrifice Thunderscape Familiar, whose effect makes your black spells cost <span class="manacost"><span class="mana mana-1">{1}</span></span> less to cast. Because a spell’s total cost is “locked in” before payments are actually made, you pay <span class="manacost"><span class="mana mana-b">{B}</span></span>, not <span class="manacost"><span class="mana mana-1">{1}</span><span class="mana mana-b">{B}</span></span>, even though you’re sacrificing the Familiar.
     .rule{id: "section-601-2i"}
       .rule_id 601.2i
-      .rule_text Once the steps described in <a href="#section-601-2a">601.2a</a>–h are completed, the spell becomes cast. Any abilities that trigger when a spell is cast or put onto the stack trigger at this time. If the spell’s controller had priority before casting it, he or she gets priority.
+      .rule_text Once the steps described in <a href="#section-601-2a">601.2a</a>–h are completed, effects that modify the characteristics of the spell as it’s cast are applied, then the spell becomes cast. Any abilities that trigger when a spell is cast or put onto the stack trigger at this time. If the spell’s controller had priority before casting it, he or she gets priority.
     .rule{id: "section-601-3"}
       .rule_id 601.3.
       .rule_text A player can’t begin to cast a spell unless a rule or effect allows that player to cast it. If that player is no longer allowed to cast that spell after completing its proposal, the casting of the spell is illegal and the game returns to the moment before the casting of that spell was proposed (see rule <a href="#section-720">720</a>, “Handling Illegal Actions”).
@@ -3149,20 +3149,16 @@
       .rule_text Enters-the-battlefield abilities trigger when a permanent enters the battlefield. These are written, “When [this object] enters the battlefield, . . . “ or “Whenever a [type] enters the battlefield, . . .” Each time an event puts one or more permanents onto the battlefield, all permanents on the battlefield (including the newcomers) are checked for any enters-the-battlefield triggers that match the event.
     .rule{id: "section-603-6b"}
       .rule_id 603.6b
-      .rule_text Continuous effects that modify characteristics of a permanent do so the moment the permanent is on the battlefield (and not before then). The permanent is never on the battlefield with its unmodified characteristics. Continuous effects don’t apply before the permanent is on the battlefield, however (see rule <a href="#section-603-6e">603.6e</a>).
+      .rule_text Continuous effects that modify characteristics of a permanent do so the moment the permanent is on the battlefield (and not before then). The permanent is never on the battlefield with its unmodified characteristics. Continuous effects don’t apply before the permanent is on the battlefield, however (see rule <a href="#section-603-6d">603.6d</a>).
       .rule_text Example: If an effect reads “All lands are creatures” and a land card is played, the effect makes the land card into a creature the moment it enters the battlefield, so it would trigger abilities that trigger when a creature enters the battlefield. Conversely, if an effect reads “All creatures lose all abilities” and a creature card with an enters-the-battlefield triggered ability enters the battlefield, that effect will cause it to lose its abilities the moment it enters the battlefield, so the enters-the-battlefield ability won’t trigger.
     .rule{id: "section-603-6c"}
       .rule_id 603.6c
-      .rule_text Leaves-the-battlefield abilities trigger when a permanent moves from the battlefield to another zone, or when a phased-in permanent leaves the game because its owner leaves the game. These are written as, but aren’t limited to, “When [this object] leaves the battlefield, . . .” or “Whenever [something] is put into a graveyard from the battlefield, . . . .” An ability that attempts to do something to the card that left the battlefield checks for it only in the first zone that it went to. An ability that triggers when a card is put into a certain zone “from anywhere” is never treated as a leaves-the-battlefield ability, even if an object is put into that zone from the battlefield.
+      .rule_text Leaves-the-battlefield abilities trigger when a permanent moves from the battlefield to another zone, or when a phased-in permanent leaves the game because its owner leaves the game. These are written as, but aren’t limited to, “When [this object] leaves the battlefield, . . .” or “Whenever [something] is put into a graveyard from the battlefield, . . . .” (See also rule <a href="#section-603-10">603.10</a>.) An ability that attempts to do something to the card that left the battlefield checks for it only in the first zone that it went to. An ability that triggers when a card is put into a certain zone “from anywhere” is never treated as a leaves-the-battlefield ability, even if an object is put into that zone from the battlefield.
     .rule{id: "section-603-6d"}
       .rule_id 603.6d
-      .rule_text Normally, objects that exist immediately after an event are checked to see if the event matched any trigger conditions. Continuous effects that exist at that time are used to determine what the trigger conditions are and what the objects involved in the event look like. However, some triggered abilities must be treated specially. Leaves-the-battlefield abilities, abilities that trigger when a card leaves a graveyard, abilities that trigger when a permanent phases out, abilities that trigger when an object that all players can see is put into a hand or library, abilities that trigger specifically when an object becomes unattached, abilities that trigger when a player loses control of an object, and abilities that trigger when a player planeswalks away from a plane will trigger based on their existence, and the appearance of objects, prior to the event rather than afterward. The game has to “look back in time” to determine if these abilities trigger.
-      .rule_text Example: Two creatures are on the battlefield along with an artifact that has the ability “Whenever a creature dies, you gain 1 life.” Someone plays a spell that destroys all artifacts, creatures, and enchantments. The artifact’s ability triggers twice, even though the artifact goes to its owner’s graveyard at the same time as the creatures.
+      .rule_text Some permanents have text that reads “[This permanent] enters the battlefield with . . . ,” “As [this permanent] enters the battlefield . . . ,” “[This permanent] enters the battlefield as . . . ,” or “[This permanent] enters the battlefield tapped.” Such text is a static ability—not a triggered ability—whose effect occurs as part of the event that puts the permanent onto the battlefield.
     .rule{id: "section-603-6e"}
       .rule_id 603.6e
-      .rule_text Some permanents have text that reads “[This permanent] enters the battlefield with . . . ,” “As [this permanent] enters the battlefield . . . ,” “[This permanent] enters the battlefield as . . . ,” or “[This permanent] enters the battlefield tapped.” Such text is a static ability—not a triggered ability—whose effect occurs as part of the event that puts the permanent onto the battlefield.
-    .rule{id: "section-603-6f"}
-      .rule_id 603.6f
       .rule_text Some Auras have triggered abilities that trigger on the enchanted permanent leaving the battlefield. These triggered abilities can find the new object that permanent card became in the zone it moved to; they can also find the new object the Aura card became in its owner’s graveyard after state-based actions have been checked. See rule <a href="#section-400-7">400.7</a>.
     .rule{id: "section-603-7"}
       .rule_id 603.7.
@@ -3197,6 +3193,31 @@
       .rule_text Some triggered abilities trigger specifically when a player loses the game. These abilities trigger when a player loses or leaves the game, regardless of the reason, unless that player leaves the game as the result of a draw. See rule <a href="#section-104-3">104.3</a>.
     .rule{id: "section-603-10"}
       .rule_id 603.10.
+      .rule_text Normally, objects that exist immediately after an event are checked to see if the event matched any trigger conditions, and continuous effects that exist at that time are used to determine what the trigger conditions are and what the objects involved in the event look like. However, some triggered abilities are exceptions to this rule; the game “looks back in time” to determine if those abilities trigger, using the existence of those abilities and the appearance of objects immediately prior to the event. The list of exceptions is as follows:
+    .rule{id: "section-603-10a"}
+      .rule_id 603.10a
+      .rule_text Some zone-change triggers look back in time. These are leaves-the-battlefield abilities, abilities that trigger when a card leaves a graveyard, and abilities that trigger when an object that all players can see is put into a hand or library.
+      .rule_text Example: Two creatures are on the battlefield along with an artifact that has the ability “Whenever a creature dies, you gain 1 life.” Someone plays a spell that destroys all artifacts, creatures, and enchantments. The artifact’s ability triggers twice, even though the artifact goes to its owner’s graveyard at the same time as the creatures.
+    .rule{id: "section-603-10b"}
+      .rule_id 603.10b
+      .rule_text Abilities that trigger when a permanent phases out look back in time.
+    .rule{id: "section-603-10c"}
+      .rule_id 603.10c
+      .rule_text Abilities that trigger specifically when an object becomes unattached look back in time.
+    .rule{id: "section-603-10d"}
+      .rule_id 603.10d
+      .rule_text Abilities that trigger when a player loses control of an object look back in time.
+    .rule{id: "section-603-10e"}
+      .rule_id 603.10e
+      .rule_text Abilities that trigger when a spell is countered look back in time.
+    .rule{id: "section-603-10f"}
+      .rule_id 603.10f
+      .rule_text Abilities that trigger when a player loses the game look back in time.
+    .rule{id: "section-603-10g"}
+      .rule_id 603.10g
+      .rule_text Abilities that trigger when a player planeswalks away from a plane look back in time.
+    .rule{id: "section-603-11"}
+      .rule_id 603.11.
       .rule_text Some objects have a static ability that’s linked to one or more triggered abilities. (See rule <a href="#section-607">607</a>, “Linked Abilities.”) These objects combine the abilities into one paragraph, with the static ability first, followed by each triggered ability that’s linked to it. A very few objects have triggered abilities which are written with the trigger condition in the middle of the ability, rather than at the beginning.
       .rule_text Example: An ability that reads “Reveal the first card you draw each turn. Whenever you reveal a basic land card this way, draw a card” is a static ability linked to a triggered ability.
     .rule{id: "section-604"}
@@ -3323,7 +3344,7 @@
       .rule_text If an object has an ability printed on it that causes a player to pay a cost as it enters the battlefield and an ability printed on it that refers to the cost paid “as [this object] entered the battlefield,” these abilities are linked. The second ability refers only to a cost paid as a result of the first ability.
     .rule{id: "section-607-2g"}
       .rule_id 607.2g
-      .rule_text If an object has both a static ability and one or more triggered abilities printed on it in the same paragraph, each of those triggered abilities is linked to the static ability. Each triggered ability refers only to actions taken as a result of the static ability. See rule <a href="#section-603-10">603.10</a>.
+      .rule_text If an object has both a static ability and one or more triggered abilities printed on it in the same paragraph, each of those triggered abilities is linked to the static ability. Each triggered ability refers only to actions taken as a result of the static ability. See rule <a href="#section-603-11">603.11</a>.
     .rule{id: "section-607-2h"}
       .rule_id 607.2h
       .rule_text If an object has a kicker ability printed on it and an ability printed on it that refers to whether that object was kicked, those abilities are linked. The second refers only to whether the intent to pay the kicker cost listed in the first was declared as the object was cast as a spell. If a kicker ability lists multiple costs, it will have multiple abilities linked to it. Each of those abilities will specify which kicker cost it refers to. See rule <a href="#section-702-32">702.32</a>, “Kicker.”
@@ -3795,6 +3816,9 @@
     .rule{id: "section-615-11a"}
       .rule_id 615.11a
       .rule_text A prevention effect is applied to any particular unpreventable damage event just once. It won’t invoke itself repeatedly trying to prevent that damage.
+    .rule{id: "section-615-12"}
+      .rule_id 615.12.
+      .rule_text Some triggered abilities trigger when damage that would be dealt is prevented. Such an ability triggers each time a prevention effect is applied to one or more simultaneous damage events and prevents some or all of that damage.
     .rule{id: "section-616"}
       .rule_id 616.
       .rule_text Interaction of Replacement and/or Prevention Effects
@@ -3883,7 +3907,7 @@
       .rule_text Some cards refer to cards originally printed in a particular set.
     .rule{id: "section-700-6a"}
       .rule_id 700.6a
-      .rule_text One card (City in a Bottle) refers to permanents and cards with the same name as a card originally printed in the Arabian Nights™ expansion. Those cards are Abu Ja’far, Aladdin, Aladdin’s Lamp, Aladdin’s Ring, Ali Baba, Ali from Cairo, Army of Allah, Bazaar of Baghdad, Bird Maiden, Bottle of Suleiman, Brass Man, Camel, City in a Bottle, City of Brass, Cuombajj Witches, Cyclone, Dancing Scimitar, Dandân, Desert, Desert Nomads, Desert Twister, Diamond Valley, Drop of Honey, Ebony Horse, Elephant Graveyard, El-Hajjâj, Erg Raiders, Erhnam Djinn, Eye for an Eye, Fishliver Oil, Flying Carpet, Flying Men, Ghazbán Ogre, Giant Tortoise, Guardian Beast, Hasran Ogress, Hurr Jackal, Ifh-Biff Efreet, Island Fish Jasconius, Island of Wak-Wak, Jandor’s Ring, Jandor’s Saddlebags, Jeweled Bird, Jihad, Junún Efreet, Juzám Djinn, Khabál Ghoul, King Suleiman, Kird Ape, Library of Alexandria, Magnetic Mountain, Merchant Ship, Metamorphosis, Mijae Djinn, Moorish Cavalry, Nafs Asp, Oasis, Old Man of the Sea, Oubliette, Piety, Pyramids, Repentant Blacksmith, Ring of Ma’rûf, Rukh Egg, Sandals of Abdallah, Sandstorm, Serendib Djinn, Serendib Efreet, Shahrazad, Sindbad, Singing Tree, Sorceress Queen, Stone-Throwing Devils, Unstable Mutation, War Elephant, Wyluli Wolf, and Ydwen Efreet.
+      .rule_text One card (City in a Bottle) refers to permanents and cards with the same name as a card originally printed in the Arabian Nights™ expansion. Those cards are Abu Ja’far, Aladdin, Aladdin’s Lamp, Aladdin’s Ring, Ali Baba, Ali from Cairo, Army of Allah, Bazaar of Baghdad, Bird Maiden, Bottle of Suleiman, Brass Man, Camel, City in a Bottle, City of Brass, Cuombajj Witches, Cyclone, Dancing Scimitar, Dandân, Desert, Desert Nomads, Desert Twister, Diamond Valley, Drop of Honey, Ebony Horse, Elephant Graveyard, El-Hajjâj, Erg Raiders, Erhnam Djinn, Eye for an Eye, Fishliver Oil, Flying Carpet, Flying Men, Ghazbán Ogre, Giant Tortoise, Guardian Beast, Hasran Ogress, Hurr Jackal, Ifh-Biff Efreet, Island Fish Jasconius, Island of Wak-Wak, Jandor’s Ring, Jandor’s Saddlebags, Jeweled Bird, Jihad, Junún Efreet, Juzám Djinn, Khabál Ghoul, King Suleiman, Kird Ape, Library of Alexandria, Magnetic Mountain, Merchant Ship, Metamorphosis, Mijae Djinn, Moorish Cavalry, Nafs Asp, Oasis, Old Man of the Sea, Oubliette, Piety, Pyramids, Repentant Blacksmith, Ring of Ma’rűf, Rukh Egg, Sandals of Abdallah, Sandstorm, Serendib Djinn, Serendib Efreet, Shahrazad, Sindbad, Singing Tree, Sorceress Queen, Stone-Throwing Devils, Unstable Mutation, War Elephant, Wyluli Wolf, and Ydwen Efreet.
     .rule{id: "section-700-6b"}
       .rule_id 700.6b
       .rule_text One card (Golgothian Sylex) refers to permanents with the same name as a card originally printed in the Antiquities™ expansion. Those cards are Amulet of Kroog, Argivian Archaeologist, Argivian Blacksmith, Argothian Pixies, Argothian Treefolk, Armageddon Clock, Artifact Blast, Artifact Possession, Artifact Ward, Ashnod’s Altar, Ashnod’s Battle Gear, Ashnod’s Transmogrant, Atog, Battering Ram, Bronze Tablet, Candelabra of Tawnos, Circle of Protection: Artifacts, Citanul Druid, Clay Statue, Clockwork Avian, Colossus of Sardia, Coral Helm, Crumble, Cursed Rack, Damping Field, Detonate, Drafna’s Restoration, Dragon Engine, Dwarven Weaponsmith, Energy Flux, Feldon’s Cane, Gaea’s Avenger, Gate to Phyrexia, Goblin Artisans, Golgothian Sylex, Grapeshot Catapult, Haunting Wind, Hurkyl’s Recall, Ivory Tower, Jalum Tome, Martyrs of Korlis, Mightstone, Millstone, Mishra’s Factory, Mishra’s War Machine, Mishra’s Workshop, Obelisk of Undoing, Onulet, Orcish Mechanics, Ornithopter, Phyrexian Gremlins, Power Artifact, Powerleech, Priest of Yawgmoth, Primal Clay, The Rack, Rakalite, Reconstruction, Reverse Polarity, Rocket Launcher, Sage of Lat-Nam, Shapeshifter, Shatterstorm, Staff of Zegon, Strip Mine, Su-Chi, Tablet of Epityr, Tawnos’s Coffin, Tawnos’s Wand, Tawnos’s Weaponry, Tetravus, Titania’s Song, Transmute Artifact, Triskelion, Urza’s Avenger, Urza’s Chalice, Urza’s Mine, Urza’s Miter, Urza’s Power Plant, Urza’s Tower, Wall of Spears, Weakstone, Xenic Poltergeist, Yawgmoth Demon, and Yotian Soldier.
@@ -4196,7 +4220,7 @@
       .rule_text If a permanent or player chosen this way has more than one kind of counter, the player who is proliferating chooses which kind of counter to add.
     .rule{id: "section-701-25c"}
       .rule_id 701.25c
-      .rule_text To proliferate in a Two-Headed Giant game means to choose any number of permanents and/or teams that have a counter, then give each exactly one additional counter of a kind that permanent or team already has. See rule <a href="#section-810">810</a>, “Two-Headed Giant Variant.”
+      .rule_text In a Two-Headed Giant game, poison counters are shared by the team. If more than one player on a team is chosen this way, only one of those players can be given an additional poison counter. See rule <a href="#section-810">810</a>, “Two-Headed Giant Variant.”
     .rule{id: "section-701-26"}
       .rule_id 701.26.
       .rule_text Transform
@@ -4916,9 +4940,6 @@
       .rule_text Affinity is a static ability that functions while the spell with affinity is on the stack. “Affinity for [text]” means “This spell costs you <span class="manacost"><span class="mana mana-1">{1}</span></span> less to cast for each [text] you control.”
     .rule{id: "section-702-40b"}
       .rule_id 702.40b
-      .rule_text The affinity ability reduces only the amount of generic mana a spell’s controller has to pay; it doesn’t reduce how much colored mana that player has to pay.
-    .rule{id: "section-702-40c"}
-      .rule_id 702.40c
       .rule_text If a spell has multiple instances of affinity, each of them applies.
     .rule{id: "section-702-41"}
       .rule_id 702.41.
@@ -5432,7 +5453,7 @@
       .rule_text Miracle
     .rule{id: "section-702-93a"}
       .rule_id 702.93a
-      .rule_text Miracle is a static ability linked to a triggered ability (see rule <a href="#section-603-10">603.10</a>). “Miracle [cost]” means “You may reveal this card from your hand as you draw it if it’s the first card you’ve drawn this turn. When you reveal this card this way, you may cast it by paying [cost] rather than its mana cost.”
+      .rule_text Miracle is a static ability linked to a triggered ability (see rule <a href="#section-603-11">603.11</a>). “Miracle [cost]” means “You may reveal this card from your hand as you draw it if it’s the first card you’ve drawn this turn. When you reveal this card this way, you may cast it by paying [cost] rather than its mana cost.”
     .rule{id: "section-702-93b"}
       .rule_id 702.93b
       .rule_text If a player chooses to reveal a card using its miracle ability, he or she plays with that card revealed until that card leaves his or her hand, that ability resolves, or that ability otherwise leaves the stack.
@@ -5737,6 +5758,36 @@
     .rule{id: "section-702-122b"}
       .rule_id 702.122b
       .rule_text If a permanent has multiple instances of fabricate, each triggers separately.
+    .rule{id: "section-702-123"}
+      .rule_id 702.123.
+      .rule_text Partner
+    .rule{id: "section-702-123a"}
+      .rule_id 702.123a
+      .rule_text Partner is an ability that modifies the rules for deck construction in the Commander variant (see rule <a href="#section-903">903</a>), and it functions before the game begins. Rather than a single legendary creature card, you may designate two legendary creature cards as your commander if each has partner.
+    .rule{id: "section-702-123b"}
+      .rule_id 702.123b
+      .rule_text Your deck must contain exactly <a href="#section-100">100</a> cards, including its two commanders. Both commanders begin the game in the command zone.
+    .rule{id: "section-702-123c"}
+      .rule_id 702.123c
+      .rule_text A rule or effect that refers to your commander’s color identity refers to the combined color identities of your two commanders. See rule <a href="#section-903-4">903.4</a>.
+    .rule{id: "section-702-123d"}
+      .rule_id 702.123d
+      .rule_text Except for determining the color identity of your commander, the two commanders function independently. When casting a commander with partner, ignore how many times your other commander has been cast. When determining whether a player has been dealt 21 or more combat damage by the same commander, consider damage from each of your two commanders separately. See rule <a href="#section-903-11a">903.11a</a>.
+    .rule{id: "section-702-123e"}
+      .rule_id 702.123e
+      .rule_text If an effect refers to your commander while you have two commanders, it refers to either one. If an effect causes you to perform an action on your commander and it could affect both, you choose which it refers to at the time the effect is applied.
+    .rule{id: "section-702-124"}
+      .rule_id 702.124.
+      .rule_text Undaunted
+    .rule{id: "section-702-124a"}
+      .rule_id 702.124a
+      .rule_text Undaunted is a static ability that functions while the spell with undaunted is on the stack. Undaunted means “This spell costs <span class="manacost"><span class="mana mana-1">{1}</span></span> less to cast for each opponent you have.”
+    .rule{id: "section-702-124b"}
+      .rule_id 702.124b
+      .rule_text Players who have left the game are not counted when determining how many opponents you have.
+    .rule{id: "section-702-124c"}
+      .rule_id 702.124c
+      .rule_text If a spell has multiple instances of undaunted, each of them applies.
     .rule{id: "section-703"}
       .rule_id 703.
       .rule_text Turn-Based Actions
@@ -6117,10 +6168,10 @@
       .rule_text A level symbol is a keyword ability that represents a static ability. The level symbol includes either a range of numbers, indicated here as “N1-N2,” or a single number followed by a plus sign, indicated here as “N3+.” Any abilities printed within the same text box striation as a level symbol are part of its static ability. The same is true of the power/toughness box printed within that striation, indicated here as “[P/T].”
     .rule{id: "section-710-2a"}
       .rule_id 710.2a
-      .rule_text “<span class="manacost">{LEVEL N1-N2}</span> [Abilities] [P/T]” means “As long as this creature has at least N1 level counters on it, but no more than N2 level counters on it, it’s [P/T] and has [abilities].”
+      .rule_text “<span class="manacost">{LEVEL N1-N2}</span> [Abilities] [P/T]” means “As long as this creature has at least N1 level counters on it, but no more than N2 level counters on it, it has base power and toughness [P/T] and has [abilities].”
     .rule{id: "section-710-2b"}
       .rule_id 710.2b
-      .rule_text “<span class="manacost">{LEVEL N3+}</span> [Abilities] [P/T]” means “As long as this creature has N3 or more level counters on it, it’s [P/T] and has [abilities].”
+      .rule_text “<span class="manacost">{LEVEL N3+}</span> [Abilities] [P/T]” means “As long as this creature has N3 or more level counters on it, it has base power and toughness [P/T] and has [abilities].”
     .rule{id: "section-710-3"}
       .rule_id 710.3.
       .rule_text The text box striations have no game significance other than clearly demarcating which abilities and which power/toughness box are associated with which level symbol. Leveler cards each contain only one text box.
@@ -6639,7 +6690,7 @@
       .rule_text Example: In a game in which all players have range of influence 1, Alex is seated to the left of Rob. Rob controls two Auras attached to Alex’s Runeclaw Bear: One with the trigger condition “Whenever enchanted creature becomes blocked,” and one with the trigger condition “Whenever enchanted creature becomes blocked by a creature.” Alex’s Runeclaw Bear attacks the player to Alex’s left and becomes blocked. The ability of Rob’s first Aura triggers because the entire event (Runeclaw Bear becomes blocked) happens within Rob’s range of influence. The ability of Rob’s second Aura doesn’t trigger, however, because that event includes the blocking creature, which is out of Rob’s range.
     .rule{id: "section-801-7a"}
       .rule_id 801.7a
-      .rule_text If a trigger event includes an object moving out of or into a player’s range of influence, use the game state before or after the event as appropriate to determine whether the triggered ability will trigger. See rule <a href="#section-603-6">603.6</a>.
+      .rule_text If a trigger event includes an object moving out of or into a player’s range of influence, use the game state before or after the event as appropriate to determine whether the triggered ability will trigger. See rules <a href="#section-603-6">603.6</a> and <a href="#section-603-10">603.10</a>.
       .rule_text Example: Carissa and Alex are outside each other’s range of influence. Carissa controls a Runeclaw Bear owned by Alex and they each control an Extractor Demon, a creature which reads, in part, “Whenever another creature leaves the battlefield, you may have target player put the top two cards of his or her library into his or her graveyard.” The Runeclaw Bear is destroyed and is put into Alex’s graveyard. The ability of Alex’s Extractor Demon doesn’t trigger because the leaves-the-battlefield event was outside Alex’s range of influence. The ability of Carissa’s Extractor Demon does trigger, even though the creature is going to a graveyard outside her range, because the leaves-the-battlefield event was within her range.
     .rule{id: "section-801-8"}
       .rule_id 801.8.
@@ -7067,7 +7118,7 @@
       .rule_text If an effect says that a player can’t get poison counters, no player on that player’s team can get poison counters.
     .rule{id: "section-810-10d"}
       .rule_id 810.10d
-      .rule_text A player is “poisoned” if his or her team has one or more poison counters.
+      .rule_text If a rule or effect needs to know what kinds of counters an individual player has, that effect uses the kinds of counters that player has and the kinds of counters that player’s team has. A player is “poisoned” if his or her team has one or more poison counters.
     .rule{id: "section-810-11"}
       .rule_id 810.11.
       .rule_text The Two-Headed Giant variant can also be played with equally sized teams of more than two players. For each player a team has beyond the second, that team’s starting life total is increased by 15 and the number of poison counters required for the team to lose is increased by five. (These variants are called Three-Headed Giant, Four-Headed Giant, and so on.)
@@ -7899,7 +7950,7 @@
       .glossary_definition The energy symbol <span class="manacost"><span class="mana mana-e">{E}</span></span> represents one energy counter. To pay <span class="manacost"><span class="mana mana-e">{E}</span></span>, a player removes one energy counter from himself or herself.
     .glossary_entry
       .glossary_term Enters the Battlefield
-      .glossary_definition A nontoken permanent “enters the battlefield” when it’s moved onto the battlefield from another zone. A token “enters the battlefield” when it’s created. See rules <a href="#section-403-3">403.3</a>, <a href="#section-603-6a">603.6a</a>, <a href="#section-603-6e">603.6e</a>, and <a href="#section-614-12">614.12</a>.
+      .glossary_definition A nontoken permanent “enters the battlefield” when it’s moved onto the battlefield from another zone. A token “enters the battlefield” when it’s created. See rules <a href="#section-403-3">403.3</a>, <a href="#section-603-6a">603.6a</a>, <a href="#section-603-6d">603.6d</a>, and <a href="#section-614-12">614.12</a>.
     .glossary_entry
       .glossary_term Entwine
       .glossary_definition A keyword ability that lets a player choose all modes for a spell rather than just one. See rule <a href="#section-702-41">702.41</a>, “Entwine.”
@@ -8175,7 +8226,7 @@
       .glossary_definition A system used to determine in which order continuous effects are applied. See rule <a href="#section-613">613</a>, “Interaction of Continuous Effects.” See also Dependency, Timestamp Order.
     .glossary_entry
       .glossary_term Leaves the Battlefield
-      .glossary_definition A permanent “leaves the battlefield” when it’s moved from the battlefield to another zone, or (if it’s phased in) when it leaves the game because its owner leaves the game. See rules <a href="#section-603-6c">603.6c</a> and <a href="#section-603-6d">603.6d</a>.
+      .glossary_definition A permanent “leaves the battlefield” when it’s moved from the battlefield to another zone, or (if it’s phased in) when it leaves the game because its owner leaves the game. See rules <a href="#section-603-6c">603.6c</a> and <a href="#section-603-10">603.10</a>.
     .glossary_entry
       .glossary_term Legal Text
       .glossary_definition Information printed directly below the text box that has no effect on game play. See rule <a href="#section-212">212</a>, “Information Below the Text Box.”
@@ -8401,6 +8452,9 @@
     .glossary_entry
       .glossary_term Paired
       .glossary_definition A term that describes a creature that’s been affected by a soulbond ability. See rule <a href="#section-702-94">702.94</a>, “Soulbond.”
+    .glossary_entry
+      .glossary_term Partner
+      .glossary_definition A keyword ability that lets two legendary creatures be your commander in the Commander variant rather than one. See rule <a href="#section-702-123">702.123</a>, “Partner,” and rule <a href="#section-903">903</a>, “Commander.”
     .glossary_entry
       .glossary_term Pass
       .glossary_definition To decline to take any action (such as casting a spell or activating an ability) when you have priority. See rule <a href="#section-116">116</a>, “Timing and Priority.”
@@ -8912,6 +8966,9 @@
       .glossary_term Unblocked Creature
       .glossary_definition An attacking creature once no creature has been declared as a blocker for it, unless an effect has caused it to become blocked. It remains an unblocked creature until it’s removed from combat or the combat phase ends, whichever comes first. See rule <a href="#section-509">509</a>, “Declare Blockers Step.”
     .glossary_entry
+      .glossary_term Undaunted
+      .glossary_definition A keyword ability that reduces the cost of a spell based on the number of opponents you have. See rule <a href="#section-702-124">702.124</a>, “Undaunted.”
+    .glossary_entry
       .glossary_term Undying
       .glossary_definition A keyword ability that can return a creature from the graveyard to the battlefield. See rule <a href="#section-702-92">702.92</a>, “Undying.”
     .glossary_entry
@@ -8996,5 +9053,5 @@
     %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, and Matt Tabak, with contributions from Charlie Californiatino, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Eli Shiffrin, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead) and Glenn Jones Magic Rules Management: Matt Tabak and Eli Shiffrin
     %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Californiatino, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
     %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-    %p These rules are effective as of September 30, 2016.
+    %p These rules are effective as of November 11, 2016.
     %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, and Magic: The Gathering—Conspiracy are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2016 Wizards. U.S. Pat. No. RE 37,957.
