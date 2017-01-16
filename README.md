@@ -53,5 +53,7 @@ Whenever banned and restricted list is announced:
 
 If Comprehensive rules changed:
 
+* Get http://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules
+* (convert to utf8, strip \r)
 * Update `data/MagicCompRules.txt` with TXT format Comprehensive Rule
 * Run `./bin/format_comp_rules`
