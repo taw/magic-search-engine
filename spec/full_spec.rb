@@ -9,7 +9,8 @@ describe "Full Database Test" do
   it "formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
-    assert_search_equal "f:standard", "e:bfz or e:ogw or e:soi or e:emn or e:kld or e:aer"
+    assert_search_equal "f:standard",
+      %Q[(e:bfz or e:ogw or e:soi or e:emn or e:kld or e:aer) -"Emrakul, the Promised End" -"Reflector Mage" -"Smuggler's Copter"]
     assert_search_equal 'f:"ravnica block"', "e:rav or e:gp or e:di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal 'f:"ravnica block"', 'b:ravnica'
@@ -135,42 +136,6 @@ describe "Full Database Test" do
       "Ajani Goldmane", "Ajani Vengeant", "Chandra Ablaze", "Elspeth Tirel",
       "Garruk Relentless", "Garruk, the Veil-Cursed", "Gideon Jura", "Liliana of the Veil",
       "Nissa Revane", "Sarkhan the Mad", "Sorin Markov", "Tezzeret, Agent of Bolas"
-  end
-
-  it "time_travel_basic" do
-    assert_search_equal "time:lw t:planeswalker", "e:lw t:planeswalker"
-    assert_search_results "time:wwk t:jace", "Jace Beleren", "Jace, the Mind Sculptor"
-  end
-
-  it "time_travel_printed" do
-    assert_search_equal "time:lw t:planeswalker", "e:lw t:planeswalker"
-    assert_search_results "t:jace lastprint=wwk"
-    assert_search_results "t:jace print=vma", "Jace, the Mind Sculptor"
-    assert_search_results "time:nph t:jace lastprint=wwk", "Jace, the Mind Sculptor"
-    assert_search_results "time:nph t:jace print=vma"
-  end
-
-  it "time_travel_standard_legal_reprints_activate_in_block" do
-    assert_search_results 'f:"return to ravnica block" naturalize', "Naturalize"
-    assert_search_results 'time:rtr f:"return to ravnica block" naturalize'
-    assert_search_results 'time:gtc f:"return to ravnica block" naturalize', "Naturalize"
-    assert_search_results 'time:dgm f:"return to ravnica block" naturalize', "Naturalize"
-  end
-
-  it "time_travel_standard_legal_reprints_activate_in_modern" do
-    assert_search_results "f:legacy rancor", "Rancor"
-    assert_search_results "f:modern rancor", "Rancor"
-    assert_search_results "time:m11 f:legacy rancor", "Rancor"
-    assert_search_results "time:m11 f:modern rancor"
-  end
-
-  it "time_travel_eternal_formats_accept_all_sets" do
-    assert_search_equal "f:legacy t:jace", "t:jace"
-    assert_search_equal "f:legacy time:nph t:jace", "time:nph t:jace"
-    assert_search_equal "f:vintage t:jace", "t:jace"
-    assert_search_equal "f:vintage time:nph t:jace", "time:nph t:jace"
-    assert_search_equal "f:commander t:jace", "t:jace"
-    assert_search_equal "f:commander time:nph t:jace", "time:nph t:jace"
   end
 
   it "sort_name" do
@@ -345,17 +310,6 @@ describe "Full Database Test" do
     assert_search_results "tou>8-*"
     assert_search_results "tou<=8-*", "Shapeshifter"
     assert_search_results "tou<=2-*"
-  end
-
-  it "error_handling" do
-    # Empty search returns all non-extras
-    assert_count_results "", 16686
-    assert_count_results "sort:new", 16686
-    assert_count_results "is:spell or t:land", 16686
-    assert_count_results "time:3000", 16686
-    assert_count_results %Q[time:"battle for homelands"], 16686
-    assert_count_results "time:1000", 0
-    assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
   end
 
   it "is_promo" do
