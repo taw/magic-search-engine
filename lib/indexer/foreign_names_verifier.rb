@@ -67,18 +67,3 @@ class ForeignNamesVerifier
     @data[card_name]
   end
 end
-
-__END__
-
-
-    # Reassemble foreign names
-    # It turns out there's way too many inconsistencies,
-    # like Russian "Thran Golem"
-    cards.each do |card_name, card|
-      next unless foreign_names[card_name]
-      conflicts = foreign_names[card_name].group_by(&:first).map{|lang, names| [lang, names.map(&:last)]}
-      conflicts.each do |lang, names|
-        next if names.size == 1
-        warn "#{card_name} in #{lang} has multiple names: #{names.inspect}"
-      end
-    end

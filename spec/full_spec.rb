@@ -2,14 +2,14 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(16757)
-    db.number_of_printings.should eq(32018)
+    db.number_of_cards.should eq(16948)
+    db.number_of_printings.should eq(32478)
   end
 
   it "formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
-    assert_search_equal "f:standard", "e:bfz or e:ogw or e:soi or e:emn or e:kld"
+    assert_search_equal "f:standard", "e:bfz or e:ogw or e:soi or e:emn or e:kld or e:aer"
     assert_search_equal 'f:"ravnica block"', "e:rav or e:gp or e:di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal 'f:"ravnica block"', 'b:ravnica'
@@ -349,11 +349,11 @@ describe "Full Database Test" do
 
   it "error_handling" do
     # Empty search returns all non-extras
-    assert_count_results "", 16499
-    assert_count_results "sort:new", 16499
-    assert_count_results "is:spell or t:land", 16499
-    assert_count_results "time:3000", 16499
-    assert_count_results %Q[time:"battle for homelands"], 16499
+    assert_count_results "", 16686
+    assert_count_results "sort:new", 16686
+    assert_count_results "is:spell or t:land", 16686
+    assert_count_results "time:3000", 16686
+    assert_count_results %Q[time:"battle for homelands"], 16686
     assert_count_results "time:1000", 0
     assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
   end
