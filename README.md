@@ -40,6 +40,7 @@ Whenever new set is released:
 * Add new set code to appropriate block in indexer
 * Create new block format if applicable and add it to indexer and Format class
 * Update format tests
+* `wget http://pdmtgo.com/legal_cards.txt -O data/penny_dreadful_legal_cards.txt`
 
 Then import cards:
 
