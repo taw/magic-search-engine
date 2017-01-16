@@ -84,6 +84,7 @@ BanListChangeDates = {
    "bfz"=>"2015-10-02",
    "ogw"=>"2016-01-22",
    "soi"=>"2016-04-08",
+   "aer"=>"2017-01-20",
 
   # Irregular emergency ban
   # http://magic.wizards.com/en/articles/archive/magic-online/pauper-banned-list-change-2016-11-03
@@ -144,24 +145,23 @@ DynamicBanListData = {
     "Treasure Cruise"   => {"frf"=> "banned"},
     "Birthing Pod"      => {"frf"=> "banned"},
 
-    "Golgari Grave-Troll"  => {"start"=>"banned", "frf" => "legal"},
+    "Golgari Grave-Troll"  => {"start"=>"banned", "frf" => "legal", "aer" => "banned"},
     "Valakut, the Molten Pinnacle" => {"start"=>"banned", "sep 2012"=>"legal"},
     "Wild Nacatl"       => {"dec 2011"=>"banned", "bng"=>"legal"},
     "Punishing Fire"    => {"dec 2011"=>"banned"},
 
-    "Blazing Shoal"      => { "sep 2011"=>"banned"},
-    "Cloudpost"          => { "sep 2011"=>"banned"},
-    "Green Sun's Zenith" => { "sep 2011"=>"banned"},
-    "Ponder"             => { "sep 2011"=>"banned"},
-    "Preordain"          => { "sep 2011"=>"banned"},
-    "Rite of Flame"      => { "sep 2011"=>"banned"},
-
+    "Blazing Shoal"      => {"sep 2011"=>"banned"},
+    "Cloudpost"          => {"sep 2011"=>"banned"},
+    "Green Sun's Zenith" => {"sep 2011"=>"banned"},
+    "Ponder"             => {"sep 2011"=>"banned"},
+    "Preordain"          => {"sep 2011"=>"banned"},
+    "Rite of Flame"      => {"sep 2011"=>"banned"},
     "Bloodbraid Elf"  => {"gtc" => "banned"},
     "Seething Song"   => {"gtc" => "banned"},
-    "Second Sunrise"  => { "dgm" => "banned" },
-
+    "Second Sunrise"  => {"dgm" => "banned" },
     "Summer Bloom"  => {"ogw" => "banned"},
     "Splinter Twin" => {"ogw" => "banned"},
+    "Gitaxian Probe"=> {"aer" => "banned"},
   },
   "innistrad block" => {
     "Lingering Souls"    => {"start"=>"legal", "mar 2012"=>"banned"},
@@ -340,6 +340,9 @@ DynamicBanListData = {
   # As much as I managed to recover it, it should be fine
 
   "standard" => {
+    "Emrakul, the Promised End" => { "aer" => "banned" },
+    "Smuggler's Copter"         => { "aer" => "banned" },
+    "Reflector Mage"            => { "aer" => "banned" },
     # March 1996 Standard: Feldon's Cane , Maze of Ith , and Recall are unrestricted.
     "Jace, the Mind Sculptor" => { "jun 2011" => "banned" },
     "Stoneforge Mystic"       => { "jun 2011" => "banned" }, # ignoring Event Deck exception

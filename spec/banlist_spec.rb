@@ -5,6 +5,15 @@ describe "Banlist" do
   # Based on:
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
+  it "banlist_2017" do
+    assert_banlist_changes "January 2017",
+      "standard banned", "Emrakul, the Promised End",
+      "standard banned", "Smuggler's Copter",
+      "standard banned", "Reflector Mage",
+      "modern banned", "Gitaxian Probe",
+      "modern banned", "Golgari Grave-Troll"
+  end
+
   it "banlist_2016" do
     assert_banlist_changes "January 2016",
       "modern banned", "Splinter Twin",
