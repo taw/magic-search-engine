@@ -1,5 +1,5 @@
 describe "Planechase" do
-  include_context "db", "pch", "pc2"
+  include_context "db", "pch", "pc2", "pca"
 
   it "plane" do
     assert_search_results "t:plane t:Dominaria", "Krosa", "Llanowar", "Academy at Tolaria West", "Isle of Vesuva", "Otaria", "Shiv", "Talon Gates"
@@ -9,7 +9,7 @@ describe "Planechase" do
 
   it "chaos_symbol" do
     # Maybe should be something else than CHAOS ?
-    assert_search_results %Q[t:plane o:"whenever you roll CHAOS, untap all creatures you control"], "Llanowar"
+    assert_search_results %Q[t:plane o:"whenever you roll {CHAOS}, untap all creatures you control"], "Llanowar"
   end
 
   it "phenomenon" do

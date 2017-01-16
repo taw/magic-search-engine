@@ -52,6 +52,8 @@ class OracleVerifier
             canonical_variant = fixed_variants[0]
           elsif variants.keys.size == 2 and variants.keys.select{|v| v =~ /create.*token/i}.size == 1 and variants.keys.select{|v| v =~ /put.*token.*onto the battlefield/i}.size == 1
             canonical_variant = variants.keys.select{|v| v =~ /create.*token/i}[0]
+          elsif variants.keys.size == 2 and variants.keys.select{|v| v =~ /\{CHAOS\}/i}.size == 1 and variants.keys.select{|v| v =~  / CHAOS/i}.size == 1
+            canonical_variant = variants.keys.select{|v| v =~ /\{CHAOS\}/i}[0]
           else
             canonical_variant_source = case card_name
             when "Winter Orb"

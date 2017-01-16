@@ -178,6 +178,8 @@ class Card
         ci << $1
       when /\A([wubrg])\/([wubrg])\z/
         ci << $1 << $2
+      when "chaos"
+        # planechase special symbol, disregard
       else
         raise "Unknown mana symbol `#{sym}'"
       end
