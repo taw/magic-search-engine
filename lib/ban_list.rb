@@ -683,6 +683,17 @@ DynamicBanListData = {
     "Tolarian Academy" => "banned",
     "Treasure Cruise" => "banned",
     "Vampiric Tutor" => "banned",
+    # Ante cards are banned
+    "Amulet of Quoz" => "banned",
+    "Bronze Tablet" => "banned",
+    "Contract from Below" => "banned",
+    "Darkpact" => "banned",
+    "Demonic Attorney" => "banned",
+    "Jeweled Bird" => "banned",
+    "Rebirth" => "banned",
+    "Tempest Efreet" => "banned",
+    "Timmerian Fiends" => "banned",
+    # Not as commander
     "Derevi, Empyrial Tactician" => "restricted",
     "Edric, Spymaster of Trest" => "restricted",
     "Erayo, Soratami Ascendant" => "restricted",
