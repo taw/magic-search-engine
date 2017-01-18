@@ -31,6 +31,11 @@ task "mtgjson:update" do
   system "json_pp <data/index.json >index-2.json"
 end
 
+desc "Update penny dreadful banlist"
+task "pennydreadful:update" do
+  system "wget http://pdmtgo.com/legal_cards.txt -O data/penny_dreadful_legal_cards.txt"
+end
+
 desc "Fetch Gatherer pics"
 task "pics:gatherer" do
   pics = Pathname("frontend/public/cards")
