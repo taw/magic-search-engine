@@ -137,7 +137,7 @@ describe "Formats" do
   end
 
   it "lorwyn_shadowmoor_block" do
-    assert_block_composition_sequence "lorwyn-shadowmoor block", "lw", "mt", "shm", "eve"
+    assert_block_composition_sequence "lorwyn shadowmoor block", "lw", "mt", "shm", "eve"
     assert_block_composition_sequence "lorwyn block", "lw", "mt", "shm", "eve"
   end
 
