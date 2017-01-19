@@ -8,10 +8,6 @@ class ConditionLayout < ConditionSimple
     card.layout == @layout
   end
 
-  def include_extras?
-    %W[plane scheme phenomenon vanguard].include?(@layout)
-  end
-
   def to_s
     "layout:#{@layout}"
   end

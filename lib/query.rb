@@ -38,7 +38,6 @@ class Query
     end
     if @cond
       raise "No condition present for #{query_string}" unless @cond
-      @metadata[:include_extras] = true if @cond.include_extras?
     else
       # No search query? OK, we'll just return all cards except extras
     end
@@ -59,7 +58,6 @@ class Query
     else
       results = db.printings
     end
-    results = results.reject(&:extra) unless @metadata[:include_extras]
 
     results = results.sort_by do |c|
       case @metadata[:sort]

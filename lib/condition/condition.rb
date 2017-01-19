@@ -1,8 +1,4 @@
 class Condition
-  def include_extras?
-    false
-  end
-
   def inspect
     to_s
   end
