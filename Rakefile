@@ -1,6 +1,8 @@
 require "pathname"
 require "fileutils"
 require "pp"
+require "open-uri"
+require "nokogiri"
 
 def db
   @db ||= begin
@@ -211,4 +213,16 @@ end
 desc "Fetch Penny Dreadful card list"
 task "penny_dreadful:update" do
   sh "wget", "http://pdmtgo.com/legal_cards.txt", "-O", "data/penny_dreadful_legal_cards.txt"
+end
+
+desc "Fetch new Comprehensive Rules"
+task "rules:update" do
+  page_url = "http://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules"
+  doc = Nokogiri::HTML(open(page_url).read)
+  txt_url = doc.css("a").map{|a| a[:href]}.find{|link| link =~ /MagicCompRules.*txt\z/}
+  raise "Can't find rules text url, please check the site manually" unless txt_url
+  rules_txt = open(txt_url).read
+  rules_txt = rules_txt.force_encoding("cp1250").encode("utf-8").tr("\r", "")
+  Pathname("data/MagicCompRules.txt").write(rules_txt)
+  sh "bin/format_comp_rules"
 end
