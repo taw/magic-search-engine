@@ -4,10 +4,6 @@ class ConditionNot < Condition
     @simple = @cond.simple?
   end
 
-  def include_extras?
-    @cond.include_extras?
-  end
-
   def search(db)
     db.printings - @cond.search(db)
   end

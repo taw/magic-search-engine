@@ -4,10 +4,6 @@ class ConditionExact < Condition
     @normalized_name = normalize_name(@name)
   end
 
-  def include_extras?
-    true
-  end
-
   def search(db)
     card = db.cards[@normalized_name]
     if card

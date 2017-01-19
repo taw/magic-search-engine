@@ -13,10 +13,6 @@ class ConditionAnd < Condition
     @simple = @conds.all?(&:simple?)
   end
 
-  def include_extras?
-    @conds.any?(&:include_extras?)
-  end
-
   def search(db)
     if @special_conds.empty?
       results = db.printings

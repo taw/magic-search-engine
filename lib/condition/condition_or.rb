@@ -12,10 +12,6 @@ class ConditionOr < Condition
     @simple = @conds.all?(&:simple?)
   end
 
-  def include_extras?
-    @conds.any?(&:include_extras?)
-  end
-
   def search(db)
     @conds.map{|cond| cond.search(db)}.inject(&:|)
   end
