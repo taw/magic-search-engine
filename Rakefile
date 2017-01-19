@@ -172,7 +172,14 @@ task "pics:statistics:extra" do
     end
   end
   by_set
-    .select{|set_name, stats| stats["lq"] + stats["none"] > 0 }
+    .select{|set_name, stats|
+      # Online only sets can't possibly have HQ scans
+      if db.sets[set_name].online_only?
+        stats["none"] > 0
+      else
+        stats["lq"] + stats["none"] > 0
+      end
+    }
     .sort_by{|set_name, stats|
       set = db.sets[set_name]
       [-set.release_date.to_i_sort, set.name]
