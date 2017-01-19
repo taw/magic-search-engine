@@ -35,6 +35,7 @@ Tests for library and for Rails frontend are separate:
 
 Whenever new set is released:
 
+* Run `rake rules:update` in case Comprehensive Rules changed
 * If set is not Vintage-legale, add new set code to FormatVintage exclusions list
 * Add new set code and date to legalities in Standard and Modern if applicable
 * Add new set code to appropriate block in indexer
@@ -51,10 +52,3 @@ Whenever banned and restricted list is announced:
 
 * Update `BanlistTest` and/or `BanlistCommanderTest`
 * Update `Banlist` data
-
-If Comprehensive rules changed:
-
-* Get http://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules
-* (convert to utf8, strip \r)
-* Update `data/MagicCompRules.txt` with TXT format Comprehensive Rule
-* Run `./bin/format_comp_rules`
