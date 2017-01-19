@@ -7,7 +7,7 @@ describe "Planechase" do
     assert_search_equal "t:plane", "layout:plane"
   end
 
-  it "chaos_symbol" do
+  it "chaos symbol" do
     # Maybe should be something else than CHAOS ?
     assert_search_results %Q[t:plane o:"whenever you roll {CHAOS}, untap all creatures you control"], "Llanowar"
   end
@@ -16,16 +16,18 @@ describe "Planechase" do
     assert_search_results %Q[t:phenomenon o:"each player draws four cards"], "Mutual Epiphany"
   end
 
-  it "bang_search_doesnt_require_explicit_flags" do
+  it "bang search doesn't require explicit flags" do
     assert_search_results "!Talon Gates", "Talon Gates"
     assert_search_results "!Mutual Epiphany", "Mutual Epiphany"
   end
 
-  it "plane_cards_not_included_unless_requested" do
-    assert_search_results 'o:"untap all creatures you control"'
+  it "plane cards included by default" do
+    assert_search_results 'o:"untap all creatures you control"',
+      "Llanowar"
   end
 
-  it "phenomenon_cards_not_included_unless_requested" do
-    assert_search_results %Q[o:"each player draws four cards"]
+  it "phenomenon cards included by default" do
+    assert_search_results %Q[o:"each player draws four cards"],
+      "Mutual Epiphany"
   end
 end

@@ -38,12 +38,12 @@ describe "Time Travel Test" do
   end
 
   it "time travel error handling" do
-    # Empty search returns all non-extras
-    assert_count_results "", 16686
-    assert_count_results "sort:new", 16686
-    assert_count_results "is:spell or t:land", 16686
-    assert_count_results "time:3000", 16686
-    assert_count_results %Q[time:"battle for homelands"], 16686
+    # Empty search returns all cards
+    assert_count_results "", 16948
+    assert_count_results "sort:new", 16948
+    assert_count_results "is:spell or t:land", 16948
+    assert_count_results "time:3000", 16948
+    assert_count_results %Q[time:"battle for homelands"], 16948
     assert_count_results "time:1000", 0
     assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
   end
