@@ -16,6 +16,10 @@ describe "Innistrad Block" do
     "ci:b" .should exclude_cards "Unhallowed Cathar"
   end
 
+  it "color identity is case insensitive" do
+    "ci:gb".should equal_search "ci:GB"
+  end
+
   it "dfc color applies to side separately" do
     "c!g" .should include_cards "Garruk Relentless"
     "c!gb".should include_cards "Garruk, the Veil-Cursed"
