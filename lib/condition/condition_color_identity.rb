@@ -2,7 +2,7 @@ class ConditionColorIdentity < ConditionSimple
   def initialize(ci)
     # Ignore "m"/"l" in query
     # Treat "cr" as "c"
-    @commander_ci = ci.gsub(/ml/, "").chars.uniq
+    @commander_ci = ci.downcase.gsub(/ml/, "").chars.uniq
   end
 
   def match?(card)
