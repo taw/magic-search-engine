@@ -37,4 +37,12 @@ class FormatControllerTest < ActionController::TestCase
     assert_select %Q[a:contains("Lingering Souls")]
     assert_select %Q[p:contains("There are no restricted cards.")]
   end
+
+  Format.all_format_classes.each do |format_class|
+    format = format_class.new
+    test "format - #{format}" do
+      get "show", id: format.format_pretty_name.parameterize
+      assert_response 200
+    end
+  end
 end

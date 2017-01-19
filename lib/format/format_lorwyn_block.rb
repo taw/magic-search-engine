@@ -1,6 +1,6 @@
-class FormatLorwynShadowmoorBlock < Format
+class FormatLorwynBlock < Format
   def format_pretty_name
-    "Lorwyn-Shadowmoor Block"
+    "Lorwyn Block"
   end
 
   def build_included_sets

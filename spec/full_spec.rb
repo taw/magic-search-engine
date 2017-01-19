@@ -38,7 +38,7 @@ describe "Full Database Test" do
     assert_search_equal "e:som or e:mbs or e:nph", "b:som"
     assert_search_equal "e:mi or e:ds or e:5dn", "b:mi"
     assert_search_equal "e:som", 'e:scars'
-    assert_search_equal 'f:"lorwyn-shadowmoor block"', "b:lorwyn"
+    assert_search_equal 'f:"lorwyn shadowmoor block"', "b:lorwyn"
   end
 
   it "edition_special_characters" do
