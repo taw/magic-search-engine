@@ -245,19 +245,19 @@ describe "Scryfall" do
       "Liliana, Defiant Necromancer"
   end
 
+  # This is hilarious, as originally
+  # we had t:* system while scryfall didn't
+  # Now we don't and they do...
   it "artist" do
-    # scryfall does t:*
-    # it's arguable which way is better
     assert_search_include 'a:"proce"',
-      "Undercity Plague"
-    assert_search_exclude 'a:"proce"',
+      "Undercity Plague",
       "Tazeem"
   end
 
   it "tazeem" do
-    # scryfall does t:*, including planes by default
     assert_search_results "tazeem",
-      "Guardian of Tazeem"
+      "Guardian of Tazeem",
+      "Tazeem"
   end
 
   it "is_colorshifted" do

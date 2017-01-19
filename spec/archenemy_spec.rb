@@ -6,14 +6,16 @@ describe "Archenemy" do
     assert_search_results 't:ongoing o:trample', "The Very Soil Shall Shake"
   end
 
-  it "scheme cards not included unless requested" do
+  it "scheme cards included by default" do
     assert_search_results "o:trample",
       "Armadillo Cloak",
       "Colossal Might",
       "Kamahl, Fist of Krosa",
       "Molimo, Maro-Sorcerer",
       "Rancor",
-      "Scion of Darkness"
+      "Scion of Darkness",
+      "The Very Soil Shall Shake",
+      "Your Will Is Not Your Own"
   end
 
   it "! search doesnt require explicit flags" do
