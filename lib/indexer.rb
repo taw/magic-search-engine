@@ -44,6 +44,7 @@ class Indexer
   end
 
   def format_names
+    # These are formats supported by mtgjson
     [
       "battle for zendikar block",
       "commander",
@@ -52,12 +53,11 @@ class Indexer
       "invasion block",
       "kamigawa block",
       "legacy",
-      "lorwyn-shadowmoor block",
+      "lorwyn block",
       "masques block",
       "mirage block",
       "mirrodin block",
       "modern",
-      "frontier",
       "odyssey block",
       "onslaught block",
       "ravnica block",
@@ -83,15 +83,20 @@ class Indexer
     ]
   end
 
+  # This is a massive hack just for debug message
+  # None of that is saved
   def algorithm_legalities_for(card_data)
     result = {}
     sets_printed = card_data["printings"].map{|set_code| @sets_code_translator[set_code]}
+    layout = card_data["layout"]
+    types = card_data["types"] || []
     card = OpenStruct.new(
       name: normalize_name(card_data["name"]),
-      layout: card_data["layout"],
+      layout: layout,
       printings: sets_printed.map{|set_code|
         OpenStruct.new(set_code: set_code)
       },
+      extra: ["vanguard", "plane", "scheme", "phenomenon", "token"].include?(layout) || types.include?("Conspiracy"),
     )
     formats.each do |format_name, format|
       status = format.legality(card)
@@ -250,10 +255,14 @@ class Indexer
         if mtgjson_legalities["khans of tarkir block"]
           mtgjson_legalities["tarkir block"] = mtgjson_legalities.delete("khans of tarkir block")
         end
+        if mtgjson_legalities["lorwyn-shadowmoor block"]
+          mtgjson_legalities["lorwyn block"] = mtgjson_legalities.delete("lorwyn-shadowmoor block")
+        end
         algorithm_legalities = algorithm_legalities_for(card_data)
 
         if mtgjson_legalities != algorithm_legalities
-          report_legalities_fail(name, mtgjson_legalities, algorithm_legalities)
+          # Sadly mtgjson reached complete fail level here
+          # report_legalities_fail(name, mtgjson_legalities, algorithm_legalities)
         end
         card = index_card_data(card_data)
         oracle_verifier.add(set_code, card)
