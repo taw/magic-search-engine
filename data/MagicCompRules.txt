@@ -1,6 +1,6 @@
 Magic: The Gathering Comprehensive Rules
 
-These rules are effective as of November 11, 2016.
+These rules are effective as of January 20, 2017.
 
 Introduction
 
@@ -870,7 +870,7 @@ Example: A player controls Lodestone Golem, which says “Nonartifact spells cos
 117.11. The actions performed when paying a cost may be modified by effects. Even if they are, meaning the actions that are performed don’t match the actions that are called for, the cost has still been paid.
 Example: A player controls Psychic Vortex, an enchantment with a cumulative upkeep cost of “Draw a card,” and Obstinate Familiar, a creature that says “If you would draw a card, you may skip that draw instead.” The player may decide to pay Psychic Vortex’s cumulative upkeep cost and then draw no cards instead of drawing the appropriate amount. The cumulative upkeep cost has still been paid.
 
-117.12. Some spells, activated abilities, and triggered abilities read, “[Do something]. If [a player] [does or doesn’t], [effect].” or “[A player] may [do something]. If [that player] [does or doesn’t], [effect].” The action [do something] is a cost, paid when the spell or ability resolves. The “If [a player] [does or doesn’t]” clause checks whether the player chose to pay an optional cost or started to pay a mandatory cost, regardless of what events actually occurred.
+117.12. Some spells, activated abilities, and triggered abilities read, “[Do something]. If [a player] [does, doesn’t, or can’t], [effect].” or “[A player] may [do something]. If [that player] [does, doesn’t, or can’t], [effect].” The action [do something] is a cost, paid when the spell or ability resolves. The “If [a player] [does, doesn’t, or can’t]” clause checks whether the player chose to pay an optional cost or started to pay a mandatory cost, regardless of what events actually occurred.
 Example: You control Standstill, an enchantment that says “When a player casts a spell, sacrifice Standstill. If you do, each of that player’s opponents draws three cards.” A spell is cast, causing Standstill’s ability to trigger. Then an ability is activated that exiles Standstill. When Standstill’s ability resolves, you’re unable to pay the “sacrifice Standstill” cost. No player will draw cards.
 Example: Your opponent has cast Gather Specimens, a spell that says “If a creature would enter the battlefield under an opponent’s control this turn, it enters the battlefield under your control instead.” You control a face-down Dermoplasm, a creature with morph that says “When Dermoplasm is turned face up, you may put a creature card with morph from your hand onto the battlefield face up. If you do, return Dermoplasm to its owner’s hand.” You turn Dermoplasm face up, and you choose to put a creature card with morph from your hand onto the battlefield. Due to Gather Specimens, it enters the battlefield under your opponent’s control instead of yours. However, since you chose to pay the cost, Dermoplasm is still returned to its owner’s hand.
 
@@ -900,9 +900,9 @@ Example: Your opponent has cast Gather Specimens, a spell that says “If a crea
 
 118.6. If a player has 0 or less life, that player loses the game as a state-based action. See rule 704.
 
-118.7. If an effect says that a player can’t gain life, that player can’t make an exchange such that the player’s life total would become higher; in that case, the exchange won’t happen. In addition, a cost that involves having that player gain life can’t be paid, and a replacement effect that would replace a life gain event affecting that player won’t do anything.
+118.7. If an effect says that a player can’t gain life, that player can’t make an exchange such that the player’s life total would become higher; in that case, the exchange won’t happen. Similarly, if an effect redistributes life totals, a player can’t receive a new life total such that the player’s life total would become higher. In addition, a cost that involves having that player gain life can’t be paid, and a replacement effect that would replace a life gain event affecting that player won’t do anything.
 
-118.8. If an effect says that a player can’t lose life, that player can’t make an exchange such that the player’s life total would become lower; in that case, the exchange won’t happen. In addition, a cost that involves having that player pay life can’t be paid.
+118.8. If an effect says that a player can’t lose life, that player can’t make an exchange such that the player’s life total would become lower; in that case, the exchange won’t happen. Similarly, if an effect redistributes life totals, a player can’t receive a new life total such that the player’s life total would become lower. In addition, a cost that involves having that player pay life can’t be paid.
 
 118.9. Some triggered abilities are written, “Whenever [a player] gains life, . . . .” Such abilities are treated as though they are written, “Whenever a source causes [a player] to gain life, . . . .” If a player gains 0 life, no life gain event has occurred, and these abilities won’t trigger.
 
@@ -1198,7 +1198,7 @@ Example: An ability reads, “All lands are 1/1 creatures that are still lands.�
 
 207.2b Flavor text is italicized text that, like the illustration, adds artistic appeal to the game. It appears below the rules text.
 
-207.2c An ability word appears in italics at the beginning of some abilities. Ability words are similar to keywords in that they tie together cards that have similar functionality, but they have no special rules meaning and no individual entries in the Comprehensive Rules. The ability words are battalion, bloodrush, channel, chroma, cohort, constellation, converge, council’s dilemma, delirium, domain, fateful hour, ferocious, formidable, grandeur, hellbent, heroic, imprint, inspired, join forces, kinship, landfall, lieutenant, metalcraft, morbid, parley, radiance, raid, rally, spell mastery, strive, sweep, tempting offer, threshold, and will of the council.
+207.2c An ability word appears in italics at the beginning of some abilities. Ability words are similar to keywords in that they tie together cards that have similar functionality, but they have no special rules meaning and no individual entries in the Comprehensive Rules. The ability words are battalion, bloodrush, channel, chroma, cohort, constellation, converge, council’s dilemma, delirium, domain, fateful hour, ferocious, formidable, grandeur, hellbent, heroic, imprint, inspired, join forces, kinship, landfall, lieutenant, metalcraft, morbid, parley, radiance, raid, rally, revolt, spell mastery, strive, sweep, tempting offer, threshold, and will of the council.
 
 207.3. Some cards have decorative icons in the background of their text boxes. For example, a guild icon appears in the text box of many Ravnica: City of Guilds® and Return to Ravnica™ block cards, and a faction icon appears in the text box of most Scars of Mirrodin™ block cards. Similarly, many promotional cards include decorative icons. These icons have no effect on game play.
 
@@ -1535,6 +1535,7 @@ Example: “Basic Land — Mountain” means the card is a land with the subtype
 400.5. The order of objects in a library, in a graveyard, or on the stack can’t be changed except when effects or rules allow it. The same is true for objects arranged in face-down piles in other zones. Other objects in other zones can be arranged however their owners wish, although who controls those objects, whether they’re tapped or flipped, and what other objects are attached to them must remain clear to all players.
 
 400.6. If an object would move from one zone to another, determine what event is moving the object. If the object is moving to a public zone and its owner will be able to look at it in that zone, its owner looks at it to see if it has any abilities that would affect the move. If the object is moving to the battlefield, each other player who will be able to look at it in that zone does so. Then any appropriate replacement effects, whether they come from that object or from elsewhere, are applied to that event. If any effects or rules try to do two or more contradictory or mutually exclusive things to a particular object, that object’s controller—or its owner if it has no controller—chooses which effect to apply, and what that effect does. (Note that multiple instances of the same thing may be mutually exclusive; for example, two simultaneous “destroy” effects.) Then the event moves the object.
+Example: Exquisite Archangel has an ability which reads “If you would lose the game, instead exile Exquisite Archangel and your life total becomes equal to your starting life total.” A spell deals 5 damage to a player with 5 life and 5 damage to an Exquisite Archangel under that player’s control. As state-based actions are performed, that player’s life total becomes equal to his or her starting life total, and that player chooses whether Exquisite Archangel moves to its owner’s graveyard or to exile.
 
 400.7. An object that moves from one zone to another becomes a new object with no memory of, or relation to, its previous existence. There are eight exceptions to this rule:
 
@@ -2107,7 +2108,7 @@ Example: If an effect reads “All lands are creatures” and a land card is pla
 
 603.7. An effect may create a delayed triggered ability that can do something at a later time. A delayed triggered ability will contain “when,” “whenever,” or “at,” although that word won’t usually begin the ability.
 
-603.7a Delayed triggered abilities come from spells or other abilities that create them on resolution, or are created as the result of a replacement effect being applied. That means a delayed triggered ability won’t trigger until it has actually been created, even if its trigger event occurred just beforehand. Other events that happen earlier may make the trigger event impossible.
+603.7a Delayed triggered abilities are created during the resolution of spells or abilities, as the result of a replacement effect being applied, or as a result of a static ability that allows a player to take an action. A delayed triggered ability won’t trigger until it has actually been created, even if its trigger event occurred just beforehand. Other events that happen earlier may make the trigger event impossible.
 Example: Part of an effect reads “When this creature leaves the battlefield,” but the creature in question leaves the battlefield before the spell or ability creating the effect resolves. In this case, the delayed ability never triggers.
 Example: If an effect reads “When this creature becomes untapped” and the named creature becomes untapped before the effect resolves, the ability waits for the next time that creature untaps.
 
@@ -2121,6 +2122,8 @@ Example: An ability that reads “Exile this creature at the beginning of the ne
 603.7e If an activated or triggered ability creates a delayed triggered ability, the source of that delayed triggered ability is the same as the source of that other ability. The controller of that delayed triggered ability is the player who controlled that other ability as it resolved.
 
 603.7f If a static ability generates a replacement effect which causes a delayed triggered ability to be created, the source of that delayed triggered ability is the object with that static ability. The controller of that delayed triggered ability is the same as the controller of that object at the time the replacement effect was applied.
+
+603.7g If a static ability allows a player to take an action and creates a delayed triggered ability if that player does so, the source of that delayed triggered ability is the object with that static ability. The controller of that delayed triggered ability is the same as the controller of that object at the time the action was taken.
 
 603.8. Some triggered abilities trigger when a game state (such as a player controlling no permanents of a particular card type) is true, rather than triggering when an event occurs. These abilities trigger as soon as the game state matches the condition. They’ll go onto the stack at the next available opportunity. These are called state triggers. (Note that state triggers aren’t the same as state-based actions.) A state-triggered ability doesn’t trigger again until the ability has resolved, has been countered, or has otherwise left the stack. Then, if the object with the ability is still in the same zone and the game state still matches its trigger condition, the ability will trigger again.
 Example: A permanent’s ability reads, “Whenever you have no cards in hand, draw a card.” If its controller plays the last card from his or her hand, the ability will trigger once and won’t trigger again until it has resolved. If its controller casts a spell that reads “Discard your hand, then draw that many cards,” the ability will trigger during the spell’s resolution because the player’s hand was momentarily empty.
@@ -2685,7 +2688,7 @@ Example: If a spell attempts to exchange control of two target creatures but one
 
 701.9b When control of two permanents is exchanged, if those permanents are controlled by different players, each of those players simultaneously gains control of the permanent that was controlled by the other player. If, on the other hand, those permanents are controlled by the same player, the exchange effect does nothing.
 
-701.9c When life totals are exchanged, each player gains or loses the amount of life necessary to equal the other player’s previous life total. Replacement effects may modify these gains and losses, and triggered abilities may trigger on them.
+701.9c When life totals are exchanged, each player gains or loses the amount of life necessary to equal the other player’s previous life total. Replacement effects may modify these gains and losses, and triggered abilities may trigger on them. A player who can’t gain life can’t be given a higher life total this way, and a player who can’t lose life can’t be given a lower life total this way (see rules 118.7–8).
 
 701.9d Some spells or abilities may instruct a player to exchange cards in one zone with cards in a different zone (for example, exiled cards and cards in a player’s hand). These spells and abilities work the same as other “exchange” spells and abilities, except they can exchange the cards only if all the cards are owned by the same player.
 
@@ -2693,7 +2696,7 @@ Example: If a spell attempts to exchange control of two target creatures but one
 
 701.9f If a spell or ability instructs a player to simply exchange two zones, and one of the zones is empty, the cards in the zones are still exchanged.
 
-701.9g A spell or ability may instruct a player to exchange two numerical values. In such an exchange, each value becomes equal to the previous value of the other. If either of those values is a life total, the affected player gains or loses the amount of life necessary to equal the other value. Replacement effects may modify this gain or loss, and triggered abilities may trigger on it. If either of those values is a power or toughness, a continuous effect is created setting that power or toughness to the other value (see rule 613.3b). This rule does not apply to spells and abilities that switch a creature’s power and toughness.
+701.9g A spell or ability may instruct a player to exchange two numerical values. In such an exchange, each value becomes equal to the previous value of the other. If either of those values is a life total, the affected player gains or loses the amount of life necessary to equal the other value. Replacement effects may modify this gain or loss, and triggered abilities may trigger on it. A player who can’t gain life can’t be given a higher life total this way, and a player who can’t lose life can’t be given a lower life total this way (see rules 118.7–8). If either of those values is a power or toughness, a continuous effect is created setting that power or toughness to the other value (see rule 613.3b). This rule does not apply to spells and abilities that switch a creature’s power and toughness.
 
 701.10. Exile
 
@@ -2925,9 +2928,9 @@ Example: Varolz, the Scar-Striped has the following ability: “Each creature ca
 
 702.2a Deathtouch is a static ability.
 
-702.2b Any nonzero amount of combat damage assigned to a creature by a source with deathtouch is considered to be lethal damage, regardless of that creature’s toughness. See rules 510.1c–d.
+702.2b A creature with toughness greater than 0 that’s been dealt damage by a source with deathtouch since the last time state-based actions were checked is destroyed as a state-based action. See rule 704.
 
-702.2c A creature with toughness greater than 0 that’s been dealt damage by a source with deathtouch since the last time state-based actions were checked is destroyed as a state-based action. See rule 704.
+702.2c Any nonzero amount of combat damage assigned to a creature by a source with deathtouch is considered to be lethal damage for the purposes of determining if a proposed combat damage assignment is valid, regardless of that creature’s toughness. See rules 510.1c–d.
 
 702.2d The deathtouch rules function no matter what zone an object with deathtouch deals damage from.
 
@@ -3390,10 +3393,12 @@ Example: Glacial Ray is a red card with splice onto Arcane that reads, “Glacia
 
 702.50. Convoke
 
-702.50a Convoke is a static ability that functions while the spell with convoke is on the stack. “Convoke” means “For each colored mana in this spell’s total cost, you may tap an untapped creature of that color you control rather than pay that mana. For each generic mana in this spell’s total cost, you may tap an untapped creature you control rather than pay that mana.” The convoke ability isn’t an additional or alternative cost and applies only after the total cost of the spell with convoke is determined.
+702.50a Convoke is a static ability that functions while the spell with convoke is on the stack. “Convoke” means “For each colored mana in this spell’s total cost, you may tap an untapped creature of that color you control rather than pay that mana. For each generic mana in this spell’s total cost, you may tap an untapped creature you control rather than pay that mana.”
+
+702.50b The convoke ability isn’t an additional or alternative cost and applies only after the total cost of the spell with convoke is determined.
 Example: Heartless Summoning says, in part, “Creature spells you cast cost {2} less to cast.” You control Heartless Summoning and cast Siege Wurm, a spell with convoke that costs {5}{G}{G}. The total cost to cast Siege Wurm is {3}{G}{G}. After activating mana abilities, you pay that total cost. You may tap up to two green creatures and up to three creatures of any color to pay that cost, and the remainder is paid with mana.
 
-702.50b Multiple instances of convoke on the same spell are redundant.
+702.50c Multiple instances of convoke on the same spell are redundant.
 
 702.51. Dredge
 
@@ -3495,9 +3500,11 @@ Example: You activate the aura swap ability of an Aura that you control but you 
 
 702.65. Delve
 
-702.65a Delve is a static ability that functions while the spell with delve is on the stack. “Delve” means “For each generic mana in this spell’s total cost, you may exile a card from your graveyard rather than pay that mana.” The delve ability isn’t an additional or alternative cost and applies only after the total cost of the spell with delve is determined.
+702.65a Delve is a static ability that functions while the spell with delve is on the stack. “Delve” means “For each generic mana in this spell’s total cost, you may exile a card from your graveyard rather than pay that mana.”
 
-702.65b Multiple instances of delve on the same spell are redundant.
+702.65b The delve ability isn’t an additional or alternative cost and applies only after the total cost of the spell with delve is determined.
+
+702.65c Multiple instances of delve on the same spell are redundant.
 
 702.66. Fortify
 
@@ -3883,6 +3890,14 @@ Example: Aether Storm is an enchantment with the ability “Creature spells can�
 702.124b Players who have left the game are not counted when determining how many opponents you have.
 
 702.124c If a spell has multiple instances of undaunted, each of them applies.
+
+702.125. Improvise
+
+702.125a Improvise is a static ability that functions while the spell with improvise is on the stack. “Improvise” means “For each generic mana in this spell’s total cost, you may tap an untapped artifact you control rather than pay that mana.”
+
+702.125b The improvise ability isn’t an additional or alternative cost and applies only after the total cost of the spell with improvise is determined.
+
+702.125c Multiple instances of improvise on the same spell are redundant.
 
 703. Turn-Based Actions
 
@@ -5743,6 +5758,9 @@ Information printed directly below the text box that has no effect on game play.
 Imprint
 “Imprint” used to be a keyword ability. It is now an ability word and has no rules meaning. All cards printed with the imprint keyword have received errata in the Oracle card reference.
 
+Improvise
+A keyword ability that lets you tap artifacts rather than pay mana to cast a spell. See rule 702.125, “Improvise.”
+
 In Play (Obsolete)
 An obsolete term for the battlefield. Cards that were printed with text that contain the phrases “in play,” “from play,” “into play,” or the like are referring to the battlefield and have received errata in the Oracle card reference. See Battlefield.
 
@@ -6676,8 +6694,8 @@ Thanks to all our project team members and the many others too numerous to menti
 
 
 
-These rules are effective as of November 11, 2016.
+These rules are effective as of January 20, 2017.
 
-Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, and Magic: The Gathering—Conspiracy are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2016 Wizards. U.S. Pat. No. RE 37,957.
+Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, and Magic: The Gathering—Conspiracy are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2017 Wizards. U.S. Pat. No. RE 37,957.
 
 
