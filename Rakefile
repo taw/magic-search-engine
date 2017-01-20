@@ -210,11 +210,6 @@ task "clean" do
   end
 end
 
-desc "Fetch Penny Dreadful card list"
-task "penny_dreadful:update" do
-  sh "wget", "http://pdmtgo.com/legal_cards.txt", "-O", "data/penny_dreadful_legal_cards.txt"
-end
-
 desc "Fetch new Comprehensive Rules"
 task "rules:update" do
   page_url = "http://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules"
