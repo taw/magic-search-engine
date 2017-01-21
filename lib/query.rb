@@ -9,10 +9,6 @@ class Date
 end
 
 class Query
-  def ungrouped?
-    !!@metadata[:ungrouped]
-  end
-
   def initialize(query_string)
     @cond, @metadata = QueryParser.new.parse(query_string)
 
@@ -79,7 +75,7 @@ class Query
         []
       end + [c.name, c.set.regular? ? 0 : 1, -c.release_date.to_i_sort, c.set.name, c.number.to_i, c.number]
     end
-    SearchResults.new(results, logger)
+    SearchResults.new(results, logger, ungrouped?)
   end
 
   def to_s
@@ -98,6 +94,10 @@ class Query
   end
 
   private
+
+  def ungrouped?
+    !!@metadata[:ungrouped]
+  end
 
   def maybe_quote(text)
     if text.is_a?(Date)

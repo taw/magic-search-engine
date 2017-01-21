@@ -51,11 +51,8 @@ class CardController < ApplicationController
     query = Query.new(@search)
     results = $CardDatabase.search(query)
     @warnings = results.warnings
-
-    if query.ungrouped?
-      @cards = results.printings.map{|cp| [cp, [cp]]}
-    else
-      @cards = choose_best_printing(results.printings)
+    @cards = results.card_groups.map do |printings|
+      choose_best_printing(printings)
     end
 
     @cards = @cards.paginate(page: page, per_page: 25)
@@ -75,10 +72,8 @@ class CardController < ApplicationController
 
   private
 
-  def choose_best_printing(results)
-    results.group_by(&:name).map do |name, printings|
-      best_printing = printings.find{|cp| ApplicationHelper.card_picture_path(cp) } || printings[0]
-      [best_printing, printings]
-    end
+  def choose_best_printing(printings)
+    best_printing = printings.find{|cp| ApplicationHelper.card_picture_path(cp) } || printings[0]
+    [best_printing, printings]
   end
 end
