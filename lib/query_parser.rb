@@ -9,15 +9,17 @@ require_relative "interactive_query_builder"
 
 class QueryParser
   def parse(query_string)
-    @metadata = {}
-    @tokens = []
     str = query_string.strip
-    if str =~ /\A!(.*)\z/
-      name = $1
+    if str =~ /\A(\+\+)?!(.*)\z/
+      ungrouped = ($1 == "++")
+      name = $2
       # These cards need special treatment:
       # * "Ach! Hans, Run!"
       # * Look at Me, I'm R&D
       # * R&D's Secret Lair
+
+      metadata = {}
+      metadata[:ungrouped] = true if ungrouped
 
       unless name =~ /Ach.*Hans.*Run/
         name = name.sub(/\A"(.*)"\z/) { $1 }
@@ -27,11 +29,14 @@ class QueryParser
       else
         cond = ConditionExact.new(name)
       end
+      [cond, metadata]
     else
+      @metadata = {}
+      @tokens = []
       tokenize!(str)
       cond = parse_query
+      [cond, @metadata]
     end
-    [cond, @metadata]
   end
 
 private
