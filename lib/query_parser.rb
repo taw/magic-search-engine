@@ -31,9 +31,10 @@ class QueryParser
       end
       [cond, metadata]
     else
-      @tokens, metadata = QueryTokenizer.new.tokenize(str)
-      cond = parse_query
-      [cond, metadata]
+      @tokens = QueryTokenizer.new.tokenize(str)
+      @metadata = {}
+      query = parse_query
+      [query, @metadata]
     end
   end
 
@@ -125,6 +126,14 @@ private
       parse_cond
     when :test
       @tokens.shift[1]
+    when :metadata
+      # Quietly eat it
+      @metadata.merge!(@tokens.shift[1])
+      parse_cond
+    when :time
+      # Quietly eat it, for now
+      @metadata.merge!(time: @tokens.shift[1])
+      parse_cond
     else
       warn "Unknown token type #{@tokens[0]}"
     end
