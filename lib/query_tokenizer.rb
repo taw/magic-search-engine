@@ -93,7 +93,7 @@ class QueryTokenizer
         metadata[:ungrouped] = true
       elsif s.scan(/time:(?:"(.*?)"|([\.\w]+))/i)
         # Parsing is downstream responsibility
-        metadata[:time] = (s[1] || s[2]).downcase
+        metadata[:time] = parse_time(s[1] || s[2])
       elsif s.scan(/"(.*?)"/)
         tokens << [:test, ConditionWord.new(s[1])]
       elsif s.scan(/not/)
@@ -123,5 +123,28 @@ class QueryTokenizer
       end
     end
     [tokens, metadata]
+  end
+
+private
+
+  def parse_time(time)
+    time = time.downcase
+    case time
+    when /\A\d{4}\z/
+      # It would probably be easier if we had end-of-period semantics, but we'd need to hack Date.parse for it
+      # It parses "March 2010" as "2010.3.1"
+      Date.parse("#{time}.1.1")
+    when /\A\d{4}\.\d{1,2}\z/
+      Date.parse("#{time}.1")
+    when /\d{4}/
+      # throw at Date.parse but only if not set name / symbol
+      begin
+        Date.parse(time)
+      rescue
+        time
+      end
+    else
+      time
+    end
   end
 end
