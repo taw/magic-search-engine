@@ -1,6 +1,6 @@
 class ConditionLastprint < ConditionPrint
   def to_s
-    "lastprint#{@op}#{@date}"
+    timify_to_s "lastprint#{@op}#{maybe_quote(@date)}"
   end
 
   private

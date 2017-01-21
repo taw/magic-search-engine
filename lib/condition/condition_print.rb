@@ -22,11 +22,7 @@ class ConditionPrint < Condition
   end
 
   def to_s
-    if @time
-      "(time:#{maybe_quote(@time)} print#{@op}#{maybe_quote(@date)})"
-    else
-      "print#{@op}#{maybe_quote(@date)}"
-    end
+    timify_to_s "print#{@op}#{maybe_quote(@date)}"
   end
 
   def metadata!(key, value)

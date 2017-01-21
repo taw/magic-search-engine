@@ -1,6 +1,6 @@
 class ConditionFirstprint < ConditionPrint
   def to_s
-    "firstprint#{@op}#{@date}"
+    timify_to_s "firstprint#{@op}#{@date}"
   end
 
   private
