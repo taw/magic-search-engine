@@ -3,7 +3,6 @@ require "strscan"
 class QueryTokenizer
   def tokenize(str)
     tokens = []
-    metadata = {}
     s = StringScanner.new(str)
     until s.eos?
       if s.scan(/[\s,]+/)
@@ -88,12 +87,12 @@ class QueryTokenizer
       elsif s.scan(/border:(black|silver|white)\b/i)
         tokens << [:test, ConditionBorder.new(s[1].downcase)]
       elsif s.scan(/sort:(\w+)/)
-        metadata[:sort] = s[1].downcase
+        tokens << [:metadata, {sort: s[1].downcase}]
       elsif s.scan(/\+\+/)
-        metadata[:ungrouped] = true
+        tokens << [:metadata, {ungrouped: true}]
       elsif s.scan(/time:(?:"(.*?)"|([\.\w]+))/i)
         # Parsing is downstream responsibility
-        metadata[:time] = parse_time(s[1] || s[2])
+        tokens << [:time, parse_time(s[1] || s[2])]
       elsif s.scan(/"(.*?)"/)
         tokens << [:test, ConditionWord.new(s[1])]
       elsif s.scan(/not/)
@@ -122,7 +121,7 @@ class QueryTokenizer
         tokens << [:test, ConditionWord.new(s[1])]
       end
     end
-    [tokens, metadata]
+    tokens
   end
 
 private
