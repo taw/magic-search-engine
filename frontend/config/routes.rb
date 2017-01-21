@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "card/gallery/:set/:id" => "card#gallery"
   get "card/:set/:id" => "card#show"
+  get "card/:set/:id/:name" => "card#show"
   get "card" => "card#index"
   get "set/:id" => "set#show"
   get "set" => "set#index"
