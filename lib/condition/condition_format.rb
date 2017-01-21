@@ -24,13 +24,17 @@ class ConditionFormat < Condition
     end.flat_map(&:printings).to_set
   end
 
-  def metadata=(options)
+  def metadata!(key, value)
     super
-    @time = options[:time]
+    @time = value if key == :time
   end
 
   def to_s
-    "f:#{maybe_quote(@format_name)}"
+    if @time
+      "(time:#{maybe_quote(@time)} f:#{maybe_quote(@format_name)})"
+    else
+      "f:#{maybe_quote(@format_name)}"
+    end
   end
 
   private

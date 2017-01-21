@@ -21,9 +21,9 @@ class ConditionOr < Condition
     @conds.any?{|cond| cond.match?(card)}
   end
 
-  def metadata=(options)
+  def metadata!(key, value)
     super
-    @conds.each{|cond| cond.metadata = options}
+    @conds.each{|cond| cond.metadata!(key, value)}
   end
 
   def simple?

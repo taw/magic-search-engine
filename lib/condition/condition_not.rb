@@ -8,9 +8,9 @@ class ConditionNot < Condition
     db.printings - @cond.search(db)
   end
 
-  def metadata=(options)
+  def metadata!(key, value)
     super
-    @cond.metadata = options
+    @cond.metadata!(key, value)
   end
 
   def match?(card)

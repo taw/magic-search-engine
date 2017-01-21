@@ -51,6 +51,21 @@ private
   end
 
   def parse_query
+    old_time, @time = @time, nil
+    cond = parse_cond_list
+    if @time
+      printed_early = ConditionPrint.new("<=", @time)
+      cond = conds_to_query([cond, printed_early])
+      cond.metadata! :time, @time
+      cond
+    else
+      cond
+    end
+  ensure
+    @time = old_time
+  end
+
+  def parse_cond_list
     conds = []
     until @tokens.empty?
       case @tokens[0][0]
@@ -65,7 +80,7 @@ private
         if conds.empty?
           # Ignore
         else
-          right_query = parse_query
+          right_query = parse_cond_list
           if right_query
             return ConditionOr.new(conds_to_query(conds), right_query)
           else
@@ -76,7 +91,7 @@ private
         @tokens.shift
         # This is semantically meaningful
         left_query = conds_to_query(conds)
-        right_query = parse_query
+        right_query = parse_cond_list
         if left_query and right_query
           return ConditionPart.new(ConditionAnd.new(left_query, ConditionOther.new(right_query)))
         else
@@ -132,7 +147,8 @@ private
       parse_cond
     when :time
       # Quietly eat it, for now
-      @metadata.merge!(time: @tokens.shift[1])
+      warn "Multiple time: clauses in same subquery" if @time
+      @time = @tokens.shift[1]
       parse_cond
     else
       warn "Unknown token type #{@tokens[0]}"

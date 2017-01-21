@@ -11,8 +11,8 @@ class Condition
   end
 
   # Save only what's needed, by default nothing
-  def metadata=(options)
-    @logger = options[:logger]
+  def metadata!(key, value)
+    @logger = value if key == :logger
   end
 
   def ==(other)

@@ -1,6 +1,10 @@
 class ConditionRestricted < ConditionFormat
   def to_s
-    "restricted:#{maybe_quote(@format_name)}"
+    if @time
+      "(time:#{maybe_quote(@time)} restricted:#{maybe_quote(@format_name)})"
+    else
+      "restricted:#{maybe_quote(@format_name)}"
+    end
   end
 
   private
