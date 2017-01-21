@@ -17,9 +17,9 @@ class ConditionAlt < Condition
     results
   end
 
-  def metadata=(options)
+  def metadata!(key, value)
     super
-    @cond.metadata = options
+    @cond.metadata!(key, value)
   end
 
   def to_s

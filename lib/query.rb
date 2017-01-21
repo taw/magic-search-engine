@@ -11,15 +11,6 @@ end
 class Query
   def initialize(query_string)
     @cond, @metadata = QueryParser.new.parse(query_string)
-    if @metadata[:time]
-      @cond = ConditionAnd.new(@cond, ConditionPrint.new("<=", @metadata[:time]))
-    end
-    if @cond
-      raise "No condition present for #{query_string}" unless @cond
-    else
-      # No search query? OK, we'll just return all cards except extras
-    end
-
     # puts "Parse #{query_string} -> #{@cond}"
   end
 
@@ -27,10 +18,11 @@ class Query
   def search(db)
     logger = Set[]
     if @cond
-      @cond.metadata = @metadata.merge(fuzzy: nil, logger: logger)
+      @cond.metadata! :logger, logger
+      @cond.metadata! :fuzzy, nil
       results = @cond.search(db)
       if results.empty?
-        @cond.metadata = @metadata.merge(fuzzy: db, logger: logger)
+        @cond.metadata! :fuzzy, db
         results = @cond.search(db)
       end
     else
@@ -63,7 +55,7 @@ class Query
   def to_s
     str = [
       @cond.to_s,
-      ("time:#{maybe_quote(@metadata[:time])}" if @metadata[:time]),
+      # ("time:#{maybe_quote(@metadata[:time])}" if @metadata[:time]),
       ("sort:#{@metadata[:sort]}" if @metadata[:sort]),
     ].compact.join(" ")
     (@metadata[:ungrouped] ? "++#{str}" : str)

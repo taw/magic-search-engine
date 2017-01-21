@@ -22,12 +22,16 @@ class ConditionPrint < Condition
   end
 
   def to_s
-    "print#{@op}#{maybe_quote(@date)}"
+    if @time
+      "(time:#{maybe_quote(@time)} print#{@op}#{maybe_quote(@date)})"
+    else
+      "print#{@op}#{maybe_quote(@date)}"
+    end
   end
 
-  def metadata=(options)
+  def metadata!(key, value)
     super
-    @time = options[:time]
+    @time = value if key == :time
   end
 
   private

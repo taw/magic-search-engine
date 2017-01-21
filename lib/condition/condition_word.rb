@@ -20,14 +20,16 @@ class ConditionWord < ConditionSimple
     "#{maybe_quote(@word)}"
   end
 
-  def metadata=(options)
+  def metadata!(key, value)
     super
-    if options[:fuzzy]
-      @suggestions = options[:fuzzy].suggest_spelling(@word).flat_map do |alt|
-        [[alt, alt], [alt, alt.sub(/s\z/, "")]]
+    if key == :fuzzy
+      if value
+        @suggestions = value.suggest_spelling(@word).flat_map do |alt|
+          [[alt, alt], [alt, alt.sub(/s\z/, "")]]
+        end
+      else
+        @suggestions = []
       end
-    else
-      @suggestions = []
     end
   end
 end
