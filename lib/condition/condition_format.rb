@@ -30,11 +30,7 @@ class ConditionFormat < Condition
   end
 
   def to_s
-    if @time
-      "(time:#{maybe_quote(@time)} f:#{maybe_quote(@format_name)})"
-    else
-      "f:#{maybe_quote(@format_name)}"
-    end
+    timify_to_s "f:#{maybe_quote(@format_name)}"
   end
 
   private

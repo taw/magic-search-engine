@@ -1,10 +1,6 @@
 class ConditionLegal < ConditionFormat
   def to_s
-    if @time
-      "(time:#{maybe_quote(@time)} legal:#{maybe_quote(@format_name)})"
-    else
-      "legal:#{maybe_quote(@format_name)}"
-    end
+    timify_to_s "legal:#{maybe_quote(@format_name)}"
   end
 
   private

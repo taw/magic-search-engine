@@ -19,7 +19,8 @@ describe "QueryParser" do
     assert_search_parse "(cmc=1 c:w) r:common", "cmc=1 (c:w r:common)"
     # Would be nice if this worked, doesn't work yet
     refute_search_parse "cmc=1 c:w", "cmc=1 -(-c:w)"
-    refute_search_parse "cmc=1 c:w", "c:w cmc=1"
+    assert_search_parse "cmc=1 c:w", "c:w cmc=1"
+    assert_search_parse "cmc=1 OR c:w", "c:w OR cmc=1"
     refute_search_parse "c:uw", "c:wu"
     refute_search_parse "ci:uw", "ci!wu"
   end

@@ -56,4 +56,12 @@ class Condition
   def warning(warn)
     @logger << warn
   end
+
+  def timify_to_s(str)
+    if @time
+      "(time:#{maybe_quote(@time)} #{str})"
+    else
+      str
+    end
+  end
 end
