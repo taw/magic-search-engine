@@ -249,11 +249,14 @@
     %div You can travel to any time by specifying set code, set name, or full date (partial date like "1999" will be interpretted as "1 January 1999"). Cards printed since then won't be returned, and status of various formats will be as it was at that time. So if you want to argue about what was best Modern Pod deck back in that time just roll back the time to before the ban and enjoy.
 
     %div Formats should generally be fully accurate from 2004 onwards (Legacy/Vintage split), information about older times might contain inaccuracies.
+
+    %div You can specify multiple time periods with use of parentheses.
     %ul
       = search_help "time:rtr f:standard", "all cards in Standard at time of Return to Ravnica set"
       = search_help %Q[time:"1 march 2009" banned:commander], "Commander banned cards as of 1 March 2009"
       = search_help "time:m10 t:planeswalker", "All Planeswalker cards in existence as of printing of Magic 2010 set"
       = search_help "time:2010 restricted:commander", %Q[Cards restricted in Commander as of beginning of 2010 (in Commander context "restricted" means historical contept of "banned as general"]
+      = search_help "(time:OGW f:Standard) not (time:SOI f:Standard)", "Cards in Oath of Gatewatch Standard which are not in Shadows Over Innistrad Standard"
 
     %h4 Sort results
     %div Use sort: operator to order results in a different way. By default alphabetical sorting is used.
