@@ -1,6 +1,19 @@
 module ApplicationHelper
   def link_to_card(card, &blk)
-    link_to(controller: "card", action: "show", set: card.set_code, id: card.number, &blk)
+    link_to(
+      controller: "card",
+      action: "show",
+      set: card.set_code,
+      id: card.number,
+      # This part is purely decorative, so we don't bother desting it
+      name: card.name
+                .gsub("'s", "s")
+                .gsub("I'm", "Im")
+                .gsub("You're", "youre")
+                .gsub("R&D", "RnD")
+                .gsub(/[^a-zA-Z0-9\-]+/, "-")
+                .gsub(/(\A-)|(-\z)/, ""),
+      &blk)
   end
 
   def link_to_set(set, &blk)
