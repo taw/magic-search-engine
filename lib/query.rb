@@ -61,11 +61,12 @@ class Query
   end
 
   def to_s
-    [
+    str = [
       @cond.to_s,
       ("time:#{maybe_quote(@metadata[:time])}" if @metadata[:time]),
       ("sort:#{@metadata[:sort]}" if @metadata[:sort]),
     ].compact.join(" ")
+    (@metadata[:ungrouped] ? "++#{str}" : str)
   end
 
   def ==(other)
