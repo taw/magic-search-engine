@@ -47,4 +47,14 @@ describe "Time Travel Test" do
     assert_count_results "time:1000", 0
     assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
   end
+
+  it "time travel scoped" do
+    assert_search_equal "(time:KLD f:standard) not (time:AER f:standard)",
+      "(Emrakul, the Promised End) or (Reflector Mage) or (Smuggler's Copter)"
+    # Reprints complicate this
+    assert_search_equal "(time:OGW f:Standard) not (time:SOI f:Standard)",
+      "(e:KTK or e:FRF) -t:basic -(Act of Treason) -(Dutiful Return) -(Naturalize)
+      -(Summit Prowler) -(Smite the Monstrous)
+      -(Throttle) -(Tormenting Voice) -(Weave Fate)"
+  end
 end
