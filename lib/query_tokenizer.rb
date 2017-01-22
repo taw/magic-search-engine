@@ -95,14 +95,14 @@ class QueryTokenizer
         tokens << [:time, parse_time(s[1] || s[2])]
       elsif s.scan(/"(.*?)"/)
         tokens << [:test, ConditionWord.new(s[1])]
-      elsif s.scan(/not/)
-        tokens << [:not]
       elsif s.scan(/other:/)
         tokens << [:other]
       elsif s.scan(/part:/)
         tokens << [:part]
       elsif s.scan(/alt:/)
         tokens << [:alt]
+      elsif s.scan(/not\b/)
+        tokens << [:not]
       elsif s.scan(/([^-!<>=:"\s&\/()][^<>="\s&\/()]*)(?=$|[\s&\/()])/i)
         # Veil-Cursed and similar silliness
         words = s[1].split("-")
