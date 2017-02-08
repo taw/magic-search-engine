@@ -391,7 +391,7 @@ describe "Full Database Test" do
     assert_search_equal "b:isd or b:soi", "b:isd,soi"
   end
 
-  it "legal_everywhere" do
+  it "legal everywhere" do
     legality_information("Island").should be_legal_everywhere
     legality_information("Giant Spider").should_not be_legal_everywhere
     legality_information("Birthing Pod").should_not be_legal_everywhere
@@ -399,7 +399,7 @@ describe "Full Database Test" do
     legality_information("Backup Plan").should_not be_legal_everywhere
   end
 
-  it "legal_nowhere" do
+  it "legal nowhere" do
     legality_information("Island").should_not be_legal_nowhere
     legality_information("Giant Spider").should_not be_legal_nowhere
     legality_information("Birthing Pod").should_not be_legal_nowhere
@@ -407,7 +407,7 @@ describe "Full Database Test" do
     legality_information("Backup Plan").should be_legal_nowhere
   end
 
-  it "is_commander" do
+  it "is commander" do
     assert_search_equal "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14)"
   end
 
