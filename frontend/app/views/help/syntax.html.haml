@@ -69,13 +69,16 @@
     %h4 Search by mana cost
     %div For sake of this search every mana symbol is treated as non-comparable, so "{u}" is neither greater or less than "{u/b}" etc. There's a lot of flexibility, so "{up}", "{u/p}", "{P/U}" etc. all work for Phyrexian blue mana. Curly braces are only needed for non-standard mana types.
     %ul
-      = search_help "mana=0", "cards with mana cost {0} - does not include cards with no mana cost"
+      = search_help "mana=0", "cards with mana cost {0}"
+      = search_help "mana={}", "cards with no mana cost"
+      = search_help "mana!={}", "cards with some mana cost"
       = search_help "mana<=4", "cards with mana cost {4} or less"
       = search_help "mana=3uu", "cards with mana cost {3}{u}{u}"
       = search_help "mana={3}{u}{u}", "cards with mana cost {3}{u}{u}"
       = search_help "mana>={b/g}", "cards with mana cost including {b/g} hybrid mana"
       = search_help "mana>={2/r}", "cards with mana cost including {2/r} Shadowmoor hybrid mana"
       = search_help "mana={p/r}", "cards with mana cost equal {p/r} Phyrexian mana"
+      = search_help "mana!=2gr", "cards with mana cost different from {2}{g}{r} (or no mana cost)"
 
     %div This search supports variable symbols: "m", "n", and "o" each represent a single mana of any color but must each differ from the others; "h" represents a single hybrid mana.
     %ul

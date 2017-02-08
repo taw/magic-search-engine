@@ -7,26 +7,42 @@ class ConditionMana < ConditionSimple
 
   def match?(card)
     card_mana = card.mana_hash
-    return false unless card_mana
-    if @needs_resolution
-      q_mana = resolve_variable_mana(card_mana, @query_mana)
+    if @query_mana.empty?
+      case @op
+      when "="
+        return !card_mana
+      when "!="
+        return !!card_mana
+      when ">", ">=", "<", "<="
+        # This is all nonsense
+        return false
+      else
+        raise "Unrecognized comparison #{@op}"
+      end
     else
-      q_mana = @query_mana
-    end
-    cmps = (card_mana.keys | q_mana.keys).map{|color| [card_mana[color], q_mana[color]]}
-    case @op
-    when ">="
-      cmps.all?{|a,b| a>=b}
-    when ">"
-      cmps.all?{|a,b| a>=b} and not cmps.all?{|a,b| a==b}
-    when "="
-      cmps.all?{|a,b| a==b}
-    when "<"
-      cmps.all?{|a,b| a<=b} and not cmps.all?{|a,b| a==b}
-    when "<="
-      cmps.all?{|a,b| a<=b}
-    else
-      raise "Unrecognized comparison #{@op}"
+      return @op == "!=" unless card_mana
+      if @needs_resolution
+        q_mana = resolve_variable_mana(card_mana, @query_mana)
+      else
+        q_mana = @query_mana
+      end
+      cmps = (card_mana.keys | q_mana.keys).map{|color| [card_mana[color], q_mana[color]]}
+      case @op
+      when ">="
+        cmps.all?{|a,b| a>=b}
+      when ">"
+        cmps.all?{|a,b| a>=b} and not cmps.all?{|a,b| a==b}
+      when "="
+        cmps.all?{|a,b| a==b}
+      when "!="
+        cmps.any?{|a,b| a!=b}
+      when "<"
+        cmps.all?{|a,b| a<=b} and not cmps.all?{|a,b| a==b}
+      when "<="
+        cmps.all?{|a,b| a<=b}
+      else
+        raise "Unrecognized comparison #{@op}"
+      end
     end
   end
 
@@ -74,7 +90,7 @@ class ConditionMana < ConditionSimple
           pool[m] += 1
         elsif m =~ /h/
           pool[m.sub("h", "")] += 0.5
-        else
+        elsif m != ""
           pool[m] += 1
         end
       elsif $2
