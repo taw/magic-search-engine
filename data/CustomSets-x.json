@@ -21,7 +21,34 @@
             "land"
         ],
         "border": "black",
-        "cards": [],
+        "cards": [
+            {
+                "artist": "Anton Grundvall",
+                "cmc": 5,
+                "colorIdentity": [
+                    "R"
+                ],
+                "colors": [
+                    "Red"
+                ],
+                "layout": "normal",
+                "manaCost": "{4}{R}",
+                "name": "Acid Spray Trap",
+                "number": "112",
+                "printings": [
+                    "ANK"
+                ],
+                "rarity": "Uncommon",
+                "subtypes": [
+                    "Trap"
+                ],
+                "text": "If an enchanted and/or equipped creature is attacking, you may pay {1}{R} rather than pay Acid Spray Trap's mana cost.\nAcid Spray Trap deals 5 damage to target attacking creature. Destroy all equipment attached to it.",
+                "type": "Instant \u2014 Trap",
+                "types": [
+                    "Instant"
+                ]
+            }
+        ],
         "code": "ANK",
         "custom": true,
         "name": "Ankheret",
@@ -841,7 +868,37 @@
             "land"
         ],
         "border": "black",
-        "cards": [],
+        "cards": [
+            {
+                "artist": "aerroscape",
+                "cmc": 1,
+                "colorIdentity": [
+                    "G"
+                ],
+                "colors": [
+                    "Green"
+                ],
+                "flavor": "Nature's potential no longer has limits.",
+                "layout": "normal",
+                "manaCost": "{G}",
+                "name": "Abundant Growth",
+                "number": "161",
+                "printings": [
+                    "DMS",
+                    "AVR",
+                    "EMA"
+                ],
+                "rarity": "Common",
+                "subtypes": [
+                    "Aura"
+                ],
+                "text": "Enchant land\nWhen Abundant Growth enters the battlefield, draw a card.\nEnchanted land has \"{T}: Add one mana of any color to your mana pool.\"",
+                "type": "Enchantment \u2014 Aura",
+                "types": [
+                    "Enchantment"
+                ]
+            }
+        ],
         "code": "DMS",
         "custom": true,
         "name": "Dreamscape",
@@ -870,7 +927,32 @@
             "land"
         ],
         "border": "black",
-        "cards": [],
+        "cards": [
+            {
+                "artist": "Aaron Griffin",
+                "cmc": 2,
+                "colorIdentity": [
+                    "W"
+                ],
+                "colors": [
+                    "White"
+                ],
+                "flavor": "In another life, maybe you made eye contact, said hello. Maybe you could've been friends.",
+                "layout": "normal",
+                "manaCost": "{1}{W}",
+                "name": "A Face in the Crowd",
+                "number": "8",
+                "printings": [
+                    "IMG"
+                ],
+                "rarity": "Common",
+                "text": "Exile target creature. Return that card to the battlefield under its owner's control at the beginning of the next end step.\nDreamcycling {3} ({3}, Discard this card into exile with a dreaming counter on it: Draw a card.)",
+                "type": "Instant",
+                "types": [
+                    "Instant"
+                ]
+            }
+        ],
         "code": "IMG",
         "custom": true,
         "name": "Imago",
@@ -899,7 +981,41 @@
             "land"
         ],
         "border": "black",
-        "cards": [],
+        "cards": [
+            {
+                "artist": "Moggith (card by Xyronian)",
+                "cmc": 2,
+                "colorIdentity": [
+                    "W"
+                ],
+                "colors": [
+                    "White"
+                ],
+                "flavor": "\"I'm assembling a posse to slay Malastrix. Who's with me?\"",
+                "layout": "normal",
+                "manaCost": "{1}{W}",
+                "name": "Ace Holden",
+                "number": "1",
+                "power": "2",
+                "printings": [
+                    "LDO"
+                ],
+                "rarity": "Rare",
+                "subtypes": [
+                    "Human",
+                    "Knight"
+                ],
+                "supertypes": [
+                    "Legendary"
+                ],
+                "text": "{W}{W}: Prevent all noncombat damage that would be dealt to creatures you control this turn.",
+                "toughness": "2",
+                "type": "Legendary Creature \u2014 Human Knight",
+                "types": [
+                    "Creature"
+                ]
+            }
+        ],
         "code": "LDO",
         "custom": true,
         "name": "Lorado",
