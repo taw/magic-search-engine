@@ -5,8 +5,11 @@ describe "Full Database Test" do
     assert_search_equal "mana!={}", "mana>=0"
     assert_search_equal "mana=", "-mana>=0"
     assert_search_equal "-mana=", "mana>=0"
-    assert_search_equal "mana!=2r", "-mana=2r"
     assert_search_equal "mana={}", "mana="
     assert_search_equal "mana!={}", "mana!="
+  end
+
+  it "!=" do
+    assert_search_equal "mana!=2r", "-mana=2r"
   end
 end
