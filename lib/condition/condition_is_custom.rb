@@ -1,7 +1,6 @@
 class ConditionIsCustom < ConditionSimple
-  def match?(card)
-    return true if card.custom?
-    false
+  def match?(printing)
+    printing.card.custom?
   end
 
   def to_s
