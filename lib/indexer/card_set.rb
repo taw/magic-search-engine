@@ -46,6 +46,7 @@ class Indexer
         "block_name" => @block_name,
         "border" => @set_data["border"],
         "online_only" => @set_data["onlineOnly"],
+        "custom" => @set_data["custom"],
         "release_date" => Indexer.format_release_date(@set_data["releaseDate"]),
         "type" => @set_data["type"],
       }.compact

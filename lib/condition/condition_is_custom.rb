@@ -1,6 +1,6 @@
 class ConditionIsCustom < ConditionSimple
   def match?(card)
-    return true if card.printings.all? { |printing| printing.set.custom? }
+    return true if card.custom?
     false
   end
 

@@ -61,6 +61,10 @@ class Card
     end
   end
 
+  def custom?
+    printings.all? { |printing| printing.set.custom? }
+  end
+
   def has_multiple_parts?
     !!@names
   end

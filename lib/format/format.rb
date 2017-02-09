@@ -22,9 +22,16 @@ class Format
     end
   end
 
+  def include_custom_sets?
+    false
+  end
+
   def in_format?(card)
     card.printings.each do |printing|
       next if @time and printing.release_date > @time
+      if !include_custom_sets?
+        next if card.custom?
+      end
       if @included_sets
         next unless @included_sets.include?(printing.set_code)
       else
@@ -121,6 +128,15 @@ class Format
         "duel commander"              => FormatDuelCommander,
         "penny dreadful"              => FormatPennyDreadful,
         "pd"                          => FormatPennyDreadful,
+        "custom standard"             => FormatCustomStandard,
+        "cstd"                        => FormatCustomStandard,
+        "cs"                          => FormatCustomStandard,
+        "custom eternal"              => FormatCustomEternal,
+        "ce"                          => FormatCustomEternal,
+        "custom commander"            => FormatCustomCommander,
+        "custom edh"                  => FormatCustomCommander,
+        "cc"                          => FormatCustomCommander,
+        "cedh"                        => FormatCustomCommander,
       }
     end
 
