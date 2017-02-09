@@ -28,6 +28,7 @@ end
 desc "Fetch new mtgjson database and generate diffable files"
 task "mtgjson:update" do
   system *%W[wget http://mtgjson.com/json/AllSets-x.json -O data/AllSets-x.json]
+  sh "./bin/patch-mtg-json"
   system "json_pp <data/index.json >index-1.json"
   Rake::Task["index"].invoke
   system "json_pp <data/index.json >index-2.json"
