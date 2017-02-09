@@ -69,7 +69,7 @@ class QueryTokenizer
         op = "=" if op == ":"
         mana = s[2]
         tokens << [:test, ConditionMana.new(op, mana)]
-      elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted|colorshifted|reserved|multipart|promo|primary|commander|digital)\b/i)
+      elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted|colorshifted|reserved|multipart|promo|primary|commander|digital|custom)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         cond = s[2].capitalize
         cond = "Timeshifted" if cond == "Colorshifted"
