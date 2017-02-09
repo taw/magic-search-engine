@@ -53,6 +53,8 @@ class QueryTokenizer
         tokens << [:test, ConditionColors.new(s[1])]
       elsif s.scan(/(?:ci|id)[:!]([wubrgcml]+)/i)
         tokens << [:test, ConditionColorIdentity.new(s[1])]
+      elsif s.scan(/(?:in):([wubrgcml]+)/i)
+        tokens << [:test, ConditionColorIndicator.new(s[1])]
       elsif s.scan(/c!([wubrgcml]+)/i)
         tokens << [:test, ConditionColorsExclusive.new(s[1])]
       elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|(\w+))/)
