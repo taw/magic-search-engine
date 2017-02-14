@@ -47,7 +47,24 @@ class Query
         [c.toughness ? 0 : 1, -c.toughness.to_i]
       else # "name" or unknown key
         []
-      end + [c.name, c.set.regular? ? 0 : 1, -c.release_date.to_i_sort, c.set.name, c.number.to_i, c.number]
+      end + [
+        c.name,
+        !c.online_only? ? 0 : 1,
+        c.frame != "old" ? 0 : 1,
+        c.set.regular? ? 0 : 1,
+        -c.release_date.to_i_sort,
+        c.set.name,
+        c.number.to_i,
+        c.number
+      ]
+      # Fallback sorting for printings of each card:
+      # * not MTGO only
+      # * new frame
+      # * Standard only printing
+      # * most recent
+      # * set name
+      # * card number as integer (10 > 2)
+      # * card number as string (10A > 10)
     end
     SearchResults.new(results, logger, ungrouped?)
   end
