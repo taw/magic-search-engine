@@ -1,6 +1,31 @@
 #!/usr/bin/env python3
 
+import sys
+
 import json
+
+GLOBAL_KEYS = [
+    'layout',
+    'names',
+    'manaCost',
+    'cmc',
+    'colors',
+    'colorIdentity',
+    'type',
+    'supertypes',
+    'types',
+    'subtypes',
+    'text',
+    'power',
+    'toughness',
+    'loyalty',
+    'reserved',
+    'rulings',
+    'foreignNames',
+    'originalText',
+    'originalType',
+    'legalities'
+]
 
 if __name__ == '__main__':
     print('[....] patching MTG JSON with custom sets', end='', flush=True)
@@ -8,7 +33,20 @@ if __name__ == '__main__':
         all_sets_x = json.load(all_sets_x_f)
     with open('data/CustomSets-x.json') as custom_sets_x_f:
         custom_sets_x = json.load(custom_sets_x_f)
-    all_sets_x.update(custom_sets_x)
+    for c_set_code, c_set_info in custom_sets_x.items():
+        if c_set_code in all_sets_x:
+            print('\r[FAIL]')
+            sys.exit('[!!!!] duplicate set code {}'.format(c_set_code))
+        all_sets_x[c_set_code] = c_set_info
+        for c_card in c_set_info['cards']:
+            for a_set_code, a_set_info in all_sets_x.items():
+                for a_card in a_set_info['cards']:
+                    if a_card['name'] == c_card['name']:
+                        if c_set_code not in a_card['printings']:
+                            a_card['printings'].append(c_set_code)
+                        for key in GLOBAL_KEYS:
+                            if key in c_card:
+                                a_card[key] = c_card[key]
     with open('data/AllSets-x.json', 'w') as all_sets_x_f:
         json.dump(all_sets_x, all_sets_x_f, indent=4, sort_keys=True)
     print('\r[ ok ]')
