@@ -55,6 +55,10 @@ class CardPrinting
     end
   end
 
+  def online_only?
+    @set.online_only?
+  end
+
   # This is a bit too performance-critical to use method_missing
   # It's not a huge difference, but no reason to waste ~5% of execution time on it
   def set_name
