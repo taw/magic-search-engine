@@ -49,6 +49,7 @@ class Query
         []
       end + [
         c.name,
+        c.set.custom? ? 0 : 1,
         !c.online_only? ? 0 : 1,
         c.frame != "old" ? 0 : 1,
         c.set.regular? ? 0 : 1,
@@ -58,6 +59,7 @@ class Query
         c.number
       ]
       # Fallback sorting for printings of each card:
+      # * custom set
       # * not MTGO only
       # * new frame
       # * Standard only printing
