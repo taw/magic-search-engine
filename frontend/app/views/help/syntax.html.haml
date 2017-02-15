@@ -5,6 +5,11 @@
     %div
       Most syntax from magiccards.info works here. Everything is case insensitive. All Unicode characters like "Æ" can be spelled with their plain equivalents like "Ae" as well.
 
+    %h4 Custom cards
+    %ul
+      = search_help "is:custom", %Q[custom cards]
+      = search_help "not:custom", %Q[real Magic cards, including reprints in custom sets]
+
     %h4 Search by name
     %ul
       = search_help "channel", %Q[cards with "channel" in name]
