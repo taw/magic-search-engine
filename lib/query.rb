@@ -45,6 +45,8 @@ class Query
         [c.power ? 0 : 1, -c.power.to_i]
       when "tou"
         [c.toughness ? 0 : 1, -c.toughness.to_i]
+      when "rand"
+        [rand]
       else # "name" or unknown key
         []
       end + [
