@@ -47,6 +47,12 @@ class ConditionSetType < Condition
         end
       end
 
+      if set.custom?
+        if type_list.include("custom")
+          sets << set
+        end
+      end
+
       if type_list.include?(set.type)
         sets << set
       end
