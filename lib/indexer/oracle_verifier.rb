@@ -55,35 +55,8 @@ class OracleVerifier
           elsif variants.keys.size == 2 and variants.keys.select{|v| v =~ /\{CHAOS\}/i}.size == 1 and variants.keys.select{|v| v =~  / CHAOS/i}.size == 1
             canonical_variant = variants.keys.select{|v| v =~ /\{CHAOS\}/i}[0]
           else
-            canonical_variant_source = case card_name
-            when "Winter Orb"
-              "ema"
-            when "Hamlet Captain"
-              "emn"
-            when "Jetting Glasskite"
-              "ema"
-            when "Vertigo Spawn", "Pariah", "Ascended Lawmage", "Affa Guard Hound"
-              "cn2"
-            when "Kira, Great Glass-Spinner"
-              "mma"
-            when "Nivix, Aerie of the Firemind"
-              "ddj"
-            when "Lion's Eye Diamond"
-              "vma"
-            when "Corrupt"
-              "gvl"
-            when "Personal Incarnation"
-              "me4"
-            when "Stormscape Battlemage"
-              "c13"
-            when "Mercurial Pretender", "Sword of Kaldra"
-              "ptc"
-            else
-              # FAIL, report
-            end
+            # FAIL, report
           end
-        elsif key == "cmc" and card_name == "Ludevic's Abomination"
-          canonical_variant_source = "isd"
         else
           # FAIL, report
         end
