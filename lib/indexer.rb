@@ -3,9 +3,6 @@ require "ostruct"
 require "json"
 require "set"
 require "pathname"
-require "pry"
-require_relative "ban_list"
-require_relative "format/format"
 require_relative "indexer/card_set"
 require_relative "indexer/oracle_verifier"
 require_relative "indexer/foreign_names_verifier"
@@ -41,68 +38,6 @@ class Indexer
   def initialize
     json_path = Pathname(__dir__) + "../data/AllSets-x.json"
     @data = JSON.parse(json_path.read)
-  end
-
-  def format_names
-    # These are formats supported by mtgjson
-    [
-      "battle for zendikar block",
-      "commander",
-      "ice age block",
-      "innistrad block",
-      "invasion block",
-      "kamigawa block",
-      "legacy",
-      "lorwyn block",
-      "masques block",
-      "mirage block",
-      "mirrodin block",
-      "modern",
-      "odyssey block",
-      "onslaught block",
-      "ravnica block",
-      "return to ravnica block",
-      "scars of mirrodin block",
-      "shards of alara block",
-      "shadows over innistrad block",
-      "standard",
-      "tarkir block", # mtgjson inconsistently calls it khans of tarkir block sometimes
-      "tempest block",
-      "theros block",
-      "time spiral block",
-      "un-sets",
-      "urza block",
-      "vintage",
-      "zendikar block",
-    ]
-  end
-
-  def formats
-    @formats ||= Hash[
-      format_names.map{|n| [n, Format[n].new]}
-    ]
-  end
-
-  # This is a massive hack just for debug message
-  # None of that is saved
-  def algorithm_legalities_for(card_data)
-    result = {}
-    sets_printed = card_data["printings"].map{|set_code| @sets_code_translator[set_code]}
-    layout = card_data["layout"]
-    types = card_data["types"] || []
-    card = OpenStruct.new(
-      name: normalize_name(card_data["name"]),
-      layout: layout,
-      printings: sets_printed.map{|set_code|
-        OpenStruct.new(set_code: set_code)
-      },
-      extra: ["vanguard", "plane", "scheme", "phenomenon", "token"].include?(layout) || types.include?("Conspiracy"),
-    )
-    formats.each do |format_name, format|
-      status = format.legality(card)
-      result[format_name] = status if status
-    end
-    result
   end
 
   def save_all!(path)
@@ -201,24 +136,6 @@ class Indexer
     ).compact
   end
 
-  def report_legalities_fail(name, mtgjson_legalities, algorithm_legalities)
-    @reported_fail ||= {}
-    return if @reported_fail[name]
-    @reported_fail[name] = true
-    mtgjson_legalities = mtgjson_legalities.sort
-    algorithm_legalities = algorithm_legalities.sort
-    puts "FAIL #{name}"
-    unless (mtgjson_legalities - algorithm_legalities).empty?
-      puts "Extra formats (mtgjson):"
-      puts (mtgjson_legalities - algorithm_legalities).map(&:inspect)
-    end
-    unless (algorithm_legalities - mtgjson_legalities).empty?
-      puts "Extra formats (algo):"
-      puts (algorithm_legalities - mtgjson_legalities).map(&:inspect)
-    end
-    puts ""
-  end
-
   def prepare_index
     sets = {}
     cards = {}
@@ -245,25 +162,6 @@ class Indexer
 
       set_data["cards"].each do |card_data|
         name = card_data["name"]
-        sets_printed = card_data["printings"].map{|set_code2| @sets_code_translator[set_code2]}
-        mtgjson_legalities = format_legalities(card_data)
-        # It seems incorrect
-        if sets_printed == ["cns"] or sets_printed == ["cn2"]
-          mtgjson_legalities["commander"] = mtgjson_legalities["vintage"]
-        end
-
-        if mtgjson_legalities["khans of tarkir block"]
-          mtgjson_legalities["tarkir block"] = mtgjson_legalities.delete("khans of tarkir block")
-        end
-        if mtgjson_legalities["lorwyn-shadowmoor block"]
-          mtgjson_legalities["lorwyn block"] = mtgjson_legalities.delete("lorwyn-shadowmoor block")
-        end
-        algorithm_legalities = algorithm_legalities_for(card_data)
-
-        if mtgjson_legalities != algorithm_legalities
-          # Sadly mtgjson reached complete fail level here
-          # report_legalities_fail(name, mtgjson_legalities, algorithm_legalities)
-        end
         card = index_card_data(card_data)
         oracle_verifier.add(set_code, card)
         card_printings[name] ||= []
@@ -296,37 +194,7 @@ class Indexer
       cards[card_name]["printings"].delete_if{|c,| c == "ptc"}
     end
 
-
-    # Fixing printing dates of promo cards
-    cards.each do |name, card|
-      # Prerelease
-      ptc_printing = card["printings"].find{|c,| c == "ptc" }
-      # Release
-      mlp_printing = card["printings"].find{|c,| c == "mlp" }
-      # Gameday
-      mgdc_printing = card["printings"].find{|c,| c == "mgdc" }
-      # Media inserts
-      mbp_printing = card["printings"].find{|c,| c == "mbp" }
-      real_printings = card["printings"].select{|c,| !["ptc", "mlp", "mgdc", "mbp"].include?(c) }
-      guess_date = real_printings.map{|c,d| d["release_date"] || sets[c]["release_date"] }.min
-      if ptc_printing and not ptc_printing[1]["release_date"]
-        raise "No guessable date for #{name}" unless guess_date
-        guess_ptc_date = (Date.parse(guess_date) - 6).to_s
-        ptc_printing[1]["release_date"] = guess_ptc_date
-      end
-      if mlp_printing and not mlp_printing[1]["release_date"]
-        raise "No guessable date for #{name}" unless guess_date
-        mlp_printing[1]["release_date"] = guess_date
-      end
-      if mgdc_printing and not mgdc_printing[1]["release_date"]
-        raise "No guessable date for #{name}" unless guess_date
-        mgdc_printing[1]["release_date"] = guess_date
-      end
-      if mbp_printing and not mbp_printing[1]["release_date"]
-        raise "No guessable date for #{name}" unless guess_date
-        mbp_printing[1]["release_date"] = guess_date
-      end
-    end
+    fix_promo_printing_dates!(cards, sets)
 
     # Output in canonical form, to minimize diffs between mtgjson updates
     cards = Hash[cards.sort]
@@ -370,6 +238,39 @@ class Indexer
     {"sets"=>sets, "cards"=>cards}
   end
 
+  def fix_promo_printing_dates!(cards, sets)
+    # Fixing printing dates of promo cards
+    cards.each do |name, card|
+      # Prerelease
+      ptc_printing = card["printings"].find{|c,| c == "ptc" }
+      # Release
+      mlp_printing = card["printings"].find{|c,| c == "mlp" }
+      # Gameday
+      mgdc_printing = card["printings"].find{|c,| c == "mgdc" }
+      # Media inserts
+      mbp_printing = card["printings"].find{|c,| c == "mbp" }
+      real_printings = card["printings"].select{|c,| !["ptc", "mlp", "mgdc", "mbp"].include?(c) }
+      guess_date = real_printings.map{|c,d| d["release_date"] || sets[c]["release_date"] }.min
+      if ptc_printing and not ptc_printing[1]["release_date"]
+        raise "No guessable date for #{name}" unless guess_date
+        guess_ptc_date = (Date.parse(guess_date) - 6).to_s
+        ptc_printing[1]["release_date"] = guess_ptc_date
+      end
+      if mlp_printing and not mlp_printing[1]["release_date"]
+        raise "No guessable date for #{name}" unless guess_date
+        mlp_printing[1]["release_date"] = guess_date
+      end
+      if mgdc_printing and not mgdc_printing[1]["release_date"]
+        raise "No guessable date for #{name}" unless guess_date
+        mgdc_printing[1]["release_date"] = guess_date
+      end
+      if mbp_printing and not mbp_printing[1]["release_date"]
+        raise "No guessable date for #{name}" unless guess_date
+        mbp_printing[1]["release_date"] = guess_date
+      end
+    end
+  end
+
   def format_watermark(watermark)
     watermark && watermark.downcase
   end
@@ -383,20 +284,6 @@ class Indexer
     else
       r
     end
-  end
-
-  def format_legalities(card_data)
-    legalities = card_data["legalities"]
-    return {} if card_data["layout"] == "token"
-    Hash[
-      (legalities||[])
-      .map{|leg|
-        [leg["format"].downcase, leg["legality"].downcase]
-      }
-      .reject{|fmt, leg|
-        ["classic", "prismatic", "singleton 100", "freeform", "tribal wars legacy", "tribal wars standard"].include?(fmt)
-      }
-    ]
   end
 
   def format_colors(colors)
