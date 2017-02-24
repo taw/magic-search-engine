@@ -75,7 +75,7 @@ class OracleVerifier
 
   def canonical(card_name)
     return @canonical[card_name] if @canonical[card_name]
-    binding.pry
+    raise "No canonical version for #{card_name}"
   end
 
   def verify!
