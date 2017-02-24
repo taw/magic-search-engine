@@ -1,11 +1,11 @@
 require "date"
-require "ostruct"
 require "json"
 require "set"
 require "pathname"
 require_relative "indexer/card_set"
 require_relative "indexer/oracle_verifier"
 require_relative "indexer/foreign_names_verifier"
+require_relative "indexer/link_related_cards_command"
 
 # ActiveRecord FTW
 class Hash
@@ -80,7 +80,7 @@ class Indexer
           card_data["secondary"] = true
         end
       else
-        binding.pry
+        raise "Unknown card layout"
       end
     end
 
@@ -174,6 +174,9 @@ class Indexer
     card_printings.each do |card_name, printings|
       cards[card_name] = oracle_verifier.canonical(card_name).merge("printings" => printings)
     end
+
+    # Link related cards
+    LinkRelatedCardsCommand.new(cards).call
 
     foreign_names_verifier.verify!
     # Link foreign names

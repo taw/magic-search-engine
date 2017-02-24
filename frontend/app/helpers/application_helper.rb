@@ -16,6 +16,14 @@ module ApplicationHelper
       &blk)
   end
 
+  def link_to_card_name(card_name, &blk)
+    link_to(
+      controller: "card",
+      action: "index",
+      q: "!#{card_name}",
+      &blk)
+  end
+
   def link_to_set(set, &blk)
     link_to(controller: "set", action: "show", id: set.code, &blk)
   end
