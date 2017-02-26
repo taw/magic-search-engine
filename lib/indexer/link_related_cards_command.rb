@@ -10,7 +10,7 @@ class LinkRelatedCardsCommand
     # "Take Inventory" doesn't mistakenly seem to refer to "Take" etc.
     # Second regexp for empire series
     any_card = Regexp.union(@cards.keys.sort_by(&:size).reverse)
-    rx = /\bnamed (#{any_card})(?: (?:and|or) (#{any_card}))?/
+    rx = /\bnamed (#{any_card})(?:(?:,|,? and|,? or) (#{any_card}))?(?:(?:,|,? and|,? or) (#{any_card}))?/
     @cards.each do |name, card_data|
       matching_cards = (card_data["text"]||"").scan(rx).flatten.uniq - [name, nil]
       next if matching_cards.empty?
