@@ -11,7 +11,7 @@ class Card
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
   attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name
-  attr_reader :mana_hash, :typeline, :funny, :color_indicator
+  attr_reader :mana_hash, :typeline, :funny, :color_indicator, :related
 
   def initialize(data)
     @printings = []
@@ -48,6 +48,7 @@ class Card
     @secondary = data["secondary"]
     @foreign_names = data["foreign_names"]
     @typeline = [data["supertypes"], data["types"]].compact.flatten.join(" ")
+    @related = data["related"]
     if data["subtypes"]
       @typeline += " - #{data["subtypes"].join(" ")}"
     end

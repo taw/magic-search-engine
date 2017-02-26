@@ -38,14 +38,28 @@
     = card.life
 
 - if card.others.present?
-  %span.infolabel
-    - if card.others.size == 1
-      Card has other part:
-    - else
-      Card has other parts:
-    - card.others.each_with_index do |other, i|
-      = link_to_card(other) do
-        = other.name
-      - if i != card.others.size - 1
-        %small
-          &bullet;
+  %div
+    %span.infolabel
+      - if card.others.size == 1
+        Card has other part:
+      - else
+        Card has other parts:
+      - card.others.each_with_index do |other, i|
+        = link_to_card(other) do
+          = other.name
+        - if i != card.others.size - 1
+          %small
+            &bullet;
+- if card.related.present?
+  %div
+    %span.infolabel
+      - if card.related.size == 1
+        Related card:
+      - else
+        Related cards:
+      - card.related.each_with_index do |related, i|
+        = link_to_card_name(related) do
+          = related
+        - if i != card.related.size - 1
+          %small
+            &bullet;
