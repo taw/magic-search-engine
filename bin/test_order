@@ -10,18 +10,30 @@ class TestOrder
 
   def call
     @db.sets.each do |set_code, set|
-      printings = set.printings.sort_by{|n| [n.number.to_i, n.number] }
+      printings = set
+        .printings
+        .reject{|c| c.secondary} # backside of DFC/meld/flip cards
+        .reject{|c| c.layout == "split"} # We'd need to merge them into a single object
+        .sort_by{|n| [n.number.to_i, n.number] }
       printings.each_cons(2) do |a, b|
-        if (order_key(a) <=> order_key(b)) == 1
+        if set.type == "from the vault"
+          akey = order_key_for_special_sets(a)
+          bkey = order_key_for_special_sets(b)
+        else
+          akey = order_key(a)
+          bkey = order_key(b)
+        end
+        if (akey <=> bkey) == 1
           puts "#{set_code} #{a.name} #{b.name}"
         end
       end
     end
   end
 
+  # 1354 order violations
   def order_key(card)
-    # 1809 order violations
     [
+      card.release_date.to_i_sort,
       card.colors == "w" ? 0 : 1,
       card.colors == "u" ? 0 : 1,
       card.colors == "b" ? 0 : 1,
@@ -35,7 +47,13 @@ class TestOrder
       card.name == "Swamp" ? 0 : 1,
       card.name == "Mountain" ? 0 : 1,
       card.name == "Forest" ? 0 : 1,
-      card.name.downcase.gsub(/[,' ]+/, " "),
+      card.name.downcase.gsub(/[,']/, ""),
+    ]
+  end
+
+  def order_key_for_special_sets(card)
+    [
+      card.name.downcase,
     ]
   end
 end
