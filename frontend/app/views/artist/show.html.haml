@@ -4,7 +4,7 @@
 
 .row.results_summary
   .col-12
-    #{@artist.name} drew #{pluralize(@printings.total_entries, "card")}.
+    #{@artist.name} drew #{pluralize(@total, "card")}.
 
 - @printings.each do |set, printings|
   .row
