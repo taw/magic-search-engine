@@ -84,11 +84,11 @@ class Card
   end
 
   def first_release_date
-    @printings.map(&:release_date).compact.min
+    @first_release_date ||= @printings.map(&:release_date).compact.min
   end
 
   def last_release_date
-    @printings.map(&:release_date).compact.max
+    @last_release_date ||= @printings.map(&:release_date).compact.max
   end
 
   private
