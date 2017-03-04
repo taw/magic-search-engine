@@ -37,6 +37,7 @@ div.pagination {
 .pagination {
   color: #888;
   font-size: small;
+  display: block;
   a {
     color: #88f;
   }
@@ -197,7 +198,7 @@ form.search {
       transform: translateX(-20%) rotateZ(90deg);
     }
     /* sm+ */
-    @media(min-width: 544px) {
+    @media (min-width: 576px) {
       .card_0_of_3 &.split:hover {
         transform: translateX(20%) rotateZ(90deg);
       }

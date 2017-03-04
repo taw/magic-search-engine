@@ -1,21 +1,21 @@
 .row
-  .col-xs-12
+  .col-12
     %h3= @artist.name
 
 .row.results_summary
-  .col-xs-12
+  .col-12
     #{@artist.name} drew #{pluralize(@printings.total_entries, "card")}.
 
 - @printings.each do |set, printings|
   .row
-    %h3.col-xs-12
+    %h3.col-12
       = set.name
   .row.multicard_row
     - printings.each_with_index do |printing, i|
-      .col-xs-6.col-sm-4.card_picture_cell{class: "card_#{i % 3}_of_3 card_#{i % 2}_of_2"}
+      .col-6.col-sm-4.card_picture_cell{class: "card_#{i % 3}_of_3 card_#{i % 2}_of_2"}
         = link_to_card(printing) do
           = render 'card/picture', card: printing
 
 .row
-  .col-xs-12.pagination
+  .col-12.pagination
     = will_paginate @printings
