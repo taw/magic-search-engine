@@ -124,12 +124,12 @@ class Indexer
     end
     card_data.slice(
       "flavor",
-      "artist",
       "border",
       "timeshifted",
       "number",
       "multiverseid",
     ).merge(
+      "artist" => format_artist(card_data["artist"]),
       "rarity" => format_rarity(card_data["rarity"]),
       "release_date" => Indexer.format_release_date(card_data["releaseDate"]),
       "watermark" => format_watermark(card_data["watermark"]),
@@ -292,6 +292,10 @@ class Indexer
   def format_colors(colors)
     color_codes = {"White"=>"w", "Blue"=>"u", "Black"=>"b", "Red"=>"r", "Green"=>"g"}
     (colors||[]).map{|c| color_codes.fetch(c)}.sort.join
+  end
+
+  def format_artist(artist)
+    artist.gsub("&amp;", "&")
   end
 
   def normalize_name(name)
