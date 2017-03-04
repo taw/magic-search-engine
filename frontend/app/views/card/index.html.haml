@@ -1,6 +1,6 @@
 - if @warnings.present?
   .row
-    .col-xs-12.warnings
+    .col-12.warnings
       - @warnings.each do |warning|
         .warning= warning
 - if @search.present?
@@ -11,5 +11,5 @@
     - else
       = render "card_row_short", card: card, printings: printings
   .row
-    .col-xs-12.pagination
+    .col-12.pagination
       = will_paginate @cards

@@ -1,5 +1,5 @@
 .row
-  .col-xs-12
+  .col-12
     %h3 Magic Sets
     %ul
       - @sets.sort_by{|s| [-s.release_date.to_i_sort, s.name] }.each do |set|

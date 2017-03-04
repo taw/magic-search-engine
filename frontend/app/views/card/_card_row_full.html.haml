@@ -1,10 +1,10 @@
 .row.card_row
-  .col-xs-5.card_picture_cell
+  .col-5.card_picture_cell
     = render 'card/picture', card: card
-  .offset-xs-1.col-xs-6.cardinfo
+  .offset-1.col-6.cardinfo
     = render 'card', card: card
 .row.card_row
-  .col-xs-6.cardinfo
+  .col-6.cardinfo
     = render 'card_extra', card: card
-  .col-xs-6
+  .col-6
     = render 'printings_full', card: card, printings: printings_view_full(card, printings)
