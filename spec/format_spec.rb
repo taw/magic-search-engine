@@ -236,7 +236,13 @@ describe "Formats" do
   ## Standard
 
   it "standard" do
-    assert_block_composition "standard", "soi",  ["dtk", "ori", "bfz", "ogw", "soi"]
+    assert_block_composition "standard", "aer",  ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer"],
+      "Emrakul, the Promised End" => "banned",
+      "Reflector Mage" => "banned",
+      "Smuggler's Copter" => "banned"
+    assert_block_composition "standard", "kld",  ["bfz", "ogw", "soi", "w16", "emn", "kld"]
+    assert_block_composition "standard", "emn",  ["dtk", "ori", "bfz", "ogw", "soi", "w16", "emn"]
+    assert_block_composition "standard", "soi",  ["dtk", "ori", "bfz", "ogw", "soi", "w16"]
     assert_block_composition "standard", "ogw",  ["ktk", "frf", "dtk", "ori", "bfz", "ogw"]
     assert_block_composition "standard", "bfz",  ["ktk", "frf", "dtk", "ori", "bfz"]
     assert_block_composition "standard", "ori",  ["ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori"]
