@@ -87,6 +87,14 @@ class Card
     @first_release_date ||= @printings.map(&:release_date).compact.min
   end
 
+  def first_regular_release_date
+    @first_regular_release_date ||= @printings
+      .select{|cp| cp.set_code != "ptc"}
+      .map(&:release_date)
+      .compact
+      .min
+  end
+
   def last_release_date
     @last_release_date ||= @printings.map(&:release_date).compact.max
   end

@@ -46,4 +46,16 @@ describe "Shadowmoor" do
       "Yidris, Maelstrom Wielder",
     )
   end
+
+  it "don't count as reprint a card that was preceeded by just its prerelease card" do
+    "e:ptc alt:(not:reprint -e:ptc)".should equal_search("e:ptc")
+  end
+
+  it "sanity check" do
+    "e:alpha not:reprint".should equal_search("e:alpha")
+    "e:beta not:reprint".should return_cards(
+      "Circle of Protection: Black",
+      "Volcanic Island",
+    )
+  end
 end
