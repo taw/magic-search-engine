@@ -84,9 +84,14 @@ class Query
 
   def ==(other)
     # structural equality, subclass if you need something fancier
+    # We ignore @query_string, so queries that == won't necessarily have same random order
+    # It's something we might want to revisit someday
     self.class == other.class and
       instance_variables == other.instance_variables and
-      instance_variables.all?{|ivar| instance_variable_get(ivar) == other.instance_variable_get(ivar) }
+      instance_variables.all?{|ivar|
+        ivar == :@query_string or
+        instance_variable_get(ivar) == other.instance_variable_get(ivar)
+      }
   end
 
   private
