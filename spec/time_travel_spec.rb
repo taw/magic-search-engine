@@ -55,6 +55,6 @@ describe "Time Travel Test" do
     assert_search_equal "(time:OGW f:Standard) not (time:SOI f:Standard)",
       "(e:KTK or e:FRF) -t:basic -(Act of Treason) -(Dutiful Return) -(Naturalize)
       -(Summit Prowler) -(Smite the Monstrous)
-      -(Throttle) -(Tormenting Voice) -(Weave Fate)"
+      -(Throttle) -(Tormenting Voice) -(Weave Fate) -(Incremental Growth)"
   end
 end
