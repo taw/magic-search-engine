@@ -17,20 +17,20 @@ task "test" => "spec"
 
 # Run specs
 task "spec" do
-  system "rspec"
+  sh "rspec"
 end
 
 desc "Generate index"
 task "index" do
-  system "./bin/indexer"
+  sh "./bin/indexer"
 end
 
 desc "Fetch new mtgjson database and generate diffable files"
 task "mtgjson:update" do
-  system *%W[wget http://mtgjson.com/json/AllSets-x.json -O data/AllSets-x.json]
-  system "json_pp <data/index.json >index-1.json"
+  sh *%W[wget http://mtgjson.com/json/AllSets-x.json -O data/AllSets-x.json]
+  sh "json_pp <data/index.json >index-1.json"
   Rake::Task["index"].invoke
-  system "json_pp <data/index.json >index-2.json"
+  sh "json_pp <data/index.json >index-2.json"
 end
 
 desc "Update penny dreadful banlist"
