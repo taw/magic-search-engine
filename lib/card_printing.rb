@@ -72,7 +72,7 @@ class CardPrinting
     toughness loyalty extra color_identity has_multiple_parts? typeline
     first_release_date last_release_date printings life hand rulings
     secondary foreign_names stemmed_name mana_hash funny color_indicator
-    related
+    related first_regular_release_date
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
   end
@@ -93,6 +93,10 @@ class CardPrinting
   include Comparable
   def <=>(other)
     [name, set, number.to_i, number] <=> [other.name, other.set, other.number.to_i, other.number]
+  end
+
+  def age
+    [0, (release_date - first_regular_release_date).to_i].max
   end
 
   def inspect

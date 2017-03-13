@@ -1,6 +1,6 @@
 class ConditionIsReprint < ConditionSimple
   def match?(card)
-    card.release_date != card.first_release_date
+    card.age > 0
   end
 
   def to_s
