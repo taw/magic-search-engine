@@ -1,0 +1,61 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/card_database"
+
+class TestOrder
+  def initialize
+    json_path = Pathname(__dir__) + "../data/index.json"
+    @db = CardDatabase.load(json_path)
+  end
+
+  def call
+    @db.sets.each do |set_code, set|
+      printings = set
+        .printings
+        .reject{|c| c.secondary} # backside of DFC/meld/flip cards
+        .reject{|c| c.layout == "split"} # We'd need to merge them into a single object
+        .sort_by{|n| [n.number.to_i, n.number] }
+      printings.each_cons(2) do |a, b|
+        if set.type == "from the vault"
+          akey = order_key_for_special_sets(a)
+          bkey = order_key_for_special_sets(b)
+        else
+          akey = order_key(a)
+          bkey = order_key(b)
+        end
+        if (akey <=> bkey) == 1
+          puts "#{set_code} #{a.name} #{b.name}"
+        end
+      end
+    end
+  end
+
+  # 1354 order violations
+  def order_key(card)
+    [
+      card.release_date.to_i_sort,
+      card.colors == "w" ? 0 : 1,
+      card.colors == "u" ? 0 : 1,
+      card.colors == "b" ? 0 : 1,
+      card.colors == "r" ? 0 : 1,
+      card.colors == "g" ? 0 : 1,
+      card.colors == ""  ? 1 : 0,
+      card.types.include?("land") ? 1 : 0,
+      card.types.include?("basic") ? 1 : 0,
+      card.name == "Plains" ? 0 : 1,
+      card.name == "Island" ? 0 : 1,
+      card.name == "Swamp" ? 0 : 1,
+      card.name == "Mountain" ? 0 : 1,
+      card.name == "Forest" ? 0 : 1,
+      card.name.downcase.gsub(/[,']/, ""),
+    ]
+  end
+
+  def order_key_for_special_sets(card)
+    [
+      card.name.downcase,
+    ]
+  end
+end
+
+TestOrder.new.call

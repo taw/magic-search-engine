@@ -1,5 +1,5 @@
 .row
-  .col-xs-12
+  .col-12
     %h3 Search Help
 
     %div
@@ -202,6 +202,8 @@
       = search_help "not:primary", "parts of DFC/flip/meld card that's not directly playable"
       = search_help "is:primary", "regular cards and directly playable parts of DFC/flip/meld cards"
       = search_help "is:digital", "MTGO only"
+      = search_help "not:reprint", "first printings of cards"
+      = search_help "is:reprint", "reprints of cards"
 
     %h4 Search by reserved list status
     %ul

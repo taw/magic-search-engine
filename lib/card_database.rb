@@ -156,6 +156,8 @@ class CardDatabase
         card.printings << printing
         @sets[set_code].printings << printing
       end
+      card.first_release_date
+      card.last_release_date
     end
     fix_multipart_cards_color_identity!(color_identity_cache)
     link_multipart_cards!(multipart_cards)

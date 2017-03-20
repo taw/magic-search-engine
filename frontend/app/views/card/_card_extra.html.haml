@@ -11,6 +11,8 @@
   - if card.watermark
     %li.infolabel
       = "Watermark: #{card.watermark.capitalize}"
+  %li.infolabel
+    = "Released: #{card.release_date.inspect}"
 %h5 Legalities
 %ul.legalities
   - legality = card.legality_information

@@ -28,11 +28,15 @@ class FormatStandard < Format
 
     # ["al", "be", "an", "un", "aq", "rv", "lg", "dk", "fe", "4e", "ia", "hl", "ai", "mr", "vi", "5e", "wl", "tp", "sh", "ex", "us", "ul", "6e", "ud", "mm", "ne", "pr", "in", "ps", "7e", "ap", "od", "tr", "ju", "on", "le", "sc", "8e", "mi", "ds", "5dn", "chk", "bok", "sok", "9e", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut", "10e", "lw", "mt", "shm", "eve", "ala", "cfx", "arb", "m10"]
     {
-      # 3 blocks system
-      "2016-09-30" => ["bfz", "ogw", "soi", "emn", "kld", "aer"],
-      "2016-04-08" => ["dtk", "ori", "bfz", "ogw", "soi", "emn"],                # soi
+      # 4 blocks system, 1 rotation/year
+      # w16 was released together with soi
+      # next rotation:
+      # "Q4 2017"    => ["kld", "aer"], "kld", "aer"], # + Amonkhet, Hour of Devastation
+      "2016-09-30" => ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer"], # + Amonkhet, Hour of Devastation
+      # 3 blocks system, 2 rotations/year
+      "2016-04-08" => ["dtk", "ori", "bfz", "ogw", "soi", "w16", "emn"],         # soi
       "2015-10-02" => ["ktk", "frf", "dtk", "ori", "bfz", "ogw"],                # bfz
-      # 2 blocks system
+      # 2 blocks system, 1 rotation/year
       "2014-09-26" => ["ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori"],  # ktk
       "2013-09-27" => ["rtr", "gtc", "dgm", "m14", "ths", "bng", "jou", "m15"],  # ths
       "2012-10-05" => ["isd", "dka", "avr", "m13", "rtr", "gtc", "dgm", "m14"],  # rtr

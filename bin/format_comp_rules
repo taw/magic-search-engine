@@ -13,7 +13,7 @@ class FormatCompRules
   def run!
     @output = []
     @output << ".row"
-    @output << "  .col-xs-12"
+    @output << "  .col-12"
     paras = text_rules.split(/\n{2,}/)
 
     raise unless paras[0] == "Magic: The Gathering Comprehensive Rules"

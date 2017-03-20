@@ -18,6 +18,7 @@ class ArtistController < ApplicationController
       return
     end
 
+    @total = @artist.printings.size
     @title = @artist.name
     page = [1, params[:page].to_i].max
     @printings = paginate_by_set(@artist.printings, page)
