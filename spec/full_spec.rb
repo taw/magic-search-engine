@@ -3,7 +3,7 @@ describe "Full Database Test" do
 
   it "stats" do
     db.number_of_cards.should eq(16948)
-    db.number_of_printings.should eq(32478)
+    db.number_of_printings.should eq(32727)
   end
 
   it "formats" do
@@ -134,7 +134,7 @@ describe "Full Database Test" do
     assert_search_results "t:planeswalker lastprint<=roe", "Chandra Ablaze", "Sarkhan the Mad"
     assert_search_results "t:planeswalker lastprint<=2011",
       "Ajani Goldmane", "Ajani Vengeant", "Chandra Ablaze", "Elspeth Tirel",
-      "Garruk Relentless", "Garruk, the Veil-Cursed", "Gideon Jura", "Liliana of the Veil",
+      "Garruk Relentless", "Garruk, the Veil-Cursed", "Gideon Jura",
       "Nissa Revane", "Sarkhan the Mad", "Sorin Markov", "Tezzeret, Agent of Bolas"
   end
 

@@ -55,7 +55,13 @@ class OracleVerifier
           elsif variants.keys.size == 2 and variants.keys.select{|v| v =~ /\{CHAOS\}/i}.size == 1 and variants.keys.select{|v| v =~  / CHAOS/i}.size == 1
             canonical_variant = variants.keys.select{|v| v =~ /\{CHAOS\}/i}[0]
           else
-            # FAIL, report
+            canonical_variant_source = case card_name
+            when "Venser, Shaper Savant", "Vampire Nighthawk", "Wall of Frost", "Entomber Exarch",
+              "Death-Hood Cobra", "Arachnus Spinner", "Attended Knight"
+               "mm3"
+             else
+               # FAIL, report
+             end
           end
         else
           # FAIL, report
