@@ -235,8 +235,8 @@
 
     %div There's also lower level syntax if you prefer that. Unlike // it will return only specifically requested side, not both.
     %ul
-      = search_help "cmc=2 other:w", "cards parts with converted mana cost 2, for which other side is white"
-      = search_help "cmc=2 part:w", "cards parts with converted mana cost 2, for which either side is white"
+      = search_help "cmc=2 other:color:w", "cards parts with converted mana cost 2, for which other side is white"
+      = search_help "cmc=2 part:color:w", "cards parts with converted mana cost 2, for which either side is white"
 
     %h4 Search by alternative printing
     %div Every card printing is treated as separate object, so you can't search for cards which were printing in both Magic 2010 and Magic 2011 with e:m10 e:m11. There's special syntax for that.
