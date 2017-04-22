@@ -31,8 +31,8 @@ class FormatStandard < Format
       # 4 blocks system, 1 rotation/year
       # w16 was released together with soi
       # next rotation:
-      # "Q4 2017"    => ["kld", "aer"], "kld", "aer"], # + Amonkhet, Hour of Devastation
-      "2016-09-30" => ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer"], # + Amonkhet, Hour of Devastation
+      # "Q4 2017"    => ["kld", "aer", "akh"], "kld", "aer"], # + Hour of Devastation + Ixalan
+      "2016-09-30" => ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh"], # + Hour of Devastation
       # 3 blocks system, 2 rotations/year
       "2016-04-08" => ["dtk", "ori", "bfz", "ogw", "soi", "w16", "emn"],         # soi
       "2015-10-02" => ["ktk", "frf", "dtk", "ori", "bfz", "ogw"],                # bfz

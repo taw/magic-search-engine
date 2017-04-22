@@ -109,6 +109,8 @@ class Format
         "shadows over innistrad block"=> FormatShadowsOverInnistradBlock,
         "kld block"                   => FormatKaladeshBlock,
         "kaladesh block"              => FormatKaladeshBlock,
+        "akh block"                   => FormatAmonkhetBlock,
+        "amonkhet block"              => FormatAmonkhetBlock,
         "unsets"                      => FormatUnsets,
         "un-sets"                     => FormatUnsets,
         "standard"                    => FormatStandard,

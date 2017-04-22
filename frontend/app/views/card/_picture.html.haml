@@ -7,6 +7,8 @@
         %img.card_picture.flip{src: card_picture_path(card), alt: card.name }
     - elsif card.layout == "split" and card.others.size == 1
       %img.card_picture.split{src: card_picture_path(card), alt: card.name }
+    - elsif card.layout == "aftermath"
+      %img.card_picture.aftermath{src: card_picture_path(card), alt: card.name }
     - elsif card.layout == "normal"
       %img.card_picture{src: card_picture_path(card), alt: card.name }
     - elsif card.layout == "double-faced" and card.others.size == 1

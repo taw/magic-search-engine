@@ -4,6 +4,6 @@ class FormatKaladeshBlock < Format
   end
 
   def build_included_sets
-    Set["kld", "emn"]
+    Set["kld", "aer"]
   end
 end
