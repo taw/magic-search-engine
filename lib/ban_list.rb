@@ -85,6 +85,7 @@ BanListChangeDates = {
    "ogw"=>"2016-01-22",
    "soi"=>"2016-04-08",
    "aer"=>"2017-01-20",
+   "akh"=>"2017-04-24",
 
   # Irregular emergency ban
   # http://magic.wizards.com/en/articles/archive/magic-online/pauper-banned-list-change-2016-11-03
@@ -306,7 +307,7 @@ DynamicBanListData = {
     "Panoptic Mirror" => {"apr 2005" => "banned"},
     "Primeval Titan" => {"sep 2012" => "banned"},
     "Prophet of Kruphix" => {"ogw" => "banned"},
-    "Protean Hulk" => {"sep 2008" => "banned"},
+    "Protean Hulk" => {"sep 2008" => "banned", "akh" => "legal"},
     "Recurring Nightmare" => {"feb 2008" => "banned"},
     "Riftsweeper" => {"sep 2008" => "banned", "sep 2009" => "legal"},
     "Staff of Domination" => {"jun 2010" => "banned", "apr 2013" => "legal"},
@@ -332,6 +333,7 @@ DynamicBanListData = {
     "Rofellos, Llanowar Emissary" => {"mar 2007" => "restricted", "mar 2009" => "legal", "jun 2010" => "restricted", "sep 2014" => "banned"},
 
     "Test of Endurance" => {"oct 2002" => "banned", "sep 2008" => "legal"},
+    "Leovold, Emissary of Trest" => {"akh" => "banned"},
     # Can't find any ban announcement
     # "Beacon of Immortality" => {"nov 2007" => "legal"},
   },
@@ -529,6 +531,7 @@ DynamicBanListData = {
     "Worldgorger Dragon"      => { "sep 2004"=>"banned", "frf"=> "legal"},
     "Yawgmoth's Bargain"      => { "sep 1999" => "banned" },
     "Yawgmoth's Will"         => { "sep 1999" => "banned" },
+    "Sensei's Divining Top"   => { "akh" => "banned" },
   },
   "vintage" => {
     # ante
@@ -583,7 +586,7 @@ DynamicBanListData = {
     "Gauntlet of Might"       => { "start" => "restricted", "may 1994" => "legal" },
     "Gifts Ungiven"           => { "jun 2007"=>"restricted", "frf"=> "legal" },
     "Grim Monolith"           => { "sep 1999" => "restricted", "jun 2009" => "legal" },
-    "Gush"                    => { "jun 2003" => "restricted", "jun 2007" => "legal", "jun 2008" => "restricted", "sep 2010" => "legal" },
+    "Gush"                    => { "jun 2003" => "restricted", "jun 2007" => "legal", "jun 2008" => "restricted", "sep 2010" => "legal", "akh" => "restricted" },
     "Hurkyl's Recall"         => { "sep 1999" => "restricted", "mar 2003" => "legal" },
     "Icy Manipulator"         => { "start" => "restricted", "may 1994" => "legal" },
     "Imperial Seal"           => { "sep 2005" => "restricted" },
@@ -633,6 +636,7 @@ DynamicBanListData = {
     "Windfall"                => { "dec 1998" => "restricted" },
     "Yawgmoth's Bargain"      => { "sep 1999" => "restricted" },
     "Yawgmoth's Will"         => { "sep 1999" => "restricted" },
+    "Gitaxian Probe"          => { "akh" => "restricted" },
   },
 
   # http://www.duelcommander.com/banlist/
@@ -683,6 +687,8 @@ DynamicBanListData = {
     "Tolarian Academy" => "banned",
     "Treasure Cruise" => "banned",
     "Vampiric Tutor" => "banned",
+    "Chrome Mox" => {"akh" => "banned"},
+    "Mox Diamond" => {"akh" => "banned"},
     # Ante cards are banned
     "Amulet of Quoz" => "banned",
     "Bronze Tablet" => "banned",
@@ -701,8 +707,10 @@ DynamicBanListData = {
     "Oloro, Ageless Ascetic" => "restricted",
     "Rofellos, Llanowar Emissary" => "restricted",
     "Tasigur, the Golden Fang" => "restricted",
-    "Yisan, the Wanderer Bard" => "restricted",
+    "Yisan, The Wanderer Bard" => {"start" => "restricted", "akh" => "legal"},
     "Zur the Enchanter" => "restricted",
+    "Breya, Etherium Shaper" => {"akh" => "restricted"},
+    "Vial Smasher the Fierce" => {"akh" => "restricted"},
   }
 }
 
