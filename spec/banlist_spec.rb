@@ -6,6 +6,18 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2017" do
+    assert_banlist_changes "April 2017",
+      "legacy banned", "Sensei's Divining Top",
+      "vintage restricted", "Gitaxian Probe",
+      "vintage restricted", "Gush",
+      "commander banned", "Leovold, Emissary of Trest",
+      "commander unbanned", "Protean Hulk",
+      "duel commander unrestricted", "Yisan, The Wanderer Bard",
+      "duel commander banned", "Chrome Mox",
+      "duel commander banned", "Mox Diamond",
+      "duel commander restricted", "Breya, Etherium Shaper",
+      "duel commander restricted", "Vial Smasher the Fierce"
+
     assert_banlist_changes "January 2017",
       "standard banned", "Emrakul, the Promised End",
       "standard banned", "Smuggler's Copter",
