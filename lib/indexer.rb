@@ -80,7 +80,7 @@ class Indexer
           card_data["secondary"] = true
         end
       else
-        raise "Unknown card layout"
+        raise "Unknown card layout: #{card_data["layout"]}"
       end
     end
 
