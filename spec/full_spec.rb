@@ -2,15 +2,15 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(16948)
-    db.number_of_printings.should eq(32727)
+    db.number_of_cards.should eq(17204)
+    db.number_of_printings.should eq(33124)
   end
 
   it "formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal "f:standard",
-      %Q[(e:bfz or e:ogw or e:soi or e:w16 or e:emn or e:kld or e:aer) -"Emrakul, the Promised End" -"Reflector Mage" -"Smuggler's Copter"]
+      %Q[(e:bfz or e:ogw or e:soi or e:w16 or e:emn or e:kld or e:aer or e:akh) -"Emrakul, the Promised End" -"Reflector Mage" -"Smuggler's Copter"]
     assert_search_equal 'f:"ravnica block"', "e:rav or e:gp or e:di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal 'f:"ravnica block"', 'b:ravnica'
@@ -50,7 +50,8 @@ describe "Full Database Test" do
   end
 
   it "part" do
-    assert_search_results "part:cmc=1 part:cmc=2", "Death", "Life", "Tear", "Wear", "What", "When", "Where", "Who", "Why"
+    assert_search_results "part:cmc=1 part:cmc=2", "Death", "Life", "Tear", "Wear", "What", "When", "Where", "Who", "Why",
+                                                   "Failure", "Comply", "Heaven", "Earth"
     # Semantics of that changed
     assert_search_results "part:cmc=0 part:cmc=3 part:c:b"
   end
@@ -117,6 +118,9 @@ describe "Full Database Test" do
 
     assert_search_results "e:soi lastprint>soi",
       "Forest",
+      "Forsaken Sanctuary",
+      "Foul Orchard",
+      "Highland Lake",
       "Island",
       "Mountain",
       "Plains",
@@ -217,6 +221,7 @@ describe "Full Database Test" do
       "Angelic Page",
       "Angelic Wall",
       "Auramancer",
+      "Aven Mindcensor",
       "Bitterblossom",
       "Boomerang",
       "Channel",

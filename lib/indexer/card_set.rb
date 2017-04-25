@@ -23,6 +23,7 @@ MagicBlocks = [
   ["bfz", "Battle for Zendikar", "bfz", "ogw"],
   ["soi", "Shadows over Innistrad", "soi", "emn"],
   ["kld", "Kaladesh", "kld", "aer"],
+  ["akh", "Amonkhet", "akh"],
 ]
 
 class Indexer

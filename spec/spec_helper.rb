@@ -208,7 +208,7 @@ shared_context "db" do |*sets|
       assert_banlist_status(prev_date, format, "restricted", card)
       assert_banlist_status(this_date, format, "banned", card)
     else
-      raise
+      raise "Unknown transition `#{change}'"
     end
   end
   def assert_banlist_status(date, format, expected_legality, card_name)
@@ -220,6 +220,6 @@ shared_context "db" do |*sets|
       set_date = db.sets[set].release_date
     end
     actual_legality = ban_list.legality(format, card_name, set_date) || "legal"
-    expected_legality.should eq(actual_legality)
+    [card_name, expected_legality].should eq([card_name, actual_legality])
   end
 end

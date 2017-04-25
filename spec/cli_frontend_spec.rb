@@ -24,6 +24,8 @@ describe "CLI Frontend" do
         Overgrown Tomb
         Sapseep Forest
         Savannah
+        Scattered Groves
+        Sheltered Thicket
         Snow-Covered Forest
         Stomping Ground
         Taiga

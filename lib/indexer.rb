@@ -70,7 +70,7 @@ class Indexer
         else
           card_data["secondary"] = true
         end
-      elsif card_data["layout"] == "flip"
+      elsif card_data["layout"] == "flip" or card_data["layout"] == "aftermath"
         raise unless card_data["number"] =~ /[ab]\z/
         card_data["secondary"] = true if card_data["number"] =~ /b\z/
       elsif card_data["layout"] == "meld"

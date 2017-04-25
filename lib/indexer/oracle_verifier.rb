@@ -59,9 +59,11 @@ class OracleVerifier
             when "Venser, Shaper Savant", "Vampire Nighthawk", "Wall of Frost", "Entomber Exarch",
               "Death-Hood Cobra", "Arachnus Spinner", "Attended Knight"
                "mm3"
-             else
-               # FAIL, report
-             end
+            when "Aven Mindcensor"
+              "mps_akh"
+            else
+              # FAIL, report
+            end
           end
         else
           # FAIL, report
