@@ -105,7 +105,7 @@ describe "Scryfall" do
 
   it "restricted_vintage" do
     # Identical results
-    assert_count_results "restricted:vintage", 43
+    assert_count_results "restricted:vintage", 45
   end
 
   it "e_mm2" do
