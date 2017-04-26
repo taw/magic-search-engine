@@ -8,6 +8,6 @@ class FormatCustomEternal < Format
   end
 
   def build_included_sets
-    Set["ayr", "dms", "ank", "img", "ldo"]
+    Set["ayr", "dms", "ank", "img", "ldo", "tsl"]
   end
 end
