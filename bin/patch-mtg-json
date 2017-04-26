@@ -33,7 +33,9 @@ if __name__ == '__main__':
         all_sets_x = json.load(all_sets_x_f)
     with open('data/CustomSets-x.json') as custom_sets_x_f:
         custom_sets_x = json.load(custom_sets_x_f)
-    for c_set_code, c_set_info in custom_sets_x.items():
+    for i, (c_set_code, c_set_info) in enumerate(custom_sets_x.items()):
+        progress = min(4, int(5 * i / len(custom_sets_x)))
+        print('\r[{}{}]'.format('=' * progress, '.' * (4 - progress)), end='', flush=True)
         if c_set_code in all_sets_x:
             print('\r[FAIL]')
             sys.exit('[!!!!] duplicate set code {}'.format(c_set_code))
