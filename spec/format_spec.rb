@@ -546,6 +546,22 @@ describe "Formats" do
     assert_legality "legacy", Date.parse("2006.1.1"), "Zodiac Dog", "legal"
   end
 
+  ## Sanity check that no sets were skipped
+  it "sanity check" do
+    standard_sets = db.sets.values.select{|s| s.type == "core" or s.type == "expansion"} + [
+      db.sets["w16"]
+    ]
+    FormatFrontier.new.build_included_sets.should == (
+      standard_sets.select{|s| s.release_date >= Date.parse("2014-07-18") }.map(&:code).to_set
+    )
+    FormatModern.new.build_included_sets.should == (
+      standard_sets.select{|s| s.release_date >= Date.parse("2003-07-28") }.map(&:code).to_set
+    )
+    FormatStandard.new.rotation_schedule.values.flatten.uniq.to_set.should == (
+      standard_sets.select{|s| s.release_date >= Date.parse("1996-10-08") }.map(&:code).to_set
+    )
+  end
+
   ## Other formats
 
   it "pauper" do
