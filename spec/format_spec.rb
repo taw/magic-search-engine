@@ -192,8 +192,7 @@ describe "Formats" do
   ## Modern
 
   it "modern" do
-    assert_block_composition "modern", "bfz", ["8e", "mi", "ds", "5dn", "chk", "bok", "sok", "9e", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut", "10e", "lw", "mt", "shm", "eve", "ala", "cfx", "arb", "m10", "zen", "wwk", "roe", "m11", "som", "mbs", "nph", "m12", "isd", "dka", "avr", "m13", "rtr", "gtc", "dgm", "m14", "ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori", "bfz"],
-      "Ancestral Vision" => "banned",
+    assert_block_composition "modern", "akh", ["8e", "mi", "ds", "5dn", "chk", "bok", "sok", "9e", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut", "10e", "lw", "mt", "shm", "eve", "ala", "cfx", "arb", "m10", "zen", "wwk", "roe", "m11", "som", "mbs", "nph", "m12", "isd", "dka", "avr", "m13", "rtr", "gtc", "dgm", "m14", "ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori", "bfz", "ogw", "soi", "emn", "kld", "aer", "akh"],
       "Ancient Den" => "banned",
       "Birthing Pod" => "banned",
       "Blazing Shoal" => "banned",
@@ -204,7 +203,10 @@ describe "Formats" do
       "Deathrite Shaman" => "banned",
       "Dig Through Time" => "banned",
       "Dread Return" => "banned",
+      "Eye of Ugin" => "banned",
+      "Gitaxian Probe" => "banned",
       "Glimpse of Nature" => "banned",
+      "Golgari Grave-Troll" => "banned",
       "Great Furnace" => "banned",
       "Green Sun's Zenith" => "banned",
       "Hypergenesis" => "banned",
@@ -219,8 +221,9 @@ describe "Formats" do
       "Seething Song" => "banned",
       "Sensei's Divining Top" => "banned",
       "Skullclamp" => "banned",
+      "Splinter Twin" => "banned",
       "Stoneforge Mystic" => "banned",
-      "Sword of the Meek" => "banned",
+      "Summer Bloom" => "banned",
       "Treasure Cruise" => "banned",
       "Tree of Tales" => "banned",
       "Umezawa's Jitte" => "banned",
@@ -236,6 +239,11 @@ describe "Formats" do
   ## Standard
 
   it "standard" do
+    assert_block_composition "standard", "akh",  ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh"],
+      "Emrakul, the Promised End" => "banned",
+      "Reflector Mage" => "banned",
+      "Smuggler's Copter" => "banned",
+      "Felidar Guardian" => "banned"
     assert_block_composition "standard", "aer",  ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer"],
       "Emrakul, the Promised End" => "banned",
       "Reflector Mage" => "banned",
