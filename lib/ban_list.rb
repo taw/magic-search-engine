@@ -342,6 +342,7 @@ DynamicBanListData = {
   # As much as I managed to recover it, it should be fine
 
   "standard" => {
+    "Felidar Guardian"          => { "akh" => "banned" }, # technically separate emergency ban 2 days later 
     "Emrakul, the Promised End" => { "aer" => "banned" },
     "Smuggler's Copter"         => { "aer" => "banned" },
     "Reflector Mage"            => { "aer" => "banned" },

@@ -16,7 +16,8 @@ describe "Banlist" do
       "duel commander banned", "Chrome Mox",
       "duel commander banned", "Mox Diamond",
       "duel commander restricted", "Breya, Etherium Shaper",
-      "duel commander restricted", "Vial Smasher the Fierce"
+      "duel commander restricted", "Vial Smasher the Fierce",
+      "standard banned", "Felidar Guardian"
 
     assert_banlist_changes "January 2017",
       "standard banned", "Emrakul, the Promised End",
