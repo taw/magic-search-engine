@@ -61,6 +61,8 @@ class OracleVerifier
                "mm3"
             when "Aven Mindcensor"
               "mps_akh"
+            when "Pithing Needle"
+              "mps"
             else
               # FAIL, report
             end
