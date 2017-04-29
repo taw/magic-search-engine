@@ -125,7 +125,7 @@ private
       subquery
     when :close
       return
-    when :not, :other, :part, :alt
+    when :not, :other, :part, :related, :alt
       tok, = @tokens.shift
       cond = parse_cond
       if cond
