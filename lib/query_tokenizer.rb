@@ -101,6 +101,8 @@ class QueryTokenizer
         tokens << [:other]
       elsif s.scan(/part:/)
         tokens << [:part]
+      elsif s.scan(/related:/)
+        tokens << [:related]
       elsif s.scan(/alt:/)
         tokens << [:alt]
       elsif s.scan(/not\b/)
