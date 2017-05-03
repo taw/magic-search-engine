@@ -52,7 +52,7 @@ class CardDatabase
     when 1
       sets.first.release_date
     else
-      require 'pry'; binding.pry
+      raise "Can't parse time #{time}"
     end
   end
 

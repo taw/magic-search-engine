@@ -30,7 +30,7 @@ describe "Formats" do
     expected_legality = {}
     sets.each do |set_code|
       unless db.sets[set_code]
-        require 'pry'; binding.pry
+        raise "Unknown set #{set_code}"
       end
       db.sets[set_code].printings.each do |card_printing|
         next if %W[vanguard plane phenomenon scheme token].include?(card_printing.layout)
