@@ -9,7 +9,8 @@ class LinkRelatedCardsCommand
     # Get longest match so
     # "Take Inventory" doesn't mistakenly seem to refer to "Take" etc.
     # Second regexp for empire series
-    any_card = Regexp.union(@cards.keys.sort_by(&:size).reverse)
+    all_card_names = @cards.select{|name, card| card["layout"] != "token"}.keys
+    any_card = Regexp.union(all_card_names.sort_by(&:size).reverse)
     rx = /\bnamed (#{any_card})(?:(?:,|,? and|,? or) (#{any_card}))?(?:(?:,|,? and|,? or) (#{any_card}))?/
     @cards.each do |name, card_data|
       matching_cards = (card_data["text"]||"").scan(rx).flatten.uniq - [name, nil]
