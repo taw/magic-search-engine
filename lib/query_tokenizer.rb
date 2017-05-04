@@ -32,7 +32,7 @@ class QueryTokenizer
         tokens << [:test, ConditionArtist.new(s[1] || s[2])]
       elsif s.scan(/(cn|tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct):(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionForeign.new(s[1], s[2] || s[3])]
-      elsif s.scan(/(banned|restricted|legal):(?:"(.*?)"|(\w+))/)
+      elsif s.scan(/(banned|restricted|legal):(?:"(.*?)"|([\w\-]+))/)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(s[2] || s[3])]
       elsif s.scan(/e:(?:"(.*?)"|(\w+))/i)
@@ -41,7 +41,7 @@ class QueryTokenizer
         tokens << [:test, ConditionEdition.new(*sets)]
       elsif s.scan(/w:(?:"(.*?)"|(\w+|\*))/i)
         tokens << [:test, ConditionWatermark.new(s[1] || s[2])]
-      elsif s.scan(/f:(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/f:(?:"(.*?)"|([\w\-]+))/i)
         tokens << [:test, ConditionFormat.new(s[1] || s[2])]
       elsif s.scan(/b:(?:"(.*?)"|(\w+))/i)
         blocks = [s[1] || s[2]]
