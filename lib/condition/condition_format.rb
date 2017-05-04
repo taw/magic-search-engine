@@ -2,8 +2,7 @@ require_relative "../format/format"
 
 class ConditionFormat < Condition
   def initialize(format_name)
-    @format_name = format_name.downcase
-    @format_name = "commander" if @format_name == "edh"
+    @format_name = format_name.downcase.gsub(/\s|-|_/, "")
   end
 
   def search(db)
