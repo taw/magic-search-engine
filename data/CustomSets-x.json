@@ -39593,7 +39593,7 @@
                     "Human",
                     "Cleric"
                 ],
-                "text": "Revolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)\nAt the beginning of your upkeep, return target nonland permanent card from your graveyard to your hand.        ",
+                "text": "Revolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)\nAt the beginning of your upkeep, return target nonland permanent card from your graveyard to your hand.",
                 "toughness": "5",
                 "type": "Creature \u2014 Human Cleric",
                 "types": [
@@ -39654,7 +39654,7 @@
                     "Human",
                     "Soldier"
                 ],
-                "text": "It is against the law for an opponent to control three or more creatures.\nJustice \u2014 At the beginning of your upkeep, if an opponent broke any laws since the beginning of your last upkeep, you may tap target creature.",
+                "text": "It is against the law for an opponent to control three or more creatures.\nJustice \u2014 At the beginning of your upkeep, if an opponent broke any laws since the beginning of your last turn, you may tap target creature.",
                 "toughness": "3",
                 "type": "Creature \u2014 Human Soldier",
                 "types": [
@@ -39889,7 +39889,9 @@
                 "colorIdentity": [
                     "W"
                 ],
-                "colors": [],
+                "colors": [
+                    "White"
+                ],
                 "flavor": "When given a choice between your ideals and your job, only one of them can be replaced.",
                 "layout": "double-faced",
                 "name": "Righteous Defector",
@@ -40754,7 +40756,7 @@
                     "Human",
                     "Artificer"
                 ],
-                "text": "It is against the law for an opponent to control three or more creatures.\nJustice \u2014 At the beginning of your upkeep, if an opponent broke any laws since the beginning of your last turn, gain control of target creature that player controls until Crowd Suppressor leaves the battlefield.",
+                "text": "It is against the law for an opponent to control three or more creatures.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, gain control of target creature one of those players controls until Crowd Suppressor leaves the battlefield.",
                 "toughness": "5",
                 "type": "Creature \u2014 Human Artificer",
                 "types": [
@@ -41137,7 +41139,7 @@
                 "subtypes": [
                     "Jace"
                 ],
-                "text": "+2: Until your next turn, whenever a creature attacks you or a planeswalker you control, you may draw a card, then discard a card.\n-2: The next time you cast an instant or sorcery spell from your hand this turn, put that card into your hand instead of your graveyard as it resolves.\n-10: Search your library, hand and graveyard for up to three instant or sorcery cards and exile them. You may cast them from exile without paying their mana costs.\nShuffle your library.",
+                "text": "+2: Until your next turn, whenever a creature attacks you or a planeswalker you control, you may draw a card, then discard a card.\n-2: The next time you cast an instant or sorcery spell from your hand this turn, put that card into your hand instead of your graveyard as it resolves.\n-10: Search your library, hand and graveyard for up to three instant and/or sorcery cards and exile them. For as long as they remain exiled, you may cast them without paying their mana costs.\nShuffle your library.",
                 "type": "Planeswalker \u2014 Jace",
                 "types": [
                     "Planeswalker"
@@ -41294,7 +41296,7 @@
                     "Human",
                     "Wizard"
                 ],
-                "text": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if an opponent broke any laws since your last turn, that player puts the top three cards of his or her library into his or her graveyard.",
+                "text": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, each of those players puts the top three cards of his or her library into his or her graveyard.",
                 "toughness": "3",
                 "type": "Creature \u2014 Human Wizard",
                 "types": [
@@ -41409,7 +41411,7 @@
                     "TSL"
                 ],
                 "rarity": "Rare",
-                "text": "Target player reveals his or her hand. Choose a instant, sorcery or artifact card from it. You may cast a copy of that card and may spend mana as though it were mana of any type to cast it. If you cast a copy of an artifact card this way, put a token onto the battlefield as a copy of the chosen card when that spell resolves.",
+                "text": "Target player reveals his or her hand. Choose a instant, sorcery or artifact card from it. You may cast a copy of that card and may spend mana as though it were mana of any type to cast it. (A copy of an artifact spell becomes a token copy of that artifact as it resolves.)",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -41678,7 +41680,7 @@
                 "subtypes": [
                     "Aura"
                 ],
-                "text": "Enchant creature\nWhen Will of the People enters the battlefield or at the beginning of each player's upkeep, if that player controls more creatures than any other player, that player gains control of enchanted creature.",
+                "text": "Enchant creature\nYou control enchanted creature as long as you control two or more other creatures.",
                 "type": "Enchantment \u2014 Aura",
                 "types": [
                     "Enchantment"
@@ -41840,7 +41842,7 @@
                     "Human",
                     "Advisor"
                 ],
-                "text": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if an opponent broke any laws since your last turn, you may reveal the top card of your library and put that card into your hand. If you do, you lose life equal to its converted mana cost.",
+                "text": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if an opponent broke any laws since the beginning of your last turn, you may reveal the top card of your library and put that card into your hand. If you do, you lose life equal to its converted mana cost.",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Advisor",
                 "types": [
@@ -41974,7 +41976,7 @@
                 "subtypes": [
                     "Demon"
                 ],
-                "text": "Flying\nAt the beginning of each player's end step, that player sacrifices all tapped non-Demon creatures he or she controls",
+                "text": "Flying\nAt the beginning of each player's end step, that player sacrifices all tapped non-Demon creatures he or she controls.",
                 "toughness": "4",
                 "type": "Creature \u2014 Demon",
                 "types": [
@@ -42002,7 +42004,7 @@
                 "subtypes": [
                     "Demon"
                 ],
-                "text": "Flying\nIf a creature an opponent controls would die, instead exile that card unless its controller pays 3 life.\nYou may cast cards exiled by Gravedebt Demon and you may spend mana as though it were mana of any type to cast them.",
+                "text": "Flying\nIf a creature an opponent controls would die, instead its controller may pay 3 life. If he or she does, exile it. Otherwise, put it into its owner's graveyard.\nYou may cast cards exiled by Gravedebt Demon and you may spend mana as though it were mana of any type to cast them.",
                 "toughness": "5",
                 "type": "Creature \u2014 Demon",
                 "types": [
@@ -42063,7 +42065,7 @@
                 "subtypes": [
                     "Aura"
                 ],
-                "text": "Enchant creature\nAt the beginning of your upkeep, enchanted creature's controller discards a card. If that player doesn't discard a card this way, transform Information Extraction.",
+                "text": "Enchant creature\nAt the beginning of your upkeep, enchanted creature's controller discards a card. If that player can't discard a card this way, transform Information Extraction.",
                 "type": "Enchantment \u2014 Aura",
                 "types": [
                     "Enchantment"
@@ -42246,7 +42248,7 @@
                     "TSL"
                 ],
                 "rarity": "Rare",
-                "text": "Whenever you sacrifice a permanent, you may pay {1}. If you do, you draw a card and lose 1 life.",
+                "text": "Whenever you sacrifice a permanent, you may pay {1}. If you do, you draw a card and you lose 1 life.",
                 "type": "Enchantment",
                 "types": [
                     "Enchantment"
@@ -42305,7 +42307,7 @@
                     "Human",
                     "Citizen"
                 ],
-                "text": "Overworked Prole can't block.\nWhen Overworked Prole dies, you draw a card and lose 1 life.",
+                "text": "Overworked Prole can't block.\nWhen Overworked Prole dies, you draw a card and you lose 1 life.",
                 "toughness": "1",
                 "type": "Creature \u2014 Human Citizen",
                 "types": [
@@ -42923,7 +42925,7 @@
                 "subtypes": [
                     "Chandra"
                 ],
-                "text": "+1: Chandra, Heart of the Revolt deals 3 damage divided as you choose among up to three target creatures and/or planeswalkers.\n0: Exile the top three cards of your library. Until end of turn, you may play cards exiled this way. Creatures cast this way gain haste.\n-7: You get an emblem with \"Whenever a creature you control attacks, put a token onto the battlefield tapped and attacking that's a copy of that creature. Exile the token at end of combat.\"",
+                "text": "+1: Chandra, Heart of the Revolt deals 3 damage divided as you choose among up to three target creatures and/or planeswalkers.\n0: Exile the top three cards of your library. Until end of turn, you may play cards exiled this way. Creatures spells cast this way gain haste.\n-7: You get an emblem with \"Whenever a creature you control attacks, create a token that's a copy of that creature that's tapped and attacking. Exile the token at end of combat.\"",
                 "type": "Planeswalker \u2014 Chandra",
                 "types": [
                     "Planeswalker"
@@ -42971,7 +42973,7 @@
                     "TSL"
                 ],
                 "rarity": "Common",
-                "text": "Civil Unrest deals 2 damage to target creature or player. If a creature was dealt damage this way, it can't block this turn.",
+                "text": "Civil Unrest deals 2 damage to target creature or player. If a creature is dealt damage this way, it can't block this turn.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -43029,7 +43031,7 @@
                     "TSL"
                 ],
                 "rarity": "Rare",
-                "text": "{1}{R}, Exile a card from your hand: Draw a card.\nAt the beginning of your upkeep, if five or more cards are exiled by Crazy Conspiracy, transform it.",
+                "text": "{1}{R}, Exile a card from your hand: Draw a card.\nAt the beginning of your upkeep, if five or more cards are exiled with Crazy Conspiracy, transform it.",
                 "type": "Enchantment",
                 "types": [
                     "Enchantment"
@@ -43056,7 +43058,7 @@
                     "TSL"
                 ],
                 "rarity": "Rare",
-                "text": "You may play cards exiled with Crazy Conspiracy.\nWhenever you play a card exiled by Crazy Conspiracy, it deals 2 damage to target player.\nAt the beginning of the end step, sacrifice Groundbreaking Discovery.",
+                "text": "You may play cards exiled with Crazy Conspiracy.\nWhenever you play a card exiled with Crazy Conspiracy, Groundbreaking Discovery deals 2 damage to target player.\nAt the beginning of the end step, sacrifice Groundbreaking Discovery.",
                 "type": "Enchantment",
                 "types": [
                     "Enchantment"
@@ -43442,6 +43444,7 @@
                 "colors": [
                     "Red"
                 ],
+                "flavor": "Siv often steals weapons from the Consulate. Not only is it efficient, it's poetic.",
                 "layout": "normal",
                 "manaCost": "{3}{R}",
                 "name": "Munitions Thief",
@@ -43457,7 +43460,7 @@
                 ],
                 "text": "Menace\nWhenever Munitions Thief deals combat damage to a player, put a +1/+1 counter on it.",
                 "toughness": "2",
-                "type": "Creature  \u2014 Human Rogue",
+                "type": "Creature \u2014 Human Rogue",
                 "types": [
                     "Creature"
                 ]
@@ -43622,7 +43625,7 @@
                     "Human",
                     "Artificer"
                 ],
-                "text": "Raid \u2014 At the beginning of your end step, if you attacked with a creature this turn, you may pay {1}. If you do, create a colorless 1/1 Thopter artifact creature token with flying.",
+                "text": "Raid \u2014 At the beginning of your end step, if you attacked with a creature this turn, you may pay {1}. If you do, create a 1/1 colorless Thopter artifact creature token with flying.",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Artificer",
                 "types": [
@@ -43655,7 +43658,7 @@
                     "Human",
                     "Soldier"
                 ],
-                "text": "Revolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)\nWhen Revolutionary Herald enters the battlefield, create two 1/1 red Citizen creature tokens with haste.                    ",
+                "text": "Revolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)\nWhen Revolutionary Herald enters the battlefield, create two 1/1 red Citizen creature tokens with haste.",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Soldier",
                 "types": [
@@ -43687,7 +43690,7 @@
                     "Human",
                     "Soldier"
                 ],
-                "text": "Creatures with revolution you control enter the battlefield transformed.\nWhen this creature enters the battlefield or transforms into Revolutionary Veteran, create two 1/1 red Citizen creature tokens with haste.\nAttacking creatures you control gets +1/+0 and have trample.",
+                "text": "Creatures with revolution you control enter the battlefield transformed.\nWhen this creature enters the battlefield or transforms into Revolutionary Veteran, create two 1/1 red Citizen creature tokens with haste.\nAttacking creatures you control get +1/+0 and have trample.",
                 "toughness": "3",
                 "type": "Creature \u2014 Human Soldier",
                 "types": [
@@ -43767,7 +43770,7 @@
                     "TSL"
                 ],
                 "rarity": "Rare",
-                "text": "Transform all creatures with revolution you control.\nYou choose which creatures attack this turn.\nYou choose which creatures block this turn and how those creatures block.",
+                "text": "Transform all permanents with revolution you control.\nYou choose which creatures attack this turn.\nYou choose which creatures block this turn and how those creatures block.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -44083,7 +44086,7 @@
                 "subtypes": [
                     "Rhino"
                 ],
-                "text": "Hexproof\nWhen Aetherguard Rhino dies, return it to the battlefield under your control transformed.",
+                "text": "Hexproof\nWhen Aetherguard Rhino dies, return it to the battlefield transformed under your control.",
                 "toughness": "4",
                 "type": "Creature \u2014 Rhino",
                 "types": [
@@ -44127,6 +44130,7 @@
                 "colors": [
                     "Green"
                 ],
+                "flavor": "\"I don't think the consulate will protect me. Do you?\"",
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Armor Deliverer",
@@ -44245,7 +44249,7 @@
                     "Human",
                     "Soldier"
                 ],
-                "text": "Defender\nAs long as a creature you control has a +1/+1 counter on it, Consul Colonists can attack as though it doesn't have defender.",
+                "text": "Defender\nAs long as you control a creature with a +1/+1 counter on it, Consul Colonists can attack as though it doesn't have defender.",
                 "toughness": "3",
                 "type": "Creature \u2014 Human Soldier",
                 "types": [
@@ -44306,7 +44310,7 @@
                 "subtypes": [
                     "Wolf"
                 ],
-                "text": "Whenever Endangered Animal becomes the target of an ability of an artifact, transform it.",
+                "text": "Whenever Endangered Animal becomes the target of an ability from an artifact source, transform it.",
                 "toughness": "3",
                 "type": "Creature \u2014 Wolf",
                 "types": [
@@ -44454,6 +44458,7 @@
                 "colors": [
                     "Green"
                 ],
+                "flavor": "\"Once, we studied the art of machines. Now, we must study the art of war.\"\n\u2014Yural, Rebel artificer",
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Guerilla Warfare",
@@ -44629,7 +44634,7 @@
                 "subtypes": [
                     "Nissa"
                 ],
-                "text": "+1: Target land you control becomes a 5/5 Elemental creature with haste until end of turn.\n-X: Destroy target noncreature, nonland permanent with converted mana cost X.\n-8: Reveal the top ten cards of your library. Put any number of permanent cards revealed this way onto the battlefield and shuffle the rest into your library.       ",
+                "text": "+1: Target land you control becomes a 5/5 Elemental creature with haste until end of turn.\n-X: Destroy target noncreature, nonland permanent with converted mana cost X.\n-8: Reveal the top ten cards of your library. Put any number of permanent cards revealed this way onto the battlefield and shuffle the rest into your library.",
                 "type": "Planeswalker \u2014 Nissa",
                 "types": [
                     "Planeswalker"
@@ -44686,7 +44691,7 @@
                 "subtypes": [
                     "Elemental"
                 ],
-                "text": "Outland Avenger costs {1} less for each artifact card in all graveyards.",
+                "text": "Outland Avenger costs {1} less for each artifact card in a graveyard.",
                 "toughness": "10",
                 "type": "Creature \u2014 Elemental",
                 "types": [
@@ -44903,7 +44908,7 @@
                 "subtypes": [
                     "Avatar"
                 ],
-                "text": "Titan of the Old Ways enters the battlefield with a number of +1/+1 counters equal to the difference between your current and starting life total.\nWhen Titan of the Old Ways enters the battlefield, if your life total is less than your starting life total, it becomes your starting life total.",
+                "text": "Titan of the Old Ways enters the battlefield with a number of +1/+1 counters on it equal to the difference between your current and starting life total.\nWhen Titan of the Old Ways enters the battlefield, if your life total is less than your starting life total, it becomes your starting life total.",
                 "toughness": "0",
                 "type": "Creature \u2014 Avatar",
                 "types": [
@@ -45053,7 +45058,7 @@
                     "TSL"
                 ],
                 "rarity": "Rare",
-                "text": "Draw a card for each +1/+1 counter among creatures you control.",
+                "text": "Draw a number of cards equal to the total number of +1/+1 counters on creatures you control.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -45539,7 +45544,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "Double strike, trample\nWhenever Ruzzio and Aziria deals combat damage to a player, you draw a card and lose 1 life.",
+                "text": "Double strike, trample\nWhenever Ruzzio and Aziria deals combat damage to a player, you draw a card and you lose 1 life.",
                 "toughness": "1",
                 "type": "Legendary Creature \u2014 Human Warrior",
                 "types": [
@@ -45548,7 +45553,7 @@
             },
             {
                 "artist": "Anthony Wolff",
-                "cmc": 2,
+                "cmc": 3,
                 "colorIdentity": [
                     "U",
                     "R"
@@ -45558,7 +45563,7 @@
                     "Red"
                 ],
                 "layout": "normal",
-                "manaCost": "{U}{R}",
+                "manaCost": "{1}{U}{R}",
                 "name": "Siv Katari, Rebel Technician",
                 "number": "197",
                 "power": "2",
@@ -45574,7 +45579,7 @@
                     "Legendary"
                 ],
                 "text": "Prowess\nWhenever Siv Katari, Rebel Technician attacks, create a tapped and attacking X/X colourless Golem artifact creature token with prowess, where X is Siv Katari's power. Exile that token at end of combat.",
-                "toughness": "1",
+                "toughness": "2",
                 "type": "Legendary Creature \u2014 Human Artificer",
                 "types": [
                     "Creature"
@@ -45746,7 +45751,7 @@
                     "TSL"
                 ],
                 "rarity": "Rare",
-                "text": "Whenever another artifact enters the battlefield under your control, put a +1/+1 counter on Alloy Array, then you may have it become a 0/0 Golem artifact creature until end of turn.\n{7}: Create a colorless 1/1 Thopter artifact creature token with flying.",
+                "text": "Whenever another artifact enters the battlefield under your control, put a +1/+1 counter on Alloy Array, then you may have it become a 0/0 Construct artifact creature until end of turn.\n{7}: Create a colorless 1/1 Thopter artifact creature token with flying.",
                 "type": "Artifact",
                 "types": [
                     "Artifact"
@@ -45783,6 +45788,7 @@
                 "cmc": 3,
                 "colorIdentity": [],
                 "colors": [],
+                "flavor": "\"The Consulate restricts machinery because it fears it being used against them. And rightfully so.\"\n\u2014Suljet, the Cog Mind",
                 "layout": "normal",
                 "manaCost": "{3}",
                 "name": "Assault Automaton",
@@ -45793,11 +45799,11 @@
                 ],
                 "rarity": "Uncommon",
                 "subtypes": [
-                    "Golem"
+                    "Construct"
                 ],
                 "text": "Raid \u2014 You may cast Assault Automaton only if you attacked with a creature this turn.",
                 "toughness": "3",
-                "type": "Artifact Creature \u2014 Golem",
+                "type": "Artifact Creature \u2014 Construct",
                 "types": [
                     "Artifact",
                     "Creature"
@@ -45957,11 +45963,11 @@
                 ],
                 "rarity": "Uncommon",
                 "subtypes": [
-                    "Golem"
+                    "Construct"
                 ],
                 "text": "Courtroom Guardian's power and toughness are each equal to the number of creatures you control plus the number of artifacts you control.",
                 "toughness": "*",
-                "type": "Artifact Creature \u2014 Golem",
+                "type": "Artifact Creature \u2014 Construct",
                 "types": [
                     "Artifact",
                     "Creature"
@@ -46212,7 +46218,7 @@
                     "TSL"
                 ],
                 "rarity": "Rare",
-                "text": "Whenever you cast a spell or activate an ability, if you sacrificed a permanent to cast or activate it, copy that spell or ability. You may choose new targets for the copy.",
+                "text": "Whenever you cast an instant or sorcery spell or activate an ability, if you sacrificed a permanent to cast or activate it, copy that spell or ability. You may choose new targets for the copy.",
                 "type": "Artifact",
                 "types": [
                     "Artifact"
@@ -46223,6 +46229,7 @@
                 "cmc": 3,
                 "colorIdentity": [],
                 "colors": [],
+                "flavor": "\"Should artists strive to innovate and create anew, or to emulate nature's beauty? I ask - why not both?\"\n\u2014Tura, Ghirapur Gearcrafter",
                 "layout": "normal",
                 "manaCost": "{3}",
                 "name": "Paradise Gearwing",
@@ -46283,11 +46290,11 @@
                 ],
                 "rarity": "Mythic Rare",
                 "subtypes": [
-                    "Golem"
+                    "Construct"
                 ],
                 "text": "Whenever Possibility Titan enters the battlefield or attacks, choose one:\n\u2022 Destroy target nonland permanent.\n\u2022 Draw two cards.\n\u2022 Create three 1/1 colorless Thopter     artifact creature tokens with flying.",
                 "toughness": "6",
-                "type": "Artifact Creature \u2014 Golem",
+                "type": "Artifact Creature \u2014 Construct",
                 "types": [
                     "Artifact",
                     "Creature"
@@ -46449,11 +46456,11 @@
                 ],
                 "rarity": "Rare",
                 "subtypes": [
-                    "Golem"
+                    "Construct"
                 ],
                 "text": "At the beginning of your end step, put a +1/+1 counter on Self-Perfecting Construct.\n{T}, Remove three +1/+1 counters from Self-Perfecting Construct: Create a token that is a copy of it.",
                 "toughness": "1",
-                "type": "Artifact Creature \u2014 Golem",
+                "type": "Artifact Creature \u2014 Construct",
                 "types": [
                     "Artifact",
                     "Creature"
@@ -46464,6 +46471,7 @@
                 "cmc": 6,
                 "colorIdentity": [],
                 "colors": [],
+                "flavor": "Despite their name, the siege often ends as soon as they're deployed.",
                 "layout": "normal",
                 "manaCost": "{6}",
                 "name": "Siege Tank",
@@ -46489,7 +46497,7 @@
                 "cmc": 2,
                 "colorIdentity": [],
                 "colors": [],
-                "flavor": "Overwhelming firepower is the best type of firepower.",
+                "flavor": "A symbol of both protection, and dictatorship.",
                 "layout": "normal",
                 "manaCost": "{2}",
                 "name": "Suppression Suit",
@@ -46512,6 +46520,7 @@
                 "cmc": 4,
                 "colorIdentity": [],
                 "colors": [],
+                "flavor": "The rebellion in Ghirapur is just a pretense for the surveillance fleet. It would have been deployed one way or another.  ",
                 "layout": "normal",
                 "manaCost": "{4}",
                 "name": "Surveillance Airship",
@@ -46696,7 +46705,7 @@
                     "TSL"
                 ],
                 "rarity": "Rare",
-                "text": "{T}: Add {C} to your mana pool.\n{T}, Sacrifice Restless District: Until end of turn, you may activate revolution abilities without tapping two additional creatures you control.",
+                "text": "{T}: Add {C} to your mana pool.\n{T}, Sacrifice Restless District: Until end of turn, you may pay {T} rather than pay the costs to activate revolution abilities.",
                 "type": "Land",
                 "types": [
                     "Land"
