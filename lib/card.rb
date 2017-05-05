@@ -157,7 +157,6 @@ class Card
       when "*", "*²", "1+*", "2+*", "7-*"
         val
       else
-        require 'pry'; binding.pry
         raise "Unrecognized value #{val}"
       end
     elsif val.to_i == val.to_f
