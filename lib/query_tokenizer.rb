@@ -90,6 +90,8 @@ class QueryTokenizer
         tokens << [:test, ConditionBorder.new(s[1].downcase)]
       elsif s.scan(/sort:(\w+)/)
         tokens << [:metadata, {sort: s[1].downcase}]
+      elsif s.scan(/view:(\w+)/)
+        tokens << [:metadata, {view: s[1].downcase}]
       elsif s.scan(/\+\+/)
         tokens << [:metadata, {ungrouped: true}]
       elsif s.scan(/time:(?:"(.*?)"|([\.\w]+))/i)

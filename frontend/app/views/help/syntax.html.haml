@@ -290,3 +290,10 @@
       = search_help "sort:pow", "sort results by power (highest first)"
       = search_help "sort:tou", "sort results by toughness (highest first)"
       = search_help "sort:rand", "shuffle results"
+
+    %h4 Display results
+    %div By default results are displayed in detailed format when only one card matches, or in more concise format otherwise. You can select another format.
+    %ul
+      = search_help "t:dragon view:default", "search for Dragons, display results in default mode"
+      = search_help "t:dragon view:full", "search for Dragons, display results in full detail"
+      = search_help "t:dragon view:images", "search for Dragons, display results as just images"

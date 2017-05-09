@@ -94,6 +94,10 @@ class Query
       }
   end
 
+  def view
+    @metadata[:view]
+  end
+
   private
 
   def ungrouped?
