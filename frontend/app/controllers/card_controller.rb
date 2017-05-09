@@ -55,7 +55,18 @@ class CardController < ApplicationController
       choose_best_printing(printings)
     end
 
-    @cards = @cards.paginate(page: page, per_page: 25)
+    case query.view
+    when "full"
+      # force detailed view
+      @cards = @cards.paginate(page: page, per_page: 10)
+      render "index_full"
+    when "images"
+      @cards = @cards.paginate(page: page, per_page: 60)
+      render "index_images"
+    else
+      # default view
+      @cards = @cards.paginate(page: page, per_page: 25)
+    end
   end
 
   private
