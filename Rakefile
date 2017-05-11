@@ -220,5 +220,6 @@ task "rules:update" do
   rules_txt = open(txt_url).read
   rules_txt = rules_txt.force_encoding("cp1250").encode("utf-8").tr("\r", "")
   Pathname("data/MagicCompRules.txt").write(rules_txt)
+  sh "./bin/patch-comp-rules"
   sh "bin/format_comp_rules"
 end

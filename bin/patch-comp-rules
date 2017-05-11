@@ -1,0 +1,85 @@
+#!/usr/bin/env python3
+
+import datetime
+import json
+import more_itertools
+import re
+
+class CompRules:
+    def __init__(self, comp_rules_f):
+        lines = more_itertools.peekable(comp_rules_f)
+        # title and date
+        assert next(lines) == 'Magic: The Gathering Comprehensive Rules\n'
+        assert next(lines) == '\n'
+        match = re.match('These rules are effective as of ([A-Za-z]+) ([0-9]+), ([0-9]+).\n', next(lines))
+        assert match
+        year = int(match.group(3))
+        month = [None, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].index(match.group(1))
+        day = int(match.group(2))
+        self.date = datetime.date(year, month, date)
+        assert next(lines) == '\n'
+        # header
+        self.header = ''
+        for line in lines:
+            self.header += line
+            if lines.peek() == '1. Game Concepts\n':
+                break
+        # rules
+        self.rules = []
+        current_rule = ''
+        for line in lines:
+            if line == '\n':
+                self.rules.append(current_rule)
+                if lines.peek() == 'Glossary\n':
+                    break
+                current_rule = ''
+            else:
+                current_rule += line
+        # footer
+        self.footer = ''
+        for line in lines:
+            self.footer += line
+
+    def apply_patch(self, patch_json):
+        if parse_iso_date(patch_json['base']) != self.date:
+            raise ValueError('This rules patch is for a different version of the rules')
+        for patch in patch_json['patches']:
+            raise NotImplementedError() #TODO
+
+    def dump(self, comp_rules_f):
+        # title and date
+        comp_rules_f.write('Magic: The Gathering Comprehensive Rules\n')
+        comp_rules_f.write('\n')
+        comp_rules_f.write('These rules are effective as of {0:%B} {1}, {0:%Y}.\n'.format(self.date, self.date.day))
+        comp_rules_f.write('\n')
+        # header
+        comp_rules_f.write(self.header)
+        # rules
+        for rule in self.rules:
+            comp_rules_f.write(rule)
+            comp_rules_f.write('\n')
+        # footer
+        comp_rules_f.write(self.footer)
+
+def parse_iso_date(date_str):
+    if isinstance(date_str, datetime.date):
+        return date_str
+    parts = date_str.split('-')
+    if len(parts) != 3:
+        raise ValueError('Failed to parse date from {!r} (format should be YYYY-MM-DD)'.format(date_str))
+    return datetime.date(*map(int, parts))
+
+if __name__ == '__main__':
+    print('[....] parsing Comprehensive Rules', end='', flush=True)
+    with open('data/MagicCompRules.txt') as comp_rules_f:
+        comp_rules = CompRules(comp_rules_f)
+    print('\r[ ok ]')
+    print('[....] applying Comprehensive Rules patch', end='', flush=True)
+    with open('data/rules-patch.json') as rules_patch_f:
+        rules_patch = json.load(rules_patch_f)
+    comp_rules.apply_patch(rules_patch)
+    print('\r[ ok ]')
+    print('[....] saving patched Comprehensive Rules', end='', flush=True)
+    with open('data/MagicCompRules.txt', 'w') as comp_rules_f:
+        comp_rules.dump(comp_rules_txt)
+    print('\r[ ok ]')
