@@ -11,7 +11,7 @@ class CompRules:
         # title and date
         assert next(lines) == 'Magic: The Gathering Comprehensive Rules\n'
         assert next(lines) == '\n'
-        match = re.match('These rules are effective as of ([A-Za-z]+) ([0-9]+), ([0-9]+).\n', next(lines))
+        match = re.fullmatch('These rules are effective as of ([A-Za-z]+) ([0-9]+), ([0-9]+).\n', next(lines))
         assert match
         year = int(match.group(3))
         month = [None, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].index(match.group(1))
@@ -20,21 +20,58 @@ class CompRules:
         assert next(lines) == '\n'
         # header
         self.header = ''
+        seen_contents_start = False
         for line in lines:
-            self.header += line
             if lines.peek() == '1. Game Concepts\n':
-                break
-        # rules
-        self.rules = []
-        current_rule = ''
-        for line in lines:
-            if line == '\n':
-                self.rules.append(current_rule)
-                if lines.peek() == 'Glossary\n':
+                if seen_contents_start:
                     break
-                current_rule = ''
-            else:
-                current_rule += line
+                else:
+                    seen_contents_start = True
+            self.header += line
+        # rules
+        self.sections = []
+        current_section = None
+        current_rule = None
+        current_subrule = ''
+        for line in lines:
+            # paragraph break
+            if re.fullmatch(' *\n', line):
+                if current_subrule != '':
+                    current_rule['subrules'].append(current_subrule[:-1])
+                if lines.peek() == 'Glossary\n':
+                    current_section['rules'].append(current_rule)
+                    self.sections.append(current_section)
+                    break
+                current_subrule = ''
+                continue
+            # section header
+            match = re.fullmatch('([0-9])\\. (.+)\n', line)
+            if match:
+                if current_rule is not None:
+                    current_section['rules'].append(current_rule)
+                if current_section is not None:
+                    self.sections.append(current_section)
+                assert int(match.group(1)) == len(self.sections) + 1
+                current_section = {
+                    'name': match.group(2),
+                    'rules': []
+                }
+                current_rule = None
+                continue
+            # rule
+            match = re.fullmatch('([0-9]{3})\\. (.+)\n', line)
+            if match:
+                if current_rule is not None:
+                    current_section['rules'].append(current_rule)
+                assert int(match.group(1)) // 100 == len(self.sections) + 1
+                assert int(match.group(1)) % 100 == len(current_section['rules'])
+                current_rule = {
+                    'name': match.group(2),
+                    'subrules': []
+                }
+                continue
+            # continued rule text
+            current_subrule += line
         # footer
         self.footer = ''
         for line in lines:
@@ -55,9 +92,18 @@ class CompRules:
         # header
         comp_rules_f.write(self.header)
         # rules
-        for rule in self.rules:
-            comp_rules_f.write(rule)
+        for i, section in enumerate(self.sections):
+            section_number = i + 1
             comp_rules_f.write('\n')
+            comp_rules_f.write('{}. {}\n'.format(section_number, section['name']))
+            for j, rule in enumerate(section['rules']):
+                rule_number = 100 * section_number + j
+                comp_rules_f.write('\n')
+                comp_rules_f.write('{}. {}\n'.format(rule_number, rule['name']))
+                for subrule in rule['subrules']:
+                    comp_rules_f.write('\n')
+                    comp_rules_f.write(subrule)
+                    comp_rules_f.write('\n')
         # footer
         #comp_rules_f.write(self.footer)
 
