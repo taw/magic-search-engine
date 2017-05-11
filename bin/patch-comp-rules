@@ -16,7 +16,7 @@ class CompRules:
         year = int(match.group(3))
         month = [None, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].index(match.group(1))
         day = int(match.group(2))
-        self.date = datetime.date(year, month, date)
+        self.date = datetime.date(year, month, day)
         assert next(lines) == '\n'
         # header
         self.header = ''
