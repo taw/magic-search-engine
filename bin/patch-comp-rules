@@ -48,7 +48,7 @@ class CompRules:
 
     def dump(self, comp_rules_f):
         # title and date
-        comp_rules_f.write('Magic: The Gathering Comprehensive Rules\n')
+        comp_rules_f.write('Custom Magic Comprehensive Rules\n')
         comp_rules_f.write('\n')
         comp_rules_f.write('These rules are effective as of {0:%B} {1}, {0:%Y}.\n'.format(self.date, self.date.day))
         comp_rules_f.write('\n')
@@ -59,7 +59,7 @@ class CompRules:
             comp_rules_f.write(rule)
             comp_rules_f.write('\n')
         # footer
-        comp_rules_f.write(self.footer)
+        #comp_rules_f.write(self.footer)
 
 def parse_iso_date(date_str):
     if isinstance(date_str, datetime.date):

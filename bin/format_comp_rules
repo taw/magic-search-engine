@@ -16,7 +16,7 @@ class FormatCompRules
     @output << "  .col-12"
     paras = text_rules.split(/\n{2,}/)
 
-    raise unless paras[0] == "Magic: The Gathering Comprehensive Rules"
+    raise unless paras[0] == "Custom Magic Comprehensive Rules"
     primary_header! paras.shift
     para! paras.shift while paras[0] != "Introduction"
     secondary_header! paras.shift
@@ -27,19 +27,9 @@ class FormatCompRules
       tos_section! paras.shift
     end
 
-    while paras[0] =~ /\A\d/
+    while paras[0]
       rule! paras.shift
     end
-
-    raise unless paras[0] == "Glossary"
-    secondary_header! paras.shift
-
-    while paras[0] != "Credits"
-      glossary_entry! paras.shift
-    end
-
-    secondary_header! paras.shift
-    para! paras.shift while paras[0]
 
     save!
   end
