@@ -81,5 +81,5 @@ if __name__ == '__main__':
     print('\r[ ok ]')
     print('[....] saving patched Comprehensive Rules', end='', flush=True)
     with open('data/MagicCompRules.txt', 'w') as comp_rules_f:
-        comp_rules.dump(comp_rules_txt)
+        comp_rules.dump(comp_rules_f)
     print('\r[ ok ]')
