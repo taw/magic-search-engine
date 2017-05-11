@@ -55,19 +55,18 @@ class CardController < ApplicationController
       choose_best_printing(printings)
     end
 
-    @cards = @cards.paginate(page: page, per_page: 25)
-  end
-
-  def advanced
-    if params[:advanced]
-      query = InteractiveQueryBuilder.new(params[:advanced]).query
-      if query
-        redirect_to action: 'index', q: query
-        return
-      end
+    case query.view
+    when "full"
+      # force detailed view
+      @cards = @cards.paginate(page: page, per_page: 10)
+      render "index_full"
+    when "images"
+      @cards = @cards.paginate(page: page, per_page: 60)
+      render "index_images"
+    else
+      # default view
+      @cards = @cards.paginate(page: page, per_page: 25)
     end
-
-    render "advanced", layout: "no_search_box"
   end
 
   private
