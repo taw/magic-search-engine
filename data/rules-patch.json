@@ -1,4 +1,20 @@
 {
     "base": "2017-04-28",
-    "patches": []
+    "patches": [
+        {
+            "type": "addSubtypes",
+            "cardType": "Planeswalker",
+            "subtypes": [
+                "Roselyn",
+                "Veila"
+            ]
+        },
+        {
+            "type": "addSubtypes",
+            "cardType": "Creature",
+            "subtypes": [
+                "Bard"
+            ]
+        }
+    ]
 }

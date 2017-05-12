@@ -100,7 +100,31 @@ class CompRules:
         if parse_iso_date(patch_json['base']) != self.date:
             raise ValueError('This rules patch is for a different version of the rules')
         for patch in patch_json['patches']:
-            raise NotImplementedError() #TODO
+            if patch['type'] == 'addSubtypes':
+                rule = self.sections[1]['subsections'][5]['rules'][2]
+                subrule_id = {
+                    'Artifact': 6,
+                    'Creature': 11,
+                    'Enchantment': 7,
+                    'Land': 8,
+                    'Plane': 12,
+                    'Planeswalker': 9,
+                    'Sorcery': 10
+                }[patch['cardType']]
+                subrule = rule['subrules'][subrule_id]
+                if patch['cardType'] in ('Artifact', 'Enchantment', 'Creature', 'Plane', 'Sorcery'):
+                    match = re.fullmatch('(.*)\\. The ([^ ]+) types are (.+).()', subrule)
+                elif patch['cardType'] in ('Land', 'Planeswalker'):
+                    match = re.fullmatch('(.*)\\. The ([^ ]+) types are (.+).(\n[^\n]*)', subrule)
+                else:
+                    raise NotImplementedError('Unknown card type: {!r}'.format(patch['cardType']))
+                subtypes = {re.sub(' \\(.+\\)', '', subtype): subtype for subtype in split(match.group(3))}
+                for new_subtype in patch['subtypes']:
+                    assert new_subtype not in subtypes
+                    subtypes[new_subtype] = new_subtype
+                rule['subrules'][subrule_id] = '{}. The {} types are {}.{}'.format(match.group(1), match.group(2), join(v for k, v in sorted(subtypes.items())), match.group(4))
+            else:
+                raise NotImplementedError('Unknown patch type: {!r}'.format(patch['type']))
 
     def dump(self, comp_rules_f):
         # title and date
@@ -130,6 +154,20 @@ class CompRules:
         # footer
         #comp_rules_f.write(self.footer)
 
+def join(sequence, *, word='and', default=None):
+    sequence = [str(elt) for elt in sequence]
+    if len(sequence) == 0:
+        if default is None:
+            raise IndexError('Tried to join empty sequence with no default')
+        else:
+            return str(default)
+    elif len(sequence) == 1:
+        return sequence[0]
+    elif len(sequence) == 2:
+        return '{} {} {}'.format(sequence[0], word, sequence[1])
+    else:
+        return ', '.join(sequence[:-1]) + ', {} {}'.format(word, sequence[-1])
+
 def parse_iso_date(date_str):
     if isinstance(date_str, datetime.date):
         return date_str
@@ -137,6 +175,22 @@ def parse_iso_date(date_str):
     if len(parts) != 3:
         raise ValueError('Failed to parse date from {!r} (format should be YYYY-MM-DD)'.format(date_str))
     return datetime.date(*map(int, parts))
+
+def split(sequence_str, *, word='and', default=None):
+    if default is not None and sequence_str == default:
+        return
+    match = re.match('([^,]+) {} ([^,]+)'.format(word), sequence_str)
+    if match:
+        yield match.group(1)
+        yield match.group(2)
+    assert ', ' in sequence_str
+    split_seq = sequence_str.split(', ')
+    for i, item in enumerate(split_seq):
+        if i == len(split_seq) - 1:
+            assert item.startswith(word + ' ')
+            yield item[len(word) + 1:]
+        else:
+            yield item
 
 if __name__ == '__main__':
     print('[....] parsing Comprehensive Rules', end='', flush=True)
