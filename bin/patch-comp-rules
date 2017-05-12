@@ -100,16 +100,25 @@ class CompRules:
         if parse_iso_date(patch_json['base']) != self.date:
             raise ValueError('This rules patch is for a different version of the rules')
         for patch in patch_json['patches']:
-            if patch['type'] == 'addSubtypes':
-                rule = self.sections[1]['subsections'][5]['rules'][2]
+            if patch['type'] == 'addAbilityWords':
+                rule = self.sections[1]['subsections'][7]['rules'][1] # 207.2
+                subrule = rule['subrules'][2] # 207.2c
+                match = re.fullmatch('(.*)\\. The ability words are (.+).', subrule)
+                ability_words = set(split(match.group(2)))
+                for new_ability_word in patch['abilityWords']:
+                    assert new_ability_word not in ability_words
+                    ability_words.add(new_ability_word)
+                rule['subrules'][2] = '{}. The ability words are {}.'.format(match.group(1), join(sorted(ability_words)))
+            elif patch['type'] == 'addSubtypes':
+                rule = self.sections[1]['subsections'][5]['rules'][2] # 205.3
                 subrule_id = {
-                    'Artifact': 6,
-                    'Creature': 11,
-                    'Enchantment': 7,
-                    'Land': 8,
-                    'Plane': 12,
-                    'Planeswalker': 9,
-                    'Sorcery': 10
+                    'Artifact': 6, # g
+                    'Creature': 11, # m
+                    'Enchantment': 7, # h
+                    'Land': 8, # i
+                    'Plane': 12, # n
+                    'Planeswalker': 9, # j
+                    'Sorcery': 10 # k
                 }[patch['cardType']]
                 subrule = rule['subrules'][subrule_id]
                 if patch['cardType'] in ('Artifact', 'Enchantment', 'Creature', 'Plane', 'Sorcery'):
