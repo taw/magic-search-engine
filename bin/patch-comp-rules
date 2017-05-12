@@ -31,47 +31,66 @@ class CompRules:
         # rules
         self.sections = []
         current_section = None
-        current_rule = None
-        current_subrule = ''
+        current_subsection = None
+        current_rule = ''
+        is_subrule = False
         for line in lines:
             # paragraph break
             if re.fullmatch(' *\n', line):
-                if current_subrule != '':
-                    current_rule['subrules'].append(current_subrule[:-1])
+                if current_rule != '':
+                    if is_subrule:
+                        current_subsection['rules'][-1]['subrules'].append(current_rule)
+                    else:
+                        current_subsection['rules'].append({
+                            'subrules': [],
+                            'text': current_rule
+                        })
                 if lines.peek() == 'Glossary\n':
-                    current_section['rules'].append(current_rule)
+                    current_section['subsections'].append(current_subsection)
                     self.sections.append(current_section)
                     break
-                current_subrule = ''
+                current_rule = ''
                 continue
             # section header
             match = re.fullmatch('([0-9])\\. (.+)\n', line)
             if match:
-                if current_rule is not None:
-                    current_section['rules'].append(current_rule)
+                if current_subsection is not None:
+                    current_section['subsections'].append(current_subsection)
                 if current_section is not None:
                     self.sections.append(current_section)
                 assert int(match.group(1)) == len(self.sections) + 1
                 current_section = {
                     'name': match.group(2),
-                    'rules': []
+                    'subsections': []
                 }
-                current_rule = None
+                current_subsection = None
                 continue
-            # rule
+            # subsection header
             match = re.fullmatch('([0-9]{3})\\. (.+)\n', line)
             if match:
-                if current_rule is not None:
-                    current_section['rules'].append(current_rule)
+                if current_subsection is not None:
+                    current_section['subsections'].append(current_subsection)
                 assert int(match.group(1)) // 100 == len(self.sections) + 1
-                assert int(match.group(1)) % 100 == len(current_section['rules'])
-                current_rule = {
+                assert int(match.group(1)) % 100 == len(current_section['subsections'])
+                current_subsection = {
                     'name': match.group(2),
-                    'subrules': []
+                    'rules': []
                 }
                 continue
-            # continued rule text
-            current_subrule += line
+            # rule text
+            if current_rule == '':
+                match = re.fullmatch('([0-9]{3})\\.([0-9]+)[a-z] (.+)\n', line)
+                is_subrule = bool(match)
+                if is_subrule:
+                    assert int(match.group(2)) == len(current_subsection['rules'])
+                else:
+                    match = re.fullmatch('([0-9]{3})\\.([0-9]+). (.+)\n', line)
+                    assert int(match.group(2)) == len(current_subsection['rules']) + 1
+                assert int(match.group(1)) // 100 == len(self.sections) + 1
+                assert int(match.group(1)) % 100 == len(current_section['subsections'])
+                current_rule += match.group(3)
+            else:
+                current_rule += '\n' + line[:-1]
         # footer
         self.footer = ''
         for line in lines:
@@ -96,14 +115,18 @@ class CompRules:
             section_number = i + 1
             comp_rules_f.write('\n')
             comp_rules_f.write('{}. {}\n'.format(section_number, section['name']))
-            for j, rule in enumerate(section['rules']):
-                rule_number = 100 * section_number + j
+            for j, subsection in enumerate(section['subsections']):
+                subsection_number = 100 * section_number + j
                 comp_rules_f.write('\n')
-                comp_rules_f.write('{}. {}\n'.format(rule_number, rule['name']))
-                for subrule in rule['subrules']:
+                comp_rules_f.write('{}. {}\n'.format(subsection_number, subsection['name']))
+                for k, rule in enumerate(subsection['rules']):
+                    rule_number = k + 1
                     comp_rules_f.write('\n')
-                    comp_rules_f.write(subrule)
-                    comp_rules_f.write('\n')
+                    comp_rules_f.write('{}.{}. {}\n'.format(subsection_number, rule_number, rule['text']))
+                    for l, subrule in enumerate(rule['subrules']):
+                        subrule_number = 'abcdefghijkmnpqrstuvwxyz'[l]
+                        comp_rules_f.write('\n')
+                        comp_rules_f.write('{}.{}{} {}\n'.format(subsection_number, rule_number, subrule_number, subrule))
         # footer
         #comp_rules_f.write(self.footer)
 
