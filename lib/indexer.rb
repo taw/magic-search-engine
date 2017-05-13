@@ -238,6 +238,19 @@ class Indexer
       other_cmcs = other_names.map{|other_name| cards[other_name]["cmc"]}
       card["cmc"] = other_cmcs.compact.inject(0, &:+)
     end
+
+    # Fix rarities of ITP/RQS from "special" to whatever they were in 4e
+    # These are basically 4e precons, except with updated copyright from 1995 to 1996
+    # so it's silly to treat them as some "special" printings
+    cards.each do |name, card|
+      next unless card["printings"].any?{|set, printing| set == "rqs" or set == "itp"}
+      rarity_4e = card["printings"].find{|set, printing| set == "4e"}.last["rarity"]
+      card["printings"].each do |set, printing|
+        next unless set == "rqs" or set == "itp"
+        printing["rarity"] = rarity_4e
+      end
+    end
+
     {"sets"=>sets, "cards"=>cards}
   end
 
