@@ -264,7 +264,13 @@ form.search {
   }
 }
 .picture_missing {
+  padding: 1em;
   font-style: italic;
+  background-color: #ccc;
+  color: black;
+  text-align: center;
+  height: 100%;
+  width: 100%;
 }
 /* Mana symbols */
 .manacost {
