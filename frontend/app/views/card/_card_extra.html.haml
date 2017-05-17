@@ -12,7 +12,11 @@
     %li.infolabel
       = "Watermark: #{card.watermark.capitalize}"
   %li.infolabel
-    = "Released: #{card.release_date.inspect}"
+    = "Rarity: #{card.rarity}"
+  %li.infolabel
+    = "Collector Number: #{card.number}"
+  %li.infolabel
+    = "Released: #{card.release_date.to_s}"
 %h5 Legalities
 %ul.legalities
   - legality = card.legality_information
