@@ -16,6 +16,9 @@ class LinkRelatedCardsCommand
       matching_cards = (card_data["text"]||"").scan(rx).flatten.uniq - [name, nil]
       next if matching_cards.empty?
       matching_cards.each do |other|
+        # add specific exceptions for some false positives in custom cards
+        next if name == "Heart of Erises" and other == "Sacrifice"
+        next if name == "Unexpected Flood" and other == "Flood"
         @links[name] ||= Set[]
         @links[name] << other
         @links[other] ||= Set[]
