@@ -8680,7 +8680,7 @@
                     "AYR"
                 ],
                 "rarity": "Uncommon",
-                "text": "At the beginning of combat on your turn, target creature gains flying and vigilance until end of turn.",
+                "text": "At the beginning of combat on your turn, target creature you control gains flying and vigilance until end of turn.",
                 "type": "Enchantment",
                 "types": [
                     "Enchantment"
@@ -8695,7 +8695,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "It is the artists' bane to be able to create such wonderful worlds only to be trapped in them, alone.",
+                "flavor": "It is the artist's bane to be able to create such wonderful worlds only to be trapped in them, alone.",
                 "layout": "normal",
                 "manaCost": "{3}{W}{W}",
                 "name": "Alone in the World",
@@ -8711,6 +8711,35 @@
                 ]
             },
             {
+                "artist": "Rudy Siswanto",
+                "cmc": 2,
+                "colorIdentity": [
+                    "W"
+                ],
+                "colors": [
+                    "White"
+                ],
+                "layout": "normal",
+                "manaCost": "{1}{W}",
+                "name": "Aven Aerosaltant",
+                "number": "3",
+                "power": "1",
+                "printings": [
+                    "AYR"
+                ],
+                "rarity": "Common",
+                "subtypes": [
+                    "Bird",
+                    "Wizard"
+                ],
+                "text": "Flying\nRenown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)",
+                "toughness": "2",
+                "type": "Creature \u2014 Bird Wizard",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
                 "artist": "Pablo Fernandez",
                 "cmc": 1,
                 "colorIdentity": [
@@ -8723,7 +8752,7 @@
                 "layout": "normal",
                 "manaCost": "{W}",
                 "name": "Dashing Swordsman",
-                "number": "3",
+                "number": "4",
                 "power": "1",
                 "printings": [
                     "AYR"
@@ -8741,7 +8770,7 @@
                 ]
             },
             {
-                "artist": "Shaine Braithwaite",
+                "artist": "Shane Braithwaite",
                 "cmc": 5,
                 "colorIdentity": [
                     "W"
@@ -8753,7 +8782,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{W}",
                 "name": "Delsanian Sellsword",
-                "number": "4",
+                "number": "5",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -8771,6 +8800,35 @@
                 ]
             },
             {
+                "artist": "Icar Teret",
+                "cmc": 1,
+                "colorIdentity": [
+                    "W"
+                ],
+                "colors": [
+                    "White"
+                ],
+                "layout": "normal",
+                "manaCost": "{W}",
+                "name": "Eerie Harpist",
+                "number": "6",
+                "power": "1",
+                "printings": [
+                    "AYR"
+                ],
+                "rarity": "Uncommon",
+                "subtypes": [
+                    "Spirit",
+                    "Bard"
+                ],
+                "text": "Lifelink\nVirtuoso \u2014 Whenever you cast a multicolored spell, target creature gets +2/+2 until end of turn.",
+                "toughness": "1",
+                "type": "Creature \u2014 Spirit Bard",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
                 "artist": "katarina ali",
                 "cmc": 1,
                 "colorIdentity": [
@@ -8782,7 +8840,7 @@
                 "layout": "normal",
                 "manaCost": "{W}",
                 "name": "Evanescing Chord",
-                "number": "5",
+                "number": "7",
                 "printings": [
                     "AYR"
                 ],
@@ -8805,7 +8863,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{W}",
                 "name": "Inspiring Ballad",
-                "number": "6",
+                "number": "8",
                 "printings": [
                     "AYR"
                 ],
@@ -8817,8 +8875,8 @@
                 ]
             },
             {
-                "artist": "Liliaosipova on deviantart",
-                "cmc": 1,
+                "artist": "Lilia Osipova",
+                "cmc": 2,
                 "colorIdentity": [
                     "W"
                 ],
@@ -8826,20 +8884,20 @@
                     "White"
                 ],
                 "layout": "normal",
-                "manaCost": "{W}",
+                "manaCost": "{1}{W}",
                 "name": "Lifesong Flutist",
-                "number": "7",
-                "power": "1",
+                "number": "9",
+                "power": "2",
                 "printings": [
                     "AYR"
                 ],
-                "rarity": "Uncommon",
+                "rarity": "Common",
                 "subtypes": [
                     "Human",
                     "Bard"
                 ],
-                "text": "Lifelink\nVirtuoso \u2014 Whenever you cast a multicolored spell, target creature gets +2/+2 until end of turn.",
-                "toughness": "1",
+                "text": "Virtuoso \u2014 Whenever you cast a multicolored spell, you gain 2 life.",
+                "toughness": "2",
                 "type": "Creature \u2014 Human Bard",
                 "types": [
                     "Creature"
@@ -8854,10 +8912,11 @@
                 "colors": [
                     "White"
                 ],
+                "flavor": "Lithomancers of Aenyr use their magic to create the most lifelike of sculptures.",
                 "layout": "normal",
                 "manaCost": "{3}{W}",
                 "name": "Master Stonesculptor",
-                "number": "8",
+                "number": "10",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -8865,12 +8924,11 @@
                 "rarity": "Uncommon",
                 "subtypes": [
                     "Human",
-                    "Artificer",
-                    "Wizard"
+                    "Artificer"
                 ],
                 "text": "Renown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)\nWhen Master Stonesculptor becomes renowned, create a 3/3 colorless Golem artifact creature token.",
                 "toughness": "4",
-                "type": "Creature \u2014 Human Artificer Wizard",
+                "type": "Creature \u2014 Human Artificer",
                 "types": [
                     "Creature"
                 ]
@@ -8888,7 +8946,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{W}",
                 "name": "Mystical Minstrel",
-                "number": "9",
+                "number": "11",
                 "power": "1",
                 "printings": [
                     "AYR"
@@ -8918,7 +8976,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{W}",
                 "name": "Peaceful Thoughts",
-                "number": "10",
+                "number": "12",
                 "printings": [
                     "AYR"
                 ],
@@ -8941,7 +8999,7 @@
                 "layout": "normal",
                 "manaCost": "{W}",
                 "name": "Prismatic Harmony",
-                "number": "11",
+                "number": "13",
                 "printings": [
                     "AYR"
                 ],
@@ -8965,7 +9023,7 @@
                 "layout": "normal",
                 "manaCost": "{W}",
                 "name": "Quell Eloquence",
-                "number": "12",
+                "number": "14",
                 "printings": [
                     "AYR"
                 ],
@@ -8988,11 +9046,11 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "The librarian district of Seleyn city contains one of the most important book collections of the multiverse.",
+                "flavor": "Seleyn, the librarian district of Delsani, contains one of the most important book collections of the Multiverse.",
                 "layout": "normal",
                 "manaCost": "{3}{W}",
                 "name": "Seleyn Patrollers",
-                "number": "13",
+                "number": "15",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -9010,7 +9068,7 @@
                 ]
             },
             {
-                "artist": "Christas Vengel",
+                "artist": "Admira Wijaya",
                 "cmc": 2,
                 "colorIdentity": [
                     "W"
@@ -9018,40 +9076,11 @@
                 "colors": [
                     "White"
                 ],
-                "layout": "normal",
-                "manaCost": "{1}{W}",
-                "name": "Serene Aerosaltant",
-                "number": "14",
-                "power": "1",
-                "printings": [
-                    "AYR"
-                ],
-                "rarity": "Common",
-                "subtypes": [
-                    "Human",
-                    "Wizard"
-                ],
-                "text": "Flying\nRenown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)",
-                "toughness": "2",
-                "type": "Creature \u2014 Human Wizard",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
-                "artist": "Admira Vijaya",
-                "cmc": 2,
-                "colorIdentity": [
-                    "W"
-                ],
-                "colors": [
-                    "White"
-                ],
-                "flavor": "Only the bravest adventurers dare hunt the spiders of Duskwood. Less than half of them return to Delsani with the prized silk.",
+                "flavor": "Only the bravest adventurers dare hunt the spiders of Duskwood. Still, less than half of them return to Delsani with the prized silk in one piece.",
                 "layout": "normal",
                 "manaCost": "{1}{W}",
                 "name": "Silkfinder Ranger",
-                "number": "15",
+                "number": "16",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -9069,7 +9098,7 @@
                 ]
             },
             {
-                "artist": "ImmarArt on deviantart",
+                "artist": "ImmarArt on deviaantart",
                 "cmc": 6,
                 "colorIdentity": [
                     "W"
@@ -9081,7 +9110,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{W}{W}",
                 "name": "Skylyre Archangel",
-                "number": "16",
+                "number": "17",
                 "power": "4",
                 "printings": [
                     "AYR"
@@ -9110,12 +9139,12 @@
                 "layout": "normal",
                 "manaCost": "{2}{W}",
                 "name": "Soul Uplift",
-                "number": "17",
+                "number": "18",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Common",
-                "text": "Target creature gains +3/+0 and gains indestructible until end of turn. If it's renowned, untap it.",
+                "text": "Target creature gets +3/+0 and gains indestructible until end of turn. If it's renowned, untap it.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -9133,7 +9162,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{W}",
                 "name": "Springveil Dancer",
-                "number": "18",
+                "number": "19",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -9162,7 +9191,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{W}",
                 "name": "Sunblessed Dancer",
-                "number": "19",
+                "number": "20",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -9175,36 +9204,6 @@
                 "text": "Flying\nRenown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)\nWhen Sunblessed Dancer becomes renowned, you may exile all cards from target player's graveyard.",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Wizard",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
-                "artist": "AlectorFencer on deviantart",
-                "cmc": 2,
-                "colorIdentity": [
-                    "W"
-                ],
-                "colors": [
-                    "White"
-                ],
-                "flavor": "The Tilkins' songs reflect their peacefulness.",
-                "layout": "normal",
-                "manaCost": "{1}{W}",
-                "name": "Tilkin Flutist",
-                "number": "20",
-                "power": "2",
-                "printings": [
-                    "AYR"
-                ],
-                "rarity": "Common",
-                "subtypes": [
-                    "Fox",
-                    "Bard"
-                ],
-                "text": "Virtuoso \u2014 Whenever you cast a multicolored spell, you gain 2 life.",
-                "toughness": "2",
-                "type": "Creature \u2014 Fox Bard",
                 "types": [
                     "Creature"
                 ]
@@ -9242,7 +9241,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "The power of a child's imagination is never to be underestimated. Everything they believe in truly exists, somewhere.",
+                "flavor": "The power of a child's imagination is never to be underestimated. Everything they believe in truly exists.",
                 "layout": "normal",
                 "manaCost": "{W}",
                 "name": "Young Dreamer",
@@ -9527,36 +9526,7 @@
                 ]
             },
             {
-                "artist": "Thomas Brissot",
-                "cmc": 1,
-                "colorIdentity": [
-                    "U"
-                ],
-                "colors": [
-                    "Blue"
-                ],
-                "flavor": "\"I left on the sea to seek inspiration and find beauty. And I found it.\"\n\u2014A Sailor's Journal",
-                "layout": "normal",
-                "manaCost": "{U}",
-                "name": "Graceful Siren",
-                "number": "33",
-                "power": "1",
-                "printings": [
-                    "AYR"
-                ],
-                "rarity": "Common",
-                "subtypes": [
-                    "Siren"
-                ],
-                "text": "When Graceful Siren enters the battlefield, target player draws a card, then discards a card.",
-                "toughness": "1",
-                "type": "Creature \u2014 Siren",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
-                "artist": "Luisa Preissler",
+                "artist": "Luisa Prei\u00dfler",
                 "cmc": 3,
                 "colorIdentity": [
                     "U"
@@ -9568,7 +9538,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}",
                 "name": "Hat Trick",
-                "number": "34",
+                "number": "33",
                 "printings": [
                     "AYR"
                 ],
@@ -9592,7 +9562,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}",
                 "name": "Keeper of Secret Texts",
-                "number": "35",
+                "number": "34",
                 "power": "1",
                 "printings": [
                     "AYR"
@@ -9602,8 +9572,8 @@
                     "Human",
                     "Wizard"
                 ],
-                "text": "Imaginarium \u2014 When Keeper of Secret Texts enters the battlefield, scry X, where X is the number of colors among cards in your graveyard, then draw a card.",
-                "toughness": "3",
+                "text": "Imaginarium \u2014 {1}{U}, {T}: Scry X, where X is the number of colors among cards in your graveyard.",
+                "toughness": "4",
                 "type": "Creature \u2014 Human Wizard",
                 "types": [
                     "Creature"
@@ -9622,7 +9592,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{U}",
                 "name": "Kirsus Hypnotist",
-                "number": "36",
+                "number": "35",
                 "power": "1",
                 "printings": [
                     "AYR"
@@ -9635,6 +9605,35 @@
                 "text": "Virtuoso \u2014 Whenever you cast a multicolored spell, target player puts the top three cards of his or her library into his or her graveyard.",
                 "toughness": "3",
                 "type": "Creature \u2014 Human Wizard",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
+                "artist": "ladyowl on deviantart",
+                "cmc": 1,
+                "colorIdentity": [
+                    "U"
+                ],
+                "colors": [
+                    "Blue"
+                ],
+                "flavor": "\"It's completely useless when it comes to clean my desk. What it can do, however, is reorganize my sloppy thoughts.\"\n\u2014Zeka, Songwriter",
+                "layout": "normal",
+                "manaCost": "{U}",
+                "name": "Mindscraper",
+                "number": "36",
+                "power": "1",
+                "printings": [
+                    "AYR"
+                ],
+                "rarity": "Common",
+                "subtypes": [
+                    "Homunculus"
+                ],
+                "text": "When Mindscraper enters the battlefield, target player draws a card, then discards a card.",
+                "toughness": "1",
+                "type": "Creature \u2014 Homunculus",
                 "types": [
                     "Creature"
                 ]
@@ -9687,7 +9686,7 @@
                 ]
             },
             {
-                "artist": "Andy Fairhurst",
+                "artist": "Kagaya",
                 "cmc": 4,
                 "colorIdentity": [
                     "U"
@@ -9695,7 +9694,6 @@
                 "colors": [
                     "Blue"
                 ],
-                "flavor": "Only they know the secret of the invisible jugglers of the Kirsus Circus.",
                 "layout": "normal",
                 "manaCost": "{3}{U}",
                 "name": "Runesilk Weaver",
@@ -9740,29 +9738,6 @@
                 ]
             },
             {
-                "artist": "Eneada on deviantart",
-                "cmc": 5,
-                "colorIdentity": [
-                    "U"
-                ],
-                "colors": [
-                    "Blue"
-                ],
-                "layout": "normal",
-                "manaCost": "{4}{U}",
-                "name": "The Show Must Go On",
-                "number": "41",
-                "printings": [
-                    "AYR"
-                ],
-                "rarity": "Common",
-                "text": "Imaginarium \u2014 Draw cards equal to the number of colors among cards in your graveyard, then discard a card.",
-                "type": "Instant",
-                "types": [
-                    "Instant"
-                ]
-            },
-            {
                 "artist": "Alexandra Khitrova",
                 "cmc": 5,
                 "colorIdentity": [
@@ -9775,7 +9750,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{U}{U}",
                 "name": "Silent Riddler",
-                "number": "42",
+                "number": "41",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -9801,11 +9776,11 @@
                 "colors": [
                     "Blue"
                 ],
-                "flavor": "If you find yourself lacking inspiration, it helps to look at the world from a different perspective.",
+                "flavor": "\"If you find yourself lacking inspiration, it helps to look at the world from a different perspective.\"",
                 "layout": "normal",
                 "manaCost": "{2}{U}{U}",
                 "name": "Skyseeker",
-                "number": "43",
+                "number": "42",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -9834,15 +9809,38 @@
                 "layout": "normal",
                 "manaCost": "{4}{U}",
                 "name": "Symphonic Harmony",
-                "number": "44",
+                "number": "43",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Rare",
-                "text": "Search your library for up to two instant and/or sorcery cards with converted mana cost 3 or less, reveal them, and put them into your hand. Then shuffle your library.\nResonance {5}{U}{U} (If you cast this spell for {5}{U}{U}, exile it as it resolves. As you cast your next instant or sorcery spell, put this card into your graveyard and you may add its effects and colors to that spell.)",
+                "text": "Search your library for up to two instants and/or sorcery cards with converted mana cost 3 or less, reveal them, and put them into your hand. Then shuffle your library.\nResonance {5}{U}{U} (If you cast this spell for {5}{U}{U}, exile it as it resolves. As you cast your next instant or sorcery spell, put this card into your graveyard and you may add its effects and colors to that spell.)",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
+                ]
+            },
+            {
+                "artist": "Eneada on deviantart",
+                "cmc": 5,
+                "colorIdentity": [
+                    "U"
+                ],
+                "colors": [
+                    "Blue"
+                ],
+                "layout": "normal",
+                "manaCost": "{4}{U}",
+                "name": "The Show Must Go On",
+                "number": "44",
+                "printings": [
+                    "AYR"
+                ],
+                "rarity": "Common",
+                "text": "Imaginarium \u2014 Draw cards equal to the number of colors among cards in your graveyard, then discard a card.",
+                "type": "Instant",
+                "types": [
+                    "Instant"
                 ]
             },
             {
@@ -9923,7 +9921,7 @@
                 ]
             },
             {
-                "artist": "Johannes Voss",
+                "artist": "Red Pencil Art",
                 "cmc": 2,
                 "colorIdentity": [
                     "B"
@@ -10025,6 +10023,7 @@
                 "colors": [
                     "Black"
                 ],
+                "flavor": "The song surrounds you, fills your soul and entices you until it becomes your funeral dirge.",
                 "layout": "normal",
                 "manaCost": "{1}{B}",
                 "name": "Chant of the Damned",
@@ -10048,7 +10047,6 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "Their song surrounds you, fills your soul and entices you, until it becomes your funeral dirge.",
                 "layout": "normal",
                 "manaCost": "{2}{B}{B}",
                 "name": "Chorus of the Unliving",
@@ -10155,7 +10153,7 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "\"A parasitic idea is to madness what a spark is to fire.\"\n\u2014Ashiok",
+                "flavor": "\"Much like a spark that starts a fire, a single parasitic idea can be the seed of madness.\"\n\u2014Ashiok",
                 "layout": "normal",
                 "manaCost": "{2}{B}{B}",
                 "name": "Deepening Dementia",
@@ -10179,7 +10177,7 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "\"The Kenoram clan gathered tonight as well to perform some strange dances, even though they don't seem to have chosen a victim...\"\n\u2014An explorer's journal, last entry",
+                "flavor": "\"The Kenoram clan gathered tonight as well to perform some strange dances, although they don't seem to have chosen a victim this time...\"\n\u2014An explorer's journal, last entry",
                 "layout": "normal",
                 "manaCost": "{2}{B}",
                 "name": "Deepwood Ritual",
@@ -10195,7 +10193,7 @@
                 ]
             },
             {
-                "artist": "Matthew Attard",
+                "artist": "Josu Hernaiz",
                 "cmc": 5,
                 "colorIdentity": [
                     "B"
@@ -10203,23 +10201,22 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "\"If dreams can be born into the world here, so can nightmares.\"\n\u2014Ashiok",
                 "layout": "normal",
                 "manaCost": "{4}{B}",
-                "name": "Dreameaters",
+                "name": "Dream Drinker",
                 "number": "58",
-                "power": "3",
+                "power": "4",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Common",
                 "subtypes": [
-                    "Nightmare",
-                    "Horror"
+                    "Vampire",
+                    "Wizard"
                 ],
-                "text": "When Dreameaters enters the battlefield, you may exile target multicolored card from a graveyard. If you do, put a +1/+1 counter on Dreameaters.",
+                "text": "Imaginarium \u2014 When Dream Drinker enters the battlefield, target player puts the top X cards of his or her library into his or her graveyard, where X is the number of colors among cards in your graveyard.",
                 "toughness": "4",
-                "type": "Creature \u2014 Nightmare Horror",
+                "type": "Creature \u2014 Vampire Wizard",
                 "types": [
                     "Creature"
                 ]
@@ -10255,36 +10252,6 @@
                 ]
             },
             {
-                "artist": "Cribs on deviantart",
-                "cmc": 4,
-                "colorIdentity": [
-                    "B"
-                ],
-                "colors": [
-                    "Black"
-                ],
-                "flavor": "\"Remind me to never again invite a Satyr to play music in my tavern.\"\n\u2014Athela the Innkeeper",
-                "layout": "normal",
-                "manaCost": "{3}{B}",
-                "name": "Kenoram Brawler",
-                "number": "60",
-                "power": "3",
-                "printings": [
-                    "AYR"
-                ],
-                "rarity": "Common",
-                "subtypes": [
-                    "Satyr",
-                    "Warrior"
-                ],
-                "text": "When Kenoram Brawler enters the battlefield, create a 1/1 black and green Satyr Bard creature token.",
-                "toughness": "2",
-                "type": "Creature \u2014 Satyr Warrior",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
                 "artist": "Richie Marella",
                 "cmc": 5,
                 "colorIdentity": [
@@ -10296,7 +10263,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{B}",
                 "name": "Kenoram Shadowmancer",
-                "number": "61",
+                "number": "60",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -10314,7 +10281,7 @@
                 ]
             },
             {
-                "artist": "Michelle Frigo",
+                "artist": "Michele Frigo",
                 "cmc": 2,
                 "colorIdentity": [
                     "B"
@@ -10326,7 +10293,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{B}",
                 "name": "Kirsus Maniac",
-                "number": "62",
+                "number": "61",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -10357,7 +10324,7 @@
                 "layout": "normal",
                 "manaCost": "{B}",
                 "name": "Nightmarish Chord",
-                "number": "63",
+                "number": "62",
                 "printings": [
                     "AYR"
                 ],
@@ -10377,11 +10344,11 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "Some ideas are destroyed before even being born.",
+                "flavor": "\"If dreams can be born into the world here, so can nightmares.\"\n\u2014Ashiok",
                 "layout": "normal",
                 "manaCost": "{B}",
                 "name": "Oppressive Nightmares",
-                "number": "64",
+                "number": "63",
                 "printings": [
                     "AYR"
                 ],
@@ -10393,7 +10360,7 @@
                 ]
             },
             {
-                "artist": "davesrtightmind",
+                "artist": "Ian Llanas",
                 "cmc": 4,
                 "colorIdentity": [
                     "B"
@@ -10401,23 +10368,52 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "\"The eternal beauty of death transcends the ephemeral nature of life.\"\n\u2014Mekar, soulless poet",
                 "layout": "normal",
                 "manaCost": "{3}{B}",
-                "name": "Rotten Pegasus",
-                "number": "65",
-                "power": "*",
+                "name": "Phantasm of Ashiok",
+                "number": "64",
+                "power": "2",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Common",
                 "subtypes": [
-                    "Zombie",
-                    "Pegasus"
+                    "Nightmare",
+                    "Horror"
                 ],
-                "text": "Flying\nImaginarium \u2014 Rotten Pegasus's power is equal to the number of colors among cards in your graveyard.",
+                "text": "Flying\nWhen Phantasm of Ashiok enters the battlefield, you may exile target card from a graveyard. If you do, that card's owner loses 2 life.",
                 "toughness": "3",
-                "type": "Creature \u2014 Zombie Pegasus",
+                "type": "Creature \u2014 Nightmare Horror",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
+                "artist": "Cribs on deviantart",
+                "cmc": 4,
+                "colorIdentity": [
+                    "B"
+                ],
+                "colors": [
+                    "Black"
+                ],
+                "flavor": "\"Remind me to never again invite a Satyr to play music in my tavern.\"\n\u2014Athela the Innkeeper",
+                "layout": "normal",
+                "manaCost": "{3}{B}",
+                "name": "Satyr Brawler",
+                "number": "65",
+                "power": "3",
+                "printings": [
+                    "AYR"
+                ],
+                "rarity": "Common",
+                "subtypes": [
+                    "Satyr",
+                    "Warrior"
+                ],
+                "text": "When Satyr Brawler enters the battlefield, create a 1/1 black and green Satyr Bard creature token.",
+                "toughness": "2",
+                "type": "Creature \u2014 Satyr Warrior",
                 "types": [
                     "Creature"
                 ]
@@ -10466,7 +10462,7 @@
                     "AYR"
                 ],
                 "rarity": "Uncommon",
-                "text": "Choose one \u2014\n\u2022 Discard a card. If you do, draw two cards.\n\u2022 Discard a card at random. If you do, draw three cards. Choose this mode only if you have two or more cards in hand.",
+                "text": "Cast All In only if you have two or more cards in hand.\nAs an additional cost to cast All In, discard a card at random.\nDraw three cards.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -10505,7 +10501,7 @@
                 "colors": [
                     "Red"
                 ],
-                "flavor": "\"Be careful when you write about fire.\"\n\u2014The Writer's Code, rule #47",
+                "flavor": "\"Be careful about stories involving fire.\"\n\u2014The Writer's Code, rule #47",
                 "layout": "normal",
                 "manaCost": "{4}{R}",
                 "name": "Blazing Sonnet",
@@ -10537,7 +10533,7 @@
                     "AYR"
                 ],
                 "rarity": "Common",
-                "text": "Up to two target creatures can't block this turn.\nResonance {3}{R} (If you cast this spell for {3]{R}, exile it as it resolves. As you cast your next instant or sorcery spell, put this card into your graveyard and you may add its effects and colors to that spell.)",
+                "text": "Up to two target creatures can't block this turn.\nResonance {3}{R} (If you cast this spell for {3}{R}, exile it as it resolves. As you cast your next instant or sorcery spell, put this card into your graveyard and you may add its effects and colors to that spell.)",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -10565,7 +10561,7 @@
                     "Human",
                     "Bard"
                 ],
-                "text": "{T}: Disciple of Foenira deals 1 damage to target player.\nVirtuoso \u2014 Whenever you cast a multicolored spell, untap Disciple of Foenira.",
+                "text": "{T}: Disciple of Foenira deals 1 damage to target player.\nVirtuoso \u2014 Whenever a you cast a multicolored spell, untap Disciple of Foenira.",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Bard",
                 "types": [
@@ -10634,7 +10630,6 @@
                 "colors": [
                     "Red"
                 ],
-                "flavor": "She defines the word \"passion\" in all its possible meanings.",
                 "layout": "normal",
                 "manaCost": "{2}{R}",
                 "name": "Flamedance Prodigy",
@@ -10648,7 +10643,7 @@
                     "Human",
                     "Wizard"
                 ],
-                "text": "Menace\nRenown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)",
+                "text": "Menace (This creature can't be blocked except by two or more creatures.)\nRenown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)",
                 "toughness": "1",
                 "type": "Creature \u2014 Human Wizard",
                 "types": [
@@ -10664,7 +10659,7 @@
                 "colors": [
                     "Red"
                 ],
-                "flavor": "\"I don't know which is worse, eating raw chicken or a goblin's chicken soup.\"\n\u2014Elania, Food critic",
+                "flavor": "\"I don't know which is worse between eating raw chicken or a goblin's chicken soup.\"\n\u2014Elania, Food critic",
                 "layout": "normal",
                 "manaCost": "{1}{R}",
                 "name": "Goblin Chef",
@@ -10765,7 +10760,7 @@
                 "subtypes": [
                     "Aura"
                 ],
-                "text": "Enchant creature\nEnchanted creature gets +2/+2.\nWhen enchanted creature dies, Inner Flame deals 2 damage to target player.",
+                "text": "Enchant creature\nEnchanted creature gets +2/-2.\nWhen enchanted creature dies, Inner Flame deals 2 damage to target player.",
                 "type": "Enchantment \u2014 Aura",
                 "types": [
                     "Enchantment"
@@ -10802,7 +10797,7 @@
                 ]
             },
             {
-                "artist": "Ouildrim",
+                "artist": "Quildrim",
                 "cmc": 3,
                 "colorIdentity": [
                     "R"
@@ -10814,7 +10809,7 @@
                 "manaCost": "{2}{R}",
                 "name": "Master Flamedancer",
                 "number": "80",
-                "power": "3",
+                "power": "2",
                 "printings": [
                     "AYR"
                 ],
@@ -10823,8 +10818,8 @@
                     "Human",
                     "Wizard"
                 ],
-                "text": "Haste\nRenown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)\nWhen Master Flamedancer attacks, if it's renowned, exile the top card of your library. Until end of turn, you may play that card.",
-                "toughness": "1",
+                "text": "Haste\nRenown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)\nWhenever Master Flamedancer attacks, if it's renowned, exile the top card of your library. Until end of turn, you may play that card.",
+                "toughness": "3",
                 "type": "Creature \u2014 Human Wizard",
                 "types": [
                     "Creature"
@@ -10907,7 +10902,7 @@
                 ]
             },
             {
-                "artist": "Young-june Choi",
+                "artist": "Young-june Choi ",
                 "cmc": 2,
                 "colorIdentity": [
                     "R"
@@ -10915,7 +10910,7 @@
                 "colors": [
                     "Red"
                 ],
-                "flavor": "\"Never forget that your voice is your strongest weapon.\"\n\u2014Ysa, Audiomancer",
+                "flavor": "\"Never forget that your voice is your strongest weapon.\"\n\u2014Ysa, Master Audiomancer",
                 "layout": "normal",
                 "manaCost": "{1}{R}",
                 "name": "Piercing Shout",
@@ -11075,7 +11070,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "\"I don't care how much that damned silk is worth. I'm done.\n\u2014Kessen, retired ranger",
+                "flavor": "\"I don't care how much that damned silk is worth. I'm done.\"\n\u2014Kessen, Retired ranger",
                 "layout": "normal",
                 "manaCost": "{3}{G}",
                 "name": "Arachnoid Ambush",
@@ -11099,7 +11094,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "Araknis silk is used by the most skilled tailors to craft the finest clothes on Aenyr. Unfortunately, it can be hard to find anyone willing to go out and gather some.",
+                "flavor": "Araknis silk is used by the most skilled Delsanian tailors to craft the finest clothes on Aenyr. Unfortunately, even the most experienced silkfinders are reluctant to go and gather it.",
                 "layout": "normal",
                 "manaCost": "{4}{G}",
                 "name": "Araknis",
@@ -11174,6 +11169,33 @@
                 ]
             },
             {
+                "artist": "Marianne Morris",
+                "cmc": 3,
+                "colorIdentity": [
+                    "W",
+                    "U",
+                    "B",
+                    "R",
+                    "G"
+                ],
+                "colors": [
+                    "Green"
+                ],
+                "layout": "normal",
+                "manaCost": "{2}{G}",
+                "name": "Chromesthesia",
+                "number": "94",
+                "printings": [
+                    "AYR"
+                ],
+                "rarity": "Uncommon",
+                "text": "Target creature you control gets +2/+2 until end of turn. Then, if {W} was spent to cast Chromesthesia, that creature gains lifelink until end of turn. The same is true for {U} and hexproof, {B} and deathtouch, and {R} and first strike.",
+                "type": "Instant",
+                "types": [
+                    "Instant"
+                ]
+            },
+            {
                 "artist": "Thiago Almeida",
                 "cmc": 4,
                 "colorIdentity": [
@@ -11186,19 +11208,18 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}",
                 "name": "Contemplative Ancient",
-                "number": "94",
+                "number": "95",
                 "power": "3",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Common",
                 "subtypes": [
-                    "Treefolk",
-                    "Shaman"
+                    "Treefolk"
                 ],
-                "text": "Whenever you gain life, Contemplative Ancient gets +1/+1 until end of turn.",
+                "text": "Whenever you gain life for the first time each turn, untap target land.",
                 "toughness": "4",
-                "type": "Creature \u2014 Treefolk Shaman",
+                "type": "Creature \u2014 Treefolk",
                 "types": [
                     "Creature"
                 ]
@@ -11216,7 +11237,7 @@
                 "layout": "normal",
                 "manaCost": "{G}",
                 "name": "Daring Minstrel",
-                "number": "95",
+                "number": "96",
                 "power": "1",
                 "printings": [
                     "AYR"
@@ -11242,11 +11263,11 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "There is no such thing as natural or unnatural on Aenyr. There is only what the mind can conceive and what it cannot.",
+                "flavor": "\"There is no such thing as natural or unnatural. There is only what the mind can conceive and what it cannot.\"\n\u2014Rejan, Delsanian Scholar",
                 "layout": "normal",
                 "manaCost": "{7}{G}",
                 "name": "Dreamborn Wurm",
-                "number": "96",
+                "number": "97",
                 "power": "6",
                 "printings": [
                     "AYR"
@@ -11275,7 +11296,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Duskwood Neophyte",
-                "number": "97",
+                "number": "98",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -11290,29 +11311,6 @@
                 "type": "Creature \u2014 Satyr Shaman",
                 "types": [
                     "Creature"
-                ]
-            },
-            {
-                "artist": "Alector Fencer",
-                "cmc": 3,
-                "colorIdentity": [
-                    "G"
-                ],
-                "colors": [
-                    "Green"
-                ],
-                "layout": "normal",
-                "manaCost": "{2}{G}",
-                "name": "Exalting Fable",
-                "number": "98",
-                "printings": [
-                    "AYR"
-                ],
-                "rarity": "Uncommon",
-                "text": "Until end of turn, target creature you control gets +4/+4 and other creatures you control get +1/+1.",
-                "type": "Sorcery",
-                "types": [
-                    "Sorcery"
                 ]
             },
             {
@@ -11429,7 +11427,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "\"As you write, your characters slowly become part of who you are. There is a little bit of you in each and everyone of them.\"",
+                "flavor": "\"As you write, your characters slowly become part of who you are. There is a little bit of you in each and every one of them.\"",
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Lone Poet",
@@ -11459,7 +11457,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "There are no free mastodon in Aenyr anymore. Olexar Kirsus once composed a song powerful enough to tame them, and they are now nothing more than circus beasts.",
+                "flavor": "There are no more free mastodons in Aenyr. Olexar Kirsus once composed a song powerful enough to tame them and they are now nothing more than circus beasts.",
                 "layout": "normal",
                 "manaCost": "{5}{G}",
                 "name": "Parade Mastodon",
@@ -11535,19 +11533,19 @@
             },
             {
                 "artist": "Soreiya on deviantart",
-                "cmc": 5,
+                "cmc": 4,
                 "colorIdentity": [
                     "G"
                 ],
                 "colors": [
                     "Green"
                 ],
-                "flavor": "\"Drink deep from Aenyr's water and light. It will grow you in ways you couldn't imagine.\"\n\u2014Roselyn, to Veila",
+                "flavor": "\"Drink deep from Aenyr's water and light. It will grow you in ways you couldn't imagine.\"\n\u2014Foenira, to Roselyn and Veila",
                 "layout": "normal",
-                "manaCost": "{4}{G}",
+                "manaCost": "{3}{G}",
                 "name": "Prismavore",
                 "number": "107",
-                "power": "4",
+                "power": "3",
                 "printings": [
                     "AYR"
                 ],
@@ -11557,7 +11555,7 @@
                     "Plant"
                 ],
                 "text": "Imaginarium \u2014 {2}{G}: Prismavore gets +1/+1 for each color among cards in your graveyard until end of turn.",
-                "toughness": "5",
+                "toughness": "3",
                 "type": "Creature \u2014 Elemental Plant",
                 "types": [
                     "Creature"
@@ -11655,7 +11653,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "His song was so captivating, Veila had no other choice but to follow him deep into the woods.",
+                "flavor": "Its song was so captivating. Veila had no other choice but to follow the Satyr deep into the woods.",
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Taunting Satyr",
@@ -11669,7 +11667,7 @@
                     "Satyr",
                     "Bard"
                 ],
-                "text": "Virtuoso \u2014 Whenever you cast a multicolored spell, Taunting Satyr gets +1/+1 until end of turn and must be blocked this turn if able.",
+                "text": "Virtuoso \u2014 Whenever you cast a multicolored spell, target creature gets +1/+1 until end of turn and must be blocked this turn if able.",
                 "toughness": "2",
                 "type": "Creature \u2014 Satyr Bard",
                 "types": [
@@ -11737,37 +11735,6 @@
                 ]
             },
             {
-                "artist": "Izabela Kaszuba",
-                "cmc": 5,
-                "colorIdentity": [
-                    "W",
-                    "U"
-                ],
-                "colors": [
-                    "White",
-                    "Blue"
-                ],
-                "flavor": "Poems written with Azurewing feathers are known for the good luck they bring.",
-                "layout": "normal",
-                "manaCost": "{3}{W}{U}",
-                "name": "Azurewing Griffin",
-                "number": "114",
-                "power": "3",
-                "printings": [
-                    "AYR"
-                ],
-                "rarity": "Common",
-                "subtypes": [
-                    "Griffin"
-                ],
-                "text": "Flash (You may cast this spell any time you could cast an instant.)\nFlying\nWhen Azurewing Griffin enters the battlefield, you may return another target creature you control to its owner's hand.",
-                "toughness": "3",
-                "type": "Creature \u2014 Griffin",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
                 "artist": "Marthe & Ward",
                 "cmc": 2,
                 "colorIdentity": [
@@ -11782,7 +11749,7 @@
                 "layout": "normal",
                 "manaCost": "{R}{G}",
                 "name": "Blazeheart Idealon",
-                "number": "115",
+                "number": "114",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -11813,9 +11780,9 @@
                 "flavor": "\"Horror stories are strictly forbidden.\"\n\u2014The Writer's code, rule #3",
                 "layout": "normal",
                 "manaCost": "{3}{U}{B}",
-                "name": "Bookpest",
-                "number": "116",
-                "power": "4",
+                "name": "Book Pest",
+                "number": "115",
+                "power": "*",
                 "printings": [
                     "AYR"
                 ],
@@ -11824,7 +11791,7 @@
                     "Insect",
                     "Horror"
                 ],
-                "text": "Bookpest gets +2/+2 and can't be blocked as long as a graveyard has ten or more cards in it.",
+                "text": "Book Pest's power is equal to the greatest number of cards in a player's graveyard.",
                 "toughness": "4",
                 "type": "Creature \u2014 Insect Horror",
                 "types": [
@@ -11846,7 +11813,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{B}{R}",
                 "name": "Chaosborn Muse",
-                "number": "117",
+                "number": "116",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -11879,7 +11846,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}{U}",
                 "name": "Chimerical Visitant",
-                "number": "118",
+                "number": "117",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -11906,11 +11873,11 @@
                     "Red",
                     "Green"
                 ],
-                "flavor": "Her voice imbues the greatest painters to create colors they didn't even know could exist.",
+                "flavor": "Her voice imbues the greatest painters, making them create colors they didn't even know could exist.",
                 "layout": "normal",
                 "manaCost": "{1}{R}{G}",
                 "name": "Chromaborn Muse",
-                "number": "119",
+                "number": "118",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -11919,7 +11886,7 @@
                 "subtypes": [
                     "Spirit"
                 ],
-                "text": "Exile a land card from your hand: Add to your mana pool two mana in any combination of colors that land card could produce.",
+                "text": "Exile a land card from your hand: Add three mana in any combination of colors to your mana pool. Activate this ability only once each turn.",
                 "toughness": "2",
                 "type": "Creature \u2014 Spirit",
                 "types": [
@@ -11940,7 +11907,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}{U}",
                 "name": "Chromawing Idealon",
-                "number": "120",
+                "number": "119",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -11958,37 +11925,7 @@
                 ]
             },
             {
-                "artist": "Tyler James",
-                "cmc": 3,
-                "colorIdentity": [
-                    "U",
-                    "R"
-                ],
-                "colors": [
-                    "Blue",
-                    "Red"
-                ],
-                "layout": "normal",
-                "manaCost": "{1}{U}{R}",
-                "name": "Conductor Elemental",
-                "number": "121",
-                "power": "2",
-                "printings": [
-                    "AYR"
-                ],
-                "rarity": "Mythic Rare",
-                "subtypes": [
-                    "Elemental"
-                ],
-                "text": "Flash\nWhen Conductor Elemental enters the battlefield, if you cast it from your hand, you may reveal an instant or sorcery card with converted mana cost 2 or less from your hand. If you do, copy that card and cast the copy without paying its mana cost.",
-                "toughness": "1",
-                "type": "Creature \u2014 Elemental",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
-                "artist": "Martin de Diego Sadaba",
+                "artist": "Martin de Diego S\u00e1daba",
                 "cmc": 5,
                 "colorIdentity": [
                     "W",
@@ -12007,7 +11944,7 @@
                 "layout": "normal",
                 "manaCost": "{W}{U}{B}{R}{G}",
                 "name": "Creativity",
-                "number": "122",
+                "number": "120",
                 "power": "5",
                 "printings": [
                     "AYR"
@@ -12024,37 +11961,6 @@
                 ]
             },
             {
-                "artist": "Tatiana Kirgetova",
-                "cmc": 3,
-                "colorIdentity": [
-                    "W",
-                    "U"
-                ],
-                "colors": [
-                    "White",
-                    "Blue"
-                ],
-                "flavor": "\"There is no better mirror than one made with crystalline feathers.\"\n\u2014Kara, Delsanian highborn",
-                "layout": "normal",
-                "manaCost": "{1}{W}{U}",
-                "name": "Crystalline Falcon",
-                "number": "123",
-                "power": "2",
-                "printings": [
-                    "AYR"
-                ],
-                "rarity": "Uncommon",
-                "subtypes": [
-                    "Bird"
-                ],
-                "text": "Flying\nWhenever Crystalline Falcon deals combat damage to a player, exile up to one target creature you control, then return it to the battlefield under its owner's control.",
-                "toughness": "3",
-                "type": "Creature \u2014 Bird",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
                 "artist": "vinegar on deviantart",
                 "cmc": 4,
                 "colorIdentity": [
@@ -12065,23 +11971,23 @@
                     "White",
                     "Black"
                 ],
-                "flavor": "\"What's the life of one individual worth when it's sacrificed in the name of great artwork?\"",
+                "flavor": "\"Great art isn't something that can accomplished individually. It takes a lot of work... and a lot of sacrifices.\"",
                 "layout": "normal",
                 "manaCost": "{2}{W}{B}",
                 "name": "Delsanian Aristocrat",
-                "number": "124",
+                "number": "121",
                 "power": "2",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Uncommon",
                 "subtypes": [
-                    "Human",
+                    "Vampire",
                     "Advisor"
                 ],
                 "text": "Lifelink\n{1}, Sacrifice a creature: Creatures you control get +1/+1 until end of turn.",
                 "toughness": "3",
-                "type": "Creature \u2014 Human Advisor",
+                "type": "Creature \u2014 Vampire Advisor",
                 "types": [
                     "Creature"
                 ]
@@ -12101,7 +12007,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{B}{R}",
                 "name": "Destructive Temper",
-                "number": "125",
+                "number": "122",
                 "printings": [
                     "AYR"
                 ],
@@ -12126,8 +12032,8 @@
                 "flavor": "\"This world never rests. Neither shall I.\"",
                 "layout": "normal",
                 "manaCost": "{R}{W}",
-                "name": "Dreamblade Initiate",
-                "number": "126",
+                "name": "Dreamblade Duelist",
+                "number": "123",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -12137,7 +12043,7 @@
                     "Human",
                     "Soldier"
                 ],
-                "text": "Vigilance\nRenown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)\nDreamblade Initiate attacks each turn if able and blocks each turn if able.",
+                "text": "Vigilance\nRenown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)\nDreamblade Duelist attacks each turn if able and blocks each turn if able.",
                 "toughness": "3",
                 "type": "Creature \u2014 Human Soldier",
                 "types": [
@@ -12159,7 +12065,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{R}{G}",
                 "name": "Dreamfire Idealon",
-                "number": "127",
+                "number": "124",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -12190,12 +12096,12 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}{B}",
                 "name": "Dreams from Beyond",
-                "number": "128",
+                "number": "125",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Uncommon",
-                "text": "Imaginarium \u2014 You may cast target instant, sorcery, or creature card from an opponent's graveyard without paying its mana cost if its converted mana cost is less than or equal to the number of colors among cards in your graveyard.",
+                "text": "Imaginarium \u2014 You may cast target instant, sorcery or creature card from an opponent's graveyard without paying its mana cost if its converted mana cost is less than or equal to the number of colors among cards in your graveyard.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -12212,11 +12118,10 @@
                     "Blue",
                     "Green"
                 ],
-                "flavor": "\"Lets do it again. And again.\"",
                 "layout": "normal",
                 "manaCost": "{4}{G}{U}",
                 "name": "Duplication",
-                "number": "129",
+                "number": "126",
                 "printings": [
                     "AYR"
                 ],
@@ -12242,7 +12147,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{B}{G}",
                 "name": "Duskborn Muse",
-                "number": "130",
+                "number": "127",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -12273,7 +12178,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{B}{G}",
                 "name": "Duskwood Soulguide",
-                "number": "131",
+                "number": "128",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -12305,7 +12210,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{U}{R}",
                 "name": "Echoborn Muse",
-                "number": "132",
+                "number": "129",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -12332,16 +12237,15 @@
                     "White",
                     "Blue"
                 ],
-                "flavor": "There is no dance more perfect than one that never ends.",
                 "layout": "normal",
                 "manaCost": "{4}{W}{U}",
                 "name": "Eidolic Waltz",
-                "number": "133",
+                "number": "130",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Rare",
-                "text": "Exile up to one target creature you control and up to one target creature you don't control, then return those cards to the battlefield under your control.",
+                "text": "Exile up to one target creature you control and up to one target creature you don't control, then return those creatures to the battlefield under your control.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -12362,7 +12266,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{W}{B}",
                 "name": "Entry Fee",
-                "number": "134",
+                "number": "131",
                 "printings": [
                     "AYR"
                 ],
@@ -12387,7 +12291,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{W}{B}",
                 "name": "Eraser of Thoughts",
-                "number": "135",
+                "number": "132",
                 "power": "4",
                 "printings": [
                     "AYR"
@@ -12417,7 +12321,7 @@
                 "layout": "normal",
                 "manaCost": "{6}{R}{G}",
                 "name": "Eregon's Masterpiece",
-                "number": "136",
+                "number": "133",
                 "power": "8",
                 "printings": [
                     "AYR"
@@ -12448,11 +12352,11 @@
                     "White",
                     "Blue"
                 ],
-                "flavor": "When you see perfection, you never forget what it looks like.",
+                "flavor": "When one sees perfection, they never forget what it looks like.",
                 "layout": "normal",
                 "manaCost": "{W}{U}",
                 "name": "Exquisite Idealon",
-                "number": "137",
+                "number": "134",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -12462,7 +12366,7 @@
                     "Elemental",
                     "Fox"
                 ],
-                "text": "Flash\nFlying, lifelink\nWhen Exquisite Idealon enters the battlefield, if you've been dealt damage this turn, draw a card.",
+                "text": "Flash\nFlying, lifelink\nWhen Exquisite Idealon enters the battlefield, if you were dealt damage this turn, draw a card.",
                 "toughness": "1",
                 "type": "Creature \u2014 Elemental Fox",
                 "types": [
@@ -12484,7 +12388,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}{B}",
                 "name": "Facestealer",
-                "number": "138",
+                "number": "135",
                 "power": "0",
                 "printings": [
                     "AYR"
@@ -12514,7 +12418,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{U}{R}",
                 "name": "Fantasia Wyrm",
-                "number": "139",
+                "number": "136",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -12545,7 +12449,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}{W}",
                 "name": "Fearless Feline",
-                "number": "140",
+                "number": "137",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -12575,7 +12479,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{R}{W}",
                 "name": "Flawless Performance",
-                "number": "141",
+                "number": "138",
                 "printings": [
                     "AYR"
                 ],
@@ -12603,7 +12507,7 @@
                 "layout": "normal",
                 "manaCost": "{B}{G}",
                 "name": "Gloom Tender",
-                "number": "142",
+                "number": "139",
                 "power": "1",
                 "printings": [
                     "AYR"
@@ -12613,9 +12517,40 @@
                     "Satyr",
                     "Shaman"
                 ],
-                "text": "Imaginarium \u2014 {T}: For each color among cards in your graveyard, add one mana of any color to your mana pool.\n{2}{B}{G}, {T}, Sacrifice Gloom Tender: Return target card from your graveyard to your hand.",
+                "text": "Imaginarium \u2014 {T}: For each color among cards in your graveyard, add one mana of that color to your mana pool.\n{2}{B}{G}, {T}, Sacrifice Gloom Tender: Return target card from your graveyard to your hand.",
                 "toughness": "1",
                 "type": "Creature \u2014 Satyr Shaman",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
+                "artist": "Concept Art House",
+                "cmc": 5,
+                "colorIdentity": [
+                    "W",
+                    "U"
+                ],
+                "colors": [
+                    "White",
+                    "Blue"
+                ],
+                "flavor": "Poems written with Goldwing feathers are known for the good luck they bring.",
+                "layout": "normal",
+                "manaCost": "{3}{W}{U}",
+                "name": "Goldwing Flock Leader",
+                "number": "140",
+                "power": "3",
+                "printings": [
+                    "AYR"
+                ],
+                "rarity": "Common",
+                "subtypes": [
+                    "Bird"
+                ],
+                "text": "Flash (You may cast this spell any time you could cast an instant.)\nFlying\nWhen Goldwing Flock Leader enters the battlefield, you may return another target creature you control to its owner's hand.",
+                "toughness": "3",
+                "type": "Creature \u2014 Bird",
                 "types": [
                     "Creature"
                 ]
@@ -12635,7 +12570,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{W}{U}",
                 "name": "Graceborn Muse",
-                "number": "143",
+                "number": "141",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -12666,7 +12601,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{B}{G}",
                 "name": "Grasp of Nature",
-                "number": "144",
+                "number": "142",
                 "printings": [
                     "AYR"
                 ],
@@ -12678,7 +12613,7 @@
                 ]
             },
             {
-                "artist": "Alexey Koney",
+                "artist": "Alexey Konev",
                 "cmc": 4,
                 "colorIdentity": [
                     "W",
@@ -12692,7 +12627,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{W}{B}",
                 "name": "Hazewalker",
-                "number": "145",
+                "number": "143",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -12720,11 +12655,11 @@
                     "Black",
                     "Red"
                 ],
-                "flavor": "\"How could someone put so much hatred in a painting?\"\n\u2014Telia, painter apprentice",
+                "flavor": "\"How could someone put so much hatred in a work of art?\"\n\u2014Telia, Painter Apprentice",
                 "layout": "normal",
                 "manaCost": "{1}{B}{R}",
                 "name": "Hellish Idealon",
-                "number": "146",
+                "number": "144",
                 "power": "4",
                 "printings": [
                     "AYR"
@@ -12734,7 +12669,7 @@
                     "Elemental",
                     "Hound"
                 ],
-                "text": "Menace (This creature can't be blocked except by two or more creatures.)\nWhenever Hellish Idealon dealt combat damage to a player, discard a card.",
+                "text": "Menace\nWhenever Hellish Idealon deals combat damage to a player, discard a card.",
                 "toughness": "3",
                 "type": "Creature \u2014 Elemental Hound",
                 "types": [
@@ -12756,7 +12691,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{W}{B}",
                 "name": "Highborn Muse",
-                "number": "147",
+                "number": "145",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -12786,38 +12721,12 @@
                 "layout": "normal",
                 "manaCost": "{5}{U}{B}",
                 "name": "Illusory Projections",
-                "number": "148",
+                "number": "146",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Mythic Rare",
-                "text": "For each creature card in a graveyard, create a token that's a copy of that creature except it's an Illusion in addition to its other types and it has \"When this creature becomes the target of a spell or ability, sacrifice it.\"",
-                "type": "Sorcery",
-                "types": [
-                    "Sorcery"
-                ]
-            },
-            {
-                "artist": "Anndr Kusuriuri",
-                "cmc": 4,
-                "colorIdentity": [
-                    "U",
-                    "R"
-                ],
-                "colors": [
-                    "Blue",
-                    "Red"
-                ],
-                "flavor": "\"A song isn't written with ink and paper. It's written with emotions.\"\n\u2014Roselyn",
-                "layout": "normal",
-                "manaCost": "{2}{U}{R}",
-                "name": "Improvised Composition",
-                "number": "149",
-                "printings": [
-                    "AYR"
-                ],
-                "rarity": "Uncommon",
-                "text": "Scry 4, then draw two cards, then discard two cards, then exile the top two cards of your library. Until end of turn, you may play cards exiled this way.",
+                "text": "For each creature card in a graveyard, create a token that's a copy of that creature except it's an Illusion in addition to its other types and it has \"Whenever this creature becomes the target of a spell or ability, sacrifice it.\"",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -12837,7 +12746,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{B}{R}",
                 "name": "Infernal Cacophony",
-                "number": "150",
+                "number": "147",
                 "printings": [
                     "AYR"
                 ],
@@ -12863,7 +12772,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{R}{W}",
                 "name": "Intrepid Poet",
-                "number": "151",
+                "number": "148",
                 "power": "1",
                 "printings": [
                     "AYR"
@@ -12877,6 +12786,37 @@
                 "text": "Renown 2 (When this creature deals combat damage to a player, if it isn't renowned, put two +1/+1 counters on it and it becomes renowned.)\nWhenever a creature you control becomes renowned, Intrepid Poet deals 2 damage to target player and you gain 2 life.",
                 "toughness": "3",
                 "type": "Creature \u2014 Human Bard Soldier",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
+                "artist": "Zach Wong",
+                "cmc": 2,
+                "colorIdentity": [
+                    "B",
+                    "G"
+                ],
+                "colors": [
+                    "Black",
+                    "Green"
+                ],
+                "layout": "normal",
+                "manaCost": "{B}{G}",
+                "name": "Kenoram Alchemist",
+                "number": "149",
+                "power": "2",
+                "printings": [
+                    "AYR"
+                ],
+                "rarity": "Uncommon",
+                "subtypes": [
+                    "Satyr",
+                    "Shaman"
+                ],
+                "text": "Whenever another Satyr enters the battlefield under your control, Kenoram Alchemist gets +1/+1 until end of turn.\nWhenever another Satyr you control dies, each opponent loses 1 life.",
+                "toughness": "2",
+                "type": "Creature \u2014 Satyr Shaman",
                 "types": [
                     "Creature"
                 ]
@@ -12896,7 +12836,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{B}{G}",
                 "name": "Kenoram Warlock",
-                "number": "152",
+                "number": "150",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -12928,7 +12868,7 @@
                 "layout": "normal",
                 "manaCost": "{W}{B}",
                 "name": "Lifelike Canvas",
-                "number": "153",
+                "number": "151",
                 "printings": [
                     "AYR"
                 ],
@@ -12953,7 +12893,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{G}{G}{U}{U}",
                 "name": "Lost in Eternity",
-                "number": "154",
+                "number": "152",
                 "printings": [
                     "AYR"
                 ],
@@ -12965,7 +12905,37 @@
                 ]
             },
             {
-                "artist": "Ouargon on deviantart",
+                "artist": "Aquasixio",
+                "cmc": 4,
+                "colorIdentity": [
+                    "W",
+                    "G"
+                ],
+                "colors": [
+                    "White",
+                    "Green"
+                ],
+                "layout": "normal",
+                "manaCost": "{2}{G}{W}",
+                "name": "Lyrehorn Runehart",
+                "number": "153",
+                "power": "4",
+                "printings": [
+                    "AYR"
+                ],
+                "rarity": "Rare",
+                "subtypes": [
+                    "Elk"
+                ],
+                "text": "Vigilance, protection from converted mana cost 2 or less\n{5}{G}{W}, Exile Lyrehorn Runehart from your graveyard: Target creature gets +4/+4, gains vigilance and gains protection from converted mana cost 2 or less until end of turn.",
+                "toughness": "4",
+                "type": "Creature \u2014 Elk",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
+                "artist": "Quargon on Deviantart",
                 "cmc": 4,
                 "colorIdentity": [
                     "B",
@@ -12978,7 +12948,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{B}{G}",
                 "name": "Lyss, Duskwood Seer",
-                "number": "155",
+                "number": "154",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -12991,7 +12961,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "Whenever you sacrifice Lyss or another Satyr creature, you may draw a card.\n{T}, Pay X life, Sacrifice a creature: Search your library for a Satyr card with converted mana cost X, reveal it, and put it into your hand. Then shuffle your library.",
+                "text": "Whenever you sacrifice Lyss or another Satyr creature, you may draw a card.\n{T}, Pay X life, Sacrifice a creature: Search your library for a Satyr card with converted mana cost X or less, reveal it and put it into your hand. Then shuffle your library.",
                 "toughness": "4",
                 "type": "Legendary Creature \u2014 Satyr Shaman",
                 "types": [
@@ -13009,11 +12979,11 @@
                     "Black",
                     "Red"
                 ],
-                "flavor": "\"My next trick is so absolutely amazing, you won't believe your eyes.\"",
+                "flavor": "\"My next trick is so absolutely amazing you won't believe your eyes.\"",
                 "layout": "normal",
                 "manaCost": "{B}{R}",
                 "name": "Mad Jester",
-                "number": "156",
+                "number": "155",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -13026,36 +12996,6 @@
                 "text": "When Mad Jester enters the battlefield, each player discards a card.",
                 "toughness": "1",
                 "type": "Creature \u2014 Human Rogue",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
-                "artist": "Ben Wootien",
-                "cmc": 4,
-                "colorIdentity": [
-                    "W",
-                    "G"
-                ],
-                "colors": [
-                    "White",
-                    "Green"
-                ],
-                "layout": "normal",
-                "manaCost": "{2}{G}{W}",
-                "name": "Majestic Runehart",
-                "number": "157",
-                "power": "4",
-                "printings": [
-                    "AYR"
-                ],
-                "rarity": "Rare",
-                "subtypes": [
-                    "Elk"
-                ],
-                "text": "Vigilance, protection from converted mana cost 3 or less\n{5}{G}{W}, Exile Majestic Runehart from your graveyard: Target creature gets +4/+4, gains vigilance, and gains protection from converted mana cost 3 or less until end of turn.",
-                "toughness": "4",
-                "type": "Creature \u2014 Elk",
                 "types": [
                     "Creature"
                 ]
@@ -13075,7 +13015,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{U}{B}",
                 "name": "Maskborn Muse",
-                "number": "158",
+                "number": "156",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -13105,7 +13045,7 @@
                 "layout": "normal",
                 "manaCost": "{B}{R}",
                 "name": "Masquerade Infiltrator",
-                "number": "159",
+                "number": "157",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -13124,7 +13064,7 @@
             },
             {
                 "artist": "Shen Fei",
-                "cmc": 4,
+                "cmc": 3,
                 "colorIdentity": [
                     "W",
                     "R"
@@ -13134,21 +13074,21 @@
                     "Red"
                 ],
                 "layout": "normal",
-                "manaCost": "{2}{R}{W}",
+                "manaCost": "{1}{R}{W}",
                 "name": "Masterly Maneuver",
-                "number": "160",
+                "number": "158",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Rare",
-                "text": "Choose target creature or player. Until end of turn, if a source would deal damage to an attacking creature you control, it deals that much damage to the chosen creature or player instead.",
+                "text": "Choose target creature or player. Until end of turn, if a source would deal damage to an attacking creature you control, it deals that much damage to the chosen target instead.",
                 "type": "Instant",
                 "types": [
                     "Instant"
                 ]
             },
             {
-                "artist": "Keid-89 on deviantart",
+                "artist": "Brandon Crawford",
                 "cmc": 6,
                 "colorIdentity": [
                     "U",
@@ -13161,7 +13101,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{U}{B}",
                 "name": "Mental Transgression",
-                "number": "161",
+                "number": "159",
                 "printings": [
                     "AYR"
                 ],
@@ -13187,7 +13127,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}{W}",
                 "name": "Mistwalker Idealon",
-                "number": "162",
+                "number": "160",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -13205,7 +13145,7 @@
                 ]
             },
             {
-                "artist": "Juan Carlos Barouet",
+                "artist": "Juan Carlos Barquet",
                 "cmc": 2,
                 "colorIdentity": [
                     "W",
@@ -13218,7 +13158,7 @@
                 "layout": "normal",
                 "manaCost": "{G}{W}",
                 "name": "Moment of Quietude",
-                "number": "163",
+                "number": "161",
                 "printings": [
                     "AYR"
                 ],
@@ -13246,18 +13186,50 @@
                     "White",
                     "Green"
                 ],
+                "flavor": "\"You may be at rest now, dear Eregon, but your soul and your work both live on. I will carry them in my heart forever.\"\n\u2014Roselyn",
                 "layout": "normal",
                 "manaCost": "{4}{G}{W}",
                 "name": "Never Forgotten",
-                "number": "164",
+                "number": "162",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Mythic Rare",
-                "text": "You have no maximum hand size.\nIf a nontoken creature you own would die, return that creture to your hand instead.",
+                "text": "You have no maximum hand size.\nIf a creature card you own would die, return that card to your hand instead.",
                 "type": "Enchantment",
                 "types": [
                     "Enchantment"
+                ]
+            },
+            {
+                "artist": "TSRodriguez",
+                "cmc": 3,
+                "colorIdentity": [
+                    "U",
+                    "R"
+                ],
+                "colors": [
+                    "Blue",
+                    "Red"
+                ],
+                "layout": "normal",
+                "manaCost": "{1}{U}{R}",
+                "name": "Pensive Songwriter",
+                "number": "163",
+                "power": "2",
+                "printings": [
+                    "AYR"
+                ],
+                "rarity": "Mythic Rare",
+                "subtypes": [
+                    "Human",
+                    "Bard"
+                ],
+                "text": "Flash\nWhen Pensive Songwriter enters the battlefield, if you cast it from your hand, you may reveal an instant or sorcery card with converted mana cost 2 or less from your hand. If you do, copy that card and cast the copy without paying its mana cost.",
+                "toughness": "1",
+                "type": "Creature \u2014 Human Bard",
+                "types": [
+                    "Creature"
                 ]
             },
             {
@@ -13274,7 +13246,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}{B}",
                 "name": "Persona Elemental",
-                "number": "165",
+                "number": "164",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -13301,51 +13273,19 @@
                     "Blue",
                     "Red"
                 ],
-                "flavor": "\"It's not enough to make everybody else believe that you experience those emotions. They have to feel them as much as you are.\"",
+                "flavor": "\"It's not enough to make everybody else believe that you experience those emotions. They have to feel them as much as you are.\"\n\u2014Heral, Kirsus Actor",
                 "layout": "normal",
                 "manaCost": "{U}{R}",
                 "name": "Persona Shift",
-                "number": "166",
+                "number": "165",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Uncommon",
-                "text": "Exchange two target creatures' base power until end of turn.",
+                "text": "Exchange two target creatures' base powers until end of turn.",
                 "type": "Instant",
                 "types": [
                     "Instant"
-                ]
-            },
-            {
-                "artist": "elmst000 on deviantart",
-                "cmc": 6,
-                "colorIdentity": [
-                    "B",
-                    "G"
-                ],
-                "colors": [
-                    "Black",
-                    "Green"
-                ],
-                "flavor": "He carries the strength of a whole clan to battle.",
-                "layout": "normal",
-                "manaCost": "{4}{B}{G}",
-                "name": "Possessed Brute",
-                "number": "167",
-                "power": "4",
-                "printings": [
-                    "AYR"
-                ],
-                "rarity": "Uncommon",
-                "subtypes": [
-                    "Satyr",
-                    "Mutant"
-                ],
-                "text": "Trample\nSacrifice a creature: Possessed Brute gets +2/+2 until end of turn. If you sacrificed a Satyr this way, Possessed Brute gets +3/+3 until end of turn instead.",
-                "toughness": "5",
-                "type": "Creature \u2014 Satyr Mutant",
-                "types": [
-                    "Creature"
                 ]
             },
             {
@@ -13363,7 +13303,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{W}{U}",
                 "name": "Pretentious Critic",
-                "number": "168",
+                "number": "166",
                 "power": "2",
                 "printings": [
                     "AYR"
@@ -13373,7 +13313,7 @@
                     "Human",
                     "Advisor"
                 ],
-                "text": "When Pretentious Critic enters the battlefield, choose one \u2014\n\u2022 Search your library for a multicolored card, reveal it, and put it into your hand. Then shuffle your library.\n\u2022 Put target multicolored permanent on the bottom of its owner's library.",
+                "text": "When Pretentious Critic enters the battlefield, choose one \u2014\n\u2022 Search your library for a multicolored card, reveal it, then shuffle your library and put that card on top of it.\n\u2022 Put target multicolored permanent on the bottom of its owner's library.",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Advisor",
                 "types": [
@@ -13391,11 +13331,11 @@
                     "Red",
                     "Green"
                 ],
-                "flavor": "There is no better predator, as a single one can become a whole pack within seconds.",
+                "flavor": "\"The best predators out there are not even from this world.\"\n\u2014Kerard the Hunter",
                 "layout": "normal",
                 "manaCost": "{3}{R}{G}",
                 "name": "Prism-Maned Idealon",
-                "number": "169",
+                "number": "167",
                 "power": "4",
                 "printings": [
                     "AYR"
@@ -13405,7 +13345,7 @@
                     "Elemental",
                     "Beast"
                 ],
-                "text": "Menace\nWhenever Prism-Maned Idealon deas combat damage to a player, create a token that's a copy of it.",
+                "text": "Menace\nWhenever Prism-Maned Idealon deals combat damage to a player, create a token that's a copy of it.",
                 "toughness": "3",
                 "type": "Creature \u2014 Elemental Beast",
                 "types": [
@@ -13426,7 +13366,7 @@
                 "layout": "normal",
                 "manaCost": "{U}{B}",
                 "name": "Psychic Laceration",
-                "number": "170",
+                "number": "168",
                 "printings": [
                     "AYR"
                 ],
@@ -13448,11 +13388,11 @@
                     "Red",
                     "Green"
                 ],
-                "flavor": "Many still explore the dangerous Redrock cliffs, hoping to one day find glory and be the heroes of their own epic stories.",
+                "flavor": "Serana had trouble writing about her character's aggressiveness until she encountered an hydra in Redrock cliffs.",
                 "layout": "normal",
                 "manaCost": "{X}{R}{G}",
                 "name": "Redrock Hydra",
-                "number": "171",
+                "number": "169",
                 "power": "0",
                 "printings": [
                     "AYR"
@@ -13479,11 +13419,10 @@
                     "Red",
                     "Green"
                 ],
-                "flavor": "Serana had trouble writing about her character's aggressiveness until she encountered a giant in Redrock cliffs.",
                 "layout": "normal",
                 "manaCost": "{5}{R}{G}",
                 "name": "Resentful Giant",
-                "number": "172",
+                "number": "170",
                 "power": "5",
                 "printings": [
                     "AYR"
@@ -13496,6 +13435,36 @@
                 "text": "When Resentful Giant enters the battlefield, destroy target artifact, enchantment, or land. Resentful Giant deals damage equal to that permanent's converted mana cost to that permanent's controller.",
                 "toughness": "7",
                 "type": "Creature \u2014 Giant Shaman",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
+                "artist": "Peter Prime",
+                "cmc": 6,
+                "colorIdentity": [
+                    "W",
+                    "G"
+                ],
+                "colors": [
+                    "White",
+                    "Green"
+                ],
+                "layout": "normal",
+                "manaCost": "{4}{G}{W}",
+                "name": "Secluded Lumidar",
+                "number": "171",
+                "power": "6",
+                "printings": [
+                    "AYR"
+                ],
+                "rarity": "Uncommon",
+                "subtypes": [
+                    "Beast"
+                ],
+                "text": "Whenever a player casts a spell, you may return Secluded Lumidar to its owner's hand.",
+                "toughness": "6",
+                "type": "Creature \u2014 Beast",
                 "types": [
                     "Creature"
                 ]
@@ -13515,7 +13484,7 @@
                 "layout": "normal",
                 "manaCost": "{X}{B}{G}",
                 "name": "Seed of Despair",
-                "number": "173",
+                "number": "172",
                 "printings": [
                     "AYR"
                 ],
@@ -13540,7 +13509,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{W}{U}",
                 "name": "Senate of Censures",
-                "number": "174",
+                "number": "173",
                 "power": "3",
                 "printings": [
                     "AYR"
@@ -13553,7 +13522,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "Vigilance\nWhen Senate of Censures enters the battlefield, create a colorless artifact token named Decree with \"As this token enters the battlefield, choose a card name\" and \"Sacrifice this artifact: Counter target spell with the chosen name.\"",
+                "text": "Vigilance\nWhen Senate of Censures enters the battlefield, create a colorless artifact token named Decree with \"As this token enters the battlefield, name a card\" and \"Sacrifice this artifact: Counter target spell with the chosen name.\"",
                 "toughness": "3",
                 "type": "Legendary Creature \u2014 Human Advisor",
                 "types": [
@@ -13574,7 +13543,7 @@
                 "layout": "normal",
                 "manaCost": "{G}{U}",
                 "name": "Shifting Seasons",
-                "number": "175",
+                "number": "174",
                 "printings": [
                     "AYR"
                 ],
@@ -13599,7 +13568,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{B}{R}",
                 "name": "Skiv, Madcap Trickster",
-                "number": "176",
+                "number": "175",
                 "power": "4",
                 "printings": [
                     "AYR"
@@ -13614,6 +13583,37 @@
                 "text": "When Skiv, Madcap Trickster enters the battlefield, target opponent discards a card at random.\nWhenever an opponent discards a creature card, you may put that card onto the battlefield under your control. If you do, that creature gains haste. Sacrifice it at the beginning of your next end step.",
                 "toughness": "3",
                 "type": "Legendary Creature \u2014 Rogue",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
+                "artist": "Jessada Nuy",
+                "cmc": 3,
+                "colorIdentity": [
+                    "W",
+                    "U"
+                ],
+                "colors": [
+                    "White",
+                    "Blue"
+                ],
+                "layout": "normal",
+                "manaCost": "{1}{W}{U}",
+                "name": "Skyblade Aven",
+                "number": "176",
+                "power": "2",
+                "printings": [
+                    "AYR"
+                ],
+                "rarity": "Uncommon",
+                "subtypes": [
+                    "Bird",
+                    "Soldier"
+                ],
+                "text": "Flying\nWhen Skyblade Aven deals combat damage to a player, exile up to one target creature you control, then return it to the battlefield under its owner's control.",
+                "toughness": "3",
+                "type": "Creature \u2014 Bird Soldier",
                 "types": [
                     "Creature"
                 ]
@@ -13650,6 +13650,32 @@
                 ]
             },
             {
+                "artist": "entroz on deviantart",
+                "cmc": 2,
+                "colorIdentity": [
+                    "U",
+                    "R"
+                ],
+                "colors": [
+                    "Blue",
+                    "Red"
+                ],
+                "flavor": "Scholars may argue that \"wings of imagination\" are not a valid method of air travel, but artists fly anyway, without a care in the world for what should be impossible.",
+                "layout": "normal",
+                "manaCost": "{U}{R}",
+                "name": "Soaring Pursuits",
+                "number": "178",
+                "printings": [
+                    "AYR"
+                ],
+                "rarity": "Common",
+                "text": "Target creature gets +2/+1 and gains flying and haste until end of turn.",
+                "type": "Instant",
+                "types": [
+                    "Instant"
+                ]
+            },
+            {
                 "artist": "diphylla on deviantart",
                 "cmc": 3,
                 "colorIdentity": [
@@ -13664,7 +13690,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{W}{B}",
                 "name": "Soul Fracture",
-                "number": "178",
+                "number": "179",
                 "printings": [
                     "AYR"
                 ],
@@ -13689,11 +13715,11 @@
                 "layout": "normal",
                 "manaCost": "{1}{U}{R}",
                 "name": "Sound Blast",
-                "number": "179",
+                "number": "180",
                 "printings": [
                     "AYR"
                 ],
-                "rarity": "Common",
+                "rarity": "Uncommon",
                 "text": "Choose one \u2014\n\u2022 Counter target noncreature spell unless its controller pays {3}.\n\u2022 Sound Blast deals 3 damage to target creature.",
                 "type": "Instant",
                 "types": [
@@ -13714,8 +13740,8 @@
                 "flavor": "The Springveil festival is the most expected event of Aenyr, reassembling thousands of artists wanting to prove their worth to the whole world.",
                 "layout": "normal",
                 "manaCost": "{2}{G}{W}",
-                "name": "Springveil Celebation",
-                "number": "180",
+                "name": "Springveil Celebration",
+                "number": "181",
                 "printings": [
                     "AYR"
                 ],
@@ -13740,7 +13766,7 @@
                 "layout": "normal",
                 "manaCost": "{R}{G}",
                 "name": "Sunfire Choreography",
-                "number": "181",
+                "number": "182",
                 "printings": [
                     "AYR"
                 ],
@@ -13765,7 +13791,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}{R}",
                 "name": "Thought Storm",
-                "number": "182",
+                "number": "183",
                 "printings": [
                     "AYR"
                 ],
@@ -13777,7 +13803,7 @@
                 ]
             },
             {
-                "artist": "ConcOre on deviantart",
+                "artist": "Conc0re on deviantart",
                 "cmc": 2,
                 "colorIdentity": [
                     "W",
@@ -13791,11 +13817,12 @@
                 "layout": "normal",
                 "manaCost": "{R}{W}",
                 "name": "Thundersong Trumpeter",
-                "number": "183",
+                "number": "184",
                 "power": "2",
                 "printings": [
                     "AYR",
-                    "RAV"
+                    "RAV",
+                    "MM3"
                 ],
                 "rarity": "Common",
                 "subtypes": [
@@ -13811,38 +13838,6 @@
                 ]
             },
             {
-                "artist": "Miroslav Petrov",
-                "cmc": 4,
-                "colorIdentity": [
-                    "W",
-                    "G"
-                ],
-                "colors": [
-                    "White",
-                    "Green"
-                ],
-                "flavor": "When Veila's spark ignited, she planeswalked to Aenyr and arrived in a Tilkin village. They sheltered her, healed her and protected her until she was ready to explore the world.",
-                "layout": "normal",
-                "manaCost": "{2}{G}{W}",
-                "name": "Tilkin Sentry",
-                "number": "184",
-                "power": "3",
-                "printings": [
-                    "AYR"
-                ],
-                "rarity": "Uncommon",
-                "subtypes": [
-                    "Fox",
-                    "Warrior"
-                ],
-                "text": "Vigilance\nWhenever an opponent casts a spell during your turn, Tilkin Sentry gets +3/+3 until end of turn.",
-                "toughness": "3",
-                "type": "Creature \u2014 Fox Warrior",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
                 "artist": "Ga\u00e9tan Weltzer",
                 "cmc": 3,
                 "colorIdentity": [
@@ -13853,7 +13848,7 @@
                     "Blue",
                     "Red"
                 ],
-                "flavor": "Eregon frantically painted his every feeling. When he finished, the painting came to life in an outburst of unnatural energy, devastating the town... and Roselyn's heart.",
+                "flavor": "Eregon frantically painted his every feeling. When he finished, his work came to life in an outburst of unnatural energy, devastating the town... and Roselyn's heart.",
                 "layout": "normal",
                 "manaCost": "{1}{U}{R}",
                 "name": "Torrent of Emotions",
@@ -13919,7 +13914,7 @@
                     "AYR"
                 ],
                 "rarity": "Uncommon",
-                "text": "Put two target nonland permanents with the same controller on top of their owners' libraries in any order.",
+                "text": "Put two target nonland permanents with the same controller on top of their owner's library in any order.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -14058,7 +14053,7 @@
                     "White",
                     "Blue"
                 ],
-                "flavor": "\"I didn't realize the word \"no\" could inspire so many great works of art.\"",
+                "flavor": "\"I didn't realize the word 'no' could inspire so many great works of art.\"",
                 "layout": "normal",
                 "manaCost": "{1}{W}{U}",
                 "name": "Words of Denial",
@@ -14169,7 +14164,7 @@
                     "White",
                     "Black"
                 ],
-                "flavor": "Sometimes, the line between perfectionism and relentless ambition can be very thin.",
+                "flavor": "A red rose for conformity, a black one for ambition. Both are needed to enter the High City.",
                 "layout": "normal",
                 "manaCost": "{1}{W/B}",
                 "name": "Boon of the Twin Roses",
@@ -14300,7 +14295,7 @@
                     "Satyr",
                     "Shaman"
                 ],
-                "text": "Whenever another creature dies, if it's the first time a creature died this turn, choose one \u2014\n\u2022 Put a +1/+1 counter on Duskwood Shaman.\n\u2022 Scry 2.\n\u2022 You gain 3 life.",
+                "text": "Whenever another creature dies, if it's the first creature that died this turn, choose one \u2014\n\u2022 Put a +1/+1 counter on Duskwood Shaman.\n\u2022 Scry 2.\n\u2022 You gain 3 life.",
                 "toughness": "1",
                 "type": "Creature \u2014 Satyr Shaman",
                 "types": [
@@ -14403,7 +14398,7 @@
                     "AYR"
                 ],
                 "rarity": "Rare",
-                "text": "When Luck of the Draw enters the battlefield, choose three nonland card names.\nWhenever you draw a card, reveal it. If it has one of the chosen names, put a luck counter on Luck of the Draw. Then, if Luck of the Draw has five or more luck counters on it, you win the game.",
+                "text": "When Luck of the Draw enters the battlefield, name three nonland cards.\nWhenever you draw a card, you may reveal it. If a named card is revealed this way, put a luck counter on Luck of the Draw. Then, if Luck of the Draw has five or more luck counters on it, you win the game.",
                 "type": "Enchantment",
                 "types": [
                     "Enchantment"
@@ -14411,7 +14406,7 @@
             },
             {
                 "artist": "mcilustracion on deviantart",
-                "cmc": 2,
+                "cmc": 1,
                 "colorIdentity": [
                     "B",
                     "R"
@@ -14422,14 +14417,14 @@
                 ],
                 "flavor": "It's the first and last thing you hear when Skiv is near.",
                 "layout": "normal",
-                "manaCost": "{B/R}{B/R}",
+                "manaCost": "{B/R}",
                 "name": "Madcap Laughter",
                 "number": "205",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Rare",
-                "text": "Creatures you control get +2/+0 and gain haste until end of turn.\nYou may cast Madcap Laughter from your graveyard by discarding a card in addition to paying its other costs.",
+                "text": "Target creature gets +2/+0 and gains haste until end of turn.\nYou may cast Madcap Laughter from your graveyard by discarding a nonland card in addition to paying its other costs.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -14459,7 +14454,7 @@
                 "subtypes": [
                     "Spirit"
                 ],
-                "text": "Whenever Manifestation of Vitality enters the battlefield or attacks, you gain 3 life.",
+                "text": "When Manifestation of Vitality enters the battlefield or attacks, you gain 3 life.",
                 "toughness": "1",
                 "type": "Creature \u2014 Spirit",
                 "types": [
@@ -14595,7 +14590,7 @@
                     "Blue",
                     "Black"
                 ],
-                "flavor": "Its voice echo through the auditorium for days after the play is over.",
+                "flavor": "Its voice echoes through the auditorium for days after the play is over.",
                 "layout": "normal",
                 "manaCost": "{3}{U/B}",
                 "name": "Opera Ghost",
@@ -14740,7 +14735,7 @@
                     "White",
                     "Red"
                 ],
-                "flavor": "You might try to follow one of her choreographies as closely as possible, but she will always be two steps ahead and behind you, at all times.",
+                "flavor": "One might try to follow one of her choreographies as closely as possible, but she will always be two steps ahead and behind them at all times.",
                 "layout": "normal",
                 "manaCost": "{R/W}",
                 "name": "Ribbon Whirler",
@@ -14859,7 +14854,7 @@
                     "White",
                     "Blue"
                 ],
-                "flavor": "His sword cuts through ideas and flesh as if they were the same.",
+                "flavor": "His sword cuts through ideas as easily as it pierces flesh.",
                 "layout": "normal",
                 "manaCost": "{1}{W/U}",
                 "name": "Spellslicer Duelist",
@@ -14987,7 +14982,7 @@
                 "cmc": 7,
                 "colorIdentity": [],
                 "colors": [],
-                "flavor": "Delsani's marble guardians are made by the most talented sculptors of Aenyr, enchanted so that they are immune to all forms of art.",
+                "flavor": "Delsani's marble guardians are enchanted so that they are insensitive to any form of art, which makes them the most efficient protectors of the plane.",
                 "layout": "normal",
                 "manaCost": "{7}",
                 "name": "Delsanian Sentinel",
@@ -15027,7 +15022,7 @@
                 "subtypes": [
                     "Equipment"
                 ],
-                "text": "Equipped creature gets +1/+0, has first strike, and has \u201cWhenever this creature attacks, you may pay {R}{W}. If you do, target creature defending player controls untaps and blocks it this turn if able.\u201d\nEquip {2}",
+                "text": "Equipped creature gets +1/+0, has first strike, and has \"Whenever this creature attacks, you may pay {R}{W}. If you do, target creature defending player controls untaps and blocks it this turn if able.\"\nEquip {2}",
                 "type": "Artifact \u2014 Equipment",
                 "types": [
                     "Artifact"
@@ -15070,7 +15065,7 @@
                     "AYR"
                 ],
                 "rarity": "Uncommon",
-                "text": "{3}, {T}: Exile target card from a graveyard. Create a 1/1 white Spirit creature token with flying.",
+                "text": "{3}, {T}: Exile target card from a graveyard. If you do, create a 1/1 white Spirit creature token with flying.",
                 "type": "Artifact",
                 "types": [
                     "Artifact"
@@ -15095,7 +15090,7 @@
                     "Golem"
                 ],
                 "toughness": "3",
-                "type": "Artifact Creature \u2014 Golem",
+                "type": "Artifact Creature  \u2014 Golem",
                 "types": [
                     "Artifact",
                     "Creature"
@@ -15133,6 +15128,7 @@
                 "cmc": 2,
                 "colorIdentity": [],
                 "colors": [],
+                "flavor": "\"Eregon, like all good painters, always kept one at his side.\"\n\u2014Roselyn",
                 "layout": "normal",
                 "manaCost": "{2}",
                 "name": "Painter's Servant",
@@ -15365,13 +15361,13 @@
                 "colorIdentity": [],
                 "colors": [],
                 "layout": "normal",
-                "name": "Heart of Creativity",
+                "name": "Heart of Inspiration",
                 "number": "242",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Rare",
-                "text": "{T}: Add one mana of any color to your mana pool.\nWhenever you tap Heart of Creativity for mana, each opponent may scry 1.",
+                "text": "{T}: Add one mana of any color to your mana pool.\nWhenever you tap Heart of Inspiration for mana, each opponent may scry 1.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -15430,7 +15426,7 @@
                     "G"
                 ],
                 "colors": [],
-                "flavor": "Its first eruption created the colors of the world.",
+                "flavor": "Its first and only eruption created the colors of the world.",
                 "layout": "normal",
                 "name": "Mount Chromaziel",
                 "number": "245",
@@ -15441,7 +15437,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "{T}, Reveal a land card from your hand: Add to your mana pool one mana of any type that the revealed card could produce.\n{W}{U}{B}{R}{G}, {T}: Search your library for a multicolored card, reveal it, and put it into your hand. Then shuffle your library.",
+                "text": "{T}, Reveal a land card from your hand: Add to your mana pool one mana of any type that the revealed land could produce.\n{W}{U}{B}{R}{G}, {T}: Search your library for a multicolored card, reveal it, and put it into your hand. Then shuffle your library.",
                 "type": "Legendary Land",
                 "types": [
                     "Land"
@@ -15519,13 +15515,13 @@
                 ],
                 "colors": [],
                 "layout": "normal",
-                "name": "Twisted Landscape",
+                "name": "Twisted Woodlands",
                 "number": "249",
                 "printings": [
                     "AYR"
                 ],
                 "rarity": "Common",
-                "text": "When Twisted Landscape enters the battlefield, it doesn't untap during your next untap step.\n{T}: Add {B} or {G} to your mana pool.",
+                "text": "When Twisted Woodlands enters the battlefield, it doesn't untap during your next untap step.\n{T}: Add {B} or {G} to your mana pool.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -15638,10 +15634,11 @@
                     "KLD",
                     "C16",
                     "PCA",
-                    "DMS",
-                    "IMG",
+                    "AKH",
                     "ANK",
-                    "LDO",
+                    "ANK",
+                    "ANK",
+                    "DMS",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -15740,6 +15737,7 @@
                     "M13",
                     "DDJ",
                     "RTR",
+                    "DDS",
                     "M14",
                     "THS",
                     "C13",
@@ -15761,10 +15759,11 @@
                     "KLD",
                     "C16",
                     "PCA",
-                    "DMS",
-                    "IMG",
+                    "AKH",
                     "ANK",
-                    "LDO",
+                    "ANK",
+                    "ANK",
+                    "DMS",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -15890,10 +15889,11 @@
                     "KLD",
                     "C16",
                     "PCA",
-                    "DMS",
-                    "IMG",
+                    "AKH",
                     "ANK",
-                    "LDO",
+                    "ANK",
+                    "ANK",
+                    "DMS",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -15998,6 +15998,7 @@
                     "DDJ",
                     "RTR",
                     "DDK",
+                    "DDS",
                     "M14",
                     "DDL",
                     "THS",
@@ -16019,10 +16020,11 @@
                     "KLD",
                     "C16",
                     "PCA",
-                    "DMS",
-                    "IMG",
+                    "AKH",
                     "ANK",
-                    "LDO",
+                    "ANK",
+                    "ANK",
+                    "DMS",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -16046,128 +16048,8 @@
                 ],
                 "colors": [],
                 "layout": "normal",
-                "legalities": [
-                    {
-                        "format": "Battle for Zendikar Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Commander",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Ice Age Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Innistrad Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Invasion Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Kaladesh Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Kamigawa Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Khans of Tarkir Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Legacy",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Lorwyn-Shadowmoor Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Masques Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Mirage Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Mirrodin Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Modern",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Odyssey Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Onslaught Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Ravnica Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Return to Ravnica Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Scars of Mirrodin Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Shadows over Innistrad Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Shards of Alara Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Standard",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Tempest Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Theros Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Time Spiral Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Un-Sets",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Urza Block",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Vintage",
-                        "legality": "Legal"
-                    },
-                    {
-                        "format": "Zendikar Block",
-                        "legality": "Legal"
-                    }
-                ],
                 "name": "Forest",
                 "number": "254",
-                "originalText": "G",
-                "originalType": "Basic Land \u2014 Forest",
                 "printings": [
                     "AYR",
                     "LEA",
@@ -16243,6 +16125,7 @@
                     "M13",
                     "DDJ",
                     "RTR",
+                    "DDS",
                     "M14",
                     "DDL",
                     "THS",
@@ -16266,10 +16149,11 @@
                     "KLD",
                     "C16",
                     "PCA",
-                    "DMS",
-                    "IMG",
+                    "AKH",
                     "ANK",
-                    "LDO",
+                    "ANK",
+                    "ANK",
+                    "DMS",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
