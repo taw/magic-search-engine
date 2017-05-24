@@ -114,6 +114,9 @@ BanListChangeDates = {
   # EDH, can match set releases
   "feb 2014" => "2014-02-07",
   "sep 2014" => "2014-09-26",
+
+  # MTGO Commander random banlist
+  "may 2017" => "2017-05-24",
 }
 
 DynamicBanListData = {
@@ -173,6 +176,9 @@ DynamicBanListData = {
     "Painter's Servant" => "banned",
     "Sensei's Divining Top" => "banned",
     "Trade Secrets" => "banned",
+    "Dig Through Time" => { "may 2017" => "banned"},
+    "Strip Mine" => { "may 2017" => "banned"},
+    "Treasure Cruise" => { "may 2017" => "banned"},
   },
 
   "modern" => {
