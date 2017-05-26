@@ -16,6 +16,10 @@ describe "Color Expr Test" do
     assert_search_equal "c<=gr", "c<=r or c<=g or c=gr"
   end
 
+  it "colorless" do
+    assert_search_equal "c=c", "c<w"
+  end
+
   it "ci - one color" do
     assert_search_equal "ci<=uw", "ci:uw"
   end
@@ -28,5 +32,16 @@ describe "Color Expr Test" do
   it "ci other operators" do
     assert_search_equal "ci>=gr", "ci>r ci>g"
     assert_search_equal "ci<=gr", "ci<=r or ci<=g or ci=gr"
+  end
+
+  it "colorless" do
+    assert_search_equal "ci=c", "ci<w"
+  end
+
+  it "is case insensitive" do
+    assert_search_equal "ci=wur", "ci=WUR"
+    assert_search_equal "c=wur", "c=WUR"
+    assert_search_equal "CI=wur", "ci=WUR"
+    assert_search_equal "C=wur", "c=WUR"
   end
 end
