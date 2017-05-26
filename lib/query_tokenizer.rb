@@ -64,6 +64,8 @@ class QueryTokenizer
         tokens << [:test, ConditionRarity.new(s[1])]
       elsif s.scan(/(pow|loy|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow\b|tou\b|cmc\b|loy|loyalty\b|year\b|[²\d\.\-\*\+½]+)/i)
         tokens << [:test, ConditionExpr.new(s[1].downcase, s[2], s[3].downcase)]
+      elsif s.scan(/(c|ci)\s*(>=|>|<=|<|=)\s*([wubrgc]*)/)
+        tokens << [:test, ConditionColorExpr.new(s[1].downcase, s[2], s[3].downcase)]
       elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})*)/i)
         op = s[1]
         op = "=" if op == ":"
