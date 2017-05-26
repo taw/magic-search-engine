@@ -45,6 +45,17 @@
       = search_help %Q[b:"return to ravnica"], %Q[cards from "Return to Ravnica" block]
       = search_help "b:isd,soi", "cards from Innistrad and Shadow of Innistrad blocks"
 
+    %h4 Search by color expression
+    %ul
+      = search_help "c=w", "cards which are exactly white"
+      = search_help "c=gr", "cards which are exactly green and red"
+      = search_help "c>=gr", "cards which are at least green and red"
+      = search_help "c<=gr", "cards which are at most green and red"
+      = search_help "ci=w", "cards whose identity is exactly white"
+      = search_help "ci=gr", "cards whose identity is exactly green and red"
+      = search_help "ci>=gr", "cards whose identity is at least green and red"
+      = search_help "ci<=gr", "cards whose identity is at most green and red"
+
     %h4 Search by color
     %ul
       = search_help "c:w", "white cards (possibly also other colors)"
