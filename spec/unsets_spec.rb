@@ -121,7 +121,7 @@ describe "Unsets" do
     end
   end
 
-  it "name seacch and weird card names" do
+  it "name search and weird card names" do
     db.cards.values.each do |card|
       # Sadly "Not" doesn't work because it's magic keyword
       # Maybe that's worth fixing
