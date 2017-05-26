@@ -5,7 +5,7 @@ class QueryTokenizer
     tokens = []
     s = StringScanner.new(str)
     until s.eos?
-      if s.scan(/[\s,]+/)
+      if s.scan(/[\s,]+/i)
         # pass
       elsif s.scan(/and\b/i)
         # and is default, skip it
@@ -16,11 +16,11 @@ class QueryTokenizer
         tokens << [:test, ConditionWord.new(s[1])]
       elsif s.scan(%r[[/&]+]i)
         tokens << [:slash_slash]
-      elsif s.scan(/-/)
+      elsif s.scan(/-/i)
         tokens << [:not]
-      elsif s.scan(/\(/)
+      elsif s.scan(/\(/i)
         tokens << [:open]
-      elsif s.scan(/\)/)
+      elsif s.scan(/\)/i)
         tokens << [:close]
       elsif s.scan(/t:(?:"(.*?)"|([’'\-\u2212\w\*]+))/i)
         tokens << [:test, ConditionTypes.new(s[1] || s[2])]
@@ -32,7 +32,7 @@ class QueryTokenizer
         tokens << [:test, ConditionArtist.new(s[1] || s[2])]
       elsif s.scan(/(cn|tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct):(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionForeign.new(s[1], s[2] || s[3])]
-      elsif s.scan(/(banned|restricted|legal):(?:"(.*?)"|([\w\-]+))/)
+      elsif s.scan(/(banned|restricted|legal):(?:"(.*?)"|([\w\-]+))/i)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(s[2] || s[3])]
       elsif s.scan(/e:(?:"(.*?)"|(\w+))/i)
@@ -57,14 +57,14 @@ class QueryTokenizer
         tokens << [:test, ConditionColorIndicator.new(s[1])]
       elsif s.scan(/c!([wubrgcml]+)/i)
         tokens << [:test, ConditionColorsExclusive.new(s[1])]
-      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|(\w+))/)
+      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|(\w+))/i)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(s[2], s[3] || s[4])]
-      elsif s.scan(/r:(\w+)/)
+      elsif s.scan(/r:(\w+)/i)
         tokens << [:test, ConditionRarity.new(s[1])]
       elsif s.scan(/(pow|loy|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow\b|tou\b|cmc\b|loy|loyalty\b|year\b|[²\d\.\-\*\+½]+)/i)
         tokens << [:test, ConditionExpr.new(s[1].downcase, s[2], s[3].downcase)]
-      elsif s.scan(/(c|ci)\s*(>=|>|<=|<|=)\s*([wubrgc]*)/)
+      elsif s.scan(/(c|ci)\s*(>=|>|<=|<|=)\s*([wubrgc]*)/i)
         tokens << [:test, ConditionColorExpr.new(s[1].downcase, s[2], s[3].downcase)]
       elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})*)/i)
         op = s[1]
@@ -80,9 +80,9 @@ class QueryTokenizer
       elsif s.scan(/(is|not):(split|flip|dfc|meld|aftermath)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionLayout.new(s[2])]
-      elsif s.scan(/layout:(normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld|aftermath)/)
+      elsif s.scan(/layout:(normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld|aftermath)/i)
         tokens << [:test, ConditionLayout.new(s[1])]
-      elsif s.scan(/(is|frame|not):(old|new|future)\b/)
+      elsif s.scan(/(is|frame|not):(old|new|future)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrame.new(s[2].downcase)]
       elsif s.scan(/(is|not):(black-bordered|silver-bordered|white-bordered)\b/i)
@@ -90,26 +90,26 @@ class QueryTokenizer
         tokens << [:test, ConditionBorder.new(s[2].sub("-bordered", "").downcase)]
       elsif s.scan(/border:(black|silver|white)\b/i)
         tokens << [:test, ConditionBorder.new(s[1].downcase)]
-      elsif s.scan(/sort:(\w+)/)
+      elsif s.scan(/sort:(\w+)/i)
         tokens << [:metadata, {sort: s[1].downcase}]
-      elsif s.scan(/view:(\w+)/)
+      elsif s.scan(/view:(\w+)/i)
         tokens << [:metadata, {view: s[1].downcase}]
-      elsif s.scan(/\+\+/)
+      elsif s.scan(/\+\+/i)
         tokens << [:metadata, {ungrouped: true}]
       elsif s.scan(/time:(?:"(.*?)"|([\.\w]+))/i)
         # Parsing is downstream responsibility
         tokens << [:time, parse_time(s[1] || s[2])]
-      elsif s.scan(/"(.*?)"/)
+      elsif s.scan(/"(.*?)"/i)
         tokens << [:test, ConditionWord.new(s[1])]
-      elsif s.scan(/other:/)
+      elsif s.scan(/other:/i)
         tokens << [:other]
-      elsif s.scan(/part:/)
+      elsif s.scan(/part:/i)
         tokens << [:part]
-      elsif s.scan(/related:/)
+      elsif s.scan(/related:/i)
         tokens << [:related]
-      elsif s.scan(/alt:/)
+      elsif s.scan(/alt:/i)
         tokens << [:alt]
-      elsif s.scan(/not\b/)
+      elsif s.scan(/not\b/i)
         tokens << [:not]
       elsif s.scan(/([^-!<>=:"\s&\/()][^<>="\s&\/()]*)(?=$|[\s&\/()])/i)
         # Veil-Cursed and similar silliness
@@ -125,7 +125,7 @@ class QueryTokenizer
         end
       else
         warn "Query parse error: #{str}"
-        s.scan(/(\S+)/)
+        s.scan(/(\S+)/i)
         tokens << [:test, ConditionWord.new(s[1])]
       end
     end

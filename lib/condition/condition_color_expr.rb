@@ -1,8 +1,8 @@
 class ConditionColorExpr < ConditionSimple
   def initialize(a, op, b)
-    @a = a
+    @a = a.downcase
     @op = op
-    @b = b.chars.to_set
+    @b = (b.downcase.chars & %W[w u b r g]).to_set
   end
 
   def match?(card)
