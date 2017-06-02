@@ -20,6 +20,6 @@ class ConditionIsFetchland < Condition
   end
 
   def to_s
-    "is:shockland"
+    "is:fetchland"
   end
 end
