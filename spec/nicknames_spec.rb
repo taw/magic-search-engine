@@ -1,6 +1,10 @@
 describe "Card nicknames" do
   include_context "db"
 
+  def cards_matching(&block)
+    db.cards.values.select(&block).map(&:name)
+  end
+
   # The name is unique
   it "is:shockland" do
     assert_search_results "is:shockland",
@@ -14,6 +18,7 @@ describe "Card nicknames" do
       "Stomping Ground",
       "Temple Garden",
       "Watery Grave"
+    assert_search_equal "is:shockland", %Q[o:"As ~ enters the battlefield, you may pay 2 life. If you don't, ~ enters the battlefield tapped."]
   end
 
   # The name is unique-ish
@@ -31,6 +36,9 @@ describe "Card nicknames" do
       "Polluted Delta",
       "Windswept Heath",
       "Wooded Foothills"
+    assert_search_results "is:fetchland",
+      *cards_matching{|c|
+        c.text =~ %r[\{T\}, Pay 1 life, Sacrifice #{c.name}: Search your library for an? \S+ or \S+ card and put it onto the battlefield. Then shuffle your library.] }
   end
 
   # The name is also used for all lands that produce 2 mana colors
@@ -46,6 +54,12 @@ describe "Card nicknames" do
       "Tundra",
       "Underground Sea",
       "Volcanic Island"
+      assert_search_results "is:dual",
+        *cards_matching{|c|
+          c.types.include?("land") &&
+          !c.types.include?("basic") &&
+          c.types.size == 3 &&
+          c.text == "" }
   end
 
   # The name is unique
@@ -61,6 +75,9 @@ describe "Card nicknames" do
       "Rakdos Carnarium",
       "Selesnya Sanctuary",
       "Simic Growth Chamber"
+      assert_search_results "is:bounceland",
+        *cards_matching{|c|
+          c.text =~ %r[#{c.name} enters the battlefield tapped.\nWhen #{c.name} enters the battlefield, return a land you control to its owner's hand.\n\{T\}: Add \{.\}\{.\} to your mana pool.]}
   end
 
   # The name is unique
@@ -76,6 +93,10 @@ describe "Card nicknames" do
       "Razorverge Thicket",
       "Seachrome Coast",
       "Spirebluff Canal"
+      assert_search_results "is:fastland",
+        *cards_matching{|c|
+          c.text =~ %r[#{c.name} enters the battlefield tapped unless you control two or fewer other lands.\n\{T\}: Add \{.\} or \{.\} to your mana pool.]
+        }
   end
 
   # The name is unique
@@ -100,6 +121,9 @@ describe "Card nicknames" do
       "Thornwood Falls",
       "Tranquil Cove",
       "Wind-Scarred Crag"
+    assert_search_results "is:gainland",
+      *cards_matching{|c|
+        c.text =~ %r[#{c.name} enters the battlefield tapped.\nWhen #{c.name} enters the battlefield, you gain 1 life.\n\{T\}: Add \{.\} or \{.\} to your mana pool.]}
   end
 
   # The name is unique
@@ -115,6 +139,9 @@ describe "Card nicknames" do
       "Sulfur Falls",
       "Sunpetal Grove",
       "Woodland Cemetery"
+    assert_search_results "is:checkland",
+      *cards_matching{|c|
+        c.text =~ %r[#{c.name} enters the battlefield tapped unless you control an? \S+ or an? \S+.\n\{T\}: Add \{.\} or \{.\} to your mana pool.]}
   end
 
   # This is a bit dubious
@@ -138,6 +165,11 @@ describe "Card nicknames" do
       "Twilight Mire",
       "Rugged Prairie",
       "Flooded Grove"
+    assert_search_results "is:filterland",
+      *cards_matching{|c|
+        c.types.include?("land") &&
+        c.text =~ %r[\{\S+\}, \{T\}: Add \{.\}\{.\}(?= |,).* to your mana pool.]
+      }
   end
 
   # The name is unique
@@ -167,7 +199,6 @@ describe "Card nicknames" do
       "Svogthos, the Restless Tomb",
       "Treetop Village",
       "Wandering Fumarole"
-
     assert_search_equal "is:manland", "t:land o:becomes o:creature"
   end
 end
