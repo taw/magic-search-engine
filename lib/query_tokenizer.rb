@@ -3,6 +3,7 @@ require "strscan"
 class QueryTokenizer
   def tokenize(str)
     tokens = []
+    warnings = []
     s = StringScanner.new(str)
     until s.eos?
       if s.scan(/[\s,]+/i)
@@ -111,7 +112,7 @@ class QueryTokenizer
         tokens << [:alt]
       elsif s.scan(/not\b/i)
         tokens << [:not]
-      elsif s.scan(/([^-!<>=:"\s&\/()][^<>="\s&\/()]*)(?=$|[\s&\/()])/i)
+      elsif s.scan(/([^-!<>=:"\s&\/()][^<>=:"\s&\/()]*)(?=$|[\s&\/()])/i)
         # Veil-Cursed and similar silliness
         words = s[1].split("-")
         if words.size > 1
@@ -124,12 +125,13 @@ class QueryTokenizer
           tokens << [:test, ConditionWord.new(s[1])]
         end
       else
-        warn "Query parse error: #{str}"
+        # layout:fail, protection: etc.
         s.scan(/(\S+)/i)
+        warnings << "Unrecognized token: #{s[1]}"
         tokens << [:test, ConditionWord.new(s[1])]
       end
     end
-    tokens
+    [tokens, warnings]
   end
 
 private

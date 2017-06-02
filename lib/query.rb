@@ -10,9 +10,11 @@ class Date
 end
 
 class Query
+  attr_reader :warnings
+
   def initialize(query_string)
     @query_string = query_string
-    @cond, @metadata = QueryParser.new.parse(query_string)
+    @cond, @metadata, @warnings = QueryParser.new.parse(query_string)
     # puts "Parse #{query_string} -> #{@cond}"
   end
 

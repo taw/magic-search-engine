@@ -30,10 +30,10 @@ class QueryParser
       end
       [cond, metadata]
     else
-      @tokens = QueryTokenizer.new.tokenize(str)
+      @tokens, @warnings = QueryTokenizer.new.tokenize(str)
       @metadata = {}
       query = parse_query
-      [query, @metadata]
+      [query, @metadata, @warnings]
     end
   end
 
@@ -146,11 +146,11 @@ private
       parse_cond
     when :time
       # Quietly eat it, for now
-      warn "Multiple time: clauses in same subquery" if @time
+      @warnings << "Multiple time: clauses in same subquery" if @time
       @time = @tokens.shift[1]
       parse_cond
     else
-      warn "Unknown token type #{@tokens[0]}"
+      @warnings << "Unknown token type #{@tokens[0]}"
     end
   end
 end

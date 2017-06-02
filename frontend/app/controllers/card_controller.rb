@@ -50,7 +50,7 @@ class CardController < ApplicationController
     @title = @search
     query = Query.new(@search)
     results = $CardDatabase.search(query)
-    @warnings = results.warnings
+    @warnings = query.warnings.to_set + results.warnings
     @cards = results.card_groups.map do |printings|
       choose_best_printing(printings)
     end
