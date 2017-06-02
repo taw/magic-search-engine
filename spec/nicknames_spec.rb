@@ -139,4 +139,35 @@ describe "Card nicknames" do
       "Rugged Prairie",
       "Flooded Grove"
   end
+
+  # The name is unique
+  it "is:manland" do
+    assert_search_results "is:manland",
+      "Blinkmoth Nexus",
+      "Celestial Colonnade",
+      "Creeping Tar Pit",
+      "Dread Statuary",
+      "Faerie Conclave",
+      "Forbidding Watchtower",
+      "Ghitu Encampment",
+      "Hissing Quagmire",
+      "Inkmoth Nexus",
+      "Lavaclaw Reaches",
+      "Lumbering Falls",
+      "Mishra's Factory",
+      "Mutavault",
+      "Nantuko Monastery",
+      "Needle Spires",
+      "Raging Ravine",
+      "Shambling Vent",
+      "Sorrow's Path",
+      "Spawning Pool",
+      "Stalking Stones",
+      "Stirring Wildwood",
+      "Svogthos, the Restless Tomb",
+      "Treetop Village",
+      "Wandering Fumarole"
+
+    assert_search_equal "is:manland", "t:land o:becomes o:creature"
+  end
 end
