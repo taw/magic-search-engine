@@ -205,6 +205,14 @@
       = search_help "not:reprint", "first printings of cards"
       = search_help "is:reprint", "reprints of cards"
 
+    %h4 Search by card nickname
+    %div A few common nicknames are supported as queries.
+    %ul
+      = search_help "is:shockland", "all 10 shocklands"
+      = search_help "is:shockland t:island t:mountain", "blue-red shockland"
+      = search_help "is:fetchland", "all 10 fetchlands"
+      = search_help "is:fetchland o:island", "all fetchlands which can fetch the island"
+
     %h4 Search by reserved list status
     %ul
       = search_help "is:reserved", "cards on reserved list"
