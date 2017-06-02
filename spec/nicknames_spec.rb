@@ -201,4 +201,34 @@ describe "Card nicknames" do
       "Wandering Fumarole"
     assert_search_equal "is:manland", "t:land o:becomes o:creature"
   end
+
+  # There are other lands with scry (New Benalia, Soldevi Excavations),
+  # but this name is used only for these
+  it "is:scryland" do
+    assert_search_results "is:scryland",
+      "Temple of Abandon",
+      "Temple of Deceit",
+      "Temple of Enlightenment",
+      "Temple of Epiphany",
+      "Temple of Malady",
+      "Temple of Malice",
+      "Temple of Mystery",
+      "Temple of Plenty",
+      "Temple of Silence",
+      "Temple of Triumph"
+    assert_search_equal "is:scryland",
+      'o:"~ enters the battlefield tapped." o:"When ~ enters the battlefield, scry 1." o:"} or {"'
+  end
+
+  # The name is unique
+  it "is:battleland" do
+    assert_search_results "is:battleland",
+      "Prairie Stream",
+      "Sunken Hollow",
+      "Smoldering Marsh",
+      "Cinder Glade",
+      "Canopy Vista"
+    assert_search_equal "is:battleland",
+      'o:"~ enters the battlefield tapped unless you control two or more basic lands."'
+  end
 end
