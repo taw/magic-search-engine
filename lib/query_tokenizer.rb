@@ -114,16 +114,7 @@ class QueryTokenizer
         tokens << [:not]
       elsif s.scan(/([^-!<>=:"\s&\/()][^<>=:"\s&\/()]*)(?=$|[\s&\/()])/i)
         # Veil-Cursed and similar silliness
-        words = s[1].split("-")
-        if words.size > 1
-          tokens << [:open]
-          words.each do |w|
-            tokens << [:test, ConditionWord.new(w)]
-          end
-          tokens << [:close]
-        else
-          tokens << [:test, ConditionWord.new(s[1])]
-        end
+        tokens << [:test, ConditionWord.new(s[1].gsub("-", " "))]
       else
         # layout:fail, protection: etc.
         s.scan(/(\S+)/i)
