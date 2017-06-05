@@ -28,7 +28,7 @@ class QueryParser
       else
         cond = ConditionExact.new(name)
       end
-      [cond, metadata]
+      [cond, metadata, []]
     else
       @tokens, @warnings = QueryTokenizer.new.tokenize(str)
       @metadata = {}
