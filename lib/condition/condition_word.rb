@@ -1,11 +1,11 @@
 class ConditionWord < ConditionSimple
   def initialize(word)
-    @word = normalize_name(word)
+    @word = normalize_name(word).tr("-", " ").sub(/,\z/, "")
     @stem_word = @word.gsub(/s\b/, "")
   end
 
   def match?(card)
-    name = card.stemmed_name
+    name = card.stemmed_name.tr("-", " ")
     return true if name.include?(@stem_word)
     @suggestions.each do |alt, alt_stem|
       if name.include?(alt_stem)
@@ -25,7 +25,7 @@ class ConditionWord < ConditionSimple
     if key == :fuzzy
       if value
         @suggestions = value.suggest_spelling(@word).flat_map do |alt|
-          [[alt, alt], [alt, alt.sub(/s\z/, "")]]
+          [[alt, alt], [alt, alt.gsub(/s\b/, "")]].uniq
         end
       else
         @suggestions = []

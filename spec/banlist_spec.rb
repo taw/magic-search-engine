@@ -6,6 +6,11 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2017" do
+    assert_banlist_changes "May 2017",
+      "mtgo commander banned", "Dig Through Time",
+      "mtgo commander banned", "Strip Mine",
+      "mtgo commander banned", "Treasure Cruise"
+
     assert_banlist_changes "April 2017",
       "legacy banned", "Sensei's Divining Top",
       "vintage restricted", "Gitaxian Probe",

@@ -51,6 +51,17 @@
       = search_help %Q[b:"return to ravnica"], %Q[cards from "Return to Ravnica" block]
       = search_help "b:isd,soi", "cards from Innistrad and Shadow of Innistrad blocks"
 
+    %h4 Search by color expression
+    %ul
+      = search_help "c=w", "cards which are exactly white"
+      = search_help "c=gr", "cards which are exactly green and red"
+      = search_help "c>=gr", "cards which are at least green and red"
+      = search_help "c<=gr", "cards which are at most green and red"
+      = search_help "ci=w", "cards whose identity is exactly white"
+      = search_help "ci=gr", "cards whose identity is exactly green and red"
+      = search_help "ci>=gr", "cards whose identity is at least green and red"
+      = search_help "ci<=gr", "cards whose identity is at most green and red"
+
     %h4 Search by color
     %ul
       = search_help "c:w", "white cards (possibly also other colors)"
@@ -59,7 +70,7 @@
       = search_help "c:l", "colorless land cards"
       = search_help "c:m", "multicolored cards"
       = search_help "c:wu", "blue or white cards"
-      = search_help "c!wu", "blue or white cards (but other colors)"
+      = search_help "c!wu", "blue or white cards (but no other colors)"
 
     %h4 Search by color identity
     %ul
@@ -204,6 +215,32 @@
       = search_help "is:digital", "MTGO only"
       = search_help "not:reprint", "first printings of cards"
       = search_help "is:reprint", "reprints of cards"
+
+    %h4 Search by card nickname
+    %div A few common nicknames are supported as queries.
+    %ul
+      = search_help "is:shockland", "all 10 shocklands"
+      = search_help "is:shockland t:island t:mountain", "blue-red shockland"
+      = search_help "is:fetchland", "all 10 fetchlands"
+      = search_help "is:fetchland o:island", "all fetchlands which can fetch the island"
+      = search_help "is:dual", "all 10 original duals"
+      = search_help "is:dual t:swamp t:forest", "black-green dual"
+      = search_help "is:bounceland", "all 10 bounceland"
+      = search_help "is:bounceland o:{r} o:{u}", "red-blue bounceland"
+      = search_help "is:gainland", "all 15 gainlands"
+      = search_help "is:gainland o:{w}", "all white gainlands"
+      = search_help "is:fastland", "all 10 fastlands"
+      = search_help "is:fastland o:{r} o:{g}", "red-green fastland"
+      = search_help "is:checkland", "all 10 checklands"
+      = search_help "is:checkland o:{w} o:{u}", "white-blue checkland"
+      = search_help "is:filterland", "all 15 Oddysey and Shadowmoor filtrelands"
+      = search_help "is:filterland o:{b}", "all filterlands producing black"
+      = search_help "is:manland", "all 24 manlands"
+      = search_help "is:manland o:flynig", "all manlands which become flying creatures"
+      = search_help "is:scryland", "all 10 scrylands"
+      = search_help "is:scryland o:{g}", "all green scrylands"
+      = search_help "is:battleland", "all 5 battlelands"
+      = search_help "is:battleland t:island", "both blue battlelands"
 
     %h4 Search by reserved list status
     %ul
