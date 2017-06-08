@@ -23592,7 +23592,7 @@
             },
             {
                 "artist": "fazfazfaz",
-                "cmc": 3,
+                "cmc": 2,
                 "colorIdentity": [
                     "W"
                 ],
@@ -23601,7 +23601,7 @@
                 ],
                 "flavor": "Knocked off a horse or shot in the chest, you gotta get back up and try again.",
                 "layout": "normal",
-                "manaCost": "{2}{W}",
+                "manaCost": "{1}{W}",
                 "name": "Back in the Saddle",
                 "number": "3",
                 "printings": [
@@ -23623,7 +23623,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "Bessie was a stubborn cow. Pedro decided to eat her first.",
+                "flavor": "Bessie was a stubborn cow. Pedro decided to eat her first when they arrived in Guthram Springs.",
                 "layout": "normal",
                 "manaCost": "{3}{W}",
                 "name": "Cattle Drive",
@@ -23748,7 +23748,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "\"I've made peace on worlds consumed by war. A little dragonfire is no trouble.\"\n\u2014Farajo, to Ace Holden",
+                "flavor": "\"I make peace on worlds at war. I cannot aid a quest for vengeance.\"\n\u2014Farajo, to Ace Holden",
                 "layout": "normal",
                 "manaCost": "{1}{W}",
                 "name": "Farajo's Shield",
@@ -23784,7 +23784,7 @@
                 "subtypes": [
                     "Farajo"
                 ],
-                "text": "+1: Until your next turn, up to one target creature can't attack and its activated abilities can't be activated.\n-X: Search your library for an enchantment card with converted mana cost X, put it onto the battlefield, then shuffle your library.\n-7: You get an emblem with \"Creatures can't attack you or planeswalkers you control unless their controller pays {5} for each attacking creature he or she controls.\"",
+                "text": "+1: Until your next turn, up to one target creature can't attack and its activated abilities can't be activated.\n-X: Search your library for an enchantment card with converted mana cost X, put it onto the battlefield, then shuffle your library.\n-7: You get an emblem with \"Creatures can't attack you or planeswalkers you control unless their controller pays 5 for each attacking creature he or she controls.\"",
                 "type": "Planeswalker \u2014 Farajo",
                 "types": [
                     "Planeswalker"
@@ -23858,7 +23858,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "When your livestock can eat anything, occasionally a moccasin goes missing.",
+                "flavor": "The Naaki tribe herd goats in arid regions unsuitable for crops.",
                 "layout": "normal",
                 "manaCost": "{W}",
                 "name": "Goat Herder",
@@ -23881,23 +23881,23 @@
             },
             {
                 "artist": "moggith",
-                "cmc": 2,
+                "cmc": 1,
                 "colorIdentity": [
                     "W"
                 ],
                 "colors": [
                     "White"
                 ],
-                "flavor": "\"Don't worry, I'll give you your wuppin' right after I finish my smoke.\"\n\u2014Ace Holden, Dragonslayer\nDesigned by caber",
+                "flavor": "\"Don't worry, I'll give you your wuppin' right after I finish my smoke.\"\n\u2014Ace Holden, dragonslayer\nDesigned by caber",
                 "layout": "normal",
-                "manaCost": "{1}{W}",
+                "manaCost": "{W}",
                 "name": "Grit",
                 "number": "14",
                 "printings": [
                     "LDO"
                 ],
                 "rarity": "Uncommon",
-                "text": "Target creature gains indestructible until end of turn and can block an additional creature this turn.",
+                "text": "Target creature gains indestructible until end of turn and can block any number of creatures this turn.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -23905,7 +23905,7 @@
             },
             {
                 "artist": "JR Linton",
-                "cmc": 2,
+                "cmc": 1,
                 "colorIdentity": [
                     "W"
                 ],
@@ -23914,7 +23914,7 @@
                 ],
                 "flavor": "She patrols the tomb, keeping it safe from both vandals and necromancers.",
                 "layout": "normal",
-                "manaCost": "{1}{W}",
+                "manaCost": "{W}",
                 "name": "Guardian of the Dead",
                 "number": "15",
                 "power": "2",
@@ -23927,7 +23927,7 @@
                     "Soldier"
                 ],
                 "text": "Cards in graveyards can't be the target of spells or abilities.\nPlayers can't exile cards from graveyards to cast spells or activate abilities.",
-                "toughness": "2",
+                "toughness": "1",
                 "type": "Creature \u2014 Human Soldier",
                 "types": [
                     "Creature"
@@ -23942,7 +23942,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "Guthram Springs is a beacon of law on a mostly lawless frontier.",
+                "flavor": "Guthram Springs is a beacon of order on a lawless frontier.",
                 "layout": "normal",
                 "manaCost": "{1}{W}{W}",
                 "name": "Guthram Deputy",
@@ -23996,7 +23996,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "With enough men and rope, any beast can be restrained.",
+                "flavor": "\"Doesn't have to be a hog.\"\n\u2014Harland Shaw, rancher",
                 "layout": "normal",
                 "manaCost": "{1}{W}",
                 "name": "Hogtie",
@@ -24008,40 +24008,10 @@
                 "subtypes": [
                     "Aura"
                 ],
-                "text": "Enchant creature\nEnchanted creature can't attack or block as long as you control a creature.",
+                "text": "Enchant creature\nEnchanted creature can't attack or block as long as you control two or more creatures.",
                 "type": "Enchantment \u2014 Aura",
                 "types": [
                     "Enchantment"
-                ]
-            },
-            {
-                "artist": "greeni studio",
-                "cmc": 4,
-                "colorIdentity": [
-                    "W"
-                ],
-                "colors": [
-                    "White"
-                ],
-                "flavor": "A centaur's home is out on the open range.",
-                "layout": "normal",
-                "manaCost": "{3}{W}",
-                "name": "Hooved Deputy",
-                "number": "19",
-                "power": "3",
-                "printings": [
-                    "LDO"
-                ],
-                "rarity": "Common",
-                "subtypes": [
-                    "Centaur",
-                    "Soldier"
-                ],
-                "text": "Renown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)",
-                "toughness": "3",
-                "type": "Creature \u2014 Centaur Soldier",
-                "types": [
-                    "Creature"
                 ]
             },
             {
@@ -24057,7 +24027,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{W}",
                 "name": "Into the Sunset",
-                "number": "20",
+                "number": "19",
                 "printings": [
                     "LDO"
                 ],
@@ -24081,7 +24051,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{W}",
                 "name": "Kill Shot",
-                "number": "21",
+                "number": "20",
                 "printings": [
                     "LDO",
                     "KTK",
@@ -24092,6 +24062,34 @@
                 "type": "Instant",
                 "types": [
                     "Instant"
+                ]
+            },
+            {
+                "artist": "John Gast",
+                "cmc": 6,
+                "colorIdentity": [
+                    "W"
+                ],
+                "colors": [
+                    "White"
+                ],
+                "layout": "normal",
+                "manaCost": "{5}{W}",
+                "name": "Manifestation of Destiny",
+                "number": "21",
+                "power": "5",
+                "printings": [
+                    "LDO"
+                ],
+                "rarity": "Rare",
+                "subtypes": [
+                    "Avatar"
+                ],
+                "text": "When Manifestation of Destiny enters the battlefield, search your library for a Plains card, put it onto the battlefield, then shuffle your library. Then create a 0/1 white Goat creature token for each Plains you control.",
+                "toughness": "7",
+                "type": "Creature \u2014 Avatar",
+                "types": [
+                    "Creature"
                 ]
             },
             {
@@ -24106,7 +24104,7 @@
                 "flavor": "Roselyn visited healers and shamans and medicine men, but none could remove her curse.",
                 "layout": "normal",
                 "manaCost": "{3}{W}",
-                "name": "Naaki Cursebreaker",
+                "name": "Naaki Healer",
                 "number": "22",
                 "power": "2",
                 "printings": [
@@ -24117,7 +24115,7 @@
                     "Bird",
                     "Shaman"
                 ],
-                "text": "Flying\nWhen Naaki Cursebreaker enters the battlefield, you may destroy target enchantment.",
+                "text": "Flying\nWhen Naaki Healer enters the battlefield, you may destroy target enchantment.",
                 "toughness": "2",
                 "type": "Creature \u2014 Bird Shaman",
                 "types": [
@@ -24162,7 +24160,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "\"After just a few generations in the wild, the gentle domestic featherswine reverts to its feral state.\"\n\u2014Marion Hawthorne, Naturalist             ",
+                "flavor": "\"After just a few generations in the wild, the gentle domestic featherswine reverts to its feral state.\"\n\u2014Marion Hawthorne, Naturalist",
                 "layout": "normal",
                 "manaCost": "{3}{W}",
                 "name": "Nimbus Hog",
@@ -24243,35 +24241,6 @@
                 ]
             },
             {
-                "artist": "John Gast",
-                "cmc": 6,
-                "colorIdentity": [
-                    "W"
-                ],
-                "colors": [
-                    "White"
-                ],
-                "flavor": "The manifestation of our destiny.            ",
-                "layout": "normal",
-                "manaCost": "{5}{W}",
-                "name": "Progress",
-                "number": "27",
-                "power": "5",
-                "printings": [
-                    "LDO"
-                ],
-                "rarity": "Rare",
-                "subtypes": [
-                    "Incarnation"
-                ],
-                "text": "When Progress enters the battlefield, search your library for a Plains card, put it onto the battlefield, then shuffle your library. Then create a 0/1 white Goat creature token for each Plains you control.",
-                "toughness": "7",
-                "type": "Creature \u2014 Incarnation",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
                 "artist": "thienbao",
                 "cmc": 2,
                 "colorIdentity": [
@@ -24284,7 +24253,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{W}",
                 "name": "Rallyridge Lawbringer",
-                "number": "28",
+                "number": "27",
                 "power": "2",
                 "printings": [
                     "LDO"
@@ -24297,6 +24266,36 @@
                 "text": "Renown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Soldier",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
+                "artist": "greeni studio",
+                "cmc": 4,
+                "colorIdentity": [
+                    "W"
+                ],
+                "colors": [
+                    "White"
+                ],
+                "flavor": "The Rallyridge Regulators keep peace in places where formal law enforcement fails to reach.",
+                "layout": "normal",
+                "manaCost": "{3}{W}",
+                "name": "Rallyridge Patrolman",
+                "number": "28",
+                "power": "3",
+                "printings": [
+                    "LDO"
+                ],
+                "rarity": "Common",
+                "subtypes": [
+                    "Centaur",
+                    "Soldier"
+                ],
+                "text": "Renown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)",
+                "toughness": "3",
+                "type": "Creature \u2014 Centaur Soldier",
                 "types": [
                     "Creature"
                 ]
@@ -24363,7 +24362,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "\"Adolescent males travel alone. Those not picked off by dragons are exceedingly tough and territorial.\"\n\u2014Marion Hawthorne, Naturalist",
+                "flavor": "\"Adolescent male bison travel alone. Those not picked off by dragons are exceedingly tough and territorial.\"\n\u2014Marion Hawthorne, Naturalist",
                 "layout": "normal",
                 "manaCost": "{2}{W}",
                 "name": "Roaming Buffalo",
@@ -24421,7 +24420,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "\"Best friend I've ever had. 'Cept he keeps stealing my hat.\"\n\u2014 Sheriff Josiah Woods",
+                "flavor": "\"Best friend I've ever had. 'Cept he keeps stealing my hat.\"\n\u2014 Josiah Woods, sheriff of Guthram Springs",
                 "layout": "normal",
                 "manaCost": "{1}{W}{W}",
                 "name": "Sheriff's Steed",
@@ -24474,7 +24473,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "\"With this pipe, the treaty is done. Let there be peace between the two of us.\"",
+                "flavor": "As Farajo traveled the multiverse making peace, his own home plane fell into conflict.",
                 "layout": "normal",
                 "manaCost": "{W}",
                 "name": "Smoke the Peace Pipe",
@@ -24501,7 +24500,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "Roaming drakes avoid Ozuawe villages, rather than be peppered with arrows.",
+                "flavor": "Paragon Trail wagon trains avoid Ozuawe territory, rather than be peppered with arrows.",
                 "layout": "normal",
                 "manaCost": "{4}{W}",
                 "name": "Stunshot Centaur",
@@ -24531,7 +24530,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "Roving traders buy enchanted goods in Calamity Junction for sale around the frontier.",
+                "flavor": "Roving traders buy enchanted goods in Calamity Junction to sell around the frontier.",
                 "layout": "normal",
                 "manaCost": "{2}{W}",
                 "name": "Trinket Peddler",
@@ -24753,7 +24752,7 @@
                 "colors": [
                     "Blue"
                 ],
-                "flavor": "\"Any volunteers from the audience?\"  ",
+                "flavor": "\"Any volunteers from the audience?\"",
                 "layout": "normal",
                 "manaCost": "{3}{U}",
                 "name": "Carnival Illusionist",
@@ -24783,7 +24782,7 @@
                 "colors": [
                     "Blue"
                 ],
-                "flavor": "A claim to a deposit of moxenite extends only as far as one's ability to defend it.\nDesigned by ladsworld",
+                "flavor": "\"Alston's payin' to mine this land. Whether it really belongs to her ain't none of my concern.\"\nDesigned by ladsworld",
                 "layout": "normal",
                 "manaCost": "{U}",
                 "name": "Claim Jumper",
@@ -24867,7 +24866,7 @@
                 "colors": [
                     "Blue"
                 ],
-                "flavor": "\"There be moxenite in them thar hills.\"  ",
+                "flavor": "\"There be moxenite in them thar hills.\"",
                 "layout": "normal",
                 "manaCost": "{1}{U}",
                 "name": "Dowsing Prospector",
@@ -24951,7 +24950,7 @@
                 "colors": [
                     "Blue"
                 ],
-                "flavor": "Do not enter Hyastee territory if you value having your head attached to your shoulders, or your spirit attached to your body.",
+                "flavor": "Settlers on the Paragon Trail leave tribute in Hyastee lands they pass through. Trespassers face forceful expulsion.",
                 "layout": "normal",
                 "manaCost": "{U}{U}",
                 "name": "Expel",
@@ -24975,7 +24974,7 @@
                 "colors": [
                     "Blue"
                 ],
-                "flavor": "The wind is a mighty ally.",
+                "flavor": "Naaki shamans alter the weather, for peace and for war.",
                 "layout": "normal",
                 "manaCost": "{2}{U}",
                 "name": "Firstfeather Stormwing",
@@ -25057,7 +25056,7 @@
                 "colors": [
                     "Blue"
                 ],
-                "flavor": "Moxenite prospectors look for enlarged wildlife, a sure sign that mana-rich ores are located nearby.",
+                "flavor": "Moxenite prospectors seek out enlarged wildlife, a sure sign that mana-rich ores are located nearby.",
                 "layout": "normal",
                 "manaCost": "{3}{U}",
                 "name": "Giant Catfish",
@@ -25113,7 +25112,7 @@
                 "colors": [
                     "Blue"
                 ],
-                "flavor": "Discretion is the better part of valor, but the whole of survival.",
+                "flavor": "\"To become a dragonslayer, you must recognize when you are outmatched.\"\n\u2014 Cyclops Jack, to Ace Holden",
                 "layout": "normal",
                 "manaCost": "{U}",
                 "name": "Hasty Retreat",
@@ -25166,7 +25165,7 @@
                 "colors": [
                     "Blue"
                 ],
-                "flavor": "Hyastee shamans petition Brother Wolf for strength in times of hardship.",
+                "flavor": "Hyastee shamans petition Brother Wolf for guidance in times of hardship.",
                 "layout": "normal",
                 "manaCost": "{1}{U}",
                 "name": "Hyastee Sigil",
@@ -25203,7 +25202,7 @@
                 "subtypes": [
                     "Sphinx"
                 ],
-                "text": "Flying\nWhenever Hyastee Sphinx attacks, name a card type, then defending player guesses whether a card of that type is in your hand. You may reveal your hand. If you do and he or she guessed wrong, draw two cards.",
+                "text": "Flying\nWhenever Hyastee Sphinx attacks, choose a card type, then defending player guesses whether a card of that type is in your hand. You may reveal your hand. If you do and he or she guessed wrong, draw two cards.",
                 "toughness": "5",
                 "type": "Creature \u2014 Sphinx",
                 "types": [
@@ -25344,7 +25343,7 @@
                 "colors": [
                     "Blue"
                 ],
-                "flavor": "\"He ain't the quickest on the draw, but damn if he ain't tough.\"\n\u2014 Josiah Woods, Sheriff of Guthram Springs",
+                "flavor": "\"Every tough man, woman, or otherwise has a place on my force.\"\n\u2014 Josiah Woods, sheriff of Guthram Springs",
                 "layout": "normal",
                 "manaCost": "{1}{U}",
                 "name": "Shellback Deputy",
@@ -25436,10 +25435,10 @@
                     "LDO"
                 ],
                 "rarity": "Rare",
-                "text": "Reveal the top four cards of your library. Target opponent splits those cards into two piles, then puts Tall Tales into one of those piles. Put the cards from one pile into their owners' hands and the rest into their owners' graveyards.",
-                "type": "Sorcery",
+                "text": "Reveal the top four cards of your library. Target opponent separates those cards into two piles, then puts Tall Tales into one of those piles. Put the cards from one pile into their owners' hands and the rest into their owners' graveyards.",
+                "type": "Instant",
                 "types": [
-                    "Sorcery"
+                    "Instant"
                 ]
             },
             {
@@ -25480,7 +25479,7 @@
                 "colors": [
                     "Blue"
                 ],
-                "flavor": "...Where seldom is heard a discouraging word. // And the sky is not cloudy all day.       ",
+                "flavor": "...Where seldom is heard a discouraging word. // And the sky is not cloudy all day.",
                 "layout": "normal",
                 "manaCost": "{4}{U}{U}",
                 "name": "Titan of Cyclones",
@@ -25669,7 +25668,7 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "She wants your money and your life.            ",
+                "flavor": "She wants your money and your life.",
                 "layout": "normal",
                 "manaCost": "{1}{B}",
                 "name": "Bloodshot Coachthief",
@@ -25729,7 +25728,7 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "Livestock for dinner, rancher for dessert.   ",
+                "flavor": "Livestock for dinner, rancher for dessert.",
                 "layout": "normal",
                 "manaCost": "{2}{B}",
                 "name": "Chupacabra",
@@ -25759,7 +25758,7 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "Never underestimate the craftiness of a goblin who has lived long enough to be old.",
+                "flavor": "\"White moxenite salve for the chirurgeon, blue moxenite oil for the Tinman, black moxenite draught for the nosy lawman.\"",
                 "layout": "normal",
                 "manaCost": "{B}",
                 "name": "Coat with Venom",
@@ -26021,7 +26020,7 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "Designed by nerdyjoe",
+                "flavor": "\"A devil's pact means I'll won't leave my wealth to incompetent children.\"\n\u2014Vivian Alston, mana baron\nDesigned by nerdyjoe",
                 "layout": "normal",
                 "manaCost": "{1}{B}",
                 "name": "Last Will and Testament",
@@ -26139,7 +26138,7 @@
                     "LDO"
                 ],
                 "rarity": "Common",
-                "text": "Target creature gets -3/-3 until end of turn. Its controller loses 3 life.",
+                "text": "Destroy target creature. If its toughness is 3 or less, it's controller loses 3 life.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -26236,7 +26235,7 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "\"Leave him to the buzzards. There will be nothing left of the body by morning.\"\n\u2014 El Cocodrilo, Smuggler",
+                "flavor": "\"Leave him to the buzzards. There will be nothing left of the body by morning.\"\n\u2014 Raul Costa, Pine Ridge gangleader",
                 "layout": "normal",
                 "manaCost": "{2}{B}",
                 "name": "Scavenging Vulture",
@@ -26282,7 +26281,7 @@
             },
             {
                 "artist": "bnoch",
-                "cmc": 4,
+                "cmc": 3,
                 "colorIdentity": [
                     "B"
                 ],
@@ -26291,7 +26290,7 @@
                 ],
                 "flavor": "All you need is a little black moxenite, a corpse, and a total disregard for the lives of those around you.",
                 "layout": "normal",
-                "manaCost": "{3}{B}",
+                "manaCost": "{2}{B}",
                 "name": "Sickening Revival",
                 "number": "102",
                 "printings": [
@@ -26370,7 +26369,7 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "Some problems are only aggravated by attempts to solve them.",
+                "flavor": "The sludge produced when refining black moxenite is mana-rich enough to spontaneously self-animate.",
                 "layout": "normal",
                 "manaCost": "{2}{B}",
                 "name": "Tar Snare",
@@ -26429,12 +26428,12 @@
                 ],
                 "rarity": "Uncommon",
                 "subtypes": [
-                    "Goat",
+                    "Satyr",
                     "Berserker"
                 ],
                 "text": "Renown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)\nWhen Trestle Butcher becomes renowned, you may destroy target creature.",
                 "toughness": "2",
-                "type": "Creature \u2014 Goat Berserker",
+                "type": "Creature \u2014 Satyr Berserker",
                 "types": [
                     "Creature"
                 ]
@@ -26530,7 +26529,7 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "\"Bounty's for dead or alive, but I'd be lying if I said I didn't prefer one over the other.\"",
+                "flavor": "\"Raul Costa must be brought to trial for his crimes.\"\n\u2014Josiah Woods, sheriff of Guthram Springs",
                 "layout": "normal",
                 "manaCost": "{1}{B}",
                 "name": "Wanted",
@@ -26586,7 +26585,6 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "She wanders in search of the souls of her children, drowned by her own hand.            ",
                 "layout": "normal",
                 "manaCost": "{B}",
                 "name": "Yorona Banshee",
@@ -26615,7 +26613,7 @@
                 "colors": [
                     "Red"
                 ],
-                "flavor": "\"Magic is all around us, friend.\"\nDesigned by calibur",
+                "flavor": "Designed by calibur",
                 "layout": "normal",
                 "manaCost": "{1}{R}",
                 "name": "Asigati Fireshaper",
@@ -26629,7 +26627,7 @@
                     "Human",
                     "Shaman"
                 ],
-                "text": "Warband (Whenever this creature attacks, you may pair it with another unpaired attacking creature you control until end of turn.)\nWhenever Asigati Fireshaper becomes paired with a creature, both creatures gain \"Spells you cast that target this creature cost {2} less to cast.\" until end of turn.",
+                "text": "Warband (Whenever this creature attacks, you may pair it with another unpaired attacking creature you control until end of turn.)\nWhenever Asigati Fireshaper becomes paired with a creature, each of those creatures gains \"Spells you cast that target this creature cost {2} less to cast.\" until end of turn.",
                 "toughness": "1",
                 "type": "Creature \u2014 Human Shaman",
                 "types": [
@@ -26989,7 +26987,7 @@
                     "Goblin",
                     "Rogue"
                 ],
-                "text": "When Greenskin Gambler enters the battlefield, it deals X damage to target creature an opponent controls, where X is your longest straight. (One or more nonland permanents you control with consecutive converted mana costs form a straight.)",
+                "text": "When Greenskin Gambler enters the battlefield, you may have it deal X damage to target creature, where X is your longest straight. (One or more nonland permanents you control with consecutive converted mana costs form a straight.)",
                 "toughness": "1",
                 "type": "Creature \u2014 Goblin Rogue",
                 "types": [
@@ -27240,7 +27238,7 @@
                 "colors": [
                     "Red"
                 ],
-                "flavor": "\"Our company has the utmost dedication to worker safety.\"\n\u2014 Trial of the Mana Barons, Stenographer's Notes.",
+                "flavor": "\"Our company has the utmost dedication to worker safety.\"\n\u2014 K.C. Stonefellow, mana baron",
                 "layout": "normal",
                 "manaCost": "{1}{R}",
                 "name": "Mine Collapse",
@@ -27293,7 +27291,6 @@
                 "colors": [
                     "Red"
                 ],
-                "flavor": "Two guns are better than one.",
                 "layout": "normal",
                 "manaCost": "{R}{R}",
                 "name": "Naaki Gunslinger",
@@ -27308,7 +27305,7 @@
                     "Warrior"
                 ],
                 "text": "Warband (Whenever this creature attacks, you may pair it with another unpaired attacking creature you control until end of turn.)\nWhenever Naaki Gunslinger becomes paired with a creature, both creatures gain double strike until end of turn.",
-                "toughness": "2",
+                "toughness": "3",
                 "type": "Creature \u2014 Human Warrior",
                 "types": [
                     "Creature"
@@ -27352,7 +27349,7 @@
                 "colors": [
                     "Red"
                 ],
-                "flavor": "Having already sold his soul, there was little left that could intimidate him.",
+                "flavor": "He lost his family on the trail, his wealth at the saloon, and his soul at the crossroads.",
                 "layout": "normal",
                 "manaCost": "{3}{R}",
                 "name": "Nothing to Lose",
@@ -27850,7 +27847,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "On every plane, humans yearn to see what lies just beyond the horizon.           \nDesigned by fate1316",
+                "flavor": "On every plane, humans yearn to see what lies just beyond the horizon.\nDesigned by fate1316",
                 "layout": "normal",
                 "manaCost": "{3}{G}",
                 "name": "Expedition Corps",
@@ -27889,7 +27886,7 @@
                     "LDO"
                 ],
                 "rarity": "Rare",
-                "text": "Target creature you control gets +6/+6 and gains trample until end of turn. All creatures able to block it this turn do so.",
+                "text": "Until end of turn, target creature gets +6/+6 and gains trample, and all creatures able to block it this turn do so.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -27912,7 +27909,7 @@
                     "LDO"
                 ],
                 "rarity": "Uncommon",
-                "text": "Reveal the top five cards of your library. Put a creature card from among them into your hand and the rest into your graveyard. If that creature card was a Boar, Goat, Horse, Ox, or Sheep, you gain 4 life.",
+                "text": "Reveal the top five cards of your library. Put a creature or land card from among them into your hand and the rest into your graveyard. If a Boar, Goat, Horse, Ox, or Sheep card was revealed this way, you gain 4 life.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -27979,7 +27976,7 @@
                 ]
             },
             {
-                "artist": "JP Gogolin",
+                "artist": "Sydney King",
                 "cmc": 1,
                 "colorIdentity": [
                     "G"
@@ -27987,7 +27984,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "Kohana and Pike used different weapons, but were a perfect team.",
+                "flavor": "\"They have shown us no mercy. Return the favor.\"\n\u2014Karakwa, Kayeri warchief",
                 "layout": "normal",
                 "manaCost": "{G}",
                 "name": "Joint Assault",
@@ -28012,7 +28009,6 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "She lives for the thrill of the hunt.",
                 "layout": "normal",
                 "manaCost": "{3}{G}",
                 "name": "Leonin Huntress",
@@ -28026,7 +28022,7 @@
                     "Cat",
                     "Scout"
                 ],
-                "text": "Warband (Whenever this creature attacks, you may pair it with another unpaired attacking creature you control until end of turn.)\nWhenever Leonin Huntress becomes paired with a creature, both creatures get +2/+2 until end of turn.",
+                "text": "Warband (Whenever this creature attacks, you may pair it with another unpaired attacking creature you control until end of turn.)\nWhenever Leonin Huntress becomes paired with a creature, each of those creatures get +2/+2 until end of turn.",
                 "toughness": "2",
                 "type": "Creature \u2014 Cat Scout",
                 "types": [
@@ -28071,7 +28067,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "What's a hodag? Who knowsdag.           ",
+                "flavor": "What's a hodag? Who knowsdag.",
                 "layout": "normal",
                 "manaCost": "{4}{G}",
                 "name": "Lumberwood Hodag",
@@ -28084,7 +28080,7 @@
                 "subtypes": [
                     "Beast"
                 ],
-                "text": "Whenever Lumberwood Hodag attacks, put the top three cards of your library into your graveyard, then Lumberwood Hodag gets +1/+1 for each creature card in your graveyard until end of turn.",
+                "text": "Whenever Lumberwood Hodag attacks, you may put the top three cards of your library into your graveyard, then Lumberwood Hodag gets +1/+1 for each creature card in your graveyard until end of turn.",
                 "toughness": "3",
                 "type": "Creature \u2014 Beast",
                 "types": [
@@ -28127,7 +28123,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "The greatest shamans can repel even blasts of dragonfire.",
+                "flavor": "The defensive magics Farajo learned from the Makade made peace on many planes.",
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Makade Hexcatcher",
@@ -28141,7 +28137,7 @@
                     "Human",
                     "Shaman"
                 ],
-                "text": "Spells your opponents cast that target creatures you control cost {1} more to cast.",
+                "text": "Spells your opponents cast that target you or creatures you control cost {1} more to cast.",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Shaman",
                 "types": [
@@ -28185,9 +28181,9 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "Concentrated deposits of mana-rich moxenite ore draw prospectors, investors, and thieves like moths to a flame.",
+                "flavor": "\"Quality over quantity, Stonefellow.\"\n\u2014Vivian Alston, mana baron",
                 "layout": "normal",
-                "manaCost": "{3}{G}{G}",
+                "manaCost": "{4}{G}",
                 "name": "Motherlode",
                 "number": "171",
                 "printings": [
@@ -28264,7 +28260,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "Let go of your trinkets and spells, embrace the might of nature.",
+                "flavor": "\"Nature was here long before your trains and guns, and will remain long after they are gone.\"",
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Naturalize",
@@ -28357,7 +28353,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "If the spirits are honored, they will bless the parched land with rain.",
+                "flavor": "\"Grandmother Spider, free the dew from your web. Brother Wolf, shake the river from your fur. Bless our parched land with rain.\"",
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Rain Dancer",
@@ -28611,7 +28607,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "\"The Kayeri killed or burned anything they couldn't enslave or steal.\"\n\u2014 Inola, Asigati survivor",
+                "flavor": "\"With Karakwa as chief, the Kayeri think only of war.\"\n\u2014 Farajo, Peacemaker",
                 "layout": "normal",
                 "manaCost": "{4}{G}{G}",
                 "name": "Village Raid",
@@ -28647,7 +28643,7 @@
                 "subtypes": [
                     "Horse"
                 ],
-                "text": "Warband (Whenever this creature attacks, you may pair it with another unpaired attacking creature you control until end of turn.)\nWhenever Wild Mustang becomes paired with a creature, both creatures get +1/+1 until end of turn.",
+                "text": "Warband (Whenever this creature attacks, you may pair it with another unpaired attacking creature you control until end of turn.)\nWhenever Wild Mustang becomes paired with a creature, each of those creatures get +1/+1 until end of turn.",
                 "toughness": "2",
                 "type": "Creature \u2014 Horse",
                 "types": [
@@ -28663,7 +28659,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "For every trial, the right spirit guide can be called upon to solve it.",
+                "flavor": "\"The spirits can provide every weapon you need.\"\n\u2014 Karakwa, Kayeri Warchief",
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Wildshape Mastery",
@@ -28689,7 +28685,7 @@
                     "White",
                     "Green"
                 ],
-                "flavor": "\"I'm assembling a posse to slay Malastrix. Who's with me?\"\nDesigned by pinkmoth and Blydden",
+                "flavor": "\"I'm rounding up a posse to slay Malastrix. Who's with me?\"\nDesigned by pinkmoth and Blydden",
                 "layout": "normal",
                 "manaCost": "{1}{G}{W}",
                 "name": "Ace Holden",
@@ -28816,7 +28812,7 @@
                     "Black",
                     "Red"
                 ],
-                "flavor": "Breath and heartbeats are an impediment to perfect accuracy.",
+                "flavor": "The best sharpshooters of the Pine Ridge Gang are undead. Breath and heartbeats are an impediment to perfect accuracy.",
                 "layout": "normal",
                 "manaCost": "{1}{B}{R}",
                 "name": "Dead Aim",
@@ -28872,7 +28868,7 @@
                 "manaCost": "{2}{R}{W}",
                 "name": "Ironskin Chief",
                 "number": "195",
-                "power": "3",
+                "power": "4",
                 "printings": [
                     "LDO"
                 ],
@@ -28881,41 +28877,9 @@
                     "Human",
                     "Warrior"
                 ],
-                "text": "Whenever Ironskin Chief is dealt damage, you may pay {1}{R}. If you do, it deals that much damage to target creature or player.\n{1}{W}: Ironskin Chief gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)",
+                "text": "{R}{W}: The next time Ironskin Chief would be dealt damage this turn, prevent that damage and Ironskin Chief deals that much damage to target opponent.",
                 "toughness": "3",
                 "type": "Creature \u2014 Human Warrior",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
-                "artist": "Howeitzer",
-                "cmc": 2,
-                "colorIdentity": [
-                    "W",
-                    "R"
-                ],
-                "colors": [
-                    "White",
-                    "Red"
-                ],
-                "flavor": "Crazed inventors, jailbroke tinmen, moxenite explosions. Just another day in Calamity Junction.",
-                "layout": "normal",
-                "manaCost": "{R}{W}",
-                "name": "Junction Deputy",
-                "number": "196",
-                "power": "2",
-                "printings": [
-                    "LDO"
-                ],
-                "rarity": "Uncommon",
-                "subtypes": [
-                    "Human",
-                    "Soldier"
-                ],
-                "text": "{R}{W}: Exile target artifact you control, then return it to the battlefield under your control. If it's a creature, it gains haste until end of turn. If it's an Equipment, attach it to Junction Deputy.",
-                "toughness": "2",
-                "type": "Creature \u2014 Human Soldier",
                 "types": [
                     "Creature"
                 ]
@@ -28934,7 +28898,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{R}{G}",
                 "name": "Karakwa, Kayeri Warchief",
-                "number": "197",
+                "number": "196",
                 "power": "4",
                 "printings": [
                     "LDO"
@@ -28947,7 +28911,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "Warband (Whenever this creature attacks, you may pair it with another unpaired attacking creature you control until end of turn.)\nWhenever two creatures you control become paired, put a +1/+1 counter on both creatures.",
+                "text": "Warband (Whenever this creature attacks, you may pair it with another unpaired attacking creature you control until end of turn.)\nWhenever two creatures you control become paired, put a +1/+1 counter on each of those creatures.",
                 "toughness": "4",
                 "type": "Legendary Creature \u2014 Human Warrior",
                 "types": [
@@ -28968,7 +28932,7 @@
                 "layout": "normal",
                 "manaCost": "{5}{B}{R}",
                 "name": "Malastrix",
-                "number": "198",
+                "number": "197",
                 "power": "5",
                 "printings": [
                     "LDO"
@@ -28980,7 +28944,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "Flying\nWhenever another creature enters the battlefield, you may pay {B}{R}. If you do, Malastrix deals 5 damage to that creature.",
+                "text": "Flying\nWhenever another creature enters the battlefield, you may pay {B}{R}. If you do, Malastrix deals damage equal to its power to that creature.",
                 "toughness": "5",
                 "type": "Legendary Creature \u2014 Dragon",
                 "types": [
@@ -29002,7 +28966,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{U}{R}",
                 "name": "Miss Cassidy Sureshot",
-                "number": "199",
+                "number": "198",
                 "power": "2",
                 "printings": [
                     "LDO"
@@ -29015,41 +28979,9 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "Flash (You may cast this spell any time you could cast an instant.)\nWhen Miss Cassidy Sureshot enters the battlefield, exile all instant and sorcery spells.\n{4}, {T}: Copy a card exiled with Miss Cassidy Sureshot. You may cast the copy without paying its mana cost.",
+                "text": "Flash (You may cast this spell any time you could cast an instant.)\nWhen Miss Cassidy Sureshot enters the battlefield, exile all instant and sorcery spells. (Those spells won't resolve.)\n{4}, {T}: Copy a card exiled with Miss Cassidy Sureshot. You may cast the copy without paying its mana cost.",
                 "toughness": "2",
                 "type": "Legendary Creature \u2014 Human Wizard",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
-                "artist": "xandarx2",
-                "cmc": 3,
-                "colorIdentity": [
-                    "W",
-                    "G"
-                ],
-                "colors": [
-                    "White",
-                    "Green"
-                ],
-                "flavor": "The fields around Paragon Valley are ideal for livestock.",
-                "layout": "normal",
-                "manaCost": "{1}{G}{W}",
-                "name": "Paragon Rancher",
-                "number": "200",
-                "power": "1",
-                "printings": [
-                    "LDO"
-                ],
-                "rarity": "Uncommon",
-                "subtypes": [
-                    "Human",
-                    "Farmer"
-                ],
-                "text": "When Paragon Rancher enters the battlefield, search your library for a Boar, Goat, Horse, Ox, or Sheep creature card, reveal it, and put it into your hand. Then shuffle your library.",
-                "toughness": "4",
-                "type": "Creature \u2014 Human Farmer",
                 "types": [
                     "Creature"
                 ]
@@ -29069,7 +29001,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{W}{U}",
                 "name": "Rallyridge Protector",
-                "number": "201",
+                "number": "199",
                 "power": "3",
                 "printings": [
                     "LDO"
@@ -29101,7 +29033,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{W}{U}",
                 "name": "Sheriff Josiah Woods",
-                "number": "202",
+                "number": "200",
                 "power": "4",
                 "printings": [
                     "LDO"
@@ -29134,8 +29066,8 @@
                 ],
                 "layout": "normal",
                 "manaCost": "{W}{B}",
-                "name": "Skeletal Deputy",
-                "number": "203",
+                "name": "Skeletal Outlaw",
+                "number": "201",
                 "power": "3",
                 "printings": [
                     "LDO"
@@ -29145,7 +29077,7 @@
                     "Skeleton",
                     "Soldier"
                 ],
-                "text": "Renown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)\nWhen Skeletal Deputy dies, if it was renowned, return it to the battlefield under its owner's control.",
+                "text": "Renown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)\nWhen Skeletal Outlaw dies, if it was renowned, return it to the battlefield under its owner's control.",
                 "toughness": "1",
                 "type": "Creature \u2014 Skeleton Soldier",
                 "types": [
@@ -29153,8 +29085,8 @@
                 ]
             },
             {
-                "artist": "naturalplane.blogspot.com",
-                "cmc": 5,
+                "artist": "vollelune",
+                "cmc": 3,
                 "colorIdentity": [
                     "U",
                     "B"
@@ -29165,10 +29097,10 @@
                 ],
                 "flavor": "Designed by revolverzanbolt",
                 "layout": "normal",
-                "manaCost": "{3}{U}{B}",
+                "manaCost": "{1}{U}{B}",
                 "name": "Skinwalker",
-                "number": "204",
-                "power": "3",
+                "number": "202",
+                "power": "2",
                 "printings": [
                     "LDO"
                 ],
@@ -29176,8 +29108,8 @@
                 "subtypes": [
                     "Shapeshifter"
                 ],
-                "text": "{B}: Exile target creature card from a graveyard.\n{U}: Until end of turn, Skinwalker becomes a copy of any creature card exiled with it and gains this ability.",
-                "toughness": "3",
+                "text": "{B}: Exile target creature card from a graveyard.\n{U}: Until end of turn, Skinwalker becomes a copy of a creature card exiled with it and gains this ability.",
+                "toughness": "2",
                 "type": "Creature \u2014 Shapeshifter",
                 "types": [
                     "Creature"
@@ -29198,12 +29130,12 @@
                 "layout": "normal",
                 "manaCost": "{2}{B}{R}",
                 "name": "Stickup",
-                "number": "205",
+                "number": "203",
                 "printings": [
                     "LDO"
                 ],
                 "rarity": "Rare",
-                "text": "Target player separates his or her hand into a face up pile and a face down pile. Choose a pile. That player discards that pile and returns the other to his or her hand.",
+                "text": "Target player separates his or her hand into a face up pile and a face down pile. Choose a pile. That player discards the chosen pile and returns the other to his or her hand.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -29220,23 +29152,23 @@
                     "Black",
                     "Green"
                 ],
-                "flavor": "Logging camps light great fires each night to ward off the dark creatures of the Lumberwoods.",
+                "flavor": "Logging camps light great bonfires each night to repel the dark creatures of the Lumberwoods.",
                 "layout": "normal",
                 "manaCost": "{1}{B}{G}",
                 "name": "Stiff-Legged Bear",
-                "number": "206",
+                "number": "204",
                 "power": "2",
                 "printings": [
                     "LDO"
                 ],
                 "rarity": "Uncommon",
                 "subtypes": [
-                    "Bear",
-                    "Zombie"
+                    "Zombie",
+                    "Bear"
                 ],
                 "text": "Whenever a creature card is put into your graveyard from anywhere, put a +1/+1 counter on Stiff-Legged Bear.",
                 "toughness": "2",
-                "type": "Creature \u2014 Bear Zombie",
+                "type": "Creature \u2014 Zombie Bear",
                 "types": [
                     "Creature"
                 ]
@@ -29256,12 +29188,12 @@
                 "layout": "normal",
                 "manaCost": "{1}{W}{B}",
                 "name": "Swallow Whole",
-                "number": "207",
+                "number": "205",
                 "printings": [
                     "LDO"
                 ],
                 "rarity": "Rare",
-                "text": "Exile target creature and all Auras and Equipment attached to it.",
+                "text": "Exile target creature and all permanents attached to it.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -29282,7 +29214,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{R}{G}",
                 "name": "Team Hunt",
-                "number": "208",
+                "number": "206",
                 "printings": [
                     "LDO"
                 ],
@@ -29291,6 +29223,38 @@
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
+                ]
+            },
+            {
+                "artist": "xandarx2",
+                "cmc": 3,
+                "colorIdentity": [
+                    "W",
+                    "G"
+                ],
+                "colors": [
+                    "White",
+                    "Green"
+                ],
+                "flavor": "The fields around Paragon Valley are ideal grazing grounds for livestock.",
+                "layout": "normal",
+                "manaCost": "{1}{G}{W}",
+                "name": "Watchful Rancher",
+                "number": "207",
+                "power": "2",
+                "printings": [
+                    "LDO"
+                ],
+                "rarity": "Uncommon",
+                "subtypes": [
+                    "Human",
+                    "Farmer"
+                ],
+                "text": "Vigilance (Attacking doesn't cause this creature to tap.)\nBoar, Goat, Horse, Ox, and Sheep creatures you control get +1/+1 and have vigilance.",
+                "toughness": "2",
+                "type": "Creature \u2014 Human Farmer",
+                "types": [
+                    "Creature"
                 ]
             },
             {
@@ -29308,7 +29272,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{G}{U}",
                 "name": "Words of the Sages",
-                "number": "209",
+                "number": "208",
                 "printings": [
                     "LDO"
                 ],
@@ -29317,6 +29281,37 @@
                 "type": "Instant",
                 "types": [
                     "Instant"
+                ]
+            },
+            {
+                "artist": "Howeitzer",
+                "cmc": 2,
+                "colorIdentity": [
+                    "W",
+                    "R"
+                ],
+                "colors": [
+                    "White",
+                    "Red"
+                ],
+                "layout": "normal",
+                "manaCost": "{R}{W}",
+                "name": "Young Gun",
+                "number": "209",
+                "power": "2",
+                "printings": [
+                    "LDO"
+                ],
+                "rarity": "Uncommon",
+                "subtypes": [
+                    "Human",
+                    "Soldier"
+                ],
+                "text": "{R}{W}: Exile target artifact you control, then return it to the battlefield under your control. If it's a creature, it gains haste until end of turn. If it's an Equipment, attach it to Young Gun.",
+                "toughness": "2",
+                "type": "Creature \u2014 Human Soldier",
+                "types": [
+                    "Creature"
                 ]
             },
             {
@@ -29435,11 +29430,11 @@
                 ],
                 "rarity": "Rare",
                 "subtypes": [
-                    "Juggernaut"
+                    "Golem"
                 ],
                 "text": "Colossus of Railroads' power and toughness are each equal to the number of artifacts you control.\nWhen Colossus of Railroads dies, you may distribute a number of +1/+1 counters equal to its power among any number of creatures you control.",
                 "toughness": "*",
-                "type": "Artifact Creature \u2014 Juggernaut",
+                "type": "Artifact Creature \u2014 Golem",
                 "types": [
                     "Artifact",
                     "Creature"
@@ -29494,7 +29489,7 @@
                 "cmc": 2,
                 "colorIdentity": [],
                 "colors": [],
-                "flavor": "Designed by goldenneckbeard",
+                "flavor": "\"Seems like just yesterday I stowed away on one of these to get to the frontier.\"\n\u2014 Miss Cassidy Sureshot\nDesigned by goldenneckbeard",
                 "layout": "normal",
                 "manaCost": "{2}",
                 "name": "Freight Train",
@@ -29503,7 +29498,7 @@
                     "LDO"
                 ],
                 "rarity": "Uncommon",
-                "text": "{2}: Draw two cards, then put Freight Train on top of your library. Activate this ability only any time you could cast a sorcery.",
+                "text": "{2}: Draw two cards, then put Freight Train on top of it's owner's library. Activate this ability only any time you could cast a sorcery.",
                 "type": "Artifact",
                 "types": [
                     "Artifact"
@@ -29542,7 +29537,7 @@
                 "cmc": 2,
                 "colorIdentity": [],
                 "colors": [],
-                "flavor": "Many of life's problems can be solved by buying the right man a drink.",
+                "flavor": "\"So many of life's problems can be solved by buying the right man a drink.\"\n\u2014 Madame Tawney, saloon proprietor",
                 "layout": "normal",
                 "manaCost": "{2}",
                 "name": "Mug of Beer",
@@ -29613,7 +29608,7 @@
                     "R"
                 ],
                 "colors": [],
-                "flavor": "None can best a native of Aenyr in music.           \nDesigned by pinkmoth",
+                "flavor": "None can best a native of Aenyr in music.\nDesigned by pinkmoth",
                 "layout": "normal",
                 "manaCost": "{3}",
                 "name": "Roselyn's Viola",
@@ -29625,7 +29620,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "{T}: Add {R} to your mana pool. When that mana is spent to cast an instant or sorcery spell, exile it when it resolves.\n{4}, {T}: Cast any number of cards exiled by Roselyn's Viola without paying their mana costs. (They are put into their owner's graveyards.)",
+                "text": "{T}: Add {R} to your mana pool. When that mana is spent to cast an instant or sorcery spell, exile it when it resolves.\n{4}, {T}: Cast any number of cards exiled with Roselyn's Viola without paying their mana costs. (They are put into their owner's graveyards.)",
                 "type": "Legendary Artifact",
                 "types": [
                     "Artifact"
@@ -29734,7 +29729,6 @@
                 "cmc": 2,
                 "colorIdentity": [],
                 "colors": [],
-                "flavor": "\"Hah! What primitive weapons!\"\n\u2014 Colonel Hayes, Last Words",
                 "layout": "normal",
                 "manaCost": "{2}",
                 "name": "Shortbow",
@@ -29827,7 +29821,6 @@
                 "cmc": 5,
                 "colorIdentity": [],
                 "colors": [],
-                "flavor": "\"I've beat lawmen before. I can again.\"",
                 "layout": "normal",
                 "manaCost": "{5}",
                 "name": "Tinman Bushranger",
@@ -29855,6 +29848,7 @@
                     "U"
                 ],
                 "colors": [],
+                "flavor": "Freed tinmen traveled to the frontier seeking opportunity and acceptance.",
                 "layout": "normal",
                 "manaCost": "{3}",
                 "name": "Tinman Deputy",
@@ -29934,7 +29928,7 @@
                     "W"
                 ],
                 "colors": [],
-                "flavor": "Out on the frontier, men are judged by how much heart they put into their work. Even if that heart is a magical moxenite reactor.   ",
+                "flavor": "Out on the frontier, men are judged by how much heart they put into their work. Even if that heart is a magical moxenite reactor.",
                 "layout": "normal",
                 "manaCost": "{3}",
                 "name": "Tinman Vaquero",
@@ -30029,29 +30023,6 @@
                 ]
             },
             {
-                "artist": "Duggan",
-                "cmc": 0,
-                "colorIdentity": [
-                    "R",
-                    "G"
-                ],
-                "colors": [],
-                "flavor": "\"It's just scrubby desert. How can a little runoff make it any worse?\"\n\u2014K.C. Stonefellow, Mana Baron\nDesigned by havoc",
-                "layout": "normal",
-                "name": "Blooming Tablelands",
-                "number": "239",
-                "printings": [
-                    "LDO"
-                ],
-                "rarity": "Uncommon",
-                "text": "{T}, Pay 1 life: Add {R} or {G} to your mana pool.\n{R}{G}, {T}, Sacrifice Blooming Tablelands: Draw a card.",
-                "type": "Land",
-                "types": [
-                    "Land"
-                ],
-                "watermark": "Red-Green"
-            },
-            {
                 "artist": "finnian-macmanus",
                 "cmc": 0,
                 "colorIdentity": [
@@ -30059,10 +30030,10 @@
                     "B"
                 ],
                 "colors": [],
-                "flavor": "\"Buy them out or drive them out. That town is built atop a fortune.\"\n\u2014K.C. Stonefellow, Mana Baron\nDesigned by havoc",
+                "flavor": "\"Buy them out or drive them out. That town is built atop a fortune.\"\n\u2014K.C. Stonefellow, mana baron\nDesigned by havoc",
                 "layout": "normal",
                 "name": "Boom Town",
-                "number": "240",
+                "number": "239",
                 "printings": [
                     "LDO"
                 ],
@@ -30075,22 +30046,22 @@
                 "watermark": "White-Black"
             },
             {
-                "artist": "Fran\u00e7ois\u00a0Baranger",
+                "artist": "Eric Joyner",
                 "cmc": 0,
                 "colorIdentity": [
                     "B",
                     "G"
                 ],
                 "colors": [],
-                "flavor": "\"Burn this brush to the ground. This land will become good for something.\"\n\u2014K.C. Stonefellow, Mana Baron\nDesigned by havoc",
+                "flavor": "\"I want that moxenite found no matter how many men are lost.\"\n\u2014 K.C. Stonefellow, mana baron\nDesigned by havoc",
                 "layout": "normal",
-                "name": "Bramble Patch",
-                "number": "241",
+                "name": "Carnivorous Bog",
+                "number": "240",
                 "printings": [
                     "LDO"
                 ],
                 "rarity": "Uncommon",
-                "text": "{T}, Pay 1 life: Add {B} or {G} to your mana pool.\n{B}{G}, {T}, Sacrifice Bramble Patch: Draw a card.",
+                "text": "{T}, Pay 1 life: Add {B} or {G} to your mana pool.\n{B}{G}, {T}, Sacrifice Carnivorous Bog: Draw a card.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -30102,10 +30073,10 @@
                 "cmc": 0,
                 "colorIdentity": [],
                 "colors": [],
-                "flavor": "Each time Ace passed a farm, he remembered all that the dragon Malastrix had taken from him.",
+                "flavor": "After losing his ranch to Malastrix's flaming breath, Ace swore no other farm would meet the same fate.",
                 "layout": "normal",
                 "name": "Farmyard",
-                "number": "242",
+                "number": "241",
                 "printings": [
                     "LDO"
                 ],
@@ -30124,10 +30095,10 @@
                     "G"
                 ],
                 "colors": [],
-                "flavor": "\"Sign here and you'll have another year to pay the debt. For a small fee of course.\"\n\u2014 K.C. Stonefellow, Mana Baron\nDesigned by havoc",
+                "flavor": "\"We need a bumper crop this year or Stonefellow's gonna foreclose.\"\n\u2014 Harland Shaw, rancher\nDesigned by havoc",
                 "layout": "normal",
                 "name": "Fenced Pasture",
-                "number": "243",
+                "number": "242",
                 "printings": [
                     "LDO"
                 ],
@@ -30147,15 +30118,15 @@
                     "U"
                 ],
                 "colors": [],
-                "flavor": "\"I own this town. Every mine, every factory, every shop, and every lawman.\"\n\u2014 K.C. Stonefellow, Mana Baron\nDesigned by havoc",
+                "flavor": "\"I own this town. Every mine, every ranch, every shop, and every lawman.\"\n\u2014 K.C. Stonefellow, mana baron\nDesigned by havoc",
                 "layout": "normal",
-                "name": "Frontier Pueblo",
-                "number": "244",
+                "name": "Frontier Mission",
+                "number": "243",
                 "printings": [
                     "LDO"
                 ],
                 "rarity": "Uncommon",
-                "text": "{T}, Pay 1 life: Add {W} or {U} to your mana pool.\n{W}{U}, {T}, Sacrifice Frontier Pueblo: Draw a card.",
+                "text": "{T}, Pay 1 life: Add {W} or {U} to your mana pool.\n{W}{U}, {T}, Sacrifice Frontier Mission: Draw a card.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -30170,15 +30141,15 @@
                     "R"
                 ],
                 "colors": [],
-                "flavor": "\"The mine inspector never arrived, Senator. It's dangerous country here.\"\n\u2014K.C. Stonefellow, Mana Baron\nDesigned by havoc",
+                "flavor": "\"The mine inspector never arrived, Senator. It's dangerous country out here.\"\n\u2014K.C. Stonefellow, mana baron\nDesigned by havoc",
                 "layout": "normal",
                 "name": "Hangman's Rock",
-                "number": "245",
+                "number": "244",
                 "printings": [
                     "LDO"
                 ],
                 "rarity": "Uncommon",
-                "text": "{T}, Pay 1 life: Add {B} or {R} to your mana pool.\n{B}{R}, {T}, Hangman's Rock: Draw a card.",
+                "text": "{T}, Pay 1 life: Add {B} or {R} to your mana pool.\n{B}{R}, {T}, Sacrifice Hangman's Rock: Draw a card.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -30193,10 +30164,10 @@
                     "R"
                 ],
                 "colors": [],
-                "flavor": "\"Who would put a bunch of rocks above so many men's jobs? Start digging.\"\n\u2014K.C. Stonefellow, Mana Baron\nDesigned by havoc",
+                "flavor": "\"Reserved as a park for future generations. The ones that can pay, anyway.\"\n\u2014 Vivian Alston, mana baron\nDesigned by havoc",
                 "layout": "normal",
                 "name": "Hoodoo Valley",
-                "number": "246",
+                "number": "245",
                 "printings": [
                     "LDO"
                 ],
@@ -30216,10 +30187,10 @@
                     "G"
                 ],
                 "colors": [],
-                "flavor": "\"The forests are limitless. Why would we stop production?\"\n\u2014K.C. Stonefellow, Mana Baron\nDesigned by havoc",
+                "flavor": "\"Stonefellow's demand for timber may be limitless, but the forests themselves are not.\"\n\u2014Marion Hawthorne, naturalist\nDesigned by havoc",
                 "layout": "normal",
                 "name": "Lumber Mill",
-                "number": "247",
+                "number": "246",
                 "printings": [
                     "LDO"
                 ],
@@ -30230,6 +30201,29 @@
                     "Land"
                 ],
                 "watermark": "Green-Blue"
+            },
+            {
+                "artist": "Duggan",
+                "cmc": 0,
+                "colorIdentity": [
+                    "R",
+                    "G"
+                ],
+                "colors": [],
+                "flavor": "\"These rich and thriving wilds are not the mana barons' sludge disposal grounds.\"\n\u2014Marion Hawthorne, naturalist\nDesigned by havoc",
+                "layout": "normal",
+                "name": "Lush Mesa",
+                "number": "247",
+                "printings": [
+                    "LDO"
+                ],
+                "rarity": "Uncommon",
+                "text": "{T}, Pay 1 life: Add {R} or {G} to your mana pool.\n{R}{G}, {T}, Sacrifice Lush Mesa: Draw a card.",
+                "type": "Land",
+                "types": [
+                    "Land"
+                ],
+                "watermark": "Red-Green"
             },
             {
                 "artist": "goran-bukvic",
@@ -30257,7 +30251,7 @@
                 "cmc": 0,
                 "colorIdentity": [],
                 "colors": [],
-                "flavor": "Precious magical ore, the lifeblood of modern industry.",
+                "flavor": "The mana barons K.C. Stonefellow and Vivian Alston control the supply of the precious magical ore, moxenite.",
                 "layout": "normal",
                 "name": "Moxenite Mine",
                 "number": "249",
@@ -30279,7 +30273,7 @@
                     "B"
                 ],
                 "colors": [],
-                "flavor": "\"Shame about your cattle. Seems you'll have to sell the farm after all.\"\n\u2014K.C. Stonefellow, Mana Baron\nDesigned by havoc",
+                "flavor": "\"Shame about your cattle. Seems you'll have to sell the farm after all.\"\n\u2014K.C. Stonefellow, mana baron\nDesigned by havoc",
                 "layout": "normal",
                 "name": "Poisoned Waterhole",
                 "number": "250",
@@ -30302,7 +30296,7 @@
                     "R"
                 ],
                 "colors": [],
-                "flavor": "\"Prepare a portrait spell. I want this sight for my gallery before it's stripped.\"\n\u2014 K.C. Stonefellow, Mana Baron\nDesigned by havoc",
+                "flavor": "\"Prepare a portrait spell. I want this sight for my gallery before it's gone.\"\n\u2014 Vivian Alston, mana baron\nDesigned by havoc",
                 "layout": "normal",
                 "name": "Waterworn Gully",
                 "number": "251",
