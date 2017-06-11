@@ -23,6 +23,23 @@ class QueryTokenizer
         tokens << [:open]
       elsif s.scan(/\)/i)
         tokens << [:close]
+      elsif s.scan(%r[
+        (o|ft):
+        /(
+          (?:[^\\/]|\\.)*
+        )/
+        ]xi)
+        cond = {
+          "o" => ConditionOracleRegexp,
+          "ft" => ConditionFlavorRegexp,
+        }[s[1].downcase] or raise "Internal Error: #{s[0]}"
+        begin
+          rx = Regexp.new(s[2], Regexp::IGNORECASE)
+          tokens << [:test, cond.new(rx)]
+        rescue RegexpError => e
+          warnings << "bad regular expression in #{s[0]} - #{e.message}"
+          tokens << [:test, cond.new(s[2])]
+        end
       elsif s.scan(/t:(?:"(.*?)"|([’'\-\u2212\w\*]+))/i)
         tokens << [:test, ConditionTypes.new(s[1] || s[2])]
       elsif s.scan(/ft:(?:"(.*?)"|(\w+))/i)
