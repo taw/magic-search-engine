@@ -20,7 +20,7 @@ class Query
 
   # What is being done with @cond.metadata= is awful beyond belief...
   def search(db)
-    logger = Set[]
+    logger = Set[*@warnings]
     if @cond
       @cond.metadata! :logger, logger
       @cond.metadata! :fuzzy, nil

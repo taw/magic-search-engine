@@ -29,14 +29,18 @@ class QueryTokenizer
           (?:[^\\/]|\\.)*
         )/
         ]xi)
-        cond = {
-          "o" => ConditionOracleRegexp,
-          "ft" => ConditionFlavorRegexp,
-        }[s[1].downcase] or raise "Internal Error: #{s[0]}"
         begin
+          cond = {
+            "o" => ConditionOracleRegexp,
+            "ft" => ConditionFlavorRegexp,
+          }[s[1].downcase] or raise "Internal Error: #{s[0]}"
           rx = Regexp.new(s[2], Regexp::IGNORECASE)
           tokens << [:test, cond.new(rx)]
         rescue RegexpError => e
+          cond = {
+            "o" => ConditionOracle,
+            "ft" => ConditionFlavor,
+          }[s[1].downcase] or raise "Internal Error: #{s[0]}"
           warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, cond.new(s[2])]
         end
