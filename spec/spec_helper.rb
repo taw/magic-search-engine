@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require_relative "../lib/card_database"
 require_relative "../lib/cli_frontend"
 require "pry"

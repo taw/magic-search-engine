@@ -1,7 +1,8 @@
 source "https://rubygems.org"
 gem "rake"
 gem "damerau-levenshtein"
-gem "pry"
 gem "unicode_utils"
-gem "rspec"
 gem "nokogiri"
+gem "pry"
+gem "rspec", require: false, group: :test
+gem "simplecov", require: false, group: :test
