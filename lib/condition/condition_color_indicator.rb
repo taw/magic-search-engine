@@ -11,7 +11,7 @@ class ConditionColorIndicator < ConditionSimple
   end
 
   def to_s
-    "in:#{@indicator.join}"
+    "in:#{@indicator.to_a.join}"
   end
 
 private
