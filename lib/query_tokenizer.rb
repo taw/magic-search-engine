@@ -79,13 +79,17 @@ class QueryTokenizer
         tokens << [:test, ConditionColorIndicator.new(s[1])]
       elsif s.scan(/c!([wubrgcml]+)/i)
         tokens << [:test, ConditionColorsExclusive.new(s[1])]
-      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|(\w+))/i)
+        op = s[2]
+        op = "=" if op == ":"
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
-        tokens << [:test, klass.new(s[2], s[3] || s[4])]
+        tokens << [:test, klass.new(op, s[3] || s[4])]
       elsif s.scan(/r[:=](\w+)/i)
         tokens << [:test, ConditionRarity.new(s[1])]
-      elsif s.scan(/(pow|loy|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow\b|tou\b|cmc\b|loy|loyalty\b|year\b|[²\d\.\-\*\+½]+)/i)
-        tokens << [:test, ConditionExpr.new(s[1].downcase, s[2], s[3].downcase)]
+      elsif s.scan(/(pow|loy|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=|:)\s*(pow\b|tou\b|cmc\b|loy|loyalty\b|year\b|[²\d\.\-\*\+½]+)/i)
+        op = s[2]
+        op = "=" if op == ":"
+        tokens << [:test, ConditionExpr.new(s[1].downcase, op, s[3].downcase)]
       elsif s.scan(/(c|ci)\s*(>=|>|<=|<|=)\s*([wubrgc]*)/i)
         tokens << [:test, ConditionColorExpr.new(s[1].downcase, s[2], s[3].downcase)]
       elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})*)/i)
