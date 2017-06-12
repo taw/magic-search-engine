@@ -4,6 +4,6 @@ class ConditionOracleRegexp < ConditionRegexp
   end
 
   def to_s
-    "o:#{@regexp.inspect}"
+    "o:#{@regexp.inspect.sub(/i\z/, "")}"
   end
 end
