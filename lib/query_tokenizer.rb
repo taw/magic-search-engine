@@ -44,45 +44,45 @@ class QueryTokenizer
           warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, cond.new(s[2])]
         end
-      elsif s.scan(/t:(?:"(.*?)"|([’'\-\u2212\w\*]+))/i)
+      elsif s.scan(/t[:=](?:"(.*?)"|([’'\-\u2212\w\*]+))/i)
         tokens << [:test, ConditionTypes.new(s[1] || s[2])]
-      elsif s.scan(/ft:(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/ft[:=](?:"(.*?)"|(\w+))/i)
         tokens << [:test, ConditionFlavor.new(s[1] || s[2])]
-      elsif s.scan(/o:(?:"(.*?)"|([^\s\)]+))/i)
+      elsif s.scan(/o[:=](?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionOracle.new(s[1] || s[2])]
-      elsif s.scan(/a:(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/a[:=](?:"(.*?)"|(\w+))/i)
         tokens << [:test, ConditionArtist.new(s[1] || s[2])]
-      elsif s.scan(/(cn|tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct):(?:"(.*?)"|([^\s\)]+))/i)
+      elsif s.scan(/(cn|tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct)[:=](?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionForeign.new(s[1], s[2] || s[3])]
-      elsif s.scan(/(banned|restricted|legal):(?:"(.*?)"|([\w\-]+))/i)
+      elsif s.scan(/(banned|restricted|legal)[:=](?:"(.*?)"|([\w\-]+))/i)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(s[2] || s[3])]
-      elsif s.scan(/e:(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/e[:=](?:"(.*?)"|(\w+))/i)
         sets = [s[1] || s[2]]
         sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|(\w+))/i)
         tokens << [:test, ConditionEdition.new(*sets)]
-      elsif s.scan(/w:(?:"(.*?)"|(\w+|\*))/i)
+      elsif s.scan(/w[:=](?:"(.*?)"|(\w+|\*))/i)
         tokens << [:test, ConditionWatermark.new(s[1] || s[2])]
-      elsif s.scan(/f:(?:"(.*?)"|([\w\-]+))/i)
+      elsif s.scan(/f[:=](?:"(.*?)"|([\w\-]+))/i)
         tokens << [:test, ConditionFormat.new(s[1] || s[2])]
-      elsif s.scan(/b:(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/b[:=](?:"(.*?)"|(\w+))/i)
         blocks = [s[1] || s[2]]
         blocks << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|(\w+))/i)
         tokens << [:test, ConditionBlock.new(*blocks)]
-      elsif s.scan(/st:(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/st[:=](?:"(.*?)"|(\w+))/i)
         tokens << [:test, ConditionSetType.new(s[1] || s[2])]
       elsif s.scan(/(?:c|color):([wubrgcml]+)/i)
         tokens << [:test, ConditionColors.new(s[1])]
       elsif s.scan(/(?:ci|id)[:!]([wubrgcml]+)/i)
         tokens << [:test, ConditionColorIdentity.new(s[1])]
-      elsif s.scan(/(?:in):([wubrgcml]+)/i)
+      elsif s.scan(/(?:in)[:=]([wubrgcml]+)/i)
         tokens << [:test, ConditionColorIndicator.new(s[1])]
       elsif s.scan(/c!([wubrgcml]+)/i)
         tokens << [:test, ConditionColorsExclusive.new(s[1])]
       elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|(\w+))/i)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(s[2], s[3] || s[4])]
-      elsif s.scan(/r:(\w+)/i)
+      elsif s.scan(/r[:=](\w+)/i)
         tokens << [:test, ConditionRarity.new(s[1])]
       elsif s.scan(/(pow|loy|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=)\s*(pow\b|tou\b|cmc\b|loy|loyalty\b|year\b|[²\d\.\-\*\+½]+)/i)
         tokens << [:test, ConditionExpr.new(s[1].downcase, s[2], s[3].downcase)]
@@ -93,43 +93,43 @@ class QueryTokenizer
         op = "=" if op == ":"
         mana = s[2]
         tokens << [:test, ConditionMana.new(op, mana)]
-      elsif s.scan(/(is|not):(vanilla|spell|permanent|funny|timeshifted|colorshifted|reserved|multipart|promo|primary|commander|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|scryland|battleland)\b/i)
+      elsif s.scan(/(is|not)[:=](vanilla|spell|permanent|funny|timeshifted|colorshifted|reserved|multipart|promo|primary|commander|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|scryland|battleland)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         cond = s[2].capitalize
         cond = "Timeshifted" if cond == "Colorshifted"
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/(is|not):(split|flip|dfc|meld|aftermath)\b/i)
+      elsif s.scan(/(is|not)[:=](split|flip|dfc|meld|aftermath)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionLayout.new(s[2])]
-      elsif s.scan(/layout:(normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld|aftermath)/i)
+      elsif s.scan(/layout[:=](normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld|aftermath)/i)
         tokens << [:test, ConditionLayout.new(s[1])]
-      elsif s.scan(/(is|frame|not):(old|new|future)\b/i)
+      elsif s.scan(/(is|frame|not)[:=](old|new|future)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrame.new(s[2].downcase)]
-      elsif s.scan(/(is|not):(black-bordered|silver-bordered|white-bordered)\b/i)
+      elsif s.scan(/(is|not)[:=](black-bordered|silver-bordered|white-bordered)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionBorder.new(s[2].sub("-bordered", "").downcase)]
-      elsif s.scan(/border:(black|silver|white)\b/i)
+      elsif s.scan(/border[:=](black|silver|white)\b/i)
         tokens << [:test, ConditionBorder.new(s[1].downcase)]
-      elsif s.scan(/sort:(\w+)/i)
+      elsif s.scan(/sort[:=](\w+)/i)
         tokens << [:metadata, {sort: s[1].downcase}]
-      elsif s.scan(/view:(\w+)/i)
+      elsif s.scan(/view[:=](\w+)/i)
         tokens << [:metadata, {view: s[1].downcase}]
       elsif s.scan(/\+\+/i)
         tokens << [:metadata, {ungrouped: true}]
-      elsif s.scan(/time:(?:"(.*?)"|([\.\w]+))/i)
+      elsif s.scan(/time[:=](?:"(.*?)"|([\.\w]+))/i)
         # Parsing is downstream responsibility
         tokens << [:time, parse_time(s[1] || s[2])]
       elsif s.scan(/"(.*?)"/i)
         tokens << [:test, ConditionWord.new(s[1])]
-      elsif s.scan(/other:/i)
+      elsif s.scan(/other[:=]/i)
         tokens << [:other]
-      elsif s.scan(/part:/i)
+      elsif s.scan(/part[:=]/i)
         tokens << [:part]
-      elsif s.scan(/related:/i)
+      elsif s.scan(/related[:=]/i)
         tokens << [:related]
-      elsif s.scan(/alt:/i)
+      elsif s.scan(/alt[:=]/i)
         tokens << [:alt]
       elsif s.scan(/not\b/i)
         tokens << [:not]
