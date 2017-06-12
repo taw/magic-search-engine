@@ -29,6 +29,6 @@ class ConditionColorExpr < ConditionSimple
   end
 
   def to_s
-    "#{@a}#{@op}#{@b}"
+    "#{@a}#{@op}#{(["w", "u", "b", "r", "g"] & @b.to_a).join}"
   end
 end
