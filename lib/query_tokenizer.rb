@@ -86,10 +86,15 @@ class QueryTokenizer
         tokens << [:test, klass.new(op, s[3] || s[4])]
       elsif s.scan(/r[:=](\w+)/i)
         tokens << [:test, ConditionRarity.new(s[1])]
-      elsif s.scan(/(pow|loy|loyalty|tou|cmc|year)\s*(>=|>|<=|<|=|:)\s*(pow\b|tou\b|cmc\b|loy|loyalty\b|year\b|[²\d\.\-\*\+½]+)/i)
+      elsif s.scan(/(pow|power|loy|loyalty|tou|toughness|cmc|year)\s*(>=|>|<=|<|=|:)\s*(pow\b|power\b|tou\b|toughness\b|cmc\b|loy\b|loyalty\b|year\b|[²\d\.\-\*\+½]+)/i)
+        aliases = {"power" => "pow", "loyalty" => "loy", "toughness" => "tou"}
+        a = s[1].downcase
+        a = aliases[a] || a
         op = s[2]
         op = "=" if op == ":"
-        tokens << [:test, ConditionExpr.new(s[1].downcase, op, s[3].downcase)]
+        b = s[3].downcase
+        b = aliases[b] || b
+        tokens << [:test, ConditionExpr.new(a, op, b)]
       elsif s.scan(/(c|ci)\s*(>=|>|<=|<|=)\s*([wubrgc]*)/i)
         tokens << [:test, ConditionColorExpr.new(s[1].downcase, s[2], s[3].downcase)]
       elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})*)/i)

@@ -41,7 +41,7 @@ class ConditionExpr < ConditionSimple
       eval_card_value(card.toughness)
     when "cmc"
       eval_card_value(card.cmc)
-    when "loyalty", "loy"
+    when "loy"
       eval_card_value(card.loyalty)
     when "year"
       [:number, card.year]
