@@ -10,7 +10,7 @@ describe "Full Database Test" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal "f:standard",
-      %Q[(e:bfz or e:ogw or e:soi or e:w16 or e:emn or e:kld or e:aer or e:akh) -"Emrakul, the Promised End" -"Reflector Mage" -"Smuggler's Copter" -"Felidar Guardian"]
+      %Q[(e:bfz or e:ogw or e:soi or e:w16 or e:emn or e:kld or e:aer or e:akh) -"Emrakul, the Promised End" -"Reflector Mage" -"Smuggler's Copter" -"Felidar Guardian" -"Aetherworks Marvel"]
     assert_search_equal 'f:"ravnica block"', "e:rav or e:gp or e:di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal 'f:"ravnica block"', 'b:ravnica'
