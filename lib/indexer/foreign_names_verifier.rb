@@ -25,7 +25,7 @@ class ForeignNamesVerifier
     @raw_data[card_name] ||= {}
     foreign_names_data.each do |e|
       language_code = language_name_to_code.fetch(e["language"])
-      foreign_name = e["name"].gsub("&nbsp;", " ")
+      foreign_name = e["name"].gsub("&nbsp;", " ").gsub("\u00a0", " ").sub(/ —\z/, "")
       next if foreign_name == ""
       @raw_data[card_name][language_code] ||= {}
       @raw_data[card_name][language_code][foreign_name] ||= []
