@@ -1,0 +1,15 @@
+%h5 Legalities
+%ul.legalities
+  - legality = card.legality_information
+  - if legality.legal_everywhere?
+    %li
+      #{card.name} is legal in every format.
+  - elsif legality.legal_nowhere?
+    %li
+      #{card.name} is not legal in any format.
+  - else
+    - card.legality_information.to_h.sort.each do |format, status|
+      %li
+        = format
+        &mdash;
+        = status

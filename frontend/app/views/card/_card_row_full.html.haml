@@ -3,8 +3,56 @@
     = render 'card/picture', card: card
   .offset-1.col-6.cardinfo
     = render 'card', card: card
+
 .row.card_row
   .col-6.cardinfo
-    = render 'card_extra', card: card
+    %h5 Details
+    %ul
+      %li.infolabel
+        %span
+          Artist:
+        = link_to_artist(card.artist) do
+          = card.artist.name
+      - if card.reserved
+        %li.infolabel
+          = "#{card.name} is on Reserved List."
+      - if card.watermark
+        %li.infolabel
+          = "Watermark: #{card.watermark.capitalize}"
+      %li.infolabel
+        = "Rarity: #{card.rarity}"
+      %li.infolabel
+        = "Collector Number: #{card.number}"
+      %li.infolabel
+        = "Released: #{card.release_date.to_s}"
+
+    = render 'legality', card: card
+
+    - if card.rulings.present?
+      %h5 Rulings
+      %ul.rulings
+        - card.rulings.each do |ruling|
+          %li
+            = ruling["date"]
+            = format_oracle_text(ruling["text"])
+
+    %h5 Links
+    %ul
+      %li.infolabel
+        = link_to "Gallery of all printings", card_gallery_path(card)
+      - if card.gatherer_link.present?
+        %li.infolabel
+          %a{href: card.gatherer_link}
+            Gatherer
   .col-6
     = render 'printings_full', card: card, printings: printings_view_full(card, printings)
+
+    - if card.foreign_names
+      %h5 Foreign names
+      %ul.foreign_names
+        - card.foreign_names.sort.each do |language_code, foreign_names|
+          - foreign_names.each do |foreign_name|
+            %li
+              = foreign_name
+              &mdash;
+              %i.language_name= language_name(language_code)
