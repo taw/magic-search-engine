@@ -30,7 +30,7 @@ class Card
     calculate_mana_hash
     calculate_color_indicator
     @reserved = data["reserved"] || false
-    @types = ["types", "subtypes", "supertypes"].map{|t| data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "")}.to_set
+    @types = ["types", "subtypes", "supertypes"].map{|t| data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "").tr(" ", "-")}.to_set
     @cmc = data["cmc"] || 0
     # Normalize unicode, remove remainder text
     @power = data["power"] ? smart_convert_powtou(data["power"]) : nil

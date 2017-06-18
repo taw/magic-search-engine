@@ -117,6 +117,9 @@ BanListChangeDates = {
 
   # MTGO Commander random banlist
   "may 2017" => "2017-05-24",
+
+  # random Standard banlist
+  "jun 2017" => "2017-06-19",
 }
 
 DynamicBanListData = {
@@ -404,6 +407,7 @@ DynamicBanListData = {
   # As much as I managed to recover it, it should be fine
 
   "standard" => {
+    "Aetherworks Marvel"        => { "jun 2017" => "banned" },
     "Felidar Guardian"          => { "akh" => "banned" }, # technically separate emergency ban 2 days later
     "Emrakul, the Promised End" => { "aer" => "banned" },
     "Smuggler's Copter"         => { "aer" => "banned" },

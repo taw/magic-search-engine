@@ -203,6 +203,7 @@ task "clean" do
     "frontend/log/development.log",
     "frontend/log/test.log",
     "frontend/tmp",
+    "coverage"
   ].each do |path|
     system "trash", path if Pathname(path).exist?
   end
