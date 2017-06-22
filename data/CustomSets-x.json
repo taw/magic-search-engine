@@ -1788,7 +1788,7 @@
                 "subtypes": [
                     "Sphinx"
                 ],
-                "text": "Flying\nIf Sphinx of Right Answers would deal damage to an opponent, instead name a nonland card, then exile a number of cards equal to Sphinx of Right Answers's power from the top of that player's library. For each card with the chosen name exiled this way, put a +1/+1 counter on Sphinx of Right Answers.",
+                "text": "Flying\nIf Sphinx of Right Answers would deal damage to an opponent, instead choose a nonland card name, then exile a number of cards equal to Sphinx of Right Answers's power from the top of that player's library. For each card with the chosen name exiled this way, put a +1/+1 counter on Sphinx of Right Answers.",
                 "toughness": "6",
                 "type": "Creature \u2014 Sphinx",
                 "types": [
@@ -4132,7 +4132,7 @@
                     "Human",
                     "Shaman"
                 ],
-                "text": "When Acolyte of Coils enters the battlefield, create a 3/3 green Snake creature token.\nSerpents, Snakes, or Wurms you control have vigilance.",
+                "text": "When Acolyte of Coils enters the battlefield, create a 3/3 green Snake creature token.\nSerpents, Snakes, and Wurms you control have vigilance.",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Shaman",
                 "types": [
@@ -4177,7 +4177,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "\"Day 3: Don't walk with rhythm in the desert.\"\n\"Day 4: Don't walk without rhythm either.\"\n\"Day 5: Just don't walk.\"\n\u2014Seremun's journal",
+                "flavor": "\"Day 3: Don't walk with rhythm in the desert.\n\"Day 4: Don't walk without rhythm either.\n\"Day 5: Just don't walk.\"\n\u2014Seremun's journal",
                 "layout": "normal",
                 "manaCost": "{4}{G}{G}",
                 "name": "Colossal Dunewurm",
@@ -4788,7 +4788,7 @@
                     "ANK"
                 ],
                 "rarity": "Rare",
-                "text": "Planeswalkers don't leave the battlefield for having 0 loyalty.\nLoyalty counters can't be placed on planeswalkers. (Abilities that add loyalty counters can't be activated.)",
+                "text": "Planeswalkers don't leave the battlefield for having 0 loyalty.\nLoyalty counters can't be put on planeswalkers. (Abilities that add loyalty counters can't be activated.)",
                 "type": "Enchantment",
                 "types": [
                     "Enchantment"
@@ -5546,7 +5546,7 @@
                 ]
             },
             {
-                "artist": "K\u00f3sa Zsolt",
+                "artist": "Eric Jonasson",
                 "cmc": 5,
                 "colorIdentity": [
                     "R",
@@ -6401,27 +6401,6 @@
                 ]
             },
             {
-                "artist": "\u00a9 Funcom",
-                "cmc": 0,
-                "colorIdentity": [
-                    "W",
-                    "B"
-                ],
-                "colors": [],
-                "layout": "normal",
-                "name": "Desecrated Tomb",
-                "number": "234",
-                "printings": [
-                    "ANK"
-                ],
-                "rarity": "Rare",
-                "text": "{T}: Add {C} to your mana pool.\n{2}{W}{B}, {T}: Create a 1/1 white Spirit creature token with flying. You can't activate this ability during combat.",
-                "type": "Land",
-                "types": [
-                    "Land"
-                ]
-            },
-            {
                 "artist": "Alessandro Chirico",
                 "cmc": 0,
                 "colorIdentity": [],
@@ -6429,7 +6408,7 @@
                 "flavor": "Those who give the gods their due worship will finds themselves rewarded with treasure beyond measure.",
                 "layout": "normal",
                 "name": "Desert Temple",
-                "number": "235",
+                "number": "234",
                 "printings": [
                     "ANK"
                 ],
@@ -6451,7 +6430,7 @@
                 "flavor": "Not a single soul has set foot inside the Great Lighthouse of Kariro for centuries, yet its light has never faltered.",
                 "layout": "normal",
                 "name": "Desolate Lighthouse",
-                "number": "236",
+                "number": "235",
                 "printings": [
                     "ANK",
                     "AVR"
@@ -6473,7 +6452,7 @@
                 "colors": [],
                 "layout": "normal",
                 "name": "Forgotten Necropolis",
-                "number": "237",
+                "number": "236",
                 "printings": [
                     "ANK"
                 ],
@@ -6493,7 +6472,7 @@
                 "colors": [],
                 "layout": "normal",
                 "name": "Garden Oasis",
-                "number": "238",
+                "number": "237",
                 "printings": [
                     "ANK"
                 ],
@@ -6515,12 +6494,33 @@
                 "flavor": "\"Day 89: Father continues to rave about this mythical substance he calls 'ice.'\"\n\u2014Seremun's journal",
                 "layout": "normal",
                 "name": "Gelid Pyramids",
-                "number": "239",
+                "number": "238",
                 "printings": [
                     "ANK"
                 ],
                 "rarity": "Rare",
                 "text": "{T}: Add {C} to your mana pool.\n{1}{W}{U}, {T}: Tap target creature.",
+                "type": "Land",
+                "types": [
+                    "Land"
+                ]
+            },
+            {
+                "artist": "Melvin Chan",
+                "cmc": 0,
+                "colorIdentity": [],
+                "colors": [],
+                "flavor": "Ankheret's leylines weave and twine, desperately trying to balance reality against a god's death.",
+                "layout": "normal",
+                "name": "Mana Confluence",
+                "number": "239",
+                "printings": [
+                    "ANK",
+                    "JOU",
+                    "EXP"
+                ],
+                "rarity": "Rare",
+                "text": "{T}, Pay 1 life: Add one mana of any color tor your mana pool.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -6832,7 +6832,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -6958,7 +6957,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -7084,7 +7082,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -7208,7 +7205,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -7332,7 +7328,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -7456,7 +7451,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -7585,7 +7579,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -7714,7 +7707,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -7843,7 +7835,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -7973,7 +7964,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -8103,7 +8093,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -8233,7 +8222,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -8361,7 +8349,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -8489,7 +8476,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
@@ -8617,7 +8603,6 @@
                     "AKH",
                     "AYR",
                     "DMS",
-                    "IMG",
                     "TSL"
                 ],
                 "rarity": "Basic Land",
