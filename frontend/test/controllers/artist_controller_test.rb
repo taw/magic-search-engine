@@ -10,12 +10,12 @@ class ArtistControllerTest < ActionController::TestCase
   end
 
   test "actual artist" do
-    get "show", id: "steve_ellis"
+    get "show", params: {id: "steve_ellis"}
     assert_response 200
   end
 
   test "fake artist" do
-    get "show", id: "katy_perry"
+    get "show", params: {id: "katy_perry"}
     assert_response 404
   end
 end

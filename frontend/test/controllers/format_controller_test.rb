@@ -10,12 +10,12 @@ class FormatControllerTest < ActionController::TestCase
   end
 
   test "show - fake format" do
-    get "show", id: "return-to-homelands-block"
+    get "show", params: {id: "return-to-homelands-block"}
     assert_response 404
   end
 
   test "show - Scars of Mirrodin Block" do
-    get "show", id: "scars-of-mirrodin-block"
+    get "show", params: {id: "scars-of-mirrodin-block"}
     assert_response 200
     assert_select %Q[title:contains("Scars of Mirrodin Block")]
     assert_select %Q[h3:contains("Scars of Mirrodin Block")]
@@ -27,7 +27,7 @@ class FormatControllerTest < ActionController::TestCase
   end
 
   test "show - Innistrad Block" do
-    get "show", id: "innistrad-block"
+    get "show", params: {id: "innistrad-block"}
     assert_response 200
     assert_select %Q[title:contains("Innistrad Block")]
     assert_select %Q[h3:contains("Innistrad Block")]
@@ -41,7 +41,7 @@ class FormatControllerTest < ActionController::TestCase
   Format.all_format_classes.each do |format_class|
     format = format_class.new
     test "format - #{format}" do
-      get "show", id: format.format_pretty_name.parameterize
+      get "show", params: {id: format.format_pretty_name.parameterize}
       assert_response 200
     end
   end
