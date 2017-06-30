@@ -120,9 +120,16 @@ BanListChangeDates = {
 
   # random Standard banlist
   "jun 2017" => "2017-06-19",
+
+  # Custom Constructed
+  "2017-06-27" => "2017-06-27"
 }
 
 DynamicBanListData = {
+  "custom standard" => {
+    "Dreamheart Mox" => { "2017-06-27" => "banned" },
+  },
+
   ### THESE LISTS SHOULD BE COMPLETE AND ACCURATE
   "mtgo commander" => {
     "Black Lotus" => "banned",
