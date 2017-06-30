@@ -10,7 +10,7 @@ class SetControllerTest < ActionController::TestCase
   end
 
   test "actual set" do
-    get "show", id: "nph"
+    get "show", params: {id: "nph"}
     assert_response 200
     assert_select %Q[.results_summary:contains("New Phyrexia contains 175 cards.")]
     assert_select %Q[.results_summary:contains("It is part of Scars of Mirrodin block.")]
@@ -20,7 +20,7 @@ class SetControllerTest < ActionController::TestCase
   end
 
   test "fake set" do
-    get "show", id: "lolwtf"
+    get "show", params: {id: "lolwtf"}
     assert_response 404
   end
 end
