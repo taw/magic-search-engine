@@ -37,7 +37,7 @@ module ApplicationHelper
   end
 
   def format_oracle_text(card_text)
-    h(card_text).gsub("\n", "<br/>").gsub(/(?:\{.*?\})+/) do
+    h(card_text.gsub(/^\n+/, "")).gsub("\n", "<br/>").gsub(/(?:\{.*?\})+/) do
       %Q[<span class="manacost">] + format_mana_symbols($&) + %Q[</span>]
     end.html_safe
   end
