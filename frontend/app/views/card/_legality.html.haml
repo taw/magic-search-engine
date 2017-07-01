@@ -10,6 +10,5 @@
   - else
     - card.legality_information.to_h.sort.each do |format_name, status|
       %li
+        %i{class: "legality-#{status}"}= status
         = link_to format_name, controller: "format", action: "show", id: format_name.parameterize
-        &mdash;
-        = status

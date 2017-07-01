@@ -119,6 +119,21 @@ form.search {
   .legalities {
     font-size: small;
   }
+  .legality-legal, .legality-banned, .legality-restricted {
+    display: inline-block;
+    width: 7em;
+    text-align: center;
+    margin: 1px;
+  }
+  .legality-legal {
+    background-color: #8f8;
+  }
+  .legality-banned {
+    background-color: #f88;
+  }
+  .legality-restricted {
+    background-color: #fa4;
+  }
 }
 .foreign_names {
   font-size: small;
