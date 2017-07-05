@@ -64,4 +64,14 @@ class Condition
       str
     end
   end
+
+  def merge_into_set(subresults)
+    result = Set[]
+    subresults.each do |subresult|
+      subresult.each do |item|
+        result << item
+      end
+    end
+    result
+  end
 end
