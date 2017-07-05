@@ -5,7 +5,7 @@ class ConditionWord < ConditionSimple
   end
 
   def match?(card)
-    name = card.stemmed_name.tr("-", " ")
+    name = card.stemmed_name
     return true if name.include?(@stem_word)
     @suggestions.each do |alt, alt_stem|
       if name.include?(alt_stem)

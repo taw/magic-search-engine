@@ -17,7 +17,7 @@ class Card
     @printings = []
 
     @name = normalize_name(data["name"])
-    @stemmed_name = @name.downcase.gsub(/s\b/, "")
+    @stemmed_name = @name.downcase.gsub(/s\b/, "").tr("-", " ")
     @names = data["names"] &&  data["names"].map{|n| normalize_name(n)}
     @layout = data["layout"]
     @colors = data["colors"] || ""
