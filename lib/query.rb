@@ -18,7 +18,6 @@ class Query
     # puts "Parse #{query_string} -> #{@cond}"
   end
 
-  # What is being done with @cond.metadata= is awful beyond belief...
   def search(db)
     logger = Set[*@warnings]
     if @cond
@@ -33,46 +32,7 @@ class Query
       results = db.printings
     end
 
-    results = results.sort_by do |c|
-      case @metadata[:sort]
-      when "new"
-        [c.set.regular? ? 0 : 1, -c.release_date.to_i_sort]
-      when "old"
-        [c.set.regular? ? 0 : 1, c.release_date.to_i_sort]
-      when "newall"
-        [-c.release_date.to_i_sort]
-      when "oldall"
-        [c.release_date.to_i_sort]
-      when "cmc"
-        [c.cmc ? 0 : 1, -c.cmc.to_i]
-      when "pow"
-        [c.power ? 0 : 1, -c.power.to_i]
-      when "tou"
-        [c.toughness ? 0 : 1, -c.toughness.to_i]
-      when "rand"
-        [Digest::MD5.hexdigest(@query_string + c.name)]
-      else # "name" or unknown key
-        []
-      end + [
-        c.name,
-        !c.online_only? ? 0 : 1,
-        c.frame != "old" ? 0 : 1,
-        c.set.regular? ? 0 : 1,
-        -c.release_date.to_i_sort,
-        c.set.name,
-        c.number.to_i,
-        c.number
-      ]
-      # Fallback sorting for printings of each card:
-      # * not MTGO only
-      # * new frame
-      # * Standard only printing
-      # * most recent
-      # * set name
-      # * card number as integer (10 > 2)
-      # * card number as string (10A > 10)
-    end
-    SearchResults.new(results, logger, ungrouped?)
+    SearchResults.new(sort_results(results), logger, ungrouped?)
   end
 
   def to_s
@@ -101,6 +61,48 @@ class Query
   end
 
   private
+
+  # Fallback sorting for printings of each card:
+  # * not MTGO only
+  # * new frame
+  # * Standard only printing
+  # * most recent
+  # * set name
+  # * card number as integer (10 > 2)
+  # * card number as string (10A > 10)
+  def sort_results(results)
+    results.sort_by do |c|
+      case @metadata[:sort]
+      when "new"
+        [c.set.regular? ? 0 : 1, -c.release_date_i]
+      when "old"
+        [c.set.regular? ? 0 : 1, c.release_date_i]
+      when "newall"
+        [-c.release_date_i]
+      when "oldall"
+        [c.release_date_i]
+      when "cmc"
+        [c.cmc ? 0 : 1, -c.cmc.to_i]
+      when "pow"
+        [c.power ? 0 : 1, -c.power.to_i]
+      when "tou"
+        [c.toughness ? 0 : 1, -c.toughness.to_i]
+      when "rand"
+        [Digest::MD5.hexdigest(@query_string + c.name)]
+      else # "name" or unknown key
+        []
+      end + [
+        c.name,
+        c.online_only? ? 1 : 0,
+        c.frame == "old" ? 1 : 0,
+        c.set.regular? ? 0 : 1,
+        -c.release_date_i,
+        c.set.name,
+        c.number.to_i,
+        c.number,
+      ]
+    end
+  end
 
   def ungrouped?
     !!@metadata[:ungrouped]
