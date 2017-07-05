@@ -2,6 +2,7 @@ class CardPrinting
   attr_reader :card, :set, :date, :release_date, :set_code
   attr_accessor :others, :artist
   attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number
+  attr_reader :release_date_i
 
   def initialize(card, set, data)
     @card = card
@@ -9,6 +10,7 @@ class CardPrinting
     @set_code = @set.code # performance caching
     @others = nil
     @release_date = data["release_date"] ? Date.parse(data["release_date"]) : @set.release_date
+    @release_date_i = @release_date.to_i_sort
     @watermark = data["watermark"] && data["watermark"].downcase
     @number = data["number"]
     @multiverseid = data["multiverseid"]
