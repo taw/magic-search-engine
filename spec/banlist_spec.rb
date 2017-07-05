@@ -6,6 +6,17 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2017" do
+    assert_banlist_changes "July 2017",
+      "mtgo commander banned", "Vial Smasher the Fierce",
+      "mtgo commander banned", "Ponder",
+      "mtgo commander banned", "Preordain",
+      "mtgo commander banned", "Brainstorm",
+      "mtgo commander banned", "Treachery",
+      "mtgo commander unbanned", "Biorhythm",
+      "mtgo commander unbanned", "Limited Resources",
+      "mtgo commander unbanned", "Painter's Servant",
+      "mtgo commander unbanned", "Trade Secrets"
+
     assert_banlist_changes "June 2017",
       "standard banned", "Aetherworks Marvel"
 
