@@ -120,6 +120,9 @@ BanListChangeDates = {
 
   # random Standard banlist
   "jun 2017" => "2017-06-19",
+
+  # MTGO Commander random banlist
+  "jul 2017" => "2017-07-05",
 }
 
 DynamicBanListData = {
@@ -174,14 +177,19 @@ DynamicBanListData = {
     "Serra Ascendant" => "banned",
     "The Tabernacle at Pendrell Vale" => "banned",
     "Time Walk" => "banned",
-    "Biorhythm" => "banned",
-    "Limited Resources" => "banned",
-    "Painter's Servant" => "banned",
+    "Biorhythm" => { "start" => "banned", "jul 2017" => "legal" },
+    "Limited Resources" => { "start" => "banned", "jul 2017" => "legal" },
+    "Painter's Servant" => { "start" => "banned", "jul 2017" => "legal" },
+    "Trade Secrets" => { "start" => "banned", "jul 2017" => "legal" },
     "Sensei's Divining Top" => "banned",
-    "Trade Secrets" => "banned",
     "Dig Through Time" => { "may 2017" => "banned"},
     "Strip Mine" => { "may 2017" => "banned"},
     "Treasure Cruise" => { "may 2017" => "banned"},
+    "Vial Smasher the Fierce" => { "jul 2017" => "banned" },
+    "Ponder" => { "jul 2017" => "banned" },
+    "Preordain" => { "jul 2017" => "banned" },
+    "Brainstorm" => { "jul 2017" => "banned" },
+    "Treachery" => { "jul 2017" => "banned" },
   },
 
   "modern" => {
