@@ -4,7 +4,8 @@ class ConditionEdition < Condition
   end
 
   def search(db)
-    @editions.map{|e| db.resolve_editions(e)}.inject(Set[], &:|).map(&:printings).inject(Set[], &:|)
+    cards = merge_into_set( @editions.map{|e| db.resolve_editions(e)} )
+    merge_into_set cards.map(&:printings)
   end
 
   def to_s

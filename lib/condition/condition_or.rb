@@ -13,7 +13,7 @@ class ConditionOr < Condition
   end
 
   def search(db)
-    @conds.map{|cond| cond.search(db)}.inject(&:|)
+    merge_into_set @conds.map{|cond| cond.search(db)}
   end
 
   def match?(card)
