@@ -1,34 +1,43 @@
 class CardPrinting
-  attr_reader :card, :set, :date, :release_date, :set_code
+  attr_reader :card, :set, :date, :release_date
   attr_accessor :others, :artist
-  attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number
+  attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :border, :timeshifted
+
+  # Performance cache of derived information
+  attr_reader :stemmed_name, :set_code
+  attr_reader :release_date_i
 
   def initialize(card, set, data)
     @card = card
     @set = set
-    @set_code = @set.code # performance caching
     @others = nil
     @release_date = data["release_date"] ? Date.parse(data["release_date"]) : @set.release_date
+    @release_date_i = @release_date.to_i_sort
     @watermark = data["watermark"] && data["watermark"].downcase
     @number = data["number"]
     @multiverseid = data["multiverseid"]
     @artist_name = data["artist"]
-    @flavor = data["flavor"]
-    @border = data["border"]
-    @timeshifted = data["timeshifted"]
+    @flavor = data["flavor"] || ""
+    @border = data["border"] || @set.border
+    @timeshifted = data["timeshifted"] || false
     @rarity = data["rarity"]
-  end
+    @frame = begin
+      eight_edition_release_date = Date.new(2003,7,28)
+      if @release_date < eight_edition_release_date
+        "old"
+      elsif @set.code == "tsts"
+        "old"
+      elsif @timeshifted and @set.code == "fut"
+        "future"
+      else
+        # Were there any 8e+ old frame printings?
+        "new"
+      end
+    end
 
-  def flavor
-    @flavor || ""
-  end
-
-  def border
-    @border || @set.border
-  end
-
-  def timeshifted
-    @timeshifted || false
+    # Performance cache
+    @stemmed_name = @card.stemmed_name
+    @set_code = @set.code
   end
 
   def year
@@ -39,39 +48,19 @@ class CardPrinting
     @set.type
   end
 
-  def frame
-    @frame ||= begin
-      eight_edition_release_date = Date.parse("2003-07-28")
-      if @release_date < eight_edition_release_date
-        "old"
-      elsif set_code == "tsts"
-        "old"
-      elsif timeshifted and set_code == "fut"
-        "future"
-      else
-        # Were there any 8e+ old frame printings?
-        "new"
-      end
-    end
-  end
-
-  def online_only?
-    @set.online_only?
-  end
-
   # This is a bit too performance-critical to use method_missing
   # It's not a huge difference, but no reason to waste ~5% of execution time on it
   def set_name
     @set.name
   end
 
-  %W[block_code block_name].each do |m|
+  %W[block_code block_name online_only?].each do |m|
     eval("def #{m}; @set.#{m}; end")
   end
   %W[name names layout colors mana_cost reserved types cmc text power
     toughness loyalty extra color_identity has_multiple_parts? typeline
     first_release_date last_release_date printings life hand rulings
-    secondary foreign_names stemmed_name mana_hash funny color_indicator
+    secondary foreign_names mana_hash funny color_indicator
     related first_regular_release_date
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")

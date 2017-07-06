@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def paginate_by_set(printings, page)
     printings
-             .sort_by{|c| [-c.release_date.to_i_sort, c.set_name, c.name]}
+             .sort_by{|c| [-c.release_date_i, c.set_name, c.name]}
              .group_by(&:set)
              .to_a
              .paginate(page: page, per_page: 10)

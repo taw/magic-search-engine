@@ -8,8 +8,7 @@
     %li
       #{card.name} is not legal in any format.
   - else
-    - card.legality_information.to_h.sort.each do |format, status|
+    - card.legality_information.to_h.sort.each do |format_name, status|
       %li
-        = format
-        &mdash;
-        = status
+        %i{class: "legality-#{status}"}= status
+        = link_to format_name, controller: "format", action: "show", id: format_name.parameterize

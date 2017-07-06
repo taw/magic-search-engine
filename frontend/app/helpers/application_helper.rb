@@ -37,7 +37,7 @@ module ApplicationHelper
   end
 
   def format_oracle_text(card_text)
-    h(card_text).gsub("\n", "<br/>").gsub(/(?:\{.*?\})+/) do
+    h((card_text || "").gsub(/\A\n+/, "")).gsub("\n", "<br/>").gsub(/(?:\{.*?\})+/) do
       %Q[<span class="manacost">] + format_mana_symbols($&) + %Q[</span>]
     end.html_safe
   end
@@ -160,6 +160,21 @@ module ApplicationHelper
       "pt" => "Brazilian Portuguese",
       "ru" => "Russian",
       "sp" => "Spanish",
+    }.fetch(language_code)
+  end
+
+  def language_flag(language_code)
+    {
+      "cs" => "cn",
+      "ct" => "tw",
+      "fr" => "fr",
+      "de" => "de",
+      "it" => "it",
+      "jp" => "jp",
+      "kr" => "kr",
+      "pt" => "br",
+      "ru" => "ru",
+      "sp" => "es",
     }.fetch(language_code)
   end
 end

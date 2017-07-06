@@ -8,7 +8,7 @@ class ConditionSetType < Condition
   # "in" is code for "Invasion", don't substring match "Innistrad" etc.
   # "Mirrodin" is name for "Mirrodin", don't substring match "Scars of Mirrodin"
   def search(db)
-    matching_sets(db).map(&:printings).inject(Set[], &:|)
+    merge_into_set matching_sets(db).map(&:printings)
   end
 
   def to_s

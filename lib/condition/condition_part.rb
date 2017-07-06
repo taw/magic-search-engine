@@ -4,7 +4,7 @@ class ConditionPart < Condition
   end
 
   def search(db)
-    @cond.search(db).map{|c| c.others ? Set[c, *c.others] : Set[]}.inject(Set[], &:|)
+    merge_into_set @cond.search(db).map{|c| c.others ? Set[c, *c.others] : Set[]}
   end
 
   def metadata!(key, value)
