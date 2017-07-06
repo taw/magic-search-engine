@@ -5,7 +5,7 @@ module ApplicationHelper
       action: "show",
       set: card.set_code,
       id: card.number,
-      # This part is purely decorative, so we don't bother desting it
+      # This part is purely decorative, so we don't bother testing it
       name: card.name
                 .gsub("'s", "s")
                 .gsub("I'm", "Im")
