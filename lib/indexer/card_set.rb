@@ -23,7 +23,7 @@ MagicBlocks = [
   ["bfz", "Battle for Zendikar", "bfz", "ogw"],
   ["soi", "Shadows over Innistrad", "soi", "emn"],
   ["kld", "Kaladesh", "kld", "aer"],
-  ["akh", "Amonkhet", "akh"],
+  ["akh", "Amonkhet", "akh", "hou"],
 ]
 
 class Indexer
@@ -74,7 +74,7 @@ class Indexer
       case set_code
       when "van"
         set_data["cards"].sort_by{|c| c["multiverseid"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
-      when "pch", "arc", "pc2", "pca"
+      when "pch", "arc", "pc2", "pca", "e01"
         set_data["cards"].each do |card|
           unless (card["types"] & ["Plane", "Phenomenon", "Scheme"]).empty?
             card["number"] = (1000 + card["number"].to_i).to_s

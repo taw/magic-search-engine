@@ -183,6 +183,7 @@ describe "Card nicknames" do
       "Forbidding Watchtower",
       "Ghitu Encampment",
       "Hissing Quagmire",
+      "Hostile Desert",
       "Inkmoth Nexus",
       "Lavaclaw Reaches",
       "Lumbering Falls",

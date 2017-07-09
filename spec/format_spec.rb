@@ -237,6 +237,12 @@ describe "Formats" do
   ## Standard
 
   it "standard" do
+    assert_block_composition "standard", "hou",  ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh", "hou"],
+      "Emrakul, the Promised End" => "banned",
+      "Reflector Mage" => "banned",
+      "Smuggler's Copter" => "banned",
+      "Felidar Guardian" => "banned",
+      "Aetherworks Marvel" => "banned"
     assert_block_composition "standard", "akh",  ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh"],
       "Emrakul, the Promised End" => "banned",
       "Reflector Mage" => "banned",
