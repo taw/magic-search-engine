@@ -288,7 +288,9 @@ class Indexer
   end
 
   def format_watermark(watermark)
-    watermark && watermark.downcase
+    return unless watermark
+    return if %W[White Blue Black Red Green Colorless].include?(watermark)
+    watermark.downcase
   end
 
   def format_rarity(rarity)

@@ -9,6 +9,7 @@ class ConditionIsManland < Condition
       "forbidding watchtower",
       "ghitu encampment",
       "hissing quagmire",
+      "hostile desert",
       "inkmoth nexus",
       "lavaclaw reaches",
       "lumbering falls",

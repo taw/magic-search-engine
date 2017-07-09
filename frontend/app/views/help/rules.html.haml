@@ -1,7 +1,7 @@
 .row
   .col-12
     %h4 Magic: The Gathering Comprehensive Rules
-    %p These rules are effective as of April 28, 2017.
+    %p These rules are effective as of June 5, 2017.
     %h3{id: "section-introduction"} Introduction
     %p This document is designed for people who’ve moved beyond the basics of the Magic: The Gathering® game. If you’re a beginning Magic™ player, you’ll probably find these rules intimidating. They’re intended to be the ultimate authority for the game, and you won’t usually need to refer to them except in specific cases or during competitive games.
     %p For casual play and most ordinary situations, you’ll find what you need in the Magic: The Gathering basic rules. You can download a copy of the basic rules PDF from the Wizards of the Coast® Magic rules website at Magic.Wizards.com/Rules. If you’re sure this is where you want to be, keep reading.
@@ -2271,7 +2271,7 @@
       .rule_text The owner of a scheme card is the player who started the game with it in the command zone. The controller of a face-up scheme card is its owner.
     .rule{id: "section-312-6"}
       .rule_id 312.6.
-      .rule_text If a non-ongoing scheme card is face up in the command zone, and it isn’t the source of a triggered ability that has triggered but not yet left the stack, that scheme card is turned face down and put on the bottom of its owner’s scheme deck the next time a player would receive priority. (This is a state-based action. See rule <a href="#section-704">704</a>.)
+      .rule_text If a non-ongoing scheme card is face up in the command zone, and no triggered abilities of any scheme are on the stack or waiting to be put on the stack, that scheme card is turned face down and put on the bottom of its owner’s scheme deck the next time a player would receive priority. (This is a state-based action. See rule <a href="#section-704">704</a>.)
     .rule{id: "section-312-7"}
       .rule_id 312.7.
       .rule_text If an ability of a scheme card includes the text “this scheme,” it means the scheme card in the command zone that’s the source of that ability. This is an exception to rule <a href="#section-109-2">109.2</a>.
@@ -3114,7 +3114,10 @@
       .rule_text Handling Triggered Abilities
     .rule{id: "section-603-1"}
       .rule_id 603.1.
-      .rule_text Triggered abilities have a trigger condition and an effect. They are written as “[When/Whenever/At] [trigger condition or event], [effect].”
+      .rule_text Triggered abilities have a trigger condition and an effect. They are written as “[When/Whenever/At] [trigger condition or event], [effect]. [Instructions (if any).]”
+    .rule{id: "section-603-1a"}
+      .rule_id 603.1a
+      .rule_text A triggered ability may include instructions after its effects that limit what the ability may target or state that it can’t be countered. This text is not part of the ability’s effect. It functions while the ability is on the stack.
     .rule{id: "section-603-2"}
       .rule_id 603.2.
       .rule_text Whenever a game event or game state matches a triggered ability’s trigger event, that ability automatically triggers. The ability doesn’t do anything at this point.
@@ -3956,7 +3959,7 @@
       .rule_text One card (City in a Bottle) refers to permanents and cards with a name originally printed in the Arabian Nights™ expansion. Those names are Abu Ja’far, Aladdin, Aladdin’s Lamp, Aladdin’s Ring, Ali Baba, Ali from Cairo, Army of Allah, Bazaar of Baghdad, Bird Maiden, Bottle of Suleiman, Brass Man, Camel, City in a Bottle, City of Brass, Cuombajj Witches, Cyclone, Dancing Scimitar, Dandân, Desert, Desert Nomads, Desert Twister, Diamond Valley, Drop of Honey, Ebony Horse, Elephant Graveyard, El-Hajjâj, Erg Raiders, Erhnam Djinn, Eye for an Eye, Fishliver Oil, Flying Carpet, Flying Men, Ghazbán Ogre, Giant Tortoise, Guardian Beast, Hasran Ogress, Hurr Jackal, Ifh-Biff Efreet, Island Fish Jasconius, Island of Wak-Wak, Jandor’s Ring, Jandor’s Saddlebags, Jeweled Bird, Jihad, Junún Efreet, Juzám Djinn, Khabál Ghoul, King Suleiman, Kird Ape, Library of Alexandria, Magnetic Mountain, Merchant Ship, Metamorphosis, Mijae Djinn, Moorish Cavalry, Nafs Asp, Oasis, Old Man of the Sea, Oubliette, Piety, Pyramids, Repentant Blacksmith, Ring of Ma’rűf, Rukh Egg, Sandals of Abdallah, Sandstorm, Serendib Djinn, Serendib Efreet, Shahrazad, Sindbad, Singing Tree, Sorceress Queen, Stone-Throwing Devils, Unstable Mutation, War Elephant, Wyluli Wolf, and Ydwen Efreet.
     .rule{id: "section-700-6b"}
       .rule_id 700.6b
-      .rule_text One card (Golgothian Sylex) refers to permanents a name originally printed in the Antiquities™ expansion. Those names are Amulet of Kroog, Argivian Archaeologist, Argivian Blacksmith, Argothian Pixies, Argothian Treefolk, Armageddon Clock, Artifact Blast, Artifact Possession, Artifact Ward, Ashnod’s Altar, Ashnod’s Battle Gear, Ashnod’s Transmogrant, Atog, Battering Ram, Bronze Tablet, Candelabra of Tawnos, Circle of Protection: Artifacts, Citanul Druid, Clay Statue, Clockwork Avian, Colossus of Sardia, Coral Helm, Crumble, Cursed Rack, Damping Field, Detonate, Drafna’s Restoration, Dragon Engine, Dwarven Weaponsmith, Energy Flux, Feldon’s Cane, Gaea’s Avenger, Gate to Phyrexia, Goblin Artisans, Golgothian Sylex, Grapeshot Catapult, Haunting Wind, Hurkyl’s Recall, Ivory Tower, Jalum Tome, Martyrs of Korlis, Mightstone, Millstone, Mishra’s Factory, Mishra’s War Machine, Mishra’s Workshop, Obelisk of Undoing, Onulet, Orcish Mechanics, Ornithopter, Phyrexian Gremlins, Power Artifact, Powerleech, Priest of Yawgmoth, Primal Clay, The Rack, Rakalite, Reconstruction, Reverse Polarity, Rocket Launcher, Sage of Lat-Nam, Shapeshifter, Shatterstorm, Staff of Zegon, Strip Mine, Su-Chi, Tablet of Epityr, Tawnos’s Coffin, Tawnos’s Wand, Tawnos’s Weaponry, Tetravus, Titania’s Song, Transmute Artifact, Triskelion, Urza’s Avenger, Urza’s Chalice, Urza’s Mine, Urza’s Miter, Urza’s Power Plant, Urza’s Tower, Wall of Spears, Weakstone, Xenic Poltergeist, Yawgmoth Demon, and Yotian Soldier.
+      .rule_text One card (Golgothian Sylex) refers to permanents with a name originally printed in the Antiquities™ expansion. Those names are Amulet of Kroog, Argivian Archaeologist, Argivian Blacksmith, Argothian Pixies, Argothian Treefolk, Armageddon Clock, Artifact Blast, Artifact Possession, Artifact Ward, Ashnod’s Altar, Ashnod’s Battle Gear, Ashnod’s Transmogrant, Atog, Battering Ram, Bronze Tablet, Candelabra of Tawnos, Circle of Protection: Artifacts, Citanul Druid, Clay Statue, Clockwork Avian, Colossus of Sardia, Coral Helm, Crumble, Cursed Rack, Damping Field, Detonate, Drafna’s Restoration, Dragon Engine, Dwarven Weaponsmith, Energy Flux, Feldon’s Cane, Gaea’s Avenger, Gate to Phyrexia, Goblin Artisans, Golgothian Sylex, Grapeshot Catapult, Haunting Wind, Hurkyl’s Recall, Ivory Tower, Jalum Tome, Martyrs of Korlis, Mightstone, Millstone, Mishra’s Factory, Mishra’s War Machine, Mishra’s Workshop, Obelisk of Undoing, Onulet, Orcish Mechanics, Ornithopter, Phyrexian Gremlins, Power Artifact, Powerleech, Priest of Yawgmoth, Primal Clay, The Rack, Rakalite, Reconstruction, Reverse Polarity, Rocket Launcher, Sage of Lat-Nam, Shapeshifter, Shatterstorm, Staff of Zegon, Strip Mine, Su-Chi, Tablet of Epityr, Tawnos’s Coffin, Tawnos’s Wand, Tawnos’s Weaponry, Tetravus, Titania’s Song, Transmute Artifact, Triskelion, Urza’s Avenger, Urza’s Chalice, Urza’s Mine, Urza’s Miter, Urza’s Power Plant, Urza’s Tower, Wall of Spears, Weakstone, Xenic Poltergeist, Yawgmoth Demon, and Yotian Soldier.
     .rule{id: "section-700-6c"}
       .rule_id 700.6c
       .rule_text One card (Apocalypse Chime) refers to permanents with a name originally printed in the Homelands™ expansion. Those names are Abbey Gargoyles; Abbey Matron; Aether Storm; Aliban’s Tower; Ambush; Ambush Party; Anaba Ancestor; Anaba Bodyguard; Anaba Shaman; Anaba Spirit Crafter; An-Havva Constable; An-Havva Inn; An-Havva Township; An-Zerrin Ruins; Apocalypse Chime; Autumn Willow; Aysen Abbey; Aysen Bureaucrats; Aysen Crusader; Aysen Highway; Baki’s Curse; Baron Sengir; Beast Walkers; Black Carriage; Broken Visage; Carapace; Castle Sengir; Cemetery Gate; Chain Stasis; Chandler; Clockwork Gnomes; Clockwork Steed; Clockwork Swarm; Coral Reef; Dark Maze; Daughter of Autumn; Death Speakers; Didgeridoo; Drudge Spell; Dry Spell; Dwarven Pony; Dwarven Sea Clan; Dwarven Trader; Ebony Rhino; Eron the Relentless; Evaporate; Faerie Noble; Feast of the Unicorn; Feroz’s Ban; Folk of An-Havva; Forget; Funeral March; Ghost Hounds; Giant Albatross; Giant Oyster; Grandmother Sengir; Greater Werewolf; Hazduhr the Abbot; Headstone; Heart Wolf; Hungry Mist; Ihsan’s Shade; Irini Sengir; Ironclaw Curse; Jinx; Joven; Joven’s Ferrets; Joven’s Tools; Koskun Falls; Koskun Keep; Labyrinth Minotaur; Leaping Lizard; Leeches; Mammoth Harness; Marjhan; Memory Lapse; Merchant Scroll; Mesa Falcon; Mystic Decree; Narwhal; Orcish Mine; Primal Order; Prophecy; Rashka the Slayer; Reef Pirates; Renewal; Retribution; Reveka, Wizard Savant; Root Spider; Roots; Roterothopter; Rysorian Badger; Samite Alchemist; Sea Sprite; Sea Troll; Sengir Autocrat; Sengir Bats; Serra Aviary; Serra Bestiary; Serra Inquisitors; Serra Paladin; Serrated Arrows; Shrink; Soraya the Falconer; Spectral Bears; Timmerian Fiends; Torture; Trade Caravan; Truce; Veldrane of Sengir; Wall of Kelp; Willow Faerie; Willow Priestess; Winter Sky; and Wizards’ School.
@@ -4242,7 +4245,7 @@
       .rule_text Only a scheme card may be set in motion, and only during an Archenemy game. Only the archenemy may set a scheme card in motion. See rule <a href="#section-312">312</a>, “Schemes,” and rule <a href="#section-904">904</a>, “Archenemy.”
     .rule{id: "section-701-23b"}
       .rule_id 701.23b
-      .rule_text To set a scheme in motion, move it off the top of your scheme deck and turn it face up.
+      .rule_text To set a scheme in motion, move it off the top of your scheme deck if it’s on top of your scheme deck and turn it face up if it isn’t face up. That scheme is considered to have been set in motion even if neither of these actions was performed on it.
     .rule{id: "section-701-23c"}
       .rule_id 701.23c
       .rule_text Schemes may only be set in motion one at a time. If a player is instructed to set multiple schemes in motion, that player sets a scheme in motion that many times.
@@ -6037,7 +6040,7 @@
       .rule_text In a Commander game, a player that’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. See rule <a href="#section-903">903</a>, “Commander.”
     .rule{id: "section-704-5w"}
       .rule_id 704.5w
-      .rule_text In an Archenemy game, if a non-ongoing scheme card is face up in the command zone, and it isn’t the source of a triggered ability that has triggered but not yet left the stack, that scheme card is turned face down and put on the bottom of its owner’s scheme deck. See rule <a href="#section-904">904</a>, “Archenemy.”
+      .rule_text In an Archenemy game, if a non-ongoing scheme card is face up in the command zone, and no triggered abilities of any scheme are on the stack or waiting to be put on the stack, that scheme card is turned face down and put on the bottom of its owner’s scheme deck. See rule <a href="#section-904">904</a>, “Archenemy.”
     .rule{id: "section-704-5x"}
       .rule_id 704.5x
       .rule_text In a Planechase game, if a phenomenon card is face up in the command zone, and it isn’t the source of a triggered ability that has triggered but not yet left the stack, the planar controller planeswalks. See rule <a href="#section-901">901</a>, “Planechase.”
@@ -6706,21 +6709,24 @@
       .rule_text If an object requires a player who has left the game to make a choice, the controller of the object chooses another player to make that choice. If the original choice was to be made by an opponent of the controller of the object, that player chooses another opponent if possible.
     .rule{id: "section-800-4g"}
       .rule_id 800.4g
-      .rule_text If an effect requires information about a specific player, the effect uses the current information about that player if he or she is still in the game; otherwise, the effect uses the last known information about that player before he or she left the game.
+      .rule_text If a rule requires a player who has left the game to make a choice, the next player in turn order makes that choice.
     .rule{id: "section-800-4h"}
       .rule_id 800.4h
-      .rule_text If a player leaves the game during his or her turn, that turn continues to its completion without an active player. If the active player would receive priority, instead the next player in turn order receives priority, or the top object on the stack resolves, or the phase or step ends, whichever is appropriate.
+      .rule_text If an effect requires information about a specific player, the effect uses the current information about that player if he or she is still in the game; otherwise, the effect uses the last known information about that player before he or she left the game.
     .rule{id: "section-800-4i"}
       .rule_id 800.4i
-      .rule_text If a player who has left the game would begin a turn, that turn doesn’t begin.
+      .rule_text If a player leaves the game during his or her turn, that turn continues to its completion without an active player. If the active player would receive priority, instead the next player in turn order receives priority, or the top object on the stack resolves, or the phase or step ends, whichever is appropriate.
     .rule{id: "section-800-4j"}
       .rule_id 800.4j
-      .rule_text When a player leaves the game, any continuous effects with durations that last until that player’s next turn or until a specific point in that turn will last until that turn would have begun. They neither expire immediately nor last indefinitely.
+      .rule_text If a player who has left the game would begin a turn, that turn doesn’t begin.
     .rule{id: "section-800-4k"}
       .rule_id 800.4k
-      .rule_text When a player leaves the game, objects that player owns in the ante zone do not leave the game. This is an exception to rule <a href="#section-800-4a">800.4a</a>. See rule <a href="#section-407">407</a>, “Ante.”
+      .rule_text When a player leaves the game, any continuous effects with durations that last until that player’s next turn or until a specific point in that turn will last until that turn would have begun. They neither expire immediately nor last indefinitely.
     .rule{id: "section-800-4m"}
       .rule_id 800.4m
+      .rule_text When a player leaves the game, objects that player owns in the ante zone do not leave the game. This is an exception to rule <a href="#section-800-4a">800.4a</a>. See rule <a href="#section-407">407</a>, “Ante.”
+    .rule{id: "section-800-4n"}
+      .rule_id 800.4n
       .rule_text In a Planechase game, if the player designated as the planar controller would leave the game, instead the next player in turn order that wouldn’t leave the game becomes the planar controller, then the old planar controller leaves the game. See rule <a href="#section-309-5">309.5</a>.
     .rule{id: "section-800-5"}
       .rule_id 800.5.
@@ -6942,6 +6948,30 @@
     .rule{id: "section-805-9"}
       .rule_id 805.9.
       .rule_text Any ability that refers to the “active player” refers to one specific active player, not to all of the active players. The ability’s controller chooses which one the ability refers to at the time its effect is applied.
+    .rule{id: "section-805-10"}
+      .rule_id 805.10.
+      .rule_text The shared team turns option uses different combat rules than other multiplayer options.
+    .rule{id: "section-805-10a"}
+      .rule_id 805.10a
+      .rule_text Each team’s creatures attack the other team as a group. During the combat phase, the active team is the attacking team and each player on the active team is an attacking player. Likewise, the nonactive team is the defending team and each player on the nonactive team is a defending player.
+    .rule{id: "section-805-10b"}
+      .rule_id 805.10b
+      .rule_text As the declare attackers step begins, the active team declares attackers. For each attacking creature, the attacking team announces which defending player or planeswalker that creature is attacking. The active team has one combined attack, and that set of attacking creatures must be legal as a whole. See rule <a href="#section-508-1">508.1</a>.
+    .rule{id: "section-805-10c"}
+      .rule_id 805.10c
+      .rule_text Any rule, object, or effect that refers to an “attacking player” refers to one specific attacking player, not to all of the attacking players. If an ability of a blocking creature refers to an attacking player, or a spell or ability refers to both a blocking creature and an attacking player, then unless otherwise specified, the attacking player it’s referring to is the player who controls that attacking creature. If a spell or ability could apply to multiple blocking creatures, the appropriate attacking player is individually determined for each of those blocking creatures. If there are multiple attacking players that could be chosen, the controller of the spell or ability chooses one.
+    .rule{id: "section-805-10d"}
+      .rule_id 805.10d
+      .rule_text As the declare blockers step begins, the defending team declares blockers. Creatures controlled by the defending players can block creatures attacking any player on the defending team. The defending team has one combined block, and that set of blocking creatures must be legal as a whole. See rule <a href="#section-509-1">509.1</a>.
+    .rule{id: "section-805-10e"}
+      .rule_id 805.10e
+      .rule_text Any rule, object, or effect that refers to a “defending player” refers to one specific defending player, not to all of the defending players. If an ability of an attacking creature refers to a defending player, or a spell or ability refers to both an attacking creature and a defending player, then unless otherwise specified, the defending player it’s referring to is the player that creature was attacking at the time it became an attacking creature that combat, or the controller of the planeswalker that creature was attacking at the time it became an attacking creature that combat. If a spell or ability could apply to multiple attacking creatures, the appropriate defending player is individually determined for each of those attacking creatures. If there are multiple defending players that could be chosen, the controller of the spell or ability chooses one.
+    .rule{id: "section-805-10f"}
+      .rule_id 805.10f
+      .rule_text Once blockers have been declared, for each attacking creature that’s become blocked by multiple creatures, the active team announces the damage assignment order among the blocking creatures. Then, for each creature that’s blocking multiple creatures, the defending team announces the damage assignment order among the attacking creatures.
+    .rule{id: "section-805-10g"}
+      .rule_id 805.10g
+      .rule_text As the combat damage step begins, the active team announces how each attacking creature will assign its combat damage. Then the defending team announces how each blocking creature will assign its combat damage. See rule <a href="#section-510-1">510.1</a>.
     .rule{id: "section-806"}
       .rule_id 806.
       .rule_text Free-for-All Variant
@@ -7122,7 +7152,7 @@
       .rule_text The team who plays first skips the draw step of its first turn.
     .rule{id: "section-810-7"}
       .rule_id 810.7.
-      .rule_text The Two-Headed Giant variant uses different combat rules than other multiplayer variants.
+      .rule_text The Two-Headed Giant variant uses a modified version of the combat rules for the shared team turns option.
     .rule{id: "section-810-7a"}
       .rule_id 810.7a
       .rule_text Each team’s creatures attack the other team as a group. During the combat phase, the active team is the attacking team and each player on the active team is an attacking player. Likewise, the nonactive team is the defending team and each player on the nonactive team is a defending player.
@@ -7501,7 +7531,7 @@
       .rule_text Immediately after the archenemy’s precombat main phase begins during each of his or her turns, that player moves the top card of his or her scheme deck off that scheme deck and turns it face up. This is called “setting that scheme in motion.” (See rule <a href="#section-701-23">701.23</a>.) This turn-based action doesn’t use the stack. Abilities of that scheme card that trigger “When you set this scheme in motion” trigger.
     .rule{id: "section-904-10"}
       .rule_id 904.10.
-      .rule_text If a non-ongoing scheme card is face up in the command zone, and it isn’t the source of a triggered ability that has triggered but not yet left the stack, that scheme card is turned face down and put on the bottom of its owner’s scheme deck the next time a player would receive priority. (This is a state-based action. See rule <a href="#section-704">704</a>.)
+      .rule_text If a non-ongoing scheme card is face up in the command zone, and no triggered abilities of any scheme are on the stack or waiting to be put on the stack, that scheme card is turned face down and put on the bottom of its owner’s scheme deck the next time a player would receive priority. (This is a state-based action. See rule <a href="#section-704">704</a>.)
     .rule{id: "section-904-11"}
       .rule_id 904.11.
       .rule_text Once an ongoing scheme card is set in motion, it remains face up in the command zone until an ability causes it to be abandoned (see rule <a href="#section-701-24">701.24</a>).
@@ -8324,7 +8354,7 @@
       .glossary_definition A generic term for a group of keyword abilities that restrict whether a creature may be blocked. See rule <a href="#section-702-14">702.14</a>, “Landwalk.”
     .glossary_entry
       .glossary_term Last Known Information
-      .glossary_definition Information about an object that’s no longer in the zone it’s expected to be in, or information about a player that’s no longer in the game. This information captures that object’s last existence in that zone or that player’s last existence in the game. See rules <a href="#section-112-7a">112.7a</a>, <a href="#section-608-2b">608.2b</a>, <a href="#section-608-2g">608.2g</a>, and <a href="#section-800-4g">800.4g</a>.
+      .glossary_definition Information about an object that’s no longer in the zone it’s expected to be in, or information about a player that’s no longer in the game. This information captures that object’s last existence in that zone or that player’s last existence in the game. See rules <a href="#section-112-7a">112.7a</a>, <a href="#section-608-2b">608.2b</a>, <a href="#section-608-2g">608.2g</a>, and <a href="#section-800-4h">800.4h</a>.
     .glossary_entry
       .glossary_term Layer
       .glossary_definition A system used to determine in which order continuous effects are applied. See rule <a href="#section-613">613</a>, “Interaction of Continuous Effects.” See also Dependency, Timestamp Order.
@@ -9157,8 +9187,8 @@
       .glossary_term Zone-Change Triggers
       .glossary_definition Trigger events that involve objects changing zones. See rule <a href="#section-603-6">603.6</a>.
     %h3{id: "section-credits"} Credits
-    %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, and Matt Tabak, with contributions from Charlie Californiatino, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Eli Shiffrin, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead), Glenn Jones, Nat Moes, and Matt Tabak Magic Rules Management: Eli Shiffrin
+    %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, and Matt Tabak, with contributions from Charley Catino, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Eli Shiffrin, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead), Glenn Jones, Nat Moes, and Matt Tabak Magic Rules Management: Eli Shiffrin
     %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Californiatino, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
     %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-    %p These rules are effective as of April 28, 2017.
+    %p These rules are effective as of June 5, 2017.
     %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, and Magic: The Gathering—Conspiracy are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2017 Wizards. U.S. Pat. No. RE 37,957.
