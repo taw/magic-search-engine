@@ -21,8 +21,8 @@ class ConditionSetType < Condition
     type_list = get_type_list(@set_type)
     sets = Set[]
     db.sets.each do |set_code, set|
-      # CMA is a fixed set so include it for commander or fixed but not for deck
-      if set.code == "cma"
+      # CM1 is a fixed set so include it for commander or fixed but not for deck
+      if set.code == "cm1"
         if type_list.include?("fixed")
           sets << set
         elsif type_list.include?("commander") and !type_list.include?("deck")

@@ -397,8 +397,8 @@ describe "Full Database Test" do
   end
 
   it "comma_separated_set_list" do
-    assert_search_equal "e:cmd or e:cma or e:c13 or e:c14 or e:c15 or e:c16", "e:cmd,cma,c13,c14,c15,c16"
-    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cma,c13,c14,c15,c16 -alt:-e:cmd,cma,c13,c14,c15,c16"
+    assert_search_equal "e:cmd or e:cm1 or e:c13 or e:c14 or e:c15 or e:c16 or e:cma", "e:cmd,cm1,c13,c14,c15,c16,cma"
+    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cm1,c13,c14,c15,c16,cma -alt:-e:cmd,cm1,c13,c14,c15,c16,cma"
   end
 
   it "command_separated_block_list" do
@@ -423,6 +423,18 @@ describe "Full Database Test" do
 
   it "is commander" do
     assert_search_equal "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14)"
+  end
+
+  # Bugfix
+  it "cm1/cma set codes" do
+    "e:cm1".should have_result_count(18)
+    "e:cma".should have_result_count(289)
+  end
+
+  it "gtw/wpn/grc set codes" do
+    "e:gtw".should have_result_count(20)
+    "e:wpn".should have_result_count(43)
+    "e:grc".should have_result_count(0)
   end
 
   def legality_information(name, date=nil)
