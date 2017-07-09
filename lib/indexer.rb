@@ -18,7 +18,7 @@ class Hash
     reject{|k,v| v.nil?}
   end
 
-  def map_values
+  def transform_values
     result = {}
     each do |k,v|
       result[k] = yield(v)
@@ -144,8 +144,23 @@ class Indexer
     foreign_names_verifier = ForeignNamesVerifier.new
     oracle_verifier = OracleVerifier.new
 
+    # Some fixes to the mapper
+    @sets_code_translator["CM1"] = "cm1"
+    @sets_code_translator["CMA"] = "cma"
+    @sets_code_translator["pGTW"] = "gtw"
+    @sets_code_translator["pWPN"] = "wpn"
     @data.each do |set_code, set_data|
-      @sets_code_translator[set_code] = set_data["magicCardsInfoCode"] || set_data["code"].downcase
+      @sets_code_translator[set_code] ||= set_data["magicCardsInfoCode"] || set_data["code"].downcase
+    end
+
+    duplicated_codes = @sets_code_translator
+      .values
+      .group_by(&:itself)
+      .transform_values(&:size)
+      .select{|_,v| v > 1}
+
+    unless duplicated_codes.empty?
+      raise "There are duplicated set codes: #{duplicated_codes.keys}"
     end
 
     @data.each do |set_code, set_data|

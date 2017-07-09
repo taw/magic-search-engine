@@ -117,7 +117,7 @@ class Indexer
       mci_numbers = path.readlines.map{|line|
         number, name = line.chomp.split("\t", 2)
         [number, name.downcase]
-      }.group_by(&:last).map_values{|x| x.map(&:first)}
+      }.group_by(&:last).transform_values{|x| x.map(&:first)}
 
       cards = set_data["cards"]
 
@@ -128,7 +128,7 @@ class Indexer
           card["number"] = mci_numbers[name.downcase].shift
         end
       else
-        mvids = cards.map{|c| [c["name"], c["multiverseid"]]}.group_by(&:first).map_values{|x| x.map(&:last).sort}
+        mvids = cards.map{|c| [c["name"], c["multiverseid"]]}.group_by(&:first).transform_values{|x| x.map(&:last).sort}
         cards.each do |card|
           name = card["name"]
           rel_idx = mvids[name].index(card["multiverseid"])
