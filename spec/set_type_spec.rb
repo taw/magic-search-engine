@@ -25,7 +25,7 @@ describe "Set types" do
     assert_search_equal "st:pc", "st:planechase"
   end
 
-  it "cma exception" do
+  it "cm1 exception" do
     "desertion st:fixed".should return_cards "Desertion"
     "desertion st:cmd"  .should return_cards "Desertion"
     "desertion st:deck" .should return_no_cards

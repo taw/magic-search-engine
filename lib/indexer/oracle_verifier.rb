@@ -56,19 +56,26 @@ class OracleVerifier
             canonical_variant = variants.keys.select{|v| v =~ /\{CHAOS\}/i}[0]
           else
             canonical_variant_source = case card_name
-            when "Venser, Shaper Savant", "Vampire Nighthawk", "Wall of Frost", "Entomber Exarch",
-              "Death-Hood Cobra", "Arachnus Spinner", "Attended Knight"
-               "mm3"
-            when "Aven Mindcensor"
-              "mps_akh"
-            when "Pithing Needle"
-              "mps"
+            when "Icefall Regent", "Vampire Nighthawk"
+              "e01"
+            when "Corpsejack Menace", "Fathom Mage", "Hardened Scales"
+              "ptc"
+            when "Enduring Scalelord"
+              "dtk"
+            when "Conundrum Sphinx"
+              "m11"
+            when "Liliana of the Dark Realms"
+              "mbp"
             else
               # FAIL, report
             end
           end
         else
-          # FAIL, report
+          if card_name == "Sultai Ascendancy"
+            canonical_variant_source = "ktk"
+          else
+            # FAIL, report
+          end
         end
       end
       if canonical_variant_source

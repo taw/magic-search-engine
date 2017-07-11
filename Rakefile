@@ -118,6 +118,8 @@ task "pics:hq" do
         ("#{card.names.reverse.join(" - ")}.full.jpg" if card.names),
         ("#{card.names.join("_")}.full.jpg" if card.names),
         ("#{card.names.reverse.join("_")}.full.jpg" if card.names),
+        ("#{card.names.join("-+")}.full.jpg" if card.names),
+        ("#{card.names.reverse.join("-+")}.full.jpg" if card.names),
       ].compact
       candidate_names << "Who What When Where Why.full.jpg" if card.names and card.names.size == 5
 

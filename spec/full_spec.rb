@@ -2,15 +2,15 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(17204)
-    db.number_of_printings.should eq(33124)
+    db.number_of_cards.should eq(17421)
+    db.number_of_printings.should eq(33851)
   end
 
   it "formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal "f:standard",
-      %Q[(e:bfz or e:ogw or e:soi or e:w16 or e:emn or e:kld or e:aer or e:akh) -"Emrakul, the Promised End" -"Reflector Mage" -"Smuggler's Copter" -"Felidar Guardian" -"Aetherworks Marvel"]
+      %Q[(e:bfz or e:ogw or e:soi or e:w16 or e:emn or e:kld or e:aer or e:akh or e:hou) -"Emrakul, the Promised End" -"Reflector Mage" -"Smuggler's Copter" -"Felidar Guardian" -"Aetherworks Marvel"]
     assert_search_equal 'f:"ravnica block"', "e:rav or e:gp or e:di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal 'f:"ravnica block"', 'b:ravnica'
@@ -50,8 +50,14 @@ describe "Full Database Test" do
   end
 
   it "part" do
-    assert_search_results "part:cmc=1 part:cmc=2", "Death", "Life", "Tear", "Wear", "What", "When", "Where", "Who", "Why",
-                                                   "Failure", "Comply", "Heaven", "Earth"
+    assert_search_results "part:cmc=1 part:cmc=2",
+      "Death", "Life",
+      "Tear", "Wear",
+      "What", "When", "Where", "Who", "Why",
+      "Failure", "Comply",
+      "Heaven", "Earth",
+      "Claim", "Fame",
+      "Appeal", "Authority"
     # Semantics of that changed
     assert_search_results "part:cmc=0 part:cmc=3 part:c:b"
   end
@@ -124,6 +130,9 @@ describe "Full Database Test" do
       "Island",
       "Mountain",
       "Plains",
+      "Rabid Bite",
+      "Reckless Scholar",
+      "Sleep Paralysis",
       "Stone Quarry",
       "Swamp",
       "Tormenting Voice",
@@ -138,7 +147,7 @@ describe "Full Database Test" do
     assert_search_results "t:planeswalker lastprint<=roe", "Chandra Ablaze", "Sarkhan the Mad"
     assert_search_results "t:planeswalker lastprint<=2011",
       "Ajani Goldmane", "Ajani Vengeant", "Chandra Ablaze", "Elspeth Tirel",
-      "Garruk Relentless", "Garruk, the Veil-Cursed", "Gideon Jura",
+      "Garruk Relentless", "Garruk, the Veil-Cursed",
       "Nissa Revane", "Sarkhan the Mad", "Sorin Markov", "Tezzeret, Agent of Bolas"
   end
 
@@ -169,12 +178,12 @@ describe "Full Database Test" do
   it "sort_newall" do
     # Jace v Chandra printing of Chandra Nalaar changes order
     assert_search_results_ordered "t:chandra sort:newall",
-    "Chandra, Pyrogenius",
-    "Chandra, Torch of Defiance",
+      "Chandra, Pyromaster",
+      "Chandra, Pyrogenius",
+      "Chandra, Torch of Defiance",
       "Chandra, Flamecaller",
       "Chandra, Roaring Flame",
       "Chandra Nalaar",
-      "Chandra, Pyromaster",
       "Chandra, the Firebrand",
       "Chandra Ablaze"
   end
@@ -322,7 +331,7 @@ describe "Full Database Test" do
     # mci returns 1058 cards
     # scryfall returns 1044
     # It might be a good idea to sort out edge cases
-    assert_count_results "is:promo", 1014
+    assert_count_results "is:promo", 1020
   end
 
   it "is_funny" do
@@ -388,8 +397,8 @@ describe "Full Database Test" do
   end
 
   it "comma_separated_set_list" do
-    assert_search_equal "e:cmd or e:cma or e:c13 or e:c14 or e:c15 or e:c16", "e:cmd,cma,c13,c14,c15,c16"
-    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cma,c13,c14,c15,c16 -alt:-e:cmd,cma,c13,c14,c15,c16"
+    assert_search_equal "e:cmd or e:cm1 or e:c13 or e:c14 or e:c15 or e:c16 or e:cma", "e:cmd,cm1,c13,c14,c15,c16,cma"
+    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cm1,c13,c14,c15,c16,cma -alt:-e:cmd,cm1,c13,c14,c15,c16,cma"
   end
 
   it "command_separated_block_list" do
@@ -414,6 +423,18 @@ describe "Full Database Test" do
 
   it "is commander" do
     assert_search_equal "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14)"
+  end
+
+  # Bugfix
+  it "cm1/cma set codes" do
+    "e:cm1".should have_result_count(18)
+    "e:cma".should have_result_count(289)
+  end
+
+  it "gtw/wpn/grc set codes" do
+    "e:gtw".should have_result_count(20)
+    "e:wpn".should have_result_count(43)
+    "e:grc".should have_result_count(0)
   end
 
   def legality_information(name, date=nil)

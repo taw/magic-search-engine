@@ -84,7 +84,7 @@ RSpec::Matchers.define :return_cards_in_order do |*cards|
     results = search(query_string)
     "Expected `#{query_string}' to return:\n" +
       cards.map{|c| "* #{c}\n"}.join +
-    "\nInstead got:" +
+    "\nInstead got:\n" +
       results.map{|c| "* #{c}\n"}.join
   end
 end

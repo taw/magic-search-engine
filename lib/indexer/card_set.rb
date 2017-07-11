@@ -23,7 +23,7 @@ MagicBlocks = [
   ["bfz", "Battle for Zendikar", "bfz", "ogw"],
   ["soi", "Shadows over Innistrad", "soi", "emn"],
   ["kld", "Kaladesh", "kld", "aer"],
-  ["akh", "Amonkhet", "akh"],
+  ["akh", "Amonkhet", "akh", "hou"],
 ]
 
 class Indexer
@@ -75,7 +75,7 @@ class Indexer
       case set_code
       when "van"
         set_data["cards"].sort_by{|c| c["multiverseid"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
-      when "pch", "arc", "pc2", "pca"
+      when "pch", "arc", "pc2", "pca", "e01"
         set_data["cards"].each do |card|
           unless (card["types"] & ["Plane", "Phenomenon", "Scheme"]).empty?
             card["number"] = (1000 + card["number"].to_i).to_s
@@ -118,7 +118,7 @@ class Indexer
       mci_numbers = path.readlines.map{|line|
         number, name = line.chomp.split("\t", 2)
         [number, name.downcase]
-      }.group_by(&:last).map_values{|x| x.map(&:first)}
+      }.group_by(&:last).transform_values{|x| x.map(&:first)}
 
       cards = set_data["cards"]
 
@@ -129,7 +129,7 @@ class Indexer
           card["number"] = mci_numbers[name.downcase].shift
         end
       else
-        mvids = cards.map{|c| [c["name"], c["multiverseid"]]}.group_by(&:first).map_values{|x| x.map(&:last).sort}
+        mvids = cards.map{|c| [c["name"], c["multiverseid"]]}.group_by(&:first).transform_values{|x| x.map(&:last).sort}
         cards.each do |card|
           name = card["name"]
           rel_idx = mvids[name].index(card["multiverseid"])
