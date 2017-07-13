@@ -1,7 +1,7 @@
 .row
   .col-12
     %h4 Magic: The Gathering Comprehensive Rules
-    %p These rules are effective as of June 5, 2017.
+    %p These rules are effective as of July 8, 2017.
     %h3{id: "section-introduction"} Introduction
     %p This document is designed for people who’ve moved beyond the basics of the Magic: The Gathering® game. If you’re a beginning Magic™ player, you’ll probably find these rules intimidating. They’re intended to be the ultimate authority for the game, and you won’t usually need to refer to them except in specific cases or during competitive games.
     %p For casual play and most ordinary situations, you’ll find what you need in the Magic: The Gathering basic rules. You can download a copy of the basic rules PDF from the Wizards of the Coast® Magic rules website at Magic.Wizards.com/Rules. If you’re sure this is where you want to be, keep reading.
@@ -667,9 +667,10 @@
       .rule_text You can’t choose a fractional number, deal fractional damage, gain fractional life, and so on. If a spell or ability could generate a fractional number, the spell or ability will tell you whether to round up or down.
     .rule{id: "section-107-1b"}
       .rule_id 107.1b
-      .rule_text Most of the time, the Magic game uses only positive numbers and zero. You can’t choose a negative number, deal negative damage, gain negative life, and so on. However, it’s possible for a game value, such as a creature’s power, to be less than zero. If a calculation or comparison needs to use a negative value, it does so. If a calculation that would determine the result of an effect yields a negative number, zero is used instead, unless that effect sets a player’s life total to a specific value, doubles a player’s life total, sets a creature’s power or toughness to a specific value, or otherwise modifies a creature’s power or toughness.
+      .rule_text Most of the time, the Magic game uses only positive numbers and zero. You can’t choose a negative number, deal negative damage, gain negative life, and so on. However, it’s possible for a game value, such as a creature’s power, to be less than zero. If a calculation or comparison needs to use a negative value, it does so. If a calculation that would determine the result of an effect yields a negative number, zero is used instead, unless that effect sets a player’s life total to a specific value, doubles a player’s life total, or sets a creature’s power or toughness to a specific value.
       .rule_text Example: If a 3/4 creature gets -5/-0, it’s a -2/4 creature. It doesn’t assign damage in combat. Its total power and toughness is 2. You’d have to give it +3/+0 to raise its power to 1.
       .rule_text Example: Viridian Joiner is a 1/2 creature with the ability “<span class="manacost"><span class="mana mana-t">{T}</span></span>: Add to your mana pool an amount of <span class="manacost"><span class="mana mana-g">{G}</span></span> equal to Viridian Joiner’s power.” An effect gives it -2/-0, then its ability is activated. The ability adds no mana to your mana pool.
+      .rule_text Example: Chameleon Colossus is a 4/4 creature with the ability “<span class="manacost"><span class="mana mana-2">{2}</span><span class="mana mana-g">{G}</span><span class="mana mana-g">{G}</span></span>: Chameleon Colossus gets +X/+X until end of turn, where X is its power.” An effect gives it -6/-0, then its ability is activated. It remains a -2/4 creature. It doesn’t become -4/2.
     .rule{id: "section-107-1c"}
       .rule_id 107.1c
       .rule_text If a rule or ability instructs a player to choose “any number,” that player may choose any positive number or zero, unless something (such as damage or counters) is being divided or distributed among “any number” of players and/or objects. In that case, a nonzero number of players and/or objects must be chosen if possible.
@@ -1760,7 +1761,7 @@
       .rule_text      Of that list, Forest, Island, Mountain, Plains, and Swamp are the basic land types. See rule <a href="#section-305-6">305.6</a>.
     .rule{id: "section-205-3j"}
       .rule_id 205.3j
-      .rule_text Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Arlinn, Ashiok, Bolas, Chandra, Dack, Daretti, Domri, Dovin, Elspeth, Freyalise, Garruk, Gideon, Jace, Karn, Kaya, Kiora, Koth, Liliana, Nahiri, Narset, Nissa, Nixilis, Ral, Saheeli, Sarkhan, Sorin, Tamiyo, Teferi, Tezzeret, Tibalt, Ugin, Venser, Vraska, and Xenagos.
+      .rule_text Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Arlinn, Ashiok, Bolas, Chandra, Dack, Daretti, Domri, Dovin, Elspeth, Freyalise, Garruk, Gideon, Jace, Karn, Kaya, Kiora, Koth, Liliana, Nahiri, Narset, Nissa, Nixilis, Ral, Saheeli, Samut, Sarkhan, Sorin, Tamiyo, Teferi, Tezzeret, Tibalt, Ugin, Venser, Vraska, and Xenagos.
       .rule_text      If a player controls two or more planeswalkers that share a planeswalker type, that player chooses one of them, and the rest are put into their owners’ graveyards. This “planeswalker uniqueness rule” is a state-based action. See rule <a href="#section-704">704</a>.
     .rule{id: "section-205-3k"}
       .rule_id 205.3k
@@ -3849,20 +3850,23 @@
       .rule_text Some prevention effects generated by the resolution of a spell or ability refer to the next time a specific source would deal damage. These effects prevent the next instance of damage from that source, regardless of how much damage that is. Once an instance of damage from that source has been prevented, any subsequent instances of damage that would be dealt by that source are dealt normally.
     .rule{id: "section-615-9"}
       .rule_id 615.9.
-      .rule_text Some prevention effects generated by static abilities refer to a specific amount of damage—for example, “If a source would deal damage to you, prevent 1 of that damage.” Such an effect prevents only the indicated amount of damage in any applicable damage event at any given time. It will apply separately to damage from other applicable events that would happen at the same time, or at a different time.
-      .rule_text Example: Daunting Defender says “If a source would deal damage to a Cleric creature you control, prevent 1 of that damage.” Pyroclasm says “Pyroclasm deals 2 damage to each creature.” Pyroclasm will deal 1 damage to each Cleric creature controlled by Daunting Defender’s controller. It will deal 2 damage to each other creature that player controls.
+      .rule_text Some effects generated by the resolution of a spell or ability prevent damage from a source of a player’s choice with certain properties. When the source would deal damage, the shield rechecks the source’s properties. If the properties no longer match, the damage isn’t prevented or replaced and the shield isn’t used up. See rule <a href="#section-609-7b">609.7b</a>.
     .rule{id: "section-615-10"}
       .rule_id 615.10.
-      .rule_text Some prevention effects prevent the next N damage that would be dealt to each of a number of untargeted creatures. Such an effect creates a prevention shield for each applicable creature when the spell or ability that generates that effect resolves.
-      .rule_text Example: Wojek Apothecary has an ability that says “<span class="manacost"><span class="mana mana-t">{T}</span></span>: Prevent the next 1 damage that would be dealt to target creature and each other creature that shares a color with it this turn.” When the ability resolves, it gives the target creature and each other creature on the battlefield that shares a color with it at that time a shield preventing the next 1 damage that would be dealt to it. Changing creatures’ colors after the ability resolves doesn’t add or remove shields, and creatures that enter the battlefield later in the turn don’t get the shield.
+      .rule_text Some prevention effects generated by static abilities refer to a specific amount of damage—for example, “If a source would deal damage to you, prevent 1 of that damage.” Such an effect prevents only the indicated amount of damage in any applicable damage event at any given time. It will apply separately to damage from other applicable events that would happen at the same time, or at a different time.
+      .rule_text Example: Daunting Defender says “If a source would deal damage to a Cleric creature you control, prevent 1 of that damage.” Pyroclasm says “Pyroclasm deals 2 damage to each creature.” Pyroclasm will deal 1 damage to each Cleric creature controlled by Daunting Defender’s controller. It will deal 2 damage to each other creature that player controls.
     .rule{id: "section-615-11"}
       .rule_id 615.11.
-      .rule_text Some effects state that damage “can’t be prevented.” If unpreventable damage would be dealt, any applicable prevention effects are still applied to it. Those effects won’t prevent any damage, but any additional effects they have will take place. Existing damage prevention shields won’t be reduced by damage that can’t be prevented.
-    .rule{id: "section-615-11a"}
-      .rule_id 615.11a
-      .rule_text A prevention effect is applied to any particular unpreventable damage event just once. It won’t invoke itself repeatedly trying to prevent that damage.
+      .rule_text Some prevention effects prevent the next N damage that would be dealt to each of a number of untargeted creatures. Such an effect creates a prevention shield for each applicable creature when the spell or ability that generates that effect resolves.
+      .rule_text Example: Wojek Apothecary has an ability that says “<span class="manacost"><span class="mana mana-t">{T}</span></span>: Prevent the next 1 damage that would be dealt to target creature and each other creature that shares a color with it this turn.” When the ability resolves, it gives the target creature and each other creature on the battlefield that shares a color with it at that time a shield preventing the next 1 damage that would be dealt to it. Changing creatures’ colors after the ability resolves doesn’t add or remove shields, and creatures that enter the battlefield later in the turn don’t get the shield.
     .rule{id: "section-615-12"}
       .rule_id 615.12.
+      .rule_text Some effects state that damage “can’t be prevented.” If unpreventable damage would be dealt, any applicable prevention effects are still applied to it. Those effects won’t prevent any damage, but any additional effects they have will take place. Existing damage prevention shields won’t be reduced by damage that can’t be prevented.
+    .rule{id: "section-615-12a"}
+      .rule_id 615.12a
+      .rule_text A prevention effect is applied to any particular unpreventable damage event just once. It won’t invoke itself repeatedly trying to prevent that damage.
+    .rule{id: "section-615-13"}
+      .rule_id 615.13.
       .rule_text Some triggered abilities trigger when damage that would be dealt is prevented. Such an ability triggers each time a prevention effect is applied to one or more simultaneous damage events and prevents some or all of that damage.
     .rule{id: "section-616"}
       .rule_id 616.
@@ -5896,6 +5900,21 @@
     .rule{id: "section-702-127b"}
       .rule_id 702.127b
       .rule_text A token is “embalmed” if it’s created by a resolving embalm ability.
+    .rule{id: "section-702-128"}
+      .rule_id 702.128.
+      .rule_text Eternalize
+    .rule{id: "section-702-128a"}
+      .rule_id 702.128a
+      .rule_text Eternalize is an activated ability that functions while the card with eternalize is in a graveyard. “Eternalize [cost]” means “[Cost], Exile this card from your graveyard: Create a token that’s a copy of this card, except it’s black, it’s 4/4, it has no mana cost, and it’s a Zombie in addition to its other types. Activate this ability only any time you could cast a sorcery.”
+    .rule{id: "section-702-129"}
+      .rule_id 702.129.
+      .rule_text Afflict
+    .rule{id: "section-702-129a"}
+      .rule_id 702.129a
+      .rule_text Afflict is a triggered ability. “Afflict N” means “Whenever this creature becomes blocked, defending player loses N life.”
+    .rule{id: "section-702-129b"}
+      .rule_id 702.129b
+      .rule_text If a creature has multiple instances of afflict, each triggers separately.
     .rule{id: "section-703"}
       .rule_id 703.
       .rule_text Turn-Based Actions
@@ -6500,7 +6519,7 @@
       .rule_text If there are any triggered abilities that triggered before this process began but haven’t been put onto the stack yet, those abilities cease to exist. They won’t be put onto the stack. This rule does not apply to abilities that trigger during this process (see rule <a href="#section-715-2">715.2</a>).
     .rule{id: "section-715-1b"}
       .rule_id 715.1b
-      .rule_text Exile every object on the stack, including the object that’s resolving. Remove all creatures and planeswalkers (including those that are phased out) from combat. All objects not on the battlefield or in the command zone that aren’t represented by cards will cease to exist the next time state-based actions are checked (see rule <a href="#section-704">704</a>, “State-Based Actions”).
+      .rule_text Exile every object on the stack, including the object that’s resolving. Remove all creatures and planeswalkers from combat. All objects not on the battlefield or in the command zone that aren’t represented by cards will cease to exist the next time state-based actions are checked (see rule <a href="#section-704">704</a>, “State-Based Actions”).
     .rule{id: "section-715-1c"}
       .rule_id 715.1c
       .rule_text Check state-based actions. No player gets priority, and no triggered abilities are put onto the stack.
@@ -6944,7 +6963,7 @@
       .rule_text If multiple triggered abilities have triggered since the last time a team received priority, the members of the active team put all triggered abilities any of them controls on the stack in any order they choose, then the members of each nonactive team in turn order do the same.
     .rule{id: "section-805-8"}
       .rule_id 805.8.
-      .rule_text If an effect gives a player an extra turn or adds a phase or step to that player’s turn, that player’s team takes the extra turn, phase, or step. If an effect causes a player to skip a step, phase, or turn, that player’s team does so. If a single effect causes more than one player on the same team to add or skip the same step, phase, or turn, that team adds or skips only that step, phase, or turn. If an effect causes a player to control another player, the controller of that effect controls the affected player’s team.
+      .rule_text If an effect gives a player an extra turn or adds a phase or step to that player’s turn, that player’s team takes the extra turn, phase, or step. If an effect causes a player to skip a step, phase, or turn, that player’s team does so. If a single effect causes more than one player on the same team to add or skip the same step, phase, or turn, that team adds or skips only that step, phase, or turn. If an effect causes a player to control another player, the first player controls the affected player’s team.
     .rule{id: "section-805-9"}
       .rule_id 805.9.
       .rule_text Any ability that refers to the “active player” refers to one specific active player, not to all of the active players. The ability’s controller chooses which one the ability refers to at the time its effect is applied.
@@ -6962,7 +6981,7 @@
       .rule_text Any rule, object, or effect that refers to an “attacking player” refers to one specific attacking player, not to all of the attacking players. If an ability of a blocking creature refers to an attacking player, or a spell or ability refers to both a blocking creature and an attacking player, then unless otherwise specified, the attacking player it’s referring to is the player who controls that attacking creature. If a spell or ability could apply to multiple blocking creatures, the appropriate attacking player is individually determined for each of those blocking creatures. If there are multiple attacking players that could be chosen, the controller of the spell or ability chooses one.
     .rule{id: "section-805-10d"}
       .rule_id 805.10d
-      .rule_text As the declare blockers step begins, the defending team declares blockers. Creatures controlled by the defending players can block creatures attacking any player on the defending team. The defending team has one combined block, and that set of blocking creatures must be legal as a whole. See rule <a href="#section-509-1">509.1</a>.
+      .rule_text As the declare blockers step begins, the defending team declares blockers. Creatures controlled by the defending players can block creatures attacking any player on the defending team or attacking a planeswalker controlled by one of those players. The defending team has one combined block, and that set of blocking creatures must be legal as a whole. See rule <a href="#section-509-1">509.1</a>.
     .rule{id: "section-805-10e"}
       .rule_id 805.10e
       .rule_text Any rule, object, or effect that refers to a “defending player” refers to one specific defending player, not to all of the defending players. If an ability of an attacking creature refers to a defending player, or a spell or ability refers to both an attacking creature and a defending player, then unless otherwise specified, the defending player it’s referring to is the player that creature was attacking at the time it became an attacking creature that combat, or the controller of the planeswalker that creature was attacking at the time it became an attacking creature that combat. If a spell or ability could apply to multiple attacking creatures, the appropriate defending player is individually determined for each of those attacking creatures. If there are multiple defending players that could be chosen, the controller of the spell or ability chooses one.
@@ -7630,6 +7649,9 @@
       .glossary_term Affinity
       .glossary_definition A keyword ability that reduces how much mana you need to spend to cast a spell. See rule <a href="#section-702-40">702.40</a>, “Affinity.”
     .glossary_entry
+      .glossary_term Afflict
+      .glossary_definition A keyword ability that makes the defending player lose life for blocking. See rule <a href="#section-702-129">702.129</a>, “Afflict.”
+    .glossary_entry
       .glossary_term Aftermath
       .glossary_definition A keyword ability that lets a player cast one half of a split card only from his or her graveyard. See rule <a href="#section-702-126">702.126</a>, “Aftermath.”
     .glossary_entry
@@ -8095,6 +8117,9 @@
       .glossary_term Escalate
       .glossary_definition A keyword ability on some modal spells that adds a cost for choosing additional modes. See rule <a href="#section-702-119">702.119</a>, “Escalate.”
     .glossary_entry
+      .glossary_term Eternalize
+      .glossary_definition A keyword ability that lets a player exile a creature card from his or her graveyard to create an eternalized token version of that card. See rule <a href="#section-702-128">702.128</a>, “Eternalize.”
+    .glossary_entry
       .glossary_term Evasion Ability
       .glossary_definition An ability that restricts what creatures can block an attacking creature. See rules <a href="#section-509-1b">509.1b</a>–c.
     .glossary_entry
@@ -8114,7 +8139,7 @@
       .glossary_definition To swap two things, such as objects, sets of objects, or life totals. See rule <a href="#section-701-9">701.9</a>, “Exchange.”
     .glossary_entry
       .glossary_term Exert
-      .glossary_definition A keyword action that stops a permanent from untapping during the next uptap step of the player who exerted it. See rule <a href="#section-701-36">701.36</a>, “Exert.”
+      .glossary_definition A keyword action that stops a permanent from untapping during the next uptap step of the player who exerted it. See rule <a href="#section-701-37">701.37</a>, “Exert.”
     .glossary_entry
       .glossary_term Exile
       .glossary_definition 1. A zone. Exile is essentially a holding area for cards. It used to be known as the “removed-from-the-game” zone. 2. To put an object into the exile zone from whatever zone it’s currently in. An “exiled” card is one that’s been put into the exile zone. See rule <a href="#section-406">406</a>, “Exile.”
@@ -9188,7 +9213,7 @@
       .glossary_definition Trigger events that involve objects changing zones. See rule <a href="#section-603-6">603.6</a>.
     %h3{id: "section-credits"} Credits
     %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, and Matt Tabak, with contributions from Charley Catino, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Eli Shiffrin, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead), Glenn Jones, Nat Moes, and Matt Tabak Magic Rules Management: Eli Shiffrin
-    %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Californiatino, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
+    %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charley Catino, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
     %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-    %p These rules are effective as of June 5, 2017.
+    %p These rules are effective as of July 8, 2017.
     %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, and Magic: The Gathering—Conspiracy are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2017 Wizards. U.S. Pat. No. RE 37,957.
