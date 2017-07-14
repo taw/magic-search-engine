@@ -83,15 +83,15 @@ class ConditionMana < ConditionSimple
     pool = Hash.new(0)
     mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrgxyzchmno])/) do
       if $1
-        m = normalize_mana_symbol($1)
+        m = $1.downcase.tr("/{}", "")
         if m =~ /\A\d+\z/
           pool["?"] += m.to_i
         elsif m == "h"
           pool[m] += 1
         elsif m =~ /h/
-          pool[m.sub("h", "")] += 0.5
+          pool[m.sub("h", "").chars.sort.join] += 0.5
         elsif m != ""
-          pool[m] += 1
+          pool[m.chars.sort.join] += 1
         end
       elsif $2
         pool["?"] += $2.to_i
