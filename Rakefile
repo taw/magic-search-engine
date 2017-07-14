@@ -220,7 +220,7 @@ task "rules:update" do
   txt_url = doc.css("a").map{|a| a[:href]}.find{|link| link =~ /MagicCompRules.*txt\z/}
   raise "Can't find rules text url, please check the site manually" unless txt_url
   rules_txt = open(txt_url).read
-  rules_txt = rules_txt.force_encoding("cp1250").encode("utf-8").tr("\r", "")
+  rules_txt = rules_txt.force_encoding("cp1252").encode("utf-8").tr("\r", "")
   Pathname("data/MagicCompRules.txt").write(rules_txt)
   sh "bin/format_comp_rules"
 end
