@@ -137,7 +137,11 @@ module ApplicationHelper
       sym  = $&
       mana = $1.gsub("/", "").downcase
       if good_mana_symbols.include?(mana)
-        %Q[<span class="mana mana-#{mana}">#{sym}</span>]
+        if mana[0] == "h"
+          %Q[<span class="mana mana-half"><span class="mana mana-cost mana-#{mana[1..-1]}"><span class="sr-only">#{sym}</span></span></span>]
+        else
+          %Q[<span class="mana mana-cost mana-#{mana}"><span class="sr-only">#{sym}</span></span>]
+        end
       else
         sym
       end
@@ -145,7 +149,19 @@ module ApplicationHelper
   end
 
   def good_mana_symbols
-    @good_mana_symbols ||= Set["x", "y", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "wu", "wb", "rw", "gw", "ub", "ur", "gu", "br", "bg", "rg", "2w", "2u", "2b", "2r", "2g", "s", "q", "t", "wp", "up", "bp", "rp", "gp", "c", "e"]
+    @good_mana_symbols ||= Set[
+      "x", "y", "z",
+      "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+      "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+      "w", "u", "b", "r", "g",
+      "wu", "wb", "rw", "gw", "ub", "ur", "gu", "br", "bg", "rg",
+      "2w", "2u", "2b", "2r", "2g",
+      "wp", "up", "bp", "rp", "gp", "p",
+      "s", "q", "t", "c", "e",
+      "½", "1000000", "100", "∞",
+      "chaos", "pw",
+      "hw", "hr",
+    ]
   end
 
   def language_name(language_code)
