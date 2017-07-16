@@ -139,7 +139,7 @@ module ApplicationHelper
       if good_mana_symbols.include?(mana)
         if mana[0] == "h"
           %Q[<span class="mana mana-half"><span class="mana mana-cost mana-#{mana[1..-1]}"><span class="sr-only">#{sym}</span></span></span>]
-        elsif mana == "p"
+        elsif mana == "p" or mana == "chaos" or mana == "pw" or mana == "e"
           %Q[<span class="mana mana-#{mana}"><span class="sr-only">#{sym}</span></span>]
         else
           %Q[<span class="mana mana-cost mana-#{mana}"><span class="sr-only">#{sym}</span></span>]
