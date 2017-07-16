@@ -289,7 +289,15 @@ form.search {
   height: 100%;
   width: 100%;
 }
-/* Mana symbols */
+/* Mana symbols
+ * font-size is 70% of 28 / 16
+ * but somehow 0.7em fails with hybrid symbols
+ */
 .manacost {
   white-space: pre;
+  font-size: 11.2px;
+  vertical-align: text-top;
+}
+h3 .manacost {
+  font-size: 19.6px;
 }
