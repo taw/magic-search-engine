@@ -97,6 +97,11 @@ class CompRules:
             self.footer += line
 
     def __getitem__(self, key):
+        match = re.fullmatch('([0-9]{3})', key)
+        if match:
+            subsection_number = int(match.group(1))
+            subsection = self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100]
+            return subsection
         match = re.fullmatch('([0-9]{3})\\.([0-9]+)', key)
         if match:
             subsection_number = int(match.group(1))
@@ -111,6 +116,11 @@ class CompRules:
         raise KeyError('Could not parse rule number: {!r}'.format(key))
 
     def __setitem__(self, key, value):
+        match = re.fullmatch('([0-9]{3})', key)
+        if match:
+            subsection_number = int(match.group(1))
+            self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100] = value
+            return
         match = re.fullmatch('([0-9]{3})\\.([0-9]+)', key)
         if match:
             subsection_number = int(match.group(1))
@@ -137,6 +147,8 @@ class CompRules:
                     assert new_ability_word not in ability_words
                     ability_words.add(new_ability_word)
                 self['207.2c'] = '{}. The ability words are {}.'.format(match.group(1), join(sorted(ability_words)))
+            elif patch['type'] == 'addKeywordAbility':
+                self['702']['rules'].append(patch['rule'])
             elif patch['type'] == 'addSubtypes':
                 rule = self['205.3']
                 subrule_id = {
@@ -162,6 +174,11 @@ class CompRules:
                 self['205.3{}'.format(subrule_id)] = '{}. The {} types are {}.{}'.format(match.group(1), match.group(2), join(v for k, v in sorted(subtypes.items())), match.group(4))
             elif patch['type'] == 'append':
                 self[patch['rule']] += ' ' + patch['text']
+            elif patch['type'] == 'insert':
+                self.insert(patch['rule'], patch['text'])
+            elif patch['type'] == 'insertText':
+                left, right = self[patch['rule']].split(patch['after'], 2)
+                self[patch['rule']] = left + patch['after'] + patch['text'] + right
             else:
                 raise NotImplementedError('Unknown patch type: {!r}'.format(patch['type']))
 
@@ -192,6 +209,29 @@ class CompRules:
                         comp_rules_f.write('{}.{}{} {}\n'.format(subsection_number, rule_number, subrule_number, subrule))
         # footer
         #comp_rules_f.write(self.footer)
+
+    def insert(self, key, value):
+        match = re.fullmatch('([0-9]{3})', key)
+        if match:
+            subsection_number = int(match.group(1))
+            self.sections[subsection_number // 100 - 1]['subsections'].insert(subsection_number % 100, value)
+            return
+        match = re.fullmatch('([0-9]{3})\\.([0-9]+)', key)
+        if match:
+            subsection_number = int(match.group(1))
+            subsection = self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100]
+            if isinstance(value, str):
+                value = {'subrules': [], 'text': value}
+            subsection['rules'].insert(int(match.group(2)) - 1, value)
+            return
+        match = re.fullmatch('([0-9]{3})\\.([0-9]+)([abcdefghijkmnpqrstuvwxyz])', key)
+        if match:
+            subsection_number = int(match.group(1))
+            subsection = self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100]
+            rule = subsection['rules'][int(match.group(2)) - 1]
+            rule['subrules'].insert('abcdefghijkmnpqrstuvwxyz'.index(match.group(3)), value)
+            return
+        raise KeyError('Could not parse rule number: {!r}'.format(key))
 
 def join(sequence, *, word='and', default=None):
     sequence = [str(elt) for elt in sequence]

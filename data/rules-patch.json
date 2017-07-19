@@ -24,9 +24,31 @@
             ]
         },
         {
+            "type": "insertText",
+            "rule": "601.2b",
+            "after": "If the player wishes to splice any cards onto the spell (see rule 702.46), he or she reveals those cards in his or her hand. ",
+            "text": "If the player wishes to apply any resonance effects to the spell, he or she announces his or her intention to do so. "
+        },
+        {
+            "type": "insert",
+            "rule": "612.1a",
+            "text": "A text-changing effect applying to its source only changes the text in the text box where it is defined. Other text boxes, such as those added by copy effects, are not modified. Text-changing effects that change the “full text” of an object are exempt from this rule. See rule 612.5."
+        },
+        {
             "type": "append",
             "rule": "613.3b",
             "text": "If a spell or ability refers to the base power and/or toughness of a creature for a calculation, it uses the value as determined after this layer is applied, but before layers 7c–7e are applied."
+        },
+        {
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Resonance",
+                "subrules": [
+                    "Resonance appears on some instants and sorceries. It represents two abilities: a static ability that functions while the spell is on the stack and a spell ability which may create a replacement effect. “Resonance [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “If this spell's resonance cost was paid, exile it and, as you put your next instant or sorcery spell on the stack to cast it, put this card into its owner's graveyard. If you do, you may copy this card's text box onto that spell, except it doesn't have resonance, and have it become this card's colors in addition to its other colors.”",
+                    "The text box added by the copy effect is added below any existing text boxes. If the spell resolves, the instructions of its printed text will be followed first, and then the instructions of the any spell abilities in the copied text are followed. If multiple replacement effects add text boxes onto the same spell, the one added by the most recently applied effect is ordered last.",
+                    "Putting the exiled spell into its owner's graveyard is a replacement effect that replaces the proposal of the next spell (rules 601.2a–d). Whether or not to apply the copy and color-changing effect is a decision made during the step described in rule 601.2b."
+                ]
+            }
         }
     ]
 }
