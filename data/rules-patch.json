@@ -2,6 +2,7 @@
     "base": "2017-07-08",
     "patches": [
         {
+            "#": "set: Aenyr 1.2",
             "type": "addSubtypes",
             "cardType": "Planeswalker",
             "subtypes": [
@@ -30,11 +31,13 @@
             "text": "If the player wishes to apply any resonance effects to the spell, he or she announces his or her intention to do so. "
         },
         {
+            "#": "for the resonance-overload interaction",
             "type": "insert",
             "rule": "612.1a",
             "text": "A text-changing effect applying to its source only changes the text in the text box where it is defined. Other text boxes, such as those added by copy effects, are not modified. Text-changing effects that change the “full text” of an object are exempt from this rule. See rule 612.5."
         },
         {
+            "#": "for Persona Shift",
             "type": "append",
             "rule": "613.3b",
             "text": "If a spell or ability refers to the base power and/or toughness of a creature for a calculation, it uses the value as determined after this layer is applied, but before layers 7c–7e are applied."
@@ -47,6 +50,58 @@
                     "Resonance appears on some instants and sorceries. It represents two abilities: a static ability that functions while the spell is on the stack and a spell ability which may create a replacement effect. “Resonance [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “If this spell's resonance cost was paid, exile it and, as you put your next instant or sorcery spell on the stack to cast it, put this card into its owner's graveyard. If you do, you may copy this card's text box onto that spell, except it doesn't have resonance, and have it become this card's colors in addition to its other colors.”",
                     "The text box added by the copy effect is added below any existing text boxes. If the spell resolves, the instructions of its printed text will be followed first, and then the instructions of the any spell abilities in the copied text are followed. If multiple replacement effects add text boxes onto the same spell, the one added by the most recently applied effect is ordered last.",
                     "Putting the exiled spell into its owner's graveyard is a replacement effect that replaces the proposal of the next spell (rules 601.2a–d). Whether or not to apply the copy and color-changing effect is a decision made during the step described in rule 601.2b."
+                ]
+            }
+        },
+        {
+            "#": "set: Dreamscape 2.50",
+            "type": "addSpecialAction",
+            "text": "A player who has a card with premonition in his or her hand may put that card face up into his or her library. This is a special action. A player can take this action any time he or she has priority, but only if he or she could begin to cast that card by putting it onto the stack."
+        },
+        {
+            "type": "addSubtypes",
+            "cardType": "Planeswalker",
+            "subtypes": [
+                "Evis",
+                "Yemma"
+            ]
+        },
+        {
+            "type": "addAbilityWords",
+            "abilityWords": [
+                "trance"
+            ]
+        },
+        {
+            "#": "for Evis, Executor of Light",
+            "type": "insertText",
+            "rule": "602.1b",
+            "after": "Such text may state which players can activate that ability, may restrict when a player can activate the ability, or may define some aspect of the activation cost. ",
+            "text": "It may also instruct players to perform choices. Such choices are made during the step described in rule 601.2b. "
+        },
+        {
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Dreamwalk",
+                "subrules": [
+                    "Dreamwalk is an evasion ability that modifies the rules for the declare blockers step. (See rule 509, “Declare Blockers Step.”)",
+                    "A creature with dreamwalk can't be blocked by untapped creatures. Instead, the defending player can choose tapped creatures that he or she controls to block an attacking creature with dreamwalk.",
+                    "Dreamwalk does not allow tapped creatures to block creatures without dreamwalk.",
+                    "Multiple instances of dreamwalk on the same creature are redundant."
+                ]
+            }
+        },
+        {
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Premonition",
+                "subrules": [
+                    "Premonition is a keyword that represents a static ability that functions while the card with premonition is in a player's hand. “Premonition N—[cost]” means “If you could begin to cast this card by putting it onto the stack from your hand and your library has at least N cards in it, you may pay [cost] and put it onto your library beneath the Nth card of your library. This card becomes face up in your library. This action doesn't use the stack.”",
+                    "Cards that are put into a player's library by the premonition ability are put into the library face up. This is an exception to rule 401.2. Players should keep face up cards in an orientation separate from the orientation of cards in a library that are not face-up or otherwise easily visible to all players.",
+                    "If a face up card with premonition would become the top card of a player's library, that player casts it without paying its mana cost instead. If that player can't, he or she turns the face up card face down instead and it becomes the top card of his or her library. It is no longer face up.",
+                    "If a one-shot effect causes a player to reveal (or look at, see rule 701.14d), shuffle, or change the order of a card or cards in a library, at least one of which is face up, each such card is turned face down, and then the cards are revealed, shuffled, or reordered.",
+                    "If a continuous effect causes a face up card to be revealed, that card is both revealed and is face up. If the card somehow ceases to be revealed, the card remains face up.",
+                    "If a one-shot effect causes a card to be put into the library “face up beneath the top N cards of [a player's] library,” that player puts that card into his or her library using the process described above."
                 ]
             }
         }

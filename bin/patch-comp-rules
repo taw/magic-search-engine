@@ -97,7 +97,7 @@ class CompRules:
             self.footer += line
 
     def __getitem__(self, key):
-        match = re.fullmatch('([0-9]{3})', key)
+        match = re.fullmatch('([0-9]{3})\\.?', key)
         if match:
             subsection_number = int(match.group(1))
             subsection = self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100]
@@ -116,7 +116,7 @@ class CompRules:
         raise KeyError('Could not parse rule number: {!r}'.format(key))
 
     def __setitem__(self, key, value):
-        match = re.fullmatch('([0-9]{3})', key)
+        match = re.fullmatch('([0-9]{3})\\.?', key)
         if match:
             subsection_number = int(match.group(1))
             self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100] = value
@@ -149,6 +149,30 @@ class CompRules:
                 self['207.2c'] = '{}. The ability words are {}.'.format(match.group(1), join(sorted(ability_words)))
             elif patch['type'] == 'addKeywordAbility':
                 self['702']['rules'].append(patch['rule'])
+            elif patch['type'] == 'addSpecialAction':
+                numbers = [
+                    'zero',
+                    'one',
+                    'two',
+                    'three',
+                    'four',
+                    'five',
+                    'six',
+                    'seven',
+                    'eight',
+                    'nine',
+                    'ten',
+                    'eleven',
+                    'twelve'
+                ]
+                match = re.fullmatch('There are ([^ ]+) special actions:', self['115.2'])
+                try:
+                    num_special_actions = int(match.group(1))
+                except ValueError:
+                    num_special_actions = numbers.index(match.group(1))
+                num_special_actions += 1
+                self['115.2'] = 'There are {} special actions:'.format(numbers[num_special_actions] if num_special_actions < len(numbers) else num_special_actions)
+                self['115']['rules'][1]['subrules'].append(patch['text'])
             elif patch['type'] == 'addSubtypes':
                 rule = self['205.3']
                 subrule_id = {
@@ -211,7 +235,7 @@ class CompRules:
         #comp_rules_f.write(self.footer)
 
     def insert(self, key, value):
-        match = re.fullmatch('([0-9]{3})', key)
+        match = re.fullmatch('([0-9]{3})\\.?', key)
         if match:
             subsection_number = int(match.group(1))
             self.sections[subsection_number // 100 - 1]['subsections'].insert(subsection_number % 100, value)
