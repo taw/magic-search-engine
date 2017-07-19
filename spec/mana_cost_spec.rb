@@ -7,6 +7,7 @@ describe "Full Database Test" do
     assert_search_equal "-mana=", "mana>=0"
     assert_search_equal "mana={}", "mana="
     assert_search_equal "mana!={}", "mana!="
+    assert_search_equal "mana={10}", "mana=10"
   end
 
   it "!=" do

@@ -1,0 +1,763 @@
+/* Based on https://github.com/andrewgioia/Mana */
+/**
+ * Global */
+@font-face {
+  font-family: 'Mana';
+  src: url('../fonts/mana.eot?v=1.3.1');
+  src: url('../fonts/mana.eot?#iefix&v=1.3.1') format('embedded-opentype'), url('../fonts/mana.woff?v=1.3.1') format('woff'), url('../fonts/mana.ttf?v=1.3.1') format('truetype'), url('../fonts/mana.svg?v=1.3.1#mana') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.mana {
+  display: inline-block;
+  font: normal normal normal 14px/1 Mana;
+  font-size: inherit;
+  line-height: 1em;
+  text-rendering: auto;
+  transform: translate(0, 0);
+  speak: none;
+  text-transform: none;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/**
+ * Mana cost styles */
+.mana-cost {
+  background-color: #BEB9B2;
+  border-radius: 1em;
+  color: #111;
+  font-size: 0.95em;
+  width: 1.3em;
+  height: 1.3em;
+  line-height: 1.35em;
+  text-align: center;
+}
+.mana-cost.mana-w,
+.mana-cost.mana-wp {
+  background-color: #F0F2C0;
+}
+.mana-cost.mana-u,
+.mana-cost.mana-up {
+  background-color: #B5CDE3;
+}
+.mana-cost.mana-b,
+.mana-cost.mana-bp {
+  background-color: #ACA29A;
+}
+.mana-cost.mana-r,
+.mana-cost.mana-rp {
+  background-color: #DB8664;
+}
+.mana-cost.mana-g,
+.mana-cost.mana-gp {
+  background-color: #93B483;
+}
+.mana-cost.mana-wu {
+  background: #edf2b0;
+  background: -moz-linear-gradient(-45deg, #edf2b0 0%, #edf2b0 50%, #a6c1dd 50%, #a6c1dd 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #edf2b0), color-stop(50%, #edf2b0), color-stop(50%, #a6c1dd), color-stop(100%, #a6c1dd));
+  background: -webkit-linear-gradient(-45deg, #edf2b0 0%, #edf2b0 50%, #a6c1dd 50%, #a6c1dd 100%);
+  background: -o-linear-gradient(-45deg, #edf2b0 0%, #edf2b0 50%, #a6c1dd 50%, #a6c1dd 100%);
+  background: -ms-linear-gradient(-45deg, #edf2b0 0%, #edf2b0 50%, #a6c1dd 50%, #a6c1dd 100%);
+  background: linear-gradient(135deg, #edf2b0 0%, #edf2b0 50%, #a6c1dd 50%, #a6c1dd 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#edf2b0', endColorstr='#a6c1dd', GradientType=1);
+}
+.mana-cost.mana-wb {
+  background: #edf2b0;
+  background: -moz-linear-gradient(-45deg, #edf2b0 0%, #edf2b0 50%, #9c9188 50%, #9c9188 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #edf2b0), color-stop(50%, #edf2b0), color-stop(50%, #9c9188), color-stop(100%, #9c9188));
+  background: -webkit-linear-gradient(-45deg, #edf2b0 0%, #edf2b0 50%, #9c9188 50%, #9c9188 100%);
+  background: -o-linear-gradient(-45deg, #edf2b0 0%, #edf2b0 50%, #9c9188 50%, #9c9188 100%);
+  background: -ms-linear-gradient(-45deg, #edf2b0 0%, #edf2b0 50%, #9c9188 50%, #9c9188 100%);
+  background: linear-gradient(135deg, #edf2b0 0%, #edf2b0 50%, #9c9188 50%, #9c9188 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#edf2b0', endColorstr='#9c9188', GradientType=1);
+}
+.mana-cost.mana-ub {
+  background: #a6c1dd;
+  background: -moz-linear-gradient(-45deg, #a6c1dd 0%, #a6c1dd 50%, #9c9188 50%, #9c9188 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #a6c1dd), color-stop(50%, #a6c1dd), color-stop(50%, #9c9188), color-stop(100%, #9c9188));
+  background: -webkit-linear-gradient(-45deg, #a6c1dd 0%, #a6c1dd 50%, #9c9188 50%, #9c9188 100%);
+  background: -o-linear-gradient(-45deg, #a6c1dd 0%, #a6c1dd 50%, #9c9188 50%, #9c9188 100%);
+  background: -ms-linear-gradient(-45deg, #a6c1dd 0%, #a6c1dd 50%, #9c9188 50%, #9c9188 100%);
+  background: linear-gradient(135deg, #a6c1dd 0%, #a6c1dd 50%, #9c9188 50%, #9c9188 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6c1dd', endColorstr='#9c9188', GradientType=1);
+}
+.mana-cost.mana-ur {
+  background: #a6c1dd;
+  background: -moz-linear-gradient(-45deg, #a6c1dd 0%, #a6c1dd 50%, #db8664 50%, #db8664 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #a6c1dd), color-stop(50%, #a6c1dd), color-stop(50%, #db8664), color-stop(100%, #db8664));
+  background: -webkit-linear-gradient(-45deg, #a6c1dd 0%, #a6c1dd 50%, #db8664 50%, #db8664 100%);
+  background: -o-linear-gradient(-45deg, #a6c1dd 0%, #a6c1dd 50%, #db8664 50%, #db8664 100%);
+  background: -ms-linear-gradient(-45deg, #a6c1dd 0%, #a6c1dd 50%, #db8664 50%, #db8664 100%);
+  background: linear-gradient(135deg, #a6c1dd 0%, #a6c1dd 50%, #db8664 50%, #db8664 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6c1dd', endColorstr='#db8664', GradientType=1);
+}
+.mana-cost.mana-br {
+  background: #aca29a;
+  background: -moz-linear-gradient(-45deg, #aca29a 0%, #aca29a 50%, #db8664 50%, #db8664 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #aca29a), color-stop(50%, #aca29a), color-stop(50%, #db8664), color-stop(100%, #db8664));
+  background: -webkit-linear-gradient(-45deg, #aca29a 0%, #aca29a 50%, #db8664 50%, #db8664 100%);
+  background: -o-linear-gradient(-45deg, #aca29a 0%, #aca29a 50%, #db8664 50%, #db8664 100%);
+  background: -ms-linear-gradient(-45deg, #aca29a 0%, #aca29a 50%, #db8664 50%, #db8664 100%);
+  background: linear-gradient(135deg, #aca29a 0%, #aca29a 50%, #db8664 50%, #db8664 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aca29a', endColorstr='#db8664', GradientType=1);
+}
+.mana-cost.mana-bg {
+  background: #aca29a;
+  background: -moz-linear-gradient(-45deg, #aca29a 0%, #aca29a 50%, #93b483 50%, #93b483 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #aca29a), color-stop(50%, #aca29a), color-stop(50%, #93b483), color-stop(100%, #93b483));
+  background: -webkit-linear-gradient(-45deg, #aca29a 0%, #aca29a 50%, #93b483 50%, #93b483 100%);
+  background: -o-linear-gradient(-45deg, #aca29a 0%, #aca29a 50%, #93b483 50%, #93b483 100%);
+  background: -ms-linear-gradient(-45deg, #aca29a 0%, #aca29a 50%, #93b483 50%, #93b483 100%);
+  background: linear-gradient(135deg, #aca29a 0%, #aca29a 50%, #93b483 50%, #93b483 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aca29a', endColorstr='#93b483', GradientType=1);
+}
+.mana-cost.mana-rw {
+  background: #db8664;
+  background: -moz-linear-gradient(-45deg, #db8664 0%, #db8664 50%, #edf2b0 50%, #edf2b0 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #db8664), color-stop(50%, #db8664), color-stop(50%, #edf2b0), color-stop(100%, #edf2b0));
+  background: -webkit-linear-gradient(-45deg, #db8664 0%, #db8664 50%, #edf2b0 50%, #edf2b0 100%);
+  background: -o-linear-gradient(-45deg, #db8664 0%, #db8664 50%, #edf2b0 50%, #edf2b0 100%);
+  background: -ms-linear-gradient(-45deg, #db8664 0%, #db8664 50%, #edf2b0 50%, #edf2b0 100%);
+  background: linear-gradient(135deg, #db8664 0%, #db8664 50%, #edf2b0 50%, #edf2b0 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#db8664', endColorstr='#edf2b0', GradientType=1);
+}
+.mana-cost.mana-rg {
+  background: #db8664;
+  background: -moz-linear-gradient(-45deg, #db8664 0%, #db8664 50%, #93b483 50%, #93b483 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #db8664), color-stop(50%, #db8664), color-stop(50%, #93b483), color-stop(100%, #93b483));
+  background: -webkit-linear-gradient(-45deg, #db8664 0%, #db8664 50%, #93b483 50%, #93b483 100%);
+  background: -o-linear-gradient(-45deg, #db8664 0%, #db8664 50%, #93b483 50%, #93b483 100%);
+  background: -ms-linear-gradient(-45deg, #db8664 0%, #db8664 50%, #93b483 50%, #93b483 100%);
+  background: linear-gradient(135deg, #db8664 0%, #db8664 50%, #93b483 50%, #93b483 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#db8664', endColorstr='#93b483', GradientType=1);
+}
+.mana-cost.mana-gw {
+  background: #93b483;
+  background: -moz-linear-gradient(-45deg, #93b483 0%, #93b483 50%, #edf2b0 50%, #edf2b0 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #93b483), color-stop(50%, #93b483), color-stop(50%, #edf2b0), color-stop(100%, #edf2b0));
+  background: -webkit-linear-gradient(-45deg, #93b483 0%, #93b483 50%, #edf2b0 50%, #edf2b0 100%);
+  background: -o-linear-gradient(-45deg, #93b483 0%, #93b483 50%, #edf2b0 50%, #edf2b0 100%);
+  background: -ms-linear-gradient(-45deg, #93b483 0%, #93b483 50%, #edf2b0 50%, #edf2b0 100%);
+  background: linear-gradient(135deg, #93b483 0%, #93b483 50%, #edf2b0 50%, #edf2b0 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#93b483', endColorstr='#edf2b0', GradientType=1);
+}
+.mana-cost.mana-gu {
+  background: #93b483;
+  background: -moz-linear-gradient(-45deg, #93b483 0%, #93b483 50%, #b5cde3 50%, #b5cde3 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #93b483), color-stop(50%, #93b483), color-stop(50%, #b5cde3), color-stop(100%, #b5cde3));
+  background: -webkit-linear-gradient(-45deg, #93b483 0%, #93b483 50%, #b5cde3 50%, #b5cde3 100%);
+  background: -o-linear-gradient(-45deg, #93b483 0%, #93b483 50%, #b5cde3 50%, #b5cde3 100%);
+  background: -ms-linear-gradient(-45deg, #93b483 0%, #93b483 50%, #b5cde3 50%, #b5cde3 100%);
+  background: linear-gradient(135deg, #93b483 0%, #93b483 50%, #b5cde3 50%, #b5cde3 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#93b483', endColorstr='#b5cde3', GradientType=1);
+}
+.mana-cost.mana-2w {
+  background: #beb9b2;
+  background: -moz-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #edf2b0 50%, #edf2b0 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #beb9b2), color-stop(50%, #beb9b2), color-stop(50%, #edf2b0), color-stop(100%, #edf2b0));
+  background: -webkit-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #edf2b0 50%, #edf2b0 100%);
+  background: -o-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #edf2b0 50%, #edf2b0 100%);
+  background: -ms-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #edf2b0 50%, #edf2b0 100%);
+  background: linear-gradient(135deg, #beb9b2 0%, #beb9b2 50%, #edf2b0 50%, #edf2b0 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#beb9b2', endColorstr='#edf2b0', GradientType=1);
+}
+.mana-cost.mana-2u {
+  background: #beb9b2;
+  background: -moz-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #b5cde3 50%, #b5cde3 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #beb9b2), color-stop(50%, #beb9b2), color-stop(50%, #b5cde3), color-stop(100%, #b5cde3));
+  background: -webkit-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #b5cde3 50%, #b5cde3 100%);
+  background: -o-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #b5cde3 50%, #b5cde3 100%);
+  background: -ms-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #b5cde3 50%, #b5cde3 100%);
+  background: linear-gradient(135deg, #beb9b2 0%, #beb9b2 50%, #b5cde3 50%, #b5cde3 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#beb9b2', endColorstr='#b5cde3', GradientType=1);
+}
+.mana-cost.mana-2b {
+  background: #beb9b2;
+  background: -moz-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #9c9188 50%, #9c9188 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #beb9b2), color-stop(50%, #beb9b2), color-stop(50%, #9c9188), color-stop(100%, #9c9188));
+  background: -webkit-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #9c9188 50%, #9c9188 100%);
+  background: -o-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #9c9188 50%, #9c9188 100%);
+  background: -ms-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #9c9188 50%, #9c9188 100%);
+  background: linear-gradient(135deg, #beb9b2 0%, #beb9b2 50%, #9c9188 50%, #9c9188 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#beb9b2', endColorstr='#9c9188', GradientType=1);
+}
+.mana-cost.mana-2r {
+  background: #beb9b2;
+  background: -moz-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #db8664 50%, #db8664 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #beb9b2), color-stop(50%, #beb9b2), color-stop(50%, #db8664), color-stop(100%, #db8664));
+  background: -webkit-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #db8664 50%, #db8664 100%);
+  background: -o-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #db8664 50%, #db8664 100%);
+  background: -ms-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #db8664 50%, #db8664 100%);
+  background: linear-gradient(135deg, #beb9b2 0%, #beb9b2 50%, #db8664 50%, #db8664 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#beb9b2', endColorstr='#db8664', GradientType=1);
+}
+.mana-cost.mana-2g {
+  background: #beb9b2;
+  background: -moz-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #93b483 50%, #93b483 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #beb9b2), color-stop(50%, #beb9b2), color-stop(50%, #93b483), color-stop(100%, #93b483));
+  background: -webkit-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #93b483 50%, #93b483 100%);
+  background: -o-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #93b483 50%, #93b483 100%);
+  background: -ms-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #93b483 50%, #93b483 100%);
+  background: linear-gradient(135deg, #beb9b2 0%, #beb9b2 50%, #93b483 50%, #93b483 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#beb9b2', endColorstr='#93b483', GradientType=1);
+}
+.mana-cost.mana-p:before,
+.mana-cost.mana-wp:before,
+.mana-cost.mana-up:before,
+.mana-cost.mana-bp:before,
+.mana-cost.mana-rp:before,
+.mana-cost.mana-gp:before {
+  display: inline-block;
+  -moz-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
+}
+.mana-cost.mana-tap-alt:before {
+  display: inline-block;
+  -moz-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
+  padding-left: .06em;
+  padding-bottom: 0.10em;
+}
+.mana-cost.mana-s:before {
+  color: #fff;
+  -webkit-text-stroke: 2px #fff;
+  font-size: 0.85em;
+  top: -0.05em;
+  position: relative;
+  display: inline-block;
+}
+.mana-cost.mana-s:after {
+  content: "\e619";
+  position: absolute;
+  color: #333;
+  margin-left: -0.9em;
+  font-size: 1.1em;
+}
+.mana-cost.mana-untap {
+  background-color: #111;
+  color: #fff;
+}
+.mana-cost.mana-shadow {
+  box-shadow: -0.06em 0.07em 0 #111, 0 0.06em 0 #111;
+}
+.mana-cost.mana-shadow.mana-untap {
+  box-shadow: -0.06em 0.07em 0 #fff, 0 0.06em 0 #fff;
+}
+/**
+ * Split costs */
+.mana-2b,.mana-2g,.mana-2r,.mana-2u,.mana-2w,.mana-bg,.mana-br,.mana-gu,.mana-gw,.mana-rg,.mana-rw,.mana-ub,.mana-ur,.mana-wb,.mana-wu {
+  position: relative;
+  width: 1.3em;
+  height: 1.3em;
+}
+.mana-2b:before,.mana-2g:before,.mana-2r:before,.mana-2u:before,.mana-2w:before,.mana-bg:before,.mana-br:before,.mana-gu:before,.mana-gw:before,.mana-rg:before,.mana-rw:before,.mana-ub:before,.mana-ur:before,.mana-wb:before,.mana-wu:before {
+  font-size: 0.55em !important;
+  position: absolute;
+  top: -0.38em;
+  left: 0.28em;
+}
+.mana-2b:after,.mana-2g:after,.mana-2r:after,.mana-2u:after,.mana-2w:after,.mana-bg:after,.mana-br:after,.mana-gu:after,.mana-gw:after,.mana-rg:after,.mana-rw:after,.mana-ub:after,.mana-ur:after,.mana-wb:after,.mana-wu:after {
+  font-size: 0.55em !important;
+  position: absolute;
+  top: 0.5em;
+  left: 1.0em;
+}
+/**
+ * Half costs */
+.mana-half {
+  width: .675em;
+  overflow: hidden;
+  display: inline-block;
+  margin-left: .675em;
+}
+.mana-half > .mana-cost {
+  margin-left: -0.675em;
+}
+/**
+ * Un-set costs */
+.mana-100 {
+  width: 2.4em;
+}
+.mana-1000000 {
+  width: 5.4em;
+}
+/**
+ * Planeswalker symbols */
+.mana-loyalty-up,
+.mana-loyalty-down,
+.mana-loyalty-zero,
+.mana-loyalty-start {
+  color: #111;
+  font-size: 1.5em;
+  position: relative;
+  text-align: center;
+}
+.mana-loyalty-start {
+  font-size: 2.0em;
+}
+.mana-loyalty-0:after,
+.mana-loyalty-1:after,
+.mana-loyalty-2:after,
+.mana-loyalty-3:after,
+.mana-loyalty-4:after,
+.mana-loyalty-5:after,
+.mana-loyalty-6:after,
+.mana-loyalty-7:after,
+.mana-loyalty-8:after,
+.mana-loyalty-9:after,
+.mana-loyalty-10:after,
+.mana-loyalty-12:after,
+.mana-loyalty-14:after,
+.mana-loyalty-x:after {
+  color: #fff;
+  display: inline-block;
+  font-size: 0.5em;
+  font-family: 'MPlantin, Garamond, Palatino, ' Times New Roman ', Times, serif';
+  position: absolute;
+  left: 0;
+  line-height: 1.75em;
+  width: 100%;
+  text-align: center;
+  -webkit-padding-before: 0.15em;
+}
+.mana-loyalty-0:after {
+  content: "0";
+}
+.mana-loyalty-up.mana-loyalty-1:after {
+  content: "+1";
+}
+.mana-loyalty-up.mana-loyalty-2:after {
+  content: "+2";
+}
+.mana-loyalty-up.mana-loyalty-3:after {
+  content: "+3";
+}
+.mana-loyalty-up.mana-loyalty-4:after {
+  content: "+4";
+}
+.mana-loyalty-up.mana-loyalty-5:after {
+  content: "+5";
+}
+.mana-loyalty-up.mana-loyalty-6:after {
+  content: "+6";
+}
+.mana-loyalty-up.mana-loyalty-7:after {
+  content: "+7";
+}
+.mana-loyalty-up.mana-loyalty-8:after {
+  content: "+8";
+}
+.mana-loyalty-up.mana-loyalty-9:after {
+  content: "+9";
+}
+.mana-loyalty-up.mana-loyalty-10:after {
+  content: "+10";
+}
+.mana-loyalty-up.mana-loyalty-x:after {
+  content: "+X";
+}
+.mana-loyalty-start.mana-loyalty-1:after {
+  content: "1";
+}
+.mana-loyalty-start.mana-loyalty-2:after {
+  content: "2";
+}
+.mana-loyalty-start.mana-loyalty-3:after {
+  content: "3";
+}
+.mana-loyalty-start.mana-loyalty-4:after {
+  content: "4";
+}
+.mana-loyalty-start.mana-loyalty-5:after {
+  content: "5";
+}
+.mana-loyalty-start.mana-loyalty-6:after {
+  content: "6";
+}
+.mana-loyalty-start.mana-loyalty-7:after {
+  content: "7";
+}
+.mana-loyalty-start.mana-loyalty-8:after {
+  content: "8";
+}
+.mana-loyalty-start.mana-loyalty-9:after {
+  content: "9";
+}
+.mana-loyalty-start.mana-loyalty-10:after {
+  content: "10";
+}
+.mana-loyalty-start.mana-loyalty-x:after {
+  content: "X";
+}
+.mana-loyalty-down:after {
+  line-height: 1.6em;
+}
+.mana-loyalty-down.mana-loyalty-1:after {
+  content: "-1";
+}
+.mana-loyalty-down.mana-loyalty-2:after {
+  content: "-2";
+}
+.mana-loyalty-down.mana-loyalty-3:after {
+  content: "-3";
+}
+.mana-loyalty-down.mana-loyalty-4:after {
+  content: "-4";
+}
+.mana-loyalty-down.mana-loyalty-5:after {
+  content: "-5";
+}
+.mana-loyalty-down.mana-loyalty-6:after {
+  content: "-6";
+}
+.mana-loyalty-down.mana-loyalty-7:after {
+  content: "-7";
+}
+.mana-loyalty-down.mana-loyalty-8:after {
+  content: "-8";
+}
+.mana-loyalty-down.mana-loyalty-9:after {
+  content: "-9";
+}
+.mana-loyalty-down.mana-loyalty-10:after {
+  content: "-10";
+}
+.mana-loyalty-down.mana-loyalty-12:after {
+  content: "-12";
+}
+.mana-loyalty-down.mana-loyalty-14:after {
+  content: "-14";
+}
+.mana-loyalty-down.mana-loyalty-x:after {
+  content: "-X";
+}
+/**
+ * Double faced cards */
+.mana-dfc {
+  color: #111;
+  border: .05em solid #111;
+  border-radius: 2em;
+  padding: 0.025em;
+}
+/*
+ * Larger sizes */
+.mana-2x {
+  font-size: 1.75em;
+}
+.mana-3x {
+  font-size: 2.25em;
+}
+.mana-4x {
+  font-size: 3.0em;
+}
+.mana-5x {
+  font-size: 3.75em;
+}
+.mana-6x {
+  font-size: 4.5em;
+}
+/**
+ * Mana */
+.mana-w:before {
+  content: "\e600";
+}
+.mana-u:before {
+  content: "\e601";
+}
+.mana-b:before {
+  content: "\e602";
+}
+.mana-r:before {
+  content: "\e603";
+}
+.mana-g:before {
+  content: "\e604";
+}
+.mana-0:before {
+  content: "\e605";
+}
+.mana-1:before {
+  content: "\e606";
+}
+.mana-2:before {
+  content: "\e607";
+}
+.mana-3:before {
+  content: "\e608";
+}
+.mana-4:before {
+  content: "\e609";
+}
+.mana-5:before {
+  content: "\e60a";
+}
+.mana-6:before {
+  content: "\e60b";
+}
+.mana-7:before {
+  content: "\e60c";
+}
+.mana-8:before {
+  content: "\e60d";
+}
+.mana-9:before {
+  content: "\e60e";
+}
+.mana-10:before {
+  content: "\e60f";
+}
+.mana-11:before {
+  content: "\e610";
+}
+.mana-12:before {
+  content: "\e611";
+}
+.mana-13:before {
+  content: "\e612";
+}
+.mana-14:before {
+  content: "\e613";
+}
+.mana-15:before {
+  content: "\e614";
+}
+.mana-16:before {
+  content: "\e62a";
+}
+.mana-17:before {
+  content: "\e62b";
+}
+.mana-18:before {
+  content: "\e62c";
+}
+.mana-19:before {
+  content: "\e62d";
+}
+.mana-20:before {
+  content: "\e62e";
+}
+.mana-x:before {
+  content: "\e615";
+}
+.mana-y:before {
+  content: "\e616";
+}
+.mana-z:before {
+  content: "\e617";
+}
+.mana-p:before,
+.mana-wp:before,
+.mana-up:before,
+.mana-bp:before,
+.mana-rp:before,
+.mana-gp:before {
+  content: "\e618";
+}
+.mana-s:before {
+  content: "\e619";
+}
+.mana-c:before {
+  content: "\e904";
+}
+.mana-e:before,
+.mana-energy:before {
+  content: "\e907";
+}
+/**
+ * Tap/roll symbols */
+.mana-t:before {
+  content: "\e61a";
+}
+.mana-q:before {
+  content: "\e61b";
+}
+.mana-tap-alt:before {
+  content: "\e61c";
+}
+.mana-chaos:before {
+  content: "\e61d";
+}
+.mana-½:before {
+  content: "\e902";
+}
+.mana-∞:before {
+  content: "\e903";
+}
+/**
+ * Card types */
+.mana-artifact:before {
+  content: "\e61e";
+}
+.mana-creature:before {
+  content: "\e61f";
+}
+.mana-enchantment:before {
+  content: "\e620";
+}
+.mana-instant:before {
+  content: "\e621";
+}
+.mana-land:before {
+  content: "\e622";
+}
+.mana-pw:before {
+  content: "\e623";
+}
+.mana-sorcery:before {
+  content: "\e624";
+}
+/**
+ * Split symbols */
+.mana-wu:before,
+.mana-wb:before,
+.mana-rw:after,
+.mana-gw:after,
+.mana-2w:after {
+  content: "\e600";
+}
+.mana-ub:before,
+.mana-ur:before,
+.mana-wu:after,
+.mana-gu:after,
+.mana-2u:after {
+  content: "\e601";
+}
+.mana-br:before,
+.mana-bg:before,
+.mana-wb:after,
+.mana-ub:after,
+.mana-2b:after {
+  content: "\e602";
+}
+.mana-rw:before,
+.mana-rg:before,
+.mana-ur:after,
+.mana-br:after,
+.mana-2r:after {
+  content: "\e603";
+}
+.mana-gw:before,
+.mana-gu:before,
+.mana-bg:after,
+.mana-rg:after,
+.mana-2g:after {
+  content: "\e604";
+}
+.mana-2w:before,
+.mana-2u:before,
+.mana-2b:before,
+.mana-2r:before,
+.mana-2g:before {
+  content: "\e607";
+}
+/**
+ * Un-set symbols */
+.mana-100:before {
+  content: "\e900";
+}
+.mana-1000000:before {
+  content: "\e901";
+}
+/**
+ * Planeswalker symbols */
+.mana-loyalty-up:before {
+  content: "\e627";
+}
+.mana-loyalty-down:before {
+  content: "\e625";
+}
+.mana-loyalty-zero:before {
+  content: "\e626";
+}
+.mana-loyalty-start:before {
+  content: "\e628";
+}
+/**
+ * Other */
+.mana-flashback:before {
+  content: "\e629";
+}
+.mana-dfc-night:before {
+  content: "\e905";
+}
+.mana-dfc-day:before {
+  content: "\e906";
+}
+.mana-dfc-ignite:before {
+  content: "\e908";
+}
+.mana-dfc-spark:before {
+  content: "\e909";
+}
+.mana-dfc-emrakul:before {
+  content: "\e90a";
+}
+.mana-dfc-moon:before {
+  content: "\e90b";
+}
+/**
+ * Guilds and Clans */
+.mana-guild-azorius:before {
+  content: "\e90c";
+}
+.mana-guild-boros:before {
+  content: "\e90d";
+}
+.mana-guild-dimir:before {
+  content: "\e90e";
+}
+.mana-guild-golgari:before {
+  content: "\e90f";
+}
+.mana-guild-gruul:before {
+  content: "\e910";
+}
+.mana-guild-izzet:before {
+  content: "\e911";
+}
+.mana-guild-orzhov:before {
+  content: "\e912";
+}
+.mana-guild-rakdos:before {
+  content: "\e913";
+}
+.mana-guild-selesnya:before {
+  content: "\e914";
+}
+.mana-guild-simic:before {
+  content: "\e915";
+}
+.mana-clan-abzan:before {
+  content: "\e916";
+}
+.mana-clan-jeskai:before {
+  content: "\e917";
+}
+.mana-clan-mardu:before {
+  content: "\e918";
+}
+.mana-clan-sultai:before {
+  content: "\e919";
+}
+.mana-clan-temur:before {
+  content: "\e91a";
+}
+.mana-clan-atarka:before {
+  content: "\e91b";
+}
+.mana-clan-dromoka:before {
+  content: "\e91c";
+}
+.mana-clan-kolaghan:before {
+  content: "\e91d";
+}
+.mana-clan-ojutai:before {
+  content: "\e91e";
+}
+.mana-clan-silumgar:before {
+  content: "\e91f";
+}
