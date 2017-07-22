@@ -2,9 +2,8 @@
 
 require_relative "../lib/card_database"
 require "benchmark"
-require "pry"
 
-json_path = Pathname(__dir__) + "../data/index.json"
+json_path = Pathname(__dir__) + "../../index/index.json"
 @db = CardDatabase.load(json_path)
 
 queries = ARGF.readlines.map(&:chomp)
