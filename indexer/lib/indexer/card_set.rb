@@ -112,7 +112,7 @@ class Indexer
     # then Forest with lower multiverse id gets 100
     # No idea if that's correct
     def use_mci_numbers!
-      path = Pathname(__dir__) + "../../data/collector_numbers/#{set_code}.txt"
+      path = Pathname(__dir__) + "../../../data/collector_numbers/#{set_code}.txt"
       return unless path.exist?
       mci_numbers = path.readlines.map{|line|
         number, name = line.chomp.split("\t", 2)

@@ -2,7 +2,7 @@ require_relative "card_database"
 
 class CLIFrontend
   def initialize
-    json_path = Pathname(__dir__) + "../data/index.json"
+    json_path = Pathname(__dir__) + "../../index/index.json"
     @db = CardDatabase.load(json_path)
   end
 

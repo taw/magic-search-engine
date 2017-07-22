@@ -2,4 +2,4 @@
 
 require_relative "../lib/indexer"
 indexer = Indexer.new
-indexer.save_all! "data/index.json"
+indexer.save_all! "#{__dir__}/../../index/index.json"

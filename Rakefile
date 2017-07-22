@@ -7,7 +7,7 @@ require "nokogiri"
 def db
   @db ||= begin
     require_relative "lib/card_database"
-    json_path = Pathname(__dir__) + "data/index.json"
+    json_path = Pathname(__dir__) + "index/index.json"
     CardDatabase.load(json_path)
   end
 end
@@ -17,25 +17,28 @@ task "test" => "spec"
 
 # Run specs
 task "spec" do
-  sh "rspec"
+  Dir.chdir("search-engine") do
+    sh "rspec"
+  end
+  Dir.chdir("frontend") do
+    sh "rake test"
+  end
 end
 
 desc "Generate index"
 task "index" do
-  sh "./bin/indexer"
+  sh "./indexer/bin/indexer"
 end
 
 desc "Fetch new mtgjson database and generate diffable files"
 task "mtgjson:update" do
   sh *%W[wget http://mtgjson.com/json/AllSets-x.json -O data/AllSets-x.json]
-  sh "json_pp <data/index.json >index-1.json"
   Rake::Task["index"].invoke
-  sh "json_pp <data/index.json >index-2.json"
 end
 
 desc "Update penny dreadful banlist"
 task "pennydreadful:update" do
-  system "wget http://pdmtgo.com/legal_cards.txt -O data/penny_dreadful_legal_cards.txt"
+  system "wget http://pdmtgo.com/legal_cards.txt -O index/penny_dreadful_legal_cards.txt"
 end
 
 desc "Fetch Gatherer pics"
@@ -204,7 +207,7 @@ task "clean" do
     "frontend/log/development.log",
     "frontend/log/test.log",
     "frontend/tmp",
-    "coverage"
+    "search-engine/coverage"
   ].each do |path|
     system "trash", path if Pathname(path).exist?
   end

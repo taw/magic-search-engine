@@ -12,22 +12,22 @@ To run frontend like http://mtg.wtf/
 
 To search card names from command line:
 
-    $ ./bin/find_cards "query"
+    $ ./search-engine/bin/find_cards "query"
 
 To search card names and content from command line:
 
-    $ ./bin/find_cards -v "query"
+    $ ./search-engine/bin/find_cards -v "query"
 
 To explore card database from Ruby console:
 
-    $ ./bin/pry_cards
+    $ ./search-engine/bin/pry_cards
 
 ### Testing
 
 Tests for library and for Rails frontend are separate:
 
-    $ bundle install
-    $ bundle exec rake test
+    $ (cd search-engine; bundle install)
+    $ (cd search-engine; bundle exec rspec)
     $ (cd frontend; bundle install)
     $ (cd frontend; bundle exec rake test)
 
@@ -46,6 +46,7 @@ Whenever new set is released:
 Then import cards:
 
 * Run `rake mtgjson:update` to fetch mtgjson data and index it
+  (this can fail if there are any mtgjson quality issues)
 * Run `rake test` and fix any tests failing due to data changes
 
 Whenever banned and restricted list is announced:
