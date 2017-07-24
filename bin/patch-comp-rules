@@ -4,6 +4,7 @@ import datetime
 import json
 import more_itertools
 import re
+import subprocess
 
 class CompRules:
     def __init__(self, comp_rules_f):
@@ -139,6 +140,7 @@ class CompRules:
     def apply_patch(self, patch_json):
         if parse_iso_date(patch_json['base']) != self.date:
             raise ValueError('This rules patch is for a different version of the rules')
+        self.date = datetime.datetime.utcfromtimestamp(int(subprocess.run(['git', 'log', '-n1', '--pretty=format:%ct', '--', 'data/rules-patch.json'], stdout=subprocess.PIPE, universal_newlines=True).stdout)).date()
         for patch in patch_json['patches']:
             if patch['type'] == 'addAbilityWords':
                 match = re.fullmatch('(.*)\\. The ability words are (.+).', self['207.2c'])
