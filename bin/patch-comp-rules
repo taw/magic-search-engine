@@ -143,22 +143,22 @@ class CompRules:
         self.date = datetime.datetime.utcfromtimestamp(int(subprocess.run(['git', 'log', '-n1', '--pretty=format:%ct', '--', 'data/rules-patch.json'], stdout=subprocess.PIPE, universal_newlines=True).stdout)).date()
         for patch in patch_json['patches']:
             if patch['type'] == 'add':
-                match = re.fullmatch('([0-9]{3})\\.?', patch['in'])
+                match = re.fullmatch('([0-9]{3})\\.?', patch['rule'])
                 if match:
                     subsection_number = int(match.group(1))
-                    if isinstance(patch['rule'], str):
-                        rule = {'subrules': [], 'text': patch['rule']}
+                    if isinstance(patch['text'], str):
+                        rule = {'subrules': [], 'text': patch['text']}
                     else:
-                        rule = patch['rule']
+                        rule = patch['text']
                     self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100]['rules'].append(rule)
                     continue
-                match = re.fullmatch('([0-9]{3})\\.([0-9]+)', patch['in'])
+                match = re.fullmatch('([0-9]{3})\\.([0-9]+)', patch['rule'])
                 if match:
                     subsection_number = int(match.group(1))
                     subsection = self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100]
-                    subsection['rules'][int(match.group(2)) - 1]['subrules'].append(patch['rule'])
+                    subsection['rules'][int(match.group(2)) - 1]['subrules'].append(patch['text'])
                     continue
-                raise ValueError('Could not parse rule number: {!r}'.format(patch['in']))
+                raise ValueError('Could not parse rule number: {!r}'.format(patch['rule']))
             elif patch['type'] == 'addAbilityWords':
                 match = re.fullmatch('(.*)\\. The ability words are (.+).', self['207.2c'])
                 ability_words = set(split(match.group(2)))
@@ -212,8 +212,8 @@ class CompRules:
                     raise NotImplementedError('Unknown card type: {!r}'.format(patch['cardType']))
                 subtypes = {re.sub(' \\(.+\\)', '', subtype): subtype for subtype in split(match.group(3))}
                 for new_subtype in patch['subtypes']:
-                    assert new_subtype not in subtypes
-                    subtypes[new_subtype] = new_subtype
+                    if new_subtype not in subtypes:
+                        subtypes[new_subtype] = new_subtype
                 self['205.3{}'.format(subrule_id)] = '{}. The {} types are {}.{}'.format(match.group(1), match.group(2), join(v for k, v in sorted(subtypes.items())), match.group(4))
             elif patch['type'] == 'append':
                 self[patch['rule']] += ' ' + patch['text']

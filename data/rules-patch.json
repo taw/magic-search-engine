@@ -143,8 +143,8 @@
         {
             "#": "for Sobki, World Severer",
             "type": "add",
-            "in": "119",
-            "rule": "If an effect refers to the controller of a damage source, and the source of that damage is a player, it refers to that player."
+            "rule": "119",
+            "text": "If an effect refers to the controller of a damage source, and the source of that damage is a player, it refers to that player."
         },
         {
             "#": "for Sobki, World Severer",
@@ -192,6 +192,78 @@
             "rule": "717.1",
             "find": "One card \\(Karn Liberated\\) restarts the game\\.",
             "replace": "Some cards allow a player to restart the game."
+        },
+        {
+            "#": "set: Lorado 21, for Wildcard",
+            "type": "add",
+            "rule": "202.3",
+            "text": "Effects may change an object's converted mana cost. If an effect gives an object a new converted mana cost, the new converted mana cost replaces the previous converted mana cost the object had."
+        },
+        {
+            "type": "addSubtypes",
+            "cardType": "Planeswalker",
+            "subtypes": [
+                "Farajo",
+                "Gaile",
+                "Roselyn"
+            ]
+        },
+        {
+            "type": "insert",
+            "rule": "700.6",
+            "text": {
+                "text": "One or more nonland permanents form a straight if they can be ordered in such a way that each but the first has a converted mana cost equal to one plus the converted mana cost of the previous permanent.",
+                "subrules": [
+                    "A “straight of N”, where N is a number, is a straight that contains exactly N permanents.",
+                    "“[A player's] longest straight” is the largest number of permanents in a straight consisting only of permanents controlled by that player."
+                ]
+            }
+        },
+        {
+            "type": "insert",
+            "rule": "702.94b",
+            "text": "Warband is a variant of the soulbond ability. “Warband” means “Whenever this creature attacks, if you control both this creature and another attacking creature and both are unpaired, you may pair this creature with another unpaired attacking creature you control until end of turn”."
+        },
+        {
+            "type": "replace",
+            "rule": "702.94c",
+            "find": "soulbond",
+            "replace": "soulbond or warband"
+        },
+        {
+            "type": "replace",
+            "rule": "702.94d",
+            "find": "soulbond",
+            "replace": "soulbond or warband"
+        },
+        {
+            "type": "append",
+            "rule": "702.94e",
+            "text": "(For example, a creature can't be paired with another creature using a soulbond ability and with a third creature using a warband ability at the same time.)"
+        },
+        {
+            "type": "replace",
+            "rule": "702.94f",
+            "find": "or it or the creature it’s paired with leaves the battlefield\\.",
+            "replace": "it or the creature it’s paired with leaves the battlefield; or (for warband) the turn ends."
+        },
+        {
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Loaded",
+                "subrules": [
+                    "Loaded is a static ability. “Loaded N” means “This permanent enters the battlefield with N charge counters on it.”"
+                ]
+            }
+        },
+        {
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Reflex",
+                "subrules": [
+                    "Reflex is a static ability that functions in any zone from which you could cast the card it's on. Reflex [cost]” means “You may cast this card any time you could cast an instant by paying [cost] rather than paying its mana cost.”"
+                ]
+            }
         }
     ]
 }
