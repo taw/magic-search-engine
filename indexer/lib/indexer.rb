@@ -36,7 +36,7 @@ end
 
 class Indexer
   def initialize
-    json_path = Pathname(__dir__) + "../data/AllSets-x.json"
+    json_path = Pathname(__dir__) + "../../data/AllSets-x.json"
     @data = JSON.parse(json_path.read)
   end
 

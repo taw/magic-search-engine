@@ -18,7 +18,7 @@ class FormatPennyDreadful < FormatVintage
 
   # specs validate that all card names match the database
   def self.load_cards
-    cards_file = (Pathname(__dir__).parent.parent + "data/penny_dreadful_legal_cards.txt")
+    cards_file = (Pathname(__dir__) + "../../../index/penny_dreadful_legal_cards.txt")
     cards_file.readlines.map(&:chomp).flat_map{|name|
       name.tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu").split(%r[\s*//\s*])
     }.to_set

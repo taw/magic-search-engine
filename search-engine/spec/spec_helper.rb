@@ -125,7 +125,7 @@ end
 shared_context "db" do |*sets|
   def load_database(*sets)
     $card_database ||= {}
-    $card_database[[]]   ||= CardDatabase.load(Pathname(__dir__) + "../data/index.json")
+    $card_database[[]]   ||= CardDatabase.load(Pathname(__dir__) + "../../index/index.json")
     $card_database[sets] ||= $card_database[[]].subset(sets)
   end
 
