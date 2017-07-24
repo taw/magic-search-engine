@@ -73,13 +73,6 @@
             ]
         },
         {
-            "#": "for Evis, Executor of Light",
-            "type": "insertText",
-            "rule": "602.1b",
-            "after": "Such text may state which players can activate that ability, may restrict when a player can activate the ability, or may define some aspect of the activation cost. ",
-            "text": "It may also instruct players to perform choices. Such choices are made during the step described in rule 601.2b. "
-        },
-        {
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Dreamwalk",
@@ -181,7 +174,7 @@
                 "text": "Worship",
                 "subrules": [
                     "Worship is an activated ability. “Worship [cost]” means “[Cost], {T}: If this permanent isn't devout, put a +1/+1 counter on this permanent and put a +1/+1 counter on target creature without worship. This permanent becomes devout. Activate this ability only any time you could cast a sorcery.”",
-                    "Devout is a designation that has no rules meaning other than to act as a marker that the worship ability and other spells and abilities can identify. Only permanents can be or become devout. Once a permanent becomes devout, it stays devout until it leaves the battlefield. Devout is neither an ability nor part of the permanent’s copiable values.",
+                    "Devout is a designation that has no rules meaning other than to act as a marker that the worship ability and other spells and abilities can identify. Only permanents can be or become devout. Once a permanent becomes devout, it stays devout until it leaves the battlefield. Devout is neither an ability nor part of the permanent's copiable values.",
                     "A creature “worships a creature” when one or more +1/+1 counters are put on the second creature as a result of the first creature's worship ability."
                 ]
             }
@@ -245,7 +238,7 @@
             "type": "replace",
             "rule": "702.94f",
             "find": "or it or the creature it’s paired with leaves the battlefield\\.",
-            "replace": "it or the creature it’s paired with leaves the battlefield; or (for warband) the turn ends."
+            "replace": "it or the creature it's paired with leaves the battlefield; or (for warband) the turn ends."
         },
         {
             "type": "addKeywordAbility",
