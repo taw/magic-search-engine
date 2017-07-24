@@ -142,7 +142,24 @@ class CompRules:
             raise ValueError('This rules patch is for a different version of the rules')
         self.date = datetime.datetime.utcfromtimestamp(int(subprocess.run(['git', 'log', '-n1', '--pretty=format:%ct', '--', 'data/rules-patch.json'], stdout=subprocess.PIPE, universal_newlines=True).stdout)).date()
         for patch in patch_json['patches']:
-            if patch['type'] == 'addAbilityWords':
+            if patch['type'] == 'add':
+                match = re.fullmatch('([0-9]{3})\\.?', patch['in'])
+                if match:
+                    subsection_number = int(match.group(1))
+                    if isinstance(patch['rule'], str):
+                        rule = {'subrules': [], 'text': patch['rule']}
+                    else:
+                        rule = patch['rule']
+                    self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100]['rules'].append(rule)
+                    continue
+                match = re.fullmatch('([0-9]{3})\\.([0-9]+)', patch['in'])
+                if match:
+                    subsection_number = int(match.group(1))
+                    subsection = self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100]
+                    subsection['rules'][int(match.group(2)) - 1]['subrules'].append(patch['rule'])
+                    continue
+                raise ValueError('Could not parse rule number: {!r}'.format(patch['in']))
+            elif patch['type'] == 'addAbilityWords':
                 match = re.fullmatch('(.*)\\. The ability words are (.+).', self['207.2c'])
                 ability_words = set(split(match.group(2)))
                 for new_ability_word in patch['abilityWords']:
@@ -205,6 +222,8 @@ class CompRules:
             elif patch['type'] == 'insertText':
                 left, right = self[patch['rule']].split(patch['after'], 2)
                 self[patch['rule']] = left + patch['after'] + patch['text'] + right
+            elif patch['type'] == 'replace':
+                self[patch['rule']] = re.sub(patch['find'], patch['replace'], self[patch['rule']])
             else:
                 raise NotImplementedError('Unknown patch type: {!r}'.format(patch['type']))
 

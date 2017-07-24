@@ -104,6 +104,94 @@
                     "If a one-shot effect causes a card to be put into the library “face up beneath the top N cards of [a player's] library,” that player puts that card into his or her library using the process described above."
                 ]
             }
+        },
+        {
+            "#": "set: Ankheret 2.3, for Sobki, World Severer",
+            "type": "replace",
+            "rule": "119.1",
+            "find": "Objects can deal damage",
+            "replace": "Objects and players can deal damage"
+        },
+        {
+            "#": "for Sobki, World Severer",
+            "type": "replace",
+            "rule": "119.1",
+            "find": "An object that deals damage",
+            "replace": "An object or player that deals damage"
+        },
+        {
+            "#": "for Sobki, World Severer",
+            "type": "replace",
+            "rule": "119.2",
+            "find": "Any object can deal damage\\.",
+            "replace": "Any object or player can deal damage."
+        },
+        {
+            "#": "for Sobki, World Severer",
+            "type": "replace",
+            "rule": "119.2b",
+            "find": "The spell or ability will specify which object deals that damage\\.",
+            "replace": "The spell or ability will specify which object or player deals that damage."
+        },
+        {
+            "#": "for Sobki, World Severer",
+            "type": "replace",
+            "rule": "119.7",
+            "find": "The source of damage is the object that dealt it\\. If an effect requires a player to choose a source of damage, he or she may choose a permanent;",
+            "replace": "The source of damage is the object or player that dealt it. If an effect requires a player to choose a source of damage, he or she may choose a player; a permanent;"
+        },
+        {
+            "#": "for Sobki, World Severer",
+            "type": "add",
+            "in": "119",
+            "rule": "If an effect refers to the controller of a damage source, and the source of that damage is a player, it refers to that player."
+        },
+        {
+            "#": "for Sobki, World Severer",
+            "type": "replace",
+            "rule": "609.7a",
+            "find": "If an effect requires a player to choose a source of damage, he or she may choose a permanent;",
+            "replace": "If an effect requires a player to choose a source of damage, he or she may choose a player; a permanent;"
+        },
+        {
+            "type": "addSubtypes",
+            "cardType": "Planeswalker",
+            "subtypes": [
+                "Sobki"
+            ]
+        },
+        {
+            "type": "addAbilityWords",
+            "abilityWords": [
+                "expedition"
+            ]
+        },
+        {
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Decipher",
+                "subrules": [
+                    "Decipher is a keyword that represents two abilities. The first is a static ability that functions while the spell with decipher is on the stack. The second is a triggered ability that functions while the spell with decipher is on the stack. “Decipher [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “When you cast this spell, if a decipher cost was paid for it, copy it X times, where X is the number of instant and sorcery cards in your graveyard. If the spell has any targets, you may choose new targets for any of the copies.”"
+                ]
+            }
+        },
+        {
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Worship",
+                "subrules": [
+                    "Worship is an activated ability. “Worship [cost]” means “[Cost], {T}: If this permanent isn't devout, put a +1/+1 counter on this permanent and put a +1/+1 counter on target creature without worship. This permanent becomes devout. Activate this ability only any time you could cast a sorcery.”",
+                    "Devout is a designation that has no rules meaning other than to act as a marker that the worship ability and other spells and abilities can identify. Only permanents can be or become devout. Once a permanent becomes devout, it stays devout until it leaves the battlefield. Devout is neither an ability nor part of the permanent’s copiable values.",
+                    "A creature “worships a creature” when one or more +1/+1 counters are put on the second creature as a result of the first creature's worship ability."
+                ]
+            }
+        },
+        {
+            "#": "for Iun, World Reborn",
+            "type": "replace",
+            "rule": "717.1",
+            "find": "One card \\(Karn Liberated\\) restarts the game\\.",
+            "replace": "Some cards allow a player to restart the game."
         }
     ]
 }
