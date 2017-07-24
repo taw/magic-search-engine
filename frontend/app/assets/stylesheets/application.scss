@@ -111,7 +111,9 @@ form.search {
     margin-top: 0.25em;
     margin-bottom: 0.25em;
     br {
-      font-size: 125%;
+      content: "";
+      display: block;
+      margin-bottom: 0.25em;
     }
   }
   .rulings {
