@@ -73,6 +73,8 @@ class ConditionExpr < ConditionSimple
       [:negstar, $1.to_i]
     when /\A\*[2²]\z/
       [:starsq, 0]
+    when /\Ax\z/i
+      [:x]
     else
       warn "Expr variable parse error: #{expr}"
       [nil, nil]
