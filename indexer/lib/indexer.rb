@@ -2,10 +2,10 @@ require "date"
 require "json"
 require "set"
 require "pathname"
-require_relative "indexer/card_set"
-require_relative "indexer/oracle_verifier"
-require_relative "indexer/foreign_names_verifier"
-require_relative "indexer/link_related_cards_command"
+require_relative "card_set"
+require_relative "oracle_verifier"
+require_relative "foreign_names_verifier"
+require_relative "link_related_cards_command"
 
 # ActiveRecord FTW
 class Hash
