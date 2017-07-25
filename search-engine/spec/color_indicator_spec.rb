@@ -14,7 +14,8 @@ describe "Color Indicator Test" do
       "Restore Balance"
     assert_search_results "in:rg",
       "Arlinn, Embraced by the Moon",
-      "Ravager of the Fells"
+      "Ravager of the Fells",
+      "Ulrich, Uncontested Alpha"
     assert_search_equal "in:gr", "in:rg"
     assert_search_equal "in:grrgr", "in:rg"
   end

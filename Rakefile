@@ -4,7 +4,7 @@ require "pp"
 
 def db
   @db ||= begin
-    require_relative "lib/card_database"
+    require_relative "search-engine/lib/card_database"
     json_path = Pathname(__dir__) + "index/index.json"
     CardDatabase.load(json_path)
   end
@@ -30,7 +30,7 @@ end
 
 desc "Fetch new mtgjson database and generate diffable files"
 task "mtgjson:update" do
-  sh *%W[wget http://mtgjson.com/json/AllSets-x.json -O data/AllSets-x.json]
+  sh *%W[indexer/bin/split_mtgjson http://mtgjson.com/json/AllSets-x.json]
   Rake::Task["index"].invoke
 end
 
