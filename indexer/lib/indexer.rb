@@ -71,6 +71,9 @@ class Indexer
       funny = nil
     end
 
+    # Some lands have weird nil cmc
+    card_data["cmc"] ||= 0
+
     card_data.slice(
       "name",
       "names",
