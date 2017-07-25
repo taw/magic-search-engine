@@ -1,12 +1,8 @@
 class CardSetsData
   def initialize
     @data = set_paths.map{|path| load_path(path)}.sort_by{|set_code, set|
-      [order.index(set_code) || order.size, set["releaseDate"], set_code]
+      [set["releaseDate"], set_code]
     }.to_h
-  end
-
-  def order
-    @order ||= (sets_path + "order.txt").readlines.map(&:chomp)
   end
 
   def sets_path

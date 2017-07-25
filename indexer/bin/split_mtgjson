@@ -14,9 +14,6 @@ class SplitMtgjson
   # It doesn't remove any extra files
   def call
     SETS_DIR.mkpath
-    (SETS_DIR + "order.txt").open("w") do |fh|
-      fh.puts @data.keys
-    end
     @data.each do |set_code, set|
       (SETS_DIR + "#{set_code}.json").open("w") do |fh|
         fh.puts set.to_json
