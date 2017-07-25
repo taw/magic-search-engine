@@ -177,6 +177,14 @@ class Indexer
       cards[card_name]["printings"].delete_if{|c,| c == "ptc"}
     end
 
+    # Nissa loyalty https://github.com/mtgjson/mtgjson/issues/419
+    # https://github.com/mtgjson/mtgjson/issues/320
+    cards["Nissa, Steward of Elements"]["loyalty"] = "X"
+
+    # Meld card numbers https://github.com/mtgjson/mtgjson/issues/420
+    cards["Chittering Host"]["printings"].first.last["number"] = "96b"
+    cards["Hanweir Battlements"]["printings"].first.last["number"] = "204a"
+
     fix_promo_printing_dates!(cards, sets)
 
     # Output in canonical form, to minimize diffs between mtgjson updates
