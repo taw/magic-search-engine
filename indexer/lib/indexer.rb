@@ -35,8 +35,10 @@ class Pathname
 end
 
 class Indexer
+  ROOT = Pathname(__dir__).parent.parent + "data"
+
   def initialize
-    json_path = Pathname(__dir__) + "../../data/AllSets-x.json"
+    json_path = ROOT + "AllSets-x.json"
     @data = JSON.parse(json_path.read)
   end
 
@@ -136,35 +138,42 @@ class Indexer
     ).compact
   end
 
+  def each_set(&block)
+    @data.each(&block)
+  end
+
+  def sets_code_translator
+    unless @sets_code_translator
+      @sets_code_translator = {}
+      # Some fixes to the mapper
+      @sets_code_translator["CM1"] = "cm1"
+      @sets_code_translator["CMA"] = "cma"
+      @sets_code_translator["pGTW"] = "gtw"
+      @sets_code_translator["pWPN"] = "wpn"
+      each_set do |set_code, set_data|
+        @sets_code_translator[set_code] ||= set_data["magicCardsInfoCode"] || set_data["code"].downcase
+      end
+      duplicated_codes = @sets_code_translator
+        .values
+        .group_by(&:itself)
+        .transform_values(&:size)
+        .select{|_,v| v > 1}
+      unless duplicated_codes.empty?
+        raise "There are duplicated set codes: #{duplicated_codes.keys}"
+      end
+    end
+    @sets_code_translator
+  end
+
   def prepare_index
     sets = {}
     cards = {}
     card_printings = {}
-    @sets_code_translator = {}
     foreign_names_verifier = ForeignNamesVerifier.new
     oracle_verifier = OracleVerifier.new
 
-    # Some fixes to the mapper
-    @sets_code_translator["CM1"] = "cm1"
-    @sets_code_translator["CMA"] = "cma"
-    @sets_code_translator["pGTW"] = "gtw"
-    @sets_code_translator["pWPN"] = "wpn"
-    @data.each do |set_code, set_data|
-      @sets_code_translator[set_code] ||= set_data["magicCardsInfoCode"] || set_data["code"].downcase
-    end
-
-    duplicated_codes = @sets_code_translator
-      .values
-      .group_by(&:itself)
-      .transform_values(&:size)
-      .select{|_,v| v > 1}
-
-    unless duplicated_codes.empty?
-      raise "There are duplicated set codes: #{duplicated_codes.keys}"
-    end
-
-    @data.each do |set_code, set_data|
-      set_code = @sets_code_translator[set_code]
+    each_set do |set_code, set_data|
+      set_code = sets_code_translator[set_code]
       set = Indexer::CardSet.new(set_code, set_data)
       sets[set_code] = set.to_json
 
