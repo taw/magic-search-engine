@@ -45,33 +45,9 @@ class OracleVerifier
         if key == "rulings"
           # That's low value fail, would be nice if they fixed it, but whatever
           canonical_variant = variants.keys.max_by{|v| v.to_s.size}
-        elsif key == "text"
-          fixed_variants = variants.keys.map{|v| v.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-").gsub(/\([^\(\)]*\)/, "").sub(/\s*\z/, "")}
-          if fixed_variants.uniq.size == 1
-            # Only reminder text differers, we strip it later anyway
-            canonical_variant = fixed_variants[0]
-          elsif variants.keys.size == 2 and variants.keys.select{|v| v =~ /create.*token/i}.size == 1 and variants.keys.select{|v| v =~ /put.*token.*onto the battlefield/i}.size == 1
-            canonical_variant = variants.keys.select{|v| v =~ /create.*token/i}[0]
-          elsif variants.keys.size == 2 and variants.keys.select{|v| v =~ /\{CHAOS\}/i}.size == 1 and variants.keys.select{|v| v =~  / CHAOS/i}.size == 1
-            canonical_variant = variants.keys.select{|v| v =~ /\{CHAOS\}/i}[0]
-          else
-            canonical_variant_source = case card_name
-            when "Icefall Regent", "Vampire Nighthawk"
-              "e01"
-            when "Corpsejack Menace", "Fathom Mage", "Hardened Scales"
-              "ptc"
-            when "Enduring Scalelord"
-              "dtk"
-            when "Conundrum Sphinx"
-              "m11"
-            when "Liliana of the Dark Realms"
-              "mbp"
-            else
-              # FAIL, report
-            end
-          end
         else
           if card_name == "Sultai Ascendancy"
+            # BGU / UBG mana cost
             canonical_variant_source = "ktk"
           else
             # FAIL, report
