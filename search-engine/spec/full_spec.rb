@@ -316,6 +316,12 @@ describe "Full Database Test" do
       "S.N.O.T."
   end
 
+  it "loy_special" do
+    assert_search_results "loy=0"
+    assert_search_equal "loy=x", "loy=X"
+    assert_search_results "loy=x", "Nissa, Steward of Elements"
+  end
+
   it "tou_special" do
     # Mostly same as power except 7-*
     assert_search_results "tou=7-*", "Shapeshifter"
