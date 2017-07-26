@@ -33,7 +33,7 @@ if __name__ == '__main__':
     for i, (c_set_code, c_set_info) in enumerate(custom_sets_x.items()):
         progress = min(4, int(5 * i / len(custom_sets_x)))
         print('\r[{}{}]'.format('=' * progress, '.' * (4 - progress)), end='', flush=True)
-        if c_set_code in all_sets_x:
+        if pathlib.Path('data/sets/{}.json'.format(c_set_code)).exists():
             print('\r[FAIL]')
             sys.exit('[!!!!] duplicate set code {}'.format(c_set_code))
         with open('data/sets/{}.json'.format(c_set_code), 'w') as custom_set_f:
