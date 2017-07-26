@@ -28,8 +28,6 @@ GLOBAL_KEYS = [
 
 if __name__ == '__main__':
     print('[....] patching MTG JSON with custom sets', end='', flush=True)
-    with open('data/AllSets-x.json') as all_sets_x_f:
-        all_sets_x = json.load(all_sets_x_f)
     with open('data/CustomSets-x.json') as custom_sets_x_f:
         custom_sets_x = json.load(custom_sets_x_f)
     for i, (c_set_code, c_set_info) in enumerate(custom_sets_x.items()):
