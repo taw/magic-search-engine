@@ -3,6 +3,7 @@
 import sys
 
 import json
+import pathlib
 
 GLOBAL_KEYS = [
     'layout',
@@ -37,9 +38,13 @@ if __name__ == '__main__':
         if c_set_code in all_sets_x:
             print('\r[FAIL]')
             sys.exit('[!!!!] duplicate set code {}'.format(c_set_code))
-        all_sets_x[c_set_code] = c_set_info
+        with open('data/sets/{}.json'.format(c_set_code), 'w') as custom_set_f:
+            json.dump(c_set_info, custom_set_f, indent=4, sort_keys=True)
+            print(file=custom_set_f)
         for c_card in c_set_info['cards']:
-            for a_set_code, a_set_info in all_sets_x.items():
+            for setfile_path in pathlib.Path('data/sets').iterdir():
+                with setfile_path.open() as set_f:
+                    a_set_info = json.load(set_f)
                 for a_card in a_set_info['cards']:
                     if a_card['name'] == c_card['name']:
                         if c_set_code not in a_card['printings']:
@@ -47,6 +52,7 @@ if __name__ == '__main__':
                         for key in GLOBAL_KEYS:
                             if key in c_card:
                                 a_card[key] = c_card[key]
-    with open('data/AllSets-x.json', 'w') as all_sets_x_f:
-        json.dump(all_sets_x, all_sets_x_f, indent=4, sort_keys=True)
+                with setfile_path.open('w') as set_f:
+                    json.dump(a_set_info, set_f, indent=4, sort_keys=True)
+                    print(file=set_f)
     print('\r[ ok ]')
