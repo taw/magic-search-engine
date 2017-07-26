@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+require "open-uri"
+require "pathname"
+require "json"
+
+class SplitMtgjson
+  SETS_DIR = Pathname(__dir__) + "../../data/sets"
+
+  def initialize(path)
+    @data = JSON.parse(open(path).read)
+  end
+
+  # It doesn't remove any extra files
+  def call
+    SETS_DIR.mkpath
+    @data.each do |set_code, set|
+      (SETS_DIR + "#{set_code}.json").open("w") do |fh|
+        fh.puts set.to_json
+      end
+    end
+  end
+end
+
+unless ARGV.size == 1
+  STDERR.puts "Usage: #{$0} /path/to/AllSets-x.json"
+  STDERR.puts "   or: #{$0} http://url.to/AllSets-x.json"
+  exit 1
+end
+
+SplitMtgjson.new(ARGV[0]).call

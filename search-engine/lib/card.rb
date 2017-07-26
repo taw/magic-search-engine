@@ -35,7 +35,7 @@ class Card
     # Normalize unicode, remove remainder text
     @power = data["power"] ? smart_convert_powtou(data["power"]) : nil
     @toughness = data["toughness"] ? smart_convert_powtou(data["toughness"]) : nil
-    @loyalty = data["loyalty"] ?  data["loyalty"].to_i : nil
+    @loyalty = data["loyalty"] ? smart_convert_powtou(data["loyalty"]) : nil
     @partial_color_identity = calculate_partial_color_identity
     if ["vanguard", "plane", "scheme", "phenomenon"].include?(@layout) or @types.include?("conspiracy")
       @extra = true
@@ -145,6 +145,7 @@ class Card
   end
 
   def smart_convert_powtou(val)
+    return val unless val.is_a?(String)
     if val !~ /\A-?[\d.]+\z/
       # It just so happens that "2+*" > "1+*" > "*" asciibetically
       # so we don't do any extra conversions,
@@ -154,10 +155,10 @@ class Card
       # "*" < "*²" < "1+*" < "2+*"
       # but let's not get anywhere near that
       case val
-      when "*", "*²", "1+*", "2+*", "7-*"
+      when "*", "*²", "1+*", "2+*", "7-*", "X"
         val
       else
-        raise "Unrecognized value #{val}"
+        raise "Unrecognized value #{val.inspect}"
       end
     elsif val.to_i == val.to_f
       val.to_i

@@ -3,7 +3,7 @@ describe "Full Database Test" do
 
   it "stats" do
     db.number_of_cards.should eq(17421)
-    db.number_of_printings.should eq(33851)
+    db.number_of_printings.should eq(33855)
   end
 
   it "formats" do
@@ -314,6 +314,12 @@ describe "Full Database Test" do
     assert_search_equal "pow=*2", "pow=*²"
     assert_search_results "pow=*2",
       "S.N.O.T."
+  end
+
+  it "loy_special" do
+    assert_search_results "loy=0"
+    assert_search_equal "loy=x", "loy=X"
+    assert_search_results "loy=x", "Nissa, Steward of Elements"
   end
 
   it "tou_special" do
