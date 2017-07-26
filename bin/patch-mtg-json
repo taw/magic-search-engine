@@ -39,10 +39,10 @@ if __name__ == '__main__':
         with open('data/sets/{}.json'.format(c_set_code), 'w') as custom_set_f:
             json.dump(c_set_info, custom_set_f, indent=4, sort_keys=True)
             print(file=custom_set_f)
-        for c_card in c_set_info['cards']:
-            for setfile_path in pathlib.Path('data/sets').iterdir():
-                with setfile_path.open() as set_f:
-                    a_set_info = json.load(set_f)
+        for setfile_path in pathlib.Path('data/sets').iterdir():
+            with setfile_path.open() as set_f:
+                a_set_info = json.load(set_f)
+            for c_card in c_set_info['cards']:
                 for a_card in a_set_info['cards']:
                     if a_card['name'] == c_card['name']:
                         if c_set_code not in a_card['printings']:
@@ -50,7 +50,7 @@ if __name__ == '__main__':
                         for key in GLOBAL_KEYS:
                             if key in c_card:
                                 a_card[key] = c_card[key]
-                with setfile_path.open('w') as set_f:
-                    json.dump(a_set_info, set_f, indent=4, sort_keys=True)
-                    print(file=set_f)
+            with setfile_path.open('w') as set_f:
+                json.dump(a_set_info, set_f, indent=4, sort_keys=True)
+                print(file=set_f)
     print('\r[ ok ]')
