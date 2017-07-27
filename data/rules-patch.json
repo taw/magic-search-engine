@@ -257,6 +257,85 @@
                     "Reflex is a static ability that functions in any zone from which you could cast the card it's on. Reflex [cost]” means “You may cast this card any time you could cast an instant by paying [cost] rather than paying its mana cost.”"
                 ]
             }
+        },
+        {
+            "#": "set: Tesla 0.98, for Plagiarized Results",
+            "type": "add",
+            "rule": "110.5",
+            "text": "A token may also enter the battlefield from the stack. (See rule 608.3b.) This is an exception to rules 110.5a and 110.5b; the token enters the battlefield under the control of the spell's controller and retains its text and characteristics."
+        },
+        {
+            "type": "add",
+            "rule": "107.10",
+            "text": "The front-face and back-face symbols on some double-faced cards from the Tesla set are identical to the type symbols for artifact and sorcery, respectively. However, unlike the type symbols, these face symbols do have an effect on game play. (See rule 711.1.)"
+        },
+        {
+            "type": "addSubtypes",
+            "cardType": "Artifact",
+            "subtypes": [
+                "Canister"
+            ]
+        },
+        {
+            "type": "addAbilityWords",
+            "abilityWords": [
+                "justice"
+            ]
+        },
+        {
+            "#": "for Crazy Conspiracy // Groundbreaking Discovery",
+            "type": "add",
+            "rule": "607.2",
+            "text": "If one face of a double-faced card has an activated or triggered ability printed on it that instructs a player to exile one or more cards and the other face has an ability printed on it that refers to cards “exiled with [the first face],” these abilities are linked. The second ability refers only to cards in the exile zone that were put there as a result of an instruction to exile them in the first ability of that same object."
+        },
+        {
+            "#": "for Plagiarized Results",
+            "type": "insert",
+            "rule": "608.3b",
+            "text": "If the object that's resolving is a permanent spell that's not represented by a card (i.e. a copy of a permanent spell), the object becomes a token as it enters the battlefield."
+        },
+        {
+            "type": "insert",
+            "rule": "700.6",
+            "text": "Some continuous effects state that a game action or game state is “against the law” for a player. A player “breaks the law” if he or she performs that action of if the game state matches that state. This is not to be confused with illegal actions and has no immediate effect on gameplay; however, spells and abilities can identify that the law has been broken."
+        },
+        {
+            "type": "addKeywordAction",
+            "rule": {
+                "text": "Recharge",
+                "subrules": [
+                    "“Recharge” means “Create a colorless Canister artifact token with ‘{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.’”"
+                ]
+            }
+        },
+        {
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Revolution",
+                "subrules": [
+                    "Revolution is an activated ability of some double-faced permanent cards. “Revolution” means “{T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Activate this ability only any time you could cast a sorcery.”",
+                    "You “revolt” when you activate a revolution ability. This is not to be confused with the ability word revolt, which has no rules meaning and does not appear in rules text."
+                ]
+            }
+        },
+        {
+            "#": "for Plagiarized Results",
+            "type": "replace",
+            "rule": "704.5e",
+            "find": "If a copy of a spell is in a zone other than the stack, it ceases to exist\\. ",
+            "replace": ""
+        },
+        {
+            "type": "replace",
+            "rule": "711.1a",
+            "find": "On cards in the Innistrad block and Shadows over Innistrad set, as well as on Ulrich of the Krallenhorde in the Eldritch Moon set, the front-face symbol is a sun\\. On other Eldritch Moon double-faced cards, the front-face symbol is a full moon\\.",
+            "replace": "On cards in the Innistrad block and Shadows over Innistrad set, as well as on double-faced cards without revolution in the Tesla set and on Ulrich of the Krallenhorde in the Eldritch Moon set, the front-face symbol is a sun. On other Eldritch Moon double-faced cards, the front-face symbol is a full moon. On Tesla double-faced cards with revolution, the front-face symbol is a chalice."
+        },
+        {
+            "type": "replace",
+            "rule": "711.1b",
+            "find": "On cards in the Innistrad block and Shadows over Innistrad set, as well as on Ulrich, Uncontested Alpha in the Eldritch Moon set, the back-face symbol is a crescent moon\\. On other Eldritch Moon double-faced cards, the back-face symbol is a stylized image of Emrakul\\.",
+            "replace": "On cards in the Innistrad block and Shadows over Innistrad set, as well as on double-faced cards without revolution in the Tesla set and on Ulrich, Uncontested Alpha in the Eldritch Moon set, the back-face symbol is a crescent moon. On other Eldritch Moon double-faced cards, the back-face symbol is a stylized image of Emrakul. On Tesla double-faced cards with revolution, the back-face symbol is a flame."
         }
     ]
 }

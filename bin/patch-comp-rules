@@ -168,6 +168,8 @@ class CompRules:
                 self['207.2c'] = '{}. The ability words are {}.'.format(match.group(1), join(sorted(ability_words)))
             elif patch['type'] == 'addKeywordAbility':
                 self['702']['rules'].append(patch['rule'])
+            elif patch['type'] == 'addKeywordAction':
+                self['701']['rules'].append(patch['rule'])
             elif patch['type'] == 'addSpecialAction':
                 numbers = [
                     'zero',
