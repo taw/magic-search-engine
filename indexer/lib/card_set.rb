@@ -33,9 +33,6 @@ class Indexer
       @set_code = set_code
       @set_data = set_data
       @block_code, @block_name = MagicBlocks.find{|c,n,*xx| xx.include?(set_code)} || []
-      if @set_code == "w16"
-        @set_data["releaseDate"] ||= "2016-03-30"
-      end
     end
 
     def to_json
