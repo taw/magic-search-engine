@@ -10,7 +10,8 @@ class FormatCustomStandard < FormatStandard
   def rotation_schedule
     {
       "2016-12-08" => ["ayr", "dms", "ank"],
-      "2017-04-21" => ["ayr", "dms", "ank", "ldo", "tsl"]
+      "2017-04-21" => ["ayr", "dms", "ank", "ldo", "tsl"],
+      "2017-08-06" => ["dms", "ank", "ldo", "tsl", "vln"]
     }
   end
 end
