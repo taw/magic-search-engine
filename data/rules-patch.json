@@ -2,7 +2,13 @@
     "base": "2017-07-08",
     "patches": [
         {
-            "#": "set: Aenyr 1.2",
+            "#": "set: Aenyr 1.2, for Mount Chromaziel",
+            "type": "replace",
+            "rule": "106.7",
+            "find": "permanent",
+            "replace": "object"
+        },
+        {
             "type": "addSubtypes",
             "cardType": "Planeswalker",
             "subtypes": [
@@ -23,6 +29,13 @@
                 "imaginarium",
                 "virtuoso"
             ]
+        },
+        {
+            "#": "for Mount Chromaziel",
+            "type": "replace",
+            "rule": "305.6",
+            "find": "A land",
+            "replace": "A land in any zone"
         },
         {
             "type": "insertText",
