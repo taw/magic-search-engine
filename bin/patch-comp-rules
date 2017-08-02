@@ -227,7 +227,7 @@ class CompRules:
             elif patch['type'] == 'replace':
                 self[patch['rule']] = re.sub(patch['find'], patch['replace'], self[patch['rule']])
             elif patch['type'] == 'replaceRule':
-                relf[patch['rule']] = patch['text']
+                self[patch['rule']] = patch['text']
             else:
                 raise NotImplementedError('Unknown patch type: {!r}'.format(patch['type']))
 
