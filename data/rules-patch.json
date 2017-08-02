@@ -343,6 +343,55 @@
             "rule": "711.1b",
             "find": "On cards in the Innistrad block and Shadows over Innistrad set, as well as on Ulrich, Uncontested Alpha in the Eldritch Moon set, the back-face symbol is a crescent moon\\. On other Eldritch Moon double-faced cards, the back-face symbol is a stylized image of Emrakul\\.",
             "replace": "On cards in the Innistrad block and Shadows over Innistrad set, as well as on double-faced cards without revolution in the Tesla set and on Ulrich, Uncontested Alpha in the Eldritch Moon set, the back-face symbol is a crescent moon. On other Eldritch Moon double-faced cards, the back-face symbol is a stylized image of Emrakul. On Tesla double-faced cards with revolution, the back-face symbol is a flame."
+        },
+        {
+            "#": "set: Magic Villains 29",
+            "type": "addAbilityWords",
+            "abilityWords": [
+                "machinate"
+            ]
+        },
+        {
+            "#": "for Rotten to the Core",
+            "type": "append",
+            "rule": "303.4a",
+            "text": "An Aura spell without enchant can target any object or player."
+        },
+        {
+            "#": "for Rotten to the Core",
+            "type": "add",
+            "rule": "303.4",
+            "text": "An Aura without enchant can enchant any object or player."
+        },
+        {
+            "#": "for Rotten to the Core",
+            "type": "replaceRule",
+            "rule": "702.5d",
+            "text": "An Aura spell without enchant can target any object or player. An Aura without enchant can enchant any object or player."
+        },
+        {
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Possess",
+                "subrules": [
+                    "Possess is a keyword that represents a triggered ability. “Possess” means “When this creature enters the battlefield, you may have target creature an opponent controls become one of your possessions for as long as both remain on the battlefield.”",
+                    "A permanent becomes a “possessed” by another as the result of a possess ability, and becomes that permanent's “possession”. Abilities may refer to a possession, the permanent another permanent possesses, or whether a permanent is possessed. A player's possessions are all permanents possessed by permanents that player controls.",
+                    "When the possess ability resolves, if its source is no longer on the battlefield, the targeted object does not become possessed.",
+                    "A possessed permanent ceases to be possessed if it or the permanent possessing it leaves the battlefield."
+                ]
+            }
+        },
+        {
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Torture",
+                "subrules": [
+                    "Torture is a static ability that functions while the spell with torture is on the stack. “Torture” means “For each generic mana in this spell's total cost, you may put a -1/-1 counter on a creature you control rather than pay that mana.”",
+                    "A player may not put more than one -1/-1 counter on the same creature this way while casting that spell.",
+                    "The torture ability isn't an additional or alternative cost and applies only after the total cost of the spell with torture is determined.",
+                    "Multiple instances of torture on the same spell are redundant."
+                ]
+            }
         }
     ]
 }
