@@ -312,7 +312,7 @@
             "#": "for Plagiarized Results",
             "type": "insert",
             "rule": "608.3b",
-            "text": "If the object that's resolving is a permanent spell that's not represented by a card (i.e. a copy of a permanent spell), the object becomes a token as it enters the battlefield."
+            "text": "If the object that's resolving is a permanent spell that's not represented by a card (i.e. a copy of a permanent spell), the object becomes a token as it enters the battlefield. It is no longer a copy of a spell."
         },
         {
             "type": "insert",
@@ -337,13 +337,6 @@
                     "You “revolt” when you activate a revolution ability. This is not to be confused with the ability word revolt, which has no rules meaning and does not appear in rules text."
                 ]
             }
-        },
-        {
-            "#": "for Plagiarized Results",
-            "type": "replace",
-            "rule": "704.5e",
-            "find": "If a copy of a spell is in a zone other than the stack, it ceases to exist\\. ",
-            "replace": ""
         },
         {
             "type": "replace",
