@@ -277,7 +277,6 @@ class Indexer
 
   def format_watermark(watermark)
     return unless watermark
-    return if %W[White Blue Black Red Green Colorless].include?(watermark)
     watermark.downcase
   end
 
