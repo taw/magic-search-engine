@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/card_database"
+
+json_path = Pathname(__dir__) + "../../index/index.json"
+db = CardDatabase.load(json_path)
+db
+  .printings
+  .map{|c| [c.name, c.set_code, c.number.to_i, c.number, c.multiverseid]}
+  .sort
+  .each do |name, set_code, _, number, multiverseid|
+    puts "#{name} [#{[set_code, number, multiverseid].compact.join(", ")}]"
+  end
