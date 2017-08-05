@@ -2,8 +2,7 @@
 
 require_relative "../lib/card_database"
 
-json_path = Pathname(__dir__) + "../../index/index.json"
-db = CardDatabase.load(json_path)
+db = CardDatabase.load
 db
   .printings
   .map{|c| [c.name, c.set_code, c.number.to_i, c.number, c.multiverseid]}
