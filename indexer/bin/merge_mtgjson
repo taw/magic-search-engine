@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require "pathname-glob"
+require "json"
+
+# Debug tool to recreate single AllSets-x.json mtgjson file from multiple .json files
+
+class MergeMtgjson
+  SETS_DIR = Pathname(__dir__) + "../../data/sets"
+
+  # It doesn't remove any extra files
+  def call
+    data = {}
+    SETS_DIR.glob("*.json").each do |file|
+      set_code = file.basename(".json").to_s
+      data[set_code] = JSON.parse(file.read)
+    end
+    data = data.sort_by{|set_code, set| [set["releaseDate"], set_code] }
+    puts data.to_json
+  end
+end
+
+MergeMtgjson.new.call
