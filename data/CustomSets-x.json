@@ -26371,6 +26371,12 @@
                     "LDO"
                 ],
                 "rarity": "Uncommon",
+                "rulings": [
+                    {
+                        "date": "2017-08-06",
+                        "text": "The value of X is continuously updated to match your longest straight."
+                    }
+                ],
                 "subtypes": [
                     "Aura"
                 ],
@@ -26673,6 +26679,10 @@
                     {
                         "date": "2017-08-02",
                         "text": "If you control a straight of 6 or more, you also control a straight of 5, consisting of 5 cmc-adjacent cards in the longer straight."
+                    },
+                    {
+                        "date": "2017-08-06",
+                        "text": "For example, if you have green permanents with cmc 1-2-3-4-5 and a 6-cost blue permanent, the effect will work. Same if your 6-cost permanent is also green. If you have blue permanents with cmc 1-2-3 and 5-6 but your only 4-drop is white, it won't work."
                     }
                 ],
                 "text": "At the beginning of your upkeep, if you control a straight of 5 and all permanents in that straight share a color, you win the game. (One or more nonland permanents you control with consecutive converted mana costs form a straight.)",
