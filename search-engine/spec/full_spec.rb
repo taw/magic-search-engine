@@ -333,11 +333,10 @@ describe "Full Database Test" do
   end
 
   it "is_promo" do
-    # mtgjson has different idea what's promo,
-    # mci returns 1058 cards
-    # scryfall returns 1044
-    # It might be a good idea to sort out edge cases
-    assert_count_results "is:promo", 1020
+    # it's not totally clear what counts as "promo"
+    # and different engines return different results
+    # It might be a good idea to sort out edge cases someday
+    assert_count_results "is:promo", 1017
   end
 
   it "is_funny" do

@@ -85,7 +85,7 @@ class Indexer
           raise unless a["number"] == b["number"]
           b["number"] += "A"
         end
-      when "rqs", "me4", "clash"
+      when "rqs", "me4"
         # Just brute force, investigate later wtf?
         set_data["cards"].sort_by{|c| c["multiverseid"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
       when "st2k"
