@@ -71,6 +71,7 @@ describe "Spelling" do
       next if name == "Ink-Eyes, Servant of Oni"
       next if name == "Two-Headed Giant of Foriys"
       next if name == "Ur-Drago"
+      next if name == "The Ur-Dragon"
       # Too complex
       next if name == "Death's-Head Buzzard"
       # I don't even
