@@ -62,15 +62,6 @@ class Indexer
       end
     end
 
-    printings = card_data["printings"].map{|set_code| set_code_translator[set_code]}
-
-    # arena/rep are just reprints, and some are uncards
-    if printings.all?{|set_code| %W[uh ug uqc hho arena rep].include?(set_code) }
-      funny = true
-    else
-      funny = nil
-    end
-
     # Some lands have weird nil cmc
     card_data["cmc"] ||= 0
 
@@ -95,7 +86,6 @@ class Indexer
     ).merge(
       "printings" => [],
       "colors" => format_colors(card_data["colors"]),
-      "funny" => funny
     ).compact
   end
 
@@ -153,6 +143,13 @@ class Indexer
     oracle_verifier.verify!
     card_printings.each do |card_name, printings|
       cards[card_name] = oracle_verifier.canonical(card_name).merge("printings" => printings)
+    end
+
+    cards.each do |card_name, card_data|
+      printings = card_data["printings"].map(&:first)
+      if printings.all?{|set_code| %W[uh ug uqc hho arena rep].include?(set_code) }
+        card_data["funny"] = true
+      end
     end
 
     # Link related cards
