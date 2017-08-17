@@ -24580,7 +24580,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "Arrows and bullets can't penetrate dragon scales. Dragons can still only be slain by a righteous heart and a cold steel blade.",
+                "flavor": "\"Arrows and bullets can't penetrate dragon scales. Dragons can still only be slain by a righteous heart and a cold steel blade.\"\n\u2014 Cyclops Jack",
                 "layout": "normal",
                 "manaCost": "{3}{W}",
                 "name": "Paragon Dragonslayer",
@@ -26135,8 +26135,8 @@
                     "Vampire",
                     "Rogue"
                 ],
-                "text": "When Bloodshot Enforcer enters the battlefield, each player loses 2 life.\nLifelink (Damage dealt by this creature also causes you to gain that much life.)",
-                "toughness": "1",
+                "text": "When Bloodshot Enforcer enters the battlefield, you lose 2 life.\nLifelink (Damage dealt by this creature also causes you to gain that much life.)",
+                "toughness": "2",
                 "type": "Creature \u2014 Vampire Rogue",
                 "types": [
                     "Creature"
@@ -26605,7 +26605,7 @@
                         "text": "The player still loses life if the creature is indestructible."
                     }
                 ],
-                "text": "Destroy target creature. If its toughness was 3 or less, it's controller loses 3 life.",
+                "text": "Destroy target creature. If its toughness was 3 or less, its controller loses 3 life.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -26846,7 +26846,7 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "Lumps of black moxenite from swamps can be refined into potent magical fuel. Byproduct sludge is still mana rich enough to spontaneously self-animate.",
+                "flavor": "Lumps of black moxenite from swamps is refined into potent magical fuel. Byproduct sludge is still mana rich enough to spontaneously self-animate.",
                 "layout": "normal",
                 "manaCost": "{2}{B}",
                 "name": "Tar Snare",
@@ -28223,6 +28223,7 @@
                 "colors": [
                     "Green"
                 ],
+                "flavor": "Manure is good fertilizer, but green moxenite is better.",
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Cultivate",
@@ -28235,7 +28236,9 @@
                     "PC2",
                     "C13",
                     "C16",
-                    "PCA"
+                    "PCA",
+                    "E01",
+                    "C17"
                 ],
                 "rarity": "Common",
                 "text": "Search your library for up to two basic land cards, reveal those cards, and put one onto the battlefield tapped and the other into your hand. Then shuffle your library.",
@@ -30144,7 +30147,7 @@
                 "subtypes": [
                     "Equipment"
                 ],
-                "text": "Equipped creature doesn't untap during its controller's untap step.\nEquipped creature has \"{2}, {T}: Tap target creature and attach Rancher's Lasso to it.\" (Control of Rancher's Lasso doesn't change, only you can activate its equip ability.)\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
+                "text": "Equipped creature doesn't untap during its controller's untap step.\nEquipped creature has \"{2}, {T}: Tap target creature and attach Rancher's Lasso to it.\" (Control of Rancher's Lasso doesn't change. Only you can activate its equip ability.)\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
                 "type": "Artifact \u2014 Equipment",
                 "types": [
                     "Artifact"
@@ -30191,7 +30194,7 @@
                 "subtypes": [
                     "Equipment"
                 ],
-                "text": "Loaded 3 (This enters the battlefield with three charge counters.)\nRemove a charge counter from Runevolley: Equipped creature gains your choice of trample, first strike, or prowess until end of turn. (Multiple instances of prowess stack.)\nEquip {1}",
+                "text": "Loaded 3 (This enters the battlefield with three charge counters.)\nRemove a charge counter from Runevolley: Equipped creature gains your choice of first strike, trample, or prowess until end of turn. (If a creature has multiple instances of prowess, each triggers separately.)\nEquip {1}",
                 "type": "Artifact \u2014 Equipment",
                 "types": [
                     "Artifact"
