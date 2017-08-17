@@ -2,8 +2,8 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(17421)
-    db.number_of_printings.should eq(33855)
+    db.number_of_cards.should eq(17477)
+    db.number_of_printings.should eq(34164)
   end
 
   it "formats" do
@@ -333,11 +333,10 @@ describe "Full Database Test" do
   end
 
   it "is_promo" do
-    # mtgjson has different idea what's promo,
-    # mci returns 1058 cards
-    # scryfall returns 1044
-    # It might be a good idea to sort out edge cases
-    assert_count_results "is:promo", 1020
+    # it's not totally clear what counts as "promo"
+    # and different engines return different results
+    # It might be a good idea to sort out edge cases someday
+    assert_count_results "is:promo", 1017
   end
 
   it "is_funny" do
@@ -403,8 +402,8 @@ describe "Full Database Test" do
   end
 
   it "comma_separated_set_list" do
-    assert_search_equal "e:cmd or e:cm1 or e:c13 or e:c14 or e:c15 or e:c16 or e:cma", "e:cmd,cm1,c13,c14,c15,c16,cma"
-    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cm1,c13,c14,c15,c16,cma -alt:-e:cmd,cm1,c13,c14,c15,c16,cma"
+    assert_search_equal "e:cmd or e:cm1 or e:c13 or e:c14 or e:c15 or e:c16 or e:c17 or e:cma", "e:cmd,cm1,c13,c14,c15,c16,c17,cma"
+    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cm1,c13,c14,c15,c16,c17,cma -alt:-e:cmd,cm1,c13,c14,c15,c16,c17,cma"
   end
 
   it "command_separated_block_list" do

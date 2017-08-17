@@ -9,6 +9,10 @@ class SetCodeTranslator
     # Silly to change retroactively
     @translator["MPS"] = "mps"
     @translator["MPS_AKH"] = "mps_akh"
+    # mtgjson inventions
+    @translator["CP1"] = "cp1"
+    @translator["CP2"] = "cp2"
+    @translator["CP3"] = "cp3"
     data.each_set do |set_code, set_data|
       @translator[set_code] ||= set_data["magicCardsInfoCode"] || set_data["code"].downcase
     end
