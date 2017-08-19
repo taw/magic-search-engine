@@ -274,7 +274,7 @@ class Card
     when Set["forest", "plains"]
       "{G} or {W}"
     when Set["forest", "island"]
-      "{F} or {U}"
+      "{G} or {U}"
     else
       raise "No idea what's correct line for #{basic_land_types}"
     end
