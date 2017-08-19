@@ -89,6 +89,21 @@ describe "CLI Frontend" do
     )
   end
 
+  it "verbose color indicator" do
+    assert_cli(
+      search: "mana=4 c:u c:w",
+      verbose: true,
+      output: <<-EOF,
+        Transguild Courier {4}
+        [di]
+        Artifact Creature - Golem
+        (Color indicator: Transguild Courier is all colors)
+        3/3
+        EOF
+      error: ""
+    )
+  end
+
   it "verbose_some_sets" do
     assert_cli(
       search: "bloodbraid elf a:steve",
