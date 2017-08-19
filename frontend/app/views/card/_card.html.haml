@@ -8,7 +8,7 @@
 - if card.color_indicator.present? or card.text.present? or card.reminder_text.present?
   .oracle
     - if card.reminder_text
-      .reminder_text= card.reminder_text
+      .reminder_text= format_oracle_text(card.reminder_text)
     - if card.color_indicator.present?
       .color_indicator= "(Color indicator: #{card.name} is #{card.color_indicator})"
     - if card.text.present?
