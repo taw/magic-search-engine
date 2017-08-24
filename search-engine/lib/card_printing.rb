@@ -2,6 +2,7 @@ class CardPrinting
   attr_reader :card, :set, :date, :release_date
   attr_accessor :others, :artist
   attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :border, :timeshifted
+  attr_reader :rarity_code
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
@@ -20,7 +21,8 @@ class CardPrinting
     @flavor = data["flavor"] || ""
     @border = data["border"] || @set.border
     @timeshifted = data["timeshifted"] || false
-    @rarity = data["rarity"]
+    rarity = data["rarity"]
+    @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
     @frame = begin
       eight_edition_release_date = Date.new(2003,7,28)
       if @release_date < eight_edition_release_date
@@ -38,6 +40,10 @@ class CardPrinting
     # Performance cache
     @stemmed_name = @card.stemmed_name
     @set_code = @set.code
+  end
+
+  def rarity
+    %W[basic common uncommon rare mythic special].fetch(@rarity_code)
   end
 
   def year
