@@ -66,16 +66,24 @@ class ConditionSetType < Condition
     set_type = "starter" if set_type == "st"
     set_type = "premium deck" if set_type == "pds"
     set_type = "planechase" if set_type == "pc"
+    set_type = "standard" if set_type == "std"
     set_type
   end
 
   def get_type_list(set_type)
-    type_list = [set_type]
-    if set_type == "multi" then type_list = %W(archenemy commander conspiracy planechase vanguard multi)
-    elsif set_type == "booster" then type_list = %W(expansion conspiracy reprint core masters un booster)
-    elsif set_type == "fixed" then type_list = %W(from\ the\ vault vanguard fixed)
-    elsif set_type == "deck" then type_list = %W(archenemy commander duel\ deck premium\ deck planechase box deck)
+    case set_type
+    when "multi"
+      ["archenemy", "commander", "conspiracy", "planechase", "vanguard", "multi"]
+    when "booster"
+      ["expansion", "conspiracy", "reprint", "core", "masters", "un", "booster"]
+    when "fixed"
+      ["from the vault", "vanguard", "fixed"]
+    when "deck"
+      ["archenemy", "commander", "duel deck", "premium deck", "planechase", "box", "deck"]
+    when "standard"
+      ["core", "expansion"]
+    else
+      [set_type]
     end
-    type_list
   end
 end
