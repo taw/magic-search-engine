@@ -84,8 +84,10 @@ class QueryTokenizer
         op = "=" if op == ":"
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(op, s[3] || s[4])]
-      elsif s.scan(/r[:=](basic|common|uncommon|rare|mythic|special)\b/i)
-        tokens << [:test, ConditionRarity.new(s[1])]
+      elsif s.scan(/r(>=|>|<=|<|=|:)(basic|common|uncommon|rare|mythic|special)\b/i)
+        op = s[1]
+        op = "=" if op == ":"
+        tokens << [:test, ConditionRarity.new(op, s[2])]
       elsif s.scan(/(pow|power|loy|loyalty|tou|toughness|cmc|year)\s*(>=|>|<=|<|=|:)\s*(pow\b|power\b|tou\b|toughness\b|cmc\b|loy\b|loyalty\b|year\b|[²\d\.\-\*\+½x]+)/i)
         aliases = {"power" => "pow", "loyalty" => "loy", "toughness" => "tou"}
         a = s[1].downcase
