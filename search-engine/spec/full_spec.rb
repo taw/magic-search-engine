@@ -442,6 +442,10 @@ describe "Full Database Test" do
     "e:grc".should have_result_count(0)
   end
 
+  it "is:permanent" do
+    assert_search_equal "is:permanent", "not (t:instant or t:sorcery or t:plane or t:scheme or t:phenomenon or t:conspiracy or t:vanguard)"
+  end
+
   def legality_information(name, date=nil)
     db.cards[name.downcase].legality_information(date)
   end
