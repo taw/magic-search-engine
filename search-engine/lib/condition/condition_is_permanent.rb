@@ -1,6 +1,8 @@
 class ConditionIsPermanent < ConditionSimple
   def match?(card)
-    card.types.all?{|t| t != "instant" and t != "sorcery" }
+    not card.types.any?{|t|
+      t == "instant" or t == "sorcery" or t == "plane" or t == "scheme" or t == "phenomenon" or t == "conspiracy" or t == "vanguard"
+    }
   end
 
   def to_s
