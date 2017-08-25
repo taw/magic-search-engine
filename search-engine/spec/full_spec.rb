@@ -74,6 +74,7 @@ describe "Full Database Test" do
       "Corpsejack Menace",
       "Grove of the Guardian",
       "Hypersonic Dragon"
+    assert_search_equal %Q[print="29 september 2012"], %Q[print=2012-09-29]
   end
 
   it "print" do

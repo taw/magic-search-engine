@@ -79,7 +79,7 @@ class QueryTokenizer
         tokens << [:test, ConditionColorIndicator.new(s[1])]
       elsif s.scan(/c!([wubrgcml]+)/i)
         tokens << [:test, ConditionColorsExclusive.new(s[1])]
-      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|(\S+))/i)
         op = s[2]
         op = "=" if op == ":"
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
