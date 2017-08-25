@@ -6,17 +6,6 @@ describe "Full Database Test" do
     db.number_of_printings.should eq(34164)
   end
 
-  it "formats" do
-    assert_search_equal "f:standard", "legal:standard"
-    assert_search_results "f:extended" # Does not exist according to mtgjson
-    assert_search_equal "f:standard",
-      %Q[(e:bfz or e:ogw or e:soi or e:w16 or e:emn or e:kld or e:aer or e:akh or e:hou) -"Emrakul, the Promised End" -"Reflector Mage" -"Smuggler's Copter" -"Felidar Guardian" -"Aetherworks Marvel"]
-    assert_search_equal 'f:"ravnica block"', "e:rav or e:gp or e:di"
-    assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
-    assert_search_equal 'f:"ravnica block"', 'b:ravnica'
-    assert_search_differ 'f:"mirrodin block" t:land', 'b:"mirrodin" t:land'
-  end
-
   it "block_codes" do
     assert_search_equal "b:rtr", 'b:"Return to Ravnica"'
     assert_search_equal "b:in", 'b:Invasion'
@@ -149,79 +138,6 @@ describe "Full Database Test" do
       "Ajani Goldmane", "Ajani Vengeant", "Chandra Ablaze", "Elspeth Tirel",
       "Garruk Relentless", "Garruk, the Veil-Cursed",
       "Nissa Revane", "Sarkhan the Mad", "Sorin Markov", "Tezzeret, Agent of Bolas"
-  end
-
-  it "sort_name" do
-    assert_search_results_ordered "t:chandra sort:name",
-      "Chandra Ablaze",
-      "Chandra Nalaar",
-      "Chandra, Flamecaller",
-      "Chandra, Pyrogenius",
-      "Chandra, Pyromaster",
-      "Chandra, Roaring Flame",
-      "Chandra, Torch of Defiance",
-      "Chandra, the Firebrand"
-  end
-
-  it "sort_new" do
-    assert_search_results_ordered "t:chandra sort:new",
-      "Chandra, Pyrogenius",
-      "Chandra, Torch of Defiance",
-      "Chandra, Flamecaller",
-      "Chandra, Roaring Flame",
-      "Chandra, Pyromaster",
-      "Chandra, the Firebrand",
-      "Chandra Nalaar",
-      "Chandra Ablaze"
-  end
-
-  it "sort_newall" do
-    # Jace v Chandra printing of Chandra Nalaar changes order
-    assert_search_results_ordered "t:chandra sort:newall",
-      "Chandra, Pyromaster",
-      "Chandra, Pyrogenius",
-      "Chandra, Torch of Defiance",
-      "Chandra, Flamecaller",
-      "Chandra, Roaring Flame",
-      "Chandra Nalaar",
-      "Chandra, the Firebrand",
-      "Chandra Ablaze"
-  end
-
-  it "sort_old" do
-    assert_search_results_ordered "t:chandra sort:old",
-      "Chandra Nalaar",
-      "Chandra Ablaze",
-      "Chandra, the Firebrand",
-      "Chandra, Pyromaster",
-      "Chandra, Roaring Flame",
-      "Chandra, Flamecaller",
-      "Chandra, Pyrogenius",
-      "Chandra, Torch of Defiance"
-  end
-
-  it "sort_oldall" do
-    assert_search_results_ordered "t:chandra sort:oldall",
-      "Chandra Nalaar",
-      "Chandra Ablaze",
-      "Chandra, the Firebrand",
-      "Chandra, Pyromaster",
-      "Chandra, Roaring Flame",
-      "Chandra, Flamecaller",
-      "Chandra, Pyrogenius",
-      "Chandra, Torch of Defiance"
-  end
-
-  it "sort_cmc" do
-    assert_search_results_ordered "t:chandra sort:cmc",
-      "Chandra Ablaze",             # 6
-      "Chandra, Flamecaller",       # 6
-      "Chandra, Pyrogenius",        # 6
-      "Chandra Nalaar",             # 5
-      "Chandra, Pyromaster",        # 4
-      "Chandra, Torch of Defiance", # 4
-      "Chandra, the Firebrand",     # 4
-      "Chandra, Roaring Flame"      # 3
   end
 
   it "alt_rebecca_guay" do

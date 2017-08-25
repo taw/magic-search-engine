@@ -1,5 +1,7 @@
-require "simplecov"
-SimpleCov.start
+if ENV["COVERAGE"]
+  require "simplecov"
+  SimpleCov.start
+end
 
 require_relative "../lib/card_database"
 require_relative "../lib/cli_frontend"
