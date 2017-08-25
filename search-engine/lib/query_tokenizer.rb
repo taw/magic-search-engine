@@ -144,6 +144,9 @@ class QueryTokenizer
         tokens << [:alt]
       elsif s.scan(/not\b/i)
         tokens << [:not]
+      elsif s.scan(/\*/i)
+        # A quick hack, maybe add ConditionAll ?
+        tokens << [:test, ConditionTypes.new("*")]
       elsif s.scan(/([^-!<>=:"\s&\/()][^<>=:"\s&\/()]*)(?=$|[\s&\/()])/i)
         # Veil-Cursed and similar silliness
         tokens << [:test, ConditionWord.new(s[1].gsub("-", " "))]
