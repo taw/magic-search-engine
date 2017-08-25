@@ -56,4 +56,13 @@ describe "New Phyrexia" do
     mattr_cavotta = alloy_myr.artist
     mattr_cavotta.printings.select{|c| c.set_code == "nph"}.should == [alloy_myr, pristine_talisman]
   end
+
+  it "Phyrexian mana Oracle search" do
+    assert_search_results %Q[o:"{p/u}"], "Spellskite", "Trespassing Souleater"
+    assert_search_results %Q[o:"{u/p}"], "Spellskite", "Trespassing Souleater"
+    assert_search_results %Q[o:"{P/U}"], "Spellskite", "Trespassing Souleater"
+    assert_search_results %Q[o:"{U/P}"], "Spellskite", "Trespassing Souleater"
+    assert_search_results %Q[o:"{pu}"], "Spellskite", "Trespassing Souleater"
+    assert_search_results %Q[o:"{up}"], "Spellskite", "Trespassing Souleater"
+  end
 end
