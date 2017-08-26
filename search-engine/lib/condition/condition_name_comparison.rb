@@ -29,6 +29,6 @@ class ConditionNameComparison < ConditionSimple
   private
 
   def normalize_for_comparison(name)
-    name.downcase
+    name.downcase.gsub(/[,']/, "")
   end
 end

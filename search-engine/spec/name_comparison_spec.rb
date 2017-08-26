@@ -21,4 +21,19 @@ describe "Name Comparison" do
       "Simic Growth Chamber"
     )
   end
+
+  it "punctuation" do
+    assert_search_include %Q[e:aer name>"Sram, Senior Edificer"],
+      "Sram's Expertise"
+    assert_search_include %Q[e:akh name>"Liliana, Death's Majesty"],
+      "Liliana's Mastery"
+    assert_search_include %Q[e:kld name<"Consul's Shieldguard"],
+      "Consulate Surveillance"
+  end
+
+  it "=" do
+    assert_search_results %Q[name="Painter's Servant" or name=Grindstone],
+      "Painter's Servant",
+      "Grindstone"
+  end
 end
