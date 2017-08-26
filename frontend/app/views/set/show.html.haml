@@ -8,6 +8,9 @@
   - if @set.block_name
     .col-12
       It is part of #{@set.block_name} block.
+  - if @set.release_date
+    .col-12
+      = "Released: #{@set.release_date.to_s}"
 
 - @cards.each do |card|
   .row.card_row
