@@ -59,6 +59,8 @@ class QueryTokenizer
       elsif s.scan(/(banned|restricted|legal)[:=](?:"(.*?)"|([\w\-]+))/i)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(s[2] || s[3])]
+      elsif s.scan(/name(>=|>|<=|<|=|:)(?:"(.*?)"|([\w\-]+))/i)
+        tokens << [:test, ConditionNameComparison.new(s[1], s[2] || s[3])]
       elsif s.scan(/e[:=](?:"(.*?)"|(\w+))/i)
         sets = [s[1] || s[2]]
         sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|(\w+))/i)
