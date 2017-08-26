@@ -17,6 +17,11 @@ describe "Regexp" do
       Query.new('a:/[a-z/').warnings.should eq(["bad regular expression in a:/[a-z/ - premature end of char-class: /[a-z/i"])
       Query.new('a:/[a-z]/').warnings.should eq([])
     end
+
+    it "n:" do
+      Query.new('n:/[a-z/').warnings.should eq(["bad regular expression in n:/[a-z/ - premature end of char-class: /[a-z/i"])
+      Query.new('n:/[a-z]/').warnings.should eq([])
+    end
   end
 
   it "handles timeouts" do
@@ -60,5 +65,17 @@ describe "Regexp" do
       "Alan “Don't Feel Like You Have to Pick Me” Pollack",
       "Edward P. Beard, Jr. & Anthony S. Waters",
     ])
+  end
+
+  it "regexp name text" do
+    assert_search_results "f:modern n:/.{30}/",
+      "Circle of Protection: Artifacts",
+      "Coax from the Blind Eternities",
+      "Hanweir, the Writhing Township",
+      "Ib Halfheart, Goblin Tactician",
+      "Minamo, School at Water's Edge",
+      "Okina, Temple to the Grandfathers",
+      "Oviya Pashiri, Sage Lifecrafter",
+      "Sunhome, Fortress of the Legion"
   end
 end
