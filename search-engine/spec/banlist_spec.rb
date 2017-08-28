@@ -6,6 +6,11 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2017" do
+    assert_banlist_changes "August 2017", # Sep 1 actually
+      "vintage restricted", "Thorn of Amethyst",
+      "vintage restricted", "Monastery Mentor",
+      "vintage unrestricted", "Yawgmoth's Bargain"
+
     assert_banlist_changes "July 2017",
       "mtgo commander banned", "Vial Smasher the Fierce",
       "mtgo commander banned", "Ponder",
