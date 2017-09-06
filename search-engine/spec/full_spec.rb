@@ -363,6 +363,11 @@ describe "Full Database Test" do
     assert_search_equal "is:permanent", "not (t:instant or t:sorcery or t:plane or t:scheme or t:phenomenon or t:conspiracy or t:vanguard)"
   end
 
+  it "promo and special" do
+    # Are promo basics really of basic rarity?
+    assert_search_results "is:promo -r:special -e:ugin -r:basic"
+  end
+
   def legality_information(name, date=nil)
     db.cards[name.downcase].legality_information(date)
   end
