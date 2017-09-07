@@ -1,7 +1,7 @@
 .row
   .col-12
     %h4 Magic: The Gathering Comprehensive Rules
-    %p These rules are effective as of July 8, 2017.
+    %p These rules are effective as of August 25, 2017.
     %h3{id: "section-introduction"} Introduction
     %p This document is designed for people who’ve moved beyond the basics of the Magic: The Gathering® game. If you’re a beginning Magic™ player, you’ll probably find these rules intimidating. They’re intended to be the ultimate authority for the game, and you won’t usually need to refer to them except in specific cases or during competitive games.
     %p For casual play and most ordinary situations, you’ll find what you need in the Magic: The Gathering basic rules. You can download a copy of the basic rules PDF from the Wizards of the Coast® Magic rules website at Magic.Wizards.com/Rules. If you’re sure this is where you want to be, keep reading.
@@ -901,7 +901,7 @@
       .rule_text A token is subject to anything that affects permanents in general or that affects the token’s card type or subtype. A token isn’t a card (even if represented by a card that has a Magic back or that came from a Magic booster pack).
     .rule{id: "section-110-5f"}
       .rule_id 110.5f
-      .rule_text A token that’s phased out, or that’s in a zone other than the battlefield, ceases to exist. This is a state-based action; see rule <a href="#section-704">704</a>. (Note that if a token changes zones, applicable triggered abilities will trigger before the token ceases to exist.)
+      .rule_text A token that’s in a zone other than the battlefield ceases to exist. This is a state-based action; see rule <a href="#section-704">704</a>. (Note that if a token changes zones, applicable triggered abilities will trigger before the token ceases to exist.)
     .rule{id: "section-110-5g"}
       .rule_id 110.5g
       .rule_text A token that has left the battlefield can’t move to another zone or come back onto the battlefield. If such a token would change zones, it remains in its current zone instead. It ceases to exist the next time state-based actions are checked; see rule <a href="#section-704">704</a>.
@@ -1480,9 +1480,15 @@
       .rule_text Cards may only be drawn one at a time. If a player is instructed to draw multiple cards, that player performs that many individual card draws.
     .rule{id: "section-120-2a"}
       .rule_id 120.2a
-      .rule_text If an effect instructs more than one player to draw cards, the active player performs all of his or her draws first, then each other player in turn order does the same.
+      .rule_text An instruction to draw multiple cards can be modified by replacement effects that refer to the number of cards drawn. This modification occurs before considering any of the individual card draws. See rule <a href="#section-616-1f">616.1f</a>.
     .rule{id: "section-120-2b"}
       .rule_id 120.2b
+      .rule_text Some effects say that a player can’t draw more than one card each turn. Such an effect applies to individual card draws. Instructions to draw multiple cards may still be partially carried out. However, if an effect offers the player a choice to draw multiple cards, the affected player can’t choose to do so. Similarly, the player can’t pay a cost that includes drawing multiple cards.
+    .rule{id: "section-120-2c"}
+      .rule_id 120.2c
+      .rule_text If an effect instructs more than one player to draw cards, the active player performs all of his or her draws first, then each other player in turn order does the same.
+    .rule{id: "section-120-2d"}
+      .rule_id 120.2d
       .rule_text If an effect instructs more than one player to draw cards in a game that’s using the shared team turns option (such as a Two-Headed Giant game), first each player on the active team, in whatever order that team likes, performs his or her draws, then each player on each nonactive team in turn order does the same.
     .rule{id: "section-120-3"}
       .rule_id 120.3.
@@ -1836,7 +1842,7 @@
       .rule_text Flavor text is italicized text that, like the illustration, adds artistic appeal to the game. It appears below the rules text.
     .rule{id: "section-207-2c"}
       .rule_id 207.2c
-      .rule_text An ability word appears in italics at the beginning of some abilities. Ability words are similar to keywords in that they tie together cards that have similar functionality, but they have no special rules meaning and no individual entries in the Comprehensive Rules. The ability words are battalion, bloodrush, channel, chroma, cohort, constellation, converge, council’s dilemma, delirium, domain, fateful hour, ferocious, formidable, grandeur, hellbent, heroic, imprint, inspired, join forces, kinship, landfall, lieutenant, metalcraft, morbid, parley, radiance, raid, rally, revolt, spell mastery, strive, sweep, tempting offer, threshold, and will of the council.
+      .rule_text An ability word appears in italics at the beginning of some abilities. Ability words are similar to keywords in that they tie together cards that have similar functionality, but they have no special rules meaning and no individual entries in the Comprehensive Rules. The ability words are battalion, bloodrush, channel, chroma, cohort, constellation, converge, council’s dilemma, delirium, domain, eminence, fateful hour, ferocious, formidable, grandeur, hellbent, heroic, imprint, inspired, join forces, kinship, landfall, lieutenant, metalcraft, morbid, parley, radiance, raid, rally, revolt, spell mastery, strive, sweep, tempting offer, threshold, and will of the council.
     .rule{id: "section-207-3"}
       .rule_id 207.3.
       .rule_text Some cards have decorative icons in the background of their text boxes. For example, a guild icon appears in the text box of many Ravnica: City of Guilds® and Return to Ravnica™ block cards, and a faction icon appears in the text box of most Scars of Mirrodin™ block cards. Similarly, many promotional cards include decorative icons. These icons have no effect on game play.
@@ -2659,7 +2665,7 @@
       .rule_text Combat Phase
     .rule{id: "section-506-1"}
       .rule_id 506.1.
-      .rule_text The combat phase has five steps, which proceed in order: beginning of combat, declare attackers, declare blockers, combat damage, and end of combat. The declare blockers and combat damage steps are skipped if no creatures are declared as attackers or put onto the battlefield attacking (see rule <a href="#section-508-5">508.5</a>). There are two combat damage steps if any attacking or blocking creature has first strike (see rule <a href="#section-702-7">702.7</a>) or double strike (see rule <a href="#section-702-4">702.4</a>).
+      .rule_text The combat phase has five steps, which proceed in order: beginning of combat, declare attackers, declare blockers, combat damage, and end of combat. The declare blockers and combat damage steps are skipped if no creatures are declared as attackers or put onto the battlefield attacking (see rule <a href="#section-508-8">508.8</a>). There are two combat damage steps if any attacking or blocking creature has first strike (see rule <a href="#section-702-7">702.7</a>) or double strike (see rule <a href="#section-702-4">702.4</a>).
     .rule{id: "section-506-2"}
       .rule_id 506.2.
       .rule_text During the combat phase, the active player is the attacking player; creatures that player controls may attack. During the combat phase of a two-player game, the nonactive player is the defending player; that player and planeswalkers he or she controls may be attacked.
@@ -2719,10 +2725,10 @@
       .rule_text Some spells state that they may be cast “only before (or after) [a particular point in the combat phase],” but don’t meet the additional criteria described in rule <a href="#section-506-6c">506.6c</a>. If a turn has multiple combat phases, such spells may be cast that turn only before (or after) the stated point of the first combat phase.
     .rule{id: "section-506-6e"}
       .rule_id 506.6e
-      .rule_text If a spell states that it may be cast “only before [a particular point in the combat phase],” but the stated point doesn’t exist within the relevant combat phase because the declare blockers step and the combat damage step are skipped (see rule <a href="#section-508-5">508.5</a>), then the spell may be cast only before the declare attackers step ends. If the stated point doesn’t exist because the relevant combat phase has been skipped, then the spell may be cast only before the precombat main phase ends.
+      .rule_text If a spell states that it may be cast “only before [a particular point in the combat phase],” but the stated point doesn’t exist within the relevant combat phase because the declare blockers step and the combat damage step are skipped (see rule <a href="#section-508-8">508.8</a>), then the spell may be cast only before the declare attackers step ends. If the stated point doesn’t exist because the relevant combat phase has been skipped, then the spell may be cast only before the precombat main phase ends.
     .rule{id: "section-506-6f"}
       .rule_id 506.6f
-      .rule_text If a spell states that it may be cast “only during combat after blockers are declared,” but the declare blockers step is skipped that combat phase (see rule <a href="#section-508-5">508.5</a>), then the spell may not be cast during that combat phase.
+      .rule_text If a spell states that it may be cast “only during combat after blockers are declared,” but the declare blockers step is skipped that combat phase (see rule <a href="#section-508-8">508.8</a>), then the spell may not be cast during that combat phase.
     .rule{id: "section-506-6g"}
       .rule_id 506.6g
       .rule_text Rules <a href="#section-506-6">506.6</a> and <a href="#section-506-6a">506.6a</a>–f apply to abilities that state that they may be activated only at certain times with respect to combat just as they apply to spells that state that they may be cast only at certain times with respect to combat.
@@ -2791,21 +2797,60 @@
       .rule_text Any abilities that triggered on attackers being declared or that triggered during the process described in rules <a href="#section-508-1">508.1</a> are put onto the stack before the active player gets priority; the order in which they triggered doesn’t matter. (See rule <a href="#section-603">603</a>, “Handling Triggered Abilities.”)
     .rule{id: "section-508-3"}
       .rule_id 508.3.
-      .rule_text If a creature is put onto the battlefield attacking, its controller chooses which defending player or which planeswalker a defending player controls it’s attacking as it enters the battlefield (unless the effect that put it onto the battlefield specifies what it’s attacking). Such creatures are “attacking” but, for the purposes of trigger events and effects, they never “attacked.”
+      .rule_text Triggered abilities that trigger on attackers being declared may have different trigger conditions.
     .rule{id: "section-508-3a"}
       .rule_id 508.3a
-      .rule_text If the effect that puts a creature onto the battlefield attacking specifies it’s attacking a certain player, and that player is no longer in the game when the effect resolves, the creature is put onto the battlefield but is never considered an attacking creature. The same is true if the effect specifies a creature is put onto the battlefield attacking a planeswalker and that planeswalker is no longer on the battlefield or is no longer a planeswalker when the effect resolves.
+      .rule_text An ability that reads “Whenever [a creature] attacks, . . .” triggers if that creature is declared as an attacker. Similarly, “Whenever [a creature] attacks [a player or planeswalker], . . .” triggers if that creature is declared as an attacker attacking that player or planeswalker. Such abilities won’t trigger if a creature is put onto the battlefield attacking.
     .rule{id: "section-508-3b"}
       .rule_id 508.3b
-      .rule_text A creature that’s put onto the battlefield attacking isn’t affected by requirements or restrictions that apply to the declaration of attackers.
+      .rule_text An ability that reads “Whenever [a player or planeswalker] is attacked, . . .” triggers if one or more creatures are declared as attackers attacking that player or planeswalker. It won’t trigger if a creature is put onto the battlefield attacking that player or planeswalker.
+    .rule{id: "section-508-3c"}
+      .rule_id 508.3c
+      .rule_text An ability that reads “Whenever [a player] attacks with [a creature], . . .” triggers whenever a creature that player controls is declared as an attacker.
+    .rule{id: "section-508-3d"}
+      .rule_id 508.3d
+      .rule_text An ability that reads “Whenever [a creature] attacks and isn’t blocked, . . .” triggers during the declare blockers step, not the declare attackers step. See rule <a href="#section-509-5g">509.5g</a>.
     .rule{id: "section-508-4"}
       .rule_id 508.4.
-      .rule_text If an ability of an attacking creature refers to a defending player, or a spell or ability refers to both an attacking creature and a defending player, then unless otherwise specified, the defending player it’s referring to is the player that creature was attacking at the time it became an attacking creature that combat, or the controller of the planeswalker that creature was attacking at the time it became an attacking creature that combat.
+      .rule_text If a creature is put onto the battlefield attacking, its controller chooses which defending player or which planeswalker a defending player controls it’s attacking as it enters the battlefield (unless the effect that put it onto the battlefield specifies what it’s attacking). Such creatures are “attacking” but, for the purposes of trigger events and effects, they never “attacked.”
     .rule{id: "section-508-4a"}
       .rule_id 508.4a
-      .rule_text In a multiplayer game, any rule, object, or effect that refers to a “defending player” refers to one specific defending player, not to all of the defending players. If a spell or ability could apply to multiple attacking creatures, the appropriate defending player is individually determined for each of those attacking creatures. If there are multiple defending players that could be chosen, the controller of the spell or ability chooses one.
+      .rule_text If the effect that puts a creature onto the battlefield attacking specifies it’s attacking a certain player, and that player is no longer in the game when the effect resolves, the creature is put onto the battlefield but is never considered an attacking creature. The same is true if the effect specifies a creature is put onto the battlefield attacking a planeswalker and that planeswalker is no longer on the battlefield or is no longer a planeswalker when the effect resolves.
+    .rule{id: "section-508-4b"}
+      .rule_id 508.4b
+      .rule_text A creature that’s put onto the battlefield attacking isn’t affected by requirements or restrictions that apply to the declaration of attackers.
     .rule{id: "section-508-5"}
       .rule_id 508.5.
+      .rule_text If an ability of an attacking creature refers to a defending player, or a spell or ability refers to both an attacking creature and a defending player, then unless otherwise specified, the defending player it’s referring to is the player that creature is attacking, or the controller of the planeswalker that creature is attacking. If that creature is no longer attacking, the defending player it’s referring to is the player that creature was attacking before it was removed from combat or the controller of the planeswalker that creature was attacking before it was removed from combat.
+    .rule{id: "section-508-5a"}
+      .rule_id 508.5a
+      .rule_text In a multiplayer game, any rule, object, or effect that refers to a “defending player” refers to one specific defending player, not to all of the defending players. If a spell or ability could apply to multiple attacking creatures, the appropriate defending player is individually determined for each of those attacking creatures. If there are multiple defending players that could be chosen, the controller of the spell or ability chooses one.
+    .rule{id: "section-508-6"}
+      .rule_id 508.6.
+      .rule_text A player is “attacking [a player]” if the first player controls a creature that is attacking the second player. A player has “attacked [a player]” if the first player declared one or more creatures as attackers attacking the second player.
+    .rule{id: "section-508-7"}
+      .rule_id 508.7.
+      .rule_text One card (Portal Mage) allows a player to reselect which player or planeswalker a creature is attacking.
+    .rule{id: "section-508-7a"}
+      .rule_id 508.7a
+      .rule_text The attacking creature isn’t removed from combat and it isn’t considered to have attacked a second time. That creature is attacking the reselected player or planeswalker, but it’s still considered to have attacked the player or planeswalker chosen as it was declared as an attacker.
+    .rule{id: "section-508-7b"}
+      .rule_id 508.7b
+      .rule_text While reselecting which player or planeswalker a creature is attacking, that creature isn’t affected by requirements or restrictions that apply to the declaration of attackers.
+    .rule{id: "section-508-7c"}
+      .rule_id 508.7c
+      .rule_text The reselected player or planeswalker must be an opponent of the attacking creature’s controller, or a planeswalker controlled by an opponent of the attacking creature’s controller.
+    .rule{id: "section-508-7d"}
+      .rule_id 508.7d
+      .rule_text In a multiplayer game not using the attack multiple players option (see rule <a href="#section-802">802</a>), the reselected player or planeswalker must be the chosen defending player or a planeswalker controlled by that player.
+    .rule{id: "section-508-7e"}
+      .rule_id 508.7e
+      .rule_text In a multiplayer game using the limited range of influence option (see rule <a href="#section-801">801</a>), the reselected player or planeswalker must be within the range of influence of the attacking creature’s controller.
+    .rule{id: "section-508-7f"}
+      .rule_id 508.7f
+      .rule_text In a Two-Headed Giant game, the team or planeswalker the creature is attacking is reselected rather than the player or planeswalker. A team reselected this way must be an opposing team of the attacking creature’s controller.
+    .rule{id: "section-508-8"}
+      .rule_id 508.8.
       .rule_text If no creatures are declared as attackers or put onto the battlefield attacking, skip the declare blockers and combat damage steps.
     .rule{id: "section-509"}
       .rule_id 509.
@@ -2864,19 +2909,19 @@
       .rule_text Any abilities that triggered on blockers being declared or that triggered during the process described in rules <a href="#section-509-1">509.1</a>–3 are put onto the stack before the active player gets priority; the order in which they triggered doesn’t matter. (See rule <a href="#section-603">603</a>, “Handling Triggered Abilities.”)
     .rule{id: "section-509-5"}
       .rule_id 509.5.
-      .rule_text Triggered abilities that trigger during the declare blockers step may have different trigger conditions.
+      .rule_text Triggered abilities that trigger on blockers being declared may have different trigger conditions.
     .rule{id: "section-509-5a"}
       .rule_id 509.5a
-      .rule_text An ability that reads “Whenever [this creature] blocks, . . .” generally triggers only once each combat for that creature, even if it blocks multiple creatures. It triggers if the creature is declared as a blocker. It will also trigger if that creature becomes a blocker as the result of an effect, but only if it wasn’t a blocking creature at that time. (See rule <a href="#section-509-1g">509.1g</a>.) It won’t trigger if the creature is put onto the battlefield blocking.
+      .rule_text An ability that reads “Whenever [a creature] blocks, . . .” generally triggers only once each combat for that creature, even if it blocks multiple creatures. It triggers if the creature is declared as a blocker. It will also trigger if that creature becomes a blocker as the result of an effect, but only if it wasn’t a blocking creature at that time. (See rule <a href="#section-509-1g">509.1g</a>.) It won’t trigger if the creature is put onto the battlefield blocking.
     .rule{id: "section-509-5b"}
       .rule_id 509.5b
-      .rule_text An ability that reads “Whenever [this creature] blocks a creature, . . .” triggers once for each attacking creature the creature with the ability blocks. It triggers if the creature is declared as a blocker. It will also trigger if an effect causes that creature to block an attacking creature, but only if it wasn’t already blocking that attacking creature at that time. It won’t trigger if the creature is put onto the battlefield blocking.
+      .rule_text An ability that reads “Whenever [a creature] blocks a creature, . . .” triggers once for each attacking creature the creature with the ability blocks. It triggers if the creature is declared as a blocker. It will also trigger if an effect causes that creature to block an attacking creature, but only if it wasn’t already blocking that attacking creature at that time. It won’t trigger if the creature is put onto the battlefield blocking.
     .rule{id: "section-509-5c"}
       .rule_id 509.5c
-      .rule_text An ability that reads “Whenever [this creature] becomes blocked, . . .” generally triggers only once each combat for that creature, even if it’s blocked by multiple creatures. It will trigger if that creature becomes blocked by at least one creature declared as a blocker. It will also trigger if that creature becomes blocked by an effect or by a creature that’s put onto the battlefield as a blocker, but only if the attacking creature was an unblocked creature at that time. (See rule <a href="#section-509-1h">509.1h</a>.)
+      .rule_text An ability that reads “Whenever [a creature] becomes blocked, . . .” generally triggers only once each combat for that creature, even if it’s blocked by multiple creatures. It will trigger if that creature becomes blocked by at least one creature declared as a blocker. It will also trigger if that creature becomes blocked by an effect or by a creature that’s put onto the battlefield as a blocker, but only if the attacking creature was an unblocked creature at that time. (See rule <a href="#section-509-1h">509.1h</a>.)
     .rule{id: "section-509-5d"}
       .rule_id 509.5d
-      .rule_text An ability that reads “Whenever [this creature] becomes blocked by a creature, . . .” triggers once for each creature that blocks the named creature. It triggers if a creature is declared as a blocker for the attacking creature. It will also trigger if an effect causes a creature to block the attacking creature, but only if it wasn’t already blocking that attacking creature at that time. In addition, it will trigger if a creature is put onto the battlefield blocking that creature. It won’t trigger if the creature becomes blocked by an effect rather than a creature.
+      .rule_text An ability that reads “Whenever [a creature] becomes blocked by a creature, . . .” triggers once for each creature that blocks the named creature. It triggers if a creature is declared as a blocker for the attacking creature. It will also trigger if an effect causes a creature to block the attacking creature, but only if it wasn’t already blocking that attacking creature at that time. In addition, it will trigger if a creature is put onto the battlefield blocking that creature. It won’t trigger if the creature becomes blocked by an effect rather than a creature.
     .rule{id: "section-509-5e"}
       .rule_id 509.5e
       .rule_text If an ability triggers when a creature blocks or becomes blocked by a particular number of creatures, the ability triggers if the creature blocks or is blocked by that many creatures when blockers are declared. Effects that add or remove blockers can also cause such abilities to trigger. This applies to abilities that trigger on a creature blocking or being blocked by at least a certain number of creatures as well.
@@ -2886,7 +2931,7 @@
       .rule_text Example: A creature has the ability “Whenever this creature becomes blocked by a white creature, destroy that creature at end of combat.” If the creature becomes blocked by a black creature that is later turned white, the ability will not trigger.
     .rule{id: "section-509-5g"}
       .rule_id 509.5g
-      .rule_text An ability that reads “Whenever [this creature] attacks and isn’t blocked, . . .” triggers if no creatures are declared as blockers for that creature. It will trigger even if the creature was never declared as an attacker (for example, if it entered the battlefield attacking). It won’t trigger if the attacking creature is blocked and then all its blockers are removed from combat.
+      .rule_text An ability that reads “Whenever [a creature] attacks and isn’t blocked, . . .” triggers if no creatures are declared as blockers for that creature. It will trigger even if the creature was never declared as an attacker (for example, if it entered the battlefield attacking). It won’t trigger if the attacking creature is blocked and then all its blockers are removed from combat.
     .rule{id: "section-509-6"}
       .rule_id 509.6.
       .rule_text If a spell or ability causes a creature on the battlefield to block an attacking creature, the active player announces the blocking creature’s placement in the attacking creature’s damage assignment order. The relative order among the remaining blocking creatures is unchanged. Then the defending player announces the attacking creature’s placement in the blocking creature’s damage assignment order. The relative order among the remaining attacking creatures is unchanged. This is done as part of the blocking effect.
@@ -4815,7 +4860,7 @@
       .rule_text If a permanent phases in, its status changes to “phased in.” The game once again treats it as though it exists.
     .rule{id: "section-702-25d"}
       .rule_id 702.25d
-      .rule_text The phasing event doesn’t actually cause a permanent to change zones or control, even though it’s treated as though it’s not on the battlefield and not under its controller’s control while it’s phased out. Zone-change triggers don’t trigger when a permanent phases in or out. Counters remain on a permanent while it’s phased out. Effects that check a phased-in permanent’s history won’t treat the phasing event as having caused the permanent to leave or enter the battlefield or its controller’s control.
+      .rule_text The phasing event doesn’t actually cause a permanent to change zones or control, even though it’s treated as though it’s not on the battlefield and not under its controller’s control while it’s phased out. Zone-change triggers don’t trigger when a permanent phases in or out. Tokens continue to exist on the battlefield while phased out. Counters remain on a permanent while it’s phased out. Effects that check a phased-in permanent’s history won’t treat the phasing event as having caused the permanent to leave or enter the battlefield or its controller’s control.
     .rule{id: "section-702-25e"}
       .rule_id 702.25e
       .rule_text Continuous effects that affect a phased-out permanent may expire while that permanent is phased out. If so, they will no longer affect that permanent once it’s phased in. In particular, effects with “for as long as” durations that track that permanent (see rule <a href="#section-611-2b">611.2b</a>) end when that permanent phases out because they can no longer see it.
@@ -4836,12 +4881,9 @@
       .rule_text Phased-out permanents owned by a player who leaves the game also leave the game. This doesn’t trigger zone-change triggers. See rule <a href="#section-800-4">800.4</a>.
     .rule{id: "section-702-25k"}
       .rule_id 702.25k
-      .rule_text Phased-out tokens cease to exist as a state-based action. See rule <a href="#section-704-5d">704.5d</a>.
+      .rule_text If an effect causes a player to skip his or her untap step, the phasing event simply doesn’t occur that turn.
     .rule{id: "section-702-25m"}
       .rule_id 702.25m
-      .rule_text If an effect causes a player to skip his or her untap step, the phasing event simply doesn’t occur that turn.
-    .rule{id: "section-702-25n"}
-      .rule_id 702.25n
       .rule_text Multiple instances of phasing on the same permanent are redundant.
     .rule{id: "section-702-26"}
       .rule_id 702.26.
@@ -6008,7 +6050,7 @@
       .rule_text If a player has ten or more poison counters, he or she loses the game. Ignore this rule in Two-Headed Giant games; see rule <a href="#section-704-5u">704.5u</a> instead.
     .rule{id: "section-704-5d"}
       .rule_id 704.5d
-      .rule_text If a token is phased out, or is in a zone other than the battlefield, it ceases to exist.
+      .rule_text If a token is in a zone other than the battlefield, it ceases to exist.
     .rule{id: "section-704-5e"}
       .rule_id 704.5e
       .rule_text If a copy of a spell is in a zone other than the stack, it ceases to exist. If a copy of a card is in any zone other than the stack or the battlefield, it ceases to exist.
@@ -6866,7 +6908,7 @@
       .rule_text As the combat phase starts, the attacking player doesn’t choose an opponent to become the defending player. Instead, all the attacking player’s opponents are defending players during the combat phase.
     .rule{id: "section-802-2a"}
       .rule_id 802.2a
-      .rule_text Any rule, object, or effect that refers to a “defending player” refers to one specific defending player, not to all of the defending players. If an ability of an attacking creature refers to a defending player, or a spell or ability refers to both an attacking creature and a defending player, then unless otherwise specified, the defending player it’s referring to is the player that creature was attacking at the time it became an attacking creature that combat, or the controller of the planeswalker that creature was attacking at the time it became an attacking creature that combat. If a spell or ability could apply to multiple attacking creatures, the appropriate defending player is individually determined for each of those attacking creatures. If there are multiple defending players that could be chosen, the controller of the spell or ability chooses one.
+      .rule_text Any rule, object, or effect that refers to a “defending player” refers to one specific defending player, not to all of the defending players. If an ability of an attacking creature refers to a defending player, or a spell or ability refers to both an attacking creature and a defending player, then unless otherwise specified, the defending player it’s referring to is the player that creature is attacking, or the controller of the planeswalker that creature is attacking. If that creature is no longer attacking, the defending player it’s referring to is the player that creature was attacking before it was removed from combat or the controller of the planeswalker that creature was attacking before it was removed from combat. If a spell or ability could apply to multiple attacking creatures, the appropriate defending player is individually determined for each of those attacking creatures. If there are multiple defending players that could be chosen, the controller of the spell or ability chooses one.
       .rule_text Example: Rob attacks Alex with Runeclaw Bear and attacks Carissa with a creature with mountainwalk. Whether the creature with mountainwalk can be blocked depends only on whether Carissa controls a Mountain.
     .rule{id: "section-802-3"}
       .rule_id 802.3.
@@ -6984,7 +7026,7 @@
       .rule_text As the declare blockers step begins, the defending team declares blockers. Creatures controlled by the defending players can block creatures attacking any player on the defending team or attacking a planeswalker controlled by one of those players. The defending team has one combined block, and that set of blocking creatures must be legal as a whole. See rule <a href="#section-509-1">509.1</a>.
     .rule{id: "section-805-10e"}
       .rule_id 805.10e
-      .rule_text Any rule, object, or effect that refers to a “defending player” refers to one specific defending player, not to all of the defending players. If an ability of an attacking creature refers to a defending player, or a spell or ability refers to both an attacking creature and a defending player, then unless otherwise specified, the defending player it’s referring to is the player that creature was attacking at the time it became an attacking creature that combat, or the controller of the planeswalker that creature was attacking at the time it became an attacking creature that combat. If a spell or ability could apply to multiple attacking creatures, the appropriate defending player is individually determined for each of those attacking creatures. If there are multiple defending players that could be chosen, the controller of the spell or ability chooses one.
+      .rule_text Any rule, object, or effect that refers to a “defending player” refers to one specific defending player, not to all of the defending players. If an ability of an attacking creature refers to a defending player, or a spell or ability refers to both an attacking creature and a defending player, then unless otherwise specified, the defending player it’s referring to is the player that creature is attacking, or the controller of the planeswalker that creature is attacking. If that creature is no longer attacking, the defending player it’s referring to is the player that creature was attacking before it was removed from combat or the controller of the planeswalker that creature was attacking before it was removed from combat. If a spell or ability could apply to multiple attacking creatures, the appropriate defending player is individually determined for each of those attacking creatures. If there are multiple defending players that could be chosen, the controller of the spell or ability chooses one.
     .rule{id: "section-805-10f"}
       .rule_id 805.10f
       .rule_text Once blockers have been declared, for each attacking creature that’s become blocked by multiple creatures, the active team announces the damage assignment order among the blocking creatures. Then, for each creature that’s blocking multiple creatures, the defending team announces the damage assignment order among the attacking creatures.
@@ -9215,5 +9257,5 @@
     %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, and Matt Tabak, with contributions from Charley Catino, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Eli Shiffrin, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead), Glenn Jones, Nat Moes, and Matt Tabak Magic Rules Management: Eli Shiffrin
     %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charley Catino, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
     %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-    %p These rules are effective as of July 8, 2017.
+    %p These rules are effective as of August 25, 2017.
     %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, and Magic: The Gathering—Conspiracy are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2017 Wizards. U.S. Pat. No. RE 37,957.
