@@ -6,4 +6,8 @@ describe "Spelling" do
       "Sift Through Sands", # The Unspeakable
       "Urborg Panther"      # Spirit of the Night
   end
+
+  it "*" do
+    assert_search_equal "related:t:*", "related:*"
+  end
 end

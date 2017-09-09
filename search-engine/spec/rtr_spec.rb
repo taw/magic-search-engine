@@ -164,6 +164,15 @@ describe "Return to Ravnica block" do
     assert_search_equal "mana={3}{r}{r}", "mana=3rr"
   end
 
+  it "hybrid mana Oracle search" do
+    assert_search_results %Q[o:"{r/w}"], "Boros Reckoner"
+    assert_search_results %Q[o:"{w/r}"], "Boros Reckoner"
+    assert_search_results %Q[o:"{R/W}"], "Boros Reckoner"
+    assert_search_results %Q[o:"{W/R}"], "Boros Reckoner"
+    assert_search_results %Q[o:"{rw}"], "Boros Reckoner"
+    assert_search_results %Q[o:"{wr}"], "Boros Reckoner"
+  end
+
   it "extort reminder text does not affect ci:" do
     assert_search_results "o:extort ci:w", "Basilica Guards", "Blind Obedience", "Knight of Obligation", "Syndic of Tithes"
     assert_search_results "o:extort ci:b", "Basilica Screecher", "Crypt Ghast", "Pontiff of Blight", "Syndicate Enforcer", "Thrull Parasite"

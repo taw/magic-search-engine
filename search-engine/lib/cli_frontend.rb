@@ -39,9 +39,11 @@ class CLIFrontend
           end
         end
       end
-      puts "#{card.name} #{card.mana_cost}"
+      puts [card.name, card.mana_cost].compact.join(" ")
       puts "[#{codes.join(" ")}]"
       puts card.typeline
+      puts "#{card.reminder_text}" if card.reminder_text
+      puts "(Color indicator: #{card.name} is #{card.color_indicator})" if card.color_indicator
       puts "#{card.text}" if card.text != ""
       puts "#{card.power}/#{card.toughness}" if card.power
       puts "Loyalty: #{card.loyalty}" if card.loyalty

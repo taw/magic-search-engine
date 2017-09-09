@@ -23,7 +23,7 @@
       = search_help "t:goblin", "search for Goblin cards"
       = search_help 't:"goblin warrior"', "search for Goblin Warrior cards"
       = search_help 't:"legendary land"', "search for Legendary Land cards"
-      = search_help "is:permanent", "search for permanent cards (that is, not instant / sorceries)"
+      = search_help "is:permanent", "search for permanent cards (creatures, artifacts, enchantments, lands, and planeswalkers)"
       = search_help "is:spell", "search for spell cards (that is not lands)"
       = search_help "t:plane", "search Plane cards"
       = search_help "t:vryn", "search Plane cards with type Vryn"
@@ -134,11 +134,14 @@
       = search_help "t:goblin not cmc=2", "cards which are Goblins but do not have converted mana cost 2"
 
     %h4 Search by rarity
+    %div Search engine recognizes 6 rarities - basic, common, uncommon, rare, mythic, and special.
     %ul
       = search_help "r:common", "common cards"
       = search_help "r:uncommon", "uncommon cards"
       = search_help "r:rare", "rare cards"
       = search_help "r:mythic", "mythic rare cards"
+      = search_help "r>=rare", "at least rare cards (rare, mythic, special)"
+      = search_help "r<=uncommon", "at most uncommon cards (basic, common, uncommon)"
 
     %h4 Search by flavor text
     %ul
@@ -184,6 +187,7 @@
       = search_help "st:booster", "All sets sold in booster packs"
       = search_help "st:fixed", "Non-deck sets with predetermined contents"
       = search_help "st:deck", "All sets consisting of pre-built decks"
+      = search_help "st:standard", "Standard sets (core and expansions)"
 
     %h4 Search by watermark
     %ul
@@ -317,6 +321,8 @@
       = search_help 'o:/\\d{3,}/', "cards with three digit numbers in Oracle text"
       = search_help 'ft:/\\d{3,}/', "cards with three digit numbers in flavor text"
       = search_help 'ft:/\bice\b/', 'cards with word "ice" in flavor text'
+      = search_help 'a:/.{40}/', "cards with artist credit of 40 or more characters"
+      = search_help 'n:/.{30}/', "cards with names of 30 or more characters"
 
     %h4 Time travel
     %div You can travel to any time by specifying set code, set name, or full date (partial date like "1999" will be interpretted as "1 January 1999"). Cards printed since then won't be returned, and status of various formats will be as it was at that time. So if you want to argue about what was best Modern Pod deck back in that time just roll back the time to before the ban and enjoy.
@@ -352,3 +358,8 @@
       = search_help "t:dragon view:default", "search for Dragons, display results in default mode"
       = search_help "t:dragon view:full", "search for Dragons, display results in full detail"
       = search_help "t:dragon view:images", "search for Dragons, display results as just images"
+
+    %h4 Name comparison
+    %div To help with spoiler season number crunch you can now see which cards could possibly fit in a gap.
+    %ul
+      = search_help %Q[f:Modern print<=M14 t:land name>"Selesnya Guildgate" name<"Simic Guildgate"], "Modern cards printed up to M14 which could fit in land slot between Selesnya Guildgate and Simic Guildgate"

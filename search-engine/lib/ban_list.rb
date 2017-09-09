@@ -124,6 +124,9 @@ BanListChangeDates = {
   # MTGO Commander random banlist
   "jul 2017" => "2017-07-05",
 
+  # http://magic.wizards.com/en/articles/archive/august-28-2017-banned-and-restricted-announcement-2017-08-28?
+  "sep 2017" => "2017-09-01",
+
   # Custom Constructed
   "2017-06-27" => "2017-06-27"
 }
@@ -686,6 +689,7 @@ DynamicBanListData = {
     "Mind Twist"              => { "jan 1996" => "banned", "sep 2000" => "restricted", "jun 2007" => "legal" },
     "Mind's Desire"           => { "jun 2003" => "restricted" },
     # "Mirror Universe"         => { "?" => "restricted", "sep 1999" => "legal" },
+    "Monastery Mentor"        => { "sep 2017" => "restricted" },
     "Mox Diamond"             => { "sep 1999" => "restricted", "sep 2008" => "legal" },
     "Mox Emerald"             => { "start" => "restricted" },
     "Mox Jet"                 => { "start" => "restricted" },
@@ -704,6 +708,7 @@ DynamicBanListData = {
     "Sol Ring"                => { "start" => "restricted" },
     "Stroke of Genius"        => { "dec 1998" => "restricted", "dec 2004" => "legal" },
     "Thirst for Knowledge"    => { "jun 2009"=>"restricted", "bfz"=>"legal" },
+    "Thorn of Amethyst"       => {"sep 2017" => "restricted"},
     "Time Spiral"             => { "mar 1999" => "restricted", "sep 2008" => "legal" },
     "Timetwister"             => { "start" => "restricted" },
     "Time Vault"              => { "start" => "restricted", "may 1994" => "banned", "mar 1996" => "legal", "sep 2008" => "restricted" },
@@ -716,7 +721,7 @@ DynamicBanListData = {
     "Voltaic Key"             => { "sep 1999" => "restricted", "jun 2007" => "legal" },
     "Wheel of Fortune"        => { "may 1994" => "restricted" },
     "Windfall"                => { "dec 1998" => "restricted" },
-    "Yawgmoth's Bargain"      => { "sep 1999" => "restricted" },
+    "Yawgmoth's Bargain"      => { "sep 1999" => "restricted", "sep 2017" => "legal" },
     "Yawgmoth's Will"         => { "sep 1999" => "restricted" },
     "Gitaxian Probe"          => { "akh" => "restricted" },
   },

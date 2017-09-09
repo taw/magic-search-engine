@@ -24,22 +24,26 @@ class QueryTokenizer
       elsif s.scan(/\)/i)
         tokens << [:close]
       elsif s.scan(%r[
-        (o|ft):
+        (o|ft|a|n):
         /(
           (?:[^\\/]|\\.)*
         )/
         ]xi)
         begin
           cond = {
-            "o" => ConditionOracleRegexp,
+            "a"  => ConditionArtistRegexp,
             "ft" => ConditionFlavorRegexp,
+            "n"  => ConditionNameRegexp,
+            "o"  => ConditionOracleRegexp,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
           rx = Regexp.new(s[2], Regexp::IGNORECASE)
           tokens << [:test, cond.new(rx)]
         rescue RegexpError => e
           cond = {
-            "o" => ConditionOracle,
+            "a"  => ConditionArtist,
             "ft" => ConditionFlavor,
+            "n"  => ConditionWord,
+            "o"  => ConditionOracle,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
           warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, cond.new(s[2])]
@@ -57,6 +61,8 @@ class QueryTokenizer
       elsif s.scan(/(banned|restricted|legal)[:=](?:"(.*?)"|([\w\-]+))/i)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(s[2] || s[3])]
+      elsif s.scan(/name(>=|>|<=|<|=|:)(?:"(.*?)"|([\w\-]+))/i)
+        tokens << [:test, ConditionNameComparison.new(s[1], s[2] || s[3])]
       elsif s.scan(/e[:=](?:"(.*?)"|(\w+))/i)
         sets = [s[1] || s[2]]
         sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|(\w+))/i)
@@ -79,13 +85,15 @@ class QueryTokenizer
         tokens << [:test, ConditionColorIndicator.new(s[1])]
       elsif s.scan(/c!([wubrgcml]+)/i)
         tokens << [:test, ConditionColorsExclusive.new(s[1])]
-      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([\-\w+]+))/i)
         op = s[2]
         op = "=" if op == ":"
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(op, s[3] || s[4])]
-      elsif s.scan(/r[:=](\w+)/i)
-        tokens << [:test, ConditionRarity.new(s[1])]
+      elsif s.scan(/r(>=|>|<=|<|=|:)(basic|common|uncommon|rare|mythic|special)\b/i)
+        op = s[1]
+        op = "=" if op == ":"
+        tokens << [:test, ConditionRarity.new(op, s[2])]
       elsif s.scan(/(pow|power|loy|loyalty|tou|toughness|cmc|year)\s*(>=|>|<=|<|=|:)\s*(pow\b|power\b|tou\b|toughness\b|cmc\b|loy\b|loyalty\b|year\b|[²\d\.\-\*\+½x]+)/i)
         aliases = {"power" => "pow", "loyalty" => "loy", "toughness" => "tou"}
         a = s[1].downcase
@@ -142,6 +150,9 @@ class QueryTokenizer
         tokens << [:alt]
       elsif s.scan(/not\b/i)
         tokens << [:not]
+      elsif s.scan(/\*/i)
+        # A quick hack, maybe add ConditionAll ?
+        tokens << [:test, ConditionTypes.new("*")]
       elsif s.scan(/([^-!<>=:"\s&\/()][^<>=:"\s&\/()]*)(?=$|[\s&\/()])/i)
         # Veil-Cursed and similar silliness
         tokens << [:test, ConditionWord.new(s[1].gsub("-", " "))]

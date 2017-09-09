@@ -12,10 +12,10 @@ class Card
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
   attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :related
+  attr_reader :reminder_text
 
   def initialize(data)
     @printings = []
-
     @name = normalize_name(data["name"])
     @stemmed_name = @name.downcase.gsub(/s\b/, "").tr("-", " ")
     @names = data["names"] &&  data["names"].map{|n| normalize_name(n)}
@@ -24,11 +24,9 @@ class Card
     @text = (data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
     @funny = data["funny"]
     unless @funny
-      @text = @text.gsub(/\([^\(\)]*\)/, "").sub(/\s*\z/, "")
+      @text = @text.gsub(/\([^\(\)]*\)/, "").sub(/\s*\z/, "").sub(/\A\s*/, "")
     end
     @mana_cost = data["manaCost"] ? data["manaCost"].downcase : nil
-    calculate_mana_hash
-    calculate_color_indicator
     @reserved = data["reserved"] || false
     @types = ["types", "subtypes", "supertypes"].map{|t| data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "").tr(" ", "-")}.to_set
     @cmc = data["cmc"] || 0
@@ -52,6 +50,9 @@ class Card
     if data["subtypes"]
       @typeline += " - #{data["subtypes"].join(" ")}"
     end
+    calculate_mana_hash
+    calculate_color_indicator
+    calculate_reminder_text
   end
 
   attr_writer :color_identity
@@ -240,5 +241,47 @@ class Card
     else # find phrasing for 3/4 colors
       raise
     end
+  end
+
+  def calculate_reminder_text
+    @reminder_text = nil
+    basic_land_types = Set["swamp", "mountain", "forest", "island", "plains"] & @types
+    return if basic_land_types.empty?
+    # Listing them all explicitly due to wubrg wheel order
+    mana = case basic_land_types
+    when Set["plains"]
+      "{W}"
+    when Set["island"]
+      "{U}"
+    when Set["swamp"]
+      "{B}"
+    when Set["mountain"]
+      "{R}"
+    when Set["forest"]
+      "{G}"
+    when Set["plains", "island"]
+      "{W} or {U}"
+    when Set["plains", "swamp"]
+      "{W} or {B}"
+    when Set["island", "swamp"]
+      "{U} or {B}"
+    when Set["island", "mountain"]
+      "{U} or {R}"
+    when Set["swamp", "mountain"]
+      "{B} or {R}"
+    when Set["swamp", "forest"]
+      "{B} or {G}"
+    when Set["mountain", "forest"]
+      "{R} or {G}"
+    when Set["mountain", "plains"]
+      "{R} or {W}"
+    when Set["forest", "plains"]
+      "{G} or {W}"
+    when Set["forest", "island"]
+      "{G} or {U}"
+    else
+      raise "No idea what's correct line for #{basic_land_types}"
+    end
+    @reminder_text = "({T}: Add #{mana} to your mana pool.)"
   end
 end

@@ -1,13 +1,28 @@
 class ConditionRarity < ConditionSimple
-  def initialize(rarity)
+  def initialize(op, rarity)
+    @op = op
     @rarity = rarity.downcase
+    @rarity_code = %W[basic common uncommon rare mythic special].index(@rarity) or raise "Unknown rarity #{@rarity}"
   end
 
   def match?(card)
-    card.rarity == @rarity
+    case @op
+    when "="
+      card.rarity_code == @rarity_code
+    when ">"
+      card.rarity_code > @rarity_code
+    when ">="
+      card.rarity_code >= @rarity_code
+    when "<="
+      card.rarity_code <= @rarity_code
+    when "<"
+      card.rarity_code < @rarity_code
+    else
+      raise "Unrecognized comparison #{@op}"
+    end
   end
 
   def to_s
-    "r:#{@rarity}"
+    "r#{@op}#{@rarity}"
   end
 end
