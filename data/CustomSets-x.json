@@ -38494,7 +38494,8 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "C17"
+                    "C17",
+                    "VLN"
                 ],
                 "rarity": "Basic Land",
                 "rulings": [
@@ -38624,7 +38625,8 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "C17"
+                    "C17",
+                    "VLN"
                 ],
                 "rarity": "Basic Land",
                 "rulings": [
@@ -38759,7 +38761,8 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "C17"
+                    "C17",
+                    "VLN"
                 ],
                 "rarity": "Basic Land",
                 "rulings": [
@@ -38895,7 +38898,8 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "C17"
+                    "C17",
+                    "VLN"
                 ],
                 "rarity": "Basic Land",
                 "rulings": [
@@ -39029,7 +39033,8 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "C17"
+                    "C17",
+                    "VLN"
                 ],
                 "rarity": "Basic Land",
                 "rulings": [
@@ -39125,6 +39130,7 @@
                 "colors": [
                     "White"
                 ],
+                "flavor": "The expanse around the great city is fraught with danger. That's why patrol dwarfs ride on an emergency food source.",
                 "layout": "normal",
                 "manaCost": "{1}{W}",
                 "name": "Bolgrim Outrider",
@@ -39213,14 +39219,14 @@
                 ],
                 "flavor": "None but the Malefactor himself knows fully what the device is tracking.",
                 "layout": "normal",
-                "manaCost": "{3}{W}",
+                "manaCost": "{2}{W}{W}",
                 "name": "Consortium Astrolabe",
                 "number": "6",
                 "printings": [
                     "VLN"
                 ],
                 "rarity": "Rare",
-                "text": "Machinate \u2014 {T}, Tap another untapped artifact you control: Exile target creature, then return that card to the battlefield tapped under its owner's control.",
+                "text": "Machinate \u2014 {T}, Tap another untapped artifact you control: Exile target artifact or creature, then return that card to the battlefield tapped under its owner's control.",
                 "type": "Artifact",
                 "types": [
                     "Artifact"
@@ -39356,7 +39362,7 @@
                 "subtypes": [
                     "Bird"
                 ],
-                "text": "Flying\nMachinate \u2014 {T}, Tap another untapped artifact you control: Tap target nonartifact creature.",
+                "text": "Flying (This creature can't be blocked except by creatures with flying or reach.)\nMachinate \u2014 {T}, Tap another untapped artifact you control: Tap target nonartifact creature.",
                 "toughness": "1",
                 "type": "Artifact Creature \u2014 Bird",
                 "types": [
@@ -39500,7 +39506,7 @@
                 "subtypes": [
                     "Trap"
                 ],
-                "text": "If a creature was blocked by two or more creatures this turn, you may pay {W} rather than pay Feign Frailty's mana cost.\nCreatures you control gain indestructible until end of turn.",
+                "text": "If an opponent cast a spell with converted mana cost 4 or greater this turn, you may pay {W} rather than pay Feign Frailty's mana cost.\nCreatures you control gain indestructible until end of turn.",
                 "type": "Instant \u2014 Trap",
                 "types": [
                     "Instant"
@@ -39652,7 +39658,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "\"Do not fear if you perform evil acts. Stand, comrade, for the greater evils yet to come will make our transgressions noble in the eyes of our offspring.\"",
+                "flavor": "\"Do not fear if you perform evil acts. The great evils yet to come make our transgressions noble in the eyes of our offspring.\"",
                 "layout": "normal",
                 "manaCost": "{3}{W}{W}",
                 "name": "Hada Acolyte",
@@ -39662,17 +39668,11 @@
                     "VLN"
                 ],
                 "rarity": "Common",
-                "rulings": [
-                    {
-                        "date": "2017-08-17",
-                        "text": "Despite appearing without the ability on the image, this card does have flash."
-                    }
-                ],
                 "subtypes": [
                     "Kor",
                     "Cleric"
                 ],
-                "text": "Flash\nWhen Hada Acolyte enters the battlefield, prevent all combat damage other creatures would deal this turn.",
+                "text": "Flash (You may cast this spell any time you could cast an instant.)\nWhen Hada Acolyte enters the battlefield, prevent all combat damage other creatures would deal this turn.",
                 "toughness": "1",
                 "type": "Creature \u2014 Kor Cleric",
                 "types": [
@@ -39688,7 +39688,6 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "\"The bigger they are, the harder they fall.\"",
                 "layout": "normal",
                 "manaCost": "{X}{W}",
                 "name": "Hook Line",
@@ -39880,8 +39879,11 @@
                 "subtypes": [
                     "Nahiri"
                 ],
+                "supertypes": [
+                    "Legendary"
+                ],
                 "text": "+1: Until end of turn, each creature you control gets +1/+1 for each permanent attached to it.\n-1: Create a 1/1 white Minion creature token. You may attach an Aura or Equipment you control to it.\n-6: Search your library for an Aura or Equipment card and put it onto the battlefield attached to a creature. Repeat this process two more times, then shuffle your library.",
-                "type": "Planeswalker \u2014 Nahiri",
+                "type": "Legendary Planeswalker \u2014 Nahiri",
                 "types": [
                     "Planeswalker"
                 ]
@@ -39972,7 +39974,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "Sarru found a loophole in the rites of the Dohar.",
+                "flavor": "Sarru found a loophole in the Dohar's rites.",
                 "layout": "normal",
                 "manaCost": "{2}{W}{W}",
                 "name": "Recruit the Forsaken",
@@ -39984,7 +39986,7 @@
                 "subtypes": [
                     "Trap"
                 ],
-                "text": "If an opponent sacrificed a creature this turn, you may pay {1}{W} rather than pay Recruit the Forsaken's mana cost.\nChoose target creature card in a graveyard that died this turn. Put it onto the battlefield under your control. It's a Minion in addition to its other types.",
+                "text": "If an opponent sacrificed a creature this turn, you may pay {1}{W} rather than pay Recruit the Forsaken's mana cost.\nChoose target creature card in a graveyard that died this turn. Put it onto the battlefield under your control.",
                 "type": "Instant \u2014 Trap",
                 "types": [
                     "Instant"
@@ -40496,7 +40498,7 @@
                 "subtypes": [
                     "Trap"
                 ],
-                "text": "If an opponent cast three or more spells this turn, you may tap an untapped blue creature you control rather than pay False Premise's mana cost.\nCounter target spell unless its controller pays {2}.",
+                "text": "If an opponent cast a spell this turn and didn't pay its mana cost, you may tap an untapped blue creature you control rather than pay False Premise's mana cost.\nCounter target spell unless its controller pays {2}.",
                 "type": "Instant \u2014 Trap",
                 "types": [
                     "Instant"
@@ -40551,7 +40553,7 @@
                 "subtypes": [
                     "Trap"
                 ],
-                "text": "If an opponent drew three or more cards this turn, you may pay {2}{U} rather than pay Feathered Informants's mana cost.\nDraw three cards.",
+                "text": "If an opponent drew three or more cards this turn, you may pay {1}{U} rather than pay Feathered Informants's mana cost.\nDraw three cards.",
                 "type": "Instant \u2014 Trap",
                 "types": [
                     "Instant"
@@ -40608,7 +40610,7 @@
                 "subtypes": [
                     "Equipment"
                 ],
-                "text": "Whenever equipped creature becomes tapped, remove a -1/-1 counter from it.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
+                "text": "Whenever equipped creature becomes tapped, remove a -1/-1 counter from it.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",
                 "type": "Artifact \u2014 Equipment",
                 "types": [
                     "Artifact"
@@ -40685,7 +40687,7 @@
                     "VLN"
                 ],
                 "rarity": "Uncommon",
-                "text": "When Gravity Platform enters the battlefield, tap all creatures your opponents control.\nCreatures you control have flying.",
+                "text": "When Gravity Platform enters the battlefield, tap or untap all artifacts and creatures target player controls.\nCreatures you control have flying.",
                 "type": "Artifact",
                 "types": [
                     "Artifact"
@@ -40808,7 +40810,7 @@
                 "manaCost": "{2}{U}{U}",
                 "name": "Paralysis Mori",
                 "number": "62",
-                "power": "2",
+                "power": "3",
                 "printings": [
                     "VLN"
                 ],
@@ -41055,7 +41057,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "{U}, Tap an untapped artifact you control: Scry 1.\nAs you draw a card, you may reveal it. When an artifact card is revealed this way, exile Tezzeret, then return him to the battlefield transformed under his owner's control.",
+                "text": "{U}, Tap an untapped artifact you control: Look at the top card of your library. You may put it into your graveyard.\nWhenever another artifact card is put into your graveyard from anywhere, exile Tezzeret, then return him to the battlefield transformed under his owner's control.",
                 "toughness": "3",
                 "type": "Legendary Artifact Creature \u2014 Human",
                 "types": [
@@ -41087,8 +41089,11 @@
                 "subtypes": [
                     "Tezzeret"
                 ],
-                "text": "+1: Return up to one target artifact card from your graveyard to your hand.\n-3: Draw three cards, then discard two cards unless you discard an artifact card.\n-8: Put any number of artifact cards from your hand onto the battlefield. They're 5/5 artifact creatures.",
-                "type": "Planeswalker \u2014 Tezzeret",
+                "supertypes": [
+                    "Legendary"
+                ],
+                "text": "+1: Return up to one target artifact card from your graveyard to your hand.\n-3: Draw three cards, then discard two cards unless you discard an artifact card.\n-9: Put any number of artifact cards from your hand onto the battlefield. They're 5/5 artifact creatures.",
+                "type": "Legendary Planeswalker \u2014 Tezzeret",
                 "types": [
                     "Planeswalker"
                 ]
@@ -41346,7 +41351,7 @@
                     "Black"
                 ],
                 "layout": "double-faced",
-                "loyalty": 3,
+                "loyalty": 4,
                 "name": "Ashiok, Waking Nightmare",
                 "names": [
                     "Aisha, Born in Slumber",
@@ -41360,8 +41365,11 @@
                 "subtypes": [
                     "Ashiok"
                 ],
-                "text": "+1: Exile the top card of each player's library. If one or more land cards are exiled this way, each opponent loses 2 life.\n-2: Look at an opponent's hand and exile a nonland card from it. If that card was a creature card, create a 2/1 black Nightmare creature token.\n-6: Draw a card for each noncreature, nonland card in exile.",
-                "type": "Planeswalker \u2014 Ashiok",
+                "supertypes": [
+                    "Legendary"
+                ],
+                "text": "+1: Exile the top card of each player's library. If one or more land cards are exiled this way, each opponent loses 2 life.\n-2: Look at an opponent's hand and exile a nonland card from it. If that card was a creature card, create a 2/1 black Nightmare creature token.\n-7: Draw a card for each noncreature, nonland card in exile.",
+                "type": "Legendary Planeswalker \u2014 Ashiok",
                 "types": [
                     "Planeswalker"
                 ]
@@ -41648,7 +41656,6 @@
                 "colors": [
                     "Black"
                 ],
-                "flavor": "The morii appeared larger each night.",
                 "layout": "normal",
                 "manaCost": "{1}{B}{B}",
                 "name": "Deathwail Mori",
@@ -41711,7 +41718,7 @@
                     "VLN"
                 ],
                 "rarity": "Rare",
-                "text": "You can't cast creature spells.\nWhenever you cast a spell, choose one \u2014\n\u2022 Destroy target creature.\n\u2022 You draw a card and you lose 1 life.\n\u2022 Each opponent loses 3 life. You gain 3 life.",
+                "text": "You can't cast creature spells.\nWhenever you cast a spell, choose one \u2014\n\u2022 Each opponent loses 3 life. You gain 3 life.\n\u2022 You draw a card and you lose 1 life.\n\u2022 Destroy target creature.",
                 "type": "Enchantment",
                 "types": [
                     "Enchantment"
@@ -41773,7 +41780,7 @@
             },
             {
                 "artist": "Greg Semkow",
-                "cmc": 5,
+                "cmc": 4,
                 "colorIdentity": [
                     "B"
                 ],
@@ -41782,10 +41789,10 @@
                 ],
                 "flavor": "The efficiency of metal combined with the cruelty of humanity.",
                 "layout": "normal",
-                "manaCost": "{4}{B}",
+                "manaCost": "{3}{B}",
                 "name": "Etherium Assassin",
                 "number": "96",
-                "power": "4",
+                "power": "2",
                 "printings": [
                     "VLN"
                 ],
@@ -41794,8 +41801,8 @@
                     "Human",
                     "Assassin"
                 ],
-                "text": "Machinate \u2014 {T}, Tap another untapped artifact you control: Destroy target nonartifact creature.",
-                "toughness": "3",
+                "text": "Deathtouch\nMachinate \u2014 {T}, Tap another untapped artifact you control: Etherium Assassin deals 1 damage to target nonartifact creature or player.",
+                "toughness": "2",
                 "type": "Artifact Creature \u2014 Human Assassin",
                 "types": [
                     "Artifact",
@@ -42010,7 +42017,7 @@
                     "VLN"
                 ],
                 "rarity": "Uncommon",
-                "text": "For each -1/-1 counter among creatures you control, target opponent loses 1 life and you gain 1 life.\nDraw a card.",
+                "text": "For each -1/-1 counter among creatures on the battlefield, target opponent loses 1 life and you gain 1 life.\nDraw a card.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -42083,7 +42090,7 @@
                 "manaCost": "{6}{B}{B}",
                 "name": "Perverse Demon",
                 "number": "107",
-                "power": "5",
+                "power": "6",
                 "printings": [
                     "VLN"
                 ],
@@ -42092,7 +42099,7 @@
                     "Demon"
                 ],
                 "text": "Torture (You can harm your creatures to cast this spell. Each creature you put a single -1/-1 counter on while casting this spell pays for {1}.)\nFlying\nWhen Perverse Demon enters the battlefield, each other creature without a -1/-1 counter on it gets -3/-3 until end of turn.",
-                "toughness": "5",
+                "toughness": "6",
                 "type": "Creature \u2014 Demon",
                 "types": [
                     "Creature"
@@ -42182,7 +42189,7 @@
             },
             {
                 "artist": "Ramses Melendez",
-                "cmc": 4,
+                "cmc": 3,
                 "colorIdentity": [
                     "B"
                 ],
@@ -42190,7 +42197,7 @@
                     "Black"
                 ],
                 "layout": "normal",
-                "manaCost": "{2}{B}{B}",
+                "manaCost": "{1}{B}{B}",
                 "name": "Soaring Ghast",
                 "number": "111",
                 "power": "2",
@@ -42625,7 +42632,7 @@
                     "Human",
                     "Rogue"
                 ],
-                "text": "Reach\nWhenever a -1/-1 counter is put on Frontier Desperado, exile the top card of your library. You may play that card until end of turn.",
+                "text": "Frontier Desperado can't be countered.\nWhenever a -1/-1 counter is put on Frontier Desperado, exile the top card of your library. You may play that card until end of turn. It can't be countered by spells or abilities.",
                 "toughness": "3",
                 "type": "Creature \u2014 Human Rogue",
                 "types": [
@@ -42991,7 +42998,7 @@
             },
             {
                 "artist": "Cristi Balanescu",
-                "cmc": 4,
+                "cmc": 3,
                 "colorIdentity": [
                     "R"
                 ],
@@ -43000,14 +43007,14 @@
                 ],
                 "flavor": "Succumbing to Tibalt's demands was the last mistake Graen would make.",
                 "layout": "normal",
-                "manaCost": "{3}{R}",
+                "manaCost": "{2}{R}",
                 "name": "Rustic Torment",
                 "number": "141",
                 "printings": [
                     "VLN"
                 ],
                 "rarity": "Common",
-                "text": "Torture (You can harm your creatures to cast this spell. Each creature you put a single -1/-1 counter on while casting this spell pays for {1}.)\nUntap target creature and gain control of it until end of turn. It has haste this turn.",
+                "text": "Torture (You can harm your creatures to cast this spell. Each creature you put a single -1/-1 counter on while casting this spell pays for {1}.)\nGain control of target untapped creature until end of turn. It gains haste until end of turn.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -43022,7 +43029,6 @@
                 "colors": [
                     "Red"
                 ],
-                "flavor": "\"Outlands, twenty miles north. Beware 'playful' dragons.\"\n\u2014 Crossroads signpost",
                 "layout": "normal",
                 "manaCost": "{5}{R}{R}",
                 "name": "Sandspout Storm",
@@ -43031,8 +43037,11 @@
                     "VLN"
                 ],
                 "rarity": "Common",
-                "text": "Sandspout Storm deals 4 damage to target player and 4 damage to target creature that player controls.",
-                "type": "Instant",
+                "subtypes": [
+                    "Trap"
+                ],
+                "text": "If a spell you cast this turn was countered by a spell an opponent controlled, you may pay {1}{R} rather than pay Sandspout Storm's mana cost.\nSandspout Storm deals 4 damage to target player and 4 damage to up to one target creature that player controls.",
+                "type": "Instant \u2014 Trap",
                 "types": [
                     "Instant"
                 ]
@@ -43096,13 +43105,13 @@
                 "flavor": "Nothing lives for long on Grixis, and automatons are no exception.",
                 "layout": "normal",
                 "manaCost": "{1}{R}",
-                "name": "Shake-up",
+                "name": "Smolder",
                 "number": "145",
                 "printings": [
                     "VLN"
                 ],
                 "rarity": "Common",
-                "text": "Choose one \u2014\n\u2022 Shake-up deals 1 damage to each creature your opponents control.\n\u2022 Destroy target artifact.",
+                "text": "Choose one \u2014\n\u2022 Smolder deals 1 damage to each creature your opponents control.\n\u2022 Destroy target artifact.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -43201,6 +43210,7 @@
                 "colors": [
                     "Red"
                 ],
+                "flavor": "Few make the trek up the highland path into the volcanic forge. Fewer can work it.",
                 "layout": "normal",
                 "manaCost": "{5}{R}",
                 "name": "The Stoneforge",
@@ -43212,7 +43222,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "Machinate \u2014 {T}, Tap another untapped artifact you control: Search your library for an Equipment card and put it onto the battlefield attached to target creature you control, then shuffle your library. Sacrifice that Equipment at the beginning of the next end step.",
+                "text": "Machinate \u2014 {T}, Tap another untapped artifact you control: Search your library for an Equipment card and put it onto the battlefield attached to target creature you control, then shuffle your library.",
                 "type": "Legendary Artifact",
                 "types": [
                     "Artifact"
@@ -43239,7 +43249,7 @@
                 "subtypes": [
                     "Trap"
                 ],
-                "text": "If one or more opponents control a creature with hexproof, you may pay {1}{R}{R} rather than pay Tibalt's Ruse's mana cost and it deals twice as much damage to creatures those players control.\nTibalt's Ruse deals 3 damage to each creature.",
+                "text": "If one or more opponents control a creature with hexproof, you may pay {2}{R} rather than pay Tibalt's Ruse's mana cost and it deals twice as much damage to creatures those players control.\nTibalt's Ruse deals 3 damage to each creature.",
                 "type": "Instant \u2014 Trap",
                 "types": [
                     "Instant"
@@ -43334,8 +43344,11 @@
                 "subtypes": [
                     "Tibalt"
                 ],
+                "supertypes": [
+                    "Legendary"
+                ],
                 "text": "+1: Each player puts a -1/-1 counter on a creature he or she controls.\n+1: Until your next turn, players can't gain life and damage can't be prevented.\n-X: Discard your hand, draw X cards, and add that much {R} to your mana pool.",
-                "type": "Planeswalker \u2014 Tibalt",
+                "type": "Legendary Planeswalker \u2014 Tibalt",
                 "types": [
                     "Planeswalker"
                 ]
@@ -43363,7 +43376,7 @@
                     "Human",
                     "Rogue"
                 ],
-                "text": "Twin-barrel Outlaw gets +2/+0 and has menace as long as it's equipped. (This creature can't be blocked except by two or more creatures if it's equipped.)",
+                "text": "Twin-barrel Outlaw gets +2/+0 and has menace as long as it's equipped.",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Rogue",
                 "types": [
@@ -43392,7 +43405,7 @@
                     "Giant",
                     "Warrior"
                 ],
-                "text": "Torture (You can harm your creatures to cast this spell. Each creature you put a single -1/-1 counter on while casting this spell pays for {1}.)\nTrample, haste",
+                "text": "Torture (You can harm your creatures to cast this spell. Each creature you put a single -1/-1 counter on while casting this spell pays for {1}.)\nTrample, haste (This creature can deal excess combat damage to defending player or planeswalker while attacking and can attack and {T} the turn it enters the battlefield.)",
                 "toughness": "4",
                 "type": "Creature \u2014 Giant Warrior",
                 "types": [
@@ -43408,7 +43421,7 @@
                 "colors": [
                     "Red"
                 ],
-                "flavor": "In the ecstacy of triumph, she forgot what she was fighting for in the first place.",
+                "flavor": "In the ecstacy of triumph, she forgot what she was originally fighting for.",
                 "layout": "normal",
                 "manaCost": "{X}{R}",
                 "name": "Victorious Glee",
@@ -43417,7 +43430,7 @@
                     "VLN"
                 ],
                 "rarity": "Common",
-                "text": "Target creature gets +X/+0 and gains first strike until end of turn.",
+                "text": "Target creature gets +X/+0 and gains first strike until end of turn. (That creature deals combat damage before creatures without first strike.)",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -43432,6 +43445,7 @@
                 "colors": [
                     "Red"
                 ],
+                "flavor": "\"'Boom' goes the dynamite.\"",
                 "layout": "normal",
                 "manaCost": "{3}{R}{R}",
                 "name": "Wanton Mayhem",
@@ -43502,7 +43516,7 @@
             },
             {
                 "artist": "Lu JIABIN",
-                "cmc": 5,
+                "cmc": 4,
                 "colorIdentity": [
                     "G"
                 ],
@@ -43510,7 +43524,7 @@
                     "Green"
                 ],
                 "layout": "normal",
-                "manaCost": "{3}{G}{G}",
+                "manaCost": "{2}{G}{G}",
                 "name": "Churning Wurm",
                 "number": "159",
                 "power": "4",
@@ -43589,6 +43603,7 @@
                 "colors": [
                     "Green"
                 ],
+                "flavor": "Though Ursoth was a monster unrivaled, Garruk knew he would eat well tonight.",
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Feed to the Beast",
@@ -43612,7 +43627,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "Those who lay eyes on Garruk and don't flee in terror shortly fall in death.",
+                "flavor": "Any challenge to his claim of the title \"force of nature\" is swiftly contested.",
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Garruk's Silhouette",
@@ -43658,7 +43673,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "{2}{G}, {T}: Garruk, Son of Raklan fights target creature you don't control.\nWhen a creature dealt damage by Garruk this turn dies, exile Garruk, then return him to the battlefield transformed under his owner's control.",
+                "text": "{2}{G}: Garruk, Son of Raklan fights target creature you don't control.\nWhen a creature dealt damage by Garruk this turn dies, exile Garruk, then return him to the battlefield transformed under his owner's control.",
                 "toughness": "4",
                 "type": "Legendary Creature \u2014 Human",
                 "types": [
@@ -43689,8 +43704,11 @@
                 "subtypes": [
                     "Garruk"
                 ],
+                "supertypes": [
+                    "Legendary"
+                ],
                 "text": "+2: Untap up to one target creature. It blocks this turn if able.\n-3: Create a 4/4 green Beast creature token.\n-11: You get an emblem with \"Whenever a creature dies, draw cards equal to its power and you gain life equal to its toughness.\"",
-                "type": "Planeswalker \u2014 Garruk",
+                "type": "Legendary Planeswalker \u2014 Garruk",
                 "types": [
                     "Planeswalker"
                 ]
@@ -43715,7 +43733,7 @@
                 "subtypes": [
                     "Trap"
                 ],
-                "text": "If an opponent attacked with a legendary creature this turn, you may pay {2}{G} rather than pay Grand Entrance's mana cost.\nSearch your library for a creature card with converted mana cost equal to or less than the greatest converted mana cost among permanents you control, put that card onto the battlefield, then shuffle your library.",
+                "text": "If an opponent controls a legendary permanent, you may pay {2}{G} rather than pay Grand Entrance's mana cost.\nSearch your library for a creature card with converted mana cost equal to or less than the greatest converted mana cost among permanents you control, put that card onto the battlefield, then shuffle your library.",
                 "type": "Instant \u2014 Trap",
                 "types": [
                     "Instant"
@@ -43787,7 +43805,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "\"There's no subtlety to a two-thousand pound monster lumbering through the wilderness. If it catches you, it's your own fault.\"\n\u2014 Raklan, Garruk's father",
+                "flavor": "There's no subtlety to a two-thousand pound monster lumbering through the wilderness.",
                 "layout": "normal",
                 "manaCost": "{4}{G}",
                 "name": "Kalonian Baloth",
@@ -43800,7 +43818,7 @@
                 "subtypes": [
                     "Beast"
                 ],
-                "text": "Trample\nFrenzy 3 (Whenever this creature attacks and isn't blocked, it gets +3/+0 until end of turn.)",
+                "text": "Trample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)\nFrenzy 3 (Whenever this creature attacks and isn't blocked, it gets +3/+0 until end of turn.)",
                 "toughness": "6",
                 "type": "Creature \u2014 Beast",
                 "types": [
@@ -43816,6 +43834,7 @@
                 "colors": [
                     "Green"
                 ],
+                "flavor": "Garruk felled the monster with a cleave of his axe, and claimed it from the aether as his own.",
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Kalonian Rootwalla",
@@ -43836,35 +43855,6 @@
                 ]
             },
             {
-                "artist": "Cristian Chihaia",
-                "cmc": 4,
-                "colorIdentity": [
-                    "G"
-                ],
-                "colors": [
-                    "Green"
-                ],
-                "flavor": "Difficult to track and even more difficult to bring down, hunting a swine is a rite of passage on Ringsir that provides its own celebratory feast.",
-                "layout": "normal",
-                "manaCost": "{2}{G}{G}",
-                "name": "Kalonian Swine",
-                "number": "170",
-                "power": "4",
-                "printings": [
-                    "VLN"
-                ],
-                "rarity": "Common",
-                "subtypes": [
-                    "Boar"
-                ],
-                "text": "Trample",
-                "toughness": "3",
-                "type": "Creature \u2014 Boar",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
                 "artist": "Jo\u00e3o Bosco",
                 "cmc": 3,
                 "colorIdentity": [
@@ -43873,10 +43863,11 @@
                 "colors": [
                     "Green"
                 ],
+                "flavor": "\"Feral, deadly, and patient? The wolves here truly know how to hunt.\"\n\u2014 Garruk the Huntsman",
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Lurking Wolf",
-                "number": "171",
+                "number": "170",
                 "power": "2",
                 "printings": [
                     "VLN"
@@ -43905,7 +43896,7 @@
                 "layout": "normal",
                 "manaCost": "{6}{G}",
                 "name": "Pensive Jotun",
-                "number": "172",
+                "number": "171",
                 "power": "7",
                 "printings": [
                     "VLN"
@@ -43932,8 +43923,8 @@
                 "layout": "normal",
                 "manaCost": "{4}{G}{G}",
                 "name": "Persistent Hydra",
-                "number": "173",
-                "power": "6",
+                "number": "172",
+                "power": "5",
                 "printings": [
                     "VLN"
                 ],
@@ -43961,7 +43952,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Pluck the Sinew",
-                "number": "174",
+                "number": "173",
                 "printings": [
                     "VLN"
                 ],
@@ -43985,7 +43976,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}",
                 "name": "Predation Gimmick",
-                "number": "175",
+                "number": "174",
                 "printings": [
                     "VLN"
                 ],
@@ -44008,10 +43999,11 @@
                 "colors": [
                     "Green"
                 ],
+                "flavor": "\"Truly Tibalt, if you can't grasp this simple process, you have no business as a stitcher.\"\n\u2014 Stitcher Gisa",
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Propagating Slime",
-                "number": "176",
+                "number": "175",
                 "power": "1",
                 "printings": [
                     "VLN"
@@ -44040,7 +44032,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Ranger's Might",
-                "number": "177",
+                "number": "176",
                 "printings": [
                     "VLN"
                 ],
@@ -44060,10 +44052,11 @@
                 "colors": [
                     "Green"
                 ],
+                "flavor": "Stories of cunning wolves and monstrous baloths strike fear of the untamed wilds into children's hearts. But the relentless bears of the lowland forests are responsible for the majority of missing scouts.",
                 "layout": "normal",
                 "manaCost": "{1}{G}{G}",
                 "name": "Ringsir Grizzly",
-                "number": "178",
+                "number": "177",
                 "power": "3",
                 "printings": [
                     "VLN"
@@ -44092,7 +44085,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Roaming Lutist",
-                "number": "179",
+                "number": "178",
                 "power": "2",
                 "printings": [
                     "VLN"
@@ -44121,7 +44114,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}{G}",
                 "name": "Rotten to the Core",
-                "number": "180",
+                "number": "179",
                 "printings": [
                     "VLN"
                 ],
@@ -44153,7 +44146,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Satyr Wayfinder",
-                "number": "181",
+                "number": "180",
                 "power": "1",
                 "printings": [
                     "VLN",
@@ -44184,10 +44177,11 @@
                 "colors": [
                     "Green"
                 ],
+                "flavor": "\"Don't wander past the sunlight in the forest! And don't try to cross any bridges!\"\n\u2014 Advice for children of Ringsir",
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Savage Troll",
-                "number": "182",
+                "number": "181",
                 "power": "2",
                 "printings": [
                     "VLN"
@@ -44213,10 +44207,11 @@
                 "colors": [
                     "Green"
                 ],
+                "flavor": "With his bare hands, Garruk added the snake to his collection of pets.",
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Septic Python",
-                "number": "183",
+                "number": "182",
                 "power": "1",
                 "printings": [
                     "VLN"
@@ -44245,7 +44240,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{G}",
                 "name": "Skittering Silkspinner",
-                "number": "184",
+                "number": "183",
                 "power": "2",
                 "printings": [
                     "VLN"
@@ -44254,7 +44249,7 @@
                 "subtypes": [
                     "Spider"
                 ],
-                "text": "Torture (You can harm your creatures to cast this spell. Each creature you put a single -1/-1 counter on while casting this spell pays for {1}.)\nReach, deathtouch",
+                "text": "Torture (You can harm your creatures to cast this spell. Each creature you put a single -1/-1 counter on while casting this spell pays for {1}.)\nReach, deathtouch (This creature can block creatures with flying and any amount of damage it deals to a creature is enough to destroy it.)",
                 "toughness": "3",
                 "type": "Creature \u2014 Spider",
                 "types": [
@@ -44273,7 +44268,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}{G}",
                 "name": "Snareweb Spider",
-                "number": "185",
+                "number": "184",
                 "power": "3",
                 "printings": [
                     "VLN"
@@ -44302,7 +44297,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}",
                 "name": "Stubborn Retrieval",
-                "number": "186",
+                "number": "185",
                 "printings": [
                     "VLN"
                 ],
@@ -44326,7 +44321,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Sudden Valley Trap",
-                "number": "187",
+                "number": "186",
                 "printings": [
                     "VLN"
                 ],
@@ -44349,10 +44344,11 @@
                 "colors": [
                     "Green"
                 ],
+                "flavor": "Scaling the sharp cliff-faces of Akoum would be impossible without the rope fashioned from its stray vines.",
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Tanglevine",
-                "number": "188",
+                "number": "187",
                 "power": "0",
                 "printings": [
                     "VLN"
@@ -44380,7 +44376,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}{G}{G}",
                 "name": "Unheeded Threats",
-                "number": "189",
+                "number": "188",
                 "printings": [
                     "VLN"
                 ],
@@ -44388,7 +44384,7 @@
                 "subtypes": [
                     "Trap"
                 ],
-                "text": "If an opponent cast a spell during your turn, you may pay {2}{G}{G} rather than pay Unheeded Threats' mana cost. If you do, it can't be countered.\nCreatures you control get +3/+3 and gain trample until end of turn.",
+                "text": "If an opponent cast a spell during your last or current turn, you may pay {1}{G}{G} rather than pay Unheeded Threats' mana cost. If you do, it can't be countered.\nCreatures you control get +3/+3 and gain trample until end of turn.",
                 "type": "Instant \u2014 Trap",
                 "types": [
                     "Instant"
@@ -44406,7 +44402,7 @@
                 "layout": "normal",
                 "manaCost": "{5}{G}{G}{G}",
                 "name": "Ursoth the Unclaimed",
-                "number": "190",
+                "number": "189",
                 "power": "10",
                 "printings": [
                     "VLN"
@@ -44418,9 +44414,38 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "Indestructible (Damage and effects that say \"destroy\" don't destroy this creature.)\nIf an attacking creature you control would be dealt combat damage, prevent that damage and put a single -1/-1 counter on it.",
+                "text": "Ursoth the Unclaimed can't be countered.\nIndestructible (Damage and effects that say \"destroy\" don't destroy this creature.)\nIf an attacking creature you control would be dealt combat damage, prevent that damage and put a single -1/-1 counter on it.",
                 "toughness": "10",
                 "type": "Legendary Creature \u2014 Beast",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
+                "artist": "Cristian Chihaia",
+                "cmc": 4,
+                "colorIdentity": [
+                    "G"
+                ],
+                "colors": [
+                    "Green"
+                ],
+                "flavor": "Difficult to track and even more difficult to bring down, hunting a swine is a rite of passage on Ringsir that provides its own celebratory feast.",
+                "layout": "normal",
+                "manaCost": "{2}{G}{G}",
+                "name": "Vicious Swine",
+                "number": "190",
+                "power": "4",
+                "printings": [
+                    "VLN"
+                ],
+                "rarity": "Common",
+                "subtypes": [
+                    "Boar"
+                ],
+                "text": "Trample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)",
+                "toughness": "3",
+                "type": "Creature \u2014 Boar",
                 "types": [
                     "Creature"
                 ]
@@ -44689,8 +44714,11 @@
                 "subtypes": [
                     "Bolas"
                 ],
+                "supertypes": [
+                    "Legendary"
+                ],
                 "text": "+3: Each opponent discards two cards and loses 2 life. You draw two cards and you gain 2 life.\n-2: Each opponent sacrifices an artifact, a creature, and a land.\n-13: You control each opponent during his or her next X turns, where X is the number of players in the game.",
-                "type": "Planeswalker \u2014 Bolas",
+                "type": "Legendary Planeswalker \u2014 Bolas",
                 "types": [
                     "Planeswalker"
                 ]
@@ -44706,7 +44734,6 @@
                     "Black",
                     "Green"
                 ],
-                "flavor": "\"You think it's a difficult thing, taking a life? I've discovered it gets easier the more you do it.\"",
                 "layout": "normal",
                 "manaCost": "{4}{B}{G}",
                 "name": "Cursed by the Veil",
@@ -44726,31 +44753,6 @@
                 ]
             },
             {
-                "artist": "Jianson Chen",
-                "cmc": 2,
-                "colorIdentity": [
-                    "B",
-                    "R"
-                ],
-                "colors": [
-                    "Black",
-                    "Red"
-                ],
-                "layout": "normal",
-                "manaCost": "{B}{R}",
-                "name": "Deal with the Devil",
-                "number": "201",
-                "printings": [
-                    "VLN"
-                ],
-                "rarity": "Rare",
-                "text": "Search your library for a card and exile it, then shuffle your library. You lose life equal to that card's converted mana cost. Until end of turn, you may play that card.",
-                "type": "Sorcery",
-                "types": [
-                    "Sorcery"
-                ]
-            },
-            {
                 "artist": "Aurelien Rantet",
                 "cmc": 5,
                 "colorIdentity": [
@@ -44764,7 +44766,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{U}{R}",
                 "name": "Elaborate Plan",
-                "number": "202",
+                "number": "201",
                 "printings": [
                     "VLN"
                 ],
@@ -44789,7 +44791,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{B}{R}",
                 "name": "Ember Fiend",
-                "number": "203",
+                "number": "202",
                 "power": "3",
                 "printings": [
                     "VLN"
@@ -44821,7 +44823,7 @@
                 "layout": "normal",
                 "manaCost": "{W}{B}",
                 "name": "Faceless Mob",
-                "number": "204",
+                "number": "203",
                 "power": "2",
                 "printings": [
                     "VLN"
@@ -44852,7 +44854,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{U}{B}",
                 "name": "Fleeting Mori",
-                "number": "205",
+                "number": "204",
                 "power": "2",
                 "printings": [
                     "VLN"
@@ -44883,7 +44885,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}{R}",
                 "name": "Grixis Taskmage",
-                "number": "206",
+                "number": "205",
                 "power": "2",
                 "printings": [
                     "VLN"
@@ -44896,6 +44898,37 @@
                 "text": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhen Grixis Taskmage enters the battlefield, return an instant or sorcery card from your graveyard to your hand.",
                 "toughness": "2",
                 "type": "Creature \u2014 Zombie Wizard",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
+                "artist": "Mateusz Ozminski",
+                "cmc": 2,
+                "colorIdentity": [
+                    "B",
+                    "R"
+                ],
+                "colors": [
+                    "Black",
+                    "Red"
+                ],
+                "layout": "normal",
+                "manaCost": "{B}{R}",
+                "name": "Henchfiend",
+                "number": "206",
+                "power": "3",
+                "printings": [
+                    "VLN"
+                ],
+                "rarity": "Rare",
+                "subtypes": [
+                    "Devil",
+                    "Minion"
+                ],
+                "text": "Henchfiend gets +1/+1 for each -1/-1 counter on it. (This effect neutralizes the counters' effects.)\nWhen Henchfiend dies, if it had a -1/-1 counter on it, return it to its owner's hand.",
+                "toughness": "2",
+                "type": "Creature \u2014 Devil Minion",
                 "types": [
                     "Creature"
                 ]
@@ -44990,7 +45023,7 @@
                     "Human",
                     "Warrior"
                 ],
-                "text": "Frenzy 1 (Whenever this creature attacks and isn't blocked, it gets +1/+0 until end of turn.)\nAt the beginning of combat on your turn, target creature gains menace until end of turn. (It can' be blocked except by two or more creatures.)",
+                "text": "Frenzy 1 (Whenever this creature attacks and isn't blocked, it gets +1/+0 until end of turn.)\nAt the beginning of combat on your turn, target creature gains menace until end of turn. (It can't be blocked except by two or more creatures.)",
                 "toughness": "3",
                 "type": "Creature \u2014 Human Warrior",
                 "types": [
@@ -45022,7 +45055,7 @@
                     "Human",
                     "Knight"
                 ],
-                "text": "First strike (This creature deals combat damage before creatures without first strike.)\nAs long as Paragon Deputy is equipped, other creatures you control get +1/+0 and have first strike.",
+                "text": "First strike\nAs long as Paragon Deputy is equipped, other creatures you control get +1/+0 and have first strike.",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Knight",
                 "types": [
@@ -45031,7 +45064,7 @@
             },
             {
                 "artist": "Rams\u00e9s Mel\u00e9ndez",
-                "cmc": 6,
+                "cmc": 5,
                 "colorIdentity": [
                     "U",
                     "B"
@@ -45041,7 +45074,7 @@
                     "Black"
                 ],
                 "layout": "normal",
-                "manaCost": "{4}{U}{B}",
+                "manaCost": "{3}{U}{B}",
                 "name": "Paranoia Mori",
                 "number": "211",
                 "power": "4",
@@ -45082,14 +45115,14 @@
                 "rarity": "Rare",
                 "subtypes": [
                     "Dwarf",
-                    "Artificer"
+                    "Wizard"
                 ],
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "When Sarru, Stonecult Rector enters the battlefield, create a 0/2 colorless Wall artifact creature token with defender.\n{W}, Sacrifice another creature: Remove a -1/-1 counter from each creature you control.\n{B}, Sacrifice an artifact: You draw a card and you lose 1 life.",
+                "text": "When Sarru, Stonecult Rector enters the battlefield, create two 1/1 white Minion creature tokens.\nWhenever a token you control is put into a graveyard from the battlefield, an opponent loses 1 life and you gain 1 life.",
                 "toughness": "2",
-                "type": "Legendary Creature \u2014 Dwarf Artificer",
+                "type": "Legendary Creature \u2014 Dwarf Wizard",
                 "types": [
                     "Creature"
                 ]
@@ -45166,7 +45199,6 @@
                     "Blue",
                     "Green"
                 ],
-                "flavor": "Their nests are built from the secrets of the dead.",
                 "layout": "normal",
                 "manaCost": "{1}{G}{U}",
                 "name": "Thurrost Sage-Owl",
@@ -45179,7 +45211,7 @@
                 "subtypes": [
                     "Bird"
                 ],
-                "text": "Flash\nFlying\nWhen Thurrost Sage-Owl enters the battlefield, counter target activated or triggered ability.",
+                "text": "Flash\nFlying\nWhen Thurrost Sage-Owl enters the battlefield, counter target activated or triggered ability. (Mana abilities can't be targeted.)",
                 "toughness": "1",
                 "type": "Creature \u2014 Bird",
                 "types": [
@@ -45214,7 +45246,7 @@
             },
             {
                 "artist": "Victor A. Minguez",
-                "cmc": 6,
+                "cmc": 5,
                 "colorIdentity": [
                     "W",
                     "G"
@@ -45224,7 +45256,7 @@
                     "Green"
                 ],
                 "layout": "normal",
-                "manaCost": "{4}{G}{W}",
+                "manaCost": "{3}{G}{W}",
                 "name": "Zendikon Guardian",
                 "number": "217",
                 "power": "4",
@@ -45294,19 +45326,18 @@
             },
             {
                 "artist": "Murdok X",
-                "cmc": 4,
+                "cmc": 5,
                 "colorIdentity": [],
                 "colors": [],
-                "flavor": "\"Tick tock.\"",
                 "layout": "normal",
-                "manaCost": "{4}",
+                "manaCost": "{5}",
                 "name": "Doomsday Clock",
                 "number": "220",
                 "printings": [
                     "VLN"
                 ],
                 "rarity": "Rare",
-                "text": "At the beginning of each player's upkeep, put a sand counter on Doomsday Clock, then that player flips a coin for each sand counter on it and sacrifices a permanent for each coin that comes up tails.",
+                "text": "At the beginning of your end step, put a doom counter on Doomsday Clock.\nAt the beginning of each player's upkeep, that player flips a coin for each doom counter on Doomsday Clock and sacrifices a permanent for each coin that comes up tails.",
                 "type": "Artifact",
                 "types": [
                     "Artifact"
@@ -45328,7 +45359,7 @@
                 "subtypes": [
                     "Equipment"
                 ],
-                "text": "Equipped creature gets +1/+1.\nAs long as equipped creature is an artifact, it gets an additional +1/+0.\nEquip {2}",
+                "text": "Equipped creature gets +1/+0.\nAs long as equipped creature is an artifact, it gets an additional +1/+0.\nEquip {1}",
                 "type": "Artifact  \u2014 Equipment",
                 "types": [
                     "Artifact"
@@ -45675,7 +45706,8 @@
                     "CN2",
                     "C16",
                     "AKH",
-                    "CMA"
+                    "CMA",
+                    "C17"
                 ],
                 "rarity": "Common",
                 "text": "{T}, Sacrifice Evolving Wilds: Search your library for a basic land card and put it onto the battlefield tapped. Then shuffle your library.",
@@ -45720,7 +45752,7 @@
                     "VLN"
                 ],
                 "rarity": "Rare",
-                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {B} or {G} to your mana pool.\n{B}{G}, {T}: Cast the exiled card without paying its mana cost. Activate this ability only if four or more creatures died this turn.",
+                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {B} or {G} to your mana pool.\n{B}{G}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if there are four or more card types among cards in your graveyard.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -45762,7 +45794,7 @@
                     "VLN"
                 ],
                 "rarity": "Rare",
-                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {U} or {R} to your mana pool.\n{U}{R}, {T}: Cast the exiled card without paying its mana cost. Activate this ability only if you cast three or more spells this turn.",
+                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {U} or {R} to your mana pool.\n{U}{R}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you've cast two or more noncreature spells this turn.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -45775,7 +45807,7 @@
                     "W"
                 ],
                 "colors": [],
-                "flavor": "Nahiri's time on Doharum did leave some useful and beautiful things.",
+                "flavor": "Nahiri's time on Doharum did leave behind some useful and beautiful things.",
                 "layout": "normal",
                 "name": "Hedron Formation",
                 "number": "240",
@@ -45804,7 +45836,7 @@
                     "VLN"
                 ],
                 "rarity": "Rare",
-                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {R} or {W} to your mana pool.\n{R}{W}, {T}: Cast the exiled card without paying its mana cost. Activate this ability only if sources you control dealt 8 or more damage this turn.",
+                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {R} or {W} to your mana pool.\n{R}{W}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you control three or more artifacts.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -45851,7 +45883,7 @@
                 ]
             },
             {
-                "artist": "Logan Feliciano",
+                "artist": "Yasen Stoilov",
                 "cmc": 0,
                 "colorIdentity": [
                     "U",
@@ -45928,7 +45960,7 @@
                     "VLN"
                 ],
                 "rarity": "Rare",
-                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {G} or {U} to your mana pool.\n{G}{U}, {T}: Cast the exiled card without paying its mana cost. Activate this ability only if you drew three or more cards this turn.",
+                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {G} or {U} to your mana pool.\n{G}{U}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you control six or more lands with different names.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -45949,7 +45981,7 @@
                     "VLN"
                 ],
                 "rarity": "Rare",
-                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {W} or {B} to your mana pool.\n{W}{B}, {T}: Cast the exiled card without paying its mana cost. Activate this ability only if you gained 6 or more life this turn.",
+                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {W} or {B} to your mana pool.\n{W}{B}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you have 6 or less life.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -45985,7 +46017,6 @@
                 "layout": "normal",
                 "name": "Plains",
                 "number": "250",
-                "printedName": "Plains of Doharum",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -46087,15 +46118,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Plains, making Plains the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Plains"
                 ],
@@ -46109,7 +46134,7 @@
                 "watermark": "White"
             },
             {
-                "artist": "Geoffrey Ernault",
+                "artist": "Jorge Jacinto",
                 "cmc": 0,
                 "colorIdentity": [
                     "W"
@@ -46118,7 +46143,6 @@
                 "layout": "normal",
                 "name": "Plains",
                 "number": "251",
-                "printedName": "Plains of Esper",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -46220,15 +46244,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Plains, making Plains the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Plains"
                 ],
@@ -46251,7 +46269,6 @@
                 "layout": "normal",
                 "name": "Plains",
                 "number": "252",
-                "printedName": "Plains of Lorado",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -46353,15 +46370,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Plains, making Plains the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Plains"
                 ],
@@ -46375,7 +46386,7 @@
                 "watermark": "White"
             },
             {
-                "artist": "Jorge Jacinto",
+                "artist": "Geoffrey Ernault",
                 "cmc": 0,
                 "colorIdentity": [
                     "W"
@@ -46384,7 +46395,6 @@
                 "layout": "normal",
                 "name": "Plains",
                 "number": "253",
-                "printedName": "Plains of Zendikar",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -46486,15 +46496,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Plains, making Plains the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Plains"
                 ],
@@ -46517,7 +46521,6 @@
                 "layout": "normal",
                 "name": "Island",
                 "number": "254",
-                "printedName": "Island of Dreamscape",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -46617,146 +46620,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Island, making Island the official card name."
-                    }
-                ],
-                "subtypes": [
-                    "Island"
-                ],
-                "supertypes": [
-                    "Basic"
-                ],
-                "type": "Basic Land \u2014 Island",
-                "types": [
-                    "Land"
-                ],
-                "watermark": "Blue"
-            },
-            {
-                "artist": "Miguel Br\u00fccker",
-                "cmc": 0,
-                "colorIdentity": [
-                    "U"
-                ],
-                "colors": [],
-                "layout": "normal",
-                "name": "Island",
-                "number": "255",
-                "printedName": "Island of Esper",
-                "printings": [
-                    "VLN",
-                    "LEA",
-                    "LEB",
-                    "CEI",
-                    "CED",
-                    "2ED",
-                    "3ED",
-                    "4ED",
-                    "ICE",
-                    "RQS",
-                    "pARL",
-                    "MIR",
-                    "ITP",
-                    "5ED",
-                    "POR",
-                    "TMP",
-                    "pJGP",
-                    "PO2",
-                    "UGL",
-                    "pALP",
-                    "USG",
-                    "6ED",
-                    "PTK",
-                    "pGRU",
-                    "S99",
-                    "MMQ",
-                    "BRB",
-                    "pELP",
-                    "S00",
-                    "BTD",
-                    "INV",
-                    "7ED",
-                    "ODY",
-                    "ONS",
-                    "8ED",
-                    "MRD",
-                    "CHK",
-                    "UNH",
-                    "9ED",
-                    "RAV",
-                    "CST",
-                    "TSP",
-                    "10E",
-                    "MED",
-                    "LRW",
-                    "SHM",
-                    "ALA",
-                    "DD2",
-                    "M10",
-                    "HOP",
-                    "ME3",
-                    "ZEN",
-                    "H09",
-                    "DDE",
-                    "ROE",
-                    "DPA",
-                    "ARC",
-                    "M11",
-                    "DDF",
-                    "SOM",
-                    "MBS",
-                    "NPH",
-                    "CMD",
-                    "M12",
-                    "DDH",
-                    "ISD",
-                    "DDI",
-                    "AVR",
-                    "PC2",
-                    "M13",
-                    "DDJ",
-                    "RTR",
-                    "M14",
-                    "THS",
-                    "C13",
-                    "DDM",
-                    "M15",
-                    "DDN",
-                    "KTK",
-                    "C14",
-                    "DD3_JVC",
-                    "FRF",
-                    "DDO",
-                    "DTK",
-                    "TPR",
-                    "ORI",
-                    "BFZ",
-                    "C15",
-                    "DDQ",
-                    "SOI",
-                    "KLD",
-                    "C16",
-                    "PCA",
-                    "DDS",
-                    "AKH",
-                    "CMA",
-                    "E01",
-                    "HOU",
-                    "TSL"
-                ],
-                "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Island, making Island the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Island"
                 ],
@@ -46778,8 +46644,7 @@
                 "colors": [],
                 "layout": "normal",
                 "name": "Island",
-                "number": "256",
-                "printedName": "Island of Grixis",
+                "number": "255",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -46879,15 +46744,133 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Island, making Island the official card name."
-                    }
+                "subtypes": [
+                    "Island"
                 ],
+                "supertypes": [
+                    "Basic"
+                ],
+                "type": "Basic Land \u2014 Island",
+                "types": [
+                    "Land"
+                ],
+                "watermark": "Blue"
+            },
+            {
+                "artist": "Miguel Br\u00fccker",
+                "cmc": 0,
+                "colorIdentity": [
+                    "U"
+                ],
+                "colors": [],
+                "layout": "normal",
+                "name": "Island",
+                "number": "256",
+                "printings": [
+                    "VLN",
+                    "LEA",
+                    "LEB",
+                    "CEI",
+                    "CED",
+                    "2ED",
+                    "3ED",
+                    "4ED",
+                    "ICE",
+                    "RQS",
+                    "pARL",
+                    "MIR",
+                    "ITP",
+                    "5ED",
+                    "POR",
+                    "TMP",
+                    "pJGP",
+                    "PO2",
+                    "UGL",
+                    "pALP",
+                    "USG",
+                    "6ED",
+                    "PTK",
+                    "pGRU",
+                    "S99",
+                    "MMQ",
+                    "BRB",
+                    "pELP",
+                    "S00",
+                    "BTD",
+                    "INV",
+                    "7ED",
+                    "ODY",
+                    "ONS",
+                    "8ED",
+                    "MRD",
+                    "CHK",
+                    "UNH",
+                    "9ED",
+                    "RAV",
+                    "CST",
+                    "TSP",
+                    "10E",
+                    "MED",
+                    "LRW",
+                    "SHM",
+                    "ALA",
+                    "DD2",
+                    "M10",
+                    "HOP",
+                    "ME3",
+                    "ZEN",
+                    "H09",
+                    "DDE",
+                    "ROE",
+                    "DPA",
+                    "ARC",
+                    "M11",
+                    "DDF",
+                    "SOM",
+                    "MBS",
+                    "NPH",
+                    "CMD",
+                    "M12",
+                    "DDH",
+                    "ISD",
+                    "DDI",
+                    "AVR",
+                    "PC2",
+                    "M13",
+                    "DDJ",
+                    "RTR",
+                    "M14",
+                    "THS",
+                    "C13",
+                    "DDM",
+                    "M15",
+                    "DDN",
+                    "KTK",
+                    "C14",
+                    "DD3_JVC",
+                    "FRF",
+                    "DDO",
+                    "DTK",
+                    "TPR",
+                    "ORI",
+                    "BFZ",
+                    "C15",
+                    "DDQ",
+                    "SOI",
+                    "KLD",
+                    "C16",
+                    "PCA",
+                    "DDS",
+                    "AKH",
+                    "CMA",
+                    "E01",
+                    "HOU",
+                    "C17"
+                ],
+                "rarity": "Basic Land",
                 "subtypes": [
                     "Island"
                 ],
@@ -46910,7 +46893,6 @@
                 "layout": "normal",
                 "name": "Island",
                 "number": "257",
-                "printedName": "Island of Ringsir",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -47010,15 +46992,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Island, making Island the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Island"
                 ],
@@ -47032,7 +47008,7 @@
                 "watermark": "Blue"
             },
             {
-                "artist": "Kekai Kotaki",
+                "artist": "Jan Drenovec",
                 "cmc": 0,
                 "colorIdentity": [
                     "B"
@@ -47041,7 +47017,6 @@
                 "layout": "normal",
                 "name": "Swamp",
                 "number": "258",
-                "printedName": "Swamp of Aenyr",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -47146,15 +47121,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Swamp, making Swamp the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Swamp"
                 ],
@@ -47177,7 +47146,6 @@
                 "layout": "normal",
                 "name": "Swamp",
                 "number": "259",
-                "printedName": "Swamp of Doharum",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -47282,15 +47250,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Swamp, making Swamp the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Swamp"
                 ],
@@ -47304,7 +47266,7 @@
                 "watermark": "Black"
             },
             {
-                "artist": "Jan Drenovec",
+                "artist": "Kekai Kotaki",
                 "cmc": 0,
                 "colorIdentity": [
                     "B"
@@ -47313,7 +47275,6 @@
                 "layout": "normal",
                 "name": "Swamp",
                 "number": "260",
-                "printedName": "Swamp of Dreamscape",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -47418,15 +47379,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Swamp, making Swamp the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Swamp"
                 ],
@@ -47449,7 +47404,6 @@
                 "layout": "normal",
                 "name": "Swamp",
                 "number": "261",
-                "printedName": "Swamp of Innistrad",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -47554,15 +47508,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Swamp, making Swamp the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Swamp"
                 ],
@@ -47585,7 +47533,6 @@
                 "layout": "normal",
                 "name": "Mountain",
                 "number": "262",
-                "printedName": "Mountain of Grixis",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -47691,15 +47638,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Mountain, making Mountain the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Mountain"
                 ],
@@ -47713,7 +47654,7 @@
                 "watermark": "Red"
             },
             {
-                "artist": "Logan Feliciano",
+                "artist": "Ferdinand Dumago Ladera",
                 "cmc": 0,
                 "colorIdentity": [
                     "R"
@@ -47722,7 +47663,6 @@
                 "layout": "normal",
                 "name": "Mountain",
                 "number": "263",
-                "printedName": "Mountain of Innistrad",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -47828,15 +47768,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Mountain, making Mountain the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Mountain"
                 ],
@@ -47859,7 +47793,6 @@
                 "layout": "normal",
                 "name": "Mountain",
                 "number": "264",
-                "printedName": "Mountain of Lorado",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -47965,15 +47898,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Mountain, making Mountain the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Mountain"
                 ],
@@ -47987,7 +47914,7 @@
                 "watermark": "Red"
             },
             {
-                "artist": "Ferdinand Dumago Ladera",
+                "artist": "Logan Feliciano",
                 "cmc": 0,
                 "colorIdentity": [
                     "R"
@@ -47996,7 +47923,6 @@
                 "layout": "normal",
                 "name": "Mountain",
                 "number": "265",
-                "printedName": "Mountain of Shandalar",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -48102,15 +48028,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Mountain, making Mountain the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Mountain"
                 ],
@@ -48122,276 +48042,6 @@
                     "Land"
                 ],
                 "watermark": "Red"
-            },
-            {
-                "artist": "Tuomas Korpi",
-                "cmc": 0,
-                "colorIdentity": [
-                    "G"
-                ],
-                "colors": [],
-                "layout": "normal",
-                "name": "Forest",
-                "number": "266",
-                "printedName": "Forest of Aenyr",
-                "printings": [
-                    "VLN",
-                    "LEA",
-                    "LEB",
-                    "CEI",
-                    "CED",
-                    "2ED",
-                    "3ED",
-                    "4ED",
-                    "ICE",
-                    "RQS",
-                    "pARL",
-                    "MIR",
-                    "ITP",
-                    "5ED",
-                    "POR",
-                    "TMP",
-                    "pJGP",
-                    "PO2",
-                    "UGL",
-                    "pALP",
-                    "USG",
-                    "ATH",
-                    "6ED",
-                    "PTK",
-                    "pGRU",
-                    "S99",
-                    "MMQ",
-                    "BRB",
-                    "pELP",
-                    "S00",
-                    "BTD",
-                    "INV",
-                    "7ED",
-                    "ODY",
-                    "DKM",
-                    "ONS",
-                    "8ED",
-                    "MRD",
-                    "CHK",
-                    "UNH",
-                    "9ED",
-                    "RAV",
-                    "CST",
-                    "TSP",
-                    "10E",
-                    "MED",
-                    "LRW",
-                    "EVG",
-                    "SHM",
-                    "ALA",
-                    "M10",
-                    "HOP",
-                    "ME3",
-                    "ZEN",
-                    "DDD",
-                    "H09",
-                    "DDE",
-                    "ROE",
-                    "DPA",
-                    "ARC",
-                    "M11",
-                    "SOM",
-                    "MBS",
-                    "DDG",
-                    "NPH",
-                    "CMD",
-                    "M12",
-                    "DDH",
-                    "ISD",
-                    "AVR",
-                    "PC2",
-                    "M13",
-                    "DDJ",
-                    "RTR",
-                    "M14",
-                    "DDL",
-                    "THS",
-                    "C13",
-                    "DDM",
-                    "M15",
-                    "KTK",
-                    "C14",
-                    "DD3_GVL",
-                    "DD3_EVG",
-                    "FRF",
-                    "DDO",
-                    "DTK",
-                    "TPR",
-                    "ORI",
-                    "DDP",
-                    "BFZ",
-                    "C15",
-                    "SOI",
-                    "DDR",
-                    "KLD",
-                    "C16",
-                    "PCA",
-                    "DDS",
-                    "AKH",
-                    "CMA",
-                    "E01",
-                    "HOU",
-                    "TSL"
-                ],
-                "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Forest, making Forest the official card name."
-                    }
-                ],
-                "subtypes": [
-                    "Forest"
-                ],
-                "supertypes": [
-                    "Basic"
-                ],
-                "type": "Basic Land \u2014 Forest",
-                "types": [
-                    "Land"
-                ],
-                "watermark": "Green"
-            },
-            {
-                "artist": "Jonas De Ro",
-                "cmc": 0,
-                "colorIdentity": [
-                    "G"
-                ],
-                "colors": [],
-                "layout": "normal",
-                "name": "Forest",
-                "number": "267",
-                "printedName": "Forest of Ringsir",
-                "printings": [
-                    "VLN",
-                    "LEA",
-                    "LEB",
-                    "CEI",
-                    "CED",
-                    "2ED",
-                    "3ED",
-                    "4ED",
-                    "ICE",
-                    "RQS",
-                    "pARL",
-                    "MIR",
-                    "ITP",
-                    "5ED",
-                    "POR",
-                    "TMP",
-                    "pJGP",
-                    "PO2",
-                    "UGL",
-                    "pALP",
-                    "USG",
-                    "ATH",
-                    "6ED",
-                    "PTK",
-                    "pGRU",
-                    "S99",
-                    "MMQ",
-                    "BRB",
-                    "pELP",
-                    "S00",
-                    "BTD",
-                    "INV",
-                    "7ED",
-                    "ODY",
-                    "DKM",
-                    "ONS",
-                    "8ED",
-                    "MRD",
-                    "CHK",
-                    "UNH",
-                    "9ED",
-                    "RAV",
-                    "CST",
-                    "TSP",
-                    "10E",
-                    "MED",
-                    "LRW",
-                    "EVG",
-                    "SHM",
-                    "ALA",
-                    "M10",
-                    "HOP",
-                    "ME3",
-                    "ZEN",
-                    "DDD",
-                    "H09",
-                    "DDE",
-                    "ROE",
-                    "DPA",
-                    "ARC",
-                    "M11",
-                    "SOM",
-                    "MBS",
-                    "DDG",
-                    "NPH",
-                    "CMD",
-                    "M12",
-                    "DDH",
-                    "ISD",
-                    "AVR",
-                    "PC2",
-                    "M13",
-                    "DDJ",
-                    "RTR",
-                    "M14",
-                    "DDL",
-                    "THS",
-                    "C13",
-                    "DDM",
-                    "M15",
-                    "KTK",
-                    "C14",
-                    "DD3_GVL",
-                    "DD3_EVG",
-                    "FRF",
-                    "DDO",
-                    "DTK",
-                    "TPR",
-                    "ORI",
-                    "DDP",
-                    "BFZ",
-                    "C15",
-                    "SOI",
-                    "DDR",
-                    "KLD",
-                    "C16",
-                    "PCA",
-                    "DDS",
-                    "AKH",
-                    "CMA",
-                    "E01",
-                    "HOU",
-                    "TSL"
-                ],
-                "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Forest, making Forest the official card name."
-                    }
-                ],
-                "subtypes": [
-                    "Forest"
-                ],
-                "supertypes": [
-                    "Basic"
-                ],
-                "type": "Basic Land \u2014 Forest",
-                "types": [
-                    "Land"
-                ],
-                "watermark": "Green"
             },
             {
                 "artist": "Tyler Edlin",
@@ -48402,8 +48052,7 @@
                 "colors": [],
                 "layout": "normal",
                 "name": "Forest",
-                "number": "268",
-                "printedName": "Forest of Shandalar",
+                "number": "266",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -48507,15 +48156,9 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Forest, making Forest the official card name."
-                    }
-                ],
                 "subtypes": [
                     "Forest"
                 ],
@@ -48537,8 +48180,7 @@
                 "colors": [],
                 "layout": "normal",
                 "name": "Forest",
-                "number": "269",
-                "printedName": "Forest of Zendikar",
+                "number": "267",
                 "printings": [
                     "VLN",
                     "LEA",
@@ -48642,15 +48284,265 @@
                     "CMA",
                     "E01",
                     "HOU",
-                    "TSL"
+                    "C17"
                 ],
                 "rarity": "Basic Land",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The Magic: Villains printings of this card appear with different names for technical reasons, but they are considered reprints of the card Forest, making Forest the official card name."
-                    }
+                "subtypes": [
+                    "Forest"
                 ],
+                "supertypes": [
+                    "Basic"
+                ],
+                "type": "Basic Land \u2014 Forest",
+                "types": [
+                    "Land"
+                ],
+                "watermark": "Green"
+            },
+            {
+                "artist": "Jonas De Ro",
+                "cmc": 0,
+                "colorIdentity": [
+                    "G"
+                ],
+                "colors": [],
+                "layout": "normal",
+                "name": "Forest",
+                "number": "268",
+                "printings": [
+                    "VLN",
+                    "LEA",
+                    "LEB",
+                    "CEI",
+                    "CED",
+                    "2ED",
+                    "3ED",
+                    "4ED",
+                    "ICE",
+                    "RQS",
+                    "pARL",
+                    "MIR",
+                    "ITP",
+                    "5ED",
+                    "POR",
+                    "TMP",
+                    "pJGP",
+                    "PO2",
+                    "UGL",
+                    "pALP",
+                    "USG",
+                    "ATH",
+                    "6ED",
+                    "PTK",
+                    "pGRU",
+                    "S99",
+                    "MMQ",
+                    "BRB",
+                    "pELP",
+                    "S00",
+                    "BTD",
+                    "INV",
+                    "7ED",
+                    "ODY",
+                    "DKM",
+                    "ONS",
+                    "8ED",
+                    "MRD",
+                    "CHK",
+                    "UNH",
+                    "9ED",
+                    "RAV",
+                    "CST",
+                    "TSP",
+                    "10E",
+                    "MED",
+                    "LRW",
+                    "EVG",
+                    "SHM",
+                    "ALA",
+                    "M10",
+                    "HOP",
+                    "ME3",
+                    "ZEN",
+                    "DDD",
+                    "H09",
+                    "DDE",
+                    "ROE",
+                    "DPA",
+                    "ARC",
+                    "M11",
+                    "SOM",
+                    "MBS",
+                    "DDG",
+                    "NPH",
+                    "CMD",
+                    "M12",
+                    "DDH",
+                    "ISD",
+                    "AVR",
+                    "PC2",
+                    "M13",
+                    "DDJ",
+                    "RTR",
+                    "M14",
+                    "DDL",
+                    "THS",
+                    "C13",
+                    "DDM",
+                    "M15",
+                    "KTK",
+                    "C14",
+                    "DD3_GVL",
+                    "DD3_EVG",
+                    "FRF",
+                    "DDO",
+                    "DTK",
+                    "TPR",
+                    "ORI",
+                    "DDP",
+                    "BFZ",
+                    "C15",
+                    "SOI",
+                    "DDR",
+                    "KLD",
+                    "C16",
+                    "PCA",
+                    "DDS",
+                    "AKH",
+                    "CMA",
+                    "E01",
+                    "HOU",
+                    "C17"
+                ],
+                "rarity": "Basic Land",
+                "subtypes": [
+                    "Forest"
+                ],
+                "supertypes": [
+                    "Basic"
+                ],
+                "type": "Basic Land \u2014 Forest",
+                "types": [
+                    "Land"
+                ],
+                "watermark": "Green"
+            },
+            {
+                "artist": "Tuomas Korpi",
+                "cmc": 0,
+                "colorIdentity": [
+                    "G"
+                ],
+                "colors": [],
+                "layout": "normal",
+                "name": "Forest",
+                "number": "269",
+                "printings": [
+                    "VLN",
+                    "LEA",
+                    "LEB",
+                    "CEI",
+                    "CED",
+                    "2ED",
+                    "3ED",
+                    "4ED",
+                    "ICE",
+                    "RQS",
+                    "pARL",
+                    "MIR",
+                    "ITP",
+                    "5ED",
+                    "POR",
+                    "TMP",
+                    "pJGP",
+                    "PO2",
+                    "UGL",
+                    "pALP",
+                    "USG",
+                    "ATH",
+                    "6ED",
+                    "PTK",
+                    "pGRU",
+                    "S99",
+                    "MMQ",
+                    "BRB",
+                    "pELP",
+                    "S00",
+                    "BTD",
+                    "INV",
+                    "7ED",
+                    "ODY",
+                    "DKM",
+                    "ONS",
+                    "8ED",
+                    "MRD",
+                    "CHK",
+                    "UNH",
+                    "9ED",
+                    "RAV",
+                    "CST",
+                    "TSP",
+                    "10E",
+                    "MED",
+                    "LRW",
+                    "EVG",
+                    "SHM",
+                    "ALA",
+                    "M10",
+                    "HOP",
+                    "ME3",
+                    "ZEN",
+                    "DDD",
+                    "H09",
+                    "DDE",
+                    "ROE",
+                    "DPA",
+                    "ARC",
+                    "M11",
+                    "SOM",
+                    "MBS",
+                    "DDG",
+                    "NPH",
+                    "CMD",
+                    "M12",
+                    "DDH",
+                    "ISD",
+                    "AVR",
+                    "PC2",
+                    "M13",
+                    "DDJ",
+                    "RTR",
+                    "M14",
+                    "DDL",
+                    "THS",
+                    "C13",
+                    "DDM",
+                    "M15",
+                    "KTK",
+                    "C14",
+                    "DD3_GVL",
+                    "DD3_EVG",
+                    "FRF",
+                    "DDO",
+                    "DTK",
+                    "TPR",
+                    "ORI",
+                    "DDP",
+                    "BFZ",
+                    "C15",
+                    "SOI",
+                    "DDR",
+                    "KLD",
+                    "C16",
+                    "PCA",
+                    "DDS",
+                    "AKH",
+                    "CMA",
+                    "E01",
+                    "HOU",
+                    "C17"
+                ],
+                "rarity": "Basic Land",
                 "subtypes": [
                     "Forest"
                 ],
