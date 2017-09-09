@@ -15,6 +15,10 @@ class SplitMtgjson
   def call
     SETS_DIR.mkpath
     @data.each do |set_code, set|
+      # Delete this, as it changes a ton and messes up git history
+      set["cards"].each do |card|
+        card.delete "printings"
+      end
       (SETS_DIR + "#{set_code}.json").open("w") do |fh|
         fh.puts set.to_json
       end
