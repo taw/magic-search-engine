@@ -45,8 +45,6 @@ if __name__ == '__main__':
             for c_card in c_set_info['cards']:
                 for a_card in a_set_info['cards']:
                     if a_card['name'] == c_card['name']:
-                        if c_set_code not in a_card['printings']:
-                            a_card['printings'].append(c_set_code)
                         for key in GLOBAL_KEYS:
                             if key in c_card:
                                 a_card[key] = c_card[key]
