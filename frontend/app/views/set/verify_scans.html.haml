@@ -1,0 +1,57 @@
+.row
+  .col-12
+    %h3= @set.name
+
+- @cards.each do |card|
+  .row.card_row
+    .col-4.card_picture_cell
+      - if card_picture_path_hq(card)
+        .card_picture_container
+          %img.card_picture{src: card_picture_path_hq(card), alt: card.name }
+      - else
+        .card_picture_container
+          .picture_missing
+            = card.name
+            %br
+            = "#{card.set_name}"
+            %br
+            = "#{card.number} (#{card.rarity})"
+            %br
+            Image missing
+    .col-4.card_picture_cell
+      - if card_picture_path_lq(card)
+        .card_picture_container
+          %img.card_picture{src: card_picture_path_lq(card), alt: card.name }
+      - else
+        .card_picture_container
+          .picture_missing
+            = card.name
+            %br
+            = "#{card.set_name}"
+            %br
+            = "#{card.number} (#{card.rarity})"
+            %br
+            Image missing
+    .col-4
+      %h3.card_title
+        = link_to_card(card) do
+          = card.name
+        = format_oracle_text(card.mana_cost)
+      %ul
+        %li.infolabel
+          %span
+            Artist:
+          = link_to_artist(card.artist) do
+            = card.artist.name
+        - if card.reserved
+          %li.infolabel
+            = "#{card.name} is on Reserved List."
+        - if card.watermark
+          %li.infolabel
+            = "Watermark: #{card.watermark.capitalize}"
+        %li.infolabel
+          = "Rarity: #{card.rarity}"
+        %li.infolabel
+          = "Collector Number: #{card.number}"
+        %li.infolabel
+          = "Released: #{card.release_date.to_s}"

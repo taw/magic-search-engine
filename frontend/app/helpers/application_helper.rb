@@ -46,6 +46,14 @@ module ApplicationHelper
     ApplicationHelper.card_picture_path(card)
   end
 
+  def card_picture_path_hq(card)
+    ApplicationHelper.card_picture_path_hq(card)
+  end
+
+  def card_picture_path_lq(card)
+    ApplicationHelper.card_picture_path_lq(card)
+  end
+
   def card_gallery_path(card)
     first_printing = card.printings.first
     "/card/gallery/#{first_printing.set_code}/#{first_printing.number}"
@@ -95,6 +103,20 @@ module ApplicationHelper
     path_hq = Pathname(__dir__) + "../../public#{url_hq}"
     path_lq = Pathname(__dir__) + "../../public#{url_lq}"
     return url_hq if path_hq.exist?
+    return url_lq if path_lq.exist?
+    nil
+  end
+
+  def self.card_picture_path_hq(card)
+    url_hq = "/cards_hq/#{card.set_code}/#{card.number}.png"
+    path_hq = Pathname(__dir__) + "../../public#{url_hq}"
+    return url_hq if path_hq.exist?
+    nil
+  end
+
+  def self.card_picture_path_lq(card)
+    url_lq = "/cards/#{card.set_code}/#{card.number}.png"
+    path_lq = Pathname(__dir__) + "../../public#{url_lq}"
     return url_lq if path_lq.exist?
     nil
   end
