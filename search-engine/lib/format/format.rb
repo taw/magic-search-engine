@@ -55,6 +55,10 @@ class Format
     to_s
   end
 
+  def ban_events
+    @ban_list.ban_events_for(format_name)
+  end
+
   class << self
     def formats_index
       # Removed spaces so you can say "lw block" lw-block lwblock lw_block or whatever
