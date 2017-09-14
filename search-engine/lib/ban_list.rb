@@ -833,7 +833,7 @@ class BanList
         events[d2] << {name: card_name, old: l1, new: l2}
       end
     end
-    events.sort.map{|d,evs|
+    events.sort.reverse.map{|d,evs|
       if d == Date.parse("1900-01-01")
         [nil, evs]
       else
