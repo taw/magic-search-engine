@@ -33,7 +33,7 @@
     - else
       %p There are no restricted cards.
 
-    - if @events
+    - if @events.present?
       %h4 Ban history
       - @events.each do |date, events|
         - if date
