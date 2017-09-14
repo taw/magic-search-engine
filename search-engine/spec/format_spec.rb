@@ -54,6 +54,85 @@ describe "Formats" do
   end
 
 
+  it "ban_events" do
+    FormatInnistradBlock.new.ban_events.should eq({
+       Date.parse("2012-04-01") => [
+         {name: "Lingering Souls", old: "legal", new: "banned"},
+         {name: "Intangible Virtue", old: "legal", new: "banned"},
+       ],
+    })
+    FormatModern.new.ban_events.should eq({
+      nil => [
+       {:name=>"Ancestral Vision", :old=>"legal", :new=>"banned"},
+       {:name=>"Ancient Den", :old=>"legal", :new=>"banned"},
+       {:name=>"Bitterblossom", :old=>"legal", :new=>"banned"},
+       {:name=>"Chrome Mox", :old=>"legal", :new=>"banned"},
+       {:name=>"Dark Depths", :old=>"legal", :new=>"banned"},
+       {:name=>"Dread Return", :old=>"legal", :new=>"banned"},
+       {:name=>"Glimpse of Nature", :old=>"legal", :new=>"banned"},
+       {:name=>"Great Furnace", :old=>"legal", :new=>"banned"},
+       {:name=>"Hypergenesis", :old=>"legal", :new=>"banned"},
+       {:name=>"Jace, the Mind Sculptor", :old=>"legal", :new=>"banned"},
+       {:name=>"Mental Misstep", :old=>"legal", :new=>"banned"},
+       {:name=>"Seat of the Synod", :old=>"legal", :new=>"banned"},
+       {:name=>"Sensei's Divining Top", :old=>"legal", :new=>"banned"},
+       {:name=>"Skullclamp", :old=>"legal", :new=>"banned"},
+       {:name=>"Stoneforge Mystic", :old=>"legal", :new=>"banned"},
+       {:name=>"Sword of the Meek", :old=>"legal", :new=>"banned"},
+       {:name=>"Tree of Tales", :old=>"legal", :new=>"banned"},
+       {:name=>"Umezawa's Jitte", :old=>"legal", :new=>"banned"},
+       {:name=>"Vault of Whispers", :old=>"legal", :new=>"banned"},
+       {:name=>"Golgari Grave-Troll", :old=>"legal", :new=>"banned"},
+       {:name=>"Valakut, the Molten Pinnacle", :old=>"legal", :new=>"banned"},
+      ],
+      Date.parse("2011-10-01") => [
+        {:name=>"Blazing Shoal", :old=>"legal", :new=>"banned"},
+        {:name=>"Cloudpost", :old=>"legal", :new=>"banned"},
+        {:name=>"Green Sun's Zenith", :old=>"legal", :new=>"banned"},
+        {:name=>"Ponder", :old=>"legal", :new=>"banned"},
+        {:name=>"Preordain", :old=>"legal", :new=>"banned"},
+        {:name=>"Rite of Flame", :old=>"legal", :new=>"banned"},
+      ],
+      Date.parse("2012-01-01") => [
+        {:name=>"Wild Nacatl", :old=>"legal", :new=>"banned"},
+        {:name=>"Punishing Fire", :old=>"legal", :new=>"banned"},
+      ],
+      Date.parse("2012-10-01") => [
+        {:name=>"Valakut, the Molten Pinnacle", :old=>"banned", :new=>"legal"},
+      ],
+      Date.parse("2013-02-01") => [
+        {:name=>"Bloodbraid Elf", :old=>"legal", :new=>"banned"},
+        {:name=>"Seething Song", :old=>"legal", :new=>"banned"},
+      ],
+      Date.parse("2013-05-03") => [
+        {:name=>"Second Sunrise", :old=>"legal", :new=>"banned"},
+      ],
+      Date.parse("2014-02-07") => [
+        {:name=>"Bitterblossom", :old=>"banned", :new=>"legal"},
+        {:name=>"Deathrite Shaman", :old=>"legal", :new=>"banned"},
+        {:name=>"Wild Nacatl", :old=>"banned", :new=>"legal"},
+      ],
+      Date.parse("2015-01-23") => [
+       {:name=>"Dig Through Time", :old=>"legal", :new=>"banned"},
+       {:name=>"Treasure Cruise", :old=>"legal", :new=>"banned"},
+       {:name=>"Birthing Pod", :old=>"legal", :new=>"banned"},
+       {:name=>"Golgari Grave-Troll", :old=>"banned", :new=>"legal"},
+      ],
+      Date.parse("2016-01-22") => [
+        {:name=>"Summer Bloom", :old=>"legal", :new=>"banned"},
+        {:name=>"Splinter Twin", :old=>"legal", :new=>"banned"},
+      ],
+      Date.parse("2016-04-08") => [
+        {:name=>"Ancestral Vision", :old=>"banned", :new=>"legal"},
+        {:name=>"Sword of the Meek", :old=>"banned", :new=>"legal"},
+        {:name=>"Eye of Ugin", :old=>"legal", :new=>"banned"},
+      ],
+      Date.parse("2017-01-20")=>[
+        {:name=>"Golgari Grave-Troll", :old=>"legal", :new=>"banned"},
+        {:name=>"Gitaxian Probe", :old=>"legal", :new=>"banned"},
+      ],
+    })
+  end
 
   ## Block Constructed
 

@@ -241,8 +241,8 @@ DynamicBanListData = {
     "Gitaxian Probe"=> {"aer" => "banned"},
   },
   "innistrad block" => {
-    "Lingering Souls"    => {"start"=>"legal", "mar 2012"=>"banned"},
-    "Intangible Virtue"  => {"start"=>"legal", "mar 2012"=>"banned"},
+    "Lingering Souls"    => {"mar 2012"=>"banned"},
+    "Intangible Virtue"  => {"mar 2012"=>"banned"},
   },
   "pauper" => {
     # No idea when Cranial Plating was banned,
@@ -823,6 +823,23 @@ class BanList
       result[card_name] = status unless status == "legal"
     end
     result
+  end
+
+  def ban_events_for(format)
+    events = {}
+    @bans.fetch(format, {}).each do |card_name, card_events|
+      [[nil, "legal"], *card_events].each_cons(2) do |(d1, l1), (d2, l2)|
+        events[d2] ||= []
+        events[d2] << {name: card_name, old: l1, new: l2}
+      end
+    end
+    events.sort.map{|d,evs|
+      if d == Date.parse("1900-01-01")
+        [nil, evs]
+      else
+        [d, evs]
+      end
+    }.to_h
   end
 
   private
