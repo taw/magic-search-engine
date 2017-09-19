@@ -236,6 +236,79 @@ class Indexer
       end
     end
 
+    cstd_rarity_map = {
+      "Arcum's Weathervane" => "uncommon",
+      "Ashen Ghoul" => "uncommon",
+      "Aurochs" => "common",
+      "Balduvian Dead" => "uncommon",
+      "Barbed Sextant" => "common",
+      "Binding Grasp" => "uncommon",
+      "Bounty of the Hunt" => "uncommon",
+      "Brainstorm" => "common",
+      "Browse" => "uncommon",
+      "Casting of Bones" => "common",
+      "Dark Banishing" => "common",
+      "Dark Ritual" => "common",
+      "Deadly Insect" => "common",
+      "Death Spark" => "uncommon",
+      "Disenchant" => "common",
+      "Drift of the Dead" => "uncommon",
+      "Essence Flare" => "common",
+      "Forest" => "basic",
+      "Gangrenous Zombies" => "common",
+      "Giant Trap Door Spider" => "uncommon",
+      "Gorilla Shaman" => "common",
+      "Iceberg" => "uncommon",
+      "Incinerate" => "common",
+      "Insidious Bookworms" => "common",
+      "Island" => "basic",
+      "Kjeldoran Dead" => "common",
+      "Kjeldoran Elite Guard" => "uncommon",
+      "Kjeldoran Home Guard" => "uncommon",
+      "Kjeldoran Pride" => "common",
+      "Lat-Nam's Legacy" => "common",
+      "Legions of Lim-Dûl" => "common",
+      "Mistfolk" => "common",
+      "Mountain" => "basic",
+      "Orcish Healer" => "uncommon",
+      "Orcish Lumberjack" => "common",
+      "Phantasmal Fiend" => "common",
+      "Plains" => "basic",
+      "Portent" => "common",
+      "Reinforcements" => "common",
+      "Scars of the Veteran" => "uncommon",
+      "Skull Catapult" => "uncommon",
+      "Snow Devil" => "common",
+      "Soul Burn" => "common",
+      "Storm Elemental" => "uncommon",
+      "Swamp" => "basic",
+      "Swords to Plowshares" => "uncommon",
+      "Tinder Wall" => "common",
+      "Viscerid Drone" => "uncommon",
+      "Whalebone Glider" => "uncommon",
+      "Wings of Aesthir" => "uncommon",
+      "Woolly Mammoths" => "common",
+      "Zuran Spellcaster" => "common",
+    }
+
+    # Fix rarities of Coldsnap Theme Decks
+    cards.each do |name, card|
+      card["printings"].each do |set, printing|
+        next unless set == "cstd"
+        printing["rarity"] = cstd_rarity_map.fetch(name)
+      end
+    end
+
+    # Fix rarities of promo basics
+    ["Mountain", "Plains", "Swamp", "Island", "Forest"].each do |name|
+      card = cards[name]
+      card["printings"].each do |set, printing|
+        next unless %W[arena guru jr euro apac ptc].include?(set)
+        printing["rarity"] = "special"
+      end
+    end
+
+
     {"sets"=>sets, "cards"=>cards}
   end
 

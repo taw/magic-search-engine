@@ -32,3 +32,25 @@
               = card.name
     - else
       %p There are no restricted cards.
+
+    - if @events.present?
+      %h4 Ban history
+      - @events.each do |date, events|
+        - if date
+          %h6= date
+          %ul
+            - events.each do |event|
+              %li
+                = surround "", ":" do
+                  = link_to event[:name], controller: "card", q: "!#{event[:name]}"
+                = event[:old]
+                &rarr;
+                = event[:new]
+        - else
+          %h6 Format start
+          %ul
+            - events.each do |event|
+              %li
+                = surround "", ":" do
+                  = link_to event[:name], controller: "card", q: "!#{event[:name]}"
+                = event[:new]

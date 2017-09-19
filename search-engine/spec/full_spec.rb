@@ -365,7 +365,12 @@ describe "Full Database Test" do
 
   it "promo and special" do
     # Are promo basics really of basic rarity?
-    assert_search_results "is:promo -r:special -e:ugin -r:basic"
+    assert_search_equal "t:basic is:promo", "t:basic r:special"
+    assert_search_equal "t:basic", "(r:basic -t:urza's) or (t:basic r:special)"
+    assert_search_results "is:promo -r:special -e:ugin"
+    assert_search_results %Q[r:special -is:promo -st:masterpiece -t:vanguard -e:anthologies -e:tsts -e:"clash pack" -e:vma -e:mgbc],
+      "Giant Trap Door Spider",
+      "Tazeem"
   end
 
   def legality_information(name, date=nil)

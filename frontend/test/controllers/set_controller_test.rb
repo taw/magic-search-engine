@@ -23,4 +23,10 @@ class SetControllerTest < ActionController::TestCase
     get "show", params: {id: "lolwtf"}
     assert_response 404
   end
+
+  test "verify scans" do
+    get "show", params: {id: "akh"}
+    assert_response 200
+    assert_equal "Amonkhet - mtg.wtf", html_document.title
+  end
 end

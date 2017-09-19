@@ -18,6 +18,7 @@ class FormatController < ApplicationController
     if @format.included_sets
       @included_sets = @format.included_sets.map{|set_code| $CardDatabase.sets[set_code] }.reverse
     end
+    @events = @format.ban_events
   end
 
   private
