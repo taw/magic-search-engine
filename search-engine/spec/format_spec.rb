@@ -46,7 +46,7 @@ describe "Formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal "f:standard",
-      %Q[(e:bfz or e:ogw or e:soi or e:w16 or e:emn or e:kld or e:aer or e:akh or e:hou) -"Emrakul, the Promised End" -"Reflector Mage" -"Smuggler's Copter" -"Felidar Guardian" -"Aetherworks Marvel"]
+      %Q[(e:kld or e:aer or e:akh or e:hou or e:xln) -"Smuggler's Copter" -"Felidar Guardian" -"Aetherworks Marvel"]
     assert_search_equal 'f:"ravnica block"', "e:rav or e:gp or e:di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal 'f:"ravnica block"', 'b:ravnica'
@@ -649,13 +649,13 @@ describe "Formats" do
     standard_sets = db.sets.values.select{|s| s.type == "core" or s.type == "expansion"} + [
       db.sets["w16"]
     ]
-    FormatFrontier.new.build_included_sets.should == (
+    FormatFrontier.new.build_included_sets.should eq(
       standard_sets.select{|s| s.release_date >= Date.parse("2014-07-18") }.map(&:code).to_set
     )
-    FormatModern.new.build_included_sets.should == (
+    FormatModern.new.build_included_sets.should eq(
       standard_sets.select{|s| s.release_date >= Date.parse("2003-07-28") }.map(&:code).to_set
     )
-    FormatStandard.new.rotation_schedule.values.flatten.uniq.to_set.should == (
+    FormatStandard.new.rotation_schedule.values.flatten.uniq.to_set.should eq(
       standard_sets.select{|s| s.release_date >= Date.parse("1996-10-08") }.map(&:code).to_set
     )
   end

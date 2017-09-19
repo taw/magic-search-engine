@@ -49,6 +49,8 @@ class OracleVerifier
           if card_name == "Sultai Ascendancy"
             # BGU / UBG mana cost
             canonical_variant_source = "ktk"
+          elsif card_name == "Mark of the Vampire" or card_name == "Unknown Shores"
+            canonical_variant_source = "xln"
           else
             # FAIL, report
           end
