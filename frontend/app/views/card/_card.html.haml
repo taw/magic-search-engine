@@ -25,7 +25,9 @@
   %div
     %span.infolabel
       Loyalty:
-    = card.loyalty
+    %i.mana.mana-loyalty.mana-loyalty-start{"data-loyalty" => "#{card.loyalty}"}
+    .sr-only
+      = card.loyalty
 
 - if card.hand
   %div

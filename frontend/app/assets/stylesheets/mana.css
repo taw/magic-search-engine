@@ -295,24 +295,13 @@
   font-size: 1.5em;
   position: relative;
   text-align: center;
+  font-weight: bold; /* visibility fix */
 }
 .mana-loyalty-start {
   font-size: 2.0em;
 }
-.mana-loyalty-0:after,
-.mana-loyalty-1:after,
-.mana-loyalty-2:after,
-.mana-loyalty-3:after,
-.mana-loyalty-4:after,
-.mana-loyalty-5:after,
-.mana-loyalty-6:after,
-.mana-loyalty-7:after,
-.mana-loyalty-8:after,
-.mana-loyalty-9:after,
-.mana-loyalty-10:after,
-.mana-loyalty-12:after,
-.mana-loyalty-14:after,
-.mana-loyalty-x:after {
+.mana-loyalty:after {
+  content: attr(data-loyalty);
   color: #fff;
   display: inline-block;
   font-size: 0.5em;
@@ -324,116 +313,8 @@
   text-align: center;
   -webkit-padding-before: 0.15em;
 }
-.mana-loyalty-0:after {
-  content: "0";
-}
-.mana-loyalty-up.mana-loyalty-1:after {
-  content: "+1";
-}
-.mana-loyalty-up.mana-loyalty-2:after {
-  content: "+2";
-}
-.mana-loyalty-up.mana-loyalty-3:after {
-  content: "+3";
-}
-.mana-loyalty-up.mana-loyalty-4:after {
-  content: "+4";
-}
-.mana-loyalty-up.mana-loyalty-5:after {
-  content: "+5";
-}
-.mana-loyalty-up.mana-loyalty-6:after {
-  content: "+6";
-}
-.mana-loyalty-up.mana-loyalty-7:after {
-  content: "+7";
-}
-.mana-loyalty-up.mana-loyalty-8:after {
-  content: "+8";
-}
-.mana-loyalty-up.mana-loyalty-9:after {
-  content: "+9";
-}
-.mana-loyalty-up.mana-loyalty-10:after {
-  content: "+10";
-}
-.mana-loyalty-up.mana-loyalty-x:after {
-  content: "+X";
-}
-.mana-loyalty-start.mana-loyalty-1:after {
-  content: "1";
-}
-.mana-loyalty-start.mana-loyalty-2:after {
-  content: "2";
-}
-.mana-loyalty-start.mana-loyalty-3:after {
-  content: "3";
-}
-.mana-loyalty-start.mana-loyalty-4:after {
-  content: "4";
-}
-.mana-loyalty-start.mana-loyalty-5:after {
-  content: "5";
-}
-.mana-loyalty-start.mana-loyalty-6:after {
-  content: "6";
-}
-.mana-loyalty-start.mana-loyalty-7:after {
-  content: "7";
-}
-.mana-loyalty-start.mana-loyalty-8:after {
-  content: "8";
-}
-.mana-loyalty-start.mana-loyalty-9:after {
-  content: "9";
-}
-.mana-loyalty-start.mana-loyalty-10:after {
-  content: "10";
-}
-.mana-loyalty-start.mana-loyalty-x:after {
-  content: "X";
-}
 .mana-loyalty-down:after {
   line-height: 1.6em;
-}
-.mana-loyalty-down.mana-loyalty-1:after {
-  content: "-1";
-}
-.mana-loyalty-down.mana-loyalty-2:after {
-  content: "-2";
-}
-.mana-loyalty-down.mana-loyalty-3:after {
-  content: "-3";
-}
-.mana-loyalty-down.mana-loyalty-4:after {
-  content: "-4";
-}
-.mana-loyalty-down.mana-loyalty-5:after {
-  content: "-5";
-}
-.mana-loyalty-down.mana-loyalty-6:after {
-  content: "-6";
-}
-.mana-loyalty-down.mana-loyalty-7:after {
-  content: "-7";
-}
-.mana-loyalty-down.mana-loyalty-8:after {
-  content: "-8";
-}
-.mana-loyalty-down.mana-loyalty-9:after {
-  content: "-9";
-}
-.mana-loyalty-down.mana-loyalty-10:after {
-  content: "-10";
-}
-.mana-loyalty-down.mana-loyalty-12:after {
-  content: "-12";
-}
-.mana-loyalty-down.mana-loyalty-14:after {
-  content: "-14";
-}
-.mana-loyalty-down.mana-loyalty-x:after {
-  content: "-X";
 }
 /**
  * Double faced cards */
