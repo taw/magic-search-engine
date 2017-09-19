@@ -4,6 +4,6 @@ class FormatAmonkhetBlock < Format
   end
 
   def build_included_sets
-    Set["akh"]
+    Set["akh", "hou"]
   end
 end

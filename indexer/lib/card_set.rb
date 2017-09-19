@@ -24,6 +24,7 @@ MagicBlocks = [
   ["soi", "Shadows over Innistrad", "soi", "emn"],
   ["kld", "Kaladesh", "kld", "aer"],
   ["akh", "Amonkhet", "akh", "hou"],
+  ["xln", "Ixalan", "xln"],
 ]
 
 class Indexer
