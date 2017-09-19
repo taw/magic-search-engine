@@ -308,6 +308,11 @@ class Indexer
       end
     end
 
+    # Fix loyalty symbols
+    cards.each do |name, card|
+      next unless (card["types"] || []).include?("Planeswalker")
+      card["text"] = card["text"].gsub(%r[^([\+\-\−]?(?:\d+|X)):]) { "[#{$1}]:" }
+    end
 
     {"sets"=>sets, "cards"=>cards}
   end
