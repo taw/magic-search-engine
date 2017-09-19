@@ -299,6 +299,16 @@ class Indexer
       end
     end
 
+    # Fix rarities of promo basics
+    ["Mountain", "Plains", "Swamp", "Island", "Forest"].each do |name|
+      card = cards[name]
+      card["printings"].each do |set, printing|
+        next unless %W[arena guru jr euro apac ptc].include?(set)
+        printing["rarity"] = "special"
+      end
+    end
+
+
     {"sets"=>sets, "cards"=>cards}
   end
 
