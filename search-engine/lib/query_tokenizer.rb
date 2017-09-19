@@ -90,7 +90,7 @@ class QueryTokenizer
         op = "=" if op == ":"
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(op, s[3] || s[4])]
-      elsif s.scan(/r(>=|>|<=|<|=|:)(basic|common|uncommon|rare|mythic|special)\b/i)
+      elsif s.scan(/r(>=|>|<=|<|=|:)(basic|common|uncommon|rare|mythic|special|[blcurms])\b/i)
         op = s[1]
         op = "=" if op == ":"
         tokens << [:test, ConditionRarity.new(op, s[2])]
