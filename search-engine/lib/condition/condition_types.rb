@@ -12,7 +12,7 @@ class ConditionTypes < ConditionSimple
       .gsub("new phyrexia", "new-phyrexia")
       .gsub("serra realm", "serra-realm")
       .gsub("bolas meditation realm", "bolas-meditation-realm")
-    @types = types.split.uniq
+    @types = types.split.uniq.sort
     if @types.include?("*")
       @match_all = true
     else
@@ -29,6 +29,6 @@ class ConditionTypes < ConditionSimple
   end
 
   def to_s
-    "t:#{maybe_quote(@types.sort.join(' '))}"
+    "t:#{maybe_quote(@types.join(' '))}"
   end
 end
