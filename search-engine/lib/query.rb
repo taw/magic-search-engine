@@ -89,6 +89,8 @@ class Query
         [c.toughness ? 0 : 1, -c.toughness.to_i]
       when "rand"
         [Digest::MD5.hexdigest(@query_string + c.name)]
+      when "number"
+        [c.number.to_i, c.number]
       else # "name" or unknown key
         []
       end + [

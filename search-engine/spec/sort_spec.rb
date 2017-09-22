@@ -73,4 +73,13 @@ describe "Sorting" do
       "Chandra, the Firebrand",     # 4
       "Chandra, Roaring Flame"      # 3
   end
+
+  it "cmc" do
+    assert_search_results_ordered "t:planeswalker e:m10 sort:number",
+      "Ajani Goldmane",
+      "Jace Beleren",
+      "Liliana Vess",
+      "Chandra Nalaar",
+      "Garruk Wildspeaker"
+  end
 end
