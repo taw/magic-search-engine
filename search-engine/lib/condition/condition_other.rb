@@ -6,11 +6,8 @@ class ConditionOther < Condition
   def search(db)
     result = Set[]
     @cond.search(db).each do |c|
-      others = c.others
-      if others
-        others.each do |e|
-          result << e
-        end
+      if c.others
+        result.merge(c.others)
       end
     end
     result
