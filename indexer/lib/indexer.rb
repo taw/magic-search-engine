@@ -314,6 +314,19 @@ class Indexer
       card["text"] = card["text"].gsub(%r[^([\+\-\−]?(?:\d+|X)):]) { "[#{$1}]:" }
     end
 
+    # Make sure every planeswalker is legendary
+    legendary_fixed_count = 0
+    cards.each do |name, card|
+      next unless (card["types"] || []).include?("Planeswalker")
+      next if card["supertypes"] == ["Legendary"]
+      raise unless card["supertypes"] == nil
+      card["supertypes"] = ["Legendary"]
+      legendary_fixed_count += 1
+    end
+    if legendary_fixed_count == 0
+      warn "Legendary fix no longer necessary"
+    end
+
     {"sets"=>sets, "cards"=>cards}
   end
 
