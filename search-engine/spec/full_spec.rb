@@ -374,6 +374,10 @@ describe "Full Database Test" do
       "Tazeem"
   end
 
+  it "all planeswalkers are legendary" do
+    assert_search_results "t:planeswalker -t:legendary"
+  end
+
   def legality_information(name, date=nil)
     db.cards[name.downcase].legality_information(date)
   end
