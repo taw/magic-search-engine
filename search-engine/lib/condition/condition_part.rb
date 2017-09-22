@@ -4,7 +4,14 @@ class ConditionPart < Condition
   end
 
   def search(db)
-    merge_into_set @cond.search(db).map{|c| c.others ? Set[c, *c.others] : Set[]}
+    result = Set[]
+    @cond.search(db).each do |c|
+      if c.others
+        result << c
+        result.merge(c.others)
+      end
+    end
+    result
   end
 
   def metadata!(key, value)
