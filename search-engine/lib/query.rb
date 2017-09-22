@@ -74,35 +74,26 @@ class Query
     results.sort_by do |c|
       case @metadata[:sort]
       when "new"
-        [c.set.regular? ? 0 : 1, -c.release_date_i]
+        [c.set.regular? ? 0 : 1, -c.release_date_i, c.default_sort_index]
       when "old"
-        [c.set.regular? ? 0 : 1, c.release_date_i]
+        [c.set.regular? ? 0 : 1, c.release_date_i, c.default_sort_index]
       when "newall"
-        [-c.release_date_i]
+        [-c.release_date_i, c.default_sort_index]
       when "oldall"
-        [c.release_date_i]
+        [c.release_date_i, c.default_sort_index]
       when "cmc"
-        [c.cmc ? 0 : 1, -c.cmc.to_i]
+        [c.cmc ? 0 : 1, -c.cmc.to_i, c.default_sort_index]
       when "pow"
-        [c.power ? 0 : 1, -c.power.to_i]
+        [c.power ? 0 : 1, -c.power.to_i, c.default_sort_index]
       when "tou"
-        [c.toughness ? 0 : 1, -c.toughness.to_i]
+        [c.toughness ? 0 : 1, -c.toughness.to_i, c.default_sort_index]
       when "rand"
-        [Digest::MD5.hexdigest(@query_string + c.name)]
+        [Digest::MD5.hexdigest(@query_string + c.name), c.default_sort_index]
       when "number"
-        [c.set.name, c.number.to_i, c.number]
+        [c.set.name, c.number.to_i, c.number, c.default_sort_index]
       else # "name" or unknown key
-        []
-      end + [
-        c.name,
-        c.online_only? ? 1 : 0,
-        c.frame == "old" ? 1 : 0,
-        c.set.regular? ? 0 : 1,
-        -c.release_date_i,
-        c.set.name,
-        c.number.to_i,
-        c.number,
-      ]
+        c.default_sort_index
+      end
     end
   end
 

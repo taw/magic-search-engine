@@ -1,12 +1,14 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date
-  attr_accessor :others, :artist
   attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :border, :timeshifted
   attr_reader :rarity_code
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
   attr_reader :release_date_i
+
+  # Set by CardDatabase initialization
+  attr_accessor :others, :artist, :default_sort_index
 
   def initialize(card, set, data)
     @card = card
