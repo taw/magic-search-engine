@@ -4,6 +4,7 @@ describe "Shadowmoor" do
   it "is:reprint" do
     "e:c16 is:reprint t:legendary".should return_cards(
       "Alesha, Who Smiles at Death",
+      "Daretti, Scrap Savant",
       "Edric, Spymaster of Trest",
       "Ghave, Guru of Spores",
       "Godo, Bandit Warlord",
