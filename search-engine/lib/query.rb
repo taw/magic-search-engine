@@ -62,6 +62,8 @@ class Query
 
   private
 
+  COLOR_ORDER = ["w", "u", "b", "r", "g", "uw", "bu", "br", "gr", "gw", "bw", "ru", "bg", "rw", "gu", "buw", "bru", "bgr", "grw", "guw", "brw", "gru", "bgw", "ruw", "bgu", "bruw", "bgru", "bgrw", "gruw", "bguw", "bgruw", ""].each_with_index.to_h.freeze
+
   # Fallback sorting for printings of each card:
   # * not MTGO only
   # * new frame
@@ -107,6 +109,14 @@ class Query
     when "number"
       results.sort_by do |c|
         [c.set.name, c.number.to_i, c.number, c.default_sort_index]
+      end
+    when "color"
+      results.sort_by do |c|
+        [COLOR_ORDER.fetch(c.colors), c.default_sort_index]
+      end
+    when "ci"
+      results.sort_by do |c|
+        [COLOR_ORDER.fetch(c.color_identity), c.default_sort_index]
       end
     else # "name" or unknown key
       results.sort_by(&:default_sort_index)

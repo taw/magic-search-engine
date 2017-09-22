@@ -82,4 +82,35 @@ describe "Sorting" do
       "Chandra Nalaar",
       "Garruk Wildspeaker"
   end
+
+  let(:expected_color_order) {
+    # Magic cards are ordered:
+    # * monocolored (wubrg)
+    # * multicolored
+    # * colorless
+    #
+    # In most sets multicolored are grouped together.
+    # Alara was ordered like below.
+    # Wedges and 4/5-color order is completely arbitrary
+    [
+      "w", "u", "b", "r", "g",
+      "wu", "ub", "br", "rg", "gw",
+      "wb", "ur", "bg", "rw", "gu",
+      "wub", "ubr", "brg", "rgw", "gwu",
+      "wbr", "urg", "bgw", "rwu", "gub",
+      "wubr", "ubrg", "brgw", "rgwu", "gwub",
+      "wubrg",
+      "",
+    ].map{|cc| cc.chars.sort.join}
+  }
+
+  it "color" do
+    order = db.search("sort:color").printings.map(&:colors).chunk(&:itself).map(&:first)
+    order.should eq(expected_color_order)
+  end
+
+  it "ci" do
+    order = db.search("sort:ci").printings.map(&:color_identity).chunk(&:itself).map(&:first)
+    order.should eq(expected_color_order)
+  end
 end
