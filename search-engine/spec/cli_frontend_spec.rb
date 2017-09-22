@@ -43,7 +43,7 @@ describe "CLI Frontend" do
       output: <<-EOF,
         Jace Beleren {1}{u}{u}
         [lw jvc mbp m10 m11 ddajvc]
-        Planeswalker - Jace
+        Legendary Planeswalker - Jace
         [+2]: Each player draws a card.
         [-1]: Target player draws a card.
         [-10]: Target player puts the top twenty cards of his or her library into his or her graveyard.
