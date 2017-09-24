@@ -78,57 +78,7 @@ end
 
 desc "Print basic statistics about card pictures"
 task "pics:statistics" do
-  total = Hash.new(0)
-  db.printings.each do |card|
-    path_lq = Pathname("frontend/public/cards/#{card.set_code}/#{card.number}.png")
-    path_hq = Pathname("frontend/public/cards_hq/#{card.set_code}/#{card.number}.png")
-    total["all"] += 1
-    total["lq"]  += 1 if path_lq.exist?
-    total["hq"]  += 1 if path_hq.exist?
-  end
-  puts "Cards: #{total["all"]}"
-  puts "LQ: #{total["lq"]}"
-  puts "HQ: #{total["hq"]}"
-end
-
-desc "Print detailed statistics about card pictures"
-task "pics:statistics:extra" do
-  by_set = {}
-  db.printings.each do |card|
-    set = card.set_code
-    path_lq = Pathname("frontend/public/cards/#{card.set_code}/#{card.number}.png")
-    path_hq = Pathname("frontend/public/cards_hq/#{card.set_code}/#{card.number}.png")
-    by_set[set] ||= Hash.new(0)
-    by_set[set]["total"] += 1.0
-    if path_hq.exist?
-      by_set[set]["hq"] += 1
-    elsif path_lq.exist?
-      by_set[set]["lq"] += 1
-    else
-      by_set[set]["none"] += 1
-    end
-  end
-  by_set
-    .select{|set_name, stats|
-      # Online only sets can't possibly have HQ scans
-      if db.sets[set_name].online_only?
-        stats["none"] > 0
-      else
-        stats["lq"] + stats["none"] > 0
-      end
-    }
-    .sort_by{|set_name, stats|
-      set = db.sets[set_name]
-      [-set.release_date.to_i_sort, set.name]
-    }
-    .each do |set_name, stats|
-    summary = [
-      ("#{stats["hq"]} HQ" if stats["hq"] > 0),
-      ("#{stats["lq"]} LQ" if stats["lq"] > 0),
-      ("#{stats["none"]} No Picture" if stats["none"] > 0),
-    ].compact.join(", ")
-    puts "#{set_name}: #{summary}"
-  end
+  sh "./bin/pics_statistics"
 end
 
 desc "Clanup Rails files"
