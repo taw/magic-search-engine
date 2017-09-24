@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require "pathname-glob"
 require_relative "../search-engine/lib/card_database"
 
 class CardPrinting
@@ -17,19 +18,42 @@ class PrintPicsStatistics
 
   def initialize
     @db = CardDatabase.load
-    @all = 0
-    @hq = 0
-    @lq = 0
     @by_set = {}
   end
 
-  def call
-    db.printings.each do |card|
-      @all += 1
-      @lq  += 1 if card.path_lq.exist?
-      @hq  += 1 if card.path_hq.exist?
-    end
+  def number_of_cards
+    @number_of_cards ||= db.printings.size
+  end
 
+  def number_of_lq_cards
+    @number_of_lq_cards ||= db.printings.count{|c| c.path_lq.exist?}
+  end
+
+  def number_of_hq_cards
+    @number_of_hq_cards ||= db.printings.count{|c| c.path_hq.exist?}
+  end
+
+  def unconnected_lq
+    @unconnected_lq ||= begin
+      Pathname("frontend/public/cards").glob("*/*.png") - db.printings.map(&:path_lq)
+    end
+  end
+
+  def unconnected_hq
+    @unconnected_hq ||= begin
+      Pathname("frontend/public/cards_hq").glob("*/*.png") - db.printings.map(&:path_hq)
+    end
+  end
+
+  def same_lq_hq
+    @same_lq_hq ||= begin
+      db.printings.select{|c|
+        c.path_lq.exist? and c.path_hq.exist? and c.path_lq.size == c.path_hq.size and c.path_lq.read == c.path_lq.read
+      }
+    end
+  end
+
+  def call
     db.printings.each do |card|
       set = card.set_code
       @by_set[set] ||= Hash.new(0)
@@ -44,9 +68,18 @@ class PrintPicsStatistics
     end
 
     # Summary
-    puts "Cards: #{@all}"
-    puts "LQ: #{@lq}"
-    puts "HQ: #{@hq}"
+    puts "Cards: #{number_of_cards}"
+    puts "LQ: #{number_of_lq_cards}"
+    puts "HQ: #{number_of_hq_cards}"
+    puts ""
+
+    # Problems
+    puts "Unconnected LQ: #{unconnected_lq.size} "
+    puts unconnected_lq
+    puts "Unconnected HQ: #{unconnected_hq.size}"
+    puts unconnected_hq
+    puts "LQ == HQ: #{same_lq_hq.size}"
+    puts same_lq_hq
     puts ""
 
     # Details
