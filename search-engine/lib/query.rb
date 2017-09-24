@@ -118,6 +118,10 @@ class Query
       results.sort_by do |c|
         [COLOR_ORDER.fetch(c.color_identity), c.default_sort_index]
       end
+    when "rarity"
+      results.sort_by do |c|
+        [-c.rarity_code, c.default_sort_index]
+      end
     else # "name" or unknown key
       results.sort_by(&:default_sort_index)
     end
