@@ -113,4 +113,9 @@ describe "Sorting" do
     order = db.search("sort:ci").printings.map(&:color_identity).chunk(&:itself).map(&:first)
     order.should eq(expected_color_order)
   end
+
+  it "rarity" do
+    order = db.search("sort:rarity").printings.map(&:rarity).chunk(&:itself).map(&:first)
+    order.should eq(["special", "mythic", "rare", "uncommon", "common", "basic"])
+  end
 end
