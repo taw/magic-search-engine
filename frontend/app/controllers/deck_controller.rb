@@ -87,7 +87,7 @@ class DeckController < ApplicationController
         ],
         "type": "Planeswalker Deck"
       }
-    else
+    elsif id == "2"
       {
         "cards": [
           { "count": 1, "name": "Cemetery Reaper" },
@@ -121,6 +121,52 @@ class DeckController < ApplicationController
           { "count": 3, "name": "Triumph of Cruelty" }
         ],
         "type": "Event Deck"
+      }
+    else
+      {"name": "Nicol Bolas Decklist",
+       "type": "Duel Deck",
+       "set_name": "Duel Decks: Ajani vs. Nicol Bolas",
+       "set_code": "ddh",
+       "cards": 
+        [{"name": "Nicol Bolas, Planeswalker", "count": 1},
+         {"name": "Blazing Specter", "count": 1},
+         {"name": "Brackwater Elemental", "count": 1},
+         {"name": "Dimir Cutpurse", "count": 1},
+         {"name": "Fire-Field Ogre", "count": 1},
+         {"name": "Hellfire Mongrel", "count": 2},
+         {"name": "Igneous Pouncer", "count": 1},
+         {"name": "Jhessian Zombies", "count": 1},
+         {"name": "Morgue Toad", "count": 1},
+         {"name": "Moroii", "count": 1},
+         {"name": "Nightscape Familiar", "count": 1},
+         {"name": "Ogre Savant", "count": 1},
+         {"name": "Shriekmaw", "count": 1},
+         {"name": "Slavering Nulls", "count": 1},
+         {"name": "Steamcore Weird", "count": 1},
+         {"name": "Surveilling Sprite", "count": 1},
+         {"name": "Cruel Ultimatum", "count": 1},
+         {"name": "Deep Analysis", "count": 1},
+         {"name": "Pain // Suffering", "count": 1},
+         {"name": "Profane Command", "count": 1},
+         {"name": "Rise // Fall", "count": 1},
+         {"name": "Slave of Bolas", "count": 1},
+         {"name": "Agonizing Demise", "count": 1},
+         {"name": "Countersquall", "count": 1},
+         {"name": "Grixis Charm", "count": 1},
+         {"name": "Recoil", "count": 1},
+         {"name": "Spite // Malice", "count": 1},
+         {"name": "Undermine", "count": 1},
+         {"name": "Vapor Snag", "count": 1},
+         {"name": "Icy Manipulator", "count": 1},
+         {"name": "Obelisk of Grixis", "count": 2},
+         {"name": "Elder Mastery", "count": 1},
+         {"name": "Crumbling Necropolis", "count": 2},
+         {"name": "Island", "count": 7},
+         {"name": "Mountain", "count": 5},
+         {"name": "Rupture Spire", "count": 1},
+         {"name": "Swamp", "count": 9},
+         {"name": "Terramorphic Expanse", "count": 2}],
+         "sideboard": []
       }
     end
   end
