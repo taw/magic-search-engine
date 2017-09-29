@@ -80,17 +80,24 @@ class CardControllerTest < ActionController::TestCase
     assert_equal "Karn Liberated - mtg.wtf", html_document.title
   end
 
-  test "view:images" do
-    get "index", params: {q: "t:planeswalker view:images"}
+  test "view:default" do
+    get "index", params: {q: "t:planeswalker not:dfc"}
     assert_response 200
-    assert_select "img.card_picture:not(.dfc_reverse)", 60
+    assert_select "img.card_picture", 25
+    assert_select ".card_title", 25
+  end
+
+  test "view:images" do
+    get "index", params: {q: "t:planeswalker not:dfc view:images"}
+    assert_response 200
+    assert_select "img.card_picture", 60
     assert_select ".card_title", 0
   end
 
-  test "view:text2" do
-    get "index", params: {q: "t:planeswalker view:text"}
+  test "view:text" do
+    get "index", params: {q: "t:planeswalker not:dfc view:text"}
     assert_response 200
-    assert_select "img.card_picture:not(.dfc_reverse)", 0
+    assert_select "img.card_picture", 0
     assert_select ".card_title", 60
   end
 
