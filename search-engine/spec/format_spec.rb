@@ -46,7 +46,7 @@ describe "Formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal "f:standard",
-      %Q[(e:kld or e:aer or e:akh or e:hou or e:xln) -"Smuggler's Copter" -"Felidar Guardian" -"Aetherworks Marvel"]
+      %Q[(e:kld or e:aer or e:akh or e:w17 or e:hou or e:xln) -"Smuggler's Copter" -"Felidar Guardian" -"Aetherworks Marvel"]
     assert_search_equal 'f:"ravnica block"', "e:rav or e:gp or e:di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal 'f:"ravnica block"', 'b:ravnica'
@@ -331,13 +331,17 @@ describe "Formats" do
   ## Standard
 
   it "standard" do
-    assert_block_composition "standard", "hou",  ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh", "hou"],
+    assert_block_composition "standard", "xln",  ["kld", "aer", "akh", "w17", "hou", "xln"],
+      "Smuggler's Copter" => "banned",
+      "Felidar Guardian" => "banned",
+      "Aetherworks Marvel" => "banned"
+    assert_block_composition "standard", "hou",  ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh", "w17", "hou"],
       "Emrakul, the Promised End" => "banned",
       "Reflector Mage" => "banned",
       "Smuggler's Copter" => "banned",
       "Felidar Guardian" => "banned",
       "Aetherworks Marvel" => "banned"
-    assert_block_composition "standard", "akh",  ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh"],
+    assert_block_composition "standard", "akh",  ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh", "w17"],
       "Emrakul, the Promised End" => "banned",
       "Reflector Mage" => "banned",
       "Smuggler's Copter" => "banned",
@@ -647,7 +651,7 @@ describe "Formats" do
   ## Sanity check that no sets were skipped
   it "sanity check" do
     standard_sets = db.sets.values.select{|s| s.type == "core" or s.type == "expansion"} + [
-      db.sets["w16"]
+      db.sets["w16"], db.sets["w17"]
     ]
     FormatFrontier.new.build_included_sets.should eq(
       standard_sets.select{|s| s.release_date >= Date.parse("2014-07-18") }.map(&:code).to_set
