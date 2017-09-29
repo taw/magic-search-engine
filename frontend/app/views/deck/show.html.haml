@@ -1,16 +1,10 @@
-<script>
-$(document).on("mouseover", ".previewable_card_name", function() {
-let preview_link = $(this).data("preview-link");
-$(this).closest(".decklist").find(".card_picture_cell").hide();
-$(this).closest(".decklist").find(`.card_picture_cell[data-preview="${preview_link}"]`).show();
-})
-</script>
-.decklist{style: "border: 1px solid black"}
-  .row
-    .col-10{style: "border: 1px solid black"}
-      %h5= @name
-    .col-2{style: "border: 1px solid black"}
-      Download
+.decklist
+  %header
+    .row
+      .col-10
+        %h4= @name
+      .col-2
+        Download
   .row
     .col-12
       %div
@@ -21,29 +15,31 @@ $(this).closest(".decklist").find(`.card_picture_cell[data-preview="${preview_li
     .col-4
       - @card_groups.each do |(i, group), cards|
         - next if i > 4
-        %h6= "#{group} (#{cards.map{|c| c[:count]}.inject(0, &:+)})"
-        - cards.each do |card|
-          %div
-            = card[:count]
-            - if card[:card]
-              %span.previewable_card_name{"data-preview-link": card[:card].name}
-                = link_to_card(card[:card]) do
-                  = card[:name]
-            - else
-              = card[:name]
+        .card_group
+          %h6= "#{group} (#{cards.map{|c| c[:count]}.inject(0, &:+)})"
+          - cards.each do |card|
+            .card_entry
+              = card[:count]
+              - if card[:card]
+                %span.previewable_card_name{"data-preview-link": card[:card].name}
+                  = link_to_card(card[:card]) do
+                    = card[:name]
+              - else
+                = card[:name]
     .col-4
       - @card_groups.each do |(i, group), cards|
-        - next if i <= 4 
-        %h6= "#{group} (#{cards.map{|c| c[:count]}.inject(0, &:+)})"
-        - cards.each do |card|
-          %div
-            = card[:count]
-            - if card[:card]
-              %span.previewable_card_name{"data-preview-link": card[:card].name}
-                = link_to_card(card[:card]) do
-                  = card[:name]
-            - else
-              = card[:name]
+        - next if i <= 4
+        .card_group
+          %h6= "#{group} (#{cards.map{|c| c[:count]}.inject(0, &:+)})"
+          - cards.each do |card|
+            .card_entry
+              = card[:count]
+              - if card[:card]
+                %span.previewable_card_name{"data-preview-link": card[:card].name}
+                  = link_to_card(card[:card]) do
+                    = card[:name]
+              - else
+                = card[:name]
     .col-4
       - @card_previews.each_with_index do |preview_card, i|
         .card_picture_cell{"data-preview": preview_card.name, style: (i == 0 ? nil : "display: none;")}
