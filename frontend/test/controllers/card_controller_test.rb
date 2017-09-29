@@ -80,6 +80,20 @@ class CardControllerTest < ActionController::TestCase
     assert_equal "Karn Liberated - mtg.wtf", html_document.title
   end
 
+  test "view:images" do
+    get "index", params: {q: "t:planeswalker view:images"}
+    assert_response 200
+    assert_select "img.card_picture:not(.dfc_reverse)", 60
+    assert_select ".card_title", 0
+  end
+
+  test "view:text2" do
+    get "index", params: {q: "t:planeswalker view:text"}
+    assert_response 200
+    assert_select "img.card_picture:not(.dfc_reverse)", 0
+    assert_select ".card_title", 60
+  end
+
   # color indicator
   test "devoid" do
     get "index", params: {q: "Complete Disregard"}
