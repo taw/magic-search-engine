@@ -81,23 +81,23 @@ class CardControllerTest < ActionController::TestCase
   end
 
   test "view:default" do
-    get "index", params: {q: "t:planeswalker not:dfc"}
+    get "index", params: {q: "t:planeswalker"}
     assert_response 200
-    assert_select "img.card_picture", 25
+    assert_select ".card_picture_container", 25
     assert_select ".card_title", 25
   end
 
   test "view:images" do
-    get "index", params: {q: "t:planeswalker not:dfc view:images"}
+    get "index", params: {q: "t:planeswalker view:images"}
     assert_response 200
-    assert_select "img.card_picture", 60
+    assert_select ".card_picture_container", 60
     assert_select ".card_title", 0
   end
 
   test "view:text" do
-    get "index", params: {q: "t:planeswalker not:dfc view:text"}
+    get "index", params: {q: "t:planeswalker view:text"}
     assert_response 200
-    assert_select "img.card_picture", 0
+    assert_select ".card_picture_container", 0
     assert_select ".card_title", 60
   end
 
