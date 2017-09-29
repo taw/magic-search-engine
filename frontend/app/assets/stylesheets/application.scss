@@ -310,3 +310,16 @@ form.search {
 h3 .manacost {
   font-size: 19.6px;
 }
+.decklist {
+  border: 1px solid black;
+  padding: 0.5em;
+  header {
+    border-bottom: 1px solid black;
+  }
+  h6 {
+    margin: 0;
+  }
+  .card_group {
+    margin-bottom: 0.5rem;
+  }
+}
