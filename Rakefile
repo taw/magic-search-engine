@@ -84,9 +84,12 @@ end
 desc "Clanup Rails files"
 task "clean" do
   [
-    "frontend/log/development.log",
     "frontend/log/test.log",
+    "frontend/log/development.log",
+    "frontend/log/production.log",
     "frontend/tmp",
+    "frontend/Gemfile.lock",
+    "search-engine/Gemfile.lock",
     "search-engine/coverage"
   ].each do |path|
     system "trash", path if Pathname(path).exist?
