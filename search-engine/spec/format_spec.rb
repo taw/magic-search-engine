@@ -113,20 +113,23 @@ describe "Formats" do
     assert_legality "vintage", "isd", "Blazing Torch", "legal"
   end
 
-  # We don't have historical legality for Duel Commander yet,
+  # We don't have all historical legality for Duel Commander yet,
   # maybe add it at some later point
   it "duel commander" do
-    assert_count_results 'banned:"duel commander"', 57
-    assert_count_results 'restricted:"duel commander"', 10
+    assert_count_results 'banned:"duel commander"', 60
+    assert_count_results 'restricted:"duel commander"', 14
   end
 
-  # We don't have historical legality for Petty Dreadful yet
+  # We don't keep historical legality for Petty Dreadful yet
   it "penny dreadful" do
     assert_search_include 'f:"penny dreadful"', *FormatPennyDreadful::PrimaryCards
-    assert_search_results 'f:"penny dreadful"', *FormatPennyDreadful.all_cards(db)
     # If card is in Penny Dreadful, its other side is as well
     # (except for meld cards)
     assert_search_results "f:pd other:-f:pd -is:meld"
+    # If AB in PD, but A not in PD, then fail
+    assert_search_results "is:meld not:primary f:pd other:-f:pd"
+    # If AB not in PD, but A and B both PD, then fail
+    assert_search_results "is:meld not:primary -f:pd -other:-f:pd"
   end
 
   ## TODO - Extended, and various weirdo formats
