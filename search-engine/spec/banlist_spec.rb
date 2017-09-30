@@ -6,6 +6,13 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2017" do
+    assert_banlist_changes "September 2017",
+      "duel commander restricted", "Edgar Markov",
+      "duel commander banned", "Fireblast",
+      "duel commander banned", "Eidolon of the Great Revel",
+      "duel commander banned", "Sulfuric Vortex",
+      "duel commander banned", "Price of Progress"
+
     assert_banlist_changes "August 2017", # Sep 1 actually
       "vintage restricted", "Thorn of Amethyst",
       "vintage restricted", "Monastery Mentor",
