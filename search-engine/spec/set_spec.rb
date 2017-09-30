@@ -51,16 +51,4 @@ describe "Sets" do
       expected.should eq actual
     end
   end
-
-  # After a while WotC abandoned block constructed, so we're making things up here
-  describe "Block legal sets" do
-    let(:start_date) { db.sets["ia"].release_date }
-    let(:block_formats) { Format.formats_index.select{|k,v| k =~ /block\z/}.values.uniq }
-    let(:expansion_sets) { db.sets.values.select{|s| s.type == "expansion" } }
-    let(:expected) { expansion_sets.select{|s| s.release_date >= start_date and s.code != "hl" }.map(&:code).to_set }
-    let(:actual) { block_formats.map{|f| f.new.included_sets.to_a }.flatten.to_set }
-    it do
-      expected.should eq actual
-    end
-  end
 end
