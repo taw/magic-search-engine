@@ -124,6 +124,9 @@ BanListChangeDates = {
   # MTGO Commander random banlist
   "jul 2017" => "2017-07-05",
 
+  # Duel Commander banlist http://www.duelcommander.com/2017/07/classic-july-2017-rules-banlist-update/#comment-48672
+  "21 jul 2017" => "2017-07-21",
+
   # http://magic.wizards.com/en/articles/archive/august-28-2017-banned-and-restricted-announcement-2017-08-28?
   "sep 2017" => "2017-09-01",
 }
@@ -722,15 +725,16 @@ DynamicBanListData = {
   # http://www.duelcommander.com/banlist/
   "duel commander" => {
     "Ancestral Recall" => "banned",
-    "Ancient Tomb" => "banned",
+    "Ancient Tomb" => {"start" => "banned", "21 jul 2017" => "legal"},
     "Back to Basics" => "banned",
     "Black Lotus" => "banned",
     "Channel" => "banned",
     "Chaos Orb" => "banned",
     "Dig Through Time" => "banned",
+    "Emrakul, the Aeons Torn" => {"21 jul 2017" => "banned"},
     "Entomb" => "banned",
     "Falling Star" => "banned",
-    "Fastbond" => "banned",
+    "Fastbond" => {"start" => "banned", "21 jul 2017" => "legal"},
     "Food Chain" => "banned",
     "Gaea's Cradle" => "banned",
     "Gifts Ungiven" => "banned",
@@ -744,7 +748,7 @@ DynamicBanListData = {
     "Mana Crypt" => "banned",
     "Mana Drain" => "banned",
     "Mana Vault" => "banned",
-    "Mind Twist" => "banned",
+    "Mind Twist" => {"start" => "banned", "21 jul 2017" => "legal"},
     "Mishra's Workshop" => "banned",
     "Mox Emerald" => "banned",
     "Mox Jet" => "banned",
@@ -756,6 +760,7 @@ DynamicBanListData = {
     "Necrotic Ooze" => "banned",
     "Oath of Druids" => "banned",
     "Protean Hulk" => "banned",
+    "Polymorph" => {"21 jul 2017" => "banned"},
     "Sensei's Divining Top" => "banned",
     "Shahrazad" => "banned",
     "Sol Ring" => "banned",
@@ -791,6 +796,9 @@ DynamicBanListData = {
     "Zur the Enchanter" => "restricted",
     "Breya, Etherium Shaper" => {"akh" => "restricted"},
     "Vial Smasher the Fierce" => {"akh" => "restricted"},
+    "Geist of Saint Traft" => {"21 jul 2017" => "restricted"},
+    "Jace, Vryn's Prodigy" => {"21 jul 2017" => "restricted"},
+    "Bruse Tarl, Boorish Herder" => {"21 jul 2017" => "restricted"},
   }
 }
 
