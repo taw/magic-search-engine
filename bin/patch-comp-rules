@@ -206,9 +206,9 @@ class CompRules:
                     'Sorcery': 'k'
                 }[patch['cardType']]
                 subrule = self['205.3{}'.format(subrule_id)]
-                if patch['cardType'] in ('Artifact', 'Enchantment', 'Creature', 'Plane', 'Sorcery'):
+                if patch['cardType'] in ('Artifact', 'Enchantment', 'Creature', 'Plane', 'Planeswalker', 'Sorcery'):
                     match = re.fullmatch('(.*)\\. The ([^ ]+) types are (.+).()', subrule)
-                elif patch['cardType'] in ('Land', 'Planeswalker'):
+                elif patch['cardType'] == 'Land':
                     match = re.fullmatch('(.*)\\. The ([^ ]+) types are (.+).(\n[^\n]*)', subrule)
                 else:
                     raise NotImplementedError('Unknown card type: {!r}'.format(patch['cardType']))
