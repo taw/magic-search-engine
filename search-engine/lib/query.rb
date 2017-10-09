@@ -62,6 +62,8 @@ class Query
 
   private
 
+  COLOR_ORDER = ["w", "u", "b", "r", "g", "uw", "bu", "br", "gr", "gw", "bw", "ru", "bg", "rw", "gu", "buw", "bru", "bgr", "grw", "guw", "brw", "gru", "bgw", "ruw", "bgu", "bruw", "bgru", "bgrw", "gruw", "bguw", "bgruw", ""].each_with_index.to_h.freeze
+
   # Fallback sorting for printings of each card:
   # * custom set
   # * not MTGO only
@@ -72,37 +74,57 @@ class Query
   # * card number as integer (10 > 2)
   # * card number as string (10A > 10)
   def sort_results(results)
-    results.sort_by do |c|
-      case @metadata[:sort]
-      when "new"
-        [c.set.regular? ? 0 : 1, -c.release_date_i]
-      when "old"
-        [c.set.regular? ? 0 : 1, c.release_date_i]
-      when "newall"
-        [-c.release_date_i]
-      when "oldall"
-        [c.release_date_i]
-      when "cmc"
-        [c.cmc ? 0 : 1, -c.cmc.to_i]
-      when "pow"
-        [c.power ? 0 : 1, -c.power.to_i]
-      when "tou"
-        [c.toughness ? 0 : 1, -c.toughness.to_i]
-      when "rand"
-        [Digest::MD5.hexdigest(@query_string + c.name)]
-      else # "name" or unknown key
-        []
-      end + [
-        c.name,
-        c.set.custom? ? 0 : 1,
-        c.online_only? ? 1 : 0,
-        c.frame == "old" ? 1 : 0,
-        c.set.regular? ? 0 : 1,
-        -c.release_date_i,
-        c.set.name,
-        c.number.to_i,
-        c.number,
-      ]
+    case @metadata[:sort]
+    when "new"
+      results.sort_by do |c|
+        [c.set.regular? ? 0 : 1, -c.release_date_i, c.default_sort_index]
+      end
+    when "old"
+      results.sort_by do |c|
+        [c.set.regular? ? 0 : 1, c.release_date_i, c.default_sort_index]
+      end
+    when "newall"
+      results.sort_by do |c|
+        [-c.release_date_i, c.default_sort_index]
+      end
+    when "oldall"
+      results.sort_by do |c|
+        [c.release_date_i, c.default_sort_index]
+      end
+    when "cmc"
+      results.sort_by do |c|
+        [c.cmc ? 0 : 1, -c.cmc.to_i, c.default_sort_index]
+      end
+    when "pow"
+      results.sort_by do |c|
+        [c.power ? 0 : 1, -c.power.to_i, c.default_sort_index]
+      end
+    when "tou"
+      results.sort_by do |c|
+        [c.toughness ? 0 : 1, -c.toughness.to_i, c.default_sort_index]
+      end
+    when "rand"
+      results.sort_by do |c|
+        [Digest::MD5.hexdigest(@query_string + c.name), c.default_sort_index]
+      end
+    when "number"
+      results.sort_by do |c|
+        [c.set.name, c.number.to_i, c.number, c.default_sort_index]
+      end
+    when "color"
+      results.sort_by do |c|
+        [COLOR_ORDER.fetch(c.colors), c.default_sort_index]
+      end
+    when "ci"
+      results.sort_by do |c|
+        [COLOR_ORDER.fetch(c.color_identity), c.default_sort_index]
+      end
+    when "rarity"
+      results.sort_by do |c|
+        [-c.rarity_code, c.default_sort_index]
+      end
+    else # "name" or unknown key
+      results.sort_by(&:default_sort_index)
     end
   end
 

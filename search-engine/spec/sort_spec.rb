@@ -73,4 +73,49 @@ describe "Sorting" do
       "Chandra, the Firebrand",     # 4
       "Chandra, Roaring Flame"      # 3
   end
+
+  it "cmc" do
+    assert_search_results_ordered "t:planeswalker e:m10 sort:number",
+      "Ajani Goldmane",
+      "Jace Beleren",
+      "Liliana Vess",
+      "Chandra Nalaar",
+      "Garruk Wildspeaker"
+  end
+
+  let(:expected_color_order) {
+    # Magic cards are ordered:
+    # * monocolored (wubrg)
+    # * multicolored
+    # * colorless
+    #
+    # In most sets multicolored are grouped together.
+    # Alara was ordered like below.
+    # Wedges and 4/5-color order is completely arbitrary
+    [
+      "w", "u", "b", "r", "g",
+      "wu", "ub", "br", "rg", "gw",
+      "wb", "ur", "bg", "rw", "gu",
+      "wub", "ubr", "brg", "rgw", "gwu",
+      "wbr", "urg", "bgw", "rwu", "gub",
+      "wubr", "ubrg", "brgw", "rgwu", "gwub",
+      "wubrg",
+      "",
+    ].map{|cc| cc.chars.sort.join}
+  }
+
+  it "color" do
+    order = db.search("sort:color").printings.map(&:colors).chunk(&:itself).map(&:first)
+    order.should eq(expected_color_order)
+  end
+
+  it "ci" do
+    order = db.search("sort:ci").printings.map(&:color_identity).chunk(&:itself).map(&:first)
+    order.should eq(expected_color_order)
+  end
+
+  it "rarity" do
+    order = db.search("sort:rarity").printings.map(&:rarity).chunk(&:itself).map(&:first)
+    order.should eq(["special", "mythic", "rare", "uncommon", "common", "basic"])
+  end
 end

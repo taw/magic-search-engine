@@ -56,7 +56,7 @@ class ConditionPrint < Condition
         [date.year, 1]
       elsif date =~ /\A\d{4}-\d{1,2}\z/
         date = Date.parse("#{date}-01")
-        [[date.year, date.month], 2]
+        [date.year*12 + date.month, 2]
       else
         warning %Q[Doesn't look like correct date, ignored: "#{date}"]
         nil
@@ -69,7 +69,7 @@ class ConditionPrint < Condition
     if precision == 1
       card_date = card_date.year
     elsif precision == 2
-      card_date = [card_date.year, card_date.month]
+      card_date = card_date.year*12 + card_date.month
     end
 
     case @op

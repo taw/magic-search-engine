@@ -63,6 +63,9 @@ class CardController < ApplicationController
     when "images"
       @cards = @cards.paginate(page: page, per_page: 60)
       render "index_images"
+    when "text"
+      @cards = @cards.paginate(page: page, per_page: 60)
+      render "index_text"
     else
       # default view
       @cards = @cards.paginate(page: page, per_page: 25)

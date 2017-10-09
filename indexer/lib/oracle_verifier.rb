@@ -45,10 +45,38 @@ class OracleVerifier
         if key == "rulings"
           # That's low value fail, would be nice if they fixed it, but whatever
           canonical_variant = variants.keys.max_by{|v| v.to_s.size}
+        elsif key == "supertypes"
+          # Planeswalkers, promos didn't get updated yet
+          if variants.keys.to_set == [nil, ["Legendary"]].to_set
+            canonical_variant = ["Legendary"]
+          end
         else
-          if card_name == "Sultai Ascendancy"
+          case card_name
+          when "Sultai Ascendancy"
             # BGU / UBG mana cost
             canonical_variant_source = "ktk"
+          when "Mark of the Vampire", "Unknown Shores"
+            canonical_variant_source = "xln"
+          when "Juggernaut"
+            canonical_variant_source = "m15"
+          when "Fungusaur"
+            canonical_variant_source = "8e"
+          when "Bloodcrazed Neonate"
+            canonical_variant_source = "isd"
+          when "Uncontrollable Anger"
+            canonical_variant_source = "cns"
+          when "Fumiko the Lowblood"
+            canonical_variant_source = "c15"
+          when "Dauthi Slayer"
+            canonical_variant_source = "tp"
+          when "Goblin Rabblemaster"
+            canonical_variant_source = "m15"
+          when "Akoum Firebird"
+            canonical_variant_source = "bfz"
+          when "Flamewake Phoenix"
+            canonical_variant_source = "frf"
+          when "Nettling Imp"
+            canonical_variant_source = "al"
           else
             # FAIL, report
           end

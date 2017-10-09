@@ -81,6 +81,18 @@ class FormatCompRules
       %Q[<a href="##{ref($&)}">#{$&}</a>]
     end.gsub(/(?:\{.*?\})+/) do
       %Q[<span class="manacost">] + format_mana_symbols($&) + %Q[</span>]
+    end.gsub(/\[([\+\-]?(?:\d+|N|X))\]/) do
+      symbol = $1
+      usymbol = symbol.sub("-", "\u2013")
+      if symbol[0] == "+"
+        dir = "up"
+      elsif symbol[0] == "-"
+        dir = "down"
+      else
+        dir = "zero"
+      end
+      %Q[<i class="mana mana-loyalty mana-loyalty-#{dir}" data-loyalty="#{usymbol}"></i>] +
+      %Q[<span class="sr-only">[#{symbol}]</span>]
     end
   end
 

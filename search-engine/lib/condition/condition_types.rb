@@ -12,7 +12,7 @@ class ConditionTypes < ConditionSimple
       .gsub("new phyrexia", "new-phyrexia")
       .gsub("serra realm", "serra-realm")
       .gsub("bolas meditation realm", "bolas-meditation-realm")
-    @types = Set[*types.split]
+    @types = types.split.uniq.sort
     if @types.include?("*")
       @match_all = true
     else
@@ -22,10 +22,13 @@ class ConditionTypes < ConditionSimple
 
   def match?(card)
     return true if @match_all
-    card.types >= @types
+    card_types = card.types
+    @types.all? do |type|
+      card_types.include?(type)
+    end
   end
 
   def to_s
-    "t:#{maybe_quote(@types.sort.join(' '))}"
+    "t:#{maybe_quote(@types.join(' '))}"
   end
 end

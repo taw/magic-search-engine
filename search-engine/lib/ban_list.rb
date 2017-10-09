@@ -124,8 +124,14 @@ BanListChangeDates = {
   # MTGO Commander random banlist
   "jul 2017" => "2017-07-05",
 
+  # Duel Commander banlist http://www.duelcommander.com/2017/07/classic-july-2017-rules-banlist-update/#comment-48672
+  "21 jul 2017" => "2017-07-21",
+
   # http://magic.wizards.com/en/articles/archive/august-28-2017-banned-and-restricted-announcement-2017-08-28?
   "sep 2017" => "2017-09-01",
+
+  # https://www.facebook.com/notes/mtg-duel-commander/september-2017-rules-banlist-update/1983982491852648/
+  "29 sep 2017" => "2017-09-29",
 
   # Custom Constructed
   "2017-06-27" => "2017-06-27"
@@ -729,15 +735,19 @@ DynamicBanListData = {
   # http://www.duelcommander.com/banlist/
   "duel commander" => {
     "Ancestral Recall" => "banned",
-    "Ancient Tomb" => "banned",
+    "Ancient Tomb" => {"start" => "banned", "21 jul 2017" => "legal"},
     "Back to Basics" => "banned",
     "Black Lotus" => "banned",
     "Channel" => "banned",
     "Chaos Orb" => "banned",
+    "Chrome Mox" => {"akh" => "banned"},
     "Dig Through Time" => "banned",
+    "Eidolon of the Great Revel" => {"29 sep 2017" => "banned"},
+    "Emrakul, the Aeons Torn" => {"21 jul 2017" => "banned"},
     "Entomb" => "banned",
     "Falling Star" => "banned",
-    "Fastbond" => "banned",
+    "Fastbond" => {"start" => "banned", "21 jul 2017" => "legal"},
+    "Fireblast" => {"29 sep 2017" => "banned"},
     "Food Chain" => "banned",
     "Gaea's Cradle" => "banned",
     "Gifts Ungiven" => "banned",
@@ -751,8 +761,9 @@ DynamicBanListData = {
     "Mana Crypt" => "banned",
     "Mana Drain" => "banned",
     "Mana Vault" => "banned",
-    "Mind Twist" => "banned",
+    "Mind Twist" => {"start" => "banned", "21 jul 2017" => "legal"},
     "Mishra's Workshop" => "banned",
+    "Mox Diamond" => {"akh" => "banned"},
     "Mox Emerald" => "banned",
     "Mox Jet" => "banned",
     "Mox Pearl" => "banned",
@@ -762,11 +773,14 @@ DynamicBanListData = {
     "Natural Order" => "banned",
     "Necrotic Ooze" => "banned",
     "Oath of Druids" => "banned",
+    "Polymorph" => {"21 jul 2017" => "banned"},
+    "Price of Progress" => {"29 sep 2017" => "banned"},
     "Protean Hulk" => "banned",
     "Sensei's Divining Top" => "banned",
     "Shahrazad" => "banned",
     "Sol Ring" => "banned",
     "Strip Mine" => "banned",
+    "Sulfuric Vortex" => {"29 sep 2017" => "banned"},
     "The Tabernacle at Pendrell Vale" => "banned",
     "Time Vault" => "banned",
     "Time Walk" => "banned",
@@ -774,8 +788,6 @@ DynamicBanListData = {
     "Tolarian Academy" => "banned",
     "Treasure Cruise" => "banned",
     "Vampiric Tutor" => "banned",
-    "Chrome Mox" => {"akh" => "banned"},
-    "Mox Diamond" => {"akh" => "banned"},
     # Ante cards are banned
     "Amulet of Quoz" => "banned",
     "Bronze Tablet" => "banned",
@@ -787,17 +799,21 @@ DynamicBanListData = {
     "Tempest Efreet" => "banned",
     "Timmerian Fiends" => "banned",
     # Not as commander
+    "Breya, Etherium Shaper" => {"akh" => "restricted"},
+    "Bruse Tarl, Boorish Herder" => {"21 jul 2017" => "restricted"},
     "Derevi, Empyrial Tactician" => "restricted",
+    "Edgar Markov" => {"29 sep 2017" => "restricted"},
     "Edric, Spymaster of Trest" => "restricted",
     "Erayo, Soratami Ascendant" => "restricted",
+    "Geist of Saint Traft" => {"21 jul 2017" => "restricted"},
+    "Jace, Vryn's Prodigy" => {"21 jul 2017" => "restricted"},
     "Marath, Will of the Wild" => "restricted",
     "Oloro, Ageless Ascetic" => "restricted",
     "Rofellos, Llanowar Emissary" => "restricted",
     "Tasigur, the Golden Fang" => "restricted",
+    "Vial Smasher the Fierce" => {"akh" => "restricted"},
     "Yisan, The Wanderer Bard" => {"start" => "restricted", "akh" => "legal"},
     "Zur the Enchanter" => "restricted",
-    "Breya, Etherium Shaper" => {"akh" => "restricted"},
-    "Vial Smasher the Fierce" => {"akh" => "restricted"},
   }
 }
 

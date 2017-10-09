@@ -202,7 +202,7 @@ class Card
       tci = {"forest" => "g", "mountain" => "r", "plains" => "w", "island" => "u", "swamp" => "b"}[t]
       ci << tci if tci
     end
-    ci.uniq.join
+    ci.sort.uniq.join
   end
 
   def calculate_color_indicator

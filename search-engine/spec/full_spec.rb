@@ -2,8 +2,8 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(17477)
-    db.number_of_printings.should eq(34164)
+    db.number_of_cards.should eq(17732)
+    db.number_of_printings.should eq(34463)
   end
 
   it "block_codes" do
@@ -113,6 +113,7 @@ describe "Full Database Test" do
       "Unruly Mob"
 
     assert_search_results "e:soi lastprint>soi",
+      "Dual Shot",
       "Forest",
       "Forsaken Sanctuary",
       "Foul Orchard",
@@ -371,6 +372,10 @@ describe "Full Database Test" do
     assert_search_results %Q[r:special -is:promo -st:masterpiece -t:vanguard -e:anthologies -e:tsts -e:"clash pack" -e:vma -e:mgbc],
       "Giant Trap Door Spider",
       "Tazeem"
+  end
+
+  it "all planeswalkers are legendary" do
+    assert_search_results "t:planeswalker -t:legendary"
   end
 
   def legality_information(name, date=nil)

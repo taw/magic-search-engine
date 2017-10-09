@@ -123,6 +123,8 @@ class Format
         "kaladeshblock"              => FormatKaladeshBlock,
         "akhblock"                   => FormatAmonkhetBlock,
         "amonkhetblock"              => FormatAmonkhetBlock,
+        "ixalanblock"                => FormatIxalanBlock,
+        "xlnblock"                   => FormatIxalanBlock,
         "unsets"                     => FormatUnsets,
         "un-sets"                    => FormatUnsets,
         "standard"                   => FormatStandard,

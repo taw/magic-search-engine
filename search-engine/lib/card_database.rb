@@ -162,6 +162,7 @@ class CardDatabase
     fix_multipart_cards_color_identity!(color_identity_cache)
     link_multipart_cards!(multipart_cards)
     setup_artists!
+    setup_sort_index!
   end
 
   def fix_multipart_cards_color_identity!(color_identity_cache)
@@ -204,6 +205,24 @@ class CardDatabase
       end
       artist.printings << printing
       printing.artist = artist
+    end
+  end
+
+  def setup_sort_index!
+    printings.sort_by{|c|
+      [
+        c.name,
+        c.set.custom? ? 0 : 1,
+        c.online_only? ? 1 : 0,
+        c.frame == "old" ? 1 : 0,
+        c.set.regular? ? 0 : 1,
+        -c.release_date_i,
+        c.set.name,
+        c.number.to_i,
+        c.number,
+      ]
+    }.each_with_index do |c, i|
+      c.default_sort_index = i
     end
   end
 

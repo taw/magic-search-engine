@@ -6,6 +6,13 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2017" do
+    assert_banlist_changes "September 2017",
+      "duel commander restricted", "Edgar Markov",
+      "duel commander banned", "Fireblast",
+      "duel commander banned", "Eidolon of the Great Revel",
+      "duel commander banned", "Sulfuric Vortex",
+      "duel commander banned", "Price of Progress"
+
     assert_banlist_changes "August 2017", # Sep 1 actually
       "vintage restricted", "Thorn of Amethyst",
       "vintage restricted", "Monastery Mentor",
@@ -20,7 +27,15 @@ describe "Banlist" do
       "mtgo commander unbanned", "Biorhythm",
       "mtgo commander unbanned", "Limited Resources",
       "mtgo commander unbanned", "Painter's Servant",
-      "mtgo commander unbanned", "Trade Secrets"
+      "mtgo commander unbanned", "Trade Secrets",
+      "duel commander restricted", "Geist of Saint Traft",
+      "duel commander restricted", "Jace, Vryn's Prodigy",
+      "duel commander restricted", "Bruse Tarl, Boorish Herder",
+      "duel commander banned", "Polymorph",
+      "duel commander banned", "Emrakul, the Aeons Torn",
+      "duel commander unbanned", "Ancient Tomb",
+      "duel commander unbanned", "Mind Twist",
+      "duel commander unbanned", "Fastbond"
 
     assert_banlist_changes "June 2017",
       "standard banned", "Aetherworks Marvel"

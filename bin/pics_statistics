@@ -1,0 +1,110 @@
+#!/usr/bin/env ruby
+
+require "pathname-glob"
+require_relative "../search-engine/lib/card_database"
+
+class CardPrinting
+  def path_lq
+    Pathname("frontend/public/cards/#{set_code}/#{number}.png")
+  end
+
+  def path_hq
+    Pathname("frontend/public/cards_hq/#{set_code}/#{number}.png")
+  end
+end
+
+class PrintPicsStatistics
+  attr_reader :db
+
+  def initialize
+    @db = CardDatabase.load
+    @by_set = {}
+  end
+
+  def number_of_cards
+    @number_of_cards ||= db.printings.size
+  end
+
+  def number_of_lq_cards
+    @number_of_lq_cards ||= db.printings.count{|c| c.path_lq.exist?}
+  end
+
+  def number_of_hq_cards
+    @number_of_hq_cards ||= db.printings.count{|c| c.path_hq.exist?}
+  end
+
+  def unconnected_lq
+    @unconnected_lq ||= begin
+      Pathname("frontend/public/cards").glob("*/*.png") - db.printings.map(&:path_lq)
+    end
+  end
+
+  def unconnected_hq
+    @unconnected_hq ||= begin
+      Pathname("frontend/public/cards_hq").glob("*/*.png") - db.printings.map(&:path_hq)
+    end
+  end
+
+  def same_lq_hq
+    @same_lq_hq ||= begin
+      db.printings.select{|c|
+        c.path_lq.exist? and c.path_hq.exist? and c.path_lq.size == c.path_hq.size and c.path_lq.read == c.path_lq.read
+      }
+    end
+  end
+
+  def call
+    db.printings.each do |card|
+      set = card.set_code
+      @by_set[set] ||= Hash.new(0)
+      @by_set[set]["total"] += 1
+      if card.path_hq.exist?
+        @by_set[set]["hq"] += 1
+      elsif card.path_lq.exist?
+        @by_set[set]["lq"] += 1
+      else
+        @by_set[set]["none"] += 1
+      end
+    end
+
+    # Summary
+    puts "Cards: #{number_of_cards}"
+    puts "LQ: #{number_of_lq_cards}"
+    puts "HQ: #{number_of_hq_cards}"
+    puts ""
+
+    # Problems
+    puts "Unconnected LQ: #{unconnected_lq.size} "
+    puts unconnected_lq
+    puts "Unconnected HQ: #{unconnected_hq.size}"
+    puts unconnected_hq
+    puts "LQ == HQ: #{same_lq_hq.size}"
+    puts same_lq_hq
+    puts ""
+
+    # Details
+    @by_set
+      .select{|set_name, stats|
+        # Online only sets can't possibly have HQ scans
+        if db.sets[set_name].online_only?
+          stats["none"] > 0
+        else
+          stats["lq"] + stats["none"] > 0
+        end
+      }
+      .sort_by{|set_name, stats|
+        set = db.sets[set_name]
+        [-set.release_date.to_i_sort, set.name]
+      }
+      .each do |set_name, stats|
+      summary = [
+        ("#{stats["hq"]} HQ" if stats["hq"] > 0),
+        ("#{stats["lq"]} LQ" if stats["lq"] > 0),
+        ("#{stats["none"]} No Picture" if stats["none"] > 0),
+      ].compact.join(", ")
+      puts "#{set_name}: #{summary}"
+    end
+  end
+end
+
+PrintPicsStatistics.new.call

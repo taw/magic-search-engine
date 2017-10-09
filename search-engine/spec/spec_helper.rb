@@ -227,4 +227,43 @@ shared_context "db" do |*sets|
     actual_legality = ban_list.legality(format, card_name, set_date) || "legal"
     [card_name, expected_legality].should eq([card_name, actual_legality])
   end
+
+  # FIXME: All of this needs to be migrated to proper rspec
+  def assert_block_composition(format_name, time, sets, exceptions={})
+    time = db.sets[time].release_date if time.is_a?(String)
+    format = Format[format_name].new(time)
+    actual_legality = db.cards.values.map do |card|
+      [card.name, format.legality(card)]
+    end.select(&:last)
+    expected_legality = compute_expected_legality(sets, exceptions)
+    expected_legality.to_h.should eq(actual_legality.to_h) # "Legality of #{format_name} at #{time}"
+  end
+
+  def assert_legality(format_name, time, card_name, status)
+    time = db.sets[time].release_date unless time.is_a?(Date)
+    format = Format[format_name].new(time)
+    card = db.cards[card_name.downcase] or raise "No such card: #{card_name}"
+    format.legality(card).should == status # "Legality of #{card_name} in #{format_name} at #{time}"
+  end
+
+  def assert_block_composition_sequence(format_name, *sets)
+    until sets.empty?
+      assert_block_composition format_name, sets.last, sets
+      sets.pop
+    end
+  end
+
+  def compute_expected_legality(sets, exceptions)
+    expected_legality = {}
+    sets.each do |set_code|
+      raise "Unknown set #{set_code}" unless db.sets[set_code]
+      db.sets[set_code].printings.each do |card_printing|
+        next if %W[vanguard plane phenomenon scheme token].include?(card_printing.layout)
+        next if card_printing.types == Set["conspiracy"]
+        expected_legality[card_printing.name] = "legal"
+      end
+    end
+    expected_legality.merge!(exceptions)
+    expected_legality
+  end
 end
