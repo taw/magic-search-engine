@@ -6,6 +6,17 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2017" do
+    assert_banlist_changes "October 2017",
+      "mtgo commander banned", "Baral, Chief of Compliance",
+      "mtgo commander banned", "Demonic Tutor",
+      "mtgo commander banned", "Emrakul, the Aeons Torn",
+      "mtgo commander banned", "Enlightened Tutor",
+      "mtgo commander banned", "Imperial Seal",
+      "mtgo commander banned", "Mystical Tutor",
+      "mtgo commander banned", "Vampiric Tutor",
+      "mtgo commander unbanned", "Arcum Dagsson",
+      "mtgo commander unbanned", "Yisan, the Wanderer Bard"
+
     assert_banlist_changes "September 2017",
       "duel commander restricted", "Edgar Markov",
       "duel commander banned", "Fireblast",
