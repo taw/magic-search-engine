@@ -131,7 +131,10 @@ BanListChangeDates = {
   "sep 2017" => "2017-09-01",
 
   # https://www.facebook.com/notes/mtg-duel-commander/september-2017-rules-banlist-update/1983982491852648/
-  "29 sep 2017" => "2017-09-29"
+  "29 sep 2017" => "2017-09-29",
+
+  # http://wizardsmtgo.tumblr.com/post/166220048834/mtgo-commander-1v1-banned-announcement
+  "oct 2017" => "2017-10-11",
 }
 
 DynamicBanListData = {
@@ -162,14 +165,14 @@ DynamicBanListData = {
     "Time Vault" => "banned",
     "Tinker" => "banned",
     "Yawgmoth's Bargain" => "banned",
-    "Arcum Dagsson" => "banned",
+    "Arcum Dagsson" => { "start" => "banned", "oct 2017" => "legal" },
     "Braids, Cabal Minion" => "banned",
     "Derevi, Empyrial Tactician" => "banned",
     "Edric, Spymaster of Trest" => "banned",
     "Erayo, Soratami Ascendant" => "banned",
     "Griselbrand" => "banned",
     "Rofellos, Llanowar Emissary" => "banned",
-    "Yisan, the Wanderer Bard" => "banned",
+    "Yisan, the Wanderer Bard" => { "start" => "banned", "oct 2017" => "legal" },
     "Zur the Enchanter" => "banned",
     "Ancestral Recall" => "banned",
     "Back to Basics" => "banned",
@@ -199,6 +202,13 @@ DynamicBanListData = {
     "Preordain" => { "jul 2017" => "banned" },
     "Brainstorm" => { "jul 2017" => "banned" },
     "Treachery" => { "jul 2017" => "banned" },
+    "Baral, Chief of Compliance" => { "oct 2017" => "banned" },
+    "Demonic Tutor" => { "oct 2017" => "banned" },
+    "Emrakul, the Aeons Torn" => { "oct 2017" => "banned" },
+    "Enlightened Tutor" => { "oct 2017" => "banned" },
+    "Imperial Seal" => { "oct 2017" => "banned" },
+    "Mystical Tutor" => { "oct 2017" => "banned" },
+    "Vampiric Tutor" => { "oct 2017" => "banned" },
   },
 
   "modern" => {
