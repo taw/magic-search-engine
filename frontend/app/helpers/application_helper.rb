@@ -37,21 +37,29 @@ module ApplicationHelper
   end
 
   def format_oracle_text(card_text)
-    h((card_text || "").gsub(/\A\n+/, "")).gsub("\n", "<br/>").gsub(/(?:\{.*?\})+/) do
-      %Q[<span class="manacost">] + format_mana_symbols($&) + %Q[</span>]
-    end.gsub(/\[([\+\-]?(?:\d+|N|X))\]/) do
-      symbol = $1
-      usymbol = symbol.sub("-", "\u2013")
-      if symbol[0] == "+"
-        dir = "up"
-      elsif symbol[0] == "-"
-        dir = "down"
-      else
-        dir = "zero"
+    h(card_text || "")
+      .gsub(/\A\n+/, "")
+      .gsub(Card::ABILITY_WORD_RX) do |m|
+        "<i class='ability_word'>#{$1}</i> —"
       end
-      %Q[<i class="mana mana-loyalty mana-loyalty-#{dir}" data-loyalty="#{usymbol}"></i>] +
-      %Q[<span class="sr-only">[#{symbol}]</span>]
-    end.html_safe
+      .gsub("\n", "<br/>")
+      .gsub(/(?:\{.*?\})+/) do
+        %Q[<span class="manacost">] + format_mana_symbols($&) + %Q[</span>]
+      end
+      .gsub(/\[([\+\-]?(?:\d+|N|X))\]/) do
+        symbol = $1
+        usymbol = symbol.sub("-", "\u2013")
+        if symbol[0] == "+"
+          dir = "up"
+        elsif symbol[0] == "-"
+          dir = "down"
+        else
+          dir = "zero"
+        end
+        %Q[<i class="mana mana-loyalty mana-loyalty-#{dir}" data-loyalty="#{usymbol}"></i>] +
+        %Q[<span class="sr-only">[#{symbol}]</span>]
+      end
+      .html_safe
   end
 
   def card_picture_path(card)
