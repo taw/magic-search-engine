@@ -333,20 +333,6 @@ DynamicBanListData = {
     "Sentinel Dispatch" => "banned",
     "Unexpected Potential" => "banned",
     "Worldknit" => "banned",
-    # Gatherer claims these have nil legality, whatever that means
-    # "Aether Searcher" => nil,
-    # "Agent of Acquisitions" => nil,
-    # "Canal Dredger" => nil,
-    # "Cogwork Grinder" => nil,
-    # "Cogwork Librarian" => nil,
-    # "Cogwork Spy" => nil,
-    # "Cogwork Tracker" => nil,
-    # "Deal Broker" => nil,
-    # "Lore Seeker" => nil,
-    # "Lurking Automaton" => nil,
-    # "Paliano, the High City" => nil,
-    # "Whispergear Sneak" => nil,
-    # The rest
 
     # Vintage banned are EDH banned
     "Contract from Below" => "banned",
