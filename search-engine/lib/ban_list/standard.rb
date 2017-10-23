@@ -87,9 +87,11 @@ BanList.for_format("standard") do
 
   change(
     "2011-07-01",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/june-20-2011-dci-banned-restricted-list-announcement-2011-06-20",
     "Jace, the Mind Sculptor" => "banned",
     "Stoneforge Mystic" => "banned",
+    # OK, this is awkward, was it ever "unbanned" ?
+    # it just rotated out of Standard and banlist, then got reprinted as legal
     "Darksteel Citadel" => "legal",
   )
 

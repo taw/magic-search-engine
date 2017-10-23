@@ -260,7 +260,7 @@ BanList.for_format("legacy") do
 
   change(
     "2011-10-01",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/september-20-2011-dci-banned-restricted-list-announcement-2011-09-20",
     "Mental Misstep" => "banned",
   )
 
