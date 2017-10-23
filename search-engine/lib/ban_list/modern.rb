@@ -1,6 +1,6 @@
 BanList.for_format("modern") do
   format_start(
-    nil,
+    "https://magic.wizards.com/en/articles/archive/latest-developments/welcome-modern-world-2011-08-12",
     "Ancestral Vision" => "banned",
     "Ancient Den" => "banned",
     "Bitterblossom" => "banned",
@@ -26,7 +26,7 @@ BanList.for_format("modern") do
 
   change(
     "2011-10-01",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/september-20-2011-dci-banned-restricted-list-announcement-2011-09-20",
     "Blazing Shoal" => "banned",
     "Cloudpost" => "banned",
     "Green Sun's Zenith" => "banned",

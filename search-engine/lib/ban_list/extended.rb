@@ -105,7 +105,7 @@ BanList.for_format("extended") do
 
   change(
     "2011-10-01",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/september-20-2011-dci-banned-restricted-list-announcement-2011-09-20",
     "Jace, the Mind Sculptor" => "banned",
     "Mental Misstep" => "banned",
     "Ponder" => "banned",
