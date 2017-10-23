@@ -8,7 +8,8 @@ BanList.for_format("pauper") do
 
   change(
     "2011-07-01",
-    nil,
+    # No longer available anywhere online
+    "http://web.archive.org/web/20110625123730/http://community.wizards.com/magiconline/blog/2011/06/19/magic_online_br_changes_-_june_2011",
     "Frantic Search" => "banned",
   )
 

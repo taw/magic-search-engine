@@ -248,7 +248,7 @@ BanList.for_format("commander") do
 
   change(
     "2014-02-07",
-    nil,
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=16697", # Posted: 2014-Feb-02
     "Sylvan Primordial" => "banned",
   )
 
@@ -271,7 +271,7 @@ BanList.for_format("commander") do
 
   change(
     "2017-04-24",
-    nil,
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=18588", # posted 2017-04-24
     "Leovold, Emissary of Trest" => "banned",
     "Protean Hulk" => "legal",
   )

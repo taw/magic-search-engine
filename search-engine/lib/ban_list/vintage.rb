@@ -248,7 +248,7 @@ BanList.for_format("vintage") do
 
   change(
     "2009-07-01",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/news/june-19-2009-dci-banned-restricted-list-announcement-2009-06-19",
     "Crop Rotation" => "legal",
     "Enlightened Tutor" => "legal",
     "Entomb" => "legal",
@@ -258,7 +258,7 @@ BanList.for_format("vintage") do
 
   change(
     "2010-10-01",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/september-20-2010-dci-banned-restricted-list-announcement-2010-09-20",
     "Frantic Search" => "legal",
     "Gush" => "legal",
   )

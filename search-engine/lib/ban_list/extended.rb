@@ -98,7 +98,7 @@ BanList.for_format("extended") do
 
   change(
     "2010-07-01",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/magic-online/june-18-2010-dci-banned-restricted-list-announcement-2010-06-18",
     "Hypergenesis" => "banned",
     "Sword of the Meek" => "banned",
   )
