@@ -266,27 +266,27 @@ BanList.for_format("legacy") do
 
   change(
     "2012-06-29",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/june-20-2012-dci-banned-restricted-list-announcement-2012-06-20",
     "Land Tax" => "legal",
   )
 
   change(
     "2015-01-23",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/banned-and-restricted-announcement-2015-01-19",
     "Treasure Cruise" => "banned",
     "Worldgorger Dragon" => "legal",
   )
 
   change(
     "2015-10-02",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/news/september-28-2015-banned-and-restricted-announcement-2015-09-28",
     "Dig Through Time" => "banned",
     "Black Vise" => "legal",
   )
 
   change(
     "2017-04-24",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/news/april-24-2017-banned-and-restricted-announcement-2017-04-24",
     "Sensei's Divining Top" => "banned",
   )
 end

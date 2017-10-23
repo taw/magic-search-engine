@@ -95,21 +95,21 @@ BanList.for_format("standard") do
 
   change(
     "2017-01-20",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/news/january-9-2017-banned-and-restricted-announcement-2017-01-09",
     "Emrakul, the Promised End" => "banned",
     "Reflector Mage" => "banned",
     "Smuggler's Copter" => "banned",
   )
 
   change(
-    "2017-04-24",
-    nil,
+    "2017-04-28",
+    "https://magic.wizards.com/en/articles/archive/news/addendum-april-24-2017-banned-and-restricted-announcement-2017-04-26",
     "Felidar Guardian" => "banned",
   )
 
   change(
     "2017-06-19",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/june-13-2017-banned-and-restricted-announcement-2017-06-13",
     "Aetherworks Marvel" => "banned",
   )
 end

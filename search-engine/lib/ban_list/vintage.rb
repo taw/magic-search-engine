@@ -271,26 +271,26 @@ BanList.for_format("vintage") do
 
   change(
     "2012-10-01",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/september-20-2012-dci-banned-restricted-list-announcement-2012-09-20",
     "Burning Wish" => "legal",
   )
 
   change(
     "2013-05-03",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/banned-and-restricted-2013-04-22-0",
     "Regrowth" => "legal",
   )
 
   change(
     "2015-01-23",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/banned-and-restricted-announcement-2015-01-19",
     "Gifts Ungiven" => "legal",
     "Treasure Cruise" => "restricted",
   )
 
   change(
     "2015-10-02",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/news/september-28-2015-banned-and-restricted-announcement-2015-09-28",
     "Thirst for Knowledge" => "legal",
     "Chalice of the Void" => "restricted",
     "Dig Through Time" => "restricted",
@@ -298,20 +298,20 @@ BanList.for_format("vintage") do
 
   change(
     "2016-04-08",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/news/banned-and-restricted-announcement-2016-04-04",
     "Lodestone Golem" => "restricted",
   )
 
   change(
     "2017-04-24",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/news/april-24-2017-banned-and-restricted-announcement-2017-04-24",
     "Gitaxian Probe" => "restricted",
     "Gush" => "restricted",
   )
 
   change(
     "2017-09-01",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/august-28-2017-banned-and-restricted-announcement-2017-08-28",
     "Yawgmoth's Bargain" => "legal",
     "Monastery Mentor" => "restricted",
     "Thorn of Amethyst" => "restricted",
