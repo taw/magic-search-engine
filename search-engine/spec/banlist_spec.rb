@@ -1,7 +1,5 @@
 describe "Banlist" do
   include_context "db"
-  let(:ban_list) { BanList.new }
-
   # Based on:
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
@@ -659,12 +657,10 @@ describe "Banlist" do
   end
 
   it "legacy_was_just_vintage_plus_before_split" do
-    ban_list_dates = ban_list.events.map{|k,(d,u)| [k,d]}.to_h
-    cutoff_date = ban_list_dates["sep 2004"]
-    change_dates = ban_list_dates.values.uniq.sort
-    change_dates.each do |date|
-      legacy_banlist  = ban_list.full_ban_list("legacy", date)
-      vintage_banlist = ban_list.full_ban_list("vintage", date)
+    cutoff_date = Date.parse("2004-09-20")
+    BanList.all_change_dates.each do |date|
+      legacy_banlist  = BanList["legacy"].full_ban_list(date)
+      vintage_banlist = BanList["vintage"].full_ban_list(date)
       vintage_plus_banlist = Hash[vintage_banlist.map{|k,v| [k, v == "restricted" ? "banned" : v]}]
       if date < cutoff_date
         legacy_banlist.should eq(vintage_plus_banlist)
@@ -767,7 +763,7 @@ describe "Banlist" do
   end
 
   it "ban_events_for" do
-    ban_list.ban_events_for("mtgo commander").should include(
+    BanList["mtgo commander"].events.should include(
       [
         Date.parse("2017-10-11"),
         "http://wizardsmtgo.tumblr.com/post/166220048834/mtgo-commander-1v1-banned-announcement",

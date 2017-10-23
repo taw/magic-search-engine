@@ -4,7 +4,7 @@ class Format
   def initialize(time=nil)
     raise ArgumentError unless time.nil? or time.is_a?(Date)
     @time = time
-    @ban_list = BanList.new
+    @ban_list = BanList[format_name]
     if respond_to?(:build_included_sets)
       @included_sets = build_included_sets
       @excluded_sets = nil
@@ -18,7 +18,7 @@ class Format
     if card.extra or !in_format?(card)
       nil
     else
-      @ban_list.legality(format_name, card.name, @time)
+      @ban_list.legality(card.name, @time)
     end
   end
 
@@ -56,7 +56,7 @@ class Format
   end
 
   def ban_events
-    @ban_list.ban_events_for(format_name)
+    @ban_list.events
   end
 
   class << self

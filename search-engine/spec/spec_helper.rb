@@ -165,7 +165,7 @@ shared_context "db" do |*sets|
       banned_cards.map{|c| [c, "banned"]} +
       restricted_cards.map{|c| [c, "restricted"]}
     ]
-    actual_banlist = ban_list.full_ban_list(format, time)
+    actual_banlist = BanList[format].full_ban_list(time)
     expected_banlist.should eq(actual_banlist)
   end
   def assert_banlist_changes(date, *changes)
@@ -224,7 +224,7 @@ shared_context "db" do |*sets|
       dsc = "#{set} (#{set_date})"
       set_date = db.sets[set].release_date
     end
-    actual_legality = ban_list.legality(format, card_name, set_date) || "legal"
+    actual_legality = BanList[format].legality(card_name, set_date) || "legal"
     [card_name, expected_legality].should eq([card_name, actual_legality])
   end
 
