@@ -1,4 +1,4 @@
-BanListChangeDates = {
+BanListChangeEvents = {
   # magic min/max, might not end up being needed
   "start" => "1900-01-01",
   "end"   => "2999-12-31",
@@ -124,18 +124,18 @@ BanListChangeDates = {
   # MTGO Commander random banlist
   "jul 2017" => "2017-07-05",
 
-  # Duel Commander banlist http://www.duelcommander.com/2017/07/classic-july-2017-rules-banlist-update/#comment-48672
-  "21 jul 2017" => "2017-07-21",
-
-  # http://magic.wizards.com/en/articles/archive/august-28-2017-banned-and-restricted-announcement-2017-08-28?
-  "sep 2017" => "2017-09-01",
-
-  # https://www.facebook.com/notes/mtg-duel-commander/september-2017-rules-banlist-update/1983982491852648/
-  "29 sep 2017" => "2017-09-29",
-
-  # http://wizardsmtgo.tumblr.com/post/166220048834/mtgo-commander-1v1-banned-announcement
-  "oct 2017" => "2017-10-11",
-}
+  "duel-commander 2017-07-21" => ["2017-07-21", "http://www.duelcommander.com/2017/07/classic-july-2017-rules-banlist-update/"],
+  "sep 2017" => ["2017-09-01", "http://magic.wizards.com/en/articles/archive/august-28-2017-banned-and-restricted-announcement-2017-08-28"],
+  "duel-commander 2017-09-29" => ["2017-09-29", "https://www.facebook.com/notes/mtg-duel-commander/september-2017-rules-banlist-update/1983982491852648/"],
+  "mtgo-commander 2017-10-11" => ["2017-10-11", "http://wizardsmtgo.tumblr.com/post/166220048834/mtgo-commander-1v1-banned-announcement"],
+}.map{|k,event|
+  if event.is_a?(String)
+    d, u = event, nil
+  else
+    d, u = *event
+  end
+  [k, [Date.parse(d), u]]
+}.to_h
 
 DynamicBanListData = {
   ### THESE LISTS SHOULD BE COMPLETE AND ACCURATE
@@ -165,14 +165,14 @@ DynamicBanListData = {
     "Time Vault" => "banned",
     "Tinker" => "banned",
     "Yawgmoth's Bargain" => "banned",
-    "Arcum Dagsson" => { "start" => "banned", "oct 2017" => "legal" },
+    "Arcum Dagsson" => { "start" => "banned", "mtgo-commander 2017-10-11" => "legal" },
     "Braids, Cabal Minion" => "banned",
     "Derevi, Empyrial Tactician" => "banned",
     "Edric, Spymaster of Trest" => "banned",
     "Erayo, Soratami Ascendant" => "banned",
     "Griselbrand" => "banned",
     "Rofellos, Llanowar Emissary" => "banned",
-    "Yisan, the Wanderer Bard" => { "start" => "banned", "oct 2017" => "legal" },
+    "Yisan, the Wanderer Bard" => { "start" => "banned", "mtgo-commander 2017-10-11" => "legal" },
     "Zur the Enchanter" => "banned",
     "Ancestral Recall" => "banned",
     "Back to Basics" => "banned",
@@ -202,13 +202,13 @@ DynamicBanListData = {
     "Preordain" => { "jul 2017" => "banned" },
     "Brainstorm" => { "jul 2017" => "banned" },
     "Treachery" => { "jul 2017" => "banned" },
-    "Baral, Chief of Compliance" => { "oct 2017" => "banned" },
-    "Demonic Tutor" => { "oct 2017" => "banned" },
-    "Emrakul, the Aeons Torn" => { "oct 2017" => "banned" },
-    "Enlightened Tutor" => { "oct 2017" => "banned" },
-    "Imperial Seal" => { "oct 2017" => "banned" },
-    "Mystical Tutor" => { "oct 2017" => "banned" },
-    "Vampiric Tutor" => { "oct 2017" => "banned" },
+    "Baral, Chief of Compliance" => { "mtgo-commander 2017-10-11" => "banned" },
+    "Demonic Tutor" => { "mtgo-commander 2017-10-11" => "banned" },
+    "Emrakul, the Aeons Torn" => { "mtgo-commander 2017-10-11" => "banned" },
+    "Enlightened Tutor" => { "mtgo-commander 2017-10-11" => "banned" },
+    "Imperial Seal" => { "mtgo-commander 2017-10-11" => "banned" },
+    "Mystical Tutor" => { "mtgo-commander 2017-10-11" => "banned" },
+    "Vampiric Tutor" => { "mtgo-commander 2017-10-11" => "banned" },
   },
 
   "modern" => {
@@ -724,19 +724,19 @@ DynamicBanListData = {
   # http://www.duelcommander.com/banlist/
   "duel commander" => {
     "Ancestral Recall" => "banned",
-    "Ancient Tomb" => {"start" => "banned", "21 jul 2017" => "legal"},
+    "Ancient Tomb" => {"start" => "banned", "duel-commander 2017-07-21" => "legal"},
     "Back to Basics" => "banned",
     "Black Lotus" => "banned",
     "Channel" => "banned",
     "Chaos Orb" => "banned",
     "Chrome Mox" => {"akh" => "banned"},
     "Dig Through Time" => "banned",
-    "Eidolon of the Great Revel" => {"29 sep 2017" => "banned"},
-    "Emrakul, the Aeons Torn" => {"21 jul 2017" => "banned"},
+    "Eidolon of the Great Revel" => {"duel-commander 2017-09-29" => "banned"},
+    "Emrakul, the Aeons Torn" => {"duel-commander 2017-07-21" => "banned"},
     "Entomb" => "banned",
     "Falling Star" => "banned",
-    "Fastbond" => {"start" => "banned", "21 jul 2017" => "legal"},
-    "Fireblast" => {"29 sep 2017" => "banned"},
+    "Fastbond" => {"start" => "banned", "duel-commander 2017-07-21" => "legal"},
+    "Fireblast" => {"duel-commander 2017-09-29" => "banned"},
     "Food Chain" => "banned",
     "Gaea's Cradle" => "banned",
     "Gifts Ungiven" => "banned",
@@ -750,7 +750,7 @@ DynamicBanListData = {
     "Mana Crypt" => "banned",
     "Mana Drain" => "banned",
     "Mana Vault" => "banned",
-    "Mind Twist" => {"start" => "banned", "21 jul 2017" => "legal"},
+    "Mind Twist" => {"start" => "banned", "duel-commander 2017-07-21" => "legal"},
     "Mishra's Workshop" => "banned",
     "Mox Diamond" => {"akh" => "banned"},
     "Mox Emerald" => "banned",
@@ -762,14 +762,14 @@ DynamicBanListData = {
     "Natural Order" => "banned",
     "Necrotic Ooze" => "banned",
     "Oath of Druids" => "banned",
-    "Polymorph" => {"21 jul 2017" => "banned"},
-    "Price of Progress" => {"29 sep 2017" => "banned"},
+    "Polymorph" => {"duel-commander 2017-07-21" => "banned"},
+    "Price of Progress" => {"duel-commander 2017-09-29" => "banned"},
     "Protean Hulk" => "banned",
     "Sensei's Divining Top" => "banned",
     "Shahrazad" => "banned",
     "Sol Ring" => "banned",
     "Strip Mine" => "banned",
-    "Sulfuric Vortex" => {"29 sep 2017" => "banned"},
+    "Sulfuric Vortex" => {"duel-commander 2017-09-29" => "banned"},
     "The Tabernacle at Pendrell Vale" => "banned",
     "Time Vault" => "banned",
     "Time Walk" => "banned",
@@ -789,13 +789,13 @@ DynamicBanListData = {
     "Timmerian Fiends" => "banned",
     # Not as commander
     "Breya, Etherium Shaper" => {"akh" => "restricted"},
-    "Bruse Tarl, Boorish Herder" => {"21 jul 2017" => "restricted"},
+    "Bruse Tarl, Boorish Herder" => {"duel-commander 2017-07-21" => "restricted"},
     "Derevi, Empyrial Tactician" => "restricted",
-    "Edgar Markov" => {"29 sep 2017" => "restricted"},
+    "Edgar Markov" => {"duel-commander 2017-09-29" => "restricted"},
     "Edric, Spymaster of Trest" => "restricted",
     "Erayo, Soratami Ascendant" => "restricted",
-    "Geist of Saint Traft" => {"21 jul 2017" => "restricted"},
-    "Jace, Vryn's Prodigy" => {"21 jul 2017" => "restricted"},
+    "Geist of Saint Traft" => {"duel-commander 2017-07-21" => "restricted"},
+    "Jace, Vryn's Prodigy" => {"duel-commander 2017-07-21" => "restricted"},
     "Marath, Will of the Wild" => "restricted",
     "Oloro, Ageless Ascetic" => "restricted",
     "Rofellos, Llanowar Emissary" => "restricted",
@@ -807,9 +807,9 @@ DynamicBanListData = {
 }
 
 class BanList
-  attr_reader :dates, :bans
+  attr_reader :events, :bans
   def initialize
-    @dates = Hash[BanListChangeDates.map{|key, date| [key, Date.parse(date)]}]
+    @events = BanListChangeEvents
     @bans = Hash[DynamicBanListData.map do |format, changes|
       [format, parse_changes(changes)]
     end]
@@ -861,12 +861,12 @@ class BanList
     Hash[changes.map{|card, legalities|
       legalities = {"start" => legalities} unless legalities.is_a?(Hash)
       legalities = legalities.map{|dat, leg|
-        unless @dates[dat]
+        unless @events[dat]
           warn "Unknown date: #{dat}" unless seen_warns.include?(dat)
           seen_warns << dat
           next
         end # temporary until this list is finished
-        [@dates[dat], leg]
+        [@events[dat][0], leg]
       }.compact
       [card, legalities]
     }]
