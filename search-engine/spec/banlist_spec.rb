@@ -659,8 +659,9 @@ describe "Banlist" do
   end
 
   it "legacy_was_just_vintage_plus_before_split" do
-    cutoff_date = ban_list.dates["sep 2004"]
-    change_dates = ban_list.dates.values.uniq.sort
+    ban_list_dates = ban_list.events.map{|k,(d,u)| [k,d]}.to_h
+    cutoff_date = ban_list_dates["sep 2004"]
+    change_dates = ban_list_dates.values.uniq.sort
     change_dates.each do |date|
       legacy_banlist  = ban_list.full_ban_list("legacy", date)
       vintage_banlist = ban_list.full_ban_list("vintage", date)
