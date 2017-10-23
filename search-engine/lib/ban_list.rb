@@ -821,7 +821,7 @@ class BanList
   def legality(format, card_name, time)
     legality = @bans.fetch(format, {}).fetch(card_name, {})
     status = "legal"
-    legality.each do |change_time,leg|
+    legality.each do |(change_time, _), leg|
       break if time and change_time > time
       status = leg
     end
@@ -845,13 +845,13 @@ class BanList
         events[d2] << {name: card_name, old: l1, new: l2}
       end
     end
-    events.sort.reverse.map{|d,evs|
+    events.sort.reverse.map{|(d,url),evs|
       if d == Date.parse("1900-01-01")
-        [nil, evs]
+        [nil, nil, evs]
       else
-        [d, evs]
+        [d, url, evs]
       end
-    }.to_h
+    }
   end
 
   private
@@ -861,12 +861,8 @@ class BanList
     Hash[changes.map{|card, legalities|
       legalities = {"start" => legalities} unless legalities.is_a?(Hash)
       legalities = legalities.map{|dat, leg|
-        unless @events[dat]
-          warn "Unknown date: #{dat}" unless seen_warns.include?(dat)
-          seen_warns << dat
-          next
-        end # temporary until this list is finished
-        [@events[dat][0], leg]
+        raise unless @events[dat]
+        [@events[dat], leg]
       }.compact
       [card, legalities]
     }]
