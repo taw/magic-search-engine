@@ -128,29 +128,38 @@ BanList.for_format("commander") do
     "Niv-Mizzet, the Firemind" => "legal",
   )
 
+  # nothing before this point on the forum, would take more digging
+
   change(
-    "2007-03-02",
-    nil,
+    "2007-03-08",
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=81", # posted 2007-03-08, "go into effect immediately"
     "Coalition Victory" => "banned",
     "Rofellos, Llanowar Emissary" => "restricted",
   )
 
+  # When was it banned ?
+  # change(
+  #   "2007-11-26",
+  #   "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=226",
+  #   "Beacon of Immortaility" => "legal",
+  # )
+
   change(
-    "2008-02-02",
-    nil,
+    "2008-03-01",
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=320", # posted 2008-02-29, effective "as of tomorrow"
     "Kokusho, the Evening Star" => "banned",
     "Recurring Nightmare" => "banned",
   )
 
   change(
-    "2008-06-20",
-    nil,
+    "2008-06-04",
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=517", # posted 2008-06-04, "getting the axe immediately."
     "Limited Resources" => "banned",
   )
 
   change(
     "2008-09-20",
-    nil,
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=794", # posted 2008-09-01
     "Grindstone" => "banned",
     "Karakas" => "banned",
     "Lion's Eye Diamond" => "banned",
@@ -160,14 +169,16 @@ BanList.for_format("commander") do
   )
 
   change(
-    "2008-12-02",
-    nil,
+    "2008-12-21",
+    # posted 2008-12-21, effective 2008-12-01
+    # yeah, sounds like it moves back in time
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=1165",
     "Time Vault" => "banned",
   )
 
   change(
-    "2009-03-02",
-    nil,
+    "2009-03-20",
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=1499", # posted 2009-03-20, effective immediately
     "Metalworker" => "banned",
     "Tinker" => "banned",
     "Crucible of Worlds" => "legal",
@@ -175,29 +186,29 @@ BanList.for_format("commander") do
   )
 
   change(
-    "2009-07-01",
-    nil,
+    "2009-06-20",
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=2074", # posted 2009-06-18, effective 2009-06-20
     "Fastbond" => "banned",
     "Gifts Ungiven" => "banned",
     "Braids, Cabal Minion" => "restricted",
   )
 
   change(
-    "2009-10-01",
-    nil,
+    "2009-09-20",
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=2768", # posted 2009-09-10, effective 2009-09-20
     "Riftsweeper" => "legal",
   )
 
   change(
-    "2009-12-02",
-    nil,
+    "2009-12-20",
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=3231", # posted 2009-12-03, effective 2009-12-20
     "Painter's Servant" => "banned",
     "Grindstone" => "legal",
   )
 
   change(
-    "2010-07-01",
-    nil,
+    "2010-06-20",
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=4124", # posted 2010-06-18, effective 2010-06-20
     "Channel" => "banned",
     "Staff of Domination" => "banned",
     "Tolarian Academy" => "banned",
@@ -205,20 +216,20 @@ BanList.for_format("commander") do
   )
 
   change(
-    "2011-01-01",
-    nil,
+    "2010-12-20",
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=5200", # posted 2010-12-14, effective 2010-12-20
     "Emrakul, the Aeons Torn" => "banned",
   )
 
   change(
-    "2011-07-01",
-    nil,
+    "2011-06-17",
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=9564", # posted 2011-Jun-14, effective 2011-06-17
     "Worldgorger Dragon" => "legal",
   )
 
   change(
     "2011-10-01",
-    nil,
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=10749", # posted 2011-09-19
     "Lion's Eye Diamond" => "legal",
     "Erayo's Essence" => "restricted",
     "Erayo, Soratami Ascendant" => "restricted",
@@ -226,14 +237,14 @@ BanList.for_format("commander") do
 
   change(
     "2012-06-29",
-    nil,
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=12073", # posted 2012-06-19
     "Griselbrand" => "banned",
     "Sundering Titan" => "banned",
   )
 
   change(
     "2012-10-01",
-    nil,
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=12253", # posted 2012-09-18
     "Primeval Titan" => "banned",
     "Worldfire" => "banned",
     "Kokusho, the Evening Star" => "restricted",
@@ -241,20 +252,20 @@ BanList.for_format("commander") do
 
   change(
     "2013-04-02",
-    nil,
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=15735", # posted 2013-04-21
     "Trade Secrets" => "banned",
     "Staff of Domination" => "legal",
   )
 
   change(
     "2014-02-07",
-    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=16697", # Posted: 2014-Feb-02
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=16697", # Posted: 2014-02-02
     "Sylvan Primordial" => "banned",
   )
 
   change(
     "2014-09-26",
-    nil,
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=17210", # posted 2014-09-12
     "Braids, Cabal Minion" => "banned",
     "Erayo's Essence" => "banned",
     "Erayo, Soratami Ascendant" => "banned",
@@ -265,7 +276,7 @@ BanList.for_format("commander") do
 
   change(
     "2016-01-22",
-    nil,
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=18057", # posted 2016-01-18
     "Prophet of Kruphix" => "banned",
   )
 
