@@ -765,4 +765,24 @@ describe "Banlist" do
       "Erayo, Soratami Ascendant",
     ]
   end
+
+  it "ban_events_for" do
+    ban_list.ban_events_for("mtgo commander").should include(
+      [
+        Date.parse("2017-10-11"),
+        "http://wizardsmtgo.tumblr.com/post/166220048834/mtgo-commander-1v1-banned-announcement",
+        [
+          {:name=>"Arcum Dagsson", :old=>"banned", :new=>"legal"},
+           {:name=>"Yisan, the Wanderer Bard", :old=>"banned", :new=>"legal"},
+           {:name=>"Baral, Chief of Compliance", :old=>"legal", :new=>"banned"},
+           {:name=>"Demonic Tutor", :old=>"legal", :new=>"banned"},
+           {:name=>"Emrakul, the Aeons Torn", :old=>"legal", :new=>"banned"},
+           {:name=>"Enlightened Tutor", :old=>"legal", :new=>"banned"},
+           {:name=>"Imperial Seal", :old=>"legal", :new=>"banned"},
+           {:name=>"Mystical Tutor", :old=>"legal", :new=>"banned"},
+           {:name=>"Vampiric Tutor", :old=>"legal", :new=>"banned"},
+        ]
+      ]
+    )
+  end
 end

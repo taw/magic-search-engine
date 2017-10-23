@@ -16,7 +16,8 @@ describe "Banlist" do
   end
 
   it "vintage_banned_means_commander_banned" do
-    change_dates = ban_list.dates.values.uniq.sort
+    ban_list_dates = ban_list.events.map{|k,(d,u)| [k,d]}.to_h
+    change_dates = ban_list_dates.values.uniq.sort
     change_dates.each do |date|
       vintage_banlist  = ban_list.full_ban_list("vintage", date)
       commander_banlist = ban_list.full_ban_list("commander", date)
