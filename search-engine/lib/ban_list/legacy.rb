@@ -237,7 +237,7 @@ BanList.for_format("legacy") do
 
   change(
     "2009-10-01",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/september-18-2009-dci-banned-restricted-list-announcement-2009-09-18",
     "Dream Halls" => "legal",
     "Entomb" => "legal",
     "Metalworker" => "legal",
@@ -245,7 +245,7 @@ BanList.for_format("legacy") do
 
   change(
     "2010-07-01",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/magic-online/june-18-2010-dci-banned-restricted-list-announcement-2010-06-18",
     "Mystical Tutor" => "banned",
     "Grim Monolith" => "legal",
     "Illusionary Mask" => "legal",
@@ -253,7 +253,7 @@ BanList.for_format("legacy") do
 
   change(
     "2011-01-01",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/december-20-2010-dci-banned-restricted-list-announcement-2010-12-20",
     "Survival of the Fittest" => "banned",
     "Time Spiral" => "legal",
   )
