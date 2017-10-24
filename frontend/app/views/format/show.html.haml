@@ -50,6 +50,8 @@
                 = event[:new]
         - else
           %h6 Format start
+          - if url
+            %div= link_to "Announcement", url
           %ul
             - events.each do |event|
               %li
