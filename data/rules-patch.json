@@ -2,117 +2,31 @@
     "base": "2017-09-29",
     "patches": [
         {
-            "#": "set: Aenyr 1.2, for Mount Chromaziel",
+            "#": "for Mount Chromaziel",
             "type": "replace",
             "rule": "106.7",
             "find": "permanent",
             "replace": "object"
         },
         {
-            "type": "addSubtypes",
-            "cardType": "Planeswalker",
-            "subtypes": [
-                "Roselyn",
-                "Veila"
-            ]
+            "#": "set: Tesla",
+            "type": "add",
+            "rule": "107.10",
+            "text": "The front-face and back-face symbols on double-faced cards from the Tesla set are identical to the type symbols for artifact and sorcery, respectively. However, unlike the type symbols, these face symbols do have an effect on game play. (See rule 711.1.)"
         },
         {
-            "type": "addSubtypes",
-            "cardType": "Creature",
-            "subtypes": [
-                "Bard"
-            ]
+            "#": "for Plagiarized Results",
+            "type": "add",
+            "rule": "110.5",
+            "text": "A token may also enter the battlefield from the stack. (See rule 608.3b.) This is an exception to rules 110.5a and 110.5b; the token enters the battlefield under the control of the spell's controller and retains its text and characteristics."
         },
         {
-            "type": "addAbilityWords",
-            "abilityWords": [
-                "imaginarium",
-                "virtuoso"
-            ]
-        },
-        {
-            "#": "for Mount Chromaziel",
-            "type": "replace",
-            "rule": "305.6",
-            "find": "A land",
-            "replace": "A land in any zone"
-        },
-        {
-            "type": "insertText",
-            "rule": "601.2b",
-            "after": "If the player wishes to splice any cards onto the spell (see rule 702.46), he or she reveals those cards in his or her hand. ",
-            "text": "If the player wishes to apply any resonance effects to the spell, he or she announces his or her intention to do so. "
-        },
-        {
-            "#": "for the resonance-overload interaction",
-            "type": "insert",
-            "rule": "612.1a",
-            "text": "A text-changing effect applying to its source only changes the text in the text box where it is defined. Other text boxes, such as those added by copy effects, are not modified. Text-changing effects that change the “full text” of an object are exempt from this rule. See rule 612.5."
-        },
-        {
-            "#": "for Persona Shift",
-            "type": "append",
-            "rule": "613.3b",
-            "text": "If a spell or ability refers to the base power and/or toughness of a creature for a calculation, it uses the value as determined after this layer is applied, but before layers 7c–7e are applied."
-        },
-        {
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Resonance",
-                "subrules": [
-                    "Resonance appears on some instants and sorceries. It represents two abilities: a static ability that functions while the spell is on the stack and a spell ability which may create a replacement effect. “Resonance [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “If this spell's resonance cost was paid, exile it and, as you put your next instant or sorcery spell on the stack to cast it, put this card into its owner's graveyard. If you do, you may copy this card's text box onto that spell, except it doesn't have resonance, and have it become this card's colors in addition to its other colors.”",
-                    "The text box added by the copy effect is added below any existing text boxes. If the spell resolves, the instructions of its printed text will be followed first, and then the instructions of the any spell abilities in the copied text are followed. If multiple replacement effects add text boxes onto the same spell, the one added by the most recently applied effect is ordered last.",
-                    "Putting the exiled spell into its owner's graveyard is a replacement effect that replaces the proposal of the next spell (rules 601.2a–d). Whether or not to apply the copy and color-changing effect is a decision made during the step described in rule 601.2b."
-                ]
-            }
-        },
-        {
-            "#": "set: Dreamscape 2.50",
+            "#": "set: Dreamscape",
             "type": "addSpecialAction",
             "text": "A player who has a card with premonition in his or her hand may put that card face up into his or her library. This is a special action. A player can take this action any time he or she has priority, but only if he or she could begin to cast that card by putting it onto the stack."
         },
         {
-            "type": "addSubtypes",
-            "cardType": "Planeswalker",
-            "subtypes": [
-                "Evis",
-                "Yemma"
-            ]
-        },
-        {
-            "type": "addAbilityWords",
-            "abilityWords": [
-                "trance"
-            ]
-        },
-        {
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Dreamwalk",
-                "subrules": [
-                    "Dreamwalk is an evasion ability that modifies the rules for the declare blockers step. (See rule 509, “Declare Blockers Step.”)",
-                    "A creature with dreamwalk can't be blocked by untapped creatures. Instead, the defending player can choose tapped creatures that he or she controls to block an attacking creature with dreamwalk.",
-                    "Dreamwalk does not allow tapped creatures to block creatures without dreamwalk.",
-                    "Multiple instances of dreamwalk on the same creature are redundant."
-                ]
-            }
-        },
-        {
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Premonition",
-                "subrules": [
-                    "Premonition is a keyword that represents a static ability that functions while the card with premonition is in a player's hand. “Premonition N—[cost]” means “If you could begin to cast this card by putting it onto the stack from your hand and your library has at least N cards in it, you may pay [cost] and put it onto your library beneath the Nth card of your library. This card becomes face up in your library. This action doesn't use the stack.”",
-                    "Cards that are put into a player's library by the premonition ability are put into the library face up. This is an exception to rule 401.2. Players should keep face up cards in an orientation separate from the orientation of cards in a library that are not face-up or otherwise easily visible to all players.",
-                    "If a face up card with premonition would become the top card of a player's library, that player casts it without paying its mana cost instead. If that player can't, he or she turns the face up card face down instead and it becomes the top card of his or her library. It is no longer face up.",
-                    "If a one-shot effect causes a player to reveal (or look at, see rule 701.14d), shuffle, or change the order of a card or cards in a library, at least one of which is face up, each such card is turned face down, and then the cards are revealed, shuffled, or reordered.",
-                    "If a continuous effect causes a face up card to be revealed, that card is both revealed and is face up. If the card somehow ceases to be revealed, the card remains face up.",
-                    "If a one-shot effect causes a card to be put into the library “face up beneath the top N cards of [a player's] library,” that player puts that card into his or her library using the process described above."
-                ]
-            }
-        },
-        {
-            "#": "set: Ankheret 2.3, for Sobki, World Severer",
+            "#": "for Sobki, World Severer",
             "type": "replace",
             "rule": "119.1",
             "find": "Objects can deal damage",
@@ -153,141 +67,10 @@
             "text": "If an effect refers to the controller of a damage source, and the source of that damage is a player, it refers to that player."
         },
         {
-            "#": "for Sobki, World Severer",
-            "type": "replace",
-            "rule": "609.7a",
-            "find": "If an effect requires a player to choose a source of damage, he or she may choose a permanent;",
-            "replace": "If an effect requires a player to choose a source of damage, he or she may choose a player; a permanent;"
-        },
-        {
-            "type": "addSubtypes",
-            "cardType": "Planeswalker",
-            "subtypes": [
-                "Sobki"
-            ]
-        },
-        {
-            "type": "addAbilityWords",
-            "abilityWords": [
-                "expedition"
-            ]
-        },
-        {
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Decipher",
-                "subrules": [
-                    "Decipher is a keyword that represents two abilities. The first is a static ability that functions while the spell with decipher is on the stack. The second is a triggered ability that functions while the spell with decipher is on the stack. “Decipher [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “When you cast this spell, if a decipher cost was paid for it, copy it X times, where X is the number of instant and sorcery cards in your graveyard. If the spell has any targets, you may choose new targets for any of the copies.”"
-                ]
-            }
-        },
-        {
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Worship",
-                "subrules": [
-                    "Worship is an activated ability. “Worship [cost]” means “[Cost], {T}: If this permanent isn't devout, put a +1/+1 counter on this permanent and put a +1/+1 counter on target creature without worship. This permanent becomes devout. Activate this ability only any time you could cast a sorcery.”",
-                    "Devout is a designation that has no rules meaning other than to act as a marker that the worship ability and other spells and abilities can identify. Only permanents can be or become devout. Once a permanent becomes devout, it stays devout until it leaves the battlefield. Devout is neither an ability nor part of the permanent's copiable values.",
-                    "A creature “worships a creature” when one or more +1/+1 counters are put on the second creature as a result of the first creature's worship ability."
-                ]
-            }
-        },
-        {
-            "#": "for Iun, World Reborn",
-            "type": "replace",
-            "rule": "717.1",
-            "find": "One card \\(Karn Liberated\\) restarts the game\\.",
-            "replace": "Some cards allow a player to restart the game."
-        },
-        {
-            "#": "set: Lorado 21, for Wildcard",
+            "#": "for Wildcard",
             "type": "add",
             "rule": "202.3",
             "text": "Effects may change an object's converted mana cost. If an effect gives an object a new converted mana cost, the new converted mana cost replaces the previous converted mana cost the object had."
-        },
-        {
-            "type": "addSubtypes",
-            "cardType": "Planeswalker",
-            "subtypes": [
-                "Farajo",
-                "Gaile",
-                "Roselyn"
-            ]
-        },
-        {
-            "type": "addSubtypes",
-            "cardType": "Creature",
-            "subtypes": [
-                "Farmer"
-            ]
-        },
-        {
-            "type": "insert",
-            "rule": "700.6",
-            "text": {
-                "text": "One or more nonland permanents form a straight if they can be ordered in such a way that each but the first has a converted mana cost equal to one plus the converted mana cost of the previous permanent.",
-                "subrules": [
-                    "A “straight of N”, where N is a number, is a straight that contains exactly N permanents.",
-                    "“[A player's] longest straight” is the largest number of permanents in a straight consisting only of permanents controlled by that player."
-                ]
-            }
-        },
-        {
-            "type": "insert",
-            "rule": "702.94b",
-            "text": "Warband is a variant of the soulbond ability. “Warband” means “Whenever this creature attacks, if you control both this creature and another attacking creature and both are unpaired, you may pair this creature with another unpaired attacking creature you control until end of turn”."
-        },
-        {
-            "type": "replace",
-            "rule": "702.94c",
-            "find": "soulbond",
-            "replace": "soulbond or warband"
-        },
-        {
-            "type": "replace",
-            "rule": "702.94d",
-            "find": "soulbond",
-            "replace": "soulbond or warband"
-        },
-        {
-            "type": "append",
-            "rule": "702.94e",
-            "text": "(For example, a creature can't be paired with another creature using a soulbond ability and with a third creature using a warband ability at the same time.)"
-        },
-        {
-            "type": "replace",
-            "rule": "702.94f",
-            "find": "or it or the creature it’s paired with leaves the battlefield\\.",
-            "replace": "it or the creature it's paired with leaves the battlefield; or (for warband) the turn ends."
-        },
-        {
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Loaded",
-                "subrules": [
-                    "Loaded is a static ability. “Loaded N” means “This permanent enters the battlefield with N charge counters on it.”"
-                ]
-            }
-        },
-        {
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Reflex",
-                "subrules": [
-                    "Reflex is a static ability that functions in any zone from which you could cast the card it's on. Reflex [cost]” means “You may cast this card any time you could cast an instant by paying [cost] rather than paying its mana cost.”"
-                ]
-            }
-        },
-        {
-            "#": "set: Tesla 0.98, for Plagiarized Results",
-            "type": "add",
-            "rule": "110.5",
-            "text": "A token may also enter the battlefield from the stack. (See rule 608.3b.) This is an exception to rules 110.5a and 110.5b; the token enters the battlefield under the control of the spell's controller and retains its text and characteristics."
-        },
-        {
-            "type": "add",
-            "rule": "107.10",
-            "text": "The front-face and back-face symbols on double-faced cards from the Tesla set are identical to the type symbols for artifact and sorcery, respectively. However, unlike the type symbols, these face symbols do have an effect on game play. (See rule 711.1.)"
         },
         {
             "type": "addSubtypes",
@@ -297,62 +80,35 @@
             ]
         },
         {
-            "type": "addAbilityWords",
-            "abilityWords": [
-                "justice"
+            "type": "addSubtypes",
+            "cardType": "Planeswalker",
+            "subtypes": [
+                "Evis",
+                "Farajo",
+                "Gaile",
+                "Roselyn",
+                "Sobki",
+                "Veila",
+                "Yemma"
             ]
         },
         {
-            "#": "for Crazy Conspiracy // Groundbreaking Discovery",
-            "type": "add",
-            "rule": "607.2",
-            "text": "If one face of a double-faced card has an activated or triggered ability printed on it that instructs a player to exile one or more cards and the other face has an ability printed on it that refers to cards “exiled with [the first face],” these abilities are linked. The second ability refers only to cards in the exile zone that were put there as a result of an instruction to exile them in the first ability of that same object."
+            "type": "addSubtypes",
+            "cardType": "Creature",
+            "subtypes": [
+                "Bard",
+                "Farmer"
+            ]
         },
         {
-            "#": "for Plagiarized Results",
-            "type": "insert",
-            "rule": "608.3b",
-            "text": "If the object that's resolving is a permanent spell that's not represented by a card (i.e. a copy of a permanent spell), the object becomes a token as it enters the battlefield. It is no longer a copy of a spell."
-        },
-        {
-            "type": "insert",
-            "rule": "700.6",
-            "text": "Some continuous effects state that a game action or game state is “against the law” for a player. A player “breaks the law” if he or she performs that action of if the game state matches that state. This is not to be confused with illegal actions and has no immediate effect on gameplay; however, spells and abilities can identify that the law has been broken."
-        },
-        {
-            "type": "addKeywordAction",
-            "rule": {
-                "text": "Recharge",
-                "subrules": [
-                    "“Recharge” means “Create a colorless Canister artifact token with ‘{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.’”"
-                ]
-            }
-        },
-        {
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Revolution",
-                "subrules": [
-                    "Revolution is an activated ability of some double-faced permanent cards. “Revolution” means “{T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Activate this ability only any time you could cast a sorcery.”",
-                    "You “revolt” when you activate a revolution ability. This is not to be confused with the ability word revolt, which has no rules meaning and does not appear in rules text."
-                ]
-            }
-        },
-        {
-            "type": "append",
-            "rule": "711.1a",
-            "text": "On double-faced cards in the Tesla set, the front-face symbol is a chalice."
-        },
-        {
-            "type": "append",
-            "rule": "711.1b",
-            "text": "On double-faced cards in the Tesla set, the back-face symbol is a flame."
-        },
-        {
-            "#": "set: Magic Villains 29",
             "type": "addAbilityWords",
             "abilityWords": [
-                "machinate"
+                "expedition",
+                "imaginarium",
+                "justice",
+                "machinate",
+                "trance",
+                "virtuoso"
             ]
         },
         {
@@ -368,12 +124,212 @@
             "text": "An Aura without enchant can enchant any object or player."
         },
         {
+            "#": "for Mount Chromaziel",
+            "type": "replace",
+            "rule": "305.6",
+            "find": "A land",
+            "replace": "A land in any zone"
+        },
+        {
+            "#": "set: Aenyr, for resonance",
+            "type": "insertText",
+            "rule": "601.2b",
+            "after": "If the player wishes to splice any cards onto the spell (see rule 702.46), he or she reveals those cards in his or her hand. ",
+            "text": "If the player wishes to apply any resonance effects to the spell, he or she announces his or her intention to do so. "
+        },
+        {
+            "#": "for Crazy Conspiracy // Groundbreaking Discovery",
+            "type": "add",
+            "rule": "607.2",
+            "text": "If one face of a double-faced card has an activated or triggered ability printed on it that instructs a player to exile one or more cards and the other face has an ability printed on it that refers to cards “exiled with [the first face],” these abilities are linked. The second ability refers only to cards in the exile zone that were put there as a result of an instruction to exile them in the first ability of that same object."
+        },
+        {
+            "#": "for Plagiarized Results",
+            "type": "insert",
+            "rule": "608.3b",
+            "text": "If the object that's resolving is a permanent spell that's not represented by a card (i.e. a copy of a permanent spell), the object becomes a token as it enters the battlefield. It is no longer a copy of a spell."
+        },
+        {
+            "#": "for Sobki, World Severer",
+            "type": "replace",
+            "rule": "609.7a",
+            "find": "If an effect requires a player to choose a source of damage, he or she may choose a permanent;",
+            "replace": "If an effect requires a player to choose a source of damage, he or she may choose a player; a permanent;"
+        },
+        {
+            "#": "set: Aenyr, for the resonance-overload interaction",
+            "type": "insert",
+            "rule": "612.1a",
+            "text": "A text-changing effect applying to its source only changes the text in the text box where it is defined. Other text boxes, such as those added by copy effects, are not modified. Text-changing effects that change the “full text” of an object are exempt from this rule. See rule 612.5."
+        },
+        {
+            "#": "for Persona Shift",
+            "type": "append",
+            "rule": "613.3b",
+            "text": "If a spell or ability refers to the base power and/or toughness of a creature for a calculation, it uses the value as determined after this layer is applied, but before layers 7c–7e are applied."
+        },
+        {
+            "#": "set: Lorado",
+            "type": "insert",
+            "rule": "700.6",
+            "text": {
+                "text": "One or more nonland permanents form a straight if they can be ordered in such a way that each but the first has a converted mana cost equal to one plus the converted mana cost of the previous permanent.",
+                "subrules": [
+                    "A “straight of N”, where N is a number, is a straight that contains exactly N permanents.",
+                    "“[A player's] longest straight” is the largest number of permanents in a straight consisting only of permanents controlled by that player."
+                ]
+            }
+        },
+        {
+            "#": "set: Tesla",
+            "type": "insert",
+            "rule": "700.6",
+            "text": "Some continuous effects state that a game action or game state is “against the law” for a player. A player “breaks the law” if he or she performs that action of if the game state matches that state. This is not to be confused with illegal actions and has no immediate effect on gameplay; however, spells and abilities can identify that the law has been broken."
+        },
+        {
+            "#": "set: Tesla",
+            "type": "addKeywordAction",
+            "rule": {
+                "text": "Recharge",
+                "subrules": [
+                    "“Recharge” means “Create a colorless Canister artifact token with ‘{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.’”"
+                ]
+            }
+        },
+        {
             "#": "for Rotten to the Core",
             "type": "replaceRule",
             "rule": "702.5d",
             "text": "An Aura spell without enchant can target any object or player. An Aura without enchant can enchant any object or player."
         },
         {
+            "#": "set: Lorado",
+            "type": "insert",
+            "rule": "702.94b",
+            "text": "Warband is a variant of the soulbond ability. “Warband” means “Whenever this creature attacks, if you control both this creature and another attacking creature and both are unpaired, you may pair this creature with another unpaired attacking creature you control until end of turn”."
+        },
+        {
+            "#": "set: Lorado",
+            "type": "replace",
+            "rule": "702.94c",
+            "find": "soulbond",
+            "replace": "soulbond or warband"
+        },
+        {
+            "#": "set: Lorado",
+            "type": "replace",
+            "rule": "702.94d",
+            "find": "soulbond",
+            "replace": "soulbond or warband"
+        },
+        {
+            "#": "set: Lorado",
+            "type": "append",
+            "rule": "702.94e",
+            "text": "(For example, a creature can't be paired with another creature using a soulbond ability and with a third creature using a warband ability at the same time.)"
+        },
+        {
+            "#": "set: Lorado",
+            "type": "replace",
+            "rule": "702.94f",
+            "find": "or it or the creature it’s paired with leaves the battlefield\\.",
+            "replace": "it or the creature it's paired with leaves the battlefield; or (for warband) the turn ends."
+        },
+        {
+            "#": "set: Aenyr",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Resonance",
+                "subrules": [
+                    "Resonance appears on some instants and sorceries. It represents two abilities: a static ability that functions while the spell is on the stack and a spell ability which may create a replacement effect. “Resonance [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “If this spell's resonance cost was paid, exile it and, as you put your next instant or sorcery spell on the stack to cast it, put this card into its owner's graveyard. If you do, you may copy this card's text box onto that spell, except it doesn't have resonance, and have it become this card's colors in addition to its other colors.”",
+                    "The text box added by the copy effect is added below any existing text boxes. If the spell resolves, the instructions of its printed text will be followed first, and then the instructions of the any spell abilities in the copied text are followed. If multiple replacement effects add text boxes onto the same spell, the one added by the most recently applied effect is ordered last.",
+                    "Putting the exiled spell into its owner's graveyard is a replacement effect that replaces the proposal of the next spell (rules 601.2a–d). Whether or not to apply the copy and color-changing effect is a decision made during the step described in rule 601.2b."
+                ]
+            }
+        },
+        {
+            "#": "set: Dreamscape",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Dreamwalk",
+                "subrules": [
+                    "Dreamwalk is an evasion ability that modifies the rules for the declare blockers step. (See rule 509, “Declare Blockers Step.”)",
+                    "A creature with dreamwalk can't be blocked by untapped creatures. Instead, the defending player can choose tapped creatures that he or she controls to block an attacking creature with dreamwalk.",
+                    "Dreamwalk does not allow tapped creatures to block creatures without dreamwalk.",
+                    "Multiple instances of dreamwalk on the same creature are redundant."
+                ]
+            }
+        },
+        {
+            "#": "set: Dreamscape",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Premonition",
+                "subrules": [
+                    "Premonition is a keyword that represents a static ability that functions while the card with premonition is in a player's hand. “Premonition N—[cost]” means “If you could begin to cast this card by putting it onto the stack from your hand and your library has at least N cards in it, you may pay [cost] and put it onto your library beneath the Nth card of your library. This card becomes face up in your library. This action doesn't use the stack.”",
+                    "Cards that are put into a player's library by the premonition ability are put into the library face up. This is an exception to rule 401.2. Players should keep face up cards in an orientation separate from the orientation of cards in a library that are not face-up or otherwise easily visible to all players.",
+                    "If a face up card with premonition would become the top card of a player's library, that player casts it without paying its mana cost instead. If that player can't, he or she turns the face up card face down instead and it becomes the top card of his or her library. It is no longer face up.",
+                    "If a one-shot effect causes a player to reveal (or look at, see rule 701.14d), shuffle, or change the order of a card or cards in a library, at least one of which is face up, each such card is turned face down, and then the cards are revealed, shuffled, or reordered.",
+                    "If a continuous effect causes a face up card to be revealed, that card is both revealed and is face up. If the card somehow ceases to be revealed, the card remains face up.",
+                    "If a one-shot effect causes a card to be put into the library “face up beneath the top N cards of [a player's] library,” that player puts that card into his or her library using the process described above."
+                ]
+            }
+        },
+        {
+            "#": "set: Ankheret",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Decipher",
+                "subrules": [
+                    "Decipher is a keyword that represents two abilities. The first is a static ability that functions while the spell with decipher is on the stack. The second is a triggered ability that functions while the spell with decipher is on the stack. “Decipher [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “When you cast this spell, if a decipher cost was paid for it, copy it X times, where X is the number of instant and sorcery cards in your graveyard. If the spell has any targets, you may choose new targets for any of the copies.”"
+                ]
+            }
+        },
+        {
+            "#": "set: Ankheret",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Worship",
+                "subrules": [
+                    "Worship is an activated ability. “Worship [cost]” means “[Cost], {T}: If this permanent isn't devout, put a +1/+1 counter on this permanent and put a +1/+1 counter on target creature without worship. This permanent becomes devout. Activate this ability only any time you could cast a sorcery.”",
+                    "Devout is a designation that has no rules meaning other than to act as a marker that the worship ability and other spells and abilities can identify. Only permanents can be or become devout. Once a permanent becomes devout, it stays devout until it leaves the battlefield. Devout is neither an ability nor part of the permanent's copiable values.",
+                    "A creature “worships a creature” when one or more +1/+1 counters are put on the second creature as a result of the first creature's worship ability."
+                ]
+            }
+        },
+        {
+            "#": "set: Lorado",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Loaded",
+                "subrules": [
+                    "Loaded is a static ability. “Loaded N” means “This permanent enters the battlefield with N charge counters on it.”"
+                ]
+            }
+        },
+        {
+            "#": "set: Lorado",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Reflex",
+                "subrules": [
+                    "Reflex is a static ability that functions in any zone from which you could cast the card it's on. Reflex [cost]” means “You may cast this card any time you could cast an instant by paying [cost] rather than paying its mana cost.”"
+                ]
+            }
+        },
+        {
+            "#": "set: Tesla",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Revolution",
+                "subrules": [
+                    "Revolution is an activated ability of some double-faced permanent cards. “Revolution” means “{T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Activate this ability only any time you could cast a sorcery.”",
+                    "You “revolt” when you activate a revolution ability. This is not to be confused with the ability word revolt, which has no rules meaning and does not appear in rules text."
+                ]
+            }
+        },
+        {
+            "#": "set: Villains",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Possess",
@@ -386,6 +342,7 @@
             }
         },
         {
+            "#": "set: Villains",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Torture",
@@ -396,6 +353,39 @@
                     "Multiple instances of torture on the same spell are redundant."
                 ]
             }
+        },
+        {
+            "#": "set: Villains",
+            "type": "replace",
+            "rule": "711.1a",
+            "find": "Magic Origins",
+            "replace": "Magic Origins and Magic Villains"
+        },
+        {
+            "#": "set: Tesla",
+            "type": "append",
+            "rule": "711.1a",
+            "text": "On double-faced cards in the Tesla set, the front-face symbol is a chalice."
+        },
+        {
+            "#": "set: Villains",
+            "type": "replace",
+            "rule": "711.1b",
+            "find": "Magic Origins",
+            "replace": "Magic Origins and Magic Villains"
+        },
+        {
+            "#": "set: Tesla",
+            "type": "append",
+            "rule": "711.1b",
+            "text": "On double-faced cards in the Tesla set, the back-face symbol is a flame."
+        },
+        {
+            "#": "for Iun, World Reborn",
+            "type": "replace",
+            "rule": "717.1",
+            "find": "One card \\(Karn Liberated\\) restarts the game\\.",
+            "replace": "Some cards allow a player to restart the game."
         }
     ]
 }
