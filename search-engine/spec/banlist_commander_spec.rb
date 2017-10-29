@@ -1,6 +1,5 @@
 describe "Banlist" do
   include_context "db"
-  let(:ban_list) { BanList.new }
 
 # Based on:
 # http://www.mtgsalvation.com/forums/the-game/commander-edh/204244-edh-banlist-timeline
@@ -16,10 +15,9 @@ describe "Banlist" do
   end
 
   it "vintage_banned_means_commander_banned" do
-    change_dates = ban_list.dates.values.uniq.sort
-    change_dates.each do |date|
-      vintage_banlist  = ban_list.full_ban_list("vintage", date)
-      commander_banlist = ban_list.full_ban_list("commander", date)
+    BanList.all_change_dates.each do |date|
+      vintage_banlist  = BanList["vintage"].full_ban_list(date)
+      commander_banlist = BanList["commander"].full_ban_list(date)
 
       vintage_banned = vintage_banlist.select{|c,s| s == "banned"}.map(&:first)
       commander_banned = commander_banlist.select{|c,s| s == "banned"}.map(&:first)

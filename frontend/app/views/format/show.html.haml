@@ -35,9 +35,11 @@
 
     - if @events.present?
       %h4 Ban history
-      - @events.each do |date, events|
+      - @events.each do |date, url, events|
         - if date
           %h6= date
+          - if url
+            %div= link_to "Announcement", url
           %ul
             - events.each do |event|
               %li
@@ -48,6 +50,8 @@
                 = event[:new]
         - else
           %h6 Format start
+          - if url
+            %div= link_to "Announcement", url
           %ul
             - events.each do |event|
               %li

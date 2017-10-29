@@ -1,11 +1,20 @@
 describe "Banlist" do
   include_context "db"
-  let(:ban_list) { BanList.new }
-
   # Based on:
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2017" do
+    assert_banlist_changes "October 2017",
+      "mtgo commander banned", "Baral, Chief of Compliance",
+      "mtgo commander banned", "Demonic Tutor",
+      "mtgo commander banned", "Emrakul, the Aeons Torn",
+      "mtgo commander banned", "Enlightened Tutor",
+      "mtgo commander banned", "Imperial Seal",
+      "mtgo commander banned", "Mystical Tutor",
+      "mtgo commander banned", "Vampiric Tutor",
+      "mtgo commander unbanned", "Arcum Dagsson",
+      "mtgo commander unbanned", "Yisan, the Wanderer Bard"
+
     assert_banlist_changes "September 2017",
       "duel commander restricted", "Edgar Markov",
       "duel commander banned", "Fireblast",
@@ -648,11 +657,10 @@ describe "Banlist" do
   end
 
   it "legacy_was_just_vintage_plus_before_split" do
-    cutoff_date = ban_list.dates["sep 2004"]
-    change_dates = ban_list.dates.values.uniq.sort
-    change_dates.each do |date|
-      legacy_banlist  = ban_list.full_ban_list("legacy", date)
-      vintage_banlist = ban_list.full_ban_list("vintage", date)
+    cutoff_date = Date.parse("2004-09-20")
+    BanList.all_change_dates.each do |date|
+      legacy_banlist  = BanList["legacy"].full_ban_list(date)
+      vintage_banlist = BanList["vintage"].full_ban_list(date)
       vintage_plus_banlist = Hash[vintage_banlist.map{|k,v| [k, v == "restricted" ? "banned" : v]}]
       if date < cutoff_date
         legacy_banlist.should eq(vintage_plus_banlist)
@@ -752,5 +760,25 @@ describe "Banlist" do
     assert_full_banlist "two-headed giant", "1 October 2015", [
       "Erayo, Soratami Ascendant",
     ]
+  end
+
+  it "ban_events_for" do
+    BanList["mtgo commander"].events.should include(
+      [
+        Date.parse("2017-10-11"),
+        "http://wizardsmtgo.tumblr.com/post/166220048834/mtgo-commander-1v1-banned-announcement",
+        [
+          {:name=>"Arcum Dagsson", :old=>"banned", :new=>"legal"},
+           {:name=>"Yisan, the Wanderer Bard", :old=>"banned", :new=>"legal"},
+           {:name=>"Baral, Chief of Compliance", :old=>"legal", :new=>"banned"},
+           {:name=>"Demonic Tutor", :old=>"legal", :new=>"banned"},
+           {:name=>"Emrakul, the Aeons Torn", :old=>"legal", :new=>"banned"},
+           {:name=>"Enlightened Tutor", :old=>"legal", :new=>"banned"},
+           {:name=>"Imperial Seal", :old=>"legal", :new=>"banned"},
+           {:name=>"Mystical Tutor", :old=>"legal", :new=>"banned"},
+           {:name=>"Vampiric Tutor", :old=>"legal", :new=>"banned"},
+        ]
+      ]
+    )
   end
 end
