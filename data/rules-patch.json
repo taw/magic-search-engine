@@ -85,7 +85,10 @@
             "subtypes": [
                 "Evis",
                 "Farajo",
+                "Faralyn",
                 "Gaile",
+                "Gozani",
+                "Hohoja",
                 "Roselyn",
                 "Sobki",
                 "Veila",
@@ -107,6 +110,7 @@
                 "imaginarium",
                 "justice",
                 "machinate",
+                "spellbound",
                 "trance",
                 "virtuoso"
             ]
@@ -136,6 +140,12 @@
             "rule": "601.2b",
             "after": "If the player wishes to splice any cards onto the spell (see rule 702.46), he or she reveals those cards in his or her hand. ",
             "text": "If the player wishes to apply any resonance effects to the spell, he or she announces his or her intention to do so. "
+        },
+        {
+            "#": "for Berserker's Rage",
+            "type": "insert",
+            "rule": "603.7d",
+            "text": "If a delayed triggered ability includes any targets, those targets are chosen as the delayed triggered ability is put onto the stack, not the spell or ability creating the delayed triggered ability.\nExample: Gaze of Pain is a sorcery with the text “Until end of turn, whenever a creature you control attacks and isn't blocked, you may choose to have it deal damage equal to its power to a target creature. If you do, it assigns no combat damage this turn.” The targets for multiple instances of the delayed triggered ability may be different creatures, and they don't have to be announced before combat."
         },
         {
             "#": "for Crazy Conspiracy // Groundbreaking Discovery",
@@ -351,6 +361,37 @@
                     "A player may not put more than one -1/-1 counter on the same creature this way while casting that spell.",
                     "The torture ability isn't an additional or alternative cost and applies only after the total cost of the spell with torture is determined.",
                     "Multiple instances of torture on the same spell are redundant."
+                ]
+            }
+        },
+        {
+            "#": "set: Jannada",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Focus",
+                "subrules": [
+                    "Focus is a keyword that represents two abilities: a static ability that functions while the spell with focus is on the stack, and a triggered ability that functions while the spell with focus is on the stack. “Focus [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “When you cast this spell, if its focus cost was paid, draw a card.” Paying a spell's focus cost follows the rules for paying alternative costs in rules 601.2b and 601.2f–h."
+                ]
+            }
+        },
+        {
+            "#": "set: Jannada",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Invocation",
+                "subrules": [
+                    "Invocation is a keyword that represents two abilities. The first is a static ability that functions while the spell with invocation is on the stack. The second is a triggered ability that functions while the spell with invocation is on the stack. “Invocation” means “As an additional cost to cast this spell, you may tap two untapped creatures you control” and “When you cast this spell, if its invocation cost was paid, copy it. If the spell has any targets, you may choose new targets for the copy.” Paying a spell's invocation cost follows the rules for paying additional costs in rules 601.2b and 601.2f–h.",
+                    "If a spell has multiple instances of invocation, each is paid separately and triggers based on its own payment, not any other instance of invocation."
+                ]
+            }
+        },
+        {
+            "#": "set: Jannada",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Resurrect",
+                "subrules": [
+                    "Resurrect is a keyword that represents three static abilities. “Resurrect [cost]” means “You may cast this spell from your graveyard by paying [cost] rather than paying its mana cost”, “If this permanent was cast for its resurrect cost, it enters the battlefield with a +1/+1 counter on it”, and “If this permanent would leave the battlefield and it was cast for its resurrect cost, exile it instead of putting it anywhere else.” Casting a spell using its resurrect ability follows the rules for paying alternative costs in rules 601.2b and 601.2f–h."
                 ]
             }
         },
