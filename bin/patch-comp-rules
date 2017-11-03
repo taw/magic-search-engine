@@ -6,8 +6,11 @@ import more_itertools
 import re
 import subprocess
 
+SUBRULE_IDX = 'abcdefghijkmnpqrstuvwxyz'
+
 class CompRules:
     def __init__(self, comp_rules_f):
+        self.patches = set()
         lines = more_itertools.peekable(comp_rules_f)
         # title and date
         assert next(lines) == 'Magic: The Gathering Comprehensive Rules\n'
@@ -113,7 +116,7 @@ class CompRules:
             subsection_number = int(match.group(1))
             subsection = self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100]
             rule = subsection['rules'][int(match.group(2)) - 1]
-            return rule['subrules']['abcdefghijkmnpqrstuvwxyz'.index(match.group(3))]
+            return rule['subrules'][SUBRULE_IDX.index(match.group(3))]
         raise KeyError('Could not parse rule number: {!r}'.format(key))
 
     def __setitem__(self, key, value):
@@ -133,7 +136,7 @@ class CompRules:
             subsection_number = int(match.group(1))
             subsection = self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100]
             rule = subsection['rules'][int(match.group(2)) - 1]
-            rule['subrules']['abcdefghijkmnpqrstuvwxyz'.index(match.group(3))] = value
+            rule['subrules'][SUBRULE_IDX.index(match.group(3))] = value
             return
         raise KeyError('Could not parse rule number: {!r}'.format(key))
 
@@ -145,18 +148,18 @@ class CompRules:
             if patch['type'] == 'add':
                 match = re.fullmatch('([0-9]{3})\\.?', patch['rule'])
                 if match:
-                    subsection_number = int(match.group(1))
                     if isinstance(patch['text'], str):
                         rule = {'subrules': [], 'text': patch['text']}
                     else:
                         rule = patch['text']
-                    self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100]['rules'].append(rule)
+                    self[patch['rule']]['rules'].append(rule)
+                    self.patches.add('{}.{}'.format(match.group(1), len(self[patch['rule']]['rules'])))
                     continue
                 match = re.fullmatch('([0-9]{3})\\.([0-9]+)', patch['rule'])
                 if match:
-                    subsection_number = int(match.group(1))
-                    subsection = self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100]
-                    subsection['rules'][int(match.group(2)) - 1]['subrules'].append(patch['text'])
+                    rule = self[match.group(1)]['rules'][int(match.group(2)) - 1]
+                    rule['subrules'].append(patch['text'])
+                    self.patches.add(patch['rule'] + SUBRULE_IDX.index(len(rule['subrules'])))
                     continue
                 raise ValueError('Could not parse rule number: {!r}'.format(patch['rule']))
             elif patch['type'] == 'addAbilityWords':
@@ -166,10 +169,13 @@ class CompRules:
                     assert new_ability_word not in ability_words
                     ability_words.add(new_ability_word)
                 self['207.2c'] = '{}. The ability words are {}.'.format(match.group(1), join(sorted(ability_words)))
+                self.patches.add('207.2c')
             elif patch['type'] == 'addKeywordAbility':
                 self['702']['rules'].append(patch['rule'])
+                self.patches.add('702.{}'.format(len(self['702']['rules'])))
             elif patch['type'] == 'addKeywordAction':
                 self['701']['rules'].append(patch['rule'])
+                self.patches.add('701.{}'.format(len(self['701']['rules'])))
             elif patch['type'] == 'addSpecialAction':
                 numbers = [
                     'zero',
@@ -194,6 +200,7 @@ class CompRules:
                 num_special_actions += 1
                 self['115.2'] = 'There are {} special actions:'.format(numbers[num_special_actions] if num_special_actions < len(numbers) else num_special_actions)
                 self['115']['rules'][1]['subrules'].append(patch['text'])
+                self.patches |= {'115.2', '115.2{}'.format(SUBRULE_IDX.index(len(self['115']['rules'][1]['subrules'])))}
             elif patch['type'] == 'addSubtypes':
                 rule = self['205.3']
                 subrule_id = {
@@ -217,17 +224,23 @@ class CompRules:
                     if new_subtype not in subtypes:
                         subtypes[new_subtype] = new_subtype
                 self['205.3{}'.format(subrule_id)] = '{}. The {} types are {}.{}'.format(match.group(1), match.group(2), join(v for k, v in sorted(subtypes.items())), match.group(4))
+                self.patches.add('205.3{}'.format(subrule_id))
             elif patch['type'] == 'append':
                 self[patch['rule']] += ' ' + patch['text']
+                self.patches.add(patch['rule'])
             elif patch['type'] == 'insert':
                 self.insert(patch['rule'], patch['text'])
+                self.patches.add(patch['rule'])
             elif patch['type'] == 'insertText':
                 left, right = self[patch['rule']].split(patch['after'], 2)
                 self[patch['rule']] = left + patch['after'] + patch['text'] + right
+                self.patches.add(patch['rule'])
             elif patch['type'] == 'replace':
                 self[patch['rule']] = re.sub(patch['find'], patch['replace'], self[patch['rule']])
+                self.patches.add(patch['rule'])
             elif patch['type'] == 'replaceRule':
                 self[patch['rule']] = patch['text']
+                self.patches.add(patch['rule'])
             else:
                 raise NotImplementedError('Unknown patch type: {!r}'.format(patch['type']))
 
@@ -240,7 +253,14 @@ class CompRules:
         # header
         header = '\n'.join(self.header.split('\n')[:-4])
         intro, contents = header.split('Contents', 1)
-        header = 'Introduction\n\n This document contains a series of house rules for playing the Custom Constructed formats. For ease of reading, they are presented within the context of the Comprehensive Rules which they are patching. These are not the official Magic rules, you can find those at ' + intro.split(' ')[-1] + 'Contents' + contents
+        header = ''.join([
+            'Introduction\n\n This document contains a series of house rules for playing the Custom Constructed formats. For ease of reading, they are presented within the context of the Comprehensive Rules which they are patching.\n\nThe following rules have been patched: ',
+            join(sorted(self.patches)),
+            '\n\nThese are not the official Magic rules, you can find those at ',
+            intro.split(' ')[-1],
+            'Contents',
+            contents
+        ])
         comp_rules_f.write(header)
         # rules
         for i, section in enumerate(self.sections):
@@ -256,7 +276,7 @@ class CompRules:
                     comp_rules_f.write('\n')
                     comp_rules_f.write('{}.{}. {}\n'.format(subsection_number, rule_number, rule['text']))
                     for l, subrule in enumerate(rule['subrules']):
-                        subrule_number = 'abcdefghijkmnpqrstuvwxyz'[l]
+                        subrule_number = SUBRULE_IDX[l]
                         comp_rules_f.write('\n')
                         comp_rules_f.write('{}.{}{} {}\n'.format(subsection_number, rule_number, subrule_number, subrule))
         # footer
@@ -281,7 +301,7 @@ class CompRules:
             subsection_number = int(match.group(1))
             subsection = self.sections[subsection_number // 100 - 1]['subsections'][subsection_number % 100]
             rule = subsection['rules'][int(match.group(2)) - 1]
-            rule['subrules'].insert('abcdefghijkmnpqrstuvwxyz'.index(match.group(3)), value)
+            rule['subrules'].insert(SUBRULE_IDX.index(match.group(3)), value)
             return
         raise KeyError('Could not parse rule number: {!r}'.format(key))
 
