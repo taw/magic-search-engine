@@ -41,9 +41,12 @@ class ConditionPrint < Condition
   def parse_query_date(db)
     date = @date
     return [@date, 3] if @date.is_a?(Date)
-    db.sets[date.downcase].tap do |set|
-      return [set.release_date, 3] if set and set.release_date
-    end
+
+    set = db.sets.values.find{|set|
+      set.code.downcase == @date.downcase or set.gatherer_code.downcase == @date.downcase
+    }
+    return [set.release_date, 3] if set and set.release_date
+
     # Fancy precision reduction algorithm is needed instead of placeholders like
     # "2001" -> "2001-01-01" as >=/> would require start of year, <=/< end of year
     # and = would require both anyway
