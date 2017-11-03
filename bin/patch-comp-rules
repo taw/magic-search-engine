@@ -255,7 +255,7 @@ class CompRules:
         intro, contents = header.split('Contents', 1)
         header = ''.join([
             'Introduction\n\n This document contains a series of house rules for playing the Custom Constructed formats. For ease of reading, they are presented within the context of the Comprehensive Rules which they are patching.\n\nThe following rules have been patched: ',
-            join(sorted(self.patches)),
+            join(sorted(self.patches, key=rule_sort_key)),
             '\n\nThese are not the official Magic rules, you can find those at ',
             intro.split(' ')[-1],
             'Contents',
@@ -342,6 +342,18 @@ def split(sequence_str, *, word='and', default=None):
             yield item[len(word) + 1:]
         else:
             yield item
+
+def rule_sort_key(key):
+    match = re.fullmatch('([0-9]{3})\\.?', key)
+    if match:
+        return int(match.group(1)), None, None
+    match = re.fullmatch('([0-9]{3})\\.([0-9]+)', key)
+    if match:
+        return int(match.group(1)), int(match.group(2))
+    match = re.fullmatch('([0-9]{3})\\.([0-9]+)([abcdefghijkmnpqrstuvwxyz])', key)
+    if match:
+        return int(match.group(1)), int(match.group(2)), match.group(3)
+    raise KeyError('Could not parse rule number: {!r}'.format(key))
 
 if __name__ == '__main__':
     print('[....] parsing Comprehensive Rules', end='', flush=True)
