@@ -238,7 +238,10 @@ class CompRules:
         comp_rules_f.write('These rules are effective as of {0:%B} {1}, {0:%Y}.\n'.format(self.date, self.date.day))
         comp_rules_f.write('\n')
         # header
-        comp_rules_f.write(self.header)
+        header = '\n'.join(self.header.split('\n')[:-4])
+        intro, contents = header.split('Contents', 1)
+        header = 'Introduction\n\n This document contains a series of house rules for playing the Custom Constructed formats. For ease of reading, they are presented within the context of the Comprehensive Rules which they are patching. These are not the official Magic rules, you can find those at ' + intro.split(' ')[-1] + 'Contents' + contents
+        comp_rules_f.write(header)
         # rules
         for i, section in enumerate(self.sections):
             section_number = i + 1
