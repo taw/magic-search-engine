@@ -14,6 +14,10 @@ describe "Time Travel Test" do
     assert_search_results "time:nph t:jace print=vma"
   end
 
+  it "time travel Gatherer/MCI names" do
+    assert_search_equal "time:MRD f:standard", "time:mi f:standard"
+  end
+
   it "time travel standard legal reprints activate in block" do
     assert_search_results 'f:"return to ravnica block" naturalize', "Naturalize"
     assert_search_results 'time:rtr f:"return to ravnica block" naturalize'
