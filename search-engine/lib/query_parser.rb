@@ -51,16 +51,13 @@ private
   end
 
   def parse_query
-    old_time, @time = @time, Date.today
+    old_time, @time = @time, nil
     cond = parse_cond_list
-    if @time
-      printed_early = ConditionPrint.new("<=", @time)
-      cond = conds_to_query([cond, printed_early])
-      cond.metadata! :time, @time
-      cond
-    else
-      cond
-    end
+    @time = Date.today unless @time
+    printed_early = ConditionPrint.new("<=", @time)
+    cond = conds_to_query([cond, printed_early])
+    cond.metadata! :time, @time
+    cond
   ensure
     @time = old_time
   end
