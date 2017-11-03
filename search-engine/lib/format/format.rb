@@ -150,6 +150,8 @@ class Format
         "customedh"                  => FormatCustomCommander,
         "cc"                         => FormatCustomCommander,
         "cedh"                       => FormatCustomCommander,
+        "custompauper"               => FormatCustomPauper,
+        "cp"                         => FormatCustomPauper,
       }
     end
 
