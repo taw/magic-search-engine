@@ -138,7 +138,9 @@ class FormatCompRules
   end
 
   def para!(text)
-    @output << "    %p #{text.oneline}"
+    text.split("\n").each do |para_line|
+      @output << "    %p #{resolve_references(para_line)}"
+    end
   end
 
   ## Everything else
