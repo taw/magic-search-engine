@@ -54,10 +54,14 @@ private
     old_time, @time = @time, nil
     cond = parse_cond_list
     @time = Date.today unless @time || inner
-    printed_early = ConditionPrint.new("<=", @time)
-    cond = conds_to_query([cond, printed_early])
-    cond.metadata! :time, @time
-    cond
+    if @time
+      printed_early = ConditionPrint.new("<=", @time)
+      cond = conds_to_query([cond, printed_early])
+      cond.metadata! :time, @time
+      cond
+    else
+      cond
+    end
   ensure
     @time = old_time
   end
