@@ -51,7 +51,7 @@ private
   end
 
   def parse_query
-    old_time, @time = @time, nil
+    old_time, @time = @time, Date.today
     cond = parse_cond_list
     if @time
       printed_early = ConditionPrint.new("<=", @time)
