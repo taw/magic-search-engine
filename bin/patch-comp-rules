@@ -159,7 +159,7 @@ class CompRules:
                 if match:
                     rule = self[match.group(1)]['rules'][int(match.group(2)) - 1]
                     rule['subrules'].append(patch['text'])
-                    self.patches.add(patch['rule'] + SUBRULE_IDX.index(len(rule['subrules'])))
+                    self.patches.add(patch['rule'] + SUBRULE_IDX[len(rule['subrules'])])
                     continue
                 raise ValueError('Could not parse rule number: {!r}'.format(patch['rule']))
             elif patch['type'] == 'addAbilityWords':
@@ -200,7 +200,7 @@ class CompRules:
                 num_special_actions += 1
                 self['115.2'] = 'There are {} special actions:'.format(numbers[num_special_actions] if num_special_actions < len(numbers) else num_special_actions)
                 self['115']['rules'][1]['subrules'].append(patch['text'])
-                self.patches |= {'115.2', '115.2{}'.format(SUBRULE_IDX.index(len(self['115']['rules'][1]['subrules'])))}
+                self.patches |= {'115.2', '115.2{}'.format(SUBRULE_IDX[len(self['115']['rules'][1]['subrules'])])}
             elif patch['type'] == 'addSubtypes':
                 rule = self['205.3']
                 subrule_id = {
