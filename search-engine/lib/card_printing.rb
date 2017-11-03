@@ -27,15 +27,18 @@ class CardPrinting
     @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
     @frame = begin
       eight_edition_release_date = Date.new(2003,7,28)
+      m15_release_date = Date.new(2014,7,18)
       if @release_date < eight_edition_release_date
         "old"
       elsif @set.code == "tsts"
         "old"
       elsif @timeshifted and @set.code == "fut"
         "future"
-      else
+      elsif @release_date < m15_release_date
         # Were there any 8e+ old frame printings?
-        "new"
+        "modern"
+      else
+        "m15"
       end
     end
 
