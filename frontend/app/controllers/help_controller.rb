@@ -4,7 +4,7 @@ class HelpController < ApplicationController
   end
 
   def rules
-    @title = "Magic: The Gathering Comprehensive Rules"
+    @title = "Custom Magic Comprehensive Rules"
   end
 
   def contact
