@@ -4,6 +4,7 @@ class ConditionFrame < ConditionSimple
   end
 
   def match?(card)
+    return card.frame == "modern" || card.frame == "m15" if @frame == "new"
     card.frame == @frame
   end
 
