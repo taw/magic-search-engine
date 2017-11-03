@@ -33,7 +33,7 @@ class QueryParser
     else
       @tokens, @warnings = QueryTokenizer.new.tokenize(str)
       @metadata = {}
-      query = parse_query
+      query = parse_query(false)
       [query, @metadata, @warnings]
     end
   end
@@ -50,10 +50,10 @@ private
     end
   end
 
-  def parse_query
+  def parse_query(inner)
     old_time, @time = @time, nil
     cond = parse_cond_list
-    @time = Date.today unless @time
+    @time = Date.today unless @time || inner
     printed_early = ConditionPrint.new("<=", @time)
     cond = conds_to_query([cond, printed_early])
     cond.metadata! :time, @time
@@ -117,7 +117,7 @@ private
     case @tokens[0][0]
     when :open
       @tokens.shift
-      subquery = parse_query
+      subquery = parse_query(true)
       @tokens.shift if @tokens[0] == [:close] # Ignore mismatched
       subquery
     when :close
