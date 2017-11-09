@@ -3,7 +3,7 @@ describe "Full Database Test" do
 
   it "stats" do
     db.number_of_cards.should eq(17732)
-    db.number_of_printings.should eq(34463)
+    db.number_of_printings.should eq(34775)
   end
 
   it "block_codes" do
@@ -114,6 +114,7 @@ describe "Full Database Test" do
 
     assert_search_results "e:soi lastprint>soi",
       "Dual Shot",
+      "Engulf the Shore",
       "Forest",
       "Forsaken Sanctuary",
       "Foul Orchard",
