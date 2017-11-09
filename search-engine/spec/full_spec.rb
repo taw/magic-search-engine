@@ -378,6 +378,12 @@ describe "Full Database Test" do
     assert_search_results "t:planeswalker -t:legendary"
   end
 
+  it "frame:" do
+    assert_search_equal "frame:modern OR frame:m15", "frame:new"
+    assert_search_differ "frame:modern", "frame:new"
+    assert_search_differ "frame:m15", "frame:new"
+  end
+
   def legality_information(name, date=nil)
     db.cards[name.downcase].legality_information(date)
   end
