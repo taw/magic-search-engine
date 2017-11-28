@@ -140,7 +140,7 @@ describe "Formats" do
   # We don't have all historical legality for Duel Commander yet,
   # maybe add it at some later point
   it "duel commander" do
-    assert_count_results 'banned:"duel commander"', 60
+    assert_count_results 'banned:"duel commander"', 61
     assert_count_results 'restricted:"duel commander"', 14
   end
 
