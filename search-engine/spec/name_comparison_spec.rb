@@ -36,4 +36,13 @@ describe "Name Comparison" do
       "Painter's Servant",
       "Grindstone"
   end
+
+  it "aliases" do
+    assert_search_equal "name=bitterblossom", "n=bitterblossom"
+    assert_search_equal "name=bitterblossom", "n:bitterblossom"
+    assert_search_equal "name=bitterblossom", "name:bitterblossom"
+    assert_search_equal "name=/goblin/", "n=/goblin/"
+    assert_search_equal "name=/goblin/", "n:/goblin/"
+    assert_search_equal "name=/goblin/", "name:/goblin/"
+  end
 end
