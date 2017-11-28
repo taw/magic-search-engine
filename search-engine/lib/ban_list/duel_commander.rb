@@ -99,4 +99,10 @@ BanList.for_format("duel commander") do
     "Sulfuric Vortex" => "banned",
     "Edgar Markov" => "restricted",
   )
+
+  change(
+    "2017-11-27",
+    "https://www.facebook.com/notes/mtg-duel-commander/november-2017-rules-bannedrestricted-update/2016571995260364/",
+    "Fastbond" => "banned",
+  )
 end

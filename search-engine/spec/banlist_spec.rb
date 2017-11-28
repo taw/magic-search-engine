@@ -4,6 +4,9 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2017" do
+    assert_banlist_changes "November 2017",
+      "duel commander banned", "Fastbond"
+
     assert_banlist_changes "October 2017",
       "mtgo commander banned", "Baral, Chief of Compliance",
       "mtgo commander banned", "Demonic Tutor",
