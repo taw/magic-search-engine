@@ -24060,6 +24060,12 @@
                     "JAN"
                 ],
                 "rarity": "Mythic Rare",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If the effects of this spell cause multiple abilities to trigger (for example, a \u201cwhenever you gain life\u201d trigger and a landfall trigger), wait until Commander's Coup finishes resolving, then starting with the active player, each player puts his or her triggers on the stack in any order."
+                    }
+                ],
                 "text": "If an opponent controls more creatures than you, create four 1/1 white Soldier creature tokens. If an opponent has more cards in hand than you, draw a card. If an opponent has more life than you, you gain 4 life. If an opponent controls more lands than you, you may search your library for a land card, put it onto the battlefield, then shuffle your library.",
                 "type": "Instant",
                 "types": [
@@ -24153,6 +24159,28 @@
                     "JAN"
                 ],
                 "rarity": "Uncommon",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "Deflect can prevent damage that would be dealt to you, one or more creatures you control, and/or one or more planeswalkers you control."
+                    },
+                    {
+                        "date": "2017-11-28",
+                        "text": "Deflect can prevent damage from multiple sources dealing damage simultaneously (such as during combat). If the chosen value for X won't prevent all the damage, you choose which sources to prevent damage from."
+                    },
+                    {
+                        "date": "2017-11-28",
+                        "text": "If damage is dealt to multiple permanents you control, or is dealt to you and at least one permanent you control, you choose which of that damage to prevent if the chosen value for X won't prevent all the damage. For example, if 3 damage would be dealt to you and to each of two creatures you control, and Deflect will prevent the next 3 damage, you might choose to prevent the next 2 damage it would deal to you and the next 1 damage it would deal to one of the creatures, among other choices. You don't decide until the point at which the damage would be dealt."
+                    },
+                    {
+                        "date": "2017-11-28",
+                        "text": "Deflect's effect is not a redirection effect. If it prevents damage, Deflect (not the original source) deals damage to each opponent as part of that prevention effect. Deflect is the source of the new damage, so the characteristics of the original source (such as its color, or whether it had lifelink or deathtouch) don't affect this damage. The new damage is not combat damage, even if the prevented damage was. Since you control the source of the new damage, for each opponent who controls one or more planeswalkers, you may have Deflect deal damage to one of those planeswalkers instead of that opponent."
+                    },
+                    {
+                        "date": "2017-11-28",
+                        "text": "If Deflect prevents damage, excess damage (if any) dealt by that source is dealt at the same time. Immediately afterward, as part of that same prevention effect, Deflect deals its damage. This happens before state-based actions are checked, and before the spell or ability that caused damage to be dealt resumes its resolution."
+                    }
+                ],
                 "text": "Prevent the next X damage that would be dealt to you and/or permanents you control this turn. If damage is prevented this way, Deflect deals that much damage to each opponent.",
                 "type": "Instant",
                 "types": [
@@ -24532,6 +24560,12 @@
                     "JAN"
                 ],
                 "rarity": "Rare",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If you control no creatures and Prairie Tromper and another creature enter the battlefield at the same time, it doesn't get a +1/+1 counter."
+                    }
+                ],
                 "subtypes": [
                     "Human",
                     "Scout"
@@ -24832,6 +24866,12 @@
                     "JAN"
                 ],
                 "rarity": "Common",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "You choose the color as Valorous Stand resolves."
+                    }
+                ],
                 "text": "Focus {3}{W} (You may cast this spell for its Focus cost. When you do, draw a card.)\nTarget creature gets +1/+1 until end of turn. It gains protection from the color of your choice until end of turn.",
                 "type": "Instant",
                 "types": [
@@ -25508,6 +25548,12 @@
                     "JAN"
                 ],
                 "rarity": "Uncommon",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Elemental"
                 ],
@@ -25645,6 +25691,12 @@
                     "JAN"
                 ],
                 "rarity": "Rare",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "After Skyspan Thunderbird is declared as an attacker, or is put onto the battlefield attacking, its second ability may be activated. Unless Skyspan Thunderbird leaves combat, it continues to be attacking (so its ability may still be activated) through the end of combat step."
+                    }
+                ],
                 "subtypes": [
                     "Elemental",
                     "Bird"
@@ -25964,6 +26016,12 @@
                     "JAN"
                 ],
                 "rarity": "Uncommon",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Demon",
                     "Ape"
@@ -26021,6 +26079,20 @@
                     "JAN"
                 ],
                 "rarity": "Rare",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    },
+                    {
+                        "date": "2017-11-28",
+                        "text": "You must still cast Bog Dweller's mana cost when you cast it from exile."
+                    },
+                    {
+                        "date": "2017-11-28",
+                        "text": "Bog Dweller's abilities don't change when you can cast creature spells: when you have priority during your main phase when the stack is empty."
+                    }
+                ],
                 "subtypes": [
                     "Plant",
                     "Horror"
@@ -26050,6 +26122,12 @@
                     "JAN"
                 ],
                 "rarity": "Common",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Zombie",
                     "Ape"
@@ -26235,6 +26313,12 @@
                     "JAN"
                 ],
                 "rarity": "Mythic Rare",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Demon"
                 ],
@@ -26373,6 +26457,12 @@
                     "JAN"
                 ],
                 "rarity": "Common",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Zombie",
                     "Warrior"
@@ -26455,6 +26545,12 @@
                     "JAN"
                 ],
                 "rarity": "Uncommon",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Zombie",
                     "Shaman"
@@ -26570,6 +26666,12 @@
                     "JAN"
                 ],
                 "rarity": "Common",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Vampire"
                 ],
@@ -27283,6 +27385,12 @@
                     "JAN"
                 ],
                 "rarity": "Uncommon",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Human",
                     "Shaman"
@@ -27398,6 +27506,12 @@
                     "JAN"
                 ],
                 "rarity": "Common",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "You may play a land card exiled this way, but only if you still have your land play for the turn available."
+                    }
+                ],
                 "text": "Exile the top two cards of your library. Until end of turn, you may play those cards.",
                 "type": "Instant",
                 "types": [
@@ -27555,6 +27669,12 @@
                     "JAN"
                 ],
                 "rarity": "Common",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Goblin",
                     "Warrior"
@@ -27774,6 +27894,12 @@
                     "JAN"
                 ],
                 "rarity": "Common",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Goblin",
                     "Warrior"
@@ -27804,6 +27930,12 @@
                     "JAN"
                 ],
                 "rarity": "Rare",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Elemental",
                     "Bird"
@@ -28011,6 +28143,12 @@
                     "JAN"
                 ],
                 "rarity": "Common",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Elephant"
                 ],
@@ -28144,6 +28282,12 @@
                     "JAN"
                 ],
                 "rarity": "Common",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Spider"
                 ],
@@ -28399,6 +28543,12 @@
                     "JAN"
                 ],
                 "rarity": "Uncommon",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Elephant"
                 ],
@@ -28565,6 +28715,12 @@
                     "JAN"
                 ],
                 "rarity": "Common",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Human",
                     "Warrior"
@@ -29039,6 +29195,12 @@
                     "JAN"
                 ],
                 "rarity": "Rare",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "The first replacement effect applies to the result of the second one. So if an opponent would draw extra cards, you end up drawing twice that many cards instead."
+                    }
+                ],
                 "subtypes": [
                     "Human",
                     "Pirate"
@@ -29225,6 +29387,12 @@
                     "JAN"
                 ],
                 "rarity": "Mythic Rare",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Crocodile"
                 ],
@@ -29389,6 +29557,12 @@
                     "JAN"
                 ],
                 "rarity": "Uncommon",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "If a spell cast for its resurrect cost is countered, it's put into its owner's graveyard."
+                    }
+                ],
                 "subtypes": [
                     "Skeleton",
                     "Beast"
@@ -35273,6 +35447,12 @@
                     "LDO"
                 ],
                 "rarity": "Uncommon",
+                "rulings": [
+                    {
+                        "date": "2017-11-28",
+                        "text": "When using the first mode, the Equipment will return under your control regardless of who owns it, who controlled it previously, or what creature (if any) it was attached to."
+                    }
+                ],
                 "text": "Choose one\u2014\n\u2022 Exile target Equipment, then return it to the battlefield attached to target creature.\n\u2022 Discard a card. If you do, draw two cards.",
                 "type": "Instant",
                 "types": [
