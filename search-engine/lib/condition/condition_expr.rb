@@ -74,9 +74,13 @@ class ConditionExpr < ConditionSimple
     when /\A\*[2²]\z/
       [:starsq, 0]
     when /\Ax\z/i
-      [:x]
+      [:x, 0]
+    when /\A\?\z/i
+      [:question_mark, 0]
+    when /\A∞\z/
+      [:number, Float::INFINITY]
     else
-      warn "Expr variable parse error: #{expr}"
+      warn "Expr variable parse error: #{expr.inspect}"
       [nil, nil]
     end
   end

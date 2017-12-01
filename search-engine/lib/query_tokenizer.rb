@@ -15,6 +15,9 @@ class QueryTokenizer
       elsif s.scan(%r[(R&D\b)]i)
         # special case, not split cards
         tokens << [:test, ConditionWord.new(s[1])]
+      elsif s.scan(%r[(\bDungeons\s*&\s*Dragons\b)]i)
+        # special case, not split cards
+        tokens << [:test, ConditionWord.new(s[1])]
       elsif s.scan(%r[[/&]+]i)
         tokens << [:slash_slash]
       elsif s.scan(/-/i)

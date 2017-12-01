@@ -33,7 +33,7 @@ describe "Inedxer hacks" do
   end
 
   it "is:funny" do
-    assert_search_equal "is:funny", "e:uh,ug,uqc,hho -t:basic"
+    assert_search_equal "is:funny", "e:uh,ug,uqc,hho,ust -t:basic -(Steamflogger Boss)"
   end
 
   it "Nissa's X loyallty" do
