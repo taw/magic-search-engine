@@ -33,6 +33,15 @@ describe "Unsets" do
     "cmc>1"  .should exclude_cards "Little Girl"
   end
 
+  it "infinite power" do
+    "pow>30".should return_cards "B.F.M. (Big Furry Monster)",
+      "Infinity Elemental"
+    "pow=∞".should return_cards "Infinity Elemental"
+    "pow>=∞".should return_cards "Infinity Elemental"
+    assert_search_equal "pow<∞", "pow<10000"
+    assert_search_equal "pow<=∞", "pow<=10000 or (Infinity Elemental)"
+  end
+
   it "is:funny" do
     "is:funny"          .should include_cards "Little Girl"
     "is:new"            .should include_cards "Little Girl"
