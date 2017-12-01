@@ -1,5 +1,5 @@
 describe "Unsets" do
-  include_context "db", "ug", "uh", "uqc", "hho"
+  include_context "db", "ug", "uh", "uqc", "hho", "ust"
 
   it "half power" do
     "pow=1"  .should exclude_cards "Little Girl"
@@ -45,6 +45,7 @@ describe "Unsets" do
       "Mountain",
       "Plains",
       "Swamp",
+      "Steamflogger Boss",
     )
     "not:new"           .should include_cards(
       "1996 World Champion",
@@ -53,7 +54,7 @@ describe "Unsets" do
       "Shichifukujin Dragon",
       "Splendid Genesis"
     )
-    "not:new".should equal_search "-e:uh,hho -(Robot Chicken)"
+    "not:new".should equal_search "-e:uh,hho,ust -(Robot Chicken)"
     "not:silver-bordered".should return_cards(
       "Forest",
       "Mountain",

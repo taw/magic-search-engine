@@ -33,10 +33,12 @@ describe "Regexp" do
     assert_search_results 'o:/\d{3,}/',
       "1996 World Champion",
       "Ajani, Mentor of Heroes",
+      "As Luck Would Have It",
       "Battle of Wits",
       "Helix Pinnacle",
       "Knight of the Hokey Pokey",
-      "Mox Lotus"
+      "Mox Lotus",
+      "Rules Lawyer"
   end
 
   it "regexp flavor text" do

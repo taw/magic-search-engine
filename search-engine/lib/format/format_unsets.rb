@@ -4,6 +4,6 @@ class FormatUnsets < Format
   end
 
   def build_included_sets
-    Set["ug", "uh"]
+    Set["ug", "uh", "ust"]
   end
 end
