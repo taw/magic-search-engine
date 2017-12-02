@@ -7,7 +7,8 @@ describe "Color Indicator Test" do
     assert_search_results "in:r t:creature cmc=0",
       "Crimson Kobolds",
       "Crookshank Kobolds",
-      "Kobolds of Kher Keep"
+      "Kobolds of Kher Keep",
+      "Half-Orc, Half-"
     assert_search_results "in:r t:instant",
       "Pact of the Titan"
     assert_search_results "in:w t:sorcery",

@@ -147,7 +147,7 @@ class Indexer
 
     cards.each do |card_name, card_data|
       printings = card_data["printings"].map(&:first)
-      if printings.all?{|set_code| %W[uh ug uqc hho arena rep].include?(set_code) }
+      if printings.all?{|set_code| %W[uh ug uqc hho arena rep ust].include?(set_code) }
         card_data["funny"] = true
       end
     end
@@ -312,6 +312,23 @@ class Indexer
     cards.each do |name, card|
       next unless (card["types"] || []).include?("Planeswalker")
       card["text"] = card["text"].gsub(%r[^([\+\-\−]?(?:\d+|X)):]) { "[#{$1}]:" }
+    end
+
+    # Fix Unstable borders
+    cards.each do |name, card|
+      supertypes = (card["supertypes"] || [])
+      subtypes = (card["subtypes"] || [])
+      if supertypes.include?("Basic") or subtypes.include?("Contraption")
+        card["printings"].each do |set, printing|
+          next unless set == "ust"
+          printing["border"] = "none"
+        end
+      end
+    end
+
+    cards["Steamflogger Boss"]["printings"].each do |set, printing|
+      next unless set == "ust"
+      printing["border"] = "black"
     end
 
     {"sets"=>sets, "cards"=>cards}

@@ -150,6 +150,9 @@ class Card
 
   def smart_convert_powtou(val)
     return val unless val.is_a?(String)
+    # Treat augment "+1"/"-1" strings as regular 1/-1 numbers for search engine
+    # The view can use special format for them
+    return val.to_i if val =~ /\A\+\d+\z/
     if val !~ /\A-?[\d.]+\z/
       # It just so happens that "2+*" > "1+*" > "*" asciibetically
       # so we don't do any extra conversions,
@@ -159,7 +162,7 @@ class Card
       # "*" < "*²" < "1+*" < "2+*"
       # but let's not get anywhere near that
       case val
-      when "*", "*²", "1+*", "2+*", "7-*", "X"
+      when "*", "*²", "1+*", "2+*", "7-*", "X", "∞", "?"
         val
       else
         raise "Unrecognized value #{val.inspect}"

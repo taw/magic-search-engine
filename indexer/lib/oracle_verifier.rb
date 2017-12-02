@@ -77,6 +77,8 @@ class OracleVerifier
             canonical_variant_source = "frf"
           when "Nettling Imp"
             canonical_variant_source = "al"
+          when "Steamflogger Boss"
+            canonical_variant_source = "ust"
           else
             # FAIL, report
           end

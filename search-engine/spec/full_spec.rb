@@ -2,8 +2,8 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(17732)
-    db.number_of_printings.should eq(34775)
+    db.number_of_cards.should eq(17942)
+    db.number_of_printings.should eq(34991)
   end
 
   it "block_codes" do

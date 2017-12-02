@@ -15,6 +15,9 @@ class QueryTokenizer
       elsif s.scan(%r[(R&D\b)]i)
         # special case, not split cards
         tokens << [:test, ConditionWord.new(s[1])]
+      elsif s.scan(%r[(\bDungeons\s*&\s*Dragons\b)]i)
+        # special case, not split cards
+        tokens << [:test, ConditionWord.new(s[1])]
       elsif s.scan(%r[[/&]+]i)
         tokens << [:slash_slash]
       elsif s.scan(/-/i)
@@ -98,7 +101,7 @@ class QueryTokenizer
         op = s[1]
         op = "=" if op == ":"
         tokens << [:test, ConditionRarity.new(op, s[2])]
-      elsif s.scan(/(pow|power|loy|loyalty|tou|toughness|cmc|year)\s*(>=|>|<=|<|=|:)\s*(pow\b|power\b|tou\b|toughness\b|cmc\b|loy\b|loyalty\b|year\b|[²\d\.\-\*\+½x]+)/i)
+      elsif s.scan(/(pow|power|loy|loyalty|tou|toughness|cmc|year)\s*(>=|>|<=|<|=|:)\s*(pow\b|power\b|tou\b|toughness\b|cmc\b|loy\b|loyalty\b|year\b|[²\d\.\-\*\+½x∞\?]+)/i)
         aliases = {"power" => "pow", "loyalty" => "loy", "toughness" => "tou"}
         a = s[1].downcase
         a = aliases[a] || a
@@ -131,7 +134,10 @@ class QueryTokenizer
       elsif s.scan(/(is|not)[:=](black-bordered|silver-bordered|white-bordered)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionBorder.new(s[2].sub("-bordered", "").downcase)]
-      elsif s.scan(/border[:=](black|silver|white)\b/i)
+      elsif s.scan(/(is|not)[:=]borderless\b/i)
+        tokens << [:not] if s[1].downcase == "not"
+        tokens << [:test, ConditionBorder.new("none")]
+      elsif s.scan(/border[:=](black|silver|white|none)\b/i)
         tokens << [:test, ConditionBorder.new(s[1].downcase)]
       elsif s.scan(/sort[:=](\w+)/i)
         tokens << [:metadata, {sort: s[1].downcase}]

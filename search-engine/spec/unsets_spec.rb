@@ -1,5 +1,5 @@
 describe "Unsets" do
-  include_context "db", "ug", "uh", "uqc", "hho"
+  include_context "db", "ug", "uh", "uqc", "hho", "ust"
 
   it "half power" do
     "pow=1"  .should exclude_cards "Little Girl"
@@ -33,6 +33,39 @@ describe "Unsets" do
     "cmc>1"  .should exclude_cards "Little Girl"
   end
 
+  it "infinite power" do
+    "pow>30".should return_cards "B.F.M. (Big Furry Monster)",
+      "Infinity Elemental"
+    "pow=∞".should return_cards "Infinity Elemental"
+    "pow>=∞".should return_cards "Infinity Elemental"
+    assert_search_equal "pow<∞", "pow<10000"
+    assert_search_equal "pow<=∞", "pow<=10000 or (Infinity Elemental)"
+  end
+
+  it "question mark power/toughness" do
+    assert_search_results "pow=?", "Shellephant"
+    assert_search_equal "pow=?", "pow>=?"
+    assert_search_equal "pow=?", "pow<=?"
+    assert_search_results "pow>?"
+    assert_search_results "pow<?"
+
+    assert_search_results "tou=?", "Shellephant"
+    assert_search_equal "tou=?", "tou>=?"
+    assert_search_equal "tou=?", "tou<=?"
+    assert_search_results "tou>?"
+    assert_search_results "tou<?"
+  end
+
+  it "border:none" do
+    assert_search_equal "border:none", "e:ust (t:basic or t:contraption)"
+    assert_search_equal "border:none", "is:borderless"
+    assert_search_equal "not:borderless", "-is:borderless"
+    # Can't have multiple borders
+    assert_search_results "border:none border:black"
+    assert_search_results "border:none border:white"
+    assert_search_results "border:none border:silver"
+  end
+
   it "is:funny" do
     "is:funny"          .should include_cards "Little Girl"
     "is:new"            .should include_cards "Little Girl"
@@ -45,6 +78,7 @@ describe "Unsets" do
       "Mountain",
       "Plains",
       "Swamp",
+      "Steamflogger Boss",
     )
     "not:new"           .should include_cards(
       "1996 World Champion",
@@ -53,8 +87,8 @@ describe "Unsets" do
       "Shichifukujin Dragon",
       "Splendid Genesis"
     )
-    "not:new".should equal_search "-e:uh,hho -(Robot Chicken)"
-    "not:silver-bordered".should return_cards(
+    "not:new".should equal_search "-e:uh,hho,ust -(Robot Chicken)"
+    "not:silver-bordered -t:contraption".should return_cards(
       "Forest",
       "Mountain",
       "Swamp",
@@ -65,7 +99,8 @@ describe "Unsets" do
       "Proposal",
       "Robot Chicken",
       "Shichifukujin Dragon",
-      "Splendid Genesis"
+      "Splendid Genesis",
+      "Steamflogger Boss",
     )
     "is:black-bordered".should return_cards(
       "Forest",
@@ -78,18 +113,19 @@ describe "Unsets" do
       "Proposal",
       "Robot Chicken",
       "Shichifukujin Dragon",
-      "Splendid Genesis"
+      "Splendid Genesis",
+      "Steamflogger Boss",
     )
     "is:white-bordered".should return_no_cards
   end
 
-  # I'm not sure I want this syntax
-  # def test_edition_shortcut_syntax
-  #   assert_search_equal "e:uh,ug", "e:uh or e:ug"
-  #   assert_search_equal "e:uh+ug", "t:basic"
-  #   assert_count_results "e:uh,ug", 227
-  #   assert_count_results "e:uh,ug -e:ug+ug", 222
-  # end
+  it "edition shortcut syntax" do
+    assert_search_equal "e:uh,ug", "e:uh or e:ug"
+    assert_count_results "e:uh,ug", 227
+    # I'm not sure I want this syntax
+    # assert_search_equal "e:uh+ug", "t:basic"
+    # assert_count_results "e:uh,ug -e:ug+ug", 222
+  end
 
   it "other:" do
     assert_search_results "other:c:g", "What", "Who", "When", "Where"
