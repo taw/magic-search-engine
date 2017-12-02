@@ -42,6 +42,20 @@ describe "Unsets" do
     assert_search_equal "pow<=∞", "pow<=10000 or (Infinity Elemental)"
   end
 
+  it "question mark power/toughness" do
+    assert_search_results "pow=?", "Shellephant"
+    assert_search_equal "pow=?", "pow>=?"
+    assert_search_equal "pow=?", "pow<=?"
+    assert_search_results "pow>?"
+    assert_search_results "pow<?"
+
+    assert_search_results "tou=?", "Shellephant"
+    assert_search_equal "tou=?", "tou>=?"
+    assert_search_equal "tou=?", "tou<=?"
+    assert_search_results "tou>?"
+    assert_search_results "tou<?"
+  end
+
   it "is:funny" do
     "is:funny"          .should include_cards "Little Girl"
     "is:new"            .should include_cards "Little Girl"
