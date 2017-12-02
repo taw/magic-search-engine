@@ -314,6 +314,23 @@ class Indexer
       card["text"] = card["text"].gsub(%r[^([\+\-\−]?(?:\d+|X)):]) { "[#{$1}]:" }
     end
 
+    # Fix Unstable borders
+    cards.each do |name, card|
+      supertypes = (card["supertypes"] || [])
+      subtypes = (card["subtypes"] || [])
+      if supertypes.include?("Basic") or subtypes.include?("Contraption")
+        card["printings"].each do |set, printing|
+          next unless set == "ust"
+          printing["border"] = "none"
+        end
+      end
+    end
+
+    cards["Steamflogger Boss"]["printings"].each do |set, printing|
+      next unless set == "ust"
+      printing["border"] = "black"
+    end
+
     {"sets"=>sets, "cards"=>cards}
   end
 
