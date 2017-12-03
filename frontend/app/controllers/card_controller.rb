@@ -72,6 +72,22 @@ class CardController < ApplicationController
     end
   end
 
+  def list
+    @search = (params[:q] || "").strip
+    page = [1, params[:page].to_i].max
+
+    unless @search.present?
+      @empty_page = true
+      @cards = []
+      return
+    end
+
+    @title = @search
+    query = Query.new(@search)
+    results = $CardDatabase.search(query)
+    @cards = results.card_names
+  end
+
   private
 
   def choose_best_printing(printings)
