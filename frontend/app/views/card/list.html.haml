@@ -1,4 +1,5 @@
-- if @search.present?
-  - @cards.each do |card|
-    %li
-      = card.name
+%ul#search-result
+  - if @search.present?
+    - @cards.each do |card|
+      %li
+        = card.name
