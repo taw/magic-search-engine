@@ -3,7 +3,7 @@ describe "Full Database Test" do
 
   it "stats" do
     db.number_of_cards.should eq(17942)
-    db.number_of_printings.should eq(34991)
+    db.number_of_printings.should eq(35038)
   end
 
   it "block_codes" do
@@ -124,10 +124,12 @@ describe "Full Database Test" do
       "Plains",
       "Rabid Bite",
       "Reckless Scholar",
+      "Rush of Adrenaline",
       "Sleep Paralysis",
       "Stone Quarry",
       "Swamp",
       "Tormenting Voice",
+      "Vampire Noble",
       "Woodland Stream"
   end
 
