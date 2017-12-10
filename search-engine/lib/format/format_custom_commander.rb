@@ -13,8 +13,8 @@ class FormatCustomCommander < Format
     true
   end
 
-  def build_included_sets
-    FormatCommander.build_included_sets | FormatCustomEternal.build_included_sets
+  def build_excluded_sets
+    FormatCommander.build_excluded_sets
   end
 
   def legality(card)
