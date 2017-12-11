@@ -14,7 +14,7 @@ class FormatCustomCommander < Format
   end
 
   def build_excluded_sets
-    FormatCommander[@time].build_excluded_sets
+    Format["commander"].new(@time).build_excluded_sets
   end
 
   def legality(card)
