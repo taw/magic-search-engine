@@ -4,4 +4,10 @@ BanList.for_format("custom standard") do
     nil,
     "Dreamheart Mox" => "banned",
   )
+
+  change(
+    "2017-12-15",
+    nil,
+    "Reev, Equinox Prophet" => "banned",
+  )
 end
