@@ -79,6 +79,8 @@ class OracleVerifier
             canonical_variant_source = "al"
           when "Steamflogger Boss"
             canonical_variant_source = "ust"
+          when "Ashnod's Coupon"
+            canonical_variant_source = "ug"
           else
             # FAIL, report
           end

@@ -10,24 +10,23 @@ describe "Inedxer hacks" do
   # We pretty much write whole card in indexer
   it "B.F.M. (Big Furry Monster)" do
     bfms = db.search("Big Furry Monster").printings
-    bfm_card = bfms[0].card
     bfms.size.should eq(2)
-    bfm_card.should eq(bfms[1].card)
-    bfm_card.name.should eq("B.F.M. (Big Furry Monster)")
-    bfm_card.names.should eq(["B.F.M. (Big Furry Monster)", "B.F.M. (Big Furry Monster)"])
-    bfm_card.layout.should eq("normal")
-    bfm_card.colors.should eq("b")
-    bfm_card.text.should eq("You must play both B.F.M. cards to put B.F.M. into play. If either B.F.M. card leaves play, sacrifice the other.\nB.F.M. can be blocked only by three or more creatures.")
-    bfm_card.funny.should eq(true)
-    bfm_card.mana_cost.should eq("{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}")
-    bfm_card.types.should eq(Set["creature", "the-biggest-baddest-nastiest-scariest-creature-you'll-ever-see"])
-    bfm_card.cmc.should eq(15)
-    bfm_card.power.should eq(99)
-    bfm_card.toughness.should eq(99)
-    bfm_card.partial_color_identity.should eq("b")
-    bfm_card.typeline.should eq("Creature - The-Biggest-Baddest-Nastiest-Scariest-Creature-You'll-Ever-See")
-    bfm_card.color_identity.should eq("b")
+    bfms[0].name.should eq("B.F.M. (Big Furry Monster)")
+    bfms[1].name.should eq("B.F.M. (Big Furry Monster, Right Side)")
     bfms.each do |bfm|
+      bfm.names.should eq(["B.F.M. (Big Furry Monster)", "B.F.M. (Big Furry Monster, Right Side)"])
+      bfm.layout.should eq("normal")
+      bfm.colors.should eq("b")
+      bfm.text.should eq("You must play both B.F.M. cards to put B.F.M. into play. If either B.F.M. card leaves play, sacrifice the other.\nB.F.M. can be blocked only by three or more creatures.")
+      bfm.funny.should eq(true)
+      bfm.mana_cost.should eq("{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}")
+      bfm.types.should eq(Set["creature", "the-biggest-baddest-nastiest-scariest-creature-you'll-ever-see"])
+      bfm.cmc.should eq(15)
+      bfm.power.should eq(99)
+      bfm.toughness.should eq(99)
+      bfm.card.partial_color_identity.should eq("b")
+      bfm.typeline.should eq("Creature - The-Biggest-Baddest-Nastiest-Scariest-Creature-You'll-Ever-See")
+      bfm.color_identity.should eq("b")
       bfm.flavor.should eq("\"It was big. Really, really big. No, bigger than that. Even bigger. Keep going. More. No, more. Look, we're talking krakens and dreadnoughts for jewelry. It was big\"\n-Arna Kennerd, skyknight")
     end
   end
@@ -42,7 +41,7 @@ describe "Inedxer hacks" do
   end
 
   it "meld card numbers" do
-    db.search("is:meld").printings.map{|c| [c.name, c.number]}.should eq([
+    db.search("is:meld").printings.map{|c| [c.name, c.number]}.should match_array([
       ["Brisela, Voice of Nightmares", "15b"],
       ["Bruna, the Fading Light", "15a"],
       ["Chittering Host", "96b"],
@@ -51,7 +50,7 @@ describe "Inedxer hacks" do
       ["Hanweir Battlements", "204a"],
       ["Hanweir Garrison", "130a"],
       ["Hanweir, the Writhing Township", "130b"],
-      ["Midnight Scavengers", "96a"],
+      ["Midnight Scavengers", "96a"]
     ])
   end
 
