@@ -72,8 +72,6 @@ class Indexer
     card_data.slice(
       "name",
       "names",
-      "power",
-      "toughness",
       "loyalty",
       "manaCost",
       "text",
@@ -90,6 +88,8 @@ class Indexer
     ).merge(
       "printings" => [],
       "colors" => format_colors(card_data["colors"]),
+      "power" => format_powtou(card_data["power"]),
+      "toughness" => format_powtou(card_data["toughness"]),
     ).compact
   end
 
@@ -368,6 +368,23 @@ class Indexer
         raise "No guessable date for #{name}" unless guess_date
         mbp_printing[1]["release_date"] = guess_date
       end
+    end
+  end
+
+  def format_powtou(value)
+    case value
+    when nil
+      value
+    when /\A[\-\+]?\d+\z/
+      value.to_i
+    when /\A(\d*)½\z/
+      $1.to_i + 0.5
+    when "*{^2}"
+      "*²"
+    when /\*/, "∞", "?"
+      value
+    else
+      raise "Not sure what to do with #{value.inspect}"
     end
   end
 

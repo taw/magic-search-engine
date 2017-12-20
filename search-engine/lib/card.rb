@@ -5,7 +5,7 @@ require_relative "ban_list"
 require_relative "legality_information"
 
 class Card
-  ABILITY_WORD_LIST = ["Battalion", "Bloodrush", "Channel", "Chroma", "Cohort", "Constellation", "Converge", "Council's dilemma", "Delirium", "Domain", "Eminence", "Enrage", "Fateful hour", "Ferocious", "Formidable", "Grandeur", "Hellbent", "Heroic", "Imprint", "Inspired", "Join forces", "Kinship", "Landfall", "Lieutenant", "Metalcraft", "Morbid", "Parley", "Radiance", "Raid", "Rally", "Revolt", "Spell mastery", "Strive", "Sweep", "Tempting offer", "Threshold", "Will of the council"]
+  ABILITY_WORD_LIST = ["Battalion", "Bloodrush", "Channel", "Chroma", "Cohort", "Constellation", "Converge", "Council's dilemma", "Delirium", "Domain", "Eminence", "Enrage", "Fateful hour", "Ferocious", "Formidable", "Gotcha", "Grandeur", "Hellbent", "Heroic", "Imprint", "Inspired", "Join forces", "Kinship", "Landfall", "Lieutenant", "Metalcraft", "Morbid", "Parley", "Radiance", "Raid", "Rally", "Revolt", "Spell mastery", "Strive", "Sweep", "Tempting offer", "Threshold", "Will of the council"]
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 
   attr_reader :data, :printings
