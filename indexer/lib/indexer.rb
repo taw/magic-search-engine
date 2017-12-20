@@ -25,8 +25,9 @@ class Indexer
   end
 
   def index_card_data(card_data)
+    # Gatherer/mtgjson are being silly here
     # mtgjson is being silly here
-    if card_data["name"] == "B.F.M. (Big Furry Monster)"
+    if card_data["name"] == "B.F.M. (Big Furry Monster)" or card_data["name"] == "B.F.M. (Big Furry Monster, Right Side)"
       card_data["text"] = "You must play both B.F.M. cards to put B.F.M. into play. If either B.F.M. card leaves play, sacrifice the other.\nB.F.M. can be blocked only by three or more creatures."
       card_data["cmc"] = 15
       card_data["power"] = "99"
@@ -35,12 +36,15 @@ class Indexer
       card_data["types"] = ["Creature"]
       card_data["subtypes"] = ["The-Biggest-Baddest-Nastiest-Scariest-Creature-You'll-Ever-See"]
       card_data["colors"] = ["Black"]
+      # 28a / 29b -> 28 / 29
+      card_data["number"] = card_data["number"].sub(/[ab]\z/, "")
+      card_data["layout"] = "normal" # not really
     end
     if card_data["names"]
       # https://github.com/mtgjson/mtgjson/issues/227
-      if card_data["name"] == "B.F.M. (Big Furry Monster)"
+      if card_data["name"] == "B.F.M. (Big Furry Monster)" or card_data["name"] == "B.F.M. (Big Furry Monster, Right Side)"
         # just give up on this one
-      elsif card_data["layout"] == "split"
+      elsif  card_data["layout"] == "split"
         # All primary
       elsif card_data["layout"] == "double-faced"
         if card_data["manaCost"] or card_data["name"] == "Westvale Abbey"
@@ -90,7 +94,7 @@ class Indexer
   end
 
   def index_printing_data(card_data)
-    if card_data["name"] == "B.F.M. (Big Furry Monster)"
+    if card_data["name"] == "B.F.M. (Big Furry Monster)" or card_data["name"] == "B.F.M. (Big Furry Monster, Right Side)"
       card_data["flavor"] = %Q["It was big. Really, really big. No, bigger than that. Even bigger. Keep going. More. No, more. Look, we're talking krakens and dreadnoughts for jewelry. It was big"\n-Arna Kennerd, skyknight]
     end
     card_data.slice(

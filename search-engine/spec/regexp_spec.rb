@@ -36,7 +36,6 @@ describe "Regexp" do
       "As Luck Would Have It",
       "Battle of Wits",
       "Helix Pinnacle",
-      "Knight of the Hokey Pokey",
       "Mox Lotus",
       "Rules Lawyer"
   end
