@@ -60,10 +60,10 @@ describe "Regexp" do
 
   it "regexp artist text" do
     db.search("a:/.{40}/").printings.map(&:artist_name).should eq([
-      "Jim “Stop the Da Vinci Beatdown” Pavelec",
+      "Jim \"Stop the Da Vinci Beatdown\" Pavelec",
       "Edward P. Beard, Jr. & Anthony S. Waters",
-      "Pete “Yes the Urza's Legacy One” Venters",
-      "Alan “Don't Feel Like You Have to Pick Me” Pollack",
+      "Pete \"Yes the Urza's Legacy One\" Venters",
+      "Alan \"Don't Feel Like You Have to Pick Me\" Pollack",
       "Edward P. Beard, Jr. & Anthony S. Waters",
     ])
   end
