@@ -15,7 +15,7 @@ class Card
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
   attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :related
-  attr_reader :reminder_text
+  attr_reader :reminder_text, :augment
 
   def initialize(data)
     @printings = []
@@ -29,6 +29,7 @@ class Card
     unless @funny
       @text = @text.gsub(/\([^\(\)]*\)/, "").sub(/\s*\z/, "").sub(/\A\s*/, "")
     end
+    @augment = !!(@text =~ /augment \{/i)
     @mana_cost = data["manaCost"] ? data["manaCost"].downcase : nil
     @reserved = data["reserved"] || false
     @types = ["types", "subtypes", "supertypes"].map{|t| data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "").tr(" ", "-")}.to_set

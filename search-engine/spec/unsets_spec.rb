@@ -196,4 +196,9 @@ describe "Unsets" do
     assert_search_results("part:"*20 + "cmc=1", "Who", "What", "When", "Where", "Why")
     assert_search_results("part:"*20 + "cmc=6")
   end
+
+  it "is:augment" do
+    assert_search_equal "is:augment", 'o:"augment {"'
+    assert_search_equal "-is:augment", "not:augment"
+  end
 end
