@@ -72,7 +72,7 @@ class CardPrinting
     toughness loyalty extra color_identity has_multiple_parts? typeline
     first_release_date last_release_date printings life hand rulings
     secondary foreign_names mana_hash funny color_indicator
-    related first_regular_release_date reminder_text
+    related first_regular_release_date reminder_text augment
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
   end
