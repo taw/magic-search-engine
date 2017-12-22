@@ -73,6 +73,7 @@ class CardPrinting
     first_release_date last_release_date printings life hand rulings
     secondary foreign_names mana_hash funny color_indicator
     related first_regular_release_date reminder_text augment
+    display_power display_toughness
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
   end

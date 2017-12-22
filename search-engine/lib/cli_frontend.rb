@@ -45,7 +45,7 @@ class CLIFrontend
       puts "#{card.reminder_text}" if card.reminder_text
       puts "(Color indicator: #{card.name} is #{card.color_indicator})" if card.color_indicator
       puts "#{card.text}" if card.text != ""
-      puts "#{card.power}/#{card.toughness}" if card.power
+      puts "#{card.display_power}/#{card.display_toughness}" if card.power
       puts "Loyalty: #{card.loyalty}" if card.loyalty
       puts "" unless i+1 == cards.size
     end
