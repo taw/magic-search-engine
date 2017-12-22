@@ -15,7 +15,7 @@ class Card
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
   attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :related
-  attr_reader :reminder_text, :augment
+  attr_reader :reminder_text, :augment, :display_power, :display_toughness
 
   def initialize(data)
     @printings = []
@@ -38,6 +38,8 @@ class Card
     @power = data["power"] ? smart_convert_powtou(data["power"]) : nil
     @toughness = data["toughness"] ? smart_convert_powtou(data["toughness"]) : nil
     @loyalty = data["loyalty"] ? smart_convert_powtou(data["loyalty"]) : nil
+    @display_power = data["display_power"] ? data["display_power"] : @power
+    @display_toughness = data["display_toughness"] ? data["display_toughness"] : @toughness
     @partial_color_identity = calculate_partial_color_identity
     if ["vanguard", "plane", "scheme", "phenomenon"].include?(@layout) or @types.include?("conspiracy")
       @extra = true

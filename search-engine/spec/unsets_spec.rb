@@ -201,4 +201,34 @@ describe "Unsets" do
     assert_search_equal "is:augment", 'o:"augment {"'
     assert_search_equal "-is:augment", "not:augment"
   end
+
+  it "display_power / display_toughness" do
+    validate = proc do |card, value, display_value|
+      case value
+      when nil
+        display_value.should eq(nil)
+      when Integer
+        display_value.should eq(value)
+      when 0.5
+        display_value.should eq("½")
+      when Float
+        raise unless "#{value}" =~ /\A(\d+)\.5\z/
+        display_value.should eq("#{$1}½")
+      when String
+        display_value.should eq(value)
+      else
+        raise "No idea what to do with #{value}"
+      end
+    end
+    db.cards.values.each do |card|
+      if card.augment
+        card.display_power.should =~ /\A[+-]\d+\z/
+        card.display_toughness.should =~ /\A[+-]\d+\z/
+        card.display_power[0].should eq(card.display_toughness[0])
+      else
+        validate.(card, card.power, card.display_power)
+        validate.(card, card.toughness, card.display_toughness)
+      end
+    end
+  end
 end

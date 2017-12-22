@@ -90,6 +90,8 @@ class Indexer
       "colors" => format_colors(card_data["colors"]),
       "power" => format_powtou(card_data["power"]),
       "toughness" => format_powtou(card_data["toughness"]),
+      "display_power" => format_display_powtou(card_data, card_data["power"]),
+      "display_toughness" => format_display_powtou(card_data, card_data["toughness"]),
     ).compact
   end
 
@@ -368,6 +370,17 @@ class Indexer
         raise "No guessable date for #{name}" unless guess_date
         mbp_printing[1]["release_date"] = guess_date
       end
+    end
+  end
+
+  def format_display_powtou(card_data, value)
+    # Only two kinds of Uncards have special handling here:
+    # * Unstable augment cards (which are all +2/+0 etc.)
+    # * Unhinged half-pow/tou cards
+    if value =~ /\A(\d*)½\z/ or (card_data["text"] || "").include?("Augment {")
+      value
+    else
+      nil
     end
   end
 
