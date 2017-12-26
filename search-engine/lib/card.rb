@@ -5,7 +5,7 @@ require_relative "ban_list"
 require_relative "legality_information"
 
 class Card
-  ABILITY_WORD_LIST = ["Battalion", "Bloodrush", "Channel", "Chroma", "Cohort", "Constellation", "Converge", "Council's dilemma", "Delirium", "Domain", "Eminence", "Enrage", "Fateful hour", "Ferocious", "Formidable", "Grandeur", "Hellbent", "Heroic", "Imprint", "Inspired", "Join forces", "Kinship", "Landfall", "Lieutenant", "Metalcraft", "Morbid", "Parley", "Radiance", "Raid", "Rally", "Revolt", "Spell mastery", "Strive", "Sweep", "Tempting offer", "Threshold", "Will of the council"]
+  ABILITY_WORD_LIST = ["Battalion", "Bloodrush", "Channel", "Chroma", "Cohort", "Constellation", "Converge", "Council's dilemma", "Delirium", "Domain", "Eminence", "Enrage", "Fateful hour", "Ferocious", "Formidable", "Gotcha", "Grandeur", "Hellbent", "Heroic", "Imprint", "Inspired", "Join forces", "Kinship", "Landfall", "Lieutenant", "Metalcraft", "Morbid", "Parley", "Radiance", "Raid", "Rally", "Revolt", "Spell mastery", "Strive", "Sweep", "Tempting offer", "Threshold", "Will of the council"]
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 
   attr_reader :data, :printings
@@ -15,7 +15,7 @@ class Card
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
   attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :related
-  attr_reader :reminder_text
+  attr_reader :reminder_text, :augment, :display_power, :display_toughness
 
   def initialize(data)
     @printings = []
@@ -29,6 +29,7 @@ class Card
     unless @funny
       @text = @text.gsub(/\([^\(\)]*\)/, "").sub(/\s*\z/, "").sub(/\A\s*/, "")
     end
+    @augment = !!(@text =~ /augment \{/i)
     @mana_cost = data["manaCost"] ? data["manaCost"].downcase : nil
     @reserved = data["reserved"] || false
     @types = ["types", "subtypes", "supertypes"].map{|t| data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "").tr(" ", "-")}.to_set
@@ -37,6 +38,8 @@ class Card
     @power = data["power"] ? smart_convert_powtou(data["power"]) : nil
     @toughness = data["toughness"] ? smart_convert_powtou(data["toughness"]) : nil
     @loyalty = data["loyalty"] ? smart_convert_powtou(data["loyalty"]) : nil
+    @display_power = data["display_power"] ? data["display_power"] : @power
+    @display_toughness = data["display_toughness"] ? data["display_toughness"] : @toughness
     @partial_color_identity = calculate_partial_color_identity
     if ["vanguard", "plane", "scheme", "phenomenon"].include?(@layout) or @types.include?("conspiracy")
       @extra = true

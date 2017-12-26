@@ -35,6 +35,7 @@ describe "Unsets" do
 
   it "infinite power" do
     "pow>30".should return_cards "B.F.M. (Big Furry Monster)",
+      "B.F.M. (Big Furry Monster, Right Side)",
       "Infinity Elemental"
     "pow=∞".should return_cards "Infinity Elemental"
     "pow>=∞".should return_cards "Infinity Elemental"
@@ -121,7 +122,7 @@ describe "Unsets" do
 
   it "edition shortcut syntax" do
     assert_search_equal "e:uh,ug", "e:uh or e:ug"
-    assert_count_results "e:uh,ug", 227
+    assert_count_results "e:uh,ug", 228
     # I'm not sure I want this syntax
     # assert_search_equal "e:uh+ug", "t:basic"
     # assert_count_results "e:uh,ug -e:ug+ug", 222
@@ -130,7 +131,8 @@ describe "Unsets" do
   it "other:" do
     assert_search_results "other:c:g", "What", "Who", "When", "Where"
     # Any other has cmc != 4
-    assert_search_results "other:-cmc=4", "Who", "What", "When", "Where", "Why", "Naughty", "Nice"
+    assert_search_results "other:-cmc=4", "Who", "What", "When", "Where", "Why", "Naughty", "Nice",
+      "B.F.M. (Big Furry Monster)", "B.F.M. (Big Furry Monster, Right Side)"
     # Doesn't have other side with cmc=4
     # This includes Where (cmc=4) and all single-sided cards
     assert_search_include "-other:cmc=4", "Where", "Chicken Egg"
@@ -174,7 +176,7 @@ describe "Unsets" do
   end
 
   it "//" do
-    assert_search_results "//", "Who", "What", "When", "Where", "Why", "B.F.M. (Big Furry Monster)", "Naughty", "Nice"
+    assert_search_results "//", "Who", "What", "When", "Where", "Why", "B.F.M. (Big Furry Monster)", "B.F.M. (Big Furry Monster, Right Side)", "Naughty", "Nice"
     assert_search_results "When // Where // What", "Who", "What", "When", "Where", "Why"
     assert_search_results "When // Where // Whatever"
     assert_search_results "c:u // c:w // c:r", "Who", "What", "When", "Where", "Why"
@@ -193,5 +195,40 @@ describe "Unsets" do
   it "deep part: nesting doesn't crash the engine" do
     assert_search_results("part:"*20 + "cmc=1", "Who", "What", "When", "Where", "Why")
     assert_search_results("part:"*20 + "cmc=6")
+  end
+
+  it "is:augment" do
+    assert_search_equal "is:augment", 'o:"augment {"'
+    assert_search_equal "-is:augment", "not:augment"
+  end
+
+  it "display_power / display_toughness" do
+    validate = proc do |card, value, display_value|
+      case value
+      when nil
+        display_value.should eq(nil)
+      when Integer
+        display_value.should eq(value)
+      when 0.5
+        display_value.should eq("½")
+      when Float
+        raise unless "#{value}" =~ /\A(\d+)\.5\z/
+        display_value.should eq("#{$1}½")
+      when String
+        display_value.should eq(value)
+      else
+        raise "No idea what to do with #{value}"
+      end
+    end
+    db.cards.values.each do |card|
+      if card.augment
+        card.display_power.should =~ /\A[+-]\d+\z/
+        card.display_toughness.should =~ /\A[+-]\d+\z/
+        card.display_power[0].should eq(card.display_toughness[0])
+      else
+        validate.(card, card.power, card.display_power)
+        validate.(card, card.toughness, card.display_toughness)
+      end
+    end
   end
 end

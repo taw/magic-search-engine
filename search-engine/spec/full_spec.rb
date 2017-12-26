@@ -2,7 +2,7 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(17942)
+    db.number_of_cards.should eq(17943)
     db.number_of_printings.should eq(35038)
   end
 
@@ -282,6 +282,7 @@ describe "Full Database Test" do
     assert_search_equal "e:rtr mana=h", "e:rtr c:m cmc=1"
     assert_search_results "mana>mmmmm",
       "B.F.M. (Big Furry Monster)",
+      "B.F.M. (Big Furry Monster, Right Side)",
       "Khalni Hydra",
       "Primalcrux"
     assert_count_results "e:ktk (charm OR ascendancy) mana=mno", 10
@@ -374,6 +375,7 @@ describe "Full Database Test" do
     assert_search_results "is:promo -r:special -e:ugin"
     assert_search_results %Q[r:special -is:promo -st:masterpiece -t:vanguard -e:anthologies -e:tsts -e:"clash pack" -e:vma -e:mgbc],
       "Giant Trap Door Spider",
+      "Super Secret Tech",
       "Tazeem"
   end
 
