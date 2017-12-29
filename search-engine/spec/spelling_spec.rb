@@ -18,6 +18,8 @@ describe "Spelling" do
     spelling_suggestions("pyrokynesis").should eq([ "pyrokinesis" ])
     # two words
     spelling_suggestions("gutshot").should eq([ "gut shot" ])
+    # do not match "dark more" just because they are words
+    spelling_suggestions("darkmore").should eq([ "dakmor" ])
   end
 
   it "spelling_search" do

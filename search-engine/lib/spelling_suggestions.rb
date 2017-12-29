@@ -3,11 +3,16 @@ require "damerau-levenshtein"
 class SpellingSuggestions
   def initialize
     @words = Set[]
+    @words2 = Set[]
   end
 
   def <<(text)
-    normalize_text(text).scan(/\w+/).each do |word|
+    words_in_title = normalize_text(text).scan(/\w+/)
+    words_in_title.each do |word|
       @words << normalize_text(word) if word.size >= 2
+    end
+    words_in_title.each_cons(2) do |w1,w2|
+      @words2 << normalize_text("#{w1} #{w2}") if w1.size >= 2 and w2.size >= 2
     end
   end
 
@@ -30,7 +35,7 @@ class SpellingSuggestions
     # There are silly things like en-Dal
     (2..query.size-2).each do |i|
       a, b = query[0...i], query[i..-1]
-      if @words.include?(a) and @words.include?(b)
+      if @words2.include?("#{a} #{b}")
         results_multipart << "#{a} #{b}"
       end
     end
