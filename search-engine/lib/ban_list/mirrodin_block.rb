@@ -1,13 +1,13 @@
 BanList.for_format("mirrodin block") do
   change(
     "2004-06-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20040601a",
     "Skullclamp" => "banned",
   )
 
   change(
     "2006-03-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20060301a",
     "Aether Vial" => "banned",
     "Ancient Den" => "banned",
     "Arcbound Ravager" => "banned",
