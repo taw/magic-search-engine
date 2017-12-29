@@ -51,6 +51,8 @@ BanList.for_format("legacy") do
     "Icy Manipulator" => "legal",
     "Orcish Oriflamme" => "legal",
     "Rukh Egg" => "legal",
+    "Recall" => "banned",
+    "Fork" => "banned",
   )
 
   change(
@@ -149,29 +151,30 @@ BanList.for_format("legacy") do
 
   change(
     "2002-01-01",
-    nil,
+    "http://web.archive.org/web/20111121212710/http://crystalkeep.com/magic/rules/dci/update-011201.txt",
     "Fact or Fiction" => "banned",
   )
 
   change(
     "2003-04-01",
-    nil,
+    "http://www.wizards.com/dci/main.asp?x=Banned_Restricted_List_0303",
     "Earthcraft" => "banned",
     "Entomb" => "banned",
     "Berserk" => "legal",
     "Hurkyl's Recall" => "legal",
+    "Recall" => "legal",
   )
 
   change(
     "2003-07-01",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20030529a",
     "Gush" => "banned",
     "Mind's Desire" => "banned",
   )
 
   change(
     "2004-01-01",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20031201a",
     "Burning Wish" => "banned",
     "Chrome Mox" => "banned",
     "Lion's Eye Diamond" => "banned",
@@ -179,7 +182,7 @@ BanList.for_format("legacy") do
 
   change(
     "2004-09-20",
-    nil,
+    "http://www.wizards.com/Default.asp?x=dci/announce/dci20040901a",
     "Bazaar of Baghdad" => "banned",
     "Goblin Recruiter" => "banned",
     "Hermit Druid" => "banned",
@@ -199,7 +202,7 @@ BanList.for_format("legacy") do
     "Doomsday" => "legal",
     "Enlightened Tutor" => "legal",
     "Fact or Fiction" => "legal",
-    # "Fork" => "legal",
+    "Fork" => "legal",
     "Lion's Eye Diamond" => "legal",
     "Lotus Petal" => "legal",
     "Mox Diamond" => "legal",
@@ -211,13 +214,13 @@ BanList.for_format("legacy") do
 
   change(
     "2005-09-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20050901a",
     "Imperial Seal" => "banned",
   )
 
   change(
     "2007-06-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20070601a",
     "Flash" => "banned",
     "Mind Over Matter" => "legal",
     "Replenish" => "legal",
@@ -225,13 +228,13 @@ BanList.for_format("legacy") do
 
   change(
     "2007-09-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20070901a",
     "Shahrazad" => "banned",
   )
 
   change(
     "2008-09-20",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/september-1-2008-dci-banned-and-restricted-list-announcement-2008-09-01",
     "Time Vault" => "banned",
   )
 

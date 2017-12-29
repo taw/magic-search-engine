@@ -1,4 +1,5 @@
 BanList.for_format("vintage") do
+  # 1994 doesn't quite agree with https://mtg.gamepedia.com/Banned_and_restricted_cards/Timeline
   format_start(
     nil,
     "Amulet of Quoz" => "banned",
@@ -52,6 +53,8 @@ BanList.for_format("vintage") do
     "Library of Alexandria" => "restricted",
     "Regrowth" => "restricted",
     "Wheel of Fortune" => "restricted",
+    "Recall" => "restricted",
+    "Fork" => "restricted",
   )
 
   change(
@@ -153,29 +156,30 @@ BanList.for_format("vintage") do
 
   change(
     "2002-01-01",
-    nil,
+    "http://web.archive.org/web/20111121212710/http://crystalkeep.com/magic/rules/dci/update-011201.txt",
     "Fact or Fiction" => "restricted",
   )
 
   change(
     "2003-04-01",
-    nil,
+    "http://www.wizards.com/dci/main.asp?x=Banned_Restricted_List_0303",
     "Berserk" => "legal",
     "Hurkyl's Recall" => "legal",
     "Earthcraft" => "restricted",
     "Entomb" => "restricted",
+    "Recall" => "legal",
   )
 
   change(
     "2003-07-01",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20030529a",
     "Gush" => "restricted",
     "Mind's Desire" => "restricted",
   )
 
   change(
     "2004-01-01",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20031201a",
     "Burning Wish" => "restricted",
     "Chrome Mox" => "restricted",
     "Lion's Eye Diamond" => "restricted",
@@ -183,27 +187,28 @@ BanList.for_format("vintage") do
 
   change(
     "2004-09-20",
-    nil,
+    "http://www.wizards.com/Default.asp?x=dci/announce/dci20040901a",
     "Braingeyser" => "legal",
     "Doomsday" => "legal",
     "Earthcraft" => "legal",
+    "Fork" => "legal",
   )
 
   change(
     "2004-12-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20041201a",
     "Stroke of Genius" => "legal",
   )
 
   change(
     "2005-03-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20050301a",
     "Trinisphere" => "restricted",
   )
 
   change(
     "2005-09-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20050901a",
     "Mind Over Matter" => "legal",
     "Imperial Seal" => "restricted",
     "Personal Tutor" => "restricted",
@@ -211,7 +216,7 @@ BanList.for_format("vintage") do
 
   change(
     "2007-06-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20050901a",
     "Black Vise" => "legal",
     "Gush" => "legal",
     "Mind Twist" => "legal",
@@ -221,13 +226,13 @@ BanList.for_format("vintage") do
 
   change(
     "2007-09-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20070901a",
     "Shahrazad" => "banned",
   )
 
   change(
     "2008-06-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20080602a",
     "Brainstorm" => "restricted",
     "Flash" => "restricted",
     "Gush" => "restricted",
@@ -237,7 +242,7 @@ BanList.for_format("vintage") do
 
   change(
     "2008-09-20",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/september-1-2008-dci-banned-and-restricted-list-announcement-2008-09-01",
     "Chrome Mox" => "legal",
     "Dream Halls" => "legal",
     "Mox Diamond" => "legal",

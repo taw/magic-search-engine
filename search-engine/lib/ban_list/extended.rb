@@ -21,7 +21,7 @@ BanList.for_format("extended") do
 
   change(
     "1999-07-01",
-    nil,
+    "http://web.archive.org/web/20111121212434/http://www.crystalkeep.com/magic/rules/dci/update-990601.txt",
     "Time Spiral" => "banned",
   )
 
@@ -59,7 +59,7 @@ BanList.for_format("extended") do
 
   change(
     "2003-10-01",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20030901a",
     "Entomb" => "banned",
     "Frantic Search" => "banned",
     "Goblin Lackey" => "banned",
@@ -67,7 +67,7 @@ BanList.for_format("extended") do
 
   change(
     "2004-01-01",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20031201a",
     "Ancient Tomb" => "banned",
     "Goblin Recruiter" => "banned",
     "Grim Monolith" => "banned",
@@ -78,21 +78,21 @@ BanList.for_format("extended") do
 
   change(
     "2004-09-20",
-    nil,
+    "http://www.wizards.com/Default.asp?x=dci/announce/dci20040901a",
     "Metalworker" => "banned",
     "Skullclamp" => "banned",
   )
 
   change(
     "2005-09-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20050901a",
     "Aether Vial" => "banned",
     "Disciple of the Vault" => "banned",
   )
 
   change(
     "2008-09-20",
-    nil,
+    "https://magic.wizards.com/en/articles/archive/feature/september-1-2008-dci-banned-and-restricted-list-announcement-2008-09-01",
     "Sensei's Divining Top" => "banned",
   )
 

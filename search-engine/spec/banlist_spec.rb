@@ -83,13 +83,20 @@ describe "Banlist" do
       "modern banned", "Splinter Twin",
       "modern banned", "Summer Bloom",
       "pauper banned", "Cloud of Faeries"
+
     assert_banlist_changes "April 2016",
       "modern banned", "Eye of Ugin",
       "modern unbanned", "Ancestral Vision",
       "modern unbanned", "Sword of the Meek",
       "vintage restricted", "Lodestone Golem"
+
     assert_banlist_changes "November 2016",
-      "pauper banned", "Peregrine Drake"
+      "pauper banned", "Peregrine Drake",
+      "duel commander unbanned", "Yawgmoth's Bargain",
+      "duel commander unbanned", "Serra Ascendant",
+      "duel commander unbanned", "Grindstone",
+      "duel commander unbanned", "Necropotence",
+      "duel commander unbanned", "Balance"
   end
 
   it "banlist_2015" do
@@ -98,8 +105,10 @@ describe "Banlist" do
       "legacy unbanned", "Black Vise",
       "vintage restricted", "Chalice of the Void",
       "vintage unrestricted", "Thirst for Knowledge"
+
     assert_banlist_changes "March 2015",
       "pauper banned", "Treasure Cruise"
+
     assert_banlist_changes "January 2015",
       "modern banned", "Dig Through Time",
       "modern banned", "Treasure Cruise",
@@ -121,9 +130,11 @@ describe "Banlist" do
     assert_banlist_changes "September 2013",
       "pauper banned", "Cloudpost",
       "pauper banned", "Temporal Fissure"
+
     assert_banlist_changes "May 2013",
       "modern banned", "Second Sunrise",
       "vintage unrestricted", "Regrowth"
+
     assert_banlist_changes "January 2013",
       "modern banned", "Bloodbraid Elf",
       "modern banned", "Seething Song",
@@ -136,8 +147,10 @@ describe "Banlist" do
     assert_banlist_changes "September 2012",
       "modern unbanned", "Valakut, the Molten Pinnacle",
       "vintage unrestricted", "Burning Wish"
+
     assert_banlist_changes "June 2012",
       "legacy unbanned", "Land Tax"
+
     assert_banlist_changes "March 2012",
       "innistrad block banned", "Lingering Souls",
       "innistrad block banned", "Intangible Virtue"
@@ -148,6 +161,7 @@ describe "Banlist" do
     assert_banlist_changes "June 2011",
       "standard banned", "Jace, the Mind Sculptor",
       "standard banned", "Stoneforge Mystic"
+
     assert_banlist_changes "September 2011",
       "extended banned", "Jace, the Mind Sculptor",
       "extended banned", "Mental Misstep",
@@ -162,6 +176,7 @@ describe "Banlist" do
       "modern banned", "Ponder",
       "modern banned", "Preordain",
       "modern banned", "Rite of Flame"
+
     assert_banlist_changes "December 2011",
       "modern banned", "Punishing Fire",
       "modern banned", "Wild Nacatl"
@@ -201,9 +216,11 @@ describe "Banlist" do
       "legacy banned", "Mystical Tutor",
       "legacy unbanned", "Grim Monolith",
       "legacy unbanned", "Illusionary Mask"
+
     assert_banlist_changes "September 2010",
       "vintage unrestricted", "Frantic Search",
       "vintage unrestricted", "Gush"
+
     assert_banlist_changes "December 2010",
       "legacy banned", "Survival of the Fittest",
       "legacy unbanned", "Time Spiral"
@@ -216,6 +233,7 @@ describe "Banlist" do
       "vintage unrestricted", "Enlightened Tutor",
       "vintage unrestricted", "Entomb",
       "vintage unrestricted", "Grim Monolith"
+
     assert_banlist_changes "September 2009",
       "legacy unbanned", "Dream Halls",
       "legacy unbanned", "Entomb",
@@ -229,6 +247,7 @@ describe "Banlist" do
       "vintage restricted", "Gush",
       "vintage restricted", "Merchant Scroll",
       "vintage restricted", "Ponder"
+
     assert_banlist_changes "September 2008",
       "extended banned", "Sensei's Divining Top",
       "legacy banned", "Time Vault",
@@ -302,7 +321,7 @@ describe "Banlist" do
       "vintage unrestricted", "Braingeyser",
       "vintage unrestricted", "Doomsday",
       "vintage unrestricted", "Earthcraft",
-      # "vintage unrestricted", "Fork",
+      "vintage unrestricted", "Fork",
       # In September 2004 Legacy becomes independent of Vintage
       "legacy unbanned", "Braingeyser",
       "legacy unbanned", "Burning Wish",
@@ -311,7 +330,7 @@ describe "Banlist" do
       "legacy unbanned", "Doomsday",
       "legacy unbanned", "Enlightened Tutor",
       "legacy unbanned", "Fact or Fiction",
-      # "legacy unbanned", "Fork",
+      "legacy unbanned", "Fork",
       "legacy unbanned", "Lion's Eye Diamond",
       "legacy unbanned", "Lotus Petal",
       "legacy unbanned", "Mox Diamond",
@@ -340,7 +359,7 @@ describe "Banlist" do
     assert_banlist_changes "March 2003",
       "vintage+ unrestricted", "Berserk",
       "vintage+ unrestricted", "Hurkyl's Recall",
-      # "vintage+ unrestricted", "Recall" ,
+      "vintage+ unrestricted", "Recall" ,
       "vintage+ restricted", "Earthcraft",
       "vintage+ restricted", "Entomb"
 
@@ -583,7 +602,9 @@ describe "Banlist" do
       "vintage+ unrestricted", "Gauntlet of Might",
       "vintage+ unrestricted", "Icy Manipulator",
       "vintage+ unrestricted", "Orcish Oriflamme",
-      "vintage+ unrestricted", "Rukh Egg"
+      "vintage+ unrestricted", "Rukh Egg",
+      "vintage+ restricted", "Fork",
+      "vintage+ restricted", "Recall"
   end
 
   it "banlist_1993" do
