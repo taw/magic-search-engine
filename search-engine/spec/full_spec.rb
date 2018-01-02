@@ -389,6 +389,13 @@ describe "Full Database Test" do
     assert_search_differ "frame:m15", "frame:new"
   end
 
+  it "is:unique" do
+    number_of_unique_cards = db.cards.values.count{|c| c.printings.size == 1}
+    assert_count_results "is:unique", number_of_unique_cards
+    assert_search_equal "is:unique", "++ is:unique"
+    assert_search_equal "not:unique", "-is:unique"
+  end
+
   def legality_information(name, date=nil)
     db.cards[name.downcase].legality_information(date)
   end
