@@ -10,6 +10,7 @@ require_relative "foreign_names_verifier"
 require_relative "link_related_cards_command"
 require_relative "card_sets_data"
 require_relative "set_code_translator"
+require_relative "urza"
 
 class Indexer
   ROOT = Pathname(__dir__).parent.parent + "data"
@@ -39,6 +40,9 @@ class Indexer
       # 28a / 29b -> 28 / 29
       card_data["number"] = card_data["number"].sub(/[ab]\z/, "")
       card_data["layout"] = "normal" # not really
+    end
+    if card_data["name"] == "Urza, Academy Headmaster"
+      card_data["text"] = Urza.text
     end
     if card_data["names"]
       # https://github.com/mtgjson/mtgjson/issues/227
