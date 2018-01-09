@@ -62,19 +62,19 @@ BanList.for_format("standard") do
 
   change(
     "1999-07-01",
-    nil,
+    "http://web.archive.org/web/20111121212434/http://www.crystalkeep.com/magic/rules/dci/update-990601.txt",
     "Mind Over Matter" => "banned",
   )
 
   change(
     "2004-06-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20040601a",
     "Skullclamp" => "banned",
   )
 
   change(
     "2005-03-20",
-    nil,
+    "http://www.wizards.com/default.asp?x=dci/announce/dci20050301a",
     "Ancient Den" => "banned",
     "Arcbound Ravager" => "banned",
     "Darksteel Citadel" => "banned",

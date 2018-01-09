@@ -93,6 +93,16 @@ class Indexer
       when "st2k"
         # Just brute force, investigate later wtf?
         set_data["cards"].each_with_index{|c,i| c["number"] = "#{i+1}"}
+      when "ust"
+        # No idea if this is correct
+        cards_with_variants = %W[3 12 41 49 54 67 82 98 103 113 145 147 165]
+        variant_counter = {}
+        set_data["cards"].each do |card_data|
+          number = card_data["number"]
+          next unless cards_with_variants.include?(number)
+          variant_counter[number] = variant_counter[number] ? variant_counter[number].next : "A"
+          card_data["number"] = number + variant_counter[number]
+        end
       end
 
       numbers = cards.map{|c| c["number"]}

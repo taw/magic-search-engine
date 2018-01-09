@@ -65,11 +65,29 @@ BanList.for_format("duel commander") do
     "Tasigur, the Golden Fang" => "restricted",
     "Yisan, The Wanderer Bard" => "restricted",
     "Zur the Enchanter" => "restricted",
+    "Yawgmoth's Bargain" => "banned",
+    "Serra Ascendant" => "banned",
+    "Grindstone" => "banned",
+    "Necropotence" => "banned",
+    "Balance" => "banned",
+  )
+
+  # FIXME: There were actually changes before that time
+  # http://www.duelcommander.com/2016/09/september-2016-rules-banlist-update/
+
+  change(
+    "2016-11-11",
+    "http://www.duelcommander.com/2016/11/classic-november-2016-rules-banlist-update/",
+    "Yawgmoth's Bargain" => "legal",
+    "Serra Ascendant" => "legal",
+    "Grindstone" => "legal",
+    "Necropotence" => "legal",
+    "Balance" => "legal",
   )
 
   change(
     "2017-04-24",
-    nil,
+    "http://www.duelcommander.com/2017/04/classic-april-2017-rules-banlist-update/",
     "Chrome Mox" => "banned",
     "Mox Diamond" => "banned",
     "Yisan, The Wanderer Bard" => "legal",
@@ -79,7 +97,7 @@ BanList.for_format("duel commander") do
 
   change(
     "2017-07-21",
-    nil,
+    "http://www.duelcommander.com/2017/07/classic-july-2017-rules-banlist-update/",
     "Emrakul, the Aeons Torn" => "banned",
     "Polymorph" => "banned",
     "Ancient Tomb" => "legal",
@@ -92,7 +110,7 @@ BanList.for_format("duel commander") do
 
   change(
     "2017-09-29",
-    nil,
+    "http://www.duelcommander.com/2017/10/classic-sept-2017-rules-banlist-update/",
     "Eidolon of the Great Revel" => "banned",
     "Fireblast" => "banned",
     "Price of Progress" => "banned",
@@ -102,7 +120,7 @@ BanList.for_format("duel commander") do
 
   change(
     "2017-11-27",
-    "https://www.facebook.com/notes/mtg-duel-commander/november-2017-rules-bannedrestricted-update/2016571995260364/",
+    "http://www.duelcommander.com/2017/11/classic-nov-2017-rules-banlist-update/",
     "Fastbond" => "banned",
   )
 end

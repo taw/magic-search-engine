@@ -2,8 +2,8 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(17943)
-    db.number_of_printings.should eq(35038)
+    db.number_of_cards.should eq(17976)
+    db.number_of_printings.should eq(35090)
   end
 
   it "block_codes" do
@@ -387,6 +387,13 @@ describe "Full Database Test" do
     assert_search_equal "frame:modern OR frame:m15", "frame:new"
     assert_search_differ "frame:modern", "frame:new"
     assert_search_differ "frame:m15", "frame:new"
+  end
+
+  it "is:unique" do
+    number_of_unique_cards = db.cards.values.count{|c| c.printings.size == 1}
+    assert_count_results "is:unique", number_of_unique_cards
+    assert_search_equal "is:unique", "++ is:unique"
+    assert_search_equal "not:unique", "-is:unique"
   end
 
   def legality_information(name, date=nil)
