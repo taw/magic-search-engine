@@ -37,7 +37,8 @@ describe "Regexp" do
       "Battle of Wits",
       "Helix Pinnacle",
       "Mox Lotus",
-      "Rules Lawyer"
+      "Rules Lawyer",
+      "Urza, Academy Headmaster"
   end
 
   it "regexp flavor text" do
