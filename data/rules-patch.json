@@ -207,6 +207,18 @@
             }
         },
         {
+            "#": "set: Hollows",
+            "type": "addKeywordAction",
+            "rule": {
+                "text": "Journey",
+                "subrules": [
+                    "“Journey” means “Exile the top card of your library. That card becomes journeyed.”",
+                    "There is an inherent triggered ability associated with journeying. The full text of this ability is “Whenever a creature deals combat damage to one of its controller's opponents, if its controller owns any journeyed cards, the creature's controller puts a journeyed card he or she owns into his or her hand.” This ability has no source and is controlled by the controller of the creature which dealt the damage that caused it to trigger. This is an exception to rule 112.8.",
+                    "Journeyed is a designation that has no rules meaning other than to act as a marker that the inherent triggered ability and other spells and abilities can identify. Only cards in exile can be or become journeyed. Once a card becomes journeyed, it stays journeyed until it leaves exile or becomes a new object (see rule 406.7). Journeyed is neither an ability nor part of the card's copiable values."
+                ]
+            }
+        },
+        {
             "#": "for Rotten to the Core",
             "type": "replaceRule",
             "rule": "702.5d",
@@ -392,6 +404,27 @@
                 "text": "Resurrect",
                 "subrules": [
                     "Resurrect is a keyword that represents three static abilities. “Resurrect [cost]” means “You may cast this spell from your graveyard by paying [cost] rather than paying its mana cost”, “If this permanent was cast for its resurrect cost, it enters the battlefield with a +1/+1 counter on it”, and “If this permanent would leave the battlefield and it was cast for its resurrect cost, exile it instead of putting it anywhere else.” Casting a spell using its resurrect ability follows the rules for paying alternative costs in rules 601.2b and 601.2f–h."
+                ]
+            }
+        },
+        {
+            "#": "set: Hollows",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Desperation",
+                "subrules": [
+                    "Desperation is a triggered ability. “Desperation” means “Whenever this creature attacks, you may have it despair. If it does, sacrifice it at the beginning of the next end step.”",
+                    "Despair is a keyword action with no inherent rules meaning. Only permanents can despair."
+                ]
+            }
+        },
+        {
+            "#": "set: Hollows",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Hollow",
+                "subrules": [
+                    "Hollow is an activated ability that functions while the card with hollow is in a graveyard. “Hollow [cost]” means “[Cost], Exile this card from your graveyard: Create a tapped token that's a copy of this card, except it's black and it's a Zombie in addition to its other types.”"
                 ]
             }
         },
