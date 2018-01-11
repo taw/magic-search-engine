@@ -16,7 +16,7 @@ class CardPrinting
     @others = nil
     @release_date = data["release_date"] ? Date.parse(data["release_date"]) : @set.release_date
     @release_date_i = @release_date.to_i_sort
-    @watermark = data["watermark"] && data["watermark"].downcase
+    @watermark = data["watermark"]&.downcase
     @number = data["number"]
     @multiverseid = data["multiverseid"]
     @artist_name = data["artist"]
@@ -52,7 +52,7 @@ class CardPrinting
   end
 
   def year
-    release_date && release_date.year
+    @release_date.year
   end
 
   def set_type
