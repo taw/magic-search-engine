@@ -7,7 +7,7 @@ describe "Formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal "f:standard",
-      %Q[(e:kld or e:aer or e:akh or e:w17 or e:hou or e:xln) -"Smuggler's Copter" -"Felidar Guardian" -"Aetherworks Marvel"]
+      %Q[(e:kld or e:aer or e:akh or e:w17 or e:hou or e:xln or e:rix) -"Smuggler's Copter" -"Felidar Guardian" -"Aetherworks Marvel"]
     assert_search_equal 'f:"ravnica block"', "e:rav or e:gp or e:di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal 'f:"ravnica block"', 'b:ravnica'

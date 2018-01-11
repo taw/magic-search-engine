@@ -4,6 +4,6 @@ class FormatIxalanBlock < Format
   end
 
   def build_included_sets
-    Set["xln"]
+    Set["xln", "rix"]
   end
 end
