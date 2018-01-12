@@ -383,6 +383,8 @@ class Indexer
     # * Unhinged half-pow/tou cards
     if value =~ /\A(\d*)½\z/ or (card_data["text"] || "").include?("Augment {")
       value
+    elsif value =~ /\A(\d*)\.5\z/
+      "#{$1}½"
     else
       nil
     end
@@ -394,6 +396,8 @@ class Indexer
       value
     when /\A[\-\+]?\d+\z/
       value.to_i
+    when /\A(\d*)\.5\z/
+      $1.to_i + 0.5
     when /\A(\d*)½\z/
       $1.to_i + 0.5
     when "*{^2}"
