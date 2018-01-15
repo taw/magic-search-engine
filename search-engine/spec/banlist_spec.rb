@@ -4,6 +4,14 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2017" do
+    assert_banlist_changes "January 2018",
+       "standard banned", "Attune with Aether",
+       "standard banned", "Rogue Refiner",
+       "standard banned", "Rampaging Ferocidon",
+       "standard banned", "Ramunap Ruins"
+  end
+
+  it "banlist_2017" do
     assert_banlist_changes "November 2017",
       "duel commander banned", "Fastbond"
 

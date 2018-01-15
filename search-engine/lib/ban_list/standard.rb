@@ -114,4 +114,13 @@ BanList.for_format("standard") do
     "https://magic.wizards.com/en/articles/archive/feature/june-13-2017-banned-and-restricted-announcement-2017-06-13",
     "Aetherworks Marvel" => "banned",
   )
+
+  change(
+    "2018-01-19",
+    "https://magic.wizards.com/en/articles/archive/news/january-15-2018-banned-and-restricted-announcement-2018-01-15",
+    "Attune with Aether" => "banned",
+    "Rogue Refiner" => "banned",
+    "Rampaging Ferocidon" => "banned",
+    "Ramunap Ruins" => "banned",
+  )
 end
