@@ -8,9 +8,9 @@ describe "Banlist" do
   def assert_commander_banlist_changes(date, *changes)
     assert_banlist_changes(
       date,
-      *changes.each_slice(2).map{|s,c|
+      *changes.each_slice(2).flat_map{|s,c|
         ["commander #{s}", c]
-      }.flatten(1)
+      }
     )
   end
 
