@@ -83,6 +83,8 @@ class OracleVerifier
             canonical_variant_source = "ug"
           when "Mise", "Circle of Protection: Art"
             canonical_variant_source = "uh"
+          when "Strider Harness", "Traveler's Amulet"
+            canonical_variant_source = "rix"
           else
             # FAIL, report
           end

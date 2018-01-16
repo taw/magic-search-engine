@@ -238,7 +238,7 @@ class CardDatabase
   def spelling_suggestions
     @spelling_suggestions ||= begin
       ss = SpellingSuggestions.new
-      @cards.keys.each do |title|
+      @cards.each_key do |title|
         ss << title
       end
       ss

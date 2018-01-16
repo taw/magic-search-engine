@@ -174,10 +174,10 @@ describe "Formats - Block Constructed" do
   end
 
   it "ixalan" do
-    assert_block_composition_sequence "ixalan block", "xln" #, "rix"
+    assert_block_composition_sequence "ixalan block", "xln", "rix"
   end
 
   it "unsets" do
-    assert_block_composition_sequence "unsets", "ug", "uh"
+    assert_block_composition_sequence "unsets", "ug", "uh", "ust"
   end
 end
