@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "get_process_mem"
-require "../lib/card_database"
+require_relative "../lib/card_database"
 
 # This is OS-level measurement
 CardDatabase.load
