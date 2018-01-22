@@ -37,7 +37,7 @@ task "mtgjson:update" => ["mtgjson:fetch", "index"]
 
 desc "Update penny dreadful banlist"
 task "pennydreadful:update" do
-  system "wget http://pdmtgo.com/legal_cards.txt -O index/penny_dreadful_legal_cards.txt"
+  system "wget -q http://pdmtgo.com/legal_cards.txt -O index/penny_dreadful_legal_cards.txt"
 end
 
 desc "Fetch Gatherer pics"

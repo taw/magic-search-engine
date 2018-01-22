@@ -254,42 +254,43 @@ class Card
 
   def calculate_reminder_text
     @reminder_text = nil
-    basic_land_types = Set["swamp", "mountain", "forest", "island", "plains"] & @types
+    basic_land_types = (["forest", "island", "mountain", "plains", "swamp"] & @types.to_a)
+      .sort.join(" ")
     return if basic_land_types.empty?
     # Listing them all explicitly due to wubrg wheel order
     mana = case basic_land_types
-    when Set["plains"]
+    when "plains"
       "{W}"
-    when Set["island"]
+    when "island"
       "{U}"
-    when Set["swamp"]
+    when "swamp"
       "{B}"
-    when Set["mountain"]
+    when "mountain"
       "{R}"
-    when Set["forest"]
+    when "forest"
       "{G}"
-    when Set["plains", "island"]
+    when "island plains"
       "{W} or {U}"
-    when Set["plains", "swamp"]
+    when "plains swamp"
       "{W} or {B}"
-    when Set["island", "swamp"]
+    when "island swamp"
       "{U} or {B}"
-    when Set["island", "mountain"]
+    when "island mountain"
       "{U} or {R}"
-    when Set["swamp", "mountain"]
+    when "mountain swamp"
       "{B} or {R}"
-    when Set["swamp", "forest"]
+    when "forest swamp"
       "{B} or {G}"
-    when Set["mountain", "forest"]
+    when "forest mountain"
       "{R} or {G}"
-    when Set["mountain", "plains"]
+    when "mountain plains"
       "{R} or {W}"
-    when Set["forest", "plains"]
+    when "forest plains"
       "{G} or {W}"
-    when Set["forest", "island"]
+    when "forest island"
       "{G} or {U}"
     else
-      raise "No idea what's correct line for #{basic_land_types}"
+      raise "No idea what's correct line for #{basic_land_types.inspect}"
     end
     @reminder_text = "({T}: Add #{mana} to your mana pool.)"
   end
