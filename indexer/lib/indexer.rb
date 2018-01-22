@@ -66,7 +66,7 @@ class Indexer
           card_data["secondary"] = true
         end
       else
-        raise "Unknown card layout: #{card_data["layout"]}"
+        raise "Unknown multipart card layout: #{card_data["layout"]} for #{card_data["name"]}"
       end
     end
 
@@ -96,6 +96,7 @@ class Indexer
       "toughness" => format_powtou(card_data["toughness"]),
       "display_power" => format_display_powtou(card_data, card_data["power"]),
       "display_toughness" => format_display_powtou(card_data, card_data["toughness"]),
+      "names" => card_data["names"] && card_data["names"].sort,
     ).compact
   end
 
