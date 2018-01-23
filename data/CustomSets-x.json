@@ -16019,7 +16019,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -16147,7 +16148,8 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -16279,7 +16281,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -16413,7 +16416,8 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -16544,7 +16548,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -31440,7 +31445,8 @@
                     "XLN",
                     "UST",
                     "RIX",
-                    "AYR"
+                    "AYR",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -31569,7 +31575,8 @@
                     "DDT",
                     "UST",
                     "RIX",
-                    "AYR"
+                    "AYR",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -31702,7 +31709,8 @@
                     "XLN",
                     "UST",
                     "RIX",
-                    "AYR"
+                    "AYR",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -31837,7 +31845,8 @@
                     "DDT",
                     "UST",
                     "RIX",
-                    "AYR"
+                    "AYR",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -31969,7 +31978,8 @@
                     "XLN",
                     "UST",
                     "RIX",
-                    "AYR"
+                    "AYR",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -32070,7 +32080,7 @@
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "Focus {3}{W}{W} (You may cast this spell for its Focus cost. When you do, draw a card.)\nWhen Ancestral Aid enters the battlefield, exile target nonland permanent an opponent controls until Ancestral Aid leaves the battlefield.",
+                "text": "Focus {4}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nWhen Ancestral Aid enters the battlefield, exile target nonland permanent an opponent controls until Ancestral Aid leaves the battlefield.",
                 "type": "Enchantment",
                 "types": [
                     "Enchantment"
@@ -32113,17 +32123,17 @@
                 ],
                 "flavor": "Eshaha is seldom an absent general.",
                 "layout": "normal",
-                "manaCost": "{3}{W}",
+                "manaCost": "{2}{W}{W}",
                 "name": "Command to Charge",
                 "number": "5",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Creatures you control get +2/+1 and gain first strike until end of turn.\nInvocation (As you cast this spell, you may tap two untapped creatures you control. When you do, copy it.)",
-                "type": "Sorcery",
+                "text": "Attacking creatures get +2/+1 and gain first strike until end of turn.\nInvocation (As you cast this spell, you may tap two untapped creatures you control. When you do, copy it.)",
+                "type": "Instant",
                 "types": [
-                    "Sorcery"
+                    "Instant"
                 ]
             },
             {
@@ -32172,7 +32182,7 @@
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Focus {1}{W} (You may cast this spell for its Focus cost. When you do, draw a card.)\nTarget creature gains indestructible until end of turn.",
+                "text": "Focus {3}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nTarget creature gains indestructible until end of turn.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -32288,7 +32298,7 @@
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Focus {3}{W}{W} (You may cast this spell for its Focus cost. When you do, draw a card.)\nDestroy target attacking creature.",
+                "text": "Focus {3}{W}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nDestroy target attacking creature.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -32500,7 +32510,7 @@
                 ]
             },
             {
-                "artist": "OptikalDesigns",
+                "artist": "Gediminas Pranckevi\u010dius",
                 "cmc": 1,
                 "colorIdentity": [
                     "W"
@@ -32516,7 +32526,7 @@
                     "JAN"
                 ],
                 "rarity": "Rare",
-                "text": "Tap an untapped creature you control: Put a climb counter on that creature. Activate this ability only any time you could cast a sorcery.\nCreatures with climb counters on them don't untap during their controllers' untap steps.\nAt the beginning of your upkeep, if you control eight or more creatures with climb counters on them, you win the game.",
+                "text": "Tap an untapped creature you control: Put a climb counter on that creature. Activate this ability only any time you could cast a sorcery.\nCreatures with climb counters on them don't untap during their controllers' untap steps.\nAt the beginning of your upkeep, if you control ten or more creatures with climb counters on them, you win the game.",
                 "type": "Enchantment",
                 "types": [
                     "Enchantment"
@@ -32572,7 +32582,7 @@
                 "subtypes": [
                     "Hippo"
                 ],
-                "text": "Flying",
+                "text": "Focus {3}{W}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nFlying",
                 "toughness": "4",
                 "type": "Creature \u2014 Hippo",
                 "types": [
@@ -32653,7 +32663,7 @@
                     "Human",
                     "Scout"
                 ],
-                "text": "First strike\nPrairie Tromper enters the battlefield with a +1/+1 counter on it if you control another creature.\nWhen Prairie Tromper dies, if it had a +1/+1 counter on it, draw a card.",
+                "text": "First strike\nPrairie Tromper enters the battlefield with a +1/+1 counter on it if you control another creature.\nWhen Prairie Tromper dies, if you control another creature, draw a card.",
                 "toughness": "1",
                 "type": "Creature \u2014 Human Scout",
                 "types": [
@@ -32677,7 +32687,7 @@
                     "JAN"
                 ],
                 "rarity": "Rare",
-                "text": "Focus {3}{W}{W}{W} (You may cast this spell for its Focus cost. When you do, draw a card.)\nDestroy all creatures. If you have four or more cards in your hand, return all creature cards with converted mana cost 2 or less from your graveyard to the battlefield under your control.",
+                "text": "Focus {3}{W}{W}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nDestroy all creatures. If you have four or more cards in your hand, return all creature cards with converted mana cost 2 or less from your graveyard to the battlefield under your control.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -32820,7 +32830,7 @@
             },
             {
                 "artist": "artofmervin",
-                "cmc": 3,
+                "cmc": 2,
                 "colorIdentity": [
                     "W"
                 ],
@@ -32828,10 +32838,10 @@
                     "White"
                 ],
                 "layout": "normal",
-                "manaCost": "{1}{W}{W}",
+                "manaCost": "{1}{W}",
                 "name": "Sunstrider Blademaster",
                 "number": "31",
-                "power": "2",
+                "power": "1",
                 "printings": [
                     "JAN"
                 ],
@@ -32840,8 +32850,8 @@
                     "Human",
                     "Soldier"
                 ],
-                "text": "Double strike (This creature deals both first-strike and regular combat damage.)\nSpellbound \u2014 {2}{W}, Exile an instant or sorcery card from your graveyard: Put a +1/+1 counter on Sunstrider Blademaster. Activate this ability only any time you could cast a sorcery.",
-                "toughness": "2",
+                "text": "Double strike (This creature deals both first-strike and regular combat damage.)\nSpellbound \u2014 {2}{W}{W}, Exile an instant or sorcery card from your graveyard: Put a +1/+1 counter on Sunstrider Blademaster. Activate this ability only any time you could cast a sorcery.",
+                "toughness": "1",
                 "type": "Creature \u2014 Human Soldier",
                 "types": [
                     "Creature"
@@ -32955,7 +32965,7 @@
                         "text": "You choose the color as Valorous Stand resolves."
                     }
                 ],
-                "text": "Focus {3}{W} (You may cast this spell for its Focus cost. When you do, draw a card.)\nTarget creature gets +1/+1 until end of turn. It gains protection from the color of your choice until end of turn.",
+                "text": "Focus {3}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nTarget creature gets +1/+1 until end of turn. It gains protection from the color of your choice until end of turn.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -33095,36 +33105,10 @@
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Focus {3}{U} (You may cast this spell for its Focus cost. When you do, draw a card.)\nLook at the top four cards of your library. Put any number of them into your graveyard and the rest back on top of your library in any order.",
+                "text": "Focus {2}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nLook at the top four cards of your library. Put any number of them into your graveyard and the rest back on top of your library in any order.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
-                ]
-            },
-            {
-                "artist": "ibox-glass",
-                "cmc": 2,
-                "colorIdentity": [
-                    "U"
-                ],
-                "colors": [
-                    "Blue"
-                ],
-                "layout": "normal",
-                "manaCost": "{1}{U}",
-                "name": "Chronostasis",
-                "number": "41",
-                "printings": [
-                    "JAN"
-                ],
-                "rarity": "Common",
-                "subtypes": [
-                    "Aura"
-                ],
-                "text": "Enchant creature\nEnchanted creature doesn't untap during its controller's untap step.\nSpellbound \u2014 {1}{U}, Exile an instant or sorcery card from your graveyard: Return Chronostasis to its owner's hand.",
-                "type": "Enchantment \u2014 Aura",
-                "types": [
-                    "Enchantment"
                 ]
             },
             {
@@ -33139,12 +33123,12 @@
                 "layout": "normal",
                 "manaCost": "{4}{U}{U}",
                 "name": "Devastating Sandstorm",
-                "number": "42",
+                "number": "41",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Rare",
-                "text": "Focus {6}{U}{U} (You may cast this spell for its Focus cost. When you do, draw a card.)\nFor each creature, its owner puts it on the top or bottom of his or her library.",
+                "text": "Focus {6}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nFor each creature, its owner puts it on the top or bottom of his or her library.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -33163,7 +33147,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{U}",
                 "name": "Downpour Shaman",
-                "number": "43",
+                "number": "42",
                 "power": "0",
                 "printings": [
                     "JAN"
@@ -33192,7 +33176,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}",
                 "name": "Dream Plunderer",
-                "number": "44",
+                "number": "43",
                 "power": "3",
                 "printings": [
                     "JAN"
@@ -33202,7 +33186,7 @@
                     "Human",
                     "Pirate"
                 ],
-                "text": "Spellbound \u2014 {1}{U}, Exile an instant or sorcery card from your graveyard: Create a colorless Treasure artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color to your mana pool.\"",
+                "text": "Prowess\nSpellbound \u2014 {2}{U}, Exile an instant or sorcery card from your graveyard: Create a colorless Treasure artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color to your mana pool.\"",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Pirate",
                 "types": [
@@ -33222,12 +33206,12 @@
                 "layout": "normal",
                 "manaCost": "{U}",
                 "name": "Effortless Denial",
-                "number": "45",
+                "number": "44",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "Focus {1}{U}{U} (You may cast this spell for its Focus cost. When you do, draw a card.)\nCounter target noncreature spell unless its controller pays {1}.",
+                "text": "Focus {1}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nCounter target noncreature spell unless its controller pays {1}.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -33245,12 +33229,12 @@
                 "layout": "normal",
                 "manaCost": "{3}{U}{U}",
                 "name": "Eoncraft",
-                "number": "46",
+                "number": "45",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Mythic Rare",
-                "text": "Focus {5}{U}{U} (You may cast this spell for its Focus cost. When you do, draw a card.)\nTake an extra turn after this one. You can't draw cards during that turn.\nExile Eoncraft.",
+                "text": "Focus {5}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nTake an extra turn after this one. You can't draw cards during that turn.\nExile Eoncraft.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -33269,7 +33253,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{U}",
                 "name": "Erratic Shapeshifter",
-                "number": "47",
+                "number": "46",
                 "power": "1",
                 "printings": [
                     "JAN"
@@ -33283,6 +33267,30 @@
                 "type": "Creature \u2014 Shapeshifter",
                 "types": [
                     "Creature"
+                ]
+            },
+            {
+                "artist": "Cutter Murdoch",
+                "cmc": 5,
+                "colorIdentity": [
+                    "U"
+                ],
+                "colors": [
+                    "Blue"
+                ],
+                "flavor": "The trading posts of the Sahai deserts are hubs of gold, goods, and culture.",
+                "layout": "normal",
+                "manaCost": "{4}{U}",
+                "name": "Exchange of Tales",
+                "number": "47",
+                "printings": [
+                    "JAN"
+                ],
+                "rarity": "Common",
+                "text": "Draw three cards, then discard a card unless you own a card in exile.",
+                "type": "Sorcery",
+                "types": [
+                    "Sorcery"
                 ]
             },
             {
@@ -33379,10 +33387,36 @@
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Focus {2}{U} (You may cast this spell for its Focus cost. When you do, draw a card.)\nTarget creature gets +1/+1 and gains flying until end of turn.",
+                "text": "Focus {2}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nTarget creature gets +1/+1 and gains flying until end of turn.",
                 "type": "Instant",
                 "types": [
                     "Instant"
+                ]
+            },
+            {
+                "artist": "PTimm",
+                "cmc": 2,
+                "colorIdentity": [
+                    "U"
+                ],
+                "colors": [
+                    "Blue"
+                ],
+                "layout": "normal",
+                "manaCost": "{1}{U}",
+                "name": "Induced Paralysis",
+                "number": "52",
+                "printings": [
+                    "JAN"
+                ],
+                "rarity": "Common",
+                "subtypes": [
+                    "Aura"
+                ],
+                "text": "Enchant creature\nEnchanted creature doesn't untap during its controller's untap step.\nSpellbound \u2014 Exile an instant or sorcery card from your graveyard: You may tap enchanted creature.",
+                "type": "Enchantment \u2014 Aura",
+                "types": [
+                    "Enchantment"
                 ]
             },
             {
@@ -33398,7 +33432,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{U}",
                 "name": "Invert",
-                "number": "52",
+                "number": "53",
                 "printings": [
                     "JAN"
                 ],
@@ -33421,7 +33455,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}",
                 "name": "Lost at Sea",
-                "number": "53",
+                "number": "54",
                 "printings": [
                     "JAN"
                 ],
@@ -33445,12 +33479,12 @@
                 "layout": "normal",
                 "manaCost": "{U}",
                 "name": "Make Way",
-                "number": "54",
+                "number": "55",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "Target creature you control gains hexproof until end of turn and can't be blocked this turn.",
+                "text": "Focus {2}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nTarget creature you control gains hexproof until end of turn and can't be blocked this turn.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -33468,7 +33502,7 @@
                 "layout": "normal",
                 "manaCost": "{5}{U}{U}",
                 "name": "Monarch of Galaxies",
-                "number": "55",
+                "number": "56",
                 "power": "6",
                 "printings": [
                     "JAN"
@@ -33497,12 +33531,12 @@
                 "layout": "normal",
                 "manaCost": "{1}{U}",
                 "name": "Mystic Rebuttal",
-                "number": "56",
+                "number": "57",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Focus {5}{U} (You may cast this spell for its Focus cost. When you do, draw a card.)\nCounter target spell unless its controller pays {2}.",
+                "text": "Focus {3}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nCounter target spell unless its controller pays {2}.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -33521,7 +33555,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}",
                 "name": "Oracle's Sight",
-                "number": "57",
+                "number": "58",
                 "printings": [
                     "JAN"
                 ],
@@ -33545,7 +33579,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{U}",
                 "name": "Owlkeeper",
-                "number": "58",
+                "number": "59",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -33574,7 +33608,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{U}{U}",
                 "name": "Rainforest Sphinx",
-                "number": "59",
+                "number": "60",
                 "power": "4",
                 "printings": [
                     "JAN"
@@ -33602,12 +33636,12 @@
                 "layout": "normal",
                 "manaCost": "{3}{U}{U}",
                 "name": "Role Reversal",
-                "number": "60",
+                "number": "61",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "Focus {5}{U}{U} (You may cast this spell for its Focus cost. When you do, draw a card.)\nExchange control of two target creatures.",
+                "text": "Focus {5}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nExchange control of two target creatures.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -33625,7 +33659,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{U}{U}",
                 "name": "Rushriver Elemental",
-                "number": "61",
+                "number": "62",
                 "power": "3",
                 "printings": [
                     "JAN"
@@ -33640,7 +33674,7 @@
                 "subtypes": [
                     "Elemental"
                 ],
-                "text": "Rushriver Elemental can't be blocked.\nResurrect {4}{U}{U} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "Rushriver Elemental can't be blocked.\nResurrect {4}{U}{U} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "3",
                 "type": "Creature \u2014 Elemental",
                 "types": [
@@ -33659,7 +33693,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}",
                 "name": "Rushriver Hunter",
-                "number": "62",
+                "number": "63",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -33684,11 +33718,11 @@
                 "colors": [
                     "Blue"
                 ],
-                "flavor": "He stares into the stars, and they stare back at him.",
+                "flavor": "Mount Ziawan is said to be the closest place on the mortal realm to the farworld\u2014 the realm of the gods.",
                 "layout": "normal",
                 "manaCost": "{4}{U}",
                 "name": "Scion of Stars",
-                "number": "63",
+                "number": "64",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -33717,15 +33751,15 @@
                 "layout": "normal",
                 "manaCost": "{3}{U}",
                 "name": "Seek the Farworld",
-                "number": "64",
+                "number": "65",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Common",
                 "text": "Choose one \u2014\n\u2022 Draw two cards.\n\u2022 Look at the top five cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.",
-                "type": "Sorcery",
+                "type": "Instant",
                 "types": [
-                    "Sorcery"
+                    "Instant"
                 ]
             },
             {
@@ -33740,7 +33774,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}{U}",
                 "name": "Skyroamer",
-                "number": "65",
+                "number": "66",
                 "power": "3",
                 "printings": [
                     "JAN"
@@ -33768,7 +33802,7 @@
                 "layout": "normal",
                 "manaCost": "{5}{U}{U}",
                 "name": "Skyspan Thunderbird",
-                "number": "66",
+                "number": "67",
                 "power": "6",
                 "printings": [
                     "JAN"
@@ -33803,7 +33837,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{U}",
                 "name": "Spellscale Drake",
-                "number": "67",
+                "number": "68",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -33831,7 +33865,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{U}{U}",
                 "name": "Spellscatter Hex",
-                "number": "68",
+                "number": "69",
                 "printings": [
                     "JAN"
                 ],
@@ -33855,7 +33889,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{U}",
                 "name": "Spellshroud Spirit",
-                "number": "69",
+                "number": "70",
                 "power": "1",
                 "printings": [
                     "JAN"
@@ -33883,7 +33917,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{U}",
                 "name": "Stargazing",
-                "number": "70",
+                "number": "71",
                 "printings": [
                     "JAN"
                 ],
@@ -33906,7 +33940,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}",
                 "name": "Tikoloshe Warrior",
-                "number": "71",
+                "number": "72",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -33935,7 +33969,7 @@
                 "layout": "normal",
                 "manaCost": "{X}{U}",
                 "name": "Trick Questions",
-                "number": "72",
+                "number": "73",
                 "printings": [
                     "JAN"
                 ],
@@ -33959,7 +33993,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{U}",
                 "name": "Updraft Elemental",
-                "number": "73",
+                "number": "74",
                 "power": "1",
                 "printings": [
                     "JAN",
@@ -33989,7 +34023,7 @@
                 "layout": "normal",
                 "manaCost": "{5}{U}",
                 "name": "Windwinder Serpent",
-                "number": "74",
+                "number": "75",
                 "power": "6",
                 "printings": [
                     "JAN"
@@ -34003,30 +34037,6 @@
                 "type": "Creature \u2014 Serpent",
                 "types": [
                     "Creature"
-                ]
-            },
-            {
-                "artist": "Cutter Murdoch",
-                "cmc": 5,
-                "colorIdentity": [
-                    "U"
-                ],
-                "colors": [
-                    "Blue"
-                ],
-                "flavor": "The Inaki sage Mshauri is Junmra's most closely trusted advisor.",
-                "layout": "normal",
-                "manaCost": "{4}{U}",
-                "name": "Wisdom of the Inaki",
-                "number": "75",
-                "printings": [
-                    "JAN"
-                ],
-                "rarity": "Common",
-                "text": "Draw three cards, then discard a card unless you own an instant or sorcery card in exile.",
-                "type": "Sorcery",
-                "types": [
-                    "Sorcery"
                 ]
             },
             {
@@ -34109,7 +34119,7 @@
                     "Demon",
                     "Ape"
                 ],
-                "text": "Menace\nResurrect {5}{B}{B} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "Menace\nResurrect {5}{B}{B} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "4",
                 "type": "Creature \u2014 Demon Ape",
                 "types": [
@@ -34180,7 +34190,7 @@
                     "Plant",
                     "Horror"
                 ],
-                "text": "You may cast Bog Dweller from exile.\nResurrect {3}{B}{B} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "You may cast Bog Dweller from exile.\nResurrect {3}{B}{B} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "2",
                 "type": "Creature \u2014 Plant Horror",
                 "types": [
@@ -34215,7 +34225,7 @@
                     "Zombie",
                     "Ape"
                 ],
-                "text": "Lifelink (Damage dealt by this creature also causes you to gain that much life.)\nResurrect {3}{B}{B} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "Lifelink (Damage dealt by this creature also causes you to gain that much life.)\nResurrect {3}{B}{B} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "2",
                 "type": "Creature \u2014 Zombie Ape",
                 "types": [
@@ -34248,6 +34258,29 @@
                 ]
             },
             {
+                "artist": "Victor Hugo Harmatiuk",
+                "cmc": 3,
+                "colorIdentity": [
+                    "B"
+                ],
+                "colors": [
+                    "Black"
+                ],
+                "layout": "normal",
+                "manaCost": "{2}{B}",
+                "name": "Corpse Cultivation",
+                "number": "83",
+                "printings": [
+                    "JAN"
+                ],
+                "rarity": "Common",
+                "text": "As an additional cost to cast Corpse Cultivation, exile a creature card from your graveyard.\nScry 2, then draw two cards.",
+                "type": "Sorcery",
+                "types": [
+                    "Sorcery"
+                ]
+            },
+            {
                 "artist": "martianzombie",
                 "cmc": 1,
                 "colorIdentity": [
@@ -34260,7 +34293,7 @@
                 "layout": "normal",
                 "manaCost": "{B}",
                 "name": "Cursechanter",
-                "number": "83",
+                "number": "84",
                 "power": "1",
                 "printings": [
                     "JAN"
@@ -34290,7 +34323,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{B}",
                 "name": "Dark Soothsaying",
-                "number": "84",
+                "number": "85",
                 "printings": [
                     "JAN"
                 ],
@@ -34313,7 +34346,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{B}",
                 "name": "Deathburst Hex",
-                "number": "85",
+                "number": "86",
                 "printings": [
                     "JAN"
                 ],
@@ -34337,7 +34370,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{B}",
                 "name": "Deathcaster Lich",
-                "number": "86",
+                "number": "87",
                 "power": "3",
                 "printings": [
                     "JAN"
@@ -34367,7 +34400,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{B}",
                 "name": "Demonic Scarring",
-                "number": "87",
+                "number": "88",
                 "printings": [
                     "JAN"
                 ],
@@ -34390,7 +34423,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{B}{B}{B}",
                 "name": "Doom of Fools",
-                "number": "88",
+                "number": "89",
                 "power": "6",
                 "printings": [
                     "JAN"
@@ -34405,7 +34438,7 @@
                 "subtypes": [
                     "Demon"
                 ],
-                "text": "{2}{B}{B}, Discard Doom of Fools: Destroy target creature.\nResurrect {7}{B}{B}{B} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "{2}{B}{B}, Discard Doom of Fools: Destroy target creature.\nResurrect {7}{B}{B}{B} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "6",
                 "type": "Creature \u2014 Demon",
                 "types": [
@@ -34424,7 +34457,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{B}",
                 "name": "Dreadlaugh Kinship",
-                "number": "89",
+                "number": "90",
                 "printings": [
                     "JAN"
                 ],
@@ -34448,7 +34481,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{B}",
                 "name": "Dreadlaugh Pup",
-                "number": "90",
+                "number": "91",
                 "power": "1",
                 "printings": [
                     "JAN"
@@ -34477,7 +34510,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{B}",
                 "name": "Dreadlaugh Rager",
-                "number": "91",
+                "number": "92",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -34505,7 +34538,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{B}",
                 "name": "Dreadlaugh Shaman",
-                "number": "92",
+                "number": "93",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -34534,7 +34567,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{B}",
                 "name": "Duskstrider",
-                "number": "93",
+                "number": "94",
                 "power": "1",
                 "printings": [
                     "JAN"
@@ -34550,7 +34583,7 @@
                     "Zombie",
                     "Warrior"
                 ],
-                "text": "Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\nResurrect {1}{B}{B} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\nResurrect {1}{B}{B} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "1",
                 "type": "Creature \u2014 Zombie Warrior",
                 "types": [
@@ -34569,7 +34602,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{B}",
                 "name": "Gozani's Torture",
-                "number": "94",
+                "number": "95",
                 "printings": [
                     "JAN"
                 ],
@@ -34593,7 +34626,7 @@
                 "loyalty": 3,
                 "manaCost": "{1}{B}{B}",
                 "name": "Gozani, Dreadlaugh Alpha",
-                "number": "95",
+                "number": "96",
                 "printings": [
                     "JAN"
                 ],
@@ -34604,7 +34637,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "+1: Each player puts the top two cards of his or her library into his or her graveyard.\n-1: Exile a creature card from your graveyard. If you do, create a 2/2 black Hyena creature token.\n-5: You draw X cards and lose X life, where X is the number of creature cards in your graveyard.",
+                "text": "+1: Each player puts the top two cards of his or her library into his or her graveyard.\n0: Exile a creature card from your graveyard. If you do, create a 2/2 black Hyena creature token.\n-5: You draw X cards and lose X life, where X is the number of creature cards in your graveyard.",
                 "type": "Legendary Planeswalker \u2014 Gozani",
                 "types": [
                     "Planeswalker"
@@ -34622,7 +34655,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{B}{B}",
                 "name": "Hollowed Ritualist",
-                "number": "96",
+                "number": "97",
                 "power": "3",
                 "printings": [
                     "JAN"
@@ -34638,7 +34671,7 @@
                     "Zombie",
                     "Shaman"
                 ],
-                "text": "When Hollowed Ritualist enters the battlefield, you may have target opponent sacrifice a creature.\nResurrect {5}{B}{B} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "When Hollowed Ritualist enters the battlefield, you may have target opponent sacrifice a creature.\nResurrect {5}{B}{B} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "3",
                 "type": "Creature \u2014 Zombie Shaman",
                 "types": [
@@ -34658,7 +34691,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{B}",
                 "name": "Hollowed Tumbiri",
-                "number": "97",
+                "number": "98",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -34687,7 +34720,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{B}",
                 "name": "Kakrako's Pawn",
-                "number": "98",
+                "number": "99",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -34715,7 +34748,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{B}",
                 "name": "Kholomodumo",
-                "number": "99",
+                "number": "100",
                 "power": "3",
                 "printings": [
                     "JAN"
@@ -34743,7 +34776,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{B}",
                 "name": "Lurking Adze",
-                "number": "100",
+                "number": "101",
                 "power": "3",
                 "printings": [
                     "JAN"
@@ -34758,7 +34791,7 @@
                 "subtypes": [
                     "Vampire"
                 ],
-                "text": "Lurking Adze has flying as long as it's attacking.\nResurrect {4}{B} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "Lurking Adze has flying as long as it's attacking.\nResurrect {4}{B} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "1",
                 "type": "Creature \u2014 Vampire",
                 "types": [
@@ -34778,7 +34811,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{B}",
                 "name": "Malevolent Might",
-                "number": "101",
+                "number": "102",
                 "printings": [
                     "JAN"
                 ],
@@ -34802,7 +34835,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{B}",
                 "name": "Nightwater Assailant",
-                "number": "102",
+                "number": "103",
                 "power": "4",
                 "printings": [
                     "JAN"
@@ -34831,7 +34864,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{B}",
                 "name": "Nightwater Terror",
-                "number": "103",
+                "number": "104",
                 "power": "1",
                 "printings": [
                     "JAN"
@@ -34861,12 +34894,12 @@
                 "layout": "normal",
                 "manaCost": "{1}{B}",
                 "name": "Shady Dealings",
-                "number": "104",
+                "number": "105",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Rare",
-                "text": "Reveal the top card of your library. Any opponent may pay 2 life. If a player does, exile it. Otherwise, put that card into your hand.",
+                "text": "Reveal the top card of your library. Any opponent may pay 2 life. If a player does, exile it. Otherwise, put that card into your hand. Repeat this process up to twice.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -34885,7 +34918,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{B}",
                 "name": "Sickening Song",
-                "number": "105",
+                "number": "106",
                 "printings": [
                     "JAN"
                 ],
@@ -34908,7 +34941,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{B}{B}",
                 "name": "Skittering Siege",
-                "number": "106",
+                "number": "107",
                 "printings": [
                     "JAN"
                 ],
@@ -34932,7 +34965,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{B}{B}",
                 "name": "Soulsnatch",
-                "number": "107",
+                "number": "108",
                 "printings": [
                     "JAN"
                 ],
@@ -34956,7 +34989,7 @@
                 "layout": "normal",
                 "manaCost": "{B}",
                 "name": "Swarm of Locusts",
-                "number": "108",
+                "number": "109",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -34965,7 +34998,7 @@
                 "subtypes": [
                     "Insect"
                 ],
-                "text": "Flying\nYour maximum hand size is\nreduced by three.",
+                "text": "Flying\nYour maximum hand size is reduced by two.",
                 "toughness": "1",
                 "type": "Creature \u2014 Insect",
                 "types": [
@@ -34984,12 +35017,12 @@
                 "layout": "normal",
                 "manaCost": "{3}{B}",
                 "name": "Throne of Madness",
-                "number": "109",
+                "number": "110",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "Whenever a creature you don't control dies, put a curse counter on Throne of Madness. Then each opponent loses life equal to the number of curse counters on Throne of Madness. You gain life equal to the amount of life lost this way.",
+                "text": "Whenever a creature you don't control dies, put a curse counter on Throne of Madness. Then that creature's controller loses life equal to the number of curse counters on Throne of Madness and you gain that much life.",
                 "type": "Enchantment",
                 "types": [
                     "Enchantment"
@@ -35006,38 +35039,14 @@
                 ],
                 "flavor": "\"The circle of life always returns to death.\"\n\u2014 Gozani, Dreadlaugh Alpha",
                 "layout": "normal",
-                "manaCost": "{B}{B}",
+                "manaCost": "{1}{B}",
                 "name": "Twisted Mercy",
-                "number": "110",
+                "number": "111",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
                 "text": "Target creature gets -3/-3 until end of turn.\nInvocation (As you cast this spell, you may tap two untapped creatures you control. When you do, copy it and you may choose a new target for the copy.)",
-                "type": "Sorcery",
-                "types": [
-                    "Sorcery"
-                ]
-            },
-            {
-                "artist": "Maximko",
-                "cmc": 3,
-                "colorIdentity": [
-                    "B"
-                ],
-                "colors": [
-                    "Black"
-                ],
-                "flavor": "Revenge is the greatest motivator.",
-                "layout": "normal",
-                "manaCost": "{2}{B}",
-                "name": "Vindictive Intent",
-                "number": "111",
-                "printings": [
-                    "JAN"
-                ],
-                "rarity": "Common",
-                "text": "As an additional cost to cast Vindictive Intent, exile a creature card from your graveyard.\nScry 2, then draw two cards.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -35065,7 +35074,7 @@
                     "Human",
                     "Wizard"
                 ],
-                "text": "At the beginning of your upkeep, put the top two cards of your library into your graveyard.\nWhenever Wandering Necromancer deals combat damage to a player, you may return target creature card from your graveyard to your hand.",
+                "text": "At the beginning of your upkeep, put the top two cards of your library into your graveyard. Then if you have ten or more creature cards in your graveyard, return target creature card from your graveyard to your hand.",
                 "toughness": "4",
                 "type": "Creature \u2014 Human Wizard",
                 "types": [
@@ -35408,7 +35417,7 @@
                     "JAN"
                 ],
                 "rarity": "Rare",
-                "text": "Focus {3}{R}{R} (You may cast this spell for its Focus cost. When you do, draw a card.)\nThe owner of target creature shuffles it into his or her library, then reveals the top card of his or her library. If it's a permanent card, he or she puts it onto the battlefield.",
+                "text": "Focus {3}{R}{R} (You may cast this spell for its focus cost. When you do, draw a card.)\nThe owner of target creature shuffles it into his or her library, then reveals the top card of his or her library. If it's a permanent card, he or she puts it onto the battlefield.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -35423,7 +35432,7 @@
                 "colors": [
                     "Red"
                 ],
-                "flavor": "\"The only real training you'll get in this world is on the battlefield.\"",
+                "flavor": "\"The only real training you'll get, my child, is on the battlefield.\"",
                 "layout": "normal",
                 "manaCost": "{2}{R}{R}",
                 "name": "Firstblade Elder",
@@ -35472,7 +35481,7 @@
                     "Human",
                     "Shaman"
                 ],
-                "text": "{T}: Flamepact Shaman deals deals damage equal to its power to target creature or player.\nResurrect {5}{R}{R} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "{T}: Flamepact Shaman deals deals damage equal to its power to target creature or player.\nResurrect {5}{R}{R} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "1",
                 "type": "Creature \u2014 Human Shaman",
                 "types": [
@@ -35665,7 +35674,7 @@
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Focus {3}{R} (You may cast this spell for its Focus cost. When you do, draw a card.)\nLava Torrent deals 2 damage to target creature or player.",
+                "text": "Focus {3}{R} (You may cast this spell for its focus cost. When you do, draw a card.)\nLava Torrent deals 2 damage to target creature or player.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -35756,7 +35765,7 @@
                     "Goblin",
                     "Warrior"
                 ],
-                "text": "Haste\nResurrect {5}{R} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "Haste\nResurrect {5}{R} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "1",
                 "type": "Creature \u2014 Goblin Warrior",
                 "types": [
@@ -35918,7 +35927,7 @@
                     "Human",
                     "Shaman"
                 ],
-                "text": "Spellbound \u2014 {R}{R}, Exile an instant or sorcery card from your graveyard: Copy target instant or sorcery spell. You may choose new targets for the copy.",
+                "text": "Spellbound \u2014 {R}, Exile an instant or sorcery card from your graveyard: Copy target instant or sorcery spell. You may choose new targets for the copy.",
                 "toughness": "4",
                 "type": "Creature \u2014 Human Shaman",
                 "types": [
@@ -35981,7 +35990,7 @@
                     "Goblin",
                     "Warrior"
                 ],
-                "text": "Menace\nResurrect {3}{R}{R} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "Menace\nResurrect {3}{R}{R} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "2",
                 "type": "Creature \u2014 Goblin Warrior",
                 "types": [
@@ -36017,9 +36026,39 @@
                     "Elemental",
                     "Bird"
                 ],
-                "text": "Flying, haste\nResurrect {4}{R}{R}{R} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "Flying, haste\nResurrect {4}{R}{R}{R} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "3",
                 "type": "Creature \u2014 Elemental Bird",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
+                "artist": "Ketka",
+                "cmc": 4,
+                "colorIdentity": [
+                    "R"
+                ],
+                "colors": [
+                    "Red"
+                ],
+                "flavor": "The Stampodons were once the humans' greatest fears. Now, they're their greatest allies.",
+                "layout": "normal",
+                "manaCost": "{3}{R}",
+                "name": "Stampodon Rider",
+                "number": "147",
+                "power": "3",
+                "printings": [
+                    "JAN"
+                ],
+                "rarity": "Common",
+                "subtypes": [
+                    "Human",
+                    "Scout"
+                ],
+                "text": "Spellbound \u2014 {2}{R}, Exile an instant or sorcery card from your graveyard: Stampodon Rider gets +3/+0 and gains trample until end of turn.",
+                "toughness": "3",
+                "type": "Creature \u2014 Human Scout",
                 "types": [
                     "Creature"
                 ]
@@ -36036,12 +36075,12 @@
                 "layout": "normal",
                 "manaCost": "{2}{R}",
                 "name": "Thousand Strikes",
-                "number": "147",
+                "number": "148",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Focus {4}{R} (You may cast this spell for its Focus cost. When you do, draw a card.)\nTarget creature gets +1/+1 and gains double strike until end of turn.",
+                "text": "Focus {4}{R} (You may cast this spell for its focus cost. When you do, draw a card.)\nTarget creature gets +1/+1 and gains double strike until end of turn.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -36059,7 +36098,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{R}{R}",
                 "name": "Trial By Fire",
-                "number": "148",
+                "number": "149",
                 "printings": [
                     "JAN"
                 ],
@@ -36082,7 +36121,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{R}",
                 "name": "Tumbiri Master",
-                "number": "149",
+                "number": "150",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -36094,36 +36133,6 @@
                 ],
                 "text": "Haste (This creature can attack and {T} as soon as it comes under your control.)\nProwess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)",
                 "toughness": "2",
-                "type": "Creature \u2014 Monkey Warrior",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
-                "artist": "Ketka",
-                "cmc": 4,
-                "colorIdentity": [
-                    "R"
-                ],
-                "colors": [
-                    "Red"
-                ],
-                "flavor": "\"The jungles are out home. If anyone tries to take it from us, they had it coming, frankly.\"",
-                "layout": "normal",
-                "manaCost": "{3}{R}",
-                "name": "Tumbiri Savage",
-                "number": "150",
-                "power": "3",
-                "printings": [
-                    "JAN"
-                ],
-                "rarity": "Common",
-                "subtypes": [
-                    "Monkey",
-                    "Warrior"
-                ],
-                "text": "Spellbound \u2014 {1}{R}, Exile an instant or sorcery card from your graveyard: Tumbiri Savage gets +2/+0 and gains haste until end of turn.",
-                "toughness": "4",
                 "type": "Creature \u2014 Monkey Warrior",
                 "types": [
                     "Creature"
@@ -36146,7 +36155,7 @@
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "Focus {3}{R}{R} (You may cast this spell for its Focus cost. When you do, draw a card.)\nVolcanic Bonfire deals 2 damage to each creature and each player.",
+                "text": "Focus {3}{R}{R} (You may cast this spell for its focus cost. When you do, draw a card.)\nVolcanic Bonfire deals 2 damage to each creature and each player.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -36187,7 +36196,7 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "\"The Kunmra jungle was once a humble oasis, grown by one druid over years of persistence.\"\n\u2014Kolako, Hikobo Storyteller",
+                "flavor": "\"The Kunmra jungle was once simply a humble oasis, grown by one druid over years of persistence.\"\n\u2014Kolako, Hikobo Storyteller",
                 "layout": "normal",
                 "manaCost": "{X}{X}{G}",
                 "name": "Beckon Growth",
@@ -36196,7 +36205,7 @@
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "Search your library for up to X basic land cards and put them onto the battlefield tapped.",
+                "text": "Search your library for up to X basic land cards and put them onto the battlefield tapped, then shuffle your library.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -36229,7 +36238,7 @@
                 "subtypes": [
                     "Elephant"
                 ],
-                "text": "{3}{G}: Target creature blocks Bog Tusker this turn if able.\nResurrect {6}{G}{G} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "{3}{G}: Target creature blocks Bog Tusker this turn if able.\nResurrect {6}{G}{G} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "4",
                 "type": "Creature \u2014 Elephant",
                 "types": [
@@ -36277,7 +36286,7 @@
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Focus {3}{G}{G} (You may cast this spell for its Focus cost. When you do, draw a card.)\nDestroy target creature with flying.",
+                "text": "Focus {3}{G}{G} (You may cast this spell for its focus cost. When you do, draw a card.)\nDestroy target creature with flying.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -36367,7 +36376,7 @@
                 "subtypes": [
                     "Spider"
                 ],
-                "text": "Reach (This creature can block creatures with flying.)\nResurrect {4}{G}{G} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "Reach (This creature can block creatures with flying.)\nResurrect {4}{G}{G} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "4",
                 "type": "Creature \u2014 Spider",
                 "types": [
@@ -36404,64 +36413,6 @@
                 ]
             },
             {
-                "artist": "dragynsart",
-                "cmc": 2,
-                "colorIdentity": [
-                    "G"
-                ],
-                "colors": [
-                    "Green"
-                ],
-                "layout": "normal",
-                "manaCost": "{G}{G}",
-                "name": "Drumbeat Shaman",
-                "number": "161",
-                "power": "2",
-                "printings": [
-                    "JAN"
-                ],
-                "rarity": "Rare",
-                "subtypes": [
-                    "Elf",
-                    "Shaman"
-                ],
-                "text": "Spells you cast can't be countered by spells or abilities.\nSpellbound \u2014 {2}{G}, Exile an instant or sorcery card from your graveyard: Target creature gains your choice of hexproof, reach, deathtouch, or trample until end of turn.",
-                "toughness": "2",
-                "type": "Creature \u2014 Elf Shaman",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
-                "artist": "petardimitrov",
-                "cmc": 2,
-                "colorIdentity": [
-                    "G"
-                ],
-                "colors": [
-                    "Green"
-                ],
-                "layout": "normal",
-                "manaCost": "{X}{G}{G}",
-                "name": "Duskwood Hydra",
-                "number": "162",
-                "power": "0",
-                "printings": [
-                    "JAN"
-                ],
-                "rarity": "Rare",
-                "subtypes": [
-                    "Fungus",
-                    "Hydra"
-                ],
-                "text": "Trample\nDuskwood Hydra enters the battlefield with X +1/+1 counters on it.\nSpellbound \u2014 {3}{G}, Exile an instant or sorcery card from your graveyard: Duskwood Hydra fights target creature you don't control.",
-                "toughness": "0",
-                "type": "Creature \u2014 Fungus Hydra",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
                 "artist": "Ertac Alenoz",
                 "cmc": 6,
                 "colorIdentity": [
@@ -36474,7 +36425,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}{G}{G}",
                 "name": "Enforcer of the Wild",
-                "number": "163",
+                "number": "161",
                 "power": "6",
                 "printings": [
                     "JAN"
@@ -36503,7 +36454,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Flourish",
-                "number": "164",
+                "number": "162",
                 "printings": [
                     "JAN"
                 ],
@@ -36527,7 +36478,7 @@
                 "layout": "normal",
                 "manaCost": "{G}",
                 "name": "Giant Growth",
-                "number": "165",
+                "number": "163",
                 "printings": [
                     "JAN",
                     "LEA",
@@ -36575,6 +36526,35 @@
                 ]
             },
             {
+                "artist": "petardimitrov",
+                "cmc": 2,
+                "colorIdentity": [
+                    "G"
+                ],
+                "colors": [
+                    "Green"
+                ],
+                "layout": "normal",
+                "manaCost": "{X}{G}{G}",
+                "name": "Gloomwood Hydra",
+                "number": "164",
+                "power": "0",
+                "printings": [
+                    "JAN"
+                ],
+                "rarity": "Rare",
+                "subtypes": [
+                    "Fungus",
+                    "Hydra"
+                ],
+                "text": "Trample\nGloomwood Hydra enters the battlefield with X +1/+1 counters on it.\nSpellbound \u2014 {3}{G}, Exile an instant or sorcery card from your graveyard: Gloomwood Hydra fights target creature you don't control.",
+                "toughness": "0",
+                "type": "Creature \u2014 Fungus Hydra",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
                 "artist": "mbillustrations",
                 "cmc": 3,
                 "colorIdentity": [
@@ -36586,7 +36566,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Graceful Abada",
-                "number": "166",
+                "number": "165",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -36614,7 +36594,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}{G}",
                 "name": "Grootslang Dreadwalkers",
-                "number": "167",
+                "number": "166",
                 "power": "3",
                 "printings": [
                     "JAN"
@@ -36629,7 +36609,7 @@
                 "subtypes": [
                     "Elephant"
                 ],
-                "text": "Reach (This creature can block creatures with flying.)\nResurrect {4}{G}{G} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "Reach (This creature can block creatures with flying.)\nResurrect {4}{G}{G} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "5",
                 "type": "Creature \u2014 Elephant",
                 "types": [
@@ -36649,7 +36629,7 @@
                 "layout": "normal",
                 "manaCost": "{X}{X}{G}",
                 "name": "Grootslang Stampede",
-                "number": "168",
+                "number": "167",
                 "printings": [
                     "JAN"
                 ],
@@ -36672,7 +36652,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Hiutha, Kelada Wildborn",
-                "number": "169",
+                "number": "168",
                 "power": "1",
                 "printings": [
                     "JAN"
@@ -36685,7 +36665,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "{T}: Choose a color. Add an amount of mana of that color to your mana pool equal to Hiutha, Kelada Wildborn's power.\nSpellbound \u2014 {4}{G}, Exile an instant or sorcery card from your graveyard: Put two +1/+1 counters on Hiutha.",
+                "text": "{T}: Choose a color. Add an amount of mana of that color to your mana pool equal to Hiutha, Kelada Wildborn's power.\nSpellbound \u2014 {2}{G}, Exile an instant or sorcery card from your graveyard: Put two +1/+1 counters on Hiutha.",
                 "toughness": "1",
                 "type": "Legendary Creature \u2014 Centaur Druid",
                 "types": [
@@ -36705,7 +36685,7 @@
                 "loyalty": 5,
                 "manaCost": "{3}{G}{G}",
                 "name": "Hohoja, One with the Jungle",
-                "number": "170",
+                "number": "169",
                 "printings": [
                     "JAN"
                 ],
@@ -36716,7 +36696,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "+1: Create two 0/1 green Plant creature tokens.\n-3: You get an emblem with \"Plant creatures you control get +1/+0 and have '{T}: Add {G} to your mana pool.'\"\n-9: Create thirty 0/1 green Plant creature tokens.",
+                "text": "+1: Create two 0/1 green Plant creature tokens.\n-2: You get an emblem with \"Plant creatures you control get +1/+0 and have '{T}: Add {G} to your mana pool.'\"\n-9: Create thirty 0/1 green Plant creature tokens.",
                 "type": "Legendary Planeswalker \u2014 Hohoja",
                 "types": [
                     "Planeswalker"
@@ -36734,7 +36714,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Junmra's Blessing",
-                "number": "171",
+                "number": "170",
                 "printings": [
                     "JAN"
                 ],
@@ -36758,7 +36738,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Kelada Outrider",
-                "number": "172",
+                "number": "171",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -36787,7 +36767,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Kumra Wilddancer",
-                "number": "173",
+                "number": "172",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -36817,7 +36797,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Maul",
-                "number": "174",
+                "number": "173",
                 "printings": [
                     "JAN"
                 ],
@@ -36829,7 +36809,7 @@
                 ]
             },
             {
-                "artist": "DoudzMat",
+                "artist": "neisbeis",
                 "cmc": 4,
                 "colorIdentity": [
                     "G"
@@ -36841,7 +36821,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}",
                 "name": "Moonmulch Umdhelbi",
-                "number": "175",
+                "number": "174",
                 "power": "5",
                 "printings": [
                     "JAN"
@@ -36869,7 +36849,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Nomadic Druid",
-                "number": "176",
+                "number": "175",
                 "power": "1",
                 "printings": [
                     "JAN"
@@ -36899,7 +36879,7 @@
                 "layout": "normal",
                 "manaCost": "{5}{G}{G}",
                 "name": "Primordial Rampage",
-                "number": "177",
+                "number": "176",
                 "printings": [
                     "JAN"
                 ],
@@ -36922,7 +36902,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{G}{G}",
                 "name": "Sahai Sandwurm",
-                "number": "178",
+                "number": "177",
                 "power": "6",
                 "printings": [
                     "JAN"
@@ -36947,11 +36927,11 @@
                 "colors": [
                     "Green"
                 ],
-                "flavor": "\"When you spend your entire life roaming the desert, nothing can catch you off guard anymore.\"",
+                "flavor": "\"When you spend your entire life roaming the endless desert, nothing can catch you off guard anymore.\"",
                 "layout": "normal",
                 "manaCost": "{G}",
                 "name": "Sahai Wayfarer",
-                "number": "179",
+                "number": "178",
                 "power": "2",
                 "printings": [
                     "JAN"
@@ -36961,7 +36941,7 @@
                     "Elf",
                     "Scout"
                 ],
-                "text": "Sahai Wayfarer can't be countered.",
+                "text": "Focus {2}{G} (You may cast this spell for its focus cost. When you do, draw a card.)\nSahai Wayfarer can't be countered.",
                 "toughness": "1",
                 "type": "Creature \u2014 Elf Scout",
                 "types": [
@@ -36981,7 +36961,7 @@
                 "layout": "normal",
                 "manaCost": "{6}{G}{G}",
                 "name": "Scavenger Chieftan",
-                "number": "180",
+                "number": "179",
                 "power": "4",
                 "printings": [
                     "JAN"
@@ -37010,7 +36990,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}{G}",
                 "name": "Scavenging Tiger",
-                "number": "181",
+                "number": "180",
                 "power": "4",
                 "printings": [
                     "JAN"
@@ -37022,6 +37002,35 @@
                 "text": "Trample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)\nScavenging Tiger enters the battlefield with a +1/+1 counter on it if you have two or more creature cards in your graveyard.",
                 "toughness": "4",
                 "type": "Creature \u2014 Cat",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
+                "artist": "Leo de Moura",
+                "cmc": 2,
+                "colorIdentity": [
+                    "G"
+                ],
+                "colors": [
+                    "Green"
+                ],
+                "layout": "normal",
+                "manaCost": "{1}{G}",
+                "name": "Shaman of the Cycle",
+                "number": "181",
+                "power": "2",
+                "printings": [
+                    "JAN"
+                ],
+                "rarity": "Rare",
+                "subtypes": [
+                    "Human",
+                    "Shaman"
+                ],
+                "text": "When Shaman of the Cycle enters the battlefield, target creature card in your graveyard gains resurrect until end of turn. The resurrect cost is equal to its mana cost. (You may cast a creature spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "toughness": "1",
+                "type": "Creature \u2014 Human Shaman",
                 "types": [
                     "Creature"
                 ]
@@ -37077,7 +37086,7 @@
                 "subtypes": [
                     "Spirit"
                 ],
-                "text": "Focus {5}{G} (You may cast this spell for its Focus cost. When you do, draw a card.)\nSpirit of the Jungle's power and toughness are each equal to the number of cards in your hand.",
+                "text": "Focus {5}{G} (You may cast this spell for its focus cost. When you do, draw a card.)\nReach\nSpirit of the Jungle's power and toughness are each equal to the number of cards in your hand.",
                 "toughness": "*",
                 "type": "Creature \u2014 Spirit",
                 "types": [
@@ -37157,7 +37166,7 @@
                 "subtypes": [
                     "Beast"
                 ],
-                "text": "Focus {3}{G}{G} (You may cast this spell for its Focus cost. When you do, draw a card.)\nHexproof (This can't be the target of spells or abilities your opponents control.)",
+                "text": "Focus {3}{G}{G} (You may cast this spell for its focus cost. When you do, draw a card.)\nHexproof (This can't be the target of spells or abilities your opponents control.)",
                 "toughness": "2",
                 "type": "Creature \u2014 Beast",
                 "types": [
@@ -37199,7 +37208,7 @@
                 ],
                 "layout": "normal",
                 "manaCost": "{2}{G}",
-                "name": "Wild Emmisary",
+                "name": "Wild Emissary",
                 "number": "188",
                 "power": "3",
                 "printings": [
@@ -37210,7 +37219,7 @@
                     "Elf",
                     "Druid"
                 ],
-                "text": "Wild Emmisary has trample as long as it has a +1/+1 counter on it.\nResurrect {4}{G} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "Wild Emissary has trample as long as it has a +1/+1 counter on it.\nResurrect {4}{G} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "2",
                 "type": "Creature \u2014 Elf Druid",
                 "types": [
@@ -37309,7 +37318,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "+2: Up to one target creature has base power and toughness 1/1 and loses all abilities until the beginning of your next turn.\n0: Exile a nontoken creature you control.\n-3: If you do, draw two cards.\nExile target nontoken creature you don't control. Its owner reveals the top card of his or her library and may cast it without paying its mana cost.",
+                "text": "+2: Up to one target creature an opponent controls has base power and toughness 1/1 and loses all abilities until your next turn.\n0: Exile a nontoken creature you control. If you do, draw two cards.\n-3: Exile target nontoken creature you don't control. Its owner reveals the top card of his or her library and may cast it without paying its mana cost.",
                 "type": "Legendary Planeswalker \u2014 Faralyn",
                 "types": [
                     "Planeswalker"
@@ -37470,7 +37479,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "Kakrako, Lord of Nightwater gets +1/+1 for each card in your graveyard.\nDiscard a card: Kakrako, Lord of Nightwater gains hexproof until end of turn.\nResurrect {5}{U}{U}{B}{B} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "Kakrako, Lord of Nightwater gets +1/+1 for each card in your graveyard.\nDiscard a card: Kakrako, Lord of Nightwater gains hexproof until end of turn.\nResurrect {5}{U}{U}{B}{B} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "2",
                 "type": "Legendary Creature \u2014 Crocodile",
                 "types": [
@@ -37522,23 +37531,17 @@
                 "flavor": "In its presence, all minds are opened.",
                 "layout": "normal",
                 "manaCost": "{2}{W}{U}",
-                "name": "Leige of the Grasslands",
+                "name": "Liege of the Grasslands",
                 "number": "198",
                 "power": "2",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Rare",
-                "rulings": [
-                    {
-                        "date": "2017-11-03",
-                        "text": "Despite the reminder text, the second ability applies to all spells you cast, not just those cast from your hand."
-                    }
-                ],
                 "subtypes": [
                     "Pegasus"
                 ],
-                "text": "Flying\nSpells you cast have focus {4}{W}{U}. (You may cast spells in your hand for {4}{W}{U}. If you do, draw a card.)",
+                "text": "Flying\nSpells you cast from your hand have focus {4}{W}{U}. (You may cast spells from your hand for {4}{W}{U}. If you do, draw a card.)",
                 "toughness": "4",
                 "type": "Creature \u2014 Pegasus",
                 "types": [
@@ -37610,7 +37613,7 @@
             },
             {
                 "artist": "encuentroprolow",
-                "cmc": 5,
+                "cmc": 4,
                 "colorIdentity": [
                     "B",
                     "R"
@@ -37620,7 +37623,7 @@
                     "Red"
                 ],
                 "layout": "normal",
-                "manaCost": "{3}{B}{R}",
+                "manaCost": "{2}{B}{R}",
                 "name": "Marrowscythe Ravager",
                 "number": "201",
                 "power": "2",
@@ -37638,7 +37641,7 @@
                     "Skeleton",
                     "Beast"
                 ],
-                "text": "Double strike, haste\nResurrect {4}{B}{R} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "Double strike, haste\nResurrect {4}{B}{R} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "2",
                 "type": "Creature \u2014 Skeleton Beast",
                 "types": [
@@ -37697,7 +37700,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "+2: Scry 2, then reveal the top card of your library. You gain life equal to that card's converted mana cost.\n-3: Return target instant or sorcery card from your graveyard to your hand.\n-11: You get an emblem with \"You may cast instant and sorcery cards from your graveyard.\"",
+                "text": "+2: Scry 2, then reveal the top card of your library. You gain life equal to that card's converted mana cost.\n-3: Return target instant or sorcery card from your graveyard to your hand.\n-10: You get an emblem with \"Whenever you cast an instant or sorcery spell, you draw two cards and you gain 4 life.\"",
                 "type": "Legendary Planeswalker \u2014 Narset",
                 "types": [
                     "Planeswalker"
@@ -37878,7 +37881,7 @@
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "Focus {3}{R}{W} (You may cast this spell for its Focus cost. When you do, draw a card.)\nUntap target creature. That creature gets +3/+3 and gains first strike and trample until end of turn.",
+                "text": "Focus {3}{R}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nUntap target creature. That creature gets +3/+3 and gains first strike and trample until end of turn.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -37963,7 +37966,7 @@
                     "Faerie",
                     "Wizard"
                 ],
-                "text": "Focus {2}{W}{U} (You may cast this spell for its Focus cost. When you do, draw a card.)\nFlash\nFlying\nWhenever you cast a spell for its\nfocus cost, scry 1.",
+                "text": "Focus {2}{W}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nFlash\nFlying\nWhenever you cast a spell for its focus cost, scry 1.",
                 "toughness": "3",
                 "type": "Creature \u2014 Faerie Wizard",
                 "types": [
@@ -37972,7 +37975,7 @@
             },
             {
                 "artist": "Paul Lewin",
-                "cmc": 5,
+                "cmc": 4,
                 "colorIdentity": [
                     "W",
                     "G"
@@ -37982,7 +37985,7 @@
                     "Green"
                 ],
                 "layout": "normal",
-                "manaCost": "{3}{G}{W}",
+                "manaCost": "{2}{G}{W}",
                 "name": "Uaria, King of Akuga",
                 "number": "213",
                 "power": "2",
@@ -37997,7 +38000,7 @@
                     "Legendary"
                 ],
                 "text": "When Uaria, King of Akuga enters the battlefield, each opponent creates three colorless Treasure artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color to your mana pool.\"\nCreatures can't attack you unless their controller pays {3} for each creature he or she controls that's attacking you.",
-                "toughness": "3",
+                "toughness": "4",
                 "type": "Legendary Creature \u2014 Human",
                 "types": [
                     "Creature"
@@ -38017,7 +38020,7 @@
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Focus {5} (You may cast this spell for its Focus cost. When you do, draw a card.)\n{T}: Add one mana of any color to your mana pool.",
+                "text": "Focus {5} (You may cast this spell for its focus cost. When you do, draw a card.)\n{T}: Add one mana of any color to your mana pool.",
                 "type": "Artifact",
                 "types": [
                     "Artifact"
@@ -38527,8 +38530,7 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "HLW",
-                    "AYR"
+                    "RIX"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -38658,8 +38660,7 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "HLW",
-                    "AYR"
+                    "RIX"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -38787,8 +38788,7 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "HLW",
-                    "AYR"
+                    "RIX"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -38917,8 +38917,7 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "HLW",
-                    "AYR"
+                    "RIX"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -39050,8 +39049,7 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "HLW",
-                    "AYR"
+                    "RIX"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -39184,8 +39182,7 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "HLW",
-                    "AYR"
+                    "RIX"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -39319,8 +39316,7 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "HLW",
-                    "AYR"
+                    "RIX"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -39455,8 +39451,7 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "HLW",
-                    "AYR"
+                    "RIX"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -39587,8 +39582,7 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "HLW",
-                    "AYR"
+                    "RIX"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -39720,8 +39714,7 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "HLW",
-                    "AYR"
+                    "RIX"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
