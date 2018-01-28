@@ -42,7 +42,7 @@ task "mtgjson:fetch:good" do
 end
 
 desc "Fetch new mtgjson database and update index"
-task "mtgjson:update" => ["mtgjson:fetch", "index"]
+task "mtgjson:update" => ["mtgjson:fetch:good", "index"]
 
 desc "Update penny dreadful banlist"
 task "pennydreadful:update" do

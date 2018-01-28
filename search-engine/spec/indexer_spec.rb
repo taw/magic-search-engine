@@ -41,16 +41,19 @@ describe "Inedxer hacks" do
   end
 
   it "meld card numbers" do
-    db.search("is:meld").printings.map{|c| [c.name, c.number]}.should match_array([
-      ["Brisela, Voice of Nightmares", "15b"],
-      ["Bruna, the Fading Light", "15a"],
-      ["Chittering Host", "96b"],
-      ["Gisela, the Broken Blade", "28a"],
-      ["Graf Rats", "91a"],
-      ["Hanweir Battlements", "204a"],
-      ["Hanweir Garrison", "130a"],
-      ["Hanweir, the Writhing Township", "130b"],
-      ["Midnight Scavengers", "96a"]
+    db.search("is:meld").printings.map{|c| [c.set_code, c.name, c.number]}.should match_array([
+      ["emn", "Brisela, Voice of Nightmares", "15b"],
+      ["emn", "Bruna, the Fading Light", "15a"],
+      ["emn", "Chittering Host", "96b"],
+      ["emn", "Gisela, the Broken Blade", "28a"],
+      ["emn", "Graf Rats", "91a"],
+      ["emn", "Hanweir Battlements", "204a"],
+      ["emn", "Hanweir Garrison", "130a"],
+      ["emn", "Hanweir, the Writhing Township", "130b"],
+      ["emn", "Midnight Scavengers", "96a"],
+      ["v17", "Brisela, Voice of Nightmares", "5b"],
+      ["v17", "Bruna, the Fading Light", "5a"],
+      ["v17", "Gisela, the Broken Blade", "10a"],
     ])
   end
 

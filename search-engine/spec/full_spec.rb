@@ -3,7 +3,7 @@ describe "Full Database Test" do
 
   it "stats" do
     db.number_of_cards.should eq(18161)
-    db.number_of_printings.should eq(35302)
+    db.number_of_printings.should eq(35331)
   end
 
   it "block_codes" do
@@ -113,6 +113,10 @@ describe "Full Database Test" do
       "Unruly Mob"
 
     assert_search_results "e:soi lastprint>soi",
+      "Archangel Avacyn",
+      "Arlinn Kord",
+      "Arlinn, Embraced by the Moon",
+      "Avacyn, the Purifier",
       "Dual Shot",
       "Engulf the Shore",
       "Forest",
@@ -141,7 +145,6 @@ describe "Full Database Test" do
     assert_search_results "t:planeswalker lastprint<=roe", "Chandra Ablaze", "Sarkhan the Mad"
     assert_search_results "t:planeswalker lastprint<=2011",
       "Ajani Goldmane", "Ajani Vengeant", "Chandra Ablaze", "Elspeth Tirel",
-      "Garruk Relentless", "Garruk, the Veil-Cursed",
       "Nissa Revane", "Sarkhan the Mad", "Sorin Markov", "Tezzeret, Agent of Bolas"
   end
 
@@ -214,10 +217,12 @@ describe "Full Database Test" do
       "Cabal Ritual",
       "Chainer's Edict",
       "Dark Ritual",
+      "Delver of Secrets",
       "Desert",
       "Fyndhorn Elves",
       "Hymn to Tourach",
       "Impulse",
+      "Insectile Aberration",
       "Kird Ape",
       "Lotus Petal"
   end
