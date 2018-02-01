@@ -114,7 +114,10 @@ class Indexer
       end
       if numbers.compact.size != numbers.compact.uniq.size
         # This breaks the frontend, so it needs to be hard exception
-        duplicates = numbers.compact.group_by(&:itself).transform_values(&:count).select{|k,v| v > 1}
+        duplicates = cards
+          .group_by{|c| c["number"]}
+          .transform_values{|cs| cs.map{|c| c["name"]}}
+          .select{|_,cs| cs.size > 1}
         raise "Set #{set_code} #{set_data["name"]} has DUPLICATE numbers: #{duplicates.inspect}"
       end
     end

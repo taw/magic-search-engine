@@ -28,11 +28,11 @@ describe "Sorting" do
   it "newall" do
     # Jace v Chandra printing of Chandra Nalaar changes order
     assert_search_results_ordered "t:chandra sort:newall",
+      "Chandra, Roaring Flame",
       "Chandra, Pyromaster",
       "Chandra, Pyrogenius",
       "Chandra, Torch of Defiance",
       "Chandra, Flamecaller",
-      "Chandra, Roaring Flame",
       "Chandra Nalaar",
       "Chandra, the Firebrand",
       "Chandra Ablaze"

@@ -32,8 +32,18 @@ task "mtgjson:fetch" do
   sh "./bin/patch-mtg-json"
 end
 
+desc "Fetch new mtgjson database, then revert known bad ones"
+task "mtgjson:fetch:good" do
+  sh "indexer/bin/split_mtgjson", "http://mtgjson.com/json/AllSets-x.json"
+  # Unsets and Kamigawa block are broken, mostly flip/split cards
+  # CP2 has long uncorrected typo
+  # V17 has duplicate Brisela
+  # Starter 2000 is technically not broken, but it's annoying how they changed numbers
+  sh "git checkout data/sets/{UGL,UNH,UST,CHK,BOK,SOK,V17,S00,CP2}.json"
+end
+
 desc "Fetch new mtgjson database and update index"
-task "mtgjson:update" => ["mtgjson:fetch", "index"]
+task "mtgjson:update" => ["mtgjson:fetch:good", "index"]
 
 desc "Update penny dreadful banlist"
 task "pennydreadful:update" do
