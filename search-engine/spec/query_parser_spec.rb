@@ -92,6 +92,18 @@ describe "QueryParser" do
     assert_search_parse %Q[time:rtr r:common], %Q[time:RTR r:common]
   end
 
+  it "color aliases" do
+    assert_search_parse "c:w", "c:white"
+    assert_search_parse "c:u", "c:blue"
+    assert_search_parse "c:b", "c:black"
+    assert_search_parse "c:r", "c:red"
+    assert_search_parse "c:g", "c:green"
+    assert_search_parse "ci:b", "ci:black"
+    assert_search_parse "c!u", "c!blue"
+    assert_search_parse "c>=w", "c>=white"
+    assert_search_parse "in:r", "in:red"
+  end
+
   it "query_to_s" do
     query_examples = (Pathname(__dir__) + "query_examples.txt").readlines.map(&:chomp)
 

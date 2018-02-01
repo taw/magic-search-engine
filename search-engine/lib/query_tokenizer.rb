@@ -110,8 +110,8 @@ class QueryTokenizer
         b = s[3].downcase
         b = aliases[b] || b
         tokens << [:test, ConditionExpr.new(a, op, b)]
-      elsif s.scan(/(c|ci)\s*(>=|>|<=|<|=)\s*([wubrgc]*)/i)
-        tokens << [:test, ConditionColorExpr.new(s[1].downcase, s[2], s[3].downcase)]
+      elsif s.scan(/(c|ci)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|(\w+))/i)
+        tokens << [:test, ConditionColorExpr.new(s[1].downcase, s[2], parse_color(s[3] || s[4]))]
       elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})*)/i)
         op = s[1]
         op = "=" if op == ":"
@@ -181,9 +181,22 @@ private
   def parse_color(color_text)
     color_text = color_text.downcase
     return color_text if color_text =~ /\A[wubrgcml]+\z/
-    fixed = color_text.gsub(/[^wubrgcml]/, "")
-    @warnings << "Unrecognized color query: #{color_text.inspect}, correcting to #{fixed.inspect}"
-    fixed
+    case color_text
+    when "white"
+      "w"
+    when "blue"
+      "u"
+    when "black"
+      "b"
+    when "red"
+      "r"
+    when "green"
+      "g"
+    else
+      fixed = color_text.gsub(/[^wubrgcml]/, "")
+      @warnings << "Unrecognized color query: #{color_text.inspect}, correcting to #{fixed.inspect}"
+      fixed
+    end
   end
 
   def parse_time(time)
