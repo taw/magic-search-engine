@@ -50,7 +50,7 @@ class QueryTokenizer
             "name" => ConditionWord,
             "o"  => ConditionOracle,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
-          warnings << "bad regular expression in #{s[0]} - #{e.message}"
+          @warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, cond.new(s[2])]
         end
       elsif s.scan(/t[:=](?:"(.*?)"|([’'\-\u2212\w\*]+))/i)
