@@ -16,12 +16,17 @@ class Sorter
     known_sort_orders = ["ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou"]
     known_sort_orders += known_sort_orders.map{|s| "-#{s}"}
 
-    @sort_order = sort_order
+    @sort_order = sort_order ? sort_order.split(",") : []
     @warnings = []
-    if @sort_order and not known_sort_orders.include?(@sort_order)
-      @warnings << "Unknown sort order: #{@sort_order}"
-      @sort_order = nil
-    end
+    @sort_order = @sort_order.map do |part|
+      if known_sort_orders.include?(part)
+        part
+      else
+        @warnings << "Unknown sort order: #{part}"
+        nil
+      end
+    end.compact
+    @sort_order = nil if @sort_order.empty?
   end
 
   def sort(results)
@@ -38,52 +43,54 @@ class Sorter
   private
 
   def card_key(c)
-    case @sort_order
-    when "new", "-old"
-      [c.set.regular? ? 0 : 1, -c.release_date_i, c.default_sort_index]
-    when "old", "-new"
-      [c.set.regular? ? 0 : 1, c.release_date_i, c.default_sort_index]
-    when "newall", "-oldall"
-      [-c.release_date_i, c.default_sort_index]
-    when "oldall", "-newall"
-      [c.release_date_i, c.default_sort_index]
-    when "cmc"
-      [c.cmc ? 0 : 1, -c.cmc.to_i, c.default_sort_index]
-    when "-cmc"
-      [c.cmc ? 0 : 1, c.cmc.to_i, c.default_sort_index]
-    when "pow"
-      [c.power ? 0 : 1, -c.power.to_i, c.default_sort_index]
-    when "-pow"
-      [c.power ? 0 : 1, c.power.to_i, c.default_sort_index]
-    when "tou"
-      [c.toughness ? 0 : 1, -c.toughness.to_i, c.default_sort_index]
-    when "-tou"
-      [c.toughness ? 0 : 1, c.toughness.to_i, c.default_sort_index]
-    when "rand", "-rand"
-      [Digest::MD5.hexdigest(@query_string + c.name), c.default_sort_index]
-    when "number"
-      [c.set.name, c.number.to_i, c.number, c.default_sort_index]
-    when "-number"
-      [c.set.name, -c.number.to_i, reverse_string_order(c.number), c.default_sort_index]
-    when "color"
-      [COLOR_ORDER.fetch(c.colors), c.default_sort_index]
-    when "-color"
-      [COLOR_ORDER.fetch(c.colors), c.default_sort_index]
-    when "ci"
-      [COLOR_ORDER.fetch(c.color_identity), c.default_sort_index]
-    when "-ci"
-      [COLOR_ORDER.fetch(c.color_identity), c.default_sort_index]
-    when "rarity"
-      [-c.rarity_code, c.default_sort_index]
-    when "-rarity"
-      [c.rarity_code, c.default_sort_index]
-    when "name"
-      c.default_sort_index
-    when "-name"
-      [reverse_string_order(c.name), c.default_sort_index]
-    else # unknown key, treat as name
-      raise "Invalid sort order #{@sort_order}"
-    end
+    @sort_order.flat_map do |part|
+      case part
+      when "new", "-old"
+        [c.set.regular? ? 0 : 1, -c.release_date_i]
+      when "old", "-new"
+        [c.set.regular? ? 0 : 1, c.release_date_i]
+      when "newall", "-oldall"
+        [-c.release_date_i]
+      when "oldall", "-newall"
+        [c.release_date_i]
+      when "cmc"
+        [c.cmc ? 0 : 1, -c.cmc.to_i]
+      when "-cmc"
+        [c.cmc ? 0 : 1, c.cmc.to_i]
+      when "pow"
+        [c.power ? 0 : 1, -c.power.to_i]
+      when "-pow"
+        [c.power ? 0 : 1, c.power.to_i]
+      when "tou"
+        [c.toughness ? 0 : 1, -c.toughness.to_i]
+      when "-tou"
+        [c.toughness ? 0 : 1, c.toughness.to_i]
+      when "rand", "-rand"
+        [Digest::MD5.hexdigest(@query_string + c.name)]
+      when "number"
+        [c.set.name, c.number.to_i, c.number]
+      when "-number"
+        [c.set.name, -c.number.to_i, reverse_string_order(c.number)]
+      when "color"
+        [COLOR_ORDER.fetch(c.colors)]
+      when "-color"
+        [COLOR_ORDER.fetch(c.colors)]
+      when "ci"
+        [COLOR_ORDER.fetch(c.color_identity)]
+      when "-ci"
+        [COLOR_ORDER.fetch(c.color_identity)]
+      when "rarity"
+        [-c.rarity_code]
+      when "-rarity"
+        [c.rarity_code]
+      when "name"
+        [c.name]
+      when "-name"
+        [reverse_string_order(c.name)]
+      else # unknown key, should have been caught by initializer
+        raise "Invalid sort order #{part}"
+      end
+    end + [c.default_sort_index]
   end
 
   # This is a stupid hack, and also really slow

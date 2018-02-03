@@ -74,6 +74,18 @@ describe "Sorting" do
       "Chandra, Roaring Flame"      # 3
   end
 
+  it "-cmc" do
+    assert_search_results_ordered "t:chandra sort:-cmc",
+      "Chandra, Roaring Flame",     # 3
+      "Chandra, Pyromaster",        # 4
+      "Chandra, Torch of Defiance", # 4
+      "Chandra, the Firebrand",     # 4
+      "Chandra Nalaar",             # 5
+      "Chandra Ablaze",             # 6
+      "Chandra, Flamecaller",       # 6
+      "Chandra, Pyrogenius"         # 6
+  end
+
   it "number" do
     assert_search_results_ordered "t:planeswalker e:m10 sort:number",
       "Ajani Goldmane",
@@ -90,6 +102,18 @@ describe "Sorting" do
       "Liliana Vess",
       "Jace Beleren",
       "Ajani Goldmane"
+  end
+
+  it "mixing orders" do
+    assert_search_results_ordered "t:chandra sort:cmc,-name",
+      "Chandra, Pyrogenius",        # 6
+      "Chandra, Flamecaller",       # 6
+      "Chandra Ablaze",             # 6
+      "Chandra Nalaar",             # 5
+      "Chandra, the Firebrand",     # 4
+      "Chandra, Torch of Defiance", # 4
+      "Chandra, Pyromaster",        # 4
+      "Chandra, Roaring Flame"      # 3
   end
 
   let(:expected_color_order) {
