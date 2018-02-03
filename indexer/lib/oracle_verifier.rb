@@ -85,6 +85,8 @@ class OracleVerifier
             canonical_variant_source = "uh"
           when "Strider Harness", "Traveler's Amulet"
             canonical_variant_source = "rix"
+          when "Grafdigger's Cage"
+            canonical_variant_source = "mm3"
           else
             # FAIL, report
           end
