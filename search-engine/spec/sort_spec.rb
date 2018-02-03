@@ -74,13 +74,22 @@ describe "Sorting" do
       "Chandra, Roaring Flame"      # 3
   end
 
-  it "cmc" do
+  it "number" do
     assert_search_results_ordered "t:planeswalker e:m10 sort:number",
       "Ajani Goldmane",
       "Jace Beleren",
       "Liliana Vess",
       "Chandra Nalaar",
       "Garruk Wildspeaker"
+  end
+
+  it "-number" do
+    assert_search_results_ordered "t:planeswalker e:m10 sort:-number",
+      "Garruk Wildspeaker",
+      "Chandra Nalaar",
+      "Liliana Vess",
+      "Jace Beleren",
+      "Ajani Goldmane"
   end
 
   let(:expected_color_order) {
