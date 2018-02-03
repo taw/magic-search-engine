@@ -139,10 +139,10 @@ class QueryTokenizer
         tokens << [:test, ConditionBorder.new("none")]
       elsif s.scan(/border[:=](black|silver|white|none)\b/i)
         tokens << [:test, ConditionBorder.new(s[1].downcase)]
-      elsif s.scan(/sort[:=](\w+)/i)
-        tokens << [:metadata, {sort: s[1].downcase}]
-      elsif s.scan(/view[:=](\w+)/i)
-        tokens << [:metadata, {view: s[1].downcase}]
+      elsif s.scan(/sort[:=](?:"(.*?)"|([\-\,\.\w]+))/i)
+        tokens << [:metadata, {sort: (s[1]||s[2]).downcase}]
+      elsif s.scan(/view[:=](?:"(.*?)"|([\.\w]+))/i)
+        tokens << [:metadata, {view: (s[1]||s[2]).downcase}]
       elsif s.scan(/\+\+/i)
         tokens << [:metadata, {ungrouped: true}]
       elsif s.scan(/time[:=](?:"(.*?)"|([\.\w]+))/i)
