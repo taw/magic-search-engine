@@ -11,14 +11,22 @@ class Date
 end
 
 class Query
-  attr_reader :warnings
+  attr_reader :warnings, :seed
 
   def initialize(query_string, seed=nil)
     @query_string = query_string
     @cond, @metadata, @warnings = QueryParser.new.parse(query_string)
-    @seed = seed || "%016x" % rand(0x1_0000_0000_0000_0000)
+    if needs_seed?
+      @seed = seed || "%016x" % rand(0x1_0000_0000_0000_0000)
+    else
+      @seed = nil
+    end
     @sorter = Sorter.new(@metadata[:sort], @seed)
     @warnings += @sorter.warnings
+  end
+
+  def needs_seed?
+    @metadata[:sort] && @metadata[:sort] =~ /\brand\b/
   end
 
   def search(db)
