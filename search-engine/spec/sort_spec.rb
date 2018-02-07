@@ -116,6 +116,13 @@ describe "Sorting" do
       "Chandra, Roaring Flame"      # 3
   end
 
+  it "random" do
+    results1 = search("t:creature sort:rand")
+    results2 = search("t:creature sort:name")
+    results1.should_not eq(results2)
+    results1.sort.should eq(results2.sort)
+  end
+
   let(:expected_color_order) {
     # Magic cards are ordered:
     # * monocolored (wubrg)

@@ -16,9 +16,8 @@ class Query
   def initialize(query_string)
     @query_string = query_string
     @cond, @metadata, @warnings = QueryParser.new.parse(query_string)
-    @sorter = Sorter.new(@metadata[:sort])
+    @sorter = Sorter.new(@metadata[:sort], @query_string)
     @warnings += @sorter.warnings
-    # puts "Parse #{query_string} -> #{@cond}"
   end
 
   def search(db)
