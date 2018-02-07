@@ -12,10 +12,11 @@ class Sorter
 
   attr_reader :warnings, :sort_order
 
-  def initialize(sort_order)
+  def initialize(sort_order, seed)
     known_sort_orders = ["ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou"]
     known_sort_orders += known_sort_orders.map{|s| "-#{s}"}
 
+    @seed = seed
     @sort_order = sort_order ? sort_order.split(",") : []
     @warnings = []
     @sort_order = @sort_order.map do |part|
@@ -66,7 +67,7 @@ class Sorter
       when "-tou"
         [c.toughness ? 0 : 1, c.toughness.to_i]
       when "rand", "-rand"
-        [Digest::MD5.hexdigest(@query_string + c.name)]
+        [Digest::MD5.hexdigest(@seed + c.name)]
       when "number"
         [c.set.name, c.number.to_i, c.number]
       when "-number"
