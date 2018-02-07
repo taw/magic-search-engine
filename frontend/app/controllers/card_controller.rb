@@ -40,6 +40,7 @@ class CardController < ApplicationController
   def index
     @search = (params[:q] || "").strip
     page = [1, params[:page].to_i].max
+    @seed = params[:seed] || "%016x" % rand(0x1_0000_0000_0000_0000)
 
     unless @search.present?
       @empty_page = true
@@ -48,7 +49,7 @@ class CardController < ApplicationController
     end
 
     @title = @search
-    query = Query.new(@search)
+    query = Query.new(@search, @seed)
     results = $CardDatabase.search(query)
     @warnings = results.warnings
     @cards = results.card_groups.map do |printings|
