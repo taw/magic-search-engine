@@ -13,10 +13,11 @@ end
 class Query
   attr_reader :warnings
 
-  def initialize(query_string)
+  def initialize(query_string, seed=nil)
     @query_string = query_string
     @cond, @metadata, @warnings = QueryParser.new.parse(query_string)
-    @sorter = Sorter.new(@metadata[:sort], @query_string)
+    @seed = seed || "%016x" % rand(0x1_0000_0000_0000_0000)
+    @sorter = Sorter.new(@metadata[:sort], @seed)
     @warnings += @sorter.warnings
   end
 
@@ -48,12 +49,13 @@ class Query
 
   def ==(other)
     # structural equality, subclass if you need something fancier
-    # We ignore @query_string, so queries that == won't necessarily have same random order
+    # We ignore @query_string and @seed, so queries that == won't necessarily have same random order
     # It's something we might want to revisit someday
     self.class == other.class and
       instance_variables == other.instance_variables and
       instance_variables.all?{|ivar|
         ivar == :@query_string or
+        ivar == :@seed or
         instance_variable_get(ivar) == other.instance_variable_get(ivar)
       }
   end

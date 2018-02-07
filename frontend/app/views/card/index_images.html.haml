@@ -10,6 +10,4 @@
       .col-6.col-sm-4.card_picture_cell{class: "card_#{i % 3}_of_3 card_#{i % 2}_of_2"}
         = link_to_card(card) do
           = render 'card/picture', card: card
-  .row
-    .col-12.pagination
-      = will_paginate @cards
+  = render "pagination", cards: @cards
