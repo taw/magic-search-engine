@@ -10,9 +10,9 @@ class ConditionAny < ConditionSimple
   # This is going to be pretty slow
   def match?(card)
     return true if @subqueries.any?{|sq| sq.match?(card)}
-    foreign_names = (card.foreign_names || {}).values.flatten
+    foreign_names = card.foreign_names_normalized.values.flatten
     return true if foreign_names.any?{|n|
-      hard_normalize(n).include?(@query_hard_normalized)
+      n.include?(@query_hard_normalized)
     }
     false
   end
