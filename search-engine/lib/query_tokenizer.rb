@@ -63,6 +63,8 @@ class QueryTokenizer
         tokens << [:test, ConditionArtist.new(s[1] || s[2])]
       elsif s.scan(/(cn|tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct)[:=](?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionForeign.new(s[1], s[2] || s[3])]
+      elsif s.scan(/any[:=](?:"(.*?)"|(\w+))/i)
+        tokens << [:test, ConditionAny.new(s[1] || s[2])]
       elsif s.scan(/(banned|restricted|legal)[:=](?:"(.*?)"|([\w\-]+))/i)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(s[2] || s[3])]
