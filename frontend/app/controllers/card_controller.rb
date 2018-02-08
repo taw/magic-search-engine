@@ -48,7 +48,8 @@ class CardController < ApplicationController
     end
 
     @title = @search
-    query = Query.new(@search)
+    query = Query.new(@search, params[:seed])
+    @seed = query.seed
     results = $CardDatabase.search(query)
     @warnings = results.warnings
     @cards = results.card_groups.map do |printings|

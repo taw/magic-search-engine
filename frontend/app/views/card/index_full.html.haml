@@ -7,6 +7,4 @@
   = render 'summary'
   - @cards.each do |card, printings|
     = render "card_row_full", card: card, printings: printings
-  .row
-    .col-12.pagination
-      = will_paginate @cards
+  = render "pagination", cards: @cards

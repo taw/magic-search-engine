@@ -74,13 +74,53 @@ describe "Sorting" do
       "Chandra, Roaring Flame"      # 3
   end
 
-  it "cmc" do
+  it "-cmc" do
+    assert_search_results_ordered "t:chandra sort:-cmc",
+      "Chandra, Roaring Flame",     # 3
+      "Chandra, Pyromaster",        # 4
+      "Chandra, Torch of Defiance", # 4
+      "Chandra, the Firebrand",     # 4
+      "Chandra Nalaar",             # 5
+      "Chandra Ablaze",             # 6
+      "Chandra, Flamecaller",       # 6
+      "Chandra, Pyrogenius"         # 6
+  end
+
+  it "number" do
     assert_search_results_ordered "t:planeswalker e:m10 sort:number",
       "Ajani Goldmane",
       "Jace Beleren",
       "Liliana Vess",
       "Chandra Nalaar",
       "Garruk Wildspeaker"
+  end
+
+  it "-number" do
+    assert_search_results_ordered "t:planeswalker e:m10 sort:-number",
+      "Garruk Wildspeaker",
+      "Chandra Nalaar",
+      "Liliana Vess",
+      "Jace Beleren",
+      "Ajani Goldmane"
+  end
+
+  it "mixing orders" do
+    assert_search_results_ordered "t:chandra sort:cmc,-name",
+      "Chandra, Pyrogenius",        # 6
+      "Chandra, Flamecaller",       # 6
+      "Chandra Ablaze",             # 6
+      "Chandra Nalaar",             # 5
+      "Chandra, the Firebrand",     # 4
+      "Chandra, Torch of Defiance", # 4
+      "Chandra, Pyromaster",        # 4
+      "Chandra, Roaring Flame"      # 3
+  end
+
+  it "random" do
+    results1 = search("t:creature sort:rand")
+    results2 = search("t:creature sort:name")
+    results1.should_not eq(results2)
+    results1.sort.should eq(results2.sort)
   end
 
   let(:expected_color_order) {

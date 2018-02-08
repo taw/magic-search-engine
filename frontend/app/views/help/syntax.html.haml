@@ -346,6 +346,7 @@
     %div Use sort: operator to order results in a different way. By default alphabetical sorting is used.
     %div Results with equal sort key are then sorted by name.
     %div Missing values (like cards with no cmc when sorting by cmc) go last.
+    %div You can use minus to reverse search order, or comma to specify multiple search keys.
     %ul
       = search_help "sort:name", "sort by name alphabetically (default)"
       = search_help "sort:new", "sort results by most recent first, counting only regular sets for sake of order (other printings will go at end of results)"
@@ -360,6 +361,8 @@
       = search_help "sort:ci", "sort results by color identity"
       = search_help "sort:rarity", "sort results by rarity (rarest first)"
       = search_help "sort:rand", "shuffle results"
+      = search_help "sort:-number", "sort results by set name and collector number, backwards"
+      = search_help "sort:pow,-tou,color", "sort results by power (highest first), then toughness (lowest first), then color"
 
     %h4 Display results
     %div By default results are displayed in detailed format when only one card matches, or in more concise format otherwise. You can select another format.

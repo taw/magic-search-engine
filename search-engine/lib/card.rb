@@ -27,14 +27,14 @@ class Card
     @text = (data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
     @funny = data["funny"]
     unless @funny
-      @text = @text.gsub(/\([^\(\)]*\)/, "").sub(/\s*\z/, "").sub(/\A\s*/, "")
+      @text = @text.gsub(/\([^\(\)]*\)/, "")
     end
+    @text = @text.sub(/\s*\z/, "").sub(/\A\s*/, "")
     @augment = !!(@text =~ /augment \{/i)
     @mana_cost = data["manaCost"] ? data["manaCost"].downcase : nil
     @reserved = data["reserved"] || false
-    @types = ["types", "subtypes", "supertypes"].map{|t| data[t] || []}.flatten.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "").tr(" ", "-")}.to_set
+    @types = ["types", "subtypes", "supertypes"].flat_map{|t| data[t] || []}.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "").tr(" ", "-")}.to_set
     @cmc = data["cmc"] || 0
-    # Normalize unicode, remove remainder text
     @power = data["power"] ? smart_convert_powtou(data["power"]) : nil
     @toughness = data["toughness"] ? smart_convert_powtou(data["toughness"]) : nil
     @loyalty = data["loyalty"] ? smart_convert_powtou(data["loyalty"]) : nil

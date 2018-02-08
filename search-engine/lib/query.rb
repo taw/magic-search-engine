@@ -1,5 +1,6 @@
 require_relative "query_parser"
 require_relative "search_results"
+require_relative "sorter"
 require "digest"
 
 class Date
@@ -10,12 +11,22 @@ class Date
 end
 
 class Query
-  attr_reader :warnings
+  attr_reader :warnings, :seed
 
-  def initialize(query_string)
+  def initialize(query_string, seed=nil)
     @query_string = query_string
     @cond, @metadata, @warnings = QueryParser.new.parse(query_string)
-    # puts "Parse #{query_string} -> #{@cond}"
+    if needs_seed?
+      @seed = seed || "%016x" % rand(0x1_0000_0000_0000_0000)
+    else
+      @seed = nil
+    end
+    @sorter = Sorter.new(@metadata[:sort], @seed)
+    @warnings += @sorter.warnings
+  end
+
+  def needs_seed?
+    @metadata[:sort] && @metadata[:sort] =~ /\brand\b/
   end
 
   def search(db)
@@ -32,7 +43,7 @@ class Query
       results = db.printings
     end
 
-    SearchResults.new(sort_results(results), logger, ungrouped?)
+    SearchResults.new(@sorter.sort(results), logger, ungrouped?)
   end
 
   def to_s
@@ -46,12 +57,13 @@ class Query
 
   def ==(other)
     # structural equality, subclass if you need something fancier
-    # We ignore @query_string, so queries that == won't necessarily have same random order
+    # We ignore @query_string and @seed, so queries that == won't necessarily have same random order
     # It's something we might want to revisit someday
     self.class == other.class and
       instance_variables == other.instance_variables and
       instance_variables.all?{|ivar|
         ivar == :@query_string or
+        ivar == :@seed or
         instance_variable_get(ivar) == other.instance_variable_get(ivar)
       }
   end
@@ -61,72 +73,6 @@ class Query
   end
 
   private
-
-  COLOR_ORDER = ["", "w", "u", "b", "r", "g", "uw", "bu", "br", "gr", "gw", "bw", "ru", "bg", "rw", "gu", "guw", "buw", "bru", "bgr", "grw", "bgw", "ruw", "bgu", "brw", "gru", "bruw", "bgru", "bgrw", "gruw", "bguw", "bgruw"].each_with_index.to_h.freeze
-
-  # Fallback sorting for printings of each card:
-  # * custom set
-  # * not MTGO only
-  # * new frame
-  # * Standard only printing
-  # * most recent
-  # * set name
-  # * card number as integer (10 > 2)
-  # * card number as string (10A > 10)
-  def sort_results(results)
-    case @metadata[:sort]
-    when "new"
-      results.sort_by do |c|
-        [c.set.regular? ? 0 : 1, -c.release_date_i, c.default_sort_index]
-      end
-    when "old"
-      results.sort_by do |c|
-        [c.set.regular? ? 0 : 1, c.release_date_i, c.default_sort_index]
-      end
-    when "newall"
-      results.sort_by do |c|
-        [-c.release_date_i, c.default_sort_index]
-      end
-    when "oldall"
-      results.sort_by do |c|
-        [c.release_date_i, c.default_sort_index]
-      end
-    when "cmc"
-      results.sort_by do |c|
-        [c.cmc ? 0 : 1, -c.cmc.to_i, c.default_sort_index]
-      end
-    when "pow"
-      results.sort_by do |c|
-        [c.power ? 0 : 1, -c.power.to_i, c.default_sort_index]
-      end
-    when "tou"
-      results.sort_by do |c|
-        [c.toughness ? 0 : 1, -c.toughness.to_i, c.default_sort_index]
-      end
-    when "rand"
-      results.sort_by do |c|
-        [Digest::MD5.hexdigest(@query_string + c.name), c.default_sort_index]
-      end
-    when "number"
-      results.sort_by do |c|
-        [c.set.name, c.number.to_i, c.number, c.default_sort_index]
-      end
-    when "color"
-      results.sort_by do |c|
-        [COLOR_ORDER.fetch(c.colors), c.default_sort_index]
-      end
-    when "ci"
-      results.sort_by do |c|
-        [COLOR_ORDER.fetch(c.color_identity), c.default_sort_index]
-      end
-    when "rarity"
-      results.sort_by do |c|
-        [-c.rarity_code, c.default_sort_index]
-      end
-    else # "name" or unknown key
-      results.sort_by(&:default_sort_index)
-    end
-  end
 
   def ungrouped?
     !!@metadata[:ungrouped]

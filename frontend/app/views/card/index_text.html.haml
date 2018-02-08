@@ -9,6 +9,4 @@
     - @cards.each_with_index do |(card, printings), i|
       .col-6.col-md-4.col-lg-3.cardinfo
         = render 'card', card: card
-  .row
-    .col-12.pagination
-      = will_paginate @cards
+  = render "pagination", cards: @cards

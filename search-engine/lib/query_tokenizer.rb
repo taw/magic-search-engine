@@ -3,7 +3,7 @@ require "strscan"
 class QueryTokenizer
   def tokenize(str)
     tokens = []
-    warnings = []
+    @warnings = []
     s = StringScanner.new(str)
     until s.eos?
       if s.scan(/[\s,]+/i)
@@ -50,7 +50,7 @@ class QueryTokenizer
             "name" => ConditionWord,
             "o"  => ConditionOracle,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
-          warnings << "bad regular expression in #{s[0]} - #{e.message}"
+          @warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, cond.new(s[2])]
         end
       elsif s.scan(/t[:=](?:"(.*?)"|([’'\-\u2212\w\*]+))/i)
@@ -84,14 +84,14 @@ class QueryTokenizer
         tokens << [:test, ConditionBlock.new(*blocks)]
       elsif s.scan(/st[:=](?:"(.*?)"|(\w+))/i)
         tokens << [:test, ConditionSetType.new(s[1] || s[2])]
-      elsif s.scan(/(?:c|color):([wubrgcml]+)/i)
-        tokens << [:test, ConditionColors.new(s[1])]
-      elsif s.scan(/(?:ci|id)[:!]([wubrgcml]+)/i)
-        tokens << [:test, ConditionColorIdentity.new(s[1])]
-      elsif s.scan(/(?:in)[:=]([wubrgcml]+)/i)
-        tokens << [:test, ConditionColorIndicator.new(s[1])]
-      elsif s.scan(/c!([wubrgcml]+)/i)
-        tokens << [:test, ConditionColorsExclusive.new(s[1])]
+      elsif s.scan(/(?:c|color):(?:"(.*?)"|(\w+))/i)
+        tokens << [:test, ConditionColors.new(parse_color(s[1] || s[2]))]
+      elsif s.scan(/(?:ci|id)[:!](?:"(.*?)"|(\w+))/i)
+        tokens << [:test, ConditionColorIdentity.new(parse_color(s[1] || s[2]))]
+      elsif s.scan(/(?:in)[:=](?:"(.*?)"|(\w+))/i)
+        tokens << [:test, ConditionColorIndicator.new(parse_color(s[1] || s[2]))]
+      elsif s.scan(/c!(?:"(.*?)"|(\w+))/i)
+        tokens << [:test, ConditionColorsExclusive.new(parse_color(s[1] || s[2]))]
       elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([\-\w+]+))/i)
         op = s[2]
         op = "=" if op == ":"
@@ -110,8 +110,8 @@ class QueryTokenizer
         b = s[3].downcase
         b = aliases[b] || b
         tokens << [:test, ConditionExpr.new(a, op, b)]
-      elsif s.scan(/(c|ci)\s*(>=|>|<=|<|=)\s*([wubrgc]*)/i)
-        tokens << [:test, ConditionColorExpr.new(s[1].downcase, s[2], s[3].downcase)]
+      elsif s.scan(/(c|ci)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|(\w+))/i)
+        tokens << [:test, ConditionColorExpr.new(s[1].downcase, s[2], parse_color(s[3] || s[4]))]
       elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})*)/i)
         op = s[1]
         op = "=" if op == ":"
@@ -139,10 +139,10 @@ class QueryTokenizer
         tokens << [:test, ConditionBorder.new("none")]
       elsif s.scan(/border[:=](black|silver|white|none)\b/i)
         tokens << [:test, ConditionBorder.new(s[1].downcase)]
-      elsif s.scan(/sort[:=](\w+)/i)
-        tokens << [:metadata, {sort: s[1].downcase}]
-      elsif s.scan(/view[:=](\w+)/i)
-        tokens << [:metadata, {view: s[1].downcase}]
+      elsif s.scan(/sort[:=](?:"(.*?)"|([\-\,\.\w]+))/i)
+        tokens << [:metadata, {sort: (s[1]||s[2]).downcase}]
+      elsif s.scan(/view[:=](?:"(.*?)"|([\.\w]+))/i)
+        tokens << [:metadata, {view: (s[1]||s[2]).downcase}]
       elsif s.scan(/\+\+/i)
         tokens << [:metadata, {ungrouped: true}]
       elsif s.scan(/time[:=](?:"(.*?)"|([\.\w]+))/i)
@@ -169,14 +169,35 @@ class QueryTokenizer
       else
         # layout:fail, protection: etc.
         s.scan(/(\S+)/i)
-        warnings << "Unrecognized token: #{s[1]}"
+        @warnings << "Unrecognized token: #{s[1]}"
         tokens << [:test, ConditionWord.new(s[1])]
       end
     end
-    [tokens, warnings]
+    [tokens, @warnings]
   end
 
 private
+
+  def parse_color(color_text)
+    color_text = color_text.downcase
+    return color_text if color_text =~ /\A[wubrgcml]+\z/
+    case color_text
+    when "white"
+      "w"
+    when "blue"
+      "u"
+    when "black"
+      "b"
+    when "red"
+      "r"
+    when "green"
+      "g"
+    else
+      fixed = color_text.gsub(/[^wubrgcml]/, "")
+      @warnings << "Unrecognized color query: #{color_text.inspect}, correcting to #{fixed.inspect}"
+      fixed
+    end
+  end
 
   def parse_time(time)
     time = time.downcase

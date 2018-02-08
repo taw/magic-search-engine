@@ -10,6 +10,4 @@
       = render "card_row_full", card: card, printings: printings
     - else
       = render "card_row_short", card: card, printings: printings
-  .row
-    .col-12.pagination
-      = will_paginate @cards
+  = render "pagination", cards: @cards

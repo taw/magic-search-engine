@@ -59,6 +59,13 @@ module ApplicationHelper
         %Q[<i class="mana mana-loyalty mana-loyalty-#{dir}" data-loyalty="#{usymbol}"></i>] +
         %Q[<span class="sr-only">[#{symbol}]</span>]
       end
+      .gsub(/
+        \(
+          (?: [^\(\)] | \( [^\(\)]* \) )*
+        \)/x) do
+        # Urza has nested parentheses
+        %Q[<i class="reminder-text">#{$&}</i>]
+      end
       .html_safe
   end
 
