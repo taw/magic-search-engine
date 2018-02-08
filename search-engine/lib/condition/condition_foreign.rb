@@ -9,9 +9,9 @@ class ConditionForeign < ConditionSimple
   end
 
   def match?(card)
-    foreign_names = (card.foreign_names || {})[@lang] || []
+    foreign_names = card.foreign_names_normalized[@lang] || []
     foreign_names.any?{|n|
-      hard_normalize(n).include?(@query)
+      n.include?(@query)
     }
   end
 
