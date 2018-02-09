@@ -91,4 +91,13 @@ describe "Any queries" do
       assert_search_equal %Q[any:"win the game"], %Q[any:"Win THE gaME"]
     end
   end
+
+  context "Typeline" do
+    it do
+      assert_search_equal %Q[any:"legendary goblin"], %Q[t:"legendary goblin"]
+    end
+    it "is case insensitive" do
+      assert_search_equal %Q[any:"legendary goblin"], %Q[any:"Legendary GOBLIN"]
+    end
+  end
 end
