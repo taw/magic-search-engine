@@ -11,6 +11,18 @@ class ConditionAny < ConditionSimple
     if ["common", "uncommon", "rare", "mythic", "mythic rare", "special", "basic"].include?(@query)
       @subqueries << ConditionRarity.new("=", @query)
     end
+    case @query
+    when "white"
+      @subqueries << ConditionColorExpr.new("c", ">=", "w")
+    when "blue"
+      @subqueries << ConditionColorExpr.new("c", ">=", "u")
+    when "black"
+      @subqueries << ConditionColorExpr.new("c", ">=", "b")
+    when "red"
+      @subqueries << ConditionColorExpr.new("c", ">=", "r")
+    when "green"
+      @subqueries << ConditionColorExpr.new("c", ">=", "g")
+    end
 
     @query_hard_normalized = hard_normalize(@query)
   end
