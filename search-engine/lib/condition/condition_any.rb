@@ -2,7 +2,8 @@ class ConditionAny < ConditionSimple
   def initialize(query)
     @query = query.downcase
     @subqueries = [
-      ConditionWord.new(query)
+      ConditionWord.new(query),
+      ConditionArtist.new(query),
     ]
     @query_hard_normalized = hard_normalize(@query)
   end

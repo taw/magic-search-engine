@@ -2,9 +2,13 @@
 describe "Any queries" do
   include_context "db"
 
-  it "includes card name" do
-    assert_search_results %Q[any:"Abrupt Decay"],
-      "Abrupt Decay"
+  context "card name" do
+    it "includes card name" do
+      assert_search_results %Q[any:"Abrupt Decay"], "Abrupt Decay"
+    end
+    it "is case insensitive" do
+      assert_search_results %Q[any:"ABRUPT decay"], %Q[any:"Abrupt Decay"]
+    end
   end
 
   it "includes German name" do
@@ -12,9 +16,16 @@ describe "Any queries" do
                         %Q[de:"Abrupter Verfall"]
   end
 
-  it "includes French name" do
-    assert_search_equal %Q[any:"Décomposition abrupte"],
-                        %Q[fr:"Décomposition abrupte"]
+  context "French name" do
+    it "includes French name" do
+      assert_search_equal %Q[any:"Décomposition abrupte"], %Q[fr:"Décomposition abrupte"]
+    end
+    it "is case insensitive" do
+      assert_search_equal %Q[any:"Décomposition abrupte"], %Q[any:"décomposition ABRUPTE"]
+    end
+    it "ignores diacritics" do
+      assert_search_equal %Q[any:"Décomposition abrupte"], %Q[any:"Decomposition abrupte"]
+    end
   end
 
   it "includes Italian name" do
@@ -61,5 +72,14 @@ describe "Any queries" do
     assert_search_equal %Q[any:"刻拉诺斯的电击"],
                         %Q[cs:"刻拉诺斯的电击"]
 
+  end
+
+  context "artist" do
+    it "includes artist" do
+      assert_search_equal %Q[any:"Wayne England"], %Q[a:"Wayne England"]
+    end
+    it "is case insensitive" do
+      assert_search_equal %Q[any:"Wayne England"], %Q[any:"WAYNE england"]
+    end
   end
 end
