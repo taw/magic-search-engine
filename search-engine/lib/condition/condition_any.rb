@@ -6,6 +6,7 @@ class ConditionAny < ConditionSimple
       ConditionArtist.new(query),
       ConditionFlavor.new(query),
       ConditionOracle.new(query),
+      ConditionTypes.new(query),
     ]
     @query_hard_normalized = hard_normalize(@query)
   end
