@@ -5,6 +5,7 @@ class ConditionAny < ConditionSimple
       ConditionWord.new(query),
       ConditionArtist.new(query),
       ConditionFlavor.new(query),
+      ConditionOracle.new(query),
     ]
     @query_hard_normalized = hard_normalize(@query)
   end

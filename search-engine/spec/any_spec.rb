@@ -82,4 +82,13 @@ describe "Any queries" do
       assert_search_equal %Q[any:"Jaya Ballard"], %Q[any:"JAYA ballard"]
     end
   end
+
+  context "Oracle text" do
+    it do
+      assert_search_equal %Q[any:"win the game"], %Q[o:"win the game"]
+    end
+    it "is case insensitive" do
+      assert_search_equal %Q[any:"win the game"], %Q[any:"Win THE gaME"]
+    end
+  end
 end
