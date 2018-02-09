@@ -114,4 +114,24 @@ describe "Any queries" do
       assert_search_equal %Q[any:"UNCOMMON"], %Q[any:"uncommon"]
     end
   end
+
+  context "color" do
+    # A lot of mentions, so let's just get one set and test it there
+    it "w" do
+      assert_search_equal "e:rtr any:white", "e:rtr (c>=w or o:white)"
+    end
+    it "u" do
+      assert_search_equal "e:rtr any:blue", "e:rtr (c>=u or o:blue)"
+    end
+    it "b" do
+      assert_search_equal "e:rtr any:black", "e:rtr (c>=b or o:black)"
+    end
+    it "r" do
+      # FIXME: There are a lot of fake "matches" based on "red" 3 letters in ft: or some foreign name
+      # assert_search_equal "e:rtr any:red", "e:rtr (c>=r or o:red)"
+    end
+    it "g" do
+      assert_search_equal "e:rtr any:green", "e:rtr (c>=g or o:green)"
+    end
+  end
 end
