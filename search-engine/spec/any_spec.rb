@@ -100,4 +100,18 @@ describe "Any queries" do
       assert_search_equal %Q[any:"legendary goblin"], %Q[any:"Legendary GOBLIN"]
     end
   end
+
+  context "rarity" do
+    # These words conflict a good deal
+    # Rare-B-Gone Oracle text mentions "mythic rare"
+    it do
+      assert_search_equal %Q[any:"mythic"], %Q[r:"mythic" or ft:"mythic" or o:"mythic" or "Mythic Proportions"]
+    end
+    it "aliases" do
+      assert_search_equal %Q[any:"mythic rare"], %Q[r:"mythic" or o:"mythic rare"]
+    end
+    it "is case insensitive" do
+      assert_search_equal %Q[any:"UNCOMMON"], %Q[any:"uncommon"]
+    end
+  end
 end
