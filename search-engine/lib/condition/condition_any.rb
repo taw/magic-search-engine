@@ -4,6 +4,7 @@ class ConditionAny < ConditionSimple
     @subqueries = [
       ConditionWord.new(query),
       ConditionArtist.new(query),
+      ConditionFlavor.new(query),
     ]
     @query_hard_normalized = hard_normalize(@query)
   end
