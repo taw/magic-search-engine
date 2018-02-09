@@ -8,6 +8,10 @@ class ConditionAny < ConditionSimple
       ConditionOracle.new(query),
       ConditionTypes.new(query),
     ]
+    if ["common", "uncommon", "rare", "mythic", "mythic rare", "special", "basic"].include?(@query)
+      @subqueries << ConditionRarity.new("=", @query)
+    end
+
     @query_hard_normalized = hard_normalize(@query)
   end
 
