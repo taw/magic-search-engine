@@ -1,7 +1,7 @@
-class ConditionAny < ConditionSimple
+class ConditionAny < ConditionOr
   def initialize(query)
     @query = query.downcase
-    @subqueries = [
+    @conds = [
       ConditionWord.new(query),
       ConditionArtist.new(query),
       ConditionFlavor.new(query),
@@ -11,30 +11,76 @@ class ConditionAny < ConditionSimple
     ]
     case @query
     when "white"
-      @subqueries << ConditionColorExpr.new("c", ">=", "w")
+      @conds << ConditionColorExpr.new("c", ">=", "w")
     when "blue"
-      @subqueries << ConditionColorExpr.new("c", ">=", "u")
+      @conds << ConditionColorExpr.new("c", ">=", "u")
     when "black"
-      @subqueries << ConditionColorExpr.new("c", ">=", "b")
+      @conds << ConditionColorExpr.new("c", ">=", "b")
     when "red"
-      @subqueries << ConditionColorExpr.new("c", ">=", "r")
+      @conds << ConditionColorExpr.new("c", ">=", "r")
     when "green"
-      @subqueries << ConditionColorExpr.new("c", ">=", "g")
+      @conds << ConditionColorExpr.new("c", ">=", "g")
     when "colorless"
-      @subqueries << ConditionColorExpr.new("c", "=", "")
+      @conds << ConditionColorExpr.new("c", "=", "")
     when "common", "uncommon", "rare", "mythic", "mythic rare", "special", "basic"
-      @subqueries << ConditionRarity.new("=", @query)
+      @conds << ConditionRarity.new("=", @query)
     when %r[\A(-?\d+)/(-?\d+)\z]
-      @subqueries << ConditionAnd.new(
+      @conds << ConditionAnd.new(
         ConditionExpr.new("pow", "=", $1),
         ConditionExpr.new("tou", "=", $2),
       )
+    when "augment"
+      @conds << ConditionIsAugment.new
+    when "battleland"
+      @conds << ConditionIsBattleland.new
+    when "bounceland"
+      @conds << ConditionIsBounceland.new
+    when "checkland"
+      @conds << ConditionIsCheckland.new
+    when "commander" # ???
+      @conds << ConditionIsCommander.new
+    when "digital"
+      @conds << ConditionIsDigital.new
+    when "dual"
+      @conds << ConditionIsDual.new
+    when "fastland"
+      @conds << ConditionIsFastland.new
+    when "fetchland"
+      @conds << ConditionIsFetchland.new
+    when "filterland"
+      @conds << ConditionIsFilterland.new
+    when "funny"
+      @conds << ConditionIsFunny.new
+    when "gainland"
+      @conds << ConditionIsGainland.new
+    when "manland"
+      @conds << ConditionIsManland.new
+    when "multipart"
+      @conds << ConditionIsMultipart.new
+    when "permanent"
+      @conds << ConditionIsPermanent.new
+    when "primary"
+      @conds << ConditionIsPrimary.new
+    when "promo"
+      @conds << ConditionIsPromo.new
+    when "reprint"
+      @conds << ConditionIsReprint.new
+    when "reserved"
+      @conds << ConditionIsReserved.new
+    when "scryland"
+      @conds << ConditionIsScryland.new
+    when "shockland"
+      @conds << ConditionIsShockland.new
+    when "spell"
+      @conds << ConditionIsSpell.new
+    when "timeshifted"
+      @conds << ConditionIsTimeshifted.new
+    when "unique"
+      @conds << ConditionIsUnique.new
+    when "vanilla"
+      @conds << ConditionIsVanilla.new
     end
-  end
-
-  # This is going to be pretty slow
-  def match?(card)
-    @subqueries.any?{|sq| sq.match?(card)}
+    @simple = @conds.all?(&:simple?)
   end
 
   def to_s
