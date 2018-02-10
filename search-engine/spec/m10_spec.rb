@@ -129,8 +129,10 @@ describe "Magic 2010" do
 
   it "flavor_text" do
     assert_search_results "ft:chandra", "Inferno Elemental", "Pyroclasm"
-    assert_search_results 'ft:only ft:to', "Acolyte of Xathrid", "Griffin Sentinel", "Wall of Faith", "Zephyr Sprite"
+    assert_search_results 'ft:only ft:to', "Acolyte of Xathrid", "Griffin Sentinel", "Wall of Faith"
     assert_search_results 'ft:"only to"', "Acolyte of Xathrid"
+    assert_search_equal "ft:to", "ft:/\\bto\\b/"
+    assert_search_differ "ft:to", "ft:/to/"
   end
 
   it "artist" do
