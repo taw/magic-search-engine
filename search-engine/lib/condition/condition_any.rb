@@ -20,6 +20,8 @@ class ConditionAny < ConditionSimple
       @subqueries << ConditionColorExpr.new("c", ">=", "r")
     when "green"
       @subqueries << ConditionColorExpr.new("c", ">=", "g")
+    when "colorless"
+      @subqueries << ConditionColorExpr.new("c", "=", "")
     when "common", "uncommon", "rare", "mythic", "mythic rare", "special", "basic"
       @subqueries << ConditionRarity.new("=", @query)
     when %r[\A(-?\d+)/(-?\d+)\z]

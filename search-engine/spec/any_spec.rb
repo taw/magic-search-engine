@@ -117,23 +117,26 @@ describe "Any queries" do
 
   context "color" do
     # A lot of mentions, so let's just get one set and test it there
-    it "w" do
+    it "white" do
       assert_search_equal "e:rtr any:white", "e:rtr (c>=w or o:white)"
     end
-    it "u" do
+    it "blue" do
       assert_search_equal "e:rtr any:blue", "e:rtr (c>=u or o:blue)"
     end
-    it "b" do
+    it "black" do
       assert_search_equal "e:rtr any:black", "e:rtr (c>=b or o:black)"
     end
-    it "r" do
+    it "red" do
       # FIXME:
       # There are a lot of fake "matches" based on "red" 3 letters in foreign:
       # Should foreign: use /\b#{@query}\b/i search ?
       assert_search_equal "e:rtr any:red", "e:rtr (c>=r or o:red or foreign:red)"
     end
-    it "g" do
+    it "green" do
       assert_search_equal "e:rtr any:green", "e:rtr (c>=g or o:green)"
+    end
+    it "colorless" do
+      assert_search_equal "e:rtr any:colorless", "e:rtr (c=c or o:colorless)"
     end
   end
 
