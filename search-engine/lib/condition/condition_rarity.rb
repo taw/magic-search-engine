@@ -9,6 +9,7 @@ class ConditionRarity < ConditionSimple
     @rarity = "rare" if @rarity == "r"
     @rarity = "mythic" if @rarity == "m"
     @rarity = "special" if @rarity == "s"
+    @rarity = "mythic" if @rarity == "mythic rare"
     @rarity_code = %W[basic common uncommon rare mythic special].index(@rarity) or raise "Unknown rarity #{@rarity}"
   end
 

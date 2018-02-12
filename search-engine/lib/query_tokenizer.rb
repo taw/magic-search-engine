@@ -61,8 +61,10 @@ class QueryTokenizer
         tokens << [:test, ConditionOracle.new(s[1] || s[2])]
       elsif s.scan(/a[:=](?:"(.*?)"|(\w+))/i)
         tokens << [:test, ConditionArtist.new(s[1] || s[2])]
-      elsif s.scan(/(cn|tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct)[:=](?:"(.*?)"|([^\s\)]+))/i)
+      elsif s.scan(/(cn|tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|foreign)[:=](?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionForeign.new(s[1], s[2] || s[3])]
+      elsif s.scan(/any[:=](?:"(.*?)"|(\w+))/i)
+        tokens << [:test, ConditionAny.new(s[1] || s[2])]
       elsif s.scan(/(banned|restricted|legal)[:=](?:"(.*?)"|([\w\-]+))/i)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(s[2] || s[3])]
@@ -97,10 +99,15 @@ class QueryTokenizer
         op = "=" if op == ":"
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(op, s[3] || s[4])]
-      elsif s.scan(/r(>=|>|<=|<|=|:)(basic|common|uncommon|rare|mythic|special|[blcurms])\b/i)
+      elsif s.scan(/r(>=|>|<=|<|=|:)(?:"(.*?)"|(\w+))/i)
         op = s[1]
         op = "=" if op == ":"
-        tokens << [:test, ConditionRarity.new(op, s[2])]
+        rarity = s[2] || s[3]
+        begin
+          tokens << [:test, ConditionRarity.new(op, rarity)]
+        rescue
+          @warnings << "unknown rarity: #{rarity}"
+        end
       elsif s.scan(/(pow|power|loy|loyalty|tou|toughness|cmc|year)\s*(>=|>|<=|<|=|:)\s*(pow\b|power\b|tou\b|toughness\b|cmc\b|loy\b|loyalty\b|year\b|[²\d\.\-\*\+½x∞\?]+)/i)
         aliases = {"power" => "pow", "loyalty" => "loy", "toughness" => "tou"}
         a = s[1].downcase

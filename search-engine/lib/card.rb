@@ -13,7 +13,7 @@ class Card
 
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
-  attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :stemmed_name
+  attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :foreign_names_normalized, :stemmed_name
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :related
   attr_reader :reminder_text, :augment, :display_power, :display_toughness
 
@@ -50,7 +50,11 @@ class Card
     @life = data["life"]
     @rulings = data["rulings"]
     @secondary = data["secondary"]
-    @foreign_names = data["foreign_names"]
+    @foreign_names = data["foreign_names"] || {}
+    @foreign_names_normalized = {}
+    @foreign_names.each do |lang, names|
+      @foreign_names_normalized[lang] = names.map{|n| hard_normalize(n)}
+    end
     @typeline = [data["supertypes"], data["types"]].compact.flatten.join(" ")
     @related = data["related"]
     if data["subtypes"]
@@ -149,6 +153,10 @@ class Card
 
   def normalize_name(name)
     name.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
+  end
+
+  def hard_normalize(s)
+    UnicodeUtils.downcase(UnicodeUtils.nfd(s).gsub(/\p{Mn}/, ""))
   end
 
   def smart_convert_powtou(val)

@@ -1,0 +1,89 @@
+class ConditionAny < ConditionOr
+  def initialize(query)
+    @query = query.downcase
+    @conds = [
+      ConditionWord.new(query),
+      ConditionArtist.new(query),
+      ConditionFlavor.new(query),
+      ConditionOracle.new(query),
+      ConditionTypes.new(query),
+      ConditionForeign.new("foreign", query),
+    ]
+    case @query
+    when "white"
+      @conds << ConditionColorExpr.new("c", ">=", "w")
+    when "blue"
+      @conds << ConditionColorExpr.new("c", ">=", "u")
+    when "black"
+      @conds << ConditionColorExpr.new("c", ">=", "b")
+    when "red"
+      @conds << ConditionColorExpr.new("c", ">=", "r")
+    when "green"
+      @conds << ConditionColorExpr.new("c", ">=", "g")
+    when "colorless"
+      @conds << ConditionColorExpr.new("c", "=", "")
+    when "common", "uncommon", "rare", "mythic", "mythic rare", "special", "basic"
+      @conds << ConditionRarity.new("=", @query)
+    when %r[\A(-?\d+)/(-?\d+)\z]
+      @conds << ConditionAnd.new(
+        ConditionExpr.new("pow", "=", $1),
+        ConditionExpr.new("tou", "=", $2),
+      )
+    when "augment"
+      @conds << ConditionIsAugment.new
+    when "battleland"
+      @conds << ConditionIsBattleland.new
+    when "bounceland"
+      @conds << ConditionIsBounceland.new
+    when "checkland"
+      @conds << ConditionIsCheckland.new
+    when "commander" # ???
+      @conds << ConditionIsCommander.new
+    when "digital"
+      @conds << ConditionIsDigital.new
+    when "dual"
+      @conds << ConditionIsDual.new
+    when "fastland"
+      @conds << ConditionIsFastland.new
+    when "fetchland"
+      @conds << ConditionIsFetchland.new
+    when "filterland"
+      @conds << ConditionIsFilterland.new
+    when "funny"
+      @conds << ConditionIsFunny.new
+    when "gainland"
+      @conds << ConditionIsGainland.new
+    when "manland"
+      @conds << ConditionIsManland.new
+    when "multipart"
+      @conds << ConditionIsMultipart.new
+    when "permanent"
+      @conds << ConditionIsPermanent.new
+    when "primary"
+      @conds << ConditionIsPrimary.new
+    when "promo"
+      @conds << ConditionIsPromo.new
+    when "reprint"
+      @conds << ConditionIsReprint.new
+    when "reserved"
+      @conds << ConditionIsReserved.new
+    when "scryland"
+      @conds << ConditionIsScryland.new
+    when "shockland"
+      @conds << ConditionIsShockland.new
+    when "spell"
+      @conds << ConditionIsSpell.new
+    when "timeshifted"
+      @conds << ConditionIsTimeshifted.new
+    when "unique"
+      @conds << ConditionIsUnique.new
+    when "vanilla"
+      @conds << ConditionIsVanilla.new
+    end
+    @simple = @conds.all?(&:simple?)
+  end
+
+  def to_s
+    "any:#{maybe_quote(@query)}"
+  end
+end

@@ -2,6 +2,7 @@ class ConditionWord < ConditionSimple
   def initialize(word)
     @word = normalize_name(word).tr("-", " ").sub(/,\z/, "")
     @stem_word = @word.gsub(/s\b/, "")
+    @suggestions = []
   end
 
   def match?(card)

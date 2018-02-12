@@ -9,9 +9,13 @@ class ConditionForeign < ConditionSimple
   end
 
   def match?(card)
-    foreign_names = (card.foreign_names || {})[@lang] || []
+    if @lang == "foreign"
+      foreign_names = card.foreign_names_normalized.values.flatten
+    else
+      foreign_names = card.foreign_names_normalized[@lang] || []
+    end
     foreign_names.any?{|n|
-      hard_normalize(n).include?(@query)
+      n.include?(@query)
     }
   end
 
