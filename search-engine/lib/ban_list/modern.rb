@@ -99,4 +99,11 @@ BanList.for_format("modern") do
     "Gitaxian Probe" => "banned",
     "Golgari Grave-Troll" => "banned",
   )
+
+  change(
+    "2018-02-19",
+    "https://magic.wizards.com/en/articles/archive/news/february-12-2018-banned-and-restricted-announcement-2018-02-12",
+    "Jace, the Mind Sculptor" => "legal",
+    "Bloodbraid Elf" => "legal"
+  )
 end

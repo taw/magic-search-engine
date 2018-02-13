@@ -3,12 +3,16 @@ describe "Banlist" do
   # Based on:
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
-  it "banlist_2017" do
+  it "banlist_2018" do
     assert_banlist_changes "January 2018",
-       "standard banned", "Attune with Aether",
-       "standard banned", "Rogue Refiner",
-       "standard banned", "Rampaging Ferocidon",
-       "standard banned", "Ramunap Ruins"
+      "standard banned", "Attune with Aether",
+      "standard banned", "Rogue Refiner",
+      "standard banned", "Rampaging Ferocidon",
+      "standard banned", "Ramunap Ruins"
+
+    assert_banlist_changes "February 2018",
+      "modern unbanned", "Jace, the Mind Sculptor",
+      "modern unbanned", "Bloodbraid Elf"
   end
 
   it "banlist_2017" do
