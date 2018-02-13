@@ -163,6 +163,7 @@ class CompRules:
                     continue
                 raise ValueError('Could not parse rule number: {!r}'.format(patch['rule']))
             elif patch['type'] == 'addAbilityWords':
+                # patch CR
                 match = re.fullmatch('(.*)\\. The ability words are (.+).', self['207.2c'])
                 ability_words = set(split(match.group(2)))
                 for new_ability_word in patch['abilityWords']:
@@ -170,6 +171,21 @@ class CompRules:
                     ability_words.add(new_ability_word)
                 self['207.2c'] = '{}. The ability words are {}.'.format(match.group(1), join(sorted(ability_words)))
                 self.patches.add('207.2c')
+                # patch frontend
+                card_rb = ''
+                found_ability_word_list = False
+                with open('search-engine/lib/card.rb') as card_rb_f:
+                    for line in card_rb_f:
+                        if line.startswith('  ABILITY_WORD_LIST = ['):
+                            if found_ability_word_list:
+                                raise RuntimeError('Found two ability word lists in search-engine/lib/card.rb')
+                            else:
+                                found_ability_word_list = True
+                            card_rb += '  ABILITY_WORD_LIST = {!r}\n'.format(sorted(ability_word.capitalize() for ability_word in ability_words))
+                        else:
+                            card_rb += line
+                with open('search-engine/lib/card.rb', 'w') as card_rb_f:
+                    card_rb_f.write(card_rb)
             elif patch['type'] == 'addKeywordAbility':
                 self['702']['rules'].append(patch['rule'])
                 self.patches.add('702.{}'.format(len(self['702']['rules'])))
