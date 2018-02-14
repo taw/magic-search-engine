@@ -49816,7 +49816,13 @@
                     "TSL"
                 ],
                 "rarity": "Mythic Rare",
-                "text": "At the beginning of your upkeep, if the number of artifacts and creatures you control plus the number of artifact cards and creature cards in your graveyard is thirty or more, you win the game.",
+                "rulings": [
+                    {
+                        "date": "2018-02-14",
+                        "text": "The ability counts the number of permanents you control that are artifacts and/or creatures. An artifact creature is counted only once. The same is true for an artifact creature card in your graveyard."
+                    }
+                ],
+                "text": "At the beginning of your upkeep, if the number of artifacts and creatures you control plus the number of artifact and creature cards in your graveyard is thirty or more, you win the game.",
                 "type": "Enchantment",
                 "types": [
                     "Enchantment"
