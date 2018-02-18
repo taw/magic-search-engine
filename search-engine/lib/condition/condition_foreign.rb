@@ -14,9 +14,13 @@ class ConditionForeign < ConditionSimple
     else
       foreign_names = card.foreign_names_normalized[@lang] || []
     end
-    foreign_names.any?{|n|
-      n.include?(@query)
-    }
+    if @query == "*"
+      !foreign_names.empty?
+    else
+      foreign_names.any?{|n|
+        n.include?(@query)
+      }
+    end
   end
 
   def to_s
