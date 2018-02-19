@@ -3,6 +3,7 @@ describe "Any queries" do
 
   it "includes German name" do
     assert_search_equal %Q[foreign:"Abrupter Verfall"], %Q[de:"Abrupter Verfall"]
+    assert_search_equal %q[foreign:/\bvon der\b/], %q[de:/\bvon der\b/]
   end
 
   context "French name" do
@@ -39,6 +40,7 @@ describe "Any queries" do
 
   it "includes Korean name" do
     assert_search_equal %Q[foreign:"축복받은 신령들"], %Q[kr:"축복받은 신령들"]
+    assert_search_equal %q[foreign:/축복받은/], %q[kr:/축복받은/]
   end
 
   it "includes Chinese Traditional name" do
