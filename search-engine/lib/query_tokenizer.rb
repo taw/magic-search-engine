@@ -53,6 +53,21 @@ class QueryTokenizer
           @warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, cond.new(s[2])]
         end
+      elsif s.scan(%r[
+        (cn|tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|foreign)[:=]
+        /(
+          (?:[^\\/]|\\.)*
+        )/
+        ]xi)
+        begin
+          # Denormalization is highly questionable here
+          rxstr = UnicodeUtils.downcase(UnicodeUtils.nfd(s[2]).gsub(/\p{Mn}/, ""))
+          rx = Regexp.new(rxstr, Regexp::IGNORECASE)
+          tokens << [:test, ConditionForeignRegexp.new(s[1], rx)]
+        rescue RegexpError => e
+          @warnings << "bad regular expression in #{s[0]} - #{e.message}"
+          tokens << [:test, ConditionForeign.new(s[1], s[2])]
+        end
       elsif s.scan(/t[:=](?:"(.*?)"|([’'\-\u2212\w\*]+))/i)
         tokens << [:test, ConditionTypes.new(s[1] || s[2])]
       elsif s.scan(/ft[:=](?:"(.*?)"|(\w+))/i)

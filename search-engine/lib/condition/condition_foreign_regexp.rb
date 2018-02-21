@@ -1,11 +1,11 @@
 require "unicode_utils"
-class ConditionForeign < ConditionSimple
-  def initialize(lang, query)
+class ConditionForeignRegexp < ConditionRegexp
+  def initialize(lang, regexp)
     @lang = lang.downcase
     # Support both Gatherer and MCI naming conventions
     @lang = "ct" if @lang == "tw"
     @lang = "cs" if @lang == "cn"
-    @query = hard_normalize(query)
+    super(regexp)
   end
 
   def match?(card)
@@ -14,17 +14,13 @@ class ConditionForeign < ConditionSimple
     else
       foreign_names = card.foreign_names_normalized[@lang] || []
     end
-    if @query == "*"
-      !foreign_names.empty?
-    else
-      foreign_names.any?{|n|
-        n.include?(@query)
-      }
-    end
+    foreign_names.any?{|n|
+      n =~ @regexp
+    }
   end
 
   def to_s
-    "#{@lang}:#{maybe_quote(@query)}"
+    "#{@lang}:#{@regexp.inspect.sub(/i\z/, "")}"
   end
 
   private
