@@ -110,6 +110,7 @@ class Indexer
       "timeshifted",
       "number",
       "multiverseid",
+      "originalText",
     ).merge(
       "artist" => format_artist(card_data["artist"]),
       "rarity" => format_rarity(card_data["rarity"]),

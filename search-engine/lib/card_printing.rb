@@ -1,6 +1,6 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date
-  attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :border, :timeshifted
+  attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :border, :timeshifted, :printed_text
   attr_reader :rarity_code
 
   # Performance cache of derived information
@@ -23,6 +23,10 @@ class CardPrinting
     @flavor = data["flavor"] || ""
     @border = data["border"] || @set.border
     @timeshifted = data["timeshifted"] || false
+    @printed_text = (data["originalText"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
+    unless card.funny
+      @printed_text = @printed_text.gsub(/\([^\(\)]*\)/, "")
+    end
     rarity = data["rarity"]
     @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
     @frame = begin
