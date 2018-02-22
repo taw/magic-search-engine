@@ -1,6 +1,8 @@
 class ConditionIsErrata < ConditionSimple
   def match?(printing)
-    printing.printed_text != printing.card.text
+    return true if printing.printed_typeline != printing.card.typeline
+    return true if printing.printed_text != printing.card.text
+    false
   end
 
   def to_s
