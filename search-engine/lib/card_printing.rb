@@ -27,7 +27,7 @@ class CardPrinting
     unless card.funny
       @printed_text = @printed_text.gsub(/\([^\(\)]*\)/, "")
     end
-    @printed_typeline = data["originalType"] || ""
+    @printed_typeline = (data["originalType"] || "").tr("\u2014", "-")
     rarity = data["rarity"]
     @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
     @frame = begin
