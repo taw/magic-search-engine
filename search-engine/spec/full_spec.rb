@@ -3,7 +3,7 @@ describe "Full Database Test" do
 
   it "stats" do
     db.number_of_cards.should eq(18161)
-    db.number_of_printings.should eq(35331)
+    db.number_of_printings.should eq(35580)
   end
 
   it "block_codes" do
@@ -117,6 +117,7 @@ describe "Full Database Test" do
       "Arlinn Kord",
       "Arlinn, Embraced by the Moon",
       "Avacyn, the Purifier",
+      "Dauntless Cathar",
       "Dual Shot",
       "Engulf the Shore",
       "Forest",
@@ -126,6 +127,7 @@ describe "Full Database Test" do
       "Island",
       "Mountain",
       "Plains",
+      "Pyre Hound",
       "Rabid Bite",
       "Reckless Scholar",
       "Rush of Adrenaline",
@@ -133,7 +135,10 @@ describe "Full Database Test" do
       "Stone Quarry",
       "Swamp",
       "Tormenting Voice",
+      "Triskaidekaphobia",
+      "Uncaged Fury",
       "Vampire Noble",
+      "Vessel of Nascency",
       "Woodland Stream"
   end
 
