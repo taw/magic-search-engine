@@ -1,7 +1,7 @@
 !!!
 %html
   = render "layouts/head"
-  %body
+  %body{"data-turbolinks" => content_for?(:disable_turbolinks) ? "false" : nil}
     .container{class: @empty_page ? "empty_page" : ""}
       .row.logo_row
         .col-12

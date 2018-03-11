@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require tether
+//= require popper
 //= require bootstrap-sprockets
+//= require turbolinks
 //= require_tree .
 
 $(document).on("mouseover", ".previewable_card_name", function() {

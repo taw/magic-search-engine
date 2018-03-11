@@ -12,6 +12,8 @@ end
 class FormatCompRules
   def run!
     @output = []
+    @output << "= content_for(:disable_turbolinks) do"
+    @output << "  true"
     @output << ".row"
     @output << "  .col-12"
     paras = text_rules.split(/\n{2,}/)
