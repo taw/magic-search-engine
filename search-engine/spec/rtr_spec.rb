@@ -195,4 +195,13 @@ describe "Return to Ravnica block" do
     assert_search_results "(far // away) or t:ral)",
       "Far", "Away", "Ral Zarek"
   end
+
+  it "number" do
+    assert_search_results "number:15",
+      "Guildscorn Ward",
+      "Murmuring Phantasm",
+      "Palisade Giant"
+    assert_search_equal "number=17", "number:17"
+    assert_search_equal "number:/[ab]/", "is:split"
+  end
 end
