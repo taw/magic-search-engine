@@ -136,6 +136,8 @@ class QueryTokenizer
         b = s[3].downcase
         b = aliases[b] || b
         tokens << [:test, ConditionExpr.new(a, op, b)]
+      elsif s.scan(/(c|ci)\s*(>=|>|<=|<|=)\s*(?:"(\d+)"|(\d+))/i)
+        tokens << [:test, ConditionColorCountExpr.new(s[1].downcase, s[2], s[3] || s[4])]
       elsif s.scan(/(c|ci)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|(\w+))/i)
         tokens << [:test, ConditionColorExpr.new(s[1].downcase, s[2], parse_color(s[3] || s[4]))]
       elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})*)/i)
