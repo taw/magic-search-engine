@@ -33635,7 +33635,8 @@
                     "XLN",
                     "UST",
                     "RIX",
-                    "VLN"
+                    "VLN",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -33765,7 +33766,8 @@
                     "DDT",
                     "UST",
                     "RIX",
-                    "VLN"
+                    "VLN",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -33899,7 +33901,8 @@
                     "XLN",
                     "UST",
                     "RIX",
-                    "VLN"
+                    "VLN",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -34035,7 +34038,8 @@
                     "DDT",
                     "UST",
                     "RIX",
-                    "VLN"
+                    "VLN",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -34168,7 +34172,8 @@
                     "XLN",
                     "UST",
                     "RIX",
-                    "VLN"
+                    "VLN",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -35211,7 +35216,7 @@
                 "manaCost": "{1}{W}",
                 "name": "Valorous Stand",
                 "number": "35",
-                "originalText": "Focus {3}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nTarget creature gets +1/+1 until end of turn. It gains protection from the color of your choice until end of turn.",
+                "originalText": "Focus {2}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nTarget creature gets +1/+1 until end of turn. It gains hexproof from the color of your choice until end of turn.",
                 "originalType": "Instant",
                 "printings": [
                     "JAN"
@@ -35223,7 +35228,7 @@
                         "text": "You choose the color as Valorous Stand resolves."
                     }
                 ],
-                "text": "Focus {3}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nTarget creature gets +1/+1 until end of turn. It gains protection from the color of your choice until end of turn.",
+                "text": "Focus {2}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nTarget creature gets +1/+1 until end of turn. It gains hexproof from the color of your choice until end of turn.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -35392,13 +35397,13 @@
                 "manaCost": "{4}{U}{U}",
                 "name": "Devastating Sandstorm",
                 "number": "41",
-                "originalText": "Focus {6}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nFor each creature, its owner puts it on the top or bottom of his or her library.",
+                "originalText": "Focus {6}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nFor each creature, its owner puts it on the top or bottom of their library.",
                 "originalType": "Sorcery",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Rare",
-                "text": "Focus {6}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nFor each creature, its owner puts it on the top or bottom of his or her library.",
+                "text": "Focus {6}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nFor each creature, its owner puts it on the top or bottom of their library.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -35418,7 +35423,7 @@
                 "manaCost": "{1}{U}",
                 "name": "Downpour Shaman",
                 "number": "42",
-                "originalText": "Whenever you cast an instant or sorcery spell, target player puts the top four cards of his or her library into his or her graveyard.",
+                "originalText": "Whenever you cast an instant or sorcery spell, target player puts the top four cards of their library into their graveyard.",
                 "originalType": "Creature \u2014 Human Shaman",
                 "power": "0",
                 "printings": [
@@ -35429,7 +35434,7 @@
                     "Human",
                     "Shaman"
                 ],
-                "text": "Whenever you cast an instant or sorcery spell, target player puts the top four cards of his or her library into his or her graveyard.",
+                "text": "Whenever you cast an instant or sorcery spell, target player puts the top four cards of their library into their graveyard.",
                 "toughness": "4",
                 "type": "Creature \u2014 Human Shaman",
                 "types": [
@@ -35449,7 +35454,7 @@
                 "manaCost": "{2}{U}",
                 "name": "Dream Plunderer",
                 "number": "43",
-                "originalText": "Prowess\nSpellbound \u2014 {2}{U}, Exile an instant or sorcery card from your graveyard: Create a colorless Treasure artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color to your mana pool.\"",
+                "originalText": "Prowess\nSpellbound \u2014 {2}{U}, Exile an instant or sorcery card from your graveyard: Create a colorless Treasure artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
                 "originalType": "Creature \u2014 Human Pirate",
                 "power": "3",
                 "printings": [
@@ -35460,7 +35465,7 @@
                     "Human",
                     "Pirate"
                 ],
-                "text": "Prowess\nSpellbound \u2014 {2}{U}, Exile an instant or sorcery card from your graveyard: Create a colorless Treasure artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color to your mana pool.\"",
+                "text": "Prowess\nSpellbound \u2014 {2}{U}, Exile an instant or sorcery card from your graveyard: Create a colorless Treasure artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Pirate",
                 "types": [
@@ -36190,13 +36195,13 @@
                 "manaCost": "{1}{U}{U}",
                 "name": "Spellscatter Hex",
                 "number": "69",
-                "originalText": "Spellscatter Hex costs {1} less to cast if you've cast another instant or sorcery spell this turn.\nCounter target spell.",
+                "originalText": "This spell costs {1} less to cast if you've cast another instant or sorcery spell this turn.\nCounter target spell.",
                 "originalType": "Instant",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Spellscatter Hex costs {1} less to cast if you've cast another instant or sorcery spell this turn.\nCounter target spell.",
+                "text": "This spell costs {1} less to cast if you've cast another instant or sorcery spell this turn.\nCounter target spell.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -36622,13 +36627,13 @@
                 "manaCost": "{2}{B}",
                 "name": "Corpse Cultivation",
                 "number": "83",
-                "originalText": "As an additional cost to cast Corpse Cultivation, exile a creature card from your graveyard.\nScry 2, then draw two cards.",
+                "originalText": "As an additional cost to cast this spell, exile a creature card from your graveyard.\nScry 2, then draw two cards.",
                 "originalType": "Sorcery",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "As an additional cost to cast Corpse Cultivation, exile a creature card from your graveyard.\nScry 2, then draw two cards.",
+                "text": "As an additional cost to cast this spell, exile a creature card from your graveyard.\nScry 2, then draw two cards.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -36705,13 +36710,13 @@
                 "manaCost": "{2}{B}",
                 "name": "Deathburst Hex",
                 "number": "86",
-                "originalText": "Deathburst Hex costs {2} less to cast if you've cast another instant or sorcery spell this turn.\nTarget creature an opponent controls gets -3/-3 until end of turn.",
+                "originalText": "This spell costs {2} less to cast if you've cast another instant or sorcery spell this turn.\nTarget creature an opponent controls gets -3/-3 until end of turn.",
                 "originalType": "Sorcery",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Deathburst Hex costs {2} less to cast if you've cast another instant or sorcery spell this turn.\nTarget creature an opponent controls gets -3/-3 until end of turn.",
+                "text": "This spell costs {2} less to cast if you've cast another instant or sorcery spell this turn.\nTarget creature an opponent controls gets -3/-3 until end of turn.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -37005,7 +37010,7 @@
                 "manaCost": "{1}{B}{B}",
                 "name": "Gozani, Dreadlaugh Alpha",
                 "number": "96",
-                "originalText": "+1: Each player puts the top two cards of his or her library into his or her graveyard.\n0: Exile a creature card from your graveyard. If you do, create a 2/2 black Hyena creature token.\n-5: You draw X cards and lose X life, where X is the number of creature cards in your graveyard.",
+                "originalText": "+1: Each player puts the top two cards of their library into their graveyard.\n0: Exile a creature card from your graveyard. If you do, create a 2/2 black Hyena creature token.\n-5: You draw X cards and lose X life, where X is the number of creature cards in your graveyard.",
                 "originalType": "Legendary Planeswalker \u2014 Gozani",
                 "printings": [
                     "JAN"
@@ -37017,7 +37022,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "+1: Each player puts the top two cards of his or her library into his or her graveyard.\n0: Exile a creature card from your graveyard. If you do, create a 2/2 black Hyena creature token.\n-5: You draw X cards and lose X life, where X is the number of creature cards in your graveyard.",
+                "text": "+1: Each player puts the top two cards of their library into their graveyard.\n0: Exile a creature card from your graveyard. If you do, create a 2/2 black Hyena creature token.\n-5: You draw X cards and lose X life, where X is the number of creature cards in your graveyard.",
                 "type": "Legendary Planeswalker \u2014 Gozani",
                 "types": [
                     "Planeswalker"
@@ -37105,7 +37110,7 @@
                 "manaCost": "{2}{B}",
                 "name": "Kakrako's Pawn",
                 "number": "99",
-                "originalText": "When Kakrako's Pawn enters the battlefield, target player puts the top three cards of his or her library into his or her graveyard.",
+                "originalText": "When Kakrako's Pawn enters the battlefield, target player puts the top three cards of their library into their graveyard.",
                 "originalType": "Creature \u2014 Crocodile",
                 "power": "2",
                 "printings": [
@@ -37115,7 +37120,7 @@
                 "subtypes": [
                     "Crocodile"
                 ],
-                "text": "When Kakrako's Pawn enters the battlefield, target player puts the top three cards of his or her library into his or her graveyard.",
+                "text": "When Kakrako's Pawn enters the battlefield, target player puts the top three cards of their library into their graveyard.",
                 "toughness": "3",
                 "type": "Creature \u2014 Crocodile",
                 "types": [
@@ -37394,7 +37399,7 @@
                 "manaCost": "{B}",
                 "name": "Swarm of Locusts",
                 "number": "109",
-                "originalText": "Flying\nYour maximum hand size is\nreduced by two.",
+                "originalText": "Flying\nYour maximum hand size is\nreduced by three.",
                 "originalType": "Creature \u2014 Insect",
                 "power": "2",
                 "printings": [
@@ -37404,7 +37409,7 @@
                 "subtypes": [
                     "Insect"
                 ],
-                "text": "Flying\nYour maximum hand size is reduced by two.",
+                "text": "Flying\nYour maximum hand size is reduced by three.",
                 "toughness": "1",
                 "type": "Creature \u2014 Insect",
                 "types": [
@@ -37848,13 +37853,13 @@
                 "manaCost": "{2}{R}",
                 "name": "Faralyn's Gambit",
                 "number": "125",
-                "originalText": "Focus {3}{R}{R} (You may cast this spell for its focus cost. When you do, draw a card.)\nThe owner of target creature shuffles it into his or her library, then reveals the top card of his or her library. If it's a permanent card, he or she puts it onto the battlefield.",
+                "originalText": "Focus {3}{R}{R} (You may cast this spell for its focus cost. When you do, draw a card.)\nThe owner of target creature shuffles it into their library, then reveals the top card of their library. If it's a permanent card, they put it onto the battlefield.",
                 "originalType": "Sorcery",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Rare",
-                "text": "Focus {3}{R}{R} (You may cast this spell for its focus cost. When you do, draw a card.)\nThe owner of target creature shuffles it into his or her library, then reveals the top card of his or her library. If it's a permanent card, he or she puts it onto the battlefield.",
+                "text": "Focus {3}{R}{R} (You may cast this spell for its focus cost. When you do, draw a card.)\nThe owner of target creature shuffles it into their library, then reveals the top card of their library. If it's a permanent card, they put it onto the battlefield.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -37905,7 +37910,7 @@
                 "manaCost": "{3}{R}",
                 "name": "Flamepact Shaman",
                 "number": "127",
-                "originalText": "{T}: Flamepact Shaman deals deals damage equal to its power to target creature or player.\nResurrect {5}{R}{R} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "originalText": "{T}: Flamepact Shaman deals deals damage equal to its power to any target.\nResurrect {5}{R}{R} (You may cast this spell from your graveyard for its Resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "originalType": "Creature \u2014 Human Shaman",
                 "power": "1",
                 "printings": [
@@ -37922,7 +37927,7 @@
                     "Human",
                     "Shaman"
                 ],
-                "text": "{T}: Flamepact Shaman deals deals damage equal to its power to target creature or player.\nResurrect {5}{R}{R} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
+                "text": "{T}: Flamepact Shaman deals damage equal to its power to any target.\nResurrect {5}{R}{R} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
                 "toughness": "1",
                 "type": "Creature \u2014 Human Shaman",
                 "types": [
@@ -37943,7 +37948,7 @@
                 "manaCost": "{1}{R}",
                 "name": "Fling",
                 "number": "128",
-                "originalText": "As an additional cost to cast Fling, sacrifice a creature.\nFling deals damage equal to the sacrificed creature's power to target creature or player.",
+                "originalText": "As an additional cost to cast this spell, sacrifice a creature.\nFling deals damage equal to the sacrificed creature's power to any target.",
                 "originalType": "Instant",
                 "printings": [
                     "JAN",
@@ -37958,7 +37963,7 @@
                     "AKH"
                 ],
                 "rarity": "Common",
-                "text": "As an additional cost to cast Fling, sacrifice a creature.\nFling deals damage equal to the sacrificed creature's power to target creature or player.",
+                "text": "As an additional cost to cast this spell, sacrifice a creature.\nFling deals damage equal to the sacrificed creature's power to any target.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -38066,13 +38071,13 @@
                 "manaCost": "{2}{R}",
                 "name": "Incendiary Revel",
                 "number": "132",
-                "originalText": "Incendiary Revel deals 2 damage to target creature or player.\n{4}{R}, Exile Incendiary Revel from your graveyard: Incendiary Revel deals 4 damage to target creature or player.\n{6}{R}, Put Incendiary Revel from exile on the bottom of its owner's library: Incendiary Revel deals 8 damage to target creature or player.",
+                "originalText": "Incendiary Revel deals 2 damage to any target.\n{4}{R}, Exile Incendiary Revel from your graveyard: Incendiary Revel deals 4\ndamage to any target.\n{6}{R}, Put Incendiary Revel from exile on the bottom of its owner's library: Incendiary Revel deals 8 damage to any target",
                 "originalType": "Instant",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Mythic Rare",
-                "text": "Incendiary Revel deals 2 damage to target creature or player.\n{4}{R}, Exile Incendiary Revel from your graveyard: Incendiary Revel deals 4 damage to target creature or player.\n{6}{R}, Put Incendiary Revel from exile on the bottom of its owner's library: Incendiary Revel deals 8 damage to target creature or player.",
+                "text": "Incendiary Revel deals 2 damage to any target.\n{4}{R}, Exile Incendiary Revel from your graveyard: Incendiary Revel deals 4\ndamage to any target.\n{6}{R}, Put Incendiary Revel from exile on the bottom of its owner's library: Incendiary Revel deals 8 damage to any target",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -38123,13 +38128,13 @@
                 "manaCost": "{1}{R}",
                 "name": "Lava Torrent",
                 "number": "134",
-                "originalText": "Focus {3}{R} (You may cast this spell for its focus cost. When you do, draw a card.)\nLava Torrent deals 2 damage to target creature or player.",
+                "originalText": "Focus {3}{R} (You may cast this spell for its focus cost. When you do, draw a card.)\nLava Torrent deals 2 damage\nto any target.",
                 "originalType": "Instant",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Focus {3}{R} (You may cast this spell for its focus cost. When you do, draw a card.)\nLava Torrent deals 2 damage to target creature or player.",
+                "text": "Focus {3}{R} (You may cast this spell for its focus cost. When you do, draw a card.)\nLava Torrent deals 2 damage\nto any target.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -38247,13 +38252,13 @@
                 "manaCost": "{2}{R}",
                 "name": "Phoenix Flames",
                 "number": "138",
-                "originalText": "Phoenix Flames deals 4 damage to target creature or player. If a creature dealt damage this way would die this turn, exile it instead.",
+                "originalText": "Phoenix Flames deals 4 damage to any target. If a creature or planeswalker dealt damage this way would die this turn, exile it instead.",
                 "originalType": "Sorcery",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "Phoenix Flames deals 4 damage to target creature or player. If a creature dealt damage this way would die this turn, exile it instead.",
+                "text": "Phoenix Flames deals 4 damage to any target. If a creature or planeswalker dealt damage this way would die this turn, exile it instead.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -38273,13 +38278,13 @@
                 "manaCost": "{X}{R}",
                 "name": "Pillage and Plunder",
                 "number": "139",
-                "originalText": "As an additional cost to cast Pillage and Plunder, discard X cards.\nDraw X cards.",
+                "originalText": "As an additional cost to cast this spell, discard X cards.\nDraw X cards.",
                 "originalType": "Instant",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "As an additional cost to cast Pillage and Plunder, discard X cards.\nDraw X cards.",
+                "text": "As an additional cost to cast this spell, discard X cards.\nDraw X cards.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -38299,13 +38304,13 @@
                 "manaCost": "{2}{R}{R}",
                 "name": "Raging Blaze",
                 "number": "140",
-                "originalText": "Raging Blaze deals 4 damage divided as you choose among any number of target creatures and/or players.",
+                "originalText": "Raging Blaze deals 4 damage divided as you choose among any\nnumber of targets.",
                 "originalType": "Instant",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "Raging Blaze deals 4 damage divided as you choose among any number of target creatures and/or players.",
+                "text": "Raging Blaze deals 4 damage divided as you choose among any number of targets.",
                 "type": "Instant",
                 "types": [
                     "Instant"
@@ -38325,7 +38330,7 @@
                 "manaCost": "{1}{R}",
                 "name": "Raniko Arsonist",
                 "number": "141",
-                "originalText": "Spellbound \u2014 {1}{R}, Exile an instant or sorcery card from your graveyard: Raniko Arsonist deals 1 damage to target creature or player. Activate this ability only any time you could cast a sorcery.",
+                "originalText": "Spellbound \u2014 {1}{R}, Exile an instant or sorcery card from your graveyard: Raniko Arsonist deals 1 damage to any target. Activate this ability only any time you could cast a sorcery.",
                 "originalType": "Creature \u2014 Human Warrior",
                 "power": "2",
                 "printings": [
@@ -38336,7 +38341,7 @@
                     "Human",
                     "Warrior"
                 ],
-                "text": "Spellbound \u2014 {1}{R}, Exile an instant or sorcery card from your graveyard: Raniko Arsonist deals 1 damage to target creature or player. Activate this ability only any time you could cast a sorcery.",
+                "text": "Spellbound \u2014 {1}{R}, Exile an instant or sorcery card from your graveyard: Raniko Arsonist deals 1 damage to any target. Activate this ability only any time you could cast a sorcery.",
                 "toughness": "1",
                 "type": "Creature \u2014 Human Warrior",
                 "types": [
@@ -38843,7 +38848,7 @@
                     "PCA",
                     "E01",
                     "C17",
-                    "LDO"
+                    "A25"
                 ],
                 "rarity": "Common",
                 "text": "Search your library for up to two basic land cards, reveal those cards, and put one onto the battlefield tapped and the other into your hand. Then shuffle your library.",
@@ -38964,13 +38969,13 @@
                 "manaCost": "{1}{G}",
                 "name": "Flourish",
                 "number": "162",
-                "originalText": "Create three 0/1 green Plant creature tokens. Then if you control seven or more creatures, add {G}{G} to your mana pool.",
+                "originalText": "Create three 0/1 green Plant creature tokens. Then if you control seven or more creatures, add {G}{G}.",
                 "originalType": "Sorcery",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Create three 0/1 green Plant creature tokens. Then if you control seven or more creatures, add {G}{G} to your mana pool.",
+                "text": "Create three 0/1 green Plant creature tokens. Then if you control seven or more creatures, add {G}{G}.",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -39029,7 +39034,7 @@
                     "DD3_GVL",
                     "DD3_EVG",
                     "E02",
-                    "ANK"
+                    "A25"
                 ],
                 "rarity": "Common",
                 "text": "Target creature gets +3/+3 until end of turn.",
@@ -39174,7 +39179,7 @@
                 "manaCost": "{2}{G}",
                 "name": "Hiutha, Kelada Wildborn",
                 "number": "168",
-                "originalText": "{T}: Choose a color. Add an amount of mana of that color to your mana pool equal to Hiutha, Kelada Wildborn's power.\nSpellbound \u2014 {2}{G}, Exile an instant or sorcery card from your graveyard: Put two +1/+1 counters on Hiutha.",
+                "originalText": "{T}: Choose a color. Add an amount of mana of that color equal to Hiutha, Kelada Wildborn's power.\nSpellbound \u2014 {2}{G}, Exile an instant or sorcery card from your graveyard: Put two +1/+1 counters on Hiutha.",
                 "originalType": "Legendary Creature \u2014 Centaur Druid",
                 "power": "1",
                 "printings": [
@@ -39188,7 +39193,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "{T}: Choose a color. Add an amount of mana of that color to your mana pool equal to Hiutha, Kelada Wildborn's power.\nSpellbound \u2014 {2}{G}, Exile an instant or sorcery card from your graveyard: Put two +1/+1 counters on Hiutha.",
+                "text": "{T}: Choose a color. Add an amount of mana of that color equal to Hiutha, Kelada Wildborn's power.\nSpellbound \u2014 {2}{G}, Exile an instant or sorcery card from your graveyard: Put two +1/+1 counters on Hiutha.",
                 "toughness": "1",
                 "type": "Legendary Creature \u2014 Centaur Druid",
                 "types": [
@@ -39209,7 +39214,7 @@
                 "manaCost": "{3}{G}{G}",
                 "name": "Hohoja, One with the Jungle",
                 "number": "169",
-                "originalText": "+1: Create two 0/1 green Plant creature tokens.\n-2: You get an emblem with \"Plant creatures you control get +1/+0 and have '{T}: Add {G} to your mana pool.'\"\n-9: Create thirty 0/1 green Plant creature tokens.",
+                "originalText": "+1: Create two 0/1 green Plant creature tokens.\n-2: You get an emblem with \"Plant creatures you control get +1/+0 and have\n-9: '{T}: Add {G}.'\"\nCreate thirty 0/1 green Plant creature tokens.",
                 "originalType": "Legendary Planeswalker \u2014 Hohoja",
                 "printings": [
                     "JAN"
@@ -39221,7 +39226,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "+1: Create two 0/1 green Plant creature tokens.\n-2: You get an emblem with \"Plant creatures you control get +1/+0 and have '{T}: Add {G} to your mana pool.'\"\n-9: Create thirty 0/1 green Plant creature tokens.",
+                "text": "+1: Create two 0/1 green Plant creature tokens.\n-2: You get an emblem with \"Plant creatures you control get +1/+0 and have\n-9: '{T}: Add {G}.'\"\nCreate thirty 0/1 green Plant creature tokens.",
                 "type": "Legendary Planeswalker \u2014 Hohoja",
                 "types": [
                     "Planeswalker"
@@ -39384,7 +39389,7 @@
                 "manaCost": "{1}{G}",
                 "name": "Nomadic Druid",
                 "number": "175",
-                "originalText": "{T}: Add {G} to your mana pool.\nSpellbound \u2014 {T}, Exile an instant or sorcery card from your graveyard: Add {G}{G} to your mana pool.",
+                "originalText": "{T}: Add {G}.\nSpellbound \u2014 {T}, Exile an instant or sorcery card from your graveyard: Add {G}{G}.",
                 "originalType": "Creature \u2014 Elf Druid",
                 "power": "1",
                 "printings": [
@@ -39395,7 +39400,7 @@
                     "Elf",
                     "Druid"
                 ],
-                "text": "{T}: Add {G} to your mana pool.\nSpellbound \u2014 {T}, Exile an instant or sorcery card from your graveyard: Add {G}{G} to your mana pool.",
+                "text": "{T}: Add {G}.\nSpellbound \u2014 {T}, Exile an instant or sorcery card from your graveyard: Add {G}{G}.",
                 "toughness": "2",
                 "type": "Creature \u2014 Elf Druid",
                 "types": [
@@ -39504,7 +39509,7 @@
                 "manaCost": "{6}{G}{G}",
                 "name": "Scavenger Chieftan",
                 "number": "179",
-                "originalText": "Deathtouch\nScavenger Chieftan costs {1} less to cast for each card in your graveyard.",
+                "originalText": "Deathtouch\nThis spell costs {1} less to cast for each card in your graveyard.",
                 "originalType": "Creature \u2014 Lizard Warrior",
                 "power": "4",
                 "printings": [
@@ -39515,7 +39520,7 @@
                     "Lizard",
                     "Warrior"
                 ],
-                "text": "Deathtouch\nScavenger Chieftan costs {1} less to cast for each card in your graveyard.",
+                "text": "Deathtouch\nThis spell costs {1} less to cast for each card in your graveyard.",
                 "toughness": "4",
                 "type": "Creature \u2014 Lizard Warrior",
                 "types": [
@@ -39834,7 +39839,7 @@
                 "manaCost": "{2}{U}{U}{B}",
                 "name": "Bazaar Crook",
                 "number": "190",
-                "originalText": "If you would draw a card except the first one you draw in each of your draw steps, draw two cards instead.\nIf an opponent would draw a card except the first one he or she draws in each of his or her draw steps, instead that player skips that draw and you draw a card.",
+                "originalText": "If you would draw a card except the first one you draw in each of your draw steps, draw two cards instead.\nIf an opponent would draw a card except the first one they draw in each of their draw steps, instead that player skips that draw and you draw a card.",
                 "originalType": "Creature \u2014 Human Pirate",
                 "power": "3",
                 "printings": [
@@ -39851,7 +39856,7 @@
                     "Human",
                     "Pirate"
                 ],
-                "text": "If you would draw a card except the first one you draw in each of your draw steps, draw two cards instead.\nIf an opponent would draw a card except the first one he or she draws in each of his or her draw steps, instead that player skips that draw and you draw a card.",
+                "text": "If you would draw a card except the first one you draw in each of your draw steps, draw two cards instead.\nIf an opponent would draw a card except the first one they draw in each of their draw steps, instead that player skips that draw and you draw a card.",
                 "toughness": "5",
                 "type": "Creature \u2014 Human Pirate",
                 "types": [
@@ -39874,7 +39879,7 @@
                 "manaCost": "{2}{U}{R}",
                 "name": "Faralyn, Doyen Polymorphist",
                 "number": "191",
-                "originalText": "+2: Up to one target creature an opponent controls has base power and toughness 1/1 and loses all abilities until your next turn.\n0: Exile a nontoken creature you control.\n-3: If you do, draw two cards.\nExile target nontoken creature you don't control. Its owner reveals the top card of his or her library and may cast it without paying its mana cost.",
+                "originalText": "+2: Up to one target creature an opponent controls has base power and toughness 1/1 and loses all abilities until your next turn.\n0: Exile a nontoken creature you control.\n-3: If you do, draw two cards.\nExile target nontoken creature you don't control. Its owner reveals the top card of their library and may cast it without paying its mana cost.",
                 "originalType": "Legendary Planeswalker \u2014 Faralyn",
                 "printings": [
                     "JAN"
@@ -39886,7 +39891,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "+2: Up to one target creature an opponent controls has base power and toughness 1/1 and loses all abilities until your next turn.\n0: Exile a nontoken creature you control. If you do, draw two cards.\n-3: Exile target nontoken creature you don't control. Its owner reveals the top card of his or her library and may cast it without paying its mana cost.",
+                "text": "+2: Up to one target creature an opponent controls has base power and toughness 1/1 and loses all abilities until your next turn.\n0: Exile a nontoken creature you control. If you do, draw two cards.\n-3. Exile target nontoken creature you don't control. Its owner reveals the top card of their library and may cast it without paying its mana cost.",
                 "type": "Legendary Planeswalker \u2014 Faralyn",
                 "types": [
                     "Planeswalker"
@@ -40414,7 +40419,7 @@
                 "manaCost": "{4}{R}{W}",
                 "name": "Sahai Firebeast",
                 "number": "207",
-                "originalText": "Lifelink (Damage dealt by this creature also causes you to gain that much life.)\nWhen Sahai Firebeast enters the battlefield, it deals 4 damage to target creature or player.",
+                "originalText": "Lifelink (Damage dealt by this creature also causes you to gain that much life.)\nWhen Sahai Firebeast enters the battlefield, it deals 4 damage to\nany target.",
                 "originalType": "Creature \u2014 Elemental Beast",
                 "power": "4",
                 "printings": [
@@ -40425,7 +40430,7 @@
                     "Elemental",
                     "Beast"
                 ],
-                "text": "Lifelink (Damage dealt by this creature also causes you to gain that much life.)\nWhen Sahai Firebeast enters the battlefield, it deals 4 damage to target creature or player.",
+                "text": "Lifelink (Damage dealt by this creature also causes you to gain that much life.)\nWhen Sahai Firebeast enters the battlefield, it deals 4 damage to any target.",
                 "toughness": "4",
                 "type": "Creature \u2014 Elemental Beast",
                 "types": [
@@ -40538,13 +40543,13 @@
                 "manaCost": "{X}{U}{R}{R}",
                 "name": "Thunderbird's Song",
                 "number": "211",
-                "originalText": "Thunderbird's Song deals X damage divided as you choose among any number of target creatures and/or players. Scry X. (To scry X, look at the top X cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)",
+                "originalText": "Thunderbird's Song deals X damage divided as you choose among any number of targets. Scry X. (To scry X, look at the top X cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)",
                 "originalType": "Sorcery",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "Thunderbird's Song deals X damage divided as you choose among any number of target creatures and/or players. Scry X. (To scry X, look at the top X cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)",
+                "text": "Thunderbird's Song deals X damage divided as you choose among any number of targets. Scry X. (To scry X, look at the top X cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)",
                 "type": "Sorcery",
                 "types": [
                     "Sorcery"
@@ -40598,7 +40603,7 @@
                 "manaCost": "{2}{G}{W}",
                 "name": "Uaria, King of Akuga",
                 "number": "213",
-                "originalText": "When Uaria, King of Akuga enters the battlefield, each opponent creates three colorless Treasure artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color to your mana pool.\"\nCreatures can't attack you unless their controller pays {3} for each creature he or she controls that's attacking you.",
+                "originalText": "When Uaria, King of Akuga enters the battlefield, each opponent creates three colorless Treasure artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nCreatures can't attack you unless their controller pays {3} for each creature they control that's attacking you.",
                 "originalType": "Legendary Creature \u2014 Human",
                 "power": "2",
                 "printings": [
@@ -40611,7 +40616,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "When Uaria, King of Akuga enters the battlefield, each opponent creates three colorless Treasure artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color to your mana pool.\"\nCreatures can't attack you unless their controller pays {3} for each creature he or she controls that's attacking you.",
+                "text": "When Uaria, King of Akuga enters the battlefield, each opponent creates three colorless Treasure artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nCreatures can't attack you unless their controller pays {3} for each creature they control that's attacking you.",
                 "toughness": "4",
                 "type": "Legendary Creature \u2014 Human",
                 "types": [
@@ -40628,13 +40633,13 @@
                 "manaCost": "{3}",
                 "name": "Ancient Prism",
                 "number": "214",
-                "originalText": "Focus {5} (You may cast this spell for its focus cost. When you do, draw a card.)\n{T}: Add one mana of any color to your mana pool.",
+                "originalText": "Focus {5} (You may cast this spell for its focus cost. When you do, draw a card.)\n{T}: Add one mana of any color.",
                 "originalType": "Artifact",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "Focus {5} (You may cast this spell for its focus cost. When you do, draw a card.)\n{T}: Add one mana of any color to your mana pool.",
+                "text": "Focus {5} (You may cast this spell for its focus cost. When you do, draw a card.)\n{T}: Add one mana of any color.",
                 "type": "Artifact",
                 "types": [
                     "Artifact"
@@ -40755,7 +40760,7 @@
                 "manaCost": "{2}",
                 "name": "Savage's Boomerang",
                 "number": "219",
-                "originalText": "Equipped creature has \"{T}: This creature deals 1 damage to target creature or player.\"\nEquip {2}",
+                "originalText": "Equipped creature has \"{T}: This creature deals 1 damage to any target.\"\nEquip {2}",
                 "originalType": "Artifact \u2014 Equipment",
                 "printings": [
                     "JAN"
@@ -40764,7 +40769,7 @@
                 "subtypes": [
                     "Equipment"
                 ],
-                "text": "Equipped creature has \"{T}: This creature deals 1 damage to target creature or player.\"\nEquip {2}",
+                "text": "Equipped creature has \"{T}: This creature deals 1 damage to any target.\"\nEquip {2}",
                 "type": "Artifact \u2014 Equipment",
                 "types": [
                     "Artifact"
@@ -40780,13 +40785,13 @@
                 "layout": "normal",
                 "name": "Akugan Cantonment",
                 "number": "220",
-                "originalText": "Akugan Cantonment enters the battlefield tapped.\n{T}: Add {W} to your mana pool.\nSpellbound \u2014 {1}{W}, {T}, Exile an instant or sorcery card from your graveyard: Create a 1/1 white Soldier creature token.",
+                "originalText": "Akugan Cantonment enters the battlefield tapped.\n{T}: Add {W}.\nSpellbound \u2014 {1}{W}, {T}, Exile an instant or sorcery card from your graveyard: Create a 1/1 white Soldier creature token. Activate this ability only any time you could cast a sorcery.",
                 "originalType": "Land",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Rare",
-                "text": "Akugan Cantonment enters the battlefield tapped.\n{T}: Add {W} to your mana pool.\nSpellbound \u2014 {1}{W}, {T}, Exile an instant or sorcery card from your graveyard: Create a 1/1 white Soldier creature token.",
+                "text": "Akugan Cantonment enters the battlefield tapped.\n{T}: Add {W}.\nSpellbound \u2014 {1}{W}, {T}, Exile an instant or sorcery card from your graveyard: Create a 1/1 white Soldier creature token. Activate this ability only any time you could cast a sorcery.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -40803,13 +40808,13 @@
                 "layout": "normal",
                 "name": "Dewdrop Rainforest",
                 "number": "221",
-                "originalText": "{T}: Add {C} to your mana pool.\n{T}: Add {G} to your mana pool. Activate this ability only if you control an Island.\n{T}: Add {U} to your mana pool. Activate this ability only if you control a Forest.",
+                "originalText": "{T}: Add {C}.\n{T}: Add {G}. Activate this ability only if you control an Island.\n{T}: Add {U}. Activate this ability only if you control a Forest.",
                 "originalType": "Land",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "{T}: Add {C} to your mana pool.\n{T}: Add {G} to your mana pool. Activate this ability only if you control an Island.\n{T}: Add {U} to your mana pool. Activate this ability only if you control a Forest.",
+                "text": "{T}: Add {C}.\n{T}: Add {G}. Activate this ability only if you control an Island.\n{T}: Add {U}. Activate this ability only if you control a Forest.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -40826,13 +40831,13 @@
                 "layout": "normal",
                 "name": "Flooded Bog",
                 "number": "222",
-                "originalText": "{T}: Add {C} to your mana pool.\n{T}: Add {U} to your mana pool. Activate this ability only if you control a Swamp.\n{T}: Add {B} to your mana pool. Activate this ability only if you control an Island.",
+                "originalText": "{T}: Add {C}.\n{T}: Add {U}. Activate this ability only if you control a Swamp.\n{T}: Add {B}. Activate this ability only if you control an Island.",
                 "originalType": "Land",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "{T}: Add {C} to your mana pool.\n{T}: Add {U} to your mana pool. Activate this ability only if you control a Swamp.\n{T}: Add {B} to your mana pool. Activate this ability only if you control an Island.",
+                "text": "{T}: Add {C}.\n{T}: Add {U}. Activate this ability only if you control a Swamp.\n{T}: Add {B}. Activate this ability only if you control an Island.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -40849,7 +40854,7 @@
                 "layout": "normal",
                 "name": "Nimbus Maze",
                 "number": "223",
-                "originalText": "{T}: Add {C} to your mana pool.\n{T}: Add {W} to your mana pool. Activate this ability only if you control an Island.\n{T}: Add {U} to your mana pool. Activate this ability only if you control a Plains.",
+                "originalText": "{T}: Add {C}.\n{T}: Add {W}. Activate this ability only if you control an Island.\n{T}: Add {U}. Activate this ability only if you control a Plains.",
                 "originalType": "Land",
                 "printings": [
                     "JAN",
@@ -40857,7 +40862,7 @@
                     "IMA"
                 ],
                 "rarity": "Uncommon",
-                "text": "{T}: Add {C} to your mana pool.\n{T}: Add {W} to your mana pool. Activate this ability only if you control an Island.\n{T}: Add {U} to your mana pool. Activate this ability only if you control a Plains.",
+                "text": "{T}: Add {C}.\n{T}: Add {W}. Activate this ability only if you control an Island.\n{T}: Add {U}. Activate this ability only if you control a Plains.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -40874,13 +40879,13 @@
                 "layout": "normal",
                 "name": "Ominous Caldera",
                 "number": "224",
-                "originalText": "{T}: Add {C} to your mana pool.\n{T}: Add {B} to your mana pool. Activate this ability only if you control a Mountain.\n{T}: Add {R} to your mana pool. Activate this ability only if you control a Swamp.",
+                "originalText": "{T}: Add {C}.\n{T}: Add {B}. Activate this ability only if you control a Mountain.\n{T}: Add {R}. Activate this ability only if you control a Swamp.",
                 "originalType": "Land",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "{T}: Add {C} to your mana pool.\n{T}: Add {B} to your mana pool. Activate this ability only if you control a Mountain.\n{T}: Add {R} to your mana pool. Activate this ability only if you control a Swamp.",
+                "text": "{T}: Add {C}.\n{T}: Add {B}. Activate this ability only if you control a Mountain.\n{T}: Add {R}. Activate this ability only if you control a Swamp.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -40897,13 +40902,13 @@
                 "layout": "normal",
                 "name": "Overgrown Ruins",
                 "number": "225",
-                "originalText": "{T}: Add {C} to your mana pool.\n{T}: Add {B} to your mana pool. Activate this ability only if you control a Forest.\n{T}: Add {G} to your mana pool. Activate this ability only if you control a Swamp.",
+                "originalText": "{T}: Add {C}.\n{T}: Add {B}. Activate this ability only if you control a Forest.\n{T}: Add {G}. Activate this ability only if you control a Swamp.",
                 "originalType": "Land",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "{T}: Add {C} to your mana pool.\n{T}: Add {B} to your mana pool. Activate this ability only if you control a Forest.\n{T}: Add {G} to your mana pool. Activate this ability only if you control a Swamp.",
+                "text": "{T}: Add {C}.\n{T}: Add {B}. Activate this ability only if you control a Forest.\n{T}: Add {G}. Activate this ability only if you control a Swamp.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -40920,13 +40925,13 @@
                 "layout": "normal",
                 "name": "Savage Wildlands",
                 "number": "226",
-                "originalText": "{T}: Add {C} to your mana pool.\n{T}: Add {R} to your mana pool. Activate this ability only if you control a Forest.\n{T}: Add {G} to your mana pool. Activate this ability only if you control a Mountain.",
+                "originalText": "{T}: Add {C}.\n{T}: Add {R}. Activate this ability only if you control a Forest.\n{T}: Add {G}. Activate this ability only if you control a Mountain.",
                 "originalType": "Land",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "{T}: Add {C} to your mana pool.\n{T}: Add {R} to your mana pool. Activate this ability only if you control a Forest.\n{T}: Add {G} to your mana pool. Activate this ability only if you control a Mountain.",
+                "text": "{T}: Add {C}.\n{T}: Add {R}. Activate this ability only if you control a Forest.\n{T}: Add {G}. Activate this ability only if you control a Mountain.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -40943,13 +40948,13 @@
                 "layout": "normal",
                 "name": "Savannah Encampment",
                 "number": "227",
-                "originalText": "{T}: Add {C} to your mana pool.\n{T}: Add {R} to your mana pool. Activate this ability only if you control a Plains.\n{T}: Add {W} to your mana pool. Activate this ability only if you control a Mountain.",
+                "originalText": "{T}: Add {C}.\n{T}: Add {R}. Activate this ability only if you control a Plains.\n{T}: Add {W}. Activate this ability only if you control a Mountain.",
                 "originalType": "Land",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "{T}: Add {C} to your mana pool.\n{T}: Add {R} to your mana pool. Activate this ability only if you control a Plains.\n{T}: Add {W} to your mana pool. Activate this ability only if you control a Mountain.",
+                "text": "{T}: Add {C}.\n{T}: Add {R}. Activate this ability only if you control a Plains.\n{T}: Add {W}. Activate this ability only if you control a Mountain.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -40966,13 +40971,13 @@
                 "layout": "normal",
                 "name": "Splendid Oasis",
                 "number": "228",
-                "originalText": "{T}: Add {C} to your mana pool.\n{T}: Add {G} to your mana pool. Activate this ability only if you control a Plains.\n{T}: Add {W} to your mana pool. Activate this ability only if you control a Forest.",
+                "originalText": "{T}: Add {C}.\n{T}: Add {G}. Activate this ability only if you control a Plains.\n{T}: Add {W}. Activate this ability only if you control a Forest.",
                 "originalType": "Land",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "{T}: Add {C} to your mana pool.\n{T}: Add {G} to your mana pool. Activate this ability only if you control a Plains.\n{T}: Add {W} to your mana pool. Activate this ability only if you control a Forest.",
+                "text": "{T}: Add {C}.\n{T}: Add {G}. Activate this ability only if you control a Plains.\n{T}: Add {W}. Activate this ability only if you control a Forest.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -40989,13 +40994,13 @@
                 "layout": "normal",
                 "name": "Tattered Temple",
                 "number": "229",
-                "originalText": "{T}: Add {C} to your mana pool.\n{T}: Add {W} to your mana pool. Activate this ability only if you control a Swamp.\n{T}: Add {B} to your mana pool. Activate this ability only if you control a Plains.",
+                "originalText": "{T}: Add {C}.\n{T}: Add {W}. Activate this ability only if you control a Swamp.\n{T}: Add {B}. Activate this ability only if you control a Plains.",
                 "originalType": "Land",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "{T}: Add {C} to your mana pool.\n{T}: Add {W} to your mana pool. Activate this ability only if you control a Swamp.\n{T}: Add {B} to your mana pool. Activate this ability only if you control a Plains.",
+                "text": "{T}: Add {C}.\n{T}: Add {W}. Activate this ability only if you control a Swamp.\n{T}: Add {B}. Activate this ability only if you control a Plains.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -41009,13 +41014,13 @@
                 "layout": "normal",
                 "name": "Temple to the Farworld",
                 "number": "230",
-                "originalText": "When Temple to the Farworld enters the battlefield, target player puts the top two cards of his or her library into his or her graveyard.\n{T}: Add {C} to your mana pool.",
+                "originalText": "When Temple to the Farworld enters the battlefield, target player puts the top two cards of their library into their graveyard.\n{T}: Add {C}.",
                 "originalType": "Land",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "When Temple to the Farworld enters the battlefield, target player puts the top two cards of his or her library into his or her graveyard.\n{T}: Add {C} to your mana pool.",
+                "text": "When Temple to the Farworld enters the battlefield, target player puts the top two cards of their library into their graveyard.\n{T}: Add {C}.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -41032,13 +41037,13 @@
                 "layout": "normal",
                 "name": "Totemic Waterfall",
                 "number": "231",
-                "originalText": "{T}: Add {C} to your mana pool.\n{T}: Add {U} to your mana pool. Activate this ability only if you control a Mountain.\n{T}: Add {R} to your mana pool. Activate this ability only if you control an Island.",
+                "originalText": "{T}: Add {C}.\n{T}: Add {U}. Activate this ability only if you control a Mountain.\n{T}: Add {R}. Activate this ability only if you control an Island.",
                 "originalType": "Land",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Uncommon",
-                "text": "{T}: Add {C} to your mana pool.\n{T}: Add {U} to your mana pool. Activate this ability only if you control a Mountain.\n{T}: Add {R} to your mana pool. Activate this ability only if you control an Island.",
+                "text": "{T}: Add {C}.\n{T}: Add {U}. Activate this ability only if you control a Mountain.\n{T}: Add {R}. Activate this ability only if you control an Island.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -41053,13 +41058,13 @@
                 "layout": "normal",
                 "name": "Unspoiled Expanse",
                 "number": "232",
-                "originalText": "{T}: Add {C} to your mana pool.\n{1}, {T}, Sacrifice Unspoiled Expanse: Search your library for a basic land card and put it onto the battlefield tapped. Then shuffle your library.",
+                "originalText": "{T}: Add {C}.\n{1}, {T}, Sacrifice Unspoiled Expanse: Search your library for a basic land card and put it onto the battlefield tapped. Then shuffle your library.",
                 "originalType": "Land",
                 "printings": [
                     "JAN"
                 ],
                 "rarity": "Common",
-                "text": "{T}: Add {C} to your mana pool.\n{1}, {T}, Sacrifice Unspoiled Expanse: Search your library for a basic land card and put it onto the battlefield tapped. Then shuffle your library.",
+                "text": "{T}: Add {C}.\n{1}, {T}, Sacrifice Unspoiled Expanse: Search your library for a basic land card and put it onto the battlefield tapped. Then shuffle your library.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -41075,6 +41080,147 @@
                 "layout": "normal",
                 "name": "Plains",
                 "number": "233",
+                "originalType": "Basic Land \u2014 Plains",
+                "printings": [
+                    "JAN",
+                    "LEA",
+                    "LEB",
+                    "CEI",
+                    "CED",
+                    "2ED",
+                    "3ED",
+                    "4ED",
+                    "ICE",
+                    "RQS",
+                    "pARL",
+                    "MIR",
+                    "ITP",
+                    "5ED",
+                    "POR",
+                    "pPRE",
+                    "TMP",
+                    "pJGP",
+                    "PO2",
+                    "UGL",
+                    "pALP",
+                    "USG",
+                    "ATH",
+                    "6ED",
+                    "PTK",
+                    "pGRU",
+                    "S99",
+                    "MMQ",
+                    "BRB",
+                    "pELP",
+                    "S00",
+                    "INV",
+                    "7ED",
+                    "ODY",
+                    "ONS",
+                    "8ED",
+                    "MRD",
+                    "CHK",
+                    "UNH",
+                    "9ED",
+                    "RAV",
+                    "CST",
+                    "TSP",
+                    "10E",
+                    "MED",
+                    "LRW",
+                    "SHM",
+                    "ALA",
+                    "DDC",
+                    "M10",
+                    "HOP",
+                    "ME3",
+                    "ZEN",
+                    "H09",
+                    "DDE",
+                    "ROE",
+                    "ARC",
+                    "M11",
+                    "DDF",
+                    "SOM",
+                    "MBS",
+                    "DDG",
+                    "NPH",
+                    "CMD",
+                    "M12",
+                    "DDH",
+                    "ISD",
+                    "DDI",
+                    "AVR",
+                    "PC2",
+                    "M13",
+                    "RTR",
+                    "DDK",
+                    "M14",
+                    "DDL",
+                    "THS",
+                    "C13",
+                    "MD1",
+                    "M15",
+                    "DDN",
+                    "KTK",
+                    "C14",
+                    "DD3_DVD",
+                    "FRF",
+                    "DDO",
+                    "DTK",
+                    "TPR",
+                    "ORI",
+                    "DDP",
+                    "BFZ",
+                    "C15",
+                    "DDQ",
+                    "SOI",
+                    "KLD",
+                    "C16",
+                    "PCA",
+                    "AKH",
+                    "CMA",
+                    "E01",
+                    "HOU",
+                    "C17",
+                    "XLN",
+                    "UST",
+                    "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
+                    "HLW",
+                    "TSL",
+                    "VLN",
+                    "VLN",
+                    "VLN",
+                    "VLN"
+                ],
+                "rarity": "Basic Land",
+                "subtypes": [
+                    "Plains"
+                ],
+                "supertypes": [
+                    "Basic"
+                ],
+                "type": "Basic Land \u2014 Plains",
+                "types": [
+                    "Land"
+                ],
+                "watermark": "White"
+            },
+            {
+                "artist": "L. Hogan",
+                "cmc": 0,
+                "colorIdentity": [
+                    "W"
+                ],
+                "colors": [],
+                "layout": "normal",
+                "name": "Plains",
+                "number": "234",
                 "originalType": "Basic Land \u2014 Plains",
                 "printedName": "Plains (2)",
                 "printings": [
@@ -41182,139 +41328,16 @@
                     "XLN",
                     "UST",
                     "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
                     "HLW",
-                    "VLN"
-                ],
-                "rarity": "Basic Land",
-                "subtypes": [
-                    "Plains"
-                ],
-                "supertypes": [
-                    "Basic"
-                ],
-                "type": "Basic Land \u2014 Plains",
-                "types": [
-                    "Land"
-                ],
-                "watermark": "White"
-            },
-            {
-                "artist": "L. Hogan",
-                "cmc": 0,
-                "colorIdentity": [
-                    "W"
-                ],
-                "colors": [],
-                "layout": "normal",
-                "name": "Plains",
-                "number": "234",
-                "printedName": "Plains (2)",
-                "printings": [
-                    "JAN",
-                    "LEA",
-                    "LEB",
-                    "CEI",
-                    "CED",
-                    "2ED",
-                    "3ED",
-                    "4ED",
-                    "ICE",
-                    "RQS",
-                    "pARL",
-                    "MIR",
-                    "ITP",
-                    "5ED",
-                    "POR",
-                    "pPRE",
-                    "TMP",
-                    "pJGP",
-                    "PO2",
-                    "UGL",
-                    "pALP",
-                    "USG",
-                    "ATH",
-                    "6ED",
-                    "PTK",
-                    "pGRU",
-                    "S99",
-                    "MMQ",
-                    "BRB",
-                    "pELP",
-                    "S00",
-                    "INV",
-                    "7ED",
-                    "ODY",
-                    "ONS",
-                    "8ED",
-                    "MRD",
-                    "CHK",
-                    "UNH",
-                    "9ED",
-                    "RAV",
-                    "CST",
-                    "TSP",
-                    "10E",
-                    "MED",
-                    "LRW",
-                    "SHM",
-                    "ALA",
-                    "DDC",
-                    "M10",
-                    "HOP",
-                    "ME3",
-                    "ZEN",
-                    "H09",
-                    "DDE",
-                    "ROE",
-                    "ARC",
-                    "M11",
-                    "DDF",
-                    "SOM",
-                    "MBS",
-                    "DDG",
-                    "NPH",
-                    "CMD",
-                    "M12",
-                    "DDH",
-                    "ISD",
-                    "DDI",
-                    "AVR",
-                    "PC2",
-                    "M13",
-                    "RTR",
-                    "DDK",
-                    "M14",
-                    "DDL",
-                    "THS",
-                    "C13",
-                    "MD1",
-                    "M15",
-                    "DDN",
-                    "KTK",
-                    "C14",
-                    "DD3_DVD",
-                    "FRF",
-                    "DDO",
-                    "DTK",
-                    "TPR",
-                    "ORI",
-                    "DDP",
-                    "BFZ",
-                    "C15",
-                    "DDQ",
-                    "SOI",
-                    "KLD",
-                    "C16",
-                    "PCA",
-                    "AKH",
-                    "CMA",
-                    "E01",
-                    "HOU",
-                    "C17",
-                    "XLN",
-                    "UST",
-                    "RIX",
-                    "HLW",
+                    "TSL",
+                    "VLN",
+                    "VLN",
+                    "VLN",
                     "VLN"
                 ],
                 "rarity": "Basic Land",
@@ -41340,6 +41363,146 @@
                 "layout": "normal",
                 "name": "Island",
                 "number": "235",
+                "originalType": "Basic Land \u2014 Island",
+                "printings": [
+                    "JAN",
+                    "LEA",
+                    "LEB",
+                    "CEI",
+                    "CED",
+                    "2ED",
+                    "3ED",
+                    "4ED",
+                    "ICE",
+                    "RQS",
+                    "pARL",
+                    "MIR",
+                    "ITP",
+                    "5ED",
+                    "POR",
+                    "TMP",
+                    "pJGP",
+                    "PO2",
+                    "UGL",
+                    "pALP",
+                    "USG",
+                    "6ED",
+                    "PTK",
+                    "pGRU",
+                    "S99",
+                    "MMQ",
+                    "BRB",
+                    "pELP",
+                    "S00",
+                    "BTD",
+                    "INV",
+                    "7ED",
+                    "ODY",
+                    "ONS",
+                    "8ED",
+                    "MRD",
+                    "CHK",
+                    "UNH",
+                    "9ED",
+                    "RAV",
+                    "CST",
+                    "TSP",
+                    "10E",
+                    "MED",
+                    "LRW",
+                    "SHM",
+                    "ALA",
+                    "DD2",
+                    "M10",
+                    "HOP",
+                    "ME3",
+                    "ZEN",
+                    "H09",
+                    "DDE",
+                    "ROE",
+                    "DPA",
+                    "ARC",
+                    "M11",
+                    "DDF",
+                    "SOM",
+                    "MBS",
+                    "NPH",
+                    "CMD",
+                    "M12",
+                    "DDH",
+                    "ISD",
+                    "DDI",
+                    "AVR",
+                    "PC2",
+                    "M13",
+                    "DDJ",
+                    "RTR",
+                    "M14",
+                    "THS",
+                    "C13",
+                    "DDM",
+                    "M15",
+                    "DDN",
+                    "KTK",
+                    "C14",
+                    "DD3_JVC",
+                    "FRF",
+                    "DDO",
+                    "DTK",
+                    "TPR",
+                    "ORI",
+                    "BFZ",
+                    "C15",
+                    "DDQ",
+                    "SOI",
+                    "KLD",
+                    "C16",
+                    "PCA",
+                    "DDS",
+                    "AKH",
+                    "CMA",
+                    "E01",
+                    "HOU",
+                    "C17",
+                    "XLN",
+                    "DDT",
+                    "UST",
+                    "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
+                    "HLW",
+                    "TSL",
+                    "VLN",
+                    "VLN",
+                    "VLN",
+                    "VLN"
+                ],
+                "rarity": "Basic Land",
+                "subtypes": [
+                    "Island"
+                ],
+                "supertypes": [
+                    "Basic"
+                ],
+                "type": "Basic Land \u2014 Island",
+                "types": [
+                    "Land"
+                ],
+                "watermark": "Blue"
+            },
+            {
+                "artist": "Michael Durst",
+                "cmc": 0,
+                "colorIdentity": [
+                    "U"
+                ],
+                "colors": [],
+                "layout": "normal",
+                "name": "Island",
+                "number": "236",
                 "originalType": "Basic Land \u2014 Island",
                 "printedName": "Island (2)",
                 "printings": [
@@ -41446,138 +41609,16 @@
                     "DDT",
                     "UST",
                     "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
                     "HLW",
-                    "VLN"
-                ],
-                "rarity": "Basic Land",
-                "subtypes": [
-                    "Island"
-                ],
-                "supertypes": [
-                    "Basic"
-                ],
-                "type": "Basic Land \u2014 Island",
-                "types": [
-                    "Land"
-                ],
-                "watermark": "Blue"
-            },
-            {
-                "artist": "Michael Durst",
-                "cmc": 0,
-                "colorIdentity": [
-                    "U"
-                ],
-                "colors": [],
-                "layout": "normal",
-                "name": "Island",
-                "number": "236",
-                "printedName": "Island (2)",
-                "printings": [
-                    "JAN",
-                    "LEA",
-                    "LEB",
-                    "CEI",
-                    "CED",
-                    "2ED",
-                    "3ED",
-                    "4ED",
-                    "ICE",
-                    "RQS",
-                    "pARL",
-                    "MIR",
-                    "ITP",
-                    "5ED",
-                    "POR",
-                    "TMP",
-                    "pJGP",
-                    "PO2",
-                    "UGL",
-                    "pALP",
-                    "USG",
-                    "6ED",
-                    "PTK",
-                    "pGRU",
-                    "S99",
-                    "MMQ",
-                    "BRB",
-                    "pELP",
-                    "S00",
-                    "BTD",
-                    "INV",
-                    "7ED",
-                    "ODY",
-                    "ONS",
-                    "8ED",
-                    "MRD",
-                    "CHK",
-                    "UNH",
-                    "9ED",
-                    "RAV",
-                    "CST",
-                    "TSP",
-                    "10E",
-                    "MED",
-                    "LRW",
-                    "SHM",
-                    "ALA",
-                    "DD2",
-                    "M10",
-                    "HOP",
-                    "ME3",
-                    "ZEN",
-                    "H09",
-                    "DDE",
-                    "ROE",
-                    "DPA",
-                    "ARC",
-                    "M11",
-                    "DDF",
-                    "SOM",
-                    "MBS",
-                    "NPH",
-                    "CMD",
-                    "M12",
-                    "DDH",
-                    "ISD",
-                    "DDI",
-                    "AVR",
-                    "PC2",
-                    "M13",
-                    "DDJ",
-                    "RTR",
-                    "M14",
-                    "THS",
-                    "C13",
-                    "DDM",
-                    "M15",
-                    "DDN",
-                    "KTK",
-                    "C14",
-                    "DD3_JVC",
-                    "FRF",
-                    "DDO",
-                    "DTK",
-                    "TPR",
-                    "ORI",
-                    "BFZ",
-                    "C15",
-                    "DDQ",
-                    "SOI",
-                    "KLD",
-                    "C16",
-                    "PCA",
-                    "DDS",
-                    "AKH",
-                    "CMA",
-                    "E01",
-                    "HOU",
-                    "C17",
-                    "XLN",
-                    "DDT",
-                    "UST",
-                    "RIX",
-                    "HLW",
+                    "TSL",
+                    "VLN",
+                    "VLN",
+                    "VLN",
                     "VLN"
                 ],
                 "rarity": "Basic Land",
@@ -41603,6 +41644,150 @@
                 "layout": "normal",
                 "name": "Swamp",
                 "number": "237",
+                "originalType": "Basic Land \u2014 Swamp",
+                "printings": [
+                    "JAN",
+                    "LEA",
+                    "LEB",
+                    "CEI",
+                    "CED",
+                    "2ED",
+                    "3ED",
+                    "4ED",
+                    "ICE",
+                    "RQS",
+                    "pARL",
+                    "MIR",
+                    "ITP",
+                    "5ED",
+                    "POR",
+                    "TMP",
+                    "pJGP",
+                    "PO2",
+                    "UGL",
+                    "pALP",
+                    "USG",
+                    "ATH",
+                    "6ED",
+                    "PTK",
+                    "pGRU",
+                    "S99",
+                    "MMQ",
+                    "BRB",
+                    "pELP",
+                    "S00",
+                    "BTD",
+                    "INV",
+                    "7ED",
+                    "ODY",
+                    "DKM",
+                    "ONS",
+                    "8ED",
+                    "MRD",
+                    "CHK",
+                    "UNH",
+                    "9ED",
+                    "RAV",
+                    "CST",
+                    "TSP",
+                    "10E",
+                    "MED",
+                    "LRW",
+                    "SHM",
+                    "ALA",
+                    "DDC",
+                    "M10",
+                    "HOP",
+                    "ME3",
+                    "ZEN",
+                    "DDD",
+                    "H09",
+                    "DDE",
+                    "ROE",
+                    "DPA",
+                    "ARC",
+                    "M11",
+                    "SOM",
+                    "MBS",
+                    "NPH",
+                    "CMD",
+                    "M12",
+                    "DDH",
+                    "ISD",
+                    "PD3",
+                    "AVR",
+                    "PC2",
+                    "M13",
+                    "DDJ",
+                    "RTR",
+                    "DDK",
+                    "M14",
+                    "THS",
+                    "C13",
+                    "DDM",
+                    "MD1",
+                    "M15",
+                    "DDN",
+                    "KTK",
+                    "C14",
+                    "DD3_GVL",
+                    "DD3_DVD",
+                    "FRF",
+                    "DTK",
+                    "TPR",
+                    "ORI",
+                    "DDP",
+                    "BFZ",
+                    "C15",
+                    "DDQ",
+                    "SOI",
+                    "DDR",
+                    "KLD",
+                    "C16",
+                    "PCA",
+                    "AKH",
+                    "CMA",
+                    "E01",
+                    "HOU",
+                    "C17",
+                    "XLN",
+                    "UST",
+                    "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
+                    "HLW",
+                    "TSL",
+                    "VLN",
+                    "VLN",
+                    "VLN",
+                    "VLN"
+                ],
+                "rarity": "Basic Land",
+                "subtypes": [
+                    "Swamp"
+                ],
+                "supertypes": [
+                    "Basic"
+                ],
+                "type": "Basic Land \u2014 Swamp",
+                "types": [
+                    "Land"
+                ],
+                "watermark": "Black"
+            },
+            {
+                "artist": "Eugene Budden",
+                "cmc": 0,
+                "colorIdentity": [
+                    "B"
+                ],
+                "colors": [],
+                "layout": "normal",
+                "name": "Swamp",
+                "number": "238",
                 "originalType": "Basic Land \u2014 Swamp",
                 "printedName": "Swamp (2)",
                 "printings": [
@@ -41713,7 +41898,16 @@
                     "XLN",
                     "UST",
                     "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
                     "HLW",
+                    "TSL",
+                    "VLN",
+                    "VLN",
+                    "VLN",
                     "VLN"
                 ],
                 "rarity": "Basic Land",
@@ -41730,16 +41924,16 @@
                 "watermark": "Black"
             },
             {
-                "artist": "Eugene Budden",
+                "artist": "Jacob Hendrik Pierneef",
                 "cmc": 0,
                 "colorIdentity": [
-                    "B"
+                    "R"
                 ],
                 "colors": [],
                 "layout": "normal",
-                "name": "Swamp",
-                "number": "238",
-                "printedName": "Swamp (2)",
+                "name": "Mountain",
+                "number": "239",
+                "originalType": "Basic Land \u2014 Mountain",
                 "printings": [
                     "JAN",
                     "LEA",
@@ -41747,6 +41941,7 @@
                     "CEI",
                     "CED",
                     "2ED",
+                    "ARN",
                     "3ED",
                     "4ED",
                     "ICE",
@@ -41788,14 +41983,14 @@
                     "10E",
                     "MED",
                     "LRW",
+                    "EVG",
                     "SHM",
                     "ALA",
-                    "DDC",
+                    "DD2",
                     "M10",
                     "HOP",
                     "ME3",
                     "ZEN",
-                    "DDD",
                     "H09",
                     "DDE",
                     "ROE",
@@ -41803,13 +41998,15 @@
                     "ARC",
                     "M11",
                     "SOM",
+                    "PD2",
                     "MBS",
+                    "DDG",
                     "NPH",
                     "CMD",
                     "M12",
                     "DDH",
                     "ISD",
-                    "PD3",
+                    "DDI",
                     "AVR",
                     "PC2",
                     "M13",
@@ -41817,16 +42014,15 @@
                     "RTR",
                     "DDK",
                     "M14",
+                    "DDL",
                     "THS",
                     "C13",
-                    "DDM",
-                    "MD1",
                     "M15",
                     "DDN",
                     "KTK",
                     "C14",
-                    "DD3_GVL",
-                    "DD3_DVD",
+                    "DD3_JVC",
+                    "DD3_EVG",
                     "FRF",
                     "DTK",
                     "TPR",
@@ -41834,38 +42030,47 @@
                     "DDP",
                     "BFZ",
                     "C15",
-                    "DDQ",
                     "SOI",
-                    "DDR",
                     "KLD",
                     "C16",
                     "PCA",
+                    "DDS",
                     "AKH",
                     "CMA",
                     "E01",
                     "HOU",
                     "C17",
                     "XLN",
+                    "DDT",
                     "UST",
                     "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
                     "HLW",
+                    "TSL",
+                    "VLN",
+                    "VLN",
+                    "VLN",
                     "VLN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
-                    "Swamp"
+                    "Mountain"
                 ],
                 "supertypes": [
                     "Basic"
                 ],
-                "type": "Basic Land \u2014 Swamp",
+                "type": "Basic Land \u2014 Mountain",
                 "types": [
                     "Land"
                 ],
-                "watermark": "Black"
+                "watermark": "Red"
             },
             {
-                "artist": "Jacob Hendrik Pierneef",
+                "artist": "Hugo Naude",
                 "cmc": 0,
                 "colorIdentity": [
                     "R"
@@ -41873,7 +42078,7 @@
                 "colors": [],
                 "layout": "normal",
                 "name": "Mountain",
-                "number": "239",
+                "number": "240",
                 "originalType": "Basic Land \u2014 Mountain",
                 "printedName": "Mountain (2)",
                 "printings": [
@@ -41986,7 +42191,16 @@
                     "DDT",
                     "UST",
                     "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
                     "HLW",
+                    "TSL",
+                    "VLN",
+                    "VLN",
+                    "VLN",
                     "VLN"
                 ],
                 "rarity": "Basic Land",
@@ -42003,16 +42217,16 @@
                 "watermark": "Red"
             },
             {
-                "artist": "Hugo Naude",
+                "artist": "dpbrandt",
                 "cmc": 0,
                 "colorIdentity": [
-                    "R"
+                    "G"
                 ],
                 "colors": [],
                 "layout": "normal",
-                "name": "Mountain",
-                "number": "240",
-                "printedName": "Mountain (2)",
+                "name": "Forest",
+                "number": "241",
+                "originalType": "Basic Land \u2014 Forest",
                 "printings": [
                     "JAN",
                     "LEA",
@@ -42020,7 +42234,6 @@
                     "CEI",
                     "CED",
                     "2ED",
-                    "ARN",
                     "3ED",
                     "4ED",
                     "ICE",
@@ -42065,11 +42278,11 @@
                     "EVG",
                     "SHM",
                     "ALA",
-                    "DD2",
                     "M10",
                     "HOP",
                     "ME3",
                     "ZEN",
+                    "DDD",
                     "H09",
                     "DDE",
                     "ROE",
@@ -42077,7 +42290,6 @@
                     "ARC",
                     "M11",
                     "SOM",
-                    "PD2",
                     "MBS",
                     "DDG",
                     "NPH",
@@ -42085,24 +42297,23 @@
                     "M12",
                     "DDH",
                     "ISD",
-                    "DDI",
                     "AVR",
                     "PC2",
                     "M13",
                     "DDJ",
                     "RTR",
-                    "DDK",
                     "M14",
                     "DDL",
                     "THS",
                     "C13",
+                    "DDM",
                     "M15",
-                    "DDN",
                     "KTK",
                     "C14",
-                    "DD3_JVC",
+                    "DD3_GVL",
                     "DD3_EVG",
                     "FRF",
+                    "DDO",
                     "DTK",
                     "TPR",
                     "ORI",
@@ -42110,6 +42321,7 @@
                     "BFZ",
                     "C15",
                     "SOI",
+                    "DDR",
                     "KLD",
                     "C16",
                     "PCA",
@@ -42120,27 +42332,35 @@
                     "HOU",
                     "C17",
                     "XLN",
-                    "DDT",
                     "UST",
                     "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
                     "HLW",
+                    "TSL",
+                    "VLN",
+                    "VLN",
+                    "VLN",
                     "VLN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
-                    "Mountain"
+                    "Forest"
                 ],
                 "supertypes": [
                     "Basic"
                 ],
-                "type": "Basic Land \u2014 Mountain",
+                "type": "Basic Land \u2014 Forest",
                 "types": [
                     "Land"
                 ],
-                "watermark": "Red"
+                "watermark": "Green"
             },
             {
-                "artist": "dpbrandt",
+                "artist": "moonworker1",
                 "cmc": 0,
                 "colorIdentity": [
                     "G"
@@ -42148,7 +42368,7 @@
                 "colors": [],
                 "layout": "normal",
                 "name": "Forest",
-                "number": "241",
+                "number": "242",
                 "originalType": "Basic Land \u2014 Forest",
                 "printedName": "Forest (2)",
                 "printings": [
@@ -42258,141 +42478,16 @@
                     "XLN",
                     "UST",
                     "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
                     "HLW",
-                    "VLN"
-                ],
-                "rarity": "Basic Land",
-                "subtypes": [
-                    "Forest"
-                ],
-                "supertypes": [
-                    "Basic"
-                ],
-                "type": "Basic Land \u2014 Forest",
-                "types": [
-                    "Land"
-                ],
-                "watermark": "Green"
-            },
-            {
-                "artist": "moonworker1",
-                "cmc": 0,
-                "colorIdentity": [
-                    "G"
-                ],
-                "colors": [],
-                "layout": "normal",
-                "name": "Forest",
-                "number": "242",
-                "printedName": "Forest (2)",
-                "printings": [
-                    "JAN",
-                    "LEA",
-                    "LEB",
-                    "CEI",
-                    "CED",
-                    "2ED",
-                    "3ED",
-                    "4ED",
-                    "ICE",
-                    "RQS",
-                    "pARL",
-                    "MIR",
-                    "ITP",
-                    "5ED",
-                    "POR",
-                    "TMP",
-                    "pJGP",
-                    "PO2",
-                    "UGL",
-                    "pALP",
-                    "USG",
-                    "ATH",
-                    "6ED",
-                    "PTK",
-                    "pGRU",
-                    "S99",
-                    "MMQ",
-                    "BRB",
-                    "pELP",
-                    "S00",
-                    "BTD",
-                    "INV",
-                    "7ED",
-                    "ODY",
-                    "DKM",
-                    "ONS",
-                    "8ED",
-                    "MRD",
-                    "CHK",
-                    "UNH",
-                    "9ED",
-                    "RAV",
-                    "CST",
-                    "TSP",
-                    "10E",
-                    "MED",
-                    "LRW",
-                    "EVG",
-                    "SHM",
-                    "ALA",
-                    "M10",
-                    "HOP",
-                    "ME3",
-                    "ZEN",
-                    "DDD",
-                    "H09",
-                    "DDE",
-                    "ROE",
-                    "DPA",
-                    "ARC",
-                    "M11",
-                    "SOM",
-                    "MBS",
-                    "DDG",
-                    "NPH",
-                    "CMD",
-                    "M12",
-                    "DDH",
-                    "ISD",
-                    "AVR",
-                    "PC2",
-                    "M13",
-                    "DDJ",
-                    "RTR",
-                    "M14",
-                    "DDL",
-                    "THS",
-                    "C13",
-                    "DDM",
-                    "M15",
-                    "KTK",
-                    "C14",
-                    "DD3_GVL",
-                    "DD3_EVG",
-                    "FRF",
-                    "DDO",
-                    "DTK",
-                    "TPR",
-                    "ORI",
-                    "DDP",
-                    "BFZ",
-                    "C15",
-                    "SOI",
-                    "DDR",
-                    "KLD",
-                    "C16",
-                    "PCA",
-                    "DDS",
-                    "AKH",
-                    "CMA",
-                    "E01",
-                    "HOU",
-                    "C17",
-                    "XLN",
-                    "UST",
-                    "RIX",
-                    "HLW",
+                    "TSL",
+                    "VLN",
+                    "VLN",
+                    "VLN",
                     "VLN"
                 ],
                 "rarity": "Basic Land",
@@ -66311,7 +66406,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -66440,7 +66536,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -66569,7 +66666,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -66698,7 +66796,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -66827,7 +66926,8 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -66955,7 +67055,8 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -67083,7 +67184,8 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -67211,7 +67313,8 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -67344,7 +67447,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -67476,7 +67580,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -67608,7 +67713,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -67740,7 +67846,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -67875,7 +67982,8 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -68009,7 +68117,8 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -68143,7 +68252,8 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -68277,7 +68387,8 @@
                     "XLN",
                     "DDT",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -68409,7 +68520,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -68540,7 +68652,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -68671,7 +68784,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -68802,7 +68916,8 @@
                     "C17",
                     "XLN",
                     "UST",
-                    "RIX"
+                    "RIX",
+                    "JAN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
