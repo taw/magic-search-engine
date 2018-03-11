@@ -27,7 +27,7 @@ class QueryTokenizer
       elsif s.scan(/\)/i)
         tokens << [:close]
       elsif s.scan(%r[
-        (o|ft|a|n|name)[:=]
+        (o|ft|a|n|name|number)[:=]
         /(
           (?:[^\\/]|\\.)*
         )/
@@ -39,6 +39,7 @@ class QueryTokenizer
             "n"  => ConditionNameRegexp,
             "name"  => ConditionNameRegexp,
             "o"  => ConditionOracleRegexp,
+            "number"  => ConditionNumberRegexp,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
           rx = Regexp.new(s[2], Regexp::IGNORECASE)
           tokens << [:test, cond.new(rx)]
@@ -49,6 +50,7 @@ class QueryTokenizer
             "n"  => ConditionWord,
             "name" => ConditionWord,
             "o"  => ConditionOracle,
+            "number"  => ConditionNumber,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
           @warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, cond.new(s[2])]
@@ -91,6 +93,8 @@ class QueryTokenizer
         sets = [s[1] || s[2]]
         sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|(\w+))/i)
         tokens << [:test, ConditionEdition.new(*sets)]
+      elsif s.scan(/number(>=|>|<=|<|=|:)(?:"(.*?)"|(\w+|\*))/i)
+        tokens << [:test, ConditionNumber.new(s[2] || s[3], s[1])]
       elsif s.scan(/w[:=](?:"(.*?)"|(\w+|\*))/i)
         tokens << [:test, ConditionWatermark.new(s[1] || s[2])]
       elsif s.scan(/f[:=](?:"(.*?)"|([\w\-]+))/i)
