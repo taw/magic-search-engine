@@ -93,8 +93,8 @@ class QueryTokenizer
         sets = [s[1] || s[2]]
         sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|(\w+))/i)
         tokens << [:test, ConditionEdition.new(*sets)]
-      elsif s.scan(/number[:=](?:"(.*?)"|(\w+|\*))/i)
-        tokens << [:test, ConditionNumber.new(s[1] || s[2])]
+      elsif s.scan(/number(>=|>|<=|<|=|:)(?:"(.*?)"|(\w+|\*))/i)
+        tokens << [:test, ConditionNumber.new(s[2] || s[3], s[1])]
       elsif s.scan(/w[:=](?:"(.*?)"|(\w+|\*))/i)
         tokens << [:test, ConditionWatermark.new(s[1] || s[2])]
       elsif s.scan(/f[:=](?:"(.*?)"|([\w\-]+))/i)
