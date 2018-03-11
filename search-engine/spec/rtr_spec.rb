@@ -204,4 +204,16 @@ describe "Return to Ravnica block" do
     assert_search_equal "number=17", "number:17"
     assert_search_equal "number:/[ab]/", "is:split"
   end
+
+  it "number comparison" do
+    assert_search_equal "number>3", "-number:1 -number:2 -number:3"
+    assert_search_equal "number>=3", "-number:1 -number:2"
+    assert_search_equal "number>121 number<122", "Alive // Well"
+    assert_search_equal "number>=100", "number>100 or number=100"
+    assert_search_equal "number>=121a", "number>121a or number=121a"
+    assert_search_equal "number>=121b", "number>121b or number=121b"
+    assert_search_equal "number<=100", "number<100 or number=100"
+    assert_search_equal "number<=121a", "number<121a or number=121a"
+    assert_search_equal "number<=121b", "number<121b or number=121b"
+  end
 end
