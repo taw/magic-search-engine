@@ -58863,13 +58863,13 @@
                 "manaCost": "{2}{W}{W}",
                 "name": "Consortium Astrolabe",
                 "number": "6",
-                "originalText": "Machinate \u2014 {T}, Tap another untapped artifact you control: Exile target artifact or creature, then return that card to the battlefield tapped under its owner's control.",
+                "originalText": "Machinate \u2014 {T}, Tap another untapped artifact you control: Exile another target artifact or creature you control. Return it to the battlefield under your control at the beginning of the next end step.",
                 "originalType": "Artifact",
                 "printings": [
                     "VLN"
                 ],
                 "rarity": "Rare",
-                "text": "Machinate \u2014 {T}, Tap another untapped artifact you control: Exile target artifact or creature, then return that card to the battlefield tapped under its owner's control.",
+                "text": "Machinate \u2014 {T}, Tap another untapped artifact you control: Exile another target artifact or creature you control. Return it to the battlefield under your control at the beginning of the next end step.",
                 "type": "Artifact",
                 "types": [
                     "Artifact"
@@ -62659,7 +62659,7 @@
                 "number": "131",
                 "originalText": "Possess (When this creature enters the battlefield, it possesses target creature an opponent controls until either leaves the battlefield.)\nFirst strike\nYour possessions attack each turn if able.",
                 "originalType": "Creature \u2014 Spirit Devil",
-                "power": "2",
+                "power": "3",
                 "printings": [
                     "VLN"
                 ],
@@ -62669,7 +62669,7 @@
                     "Devil"
                 ],
                 "text": "Possess (When this creature enters the battlefield, it possesses target creature an opponent controls until either leaves the battlefield.)\nFirst strike\nYour possessions attack each combat if able.",
-                "toughness": "2",
+                "toughness": "1",
                 "type": "Creature \u2014 Spirit Devil",
                 "types": [
                     "Creature"
@@ -62688,7 +62688,7 @@
                 "manaCost": "{1}{R}",
                 "name": "Jeering Fiend",
                 "number": "132",
-                "originalText": "Flash (You may cast this spell any time you could cast an instant.)\nFirst strike\nWhen Jeering Fiend enters the battlefield, target creature attacks this turn if able.",
+                "originalText": "First strike\nWhen Jeering Fiend enters the battlefield, target nonbasic land an opponent controls doesn't untap during its controller's next untap step.",
                 "originalType": "Creature \u2014 Devil Warrior",
                 "power": "2",
                 "printings": [
@@ -62699,7 +62699,7 @@
                     "Devil",
                     "Warrior"
                 ],
-                "text": "Flash (You may cast this spell any time you could cast an instant.)\nFirst strike\nWhen Jeering Fiend enters the battlefield, target creature attacks this turn if able.",
+                "text": "First strike\nWhen Jeering Fiend enters the battlefield, target nonbasic land an opponent controls doesn't untap during its controller's next untap step.",
                 "toughness": "1",
                 "type": "Creature \u2014 Devil Warrior",
                 "types": [
@@ -63599,7 +63599,7 @@
                 "flavor": "Though Ursoth was a monster unrivaled, Garruk knew he would eat well tonight.",
                 "layout": "normal",
                 "manaCost": "{2}{G}",
-                "name": "Feed to the Beast",
+                "name": "Feed the Beast",
                 "number": "162",
                 "originalText": "{X}{G}, Sacrifice a creature: Reveal cards from the top of your library until you reveal a creature card with converted mana cost X. Put that card onto the battlefield and the rest on the bottom of your library in a random order.",
                 "originalType": "Enchantment",
@@ -64811,7 +64811,7 @@
                 "manaCost": "{4}{B}{G}",
                 "name": "Cursed by the Veil",
                 "number": "200",
-                "originalText": "Enchant player\nAt the beginning of enchanted player's end step, that player puts the top five cards of his or her library into his or her graveyard, then puts a creature card and a land card from his or her graveyard onto the battlefield.",
+                "originalText": "Enchant player\nAt the beginning of enchanted player's upkeep, that player puts the top six cards of his or her library into his or her graveyard, then puts a creature card and a land card from his or her graveyard onto the battlefield.",
                 "originalType": "Enchantment \u2014 Aura Curse",
                 "printings": [
                     "VLN"
@@ -64821,7 +64821,7 @@
                     "Aura",
                     "Curse"
                 ],
-                "text": "Enchant player\nAt the beginning of enchanted player's end step, that player puts the top five cards of his or her library into his or her graveyard, then puts a creature card and a land card from his or her graveyard onto the battlefield.",
+                "text": "Enchant player\nAt the beginning of enchanted player's upkeep, that player puts the top six cards of his or her library into his or her graveyard, then puts a creature card and a land card from his or her graveyard onto the battlefield.",
                 "type": "Enchantment \u2014 Aura Curse",
                 "types": [
                     "Enchantment"
@@ -65216,7 +65216,7 @@
                 "manaCost": "{1}{W}{B}",
                 "name": "Sarru, Stonecult Rector",
                 "number": "212",
-                "originalText": "When Sarru, Stonecult Rector enters the battlefield, create two 1/1 white Minion creature tokens.\nWhenever a token you control is put into a graveyard from the battlefield, an opponent loses 1 life and you gain 1 life.",
+                "originalText": "When Sarru, Stonecult Rector enters the battlefield, create a 1/1 white Minion creature token.\nWhenever a token you control is put into a graveyard from the battlefield, each opponent loses 1 life and you gain 1 life.",
                 "originalType": "Legendary Creature \u2014 Dwarf Wizard",
                 "power": "2",
                 "printings": [
@@ -65230,7 +65230,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "When Sarru, Stonecult Rector enters the battlefield, create two 1/1 white Minion creature tokens.\nWhenever a token you control is put into a graveyard from the battlefield, each opponent loses 1 life and you gain 1 life.",
+                "text": "When Sarru, Stonecult Rector enters the battlefield, create a 1/1 white Minion creature token.\nWhenever a token you control is put into a graveyard from the battlefield, each opponent loses 1 life and you gain 1 life.",
                 "toughness": "2",
                 "type": "Legendary Creature \u2014 Dwarf Wizard",
                 "types": [
@@ -65867,7 +65867,8 @@
                     "CMA",
                     "C17",
                     "IMA",
-                    "RIX"
+                    "RIX",
+                    "HLW"
                 ],
                 "rarity": "Common",
                 "text": "{T}, Sacrifice Evolving Wilds: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.",
@@ -65910,13 +65911,13 @@
                 "layout": "normal",
                 "name": "Fungal Hollow",
                 "number": "237",
-                "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {B} or {G} to your mana pool.\n{B}{G}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if there are four or more card types among cards in your graveyard.",
+                "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {B} or {G} to your mana pool.\n{B}{G}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if there are five or more card types among cards in your graveyard.",
                 "originalType": "Land",
                 "printings": [
                     "VLN"
                 ],
                 "rarity": "Rare",
-                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {B} or {G} to your mana pool.\n{B}{G}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if there are four or more card types among cards in your graveyard.",
+                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {B} or {G} to your mana pool.\n{B}{G}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if there are five or more card types among cards in your graveyard.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -65930,7 +65931,7 @@
                 "layout": "normal",
                 "name": "Garden of Meditation",
                 "number": "238",
-                "originalText": "{T}: Add {C} to your mana pool.\n{8}, {T}, Sacrifice Garden of Meditation: Gain control of target spell or permanent. (If that spell becomes a permanent, it enters the battlefield under your control.)",
+                "originalText": "{T}: Add {C} to your mana pool.\n{8}, {T}, Sacrifice Garden of Meditation: Gain control of target spell. You may choose new targets for it. (If that spell becomes a permanent, it enters the battlefield under your control.)",
                 "originalType": "Legendary Land",
                 "printings": [
                     "VLN"
@@ -65939,7 +65940,7 @@
                 "supertypes": [
                     "Legendary"
                 ],
-                "text": "{T}: Add {C} to your mana pool.\n{8}, {T}, Sacrifice Garden of Meditation: Gain control of target spell or permanent. (If that spell becomes a permanent, it enters the battlefield under your control.)",
+                "text": "{T}: Add {C} to your mana pool.\n{8}, {T}, Sacrifice Garden of Meditation: Gain control of target spell. You may choose new targets for it. (If that spell becomes a permanent, it enters the battlefield under your control.)",
                 "type": "Legendary Land",
                 "types": [
                     "Land"
@@ -66002,13 +66003,13 @@
                 "layout": "normal",
                 "name": "Highland Path",
                 "number": "241",
-                "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {R} or {W} to your mana pool.\n{R}{W}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you control three or more artifacts.",
+                "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {R} or {W} to your mana pool.\n{R}{W}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you control four or more artifacts.",
                 "originalType": "Land",
                 "printings": [
                     "VLN"
                 ],
                 "rarity": "Rare",
-                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {R} or {W} to your mana pool.\n{R}{W}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you control three or more artifacts.",
+                "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {R} or {W} to your mana pool.\n{R}{W}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you control four or more artifacts.",
                 "type": "Land",
                 "types": [
                     "Land"
