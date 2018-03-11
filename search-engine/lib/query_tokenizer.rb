@@ -149,11 +149,9 @@ class QueryTokenizer
         cond = "Timeshifted" if cond == "Colorshifted"
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/(is|not)[:=](split|flip|dfc|meld|aftermath)\b/i)
+      elsif s.scan(/(is|not|layout)[:=](normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld|aftermath)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionLayout.new(s[2])]
-      elsif s.scan(/layout[:=](normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld|aftermath)/i)
-        tokens << [:test, ConditionLayout.new(s[1])]
       elsif s.scan(/(is|frame|not)[:=](old|new|future|modern|m15)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrame.new(s[2].downcase)]
