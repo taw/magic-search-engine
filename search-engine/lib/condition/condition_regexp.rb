@@ -8,7 +8,7 @@ class ConditionRegexp < Condition
   end
 
   def search(db)
-    Timeout.timeout(2) do
+    Timeout.timeout(30) do
       db.printings.select{|card| match?(card)}.to_set
     end
   end
