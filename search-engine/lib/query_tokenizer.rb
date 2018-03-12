@@ -136,6 +136,8 @@ class QueryTokenizer
         b = s[3].downcase
         b = aliases[b] || b
         tokens << [:test, ConditionExpr.new(a, op, b)]
+      elsif s.scan(/(c|ci)\s*(>=|>|<=|<|=)\s*(?:"(\d+)"|(\d+))/i)
+        tokens << [:test, ConditionColorCountExpr.new(s[1].downcase, s[2], s[3] || s[4])]
       elsif s.scan(/(c|ci)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|(\w+))/i)
         tokens << [:test, ConditionColorExpr.new(s[1].downcase, s[2], parse_color(s[3] || s[4]))]
       elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})*)/i)
@@ -149,11 +151,9 @@ class QueryTokenizer
         cond = "Timeshifted" if cond == "Colorshifted"
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/(is|not)[:=](split|flip|dfc|meld|aftermath)\b/i)
+      elsif s.scan(/(is|not|layout)[:=](normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld|aftermath)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionLayout.new(s[2])]
-      elsif s.scan(/layout[:=](normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld|aftermath)/i)
-        tokens << [:test, ConditionLayout.new(s[1])]
       elsif s.scan(/(is|frame|not)[:=](old|new|future|modern|m15)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrame.new(s[2].downcase)]
