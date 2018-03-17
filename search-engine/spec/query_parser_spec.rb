@@ -84,6 +84,15 @@ describe "QueryParser" do
     refute_search_parse "id:g", "id=g"
   end
 
+  it "spaces around operators" do
+    assert_search_parse "tou:5", "tou: 5"
+    assert_search_parse "cmc:5", "cmc : 5"
+    assert_search_parse "pow=5", "pow = 5"
+    assert_search_parse "ci>=3", "ci >= 3"
+    assert_search_parse "ci<=3", "ci <= 3"
+    assert_search_parse "t:dragon", "t: dragon"
+  end
+
   it "time" do
     refute_search_parse "time:2010", "time:2011 r:common"
     assert_search_parse %Q[time:2010 r:common], %Q[time:2010.1.1 r:common]
