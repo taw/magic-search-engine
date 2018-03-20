@@ -152,7 +152,7 @@ module ApplicationHelper
 
   def format_mana_symbols(syms)
     syms.gsub(/\{(.*?)\}/) do
-      sym  = $&
+      sym  = $&.upcase
       mana = $1.gsub("/", "").downcase
       if good_mana_symbols.include?(mana)
         if mana[0] == "h"
