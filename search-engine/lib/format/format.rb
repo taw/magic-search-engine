@@ -121,6 +121,7 @@ class Format
         "unsets"                     => FormatUnsets,
         "un-sets"                    => FormatUnsets,
         "standard"                   => FormatStandard,
+        "brawl"                      => FormatStandard,
         "modern"                     => FormatModern,
         "frontier"                   => FormatFrontier,
         "legacy"                     => FormatLegacy,
