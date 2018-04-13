@@ -1,4 +1,4 @@
-class FormatCustomCommander < Format
+class FormatFDH < Format
   def initialize(time=nil)
     super(time)
     @real_ban_list = BanList["commander"]
@@ -6,7 +6,7 @@ class FormatCustomCommander < Format
   end
 
   def format_pretty_name
-    "Custom Commander"
+    "Fusion Dragon Highlander"
   end
 
   def include_custom_sets?
