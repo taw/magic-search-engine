@@ -4,6 +4,20 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2018" do
+    assert_banlist_changes "April 2018",
+      "mtgo commander banned", "Edgar Markov",
+      "mtgo commander banned", "Chrome Mox",
+      "mtgo commander banned", "Ancient Tomb",
+      "mtgo commander banned", "Mox Diamond",
+      "mtgo commander banned", "Winter Orb",
+      "mtgo commander banned", "Sylvan Library",
+      "mtgo commander banned", "Worldly Tutor",
+      "mtgo commander banned", "Sylvan Tutor",
+      "mtgo commander unbanned", "Protean Hulk",
+      "mtgo commander unbanned", "Mishra's Workshop",
+      "mtgo commander unbanned", "Bazaar of Baghdad",
+      "mtgo commander unbanned", "Griselbrand"
+
     assert_banlist_changes "January 2018",
       "standard banned", "Attune with Aether",
       "standard banned", "Rogue Refiner",

@@ -92,4 +92,21 @@ BanList.for_format("mtgo commander") do
     "Arcum Dagsson" => "legal",
     "Yisan, the Wanderer Bard" => "legal",
   )
+
+  change(
+    "2018-04-16",
+    "http://wizardsmtgo.tumblr.com/post/172998145739/1v1-commander-banned-and-restricted-announcement",
+    "Edgar Markov" => "banned",
+    "Chrome Mox" => "banned",
+    "Ancient Tomb" => "banned",
+    "Mox Diamond" => "banned",
+    "Winter Orb" => "banned",
+    "Sylvan Library" => "banned",
+    "Worldly Tutor" => "banned",
+    "Sylvan Tutor" => "banned",
+    "Protean Hulk" => "legal",
+    "Mishra's Workshop" => "legal",
+    "Bazaar of Baghdad" => "legal",
+    "Griselbrand" => "legal",
+    )
 end
