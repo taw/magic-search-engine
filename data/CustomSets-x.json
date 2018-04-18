@@ -17086,7 +17086,8 @@
                     "RIX",
                     "JAN",
                     "HLW",
-                    "VLN"
+                    "VLN",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -17218,7 +17219,8 @@
                     "RIX",
                     "JAN",
                     "HLW",
-                    "VLN"
+                    "VLN",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -17354,7 +17356,8 @@
                     "RIX",
                     "JAN",
                     "HLW",
-                    "VLN"
+                    "VLN",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -17492,7 +17495,8 @@
                     "RIX",
                     "JAN",
                     "HLW",
-                    "VLN"
+                    "VLN",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -17627,7 +17631,8 @@
                     "RIX",
                     "JAN",
                     "HLW",
-                    "VLN"
+                    "VLN",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -58075,7 +58080,6 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "Every morning, she looks up to the clouds and dreams.",
                 "layout": "double-faced",
                 "manaCost": "{2}{W}",
                 "name": "Airheaded Lookout",
@@ -58084,9 +58088,9 @@
                     "Airborne Visionary"
                 ],
                 "number": "3a",
-                "originalText": "At the beginning of combat on your turn, if you control two or more creatures with flying, transform Airheaded Lookout.",
+                "originalText": "When Airheaded Lookout enters the battlefield, create a 1/1 colorless Thopter artifact creature token with flying.\nWhenever a creature with flying you control deals combat damage to a player, transform Airheaded Lookout.",
                 "originalType": "Creature \u2014 Human Scout",
-                "power": "3",
+                "power": "2",
                 "printings": [
                     "TSL"
                 ],
@@ -58095,8 +58099,8 @@
                     "Human",
                     "Scout"
                 ],
-                "text": "At the beginning of combat on your turn, if you control two or more creatures with flying, transform Airheaded Lookout.",
-                "toughness": "2",
+                "text": "When Airheaded Lookout enters the battlefield, create a 1/1 colorless Thopter artifact creature token with flying.\nWhenever a creature with flying you control deals combat damage to a player, transform Airheaded Lookout.",
+                "toughness": "1",
                 "type": "Creature \u2014 Human Scout",
                 "types": [
                     "Creature"
@@ -58111,7 +58115,7 @@
                 "colors": [
                     "White"
                 ],
-                "flavor": "To have a vision, one must first see.\nTo see, one must first look.",
+                "flavor": "She once looked up to the clouds to dream. She needs dream no longer.",
                 "layout": "double-faced",
                 "name": "Airborne Visionary",
                 "names": [
@@ -58119,9 +58123,9 @@
                     "Airborne Visionary"
                 ],
                 "number": "3b",
-                "originalText": "Flying\nWhenever Airborne Visionary attacks, other creatures you control with flying get +1/+1 until end of turn.",
+                "originalText": "Flying\n{4}{W}: Create a 1/1 colorless Thopter artifact creature token with flying.",
                 "originalType": "Creature \u2014 Human Artificer",
-                "power": "3",
+                "power": "2",
                 "printings": [
                     "TSL"
                 ],
@@ -58130,7 +58134,7 @@
                     "Human",
                     "Artificer"
                 ],
-                "text": "Flying\nWhenever Airborne Visionary attacks, other creatures you control with flying get +1/+1 until end of turn.",
+                "text": "Flying\n{4}{W}: Create a 1/1 colorless Thopter artifact creature token with flying.",
                 "toughness": "3",
                 "type": "Creature \u2014 Human Artificer",
                 "types": [
@@ -58242,7 +58246,7 @@
                     "Savior of the City"
                 ],
                 "number": "7a",
-                "originalText": "Revolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)\nAt the beginning of your upkeep, return target nonland permanent card from your graveyard to your hand.",
+                "originalText": "Revolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)\nAt the beginning of your end step, return target nonland permanent card from your graveyard to your hand.",
                 "originalType": "Creature \u2014 Human Cleric",
                 "power": "4",
                 "printings": [
@@ -58253,7 +58257,7 @@
                     "Human",
                     "Cleric"
                 ],
-                "text": "Revolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)\nAt the beginning of your upkeep, return target nonland permanent card from your graveyard to your hand.",
+                "text": "Revolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)\nAt the beginning of your end step, return target nonland permanent card from your graveyard to your hand.",
                 "toughness": "5",
                 "type": "Creature \u2014 Human Cleric",
                 "types": [
@@ -58276,7 +58280,7 @@
                     "Savior of the City"
                 ],
                 "number": "7b",
-                "originalText": "Creatures with revolution you control enter the battlefield transformed.\nAt the beginning of your upkeep, return target nonland permanent card from your graveyard to the battlefield.",
+                "originalText": "Creatures with revolution you control enter the battlefield transformed.\nAt the beginning of your end step, return target nonland permanent card from your graveyard to the battlefield.",
                 "originalType": "Creature \u2014 Human Soldier",
                 "power": "5",
                 "printings": [
@@ -58287,7 +58291,7 @@
                     "Human",
                     "Soldier"
                 ],
-                "text": "Creatures with revolution you control enter the battlefield transformed.\nAt the beginning of your upkeep, return target nonland permanent card from your graveyard to the battlefield.",
+                "text": "Creatures with revolution you control enter the battlefield transformed.\nAt the beginning of your end step, return target nonland permanent card from your graveyard to the battlefield.",
                 "toughness": "6",
                 "type": "Creature \u2014 Human Soldier",
                 "types": [
@@ -58395,18 +58399,12 @@
                 "manaCost": "{2}{W}",
                 "name": "Consulate Emergency",
                 "number": "11",
-                "originalText": "Choose two. You may choose the same mode more than once.\n\u2022 Put a +1/+1 counter on target creature.\n\u2022 Create a 1/1 colorless Thopter creature token with flying.",
+                "originalText": "Choose two. You may choose the same mode more than once.\n\u2022 Put a +1/+1 counter on target creature.\n\u2022 Create a 1/1 colorless Thopter artifact creature token with flying.",
                 "originalType": "Instant",
                 "printings": [
                     "TSL"
                 ],
                 "rarity": "Uncommon",
-                "rulings": [
-                    {
-                        "date": "2017-08-17",
-                        "text": "This has received functional errata to make the Thopter tokens less fleshy."
-                    }
-                ],
                 "text": "Choose two. You may choose the same mode more than once.\n\u2022 Put a +1/+1 counter on target creature.\n\u2022 Create a 1/1 colorless Thopter artifact creature token with flying.",
                 "type": "Instant",
                 "types": [
@@ -58535,7 +58533,7 @@
             },
             {
                 "artist": "Jaan-Paul van Eeden",
-                "cmc": 3,
+                "cmc": 2,
                 "colorIdentity": [
                     "W"
                 ],
@@ -58543,16 +58541,16 @@
                     "White"
                 ],
                 "layout": "double-faced",
-                "manaCost": "{2}{W}",
+                "manaCost": "{1}{W}",
                 "name": "Enforcer Knight",
                 "names": [
                     "Enforcer Knight",
                     "Righteous Defector"
                 ],
                 "number": "16a",
-                "originalText": "Enforcer Knight has first strike as long as it's attacking.\nRevolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)",
+                "originalText": "{1}{W}: Enforcer Knight gains first strike until end of turn.\nRevolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)",
                 "originalType": "Creature \u2014 Human Knight",
-                "power": "3",
+                "power": "2",
                 "printings": [
                     "TSL"
                 ],
@@ -58561,8 +58559,8 @@
                     "Human",
                     "Knight"
                 ],
-                "text": "Enforcer Knight has first strike as long as it's attacking.\nRevolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)",
-                "toughness": "1",
+                "text": "{1}{W}: Enforcer Knight gains first strike until end of turn.\nRevolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)",
+                "toughness": "2",
                 "type": "Creature \u2014 Human Knight",
                 "types": [
                     "Creature"
@@ -58570,7 +58568,7 @@
             },
             {
                 "artist": "Filipe Hattori",
-                "cmc": 3,
+                "cmc": 2,
                 "colorIdentity": [
                     "W"
                 ],
@@ -58585,7 +58583,7 @@
                     "Righteous Defector"
                 ],
                 "number": "16b",
-                "originalText": "Creatures you control with revolution enter the battlefield transformed.\nRighteous Defector has double strike as long as it's attacking.",
+                "originalText": "Creatures you control with revolution enter the battlefield transformed.\n{1}{W}: Righteous Defector gains double strike until end of turn.",
                 "originalType": "Creature \u2014 Human Knight",
                 "power": "3",
                 "printings": [
@@ -58596,7 +58594,7 @@
                     "Human",
                     "Knight"
                 ],
-                "text": "Creatures you control with revolution enter the battlefield transformed.\nRighteous Defector has double strike as long as it's attacking.",
+                "text": "Creatures you control with revolution enter the battlefield transformed.\n{1}{W}: Righteous Defector gains double strike until end of turn.",
                 "toughness": "2",
                 "type": "Creature \u2014 Human Knight",
                 "types": [
@@ -58947,7 +58945,7 @@
                 ]
             },
             {
-                "artist": "Victor Adame",
+                "artist": "Tranquillo",
                 "cmc": 2,
                 "colorIdentity": [
                     "W"
@@ -59555,7 +59553,8 @@
                 "printings": [
                     "TSL",
                     "AVR",
-                    "CNS"
+                    "CNS",
+                    "XLN"
                 ],
                 "rarity": "Uncommon",
                 "text": "Creatures you control with flying get +1/+1.",
@@ -59902,7 +59901,7 @@
                 "name": "Jace, Oath Keeper",
                 "number": "53",
                 "originalText": "+2: Until your next turn, whenever a creature attacks you or a planeswalker you control, you may draw a card, then discard a card.\n-2: The next time you cast an instant or sorcery spell from your hand this turn, put that card into your hand instead of your graveyard as it resolves.\n-10: Search your library, hand, and graveyard for up to three instant and/or sorcery cards and exile them. For as long as they remain exiled, you may cast them without paying their mana costs.\nShuffle your library.",
-                "originalType": "Planeswalker \u2014 Jace",
+                "originalType": "Legendary Planeswalker \u2014 Jace",
                 "printings": [
                     "TSL"
                 ],
@@ -60121,6 +60120,7 @@
                     "OGW",
                     "CN2",
                     "AER",
+                    "RIX",
                     "CC18"
                 ],
                 "rarity": "Common",
@@ -60143,7 +60143,7 @@
                 "manaCost": "{1}{U}",
                 "name": "Neural Serum",
                 "number": "60",
-                "originalText": "Tap target creature. It doesn't untap during its controller's next untap step.\nRecharge (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\").",
+                "originalText": "Tap target creature. It doesn't untap during its controller's next untap step.\nRecharge. (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\")",
                 "originalType": "Instant",
                 "printings": [
                     "TSL"
@@ -60200,7 +60200,7 @@
                 "manaCost": "{1}{U}",
                 "name": "Plagiarized Results",
                 "number": "62",
-                "originalText": "Target player reveals his or her hand. Choose a instant, sorcery or artifact card from it. You may cast a copy of that card and may spend mana as though it were mana of any type to cast it. (A copy of an artifact spell becomes a token copy of that artifact as it resolves.)",
+                "originalText": "Target player reveals his or her hand. Choose an instant, sorcery, or artifact card from it and copy it. You may cast the copy and may spend mana as though it were mana of any type to cast it. (A copy of an artifact spell becomes a token copy of that artifact as it resolves.)",
                 "originalType": "Instant",
                 "printings": [
                     "TSL"
@@ -60695,7 +60695,7 @@
                 "manaCost": "{5}{B}",
                 "name": "Crowd Breaker",
                 "number": "79",
-                "originalText": "It is against the law for an opponent to control three or more creatures.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, each of those players loses two life.",
+                "originalText": "It is against the law for an opponent to control three or more creatures.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, each of those players loses 2 life.",
                 "originalType": "Creature \u2014 Ogre Soldier",
                 "power": "5",
                 "printings": [
@@ -60905,7 +60905,7 @@
                     "Reconditioning Regime"
                 ],
                 "number": "86a",
-                "originalText": "Enchant creature\nAt the beginning of your upkeep, enchanted creature's controller discards a card. If that player can't discard a card this way, transform Information Extraction.",
+                "originalText": "Enchant creature\nAt the beginning of your upkeep, enchanted creature's controller discards a card. If that player can't, transform Information Extraction.",
                 "originalType": "Enchantment \u2014 Aura",
                 "printings": [
                     "TSL"
@@ -61833,7 +61833,7 @@
                 "name": "Chandra, Heart of the Revolt",
                 "number": "113",
                 "originalText": "+1: Chandra, Heart of the Revolt deals 3 damage divided as you choose among up to three target creatures and/or planeswalkers.\n0: Exile the top three cards of your library. Until end of turn, you may play cards exiled this way. Creatures spells cast this way gain haste.\n-7: You get an emblem with \"Whenever a creature you control attacks, create a token that's a copy of that creature that's tapped and attacking. Exile the token at end of combat.\"",
-                "originalType": "Planeswalker \u2014 Chandra",
+                "originalType": "Legendary Planeswalker \u2014 Chandra",
                 "printings": [
                     "TSL"
                 ],
@@ -62076,13 +62076,12 @@
                 "flavor": "\"Are treason and justice the same, or opposites? It depends only on where you stand.\"\n\u2014Siv Katari, Rebel Leader",
                 "layout": "normal",
                 "manaCost": "{1}{R}",
-                "name": "Double Cross",
+                "name": "Disloyalty",
                 "number": "119",
                 "originalText": "Gain control of target tapped creature until end of turn. Untap that creature. It gains haste until end of turn.",
                 "originalType": "Sorcery",
                 "printings": [
-                    "TSL",
-                    "UGL"
+                    "TSL"
                 ],
                 "rarity": "Common",
                 "text": "Gain control of target tapped creature until end of turn. Untap that creature. It gains haste until end of turn.",
@@ -62221,7 +62220,7 @@
                 ]
             },
             {
-                "artist": "victor adame",
+                "artist": "Victor Adame Minguez",
                 "cmc": 3,
                 "colorIdentity": [
                     "R"
@@ -62331,7 +62330,7 @@
                 "name": "Meddling Instigator",
                 "names": [
                     "Meddling Instigator",
-                    "Rabble Rouser"
+                    "Riot-Rouser"
                 ],
                 "number": "126a",
                 "originalText": "Haste\nRevolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)",
@@ -62363,10 +62362,10 @@
                 ],
                 "flavor": "The tiniest spark can set off something uncontrollable.",
                 "layout": "double-faced",
-                "name": "Rabble Rouser",
+                "name": "Riot-Rouser",
                 "names": [
                     "Meddling Instigator",
-                    "Rabble Rouser"
+                    "Riot-Rouser"
                 ],
                 "number": "126b",
                 "originalText": "Haste\nCreatures you control with revolution enter the battlefield transformed.\nWhenever Rabble Rouser attacks, create a tapped and attacking 1/1 red Citizen creature token.",
@@ -62615,9 +62614,9 @@
                     "Revolutionary Veteran"
                 ],
                 "number": "134a",
-                "originalText": "Revolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)\nWhen Revolutionary Herald enters the battlefield, create two 1/1 red Citizen creature tokens with haste.",
+                "originalText": "Revolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)\nWhen Revolutionary Herald enters the battlefield, create two 1/1 red Citizen creature tokens.",
                 "originalType": "Creature \u2014 Human Soldier",
-                "power": "3",
+                "power": "2",
                 "printings": [
                     "TSL"
                 ],
@@ -62626,8 +62625,8 @@
                     "Human",
                     "Soldier"
                 ],
-                "text": "Revolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)\nWhen Revolutionary Herald enters the battlefield, create two 1/1 red Citizen creature tokens with haste.",
-                "toughness": "2",
+                "text": "Revolution ({T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Revolt only as a sorcery.)\nWhen Revolutionary Herald enters the battlefield, create two 1/1 red Citizen creature tokens.",
+                "toughness": "1",
                 "type": "Creature \u2014 Human Soldier",
                 "types": [
                     "Creature"
@@ -62649,9 +62648,9 @@
                     "Revolutionary Veteran"
                 ],
                 "number": "134b",
-                "originalText": "Creatures with revolution you control enter the battlefield transformed.\nWhen this creature enters the battlefield or transforms into Revolutionary Veteran, create two 1/1 red Citizen creature tokens with haste.\nAttacking creatures you control get +1/+0 and have trample.",
+                "originalText": "Creatures with revolution you control enter the battlefield transformed.\nWhen this creature enters the battlefield or transforms into Revolutionary Veteran, create two 1/1 red Citizen creature tokens.\nWhenever Revolutionary Veteran attacks, creatures you control get +1/+0 until end of turn.",
                 "originalType": "Creature \u2014 Human Soldier",
-                "power": "4",
+                "power": "3",
                 "printings": [
                     "TSL"
                 ],
@@ -62660,8 +62659,8 @@
                     "Human",
                     "Soldier"
                 ],
-                "text": "Creatures with revolution you control enter the battlefield transformed.\nWhen this creature enters the battlefield or transforms into Revolutionary Veteran, create two 1/1 red Citizen creature tokens with haste.\nAttacking creatures you control get +1/+0 and have trample.",
-                "toughness": "3",
+                "text": "Creatures with revolution you control enter the battlefield transformed.\nWhen this creature enters the battlefield or transforms into Revolutionary Veteran, create two 1/1 red Citizen creature tokens.\nWhenever Revolutionary Veteran attacks, creatures you control get +1/+0 until end of turn.",
+                "toughness": "2",
                 "type": "Creature \u2014 Human Soldier",
                 "types": [
                     "Creature"
@@ -62909,7 +62908,7 @@
                 ]
             },
             {
-                "artist": "Victor Adame Migguez",
+                "artist": "Victor Adame Minguez",
                 "cmc": 6,
                 "colorIdentity": [
                     "R"
@@ -62922,7 +62921,7 @@
                 "manaCost": "{5}{R}",
                 "name": "Vicious Seengshir",
                 "number": "143",
-                "originalText": "Haste\nVicious Seengshir attacks each turn if able.",
+                "originalText": "Haste\nVicious Seengshir attacks each combat if able.",
                 "originalType": "Creature \u2014 Tiger Beast",
                 "power": "5",
                 "printings": [
@@ -63189,6 +63188,46 @@
                 ]
             },
             {
+                "artist": "Henryca Sitra",
+                "cmc": 9,
+                "colorIdentity": [
+                    "G"
+                ],
+                "colors": [
+                    "Green"
+                ],
+                "layout": "normal",
+                "manaCost": "{6}{G}{G}{G}",
+                "name": "Avatar of the Old Ways",
+                "number": "151",
+                "originalText": "Avatar of the Old Ways enters the battlefield with a number of +1/+1 counters on it equal to the difference between your current and starting life total.\nWhen Avatar of the Old Ways enters the battlefield, if your life total is less than your starting life total, it becomes your starting life total.",
+                "originalType": "Creature \u2014 Avatar",
+                "power": "0",
+                "printings": [
+                    "TSL"
+                ],
+                "rarity": "Mythic Rare",
+                "rulings": [
+                    {
+                        "date": "2017-08-02",
+                        "text": "The first ability works if your current life total is below or above your starting life total. For example, if your starting life total was 20, the Avatar will enter with 3 counters if you're at 17 life, but also if you're at 23 life."
+                    },
+                    {
+                        "date": "2017-08-02",
+                        "text": "For your life total to become your starting life total (normally 20), you gain the appropriate amount of life. For example, if your life total is 17 when the trigger resolves, it will cause you to gain 3 life. Other cards that interact with life gain will interact with this effect accordingly."
+                    }
+                ],
+                "subtypes": [
+                    "Avatar"
+                ],
+                "text": "Avatar of the Old Ways enters the battlefield with a number of +1/+1 counters on it equal to the difference between your current and starting life total.\nWhen Avatar of the Old Ways enters the battlefield, if your life total is less than your starting life total, it becomes your starting life total.",
+                "toughness": "0",
+                "type": "Creature \u2014 Avatar",
+                "types": [
+                    "Creature"
+                ]
+            },
+            {
                 "artist": "Derrick Song",
                 "cmc": 3,
                 "colorIdentity": [
@@ -63201,7 +63240,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Better and Stronger",
-                "number": "151",
+                "number": "152",
                 "originalText": "Put two +1/+1 counters on target creature.",
                 "originalType": "Instant",
                 "printings": [
@@ -63226,7 +63265,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Bio-Research",
-                "number": "152",
+                "number": "153",
                 "originalText": "At the beginning of your upkeep, recharge. (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\")\nSacrifice six Canisters: Search your library for a creature card, put it onto the battlefield, then shuffle your library.",
                 "originalType": "Enchantment",
                 "printings": [
@@ -63252,7 +63291,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Consulate Colonists",
-                "number": "153",
+                "number": "154",
                 "originalText": "Defender\nAs long as you control a creature with a +1/+1 counter on it, Consul Colonists can attack as though it didn't have defender.",
                 "originalType": "Creature \u2014 Human Soldier",
                 "power": "3",
@@ -63284,7 +63323,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{G}{G}{G}{G}",
                 "name": "Daitya Survivor",
-                "number": "154",
+                "number": "155",
                 "originalText": "Trample, reach",
                 "originalType": "Creature \u2014 Giant",
                 "power": "9",
@@ -63318,7 +63357,7 @@
                     "Endangered Animal",
                     "Adapted Animal"
                 ],
-                "number": "155a",
+                "number": "156a",
                 "originalText": "Whenever Endangered Animal becomes the target of an ability from an artifact source, transform it.",
                 "originalType": "Creature \u2014 Wolf",
                 "power": "3",
@@ -63351,7 +63390,7 @@
                     "Endangered Animal",
                     "Adapted Animal"
                 ],
-                "number": "155b",
+                "number": "156b",
                 "originalText": "Whenever an artifact is put into a graveyard from the battlefield, you gain 3 life.",
                 "originalType": "Creature \u2014 Wolf Mutant",
                 "power": "5",
@@ -63382,14 +63421,14 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Exploit the Outlands",
-                "number": "156",
-                "originalText": "Whenever a land enters the battlefield under your control, you may pay {1}. If you do, recharge. (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\")\n{2}{G}, Sacrifice Exploit the Outlands: Until end of turn, whenever a creature you control becomes untapped, put a +1/+1 counter on it.",
+                "number": "157",
+                "originalText": "Whenever one or more creatures you control deal combat damage to a player, recharge. (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\")\n{2}{G}, Sacrifice Exploit the Outlands: Until end of turn, creatures you control get \"{T}: Put a +1/+1 counter on this creature.\"",
                 "originalType": "Enchantment",
                 "printings": [
                     "TSL"
                 ],
                 "rarity": "Uncommon",
-                "text": "Whenever a land enters the battlefield under your control, you may pay {1}. If you do, recharge. (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\")\n{2}{G}, Sacrifice Exploit the Outlands: Until end of turn, whenever a creature you control becomes untapped, put a +1/+1 counter on it.",
+                "text": "Whenever one or more creatures you control deal combat damage to a player, recharge. (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\")\n{2}{G}, Sacrifice Exploit the Outlands: Until end of turn, creatures you control gain \"{T}: Put a +1/+1 counter on this creature.\"",
                 "type": "Enchantment",
                 "types": [
                     "Enchantment"
@@ -63408,7 +63447,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}{G}",
                 "name": "Frenzied Traditionalists",
-                "number": "157",
+                "number": "158",
                 "originalText": "Deathtouch\nRaid \u2014 When Frenzied Traditionalists enters the battlefield, if you attacked with a creature this turn, you may destroy target artifact or enchantment.",
                 "originalType": "Creature \u2014 Cat Monk",
                 "power": "2",
@@ -63439,7 +63478,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Good as New",
-                "number": "158",
+                "number": "159",
                 "originalText": "Return target permanent card from your graveyard to your hand. Exile Good as New.\nRecharge. (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\")",
                 "originalType": "Sorcery",
                 "printings": [
@@ -63465,7 +63504,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Grip of Regression",
-                "number": "159",
+                "number": "160",
                 "originalText": "Choose one \u2014\n\u2022 Destroy target creature with flying.\n\u2022 Destroy target artifact.",
                 "originalType": "Sorcery",
                 "printings": [
@@ -63491,7 +63530,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Guerilla Warfare",
-                "number": "160",
+                "number": "161",
                 "originalText": "Target creature you control gets +2/+1 until end of turn. It fights target creature an opponent controls.",
                 "originalType": "Sorcery",
                 "printings": [
@@ -63516,7 +63555,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}{G}",
                 "name": "Jungle Elephant",
-                "number": "161",
+                "number": "162",
                 "originalText": "Reach (This creature can block creatures with flying.)\nTrample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)",
                 "originalType": "Creature \u2014 Elephant",
                 "power": "4",
@@ -63547,7 +63586,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Leyline Disturbance",
-                "number": "162",
+                "number": "163",
                 "originalText": "As an additional cost to cast Leyline Disturbance, sacrifice a creature or exile a creature card from your graveyard.\nYou gain 7 life.",
                 "originalType": "Instant",
                 "printings": [
@@ -63572,7 +63611,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}",
                 "name": "Munitions Maker",
-                "number": "163",
+                "number": "164",
                 "originalText": "When Munitions Maker enters the battlefield, put a +1/+1 counter on target creature.\n{5}{G}: Put a +1/+1 counter on each creature you control with a +1/+1 counter on it.",
                 "originalType": "Creature \u2014 Human Artificer",
                 "power": "2",
@@ -63604,7 +63643,7 @@
                 "layout": "normal",
                 "manaCost": "{5}{G}{G}",
                 "name": "Mutated Gaur",
-                "number": "164",
+                "number": "165",
                 "originalType": "Creature \u2014 Ox Mutant",
                 "power": "7",
                 "printings": [
@@ -63634,7 +63673,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}",
                 "name": "Mutated Man",
-                "number": "165",
+                "number": "166",
                 "originalText": "Whenever you sacrifice another permanent, put a +1/+1 counter on Mutated Man.",
                 "originalType": "Creature \u2014 Human Mutant",
                 "power": "3",
@@ -63666,9 +63705,9 @@
                 "loyalty": 4,
                 "manaCost": "{2}{G}{G}",
                 "name": "Nissa, Planar Pilgrim",
-                "number": "166",
+                "number": "167",
                 "originalText": "+1: Target land you control becomes a 5/5 Elemental creature with haste until end of turn.\n-X: Destroy target noncreature, nonland permanent with converted mana cost X.\n-8: Reveal the top ten cards of your library. Put any number of permanent cards revealed this way onto the battlefield and shuffle the rest into your library.",
-                "originalType": "Planeswalker \u2014 Nissa",
+                "originalType": "Legendary Planeswalker \u2014 Nissa",
                 "printings": [
                     "TSL"
                 ],
@@ -63697,7 +63736,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Nurturer of the Old Ways",
-                "number": "167",
+                "number": "168",
                 "originalText": "Whenever an artifact is put into a graveyard from the battlefield, put a +1/+1 counter on Nurturer of the Old Ways.\n{5}{G}: Destroy target artifact.",
                 "originalType": "Creature \u2014 Human Druid",
                 "power": "2",
@@ -63729,7 +63768,7 @@
                 "layout": "normal",
                 "manaCost": "{8}{G}",
                 "name": "Outland Avenger",
-                "number": "168",
+                "number": "169",
                 "originalText": "Outland Avenger costs {1} less for each artifact card in a graveyard.",
                 "originalType": "Creature \u2014 Elemental",
                 "power": "10",
@@ -63760,7 +63799,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}{G}",
                 "name": "Outlands Bandit",
-                "number": "169",
+                "number": "170",
                 "originalText": "Raid \u2014 When Outlands Bandit enters the battlefield, if you attacked with a creature this turn, draw a card.",
                 "originalType": "Creature  \u2014 Cat Warrior",
                 "power": "3",
@@ -63791,7 +63830,7 @@
                 "layout": "normal",
                 "manaCost": "{1}{G}",
                 "name": "Pioneer Researcher",
-                "number": "170",
+                "number": "171",
                 "originalText": "When Pioneer Researcher enters the battlefield, recharge. (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\")",
                 "originalType": "Creature \u2014 Human Scout",
                 "power": "2",
@@ -63804,7 +63843,7 @@
                     "Scout"
                 ],
                 "text": "When Pioneer Researcher enters the battlefield, recharge. (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\")",
-                "toughness": "2",
+                "toughness": "1",
                 "type": "Creature \u2014 Human Scout",
                 "types": [
                     "Creature"
@@ -63822,7 +63861,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Prepare a Hideout",
-                "number": "171",
+                "number": "172",
                 "originalText": "Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.\nRecharge. (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\")",
                 "originalType": "Sorcery",
                 "printings": [
@@ -63848,7 +63887,7 @@
                 "layout": "normal",
                 "manaCost": "{4}{G}",
                 "name": "Primal Resistance",
-                "number": "172",
+                "number": "173",
                 "originalText": "Target creature you control gets +3/+3 and gains trample until end of turn. It fights target creature you don't control.",
                 "originalType": "Sorcery",
                 "printings": [
@@ -63874,7 +63913,7 @@
                 "layout": "normal",
                 "manaCost": "{2}{G}",
                 "name": "Rhox Savage",
-                "number": "173",
+                "number": "174",
                 "originalText": "Raid \u2014 Rhox Savage enters the battlefield with a +1/+1 counter on it if you attacked with a creature this turn.",
                 "originalType": "Creature \u2014 Rhino Warrior",
                 "power": "3",
@@ -63906,7 +63945,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}",
                 "name": "Rise Up",
-                "number": "174",
+                "number": "175",
                 "originalText": "Untap target creature. It gets +4/+4 and gains reach until end of turn.",
                 "originalType": "Instant",
                 "printings": [
@@ -63931,7 +63970,7 @@
                 "layout": "normal",
                 "manaCost": "{3}{G}",
                 "name": "Tigrala Wildfist",
-                "number": "175",
+                "number": "176",
                 "originalText": "Raid \u2014 At the beginning of your end step, if you attacked with a creature this turn, you may pay {1}. If you do, put a +1/+1 counter on target creature.",
                 "originalType": "Creature \u2014 Cat Warrior",
                 "power": "4",
@@ -63946,46 +63985,6 @@
                 "text": "Raid \u2014 At the beginning of your end step, if you attacked with a creature this turn, you may pay {1}. If you do, put a +1/+1 counter on target creature.",
                 "toughness": "3",
                 "type": "Creature \u2014 Cat Warrior",
-                "types": [
-                    "Creature"
-                ]
-            },
-            {
-                "artist": "andrea susini",
-                "cmc": 9,
-                "colorIdentity": [
-                    "G"
-                ],
-                "colors": [
-                    "Green"
-                ],
-                "layout": "normal",
-                "manaCost": "{6}{G}{G}{G}",
-                "name": "Titan of the Old Ways",
-                "number": "176",
-                "originalText": "Titan of the Old Ways enters the battlefield with a number of +1/+1 counters on it equal to the difference between your current and starting life total.\nWhen Titan of the Old Ways enters the battlefield, if your life total is less than your starting life total, it becomes your starting life total.",
-                "originalType": "Creature \u2014 Avatar",
-                "power": "0",
-                "printings": [
-                    "TSL"
-                ],
-                "rarity": "Mythic Rare",
-                "rulings": [
-                    {
-                        "date": "2017-08-02",
-                        "text": "The first ability works if your current life total is below or above your starting life total. For example, if your starting life total was 20, the Titan will enter with 3 counters if you're at 17 life, but also if you're at 23 life."
-                    },
-                    {
-                        "date": "2017-08-02",
-                        "text": "For your life total to become your starting life total (normally 20), you gain the appropriate amount of life. For example, if your life total is 17 when the trigger resolves, it will cause you to gain 3 life. Other cards that interact with life gain will interact with this effect accordingly."
-                    }
-                ],
-                "subtypes": [
-                    "Avatar"
-                ],
-                "text": "Titan of the Old Ways enters the battlefield with a number of +1/+1 counters on it equal to the difference between your current and starting life total.\nWhen Titan of the Old Ways enters the battlefield, if your life total is less than your starting life total, it becomes your starting life total.",
-                "toughness": "0",
-                "type": "Creature \u2014 Avatar",
                 "types": [
                     "Creature"
                 ]
@@ -64456,7 +64455,7 @@
                 "manaCost": "{W}{B}",
                 "name": "Corrupt Lieutenant",
                 "number": "190",
-                "originalText": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, each of those players loses 2 life and you gain 2 life",
+                "originalText": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, each of those players loses 2 life and you gain 2 life.",
                 "originalType": "Creature \u2014 Human Soldier",
                 "power": "2",
                 "printings": [
@@ -64549,7 +64548,7 @@
                 "manaCost": "{2}{U}{B}",
                 "name": "Naga Spymaster",
                 "number": "193",
-                "originalText": "Deathtouch\nWhenever a creature you control with power 2 or less deals combat damage to a player, that player may pay 2 life. If they don't, you draw a card.",
+                "originalText": "Deathtouch\nWhenever a creature you control with power 2 or less deals combat damage to a player, that player may pay 2 life. If he or she doesn't, you draw a card.",
                 "originalType": "Creature \u2014 Naga Rogue",
                 "power": "2",
                 "printings": [
@@ -64568,7 +64567,7 @@
                 ]
             },
             {
-                "artist": "Sandeep Karunakaran",
+                "artist": "Kim Sung Hwan",
                 "cmc": 5,
                 "colorIdentity": [
                     "R",
@@ -64683,7 +64682,7 @@
                 "manaCost": "{1}{U}{R}",
                 "name": "Siv Katari, Rebel Technician",
                 "number": "197",
-                "originalText": "Prowess\nWhenever Siv Katari, Rebel Technician attacks, create a tapped and attacking X/X colourless Construct artifact creature token with prowess, where X is Siv Katari's power. Exile that token at end of combat.",
+                "originalText": "Prowess\nWhenever Siv Katari, Rebel Technician attacks, create a tapped and attacking X/X colorless Construct artifact creature token with prowess, where X is Siv Katari's power. Exile that token at end of combat.",
                 "originalType": "Legendary Creature \u2014 Human Artificer",
                 "power": "2",
                 "printings": [
@@ -64874,7 +64873,7 @@
                 ]
             },
             {
-                "artist": "Victor A. Minguez",
+                "artist": "Victor Adame Minguez",
                 "cmc": 1,
                 "colorIdentity": [],
                 "colors": [],
@@ -64882,13 +64881,13 @@
                 "manaCost": "{1}",
                 "name": "Alloy Array",
                 "number": "203",
-                "originalText": "Whenever another artifact enters the battlefield under your control, put a +1/+1 counter on Alloy Array, then you may have it become a 0/0 Construct artifact creature until end of turn.\n{7}: Create a 1/1 colorless Thopter artifact creature token with flying.",
+                "originalText": "Whenever another artifact enters the battlefield under your control, you may pay {1}. If you do, put a +1/+1 counter on Alloy Array, then you may have it become a 0/0 Construct artifact creature until end of turn.\n{7}: Create a 1/1 colorless Thopter artifact creature token with flying.",
                 "originalType": "Artifact",
                 "printings": [
                     "TSL"
                 ],
                 "rarity": "Rare",
-                "text": "Whenever another artifact enters the battlefield under your control, put a +1/+1 counter on Alloy Array, then you may have it become a 0/0 Construct artifact creature until end of turn.\n{7}: Create a 1/1 colorless Thopter artifact creature token with flying.",
+                "text": "Whenever another artifact enters the battlefield under your control, you may pay {1}. If you do, put a +1/+1 counter on Alloy Array, then you may have it become a 0/0 Construct artifact creature until end of turn.\n{7}: Create a 1/1 colorless Thopter artifact creature token with flying.",
                 "type": "Artifact",
                 "types": [
                     "Artifact"
@@ -65469,7 +65468,7 @@
                 "manaCost": "{12}",
                 "name": "Possibility Titan",
                 "number": "226",
-                "originalText": "Whenever Possibility Titan enters the battlefield or attacks, choose one:\n\u2022 Destroy target nonland permanent.\n\u2022 Draw two cards.\n\u2022 Create three 1/1 colorless Thopter     artifact creature tokens with flying.",
+                "originalText": "Whenever Possibility Titan enters the battlefield or attacks, choose one \u2014\n\u2022 Destroy target nonland permanent.\n\u2022 Draw two cards.\n\u2022 Create three 1/1 colorless Thopter     artifact creature tokens with flying.",
                 "originalType": "Artifact Creature \u2014 Construct",
                 "power": "6",
                 "printings": [
@@ -65791,10 +65790,11 @@
                     "AKH",
                     "HOU",
                     "C17",
+                    "RIX",
                     "CC18"
                 ],
                 "rarity": "Uncommon",
-                "text": "Cinder Barrens enters the battlefield tapped.\n{T}: Add {B} or {R} to your mana pool.",
+                "text": "Cinder Barrens enters the battlefield tapped.\n{T}: Add {B} or {R}.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -65911,7 +65911,7 @@
                     "CC18"
                 ],
                 "rarity": "Uncommon",
-                "text": "Meandering River enters the battlefield tapped.\n{T}: Add {W} or {U} to your mana pool.",
+                "text": "Meandering River enters the battlefield tapped.\n{T}: Add {W} or {U}.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -65960,7 +65960,7 @@
                     "CC18"
                 ],
                 "rarity": "Uncommon",
-                "text": "Submerged Boneyard enters the battlefield tapped.\n{T}: Add {U} or {B} to your mana pool.",
+                "text": "Submerged Boneyard enters the battlefield tapped.\n{T}: Add {U} or {B}.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -65987,7 +65987,7 @@
                     "CC18"
                 ],
                 "rarity": "Uncommon",
-                "text": "Timber Gorge enters the battlefield tapped.\n{T}: Add {R} or {G} to your mana pool.",
+                "text": "Timber Gorge enters the battlefield tapped.\n{T}: Add {R} or {G}.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -66016,7 +66016,7 @@
                     "CC18"
                 ],
                 "rarity": "Uncommon",
-                "text": "Tranquil Expanse enters the battlefield tapped.\n{T}: Add {G} or {W} to your mana pool.",
+                "text": "Tranquil Expanse enters the battlefield tapped.\n{T}: Add {G} or {W}.",
                 "type": "Land",
                 "types": [
                     "Land"
@@ -66179,10 +66179,21 @@
                     "E01",
                     "HOU",
                     "C17",
-                    "VLN",
-                    "JAN",
+                    "XLN",
+                    "UST",
+                    "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
                     "HLW",
-                    "AYR"
+                    "JAN",
+                    "JAN",
+                    "VLN",
+                    "VLN",
+                    "VLN",
+                    "VLN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -66308,10 +66319,22 @@
                     "E01",
                     "HOU",
                     "C17",
-                    "VLN",
-                    "JAN",
+                    "XLN",
+                    "DDT",
+                    "UST",
+                    "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
                     "HLW",
-                    "AYR"
+                    "JAN",
+                    "JAN",
+                    "VLN",
+                    "VLN",
+                    "VLN",
+                    "VLN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -66442,10 +66465,21 @@
                     "E01",
                     "HOU",
                     "C17",
-                    "VLN",
-                    "JAN",
+                    "XLN",
+                    "UST",
+                    "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
                     "HLW",
-                    "AYR"
+                    "JAN",
+                    "JAN",
+                    "VLN",
+                    "VLN",
+                    "VLN",
+                    "VLN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -66577,10 +66611,22 @@
                     "E01",
                     "HOU",
                     "C17",
-                    "VLN",
-                    "JAN",
+                    "XLN",
+                    "DDT",
+                    "UST",
+                    "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
                     "HLW",
-                    "AYR"
+                    "JAN",
+                    "JAN",
+                    "VLN",
+                    "VLN",
+                    "VLN",
+                    "VLN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -66710,10 +66756,21 @@
                     "E01",
                     "HOU",
                     "C17",
-                    "VLN",
-                    "JAN",
+                    "XLN",
+                    "UST",
+                    "RIX",
+                    "ANK",
+                    "ANK",
+                    "ANK",
+                    "AYR",
+                    "DMS",
                     "HLW",
-                    "AYR"
+                    "JAN",
+                    "JAN",
+                    "VLN",
+                    "VLN",
+                    "VLN",
+                    "VLN"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -74356,7 +74413,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -74487,7 +74545,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -74618,7 +74677,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -74749,7 +74809,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -74880,7 +74941,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -75010,7 +75072,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -75140,7 +75203,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -75270,7 +75334,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -75405,7 +75470,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -75539,7 +75605,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -75673,7 +75740,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -75807,7 +75875,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -75944,7 +76013,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -76080,7 +76150,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -76216,7 +76287,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -76352,7 +76424,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -76486,7 +76559,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -76619,7 +76693,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -76752,7 +76827,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
@@ -76885,7 +76961,8 @@
                     "UST",
                     "RIX",
                     "JAN",
-                    "HLW"
+                    "HLW",
+                    "TSL"
                 ],
                 "rarity": "Basic Land",
                 "subtypes": [
