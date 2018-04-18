@@ -3,8 +3,10 @@ describe "Sorting" do
 
   it "name" do
     assert_search_results_ordered "t:chandra sort:name",
+      # Possibly we should skip commas while sorting ??? 
       "Chandra Ablaze",
       "Chandra Nalaar",
+      "Chandra, Bold Pyromancer",
       "Chandra, Flamecaller",
       "Chandra, Pyrogenius",
       "Chandra, Pyromaster",
@@ -15,6 +17,7 @@ describe "Sorting" do
 
   it "new" do
     assert_search_results_ordered "t:chandra sort:new",
+      "Chandra, Bold Pyromancer",
       "Chandra, Pyrogenius",
       "Chandra, Torch of Defiance",
       "Chandra, Flamecaller",
@@ -26,8 +29,8 @@ describe "Sorting" do
   end
 
   it "newall" do
-    # Jace v Chandra printing of Chandra Nalaar changes order
     assert_search_results_ordered "t:chandra sort:newall",
+      "Chandra, Bold Pyromancer",
       "Chandra, Roaring Flame",
       "Chandra, Pyromaster",
       "Chandra, Pyrogenius",
@@ -47,7 +50,8 @@ describe "Sorting" do
       "Chandra, Roaring Flame",
       "Chandra, Flamecaller",
       "Chandra, Pyrogenius",
-      "Chandra, Torch of Defiance"
+      "Chandra, Torch of Defiance",
+      "Chandra, Bold Pyromancer"
   end
 
   it "oldall" do
@@ -59,12 +63,14 @@ describe "Sorting" do
       "Chandra, Roaring Flame",
       "Chandra, Flamecaller",
       "Chandra, Pyrogenius",
-      "Chandra, Torch of Defiance"
-  end
+      "Chandra, Torch of Defiance",
+      "Chandra, Bold Pyromancer"
+    end
 
   it "cmc" do
     assert_search_results_ordered "t:chandra sort:cmc",
       "Chandra Ablaze",             # 6
+      "Chandra, Bold Pyromancer",   # 6
       "Chandra, Flamecaller",       # 6
       "Chandra, Pyrogenius",        # 6
       "Chandra Nalaar",             # 5
@@ -82,6 +88,7 @@ describe "Sorting" do
       "Chandra, the Firebrand",     # 4
       "Chandra Nalaar",             # 5
       "Chandra Ablaze",             # 6
+      "Chandra, Bold Pyromancer",   # 6
       "Chandra, Flamecaller",       # 6
       "Chandra, Pyrogenius"         # 6
   end
@@ -108,6 +115,7 @@ describe "Sorting" do
     assert_search_results_ordered "t:chandra sort:cmc,-name",
       "Chandra, Pyrogenius",        # 6
       "Chandra, Flamecaller",       # 6
+      "Chandra, Bold Pyromancer",   # 6
       "Chandra Ablaze",             # 6
       "Chandra Nalaar",             # 5
       "Chandra, the Firebrand",     # 4

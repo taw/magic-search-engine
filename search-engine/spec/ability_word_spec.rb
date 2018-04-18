@@ -11,7 +11,7 @@ describe "Ability Word Regexp" do
     dash_prefixes = card_texts.map{|t| t.scan(/^([a-zA-Z' ]+) —/)}.flatten.uniq.sort
     ability_words = card_texts.map{|t| t.scan(Card::ABILITY_WORD_RX)}.flatten.uniq.sort
     (ability_words - dash_prefixes).should eq([])
-    (dash_prefixes - ability_words).should match_array(["An opponent chooses one", "Choose one", "Choose one or both", "Choose one or more", "Choose two", "Forecast", "DCI ruling"])
+    (dash_prefixes - ability_words).should match_array(["An opponent chooses one", "Choose one", "Choose one or both", "Choose one or more", "Choose two", "Forecast", "DCI ruling", "I", "II", "III"])
     ability_words.should eq(Card::ABILITY_WORD_LIST)
   end
 end
