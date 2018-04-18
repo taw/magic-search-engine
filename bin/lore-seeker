@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+
+"""Utility script for running Lore Seeker.
+
+Usage:
+  lore-seeker
+  lore-seeker restart
+  lore-seeker -h | --help
+
+Options:
+  -h, --help  Print this message and exit.
+"""
+
+import sys
+
+import docopt
+import gitdir.host.github
+import os
+import pathlib
+import shlex
+import signal
+import subprocess
+import time
+
+CRASH_NOTICE = """To: fenhl@fenhl.net
+From: {}@{}
+Subject: Lore Seeker crashed
+
+Lore Seeker crashed
+"""
+
+PIDFILE_PATH = pathlib.Path('/var/www/loreseeker.fenhl.net/pidfile')
+
+def announce(args, *, wait=True, check=True, **kwargs):
+    print('[ ** ] {}'.format(' '.join(map(shlex.quote, args))), file=sys.stderr)
+    if wait:
+        return subprocess.run(args, check=check, **kwargs)
+    else:
+        return subprocess.Popen(args, **kwargs)
+
+def notify_crash():
+    whoami = subprocess.run(['whoami'], stdout=subprocess.PIPE, check=True).stdout.decode('utf-8').strip()
+    hostname = subprocess.run(['hostname', '-f'], stdout=subprocess.PIPE, check=True).stdout.decode('utf-8').strip()
+    return subprocess.run(['ssmtp', 'fenhl@fenhl.net'], input=CRASH_NOTICE.format(whoami, hostname).encode('utf-8'), check=True)
+
+def run():
+    stage = gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path
+    announce(['git', 'reset-to-remote', '--branch=lore-seeker'], cwd=str(stage))
+    announce(['git', 'clean', '-d', '--force'], cwd=str(stage))
+    announce(['rake', 'rules:update'], cwd=str(stage))
+    announce(['bin/patch-mtg-json'], cwd=str(stage))
+    #TODO send reload command to Discord bot
+    announce(['rake', 'index'], cwd=str(stage))
+    announce(['bundle', 'install'], cwd=str(stage / 'search-engine'))
+    announce(['bundle', 'install'], cwd=str(stage / 'frontend'))
+    with open('/var/www/loreseeker.fenhl.net/access.log', 'a') as access_log:
+        lore_seeker = announce(['bundle', 'exec', 'rails', 'server', '-p', '18803'], cwd=str(stage / 'frontend'), stdout=access_log, stderr=access_log, wait=False)
+        with PIDFILE_PATH.open('w') as pidfile:
+            print(str(lore_seeker.pid), file=pidfile)
+        lore_seeker.wait()
+        if lore_seeker.returncode != 0:
+            notify_crash()
+
+if __name__ == '__main__':
+    arguments = docopt.docopt(__doc__)
+    if arguments['restart']:
+        with PIDFILE_PATH.open() as pidfile:
+            pid = int(pidfile.read().strip())
+            os.kill(pid, signal.SIGTERM)
+    else:
+        while True:
+            run()
+            time.sleep(10)
