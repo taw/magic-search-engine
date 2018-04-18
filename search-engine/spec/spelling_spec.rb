@@ -71,6 +71,7 @@ describe "Spelling" do
       # Card names including other card names messes up with this test
       next if name == "Greven il-Vec"
       next if name == "Ink-Eyes, Servant of Oni"
+      next if name == "Two-Headed Giant"
       next if name == "Two-Headed Giant of Foriys"
       next if name == "Ur-Drago"
       next if name == "The Ur-Dragon"

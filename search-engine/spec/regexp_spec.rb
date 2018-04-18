@@ -47,6 +47,7 @@ describe "Regexp" do
       "Fallen Angel Avatar",
       "Goblin Secret Agent",
       "Gore Vassal",
+      "Invoke the Divine",
       "Mise",
       "Nalathni Dragon",
       "Remodel",

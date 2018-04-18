@@ -2,8 +2,8 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(18161)
-    db.number_of_printings.should eq(35580)
+    db.number_of_cards.should eq(18392)
+    db.number_of_printings.should eq(35936)
   end
 
   it "block_codes" do
@@ -170,6 +170,7 @@ describe "Full Database Test" do
       "Elvish Lyrist",
       "Elvish Piper",
       "Forest",
+      "Gaea's Blessing",
       "Island",
       "Mana Breach",
       "Memory Lapse",

@@ -50,8 +50,16 @@ class OracleVerifier
           if variants.keys.to_set == [nil, ["Legendary"]].to_set
             canonical_variant = ["Legendary"]
           end
+        elsif key == "subtypes"
+          if card_name == "Aesthir Glider"
+            canonical_variant_source = "dom"
+          end
         else
           case card_name
+          # There were some huge changes, mtgjson update will take a while to sync them
+          when "Ash Barrens", "Barrage Ogre", "Brion Stoutarm", "Chartooth Cougar", "Clifftop Retreat", "Darksteel Citadel", "Eladamri's Call", "Elvish Aberration", "Elvish Archdruid", "Elvish Mystic", "Foundry of the Consuls", "Gaea's Blessing", "Galvanic Blast", "Gilded Lotus", "Goblin Warchief", "Great Furnace", "Hinterland Harbor", "Imperial Recruiter", "Isolated Chapel", "Krosan Tusker", "Leaf Gilder", "Llanowar Elves", "Meandering River", "Myr Battlesphere", "Nature's Spiral", "Noble Templar", "Oran-Rief, the Vastwood", "Phyrexia's Core", "Pia and Kiran Nalaar", "Pyrite Spellbomb", "Ratcatcher", "Scuttling Doom Engine", "Seat of the Synod", "Serra Angel", "Shivan Reef", "Shoreline Ranger", "Shrapnel Blast", "Siege-Gang Commander", "Skirk Prospector", "Skizzik", "Stangg", "Sulfur Falls", "Summoner's Pact", "Swiftwater Cliffs", "Talara's Battalion", "Temple of Epiphany", "Timber Gorge", "Tranquil Thicket", "Treasure Mage", "Treetop Village", "Twisted Abomination", "Woodland Cemetery" 
+            options = variants.values.flatten
+            canonical_variant_source = ["dom", "ddu", "a25"].find{|x| options.include?(x)}
           when "Sultai Ascendancy"
             # BGU / UBG mana cost
             canonical_variant_source = "ktk"
