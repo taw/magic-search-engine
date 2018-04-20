@@ -10,6 +10,7 @@ describe "Conspiracy" do
   it "conspiracy cards included by default" do
     assert_search_results 'o:"one mana of any color"',
       "Mirrodin's Core",
+      "Paliano, the High City",
       "Secrets of Paradise",
       "Spectral Searchlight",
       "Worldknit"

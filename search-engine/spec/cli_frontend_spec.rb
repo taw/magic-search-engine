@@ -46,7 +46,7 @@ describe "CLI Frontend" do
         Legendary Planeswalker - Jace
         [+2]: Each player draws a card.
         [-1]: Target player draws a card.
-        [-10]: Target player puts the top twenty cards of his or her library into his or her graveyard.
+        [-10]: Target player puts the top twenty cards of their library into their graveyard.
         Loyalty: 3
         EOF
       error: ""
