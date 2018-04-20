@@ -125,7 +125,7 @@ class CardControllerTest < ActionController::TestCase
 
   test "Ghostfire" do
     get "index", params: {q: "Ghostfire"}
-    assert_equal "Ghostfire is colorless.Ghostfire deals 3 damage to target creature or player.",
+    assert_equal "Ghostfire is colorless.Ghostfire deals 3 damage to any target.",
       html_document.at(".oracle").text.strip
   end
 end
