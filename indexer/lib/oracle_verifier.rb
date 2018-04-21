@@ -71,7 +71,7 @@ class OracleVerifier
             # first line: never updated (also: UGL,UNH,UST,S00)
             # second line: not updated yet
             known_outdated = %W[
-              ced cedi  chk bok sok st2k v17 cp2
+              ced cedi bok st2k v17 cp2
               rep mbp rqs arena itp at mprp wotc thgt dpa jr cp gtw ptc sus jr fnmp pro mgdc mlp
             ]
             maybe_good_variants = {}
