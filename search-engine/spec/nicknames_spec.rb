@@ -77,7 +77,7 @@ describe "Card nicknames" do
       "Simic Growth Chamber"
       assert_search_results "is:bounceland",
         *cards_matching{|c|
-          c.text =~ %r[#{c.name} enters the battlefield tapped.\nWhen #{c.name} enters the battlefield, return a land you control to its owner's hand.\n\{T\}: Add \{.\}\{.\} to your mana pool.]}
+          c.text =~ %r[#{c.name} enters the battlefield tapped.\nWhen #{c.name} enters the battlefield, return a land you control to its owner's hand.\n\{T\}: Add \{.\}\{.\}]}
   end
 
   # The name is unique
@@ -95,7 +95,7 @@ describe "Card nicknames" do
       "Spirebluff Canal"
       assert_search_results "is:fastland",
         *cards_matching{|c|
-          c.text =~ %r[#{c.name} enters the battlefield tapped unless you control two or fewer other lands.\n\{T\}: Add \{.\} or \{.\} to your mana pool.]
+          c.text =~ %r[#{c.name} enters the battlefield tapped unless you control two or fewer other lands.\n\{T\}: Add \{.\} or \{.\}.]
         }
   end
 
@@ -123,7 +123,7 @@ describe "Card nicknames" do
       "Wind-Scarred Crag"
     assert_search_results "is:gainland",
       *cards_matching{|c|
-        c.text =~ %r[#{c.name} enters the battlefield tapped.\nWhen #{c.name} enters the battlefield, you gain 1 life.\n\{T\}: Add \{.\} or \{.\} to your mana pool.]}
+        c.text =~ %r[#{c.name} enters the battlefield tapped.\nWhen #{c.name} enters the battlefield, you gain 1 life.\n\{T\}: Add \{.\} or \{.\}.]}
   end
 
   # The name is unique
@@ -141,7 +141,7 @@ describe "Card nicknames" do
       "Woodland Cemetery"
     assert_search_results "is:checkland",
       *cards_matching{|c|
-        c.text =~ %r[#{c.name} enters the battlefield tapped unless you control an? \S+ or an? \S+.\n\{T\}: Add \{.\} or \{.\} to your mana pool.]}
+        c.text =~ %r[#{c.name} enters the battlefield tapped unless you control an? \S+ or an? \S+.\n\{T\}: Add \{.\} or \{.\}.]}
   end
 
   # This is a bit dubious
@@ -168,7 +168,7 @@ describe "Card nicknames" do
     assert_search_results "is:filterland",
       *cards_matching{|c|
         c.types.include?("land") &&
-        c.text =~ %r[\{\S+\}, \{T\}: Add \{.\}\{.\}(?= |,).* to your mana pool.]
+        c.text =~ %r[\{\S+\}, \{T\}: Add \{.\}\{.\}(,| |\.)]
       }
   end
 

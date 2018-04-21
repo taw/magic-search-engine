@@ -50,45 +50,42 @@ class OracleVerifier
           if variants.keys.to_set == [nil, ["Legendary"]].to_set
             canonical_variant = ["Legendary"]
           end
+        elsif key == "subtypes"
+          if card_name == "Aesthir Glider"
+            canonical_variant_source = "dom"
+          end
         else
-          case card_name
-          when "Sultai Ascendancy"
-            # BGU / UBG mana cost
-            canonical_variant_source = "ktk"
-          when "Mark of the Vampire", "Unknown Shores"
-            canonical_variant_source = "xln"
-          when "Juggernaut"
-            canonical_variant_source = "m15"
-          when "Fungusaur"
-            canonical_variant_source = "8e"
-          when "Bloodcrazed Neonate"
-            canonical_variant_source = "isd"
-          when "Uncontrollable Anger"
-            canonical_variant_source = "cns"
-          when "Fumiko the Lowblood"
-            canonical_variant_source = "c15"
-          when "Dauthi Slayer"
-            canonical_variant_source = "tp"
-          when "Goblin Rabblemaster"
-            canonical_variant_source = "m15"
-          when "Akoum Firebird"
-            canonical_variant_source = "bfz"
-          when "Flamewake Phoenix"
-            canonical_variant_source = "frf"
-          when "Nettling Imp"
-            canonical_variant_source = "al"
-          when "Steamflogger Boss"
-            canonical_variant_source = "ust"
-          when "Ashnod's Coupon"
-            canonical_variant_source = "ug"
-          when "Mise", "Circle of Protection: Art"
-            canonical_variant_source = "uh"
-          when "Strider Harness", "Traveler's Amulet"
-            canonical_variant_source = "rix"
-          when "Grafdigger's Cage"
-            canonical_variant_source = "mm3"
+          # Transition
+          rx = /his or her|him or her|he or she|mana pool|target creature or player/i
+          if variants.keys.any?{|x| x =~ rx }
+            good = variants.keys.select{|x| x !~ rx}
+            if good.size == 1
+              canonical_variant = good[0]
+            end
+          elsif variants.keys.any?{|x| x =~ /this spell/i } and variants.keys.any?{|x| x !~ /this spell/i }
+            good = variants.keys.select{|x| x =~ /this spell/i }
+            if good.size == 1
+              canonical_variant = good[0]
+            end
           else
-            # FAIL, report
+            # first line: never updated (also: UGL,UNH,UST,S00)
+            # second line: not updated yet
+            known_outdated = %W[
+              ced cedi bok st2k v17 cp2
+              rep mbp rqs arena itp at mprp wotc thgt dpa jr cp gtw ptc sus jr fnmp pro mgdc mlp
+            ]
+            maybe_good_variants = {}
+            variants.each do |variant, sets|
+              sets -= known_outdated
+              next if sets.empty?
+              maybe_good_variants[variant] = sets
+            end
+            if maybe_good_variants.size == 1
+              canonical_variant = maybe_good_variants.keys[0]
+            else
+              p maybe_good_variants
+              binding.pry
+            end
           end
         end
       end
