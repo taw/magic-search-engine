@@ -50,8 +50,7 @@ describe "Regexp" do
       "Invoke the Divine",
       "Mise",
       "Nalathni Dragon",
-      "Remodel",
-      "The Ultimate Nightmare of Wizards of the Coast® Customer Service"
+      "Remodel"
 
     assert_search_equal 'ft:/ajani/', 'FT:/ajani/'
     assert_search_equal 'ft:/ajani/', 'FT:/AJANI/'
