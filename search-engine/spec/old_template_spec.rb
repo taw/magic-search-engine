@@ -6,21 +6,21 @@ describe "Old templates" do
 
   # Migration not complete yet
   it do 
-    assert_count_results %Q[o:"his or her"], 38
-    assert_count_results %Q[o:"he or she"], 14
+    assert_count_results %Q[o:"his or her"], 30
+    assert_count_results %Q[o:"he or she"], 12
     assert_count_results %Q[o:"him or her"], 2
   end
 
   it do
-    assert_count_results %Q[o:"mana pool"], 27
+    assert_count_results %Q[o:"mana pool"], 20
   end
 
   it do
-    assert_count_results %Q[o:"creature or player"], 15
+    assert_count_results %Q[o:"creature or player"], 10
   end
 
   it do
-    assert_count_results %Q[o:"~ can't be countered"], 2
+    assert_count_results %Q[o:"~ can't be countered"], 1
   end
 
   # Robot Chicken is not Gatherer card
