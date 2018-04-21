@@ -6,17 +6,17 @@ describe "Old templates" do
 
   # Migration not complete yet
   it do 
-    assert_count_results %Q[o:"his or her"], 11
-    assert_count_results %Q[o:"he or she"], 4
-    assert_count_results %Q[o:"him or her"], 1
+    assert_count_results %Q[o:"his or her"], 2
+    assert_count_results %Q[o:"he or she"], 1
+    assert_count_results %Q[o:"him or her"], 0
   end
 
   it do
-    assert_count_results %Q[o:"mana pool"], 9
+    assert_count_results %Q[o:"mana pool"], 4
   end
 
   it do
-    assert_count_results %Q[o:"creature or player"], 7
+    assert_count_results %Q[o:"creature or player"], 3
   end
 
   it do
