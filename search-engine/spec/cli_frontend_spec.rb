@@ -112,7 +112,7 @@ describe "CLI Frontend" do
         Steam Vents
         [gp rtr exp]
         Land - Island Mountain
-        ({T}: Add {U} or {R} to your mana pool.)
+        ({T}: Add {U} or {R}.)
         As Steam Vents enters the battlefield, you may pay 2 life. If you don't, Steam Vents enters the battlefield tapped.
         EOF
       error: ""

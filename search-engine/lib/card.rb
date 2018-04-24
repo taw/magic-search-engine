@@ -300,6 +300,6 @@ class Card
     else
       raise "No idea what's correct line for #{basic_land_types.inspect}"
     end
-    @reminder_text = "({T}: Add #{mana} to your mana pool.)"
+    @reminder_text = "({T}: Add #{mana}.)"
   end
 end
