@@ -26,6 +26,8 @@ class DeckController < ApplicationController
         [0, "Unknown"]
       elsif c[:card].types.include?("creature")
         [1, "Creature"]
+      elsif c[:card].types.include?("land")
+        [7, "Land"]
       elsif c[:card].types.include?("planeswalker")
         [2, "Planeswalker"]
       elsif c[:card].types.include?("instant")
@@ -36,8 +38,6 @@ class DeckController < ApplicationController
         [5, "Artifact"]
       elsif c[:card].types.include?("enchantment")
         [6, "Enchantment"]
-      elsif c[:card].types.include?("land")
-        [7, "Land"]
       else
         [8, "Other"]
       end
