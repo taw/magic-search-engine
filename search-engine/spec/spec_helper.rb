@@ -266,4 +266,8 @@ shared_context "db" do |*sets|
     expected_legality.merge!(exceptions)
     expected_legality
   end
+
+  def cards_matching(&block)
+    db.cards.values.select(&block).map(&:name)
+  end
 end
