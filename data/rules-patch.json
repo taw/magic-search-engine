@@ -1,5 +1,5 @@
 {
-    "base": "2018-01-19",
+    "base": "2018-04-27",
     "patches": [
         {
             "#": "for Mount Chromaziel",
@@ -23,7 +23,7 @@
         {
             "#": "set: Dreamscape",
             "type": "addSpecialAction",
-            "text": "A player who has a card with premonition in his or her hand may put that card face up into his or her library. This is a special action. A player can take this action any time he or she has priority, but only if he or she could begin to cast that card by putting it onto the stack."
+            "text": "A player who has a card with premonition in their hand may put that card face up into their library. This is a special action. A player can take this action any time they have priority, but only if they could begin to cast that card by putting it onto the stack."
         },
         {
             "#": "for Sobki, World Severer",
@@ -57,8 +57,8 @@
             "#": "for Sobki, World Severer",
             "type": "replace",
             "rule": "119.7",
-            "find": "The source of damage is the object that dealt it\\. If an effect requires a player to choose a source of damage, he or she may choose a permanent;",
-            "replace": "The source of damage is the object or player that dealt it. If an effect requires a player to choose a source of damage, he or she may choose a player; a permanent;"
+            "find": "The source of damage is the object that dealt it\\. If an effect requires a player to choose a source of damage, they may choose a permanent;",
+            "replace": "The source of damage is the object or player that dealt it. If an effect requires a player to choose a source of damage, they may choose a player; a permanent;"
         },
         {
             "#": "for Sobki, World Severer",
@@ -139,8 +139,8 @@
             "#": "set: Aenyr, for resonance",
             "type": "insertText",
             "rule": "601.2b",
-            "after": "If the player wishes to splice any cards onto the spell (see rule 702.46), he or she reveals those cards in his or her hand. ",
-            "text": "If the player wishes to apply any resonance effects to the spell, he or she announces his or her intention to do so. "
+            "after": "If the player wishes to splice any cards onto the spell (see rule 702.46), they reveal those cards in their hand. ",
+            "text": "If the player wishes to apply any resonance effects to the spell, they announce their intention to do so. "
         },
         {
             "#": "for Berserker's Rage",
@@ -158,8 +158,8 @@
             "#": "for Sobki, World Severer",
             "type": "replace",
             "rule": "609.7a",
-            "find": "If an effect requires a player to choose a source of damage, he or she may choose a permanent;",
-            "replace": "If an effect requires a player to choose a source of damage, he or she may choose a player; a permanent;"
+            "find": "If an effect requires a player to choose a source of damage, they may choose a permanent;",
+            "replace": "If an effect requires a player to choose a source of damage, they may choose a player; a permanent;"
         },
         {
             "#": "set: Aenyr, for the resonance-overload interaction",
@@ -195,7 +195,7 @@
             "#": "set: Tesla",
             "type": "insert",
             "rule": "700.6",
-            "text": "Some continuous effects state that a game action or game state is “against the law” for a player. A player “breaks the law” if he or she performs that action or if the game state matches that state. This is not to be confused with illegal actions and has no immediate effect on gameplay; however, spells and abilities can identify that the law has been broken."
+            "text": "Some continuous effects state that a game action or game state is “against the law” for a player. A player “breaks the law” if they perform that action or if the game state matches that state. This is not to be confused with illegal actions and has no immediate effect on gameplay; however, spells and abilities can identify that the law has been broken."
         },
         {
             "#": "set: Tesla",
@@ -214,7 +214,7 @@
                 "text": "Journey",
                 "subrules": [
                     "“Journey” means “Exile the top card of your library. That card becomes journeyed.”",
-                    "There is an inherent triggered ability associated with journeying. The full text of this ability is “Whenever a creature deals combat damage to one of its controller's opponents, if its controller owns any journeyed cards, the creature's controller puts a journeyed card he or she owns into his or her hand.” This ability has no source and is controlled by the controller of the creature which dealt the damage that caused it to trigger. This is an exception to rule 112.8.",
+                    "There is an inherent triggered ability associated with journeying. The full text of this ability is “Whenever a creature deals combat damage to one of its controller's opponents, if its controller owns any journeyed cards, the creature's controller puts a journeyed card they own into their hand.” This ability has no source and is controlled by the controller of the creature which dealt the damage that caused it to trigger. This is an exception to rule 112.8.",
                     "Journeyed is a designation that has no rules meaning other than to act as a marker that the inherent triggered ability and other spells and abilities can identify. Only cards in exile can be or become journeyed. Once a card becomes journeyed, it stays journeyed until it leaves exile or becomes a new object (see rule 406.7). Journeyed is neither an ability nor part of the card's copiable values."
                 ]
             }
@@ -233,28 +233,20 @@
         },
         {
             "#": "set: Lorado",
-            "type": "replace",
+            "type": "insert",
             "rule": "702.94c",
-            "find": "soulbond",
-            "replace": "soulbond or warband"
-        },
-        {
-            "#": "set: Lorado",
-            "type": "replace",
-            "rule": "702.94d",
-            "find": "soulbond",
-            "replace": "soulbond or warband"
+            "text": "A warband ability is a soulbond ability. Any effect that looks for an object with soulbond will find a card with warband."
         },
         {
             "#": "set: Lorado",
             "type": "append",
-            "rule": "702.94e",
-            "text": "(For example, a creature can't be paired with another creature using a soulbond ability and with a third creature using a warband ability at the same time.)"
+            "rule": "702.94f",
+            "text": "(For example, a creature can't be paired with another creature using a warband ability and with a third creature using a regular soulbond ability at the same time.)"
         },
         {
             "#": "set: Lorado",
             "type": "replace",
-            "rule": "702.94f",
+            "rule": "702.94g",
             "find": "or it or the creature it’s paired with leaves the battlefield\\.",
             "replace": "it or the creature it's paired with leaves the battlefield; or (for warband) the turn ends."
         },
@@ -277,7 +269,7 @@
                 "text": "Dreamwalk",
                 "subrules": [
                     "Dreamwalk is an evasion ability that modifies the rules for the declare blockers step. (See rule 509, “Declare Blockers Step.”)",
-                    "A creature with dreamwalk can't be blocked by untapped creatures. Instead, the defending player can choose tapped creatures that he or she controls to block an attacking creature with dreamwalk.",
+                    "A creature with dreamwalk can't be blocked by untapped creatures. Instead, the defending player can choose tapped creatures they control to block an attacking creature with dreamwalk.",
                     "Dreamwalk does not allow tapped creatures to block creatures without dreamwalk.",
                     "Multiple instances of dreamwalk on the same creature are redundant."
                 ]
@@ -291,10 +283,10 @@
                 "subrules": [
                     "Premonition is a keyword that represents a static ability that functions while the card with premonition is in a player's hand. “Premonition N—[cost]” means “If you could begin to cast this card by putting it onto the stack from your hand and your library has at least N cards in it, you may pay [cost] and put it onto your library beneath the Nth card of your library. This card becomes face up in your library. This action doesn't use the stack.”",
                     "Cards that are put into a player's library by the premonition ability are put into the library face up. This is an exception to rule 401.2. Players should keep face up cards in an orientation separate from the orientation of cards in a library that are not face-up or otherwise easily visible to all players.",
-                    "As a face up card with premonition becomes the top card of a player's library, that player casts it without paying its mana cost if able. If that player can't, he or she turns the face up card face down instead and it becomes the top card of his or her library. It is no longer face up.",
+                    "As a face up card with premonition becomes the top card of a player's library, that player casts it without paying its mana cost if able. If that player can't, they turn the face up card face down instead and it becomes the top card of their library. It is no longer face up.",
                     "If a one-shot effect causes a player to reveal (or look at, see rule 701.14d), shuffle, or change the order of a card or cards in a library, at least one of which is face up, each such card is turned face down, and then the cards are revealed, shuffled, or reordered.",
                     "If a continuous effect causes a face up card to be revealed, that card is both revealed and is face up. If the card somehow ceases to be revealed, the card remains face up.",
-                    "If a one-shot effect causes a card to be put into the library “face up beneath the top N cards of [a player's] library,” that player puts that card into his or her library using the process described above."
+                    "If a one-shot effect causes a card to be put into the library “face up beneath the top N cards of [a player's] library,” that player puts that card into their library using the process described above."
                 ]
             }
         },
@@ -458,7 +450,7 @@
         {
             "#": "for Iun, World Reborn",
             "type": "replace",
-            "rule": "717.1",
+            "rule": "718.1",
             "find": "One card \\(Karn Liberated\\) restarts the game\\.",
             "replace": "Some cards allow a player to restart the game."
         }
