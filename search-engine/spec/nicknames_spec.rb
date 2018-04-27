@@ -1,10 +1,6 @@
 describe "Card nicknames" do
   include_context "db"
 
-  def cards_matching(&block)
-    db.cards.values.select(&block).map(&:name)
-  end
-
   # The name is unique
   it "is:shockland" do
     assert_search_results "is:shockland",
