@@ -70,6 +70,10 @@ class Indexer
       end
     end
 
+    if (card_data["subtypes"] || []).include?("Saga")
+      card_data["layout"] = "saga"
+    end
+
     # Some lands have weird nil cmc
     card_data["cmc"] ||= 0
 
