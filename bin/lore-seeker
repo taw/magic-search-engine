@@ -21,6 +21,7 @@ import shlex
 import signal
 import subprocess
 import time
+import traceback
 
 CRASH_NOTICE = """To: fenhl@fenhl.net
 From: {}@{}
@@ -38,21 +39,28 @@ def announce(args, *, wait=True, check=True, **kwargs):
     else:
         return subprocess.Popen(args, **kwargs)
 
-def notify_crash():
+def notify_crash(exc=None):
     whoami = subprocess.run(['whoami'], stdout=subprocess.PIPE, check=True).stdout.decode('utf-8').strip()
     hostname = subprocess.run(['hostname', '-f'], stdout=subprocess.PIPE, check=True).stdout.decode('utf-8').strip()
-    return subprocess.run(['ssmtp', 'fenhl@fenhl.net'], input=CRASH_NOTICE.format(whoami, hostname).encode('utf-8'), check=True)
+    mail_text = CRASH_NOTICE.format(whoami, hostname)
+    if exc is not None:
+        mail_text += '\n' + traceback.format_exc()
+    return subprocess.run(['ssmtp', 'fenhl@fenhl.net'], input=mail_text.encode('utf-8'), check=True)
 
 def run():
-    stage = gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path
-    announce(['git', 'reset-to-remote', '--branch=lore-seeker'], cwd=str(stage))
-    announce(['git', 'clean', '-d', '--force'], cwd=str(stage))
-    announce(['rake', 'rules:update'], cwd=str(stage))
-    announce(['bin/patch-mtg-json'], cwd=str(stage))
-    #TODO send reload command to Discord bot
-    announce(['rake', 'index'], cwd=str(stage))
-    announce(['bundle', 'install'], cwd=str(stage / 'search-engine'))
-    announce(['bundle', 'install'], cwd=str(stage / 'frontend'))
+    try:
+        stage = gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path
+        announce(['git', 'reset-to-remote', '--branch=lore-seeker'], cwd=str(stage))
+        announce(['git', 'clean', '-d', '--force'], cwd=str(stage))
+        announce(['rake', 'rules:update'], cwd=str(stage))
+        announce(['bin/patch-mtg-json'], cwd=str(stage))
+        #TODO send reload command to Discord bot
+        announce(['rake', 'index'], cwd=str(stage))
+        announce(['bundle', 'install'], cwd=str(stage / 'search-engine'))
+        announce(['bundle', 'install'], cwd=str(stage / 'frontend'))
+    except Exception as e:
+        notify_crash(e)
+        raise
     with open('/var/www/loreseeker.fenhl.net/access.log', 'a') as access_log:
         lore_seeker = announce(['bundle', 'exec', 'rails', 'server', '-p', '18803'], cwd=str(stage / 'frontend'), stdout=access_log, stderr=access_log, wait=False)
         with PIDFILE_PATH.open('w') as pidfile:
