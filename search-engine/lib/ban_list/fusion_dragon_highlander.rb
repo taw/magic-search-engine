@@ -1,4 +1,4 @@
-BanList.for_format("custom commander") do
+BanList.for_format("fusion dragon highlander") do
   format_start(
     nil,
     "Dreamheart Mox" => "banned",
