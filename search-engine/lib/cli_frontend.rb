@@ -5,7 +5,7 @@ class CLIFrontend
     @db = CardDatabase.load
   end
 
-  def run!(verbose, query_string)
+  def run!(verbose, exact_names, query_string)
     query = Query.new(query_string)
     results = @db.search(query)
 
@@ -15,13 +15,15 @@ class CLIFrontend
     end
 
     if verbose
-      print_results!(results)
+      print_results!(results, exact_names)
+    elsif exact_names
+      puts results.printings.map(&:exact_name).uniq
     else
       puts results.card_names
     end
   end
 
-  def print_results!(results)
+  def print_results!(results, exact_names)
     cards = {}
     results.printings.each do |card_printing|
       (cards[card_printing.name] ||= []) << card_printing
@@ -39,7 +41,7 @@ class CLIFrontend
           end
         end
       end
-      puts [card.name, card.mana_cost].compact.join(" ")
+      puts [exact_names ? card.exact_name : card.name, card.mana_cost].compact.join(" ")
       puts "[#{codes.join(" ")}]"
       puts card.typeline
       puts "#{card.reminder_text}" if card.reminder_text

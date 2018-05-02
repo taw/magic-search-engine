@@ -68,7 +68,7 @@ class CardPrinting
   %W[block_code block_name online_only?].each do |m|
     eval("def #{m}; @set.#{m}; end")
   end
-  %W[name names layout colors mana_cost reserved types cmc text power
+  %W[name exact_name names layout colors mana_cost reserved types cmc text power
     toughness loyalty extra color_identity has_multiple_parts? typeline
     first_release_date last_release_date printings life hand rulings
     secondary foreign_names foreign_names_normalized mana_hash funny color_indicator

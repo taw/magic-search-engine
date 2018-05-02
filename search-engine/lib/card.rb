@@ -11,7 +11,7 @@ class Card
   attr_reader :data, :printings
   attr_writer :printings # For db subset
 
-  attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
+  attr_reader :name, :exact_name, :names, :layout, :colors, :mana_cost, :reserved, :types
   attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
   attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :foreign_names_normalized, :stemmed_name
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :related
@@ -20,6 +20,7 @@ class Card
   def initialize(data)
     @printings = []
     @name = normalize_name(data["name"])
+    @exact_name = data["name"]
     @stemmed_name = @name.downcase.gsub(/s\b/, "").tr("-", " ")
     @names = data["names"]&.map{|n| normalize_name(n)}
     @layout = data["layout"]
