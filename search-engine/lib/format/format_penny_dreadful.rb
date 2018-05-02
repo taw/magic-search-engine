@@ -20,7 +20,7 @@ class FormatPennyDreadful < FormatVintage
   def self.load_cards
     cards_file = (Pathname(__dir__) + "../../../index/penny_dreadful_legal_cards.txt")
     cards_file.readlines.map(&:chomp).flat_map{|name|
-      name.tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu").split(%r[\s*//\s*])
+      name.split(%r[\s*//\s*])
     }.to_set
   end
 

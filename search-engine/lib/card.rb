@@ -19,9 +19,9 @@ class Card
 
   def initialize(data)
     @printings = []
-    @name = normalize_name(data["name"])
-    @stemmed_name = @name.downcase.gsub(/s\b/, "").tr("-", " ")
-    @names = data["names"]&.map{|n| normalize_name(n)}
+    @name = data["name"]
+    @stemmed_name = normalize_name(@name).downcase.gsub(/s\b/, "").tr("-", " ")
+    @names = data["names"]
     @layout = data["layout"]
     @colors = data["colors"] || ""
     @text = (data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")

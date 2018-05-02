@@ -35,7 +35,7 @@ describe "Indexer Fixes Test" do
       "Kjeldoran Dead",
       "Kjeldoran Pride",
       "Lat-Nam's Legacy",
-      "Legions of Lim-Dul",
+      "Legions of Lim-Dûl",
       "Mistfolk",
       "Orcish Lumberjack",
       "Phantasmal Fiend",
