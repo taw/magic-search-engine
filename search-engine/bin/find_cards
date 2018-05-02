@@ -1,18 +1,11 @@
 #!/usr/bin/env ruby
 
+require 'trollop'
 require_relative "../lib/cli_frontend"
 
-# If it gets any more complex than this, just use trollop
-if ARGV[0] == "-v"
-  ARGV.shift
-  verbose = true
-else
-  verbose = false
+opts = Trollop::options do
+  opt :exact_names, "don't normalize card names like Séance"
+  opt :verbose, "print more info about each card", :short => 'v'
 end
 
-if ARGV.size == 0
-  STDERR.puts "Usage: #{$0} [-v] <query>"
-  exit 1
-end
-
-CLIFrontend.new.run!(verbose, ARGV.join(" "))
+CLIFrontend.new.run!(opts[:verbose], opts[:exact_names], ARGV.join(" "))
