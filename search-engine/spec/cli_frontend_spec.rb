@@ -172,7 +172,7 @@ describe "CLI Frontend" do
   def assert_cli(**args)
     expected_output = strip_indent(args[:output])
     expected_error  = strip_indent(args[:error])
-    out, err = capture_io{ cli.run!(args[:verbose], args[:search]) }
+    out, err = capture_io{ cli.run!(args[:verbose], false, args[:search]) }
     err.should eq(expected_error)
     out.should eq(expected_output)
   end
