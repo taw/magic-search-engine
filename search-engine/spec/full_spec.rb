@@ -407,6 +407,18 @@ describe "Full Database Test" do
     assert_search_equal "not:unique", "-is:unique"
   end
 
+  it "Oracle unicode" do
+    assert_search_equal %Q[o:"Lim-Dûl"], %Q[o:"Lim-Dul"]
+    assert_search_results %Q[o:"Lim-Dul"],
+      "Lim-Dûl's Cohort",
+      "Lim-Dûl's Hex",
+      "Lim-Dûl's High Guard",
+      "Lim-Dûl's Paladin",
+      "Oath of Lim-Dûl"
+    lim_duls_cohort = db.search("Lim-Dûl's Cohort").printings[0]
+    lim_duls_cohort.text.should eq("Whenever Lim-Dûl's Cohort blocks or becomes blocked by a creature, that creature can't be regenerated this turn.")
+  end
+
   def legality_information(name, date=nil)
     db.cards[name.downcase].legality_information(date)
   end
