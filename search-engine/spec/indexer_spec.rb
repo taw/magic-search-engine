@@ -68,23 +68,12 @@ describe "Indexer hacks" do
   end
 
   it "Æ" do
-    # They happen in flavor (should they?) and in foreign names
     bad_characters = /Æ/i
     db.printings.each do |printing|
       printing.name.should_not match(bad_characters)
       printing.text.should_not match(bad_characters)
       printing.artist.should_not match(bad_characters)
-    end
-  end
-
-  # This is in process of changing...
-  it "Other questionable characters" do
-    # They happen in flavor (should they?) and in foreign names
-    bad_characters = /[ÆÄàáâäèéêíõöúûü]/i
-    db.printings.each do |printing|
-      # printing.name.should_not match(bad_characters)
-      printing.text.should_not match(bad_characters)
-      printing.artist.should_not match(bad_characters)
+      printing.flavor.should_not match(bad_characters)
     end
   end
 end

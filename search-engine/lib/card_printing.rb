@@ -1,6 +1,6 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date
-  attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :border, :timeshifted
+  attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border, :timeshifted
   attr_reader :rarity_code
 
   # Performance cache of derived information
@@ -20,7 +20,9 @@ class CardPrinting
     @number = data["number"]
     @multiverseid = data["multiverseid"]
     @artist_name = data["artist"]
-    @flavor = data["flavor"] || ""
+    @flavor = (data["flavor"] || "").gsub("Æ", "Ae").gsub("æ", "ae") # Ae ligature is too stupid so normalize it
+    @flavor_normalized = @flavor.tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
+    @flavor_normalized = @flavor if @flavor_normalized == @flavor # Memory saving trick
     @border = data["border"] || @set.border
     @timeshifted = data["timeshifted"] || false
     rarity = data["rarity"]
@@ -68,7 +70,7 @@ class CardPrinting
   %W[block_code block_name online_only?].each do |m|
     eval("def #{m}; @set.#{m}; end")
   end
-  %W[name names layout colors mana_cost reserved types cmc text power
+  %W[name names layout colors mana_cost reserved types cmc text text_normalized power
     toughness loyalty extra color_identity has_multiple_parts? typeline
     first_release_date last_release_date printings life hand rulings
     secondary foreign_names foreign_names_normalized mana_hash funny color_indicator

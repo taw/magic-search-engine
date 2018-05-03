@@ -111,4 +111,9 @@ describe "Time Spiral block" do
     assert_search_include "pow>=-2", "Char-Rumbler"
     assert_search_exclude "pow>-1", "Char-Rumbler"
   end
+
+  it "oracle unicode" do
+    assert_search_results %Q[ft:"Lim-Dûl"], "Drudge Reavers"
+    assert_search_results %Q[ft:"Lim-Dul"], "Drudge Reavers"
+  end
 end
