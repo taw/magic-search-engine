@@ -12,24 +12,24 @@ class Card
   attr_writer :printings # For db subset
 
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
-  attr_reader :partial_color_identity, :cmc, :text, :power, :toughness, :loyalty, :extra
+  attr_reader :partial_color_identity, :cmc, :text, :text_normalized, :power, :toughness, :loyalty, :extra
   attr_reader :hand, :life, :rulings, :secondary, :foreign_names, :foreign_names_normalized, :stemmed_name
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :related
   attr_reader :reminder_text, :augment, :display_power, :display_toughness
 
   def initialize(data)
     @printings = []
-    @name = normalize_name(data["name"])
-    @stemmed_name = @name.downcase.gsub(/s\b/, "").tr("-", " ")
-    @names = data["names"]&.map{|n| normalize_name(n)}
+    @name = data["name"]
+    @stemmed_name = normalize_name(@name).downcase.gsub(/s\b/, "").tr("-", " ")
+    @names = data["names"]
     @layout = data["layout"]
     @colors = data["colors"] || ""
-    @text = (data["text"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
     @funny = data["funny"]
-    unless @funny
-      @text = @text.gsub(/\([^\(\)]*\)/, "")
-    end
+    @text = (data["text"] || "")
+    @text = @text.gsub(/\([^\(\)]*\)/, "") unless @funny
     @text = @text.sub(/\s*\z/, "").sub(/\A\s*/, "")
+    @text_normalized = @text.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
+    @text_normalized = @text if @text_normalized == @text # Memory saving trick
     @augment = !!(@text =~ /augment \{/i)
     @mana_cost = data["manaCost"] ? data["manaCost"].downcase : nil
     @reserved = data["reserved"] || false

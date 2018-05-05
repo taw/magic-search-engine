@@ -7,9 +7,9 @@ class ConditionOracle < ConditionSimple
 
   def match?(card)
     if @has_cardname
-      card.text =~ build_regexp(normalize_text(@text.gsub("~", card.name)))
+      card.text_normalized =~ build_regexp(normalize_text(@text.gsub("~", card.name)))
     else
-      card.text =~ @regexp
+      card.text_normalized =~ @regexp
     end
   end
 

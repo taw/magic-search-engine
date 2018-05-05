@@ -52,18 +52,18 @@ describe "Time Spiral block" do
     assert_search_results "Dralnu Lich Lord", "Dralnu, Lich Lord"
     assert_search_results "Dralnu, Lich Lord", "Dralnu, Lich Lord"
     assert_search_results "Dralnu , Lich Lord", "Dralnu, Lich Lord"
-    assert_search_results "Dandân", "Dandan"
-    assert_search_results "Dandan", "Dandan"
+    assert_search_results "Dandân", "Dandân"
+    assert_search_results "Dandan", "Dandân"
     assert_search_results "Cutthroat il-Dal", "Cutthroat il-Dal"
     assert_search_results "Cutthroat il Dal", "Cutthroat il-Dal"
     assert_search_results "Cutthroat ildal", "Cutthroat il-Dal" # Thanks to spelling corrections
-    assert_search_results "Lim-Dûl the Necromancer", "Lim-Dul the Necromancer"
-    assert_search_results "Lim-Dul the Necromancer", "Lim-Dul the Necromancer"
-    assert_search_results "Lim Dul the Necromancer", "Lim-Dul the Necromancer"
-    assert_search_results "Limdul the Necromancer", "Lim-Dul the Necromancer"
-    assert_search_results "limdul necromancer", "Lim-Dul the Necromancer"
-    assert_search_results "lim dul necromancer", "Lim-Dul the Necromancer"
-    assert_search_results "lim dul necromancer", "Lim-Dul the Necromancer"
+    assert_search_results "Lim-Dûl the Necromancer", "Lim-Dûl the Necromancer"
+    assert_search_results "Lim-Dul the Necromancer", "Lim-Dûl the Necromancer"
+    assert_search_results "Lim Dul the Necromancer", "Lim-Dûl the Necromancer"
+    assert_search_results "Limdul the Necromancer", "Lim-Dûl the Necromancer"
+    assert_search_results "limdul necromancer", "Lim-Dûl the Necromancer"
+    assert_search_results "lim dul necromancer", "Lim-Dûl the Necromancer"
+    assert_search_results "lim dul necromancer", "Lim-Dûl the Necromancer"
     assert_search_results "Sarpadian Empires, Vol. VII", "Sarpadian Empires, Vol. VII"
     assert_search_results "sarpadian empires vol vii", "Sarpadian Empires, Vol. VII"
     assert_search_results "sarpadian empires", "Sarpadian Empires, Vol. VII"
@@ -110,5 +110,10 @@ describe "Time Spiral block" do
     assert_search_include "pow>=-1", "Char-Rumbler"
     assert_search_include "pow>=-2", "Char-Rumbler"
     assert_search_exclude "pow>-1", "Char-Rumbler"
+  end
+
+  it "oracle unicode" do
+    assert_search_results %Q[ft:"Lim-Dûl"], "Drudge Reavers"
+    assert_search_results %Q[ft:"Lim-Dul"], "Drudge Reavers"
   end
 end

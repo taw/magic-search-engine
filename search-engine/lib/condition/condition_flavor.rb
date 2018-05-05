@@ -1,11 +1,12 @@
 class ConditionFlavor < ConditionSimple
   def initialize(flavor)
     @flavor = flavor
-    @flavor_rx = Regexp.new("\\b(?:" + Regexp.escape(flavor.downcase) + ")\\b", Regexp::IGNORECASE)
+    flavor_normalized = @flavor.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")    
+    @flavor_rx = Regexp.new("\\b(?:" + Regexp.escape(flavor_normalized) + ")\\b", Regexp::IGNORECASE)
   end
 
   def match?(card)
-    card.flavor =~ @flavor_rx
+    card.flavor_normalized =~ @flavor_rx
   end
 
   def to_s

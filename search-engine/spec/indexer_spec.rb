@@ -1,4 +1,4 @@
-describe "Inedxer hacks" do
+describe "Indexer hacks" do
   include_context "db"
   let(:index_path) { Pathname(__dir__) + "../../index/index.json" }
   let(:index_json) { index_path.read }
@@ -67,13 +67,13 @@ describe "Inedxer hacks" do
     index_json.should_not include("&amp;")
   end
 
-  it "Æ and other bad characters" do
-    # They happen in flavor (should they?) and in foreign names
-    bad_characters = /[ÆÄàáâäèéêíõöúûü]/i
+  it "Æ" do
+    bad_characters = /Æ/i
     db.printings.each do |printing|
       printing.name.should_not match(bad_characters)
       printing.text.should_not match(bad_characters)
       printing.artist.should_not match(bad_characters)
+      printing.flavor.should_not match(bad_characters)
     end
   end
 end

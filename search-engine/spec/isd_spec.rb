@@ -75,13 +75,13 @@ describe "Innistrad Block" do
   end
 
   it "! and unicode" do
-    "seance".should return_cards("Seance")
-    "séance".should return_cards("Seance")
-    "Seance".should return_cards("Seance")
-    "Séance".should return_cards("Seance")
-    "!seance".should return_cards("Seance")
-    "!séance".should return_cards("Seance")
-    "!Seance".should return_cards("Seance")
-    "!Séance".should return_cards("Seance")
+    "seance".should return_cards("Séance")
+    "séance".should return_cards("Séance")
+    "Seance".should return_cards("Séance")
+    "Séance".should return_cards("Séance")
+    "!seance".should return_cards("Séance")
+    "!séance".should return_cards("Séance")
+    "!Seance".should return_cards("Séance")
+    "!Séance".should return_cards("Séance")
   end
 end
