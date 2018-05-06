@@ -5,6 +5,7 @@ end
 
 require_relative "../lib/card_database"
 require_relative "../lib/cli_frontend"
+require_relative "../lib/sealed"
 require "pry"
 
 RSpec.configure do |config|
