@@ -85,6 +85,62 @@ describe Pack do
 
   # TODO: dfc / aftermath / meld cards
 
+  context "Masterpieces" do
+    let(:pack) { Pack.for(db, set_code) }
+    let(:masterpieces) { pack.masterpieces }
+    let(:expected_masterpieces) do
+      db.sets[masterpieces_set_code]
+        .printings
+        .select{|c| masterpieces_range === c.number.to_i }
+    end
+
+    context "bfz" do
+      let(:set_code) { "bfz" }
+      let(:masterpieces_set_code) { "exp" }
+      let(:masterpieces_range) { 1..25 }
+      it { masterpieces.should eq(expected_masterpieces) }
+    end
+
+    context "ogw" do
+      let(:set_code) { "ogw" }
+      let(:masterpieces_set_code) { "exp" }
+      let(:masterpieces_range) { 26..45 }
+      it { masterpieces.should eq(expected_masterpieces) }
+    end
+
+    context "kld" do
+      let(:set_code) { "kld" }
+      let(:masterpieces_set_code) { "mps" }
+      let(:masterpieces_range) { 1..30 }
+      it { masterpieces.should eq(expected_masterpieces) }
+    end
+
+    context "aer" do
+      let(:set_code) { "aer" }
+      let(:masterpieces_set_code) { "mps" }
+      let(:masterpieces_range) { 31..54 }
+      it { masterpieces.should eq(expected_masterpieces) }
+    end
+
+    context "akh" do
+      let(:set_code) { "akh" }
+      let(:masterpieces_set_code) { "mps_akh" }
+      let(:masterpieces_range) { 1..30 }
+      it { masterpieces.should eq(expected_masterpieces) }
+    end
+
+    context "hou" do
+      let(:set_code) { "hou" }
+      let(:masterpieces_set_code) { "mps_akh" }
+      let(:masterpieces_range) { 31..54 }
+      it { masterpieces.should eq(expected_masterpieces) }
+    end
+  end
+
+  context "Planeswalker decks card are not in boosters" do
+    # TODO: tests
+  end
+
   it "Every card can appear in a pack" do
     db.sets.each do |set_code, set|
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
