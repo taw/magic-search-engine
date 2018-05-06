@@ -1,15 +1,17 @@
 # Ignoring marketing/token card
 class Pack
-  attr_reader :foil, :distribution
-  def initialize(set, distribution, foil:)
+  attr_reader :has_random_foil, :has_guaranteed_foil, :distribution
+  def initialize(set, distribution, has_random_foil: false, has_guaranteed_foil: false)
     @set = set
     @distribution = distribution
-    @foil = foil
+    @has_random_foil = has_random_foil
+    @has_guaranteed_foil = has_guaranteed_foil
     @pools = {}
   end
 
   def open
     cards = []
+    cards.push random_foil if @has_guaranteed_foil
     @distribution.each do |category, count|
       if category == :common and roll_for_foil
         cards.push *pool(category).sample(count - 1)
@@ -24,7 +26,7 @@ class Pack
   # Based on https://www.reddit.com/r/magicTCG/comments/snzvt/simple_avr_sealed_simulator_i_just_made/c4fk0sr/
   # Details probably vary by set and I don't have too much trust in any of these numbers anyway
   def roll_for_foil
-    @foil and rand < 0.25
+    @has_random_foil and rand < 0.25
   end
 
   def random_foil
@@ -73,10 +75,14 @@ class Pack
 
     # https://mtg.gamepedia.com/Booster_pack
     case set_code
+    when "ug"
+      Pack.new(set, {basic: 1, common: 6, uncommon: 2, rare: 1})
+    when "ai", "ch"
+      Pack.new(set, {common: 8, uncommon: 3, rare: 1})
     when "7e", "8e", "9e", "10e"
-      Pack.new(set, {basic: 1, common: 10, uncommon: 3, rare: 1}, foil: true)
+      Pack.new(set, {basic: 1, common: 10, uncommon: 3, rare: 1}, has_random_foil: true)
     when "lw", "mt", "shm", "eve"
-      Pack.new(set, {common_or_basic: 11, uncommon: 3, rare: 1}, foil: true)
+      Pack.new(set, {common_or_basic: 11, uncommon: 3, rare: 1}, has_random_foil: true)
     # Default configuration before mythics
     # Back then there was no crazy variation
     # 6ed came out after foils started, but didn't have foils
@@ -84,7 +90,7 @@ class Pack
       "mr", "vi", "wl",
       "tp", "sh", "ex",
       "us"
-      Pack.new(set, {common_or_basic: 11, uncommon: 3, rare: 1}, foil: false)
+      Pack.new(set, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Pre-mythic, with foils
     when "ul", "ud",
       "mm", "pr", "ne",
@@ -95,7 +101,7 @@ class Pack
       "chk", "bok", "sok",
       "rav", "gp", "di",
       "cs"
-      Pack.new(set, {common_or_basic: 11, uncommon: 3, rare: 1}, foil: true)
+      Pack.new(set, {common_or_basic: 11, uncommon: 3, rare: 1}, has_random_foil: true)
     # Default configuration since mythics got introduced
     # A lot of sets don't fit this
     when "m10", "m11", "m12", "m13", "m14", "m15",
@@ -105,8 +111,11 @@ class Pack
       "avr",
       "rtr", "gtc",
       "ths", "bng", "jou",
-      "ktk", "frf", "dtk"
-      Pack.new(set, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, foil: true)
+      "ktk", "frf", "dtk",
+      "tpr"
+      Pack.new(set, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true)
+    when "mma", "mm2", "mm3", "ema", "ima", "a25"
+      Pack.new(set, {common: 10, uncommon: 3, rare_or_mythic: 1}, has_guaranteed_foil: true)
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this

@@ -9,7 +9,7 @@ describe Pack do
       type = set.type
       type = "collector edition" if ["ced", "cedi"].include?(set_code)
       type = "tsts" if set_code == "tsts"
-      case set.type
+      case type
       when "expansion", "core", "un", "reprint"
         if pack
           pack.should be_a(Pack), "#{set_pp} should have packs"
@@ -31,7 +31,8 @@ describe Pack do
   it "Every set with foils has all appropriate categories" do
     db.sets.each do |set_code, set|
       pack = Pack.for(db, set_code)
-      next unless pack and pack.foil
+      next unless pack
+      next unless pack.has_random_foil or pack.has_guaranteed_foil
       pack.pool(:rare_or_mythic).should_not be_empty
       pack.pool(:uncommon).should_not be_empty
       pack.pool(:common).should_not be_empty
