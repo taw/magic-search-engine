@@ -67,6 +67,8 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsFront.new
     when "back"
       @conds << ConditionIsBack.new
+    when "booster"
+      @conds << ConditionIsBooster.new
     when "promo"
       @conds << ConditionIsPromo.new
     when "reprint"
