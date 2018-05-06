@@ -15,4 +15,4 @@ if ARGV.size == 0
   exit 1
 end
 
-CLIFrontend.new.run!(verbose, ARGV.join(" "))
+CLIFrontend.new.call(verbose, ARGV.join(" "))

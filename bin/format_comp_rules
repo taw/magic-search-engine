@@ -10,7 +10,7 @@ class String
 end
 
 class FormatCompRules
-  def run!
+  def call
     @output = []
     @output << "= content_for(:disable_turbolinks) do"
     @output << "  true"
@@ -181,4 +181,4 @@ class FormatCompRules
   end
 end
 
-FormatCompRules.new.run!
+FormatCompRules.new.call
