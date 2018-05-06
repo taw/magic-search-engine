@@ -8,8 +8,10 @@ if ARGV.size == 0
   STDERR.puts "Examples:"
   STDERR.puts "  #{$0} 6xM11"
   STDERR.puts "  #{$0} NPH MBS SOM"
-  STDERR.puts "Or to see list of supported packs:"
+  STDERR.puts "To see list of supported packs:"
   STDERR.puts "  #{$0} --list"
+  STDERR.puts "To see list of packs which are not implemented yet:"
+  STDERR.puts "  #{$0} --unsupported"
   exit 1
 end
 
@@ -17,6 +19,14 @@ db = CardDatabase.load
 
 if ARGV[0] == "--list"
   db.sets.values.select{|set| Pack.for(db, set.code)}.each do |set|
+    puts "%3s %s" % [set.code.upcase, set.name]
+  end
+elsif ARGV[0] == "--unsupported"
+  db.sets.values.select{|set|
+    %W[expansion core un reprint].include?(set.type) and
+    !%W[ced cedi tsts].include?(set.code) and
+    !Pack.for(db, set.code)
+  }.each do |set|
     puts "%3s %s" % [set.code.upcase, set.name]
   end
 else
