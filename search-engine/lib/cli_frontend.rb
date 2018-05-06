@@ -5,7 +5,7 @@ class CLIFrontend
     @db = CardDatabase.load
   end
 
-  def run!(verbose, query_string)
+  def call(verbose, query_string)
     query = Query.new(query_string)
     results = @db.search(query)
 
