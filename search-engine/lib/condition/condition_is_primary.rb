@@ -1,6 +1,6 @@
 class ConditionIsPrimary < ConditionSimple
   def match?(card)
-    !card.secondary
+    card.primary?
   end
 
   def to_s

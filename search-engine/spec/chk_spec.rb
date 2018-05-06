@@ -31,6 +31,10 @@ describe "Champions of Kamigawa" do
     )
   end
 
+  it "is:front" do
+    "is:front".should equal_search "*"
+  end
+
   it "is:commander" do
     "is:commander".should equal_search "is:primary t:legendary t:creature"
   end
