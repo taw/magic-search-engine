@@ -1,11 +1,13 @@
 # Ignoring marketing/token card
 class Pack
-  attr_reader :has_random_foil, :has_guaranteed_foil, :distribution
-  def initialize(set, distribution, has_random_foil: false, has_guaranteed_foil: false)
+  attr_reader :has_random_foil, :has_guaranteed_foil, :distribution, :masterpieces, :planeswalker_deck_filter
+  def initialize(set, distribution, has_random_foil: false, has_guaranteed_foil: false, masterpieces: nil, planeswalker_deck_filter: nil)
     @set = set
     @distribution = distribution
     @has_random_foil = has_random_foil
     @has_guaranteed_foil = has_guaranteed_foil
+    @masterpieces = masterpieces
+    @planeswalker_deck_filter = planeswalker_deck_filter
     @pools = {}
   end
 
@@ -29,14 +31,23 @@ class Pack
     @has_random_foil and rand < 0.25
   end
 
+  # Wo don't have anywhere near reliable information
+  # Masterpieces supposedly are in 1/144 booster (then 1/129 for Amonkhet)
+  #
+  # Let's just assume they replace common foils
+  #
+  # These numbers could be totally wrong
   def random_foil
-    i = rand(16)
-    if i == 0
+    i = rand(36)
+    if i < 8
       pool(:rare_or_mythic).sample
-    elsif i == 1
+    elsif i < 16
       pool(:basic_fallover_to_common).sample
-    elsif i <= 4
+    elsif i < 32
       pool(:uncommon).sample
+    elsif i < 36 and @masterpieces
+      # This is 1:128, so more like Amonkhet odds
+      @masterpieces.sample
     else
       pool(:common).sample
     end
@@ -44,8 +55,9 @@ class Pack
 
   def physical_cards
     @set.printings.select do |card|
+      next false if @planeswalker_deck_filter and card.number.to_i > @planeswalker_deck_filter
       next true unless card.has_multiple_parts?
-      next !card.secondary if card.layout == "flip"
+      next !card.secondary if card.layout == "flip" or card.layout == "aftermath"
       next (card.number =~ /a/) if card.layout == "split"
       next true if card.name == "B.F.M. (Big Furry Monster)"
       next true if card.name == "B.F.M. (Big Furry Monster, Right Side)"
@@ -85,6 +97,45 @@ class Pack
 
   def cards_in_nonfoil_pools
     distribution.keys.flat_map{|k| pool(k)}.uniq
+  end
+
+  def self.masterpieces_for(db, set_code)
+    case set_code
+    when "bfz"
+      db.sets["exp"].printings.select{|c| (1..25) === c.number.to_i }
+    when "ogw"
+      db.sets["exp"].printings.select{|c| (26..45) === c.number.to_i }
+    when "kld"
+      db.sets["mps"].printings.select{|c| (1..30) === c.number.to_i }
+    when "aer"
+      db.sets["mps"].printings.select{|c| (31..54) === c.number.to_i }
+    when "akh"
+      db.sets["mps_akh"].printings.select{|c| (1..30) === c.number.to_i }
+    when "hou"
+      db.sets["mps_akh"].printings.select{|c| (31..54) === c.number.to_i }
+    else
+      nil
+    end
+  end
+
+  def self.planeswalker_deck_filter_for(db, set_code)
+    case set_code
+    when "kld"
+      264
+    when "aer"
+      184
+    when "akh"
+      269
+    when "hou"
+      199
+    when "xln"
+      279
+    when "rix"
+      196
+    # This also matches Firesong and Sunspeaker buy-a-box promo
+    when "dom"
+      269
+    end
   end
 
   def self.for(db, set_code)
@@ -135,6 +186,17 @@ class Pack
       Pack.new(set, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true)
     when "mma", "mm2", "mm3", "ema", "ima", "a25"
       Pack.new(set, {common: 10, uncommon: 3, rare_or_mythic: 1}, has_guaranteed_foil: true)
+    when "bfz", "ogw"
+      Pack.new(set,
+        {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1},
+        has_random_foil: true,
+        masterpieces: masterpieces_for(db, set_code))
+    when "kld", "aer", "akh", "hou"
+      Pack.new(set,
+        {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1},
+        has_random_foil: true,
+        masterpieces: masterpieces_for(db, set_code),
+        planeswalker_deck_filter: planeswalker_deck_filter_for(db, set_code))
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this
