@@ -54,14 +54,10 @@ class Pack
   end
 
   def physical_cards
-    @set.printings.select do |card|
-      next false if @planeswalker_deck_filter and card.number.to_i > @planeswalker_deck_filter
-      next true unless card.has_multiple_parts?
-      next !card.secondary if card.layout == "flip" or card.layout == "aftermath"
-      next (card.number =~ /a/) if card.layout == "split"
-      next true if card.name == "B.F.M. (Big Furry Monster)"
-      next true if card.name == "B.F.M. (Big Furry Monster, Right Side)"
-      raise "Not sure if #{card.name} is a physical card"
+    @set.physical_cards.map do |card|
+      card.front[0]
+    end.select do |card|
+      !@planeswalker_deck_filter or card.number.to_i > @planeswalker_deck_filter
     end
   end
 

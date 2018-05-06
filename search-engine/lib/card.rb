@@ -70,7 +70,7 @@ class Card
   end
 
   def back?
-    !@front
+    !front?
   end
 
   def primary?
