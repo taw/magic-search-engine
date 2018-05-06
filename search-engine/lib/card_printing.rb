@@ -43,10 +43,19 @@ class CardPrinting
         "m15"
       end
     end
+    @exclude_from_boosters = data["exclude_from_boosters"]
 
     # Performance cache
     @stemmed_name = @card.stemmed_name
     @set_code = @set.code
+  end
+
+  def in_boosters?
+    @set.has_boosters? and !@exclude_from_boosters
+  end
+
+  def exclude_from_boosters?
+    !!@exclude_from_boosters
   end
 
   def rarity

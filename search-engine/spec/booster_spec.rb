@@ -17,6 +17,31 @@ describe "is:booster" do
   end
 
   it "card is in boosters" do
-    # TODO
+    db.sets.each do |set_code, set|
+      # Exclude planesawlker deck cards
+      case set_code
+      when "kld"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=264"
+      when "aer"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=184"
+      when "akh"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=269"
+      when "hou"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=199"
+      when "xln"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=279"
+      when "rix"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=196"
+      when "dom"
+        # This also excludes Firesong and Sunspeaker buy-a-box promo
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=269"
+      else
+        if set.has_boosters?
+          assert_search_equal "e:#{set_code} is:booster", "e:#{set_code}"
+        else
+          assert_search_equal "e:#{set_code} -is:booster", "e:#{set_code}"
+        end
+      end
+    end
   end
 end

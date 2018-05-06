@@ -57,7 +57,7 @@ class Pack
     @set.physical_cards.map do |card|
       card.front[0]
     end.select do |card|
-      !@planeswalker_deck_filter or card.number.to_i > @planeswalker_deck_filter
+      !card.exclude_from_boosters?
     end
   end
 
@@ -114,26 +114,6 @@ class Pack
     end
   end
 
-  def self.planeswalker_deck_filter_for(db, set_code)
-    case set_code
-    when "kld"
-      264
-    when "aer"
-      184
-    when "akh"
-      269
-    when "hou"
-      199
-    when "xln"
-      279
-    when "rix"
-      196
-    # This also matches Firesong and Sunspeaker buy-a-box promo
-    when "dom"
-      269
-    end
-  end
-
   def self.for(db, set_code)
     set = db.sets[set_code.downcase]
     raise "Invalid set code #{set_code}" unless set
@@ -182,17 +162,11 @@ class Pack
       Pack.new(set, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true)
     when "mma", "mm2", "mm3", "ema", "ima", "a25"
       Pack.new(set, {common: 10, uncommon: 3, rare_or_mythic: 1}, has_guaranteed_foil: true)
-    when "bfz", "ogw"
+    when "bfz", "ogw", "kld", "aer", "akh", "hou"
       Pack.new(set,
         {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1},
         has_random_foil: true,
         masterpieces: masterpieces_for(db, set_code))
-    when "kld", "aer", "akh", "hou"
-      Pack.new(set,
-        {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1},
-        has_random_foil: true,
-        masterpieces: masterpieces_for(db, set_code),
-        planeswalker_deck_filter: planeswalker_deck_filter_for(db, set_code))
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this
