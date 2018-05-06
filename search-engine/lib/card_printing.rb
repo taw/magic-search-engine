@@ -73,9 +73,10 @@ class CardPrinting
   %W[name names layout colors mana_cost reserved types cmc text text_normalized power
     toughness loyalty extra color_identity has_multiple_parts? typeline
     first_release_date last_release_date printings life hand rulings
-    secondary foreign_names foreign_names_normalized mana_hash funny color_indicator
+    foreign_names foreign_names_normalized mana_hash funny color_indicator
     related first_regular_release_date reminder_text augment
     display_power display_toughness
+    primary? secondary? front? back?
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
   end
