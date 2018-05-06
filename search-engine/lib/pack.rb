@@ -42,19 +42,30 @@ class Pack
     end
   end
 
+  def physical_cards
+    @set.printings.select do |card|
+      next true unless card.has_multiple_parts?
+      next !card.secondary if card.layout == "flip"
+      next (card.number =~ /a/) if card.layout == "split"
+      next true if card.name == "B.F.M. (Big Furry Monster)"
+      next true if card.name == "B.F.M. (Big Furry Monster, Right Side)"
+      raise "Not sure if #{card.name} is a physical card"
+    end
+  end
+
   def pool(category)
     @pools[category] ||= begin
       case category
       when :basic, :common, :uncommon, :rare
-        @set.printings.select{|c| c.rarity == category.to_s}
+        physical_cards.select{|c| c.rarity == category.to_s}
       # Rares 2x as frequent as mythics
       when :rare_or_mythic
-        @set.printings.select{|c| c.rarity == "rare"} * 2 +
-        @set.printings.select{|c| c.rarity == "mythic"}
+        physical_cards.select{|c| c.rarity == "rare"} * 2 +
+        physical_cards.select{|c| c.rarity == "mythic"}
       # In old sets commons and basics were printed on shared sheet
       when :common_or_basic
-        @set.printings.select{|c| c.rarity == "common"} +
-        @set.printings.select{|c| c.rarity == "basic"}
+        physical_cards.select{|c| c.rarity == "common"} +
+        physical_cards.select{|c| c.rarity == "basic"}
       # for foils
       when :basic_fallover_to_common
         if pool(:basic).empty?
@@ -66,6 +77,14 @@ class Pack
         raise "Unknown category #{category}"
       end
     end
+  end
+
+  def pool_size(category)
+    pool(category).uniq.size
+  end
+
+  def cards_in_nonfoil_pools
+    distribution.keys.flat_map{|k| pool(k)}.uniq
   end
 
   def self.for(db, set_code)

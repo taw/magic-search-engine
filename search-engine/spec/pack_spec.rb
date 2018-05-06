@@ -40,9 +40,48 @@ describe Pack do
     end
   end
 
-  # TODO: Flip cards
+  context "flip cards" do
+    it "Champions of Kamigawa" do
+      pack = Pack.for(db, "chk")
+      pack.cards_in_nonfoil_pools.size.should eq(88+89+110+20)
+      pack.pool_size(:rare_or_mythic).should eq(88)
+      # Brothers Yamazaki alt art
+      pack.pool_size(:uncommon).should eq(88+1)
+      pack.pool_size(:common).should eq(110)
+      pack.pool_size(:basic).should eq(20)
+    end
 
-  # TODO: Split cards
+    it "Betrayers of Kamigawa" do
+      pack = Pack.for(db, "bok")
+      pack.cards_in_nonfoil_pools.size.should eq(55+55+55)
+      pack.pool_size(:rare_or_mythic).should eq(55)
+      pack.pool_size(:uncommon).should eq(55)
+      pack.pool_size(:common).should eq(55)
+    end
+
+    it "Saviors of Kamigawa" do
+      pack = Pack.for(db, "sok")
+      pack.cards_in_nonfoil_pools.size.should eq(55+55+55)
+      pack.pool_size(:rare_or_mythic).should eq(55)
+      pack.pool_size(:uncommon).should eq(55)
+      pack.pool_size(:common).should eq(55)
+    end
+  end
+
+  context "split cards only appear as left side" do
+    it "Dissention" do
+      pack = Pack.for(db, "di")
+      pack.cards_in_nonfoil_pools.size.should eq(60+60+60)
+      # 5 rares are split
+      pack.pool_size(:rare_or_mythic).should eq(60)
+      # 5 rares are split
+      pack.pool_size(:uncommon).should eq(60)
+      pack.pool_size(:common).should eq(60)
+      # Only A side
+      pack.cards_in_nonfoil_pools.count{|c| c.number =~ /a/}.should eq(10)
+      pack.cards_in_nonfoil_pools.count{|c| c.number =~ /b/}.should eq(0)
+    end
+  end
 
   # TODO: dfc / aftermath / meld cards
 
@@ -51,8 +90,7 @@ describe Pack do
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = Pack.for(db, set_code)
       next unless pack
-      possible_nonfoil_cards_in_packs = pack.distribution.keys.flat_map{|k| pack.pool(k)}.uniq
-      possible_nonfoil_cards_in_packs.should match_array(set.printings),
+      pack.cards_in_nonfoil_pools.should match_array(pack.physical_cards),
         "All cards in #{set_pp} should be possible in its packs as nonfoil"
     end
   end
