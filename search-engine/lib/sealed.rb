@@ -5,10 +5,15 @@ class Sealed
     @packs = []
     pack_descriptors.each do |descriptor|
       if descriptor =~ /\A(\d+)x(.*)/
-        @packs << [$1.to_i, Pack[db, $2]]
+        count = $1.to_i
+        set_code = $2
       else
-        @packs << [1, Pack[db, descriptor]]
+        count = 1
+        set_code = descriptor
       end
+      pack = Pack.for(db, set_code)
+      raise "No pack for set #{set_code}" unless pack
+      @packs << [count, pack]
     end
   end
 
