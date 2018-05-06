@@ -5,24 +5,16 @@ describe Pack do
   it "Only sets of appropriate types have sealed packs" do
     db.sets.each do |set_code, set|
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
-      pack = Pack.for(db, set_code)
-      type = set.type
-      type = "collector edition" if ["ced", "cedi"].include?(set_code)
-      type = "tsts" if set_code == "tsts"
-      case type
-      when "expansion", "core", "un", "reprint"
+      # Indexer responsibility to set this flag
+      if set.has_boosters?
+        pack = Pack.for(db, set_code)
         if pack
           pack.should be_a(Pack), "#{set_pp} should have packs"
         else
           # TODO: pending
         end
-      when "duel deck", "board game deck", "from the vault", "promo", "commander",
-        "archenemy", "planechase", "premium deck", "masterpiece", "masters", "conspiracy",
-        "box", "vanguard", "starter", "collector edition", "tsts"
-        # Masterpieces and tsts are included in another set's packs
-        pack.should eq(nil), "#{set_pp} should not have packs"
       else
-        raise "Not sure if #{set_pp} should have packs or not"
+        pack.should eq(nil), "#{set_pp} should not have packs"
       end
     end
   end

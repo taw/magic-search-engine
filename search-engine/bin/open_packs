@@ -23,9 +23,7 @@ if ARGV[0] == "--list"
   end
 elsif ARGV[0] == "--unsupported"
   db.sets.values.select{|set|
-    %W[expansion core un reprint].include?(set.type) and
-    !%W[ced cedi tsts].include?(set.code) and
-    !Pack.for(db, set.code)
+    set.has_boosters? and !Pack.for(db, set.code)
   }.each do |set|
     puts "%3s %s" % [set.code.upcase, set.name]
   end

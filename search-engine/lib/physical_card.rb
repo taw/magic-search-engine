@@ -15,6 +15,8 @@ class PhysicalCard
   end
 
   # @front[0] uniquely determines @front / @back
+  # as does any non-nil @front[i]
+  # @back[0] doesn't, as two different meld cards can have same CardPrinting on the back
   def ==(other)
     other.instance_of?(PhysicalCard) and main_front == other.main_front and foil == other.foil
   end
@@ -31,7 +33,6 @@ class PhysicalCard
     # meld really doesn't fit this model, as we have one CardPrinting that's on two physical card backs
     # just fake something that works
     if card.back? and card.layout == "meld"
-      # binding.pry
       self.for(card.others[0], foil) 
     elsif !card.has_multiple_parts? or card.name == "B.F.M. (Big Furry Monster)" or card.name == "B.F.M. (Big Furry Monster, Right Side)"
       PhysicalCard.new([card], [], foil)
