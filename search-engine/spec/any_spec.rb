@@ -218,7 +218,7 @@ describe "Any queries" do
     end
 
     it "back" do
-      assert_search_equal "any:back", "is:back"
+      assert_search_equal "any:back", "is:back or o:back or ft:back or (back)"
     end
 
     it "promo" do

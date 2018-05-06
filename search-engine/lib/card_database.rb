@@ -7,6 +7,7 @@ require_relative "card_set"
 require_relative "card_printing"
 require_relative "query"
 require_relative "spelling_suggestions"
+require_relative "physical_card"
 
 class CardDatabase
   attr_reader :sets, :cards, :blocks, :artists

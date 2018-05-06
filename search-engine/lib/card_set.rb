@@ -31,4 +31,10 @@ class CardSet
   def hash
     @code.hash
   end
+
+  def physical_cards(foil=false)
+    @printings.map do |card|
+      PhysicalCard.for(card, foil)
+    end.uniq
+  end
 end
