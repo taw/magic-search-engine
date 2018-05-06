@@ -88,7 +88,7 @@ class Pack
   end
 
   def self.for(db, set_code)
-    set = db.sets[set_code]
+    set = db.sets[set_code.downcase]
     raise "Invalid set code #{set_code}" unless set
     set_code = set.code # Normalize
 
