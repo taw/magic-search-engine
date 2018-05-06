@@ -8,18 +8,26 @@ if ARGV.size == 0
   STDERR.puts "Examples:"
   STDERR.puts "  #{$0} 6xM11"
   STDERR.puts "  #{$0} NPH MBS SOM"
+  STDERR.puts "Or to see list of supported packs:"
+  STDERR.puts "  #{$0} --list"
   exit 1
 end
 
 db = CardDatabase.load
-cards = Sealed.new(db, *ARGV).call
 
-cards_with_counts = cards.group_by(&:name).map{|k,v| [k,v.count]}.sort
-count_width = cards_with_counts.map(&:last).map(&:to_s).map(&:size).max
-cards_with_counts.each do |name, count|
-  if count == 1
-    puts "#{' ' * count_width}  #{name}"
-  else
-    puts "%#{count_width}dx %s" % [count, name]
+if ARGV[0] == "--list"
+  db.sets.values.select{|set| Pack.for(db, set.code)}.each do |set|
+    puts "%3s %s" % [set.code.upcase, set.name]
+  end
+else
+  cards = Sealed.new(db, *ARGV).call
+  cards_with_counts = cards.group_by(&:name).map{|k,v| [k,v.count]}.sort
+  count_width = cards_with_counts.map(&:last).map(&:to_s).map(&:size).max
+  cards_with_counts.each do |name, count|
+    if count == 1
+      puts "#{' ' * count_width}  #{name}"
+    else
+      puts "%#{count_width}dx %s" % [count, name]
+    end
   end
 end
