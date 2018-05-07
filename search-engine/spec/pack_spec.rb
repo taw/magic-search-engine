@@ -60,7 +60,7 @@ describe Pack do
     end
   end
 
-  context "split cards only appear as left side" do
+  context "physical cards are properly setup" do
     it "Dissention" do
       pack = Pack.for(db, "di")
       pack.cards_in_nonfoil_pools.size.should eq(60+60+60)
@@ -69,9 +69,8 @@ describe Pack do
       # 5 rares are split
       pack.pool_size(:uncommon).should eq(60)
       pack.pool_size(:common).should eq(60)
-      # Only A side
-      pack.cards_in_nonfoil_pools.count{|c| c.number =~ /a/}.should eq(10)
-      pack.cards_in_nonfoil_pools.count{|c| c.number =~ /b/}.should eq(0)
+      # split cards setup correctly
+      pack.cards_in_nonfoil_pools.map(&:name).should include("Trial // Error")
     end
   end
 
@@ -138,7 +137,7 @@ describe Pack do
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = Pack.for(db, set_code)
       next unless pack
-      pack.cards_in_nonfoil_pools.should match_array(pack.physical_cards),
+      pack.cards_in_nonfoil_pools.should match_array(pack.physical_cards_in_boosters),
         "All cards in #{set_pp} should be possible in its packs as nonfoil"
     end
   end
