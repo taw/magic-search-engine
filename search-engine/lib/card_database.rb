@@ -87,6 +87,12 @@ class CardDatabase
     ].find{|s| s.size > 0} || Set[]
   end
 
+  def resolve_edition(edition)
+    editions = resolve_editions(edition).to_a
+    return editions[0] if editions.size <= 1
+    raise "Ambiguous set name #{edition}, matches #{editions.size} sets"
+  end
+
   class <<self
     private :new
 
