@@ -119,9 +119,12 @@ class Pack
     case set_code
     when "p3k"
       Pack.new(set, {basic: 2, common: 5, uncommon: 2, rare: 1})
+    when "st"
+      Pack.new(set, {basic: 2, common: 9, uncommon: 3, rare: 1})
     when "ug"
       Pack.new(set, {basic: 1, common: 6, uncommon: 2, rare: 1})
     when "ai", "ch"
+      # FIXME: These are not correct numbers
       Pack.new(set, {common: 8, uncommon: 3, rare: 1})
     when "7e", "8e", "9e", "10e"
       Pack.new(set, {basic: 1, common: 10, uncommon: 3, rare: 1}, has_random_foil: true)
