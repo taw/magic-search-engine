@@ -403,6 +403,8 @@ class Indexer
       number > 196
     when "dom"
       number > 269
+    when "ori"
+      number > 272
     else
       false
     end

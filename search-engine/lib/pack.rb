@@ -149,7 +149,7 @@ class Pack
       Pack.new(set, {common_or_basic: 11, uncommon: 3, rare: 1}, has_random_foil: true)
     # Default configuration since mythics got introduced
     # A lot of sets don't fit this
-    when "m10", "m11", "m12", "m13", "m14", "m15",
+    when "m10", "m11", "m12", "m13", "m14", "m15", "ori",
       "ala", "cfx", "arb",
       "zen", "wwk", "roe",
       "som", "mbs", "nph",
