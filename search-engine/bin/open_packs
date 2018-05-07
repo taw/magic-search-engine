@@ -29,13 +29,19 @@ elsif ARGV[0] == "--unsupported"
   end
 else
   cards = Sealed.new(db, *ARGV).call
-  cards_with_counts = cards.group_by(&:name).map{|k,v| [k,v.count]}.sort
+  # There could be muliple basic arts etc., ignore everything except foil flag
+  cards_with_counts = cards
+    .group_by{|x| [x.name, x.foil]}
+    .map{|k,v| [k, v.count]}
+    .sort_by{|(n,f),v| [n,f ? 1 : 0]}
   count_width = cards_with_counts.map(&:last).map(&:to_s).map(&:size).max
-  cards_with_counts.each do |name, count|
+  cards_with_counts.each do |(name, foil), count|
+    foil_indicator = foil ? " [foil]" : ""
     if count == 1
-      puts "#{' ' * count_width}  #{name}"
+      count_indicator =  " " * (count_width+1)
     else
-      puts "%#{count_width}dx %s" % [count, name]
+      count_indicator =  "%#{count_width}dx" % count
     end
+    puts "#{count_indicator} #{name}#{foil_indicator}"
   end
 end

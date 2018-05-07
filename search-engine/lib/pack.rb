@@ -42,16 +42,16 @@ class Pack
   def random_foil
     i = rand(36)
     if i < 8
-      sheet(:rare_or_mythic).random_card
+      sheet(:foil_rare_or_mythic).random_card
     elsif i < 16
-      sheet(:basic_fallover_to_common).random_card
+      sheet(:foil_basic_fallover_to_common).random_card
     elsif i < 32
-      sheet(:uncommon).random_card
+      sheet(:foil_uncommon).random_card
     elsif i < 36 and @masterpieces
       # This is 1:128, so more like Amonkhet odds
       @masterpieces.random_card
     else
-      sheet(:common).random_card
+      sheet(:foil_common).random_card
     end
   end
 
@@ -60,13 +60,17 @@ class Pack
       case category
       when :basic, :common, :uncommon, :rare
         CardSheet.rarity(@set, category.to_s)
+      when :foil_basic, :foil_common, :foil_uncommon, :foil_rare
+        CardSheet.rarity(@set, category.to_s.sub(/\Afoil_/, ""), foil: true)
       when :rare_or_mythic
         CardSheet.rare_or_mythic(@set)
+      when :foil_rare_or_mythic
+        CardSheet.rare_or_mythic(@set, foil: true)
       # In old sets commons and basics were printed on shared sheet
       when :common_or_basic
         CardSheet.common_or_basic(@set)
       # for foils
-      when :basic_fallover_to_common
+      when :foil_basic_fallover_to_common
         if !sheet(:basic)
           sheet(:common)
         else
@@ -128,7 +132,7 @@ class Pack
       Pack.new(set, {common_or_basic: 11, uncommon: 3, rare: 1}, has_random_foil: true)
     # Default configuration since mythics got introduced
     # A lot of sets don't fit this
-    when "m10", "m11", "m12", "m13", "m14", "m15", "ori",
+    when "m10", "m11", "m12", "m13", "m14", "m15",
       "ala", "cfx", "arb",
       "zen", "wwk", "roe",
       "som", "mbs", "nph",
@@ -136,7 +140,8 @@ class Pack
       "rtr", "gtc",
       "ths", "bng", "jou",
       "ktk", "frf", "dtk",
-      "tpr", "med", "me2", "me3", "me4"
+      "tpr", "med", "me2", "me3", "me4",
+      "ori", "xln", "rix" # They have DFCs but no separate slot for DFCs
       Pack.new(set, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true, common_if_no_basic: true)
     when "mma", "mm2", "mm3", "ema", "ima", "a25"
       Pack.new(set, {common: 10, uncommon: 3, rare_or_mythic: 1}, has_guaranteed_foil: true)
