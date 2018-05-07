@@ -1,7 +1,7 @@
 - if card_picture_path(card)
   .card_picture_container
     - if card.layout == "flip"
-      - if card.secondary
+      - if card.secondary?
         %img.card_picture.flip_secondary{src: card_picture_path(card), alt: card.name }
       - else
         %img.card_picture.flip{src: card_picture_path(card), alt: card.name }
