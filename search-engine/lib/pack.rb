@@ -109,7 +109,7 @@ class Pack
       Pack.new(set, {basic: 2, common: 9, uncommon: 3, rare: 1})
     when "ug"
       Pack.new(set, {basic: 1, common: 6, uncommon: 2, rare: 1})
-    when "7e", "8e", "9e", "10e"
+    when "7e", "8e", "9e", "10e", "uh"
       Pack.new(set, {basic: 1, common: 10, uncommon: 3, rare: 1}, has_random_foil: true)
     when "lw", "mt", "shm", "eve"
       Pack.new(set, {common_or_basic: 11, uncommon: 3, rare: 1}, has_random_foil: true)
@@ -142,7 +142,7 @@ class Pack
       "avr",
       "rtr", "gtc",
       "ths", "bng", "jou",
-      "ktk", "frf", "dtk",
+      "ktk", "dtk",
       "tpr", "med", "me2", "me3", "me4",
       # They have DFCs but no separate slot for DFCs
       "ori", "xln", "rix",
