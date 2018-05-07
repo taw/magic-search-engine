@@ -79,24 +79,51 @@ class CardSheet
     # If rare or mythic sheet contains subsheets
     # treat variants as 1/N chance eachs
     # This only matters for Unstable
+    # Rares appear 2x more frequently on shared sheet
     def rare_or_mythic(set, foil: false)
-      rare_sheet = rarity(set, "rare", foil: foil)
-      mythic_sheet = rarity(set, "mythic", foil: foil)
-      return rare_sheet unless mythic_sheet
-      rare_weight = rare_sheet.elements.size
-      mythic_weight = mythic_sheet.elements.size
-      # Rares appear 2x more frequently on shared sheet
-      new([rare_sheet, mythic_sheet], [2*rare_weight, mythic_weight])
+      mix_sheets(
+        [rarity(set, "rare", foil: foil), 2],
+        [rarity(set, "mythic", foil: foil), 1]
+      )
+    end
+
+    # Antiquities U3 (uncommon) / U1 (rare) approximation
+    def u3u1(set)
+      mix_sheets(
+        [rarity(set, "uncommon"), 3],
+        [rarity(set, "rare"), 1],
+      )
+    end
+
+    # Arabian Nights U3 (uncommon) / U2 (rare) approximation
+    def u3u2(set)
+      mix_sheets(
+        [rarity(set, "uncommon"), 3],
+        [rarity(set, "rare"), 2],
+      )
+    end
+
+    # The Dark U2 (uncommon) / U1 (rare) approximation
+    def u2u1(set)
+      mix_sheets(
+        [rarity(set, "uncommon"), 2],
+        [rarity(set, "rare"), 1],
+      )
+    end
+
+    def mix_sheets(*sheets)
+      sheets = sheets.select{|s,w| s}
+      return nil if sheets.size == 0
+      return sheets[0][0] if sheets.size == 1
+      new(sheets.map(&:first), sheets.map{|s,w| s.elements.size * w})
     end
 
     def common_or_basic(set)
-      common_sheet = rarity(set, "common")
-      basic_sheet = rarity(set, "basic")
-      return common_sheet unless basic_sheet
-      common_weight = common_sheet.elements.size
-      basic_weight = basic_sheet.elements.size
       # Assume basics are just commons for sheet purposes
-      new([common_sheet, basic_sheet], [common_weight, basic_weight])
+      mix_sheets(
+        [rarity(set, "common"), 1],
+        [rarity(set, "basic"), 1],
+      )
     end
 
     def masterpiece(set, range)

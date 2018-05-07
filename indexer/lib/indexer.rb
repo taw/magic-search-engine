@@ -328,6 +328,11 @@ class Indexer
         next unless %W[ug].include?(set)
         printing["rarity"] = "basic"
       end
+      # Arabian Night Mountain is just a common
+      card["printings"].each do |set, printing|
+        next unless %W[an].include?(set)
+        printing["rarity"] = "common"
+      end
     end
 
     # Fix loyalty symbols
