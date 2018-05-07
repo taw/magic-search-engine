@@ -33,10 +33,10 @@ describe Pack do
       pack = Pack.for(db, set_code)
       next unless pack
       next unless pack.has_random_foil or pack.has_guaranteed_foil
-      pack.sheet(:rare_or_mythic).should_not be_nil
-      pack.sheet(:uncommon).should_not be_nil
-      pack.sheet(:common).should_not be_nil
-      pack.sheet(:basic_fallover_to_common).should_not be_nil
+      pack.sheet(:foil_rare_or_mythic).should_not be_nil
+      pack.sheet(:foil_uncommon).should_not be_nil
+      pack.sheet(:foil_common).should_not be_nil
+      pack.sheet(:foil_basic_fallover_to_common).should_not be_nil
     end
   end
 
