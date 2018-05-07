@@ -16,10 +16,10 @@ class Pack
 
   def open
     cards = []
-    cards.push random_foil if @has_guaranteed_foil
+    cards.push sheet(:foil).random_card if @has_guaranteed_foil
     @distribution.each do |category, count|
       if category == :common and roll_for_foil
-        cards.push random_foil
+        cards.push sheet(:foil).random_card
         count -= 1
       end
       cards.push *sheet(category).random_cards_without_duplicates(count)
@@ -33,49 +33,18 @@ class Pack
     @has_random_foil and rand < 0.25
   end
 
-  # Wo don't have anywhere near reliable information
-  # Masterpieces supposedly are in 1/144 booster (then 1/129 for Amonkhet)
-  #
-  # Let's just assume they replace common foils
-  #
-  # These numbers could be totally wrong
-  def random_foil
-    i = rand(36)
-    if i < 8
-      sheet(:foil_rare_or_mythic).random_card
-    elsif i < 16
-      sheet(:foil_basic_fallover_to_common).random_card
-    elsif i < 32
-      sheet(:foil_uncommon).random_card
-    elsif i < 36 and @masterpieces
-      # This is 1:128, so more like Amonkhet odds
-      @masterpieces.random_card
-    else
-      sheet(:foil_common).random_card
-    end
-  end
-
   def sheet(category)
     @sheets[category] ||= begin
       case category
       when :basic, :common, :uncommon, :rare
         CardSheet.rarity(@set, category.to_s)
-      when :foil_basic, :foil_common, :foil_uncommon, :foil_rare
-        CardSheet.rarity(@set, category.to_s.sub(/\Afoil_/, ""), foil: true)
       when :rare_or_mythic
         CardSheet.rare_or_mythic(@set)
-      when :foil_rare_or_mythic
-        CardSheet.rare_or_mythic(@set, foil: true)
       # In old sets commons and basics were printed on shared sheet
       when :common_or_basic
         CardSheet.common_or_basic(@set)
-      # for foils
-      when :foil_basic_fallover_to_common
-        if !sheet(:basic)
-          sheet(:common)
-        else
-          sheet(:basic)
-        end
+      when :foil
+        CardSheet.foil_sheet(@set)
       when :u3u2
         CardSheet.u3u2(@set)
       when :u3u1

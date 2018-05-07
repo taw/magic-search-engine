@@ -64,6 +64,31 @@ class CardSheet
   end
 
   class << self
+    # Wo don't have anywhere near reliable information
+    # Masterpieces supposedly are in 1/144 booster (then 1/129 for Amonkhet), and they're presumably equally likely
+    #
+    # These numbers could be totally wrong. I base them on a million guesses by various internet commenters.
+    def foil_sheet(set, masterpieces: nil)
+      sheets = [rare_or_mythic(set, foil: true), rarity(set, "uncommon", foil: true)]
+      weights = [4, 8]
+
+      if masterpieces
+        sheets << masterpieces
+        weights << 1
+      end
+
+      basic_sheet = rarity(set, "basic", foil: true)
+      if basic_sheet
+        sheets << basic_sheet
+        weights << 4
+      end
+
+      sheets << rarity(set, "common", foil: true)
+      weights << (32 - weights.inject(0, &:+))
+
+      CardSheet.new(sheets, weights)
+    end
+
     def rarity(set, rarity, foil: false)
       cards = set.physical_cards(foil).select(&:in_boosters?)
       # raise "#{set.code} #{set.same} has no cards in boosters" if cards.empty?
