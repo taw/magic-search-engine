@@ -1,14 +1,17 @@
 # Ignoring marketing/token card
 class Pack
-  attr_reader :has_random_foil, :has_guaranteed_foil, :distribution, :masterpieces, :planeswalker_deck_filter
-  def initialize(set, distribution, has_random_foil: false, has_guaranteed_foil: false, masterpieces: nil, planeswalker_deck_filter: nil)
+  attr_reader :has_random_foil, :has_guaranteed_foil, :distribution, :masterpieces
+  def initialize(set, distribution, has_random_foil: false, has_guaranteed_foil: false, masterpieces: nil, common_if_no_basic: false)
     @set = set
-    @distribution = distribution
+    @distribution = distribution.dup
     @has_random_foil = has_random_foil
     @has_guaranteed_foil = has_guaranteed_foil
     @masterpieces = masterpieces
-    @planeswalker_deck_filter = planeswalker_deck_filter
-    @pools = {}
+    @sheets = {}
+    # Small sets often have no basic lands
+    if common_if_no_basic and !sheet(:basic)
+      @distribution[:common] += @distribution.delete(:basic)
+    end
   end
 
   def open
@@ -16,11 +19,10 @@ class Pack
     cards.push random_foil if @has_guaranteed_foil
     @distribution.each do |category, count|
       if category == :common and roll_for_foil
-        cards.push *pool(category).sample(count - 1)
         cards.push random_foil
-      else
-        cards.push *pool(category).sample(count)
+        count -= 1
       end
+      cards.push *sheet(category).random_cards_without_duplicates(count)
     end
     cards
   end
@@ -40,42 +42,35 @@ class Pack
   def random_foil
     i = rand(36)
     if i < 8
-      pool(:rare_or_mythic).sample
+      sheet(:rare_or_mythic).random_card
     elsif i < 16
-      pool(:basic_fallover_to_common).sample
+      sheet(:basic_fallover_to_common).random_card
     elsif i < 32
-      pool(:uncommon).sample
+      sheet(:uncommon).random_card
     elsif i < 36 and @masterpieces
       # This is 1:128, so more like Amonkhet odds
-      @masterpieces.sample
+      @masterpieces.random_card
     else
-      pool(:common).sample
+      sheet(:common).random_card
     end
   end
 
-  def physical_cards_in_boosters
-    @set.physical_cards.select(&:in_boosters?)
-  end
-
-  def pool(category)
-    @pools[category] ||= begin
+  def sheet(category)
+    @sheets[category] ||= begin
       case category
       when :basic, :common, :uncommon, :rare
-        physical_cards_in_boosters.select{|c| c.rarity == category.to_s}
-      # Rares 2x as frequent as mythics
+        CardSheet.rarity(@set, category.to_s)
       when :rare_or_mythic
-        physical_cards_in_boosters.select{|c| c.rarity == "rare"} * 2 +
-        physical_cards_in_boosters.select{|c| c.rarity == "mythic"}
+        CardSheet.rare_or_mythic(@set)
       # In old sets commons and basics were printed on shared sheet
       when :common_or_basic
-        physical_cards_in_boosters.select{|c| c.rarity == "common"} +
-        physical_cards_in_boosters.select{|c| c.rarity == "basic"}
+        CardSheet.common_or_basic(@set)
       # for foils
       when :basic_fallover_to_common
-        if pool(:basic).empty?
-          pool(:common)
+        if !sheet(:basic)
+          sheet(:common)
         else
-          pool(:basic)
+          sheet(:basic)
         end
       else
         raise "Unknown category #{category}"
@@ -83,31 +78,12 @@ class Pack
     end
   end
 
-  def pool_size(category)
-    pool(category).uniq.size
+  def cards_on_nonfoil_sheets
+    distribution.keys.flat_map{|k| sheet(k).cards}
   end
 
-  def cards_in_nonfoil_pools
-    distribution.keys.flat_map{|k| pool(k)}.uniq
-  end
-
-  def self.masterpieces_for(db, set_code)
-    case set_code
-    when "bfz"
-      db.sets["exp"].printings.select{|c| (1..25) === c.number.to_i }
-    when "ogw"
-      db.sets["exp"].printings.select{|c| (26..45) === c.number.to_i }
-    when "kld"
-      db.sets["mps"].printings.select{|c| (1..30) === c.number.to_i }
-    when "aer"
-      db.sets["mps"].printings.select{|c| (31..54) === c.number.to_i }
-    when "akh"
-      db.sets["mps_akh"].printings.select{|c| (1..30) === c.number.to_i }
-    when "hou"
-      db.sets["mps_akh"].printings.select{|c| (31..54) === c.number.to_i }
-    else
-      nil
-    end
+  def number_of_cards_on_nonfoil_sheets
+    cards_on_nonfoil_sheets.size
   end
 
   def self.for(db, set_code)
@@ -161,14 +137,15 @@ class Pack
       "ths", "bng", "jou",
       "ktk", "frf", "dtk",
       "tpr", "med", "me2", "me3", "me4"
-      Pack.new(set, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true)
+      Pack.new(set, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true, common_if_no_basic: true)
     when "mma", "mm2", "mm3", "ema", "ima", "a25"
       Pack.new(set, {common: 10, uncommon: 3, rare_or_mythic: 1}, has_guaranteed_foil: true)
     when "bfz", "ogw", "kld", "aer", "akh", "hou"
       Pack.new(set,
         {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1},
         has_random_foil: true,
-        masterpieces: masterpieces_for(db, set_code))
+        common_if_no_basic: true,
+        masterpieces: CardSheet.masterpieces_for(db, set_code))
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this

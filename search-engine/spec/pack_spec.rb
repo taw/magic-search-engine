@@ -19,124 +19,80 @@ describe Pack do
     end
   end
 
+  it "Opening packs should return something" do
+    db.sets.each do |set_code, set|
+      pack = Pack.for(db, set_code)
+      next unless pack
+      pack.open
+    end
+  end
+
   # There's no way this is accurate, we're just approximating foils
   it "Every set with foils has all appropriate categories" do
     db.sets.each do |set_code, set|
       pack = Pack.for(db, set_code)
       next unless pack
       next unless pack.has_random_foil or pack.has_guaranteed_foil
-      pack.pool(:rare_or_mythic).should_not be_empty
-      pack.pool(:uncommon).should_not be_empty
-      pack.pool(:common).should_not be_empty
-      pack.pool(:basic_fallover_to_common).should_not be_empty
+      pack.sheet(:rare_or_mythic).should_not be_nil
+      pack.sheet(:uncommon).should_not be_nil
+      pack.sheet(:common).should_not be_nil
+      pack.sheet(:basic_fallover_to_common).should_not be_nil
     end
   end
 
   context "flip cards" do
     it "Champions of Kamigawa" do
       pack = Pack.for(db, "chk")
-      pack.cards_in_nonfoil_pools.size.should eq(88+89+110+20)
-      pack.pool_size(:rare_or_mythic).should eq(88)
-      # Brothers Yamazaki alt art
-      pack.pool_size(:uncommon).should eq(88+1)
-      pack.pool_size(:common).should eq(110)
-      pack.pool_size(:basic).should eq(20)
+      pack.number_of_cards_on_nonfoil_sheets.should eq(88+89+110+20)
+      pack.sheet(:rare_or_mythic).number_of_cards.should eq(88)
+      # TODO: Brothers Yamazaki alt art
+      pack.sheet(:uncommon).number_of_cards.should eq(88+1)
+      pack.sheet(:common).number_of_cards.should eq(110)
+      pack.sheet(:basic).number_of_cards.should eq(20)
     end
 
     it "Betrayers of Kamigawa" do
       pack = Pack.for(db, "bok")
-      pack.cards_in_nonfoil_pools.size.should eq(55+55+55)
-      pack.pool_size(:rare_or_mythic).should eq(55)
-      pack.pool_size(:uncommon).should eq(55)
-      pack.pool_size(:common).should eq(55)
+      pack.number_of_cards_on_nonfoil_sheets.should eq(55+55+55)
+      pack.sheet(:rare_or_mythic).number_of_cards.should eq(55)
+      pack.sheet(:uncommon).number_of_cards.should eq(55)
+      pack.sheet(:common).number_of_cards.should eq(55)
     end
 
     it "Saviors of Kamigawa" do
       pack = Pack.for(db, "sok")
-      pack.cards_in_nonfoil_pools.size.should eq(55+55+55)
-      pack.pool_size(:rare_or_mythic).should eq(55)
-      pack.pool_size(:uncommon).should eq(55)
-      pack.pool_size(:common).should eq(55)
+      pack.number_of_cards_on_nonfoil_sheets.should eq(55+55+55)
+      pack.sheet(:rare_or_mythic).number_of_cards.should eq(55)
+      pack.sheet(:uncommon).number_of_cards.should eq(55)
+      pack.sheet(:common).number_of_cards.should eq(55)
     end
   end
 
   context "physical cards are properly setup" do
     it "Dissention" do
       pack = Pack.for(db, "di")
-      pack.cards_in_nonfoil_pools.size.should eq(60+60+60)
+      pack.number_of_cards_on_nonfoil_sheets.should eq(60+60+60)
       # 5 rares are split
-      pack.pool_size(:rare_or_mythic).should eq(60)
+      pack.sheet(:rare_or_mythic).number_of_cards.should eq(60)
       # 5 rares are split
-      pack.pool_size(:uncommon).should eq(60)
-      pack.pool_size(:common).should eq(60)
+      pack.sheet(:uncommon).number_of_cards.should eq(60)
+      pack.sheet(:common).number_of_cards.should eq(60)
       # split cards setup correctly
-      pack.cards_in_nonfoil_pools.map(&:name).should include("Trial // Error")
+      pack.sheet(:uncommon).elements.map(&:name).should include("Trial // Error")
     end
   end
 
   # TODO: dfc / aftermath / meld cards
 
-  context "Masterpieces" do
-    let(:pack) { Pack.for(db, set_code) }
-    let(:masterpieces) { pack.masterpieces }
-    let(:expected_masterpieces) do
-      db.sets[masterpieces_set_code]
-        .printings
-        .select{|c| masterpieces_range === c.number.to_i }
-    end
-
-    context "bfz" do
-      let(:set_code) { "bfz" }
-      let(:masterpieces_set_code) { "exp" }
-      let(:masterpieces_range) { 1..25 }
-      it { masterpieces.should eq(expected_masterpieces) }
-    end
-
-    context "ogw" do
-      let(:set_code) { "ogw" }
-      let(:masterpieces_set_code) { "exp" }
-      let(:masterpieces_range) { 26..45 }
-      it { masterpieces.should eq(expected_masterpieces) }
-    end
-
-    context "kld" do
-      let(:set_code) { "kld" }
-      let(:masterpieces_set_code) { "mps" }
-      let(:masterpieces_range) { 1..30 }
-      it { masterpieces.should eq(expected_masterpieces) }
-    end
-
-    context "aer" do
-      let(:set_code) { "aer" }
-      let(:masterpieces_set_code) { "mps" }
-      let(:masterpieces_range) { 31..54 }
-      it { masterpieces.should eq(expected_masterpieces) }
-    end
-
-    context "akh" do
-      let(:set_code) { "akh" }
-      let(:masterpieces_set_code) { "mps_akh" }
-      let(:masterpieces_range) { 1..30 }
-      it { masterpieces.should eq(expected_masterpieces) }
-    end
-
-    context "hou" do
-      let(:set_code) { "hou" }
-      let(:masterpieces_set_code) { "mps_akh" }
-      let(:masterpieces_range) { 31..54 }
-      it { masterpieces.should eq(expected_masterpieces) }
-    end
-  end
-
   it "Masters Edition 4" do
     pack = Pack.for(db, "me4")
-    basics = pack.pool(:basic).map(&:name).uniq
+    basics = pack.sheet(:basic).cards.map(&:name).uniq
     basics.should match_array(["Urza's Mine", "Urza's Power Plant", "Urza's Tower"])
   end
 
   it "Origins" do
     pack = Pack.for(db, "ori")
-    mythics = pack.pool(:rare_or_mythic).group_by(&:name).select{|n,c| c.size == 1}.keys
+    mythics = pack.sheet(:rare_or_mythic).cards.select{|c| c.rarity == "mythic"}.map(&:name)
     mythics.should match_array([
       "Alhammarret's Archive",
       "Archangel of Tithes",
@@ -162,7 +118,7 @@ describe Pack do
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = Pack.for(db, set_code)
       next unless pack
-      pack.cards_in_nonfoil_pools.should match_array(pack.physical_cards_in_boosters),
+      pack.cards_on_nonfoil_sheets.should match_array(set.physical_cards_in_boosters),
         "All cards in #{set_pp} should be possible in its packs as nonfoil"
     end
   end
