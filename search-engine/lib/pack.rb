@@ -117,6 +117,8 @@ class Pack
 
     # https://mtg.gamepedia.com/Booster_pack
     case set_code
+    when "p3k"
+      Pack.new(set, {basic: 2, common: 5, uncommon: 2, rare: 1})
     when "ug"
       Pack.new(set, {basic: 1, common: 6, uncommon: 2, rare: 1})
     when "ai", "ch"
@@ -131,7 +133,8 @@ class Pack
     when "5e", "6e",
       "mr", "vi", "wl",
       "tp", "sh", "ex",
-      "us"
+      "us",
+      "po", "po2"
       Pack.new(set, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Pre-mythic, with foils
     when "ul", "ud",
