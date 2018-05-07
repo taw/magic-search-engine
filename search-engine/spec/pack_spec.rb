@@ -128,14 +128,33 @@ describe Pack do
     end
   end
 
-  context "Planeswalker decks card are not in boosters" do
-    # TODO: tests
-  end
-
   it "Masters Edition 4" do
     pack = Pack.for(db, "me4")
     basics = pack.pool(:basic).map(&:name).uniq
     basics.should match_array(["Urza's Mine", "Urza's Power Plant", "Urza's Tower"])
+  end
+
+  it "Origins" do
+    pack = Pack.for(db, "ori")
+    mythics = pack.pool(:rare_or_mythic).group_by(&:name).select{|n,c| c.size == 1}.keys
+    mythics.should match_array([
+      "Alhammarret's Archive",
+      "Archangel of Tithes",
+      "Avaricious Dragon",
+      "Chandra, Fire of Kaladesh",
+      "Day's Undoing",
+      "Demonic Pact",
+      "Disciple of the Ring",
+      "Erebos's Titan",
+      "Kytheon, Hero of Akros",
+      "Jace, Vryn's Prodigy",
+      "Liliana, Heretical Healer",
+      "Nissa, Vastwood Seer",
+      "Pyromancer's Goggles",
+      "Starfield of Nyx",
+      "The Great Aurora",
+      "Woodland Bellower"
+    ])
   end
 
   it "Every card can appear in a pack" do
