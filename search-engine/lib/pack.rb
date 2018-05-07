@@ -53,27 +53,23 @@ class Pack
     end
   end
 
-  def physical_cards
-    @set.physical_cards.map do |card|
-      card.front[0]
-    end.select do |card|
-      !card.exclude_from_boosters?
-    end
+  def physical_cards_in_boosters
+    @set.physical_cards.select(&:in_boosters?)
   end
 
   def pool(category)
     @pools[category] ||= begin
       case category
       when :basic, :common, :uncommon, :rare
-        physical_cards.select{|c| c.rarity == category.to_s}
+        physical_cards_in_boosters.select{|c| c.rarity == category.to_s}
       # Rares 2x as frequent as mythics
       when :rare_or_mythic
-        physical_cards.select{|c| c.rarity == "rare"} * 2 +
-        physical_cards.select{|c| c.rarity == "mythic"}
+        physical_cards_in_boosters.select{|c| c.rarity == "rare"} * 2 +
+        physical_cards_in_boosters.select{|c| c.rarity == "mythic"}
       # In old sets commons and basics were printed on shared sheet
       when :common_or_basic
-        physical_cards.select{|c| c.rarity == "common"} +
-        physical_cards.select{|c| c.rarity == "basic"}
+        physical_cards_in_boosters.select{|c| c.rarity == "common"} +
+        physical_cards_in_boosters.select{|c| c.rarity == "basic"}
       # for foils
       when :basic_fallover_to_common
         if pool(:basic).empty?

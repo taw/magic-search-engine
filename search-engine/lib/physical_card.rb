@@ -6,12 +6,48 @@ class PhysicalCard
     @foil = foil
   end
 
-  def to_s
+  def name
     @front.map(&:name).join(" // ")
+  end
+
+  def back_name
+    @back.map(&:name).join(" // ")
+  end
+
+  def to_s
+    name
+  end
+
+  def inspect
+    [
+      "PhysicalCard[",
+      name,
+      @back ? "; #{back_name}}" : "",
+      foil ? "; foil" : "",
+      "]",
+    ].join
   end
 
   def main_front
     @front[0]
+  end
+
+  # A lot of things can be forwarded to main_front
+
+  def set
+    main_front.set
+  end
+
+  def in_boosters?
+    main_front.in_boosters?
+  end
+
+  def rarity
+    main_front.rarity
+  end
+
+  def parts
+    [*@front, *@back]
   end
 
   # @front[0] uniquely determines @front / @back
