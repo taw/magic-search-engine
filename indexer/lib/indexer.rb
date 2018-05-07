@@ -315,12 +315,18 @@ class Indexer
       end
     end
 
-    # Fix rarities of promo basics
     ["Mountain", "Plains", "Swamp", "Island", "Forest"].each do |name|
       card = cards[name]
+      # Fix rarities of promo basics
       card["printings"].each do |set, printing|
         next unless %W[arena guru jr euro apac ptc].include?(set)
         printing["rarity"] = "special"
+      end
+      # As far as I can tell, Unglued basics were printed on separate black-bordered sheet
+      # contrary to what Gatherer says
+      card["printings"].each do |set, printing|
+        next unless %W[ug].include?(set)
+        printing["rarity"] = "basic"
       end
     end
 

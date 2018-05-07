@@ -43,4 +43,8 @@ class CardSet
       PhysicalCard.for(card, foil)
     end.uniq
   end
+
+  def physical_cards_in_boosters(foil=false)
+    physical_cards(foil).select(&:in_boosters?)
+  end
 end

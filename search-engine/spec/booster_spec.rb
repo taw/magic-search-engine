@@ -35,6 +35,8 @@ describe "is:booster" do
       when "dom"
         # This also excludes Firesong and Sunspeaker buy-a-box promo
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=269"
+      when "ori"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=272"
       else
         if set.has_boosters?
           assert_search_equal "e:#{set_code} is:booster", "e:#{set_code}"
