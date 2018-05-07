@@ -141,7 +141,11 @@ class Pack
       "ths", "bng", "jou",
       "ktk", "frf", "dtk",
       "tpr", "med", "me2", "me3", "me4",
-      "ori", "xln", "rix" # They have DFCs but no separate slot for DFCs
+      # They have DFCs but no separate slot for DFCs
+      "ori", "xln", "rix",
+      # there's guaranteed legendary, but no separate slots, unclear how to model that
+      # If we don't model anything, there's 81% chance of opening a legendary, and EV of 1.34
+      "dom"
       Pack.new(set, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true, common_if_no_basic: true)
     when "mma", "mm2", "mm3", "ema", "ima", "a25"
       Pack.new(set, {common: 10, uncommon: 3, rare_or_mythic: 1}, has_guaranteed_foil: true)
