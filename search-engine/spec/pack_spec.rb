@@ -28,15 +28,14 @@ describe Pack do
   end
 
   # There's no way this is accurate, we're just approximating foils
-  it "Every set with foils has all appropriate categories" do
+  it "Every set with foils has all cards available as foils" do
     db.sets.each do |set_code, set|
+      set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = Pack.for(db, set_code)
       next unless pack
       next unless pack.has_random_foil or pack.has_guaranteed_foil
-      pack.sheet(:foil_rare_or_mythic).should_not be_nil
-      pack.sheet(:foil_uncommon).should_not be_nil
-      pack.sheet(:foil_common).should_not be_nil
-      pack.sheet(:foil_basic_fallover_to_common).should_not be_nil
+      pack.sheet(:foil).cards.should match_array(set.physical_cards_in_boosters(true))
+        "All cards in #{set_pp} should be possible in its packs as foil"
     end
   end
 
