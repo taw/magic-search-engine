@@ -111,7 +111,7 @@ class Pack
   end
 
   def self.for(db, set_code)
-    set = db.resolve_editions(set_code)
+    set = db.resolve_edition(set_code)
     raise "Invalid set code #{set_code}" unless set
     set_code = set.code # Normalize
 
@@ -154,7 +154,7 @@ class Pack
       "rtr", "gtc",
       "ths", "bng", "jou",
       "ktk", "frf", "dtk",
-      "tpr"
+      "tpr", "med", "me2", "me3", "me4"
       Pack.new(set, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true)
     when "mma", "mm2", "mm3", "ema", "ima", "a25"
       Pack.new(set, {common: 10, uncommon: 3, rare_or_mythic: 1}, has_guaranteed_foil: true)

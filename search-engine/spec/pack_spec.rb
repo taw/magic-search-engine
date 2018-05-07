@@ -132,6 +132,12 @@ describe Pack do
     # TODO: tests
   end
 
+  it "Masters Edition 4" do
+    pack = Pack.for(db, "me4")
+    basics = pack.pool(:basic).map(&:name).uniq
+    basics.should match_array(["Urza's Mine", "Urza's Power Plant", "Urza's Tower"])
+  end
+
   it "Every card can appear in a pack" do
     db.sets.each do |set_code, set|
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
