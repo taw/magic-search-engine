@@ -104,7 +104,7 @@ class Indexer
     ).compact
   end
 
-  def index_printing_data(card_data)
+  def index_printing_data(set_code, card_data)
     if card_data["name"] == "B.F.M. (Big Furry Monster)" or card_data["name"] == "B.F.M. (Big Furry Monster, Right Side)"
       card_data["flavor"] = %Q["It was big. Really, really big. No, bigger than that. Even bigger. Keep going. More. No, more. Look, we're talking krakens and dreadnoughts for jewelry. It was big"\n-Arna Kennerd, skyknight]
     end
@@ -121,6 +121,7 @@ class Indexer
       "rarity" => format_rarity(card_data["rarity"]),
       "release_date" => Indexer.format_release_date(card_data["releaseDate"]),
       "watermark" => format_watermark(card_data["watermark"]),
+      "exclude_from_boosters" => exclude_from_boosters(set_code, card_data["number"]) ? true : nil,
     ).compact
   end
 
@@ -152,7 +153,7 @@ class Indexer
         card = index_card_data(card_data)
         oracle_verifier.add(set_code, card)
         card_printings[name] ||= []
-        card_printings[name] << [set_code, index_printing_data(card_data)]
+        card_printings[name] << [set_code, index_printing_data(set_code, card_data)]
         foreign_names_verifier.add name, set_code, card_data["foreignNames"]
       end
     end
@@ -316,12 +317,23 @@ class Indexer
       end
     end
 
-    # Fix rarities of promo basics
     ["Mountain", "Plains", "Swamp", "Island", "Forest"].each do |name|
       card = cards[name]
+      # Fix rarities of promo basics
       card["printings"].each do |set, printing|
         next unless %W[arena guru jr euro apac ptc].include?(set)
         printing["rarity"] = "special"
+      end
+      # As far as I can tell, Unglued basics were printed on separate black-bordered sheet
+      # contrary to what Gatherer says
+      card["printings"].each do |set, printing|
+        next unless %W[ug].include?(set)
+        printing["rarity"] = "basic"
+      end
+      # Arabian Night Mountain is just a common
+      card["printings"].each do |set, printing|
+        next unless %W[an].include?(set)
+        printing["rarity"] = "common"
       end
     end
 
@@ -381,6 +393,33 @@ class Indexer
         raise "No guessable date for #{name}" unless guess_date
         mbp_printing[1]["release_date"] = guess_date
       end
+    end
+  end
+
+  # Just for sets with boosters, some cards will be non-booster
+  # That's planeswalker deck exclusive cards,
+  # and also Firesong and Sunspeaker buy-a-box promo
+  def exclude_from_boosters(set_code, number)
+    number = number.to_i
+    case set_code
+    when "kld"
+      number > 264
+    when "aer"
+      number > 184
+    when "akh"
+      number > 269
+    when "hou"
+      number > 199
+    when "xln"
+      number > 279
+    when "rix"
+      number > 196
+    when "dom"
+      number > 269
+    when "ori"
+      number > 272
+    else
+      false
     end
   end
 

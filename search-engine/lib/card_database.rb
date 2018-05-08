@@ -7,6 +7,9 @@ require_relative "card_set"
 require_relative "card_printing"
 require_relative "query"
 require_relative "spelling_suggestions"
+require_relative "physical_card"
+require_relative "card_sheet"
+require_relative "sealed"
 
 class CardDatabase
   attr_reader :sets, :cards, :blocks, :artists
@@ -84,6 +87,12 @@ class CardDatabase
       matching_name,
       matching_name_part
     ].find{|s| s.size > 0} || Set[]
+  end
+
+  def resolve_edition(edition)
+    editions = resolve_editions(edition).to_a
+    return editions[0] if editions.size <= 1
+    raise "Ambiguous set name #{edition}, matches #{editions.size} sets"
   end
 
   class <<self

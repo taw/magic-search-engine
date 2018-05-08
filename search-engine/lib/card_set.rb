@@ -2,6 +2,7 @@ class CardSet
   attr_reader :name, :code, :gatherer_code
   attr_reader :block_name, :block_code
   attr_reader :border, :release_date, :printings, :type
+
   def initialize(data)
     @name          = data["name"]
     @code          = data["code"]
@@ -12,12 +13,17 @@ class CardSet
     @type          = data["type"]
     @release_date  = data["release_date"] && Date.parse(data["release_date"])
     @printings     = Set[]
-    @online_only   = data["online_only"]
-    @custom        = data["custom"]
+    @online_only   = !!data["online_only"]
+    @has_boosters  = !!data["has_boosters"]
+    @custom        = !!data["custom"]
+  end
+
+  def has_boosters?
+    @has_boosters
   end
 
   def online_only?
-    !!@online_only
+    @online_only
   end
 
   def custom?
@@ -35,5 +41,15 @@ class CardSet
 
   def hash
     @code.hash
+  end
+
+  def physical_cards(foil=false)
+    @printings.map do |card|
+      PhysicalCard.for(card, foil)
+    end.uniq
+  end
+
+  def physical_cards_in_boosters(foil=false)
+    physical_cards(foil).select(&:in_boosters?)
   end
 end

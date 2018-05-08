@@ -10,7 +10,7 @@ class String
 end
 
 class FormatCompRules
-  def run!
+  def call
     @output = []
     @output << "= content_for(:disable_turbolinks) do"
     @output << "  true"
@@ -85,16 +85,16 @@ class FormatCompRules
       %Q[<span class="manacost">] + format_mana_symbols($&) + %Q[</span>]
     end.gsub(/\[([\+\-]?(?:\d+|N|X))\]/) do
       symbol = $1
-      usymbol = symbol.sub("-", "\u2013")
-      if symbol[0] == "+"
+      usymbol = symbol.sub("-", "\u2013").sub("\u2212", "\u2013")
+      if usymbol[0] == "+"
         dir = "up"
-      elsif symbol[0] == "-"
+      elsif usymbol[0] == "\u2013"
         dir = "down"
       else
         dir = "zero"
       end
       %Q[<i class="mana mana-loyalty mana-loyalty-#{dir}" data-loyalty="#{usymbol}"></i>] +
-      %Q[<span class="sr-only">[#{symbol}]</span>]
+      %Q[<span class="sr-only">[#{usymbol}]</span>]
     end
   end
 
@@ -173,4 +173,4 @@ class FormatCompRules
   end
 end
 
-FormatCompRules.new.run!
+FormatCompRules.new.call

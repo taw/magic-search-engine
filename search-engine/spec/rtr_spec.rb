@@ -216,4 +216,9 @@ describe "Return to Ravnica block" do
     assert_search_equal "number<=121a", "number<121a or number=121a"
     assert_search_equal "number<=121b", "number<121b or number=121b"
   end
+
+  it "is:front / is:primary" do
+    assert_search_equal "is:front", "t:*"
+    assert_search_equal "is:primary", "t:*"
+  end
 end

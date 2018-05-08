@@ -49,7 +49,14 @@ class Indexer
         "custom" => @set_data["custom"],
         "release_date" => Indexer.format_release_date(@set_data["releaseDate"]),
         "type" => @set_data["type"],
+        "has_boosters" => has_boosters,
       }.compact
+    end
+
+    # Time Spiral Timeshifted is in boosters for other sets, so shouldn't be here
+    def has_boosters
+      return false if @set_code == "tsts"
+      !!@set_data["booster"]
     end
 
     # They really only have two goals:

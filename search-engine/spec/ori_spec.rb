@@ -13,4 +13,8 @@ describe "Magic Origins" do
     assert_search_results "not:primary jace",
       "Jace, Telepath Unbound"
   end
+
+  it "is:front" do
+    assert_search_equal "is:front", "is:primary"
+  end
 end

@@ -61,6 +61,14 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsPermanent.new
     when "primary"
       @conds << ConditionIsPrimary.new
+    when "secondary"
+      @conds << ConditionIsSecondary.new
+    when "front"
+      @conds << ConditionIsFront.new
+    when "back"
+      @conds << ConditionIsBack.new
+    when "booster"
+      @conds << ConditionIsBooster.new
     when "promo"
       @conds << ConditionIsPromo.new
     when "reprint"

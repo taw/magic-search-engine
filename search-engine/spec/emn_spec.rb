@@ -63,4 +63,12 @@ describe "Eldrich Moon" do
       "Chittering Host",
       "Hanweir, the Writhing Township"
   end
+
+  it "is:front / is:primary" do
+    assert_search_equal "is:front", "is:primary"
+  end
+
+  it "is:secondary / is:back" do
+    assert_search_equal "is:back", "is:secondary"
+  end
 end

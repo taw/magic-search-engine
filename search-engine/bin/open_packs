@@ -8,18 +8,40 @@ if ARGV.size == 0
   STDERR.puts "Examples:"
   STDERR.puts "  #{$0} 6xM11"
   STDERR.puts "  #{$0} NPH MBS SOM"
+  STDERR.puts "To see list of supported packs:"
+  STDERR.puts "  #{$0} --list"
+  STDERR.puts "To see list of packs which are not implemented yet:"
+  STDERR.puts "  #{$0} --unsupported"
   exit 1
 end
 
 db = CardDatabase.load
-cards = Sealed.new(db, *ARGV).call
 
-cards_with_counts = cards.group_by(&:name).map{|k,v| [k,v.count]}.sort
-count_width = cards_with_counts.map(&:last).map(&:to_s).map(&:size).max
-cards_with_counts.each do |name, count|
-  if count == 1
-    puts "#{' ' * count_width}  #{name}"
-  else
-    puts "%#{count_width}dx %s" % [count, name]
+if ARGV[0] == "--list"
+  db.sets.values.select{|set| Pack.for(db, set.code)}.each do |set|
+    puts "%3s %s" % [set.code.upcase, set.name]
+  end
+elsif ARGV[0] == "--unsupported"
+  db.sets.values.select{|set|
+    set.has_boosters? and !Pack.for(db, set.code)
+  }.each do |set|
+    puts "%3s %s" % [set.code.upcase, set.name]
+  end
+else
+  cards = Sealed.new(db, *ARGV).call
+  # There could be muliple basic arts etc., ignore everything except foil flag
+  cards_with_counts = cards
+    .group_by{|x| [x.name, x.foil]}
+    .map{|k,v| [k, v.count]}
+    .sort_by{|(n,f),v| [n,f ? 1 : 0]}
+  count_width = cards_with_counts.map(&:last).map(&:to_s).map(&:size).max
+  cards_with_counts.each do |(name, foil), count|
+    foil_indicator = foil ? " [foil]" : ""
+    if count == 1
+      count_indicator =  " " * (count_width+1)
+    else
+      count_indicator =  "%#{count_width}dx" % count
+    end
+    puts "#{count_indicator} #{name}#{foil_indicator}"
   end
 end

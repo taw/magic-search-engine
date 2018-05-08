@@ -209,6 +209,22 @@ describe "Any queries" do
       assert_search_equal "any:primary", "is:primary"
     end
 
+    it "secondary" do
+      assert_search_equal "any:secondary", "is:secondary"
+    end
+
+    it "front" do
+      assert_search_equal "any:front", "is:front or ft:front"
+    end
+
+    it "back" do
+      assert_search_equal "any:back", "is:back or o:back or ft:back or (back)"
+    end
+
+    it "booster" do
+      assert_search_equal "any:booster", "is:booster or o:booster"
+    end
+
     it "promo" do
       assert_search_equal "any:promo", "is:promo or foreign:promo"
     end
