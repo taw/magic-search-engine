@@ -18,6 +18,28 @@ describe CardSheet do
     end
   end
 
+  context "#probability" do
+    context "typical set" do
+      let(:rare_or_mythic_sheet) { CardSheet.rare_or_mythic(m10) }
+      let(:uncommon_sheet) { CardSheet.rarity(m10, "uncommon") }
+      let(:common_sheet) { CardSheet.rarity(m10, "common") }
+      let(:basic_sheet) { CardSheet.rarity(m10, "basic") }
+      let(:mythic_card) { PhysicalCard.for(db.search("e:m10 baneslayer angel").printings[0]) }
+      let(:rare_card) { PhysicalCard.for(db.search("e:m10 birds of paradise").printings[0]) }
+      let(:uncommon_card) { PhysicalCard.for(db.search("e:m10 acidic slime").printings[0]) }
+      let(:common_card) { PhysicalCard.for(db.search("e:m10 assassinate").printings[0]) }
+      let(:basic_card) { PhysicalCard.for(db.search("e:m10 island").printings[0]) }
+
+      it "Regular sets" do
+        rare_or_mythic_sheet.probability(mythic_card).should eq Rational(1, 121)
+        rare_or_mythic_sheet.probability(rare_card).should eq Rational(2, 121)
+        uncommon_sheet.probability(uncommon_card).should eq Rational(1, 60)
+        common_sheet.probability(common_card).should eq Rational(1, 101)
+        basic_sheet.probability(basic_card).should eq Rational(1, 20)
+      end
+    end
+  end
+
   # This even goes to Pack for extra routing test
   context "Masterpieces" do
     let(:pack) { Pack.for(db, set_code) }
