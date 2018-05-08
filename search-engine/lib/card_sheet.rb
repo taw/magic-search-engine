@@ -63,6 +63,26 @@ class CardSheet
     result.to_a
   end
 
+  def probability(card=nil, &block)
+    if card
+      raise ArgumentError, "Pass card or block, not both" if block
+      return probability{|c| c == card}
+    end
+    raise ArgumentError, "Pass card or block, not both" unless block
+    num = 0
+    den = 0
+    @elements.each_with_index do |element, i|
+      prob = @weights ? @weights[i] : 1
+      num += prob * (if element.is_a?(CardSheet)
+        element.probability(&block)
+      else
+        yield(element) ? 1 : 0
+      end)
+      den += prob
+    end
+    Rational(num, den)
+  end
+
   class << self
     # Wo don't have anywhere near reliable information
     # Masterpieces supposedly are in 1/144 booster (then 1/129 for Amonkhet), and they're presumably equally likely
