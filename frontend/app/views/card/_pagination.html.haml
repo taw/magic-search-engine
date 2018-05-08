@@ -1,3 +1,6 @@
 .row
   .col-12.pagination
-    = will_paginate cards, params: {seed: @seed}
+    - if @seed
+      = will_paginate cards, params: {seed: @seed}, renderer: LinkRendererRelNofollow
+    - else
+      = will_paginate cards
