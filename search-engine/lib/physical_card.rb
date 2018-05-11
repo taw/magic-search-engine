@@ -65,11 +65,11 @@ class PhysicalCard
     self == other
   end
 
-  def self.for(card, foil)
+  def self.for(card, foil=false)
     # meld really doesn't fit this model, as we have one CardPrinting that's on two physical card backs
     # just fake something that works
     if card.back? and card.layout == "meld"
-      self.for(card.others[0], foil) 
+      self.for(card.others[0], foil)
     elsif !card.has_multiple_parts? or card.name == "B.F.M. (Big Furry Monster)" or card.name == "B.F.M. (Big Furry Monster, Right Side)"
       PhysicalCard.new([card], [], foil)
     else

@@ -30,3 +30,21 @@ module Frontend
     config.middleware.delete ActionDispatch::Flash
   end
 end
+
+# will_paginate hacks
+# based on https://stackoverflow.com/questions/4592489/adding-rel-nofollow-to-will-paginate-links-in-rails/12075691
+require "will_paginate/view_helpers/action_view"
+class LinkRendererRelNofollow < WillPaginate::ActionView::LinkRenderer
+  def rel_value(page)
+    case page
+    when @collection.previous_page
+      "prev nofollow" + (page == 1 ? " start nofollow" : "")
+    when @collection.next_page
+      "next nofollow"
+    when 1
+      "start nofollow"
+    else
+      "nofollow"
+    end
+  end
+end
