@@ -136,6 +136,12 @@
             "replace": "A land in any zone"
         },
         {
+            "#": "for Starsong Dragon and Thrill of Battle",
+            "type": "add",
+            "rule": "514",
+            "text": "If a turn would end and it's not a cleanup step, instead add an additional ending phase after the current phase which consists only of a cleanup step and end the current phase."
+        },
+        {
             "#": "set: Aenyr, for resonance",
             "type": "insertText",
             "rule": "601.2b",
@@ -446,6 +452,12 @@
             "type": "append",
             "rule": "711.1b",
             "text": "On double-faced cards in the Tesla set, the back-face symbol is a flame."
+        },
+        {
+            "#": "for Starsong Dragon and Thrill of Battle",
+            "type": "append",
+            "rule": "716.1d",
+            "text": "If the remainder of the turn does not contain a cleanup step, a new ending phase which consists of only a cleanup step is added after the last phase of the turn."
         },
         {
             "#": "for Iun, World Reborn",
