@@ -84,6 +84,24 @@ class CardSheet
   end
 
   class << self
+    ### Additional Constructors
+    def mix_sheets(*sheets)
+      sheets = sheets.select{|s,w| s}
+      return nil if sheets.size == 0
+      return sheets[0][0] if sheets.size == 1
+      new(sheets.map(&:first), sheets.map{|s,w| s.elements.size * w})
+    end
+
+    def from_query(db, query, assert_count=nil)
+      cards = db.search("++ #{query}").printings.map{|c| PhysicalCard.for(c)}
+      if assert_count and assert_count != cards.size
+        raise "Expected query #{query} to return #{assert_count}, got #{cards.size}"
+      end
+      CardSheet.new(cards)
+    end
+
+    ### Usual Sheet Types
+
     # Wo don't have anywhere near reliable information
     # Masterpieces supposedly are in 1/144 booster (then 1/129 for Amonkhet), and they're presumably equally likely
     #
@@ -132,37 +150,6 @@ class CardSheet
       )
     end
 
-    # Antiquities U3 (uncommon) / U1 (rare) approximation
-    def u3u1(set)
-      mix_sheets(
-        [rarity(set, "uncommon"), 3],
-        [rarity(set, "rare"), 1],
-      )
-    end
-
-    # Arabian Nights U3 (uncommon) / U2 (rare) approximation
-    def u3u2(set)
-      mix_sheets(
-        [rarity(set, "uncommon"), 3],
-        [rarity(set, "rare"), 2],
-      )
-    end
-
-    # The Dark U2 (uncommon) / U1 (rare) approximation
-    def u2u1(set)
-      mix_sheets(
-        [rarity(set, "uncommon"), 2],
-        [rarity(set, "rare"), 1],
-      )
-    end
-
-    def mix_sheets(*sheets)
-      sheets = sheets.select{|s,w| s}
-      return nil if sheets.size == 0
-      return sheets[0][0] if sheets.size == 1
-      new(sheets.map(&:first), sheets.map{|s,w| s.elements.size * w})
-    end
-
     def common_or_basic(set)
       # Assume basics are just commons for sheet purposes
       mix_sheets(
@@ -195,6 +182,54 @@ class CardSheet
       else
         nil
       end
+    end
+
+    ### Very old mixed rarity sheets
+
+    # Antiquities U3 (uncommon) / U1 (rare) approximation
+    def u3u1(set)
+      mix_sheets(
+        [rarity(set, "uncommon"), 3],
+        [rarity(set, "rare"), 1],
+      )
+    end
+
+    # Arabian Nights U3 (uncommon) / U2 (rare) approximation
+    def u3u2(set)
+      mix_sheets(
+        [rarity(set, "uncommon"), 3],
+        [rarity(set, "rare"), 2],
+      )
+    end
+
+    # The Dark U2 (uncommon) / U1 (rare) approximation
+    def u2u1(set)
+      mix_sheets(
+        [rarity(set, "uncommon"), 2],
+        [rarity(set, "rare"), 1],
+      )
+    end
+
+    ### These are really unique sheets
+
+    def dgm_land_sheet(db)
+      mix_sheets(
+        [from_query(db, "is:shockland e:rtr,gtc", 10), 1], # 10 / 242
+        [from_query(db, "e:dgm t:gate", 10), 23],          # 230 / 242
+        [from_query(db, "e:dgm maze end", 1), 2],          # 2 / 242
+      )
+    end
+
+    def ktk_fetchland_sheet(db)
+      from_query(db, "e:ktk is:fetchland", 10)
+    end
+
+    def frf_gainlands(db)
+      from_query(db, "e:frf is:gainland", 10)
+    end
+
+    def unhinged_foil_rares(db)
+      from_query(db, "e:uh r>=rare", 44+1)
     end
   end
 end
