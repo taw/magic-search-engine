@@ -56,10 +56,10 @@ describe CardSheetFactory do
   end
 
   context "Dragon's Maze" do
-    let(:land_sheet) { factory.dgm_land_sheet }
-    let(:common_sheet) { factory.dgm_common_sheet }
+    let(:land_sheet) { factory.dgm_land }
+    let(:common_sheet) { factory.dgm_common }
     let(:uncommon_sheet) { factory.rarity("dgm", "uncommon") }
-    let(:rare_mythic_sheet) { factory.dgm_rare_mythic_sheet }
+    let(:rare_mythic_sheet) { factory.dgm_rare_mythic }
     let(:rtr_rare_mythic_sheet) { factory.rare_or_mythic("rtr") }
     let(:gtc_rare_mythic_sheet) { factory.rare_or_mythic("gtc") }
 
