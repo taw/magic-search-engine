@@ -81,7 +81,7 @@ describe PackFactory do
         # This is all pure guesswork
         # - base rarity rates on foils are guesses
         # - assumption that foiling treats maze's end and guildgates like regular cards is a guess
-        # Perhaps it's wrong, and we should instead assume land slot works like basic foils?s
+        # Perhaps it's wrong, and we should instead assume land slot works like basic-land foils?
         ev[guildgate].should eq Rational(1,4) * Rational(5,8) * Rational(1,70)
         ev[common].should eq Rational(1,4) * Rational(5,8) * Rational(1,70)
         ev[uncommon].should eq Rational(1,4) * Rational(2,8) * Rational(1,40)
@@ -216,6 +216,38 @@ describe PackFactory do
       ev[sfc_mythic].should eq Rational(1, 80)
       ev[foil_dfc_mythic].should eq Rational(1, 2816)
       ev[foil_sfc_mythic].should eq Rational(1, 2816)
+    end
+  end
+
+  context "Time Spiral" do
+    let(:pack) { factory.for("ts") }
+    let(:ev) { pack.expected_values }
+    let(:basic) { physical_card("e:ts forest", foil) }
+    let(:common) { physical_card("e:ts bonesplitter sliver", foil) }
+    let(:uncommon) { physical_card("e:ts dread return", foil) }
+    let(:rare) { physical_card("e:ts academy uins", foil) }
+    let(:timeshifted) { physical_card("e:tsts akroma", foil) }
+
+    context "foil" do
+      let(:foil) { false }
+      it do
+        ev[basic].should eq 0
+        ev[common].should eq Rational(975, 100) * Rational(1, 121)
+        ev[uncommon].should eq Rational(3, 80)
+        ev[rare].should eq Rational(1, 80)
+        ev[timeshifted].should eq Rational(1, 121)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+      it do
+        ev[basic].should eq Rational(1, 4) * Rational(1, 8) * Rational(1, 20)
+        ev[common].should eq Rational(1, 4) * Rational(3, 8) * Rational(1, 121)
+        ev[uncommon].should eq Rational(1, 4) * Rational(2, 8) * Rational(1, 80)
+        ev[rare].should eq Rational(1, 4) * Rational(1, 8) * Rational(1, 80)
+        ev[timeshifted].should eq Rational(1, 4) * Rational(1, 8) * Rational(1, 121)
+      end
     end
   end
 end

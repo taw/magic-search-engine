@@ -234,4 +234,29 @@ class CardSheetFactory
       [from_query("e:#{set_code} r:mythic -is:dfc"), 1],
     )
   end
+
+  def tsts
+    from_query("e:tsts", 121)
+  end
+
+  # Can't find any information.
+  # So just making up something: basic foils are in packs (even though basics aren't),
+  # and tsts replaces 1/4 of foil commons
+  def ts_foil
+    sheets = [
+      rarity("ts", "rare", foil: true),
+      rarity("ts", "uncommon", foil: true),
+      rarity("ts", "basic", foil: true),
+      rarity("ts", "common", foil: true),
+      from_query("e:tsts", 121, foil: true),
+    ]
+    weights = [
+      1,
+      2,
+      1,
+      3,
+      1,
+    ]
+    CardSheet.new(sheets, weights)
+  end
 end
