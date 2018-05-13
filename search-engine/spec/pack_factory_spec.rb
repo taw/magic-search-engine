@@ -91,4 +91,36 @@ describe PackFactory do
       end
     end
   end
+
+  context "Unhinged" do
+    let(:pack) { factory.for("uh") }
+    let(:ev) { pack.expected_values }
+    let(:basic) { physical_card("e:uh forest", foil) }
+    let(:common) { physical_card("e:uh awol", foil) }
+    let(:uncommon) { physical_card("e:uh cheatyface", foil) }
+    let(:rare) { physical_card("e:uh ambiguity", foil) }
+    let(:super_secret_tech) { physical_card("e:uh super secret tech", foil) }
+
+    context "normal" do
+      let(:foil) { false }
+      it do
+        ev[basic].should eq Rational(1,5)
+        ev[common].should eq Rational(975,100) * Rational(1,55)
+        ev[uncommon].should eq Rational(3,40)
+        ev[rare].should eq Rational(1,40)
+        ev[super_secret_tech].should eq 0
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+      it do
+        ev[basic].should eq Rational(1,4) * Rational(1,8) * Rational(1,5)
+        ev[common].should eq Rational(1,4) * Rational(4,8) * Rational(1,55)
+        ev[uncommon].should eq Rational(1,4) * Rational(2,8) * Rational(1,40)
+        ev[rare].should eq Rational(1,4) * Rational(1,8) * Rational(1,41)
+        ev[super_secret_tech].should eq Rational(1,4) * Rational(1,8) * Rational(1,41)
+      end
+    end
+  end
 end
