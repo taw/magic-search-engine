@@ -4,6 +4,10 @@ class PackFactory
     @sheet_factory = CardSheetFactory.new(@db)
   end
 
+  def inspect
+    "#{self.class}"
+  end
+
   # This is a bit of a mess
   private def build_pack(set_code, distribution, has_random_foil: false, common_if_no_basic: false)
     # Based on https://www.reddit.com/r/magicTCG/comments/snzvt/simple_avr_sealed_simulator_i_just_made/c4fk0sr/
@@ -44,20 +48,12 @@ class PackFactory
       @sheet_factory.common_or_basic(set_code)
     when :foil
       @sheet_factory.foil_sheet(set_code)
-    when :u3u2
-      @sheet_factory.u3u2(set_code)
-    when :u3u1
-      @sheet_factory.u3u1(set_code)
-    when :u2u1
-      @sheet_factory.u2u1(set_code)
-    when :dgm_land
-      @sheet_factory.dgm_land
-    when :dgm_common
-      @sheet_factory.dgm_common
-    when :dgm_rare_mythic
-      @sheet_factory.dgm_rare_mythic
-    when :unhinged_foil
-      @sheet_factory.unhinged_foil
+    # Various old sheets
+    when :u3u2, :u3u1, :u2u1
+      @sheet_factory.send(name, set_code)
+    # Various special sheets
+    when :dgm_land, :frf_land, :dgm_common, :frf_common, :dgm_rare_mythic, :unhinged_foil, :theros_gods
+      @sheet_factory.send(name)
     else
       raise "Unknown sheet type #{name}"
     end
@@ -108,7 +104,7 @@ class PackFactory
       "som", "mbs", "nph",
       "avr",
       "rtr", "gtc",
-      "ths", "bng", "jou",
+      "ths", "bng",
       "ktk", "dtk",
       "tpr", "med", "me2", "me3", "me4",
       # They have DFCs but no separate slot for DFCs
@@ -128,10 +124,20 @@ class PackFactory
         build_pack(set_code, {dgm_common: 10, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1}) => 3,
         build_pack(set_code, {dgm_common: 9, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1, foil: 1}) => 1,
       )
+    when "frf"
+      WeightedPack.new(
+        build_pack(set_code, {frf_common: 10, uncommon: 3, rare_or_mythic: 1, frf_land: 1}) => 3,
+        build_pack(set_code, {frf_common: 9, uncommon: 3, rare_or_mythic: 1, frf_land: 1, foil: 1}) => 1,
+      )
     when "uh"
       WeightedPack.new(
         build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, basic: 1}) => 3,
         build_pack(set_code, {common: 9, uncommon: 3, rare_or_mythic: 1, basic: 1, unhinged_foil: 1}) => 1
+      )
+    when "jou"
+      WeightedPack.new(
+        build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true, common_if_no_basic: true) => 4319,
+        build_pack(set_code, {theros_gods: 15}) => 1,
       )
     # These are just approximations, they actually used nonstandard sheets
     when "al", "be", "un", "rv", "ia"

@@ -3,6 +3,10 @@ class CardSheetFactory
     @db = db
   end
 
+  def inspect
+    "#{self.class}"
+  end
+
   def mix_sheets(*sheets)
     sheets = sheets.select{|s,w| s}
     return nil if sheets.size == 0
@@ -171,15 +175,18 @@ class CardSheetFactory
     CardSheet.new(sheets, weights)
   end
 
-  def ktk_fetchland_sheet
-    from_query("e:ktk is:fetchland", 10)
+  def frf_land
+    mix_sheets(
+      [from_query("e:ktk is:fetchland", 5), 2],  #  1 / 24
+      [from_query("e:frf is:gainland", 10), 23], # 23 / 24
+    )
   end
 
-  def frf_gainlands
-    from_query("e:frf is:gainland", 10)
+  def frf_common
+    from_query("e:frf r:common -is:gainland", 60)
   end
 
-  def god_sheet
+  def theros_gods
     from_query("t:god b:theros", 15)
   end
 end
