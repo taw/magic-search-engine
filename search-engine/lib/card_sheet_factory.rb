@@ -189,4 +189,49 @@ class CardSheetFactory
   def theros_gods
     from_query("t:god b:theros", 15)
   end
+
+  # https://www.mtgsalvation.com/forums/magic-fundamentals/magic-general/327956-innistrad-block-transforming-card-pack-odds#c4
+  # ISD: 121 card sheet
+  # 1 Mythic printed 1 time = 1 total. 1/121 odds.
+  # 6 Rares printed 2 times = 12 total. 2/121 odds.
+  # 7 Uncommons printed 6 times = 42 total. 6/121 odds.
+  # 6 Commons printed 11 times = 66 total. 11/121 odds.
+
+  # DKA: 80 card sheet
+  # 2 Mythics printed 1 time = 2 total. 1/80 odds.
+  # 3 Rares printed 2 times = 6 total. 2/80 odds.
+  # 4 Uncommons printed 6 times = 24 total. 6/80 odds.
+  # 4 Commons printed 12 times = 48 total. 12/80 odds
+  def isd_dfc
+    mix_sheets(
+      [from_query("e:isd is:dfc r:mythic", 1), 1],
+      [from_query("e:isd is:dfc r:rare", 6), 2],
+      [from_query("e:isd is:dfc r:uncommon", 7), 6],
+      [from_query("e:isd is:dfc r:common", 6), 11],
+    )
+  end
+
+  def dka_dfc
+    mix_sheets(
+      [from_query("e:dka is:dfc r:mythic", 2), 1],
+      [from_query("e:dka is:dfc r:rare", 3), 2],
+      [from_query("e:dka is:dfc r:uncommon", 4), 6],
+      [from_query("e:dka is:dfc r:common", 4), 12],
+    )
+  end
+
+  def sfc_common(set_code)
+    from_query("e:#{set_code} r:common -is:dfc")
+  end
+
+  def sfc_uncommon(set_code)
+    from_query("e:#{set_code} r:uncommon -is:dfc")
+  end
+
+  def sfc_rare_or_mythic(set_code)
+    mix_sheets(
+      [from_query("e:#{set_code} r:rare -is:dfc"), 2],
+      [from_query("e:#{set_code} r:mythic -is:dfc"), 1],
+    )
+  end
 end

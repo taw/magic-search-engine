@@ -49,10 +49,11 @@ class PackFactory
     when :foil
       @sheet_factory.foil_sheet(set_code)
     # Various old sheets
-    when :u3u2, :u3u1, :u2u1
+    when :u3u2, :u3u1, :u2u1, :sfc_common, :sfc_uncommon, :sfc_rare_or_mythic
       @sheet_factory.send(name, set_code)
     # Various special sheets
-    when :dgm_land, :frf_land, :dgm_common, :frf_common, :dgm_rare_mythic, :unhinged_foil, :theros_gods
+    when :dgm_land, :frf_land, :dgm_common, :frf_common, :dgm_rare_mythic, :unhinged_foil, :theros_gods,
+         :isd_dfc, :dka_dfc
       @sheet_factory.send(name)
     else
       raise "Unknown sheet type #{name}"
@@ -138,6 +139,16 @@ class PackFactory
       WeightedPack.new(
         build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true, common_if_no_basic: true) => 4319,
         build_pack(set_code, {theros_gods: 15}) => 1,
+      )
+    when "isd"
+      WeightedPack.new(
+        build_pack(set_code, {isd_dfc: 1, basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1}) => 3,
+        build_pack(set_code, {isd_dfc: 1, basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_or_mythic: 1, foil: 1}) => 1,
+      )
+    when "dka"
+      WeightedPack.new(
+        build_pack(set_code, {dka_dfc: 1, sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1}) => 3,
+        build_pack(set_code, {dka_dfc: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, foil: 1}) => 1,
       )
     # These are just approximations, they actually used nonstandard sheets
     when "al", "be", "un", "rv", "ia"
