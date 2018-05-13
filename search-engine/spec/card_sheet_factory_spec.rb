@@ -87,7 +87,7 @@ describe CardSheetFactory do
       (10*land_sheet.probabilities[guildgate_card]).should eq Rational(115, 121)
     end
 
-    it "Rarities on other sheets (corrected for land sheet and splitc cards)" do
+    it "Rarities on other sheets (corrected for land sheet and split cards)" do
       common_sheet.probabilities[common_card].should eq Rational(1, 60)
       uncommon_sheet.probabilities[uncommon_card].should eq Rational(1, 40)
       rare_mythic_sheet.probabilities[rare_card].should eq Rational(2, 80)

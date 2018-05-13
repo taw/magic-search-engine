@@ -53,7 +53,7 @@ class PackFactory
       @sheet_factory.send(name, set_code)
     # Various special sheets
     when :dgm_land, :frf_land, :dgm_common, :frf_common, :dgm_rare_mythic, :unhinged_foil, :theros_gods,
-         :isd_dfc, :dka_dfc
+         :isd_dfc, :dka_dfc, :tsts, :ts_foil
       @sheet_factory.send(name)
     else
       raise "Unknown sheet type #{name}"
@@ -75,8 +75,6 @@ class PackFactory
       build_pack(set_code, {basic: 1, common: 6, uncommon: 2, rare: 1})
     when "7e", "8e", "9e", "10e"
       build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare: 1}, has_random_foil: true)
-    when "lw", "mt", "shm", "eve"
-      build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1}, has_random_foil: true)
     # Default configuration before mythics
     # Back then there was no crazy variation
     # 6ed came out after foils started, but didn't have foils
@@ -95,7 +93,8 @@ class PackFactory
       "mi", "ds", "5dn",
       "chk", "bok", "sok",
       "rav", "gp", "di",
-      "cs"
+      "cs",
+      "lw", "mt", "shm", "eve"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1}, has_random_foil: true)
     # Default configuration since mythics got introduced
     # A lot of sets don't fit this
@@ -149,6 +148,13 @@ class PackFactory
       WeightedPack.new(
         build_pack(set_code, {dka_dfc: 1, sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1}) => 3,
         build_pack(set_code, {dka_dfc: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, foil: 1}) => 1,
+      )
+    when "ts"
+      # 10 commons, 3 uncommons, 1 rare, and 1 purple-rarity timeshifted card.
+      # Basics don't fit anywhere
+      WeightedPack.new(
+        build_pack(set_code, {common: 9, uncommon: 3, rare: 1, tsts: 1, ts_foil: 1}) => 1,
+        build_pack(set_code, {common: 10, uncommon: 3, rare: 1, tsts: 1}) => 3,
       )
     # These are just approximations, they actually used nonstandard sheets
     when "al", "be", "un", "rv", "ia"
