@@ -271,4 +271,12 @@ shared_context "db" do |*sets|
   def cards_matching(&block)
     db.cards.values.select(&block).map(&:name)
   end
+
+  # If more than 1 returned, assuming it doesn't matter, and picking first by the usual order
+  # (like with basic from same set)
+  def physical_card(query, foil=false)
+    card_printings = db.search(query).printings
+    raise "No card matching #{query.inspect}" if card_printings.empty?
+    PhysicalCard.for(card_printings[0], foil)
+  end
 end
