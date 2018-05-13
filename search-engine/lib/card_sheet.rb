@@ -63,24 +63,25 @@ class CardSheet
     result.to_a
   end
 
-  def probability(card=nil, &block)
-    if card
-      raise ArgumentError, "Pass card or block, not both" if block
-      return probability{|c| c == card}
-    end
-    raise ArgumentError, "Pass card or block, not both" unless block
-    num = 0
-    den = 0
+  ### Testing support
+
+  def probabilities
+    result = Hash.new(Rational(0,1))
     @elements.each_with_index do |element, i|
-      prob = @weights ? @weights[i] : 1
-      num += prob * (if element.is_a?(CardSheet)
-        element.probability(&block)
+      if @weights
+        probability = Rational(@weights[i], @total_weight)
       else
-        yield(element) ? 1 : 0
-      end)
-      den += prob
+        probability = Rational(1, @total_weight)
+      end
+      if element.is_a?(CardSheet)
+        element.probabilities.each do |card, subsheet_probability|
+          result[card] += probability * subsheet_probability
+        end
+      else
+        result[element] += probability
+      end
     end
-    Rational(num, den)
+    result
   end
 
   class << self
@@ -92,8 +93,8 @@ class CardSheet
       new(sheets.map(&:first), sheets.map{|s,w| s.elements.size * w})
     end
 
-    def from_query(db, query, assert_count=nil)
-      cards = db.search("++ #{query}").printings.map{|c| PhysicalCard.for(c)}
+    def from_query(db, query, assert_count=nil, foil: false)
+      cards = db.search("++ #{query}").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
       if assert_count and assert_count != cards.size
         raise "Expected query #{query} to return #{assert_count}, got #{cards.size}"
       end
@@ -220,6 +221,17 @@ class CardSheet
       )
     end
 
+    def dgm_common_sheet(db)
+      from_query(db, "e:dgm r:common -t:gate", 60)
+    end
+
+    def dgm_rare_mythic_sheet(db)
+      mix_sheets(
+        [from_query(db, "e:dgm r:rare", 35), 2],
+        [from_query(db, "e:dgm r:mythic -(maze end)", 10), 1]
+      )
+    end
+
     def ktk_fetchland_sheet(db)
       from_query(db, "e:ktk is:fetchland", 10)
     end
@@ -229,7 +241,7 @@ class CardSheet
     end
 
     def unhinged_foil_rares(db)
-      from_query(db, "e:uh r>=rare", 44+1)
+      from_query(db, "e:uh r>=rare", 40+1, foil: true)
     end
   end
 end

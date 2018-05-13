@@ -19,14 +19,6 @@ describe Pack do
     end
   end
 
-  it "Opening packs should return something" do
-    db.sets.each do |set_code, set|
-      pack = Pack.for(db, set_code)
-      next unless pack
-      pack.open
-    end
-  end
-
   # There's no way this is accurate, we're just approximating foils
   it "Every set with foils has all cards available as foils" do
     db.sets.each do |set_code, set|
