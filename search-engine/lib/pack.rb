@@ -57,6 +57,8 @@ class Pack
     end
   end
 
+  ### Testing support
+
   def cards_on_nonfoil_sheets
     distribution.keys.flat_map{|k| sheet(k).cards}
   end
@@ -64,6 +66,8 @@ class Pack
   def number_of_cards_on_nonfoil_sheets
     cards_on_nonfoil_sheets.size
   end
+
+  ### Maybe some of the information below should move to indexer?
 
   def self.for(db, set_code)
     set = db.resolve_edition(set_code)
