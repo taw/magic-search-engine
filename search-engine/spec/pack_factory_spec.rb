@@ -123,4 +123,67 @@ describe PackFactory do
       end
     end
   end
+
+  context "Fate Reforged" do
+    let(:pack) { factory.for("frf") }
+    let(:ev) { pack.expected_values }
+    let(:basic) { physical_card("e:frf forest", foil) }
+    let(:gainland) { physical_card("e:frf blossoming sands", foil) }
+    let(:common) { physical_card("e:frf abzan runemark", foil) }
+    let(:uncommon) { physical_card("e:frf break through the line", foil) }
+    let(:rare) { physical_card("e:frf atarka world render", foil) }
+    let(:mythic) { physical_card("e:frf soulfire grand master", foil) }
+    let(:fetchland) { physical_card("e:ktk flooded strand", foil) }
+
+    context "normal" do
+      let(:foil) { false }
+
+      it do
+        # Basics only in fat packs - also 2 of each type
+        ev[basic].should eq 0
+        ev[gainland].should eq Rational(23, 240)
+        # 2/121 - change of each shock in KTK
+        # This is supposed to be half, 120 has a bit easier math
+        ev[fetchland].should eq Rational(1, 120)
+        ev[common].should eq Rational(975, 100) * Rational(1, 60)
+        ev[uncommon].should eq Rational(3, 60)
+        ev[rare].should eq Rational(2, 80)
+        ev[mythic].should eq Rational(1, 80)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+
+      # So many questionable assumptions go into this
+      it do
+        # Definitely no fetchlands
+        ev[fetchland].should eq 0
+        ev[basic].should eq Rational(1,4) * Rational(1,8) * Rational(1,10)
+        ev[gainland].should eq Rational(1,4) * Rational(4,8) * Rational(1,70)
+        ev[common].should eq Rational(1,4) * Rational(4,8) * Rational(1,70)
+        ev[uncommon].should eq Rational(1,4) * Rational(2,8) * Rational(1,60)
+        ev[rare].should eq Rational(1,4) * Rational(1,8) * Rational(2,80)
+        ev[mythic].should eq Rational(1,4) * Rational(1,8) * Rational(1,80)
+      end
+    end
+  end
+
+  context "Journey Into Nyx" do
+    let(:pack) { factory.for("jou") }
+    let(:ev) { pack.expected_values }
+    let(:old_gods) { db.search("t:god e:ths,bng").printings.map{|c| PhysicalCard.for(c) } }
+    let(:new_gods) { db.search("t:god e:jou").printings.map{|c| PhysicalCard.for(c) } }
+    let(:rate) { 4320 }
+
+    # Not the clearest test as they appear all together
+    it "God Packs" do
+      old_gods.each do |god|
+        ev[god].should eq Rational(1, rate)
+      end
+      new_gods.each do |god|
+        ev[god].should eq Rational(1, rate) + Rational(1, 80) * Rational(rate - 1, rate)
+      end
+    end
+  end
 end
