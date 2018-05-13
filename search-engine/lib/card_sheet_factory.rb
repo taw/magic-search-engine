@@ -132,7 +132,7 @@ class CardSheetFactory
 
   ### These are really unique sheets
 
-  def dgm_land_sheet
+  def dgm_land
     mix_sheets(
       [from_query("is:shockland e:rtr,gtc", 10), 1], # 10 / 242
       [from_query("e:dgm t:gate", 10), 23],          # 230 / 242
@@ -140,15 +140,35 @@ class CardSheetFactory
     )
   end
 
-  def dgm_common_sheet
+  def dgm_common
     from_query("e:dgm r:common -t:gate", 60)
   end
 
-  def dgm_rare_mythic_sheet
+  def dgm_rare_mythic
     mix_sheets(
       [from_query("e:dgm r:rare", 35), 2],
       [from_query("e:dgm r:mythic -(maze end)", 10), 1]
     )
+  end
+
+  def unhinged_foil_rares
+    from_query("e:uh r>=rare", 40+1, foil: true)
+  end
+
+  def unhinged_foil
+    sheets = [
+      unhinged_foil_rares,
+      rarity("uh", "uncommon", foil: true),
+      rarity("uh", "basic", foil: true),
+      rarity("uh", "common", foil: true),
+    ]
+    weights = [
+      1,
+      2,
+      1,
+      4,
+    ]
+    CardSheet.new(sheets, weights)
   end
 
   def ktk_fetchland_sheet
@@ -159,7 +179,7 @@ class CardSheetFactory
     from_query("e:frf is:gainland", 10)
   end
 
-  def unhinged_foil_rares
-    from_query("e:uh r>=rare", 40+1, foil: true)
+  def god_sheet
+    from_query("t:god b:theros", 15)
   end
 end

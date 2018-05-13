@@ -50,6 +50,14 @@ class PackFactory
       @sheet_factory.u3u1(set_code)
     when :u2u1
       @sheet_factory.u2u1(set_code)
+    when :dgm_land
+      @sheet_factory.dgm_land
+    when :dgm_common
+      @sheet_factory.dgm_common
+    when :dgm_rare_mythic
+      @sheet_factory.dgm_rare_mythic
+    when :unhinged_foil
+      @sheet_factory.unhinged_foil
     else
       raise "Unknown sheet type #{name}"
     end
@@ -115,6 +123,16 @@ class PackFactory
       build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true, common_if_no_basic: true)
     when "mma", "mm2", "mm3", "ema", "ima", "a25"
       build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, foil: 1})
+    when "dgm"
+      WeightedPack.new(
+        build_pack(set_code, {dgm_common: 10, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1}) => 3,
+        build_pack(set_code, {dgm_common: 9, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1, foil: 1}) => 1,
+      )
+    when "uh"
+      WeightedPack.new(
+        build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, basic: 1}) => 3,
+        build_pack(set_code, {common: 9, uncommon: 3, rare_or_mythic: 1, basic: 1, unhinged_foil: 1}) => 1
+      )
     # These are just approximations, they actually used nonstandard sheets
     when "al", "be", "un", "rv", "ia"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
