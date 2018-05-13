@@ -194,4 +194,34 @@ describe CardSheetFactory do
       "Woodland Bellower"
     ])
   end
+
+  context "Innistrad" do
+    let(:probabilities) { factory.isd_dfc.probabilities }
+    let(:mythic) { physical_card("e:isd Garruk Relentless") }
+    let(:rare) { physical_card("e:isd Bloodline Keeper") }
+    let(:uncommon) { physical_card("e:isd Civilized Scholar") }
+    let(:common) { physical_card("e:isd Delver of Secrets") }
+
+    it do
+      probabilities[mythic].should eq Rational(1, 121)
+      probabilities[rare].should eq Rational(2, 121)
+      probabilities[uncommon].should eq Rational(6, 121)
+      probabilities[common].should eq Rational(11, 121)
+    end
+  end
+
+  context "Dark Ascension" do
+    let(:probabilities) { factory.dka_dfc.probabilities }
+    let(:mythic) { physical_card("e:dka Elbrus, the Binding Blade") }
+    let(:rare) { physical_card("e:dka Ravenous Demon") }
+    let(:uncommon) { physical_card("e:dka Soul Seizer") }
+    let(:common) { physical_card("e:dka Chosen of Markov") }
+
+    it do
+      probabilities[mythic].should eq Rational(1, 80)
+      probabilities[rare].should eq Rational(2, 80)
+      probabilities[uncommon].should eq Rational(6, 80)
+      probabilities[common].should eq Rational(12, 80)
+    end
+  end
 end

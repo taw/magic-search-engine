@@ -186,4 +186,36 @@ describe PackFactory do
       end
     end
   end
+
+  context "Innistrad" do
+    let(:pack) { factory.for("isd") }
+    let(:ev) { pack.expected_values }
+    let(:dfc_mythic) { physical_card("e:isd Garruk Relentless") }
+    let(:sfc_mythic) { physical_card("e:isd Army of the Damned") }
+    let(:foil_dfc_mythic) { physical_card("e:isd Garruk Relentless", true) }
+    let(:foil_sfc_mythic) { physical_card("e:isd Army of the Damned", true) }
+
+    it do
+      ev[dfc_mythic].should eq Rational(1, 121)
+      ev[sfc_mythic].should eq Rational(1, 121)
+      ev[foil_dfc_mythic].should eq Rational(1, 4288)
+      ev[foil_sfc_mythic].should eq Rational(1, 4288)
+    end
+  end
+
+  context "Dark Ascension" do
+    let(:pack) { factory.for("dka") }
+    let(:ev) { pack.expected_values }
+    let(:dfc_mythic) { physical_card("e:dka Elbrus, the Binding Blade") }
+    let(:sfc_mythic) { physical_card("e:dka Beguiler of Wills") }
+    let(:foil_dfc_mythic) { physical_card("e:dka Elbrus, the Binding Blade", true) }
+    let(:foil_sfc_mythic) { physical_card("e:dka Beguiler of Wills", true) }
+
+    it do
+      ev[dfc_mythic].should eq Rational(1, 80)
+      ev[sfc_mythic].should eq Rational(1, 80)
+      ev[foil_dfc_mythic].should eq Rational(1, 2816)
+      ev[foil_sfc_mythic].should eq Rational(1, 2816)
+    end
+  end
 end
