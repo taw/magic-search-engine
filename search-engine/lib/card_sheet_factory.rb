@@ -259,4 +259,32 @@ class CardSheetFactory
     ]
     CardSheet.new(sheets, weights)
   end
+
+
+  def pc_common
+    from_query("e:pc r:common -is:colorshifted", 40)
+  end
+
+  def pc_uncommon
+    from_query("e:pc r:uncommon -is:colorshifted", 40)
+  end
+
+  def pc_rare
+    from_query("e:pc r:rare -is:colorshifted", 40)
+  end
+
+  def pc_cs_common
+    from_query("e:pc r:common is:colorshifted", 20)
+  end
+
+  def pc_cs_uncommon_rare
+    # Wiki says:
+    # "a timeshifted uncommon being three times more likely than a rare
+    # due to the relative numbers of each in the set"
+    # This translates to 40 card 15xU2/10xU1 style sheet
+    mix_sheets(
+      [from_query("e:pc r:uncommon is:colorshifted", 15), 2],
+      [from_query("e:pc r:rare is:colorshifted", 10), 1],
+    )
+  end
 end
