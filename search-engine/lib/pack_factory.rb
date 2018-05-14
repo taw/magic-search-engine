@@ -53,7 +53,8 @@ class PackFactory
       @sheet_factory.send(name, set_code)
     # Various special sheets
     when :dgm_land, :frf_land, :dgm_common, :frf_common, :dgm_rare_mythic, :unhinged_foil, :theros_gods,
-         :isd_dfc, :dka_dfc, :tsts, :ts_foil
+         :isd_dfc, :dka_dfc, :tsts, :ts_foil,
+         :pc_common, :pc_uncommon, :pc_rare, :pc_cs_common, :pc_cs_uncommon_rare
       @sheet_factory.send(name)
     else
       raise "Unknown sheet type #{name}"
@@ -94,6 +95,7 @@ class PackFactory
       "chk", "bok", "sok",
       "rav", "gp", "di",
       "cs",
+      "fut", # Amazingly Future Sight has regular boring sheets
       "lw", "mt", "shm", "eve"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1}, has_random_foil: true)
     # Default configuration since mythics got introduced
@@ -153,8 +155,14 @@ class PackFactory
       # 10 commons, 3 uncommons, 1 rare, and 1 purple-rarity timeshifted card.
       # Basics don't fit anywhere
       WeightedPack.new(
-        build_pack(set_code, {common: 9, uncommon: 3, rare: 1, tsts: 1, ts_foil: 1}) => 1,
         build_pack(set_code, {common: 10, uncommon: 3, rare: 1, tsts: 1}) => 3,
+        build_pack(set_code, {common: 9, uncommon: 3, rare: 1, tsts: 1, ts_foil: 1}) => 1,
+      )
+    when "pc"
+      # 8 commons, 2 uncommons, 1 rare, 3 timeshifted commons, and 1 uncommon or rare timeshifted card.s
+      WeightedPack.new(
+        build_pack(set_code, {pc_common: 8, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1}) => 3,
+        build_pack(set_code, {pc_common: 7, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1, foil: 1}) => 1,
       )
     # These are just approximations, they actually used nonstandard sheets
     when "al", "be", "un", "rv", "ia"

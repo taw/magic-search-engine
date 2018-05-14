@@ -23,7 +23,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[dgm uh jou frf].include?(set_code)
+      next if %W[dgm uh jou frf ts].include?(set_code)
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = factory.for(set_code)
       next unless pack
@@ -225,10 +225,10 @@ describe PackFactory do
     let(:basic) { physical_card("e:ts forest", foil) }
     let(:common) { physical_card("e:ts bonesplitter sliver", foil) }
     let(:uncommon) { physical_card("e:ts dread return", foil) }
-    let(:rare) { physical_card("e:ts academy uins", foil) }
+    let(:rare) { physical_card("e:ts academy ruins", foil) }
     let(:timeshifted) { physical_card("e:tsts akroma", foil) }
 
-    context "foil" do
+    context "non-foil" do
       let(:foil) { false }
       it do
         ev[basic].should eq 0
@@ -247,6 +247,46 @@ describe PackFactory do
         ev[uncommon].should eq Rational(1, 4) * Rational(2, 8) * Rational(1, 80)
         ev[rare].should eq Rational(1, 4) * Rational(1, 8) * Rational(1, 80)
         ev[timeshifted].should eq Rational(1, 4) * Rational(1, 8) * Rational(1, 121)
+      end
+    end
+  end
+
+  context "Planar Chaos" do
+    let(:pack) { factory.for("pc") }
+    let(:ev) { pack.expected_values }
+    let(:common) { physical_card("e:pc Mire Boa", foil) }
+    let(:uncommon) { physical_card("e:pc Necrotic Sliver", foil) }
+    let(:rare) { physical_card("e:pc Akroma, Angel of Fury", foil) }
+    let(:cs_common) { physical_card("e:pc Brute Force", foil) }
+    let(:cs_uncommon) { physical_card("e:pc Blood Knight", foil) }
+    let(:cs_rare) { physical_card("e:pc Damnation", foil) }
+
+    context "non-foil" do
+      let(:foil) { false }
+      it do
+        # Even in nonfoil packs (foiling assumes replaces regular common)
+        # 8/40 != 3/20
+        ev[common].should eq Rational(775, 100) * Rational(1, 40)
+        ev[cs_common].should eq Rational(3, 1) * Rational(1, 20)
+        # Same 1/20
+        ev[uncommon].should eq Rational(2, 40)
+        ev[cs_uncommon].should eq Rational(3, 4) * Rational(1, 15)
+        # Same 1/40
+        ev[rare].should eq Rational(1, 40)
+        ev[cs_rare].should eq Rational(1, 4) * Rational(1, 10)
+      end
+    end
+
+    # Foil rates in atypical sets are a total guess as usual
+    context "foil" do
+      let(:foil) { true }
+      it do
+        ev[common].should eq Rational(1, 4) * Rational(5, 8) * Rational(1, 40+20)
+        ev[cs_common].should eq Rational(1, 4) * Rational(5, 8) * Rational(1, 40+20)
+        ev[uncommon].should eq Rational(1, 4) * Rational(2, 8) * Rational(1, 40+15)
+        ev[cs_uncommon].should eq Rational(1, 4) * Rational(2, 8) * Rational(1, 40+15)
+        ev[rare].should eq Rational(1, 4) * Rational(1, 8) * Rational(1, 40+10)
+        ev[cs_rare].should eq Rational(1, 4) * Rational(1, 8) * Rational(1, 40+10)
       end
     end
   end
