@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/card_database"
+
+db = CardDatabase.load
+factory = PackFactory.new(db)
+
+db.sets.each do |set_code, set|
+  pack = factory.for(set_code) or next
+  ev = pack.expected_values
+  ev.sort_by{|c,v| [c.set.code, c.number.to_i, c.number, c.foil ? 1 : 0]}.each do |card, rate|
+    name = "#{card.name} [#{card.set.code}/#{card.number}#{ card.foil ? "/foil" : ""}]"
+    puts "#{set_code} #{name} #{rate}"
+  end
+end
