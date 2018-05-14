@@ -23,7 +23,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[dgm uh jou frf ts].include?(set_code)
+      next if %W[dgm uh jou frf ts cns].include?(set_code)
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = factory.for(set_code)
       next unless pack
@@ -34,6 +34,9 @@ describe PackFactory do
 
   it "Every set with foils has all cards available as foils" do
     db.sets.each do |set_code, set|
+      # Some sets don't follow these rules
+      # They should have own tests
+      next if %W[ts csn].include?(set_code)
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = factory.for(set_code)
       next unless pack
@@ -287,6 +290,44 @@ describe PackFactory do
         ev[cs_uncommon].should eq Rational(1, 4) * Rational(2, 8) * Rational(1, 40+15)
         ev[rare].should eq Rational(1, 4) * Rational(1, 8) * Rational(1, 40+10)
         ev[cs_rare].should eq Rational(1, 4) * Rational(1, 8) * Rational(1, 40+10)
+      end
+    end
+  end
+
+    context "Vintage Masters" do
+    let(:pack) { factory.for("vma") }
+    let(:ev) { pack.expected_values }
+    let(:common) { physical_card("e:vma r:common", foil) }
+    let(:uncommon) { physical_card("e:vma r:uncommon", foil) }
+    let(:rare) { physical_card("e:vma r:rare", foil) }
+    let(:mythic) { physical_card("e:vma r:mythic", foil) }
+    let(:special) { physical_card("e:vma r:special", foil) }
+
+    context "non-foil" do
+      let(:foil) { false }
+      it do
+        ev[common].should eq Rational(10, 101)
+        ev[uncommon].should eq Rational(3, 80)
+        ev[rare].should eq Rational(2, 240)
+        ev[mythic].should eq Rational(1, 240)
+        ev[special].should eq Rational(1, 480)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+      it do
+        # Numbers based on "non-foil power 9 twice as frequent as a mythic"
+        # Actuall they say "about as", so these probably should definitely be rounded
+        # in some sensible way
+        #
+        # Then again, it's a digital-only product, so normal print sheet constraints
+        # don't affect it
+        ev[common].should eq Rational(471, 480) * Rational(5, 8) * Rational(1, 101)
+        ev[uncommon].should eq Rational(471, 480) * Rational(2, 8) * Rational(1, 80)
+        ev[rare].should eq Rational(471, 480) * Rational(1, 8) * Rational(4, 489)
+        ev[mythic].should eq Rational(471, 480) * Rational(1, 8) * Rational(2, 489)
+        ev[special].should eq Rational(471, 480) * Rational(1, 8) * Rational(1, 489)
       end
     end
   end

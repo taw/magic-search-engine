@@ -54,7 +54,8 @@ class PackFactory
     # Various special sheets
     when :dgm_land, :frf_land, :dgm_common, :frf_common, :dgm_rare_mythic, :unhinged_foil, :theros_gods,
          :isd_dfc, :dka_dfc, :tsts, :ts_foil,
-         :pc_common, :pc_uncommon, :pc_rare, :pc_cs_common, :pc_cs_uncommon_rare
+         :pc_common, :pc_uncommon, :pc_rare, :pc_cs_common, :pc_cs_uncommon_rare,
+         :vma_special
       @sheet_factory.send(name)
     else
       raise "Unknown sheet type #{name}"
@@ -164,6 +165,8 @@ class PackFactory
         build_pack(set_code, {pc_common: 8, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1}) => 3,
         build_pack(set_code, {pc_common: 7, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1, foil: 1}) => 1,
       )
+    when "vma"
+      build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, vma_special: 1})
     # These are just approximations, they actually used nonstandard sheets
     when "al", "be", "un", "rv", "ia"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
