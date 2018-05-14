@@ -46,6 +46,10 @@ class PhysicalCard
     main_front.rarity
   end
 
+  def number
+    main_front.number
+  end
+
   def parts
     [*@front, *@back]
   end
