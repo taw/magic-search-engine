@@ -375,4 +375,47 @@ describe PackFactory do
       end
     end
   end
+
+  context "Eldritch Moon" do
+    let(:pack) { factory.for("emn") }
+    let(:ev) { pack.expected_values }
+    let(:basic) { physical_card("e:emn r:basic", foil) }
+    # Meld cards can have different rarities front/back
+    let(:dfc_common) { physical_card("e:emn is:front r:common (is:dfc or is:meld)", foil) }
+    let(:sfc_common) { physical_card("e:emn is:front r:common -(is:dfc or is:meld)", foil) }
+    let(:dfc_uncommon) { physical_card("e:emn is:front r:uncommon (is:dfc or is:meld)", foil) }
+    let(:sfc_uncommon) { physical_card("e:emn is:front r:uncommon -(is:dfc or is:meld)", foil) }
+    let(:dfc_rare) { physical_card("e:emn is:front r:rare (is:dfc or is:meld)", foil) }
+    let(:sfc_rare) { physical_card("e:emn is:front r:rare -(is:dfc or is:meld)", foil) }
+    let(:dfc_mythic) { physical_card("e:emn is:front r:mythic (is:dfc or is:meld)", foil) }
+    let(:sfc_mythic) { physical_card("e:emn is:front r:mythic -(is:dfc or is:meld)", foil) }
+
+    context "non-foil" do
+      let(:foil) { false }
+      it do
+        ev[sfc_common].should eq Rational(10*32 - 8 - 4, 32) * Rational(1, 70)
+        ev[sfc_uncommon].should eq Rational(3, 60)
+        ev[sfc_rare].should eq Rational(2, 96)
+        ev[sfc_mythic].should eq Rational(1, 96)
+        ev[dfc_common].should eq Rational(3, 22)
+        ev[dfc_uncommon].should eq Rational(1, 22)
+        ev[dfc_rare].should eq Rational(1, 8) * Rational(2, 12)
+        ev[dfc_mythic].should eq Rational(1, 8) * Rational(1, 12)
+      end
+    end
+
+    context "non-foil" do
+      let(:foil) { true }
+      it do
+        ev[sfc_common].should eq Rational(1, 4) * Rational(5, 8) * Rational(1, 74)
+        ev[dfc_common].should eq Rational(1, 4) * Rational(5, 8) * Rational(1, 74)
+        ev[sfc_uncommon].should eq Rational(1, 4) * Rational(2, 8) * Rational(1, 70)
+        ev[dfc_uncommon].should eq Rational(1, 4) * Rational(2, 8) * Rational(1, 70)
+        ev[sfc_rare].should eq Rational(1, 4) * Rational(1, 8) * Rational(2, 108)
+        ev[dfc_rare].should eq Rational(1, 4) * Rational(1, 8) * Rational(2, 108)
+        ev[sfc_mythic].should eq Rational(1, 4) * Rational(1, 8) * Rational(1, 108)
+        ev[dfc_mythic].should eq Rational(1, 4) * Rational(1, 8) * Rational(1, 108)
+      end
+    end
+  end
 end
