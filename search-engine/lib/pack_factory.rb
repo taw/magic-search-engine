@@ -55,7 +55,7 @@ class PackFactory
     when :dgm_land, :frf_land, :dgm_common, :frf_common, :dgm_rare_mythic, :unhinged_foil, :theros_gods,
          :isd_dfc, :dka_dfc, :tsts, :ts_foil,
          :pc_common, :pc_uncommon, :pc_rare, :pc_cs_common, :pc_cs_uncommon_rare,
-         :vma_special
+         :vma_special, :soi_dfc_common_uncommon, :soi_dfc_rare_mythic
       @sheet_factory.send(name)
     else
       raise "Unknown sheet type #{name}"
@@ -167,6 +167,15 @@ class PackFactory
       )
     when "vma"
       build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, vma_special: 1})
+    when "soi"
+      # Assume foil rate (1:4) and rare/mythic dfc rates (1:8) are independent
+      # They probably aren't
+      WeightedPack.new(
+        build_pack(set_code, {basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1}) => 32-3-7-1,
+        build_pack(set_code, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1}) => 3,
+        build_pack(set_code, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1, foil: 1}) => 7,
+        build_pack(set_code, {basic: 1, sfc_common: 7, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1, foil: 1}) => 1,
+      )
     # These are just approximations, they actually used nonstandard sheets
     when "al", "be", "un", "rv", "ia"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})

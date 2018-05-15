@@ -221,17 +221,17 @@ class CardSheetFactory
   end
 
   def sfc_common(set_code)
-    from_query("e:#{set_code} r:common -is:dfc")
+    from_query("e:#{set_code} r:common -is:dfc -is:meld")
   end
 
   def sfc_uncommon(set_code)
-    from_query("e:#{set_code} r:uncommon -is:dfc")
+    from_query("e:#{set_code} r:uncommon -is:dfc -is:meld")
   end
 
   def sfc_rare_or_mythic(set_code)
     mix_sheets(
-      [from_query("e:#{set_code} r:rare -is:dfc"), 2],
-      [from_query("e:#{set_code} r:mythic -is:dfc"), 1],
+      [from_query("e:#{set_code} r:rare -is:dfc -is:meld"), 2],
+      [from_query("e:#{set_code} r:mythic -is:dfc -is:meld"), 1],
     )
   end
 
@@ -305,5 +305,21 @@ class CardSheetFactory
       [1, 2, 5],
     )
     CardSheet.new([power_9, vma_foil], [9, 471])
+  end
+
+  def soi_dfc_common_uncommon
+    # sheet size 32?
+    mix_sheets(
+      [from_query("e:soi r:common is:dfc", 4), 3],
+      [from_query("e:soi r:uncommon is:dfc", 20), 1],
+    )
+  end
+
+  def soi_dfc_rare_mythic
+    # This rate is so standard it's pretty much guaranteed, even if sheet size (15) is weird
+    mix_sheets(
+      [from_query("e:soi r:rare is:dfc", 6), 2],
+      [from_query("e:soi r:mythic is:dfc", 3), 1],
+    )
   end
 end
