@@ -322,4 +322,20 @@ class CardSheetFactory
       [from_query("e:soi r:mythic is:dfc", 3), 1],
     )
   end
+
+  def emn_dfc_common_uncommon
+    # sheet size 22?
+    mix_sheets(
+      [from_query("e:emn r:common is:front (is:dfc or is:meld)", 4), 3],
+      [from_query("e:emn r:uncommon is:front (is:dfc or is:meld)", 10), 1],
+    )
+  end
+
+  def emn_dfc_rare_mythic
+    # sheet size 12?
+    mix_sheets(
+      [from_query("e:emn r:rare is:front (is:dfc or is:meld)", 5), 2],
+      [from_query("e:emn r:mythic is:front (is:dfc or is:meld)", 2), 1],
+    )
+  end
 end

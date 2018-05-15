@@ -55,7 +55,8 @@ class PackFactory
     when :dgm_land, :frf_land, :dgm_common, :frf_common, :dgm_rare_mythic, :unhinged_foil, :theros_gods,
          :isd_dfc, :dka_dfc, :tsts, :ts_foil,
          :pc_common, :pc_uncommon, :pc_rare, :pc_cs_common, :pc_cs_uncommon_rare,
-         :vma_special, :soi_dfc_common_uncommon, :soi_dfc_rare_mythic
+         :vma_special, :soi_dfc_common_uncommon, :soi_dfc_rare_mythic,
+         :emn_dfc_common_uncommon, :emn_dfc_rare_mythic
       @sheet_factory.send(name)
     else
       raise "Unknown sheet type #{name}"
@@ -175,6 +176,14 @@ class PackFactory
         build_pack(set_code, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1}) => 3,
         build_pack(set_code, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1, foil: 1}) => 7,
         build_pack(set_code, {basic: 1, sfc_common: 7, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1, foil: 1}) => 1,
+      )
+    when "emn"
+      # Same assumptions as SOI, except no basics in the set
+      WeightedPack.new(
+        build_pack(set_code, {sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1}) => 32-3-7-1,
+        build_pack(set_code, {sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}) => 3,
+        build_pack(set_code, {sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1, foil: 1}) => 7,
+        build_pack(set_code, {sfc_common: 8, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1, foil: 1}) => 1,
       )
     # These are just approximations, they actually used nonstandard sheets
     when "al", "be", "un", "rv", "ia"
