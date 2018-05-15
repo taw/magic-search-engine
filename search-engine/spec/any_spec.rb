@@ -260,5 +260,10 @@ describe "Any queries" do
     it "vanilla" do
       assert_search_equal "any:vanilla", "is:vanilla"
     end
+
+    it "draft" do
+      # 4 cards with draft in name
+      assert_search_equal "any:draft", "is:draft or draft"
+    end
   end
 end

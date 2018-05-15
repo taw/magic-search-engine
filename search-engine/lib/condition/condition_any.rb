@@ -43,6 +43,8 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsDigital.new
     when "dual"
       @conds << ConditionIsDual.new
+    when "draft"
+      @conds << ConditionIsDraft.new
     when "fastland"
       @conds << ConditionIsFastland.new
     when "fetchland"
