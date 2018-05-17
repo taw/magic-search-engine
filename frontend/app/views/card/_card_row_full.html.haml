@@ -38,8 +38,6 @@
 
     %h5 Links
     %ul
-      %li.infolabel
-        = link_to "Gallery of all printings", card_gallery_path(card)
       - if card.gatherer_link.present?
         %li.infolabel
           %a{href: card.gatherer_link}
