@@ -1,20 +1,27 @@
 describe "Conspiracy" do
-  include_context "db", "cns"
+  include_context "db", "cns", "cn2"
 
   it "conspiracy" do
     assert_search_results 't:conspiracy o:"one mana of any color"',
       "Secrets of Paradise",
+      "Sovereign's Realm",
       "Worldknit"
   end
 
   it "conspiracy cards included by default" do
     assert_search_results 'o:"one mana of any color"',
+      "Birds of Paradise",
+      "Exotic Orchard",
       "Mirrodin's Core",
+      "Opaline Unicorn",
       "Paliano, the High City",
+      "Regal Behemoth",
       "Secrets of Paradise",
+      "Shimmering Grotto",
+      "Sovereign's Realm",
       "Spectral Searchlight",
       "Worldknit"
-  end
+    end
 
   it "! search doesnt require explicit flags" do
     assert_search_results "!Secrets of Paradise", "Secrets of Paradise"
@@ -25,5 +32,12 @@ describe "Conspiracy" do
     assert_search_equal "t:* t:conspiracy", "t:conspiracy"
     assert_count_results "e:cns", 210
     assert_count_results "t:* e:cns", 210
+  end
+
+  it "is:draft" do
+    assert_search_equal "is:draft", "t:conspiracy or o:draft"
+    assert_count_results "e:cns not:draft", 80 + 60 + 35 + 10
+
+    assert_count_results "e:cn2 not:draft", 80 + 60 + 42 + 12
   end
 end

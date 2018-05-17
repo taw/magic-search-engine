@@ -47,8 +47,11 @@ class CardController < ApplicationController
       return
     end
 
+    # Temporary issue with bots
+    raise "Bot issues" if params[:seed]
+
     @title = @search
-    query = Query.new(@search, params[:seed])
+    query = Query.new(@search, params[:random_seed])
     @seed = query.seed
     results = $CardDatabase.search(query)
     @warnings = results.warnings
