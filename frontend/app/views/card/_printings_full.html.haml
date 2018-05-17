@@ -42,3 +42,5 @@
               = link_to_card(printing) do
                 = printing.number
         %span.rarity= "(#{rarity})"
+%p.infolabel
+  = link_to "Gallery of all printings", card_gallery_path(card)
