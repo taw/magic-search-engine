@@ -48,8 +48,7 @@ GLOBAL_KEYS = [
     'toughness',
     'loyalty',
     'reserved',
-    'rulings',
-    'legalities'
+    'rulings'
 ]
 PIDFILE_PATH = pathlib.Path('/var/www/loreseeker.fenhl.net/pidfile')
 
@@ -85,7 +84,7 @@ def name_check(repo_path=None, *, verbose=False):
             for c_card in c_set_info['cards']:
                 for a_card in a_set_info['cards']:
                     if a_card['name'] == c_card['name']:
-                        for key in set(GLOBAL_KEYS) - {'legalities', 'rulings'}: # ignore legalities and rulings keys for now, since they're known to be inconsistent on a large number of cards
+                        for key in set(GLOBAL_KEYS) - {'rulings'}: # ignore rulings key for now, since it's known to be inconsistent on a large number of cards
                             if c_card.get(key) != a_card.get(key):
                                 success = False
                                 verbose_print('\r[FAIL]')
