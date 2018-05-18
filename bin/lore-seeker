@@ -94,9 +94,7 @@ def name_check(repo_path=None, *, verbose=False):
                         for key in set(GLOBAL_KEYS) - {'rulings'}: # ignore rulings key for now, since it's known to be inconsistent on a large number of cards
                             if c_card.get(key) != a_card.get(key):
                                 fail()
-                                verbose_print('[!!!!] mismatched key {} in card {}'.format(key, a_card['name']))
-                                verbose_print('[!!!!] {}: {}'.format(setfile_path.stem, a_card.get(key)))
-                                verbose_print('[!!!!] {}: {}'.format(c_set_code, c_card.get(key)))
+                                verbose_print('[!!!!] mismatched key {} in card {}. {}: {}, {}: {}'.format(key, a_card['name']), setfile_path.stem, a_card.get(key), c_set_code, c_card.get(key))
     if success:
         verbose_print('\r[ ok ]')
     return success
