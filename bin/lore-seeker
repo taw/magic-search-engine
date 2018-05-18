@@ -93,8 +93,20 @@ def name_check(repo_path=None, *, verbose=False):
                     if a_card['name'] == c_card['name']:
                         for key in set(GLOBAL_KEYS) - {'rulings'}: # ignore rulings key for now, since it's known to be inconsistent on a large number of cards
                             if c_card.get(key) != a_card.get(key):
-                                fail()
-                                verbose_print('[!!!!] mismatched key {} in card {}. {}: {}, {}: {}'.format(key, a_card['name'], setfile_path.stem, a_card.get(key), c_set_code, c_card.get(key)))
+                                if key in a_card and key in c_card:
+                                    if c_card[key] != a_card[key] and ((not isinstance(a_card[key], str)) or c_card[key] != a_card[key].replace('\u2212', '-')):
+                                        if key in ('colors', 'colorIdentity') and set(a_card[key]) == set(c_card[key]):
+                                            continue # only order of colors changed
+                                        if key == 'text' and re.sub(' ?\\(.*?\\)', '', c_card[key]) == re.sub(' ?\\(.*?\\)', '', a_card[key].replace('\u2212', '-')):
+                                            continue # only reminder text changed
+                                        fail()
+                                        verbose_print('[!!!!] mismatched key {} in card {}. {}: {}, {}: {}'.format(key, a_card['name'], setfile_path.stem, a_card[key], c_set_code, c_card[key]))
+                                elif key in a_card:
+                                    fail()
+                                    verbose_print('[!!!!] mismatched key {} in card {}. {}: {}, {}: missing'.format(key, a_card['name'], setfile_path.stem, a_card[key], c_set_code))
+                                elif key in c_card:
+                                    fail()
+                                    verbose_print('[!!!!] mismatched key {} in card {}. {}: missing, {}: {}'.format(key, a_card['name'], setfile_path.stem, c_set_code, c_card[key]))
     if success:
         verbose_print('\r[ ok ]')
     return success
