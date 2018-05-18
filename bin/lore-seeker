@@ -142,11 +142,13 @@ def patch_mtg_json(repo_path=None, *, verbose=False):
                 print(file=set_f)
     verbose_print('\r[ ok ]')
 
-def run(*, verbose=False):
+def run(*, do_name_check=True, verbose=False):
     try:
         stage = gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path
         cmd(['git', 'reset-to-remote', '--branch=lore-seeker'], cwd=str(stage), announce=verbose)
         cmd(['git', 'clean', '-d', '--force'], cwd=str(stage), announce=verbose)
+        if do_name_check:
+            name_check(stage, verbose=verbose)
         cmd(['rake', 'rules:update'], cwd=str(stage), announce=verbose)
         patch_mtg_json(stage, verbose=verbose)
         #TODO send reload command to Discord bot
