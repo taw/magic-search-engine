@@ -62,7 +62,7 @@ def cmd(args, *, announce=False, wait=True, check=True, **kwargs):
     else:
         return subprocess.Popen(args, **kwargs)
 
-def do_name_check(repo_path, *, verbose=False):
+def name_check(repo_path, *, verbose=False):
     def verbose_print(*args, **kwargs):
         if verbose:
             print(*args, **kwargs)
