@@ -20,6 +20,7 @@ import gitdir.host.github
 import json
 import os
 import pathlib
+import re
 import shlex
 import signal
 import subprocess
@@ -105,6 +106,8 @@ def name_check(repo_path=None, *, verbose=False):
                                     fail()
                                     verbose_print('[!!!!] mismatched key {} in card {}. {}: {}, {}: missing'.format(key, a_card['name'], setfile_path.stem, a_card[key], c_set_code))
                                 elif key in c_card:
+                                    if key in ('colors', 'colorIdentity') and c_card[key] == []:
+                                        continue # colorless field omitted
                                     fail()
                                     verbose_print('[!!!!] mismatched key {} in card {}. {}: missing, {}: {}'.format(key, a_card['name'], setfile_path.stem, c_set_code, c_card[key]))
     if success:
