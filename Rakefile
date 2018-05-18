@@ -29,7 +29,6 @@ end
 desc "Fetch new mtgjson database"
 task "mtgjson:fetch" do
   sh "indexer/bin/split_mtgjson", "http://mtgjson.com/json/AllSets-x.json"
-  sh "./bin/patch-mtg-json"
 end
 
 desc "Fetch new mtgjson database, then revert known bad ones"
