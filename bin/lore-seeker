@@ -61,11 +61,18 @@ def cmd(args, *, announce=False, wait=True, check=True, **kwargs):
         return subprocess.Popen(args, **kwargs)
 
 def name_check(repo_path=None, *, verbose=False):
+    success = True
+
     def verbose_print(*args, **kwargs):
         if verbose:
             print(*args, **kwargs)
 
-    success = True
+    def fail():
+        nonlocal success
+        if success:
+            success = False
+            verbose_print('\r[FAIL]')
+
     verbose_print('[....] checking for name collisions', end='', flush=True)
     if repo_path is None:
         repo_path = gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path
@@ -75,8 +82,7 @@ def name_check(repo_path=None, *, verbose=False):
         progress = min(4, int(5 * i / len(custom_sets_x)))
         verbose_print('\r[{}{}]'.format('=' * progress, '.' * (4 - progress)), end='', flush=True)
         if (repo_path / 'data' / 'sets' / '{}.json'.format(c_set_code)).exists():
-            success = False
-            verbose_print('\r[FAIL]')
+            fail()
             verbose_print('[!!!!] duplicate set code: {}'.format(c_set_code))
         for setfile_path in (repo_path / 'data' / 'sets').iterdir():
             with setfile_path.open() as set_f:
@@ -86,8 +92,7 @@ def name_check(repo_path=None, *, verbose=False):
                     if a_card['name'] == c_card['name']:
                         for key in set(GLOBAL_KEYS) - {'rulings'}: # ignore rulings key for now, since it's known to be inconsistent on a large number of cards
                             if c_card.get(key) != a_card.get(key):
-                                success = False
-                                verbose_print('\r[FAIL]')
+                                fail()
                                 verbose_print('[!!!!] mismatched key {} in card {}'.format(key, a_card['name']))
                                 verbose_print('[!!!!] {}: {}'.format(setfile_path.stem, a_card.get(key)))
                                 verbose_print('[!!!!] {}: {}'.format(c_set_code, c_card.get(key)))
