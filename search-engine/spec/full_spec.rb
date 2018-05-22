@@ -407,6 +407,10 @@ describe "Full Database Test" do
     assert_search_equal "not:unique", "-is:unique"
   end
 
+  it "is:historic" do
+    assert_search_equal "is:historic", "t:artifact or t:legendary or t:saga"
+  end
+
   it "Oracle unicode" do
     assert_search_equal %Q[o:"Lim-Dûl"], %Q[o:"Lim-Dul"]
     assert_search_results %Q[o:"Lim-Dul"],
