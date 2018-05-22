@@ -106,6 +106,8 @@ def name_check(repo_path=None, *, verbose=False):
                                     fail()
                                     verbose_print('[!!!!] mismatched key {} in card {}. {}: {}, {}: missing'.format(key, a_card['name'], setfile_path.stem, a_card[key], c_set_code))
                                 elif key in c_card:
+                                    if key == 'cmc' and c_card[key] == 0:
+                                        continue # CMC 0 omitted
                                     if key in ('colors', 'colorIdentity') and c_card[key] == []:
                                         continue # colorless field omitted
                                     fail()
