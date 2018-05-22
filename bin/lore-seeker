@@ -184,7 +184,7 @@ def run(*, do_name_check=True, verbose=False):
 if __name__ == '__main__':
     arguments = docopt.docopt(__doc__)
     if arguments['name-check']:
-        name_check(verbose=not arguments['--quiet'])
+        sys.exit(int(not name_check(verbose=not arguments['--quiet'])))
     elif arguments['restart']:
         with PIDFILE_PATH.open() as pidfile:
             pid = int(pidfile.read().strip())
