@@ -190,6 +190,19 @@ class Indexer
       cards[card_name]["printings"].delete_if{|c,| c == "ptc"}
     end
 
+    # Fix missing artists for some Media Inserts
+    {
+      "Alhammarret, High Arbiter" => "Richard Wright",
+      "Dwynen, Gilt-Leaf Daen" => "Steven Belledin",
+      "Hixus, Prison Warden" => "Magali Villenueve",
+      "Kothophed, Soul Hoarder" => "Tianhua X",
+      "Pia and Kiran Nalaar" => "Tyler Jacobson",
+    }.each do |card_name, correct_artist|
+      _, mbp_printing = cards[card_name]["printings"].find{|set,cp| set == "mbp" and cp["artist"] == "???"}
+      raise "Fixed in mtgjson" unless mbp_printing
+      mbp_printing["artist"] = correct_artist
+    end
+
     # Nissa loyalty https://github.com/mtgjson/mtgjson/issues/419
     # https://github.com/mtgjson/mtgjson/issues/320
     cards["Nissa, Steward of Elements"]["loyalty"] = "X"
