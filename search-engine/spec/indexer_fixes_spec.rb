@@ -76,4 +76,8 @@ describe "Indexer Fixes Test" do
       "Plains",
       "Swamp"
   end
+
+  it "No unknown artists" do
+    assert_search_results %Q[a:"?"]
+  end
 end
