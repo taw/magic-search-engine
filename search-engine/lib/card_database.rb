@@ -210,7 +210,7 @@ class CardDatabase
       if artist_name == "JOCK"
         artist_name = "Jock"
       end
-      artist_slug = artist_name.downcase.gsub(/[^a-z]+/, "_")
+      artist_slug = artist_name.downcase.gsub(/[^a-z0-9]+/, "_")
       @artists[artist_slug] ||= Artist.new(artist_name)
       artist = @artists[artist_slug]
       unless artist_name == artist.name

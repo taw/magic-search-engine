@@ -4,7 +4,7 @@ class Artist
 
   def initialize(name)
     @name = name
-    @slug = name.downcase.gsub(/[^a-z]+/, "_")
+    @slug = name.downcase.gsub(/[^a-z0-9]+/, "_")
     @printings = Set[]
   end
 
