@@ -10,4 +10,12 @@ BanList.for_format("custom standard") do
     nil,
     "Reev, Equinox Prophet" => "banned",
   )
+
+  change(
+    "2018-05-26",
+    nil,
+    "Sickening Revival" => "banned",
+    "Cursed by the Veil" => "banned",
+    "Flameblast" => "banned"
+  )
 end
