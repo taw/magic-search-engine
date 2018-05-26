@@ -11,7 +11,7 @@ class TestOrder
     @db.sets.each do |set_code, set|
       printings = set
         .printings
-        .reject{|c| c.secondary} # backside of DFC/meld/flip cards
+        .reject{|c| c.secondary?} # backside of DFC/meld/flip cards
         .reject{|c| c.layout == "split"} # We'd need to merge them into a single object
         .sort_by{|n| [n.number.to_i, n.number] }
       printings.each_cons(2) do |a, b|
