@@ -11,7 +11,7 @@
         .col-12.col-md-10
           = text_field_tag(:q, @search, {class: 'form-control', tabindex: 1, autofocus: @empty_page})
         .col-12.col-md-2
-          = submit_tag("Search", name: nil, class: "btn btn-default")
+          = submit_tag("Search", name: nil, class: "btn btn-outline-primary")
       = yield
       = render "layouts/footer"
   %script
