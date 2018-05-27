@@ -1,10 +1,12 @@
 .decklist
   %header
     .row
-      .col-10
+      .col-9
         %h4= @name
-      .col-2
-        Download
+      .col-3
+        %button.btn.btn-outline-primary
+          = download_link_to_deck(@deck, {download: true}) do
+            Download
   .row
     .col-12
       %div

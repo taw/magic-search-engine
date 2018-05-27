@@ -4,6 +4,14 @@ class DeckController < ApplicationController
     @title = "Preconstructed Decks"
   end
 
+  def download
+    @set = $CardDatabase.sets[params[:set]] or return render_404
+    @deck = @set.decks.find{|d| d.slug == params[:id]} or return render_404
+
+    headers["Content-Disposition"] = "attachment; filename=#{@deck.name}.txt"
+    render plain: @deck.to_text
+  end
+
   def show
     @set = $CardDatabase.sets[params[:set]] or return render_404
     @deck = @set.decks.find{|d| d.slug == params[:id]} or return render_404

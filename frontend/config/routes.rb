@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "help/rules" => "help#rules"
   get "help/contact" => "help#contact"
   get "deck/:set/:id" => "deck#show"
+  get "deck/:set/:id/download" => "deck#download"
   get "deck" => "deck#index"
   get "/" => "card#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
