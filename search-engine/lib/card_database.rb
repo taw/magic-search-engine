@@ -14,6 +14,8 @@ require_relative "pack"
 require_relative "pack_factory"
 require_relative "weighted_pack"
 require_relative "sealed"
+require_relative "deck"
+require_relative "deck_database"
 
 class CardDatabase
   attr_reader :sets, :cards, :blocks, :artists
@@ -40,6 +42,26 @@ class CardDatabase
 
   def printings
     @printings ||= enum_for(:each_printing).to_set
+  end
+
+  def decks
+    @decks ||= @sets.values.flat_map(&:decks)
+  end
+
+  # We also need to include all other cards with same name from same set,
+  # as we don't know which Forest etc. is included
+  def decks_containing(card_printing)
+    set_code = card_printing.set_code
+    name = card_printing.name
+    decks.select do |deck|
+      next unless deck.all_set_codes.include?(set_code)
+      [*deck.cards, *deck.sideboard].any? do |_, physical_card|
+        physical_card.parts.any? do |physical_card_part|
+          physical_card_part.set_code == card_printing.set_code and
+          physical_card_part.name == card_printing.name
+        end
+      end
+    end
   end
 
   def subset(sets)
@@ -79,18 +101,32 @@ class CardDatabase
     matching_name = Set[]
     matching_name_part = Set[]
 
+    normalized_edition = normalize_set_name(edition)
+    normalized_edition_alt = normalize_set_name_alt(edition)
+
     @sets.each do |set_code, set|
+      normalized_set_name = normalize_set_name(set.name)
+      normalized_set_name_alt = normalize_set_name_alt(set.name)
       matching_mci_code      << set if set_code == edition
       matching_gatherer_code << set if set.gatherer_code.downcase == edition
-      matching_name          << set if normalize_name(set.name).downcase == edition
-      matching_name_part     << set if normalize_name(set.name).downcase.include?(edition)
+      matching_name          << set if normalized_set_name == normalized_edition or normalized_set_name_alt == normalized_edition_alt
+      matching_name_part     << set if normalized_set_name.include?(normalized_edition) or normalized_set_name_alt.include?(normalized_edition_alt)
     end
+
     [
       matching_mci_code,
       matching_gatherer_code,
       matching_name,
-      matching_name_part
+      matching_name_part,
     ].find{|s| s.size > 0} || Set[]
+  end
+
+  def normalize_set_name(name)
+    normalize_text(name).downcase.gsub("'s", "s").split(/[^a-z0-9]+/).join(" ")
+  end
+
+  def normalize_set_name_alt(name)
+    normalize_text(name).downcase.gsub("'s", "").split(/[^a-z0-9]+/).join(" ")
   end
 
   def resolve_edition(edition)
@@ -124,15 +160,15 @@ class CardDatabase
 
   private
 
-  def load_from_subset!(db, sets)
+  def load_from_subset!(db, set_codes)
     @blocks = db.blocks
     db.sets.each do |set_code, set|
-      next unless sets.include?(set_code)
+      next unless set_codes.include?(set_code)
       @sets[set_code] = set
     end
     db.cards.each do |card_name, card|
       printings = card.printings.select do |printing|
-        sets.include?(printing.set_code)
+        set_codes.include?(printing.set_code)
       end
       next if printings.empty?
       @cards[card_name] = card.dup
@@ -176,6 +212,7 @@ class CardDatabase
     link_multipart_cards!(multipart_cards)
     setup_artists!
     setup_sort_index!
+    DeckDatabase.new(self).load!
   end
 
   def fix_multipart_cards_color_identity!(color_identity_cache)

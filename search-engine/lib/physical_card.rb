@@ -38,6 +38,10 @@ class PhysicalCard
     main_front.set
   end
 
+  def set_code
+    main_front.set.code
+  end
+
   def in_boosters?
     main_front.in_boosters?
   end

@@ -101,6 +101,8 @@ class QueryTokenizer
         tokens << [:test, ConditionWatermark.new(s[1] || s[2])]
       elsif s.scan(/f\s*[:=]\s*(?:"(.*?)"|([\w\-]+))/i)
         tokens << [:test, ConditionFormat.new(s[1] || s[2])]
+      elsif s.scan(/deck\s*[:=]\s*(?:"(.*?)"|([\w\-]+))/i)
+        tokens << [:test, ConditionDeck.new(s[1] || s[2])]
       elsif s.scan(/b\s*[:=]\s*(?:"(.*?)"|(\w+))/i)
         blocks = [s[1] || s[2]]
         blocks << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|(\w+))/i)

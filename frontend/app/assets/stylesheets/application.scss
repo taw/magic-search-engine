@@ -74,6 +74,11 @@ form.search {
   }
 }
 
+.infolabel {
+  color: #444;
+  font-size: small;
+}
+
 .cardinfo {
   margin-bottom: 0.5em;
   h3.card_title {
@@ -315,6 +320,7 @@ h3 .manacost {
   border: 1px solid black;
   padding: 0.5em;
   header {
+    padding-bottom: 4px;
     border-bottom: 1px solid black;
   }
   h6 {
