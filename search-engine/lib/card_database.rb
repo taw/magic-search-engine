@@ -44,6 +44,10 @@ class CardDatabase
     @printings ||= enum_for(:each_printing).to_set
   end
 
+  def decks
+    @decks ||= @sets.values.flat_map(&:decks)
+  end
+
   def subset(sets)
     # puts "Loading subset: #{sets}"
     self.class.send(:new) do |db|
