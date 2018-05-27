@@ -29,6 +29,10 @@ class Deck
     "Deck<#{set.name} - #{@name} - #{@type}>"
   end
 
+  def all_set_codes
+    @all_set_codes ||= [*@cards, *@sideboard].map{|_,card| card.set_code}.to_set
+  end
+
   def set_code
     @set.code
   end

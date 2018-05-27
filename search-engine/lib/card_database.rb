@@ -48,6 +48,22 @@ class CardDatabase
     @decks ||= @sets.values.flat_map(&:decks)
   end
 
+  # We also need to include all other cards with same name from same set,
+  # as we don't know which Forest etc. is included
+  def decks_containing(card_printing)
+    set_code = card_printing.set_code
+    name = card_printing.name
+    decks.select do |deck|
+      next unless deck.all_set_codes.include?(set_code)
+      [*deck.cards, *deck.sideboard].any? do |_, physical_card|
+        physical_card.parts.any? do |physical_card_part|
+          physical_card_part.set_code == card_printing.set_code and
+          physical_card_part.name == card_printing.name
+        end
+      end
+    end
+  end
+
   def subset(sets)
     # puts "Loading subset: #{sets}"
     self.class.send(:new) do |db|
