@@ -137,4 +137,24 @@ describe Deck do
     deck = db.sets["jou"].decks.find{|d| d.name == "Wrath of the Mortals"}
     deck.to_text.should eq(deck_export)
   end
+
+  it "CardDatabase#decks_containing" do
+    c15_basic_forests = db.search("e:c15 ++ t:basic t:forest").printings
+    c15_basic_forests.size.should eq(4)
+    green_c15_decks = [
+      "Plunder the Graves",
+      "Swell the Host",
+    ]
+    c15_basic_forests.each do |forest|
+      db.decks_containing(forest).map(&:name).should match_array(green_c15_decks)
+    end
+
+    som_arc_trail = db.search("e:som arc trail").printings[0]
+    db.decks_containing(som_arc_trail).map{|deck| [deck.set_name, deck.name, deck.type] }.should eq([
+      ["Scars of Mirrodin", "Relic Breaker", "Intro Pack"],
+      ["Mirrodin Besieged", "Mirromancy", "Intro Pack"],
+      ["Dark Ascension", "Gleeful Flames", "Event Deck"],
+      ["Magic 2013", "Sweet Revenge", "Event Deck"],
+    ])
+  end
 end
