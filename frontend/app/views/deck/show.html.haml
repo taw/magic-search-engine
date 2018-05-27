@@ -25,6 +25,7 @@
               %span.previewable_card_name{"data-preview-link": card.name}
                 = link_to_card(card.main_front) do
                   = card.name
+                  = card.front.map{|cp| format_oracle_text(cp.mana_cost)}.join("/").html_safe
     .col-4
       - @card_groups.each do |(i, group), cards|
         - next if i <= 4
@@ -36,6 +37,7 @@
               %span.previewable_card_name{"data-preview-link": card.name}
                 = link_to_card(card.main_front) do
                   = card.name
+                  = card.front.map{|cp| format_oracle_text(cp.mana_cost)}.join("/").html_safe
     .col-4
       - @card_previews.each_with_index do |preview_card, i|
         .card_picture_cell{"data-preview": preview_card.name, style: (preview_card == @default_preview_card ? nil : "display: none;")}
