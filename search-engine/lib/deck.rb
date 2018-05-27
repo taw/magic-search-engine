@@ -25,6 +25,10 @@ class Deck
     "Deck<#{set.name} - #{@name} - #{@type}>"
   end
 
+  def set_code
+    @set.code
+  end
+
   def to_s
     inspect
   end
