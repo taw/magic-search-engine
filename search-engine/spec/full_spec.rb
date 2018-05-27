@@ -423,6 +423,16 @@ describe "Full Database Test" do
     lim_duls_cohort.text.should eq("Whenever Lim-Dûl's Cohort blocks or becomes blocked by a creature, that creature can't be regenerated this turn.")
   end
 
+  it "Non-alphanumeric characters in set names are ignored and 's is normalized" do
+    assert_search_equal %Q[e:"Elves vs Inventors"], %Q[e:"Elves vs. Inventors"]
+    assert_search_equal %Q[e:"From the Vault: Transform"], %Q[e:"From the Vault Transform"]
+    assert_search_equal %Q[e:"Duel Decks: Nissa vs. Ob Nixilis"], %Q[e:"Duel Decks Nissa vs Ob Nixilis"]
+    assert_search_equal %Q[e:"Ugin's Fate promos"], %Q[e:"Ugin Fate promos"]
+    assert_search_equal %Q[e:"Ugin's Fate promos"], %Q[e:"Ugins Fate promos"]
+    assert_search_equal %Q[e:"Duel Decks Anthology, Divine vs. Demonic"], %Q[e:"Duel Decks Anthology Divine vs Demonic"]
+    assert_search_equal %Q[e:"Magic: The Gathering—Conspiracy"], %Q[e:"Magic The Gathering Conspiracy"]
+  end
+
   def legality_information(name, date=nil)
     db.cards[name.downcase].legality_information(date)
   end
