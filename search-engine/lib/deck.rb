@@ -33,6 +33,10 @@ class Deck
     @set.code
   end
 
+  def set_name
+    @set.name
+  end
+
   def to_s
     inspect
   end
