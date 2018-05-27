@@ -23,7 +23,6 @@ class DeckIndexer
     # Welcome decks contain some future cards
     set_date = release_date("akh") if set_code == "w17"
 
-
     # * means from previous set on some old Wizards listings
     # We should probably just get rid of it upstream
     card_name = card_name.sub(/\*\z/, "")
@@ -79,7 +78,7 @@ class DeckIndexer
     return printings.values[0] if printings.size == 1
 
     # At this point we can guess most recent standard set printing
-    most_recent_standard_printing = printings.select{|sc,_|
+    most_recent_standard_set, most_recent_standard_printing = printings.select{|sc,_|
       @sets[sc]["type"] == "core" or @sets[sc]["type"] == "expansion"
     }.sort_by{|sc, _|
       release_date(sc)
@@ -89,13 +88,13 @@ class DeckIndexer
       raise "No Standard legal printing found for #{set_code} #{card_name}"
     end
 
-    mrsp_date = release_date(most_recent_standard_printing[0])
+    mrsp_date = release_date(most_recent_standard_set)
     age = (set_date - mrsp_date).to_i
     if age < 2*365
       # Would be nicer to check if actually same Standard
       # OK
     else
-      warn "#{age} is too old #{set_code} #{card_name} #{most_recent_standard_printing[0]}"
+      warn "#{age} is too old #{set_code} #{card_name} #{most_recent_standard_set}"
     end
     return most_recent_standard_printing
   end
@@ -104,7 +103,6 @@ class DeckIndexer
     printings = resolve_set(card, deck)
     raise if printings.empty?
     return printings[0] if printings.size == 1
-
     # Not unique, but we hopefully got the set right, so we mostly don't care
     # At some point we should support disambiguation hints upstream
     return printings[0]
@@ -133,10 +131,9 @@ class DeckIndexer
   end
 
   def call
-    @index = []
-    @decks.each do |deck|
+    index = @decks.map do |deck|
       index_deck(deck)
     end
-    @save_path.write(@index.to_json)
+    @save_path.write(index.to_json)
   end
 end

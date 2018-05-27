@@ -2,6 +2,7 @@ class CardSet
   attr_reader :name, :code, :gatherer_code
   attr_reader :block_name, :block_code
   attr_reader :border, :release_date, :printings, :type
+  attr_reader :decks
 
   def initialize(data)
     @name          = data["name"]
@@ -15,6 +16,7 @@ class CardSet
     @printings     = Set[]
     @online_only   = !!data["online_only"]
     @has_boosters  = !!data["has_boosters"]
+    @decks         = []
   end
 
   def has_boosters?
