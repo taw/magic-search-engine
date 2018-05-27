@@ -95,4 +95,46 @@ describe Deck do
       set.decks.map(&:slug).should match_array set.decks.map(&:slug).uniq
     end
   end
+
+  let(:deck_export) do
+    <<~EOF
+    // NAME: Wrath of the Mortals - Journey into Nyx Event Deck
+    // URL: http://mtg.wtf/deck/jou/wrath-of-the-mortals
+    1 Battlefield Thaumaturge
+    3 Young Pyromancer
+    3 Guttersnipe
+    1 Chandra's Phoenix
+    4 Spellheart Chimera
+    1 Ogre Battledriver
+    1 Oracle of Bones
+    1 Aetherling
+    1 Harness by Force
+    1 Mizzium Mortars
+    2 Flames of the Firebrand
+    2 Divination
+    1 Anger of the Gods
+    4 Lightning Strike
+    3 Magma Jet
+    2 Searing Blood
+    1 Steam Augury
+    1 Fated Conflagration
+    2 Turn // Burn
+    4 Izzet Guildgate
+    12 Mountain
+    9 Island
+
+    Sideboard
+    2 Flames of the Firebrand
+    2 Elixir of Immortality
+    2 Dispel
+    3 Essence Scatter
+    3 Negate
+    3 Izzet Staticaster
+    EOF
+  end
+
+  it "#to_text" do
+    deck = db.sets["jou"].decks.find{|d| d.name == "Wrath of the Mortals"}
+    deck.to_text.should eq(deck_export)
+  end
 end

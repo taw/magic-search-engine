@@ -36,4 +36,21 @@ class Deck
   def to_s
     inspect
   end
+
+  def to_text
+    output = []
+    output << "// NAME: #{@name} - #{@set.name} #{@type}"
+    output << "// URL: http://mtg.wtf/deck/#{set.code}/#{slug}"
+    @cards.each do |count, card|
+      output << "#{count} #{card}"
+    end
+    unless @sideboard.empty?
+      output << ""
+      output << "Sideboard"
+      @sideboard.each do |count, card|
+        output << "#{count} #{card}"
+      end
+    end
+    output.join("\n") + "\n"
+  end
 end
