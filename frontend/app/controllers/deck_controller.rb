@@ -12,7 +12,24 @@ class DeckController < ApplicationController
     @sideboard = @deck.sideboard
 
     @card_previews = @deck.physical_cards
-    @preview_card = @card_previews.first # TODO
+
+    # Choose best card to preview
+    if @sideboard.size == 1
+      # Commander
+      @default_preview_card = @sideboard.first.last
+    else
+      @default_preview_card = @card_previews.min_by do |c|
+        rarity = c.rarity
+        types = c.main_front.types
+        score = 0
+        score += 10000 if rarity == "mythic"
+        score += 1000 if rarity == "rare"
+        score += 100 if types.include?("planeswalker")
+        score += 10 if types.include?("legendary")
+        score += 1 if types.include?("creature")
+        [-score, c.name]
+      end
+    end
 
     @card_groups = @cards.group_by{|count, card|
       types = card.main_front.types

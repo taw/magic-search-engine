@@ -36,5 +36,5 @@
                   = card.name
     .col-4
       - @card_previews.each_with_index do |preview_card, i|
-        .card_picture_cell{"data-preview": preview_card.name, style: (i == 0 ? nil : "display: none;")}
+        .card_picture_cell{"data-preview": preview_card.name, style: (preview_card == @default_preview_card ? nil : "display: none;")}
           = render "card/picture", card: preview_card.main_front
