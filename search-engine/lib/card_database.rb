@@ -81,18 +81,32 @@ class CardDatabase
     matching_name = Set[]
     matching_name_part = Set[]
 
+    normalized_edition = normalize_set_name(edition)
+    normalized_edition_alt = normalize_set_name_alt(edition)
+
     @sets.each do |set_code, set|
+      normalized_set_name = normalize_set_name(set.name)
+      normalized_set_name_alt = normalize_set_name_alt(set.name)
       matching_mci_code      << set if set_code == edition
       matching_gatherer_code << set if set.gatherer_code.downcase == edition
-      matching_name          << set if normalize_name(set.name).downcase == edition
-      matching_name_part     << set if normalize_name(set.name).downcase.include?(edition)
+      matching_name          << set if normalized_set_name == normalized_edition or normalized_set_name_alt == normalized_edition_alt
+      matching_name_part     << set if normalized_set_name.include?(normalized_edition) or normalized_set_name_alt.include?(normalized_edition_alt)
     end
+
     [
       matching_mci_code,
       matching_gatherer_code,
       matching_name,
-      matching_name_part
+      matching_name_part,
     ].find{|s| s.size > 0} || Set[]
+  end
+
+  def normalize_set_name(name)
+    normalize_text(name).downcase.gsub("'s", "s").split(/[^a-z0-9]+/).join(" ")
+  end
+
+  def normalize_set_name_alt(name)
+    normalize_text(name).downcase.gsub("'s", "").split(/[^a-z0-9]+/).join(" ")
   end
 
   def resolve_edition(edition)
