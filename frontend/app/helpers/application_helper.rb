@@ -28,6 +28,10 @@ module ApplicationHelper
     link_to(controller: "set", action: "show", id: set.code, &blk)
   end
 
+  def link_to_deck(deck, &blk)
+    link_to(controller: "deck", action: "show", set: deck.set_code, id: deck.slug, &blk)
+  end
+
   def link_to_artist(artist, &blk)
     link_to(controller: "artist", action: "show", id: artist.slug, &blk)
   end

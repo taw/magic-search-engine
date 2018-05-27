@@ -1,4 +1,9 @@
 class DeckController < ApplicationController
+  def index
+    @sets = $CardDatabase.sets.values.reject{|s| s.decks.empty?}.sort_by{|s| [-s.release_date.to_i_sort, s.name] }
+    @title = "Preconstructed Decks"
+  end
+
   def show
     @set = $CardDatabase.sets[params[:set]] or return render_404
     @deck = @set.decks.find{|d| d.slug == params[:id]} or return render_404
@@ -13,6 +18,15 @@ class DeckController < ApplicationController
 
     @card_previews = @deck.physical_cards
 
+    choose_default_preview_card
+    group_cards
+
+    @title = "#{@deck.name} - #{@set.name} #{@deck.type}"
+  end
+
+  private
+
+  def choose_default_preview_card
     # Choose best card to preview
     if @sideboard.size == 1
       # Commander
@@ -30,7 +44,9 @@ class DeckController < ApplicationController
         [-score, c.name]
       end
     end
+  end
 
+  def group_cards
     @card_groups = @cards.group_by{|count, card|
       types = card.main_front.types
       if card.nil?
