@@ -121,10 +121,7 @@ describe "Any queries" do
       assert_search_equal "e:rtr any:black", "e:rtr (c>=b or o:black)"
     end
     it "red" do
-      # FIXME:
-      # There are a lot of fake "matches" based on "red" 3 letters in foreign:
-      # Should foreign: use /\b#{@query}\b/i search ?
-      assert_search_equal "e:rtr any:red", "e:rtr (c>=r or o:red or foreign:red)"
+      assert_search_equal "e:rtr any:red", "e:rtr (red or c>=r or o:red or foreign:red)"
     end
     it "green" do
       assert_search_equal "e:rtr any:green", "e:rtr (c>=g or o:green)"
