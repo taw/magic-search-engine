@@ -17,7 +17,7 @@
       %ul
         - @set.decks.each do |deck|
           %li
-            = "#{deck.name} (#{deck.type})"
+            = link_to "#{deck.name} (#{deck.type})", controller: "deck", action: "show", set: deck.set_code, id: deck.slug
 
 - @cards.each do |card|
   .row.card_row
