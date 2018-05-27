@@ -11,6 +11,13 @@
   - if @set.release_date
     .col-12
       = "Released: #{@set.release_date.to_s}"
+  - unless @set.decks.empty?
+    .col-12
+      %div Preconstructed decks:
+      %ul
+        - @set.decks.each do |deck|
+          %li
+            = "#{deck.name} (#{deck.type})"
 
 - @cards.each do |card|
   .row.card_row
