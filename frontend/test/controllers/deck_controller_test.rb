@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class DeckControllerTest < ActionController::TestCase
   test "list of decks" do

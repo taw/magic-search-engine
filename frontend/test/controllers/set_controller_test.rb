@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class SetControllerTest < ActionController::TestCase
   test "list of sets" do
