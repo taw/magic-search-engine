@@ -71,6 +71,15 @@ class CardDatabase
     end
   end
 
+  # Excluding unsupported ones
+  # It's a very slow method, so memoize, but better just make it fast
+  def sets_with_packs
+    @sets_with_packs ||= begin
+      factory = PackFactory.new(self)
+      sets.values.reverse.select{|set| factory.for(set.code)}
+    end
+  end
+
   def resolve_time(time)
     return nil unless time
     return time if time.is_a?(Date)

@@ -1,14 +1,15 @@
 class SealedController < ApplicationController
   def index
-    factory = PackFactory.new($CardDatabase)
 
     @count = (params[:count] || 6).to_i
     @set_code = params[:set]
 
+    @sets = $CardDatabase.sets_with_packs
+
+    factory = PackFactory.new($CardDatabase)
     pack = factory.for(@set_code) if @set_code
 
-    @sets = $CardDatabase.sets.values.reverse.select{|set| factory.for(set.code)}
-    if @set_code
+    if pack
       @cards = @count.times.flat_map{ pack.open }
     end
 
