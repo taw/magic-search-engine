@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SealedControllerTest < ActionDispatch::IntegrationTest
+class SealedControllerTest < ActionController::TestCase
   test "index" do
     get "index"
     assert_response 200
