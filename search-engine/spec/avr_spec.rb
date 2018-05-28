@@ -35,10 +35,7 @@ describe "Avacyn Restored" do
     assert_search_results "de:engel",
       "Angel of Glory's Rise",
       "Angel of Jubilation",
-      "Angel's Mercy",
-      "Angel's Tomb",
       "Angelic Wall",
-      "Archangel",
       "Avacyn, Angel of Hope",
       "Emancipation Angel",
       "Entreat the Angels",
@@ -96,18 +93,12 @@ describe "Avacyn Restored" do
     assert_search_results "ru:Ангел",
       "Angel of Glory's Rise",
       "Angel of Jubilation",
-      "Angel's Mercy",
-      "Angel's Tomb",
-      "Angelic Armaments",
-      "Angelic Wall",
-      "Archangel",
       "Avacyn, Angel of Hope",
       "Emancipation Angel",
-      "Entreat the Angels",
       "Restoration Angel"
     assert_search_equal "ru:ангел", "ru:Ангел"
     assert_search_equal "ru:АНГЕЛ", "ru:Ангел"
-    assert_search_equal %q[ru:/АНГЕЛ/], "ru:Ангел"
+    assert_search_equal %q[ru:/\bАНГЕЛ\b/], "ru:Ангел"
   end
 
   it "sp" do
