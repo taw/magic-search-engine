@@ -48,7 +48,16 @@ class CardController < ApplicationController
     end
 
     # Temporary issue with bots
-    raise "Bot issues" if params[:seed]
+    if params[:page]
+      logger.info "PAGINATED #{params.inspect} BY USERAGENT: #{request.headers['HTTP_USER_AGENT']}"
+    end
+
+    if request.headers['HTTP_USER_AGENT'] =~ /MJ12bot/ and params[:page]
+      render_403
+      return
+    end
+
+    # End of temporary bot code
 
     @title = @search
     query = Query.new(@search, params[:random_seed])

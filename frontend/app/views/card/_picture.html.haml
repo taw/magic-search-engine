@@ -1,3 +1,8 @@
+- if card.is_a?(PhysicalCard)
+  - foil = card.foil
+  - card = card.main_front
+- else
+  - foil = false
 - if card_picture_path(card)
   .card_picture_container
     - if card.layout == "flip"
@@ -23,6 +28,8 @@
       %img.card_picture.meld1{src: card_picture_path(card.others[1]), alt: card.others[1].name }
     - else # Might need different layouts too
       %img.card_picture{src: card_picture_path(card), alt: card.name }
+    - if foil
+      .foil_layer
 - else
   .card_picture_container
     .picture_missing

@@ -54,4 +54,11 @@ describe "Any queries" do
   it "wildcard" do
     assert_search_equal "t:planeswalker -ru:* de:*", "t:planeswalker e:c14"
   end
+
+  it "only caes for full words (except CJK)" do
+    assert_search_differ %q[foreign:/red/], %q[foreign:/\bred\b/]
+    assert_search_differ %q[foreign:/电击/], %q[foreign:/\b电击\b/]
+    assert_search_equal %q[foreign:red], %q[foreign:/\bred\b/]
+    assert_search_equal %q[foreign:电击], %q[foreign:/电击/]
+  end
 end

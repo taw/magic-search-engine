@@ -147,7 +147,7 @@ describe "Formats" do
   # maybe add it at some later point
   it "duel commander" do
     assert_count_results 'banned:"duel commander"', 61
-    assert_count_results 'restricted:"duel commander"', 14
+    assert_count_results 'restricted:"duel commander"', 15
   end
 
   # We don't keep historical legality for Petty Dreadful yet

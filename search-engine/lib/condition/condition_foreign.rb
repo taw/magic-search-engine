@@ -6,6 +6,15 @@ class ConditionForeign < ConditionSimple
     @lang = "ct" if @lang == "tw"
     @lang = "cs" if @lang == "cn"
     @query = hard_normalize(query)
+    # For CJK match anywhere
+    # For others match only word boundary
+    if @query == "*"
+      # OK
+    elsif @query =~ /\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/
+      @query_regexp = Regexp.new("(?:" + Regexp.escape(@query) + ")", Regexp::IGNORECASE)
+    else
+      @query_regexp = Regexp.new("\\b(?:" + Regexp.escape(@query) + ")\\b", Regexp::IGNORECASE)
+    end
   end
 
   def match?(card)
@@ -18,7 +27,7 @@ class ConditionForeign < ConditionSimple
       !foreign_names.empty?
     else
       foreign_names.any?{|n|
-        n.include?(@query)
+        n =~ @query_regexp
       }
     end
   end
