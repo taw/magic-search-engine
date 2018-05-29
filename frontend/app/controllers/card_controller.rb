@@ -49,6 +49,9 @@ class CardController < ApplicationController
 
     # Temporary issue with bots
     raise "Bot issues" if params[:seed]
+    if params[:seed] or params[:random_seed]
+      logger.info "RANDOM REQUEST #{params.inspect} BY USERAGENT: #{request.headers['HTTP_USER_AGENT']}"
+    end
 
     @title = @search
     query = Query.new(@search, params[:random_seed])
