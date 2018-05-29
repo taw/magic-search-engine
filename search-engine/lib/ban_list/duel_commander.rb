@@ -123,4 +123,10 @@ BanList.for_format("duel commander") do
     "http://www.duelcommander.com/2017/11/classic-nov-2017-rules-banlist-update/",
     "Fastbond" => "banned",
   )
+
+  change(
+    "2018-06-01",
+    "http://www.duelcommander.com/2018/05/classic-may-2018-rules-banlist-update/",
+    "Zurgo Bellstriker" => "restricted",
+  )
 end
