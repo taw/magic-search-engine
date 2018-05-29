@@ -48,9 +48,8 @@ class CardController < ApplicationController
     end
 
     # Temporary issue with bots
-    raise "Bot issues" if params[:seed]
-    if params[:seed] or params[:random_seed]
-      logger.info "RANDOM REQUEST #{params.inspect} BY USERAGENT: #{request.headers['HTTP_USER_AGENT']}"
+    if params[:page]
+      logger.info "PAGINATED #{params.inspect} BY USERAGENT: #{request.headers['HTTP_USER_AGENT']}"
     end
 
     if request.headers['HTTP_USER_AGENT'] =~ /MJ12bot/ and params[:page]
