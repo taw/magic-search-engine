@@ -53,6 +53,13 @@ class CardController < ApplicationController
       logger.info "RANDOM REQUEST #{params.inspect} BY USERAGENT: #{request.headers['HTTP_USER_AGENT']}"
     end
 
+    if request.headers['HTTP_USER_AGENT'] =~ /MJ12bot/ and params[:page]
+      render_403
+      return
+    end
+
+    # End of temporary bot code
+
     @title = @search
     query = Query.new(@search, params[:random_seed])
     @seed = query.seed
