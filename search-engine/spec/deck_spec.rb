@@ -32,6 +32,7 @@ describe Deck do
       ["starter", "Starter Deck"],
       ["starter", "Theme Deck"],
       ["starter", "Welcome Deck"],
+      ["expansion", "Challenger Deck"],
     ]
 
     db.sets.each do |set_code, set|
