@@ -113,9 +113,6 @@ class PackFactory
       "tpr", "med", "me2", "me3", "me4",
       # They have DFCs but no separate slot for DFCs
       "ori", "xln", "rix",
-      # there's guaranteed legendary, but no separate slots, unclear how to model that
-      # If we don't model anything, there's 81% chance of opening a legendary, and EV of 1.34
-      "dom",
       # CardSheetFactory is aware that mastrepieces go onto foil sheet, wo don't need to do anything
       "bfz", "ogw",
       "kld", "aer",
@@ -185,6 +182,12 @@ class PackFactory
         build_pack(set_code, {sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1, foil: 1}) => 7,
         build_pack(set_code, {sfc_common: 8, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1, foil: 1}) => 1,
       )
+    when "dom"
+      # there's guaranteed legendary, but no separate slots for that
+      # If we don't model anything, there's 81% chance of opening a legendary, and EV of 1.34
+      #
+      # What we want is a model which tries to exactly match legendary and nonlegendary EV at same rarity
+      build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true, common_if_no_basic: true)
     # These are just approximations, they actually used nonstandard sheets
     when "al", "be", "un", "rv", "ia"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
