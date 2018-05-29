@@ -418,4 +418,45 @@ describe PackFactory do
       end
     end
   end
+
+  context "Dominaria" do
+    let(:pack) { factory.for("dom") }
+    let(:ev) { pack.expected_values }
+    let(:basic) { physical_card("is:booster e:dom r:basic", foil) }
+    let(:common) { physical_card("is:booster e:dom r:common", foil) }
+    let(:legendary_uncommon) { physical_card("is:booster e:dom r:uncommon t:legendary", foil) }
+    let(:nonlegendary_uncommon) { physical_card("is:booster e:dom r:uncommon -t:legendary", foil) }
+    let(:legendary_rare) { physical_card("is:booster e:dom r:rare t:legendary", foil) }
+    let(:nonlegendary_rare) { physical_card("is:booster e:dom r:rare -t:legendary", foil) }
+    let(:legendary_mythic) { physical_card("is:booster e:dom r:mythic t:legendary", foil) }
+    let(:nonlegendary_mythic) { physical_card("is:booster e:dom r:mythic -t:legendary", foil) }
+
+    context "non-foil" do
+      let(:foil) { false }
+      it do
+        ev[basic].should eq Rational(1, 20)
+        ev[common].should eq Rational(975, 100) * Rational(1, 101)
+        ev[legendary_uncommon].should eq Rational(3, 80)
+        ev[legendary_rare].should eq Rational(2, 121)
+        ev[legendary_mythic].should eq Rational(1, 121)
+        ev[nonlegendary_uncommon].should eq Rational(3, 80)
+        ev[nonlegendary_rare].should eq Rational(2, 121)
+        ev[nonlegendary_mythic].should eq Rational(1, 121)
+      end
+    end
+
+    context "non-foil" do
+      let(:foil) { true }
+      it do
+        ev[basic].should eq Rational(1,4) * Rational(1, 20) * Rational(4,32)
+        ev[common].should eq Rational(1,4) * Rational(1, 101) * Rational(16,32)
+        ev[legendary_uncommon].should eq Rational(1,4) * Rational(1, 80) * Rational(8,32)
+        ev[legendary_rare].should eq Rational(1,4) * Rational(2, 121) * Rational(4,32)
+        ev[legendary_mythic].should eq Rational(1,4) * Rational(1, 121) * Rational(4,32)
+        ev[nonlegendary_uncommon].should eq Rational(1,4) * Rational(1, 80) * Rational(8,32)
+        ev[nonlegendary_rare].should eq Rational(1,4) * Rational(2, 121) * Rational(4,32)
+        ev[nonlegendary_mythic].should eq Rational(1,4) * Rational(1, 121) * Rational(4,32)
+      end
+    end
+  end
 end
