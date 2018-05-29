@@ -5,7 +5,6 @@
   %button{type: "submit", class: "btn btn-outline-primary"}
     Open packs
 - if @cards.present?
-  %div Your cards here
   .row.multicard_row
     - @cards.sort_by{|c| -c.main_front.rarity_code}.each_with_index do |card, i|
       .col-4.col-sm-3.card_picture_cell
