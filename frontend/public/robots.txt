@@ -6,3 +6,7 @@
 
 User-agent: *
 Crawl-delay: 10
+
+# It is quite disruptive, ignoring rel=nofollow
+User-agent: MJ12bot
+Crawl-Delay: 600
