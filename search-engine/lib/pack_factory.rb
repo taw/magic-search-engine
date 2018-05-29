@@ -8,23 +8,7 @@ class PackFactory
     "#{self.class}"
   end
 
-  # This is a bit of a mess
-  private def build_pack(set_code, distribution, has_random_foil: false, common_if_no_basic: false)
-    # Based on https://www.reddit.com/r/magicTCG/comments/snzvt/simple_avr_sealed_simulator_i_just_made/c4fk0sr/
-    # Details probably vary by set and I don't have too much trust in any of these numbers anyway
-    if has_random_foil
-      if distribution[:common]
-        foil_distribution = distribution.merge({foil: 1, common: distribution[:common] - 1})
-      elsif
-        foil_distribution = distribution.merge({foil: 1, common_or_basic: distribution[:common_or_basic] - 1})
-      else
-        raise "Foil requested, but not sure which slot to replace: #{distribution}"
-      end
-      normal_pack = build_pack(set_code, distribution, common_if_no_basic: common_if_no_basic)
-      foil_pack = build_pack(set_code, foil_distribution, common_if_no_basic: common_if_no_basic)
-      return WeightedPack.new({normal_pack => 3, foil_pack => 1})
-    end
-
+  private def build_pack(set_code, distribution, common_if_no_basic: false)
     # This awkwardness is for common_if_no_basic logic
     sheets = {}
     distribution.each do |name, weight|
@@ -34,7 +18,24 @@ class PackFactory
       distribution = distribution.dup
       distribution[:common] += distribution.delete(:basic)
     end
-    Pack.new(distribution.map{|n,w| [sheets[n], w]}.to_h)
+    Pack.new(distribution.map{|name, weight|
+      sheet = sheets[name] or raise "Can't build sheet #{name} for #{set_code}"
+      [sheet, weight]
+    }.to_h)
+  end
+
+  private def build_pack_with_random_foil(set_code, foil_sheet, replacement_sheet, distribution, common_if_no_basic: false)
+    # Based on https://www.reddit.com/r/magicTCG/comments/snzvt/simple_avr_sealed_simulator_i_just_made/c4fk0sr/
+    # Details probably vary by set and I don't have too much trust in any of these numbers anyway
+    foil_distribution = distribution.dup
+    raise "Foil requested, but not sure which slot to replace" if foil_distribution[foil_sheet]
+    raise "Foil requested, but not sure which slot to replace" unless foil_distribution[replacement_sheet]
+    foil_distribution[replacement_sheet] -= 1
+    foil_distribution[foil_sheet] = 1
+
+    normal_pack = build_pack(set_code, distribution, common_if_no_basic: common_if_no_basic)
+    foil_pack = build_pack(set_code, foil_distribution, common_if_no_basic: common_if_no_basic)
+    return WeightedPack.new({normal_pack => 3, foil_pack => 1})
   end
 
   private def build_sheet(set_code, name)
@@ -77,7 +78,7 @@ class PackFactory
     when "ug"
       build_pack(set_code, {basic: 1, common: 6, uncommon: 2, rare: 1})
     when "7e", "8e", "9e", "10e"
-      build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare: 1}, has_random_foil: true)
+      build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare: 1})
     # Default configuration before mythics
     # Back then there was no crazy variation
     # 6ed came out after foils started, but didn't have foils
@@ -99,7 +100,7 @@ class PackFactory
       "cs",
       "fut", # Amazingly Future Sight has regular boring sheets
       "lw", "mt", "shm", "eve"
-      build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1}, has_random_foil: true)
+      build_pack_with_random_foil(set_code, :foil, :common_or_basic, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Default configuration since mythics got introduced
     # A lot of sets don't fit this
     when "m10", "m11", "m12", "m13", "m14", "m15",
@@ -117,77 +118,52 @@ class PackFactory
       "bfz", "ogw",
       "kld", "aer",
       "akh", "hou"
-      build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true, common_if_no_basic: true)
+      build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, common_if_no_basic: true)
     when "mma", "mm2", "mm3", "ema", "ima", "a25"
       build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, foil: 1})
     when "dgm"
-      WeightedPack.new(
-        build_pack(set_code, {dgm_common: 10, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1}) => 3,
-        build_pack(set_code, {dgm_common: 9, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1, foil: 1}) => 1,
-      )
+      build_pack_with_random_foil(set_code, :foil, :dgm_common, {dgm_common: 10, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1})
     when "frf"
-      WeightedPack.new(
-        build_pack(set_code, {frf_common: 10, uncommon: 3, rare_or_mythic: 1, frf_land: 1}) => 3,
-        build_pack(set_code, {frf_common: 9, uncommon: 3, rare_or_mythic: 1, frf_land: 1, foil: 1}) => 1,
-      )
+      build_pack_with_random_foil(set_code, :foil, :frf_common, {frf_common: 10, uncommon: 3, rare_or_mythic: 1, frf_land: 1})
     when "uh"
-      WeightedPack.new(
-        build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, basic: 1}) => 3,
-        build_pack(set_code, {common: 9, uncommon: 3, rare_or_mythic: 1, basic: 1, unhinged_foil: 1}) => 1
-      )
+      build_pack_with_random_foil(set_code, :unhinged_foil, :common, {common: 10, uncommon: 3, rare_or_mythic: 1, basic: 1})
     when "jou"
       WeightedPack.new(
-        build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true, common_if_no_basic: true) => 4319,
+        build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare_or_mythic: 1}) => 4319,
         build_pack(set_code, {theros_gods: 15}) => 1,
       )
     when "isd"
-      WeightedPack.new(
-        build_pack(set_code, {isd_dfc: 1, basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1}) => 3,
-        build_pack(set_code, {isd_dfc: 1, basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_or_mythic: 1, foil: 1}) => 1,
-      )
+      build_pack_with_random_foil(set_code, :foil, :sfc_common, {isd_dfc: 1, basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1})
     when "dka"
-      WeightedPack.new(
-        build_pack(set_code, {dka_dfc: 1, sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1}) => 3,
-        build_pack(set_code, {dka_dfc: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, foil: 1}) => 1,
-      )
+      build_pack_with_random_foil(set_code, :foil, :sfc_common, {dka_dfc: 1, sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1})
     when "ts"
       # 10 commons, 3 uncommons, 1 rare, and 1 purple-rarity timeshifted card.
       # Basics don't fit anywhere
-      WeightedPack.new(
-        build_pack(set_code, {common: 10, uncommon: 3, rare: 1, tsts: 1}) => 3,
-        build_pack(set_code, {common: 9, uncommon: 3, rare: 1, tsts: 1, ts_foil: 1}) => 1,
-      )
+      build_pack_with_random_foil(set_code, :ts_foil, :common, {common: 10, uncommon: 3, rare: 1, tsts: 1})
     when "pc"
       # 8 commons, 2 uncommons, 1 rare, 3 timeshifted commons, and 1 uncommon or rare timeshifted card.s
-      WeightedPack.new(
-        build_pack(set_code, {pc_common: 8, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1}) => 3,
-        build_pack(set_code, {pc_common: 7, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1, foil: 1}) => 1,
-      )
+      build_pack_with_random_foil(set_code, :foil, :pc_common, {pc_common: 8, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1})
     when "vma"
       build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, vma_special: 1})
     when "soi"
       # Assume foil rate (1:4) and rare/mythic dfc rates (1:8) are independent
       # They probably aren't
       WeightedPack.new(
-        build_pack(set_code, {basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1}) => 32-3-7-1,
-        build_pack(set_code, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1}) => 3,
-        build_pack(set_code, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1, foil: 1}) => 7,
-        build_pack(set_code, {basic: 1, sfc_common: 7, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1, foil: 1}) => 1,
+        build_pack_with_random_foil(set_code, :foil, :sfc_common, {basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1}) => 7,
+        build_pack_with_random_foil(set_code, :foil, :sfc_common, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1}) => 1,
       )
     when "emn"
       # Same assumptions as SOI, except no basics in the set
       WeightedPack.new(
-        build_pack(set_code, {sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1}) => 32-3-7-1,
-        build_pack(set_code, {sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}) => 3,
-        build_pack(set_code, {sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1, foil: 1}) => 7,
-        build_pack(set_code, {sfc_common: 8, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1, foil: 1}) => 1,
+        build_pack_with_random_foil(set_code, :foil, :sfc_common, {sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1}) => 7,
+        build_pack_with_random_foil(set_code, :foil, :sfc_common, {sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}) => 1,
       )
     when "dom"
       # there's guaranteed legendary, but no separate slots for that
       # If we don't model anything, there's 81% chance of opening a legendary, and EV of 1.34
       #
       # What we want is a model which tries to exactly match legendary and nonlegendary EV at same rarity
-      build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, has_random_foil: true, common_if_no_basic: true)
+      build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, common_if_no_basic: true)
     # These are just approximations, they actually used nonstandard sheets
     when "al", "be", "un", "rv", "ia"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
