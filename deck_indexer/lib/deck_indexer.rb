@@ -30,7 +30,7 @@ class DeckIndexer
 
     card_info = @cards[card_name]
     if card_info.nil?
-      raise "Card not found #{set_code} #{name}"
+      raise "Card not found #{set_code} #{card_name}"
     end
     printings = card_info["printings"].group_by(&:first)
 
@@ -110,7 +110,7 @@ class DeckIndexer
 
   def index_card(card, deck)
     printing = resolve_card(card, deck)
-    [card["count"], printing[0], printing[1]["number"]]
+    [card["count"], printing[0], printing[1]["number"]] + (card["foil"] ? ["foil"] : [])
   end
 
   def index_deck(deck)
