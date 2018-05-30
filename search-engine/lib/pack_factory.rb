@@ -210,19 +210,19 @@ class PackFactory
       # Simplify to C1, U1, R1
       build_pack(set_code, {common: 12, uncommon: 3, rare: 1})
     # custom sets
-    #TODO make sure these follow http://thegraymerchants.com/?p=836
-    when "ank", "vln", "jan", "hlw"
+    when "ank", "ldo", "vln", "jan", "hlw"
       # Custom sets with default pack distribution, no foils, no basics
-      #TODO move LDO here after adding LDO basics
       build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1})
-    when "dms", "ldo", "cc18"
+    when "dms", "cc18"
       # Same as above except no basics
+      #TODO make sure DMS follows http://thegraymerchants.com/?p=836
       build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1})
     when "ayr"
       # AYR has only nonbasic lands in the land slot, and no lands in any other slot, like DGM
       build_pack(set_code, {ayr_common: 10, ayr_uncommon: 3, ayr_rare_mythic: 1, ayr_land: 1})
     when "tsl"
       # TSL packs always have exactly one DFC, replacing a common slot
+      #TODO make sure this follows http://thegraymerchants.com/?p=836
       build_pack(set_code, {tsl_dfc: 1, sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1})
     else
       # No packs for this set, let caller figure it out
