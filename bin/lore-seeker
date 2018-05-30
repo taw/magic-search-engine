@@ -4,6 +4,7 @@
 
 Usage:
   lore-seeker [options]
+  lore-seeker discord [<command>]
   lore-seeker name-check
   lore-seeker restart
   lore-seeker -h | --help
@@ -52,6 +53,11 @@ GLOBAL_KEYS = [
     'rulings'
 ]
 PIDFILE_PATH = pathlib.Path('/var/www/loreseeker.fenhl.net/pidfile')
+
+def bot_cmd(command_text):
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        sock.connect(('127.0.0.1', 18806))
+        sock.sendall(command_text.encode('utf-8'))
 
 def cmd(args, *, announce=False, wait=True, check=True, **kwargs):
     if announce:
@@ -166,7 +172,7 @@ def run(*, do_name_check=True, verbose=False):
             name_check(stage, verbose=verbose)
         cmd(['rake', 'rules:update'], cwd=str(stage), announce=verbose)
         patch_mtg_json(stage, verbose=verbose)
-        #TODO send reload command to Discord bot
+        bot_cmd('reload')
         cmd(['rake', 'index'], cwd=str(stage), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(stage / 'search-engine'), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(stage / 'frontend'), announce=verbose)
@@ -183,7 +189,13 @@ def run(*, do_name_check=True, verbose=False):
 
 if __name__ == '__main__':
     arguments = docopt.docopt(__doc__)
-    if arguments['name-check']:
+    if arguments['discord']:
+        if arguments['<command>']:
+            bot_cmd(arguments['<command>'])
+        else:
+            # quick alias for starting the Discord bot (https://github.com/fenhl/lore-seeker-discord)
+            sys.exit(subprocess.run(['lore-seeker-discord']).returncode)
+    elif arguments['name-check']:
         sys.exit(int(not name_check(verbose=not arguments['--quiet'])))
     elif arguments['restart']:
         with PIDFILE_PATH.open() as pidfile:
