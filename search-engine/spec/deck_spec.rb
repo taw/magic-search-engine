@@ -158,4 +158,29 @@ describe Deck do
       ["Magic 2013", "Sweet Revenge", "Event Deck"],
     ])
   end
+
+  it "if deck contains foils, they're all highest rarity cards" do
+    db.sets.each do |set_code, set|
+      set.decks.each do |deck|
+        foils = deck.physical_cards.select(&:foil)
+        # Skip if no foils
+        next if foils.empty?
+        # Skip if all foils
+        next if deck.physical_cards.all?(&:foil)
+
+        max_rarity = deck.physical_cards.map(&:main_front).max_by(&:rarity_code).rarity
+        foils_rarity = foils.map(&:main_front).map(&:rarity)
+        if set_code == "c16"
+          # Doesn't follow normal rules
+          foils_rarity.should match_array(["rare", "mythic", "mythic", "mythic"])
+        else
+          expected_rarity = [max_rarity] * foils_rarity.size
+          foils_rarity.should(
+            eq(expected_rarity),
+            "#{set.name} #{deck.name} foils should all be #{max_rarity}, instead they are: #{foils.map{|c| "#{c.name} (#{c.rarity})"}.join(", ")}"
+          )
+        end
+      end
+    end
+  end
 end
