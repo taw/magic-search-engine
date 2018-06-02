@@ -11,7 +11,7 @@ MagicBlocks = [
   [ "mi", "mrd", "Mirrodin", "mi", "ds", "5dn"],
   ["chk",  nil,  "Champions of Kamigawa", "chk", "bok", "sok"],
   ["rav",  nil,  "Ravnica", "rav", "gp", "di"],
-  [ "ts", "tsb", "Time Spiral", "ts", "tsts", "pc", "fut"],
+  [ "ts", "tsp", "Time Spiral", "ts", "tsts", "pc", "fut"],
   [ "lw", "lrw", "Lorwyn", "lw", "mt", "shm", "eve"],
   ["ala",  nil,  "Shards of Alara", "ala", "cfx", "arb"],
   ["zen",  nil,  "Zendikar", "zen", "wwk", "roe"],
