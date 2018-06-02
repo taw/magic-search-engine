@@ -159,8 +159,8 @@ class PackFactory
         build_pack_with_random_foil(set_code, :foil, :sfc_common, {sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}) => 1,
       )
     when "dom"
-      # there's guaranteed legendary, but no separate slots for that
-      # If we don't model anything, there's 81% chance of opening a legendary, and EV of 1.34
+      # there's guaranteed legendary creature, but no separate slots for that
+      # If we don't model anything, there's 71% chance of opening a legendary creature, and EV of 1.45
       #
       # What we want is a model which tries to exactly match legendary and nonlegendary EV at same rarity
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, common_if_no_basic: true)
