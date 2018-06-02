@@ -1,31 +1,32 @@
 MagicBlocks = [
-  ["ia", "Ice Age", "ia", "ai", "cs"],
+  [ "ia", "ice", "Ice Age", "ia", "ai", "cs"],
   # ["shm", "Shadowmoor", "shm", "eve"], # Also included in Lorwyn
-  ["mr", "Mirage", "mr", "vi", "wl"],
-  ["tp", "Tempest", "tp", "sh", "ex"],
-  ["us", "Urza's Saga", "us", "ul", "ud"],
-  ["mm", "Mercadian Masques", "mm", "ne", "pr"],
-  ["in", "Invasion", "in", "ps", "ap"],
-  ["od", "Odyssey", "od", "tr", "ju"],
-  ["on", "Onslaught", "on", "le", "sc"],
-  ["mi", "Mirrodin", "mi", "ds", "5dn"],
-  ["chk", "Champions of Kamigawa", "chk", "bok", "sok"],
-  ["rav", "Ravnica", "rav", "gp", "di"],
-  ["ts", "Time Spiral", "ts", "tsts", "pc", "fut"],
-  ["lw", "Lorwyn", "lw", "mt", "shm", "eve"],
-  ["ala", "Shards of Alara", "ala", "cfx", "arb"],
-  ["zen", "Zendikar", "zen", "wwk", "roe"],
-  ["som", "Scars of Mirrodin", "som", "mbs", "nph"],
-  ["isd", "Innistrad", "isd", "dka", "avr"],
-  ["rtr", "Return to Ravnica", "rtr", "gtc", "dgm"],
-  ["ths", "Theros", "ths", "bng", "jou"],
-  ["ktk", "Khans of Tarkir", "ktk", "frf", "dtk"],
-  ["bfz", "Battle for Zendikar", "bfz", "ogw"],
-  ["soi", "Shadows over Innistrad", "soi", "emn"],
-  ["kld", "Kaladesh", "kld", "aer"],
-  ["akh", "Amonkhet", "akh", "hou"],
-  ["xln", "Ixalan", "xln", "rix"],
-  ["un", "Unsets", "ug", "uh", "ust"],
+  [ "mr", "mir", "Mirage", "mr", "vi", "wl"],
+  [ "tp", "tmp", "Tempest", "tp", "sh", "ex"],
+  [ "us", "usg", "Urza's Saga", "us", "ul", "ud"],
+  [ "mm", "mmq", "Mercadian Masques", "mm", "ne", "pr"],
+  [ "in", "inv", "Invasion", "in", "ps", "ap"],
+  [ "od", "ody", "Odyssey", "od", "tr", "ju"],
+  [ "on", "ons", "Onslaught", "on", "le", "sc"],
+  [ "mi", "mrd", "Mirrodin", "mi", "ds", "5dn"],
+  ["chk",  nil,  "Champions of Kamigawa", "chk", "bok", "sok"],
+  ["rav",  nil,  "Ravnica", "rav", "gp", "di"],
+  [ "ts", "tsb", "Time Spiral", "ts", "tsts", "pc", "fut"],
+  [ "lw", "lrw", "Lorwyn", "lw", "mt", "shm", "eve"],
+  ["ala",  nil,  "Shards of Alara", "ala", "cfx", "arb"],
+  ["zen",  nil,  "Zendikar", "zen", "wwk", "roe"],
+  ["som",  nil,  "Scars of Mirrodin", "som", "mbs", "nph"],
+  ["isd",  nil,  "Innistrad", "isd", "dka", "avr"],
+  ["rtr",  nil,  "Return to Ravnica", "rtr", "gtc", "dgm"],
+  ["ths",  nil,  "Theros", "ths", "bng", "jou"],
+  ["ktk",  nil,  "Khans of Tarkir", "ktk", "frf", "dtk"],
+  ["bfz",  nil,  "Battle for Zendikar", "bfz", "ogw"],
+  ["soi",  nil,  "Shadows over Innistrad", "soi", "emn"],
+  ["kld",  nil,  "Kaladesh", "kld", "aer"],
+  ["akh",  nil,  "Amonkhet", "akh", "hou"],
+  ["xln",  nil,  "Ixalan", "xln", "rix"],
+  ["dom",  nil,  "Dominaria", "dom"],
+  [ "un",  nil,  "Unsets", "ug", "uh", "ust"],
 ]
 
 class Indexer
@@ -34,7 +35,7 @@ class Indexer
     def initialize(set_code, set_data)
       @set_code = set_code
       @set_data = set_data
-      @block_code, @block_name = MagicBlocks.find{|c,n,*xx| xx.include?(set_code)} || []
+      @block_code, @gatherer_block_code, @block_name = MagicBlocks.find{|_,_,_,*xx| xx.include?(set_code)} || []
     end
 
     def to_json
@@ -43,6 +44,7 @@ class Indexer
         "name" => @set_data["name"],
         "gatherer_code" => @set_data["code"],
         "block_code" => @block_code,
+        "gatherer_block_code" => @gatherer_block_code,
         "block_name" => @block_name,
         "border" => @set_data["border"],
         "online_only" => @set_data["onlineOnly"],

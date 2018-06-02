@@ -21,13 +21,19 @@ describe "Full Database Test" do
 
   it "block_contents" do
     assert_search_equal "e:rtr OR e:gtc OR e:dgm", "b:rtr"
-    assert_search_equal "e:in or e:ps or e:ap", 'b:Invasion'
+    assert_search_equal "e:in or e:ps or e:ap", "b:Invasion"
     assert_search_equal "e:isd or e:dka or e:avr", "b:Innistrad"
     assert_search_equal "e:lw or e:mt or e:shm or e:eve", "b:lorwyn"
     assert_search_equal "e:som or e:mbs or e:nph", "b:som"
     assert_search_equal "e:mi or e:ds or e:5dn", "b:mi"
-    assert_search_equal "e:som", 'e:scars'
+    assert_search_equal "e:som", "e:scars"
     assert_search_equal 'f:"lorwyn shadowmoor block"', "b:lorwyn"
+    # Fake blocks
+    assert_search_equal "e:dom", "b:dom"
+    # Gatherer codes
+    assert_search_equal 'b:lw', "b:lrw"
+    assert_search_equal 'b:mi', "b:mrd"
+    assert_search_equal 'b:mr', "b:mir"
   end
 
   it "edition_special_characters" do
