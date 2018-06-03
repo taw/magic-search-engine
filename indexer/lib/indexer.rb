@@ -10,7 +10,9 @@ require_relative "foreign_names_verifier"
 require_relative "link_related_cards_command"
 require_relative "card_sets_data"
 require_relative "set_code_translator"
-require_relative "urza"
+
+require_relative "patches/patch"
+Dir["#{__dir__}/patches/*.rb"].each do |path| require_relative path end
 
 class Indexer
   ROOT = Pathname(__dir__).parent.parent + "data"
@@ -26,56 +28,11 @@ class Indexer
   end
 
   def index_card_data(card_data)
-    # Gatherer/mtgjson are being silly here
-    # mtgjson is being silly here
-    if card_data["name"] == "B.F.M. (Big Furry Monster)" or card_data["name"] == "B.F.M. (Big Furry Monster, Right Side)"
-      card_data["text"] = "You must play both B.F.M. cards to put B.F.M. into play. If either B.F.M. card leaves play, sacrifice the other.\nB.F.M. can be blocked only by three or more creatures."
-      card_data["cmc"] = 15
-      card_data["power"] = "99"
-      card_data["toughness"] = "99"
-      card_data["manaCost"] = "{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}"
-      card_data["types"] = ["Creature"]
-      card_data["subtypes"] = ["The-Biggest-Baddest-Nastiest-Scariest-Creature-You'll-Ever-See"]
-      card_data["colors"] = ["Black"]
-      # 28a / 29b -> 28 / 29
-      card_data["number"] = card_data["number"].sub(/[ab]\z/, "")
-      card_data["layout"] = "normal" # not really
-    end
-    if card_data["name"] == "Urza, Academy Headmaster"
-      card_data["text"] = Urza.text
-    end
-    if card_data["names"]
-      # https://github.com/mtgjson/mtgjson/issues/227
-      if card_data["name"] == "B.F.M. (Big Furry Monster)" or card_data["name"] == "B.F.M. (Big Furry Monster, Right Side)"
-        # just give up on this one
-      elsif  card_data["layout"] == "split"
-        # All primary
-      elsif card_data["layout"] == "double-faced"
-        if card_data["manaCost"] or card_data["name"] == "Westvale Abbey"
-          # Primary side
-        else
-          card_data["secondary"] = true
-        end
-      elsif card_data["layout"] == "flip" or card_data["layout"] == "aftermath"
-        raise unless card_data["number"] =~ /[ab]\z/
-        card_data["secondary"] = true if card_data["number"] =~ /b\z/
-      elsif card_data["layout"] == "meld"
-        if card_data["manaCost"] or card_data["name"] == "Hanweir Battlements"
-          # Primary side
-        else
-          card_data["secondary"] = true
-        end
-      else
-        raise "Unknown multipart card layout: #{card_data["layout"]} for #{card_data["name"]}"
-      end
-    end
-
-    if (card_data["subtypes"] || []).include?("Saga")
-      card_data["layout"] = "saga"
-    end
-
-    # Some lands have weird nil cmc
-    card_data["cmc"] ||= 0
+    PatchBfm.new(self, card_data).call
+    PatchUrza.new(self, card_data).call
+    PatchSaga.new(self, card_data).call
+    PatchSecondary.new(self, card_data).call
+    PatchCmc.new(self, card_data).call
 
     card_data.slice(
       "name",
