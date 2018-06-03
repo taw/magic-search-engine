@@ -47,10 +47,10 @@ class Indexer
       "display_power",
       "display_toughness",
       "power",
-      "toughness"
+      "toughness",
+      "colors",
     ).merge(
       "printings" => [],
-      "colors" => format_colors(card_data["colors"]),
       "names" => card_data["names"] && card_data["names"].sort,
     ).compact
   end
@@ -93,6 +93,7 @@ class Indexer
         card_data["set_code"] = set_code
         # These aren't bugs, just normalize data into more convenient form
         PatchNormalizeRarity.new(self, card_data).call
+        PatchNormalizeColors.new(self, card_data).call
         PatchLoyaltySymbol.new(self, card_data).call
         PatchDisplayPowerToughness.new(self, card_data).call
 
@@ -111,6 +112,7 @@ class Indexer
         PatchWatermarks.new(self, card_data).call
         PatchBasicLandRarity.new(self, card_data).call
         PatchUnstableBorders.new(self, card_data).call
+        PatchEmnCardNumbers.new(self, card_data).call
       end
 
       set_data["cards"].each do |card_data|
@@ -156,10 +158,6 @@ class Indexer
     ].each do |card_name|
       cards[card_name]["printings"].delete_if{|c,| c == "ptc"}
     end
-
-    # Meld card numbers https://github.com/mtgjson/mtgjson/issues/420
-    cards["Chittering Host"]["printings"].first.last["number"] = "96b"
-    cards["Hanweir Battlements"]["printings"].first.last["number"] = "204a"
 
     fix_promo_printing_dates!(cards, sets)
 
@@ -249,11 +247,6 @@ class Indexer
         mbp_printing[1]["release_date"] = guess_date
       end
     end
-  end
-
-  def format_colors(colors)
-    color_codes = {"White"=>"w", "Blue"=>"u", "Black"=>"b", "Red"=>"r", "Green"=>"g"}
-    (colors||[]).map{|c| color_codes.fetch(c)}.sort.join
   end
 
   # FIXME: This really shouldn't be here
