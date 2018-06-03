@@ -56,9 +56,6 @@ class Indexer
   end
 
   def index_printing_data(set_code, card_data)
-    if card_data["name"] == "B.F.M. (Big Furry Monster)" or card_data["name"] == "B.F.M. (Big Furry Monster, Right Side)"
-      card_data["flavor"] = %Q["It was big. Really, really big. No, bigger than that. Even bigger. Keep going. More. No, more. Look, we're talking krakens and dreadnoughts for jewelry. It was big"\n-Arna Kennerd, skyknight]
-    end
     card_data.slice(
       "flavor",
       "border",
@@ -67,9 +64,9 @@ class Indexer
       "multiverseid",
     ).merge(
       "artist" => card_data["artist"],
-      "rarity" => format_rarity(card_data["rarity"]),
+      "rarity" => card_data["rarity"],
       "release_date" => Indexer.format_release_date(card_data["releaseDate"]),
-      "watermark" => format_watermark(card_data["watermark"]),
+      "watermark" => card_data["watermark"],
       "exclude_from_boosters" => exclude_from_boosters(set_code, card_data["number"]) ? true : nil,
     ).compact
   end
@@ -90,23 +87,27 @@ class Indexer
       set = Indexer::CardSet.new(set_code, set_data)
       sets[set_code] = set.to_json
 
-      # This is fixed in new mtgjson, but we must rollback:
-      set_data["cards"].each do |card_data|
-        card_data["name"].gsub!("Æ", "Ae")
-      end
-
       set.ensure_set_has_card_numbers!
 
       set_data["cards"].each do |card_data|
         card_data["set_code"] = set_code
+        # These aren't bugs, just normalize data into more convenient form
+        PatchNormalizeRarity.new(self, card_data).call
+        PatchLoyaltySymbol.new(self, card_data).call
+
+        # Calculate extra fields
+        PatchSecondary.new(self, card_data).call
+
+        # Patch mtg.wtf bugs
         PatchBfm.new(self, card_data).call
         PatchUrza.new(self, card_data).call
         PatchSaga.new(self, card_data).call
-        PatchSecondary.new(self, card_data).call
         PatchCmc.new(self, card_data).call
         PatchNissa.new(self, card_data).call
         PatchMediaInsertArtists.new(self, card_data).call
         PatchCstdRarity.new(self, card_data).call
+        PatchWatermarks.new(self, card_data).call
+        PatchBasicLandRarity.new(self, card_data).call
       end
 
       set_data["cards"].each do |card_data|
@@ -209,32 +210,6 @@ class Indexer
         next unless set == "rqs" or set == "itp"
         printing["rarity"] = rarity_4e
       end
-    end
-
-    ["Mountain", "Plains", "Swamp", "Island", "Forest"].each do |name|
-      card = cards[name]
-      # Fix rarities of promo basics
-      card["printings"].each do |set, printing|
-        next unless %W[arena guru jr euro apac ptc].include?(set)
-        printing["rarity"] = "special"
-      end
-      # As far as I can tell, Unglued basics were printed on separate black-bordered sheet
-      # contrary to what Gatherer says
-      card["printings"].each do |set, printing|
-        next unless %W[ug].include?(set)
-        printing["rarity"] = "basic"
-      end
-      # Arabian Night Mountain is just a common
-      card["printings"].each do |set, printing|
-        next unless %W[an].include?(set)
-        printing["rarity"] = "common"
-      end
-    end
-
-    # Fix loyalty symbols
-    cards.each do |name, card|
-      next unless (card["types"] || []).include?("Planeswalker")
-      card["text"] = card["text"].gsub(%r[^([\+\-\−]?(?:\d+|X)):]) { "[#{$1}]:" }
     end
 
     # Fix Unstable borders
@@ -346,23 +321,6 @@ class Indexer
       value
     else
       raise "Not sure what to do with #{value.inspect}"
-    end
-  end
-
-  def format_watermark(watermark)
-    return unless watermark
-    return if %W[White Blue Black Red Green Colorless].include?(watermark)
-    watermark.downcase
-  end
-
-  def format_rarity(rarity)
-    r = rarity.downcase
-    if r == "mythic rare"
-      "mythic"
-    elsif r == "basic land"
-      "basic"
-    else
-      r
     end
   end
 
