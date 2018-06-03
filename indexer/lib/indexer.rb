@@ -44,13 +44,13 @@ class Indexer
       "life", # vanguard
       "rulings",
       "secondary",
+      "display_power",
+      "display_toughness",
+      "power",
+      "toughness"
     ).merge(
       "printings" => [],
       "colors" => format_colors(card_data["colors"]),
-      "power" => format_powtou(card_data["power"]),
-      "toughness" => format_powtou(card_data["toughness"]),
-      "display_power" => format_display_powtou(card_data, card_data["power"]),
-      "display_toughness" => format_display_powtou(card_data, card_data["toughness"]),
       "names" => card_data["names"] && card_data["names"].sort,
     ).compact
   end
@@ -62,12 +62,12 @@ class Indexer
       "timeshifted",
       "number",
       "multiverseid",
+      "artist",
+      "rarity",
+      "watermark",
+      "exclude_from_boosters",
     ).merge(
-      "artist" => card_data["artist"],
-      "rarity" => card_data["rarity"],
       "release_date" => Indexer.format_release_date(card_data["releaseDate"]),
-      "watermark" => card_data["watermark"],
-      "exclude_from_boosters" => exclude_from_boosters(set_code, card_data["number"]) ? true : nil,
     ).compact
   end
 
@@ -94,9 +94,11 @@ class Indexer
         # These aren't bugs, just normalize data into more convenient form
         PatchNormalizeRarity.new(self, card_data).call
         PatchLoyaltySymbol.new(self, card_data).call
+        PatchDisplayPowerToughness.new(self, card_data).call
 
         # Calculate extra fields
         PatchSecondary.new(self, card_data).call
+        PatchExcludeFromBoosters.new(self, card_data).call
 
         # Patch mtg.wtf bugs
         PatchBfm.new(self, card_data).call
@@ -108,6 +110,7 @@ class Indexer
         PatchCstdRarity.new(self, card_data).call
         PatchWatermarks.new(self, card_data).call
         PatchBasicLandRarity.new(self, card_data).call
+        PatchUnstableBorders.new(self, card_data).call
       end
 
       set_data["cards"].each do |card_data|
@@ -212,23 +215,6 @@ class Indexer
       end
     end
 
-    # Fix Unstable borders
-    cards.each do |name, card|
-      supertypes = (card["supertypes"] || [])
-      subtypes = (card["subtypes"] || [])
-      if supertypes.include?("Basic") or subtypes.include?("Contraption")
-        card["printings"].each do |set, printing|
-          next unless set == "ust"
-          printing["border"] = "none"
-        end
-      end
-    end
-
-    cards["Steamflogger Boss"]["printings"].each do |set, printing|
-      next unless set == "ust"
-      printing["border"] = "black"
-    end
-
     {"sets"=>sets, "cards"=>cards}
   end
 
@@ -262,65 +248,6 @@ class Indexer
         raise "No guessable date for #{name}" unless guess_date
         mbp_printing[1]["release_date"] = guess_date
       end
-    end
-  end
-
-  # Just for sets with boosters, some cards will be non-booster
-  # That's planeswalker deck exclusive cards,
-  # and also Firesong and Sunspeaker buy-a-box promo
-  def exclude_from_boosters(set_code, number)
-    number = number.to_i
-    case set_code
-    when "kld"
-      number > 264
-    when "aer"
-      number > 184
-    when "akh"
-      number > 269
-    when "hou"
-      number > 199
-    when "xln"
-      number > 279
-    when "rix"
-      number > 196
-    when "dom"
-      number > 269
-    when "ori"
-      number > 272
-    else
-      false
-    end
-  end
-
-  def format_display_powtou(card_data, value)
-    # Only two kinds of Uncards have special handling here:
-    # * Unstable augment cards (which are all +2/+0 etc.)
-    # * Unhinged half-pow/tou cards
-    if value =~ /\A(\d*)½\z/ or (card_data["text"] || "").include?("Augment {")
-      value
-    elsif value =~ /\A(\d*)\.5\z/
-      "#{$1}½"
-    else
-      nil
-    end
-  end
-
-  def format_powtou(value)
-    case value
-    when nil
-      value
-    when /\A[\-\+]?\d+\z/
-      value.to_i
-    when /\A(\d*)\.5\z/
-      $1.to_i + 0.5
-    when /\A(\d*)½\z/
-      $1.to_i + 0.5
-    when "*{^2}"
-      "*²"
-    when /\*/, "∞", "?"
-      value
-    else
-      raise "Not sure what to do with #{value.inspect}"
     end
   end
 

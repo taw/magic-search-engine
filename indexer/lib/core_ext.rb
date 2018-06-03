@@ -17,10 +17,3 @@ class Hash
     result
   end
 end
-
-class Pathname
-  def write_at(content)
-    parent.mkpath
-    write(content)
-  end
-end
