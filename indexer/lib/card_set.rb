@@ -55,6 +55,7 @@ class Indexer
     end
 
     # Time Spiral Timeshifted is in boosters for other sets, so shouldn't be here
+    # https://github.com/mtgjson/mtgjson/issues/584
     def has_boosters
       return false if @set_code == "tsts"
       !!@set_data["booster"]
