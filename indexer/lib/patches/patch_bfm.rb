@@ -1,3 +1,5 @@
+# This gets called after normalization
+# so power/toughness/colors need to be already normalized
 class PatchBfm < Patch
   def call
     patch_card do |card|
@@ -9,7 +11,7 @@ class PatchBfm < Patch
       card["manaCost"] = "{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}"
       card["types"] = ["Creature"]
       card["subtypes"] = ["The-Biggest-Baddest-Nastiest-Scariest-Creature-You'll-Ever-See"]
-      card["colors"] = ["Black"]
+      card["colors"] = "b"
       # 28a / 29b -> 28 / 29
       card["number"] = card["number"].sub(/[ab]\z/, "")
       card["layout"] = "normal" # not really
