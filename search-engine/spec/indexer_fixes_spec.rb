@@ -80,4 +80,13 @@ describe "Indexer Fixes Test" do
   it "No unknown artists" do
     assert_search_results %Q[a:"?"]
   end
+
+  # Some old issues fixed since then, but extra regression tests won't hurt
+  it "No Ae ligature in card names" do
+    db.cards.values.map(&:name).grep(/Æ/i).should be_empty
+  end
+
+  it "No &amp; in artist names" do
+    db.printings.map(&:artist_name).grep(/&amp/).should be_empty
+  end
 end

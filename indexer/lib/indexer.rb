@@ -28,12 +28,6 @@ class Indexer
   end
 
   def index_card_data(card_data)
-    PatchBfm.new(self, card_data).call
-    PatchUrza.new(self, card_data).call
-    PatchSaga.new(self, card_data).call
-    PatchSecondary.new(self, card_data).call
-    PatchCmc.new(self, card_data).call
-
     card_data.slice(
       "name",
       "names",
@@ -72,7 +66,7 @@ class Indexer
       "number",
       "multiverseid",
     ).merge(
-      "artist" => format_artist(card_data["artist"]),
+      "artist" => card_data["artist"],
       "rarity" => format_rarity(card_data["rarity"]),
       "release_date" => Indexer.format_release_date(card_data["releaseDate"]),
       "watermark" => format_watermark(card_data["watermark"]),
@@ -102,6 +96,18 @@ class Indexer
       end
 
       set.ensure_set_has_card_numbers!
+
+      set_data["cards"].each do |card_data|
+        card_data["set_code"] = set_code
+        PatchBfm.new(self, card_data).call
+        PatchUrza.new(self, card_data).call
+        PatchSaga.new(self, card_data).call
+        PatchSecondary.new(self, card_data).call
+        PatchCmc.new(self, card_data).call
+        PatchNissa.new(self, card_data).call
+        PatchMediaInsertArtists.new(self, card_data).call
+        PatchCstdRarity.new(self, card_data).call
+      end
 
       set_data["cards"].each do |card_data|
         name = card_data["name"]
@@ -146,23 +152,6 @@ class Indexer
     ].each do |card_name|
       cards[card_name]["printings"].delete_if{|c,| c == "ptc"}
     end
-
-    # Fix missing artists for some Media Inserts
-    {
-      "Alhammarret, High Arbiter" => "Richard Wright",
-      "Dwynen, Gilt-Leaf Daen" => "Steven Belledin",
-      "Hixus, Prison Warden" => "Magali Villenueve",
-      "Kothophed, Soul Hoarder" => "Tianhua X",
-      "Pia and Kiran Nalaar" => "Tyler Jacobson",
-    }.each do |card_name, correct_artist|
-      _, mbp_printing = cards[card_name]["printings"].find{|set,cp| set == "mbp" and cp["artist"] == "???"}
-      raise "Fixed in mtgjson" unless mbp_printing
-      mbp_printing["artist"] = correct_artist
-    end
-
-    # Nissa loyalty https://github.com/mtgjson/mtgjson/issues/419
-    # https://github.com/mtgjson/mtgjson/issues/320
-    cards["Nissa, Steward of Elements"]["loyalty"] = "X"
 
     # Meld card numbers https://github.com/mtgjson/mtgjson/issues/420
     cards["Chittering Host"]["printings"].first.last["number"] = "96b"
@@ -219,69 +208,6 @@ class Indexer
       card["printings"].each do |set, printing|
         next unless set == "rqs" or set == "itp"
         printing["rarity"] = rarity_4e
-      end
-    end
-
-    cstd_rarity_map = {
-      "Arcum's Weathervane" => "uncommon",
-      "Ashen Ghoul" => "uncommon",
-      "Aurochs" => "common",
-      "Balduvian Dead" => "uncommon",
-      "Barbed Sextant" => "common",
-      "Binding Grasp" => "uncommon",
-      "Bounty of the Hunt" => "uncommon",
-      "Brainstorm" => "common",
-      "Browse" => "uncommon",
-      "Casting of Bones" => "common",
-      "Dark Banishing" => "common",
-      "Dark Ritual" => "common",
-      "Deadly Insect" => "common",
-      "Death Spark" => "uncommon",
-      "Disenchant" => "common",
-      "Drift of the Dead" => "uncommon",
-      "Essence Flare" => "common",
-      "Forest" => "basic",
-      "Gangrenous Zombies" => "common",
-      "Giant Trap Door Spider" => "uncommon",
-      "Gorilla Shaman" => "common",
-      "Iceberg" => "uncommon",
-      "Incinerate" => "common",
-      "Insidious Bookworms" => "common",
-      "Island" => "basic",
-      "Kjeldoran Dead" => "common",
-      "Kjeldoran Elite Guard" => "uncommon",
-      "Kjeldoran Home Guard" => "uncommon",
-      "Kjeldoran Pride" => "common",
-      "Lat-Nam's Legacy" => "common",
-      "Legions of Lim-Dûl" => "common",
-      "Mistfolk" => "common",
-      "Mountain" => "basic",
-      "Orcish Healer" => "uncommon",
-      "Orcish Lumberjack" => "common",
-      "Phantasmal Fiend" => "common",
-      "Plains" => "basic",
-      "Portent" => "common",
-      "Reinforcements" => "common",
-      "Scars of the Veteran" => "uncommon",
-      "Skull Catapult" => "uncommon",
-      "Snow Devil" => "common",
-      "Soul Burn" => "common",
-      "Storm Elemental" => "uncommon",
-      "Swamp" => "basic",
-      "Swords to Plowshares" => "uncommon",
-      "Tinder Wall" => "common",
-      "Viscerid Drone" => "uncommon",
-      "Whalebone Glider" => "uncommon",
-      "Wings of Aesthir" => "uncommon",
-      "Woolly Mammoths" => "common",
-      "Zuran Spellcaster" => "common",
-    }
-
-    # Fix rarities of Coldsnap Theme Decks
-    cards.each do |name, card|
-      card["printings"].each do |set, printing|
-        next unless set == "cstd"
-        printing["rarity"] = cstd_rarity_map.fetch(name)
       end
     end
 
@@ -443,14 +369,6 @@ class Indexer
   def format_colors(colors)
     color_codes = {"White"=>"w", "Blue"=>"u", "Black"=>"b", "Red"=>"r", "Green"=>"g"}
     (colors||[]).map{|c| color_codes.fetch(c)}.sort.join
-  end
-
-  def format_artist(artist)
-    artist.gsub("&amp;", "&")
-  end
-
-  def normalize_name(name)
-    name.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
   end
 
   # FIXME: This really shouldn't be here
