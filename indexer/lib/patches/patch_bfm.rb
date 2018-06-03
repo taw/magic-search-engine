@@ -13,6 +13,9 @@ class PatchBfm < Patch
       # 28a / 29b -> 28 / 29
       card["number"] = card["number"].sub(/[ab]\z/, "")
       card["layout"] = "normal" # not really
+
+      # Printing data
+      card["flavor"] = %Q["It was big. Really, really big. No, bigger than that. Even bigger. Keep going. More. No, more. Look, we're talking krakens and dreadnoughts for jewelry. It was big"\n-Arna Kennerd, skyknight]
     end
   end
 end
