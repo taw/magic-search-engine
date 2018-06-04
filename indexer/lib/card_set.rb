@@ -1,41 +1,10 @@
-MagicBlocks = [
-  [ "ia", "ice", "Ice Age", "ia", "ai", "cs"],
-  # ["shm", "Shadowmoor", "shm", "eve"], # Also included in Lorwyn
-  [ "mr", "mir", "Mirage", "mr", "vi", "wl"],
-  [ "tp", "tmp", "Tempest", "tp", "sh", "ex"],
-  [ "us", "usg", "Urza's Saga", "us", "ul", "ud"],
-  [ "mm", "mmq", "Mercadian Masques", "mm", "ne", "pr"],
-  [ "in", "inv", "Invasion", "in", "ps", "ap"],
-  [ "od", "ody", "Odyssey", "od", "tr", "ju"],
-  [ "on", "ons", "Onslaught", "on", "le", "sc"],
-  [ "mi", "mrd", "Mirrodin", "mi", "ds", "5dn"],
-  ["chk",  nil,  "Champions of Kamigawa", "chk", "bok", "sok"],
-  ["rav",  nil,  "Ravnica", "rav", "gp", "di"],
-  [ "ts", "tsp", "Time Spiral", "ts", "tsts", "pc", "fut"],
-  [ "lw", "lrw", "Lorwyn", "lw", "mt", "shm", "eve"],
-  ["ala",  nil,  "Shards of Alara", "ala", "cfx", "arb"],
-  ["zen",  nil,  "Zendikar", "zen", "wwk", "roe"],
-  ["som",  nil,  "Scars of Mirrodin", "som", "mbs", "nph"],
-  ["isd",  nil,  "Innistrad", "isd", "dka", "avr"],
-  ["rtr",  nil,  "Return to Ravnica", "rtr", "gtc", "dgm"],
-  ["ths",  nil,  "Theros", "ths", "bng", "jou"],
-  ["ktk",  nil,  "Khans of Tarkir", "ktk", "frf", "dtk"],
-  ["bfz",  nil,  "Battle for Zendikar", "bfz", "ogw"],
-  ["soi",  nil,  "Shadows over Innistrad", "soi", "emn"],
-  ["kld",  nil,  "Kaladesh", "kld", "aer"],
-  ["akh",  nil,  "Amonkhet", "akh", "hou"],
-  ["xln",  nil,  "Ixalan", "xln", "rix"],
-  ["dom",  nil,  "Dominaria", "dom"],
-  [ "un",  nil,  "Unsets", "ug", "uh", "ust"],
-]
-
 class Indexer
   class CardSet
     attr_reader :set_code, :set_data
+
     def initialize(set_code, set_data)
       @set_code = set_code
       @set_data = set_data
-      @block_code, @gatherer_block_code, @block_name = MagicBlocks.find{|_,_,_,*xx| xx.include?(set_code)} || []
     end
 
     def to_json
@@ -43,9 +12,6 @@ class Indexer
         "code" => @set_code,
         "name" => @set_data["name"],
         "gatherer_code" => @set_data["code"],
-        "block_code" => @block_code,
-        "gatherer_block_code" => @gatherer_block_code,
-        "block_name" => @block_name,
         "border" => @set_data["border"],
         "online_only" => @set_data["onlineOnly"],
         "release_date" => Indexer.format_release_date(@set_data["releaseDate"]),

@@ -54,6 +54,7 @@ class Indexer
       PatchNormalizeNames,
 
       # Calculate extra fields
+      PatchBlocks,
       PatchSecondary,
       PatchExcludeFromBoosters,
       PatchFunny,
