@@ -51,6 +51,7 @@ class Indexer
         "release_date" => Indexer.format_release_date(@set_data["releaseDate"]),
         "type" => @set_data["type"],
         "has_boosters" => has_boosters,
+        "custom" => @set_data["custom"],
       }.compact
     end
 
