@@ -44,11 +44,6 @@ class OracleVerifier
         if key == "rulings"
           # That's low value fail, would be nice if they fixed it, but whatever
           canonical_variant = variants.keys.max_by{|v| v.to_s.size}
-        elsif key == "supertypes"
-          # Planeswalkers, promos didn't get updated yet
-          if variants.keys.to_set == [nil, ["Legendary"]].to_set
-            canonical_variant = ["Legendary"]
-          end
         elsif key == "subtypes"
           if @name == "Aesthir Glider"
             canonical_variant_source = "dom"
