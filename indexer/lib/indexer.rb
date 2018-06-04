@@ -43,6 +43,49 @@ class Indexer
     @set_code_translator ||= SetCodeTranslator.new(@data)
   end
 
+  def apply_patches(cards, sets)
+    [
+      # Normalize data into more convenient form
+      PatchNormalizeRarity,
+      PatchNormalizeColors,
+      PatchLoyaltySymbol,
+      PatchDisplayPowerToughness,
+      PatchNormalizeReleaseDate,
+      PatchNormalizeNames,
+
+      # Calculate extra fields
+      PatchSecondary,
+      PatchExcludeFromBoosters,
+      PatchFunny,
+      PatchLinkRelated,
+
+      # Reconcile issues
+      PatchReconcileForeignNames,
+      PatchReconcileOracle,
+
+      # Patch mtg.wtf bugs
+      PatchSaga,
+      PatchCmc,
+      PatchNissa,
+      PatchMediaInsertArtists,
+      PatchCstdRarity,
+      PatchWatermarks,
+      PatchBasicLandRarity,
+      PatchUnstableBorders,
+      PatchEmnCardNumbers,
+      PatchItpRqsRarity,
+      PatchDeleteIncompleteCards,
+
+      # Not bugs, more like different judgment calls than mtgjson
+      PatchBfm,
+      PatchUrza,
+      PatchFixPromoPrintDates,
+      PatchMeldCardNames,
+    ].each do |patch_class|
+      patch_class.new(cards, sets).call
+    end
+  end
+
   def prepare_index
     ### Prepare something for patches to be able to work with
     sets = {}
@@ -64,42 +107,7 @@ class Indexer
     end
 
     ### Apply patches
-    # These aren't bugs, just normalize data into more convenient form
-    PatchNormalizeRarity.new(cards, sets).call
-    PatchNormalizeColors.new(cards, sets).call
-    PatchLoyaltySymbol.new(cards, sets).call
-    PatchDisplayPowerToughness.new(cards, sets).call
-    PatchNormalizeReleaseDate.new(cards, sets).call
-    PatchNormalizeNames.new(cards, sets).call
-
-    # Calculate extra fields
-    PatchSecondary.new(cards, sets).call
-    PatchExcludeFromBoosters.new(cards, sets).call
-    PatchFunny.new(cards, sets).call
-    PatchLinkRelated.new(cards, sets).call
-
-    # Reconcile issues
-    PatchReconcileForeignNames.new(cards, sets).call
-    PatchReconcileOracle.new(cards, sets).call
-
-    # Patch mtg.wtf bugs
-    PatchSaga.new(cards, sets).call
-    PatchCmc.new(cards, sets).call
-    PatchNissa.new(cards, sets).call
-    PatchMediaInsertArtists.new(cards, sets).call
-    PatchCstdRarity.new(cards, sets).call
-    PatchWatermarks.new(cards, sets).call
-    PatchBasicLandRarity.new(cards, sets).call
-    PatchUnstableBorders.new(cards, sets).call
-    PatchEmnCardNumbers.new(cards, sets).call
-    PatchItpRqsRarity.new(cards, sets).call
-    PatchDeleteIncompleteCards.new(cards, sets).call
-
-    # Not bugs, more like different judgment calls than mtgjson
-    PatchBfm.new(cards, sets).call
-    PatchUrza.new(cards, sets).call
-    PatchFixPromoPrintDates.new(cards, sets).call
-    PatchMeldCardNames.new(cards, sets).call
+    apply_patches(cards, sets)
 
     ### Return data for saving
     set_order = sets.keys.each_with_index.to_h
