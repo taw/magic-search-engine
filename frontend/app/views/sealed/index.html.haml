@@ -1,7 +1,9 @@
 %h1 Sealed
 %form
-  %input{type: "number", name: "count", value: @count, min: 0}
-  = select_tag :set, options_for_select(@sets.map{|set| [set.name, set.code]}, @set_code)
+  - @packs_to_open.each do |set_code, count|
+    %div
+      %input{type: "number", name: "count[]", value: count, min: 0}
+      = select_tag "set[]", options_for_select(@sets.map{|set| [set.name, set.code]}, set_code)
   %button{type: "submit", class: "btn btn-outline-primary"}
     Open packs
 - if @cards.present?
