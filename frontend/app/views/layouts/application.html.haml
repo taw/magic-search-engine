@@ -6,7 +6,7 @@
       .row.logo_row
         .col-12
           %h1
-            %a.site_logo{href: "/"} mtg.wtf
+            %a.site_logo{href: "/"}= APP_NAME
       = form_tag("/card", method: :get, class: "search row search_form_row", enforce_utf8: false) do
         .col-12.col-md-10
           = text_field_tag(:q, @search, {class: 'form-control', tabindex: 1, autofocus: @empty_page})
