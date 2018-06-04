@@ -364,3 +364,10 @@ h3 .manacost {
     column-rule: thin solid #888;
   }
 }
+.picture_preview_column {
+  position: relative;
+  .picture_preview_box {
+    position: relative;
+    width: 100%;
+  }
+}
