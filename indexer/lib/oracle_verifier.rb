@@ -1,34 +1,33 @@
 class OracleVerifier
-  def initialize
-    @versions = {}
-    @canonical = {}
+  def initialize(name)
+    @name = name
+    @versions = []
+    @canonical = nil
   end
 
   def add(set_code, card_data)
-    name = card_data["name"]
-    @versions[name] ||= []
-    @versions[name] << [set_code, card_data]
+    @versions << [set_code, card_data]
   end
 
-  def report_variants!(card_name, key, variants)
-    puts "Key #{key} of card #{card_name} is inconsistent between versions"
+  def report_variants!(key, variants)
+    puts "Key #{key} of card #{@name} is inconsistent between versions"
     variants.each do |variant, printings|
       puts "* #{variant.inspect} - #{printings.join(" ")}"
     end
     puts ""
   end
 
-  def validate_and_report!(card_name, versions)
+  def verify!
     # All versions are same, no reason to dig deeper
-    if versions.map(&:last).uniq.size == 1
-      @canonical[card_name] = versions[0][1]
+    if @versions.map(&:last).uniq.size == 1
+      @canonical = @versions[0][1]
     end
     # Something failed
-    keys = versions.map(&:last).map(&:keys).inject(&:|)
-    @canonical[card_name] = {}
+    keys = @versions.map(&:last).map(&:keys).inject(&:|)
+    @canonical = {}
     keys.each do |key|
       variants = {}
-      versions.each do |set_code, version|
+      @versions.each do |set_code, version|
         variant = version[key]
         variants[variant] ||= []
         variants[variant] << set_code
@@ -51,7 +50,7 @@ class OracleVerifier
             canonical_variant = ["Legendary"]
           end
         elsif key == "subtypes"
-          if card_name == "Aesthir Glider"
+          if @name == "Aesthir Glider"
             canonical_variant_source = "dom"
           end
         else
@@ -90,25 +89,18 @@ class OracleVerifier
         end
       end
       if canonical_variant_source
-        canonical_variant = versions.find{|k,v| k == canonical_variant_source}[1][key]
+        canonical_variant = @versions.find{|k,v| k == canonical_variant_source}[1][key]
       end
 
       if canonical_variant
-        @canonical[card_name][key] = canonical_variant
+        @canonical[key] = canonical_variant
       else
-        report_variants!(card_name, key, variants)
+        report_variants!(key, variants)
       end
     end
   end
 
-  def canonical(card_name)
-    return @canonical[card_name] if @canonical[card_name]
-    raise "No canonical version for #{card_name}"
-  end
-
-  def verify!
-    @versions.each do |card_name, versions|
-      validate_and_report!(card_name, versions)
-    end
+  def canonical
+    @canonical or raise "No canonical version for #{@name}"
   end
 end

@@ -4,12 +4,12 @@ require_relative "../oracle_verifier"
 
 class PatchReconcileOracle < Patch
   def call
-    oracle_verifier = OracleVerifier.new
-
-    # This is seriously awkward code here
-    # If something is missing, it will fail validation later on, so it's totally fine
     @cards.each do |name, printings|
+      oracle_verifier = OracleVerifier.new(name)
+
       printings.each do |printing|
+        # If something is missing, it will fail validation later on,
+        # only pass what you'd like to see reconciled automatically
         oracle_verifier.add printing["set_code"], printing.slice(
           "name",
           "manaCost",
@@ -20,12 +20,10 @@ class PatchReconcileOracle < Patch
           "rulings",
         )
       end
-    end
 
-    oracle_verifier.verify!
+      oracle_verifier.verify!
 
-    @cards.each do |name, printings|
-      canonical = oracle_verifier.canonical(name)
+      canonical = oracle_verifier.canonical
       printings.each do |printing|
         printing.merge!(canonical)
       end
