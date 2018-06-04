@@ -4,7 +4,7 @@ class DeckControllerTest < ActionController::TestCase
   test "list of decks" do
     get "index"
     assert_response 200
-    assert_equal "Preconstructed Decks - mtg.wtf", html_document.title
+    assert_equal "Preconstructed Decks - #{APP_NAME}", html_document.title
   end
 
   test "all decks show correctly" do
@@ -13,7 +13,7 @@ class DeckControllerTest < ActionController::TestCase
         get "show", params: {set: set_code, id: deck.slug}
         assert_response 200
         assert_select %Q[h4:contains("#{deck.name}")]
-        assert_equal "#{deck.name} - #{set.name} #{deck.type} - mtg.wtf", html_document.title
+        assert_equal "#{deck.name} - #{set.name} #{deck.type} - #{APP_NAME}", html_document.title
       end
     end
   end

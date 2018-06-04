@@ -1,3 +1,5 @@
+APP_NAME = "mtg.wtf"
+
 # Load the Rails application.
 require_relative 'application'
 
