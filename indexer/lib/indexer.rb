@@ -55,6 +55,7 @@ class Indexer
 
       # Calculate extra fields
       PatchBlocks,
+      PatchHasBoosters,
       PatchSecondary,
       PatchExcludeFromBoosters,
       PatchFunny,

@@ -8,24 +8,18 @@ class Indexer
     end
 
     def to_json
-      {
+      @set_data.slice(
+        "name",
+        "border",
+        "type",
+        "booster",
+        "custom",
+      ).merge(
         "code" => @set_code,
-        "name" => @set_data["name"],
         "gatherer_code" => @set_data["code"],
-        "border" => @set_data["border"],
         "online_only" => @set_data["onlineOnly"],
         "release_date" => Indexer.format_release_date(@set_data["releaseDate"]),
-        "type" => @set_data["type"],
-        "has_boosters" => has_boosters,
-        "custom" => @set_data["custom"],
-      }.compact
-    end
-
-    # Time Spiral Timeshifted is in boosters for other sets, so shouldn't be here
-    # https://github.com/mtgjson/mtgjson/issues/584
-    def has_boosters
-      return false if @set_code == "tsts"
-      !!@set_data["booster"]
+      ).compact
     end
 
     # They really only have two goals:
