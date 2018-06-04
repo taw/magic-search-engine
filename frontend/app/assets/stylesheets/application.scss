@@ -358,4 +358,9 @@ h3 .manacost {
   .card_group {
     margin-bottom: 0.5rem;
   }
+  .two-columns {
+    column-count: 2;
+    column-gap: 15px;
+    column-rule: thin solid #888;
+  }
 }
