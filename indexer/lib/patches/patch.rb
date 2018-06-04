@@ -1,12 +1,12 @@
-# This interface is completely wrong, it should be used on db not on one printing
-# But refactoring step by step
 class Patch
-  def initialize(indexer, card)
-    @indexer = indexer
-    @card = card
+  def initialize(cards, sets)
+    @cards = cards
+    @sets = sets
   end
 
-  def patch_card
-    yield(@card)
+  def patch_card(&block)
+    @cards.each do |name, printings|
+      printings.each(&block)
+    end
   end
 end
