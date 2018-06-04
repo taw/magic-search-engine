@@ -20,7 +20,7 @@
 $(document).on("mouseover", ".previewable_card_name", function() {
   var preview_link = $(this).data("preview-link");
   $(this).closest(".decklist").find(".card_picture_cell").hide();
-  $(this).closest(".decklist").find(".card_picture_cell[data-preview='"+preview_link.replace("'", "\\'")+"']").show();
+  $(this).closest(".decklist").find(".card_picture_cell[data-preview='"+preview_link+"']").show();
 })
 
 $(document).on("scroll", function() {
