@@ -14,11 +14,11 @@ class Indexer
         "type",
         "booster",
         "custom",
+        "releaseDate",
       ).merge(
         "code" => @set_code,
         "gatherer_code" => @set_data["code"],
         "online_only" => @set_data["onlineOnly"],
-        "release_date" => Indexer.format_release_date(@set_data["releaseDate"]),
       ).compact
     end
 
