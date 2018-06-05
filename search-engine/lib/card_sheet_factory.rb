@@ -338,4 +338,28 @@ class CardSheetFactory
       [from_query("e:emn r:mythic is:front (is:dfc or is:meld)", 2), 1],
     )
   end
+
+  # These are legendary creatures only according to maro
+  # not planeswalkers or other legendaries
+  def dom_legendary_uncommon
+    from_query('e:dom is:booster t:"legendary creature" r:uncommon', 20)
+  end
+
+  def dom_nonlegendary_uncommon
+    from_query('e:dom is:booster -t:"legendary creature" r:uncommon', 60)
+  end
+
+  def dom_legendary_rare_mythic
+    mix_sheets(
+      [from_query('e:dom is:booster t:"legendary creature" r:rare', 14), 2],
+      [from_query('e:dom is:booster t:"legendary creature" r:mythic', 8), 1],
+    )
+  end
+
+  def dom_nonlegendary_rare_mythic
+    mix_sheets(
+      [from_query('e:dom is:booster -t:"legendary creature" r:rare', 39), 2],
+      [from_query('e:dom is:booster -t:"legendary creature" r:mythic', 7), 1],
+    )
+  end
 end
