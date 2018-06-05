@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+require "json"
+
+class ValidateMtgjson
+  def initialize(path)
+    @data = JSON.parse(path.read)
+  end
+
+  def call
+    @data["cards"].group_by{|x|x}.each do |card, cards|
+      next if cards.size == 1
+      puts "Card #{card["name"]}/#{card["number"]}/#{card["multiverseid"]} has #{cards.size} identical copies in the file"
+    end
+
+    @data["cards"].group_by{|c| c["number"]}.each do |number, cards|
+      next if cards.size == 1
+      puts "Multiple cards assigned same number #{number}: #{cards.map{|c| "#{c["name"]}/#{c["multiverseid"]}"}.join(", ")}"
+    end
+
+    @data["cards"].group_by{|c| c["multiverseid"]}.each do |multiverseid, cards|
+      next if cards.size == 1
+      puts "Multiple cards assigned same multiverseid #{multiverseid}: #{cards.map{|c| "#{c["name"]}/#{c["number"]}"}.join(", ")}"
+    end
+  end
+end
+
+ARGV.each do |path|
+  ValidateMtgjson.new(Pathname(path)).call
+end
