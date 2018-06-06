@@ -1,4 +1,4 @@
-class OracleVerifier
+class SetPriorityBasedReconciliation
   def initialize(printings, field_name)
     @printings = printings
     @field_name = field_name
