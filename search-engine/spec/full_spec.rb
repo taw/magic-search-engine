@@ -2,8 +2,8 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(18392)
-    db.number_of_printings.should eq(35936)
+    db.number_of_cards.should eq(18477)
+    db.number_of_printings.should eq(36192)
   end
 
   it "block_codes" do
@@ -119,6 +119,7 @@ describe "Full Database Test" do
       "Unruly Mob"
 
     assert_search_results "e:soi lastprint>soi",
+      "Aim High",
       "Archangel Avacyn",
       "Arlinn Kord",
       "Arlinn, Embraced by the Moon",
@@ -129,6 +130,7 @@ describe "Full Database Test" do
       "Forest",
       "Forsaken Sanctuary",
       "Foul Orchard",
+      "Grotesque Mutation",
       "Highland Lake",
       "Island",
       "Mountain",
@@ -366,7 +368,7 @@ describe "Full Database Test" do
   end
 
   it "is commander" do
-    assert_search_equal "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14)"
+    assert_search_equal "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,bbd)"
   end
 
   # Bugfix

@@ -7,6 +7,11 @@ describe "Spelling" do
       "Urborg Panther"      # Spirit of the Night
   end
 
+  it "Battleborn partner" do
+    assert_search_results "related:Zndrsplt",
+      "Okaun, Eye of Chaos"
+  end
+
   it "*" do
     assert_search_equal "related:t:*", "related:*"
   end
