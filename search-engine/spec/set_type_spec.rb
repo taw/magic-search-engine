@@ -23,6 +23,7 @@ describe "Set types" do
     assert_search_equal "st:starter", "st:st"
     assert_search_equal "st:pds", 'st:"premium deck"'
     assert_search_equal "st:pc", "st:planechase"
+    assert_search_equal "st:2hg", 'st:"two-headed giant"'
     assert_search_equal "st:standard", "(st:core or st:expansion)"
   end
 

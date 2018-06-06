@@ -61,6 +61,8 @@ class OracleVerifier
             if good.size == 1
               canonical_variant = good[0]
             end
+          elsif ["Land Tax", "Skyshroud Claim", "Vigor", "Fertilid", "Daggerback Basilisk", "Unflinching Courage", "Plated Crusher"].include?(@name)
+            canonical_variant_source = "bbd"
           else
             # first line: never updated (also: UGL,UNH,UST,S00)
             # second line: not updated yet

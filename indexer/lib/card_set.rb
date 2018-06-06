@@ -42,6 +42,20 @@ class Indexer
       use_mci_numbers! if numbers.compact.empty?
 
       case set_code
+      when "bbd"
+        # Gatherer creates those duplicates for partner cards
+        # and mtgjson just repeats that
+        # https://github.com/mtgjson/mtgjson/issues/586
+        # https://github.com/mtgjson/mtgjson/issues/587
+        # https://github.com/mtgjson/mtgjson/issues/588
+        cards.delete_if{|c| c["number"] =~ /b/}
+        cards.each do |c|
+          c["layout"] = "normal"
+          if c["number"] =~ /a/
+            c["number"].sub!(/a/,"")
+            c.delete("names")
+          end
+        end
       when "van"
         set_data["cards"].sort_by{|c| c["multiverseid"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
       when "pch", "arc", "pc2", "pca", "e01"
