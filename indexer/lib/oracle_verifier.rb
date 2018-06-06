@@ -4,13 +4,16 @@ class OracleVerifier
     @field_name = field_name
   end
 
-  def canonical
+  def reconcile
     # All versions are same, no reason to dig deeper
-    if variants.size == 1
-      variants.keys.first
-    else
-      # Something failed
-      reconcile
+    return if variants.size == 1
+
+    # Something failed
+    success, canonical = run_reconciliation
+    if success
+      @printings.each do |printing|
+        printing[@field_name] = canonical
+      end
     end
   end
 
@@ -54,15 +57,8 @@ class OracleVerifier
     priority || 0
   end
 
-  def reconcile
-    # There are multiple versions, we need to figure out which works
-
-    if @field_name == "rulings"
-      # That's low value fail, would be nice if they fixed it, but whatever
-      # FIXME: actually not really, "his or her" takes false priority over "their"
-      return @variants.keys.max_by{|v| v.to_s.size}
-    end
-
+  # There are multiple versions, we need to figure out which works
+  def run_reconciliation
     variants_by_priority = {}
     variants.each do |variant, set_codes|
       priority = set_codes.map{|set_code| set_priority(set_code)}.max
@@ -71,10 +67,10 @@ class OracleVerifier
 
     priority_variants = variants_by_priority[variants_by_priority.keys.max]
 
-    return priority_variants[0] if priority_variants.size == 1
+    return [true, priority_variants[0]] if priority_variants.size == 1
 
     # This should be more meaningful warning
     warn "Can't reconcile #{card_name}"
-    nil
+    return [false, nil]
   end
 end
