@@ -24,7 +24,7 @@ class PatchReconcileOracle < Patch
         canonical = oracle_verifier.canonical
         if canonical
           printings.each do |printing|
-            printing.merge!(field_name => canonical)
+            printing[field_name] = canonical
           end
         end
       end
