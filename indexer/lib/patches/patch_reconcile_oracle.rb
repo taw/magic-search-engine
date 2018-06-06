@@ -20,13 +20,7 @@ class PatchReconcileOracle < Patch
   def call
     @cards.each do |name, printings|
       fields_to_reconcile.each do |field_name|
-        oracle_verifier = OracleVerifier.new(printings, field_name)
-        canonical = oracle_verifier.canonical
-        if canonical
-          printings.each do |printing|
-            printing[field_name] = canonical
-          end
-        end
+        OracleVerifier.new(printings, field_name).reconcile
       end
     end
   end
