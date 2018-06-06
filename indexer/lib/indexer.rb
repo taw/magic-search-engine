@@ -48,7 +48,7 @@ class Indexer
 
       # Reconcile issues
       PatchReconcileForeignNames,
-      PatchReconcileOracle,
+      PatchReconcileOnSetPriority,
 
       # Patch mtg.wtf bugs
       PatchSaga,
