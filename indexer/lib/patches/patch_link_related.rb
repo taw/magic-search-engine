@@ -1,6 +1,5 @@
 class PatchLinkRelated < Patch
   def call
-
     # The index has tokens as cards, CardDatabase filters them out
     # We should probably move them out of the way before that
     all_card_names = @cards.values.flatten.select{|c| c["layout"] != "token"}.map{|c| c["name"]}.uniq
