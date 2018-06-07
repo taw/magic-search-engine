@@ -17,7 +17,7 @@ class PatchFixPromoPrintDates < Patch
       mbp_printing = printings.find{|c| c["set_code"] == "mbp" }
 
       real_printings = printings.select{|c| !["ptc", "mlp", "mgdc", "mbp"].include?(c["set_code"]) }
-      guess_date = real_printings.map{|c| c["release_date"] || @sets[c["set_code"]]["release_date"] }.min
+      guess_date = real_printings.map{|c| c["release_date"] || set_release_date(c["set_code"]) }.min
 
       if ptc_printing and not ptc_printing["release_date"]
         raise "No guessable date for #{name}" unless guess_date
@@ -37,5 +37,9 @@ class PatchFixPromoPrintDates < Patch
         mbp_printing["release_date"] = guess_date
       end
     end
+  end
+
+  def set_release_date(set_code)
+    @sets[set_code]["release_date"]
   end
 end
