@@ -9,4 +9,10 @@ class Patch
       printings.each(&block)
     end
   end
+
+  def patch_set
+    @sets.each do |set_code, set|
+      yield(set)
+    end
+  end
 end

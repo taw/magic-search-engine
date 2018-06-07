@@ -1,8 +1,8 @@
 class PatchHasBoosters < Patch
   def call
-    @sets.each do |set_code, set|
+    patch_set do |set|
       booster = set.delete("booster")
-      if set_code == "tsts"
+      if set["code"] == "tsts"
         # https://github.com/mtgjson/mtgjson/issues/584
         set["has_boosters"] = false
       else

@@ -5,7 +5,7 @@ class PatchNormalizeReleaseDate < Patch
       card["release_date"] = normalize_release_date(release_date)
     end
 
-    @sets.each do |set_code, set|
+    patch_set do |set|
       release_date = set.delete("releaseDate") or next
       set["release_date"] = normalize_release_date(release_date)
     end
