@@ -15,4 +15,8 @@ class Patch
       yield(set)
     end
   end
+
+  def cards_by_set
+    @cards_by_set ||= @cards.values.flatten.group_by{|c| c["set_code"]}
+  end
 end

@@ -30,6 +30,12 @@ class Indexer
 
   def apply_patches(cards, sets)
     [
+      # All cards absolutely need unique numbers
+      PatchFixCollectorNumbers,
+      PatchUseMciNumbersAsFallback,
+      PatchBattlebond,
+      PatchVerifyCollectorNumbers,
+
       # Normalize data into more convenient form
       PatchNormalizeRarity,
       PatchNormalizeColors,
@@ -83,13 +89,12 @@ class Indexer
       set = Indexer::CardSet.new(set_code, set_data)
       sets[set_code] = set.to_json
 
-      set.ensure_set_has_card_numbers!
-
-      set_data["cards"].each do |card_data|
+      # original_order is needed until we fix rqs
+      set_data["cards"].each_with_index do |card_data, i|
         name = card_data["name"]
         card_data["set_code"] = set_code
         cards[name] ||= []
-        cards[name] << card_data
+        cards[name] << card_data.merge("original_order" => i)
       end
     end
 
