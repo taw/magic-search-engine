@@ -40,6 +40,6 @@ class PatchFixPromoPrintDates < Patch
   end
 
   def set_release_date(set_code)
-    @sets[set_code]["release_date"]
+    @sets.find{|set| set["code"] == set_code}["release_date"]
   end
 end
