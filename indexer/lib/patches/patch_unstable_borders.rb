@@ -1,6 +1,6 @@
 class PatchUnstableBorders < Patch
   def call
-    patch_card do |card|
+    each_printing do |card|
       next unless card["set_code"] == "ust"
       name = card["name"]
       supertypes = (card["supertypes"] || [])

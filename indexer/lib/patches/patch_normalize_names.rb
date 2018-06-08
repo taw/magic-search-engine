@@ -1,6 +1,6 @@
 class PatchNormalizeNames < Patch
   def call
-    patch_card do |card|
+    each_printing do |card|
       next unless card["names"]
       card["names"] = card["names"].sort
     end

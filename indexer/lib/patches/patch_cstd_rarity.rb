@@ -57,7 +57,7 @@ class PatchCstdRarity < Patch
   }
 
   def call
-    patch_card do |card|
+    each_printing do |card|
       next unless card["set_code"] == "cstd"
       card["rarity"] = CSTD_RARITY_MAP.fetch(card["name"])
     end

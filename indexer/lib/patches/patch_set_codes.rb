@@ -3,7 +3,7 @@
 # with some exceptions in both cases
 class PatchSetCodes < Patch
   def call
-    patch_set do |set|
+    each_set do |set|
       set["code"] ||= set["gatherer_code"].downcase
       case set["gatherer_code"]
       when "pGTW"
@@ -23,7 +23,7 @@ class PatchSetCodes < Patch
       raise "There are duplicated set codes: #{duplicated_codes.keys}"
     end
 
-    patch_card do |card|
+    each_printing do |card|
       card["set_code"] = card["set"]["code"]
     end
   end

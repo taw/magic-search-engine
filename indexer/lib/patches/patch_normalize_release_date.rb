@@ -1,11 +1,11 @@
 class PatchNormalizeReleaseDate < Patch
   def call
-    patch_card do |card|
+    each_printing do |card|
       release_date = card.delete("releaseDate") or next
       card["release_date"] = normalize_release_date(release_date)
     end
 
-    patch_set do |set|
+    each_set do |set|
       release_date = set.delete("releaseDate") or next
       set["release_date"] = normalize_release_date(release_date)
     end

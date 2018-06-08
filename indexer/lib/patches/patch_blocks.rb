@@ -37,7 +37,7 @@ class PatchBlocks < Patch
   end
 
   def call
-    patch_set do |set|
+    each_set do |set|
       code, code2, name = block_by_set_code(set["code"])
       set.merge!({
         "block_code" => code,

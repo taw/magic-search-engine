@@ -9,7 +9,7 @@ class PatchMediaInsertArtists < Patch
     "Pia and Kiran Nalaar" => "Tyler Jacobson",
   }
   def call
-    patch_card do |card|
+    each_printing do |card|
       next unless card["set_code"] == "mbp"
       next unless card["artist"] == "???"
       card["artist"] = CORRECT_ARTISTS.fetch(card["name"])

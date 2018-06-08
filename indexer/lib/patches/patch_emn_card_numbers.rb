@@ -1,7 +1,7 @@
 # Meld card numbers https://github.com/mtgjson/mtgjson/issues/420
 class PatchEmnCardNumbers < Patch
   def call
-    patch_card do |card|
+    each_printing do |card|
       next unless card["set_code"] == "emn"
       if card["name"] == "Chittering Host"
         card["number"] = "96b"

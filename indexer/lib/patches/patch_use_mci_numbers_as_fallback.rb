@@ -1,6 +1,6 @@
 class PatchUseMciNumbersAsFallback < Patch
   def call
-    patch_set do |set|
+    each_set do |set|
       set_code = set["code"]
       use_mci_numbers(set_code) if cards_by_set[set_code].none?{|c| c["number"]}
     end

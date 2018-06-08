@@ -90,7 +90,7 @@ class PatchUrza < Patch
   end
 
   def call
-    patch_card do |card|
+    each_printing do |card|
       next unless card["name"] == "Urza, Academy Headmaster"
       card["text"] = text
     end

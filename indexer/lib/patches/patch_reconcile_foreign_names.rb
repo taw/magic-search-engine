@@ -18,7 +18,7 @@ class PatchReconcileForeignNames < Patch
   end
 
   def call
-    @cards.each do |name, printings|
+    each_card do |name, printings|
       ### Extract raw data
       # delete foreignNames while we're at it
       raw_data = extract_raw_data(printings)

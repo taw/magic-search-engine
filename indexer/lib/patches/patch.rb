@@ -4,13 +4,17 @@ class Patch
     @sets = sets
   end
 
-  def patch_card(&block)
+  def each_card(&block)
+    @cards.each(&block)
+  end
+
+  def each_printing(&block)
     @cards.each do |name, printings|
       printings.each(&block)
     end
   end
 
-  def patch_set(&block)
+  def each_set(&block)
     @sets.each(&block)
   end
 
