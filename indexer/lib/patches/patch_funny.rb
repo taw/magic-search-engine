@@ -1,7 +1,7 @@
 class PatchFunny < Patch
   def call
     funny_sets = %W[uh ug uqc hho arena rep ust]
-    @cards.each do |name, printings|
+    each_card do |name, printings|
       funny = printings.all?{|card| funny_sets.include?(card["set_code"]) }
 
       if funny

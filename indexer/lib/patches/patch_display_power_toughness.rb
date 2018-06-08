@@ -1,6 +1,6 @@
 class PatchDisplayPowerToughness < Patch
   def call
-    patch_card do |card|
+    each_printing do |card|
       next unless card["power"]
       power = card["power"]
       toughness = card["toughness"]

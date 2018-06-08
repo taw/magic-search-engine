@@ -4,7 +4,7 @@
 
 class PatchExcludeFromBoosters < Patch
   def call
-    patch_card do |card|
+    each_printing do |card|
       card["exclude_from_boosters"] = true if exclude_from_boosters(card["set_code"], card["number"].to_i)
     end
   end

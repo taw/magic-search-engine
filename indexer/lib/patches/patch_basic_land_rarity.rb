@@ -3,7 +3,7 @@ class PatchBasicLandRarity < Patch
   def call
     basic_land_names = ["Mountain", "Plains", "Swamp", "Island", "Forest"]
 
-    patch_card do |card|
+    each_printing do |card|
       next unless basic_land_names.include?(card["name"])
 
       # Fix rarities of promo basics

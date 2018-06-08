@@ -12,16 +12,15 @@ class PatchLinkRelated < Patch
 
     # Extract links
     links = {}
-    @cards.each do |name, printings|
-      printings.each do |printing|
-        matching_cards = (printing["text"]||"").scan(rx).flatten.uniq - [name, nil]
-        next if matching_cards.empty?
-        matching_cards.each do |other|
-          links[name] ||= Set[]
-          links[name] << other
-          links[other] ||= Set[]
-          links[other] << name
-        end
+    each_printing do |printing|
+      name = printing["name"]
+      matching_cards = (printing["text"]||"").scan(rx).flatten.uniq - [name, nil]
+      next if matching_cards.empty?
+      matching_cards.each do |other|
+        links[name] ||= Set[]
+        links[name] << other
+        links[other] ||= Set[]
+        links[other] << name
       end
     end
 

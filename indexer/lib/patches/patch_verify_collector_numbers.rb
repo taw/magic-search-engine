@@ -14,7 +14,7 @@
 
 class PatchVerifyCollectorNumbers < Patch
   def call
-    patch_set do |set|
+    each_set do |set|
       verify_numbers(set)
     end
   end

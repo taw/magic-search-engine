@@ -1,6 +1,6 @@
 class PatchSecondary < Patch
   def call
-    patch_card do |card|
+    each_printing do |card|
       next unless card["names"]
       # https://github.com/mtgjson/mtgjson/issues/227
       if card["name"] == "B.F.M. (Big Furry Monster)" or card["name"] == "B.F.M. (Big Furry Monster, Right Side)"

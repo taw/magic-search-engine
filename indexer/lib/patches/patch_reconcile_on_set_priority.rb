@@ -17,7 +17,7 @@ class PatchReconcileOnSetPriority < Patch
   end
 
   def call
-    @cards.each do |name, printings|
+    each_card do |name, printings|
       fields_to_reconcile.each do |field_name|
         SetPriorityBasedReconciliation.new(printings, field_name).reconcile
       end

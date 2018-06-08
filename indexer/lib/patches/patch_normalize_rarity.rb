@@ -1,6 +1,6 @@
 class PatchNormalizeRarity < Patch
   def call
-    patch_card do |card|
+    each_printing do |card|
       rarity = card["rarity"].downcase
       card["rarity"] = case rarity
       when "mythic rare"

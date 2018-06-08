@@ -4,7 +4,7 @@
 
 class PatchItpRqsRarity < Patch
   def call
-    @cards.each do |name, printings|
+    each_card do |name, printings|
       affected_printings = printings.select{|printing| printing["set_code"] == "rqs" or printing["set_code"] == "itp"}
       next if affected_printings.empty?
       rarity_4e = printings.find{|printing| printing["set_code"] == "4e"}["rarity"]

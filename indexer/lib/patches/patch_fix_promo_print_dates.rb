@@ -6,7 +6,7 @@
 # It's not pretty, but better than nothing
 class PatchFixPromoPrintDates < Patch
   def call
-    @cards.each do |name, printings|
+    each_card do |name, printings|
       # Prerelease
       ptc_printing = printings.find{|c| c["set_code"] == "ptc" }
       # Release
@@ -16,8 +16,7 @@ class PatchFixPromoPrintDates < Patch
       # Media inserts
       mbp_printing = printings.find{|c| c["set_code"] == "mbp" }
 
-      real_printings = printings.select{|c| !["ptc", "mlp", "mgdc", "mbp"].include?(c["set_code"]) }
-      guess_date = real_printings.map{|c| c["release_date"] || set_release_date(c["set_code"]) }.min
+      guess_date = guess_date_for(printings)
 
       if ptc_printing and not ptc_printing["release_date"]
         raise "No guessable date for #{name}" unless guess_date
@@ -39,7 +38,12 @@ class PatchFixPromoPrintDates < Patch
     end
   end
 
-  def set_release_date(set_code)
-    @sets.find{|set| set["code"] == set_code}["release_date"]
+  private
+
+  def guess_date_for(printings)
+    printings
+      .select{|c| !["ptc", "mlp", "mgdc", "mbp"].include?(c["set_code"]) }
+      .map{|c| c["release_date"] || c["set"]["release_date"] }
+      .min
   end
 end

@@ -1,7 +1,7 @@
 # This should probably be multiple patches
 class PatchFixCollectorNumbers < Patch
   def call
-    patch_set do |set|
+    each_set do |set|
       fix_numbers(set)
     end
   end
