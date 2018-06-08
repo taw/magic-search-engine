@@ -99,11 +99,9 @@ class Indexer
         "online_only" => set_data["onlineOnly"],
       ).compact
       sets << set
-      # FIXME: original_order is needed until we fix rqs and st2k
       set_data["cards"].each_with_index do |card_data, i|
         name = card_data["name"]
         card_data["set"] = set
-        card_data["original_order"] = i
         (cards[name] ||= []) << card_data
       end
     end
