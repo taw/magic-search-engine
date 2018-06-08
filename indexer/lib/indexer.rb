@@ -12,21 +12,39 @@ Dir["#{__dir__}/patches/*.rb"].each do |path| require_relative path end
 class Indexer
   ROOT = Pathname(__dir__).parent.parent + "data"
 
-  def initialize
+  # In verbose mode we validate each patch to make sure it actually does something
+  def initialize(save_path, verbose=false)
+    @save_path = Pathname(save_path)
+    @verbose = verbose
     @data = CardSetsData.new
   end
 
-  def save_all!(path)
-    path = Pathname(path)
-    path.parent.mkpath
-    path.write(prepare_index.to_json)
+  def call
+    @save_path.parent.mkpath
+    @save_path.write(prepare_index.to_json)
   end
 
-  def set_code_translator
-    @set_code_translator ||= SetCodeTranslator.new(@data)
+  private
+
+  def prepare_index
+    ### Prepare something for patches to be able to work with
+    sets, cards = load_database
+
+    ### Apply patches
+    apply_patches(cards, sets)
+
+    ### Return data for saving
+    sets = sets.map{|s| [s["code"], s]}.to_h
+    set_order = sets.keys.each_with_index.to_h
+    {
+      "sets"=>sets,
+      "cards"=>cards.map{|name, card_data|
+        [name, index_card(card_data, set_order)]
+      }.sort.to_h
+    }
   end
 
-  def apply_patches(cards, sets)
+  def patches
     [
       # Each set needs unique code, by convention all lowercase
       PatchSetCodes,
@@ -75,13 +93,26 @@ class Indexer
       PatchUrza,
       PatchFixPromoPrintDates,
       PatchMeldCardNames,
-    ].each do |patch_class|
-      patch_class.new(cards, sets).call
+    ]
+  end
+
+  def apply_patches(cards, sets)
+    patches.each do |patch_class|
+      if @verbose
+        # This is very slow, and some patches are just here to verify things
+        # It could still be useful for debugging
+        before = Marshal.load(Marshal.dump([cards, sets]))
+        patch_class.new(cards, sets).call
+        if before == [cards, sets]
+          warn "Patch #{patch_class} seems to be doing nothing"
+        end
+      else
+        patch_class.new(cards, sets).call
+      end
     end
   end
 
-  def prepare_index
-    ### Prepare something for patches to be able to work with
+  def load_database
     sets = []
     cards = {}
 
@@ -105,19 +136,7 @@ class Indexer
         (cards[name] ||= []) << card_data
       end
     end
-
-    ### Apply patches
-    apply_patches(cards, sets)
-
-    ### Return data for saving
-    sets = sets.map{|s| [s["code"], s]}.to_h
-    set_order = sets.keys.each_with_index.to_h
-    {
-      "sets"=>sets,
-      "cards"=>cards.map{|name, card_data|
-        [name, index_card(card_data, set_order)]
-      }.sort.to_h
-    }
+    return sets, cards
   end
 
   def index_card(card, set_order)
