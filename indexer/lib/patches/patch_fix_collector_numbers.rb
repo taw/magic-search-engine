@@ -42,14 +42,13 @@ class PatchFixCollectorNumbers < Patch
     # FIXME: These are some seriously failful orders, should probably get fixed at some point
     when "rqs"
       # I have no idea how that happened
-      cards.sort_by{|c| c["original_order"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
+      cards.sort_by{|c| c["name"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
       cards.find{|c| c["name"] == "Zephyr Falcon"}["number"] = "1"
       cards.find{|c| c["name"] == "Alabaster Potion"}["number"] = "54"
-      # binding.pry
+    when "st2k"
+      cards.sort_by{|c| [c["name"], c["multiverseid"]] }.each_with_index{|c,i| c["number"] = "#{i+1}"}
     when "me4"
       cards.sort_by{|c| c["multiverseid"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
-    when "st2k"
-      cards.sort_by{|c| c["original_order"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
     end
   end
 end
