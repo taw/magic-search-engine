@@ -39,16 +39,20 @@ class PatchFixCollectorNumbers < Patch
         variant_counter[number] = variant_counter[number] ? variant_counter[number].next : "A"
         card_data["number"] = number + variant_counter[number]
       end
-    # FIXME: These are some seriously failful orders, should probably get fixed at some point
-    when "rqs"
-      # I have no idea how that happened
-      cards.sort_by{|c| c["name"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
-      cards.find{|c| c["name"] == "Zephyr Falcon"}["number"] = "1"
-      cards.find{|c| c["name"] == "Alabaster Potion"}["number"] = "54"
-    when "st2k"
-      cards.sort_by{|c| [c["name"], c["multiverseid"]] }.each_with_index{|c,i| c["number"] = "#{i+1}"}
     when "me4"
-      cards.sort_by{|c| c["multiverseid"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
+      # Gatherer numbers use same number for 4 alt art variants of each Urza's land
+      # add A B C D to them
+      cards.group_by{|c| c["number"]}.each do |number, variants|
+        next if variants.size == 1
+        variants.sort_by{|c| c["multiverseid"]}.each_with_index do |card, i|
+          card["number"] += "ABCD"[i]
+        end
+      end
+    # These are somewhat silly orders
+    when "st2k", "rqs"
+      cards
+        .sort_by{|c| [c["name"], c["multiverseid"]] }
+        .each_with_index{|c,i| c["number"] = "#{i+1}"}
     end
   end
 end
