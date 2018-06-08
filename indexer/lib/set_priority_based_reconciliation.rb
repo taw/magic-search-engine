@@ -5,15 +5,15 @@ class SetPriorityBasedReconciliation
   end
 
   def reconcile
-    # All versions are same, no reason to dig deeper
-    return if variants.size == 1
-
-    # Something failed
-    success, canonical = run_reconciliation
-    if success
+    # All versions are same, or all different versions are low priority
+    if max_priority_variants.size == 1
+      canonical = max_priority_variants.keys[0]
       @printings.each do |printing|
         printing[@field_name] = canonical
       end
+    else
+      conflicting_sets = max_priority_variants.values.map{|scs| scs.join(",") }
+      warn "Can't reconcile #{card_name}, need to prioritize between #{ conflicting_sets.join(" vs ") }"
     end
   end
 
@@ -23,54 +23,18 @@ class SetPriorityBasedReconciliation
     @card_name ||= @printings[0]["name"]
   end
 
-  def variants
-    unless @variants
-      @variants = {}
+  def max_priority_variants
+    @max_priority_variants ||= begin
+      by_priority = {}
       @printings.each do |printing|
         set_code = printing["set_code"]
+        set_priority = printing["set"]["priority"]
         variant = printing[@field_name]
-        (@variants[variant] ||= []) << set_code
+        by_priority[set_priority] ||= {}
+        by_priority[set_priority][variant] ||= []
+        by_priority[set_priority][variant] << set_code
       end
+      by_priority[by_priority.keys.max]
     end
-    @variants
-  end
-
-  def set_priorities
-    {
-      # These are mostly various promos which are not on Gatherer
-      -1 => %W[
-        ced cedi bok st2k v17 cp1 cp2 cp3
-        rep mbp rqs arena itp at mprp wotc thgt dpa jr cp gtw ptc sus jr fnmp pro mgdc mlp
-        dm cstd dcilm wpn mgbc sum 15ann gpx wmcq
-      ],
-      # default priority level, everything not explicitly listed goes here
-      0 => [],
-      # whichever sets got updated since last full mtgjson update
-      1  => %W[dom],
-      2  => %W[bbd],
-    }
-  end
-
-  # TODO: give custom sets max priority
-  def set_priority(set_code)
-    priority, = set_priorities.find{|k,v| v.include?(set_code) }
-    priority || 0
-  end
-
-  # There are multiple versions, we need to figure out which works
-  def run_reconciliation
-    variants_by_priority = {}
-    variants.each do |variant, set_codes|
-      priority = set_codes.map{|set_code| set_priority(set_code)}.max
-      (variants_by_priority[priority] ||= []) << variant
-    end
-
-    priority_variants = variants_by_priority[variants_by_priority.keys.max]
-
-    return [true, priority_variants[0]] if priority_variants.size == 1
-
-    # This should be more meaningful warning
-    warn "Can't reconcile #{card_name}"
-    return [false, nil]
   end
 end

@@ -34,14 +34,32 @@ class Indexer
     apply_patches(cards, sets)
 
     ### Return data for saving
-    sets = sets.map{|s| [s["code"], s]}.to_h
+    sets = sets.map{|s| [s["code"], index_set(s)]}.to_h
     set_order = sets.keys.each_with_index.to_h
     {
-      "sets"=>sets,
-      "cards"=>cards.map{|name, card_data|
+      "sets" => sets,
+      "cards" => cards.map{|name, card_data|
         [name, index_card(card_data, set_order)]
       }.sort.to_h
     }
+  end
+
+  def index_set(set)
+    set.slice(
+      "name",
+      "border",
+      "type",
+      "booster",
+      "custom",
+      "release_date",
+      "code",
+      "gatherer_code",
+      "online_only",
+      "has_boosters",
+      "block_code",
+      "block_name",
+      "gatherer_block_code",
+    )
   end
 
   def patches
@@ -73,6 +91,7 @@ class Indexer
 
       # Reconcile issues
       PatchReconcileForeignNames,
+      PatchAssignPrioritiesToSets,
       PatchReconcileOnSetPriority,
 
       # Patch mtg.wtf bugs
