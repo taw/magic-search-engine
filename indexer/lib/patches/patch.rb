@@ -10,10 +10,8 @@ class Patch
     end
   end
 
-  def patch_set
-    @sets.each do |set_code, set|
-      yield(set)
-    end
+  def patch_set(&block)
+    @sets.each(&block)
   end
 
   def cards_by_set

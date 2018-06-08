@@ -4,9 +4,7 @@ require "set"
 require "pathname"
 require "pathname-glob"
 require_relative "core_ext"
-require_relative "card_set"
 require_relative "card_sets_data"
-require_relative "set_code_translator"
 
 require_relative "patches/patch"
 Dir["#{__dir__}/patches/*.rb"].each do |path| require_relative path end
@@ -30,6 +28,9 @@ class Indexer
 
   def apply_patches(cards, sets)
     [
+      # Each set needs unique code, by convention all lowercase
+      PatchSetCodes,
+
       # All cards absolutely need unique numbers
       PatchFixCollectorNumbers,
       PatchUseMciNumbersAsFallback,
@@ -81,20 +82,29 @@ class Indexer
 
   def prepare_index
     ### Prepare something for patches to be able to work with
-    sets = {}
+    sets = []
     cards = {}
 
     @data.each_set do |set_code, set_data|
-      set_code = set_code_translator[set_code]
-      set = Indexer::CardSet.new(set_code, set_data)
-      sets[set_code] = set.to_json
-
-      # original_order is needed until we fix rqs
+      set = set_data.slice(
+        "name",
+        "border",
+        "type",
+        "booster",
+        "custom",
+        "releaseDate",
+      ).merge(
+        "code" => set_data["magicCardsInfoCode"],
+        "gatherer_code" => set_data["code"],
+        "online_only" => set_data["onlineOnly"],
+      ).compact
+      sets << set
+      # FIXME: original_order is needed until we fix rqs and st2k
       set_data["cards"].each_with_index do |card_data, i|
         name = card_data["name"]
-        card_data["set_code"] = set_code
-        cards[name] ||= []
-        cards[name] << card_data.merge("original_order" => i)
+        card_data["set"] = set
+        card_data["original_order"] = i
+        (cards[name] ||= []) << card_data
       end
     end
 
@@ -102,6 +112,7 @@ class Indexer
     apply_patches(cards, sets)
 
     ### Return data for saving
+    sets = sets.map{|s| [s["code"], s]}.to_h
     set_order = sets.keys.each_with_index.to_h
     {
       "sets"=>sets,
