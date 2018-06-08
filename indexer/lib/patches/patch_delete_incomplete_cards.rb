@@ -11,8 +11,8 @@ class PatchDeleteIncompleteCards < Patch
       "Nissa, Vastwood Seer",
     ]
 
-    incomplete_cards.each do |name|
-      @cards[name].delete_if{|printing| printing["set_code"] == "ptc"}
+    delete_printing_if do |card|
+      incomplete_cards.include?(card["name"]) and card["set_code"] == "ptc"
     end
   end
 end

@@ -5,10 +5,8 @@
 # https://github.com/mtgjson/mtgjson/issues/588
 class PatchBattlebond < Patch
   def call
-    each_card do |name, printings|
-      printings.delete_if do |printing|
-        printing["set_code"] == "bbd" and printing["number"] =~ /b/
-      end
+    delete_printing_if do |printing|
+      printing["set_code"] == "bbd" and printing["number"] =~ /b/
     end
 
     each_set do |set|
