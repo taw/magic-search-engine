@@ -131,49 +131,14 @@ def notify_crash(exc=None):
         mail_text += '\n' + traceback.format_exc()
     return subprocess.run(['ssmtp', 'fenhl@fenhl.net'], input=mail_text.encode('utf-8'), check=True)
 
-def patch_mtg_json(repo_path=None, *, verbose=False):
-    def verbose_print(*args, **kwargs):
-        if verbose:
-            print(*args, **kwargs)
-
-    verbose_print('[....] patching MTG JSON with custom sets', end='', flush=True)
-    if repo_path is None:
-        repo_path = gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path
-    with (repo_path / 'data'/ 'CustomSets-x.json').open() as custom_sets_x_f:
-        custom_sets_x = json.load(custom_sets_x_f)
-    for i, (c_set_code, c_set_info) in enumerate(custom_sets_x.items()):
-        progress = min(4, int(5 * i / len(custom_sets_x)))
-        verbose_print('\r[{}{}]'.format('=' * progress, '.' * (4 - progress)), end='', flush=True)
-        if (repo_path / 'data' / 'sets' / '{}.json'.format(c_set_code)).exists():
-            verbose_print('\r[FAIL]')
-            sys.exit('[!!!!] duplicate set code {}'.format(c_set_code))
-        with (repo_path / 'data' / 'sets' / '{}.json'.format(c_set_code)).open('w') as custom_set_f:
-            json.dump(c_set_info, custom_set_f, indent=4, sort_keys=True)
-            print(file=custom_set_f)
-        for setfile_path in (repo_path / 'data' / 'sets').iterdir():
-            with setfile_path.open() as set_f:
-                a_set_info = json.load(set_f)
-            for c_card in c_set_info['cards']:
-                for a_card in a_set_info['cards']:
-                    if a_card['name'] == c_card['name']:
-                        for key in GLOBAL_KEYS:
-                            if key in c_card:
-                                a_card[key] = c_card[key]
-            with setfile_path.open('w') as set_f:
-                json.dump(a_set_info, set_f, indent=4, sort_keys=True)
-                print(file=set_f)
-    verbose_print('\r[ ok ]')
-
 def run(*, do_name_check=True, verbose=False):
     try:
         stage = gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path
         cmd(['git', 'reset-to-remote', '--branch=lore-seeker'], cwd=str(stage), announce=verbose)
-        cmd(['git', 'clean', '-d', '--force'], cwd=str(stage), announce=verbose)
+        bot_cmd('reload')
         if do_name_check:
             name_check(stage, verbose=verbose)
         cmd(['rake', 'rules:update'], cwd=str(stage), announce=verbose)
-        patch_mtg_json(stage, verbose=verbose)
-        bot_cmd('reload')
         cmd(['rake', 'index'], cwd=str(stage), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(stage / 'search-engine'), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(stage / 'frontend'), announce=verbose)
