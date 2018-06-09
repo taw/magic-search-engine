@@ -24,7 +24,7 @@ class PatchReconcileOnSetPriority < Patch
             printing[field_name] = canonical
           end
         else
-          conflicting_sets = max_priority_variants.values.map{|scs| scs.join(",") }
+          conflicting_sets = variants.values.map{|scs| scs.join(",") }
           warn "Can't reconcile #{name}, need to prioritize between #{ conflicting_sets.join(" vs ") }"
         end
       end
