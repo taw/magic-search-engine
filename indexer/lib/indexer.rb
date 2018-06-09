@@ -90,6 +90,7 @@ class Indexer
       PatchExcludeFromBoosters,
       PatchFunny,
       PatchLinkRelated,
+      PatchPrintSheets,
 
       # Reconcile issues
       PatchReconcileForeignNames,
@@ -203,6 +204,7 @@ class Indexer
           "watermark",
           "exclude_from_boosters",
           "release_date",
+          "print_sheet",
         ).compact
       ]
     end
