@@ -73,6 +73,7 @@ class ConditionSetType < Condition
     set_type = "premium deck" if set_type == "pds"
     set_type = "planechase" if set_type == "pc"
     set_type = "standard" if set_type == "std"
+    set_type = "two-headed giant" if set_type == "2hg"
     set_type
   end
 

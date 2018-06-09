@@ -3,7 +3,7 @@
 .row
   .col-12
     %h4 Magic: The Gathering Comprehensive Rules
-    %p These rules are effective as of April 27, 2018.
+    %p These rules are effective as of June 8, 2018.
     %h3{id: "section-introduction"} Introduction
     %p This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
     %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules. If you have questions, you can get the answers from us at Wizards.CustHelp.com.
@@ -402,6 +402,9 @@
     .rule{id: "section-102-3"}
       .rule_id 102.3.
       .rule_text In a multiplayer game between teams, a player’s teammates are the other players on their team, and the player’s opponents are all players not on their team.
+    .rule{id: "section-102-4"}
+      .rule_id 102.4.
+      .rule_text A spell or ability may use the term “your team” as shorthand for “you and/or your teammates.” In a game that isn’t a multiplayer game between teams, “your team” means the same thing as “you.”
     .rule{id: "section-103"}
       .rule_id 103.
       .rule_text Starting the Game
@@ -1650,7 +1653,7 @@
       .rule_id 201.4b
       .rule_text If an ability of an object refers to that object by name, and an object with a different name gains that ability, each instance of the first name in the gained ability that refers to the first object by name should be treated as the second name.
       .rule_text Example: Quicksilver Elemental says, in part, “<span class="manacost"><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span></span>: Quicksilver Elemental gains all activated abilities of target creature until end of turn.” If it gains an ability that says “<span class="manacost"><span class="mana mana-cost mana-g"><span class="sr-only">{G}</span></span></span>: Regenerate Cudgel Troll,” activating that ability will regenerate Quicksilver Elemental, not the Cudgel Troll it gained the ability from.
-      .rule_text Example: Glacial Ray is an instant with splice onto Arcane that says “Glacial Ray deals 2 damage to any target.” If it’s spliced onto a Kodama’s Reach, that Kodama’s Reach deals 2 damage to the target creature or player.
+      .rule_text Example: Glacial Ray is an instant with splice onto Arcane that says “Glacial Ray deals 2 damage to any target.” If it’s spliced onto a Kodama’s Reach, that Kodama’s Reach deals 2 damage to the target.
       .rule_text Example: Dimir Doppelganger says “<span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span></span>: Exile target creature card from a graveyard. Dimir Doppelganger becomes a copy of that card and gains this ability.” Dimir Doppelganger’s ability is activated targeting a Runeclaw Bear card. The Doppelganger becomes a copy of Runeclaw Bear and gains an ability that should be treated as saying “<span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span></span>: Exile target creature card from a graveyard. Runeclaw Bear becomes a copy of that card and gains this ability.”
     .rule{id: "section-201-4c"}
       .rule_id 201.4c
@@ -1801,13 +1804,13 @@
       .rule_text      Of that list, Forest, Island, Mountain, Plains, and Swamp are the basic land types. See rule <a href="#section-305-6">305.6</a>.
     .rule{id: "section-205-3j"}
       .rule_id 205.3j
-      .rule_text Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Angrath, Arlinn, Ashiok, Bolas, Chandra, Dack, Daretti, Domri, Dovin, Elspeth, Freyalise, Garruk, Gideon, Huatli, Jace, Jaya, Karn, Kaya, Kiora, Koth, Liliana, Nahiri, Narset, Nissa, Nixilis, Ral, Saheeli, Samut, Sarkhan, Sorin, Tamiyo, Teferi, Tezzeret, Tibalt, Ugin, Venser, Vraska, and Xenagos.
+      .rule_text Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Angrath, Arlinn, Ashiok, Bolas, Chandra, Dack, Daretti, Domri, Dovin, Elspeth, Freyalise, Garruk, Gideon, Huatli, Jace, Jaya, Karn, Kaya, Kiora, Koth, Liliana, Nahiri, Narset, Nissa, Nixilis, Ral, Rowan, Saheeli, Samut, Sarkhan, Sorin, Tamiyo, Teferi, Tezzeret, Tibalt, Ugin, Venser, Vraska, Will, Xenagos, Yanggu, and Yanling.
     .rule{id: "section-205-3k"}
       .rule_id 205.3k
       .rule_text Instants and sorceries share their lists of subtypes; these subtypes are called spell types. The spell types are Arcane and Trap.
     .rule{id: "section-205-3m"}
       .rule_id 205.3m
-      .rule_text Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Ally, Angel, Antelope, Ape, Archer, Archon, Artificer, Assassin, Assembly-Worker, Atog, Aurochs, Avatar, Badger, Barbarian, Basilisk, Bat, Bear, Beast, Beeble, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Caribou, Carrier, Cat, Centaur, Cephalid, Chimera, Citizen, Cleric, Cockatrice, Construct, Coward, Crab, Crocodile, Cyclops, Dauthi, Demon, Deserter, Devil, Dinosaur, Djinn, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Frog, Fungus, Gargoyle, Germ, Giant, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Hag, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Hound, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mutant, Myr, Mystic, Naga, Nautilus, Nephilim, Nightmare, Nightstalker, Ninja, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Ouphe, Ox, Oyster, Pegasus, Pentavite, Pest, Phelddagrif, Phoenix, Pilot, Pincher, Pirate, Plant, Praetor, Prism, Processor, Rabbit, Rat, Rebel, Reflection, Rhino, Rigger, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scion, Scorpion, Scout, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Sheep, Siren, Skeleton, Slith, Sliver, Slug, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Tetravite, Thalakos, Thopter, Thrull, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Unicorn, Vampire, Vedalken, Viashino, Volver, Wall, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
+      .rule_text Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Ally, Angel, Antelope, Ape, Archer, Archon, Artificer, Assassin, Assembly-Worker, Atog, Aurochs, Avatar, Azra, Badger, Barbarian, Basilisk, Bat, Bear, Beast, Beeble, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Caribou, Carrier, Cat, Centaur, Cephalid, Chimera, Citizen, Cleric, Cockatrice, Construct, Coward, Crab, Crocodile, Cyclops, Dauthi, Demon, Deserter, Devil, Dinosaur, Djinn, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Frog, Fungus, Gargoyle, Germ, Giant, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Hag, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Hound, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mutant, Myr, Mystic, Naga, Nautilus, Nephilim, Nightmare, Nightstalker, Ninja, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Ouphe, Ox, Oyster, Pangolin, Pegasus, Pentavite, Pest, Phelddagrif, Phoenix, Pilot, Pincher, Pirate, Plant, Praetor, Prism, Processor, Rabbit, Rat, Rebel, Reflection, Rhino, Rigger, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scion, Scorpion, Scout, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Sheep, Siren, Skeleton, Slith, Sliver, Slug, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Tetravite, Thalakos, Thopter, Thrull, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Unicorn, Vampire, Vedalken, Viashino, Volver, Wall, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
     .rule{id: "section-205-3n"}
       .rule_id 205.3n
       .rule_text Planes have their own unique set of subtypes; these subtypes are called planar types. The planar types are Alara, Arkhos, Azgol, Belenon, Bolas’s Meditation Realm, Dominaria, Equilor, Ergamon, Fabacin, Innistrad, Iquatana, Ir, Kaldheim, Kamigawa, Karsus, Kephalai, Kinshala, Kolbahan, Kyneth, Lorwyn, Luvion, Mercadia, Mirrodin, Moag, Mongseng, Muraganda, New Phyrexia, Phyrexia, Pyrulea, Rabiah, Rath, Ravnica, Regatha, Segovia, Serra’s Realm, Shadowmoor, Shandalar, Ulgrotha, Valla, Vryn, Wildfire, Xerex, and Zendikar.
@@ -3084,7 +3087,7 @@
       .rule_text Some effects still refer to “playing” a card. “Playing a card” means playing that card as a land or casting that card as a spell, whichever is appropriate.
     .rule{id: "section-601-2"}
       .rule_id 601.2.
-      .rule_text To cast a spell is to take it from where it is (usually the hand), put it on the stack, and pay its costs, so that it will eventually resolve and have its effect. Casting a spell includes proposal of the spell (rules <a href="#section-601-2a">601.2a</a>–d) and determination and payment of costs (rules <a href="#section-601-2f">601.2f</a>–h). To cast a spell, a player follows the steps listed below, in order. A player must be legally allowed to cast the spell to begin this process (see rule <a href="#section-601-3">601.3</a>), ignoring any effect that would prohibit that spell from being cast based on information determined during that spell’s proposal. (Such effects are considered during the check detailed in rule <a href="#section-601-2e">601.2e</a>.) If, at any point during the casting of a spell, a player is unable to comply with any of the steps listed below, the casting of the spell is illegal; the game returns to the moment before the casting of that spell was proposed (see rule <a href="#section-721">721</a>, “Handling Illegal Actions”).
+      .rule_text To cast a spell is to take it from where it is (usually the hand), put it on the stack, and pay its costs, so that it will eventually resolve and have its effect. Casting a spell includes proposal of the spell (rules <a href="#section-601-2a">601.2a</a>–d) and determination and payment of costs (rules <a href="#section-601-2f">601.2f</a>–h). To cast a spell, a player follows the steps listed below, in order. A player must be legally allowed to cast the spell to begin this process (see rule <a href="#section-601-3">601.3</a>). If, at any point during the casting of a spell, a player is unable to comply with any of the steps listed below, the casting of the spell is illegal; the game returns to the moment before the casting of that spell was proposed (see rule <a href="#section-721">721</a>, “Handling Illegal Actions”).
     .rule{id: "section-601-2a"}
       .rule_id 601.2a
       .rule_text To propose the casting of a spell, a player first moves that card (or that copy of a card) from where it is to the stack. It becomes the topmost object on the stack. It has all the characteristics of the card (or the copy of a card) associated with it, and that player becomes its controller. The spell remains on the stack until it’s countered, it resolves, or an effect moves it elsewhere.
@@ -3119,13 +3122,17 @@
       .rule_text A player can’t begin to cast a spell unless a rule or effect allows that player to cast it. If that player is no longer allowed to cast that spell after completing its proposal, the casting of the spell is illegal and the game returns to the moment before the casting of that spell was proposed (see rule <a href="#section-721">721</a>, “Handling Illegal Actions”).
     .rule{id: "section-601-3a"}
       .rule_id 601.3a
-      .rule_text If an effect allows a player to cast a spell as though it had flash only if an alternative or additional cost is paid, that player may begin to cast that spell as though it had flash.
+      .rule_text If an effect prohibits a player from casting a spell with certain qualities, that player may consider any choices to be made during that spell’s proposal that may cause those qualities to change. If any such choices could cause that effect to no longer prohibit that player from casting that spell, the player may begin to cast the spell, ignoring the effect.
+      .rule_text Example: A player controls Void Winnower, which reads in part, “Your opponents can't cast spells with even converted mana costs.” That player’s opponent may begin to cast Rolling Thunder, a card whose mana cost is <span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span></span>, because the chosen value of X may cause the spell’s converted mana cost to become odd.
     .rule{id: "section-601-3b"}
       .rule_id 601.3b
-      .rule_text If an effect allows a player to cast a spell with certain characteristics as though it had flash, that player may consider any choices to be made during that spell’s proposal that may cause it to have those characteristics. If any such choices could cause it to match these characteristics, that player may begin to cast that spell as though it had flash.
+      .rule_text If an effect allows a player to cast a spell with certain qualities as though it had flash, that player may consider any choices to be made during that spell’s proposal that may cause that spell’s qualities to change. If any such choices could cause that effect to apply, that player may begin to cast that spell as though it had flash.
       .rule_text Example: An effect says that you may cast Aura spells as though they had flash, and you have a creature card with bestow in your hand. Because choosing the bestow ability’s alternative cost causes that spell to become an Aura spell, you may legally begin to cast that spell as though it had flash.
     .rule{id: "section-601-3c"}
       .rule_id 601.3c
+      .rule_text If an effect allows a player to cast a spell as though it had flash only if an alternative or additional cost is paid, that player may begin to cast that spell as though it had flash.
+    .rule{id: "section-601-3d"}
+      .rule_id 601.3d
       .rule_text If a spell would have flash only if certain conditions are met, its controller may begin to cast that spell as though it had flash if those conditions are met.
     .rule{id: "section-601-4"}
       .rule_id 601.4.
@@ -4268,6 +4275,9 @@
     .rule{id: "section-701-17b"}
       .rule_id 701.17b
       .rule_text If a player is instructed to scry 0, no scry event occurs. Abilities that trigger whenever a player scries won’t trigger.
+    .rule{id: "section-701-17c"}
+      .rule_id 701.17c
+      .rule_text If multiple players scry at once, each of those players looks at the top cards of their library at the same time. Those players decide in APNAP order (see rule <a href="#section-101-4">101.4</a>) where to put those cards, then those cards move at the same time.
     .rule{id: "section-701-18"}
       .rule_id 701.18.
       .rule_text Search
@@ -4345,6 +4355,9 @@
       .rule_text “Clash with an opponent” means “Choose an opponent. You and that opponent each clash.”
     .rule{id: "section-701-22c"}
       .rule_id 701.22c
+      .rule_text Each clashing player reveals the top card of their library at the same time. Then those players decide in APNAP order (see rule <a href="#section-101-4">101.4</a>) where to put those cards, then those cards move at the same time.
+    .rule{id: "section-701-22d"}
+      .rule_id 701.22d
       .rule_text A player wins a clash if that player revealed a card with a higher converted mana cost than all other cards revealed in that clash.
     .rule{id: "section-701-23"}
       .rule_id 701.23.
@@ -4989,7 +5002,7 @@
       .rule_text If an effect causes a player to skip their untap step, the phasing event simply doesn’t occur that turn.
     .rule{id: "section-702-25m"}
       .rule_id 702.25m
-      .rule_text In a multiplayer game, game rules may cause a phased-out permanent to leave the game or to be exiled once a player leaves the game. (See rules <a href="#section-800-4a">800.4a</a> and <a href="#section-800-4c">800.4c</a>.) If a phased-out permanent phased out under the control of a player who has left the game, that permanent phases in during the next untap step after that player’s next turn would have begun
+      .rule_text In a multiplayer game, game rules may cause a phased-out permanent to leave the game or to be exiled once a player leaves the game. (See rules <a href="#section-800-4a">800.4a</a> and <a href="#section-800-4c">800.4c</a>.) If a phased-out permanent phased out under the control of a player who has left the game, that permanent phases in during the next untap step after that player’s next turn would have begun.
     .rule{id: "section-702-25n"}
       .rule_id 702.25n
       .rule_text Multiple instances of phasing on the same permanent are redundant.
@@ -6014,6 +6027,9 @@
     .rule{id: "section-702-123e"}
       .rule_id 702.123e
       .rule_text If an effect refers to your commander while you have two commanders, it refers to either one. If an effect causes you to perform an action on your commander and it could affect both, you choose which it refers to at the time the effect is applied.
+    .rule{id: "section-702-123f"}
+      .rule_id 702.123f
+      .rule_text “Partner with [name]” is a variant of the partner ability. “Partner with [name]” represents two abilities. One is a static ability that modifies the rules for deck construction. Rather than a single legendary creature card, you may designate two legendary creature cards as your commander if each has a “partner with [name]” ability with the other’s name. You can’t designate two legendary cards as your commander if one has a “partner with [name]” ability and the other isn’t the named card. The other ability represented by “partner with [name]” is a triggered ability that means “When this permanent enters the battlefield, target player may search their library for a card named [name], reveal it, put it into their hand, then shuffle their library.”
     .rule{id: "section-702-124"}
       .rule_id 702.124.
       .rule_text Undaunted
@@ -6083,6 +6099,12 @@
     .rule{id: "section-702-130d"}
       .rule_id 702.130d
       .rule_text After a player gets the city’s blessing, continuous effects are reapplied before the game checks to see if the game state or preceding events have matched any trigger conditions.
+    .rule{id: "section-702-131"}
+      .rule_id 702.131.
+      .rule_text Assist
+    .rule{id: "section-702-131a"}
+      .rule_id 702.131a
+      .rule_text Assist is a static ability that modifies the rules of paying for the spell with assist (see rules <a href="#section-601-2g">601.2g</a>-h). If the total cost to cast a spell with assist includes a generic mana component, before you activate mana abilities while casting it, you may choose another player. That player has a chance to activate mana abilities. Once that player chooses not to activate any more mana abilities, you have a chance to activate mana abilities. Before you begin to pay the total cost of the spell, the player you chose may pay for any amount of the generic mana in the spell’s total cost.
     .rule{id: "section-703"}
       .rule_id 703.
       .rule_text Turn-Based Actions
@@ -6247,10 +6269,10 @@
       .rule_text Flipping a Coin
     .rule{id: "section-705-1"}
       .rule_id 705.1.
-      .rule_text To flip a coin for an object that cares whether a player wins or loses the flip, the affected player flips the coin and calls “heads” or “tails.” If the call matches the result, that player wins the flip. Otherwise, the player loses the flip. Only the player who flips the coin wins or loses the flip; no other players are involved.
+      .rule_text An effect that instructs a player to flip a coin may care whether that player wins or loses the flip. To flip a coin for such an effect, the player flips the coin and calls “heads” or “tails.” If the call matches the result, the player wins the flip. Otherwise, the player loses the flip. Only the player who flips the coin wins or loses the flip; no other players are involved.
     .rule{id: "section-705-2"}
       .rule_id 705.2.
-      .rule_text To flip a coin for an object that cares whether the coin comes up heads or tails, each affected player flips a coin without making a call. No player wins or loses this kind of flip.
+      .rule_text If an effect instructs a player to flip a coin and that effect cares only whether the coin comes up heads or tails without specifying a winner or loser of the flip, that player flips a coin without making a call. No player wins or loses this kind of flip.
     .rule{id: "section-705-3"}
       .rule_id 705.3.
       .rule_text A coin used in a flip must be a two-sided object with easily distinguished sides and equal likelihood that either side lands face up. If the coin that’s being flipped doesn’t have an obvious “heads” or “tails,” designate one side to be “heads,” and the other side to be “tails.” Other methods of randomization may be substituted for flipping a coin as long as there are two possible outcomes of equal likelihood and all players agree to the substitution. For example, the player may roll an even-sided die and call “odds” or “evens,” or roll an even-sided die and designate that “odds” means “heads” and “evens” means “tails.”
@@ -6699,7 +6721,7 @@
     .rule{id: "section-715-5b"}
       .rule_id 715.5b
       .rule_text The controller of another player can’t make choices or decisions for that player that aren’t called for by the rules or by any objects. The controller also can’t make any choices or decisions for the player that would be called for by the tournament rules.
-      .rule_text Example: The player who’s being controlled still chooses whether they leave to visit the restroom, trades a card to someone else, agrees to an intentional draw, or calls a judge about an error or infraction.
+      .rule_text Example: The player who’s being controlled still decides if they will leave to visit the restroom, trade a card to someone else, agree to an intentional draw, or call a judge about an error or infraction.
     .rule{id: "section-715-6"}
       .rule_id 715.6.
       .rule_text The controller of another player can’t make that player concede. A player may concede the game at any time, even if they are controlled by another player. See rule <a href="#section-104-3a">104.3a</a>.
@@ -7616,7 +7638,7 @@
     .rule{id: "section-902-5b"}
       .rule_id 902.5b
       .rule_text A player’s maximum hand size is seven, as modified by the hand modifier of their vanguard card.
-      .rule_text Example: The hand modifier of a player’s vanguard card is -1. That player’s maximum hand size is six. If that player has more than six cards in their hand as the cleanup step begins, they will discard all but six of them.
+      .rule_text Example: The hand modifier of a player’s vanguard card is -1. That player’s maximum hand size is six. If that player has more than six cards in their hand as their cleanup step begins, they will discard all but six of them.
     .rule{id: "section-902-6"}
       .rule_id 902.6.
       .rule_text The owner of a vanguard card is the player who started the game with it in the command zone. The controller of a face-up vanguard card is its owner.
@@ -7887,6 +7909,9 @@
     .glossary_entry
       .glossary_term Assign Combat Damage
       .glossary_definition To determine how an attacking or blocking creature will deal its combat damage. See rule <a href="#section-510">510</a>, “Combat Damage Step.”
+    .glossary_entry
+      .glossary_term Assist
+      .glossary_definition A keyword ability that lets another player help you pay for a spell. See rule <a href="#section-702-131">702.131</a>, “Assist.”
     .glossary_entry
       .glossary_term At End of Turn (Obsolete)
       .glossary_definition A trigger condition printed on abilities that triggered at the beginning of the end step (which is not the last thing to happen in the turn). Cards that were printed with that text have received errata in the Oracle card reference to say “at the beginning of the end step” or “at the beginning of the next end step.” See rule <a href="#section-513">513</a>, “End Step.”
@@ -8815,8 +8840,8 @@
       .glossary_term Paired
       .glossary_definition A term that describes a creature that’s been affected by a soulbond ability. See rule <a href="#section-702-94">702.94</a>, “Soulbond.”
     .glossary_entry
-      .glossary_term Partner
-      .glossary_definition A keyword ability that lets two legendary creatures be your commander in the Commander variant rather than one. See rule <a href="#section-702-123">702.123</a>, “Partner,” and rule <a href="#section-903">903</a>, “Commander.”
+      .glossary_term Partner, “Partner with [name]”
+      .glossary_definition A keyword ability that lets two legendary creatures or planeswalkers be your commander in the Commander variant rather than one. “Partner with [name]” is a specialized version of the ability that works even outside of the Commander variant to help two cards reach the battlefield together. See rule <a href="#section-702-123">702.123</a>, “Partner,” and rule <a href="#section-903">903</a>, “Commander.”
     .glossary_entry
       .glossary_term Pass
       .glossary_definition To decline to take any action (such as casting a spell or activating an ability) when you have priority. See rule <a href="#section-116">116</a>, “Timing and Priority.”
@@ -9424,5 +9449,5 @@
     %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, and Matt Tabak, with contributions from Charley Catino, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Eli Shiffrin, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead), Glenn Jones, Gregg Luben, Nat Moes, and Matt Tabak Magic Rules Management: Eli Shiffrin
     %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charley Catino, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
     %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-    %p These rules are effective as of April 27, 2018.
+    %p These rules are effective as of June 8, 2018.
     %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, Magic: The Gathering—Conspiracy, Ixalan, Unglued, Unstable, and Dominaria are trademarks of Wizards of the Coast LLC in the USA and other countries. Unhinged is a trademark of Horn Abbot Ltd. and is used with permission. ©2018 Wizards. U.S. Pat. No. RE 37,957.

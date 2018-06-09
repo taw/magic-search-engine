@@ -162,6 +162,7 @@ describe "Formats - Block Constructed" do
     assert_block_composition_sequence "tarkir block", "ktk", "frf", "dtk"
   end
 
+  # 2-set block era
   it "battle for zendikar" do
     assert_block_composition_sequence "battle for zendikar block", "bfz", "ogw"
   end
@@ -178,6 +179,7 @@ describe "Formats - Block Constructed" do
     assert_block_composition_sequence "ixalan block", "xln", "rix"
   end
 
+  # Not really blocks
   it "unsets" do
     assert_block_composition_sequence "unsets", "ug", "uh", "ust"
   end

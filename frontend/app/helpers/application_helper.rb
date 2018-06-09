@@ -221,4 +221,8 @@ module ApplicationHelper
       "sp" => "es",
     }.fetch(language_code)
   end
+
+  def preview_id(card)
+    [card.set_code, card.number, card.foil ? "foil" : nil].compact.join("-")
+  end
 end

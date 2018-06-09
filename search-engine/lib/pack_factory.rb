@@ -58,6 +58,8 @@ class PackFactory
          :pc_common, :pc_uncommon, :pc_rare, :pc_cs_common, :pc_cs_uncommon_rare,
          :vma_special, :soi_dfc_common_uncommon, :soi_dfc_rare_mythic,
          :emn_dfc_common_uncommon, :emn_dfc_rare_mythic,
+         :dom_legendary_uncommon, :dom_nonlegendary_uncommon,
+         :dom_legendary_rare_mythic, :dom_nonlegendary_rare_mythic,
          :ayr_land, :ayr_common, :ayr_uncommon, :ayr_rare_mythic, :tsl_dfc
       @sheet_factory.send(name)
     else
@@ -160,11 +162,24 @@ class PackFactory
         build_pack_with_random_foil(set_code, :foil, :sfc_common, {sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}) => 1,
       )
     when "dom"
-      # there's guaranteed legendary, but no separate slots for that
-      # If we don't model anything, there's 81% chance of opening a legendary, and EV of 1.34
+      # there's guaranteed legendary creature, but no separate slots for that
+      # If we don't model anything, there's 71% chance of opening a legendary creature, and EV of 1.45
       #
-      # What we want is a model which tries to exactly match legendary and nonlegendary EV at same rarity
-      build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, common_if_no_basic: true)
+      # Here's a simple model:
+      # * all cards of same rarity equally frequent
+      # * you'll get legend in every pack
+      # * if rares/mythics is not legend, you get exactly 1 legend uncommon
+      # * if rares/mythics is legend, you might get 0 or 1 legend uncommon
+      # * foil work as in every other set
+      #
+      # I suspect there's a chance to get 2 or 3 legend uncommons in a pack
+      # (9/64 and 1/64 if DOM was a regular set), so we could add more cases
+      # and adjus numbers accordingly
+      WeightedPack.new(
+        build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, dom_nonlegendary_uncommon: 3, dom_legendary_rare_mythic: 1}) => 36*(144-23),
+        build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_legendary_rare_mythic: 1}) => 36*23,
+        build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_nonlegendary_rare_mythic: 1}) => (121-36)*144,
+      )
     # These are just approximations, they actually used nonstandard sheets
     when "al", "be", "un", "rv", "ia"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})

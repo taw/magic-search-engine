@@ -34,6 +34,14 @@ class DeckIndexer
     end
     printings = card_info["printings"].group_by(&:first)
 
+    # Special logic for those
+    # Cards from Clash Packs take priority even over their official set
+    if deck["type"] == "Clash Pack"
+      return printings["cp1"] if set_code == "m15" and printings["cp1"]
+      return printings["cp2"] if set_code == "frf" and printings["cp2"]
+      return printings["cp3"] if set_code == "ori" and printings["cp3"]
+    end
+
     # It was printed in set we want
     return printings[set_code] if printings[set_code]
 
@@ -47,13 +55,6 @@ class DeckIndexer
     # All other printings in the future, so we don't care
     return printings.values[0] if printings.size == 1
     raise "All printings from the future" if printings.empty?
-
-    # Special logic for those
-    if deck["type"] == "Clash Pack"
-      return printings["cp1"] if set_code == "m15" and printings["cp1"]
-      return printings["cp2"] if set_code == "frf" and printings["cp2"]
-      return printings["cp3"] if set_code == "ori" and printings["cp3"]
-    end
 
     # It seems that Masters Edition 2 precons contained Masters Edition cards too
     return printings["med"] if set_code == "me2" and printings["med"]

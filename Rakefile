@@ -37,8 +37,7 @@ task "mtgjson:fetch:good" do
   # Unsets and Kamigawa block are broken, mostly flip/split cards
   # CP2 has long uncorrected typo
   # V17 has duplicate Brisela
-  # Starter 2000 is technically not broken, but it's annoying how they changed numbers
-  sh "git checkout data/sets/{UGL,UNH,UST,BOK,V17,S00,CP2}.json"
+  sh "git checkout data/sets/{UGL,UNH,UST,BOK,V17,CP2}.json"
 end
 
 desc "Fetch new mtgjson database and update index"

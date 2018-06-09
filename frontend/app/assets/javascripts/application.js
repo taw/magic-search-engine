@@ -15,10 +15,27 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require select2
 //= require_tree .
 
-$(document).on("mouseover", ".previewable_card_name", function() {
-  var preview_link = $(this).data("preview-link");
-  $(this).closest(".decklist").find(".card_picture_cell").hide();
-  $(this).closest(".decklist").find(".card_picture_cell[data-preview='"+preview_link.replace("'", "\\'")+"']").show();
+$(function () {
+  $(document).on("mouseover", ".previewable_card_name", function() {
+    var preview_link = $(this).data("preview-link");
+    $(this).closest(".decklist").find(".card_picture_cell").hide();
+    $(this).closest(".decklist").find(".card_picture_cell[data-preview='"+preview_link+"']").show();
+  })
+
+  $(document).on("scroll", function() {
+    for (let preview of $(".picture_preview_column .picture_preview_box")) {
+      let parent = $(preview).closest(".picture_preview_column");
+      let min_rel = 0;
+      let max_rel = parent.height() - $(preview).height();
+      let top = $(document).scrollTop() - parent.offset().top + 10;
+      // Math.clamp in future js
+      top = Math.min(Math.max(top, min_rel), max_rel);
+      $(preview).css({ top: top });
+    }
+  })
+
+  $(".pack_selection select").select2();
 })

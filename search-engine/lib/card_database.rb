@@ -114,7 +114,7 @@ class CardDatabase
     normalized_edition_alt = normalize_set_name_alt(edition)
 
     @sets.each do |set_code, set|
-      normalized_set_name = normalize_set_name(set.name)
+      normalized_set_name     = normalize_set_name(set.name)
       normalized_set_name_alt = normalize_set_name_alt(set.name)
       matching_mci_code      << set if set_code == edition
       matching_gatherer_code << set if set.gatherer_code.downcase == edition
@@ -194,6 +194,7 @@ class CardDatabase
       @sets[set_code] = CardSet.new(set_data)
       if set_data["block_code"]
         @blocks << set_data["block_code"]
+        @blocks << set_data["gatherer_block_code"] if set_data["gatherer_block_code"]
         @blocks << normalize_name(set_data["block_name"])
       end
     end

@@ -2,8 +2,8 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(18392)
-    db.number_of_printings.should eq(35936)
+    db.number_of_cards.should eq(18477)
+    db.number_of_printings.should eq(36192)
   end
 
   it "block_codes" do
@@ -21,13 +21,19 @@ describe "Full Database Test" do
 
   it "block_contents" do
     assert_search_equal "e:rtr OR e:gtc OR e:dgm", "b:rtr"
-    assert_search_equal "e:in or e:ps or e:ap", 'b:Invasion'
+    assert_search_equal "e:in or e:ps or e:ap", "b:Invasion"
     assert_search_equal "e:isd or e:dka or e:avr", "b:Innistrad"
     assert_search_equal "e:lw or e:mt or e:shm or e:eve", "b:lorwyn"
     assert_search_equal "e:som or e:mbs or e:nph", "b:som"
     assert_search_equal "e:mi or e:ds or e:5dn", "b:mi"
-    assert_search_equal "e:som", 'e:scars'
+    assert_search_equal "e:som", "e:scars"
     assert_search_equal 'f:"lorwyn shadowmoor block"', "b:lorwyn"
+    # Fake blocks
+    assert_search_equal "e:dom", "b:dom"
+    # Gatherer codes
+    assert_search_equal 'b:lw', "b:lrw"
+    assert_search_equal 'b:mi', "b:mrd"
+    assert_search_equal 'b:mr', "b:mir"
   end
 
   it "edition_special_characters" do
@@ -113,6 +119,7 @@ describe "Full Database Test" do
       "Unruly Mob"
 
     assert_search_results "e:soi lastprint>soi",
+      "Aim High",
       "Archangel Avacyn",
       "Arlinn Kord",
       "Arlinn, Embraced by the Moon",
@@ -123,6 +130,7 @@ describe "Full Database Test" do
       "Forest",
       "Forsaken Sanctuary",
       "Foul Orchard",
+      "Grotesque Mutation",
       "Highland Lake",
       "Island",
       "Mountain",
@@ -360,7 +368,7 @@ describe "Full Database Test" do
   end
 
   it "is commander" do
-    assert_search_equal "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14)"
+    assert_search_equal "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,bbd)"
   end
 
   # Bugfix

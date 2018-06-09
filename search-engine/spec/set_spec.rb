@@ -18,6 +18,7 @@ describe "Sets" do
     "promo",
     "reprint",
     "starter",
+    "two-headed giant",
     "un",
     "vanguard",
   ]

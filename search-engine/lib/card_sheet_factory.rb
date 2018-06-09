@@ -339,38 +339,62 @@ class CardSheetFactory
     )
   end
 
-  # for custom sets
+  # These are legendary creatures only according to maro
+  # not planeswalkers or other legendaries
+  def dom_legendary_uncommon
+    from_query('e:dom is:booster t:"legendary creature" r:uncommon', 20)
+  end
 
-  def ayr_land
+  def dom_nonlegendary_uncommon
+    from_query('e:dom is:booster -t:"legendary creature" r:uncommon', 60)
+  end
+
+  def dom_legendary_rare_mythic
     mix_sheets(
-      [from_query("e:AYR t:land r:C", 10), 8], # 80 / 112
-      [from_query("e:AYR t:land r:U", 2), 12], # 24 / 112
-      [from_query("e:AYR t:land r:R", 1), 7], # 7 / 112
-      [from_query("e:AYR t:land r:M", 1), 1] # 1 / 112
+      [from_query('e:dom is:booster t:"legendary creature" r:rare', 14), 2],
+      [from_query('e:dom is:booster t:"legendary creature" r:mythic', 8), 1],
     )
   end
 
-  def ayr_common
-    from_query("e:AYR r:C -t:land", 91)
-  end
-
-  def ayr_uncommon
-    from_query("e:AYR r:U -t:land", 78)
-  end
-
-  def ayr_rare_mythic
+  def dom_nonlegendary_rare_mythic
     mix_sheets(
-      [from_query("e:AYR r:R -t:land", 52), 2],
-      [from_query("e:AYR r:M -t:land", 14), 1]
+      [from_query('e:dom is:booster -t:"legendary creature" r:rare', 39), 2],
+      [from_query('e:dom is:booster -t:"legendary creature" r:mythic', 7), 1],
     )
   end
 
-  def tsl_dfc
-    mix_sheets(
-      [from_query("e:TSL is:dfc r:C", 4), 75], # 10 / 14
-      [from_query("e:TSL is:dfc r:U", 15), 6], # 3 / 14
-      [from_query("e:TSL is:dfc r:R", 3), 10], # 1 / 14
-      # no mythic DFCs in TSL
-    )
-  end
+    # for custom sets
+
+    def ayr_land
+      mix_sheets(
+        [from_query("e:AYR t:land r:C", 10), 8], # 80 / 112
+        [from_query("e:AYR t:land r:U", 2), 12], # 24 / 112
+        [from_query("e:AYR t:land r:R", 1), 7], # 7 / 112
+        [from_query("e:AYR t:land r:M", 1), 1] # 1 / 112
+      )
+    end
+
+    def ayr_common
+      from_query("e:AYR r:C -t:land", 91)
+    end
+
+    def ayr_uncommon
+      from_query("e:AYR r:U -t:land", 78)
+    end
+
+    def ayr_rare_mythic
+      mix_sheets(
+        [from_query("e:AYR r:R -t:land", 52), 2],
+        [from_query("e:AYR r:M -t:land", 14), 1]
+      )
+    end
+
+    def tsl_dfc
+      mix_sheets(
+        [from_query("e:TSL is:dfc r:C", 4), 75], # 10 / 14
+        [from_query("e:TSL is:dfc r:U", 15), 6], # 3 / 14
+        [from_query("e:TSL is:dfc r:R", 3), 10], # 1 / 14
+        # no mythic DFCs in TSL
+      )
+    end
 end

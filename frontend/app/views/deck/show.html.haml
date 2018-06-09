@@ -14,31 +14,19 @@
         &mdash;
         = @type
   .row
-    .col-4
+    .col-8.two-columns
       - @card_groups.each do |(i, group), cards|
-        - next if i > 4
         .card_group
           %h6= "#{group} (#{cards.map{|c| c[0]}.inject(0, &:+)})"
           - cards.each do |count, card|
             .card_entry
               = count
-              %span.previewable_card_name{"data-preview-link": card.name}
+              %span.previewable_card_name{"data-preview-link": preview_id(card)}
                 = link_to_card(card.main_front) do
                   = card.name
                   = card.front.map{|cp| format_oracle_text(cp.mana_cost)}.join("/").html_safe
-    .col-4
-      - @card_groups.each do |(i, group), cards|
-        - next if i <= 4
-        .card_group
-          %h6= "#{group} (#{cards.map{|c| c[0]}.inject(0, &:+)})"
-          - cards.each do |count, card|
-            .card_entry
-              = count
-              %span.previewable_card_name{"data-preview-link": card.name}
-                = link_to_card(card.main_front) do
-                  = card.name
-                  = card.front.map{|cp| format_oracle_text(cp.mana_cost)}.join("/").html_safe
-    .col-4
-      - @card_previews.each_with_index do |preview_card, i|
-        .card_picture_cell{"data-preview": preview_card.name, style: (preview_card == @default_preview_card ? nil : "display: none;")}
-          = render "card/picture", card: preview_card
+    .col-4.picture_preview_column
+      .picture_preview_box
+        - @card_previews.each_with_index do |preview_card, i|
+          .card_picture_cell{"data-preview": preview_id(preview_card), style: (preview_card == @default_preview_card ? nil : "display: none;")}
+            = render "card/picture", card: preview_card

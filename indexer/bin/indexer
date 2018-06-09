@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
 require_relative "../lib/indexer"
-indexer = Indexer.new
-indexer.save_all! "#{__dir__}/../../index/index.json"
+path = "#{__dir__}/../../index/index.json"
+verbose = (ARGV[0] == "--verbose")
+
+Indexer.new(path, verbose).call

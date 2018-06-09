@@ -1,4 +1,4 @@
-class Urza
+class PatchUrza < Patch
   # Fetched 2018-01-09
   # Could be updated in the future
   Abilities = [
@@ -72,7 +72,7 @@ class Urza
 
   BaseText = "[+1]: Head to AskUrza.com and click +1.\n[-1]: Head to AskUrza.com and click -1.\n[-6]: Head to AskUrza.com and click -6."
 
-  def self.text
+  def text
     [
       "[+1]: Head to AskUrza.com and click +1.\n",
       "(Randomly choose one of —\n",
@@ -87,5 +87,12 @@ class Urza
       Abilities[2].map{|a| "• #{a}"}.join("\n"),
       ")\n",
     ].join
+  end
+
+  def call
+    each_printing do |card|
+      next unless card["name"] == "Urza, Academy Headmaster"
+      card["text"] = text
+    end
   end
 end

@@ -2,6 +2,7 @@
 @import "bootstrap";
 @import "famfamfam-flags";
 @import "mana";
+@import "select2";
 
 .container {
   display: flex;
@@ -221,12 +222,16 @@ form.search {
     pointer-events: none;
   }
 
-  img {
+  .card_picture {
     width: 100%;
     left: 0;
     top: 0;
     position: relative;
     z-index: 0;
+
+    img {
+      width: 100%;
+    }
 
     transition: 0.5s ease;
     backface-visibility: hidden;
@@ -353,5 +358,17 @@ h3 .manacost {
   }
   .card_group {
     margin-bottom: 0.5rem;
+  }
+  .two-columns {
+    column-count: 2;
+    column-gap: 15px;
+    column-rule: thin solid #888;
+  }
+}
+.picture_preview_column {
+  position: relative;
+  .picture_preview_box {
+    position: relative;
+    width: 100%;
   }
 }
