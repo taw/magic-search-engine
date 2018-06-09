@@ -3,8 +3,10 @@ class PatchLoyaltySymbol < Patch
   def call
     each_printing do |card|
       next unless (card["types"] || []).include?("Planeswalker")
-      card["originalText"] = card["originalText"].gsub(%r[^([\+\-\−]?(?:\d+|X)):]) { "[#{$1}]:" } # hack to fix all planeswalkers showing up in is:errata
       card["text"] = card["text"].gsub(%r[^([\+\-\−]?(?:\d+|X)):]) { "[#{$1}]:" }
+      if card.key?("originalText")
+        card["originalText"] = card["originalText"].gsub(%r[^([\+\-\−]?(?:\d+|X)):]) { "[#{$1}]:" } # hack to fix all planeswalkers showing up in is:errata
+      end
     end
   end
 end
