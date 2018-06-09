@@ -91,6 +91,8 @@ class PatchPrintSheets < Patch
   #
   # Homelands: Joven: U1 -> C1
   # Homelands: Chandler: U1 -> C1
+  # Alliances: Gorilla Shaman (v. 2): U2 -> U3
+  # Alliances: Kjeldoran Escort (v. 1): C1 -> C2
   def checklist_for(set_code)
     path = data_root + "print_sheets/#{sources.fetch(set_code)}"
     path
@@ -100,6 +102,8 @@ class PatchPrintSheets < Patch
       .map{|line| line.gsub("Jeff  A. Menges", "Jeff A. Menges") }
       .map{|line| line.gsub(/\AChandler\s+Douglas Shuler\s+\KU1/, "C1")}
       .map{|line| line.gsub(/\AJoven\s+Douglas Shuler\s+\KU1/, "C1")}
+      .map{|line| line.gsub(/\AGorilla Shaman \(v\. 2\)\s+Anthony Waters\s+\KU2/, "U3") }
+      .map{|line| line.gsub(/\AKjeldoran Escort \(v\. 1\)\s+Bryon Wackwitz\s+\KC1/, "C2") }
       .grep(/ {2,}/)
       .map{|line| line.split(/ {2,}/, 3) }
       .each{|name, artist, info|
