@@ -86,6 +86,11 @@ class PatchPrintSheets < Patch
     Pathname(__dir__).parent.parent.parent + "data"
   end
 
+  # There's some incorrect information on official checklists
+  # http://www.magiclibrarities.net/forum/viewtopic.php?t=9906 for correction
+  #
+  # Homelands: Joven: U1 -> C1
+  # Homelands: Chandler: U1 -> C1
   def checklist_for(set_code)
     path = data_root + "print_sheets/#{sources.fetch(set_code)}"
     path
@@ -93,6 +98,8 @@ class PatchPrintSheets < Patch
       .map(&:chomp)
       .map(&:strip)
       .map{|line| line.gsub("Jeff  A. Menges", "Jeff A. Menges") }
+      .map{|line| line.gsub(/\AChandler\s+Douglas Shuler\s+\KU1/, "C1")}
+      .map{|line| line.gsub(/\AJoven\s+Douglas Shuler\s+\KU1/, "C1")}
       .grep(/ {2,}/)
       .map{|line| line.split(/ {2,}/, 3) }
       .each{|name, artist, info|
