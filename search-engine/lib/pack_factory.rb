@@ -182,6 +182,10 @@ class PackFactory
     # These are just approximations, they actually used nonstandard sheets
     when "al", "be", "un", "rv", "ia"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
+
+    # Indexer now provides print sheet information for all sets below
+    # So we should be usig that instead of our approximations
+
     when "ai", "ch"
       build_pack(set_code, {common: 8, uncommon: 3, rare: 1})
     when "aq"
