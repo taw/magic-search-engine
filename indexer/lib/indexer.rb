@@ -59,8 +59,6 @@ class Indexer
       "block_code",
       "block_name",
       "gatherer_block_code",
-      "originalText",
-      "originalType",
     )
   end
 
@@ -205,6 +203,8 @@ class Indexer
           "exclude_from_boosters",
           "release_date",
           "print_sheet",
+          "originalType",
+          "originalText"
         ).compact
       ]
     end
