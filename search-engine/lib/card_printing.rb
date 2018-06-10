@@ -63,6 +63,14 @@ class CardPrinting
     %W[basic common uncommon rare mythic special].fetch(@rarity_code)
   end
 
+  def ui_rarity
+    if @print_sheet
+      "#{rarity} (#{@print_sheet})"
+    else
+      rarity
+    end
+  end
+
   def year
     @release_date.year
   end
