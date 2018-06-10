@@ -5,7 +5,17 @@
 class PatchExcludeFromBoosters < Patch
   def call
     each_printing do |card|
-      card["exclude_from_boosters"] = true if exclude_from_boosters(card["set_code"], card["number"].to_i)
+      if exclude_from_boosters(card["set_code"], card["number"].to_i)
+        card["exclude_from_boosters"] = true
+      end
+      # They only have full art promos in boosters
+      # Non full art are for precons
+      # (we arbitrarily append A to full art versions)
+      if %W[bfz ogw].include?(card["set_code"]) and
+        card["supertypes"] == ["Basic"] and
+        card["number"] !~ /A/
+        card["exclude_from_boosters"] = true
+      end
     end
   end
 
