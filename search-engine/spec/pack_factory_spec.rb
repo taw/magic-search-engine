@@ -459,4 +459,92 @@ describe PackFactory do
       end
     end
   end
+
+  context "sets with explicit print sheets" do
+    let(:pack) { factory.for(set_code) }
+    let(:ev) { pack.expected_values }
+    let(:cards) { db.search("++ e:#{set_code}").printings }
+    let(:expected_ev) do
+      cards.map do |card|
+        sheet = card.print_sheet[0]
+        count = card.print_sheet[1..-1].to_i
+        [
+          PhysicalCard.for(card),
+          Rational(count * booster_contents[sheet], sheet_size[sheet])
+        ]
+      end.to_h
+    end
+
+    context "Alliances" do
+      let(:set_code) { "ai" }
+      let(:booster_contents) { {"C"=>8, "U"=>3, "R"=>1} }
+      let(:sheet_size) { {"C"=>110, "U"=>110, "R"=>110} }
+      it do
+        ev.should eq(expected_ev)
+      end
+    end
+
+    context "Antiquities" do
+      let(:set_code) { "aq" }
+      let(:booster_contents) { {"C"=>6, "U"=>2} }
+      let(:sheet_size) { {"C"=>121, "U"=>121} }
+      it do
+        ev.should eq(expected_ev)
+      end
+    end
+
+    context "Arabian Nights" do
+      let(:set_code) { "an" }
+      let(:booster_contents) { {"C"=>6, "U"=>2} }
+      let(:sheet_size) { {"C"=>121, "U"=>121} }
+      it do
+        ev.should eq(expected_ev)
+      end
+    end
+
+    context "Chronicles" do
+      let(:set_code) { "ch" }
+      let(:booster_contents) { {"C"=>9, "U"=>3} }
+      let(:sheet_size) { {"C"=>121, "U"=>121} }
+      it do
+        ev.should eq(expected_ev)
+      end
+    end
+
+    context "Fallen Empires" do
+      let(:set_code) { "fe" }
+      let(:booster_contents) { {"C"=>6, "U"=>2} }
+      let(:sheet_size) { {"C"=>121, "U"=>121} }
+      it do
+        ev.should eq(expected_ev)
+      end
+    end
+
+    context "Homelands" do
+      let(:set_code) { "hl" }
+      let(:booster_contents) { {"C"=>6, "U"=>2} }
+      let(:sheet_size) { {"C"=>121, "U"=>121} }
+      it do
+        ev.should eq(expected_ev)
+      end
+    end
+
+    context "Legends" do
+      let(:set_code) { "lg" }
+      let(:booster_contents) { {"C"=>12, "U"=>3, "R"=>1} }
+      let(:sheet_size) { {"C"=>121, "U"=>121, "R"=>121} }
+      it do
+        ev.should eq(expected_ev)
+      end
+    end
+
+    context "The Dark" do
+      let(:set_code) { "dk" }
+      let(:booster_contents) { {"C"=>6, "U"=>2} }
+      let(:sheet_size) { {"C"=>121, "U"=>121} }
+      it do
+        ev.should eq(expected_ev)
+      end
+    end
+  end
 end
