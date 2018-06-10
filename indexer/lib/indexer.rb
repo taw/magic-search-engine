@@ -19,9 +19,24 @@ class Indexer
     @data = CardSetsData.new
   end
 
+  def json_normalize(data)
+    if data.is_a?(Array)
+      data.map do |elem|
+        json_normalize(elem)
+      end
+    elsif data.is_a?(Hash)
+      Hash[data.map{|k,v|
+        [k, json_normalize(v)]
+      }.sort]
+    else
+      data
+    end
+  end
+
   def call
     @save_path.parent.mkpath
-    @save_path.write(prepare_index.to_json)
+    index = json_normalize(prepare_index)
+    @save_path.write(index.to_json)
   end
 
   private
