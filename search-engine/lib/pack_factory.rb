@@ -50,7 +50,7 @@ class PackFactory
     when :foil
       @sheet_factory.foil_sheet(set_code)
     # Various old sheets
-    when :u3u2, :u3u1, :u2u1, :sfc_common, :sfc_uncommon, :sfc_rare_or_mythic
+    when :explicit_common, :explicit_uncommon, :explicit_rare, :sfc_common, :sfc_uncommon, :sfc_rare_or_mythic
       @sheet_factory.send(name, set_code)
     # Various special sheets
     when :dgm_land, :frf_land, :dgm_common, :frf_common, :dgm_rare_mythic, :unhinged_foil, :theros_gods,
@@ -183,51 +183,15 @@ class PackFactory
     # These are just approximations, they actually used nonstandard sheets
     when "al", "be", "un", "rv", "ia"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
-
-    # Indexer now provides print sheet information for all sets below
-    # So we should be usig that instead of our approximations
-
-    when "ai", "ch"
-      build_pack(set_code, {common: 8, uncommon: 3, rare: 1})
-    when "aq"
-      # Antiquities was printed on sheets of 121 cards. The expansion symbol is an anvil,
-      # to symbolize the artifact focus of the set. [2] The set's rarity breakdown is:
-      # 28 commons (25@C4, 1@C5, 2@C6), 37 Uncommons (4@U2, 29@U3, 2@C1, 2@(U3+C1)), 20 Rares (20@U1).
-      # This strange distribution comes from the lands Mishra's Factory, Strip Mine, Urza's Mine,
-      # Urza's Power Plant and Urza's Tower which have four different pieces of art each.
-      # Mishra's Factory and Strip Mine have three versions at U1 and one at C1.
-      # Urza's Mine and Urza's Power Plant have two versions at C1 and two at C2.
-      # Urza's Tower has three versions at C1 and one at C2.
-      # This makes it so collectors view Antiquities as as 100-card set.
-      #
-      # Simplify it to C4, U3 U1
-      build_pack(set_code, {common: 6, u3u1: 2})
-    when "an"
-      # The set's rarity breakdown is: 26 commons (1@C11, 9@C5, 16@C4) and 52 uncommons (1@C1, 1@U4, 17@U3, 33@U2).
-      # Simplify it to C4 U3 U2 only
-      build_pack(set_code, {common: 6, u3u2: 2})
-    when "dk"
-      # The Dark was printed on sheets of 121 cards and contains 119 unique cards total.
-      # The set's rarity breakdown is: 40 commons (40@C3), 1 Uncommon (1@C1), 78 Rares (35@U1, 43@U2).
-      #
-      # It's actually modelled as 40 commons, 44 uncommons, 35 rares
-      # We'll simplify to C3, U2 U1
-      build_pack(set_code, {common: 6, u2u1: 2})
-    when "fe"
-      # The set's rarity breakdown is: 35 commons (15@C4, 20@C3), 31 Uncommons (25@U3, 5@U2, 1@C1), 36 Rares (36@U1).
-      #
-      # Simplify to C3, U3 U1
-      build_pack(set_code, {common: 6, u3u1: 2})
-    when "hl"
-      # The set's rarity breakdown is: 25 commons (25@C4), 47 Uncommons (26@U3, 21@C1), 43 Rares (43@U1).
-      #
-      # Simplify to C4, U3 U1
-      build_pack(set_code, {common: 6, u3u1: 2})
+    # Early sets had unusual rarities, indexer fills all the details for us
+    when "ai"
+      build_pack(set_code, {explicit_common: 8, explicit_uncommon: 3, explicit_rare: 1})
+    when "ch"
+      build_pack(set_code, {explicit_common: 9, explicit_uncommon: 3})
+    when "aq", "an", "dk", "fe", "hl"
+      build_pack(set_code, {explicit_common: 6, explicit_uncommon: 2})
     when "lg"
-      # The set's rarity breakdown is: 75 commons (29@C1, 46@C2), 114 Uncommons (107@U1, 7@U2), 121 Rares.
-      #
-      # Simplify to C1, U1, R1
-      build_pack(set_code, {common: 12, uncommon: 3, rare: 1})
+      build_pack(set_code, {explicit_common: 12, explicit_uncommon: 3, explicit_rare: 1})
     # custom sets
     when "ank", "ldo", "vln", "jan", "hlw"
       # Custom sets with default pack distribution, no foils, no basics

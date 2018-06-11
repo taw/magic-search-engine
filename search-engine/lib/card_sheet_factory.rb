@@ -108,30 +108,25 @@ class CardSheetFactory
     end
   end
 
-  ### Very old mixed rarity sheets
+  ### Based on explicit data from indexer
 
-  # Antiquities U3 (uncommon) / U1 (rare) approximation
-  def u3u1(set_code)
-    mix_sheets(
-      [rarity(set_code, "uncommon"), 3],
-      [rarity(set_code, "rare"), 1],
-    )
+  def explicit_common(set_code)
+    explicit_sheet(set_code, "C")
   end
 
-  # Arabian Nights U3 (uncommon) / U2 (rare) approximation
-  def u3u2(set_code)
-    mix_sheets(
-      [rarity(set_code, "uncommon"), 3],
-      [rarity(set_code, "rare"), 2],
-    )
+  def explicit_uncommon(set_code)
+    explicit_sheet(set_code, "U")
   end
 
-  # The Dark U2 (uncommon) / U1 (rare) approximation
-  def u2u1(set_code)
-    mix_sheets(
-      [rarity(set_code, "uncommon"), 2],
-      [rarity(set_code, "rare"), 1],
-    )
+  def explicit_rare(set_code)
+    explicit_sheet(set_code, "R")
+  end
+
+  def explicit_sheet(set_code, print_sheet_code)
+    cards = @db.sets[set_code].printings.select{|c| c.print_sheet[0] == print_sheet_code}
+    groups = cards.group_by{|c| c.print_sheet[1..-1].to_i}
+    subsheets = groups.map{|mult,cards| [CardSheet.new(cards.map{|c| PhysicalCard.for(c) }), mult] }
+    mix_sheets(*subsheets)
   end
 
   ### These are really unique sheets

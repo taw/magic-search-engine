@@ -75,11 +75,11 @@ class Sorter
       when "color"
         [COLOR_ORDER.fetch(c.colors)]
       when "-color"
-        [COLOR_ORDER.fetch(c.colors)]
+        [-COLOR_ORDER.fetch(c.colors)]
       when "ci"
         [COLOR_ORDER.fetch(c.color_identity)]
       when "-ci"
-        [COLOR_ORDER.fetch(c.color_identity)]
+        [-COLOR_ORDER.fetch(c.color_identity)]
       when "rarity"
         [-c.rarity_code]
       when "-rarity"
