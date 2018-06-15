@@ -11,6 +11,7 @@ describe "Sets" do
     "duel deck",
     "expansion",
     "from the vault",
+    "global series",
     "masterpiece",
     "masters",
     "planechase",

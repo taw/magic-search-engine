@@ -43,7 +43,7 @@ describe "Spelling" do
     spelling_suggestions("7").should eq([])
     spelling_suggestions("77").should eq([])
     # 3-4 letters - 1 correction
-    spelling_suggestions("mux").should eq(["lux", "mox", "mul"])
+    spelling_suggestions("mux").should eq(["lux", "mox", "mu", "mul"])
     spelling_suggestions("xxx").should eq([])
     # size applied after unicode normalization
     spelling_suggestions("aethr").should eq(["aether"])
