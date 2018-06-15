@@ -73,12 +73,13 @@ class Indexer
       "custom",
       "release_date",
       "code",
+      "official_code",
       "gatherer_code",
       "online_only",
       "has_boosters",
       "block_code",
       "block_name",
-      "gatherer_block_code",
+      "official_block_code",
     )
   end
 
@@ -166,7 +167,8 @@ class Indexer
         "releaseDate",
       ).merge(
         "code" => set_data["magicCardsInfoCode"],
-        "gatherer_code" => set_data["code"],
+        "official_code" => set_data["code"],
+        "gatherer_code" => set_data["gathererCode"],
         "online_only" => set_data["onlineOnly"],
       ).compact
       sets << set
