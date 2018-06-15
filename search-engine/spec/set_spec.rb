@@ -17,6 +17,7 @@ describe "Sets" do
     "premium deck",
     "promo",
     "reprint",
+    "spellbook",
     "starter",
     "two-headed giant",
     "un",

@@ -3,7 +3,7 @@ describe "Full Database Test" do
 
   it "stats" do
     db.number_of_cards.should eq(18477)
-    db.number_of_printings.should eq(36192)
+    db.number_of_printings.should eq(36200)
   end
 
   it "block_codes" do
