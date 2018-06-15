@@ -35,7 +35,12 @@ class Indexer
 
   def call
     @save_path.parent.mkpath
-    index = json_normalize(prepare_index)
+    # Keep set index order as is, normalize eveything else
+    index = prepare_index
+    index["cards"] = json_normalize(index["cards"])
+    index["sets"].each do |set_code, set|
+      index["sets"][set_code] = set
+    end
     @save_path.write(index.to_json)
   end
 
