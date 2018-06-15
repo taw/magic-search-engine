@@ -162,6 +162,14 @@ describe Deck do
 
   it "if deck contains foils, they're all highest rarity cards" do
     db.sets.each do |set_code, set|
+      # CM2 has 13 foils distributed in weird way
+      if set_code == "cm2"
+        foils = set.decks.flat_map(&:physical_cards).select(&:foil)
+        foils_rarity = foils.map(&:main_front).map(&:rarity)
+        foils_rarity.should match_array(["rare"] * 3 + ["mythic"] * 10)
+        next
+      end
+
       set.decks.each do |deck|
         foils = deck.physical_cards.select(&:foil)
         # Skip if no foils
