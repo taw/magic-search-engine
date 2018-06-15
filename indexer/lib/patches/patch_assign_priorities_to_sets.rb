@@ -18,11 +18,9 @@ class PatchAssignPrioritiesToSets < Patch
         dm cstd dcilm wpn mgbc sum 15ann gpx wmcq
       ]
       -1
-      # whichever sets got updated since last full mtgjson update
-    when "dom"
+    # whichever sets got updated since last full mtgjson update
+    when "dom", "bbd", "ss1", "gs1", "cm2"
       1
-    when "bbd"
-      2
     else
       # Give all unlisted custom sets max priority
       # If you want to customize priority between different custom sets, just list them explicitly
