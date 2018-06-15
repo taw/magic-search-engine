@@ -41,7 +41,7 @@ class PatchBlocks < Patch
       code, code2, name = block_by_set_code(set["code"])
       set.merge!({
         "block_code" => code,
-        "gatherer_block_code" => code2,
+        "official_block_code" => code2,
         "block_name" => name,
       }.compact)
     end

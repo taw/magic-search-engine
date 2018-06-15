@@ -13,8 +13,15 @@ describe "Set Codes" do
     end
   end
 
+  it "official_code" do
+    db.sets.values.each do |set|
+      assert_resolves set.official_code, set
+    end
+  end
+
   it "gatherer_code" do
     db.sets.values.each do |set|
+      next unless set.gatherer_code
       assert_resolves set.gatherer_code, set
     end
   end
