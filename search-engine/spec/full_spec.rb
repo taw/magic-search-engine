@@ -3,7 +3,7 @@ describe "Full Database Test" do
 
   it "stats" do
     db.number_of_cards.should eq(18507)
-    db.number_of_printings.should eq(36240)
+    db.number_of_printings.should eq(36553)
   end
 
   it "block_codes" do
@@ -343,8 +343,8 @@ describe "Full Database Test" do
   end
 
   it "comma_separated_set_list" do
-    assert_search_equal "e:cmd or e:cm1 or e:c13 or e:c14 or e:c15 or e:c16 or e:c17 or e:cma", "e:cmd,cm1,c13,c14,c15,c16,c17,cma"
-    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cm1,c13,c14,c15,c16,c17,cma -alt:-e:cmd,cm1,c13,c14,c15,c16,c17,cma"
+    assert_search_equal "e:cmd or e:cm1 or e:c13 or e:c14 or e:c15 or e:c16 or e:c17 or e:cma or e:cm2", "e:cmd,cm1,c13,c14,c15,c16,c17,cma,cm2"
+    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cm1,c13,c14,c15,c16,c17,cma,cm2 -alt:-e:cmd,cm1,c13,c14,c15,c16,c17,cma,cm2"
   end
 
   it "command_separated_block_list" do
