@@ -100,12 +100,14 @@ class CardDatabase
   #
   # Priority:
   # * exact MCI code
+  # * exact official code
   # * exact gatherer code
   # * name exact match
   # * name substring match
   def resolve_editions(edition)
     edition = edition.downcase
     matching_mci_code = Set[]
+    matching_official_code = Set[]
     matching_gatherer_code = Set[]
     matching_name = Set[]
     matching_name_part = Set[]
@@ -117,13 +119,15 @@ class CardDatabase
       normalized_set_name     = normalize_set_name(set.name)
       normalized_set_name_alt = normalize_set_name_alt(set.name)
       matching_mci_code      << set if set_code == edition
-      matching_gatherer_code << set if set.gatherer_code.downcase == edition
+      matching_official_code << set if set.official_code.downcase == edition
+      matching_gatherer_code << set if set.gatherer_code&.downcase == edition
       matching_name          << set if normalized_set_name == normalized_edition or normalized_set_name_alt == normalized_edition_alt
       matching_name_part     << set if normalized_set_name.include?(normalized_edition) or normalized_set_name_alt.include?(normalized_edition_alt)
     end
 
     [
       matching_mci_code,
+      matching_official_code,
       matching_gatherer_code,
       matching_name,
       matching_name_part,
@@ -194,7 +198,7 @@ class CardDatabase
       @sets[set_code] = CardSet.new(set_data)
       if set_data["block_code"]
         @blocks << set_data["block_code"]
-        @blocks << set_data["gatherer_block_code"] if set_data["gatherer_block_code"]
+        @blocks << set_data["official_block_code"] if set_data["official_block_code"]
         @blocks << normalize_name(set_data["block_name"])
       end
     end

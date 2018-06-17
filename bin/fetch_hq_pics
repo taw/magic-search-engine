@@ -12,7 +12,7 @@ total = Hash.new(0)
 
 db.sets.each do |set_code, set|
   matching_dirs = source_base.children.select{|d| d.basename.to_s != "Tokens" and d.basename.to_s != "Emblems"}.select(&:directory?).select{|d|
-    d.basename.to_s.downcase == set.code.downcase or d.basename.to_s.downcase == set.gatherer_code.downcase
+    d.basename.to_s.downcase == set.code.downcase or d.basename.to_s.downcase == set.official_code.downcase
   }
   if matching_dirs.size == 0
     source_dir = nil
@@ -63,16 +63,16 @@ db.sets.each do |set_code, set|
 
     if match
       total["ok"] += 1
-      # puts "Found #{card.set.gatherer_code} - #{card.name}"
+      # puts "Found #{card.set.official_code} - #{card.name}"
       target_path.parent.mkpath
       FileUtils.cp((source_dir+match), target_path)
     else
       total["miss"] += 1
       has_lq = Pathname("frontend/public/cards/#{card.set_code}/#{card.number}.png").exist?
       if has_lq
-        warn "LQ only: #{card.set.gatherer_code} - #{card.name}"
+        warn "LQ only: #{card.set.official_code} - #{card.name}"
       else
-        warn "No pic:  #{card.set.gatherer_code} - #{card.name}"
+        warn "No pic:  #{card.set.official_code} - #{card.name}"
       end
     end
   end
