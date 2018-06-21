@@ -86,9 +86,11 @@
                 "Evis",
                 "Farajo",
                 "Faralyn",
+                "Foug",
                 "Gaile",
                 "Gozani",
                 "Hohoja",
+                "Luma",
                 "Patches",
                 "Roselyn",
                 "Sobki",
@@ -101,7 +103,8 @@
             "cardType": "Creature",
             "subtypes": [
                 "Bard",
-                "Farmer"
+                "Farmer",
+                "Gnoll"
             ]
         },
         {
@@ -155,6 +158,12 @@
             "text": "If a delayed triggered ability includes any targets, those targets are chosen as the delayed triggered ability is put onto the stack, not the spell or ability creating the delayed triggered ability.\nExample: Gaze of Pain is a sorcery with the text “Until end of turn, whenever a creature you control attacks and isn't blocked, you may choose to have it deal damage equal to its power to a target creature. If you do, it assigns no combat damage this turn.” The targets for multiple instances of the delayed triggered ability may be different creatures, and they don't have to be announced before combat."
         },
         {
+            "#": "set: Vastuum",
+            "type": "add",
+            "rule": "607.2",
+            "text": "If an object has an ability printed on it that allows a player to pay an optional cost as it's cast and an ability printed on it that refers to whether “this spell's additional cost was paid,” those abilities are linked. The second refers only to whether the intent to pay the additional cost listed in the first was declared as the object was cast as a spell."
+        },
+        {
             "#": "for Plagiarized Results",
             "type": "insert",
             "rule": "608.3b",
@@ -204,6 +213,12 @@
             "text": "Some continuous effects state that a game action or game state is “against the law” for a player. A player “breaks the law” if they perform that action or if the game state matches that state. This is not to be confused with illegal actions and has no immediate effect on gameplay; however, spells and abilities can identify that the law has been broken."
         },
         {
+            "#": "set: Vastuum",
+            "type": "insert",
+            "rule": "700.9",
+            "text": "The term wastes refers to a permanent named Wastes. A permanent is nonwastes if it's not named Wastes."
+        },
+        {
             "#": "set: Tesla",
             "type": "addKeywordAction",
             "rule": {
@@ -222,6 +237,16 @@
                     "“Journey” means “Exile the top card of your library. That card becomes journeyed.”",
                     "There is an inherent triggered ability associated with journeying. The full text of this ability is “Whenever a creature deals combat damage to one of its controller's opponents, if its controller owns any journeyed cards, the creature's controller puts a journeyed card they own into their hand.” This ability has no source and is controlled by the controller of the creature which dealt the damage that caused it to trigger. This is an exception to rule 112.8.",
                     "Journeyed is a designation that has no rules meaning other than to act as a marker that the inherent triggered ability and other spells and abilities can identify. Only cards in exile can be or become journeyed. Once a card becomes journeyed, it stays journeyed until it leaves exile or becomes a new object (see rule 406.7). Journeyed is neither an ability nor part of the card's copiable values."
+                ]
+            }
+        },
+        {
+            "#": "set: Vastuum",
+            "type": "addKeywordAction",
+            "rule": {
+                "text": "Waste",
+                "subrules": [
+                    "To waste a permanent means to create a continuous effect. The permanent's name is changed to Wastes, it loses all land types and abilities, and gains “{T}: Add {C}.”"
                 ]
             }
         },
@@ -424,6 +449,17 @@
                 "text": "Hollow",
                 "subrules": [
                     "Hollow is an activated ability that functions while the card with hollow is in a graveyard. “Hollow [cost]” means “[Cost], Exile this card from your graveyard: Create a tapped token that's a copy of this card, except it's black and it's a Zombie in addition to its other types.”"
+                ]
+            }
+        },
+        {
+            "#": "set: Vastuum",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Salvage",
+                "subrules": [
+                    "Salvage is an activated ability that functions while the card with salvage is in a graveyard. “Salvage [cost]” means “[Cost], Exile this card from your graveyard: Draw a card. Activate this ability only any time you could cast a sorcery.”",
+                    "Some cards with salvage have abilities that trigger when they're salvaged. “When you salvage [this card]” means “When you exile [this card] to pay an activation cost of a salvage ability.” These abilities trigger from whatever zone the card winds up in after it's salvaged."
                 ]
             }
         },
