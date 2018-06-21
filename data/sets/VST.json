@@ -3674,6 +3674,12 @@
             "originalText": "At the beginning of your upkeep, discard a card, then draw a card.",
             "originalType": "Enchantment",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2018-06-21",
+                    "text": "You still draw a card even if you didn't have a card to discard."
+                }
+            ],
             "text": "At the beginning of your upkeep, discard a card, then draw a card.",
             "type": "Enchantment",
             "types": [
@@ -5965,6 +5971,12 @@
             "originalType": "Artifact Creature \u2014 Golem",
             "power": "5",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2018-06-21",
+                    "text": "The first ability only duplicates triggered abilities from sources on the stack or the battlefield. Cards and other objects which aren't in either of those zones (including emblems) don't have a controller."
+                }
+            ],
             "subtypes": [
                 "Golem"
             ],
@@ -6498,6 +6510,10 @@
                 {
                     "date": "2016-01-22",
                     "text": "Similarly, colorless is not a color. If something asks you to choose a color, you can't choose colorless."
+                },
+                {
+                    "date": "2018-06-21",
+                    "text": "The Vastuum printing of this card uses the type line \u201cBas1c Land\u201d. This is a workaround for a PlaneSculptors.net bug and not the card's actual text."
                 }
             ],
             "supertypes": [
