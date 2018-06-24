@@ -1,7 +1,7 @@
 class CardSetsData
   def initialize
     @data = set_paths.map{|path| load_path(path)}.sort_by{|set_code, set|
-      [set["releaseDate"], set_code]
+      [set["releaseDate"] || "9999-12-31", set_code]
     }.to_h
   end
 

@@ -115,6 +115,7 @@ class Indexer
       PatchReconcileForeignNames,
       PatchAssignPrioritiesToSets,
       PatchReconcileOnSetPriority,
+      PatchDeleteErrataSets,
 
       # Patch mtg.wtf bugs
       PatchSaga,
