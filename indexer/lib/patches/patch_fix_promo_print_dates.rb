@@ -43,7 +43,7 @@ class PatchFixPromoPrintDates < Patch
   def guess_date_for(printings)
     printings
       .select{|c| !["ptc", "mlp", "mgdc", "mbp"].include?(c["set_code"]) }
-      .map{|c| c["release_date"] || c["set"]["release_date"] }
+      .map{|c| c["release_date"] || c["set"]["release_date"] || "9999-12-31" }
       .min
   end
 end
