@@ -1,0 +1,50 @@
+{
+    "border": "bronze",
+    "cards": [
+        {
+            "cmc": 2,
+            "layout": "normal",
+            "manaCost": "{2}",
+            "name": "Chaos Orb",
+            "reserved": true,
+            "rulings": [
+                {
+                    "date": "2018-06-25",
+                    "text": "I have applied functional errata to this card in order to make it work more reasonably in our games. It is no longer a dexterity card. For the official text and rulings, please look up the card on Gatherer. —Fenhl"
+                }
+            ],
+            "text": "{1}, {T}, Sacrifice Chaos Orb: For each nontoken permanent, flip a coin. Then destroy all permanents whose coin came up tails.",
+            "type": "Artifact",
+            "types": [
+                "Artifact"
+            ]
+        },
+        {
+            "cmc": 3,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "Red"
+            ],
+            "layout": "normal",
+            "manaCost": "{2}{R}",
+            "name": "Falling Star",
+            "reserved": true,
+            "rulings": [
+                {
+                    "date": "2018-06-25",
+                    "text": "I have applied functional errata to this card in order to make it work more reasonably in our games. It is no longer a dexterity card. For the official text and rulings, please look up the card on Gatherer. —Fenhl"
+                }
+            ],
+            "text": "For each creature on the battlefield, flip a coin. Then Falling Star deals 3 damage to each creature whose coin came up tails. Tap all creatures dealt damage by Falling Star.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ]
+        }
+    ],
+    "code": "LORESEEKERERRATA",
+    "name": "Lore Seeker errata",
+    "type": "errata"
+}
