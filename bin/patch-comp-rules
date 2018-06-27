@@ -216,7 +216,7 @@ class CompRules:
                 num_special_actions += 1
                 self['115.2'] = 'There are {} special actions:'.format(numbers[num_special_actions] if num_special_actions < len(numbers) else num_special_actions)
                 self['115']['rules'][1]['subrules'].append(patch['text'])
-                self.patches['115.2'] = 'updated number of special actions'
+                self.patches['115.2'] = 'updated the number of special actions'
                 self.patches['115.2' + SUBRULE_IDX[len(self['115']['rules'][1]['subrules']) - 1]] = patch['#']
             elif patch['type'] == 'addSubtypes':
                 rule = self['205.3']
