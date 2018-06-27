@@ -272,7 +272,7 @@ class CompRules:
         intro, contents = header.split('Contents', 1)
         header = ''.join([
             'Introduction\n\n This document contains a series of house rules for playing the Custom Constructed formats. For ease of reading, they are presented within the context of the Comprehensive Rules which they are patching.\n\nThe following rules have been patched:\n\n',
-            '\n'.join('{rule}: {patch}' for rule, patch in sorted(self.patches.items(), key=lambda kv: rule_sort_key(kv[0]))),
+            '\n'.join('{}: {}'.format(rule, patch) for rule, patch in sorted(self.patches.items(), key=lambda kv: rule_sort_key(kv[0]))),
             '\n\nThese are not the official Magic rules, you can find those at ',
             intro.split(' ')[-1],
             'Contents',
