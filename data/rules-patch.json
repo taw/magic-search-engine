@@ -2,77 +2,78 @@
     "base": "2018-06-08",
     "patches": [
         {
-            "#": "for Mount Chromaziel",
+            "#": "for Mount Chromaziel, clarify that “could produce” can be checked in any zone",
             "type": "replace",
             "rule": "106.7",
             "find": "permanent",
             "replace": "object"
         },
         {
-            "#": "set: Tesla",
+            "#": "a note on the rule for Future Sight card type symbols that Tesla's face symbols look similar",
             "type": "add",
             "rule": "107.10",
             "text": "The front-face and back-face symbols on double-faced cards from the Tesla set are identical to the type symbols for artifact and sorcery, respectively. However, unlike the type symbols, these face symbols do have an effect on game play. (See rule 711.1.)"
         },
         {
-            "#": "for Plagiarized Results",
+            "#": "for Plagiarized Results, define properties of tokens entering the battlefield from the stack",
             "type": "add",
             "rule": "110.5",
             "text": "A token may also enter the battlefield from the stack. (See rule 608.3b.) This is an exception to rules 110.5a and 110.5b; the token enters the battlefield under the control of the spell's controller and retains its text and characteristics."
         },
         {
-            "#": "set: Dreamscape",
+            "#": "the special action for Dreamscape's premonition keyword",
             "type": "addSpecialAction",
             "text": "A player who has a card with premonition in their hand may put that card face up into their library. This is a special action. A player can take this action any time they have priority, but only if they could begin to cast that card by putting it onto the stack."
         },
         {
-            "#": "for Sobki, World Severer",
+            "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
             "type": "replace",
             "rule": "119.1",
             "find": "Objects can deal damage",
             "replace": "Objects and players can deal damage"
         },
         {
-            "#": "for Sobki, World Severer",
+            "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
             "type": "replace",
             "rule": "119.1",
             "find": "An object that deals damage",
             "replace": "An object or player that deals damage"
         },
         {
-            "#": "for Sobki, World Severer",
+            "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
             "type": "replace",
             "rule": "119.2",
             "find": "Any object can deal damage\\.",
             "replace": "Any object or player can deal damage."
         },
         {
-            "#": "for Sobki, World Severer",
+            "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
             "type": "replace",
             "rule": "119.2b",
             "find": "The spell or ability will specify which object deals that damage\\.",
             "replace": "The spell or ability will specify which object or player deals that damage."
         },
         {
-            "#": "for Sobki, World Severer",
+            "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
             "type": "replace",
             "rule": "119.7",
             "find": "The source of damage is the object that dealt it\\. If an effect requires a player to choose a source of damage, they may choose a permanent;",
             "replace": "The source of damage is the object or player that dealt it. If an effect requires a player to choose a source of damage, they may choose a player; a permanent;"
         },
         {
-            "#": "for Sobki, World Severer",
+            "#": "for Sobki, World Severer, the controller of the damage source is the player who dealt the damage",
             "type": "add",
             "rule": "119",
             "text": "If an effect refers to the controller of a damage source, and the source of that damage is a player, it refers to that player."
         },
         {
-            "#": "for Wildcard",
+            "#": "for Wildcard, allow an object's CMC to change",
             "type": "add",
             "rule": "202.3",
             "text": "Effects may change an object's converted mana cost. If an effect gives an object a new converted mana cost, the new converted mana cost replaces the previous converted mana cost the object had."
         },
         {
+            "#": "custom artifact types",
             "type": "addSubtypes",
             "cardType": "Artifact",
             "subtypes": [
@@ -80,6 +81,7 @@
             ]
         },
         {
+            "#": "custom planeswalker types",
             "type": "addSubtypes",
             "cardType": "Planeswalker",
             "subtypes": [
@@ -99,6 +101,7 @@
             ]
         },
         {
+            "#": "custom creature types",
             "type": "addSubtypes",
             "cardType": "Creature",
             "subtypes": [
@@ -108,6 +111,7 @@
             ]
         },
         {
+            "#": "custom ability words",
             "type": "addAbilityWords",
             "abilityWords": [
                 "expedition",
@@ -120,82 +124,82 @@
             ]
         },
         {
-            "#": "for Rotten to the Core",
+            "#": "for Rotten to the Core, define what happens when an Aura doesn't have enchant",
             "type": "append",
             "rule": "303.4a",
             "text": "An Aura spell without enchant can target any object or player."
         },
         {
-            "#": "for Rotten to the Core",
+            "#": "for Rotten to the Core, define what happens when an Aura doesn't have enchant",
             "type": "add",
             "rule": "303.4",
             "text": "An Aura without enchant can enchant any object or player."
         },
         {
-            "#": "for Mount Chromaziel",
+            "#": "for Mount Chromaziel, clarify that lands with basic land types have their intrinsic mana ability everywhere",
             "type": "replace",
             "rule": "305.6",
             "find": "A land",
-            "replace": "A land in any zone"
+            "replace": "In any zone and outside the game, a land"
         },
         {
-            "#": "for Starsong Dragon and Thrill of Battle",
+            "#": "for Starsong Dragon and Thrill of Battle, ensure that a turn always ends with a cleanup step",
             "type": "add",
             "rule": "514",
             "text": "If a turn would end and it's not a cleanup step, instead add an additional ending phase after the current phase which consists only of a cleanup step and end the current phase."
         },
         {
-            "#": "set: Aenyr, for resonance",
+            "#": "for Aenyr's resonance keyword, add the choice of whether to resonate to the casting process",
             "type": "insertText",
             "rule": "601.2b",
             "after": "If the player wishes to splice any cards onto the spell (see rule 702.46), they reveal those cards in their hand. ",
             "text": "If the player wishes to apply any resonance effects to the spell, they announce their intention to do so. "
         },
         {
-            "#": "for Berserker's Rage",
+            "#": "for Berserker's Rage, clarify that choosing targets for a delayed trigger happens as the delayed trigger triggers, not the spell or ability containing it",
             "type": "insert",
             "rule": "603.7d",
             "text": "If a delayed triggered ability includes any targets, those targets are chosen as the delayed triggered ability is put onto the stack, not the spell or ability creating the delayed triggered ability.\nExample: Gaze of Pain is a sorcery with the text “Until end of turn, whenever a creature you control attacks and isn't blocked, you may choose to have it deal damage equal to its power to a target creature. If you do, it assigns no combat damage this turn.” The targets for multiple instances of the delayed triggered ability may be different creatures, and they don't have to be announced before combat."
         },
         {
-            "#": "set: Vastuum",
+            "#": "for Vastuum's “you may waste” spells, link optional additional costs to effects checking whether they were paid",
             "type": "add",
             "rule": "607.2",
             "text": "If an object has an ability printed on it that allows a player to pay an optional cost as it's cast and an ability printed on it that refers to whether “this spell's additional cost was paid,” those abilities are linked. The second refers only to whether the intent to pay the additional cost listed in the first was declared as the object was cast as a spell."
         },
         {
-            "#": "for Plagiarized Results",
+            "#": "for Plagiarized Results, make copies of permanent spells become tokens as they resolve",
             "type": "insert",
             "rule": "608.3b",
             "text": "If the object that's resolving is a permanent spell that's not represented by a card (i.e. a copy of a permanent spell), the object becomes a token as it enters the battlefield. It is no longer a copy of a spell."
         },
         {
-            "#": "for Sobki, World Severer",
+            "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
             "type": "replace",
             "rule": "609.7a",
             "find": "If an effect requires a player to choose a source of damage, they may choose a permanent;",
             "replace": "If an effect requires a player to choose a source of damage, they may choose a player; a permanent;"
         },
         {
-            "#": "set: Aenyr, for the resonance-overload interaction",
+            "#": "for Aenyr's resonance keyword, make sure resonated effects aren't affected by overload",
             "type": "insert",
             "rule": "612.1a",
             "text": "A text-changing effect applying to its source only changes the text in the text box where it is defined. Other text boxes, such as those added by copy effects, are not modified. Text-changing effects that change the “full text” of an object are exempt from this rule. See rule 612.5."
         },
         {
-            "#": "for Persona Shift",
+            "#": "for Persona Shift, make “base power/toughness” something that can be referred to by effects rather than just defined",
             "type": "append",
             "rule": "613.3b",
             "text": "If a spell or ability refers to the base power and/or toughness of a creature for a calculation, it uses the value as determined after this layer is applied, but before layers 7c–7e are applied."
         },
         {
-            "#": "for Tome of Infinity",
+            "#": "for Tome of Infinity, clarify that Fate Reforged's Sieges don't have modal abilities",
             "type": "add",
             "rule": "700.2",
             "text": "Despite similar appearance, an ability preceded by an anchor word is not a mode of a modal ability. It is a separate ability. See rule 614.12b."
         },
         {
-            "#": "set: Lorado",
+            "#": "a “straight” is a game term used in Lorado",
             "type": "insert",
             "rule": "700.7",
             "text": {
@@ -207,19 +211,19 @@
             }
         },
         {
-            "#": "set: Tesla",
+            "#": "the “law” is a game term used in Tesla",
             "type": "insert",
             "rule": "700.8",
             "text": "Some continuous effects state that a game action or game state is “against the law” for a player. A player “breaks the law” if they perform that action or if the game state matches that state. This is not to be confused with illegal actions and has no immediate effect on gameplay; however, spells and abilities can identify that the law has been broken."
         },
         {
-            "#": "set: Vastuum",
+            "#": "“wastes” and “nonwastes” are game terms used in Vastuum",
             "type": "insert",
             "rule": "700.9",
             "text": "The term wastes refers to a permanent named Wastes. A permanent is nonwastes if it's not named Wastes."
         },
         {
-            "#": "set: Tesla",
+            "#": "“recharge” is a keyword action used in Tesla",
             "type": "addKeywordAction",
             "rule": {
                 "text": "Recharge",
@@ -229,7 +233,7 @@
             }
         },
         {
-            "#": "set: Hollows",
+            "#": "“journey” is a keyword action used in Hollows of Lordran",
             "type": "addKeywordAction",
             "rule": {
                 "text": "Journey",
@@ -241,7 +245,7 @@
             }
         },
         {
-            "#": "set: Vastuum",
+            "#": "“waste” is a keyword action used in Vastuum",
             "type": "addKeywordAction",
             "rule": {
                 "text": "Waste",
@@ -251,38 +255,38 @@
             }
         },
         {
-            "#": "for Rotten to the Core",
+            "#": "for Rotten to the Core, define what happens when an Aura doesn't have enchant",
             "type": "replaceRule",
             "rule": "702.5d",
             "text": "An Aura spell without enchant can target any object or player. An Aura without enchant can enchant any object or player."
         },
         {
-            "#": "set: Lorado",
+            "#": "“warband” is a variant of soulbond used in Lorado",
             "type": "insert",
             "rule": "702.94b",
             "text": "Warband is a variant of the soulbond ability. “Warband” means “Whenever this creature attacks, if you control both this creature and another attacking creature and both are unpaired, you may pair this creature with another unpaired attacking creature you control until end of turn”."
         },
         {
-            "#": "set: Lorado",
+            "#": "“warband” is a variant of soulbond used in Lorado",
             "type": "insert",
             "rule": "702.94c",
             "text": "A warband ability is a soulbond ability. Any effect that looks for an object with soulbond will find a card with warband."
         },
         {
-            "#": "set: Lorado",
+            "#": "“warband” is a variant of soulbond used in Lorado",
             "type": "append",
             "rule": "702.94f",
             "text": "(For example, a creature can't be paired with another creature using a warband ability and with a third creature using a regular soulbond ability at the same time.)"
         },
         {
-            "#": "set: Lorado",
+            "#": "“warband” is a variant of soulbond used in Lorado",
             "type": "replace",
             "rule": "702.94g",
             "find": "or it or the creature it’s paired with leaves the battlefield\\.",
             "replace": "it or the creature it's paired with leaves the battlefield; or (for warband) the turn ends."
         },
         {
-            "#": "set: Aenyr",
+            "#": "“resonance” is a keyword ability used in Aenyr",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Resonance",
@@ -294,7 +298,7 @@
             }
         },
         {
-            "#": "set: Dreamscape",
+            "#": "“dreamwalk” is a keyword ability used in Dreamscape",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Dreamwalk",
@@ -307,7 +311,7 @@
             }
         },
         {
-            "#": "set: Dreamscape",
+            "#": "“premonition” is a keyword ability used in Dreamscape",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Premonition",
@@ -322,7 +326,7 @@
             }
         },
         {
-            "#": "set: Ankheret",
+            "#": "“decipher” is a keyword ability used in Ankheret",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Decipher",
@@ -332,7 +336,7 @@
             }
         },
         {
-            "#": "set: Ankheret",
+            "#": "“worship” is a keyword ability used in Ankheret",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Worship",
@@ -344,7 +348,7 @@
             }
         },
         {
-            "#": "set: Lorado",
+            "#": "“loaded” is a keyword ability used in Lorado",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Loaded",
@@ -354,7 +358,7 @@
             }
         },
         {
-            "#": "set: Lorado",
+            "#": "“reflex” is a keyword ability used in Lorado",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Reflex",
@@ -364,7 +368,7 @@
             }
         },
         {
-            "#": "set: Tesla",
+            "#": "“revolution” is a keyword ability used in Tesla",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Revolution",
@@ -375,7 +379,7 @@
             }
         },
         {
-            "#": "set: Villains",
+            "#": "“possess” is a keyword ability used in Magic Villains",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Possess",
@@ -388,7 +392,7 @@
             }
         },
         {
-            "#": "set: Villains",
+            "#": "“torture” is a keyword ability used in Magic Villains",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Torture",
@@ -401,7 +405,7 @@
             }
         },
         {
-            "#": "set: Jannada",
+            "#": "“focus” is a keyword ability used in Jannada",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Focus",
@@ -411,7 +415,7 @@
             }
         },
         {
-            "#": "set: Jannada",
+            "#": "“invocation” is a keyword ability used in Jannada",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Invocation",
@@ -422,7 +426,7 @@
             }
         },
         {
-            "#": "set: Jannada",
+            "#": "“resurrect” is a keyword ability used in Jannada",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Resurrect",
@@ -432,7 +436,7 @@
             }
         },
         {
-            "#": "set: Hollows",
+            "#": "“desperation” is a keyword ability used in Hollows of Lordran",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Desperation",
@@ -443,7 +447,7 @@
             }
         },
         {
-            "#": "set: Hollows",
+            "#": "“hollow” is a keyword ability used in Hollows of Lordran",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Hollow",
@@ -453,7 +457,7 @@
             }
         },
         {
-            "#": "set: Vastuum",
+            "#": "“salvage” is a keyword ability used in Vastuum",
             "type": "addKeywordAbility",
             "rule": {
                 "text": "Salvage",
@@ -464,39 +468,39 @@
             }
         },
         {
-            "#": "set: Villains",
+            "#": "define front-face symbols for double-faced cards in Tesla and Magic Villains",
             "type": "replace",
             "rule": "711.1a",
             "find": "Magic Origins",
             "replace": "Magic Origins and Magic Villains"
         },
         {
-            "#": "set: Tesla",
+            "#": "define front-face symbols for double-faced cards in Tesla and Magic Villains",
             "type": "append",
             "rule": "711.1a",
             "text": "On double-faced cards in the Tesla set, the front-face symbol is a chalice."
         },
         {
-            "#": "set: Villains",
+            "#": "define back-face symbols for double-faced cards in Tesla and Magic Villains",
             "type": "replace",
             "rule": "711.1b",
             "find": "Magic Origins",
             "replace": "Magic Origins and Magic Villains"
         },
         {
-            "#": "set: Tesla",
+            "#": "define back-face symbols for double-faced cards in Tesla and Magic Villains",
             "type": "append",
             "rule": "711.1b",
             "text": "On double-faced cards in the Tesla set, the back-face symbol is a flame."
         },
         {
-            "#": "for Starsong Dragon and Thrill of Battle",
+            "#": "for Starsong Dragon and Thrill of Battle, ensure that a turn always ends with a cleanup step, even when an “end the turn” effect is used",
             "type": "append",
             "rule": "716.1d",
             "text": "If the remainder of the turn does not contain a cleanup step, a new ending phase which consists of only a cleanup step is added after the last phase of the turn."
         },
         {
-            "#": "for Iun, World Reborn",
+            "#": "for Iun, World Reborn, change the intro of the “restarting the game” rules",
             "type": "replace",
             "rule": "718.1",
             "find": "One card \\(Karn Liberated\\) restarts the game\\.",
