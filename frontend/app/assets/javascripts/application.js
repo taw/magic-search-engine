@@ -38,4 +38,8 @@ $(function () {
   })
 
   $(".pack_selection select").select2();
+
+  if (!('ontouchstart' in document.documentElement) && (document.location.hash === "")) {
+    document.getElementById("q").focus();
+  }
 })
