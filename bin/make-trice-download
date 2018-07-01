@@ -1,10 +1,106 @@
 #!/usr/bin/env python3
 
+import xml.etree.ElementTree as et
+import json
+import pathlib
 import zipfile
 
-def write_trice_zipfile(zipfile):
-    raise NotImplementedError() #TODO
+COLOR_ABBRS = {
+    'White': 'W',
+    'Blue': 'U',
+    'Black': 'B',
+    'Red': 'R',
+    'Green': 'G'
+}
+
+INSTALL_INSTRUCTIONS = r"""
+First, locate your Cockatrice custom sets folder:
+On macOS: In Cockatrice's menu bar, select Card Database > Open custom sets folder
+On Windows: C:\Users\[Username here]\AppData\Local\Cockatrice\Cockatrice\customSets
+
+If you've previously downloaded the Custom Standard format files from the Discord channel, remove the XML files download this way.
+
+Then, move all XML files from this download's customSets folder into the Cockatrice custom sets folder.
+
+Then navigate up one folder, and open the pics folder. Move all folders from this download's downloadedPics folder into the downloadedPics subfolder.
+
+If you have Cockatrice open, exit and restart it for changes to take effect.
+"""[1:]
+
+def trice_mana_cost(mana_cost):
+    if not mana_cost:
+        return ''
+    mana_cost_parts = mana_cost[1:-1].split('}{')
+    return ''.join(mana_cost_parts)
+
+def cards_xml(set_info):
+    root = et.Element('cockatrice_carddatabase', version='3')
+    root.text = '\n'
+    sets = et.SubElement(root, 'sets')
+    sets.text = '\n'
+    set_elt = et.SubElement(sets, 'set')
+    set_elt.text = '\n'
+    et.SubElement(set_elt, 'name').text = set_info['code']
+    et.SubElement(set_elt, 'longname').text = set_info['name']
+    set_elt.tail = '\n'
+    sets.tail = '\n'
+    cards = et.SubElement(root, 'cards')
+    cards.text = '\n'
+    for card in set_info['cards']:
+        card_elt = et.SubElement(cards, 'card')
+        card_elt.text = '\n'
+        et.SubElement(card_elt, 'name').text = card['name']
+        et.SubElement(card_elt, 'set').text = set_info['code'] #TODO picURL?
+        #TODO related
+        for color in card.get('colors', []):
+            et.SubElement(card_elt, 'color').text = COLOR_ABBRS[color]
+        et.SubElement(card_elt, 'manacost').text = trice_mana_cost(card.get('manaCost', ''))
+        et.SubElement(card_elt, 'cmc').text = str(card.get('cmc', 0))
+        if 'power' in card:
+            et.SubElement(card_elt, 'pt').text = f'{card["power"]}/{card["toughness"]}'
+        if 'loyalty' in card:
+            et.SubElement(card_elt, 'loyalty').text = str(card['loyalty'])
+        et.SubElement(card_elt, 'type').text = card['type']
+        tablerow = et.SubElement(card_elt, 'tablerow')
+        if 'Creature' in card['types']:
+            tablerow.text = '2'
+        elif 'Land' in card['types']:
+            tablerow.text = '0'
+        elif 'Instant' in card['types'] or 'Sorcery' in card['types']:
+            tablerow.text = '3'
+        else:
+            tablerow.text = '1'
+        et.SubElement(card_elt, 'text').text = card.get('text', '')
+        #TODO token (back faces)
+        #TODO cipt
+        for card_prop in card_elt:
+            card_prop.tail = '\n'
+        card_elt.tail = '\n'
+    cards.tail = '\n'
+    return et.ElementTree(root)
+
+def tokens_xml(set_info):
+    root = et.Element('cockatrice_carddatabase', version='3')
+    root.text = '\n'
+    cards = et.SubElement(root, 'cards')
+    cards.text = '\n'
+    #TODO add all tokens
+    cards.tail = '\n'
+    return et.ElementTree(root)
+
+def write_trice_zipfile(z):
+    z.writestr('INSTALL INSTRUCTIONS.txt', INSTALL_INSTRUCTIONS)
+    for set_path in pathlib.Path('data/sets').iterdir():
+        with set_path.open() as set_f:
+            set_info = json.load(set_f)
+        if not set_info.get('custom', False):
+            continue # only include custom sets in the download, real sets are already provided by Cockatrice
+        with z.open('customSets/{}.xml'.format(set_info['code']), 'w') as cards_xml_f:
+            cards_xml(set_info).write(cards_xml_f, encoding='utf-8', xml_declaration=True)
+        with z.open('customSets/{}-tokens.xml'.format(set_info['code']), 'w') as tokens_xml_f:
+            tokens_xml(set_info).write(tokens_xml_f, encoding='utf-8', xml_declaration=True)
+        #TODO downloadedPics
 
 if __name__ == '__main__':
-    with zipfile.ZipFile('frontend/public/trice.zip', 'w', zipfile.ZIP_DEFLATED) as f:
-        write_trice_zipfile(f)
+    with zipfile.ZipFile('frontend/public/trice.zip', 'w', zipfile.ZIP_DEFLATED) as z:
+        write_trice_zipfile(z)
