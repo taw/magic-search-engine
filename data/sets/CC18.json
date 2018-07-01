@@ -257,9 +257,15 @@
             "manaCost": "{2}{W}",
             "name": "Battle Mastery",
             "number": "9",
-            "originalText": "Enchant creature\nEnchanted creature has double strike. (It deals both first-strike and regular combat damage.).",
+            "originalText": "Enchant creature\nEnchanted creature has double strike. (It deals both first-strike and regular combat damage.)",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2014-07-18",
+                    "text": "If a creature loses double strike after dealing combat damage in the first combat damage step, it won't assign combat damage in the second one."
+                }
+            ],
             "subtypes": [
                 "Aura"
             ],
@@ -422,6 +428,12 @@
             "originalText": "Enchant creature\nWhen Divine Favor enters the battlefield, you gain 3 life.\nEnchanted creature gets +1/+3.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2014-07-18",
+                    "text": "If the creature targeted by Divine Favor is an illegal target when Divine Favor tries to resolve, Divine Favor won't resolve. It won't enter the battlefield and its enters-the-battlefield ability won't trigger."
+                }
+            ],
             "subtypes": [
                 "Aura"
             ],
@@ -572,6 +584,24 @@
             "originalType": "Creature \u2014 Human Knight",
             "power": "2",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2010-08-15",
+                    "text": "If an effect would simultaneously destroy Knight Exemplar and another Knight creature you control, only Knight Exemplar is destroyed."
+                },
+                {
+                    "date": "2013-07-01",
+                    "text": "Lethal damage, damage from a source with deathtouch, and effects that say \"destroy\" won't cause a creature with indestructible to be put into the graveyard. However, a creature with indestructible can be put into the graveyard for a number of reasons. The most likely reasons are if it's sacrificed, if it's legendary and another legendary creature with the same name is controlled by the same player, or if its toughness is 0 or less."
+                },
+                {
+                    "date": "2013-07-01",
+                    "text": "If another Knight creature you control is dealt lethal damage, the creature isn't destroyed, but the damage remains marked on it. If, at some point later in that turn, you no longer control Knight Exemplar or it loses its abilities, the other Knight creature will lose indestructible and will be destroyed."
+                },
+                {
+                    "date": "2013-07-01",
+                    "text": "If you control two Knight Exemplars, each one causes the other to get +1/+1 and have indestructible."
+                }
+            ],
             "subtypes": [
                 "Human",
                 "Knight"
@@ -783,6 +813,24 @@
             "originalText": "Tap up to two target creatures.\nDraw a card.",
             "originalType": "Instant",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2010-06-15",
+                    "text": "You may target zero, one, or two creatures. The creatures don't need to be untapped."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "If you target zero creatures, Repel the Darkness can't be countered for having no legal targets. When it resolves, all that happens is that you draw a card."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "If you target one creature and that target is illegal as Repel the Darkness resolves, the spell doesn't resolve. You don't draw a card."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "If you target two creatures and they're both illegal as Repel the Darkness resolves, the spell doesn't resolve; you don't draw a card. If just one is illegal, the spell does resolve; the remaining legal target becomes tapped (if it's untapped at that time) and you draw a card."
+                }
+            ],
             "text": "Tap up to two target creatures.\nDraw a card.",
             "type": "Instant",
             "types": [
@@ -886,6 +934,24 @@
             "originalType": "Creature \u2014 Human Warrior",
             "power": "2",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2014-09-20",
+                    "text": "Any spell you cast that doesn't have the type creature will cause prowess to trigger. If a spell has multiple types, and one of those types is creature (such as an artifact creature), casting it won't cause prowess to trigger. Playing a land also won't cause prowess to trigger."
+                },
+                {
+                    "date": "2014-09-20",
+                    "text": "Prowess goes on the stack on top of the spell that caused it to trigger. It will resolve before that spell."
+                },
+                {
+                    "date": "2014-09-20",
+                    "text": "Once it triggers, prowess isn't connected to the spell that caused it to trigger. If that spell is countered, prowess will still resolve."
+                },
+                {
+                    "date": "2017-11-17",
+                    "text": "Multiple instances of lifelink on the same creature are redundant."
+                }
+            ],
             "subtypes": [
                 "Human",
                 "Warrior"
@@ -979,7 +1045,7 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"Swift. Sleek. Surprisingly succulent.\"\n\u2014Yemma",
+            "flavor": "\"Swift. Sleek. Surprisingly succulent.\"\n\u2014Garruk Wildspeaker",
             "layout": "normal",
             "manaCost": "{W}",
             "name": "Sunfeather Swallow",
@@ -1146,6 +1212,44 @@
             "originalType": "Creature \u2014 Shapeshifter",
             "power": "0",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2007-07-15",
+                    "text": "If the chosen creature is copying something else (for example, if the chosen creature is another Clone), then your Clone enters the battlefield as whatever the chosen creature copied."
+                },
+                {
+                    "date": "2007-07-15",
+                    "text": "If the chosen creature is a token, Clone copies the original characteristics of that token as stated by the effect that put it onto the battlefield. Clone is not a token."
+                },
+                {
+                    "date": "2007-07-15",
+                    "text": "Any enters-the-battlefield abilities of the copied creature will trigger when Clone enters the battlefield. Any \"as [this creature] enters the battlefield\" or \"[this creature] enters the battlefield with\" abilities of the chosen creature will also work."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "If the chosen creature has {X} in its mana cost (such as Protean Hydra), X is considered to be zero."
+                },
+                {
+                    "date": "2012-07-01",
+                    "text": "Clone copies exactly what was printed on the original creature and nothing more (unless that creature is copying something else or is a token; see below). It doesn't copy whether that creature is tapped or untapped, whether it has any counters on it or Auras attached to it, or any non-copy effects that have changed its power, toughness, types, color, or so on."
+                },
+                {
+                    "date": "2012-07-01",
+                    "text": "If Clone somehow enters the battlefield at the same time as another creature, Clone can't become a copy of that creature. You may choose only a creature that's already on the battlefield."
+                },
+                {
+                    "date": "2012-07-01",
+                    "text": "You can choose not to copy anything. In that case, Clone enters the battlefield as a 0/0 Shapeshifter creature, and is probably put into the graveyard immediately."
+                },
+                {
+                    "date": "2012-07-01",
+                    "text": "If Clone somehow enters the battlefield at the same time as another creature, Clone can't become a copy of that creature. You may only choose a creature that's already on the battlefield."
+                },
+                {
+                    "date": "2013-07-01",
+                    "text": "Clone's ability doesn't target the chosen creature."
+                }
+            ],
             "subtypes": [
                 "Shapeshifter"
             ],
@@ -1225,6 +1329,12 @@
             "originalText": "Tap target creature. It doesn't untap during its controller's next untap step.\nDraw a card.",
             "originalType": "Instant",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2017-03-14",
+                    "text": "Crippling Chill can target a creature that's already tapped. It still won't untap during its controller's next untap step."
+                }
+            ],
             "text": "Tap target creature. It doesn't untap during its controller's next untap step.\nDraw a card.",
             "type": "Instant",
             "types": [
@@ -1322,6 +1432,16 @@
             "originalText": "Counter target spell. If that spell is countered this way, exile it instead of putting it into its owner's graveyard.",
             "originalType": "Instant",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2004-10-04",
+                    "text": "The card does not go to the graveyard before being exiled."
+                },
+                {
+                    "date": "2004-10-04",
+                    "text": "If the spell is not countered (because the spell it targets can't be countered), then it does not get exiled."
+                }
+            ],
             "text": "Counter target spell. If that spell is countered this way, exile it instead of putting it into its owner's graveyard.",
             "type": "Instant",
             "types": [
@@ -1393,7 +1513,7 @@
             "manaCost": "{2}{U}",
             "name": "Inquisitive Vedalken",
             "number": "53",
-            "originalText": "When Inquisitive Vedalken enters the battlefield, scry 2.",
+            "originalText": "When Inquisitive Vedalken enters the battlefield, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)",
             "originalType": "Creature \u2014 Vedalken Wizard",
             "power": "2",
             "rarity": "Common",
@@ -1401,7 +1521,7 @@
                 "Vedalken",
                 "Wizard"
             ],
-            "text": "When Inquisitive Vedalken enters the battlefield, scry 2.",
+            "text": "When Inquisitive Vedalken enters the battlefield, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)",
             "toughness": "3",
             "type": "Creature \u2014 Vedalken Wizard",
             "types": [
@@ -1566,6 +1686,12 @@
             "originalText": "Enchant creature\nYou control enchanted creature.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2010-08-15",
+                    "text": "Gaining control of a creature doesn't cause you gain control of any Auras or Equipment attached to it."
+                }
+            ],
             "subtypes": [
                 "Aura"
             ],
@@ -1648,6 +1774,12 @@
             "originalText": "Counter target noncreature spell.",
             "originalType": "Instant",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "A \"creature spell\" is any spell with the type creature, even if it has other types such as artifact or enchantment. Older cards of type summon are also creature spells."
+                }
+            ],
             "text": "Counter target noncreature spell.",
             "type": "Instant",
             "types": [
@@ -1796,6 +1928,32 @@
             "originalText": "+1: Tap target permanent. It doesn't untap during its controller's next untap step.\n-2: Draw a card for each tapped creature target player controls.\n-8: You get an emblem with \"You have no maximum hand size\" and \"Whenever a card is put into your graveyard from anywhere, you may return it to your hand.\"",
             "originalType": "Legendary Planeswalker \u2014 Tamiyo",
             "rarity": "Mythic Rare",
+            "rulings": [
+                {
+                    "date": "2012-05-01",
+                    "text": "Tamiyo's first ability tracks the permanent, but not its controller. If the permanent changes controllers before its first controller's next untap step has come around, then it won't untap during its new controller's next untap step."
+                },
+                {
+                    "date": "2012-05-01",
+                    "text": "The number of tapped creatures the player controls is determined when Tamiyo's second ability resolves."
+                },
+                {
+                    "date": "2012-05-01",
+                    "text": "Tamiyo's third ability creates one emblem with two abilities."
+                },
+                {
+                    "date": "2012-05-01",
+                    "text": "If you activate Tamiyo's third ability when she has eight loyalty counters on her, she'll be put into your graveyard before the emblem is created. She won't return to your hand."
+                },
+                {
+                    "date": "2012-05-01",
+                    "text": "Cards that are put into your graveyard can be returned to your hand by the emblem's ability even if they were never in your hand."
+                },
+                {
+                    "date": "2013-07-01",
+                    "text": "The ability can target a tapped permanent. If the targeted permanent is already tapped when it resolves, that permanent just remains tapped and doesn't untap during its controller's next untap step."
+                }
+            ],
             "subtypes": [
                 "Tamiyo"
             ],
@@ -1884,6 +2042,32 @@
             "originalText": "Until end of turn, target creature loses all abilities and becomes a blue Frog with base power and toughness 1/1.",
             "originalType": "Instant",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2014-07-18",
+                    "text": "The creature will lose all other colors and creature types, but it will retain any other card types (such as artifact) or supertypes (such as legendary) it may have."
+                },
+                {
+                    "date": "2014-07-18",
+                    "text": "Turn to Frog overwrites all previous effects that set the creature's base power and toughness to specific values. Any power- or toughness-setting effects that start to apply after Turn to Frog resolves will overwrite this effect."
+                },
+                {
+                    "date": "2014-07-18",
+                    "text": "Turn to Frog doesn't counter abilities that have already triggered or been activated. In particular, there is no way to cast this spell to stop a creature's ability that says \"At the beginning of your upkeep,\" \"When this creature enters the battlefield,\" or similar from triggering."
+                },
+                {
+                    "date": "2014-07-18",
+                    "text": "If the affected creature gains an ability after Turn to Frog resolves, it will keep that ability."
+                },
+                {
+                    "date": "2014-07-18",
+                    "text": "Effects that modify a creature's power and/or toughness, such as the effect of Titanic Growth, will apply to the creature no matter when they started to take effect. The same is true for any counters that change its power and/or toughness and effects that switch its power and toughness."
+                },
+                {
+                    "date": "2014-07-18",
+                    "text": "If one of the Theros block Gods is affected by Turn to Frog, it will be a legendary 1/1 blue Frog enchantment creature with no abilities. If it stops being a creature, perhaps because your devotion to its color(s) decreased, it will be a legendary blue enchantment with no abilities. The way continuous effects work, the God's type-changing ability is applied before the effect that removes that ability is applied."
+                }
+            ],
             "text": "Until end of turn, target creature loses all abilities and becomes a blue Frog with base power and toughness 1/1.",
             "type": "Instant",
             "types": [
@@ -1908,6 +2092,16 @@
             "originalType": "Creature \u2014 Wall",
             "power": "0",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2014-07-18",
+                    "text": "Wall of Frost's ability tracks the creature, not the creature's controller. That is, if the creature changes controllers before its first controller's next untap step, then it won't untap during its new controller's next untap step."
+                },
+                {
+                    "date": "2014-07-18",
+                    "text": "If the creature isn't tapped during its controller's next untap step (perhaps because it was untapped by a spell), Wall of Frost's ability has no effect at that time. It won't try to keep the creature tapped on subsequent turns."
+                }
+            ],
             "subtypes": [
                 "Wall"
             ],
@@ -1959,6 +2153,12 @@
             "originalType": "Creature \u2014 Elemental",
             "power": "3",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2010-08-15",
+                    "text": "You can activate Water Servant's second ability even if doing so would cause Water Servant's power to be less than 0."
+                }
+            ],
             "subtypes": [
                 "Elemental"
             ],
@@ -2042,6 +2242,16 @@
             "originalText": "As an additional cost to cast this spell, sacrifice a creature.\nDraw two cards.",
             "originalType": "Instant",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2013-04-15",
+                    "text": "You must sacrifice exactly one creature to cast this spell; you cannot cast it without sacrificing a creature, and you cannot sacrifice additional creatures."
+                },
+                {
+                    "date": "2013-04-15",
+                    "text": "Players can only respond once this spell has been cast and all its costs have been paid. No one can try to destroy the creature you sacrificed to prevent you from casting this spell."
+                }
+            ],
             "text": "As an additional cost to cast this spell, sacrifice a creature.\nDraw two cards.",
             "type": "Instant",
             "types": [
@@ -2420,6 +2630,12 @@
             "originalType": "Creature \u2014 Vampire",
             "power": "2",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2017-03-14",
+                    "text": "If Falkenrath Noble and another creature die at the same time, Falkenrath Noble's triggered ability will trigger for each of them."
+                }
+            ],
             "subtypes": [
                 "Vampire"
             ],
@@ -2477,6 +2693,12 @@
             "originalType": "Creature \u2014 Zombie",
             "power": "2",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "A \"creature card\" is any card with the type creature, even if it has other types such as artifact, enchantment, or land. Older cards of type summon are also creature cards."
+                }
+            ],
             "subtypes": [
                 "Zombie"
             ],
@@ -2647,6 +2869,12 @@
             "originalText": "Choose a nonland card name. Search target player's graveyard, hand, and library for any number of cards with that name and exile them. Then that player shuffles their library.",
             "originalType": "Sorcery",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2011-01-01",
+                    "text": "Because you're searching for \"any number\" of cards with the chosen name, you can opt to find all of them, none of them, or any number in between. That means you may leave any cards with that name in that target's graveyard, hand, and/or library."
+                }
+            ],
             "text": "Choose a nonland card name. Search target player's graveyard, hand, and library for any number of cards with that name and exile them. Then that player shuffles their library.",
             "type": "Sorcery",
             "types": [
@@ -2740,6 +2968,20 @@
             "originalText": "Return target creature card from your graveyard to your hand.",
             "originalType": "Sorcery",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2004-10-04",
+                    "text": "You must show the card you bring out of the graveyard to your opponent."
+                },
+                {
+                    "date": "2004-10-04",
+                    "text": "The creature being brought back is chosen on announcement and not on resolution of the spell because it is targeted."
+                },
+                {
+                    "date": "2008-04-01",
+                    "text": "A \"creature card\" is any card with the type creature, even if it has other types such as artifact, enchantment, or land. Older cards of type summon are also creature cards."
+                }
+            ],
             "text": "Return target creature card from your graveyard to your hand.",
             "type": "Sorcery",
             "types": [
@@ -2764,6 +3006,20 @@
             "originalType": "Creature \u2014 Vampire",
             "power": "4",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2007-07-15",
+                    "text": "If Sengir Vampire deals nonlethal damage to a creature and then a different effect or damage source causes that creature to be put into a graveyard later in the turn, Sengir Vampire's ability will trigger and it will get a +1/+1 counter."
+                },
+                {
+                    "date": "2011-09-22",
+                    "text": "Each time a creature is put into a graveyard from the battlefield, check whether Sengir Vampire had dealt any damage to it at any time during that turn. If so, Sengir Vampire's ability will trigger. It doesn't matter who controlled the creature or whose graveyard it was put into."
+                },
+                {
+                    "date": "2011-09-22",
+                    "text": "If Sengir Vampire and a creature it dealt damage to are both put into a graveyard at the same time, Sengir Vampire's ability will trigger, but it will do nothing when it resolves."
+                }
+            ],
             "subtypes": [
                 "Vampire"
             ],
@@ -2842,6 +3098,12 @@
             "originalText": "Sorin's Thirst deals 2 damage to target creature and you gain 2 life.",
             "originalType": "Instant",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2011-09-22",
+                    "text": "If the creature is an illegal target when Sorin's Thirst tries to resolve, Sorin's Thirst won't resolve and none of its effects will happen. You won't gain life."
+                }
+            ],
             "text": "Sorin's Thirst deals 2 damage to target creature and you gain 2 life.",
             "type": "Instant",
             "types": [
@@ -3032,6 +3294,20 @@
             "originalText": "Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. (It can attack and {T} this turn.)",
             "originalType": "Sorcery",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "Act of Treason can target any creature, even one that's untapped or one you already control."
+                },
+                {
+                    "date": "2010-08-15",
+                    "text": "Gaining control of a creature doesn't cause you to gain control of any Auras or Equipment attached to it."
+                },
+                {
+                    "date": "2013-07-01",
+                    "text": "If you control a legendary creature and gain control of another legendary creature with the same name, you'll choose one to remain on the battlefield and put the other into its owner's graveyard."
+                }
+            ],
             "text": "Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. (It can attack and {T} this turn.)",
             "type": "Sorcery",
             "types": [
@@ -3237,7 +3513,7 @@
             "manaCost": "{R}",
             "name": "Flameblast",
             "number": "123",
-            "originalText": "Flameblast deals 3 damage\nto target creature.",
+            "originalText": "Flameblast deals 3 damage to target creature.",
             "originalType": "Sorcery",
             "rarity": "Common",
             "text": "Flameblast deals 3 damage to target creature.",
@@ -3708,6 +3984,12 @@
             "originalText": "Pinnacle of Rage deals 3 damage to each of two targets.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2014-02-01",
+                    "text": "You must choose two legal targets to cast Pinnacle of Rage."
+                }
+            ],
             "text": "Pinnacle of Rage deals 3 damage to each of two targets.",
             "type": "Sorcery",
             "types": [
@@ -3916,6 +4198,12 @@
             "originalText": "As an additional cost to cast this spell, discard a card.\nDraw two cards.",
             "originalType": "Sorcery",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2017-11-17",
+                    "text": "Because discarding a card is an additional cost, you can't cast Tormenting Voice if you have no other cards in hand."
+                }
+            ],
             "text": "As an additional cost to cast this spell, discard a card.\nDraw two cards.",
             "type": "Sorcery",
             "types": [
@@ -3939,6 +4227,20 @@
             "originalText": "Attacking creatures get +2/+0 until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "An \"attacking creature\" is one that has been declared as an attacker this combat, or one that was put onto the battlefield attacking this combat. Unless that creature leaves combat, it continues to be an attacking creature through the end of combat step, even if the player it was attacking has left the game, or the planeswalker it was attacking has left combat."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "Even though Trumpet Blast affects only attacking creatures, the bonus will remain for the rest of the turn."
+                },
+                {
+                    "date": "2014-09-20",
+                    "text": "Only creatures that are attacking as Trumpet Blast resolves will receive the bonus. In other words, casting it before you've declared attackers usually won't do anything."
+                }
+            ],
             "text": "Attacking creatures get +2/+0 until end of turn.",
             "type": "Instant",
             "types": [
@@ -3986,10 +4288,10 @@
             "manaCost": "{1}{R}{R}",
             "name": "Wake of Flames",
             "number": "151",
-            "originalText": "Wake of Flames deals 2 damage to each creature.\nScry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
+            "originalText": "Wake of Flames deals 2 damage to each creature.\nScry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Wake of Flames deals 2 damage to each creature.\nScry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
+            "text": "Wake of Flames deals 2 damage to each creature.\nScry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -4058,14 +4360,14 @@
             "manaCost": "{4}{G}{G}{G}{G}",
             "name": "Awakened Earth",
             "number": "154",
-            "originalText": "When you cast Awakened Earth, you may sacrifice up to two lands. For each land sacrificed this way, create a token that's a copy of Awakened Earth.\n{T}: Add {G}{G}{G}{G}.",
+            "originalText": "When you cast this spell, you may sacrifice up to two lands. For each land sacrificed this way, create a token that's a copy of Awakened Earth.\n{T}: Add {G}{G}{G}{G}.",
             "originalType": "Creature \u2014 Elemental",
             "power": "8",
             "rarity": "Mythic Rare",
             "subtypes": [
                 "Elemental"
             ],
-            "text": "When you cast Awakened Earth, you may sacrifice up to two lands. For each land sacrificed this way, create a token that's a copy of Awakened Earth.\n{T}: Add {G}{G}{G}{G}.",
+            "text": "When you cast this spell, you may sacrifice up to two lands. For each land sacrificed this way, create a token that's a copy of Awakened Earth.\n{T}: Add {G}{G}{G}{G}.",
             "toughness": "8",
             "type": "Creature \u2014 Elemental",
             "types": [
@@ -4115,6 +4417,12 @@
             "originalType": "Creature \u2014 Insect",
             "power": "0",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2012-07-01",
+                    "text": "You can choose Bond Beetle as the target of its own ability."
+                }
+            ],
             "subtypes": [
                 "Insect"
             ],
@@ -4282,6 +4590,12 @@
             "originalText": "Search your library for up to two basic land cards, reveal those cards, and put one onto the battlefield tapped and the other into your hand. Then shuffle your library.",
             "originalType": "Sorcery",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2010-08-15",
+                    "text": "If you choose to find only one basic land card, you put it onto the battlefield tapped."
+                }
+            ],
             "text": "Search your library for up to two basic land cards, reveal those cards, and put one onto the battlefield tapped and the other into your hand. Then shuffle your library.",
             "type": "Sorcery",
             "types": [
@@ -4346,6 +4660,45 @@
             ]
         },
         {
+            "artist": "Aleksi Briclot",
+            "cmc": 4,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "layout": "normal",
+            "loyalty": 3,
+            "manaCost": "{2}{G}{G}",
+            "name": "Garruk Wildspeaker",
+            "number": "165",
+            "originalText": "+1: Untap two target lands.\n-1: Create a 3/3 green Beast creature token.\n-4: Creatures you control get +3/+3 and gain trample until end of turn.",
+            "originalType": "Legendary Planeswalker \u2014 Garruk",
+            "rarity": "Mythic Rare",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "The first ability can target any two lands. They don't have to be tapped."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "The third ability affects only creatures you control at the time it resolves. It won't affect creatures that come under your control later in the turn."
+                }
+            ],
+            "subtypes": [
+                "Garruk"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "+1: Untap two target lands.\n-1: Create a 3/3 green Beast creature token.\n-4: Creatures you control get +3/+3 and gain trample until end of turn.",
+            "type": "Legendary Planeswalker \u2014 Garruk",
+            "types": [
+                "Planeswalker"
+            ]
+        },
+        {
             "artist": "Randy Gallegos",
             "cmc": 4,
             "colorIdentity": [
@@ -4358,11 +4711,17 @@
             "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "Giant Spider",
-            "number": "165",
+            "number": "166",
             "originalText": "Reach (This creature can block creatures with flying.)",
             "originalType": "Creature \u2014 Spider",
             "power": "2",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2008-04-01",
+                    "text": "This card now uses the Reach keyword ability to enable the blocking of flying creatures. This works because a creature with flying can only be blocked by creatures with flying or reach."
+                }
+            ],
             "subtypes": [
                 "Spider"
             ],
@@ -4385,7 +4744,7 @@
             "layout": "normal",
             "manaCost": "{5}{G}",
             "name": "Gravetiller Wurm",
-            "number": "166",
+            "number": "167",
             "originalText": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\nMorbid \u2014 Gravetiller Wurm enters the battlefield with four +1/+1 counters on it if a creature died this turn.",
             "originalType": "Creature \u2014 Wurm",
             "power": "4",
@@ -4413,7 +4772,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}{G}",
             "name": "Greater Basilisk",
-            "number": "167",
+            "number": "168",
             "originalText": "Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)",
             "originalType": "Creature \u2014 Basilisk",
             "power": "3",
@@ -4440,7 +4799,7 @@
             "layout": "normal",
             "manaCost": "{X}{G}{G}{G}",
             "name": "Hungering Hydra",
-            "number": "168",
+            "number": "169",
             "originalText": "Hungering Hydra enters the battlefield with X +1/+1 counters on it.\nWhenever Hungering Hydra deals combat damage to a player, put three +1/+1 counters on it.",
             "originalType": "Creature \u2014 Hydra",
             "power": "3",
@@ -4468,7 +4827,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}{G}",
             "name": "Indomitable Charge",
-            "number": "169",
+            "number": "170",
             "originalText": "Target creature you control must be blocked this turn if able.\nCreatures you control get +2/+2 until end of turn.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
@@ -4476,6 +4835,32 @@
             "type": "Sorcery",
             "types": [
                 "Sorcery"
+            ]
+        },
+        {
+            "artist": "Svetlin Velinov",
+            "cmc": 2,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "flavor": "\"And all this time I thought we were tracking it.\"\n\u2014Juruk, Kalonian tracker",
+            "layout": "normal",
+            "manaCost": "{G}{G}",
+            "name": "Kalonian Tusker",
+            "number": "171",
+            "originalType": "Creature \u2014 Beast",
+            "power": "3",
+            "rarity": "Uncommon",
+            "subtypes": [
+                "Beast"
+            ],
+            "toughness": "3",
+            "type": "Creature \u2014 Beast",
+            "types": [
+                "Creature"
             ]
         },
         {
@@ -4491,7 +4876,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Mosshide Baloth",
-            "number": "170",
+            "number": "172",
             "originalText": "{3}{G}{G}: Mosshide Baloth gets +4/+2 until end of turn. Activate this ability only once each turn.",
             "originalType": "Creature \u2014 Beast",
             "power": "2",
@@ -4518,8 +4903,8 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Naturalize",
-            "number": "171",
-            "originalText": "Destroy target artifact or enchantment.\n\n",
+            "number": "173",
+            "originalText": "Destroy target artifact or enchantment.",
             "originalType": "Instant",
             "rarity": "Common",
             "text": "Destroy target artifact or enchantment.",
@@ -4541,7 +4926,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Nature's Majesty",
-            "number": "172",
+            "number": "174",
             "originalText": "Search your library for a green creature card, reveal it, put it into your hand, then shuffle your library.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -4563,11 +4948,21 @@
             "layout": "normal",
             "manaCost": "{2}{G}{G}",
             "name": "Obstinate Baloth",
-            "number": "173",
+            "number": "175",
             "originalText": "When Obstinate Baloth enters the battlefield, you gain 4 life.\nIf a spell or ability an opponent controls causes you to discard Obstinate Baloth, put it onto the battlefield instead of putting it into your graveyard.",
             "originalType": "Creature \u2014 Beast",
             "power": "4",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2017-11-17",
+                    "text": "If a spell or ability an opponent controls causes you to discard Obstinate Baloth, and both Obstinate Baloth's ability and another ability (such as that of an opponent's Leyline of the Void) instruct you to put Obstinate Baloth somewhere else instead of putting it into your graveyard, you choose which one to apply."
+                },
+                {
+                    "date": "2017-11-17",
+                    "text": "If you discard Obstinate Baloth and put it onto the battlefield, you've still discarded it. Abilities that trigger when you discard a card (such as that of Raiders' Wake) will still trigger."
+                }
+            ],
             "subtypes": [
                 "Beast"
             ],
@@ -4590,7 +4985,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Plummet",
-            "number": "174",
+            "number": "176",
             "originalText": "Destroy target creature with flying.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -4613,10 +5008,16 @@
             "layout": "normal",
             "manaCost": "{G}",
             "name": "Prey Upon",
-            "number": "175",
+            "number": "177",
             "originalText": "Target creature you control fights target creature you don't control. (Each deals damage equal to its power to the other.)",
             "originalType": "Sorcery",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2012-07-01",
+                    "text": "If either or both targets are illegal when Prey Upon tries to resolve, no creature will deal or be dealt damage."
+                }
+            ],
             "text": "Target creature you control fights target creature you don't control. (Each deals damage equal to its power to the other.)",
             "type": "Sorcery",
             "types": [
@@ -4636,7 +5037,7 @@
             "layout": "normal",
             "manaCost": "{4}{G}{G}",
             "name": "Primal Insight",
-            "number": "176",
+            "number": "178",
             "originalText": "Draw cards equal to the greatest power among creatures you control. You gain life equal to the greatest toughness among creatures you control.",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -4659,7 +5060,7 @@
             "layout": "normal",
             "manaCost": "{G}",
             "name": "Ranger's Guile",
-            "number": "177",
+            "number": "179",
             "originalText": "Target creature you control gets +1/+1 and gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)",
             "originalType": "Instant",
             "rarity": "Common",
@@ -4682,7 +5083,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}{G}",
             "name": "Resplendent Growth",
-            "number": "178",
+            "number": "180",
             "originalText": "Whenever you tap a permanent for {G}, add an additional {G}.",
             "originalType": "Enchantment",
             "rarity": "Rare",
@@ -4719,7 +5120,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}{G}",
             "name": "Rumbling Baloth",
-            "number": "179",
+            "number": "181",
             "originalType": "Creature \u2014 Beast",
             "power": "4",
             "rarity": "Common",
@@ -4745,7 +5146,7 @@
             "layout": "normal",
             "manaCost": "{4}{G}{G}",
             "name": "Skysnare Spider",
-            "number": "180",
+            "number": "182",
             "originalText": "Vigilance (Attacking doesn't cause this creature to tap.)\nReach (This creature can block creatures with flying.)",
             "originalType": "Creature \u2014 Spider",
             "power": "6",
@@ -4773,7 +5174,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Speaker of Destinies",
-            "number": "181",
+            "number": "183",
             "originalText": "{T}: Add {G}.",
             "originalType": "Creature \u2014 Human Druid",
             "power": "1",
@@ -4801,7 +5202,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}{G}",
             "name": "Stalking Spider",
-            "number": "182",
+            "number": "184",
             "originalText": "Flash (You may cast this spell any time you could cast an instant.)\nDeathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\nReach (This creature can block creatures with flying.)",
             "originalType": "Creature \u2014 Spider",
             "power": "2",
@@ -4829,7 +5230,7 @@
             "layout": "normal",
             "manaCost": "{G}",
             "name": "Sylvan Primalist",
-            "number": "183",
+            "number": "185",
             "originalText": "{2}{G}, Sacrifice Sylvan Primalist: Create a 3/3 green Beast creature token.",
             "originalType": "Creature \u2014 Elf Druid",
             "power": "0",
@@ -4858,7 +5259,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Sylvan Ritualist",
-            "number": "184",
+            "number": "186",
             "originalText": "Creatures you control have \"{T}: Add one mana of any color.\"",
             "originalType": "Creature \u2014 Elf Druid",
             "power": "2",
@@ -4887,7 +5288,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Titanic Growth",
-            "number": "185",
+            "number": "187",
             "originalText": "Target creature gets +4/+4 until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -4895,35 +5296,6 @@
             "type": "Instant",
             "types": [
                 "Instant"
-            ]
-        },
-        {
-            "artist": "Irina Kuzmina",
-            "cmc": 3,
-            "colorIdentity": [
-                "G"
-            ],
-            "colors": [
-                "Green"
-            ],
-            "flavor": "Many fail to see the forest for its roots.",
-            "layout": "normal",
-            "manaCost": "{2}{G}",
-            "name": "Understory Guardian",
-            "number": "186",
-            "originalText": "Morbid \u2014 When Understory Guardian enters the battlefield, if a creature died this turn, return target card from your graveyard to your hand.",
-            "originalType": "Creature \u2014 Elf Shaman",
-            "power": "3",
-            "rarity": "Uncommon",
-            "subtypes": [
-                "Elf",
-                "Shaman"
-            ],
-            "text": "Morbid \u2014 When Understory Guardian enters the battlefield, if a creature died this turn, return target card from your graveyard to your hand.",
-            "toughness": "2",
-            "type": "Creature \u2014 Elf Shaman",
-            "types": [
-                "Creature"
             ]
         },
         {
@@ -4939,7 +5311,7 @@
             "layout": "normal",
             "manaCost": "{4}{G}{G}",
             "name": "Vicious Instinct",
-            "number": "187",
+            "number": "188",
             "originalText": "Target creature you control gets +2/+2 until end of turn. Untap it. It fights target creature you don't control.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -4947,6 +5319,34 @@
             "type": "Instant",
             "types": [
                 "Instant"
+            ]
+        },
+        {
+            "artist": "Eryk Szczygie\u0142",
+            "cmc": 4,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "flavor": "After years of absorbing magics from militant mages, the earth rose to silence their words of war.",
+            "layout": "normal",
+            "manaCost": "{2}{G}{G}",
+            "name": "Wrathvine",
+            "number": "189",
+            "originalText": "Hexproof (This creature can't be the target of spells or abilities your opponents control.)\nHaste (This creature can attack and {T} as soon as it comes under your control.)",
+            "originalType": "Creature \u2014 Elemental",
+            "power": "3",
+            "rarity": "Uncommon",
+            "subtypes": [
+                "Elemental"
+            ],
+            "text": "Hexproof (This creature can't be the target of spells or abilities your opponents control.)\nHaste (This creature can attack and {T} as soon as it comes under your control.)",
+            "toughness": "3",
+            "type": "Creature \u2014 Elemental",
+            "types": [
+                "Creature"
             ]
         },
         {
@@ -4961,7 +5361,7 @@
             "layout": "normal",
             "manaCost": "{4}{G}{G}",
             "name": "Xythara, Widow Queen",
-            "number": "188",
+            "number": "190",
             "originalText": "Reach\nAt the beginning of your upkeep, create a 1/2 green Spider creature token with reach.\nSacrifice another Spider: Put a +1/+1 counter on Xythara, Widow Queen. You gain 4 life.",
             "originalType": "Legendary Creature \u2014 Spider",
             "power": "3",
@@ -4977,69 +5377,6 @@
             "type": "Legendary Creature \u2014 Spider",
             "types": [
                 "Creature"
-            ]
-        },
-        {
-            "artist": "oskar",
-            "cmc": 2,
-            "colorIdentity": [
-                "G"
-            ],
-            "colors": [
-                "Green"
-            ],
-            "flavor": "\"Although Zola may be my dearest and most faithful friend, a wolf is nothing without her pack.\"\n\u2014Yemma",
-            "layout": "normal",
-            "manaCost": "{G}{G}",
-            "name": "Yemma's Companion",
-            "number": "189",
-            "originalText": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",
-            "originalType": "Creature \u2014 Wolf",
-            "power": "3",
-            "rarity": "Uncommon",
-            "subtypes": [
-                "Wolf"
-            ],
-            "text": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",
-            "toughness": "2",
-            "type": "Creature \u2014 Wolf",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
-            "artist": "AyyaSAP",
-            "cmc": 4,
-            "colorIdentity": [
-                "G"
-            ],
-            "colors": [
-                "Green"
-            ],
-            "layout": "normal",
-            "loyalty": 3,
-            "manaCost": "{2}{G}{G}",
-            "name": "Yemma, Spirited Wanderer",
-            "number": "190",
-            "originalText": "+1: If you control a creature named Zola, put a +1/+1 counter on it. Otherwise, create Zola, a legendary 2/2 green Wolf creature token.\n-1: Untap target creature. It blocks this turn if able.\n-8: Put six +1/+1 counters on target creature. It deals damage equal to its power divided as you choose among up to six target creatures you don't control.",
-            "originalType": "Legendary Planeswalker \u2014 Yemma",
-            "rarity": "Mythic Rare",
-            "rulings": [
-                {
-                    "date": "2018-04-29",
-                    "text": "If you somehow control multiple creatures named Zola, the first ability puts a +1/+1 counter on each of them."
-                }
-            ],
-            "subtypes": [
-                "Yemma"
-            ],
-            "supertypes": [
-                "Legendary"
-            ],
-            "text": "+1: If you control a creature named Zola, put a +1/+1 counter on it. Otherwise, create Zola, a legendary 2/2 green Wolf creature token.\n-1: Untap target creature. It blocks this turn if able.\n-8: Put six +1/+1 counters on target creature. It deals damage equal to its power divided as you choose among up to six target creatures you don't control.",
-            "type": "Legendary Planeswalker \u2014 Yemma",
-            "types": [
-                "Planeswalker"
             ]
         },
         {
@@ -5211,6 +5548,16 @@
             "originalText": "Morbid \u2014 At the beginning of each end step, if a creature died this turn, you may draw a card.",
             "originalType": "Enchantment",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2014-05-29",
+                    "text": "Deathreap Ritual's ability has an intervening \"if\" clause, so a creature must have died before the end step begins in order for the ability to trigger. Notably, this means that the trigger won't be on the stack for you to respond to by destroying a creature."
+                },
+                {
+                    "date": "2014-05-29",
+                    "text": "You draw one card when the ability resolves, not one card per creature that died during the turn."
+                }
+            ],
             "text": "Morbid \u2014 At the beginning of each end step, if a creature died this turn, you may draw a card.",
             "type": "Enchantment",
             "types": [
@@ -5243,7 +5590,7 @@
             ]
         },
         {
-            "artist": "Zachary Bender",
+            "artist": "Randy Vargas",
             "cmc": 6,
             "colorIdentity": [
                 "W",
@@ -5323,7 +5670,7 @@
             "manaCost": "{2}{G}{U}",
             "name": "Elvish Spiritcaller",
             "number": "200",
-            "originalText": "When Elvish Spiritcaller enters the battlefield, choose one \u2014\n\u2022 Return target nonland permanent      to its owner's hand.\n\u2022 Return target card from your             graveyard to your hand.",
+            "originalText": "When Elvish Spiritcaller enters the battlefield, choose one \u2014\n\u2022 Return target nonland permanent to its owner's hand.\n\u2022 Return target card from your graveyard to your hand.",
             "originalType": "Creature \u2014 Elf Druid",
             "power": "2",
             "rarity": "Uncommon",
@@ -5331,7 +5678,7 @@
                 "Elf",
                 "Druid"
             ],
-            "text": "When Elvish Spiritcaller enters the battlefield, choose one \u2014\n\u2022 Return target nonland permanent      to its owner's hand.\n\u2022 Return target card from your             graveyard to your hand.",
+            "text": "When Elvish Spiritcaller enters the battlefield, choose one \u2014\n\u2022 Return target nonland permanent to its owner's hand.\n\u2022 Return target card from your graveyard to your hand.",
             "toughness": "2",
             "type": "Creature \u2014 Elf Druid",
             "types": [
@@ -5353,7 +5700,7 @@
             "manaCost": "{2}{W}{U}",
             "name": "Enlightened Ascendent",
             "number": "201",
-            "originalText": "Whenever you cast a noncreature spell, choose one \u2014\n\u2022 Enlightened Ascendent gets +1/+1 until end    of turn.\n\u2022 Enlightened Ascendent gains flying and           lifelink until end of turn.\n\u2022 Exile Enlightened Ascendent. Return it to        the battlefield under its owner's control at        the beginning of the next end step.",
+            "originalText": "Whenever you cast a noncreature spell, choose one \u2014\n\u2022 Enlightened Ascendent gets +1/+1 until end of turn.\n\u2022 Enlightened Ascendent gains flying and lifelink until end of turn.\n\u2022 Exile Enlightened Ascendent. Return it to the battlefield under its owner's control at the beginning of the next end step.",
             "originalType": "Creature \u2014 Human Monk",
             "power": "3",
             "rarity": "Rare",
@@ -5361,7 +5708,7 @@
                 "Human",
                 "Monk"
             ],
-            "text": "Whenever you cast a noncreature spell, choose one \u2014\n\u2022 Enlightened Ascendent gets +1/+1 until end    of turn.\n\u2022 Enlightened Ascendent gains flying and           lifelink until end of turn.\n\u2022 Exile Enlightened Ascendent. Return it to        the battlefield under its owner's control at        the beginning of the next end step.",
+            "text": "Whenever you cast a noncreature spell, choose one \u2014\n\u2022 Enlightened Ascendent gets +1/+1 until end of turn.\n\u2022 Enlightened Ascendent gains flying and lifelink until end of turn.\n\u2022 Exile Enlightened Ascendent. Return it to the battlefield under its owner's control at the beginning of the next end step.",
             "toughness": "3",
             "type": "Creature \u2014 Human Monk",
             "types": [
@@ -5387,6 +5734,20 @@
             "originalType": "Creature \u2014 Human Rogue",
             "power": "3",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2018-03-16",
+                    "text": "If an opponent is instructed to draw a card then discard a card, and Notion Thief causes you to draw a card instead, that opponent still discards a card. The same is true of any other actions that opponent is instructed to do."
+                },
+                {
+                    "date": "2018-03-16",
+                    "text": "If two or more players each control a Notion Thief and a player would draw a card other than the first one in their draw step, that player chooses one of the applicable Notion Thief effects to apply. Then the player whose Notion Thief's effect was chosen repeats this process among the remaining Notion Thief effects, and so on, until there are no more possible such effects to apply. Each effect can be applied to the card draw only once this way."
+                },
+                {
+                    "date": "2018-03-16",
+                    "text": "The above procedure means that if each player in a two-player game controls a Notion Thief and one would draw a card, it really will be that player who draws a card."
+                }
+            ],
             "subtypes": [
                 "Human",
                 "Rogue"
@@ -5768,9 +6129,19 @@
             "manaCost": "{2}{R}{W}",
             "name": "Warleader's Helix",
             "number": "215",
-            "originalText": "Warleader's Helix deals 4 damage to any target. You gain 4 life.",
+            "originalText": "Warleader's Helix deals 4 damage to any target and you gain 4 life.",
             "originalType": "Instant",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2013-04-15",
+                    "text": "If the target permanent or player is an illegal target when Warleader's Helix tries to resolve, it won't resolve and none of its effects will happen. You won't gain 4 life."
+                },
+                {
+                    "date": "2013-04-15",
+                    "text": "If the target creature or player is an illegal target when Warleader's Helix tries to resolve, it will be countered and none of its effects will happen. You won't gain 4 life."
+                }
+            ],
             "text": "Warleader's Helix deals 4 damage to any target and you gain 4 life.",
             "type": "Instant",
             "types": [
@@ -5837,6 +6208,12 @@
             "originalText": "Equipped creature gets +4/+2.\nEquip\u2014Sacrifice a creature. (Sacrifice a creature: Attach to target creature you control. Equip only as a sorcery.)",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2011-09-22",
+                    "text": "You can sacrifice the creature Demonmail Hauberk is equipping in order to equip it to another creature."
+                }
+            ],
             "subtypes": [
                 "Equipment"
             ],
@@ -5872,7 +6249,7 @@
             "cmc": 4,
             "colorIdentity": [],
             "colors": [],
-            "flavor": "\"Nature normally casts out the unnatural, but this one's 'soul' was so gentle that the forest took it as its own.\"\n\u2014Yemma",
+            "flavor": "\"Nature normally casts out the unnatural, but this one's 'soul' was so gentle that the forest took it as its own.\"\n\u2014Nissa Revane",
             "layout": "normal",
             "manaCost": "{4}",
             "name": "Guardian Automaton",
@@ -5881,6 +6258,12 @@
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "3",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2015-06-22",
+                    "text": "If Guardian Automaton dies at the same time as your life total is reduced to 0 or less, you'll lose the game before the triggered ability resolves."
+                }
+            ],
             "subtypes": [
                 "Construct"
             ],
@@ -5994,6 +6377,28 @@
             "originalText": "As Pithing Needle enters the battlefield, choose a card name.\nActivated abilities of sources with the chosen name can't be activated unless they're mana abilities.",
             "originalType": "Artifact",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2005-06-01",
+                    "text": "Pithing Needle affects cards regardless of what zone they're in. This includes cards in hand, cards in the graveyard, and exiled cards. For example, a player can't cycle Eternal Dragon or return an Eternal Dragon from their graveyard to hand if Pithing Needle naming Eternal Dragon is on the battlefield."
+                },
+                {
+                    "date": "2005-06-01",
+                    "text": "You can name any card, even if that card doesn't normally have an activated ability. You can't name a token unless that token has the same name as a card."
+                },
+                {
+                    "date": "2005-06-01",
+                    "text": "If you name a card that has both a mana ability and another activated ability, the mana ability can be activated but the other ability can't be activated."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "Once Pithing Needle has left the battlefield, activated abilities of sources with the chosen name can be activated again."
+                },
+                {
+                    "date": "2012-10-01",
+                    "text": "Activated abilities include a colon and are written in the form \"[cost]: [effect].\" Triggered abilities and static abilities of the named card work normally."
+                }
+            ],
             "text": "As Pithing Needle enters the battlefield, choose a card name.\nActivated abilities of sources with the chosen name can't be activated unless they're mana abilities.",
             "type": "Artifact",
             "types": [
@@ -6176,6 +6581,16 @@
             "originalText": "Dragonskull Summit enters the battlefield tapped unless you control a Swamp or a Mountain.\n{T}: Add {B} or {R}.",
             "originalType": "Land",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "This checks for lands you control with the land type Swamp or Mountain, not for lands named Swamp or Mountain. The lands it checks for don't have to be basic lands. For example, if you control Stomping Ground (a nonbasic land with the land types Mountain and Forest), Dragonskull Summit will enter the battlefield untapped."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "As this is entering the battlefield, it checks for lands that are already on the battlefield. It won't see lands that are entering the battlefield at the same time (due to Warp World, for example)."
+                }
+            ],
             "text": "Dragonskull Summit enters the battlefield tapped unless you control a Swamp or a Mountain.\n{T}: Add {B} or {R}.",
             "type": "Land",
             "types": [
@@ -6196,6 +6611,16 @@
             "originalText": "Drowned Catacomb enters the battlefield tapped unless you control an Island or a Swamp.\n{T}: Add {U} or {B}.",
             "originalType": "Land",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "This checks for lands you control with the land type Island or Swamp, not for lands named Island or Swamp. The lands it checks for don't have to be basic lands. For example, if you control Blood Crypt (a nonbasic land with the land types Swamp and Mountain), Drowned Catacomb will enter the battlefield untapped."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "As this is entering the battlefield, it checks for lands that are already on the battlefield. It won't see lands that are entering the battlefield at the same time (due to Warp World, for example)."
+                }
+            ],
             "text": "Drowned Catacomb enters the battlefield tapped unless you control an Island or a Swamp.\n{T}: Add {U} or {B}.",
             "type": "Land",
             "types": [
@@ -6258,6 +6683,16 @@
             "originalText": "Glacial Fortress enters the battlefield tapped unless you control a Plains or an Island.\n{T}: Add {W} or {U}.",
             "originalType": "Land",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "This checks for lands you control with the land type Plains or Island, not for lands named Plains or Island. The lands it checks for don't have to be basic lands. For example, if you control Watery Grave (a nonbasic land with the land types Island and Swamp), Glacial Fortress will enter the battlefield untapped."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "As this is entering the battlefield, it checks for lands that are already on the battlefield. It won't see lands that are entering the battlefield at the same time (due to Warp World, for example)."
+                }
+            ],
             "text": "Glacial Fortress enters the battlefield tapped unless you control a Plains or an Island.\n{T}: Add {W} or {U}.",
             "type": "Land",
             "types": [
@@ -6320,6 +6755,16 @@
             "originalText": "Rootbound Crag enters the battlefield tapped unless you control a Mountain or a Forest.\n{T}: Add {R} or {G}.",
             "originalType": "Land",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "This checks for lands you control with the land type Mountain or Forest, not for lands named Mountain or Forest. The lands it checks for don't have to be basic lands. For example, if you control Temple Garden (a nonbasic land with the land types Forest and Plains), Rootbound Crag will enter the battlefield untapped."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "As this is entering the battlefield, it checks for lands that are already on the battlefield. It won't see lands that are entering the battlefield at the same time (due to Warp World, for example)."
+                }
+            ],
             "text": "Rootbound Crag enters the battlefield tapped unless you control a Mountain or a Forest.\n{T}: Add {R} or {G}.",
             "type": "Land",
             "types": [
@@ -6382,6 +6827,16 @@
             "originalText": "Sunpetal Grove enters the battlefield tapped unless you control a Forest or a Plains.\n{T}: Add {G} or {W}.",
             "originalType": "Land",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "This checks for lands you control with the land type Forest or Plains, not for lands named Forest or Plains. The lands it checks for don't have to be basic lands. For example, if you control Hallowed Fountain (a nonbasic land with the land types Plains and Island), Sunpetal Grove will enter the battlefield untapped."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "As this is entering the battlefield, it checks for lands that are already on the battlefield. It won't see lands that are entering the battlefield at the same time (due to Warp World, for example)."
+                }
+            ],
             "text": "Sunpetal Grove enters the battlefield tapped unless you control a Forest or a Plains.\n{T}: Add {G} or {W}.",
             "type": "Land",
             "types": [
