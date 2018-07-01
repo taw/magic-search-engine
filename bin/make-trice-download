@@ -19,11 +19,11 @@ First, locate your Cockatrice custom sets folder:
 On macOS: In Cockatrice's menu bar, select Card Database > Open custom sets folder
 On Windows: C:\Users\[Username here]\AppData\Local\Cockatrice\Cockatrice\customSets
 
+Next, exit Cockatrice.
+
 If you've previously downloaded the Custom Standard format files from the Discord channel, remove the XML files download this way. Also navigate up one level, and remove all custom sets from the pics\downloadedPics folder.
 
 Then, move all XML files from this download's customSets folder into the Cockatrice custom sets folder.
-
-If you have Cockatrice open, exit and restart it for changes to take effect.
 """[1:]
 
 def cards_xml(set_info):
@@ -94,9 +94,9 @@ def write_trice_zipfile(z):
             set_info = json.load(set_f)
         if not set_info.get('custom', False):
             continue # only include custom sets in the download, real sets are already provided by Cockatrice
-        with z.open('customSets/{}.xml'.format(set_info['code']), 'w') as cards_xml_f:
+        with z.open(f'customSets/{set_info["code"]}.xml', 'w') as cards_xml_f:
             cards_xml(set_info).write(cards_xml_f, encoding='utf-8', xml_declaration=True)
-        with z.open('customSets/{}-tokens.xml'.format(set_info['code']), 'w') as tokens_xml_f:
+        with z.open(f'customSets/{set_info["code"]}-tokens.xml', 'w') as tokens_xml_f:
             tokens_xml(set_info).write(tokens_xml_f, encoding='utf-8', xml_declaration=True)
 
 if __name__ == '__main__':

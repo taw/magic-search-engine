@@ -140,7 +140,7 @@ def run(*, do_name_check=True, verbose=False):
         #    name_check(stage, verbose=verbose)
         cmd(['rake', 'rules:update'], cwd=str(stage), announce=verbose)
         cmd(['rake', 'index'], cwd=str(stage), announce=verbose)
-        cmd(['bin/make-trice-download'], cwd=str(stage), announce=verbose)
+        cmd(['/opt/venv/py3.7/bin/python', 'bin/make-trice-download'], cwd=str(stage), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(stage / 'search-engine'), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(stage / 'frontend'), announce=verbose)
     except Exception as e:
