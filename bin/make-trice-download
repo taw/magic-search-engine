@@ -19,11 +19,9 @@ First, locate your Cockatrice custom sets folder:
 On macOS: In Cockatrice's menu bar, select Card Database > Open custom sets folder
 On Windows: C:\Users\[Username here]\AppData\Local\Cockatrice\Cockatrice\customSets
 
-If you've previously downloaded the Custom Standard format files from the Discord channel, remove the XML files download this way.
+If you've previously downloaded the Custom Standard format files from the Discord channel, remove the XML files download this way. Also navigate up one level, and remove all custom sets from the pics\downloadedPics folder.
 
 Then, move all XML files from this download's customSets folder into the Cockatrice custom sets folder.
-
-Then navigate up one folder, and open the pics folder. Move all folders from this download's downloadedPics folder into the downloadedPics subfolder.
 
 If you have Cockatrice open, exit and restart it for changes to take effect.
 """[1:]
@@ -100,7 +98,6 @@ def write_trice_zipfile(z):
             cards_xml(set_info).write(cards_xml_f, encoding='utf-8', xml_declaration=True)
         with z.open('customSets/{}-tokens.xml'.format(set_info['code']), 'w') as tokens_xml_f:
             tokens_xml(set_info).write(tokens_xml_f, encoding='utf-8', xml_declaration=True)
-        #TODO downloadedPics
 
 if __name__ == '__main__':
     with zipfile.ZipFile('frontend/public/trice.zip', 'w', zipfile.ZIP_DEFLATED) as z:
