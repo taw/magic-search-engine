@@ -3,6 +3,7 @@
 import xml.etree.ElementTree as et
 import json
 import pathlib
+import re
 import zipfile
 
 COLOR_ABBRS = {
@@ -71,8 +72,12 @@ def cards_xml(set_info):
         else:
             tablerow.text = '1'
         et.SubElement(card_elt, 'text').text = card.get('text', '')
-        #TODO token (back faces)
-        #TODO cipt
+        if 'names' in card and card['names'][0] != card['name']:
+            # back face, don't allow in decks
+            et.SubElement(card_elt, 'token').text = '1'
+        if 'Hideaway' in card.get('text', '') or re.search(f'{card["name"]} enters the battlefield tapped( with [^ ]+ [^ ]+ counters? on it)?\\.', card.get('text', '')):
+            # always enters the battlefield tapped
+            et.SubElement(card_elt, 'cipt').text = '1'
         for card_prop in card_elt:
             card_prop.tail = '\n'
         card_elt.tail = '\n'
