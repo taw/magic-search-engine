@@ -45,7 +45,7 @@ def cards_xml(set_info):
         card_elt = et.SubElement(cards, 'card')
         card_elt.text = '\n'
         et.SubElement(card_elt, 'name').text = card['name']
-        et.SubElement(card_elt, 'set').text = set_info['code'] #TODO picURL?
+        et.SubElement(card_elt, 'set', picURL=f'https://loreseeker.fenhl.net/cards/{set_info["code"].lower()}/{card["number"]}.png').text = set_info['code']
         #TODO related
         for color in card.get('colors', []):
             et.SubElement(card_elt, 'color').text = COLOR_ABBRS[color]
