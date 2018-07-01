@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+
+import zipfile
+
+def write_trice_zipfile(zipfile):
+    raise NotImplementedError() #TODO
+
+if __name__ == '__main__':
+    with zipfile.ZipFile('frontend/public/trice.zip', 'w', zipfile.ZIP_DEFLATED) as f:
+        write_trice_zipfile(f)
