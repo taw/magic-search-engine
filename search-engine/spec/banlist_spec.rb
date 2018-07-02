@@ -4,6 +4,10 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2018" do
+    assert_banlist_changes "July 2018",
+      "legacy banned", "Deathrite Shaman",
+      "legacy banned", "Gitaxian Probe"
+
     assert_banlist_changes "April 2018",
       "mtgo commander banned", "Edgar Markov",
       "mtgo commander banned", "Chrome Mox",
