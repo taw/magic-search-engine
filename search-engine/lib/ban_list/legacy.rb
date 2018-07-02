@@ -292,4 +292,11 @@ BanList.for_format("legacy") do
     "https://magic.wizards.com/en/articles/archive/news/april-24-2017-banned-and-restricted-announcement-2017-04-24",
     "Sensei's Divining Top" => "banned",
   )
+
+  change(
+    "2018-07-06",
+    "https://magic.wizards.com/en/articles/archive/news/july-2-2018-banned-and-restricted-update-2018-07-02",
+    "Gitaxian Probe" => "banned",
+    "Deathrite Shaman" => "banned",
+  )
 end
