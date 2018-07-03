@@ -267,7 +267,7 @@
             "manaCost": "{2}{W}{W}",
             "name": "Dreamblessed Scout",
             "number": "9",
-            "originalText": "Players may pay {0} rather than pay the mana cost of spells targeting only Dreamblessed Scout.",
+            "originalText": "Players may pay {0} rather than pay the mana cost for spells targeting only Dreamblessed Scout.",
             "originalType": "Creature \u2014 Human Scout",
             "power": "3",
             "rarity": "Rare",
@@ -275,7 +275,7 @@
                 "Human",
                 "Scout"
             ],
-            "text": "Players may pay {0} rather than pay the mana cost of spells targeting only Dreamblessed Scout.",
+            "text": "Players may pay {0} rather than pay the mana cost for spells targeting only Dreamblessed Scout.",
             "toughness": "3",
             "type": "Creature \u2014 Human Scout",
             "types": [
@@ -468,7 +468,7 @@
             "manaCost": "{3}{W}",
             "name": "Evis's Mandate",
             "number": "16",
-            "originalText": "Choose one \u2014\n\u2022 Create two 2/2 white Knight creature          tokens with vigilance.\n\u2022 Up to two target creatures get +2/+2 and\n  gain indestructible until end of turn.\nFlashback {5}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "originalText": "Choose one \u2014\n\u2022 Create two 2/2 white Knight creature tokens with vigilance.\n\u2022 Up to two target creatures get +2/+2 and gain indestructible until end of turn.\nFlashback {5}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
             "text": "Choose one \u2014\n\u2022 Create two 2/2 white Knight creature tokens with vigilance.\n\u2022 Up to two target creatures get +2/+2 and gain indestructible until end of turn.\nFlashback {5}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
@@ -775,6 +775,12 @@
             "originalText": "Enchant creature\nEnchanted creature can't attack or block.\nAt the beginning of your upkeep, you may gain 1 life.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2008-08-01",
+                    "text": "The triggered ability is on the Aura, not the creature. It triggers at the beginning of the upkeep of Recumbent Bliss's controller, not the enchanted creature's controller, and Recumbent Bliss's controller will gain the life."
+                }
+            ],
             "subtypes": [
                 "Aura"
             ],
@@ -820,7 +826,7 @@
             "manaCost": "{1}{W}",
             "name": "Repressor Mage",
             "number": "29",
-            "originalText": "When Repressor Mage enters the battlefield, exile target creature with power 2 or less an opponent controls until Repressor Mage leaves the battlefield.",
+            "originalText": "When Repressor Mage enters the battlefield, exile target creature an opponent controls with power 2 or less until Repressor Mage leaves the battlefield.",
             "originalType": "Creature \u2014 Human Wizard",
             "power": "2",
             "rarity": "Uncommon",
@@ -828,7 +834,7 @@
                 "Human",
                 "Wizard"
             ],
-            "text": "When Repressor Mage enters the battlefield, exile target creature with power 2 or less an opponent controls until Repressor Mage leaves the battlefield.",
+            "text": "When Repressor Mage enters the battlefield, exile target creature an opponent controls with power 2 or less until Repressor Mage leaves the battlefield.",
             "toughness": "1",
             "type": "Creature \u2014 Human Wizard",
             "types": [
@@ -1121,7 +1127,7 @@
             "manaCost": "{4}{U}",
             "name": "Aleen's Mandate",
             "number": "41",
-            "originalText": "Choose one \u2014\n\u2022 Exchange control of two target creatures.\n\u2022 Return up to two target creatures to their\n  owner's hand.\nFlashback {7}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "originalText": "Choose one \u2014\n\u2022 Exchange control of two target creatures.\n\u2022 Return up to two target creatures to their owner's hand.\nFlashback {7}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
             "text": "Choose one \u2014\n\u2022 Exchange control of two target creatures.\n\u2022 Return up to two target creatures to their owner's hand.\nFlashback {7}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
@@ -1314,6 +1320,16 @@
             "originalText": "Counter target spell. If that spell is countered this way, exile it instead of putting it into its owner's graveyard.",
             "originalType": "Instant",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2004-10-04",
+                    "text": "The card does not go to the graveyard before being exiled."
+                },
+                {
+                    "date": "2004-10-04",
+                    "text": "If the spell is not countered (because the spell it targets can't be countered), then it does not get exiled."
+                }
+            ],
             "text": "Counter target spell. If that spell is countered this way, exile it instead of putting it into its owner's graveyard.",
             "type": "Instant",
             "types": [
@@ -1456,7 +1472,7 @@
             "manaCost": "{2}{U}",
             "name": "Enter the Dreamscape",
             "number": "52",
-            "originalText": "Choose one or both \u2014\n\u2022 Return target creature you control to\n  its owner's hand.\n\u2022 Return target creature you don't\n  control to its owner's hand.",
+            "originalText": "Choose one or both \u2014\n\u2022 Return target creature you control to its owner's hand.\n\u2022 Return target creature you don't control to its owner's hand.",
             "originalType": "Instant",
             "rarity": "Common",
             "text": "Choose one or both \u2014\n\u2022 Return target creature you control to its owner's hand.\n\u2022 Return target creature you don't control to its owner's hand.",
@@ -1590,7 +1606,7 @@
             "manaCost": "{U}",
             "name": "Inspired Researcher",
             "number": "57",
-            "originalText": "{2}{R}, Sacrifice Inspired Researcher: Inspired Researcher deals 2 damage to target creature or player.",
+            "originalText": "{2}{R}, Sacrifice Inspired Researcher: Inspired Researcher deals 2 damage to any target.",
             "originalType": "Creature \u2014 Human Wizard",
             "power": "0",
             "rarity": "Common",
@@ -1598,7 +1614,7 @@
                 "Human",
                 "Wizard"
             ],
-            "text": "{2}{R}, Sacrifice Inspired Researcher: Inspired Researcher deals 2 damage to target creature or player.",
+            "text": "{2}{R}, Sacrifice Inspired Researcher: Inspired Researcher deals 2 damage to any target.",
             "toughness": "3",
             "type": "Creature \u2014 Human Wizard",
             "types": [
@@ -1670,7 +1686,7 @@
             "manaCost": "{1}{U}",
             "name": "Jorallen Visionary",
             "number": "60",
-            "originalText": "{T}: Target player puts the top card of his or her library into his or her graveyard. Activate this ability only any time you could cast a sorcery.",
+            "originalText": "{T}: Target player puts the top card of their library into their graveyard. Activate this ability only any time you could cast a sorcery.",
             "originalType": "Creature \u2014 Human Wizard",
             "power": "1",
             "rarity": "Common",
@@ -1678,7 +1694,7 @@
                 "Human",
                 "Wizard"
             ],
-            "text": "{T}: Target player puts the top card of his or her library into his or her graveyard. Activate this ability only any time you could cast a sorcery.",
+            "text": "{T}: Target player puts the top card of their library into their graveyard. Activate this ability only any time you could cast a sorcery.",
             "toughness": "3",
             "type": "Creature \u2014 Human Wizard",
             "types": [
@@ -1752,10 +1768,10 @@
             "manaCost": "{2}{U}",
             "name": "Loss of Clarity",
             "number": "63",
-            "originalText": "Target player puts the top four cards of his or her library into his or her graveyard.\nFlashback {B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "originalText": "Target player puts the top four cards of their library into their graveyard.\nFlashback {B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Target player puts the top four cards of his or her library into his or her graveyard.\nFlashback {B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "text": "Target player puts the top four cards of their library into their graveyard.\nFlashback {B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -1774,10 +1790,10 @@
             "manaCost": "{6}{U}",
             "name": "Memetic Casting",
             "number": "64",
-            "originalText": "Whenever you cast a creature spell, create a token that's a copy of that creature card.\nWhenever you cast an instant or sorcery spell, copy that spell. You may choose new targets for the copy.",
+            "originalText": "Whenever you cast a creature spell, create a token that's a copy of that spell.\nWhenever you cast an instant or sorcery spell, copy that spell. You may choose new targets for the copy.",
             "originalType": "Enchantment",
             "rarity": "Rare",
-            "text": "Whenever you cast a creature spell, create a token that's a copy of that creature card.\nWhenever you cast an instant or sorcery spell, copy that spell. You may choose new targets for the copy.",
+            "text": "Whenever you cast a creature spell, create a token that's a copy of that spell.\nWhenever you cast an instant or sorcery spell, copy that spell. You may choose new targets for the copy.",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -2079,6 +2095,16 @@
             "originalText": "Tap all creatures target player controls. Those creatures don't untap during that player's next untap step.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "The second part of Sleep's effect affects all creatures the targeted player controls as Sleep resolves, not just the ones that Sleep actually caused to become tapped."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "Sleep tracks both the player and the creatures. If one of the creatures controlled by the targeted player as Sleep resolves changes controllers, the creature will untap as normal during its new controller's next untap step."
+                }
+            ],
             "text": "Tap all creatures target player controls. Those creatures don't untap during that player's next untap step.",
             "type": "Sorcery",
             "types": [
@@ -2277,14 +2303,14 @@
             "manaCost": "{2}{U}{U}",
             "name": "Twisted Representation",
             "number": "80",
-            "originalText": "You may have Twisted Representation enter the battlefield as a copy of any creature on the battlefield except it gains\n\"{1}: This creature gets +1/-1 or -1/+1 until end of turn.\"",
+            "originalText": "You may have Twisted Representation enter the battlefield as a copy of any creature on the battlefield, except it gains \"{1}: This creature gets +1/-1 or -1/+1 until end of turn.\"",
             "originalType": "Creature \u2014 Shapeshifter",
             "power": "0",
             "rarity": "Rare",
             "subtypes": [
                 "Shapeshifter"
             ],
-            "text": "You may have Twisted Representation enter the battlefield as a copy of any creature on the battlefield except it gains\n\"{1}: This creature gets +1/-1 or -1/+1 until end of turn.\"",
+            "text": "You may have Twisted Representation enter the battlefield as a copy of any creature on the battlefield, except it gains \"{1}: This creature gets +1/-1 or -1/+1 until end of turn.\"",
             "toughness": "0",
             "type": "Creature \u2014 Shapeshifter",
             "types": [
@@ -2450,14 +2476,14 @@
             "manaCost": "{3}{B}",
             "name": "Dementia Shrieker",
             "number": "86",
-            "originalText": "Flying (This creature can't be blocked except by creatures with flying or reach.)\nWhen Dementia Shrieker enters the battlefield, target player puts the top two cards of his or her library into his or her graveyard.",
+            "originalText": "Flying (This creature can't be blocked except by creatures with flying or reach.)\nWhen Dementia Shrieker enters the battlefield, target player puts the top two cards of their library into their graveyard.",
             "originalType": "Creature \u2014 Bat",
             "power": "2",
             "rarity": "Common",
             "subtypes": [
                 "Bat"
             ],
-            "text": "Flying (This creature can't be blocked except by creatures with flying or reach.)\nWhen Dementia Shrieker enters the battlefield, target player puts the top two cards of his or her library into his or her graveyard.",
+            "text": "Flying (This creature can't be blocked except by creatures with flying or reach.)\nWhen Dementia Shrieker enters the battlefield, target player puts the top two cards of their library into their graveyard.",
             "toughness": "3",
             "type": "Creature \u2014 Bat",
             "types": [
@@ -2604,14 +2630,14 @@
             "manaCost": "{5}{B}{B}",
             "name": "Eternity",
             "number": "91",
-            "originalText": "Dreamwalk\nAt the beginning of your upkeep, you may return target creature card from your graveyard to your hand.\nAt the beginning of your upkeep, if Eternity is in your graveyard and you control a Swamp, you may exile another target creature card in your graveyard. If you do, create a tapped 2/2 black Zombie creature token.",
+            "originalText": "Dreamwalk\nAt the beginning of your upkeep, you may return target creature card from your graveyard to your hand.\nAt the beginning of your upkeep, if Eternity is in your graveyard and you control a Swamp, you may exile another target creature card from your graveyard. If you do, create a tapped 2/2 black Zombie creature token.",
             "originalType": "Creature \u2014 Incarnation",
             "power": "6",
             "rarity": "Mythic Rare",
             "subtypes": [
                 "Incarnation"
             ],
-            "text": "Dreamwalk\nAt the beginning of your upkeep, you may return target creature card from your graveyard to your hand.\nAt the beginning of your upkeep, if Eternity is in your graveyard and you control a Swamp, you may exile another target creature card in your graveyard. If you do, create a tapped 2/2 black Zombie creature token.",
+            "text": "Dreamwalk\nAt the beginning of your upkeep, you may return target creature card from your graveyard to your hand.\nAt the beginning of your upkeep, if Eternity is in your graveyard and you control a Swamp, you may exile another target creature card from your graveyard. If you do, create a tapped 2/2 black Zombie creature token.",
             "toughness": "6",
             "type": "Creature \u2014 Incarnation",
             "types": [
@@ -2817,10 +2843,10 @@
             "manaCost": "{3}{B}",
             "name": "Ikelious's Mandate",
             "number": "98",
-            "originalText": "Choose one \u2014\n\u2022 Target player sacrifices a creature with the          greatest power among creatures he or she            controls.\n\u2022 Put target creature card from an opponent's\n  graveyard onto the battlefield under your\n  control.\nFlashback {4}{B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "originalText": "Choose one \u2014\n\u2022 Target player sacrifices a creature with the greatest power among creatures they control.\n\u2022 Put target creature card from an opponent's graveyard onto the battlefield under your control.\nFlashback {4}{B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Choose one \u2014\n\u2022 Target player sacrifices a creature with the greatest power among creatures he or she controls.\n\u2022 Put target creature card from an opponent's graveyard onto the battlefield under your control.\nFlashback {4}{B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "text": "Choose one \u2014\n\u2022 Target player sacrifices a creature with the greatest power among creatures they control.\n\u2022 Put target creature card from an opponent's graveyard onto the battlefield under your control.\nFlashback {4}{B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -2835,12 +2861,12 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "\"Sleep, if you dare. I'll be waiting for you.\"          ",
+            "flavor": "\"Sleep, if you dare. I'll be waiting for you.\"",
             "layout": "normal",
             "manaCost": "{3}{B}{B}",
             "name": "Ikelious, Nightmare King",
             "number": "99",
-            "originalText": "Dreamwalk (This creature can't be blocked by untapped creatures. Tapped creatures can block it.)\nOther tapped creatures have \"At the beginning of your end step, sacrifice this creature unless you pay X life, where X is this card's converted mana cost.\"",
+            "originalText": "Dreamwalk (This creature can't be blocked by untapped creatures. Tapped creatures can block it.)\nOther tapped creatures have \"At the beginning of your end step, sacrifice this creature unless you pay X life, where X is this creature's converted mana cost.\"",
             "originalType": "Legendary Creature \u2014 Nightmare",
             "power": "5",
             "rarity": "Mythic Rare",
@@ -2850,7 +2876,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Dreamwalk (This creature can't be blocked by untapped creatures. Tapped creatures can block it.)\nOther tapped creatures have \"At the beginning of your end step, sacrifice this creature unless you pay X life, where X is this card's converted mana cost.\"",
+            "text": "Dreamwalk (This creature can't be blocked by untapped creatures. Tapped creatures can block it.)\nOther tapped creatures have \"At the beginning of your end step, sacrifice this creature unless you pay X life, where X is this creature's converted mana cost.\"",
             "toughness": "4",
             "type": "Legendary Creature \u2014 Nightmare",
             "types": [
@@ -3051,10 +3077,10 @@
             "manaCost": "{7}{B}",
             "name": "Plague with Distress",
             "number": "107",
-            "originalText": "Trance \u2014 Plague with Distress costs {1} less to cast for each tapped creature you control.\nTarget player sacrifices two creatures.",
+            "originalText": "Trance \u2014 This spell costs {1} less to cast for each tapped creature you control.\nTarget player sacrifices two creatures.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Trance \u2014 Plague with Distress costs {1} less to cast for each tapped creature you control.\nTarget player sacrifices two creatures.",
+            "text": "Trance \u2014 This spell costs {1} less to cast for each tapped creature you control.\nTarget player sacrifices two creatures.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -3400,10 +3426,10 @@
             "manaCost": "{B}",
             "name": "Troubled Dreams",
             "number": "119",
-            "originalText": "Trance \u2014 Target player reveals X cards from his or her hand, where X is the number of tapped creatures you control. You choose one of them. That player discards that card.",
+            "originalText": "Trance \u2014 Target player reveals X cards from their hand, where X is the number of tapped creatures you control. You choose one of them. That player discards that card.",
             "originalType": "Sorcery",
             "rarity": "Common",
-            "text": "Trance \u2014 Target player reveals X cards from his or her hand, where X is the number of tapped creatures you control. You choose one of them. That player discards that card.",
+            "text": "Trance \u2014 Target player reveals X cards from their hand, where X is the number of tapped creatures you control. You choose one of them. That player discards that card.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -3528,10 +3554,10 @@
             "manaCost": "{2}{R}",
             "name": "Aisha's Dramatics",
             "number": "124",
-            "originalText": "As an additional cost to cast Aisha's Dramatics, discard a card.\nDraw two cards.",
+            "originalText": "As an additional cost to cast this spell, discard a card.\nDraw two cards.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "As an additional cost to cast Aisha's Dramatics, discard a card.\nDraw two cards.",
+            "text": "As an additional cost to cast this spell, discard a card.\nDraw two cards.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -3661,7 +3687,7 @@
             "manaCost": "{2}{R}",
             "name": "Charred Visionary",
             "number": "129",
-            "originalText": "First strike\n{T}: Charred Visionary deals 1 damage to target player. Activate this ability only any time you could cast a sorcery.",
+            "originalText": "First strike\n{T}: Charred Visionary deals 1 damage to target player or planeswalker. Activate this ability only any time you could cast a sorcery.",
             "originalType": "Creature \u2014 Goblin Shaman",
             "power": "2",
             "rarity": "Common",
@@ -3669,7 +3695,7 @@
                 "Goblin",
                 "Shaman"
             ],
-            "text": "First strike\n{T}: Charred Visionary deals 1 damage to target player. Activate this ability only any time you could cast a sorcery.",
+            "text": "First strike\n{T}: Charred Visionary deals 1 damage to target player or planeswalker. Activate this ability only any time you could cast a sorcery.",
             "toughness": "2",
             "type": "Creature \u2014 Goblin Shaman",
             "types": [
@@ -4075,7 +4101,7 @@
             "manaCost": "{2}{R}",
             "name": "Ire Figment",
             "number": "143",
-            "originalText": "Dreamwalk (This creature can't be blocked by untapped creatures. Tapped creatures can block it.)\nIre Figment attacks each turn if able.",
+            "originalText": "Dreamwalk (This creature can't be blocked by untapped creatures. Tapped creatures can block it.)\nIre Figment attacks each combat if able.",
             "originalType": "Creature \u2014 Elemental",
             "power": "4",
             "rarity": "Uncommon",
@@ -4244,7 +4270,7 @@
             "manaCost": "{R}",
             "name": "Nightfire Aspirant",
             "number": "149",
-            "originalText": "Dreamwalk (This creature can't be blocked by untapped creatures. Tapped creatures can block it.)\nWhenever Nightfire Aspirant becomes tapped, it deals 1 damage to target player.",
+            "originalText": "Dreamwalk (This creature can't be blocked by untapped creatures. Tapped creatures can block it.)\nWhenever Nightfire Aspirant becomes tapped, it deals 1 damage to target player or planeswalker.",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "1",
             "rarity": "Uncommon",
@@ -4252,7 +4278,7 @@
                 "Human",
                 "Warrior"
             ],
-            "text": "Dreamwalk (This creature can't be blocked by untapped creatures. Tapped creatures can block it.)\nWhenever Nightfire Aspirant becomes tapped, it deals 1 damage to target player.",
+            "text": "Dreamwalk (This creature can't be blocked by untapped creatures. Tapped creatures can block it.)\nWhenever Nightfire Aspirant becomes tapped, it deals 1 damage to target player or planeswalker.",
             "toughness": "1",
             "type": "Creature \u2014 Human Warrior",
             "types": [
@@ -4347,10 +4373,10 @@
             "manaCost": "{1}{R}{R}",
             "name": "Raving Spree",
             "number": "152",
-            "originalText": "Raving Spree deals 3 damage to target creature or player. Each player dealt damage this way sacrifices an artifact.",
+            "originalText": "Raving Spree deals 3 damage to any target. If a player was dealt damage this way, they sacrifice an artifact.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Raving Spree deals 3 damage to target creature or player. Each player dealt damage this way sacrifices an artifact.",
+            "text": "Raving Spree deals 3 damage to any target. If a player was dealt damage this way, they sacrifice an artifact.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -4438,10 +4464,10 @@
             "manaCost": "{4}{R}",
             "name": "Shredded Fate",
             "number": "155",
-            "originalText": "Shredded Fate deals 4 damage to target creature or player. That creature's controller or that player shuffles his or her library. (Shuffling turns all face-up cards in that library face down.)",
+            "originalText": "Shredded Fate deals 4 damage to any target. That player or that permanent's controller shuffles their library. (Shuffling turns all face-up cards in that library face down.)",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Shredded Fate deals 4 damage to target creature or player. That creature's controller or that player shuffles his or her library. (Shuffling turns all face-up cards in that library face down.)",
+            "text": "Shredded Fate deals 4 damage to any target. That player or that permanent's controller shuffles their library. (Shuffling turns all face-up cards in that library face down.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -4460,10 +4486,10 @@
             "manaCost": "{3}{R}",
             "name": "Somni's Mandate",
             "number": "156",
-            "originalText": "Choose one \u2014\n\u2022 Discard all the cards in your hand, then draw     that many cards plus one.\n\u2022 Exile up to five cards from your graveyard.         Somni's Mandate deals damage to target            creature or player equal to the number of            cards exiled this way.\nFlashback {4}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "originalText": "Choose one \u2014\n\u2022 Discard all the cards in your hand, then draw that many cards plus one.\n\u2022 Exile up to five cards from your graveyard. Somni's Mandate deals damage to any target equal to the number of cards exiled this way.\nFlashback {4}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Choose one \u2014\n\u2022 Discard all the cards in your hand, then draw     that many cards plus one.\n\u2022 Exile up to five cards from your graveyard.         Somni's Mandate deals damage to target            creature or player equal to the number of            cards exiled this way.\nFlashback {4}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "text": "Choose one \u2014\n\u2022 Discard all the cards in your hand, then draw that many cards plus one.\n\u2022 Exile up to five cards from your graveyard. Somni's Mandate deals damage to any target equal to the number of cards exiled this way.\nFlashback {4}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -4515,7 +4541,7 @@
             "manaCost": "{R}",
             "name": "Sparkweaver Kirin",
             "number": "158",
-            "originalText": "{2}{R}, Sacrifice Sparkweaver Kirin: Add {R}{R}{R}{R}{R} to your mana pool.",
+            "originalText": "{2}{R}, Sacrifice Sparkweaver Kirin: Add {R}{R}{R}{R}{R}.",
             "originalType": "Creature \u2014 Elemental Kirin",
             "power": "1",
             "rarity": "Common",
@@ -4523,7 +4549,7 @@
                 "Elemental",
                 "Kirin"
             ],
-            "text": "{2}{R}, Sacrifice Sparkweaver Kirin: Add {R}{R}{R}{R}{R} to your mana pool.",
+            "text": "{2}{R}, Sacrifice Sparkweaver Kirin: Add {R}{R}{R}{R}{R}.",
             "toughness": "1",
             "type": "Creature \u2014 Elemental Kirin",
             "types": [
@@ -4570,10 +4596,10 @@
             "manaCost": "{1}{R}",
             "name": "Sting of the Past",
             "number": "160",
-            "originalText": "Sting of the Past deals 1 damage to target player and 1 damage to target creature that player controls.\nFlashback {1}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "originalText": "Sting of the Past deals 1 damage to target player or planeswalker and 1 damage to target creature that player or that planeswalker's controller controls.\nFlashback {1}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Sting of the Past deals 1 damage to target player and 1 damage to target creature that player controls.\nFlashback {1}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "text": "Sting of the Past deals 1 damage to target player or planeswalker and 1 damage to target creature that player or that planeswalker's controller controls.\nFlashback {1}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -4633,13 +4659,19 @@
             "manaCost": "{G}",
             "name": "Abundant Growth",
             "number": "162",
-            "originalText": "Enchant land\nWhen Abundant Growth enters the battlefield, draw a card.\nEnchanted land has \"{T}: Add one mana of any color to your mana pool.\"",
+            "originalText": "Enchant land\nWhen Abundant Growth enters the battlefield, draw a card.\nEnchanted land has \"{T}: Add one mana of any color.\"",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2016-06-08",
+                    "text": "The enchanted land retains any other abilities it has. Activating one of the land's activated abilities won't cause the other(s) to be activated."
+                }
+            ],
             "subtypes": [
                 "Aura"
             ],
-            "text": "Enchant land\nWhen Abundant Growth enters the battlefield, draw a card.\nEnchanted land has \"{T}: Add one mana of any color to your mana pool.\"",
+            "text": "Enchant land\nWhen Abundant Growth enters the battlefield, draw a card.\nEnchanted land has \"{T}: Add one mana of any color.\"",
             "type": "Enchantment \u2014 Aura",
             "types": [
                 "Enchantment"
@@ -4687,7 +4719,7 @@
             "manaCost": "{2}{G}{G}",
             "name": "Apparition of Savagery",
             "number": "164",
-            "originalText": "Whenever a player taps a land for mana, that player adds one mana to his or her mana pool of any type that land produced.\n{X}{G}{G}: Apparition of Savagery becomes an X/X green Hydra enchantment creature until end of turn.",
+            "originalText": "Whenever a player taps a land for mana, that player adds one mana of any type that land produced.\n{X}{G}{G}: Apparition of Savagery becomes an X/X green Hydra enchantment creature until end of turn.",
             "originalType": "Enchantment",
             "rarity": "Rare",
             "rulings": [
@@ -4696,7 +4728,7 @@
                     "text": "If this becomes animated, it loses all other colors, card types, and subtypes for the duration of the effect."
                 }
             ],
-            "text": "Whenever a player taps a land for mana, that player adds one mana to his or her mana pool of any type that land produced.\n{X}{G}{G}: Apparition of Savagery becomes an X/X green Hydra enchantment creature until end of turn.",
+            "text": "Whenever a player taps a land for mana, that player adds one mana of any type that land produced.\n{X}{G}{G}: Apparition of Savagery becomes an X/X green Hydra enchantment creature until end of turn.",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -4761,7 +4793,7 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "Life leads to death that leads to new life. An infinite cycle that must not be disturbed. ",
+            "flavor": "Life leads to death that leads to new life. An infinite cycle that must not be disturbed.",
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Composition Tender",
@@ -5261,10 +5293,10 @@
             "manaCost": "{1}{G}",
             "name": "Shared Experience",
             "number": "185",
-            "originalText": "Put a +1/+1 counter on target creature.\nPut a +1/+1 counter on up to one other target creature with a +1/+1 counter on it.\nFlashback {1}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "originalText": "Put a +1/+1 counter on target creature. Put a +1/+1 counter on up to one other target creature with a +1/+1 counter on it.\nFlashback {1}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "originalType": "Sorcery",
             "rarity": "Common",
-            "text": "Put a +1/+1 counter on target creature.\nPut a +1/+1 counter on up to one other target creature with a +1/+1 counter on it.\nFlashback {1}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "text": "Put a +1/+1 counter on target creature. Put a +1/+1 counter on up to one other target creature with a +1/+1 counter on it.\nFlashback {1}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -5339,7 +5371,7 @@
             "manaCost": "{2}{G}",
             "name": "Sommeil Sage",
             "number": "188",
-            "originalText": "Trance \u2014 {T}: Add X mana in any combination of colors to your mana pool, where X is the number of tapped creatures you control.",
+            "originalText": "Trance \u2014 {T}: Add X mana in any combination of colors, where X is the number of tapped creatures you control.",
             "originalType": "Creature \u2014 Elf Druid",
             "power": "1",
             "rarity": "Uncommon",
@@ -5347,7 +5379,7 @@
                 "Elf",
                 "Druid"
             ],
-            "text": "Trance \u2014 {T}: Add X mana in any combination of colors to your mana pool, where X is the number of tapped creatures you control.",
+            "text": "Trance \u2014 {T}: Add X mana in any combination of colors, where X is the number of tapped creatures you control.",
             "toughness": "3",
             "type": "Creature \u2014 Elf Druid",
             "types": [
@@ -5418,7 +5450,7 @@
             "manaCost": "{1}{G}",
             "name": "Sunbloom Elf",
             "number": "191",
-            "originalText": "Whenever Sunbloom Elf becomes tapped, add {G} to your mana pool at the beginning of your next main phase.",
+            "originalText": "Whenever Sunbloom Elf becomes tapped, add {G} at the beginning of your next main phase.",
             "originalType": "Creature \u2014 Elf Druid",
             "power": "1",
             "rarity": "Common",
@@ -5426,7 +5458,7 @@
                 "Elf",
                 "Druid"
             ],
-            "text": "Whenever Sunbloom Elf becomes tapped, add {G} to your mana pool at the beginning of your next main phase.",
+            "text": "Whenever Sunbloom Elf becomes tapped, add {G} at the beginning of your next main phase.",
             "toughness": "3",
             "type": "Creature \u2014 Elf Druid",
             "types": [
@@ -5570,7 +5602,7 @@
             "manaCost": "{4}{G}",
             "name": "Walker of Regrowth",
             "number": "197",
-            "originalText": "Trance \u2014 At the beginning of your end step, return target card from your graveyard to your hand if its converted mana cost is equal to or less than the number of tapped creatures you control.",
+            "originalText": "Trance \u2014 At the beginning of your end step, return target card from your graveyard to your hand if its converted mana cost is less than or equal to the number of tapped creatures you control.",
             "originalType": "Creature \u2014 Elemental",
             "power": "5",
             "rarity": "Rare",
@@ -5598,14 +5630,14 @@
             "manaCost": "{7}{G}",
             "name": "Whispering Bashe",
             "number": "198",
-            "originalText": "Trance \u2014 Whispering Bashe costs {1} less to cast for each tapped creature you control.",
+            "originalText": "Trance \u2014 This spell costs {1} less to cast for each tapped creature you control.",
             "originalType": "Creature \u2014 Snake",
             "power": "6",
             "rarity": "Common",
             "subtypes": [
                 "Snake"
             ],
-            "text": "Trance \u2014 Whispering Bashe costs {1} less to cast for each tapped creature you control.",
+            "text": "Trance \u2014 This spell costs {1} less to cast for each tapped creature you control.",
             "toughness": "7",
             "type": "Creature \u2014 Snake",
             "types": [
@@ -5626,10 +5658,10 @@
             "manaCost": "{X}{G}{G}",
             "name": "Wild Flourishing",
             "number": "199",
-            "originalText": "Create a X/X green Elemental creature token.\nFlashback {X}{G}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "originalText": "Create an X/X green Elemental creature token.\nFlashback {X}{G}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Create a X/X green Elemental creature token.\nFlashback {X}{G}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "text": "Create an X/X green Elemental creature token.\nFlashback {X}{G}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -5648,7 +5680,7 @@
             "manaCost": "{2}{G}",
             "name": "Yemma's Mandate",
             "number": "200",
-            "originalText": "Choose one \u2014\n\u2022 Put three +1/+1 counters on target creature.\n\u2022 Target creature you control fights target\n  creature you don't control.\nFlashback {4}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+            "originalText": "Choose one \u2014\n\u2022 Put three +1/+1 counters on target creature.\n\u2022 Target creature you control fights target creature you don't control.\nFlashback {4}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
             "text": "Choose one \u2014\n\u2022 Put three +1/+1 counters on target creature.\n\u2022 Target creature you control fights target creature you don't control.\nFlashback {4}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
@@ -5671,8 +5703,8 @@
             "manaCost": "{2}{G}{G}",
             "name": "Yemma, Planar Huntress",
             "number": "201",
-            "originalText": "When Yemma, Planar Huntress enters the battlefield, create a legendary 2/2 green Wolf creature token named Zola.\n+1: Up to one target creature you control gains trample and indestructible until end of turn. If its name is Zola, put a +1/+1 counter on it.\n-2:  Put a +1/+1 counter on target creature you control. That creature fights target creature you don't control.\n-7: You get an emblem with \"At the beginning of combat on your turn, put five +1/+1 counters on target creature you control.\"",
-            "originalType": "Planeswalker \u2014 Yemma",
+            "originalText": "When Yemma, Planar Huntress enters the battlefield, create a legendary 2/2 green Wolf creature token named Zola.\n+1: Up to one target creature you control gains trample and indestructible until end of turn. If its name is Zola, put a +1/+1 counter on it.\n-2: Put a +1/+1 counter on target creature you control. That creature fights target creature you don't control.\n-7: You get an emblem with \"At the beginning of combat on your turn, put five +1/+1 counters on target creature you control.\"",
+            "originalType": "Legendary Planeswalker \u2014 Yemma",
             "rarity": "Mythic Rare",
             "rulings": [
                 {
@@ -5686,7 +5718,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "When Yemma, Planar Huntress enters the battlefield, create a legendary 2/2 green Wolf creature token named Zola.\n+1: Up to one target creature you control gains trample and indestructible until end of turn. If its name is Zola, put a +1/+1 counter on it.\n-2:  Put a +1/+1 counter on target creature you control. That creature fights target creature you don't control.\n-7: You get an emblem with \"At the beginning of combat on your turn, put five +1/+1 counters on target creature you control.\"",
+            "text": "When Yemma, Planar Huntress enters the battlefield, create a legendary 2/2 green Wolf creature token named Zola.\n+1: Up to one target creature you control gains trample and indestructible until end of turn. If its name is Zola, put a +1/+1 counter on it.\n-2: Put a +1/+1 counter on target creature you control. That creature fights target creature you don't control.\n-7: You get an emblem with \"At the beginning of combat on your turn, put five +1/+1 counters on target creature you control.\"",
             "type": "Legendary Planeswalker \u2014 Yemma",
             "types": [
                 "Planeswalker"
@@ -5859,10 +5891,10 @@
             "manaCost": "{2}{U}{B}",
             "name": "Cognitive Violation",
             "number": "206",
-            "originalText": "Search target opponent's library for a nonland card and exile it. You may cast that card for as long as it remains exiled, and you may spend mana as though it were mana of any color to cast that spell. Then that player shuffles his or her library. (Shuffling turns all face-up cards in that library face down.)",
+            "originalText": "Search target opponent's library for a nonland card and exile it. You may cast that card for as long as it remains exiled, and you may spend mana as though it were mana of any color to cast that spell. Then that player shuffles their library. (Shuffling turns all face-up cards in that library face down.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Search target opponent's library for a nonland card and exile it. You may cast that card for as long as it remains exiled, and you may spend mana as though it were mana of any color to cast that spell. Then that player shuffles his or her library. (Shuffling turns all face-up cards in that library face down.)",
+            "text": "Search target opponent's library for a nonland card and exile it. You may cast that card for as long as it remains exiled, and you may spend mana as though it were mana of any color to cast that spell. Then that player shuffles their library. (Shuffling turns all face-up cards in that library face down.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -5975,10 +6007,10 @@
             "manaCost": "{X}{R}{G}",
             "name": "Earthflare",
             "number": "210",
-            "originalText": "Earthflare deals X damage divided as you choose among any number of target creatures and/or players. Search your library for up to X basic land cards, reveal them and put them into your hand. Then shuffle your library. (Shuffling turns all face-up cards in that library face down.)",
+            "originalText": "Earthflare deals X damage divided as you choose among any number of targets. Search your library for up to X basic land cards, reveal them and put them into your hand. Then shuffle your library. (Shuffling turns all face-up cards in that library face down.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Earthflare deals X damage divided as you choose among any number of target creatures and/or players. Search your library for up to X basic land cards, reveal them and put them into your hand. Then shuffle your library. (Shuffling turns all face-up cards in that library face down.)",
+            "text": "Earthflare deals X damage divided as you choose among any number of targets. Search your library for up to X basic land cards, reveal them and put them into your hand. Then shuffle your library. (Shuffling turns all face-up cards in that library face down.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -6030,8 +6062,8 @@
             "manaCost": "{1}{W}{U}",
             "name": "Evis, Executor of Light",
             "number": "212",
-            "originalText": "When Evis, Executor of Light enters the battlefield, you may exile target creature until she leaves the battlefield.\n+1: Up to one target creature gains vigilance until end of turn and can't be blocked this turn.\n+1: Put a +1/+1 counter on target creature and all other creatures you control with the same name as that creature.\n-6: Choose a creature card exiled with Evis as you activate this ability. Put five tokens onto the battlefield that are copies of the chosen card.",
-            "originalType": "Planeswalker \u2014 Evis",
+            "originalText": "When Evis, Executor of Light enters the battlefield, you may exile target creature until she leaves the battlefield.\n+1: Up to one target creature gains vigilance until end of turn and can't be blocked this turn.\n+1: Put a +1/+1 counter on target creature and all other creatures you control with the same name as that creature.\n-6: Choose a creature card that was exiled with Evis as you activated this ability. Create five tokens that are copies of the chosen card.",
+            "originalType": "Legendary Planeswalker \u2014 Evis",
             "rarity": "Mythic Rare",
             "subtypes": [
                 "Evis"
@@ -6039,7 +6071,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "When Evis, Executor of Light enters the battlefield, you may exile target creature until she leaves the battlefield.\n+1: Up to one target creature gains vigilance until end of turn and can't be blocked this turn.\n+1: Put a +1/+1 counter on target creature and all other creatures you control with the same name as that creature.\n-6: Choose a creature card that was exiled with Evis as you activated this ability. Put five tokens onto the battlefield that are copies of the chosen card.",
+            "text": "When Evis, Executor of Light enters the battlefield, you may exile target creature until she leaves the battlefield.\n+1: Up to one target creature gains vigilance until end of turn and can't be blocked this turn.\n+1: Put a +1/+1 counter on target creature and all other creatures you control with the same name as that creature.\n-6: Choose a creature card that was exiled with Evis as you activated this ability. Create five tokens that are copies of the chosen card.",
             "type": "Legendary Planeswalker \u2014 Evis",
             "types": [
                 "Planeswalker"
@@ -6121,7 +6153,7 @@
             "manaCost": "{G}{W}",
             "name": "Jemmara, Reality Steward",
             "number": "215",
-            "originalText": "If one or more +1/+1 counters would be placed on Jemmara, Reality Steward, you may put that many +1/+1 counters on each other creature you control instead.",
+            "originalText": "If one or more +1/+1 counters would be put on Jemmara, Reality Steward, you may put that many +1/+1 counters on each other creature you control instead.",
             "originalType": "Legendary Creature \u2014 Elf Druid",
             "power": "3",
             "rarity": "Rare",
@@ -6138,7 +6170,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "If one or more +1/+1 counters would be placed on Jemmara, Reality Steward, you may put that many +1/+1 counters on each other creature you control instead.",
+            "text": "If one or more +1/+1 counters would be put on Jemmara, Reality Steward, you may put that many +1/+1 counters on each other creature you control instead.",
             "toughness": "2",
             "type": "Legendary Creature \u2014 Elf Druid",
             "types": [
@@ -6190,7 +6222,7 @@
             "manaCost": "{U}{B}",
             "name": "Mindsnatcher",
             "number": "217",
-            "originalText": "Flying\nIf a card would be put into an opponent's graveyard from his or her library, exile that card instead.\nAt the beginning of each end step, if a card was exiled with Mindsnatcher this turn, draw a card.",
+            "originalText": "Flying\nIf a card would be put into an opponent's graveyard from their library, exile that card instead.\nAt the beginning of each end step, if a card was exiled with Mindsnatcher this turn, draw a card.",
             "originalType": "Creature \u2014 Elemental Bird",
             "power": "2",
             "rarity": "Uncommon",
@@ -6198,7 +6230,7 @@
                 "Elemental",
                 "Bird"
             ],
-            "text": "Flying\nIf a card would be put into an opponent's graveyard from his or her library, exile that card instead.\nAt the beginning of each end step, if a card was exiled with Mindsnatcher this turn, draw a card.",
+            "text": "Flying\nIf a card would be put into an opponent's graveyard from their library, exile that card instead.\nAt the beginning of each end step, if a card was exiled with Mindsnatcher this turn, draw a card.",
             "toughness": "2",
             "type": "Creature \u2014 Elemental Bird",
             "types": [
@@ -6252,7 +6284,7 @@
             "name": "Ral Zarek, Dream Artist",
             "number": "219",
             "originalText": "You may activate an additional loyalty ability of Ral Zarek, Dream Artist on each of your turns.\n+1: Look at the top two cards of your library. Exile one of them. You may play it this turn. Put the other on the top of your library.\n-1: Create a 3/1 blue and red Weird creature token with haste. Exile it at the beginning of your next upkeep.\n-9: You get an emblem with \"Whenever you cast a spell, this emblem deals 2 damage to target creature or player and you draw a card.\"",
-            "originalType": "Planeswalker \u2014 Ral",
+            "originalType": "Legendary Planeswalker \u2014 Ral",
             "rarity": "Mythic Rare",
             "subtypes": [
                 "Ral"
@@ -6260,7 +6292,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "You may activate an additional loyalty ability of Ral Zarek, Dream Artist on each of your turns.\n+1: Look at the top two cards of your library. Exile one of them. You may play it this turn. Put the other on top of your library.\n-1: Create a 3/1 blue and red Weird creature token with haste. Exile it at the beginning of your next upkeep.\n-9: You get an emblem with \"Whenever you cast a spell, this emblem deals 2 damage to target creature or player and you draw a card.\"",
+            "text": "You may activate an additional loyalty ability of Ral Zarek, Dream Artist on each of your turns.\n+1: Look at the top two cards of your library. Exile one of them. You may play it this turn. Put the other on top of your library.\n-1: Create a 3/1 blue and red Weird creature token with haste. Exile it at the beginning of your next upkeep.\n-9: You get an emblem with \"Whenever you cast a spell, this emblem deals 2 damage to any target and you draw a card.\"",
             "type": "Legendary Planeswalker \u2014 Ral",
             "types": [
                 "Planeswalker"
@@ -6312,7 +6344,7 @@
             "manaCost": "{W}{B}",
             "name": "Reev, Equinox Prophet",
             "number": "221",
-            "originalText": "If an opponent would draw a card, that player exiles the top card of his or her library instead.\nEach player may play cards he or she owns exiled with Reev, Equinox Prophet.",
+            "originalText": "If an opponent would draw a card, that player exiles the top card of their library instead.\nEach player may play cards they own exiled with Reev, Equinox Prophet.",
             "originalType": "Legendary Creature \u2014 Human Cleric",
             "power": "2",
             "rarity": "Mythic Rare",
@@ -6337,7 +6369,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "If an opponent would draw a card, that player exiles the top card of his or her library instead.\nEach player may play cards he or she owns exiled with Reev, Equinox Prophet.",
+            "text": "If an opponent would draw a card, that player exiles the top card of their library instead.\nEach player may play cards they own exiled with Reev, Equinox Prophet.",
             "toughness": "2",
             "type": "Legendary Creature \u2014 Human Cleric",
             "types": [
@@ -6359,14 +6391,14 @@
             "manaCost": "{1}{B}{G}",
             "name": "Scrounging Amalgam",
             "number": "222",
-            "originalText": "Deathtouch\nAt the beginning of each end step, if a non-Ooze creature has died this turn, create a token thats a copy of Scrounging Amalgam.",
+            "originalText": "Deathtouch\nAt the beginning of each end step, if a non-Ooze creature died this turn, create a token that's a copy of Scrounging Amalgam.",
             "originalType": "Creature \u2014 Ooze",
             "power": "1",
             "rarity": "Rare",
             "subtypes": [
                 "Ooze"
             ],
-            "text": "Deathtouch\nAt the beginning of each end step, if a non-Ooze creature died this turn, create a token thats a copy of Scrounging Amalgam.",
+            "text": "Deathtouch\nAt the beginning of each end step, if a non-Ooze creature died this turn, create a token that's a copy of Scrounging Amalgam.",
             "toughness": "1",
             "type": "Creature \u2014 Ooze",
             "types": [
@@ -6515,10 +6547,10 @@
             "manaCost": "{5}",
             "name": "Dreameater Engine",
             "number": "228",
-            "originalText": "At the beginning of your upkeep, put a charge counter on Dreameater Engine.\n{3}, {T}: Target player puts the top X cards of his or her library into his or her graveyard and you gain X life, where X is the number of charge counters on Dreameater Engine.",
+            "originalText": "At the beginning of your upkeep, put a charge counter on Dreameater Engine.\n{3}, {T}: Target player puts the top X cards of their library into their graveyard and you gain X life, where X is the number of charge counters on Dreameater Engine.",
             "originalType": "Artifact",
             "rarity": "Rare",
-            "text": "At the beginning of your upkeep, put a charge counter on Dreameater Engine.\n{3}, {T}: Target player puts the top X cards of his or her library into his or her graveyard and you gain X life, where X is the number of charge counters on Dreameater Engine.",
+            "text": "At the beginning of your upkeep, put a charge counter on Dreameater Engine.\n{3}, {T}: Target player puts the top X cards of their library into their graveyard and you gain X life, where X is the number of charge counters on Dreameater Engine.",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -6532,7 +6564,7 @@
             "layout": "normal",
             "name": "Dreamheart Mox",
             "number": "229",
-            "originalText": "{T}: Add one mana of any color to your mana pool.\nPremonition 3\u2014{0} (Rather than cast this card from your hand, you may pay {0} and put this card into your library face up just beneath the top three cards. As it reaches the top, cast it without paying its mana cost.)",
+            "originalText": "{T}: Add one mana of any color.\nPremonition 3\u2014{0} (Rather than cast this card from your hand, you may pay {0} and put this card into your library face up just beneath the top three cards. As it reaches the top, cast it without paying its mana cost.)",
             "originalType": "Artifact",
             "rarity": "Mythic Rare",
             "rulings": [
@@ -6553,7 +6585,7 @@
                     "text": "When you look at or reveal cards in a library, those cards are still in that library. For example, if the 2nd card in your library is face up and you scry 1, you only cast the face-up card if you put the card you're scrying on the bottom."
                 }
             ],
-            "text": "{T}: Add one mana of any color to your mana pool.\nPremonition 3\u2014{0} (Rather than cast this card from your hand, you may pay {0} and put this card into your library face up just beneath the top three cards. As it reaches the top, cast it without paying its mana cost.)",
+            "text": "{T}: Add one mana of any color.\nPremonition 3\u2014{0} (Rather than cast this card from your hand, you may pay {0} and put this card into your library face up just beneath the top three cards. As it reaches the top, cast it without paying its mana cost.)",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -6681,10 +6713,10 @@
             "manaCost": "{3}",
             "name": "Memory Conduit",
             "number": "235",
-            "originalText": "{T}: Add {C} to your mana pool.\n{T}: Target player puts the top card of his or her library into his or her graveyard.",
+            "originalText": "{T}: Add {C}.\n{T}: Target player puts the top card of their library into their graveyard.",
             "originalType": "Artifact",
             "rarity": "Common",
-            "text": "{T}: Add {C} to your mana pool.\n{T}: Target player puts the top card of his or her library into his or her graveyard.",
+            "text": "{T}: Add {C}.\n{T}: Target player puts the top card of their library into their graveyard.",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -6742,10 +6774,10 @@
             "layout": "normal",
             "name": "Dream Frontier",
             "number": "238",
-            "originalText": "{T}: Add {C} to your mana pool.\n{T}, Tap an untapped creature you control: Add one mana of any color to your mana pool.",
+            "originalText": "{T}: Add {C}.\n{T}, Tap an untapped creature you control: Add one mana of any color.",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "{T}: Add {C} to your mana pool.\n{T}, Tap an untapped creature you control: Add one mana of any color to your mana pool.",
+            "text": "{T}: Add {C}.\n{T}, Tap an untapped creature you control: Add one mana of any color.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6759,10 +6791,10 @@
             "layout": "normal",
             "name": "Dream Portal",
             "number": "239",
-            "originalText": "{T}: Add {C} to your mana pool.\n{4}, {T}, Sacrifice Dream Portal: Draw a card.",
+            "originalText": "{T}: Add {C}.\n{4}, {T}, Sacrifice Dream Portal: Draw a card.",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "{T}: Add {C} to your mana pool.\n{4}, {T}, Sacrifice Dream Portal: Draw a card.",
+            "text": "{T}: Add {C}.\n{4}, {T}, Sacrifice Dream Portal: Draw a card.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6779,10 +6811,10 @@
             "layout": "normal",
             "name": "Slumbering Altar",
             "number": "240",
-            "originalText": "Slumbering Altar enters the battlefield tapped.\nWhen Slumbering Altar enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {W} or {B} to your mana pool.",
+            "originalText": "Slumbering Altar enters the battlefield tapped.\nWhen Slumbering Altar enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {W} or {B}.",
             "originalType": "Land",
             "rarity": "Common",
-            "text": "Slumbering Altar enters the battlefield tapped.\nWhen Slumbering Altar enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {W} or {B} to your mana pool.",
+            "text": "Slumbering Altar enters the battlefield tapped.\nWhen Slumbering Altar enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {W} or {B}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6799,10 +6831,10 @@
             "layout": "normal",
             "name": "Slumbering Garden",
             "number": "241",
-            "originalText": "Slumbering Garden enters the battlefield tapped.\nWhen Slumbering Garden enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {G} or {U} to your mana pool.",
+            "originalText": "Slumbering Garden enters the battlefield tapped.\nWhen Slumbering Garden enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {G} or {U}.",
             "originalType": "Land",
             "rarity": "Common",
-            "text": "Slumbering Garden enters the battlefield tapped.\nWhen Slumbering Garden enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {G} or {U} to your mana pool.",
+            "text": "Slumbering Garden enters the battlefield tapped.\nWhen Slumbering Garden enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {G} or {U}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6819,10 +6851,10 @@
             "layout": "normal",
             "name": "Slumbering Prairie",
             "number": "242",
-            "originalText": "Slumbering Prairie enters the battlefield tapped.\nWhen Slumbering Prairie enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {R} or {W} to your mana pool.",
+            "originalText": "Slumbering Prairie enters the battlefield tapped.\nWhen Slumbering Prairie enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {R} or {W}.",
             "originalType": "Land",
             "rarity": "Common",
-            "text": "Slumbering Prairie enters the battlefield tapped.\nWhen Slumbering Prairie enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {R} or {W} to your mana pool.",
+            "text": "Slumbering Prairie enters the battlefield tapped.\nWhen Slumbering Prairie enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {R} or {W}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6839,10 +6871,10 @@
             "layout": "normal",
             "name": "Slumbering Spires",
             "number": "243",
-            "originalText": "Slumbering Spires enters the battlefield tapped.\nWhen Slumbering Spires enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {U} or {R} to your mana pool.",
+            "originalText": "Slumbering Spires enters the battlefield tapped.\nWhen Slumbering Spires enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {U} or {R}.",
             "originalType": "Land",
             "rarity": "Common",
-            "text": "Slumbering Spires enters the battlefield tapped.\nWhen Slumbering Spires enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {U} or {R} to your mana pool.",
+            "text": "Slumbering Spires enters the battlefield tapped.\nWhen Slumbering Spires enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {U} or {R}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6859,10 +6891,10 @@
             "layout": "normal",
             "name": "Slumbering Vault",
             "number": "244",
-            "originalText": "Slumbering Vault enters the battlefield tapped.\nWhen Slumbering Vault enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {B} or {G} to your mana pool.",
+            "originalText": "Slumbering Vault enters the battlefield tapped.\nWhen Slumbering Vault enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {B} or {G}.",
             "originalType": "Land",
             "rarity": "Common",
-            "text": "Slumbering Vault enters the battlefield tapped.\nWhen Slumbering Vault enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {B} or {G} to your mana pool.",
+            "text": "Slumbering Vault enters the battlefield tapped.\nWhen Slumbering Vault enters the battlefield, you may put the top card of your library into your graveyard.\n{T}: Add {B} or {G}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6877,10 +6909,10 @@
             "layout": "normal",
             "name": "Twilight Depths",
             "number": "245",
-            "originalText": "When Twilight Depths enters the battlefield, each opponent loses 1 life.\n{T}: Add {C} to your mana pool.",
+            "originalText": "When Twilight Depths enters the battlefield, each opponent loses 1 life.\n{T}: Add {C}.",
             "originalType": "Land",
             "rarity": "Common",
-            "text": "When Twilight Depths enters the battlefield, each opponent loses 1 life.\n{T}: Add {C} to your mana pool.",
+            "text": "When Twilight Depths enters the battlefield, each opponent loses 1 life.\n{T}: Add {C}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6897,10 +6929,10 @@
             "layout": "normal",
             "name": "Twisted Expanse",
             "number": "246",
-            "originalText": "Twisted Expanse enters the battlefield tapped.\nWhen Twisted Expanse enters the battlefield you may tap or untap target creature.\n{T}: Add {W} or {U} to your mana pool",
+            "originalText": "Twisted Expanse enters the battlefield tapped.\nWhen Twisted Expanse enters the battlefield, you may tap or untap target creature.\n{T}: Add {W} or {U}.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Twisted Expanse enters the battlefield tapped.\nWhen Twisted Expanse enters the battlefield, you may tap or untap target creature.\n{T}: Add {W} or {U} to your mana pool",
+            "text": "Twisted Expanse enters the battlefield tapped.\nWhen Twisted Expanse enters the battlefield, you may tap or untap target creature.\n{T}: Add {W} or {U}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6917,10 +6949,10 @@
             "layout": "normal",
             "name": "Twisted Peaks",
             "number": "247",
-            "originalText": "Twisted Peaks enters the battlefield tapped.\nWhen Twisted Peaks enters the battlefield you may tap or untap target creature.\n{T}: Add {R} or {G} to your mana pool",
+            "originalText": "Twisted Peaks enters the battlefield tapped.\nWhen Twisted Peaks enters the battlefield, you may tap or untap target creature.\n{T}: Add {R} or {G}.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Twisted Peaks enters the battlefield tapped.\nWhen Twisted Peaks enters the battlefield, you may tap or untap target creature.\n{T}: Add {R} or {G} to your mana pool",
+            "text": "Twisted Peaks enters the battlefield tapped.\nWhen Twisted Peaks enters the battlefield, you may tap or untap target creature.\n{T}: Add {R} or {G}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6937,10 +6969,10 @@
             "layout": "normal",
             "name": "Twisted Ruins",
             "number": "248",
-            "originalText": "Twisted Ruins enters the battlefield tapped.\nWhen Twisted Ruins enters the battlefield you may tap or untap target creature.\n{T}: Add {B} or {R} to your mana pool",
+            "originalText": "Twisted Ruins enters the battlefield tapped.\nWhen Twisted Ruins enters the battlefield, you may tap or untap target creature.\n{T}: Add {B} or {R}.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Twisted Ruins enters the battlefield tapped.\nWhen Twisted Ruins enters the battlefield, you may tap or untap target creature.\n{T}: Add {B} or {R} to your mana pool",
+            "text": "Twisted Ruins enters the battlefield tapped.\nWhen Twisted Ruins enters the battlefield, you may tap or untap target creature.\n{T}: Add {B} or {R}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6957,10 +6989,10 @@
             "layout": "normal",
             "name": "Twisted Tundra",
             "number": "249",
-            "originalText": "Twisted Tundra enters the battlefield tapped.\nWhen Twisted Tundra enters the battlefield you may tap or untap target creature.\n{T}: Add {U} or {B} to your mana pool",
+            "originalText": "Twisted Tundra enters the battlefield tapped.\nWhen Twisted Tundra enters the battlefield, you may tap or untap target creature.\n{T}: Add {U} or {B}.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Twisted Tundra enters the battlefield tapped.\nWhen Twisted Tundra enters the battlefield, you may tap or untap target creature.\n{T}: Add {U} or {B} to your mana pool",
+            "text": "Twisted Tundra enters the battlefield tapped.\nWhen Twisted Tundra enters the battlefield, you may tap or untap target creature.\n{T}: Add {U} or {B}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6977,10 +7009,10 @@
             "layout": "normal",
             "name": "Twisted Valley",
             "number": "250",
-            "originalText": "Twisted Valley enters the battlefield tapped.\nWhen Twisted Valley enters the battlefield you may tap or untap target creature.\n{T}: Add {G} or {W} to your mana pool",
+            "originalText": "Twisted Valley enters the battlefield tapped.\nWhen Twisted Valley enters the battlefield, you may tap or untap target creature.\n{T}: Add {G} or {W}.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Twisted Valley enters the battlefield tapped.\nWhen Twisted Valley enters the battlefield, you may tap or untap target creature.\n{T}: Add {G} or {W} to your mana pool",
+            "text": "Twisted Valley enters the battlefield tapped.\nWhen Twisted Valley enters the battlefield, you may tap or untap target creature.\n{T}: Add {G} or {W}.",
             "type": "Land",
             "types": [
                 "Land"
