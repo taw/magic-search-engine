@@ -65,6 +65,12 @@
             "originalText": "Enchant creature\nEnchanted creature can't attack or block, and its activated abilities can't be activated.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2016-06-08",
+                    "text": "Activated abilities contain a colon. They're generally written \"[Cost]: [Effect].\" Some keywords are activated abilities and will have colons in their reminder text."
+                }
+            ],
             "subtypes": [
                 "Aura"
             ],
@@ -485,7 +491,7 @@
             "manaCost": "{1}{W}",
             "name": "High Noon",
             "number": "18",
-            "originalText": "No more than one creature may attack each turn.\nNo more than one creature may block each turn.\nWhen an attacking or blocking creature dies, sacrifice High Noon.",
+            "originalText": "No more than one creature can attack each combat.\nNo more than one creature can block each combat.\nWhen an attacking or blocking creature dies, sacrifice High Noon.",
             "originalType": "Enchantment",
             "rarity": "Rare",
             "text": "No more than one creature can attack each combat.\nNo more than one creature can block each combat.\nWhen an attacking or blocking creature dies, sacrifice High Noon.",
@@ -755,7 +761,7 @@
             "manaCost": "{2}{W}",
             "name": "Rallyridge Quartermaster",
             "number": "28",
-            "originalText": "Flash (You may cast this spell any time you could cast an instant.)\nWhen Rallyridge Quartermaster enters the battlefield, you exile target Equipment or Aura you control, then return it to the battlefield attached to target creature.",
+            "originalText": "Flash (You may cast this spell any time you could cast an instant.)\nWhen Rallyridge Quartermaster enters the battlefield, exile target Equipment or Aura you control, then return it to the battlefield attached to target creature.",
             "originalType": "Creature \u2014 Human Artificer",
             "power": "3",
             "rarity": "Rare",
@@ -1654,6 +1660,16 @@
             "originalText": "Counter target spell. Return target permanent to its owner's hand.",
             "originalType": "Instant",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2011-09-22",
+                    "text": "Lost in the Mist targets both the spell and the permanent. You can only cast it if you can choose legal targets for both parts."
+                },
+                {
+                    "date": "2011-09-22",
+                    "text": "If one of Lost in the Mist's targets is illegal by the time it resolves, Lost in the Mist will still affect the remaining legal target. If both targets are illegal at this time, Lost in the Mist won't resolve."
+                }
+            ],
             "text": "Counter target spell. Return target permanent to its owner's hand.",
             "type": "Instant",
             "types": [
@@ -2481,7 +2497,7 @@
             "manaCost": "{1}{B}",
             "name": "Hang",
             "number": "91",
-            "originalText": "Destroy target creature that's two or more creature types.",
+            "originalText": "Destroy target creature with two or more creature types.",
             "originalType": "Instant",
             "rarity": "Uncommon",
             "text": "Destroy target creature with two or more creature types.",
@@ -3369,6 +3385,16 @@
             "originalText": "Search your library for a card, put that card into your hand, discard a card at random, then shuffle your library.",
             "originalType": "Sorcery",
             "rarity": "Mythic Rare",
+            "rulings": [
+                {
+                    "date": "2016-06-08",
+                    "text": "You might end up discarding the card you searched for."
+                },
+                {
+                    "date": "2016-06-08",
+                    "text": "You put the card into your hand and discard a card at random all while Gamble is resolving. Nothing can happen between the two, and no player may choose to take actions."
+                }
+            ],
             "text": "Search your library for a card, put that card into your hand, discard a card at random, then shuffle your library.",
             "type": "Sorcery",
             "types": [
@@ -3550,6 +3576,20 @@
             "originalType": "Creature \u2014 Dragon",
             "power": "4",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2017-11-17",
+                    "text": "The artifact card you find is exiled face up. All players can see what it is."
+                },
+                {
+                    "date": "2017-11-17",
+                    "text": "Hoarding Dragon's two abilities are linked. The second ability refers only to the card exiled by that Hoarding Dragon's first ability. In other words, each Dragon has its own hoard."
+                },
+                {
+                    "date": "2017-11-17",
+                    "text": "If Hoarding Dragon dies before its first ability resolves, its second ability will trigger and do nothing. Then its first ability will resolve. If you choose to exile an artifact card from your library, it will be exiled indefinitely."
+                }
+            ],
             "subtypes": [
                 "Dragon"
             ],
@@ -3647,7 +3687,7 @@
             "manaCost": "{1}{R}",
             "name": "Lightning Reload",
             "number": "134",
-            "originalText": "Choose one\u2014\n\u2022 Exile target Equipment you control, then return it to the battlefield attached to target creature you control.\n\u2022 Discard a card. If you do, draw two cards.",
+            "originalText": "Choose one \u2014\n\u2022 Exile target Equipment you control, then return it to the battlefield attached to target creature you control.\n\u2022 Discard a card. If you do, draw two cards.",
             "originalType": "Instant",
             "rarity": "Uncommon",
             "text": "Choose one \u2014\n\u2022 Exile target Equipment you control, then return it to the battlefield attached to target creature you control.\n\u2022 Discard a card. If you do, draw two cards.",
@@ -4096,6 +4136,16 @@
             "originalText": "Gain control of target creature with power 4 or less until end of turn. Untap that creature. It gains haste until end of turn.",
             "originalType": "Sorcery",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2017-02-09",
+                    "text": "Wrangle can target any creature with power 4 or less, even one that you already control or that is already untapped."
+                },
+                {
+                    "date": "2017-02-09",
+                    "text": "If the target creature's power becomes 5 or greater as you gain control of it (perhaps because an enchantment gives creatures you control +1/+1), Wrangle will continue to resolve as normal. The creature will still be untapped and gain haste until end of turn, and you'll still control it until end of turn."
+                }
+            ],
             "text": "Gain control of target creature with power 4 or less until end of turn. Untap that creature. It gains haste until end of turn.",
             "type": "Sorcery",
             "types": [
@@ -4203,6 +4253,12 @@
             "originalText": "Search your library for up to two basic land cards, reveal those cards, and put one onto the battlefield tapped and the other into your hand. Then shuffle your library.",
             "originalType": "Sorcery",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2010-08-15",
+                    "text": "If you choose to find only one basic land card, you put it onto the battlefield tapped."
+                }
+            ],
             "text": "Search your library for up to two basic land cards, reveal those cards, and put one onto the battlefield tapped and the other into your hand. Then shuffle your library.",
             "type": "Sorcery",
             "types": [
@@ -4223,7 +4279,7 @@
             "manaCost": "{5}{G}{G}",
             "name": "Cyclone Boar",
             "number": "156",
-            "originalText": "Trample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)\nWhenever Cyclone Boar attacks, it deals 3 damage to each creature with flying defending player controls.",
+            "originalText": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\nWhenever Cyclone Boar attacks, it deals 3 damage to each creature with flying defending player controls.",
             "originalType": "Creature \u2014 Elemental Boar",
             "power": "6",
             "rarity": "Uncommon",
@@ -4231,7 +4287,7 @@
                 "Elemental",
                 "Boar"
             ],
-            "text": "Trample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)\nWhenever Cyclone Boar attacks, it deals 3 damage to each creature with flying defending player controls.",
+            "text": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\nWhenever Cyclone Boar attacks, it deals 3 damage to each creature with flying defending player controls.",
             "toughness": "6",
             "type": "Creature \u2014 Elemental Boar",
             "types": [
@@ -4479,6 +4535,16 @@
             "originalText": "Target creature gets +2/+2 until end of turn. If it's paired with a creature, that creature also gets +2/+2 until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2012-05-01",
+                    "text": "Joint Assault targets only one creature. If that creature is an illegal target when Joint Assault tries to resolve, it won't resolve and none of its effects will happen. No creature will get +2/+2."
+                },
+                {
+                    "date": "2012-05-01",
+                    "text": "Joint Assault checks whether the target creature is paired only when it resolves. If it becomes unpaired later in the turn, neither creature will lose the bonus. Similarly, if it becomes paired later in the turn, the creature it's paired with won't gain the bonus."
+                }
+            ],
             "text": "Target creature gets +2/+2 until end of turn. If it's paired with a creature, that creature also gets +2/+2 until end of turn.",
             "type": "Instant",
             "types": [
@@ -4498,7 +4564,7 @@
             "manaCost": "{3}{G}",
             "name": "Leonin Huntress",
             "number": "166",
-            "originalText": "Warband (Whenever this creature attacks, you may pair it with another unpaired attacking creature you control until end of turn.)\nWhenever Leonin Huntress becomes paired with a creature, each of those creatures get +2/+2 until end of turn.",
+            "originalText": "Warband (Whenever this creature attacks, you may pair it with another unpaired attacking creature you control until end of turn.)\nWhenever Leonin Huntress becomes paired with a creature, each of those creatures gets +2/+2 until end of turn.",
             "originalType": "Creature \u2014 Cat Scout",
             "power": "2",
             "rarity": "Uncommon",
@@ -4667,14 +4733,14 @@
             "manaCost": "{6}{G}{G}",
             "name": "Mountainclaw Bear",
             "number": "172",
-            "originalText": "Trample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)\nWhenever Mountainclaw Bear attacks, destroy target artifact, enchantment, or land.",
+            "originalText": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\nWhenever Mountainclaw Bear attacks, destroy target artifact, enchantment, or land.",
             "originalType": "Creature \u2014 Bear",
             "power": "8",
             "rarity": "Rare",
             "subtypes": [
                 "Bear"
             ],
-            "text": "Trample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)\nWhenever Mountainclaw Bear attacks, destroy target artifact, enchantment, or land.",
+            "text": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\nWhenever Mountainclaw Bear attacks, destroy target artifact, enchantment, or land.",
             "toughness": "8",
             "type": "Creature \u2014 Bear",
             "types": [
@@ -5938,7 +6004,7 @@
             "manaCost": "{4}",
             "name": "Mechanical Bull",
             "number": "218",
-            "originalText": "Mechanical Bull attacks each turn if able.\n{G}: Mechanical Bull gains trample until end of turn. (It can deal excess combat damage to defending player or planeswalker while attacking.)",
+            "originalText": "Mechanical Bull attacks each combat if able.\n{G}: Mechanical Bull gains trample until end of turn. (It can deal excess combat damage to defending player or planeswalker while attacking.)",
             "originalType": "Artifact Creature \u2014 Ox",
             "power": "4",
             "rarity": "Common",
@@ -5982,7 +6048,7 @@
             "manaCost": "{5}",
             "name": "Rail Juggernaut",
             "number": "220",
-            "originalText": "Rail Juggernaut can't be blocked by creatures with toughness greater than their power.\nRail Juggernaut attacks each turn if able.",
+            "originalText": "Rail Juggernaut can't be blocked by creatures with toughness greater than their power.\nRail Juggernaut attacks each combat if able.",
             "originalType": "Artifact Creature \u2014 Juggernaut",
             "power": "5",
             "rarity": "Uncommon",
@@ -6310,7 +6376,7 @@
             "manaCost": "{6}",
             "name": "Tinman Grifter",
             "number": "233",
-            "originalText": "Tinman Grifter costs {X} less to cast, where X is your longest straight. (One or more nonland permanents you control with consecutive converted mana costs form a straight.)",
+            "originalText": "This spell costs {X} less to cast, where X is your longest straight. (One or more nonland permanents you control with consecutive converted mana costs form a straight.)",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "4",
             "rarity": "Common",
