@@ -7,12 +7,12 @@
             "manaCost": "{2}",
             "name": "Chaos Orb",
             "number": "1",
-            "reserved": true,
             "rarity": "special",
+            "reserved": true,
             "rulings": [
                 {
                     "date": "2018-06-25",
-                    "text": "I have applied functional errata to this card in order to make it work more reasonably in our games. It is no longer a dexterity card. For the official text and rulings, please look up the card on Gatherer. —Fenhl"
+                    "text": "I have applied functional errata to this card in order to make it work more reasonably in our games. It is no longer a dexterity card. For the official text and rulings, please look up the card on Gatherer. \u2014Fenhl"
                 }
             ],
             "text": "{1}, {T}, Sacrifice Chaos Orb: For each nontoken permanent, flip a coin. Then destroy all permanents whose coin came up tails.",
@@ -38,13 +38,92 @@
             "rulings": [
                 {
                     "date": "2018-06-25",
-                    "text": "I have applied functional errata to this card in order to make it work more reasonably in our games. It is no longer a dexterity card. For the official text and rulings, please look up the card on Gatherer. —Fenhl"
+                    "text": "I have applied functional errata to this card in order to make it work more reasonably in our games. It is no longer a dexterity card. For the official text and rulings, please look up the card on Gatherer. \u2014Fenhl"
                 }
             ],
             "text": "For each creature on the battlefield, flip a coin. Then Falling Star deals 3 damage to each creature whose coin came up tails. Tap all creatures dealt damage by Falling Star.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
+            ]
+        },
+        {
+            "border": "silver",
+            "cmc": 5,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "layout": "normal",
+            "manaCost": "{3}{U}{U}",
+            "name": "Richard Garfield, Ph.D.",
+            "number": "3",
+            "power": "2",
+            "rarity": "special",
+            "rulings": [
+                {
+                    "date": "2018-07-05",
+                    "text": "As part of the Bracket Cube project, I have applied functional errata to this card to make it work in black-border rules. \u2014Fenhl"
+                },
+                {
+                    "date": "2018-07-05",
+                    "text": "When choosing a card name, the card must be legal in the format. In the Bracket Cube format, all cards that were first printed in 2016 or earlier are legal, with the exception of nonstandard cards (planes, phenomena, schemes, vanguards, and conspiracies), ante cards, and uncards other than Richard Garfield, Ph.D."
+                },
+                {
+                    "date": "2018-07-05",
+                    "text": "Casting a spell using Garfield's ability creates a copy effect. The copy effect is applied before any other decisions made during the casting process. It ends once it leaves the battlefield, or moves from the stack to a zone other than the battlefield."
+                },
+                {
+                    "date": "2018-07-05",
+                    "text": "Playing a land using Garfield's ability also creates a copy effect. The card enters the battlefield as a copy of the chosen land card. The choice of which land card, if any, to copy is made as part of playing the land. If no legal choice can be made, the game returns to the moment before the player started to play the land."
+                },
+                {
+                    "date": "2018-07-05",
+                    "text": "A nonland card without a mana cost can be played as a land this way."
+                },
+                {
+                    "date": "2018-07-05",
+                    "text": "You cannot choose the back face of a double-faced or meld card, or the flipped version of a flip card this way."
+                },
+                {
+                    "date": "2018-07-05",
+                    "text": "If you use Garfield's ability on a split card, you must choose a card with a mana cost equal to the combined mana cost of both halves."
+                },
+                {
+                    "date": "2018-07-05",
+                    "text": "If you name a split card using Garfield's ability, the combined mana cost of both halves must be equal to the mana cost of the card you have."
+                },
+                {
+                    "date": "2018-07-05",
+                    "text": "You may cast spells as cards with morph face down by choosing the card name secretly. To secretly choose a card name, write it on a piece of paper and keep it with the face-down card. You can't choose a card name already chosen with Garfield, including one that has been secretly chosen. It must also be the name of a card with a morph ability and the same mana cost as the physical card. Any player who may look at the card may also look at the chosen name. Similarly, if the card is turned face up or revealed (for example because it was countered or died, or you left the game), the chosen name is also revealed."
+                },
+                {
+                    "date": "2018-07-05",
+                    "text": "You can't cast a card as a card with miracle for its miracle cost, because the physical card doesn't have a miracle ability to trigger. If your physical card has miracle, you pay the physical card's miracle cost regardless of as what card you cast it."
+                },
+                {
+                    "date": "2018-07-05",
+                    "text": "If Garfield leaves the battlefield and later returns, the new Garfield has access to all card names again."
+                },
+                {
+                    "date": "2018-07-05",
+                    "text": "Garfield's ability is not Mental Magic. You can name cards that are already on the battlefield, or look up cards using electronic devices. Players are also encouraged to use notes to aid in representing the board state."
+                }
+            ],
+            "subtypes": [
+                "Human",
+                "Artificer"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "You may play each card you play as a copy of another card with the same mana cost. You can't choose the same card twice. (Mana cost includes color.)",
+            "toughness": "2",
+            "type": "Legendary Creature \u2014 Human Artificer",
+            "types": [
+                "Creature"
             ]
         }
     ],
