@@ -181,6 +181,13 @@
             "text": "A text-changing effect applying to its source only changes the text in the text box where it is defined. Other text boxes, such as those added by copy effects, are not modified. Text-changing effects that change the “full text” of an object are exempt from this rule. See rule 612.5."
         },
         {
+            "#": "for Wildcard, define that CMC changes apply in layer 5",
+            "type": "insertText",
+            "rule": "613.1e",
+            "after": "Color-changing effects",
+            "text": " and effects that change an object's converted mana cost"
+        },
+        {
             "#": "for Persona Shift, make “base power/toughness” something that can be referred to by effects rather than just defined",
             "type": "append",
             "rule": "613.3b",
