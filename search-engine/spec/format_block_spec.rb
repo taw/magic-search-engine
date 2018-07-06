@@ -181,6 +181,11 @@ describe "Formats - Block Constructed" do
 
   # Not really blocks
   it "unsets" do
-    assert_block_composition_sequence "unsets", "ug", "uh", "ust"
+    assert_block_composition "unsets", "ug", ["ug"],
+      "Once More with Feeling" => "restricted"
+    assert_block_composition "unsets", "uh", ["ug", "uh"],
+      "Once More with Feeling" => "restricted"
+    assert_block_composition "unsets", "ust", ["ug", "uh", "ust"],
+      "Once More with Feeling" => "restricted"
   end
 end
