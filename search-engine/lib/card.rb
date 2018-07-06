@@ -263,6 +263,10 @@ class Card
       "all colors"
     when 1, 2
       color_indicator.join(" and ")
+    when 3
+      # Nicol Bolas from M19
+      a, b, c = color_indicator
+      "#{a}, #{b}, and #{c}"
     when 0
       # devoid and Ghostfire - for some reason they use rules text, not color indicator
       # "colorless"
