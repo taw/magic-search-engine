@@ -37,6 +37,8 @@ class PatchExcludeFromBoosters < Patch
       number > 269
     when "ori"
       number > 272
+    when "m19"
+      number > 280
     else
       false
     end
