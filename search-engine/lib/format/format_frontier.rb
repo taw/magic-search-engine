@@ -4,6 +4,17 @@ class FormatFrontier < Format
   end
 
   def build_included_sets
-    Set["m15", "ktk", "frf", "dtk", "ori", "bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh", "w17", "hou", "xln", "rix", "dom"]
+    Set[
+      "m15",
+      "ktk", "frf", "dtk",
+      "ori",
+      "bfz", "ogw",
+      "soi", "w16", "emn",
+      "kld", "aer",
+      "akh", "w17", "hou",
+      "xln", "rix",
+      "dom",
+      "m19",
+    ]
   end
 end
