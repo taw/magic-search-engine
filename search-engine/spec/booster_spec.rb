@@ -37,6 +37,8 @@ describe "is:booster" do
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=269"
       when "ori"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=272"
+      when "m19"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=280"
       else
         if set.has_boosters?
           assert_search_equal "e:#{set_code} is:booster", "e:#{set_code}"
