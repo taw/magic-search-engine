@@ -21,6 +21,8 @@ class PatchAssignPrioritiesToSets < Patch
     # whichever sets got updated since last full mtgjson update
     when "dom", "bbd", "ss1", "gs1", "cm2"
       1
+    when "m19"
+      2
     else
       # Errata sets are just a way to apply Oracle erratas without creating any cards
       if set["type"] == "errata"

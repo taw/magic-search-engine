@@ -2,8 +2,8 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(18507)
-    db.number_of_printings.should eq(36553)
+    db.number_of_cards.should eq(18689)
+    db.number_of_printings.should eq(36868)
   end
 
   it "block_codes" do
@@ -127,12 +127,14 @@ describe "Full Database Test" do
       "Dauntless Cathar",
       "Dual Shot",
       "Engulf the Shore",
+      "Explosive Apparatus",
       "Forest",
       "Forsaken Sanctuary",
       "Foul Orchard",
       "Grotesque Mutation",
       "Highland Lake",
       "Island",
+      "Macabre Waltz",
       "Mountain",
       "Plains",
       "Pyre Hound",
@@ -142,6 +144,7 @@ describe "Full Database Test" do
       "Sleep Paralysis",
       "Stone Quarry",
       "Swamp",
+      "Thornhide Wolves",
       "Tormenting Voice",
       "Triskaidekaphobia",
       "Uncaged Fury",
