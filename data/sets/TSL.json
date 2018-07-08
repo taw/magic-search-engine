@@ -402,7 +402,7 @@
             "manaCost": "{2}{W}",
             "name": "Consulate Faithful",
             "number": "12",
-            "originalText": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, put a +1/+1 counter on Consulate Faithful.",
+            "originalText": "It is against the law for an opponent to cast no spells during their turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, put a +1/+1 counter on Consulate Faithful.",
             "originalType": "Creature \u2014 Human Soldier",
             "power": "1",
             "rarity": "Common",
@@ -410,7 +410,7 @@
                 "Human",
                 "Soldier"
             ],
-            "text": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, put a +1/+1 counter on Consulate Faithful.",
+            "text": "It is against the law for an opponent to cast no spells during their turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, put a +1/+1 counter on Consulate Faithful.",
             "toughness": "4",
             "type": "Creature \u2014 Human Soldier",
             "types": [
@@ -1730,7 +1730,7 @@
             "manaCost": "{3}{U}{U}",
             "name": "Jace, Oath Keeper",
             "number": "53",
-            "originalText": "+2: Until your next turn, whenever a creature attacks you or a planeswalker you control, you may draw a card, then discard a card.\n-2: The next time you cast an instant or sorcery spell from your hand this turn, put that card into your hand instead of your graveyard as it resolves.\n-10: Search your library, hand, and graveyard for up to three instant and/or sorcery cards and exile them. For as long as they remain exiled, you may cast them without paying their mana costs.\nShuffle your library.",
+            "originalText": "+2: Until your next turn, whenever a creature attacks you or a planeswalker you control, you may draw a card, then discard a card.\n-2: The next time you cast an instant or sorcery spell from your hand this turn, put that card into your hand instead of your graveyard as it resolves.\n-10: Search your library, hand, and graveyard for up to three instant and/or sorcery cards and exile them. For as long as they remain exiled, you may cast them without paying their mana costs. Shuffle your library.",
             "originalType": "Legendary Planeswalker \u2014 Jace",
             "rarity": "Mythic Rare",
             "subtypes": [
@@ -1739,7 +1739,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "+2: Until your next turn, whenever a creature attacks you or a planeswalker you control, you may draw a card, then discard a card.\n-2: The next time you cast an instant or sorcery spell from your hand this turn, put that card into your hand instead of your graveyard as it resolves.\n-10: Search your library, hand, and graveyard for up to three instant and/or sorcery cards and exile them. For as long as they remain exiled, you may cast them without paying their mana costs.\nShuffle your library.",
+            "text": "+2: Until your next turn, whenever a creature attacks you or a planeswalker you control, you may draw a card, then discard a card.\n-2: The next time you cast an instant or sorcery spell from your hand this turn, put that card into your hand instead of your graveyard as it resolves.\n-10: Search your library, hand, and graveyard for up to three instant and/or sorcery cards and exile them. For as long as they remain exiled, you may cast them without paying their mana costs. Shuffle your library.",
             "type": "Legendary Planeswalker \u2014 Jace",
             "types": [
                 "Planeswalker"
@@ -1882,7 +1882,7 @@
             "manaCost": "{1}{U}",
             "name": "Mindleak Agent",
             "number": "58",
-            "originalText": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, each opponent puts the top three cards of his or her library into his or her graveyard.",
+            "originalText": "It is against the law for an opponent to cast no spells during their turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, each opponent puts the top three cards of their library into their graveyard.",
             "originalType": "Creature \u2014 Human Wizard",
             "power": "1",
             "rarity": "Common",
@@ -1890,7 +1890,7 @@
                 "Human",
                 "Wizard"
             ],
-            "text": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, each opponent puts the top three cards of his or her library into his or her graveyard.",
+            "text": "It is against the law for an opponent to cast no spells during their turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, each opponent puts the top three cards of their library into their graveyard.",
             "toughness": "3",
             "type": "Creature \u2014 Human Wizard",
             "types": [
@@ -1914,6 +1914,12 @@
             "originalText": "Counter target noncreature spell.",
             "originalType": "Instant",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "A \"creature spell\" is any spell with the type creature, even if it has other types such as artifact or enchantment. Older cards of type summon are also creature spells."
+                }
+            ],
             "text": "Counter target noncreature spell.",
             "type": "Instant",
             "types": [
@@ -1984,7 +1990,7 @@
             "manaCost": "{1}{U}",
             "name": "Plagiarized Results",
             "number": "62",
-            "originalText": "Target player reveals his or her hand. Choose an instant, sorcery, or artifact card from it and copy it. You may cast the copy and may spend mana as though it were mana of any type to cast it. (A copy of an artifact spell becomes a token copy of that artifact as it resolves.)",
+            "originalText": "Target player reveals their hand. Choose an instant, sorcery, or artifact card from it and copy it. You may cast the copy and may spend mana as though it were mana of any type to cast it. (A copy of an artifact spell becomes a token copy of that artifact as it resolves.)",
             "originalType": "Instant",
             "rarity": "Rare",
             "rulings": [
@@ -1993,7 +1999,7 @@
                     "text": "A token entering the battlefield from the stack as a result of this is never \"created\". It does not interact with effects like Anointed Procession or Agent of Individuality."
                 }
             ],
-            "text": "Target player reveals his or her hand. Choose an instant, sorcery, or artifact card from it and copy it. You may cast the copy and may spend mana as though it were mana of any type to cast it. (A copy of an artifact spell becomes a token copy of that artifact as it resolves.)",
+            "text": "Target player reveals their hand. Choose an instant, sorcery, or artifact card from it and copy it. You may cast the copy and may spend mana as though it were mana of any type to cast it. (A copy of an artifact spell becomes a token copy of that artifact as it resolves.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -2034,7 +2040,7 @@
             "manaCost": "{3}{U}",
             "name": "Production Enhancer",
             "number": "64",
-            "originalText": "If an effect would put one or more artifact tokens onto the battlefield under your control, it puts twice that many of those tokens onto the battlefield instead.",
+            "originalText": "If an effect would create one or more artifact tokens under your control, it creates twice that many of those tokens instead.",
             "originalType": "Creature \u2014 Human Artificer",
             "power": "1",
             "rarity": "Rare",
@@ -2042,7 +2048,7 @@
                 "Human",
                 "Artificer"
             ],
-            "text": "If an effect would put one or more artifact tokens onto the battlefield under your control, it puts twice that many of those tokens onto the battlefield instead.",
+            "text": "If an effect would create one or more artifact tokens under your control, it creates twice that many of those tokens instead.",
             "toughness": "4",
             "type": "Creature \u2014 Human Artificer",
             "types": [
@@ -2168,7 +2174,7 @@
             "manaCost": "{3}{U}",
             "name": "Suppressing Agent",
             "number": "69",
-            "originalText": "It is against the law for an opponent to control three or more creatures.\nJustice \u2013 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, draw a card.",
+            "originalText": "It is against the law for an opponent to control three or more creatures.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, draw a card.",
             "originalType": "Creature \u2014 Human Soldier",
             "power": "3",
             "rarity": "Uncommon",
@@ -2176,7 +2182,7 @@
                 "Human",
                 "Soldier"
             ],
-            "text": "It is against the law for an opponent to control three or more creatures.\nJustice \u2013 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, draw a card.",
+            "text": "It is against the law for an opponent to control three or more creatures.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, draw a card.",
             "toughness": "3",
             "type": "Creature \u2014 Human Soldier",
             "types": [
@@ -2361,10 +2367,10 @@
             "manaCost": "{3}{B}",
             "name": "Consulate Conditioning",
             "number": "76",
-            "originalText": "Search target player's library for up to four cards, exile them, then that player shuffles his or her library.\nDraw a card.",
+            "originalText": "Search target player's library for up to four cards, exile them, then that player shuffles their library.\nDraw a card.",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Search target player's library for up to four cards, exile them, then that player shuffles his or her library.\nDraw a card.",
+            "text": "Search target player's library for up to four cards, exile them, then that player shuffles their library.\nDraw a card.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -2406,7 +2412,7 @@
             "manaCost": "{1}{B}",
             "name": "Courtroom Executor",
             "number": "78",
-            "originalText": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, you may reveal the top card of your library and put that card into your hand. If you do, you lose life equal to its converted mana cost.",
+            "originalText": "It is against the law for an opponent to cast no spells during their turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, you may reveal the top card of your library and put that card into your hand. If you do, you lose life equal to its converted mana cost.",
             "originalType": "Creature \u2014 Human Advisor",
             "power": "2",
             "rarity": "Rare",
@@ -2414,7 +2420,7 @@
                 "Human",
                 "Advisor"
             ],
-            "text": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, you may reveal the top card of your library and put that card into your hand. If you do, you lose life equal to its converted mana cost.",
+            "text": "It is against the law for an opponent to cast no spells during their turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, you may reveal the top card of your library and put that card into your hand. If you do, you lose life equal to its converted mana cost.",
             "toughness": "2",
             "type": "Creature \u2014 Human Advisor",
             "types": [
@@ -2536,14 +2542,14 @@
             "manaCost": "{4}{B}{B}",
             "name": "Gilded Taskmaster",
             "number": "83",
-            "originalText": "Flying\nAt the beginning of each player's end step, that player sacrifices all tapped non-Demon creatures he or she controls.",
+            "originalText": "Flying\nAt the beginning of each player's end step, that player sacrifices all tapped non-Demon creatures they control.",
             "originalType": "Creature \u2014 Demon",
             "power": "5",
             "rarity": "Rare",
             "subtypes": [
                 "Demon"
             ],
-            "text": "Flying\nAt the beginning of each player's end step, that player sacrifices all tapped non-Demon creatures he or she controls.",
+            "text": "Flying\nAt the beginning of each player's end step, that player sacrifices all tapped non-Demon creatures they control.",
             "toughness": "4",
             "type": "Creature \u2014 Demon",
             "types": [
@@ -2563,7 +2569,7 @@
             "manaCost": "{3}{B}{B}",
             "name": "Gravedebt Demon",
             "number": "84",
-            "originalText": "Flying\nIf a creature an opponent controls would die, instead that player may pay 3 life. If he or she does, that creature dies. Otherwise, exile that creature.\nYou may cast cards exiled with Gravedebt Demon and you may spend mana as though it were mana of any type to cast them.",
+            "originalText": "Flying\nIf a creature an opponent controls would die, instead that player may pay 3 life. If they do, put it into its owner's graveyard. Otherwise, exile that creature.\nYou may cast cards exiled with Gravedebt Demon and you may spend mana as though it were mana of any type to cast them.",
             "originalType": "Creature \u2014 Demon",
             "power": "4",
             "rarity": "Mythic Rare",
@@ -2576,7 +2582,7 @@
             "subtypes": [
                 "Demon"
             ],
-            "text": "Flying\nIf a creature an opponent controls would die, instead that player may pay 3 life. If he or she does, put it into its owner's graveyard. Otherwise, exile that creature.\nYou may cast cards exiled with Gravedebt Demon and you may spend mana as though it were mana of any type to cast them.",
+            "text": "Flying\nIf a creature an opponent controls would die, instead that player may pay 3 life. If they do, put it into its owner's graveyard. Otherwise, exile that creature.\nYou may cast cards exiled with Gravedebt Demon and you may spend mana as though it were mana of any type to cast them.",
             "toughness": "5",
             "type": "Creature \u2014 Demon",
             "types": [
@@ -2710,6 +2716,12 @@
             "originalText": "Creatures your opponents control get -1/-1 until end of turn.",
             "originalType": "Instant",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2016-09-20",
+                    "text": "The set of creatures affected by Make Obsolete is determined as the spell resolves. Creatures your opponents begin to control later in the turn and noncreature permanents that become creatures later in the turn won't get -1/-1."
+                }
+            ],
             "text": "Creatures your opponents control get -1/-1 until end of turn.",
             "type": "Instant",
             "types": [
@@ -2729,7 +2741,7 @@
             "manaCost": "{3}{B}{B}",
             "name": "Materialism",
             "number": "89",
-            "originalText": "At the beginning of your upkeep, if the number of artifacts and creatures you control plus the number of artifact cards and creature cards in your graveyard is thirty or more, you win the game.",
+            "originalText": "At the beginning of your upkeep, if the number of artifacts you control plus the number of creatures you control plus the number of artifact cards in your graveyard plus the number of creature cards in your graveyard is thirty or more, you win the game.",
             "originalType": "Enchantment",
             "rarity": "Mythic Rare",
             "rulings": [
@@ -2894,10 +2906,10 @@
             "manaCost": "{B}",
             "name": "Plea Bargain",
             "number": "95",
-            "originalText": "Target opponent reveals all the cards in his or her hand except one. You choose a nonland card revealed this way or the card that wasn't revealed. That player discards that card.",
+            "originalText": "Target opponent reveals all the cards in their hand except one. You choose a nonland card revealed this way or the card that wasn't revealed. That player discards that card.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Target opponent reveals all the cards in his or her hand except one. You choose a nonland card revealed this way or the card that wasn't revealed. That player discards that card.",
+            "text": "Target opponent reveals all the cards in their hand except one. You choose a nonland card revealed this way or the card that wasn't revealed. That player discards that card.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -2979,7 +2991,7 @@
                 "Courtroom Magister"
             ],
             "number": "97b",
-            "originalText": "At the beginning of your upkeep, you draw a card and lose 1 life.",
+            "originalText": "At the beginning of your upkeep, you draw a card and you lose 1 life.",
             "originalType": "Creature \u2014 Human Advisor",
             "power": "4",
             "rarity": "Uncommon",
@@ -2987,7 +2999,7 @@
                 "Human",
                 "Advisor"
             ],
-            "text": "At the beginning of your upkeep, you draw a card and lose 1 life.",
+            "text": "At the beginning of your upkeep, you draw a card and you lose 1 life.",
             "toughness": "6",
             "type": "Creature \u2014 Human Advisor",
             "types": [
@@ -3138,7 +3150,7 @@
             "manaCost": "{2}{B}{B}",
             "name": "Tiran, Judge of the Fifth Court",
             "number": "103",
-            "originalText": "At the beginning of your upkeep, for each creature you don't control, its controller sacrifices it unless he or she pays 1 life. You gain life equal to the amount paid this way.",
+            "originalText": "At the beginning of your upkeep, for each creature you don't control, its controller sacrifices it unless they pay 1 life. You gain life equal to the amount paid this way.",
             "originalType": "Legendary Creature \u2014 Human Advisor",
             "power": "2",
             "rarity": "Rare",
@@ -3149,7 +3161,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "At the beginning of your upkeep, for each creature you don't control, its controller sacrifices it unless he or she pays 1 life. You gain life equal to the amount paid this way.",
+            "text": "At the beginning of your upkeep, for each creature you don't control, its controller sacrifices it unless they pay 1 life. You gain life equal to the amount paid this way.",
             "toughness": "4",
             "type": "Legendary Creature \u2014 Human Advisor",
             "types": [
@@ -3327,10 +3339,10 @@
                 "Naphfire Launcher"
             ],
             "number": "110a",
-            "originalText": "Alchemic Blaze deals 3 damage to target creature or player.\n{4}: Put Alchemic Blaze from your graveyard onto the battlefield transformed. Activate this ability only any time you could cast a sorcery.",
+            "originalText": "Alchemic Blaze deals 3 damage to any target.\n{4}: Put Alchemic Blaze from your graveyard onto the battlefield transformed. Activate this ability only any time you could cast a sorcery.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Alchemic Blaze deals 3 damage to target creature or player.\n{4}: Put Alchemic Blaze from your graveyard onto the battlefield transformed. Activate this ability only any time you could cast a sorcery.",
+            "text": "Alchemic Blaze deals 3 damage to any target.\n{4}: Put Alchemic Blaze from your graveyard onto the battlefield transformed. Activate this ability only any time you could cast a sorcery.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -3350,10 +3362,10 @@
                 "Naphfire Launcher"
             ],
             "number": "110b",
-            "originalText": "{3}, {T}: Naphfire Launcher deals 1 damage to target creature or player.",
+            "originalText": "{3}, {T}: Naphfire Launcher deals 1 damage to any target.",
             "originalType": "Artifact",
             "rarity": "Uncommon",
-            "text": "{3}, {T}: Naphfire Launcher deals 1 damage to target creature or player.",
+            "text": "{3}, {T}: Naphfire Launcher deals 1 damage to any target.",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -3490,10 +3502,10 @@
             "manaCost": "{2}{R}",
             "name": "Chandras Catharsis",
             "number": "114",
-            "originalText": "Exile the top two cards of your library. Until end of turn, you may play cards exiled this way.\nRaid \u2014 If you attacked with a creature this turn, add {R}{R} to your mana pool.",
+            "originalText": "Exile the top two cards of your library. Until end of turn, you may play cards exiled this way.\nRaid \u2014 If you attacked with a creature this turn, add {R}{R}.",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Exile the top two cards of your library. Until end of turn, you may play cards exiled this way.\nRaid \u2014 If you attacked with a creature this turn, add {R}{R} to your mana pool.",
+            "text": "Exile the top two cards of your library. Until end of turn, you may play cards exiled this way.\nRaid \u2014 If you attacked with a creature this turn, add {R}{R}.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -3513,10 +3525,10 @@
             "manaCost": "{1}{R}",
             "name": "Civil Unrest",
             "number": "115",
-            "originalText": "Civil Unrest deals 2 damage to target creature or player. If a creature is dealt damage this way, it can't block this turn.",
+            "originalText": "Civil Unrest deals 2 damage to any target. If a creature is dealt damage this way, it can't block this turn.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Civil Unrest deals 2 damage to target creature or player. If a creature is dealt damage this way, it can't block this turn.",
+            "text": "Civil Unrest deals 2 damage to any target. If a creature is dealt damage this way, it can't block this turn.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -3536,7 +3548,7 @@
             "manaCost": "{2}{R}{R}",
             "name": "Combustion Engineer",
             "number": "116",
-            "originalText": "{R}, {T}, Sacrifice an artifact or creature: Combustion Engineer deals 2 damage to target creature or player.",
+            "originalText": "{R}, {T}, Sacrifice an artifact or creature: Combustion Engineer deals 2 damage to any target.",
             "originalType": "Creature \u2014 Human Artificer",
             "power": "2",
             "rarity": "Uncommon",
@@ -3544,7 +3556,7 @@
                 "Human",
                 "Artificer"
             ],
-            "text": "{R}, {T}, Sacrifice an artifact or creature: Combustion Engineer deals 2 damage to target creature or player.",
+            "text": "{R}, {T}, Sacrifice an artifact or creature: Combustion Engineer deals 2 damage to any target.",
             "toughness": "1",
             "type": "Creature \u2014 Human Artificer",
             "types": [
@@ -3595,10 +3607,10 @@
                 "Groundbreaking Discovery"
             ],
             "number": "117b",
-            "originalText": "You may play cards exiled with Crazy Conspiracy.\nWhenever you play a card exiled with Crazy Conspiracy, Groundbreaking Discovery deals 2 damage to target player.\nAt the beginning of the end step, sacrifice Groundbreaking Discovery.",
+            "originalText": "You may play cards exiled with this permanent.\nWhenever you play a card exiled with this permanent, Groundbreaking Discovery deals 2 damage to target player or planeswalker.\nAt the beginning of the end step, sacrifice Groundbreaking Discovery.",
             "originalType": "Enchantment",
             "rarity": "Rare",
-            "text": "You may play cards exiled with this permanent.\nWhenever you play a card exiled with this permanent, Groundbreaking Discovery deals 2 damage to target player.\nAt the beginning of the end step, sacrifice Groundbreaking Discovery.",
+            "text": "You may play cards exiled with this permanent.\nWhenever you play a card exiled with this permanent, Groundbreaking Discovery deals 2 damage to target player or planeswalker.\nAt the beginning of the end step, sacrifice Groundbreaking Discovery.",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -3736,7 +3748,7 @@
                 "Flamebreaker Giant"
             ],
             "number": "121a",
-            "originalText": "Revolution ({T}, Tap two other untapped creatures you control: Transform all creatures with revolution you control. Revolt only as a sorcery.)\nAt the beginning of your upkeep, discard a card. If you do, draw a\ncard.",
+            "originalText": "Revolution ({T}, Tap two other untapped creatures you control: Transform all creatures with revolution you control. Revolt only as a sorcery.)\nAt the beginning of your upkeep, discard a card. If you do, draw a card.",
             "originalType": "Creature \u2014 Giant Shaman",
             "power": "5",
             "rarity": "Uncommon",
@@ -3783,7 +3795,7 @@
             ]
         },
         {
-            "artist": "sakimi.chan",
+            "artist": "sakimichan",
             "cmc": 3,
             "colorIdentity": [
                 "R"
@@ -4031,14 +4043,14 @@
             "manaCost": "{5}{R}{R}",
             "name": "Outlands Hellkite",
             "number": "129",
-            "originalText": "Flying, trample, haste\nRaid \u2013 When Outlands Hellkite enters the battlefield, if you attacked with a creature this turn, untap all creatures that attacked this turn. After this main phase, there is an additional combat phase followed by an additional main phase.",
+            "originalText": "Flying, trample, haste\nRaid \u2014 When Outlands Hellkite enters the battlefield, if you attacked with a creature this turn, untap all creatures that attacked this turn. After this main phase, there is an additional combat phase followed by an additional main phase.",
             "originalType": "Creature \u2014 Dragon",
             "power": "5",
             "rarity": "Mythic Rare",
             "subtypes": [
                 "Dragon"
             ],
-            "text": "Flying, trample, haste\nRaid \u2013 When Outlands Hellkite enters the battlefield, if you attacked with a creature this turn, untap all creatures that attacked this turn. After this main phase, there is an additional combat phase followed by an additional main phase.",
+            "text": "Flying, trample, haste\nRaid \u2014 When Outlands Hellkite enters the battlefield, if you attacked with a creature this turn, untap all creatures that attacked this turn. After this main phase, there is an additional combat phase followed by an additional main phase.",
             "toughness": "5",
             "type": "Creature \u2014 Dragon",
             "types": [
@@ -4259,6 +4271,24 @@
             "originalText": "Scouring Sands deals 1 damage to each creature your opponents control. Scry 1.",
             "originalType": "Sorcery",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2013-09-15",
+                    "text": "When you scry, you may put all the cards you look at back on top of your library, you may put all of those cards on the bottom of your library, or you may put some of those cards on top and the rest of them on the bottom."
+                },
+                {
+                    "date": "2013-09-15",
+                    "text": "You choose how to order cards returned to your library after scrying no matter where you put them."
+                },
+                {
+                    "date": "2013-09-15",
+                    "text": "You perform the actions stated on a card in sequence. For some spells and abilities, that means you'll scry last. For others, that means you'll scry and then perform other actions."
+                },
+                {
+                    "date": "2013-09-15",
+                    "text": "Scry appears on some spells and abilities with one or more targets. If all of the spell or ability's targets are illegal when it tries to resolve, it won't resolve and none of its effects will happen. You won't scry."
+                }
+            ],
             "text": "Scouring Sands deals 1 damage to each creature your opponents control. Scry 1.",
             "type": "Sorcery",
             "types": [
@@ -4331,7 +4361,7 @@
             "manaCost": "{1}{R}",
             "name": "Siv's Messenger",
             "number": "139",
-            "originalText": "Prowess, haste",
+            "originalText": "Haste, prowess",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "2",
             "rarity": "Uncommon",
@@ -4339,7 +4369,7 @@
                 "Human",
                 "Rogue"
             ],
-            "text": "Prowess, haste",
+            "text": "Haste, prowess",
             "toughness": "1",
             "type": "Creature \u2014 Human Rogue",
             "types": [
@@ -4393,6 +4423,12 @@
             "originalText": "Gain control of target creature until end of turn. Untap that creature. It gets +X/+0 and gains haste until end of turn.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2008-08-01",
+                    "text": "You may target a creature you already control with Unwilling Recruit. If you do, you'll gain control of that creature (which usually won't have any visible effect), untap it, and it'll get +X/+0 until end of turn."
+                }
+            ],
             "text": "Gain control of target creature until end of turn. Untap that creature. It gets +X/+0 and gains haste until end of turn.",
             "type": "Sorcery",
             "types": [
@@ -4777,7 +4813,7 @@
             "manaCost": "{1}{G}",
             "name": "Consulate Colonists",
             "number": "154",
-            "originalText": "Defender\nAs long as you control a creature with a +1/+1 counter on it, Consul Colonists can attack as though it didn't have defender.",
+            "originalText": "Defender\nAs long as you control a creature with a +1/+1 counter on it, Consulate Colonists can attack as though it didn't have defender.",
             "originalType": "Creature \u2014 Human Soldier",
             "power": "3",
             "rarity": "Common",
@@ -4785,7 +4821,7 @@
                 "Human",
                 "Soldier"
             ],
-            "text": "Defender\nAs long as you control a creature with a +1/+1 counter on it, Consul Colonists can attack as though it didn't have defender.",
+            "text": "Defender\nAs long as you control a creature with a +1/+1 counter on it, Consulate Colonists can attack as though it didn't have defender.",
             "toughness": "3",
             "type": "Creature \u2014 Human Soldier",
             "types": [
@@ -4806,14 +4842,14 @@
             "manaCost": "{4}{G}{G}{G}{G}",
             "name": "Daitya Survivor",
             "number": "155",
-            "originalText": "Trample, reach",
+            "originalText": "Reach, trample",
             "originalType": "Creature \u2014 Giant",
             "power": "9",
             "rarity": "Uncommon",
             "subtypes": [
                 "Giant"
             ],
-            "text": "Trample, reach",
+            "text": "Reach, trample",
             "toughness": "9",
             "type": "Creature \u2014 Giant",
             "types": [
@@ -4895,7 +4931,7 @@
             "manaCost": "{2}{G}",
             "name": "Exploit the Outlands",
             "number": "157",
-            "originalText": "Whenever one or more creatures you control deal combat damage to a player, recharge. (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\")\n{2}{G}, Sacrifice Exploit the Outlands: Until end of turn, creatures you control get \"{T}: Put a +1/+1 counter on this creature.\"",
+            "originalText": "Whenever one or more creatures you control deal combat damage to a player, recharge. (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\")\n{2}{G}, Sacrifice Exploit the Outlands: Until end of turn, creatures you control gain \"{T}: Put a +1/+1 counter on this creature.\"",
             "originalType": "Enchantment",
             "rarity": "Uncommon",
             "text": "Whenever one or more creatures you control deal combat damage to a player, recharge. (Create a colorless Canister artifact token with \"{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.\")\n{2}{G}, Sacrifice Exploit the Outlands: Until end of turn, creatures you control gain \"{T}: Put a +1/+1 counter on this creature.\"",
@@ -5014,14 +5050,14 @@
             "manaCost": "{3}{G}{G}",
             "name": "Jungle Elephant",
             "number": "162",
-            "originalText": "Reach (This creature can block creatures with flying.)\nTrample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)",
+            "originalText": "Reach (This creature can block creatures with flying.)\nTrample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",
             "originalType": "Creature \u2014 Elephant",
             "power": "4",
             "rarity": "Common",
             "subtypes": [
                 "Elephant"
             ],
-            "text": "Reach (This creature can block creatures with flying.)\nTrample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)",
+            "text": "Reach (This creature can block creatures with flying.)\nTrample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",
             "toughness": "4",
             "type": "Creature \u2014 Elephant",
             "types": [
@@ -5042,10 +5078,10 @@
             "manaCost": "{1}{G}",
             "name": "Leyline Disturbance",
             "number": "163",
-            "originalText": "As an additional cost to cast Leyline Disturbance, sacrifice a creature or exile a creature card from your graveyard.\nYou gain 7 life.",
+            "originalText": "As an additional cost to cast this spell, sacrifice a creature or exile a creature card from your graveyard.\nYou gain 7 life.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "As an additional cost to cast Leyline Disturbance, sacrifice a creature or exile a creature card from your graveyard.\nYou gain 7 life.",
+            "text": "As an additional cost to cast this spell, sacrifice a creature or exile a creature card from your graveyard.\nYou gain 7 life.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -5206,14 +5242,14 @@
             "manaCost": "{8}{G}",
             "name": "Outland Avenger",
             "number": "169",
-            "originalText": "Outland Avenger costs {1} less for each artifact card in a graveyard.",
+            "originalText": "This spell costs {1} less for each artifact card in a graveyard.",
             "originalType": "Creature \u2014 Elemental",
             "power": "10",
             "rarity": "Rare",
             "subtypes": [
                 "Elemental"
             ],
-            "text": "Outland Avenger costs {1} less for each artifact card in a graveyard.",
+            "text": "This spell costs {1} less for each artifact card in a graveyard.",
             "toughness": "10",
             "type": "Creature \u2014 Elemental",
             "types": [
@@ -5415,14 +5451,14 @@
             "manaCost": "{2}{G}{G}",
             "name": "Untamed Hydra",
             "number": "177",
-            "originalText": "Untamed Hydra enters the battlefield with two +1/+1 counters on it.\nTrample\nRaid \u2014 At the beginning of your end step, if you attacked with a creature this turn, double the number of counters on Untamed Hydra.",
+            "originalText": "Untamed Hydra enters the battlefield with two +1/+1 counters on it.\nTrample\nRaid \u2014 At the beginning of your end step, if you attacked with a creature this turn, double the number of each kind of counter on Untamed Hydra.",
             "originalType": "Creature \u2014 Hydra",
             "power": "0",
             "rarity": "Rare",
             "subtypes": [
                 "Hydra"
             ],
-            "text": "Untamed Hydra enters the battlefield with two +1/+1 counters on it.\nTrample\nRaid \u2014 At the beginning of your end step, if you attacked with a creature this turn, double the number of counters on Untamed Hydra.",
+            "text": "Untamed Hydra enters the battlefield with two +1/+1 counters on it.\nTrample\nRaid \u2014 At the beginning of your end step, if you attacked with a creature this turn, double the number of each kind of counter on Untamed Hydra.",
             "toughness": "0",
             "type": "Creature \u2014 Hydra",
             "types": [
@@ -5468,7 +5504,7 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "The estate he funded now feels more     like a prison.",
+            "flavor": "The estate he funded now feels more like a prison.",
             "layout": "double-faced",
             "manaCost": "{1}{G}",
             "name": "Wealthy Man",
@@ -5477,7 +5513,7 @@
                 "Worldly Man"
             ],
             "number": "179a",
-            "originalText": "{T}: Add {C} to your mana pool.\nAt the beginning of each end step, if you spent eight or more mana this turn, transform Wealthy Man.",
+            "originalText": "{T}: Add {C}.\nAt the beginning of each end step, if you spent eight or more mana this turn, transform Wealthy Man.",
             "originalType": "Creature \u2014 Human Citizen",
             "power": "2",
             "rarity": "Uncommon",
@@ -5485,7 +5521,7 @@
                 "Human",
                 "Citizen"
             ],
-            "text": "{T}: Add {C} to your mana pool.\nAt the beginning of each end step, if you spent eight or more mana this turn, transform Wealthy Man.",
+            "text": "{T}: Add {C}.\nAt the beginning of each end step, if you spent eight or more mana this turn, transform Wealthy Man.",
             "toughness": "2",
             "type": "Creature \u2014 Human Citizen",
             "types": [
@@ -5826,7 +5862,7 @@
             "manaCost": "{W}{B}",
             "name": "Corrupt Lieutenant",
             "number": "190",
-            "originalText": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, each of those players loses 2 life and you gain 2 life.",
+            "originalText": "It is against the law for an opponent to cast no spells during their turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, each of those players loses 2 life and you gain 2 life.",
             "originalType": "Creature \u2014 Human Soldier",
             "power": "2",
             "rarity": "Uncommon",
@@ -5834,7 +5870,7 @@
                 "Human",
                 "Soldier"
             ],
-            "text": "It is against the law for an opponent to cast no spells during his or her turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, each of those players loses 2 life and you gain 2 life.",
+            "text": "It is against the law for an opponent to cast no spells during their turn.\nJustice \u2014 At the beginning of your upkeep, if any opponents broke any laws since the beginning of your last turn, each of those players loses 2 life and you gain 2 life.",
             "toughness": "2",
             "type": "Creature \u2014 Human Soldier",
             "types": [
@@ -5910,7 +5946,7 @@
             "manaCost": "{2}{U}{B}",
             "name": "Naga Spymaster",
             "number": "193",
-            "originalText": "Deathtouch\nWhenever a creature you control with power 2 or less deals combat damage to a player, that player may pay 2 life. If he or she doesn't, you draw a card.",
+            "originalText": "Deathtouch\nWhenever a creature you control with power 2 or less deals combat damage to a player, that player may pay 2 life. If they don't, you draw a card.",
             "originalType": "Creature \u2014 Naga Rogue",
             "power": "2",
             "rarity": "Uncommon",
@@ -5918,7 +5954,7 @@
                 "Naga",
                 "Rogue"
             ],
-            "text": "Deathtouch\nWhenever a creature you control with power 2 or less deals combat damage to a player, that player may pay 2 life. If he or she doesn't, you draw a card.",
+            "text": "Deathtouch\nWhenever a creature you control with power 2 or less deals combat damage to a player, that player may pay 2 life. If they don't, you draw a card.",
             "toughness": "3",
             "type": "Creature \u2014 Naga Rogue",
             "types": [
@@ -5940,14 +5976,14 @@
             "manaCost": "{3}{R}{G}",
             "name": "Outland Apex",
             "number": "194",
-            "originalText": "Haste\nRaid \u2014 At the beginning of your end step, Outland Apex's owner shuffles it into his or her library unless you attacked with a creature this turn.",
+            "originalText": "Haste\nRaid \u2014 At the beginning of your end step, Outland Apex's owner shuffles it into their library unless you attacked with a creature this turn.",
             "originalType": "Creature \u2014 Wurm",
             "power": "7",
             "rarity": "Rare",
             "subtypes": [
                 "Wurm"
             ],
-            "text": "Haste\nRaid \u2014 At the beginning of your end step, Outland Apex's owner shuffles it into his or her library unless you attacked with a creature this turn.",
+            "text": "Haste\nRaid \u2014 At the beginning of your end step, Outland Apex's owner shuffles it into their library unless you attacked with a creature this turn.",
             "toughness": "6",
             "type": "Creature \u2014 Wurm",
             "types": [
@@ -6102,7 +6138,7 @@
             "manaCost": "{5}{W}{U}",
             "name": "Suljet, the Cog Mind",
             "number": "199",
-            "originalText": "At the beginning of your upkeep, scry X, where X is the number of artifacts you control.\nWhenever another artifact enters the battlefield under your control, put a research counter on Suljet, the Cog Mind. Then, if Suljet has ten or more research counters on it, you win the game.",
+            "originalText": "At the beginning of your upkeep, scry X, where X is the number of artifacts you control.\nWhenever another artifact enters the battlefield under your control, put a research counter on Suljet, the Cog Mind. Then if Suljet has ten or more research counters on it, you win the game.",
             "originalType": "Legendary Artifact Creature \u2014 Artificer",
             "power": "5",
             "rarity": "Mythic Rare",
@@ -6112,7 +6148,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "At the beginning of your upkeep, scry X, where X is the number of artifacts you control.\nWhenever another artifact enters the battlefield under your control, put a research counter on Suljet, the Cog Mind. Then, if Suljet has ten or more research counters on it, you win the game.",
+            "text": "At the beginning of your upkeep, scry X, where X is the number of artifacts you control.\nWhenever another artifact enters the battlefield under your control, put a research counter on Suljet, the Cog Mind. Then if Suljet has ten or more research counters on it, you win the game.",
             "toughness": "7",
             "type": "Legendary Artifact Creature \u2014 Artificer",
             "types": [
@@ -6189,7 +6225,7 @@
             "manaCost": "{2}{R}{G}",
             "name": "Wilds Raider",
             "number": "202",
-            "originalText": "Trample\nRaid \u2013 When Wilds Raider enters the battlefield, if you attacked with a creature this turn, you may have Wilds Raider fight target creature you don't control. (Each deals damage equal to its power to the other.)",
+            "originalText": "Trample\nRaid \u2014 When Wilds Raider enters the battlefield, if you attacked with a creature this turn, you may have Wilds Raider fight target creature you don't control. (Each deals damage equal to its power to the other.)",
             "originalType": "Creature \u2014 Cat Berserker",
             "power": "5",
             "rarity": "Uncommon",
@@ -6197,7 +6233,7 @@
                 "Cat",
                 "Berserker"
             ],
-            "text": "Trample\nRaid \u2013 When Wilds Raider enters the battlefield, if you attacked with a creature this turn, you may have Wilds Raider fight target creature you don't control. (Each deals damage equal to its power to the other.)",
+            "text": "Trample\nRaid \u2014 When Wilds Raider enters the battlefield, if you attacked with a creature this turn, you may have Wilds Raider fight target creature you don't control. (Each deals damage equal to its power to the other.)",
             "toughness": "3",
             "type": "Creature \u2014 Cat Berserker",
             "types": [
@@ -6257,14 +6293,14 @@
             "manaCost": "{3}",
             "name": "Assault Automaton",
             "number": "205",
-            "originalText": "Raid \u2014 You may cast Assault Automaton only if you attacked with a creature this turn.",
+            "originalText": "Raid \u2014 Cast this spell only if you attacked with a creature this turn.",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "4",
             "rarity": "Uncommon",
             "subtypes": [
                 "Construct"
             ],
-            "text": "Raid \u2014 You may cast Assault Automaton only if you attacked with a creature this turn.",
+            "text": "Raid \u2014 Cast this spell only if you attacked with a creature this turn.",
             "toughness": "3",
             "type": "Artifact Creature \u2014 Construct",
             "types": [
@@ -6306,13 +6342,13 @@
             "manaCost": "{2}",
             "name": "Blade of Choices",
             "number": "207",
-            "originalText": "At the beginning of combat on each turn, equipped creature gets your choice of first strike, flying, deathtouch, haste, hexproof, indestructible, lifelink, menace, trample, or vigilance until end of turn.\nEquip {2}",
+            "originalText": "At the beginning of combat on each turn, equipped creature gets your choice of flying, first strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, trample, or vigilance until end of turn.\nEquip {2}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Rare",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "At the beginning of combat on each turn, equipped creature gets your choice of first strike, flying, deathtouch, haste, hexproof, indestructible, lifelink, menace, trample, or vigilance until end of turn.\nEquip {2}",
+            "text": "At the beginning of combat on each turn, equipped creature gets your choice of flying, first strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, trample, or vigilance until end of turn.\nEquip {2}",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -6434,22 +6470,21 @@
             ]
         },
         {
-            "artist": "sakimi.chan",
+            "artist": "sakimichan",
             "cmc": 4,
             "colorIdentity": [],
             "colors": [],
-            "flavor": "\"You don't have to be the perfect citizen; we can make you the perfect citizen.\"\n\u2014Vaen",
             "layout": "normal",
             "manaCost": "{4}",
             "name": "Crown of Ideals",
             "number": "213",
-            "originalText": "All other creatures you control are copies of equipped creature.\nEquip {4}",
+            "originalText": "Whenever Crown of Ideals becomes attached to a creature, all other creatures you control become a copy of that creature until Crown of Ideals becomes unattached from that creature.\nWhenever a creature enters the battlefield under your control, it becomes a copy of equipped creature until Crown of Ideals becomes unattached from that creature.\nEquip {4}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Mythic Rare",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "All other creatures you control are copies of equipped creature.\nEquip {4}",
+            "text": "Whenever Crown of Ideals becomes attached to a creature, all other creatures you control become a copy of that creature until Crown of Ideals becomes unattached from that creature.\nWhenever a creature enters the battlefield under your control, it becomes a copy of equipped creature until Crown of Ideals becomes unattached from that creature.\nEquip {4}",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -6489,13 +6524,13 @@
             "manaCost": "{0}",
             "name": "Energized Bolas",
             "number": "215",
-            "originalText": "Equipped creature has reach and \"{T}: Energized Bolas deals 1 damage to target player.\"\nEquip {3}",
+            "originalText": "Equipped creature has reach and \"{T}: Energized Bolas deals 1 damage to target player or planeswalker.\"\nEquip {3}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Common",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "Equipped creature has reach and \"{T}: Energized Bolas deals 1 damage to target player.\"\nEquip {3}",
+            "text": "Equipped creature has reach and \"{T}: Energized Bolas deals 1 damage to target player or planeswalker.\"\nEquip {3}",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -6511,10 +6546,10 @@
             "manaCost": "{1}",
             "name": "Explosive Apparatus",
             "number": "216",
-            "originalText": "{3}, {T}, Sacrifice Explosive Apparatus: Explosive Apparatus deals 2 damage to target creature or player.",
+            "originalText": "{3}, {T}, Sacrifice Explosive Apparatus: Explosive Apparatus deals 2 damage to any target.",
             "originalType": "Artifact",
             "rarity": "Common",
-            "text": "{3}, {T}, Sacrifice Explosive Apparatus: Explosive Apparatus deals 2 damage to target creature or player.",
+            "text": "{3}, {T}, Sacrifice Explosive Apparatus: It deals 2 damage to any target.",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -6600,10 +6635,10 @@
             "manaCost": "{3}",
             "name": "Mana Drone",
             "number": "220",
-            "originalText": "{T}: Add one mana of any color to your mana pool.\n{1}: Mana Drone becomes a 1/1 colorless Thopter artifact creature with flying until end of turn.",
+            "originalText": "{T}: Add one mana of any color.\n{1}: Mana Drone becomes a 1/1 Thopter artifact creature with flying until end of turn.",
             "originalType": "Artifact",
             "rarity": "Uncommon",
-            "text": "{T}: Add one mana of any color to your mana pool.\n{1}: Mana Drone becomes a 1/1 colorless Thopter artifact creature with flying until end of turn.",
+            "text": "{T}: Add one mana of any color.\n{1}: Mana Drone becomes a 1/1 Thopter artifact creature with flying until end of turn.",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -6682,14 +6717,14 @@
             "manaCost": "{3}",
             "name": "Paradise Gearwing",
             "number": "224",
-            "originalText": "Flying\n{T}: Add one mana of any color to your mana pool.",
+            "originalText": "Flying\n{T}: Add one mana of any color.",
             "originalType": "Artifact Creature \u2014 Bird",
             "power": "1",
             "rarity": "Common",
             "subtypes": [
                 "Bird"
             ],
-            "text": "Flying\n{T}: Add one mana of any color to your mana pool.",
+            "text": "Flying\n{T}: Add one mana of any color.",
             "toughness": "1",
             "type": "Artifact Creature \u2014 Bird",
             "types": [
@@ -6730,7 +6765,7 @@
             "manaCost": "{12}",
             "name": "Possibility Titan",
             "number": "226",
-            "originalText": "Whenever Possibility Titan enters the battlefield or attacks, choose one \u2014\n\u2022 Destroy target nonland permanent.\n\u2022 Draw two cards.\n\u2022 Create three 1/1 colorless Thopter     artifact creature tokens with flying.",
+            "originalText": "Whenever Possibility Titan enters the battlefield or attacks, choose one \u2014\n\u2022 Destroy target nonland permanent.\n\u2022 Draw two cards.\n\u2022 Create three 1/1 colorless Thopter artifact creature tokens with flying.",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "6",
             "rarity": "Mythic Rare",
@@ -6889,7 +6924,7 @@
             "manaCost": "{3}",
             "name": "Self-Perfecting Construct",
             "number": "233",
-            "originalText": "At the beginning of your end step, put a +1/+1 counter on Self-Perfecting Construct.\n{T}, Remove three +1/+1 counters from Self-Perfecting Construct: Create a token that is a copy of it.",
+            "originalText": "At the beginning of your end step, put a +1/+1 counter on Self-Perfecting Construct.\n{T}, Remove three +1/+1 counters from Self-Perfecting Construct: Create a token that's a copy of it.",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "1",
             "rarity": "Rare",
@@ -6987,10 +7022,10 @@
             "layout": "normal",
             "name": "Aether Plantation",
             "number": "237",
-            "originalText": "Aether Plantation enters the battlefield tapped.\nWhen Aether Plantation enters the battlefield, add {C} to your mana pool.\n{T}: Add {G} or {U} to your mana pool.",
+            "originalText": "Aether Plantation enters the battlefield tapped.\nWhen Aether Plantation enters the battlefield, add {C}.\n{T}: Add {G} or {U}.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Aether Plantation enters the battlefield tapped.\nWhen Aether Plantation enters the battlefield, add {C} to your mana pool.\n{T}: Add {G} or {U} to your mana pool.",
+            "text": "Aether Plantation enters the battlefield tapped.\nWhen Aether Plantation enters the battlefield, add {C}.\n{T}: Add {G} or {U}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -7008,7 +7043,7 @@
             "layout": "normal",
             "name": "Cinder Barrens",
             "number": "238",
-            "originalText": "Cinder Barrens enters the battlefield tapped.\n{T}: Add {B} or {R} to your mana pool.",
+            "originalText": "Cinder Barrens enters the battlefield tapped.\n{T}: Add {B} or {R}.",
             "originalType": "Land",
             "rarity": "Uncommon",
             "text": "Cinder Barrens enters the battlefield tapped.\n{T}: Add {B} or {R}.",
@@ -7028,10 +7063,10 @@
             "layout": "normal",
             "name": "Corrupt Courtroom",
             "number": "239",
-            "originalText": "Corrupt Courtroom enters the battlefield tapped.\nWhen Corrupt Courtroom enters the battlefield, add {C} to your mana pool.\n{T}: Add {W} or {B} to your mana pool.",
+            "originalText": "Corrupt Courtroom enters the battlefield tapped.\nWhen Corrupt Courtroom enters the battlefield, add {C}.\n{T}: Add {W} or {B}.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Corrupt Courtroom enters the battlefield tapped.\nWhen Corrupt Courtroom enters the battlefield, add {C} to your mana pool.\n{T}: Add {W} or {B} to your mana pool.",
+            "text": "Corrupt Courtroom enters the battlefield tapped.\nWhen Corrupt Courtroom enters the battlefield, add {C}.\n{T}: Add {W} or {B}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -7048,10 +7083,10 @@
             "layout": "normal",
             "name": "District Slums",
             "number": "240",
-            "originalText": "District Slums enters the battlefield tapped.\nWhen District Slums enters the battlefield, add {C} to your mana pool.\n{T}: Add {B} or {G} to your mana pool.",
+            "originalText": "District Slums enters the battlefield tapped.\nWhen District Slums enters the battlefield, add {C}.\n{T}: Add {B} or {G}.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "District Slums enters the battlefield tapped.\nWhen District Slums enters the battlefield, add {C} to your mana pool.\n{T}: Add {B} or {G} to your mana pool.",
+            "text": "District Slums enters the battlefield tapped.\nWhen District Slums enters the battlefield, add {C}.\n{T}: Add {B} or {G}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -7068,10 +7103,10 @@
             "layout": "normal",
             "name": "Factory Reactor",
             "number": "241",
-            "originalText": "Factory Reactor enters the battlefield tapped.\nWhen Factory Reactor enters the battlefield, add {C} to your mana pool.\n{T}: Add {U} or {R} to your mana pool.",
+            "originalText": "Factory Reactor enters the battlefield tapped.\nWhen Factory Reactor enters the battlefield, add {C}.\n{T}: Add {U} or {R}.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Factory Reactor enters the battlefield tapped.\nWhen Factory Reactor enters the battlefield, add {C} to your mana pool.\n{T}: Add {U} or {R} to your mana pool.",
+            "text": "Factory Reactor enters the battlefield tapped.\nWhen Factory Reactor enters the battlefield, add {C}.\n{T}: Add {U} or {R}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -7086,10 +7121,10 @@
             "layout": "normal",
             "name": "Frontier Outpost",
             "number": "242",
-            "originalText": "{T}: Add {C} to your mana pool.\n{1}, {T}: Add one mana of any color to your mana pool.",
+            "originalText": "{T}: Add {C}.\n{1}, {T}: Add one mana of any color.",
             "originalType": "Land",
             "rarity": "Common",
-            "text": "{T}: Add {C} to your mana pool.\n{1}, {T}: Add one mana of any color to your mana pool.",
+            "text": "{T}: Add {C}.\n{1}, {T}: Add one mana of any color.",
             "type": "Land",
             "types": [
                 "Land"
@@ -7107,7 +7142,7 @@
             "layout": "normal",
             "name": "Meandering River",
             "number": "243",
-            "originalText": "Meandering River enters the battlefield tapped.\n{T}: Add {W} or {U} to your mana pool.",
+            "originalText": "Meandering River enters the battlefield tapped.\n{T}: Add {W} or {U}.",
             "originalType": "Land",
             "rarity": "Uncommon",
             "text": "Meandering River enters the battlefield tapped.\n{T}: Add {W} or {U}.",
@@ -7125,10 +7160,10 @@
             "layout": "normal",
             "name": "Restless District",
             "number": "244",
-            "originalText": "{T}: Add {C} to your mana pool.\n{T}, Sacrifice Restless District: Until end of turn, you may pay {T} rather than pay the costs to activate revolution abilities.",
+            "originalText": "{T}: Add {C}.\n{T}, Sacrifice Restless District: Until end of turn, you may pay {T} rather than pay the costs to activate revolution abilities.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "{T}: Add {C} to your mana pool.\n{T}, Sacrifice Restless District: Until end of turn, you may pay {T} rather than pay the costs to activate revolution abilities.",
+            "text": "{T}: Add {C}.\n{T}, Sacrifice Restless District: Until end of turn, you may pay {T} rather than pay the costs to activate revolution abilities.",
             "type": "Land",
             "types": [
                 "Land"
@@ -7146,7 +7181,7 @@
             "layout": "normal",
             "name": "Submerged Boneyard",
             "number": "245",
-            "originalText": "Submerged Boneyard enters the battlefield tapped.\n{T}: Add {U} or {B} to your mana pool.",
+            "originalText": "Submerged Boneyard enters the battlefield tapped.\n{T}: Add {U} or {B}.",
             "originalType": "Land",
             "rarity": "Uncommon",
             "text": "Submerged Boneyard enters the battlefield tapped.\n{T}: Add {U} or {B}.",
@@ -7167,7 +7202,7 @@
             "layout": "normal",
             "name": "Timber Gorge",
             "number": "246",
-            "originalText": "Timber Gorge enters the battlefield tapped.\n{T}: Add {R} or {G} to your mana pool.",
+            "originalText": "Timber Gorge enters the battlefield tapped.\n{T}: Add {R} or {G}.",
             "originalType": "Land",
             "rarity": "Uncommon",
             "text": "Timber Gorge enters the battlefield tapped.\n{T}: Add {R} or {G}.",
@@ -7188,7 +7223,7 @@
             "layout": "normal",
             "name": "Tranquil Expanse",
             "number": "247",
-            "originalText": "Tranquil Expanse enters the battlefield tapped.\n{T}: Add {G} or {W} to your mana pool.",
+            "originalText": "Tranquil Expanse enters the battlefield tapped.\n{T}: Add {G} or {W}.",
             "originalType": "Land",
             "rarity": "Uncommon",
             "text": "Tranquil Expanse enters the battlefield tapped.\n{T}: Add {G} or {W}.",
@@ -7206,10 +7241,10 @@
             "layout": "normal",
             "name": "Utopian District",
             "number": "248",
-            "originalText": "When Utopian District enters the battlefield, scry 1.\n{T}: Add {C} to your mana pool.",
+            "originalText": "When Utopian District enters the battlefield, scry 1.\n{T}: Add {C}.",
             "originalType": "Land",
             "rarity": "Common",
-            "text": "When Utopian District enters the battlefield, scry 1.\n{T}: Add {C} to your mana pool.",
+            "text": "When Utopian District enters the battlefield, scry 1.\n{T}: Add {C}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -7226,10 +7261,10 @@
             "layout": "normal",
             "name": "Weapons Cache",
             "number": "249",
-            "originalText": "Weapons Cache enters the battlefield tapped.\nWhen Weapons Cache enters the battlefield, add {C} to your mana pool.\n{T}: Add {R} or {W} to your mana pool.",
+            "originalText": "Weapons Cache enters the battlefield tapped.\nWhen Weapons Cache enters the battlefield, add {C}.\n{T}: Add {R} or {W}.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Weapons Cache enters the battlefield tapped.\nWhen Weapons Cache enters the battlefield, add {C} to your mana pool.\n{T}: Add {R} or {W} to your mana pool.",
+            "text": "Weapons Cache enters the battlefield tapped.\nWhen Weapons Cache enters the battlefield, add {C}.\n{T}: Add {R} or {W}.",
             "type": "Land",
             "types": [
                 "Land"
