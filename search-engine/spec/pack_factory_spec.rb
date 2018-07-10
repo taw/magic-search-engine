@@ -19,6 +19,25 @@ describe PackFactory do
     end
   end
 
+  # There's no guarantee they'll always have them,
+  # but it's worth checking exceptions manually
+  context "Standard legal sets since Origins generally have non-booster cards" do
+    let(:start_date) { db.sets["ori"].release_date }
+    let(:regular_sets) { db.sets.values.select{|s|
+      s.type == "core" or s.type == "expansion"
+    }.to_set }
+    let(:expected) {
+      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi]
+    }
+    let(:sets_with_boosters) { db.sets.values.select(&:has_boosters?) }
+    let(:sets_with_nonbooster_cards) {
+      sets_with_boosters.select{|set| set.printings.any?(&:exclude_from_boosters?) }.map(&:code)
+    }
+    it do
+      sets_with_nonbooster_cards.should match_array expected
+    end
+  end
+
   it "Every card can appear in a pack" do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
