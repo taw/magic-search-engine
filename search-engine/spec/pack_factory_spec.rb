@@ -460,6 +460,41 @@ describe PackFactory do
     end
   end
 
+  context "M19" do
+    let(:pack) { factory.for("m19") }
+    let(:ev) { pack.expected_values }
+    let(:basic) { physical_card("is:booster e:m19 r:basic", foil) }
+    let(:common) { physical_card("is:booster e:m19 r:common", foil) }
+    let(:uncommon) { physical_card("is:booster e:m19 r:uncommon", foil) }
+    let(:rare) { physical_card("is:booster e:m19 r:rare", foil) }
+    let(:mythic) { physical_card("is:booster e:m19 r:mythic -is:dfc", foil) }
+    let(:bolas) { physical_card("e:m19 (Nicol Bolas, the Ravager)", foil) }
+
+    context "non-foil" do
+      let(:foil) { false }
+      it do
+        ev[basic].should eq Rational(1, 20)
+        ev[common].should eq Rational(975, 100) * Rational(1, 111)
+        ev[uncommon].should eq Rational(3, 80)
+        ev[rare].should eq Rational(2, 122)
+        ev[mythic].should eq Rational(1, 122)
+        ev[bolas].should eq Rational(1, 122)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+      it do
+        ev[basic].should eq Rational(1,4) * Rational(1, 20) * Rational(4,32)
+        ev[common].should eq Rational(1,4) * Rational(1, 111) * Rational(16,32)
+        ev[uncommon].should eq Rational(1,4) * Rational(1, 80) * Rational(8,32)
+        ev[rare].should eq Rational(1,4) * Rational(2, 122) * Rational(4,32)
+        ev[mythic].should eq Rational(1,4) * Rational(1, 122) * Rational(4,32)
+        ev[bolas].should eq Rational(1,4) * Rational(1, 122) * Rational(4,32)
+      end
+    end
+  end
+
   context "sets with explicit print sheets" do
     let(:pack) { factory.for(set_code) }
     let(:ev) { pack.expected_values }
