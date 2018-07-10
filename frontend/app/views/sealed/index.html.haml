@@ -8,7 +8,7 @@
     Open packs
 - if @cards.present?
   .row.multicard_row
-    - @cards.sort_by{|c| -c.main_front.rarity_code}.each_with_index do |card, i|
+    - @cards.each_with_index do |card, i|
       .col-4.col-sm-3.card_picture_cell
         = link_to_card(card.main_front) do
           = render 'card/picture', card: card
