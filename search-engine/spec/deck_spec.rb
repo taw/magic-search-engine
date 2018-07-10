@@ -22,6 +22,7 @@ describe Deck do
       ["core", "Intro Pack"],
       ["core", "Theme Deck"],
       ["core", "Planeswalker Deck"],
+      ["core", "Welcome Deck"],
       ["expansion", "Advanced Deck"],
       ["expansion", "Basic Deck"],
       ["expansion", "Clash Pack"],
