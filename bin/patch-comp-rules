@@ -83,7 +83,7 @@ class CompRules:
                 continue
             # rule text
             if current_rule == '':
-                match = re.fullmatch('([0-9]{3})\\.([0-9]+)[a-z] (.+)\n', line)
+                match = re.fullmatch('([0-9]{3})\\.([0-9]+)[a-z]\\.? (.+)\n', line)
                 is_subrule = bool(match)
                 if is_subrule:
                     assert int(match.group(2)) == len(current_subsection['rules'])
