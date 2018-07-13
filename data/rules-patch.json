@@ -1,5 +1,5 @@
 {
-    "base": "2018-06-08",
+    "base": "2018-07-13",
     "patches": [
         {
             "#": "for Mount Chromaziel, clarify that “could produce” can be checked in any zone",
@@ -18,7 +18,7 @@
             "#": "for Plagiarized Results, define properties of tokens entering the battlefield from the stack",
             "type": "add",
             "rule": "110.5",
-            "text": "A token may also enter the battlefield from the stack. (See rule 608.3b.) This is an exception to rules 110.5a and 110.5b; the token enters the battlefield under the control of the spell's controller and retains its text and characteristics."
+            "text": "A token may also enter the battlefield from the stack. (See rule 608.3b.) This is an exception to rules 110.5a and 110.5b; the token enters the battlefield under the control of the spell's controller and retains its owner, text, and characteristics."
         },
         {
             "#": "the special action for Dreamscape's premonition keyword",
@@ -70,7 +70,7 @@
             "#": "for Wildcard, allow an object's CMC to change",
             "type": "add",
             "rule": "202.3",
-            "text": "Effects may change an object's converted mana cost. If an effect gives an object a new converted mana cost, the new converted mana cost replaces the previous converted mana cost the object had."
+            "text": "Effects may change an object's converted mana cost. If an effect gives an object a new converted mana cost, for the duration of the effect, the new converted mana cost becomes a characteristic of the card replaces the previous converted mana cost the object had."
         },
         {
             "#": "custom artifact types",
