@@ -120,7 +120,8 @@ class PackFactory
       # CardSheetFactory is aware that mastrepieces go onto foil sheet, wo don't need to do anything
       "bfz", "ogw",
       "kld", "aer",
-      "akh", "hou"
+      "akh", "hou",
+      "m19"
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, common_if_no_basic: true)
     when "mma", "mm2", "mm3", "ema", "ima", "a25"
       build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, foil: 1})

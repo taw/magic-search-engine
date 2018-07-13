@@ -19,6 +19,25 @@ describe PackFactory do
     end
   end
 
+  # There's no guarantee they'll always have them,
+  # but it's worth checking exceptions manually
+  context "Standard legal sets since Origins generally have non-booster cards" do
+    let(:start_date) { db.sets["ori"].release_date }
+    let(:regular_sets) { db.sets.values.select{|s|
+      s.type == "core" or s.type == "expansion"
+    }.to_set }
+    let(:expected) {
+      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi]
+    }
+    let(:sets_with_boosters) { db.sets.values.select(&:has_boosters?) }
+    let(:sets_with_nonbooster_cards) {
+      sets_with_boosters.select{|set| set.printings.any?(&:exclude_from_boosters?) }.map(&:code)
+    }
+    it do
+      sets_with_nonbooster_cards.should match_array expected
+    end
+  end
+
   it "Every card can appear in a pack" do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
@@ -456,6 +475,41 @@ describe PackFactory do
         ev[nonlegendary_uncommon].should eq Rational(1,4) * Rational(1, 80) * Rational(8,32)
         ev[nonlegendary_rare].should eq Rational(1,4) * Rational(2, 121) * Rational(4,32)
         ev[nonlegendary_mythic].should eq Rational(1,4) * Rational(1, 121) * Rational(4,32)
+      end
+    end
+  end
+
+  context "M19" do
+    let(:pack) { factory.for("m19") }
+    let(:ev) { pack.expected_values }
+    let(:basic) { physical_card("is:booster e:m19 r:basic", foil) }
+    let(:common) { physical_card("is:booster e:m19 r:common", foil) }
+    let(:uncommon) { physical_card("is:booster e:m19 r:uncommon", foil) }
+    let(:rare) { physical_card("is:booster e:m19 r:rare", foil) }
+    let(:mythic) { physical_card("is:booster e:m19 r:mythic -is:dfc", foil) }
+    let(:bolas) { physical_card("e:m19 (Nicol Bolas, the Ravager)", foil) }
+
+    context "non-foil" do
+      let(:foil) { false }
+      it do
+        ev[basic].should eq Rational(1, 20)
+        ev[common].should eq Rational(975, 100) * Rational(1, 111)
+        ev[uncommon].should eq Rational(3, 80)
+        ev[rare].should eq Rational(2, 122)
+        ev[mythic].should eq Rational(1, 122)
+        ev[bolas].should eq Rational(1, 122)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+      it do
+        ev[basic].should eq Rational(1,4) * Rational(1, 20) * Rational(4,32)
+        ev[common].should eq Rational(1,4) * Rational(1, 111) * Rational(16,32)
+        ev[uncommon].should eq Rational(1,4) * Rational(1, 80) * Rational(8,32)
+        ev[rare].should eq Rational(1,4) * Rational(2, 122) * Rational(4,32)
+        ev[mythic].should eq Rational(1,4) * Rational(1, 122) * Rational(4,32)
+        ev[bolas].should eq Rational(1,4) * Rational(1, 122) * Rational(4,32)
       end
     end
   end
