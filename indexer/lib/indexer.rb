@@ -130,6 +130,7 @@ class Indexer
       PatchEmnCardNumbers,
       PatchItpRqsRarity,
       PatchDeleteIncompleteCards,
+      PatchClashPacksRarity,
 
       # Not bugs, more like different judgment calls than mtgjson
       PatchBfm,

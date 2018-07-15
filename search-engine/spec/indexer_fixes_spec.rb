@@ -5,14 +5,22 @@ describe "Indexer Fixes Test" do
     %W[basic common uncommon rare].each do |rarity|
       (search("e:rqs r:#[rarity}") - search("e:4e r:#[rarity}")).should be_empty
     end
-    (search("e:rqs -r:rare -r:uncommon -r:common -r:basic")).should be_empty
+    search("e:rqs -r:rare -r:uncommon -r:common -r:basic").should be_empty
   end
 
   it "itp" do
     %W[basic common uncommon rare].each do |rarity|
       (search("e:rqs r:#[rarity}") - search("e:4e r:#[rarity}")).should be_empty
     end
-    (search("e:itp -r:rare -r:uncommon -r:common -r:basic")).should be_empty
+    search("e:itp -r:rare -r:uncommon -r:common -r:basic").should be_empty
+  end
+
+  it "Clash packs" do
+    search("e:clash").size.should eq 18
+    search("e:clash r:special").should be_empty
+    search("e:clash r:common").size.should eq 1
+    search("e:clash r:uncommon").size.should eq 3
+    search("e:clash r:rare").size.should eq 14
   end
 
   it "Coldsnap Theme Decks" do
