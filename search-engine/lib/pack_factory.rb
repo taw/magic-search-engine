@@ -53,16 +53,12 @@ class PackFactory
     when :explicit_common, :explicit_uncommon, :explicit_rare, :sfc_common, :sfc_uncommon, :sfc_rare_or_mythic
       @sheet_factory.send(name, set_code)
     # Various special sheets
-    when :dgm_land, :frf_land, :dgm_common, :frf_common, :dgm_rare_mythic, :unhinged_foil, :theros_gods,
-         :isd_dfc, :dka_dfc, :tsts, :ts_foil,
-         :pc_common, :pc_uncommon, :pc_rare, :pc_cs_common, :pc_cs_uncommon_rare,
-         :vma_special, :soi_dfc_common_uncommon, :soi_dfc_rare_mythic,
-         :emn_dfc_common_uncommon, :emn_dfc_rare_mythic,
-         :dom_legendary_uncommon, :dom_nonlegendary_uncommon,
-         :dom_legendary_rare_mythic, :dom_nonlegendary_rare_mythic
-      @sheet_factory.send(name)
     else
-      raise "Unknown sheet type #{name}"
+      if @sheet_factory.respond_to?(name)
+        @sheet_factory.send(name)
+      else
+        raise "Unknown sheet type #{name}"
+      end
     end
   end
 
@@ -160,6 +156,11 @@ class PackFactory
       WeightedPack.new(
         build_pack_with_random_foil(set_code, :foil, :sfc_common, {sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1}) => 7,
         build_pack_with_random_foil(set_code, :foil, :sfc_common, {sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}) => 1,
+      )
+    when "cns"
+      WeightedPack.new(
+        build_pack_with_random_foil(set_code, :cns_nondraft_foil, :cns_nondraft_common, {cns_draft: 1, cns_nondraft_common: 10, cns_nondraft_uncommon: 3, cns_nondraft_rare_or_mythic: 1}) => 39,
+        build_pack_with_random_foil(set_code, :cns_nondraft_foil, :cns_nondraft_common, {cns_draft_foil: 1, cns_nondraft_common: 10, cns_nondraft_uncommon: 3, cns_nondraft_rare_or_mythic: 1}) => 1,
       )
     when "dom"
       # there's guaranteed legendary creature, but no separate slots for that
