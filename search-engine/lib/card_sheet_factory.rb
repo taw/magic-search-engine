@@ -357,4 +357,45 @@ class CardSheetFactory
       [from_query('e:dom is:booster -t:"legendary creature" r:mythic', 7), 1],
     )
   end
+
+  def cns_draft_foil
+    cns_draft(true)
+  end
+
+  def cns_draft(foil=false)
+    mix_sheets(
+      [from_query('e:cns is:draft r:common', 9, foil: foil), 4],
+      [from_query('e:cns is:draft r:uncommon', 8, foil: foil), 2],
+      [from_query('e:cns is:draft r:rare', 8, foil: foil), 1],
+    )
+  end
+
+  def cns_nondraft_foil
+    sheets = [
+      cns_nondraft_common(true),
+      cns_nondraft_uncommon(true),
+      cns_nondraft_rare_or_mythic(true),
+    ]
+    weights = [
+      5,
+      2,
+      1,
+    ]
+    CardSheet.new(sheets, weights)
+  end
+
+  def cns_nondraft_common(foil=false)
+    from_query('e:cns -is:draft r:common', 80, foil: foil)
+  end
+
+  def cns_nondraft_uncommon(foil=false)
+    from_query('e:cns -is:draft r:uncommon', 60, foil: foil)
+  end
+
+  def cns_nondraft_rare_or_mythic(foil=false)
+    mix_sheets(
+      [from_query('e:cns -is:draft r:rare', 35, foil: foil), 2],
+      [from_query('e:cns -is:draft r:mythic', 10, foil: foil), 1],
+    )
+  end
 end
