@@ -66,20 +66,21 @@ class Indexer
 
   def index_set(set)
     set.slice(
-      "name",
-      "border",
-      "type",
-      "booster",
-      "custom",
-      "release_date",
-      "code",
-      "official_code",
-      "gatherer_code",
-      "online_only",
-      "has_boosters",
       "block_code",
       "block_name",
+      "booster",
+      "border",
+      "code",
+      "custom",
+      "frame",
+      "gatherer_code",
+      "has_boosters",
+      "name",
       "official_block_code",
+      "official_code",
+      "online_only",
+      "release_date",
+      "type",
     )
   end
 
@@ -110,6 +111,7 @@ class Indexer
       PatchFunny,
       PatchLinkRelated,
       PatchPrintSheets,
+      PatchFrame,
 
       # Reconcile issues
       PatchReconcileForeignNames,
@@ -162,16 +164,16 @@ class Indexer
 
     @data.each_set do |set_code, set_data|
       set = set_data.slice(
-        "name",
-        "border",
-        "type",
         "booster",
+        "border",
         "custom",
+        "name",
         "releaseDate",
+        "type",
       ).merge(
         "code" => set_data["magicCardsInfoCode"],
-        "official_code" => set_data["code"],
         "gatherer_code" => set_data["gathererCode"],
+        "official_code" => set_data["code"],
         "online_only" => set_data["onlineOnly"],
       ).compact
       sets << set
@@ -189,45 +191,46 @@ class Indexer
     printing_data = []
     card.each do |printing|
       common_card_data << printing.slice(
-        "name",
-        "names",
-        "loyalty",
-        "manaCost",
-        "text",
-        "types",
-        "subtypes",
-        "supertypes",
         "cmc",
-        "layout",
-        "reserved",
-        "hand", # vanguard
-        "life", # vanguard
-        "rulings",
-        "secondary",
+        "colors",
         "display_power",
         "display_toughness",
-        "power",
-        "toughness",
-        "colors",
         "foreign_names",
         "funny",
+        "hand", # vanguard
+        "layout",
+        "life", # vanguard
+        "loyalty",
+        "manaCost",
+        "name",
+        "names",
+        "power",
         "related",
+        "reserved",
+        "rulings",
+        "secondary",
+        "subtypes",
+        "supertypes",
+        "text",
+        "toughness",
+        "types",
       ).compact
 
       printing_data << [
         printing["set_code"],
         printing.slice(
-          "flavor",
-          "border",
-          "timeshifted",
-          "number",
-          "multiverseid",
           "artist",
-          "rarity",
-          "watermark",
+          "border",
           "exclude_from_boosters",
-          "release_date",
+          "flavor",
+          "frame",
+          "multiverseid",
+          "number",
           "print_sheet",
+          "rarity",
+          "release_date",
+          "timeshifted",
+          "watermark",
         ).compact
       ]
     end
