@@ -24,25 +24,10 @@ class CardPrinting
     @flavor_normalized = @flavor.tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
     @flavor_normalized = @flavor if @flavor_normalized == @flavor # Memory saving trick
     @border = data["border"] || @set.border
+    @frame = data["frame"] || @set.frame
     @timeshifted = data["timeshifted"] || false
     rarity = data["rarity"]
     @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
-    @frame = begin
-      eight_edition_release_date = Date.new(2003,7,28)
-      m15_release_date = Date.new(2014,7,18)
-      if @release_date < eight_edition_release_date
-        "old"
-      elsif @set.code == "tsts"
-        "old"
-      elsif @timeshifted and @set.code == "fut"
-        "future"
-      elsif @release_date < m15_release_date
-        # Were there any 8e+ old frame printings?
-        "modern"
-      else
-        "m15"
-      end
-    end
     @exclude_from_boosters = data["exclude_from_boosters"]
     @print_sheet = data["print_sheet"]
 
