@@ -124,6 +124,7 @@ class Indexer
       PatchMediaInsertArtists,
       PatchCstdRarity,
       PatchWatermarks,
+      PatchConspiracyWatermarks,
       PatchBasicLandRarity,
       PatchUnstableBorders,
       PatchEmnCardNumbers,

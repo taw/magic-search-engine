@@ -81,6 +81,11 @@ describe "Indexer Fixes Test" do
     assert_search_results %Q[a:"?"]
   end
 
+  it "All draft-matters cards have conspiracy watermark" do
+    # Is there official name for it?
+    assert_search_equal %Q[w:draft], %Q[is:draft]
+  end
+
   # Some old issues fixed since then, but extra regression tests won't hurt
   it "No Ae ligature in card names" do
     db.cards.values.map(&:name).grep(/Æ/i).should be_empty
