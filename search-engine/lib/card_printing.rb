@@ -110,6 +110,10 @@ class CardPrinting
     "CardPrinting(#{name}, #{set_code})"
   end
 
+  def id
+    "#{set_code}/#{number}"
+  end
+
   def to_s
     inspect
   end

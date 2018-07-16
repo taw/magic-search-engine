@@ -76,7 +76,7 @@ describe "Time Spiral block" do
   end
 
   it "is:timeshifted" do
-    assert_count_results "is:timeshifted", 45
+    assert_count_printings "is:timeshifted", 45
   end
 
   it "manaless suspend cards" do

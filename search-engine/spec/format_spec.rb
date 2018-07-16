@@ -6,12 +6,12 @@ describe "Formats" do
   it "formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
-    assert_search_equal "f:standard",
+    assert_search_equal_cards "f:standard",
       %Q[e:kld,aer,akh,w17,hou,xln,rix,dom,m19 -"Smuggler's Copter" -"Felidar Guardian" -"Aetherworks Marvel" -"Attune with Aether" -"Rogue Refiner" -"Rampaging Ferocidon" -"Ramunap Ruins"]
-    assert_search_equal 'f:"ravnica block"', "e:rav,gp,di"
+    assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
-    assert_search_equal 'f:"ravnica block"', 'b:ravnica'
-    assert_search_differ 'f:"mirrodin block" t:land', 'b:"mirrodin" t:land'
+    assert_search_equal_cards 'f:"ravnica block"', 'b:ravnica'
+    assert_search_differ_cards 'f:"mirrodin block" t:land', 'b:"mirrodin" t:land'
   end
 
   it "ban_events" do
@@ -146,8 +146,8 @@ describe "Formats" do
   # We don't have all historical legality for Duel Commander yet,
   # maybe add it at some later point
   it "duel commander" do
-    assert_count_results 'banned:"duel commander"', 61
-    assert_count_results 'restricted:"duel commander"', 15
+    assert_count_cards 'banned:"duel commander"', 61
+    assert_count_cards 'restricted:"duel commander"', 15
   end
 
   # We don't keep historical legality for Petty Dreadful yet

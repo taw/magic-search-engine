@@ -6,7 +6,7 @@ describe "Full Database Test" do
     db.number_of_printings.should eq(36868)
   end
 
-  it "block_codes" do
+  it "block codes" do
     assert_search_equal "b:rtr", 'b:"Return to Ravnica"'
     assert_search_equal "b:in", 'b:Invasion'
     assert_search_equal "b:som", 'b:"Scars of Mirrodin"'
@@ -14,12 +14,12 @@ describe "Full Database Test" do
     assert_search_equal "b:mi", 'b:Mirrodin'
   end
 
-  it "block_special_characters" do
+  it "block special characters" do
     assert_search_equal %Q[b:us], "b:urza"
     assert_search_equal %Q[b:"Urza's"], "b:urza"
   end
 
-  it "block_contents" do
+  it "block contents" do
     assert_search_equal "e:rtr OR e:gtc OR e:dgm", "b:rtr"
     assert_search_equal "e:in or e:ps or e:ap", "b:Invasion"
     assert_search_equal "e:isd or e:dka or e:avr", "b:Innistrad"
@@ -27,7 +27,7 @@ describe "Full Database Test" do
     assert_search_equal "e:som or e:mbs or e:nph", "b:som"
     assert_search_equal "e:mi or e:ds or e:5dn", "b:mi"
     assert_search_equal "e:som", "e:scars"
-    assert_search_equal 'f:"lorwyn shadowmoor block"', "b:lorwyn"
+    assert_search_equal_cards 'f:"lorwyn shadowmoor block"', "b:lorwyn"
     # Fake blocks
     assert_search_equal "e:dom", "b:dom"
     # Gatherer codes
@@ -36,7 +36,7 @@ describe "Full Database Test" do
     assert_search_equal 'b:mr', "b:mir"
   end
 
-  it "edition_special_characters" do
+  it "edition special characters" do
     assert_search_equal "e:us", %Q[e:"Urza's Saga"]
     assert_search_equal "e:us", %Q[e:"Urza’s Saga"]
     assert_search_equal "e:us or e:ul or e:ud", %Q[e:"urza's"]
@@ -57,7 +57,7 @@ describe "Full Database Test" do
     assert_search_results "part:cmc=0 part:cmc=3 part:c:b"
   end
 
-  it "color_identity" do
+  it "color identity" do
     assert_search_results "ci:wu t:basic",
       "Island",
       "Plains",
@@ -73,7 +73,7 @@ describe "Full Database Test" do
     ])
   end
 
-  it "print_date" do
+  it "print date" do
     assert_search_results %Q[print="29 september 2012"],
       "Archon of the Triumvirate",
       "Carnival Hellsteed",
@@ -164,7 +164,7 @@ describe "Full Database Test" do
       "Nissa Revane", "Sarkhan the Mad", "Sorin Markov", "Tezzeret, Agent of Bolas"
   end
 
-  it "alt_rebecca_guay" do
+  it "alt Rebecca Guay" do
     assert_search_results %Q[a:"rebecca guay" alt:(-a:"rebecca guay")],
       "Ancestral Memories",
       "Angelic Page",
@@ -202,7 +202,7 @@ describe "Full Database Test" do
       "Wood Elves"
   end
 
-  it "alt_test_of_time" do
+  it "alt test of time" do
     assert_search_results "year=1993 alt:year=2015",
       "Basalt Monolith",
       "Counterspell",
@@ -228,7 +228,7 @@ describe "Full Database Test" do
       "Tranquility"
   end
 
-  it "alt_rarity" do
+  it "alt rarity" do
     assert_search_include "r:common alt:r:uncommon", "Doom Blade"
     assert_search_results "r:common alt:r:mythic",
       "Cabal Ritual",
@@ -244,7 +244,7 @@ describe "Full Database Test" do
       "Lotus Petal"
   end
 
-  it "pow_special" do
+  it "pow:special" do
     assert_search_equal "pow=1+*", "pow=*+1"
     assert_search_include "pow=*", "Krovikan Mist"
     assert_search_results "pow=1+*",
@@ -259,13 +259,13 @@ describe "Full Database Test" do
       "S.N.O.T."
   end
 
-  it "loy_special" do
+  it "loy:special" do
     assert_search_results "loy=0"
     assert_search_equal "loy=x", "loy=X"
     assert_search_results "loy=x", "Nissa, Steward of Elements"
   end
 
-  it "tou_special" do
+  it "tou:special" do
     # Mostly same as power except 7-*
     assert_search_results "tou=7-*", "Shapeshifter"
     assert_search_results "tou>8-*"
@@ -275,14 +275,14 @@ describe "Full Database Test" do
     assert_search_results "tou<=2-*"
   end
 
-  it "is_promo" do
+  it "is:promo" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_results "is:promo", 1017
+    assert_count_printings "is:promo", 1198
   end
 
-  it "is_funny" do
+  it "is:funny" do
     assert_search_results "abyss is:funny", "Zzzyxas's Abyss"
     assert_search_results "abyss not:funny",
       "Abyssal Gatekeeper",
@@ -299,7 +299,7 @@ describe "Full Database Test" do
     assert_search_results "tiger is:funny", "Paper Tiger", "Stocking Tiger"
   end
 
-  it "mana_variables" do
+  it "mana variables" do
     assert_search_equal "b:ravnica guildmage mana=hh", "b:ravnica guildmage c:m cmc=2"
     assert_search_equal "e:rtr mana=h", "e:rtr c:m cmc=1"
     assert_search_results "mana>mmmmm",
@@ -307,8 +307,8 @@ describe "Full Database Test" do
       "B.F.M. (Big Furry Monster, Right Side)",
       "Khalni Hydra",
       "Primalcrux"
-    assert_count_results "e:ktk (charm OR ascendancy) mana=mno", 10
-    assert_count_results "e:ktk mana=mno", 15
+    assert_count_cards "e:ktk (charm OR ascendancy) mana=mno", 10
+    assert_count_cards "e:ktk mana=mno", 15
     assert_search_results "mana=mmnnnoo",
       "Brilliant Ultimatum",
       "Clarion Ultimatum",
@@ -323,7 +323,7 @@ describe "Full Database Test" do
     assert_search_equal "mana=mno", "mana={m}{n}{o}"
     assert_search_equal "mana=mmn", "mana=mnn"
     assert_search_equal "mana=mmn", "mana>=mnn mana <=mmn"
-    assert_count_results "mana>=mh", 15
+    assert_count_cards "mana>=mh", 15
     assert_search_results "mana=mh",
       "Bant Sureblade",
       "Crystallization",
@@ -345,12 +345,12 @@ describe "Full Database Test" do
     assert_search_equal "vision", "visions"
   end
 
-  it "comma_separated_set_list" do
+  it "comma separated set list" do
     assert_search_equal "e:cmd or e:cm1 or e:c13 or e:c14 or e:c15 or e:c16 or e:c17 or e:cma or e:cm2", "e:cmd,cm1,c13,c14,c15,c16,c17,cma,cm2"
     assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cm1,c13,c14,c15,c16,c17,cma,cm2 -alt:-e:cmd,cm1,c13,c14,c15,c16,c17,cma,cm2"
   end
 
-  it "command_separated_block_list" do
+  it "comma separated block list" do
     assert_search_equal "b:isd or b:soi", "b:isd,soi"
   end
 
@@ -371,19 +371,20 @@ describe "Full Database Test" do
   end
 
   it "is commander" do
-    assert_search_equal "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,bbd)"
+    # Some C14 commanders got reprited
+    assert_search_equal_cards "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,bbd)"
   end
 
   # Bugfix
   it "cm1/cma set codes" do
-    "e:cm1".should have_result_count(18)
-    "e:cma".should have_result_count(289)
+    "e:cm1".should have_count_printings(18)
+    "e:cma".should have_count_printings(320)
   end
 
   it "gtw/wpn/grc set codes" do
-    "e:gtw".should have_result_count(20)
-    "e:wpn".should have_result_count(43)
-    "e:grc".should have_result_count(0)
+    "e:gtw".should have_count_printings(20)
+    "e:wpn".should have_count_printings(45)
+    "e:grc".should have_count_printings(0)
   end
 
   it "is:permanent" do
@@ -393,7 +394,7 @@ describe "Full Database Test" do
   it "promo and special" do
     # Are promo basics really of basic rarity?
     assert_search_equal "t:basic is:promo", "t:basic r:special"
-    assert_search_equal "t:basic", "(r:basic -t:urza's) or (t:basic r:special)"
+    assert_search_equal "t:basic", "(r:basic -t:urza's) or (t:basic r:special) or (t:basic e:an)"
     assert_search_results "is:promo -r:special -e:ugin"
     assert_search_results %Q[r:special -is:promo -st:masterpiece -t:vanguard -e:anthologies -e:tsts -e:"clash pack" -e:vma -e:mgbc],
       "Giant Trap Door Spider",
@@ -413,7 +414,7 @@ describe "Full Database Test" do
 
   it "is:unique" do
     number_of_unique_cards = db.cards.values.count{|c| c.printings.size == 1}
-    assert_count_results "is:unique", number_of_unique_cards
+    assert_count_cards "is:unique", number_of_unique_cards
     assert_search_equal "is:unique", "++ is:unique"
     assert_search_equal "not:unique", "-is:unique"
   end

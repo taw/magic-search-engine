@@ -32,7 +32,7 @@ describe "Indexer hacks" do
   end
 
   it "is:funny" do
-    assert_search_equal "is:funny", "e:uh,ug,uqc,hho,ust -t:basic -(Steamflogger Boss)"
+    assert_search_equal_cards "is:funny", "e:uh,ug,uqc,hho,ust -t:basic -(Steamflogger Boss)"
   end
 
   it "Nissa's X loyallty" do
