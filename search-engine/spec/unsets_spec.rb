@@ -122,10 +122,7 @@ describe "Unsets" do
 
   it "edition shortcut syntax" do
     assert_search_equal "e:uh,ug", "e:uh or e:ug"
-    assert_count_results "e:uh,ug", 228
-    # I'm not sure I want this syntax
-    # assert_search_equal "e:uh+ug", "t:basic"
-    # assert_count_results "e:uh,ug -e:ug+ug", 222
+    assert_count_printings "e:uh,ug", 233
   end
 
   it "other:" do
