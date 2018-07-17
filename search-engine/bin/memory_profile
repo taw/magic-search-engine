@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require "memory_profiler"
+require_relative "../lib/card_database"
+c = nil
+report = MemoryProfiler.report{
+  c = CardDatabase.load
+}
+report.pretty_print
