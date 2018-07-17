@@ -12,7 +12,7 @@ class ConditionForeignRegexp < ConditionRegexp
     if @lang == "foreign"
       foreign_names = card.foreign_names_normalized.values.flatten
     else
-      foreign_names = card.foreign_names_normalized[@lang] || []
+      foreign_names = card.foreign_names_normalized[@lang.to_sym] || []
     end
     foreign_names.any?{|n|
       n =~ @regexp

@@ -173,6 +173,27 @@ class CardDatabase
 
   private
 
+  def freeze_strings!(data)
+    case data
+    when Array
+      data.each_with_index do |v,i|
+        if v.is_a?(Array) or v.is_a?(Hash)
+          freeze_strings!(v)
+        elsif v.is_a?(String)
+          data[i] = -v
+        end
+      end
+    when Hash
+      data.each do |k,v|
+        if v.is_a?(Array) or v.is_a?(Hash)
+          freeze_strings!(v)
+        elsif v.is_a?(String)
+          data[k] = -v
+        end
+      end
+    end
+  end
+
   def load_from_subset!(db, set_codes)
     @blocks = db.blocks
     db.sets.each do |set_code, set|
@@ -194,6 +215,7 @@ class CardDatabase
     color_identity_cache = {}
     multipart_cards = {}
     data = JSON.parse(path.open.read)
+    freeze_strings!(data)
     data["sets"].each do |set_code, set_data|
       @sets[set_code] = CardSet.new(set_data)
       if set_data["block_code"]
@@ -232,7 +254,7 @@ class CardDatabase
   def fix_multipart_cards_color_identity!(color_identity_cache)
     @cards.each do |card_name, card|
       if card.has_multiple_parts?
-        card.color_identity = card.names.map{|n| color_identity_cache[n].chars }.inject(&:|).sort.join
+        card.color_identity = -card.names.map{|n| color_identity_cache[n].chars }.inject(&:|).sort.join
       end
     end
   end

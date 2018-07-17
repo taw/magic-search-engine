@@ -20,7 +20,7 @@ class CardPrinting
     @number = data["number"]
     @multiverseid = data["multiverseid"]
     @artist_name = data["artist"]
-    @flavor = (data["flavor"] || "").gsub("Æ", "Ae").gsub("æ", "ae") # Ae ligature is too stupid so normalize it
+    @flavor = data["flavor"] || -""
     @flavor_normalized = @flavor.tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
     @flavor_normalized = @flavor if @flavor_normalized == @flavor # Memory saving trick
     @border = data["border"] || @set.border

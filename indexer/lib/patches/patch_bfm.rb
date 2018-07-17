@@ -8,7 +8,7 @@ class PatchBfm < Patch
       card["cmc"] = 15
       card["power"] = 99
       card["toughness"] = 99
-      card["manaCost"] = "{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}{B}"
+      card["manaCost"] = "{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}"
       card["types"] = ["Creature"]
       card["subtypes"] = ["The-Biggest-Baddest-Nastiest-Scariest-Creature-You'll-Ever-See"]
       card["colors"] = "b"

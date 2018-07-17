@@ -102,6 +102,7 @@ class Indexer
       PatchDisplayPowerToughness,
       PatchNormalizeReleaseDate,
       PatchNormalizeNames,
+      PatchManaCost,
 
       # Calculate extra fields
       PatchBlocks,
