@@ -108,5 +108,35 @@ BanList.for_format("mtgo commander") do
     "Mishra's Workshop" => "legal",
     "Bazaar of Baghdad" => "legal",
     "Griselbrand" => "legal",
-    )
+  )
+
+  change(
+    "2018-07-25",
+    "https://magic.wizards.com/en/articles/archive/magic-online/magic-online-1v1-commander-update-2018-07-20",
+    "Ancient Tomb" => "legal",
+    "Brainstorm" => "legal",
+    "Chrome Mox" => "legal",
+    "Demonic Tutor" => "legal",
+    "Dig Through Time" => "legal",
+    "Enlightened Tutor" => "legal",
+    "Entomb" => "legal",
+    "Gaea's Cradle" => "legal",
+    "Imperial Seal" => "legal",
+    "Mana Crypt" => "legal",
+    "Mana Drain" => "legal",
+    "Mana Vault" => "legal",
+    "Mox Diamond" => "legal",
+    "Mystical Tutor" => "legal",
+    "Necropotence" => "legal",
+    "Ponder" => "legal",
+    "Preordain" => "legal",
+    "Sol Ring" => "legal",
+    "Sylvan Tutor" => "legal",
+    "Treachery" => "legal",
+    "Treasure Cruise" => "legal",
+    "Vampiric Tutor" => "legal",
+    "Vial Smasher the Fierce" => "legal",
+    "Worldly Tutor" => "legal",
+    "Yawgmoth's Bargain" => "legal",
+  )
 end
