@@ -4,9 +4,35 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2018" do
+    # These were separate announcements
     assert_banlist_changes "July 2018",
       "legacy banned", "Deathrite Shaman",
-      "legacy banned", "Gitaxian Probe"
+      "legacy banned", "Gitaxian Probe",
+      "mtgo commander unbanned", "Ancient Tomb",
+      "mtgo commander unbanned", "Brainstorm",
+      "mtgo commander unbanned", "Chrome Mox",
+      "mtgo commander unbanned", "Demonic Tutor",
+      "mtgo commander unbanned", "Dig Through Time",
+      "mtgo commander unbanned", "Enlightened Tutor",
+      "mtgo commander unbanned", "Entomb",
+      "mtgo commander unbanned", "Gaea's Cradle",
+      "mtgo commander unbanned", "Imperial Seal",
+      "mtgo commander unbanned", "Mana Crypt",
+      "mtgo commander unbanned", "Mana Drain",
+      "mtgo commander unbanned", "Mana Vault",
+      "mtgo commander unbanned", "Mox Diamond",
+      "mtgo commander unbanned", "Mystical Tutor",
+      "mtgo commander unbanned", "Necropotence",
+      "mtgo commander unbanned", "Ponder",
+      "mtgo commander unbanned", "Preordain",
+      "mtgo commander unbanned", "Sol Ring",
+      "mtgo commander unbanned", "Sylvan Tutor",
+      "mtgo commander unbanned", "Treachery",
+      "mtgo commander unbanned", "Treasure Cruise",
+      "mtgo commander unbanned", "Vampiric Tutor",
+      "mtgo commander unbanned", "Vial Smasher the Fierce",
+      "mtgo commander unbanned", "Worldly Tutor",
+      "mtgo commander unbanned", "Yawgmoth's Bargain"
 
     assert_banlist_changes "April 2018",
       "mtgo commander banned", "Edgar Markov",
