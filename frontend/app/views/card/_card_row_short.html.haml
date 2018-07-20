@@ -3,5 +3,5 @@
     = render 'card/picture', card: card
   .col-8.col-md-6.cardinfo
     = render 'card', card: card
-  .hidden-sm-down.col-md-2
+  .d-none.d-md-block.col-md-2
     = render 'printings_short', card: card, printings: printings_view(card, printings)
