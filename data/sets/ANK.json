@@ -130,6 +130,12 @@
             "originalText": "Enchant creature\nEnchanted creature gets +2/+2 as long as it's a Human. Otherwise, it can't attack or block.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2011-09-22",
+                    "text": "Once the enchanted creature has been declared as an attacking or blocking creature, causing it to stop being a Human won't remove it from combat. It will lose the +2/+2 bonus, however."
+                }
+            ],
             "subtypes": [
                 "Aura"
             ],
@@ -2312,6 +2318,12 @@
             "originalText": "Return target creature card from your graveyard to your hand.",
             "originalType": "Sorcery",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "A \"creature card\" is any card with the type creature, even if it has other types such as artifact, enchantment, or land. Older cards of type summon are also creature cards."
+                }
+            ],
             "text": "Return target creature card from your graveyard to your hand.",
             "type": "Sorcery",
             "types": [
@@ -3093,6 +3105,32 @@
             "originalType": "Creature \u2014 Zombie",
             "power": "5",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2011-09-22",
+                    "text": "Vengeful Pharaoh must be in your graveyard when combat damage is dealt to you or a planeswalker you control in order for its ability to trigger. That is, it can't die and trigger from your graveyard during the same combat damage step."
+                },
+                {
+                    "date": "2011-09-22",
+                    "text": "If Vengeful Pharaoh is no longer in your graveyard when the triggered ability would resolve, the triggered ability won't do anything."
+                },
+                {
+                    "date": "2011-09-22",
+                    "text": "If the attacking creature is an illegal target when the triggered ability tries to resolve, it won't resolve and none of its effects will happen. Vengeful Pharaoh will remain in your graveyard."
+                },
+                {
+                    "date": "2011-09-22",
+                    "text": "If multiple creatures deal combat damage to you simultaneously, Vengeful Pharaoh will only trigger once."
+                },
+                {
+                    "date": "2011-09-22",
+                    "text": "If multiple creatures deal combat damage to you and to a planeswalker you control simultaneously, Vengeful Pharaoh will trigger twice. The first trigger will cause Vengeful Pharaoh to be put on top of your library. The second trigger will then do nothing, as Vengeful Pharaoh is no longer in your graveyard when it tries to resolve. Note that the second trigger will do nothing even if Vengeful Pharaoh is put back into your graveyard before it tries to resolve, as it's a different Vengeful Pharaoh than the one that was there before."
+                },
+                {
+                    "date": "2011-09-22",
+                    "text": "If your own attacking creatures deal combat damage to you or a planeswalker you control (perhaps because combat damage was redirected), Vengeful Pharaoh will still trigger. You must target and destroy one of your own attacking creatures."
+                }
+            ],
             "subtypes": [
                 "Zombie"
             ],
@@ -3367,6 +3405,16 @@
             "originalText": "Cone of Flame deals 1 damage to any target, 2 damage to another target, and 3 damage to a third target.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2014-07-18",
+                    "text": "Each of the three targets must be different. If there aren't three different legal targets available, you can't cast the spell."
+                },
+                {
+                    "date": "2014-07-18",
+                    "text": "If one or two of Cone of Flame's targets are illegal when it resolves, you can't change how much damage will be dealt to the remaining legal targets."
+                }
+            ],
             "text": "Cone of Flame deals 1 damage to any target, 2 damage to another target, and 3 damage to a third target.",
             "type": "Sorcery",
             "types": [
@@ -3635,6 +3683,32 @@
             "originalText": "Whenever you cast an instant or sorcery spell from your hand, you may cast target card with the same name as that spell from your graveyard. (You still pay its costs.)",
             "originalType": "Enchantment",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2016-04-08",
+                    "text": "You must choose a target for Harness the Storm's ability (if one exists) immediately after you've cast an instant or sorcery spell. There's no way for that spell to be countered and then targeted by Harness the Storm once it's in the graveyard."
+                },
+                {
+                    "date": "2016-04-08",
+                    "text": "You choose whether to cast the targeted card as the ability resolves. You can't wait to cast it later, and there's no way for your opponents to set up a situation where you have to cast the card but don't want to."
+                },
+                {
+                    "date": "2016-04-08",
+                    "text": "If the spell you cast from your hand is countered in response to Harness the Storm's triggered ability, you can still cast the target card while the ability is resolving."
+                },
+                {
+                    "date": "2016-04-08",
+                    "text": "Because you're paying the spell's costs, you can pay alternative costs, such as awaken costs and surge costs from the Battle for Zendikar block. You can also pay additional costs, such as kicker costs. If the card has a mandatory additional cost, like Lightning Axe, you must pay it to cast the card."
+                },
+                {
+                    "date": "2016-04-08",
+                    "text": "The spell you cast from your graveyard can target the spell you cast from your hand."
+                },
+                {
+                    "date": "2016-04-08",
+                    "text": "The spell you cast from your graveyard resolves before the spell you cast from your hand. It's put into your graveyard as it resolves."
+                }
+            ],
             "text": "Whenever you cast an instant or sorcery spell from your hand, you may cast target card with the same name as that spell from your graveyard. (You still pay its costs.)",
             "type": "Enchantment",
             "types": [
@@ -3877,6 +3951,24 @@
             "originalType": "Creature \u2014 Jackal",
             "power": "2",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "\"Can't attack alone\" means Jackal Familiar can't be declared as an attacker during the declare attackers step unless at least one other creature is also declared as an attacker at that time (either by you or your Two-Headed Giant teammate)."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "\"Can't block alone\" has a similar meaning. Note that the other blocker(s) doesn't have to block the same attacker as Jackal Familiar."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "Once Jackal Familiar has been legally declared as an attacking or blocking creature, how many other creatures it's attacking or blocking with no longer matters. For example, if Jackal Familiar and Canyon Minotaur both attack, then Canyon Minotaur leaves the battlefield, Jackal Familiar continues to attack even though it's now attacking alone."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "An effect may put Jackal Familiar onto the battlefield attacking even if no other creatures are attacking. That's because it wasn't declared as an attacker in this case. Similarly, an effect may put Jackal Familiar onto the battlefield blocking even if no other creatures are blocking."
+                }
+            ],
             "subtypes": [
                 "Jackal"
             ],
@@ -4234,6 +4326,24 @@
             "originalText": "If a noncreature permanent under your control was destroyed this turn by a spell or ability an opponent controlled, you may pay {G} rather than pay this spell's mana cost.\nCreate four 1/1 green Snake creature tokens.",
             "originalType": "Instant \u2014 Trap",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "You may ignore a Trap's alternative cost condition and simply cast it for its normal mana cost. This is true even if its alternative cost condition has been met."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "Casting a Trap by paying its alternative cost doesn't change its mana cost or converted mana cost. The only difference is the cost you actually pay."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "Effects that increase or reduce the cost to cast a Trap will apply to whichever cost you chose to pay."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "A spell or ability destroys a permanent only if that spell or ability specifically contains the word \"destroy\" in its text. If a spell or ability an opponent controls exiles a noncreature permanent you control, causes you to sacrifice a noncreature permanent, removes all loyalty counters from a planeswalker you control, or causes an ability you control to trigger (and then that ability destroys a permanent you control), Cobra Trap's alternative cost condition hasn't been met."
+                }
+            ],
             "subtypes": [
                 "Trap"
             ],
@@ -4917,6 +5027,16 @@
             "originalText": "Sacrifice any number of lands. Search your library for up to that many land cards, put them onto the battlefield tapped, then shuffle your library.",
             "originalType": "Sorcery",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2008-04-01",
+                    "text": "You sacrifice the lands as part of the resolution of Scapeshift. It isn't an additional cost."
+                },
+                {
+                    "date": "2018-07-13",
+                    "text": "You sacrifice the lands as part of the resolution of Scapeshift. It isn't an additional cost. If Scapeshift is countered, you won't sacrifice any lands."
+                }
+            ],
             "text": "Sacrifice any number of lands. Search your library for up to that many land cards, put them onto the battlefield tapped, then shuffle your library.",
             "type": "Sorcery",
             "types": [
@@ -5760,6 +5880,12 @@
             "originalText": "You gain X life and draw X cards.",
             "originalType": "Instant",
             "rarity": "Mythic Rare",
+            "rulings": [
+                {
+                    "date": "2012-10-01",
+                    "text": "If the value chosen for X is larger than the number of cards left in your library, you'll lose the game the next time state-based actions are performed."
+                }
+            ],
             "text": "You gain X life and draw X cards.",
             "type": "Instant",
             "types": [
@@ -6047,6 +6173,12 @@
             "originalText": "{2}, {T}, Sacrifice Expedition Map: Search your library for a land card, reveal it, and put it into your hand. Then shuffle your library.",
             "originalType": "Artifact",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "You may find any land card, not just a basic land card."
+                }
+            ],
             "text": "{2}, {T}, Sacrifice Expedition Map: Search your library for a land card, reveal it, and put it into your hand. Then shuffle your library.",
             "type": "Artifact",
             "types": [
@@ -6261,10 +6393,10 @@
             "manaCost": "{4}",
             "name": "Soulcatcher Obelisk",
             "number": "225",
-            "originalText": "Whenever a non-Spirit creature dies, put a charge counter on Soulcatcher Obelisk.\n{2}, {T}, Remove a charge counter from Soulcatcher Obelisk: Create a 1/1 white Spirit creature token with  flying.",
+            "originalText": "Whenever a non-Spirit creature dies, put a charge counter on Soulcatcher Obelisk.\n{2}, {T}, Remove a charge counter from Soulcatcher Obelisk: Create a 1/1 white Spirit creature token with flying.",
             "originalType": "Artifact",
             "rarity": "Rare",
-            "text": "Whenever a non-Spirit creature dies, put a charge counter on Soulcatcher Obelisk.\n{2}, {T}, Remove a charge counter from Soulcatcher Obelisk: Create a 1/1 white Spirit creature token with  flying.",
+            "text": "Whenever a non-Spirit creature dies, put a charge counter on Soulcatcher Obelisk.\n{2}, {T}, Remove a charge counter from Soulcatcher Obelisk: Create a 1/1 white Spirit creature token with flying.",
             "type": "Artifact",
             "types": [
                 "Artifact"
