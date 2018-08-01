@@ -2,8 +2,8 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(18689)
-    db.number_of_printings.should eq(36868)
+    db.number_of_cards.should eq(18748)
+    db.number_of_printings.should eq(37176)
   end
 
   it "block codes" do
@@ -135,6 +135,7 @@ describe "Full Database Test" do
       "Highland Lake",
       "Island",
       "Macabre Waltz",
+      "Magnifying Glass",
       "Mountain",
       "Plains",
       "Pyre Hound",
@@ -150,6 +151,7 @@ describe "Full Database Test" do
       "Uncaged Fury",
       "Vampire Noble",
       "Vessel of Nascency",
+      "Warped Landscape",
       "Woodland Stream"
   end
 
@@ -346,8 +348,8 @@ describe "Full Database Test" do
   end
 
   it "comma separated set list" do
-    assert_search_equal "e:cmd or e:cm1 or e:c13 or e:c14 or e:c15 or e:c16 or e:c17 or e:cma or e:cm2", "e:cmd,cm1,c13,c14,c15,c16,c17,cma,cm2"
-    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cm1,c13,c14,c15,c16,c17,cma,cm2 -alt:-e:cmd,cm1,c13,c14,c15,c16,c17,cma,cm2"
+    assert_search_equal "e:cmd or e:cm1 or e:c13 or e:c14 or e:c15 or e:c16 or e:c17 or e:c18 or e:cma or e:cm2", "e:cmd,cm1,c13,c14,c15,c16,c17,c18,cma,cm2"
+    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cm1,c13,c14,c15,c16,c17,c18,cma,cm2 -alt:-e:cmd,cm1,c13,c14,c15,c16,c17,c18,cma,cm2"
   end
 
   it "comma separated block list" do
@@ -372,7 +374,7 @@ describe "Full Database Test" do
 
   it "is commander" do
     # Some C14 commanders got reprited
-    assert_search_equal_cards "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,bbd)"
+    assert_search_equal_cards "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,c18,bbd)"
   end
 
   # Bugfix
