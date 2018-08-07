@@ -16,6 +16,7 @@ Options:
 
 import sys
 
+import contextlib
 import docopt
 import gitdir.host.github
 import json
@@ -135,7 +136,8 @@ def run(*, do_name_check=True, verbose=False):
     try:
         stage = gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path
         cmd(['git', 'reset-to-remote', '--branch=lore-seeker'], cwd=str(stage), announce=verbose)
-        bot_cmd('reload')
+        with contextlib.suppress(ConnectionRefusedError): # no need to reload Discord bot's card database if the bot isn't running
+            bot_cmd('reload')
         #if do_name_check:
         #    name_check(stage, verbose=verbose)
         cmd(['rake', 'rules:update'], cwd=str(stage), announce=verbose)
