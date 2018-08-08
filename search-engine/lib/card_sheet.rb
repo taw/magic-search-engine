@@ -32,7 +32,6 @@ class CardSheet
 
   # This is as far as our collation emulation goes
   # FIXME: We should check we're not infinite looping here
-  # FIXME: Even for God sheet, it's going to be super slow
   def random_cards_without_duplicates(count)
     result = Set[]
     count.times do
