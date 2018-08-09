@@ -51,17 +51,7 @@ class CardSheet
       else
         [element]
       end
-    end
-  end
-
-  def number_of_cards
-    @elements.map do |element|
-      if element.is_a?(CardSheet)
-        element.number_of_cards
-      else
-        1
-      end
-    end.inject(0, &:+)
+    end.uniq
   end
 
   def probabilities

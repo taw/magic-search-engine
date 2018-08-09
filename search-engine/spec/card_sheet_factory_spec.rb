@@ -125,44 +125,62 @@ describe CardSheetFactory do
   end
 
   context "flip cards" do
-    it "Champions of Kamigawa" do
-      pack = pack_factory.for("chk")
-      pack.nonfoil_cards.size.should eq(88+89+110+20)
-      factory.rare_or_mythic("chk").number_of_cards.should eq(88)
-      # TODO: Brothers Yamazaki alt art
-      factory.rarity("chk", "uncommon").number_of_cards.should eq(88+1)
-      factory.rarity("chk", "common").number_of_cards.should eq(110)
-      factory.rarity("chk", "basic").number_of_cards.should eq(20)
+    let(:pack) { pack_factory.for(set_code) }
+    let(:number_of_cards) { pack.nonfoil_cards.size }
+    let(:number_of_basics) { factory.rarity(set_code, "basic").cards.size }
+    let(:number_of_commons) { factory.rarity(set_code, "common").cards.size }
+    let(:number_of_uncommons) { factory.rarity(set_code, "uncommon").cards.size }
+    let(:number_of_rares) { factory.rare_or_mythic(set_code).cards.size }
+
+    describe "Champions of Kamigawa" do
+      let(:set_code) { "chk" }
+      it do
+        number_of_cards.should eq(88+89+110+20)
+        number_of_rares.should eq(88)
+        # TODO: Brothers Yamazaki alt art
+        number_of_uncommons.should eq(88+1)
+        number_of_commons.should eq(110)
+        number_of_basics.should eq(20)
+      end
     end
 
-    it "Betrayers of Kamigawa" do
-      pack = pack_factory.for("bok")
-      pack.nonfoil_cards.size.should eq(55+55+55)
-      factory.rare_or_mythic("bok").number_of_cards.should eq(55)
-      factory.rarity("bok", "uncommon").number_of_cards.should eq(55)
-      factory.rarity("bok", "common").number_of_cards.should eq(55)
+    describe "Betrayers of Kamigawa" do
+      let(:set_code) { "bok" }
+      it do
+        number_of_cards.should eq(55+55+55)
+        number_of_rares.should eq(55)
+        number_of_uncommons.should eq(55)
+        number_of_commons.should eq(55)
+      end
     end
 
-    it "Saviors of Kamigawa" do
-      pack = pack_factory.for("sok")
-      pack.nonfoil_cards.size.should eq(55+55+55)
-      factory.rare_or_mythic("sok").number_of_cards.should eq(55)
-      factory.rarity("sok", "uncommon").number_of_cards.should eq(55)
-      factory.rarity("sok", "common").number_of_cards.should eq(55)
+    describe "Saviors of Kamigawa" do
+      let(:set_code) { "sok" }
+      it do
+        number_of_cards.should eq(55+55+55)
+        number_of_rares.should eq(55)
+        number_of_uncommons.should eq(55)
+        number_of_commons.should eq(55)
+      end
     end
   end
 
   context "physical cards are properly setup" do
-    it "Dissention" do
-      pack = pack_factory.for("di")
-      pack.nonfoil_cards.size.should eq(60+60+60)
-      # 5 rares are split
-      factory.rare_or_mythic("di").number_of_cards.should eq(60)
-      # 5 rares are split
-      factory.rarity("di", "uncommon").number_of_cards.should eq(60)
-      factory.rarity("di", "common").number_of_cards.should eq(60)
-      # split cards setup correctly
-      factory.rarity("di", "uncommon").elements.map(&:name).should include("Trial // Error")
+    describe "Dissention" do
+      let(:pack) { pack_factory.for("di") }
+      let(:rares) { factory.rarity("di", "uncommon").cards }
+      let(:uncommons) { factory.rarity("di", "uncommon").cards }
+      let(:commons) { factory.rarity("di", "common").cards }
+      it do
+        pack.nonfoil_cards.size.should eq(60+60+60)
+        # 5 rares are split
+        rares.size.should eq(60)
+        # 5 uncommons are split
+        uncommons.size.should eq(60)
+        commons.size.should eq(60)
+        # split cards setup correctly
+        uncommons.map(&:name).should include("Trial // Error")
+      end
     end
   end
 
