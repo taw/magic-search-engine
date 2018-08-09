@@ -11,7 +11,7 @@ describe CardSheet do
 
     it "cards" do
       sheet = factory.rare_or_mythic("m10")
-      sheet.number_of_cards.should eq(15+53)
+      sheet.cards.size.should eq(15+53)
       expected = db.search("e:m10 r>=rare").printings
       actual = sheet.cards.map(&:main_front)
       expected.should match_array(actual)
