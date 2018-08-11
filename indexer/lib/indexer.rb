@@ -135,6 +135,7 @@ class Indexer
       PatchDeleteIncompleteCards,
       PatchClashPacksRarity,
       PatchAeLigature,
+      PatchFlipCardManaCost,
 
       # Not bugs, more like different judgment calls than mtgjson
       PatchBfm,

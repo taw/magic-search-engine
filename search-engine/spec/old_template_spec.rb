@@ -5,7 +5,7 @@ describe "Old templates" do
   include_context "db"
 
   it do
-    assert_count_cards %Q[o:"mana pool"], 3
+    assert_count_cards %Q[o:"mana pool"], 2
   end
 
   it do
