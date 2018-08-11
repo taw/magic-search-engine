@@ -3,10 +3,10 @@
 .row
   .col-12
     %h4 Magic: The Gathering Comprehensive Rules
-    %p These rules are effective as of July 13, 2018.
+    %p These rules are effective as of August 10, 2018.
     %h3{id: "section-introduction"} Introduction
     %p This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
-    %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules. If you have questions, you can get the answers from us at Wizards.CustHelp.com.
+    %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules. If you have questions, you can get the answers from us at Support.Wizards.com.
     %h3{id: "section-contents"} Contents
     %ul.tos_section
       %li
@@ -461,7 +461,7 @@
       .rule_text If an effect allows a player to perform an action “any time [that player] could mulligan,” the player may perform that action at a time they would declare whether they will take a mulligan. This need not be in the first round of mulligans. Other players may have already made their mulligan declarations by the time the player has the option to perform this action. If the player performs the action, they then declare whether they will take a mulligan.
     .rule{id: "section-103-4c"}
       .rule_id 103.4c
-      .rule_text In a multiplayer game and in any Brawl game, the first time a player takes a mulligan, they draw a new hand of as many cards they as had before. Subsequent hands decrease by one card as normal.
+      .rule_text In a multiplayer game and in any Brawl game, the first time a player takes a mulligan, they draw a new hand of as many cards as they had before. Subsequent hands decrease by one card as normal.
     .rule{id: "section-103-4d"}
       .rule_id 103.4d
       .rule_text In a multiplayer game using the shared team turns option, first each player on the starting team declares whether that player will take a mulligan, then the players on each other team in turn order do the same. Teammates may consult while making their decisions. Then all mulligans are taken at the same time. A player may take a mulligan even after a teammate has decided to keep their opening hand.
@@ -920,7 +920,7 @@
       .rule_text A spell or ability that creates a token sets both its name and its subtype. If the spell or ability doesn’t specify the name of the token, its name is the same as its subtype(s). A “Goblin Scout creature token,” for example, is named “Goblin Scout” and has the creature subtypes Goblin and Scout. Once a token is on the battlefield, changing its name doesn’t change its subtype, and vice versa.
     .rule{id: "section-110-5d"}
       .rule_id 110.5d
-      .rule_text If a spell or ability would create a token, but an effect states that a permanent with one or more of that token’s characteristics can’t enter the battlefield, the token is not created.
+      .rule_text If a spell or ability would create a token, but a rule or effect states that a permanent with one or more of that token’s characteristics can’t enter the battlefield, the token is not created.
     .rule{id: "section-110-5e"}
       .rule_id 110.5e
       .rule_text A token is subject to anything that affects permanents in general or that affects the token’s card type or subtype. A token isn’t a card (even if represented by a card that has a Magic back or that came from a Magic booster pack).
@@ -1243,7 +1243,7 @@
       .rule_text A player may take some special actions any time they have priority. A player may take other special actions during their main phase any time they have priority and the stack is empty. See rule <a href="#section-115">115</a>, “Special Actions.”
     .rule{id: "section-116-1d"}
       .rule_id 116.1d
-      .rule_text A player may activate a mana ability whenever they have priority, whenever they have casting a spell or activating an ability that requires a mana payment, or whenever a rule or effect asks for a mana payment (even in the middle of casting or resolving a spell or activating or resolving an ability).
+      .rule_text A player may activate a mana ability whenever they have priority, whenever they are casting a spell or activating an ability that requires a mana payment, or whenever a rule or effect asks for a mana payment (even in the middle of casting or resolving a spell or activating or resolving an ability).
     .rule{id: "section-116-2"}
       .rule_id 116.2.
       .rule_text Other kinds of abilities and actions are automatically generated or performed by the game rules, or are performed by players without receiving priority.
@@ -1717,14 +1717,17 @@
       .rule_text The converted mana cost of a melded permanent is calculated as though it had the combined mana cost of the front faces of each card that represents it. If a permanent is a copy of a melded permanent (even if that copy is represented by two other meld cards), the converted mana cost of the copy is 0.
     .rule{id: "section-202-3d"}
       .rule_id 202.3d
-      .rule_text When calculating the converted mana cost of an object with an <span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span> in its mana cost, X is treated as 0 while the object is not on the stack, and X is treated as the number chosen for it while the object is on the stack.
+      .rule_text The converted mana cost of a split card not on the stack or of a fused split spell on the stack is determined from the combined mana costs of its halves. Otherwise, while a split card is on the stack, the converted mana cost of the spell is determined by the mana cost of the half that was chosen to be cast. See rule <a href="#section-708">708</a>, “Split Cards.”
     .rule{id: "section-202-3e"}
       .rule_id 202.3e
+      .rule_text When calculating the converted mana cost of an object with an <span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span> in its mana cost, X is treated as 0 while the object is not on the stack, and X is treated as the number chosen for it while the object is on the stack.
+    .rule{id: "section-202-3f"}
+      .rule_id 202.3f
       .rule_text When calculating the converted mana cost of an object with a hybrid mana symbol in its mana cost, use the largest component of each hybrid symbol.
       .rule_text Example: The converted mana cost of a card with mana cost <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span><span class="mana mana-cost mana-wu"><span class="sr-only">{W/U}</span></span><span class="mana mana-cost mana-wu"><span class="sr-only">{W/U}</span></span></span> is 3.
       .rule_text Example: The converted mana cost of a card with mana cost <span class="manacost"><span class="mana mana-cost mana-2b"><span class="sr-only">{2/B}</span></span><span class="mana mana-cost mana-2b"><span class="sr-only">{2/B}</span></span><span class="mana mana-cost mana-2b"><span class="sr-only">{2/B}</span></span></span> is 6.
-    .rule{id: "section-202-3f"}
-      .rule_id 202.3f
+    .rule{id: "section-202-3g"}
+      .rule_id 202.3g
       .rule_text Each Phyrexian mana symbol in a card’s mana cost contributes 1 to its converted mana cost.
       .rule_text Example: The converted mana cost of a card with mana cost <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span><span class="mana mana-cost mana-wp"><span class="sr-only">{W/P}</span></span><span class="mana mana-cost mana-wp"><span class="sr-only">{W/P}</span></span></span> is 3.
     .rule{id: "section-202-4"}
@@ -1807,7 +1810,7 @@
       .rule_text      Of that list, Forest, Island, Mountain, Plains, and Swamp are the basic land types. See rule <a href="#section-305-6">305.6</a>.
     .rule{id: "section-205-3j"}
       .rule_id 205.3j
-      .rule_text Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Angrath, Arlinn, Ashiok, Bolas, Chandra, Dack, Daretti, Domri, Dovin, Elspeth, Freyalise, Garruk, Gideon, Huatli, Jace, Jaya, Karn, Kaya, Kiora, Koth, Liliana, Nahiri, Narset, Nissa, Nixilis, Ral, Rowan, Saheeli, Samut, Sarkhan, Sorin, Tamiyo, Teferi, Tezzeret, Tibalt, Ugin, Venser, Vivien, Vraska, Will, Xenagos, Yanggu, and Yanling.
+      .rule_text Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Aminatou, Angrath, Arlinn, Ashiok, Bolas, Chandra, Dack, Daretti, Domri, Dovin, Elspeth, Estrid, Freyalise, Garruk, Gideon, Huatli, Jace, Jaya, Karn, Kaya, Kiora, Koth, Liliana, Nahiri, Narset, Nissa, Nixilis, Ral, Rowan, Saheeli, Samut, Sarkhan, Sorin, Tamiyo, Teferi, Tezzeret, Tibalt, Ugin, Venser, Vivien, Vraska, Will, Windgrace, Xenagos, Yanggu, and Yanling.
     .rule{id: "section-205-3k"}
       .rule_id 205.3k
       .rule_text Instants and sorceries share their lists of subtypes; these subtypes are called spell types. The spell types are Arcane and Trap.
@@ -2103,7 +2106,7 @@
       .rule_text If an effect attempts to put a permanent that isn’t an Aura, Equipment, or Fortification onto the battlefield attached to an object or player, it enters the battlefield unattached.
     .rule{id: "section-303-4i"}
       .rule_id 303.4i
-      .rule_text If an effect attempts to put an Aura onto the battlefield enchanting an object or player it can’t legally enchant, the Aura remains in its current zone.
+      .rule_text If an effect attempts to put an Aura onto the battlefield attached to an object or player it can’t legally enchant, the Aura remains in its current zone, unless that zone is the stack. In that case, the Aura is put into its owner’s graveyard instead of entering the battlefield. If the Aura is a token, it isn’t created.
     .rule{id: "section-303-4j"}
       .rule_id 303.4j
       .rule_text If an effect attempts to attach an Aura on the battlefield to an object or player it can’t legally enchant, the Aura doesn’t move.
@@ -4508,9 +4511,12 @@
       .rule_text If an effect instructs a player to manifest multiple cards from their library, those cards are manifested one at a time.
     .rule{id: "section-701-33e"}
       .rule_id 701.33e
-      .rule_text If a manifested permanent that’s represented by an instant or sorcery card would turn face up, its controller reveals it and leaves it face down. Abilities that trigger whenever a permanent is turned face up won’t trigger.
+      .rule_text If an effect instructs a player to manifest a card and a rule or effect prohibits the face-down object from entering the battlefield, that card isn’t manifested. Its characteristics remain unmodified and it remains in its previous zone. If it was face up, it remains face up.
     .rule{id: "section-701-33f"}
       .rule_id 701.33f
+      .rule_text If a manifested permanent that’s represented by an instant or sorcery card would turn face up, its controller reveals it and leaves it face down. Abilities that trigger whenever a permanent is turned face up won’t trigger.
+    .rule{id: "section-701-33g"}
+      .rule_id 701.33g
       .rule_text See rule <a href="#section-707">707</a>, “Face-Down Spells and Permanents,” for more information.
     .rule{id: "section-701-34"}
       .rule_id 701.34.
@@ -5297,6 +5303,9 @@
     .rule{id: "section-702-48c"}
       .rule_id 702.48c
       .rule_text A ninjutsu ability may be activated only while a creature on the battlefield is unblocked (see rule <a href="#section-509-1h">509.1h</a>). The creature with ninjutsu is put onto the battlefield unblocked. It will be attacking the same player or planeswalker as the creature that was returned to its owner’s hand.
+    .rule{id: "section-702-48d"}
+      .rule_id 702.48d
+      .rule_text Commander ninjutsu is a variant of the ninjutsu ability that also functions while the card with commander ninjutsu is in the command zone. “Commander ninjutsu [cost]” means “[Cost], Reveal this card from your hand or from the command zone, Return an unblocked attacking creature you control to its owner’s hand: Put this card onto the battlefield tapped and attacking.”
     .rule{id: "section-702-49"}
       .rule_id 702.49.
       .rule_text Epic
@@ -6866,7 +6875,7 @@
       .rule_text A player’s main-game counters aren’t considered part of the subgame, although the player will still have them when the main game resumes. Similarly, any counters a player gets during a subgame will cease to exist when the subgame ends.
     .rule{id: "section-719-5"}
       .rule_id 719.5.
-      .rule_text At the end of a subgame, each player takes all cards they own that are in the subgame other than those in the subgame command zone, puts them into their main-game library, then shuffles them. This includes cards in the subgame’s exile zone. Except as specified in rules <a href="#section-719-5a">719.5a</a>–c, all other objects in the subgame cease to exist, as do the zones created for the subgame. The main game continues from the point at which it was discontinued: First, the spell or ability that created the subgame finishes resolving, even if it was created by a spell card that’s no longer on the stack. Then, if any main-game abilities triggered while the subgame was in progress due to cards being removed from the main game, those abilities are put onto the stack.
+      .rule_text At the end of a subgame, each player takes all cards they own that are in the subgame other than those in the subgame command zone, puts them into their main-game library, then shuffles them. This includes cards in the subgame’s exile zone. Except as specified in rules <a href="#section-719-5a">719.5a</a>–d, all other objects in the subgame cease to exist, as do the zones created for the subgame. The main game continues from the point at which it was discontinued: First, the spell or ability that created the subgame finishes resolving, even if it was created by a spell card that’s no longer on the stack. Then, if any main-game abilities triggered while the subgame was in progress due to cards being removed from the main game, those abilities are put onto the stack.
       .rule_text Example: If a card was brought into the subgame either from the main game or from outside the main game, that card will be put into its owner’s main-game library when the subgame ends.
     .rule{id: "section-719-5a"}
       .rule_id 719.5a
@@ -7727,7 +7736,7 @@
       .rule_text Once the starting player has been determined, each player sets their life total to 40 and draws a hand of seven cards.
     .rule{id: "section-903-8"}
       .rule_id 903.8.
-      .rule_text A player may cast a commander they own from the command zone. A commander cast from the command zone costs an additional <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span></span> for each previous time the player casting it has cast it from the command zone that game.
+      .rule_text A player may cast a commander they own from the command zone. A commander cast from the command zone costs an additional <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span></span> for each previous time the player casting it has cast it from the command zone that game. This additional cost is informally known as the “commander tax.”
     .rule{id: "section-903-9"}
       .rule_id 903.9.
       .rule_text If a commander would be exiled from anywhere or put into its owner’s hand, graveyard, or library from anywhere, its owner may put it into the command zone instead. This replacement effect may apply more than once to the same event. This is an exception to rule <a href="#section-614-5">614.5</a>.
@@ -8153,6 +8162,12 @@
       .glossary_term Commander
       .glossary_definition 1. A casual variant in which each deck is led by a legendary creature. See rule <a href="#section-903">903</a>, “Commander.” 2. A designation given to one legendary creature card in each player’s deck in the Commander casual variant.
     .glossary_entry
+      .glossary_term Commander Ninjutsu
+      .glossary_definition A variant of the ninjutsu ability. See rule <a href="#section-702-48">702.48</a>, “Ninjutsu.”
+    .glossary_entry
+      .glossary_term Commander Tax
+      .glossary_definition Informal term for the additional cost to cast a commander based on the number of times a player has cast it previously this game. See rule <a href="#section-903-8">903.8</a>.
+    .glossary_entry
       .glossary_term Concede
       .glossary_definition To quit the game. Conceding a game immediately causes that player to leave that game and lose that game. See rule <a href="#section-104">104</a>, “Ending the Game.”
     .glossary_entry
@@ -8294,11 +8309,14 @@
       .glossary_term Discard
       .glossary_definition To move a card from its owner’s hand to that player’s graveyard. See rule <a href="#section-701-8">701.8</a>, “Discard.”
     .glossary_entry
-      .glossary_term Double-Faced Cards
-      .glossary_definition Cards with two faces, one on each side of the card, and no Magic card back. See rule <a href="#section-711">711</a>, “Double-Faced Cards.”
+      .glossary_term Double Agenda
+      .glossary_definition A variant of the hidden agenda ability. See rule <a href="#section-702-105">702.105</a>, “Hidden Agenda.”
     .glossary_entry
       .glossary_term Double Strike
       .glossary_definition A keyword ability that lets a creature deal its combat damage twice. See rule <a href="#section-702-4">702.4</a>, “Double Strike.”
+    .glossary_entry
+      .glossary_term Double-Faced Cards
+      .glossary_definition Cards with two faces, one on each side of the card, and no Magic card back. See rule <a href="#section-711">711</a>, “Double-Faced Cards.”
     .glossary_entry
       .glossary_term Draft
       .glossary_definition 1. A Limited format in which players choose cards one at a time from booster packs, then construct a deck solely from the chosen cards and basic land cards. 2. To choose a card during a draft and put it into your card pool.
@@ -8565,7 +8583,7 @@
       .glossary_definition A keyword ability that restricts how a creature may be blocked. See rule <a href="#section-702-30">702.30</a>, “Horsemanship.”
     .glossary_entry
       .glossary_term Hybrid Card
-      .glossary_definition A card with one or more hybrid mana symbols in its mana cost. See rule <a href="#section-202-2d">202.2d</a>.
+      .glossary_definition A card with one or more hybrid mana symbols in its mana cost. See rule <a href="#section-202-2f">202.2f</a>.
     .glossary_entry
       .glossary_term Hybrid Mana Symbols
       .glossary_definition A mana symbol that represents a cost that can be paid in one of two ways. See rule <a href="#section-107-4">107.4</a>.
@@ -9500,5 +9518,5 @@
     %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, and Matt Tabak, with contributions from Charlie C. Atino, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Eli Shiffrin, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead), Glenn Jones, Gregg Luben, Nat Moes, and Matt Tabak Magic Rules Management: Eli Shiffrin
     %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie C. Atino, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
     %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-    %p These rules are effective as of July 13, 2018.
+    %p These rules are effective as of August 10, 2018.
     %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, Magic: The Gathering—Conspiracy, Ixalan, Unglued, Unstable, Dominaria, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. Unhinged is a trademark of Horn Abbot Ltd. and is used with permission. ©2018 Wizards. U.S. Pat. No. RE 37,957.
