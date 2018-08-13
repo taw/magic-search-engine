@@ -3597,6 +3597,12 @@
             "originalText": "Copy target activated or triggered ability an opponent controls. You may choose new targets for the copy.",
             "originalType": "Instant",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2018-08-13",
+                    "text": "If Emulate is used to copy the last ability of one of the hideaway lands from Magic Villains (e.g. Unassuming Falls), the interaction works as follows: The activation restriction is ignored, since you're copying the ability, not activating it. You choose whether or not to cast the card before looking at it. If you decide to cast it, you have to follow through with the casting process, unless you can produce an illegal spell proposal (e.g. by choosing an additional cost and then not producing the mana to pay it). Once the spell has resolved, the original hideaway land activation will resolve, but there is no longer an exiled card for your opponent to cast, so nothing happens. If you're not able to cast the card (e.g. because it's a land, or because there are no legal targets), the game state reverts to before the casting process, but the card remains face-up. You now have to choose not to cast the card. Once the original ability resolves, your opponent is allowed to cast the card if possible."
+                }
+            ],
             "text": "Copy target activated or triggered ability an opponent controls. You may choose new targets for the copy.",
             "type": "Instant",
             "types": [
