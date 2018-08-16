@@ -26,8 +26,8 @@ class Card
     @colors = data["colors"] || ""
     @funny = data["funny"]
     @text = (data["text"] || "")
-    @text = @text.gsub(/\([^\(\)]*\)/, "") unless @funny
-    @text = -@text.sub(/\s*\z/, "").sub(/\A\s*/, "")
+    @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless @funny
+    @text = -@text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
     @text_normalized = -@text.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
     @augment = !!(@text =~ /augment \{/i)
     @mana_cost = data["manaCost"]
