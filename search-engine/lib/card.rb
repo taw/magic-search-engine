@@ -26,14 +26,15 @@ class Card
     @colors = data["colors"] || ""
     @funny = data["funny"]
     @text = (data["text"] || "")
-    @text = @text.gsub(/\([^\(\)]*\)/, "") unless @funny
-    @text = @text.sub(/\s*\z/, "").sub(/\A\s*/, "")
-    @text_normalized = @text.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
-    @text_normalized = @text if @text_normalized == @text # Memory saving trick
+    @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless @funny
+    @text = -@text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
+    @text_normalized = -@text.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
     @augment = !!(@text =~ /augment \{/i)
-    @mana_cost = data["manaCost"] ? data["manaCost"].downcase : nil
+    @mana_cost = data["manaCost"]
     @reserved = data["reserved"] || false
-    @types = ["types", "subtypes", "supertypes"].flat_map{|t| data[t] || []}.map{|t| t.downcase.tr("’\u2212", "'-").gsub("'s", "").tr(" ", "-")}.to_set
+    @types = ["types", "subtypes", "supertypes"]
+      .flat_map{|t| data[t] || []}
+      .map{|t| -t.downcase.tr("’\u2212", "'-").gsub("'s", "").tr(" ", "-")}
     @cmc = data["cmc"] || 0
     @power = data["power"] ? smart_convert_powtou(data["power"]) : nil
     @toughness = data["toughness"] ? smart_convert_powtou(data["toughness"]) : nil
@@ -50,16 +51,21 @@ class Card
     @life = data["life"]
     @rulings = data["rulings"]
     @secondary = data["secondary"]
-    @foreign_names = data["foreign_names"] || {}
+    if data["foreign_names"]
+      @foreign_names = data["foreign_names"].map{|k,v| [k.to_sym,v]}.to_h
+    else
+      @foreign_names = {}
+    end
     @foreign_names_normalized = {}
     @foreign_names.each do |lang, names|
       @foreign_names_normalized[lang] = names.map{|n| hard_normalize(n)}
     end
-    @typeline = [data["supertypes"], data["types"]].compact.flatten.join(" ")
     @related = data["related"]
+    @typeline = [data["supertypes"], data["types"]].compact.flatten.join(" ")
     if data["subtypes"]
       @typeline += " - #{data["subtypes"].join(" ")}"
     end
+    @typeline = -@typeline
     calculate_mana_hash
     calculate_color_indicator
     calculate_reminder_text
@@ -164,15 +170,15 @@ class Card
   end
 
   def normalize_mana_symbol(sym)
-    sym.downcase.tr("/{}", "").chars.sort.join
+    -sym.downcase.tr("/{}", "").chars.sort.join
   end
 
   def normalize_name(name)
-    name.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
+    -name.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
   end
 
   def hard_normalize(s)
-    UnicodeUtils.downcase(UnicodeUtils.nfd(s).gsub(/\p{Mn}/, ""))
+    -UnicodeUtils.downcase(UnicodeUtils.nfd(s).gsub(/\p{Mn}/, ""))
   end
 
   def smart_convert_powtou(val)
@@ -235,7 +241,7 @@ class Card
       tci = {"forest" => "g", "mountain" => "r", "plains" => "w", "island" => "u", "swamp" => "b"}[t]
       ci << tci if tci
     end
-    ci.sort.uniq.join
+    -ci.sort.uniq.join
   end
 
   def calculate_color_indicator

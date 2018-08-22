@@ -104,28 +104,31 @@ class CardControllerTest < ActionController::TestCase
   # color indicator
   test "devoid" do
     get "index", params: {q: "Complete Disregard"}
-    assert_equal "Devoid Exile target creature with power 3 or less.",
-      html_document.at(".oracle").text.strip
+    text = html_document.at(".oracle").inner_html.strip.gsub("<br>", "\n")
+    assert_equal "Devoid\nExile target creature with power 3 or less.", text
   end
 
   test "color indicator" do
     get "index", params: {q: "Ancestral Vision"}
-    assert_includes html_document.at(".oracle").text.strip, "(Color indicator: Ancestral Vision is blue)"
+    text = html_document.at(".oracle").inner_html.strip.gsub("<br>", "\n")
+    assert_includes text, "(Color indicator: Ancestral Vision is blue)"
   end
 
   test "DFCs" do
     get "index", params: {q: "Garruk, the Veil-Cursed"}
-    assert_includes html_document.at(".oracle").text.strip, "(Color indicator: Garruk, the Veil-Cursed is black and green)"
+    text = html_document.at(".oracle").inner_html.strip.gsub("<br>", "\n")
+    assert_includes text, "(Color indicator: Garruk, the Veil-Cursed is black and green)"
   end
 
   test "Transguild Courier" do
     get "index", params: {q: "Transguild Courier"}
-    assert_includes html_document.at(".oracle").text.strip, "(Color indicator: Transguild Courier is all colors)"
+    text = html_document.at(".oracle").inner_html.strip.gsub("<br>", "\n")
+    assert_includes text, "(Color indicator: Transguild Courier is all colors)"
   end
 
   test "Ghostfire" do
     get "index", params: {q: "Ghostfire"}
-    assert_equal "Ghostfire is colorless.Ghostfire deals 3 damage to any target.",
-      html_document.at(".oracle").text.strip
+    text = html_document.at(".oracle").inner_html.strip.gsub("<br>", "\n")
+    assert_equal "Ghostfire is colorless.\nGhostfire deals 3 damage to any target.", text
   end
 end

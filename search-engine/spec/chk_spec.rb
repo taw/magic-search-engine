@@ -9,9 +9,11 @@ describe "Champions of Kamigawa" do
   end
 
   # 709.1c A flip card’s color and mana cost don’t change if the permanent is flipped. Also, any changes to it by external effects will still apply.
+  # However it's really confusing to print that in card titleline, as it's not directly castable
   it "flip card mana cost" do
     "cmc=4"  .should include_cards "Kitsune Mystic", "Autumn-Tail, Kitsune Sage"
-    "mana=3w".should include_cards "Kitsune Mystic", "Autumn-Tail, Kitsune Sage"
+    "mana=3w".should include_cards "Kitsune Mystic"
+    "mana=3w".should exclude_cards "Autumn-Tail, Kitsune Sage"
   end
 
   it "is:primary" do

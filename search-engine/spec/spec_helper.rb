@@ -19,12 +19,12 @@ end
 
 RSpec::Matchers.define :include_cards do |*cards|
   match do |query_string|
-    results = search(query_string)
+    results = search_names(query_string)
     cards.all?{|card| results.include?(card)}
   end
 
   failure_message do |query_string|
-    results = search(query_string)
+    results = search_names(query_string)
     fails = cards.reject{|card| results.include?(card)}
     "Expected `#{query_string}' to include following cards:\n" +
       fails.map{|c| "* #{c}\n"}.join
@@ -33,12 +33,12 @@ end
 
 RSpec::Matchers.define :exclude_cards do |*cards|
   match do |query_string|
-    results = search(query_string)
+    results = search_names(query_string)
     results != [] and cards.none?{|card| results.include?(card)}
   end
 
   failure_message do |query_string|
-    results = search(query_string)
+    results = search_names(query_string)
     fails = cards.select{|card| results.include?(card)}
     if fails != []
       "Expected `#{query_string}' to exclude following cards:\n" +
@@ -63,7 +63,7 @@ end
 
 RSpec::Matchers.define :return_cards do |*cards|
   match do |query_string|
-    search(query_string).sort == cards.sort
+    search_names(query_string).sort == cards.sort
   end
 
   failure_message do |query_string|
@@ -79,12 +79,12 @@ end
 
 RSpec::Matchers.define :return_cards_in_order do |*cards|
   match do |query_string|
-    search(query_string) == cards
+    search_names(query_string) == cards
   end
 
   # TODO: Better error message here
   failure_message do |query_string|
-    results = search(query_string)
+    results = search_names(query_string)
     "Expected `#{query_string}' to return:\n" +
       cards.map{|c| "* #{c}\n"}.join +
     "\nInstead got:\n" +
@@ -115,7 +115,40 @@ RSpec::Matchers.define :equal_search do |query_string2|
   end
 end
 
-RSpec::Matchers.define :have_result_count do |count|
+RSpec::Matchers.define :equal_search_cards do |query_string2|
+  match do |query_string1|
+    results1 = search_names(query_string1)
+    results2 = search_names(query_string2)
+    results1 == results2 and results1 != []
+  end
+
+  failure_message do |query_string1|
+    results1 = search_names(query_string1)
+    results2 = search_names(query_string2)
+    if results1 != results2
+      "Expected `#{query_string1}' and `#{query_string2}' to return same results, got:\n"+
+        (results1 | results2).sort.map{|c|
+        (results1.include?(c) ? "[*]" : "[ ]") +
+        (results2.include?(c) ? "[*]" : "[ ]") +
+        "#{c}\n"
+      }.join
+    else
+      "Test is unreliable because results are empty: #{query_string1}"
+    end
+  end
+end
+
+RSpec::Matchers.define :have_count_cards do |count|
+  match do |query_string|
+    search_names(query_string).size == count
+  end
+
+  failure_message do |query_string|
+    "Expected `#{query_string}' to return #{count} results, got #{search_names(query_string).size} instead."
+  end
+end
+
+RSpec::Matchers.define :have_count_printings do |count|
   match do |query_string|
     search(query_string).size == count
   end
@@ -133,6 +166,10 @@ shared_context "db" do |*sets|
   end
 
   def search(query_string)
+    Query.new(query_string).search(db).card_ids
+  end
+
+  def search_names(query_string)
     Query.new(query_string).search(db).card_names
   end
 
@@ -151,11 +188,20 @@ shared_context "db" do |*sets|
   def assert_search_equal(query1, query2)
     query1.should equal_search(query2)
   end
+  def assert_search_equal_cards(query1, query2)
+    query1.should equal_search_cards(query2)
+  end
   def assert_search_differ(query1, query2)
     query1.should_not equal_search(query2)
   end
-  def assert_count_results(query, count)
-    query.should have_result_count(count)
+  def assert_search_differ_cards(query1, query2)
+    query1.should_not equal_search_cards(query2)
+  end
+  def assert_count_cards(query, count)
+    query.should have_count_cards(count)
+  end
+  def assert_count_printings(query, count)
+    query.should have_count_printings(count)
   end
   def assert_search_results_ordered(query, *results)
     query.should return_cards_in_order(*results)
@@ -260,7 +306,7 @@ shared_context "db" do |*sets|
       raise "Unknown set #{set_code}" unless db.sets[set_code]
       db.sets[set_code].printings.each do |card_printing|
         next if %W[vanguard plane phenomenon scheme token].include?(card_printing.layout)
-        next if card_printing.types == Set["conspiracy"]
+        next if card_printing.types == ["conspiracy"]
         expected_legality[card_printing.name] = "legal"
       end
     end

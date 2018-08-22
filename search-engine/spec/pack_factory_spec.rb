@@ -514,6 +514,46 @@ describe PackFactory do
     end
   end
 
+  # Foil rates are total speculation
+  # But there's definitely separate draft and nondraft foils
+  context "Conspiracy" do
+    let(:pack) { factory.for("cns") }
+    let(:ev) { pack.expected_values }
+    let(:common) { physical_card("e:cns -is:draft r:common", foil) }
+    let(:uncommon) { physical_card("e:cns -is:draft r:uncommon", foil) }
+    let(:rare) { physical_card("e:cns -is:draft r:rare", foil) }
+    let(:mythic) { physical_card("e:cns -is:draft r:mythic", foil) }
+    let(:draft_common) { physical_card("e:cns is:draft r:common", foil) }
+    let(:draft_uncommon) { physical_card("e:cns is:draft r:uncommon", foil) }
+    let(:draft_rare) { physical_card("e:cns is:draft r:rare", foil) }
+
+    context "non-foil" do
+      let(:foil) { false }
+      it do
+        ev[common].should eq Rational(975, 100) * Rational(1, 80)
+        ev[uncommon].should eq Rational(3, 60)
+        ev[rare].should eq Rational(2, 80)
+        ev[mythic].should eq Rational(1, 80)
+        ev[draft_common].should eq Rational(39, 40) * Rational(8, 120)
+        ev[draft_uncommon].should eq Rational(39, 40) * Rational(4, 120)
+        ev[draft_rare].should eq Rational(39, 40) * Rational(2, 120)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+      it do
+        ev[common].should eq Rational(1, 4) * Rational(1, 80) * Rational(5, 8)
+        ev[uncommon].should eq Rational(1, 4) * Rational(1, 60) * Rational(2, 8)
+        ev[rare].should eq Rational(1, 4) * Rational(2, 80) * Rational(1, 8)
+        ev[mythic].should eq Rational(1, 4) * Rational(1, 80) * Rational(1, 8)
+        ev[draft_common].should eq Rational(1, 40) * Rational(8, 120)
+        ev[draft_uncommon].should eq Rational(1, 40) * Rational(4, 120)
+        ev[draft_rare].should eq Rational(1, 40) * Rational(2, 120)
+      end
+    end
+  end
+
   context "sets with explicit print sheets" do
     let(:pack) { factory.for(set_code) }
     let(:ev) { pack.expected_values }

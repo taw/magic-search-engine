@@ -32,7 +32,6 @@ class CardSheet
 
   # This is as far as our collation emulation goes
   # FIXME: We should check we're not infinite looping here
-  # FIXME: Even for God sheet, it's going to be super slow
   def random_cards_without_duplicates(count)
     result = Set[]
     count.times do
@@ -52,17 +51,7 @@ class CardSheet
       else
         [element]
       end
-    end
-  end
-
-  def number_of_cards
-    @elements.map do |element|
-      if element.is_a?(CardSheet)
-        element.number_of_cards
-      else
-        1
-      end
-    end.inject(0, &:+)
+    end.uniq
   end
 
   def probabilities

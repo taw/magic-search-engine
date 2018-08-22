@@ -1,7 +1,7 @@
 class CardSet
   attr_reader :name, :code, :official_code, :gatherer_code
   attr_reader :block_name, :block_code, :official_block_code
-  attr_reader :border, :release_date, :printings, :type
+  attr_reader :border, :frame, :release_date, :printings, :type
   attr_reader :decks
 
   def initialize(data)
@@ -13,6 +13,7 @@ class CardSet
     @block_code    = data["block_code"]&.downcase
     @official_block_code = data["official_block_code"]&.downcase
     @border        = data["border"]
+    @frame         = data["frame"]
     @type          = data["type"]
     @release_date  = data["release_date"] && Date.parse(data["release_date"])
     @printings     = Set[]

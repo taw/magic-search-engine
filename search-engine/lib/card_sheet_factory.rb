@@ -358,38 +358,79 @@ class CardSheetFactory
     )
   end
 
-    # for custom sets
+  def cns_draft_foil
+    cns_draft(true)
+  end
 
-    def ayr_land
-      mix_sheets(
-        [from_query("e:AYR t:land r:C", 10), 8], # 80 / 112
-        [from_query("e:AYR t:land r:U", 2), 12], # 24 / 112
-        [from_query("e:AYR t:land r:R", 1), 7], # 7 / 112
-        [from_query("e:AYR t:land r:M", 1), 1] # 1 / 112
-      )
-    end
+  def cns_draft(foil=false)
+    mix_sheets(
+      [from_query('e:cns is:draft r:common', 9, foil: foil), 4],
+      [from_query('e:cns is:draft r:uncommon', 8, foil: foil), 2],
+      [from_query('e:cns is:draft r:rare', 8, foil: foil), 1],
+    )
+  end
 
-    def ayr_common
-      from_query("e:AYR r:C -t:land", 91)
-    end
+  def cns_nondraft_foil
+    sheets = [
+      cns_nondraft_common(true),
+      cns_nondraft_uncommon(true),
+      cns_nondraft_rare_or_mythic(true),
+    ]
+    weights = [
+      5,
+      2,
+      1,
+    ]
+    CardSheet.new(sheets, weights)
+  end
 
-    def ayr_uncommon
-      from_query("e:AYR r:U -t:land", 78)
-    end
+  def cns_nondraft_common(foil=false)
+    from_query('e:cns -is:draft r:common', 80, foil: foil)
+  end
 
-    def ayr_rare_mythic
-      mix_sheets(
-        [from_query("e:AYR r:R -t:land", 52), 2],
-        [from_query("e:AYR r:M -t:land", 14), 1]
-      )
-    end
+  def cns_nondraft_uncommon(foil=false)
+    from_query('e:cns -is:draft r:uncommon', 60, foil: foil)
+  end
 
-    def tsl_dfc
-      mix_sheets(
-        [from_query("e:TSL is:dfc r:C", 4), 75], # 10 / 14
-        [from_query("e:TSL is:dfc r:U", 15), 6], # 3 / 14
-        [from_query("e:TSL is:dfc r:R", 3), 10], # 1 / 14
-        # no mythic DFCs in TSL
-      )
-    end
+  def cns_nondraft_rare_or_mythic(foil=false)
+    mix_sheets(
+      [from_query('e:cns -is:draft r:rare', 35, foil: foil), 2],
+      [from_query('e:cns -is:draft r:mythic', 10, foil: foil), 1],
+    )
+  end
+
+  # for custom sets
+
+  def ayr_land
+    mix_sheets(
+      [from_query("e:AYR t:land r:C", 10), 8], # 80 / 112
+      [from_query("e:AYR t:land r:U", 2), 12], # 24 / 112
+      [from_query("e:AYR t:land r:R", 1), 7], # 7 / 112
+      [from_query("e:AYR t:land r:M", 1), 1] # 1 / 112
+    )
+  end
+
+  def ayr_common
+    from_query("e:AYR r:C -t:land", 91)
+  end
+
+  def ayr_uncommon
+    from_query("e:AYR r:U -t:land", 78)
+  end
+
+  def ayr_rare_mythic
+    mix_sheets(
+      [from_query("e:AYR r:R -t:land", 52), 2],
+      [from_query("e:AYR r:M -t:land", 14), 1]
+    )
+  end
+
+  def tsl_dfc
+    mix_sheets(
+      [from_query("e:TSL is:dfc r:C", 4), 75], # 10 / 14
+      [from_query("e:TSL is:dfc r:U", 15), 6], # 3 / 14
+      [from_query("e:TSL is:dfc r:R", 3), 10], # 1 / 14
+      # no mythic DFCs in TSL
+    )
+  end
 end

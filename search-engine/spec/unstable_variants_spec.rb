@@ -55,7 +55,7 @@ describe "Unsets" do
     expect_variant "delighted t:killbot", "Delighted Killbot", "145B"
     expect_variant "despondent t:killbot", "Despondent Killbot", "145C"
     expect_variant "enraged t:killbot", "Enraged Killbot", "145D"
-    assert_count_results "t:killbot", 4
+    assert_count_cards "t:killbot", 4
   end
 
   it "Knight of the Kitchen Sink" do

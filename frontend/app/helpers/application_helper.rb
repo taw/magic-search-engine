@@ -194,31 +194,31 @@ module ApplicationHelper
 
   def language_name(language_code)
     {
-      "cs" => "Simplified Chinese",
-      "ct" => "Traditional Chinese",
-      "fr" => "French",
-      "de" => "German",
-      "it" => "Italian",
-      "jp" => "Japanese",
-      "kr" => "Korean",
-      "pt" => "Brazilian Portuguese",
-      "ru" => "Russian",
-      "sp" => "Spanish",
+      cs: "Simplified Chinese",
+      ct: "Traditional Chinese",
+      fr: "French",
+      de: "German",
+      it: "Italian",
+      jp: "Japanese",
+      kr: "Korean",
+      pt: "Brazilian Portuguese",
+      ru: "Russian",
+      sp: "Spanish",
     }.fetch(language_code)
   end
 
   def language_flag(language_code)
     {
-      "cs" => "cn",
-      "ct" => "tw",
-      "fr" => "fr",
-      "de" => "de",
-      "it" => "it",
-      "jp" => "jp",
-      "kr" => "kr",
-      "pt" => "br",
-      "ru" => "ru",
-      "sp" => "es",
+      cs: "cn",
+      ct: "tw",
+      fr: "fr",
+      de: "de",
+      it: "it",
+      jp: "jp",
+      kr: "kr",
+      pt: "br",
+      ru: "ru",
+      sp: "es",
     }.fetch(language_code)
   end
 

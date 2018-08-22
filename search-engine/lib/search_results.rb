@@ -11,6 +11,10 @@ class SearchResults
     @printings.map(&:name).uniq
   end
 
+  def card_ids
+    @printings.map{|c| "#{c.name} [#{c.id}]"}
+  end
+
   def card_names_and_set_codes
     @printings.group_by(&:name).map{|name, cards| [name, *cards.map(&:set_code).sort]}
   end

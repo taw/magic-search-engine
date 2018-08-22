@@ -52,7 +52,8 @@ describe "Any queries" do
   end
 
   it "wildcard" do
-    assert_search_equal "t:planeswalker -ru:* de:*", "t:planeswalker e:c14"
+    # Searching cards, as languages are not attached to printings
+    assert_search_equal_cards "t:planeswalker -ru:* de:*", "t:planeswalker e:c14,c18"
   end
 
   it "only caes for full words (except CJK)" do

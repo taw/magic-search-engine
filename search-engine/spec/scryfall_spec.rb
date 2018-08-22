@@ -45,17 +45,17 @@ describe "Scryfall" do
 
   it "reserved" do
     # identical behaviour, at least until they abolish the damn list
-    assert_count_results "is:reserved", 571
+    assert_count_cards "is:reserved", 571
   end
 
   it "meld" do
     # identical behaviour, count both parts and melded cards
-    assert_count_results "is:meld", 9
+    assert_count_cards "is:meld", 9
   end
 
   it "ft_designed" do
     # identical results
-    assert_count_results 'ft:"designed" e:m15', 15
+    assert_count_cards 'ft:"designed" e:m15', 15
   end
 
   it "ft_mishra" do
@@ -105,23 +105,23 @@ describe "Scryfall" do
 
   it "restricted_vintage" do
     # Identical results
-    assert_count_results "restricted:vintage", 46
+    assert_count_cards "restricted:vintage", 46
   end
 
   it "e_mm2" do
     # Identical results
-    assert_count_results "e:mm2", 249
+    assert_count_printings "e:mm2", 249
   end
 
   it "b_zen" do
     # Identical results
-    assert_count_results "b:zen", 607
+    assert_count_printings "b:zen", 662
   end
 
   it "b_wwk" do
     # scryfall allows any set code to be block code
     # maybe that's a good idea
-    assert_count_results "b:wwk", 0
+    assert_count_printings "b:wwk", 0
   end
 
   it "frame_future" do
@@ -265,7 +265,7 @@ describe "Scryfall" do
     # SF is:timeshifted is e:tsts
     # no good way out so we just alias is:colorshifted to is:timeshifted
     assert_search_equal "is:colorshifted", "is:timeshifted"
-    assert_count_results "is:timeshifted", 45
+    assert_count_printings "is:timeshifted", 45
   end
 
   it "oracle_tilde" do

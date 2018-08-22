@@ -20,7 +20,7 @@ describe "Indexer hacks" do
       bfm.text.should eq("You must play both B.F.M. cards to put B.F.M. into play. If either B.F.M. card leaves play, sacrifice the other.\nB.F.M. can be blocked only by three or more creatures.")
       bfm.funny.should eq(true)
       bfm.mana_cost.should eq("{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}")
-      bfm.types.should eq(Set["creature", "the-biggest-baddest-nastiest-scariest-creature-you'll-ever-see"])
+      bfm.types.should eq(["creature", "the-biggest-baddest-nastiest-scariest-creature-you'll-ever-see"])
       bfm.cmc.should eq(15)
       bfm.power.should eq(99)
       bfm.toughness.should eq(99)
@@ -32,7 +32,7 @@ describe "Indexer hacks" do
   end
 
   it "is:funny" do
-    assert_search_equal "is:funny", "e:uh,ug,uqc,hho,ust -t:basic -(Steamflogger Boss)"
+    assert_search_equal_cards "is:funny", "e:uh,ug,uqc,hho,ust -t:basic -(Steamflogger Boss)"
   end
 
   it "Nissa's X loyallty" do

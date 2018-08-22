@@ -173,6 +173,13 @@ describe Deck do
       end
 
       set.decks.each do |deck|
+        if deck.type == "Clash Pack"
+          foils = deck.physical_cards.select(&:foil)
+          clash_pack_cards = deck.physical_cards.select{|c| c.set_code =~ /\Acp/ }
+          foils.should match_array(clash_pack_cards)
+          next
+        end
+
         foils = deck.physical_cards.select(&:foil)
         # Skip if no foils
         next if foils.empty?
