@@ -9,6 +9,10 @@ class Deck
     @slug = @name.downcase.gsub("'s", "s").gsub(/[^a-z0-9s]+/, "-")
   end
 
+  def cards_with_sideboard
+    @cards + @sideboard
+  end
+
   def number_of_mainboard_cards
     @cards.map(&:first).inject(0, &:+)
   end
