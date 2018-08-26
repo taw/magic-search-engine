@@ -2663,7 +2663,7 @@
             "manaCost": "{3}{B}{B}",
             "name": "Gravedebt Demon",
             "number": "84",
-            "originalText": "Flying\nIf a creature an opponent controls would die, instead that player may pay 3 life. If they do, put it into its owner's graveyard. Otherwise, exile that creature.\nYou may cast cards exiled with Gravedebt Demon and you may spend mana as though it were mana of any type to cast them.",
+            "originalText": "Flying\nIf a creature an opponent controls would die, instead that player may pay 3 life. If he or she does, that creature dies. Otherwise, exile that creature.\nYou may cast cards exiled with Gravedebt Demon and you may spend mana as though it were mana of any type to cast them.",
             "originalType": "Creature \u2014 Demon",
             "power": "4",
             "rarity": "Mythic Rare",
@@ -2676,7 +2676,7 @@
             "subtypes": [
                 "Demon"
             ],
-            "text": "Flying\nIf a creature an opponent controls would die, instead that player may pay 3 life. If they do, put it into its owner's graveyard. Otherwise, exile that creature.\nYou may cast cards exiled with Gravedebt Demon and you may spend mana as though it were mana of any type to cast them.",
+            "text": "Flying\nIf a creature an opponent controls would die, instead that player may pay 3 life. If they do, that creature dies. Otherwise, exile that creature.\nYou may cast cards exiled with Gravedebt Demon and you may spend mana as though it were mana of any type to cast them.",
             "toughness": "5",
             "type": "Creature \u2014 Demon",
             "types": [
@@ -7715,5 +7715,6 @@
     "custom": true,
     "name": "Tesla",
     "releaseDate": "2017-04-21",
-    "type": "expansion"
+    "type": "expansion",
+    "version": "1.05"
 }
