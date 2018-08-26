@@ -139,7 +139,7 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"Regrettably, no one can access the holy parish north of here. The place has become infested with Hollows, both old and new.\"\n\u2014Petrus, Thorolund Cleric",
+            "flavor": "\"Regrettably, no one can access the holy parish north of here. The place has become infested with Hollows, the old and the new.\"\n\u2014Petrus, Thorolund Cleric",
             "imageName": "balder knight",
             "layout": "normal",
             "manaCost": "{2}{W}",
@@ -393,7 +393,7 @@
             "colors": [
                 "White"
             ],
-            "flavor": "The cursed Undead flock to Lordran, chasing a legend that gives hope for a cure. Yet in Lordran they will face dangers ever greater than their curse.",
+            "flavor": "The Undead flock to Lordran, chasing a legend that gives hope despite their curse. Yet in Lordran they will face dangers even greater.",
             "imageName": "face the impossible",
             "layout": "normal",
             "manaCost": "{W}",
@@ -469,7 +469,7 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"For countless years, Gwyn burned his soul to slow the fading of the First Flame. Now you shall take his place, and renew the First Flame with your own soul!\"",
+            "flavor": "\"For countless years, Lord Gwyn burned his soul to slow the fading of the First Flame. Now you shall take his place, to renew the First Flame and reverse the curse!\"",
             "imageName": "gwyn's defeat",
             "layout": "normal",
             "manaCost": "{5}{W}{W}",
@@ -740,7 +740,7 @@
         },
         {
             "artist": "haco1",
-            "cmc": 5,
+            "cmc": 1,
             "colorIdentity": [
                 "W"
             ],
@@ -750,13 +750,13 @@
             "flavor": "Tarkus was the first Undead to defeat the Iron Golem, the final guardian on the pilgrimage to Anor Londo.",
             "imageName": "overcome the odds",
             "layout": "normal",
-            "manaCost": "{4}{W}",
+            "manaCost": "{W}",
             "name": "Overcome the Odds",
             "number": "27",
-            "originalText": "Destroy target creature with power 4 or greater.\nPut a +1/+1 counter on up to one target creature.",
+            "originalText": "Tap target creature. If you control three of more Zombies, exile that creature.",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Destroy target creature with power 4 or greater.\nPut a +1/+1 counter on up to one target creature.",
+            "text": "Tap target creature. If you control three of more Zombies, exile that creature.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -1013,7 +1013,7 @@
             "manaCost": "{1}{W}",
             "name": "Undead-Burg Guard",
             "number": "36",
-            "originalText": "{1}{W}, {T}: Tap target creature.\nUndead-Burg Guard has vigilance as long as you control another Zombie.",
+            "originalText": "Vigilance\n{T}: Tap target creature. Activate this ability only if you control another Zombie.",
             "originalType": "Creature \u2014 Zombie Soldier",
             "power": "2",
             "rarity": "Uncommon",
@@ -1021,7 +1021,7 @@
                 "Zombie",
                 "Soldier"
             ],
-            "text": "{1}{W}, {T}: Tap target creature.\nUndead-Burg Guard has vigilance as long as you control another Zombie.",
+            "text": "Vigilance\n{T}: Tap target creature. Activate this ability only if you control another Zombie.",
             "toughness": "2",
             "type": "Creature \u2014 Zombie Soldier",
             "types": [
@@ -1037,7 +1037,7 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"For each sin there is a punishment, and it is the task of Velka to define the sin, and mete out the punishment.\"\n\u2014Oswald, Pardoner of Velka",
+            "flavor": "\"For each sin there is a punishment, and it is the task of Velka to define the sin and to mete out the punishment.\"\n\u2014Oswald, Pardoner of Velka",
             "imageName": "velka's justice",
             "layout": "normal",
             "manaCost": "{1}{W}",
@@ -1162,7 +1162,7 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "In the absence of the other gods, it is Gwyndolin who now pulls the strings.",
+            "flavor": "In the absence of the other gods, the Darkmoon Gwyndolin pulls the strings in Anor Londo.",
             "imageName": "anticipate",
             "layout": "normal",
             "manaCost": "{1}{U}",
@@ -1217,7 +1217,7 @@
             "number": "44",
             "originalText": "Prowess\nDesperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Big Hat Logan despairs, cast target instant or sorcery card from your graveyard without paying its mana cost. If that card would be put into your graveyard this turn, exile it instead.",
             "originalType": "Legendary Creature \u2014 Human Wizard",
-            "power": "2",
+            "power": "3",
             "rarity": "Rare",
             "subtypes": [
                 "Human",
@@ -1375,7 +1375,7 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"No one in the Dragon School could imagine what I've found in Seath's archives. His creations guard hundreds of bookshelves, testaments to lifetimes of research on crystal sorcery.\"\n\u2014Notes of Big Hat Logan",
+            "flavor": "\"No one in the Dragon School could imagine what I've found in Seath's archives. His creations guard hundreds of bookshelves, testaments to lifetimes of research and experimentation with crystal sorcery.\"\n\u2014Notes of Big Hat Logan",
             "imageName": "crystallized soldier",
             "layout": "normal",
             "manaCost": "{2}{U}",
@@ -1575,7 +1575,7 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"Don't even consider going to Anor Londo. For a century, they have tried and failed. Knight-King Rendal, Iron Tarkus, and even Logan himself. You won't stand a chance.\"\n\u2014A crestfallen merchant",
+            "flavor": "\"Don't even consider going to Anor Londo. For a century they have tried and failed\u2014Knight-King Rendal, Iron Tarkus, and even Logan himself. You won't stand a chance.\"\n\u2014A crestfallen merchant",
             "imageName": "essence scatter",
             "layout": "normal",
             "manaCost": "{1}{U}",
@@ -1693,7 +1693,6 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"A sorcery of my own invention.\"\n\u2014Big Hat Logan",
             "imageName": "homing soul orbs",
             "layout": "normal",
             "manaCost": "{1}{U}",
@@ -1772,7 +1771,7 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"Deep in the catacombs, I encountered dangerous magical apparitions, conjured by some unknown sorcerer.\"\n\u2014Notes of Big Hat Logan",
+            "flavor": "\"Deep in the catacombs\u2014apparitions, conjured by some unknown sorcerer.\"\n\u2014Notes of Big Hat Logan",
             "imageName": "masked illusion",
             "layout": "normal",
             "manaCost": "{3}{U}",
@@ -1830,7 +1829,6 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "The fate of the Undead is often too much to bear.",
             "imageName": "overwhelming burden",
             "layout": "normal",
             "manaCost": "{2}{U}",
@@ -2234,14 +2232,14 @@
             "manaCost": "{3}{B}",
             "name": "Abductor Crow",
             "number": "81",
-            "originalText": "Flying\nHollow {5}{B} (Hollow this creature to reanimate it tapped at instant speed. {5}{B}, Exile this card from your graveyard: Create a tapped black Zombie creature token that's a copy of this.)",
+            "originalText": "Flying\nHollow {4}{B} (Hollow this creature to reanimate it tapped at instant speed. {4}{B}, Exile this card from your graveyard: Create a tapped black Zombie creature token that's a copy of this.)",
             "originalType": "Creature \u2014 Bird",
             "power": "2",
             "rarity": "Common",
             "subtypes": [
                 "Bird"
             ],
-            "text": "Flying\nHollow {5}{B} (Hollow this creature to reanimate it tapped at instant speed. {5}{B}, Exile this card from your graveyard: Create a tapped black Zombie creature token that's a copy of this.)",
+            "text": "Flying\nHollow {4}{B} (Hollow this creature to reanimate it tapped at instant speed. {4}{B}, Exile this card from your graveyard: Create a tapped black Zombie creature token that's a copy of this.)",
             "toughness": "3",
             "type": "Creature \u2014 Bird",
             "types": [
@@ -2292,16 +2290,10 @@
             "manaCost": "{2}{B}{B}",
             "name": "Artorias, the Abyss-Walker",
             "number": "83",
-            "originalText": "First strike, menace\nAt the beginning of your upkeep, if you lost life since your last upkeep, put a +1/+1 counter on Artorias, the Abyss-Walker.",
+            "originalText": "First strike, menace\nAt the beginning of each end step, if you lost life this turn, put a +1/+1 counter on Artorias, the Abyss-Walker.",
             "originalType": "Legendary Creature \u2014 Human Knight",
             "power": "4",
             "rarity": "Rare",
-            "rulings": [
-                {
-                    "date": "2018-01-26",
-                    "text": "Losing life during your upkeep does not trigger this ability."
-                }
-            ],
             "subtypes": [
                 "Human",
                 "Knight"
@@ -2309,7 +2301,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "First strike, menace\nAt the beginning of your upkeep, if you lost life since your last upkeep, put a +1/+1 counter on Artorias, the Abyss-Walker.",
+            "text": "First strike, menace\nAt the beginning of each end step, if you lost life this turn, put a +1/+1 counter on Artorias, the Abyss-Walker.",
             "toughness": "3",
             "type": "Legendary Creature \u2014 Human Knight",
             "types": [
@@ -2371,7 +2363,7 @@
         },
         {
             "artist": "Manuel Castanon",
-            "cmc": 3,
+            "cmc": 4,
             "colorIdentity": [
                 "B"
             ],
@@ -2380,19 +2372,19 @@
             ],
             "imageName": "barbaric cleric",
             "layout": "normal",
-            "manaCost": "{2}{B}",
+            "manaCost": "{3}{B}",
             "name": "Barbaric Cleric",
             "number": "86",
-            "originalText": "When Barbaric Cleric enters the battlefield, it deals 1 damage to each opponent and you gain 1 life.\nHollow {2}{B}{B} (Hollow this creature to reanimate it tapped at instant speed. {2}{B}{B}, Exile this card from your graveyard: Create a tapped black Zombie creature token that's a copy of this.)",
+            "originalText": "When Barbaric Cleric enters the battlefield, target opponent sacrifices a creature.\nHollow {3}{B}{B} (Hollow this creature to reanimate it tapped at instant speed. {3}{B}{B}, Exile this card from your graveyard: Create a tapped black Zombie creature token that's a copy of this.)",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "2",
-            "rarity": "Common",
+            "rarity": "Uncommon",
             "subtypes": [
                 "Human",
                 "Cleric"
             ],
-            "text": "When Barbaric Cleric enters the battlefield, it deals 1 damage to each opponent and you gain 1 life.\nHollow {2}{B}{B} (Hollow this creature to reanimate it tapped at instant speed. {2}{B}{B}, Exile this card from your graveyard: Create a tapped black Zombie creature token that's a copy of this.)",
-            "toughness": "2",
+            "text": "When Barbaric Cleric enters the battlefield, target opponent sacrifices a creature.\nHollow {3}{B}{B} (Hollow this creature to reanimate it tapped at instant speed. {3}{B}{B}, Exile this card from your graveyard: Create a tapped black Zombie creature token that's a copy of this.)",
+            "toughness": "3",
             "type": "Creature \u2014 Human Cleric",
             "types": [
                 "Creature"
@@ -2460,12 +2452,13 @@
             "colors": [
                 "Black"
             ],
+            "flavor": "The witch sisters gave their brother a ring to ease his pain. But fool that he was, he readily dropped it, and from that spot a terrible demon was born.",
             "imageName": "centipede demon",
             "layout": "normal",
             "manaCost": "{3}{B}{B}",
             "name": "Centipede Demon",
             "number": "89",
-            "originalText": "When Centipede Demon enters the battlefield, sacrifice up to two creatures. For each creature sacrificed this way, each opponent sacrifices a creature unless they pay 4 life.",
+            "originalText": "When Centipede Demon enters the battlefield, each player sacrifices two creatures.",
             "originalType": "Creature \u2014 Insect Demon",
             "power": "4",
             "rarity": "Uncommon",
@@ -2473,7 +2466,7 @@
                 "Insect",
                 "Demon"
             ],
-            "text": "When Centipede Demon enters the battlefield, sacrifice up to two creatures. For each creature sacrificed this way, each opponent sacrifices a creature unless they pay 4 life.",
+            "text": "When Centipede Demon enters the battlefield, each player sacrifices two creatures.",
             "toughness": "4",
             "type": "Creature \u2014 Insect Demon",
             "types": [
@@ -2556,7 +2549,7 @@
                 "Warrior"
             ],
             "text": "Menace\nDesperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Darkwraith Drainer despairs, target opponent sacrifices a creature.",
-            "toughness": "2",
+            "toughness": "3",
             "type": "Creature \u2014 Skeleton Warrior",
             "types": [
                 "Creature"
@@ -2571,7 +2564,7 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "\"Despair ahead.\"\n\u2014Etched in an Undead-Burg alley",
+            "flavor": "\"Despair ahead.\"\n\u2014Etched on an alley wall",
             "imageName": "duress",
             "layout": "normal",
             "manaCost": "{B}",
@@ -2806,13 +2799,13 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "\"The quickest way to restore your humanity? Pillage the soul of a healthy person.\"\n\u2014 An Undead traveler",
+            "flavor": "\"The quickest way to restore your humanity? Pillage the soul of a healthy person, of course.\"",
             "imageName": "hungering knight",
             "layout": "normal",
             "manaCost": "{2}{B}",
             "name": "Hungering Knight",
             "number": "102",
-            "originalText": "When Hungering Knight enters the battlefield, you may sacrifice a creature. If you do, target creature gets -2/-2 until end of turn.",
+            "originalText": "When Hungering Knight enters the battlefield, you may sacrifice another creature. If you do, target creature gets -2/-2 until end of turn.",
             "originalType": "Creature \u2014 Zombie Knight",
             "power": "2",
             "rarity": "Common",
@@ -2820,7 +2813,7 @@
                 "Zombie",
                 "Knight"
             ],
-            "text": "When Hungering Knight enters the battlefield, you may sacrifice a creature. If you do, target creature gets -2/-2 until end of turn.",
+            "text": "When Hungering Knight enters the battlefield, you may sacrifice another creature. If you do, target creature gets -2/-2 until end of turn.",
             "toughness": "3",
             "type": "Creature \u2014 Zombie Knight",
             "types": [
@@ -3226,15 +3219,15 @@
             "manaCost": "{2}{B}",
             "name": "Sin Cultist",
             "number": "117",
-            "originalText": "When Sin Cultist enters the battlefield, target opponent reveals their hand and you choose a nonland card from it. Exile that card until Sin Cultist leaves the battlefield.\nHollow {3}{B}{B} (Hollow this creature to reanimate it tapped at instant speed. {3}{B}{B}, Exile this card from your graveyard: Create a tapped black Zombie creature token that's a copy of this.)",
+            "originalText": "When Sin Cultist enters the battlefield, target opponent discards a card unless they pay 3 life.\nHollow {3}{B} (Hollow this creature to reanimate it tapped at instant speed. {3}{B}, Exile this card from your graveyard: Create a tapped black Zombie creature token that's a copy of this.)",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "2",
-            "rarity": "Uncommon",
+            "rarity": "Common",
             "subtypes": [
                 "Human",
                 "Cleric"
             ],
-            "text": "When Sin Cultist enters the battlefield, target opponent reveals their hand and you choose a nonland card from it. Exile that card until Sin Cultist leaves the battlefield.\nHollow {3}{B}{B} (Hollow this creature to reanimate it tapped at instant speed. {3}{B}{B}, Exile this card from your graveyard: Create a tapped black Zombie creature token that's a copy of this.)",
+            "text": "When Sin Cultist enters the battlefield, target opponent discards a card unless they pay 3 life.\nHollow {3}{B} (Hollow this creature to reanimate it tapped at instant speed. {3}{B}, Exile this card from your graveyard: Create a tapped black Zombie creature token that's a copy of this.)",
             "toughness": "2",
             "type": "Creature \u2014 Human Cleric",
             "types": [
@@ -3389,7 +3382,7 @@
             "manaCost": "{3}{R}",
             "name": "Capra Demon",
             "number": "123",
-            "originalText": "Menace (This creature can't be blocked except by two or more creatures.)",
+            "originalText": "Menace",
             "originalType": "Creature \u2014 Goat Demon",
             "power": "3",
             "rarity": "Common",
@@ -3397,7 +3390,7 @@
                 "Goat",
                 "Demon"
             ],
-            "text": "Menace (This creature can't be blocked except by two or more creatures.)",
+            "text": "Menace",
             "toughness": "3",
             "type": "Creature \u2014 Goat Demon",
             "types": [
@@ -3413,7 +3406,7 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "Izalith's only son bore the worst of the chaos flame's transformative effects. So great was the destruction caused by his demonic form that he was banished, and his name forgotten.",
+            "flavor": "Izalith's only son bore the worst of the chaos flame's transformative effects. So great was the destruction caused by his demonic form that he was banished, and his true name forgotten.",
             "imageName": "ceaseless destruction",
             "layout": "normal",
             "manaCost": "{1}{R}",
@@ -3442,7 +3435,7 @@
             "manaCost": "{4}{R}{R}{R}{R}",
             "name": "Ceaseless Discharge",
             "number": "125",
-            "originalText": "At the beginning of each of your main phases, choose one \u2014\n\u2022 Add {R}{R}{R}{R}{R}{R}{R}{R} (Eight red mana).\n\u2022 Ceaseless Discharge deals 8 damage to target creature.",
+            "originalText": "At the beginning of each of your main phases, choose one \u2014\n\u2022 Add {R}{R}{R}{R}{R}{R}{R}{R} (eight red mana).\n\u2022 Ceaseless Discharge deals 8 damage to target creature.",
             "originalType": "Legendary Creature \u2014 Demon",
             "power": "8",
             "rarity": "Mythic Rare",
@@ -3452,7 +3445,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "At the beginning of each of your main phases, choose one \u2014\n\u2022 Add {R}{R}{R}{R}{R}{R}{R}{R} (Eight red mana).\n\u2022 Ceaseless Discharge deals 8 damage to target creature.",
+            "text": "At the beginning of each of your main phases, choose one \u2014\n\u2022 Add {R}{R}{R}{R}{R}{R}{R}{R} (eight red mana).\n\u2022 Ceaseless Discharge deals 8 damage to target creature.",
             "toughness": "8",
             "type": "Legendary Creature \u2014 Demon",
             "types": [
@@ -3546,7 +3539,7 @@
                 "Cleric"
             ],
             "text": "First strike\nWhen Crimson Sealer enters the battlefield, exile target land until Crimson Sealer leaves the battlefield.",
-            "toughness": "2",
+            "toughness": "3",
             "type": "Creature \u2014 Human Cleric",
             "types": [
                 "Creature"
@@ -3763,10 +3756,16 @@
             "manaCost": "{4}{R}",
             "name": "Fire Orb",
             "number": "136",
-            "originalText": "Fire Orb deals 5 damage to target creature. Destroy up to one target Equipment attached to that creature.",
+            "originalText": "Fire Orb deals 5 damage to target creature. Destroy all Equipment attached to that creature.",
             "originalType": "Sorcery",
             "rarity": "Common",
-            "text": "Fire Orb deals 5 damage to target creature. Destroy up to one target Equipment attached to that creature.",
+            "rulings": [
+                {
+                    "date": "2018-08-26",
+                    "text": "If the creature becomes an illegal target (for example because it gains hexproof from red in response to Fire Orb), Fire Orb won't resolve. No Equipment will be destroyed."
+                }
+            ],
+            "text": "Fire Orb deals 5 damage to target creature. Destroy all Equipment attached to that creature.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -3861,7 +3860,7 @@
             "manaCost": "{1}{R}",
             "name": "Grim Warrior",
             "number": "140",
-            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Grim Warrior despairs, it deals 3 damage divided as you choose among up to three target creatures.",
+            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Grim Warrior despairs, it deals 2 damage divided as you choose among up to two targets.",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "2",
             "rarity": "Uncommon",
@@ -3869,7 +3868,7 @@
                 "Human",
                 "Warrior"
             ],
-            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Grim Warrior despairs, it deals 3 damage divided as you choose among up to three target creatures.",
+            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Grim Warrior despairs, it deals 2 damage divided as you choose among up to two targets.",
             "toughness": "2",
             "type": "Creature \u2014 Human Warrior",
             "types": [
@@ -3885,7 +3884,7 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "Gwyn, Lord of Sunlight, led his forces into war against any who would threaten the power of Anor Londo.",
+            "flavor": "Gwyn, Lord of Sunlight, led his forces against any who would threaten the power of Anor Londo.",
             "imageName": "gwyn's army",
             "layout": "normal",
             "manaCost": "{1}{R}",
@@ -3940,12 +3939,12 @@
             "name": "Kalameet's Gaze",
             "number": "143",
             "originalText": "Kalameet's Gaze deals 4 damage to any target that was dealt damage this turn.",
-            "originalType": "Instant",
+            "originalType": "Sorcery",
             "rarity": "Uncommon",
             "text": "Kalameet's Gaze deals 4 damage to any target that was dealt damage this turn.",
-            "type": "Instant",
+            "type": "Sorcery",
             "types": [
-                "Instant"
+                "Sorcery"
             ]
         },
         {
@@ -3957,7 +3956,7 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "The Warriors of Sunlight worship Lord Gwyn. Each knight memorizes stories of Gwyn's mighty bolts, and of the war he waged against dragons long ago.",
+            "flavor": "The Warriors of Sunlight worship Lord Gwyn. Each knight memorizes stories of his mighty bolts, and of the war he waged against dragons long ago.",
             "imageName": "lightning spear",
             "layout": "normal",
             "manaCost": "{2}{R}",
@@ -4289,7 +4288,7 @@
             "manaCost": "{R}",
             "name": "Rotting Hellhound",
             "number": "156",
-            "originalText": "Haste\nDesperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Rotting Hellhound despairs, discard a card. If you do, draw a card.",
+            "originalText": "Haste\nDesperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Rotting Hellhound despairs, other creatures you control get +1/+0 until end of turn.",
             "originalType": "Creature \u2014 Zombie Hound",
             "power": "1",
             "rarity": "Common",
@@ -4297,7 +4296,7 @@
                 "Zombie",
                 "Hound"
             ],
-            "text": "Haste\nDesperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Rotting Hellhound despairs, discard a card. If you do, draw a card.",
+            "text": "Haste\nDesperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Rotting Hellhound despairs, other creatures you control get +1/+0 until end of turn.",
             "toughness": "1",
             "type": "Creature \u2014 Zombie Hound",
             "types": [
@@ -4318,13 +4317,13 @@
             "manaCost": "{1}{R}",
             "name": "Shining Fervor",
             "number": "157",
-            "originalText": "Enchant creature\nEnchanted creature can't be blocked by creatures with power 2 or less.\nWhenever enchanted creature attacks, create a 1/1 red Soldier creature token that's tapped and attacking.",
+            "originalText": "Enchant creature\nEnchanted creature gets +1/+0 for each other creature you control.\nWhenever enchanted creature attacks, create a 1/1 red Soldier creature token that's tapped and attacking.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
             "subtypes": [
                 "Aura"
             ],
-            "text": "Enchant creature\nEnchanted creature can't be blocked by creatures with power 2 or less.\nWhenever enchanted creature attacks, create a 1/1 red Soldier creature token that's tapped and attacking.",
+            "text": "Enchant creature\nEnchanted creature gets +1/+0 for each other creature you control.\nWhenever enchanted creature attacks, create a 1/1 red Soldier creature token that's tapped and attacking.",
             "type": "Enchantment \u2014 Aura",
             "types": [
                 "Enchantment"
@@ -4644,7 +4643,7 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "As the fog rolled in from all sides, the adventurer quickly realized he wasn't alone in the forest.",
+            "flavor": "As the fog rolled in from all sides, the adventurer realized he wasn't alone.",
             "imageName": "darkroot mists",
             "layout": "normal",
             "manaCost": "{1}{G}",
@@ -5063,7 +5062,7 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "Guardians of Oolacile's forests wield clubs made from the trees they protect.",
+            "flavor": "Guardians of Oolacile wield clubs made from the same trees they protect.",
             "imageName": "great hammer",
             "layout": "normal",
             "manaCost": "{1}{G}",
@@ -5863,7 +5862,7 @@
             "manaCost": "{3}{G}{W}",
             "name": "Gwynevere, Bountiful Sun",
             "number": "211",
-            "originalText": "When Gwynevere, Bountiful Sun enters the battlefield, create two 2/2 green and white Knight creature tokens with lifelink named Princess Guard.\n{T}: Create a token thats a copy of target Aura or Equipment you control. You may attach that token to a creature.",
+            "originalText": "When Gwynevere, Bountiful Sun enters the battlefield, create two 2/2 green and white Knight creature tokens with lifelink named Princess Guard.\n{T}: Create a token that's a copy of target Aura or Equipment you control. You may attach that token to a creature.",
             "originalType": "Legendary Creature \u2014 God",
             "power": "0",
             "rarity": "Mythic Rare",
@@ -6629,22 +6628,22 @@
         },
         {
             "artist": "Dark Souls Screenshot",
-            "cmc": 3,
+            "cmc": 4,
             "colorIdentity": [],
             "colors": [],
             "flavor": "A zweihander was the preferred weapon of a giant warrior, whose strength became famous in an undying legend.",
             "imageName": "zweihander",
             "layout": "normal",
-            "manaCost": "{3}",
+            "manaCost": "{4}",
             "name": "Zweihander",
             "number": "235",
-            "originalText": "Equipped creature gets +3/+0.\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",
+            "originalText": "Equipped creature gets +4/+0.\nEquip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Common",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "Equipped creature gets +3/+0.\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",
+            "text": "Equipped creature gets +4/+0.\nEquip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -7094,5 +7093,6 @@
     "custom": true,
     "name": "Hollows of Lordran",
     "releaseDate": "2018-01-21",
-    "type": "expansion"
+    "type": "expansion",
+    "version": "81"
 }
