@@ -762,7 +762,7 @@
                 "Nahiri, Planar Nomad"
             ],
             "number": "27a",
-            "originalText": "When Nahiri, Stoneforge Pupil enters the battlefield, search your library for an Equipment card, reveal it, put it into your hand, then shuffle your library.\nWhen Nahiri deals damage to a player, if she's equipped, exile her, then return her to the battlefield transformed under her owner's control.",
+            "originalText": "When Nahiri, Stoneforge Pupil enters the battlefield, you may search your library for an Equipment card, reveal it, then shuffle your library and put that card on top of it.\nWhen Nahiri deals damage to a player, if she's equipped, exile her, then return her to the battlefield transformed under her owner's control.",
             "originalType": "Legendary Creature \u2014 Kor Artificer",
             "power": "1",
             "rarity": "Mythic Rare",
@@ -773,7 +773,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "When Nahiri, Stoneforge Pupil enters the battlefield, search your library for an Equipment card, reveal it, put it into your hand, then shuffle your library.\nWhen Nahiri deals damage to a player, if she's equipped, exile her, then return her to the battlefield transformed under her owner's control.",
+            "text": "When Nahiri, Stoneforge Pupil enters the battlefield, you may search your library for an Equipment card, reveal it, then shuffle your library and put that card on top of it.\nWhen Nahiri deals damage to a player, if she's equipped, exile her, then return her to the battlefield transformed under her owner's control.",
             "toughness": "2",
             "type": "Legendary Creature \u2014 Kor Artificer",
             "types": [
@@ -838,6 +838,32 @@
             ]
         },
         {
+            "artist": "Zhong Fenghua",
+            "cmc": 5,
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [
+                "White"
+            ],
+            "imageName": "pincer maneuver",
+            "layout": "normal",
+            "manaCost": "{4}{W}",
+            "name": "Pincer Maneuver",
+            "number": "29",
+            "originalText": "If an opponent controls three or more blocking or blocked creatures, you may pay {2}{W} rather than pay this spell's mana cost.\nCreatures you control get +2/+1 until end of turn.",
+            "originalType": "Instant \u2014 Trap",
+            "rarity": "Common",
+            "subtypes": [
+                "Trap"
+            ],
+            "text": "If an opponent controls three or more blocking or blocked creatures, you may pay {2}{W} rather than pay this spell's mana cost.\nCreatures you control get +2/+1 until end of turn.",
+            "type": "Instant \u2014 Trap",
+            "types": [
+                "Instant"
+            ]
+        },
+        {
             "artist": "Taylor Fischer",
             "cmc": 2,
             "colorIdentity": [
@@ -851,7 +877,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Raised Standard",
-            "number": "29",
+            "number": "30",
             "originalText": "Machinate \u2014 {T}, Tap another untapped artifact you control: Creatures you control get +1/+1 until end of turn.",
             "originalType": "Artifact",
             "rarity": "Uncommon",
@@ -875,7 +901,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}{W}",
             "name": "Ravenous Griffin",
-            "number": "30",
+            "number": "31",
             "originalText": "Flying (This creature can't be blocked except by creatures with flying or reach.)\nFrenzy 2 (Whenever this creature attacks and isn't blocked, it gets +2/+0 until end of turn.)",
             "originalType": "Creature \u2014 Griffin",
             "power": "2",
@@ -904,7 +930,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}{W}",
             "name": "Recruit the Forsaken",
-            "number": "31",
+            "number": "32",
             "originalText": "If an opponent sacrificed a creature this turn, you may pay {1}{W} rather than pay this spell's mana cost.\nChoose target creature card in a graveyard that died this turn. Put it onto the battlefield under your control.",
             "originalType": "Instant \u2014 Trap",
             "rarity": "Uncommon",
@@ -931,7 +957,7 @@
             "layout": "normal",
             "manaCost": "{4}{W}",
             "name": "Salvager Hurda",
-            "number": "32",
+            "number": "33",
             "originalText": "When Salvager Hurda dies, return target artifact or Trap card from your graveyard to your hand.",
             "originalType": "Creature \u2014 Giant Minion",
             "power": "3",
@@ -961,7 +987,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Sharp-Eared Griffin",
-            "number": "33",
+            "number": "34",
             "originalText": "Flying\nWhen Sharp-Eared Griffin enters the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
             "originalType": "Creature \u2014 Griffin",
             "power": "2",
@@ -990,7 +1016,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Stone Haven Cadet",
-            "number": "34",
+            "number": "35",
             "originalText": "Whenever you cast a Trap spell, Stone Haven Cadet gets +2/+2 until end of turn.",
             "originalType": "Creature \u2014 Kor Soldier",
             "power": "2",
@@ -1019,7 +1045,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Stoneward Trap",
-            "number": "35",
+            "number": "36",
             "originalText": "If an opponent cast a spell this turn that targeted a creature you controlled, you may tap an untapped white creature you control rather than pay this spell's mana cost.\nExile target creature, then return it to the battlefield under its owner's control.",
             "originalType": "Instant \u2014 Trap",
             "rarity": "Common",
@@ -1046,7 +1072,7 @@
             "layout": "normal",
             "manaCost": "{3}{W}",
             "name": "Trolley Dilemma",
-            "number": "36",
+            "number": "37",
             "originalText": "If an opponent attacked with an artifact creature this turn, you may pay {W} rather than pay this spell's mana cost.\nExile target attacking creature unless its controller sacrifices three other creatures they control.",
             "originalType": "Instant \u2014 Trap",
             "rarity": "Uncommon",
@@ -1073,7 +1099,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Troop Maneuver",
-            "number": "37",
+            "number": "38",
             "originalText": "If a nontoken creature you controlled died this turn, you may pay {W} rather than pay this spell's mana cost.\nCreate two 1/1 white Minion creature tokens.",
             "originalType": "Instant \u2014 Trap",
             "rarity": "Common",
@@ -1081,32 +1107,6 @@
                 "Trap"
             ],
             "text": "If a nontoken creature you controlled died this turn, you may pay {W} rather than pay this spell's mana cost.\nCreate two 1/1 white Minion creature tokens.",
-            "type": "Instant \u2014 Trap",
-            "types": [
-                "Instant"
-            ]
-        },
-        {
-            "artist": "Zhong Fenghua",
-            "cmc": 5,
-            "colorIdentity": [
-                "W"
-            ],
-            "colors": [
-                "White"
-            ],
-            "imageName": "vln:call the cavalry",
-            "layout": "normal",
-            "manaCost": "{4}{W}",
-            "name": "VLN:Call the Cavalry",
-            "number": "38",
-            "originalText": "If an opponent controls three or more blocking or blocked creatures, you may pay {2}{W} rather than pay this spell's mana cost.\nCreatures you control get +2/+1 until end of turn.",
-            "originalType": "Instant \u2014 Trap",
-            "rarity": "Common",
-            "subtypes": [
-                "Trap"
-            ],
-            "text": "If an opponent controls three or more blocking or blocked creatures, you may pay {2}{W} rather than pay this spell's mana cost.\nCreatures you control get +2/+1 until end of turn.",
             "type": "Instant \u2014 Trap",
             "types": [
                 "Instant"
@@ -1757,14 +1757,14 @@
             "manaCost": "{1}{U}",
             "name": "Master of Faces",
             "number": "61",
-            "originalText": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, you may have Master of Faces become a copy of another target creature until end of turn except it gains prowess.",
+            "originalText": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, you may have Master of Faces become a copy of another target creature until end of turn, except it has prowess.",
             "originalType": "Creature \u2014 Shapeshifter",
             "power": "1",
             "rarity": "Rare",
             "subtypes": [
                 "Shapeshifter"
             ],
-            "text": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, you may have Master of Faces become a copy of another target creature until end of turn, except it gains prowess.",
+            "text": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, you may have Master of Faces become a copy of another target creature until end of turn, except it has prowess.",
             "toughness": "1",
             "type": "Creature \u2014 Shapeshifter",
             "types": [
@@ -1997,6 +1997,12 @@
             "originalText": "Look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.",
             "originalType": "Sorcery",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "If there are fewer than three cards in your library, you look at all of them, put one of them into your hand, and put the rest into your graveyard."
+                }
+            ],
             "text": "Look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.",
             "type": "Sorcery",
             "types": [
@@ -2090,6 +2096,12 @@
             "originalText": "Draw three cards. If you control no artifacts, discard a card.",
             "originalType": "Sorcery",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2016-09-20",
+                    "text": "No player may take actions between the time you draw three cards and the time you discard. Notably, you can't try to get an artifact onto the battlefield using the three cards you drew to avoid discarding."
+                }
+            ],
             "text": "Draw three cards. If you control no artifacts, discard a card.",
             "type": "Sorcery",
             "types": [
@@ -2690,16 +2702,16 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "If you want something done right, you have to do it yourself.",
+            "flavor": "To get it done right, you have to do it yourself.",
             "imageName": "dirty work",
             "layout": "normal",
             "manaCost": "{2}{B}{B}",
             "name": "Dirty Work",
             "number": "93",
-            "originalText": "You can't cast creature spells.\nWhenever you cast a spell, choose one \u2014\n\u2022 You draw a card and you lose 1 life.\n\u2022 Each opponent loses 2 life. You gain 2 life.\n\u2022 Target creature gets -3/-3 until end of turn.",
+            "originalText": "Whenever you cast a noncreature spell, if you control no creatures, choose one \u2014\n\u2022 You draw a card and you lose 1 life.\n\u2022 Each opponent loses 2 life. You gain 2 life.\n\u2022 Target creature gets -3/-3 until end of turn.",
             "originalType": "Enchantment",
             "rarity": "Rare",
-            "text": "You can't cast creature spells.\nWhenever you cast a spell, choose one \u2014\n\u2022 You draw a card and you lose 1 life.\n\u2022 Each opponent loses 2 life. You gain 2 life.\n\u2022 Target creature gets -3/-3 until end of turn.",
+            "text": "Whenever you cast a noncreature spell, if you control no creatures, choose one \u2014\n\u2022 You draw a card and you lose 1 life.\n\u2022 Each opponent loses 2 life. You gain 2 life.\n\u2022 Target creature gets -3/-3 until end of turn.",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -3422,7 +3434,7 @@
         },
         {
             "artist": "Bryan Sola",
-            "cmc": 1,
+            "cmc": 2,
             "colorIdentity": [
                 "R"
             ],
@@ -3432,7 +3444,7 @@
             "flavor": "\"You said to make sure no one came across. You should've been more specific.\"\n\u2014 Tibalt, to El Cocodrilo",
             "imageName": "burn the bridge",
             "layout": "normal",
-            "manaCost": "{R}",
+            "manaCost": "{1}{R}",
             "name": "Burn the Bridge",
             "number": "120",
             "originalText": "As an additional cost to cast this spell, sacrifice a land.\nDraw two cards.",
@@ -3599,8 +3611,12 @@
             "rarity": "Rare",
             "rulings": [
                 {
-                    "date": "2018-08-13",
-                    "text": "If Emulate is used to copy the last ability of one of the hideaway lands from Magic Villains (e.g. Unassuming Falls), the interaction works as follows: The activation restriction is ignored, since you're copying the ability, not activating it. You choose whether or not to cast the card before looking at it. If you decide to cast it, you have to follow through with the casting process, unless you can produce an illegal spell proposal (e.g. by choosing an additional cost and then not producing the mana to pay it). Once the spell has resolved, the original hideaway land activation will resolve, but there is no longer an exiled card for your opponent to cast, so nothing happens. If you're not able to cast the card (e.g. because it's a land, or because there are no legal targets), the game state reverts to before the casting process, but the card remains face-up. You now have to choose not to cast the card. Once the original ability resolves, your opponent is allowed to cast the card if possible."
+                    "date": "2018-08-26",
+                    "text": "If Emulate is used to copy the last ability of one of the hideaway lands from Lorwyn (e.g. Spinerock Knoll), the interaction works as follows: The condition is checked, with \u201cyou\u201d now referring to the player controlling the copy. You choose whether or not to cast the card before looking at it. If you decide to cast it, you have to follow through with the casting process, unless you can produce an illegal spell proposal (e.g. by choosing an additional cost and then not producing the mana to pay it). Once the spell has resolved, the original hideaway land activation will resolve, but there is no longer an exiled card for your opponent to cast, so nothing happens. If you're not able to cast the card (e.g. because it's a land, or because there are no legal targets), the game state reverts to before the casting process, but the card remains face-up. You now have to choose not to cast the card. Once the original ability resolves, your opponent is allowed to cast the card if possible."
+                },
+                {
+                    "date": "2018-08-26",
+                    "text": "If Emulate is used to copy the last ability of one of the hideaway lands from Magic Villains (e.g. Unassuming Falls), the interaction works as follows: The activation restriction is ignored, since you're copying the ability, not activating it. Then you put the card into its owner's hand without looking at it yourself."
                 }
             ],
             "text": "Copy target activated or triggered ability an opponent controls. You may choose new targets for the copy.",
@@ -4304,7 +4320,7 @@
                 "Tibalt, Gleeful Sadist"
             ],
             "number": "152a",
-            "originalText": "Tibalt, Devilish Doctor attacks each combat if able.\nWhen Tibalt becomes blocked, exile Tibalt, then return him to the battlefield transformed under his owner's control.",
+            "originalText": "Tibalt, Devilish Doctor attacks each combat if able.\nWhen a creature deals damage to you, exile Tibalt, then return him to the battlefield transformed under his owner's control.",
             "originalType": "Legendary Creature \u2014 Human Rogue",
             "power": "2",
             "rarity": "Mythic Rare",
@@ -4315,7 +4331,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Tibalt, Devilish Doctor attacks each combat if able.\nWhen Tibalt becomes blocked, exile Tibalt, then return him to the battlefield transformed under his owner's control.",
+            "text": "Tibalt, Devilish Doctor attacks each combat if able.\nWhen a creature deals damage to you, exile Tibalt, then return him to the battlefield transformed under his owner's control.",
             "toughness": "2",
             "type": "Legendary Creature \u2014 Human Rogue",
             "types": [
@@ -4479,6 +4495,20 @@
             "originalText": "If an opponent had an artifact enter the battlefield under their control this turn, you may pay {1}{G} rather than pay this spell's mana cost.\nCreate a 4/4 green Beast creature token.",
             "originalType": "Instant \u2014 Trap",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "You may ignore a Trap's alternative cost condition and simply cast it for its normal mana cost. This is true even if its alternative cost condition has been met."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "Casting a Trap by paying its alternative cost doesn't change its mana cost or converted mana cost. The only difference is the cost you actually pay."
+                },
+                {
+                    "date": "2009-10-01",
+                    "text": "Effects that increase or reduce the cost to cast a Trap will apply to whichever cost you chose to pay."
+                }
+            ],
             "subtypes": [
                 "Trap"
             ],
@@ -4816,14 +4846,14 @@
             "manaCost": "{4}{G}",
             "name": "Kalonian Baloth",
             "number": "168",
-            "originalText": "Trample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)\nFrenzy 3 (Whenever this creature attacks and isn't blocked, it gets +3/+0 until end of turn.)",
+            "originalText": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\nFrenzy 3 (Whenever this creature attacks and isn't blocked, it gets +3/+0 until end of turn.)",
             "originalType": "Creature \u2014 Beast",
             "power": "3",
             "rarity": "Common",
             "subtypes": [
                 "Beast"
             ],
-            "text": "Trample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)\nFrenzy 3 (Whenever this creature attacks and isn't blocked, it gets +3/+0 until end of turn.)",
+            "text": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\nFrenzy 3 (Whenever this creature attacks and isn't blocked, it gets +3/+0 until end of turn.)",
             "toughness": "6",
             "type": "Creature \u2014 Beast",
             "types": [
@@ -5435,14 +5465,14 @@
             "manaCost": "{2}{G}{G}",
             "name": "Vicious Swine",
             "number": "190",
-            "originalText": "Trample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)",
+            "originalText": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",
             "originalType": "Creature \u2014 Boar",
             "power": "4",
             "rarity": "Common",
             "subtypes": [
                 "Boar"
             ],
-            "text": "Trample (This creature can deal excess combat damage to defending player or planeswalker while attacking.)",
+            "text": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",
             "toughness": "3",
             "type": "Creature \u2014 Boar",
             "types": [
@@ -5739,14 +5769,14 @@
             "manaCost": "{4}{B}{G}",
             "name": "Cursed by the Veil",
             "number": "200",
-            "originalText": "Enchant player\nAt the beginning of enchanted player's upkeep, that player puts the top six cards of their library into their graveyard, then puts a creature card and a land card from their graveyard onto the battlefield.",
+            "originalText": "Enchant player\nAt the beginning of enchanted player's end step, that player puts the top six cards of their library into their graveyard, then puts a creature card and a land card from their graveyard into their hand.",
             "originalType": "Enchantment \u2014 Aura Curse",
             "rarity": "Rare",
             "subtypes": [
                 "Aura",
                 "Curse"
             ],
-            "text": "Enchant player\nAt the beginning of enchanted player's upkeep, that player puts the top six cards of their library into their graveyard, then puts a creature card and a land card from their graveyard onto the battlefield.",
+            "text": "Enchant player\nAt the beginning of enchanted player's end step, that player puts the top six cards of their library into their graveyard, then puts a creature card and a land card from their graveyard into their hand.",
             "type": "Enchantment \u2014 Aura Curse",
             "types": [
                 "Enchantment"
@@ -6365,7 +6395,7 @@
             "name": "Etherium Dagger",
             "number": "221",
             "originalText": "Equipped creature gets +1/+0.\nAs long as equipped creature is an artifact, it gets an additional +1/+0.\nEquip {1}",
-            "originalType": "Artifact  \u2014 Equipment",
+            "originalType": "Artifact \u2014 Equipment",
             "rarity": "Common",
             "subtypes": [
                 "Equipment"
@@ -6728,10 +6758,10 @@
             "layout": "normal",
             "name": "Fungal Hollow",
             "number": "237",
-            "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {B} or {G}.\n{B}{G}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if there are five or more card types among cards in your graveyard.",
+            "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {B} or {G}.\n{B}{G}, {T}: Put the exiled card into its owner's hand. Activate this ability only if there are four or more card types among cards in your graveyard.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {B} or {G}.\n{B}{G}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if there are five or more card types among cards in your graveyard.",
+            "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {B} or {G}.\n{B}{G}, {T}: Put the exiled card into its owner's hand. Activate this ability only if there are four or more card types among cards in your graveyard.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6770,10 +6800,10 @@
             "layout": "normal",
             "name": "Glacial Crevasse",
             "number": "239",
-            "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {U} or {R}.\n{U}{R}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you've cast two or more noncreature spells this turn.",
+            "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {U} or {R}.\n{U}{R}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you've cast two or more noncreature spells this turn.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {U} or {R}.\n{U}{R}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you've cast two or more noncreature spells this turn.",
+            "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {U} or {R}.\n{U}{R}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you've cast two or more noncreature spells this turn.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6812,10 +6842,10 @@
             "layout": "normal",
             "name": "Highland Path",
             "number": "241",
-            "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {R} or {W}.\n{R}{W}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you control four or more artifacts.",
+            "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {R} or {W}.\n{R}{W}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you control three or more artifacts.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {R} or {W}.\n{R}{W}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you control four or more artifacts.",
+            "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {R} or {W}.\n{R}{W}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you control three or more artifacts.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6936,10 +6966,10 @@
             "layout": "normal",
             "name": "Unassuming Falls",
             "number": "247",
-            "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {G} or {U}.\n{G}{U}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you control six or more lands with different names.",
+            "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {G} or {U}.\n{G}{U}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you control six or more lands with different names.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {G} or {U}.\n{G}{U}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you control six or more lands with different names.",
+            "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {G} or {U}.\n{G}{U}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you control six or more lands with different names.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6957,10 +6987,10 @@
             "layout": "normal",
             "name": "Valley of Lost Souls",
             "number": "248",
-            "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {W} or {B}.\n{W}{B}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you have 6 or less life.",
+            "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {W} or {B}.\n{W}{B}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you have 7 or less life.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {W} or {B}.\n{W}{B}, {T}: You may cast the exiled card without paying its mana cost. Activate this ability only if you have 6 or less life.",
+            "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {W} or {B}.\n{W}{B}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you have 7 or less life.",
             "type": "Land",
             "types": [
                 "Land"
@@ -7596,5 +7626,6 @@
     "custom": true,
     "name": "Magic Villains",
     "releaseDate": "2017-08-06",
-    "type": "core"
+    "type": "core",
+    "version": "37"
 }
