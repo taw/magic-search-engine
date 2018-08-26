@@ -182,7 +182,7 @@
         },
         {
             "artist": "pixx_73",
-            "cmc": 5,
+            "cmc": 6,
             "colorIdentity": [
                 "W"
             ],
@@ -192,13 +192,13 @@
             "flavor": "\"Overhead, without any fuss, the stars were going out.\"\n\u2014Arthur C. Clarke, The Nine Billion Names of God",
             "imageName": "empty night",
             "layout": "normal",
-            "manaCost": "{3}{W}{W}",
+            "manaCost": "{4}{W}{W}",
             "name": "Empty Night",
             "number": "7",
-            "originalText": "Reflex {4}{W}{W}{W} (You may cast this spell any time you could cast an instant for its reflex cost.)\nExile all creatures and planeswalkers.",
+            "originalText": "Reflex {5}{W}{W}{W} (You may cast this spell any time you could cast an instant for its reflex cost.)\nExile all creatures and planeswalkers.",
             "originalType": "Sorcery",
             "rarity": "Mythic Rare",
-            "text": "Reflex {4}{W}{W}{W} (You may cast this spell any time you could cast an instant for its reflex cost.)\nExile all creatures and planeswalkers.",
+            "text": "Reflex {5}{W}{W}{W} (You may cast this spell any time you could cast an instant for its reflex cost.)\nExile all creatures and planeswalkers.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -5108,7 +5108,7 @@
         },
         {
             "artist": "Alpha Step",
-            "cmc": 1,
+            "cmc": 3,
             "colorIdentity": [
                 "G"
             ],
@@ -5118,13 +5118,13 @@
             "flavor": "\"Paragon Valley or Bust\"\n\u2014Wagon inscription",
             "imageName": "settle",
             "layout": "normal",
-            "manaCost": "{X}{X}{G}",
+            "manaCost": "{2}{G}",
             "name": "Settle",
             "number": "180",
-            "originalText": "Search your library for up to X land cards and put them onto the battlefield tapped. Then shuffle your library.",
+            "originalText": "Search your library for a land card, put it onto the battlefield tapped, then shuffle your library.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Search your library for up to X land cards and put them onto the battlefield tapped. Then shuffle your library.",
+            "text": "Search your library for a land card, put it onto the battlefield tapped, then shuffle your library.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -5446,14 +5446,14 @@
             "manaCost": "{1}{G}{U}",
             "name": "Briar Rabbit",
             "number": "191",
-            "originalText": "Reflex {3}{G}{U} (You may cast this spell any time you could cast an instant for its reflex cost.)\nWhen Briar Rabbit enters the battlefield, return target creature to its owner's hand.",
+            "originalText": "Reflex {3}{G}{U} (You may cast this spell any time you could cast an instant for its reflex cost.)\nWhen Briar Rabbit enters the battlefield, you may return target creature to its owner's hand.",
             "originalType": "Creature \u2014 Rabbit",
             "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
                 "Rabbit"
             ],
-            "text": "Reflex {3}{G}{U} (You may cast this spell any time you could cast an instant for its reflex cost.)\nWhen Briar Rabbit enters the battlefield, return target creature to its owner's hand.",
+            "text": "Reflex {3}{G}{U} (You may cast this spell any time you could cast an instant for its reflex cost.)\nWhen Briar Rabbit enters the battlefield, you may return target creature to its owner's hand.",
             "toughness": "2",
             "type": "Creature \u2014 Rabbit",
             "types": [
@@ -6760,10 +6760,10 @@
             "layout": "normal",
             "name": "Boom Town",
             "number": "239",
-            "originalText": "{T}, Pay 1 life: Add {W} or {B}.\n{W}{B}, {T}, Sacrifice Boom Town: Draw a card.",
+            "originalText": "{T}, Pay 1 life: Add {W} or {B}.\n{1}{W}{B}, {T}, Sacrifice Boom Town: Draw a card.",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "{T}, Pay 1 life: Add {W} or {B}.\n{W}{B}, {T}, Sacrifice Boom Town: Draw a card.",
+            "text": "{T}, Pay 1 life: Add {W} or {B}.\n{1}{W}{B}, {T}, Sacrifice Boom Town: Draw a card.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6783,10 +6783,10 @@
             "layout": "normal",
             "name": "Carnivorous Bog",
             "number": "240",
-            "originalText": "{T}, Pay 1 life: Add {B} or {G}.\n{B}{G}, {T}, Sacrifice Carnivorous Bog: Draw a card.",
+            "originalText": "{T}, Pay 1 life: Add {B} or {G}.\n{1}{B}{G}, {T}, Sacrifice Carnivorous Bog: Draw a card.",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "{T}, Pay 1 life: Add {B} or {G}.\n{B}{G}, {T}, Sacrifice Carnivorous Bog: Draw a card.",
+            "text": "{T}, Pay 1 life: Add {B} or {G}.\n{1}{B}{G}, {T}, Sacrifice Carnivorous Bog: Draw a card.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6825,10 +6825,10 @@
             "layout": "normal",
             "name": "Fenced Pasture",
             "number": "242",
-            "originalText": "{T}, Pay 1 life: Add {G} or {W}.\n{G}{W}, {T}, Sacrifice Fenced Pasture: Draw a card.",
+            "originalText": "{T}, Pay 1 life: Add {G} or {W}.\n{1}{G}{W}, {T}, Sacrifice Fenced Pasture: Draw a card.",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "{T}, Pay 1 life: Add {G} or {W}.\n{G}{W}, {T}, Sacrifice Fenced Pasture: Draw a card.",
+            "text": "{T}, Pay 1 life: Add {G} or {W}.\n{1}{G}{W}, {T}, Sacrifice Fenced Pasture: Draw a card.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6848,10 +6848,10 @@
             "layout": "normal",
             "name": "Frontier Mission",
             "number": "243",
-            "originalText": "{T}, Pay 1 life: Add {W} or {U}.\n{W}{U}, {T}, Sacrifice Frontier Mission: Draw a card.",
+            "originalText": "{T}, Pay 1 life: Add {W} or {U}.\n{1}{W}{U}, {T}, Sacrifice Frontier Mission: Draw a card.",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "{T}, Pay 1 life: Add {W} or {U}.\n{W}{U}, {T}, Sacrifice Frontier Mission: Draw a card.",
+            "text": "{T}, Pay 1 life: Add {W} or {U}.\n{1}{W}{U}, {T}, Sacrifice Frontier Mission: Draw a card.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6871,10 +6871,10 @@
             "layout": "normal",
             "name": "Hangman's Rock",
             "number": "244",
-            "originalText": "{T}, Pay 1 life: Add {B} or {R}.\n{B}{R}, {T}, Sacrifice Hangman's Rock: Draw a card.",
+            "originalText": "{T}, Pay 1 life: Add {B} or {R}.\n{1}{B}{R}, {T}, Sacrifice Hangman's Rock: Draw a card.",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "{T}, Pay 1 life: Add {B} or {R}.\n{B}{R}, {T}, Sacrifice Hangman's Rock: Draw a card.",
+            "text": "{T}, Pay 1 life: Add {B} or {R}.\n{1}{B}{R}, {T}, Sacrifice Hangman's Rock: Draw a card.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6894,10 +6894,10 @@
             "layout": "normal",
             "name": "Hoodoo Valley",
             "number": "245",
-            "originalText": "{T}, Pay 1 life: Add {R} or {W}.\n{R}{W}, {T}, Sacrifice Hoodoo Valley: Draw a card.",
+            "originalText": "{T}, Pay 1 life: Add {R} or {W}.\n{1}{R}{W}, {T}, Sacrifice Hoodoo Valley: Draw a card.",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "{T}, Pay 1 life: Add {R} or {W}.\n{R}{W}, {T}, Sacrifice Hoodoo Valley: Draw a card.",
+            "text": "{T}, Pay 1 life: Add {R} or {W}.\n{1}{R}{W}, {T}, Sacrifice Hoodoo Valley: Draw a card.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6917,10 +6917,10 @@
             "layout": "normal",
             "name": "Lumber Mill",
             "number": "246",
-            "originalText": "{T}, Pay 1 life: Add {G} or {U}.\n{G}{U}, {T}, Sacrifice Lumber Mill: Draw a card.",
+            "originalText": "{T}, Pay 1 life: Add {G} or {U}.\n{1}{G}{U}, {T}, Sacrifice Lumber Mill: Draw a card.",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "{T}, Pay 1 life: Add {G} or {U}.\n{G}{U}, {T}, Sacrifice Lumber Mill: Draw a card.",
+            "text": "{T}, Pay 1 life: Add {G} or {U}.\n{1}{G}{U}, {T}, Sacrifice Lumber Mill: Draw a card.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6940,10 +6940,10 @@
             "layout": "normal",
             "name": "Lush Mesa",
             "number": "247",
-            "originalText": "{T}, Pay 1 life: Add {R} or {G}.\n{R}{G}, {T}, Sacrifice Lush Mesa: Draw a card.",
+            "originalText": "{T}, Pay 1 life: Add {R} or {G}.\n{1}{R}{G}, {T}, Sacrifice Lush Mesa: Draw a card.",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "{T}, Pay 1 life: Add {R} or {G}.\n{R}{G}, {T}, Sacrifice Lush Mesa: Draw a card.",
+            "text": "{T}, Pay 1 life: Add {R} or {G}.\n{1}{R}{G}, {T}, Sacrifice Lush Mesa: Draw a card.",
             "type": "Land",
             "types": [
                 "Land"
@@ -7003,10 +7003,10 @@
             "layout": "normal",
             "name": "Poisoned Waterhole",
             "number": "250",
-            "originalText": "{T}, Pay 1 life: Add {U} or {B}.\n{U}{B}, {T}, Sacrifice Poisoned Waterhole: Draw a card.",
+            "originalText": "{T}, Pay 1 life: Add {U} or {B}.\n{1}{U}{B}, {T}, Sacrifice Poisoned Waterhole: Draw a card.",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "{T}, Pay 1 life: Add {U} or {B}.\n{U}{B}, {T}, Sacrifice Poisoned Waterhole: Draw a card.",
+            "text": "{T}, Pay 1 life: Add {U} or {B}.\n{1}{U}{B}, {T}, Sacrifice Poisoned Waterhole: Draw a card.",
             "type": "Land",
             "types": [
                 "Land"
@@ -7026,10 +7026,10 @@
             "layout": "normal",
             "name": "Waterworn Gully",
             "number": "251",
-            "originalText": "{T}, Pay 1 life: Add {U} or {R}.\n{U}{R}, {T}, Sacrifice Waterworn Gully: Draw a card.",
+            "originalText": "{T}, Pay 1 life: Add {U} or {R}.\n{1}{U}{R}, {T}, Sacrifice Waterworn Gully: Draw a card.",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "{T}, Pay 1 life: Add {U} or {R}.\n{U}{R}, {T}, Sacrifice Waterworn Gully: Draw a card.",
+            "text": "{T}, Pay 1 life: Add {U} or {R}.\n{1}{U}{R}, {T}, Sacrifice Waterworn Gully: Draw a card.",
             "type": "Land",
             "types": [
                 "Land"
@@ -7197,5 +7197,6 @@
     "custom": true,
     "name": "Lorado",
     "releaseDate": "2016-12-15",
-    "type": "expansion"
+    "type": "expansion",
+    "version": "hd2"
 }
