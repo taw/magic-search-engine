@@ -189,6 +189,8 @@ module ApplicationHelper
       "½", "1000000", "100", "∞",
       "chaos", "pw",
       "hw", "hr",
+      # custom
+      "a"
     ]
   end
 
