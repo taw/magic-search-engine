@@ -48,6 +48,57 @@
             ]
         },
         {
+            "cmc": 3,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "layout": "normal",
+            "manaCost": "{2}{U}",
+            "name": "Portal Mage",
+            "number": "3",
+            "power": "2",
+            "rarity": "special",
+            "rulings": [
+                {
+                    "date": "2017-08-25",
+                    "text": "You may cast Portal Mage outside of a declare attackers step. If Portal Mage enters the battlefield outside of a declare attackers step, its ability simply doesn't trigger."
+                },
+                {
+                    "date": "2017-08-25",
+                    "text": "Reselecting which player or planeswalker a creature is attacking ignores all requirements, restrictions, and costs associated with attacking."
+                },
+                {
+                    "date": "2017-08-25",
+                    "text": "Reselecting which player or planeswalker a creature is attacking doesn't cause \"whenever this creature attacks\" abilities to trigger. Notably, the Curses in this set (such as Curse of Vitality) won't trigger while Portal Mage's ability is resolving."
+                },
+                {
+                    "date": "2017-08-25",
+                    "text": "If you reselect which player or planeswalker an attacking creature is attacking, that creature is still considered to have attacked the player or planeswalker as declared, but it is now attacking the new player or planeswalker."
+                },
+                {
+                    "date": "2017-08-25",
+                    "text": "If an ability targets something controlled by the \"defending player\" of an attacking creature and the defending player for that creature changes before that ability resolves, the ability won't resolve because its target has become illegal."
+                },
+                {
+                    "date": "2018-08-27",
+                    "text": "I have applied functional errata to this card in order to make it work with Structures from Ruins of Doharum. For the official text and rulings, please look up the card on Gatherer. \u2014Fenhl"
+                }
+            ],
+            "subtypes": [
+                "Human",
+                "Wizard"
+            ],
+            "text": "Flash\nWhen Portal Mage enters the battlefield during the declare attackers step, you may reselect which player, planeswalker, or Structure target attacking creature is attacking. (It can't attack its controller or its controller's planeswalkers or Structures.)",
+            "toughness": "2",
+            "type": "Creature \u2014 Human Wizard",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "border": "silver",
             "cmc": 5,
             "colorIdentity": [
@@ -59,7 +110,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}{U}",
             "name": "Richard Garfield, Ph.D.",
-            "number": "3",
+            "number": "4",
             "power": "2",
             "rarity": "special",
             "rulings": [

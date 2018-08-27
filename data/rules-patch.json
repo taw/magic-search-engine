@@ -9,10 +9,30 @@
             "replace": "object"
         },
         {
+            "#": "for Ruins of Doharum, define the runic mana symbol {A} as a mana symbol",
+            "type": "replace",
+            "rule": "107.4",
+            "find": "and the snow symbol {S}",
+            "replace": "the snow symbol {S}; and the runic mana symbol {A}"
+        },
+        {
+            "#": "for Ruins of Doharum, define what {A} means",
+            "type": "add",
+            "rule": "107.4",
+            "text": "The runic mana symbol {A} represents a cost that a player can pay either with one mana of any type produced by an artifact, or by tapping an untapped artifact they control. Despite its appearance, {A} is a colorless mana symbol."
+        },
+        {
             "#": "a note on the rule for Future Sight card type symbols that Tesla's face symbols look similar",
             "type": "add",
             "rule": "107.10",
             "text": "The front-face and back-face symbols on double-faced cards from the Tesla set are identical to the type symbols for artifact and sorcery, respectively. However, unlike the type symbols, these face symbols do have an effect on game play. (See rule 711.1.)"
+        },
+        {
+            "#": "for Structures, define stability as a characteristic",
+            "type": "insertText",
+            "rule": "109.3",
+            "after": "loyalty, ",
+            "text": "stability, "
         },
         {
             "#": "for Plagiarized Results, define properties of tokens entering the battlefield from the stack",
@@ -21,23 +41,49 @@
             "text": "A token may also enter the battlefield from the stack. (See rule 608.3b.) This is an exception to rules 110.5a and 110.5b; the token enters the battlefield under the control of the spell's controller and retains its owner, text, and characteristics."
         },
         {
+            "#": "allow Structures to be targeted by “any target” damage spells",
+            "type": "replace",
+            "rule": "114.4",
+            "find": "creatures, players, or planeswalkers",
+            "replace": "creatures, players, planeswalkers, or Structures"
+        },
+        {
+            "#": "allow Structures to be targeted by “any target” damage spells",
+            "type": "replace",
+            "rule": "114.4",
+            "find": "such as noncreature artifacts or spells",
+            "replace": "such as noncreature enchantments or spells"
+        },
+        {
             "#": "the special action for Dreamscape's premonition keyword",
             "type": "addSpecialAction",
             "text": "A player who has a card with premonition in their hand may put that card face up into their library. This is a special action. A player can take this action any time they have priority, but only if they could begin to cast that card by putting it onto the stack."
         },
         {
-            "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
-            "type": "replace",
-            "rule": "119.1",
-            "find": "Objects can deal damage",
-            "replace": "Objects and players can deal damage"
+            "#": "the special action for Ruins of Doharum's seal keyword",
+            "type": "addSpecialAction",
+            "text": "Exiling a face-down permanent with seal and casting that card for its seal cost is a special action."
         },
         {
-            "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
+            "#": "allow Structures to be dealt damage, and for Sobki, World Severer, allow players to deal damage",
+            "type": "replace",
+            "rule": "119.1",
+            "find": "Objects can deal damage to creatures, planeswalkers, and players.",
+            "replace": "Objects and players can deal damage to creatures, planeswalkers, Structures, and players."
+        },
+        {
+            "#": "allow Structures to be dealt damage, and for Sobki, World Severer, allow players to deal damage",
             "type": "replace",
             "rule": "119.1",
             "find": "An object that deals damage",
             "replace": "An object or player that deals damage"
+        },
+        {
+            "#": "allow Structures to be dealt damage",
+            "type": "replace",
+            "rule": "119.1a",
+            "find": "neither a creature nor a planeswalker",
+            "replace": "not a creature, planeswalker, or structure"
         },
         {
             "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
@@ -54,6 +100,19 @@
             "replace": "The spell or ability will specify which object or player deals that damage."
         },
         {
+            "#": "allow Structures to be dealt damage",
+            "type": "insert",
+            "rule": "119.3d",
+            "text": "Damage dealt to a Structure causes that many stability counters to be removed from that Structure."
+        },
+        {
+            "#": "allow Structures to be dealt damage",
+            "type": "replace",
+            "rule": "119.3d",
+            "find": "creature or planeswalker",
+            "replace": "creature, planeswalker, or Structure"
+        },
+        {
             "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
             "type": "replace",
             "rule": "119.7",
@@ -67,6 +126,13 @@
             "text": "If an effect refers to the controller of a damage source, and the source of that damage is a player, it refers to that player."
         },
         {
+            "#": "for Structures, define stability as a part of a card",
+            "type": "insertText",
+            "rule": "200.1",
+            "after": "loyalty, ",
+            "text": "stability, "
+        },
+        {
             "#": "for Wildcard, allow an object's CMC to change",
             "type": "add",
             "rule": "202.3",
@@ -77,7 +143,9 @@
             "type": "addSubtypes",
             "cardType": "Artifact",
             "subtypes": [
-                "Canister"
+                "Canister",
+                "Relic",
+                "Structure"
             ]
         },
         {
@@ -124,11 +192,206 @@
             ]
         },
         {
+            "#": "the rules for Structures, a new artifact subtype in Ruins of Doharum",
+            "type": "add",
+            "rule": "301",
+            "text": {
+                "text": "Some artifacts have the subtype “Structure”.",
+                "subrules": [
+                    "Stability is a characteristic only Structures have. Rules 306.5a–c apply to stability in relation to Structures just as they apply to loyalty in relation to planeswalkers. Structures' analog to loyalty counters are stability counters.",
+                    "Structures can be attacked. (See rule 508, “Declare Attackers Step.”)",
+                    "Damage dealt to a Structure results in that many stability counters being removed from it.",
+                    "If a Structure's stability is 0, it's put into its owner's graveyard. (This is a state-based action. See rule 704.)"
+                ]
+            }
+        },
+        {
             "#": "for Mount Chromaziel, clarify that lands with basic land types have their intrinsic mana ability everywhere",
             "type": "replace",
             "rule": "305.6",
             "find": "A land",
             "replace": "In any zone and outside the game, a land"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "506.2",
+            "find": "that player and planeswalkers they control",
+            "replace": "that player, planeswalkers they control, and Structures they control"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "506.3",
+            "find": "a player or a planeswalker",
+            "replace": "a player, a planeswalker, or a Structure"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "506.3c",
+            "find": "a planeswalker",
+            "replace": "a planeswalker or Structure"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "506.3d",
+            "find": "a planeswalker",
+            "replace": "a planeswalker or Structure"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "506.4",
+            "find": "a planeswalker",
+            "replace": "a planeswalker or Structure"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "506.4c",
+            "find": "a planeswalker",
+            "replace": "a planeswalker or Structure"
+        },
+        {
+            "#": "clarify how type-changing effects interacting with Structures work in combat",
+            "type": "replaceRule",
+            "rule": "506.4d",
+            "text": "A permanent that's both a blocking creature and a planeswalker or Structure that's being attacked is removed from combat if it stops being a creature, a planeswalker, and a Structure. If it stops being a creature but continues to be a planeswalker or Structure, it stops being a blocking creature but continues to be a planeswalker or Structure that's being attacked. If it stops being a planeswalker or Structure but continues to be a creature, it stops being a planeswalker or Structure that's being attacked but continues to be a blocking creature. If a planeswalker that's being attacked becomes a Structure or vice versa, or if a permanent that's being attacked and is both a planeswalker and a Structure stops being one of the two but continues to be the other, it continues to be attacked."
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "508.1b",
+            "find": "any planeswalkers",
+            "replace": "any planeswalkers or Structures"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "508.1b",
+            "find": "player or planeswalker",
+            "replace": "player, planeswalker, or Structure"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "508.3a",
+            "find": "player or planeswalker",
+            "replace": "player, planeswalker, or Structure"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "508.3b",
+            "find": "player or planeswalker",
+            "replace": "player, planeswalker, or Structure"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "508.4",
+            "find": "planeswalker",
+            "replace": "planeswalker or Structure"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "508.4a",
+            "find": "planeswalker",
+            "replace": "planeswalker or Structure"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "508.5",
+            "find": "planeswalker",
+            "replace": "planeswalker or Structure"
+        },
+        {
+            "#": "make Portal Mage work with Structures",
+            "type": "replace",
+            "rule": "508.7",
+            "find": "player or planeswalker",
+            "replace": "player, planeswalker, or Structure"
+        },
+        {
+            "#": "make Portal Mage work with Structures",
+            "type": "replace",
+            "rule": "508.7a",
+            "find": "player or planeswalker",
+            "replace": "player, planeswalker, or Structure"
+        },
+        {
+            "#": "make Portal Mage work with Structures",
+            "type": "replace",
+            "rule": "508.7b",
+            "find": "player or planeswalker",
+            "replace": "player, planeswalker, or Structure"
+        },
+        {
+            "#": "make Portal Mage work with Structures",
+            "type": "replace",
+            "rule": "508.7c",
+            "find": "player or planeswalker",
+            "replace": "player, planeswalker, or Structure"
+        },
+        {
+            "#": "make Portal Mage work with Structures",
+            "type": "replace",
+            "rule": "508.7c",
+            "find": "a planeswalker",
+            "replace": "a planeswalker or Structure"
+        },
+        {
+            "#": "make Portal Mage work with Structures",
+            "type": "replace",
+            "rule": "508.7d",
+            "find": "player or planeswalker",
+            "replace": "player, planeswalker, or Structure"
+        },
+        {
+            "#": "make Portal Mage work with Structures",
+            "type": "replace",
+            "rule": "508.7d",
+            "find": "a planeswalker",
+            "replace": "a planeswalker or Structure"
+        },
+        {
+            "#": "make Portal Mage work with Structures",
+            "type": "replace",
+            "rule": "508.7e",
+            "find": "player or planeswalker",
+            "replace": "player, planeswalker, or Structure"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "509.1a",
+            "find": "planeswalker",
+            "replace": "planeswalker or Structure"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "510.1b",
+            "find": "player or planeswalker",
+            "replace": "player, planeswalker, or Structure"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "510.1b",
+            "find": "a planeswalker",
+            "replace": "a planeswalker or Structure"
+        },
+        {
+            "#": "allow Structures to be attacked",
+            "type": "replace",
+            "rule": "511.3",
+            "find": "creatures and planeswalkers",
+            "replace": "creatures, planeswalkers, and Structures"
         },
         {
             "#": "for Starsong Dragon and Thrill of Battle, ensure that a turn always ends with a cleanup step",
@@ -137,11 +400,18 @@
             "text": "If a turn would end and it's not a cleanup step, instead add an additional ending phase after the current phase which consists only of a cleanup step and end the current phase."
         },
         {
-            "#": "for Aenyr's resonance keyword, add the choice of whether to resonate to the casting process",
+            "#": "for Aenyr's resonance keyword, add the choice of whether to resonate to the casting process, and for Ruins of Doharum's runic mana, add the choice of whether to pay mana or to tap an artifact to the casting process",
             "type": "insertText",
             "rule": "601.2b",
             "after": "If the player wishes to splice any cards onto the spell (see rule 702.46), they reveal those cards in their hand. ",
             "text": "If the player wishes to apply any resonance effects to the spell, they announce their intention to do so. "
+        },
+        {
+            "#": "for Aenyr's resonance keyword, add the choice of whether to resonate to the casting process, and for Ruins of Doharum's runic mana, add the choice of whether to pay mana or to tap an artifact to the casting process",
+            "type": "insertText",
+            "rule": "601.2b",
+            "after": "If a cost that will be paid as the spell is being cast includes Phyrexian mana symbols, the player announces whether they intend to pay 2 life or the corresponding colored mana cost for each of those symbols. ",
+            "text": "If a cost that will be paid as the spell is being cast includes runic mana symbols, the player announces whether they intend to pay the corresponding generic mana cost or tap an untapped artifact they control for each of those symbols. "
         },
         {
             "#": "for Richard Garfield, Ph.D. in the Bracket Cube, allow a spell cast as a copy of an instant spell to be cast at instant speed",
@@ -463,27 +733,98 @@
             }
         },
         {
-            "#": "define front-face symbols for double-faced cards in Tesla and Magic Villains",
+            "#": "“seal” is a keyword ability used in Ruins of Doharum",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Seal",
+                "subrules": [
+                    "Seal is a static ability that functions in any zone from which you could play the card it's on, and the seal effect works any time the card is face down. “Seal [cost]” means “You may cast this card as a face-down Relic artifact with no text, no name, and no mana cost by paying {2} rather than paying its mana cost.” (See rule 707, “Face-Down Spells and Permanents.”)",
+                    "To cast a card using its seal ability, turn it face down. It becomes a face-down Relic artifact card with no text, no name, and no mana cost. Any effects or prohibitions that would apply to casting a card with these characteristics (and not the face-up card's characteristics) are applied to casting this card. These values are the copiable values of that object's characteristics. (See rule 613, “Interaction of Continuous Effects,” and rule 706, “Copying Objects.”) Put it onto the stack (as a face-down spell with the same characteristics), and pay {2} rather than pay its mana cost. This follows the rules for paying alternative costs. You can use a seal ability to cast a card from any zone from which you could normally play it. When the spell resolves, it enters the battlefield with the same characteristics the spell had. The seal effect applies to the face-down object wherever it is, and it ends when the permanent is turned face up.",
+                    "Any time you have priority, you may exile a face-down permanent you control, then cast it for its seal cost. This is a special action; it doesn't use the stack (see rule 115). To do this, show all players what the permanent's seal cost would be if it were face up, exile it, then cast it for that cost. This follows the rules for paying alternative costs. (If the permanent wouldn't have a seal cost if it were face up, it can't be exiled this way.) The card is turned face up and the seal effect on it ends as soon as it's exiled, and it regains its normal characteristics. Exiling and casting the card is considered a single action for the purposes of reversing illegal spells. If the spell proposal of casting the card for its seal cost is reversed, the action of exiling it is also reversed, returning it to the battlefield. (See rule 721, “Handling Illegal Actions.”)",
+                    "If a spell's controller declares the intention to pay that spell's seal cost, that spell has been “sealed.” If a spell has multiple seal costs, it may be sealed multiple times. See rule 601.2b.",
+                    "Objects with seal may have additional abilities that check whether they were sealed. These abilities are linked to the seal ability printed on that object: they can refer only to its printed seal ability. See rule 607, “Linked Abilities.”",
+                    "See rule 707, “Face-Down Spells and Permanents,” for more information about how to cast cards with seal."
+                ]
+            }
+        },
+        {
+            "#": "“secure” is a keyword ability used in Ruins of Doharum",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Secure",
+                "subrules": [
+                    "Secure is an activated ability that generally appears on Structures and functions on the battlefield. “Secure N—[cost]” means “[cost]: Put N stability counters on this permanent. Activate this ability only any time you could cast a sorcery and only once each turn.”",
+                    "A player “secures a Structure” when that player activates a secure ability of that Structure."
+                ]
+            }
+        },
+        {
+            "#": "“prestige” is a keyword ability used in Rakoa",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Prestige",
+                "subrules": [
+                    "Prestige is a triggered ability. “Prestige N” means “When this creature and two or more other creatures attack, if this creature isn't prestigious, put N +1/+1 counters on it and it becomes prestigious.”",
+                    "Prestigious is a designation that has no rules meaning other than to act as a marker that the prestige ability and other spells and abilities can identify. Only permanents can be or become prestigious. Once a permanent becomes prestigious, it stays prestigious until it leaves the battlefield. Prestigious is neither an ability nor part of the permanent's copiable values.",
+                    "If a creature has multiple instances of prestige, each triggers separately. The first such ability to resolve will cause the creature to become prestigious, and subsequent abilities will have no effect. (See rule 603.4)"
+                ]
+            }
+        },
+        {
+            "#": "“voyage” is a keyword ability used in Rakoa",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Voyage",
+                "subrules": [
+                    "Voyage is an activated ability that functions on the battlefield. “Voyage” means “{W}{U}{B}{R}{G}: If you haven't discovered paradise, you discover paradise for the rest of the game.”",
+                    "Discovering paradise is an event that has no rules meaning other than to act as a marker that other rules and effects can identify. Any number of players may discover paradise at the same time or at different times.",
+                    "After a player discovers paradise, continuous effects are reapplied before the game checks to see if the game state or preceding events have matched any trigger conditions."
+                ]
+            }
+        },
+        {
+            "#": "Structures with stability 0 are put into the graveyard as a state-based action",
+            "type": "insertText",
+            "rule": "704.5i",
+            "after": "a planeswalker has loyalty 0",
+            "text": " or a Structure has stability 0"
+        },
+        {
+            "#": "define front-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
             "type": "replace",
             "rule": "711.1a",
             "find": "Magic Origins",
             "replace": "Magic Origins and Magic Villains"
         },
         {
-            "#": "define front-face symbols for double-faced cards in Tesla and Magic Villains",
+            "#": "define front-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
+            "type": "replace",
+            "rule": "711.1a",
+            "find": "On cards in the Innistrad block",
+            "replace": "On cards in the Rakoa set, the Innistrad block"
+        },
+        {
+            "#": "define front-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
             "type": "append",
             "rule": "711.1a",
             "text": "On double-faced cards in the Tesla set, the front-face symbol is a chalice."
         },
         {
-            "#": "define back-face symbols for double-faced cards in Tesla and Magic Villains",
+            "#": "define back-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
             "type": "replace",
             "rule": "711.1b",
             "find": "Magic Origins",
             "replace": "Magic Origins and Magic Villains"
         },
         {
-            "#": "define back-face symbols for double-faced cards in Tesla and Magic Villains",
+            "#": "define back-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
+            "type": "replace",
+            "rule": "711.1b",
+            "find": "On cards in the Innistrad block",
+            "replace": "On cards in the Rakoa set, the Innistrad block"
+        },
+        {
+            "#": "define back-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
             "type": "append",
             "rule": "711.1b",
             "text": "On double-faced cards in the Tesla set, the back-face symbol is a flame."
