@@ -72,6 +72,7 @@ class Indexer
       "border",
       "code",
       "custom",
+      "foiling",
       "frame",
       "gatherer_code",
       "has_boosters",
@@ -113,6 +114,7 @@ class Indexer
       PatchLinkRelated,
       PatchPrintSheets,
       PatchFrame,
+      PatchFoiling,
 
       # Reconcile issues
       PatchReconcileForeignNames,

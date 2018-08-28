@@ -42,6 +42,41 @@ class CardPrinting
     @set_code = @set.code
   end
 
+  # "foilonly", "nonfoil", "both"
+  def foiling
+    case @set.foiling
+    when "nonfoil", "foilonly", "both"
+      @set.foiling
+    when "booster_both"
+      return "both" if in_boosters?
+      "unknown_for_nonbooster"
+    when "precon"
+      # FIXME: This is extremely unperformant
+      if @set.decks.empty?
+        warn "#{@set.code} is not a precon"
+        return "not a precon"
+      end
+      actual = @set.decks
+        .flat_map(&:cards_with_sideboard)
+        .map(&:last)
+        .select{|c| c.parts.map(&:name).include?(name) }
+        .map(&:foil)
+        .uniq
+      if actual == []
+        binding.pry
+        "missing_from_precon"
+      elsif actual == [false]
+        "nonfoil"
+      elsif actual == [true]
+        "foilonly"
+      else
+        "precon with both, wat?"
+      end
+    else
+      "#{@set.foiling} -> totally_unknown"
+    end
+  end
+
   def in_boosters?
     @set.has_boosters? and !@exclude_from_boosters
   end
