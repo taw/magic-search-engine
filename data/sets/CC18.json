@@ -1103,7 +1103,7 @@
         },
         {
             "artist": "Yana Kucheeva",
-            "cmc": 4,
+            "cmc": 3,
             "colorIdentity": [
                 "W"
             ],
@@ -1112,11 +1112,11 @@
             ],
             "imageName": "vaen, will of law",
             "layout": "normal",
-            "loyalty": 4,
-            "manaCost": "{2}{W}{W}",
+            "loyalty": 3,
+            "manaCost": "{1}{W}{W}",
             "name": "Vaen, Will of Law",
             "number": "38",
-            "originalText": "+1: Untap up to one target creature you control. It gets +1/+1 and gains first strike until your next turn.\n0: Create a 2/2 white Knight creature token with vigilance.\n-3: Until your next turn, spells your opponents cast cost {3} more to cast.",
+            "originalText": "+1: Untap up to one target creature you control. It gets +1/+1 and gains first strike until your next turn.\n0: Create a 1/1 white Soldier creature token.\n-3: Until your next turn, spells your opponents cast cost {3} more to cast.",
             "originalType": "Legendary Planeswalker \u2014 Vaen",
             "rarity": "Mythic Rare",
             "subtypes": [
@@ -1125,7 +1125,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "+1: Untap up to one target creature you control. It gets +1/+1 and gains first strike until your next turn.\n0: Create a 2/2 white Knight creature token with vigilance.\n-3: Until your next turn, spells your opponents cast cost {3} more to cast.",
+            "text": "+1: Untap up to one target creature you control. It gets +1/+1 and gains first strike until your next turn.\n0: Create a 1/1 white Soldier creature token.\n-3: Until your next turn, spells your opponents cast cost {3} more to cast.",
             "type": "Legendary Planeswalker \u2014 Vaen",
             "types": [
                 "Planeswalker"
@@ -1605,7 +1605,7 @@
                 "Monk"
             ],
             "text": "Flying (This creature can't be blocked except by creatures with flying or reach.)\nProwess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)",
-            "toughness": "1",
+            "toughness": "2",
             "type": "Creature \u2014 Bird Monk",
             "types": [
                 "Creature"
@@ -2611,7 +2611,7 @@
         },
         {
             "artist": "Chris Cold",
-            "cmc": 4,
+            "cmc": 5,
             "colorIdentity": [
                 "B"
             ],
@@ -2621,13 +2621,13 @@
             "flavor": "\"Rise. Your services are still required.\"\n\u2014Dreadlord Bal'anak",
             "imageName": "dark revival",
             "layout": "normal",
-            "manaCost": "{2}{B}{B}",
+            "manaCost": "{3}{B}{B}",
             "name": "Dark Revival",
             "number": "88",
-            "originalText": "Put target creature or planeswalker card from your graveyard onto the battlefield under your control.",
+            "originalText": "Put target creature or planeswalker card from a graveyard onto the battlefield under your control.",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Put target creature or planeswalker card from your graveyard onto the battlefield under your control.",
+            "text": "Put target creature or planeswalker card from a graveyard onto the battlefield under your control.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -3233,7 +3233,7 @@
             "manaCost": "{3}{B}{B}",
             "name": "Sorin, Lord of Vengeance",
             "number": "109",
-            "originalText": "+2: Sorin, Lord of Vengeance deals 2 damage to any target. You gain 2 life.\n-2: Create a 2/2 black Vampire Knight creature token with flying and lifelink.\n-10: Target opponent discards their hand. Put up to three creature and/or planeswalker cards from that player's graveyard onto the battlefield under your control.",
+            "originalText": "+2: Sorin, Lord of Vengeance deals 2 damage to up to one target creature. You gain 2 life.\n-2: Create a 2/2 black Vampire Knight creature token with flying and lifelink.\n-10: Target opponent discards their hand. Put up to three creature and/or planeswalker cards from that player's graveyard onto the battlefield under your control.",
             "originalType": "Legendary Planeswalker \u2014 Sorin",
             "rarity": "Mythic Rare",
             "subtypes": [
@@ -3242,7 +3242,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "+2: Sorin, Lord of Vengeance deals 2 damage to any target. You gain 2 life.\n-2: Create a 2/2 black Vampire Knight creature token with flying and lifelink.\n-10: Target opponent discards their hand. Put up to three creature and/or planeswalker cards from that player's graveyard onto the battlefield under your control.",
+            "text": "+2: Sorin, Lord of Vengeance deals 2 damage to up to one target creature. You gain 2 life.\n-2: Create a 2/2 black Vampire Knight creature token with flying and lifelink.\n-10: Target opponent discards their hand. Put up to three creature and/or planeswalker cards from that player's graveyard onto the battlefield under your control.",
             "type": "Legendary Planeswalker \u2014 Sorin",
             "types": [
                 "Planeswalker"
@@ -3421,6 +3421,14 @@
                 {
                     "date": "2013-07-01",
                     "text": "If you control a legendary creature and gain control of another legendary creature with the same name, you'll choose one to remain on the battlefield and put the other into its owner's graveyard."
+                },
+                {
+                    "date": "2018-07-13",
+                    "text": "Act of Treason can target any creature, even one that's untapped or one you already control."
+                },
+                {
+                    "date": "2018-07-13",
+                    "text": "Gaining control of a creature doesn't cause you to gain control of any Auras or Equipment attached to it."
                 }
             ],
             "text": "Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. (It can attack and {T} this turn.)",
@@ -3474,15 +3482,21 @@
             "manaCost": "{R}",
             "name": "Boomkeg Runner",
             "number": "117",
-            "originalText": "{R}, Sacrifice Boomkeg Runner: Boomkeg Runner deals 2 damage to target player or planeswalker.",
+            "originalText": "{R}, Sacrifice Boomkeg Runner: Boomkeg Runner deals 2 damage to target player.",
             "originalType": "Creature \u2014 Goblin Warrior",
             "power": "1",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2018-08-28",
+                    "text": "The ability can't target a planeswalker."
+                }
+            ],
             "subtypes": [
                 "Goblin",
                 "Warrior"
             ],
-            "text": "{R}, Sacrifice Boomkeg Runner: Boomkeg Runner deals 2 damage to target player or planeswalker.",
+            "text": "{R}, Sacrifice Boomkeg Runner: Boomkeg Runner deals 2 damage to target player.",
             "toughness": "1",
             "type": "Creature \u2014 Goblin Warrior",
             "types": [
@@ -3687,10 +3701,10 @@
             "flavor": "After raging against everyone and everything he had ever known, he figured he'd make a living of it.",
             "imageName": "goblin ragemonger",
             "layout": "normal",
-            "manaCost": "{R}{R}",
+            "manaCost": "{1}{R}",
             "name": "Goblin Ragemonger",
             "number": "125",
-            "originalText": "Menace, haste\nGoblin Ragemonger attacks each combat if able.",
+            "originalText": "First strike, haste\nGoblin Ragemonger attacks each combat if able.",
             "originalType": "Creature \u2014 Goblin Berserker",
             "power": "2",
             "rarity": "Rare",
@@ -3698,7 +3712,7 @@
                 "Goblin",
                 "Berserker"
             ],
-            "text": "Menace, haste\nGoblin Ragemonger attacks each combat if able.",
+            "text": "First strike, haste\nGoblin Ragemonger attacks each combat if able.",
             "toughness": "2",
             "type": "Creature \u2014 Goblin Berserker",
             "types": [
@@ -3831,18 +3845,24 @@
             ],
             "imageName": "innerflame master",
             "layout": "normal",
-            "manaCost": "{1}{R}",
+            "manaCost": "{R}{R}",
             "name": "Innerflame Master",
             "number": "130",
-            "originalText": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, Innerflame Master deals 1 damage to target player or planeswalker.",
+            "originalText": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, Innerflame Master deals 1 damage to target player",
             "originalType": "Creature \u2014 Human Monk",
             "power": "2",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2018-08-28",
+                    "text": "The ability can't target a planeswalker."
+                }
+            ],
             "subtypes": [
                 "Human",
                 "Monk"
             ],
-            "text": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, Innerflame Master deals 1 damage to target player or planeswalker.",
+            "text": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, Innerflame Master deals 1 damage to target player.",
             "toughness": "1",
             "type": "Creature \u2014 Human Monk",
             "types": [
@@ -4062,7 +4082,7 @@
             "manaCost": "{2}{R}",
             "name": "Orcish Hordechief",
             "number": "138",
-            "originalText": "First strike (This creature deals combat damage before creatures without first strike.)\nMorbid \u2014 At the beginning of each end step, if a creature died this turn, Orcish Hordechief deals 2 damage to each player.",
+            "originalText": "Menace (This creature can't be blocked except by two or more creatures.)\nMorbid \u2014 At the beginning of each end step, if a creature died this turn, Orcish Hordechief deals 2 damage to each player.",
             "originalType": "Creature \u2014 Orc Warrior",
             "power": "3",
             "rarity": "Rare",
@@ -4070,7 +4090,7 @@
                 "Orc",
                 "Warrior"
             ],
-            "text": "First strike (This creature deals combat damage before creatures without first strike.)\nMorbid \u2014 At the beginning of each end step, if a creature died this turn, Orcish Hordechief deals 2 damage to each player.",
+            "text": "Menace (This creature can't be blocked except by two or more creatures.)\nMorbid \u2014 At the beginning of each end step, if a creature died this turn, Orcish Hordechief deals 2 damage to each player.",
             "toughness": "2",
             "type": "Creature \u2014 Orc Warrior",
             "types": [
@@ -4350,6 +4370,10 @@
                 {
                     "date": "2017-11-17",
                     "text": "Because discarding a card is an additional cost, you can't cast Tormenting Voice if you have no other cards in hand."
+                },
+                {
+                    "date": "2018-07-13",
+                    "text": "You must discard exactly one card to cast Tormenting Voice; you can't cast it without discarding a card, and you can't discard additional cards."
                 }
             ],
             "text": "As an additional cost to cast this spell, discard a card.\nDraw two cards.",
@@ -7100,7 +7124,7 @@
             "originalText": "{T}, Sacrifice Terramorphic Expanse: Search your library for a basic land card and put it onto the battlefield tapped. Then shuffle your library.",
             "originalType": "Land",
             "rarity": "Common",
-            "text": "{T}, Sacrifice Terramorphic Expanse: Search your library for a basic land card and put it onto the battlefield tapped. Then shuffle your library.",
+            "text": "{T}, Sacrifice Terramorphic Expanse: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.",
             "type": "Land",
             "types": [
                 "Land"
@@ -7197,5 +7221,5 @@
     "name": "Custom Core 2018",
     "releaseDate": "2018-04-15",
     "type": "core",
-    "version": "1.1.0"
+    "version": "1.1.2"
 }
