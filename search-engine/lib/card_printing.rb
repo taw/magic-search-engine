@@ -28,9 +28,9 @@ class CardPrinting
     @timeshifted = data["timeshifted"] || false
     @printed_text = (data["originalText"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
     unless card.funny
-      @printed_text = @printed_text.gsub(/\([^\(\)]*\)/, "")
+      @printed_text = @printed_text.gsub(/\s*\([^\(\)]*\)/, "")
     end
-    @printed_text = @printed_text.sub(/\s*\z/, "").sub(/\A\s*/, "")
+    @printed_text = -@printed_text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
     @printed_typeline = (data["originalType"] || "").tr("\u2014", "-")
     rarity = data["rarity"]
     @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
