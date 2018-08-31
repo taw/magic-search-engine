@@ -214,6 +214,7 @@ class Indexer
         "reserved",
         "rulings",
         "secondary",
+        "stability",
         "subtypes",
         "supertypes",
         "text",
