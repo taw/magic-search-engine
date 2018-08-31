@@ -16,6 +16,12 @@ BanList.for_format("custom standard") do
     nil,
     "Sickening Revival" => "banned",
     "Cursed by the Veil" => "banned",
-    "Flameblast" => "banned"
+    "Flameblast" => "banned",
+  )
+
+  change(
+    "2018-08-30",
+    "https://discordapp.com/channels/205457071380889601/256560810237624320/484806817013301249",
+    "Cursed by the Veil" => "legal",
   )
 end
