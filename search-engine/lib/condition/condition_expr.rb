@@ -43,6 +43,8 @@ class ConditionExpr < ConditionSimple
       eval_card_value(card.cmc)
     when "loy"
       eval_card_value(card.loyalty)
+    when "sta"
+      eval_card_value(card.stability)
     when "year"
       [:number, card.year]
     else

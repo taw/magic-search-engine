@@ -22,6 +22,39 @@
             ]
         },
         {
+            "cmc": 2,
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "Black"
+            ],
+            "layout": "normal",
+            "manaCost": "{X}{1}{B}",
+            "name": "Drain Life",
+            "number": "2",
+            "rarity": "special",
+            "rulings": [
+                {
+                    "date": "2004-10-04",
+                    "text": "Cost reducers can be used to reduce the X part of the mana cost."
+                },
+                {
+                    "date": "2004-10-04",
+                    "text": "You may gain up to the total toughness of the creature even if it was already damaged."
+                },
+                {
+                    "date": "2018-08-31",
+                    "text": "I have applied functional errata to this card in order to make it work with Structures from Ruins of Doharum. For the official text and new rulings, please look up the card on Gatherer. \u2014Fenhl"
+                }
+            ],
+            "text": "Spend only black mana on X.\nDrain Life deals X damage to any target. You gain life equal to the damage dealt, but not more life than the player's life total before the damage was dealt, the planeswalker's loyalty before the damage was dealt, the Structure's stability before the damage was dealt, or the creature's toughness.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ]
+        },
+        {
             "cmc": 3,
             "colorIdentity": [
                 "R"
@@ -32,7 +65,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Falling Star",
-            "number": "2",
+            "number": "3",
             "rarity": "special",
             "reserved": true,
             "rulings": [
@@ -58,7 +91,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Portal Mage",
-            "number": "3",
+            "number": "4",
             "power": "2",
             "rarity": "special",
             "rulings": [
@@ -84,7 +117,7 @@
                 },
                 {
                     "date": "2018-08-27",
-                    "text": "I have applied functional errata to this card in order to make it work with Structures from Ruins of Doharum. For the official text and rulings, please look up the card on Gatherer. \u2014Fenhl"
+                    "text": "I have applied functional errata to this card in order to make it work with Structures from Ruins of Doharum. For the official text and new rulings, please look up the card on Gatherer. \u2014Fenhl"
                 }
             ],
             "subtypes": [
@@ -110,7 +143,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}{U}",
             "name": "Richard Garfield, Ph.D.",
-            "number": "4",
+            "number": "5",
             "power": "2",
             "rarity": "special",
             "rulings": [
@@ -175,6 +208,35 @@
             "type": "Legendary Creature \u2014 Human Artificer",
             "types": [
                 "Creature"
+            ]
+        },
+        {
+            "cmc": 3,
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "Black"
+            ],
+            "layout": "normal",
+            "manaCost": "{X}{2}{B}",
+            "name": "Soul Burn",
+            "number": "6",
+            "rarity": "special",
+            "rulings": [
+                {
+                    "date": "2004-10-04",
+                    "text": "Will give 1 life for each black mana used, but not more life than the amount of unprevented damage that is dealt."
+                },
+                {
+                    "date": "2018-08-31",
+                    "text": "I have applied functional errata to this card in order to make it work with Structures from Ruins of Doharum. For the official text and new rulings, please look up the card on Gatherer. \u2014Fenhl"
+                }
+            ],
+            "text": "Spend only black and/or red mana on X.\nSoul Burn deals X damage to any target. You gain life equal to the damage dealt, but not more than the amount of {B} spent on X, the player's life total before the damage was dealt, the planeswalker's loyalty before the damage was dealt, the Structure's stability before the damage was dealt, or the creature's toughness.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
             ]
         }
     ],

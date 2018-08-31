@@ -12,7 +12,7 @@ class Card
   attr_writer :printings # For db subset
 
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
-  attr_reader :partial_color_identity, :cmc, :text, :text_normalized, :power, :toughness, :loyalty, :extra
+  attr_reader :partial_color_identity, :cmc, :text, :text_normalized, :power, :toughness, :loyalty, :stability, :extra
   attr_reader :hand, :life, :rulings, :foreign_names, :foreign_names_normalized, :stemmed_name
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :related
   attr_reader :reminder_text, :augment, :display_power, :display_toughness
@@ -39,6 +39,7 @@ class Card
     @power = data["power"] ? smart_convert_powtou(data["power"]) : nil
     @toughness = data["toughness"] ? smart_convert_powtou(data["toughness"]) : nil
     @loyalty = data["loyalty"] ? smart_convert_powtou(data["loyalty"]) : nil
+    @stability = data["stability"] ? smart_convert_powtou(data["stability"]) : nil
     @display_power = data["display_power"] ? data["display_power"] : @power
     @display_toughness = data["display_toughness"] ? data["display_toughness"] : @toughness
     @partial_color_identity = calculate_partial_color_identity

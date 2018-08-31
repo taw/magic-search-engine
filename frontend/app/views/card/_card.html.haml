@@ -29,6 +29,14 @@
     .sr-only
       = card.loyalty
 
+- if card.stability
+  %div
+    %span.infolabel
+      Stability:
+    %i.mana.mana-loyalty.mana-loyalty-start{"data-loyalty" => "#{card.stability}"}
+    .sr-only
+      = card.stability
+
 - if card.hand
   %div
     %span.infolabel

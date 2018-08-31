@@ -47,6 +47,7 @@ class CLIFrontend
       puts "#{card.text}" if card.text != ""
       puts "#{card.display_power}/#{card.display_toughness}" if card.power
       puts "Loyalty: #{card.loyalty}" if card.loyalty
+      puts "Stability: #{card.stability}" if card.stability
       puts "" unless i+1 == cards.size
     end
   end
