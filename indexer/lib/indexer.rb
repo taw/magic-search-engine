@@ -203,6 +203,7 @@ class Indexer
         "foreign_names",
         "funny",
         "hand", # vanguard
+        "hide_mana_cost",
         "layout",
         "life", # vanguard
         "loyalty",

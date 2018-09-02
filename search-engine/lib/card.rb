@@ -15,7 +15,7 @@ class Card
   attr_reader :partial_color_identity, :cmc, :text, :text_normalized, :power, :toughness, :loyalty, :extra
   attr_reader :hand, :life, :rulings, :foreign_names, :foreign_names_normalized, :stemmed_name
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :related
-  attr_reader :reminder_text, :augment, :display_power, :display_toughness
+  attr_reader :reminder_text, :augment, :display_power, :display_toughness, :display_mana_cost
 
   def initialize(data)
     @printings = []
@@ -41,6 +41,7 @@ class Card
     @loyalty = data["loyalty"] ? smart_convert_powtou(data["loyalty"]) : nil
     @display_power = data["display_power"] ? data["display_power"] : @power
     @display_toughness = data["display_toughness"] ? data["display_toughness"] : @toughness
+    @display_mana_cost = data["hide_mana_cost"] ? nil : @mana_cost
     @partial_color_identity = calculate_partial_color_identity
     if ["vanguard", "plane", "scheme", "phenomenon"].include?(@layout) or @types.include?("conspiracy")
       @extra = true
@@ -286,42 +287,47 @@ class Card
     @reminder_text = nil
     basic_land_types = (["forest", "island", "mountain", "plains", "swamp"] & @types.to_a)
       .sort.join(" ")
-    return if basic_land_types.empty?
-    # Listing them all explicitly due to wubrg wheel order
-    mana = case basic_land_types
-    when "plains"
-      "{W}"
-    when "island"
-      "{U}"
-    when "swamp"
-      "{B}"
-    when "mountain"
-      "{R}"
-    when "forest"
-      "{G}"
-    when "island plains"
-      "{W} or {U}"
-    when "plains swamp"
-      "{W} or {B}"
-    when "island swamp"
-      "{U} or {B}"
-    when "island mountain"
-      "{U} or {R}"
-    when "mountain swamp"
-      "{B} or {R}"
-    when "forest swamp"
-      "{B} or {G}"
-    when "forest mountain"
-      "{R} or {G}"
-    when "mountain plains"
-      "{R} or {W}"
-    when "forest plains"
-      "{G} or {W}"
-    when "forest island"
-      "{G} or {U}"
-    else
-      raise "No idea what's correct line for #{basic_land_types.inspect}"
+    if not basic_land_types.empty?
+      # Listing them all explicitly due to wubrg wheel order
+      mana = case basic_land_types
+      when "plains"
+        "{W}"
+      when "island"
+        "{U}"
+      when "swamp"
+        "{B}"
+      when "mountain"
+        "{R}"
+      when "forest"
+        "{G}"
+      when "island plains"
+        "{W} or {U}"
+      when "plains swamp"
+        "{W} or {B}"
+      when "island swamp"
+        "{U} or {B}"
+      when "island mountain"
+        "{U} or {R}"
+      when "mountain swamp"
+        "{B} or {R}"
+      when "forest swamp"
+        "{B} or {G}"
+      when "forest mountain"
+        "{R} or {G}"
+      when "mountain plains"
+        "{R} or {W}"
+      when "forest plains"
+        "{G} or {W}"
+      when "forest island"
+        "{G} or {U}"
+      else
+        raise "No idea what's correct line for #{basic_land_types.inspect}"
+      end
+      @reminder_text = "({T}: Add #{mana}.)"
+    elsif layout == "flip" and secondary?
+      # Awkward wording
+      other_name = (@names - [@name])[0]
+      @reminder_text = "(#{@name} keeps color and mana cost of #{other_name} when flipped)"
     end
-    @reminder_text = "({T}: Add #{mana}.)"
   end
 end
