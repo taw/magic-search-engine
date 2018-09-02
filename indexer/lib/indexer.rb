@@ -82,7 +82,7 @@ class Indexer
       "online_only",
       "release_date",
       "type",
-    )
+    ).compact
   end
 
   def patches
@@ -229,6 +229,7 @@ class Indexer
           "border",
           "exclude_from_boosters",
           "flavor",
+          "foiling",
           "frame",
           "multiverseid",
           "number",

@@ -63,7 +63,7 @@ describe "Foils" do
       assert_foiling(set.printings, "both")
     when "from the vault", "masterpiece", "premium deck"
       assert_foiling(set.printings, "foilonly")
-    when "commander", "duel deck", "archenemy", "global series", "box", "board game deck"
+    when "commander", "duel deck", "archenemy", "global series", "box", "board game deck", "planechase", "archenemy"
       if set.decks.empty?
         warn "Expected a deck for this product: #{set.name}"
       else
@@ -83,14 +83,30 @@ describe "Foils" do
       end
 
       case set.code
-      when "ced", "cedi", "ch", "ug", "euro", "guru", "apac", "po", "po2", "p3k", "drc"
+      when "ced", "cedi", "ch", "ug", "euro", "guru", "apac", "po", "po2", "p3k", "drc", "dcilm", "pot", "ugin"
         assert_foiling(set.printings, "nonfoil")
-      when "ust", "tsts"
+      when "ust", "tsts", "cns"
         assert_foiling(set.printings, "both")
-      when "cm1", "15ann", "sus"
+      when "cm1", "15ann", "sus", "sum", "wpn", "thgt", "gpx", "wmcq"
         assert_foiling(set.printings, "foilonly")
-      when "w16", "w17", "cp1", "cp2", "cp3", "cstd"
+      when "w16", "w17", "cp1", "cp2", "cp3", "cstd", "itp"
         assert_foiling_partial_precon(set.printings)
+      when "ori"
+        booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
+        assert_foiling(booster_cards, "both")
+        assert_foiling(extra_cards, "nonfoil")
+      when "dom"
+        booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
+        buy_a_box_promo = extra_cards.find{|c| c.name == "Firesong and Sunspeaker"}
+        assert_foiling(booster_cards, "both")
+        assert_foiling_partial_precon(extra_cards - [buy_a_box_promo])
+        assert_foiling([buy_a_box_promo], "foilonly")
+      when "m19"
+        booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
+        buy_a_box_promo = extra_cards.find{|c| c.name == "Nexus of Fate"}
+        assert_foiling(booster_cards, "both")
+        assert_foiling_partial_precon(extra_cards - [buy_a_box_promo])
+        assert_foiling([buy_a_box_promo], "foilonly")
       else
         assert_by_type(set)
       end
