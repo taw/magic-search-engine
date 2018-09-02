@@ -42,6 +42,11 @@ class DeckIndexer
       return printings["cp3"] if set_code == "ori" and printings["cp3"]
     end
 
+    # Coldsnap had special set for Ice Age reprints
+    if deck["set_code"] == "cs"
+      return printings["cstd"] if printings["cstd"]
+    end
+
     # It was printed in set we want
     return printings[set_code] if printings[set_code]
 
