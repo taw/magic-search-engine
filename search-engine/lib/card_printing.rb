@@ -23,6 +23,7 @@ class CardPrinting
     @flavor = data["flavor"] || -""
     @flavor_normalized = @flavor.tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
     @flavor_normalized = @flavor if @flavor_normalized == @flavor # Memory saving trick
+    @foiling = data["foiling"]
     @border = data["border"] || @set.border
     @frame = data["frame"] || @set.frame
     @timeshifted = data["timeshifted"] || false
