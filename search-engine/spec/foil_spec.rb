@@ -9,42 +9,25 @@ describe "Foils" do
     end
   end
 
-  def assert_foiling_precon(set)
-    foils, nonfoils = set.decks.flat_map(&:cards_with_sideboard).map(&:last).select{|c| c.set_code == set.code}.partition(&:foil)
-    foils = foils.flat_map(&:parts).map(&:name).uniq
-    nonfoils = nonfoils.flat_map(&:parts).map(&:name).uniq
-    # Actually bad due to variants not present
-
-    set.printings.group_by(&:foiling).each do |category, printings|
-      printings = printings.map(&:name).uniq
-      if category == "foilonly"
-        printings.should match_array foils
-      elsif category == "nonfoil"
-        binding.pry if printings.to_set != nonfoils.to_set
-        printings.should match_array nonfoils
-      elsif category == "both"
-        warn "Precons should not have both foil and nonfoil of same card [RIGHT???]"
-      else
-        warn "Unknown foiling #{category} for #{set.name}"
-      end
-    end
-  end
-
   def assert_foiling_partial_precon(cards)
     cards.each do |card|
       name = card.name
-      nonfoils, foils = card.set.cards_in_precons
-      has_nonfoil = nonfoils.include?(name)
-      has_foil = foils.include?(name)
+      if card.set.cards_in_precons
+        nonfoils, foils = card.set.cards_in_precons
+        has_nonfoil = nonfoils.include?(name)
+        has_foil = foils.include?(name)
 
-      if has_foil and not has_nonfoil
-        card.foiling.should eq("foilonly"), "#{card} should be foilonly"
-      elsif has_nonfoil and not has_foil
-        card.foiling.should eq("nonfoil"), "#{card} should be nonfoil"
-      elsif has_nonfoil and has_foil
-        card.foiling.should eq("totally broken"), "#{card} is marked as both foil and nonfoil, that is wrong for precon cards generally"
+        if has_foil and not has_nonfoil
+          card.foiling.should eq("foilonly"), "#{card} should be foilonly"
+        elsif has_nonfoil and not has_foil
+          card.foiling.should eq("nonfoil"), "#{card} should be nonfoil"
+        elsif has_nonfoil and has_foil
+          card.foiling.should eq("totally broken"), "#{card} is marked as both foil and nonfoil, that is wrong for precon cards generally"
+        else
+          card.foiling.should eq("totally broken"), "#{card} expected in precons but missing"
+        end
       else
-        card.foiling.should eq("totally broken"), "#{card} expected in precons but missing"
+        card.foiling.should eq("totally broken"), "#{card} expected in precons but that set has no precons"
       end
     end
   end
@@ -67,7 +50,7 @@ describe "Foils" do
       if set.decks.empty?
         warn "Expected a deck for this product: #{set.name}"
       else
-        assert_foiling_precon(set)
+        assert_foiling_partial_precon(set.printings)
       end
     else
       warn "No idea about #{set.name} / #{set.type}"
@@ -83,11 +66,11 @@ describe "Foils" do
       end
 
       case set.code
-      when "ced", "cedi", "ch", "ug", "euro", "guru", "apac", "po", "po2", "p3k", "drc", "dcilm", "pot", "ugin"
+      when "ced", "cedi", "ch", "ug", "euro", "guru", "apac", "po", "po2", "p3k", "drc", "dcilm", "pot", "ugin", "uqc"
         assert_foiling(set.printings, "nonfoil")
       when "ust", "tsts", "cns"
         assert_foiling(set.printings, "both")
-      when "cm1", "15ann", "sus", "sum", "wpn", "thgt", "gpx", "wmcq"
+      when "cm1", "15ann", "sus", "sum", "wpn", "thgt", "gpx", "wmcq", "hho", "mlp", "jr", "pro", "gtw"
         assert_foiling(set.printings, "foilonly")
       when "w16", "w17", "cp1", "cp2", "cp3", "cstd", "itp"
         assert_foiling_partial_precon(set.printings)
@@ -107,6 +90,28 @@ describe "Foils" do
         assert_foiling(booster_cards, "both")
         assert_foiling_partial_precon(extra_cards - [buy_a_box_promo])
         assert_foiling([buy_a_box_promo], "foilonly")
+      when "uh"
+        special, regular = set.printings.partition{|c| c.name == "Super Secret Tech"}
+        assert_foiling(regular, "both")
+        assert_foiling(special, "foilonly")
+      when "cn2"
+        special, regular = set.printings.partition{|c| c.name == "Kaya, Ghost Assassin"}
+        assert_foiling(regular, "both")
+        normal_kaya, foil_kaya = special.sort_by{|c| c.number.to_i}
+        assert_foiling([normal_kaya], "nonfoil")
+        assert_foiling([foil_kaya], "foilonly")
+      when "pch"
+        promo, rest = set.printings.partition{|c| c.name == "Tazeem" }
+        assert_foiling(promo, "nonfoil")
+        assert_foiling_partial_precon(rest)
+      when "pc2"
+        promo, rest = set.printings.partition{|c| c.name == "Stairs to Infinity" }
+        assert_foiling(promo, "nonfoil")
+        assert_foiling_partial_precon(rest)
+      when "pca"
+        planes, rest = set.printings.partition{|c| c.types.include?("plane") }
+        assert_foiling(planes, "nonfoil")
+        assert_foiling_partial_precon(rest)
       else
         assert_by_type(set)
       end
