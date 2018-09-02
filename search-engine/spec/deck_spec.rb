@@ -36,6 +36,7 @@ describe Deck do
       ["starter", "Starter Deck"],
       ["starter", "Theme Deck"],
       ["starter", "Welcome Deck"],
+      ["starter", "Advanced Pack"],
       ["expansion", "Challenger Deck"],
     ]
 

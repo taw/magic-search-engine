@@ -42,6 +42,12 @@ class PatchFoiling < Patch
         if ["Dirtcowl Wurm", "Revenant", "Monstrous Hound"].include?(name)
           card["foiling"] = "nonfoil"
         end
+      elsif set_code == "st2k"
+        if name == "Rhox"
+          card["foiling"] = "foilonly"
+        elsif ["Armored Pegasus", "Python", "Spined Wurm", "Stone Rain"].include?(name)
+          card["foiling"] = "nonfoil"
+        end
       end
     end
 
@@ -49,7 +55,7 @@ class PatchFoiling < Patch
       foiling = case set["code"]
       when "cm1", "15ann", "sus", "sum", "wpn", "thgt", "gpx", "wmcq", "hho", "mlp", "jr", "pro", "gtw", "wrl", "rep", "fnmp", "wotc", "ptc"
         "foilonly"
-      when "ced", "cedi", "ch", "guru", "apac", "drc", "euro", "dcilm", "ugin", "uqc", "van"
+      when "ced", "cedi", "ch", "guru", "apac", "drc", "euro", "dcilm", "ugin", "uqc", "van", "st"
         "nonfoil"
       when "ug"
         "nonfoil"
@@ -57,7 +63,7 @@ class PatchFoiling < Patch
         "both"
       when "ust", "tsts", "cns"
         "both"
-      when "e02", "w16", "w17", "rqs", "itp", "cstd"
+      when "e02", "w16", "w17", "rqs", "itp", "cstd", "st2k"
         "precon"
       when "cp1", "cp2", "cp3"
         "foilonly"

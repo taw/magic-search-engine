@@ -66,7 +66,7 @@ describe "Foils" do
       end
 
       case set.code
-      when "ced", "cedi", "ch", "ug", "euro", "guru", "apac", "po", "po2", "p3k", "drc", "dcilm", "pot", "ugin", "uqc", "van"
+      when "ced", "cedi", "ch", "ug", "euro", "guru", "apac", "po", "po2", "p3k", "drc", "dcilm", "pot", "ugin", "uqc", "van", "st"
         assert_foiling(set.printings, "nonfoil")
       when "ust", "tsts", "cns"
         assert_foiling(set.printings, "both")
@@ -74,6 +74,12 @@ describe "Foils" do
         assert_foiling(set.printings, "foilonly")
       when "w16", "w17", "cp1", "cp2", "cp3", "cstd", "itp"
         assert_foiling_partial_precon(set.printings)
+      when "st2k"
+        promo, rest = set.printings.partition{|c| c.name == "Rhox"}
+        sampler, regular = rest.partition{|c| ["Armored Pegasus", "Python", "Spined Wurm", "Stone Rain"].include?(c.name) }
+        assert_foiling_partial_precon(regular)
+        assert_foiling(promo, "foilonly")
+        assert_foiling(sampler, "nonfoil")
       when "ori"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         assert_foiling(booster_cards, "both")
