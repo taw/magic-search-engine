@@ -5,7 +5,7 @@ class PatchFlipCardManaCost < Patch
   def call
     each_printing do |card|
       if card["layout"] == "flip" and card["secondary"]
-        card.delete("manaCost")
+        card["hide_mana_cost"] = true
       end
     end
   end
