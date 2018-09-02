@@ -10,7 +10,7 @@ describe "Foils" do
   end
 
   def assert_foiling_precon(set)
-    foils, nonfoils = set.decks.flat_map(&:cards_with_sideboard).map(&:last).partition(&:foil)
+    foils, nonfoils = set.decks.flat_map(&:cards_with_sideboard).map(&:last).select{|c| c.set_code == set.code}.partition(&:foil)
     foils = foils.flat_map(&:parts).map(&:name).uniq
     nonfoils = nonfoils.flat_map(&:parts).map(&:name).uniq
     # Actually bad due to variants not present
@@ -30,6 +30,25 @@ describe "Foils" do
     end
   end
 
+  def assert_foiling_partial_precon(cards)
+    cards.each do |card|
+      name = card.name
+      nonfoils, foils = card.set.cards_in_precons
+      has_nonfoil = nonfoils.include?(name)
+      has_foil = foils.include?(name)
+
+      if has_foil and not has_nonfoil
+        card.foiling.should eq("foilonly"), "#{card} should be foilonly"
+      elsif has_nonfoil and not has_foil
+        card.foiling.should eq("nonfoil"), "#{card} should be nonfoil"
+      elsif has_nonfoil and has_foil
+        card.foiling.should eq("totally broken"), "#{card} is marked as both foil and nonfoil, that is wrong for precon cards generally"
+      else
+        card.foiling.should eq("totally broken"), "#{card} expected in precons but missing"
+      end
+    end
+  end
+
   def assert_by_type(set)
     case set.type
     when "core", "expansion"
@@ -39,10 +58,7 @@ describe "Foils" do
       else
         assert_foiling(booster_cards, "nonfoil")
       end
-      assert_foiling(extra_cards, "unknown_for_nonbooster")
-      unless extra_cards.empty?
-        warn "Support for nonbooster cards in #{set.code} #{set.name} not implemented yet"
-      end
+      assert_foiling_partial_precon(extra_cards)
     when "masters", "spellbook", "reprint", "two-headed giant"
       assert_foiling(set.printings, "both")
     when "from the vault", "masterpiece", "premium deck"
@@ -67,12 +83,14 @@ describe "Foils" do
       end
 
       case set.code
-      when "ced", "cedi", "ch", "ug"
+      when "ced", "cedi", "ch", "ug", "euro", "guru", "apac", "po", "po2", "p3k", "drc"
         assert_foiling(set.printings, "nonfoil")
-      when "ust"
+      when "ust", "tsts"
         assert_foiling(set.printings, "both")
-      when "cm1"
+      when "cm1", "15ann", "sus"
         assert_foiling(set.printings, "foilonly")
+      when "w16", "w17", "cp1", "cp2", "cp3", "cstd"
+        assert_foiling_partial_precon(set.printings)
       else
         assert_by_type(set)
       end

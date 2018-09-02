@@ -1,26 +1,29 @@
 class PatchFoiling < Patch
   # FIXME:
   # Deck index is separate, so we currently can't specify anything useful for precons
-  # This should change
+  # and DeckDatabase needs to check it. This should change.
 
+  # It's all based on manual research, so mistakes are possible.
   def call
     each_set do |set|
       foiling = case set["code"]
-      when "cm1"
-        # commander
+      when "cm1", "15ann", "sus"
         "foilonly"
-      when "ced", "cedi", "ch"
-        # reprint
+      when "ced", "cedi", "ch", "guru", "apac", "drc", "euro"
         "nonfoil"
       when "ug"
         "nonfoil"
       when "uh"
         # Super-Secret Tech is foil only
-      when "ust"
+      when "ust", "tsts"
         "both"
-      when "e02"
+      when "e02", "w16", "w17", "rqs", "itp"
         "precon"
-      when "mgbc", "cstd", "rqs", "e01"
+      when "cp1", "cp2", "cp3"
+        "foilonly"
+      when "po", "po2", "p3k"
+        "nonfoil"
+      when "mgbc", "cstd", "e01"
         # Not really working, investigate later
         next
       end
