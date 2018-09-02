@@ -6,41 +6,55 @@ class PatchFoiling < Patch
   # It's all based on manual research, so mistakes are possible.
   def call
     each_printing do |card|
-      if card["set_code"] == "m19" and card["name"] == "Nexus of Fate"
+      name = card["name"]
+      set_code = card["set_code"]
+      types = card["types"]
+      number = card["number"]
+
+      if set_code == "m19" and name == "Nexus of Fate"
         card["foiling"] = "foilonly"
-      elsif card["set_code"] == "dom" and card["name"] == "Firesong and Sunspeaker"
+      elsif set_code == "dom" and name == "Firesong and Sunspeaker"
         card["foiling"] = "foilonly"
-      elsif card["set_code"] == "ori" and card["number"].to_i >= 273
+      elsif set_code == "ori" and number.to_i >= 273
         # Deck Builder's Toolkit (Magic Origins Edition)
         card["foiling"] = "nonfoil"
-      elsif card["set_code"] == "uh" and card["name"] == "Super Secret Tech"
+      elsif set_code == "akh"
+        # There's boosters, precons, and also Deck Builder's Toolkit
+        # These are Deck Builder's Toolkit only
+        if ["Forsaken Sanctuary", "Meandering River", "Timber Gorge", "Tranquil Expanse"].include?(name)
+          card["foiling"] = "nonfoil"
+        end
+      elsif set_code == "uh" and name == "Super Secret Tech"
         card["foiling"] = "foilonly"
-      elsif card["set_code"] == "cn2" and card["name"] == "Kaya, Ghost Assassin"
-        if card["number"] == "75"
+      elsif set_code == "cn2" and name == "Kaya, Ghost Assassin"
+        if number == "75"
           card["foiling"] = "nonfoil"
         else
           card["foiling"] = "foilonly"
         end
-      elsif card["set_code"] == "pch" and card["name"] == "Tazeem"
+      elsif set_code == "pch" and name == "Tazeem"
         card["foiling"] = "nonfoil"
-      elsif card["set_code"] == "pc2" and card["name"] == "Stairs to Infinity"
+      elsif set_code == "pc2" and name == "Stairs to Infinity"
         card["foiling"] = "nonfoil"
-      elsif card["set_code"] == "pca" and card["types"].include?("Plane")
+      elsif set_code == "pca" and types.include?("Plane")
         card["foiling"] = "nonfoil"
+      elsif set_code == "ptc"
+        if ["Dirtcowl Wurm", "Revenant", "Monstrous Hound"].include?(name)
+          card["foiling"] = "nonfoil"
+        end
       end
     end
 
     each_set do |set|
       foiling = case set["code"]
-      when "cm1", "15ann", "sus", "sum", "wpn", "thgt", "gpx", "wmcq", "hho", "mlp", "jr", "pro", "gtw"
+      when "cm1", "15ann", "sus", "sum", "wpn", "thgt", "gpx", "wmcq", "hho", "mlp", "jr", "pro", "gtw", "wrl", "rep", "fnmp", "wotc", "ptc"
         "foilonly"
-      when "ced", "cedi", "ch", "guru", "apac", "drc", "euro", "dcilm", "ugin", "uqc"
+      when "ced", "cedi", "ch", "guru", "apac", "drc", "euro", "dcilm", "ugin", "uqc", "van"
         "nonfoil"
       when "ug"
         "nonfoil"
       when "uh", "cn2"
         "both"
-        # with exceptions
       when "ust", "tsts", "cns"
         "both"
       when "e02", "w16", "w17", "rqs", "itp", "cstd"
