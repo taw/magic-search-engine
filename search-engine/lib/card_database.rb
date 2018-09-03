@@ -18,7 +18,7 @@ require_relative "deck"
 require_relative "deck_database"
 
 class CardDatabase
-  attr_reader :sets, :cards, :blocks, :artists
+  attr_reader :sets, :cards, :blocks, :artists, :cards_in_precons
   def initialize
     @sets = {}
     @blocks = Set[]
@@ -76,7 +76,7 @@ class CardDatabase
   def sets_with_packs
     @sets_with_packs ||= begin
       factory = PackFactory.new(self)
-      sets.values.reverse.select{|set| factory.for(set.code)}
+      @sets.values.reverse.select{|set| factory.for(set.code)}
     end
   end
 
@@ -217,7 +217,7 @@ class CardDatabase
     data = JSON.parse(path.open.read)
     freeze_strings!(data)
     data["sets"].each do |set_code, set_data|
-      @sets[set_code] = CardSet.new(set_data)
+      @sets[set_code] = CardSet.new(self, set_data)
       if set_data["block_code"]
         @blocks << set_data["block_code"]
         @blocks << set_data["official_block_code"] if set_data["official_block_code"]
@@ -249,6 +249,20 @@ class CardDatabase
     setup_artists!
     setup_sort_index!
     DeckDatabase.new(self).load!
+    index_cards_in_precons!
+  end
+
+  def index_cards_in_precons!
+    @cards_in_precons = {}
+    @sets.values
+      .flat_map(&:decks)
+      .flat_map(&:cards_with_sideboard)
+      .map(&:last)
+      .flat_map{|c| c.parts.map(&:name).map{|n| [c.set_code, c.foil, n] }}
+      .each do |set_code, foil, name|
+      @cards_in_precons[set_code] ||= [Set.new, Set.new]
+      @cards_in_precons[set_code][foil ? 1 : 0] << name
+    end
   end
 
   def fix_multipart_cards_color_identity!(color_identity_cache)
@@ -329,5 +343,9 @@ class CardDatabase
       end
       ss
     end
+  end
+
+  def inspect
+    "CardDatabase"
   end
 end

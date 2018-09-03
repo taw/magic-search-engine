@@ -11,6 +11,9 @@
   - if @set.release_date
     .col-12
       = "Released: #{@set.release_date.to_s}"
+  - if @set.online_only?
+    .col-12
+      Is it an online only set.
   - unless @set.decks.empty?
     .col-12
       %div Preconstructed decks:

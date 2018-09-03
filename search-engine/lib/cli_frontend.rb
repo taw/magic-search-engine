@@ -39,7 +39,7 @@ class CLIFrontend
           end
         end
       end
-      puts [card.name, card.mana_cost].compact.join(" ")
+      puts [card.name, card.display_mana_cost].compact.join(" ")
       puts "[#{codes.join(" ")}]"
       puts card.typeline
       puts "#{card.reminder_text}" if card.reminder_text

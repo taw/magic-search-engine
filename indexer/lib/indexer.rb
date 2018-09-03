@@ -82,7 +82,7 @@ class Indexer
       "online_only",
       "release_date",
       "type",
-    )
+    ).compact
   end
 
   def patches
@@ -203,6 +203,7 @@ class Indexer
         "foreign_names",
         "funny",
         "hand", # vanguard
+        "hide_mana_cost",
         "layout",
         "life", # vanguard
         "loyalty",
@@ -229,6 +230,7 @@ class Indexer
           "border",
           "exclude_from_boosters",
           "flavor",
+          "foiling",
           "frame",
           "multiverseid",
           "number",

@@ -16,6 +16,7 @@ describe Deck do
       ["box", "Theme Deck"],
       ["masters", "MTGO Theme Deck"],
       ["global series", "Planeswalker Deck"],
+      ["board game deck", "Theme Deck"],
       # Standard sets
       ["core", "Clash Pack"],
       ["core", "Event Deck"],
@@ -35,6 +36,7 @@ describe Deck do
       ["starter", "Starter Deck"],
       ["starter", "Theme Deck"],
       ["starter", "Welcome Deck"],
+      ["starter", "Advanced Pack"],
       ["expansion", "Challenger Deck"],
     ]
 

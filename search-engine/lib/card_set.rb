@@ -4,7 +4,8 @@ class CardSet
   attr_reader :border, :frame, :release_date, :printings, :type
   attr_reader :decks, :foiling
 
-  def initialize(data)
+  def initialize(db, data)
+    @db = db
     @name          = data["name"]
     @code          = data["code"]
     @official_code = data["official_code"]
@@ -22,6 +23,10 @@ class CardSet
     @custom        = !!data["custom"]
     @decks         = []
     @foiling       = data["foiling"]
+  end
+
+  def cards_in_precons
+    @db.cards_in_precons[@code]
   end
 
   def has_boosters?

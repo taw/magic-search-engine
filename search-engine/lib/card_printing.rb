@@ -23,6 +23,7 @@ class CardPrinting
     @flavor = data["flavor"] || -""
     @flavor_normalized = @flavor.tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
     @flavor_normalized = @flavor if @flavor_normalized == @flavor # Memory saving trick
+    @foiling = data["foiling"]
     @border = data["border"] || @set.border
     @frame = data["frame"] || @set.frame
     @timeshifted = data["timeshifted"] || false
@@ -44,36 +45,38 @@ class CardPrinting
 
   # "foilonly", "nonfoil", "both"
   def foiling
+    return @foiling if @foiling
     case @set.foiling
     when "nonfoil", "foilonly", "both"
       @set.foiling
     when "booster_both"
-      return "both" if in_boosters?
-      "unknown_for_nonbooster"
-    when "precon"
-      # FIXME: This is extremely unperformant
-      if @set.decks.empty?
-        warn "#{@set.code} is not a precon"
-        return "not a precon"
-      end
-      actual = @set.decks
-        .flat_map(&:cards_with_sideboard)
-        .map(&:last)
-        .select{|c| c.parts.map(&:name).include?(name) }
-        .map(&:foil)
-        .uniq
-      if actual == []
-        binding.pry
-        "missing_from_precon"
-      elsif actual == [false]
-        "nonfoil"
-      elsif actual == [true]
-        "foilonly"
+      if in_boosters?
+        "both"
       else
-        "precon with both, wat?"
+        foiling_in_precons
       end
+    when "precon"
+      foiling_in_precons
     else
       "#{@set.foiling} -> totally_unknown"
+    end
+  end
+
+  # TODO: This could seriously move to indexer once deck index and primary index are merged
+  private def foiling_in_precons
+    raise "No #{set_code} cards in any precon deck" unless @set.cards_in_precons
+    nonfoils, foils = @set.cards_in_precons
+    has_nonfoil = nonfoils.include?(name)
+    has_foil = foils.include?(name)
+
+    if has_foil and has_nonfoil
+      "precon with both, wat?"
+    elsif has_nonfoil
+      "nonfoil"
+    elsif has_foil
+      "foilonly"
+    else
+      "missing_from_precon"
     end
   end
 
@@ -119,7 +122,7 @@ class CardPrinting
     first_release_date last_release_date printings life hand rulings
     foreign_names foreign_names_normalized mana_hash funny color_indicator
     related first_regular_release_date reminder_text augment
-    display_power display_toughness
+    display_power display_toughness display_mana_cost
     primary? secondary? front? back?
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
