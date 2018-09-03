@@ -11,6 +11,8 @@ class ConditionIsKeywordsoup < Condition
       "majestic myriarch",
       "odric, lunarch marshal",
       "soulflayer",
+      # custom
+      "blade of choices",
     ]
 
     names
