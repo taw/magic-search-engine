@@ -377,6 +377,10 @@ describe "Full Database Test" do
     assert_search_equal_cards "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,c18,bbd)"
   end
 
+  it "is brawler" do
+    assert_search_equal_cards "is:brawler", "(is:primary t:legendary t:creature) OR (is:primary t:planeswalker)"
+  end
+
   # Bugfix
   it "cm1/cma set codes" do
     "e:cm1".should have_count_printings(18)
