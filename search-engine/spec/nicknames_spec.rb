@@ -244,6 +244,7 @@ describe "Card nicknames" do
       "Soulflayer"
     assert_search_results "is:keywordsoup",
       *cards_matching{|c|
+        return false if c.name == "Urza, Academy Headmaster"
         ["deathtouch", "defender", "double strike", "enchant", "equip", "first strike", "flash", "flying", "haste", "hexproof", "indestructible", "intimidate", "landwalk", "lifelink", "protection", "reach", "shroud", "trample", "vigilance"].count {
           |keyword| c.text.downcase.include? keyword
         } > 6
