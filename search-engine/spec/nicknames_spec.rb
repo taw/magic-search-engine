@@ -229,4 +229,23 @@ describe "Card nicknames" do
     assert_search_equal "is:battleland",
       'o:"~ enters the battlefield tapped unless you control two or more basic lands."'
   end
+
+  # A card that lists a lot of keywords in a single list, in an order that's different from the canonical keyword order
+  # This definition is more strict than some people use the term “keyword soup”, but it is useful for figuring out relative order of keywords by filtering these cards out
+  it "is:keywordsoup" do
+    assert_search_results "is:keywordsoup",
+      "Animus of Predation",
+      "Cairn Wanderer",
+      "Concerted Effort",
+      "Death-Mask Duplicant",
+      "Greater Morphling",
+      "Majestic Myriarch",
+      "Odric, Lunarch Marshal",
+      "Soulflayer"
+    assert_search_results "is:keywordsoup",
+      *cards_matching{|c|
+        ["deathtouch", "defender", "double strike", "enchant", "equip", "first strike", "flash", "flying", "haste", "hexproof", "indestructible", "intimidate", "landwalk", "lifelink", "protection", "reach", "shroud", "trample", "vigilance"].count {
+          |keyword| c.text.downcase.include? keyword
+        } > 6
+      }
 end
