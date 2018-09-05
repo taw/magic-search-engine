@@ -248,4 +248,5 @@ describe "Card nicknames" do
           |keyword| c.text.downcase.include? keyword
         } > 6
       }
+  end
 end
