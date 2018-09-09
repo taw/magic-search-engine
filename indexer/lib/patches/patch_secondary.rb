@@ -8,10 +8,16 @@ class PatchSecondary < Patch
       elsif  card["layout"] == "split"
         # All primary
       elsif card["layout"] == "double-faced"
-        if card["manaCost"] or card["name"] == "Westvale Abbey"
-          # Primary side
-        else
+        if card["number"] =~ /a\z/i
+          # Primary
+        elsif card["number"] =~ /b\z/i
           card["secondary"] = true
+        elsif card["names"].index(card["name"]) == 0
+          # Primary
+        elsif card["names"].index(card["name"]) == 1
+          card["secondary"] = true
+        else
+          warn "No idea if DFC #{card["name"]} is primary or secondary"
         end
       elsif card["layout"] == "flip" or card["layout"] == "aftermath"
         raise unless card["number"] =~ /[ab]\z/
