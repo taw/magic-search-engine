@@ -102,7 +102,6 @@ class Indexer
       PatchLoyaltySymbol,
       PatchDisplayPowerToughness,
       PatchNormalizeReleaseDate,
-      PatchNormalizeNames,
       PatchManaCost,
 
       # Calculate extra fields
@@ -144,6 +143,9 @@ class Indexer
       PatchUrza,
       PatchFixPromoPrintDates,
       PatchMeldCardNames,
+
+      # One more round of normalization, it throws away some information
+      PatchNormalizeNames,
     ]
   end
 
