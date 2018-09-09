@@ -20,8 +20,8 @@ class PatchSecondary < Patch
           warn "No idea if DFC #{card["name"]} is primary or secondary"
         end
       elsif card["layout"] == "flip" or card["layout"] == "aftermath"
-        raise unless card["number"] =~ /[ab]\z/
-        card["secondary"] = true if card["number"] =~ /b\z/
+        raise unless card["number"] =~ /[ab]\z/i
+        card["secondary"] = true if card["number"] =~ /b\z/i
       elsif card["layout"] == "meld"
         if card["manaCost"] or card["name"] == "Hanweir Battlements"
           # Primary side
