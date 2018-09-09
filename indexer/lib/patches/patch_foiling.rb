@@ -55,7 +55,7 @@ class PatchFoiling < Patch
       foiling = case set["code"]
       when "cm1", "15ann", "sus", "sum", "wpn", "thgt", "gpx", "wmcq", "hho", "mlp", "jr", "pro", "gtw", "wrl", "rep", "fnmp", "wotc", "ptc"
         "foilonly"
-      when "ced", "cedi", "ch", "guru", "apac", "drc", "euro", "dcilm", "ugin", "uqc", "van", "st"
+      when "ced", "cedi", "ch", "guru", "apac", "drc", "euro", "dcilm", "ugin", "uqc", "van", "st", "mgbc"
         "nonfoil"
       when "ug"
         "nonfoil"
@@ -69,9 +69,6 @@ class PatchFoiling < Patch
         "foilonly"
       when "po", "po2", "p3k", "pot"
         "nonfoil"
-      when "mgbc", "cstd"
-        # Not really working, investigate later
-        next
       end
 
       foiling ||= case set["type"]
