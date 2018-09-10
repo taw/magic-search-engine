@@ -153,7 +153,7 @@ def run(*, do_name_check=True, verbose=False):
         with PIDFILE_PATH.open('w') as pidfile:
             print(str(lore_seeker.pid), file=pidfile)
         lore_seeker.wait()
-        if lore_seeker.returncode != 0:
+        if lore_seeker.returncode != 0 and PIDFILE_PATH.exists():
             notify_crash()
 
 if __name__ == '__main__':
@@ -169,7 +169,8 @@ if __name__ == '__main__':
     elif arguments['restart']:
         with PIDFILE_PATH.open() as pidfile:
             pid = int(pidfile.read().strip())
-            os.kill(pid, signal.SIGTERM)
+        PIDFILE_PATH.unlink() # remove pidfile to silence crash notification
+        os.kill(pid, signal.SIGTERM)
     else:
         while True:
             run(verbose=not arguments['--quiet'])
