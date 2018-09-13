@@ -35,7 +35,7 @@
             "manaCost": "{1}{W}{W}",
             "name": "Ajani, True Counsel",
             "number": "1",
-            "originalText": "+1: Put a +1/+1 counter on up to one target creature. It gains first strike until your next turn.\n-2: Search your library for an Aura card, put it into your hand, then shuffle your library.\n-7: You get an emblem with \"Auras you control and enchanted permanents you control have indestructible.\"",
+            "originalText": "+1: Put a +1/+1 counter on up to one target creature. It gains first strike until your next turn.\n-2: Search your library for an Aura card, reveal it, put it into your hand, then shuffle your library.\n-7: You get an emblem with \"Auras you control and enchanted permanents you control have indestructible.\"",
             "originalType": "Legendary Planeswalker \u2014 Ajani",
             "rarity": "Mythic Rare",
             "rulings": [
@@ -95,14 +95,14 @@
             "manaCost": "{3}{W}{W}",
             "name": "Avatar of Mythology",
             "number": "3",
-            "originalText": "Vigilance\nAvatar of Mythology gets +1/+1 for each Plains you control.\nAt the beginning of your upkeep, if you control five or more Plains, you may search your library for a legendary creature card, reveal it, put it into your hand, then shuffle your library.",
+            "originalText": "Vigilance\nAvatar of Mythology gets +1/+1 for each Plains you control.\nAt the beginning of your upkeep, if you control five or more Plains, you may search your library for a legendary creature card with converted mana cost 5 or less, put it onto the battlefield, then shuffle your library.",
             "originalType": "Creature \u2014 Avatar",
             "power": "0",
             "rarity": "Mythic Rare",
             "subtypes": [
                 "Avatar"
             ],
-            "text": "Vigilance\nAvatar of Mythology gets +1/+1 for each Plains you control.\nAt the beginning of your upkeep, if you control five or more Plains, you may search your library for a legendary creature card, reveal it, put it into your hand, then shuffle your library.",
+            "text": "Vigilance\nAvatar of Mythology gets +1/+1 for each Plains you control.\nAt the beginning of your upkeep, if you control five or more Plains, you may search your library for a legendary creature card with converted mana cost 5 or less, put it onto the battlefield, then shuffle your library.",
             "toughness": "0",
             "type": "Creature \u2014 Avatar",
             "types": [
@@ -118,7 +118,7 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"I've won more battles than there are islands! From each one, a new feat recorded on my skin!\"",
+            "flavor": "\"I've defeated more foes than there are islands! From each victory, a new feat recorded on my skin!\"",
             "imageName": "battle mastery",
             "layout": "normal",
             "manaCost": "{2}{W}",
@@ -194,6 +194,34 @@
             ]
         },
         {
+            "artist": "Konstantinos Skenteridis",
+            "cmc": 5,
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [
+                "White"
+            ],
+            "imageName": "cirrus strider",
+            "layout": "normal",
+            "manaCost": "{4}{W}",
+            "name": "Cirrus Strider",
+            "number": "7",
+            "originalText": "Flying\nPlainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, and put it into your hand. Then shuffle your library.)",
+            "originalType": "Creature \u2014 Elemental",
+            "power": "3",
+            "rarity": "Common",
+            "subtypes": [
+                "Elemental"
+            ],
+            "text": "Flying\nPlainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, and put it into your hand. Then shuffle your library.)",
+            "toughness": "3",
+            "type": "Creature \u2014 Elemental",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "artist": "Giulia Valentini",
             "cmc": 3,
             "colorIdentity": [
@@ -203,11 +231,11 @@
                 "White"
             ],
             "flavor": "Ta'Oko created the sky and every living being that resides within.",
-            "imageName": "cirrus drake",
+            "imageName": "cloud drake",
             "layout": "normal",
             "manaCost": "{2}{W}",
-            "name": "Cirrus Drake",
-            "number": "7",
+            "name": "Cloud Drake",
+            "number": "8",
             "originalText": "Flying",
             "originalType": "Creature \u2014 Elemental Drake",
             "power": "2",
@@ -219,34 +247,6 @@
             "text": "Flying",
             "toughness": "2",
             "type": "Creature \u2014 Elemental Drake",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
-            "artist": "Konstantinos Skenteridis",
-            "cmc": 5,
-            "colorIdentity": [
-                "W"
-            ],
-            "colors": [
-                "White"
-            ],
-            "imageName": "cloudstrider",
-            "layout": "normal",
-            "manaCost": "{4}{W}",
-            "name": "Cloudstrider",
-            "number": "8",
-            "originalText": "Flying\nPlainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, and put it into your hand. Then shuffle your library.)",
-            "originalType": "Creature \u2014 Elemental",
-            "power": "3",
-            "rarity": "Common",
-            "subtypes": [
-                "Elemental"
-            ],
-            "text": "Flying\nPlainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, and put it into your hand. Then shuffle your library.)",
-            "toughness": "3",
-            "type": "Creature \u2014 Elemental",
             "types": [
                 "Creature"
             ]
@@ -298,7 +298,7 @@
             "manaCost": "{3}{W}{W}",
             "name": "Elemental Ascension",
             "number": "10",
-            "originalText": "Enchant creature or land\nEnchanted permanent is a 5/5 white Elemental Plains land creature with flying and vigilance. (It has \"{T}: Add {W}.\")",
+            "originalText": "Enchant creature or land\nEnchanted permanent is a 5/5 white Plains Elemental land creature with flying and vigilance. (It has \"{T}: Add {W}.\")",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Rare",
             "subtypes": [
@@ -376,19 +376,19 @@
             "colors": [
                 "White"
             ],
-            "imageName": "golden pod-savior",
+            "imageName": "golden savior",
             "layout": "normal",
             "manaCost": "{1}{W}{W}",
-            "name": "Golden Pod-Savior",
+            "name": "Golden Savior",
             "number": "13",
-            "originalText": "Prestige 2 (When this creature attacks with two or more other creatures, if it isn't prestigious, put two +1/+1 counters on it and it becomes prestigious.)\nWhen Golden Pod-Savior becomes prestigious, return target creature card with converted mana cost 2 or less from your graveyard to the battlefield.",
+            "originalText": "Prestige 2 (When this creature attacks with two or more other creatures, if it isn't prestigious, put two +1/+1 counters on it and it becomes prestigious.)\nWhen Golden Savior becomes prestigious, return target creature card with converted mana cost 2 or less from your graveyard to the battlefield.",
             "originalType": "Creature \u2014 Dolphin",
             "power": "2",
             "rarity": "Uncommon",
             "subtypes": [
                 "Dolphin"
             ],
-            "text": "Prestige 2 (When this creature attacks with two or more other creatures, if it isn't prestigious, put two +1/+1 counters on it and it becomes prestigious.)\nWhen Golden Pod-Savior becomes prestigious, return target creature card with converted mana cost 2 or less from your graveyard to the battlefield.",
+            "text": "Prestige 2 (When this creature attacks with two or more other creatures, if it isn't prestigious, put two +1/+1 counters on it and it becomes prestigious.)\nWhen Golden Savior becomes prestigious, return target creature card with converted mana cost 2 or less from your graveyard to the battlefield.",
             "toughness": "2",
             "type": "Creature \u2014 Dolphin",
             "types": [
@@ -405,18 +405,18 @@
                 "White"
             ],
             "flavor": "Each groove shows a line of ancestry.",
-            "imageName": "grooved moko",
+            "imageName": "grooved blessing",
             "layout": "normal",
             "manaCost": "{W}",
-            "name": "Grooved Moko",
+            "name": "Grooved Blessing",
             "number": "14",
-            "originalText": "Enchant creature\nEnchanted creature gets +1/+1.\n{1}{W}: Return Grooved Moko from your graveyard to your hand.",
+            "originalText": "Enchant creature\nEnchanted creature gets +1/+1.\n{W}: Return Grooved Blessing from your graveyard to your hand.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
             "subtypes": [
                 "Aura"
             ],
-            "text": "Enchant creature\nEnchanted creature gets +1/+1.\n{1}{W}: Return Grooved Moko from your graveyard to your hand.",
+            "text": "Enchant creature\nEnchanted creature gets +1/+1.\n{W}: Return Grooved Blessing from your graveyard to your hand.",
             "type": "Enchantment \u2014 Aura",
             "types": [
                 "Enchantment"
@@ -431,20 +431,20 @@
             "colors": [
                 "White"
             ],
-            "imageName": "guardian whale",
+            "imageName": "guardian skywhale",
             "layout": "normal",
             "manaCost": "{4}{W}{W}",
-            "name": "Guardian Whale",
+            "name": "Guardian Skywhale",
             "number": "15",
-            "originalText": "Flying\nWhen Guardian Whale enters the battlefield, if you control another creature with flying, exile target creature an opponent controls until Guardian Whale leaves the battlefield.",
+            "originalText": "Flying\nWhen Guardian Skywhale enters the battlefield, exile target creature an opponent controls until Guardian Skywhale leaves the battlefield.",
             "originalType": "Creature \u2014 Whale",
-            "power": "4",
+            "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
                 "Whale"
             ],
-            "text": "Flying\nWhen Guardian Whale enters the battlefield, if you control another creature with flying, exile target creature an opponent controls until Guardian Whale leaves the battlefield.",
-            "toughness": "4",
+            "text": "Flying\nWhen Guardian Skywhale enters the battlefield, exile target creature an opponent controls until Guardian Skywhale leaves the battlefield.",
+            "toughness": "3",
             "type": "Creature \u2014 Whale",
             "types": [
                 "Creature"
@@ -465,10 +465,10 @@
             "manaCost": "{3}{W}",
             "name": "Guardian's Vengeance",
             "number": "16",
-            "originalText": "Destroy target attacking creature.",
+            "originalText": "Destroy target attacking or blocking creature.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Destroy target attacking creature.",
+            "text": "Destroy target attacking or blocking creature.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -483,7 +483,7 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"Hunting a skywhale unifies our efforts and the feast afterwards unifies our hearts.\"\n\u2014Pakare, Weranga Warrior",
+            "flavor": "\"The hunt unifies our efforts. The feast afterwards unifies our hearts.\"\n\u2014Pakare, Weranga Warrior",
             "imageName": "heroic hunting",
             "layout": "normal",
             "manaCost": "{3}{W}",
@@ -499,6 +499,33 @@
             ]
         },
         {
+            "artist": "nutchapol-thitinunthakorn",
+            "cmc": 4,
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [
+                "White"
+            ],
+            "flavor": "During hatching season, Mokupe clerics are expected to weave blessings in the defense of all sorts of families.",
+            "imageName": "instilled endurance",
+            "layout": "normal",
+            "manaCost": "{3}{W}",
+            "name": "Instilled Endurance",
+            "number": "18",
+            "originalText": "Enchant creature\nEnchanted creature gets +2/+2 and has vigilance.",
+            "originalType": "Enchantment \u2014 Aura",
+            "rarity": "Common",
+            "subtypes": [
+                "Aura"
+            ],
+            "text": "Enchant creature\nEnchanted creature gets +2/+2 and has vigilance.",
+            "type": "Enchantment \u2014 Aura",
+            "types": [
+                "Enchantment"
+            ]
+        },
+        {
             "artist": "Simone Murgia",
             "cmc": 2,
             "colorIdentity": [
@@ -511,7 +538,7 @@
             "layout": "normal",
             "manaCost": "{W}{W}",
             "name": "Kahui Battle-Cleric",
-            "number": "18",
+            "number": "19",
             "originalText": "Prestige 1 (When this creature attacks with two or more other creatures, if it isn't prestigious, put a +1/+1 counter on it and it becomes prestigious.)\nWhen Kahui Battle-Cleric becomes prestigious, tap target creature an opponent controls.",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "2",
@@ -540,7 +567,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Kahui Prideful",
-            "number": "19",
+            "number": "20",
             "originalText": "First strike\nPrestige 1 (When this creature attacks with two or more other creatures, if it isn't prestigious, put a +1/+1 counter on it and it becomes prestigious.)",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "2",
@@ -569,7 +596,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Kakapo Griffin",
-            "number": "20",
+            "number": "21",
             "originalText": "When Kakapo Griffin enters the battlefield, create a 1/1 blue Bird creature token with flying.\n{W}: Kakapo Griffin gains flying until end of turn.",
             "originalType": "Creature \u2014 Griffin",
             "power": "2",
@@ -597,8 +624,8 @@
             "layout": "normal",
             "manaCost": "{W}{W}{W}",
             "name": "Keen Sea-Eagle",
-            "number": "21",
-            "originalText": "Flying\nPrestige 1 (When this creature attacks with two or more other creatures, if it isn't prestigious, put a +1/+1 counter on it and it becomes prestigious.)\nWhen Keen Sea-Eagle becomes prestigious, create two 1/1 blue Bird creature tokens with flying tapped and attacking.",
+            "number": "22",
+            "originalText": "Flying\nPrestige 1 (When this creature attacks with two or more other creatures, if it isn't prestigious, put a +1/+1 counter on it and it becomes prestigious.)\nWhen Keen Sea-Eagle becomes prestigious, create two 1/1 blue Bird creature tokens with flying that are tapped and attacking.",
             "originalType": "Creature \u2014 Bird",
             "power": "3",
             "rarity": "Rare",
@@ -625,7 +652,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Kohea's Brilliance",
-            "number": "22",
+            "number": "23",
             "originalText": "Tap up to two target creatures.\nAwaken 3\u2014{4}{W} (If you cast this spell for {4}{W}, also put three +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -648,7 +675,7 @@
             "layout": "normal",
             "manaCost": "{W}",
             "name": "Kohea's Pilgrimage",
-            "number": "23",
+            "number": "24",
             "originalText": "At the beginning of your upkeep, if you control seven or more lands, create three 2/2 white Warrior creature tokens.",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "1",
@@ -677,7 +704,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Mokupe Protectors",
-            "number": "24",
+            "number": "25",
             "originalText": "Vigilance\nPrestige 1 (When this creature attacks with two or more other creatures, if it isn't prestigious, put a +1/+1 counter on it and it becomes prestigious.)\nWhen Mokupe Protectors becomes prestigious, untap all other creatures you control.",
             "originalType": "Creature \u2014 Elf Warrior",
             "power": "2",
@@ -702,12 +729,12 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"We may rely on enchantment, but don't think the Mokupe are incapable of fighting! Lets see how well you fare in our homeland, where the elements are as attuned to our people as we are to it.\"",
+            "flavor": "Mokupe landshaping magic can have unexpected results, so they train to be able to fight expertly in every possible terrain.",
             "imageName": "mokupe wavespinner",
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Mokupe Wavespinner",
-            "number": "25",
+            "number": "26",
             "originalType": "Creature \u2014 Elf Shaman",
             "power": "3",
             "rarity": "Common",
@@ -735,7 +762,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Moon Weaver",
-            "number": "26",
+            "number": "27",
             "originalText": "Flying\nWhenever you cast an Aura spell, draw a card.",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "2",
@@ -764,7 +791,7 @@
             "layout": "normal",
             "manaCost": "{W}",
             "name": "Omalu Champion",
-            "number": "27",
+            "number": "28",
             "originalText": "Whenever a Plains enters the battlefield under your control, Omalu Champion gets +1/+1 and gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy this creature.)",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "1",
@@ -794,7 +821,7 @@
             "layout": "normal",
             "manaCost": "{3}{W}",
             "name": "Omalu Elder",
-            "number": "28",
+            "number": "29",
             "originalText": "When Omalu Elder enters the battlefield, tap up to X target creatures, where X is the number of Plains you control.",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "3",
@@ -823,7 +850,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Omalu Guide",
-            "number": "29",
+            "number": "30",
             "originalText": "Voyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nAs long as you've discovered paradise, Omalu Guide gets +1/+2 and has vigilance.",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "3",
@@ -858,7 +885,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Oteo, Conquerer Redeemed",
-            "number": "30",
+            "number": "31",
             "originalText": "First strike\nVoyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nAs long as you've discovered paradise, other creatures you control get +1/+1 and Oteo, Conquerer Redeemed gets +1/+1 for each other creature you control.",
             "originalType": "Legendary Creature \u2014 Human Warrior",
             "power": "2",
@@ -884,33 +911,6 @@
             ]
         },
         {
-            "artist": "nutchapol-thitinunthakorn",
-            "cmc": 4,
-            "colorIdentity": [
-                "W"
-            ],
-            "colors": [
-                "White"
-            ],
-            "flavor": "\"Its armor\u2014barely a burden. Never does it fail to strike with ferocity!\"\n\u2014Hapohapo, Mokupe Warrior",
-            "imageName": "scale and claw",
-            "layout": "normal",
-            "manaCost": "{3}{W}",
-            "name": "Scale and Claw",
-            "number": "31",
-            "originalText": "Enchant creature\nEnchanted creature gets +2/+2 and has vigilance.",
-            "originalType": "Enchantment \u2014 Aura",
-            "rarity": "Common",
-            "subtypes": [
-                "Aura"
-            ],
-            "text": "Enchant creature\nEnchanted creature gets +2/+2 and has vigilance.",
-            "type": "Enchantment \u2014 Aura",
-            "types": [
-                "Enchantment"
-            ]
-        },
-        {
             "artist": "Evelyn Soa",
             "cmc": 2,
             "colorIdentity": [
@@ -924,14 +924,14 @@
             "manaCost": "{1}{W}",
             "name": "Settlement Shellback",
             "number": "32",
-            "originalText": "When Settlement Shellback enters the battlefield, reveal the top five cards of your library. You may put an Aura card from among them into your hand, then put the rest on the bottom of your library in any order.",
+            "originalText": "When Settlement Shellback enters the battlefield, reveal the top five cards of your library. Put an Aura card from among them into your hand, and the rest on the bottom of your library in any order.",
             "originalType": "Creature \u2014 Turtle",
             "power": "1",
             "rarity": "Uncommon",
             "subtypes": [
                 "Turtle"
             ],
-            "text": "When Settlement Shellback enters the battlefield, reveal the top five cards of your library. You may put an Aura card from among them into your hand. Put the rest on the bottom of your library in any order.",
+            "text": "When Settlement Shellback enters the battlefield, reveal the top five cards of your library. Put an Aura card from among them into your hand, and the rest on the bottom of your library in any order.",
             "toughness": "3",
             "type": "Creature \u2014 Turtle",
             "types": [
@@ -947,18 +947,18 @@
             "colors": [
                 "White"
             ],
-            "imageName": "shellborne isolation",
+            "imageName": "shellborne fortitude",
             "layout": "normal",
             "manaCost": "{1}{W}",
-            "name": "Shellborne Isolation",
+            "name": "Shellborne Fortitude",
             "number": "33",
-            "originalText": "Enchant land\nWhen Shellborne Isolation enters the battlefield, draw a card.\nEnchanted land has hexproof and indestructible.",
+            "originalText": "Enchant land\nWhen Shellborne Fortitude enters the battlefield, draw a card.\nEnchanted land has indestructible.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Rare",
             "subtypes": [
                 "Aura"
             ],
-            "text": "Enchant land\nWhen Shellborne Isolation enters the battlefield, draw a card.\nEnchanted land has hexproof and indestructible.",
+            "text": "Enchant land\nWhen Shellborne Fortitude enters the battlefield, draw a card.\nEnchanted land has indestructible.",
             "type": "Enchantment \u2014 Aura",
             "types": [
                 "Enchantment"
@@ -978,7 +978,7 @@
             "manaCost": "{3}{W}",
             "name": "Simple Living",
             "number": "34",
-            "originalText": "Each player chooses a number of creatures they control with total power less than or equal to the number of lands they control, then sacrifices all other creatures they control.\nPlainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, and put it into your hand. Then shuffle your library.)",
+            "originalText": "Each player chooses any number of creatures they control with total power less than or equal to the number of lands they control, then sacrifices all other creatures they control.\nPlainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, and put it into your hand. Then shuffle your library.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
             "text": "Each player chooses any number of creatures they control with total power less than or equal to the number of lands they control, then sacrifices all other creatures they control.\nPlainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, and put it into your hand. Then shuffle your library.)",
@@ -1001,7 +1001,7 @@
             "manaCost": "{3}{W}",
             "name": "Suntouched Bluff",
             "number": "35",
-            "originalText": "Enchant land\nWhen Suntouched Bluff enters the battlefield, you may search your library for a Plains card, put it into your hand, then shuffle your library.\nEnchanted land has \"{W}, {T}: Tap target creature.\"",
+            "originalText": "Enchant land\nWhen Suntouched Bluff enters the battlefield, you may search your library for a Plains card, reveal it, put it into your hand, then shuffle your library.\nEnchanted land has \"{W}, {T}: Tap target creature.\"",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
             "subtypes": [
@@ -1116,10 +1116,10 @@
                 "White"
             ],
             "flavor": "\"Our hearts burn, stoked by pride!/Lay down your arms and submit./ We rise above you in every way.\"",
-            "imageName": "weranga wardance",
+            "imageName": "weranga war dance",
             "layout": "normal",
             "manaCost": "{1}{W}{W}",
-            "name": "Weranga Wardance",
+            "name": "Weranga War Dance",
             "number": "39",
             "originalText": "Choose one \u2014\n\u2022 Creatures you control get +2/+1 until end of turn.\n\u2022 Destroy target artifact or enchantment.",
             "originalType": "Sorcery",
@@ -1160,7 +1160,7 @@
         },
         {
             "artist": "Tatii Lange",
-            "cmc": 3,
+            "cmc": 4,
             "colorIdentity": [
                 "U"
             ],
@@ -1169,13 +1169,13 @@
             ],
             "imageName": "between realms",
             "layout": "normal",
-            "manaCost": "{2}{U}",
+            "manaCost": "{3}{U}",
             "name": "Between Realms",
             "number": "41",
-            "originalText": "As an additional cost to cast Between Realms, return two lands you control to their owner's hands.\nDraw three cards.",
+            "originalText": "As an additional cost to cast Between Realms, return a land you control to its owner's hand.\nDraw three cards.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "As an additional cost to cast Between Realms, return two lands you control to their owner's hands.\nDraw three cards.",
+            "text": "As an additional cost to cast Between Realms, return a land you control to its owner's hand.\nDraw three cards.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -1183,7 +1183,7 @@
         },
         {
             "artist": "angie gomez",
-            "cmc": 6,
+            "cmc": 5,
             "colorIdentity": [
                 "U"
             ],
@@ -1192,7 +1192,7 @@
             ],
             "imageName": "billowing serpent",
             "layout": "normal",
-            "manaCost": "{5}{U}",
+            "manaCost": "{4}{U}",
             "name": "Billowing Serpent",
             "number": "42",
             "originalText": "Voyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nWhenever Billowing Serpent attacks, tap target creature an opponent controls. If you've discovered paradise, that creature doesn't untap during its controller's next untap step.",
@@ -1209,7 +1209,7 @@
                 "Serpent"
             ],
             "text": "Voyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nWhenever Billowing Serpent attacks, tap target creature an opponent controls. If you've discovered paradise, that creature doesn't untap during its controller's next untap step.",
-            "toughness": "6",
+            "toughness": "5",
             "type": "Creature \u2014 Serpent",
             "types": [
                 "Creature"
@@ -1289,7 +1289,7 @@
             "manaCost": "{2}{U}",
             "name": "Cascading Falls",
             "number": "45",
-            "originalText": "Enchant land\nWhen Cascading Falls enters the battlefield, you may search your library for an Island card, put it into your hand, then shuffle your library.\nEnchanted land has \"{U}, {T}: Draw a card, then discard a card.\"",
+            "originalText": "Enchant land\nWhen Cascading Falls enters the battlefield, you may search your library for an Island card, reveal it, put it into your hand, then shuffle your library.\nEnchanted land has \"{U}, {T}: Draw a card, then discard a card.\"",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
             "subtypes": [
@@ -1302,7 +1302,7 @@
             ]
         },
         {
-            "artist": "meder taab",
+            "artist": "Pablo Murinelly",
             "cmc": 2,
             "colorIdentity": [
                 "U"
@@ -1310,7 +1310,6 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"His voice is the gentle wind, his fist the crashing wave. We have no one to fear so long as we have our gods!\"",
             "imageName": "chosen of ta'oko",
             "layout": "normal",
             "manaCost": "{1}{U}",
@@ -1375,11 +1374,11 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "A voice boomed from the sky\u2014\"Your rampage ends, Hupiri. The voyagers have earned their place in paradise.\"",
-            "imageName": "clear skies",
+            "flavor": "A voice boomed\u2014\"Your rampage ends, Hupiri. The voyagers have earned their place in paradise.\"",
+            "imageName": "clear the skies",
             "layout": "normal",
             "manaCost": "{U}{U}",
-            "name": "Clear Skies",
+            "name": "Clear the Skies",
             "number": "48",
             "originalText": "Counter target spell unless its controller pays {3}.",
             "originalType": "Instant",
@@ -1567,7 +1566,7 @@
         },
         {
             "artist": "Heather (Schumacher) Meuser",
-            "cmc": 4,
+            "cmc": 5,
             "colorIdentity": [
                 "U"
             ],
@@ -1576,7 +1575,7 @@
             ],
             "imageName": "leafy seadrake",
             "layout": "normal",
-            "manaCost": "{3}{U}",
+            "manaCost": "{4}{U}",
             "name": "Leafy Seadrake",
             "number": "55",
             "originalText": "Flying\nWhen Leafy Seadrake enters the battlefield, look at the top X cards of your library, where X is the number of Islands you control. Put a card from among them into your hand and the rest on the bottom of your library in a random order.",
@@ -1588,7 +1587,7 @@
                 "Drake"
             ],
             "text": "Flying\nWhen Leafy Seadrake enters the battlefield, look at the top X cards of your library, where X is the number of Islands you control. Put a card from among them into your hand and the rest on the bottom of your library in a random order.",
-            "toughness": "2",
+            "toughness": "3",
             "type": "Creature \u2014 Plant Drake",
             "types": [
                 "Creature"
@@ -1722,7 +1721,7 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"A simple warrior's trick can't compare to the magic of our ancestors.\"\n\u2014Whahuli, Kalepa Shaman",
+            "flavor": "\"A simple warrior's trick can't compare to the magic of our ancestors.\"",
             "imageName": "negate",
             "layout": "normal",
             "manaCost": "{1}{U}",
@@ -1824,36 +1823,6 @@
             ]
         },
         {
-            "artist": "Wes Jones",
-            "cmc": 4,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [
-                "Blue"
-            ],
-            "flavor": "The Ramari live in imitation of Murono, god of death and the deep sea. His teachings are scratched in bone, added onto with the wisdom of each fresh kill.",
-            "imageName": "ramari ambusher",
-            "layout": "normal",
-            "manaCost": "{3}{U}",
-            "name": "Ramari Ambusher",
-            "number": "64",
-            "originalText": "Flash",
-            "originalType": "Creature \u2014 Merfolk Warrior",
-            "power": "3",
-            "rarity": "Common",
-            "subtypes": [
-                "Merfolk",
-                "Warrior"
-            ],
-            "text": "Flash",
-            "toughness": "3",
-            "type": "Creature \u2014 Merfolk Warrior",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
             "artist": "Jordy Lakiere",
             "cmc": 2,
             "colorIdentity": [
@@ -1866,7 +1835,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Ramari Recruiter",
-            "number": "65",
+            "number": "64",
             "originalText": "You may look at the top card of your library. (You may do this at any time.)\nYou may cast the top card of your library if it's a Merfolk card.\nWhenever Ramari Recruiter deals combat damage to a player, scry 2.",
             "originalType": "Creature \u2014 Merfolk Shaman",
             "power": "2",
@@ -1878,65 +1847,6 @@
             "text": "You may look at the top card of your library. (You may do this at any time.)\nYou may cast the top card of your library if it's a Merfolk card.\nWhenever Ramari Recruiter deals combat damage to a player, scry 2.",
             "toughness": "1",
             "type": "Creature \u2014 Merfolk Shaman",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
-            "artist": "Biagio D'alessandro",
-            "cmc": 2,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [
-                "Blue"
-            ],
-            "imageName": "ramari shaman",
-            "layout": "normal",
-            "manaCost": "{1}{U}",
-            "name": "Ramari Shaman",
-            "number": "66",
-            "originalText": "Flash\nWhen Ramari Shaman enters the battlefield, target Merfolk you control gains hexproof until end of turn.",
-            "originalType": "Creature \u2014 Merfolk Shaman",
-            "power": "1",
-            "rarity": "Uncommon",
-            "subtypes": [
-                "Merfolk",
-                "Shaman"
-            ],
-            "text": "Flash\nWhen Ramari Shaman enters the battlefield, target Merfolk you control gains hexproof until end of turn.",
-            "toughness": "3",
-            "type": "Creature \u2014 Merfolk Shaman",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
-            "artist": "Jhonnatan Timoteo",
-            "cmc": 3,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [
-                "Blue"
-            ],
-            "flavor": "\"We know these waterways better than any surface dweller.\"",
-            "imageName": "ramari sneak",
-            "layout": "normal",
-            "manaCost": "{2}{U}",
-            "name": "Ramari Sneak",
-            "number": "67",
-            "originalText": "Whenever an Island enters the battlefield under your control, target creature can't be blocked this turn.",
-            "originalType": "Creature \u2014 Merfolk Scout",
-            "power": "3",
-            "rarity": "Common",
-            "subtypes": [
-                "Merfolk",
-                "Scout"
-            ],
-            "text": "Whenever an Island enters the battlefield under your control, target creature can't be blocked this turn.",
-            "toughness": "2",
-            "type": "Creature \u2014 Merfolk Scout",
             "types": [
                 "Creature"
             ]
@@ -1955,7 +1865,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Ramari Traveler",
-            "number": "68",
+            "number": "65",
             "originalType": "Creature \u2014 Merfolk Scout",
             "power": "2",
             "rarity": "Common",
@@ -1970,30 +1880,31 @@
             ]
         },
         {
-            "artist": "Ducos Guillaume",
-            "cmc": 3,
+            "artist": "Wes Jones",
+            "cmc": 4,
             "colorIdentity": [
                 "U"
             ],
             "colors": [
                 "Blue"
             ],
-            "imageName": "ramari wavesurger",
+            "flavor": "The Ramari live in imitation of Murono, god of death and the deep sea. His teachings are scratched in bone, added onto with the wisdom of each fresh kill.",
+            "imageName": "riptide ambusher",
             "layout": "normal",
-            "manaCost": "{2}{U}",
-            "name": "Ramari Wavesurger",
-            "number": "69",
-            "originalText": "Flash\nWhen Ramari Wavesurger enters the battlefield, return target blocking creature to its owner's hand.",
-            "originalType": "Creature \u2014 Merfolk Shaman",
+            "manaCost": "{3}{U}",
+            "name": "Riptide Ambusher",
+            "number": "66",
+            "originalText": "Flash",
+            "originalType": "Creature \u2014 Merfolk Warrior",
             "power": "3",
-            "rarity": "Uncommon",
+            "rarity": "Common",
             "subtypes": [
                 "Merfolk",
-                "Shaman"
+                "Warrior"
             ],
-            "text": "Flash\nWhen Ramari Wavesurger enters the battlefield, return target blocking creature to its owner's hand.",
-            "toughness": "2",
-            "type": "Creature \u2014 Merfolk Shaman",
+            "text": "Flash",
+            "toughness": "3",
+            "type": "Creature \u2014 Merfolk Warrior",
             "types": [
                 "Creature"
             ]
@@ -2012,7 +1923,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Stem Hunger",
-            "number": "70",
+            "number": "67",
             "originalText": "Enchant creature\nEnchanted creature doesn't untap during its controller's untap step.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Common",
@@ -2038,7 +1949,7 @@
             "layout": "normal",
             "manaCost": "{5}{U}",
             "name": "Storm Serpent",
-            "number": "71",
+            "number": "68",
             "originalText": "Storm Serpent can't attack unless you control eight or more lands.\nIslandcycling {2} ({2}, Discard this card: Search your library for an Island card, reveal it, and put it into your hand. Then shuffle your library.)",
             "originalType": "Creature \u2014 Serpent",
             "power": "6",
@@ -2062,12 +1973,12 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "Life flourishes around the reefs that dot the ocean near Omalu. In these plentiful conditions, predators have unique capacities to gather as much food as possible.",
+            "flavor": "Life flourishes around the reefs that dot the ocean near Omalu. In these plentiful conditions, predators develop unique capacities to gather as much food as possible.",
             "imageName": "stunning coils",
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Stunning Coils",
-            "number": "72",
+            "number": "69",
             "originalText": "Tap up to two target creatures. Those creatures don't untap during their controller's next untap step.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -2090,7 +2001,7 @@
             "layout": "normal",
             "manaCost": "{U}",
             "name": "Ta'Oko's Curiosity",
-            "number": "73",
+            "number": "70",
             "originalText": "Scry 1, then draw a card.\nAwaken 3\u2014{5}{U} (If you cast this spell for {5}{U}, also put three +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -2102,7 +2013,7 @@
         },
         {
             "artist": "Chase Cabebe",
-            "cmc": 5,
+            "cmc": 8,
             "colorIdentity": [
                 "U"
             ],
@@ -2111,18 +2022,18 @@
             ],
             "imageName": "territorial taniwha",
             "layout": "normal",
-            "manaCost": "{3}{U}{U}",
+            "manaCost": "{6}{U}{U}",
             "name": "Territorial Taniwha",
-            "number": "74",
-            "originalText": "Trample\nWhen Territorial Taniwha enters the battlefield, tap all lands you control. Those lands don't untap during their controllers' untap steps for as long as you control Territorial Taniwha.",
+            "number": "71",
+            "originalText": "When Territorial Taniwha enters the battlefield, tap up to X target nonland permanents, where X is the number of Islands you control. These permanents don't untap during their controller's untap steps for as long as you control Territorial Taniwha.",
             "originalType": "Creature \u2014 Leviathan",
-            "power": "8",
+            "power": "5",
             "rarity": "Rare",
             "subtypes": [
                 "Leviathan"
             ],
-            "text": "Trample\nWhen Territorial Taniwha enters the battlefield, tap all lands you control. Those lands don't untap during their controllers' untap steps for as long as you control Territorial Taniwha.",
-            "toughness": "8",
+            "text": "When Territorial Taniwha enters the battlefield, tap up to X target nonland permanents, where X is the number of Islands you control. These permanents don't untap during their controller's untap steps for as long as you control Territorial Taniwha.",
+            "toughness": "5",
             "type": "Creature \u2014 Leviathan",
             "types": [
                 "Creature"
@@ -2141,7 +2052,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Tua Rahi Sipper",
-            "number": "75",
+            "number": "72",
             "originalText": "Flying\nVoyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nTua Rahi Sipper gets +4/+0 as long as you've discovered paradise.",
             "originalType": "Creature \u2014 Bird",
             "power": "1",
@@ -2176,7 +2087,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}",
             "name": "Watcher of Ta'Oko",
-            "number": "76",
+            "number": "73",
             "originalText": "Flying",
             "originalType": "Creature \u2014 Octopus Elemental",
             "power": "3",
@@ -2188,6 +2099,96 @@
             "text": "Flying",
             "toughness": "2",
             "type": "Creature \u2014 Octopus Elemental",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Ducos Guillaume",
+            "cmc": 3,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "flavor": "Wavebreakers earn their title by crossing a stormy sea. They either break the waves, or are torn apart by them.",
+            "imageName": "wavebreak adept",
+            "layout": "normal",
+            "manaCost": "{2}{U}",
+            "name": "Wavebreak Adept",
+            "number": "74",
+            "originalText": "Flash\nWhen Wavebreak Adept enters the battlefield, return target blocking creature to its owner's hand.",
+            "originalType": "Creature \u2014 Merfolk Shaman",
+            "power": "3",
+            "rarity": "Uncommon",
+            "subtypes": [
+                "Merfolk",
+                "Shaman"
+            ],
+            "text": "Flash\nWhen Wavebreak Adept enters the battlefield, return target blocking creature to its owner's hand.",
+            "toughness": "2",
+            "type": "Creature \u2014 Merfolk Shaman",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Jhonnatan Timoteo",
+            "cmc": 3,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "flavor": "\"We know these waterways better than any surface dweller.\"",
+            "imageName": "wavebreak scout",
+            "layout": "normal",
+            "manaCost": "{2}{U}",
+            "name": "Wavebreak Scout",
+            "number": "75",
+            "originalText": "Whenever an Island enters the battlefield under your control, target creature can't be blocked this turn.",
+            "originalType": "Creature \u2014 Merfolk Scout",
+            "power": "3",
+            "rarity": "Common",
+            "subtypes": [
+                "Merfolk",
+                "Scout"
+            ],
+            "text": "Whenever an Island enters the battlefield under your control, target creature can't be blocked this turn.",
+            "toughness": "2",
+            "type": "Creature \u2014 Merfolk Scout",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Biagio D'alessandro",
+            "cmc": 2,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "flavor": "\"I withstood the torrent. You can handle a measly wave!\"",
+            "imageName": "wavebreak shaman",
+            "layout": "normal",
+            "manaCost": "{1}{U}",
+            "name": "Wavebreak Shaman",
+            "number": "76",
+            "originalText": "Flash\nWhen Wavebreak Shaman enters the battlefield, target Merfolk you control gains hexproof until end of turn.",
+            "originalType": "Creature \u2014 Merfolk Shaman",
+            "power": "1",
+            "rarity": "Uncommon",
+            "subtypes": [
+                "Merfolk",
+                "Shaman"
+            ],
+            "text": "Flash\nWhen Wavebreak Shaman enters the battlefield, target Merfolk you control gains hexproof until end of turn.",
+            "toughness": "3",
+            "type": "Creature \u2014 Merfolk Shaman",
             "types": [
                 "Creature"
             ]
@@ -2309,7 +2310,7 @@
             "manaCost": "{2}{B}",
             "name": "Barang Witch",
             "number": "81",
-            "originalText": "Prestige 1 (When this creature attacks with two or more other creatures, if it isn't prestigious, put a +1/+1 counter on it and it becomes prestigious.)\nWhen Barang Witch dies, if it's prestigious, return it to its owner's hand.",
+            "originalText": "Prestige 1 (When this creature attacks with two or more other creatures, if it isn't prestigious, put a +1/+1 counter on it and it becomes prestigious.)\nWhen Barang Witch dies, if it was prestigious, return it to its owner's hand.",
             "originalType": "Creature \u2014 Human Shaman",
             "power": "2",
             "rarity": "Uncommon",
@@ -2362,7 +2363,7 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "\"Its unfortunate that we are so adept at killing, islander. You might have stood a chance in this war otherwise.\"",
+            "flavor": "\"Its unfortunate that we are so adept at killing, islander. Otherwise you might have stood a chance.\"",
             "imageName": "blood in the water",
             "layout": "normal",
             "manaCost": "{1}{B}",
@@ -2414,7 +2415,7 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "The veins of the earth run deep and hot.",
+            "flavor": "The veins of the earth run deep.",
             "imageName": "boiling outflow",
             "layout": "normal",
             "manaCost": "{1}{B}",
@@ -2443,7 +2444,7 @@
             "manaCost": "{4}{B}",
             "name": "Brutish Buwaya",
             "number": "86",
-            "originalText": "When Brutish Buwaya enters the battlefield, target creature an opponent controls gets -X/-X until end of turn, where X is equal to the number of Swamps you control.",
+            "originalText": "When Brutish Buwaya enters the battlefield, target creature an opponent controls gets -X/-X until end of turn, where X is the number of Swamps you control.",
             "originalType": "Creature \u2014 Crocodile Beast",
             "power": "3",
             "rarity": "Uncommon",
@@ -2472,7 +2473,7 @@
             "manaCost": "{2}{B}",
             "name": "Cast Aside Death",
             "number": "87",
-            "originalText": "Voyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nYou can't lose the game.\nWhenever you lose life, sacrifice that many permanents. Then, if you've discovered paradise, draw that many cards.",
+            "originalText": "Voyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nYou can't lose the game.\nWhenever you lose life, sacrifice that many permanents. Then if you've discovered paradise, draw that many cards.",
             "originalType": "Enchantment",
             "rarity": "Rare",
             "rulings": [
@@ -2536,7 +2537,6 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "\"Murono spits on you, landwalker.\"",
             "imageName": "despise",
             "layout": "normal",
             "manaCost": "{B}",
@@ -2623,7 +2623,7 @@
             "manaCost": "{1}{B}",
             "name": "Elder Aswan",
             "number": "92",
-            "originalText": "{3}: Until end of turn, Elder Aswan becomes a 4/2 black Hound creature with haste and menace.\n{3}: Until end of turn, Elder Aswan becomes a 2/3 black Bat creature with flying and lifelink.",
+            "originalText": "{3}: Until end of turn, Elder Aswan becomes a 4/2 Hound with menace and haste.\n{3}: Until end of turn, Elder Aswan becomes a 2/3 Bat with flying and lifelink.",
             "originalType": "Creature \u2014 Vampire Shapeshifter",
             "power": "2",
             "rarity": "Uncommon",
@@ -2652,10 +2652,20 @@
             "manaCost": "{5}{B}{B}",
             "name": "Flameglyph Ruiner",
             "number": "93",
-            "originalText": "When Flameglyph Ruiner enters the battlefield, exile the top five cards of target opponent's library.\nYou may play cards exiled with creatures named Flameglyph Ruiner.\n{3}{B}{B}, Sacrifice two lands: Return Flameglyph Ruiner from your graveyard to the battlefield tapped.",
+            "originalText": "When Flameglyph Ruiner enters the battlefield, exile the top five cards of target opponent's library and put a glyph counter on each of them.\nYou may play cards your opponents own in exile with glyph counters on them.\n{3}{B}{B}, Sacrifice two lands: Return Flameglyph Ruiner from your graveyard to the battlefield tapped.",
             "originalType": "Creature \u2014 Elemental Demon",
             "power": "7",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2018-09-12",
+                    "text": "The second ability only changes from where the cards can be played. It doesn't change the costs needed to cast spells, doesn't allow you to cast spells as though they had flash, and doesn't allow you to play additional lands per turn."
+                },
+                {
+                    "date": "2018-09-12",
+                    "text": "In a multiplayer game, if two players each control a Flameglyph Ruiner and a mutual opponent owns an exiled card with a glyph counter on it, both players may play that card. If both players want to play the same card, which player gets to play it is determined by the priority system. In most situations, the player who comes first in turn order gets the first opportunity to play it."
+                }
+            ],
             "subtypes": [
                 "Elemental",
                 "Demon"
@@ -2676,7 +2686,7 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "\"Such lack of cunning! Are all islanders so dull and weak that they can't even kill a simple beast?\"\n\u2014Mirobu, of the sixth tooth",
+            "flavor": "\"Such lack of cunning! Are all islanders so dull and weak that they can't even kill a simple beast?\"\n\u2014Mirobu, of the Third-tooth clan",
             "imageName": "gore",
             "layout": "normal",
             "manaCost": "{4}{B}",
@@ -2854,7 +2864,7 @@
             "manaCost": "{B}",
             "name": "Kanokai's Bloodlust",
             "number": "100",
-            "originalText": "Target creature gains indestructible until end of turn. If its a Merfolk, it gets +3/+0 until end of turn.",
+            "originalText": "Target creature gains indestructible until end of turn. If it's a Merfolk, it gets +3/+0 until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
             "text": "Target creature gains indestructible until end of turn. If it's a Merfolk, it gets +3/+0 until end of turn.",
@@ -3155,101 +3165,13 @@
             "manaCost": "{X}{B}",
             "name": "Reemergence",
             "number": "111",
-            "originalText": "Return target creature card with converted mana cost X from your graveyard to the battlefield. It gains haste and menace until end of turn.",
+            "originalText": "Return target creature card with converted mana cost X from your graveyard to the battlefield. It gains menace and haste until end of turn.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
             "text": "Return target creature card with converted mana cost X from your graveyard to the battlefield. It gains menace and haste until end of turn.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
-            ]
-        },
-        {
-            "artist": "Kerem Beyit",
-            "cmc": 4,
-            "colorIdentity": [
-                "B"
-            ],
-            "colors": [
-                "Black"
-            ],
-            "imageName": "sixth tooth brute",
-            "layout": "normal",
-            "manaCost": "{3}{B}",
-            "name": "Sixth Tooth Brute",
-            "number": "112",
-            "originalText": "Sixth Tooth Brute can't block.\nPrestige 3 (When this creature attacks with two or more other creatures, if it isn't prestigious, put three +1/+1 counters on it and it becomes prestigious.)",
-            "originalType": "Creature \u2014 Merfolk Warrior",
-            "power": "3",
-            "rarity": "Uncommon",
-            "subtypes": [
-                "Merfolk",
-                "Warrior"
-            ],
-            "text": "Sixth Tooth Brute can't block.\nPrestige 3 (When this creature attacks with two or more other creatures, if it isn't prestigious, put three +1/+1 counters on it and it becomes prestigious.)",
-            "toughness": "3",
-            "type": "Creature \u2014 Merfolk Warrior",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
-            "artist": "Ameilee Sullivan",
-            "cmc": 3,
-            "colorIdentity": [
-                "B"
-            ],
-            "colors": [
-                "Black"
-            ],
-            "flavor": "\"When a massacre is what I need, I call on the Sixth Tooth clan.\"\n\u2014Kanokai, the Deep Blood",
-            "imageName": "sixth tooth ravager",
-            "layout": "normal",
-            "manaCost": "{2}{B}",
-            "name": "Sixth Tooth Ravager",
-            "number": "113",
-            "originalText": "Sixth Tooth Ravager enters the battlefield with a +1/+1 counter on it if an opponent was dealt damage this turn.",
-            "originalType": "Creature \u2014 Merfolk Warrior",
-            "power": "3",
-            "rarity": "Common",
-            "subtypes": [
-                "Merfolk",
-                "Warrior"
-            ],
-            "text": "Sixth Tooth Ravager enters the battlefield with a +1/+1 counter on it if an opponent was dealt damage this turn.",
-            "toughness": "2",
-            "type": "Creature \u2014 Merfolk Warrior",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
-            "artist": "xia taptara",
-            "cmc": 2,
-            "colorIdentity": [
-                "B"
-            ],
-            "colors": [
-                "Black"
-            ],
-            "imageName": "skull hoarder",
-            "layout": "normal",
-            "manaCost": "{1}{B}",
-            "name": "Skull Hoarder",
-            "number": "114",
-            "originalText": "When Skull Hoarder enters the battlefield, if an opponent was dealt damage this turn, you draw a card and Skull Hoarder deals 2 damage to you.",
-            "originalType": "Creature \u2014 Merfolk Warrior",
-            "power": "2",
-            "rarity": "Uncommon",
-            "subtypes": [
-                "Merfolk",
-                "Warrior"
-            ],
-            "text": "When Skull Hoarder enters the battlefield, if an opponent was dealt damage this turn, you draw a card and Skull Hoarder deals 2 damage to you.",
-            "toughness": "1",
-            "type": "Creature \u2014 Merfolk Warrior",
-            "types": [
-                "Creature"
             ]
         },
         {
@@ -3265,8 +3187,8 @@
             "layout": "normal",
             "manaCost": "{4}{B}",
             "name": "Spreading Corruption",
-            "number": "115",
-            "originalText": "Enchant land\nWhen Spreading Corruption enters the battlefield, you may search your library for a Swamp card, put it into your hand, then shuffle your library.\nEnchanted land has \"{B}, {T}: You draw a card. Spreading Corruption deals 1 damage to you.\"",
+            "number": "112",
+            "originalText": "Enchant land\nWhen Spreading Corruption enters the battlefield, you may search your library for a Swamp card, reveal it, put it into your hand, then shuffle your library.\nEnchanted land has \"{B}, {T}: You draw a card. Spreading Corruption deals 1 damage to you.\"",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
             "subtypes": [
@@ -3276,6 +3198,94 @@
             "type": "Enchantment \u2014 Aura",
             "types": [
                 "Enchantment"
+            ]
+        },
+        {
+            "artist": "Kerem Beyit",
+            "cmc": 4,
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "Black"
+            ],
+            "imageName": "third-tooth brute",
+            "layout": "normal",
+            "manaCost": "{3}{B}",
+            "name": "Third-Tooth Brute",
+            "number": "113",
+            "originalText": "Third-Tooth Brute can't block.\nPrestige 3 (When this creature attacks with two or more other creatures, if it isn't prestigious, put three +1/+1 counters on it and it becomes prestigious.)",
+            "originalType": "Creature \u2014 Merfolk Warrior",
+            "power": "3",
+            "rarity": "Uncommon",
+            "subtypes": [
+                "Merfolk",
+                "Warrior"
+            ],
+            "text": "Third-Tooth Brute can't block.\nPrestige 3 (When this creature attacks with two or more other creatures, if it isn't prestigious, put three +1/+1 counters on it and it becomes prestigious.)",
+            "toughness": "3",
+            "type": "Creature \u2014 Merfolk Warrior",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "xia taptara",
+            "cmc": 2,
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "Black"
+            ],
+            "imageName": "third-tooth hoarder",
+            "layout": "normal",
+            "manaCost": "{1}{B}",
+            "name": "Third-Tooth Hoarder",
+            "number": "114",
+            "originalText": "When Third-Tooth Hoarder enters the battlefield, if an opponent was dealt damage this turn, you draw a card and Third-Tooth Hoarder deals 2 damage to you.",
+            "originalType": "Creature \u2014 Merfolk Warrior",
+            "power": "2",
+            "rarity": "Uncommon",
+            "subtypes": [
+                "Merfolk",
+                "Warrior"
+            ],
+            "text": "When Third-Tooth Hoarder enters the battlefield, if an opponent was dealt damage this turn, you draw a card and Third-Tooth Hoarder deals 2 damage to you.",
+            "toughness": "1",
+            "type": "Creature \u2014 Merfolk Warrior",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Ameilee Sullivan",
+            "cmc": 3,
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "Black"
+            ],
+            "flavor": "\"When I need a massare, I call on the Third-Tooth clan.\"\n\u2014Kanokai, the Deep Blood",
+            "imageName": "third-tooth ravager",
+            "layout": "normal",
+            "manaCost": "{2}{B}",
+            "name": "Third-Tooth Ravager",
+            "number": "115",
+            "originalText": "Third-Tooth Ravager enters the battlefield with a +1/+1 counter on it if an opponent was dealt damage this turn.",
+            "originalType": "Creature \u2014 Merfolk Warrior",
+            "power": "3",
+            "rarity": "Common",
+            "subtypes": [
+                "Merfolk",
+                "Warrior"
+            ],
+            "text": "Third-Tooth Ravager enters the battlefield with a +1/+1 counter on it if an opponent was dealt damage this turn.",
+            "toughness": "2",
+            "type": "Creature \u2014 Merfolk Warrior",
+            "types": [
+                "Creature"
             ]
         },
         {
@@ -3308,6 +3318,29 @@
             ]
         },
         {
+            "artist": "Nick Silva",
+            "cmc": 4,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "Red"
+            ],
+            "imageName": "arc twister",
+            "layout": "normal",
+            "manaCost": "{2}{R}{R}",
+            "name": "Arc Twister",
+            "number": "117",
+            "originalText": "Choose one \u2014\n\u2022 Arc Twister deals 4 damage to target creature.\n\u2022 Arc Twister deals 1 damage to each creature target opponent controls.",
+            "originalType": "Sorcery",
+            "rarity": "Common",
+            "text": "Choose one \u2014\n\u2022 Arc Twister deals 4 damage to target creature.\n\u2022 Arc Twister deals 1 damage to each creature target opponent controls.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ]
+        },
+        {
             "artist": "nuare studio",
             "cmc": 5,
             "colorIdentity": [
@@ -3320,7 +3353,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}{R}",
             "name": "Avatar of the Volcano",
-            "number": "117",
+            "number": "118",
             "originalText": "Haste\nAvatar of the Volcano gets +1/+1 for each Mountain you control.\nAt the beginning of your upkeep, if you control five or more Mountains, Avatar of the Volcano deals 5 damage to any target.",
             "originalType": "Creature \u2014 Avatar",
             "power": "0",
@@ -3348,7 +3381,7 @@
             "layout": "normal",
             "manaCost": "{4}{R}",
             "name": "Bombardment Zone",
-            "number": "118",
+            "number": "119",
             "originalText": "Discard a land card: Bombardment Zone deals 3 damage to any target.\nMountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, and put it into your hand. Then shuffle your library.)",
             "originalType": "Enchantment",
             "rarity": "Rare",
@@ -3372,7 +3405,7 @@
             "layout": "normal",
             "manaCost": "{4}{R}",
             "name": "Break Away",
-            "number": "119",
+            "number": "120",
             "originalText": "Destroy target artifact or land.\nCreate a 1/1 red Elemental creature token.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -3395,7 +3428,7 @@
             "layout": "normal",
             "manaCost": "{5}{R}{R}",
             "name": "Caldera Tyrant",
-            "number": "120",
+            "number": "121",
             "originalText": "Flying, trample\nWhenever Caldera Tyrant attacks, exile the top five cards of your library. Until end of turn, you may play cards exiled this way. Caldera Tyrant gets +1/+0 until end of turn for each land card exiled this way.",
             "originalType": "Creature \u2014 Dragon",
             "power": "6",
@@ -3421,29 +3454,6 @@
             ]
         },
         {
-            "artist": "paolo giannico",
-            "cmc": 5,
-            "colorIdentity": [
-                "R"
-            ],
-            "colors": [
-                "Red"
-            ],
-            "imageName": "chain flow",
-            "layout": "normal",
-            "manaCost": "{3}{R}{R}",
-            "name": "Chain Flow",
-            "number": "121",
-            "originalText": "Create three 1/1 red Elemental creature tokens.\nAdd {R} for each Elemental you control.",
-            "originalType": "Sorcery",
-            "rarity": "Uncommon",
-            "text": "Create three 1/1 red Elemental creature tokens.\nAdd {R} for each Elemental you control.",
-            "type": "Sorcery",
-            "types": [
-                "Sorcery"
-            ]
-        },
-        {
             "artist": "",
             "cmc": 2,
             "colorIdentity": [
@@ -3458,21 +3468,21 @@
             "manaCost": "{1}{R}",
             "name": "Champion of Rahoke",
             "number": "122",
-            "originalText": "Whenever a Mountain enters the battlefield under your control, Champion of Rahoke gets +1/+1 and gains menace until end of turn.",
+            "originalText": "Whenever a Mountain enters the battlefield under your control, Champion of Rahoke gets +1/+0 and gains menace until end of turn.",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "2",
             "rarity": "Common",
             "rulings": [
                 {
-                    "date": "2018-08-28",
-                    "text": "If this ability resolves multiple times in a turn, the power and toughness boosts will be cumulative, but the menace abilities will be redundant."
+                    "date": "2018-09-12",
+                    "text": "If this ability resolves multiple times in a turn, the power boosts will be cumulative, but the menace abilities will be redundant."
                 }
             ],
             "subtypes": [
                 "Human",
                 "Warrior"
             ],
-            "text": "Whenever a Mountain enters the battlefield under your control, Champion of Rahoke gets +1/+1 and gains menace until end of turn.",
+            "text": "Whenever a Mountain enters the battlefield under your control, Champion of Rahoke gets +1/+0 and gains menace until end of turn.",
             "toughness": "2",
             "type": "Creature \u2014 Human Warrior",
             "types": [
@@ -3509,8 +3519,8 @@
             ]
         },
         {
-            "artist": "Ming Yee Sheh",
-            "cmc": 4,
+            "artist": "bryan botterill",
+            "cmc": 3,
             "colorIdentity": [
                 "R"
             ],
@@ -3519,7 +3529,7 @@
             ],
             "imageName": "destabilize",
             "layout": "normal",
-            "manaCost": "{3}{R}",
+            "manaCost": "{2}{R}",
             "name": "Destabilize",
             "number": "124",
             "originalText": "Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.\nAwaken 3\u2014{5}{R} (If you cast this spell for {5}{R}, also put three +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
@@ -3545,7 +3555,7 @@
             "manaCost": "{4}{R}{R}",
             "name": "Destructive Climax",
             "number": "125",
-            "originalText": "Destructive Climax costs {1} less to cast for each instant and sorcery card in your graveyard.\nDestructive Climax deals 3 damage to up to two target creatures.",
+            "originalText": "Destructive Climax costs {1} less to cast for each instant and sorcery card in your graveyard.\nDestructive Climax deals 3 damage to each of up to two target creatures.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
             "text": "Destructive Climax costs {1} less to cast for each instant and sorcery card in your graveyard.\nDestructive Climax deals 3 damage to each of up to two target creatures.",
@@ -3656,7 +3666,7 @@
             "number": "129",
             "originalText": "Prestige 1 (When this creature attacks with two or more other creatures, if it isn't prestigious, put a +1/+1 counter on it and it becomes prestigious.)\nWhen Flame-Tail Ungoy becomes prestigious, it deals 2 damage to any target.",
             "originalType": "Creature \u2014 Monkey",
-            "power": "1",
+            "power": "2",
             "rarity": "Uncommon",
             "subtypes": [
                 "Monkey"
@@ -3693,7 +3703,7 @@
         },
         {
             "artist": "Chris Cold",
-            "cmc": 2,
+            "cmc": 3,
             "colorIdentity": [
                 "R"
             ],
@@ -3703,13 +3713,13 @@
             "flavor": "\"The gods treat us as their playthings! The destruction of their so called paradise will prove that I am the most worthy to control this world.\"",
             "imageName": "hupiri's destruction",
             "layout": "normal",
-            "manaCost": "{R}{R}",
+            "manaCost": "{2}{R}",
             "name": "Hupiri's Destruction",
             "number": "131",
-            "originalText": "Hupiri's Destruction deals 2 damage to each creature.",
+            "originalText": "Hupiri's Destruction deals 2 damage to each creature and each player.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Hupiri's Destruction deals 2 damage to each creature.",
+            "text": "Hupiri's Destruction deals 2 damage to each creature and each player.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -3754,10 +3764,10 @@
             "manaCost": "{2}{R}",
             "name": "Kraken Beam",
             "number": "133",
-            "originalText": "Kraken Beam deals 3 damage to target creature.",
+            "originalText": "Kraken Beam deals 3 damage to any target.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Kraken Beam deals 3 damage to target creature.",
+            "text": "Kraken Beam deals 3 damage to any target.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -3867,29 +3877,6 @@
             ]
         },
         {
-            "artist": "Nick Silva",
-            "cmc": 4,
-            "colorIdentity": [
-                "R"
-            ],
-            "colors": [
-                "Red"
-            ],
-            "imageName": "lightning tornado",
-            "layout": "normal",
-            "manaCost": "{2}{R}{R}",
-            "name": "Lightning Tornado",
-            "number": "138",
-            "originalText": "Choose one \u2014\n\u2022 Lightning Tornado deals 4 damage to target creature.\n\u2022 Lightning Tornado deals 1 damage to each creature target opponent controls.",
-            "originalType": "Sorcery",
-            "rarity": "Common",
-            "text": "Choose one \u2014\n\u2022 Lightning Tornado deals 4 damage to target creature.\n\u2022 Lightning Tornado deals 1 damage to each creature target opponent controls.",
-            "type": "Sorcery",
-            "types": [
-                "Sorcery"
-            ]
-        },
-        {
             "artist": "Giao Nguyen",
             "cmc": 2,
             "colorIdentity": [
@@ -3902,7 +3889,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Maw of Rahoke",
-            "number": "139",
+            "number": "138",
             "originalText": "Maw of Rahoke deals 2 damage to any target.\nAwaken 3\u2014{4}{R} (If you cast this spell for {4}{R}, also put three +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -3910,41 +3897,6 @@
             "type": "Sorcery",
             "types": [
                 "Sorcery"
-            ]
-        },
-        {
-            "artist": "David Alunan",
-            "cmc": 4,
-            "colorIdentity": [
-                "R"
-            ],
-            "colors": [
-                "Red"
-            ],
-            "imageName": "meke contender",
-            "layout": "normal",
-            "manaCost": "{3}{R}",
-            "name": "Meke Contender",
-            "number": "140",
-            "originalText": "Voyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nAs long as you've discovered paradise, Meke Contender gets +1/+1 and has first strike.",
-            "originalType": "Creature \u2014 Human Warrior",
-            "power": "3",
-            "rarity": "Common",
-            "rulings": [
-                {
-                    "date": "2018-08-28",
-                    "text": "Since the mana symbols are reminder text, not rules text, voyage does not contribute to a card's color identity. This card's color identity is red."
-                }
-            ],
-            "subtypes": [
-                "Human",
-                "Warrior"
-            ],
-            "text": "Voyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nAs long as you've discovered paradise, Meke Contender gets +1/+1 and has first strike.",
-            "toughness": "3",
-            "type": "Creature \u2014 Human Warrior",
-            "types": [
-                "Creature"
             ]
         },
         {
@@ -3956,12 +3908,12 @@
             "colors": [
                 "Red"
             ],
-            "imageName": "meke fighter",
+            "imageName": "meke contender",
             "layout": "normal",
             "manaCost": "{2}{R}",
-            "name": "Meke Fighter",
-            "number": "141",
-            "originalText": "Prestige 1 (When this creature attacks with two or more other creatures, if it isn't prestigious, put a +1/+1 counter on it and it becomes prestigious.)\nMeke Fighter has trample as long as its prestigious.",
+            "name": "Meke Contender",
+            "number": "139",
+            "originalText": "Prestige 1 (When this creature attacks with two or more other creatures, if it isn't prestigious, put a +1/+1 counter on it and it becomes prestigious.)\nMeke Contender has trample as long as its prestigious.",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "3",
             "rarity": "Common",
@@ -3969,7 +3921,7 @@
                 "Human",
                 "Warrior"
             ],
-            "text": "Prestige 1 (When this creature attacks with two or more other creatures, if it isn't prestigious, put a +1/+1 counter on it and it becomes prestigious.)\nMeke Fighter has trample as long as its prestigious.",
+            "text": "Prestige 1 (When this creature attacks with two or more other creatures, if it isn't prestigious, put a +1/+1 counter on it and it becomes prestigious.)\nMeke Contender has trample as long as its prestigious.",
             "toughness": "2",
             "type": "Creature \u2014 Human Warrior",
             "types": [
@@ -3985,15 +3937,15 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "The Meke islands were born from a series of linked volcanoes, each fed from the same underground lava source.",
+            "flavor": "The Meke islands were born from a series of linked volcanoes, each fed from the same lava source.",
             "imageName": "meke mauler",
             "layout": "normal",
             "manaCost": "{4}{R}",
             "name": "Meke Mauler",
-            "number": "142",
+            "number": "140",
             "originalText": "When Meke Mauler enters the battlefield, it deals damage to target opponent equal to the number of Mountains you control.",
             "originalType": "Creature \u2014 Elemental",
-            "power": "4",
+            "power": "2",
             "rarity": "Uncommon",
             "subtypes": [
                 "Elemental"
@@ -4001,6 +3953,35 @@
             "text": "When Meke Mauler enters the battlefield, it deals damage to target opponent equal to the number of Mountains you control.",
             "toughness": "4",
             "type": "Creature \u2014 Elemental",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "David Alunan",
+            "cmc": 4,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "Red"
+            ],
+            "imageName": "meke victor",
+            "layout": "normal",
+            "manaCost": "{3}{R}",
+            "name": "Meke Victor",
+            "number": "141",
+            "originalText": "Voyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nAs long as you've discovered paradise, Meke Victor gets +1/+1 and has first strike.",
+            "originalType": "Creature \u2014 Human Warrior",
+            "power": "3",
+            "rarity": "Common",
+            "subtypes": [
+                "Human",
+                "Warrior"
+            ],
+            "text": "Voyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nAs long as you've discovered paradise, Meke Victor gets +1/+1 and has first strike.",
+            "toughness": "3",
+            "type": "Creature \u2014 Human Warrior",
             "types": [
                 "Creature"
             ]
@@ -4014,12 +3995,12 @@
             "colors": [
                 "Red"
             ],
-            "imageName": "peak destruction",
+            "imageName": "peak chaos",
             "layout": "normal",
             "manaCost": "{3}{R}",
-            "name": "Peak Destruction",
-            "number": "143",
-            "originalText": "Enchant land\nWhen Peak Destruction enters the battlefield, you may search your library for a Mountain card, reveal it, put it into your hand, then shuffle your library.\nEnchanted land has \"{R}, {T}: Peak Destruction deals 2 damage to target opponent.\"",
+            "name": "Peak Chaos",
+            "number": "142",
+            "originalText": "Enchant land\nWhen Peak Chaos enters the battlefield, you may search your library for a Mountain card, reveal it, put it into your hand, then shuffle your library.\nEnchanted land has \"{R}, {T}: Peak Chaos deals 2 damage to target opponent.\"",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
             "rulings": [
@@ -4031,7 +4012,7 @@
             "subtypes": [
                 "Aura"
             ],
-            "text": "Enchant land\nWhen Peak Destruction enters the battlefield, you may search your library for a Mountain card, reveal it, put it into your hand, then shuffle your library.\nEnchanted land has \"{R}, {T}: Peak Destruction deals 2 damage to target opponent.\"",
+            "text": "Enchant land\nWhen Peak Chaos enters the battlefield, you may search your library for a Mountain card, reveal it, put it into your hand, then shuffle your library.\nEnchanted land has \"{R}, {T}: Peak Chaos deals 2 damage to target opponent.\"",
             "type": "Enchantment \u2014 Aura",
             "types": [
                 "Enchantment"
@@ -4051,7 +4032,7 @@
             "layout": "normal",
             "manaCost": "{R}",
             "name": "Prodigious Fisher",
-            "number": "144",
+            "number": "143",
             "originalText": "Prestige 1 (When this creature attacks with two or more other creatures, if it isn't prestigious, put a +1/+1 counter on it and it becomes prestigious.)",
             "originalType": "Creature \u2014 Human Scout",
             "power": "1",
@@ -4065,6 +4046,29 @@
             "type": "Creature \u2014 Human Scout",
             "types": [
                 "Creature"
+            ]
+        },
+        {
+            "artist": "paolo giannico",
+            "cmc": 5,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "Red"
+            ],
+            "imageName": "ring of fire",
+            "layout": "normal",
+            "manaCost": "{3}{R}{R}",
+            "name": "Ring of Fire",
+            "number": "144",
+            "originalText": "Create three 1/1 red Elemental creature tokens.\nAdd {R} for each Elemental you control.",
+            "originalType": "Sorcery",
+            "rarity": "Uncommon",
+            "text": "Create three 1/1 red Elemental creature tokens.\nAdd {R} for each Elemental you control.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
             ]
         },
         {
@@ -4141,7 +4145,7 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "\"When it sliced my spearhead in half, I realized it was time to run away.\"",
+            "flavor": "\"When it sliced my spearhead in half, I realized it was time to run away.\"\n\u2014A Kahui scout",
             "imageName": "sure strike",
             "layout": "normal",
             "manaCost": "{1}{R}",
@@ -4194,9 +4198,9 @@
             "manaCost": "{2}{R}",
             "name": "Tua Rahi Avenger",
             "number": "149",
-            "originalText": "Defender\nVoyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nAs long as you've discovered paradise, Tua Rahi Avenger has haste and can attack as though it didn't have defender.",
+            "originalText": "Defender\nVoyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nAs long as you've discovered paradise, Tua Rahi Avenger has menace and can attack as though it didn't have defender.",
             "originalType": "Creature \u2014 Elemental",
-            "power": "5",
+            "power": "4",
             "rarity": "Uncommon",
             "rulings": [
                 {
@@ -4207,8 +4211,8 @@
             "subtypes": [
                 "Elemental"
             ],
-            "text": "Defender\nVoyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nAs long as you've discovered paradise, Tua Rahi Avenger has haste and can attack as though it didn't have defender.",
-            "toughness": "5",
+            "text": "Defender\nVoyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nAs long as you've discovered paradise, Tua Rahi Avenger has menace and can attack as though it didn't have defender.",
+            "toughness": "4",
             "type": "Creature \u2014 Elemental",
             "types": [
                 "Creature"
@@ -4251,20 +4255,20 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "Those who serve Rahoke seek to right an ancient wrong, when Ta'Oko cast their volcano god out of the god's paradise.",
+            "flavor": "Those who serve Rahoke seek to right an ancient wrong, when Ta'Oko cast their volcano god out of paradise.",
             "imageName": "vanaku adept",
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Vanaku Adept",
             "number": "151",
-            "originalText": "{T}, Sacrifice Vanaku Adept: Destroy target nonbasic land.",
+            "originalText": "{T}, Sacrifice Vanaku Adept: Destroy target artifact or nonbasic land.",
             "originalType": "Creature \u2014 Elemental",
             "power": "2",
             "rarity": "Rare",
             "subtypes": [
                 "Elemental"
             ],
-            "text": "{T}, Sacrifice Vanaku Adept: Destroy target nonbasic land.",
+            "text": "{T}, Sacrifice Vanaku Adept: Destroy target artifact or nonbasic land.",
             "toughness": "2",
             "type": "Creature \u2014 Elemental",
             "types": [
@@ -4308,7 +4312,7 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "Seeing the birth of a dragon on Rakoa would be the story of a lifetime, if you lived to tell anyone about it.",
+            "flavor": "Seeing the birth of a dragon on Rakoa would be the story of a lifetime, if you lived to tell it.",
             "imageName": "volcanic dragon",
             "layout": "normal",
             "manaCost": "{4}{R}{R}",
@@ -4438,7 +4442,7 @@
         },
         {
             "artist": "Nai Ga",
-            "cmc": 1,
+            "cmc": 2,
             "colorIdentity": [
                 "G"
             ],
@@ -4447,13 +4451,13 @@
             ],
             "imageName": "ancient challenge",
             "layout": "normal",
-            "manaCost": "{G}",
+            "manaCost": "{1}{G}",
             "name": "Ancient Challenge",
             "number": "158",
-            "originalText": "Up to one target creature blocks this turn if able.\nAwaken 4\u2014{5}{G} (If you cast this spell for {5}{G}, also put four +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
+            "originalText": "Creatures your opponents control block this turn if able.\nAwaken 4\u2014{5}{G} (If you cast this spell for {5}{G}, also put four +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
             "originalType": "Sorcery",
-            "rarity": "Common",
-            "text": "Up to one target creature blocks this turn if able.\nAwaken 4\u2014{5}{G} (If you cast this spell for {5}{G}, also put four +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
+            "rarity": "Uncommon",
+            "text": "Creatures your opponents control block this turn if able.\nAwaken 4\u2014{5}{G} (If you cast this spell for {5}{G}, also put four +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -4489,29 +4493,28 @@
         },
         {
             "artist": "Antonio Stappaerts",
-            "cmc": 3,
+            "cmc": 1,
             "colorIdentity": [
                 "G"
             ],
             "colors": [
                 "Green"
             ],
-            "flavor": "\"We attune our Moko to the path you've walked, and the path you'll walk in the future.\"",
             "imageName": "boon artisan",
             "layout": "normal",
-            "manaCost": "{2}{G}",
+            "manaCost": "{G}",
             "name": "Boon Artisan",
             "number": "160",
-            "originalText": "Aura spells you cast cost {1} less to cast.",
+            "originalText": "Boon Artisan enters the battlefield with a number of +1/+1 counters on it equal to the number of Auras you control.\nWhenever you cast an Aura spell, put a +1/+1 counter on Boon Artisan.",
             "originalType": "Creature \u2014 Human Shaman",
-            "power": "2",
-            "rarity": "Common",
+            "power": "1",
+            "rarity": "Uncommon",
             "subtypes": [
                 "Human",
                 "Shaman"
             ],
-            "text": "Aura spells you cast cost {1} less to cast.",
-            "toughness": "2",
+            "text": "Boon Artisan enters the battlefield with a number of +1/+1 counters on it equal to the number of Auras you control.\nWhenever you cast an Aura spell, put a +1/+1 counter on Boon Artisan.",
+            "toughness": "1",
             "type": "Creature \u2014 Human Shaman",
             "types": [
                 "Creature"
@@ -4602,10 +4605,10 @@
                 "Green"
             ],
             "flavor": "\"I represent a promise made long ago, that the gods would awake from their slumber when needed to bring the world back to its natural order.\"\n\u2014Welelau, to Oteo",
-            "imageName": "earthen grudge",
+            "imageName": "earthen reaction",
             "layout": "normal",
             "manaCost": "{1}{G}",
-            "name": "Earthen Grudge",
+            "name": "Earthen Reaction",
             "number": "164",
             "originalText": "Destroy target creature with flying.",
             "originalType": "Instant",
@@ -4688,10 +4691,10 @@
             "manaCost": "{2}{G}",
             "name": "Grasping Surge",
             "number": "167",
-            "originalText": "Target land you control becomes a 5/5 Elemental creature haste and reach until end of turn. It's still a land.",
+            "originalText": "Target land you control becomes a 5/5 Elemental creature reach and haste until end of turn. It's still a land.",
             "originalType": "Instant",
-            "rarity": "Uncommon",
-            "text": "Target land you control becomes a 5/5 Elemental creature haste and reach until end of turn. It's still a land.",
+            "rarity": "Common",
+            "text": "Target land you control becomes a 5/5 Elemental creature with reach and haste until end of turn. It's still a land.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -4779,7 +4782,7 @@
             "name": "Hero's Triumph",
             "number": "170",
             "originalText": "Enchant creature you control\nWhen Hero's Triumph enters the battlefield, you may have enchanted creature fight target creature an opponent controls. (Each deals damage equal to its power to the other.)\nEnchanted creature gets +1/+1.",
-            "originalType": "Enchanment \u2014 Aura",
+            "originalType": "Enchantment \u2014 Aura",
             "rarity": "Common",
             "subtypes": [
                 "Aura"
@@ -4792,7 +4795,7 @@
         },
         {
             "artist": "Nai Ga",
-            "cmc": 2,
+            "cmc": 3,
             "colorIdentity": [
                 "G"
             ],
@@ -4801,13 +4804,13 @@
             ],
             "imageName": "kalanua's renewal",
             "layout": "normal",
-            "manaCost": "{1}{G}",
+            "manaCost": "{2}{G}",
             "name": "Kalanua's Renewal",
             "number": "171",
-            "originalText": "Return up to one target permanent card from your graveyard to your hand.\nAwaken 4\u2014{5}{G} (If you cast this spell for {5}{G}, also put four +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
+            "originalText": "Return target card from your graveyard to your hand.\nAwaken 4\u2014{6}{G} (If you cast this spell for {6}{G}, also put four +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Return up to one target permanent card from your graveyard to your hand.\nAwaken 4\u2014{5}{G} (If you cast this spell for {5}{G}, also put four +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
+            "text": "Return target card from your graveyard to your hand.\nAwaken 4\u2014{6}{G} (If you cast this spell for {6}{G}, also put four +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -4822,7 +4825,7 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "Kohea, goddess of crafting and community, taught the value in choosing carefully which artifice should be allowed and which is forbidden.",
+            "flavor": "Kohea, goddess of crafting and community, taught the value in choosing carefully which artifice should be allowed and which forbidden.",
             "imageName": "kohea's overseer",
             "layout": "normal",
             "manaCost": "{1}{G}",
@@ -4856,10 +4859,10 @@
             "manaCost": "{1}{G}",
             "name": "Kohea's Vitality",
             "number": "173",
-            "originalText": "Whenever a creature attacks this turn, it gains trample until end of turn.\nWhenever a creature you control deals combat damage to an opponent this turn, draw a card.\nAwaken 5\u2014{5}{G}{G} (If you cast this spell for {5}{G}{G}, also put five +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
+            "originalText": "Whenever a creature attacks this turn, it gains trample until end of turn.\nWhenever a creature you control deals combat damage to an opponent this turn, draw a card.\nAwaken 7\u2014{5}{G}{G} (If you cast this spell for {5}{G}{G}, also put seven +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Whenever a creature attacks this turn, it gains trample until end of turn.\nWhenever a creature you control deals combat damage to an opponent this turn, draw a card.\nAwaken 5\u2014{5}{G}{G} (If you cast this spell for {5}{G}{G}, also put five +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
+            "text": "Whenever a creature attacks this turn, it gains trample until end of turn.\nWhenever a creature you control deals combat damage to an opponent this turn, draw a card.\nAwaken 7\u2014{5}{G}{G} (If you cast this spell for {5}{G}{G}, also put seven +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -4879,7 +4882,7 @@
             "manaCost": "{2}{G}",
             "name": "Leafy Companion",
             "number": "174",
-            "originalText": "When Leafy Companion enters the battlefield, you may search your library for a basic land card, put it into your hand, then shuffle your library.",
+            "originalText": "When Leafy Companion enters the battlefield, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle your library.",
             "originalType": "Creature \u2014 Plant Hound",
             "power": "2",
             "rarity": "Common",
@@ -4937,7 +4940,7 @@
             "manaCost": "{5}{G}",
             "name": "Luaho Bud-Mother",
             "number": "176",
-            "originalText": "When Luaho Bud-Mother enters the battlefield, target land you control becomes a 0/0 Elemental creature with haste thats still a land. Put a number of +1/+1 counters on it equal to the number of Forests you control plus one.",
+            "originalText": "When Luaho Bud-Mother enters the battlefield, target land you control becomes a 0/0 Elemental creature with haste that's still a land. Put a number of +1/+1 counters on it equal to the number of Forests you control plus one.",
             "originalType": "Creature \u2014 Dryad",
             "power": "4",
             "rarity": "Uncommon",
@@ -4960,7 +4963,7 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "Kiwi feathers were used to create Kohea's cloak. In repayment, she protects Kiwis to this day.",
+            "flavor": "Kiwi feathers were used to create Kohea's cloak. In repayment, she allowed them to settle in paradise.",
             "imageName": "luaho kiwi",
             "layout": "normal",
             "manaCost": "{1}{G}",
@@ -4988,36 +4991,6 @@
         },
         {
             "artist": "Piotr Arendzikowski",
-            "cmc": 4,
-            "colorIdentity": [
-                "G"
-            ],
-            "colors": [
-                "Green"
-            ],
-            "flavor": "Luaho is the largest island known to islanders. Anything living there has a tendency to grow into the space available there.",
-            "imageName": "luaho protector",
-            "layout": "normal",
-            "manaCost": "{3}{G}",
-            "name": "Luaho Protector",
-            "number": "178",
-            "originalText": "Whenever a Forest enters the battlefield under your control, Luaho Protector gets +2/+2 until end of turn.",
-            "originalType": "Creature \u2014 Dryad Warrior",
-            "power": "3",
-            "rarity": "Common",
-            "subtypes": [
-                "Dryad",
-                "Warrior"
-            ],
-            "text": "Whenever a Forest enters the battlefield under your control, Luaho Protector gets +2/+2 until end of turn.",
-            "toughness": "3",
-            "type": "Creature \u2014 Dryad Warrior",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
-            "artist": "taha yeasin",
             "cmc": 2,
             "colorIdentity": [
                 "G"
@@ -5025,23 +4998,23 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "The recipient of a blessing requires intense peace of mind to endure the long and delicate process.",
-            "imageName": "moko shaman",
+            "flavor": "Luaho is the largest known island. Anything living there has a tendency to grow into the available space.",
+            "imageName": "luaho protector",
             "layout": "normal",
             "manaCost": "{1}{G}",
-            "name": "Moko Shaman",
-            "number": "179",
-            "originalText": "Whenever you cast an Aura spell, put a +1/+1 counter on Moko Shaman",
-            "originalType": "Creature \u2014 Human Shaman",
+            "name": "Luaho Protector",
+            "number": "178",
+            "originalText": "Whenever a Forest enters the battlefield under your control, Luaho Protector gets +2/+2 until end of turn.",
+            "originalType": "Creature \u2014 Dryad Warrior",
             "power": "2",
-            "rarity": "Uncommon",
+            "rarity": "Common",
             "subtypes": [
-                "Human",
-                "Shaman"
+                "Dryad",
+                "Warrior"
             ],
-            "text": "Whenever you cast an Aura spell, put a +1/+1 counter on Moko Shaman.",
+            "text": "Whenever a Forest enters the battlefield under your control, Luaho Protector gets +2/+2 until end of turn.",
             "toughness": "2",
-            "type": "Creature \u2014 Human Shaman",
+            "type": "Creature \u2014 Dryad Warrior",
             "types": [
                 "Creature"
             ]
@@ -5059,8 +5032,8 @@
             "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "Mokupe Cultivators",
-            "number": "180",
-            "originalText": "When Mokupe Cultivators enters the battlefield, search your library for up to two Aura cards with enchant land and different names, put them into your hand, then shuffle your library.",
+            "number": "179",
+            "originalText": "When Mokupe Cultivators enters the battlefield, search your library for up to two Aura cards with enchant land and different names, reveal them, put them into your hand, then shuffle your library.",
             "originalType": "Creature \u2014 Elf Shaman",
             "power": "3",
             "rarity": "Uncommon",
@@ -5068,7 +5041,7 @@
                 "Elf",
                 "Shaman"
             ],
-            "text": "When Mokupe Cultivators enters the battlefield, search your library for up to two Aura cards with enchant land and different names, put them into your hand, then shuffle your library.",
+            "text": "When Mokupe Cultivators enters the battlefield, search your library for up to two Aura cards with enchant land and different names, reveal them, put them into your hand, then shuffle your library.",
             "toughness": "3",
             "type": "Creature \u2014 Elf Shaman",
             "types": [
@@ -5084,12 +5057,12 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "Every full moon, the Mokupe high shaman visits one of the closed fisheries. If he can cross the whole lagoon on only the backs of fish, it is opened back up for fishing.",
+            "flavor": "Every full moon, the Mokupe high shaman visits one of the closed fisheries. If he can cross the whole lagoon on only the backs of fish, it is opened back up to the rest of the tribe.",
             "imageName": "mokupe fisher",
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Mokupe Fisher",
-            "number": "181",
+            "number": "180",
             "originalText": "{T}: Untap target land.",
             "originalType": "Creature \u2014 Elf Warrior",
             "power": "2",
@@ -5118,7 +5091,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}{G}",
             "name": "Mokupe Tracker",
-            "number": "182",
+            "number": "181",
             "originalText": "Whenever Mokupe Tracker becomes the target of a spell or ability, you may put a land card from your hand onto the battlefield. If you do, return Mokupe Tracker to its owner's hand.\nForestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, and put it into your hand. Then shuffle your library.)",
             "originalType": "Creature \u2014 Elf Scout",
             "power": "5",
@@ -5148,7 +5121,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Muscular Hunter",
-            "number": "183",
+            "number": "182",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "3",
             "rarity": "Common",
@@ -5175,8 +5148,8 @@
             "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "Nature's Vibrations",
-            "number": "184",
-            "originalText": "If an effect you control would put one or more counters on a land, creature, or player, it puts twice that many of those counters on that permanent or player instead.",
+            "number": "183",
+            "originalText": "If an effect would have you put one or more counters on a land, creature, or player, it puts twice that many of those counters on that permanent or player instead.",
             "originalType": "Enchantment",
             "rarity": "Mythic Rare",
             "text": "If an effect would have you put one or more counters on a land, creature, or player, it has you put twice that many of those counters on that permanent or player instead.",
@@ -5198,14 +5171,14 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Roam the Wilderness",
-            "number": "185",
-            "originalText": "Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.\nScry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
-            "originalType": "Instant",
+            "number": "184",
+            "originalText": "Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.\nYou gain 3 life.",
+            "originalType": "Sorcery",
             "rarity": "Common",
-            "text": "Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.\nScry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
-            "type": "Instant",
+            "text": "Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.\nYou gain 3 life.",
+            "type": "Sorcery",
             "types": [
-                "Instant"
+                "Sorcery"
             ]
         },
         {
@@ -5222,7 +5195,7 @@
             "layout": "normal",
             "manaCost": "{G}{G}",
             "name": "Secluded Duwende",
-            "number": "186",
+            "number": "185",
             "originalText": "Hexproof (This creature can't be the target of spells or abilities your opponents control.)",
             "originalType": "Creature \u2014 Ouphe",
             "power": "2",
@@ -5238,6 +5211,36 @@
             ]
         },
         {
+            "artist": "taha yeasin",
+            "cmc": 3,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "flavor": "The recipient of a grooved blessing requires intense peace of mind to endure the long and delicate process.",
+            "imageName": "serene blessings-maker",
+            "layout": "normal",
+            "manaCost": "{2}{G}",
+            "name": "Serene Blessings-Maker",
+            "number": "186",
+            "originalText": "Aura spells you cast cost {1} less to cast.",
+            "originalType": "Creature \u2014 Human Shaman",
+            "power": "2",
+            "rarity": "Common",
+            "subtypes": [
+                "Human",
+                "Shaman"
+            ],
+            "text": "Aura spells you cast cost {1} less to cast.",
+            "toughness": "2",
+            "type": "Creature \u2014 Human Shaman",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "artist": "Katie Croonenberghs",
             "cmc": 4,
             "colorIdentity": [
@@ -5246,7 +5249,7 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "\"Nothing pleases Kalanua more than a good hunt: A true battle between hearts!\"\n\u2014Toahanga, Champion of the Gods",
+            "flavor": "\"Nothing pleases Kalanua more than a good hunt: A true battle between hearts!\"\n\u2014Toahanga, Shifter Champion",
             "imageName": "serpent hunting",
             "layout": "normal",
             "manaCost": "{3}{G}",
@@ -5262,36 +5265,6 @@
             ]
         },
         {
-            "artist": "Lamin Martin",
-            "cmc": 2,
-            "colorIdentity": [
-                "G"
-            ],
-            "colors": [
-                "Green"
-            ],
-            "flavor": "\"In the god's paradise, the life is more varied and beautiful than the rest of the world combined.\"\n\u2014Heliha, Steward of Tua Rahi",
-            "imageName": "snake orchid",
-            "layout": "normal",
-            "manaCost": "{1}{G}",
-            "name": "Snake Orchid",
-            "number": "188",
-            "originalText": "Deathtouch\n{1}, {T}: Add one mana of any color.",
-            "originalType": "Creature \u2014 Plant Snake",
-            "power": "2",
-            "rarity": "Uncommon",
-            "subtypes": [
-                "Plant",
-                "Snake"
-            ],
-            "text": "Deathtouch\n{1}, {T}: Add one mana of any color.",
-            "toughness": "2",
-            "type": "Creature \u2014 Plant Snake",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
             "artist": "junyeong shin",
             "cmc": 8,
             "colorIdentity": [
@@ -5304,7 +5277,7 @@
             "layout": "normal",
             "manaCost": "{6}{G}{G}",
             "name": "Spawning Grounds",
-            "number": "189",
+            "number": "188",
             "originalText": "Enchant land\nEnchanted land has \"{T}: Create a 5/5 green Beast creature token with trample.\"",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Rare",
@@ -5326,12 +5299,12 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "\"To the islanders Kohea gave ponamu, the most precious of all stones. We use it to decorate our most prized possessions.\"\n\u2014Toahanga, Champion of the Gods",
+            "flavor": "\"To the islanders Kohea gave ponamu, a precious green stone. We use it to decorate our most prized possessions.\"\n\u2014Toahanga, Shifter Champion",
             "imageName": "toahanga's tusker",
             "layout": "normal",
             "manaCost": "{5}{G}",
             "name": "Toahanga's Tusker",
-            "number": "190",
+            "number": "189",
             "originalText": "Trample",
             "originalType": "Creature \u2014 Elemental Boar",
             "power": "5",
@@ -5360,7 +5333,7 @@
             "layout": "normal",
             "manaCost": "{X}{G}",
             "name": "Tropical Hydra",
-            "number": "191",
+            "number": "190",
             "originalText": "Spend only green mana on X.\nTropical Hydra enters the battlefield with two times X +1/+1 counters on it.",
             "originalType": "Creature \u2014 Hydra",
             "power": "0",
@@ -5388,7 +5361,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "Tua Rahi Giant",
-            "number": "192",
+            "number": "191",
             "originalText": "Voyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nAt the beginning of combat on your turn, if you've discovered paradise, double target creature's power and toughness until end of turn.",
             "originalType": "Creature \u2014 Giant",
             "power": "3",
@@ -5410,6 +5383,36 @@
             ]
         },
         {
+            "artist": "Lamin Martin",
+            "cmc": 2,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "flavor": "\"In the god's paradise, the life is more varied and beautiful than the rest of the world combined.\"\n\u2014Heliha, Steward of Tua Rahi",
+            "imageName": "venom orchid",
+            "layout": "normal",
+            "manaCost": "{1}{G}",
+            "name": "Venom Orchid",
+            "number": "192",
+            "originalText": "Deathtouch\n{1}, {T}: Add one mana of any color.",
+            "originalType": "Creature \u2014 Plant Snake",
+            "power": "2",
+            "rarity": "Uncommon",
+            "subtypes": [
+                "Plant",
+                "Snake"
+            ],
+            "text": "Deathtouch\n{1}, {T}: Add one mana of any color.",
+            "toughness": "2",
+            "type": "Creature \u2014 Plant Snake",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "artist": "tryo wang",
             "cmc": 3,
             "colorIdentity": [
@@ -5423,7 +5426,7 @@
             "manaCost": "{2}{G}",
             "name": "Verdant Cavern",
             "number": "193",
-            "originalText": "Enchant land\nWhen Verdant Cavern enters the battlefield, you may search your library for a Forest card, put it into your hand, then shuffle your library.\nEnchanted land has \"{G}, {T}: Target creature gets +3/+3 until end of turn. Activate this ability only at any time you could cast a sorcery.\"",
+            "originalText": "Enchant land\nWhen Verdant Cavern enters the battlefield, you may search your library for a Forest card, reveal it, put it into your hand, then shuffle your library.\nEnchanted land has \"{G}, {T}: Target creature gets +3/+3 until end of turn. Activate this ability only at any time you could cast a sorcery.\"",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
             "subtypes": [
@@ -5450,7 +5453,7 @@
             "manaCost": "{2}{G}",
             "name": "Wild Storyteller",
             "number": "194",
-            "originalText": "At the beginning of your upkeep, if you control an red enchantment, a blue token, and a white creature with converted mana cost 5, and there's a black instant card in your graveyard, you win the game.",
+            "originalText": "At the beginning of your upkeep, if you control a red enchantment, a blue token, and a white creature with converted mana cost 5, and there's a black instant card in your graveyard, you win the game.",
             "originalType": "Creature \u2014 Human Shaman",
             "power": "2",
             "rarity": "Rare",
@@ -5464,33 +5467,6 @@
             "types": [
                 "Creature"
             ]
-        },
-        {
-            "artist": "",
-            "cmc": 6,
-            "colorIdentity": [
-                "W",
-                "U"
-            ],
-            "colors": [
-                "White",
-                "Blue"
-            ],
-            "flavor": "\"The gods, unable to maintain their connection to Tua Rahi, fall even deeper into their slumber. Its up to us now to take this world into its future.\"",
-            "imageName": "a clean slate",
-            "layout": "normal",
-            "manaCost": "{4}{W}{U}",
-            "name": "A Clean Slate",
-            "number": "195",
-            "originalText": "Destroy all lands. Take an extra turn after this one. Exile A Clean Slate.",
-            "originalType": "Sorcery",
-            "rarity": "Mythic Rare",
-            "text": "Destroy all lands. Take an extra turn after this one. Exile A Clean Slate.",
-            "type": "Sorcery",
-            "types": [
-                "Sorcery"
-            ],
-            "watermark": "Planeswalker"
         },
         {
             "artist": "Aurore Folny",
@@ -5507,15 +5483,21 @@
             "layout": "normal",
             "manaCost": "{1}{G}{W}",
             "name": "Ancestral Guardian",
-            "number": "196",
-            "originalText": "Whenever Ancestral Guardian attacks, it gains first strike until end of turn if you control an enchanted creature. It gets +2/+2 until end of turn if you control an enchanted land.",
+            "number": "195",
+            "originalText": "Whenever Ancestral Guardian attacks, if you control an enchanted land, Ancestral Guardian gets +2/+2 until end of turn. If you control an enchanted creature, Ancestral Guardian can't be blocked this turn by more than one creature.",
             "originalType": "Creature \u2014 Spirit",
             "power": "3",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2018-09-13",
+                    "text": "Whether or not you control an enchanted creature is checked at the time blockers are declared, not at the time the ability resolves."
+                }
+            ],
             "subtypes": [
                 "Spirit"
             ],
-            "text": "Whenever Ancestral Guardian attacks, it gains first strike until end of turn if you control an enchanted creature. It gets +2/+2 until end of turn if you control an enchanted land.",
+            "text": "Whenever Ancestral Guardian attacks, Ancestral Guardian gets +2/+2 until end of turn if you control an enchanted land. Ancestral Guardian can't be blocked this turn by more than one creature if you control an enchanted creature.",
             "toughness": "3",
             "type": "Creature \u2014 Spirit",
             "types": [
@@ -5537,7 +5519,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}{W}",
             "name": "Ancient Imprisonment",
-            "number": "197",
+            "number": "196",
             "originalText": "Enchant land\nWhen Ancient Imprisonment enters the battlefield, exile target creature an opponent controls until Ancient Imprisonment leaves the battlefield.\nWhenever enchanted land is tapped for mana, its controller adds an additional mana of any of the exiled card's colors.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Rare",
@@ -5571,7 +5553,7 @@
             "layout": "normal",
             "manaCost": "{U}{R}",
             "name": "Brewing Storm",
-            "number": "198",
+            "number": "197",
             "originalText": "When Brewing Storm enters the battlefield, scry 3.\n{1}, Sacrifice Brewing Storm: Copy target instant or sorcery spell you control. You may choose new targets for the copy.",
             "originalType": "Enchantment",
             "rarity": "Uncommon",
@@ -5580,6 +5562,33 @@
             "types": [
                 "Enchantment"
             ]
+        },
+        {
+            "artist": "",
+            "cmc": 6,
+            "colorIdentity": [
+                "W",
+                "U"
+            ],
+            "colors": [
+                "White",
+                "Blue"
+            ],
+            "flavor": "\"The gods, unable to maintain their connection to Tua Rahi, fall even deeper into their slumber. Its up to us now to take this world into its future.\"",
+            "imageName": "clean slate",
+            "layout": "normal",
+            "manaCost": "{4}{W}{U}",
+            "name": "Clean Slate",
+            "number": "198",
+            "originalText": "Destroy all lands. Take an extra turn after this one. Exile Clean Slate.",
+            "originalType": "Sorcery",
+            "rarity": "Mythic Rare",
+            "text": "Destroy all lands. Take an extra turn after this one. Exile Clean Slate.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ],
+            "watermark": "Planeswalker"
         },
         {
             "artist": "wei guan",
@@ -5634,7 +5643,7 @@
             "manaCost": "{4}{U}{R}",
             "name": "Hupiri, Thunderclap",
             "number": "200",
-            "originalText": "+2: Draw three cards, then put two cards from your hand on top of your library in any order.\n-3: Exile cards from the top of your library until a nonland card is exiled this way. Hupiri, Thunderclap deals damage equal to that card's converted mana divided as you choose among up to two targets.\n-11: Exile the top twenty cards of your library. Cast any number of instant or sorcery cards exiled with Hupiri, Thunderclap without paying their mana costs.",
+            "originalText": "+2: Draw three cards, then put two cards from your hand on top of your library in any order.\n-3: Exile cards from the top of your library until you exile a nonland card. When you do, Hupiri, Thunderclap deals damage equal to that card's converted mana cost divided as you choose among up to two targets.\n-11: Exile the top twenty cards of your library. Cast any number of instant or sorcery cards exiled with Hupiri, Thunderclap without paying their mana costs.",
             "originalType": "Legendary Planeswalker \u2014 Hupiri",
             "power": "4",
             "rarity": "Mythic Rare",
@@ -5704,7 +5713,7 @@
             "manaCost": "{U}{B}",
             "name": "Kanokai, the Deep Blood",
             "number": "202",
-            "originalText": "Flash\nWhenever a creature dealt damage by Kanokai, the Deep Blood or another Merfolk you control this turn dies, you may pay 4 life. If you do, return Kanokai from your graveyard to the battlefield tapped.",
+            "originalText": "Flash\nPay 4 life: Return Kanokai, the Deep Blood from your graveyard to the battlefield tapped. Activate this ability only if a creature dealt damage by a Merfolk you controlled this turn died this turn.",
             "originalType": "Legendary Creature \u2014 Merfolk Warrior",
             "power": "3",
             "rarity": "Rare",
@@ -5723,39 +5732,6 @@
             ]
         },
         {
-            "artist": "RV .",
-            "cmc": 5,
-            "colorIdentity": [
-                "W",
-                "B",
-                "R"
-            ],
-            "colors": [
-                "White",
-                "Black",
-                "Red"
-            ],
-            "imageName": "kauri grove avenger",
-            "layout": "normal",
-            "manaCost": "{2}{R}{W}{B}",
-            "name": "Kauri Grove Avenger",
-            "number": "203",
-            "originalText": "Trample, haste\nPrestige X, where X is the number of creatures you control. (When this creature attacks with two or more other creatures, if it isn't prestigious, put X +1/+1 counters on it and it becomes prestigious.)\nWhenever a nontoken creature you control dies, create a 2/2 white Warrior creature token.",
-            "originalType": "Creature \u2014 Human Warrior",
-            "power": "4",
-            "rarity": "Mythic Rare",
-            "subtypes": [
-                "Human",
-                "Warrior"
-            ],
-            "text": "Trample, haste\nPrestige X, where X is the number of creatures you control (When this creature attacks with two or more other creatures, if it isn't prestigious, put X +1/+1 counters on it and it becomes prestigious.)\nWhenever a nontoken creature you control dies, create a 2/2 white Warrior creature token.",
-            "toughness": "4",
-            "type": "Creature \u2014 Human Warrior",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
             "artist": "mari morgan",
             "cmc": 3,
             "colorIdentity": [
@@ -5766,12 +5742,12 @@
                 "Black",
                 "Green"
             ],
-            "flavor": "At the top of the food chain, Hak Bora gets to eat whatever she wants.",
+            "flavor": "At the top of the food chain, Hak Bora eats whatever she wants.",
             "imageName": "make prey",
             "layout": "normal",
             "manaCost": "{1}{B}{G}",
             "name": "Make Prey",
-            "number": "204",
+            "number": "203",
             "originalText": "Destroy target creature, artifact, or enchantment.",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -5796,15 +5772,15 @@
             "layout": "normal",
             "manaCost": "{3}{B}{G}",
             "name": "Mangrove Sifter",
-            "number": "205",
-            "originalText": "When Mangrove Sifter enters the battlefield, put the top three cards of your library into your graveyard, then return a creature or land card from your graveyard to your hand.",
+            "number": "204",
+            "originalText": "When Mangrove Sifter enters the battlefield, put the top four cards of your library into your graveyard, then return up to one creature card and up to one land card from your graveyard to your hand.",
             "originalType": "Creature \u2014 Octopus",
             "power": "4",
             "rarity": "Uncommon",
             "subtypes": [
                 "Octopus"
             ],
-            "text": "When Mangrove Sifter enters the battlefield, put the top three cards of your library into your graveyard, then return a creature or land card from your graveyard to your hand.",
+            "text": "When Mangrove Sifter enters the battlefield, put the top four cards of your library into your graveyard, then return up to one creature card and up to one land card from your graveyard to your hand.",
             "toughness": "4",
             "type": "Creature \u2014 Octopus",
             "types": [
@@ -5826,7 +5802,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}{U}",
             "name": "Overgrowth Crab",
-            "number": "206",
+            "number": "205",
             "originalText": "Whenever Overgrowth Crab deals combat damage to a player, draw a card.\nVoyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\nAs long as you've discovered paradise, Overgrowth Crab gets +2/+2 and has trample.",
             "originalType": "Creature \u2014 Crab",
             "power": "3",
@@ -5862,18 +5838,54 @@
             "layout": "normal",
             "manaCost": "{1}{U}{B}",
             "name": "Ramari Hunt Captain",
-            "number": "207",
-            "originalText": "Flash\nOther Merfolk you control get +1/+0.\nWhenever one or more Merfolk you control deal combat damage to an opponent, you may draw a card. If you do, discard a card.",
+            "number": "206",
+            "originalText": "Flash\nOther Merfolk you control get +1/+1.",
             "originalType": "Creature \u2014 Merfolk Scout",
-            "power": "2",
+            "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
                 "Merfolk",
                 "Scout"
             ],
-            "text": "Flash\nOther Merfolk you control get +1/+0.\nWhenever one or more Merfolk you control deal combat damage to an opponent, you may draw a card. If you do, discard a card.",
+            "text": "Flash\nOther Merfolk you control get +1/+1.",
             "toughness": "2",
             "type": "Creature \u2014 Merfolk Scout",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "RV .",
+            "cmc": 5,
+            "colorIdentity": [
+                "W",
+                "B",
+                "R"
+            ],
+            "colors": [
+                "White",
+                "Black",
+                "Red"
+            ],
+            "imageName": "reke, honorbound",
+            "layout": "normal",
+            "manaCost": "{2}{R}{W}{B}",
+            "name": "Reke, Honorbound",
+            "number": "207",
+            "originalText": "Haste, trample, lifelink\nPrestige X, where X is the number of creatures you control (When this creature attacks with two or more other creatures, if it isn't prestigious, put X +1/+1 counters on it and it becomes prestigious.)",
+            "originalType": "Legendary Creature \u2014 Human Warrior",
+            "power": "4",
+            "rarity": "Mythic Rare",
+            "subtypes": [
+                "Human",
+                "Warrior"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "Haste, trample, lifelink\nPrestige X, where X is the number of creatures you control (When this creature attacks with two or more other creatures, if it isn't prestigious, put X +1/+1 counters on it and it becomes prestigious.)",
+            "toughness": "4",
+            "type": "Legendary Creature \u2014 Human Warrior",
             "types": [
                 "Creature"
             ]
@@ -5927,7 +5939,7 @@
                 "Bird"
             ],
             "text": "Flying\nWhen Snatching Poukai enters the battlefield, tap target creature an opponent controls. It doesn't untap during its controller's next untap step.",
-            "toughness": "3",
+            "toughness": "4",
             "type": "Creature \u2014 Bird",
             "types": [
                 "Creature"
@@ -5981,7 +5993,7 @@
             "manaCost": "{2}{R}{G}",
             "name": "Toahanga, Shifter Champion",
             "number": "211",
-            "originalText": "+1: Discard a card. If you do, reveal the top card of your library. If its a land card, put it onto the battlefield. Otherwise, put it into your hand.\n0: Until end of turn, Toahanga, Shifter Champion becomes a legendary 4/4 green Boar creature with indestructible and haste. (He doesn't lose loyalty while he's not a planeswalker.)\n-3: Destroy target permanent. Its controller reveals the top card of their library. If it's a permanent card, they put it onto the battlefield.\n-7: ",
+            "originalText": "+1: Discard a card. If you do, reveal the top card of your library. If it's a land card, put it onto the battlefield. Otherwise, put it into your hand.\n0: Until end of turn, Toahanga, Shifter Champion becomes a 4/4 green Boar creature with indestructible and haste. (He doesn't lose loyalty while he's not a planeswalker.)\n-3: Destroy target permanent. Its controller reveals the top card of their library. If it's a permanent card, they put it onto the battlefield.\n-7: ",
             "originalType": "Legendary Planeswalker \u2014 Toahanga",
             "rarity": "Mythic Rare",
             "subtypes": [
@@ -6037,6 +6049,7 @@
                 "Black",
                 "Red"
             ],
+            "flavor": "Rahoke rests in Vanaku, the largest and most explosive of Rakoa's volcanos.",
             "imageName": "vanaku spawning",
             "layout": "normal",
             "manaCost": "{2}{B}{R}",
@@ -6109,7 +6122,7 @@
             "manaCost": "{2}{W}{U}{B}{R}{G}",
             "name": "World Elemental",
             "number": "215",
-            "originalText": "World Elemental gets +1/+1 for each name among permanents you control.\nAt the beginning of your end step, gain control of target permanent.",
+            "originalText": "World Elemental gets +1/+1 for each differently named permanent you control.\nAt the beginning of your end step, gain control of target permanent.",
             "originalType": "Creature \u2014 Elemental",
             "power": "0",
             "rarity": "Mythic Rare",
@@ -6121,12 +6134,20 @@
                 {
                     "date": "2018-08-30",
                     "text": "Sealed permanents don't have names, so they aren't counted for the first ability."
+                },
+                {
+                    "date": "2018-09-13",
+                    "text": "A permanent with no name has a different name from every other permanent, even another permanent with no name. For example, if all you control is a World Elemental and two Relics (nameless artifacts from Ruins of Doharum), World Elemental is a 3/3. Yes, seriously. Rule 201.2c."
+                },
+                {
+                    "date": "2018-09-13",
+                    "text": "This counts the number of permanents with different names, not the number of different names among permanents you control. Therefore, it won't get ridiculously large if you have a Spy Kit equipped to a creature."
                 }
             ],
             "subtypes": [
                 "Elemental"
             ],
-            "text": "World Elemental gets +1/+1 for each name among permanents you control.\nAt the beginning of your end step, gain control of target permanent.",
+            "text": "World Elemental gets +1/+1 for each differently named permanent you control.\nAt the beginning of your end step, gain control of target permanent.",
             "toughness": "0",
             "type": "Creature \u2014 Elemental",
             "types": [
@@ -6209,7 +6230,7 @@
             "manaCost": "{0}",
             "name": "Paradise Mantle",
             "number": "218",
-            "originalText": "Equipped creature has \"{T}: Add one mana of any color to your mana pool.\"\nEquip {1}",
+            "originalText": "Equipped creature has \"{T}: Add one mana of any color.\"\nEquip {1}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Uncommon",
             "subtypes": [
@@ -6254,13 +6275,13 @@
             "manaCost": "{2}",
             "name": "Ponamu Keepsake",
             "number": "220",
-            "originalText": "Whenever Ponamu Keepsake enters the battlefield or the equipped creature deals combat damage to a player, put a legacy counter on Ponamu Keepsake.\nEquipped creature gets +1/+1 for each legacy counter on Ponamu Keepsake.\nEquip {2}",
+            "originalText": "Whenever equipped creature deals combat damage to a player, put a legacy counter on Ponamu Keepsake.\nEquipped creature gets +1/+1 for each legacy counter on Ponamu Keepsake.\nEquip {2}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Uncommon",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "Whenever Ponamu Keepsake enters the battlefield or equipped creature deals combat damage to a player, put a legacy counter on Ponamu Keepsake.\nEquipped creature gets +1/+1 for each legacy counter on Ponamu Keepsake.\nEquip {2}",
+            "text": "Whenever equipped creature deals combat damage to a player, put a legacy counter on Ponamu Keepsake.\nEquipped creature gets +1/+1 for each legacy counter on Ponamu Keepsake.\nEquip {2}",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -6276,7 +6297,7 @@
             "manaCost": "{2}",
             "name": "Sturdy Canoe",
             "number": "221",
-            "originalText": "Whenever Sturdy Canoe attacks, reveal the top card of your library. If its a land card, put it into your hand.\nCrew 2 (Tap any number of creatures you control with total power 2 or greater: This Vehicle becomes an artifact creature until end of turn.)",
+            "originalText": "Whenever Sturdy Canoe attacks, reveal the top card of your library. If it's a land card, put it into your hand.\nCrew 2 (Tap any number of creatures you control with total power 2 or greater: This Vehicle becomes an artifact creature until end of turn.)",
             "originalType": "Artifact \u2014 Vehicle",
             "power": "2",
             "rarity": "Uncommon",
@@ -6300,13 +6321,13 @@
             "manaCost": "{1}",
             "name": "Surf Board",
             "number": "222",
-            "originalText": "Equipped creature gets +0/+1 and can't be blocked by creatures with power 2 or less.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
+            "originalText": "Equipped creature can't be blocked by creatures with power 2 or less.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Common",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "Equipped creature gets +0/+1 and can't be blocked by creatures with power 2 or less.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
+            "text": "Equipped creature can't be blocked by creatures with power 2 or less.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -6348,15 +6369,15 @@
             "manaCost": "{3}",
             "name": "Voyager's Companion",
             "number": "224",
-            "originalText": "Voyager's Companion gets +1/+1 for each basic land type among lands you control.\nCrew 3 (Tap any number of creatures you control with total power 3 or greater: This Vehicle becomes an artifact creature until end of turn.)",
+            "originalText": "As long as you control a Plains, Voyager's Companion has vigilance. The same is true for Island and flying, Swamp and lifelink, Mountain and first strike, and Forest and trample.\nCrew 3 (Tap any number of creatures you control with total power 3 or greater: This Vehicle becomes an artifact creature until end of turn.)",
             "originalType": "Artifact \u2014 Vehicle",
-            "power": "3",
+            "power": "4",
             "rarity": "Rare",
             "subtypes": [
                 "Vehicle"
             ],
-            "text": "Voyager's Companion gets +1/+1 for each basic land type among lands you control.\nCrew 3 (Tap any number of creatures you control with total power 3 or greater: This Vehicle becomes an artifact creature until end of turn.)",
-            "toughness": "3",
+            "text": "As long as you control a Plains, Voyager's Companion has vigilance. The same is true for Island and flying, Swamp and lifelink, Mountain and first strike, and Forest and trample.\nCrew 3 (Tap any number of creatures you control with total power 3 or greater: This Vehicle becomes an artifact creature until end of turn.)",
+            "toughness": "4",
             "type": "Artifact \u2014 Vehicle",
             "types": [
                 "Artifact"
@@ -6451,7 +6472,7 @@
             "layout": "normal",
             "name": "Elipo Ono, Shrouded Haven",
             "number": "227",
-            "originalText": "{T}: Add {C}.\n{G}{W}, {T}: Put target Aura card in your graveyard on top of your library.",
+            "originalText": "{T}: Add {C}.\n{G}{W}, {T}: Put target Aura card from your graveyard on top of your library.",
             "originalType": "Legendary Land",
             "rarity": "Rare",
             "supertypes": [
@@ -6470,15 +6491,15 @@
                 "R"
             ],
             "colors": [],
-            "imageName": "flow effigy",
+            "imageName": "flowing effigy",
             "layout": "double-faced",
-            "name": "Flow Effigy",
+            "name": "Flowing Effigy",
             "names": [
-                "Flow Effigy",
+                "Flowing Effigy",
                 "Magma Chamber"
             ],
             "number": "228a",
-            "originalText": "Flow Effigy enters the battlefield tapped.\n{T}: Add {R}.\n{5}{R}{R}, {T}: Transform Flow Effigy, then untap it. Activate this ability only at any time you could cast a sorcery.",
+            "originalText": "Flowing Effigy enters the battlefield tapped.\n{T}: Add {R}.\n{5}{R}{R}, {T}: Transform Flowing Effigy, then untap it. Activate this ability only any time you could cast a sorcery.",
             "originalType": "Land",
             "rarity": "Rare",
             "rulings": [
@@ -6487,7 +6508,7 @@
                     "text": "The second ability can't target a planeswalker."
                 }
             ],
-            "text": "Flow Effigy enters the battlefield tapped.\n{T}: Add {R}.\n{5}{R}{R}, {T}: Transform Flow Effigy, then untap it. Activate this ability only any time you could cast a sorcery.",
+            "text": "Flowing Effigy enters the battlefield tapped.\n{T}: Add {R}.\n{5}{R}{R}, {T}: Transform Flowing Effigy, then untap it. Activate this ability only any time you could cast a sorcery.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6504,7 +6525,7 @@
             "layout": "double-faced",
             "name": "Magma Chamber",
             "names": [
-                "Flow Effigy",
+                "Flowing Effigy",
                 "Magma Chamber"
             ],
             "number": "228b",
@@ -6528,14 +6549,39 @@
             "layout": "normal",
             "name": "Haku Haku Market",
             "number": "229",
-            "originalText": "({T}: Add {B}.)\nHaku Haku Market enters the battlefield tapped.\nWhen Haku Haku Market enters the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
+            "originalText": "({T}: Add {B}.)\nHaku Haku Market enters the battlefield tapped.\nWhen Haku Haku Market enters the battlefield, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "originalType": "Land \u2014 Swamp",
             "rarity": "Common",
             "subtypes": [
                 "Swamp"
             ],
-            "text": "({T}: Add {B}.)\nHaku Haku Market enters the battlefield tapped.\nWhen Haku Haku Market enters the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
+            "text": "({T}: Add {B}.)\nHaku Haku Market enters the battlefield tapped.\nWhen Haku Haku Market enters the battlefield, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "type": "Land \u2014 Swamp",
+            "types": [
+                "Land"
+            ]
+        },
+        {
+            "artist": "chris karbach",
+            "cmc": 0,
+            "colorIdentity": [
+                "W",
+                "B"
+            ],
+            "colors": [],
+            "imageName": "hidden harbor",
+            "layout": "normal",
+            "name": "Hidden Harbor",
+            "number": "230",
+            "originalText": "({T}: Add {W} or {B}.)\nHidden Harbor enters the battlefield tapped unless you control three or more other lands.",
+            "originalType": "Land \u2014 Plains Swamp",
+            "rarity": "Uncommon",
+            "subtypes": [
+                "Plains",
+                "Swamp"
+            ],
+            "text": "({T}: Add {W} or {B}.)\nHidden Harbor enters the battlefield tapped unless you control three or more other lands.",
+            "type": "Land \u2014 Plains Swamp",
             "types": [
                 "Land"
             ]
@@ -6550,14 +6596,14 @@
             "imageName": "kalepa cove",
             "layout": "normal",
             "name": "Kalepa Cove",
-            "number": "230",
-            "originalText": "({T}: Add {U}.)\nKalepa Cove enters the battlefield tapped.\nWhen Kalepa Cove enters the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
+            "number": "231",
+            "originalText": "({T}: Add {U}.)\nKalepa Cove enters the battlefield tapped.\nWhen Kalepa Cove enters the battlefield, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "originalType": "Land \u2014 Island",
             "rarity": "Common",
             "subtypes": [
                 "Island"
             ],
-            "text": "({T}: Add {U}.)\nKalepa Cove enters the battlefield tapped.\nWhen Kalepa Cove enters the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
+            "text": "({T}: Add {U}.)\nKalepa Cove enters the battlefield tapped.\nWhen Kalepa Cove enters the battlefield, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "type": "Land \u2014 Island",
             "types": [
                 "Land"
@@ -6575,7 +6621,7 @@
                 "Lost Cavern",
                 "Ikali Reborn"
             ],
-            "number": "231a",
+            "number": "232a",
             "originalText": "Voyage ({W}{U}{B}{R}{G}: You discover paradise for the rest of the game.)\n{T}: Add {C}.\nAt the beginning of each end step, if you've discovered paradise, transform Lost Cavern.",
             "originalType": "Land",
             "rarity": "Rare",
@@ -6607,8 +6653,8 @@
                 "Lost Cavern",
                 "Ikali Reborn"
             ],
-            "number": "231b",
-            "originalText": "{T}: Add two mana in any combination of colors.\nWhen this card transforms into Ikali Reborn, search your graveyard, library, or cards you own outside the game for a card and put it into your hand. If you searched your library this way, shuffle it.",
+            "number": "232b",
+            "originalText": "{T}: Add two mana in any combination of colors.\nWhen this permanent transforms into Ikali Reborn, search your graveyard, library, or cards you own outside the game for a card and put it into your hand. If you searched your library this way, shuffle it.",
             "originalType": "Legendary Land",
             "rarity": "Rare",
             "rulings": [
@@ -6640,14 +6686,14 @@
             "imageName": "luaho trail",
             "layout": "normal",
             "name": "Luaho Trail",
-            "number": "232",
-            "originalText": "({T}: Add {G}.)\nLuaho Trail enters the battlefield tapped.\nWhen Luaho Trail enters the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
+            "number": "233",
+            "originalText": "({T}: Add {G}.)\nLuaho Trail enters the battlefield tapped.\nWhen Luaho Trail enters the battlefield, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "originalType": "Land \u2014 Forest",
             "rarity": "Common",
             "subtypes": [
                 "Forest"
             ],
-            "text": "({T}: Add {G}.)\nLuaho Trail enters the battlefield tapped.\nWhen Luaho Trail enters the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
+            "text": "({T}: Add {G}.)\nLuaho Trail enters the battlefield tapped.\nWhen Luaho Trail enters the battlefield, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "type": "Land \u2014 Forest",
             "types": [
                 "Land"
@@ -6667,8 +6713,8 @@
                 "Luminescent Lake",
                 "Bioluminescence"
             ],
-            "number": "233a",
-            "originalText": "Luminescent Lake enters the battlefield tapped.\n{T}: Add {U}.\n{5}{U}{U}, {T}: Transform Luminescent Lake, then untap it. Activate this ability only at any time you could cast a sorcery.",
+            "number": "234a",
+            "originalText": "Luminescent Lake enters the battlefield tapped.\n{T}: Add {U}.\n{5}{U}{U}, {T}: Transform Luminescent Lake, then untap it. Activate this ability only any time you could cast a sorcery.",
             "originalType": "Land",
             "rarity": "Rare",
             "text": "Luminescent Lake enters the battlefield tapped.\n{T}: Add {U}.\n{5}{U}{U}, {T}: Transform Luminescent Lake, then untap it. Activate this ability only any time you could cast a sorcery.",
@@ -6693,8 +6739,8 @@
                 "Luminescent Lake",
                 "Bioluminescence"
             ],
-            "number": "233b",
-            "originalText": "When this card transforms into Bioluminescence, scry 2, then draw two cards.\nInstant and sorcery spells you cast cost {4} less to cast.",
+            "number": "234b",
+            "originalText": "When this permanent transforms into Bioluminescence, scry 2, then draw two cards.\nInstant and sorcery spells you cast cost {4} less to cast.",
             "originalType": "Enchantment",
             "rarity": "Rare",
             "text": "When this permanent transforms into Bioluminescence, scry 2, then draw two cards.\nInstant and sorcery spells you cast cost {4} less to cast.",
@@ -6710,43 +6756,18 @@
                 "R"
             ],
             "colors": [],
-            "imageName": "meke harbor",
+            "imageName": "meke shoreway",
             "layout": "normal",
-            "name": "Meke Harbor",
-            "number": "234",
-            "originalText": "({T}: Add {R}.)\nMeke Harbor enters the battlefield tapped.\nWhen Meke Harbor enters the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
+            "name": "Meke Shoreway",
+            "number": "235",
+            "originalText": "({T}: Add {R}.)\nMeke Shoreway enters the battlefield tapped.\nWhen Meke Shoreway enters the battlefield, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "originalType": "Land \u2014 Mountain",
             "rarity": "Common",
             "subtypes": [
                 "Mountain"
             ],
-            "text": "({T}: Add {R}.)\nMeke Harbor enters the battlefield tapped.\nWhen Meke Harbor enters the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
+            "text": "({T}: Add {R}.)\nMeke Shoreway enters the battlefield tapped.\nWhen Meke Shoreway enters the battlefield, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "type": "Land \u2014 Mountain",
-            "types": [
-                "Land"
-            ]
-        },
-        {
-            "artist": "chris karbach",
-            "cmc": 0,
-            "colorIdentity": [
-                "W",
-                "B"
-            ],
-            "colors": [],
-            "imageName": "midnight village",
-            "layout": "normal",
-            "name": "Midnight Village",
-            "number": "235",
-            "originalText": "({T}: Add {W} or {B}.)\nMidnight Village enters the battlefield tapped unless you control three or more other lands.",
-            "originalType": "Land \u2014 Plains Swamp",
-            "rarity": "Uncommon",
-            "subtypes": [
-                "Plains",
-                "Swamp"
-            ],
-            "text": "({T}: Add {W} or {B}.)\nMidnight Village enters the battlefield tapped unless you control three or more other lands.",
-            "type": "Land \u2014 Plains Swamp",
             "types": [
                 "Land"
             ]
@@ -6829,13 +6850,13 @@
             "layout": "normal",
             "name": "Omalu Coast",
             "number": "239",
-            "originalText": "({T}: Add {W}.)\nOmalu Coast enters the battlefield tapped.\nWhen Omalu Coast enters the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
+            "originalText": "({T}: Add {W}.)\nOmalu Coast enters the battlefield tapped.\nWhen Omalu Coast enters the battlefield, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "originalType": "Land \u2014 Plains",
             "rarity": "Common",
             "subtypes": [
                 "Plains"
             ],
-            "text": "({T}: Add {W}.)\nOmalu Coast enters the battlefield tapped.\nWhen Omalu Coast enters the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)",
+            "text": "({T}: Add {W}.)\nOmalu Coast enters the battlefield tapped.\nWhen Omalu Coast enters the battlefield, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "type": "Land \u2014 Plains",
             "types": [
                 "Land"
@@ -6853,16 +6874,66 @@
             "layout": "normal",
             "name": "Opaku, Heart of Kalanua",
             "number": "240",
-            "originalText": "{T}: Add {C}.\n{3}{R}{G}: Until end of turn Opaku, Heart of Kalanua becomes a 0/0 red and green Elemental creature with trample and \"This creature gets +1/+1 each land you control.\" Its still a land.",
+            "originalText": "{T}: Add {C}.\n{3}{R}{G}: Until end of turn, Opaku, Heart of Kalanua becomes a 0/0 red and green Elemental creature with haste, trample and \"This creature gets +1/+1 for each land you control.\" It's still a land.",
             "originalType": "Legendary Land",
             "rarity": "Rare",
             "supertypes": [
                 "Legendary"
             ],
-            "text": "{T}: Add {C}.\n{3}{R}{G}: Until end of turn, Opaku, Heart of Kalanua becomes a 0/0 red and green Elemental creature with trample and \"This creature gets +1/+1 for each land you control.\" It's still a land.",
+            "text": "{T}: Add {C}.\n{3}{R}{G}: Until end of turn, Opaku, Heart of Kalanua becomes a 0/0 red and green Elemental creature with trample, haste, and \"This creature gets +1/+1 for each land you control.\" It's still a land.",
             "type": "Legendary Land",
             "types": [
                 "Land"
+            ]
+        },
+        {
+            "artist": "geoffrey ernault",
+            "cmc": 0,
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [],
+            "imageName": "remote valley",
+            "layout": "double-faced",
+            "name": "Remote Valley",
+            "names": [
+                "Remote Valley",
+                "Sacred Blossom"
+            ],
+            "number": "241a",
+            "originalText": "Remote Valley enters the battlefield tapped.\n{T}: Add {W}.\n{5}{W}{W}, {T}: Transform Remote Valley, then untap it. Activate this ability only any time you could cast a sorcery.",
+            "originalType": "Land",
+            "rarity": "Rare",
+            "text": "Remote Valley enters the battlefield tapped.\n{T}: Add {W}.\n{5}{W}{W}, {T}: Transform Remote Valley, then untap it. Activate this ability only any time you could cast a sorcery.",
+            "type": "Land",
+            "types": [
+                "Land"
+            ]
+        },
+        {
+            "artist": "Cai Wei",
+            "cmc": 0,
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [
+                "White"
+            ],
+            "imageName": "sacred blossom",
+            "layout": "double-faced",
+            "name": "Sacred Blossom",
+            "names": [
+                "Remote Valley",
+                "Sacred Blossom"
+            ],
+            "number": "241b",
+            "originalText": "{T}: Create a 2/2 white Elemental creature token with flying and lifelink.\n{T}: Put a +1/+1 counter on each creature you control.",
+            "originalType": "Artifact",
+            "rarity": "Rare",
+            "text": "{T}: Create a 2/2 white Elemental creature token with flying and lifelink.\n{T}: Put a +1/+1 counter on each creature you control.",
+            "type": "Artifact",
+            "types": [
+                "Artifact"
             ]
         },
         {
@@ -6876,14 +6947,14 @@
             "imageName": "ru kano, surfaced ruin",
             "layout": "normal",
             "name": "Ru Kano, Surfaced Ruin",
-            "number": "241",
-            "originalText": "{T}: Add {C}.\n{U}{B}, {T}: You draw a card and lose 1 life. Activate this ability only if a creature you control dealt damage damage to an opponent this turn.",
+            "number": "242",
+            "originalText": "{T}: Add {C}.\n{U}{B}, {T}: You draw a card and you lose 1 life. Activate this ability only if a creature you controlled dealt damage damage to an opponent this turn.",
             "originalType": "Legendary Land",
             "rarity": "Rare",
             "supertypes": [
                 "Legendary"
             ],
-            "text": "{T}: Add {C}.\n{U}{B}, {T}: You draw a card and you lose 1 life. Activate this ability only if a creature you controlled dealt damage damage to an opponent this turn.",
+            "text": "{T}: Add {C}.\n{U}{B}, {T}: You draw a card and you lose 1 life. Activate this ability only if a creature you controlled dealt damage to an opponent this turn.",
             "type": "Legendary Land",
             "types": [
                 "Land"
@@ -6897,7 +6968,7 @@
             "imageName": "shellback tradepost",
             "layout": "normal",
             "name": "Shellback Tradepost",
-            "number": "242",
+            "number": "243",
             "originalText": "When Shellback Tradepost enters the battlefield, target opponent may search their library for a basic land card, reveal it, put it into their hand, then shuffle their library.\n{T}: Add one mana of any color.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6921,8 +6992,8 @@
                 "Slumbering Grotto",
                 "Awoken Power"
             ],
-            "number": "243a",
-            "originalText": "Slumbering Grotto enters the battlefield tapped.\n{T}: Add {G}.\n{5}{G}{G}, {T}: Transform Slumbering Grotto, then untap it. Activate this ability only at any time you could cast a sorcery.",
+            "number": "244a",
+            "originalText": "Slumbering Grotto enters the battlefield tapped.\n{T}: Add {G}.\n{5}{G}{G}, {T}: Transform Slumbering Grotto, then untap it. Activate this ability only any time you could cast a sorcery.",
             "originalType": "Land",
             "rarity": "Rare",
             "text": "Slumbering Grotto enters the battlefield tapped.\n{T}: Add {G}.\n{5}{G}{G}, {T}: Transform Slumbering Grotto, then untap it. Activate this ability only any time you could cast a sorcery.",
@@ -6947,7 +7018,7 @@
                 "Slumbering Grotto",
                 "Awoken Power"
             ],
-            "number": "243b",
+            "number": "244b",
             "originalText": "Trample, haste\nWhenever Awoken Power deals combat damage to a player, untap all lands you control.",
             "originalType": "Creature \u2014 Elemental",
             "power": "5",
@@ -6973,7 +7044,7 @@
             "imageName": "spindling nimbus",
             "layout": "normal",
             "name": "Spindling Nimbus",
-            "number": "244",
+            "number": "245",
             "originalText": "({T}: Add {U} or {R}.)\nSpindling Nimbus enters the battlefield tapped unless you control three or more other lands.",
             "originalType": "Land \u2014 Island Mountain",
             "rarity": "Uncommon",
@@ -6998,7 +7069,7 @@
             "imageName": "tropical channel",
             "layout": "normal",
             "name": "Tropical Channel",
-            "number": "245",
+            "number": "246",
             "originalText": "({T}: Add {G} or {U}.)\nTropical Channel enters the battlefield tapped unless you control three or more other lands.",
             "originalType": "Land \u2014 Forest Island",
             "rarity": "Uncommon",
@@ -7021,7 +7092,7 @@
             "imageName": "unknown shores",
             "layout": "normal",
             "name": "Unknown Shores",
-            "number": "246",
+            "number": "247",
             "originalText": "{T}: Add {C}.\n{1}, {T}: Add one mana of any color.",
             "originalType": "Land",
             "rarity": "Common",
@@ -7032,56 +7103,6 @@
             ]
         },
         {
-            "artist": "geoffrey ernault",
-            "cmc": 0,
-            "colorIdentity": [
-                "W"
-            ],
-            "colors": [],
-            "imageName": "unspoiled seed",
-            "layout": "double-faced",
-            "name": "Unspoiled Seed",
-            "names": [
-                "Unspoiled Seed",
-                "Sacred Blossom"
-            ],
-            "number": "247a",
-            "originalText": "Unspoiled Seed enters the battlefield tapped.\n{T}: Add {W}.\n{5}{W}{W}, {T}: Transform Unspoiled Seed, then untap it. Activate this ability only at any time you could cast a sorcery.",
-            "originalType": "Land",
-            "rarity": "Rare",
-            "text": "Unspoiled Seed enters the battlefield tapped.\n{T}: Add {W}.\n{5}{W}{W}, {T}: Transform Unspoiled Seed, then untap it. Activate this ability only any time you could cast a sorcery.",
-            "type": "Land",
-            "types": [
-                "Land"
-            ]
-        },
-        {
-            "artist": "Cai Wei",
-            "cmc": 0,
-            "colorIdentity": [
-                "W"
-            ],
-            "colors": [
-                "White"
-            ],
-            "imageName": "sacred blossom",
-            "layout": "double-faced",
-            "name": "Sacred Blossom",
-            "names": [
-                "Unspoiled Seed",
-                "Sacred Blossom"
-            ],
-            "number": "247b",
-            "originalText": "{T}: Create a 2/2 white Elemental creature token with flying and lifelink.\n{T}: Put a +1/+1 counter on each creature you control.",
-            "originalType": "Artifact",
-            "rarity": "Rare",
-            "text": "{T}: Create a 2/2 white Elemental creature token with flying and lifelink.\n{T}: Put a +1/+1 counter on each creature you control.",
-            "type": "Artifact",
-            "types": [
-                "Artifact"
-            ]
-        },
-        {
             "artist": "Erin Lin",
             "cmc": 0,
             "colorIdentity": [
@@ -7089,7 +7110,7 @@
                 "R"
             ],
             "colors": [],
-            "flavor": "Anything that travels into the center of Vanaku is reborn in molten form.",
+            "flavor": "Anything that enters the center of Vanaku is reborn in molten form.",
             "imageName": "vanaku, molten cradle",
             "layout": "normal",
             "name": "Vanaku, Molten Cradle",
@@ -7750,7 +7771,7 @@
             "layout": "normal",
             "name": "Mountain",
             "number": "269",
-            "originalType": "Basic Land \u2014 Moutain",
+            "originalType": "Basic Land \u2014 Mountain",
             "printedName": "Mountain Fullart",
             "rarity": "Basic Land",
             "rulings": [
@@ -7937,5 +7958,5 @@
     "name": "Rakoa",
     "releaseDate": "2018-08-30",
     "type": "expansion",
-    "version": ".30"
+    "version": ".31"
 }
