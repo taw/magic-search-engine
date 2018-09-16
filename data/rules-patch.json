@@ -747,8 +747,9 @@
             "rule": {
                 "text": "Salvage",
                 "subrules": [
-                    "Salvage is an activated ability that functions while the card with salvage is in a graveyard. “Salvage [cost]” means “[Cost], Exile this card from your graveyard: Draw a card. Activate this ability only any time you could cast a sorcery.”",
-                    "Some cards with salvage have abilities that trigger when they're salvaged. “When you salvage [this card]” means “When you exile [this card] to pay an activation cost of a salvage ability.” These abilities trigger from whatever zone the card winds up in after it's salvaged."
+                    "Salvage is an activated ability that functions while the card with salvage is in a graveyard. “Salvage [cost]” means “[Cost], Exile this card from your graveyard: Draw a card.”",
+                    "Some cards have abilities that trigger whenever a card is salvaged. “Whenever you salvage a card” means “Whenever you exile a card to pay an activation cost of a salvage ability.”",
+                    "Some cards with salvage have abilities that trigger when they're salvaged. These abilities trigger from whatever zone the card winds up in after it's salvaged.",
                 ]
             }
         },
