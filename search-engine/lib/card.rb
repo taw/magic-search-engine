@@ -257,9 +257,10 @@ class Card
 
     if colors_inferred_from_mana_cost.sort == actual_colors.sort
       @color_indicator = nil
-      @color_indicator_set = Set[]
     else
       @color_indicator = color_indicator_name(actual_colors)
+    end
+    if @color_indicator
       @color_indicator_set = actual_colors.to_set
     end
   end
