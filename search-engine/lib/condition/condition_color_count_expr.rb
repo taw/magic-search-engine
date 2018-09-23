@@ -9,7 +9,7 @@ class ConditionColorCountExpr < ConditionSimple
     if @a == "c"
       a = card.colors.size
     elsif @a == "in"
-      a = card.color_indicator_set
+      a = (card.color_indicator_set || Set[]).size
     else
       a = card.color_identity.size
     end
