@@ -21,6 +21,15 @@ describe "Color Indicator Test" do
     assert_search_equal "in:grrgr", "in:rg"
   end
 
+  it "in:*" do
+    assert_search_equal "in:*", "in>=c"
+  end
+
+  it "comparisons" do
+    assert_search_equal "in>=r", "in=r OR in>r"
+    assert_search_equal "in>r", "in>=rg OR in>=rw OR in>=rb OR in>=ru"
+  end
+
   it "c/l/m are ignored" do
     assert_search_equal "in:rgm", "in:rg"
     assert_search_equal "in:rgl", "in:rg"

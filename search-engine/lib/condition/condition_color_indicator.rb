@@ -5,7 +5,7 @@ class ConditionColorIndicator < ConditionSimple
   end
 
   # Only exact match
-  # There's no way to say "has no color indicator"
+  # For "has no color indicator" use -in:*
   def match?(card)
     card.color_indicator and @indicator_name == card.color_indicator
   end

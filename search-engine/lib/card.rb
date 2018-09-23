@@ -14,7 +14,7 @@ class Card
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
   attr_reader :partial_color_identity, :cmc, :text, :text_normalized, :power, :toughness, :loyalty, :stability, :extra
   attr_reader :hand, :life, :rulings, :foreign_names, :foreign_names_normalized, :stemmed_name
-  attr_reader :mana_hash, :typeline, :funny, :color_indicator, :related
+  attr_reader :mana_hash, :typeline, :funny, :color_indicator, :color_indicator_set, :related
   attr_reader :reminder_text, :augment, :display_power, :display_toughness, :display_mana_cost
 
   def initialize(data)
@@ -266,6 +266,9 @@ class Card
       @color_indicator = nil
     else
       @color_indicator = color_indicator_name(actual_colors)
+    end
+    if @color_indicator
+      @color_indicator_set = actual_colors.to_set
     end
   end
 
