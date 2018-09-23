@@ -10,6 +10,7 @@ class ConditionColorExpr < ConditionSimple
       a = card.colors.chars.to_set
     elsif @a == "in"
       a = card.color_indicator_set
+      return false unless a
     else
       a = card.color_identity.chars.to_set
     end
