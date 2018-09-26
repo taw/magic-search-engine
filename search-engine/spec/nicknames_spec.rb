@@ -14,7 +14,7 @@ describe "Card nicknames" do
       "Stomping Ground",
       "Temple Garden",
       "Watery Grave"
-    assert_search_equal "is:shockland", %Q[o:"As ~ enters the battlefield, you may pay 2 life. If you don't, ~ enters the battlefield tapped."]
+    assert_search_equal "is:shockland", %Q[o:"As ~ enters the battlefield, you may pay 2 life. If you don't, ~ enters the battlefield tapped." or o:"As ~ enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped."]
   end
 
   # The name is unique-ish

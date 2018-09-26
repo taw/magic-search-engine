@@ -15,6 +15,7 @@ class FormatFrontier < Format
       "xln", "rix",
       "dom",
       "m19",
+      "grn",
     ]
   end
 end

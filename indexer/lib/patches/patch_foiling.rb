@@ -15,6 +15,8 @@ class PatchFoiling < Patch
         card["foiling"] = "foilonly"
       elsif set_code == "dom" and name == "Firesong and Sunspeaker"
         card["foiling"] = "foilonly"
+      elsif set_code == "grn" and name == "Impervious Greatwurm"
+        card["foiling"] = "foilonly"
       elsif set_code == "ori" and number.to_i >= 273
         # Deck Builder's Toolkit (Magic Origins Edition)
         card["foiling"] = "nonfoil"

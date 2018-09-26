@@ -279,8 +279,8 @@ describe "Scryfall" do
   it "white_creature_standard" do
     # identical results
     assert_search_include 'c:w t:creature f:standard',
-      "Aerial Responder",
-      "Wispweaver Angel"
+      "Aerial Engineer",
+      "Tragic Poet"
   end
 
   it "pow_gt_tou" do

@@ -110,10 +110,10 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Steam Vents
-        [gp rtr exp]
+        [gp rtr exp grn]
         Land - Island Mountain
         ({T}: Add {U} or {R}.)
-        As Steam Vents enters the battlefield, you may pay 2 life. If you don't, Steam Vents enters the battlefield tapped.
+        As Steam Vents enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.
         EOF
       error: ""
     )
@@ -158,6 +158,8 @@ describe "CLI Frontend" do
       verbose: false,
       output: <<-EOF,
         Ral Zarek
+        Ral, Caller of Storms
+        Ral, Izzet Viceroy
         EOF
       error: <<-EOF
         Doesn't look like correct date, ignored: "battle for homelands"
