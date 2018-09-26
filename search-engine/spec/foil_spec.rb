@@ -99,9 +99,12 @@ describe "Foils" do
       when "grn"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         buy_a_box_promo = extra_cards.find{|c| c.name == "Impervious Greatwurm"}
+        # Yeah, one basic is Bundle-only
+        grn_plains = extra_cards.find{|c| c.name == "Plains"}
         assert_foiling(booster_cards, "both")
-        assert_foiling_partial_precon(extra_cards - [buy_a_box_promo])
+        assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, grn_plains])
         assert_foiling([buy_a_box_promo], "foilonly")
+        assert_foiling([grn_plains], "nonfoil")
       when "uh"
         special, regular = set.printings.partition{|c| c.name == "Super Secret Tech"}
         assert_foiling(regular, "both")
