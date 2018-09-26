@@ -2,8 +2,8 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(18748)
-    db.number_of_printings.should eq(37176)
+    db.number_of_cards.should eq(19002)
+    db.number_of_printings.should eq(37459)
   end
 
   it "block codes" do
@@ -118,7 +118,7 @@ describe "Full Database Test" do
       "Tormenting Voice",
       "Unruly Mob"
 
-    assert_search_results "e:soi lastprint>soi",
+    assert_search_results "e:soi lastprint>soi lastprint<grn",
       "Aim High",
       "Archangel Avacyn",
       "Arlinn Kord",
@@ -128,23 +128,18 @@ describe "Full Database Test" do
       "Dual Shot",
       "Engulf the Shore",
       "Explosive Apparatus",
-      "Forest",
       "Forsaken Sanctuary",
       "Foul Orchard",
       "Grotesque Mutation",
       "Highland Lake",
-      "Island",
       "Macabre Waltz",
       "Magnifying Glass",
-      "Mountain",
-      "Plains",
       "Pyre Hound",
       "Rabid Bite",
       "Reckless Scholar",
       "Rush of Adrenaline",
       "Sleep Paralysis",
       "Stone Quarry",
-      "Swamp",
       "Thornhide Wolves",
       "Tormenting Voice",
       "Triskaidekaphobia",

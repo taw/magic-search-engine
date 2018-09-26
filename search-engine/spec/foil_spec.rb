@@ -96,6 +96,12 @@ describe "Foils" do
         assert_foiling(booster_cards, "both")
         assert_foiling_partial_precon(extra_cards - [buy_a_box_promo])
         assert_foiling([buy_a_box_promo], "foilonly")
+      when "grn"
+        booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
+        buy_a_box_promo = extra_cards.find{|c| c.name == "Impervious Greatwurm"}
+        assert_foiling(booster_cards, "both")
+        assert_foiling_partial_precon(extra_cards - [buy_a_box_promo])
+        assert_foiling([buy_a_box_promo], "foilonly")
       when "uh"
         special, regular = set.printings.partition{|c| c.name == "Super Secret Tech"}
         assert_foiling(regular, "both")
