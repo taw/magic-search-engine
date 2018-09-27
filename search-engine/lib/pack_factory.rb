@@ -194,12 +194,12 @@ class PackFactory
     when "lg"
       build_pack(set_code, {explicit_common: 12, explicit_uncommon: 3, explicit_rare: 1})
     # custom sets
-    when "ank", "ldo", "vln", "jan", "hlw"
+    when "ank", "ldo", "vln", "jan", "hlw", "rak"
       # Custom sets with default pack distribution, no foils, no basics
       build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1})
-    when "dms", "cc18"
+    when "dms", "cc18", "vst"
       # Same as above except no basics
-      #TODO make sure DMS follows http://thegraymerchants.com/?p=836
+      #TODO make sure DMS and VST follow http://thegraymerchants.com/?p=836
       build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1})
     when "ayr"
       # AYR has only nonbasic lands in the land slot, and no lands in any other slot, like DGM
