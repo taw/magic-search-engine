@@ -398,4 +398,12 @@ class CardSheetFactory
       [from_query('e:cns -is:draft r:mythic', 10, foil: foil), 1],
     )
   end
+
+  def grn_common(set_code)
+    from_query("e:#{set_code} r:common not:guildgate")
+  end
+
+  def grn_land(set_code)
+    from_query("e:#{set_code} is:guildgate", 10)
+  end
 end
