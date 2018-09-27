@@ -29,6 +29,7 @@ class FormatStandard < Format
     # ["al", "be", "an", "un", "aq", "rv", "lg", "dk", "fe", "4e", "ia", "hl", "ai", "mr", "vi", "5e", "wl", "tp", "sh", "ex", "us", "ul", "6e", "ud", "mm", "ne", "pr", "in", "ps", "7e", "ap", "od", "tr", "ju", "on", "le", "sc", "8e", "mi", "ds", "5dn", "chk", "bok", "sok", "9e", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut", "10e", "lw", "mt", "shm", "eve", "ala", "cfx", "arb", "m10"]
     {
       # 4 blocks system, 1 rotation/year
+      "2018-10-05" => ["xln", "rix", "dom", "m19", "grn"],
       "2017-09-29" => ["kld", "aer", "akh", "w17", "hou", "xln", "rix", "dom", "m19"],
       "2016-09-30" => ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh", "w17", "hou"],
       # 3 blocks system, 2 rotations/year
