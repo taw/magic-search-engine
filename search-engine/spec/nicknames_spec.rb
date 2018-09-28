@@ -230,6 +230,23 @@ describe "Card nicknames" do
       'o:"~ enters the battlefield tapped unless you control two or more basic lands."'
   end
 
+  # There are other Gates (only one as of GRN), Guildgate specifically refers to the original double-cycle
+  it "is:guildgate" do
+    assert_search_results "is:guildgate",
+      "Azorius Guildgate",
+      "Dimir Guildgate",
+      "Rakdos Guildgate",
+      "Gruul Guildgate",
+      "Selesnya Guildgate",
+      "Orzhov Guildgate",
+      "Izzet Guildgate",
+      "Golgari Guildgate",
+      "Boros Guildgate",
+      "Simic Guildgate"
+    assert_search_equal "is:guildgate",
+      't:Gate ci=2'
+  end
+
   # A card that lists a lot of keywords in a single list, in an order that's different from the canonical keyword order
   # This definition is more strict than some people use the term “keyword soup”, but it is useful for figuring out relative order of keywords by filtering these cards out
   it "is:keywordsoup" do
