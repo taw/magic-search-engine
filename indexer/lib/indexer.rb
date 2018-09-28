@@ -223,7 +223,7 @@ class Indexer
         "text",
         "toughness",
         "types",
-      ).compact
+      ).select{|k,v| v != nil and v != []}
 
       printing_data << [
         printing["set_code"],
