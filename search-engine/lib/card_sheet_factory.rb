@@ -399,11 +399,11 @@ class CardSheetFactory
     )
   end
 
-  def grn_common(set_code)
-    from_query("e:#{set_code} r:common not:guildgate")
+  def grn_common
+    from_query("e:grn r:common not:guildgate")
   end
 
-  def grn_land(set_code)
-    from_query("e:#{set_code} is:guildgate", 10)
+  def grn_land
+    from_query("e:grn is:guildgate", 10)
   end
 end

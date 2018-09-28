@@ -2,7 +2,7 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(19002)
+    db.number_of_cards.should eq(18992)
     db.number_of_printings.should eq(37459)
   end
 
