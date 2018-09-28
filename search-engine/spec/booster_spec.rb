@@ -8,7 +8,10 @@ describe "is:booster" do
         ["expansion", "core", "un", "reprint", "conspiracy", "masters", "starter", "two-headed giant"].include?(set.type) and
         !%W[ced cedi tsts itp st2k cp1 cp2 cp3 w16 w17].include?(set.code)
       )
-      if should_have_boosters
+      should_be_included_in_boosters = (
+        %W[tsts exp mps mps_akh].include?(set.code)
+      )
+      if should_have_boosters or should_be_included_in_boosters
         set.should have_boosters, "#{set_pp} should have boosters"
       else
         set.should_not have_boosters, "#{set_pp} should not have boosters"
