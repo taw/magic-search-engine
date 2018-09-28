@@ -400,10 +400,10 @@ class CardSheetFactory
   end
 
   def grn_common
-    from_query("e:grn r:common not:guildgate")
+    from_query("e:grn is:booster r:common not:guildgate")
   end
 
   def grn_land
-    from_query("e:grn is:guildgate", 10)
+    from_query("e:grn is:booster is:guildgate", 10)
   end
 end
