@@ -65,6 +65,7 @@ class PackFactory
   def for(set_code)
     set = @db.resolve_edition(set_code)
     raise "Invalid set code #{set_code}" unless set
+    return nil if set.release_date > Date.today
     set_code = set.code # Normalize
 
     # https://mtg.gamepedia.com/Booster_pack
