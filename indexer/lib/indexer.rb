@@ -87,6 +87,8 @@ class Indexer
 
   def patches
     [
+      # For transition period we support any mix of mtgjson v3 and v4
+      PatchMtgjsonVersions,
       # Each set needs unique code, by convention all lowercase
       PatchSetCodes,
 
@@ -222,7 +224,7 @@ class Indexer
         "text",
         "toughness",
         "types",
-      ).select{|k,v| v != nil and v != []}
+      ).compact
 
       printing_data << [
         printing["set_code"],
@@ -248,14 +250,17 @@ class Indexer
     name = result["name"]
     # Make sure it's reconciled at this point
     # This should be hard error once we're done
-    common_card_data[1..-1].each do |other_printing|
-      if other_printing != result
-        warn "Data for card #{name} inconsistent"
-      end
-    end
+    report_if_inconsistent(name, common_card_data)
 
     # Output in canonical form, to minimize diffs between mtgjson updates
     result["printings"] = printing_data.sort_by{|sc,d| [set_order.fetch(sc), d["number"], d["multiverseid"]] }
     result
+  end
+
+  def report_if_inconsistent(name, common_card_data)
+    return if common_card_data.uniq.size == 1
+    keys = common_card_data.map(&:keys).inject(&:|)
+    inconsistent_keys = keys.select{|key| common_card_data.map{|ccd| ccd[key]}.uniq.size > 1 }
+    warn "Data for card #{name} inconsistent on #{inconsistent_keys.join(", ")}"
   end
 end
