@@ -42,11 +42,11 @@ class PatchMtgjsonVersions < Patch
       # Rulings ordering is arbitrarily different, just pick canonical ordering
       # (do it after Unicode normalization)
       # Just not now as it messes up witsh diffs
-      if card["rulings"]
-        card["rulings"] = card["rulings"].sort_by{|ruling|
-          [ruling["date"], ruling["text"]]
-        }
-      end
+      # if card["rulings"]
+      #   card["rulings"] = card["rulings"].sort_by{|ruling|
+      #     [ruling["date"], ruling["text"]]
+      #   }
+      # end
     end
   end
 
