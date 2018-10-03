@@ -1,6 +1,6 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date
-  attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border, :timeshifted, :printed_text, :printed_typeline
+  attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border, :timeshifted, :printed_name, :printed_text, :printed_typeline
   attr_reader :rarity_code, :print_sheet
 
   # Performance cache of derived information
