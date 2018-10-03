@@ -241,6 +241,7 @@ class Indexer
           "release_date",
           "timeshifted",
           "watermark",
+          "printedName",
           "originalType",
           "originalText"
         ).compact

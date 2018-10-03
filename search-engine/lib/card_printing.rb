@@ -27,6 +27,7 @@ class CardPrinting
     @border = data["border"] || @set.border
     @frame = data["frame"] || @set.frame
     @timeshifted = data["timeshifted"] || false
+    @printed_name = data["printedName"] || @card.name
     @printed_text = (data["originalText"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
     unless card.funny
       @printed_text = @printed_text.gsub(/\s*\([^\(\)]*\)/, "")
