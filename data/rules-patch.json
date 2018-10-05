@@ -1,5 +1,5 @@
 {
-    "base": "2018-08-10",
+    "base": "2018-10-05",
     "patches": [
         {
             "#": "for Mount Chromaziel, clarify that “could produce” can be checked in any zone",
@@ -131,6 +131,13 @@
             "rule": "200.1",
             "after": "loyalty, ",
             "text": "stability, "
+        },
+        {
+            "#": "using the same card pool for all custom formats doesn't make a lot of sense, so the change to this rule from GRN has been reverted",
+            "type": "replace",
+            "rule": "201.3",
+            "find": "in the Oracle card reference. (See rule 108.1.)",
+            "replace": "that is legal in the format of the game the player is playing. (See rule 100.6.)"
         },
         {
             "#": "for Wildcard, allow an object's CMC to change",
@@ -455,6 +462,13 @@
             "type": "insert",
             "rule": "612.1a",
             "text": "A text-changing effect applying to its source only changes the text in the text box where it is defined. Other text boxes, such as those added by copy effects, are not modified. Text-changing effects that change the “full text” of an object are exempt from this rule. See rule 612.5."
+        },
+        {
+            "#": "using the same card pool for all custom formats doesn't make a lot of sense, so the change to this rule from GRN has been reverted",
+            "type": "replace",
+            "rule": "612.6",
+            "find": ". (See rule 108.1.)",
+            "replace": " that's legal in the format of the game it's in. (See rule 100.6.)"
         },
         {
             "#": "for Wildcard, define that CMC changes apply in layer 5",
@@ -799,8 +813,8 @@
             "#": "define front-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
             "type": "replace",
             "rule": "711.1a",
-            "find": "Magic Origins",
-            "replace": "Magic Origins and Magic Villains"
+            "find": "Magic Origins and Core Set 2019",
+            "replace": "Magic Origins, Core Set 2019, and Magic Villains"
         },
         {
             "#": "define front-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
@@ -819,8 +833,8 @@
             "#": "define back-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
             "type": "replace",
             "rule": "711.1b",
-            "find": "Magic Origins",
-            "replace": "Magic Origins and Magic Villains"
+            "find": "Magic Origins and Core Set 2019",
+            "replace": "Magic Origins, Core Set 2019, and Magic Villains"
         },
         {
             "#": "define back-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
