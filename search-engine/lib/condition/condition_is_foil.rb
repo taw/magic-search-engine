@@ -1,4 +1,4 @@
-class ConditionIsfoil < ConditionSimple
+class ConditionIsFoil < ConditionSimple
   def match?(card)
     ["foilonly", "both"].include?(card.foiling)
   end
