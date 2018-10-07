@@ -1,6 +1,6 @@
 Magic: The Gathering Comprehensive Rules
 
-These rules are effective as of August 10, 2018.
+These rules are effective as of October 5, 2018.
 
 Introduction
 
@@ -380,7 +380,7 @@ Example: A card reads “Each player sacrifices a creature.” First, the active
 
 106.3. Mana is produced by the effects of mana abilities (see rule 605). It may also be produced by the effects of spells, as well as by the effects of abilities that aren’t mana abilities. A spell or ability that produces mana instructs a player to add that mana.
 
-106.4. When an effect instructs a player to add mana, that mana goes into a player’s mana pool. From there, it can be used to pay costs immediately, or it can stay in the player’s mana pool as unspent mana. Each player’s mana pool empties at the end of each step and phase, and the player is said to lose this mana. Cards with abilities that produce mana or refer to unspent mana have received errata in the Oracle card reference to no longer explicitly refer to the mana pool.
+106.4. When an effect instructs a player to add mana, that mana goes into a player’s mana pool. From there, it can be used to pay costs immediately, or it can stay in the player’s mana pool as unspent mana. Each player’s mana pool empties at the end of each step and phase, and the player is said to lose this mana. Cards with abilities that produce mana or refer to unspent mana have received errata in the Oracle™ card reference to no longer explicitly refer to the mana pool.
 
 106.4a If any mana remains in a player’s mana pool after mana is spent to pay a cost, that player announces what mana is still there.
 
@@ -392,7 +392,7 @@ Example: Meteor Crater has the ability “{T}: Choose a color of a permanent you
 106.6. Some spells or abilities that produce mana restrict how that mana can be spent, have an additional effect that affects the spell or ability that mana is spent on, or create a delayed triggered ability (see rule 603.7a) that triggers when that mana is spent. This doesn’t affect the mana’s type.
 Example: A player’s mana pool contains {R}{G} which can be spent only to cast creature spells. That player activates Doubling Cube’s ability, which reads “{3}, {T}: Double the amount of each type of unspent mana you have.” The player’s mana pool now has {R}{R}{G}{G} in it, {R}{G} of which can be spent on anything.
 
-106.6a Some replacement effects increase the amount of mana produced by a spell or ability. In these cases, any restrictions or additional effects created by the spell or ability will apply to all mana produced. If the spell or ability creates a delayed triggered ability that triggers when the mana is spent, a separate delayed triggered ability is created for each mana produced.
+106.6a Some replacement effects increase the amount of mana produced by a spell or ability. In these cases, any restrictions or additional effects created by the spell or ability will apply to all mana produced. If the spell or ability creates a delayed triggered ability that triggers when the mana is spent, a separate delayed triggered ability is created for each mana produced. If the spell or ability creates a continuous effect or replacement effect if the mana is spent, a separate effect is created once for each mana produced.
 
 106.7. Some abilities produce mana based on the type of mana another permanent or permanents “could produce.” The type of mana a permanent could produce at any time includes any type of mana that an ability of that permanent would produce if the ability were to resolve at that time, taking into account any applicable replacement effects in any possible order. Ignore whether any costs of the ability could or could not be paid. If that permanent wouldn’t produce any mana under these conditions, or no type of mana can be defined this way, there’s no type of mana it could produce.
 Example: Exotic Orchard has the ability “{T}: Add one mana of any color that a land an opponent controls could produce.” If your opponent controls no lands, activating Exotic Orchard’s mana ability will produce no mana. The same is true if you and your opponent each control no lands other than Exotic Orchards. However, if you control a Forest and an Exotic Orchard, and your opponent controls an Exotic Orchard, then each Exotic Orchard could produce {G}.
@@ -442,9 +442,13 @@ Example: Chameleon Colossus is a 4/4 creature with the ability “{2}{G}{G}: Cha
 
 107.3g If an effect instructs a player to pay an object’s mana cost that includes {X}, the value of X is treated as 0 unless the object is a spell on the stack. In that case, the value of X is the value chosen or determined for it as the spell was cast.
 
-107.3h Normally, all instances of X on an object have the same value at any given time. If an object gains an ability, the value of X within that ability is the value defined by that ability, or 0 if that ability doesn’t define a value of X.
+107.3h Normally, all instances of X on an object have the same value at any given time.
 
-107.3i Some objects use the letter Y in addition to the letter X. Y follows the same rules as X.
+107.3i If an object gains an ability, the value of X within that ability is the value defined by that ability, or 0 if that ability doesn’t define a value of X. This is an exception to rule 107.3h.
+
+107.3j If an object’s activated ability has an {X}, [-X], or X in its activation cost, the value of X for that ability is independent of any other values of X chosen for that object or for other instances of abilities of that object. This is an exception to rule 107.3h.
+
+107.3k Some objects use the letter Y in addition to the letter X. Y follows the same rules as X.
 
 107.4. The mana symbols are {W}, {U}, {B}, {R}, {G}, and {C}; the numerical symbols {0}, {1}, {2}, {3}, {4}, and so on; the variable symbol {X}; the hybrid symbols {W/U}, {W/B}, {U/B}, {U/R}, {B/R}, {B/G}, {R/G}, {R/W}, {G/W}, and {G/U}; the monocolored hybrid symbols {2/W}, {2/U}, {2/B}, {2/R}, and {2/G}; the Phyrexian mana symbols {W/P}, {U/P}, {B/P}, {R/P}, and {G/P}; and the snow symbol {S}.
 
@@ -498,7 +502,7 @@ Example: {W/P}{W/P} can be paid by spending {W}{W}, by spending {W} and paying 2
 
 108. Cards
 
-108.1. Use the Oracle™ card reference when determining a card’s wording. A card’s Oracle text can be found using the Gatherer card database at Gatherer.Wizards.com.
+108.1. Use the Oracle card reference when determining a card’s wording. A card’s Oracle text can be found using the Gatherer card database at Gatherer.Wizards.com.
 
 108.2. When a rule or text on a card refers to a “card,” it means only a Magic card or an object represented by a Magic card.
 
@@ -613,11 +617,13 @@ Example: If an effect changes a black creature spell to white, the creature is w
 
 112. Abilities
 
-112.1. An ability can be one of two things:
+112.1. An ability can be one of three things:
 
-112.1a An ability is a characteristic an object has that lets it affect the game. An object’s abilities are defined by its rules text or by the effect that created it. Abilities can also be granted to objects by rules or effects. (Effects that grant abilities usually use the words “has,” “have,” “gains,” or “gain.”) Abilities generate effects. (See rule 609, “Effects.”)
+112.1a An ability can be a characteristic an object has that lets it affect the game. An object’s abilities are defined by its rules text or by the effect that created it. Abilities can also be granted to objects by rules or effects. (Effects that grant abilities usually use the words “has,” “have,” “gains,” or “gain.”) Abilities generate effects. (See rule 609, “Effects.”)
 
-112.1b An ability can be an activated or triggered ability on the stack. This kind of ability is an object. (See section 6, “Spells, Abilities, and Effects.”)
+112.1b An ability can be something that a player has that changes how the game affects the player. A player normally has no abilities unless granted to that player by effects.
+
+112.1c An ability can be an activated or triggered ability on the stack. This kind of ability is an object. (See section 6, “Spells, Abilities, and Effects.”)
 
 112.2. Abilities can affect the objects they’re on. They can also affect other objects and/or players.
 
@@ -709,22 +715,22 @@ Example: Muraganda Petroglyphs reads, “Creatures with no abilities get +2/+2.�
 
 114. Targets
 
-114.1. Some spells and abilities require their controller to choose one or more targets for them. The targets are object(s), player(s), and/or zone(s) the spell or ability will affect. These targets are declared as part of the process of putting the spell or ability on the stack. The targets can’t be changed except by another spell or ability that explicitly says it can do so.
+114.1. Some spells and abilities require their controller to choose one or more targets for them. The targets are object(s) and/or player(s) the spell or ability will affect. These targets are declared as part of the process of putting the spell or ability on the stack. The targets can’t be changed except by another spell or ability that explicitly says it can do so.
 
-114.1a An instant or sorcery spell is targeted if its spell ability identifies something it will affect by using the phrase “target [something],” where the “something” is a phrase that describes an object, player, or zone. The target(s) are chosen as the spell is cast; see rule 601.2c. (If an activated or triggered ability of an instant or sorcery uses the word target, that ability is targeted, but the spell is not.)
+114.1a An instant or sorcery spell is targeted if its spell ability identifies something it will affect by using the phrase “target [something],” where the “something” is a phrase that describes an object and/or player. The target(s) are chosen as the spell is cast; see rule 601.2c. (If an activated or triggered ability of an instant or sorcery uses the word target, that ability is targeted, but the spell is not.)
 Example: A sorcery card has the ability “When you cycle this card, target creature gets -1/-1 until end of turn.” This triggered ability is targeted, but that doesn’t make the card it’s on targeted.
 
 114.1b Aura spells are always targeted. These are the only permanent spells with targets. An Aura’s target is specified by its enchant keyword ability (see rule 702.5, “Enchant”). The target(s) are chosen as the spell is cast; see rule 601.2c. An Aura permanent doesn’t target anything; only the spell is targeted. (An activated or triggered ability of an Aura permanent can also be targeted.)
 
-114.1c An activated ability is targeted if it identifies something it will affect by using the phrase “target [something],” where the “something” is a phrase that describes an object, player, or zone. The target(s) are chosen as the ability is activated; see rule 602.2b.
+114.1c An activated ability is targeted if it identifies something it will affect by using the phrase “target [something],” where the “something” is a phrase that describes an object and/or player. The target(s) are chosen as the ability is activated; see rule 602.2b.
 
-114.1d A triggered ability is targeted if it identifies something it will affect by using the phrase “target [something],” where the “something” is a phrase that describes an object, player, or zone. The target(s) are chosen as the ability is put on the stack; see rule 603.3d.
+114.1d A triggered ability is targeted if it identifies something it will affect by using the phrase “target [something],” where the “something” is a phrase that describes an object and/or player. The target(s) are chosen as the ability is put on the stack; see rule 603.3d.
 
 114.1e Some keyword abilities, such as equip and provoke, represent targeted activated or triggered abilities. In those cases, the phrase “target [something]” appears in the rule for that keyword ability rather than in the ability itself. (The keyword’s reminder text will often contain the word “target.”) See rule 702, “Keyword Abilities.”
 
-114.2. Only permanents are legal targets for spells and abilities, unless a spell or ability (a) specifies that it can target an object in another zone or a player, (b) targets an object that can’t exist on the battlefield, such as a spell or ability, or (c) targets a zone.
+114.2. Only permanents are legal targets for spells and abilities, unless a spell or ability (a) specifies that it can target an object in another zone or a player, or (b) targets an object that can’t exist on the battlefield, such as a spell or ability. See also rule 114.4.
 
-114.3. The same target can’t be chosen multiple times for any one instance of the word “target” on a spell or ability. If the spell or ability uses the word “target” in multiple places, the same object, player, or zone can be chosen once for each instance of the word “target” (as long as it fits the targeting criteria). This rule applies both when choosing targets for a spell or ability and when changing targets or choosing new targets for a spell or ability (see rule 114.7).
+114.3. The same target can’t be chosen multiple times for any one instance of the word “target” on a spell or ability. If the spell or ability uses the word “target” in multiple places, the same object or player can be chosen once for each instance of the word “target” (as long as it fits the targeting criteria). This rule applies both when choosing targets for a spell or ability and when changing targets or choosing new targets for a spell or ability (see rule 114.7).
 
 114.4. Some spells and abilities that refer to damage require “any target,” “another target,” “two targets,” or similar rather than “target [something].” These targets may be creatures, players, or planeswalkers. Other game objects, such as noncreature artifacts or spells, can’t be chosen.
 
@@ -749,7 +755,7 @@ Example: Arc Trail is a sorcery that reads “Arc Trail deals 2 damage to any ta
 
 114.9. Some objects check what another spell or ability is targeting. Depending on the wording, these may check the current state of the targets, the state of the targets at the time they were selected, or both.
 
-114.9a An object that looks for a “[spell or ability] with a single target” checks the number of times any objects, players, or zones became the target of that spell or ability when it was put on the stack, not the number of its targets that are currently legal. If the same object, player, or zone became a target more than once, each of those instances is counted separately.
+114.9a An object that looks for a “[spell or ability] with a single target” checks the number of times any objects or players became the target of that spell or ability when it was put on the stack, not the number of its targets that are currently legal. If the same object or player became a target more than once, each of those instances is counted separately.
 
 114.9b An object that looks for a “[spell or ability] that targets [something]” checks the current state of that spell or ability’s targets. If an object it targets is still in the zone it’s expected to be in or a player it targets is still in the game, that target’s current information is used, even if it’s not currently legal for that spell or ability. If an object it targets is no longer in the zone it’s expected to be in or a player it targets is no longer in the game, that target is ignored; its last known information is not used.
 
@@ -848,7 +854,7 @@ Example: A player controls Lodestone Golem, which says “Nonartifact spells cos
 
 117.5a A spell whose mana cost is {0} must still be cast the same way as one with a cost greater than zero; it won’t cast itself automatically. The same is true for an activated ability whose cost is {0}.
 
-117.6. Some mana costs contain no mana symbols. This represents an unpayable cost. An ability can also have an unpayable cost if its cost is based on the mana cost of an object with no mana cost. Attempting to cast a spell or activate an ability that has an unpayable cost is a legal action. However, attempting to pay an unpayable cost is an illegal action.
+117.6. Some objects have no mana cost. This represents an unpayable cost. An ability can also have an unpayable cost if its cost is based on the mana cost of an object with no mana cost. Attempting to cast a spell or activate an ability that has an unpayable cost is a legal action. However, attempting to pay an unpayable cost is an illegal action.
 
 117.6a If an unpayable cost is increased by an effect or an additional cost is imposed, the cost is still unpayable. If an alternative cost is applied to an unpayable cost, including an effect that allows a player to cast a spell without paying its mana cost, the alternative cost may be paid.
 
@@ -1054,10 +1060,10 @@ Example: A player casts Lightning Bolt, an instant that says “Lightning Bolt d
 
 201.2c Two or more objects have different names if there are no names that both objects have in common.
 
-201.3. If an effect instructs a player to choose a card name, the player must choose the name of a card that is legal in the format of the game the player is playing. (See rule 100.6.) A player may not choose the name of a token unless it’s also the name of a card.
+201.3. If an effect instructs a player to choose a card name, the player must choose the name of a card in the Oracle card reference. (See rule 108.1.) A player may not choose the name of a token unless it’s also the name of a card.
 
 201.3a If a player is instructed to choose a card name with certain characteristics, the player must choose the name of a card whose Oracle text matches those characteristics. (See rule 108.1.)
-Example: Dispossess reads, in part, “Choose an artifact card name.” The player can choose the name of any artifact card that’s legal in the format of the current game. The player can’t choose Island, even if an Island on the battlefield has been turned into artifact by some effect.
+Example: Dispossess reads, in part, “Choose an artifact card name.” The player can choose the name of any artifact card, even one that’s not legal in the format of the current game. The player can’t choose Island, even if an Island on the battlefield has been turned into artifact by some effect.
 
 201.3b If a player wants to choose the name of a split card, the player must choose the name of one of its halves, but not both. (See rule 708.) If a player is instructed to choose a card name with certain characteristics, use only that half’s characteristics to determine if this name can be chosen.
 
@@ -1078,9 +1084,6 @@ Example: Glacial Ray is an instant with splice onto Arcane that says “Glacial 
 Example: Dimir Doppelganger says “{1}{U}{B}: Exile target creature card from a graveyard. Dimir Doppelganger becomes a copy of that card and gains this ability.” Dimir Doppelganger’s ability is activated targeting a Runeclaw Bear card. The Doppelganger becomes a copy of Runeclaw Bear and gains an ability that should be treated as saying “{1}{U}{B}: Exile target creature card from a graveyard. Runeclaw Bear becomes a copy of that card and gains this ability.”
 
 201.4c Text printed on some legendary cards refers to that card by a shortened version of its name. Instances of a card’s shortened name used in this manner are treated as though they used the card’s full name.
-
-201.5. If an ability of an object uses a phrase such as “this [something]” to identify an object, where [something] is a characteristic, it is referring to that particular object, even if it isn’t the appropriate characteristic at the time.
-Example: An ability reads “Target creature gets +2/+2 until end of turn. Destroy that creature at the beginning of the next end step.” The ability will destroy the object it gave +2/+2 to even if that object isn’t a creature at the beginning of the next end step.
 
 202. Mana Cost and Color
 
@@ -1218,9 +1221,9 @@ Example: An ability reads, “All lands are 1/1 creatures that are still lands.�
 
 206.2. The color of the expansion symbol indicates the rarity of the card within its set. A red-orange symbol indicates the card is mythic rare. A gold symbol indicates the card is rare. A silver symbol indicates the card is uncommon. A black or white symbol indicates the card is common or is a basic land. A purple symbol signifies a special rarity; to date, only the Time Spiral® “timeshifted” cards, which were rarer than that set’s rare cards, have had purple expansion symbols. (Prior to the Exodus™ set, all expansion symbols were black, regardless of rarity. Also, prior to the Sixth Edition core set, with the exception of the Simplified Chinese Fifth Edition core set, Magic core sets didn’t have expansion symbols at all.)
 
-206.3. Previously, a spell or ability that affected cards from a particular set checked for that set’s expansion symbol. These cards have received errata in the Oracle card reference to say they affect cards “with a name originally printed” in a particular set. See rule 700.7 for details.
+206.3. Previously, a spell or ability that affected cards from a particular set checked for that set’s expansion symbol. These cards have received errata in the Oracle card reference to say they affect cards “with a name originally printed” in a particular set. See rule 700.8 for details.
 
-206.4. Players may include cards from any printing in their constructed decks if those cards appear in sets allowed in that format (or those cards are specifically allowed by the Magic Tournament Rules). See the Magic Tournament Rules for the current definitions of the constructed formats (WPN.Wizards.com/en/resources/rules-documents).
+206.4. Players may include cards from any printing in their constructed decks if those cards appear in sets allowed in that format (or those cards are specifically allowed by the Magic: The Gathering Tournament Rules). See the Magic: The Gathering Tournament Rules for the current definitions of the constructed formats (WPN.Wizards.com/en/resources/rules-documents).
 
 206.5. The full list of expansions and expansion symbols can be found in the Card Set Archive section of the Magic website (Magic.Wizards.com/en/game-info/products/card-set-archive).
 
@@ -1234,9 +1237,9 @@ Example: An ability reads, “All lands are 1/1 creatures that are still lands.�
 
 207.2b Flavor text is italicized text that, like the illustration, adds artistic appeal to the game. It appears below the rules text.
 
-207.2c An ability word appears in italics at the beginning of some abilities. Ability words are similar to keywords in that they tie together cards that have similar functionality, but they have no special rules meaning and no individual entries in the Comprehensive Rules. The ability words are battalion, bloodrush, channel, chroma, cohort, constellation, converge, council’s dilemma, delirium, domain, eminence, enrage, fateful hour, ferocious, formidable, grandeur, hellbent, heroic, imprint, inspired, join forces, kinship, landfall, lieutenant, metalcraft, morbid, parley, radiance, raid, rally, revolt, spell mastery, strive, sweep, tempting offer, threshold, and will of the council.
+207.2c An ability word appears in italics at the beginning of some abilities. Ability words are similar to keywords in that they tie together cards that have similar functionality, but they have no special rules meaning and no individual entries in the Comprehensive Rules. The ability words are battalion, bloodrush, channel, chroma, cohort, constellation, converge, council’s dilemma, delirium, domain, eminence, enrage, fateful hour, ferocious, formidable, grandeur, hellbent, heroic, imprint, inspired, join forces, kinship, landfall, lieutenant, metalcraft, morbid, parley, radiance, raid, rally, revolt, spell mastery, strive, sweep, tempting offer, threshold, undergrowth, and will of the council.
 
-207.3. Some cards have decorative icons in the background of their text boxes. For example, a guild icon appears in the text box of many Ravnica: City of Guilds® and Return to Ravnica™ block cards, and a faction icon appears in the text box of most Scars of Mirrodin™ block cards. Similarly, many promotional cards include decorative icons. These icons have no effect on game play.
+207.3. Some cards have decorative icons in the background of their text boxes. For example, a guild icon appears in the text box of many cards associated with the guilds of Ravnica, and a faction icon appears in the text box of most Scars of Mirrodin™ block cards. Similarly, many promotional cards include decorative icons. These icons have no effect on game play.
 
 207.4. The chaos symbol {CHAOS} appears in the text box of each plane card to the left of a triggered ability that triggers whenever {CHAOS} is rolled on the planar die. The symbol itself has no special rules meaning.
 
@@ -1586,7 +1589,7 @@ Example: Exquisite Archangel has an ability which reads “If you would lose the
 
 400.7b Prevention effects that apply to damage from a permanent spell on the stack continue to apply to damage from the permanent that spell becomes.
 
-400.7c If an ability of a permanent requires information about choices made as that permanent was cast as a spell, including what mana was spent to cast that spell, it uses information about the spell that became that permanent as it resolved.
+400.7c An ability of a permanent can reference information about the spell that became that permanent, including what costs were paid to cast that spell or what mana was spent to pay those costs.
 
 400.7d Abilities that trigger when an object moves from one zone to another (for example, “When Rancor is put into a graveyard from the battlefield”) can find the new object that it became in the zone it moved to when the ability triggered, if that zone is a public zone.
 
@@ -2060,7 +2063,7 @@ Example: Squadron Hawk (a 1/1 creature with flying) and Goblin Piker (a 2/1 crea
 
 601.2b If the spell is modal, the player announces the mode choice (see rule 700.2). If the player wishes to splice any cards onto the spell (see rule 702.46), they reveal those cards in their hand. If the spell has alternative or additional costs that will be paid as it’s being cast such as buyback or kicker costs (see rules 117.8 and 117.9), the player announces their intentions to pay any or all of those costs (see rule 601.2f). A player can’t apply two alternative methods of casting or two alternative costs to a single spell. If the spell has a variable cost that will be paid as it’s being cast (such as an {X} in its mana cost; see rule 107.3), the player announces the value of that variable. If the value of that variable is defined in the text of the spell by a choice that player would make later in the announcement or resolution of the spell, that player makes that choice at this time instead of that later time. If a cost that will be paid as the spell is being cast includes hybrid mana symbols, the player announces the nonhybrid equivalent cost they intend to pay. If a cost that will be paid as the spell is being cast includes Phyrexian mana symbols, the player announces whether they intend to pay 2 life or the corresponding colored mana cost for each of those symbols. Previously made choices (such as choosing to cast a spell with flashback from a graveyard or choosing to cast a creature with morph face down) may restrict the player’s options when making these choices.
 
-601.2c The player announces their choice of an appropriate player, object, or zone for each target the spell requires. A spell may require some targets only if an alternative or additional cost (such as a kicker cost) or a particular mode was chosen for it; otherwise, the spell is cast as though it did not require those targets. Similarly, a spell may require alternative targets only if an alternative or additional cost was chosen for it. If the spell has a variable number of targets, the player announces how many targets they will choose before they announce those targets. In some cases, the number of targets will be defined by the spell’s text. Once the number of targets the spell has is determined, that number doesn’t change, even if the information used to determine the number of targets does. The same target can’t be chosen multiple times for any one instance of the word “target” on the spell. However, if the spell uses the word “target” in multiple places, the same object, player, or zone can be chosen once for each instance of the word “target” (as long as it fits the targeting criteria). If any effects say that an object or player must be chosen as a target, the player chooses targets so that they obey the maximum possible number of such effects without violating any rules or effects that say that an object or player can’t be chosen as a target. The chosen players, objects, and/or zones each become a target of that spell. (Any abilities that trigger when those players, objects, and/or zones become the target of a spell trigger at this point; they’ll wait to be put on the stack until the spell has finished being cast.)
+601.2c The player announces their choice of an appropriate object or player for each target the spell requires. A spell may require some targets only if an alternative or additional cost (such as a kicker cost) or a particular mode was chosen for it; otherwise, the spell is cast as though it did not require those targets. Similarly, a spell may require alternative targets only if an alternative or additional cost was chosen for it. If the spell has a variable number of targets, the player announces how many targets they will choose before they announce those targets. In some cases, the number of targets will be defined by the spell’s text. Once the number of targets the spell has is determined, that number doesn’t change, even if the information used to determine the number of targets does. The same target can’t be chosen multiple times for any one instance of the word “target” on the spell. However, if the spell uses the word “target” in multiple places, the same object or player can be chosen once for each instance of the word “target” (as long as it fits the targeting criteria). If any effects say that an object or player must be chosen as a target, the player chooses targets so that they obey the maximum possible number of such effects without violating any rules or effects that say that an object or player can’t be chosen as a target. The chosen objects and/or players each become a target of that spell. (Any abilities that trigger when those objects and/or players become the target of a spell trigger at this point; they’ll wait to be put on the stack until the spell has finished being cast.)
 Example: If a spell says “Tap two target creatures,” then the same creature can’t be chosen twice; the spell requires two different legal targets. A spell that says “Destroy target artifact and target land,” however, can target the same artifact land twice because it uses the word “target” in multiple places.
 
 601.2d If the spell requires the player to divide or distribute an effect (such as damage or counters) among one or more targets, the player announces the division. Each of these targets must receive at least one of whatever is being divided.
@@ -2230,7 +2233,7 @@ Example: Two creatures are on the battlefield along with an artifact that has th
 603.11. Some objects have a static ability that’s linked to one or more triggered abilities. (See rule 607, “Linked Abilities.”) These objects combine the abilities into one paragraph, with the static ability first, followed by each triggered ability that’s linked to it. A very few objects have triggered abilities which are written with the trigger condition in the middle of the ability, rather than at the beginning.
 Example: An ability that reads “Reveal the first card you draw each turn. Whenever you reveal a basic land card this way, draw a card” is a static ability linked to a triggered ability.
 
-603.12. A resolving spell or ability may allow a player to take an action and create a triggered ability that triggers “when [a player] [does or doesn’t]” take that action or “when [something happens] this way.” These reflexive triggered abilities follow the rules for delayed triggered abilities (see rule 603.7), except that they’re checked immediately after being created and trigger based on whether the trigger event occurred earlier during the resolution of the spell or ability that created them.
+603.12. A resolving spell or ability may allow or instruct a player to take an action and create a triggered ability that triggers “when [a player] [does or doesn’t]” take that action or “when [something happens] this way.” These reflexive triggered abilities follow the rules for delayed triggered abilities (see rule 603.7), except that they’re checked immediately after being created and trigger based on whether the trigger event occurred earlier during the resolution of the spell or ability that created them.
 Example: Heart-Piercer Manticore has an ability that reads “When Heart-Piercer Manticore enters the battlefield, you may sacrifice another creature. When you do, Heart-Piercer Manticore deals damage equal to that creature’s power to any target.” The reflexive triggered ability triggers only when you sacrifice another creature due to the original triggered ability, and not if you sacrifice a creature for any other reason.
 
 604. Handling Static Abilities
@@ -2463,7 +2466,7 @@ Example: A permanent with the static ability “All white creatures get +1/+1”
 
 612.5. One card (Volrath’s Shapeshifter) states that an object has the “full text” of another object. This changes not just the text that appears in the object’s text box and type line, but also changes the text that represents its name, mana cost, color indicator, power, and toughness.
 
-612.6. One card (Spy Kit) states that an object has “all names of nonlegendary creature cards.” This changes the text that represents the object’s name. That object has the name of each nonlegendary creature card in the Oracle card reference that’s legal in the format of the game it’s in. (See rule 100.6.)
+612.6. One card (Spy Kit) states that an object has “all names of nonlegendary creature cards.” This changes the text that represents the object’s name. That object has the name of each nonlegendary creature card in the Oracle card reference. (See rule 108.1.)
 
 613. Interaction of Continuous Effects
 
@@ -2725,13 +2728,16 @@ Example: Fact or Fiction reads, “Reveal the top five cards of your library. An
 
 700.6. The term historic refers to an object that has the legendary supertype, the artifact card type, or the Saga subtype.
 
-700.7. Some cards refer to cards with a name originally printed in a particular set.
+700.7. If an ability of an object uses a phrase such as “this [something]” to identify an object, where [something] is a characteristic, it is referring to that particular object, even if it isn’t the appropriate characteristic at the time.
+Example: An ability reads “Target creature gets +2/+2 until end of turn. Destroy that creature at the beginning of the next end step.” The ability will destroy the object it gave +2/+2 to even if that object isn’t a creature at the beginning of the next end step.
 
-700.7a One card (City in a Bottle) refers to permanents and cards with a name originally printed in the Arabian Nights™ expansion. Those names are Abu Ja’far, Aladdin, Aladdin’s Lamp, Aladdin’s Ring, Ali Baba, Ali from Cairo, Army of Allah, Bazaar of Baghdad, Bird Maiden, Bottle of Suleiman, Brass Man, Camel, City in a Bottle, City of Brass, Cuombajj Witches, Cyclone, Dancing Scimitar, Dandân, Desert, Desert Nomads, Desert Twister, Diamond Valley, Drop of Honey, Ebony Horse, Elephant Graveyard, El-Hajjâj, Erg Raiders, Erhnam Djinn, Eye for an Eye, Fishliver Oil, Flying Carpet, Flying Men, Ghazbán Ogre, Giant Tortoise, Guardian Beast, Hasran Ogress, Hurr Jackal, Ifh-Biff Efreet, Island Fish Jasconius, Island of Wak-Wak, Jandor’s Ring, Jandor’s Saddlebags, Jeweled Bird, Jihad, Junún Efreet, Juzám Djinn, Khabál Ghoul, King Suleiman, Kird Ape, Library of Alexandria, Magnetic Mountain, Merchant Ship, Metamorphosis, Mijae Djinn, Moorish Cavalry, Nafs Asp, Oasis, Old Man of the Sea, Oubliette, Piety, Pyramids, Repentant Blacksmith, Ring of Ma’rûf, Rukh Egg, Sandals of Abdallah, Sandstorm, Serendib Djinn, Serendib Efreet, Shahrazad, Sindbad, Singing Tree, Sorceress Queen, Stone-Throwing Devils, Unstable Mutation, War Elephant, Wyluli Wolf, and Ydwen Efreet.
+700.8. Some cards refer to cards with a name originally printed in a particular set.
 
-700.7b One card (Golgothian Sylex) refers to permanents with a name originally printed in the Antiquities™ expansion. Those names are Amulet of Kroog, Argivian Archaeologist, Argivian Blacksmith, Argothian Pixies, Argothian Treefolk, Armageddon Clock, Artifact Blast, Artifact Possession, Artifact Ward, Ashnod’s Altar, Ashnod’s Battle Gear, Ashnod’s Transmogrant, Atog, Battering Ram, Bronze Tablet, Candelabra of Tawnos, Circle of Protection: Artifacts, Citanul Druid, Clay Statue, Clockwork Avian, Colossus of Sardia, Coral Helm, Crumble, Cursed Rack, Damping Field, Detonate, Drafna’s Restoration, Dragon Engine, Dwarven Weaponsmith, Energy Flux, Feldon’s Cane, Gaea’s Avenger, Gate to Phyrexia, Goblin Artisans, Golgothian Sylex, Grapeshot Catapult, Haunting Wind, Hurkyl’s Recall, Ivory Tower, Jalum Tome, Martyrs of Korlis, Mightstone, Millstone, Mishra’s Factory, Mishra’s War Machine, Mishra’s Workshop, Obelisk of Undoing, Onulet, Orcish Mechanics, Ornithopter, Phyrexian Gremlins, Power Artifact, Powerleech, Priest of Yawgmoth, Primal Clay, The Rack, Rakalite, Reconstruction, Reverse Polarity, Rocket Launcher, Sage of Lat-Nam, Shapeshifter, Shatterstorm, Staff of Zegon, Strip Mine, Su-Chi, Tablet of Epityr, Tawnos’s Coffin, Tawnos’s Wand, Tawnos’s Weaponry, Tetravus, Titania’s Song, Transmute Artifact, Triskelion, Urza’s Avenger, Urza’s Chalice, Urza’s Mine, Urza’s Miter, Urza’s Power Plant, Urza’s Tower, Wall of Spears, Weakstone, Xenic Poltergeist, Yawgmoth Demon, and Yotian Soldier.
+700.8a One card (City in a Bottle) refers to permanents and cards with a name originally printed in the Arabian Nights™ expansion. Those names are Abu Ja’far, Aladdin, Aladdin’s Lamp, Aladdin’s Ring, Ali Baba, Ali from Cairo, Army of Allah, Bazaar of Baghdad, Bird Maiden, Bottle of Suleiman, Brass Man, Camel, City in a Bottle, City of Brass, Cuombajj Witches, Cyclone, Dancing Scimitar, Dandân, Desert, Desert Nomads, Desert Twister, Diamond Valley, Drop of Honey, Ebony Horse, Elephant Graveyard, El-Hajjâj, Erg Raiders, Erhnam Djinn, Eye for an Eye, Fishliver Oil, Flying Carpet, Flying Men, Ghazbán Ogre, Giant Tortoise, Guardian Beast, Hasran Ogress, Hurr Jackal, Ifh-Biff Efreet, Island Fish Jasconius, Island of Wak-Wak, Jandor’s Ring, Jandor’s Saddlebags, Jeweled Bird, Jihad, Junún Efreet, Juzám Djinn, Khabál Ghoul, King Suleiman, Kird Ape, Library of Alexandria, Magnetic Mountain, Merchant Ship, Metamorphosis, Mijae Djinn, Moorish Cavalry, Nafs Asp, Oasis, Old Man of the Sea, Oubliette, Piety, Pyramids, Repentant Blacksmith, Ring of Ma’rûf, Rukh Egg, Sandals of Abdallah, Sandstorm, Serendib Djinn, Serendib Efreet, Shahrazad, Sindbad, Singing Tree, Sorceress Queen, Stone-Throwing Devils, Unstable Mutation, War Elephant, Wyluli Wolf, and Ydwen Efreet.
 
-700.7c One card (Apocalypse Chime) refers to permanents with a name originally printed in the Homelands™ expansion. Those names are Abbey Gargoyles; Abbey Matron; Aether Storm; Aliban’s Tower; Ambush; Ambush Party; Anaba Ancestor; Anaba Bodyguard; Anaba Shaman; Anaba Spirit Crafter; An-Havva Constable; An-Havva Inn; An-Havva Township; An-Zerrin Ruins; Apocalypse Chime; Autumn Willow; Aysen Abbey; Aysen Bureaucrats; Aysen Crusader; Aysen Highway; Baki’s Curse; Baron Sengir; Beast Walkers; Black Carriage; Broken Visage; Carapace; Castle Sengir; Cemetery Gate; Chain Stasis; Chandler; Clockwork Gnomes; Clockwork Steed; Clockwork Swarm; Coral Reef; Dark Maze; Daughter of Autumn; Death Speakers; Didgeridoo; Drudge Spell; Dry Spell; Dwarven Pony; Dwarven Sea Clan; Dwarven Trader; Ebony Rhino; Eron the Relentless; Evaporate; Faerie Noble; Feast of the Unicorn; Feroz’s Ban; Folk of An-Havva; Forget; Funeral March; Ghost Hounds; Giant Albatross; Giant Oyster; Grandmother Sengir; Greater Werewolf; Hazduhr the Abbot; Headstone; Heart Wolf; Hungry Mist; Ihsan’s Shade; Irini Sengir; Ironclaw Curse; Jinx; Joven; Joven’s Ferrets; Joven’s Tools; Koskun Falls; Koskun Keep; Labyrinth Minotaur; Leaping Lizard; Leeches; Mammoth Harness; Marjhan; Memory Lapse; Merchant Scroll; Mesa Falcon; Mystic Decree; Narwhal; Orcish Mine; Primal Order; Prophecy; Rashka the Slayer; Reef Pirates; Renewal; Retribution; Reveka, Wizard Savant; Root Spider; Roots; Roterothopter; Rysorian Badger; Samite Alchemist; Sea Sprite; Sea Troll; Sengir Autocrat; Sengir Bats; Serra Aviary; Serra Bestiary; Serra Inquisitors; Serra Paladin; Serrated Arrows; Shrink; Soraya the Falconer; Spectral Bears; Timmerian Fiends; Torture; Trade Caravan; Truce; Veldrane of Sengir; Wall of Kelp; Willow Faerie; Willow Priestess; Winter Sky; and Wizards’ School.
+700.8b One card (Golgothian Sylex) refers to permanents with a name originally printed in the Antiquities™ expansion. Those names are Amulet of Kroog, Argivian Archaeologist, Argivian Blacksmith, Argothian Pixies, Argothian Treefolk, Armageddon Clock, Artifact Blast, Artifact Possession, Artifact Ward, Ashnod’s Altar, Ashnod’s Battle Gear, Ashnod’s Transmogrant, Atog, Battering Ram, Bronze Tablet, Candelabra of Tawnos, Circle of Protection: Artifacts, Citanul Druid, Clay Statue, Clockwork Avian, Colossus of Sardia, Coral Helm, Crumble, Cursed Rack, Damping Field, Detonate, Drafna’s Restoration, Dragon Engine, Dwarven Weaponsmith, Energy Flux, Feldon’s Cane, Gaea’s Avenger, Gate to Phyrexia, Goblin Artisans, Golgothian Sylex, Grapeshot Catapult, Haunting Wind, Hurkyl’s Recall, Ivory Tower, Jalum Tome, Martyrs of Korlis, Mightstone, Millstone, Mishra’s Factory, Mishra’s War Machine, Mishra’s Workshop, Obelisk of Undoing, Onulet, Orcish Mechanics, Ornithopter, Phyrexian Gremlins, Power Artifact, Powerleech, Priest of Yawgmoth, Primal Clay, The Rack, Rakalite, Reconstruction, Reverse Polarity, Rocket Launcher, Sage of Lat-Nam, Shapeshifter, Shatterstorm, Staff of Zegon, Strip Mine, Su-Chi, Tablet of Epityr, Tawnos’s Coffin, Tawnos’s Wand, Tawnos’s Weaponry, Tetravus, Titania’s Song, Transmute Artifact, Triskelion, Urza’s Avenger, Urza’s Chalice, Urza’s Mine, Urza’s Miter, Urza’s Power Plant, Urza’s Tower, Wall of Spears, Weakstone, Xenic Poltergeist, Yawgmoth Demon, and Yotian Soldier.
+
+700.8c One card (Apocalypse Chime) refers to permanents with a name originally printed in the Homelands™ expansion. Those names are Abbey Gargoyles; Abbey Matron; Aether Storm; Aliban’s Tower; Ambush; Ambush Party; Anaba Ancestor; Anaba Bodyguard; Anaba Shaman; Anaba Spirit Crafter; An-Havva Constable; An-Havva Inn; An-Havva Township; An-Zerrin Ruins; Apocalypse Chime; Autumn Willow; Aysen Abbey; Aysen Bureaucrats; Aysen Crusader; Aysen Highway; Baki’s Curse; Baron Sengir; Beast Walkers; Black Carriage; Broken Visage; Carapace; Castle Sengir; Cemetery Gate; Chain Stasis; Chandler; Clockwork Gnomes; Clockwork Steed; Clockwork Swarm; Coral Reef; Dark Maze; Daughter of Autumn; Death Speakers; Didgeridoo; Drudge Spell; Dry Spell; Dwarven Pony; Dwarven Sea Clan; Dwarven Trader; Ebony Rhino; Eron the Relentless; Evaporate; Faerie Noble; Feast of the Unicorn; Feroz’s Ban; Folk of An-Havva; Forget; Funeral March; Ghost Hounds; Giant Albatross; Giant Oyster; Grandmother Sengir; Greater Werewolf; Hazduhr the Abbot; Headstone; Heart Wolf; Hungry Mist; Ihsan’s Shade; Irini Sengir; Ironclaw Curse; Jinx; Joven; Joven’s Ferrets; Joven’s Tools; Koskun Falls; Koskun Keep; Labyrinth Minotaur; Leaping Lizard; Leeches; Mammoth Harness; Marjhan; Memory Lapse; Merchant Scroll; Mesa Falcon; Mystic Decree; Narwhal; Orcish Mine; Primal Order; Prophecy; Rashka the Slayer; Reef Pirates; Renewal; Retribution; Reveka, Wizard Savant; Root Spider; Roots; Roterothopter; Rysorian Badger; Samite Alchemist; Sea Sprite; Sea Troll; Sengir Autocrat; Sengir Bats; Serra Aviary; Serra Bestiary; Serra Inquisitors; Serra Paladin; Serrated Arrows; Shrink; Soraya the Falconer; Spectral Bears; Timmerian Fiends; Torture; Trade Caravan; Truce; Veldrane of Sengir; Wall of Kelp; Willow Faerie; Willow Priestess; Winter Sky; and Wizards’ School.
 
 701. Keyword Actions
 
@@ -2767,7 +2773,9 @@ Example: Fact or Fiction reads, “Reveal the top five cards of your library. An
 
 701.6a To create one or more tokens with certain characteristics, put the specified number of tokens with the specified characteristics onto the battlefield.
 
-701.6b Previously, an effect that created tokens instructed a player to “put [those tokens] onto the battlefield.” Cards that were printed with that text have received errata in the Oracle card reference so they now “create” those tokens.
+701.6b If a replacement effect applies to a token being created, that effect applies before considering any continuous effects that will modify the characteristics of that token. If a replacement effect applies to a token entering the battlefield, that effect applies after considering any continuous effects that will modify the characteristics of that token.
+
+701.6c Previously, an effect that created tokens instructed a player to “put [those tokens] onto the battlefield.” Cards that were printed with that text have received errata in the Oracle card reference so they now “create” those tokens.
 
 701.7. Destroy
 
@@ -2866,7 +2874,7 @@ Example: If a spell attempts to exchange control of two target creatures but one
 
 701.17. Scry
 
-701.17a To “scry N” means to look at the top N cards of your library, put any number of them on the bottom of your library in any order and the rest on top of your library in any order.
+701.17a To “scry N” means to look at the top N cards of your library, then put any number of them on the bottom of your library in any order and the rest on top of your library in any order.
 
 701.17b If a player is instructed to scry 0, no scry event occurs. Abilities that trigger whenever a player scries won’t trigger.
 
@@ -2918,7 +2926,7 @@ Example: Loaming Shaman says “When Loaming Shaman enters the battlefield, targ
 
 701.21. Fateseal
 
-701.21a To “fateseal N” means to look at the top N cards of an opponent’s library, put any number of them on the bottom of that library in any order and the rest on top of that library in any order.
+701.21a To “fateseal N” means to look at the top N cards of an opponent’s library, then put any number of them on the bottom of that library in any order and the rest on top of that library in any order.
 
 701.22. Clash
 
@@ -3066,6 +3074,12 @@ Example: A player owns and controls Midnight Scavengers and a token that’s a c
 701.40. Assemble
 
 701.40a Assemble is a keyword action in the Unstable set that puts Contraptions onto the battlefield. Outside of silver-bordered cards, only one card (Steamflogger Boss) refers to assembling a Contraption. Cards and mechanics from the Unstable set aren’t included in these rules. See the Unstable FAQ for more information.
+
+701.41. Surveil
+
+701.41a To “surveil N” means to look at the top N cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.
+
+701.41b If an effect allows you to look at additional cards while you surveil, those cards are included among the cards you may put into your graveyard and on top of your library in any order.
 
 702. Keyword Abilities
 
@@ -3502,9 +3516,9 @@ Example: You control a phased-out creature. You cast a spell that says “Destro
 
 702.43. Sunburst
 
-702.43a Sunburst is a static ability that functions as an object is entering the battlefield from the stack. “Sunburst” means “If this object is entering the battlefield from the stack as a creature, it enters the battlefield with a +1/+1 counter on it for each color of mana spent to cast it. If this object is entering the battlefield from the stack and isn’t entering the battlefield as a creature, it enters the battlefield with a charge counter on it for each color of mana spent to cast it.”
+702.43a Sunburst is a static ability that functions as an object is entering the battlefield. “Sunburst” means “If this object is entering the battlefield as a creature, ignoring any type-changing effects that would affect it, it enters the battlefield with a +1/+1 counter on it for each color of mana spent to cast it. Otherwise, it enters the battlefield with a charge counter on it for each color of mana spent to cast it.”
 
-702.43b Sunburst applies only as the spell is resolving and only if one or more colored mana was spent on its costs. Mana paid for additional or alternative costs applies.
+702.43b Sunburst adds counters only if the object with sunburst is entering the battlefield from the stack as a resolving spell and only if one or more colored mana was spent on its costs, including additional or alternative costs.
 
 702.43c Sunburst can also be used to set a variable number for another ability. If the keyword is used in this way, it doesn’t matter whether the ability is on a creature spell or on a noncreature spell.
 Example: The ability “Modular—Sunburst” means “This permanent enters the battlefield with a +1/+1 counter on it for each color of mana spent to cast it” and “When this permanent is put into a graveyard from the battlefield, you may put a +1/+1 counter on target artifact creature for each +1/+1 counter on this permanent.”
@@ -3568,7 +3582,9 @@ Example: Glacial Ray is a red card with splice onto Arcane that reads, “Glacia
 702.50b The convoke ability isn’t an additional or alternative cost and applies only after the total cost of the spell with convoke is determined.
 Example: Heartless Summoning says, in part, “Creature spells you cast cost {2} less to cast.” You control Heartless Summoning and cast Siege Wurm, a spell with convoke that costs {5}{G}{G}. The total cost to cast Siege Wurm is {3}{G}{G}. After activating mana abilities, you pay that total cost. You may tap up to two green creatures and up to three other creatures to pay that cost, and the remainder is paid with mana.
 
-702.50c Multiple instances of convoke on the same spell are redundant.
+702.50c A creature tapped to pay for mana in a spell’s total cost this way is said to have “convoked” that spell.
+
+702.50d Multiple instances of convoke on the same spell are redundant.
 
 702.51. Dredge
 
@@ -4105,6 +4121,16 @@ Example: Aether Storm is an enchantment with the ability “Creature spells can�
 
 702.131a Assist is a static ability that modifies the rules of paying for the spell with assist (see rules 601.2g-h). If the total cost to cast a spell with assist includes a generic mana component, before you activate mana abilities while casting it, you may choose another player. That player has a chance to activate mana abilities. Once that player chooses not to activate any more mana abilities, you have a chance to activate mana abilities. Before you begin to pay the total cost of the spell, the player you chose may pay for any amount of the generic mana in the spell’s total cost.
 
+702.132. Jump-Start
+
+702.132a Jump-start appears on some instants and sorceries. It represents two static abilities: one that functions while the card is in a player’s graveyard and another that functions while the card is on the stack. “Jump-start” means “You may cast this card from your graveyard by discarding a card as an additional cost to cast it” and “If this spell was cast using its jump-start ability, exile this card instead of putting it anywhere else any time it would leave the stack.” Casting a spell using its jump-start ability follows the rules for paying additional costs in rules 601.2b and 601.2f–h.
+
+702.133. Mentor
+
+702.133a Mentor is a triggered ability. “Mentor” means “Whenever this creature attacks, put a +1/+1 counter on target attacking creature with power less than this creature’s power.”
+
+702.133b If a creature has multiple instances of mentor, each triggers separately.
+
 703. Turn-Based Actions
 
 703.1. Turn-based actions are game actions that happen automatically when certain steps or phases begin, or when each step and phase ends. Turn-based actions don’t use the stack.
@@ -4269,7 +4295,7 @@ Example: Quirion Elves enters the battlefield and an Unstable Shapeshifter copie
 Example: Copy Artifact is an enchantment that reads, “You may have Copy Artifact enter the battlefield as a copy of any artifact on the battlefield, except it’s an enchantment in addition to its other types.” It enters the battlefield as a copy of Juggernaut. The copiable values of the Copy Artifact now match those of Juggernaut with one modification: its types are now artifact, creature, and enchantment.
 
 706.9d When applying a copy effect that doesn’t copy a certain characteristic, retains an original value for a certain characteristic, or modifies the final value of a certain characteristic, any characteristic-defining ability (see rule 604.3) of the object being copied that defines that characteristic is not copied. If that characteristic is color, any color indicator (see rule 204) of that object is also not copied.
-Example: Quicksilver Gargantuan is a creature that reads, “You may have Quicksilver Gargantuan enter the battlefield as a copy of any creature on the battlefield, except it’s still 7/7.” Quicksilver Gargantuan enters the battlefield as a copy of Tarmogoyf, which has a characteristic-defining ability that defines its power and toughness. Quicksilver Gargantuan does not have that ability. It will be 7/7.
+Example: Quicksilver Gargantuan is a creature that reads, “You may have Quicksilver Gargantuan enter the battlefield as a copy of any creature on the battlefield, except it’s 7/7.” Quicksilver Gargantuan enters the battlefield as a copy of Tarmogoyf, which has a characteristic-defining ability that defines its power and toughness. Quicksilver Gargantuan does not have that ability. It will be 7/7.
 
 706.10. To copy a spell, activated ability, or triggered ability means to put a copy of it onto the stack; a copy of a spell isn’t cast and a copy of an activated ability isn’t activated. A copy of a spell or ability copies both the characteristics of the spell or ability and all decisions made for it, including modes, targets, the value of X, and additional or alternative costs. (See rule 601, “Casting Spells.”) Choices that are normally made on resolution are not copied. If an effect of the copy refers to objects used to pay its costs, it uses the objects used to pay the costs of the original spell or ability. A copy of a spell is owned by the player under whose control it was put on the stack. A copy of a spell or ability is controlled by the player under whose control it was put on the stack. A copy of a spell is itself a spell, even though it has no spell card associated with it. A copy of an ability is itself an ability.
 Example: A player casts Fork, targeting an Emerald Charm. Fork reads, “Copy target instant or sorcery spell, except that the copy is red. You may choose new targets for the copy.” Emerald Charm is a modal green instant. When the Fork resolves, it puts a copy of the Emerald Charm on the stack except the copy is red, not green. The copy has the same mode that was chosen for the original Emerald Charm. It does not necessarily have the same target, but only because Fork allows choosing of new targets.
@@ -4282,6 +4308,8 @@ Example: Fling is an instant that reads, “As an additional cost to cast this s
 706.10c Some effects copy a spell or ability and state that its controller may choose new targets for the copy. The player may leave any number of the targets unchanged, even if those targets would be illegal. If the player chooses to change some or all of the targets, the new targets must be legal. Once the player has decided what the copy’s targets will be, the copy is put onto the stack with those targets.
 
 706.10d Some effects copy a spell or ability for each player or object it “could target.” The copies are put onto the stack with those targets in the order of their controller’s choice. If the spell or ability has more than one target, each of its targets must be the same player or object. If that player or object isn’t a legal target for each instance of the word “target,” a copy isn’t created for that player or object.
+
+706.10e Some effects copy a spell or ability and specify a new target for the copy. If the spell or ability has more than one target, each of the copy’s targets must be that player or object. If that player or object isn’t a legal target for each instance of the word “target,” the copy isn’t created.
 
 706.11. If an effect refers to a permanent by name, the effect still tracks that permanent even if it changes names or becomes a copy of something else.
 Example: An Unstable Shapeshifter copies a Crazed Armodon. Crazed Armodon reads, “{G}: Crazed Armodon gets +3/+0 and gains trample until end of turn. Destroy Crazed Armodon at the beginning of the next end step. Activate this ability only once each turn.” If this ability of the Shapeshifter is activated, the Shapeshifter will be destroyed at the beginning of the next end step, even if it’s no longer a copy of Crazed Armodon at that time.
@@ -4380,9 +4408,9 @@ Example: Akki Lavarunner is a nonlegendary creature that flips into a legendary 
 
 711.1. A double-faced card has a Magic card face on each side rather than a Magic card face on one side and a Magic card back on the other. Each face may have abilities that allow the card to “transform,” or turn over to its other face. Tokens and cards with a Magic card back can’t transform. (See rule 701.27, “Transform.”)
 
-711.1a A double-faced card’s front face is marked by a front-face symbol in its upper left corner. On Magic Origins double-faced cards, the front-face symbol is a modified Planeswalker icon. On cards in the Innistrad block and Shadows over Innistrad set, as well as on Ulrich of the Krallenhorde in the Eldritch Moon set, the front-face symbol is a sun. On other Eldritch Moon double-faced cards, the front-face symbol is a full moon. On Ixalan cards, the front-face symbol is a compass rose.
+711.1a A double-faced card’s front face is marked by a front-face symbol in its upper left corner. On Magic Origins and Core Set 2019 double-faced cards, the front-face symbol is a modified Planeswalker icon. On cards in the Innistrad block and Shadows over Innistrad set, as well as on Ulrich of the Krallenhorde in the Eldritch Moon set, the front-face symbol is a sun. On other Eldritch Moon double-faced cards, the front-face symbol is a full moon. On Ixalan cards, the front-face symbol is a compass rose.
 
-711.1b A double-faced card’s back face is marked by a back-face symbol in its upper left corner. On Magic Origins double-faced cards, the back-face symbol is a full Planeswalker icon. On cards in the Innistrad block and Shadows over Innistrad set, as well as on Ulrich, Uncontested Alpha in the Eldritch Moon set, the back-face symbol is a crescent moon. On other Eldritch Moon double-faced cards, the back-face symbol is a stylized image of Emrakul. On Ixalan cards, the back-face symbol is a land icon.
+711.1b A double-faced card’s back face is marked by a back-face symbol in its upper left corner. On Magic Origins and Core Set 2019 double-faced cards, the back-face symbol is a full Planeswalker icon. On cards in the Innistrad block and Shadows over Innistrad set, as well as on Ulrich, Uncontested Alpha in the Eldritch Moon set, the back-face symbol is a crescent moon. On other Eldritch Moon double-faced cards, the back-face symbol is a stylized image of Emrakul. On Ixalan cards, the back-face symbol is a land icon.
 
 711.1c If the back face of a double-faced card is a creature, the front face of that card will have the back face’s power and toughness printed in gray above the power and toughness box. This is reminder text and has no effect on game play.
 
@@ -5269,7 +5297,7 @@ Example: Wort, the Raidmother’s color identity is red and green. A Wort Comman
 
 905. Conspiracy Draft
 
-905.1. The Conspiracy Draft variant consists of a draft (a style of limited play where players choose cards from sealed booster packs to build their decks) followed by a multiplayer game. The Conspiracy Draft variant uses Magic: The Gathering—Conspiracy™ booster packs by default.
+905.1. The Conspiracy Draft variant consists of a draft (a style of limited play where players choose cards from sealed booster packs to build their decks) followed by a multiplayer game. The Conspiracy Draft variant uses Magic: The Gathering—Conspiracy™ and/or Conspiracy: Take the Crown™ booster packs by default.
 
 905.1a A draft typically consists of three draft rounds. In each draft round, each player opens a booster pack, drafts one card by placing that card in a face-down pile in front of the player, then passes the remaining cards to the next player. Each player then drafts a card from the booster pack passed to them and passes the remaining cards. This procedure continues until all cards in that draft round have been drafted.
 
@@ -5279,7 +5307,7 @@ Example: Wort, the Raidmother’s color identity is red and green. A Wort Comman
 
 905.1d After the draft and all actions that may be taken during or after the draft, all the cards a player has drafted become that player’s card pool. The player builds their deck from only these cards and any number of basic land cards. See rules 100.2b and 100.4b.
 
-905.2. Several cards in the Magic: The Gathering—Conspiracy set have abilities that function during the draft.
+905.2. Some cards have abilities that function during the draft.
 
 905.2a During a draft, there is no active player or system of priority. If multiple players wish to take an action at the same time during the draft and can’t agree on an order, those actions are taken in a random order.
 
@@ -6104,6 +6132,9 @@ An obsolete keyword ability that meant “This creature can’t attack unless de
 Islandwalk
 See Landwalk.
 
+Jump-Start
+A keyword ability that lets a player cast a card from their graveyard by discarding a card. See rule 702.132, “Jump-Start.”
+
 Keyword Ability
 A game term, such as “flying” or “haste,” used as shorthand for a longer ability or group of abilities. See rule 702, “Keyword Abilities.”
 
@@ -6250,6 +6281,9 @@ A keyword ability that improves an attacking creature based on the number of opp
 
 Menace
 An evasion ability that makes creatures unblockable by a single creature. See rule 702.110, “Menace.”
+
+Mentor
+A keyword ability that lets your bigger creatures power up your smaller creatures when they attack together. See rule 702.133, “Mentor.”
 
 Miracle
 A keyword ability that lets you cast a spell for a reduced cost if it’s the first card you draw in a turn. See rule 702.93, “Miracle.”
@@ -6753,6 +6787,9 @@ A keyword action that lets you put +1/+1 counters on creatures. See rule 701.34,
 Surge
 A keyword ability that provides an alternative cost to cast a card if you or one of your teammates has cast another spell in the same turn. See rule 702.116, “Surge.”
 
+Surveil
+To manipulate some of the cards on top of your library, sending some of them to your graveyard and rearranging the rest. See rule 701.41, “Surveil.”
+
 Suspend
 A keyword ability that provides an alternative way to play a card. See rule 702.61, “Suspend.” A card is “suspended” if it’s in the exile zone, has suspend, and has a time counter on it.
 
@@ -6775,7 +6812,7 @@ Tap Symbol
 The tap symbol {T} in an activation cost means “Tap this permanent.” See rule 107.5.
 
 Target
-A preselected object, player, and/or zone a spell or ability will affect. See rule 114, “Targets.”
+A preselected object or player a spell or ability will affect. See rule 114, “Targets.”
 
 Team
 A group of players who share a common victory condition in a multiplayer game. See rule 808, “Team vs. Team Variant,” rule 809, “Emperor Variant,” rule 810, “Two-Headed Giant Variant,” and rule 811, “Alternating Teams Variant.”
@@ -6998,8 +7035,8 @@ Thanks to all our project team members and the many others too numerous to menti
 
 
 
-These rules are effective as of August 10, 2018.
+These rules are effective as of October 5, 2018.
 
-Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, Magic: The Gathering—Conspiracy, Ixalan, Unglued, Unstable, Dominaria, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. Unhinged is a trademark of Horn Abbot Ltd. and is used with permission. ©2018 Wizards. U.S. Pat. No. RE 37,957.
+Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, Magic: The Gathering—Conspiracy, Conspiracy: Take the Crown, Ixalan, Unglued, Unstable, Dominaria, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. Unhinged is a trademark of Horn Abbot Ltd. and is used with permission. ©2018 Wizards. U.S. Pat. No. RE 37,957.
 
 
