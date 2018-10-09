@@ -75,12 +75,12 @@ class PackFactory
       build_pack(set_code, {basic: 2, common: 9, uncommon: 3, rare: 1})
     when "ug"
       build_pack(set_code, {basic: 1, common: 6, uncommon: 2, rare: 1})
-    when "7e", "8e", "9e", "10e"
+    when "7ed", "8ed", "9ed", "10e"
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare: 1})
     # Default configuration before mythics
     # Back then there was no crazy variation
     # 6ed came out after foils started, but didn't have foils
-    when "4e", "5e", "6e",
+    when "4ed", "5ed", "6ed",
       "mr", "vi", "wl",
       "tp", "sh", "ex",
       "us",
@@ -185,7 +185,7 @@ class PackFactory
       # assuming RNA will use the same rules as GRN
       build_pack_with_random_foil(set_code, :foil, :grn_common, {grn_common: 10, uncommon: 3, rare_or_mythic: 1, grn_land: 1})
     # These are just approximations, they actually used nonstandard sheets
-    when "al", "be", "un", "rv", "ia"
+    when "lea", "leb", "2ed", "3ed", "ia"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Early sets had unusual rarities, indexer fills all the details for us
     when "ai"

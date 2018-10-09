@@ -10,8 +10,14 @@ class PatchSetCodes < Patch
     end
 
     each_set do |set|
-      set["code"] = set["mci_code"] || set["official_code"]
-      set["alternative_code"] = set["official_code"]
+      if set["type"] == "core"
+        set["code"] = set["official_code"]
+        set["alternative_code"] = set["mci_code"]
+        p [set["code"], set["alternative_code"]]
+      else
+        set["code"] = set["mci_code"] || set["official_code"]
+        set["alternative_code"] = set["official_code"]
+      end
 
       case set["official_code"]
       when "pgtw"

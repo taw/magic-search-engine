@@ -5,10 +5,10 @@ class FormatModern < Format
 
   def build_included_sets
     Set[
-      "8e",
+      "8ed",
       "mi", "ds", "5dn",
       "chk", "bok", "sok",
-      "9e",
+      "9ed",
       "rav", "gp", "di",
       "cs",
       "ts", "tsts", "pc", "fut",

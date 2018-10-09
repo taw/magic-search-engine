@@ -93,15 +93,15 @@ describe "Formats - Standard" do
     assert_block_composition "standard", "mt",   ["cs", "ts", "tsts", "pc", "fut", "10e", "lw", "mt"]
     assert_block_composition "standard", "lw",   ["cs", "ts", "tsts", "pc", "fut", "10e", "lw"]
     assert_block_composition "standard", "10e",  ["rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut", "10e"]
-    assert_block_composition "standard", "fut",  ["9e", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut"]
-    assert_block_composition "standard", "pc",   ["9e", "rav", "gp", "di", "cs", "ts", "tsts", "pc"]
-    assert_block_composition "standard", "tsts", ["9e", "rav", "gp", "di", "cs", "ts", "tsts"]
-    assert_block_composition "standard", "ts",   ["9e", "rav", "gp", "di", "cs", "ts", "tsts"]
-    assert_block_composition "standard", "cs",   ["chk", "bok", "sok", "9e", "rav", "gp", "di", "cs"]
-    assert_block_composition "standard", "di",   ["chk", "bok", "sok", "9e", "rav", "gp", "di"]
-    assert_block_composition "standard", "gp",   ["chk", "bok", "sok", "9e", "rav", "gp"]
-    assert_block_composition "standard", "rav",  ["chk", "bok", "sok", "9e", "rav"]
-    assert_block_composition "standard", "9e",   ["mi", "ds", "5dn", "chk", "bok", "sok", "9e"],
+    assert_block_composition "standard", "fut",  ["9ed", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut"]
+    assert_block_composition "standard", "pc",   ["9ed", "rav", "gp", "di", "cs", "ts", "tsts", "pc"]
+    assert_block_composition "standard", "tsts", ["9ed", "rav", "gp", "di", "cs", "ts", "tsts"]
+    assert_block_composition "standard", "ts",   ["9ed", "rav", "gp", "di", "cs", "ts", "tsts"]
+    assert_block_composition "standard", "cs",   ["chk", "bok", "sok", "9ed", "rav", "gp", "di", "cs"]
+    assert_block_composition "standard", "di",   ["chk", "bok", "sok", "9ed", "rav", "gp", "di"]
+    assert_block_composition "standard", "gp",   ["chk", "bok", "sok", "9ed", "rav", "gp"]
+    assert_block_composition "standard", "rav",  ["chk", "bok", "sok", "9ed", "rav"]
+    assert_block_composition "standard", "9ed",  ["mi", "ds", "5dn", "chk", "bok", "sok", "9ed"],
       "Ancient Den" => "banned",
       "Arcbound Ravager" => "banned",
       "Darksteel Citadel" => "banned",
@@ -111,7 +111,7 @@ describe "Formats - Standard" do
       "Skullclamp" => "banned",
       "Tree of Tales" => "banned",
       "Vault of Whispers" => "banned"
-    assert_block_composition "standard", "sok",  ["8e", "mi", "ds", "5dn", "chk", "bok", "sok"],
+    assert_block_composition "standard", "sok",  ["8ed", "mi", "ds", "5dn", "chk", "bok", "sok"],
       "Ancient Den" => "banned",
       "Arcbound Ravager" => "banned",
       "Darksteel Citadel" => "banned",
@@ -121,47 +121,47 @@ describe "Formats - Standard" do
       "Skullclamp" => "banned",
       "Tree of Tales" => "banned",
       "Vault of Whispers" => "banned"
-    assert_block_composition "standard", "bok",  ["8e", "mi", "ds", "5dn", "chk", "bok"],
+    assert_block_composition "standard", "bok",  ["8ed", "mi", "ds", "5dn", "chk", "bok"],
       "Skullclamp" => "banned"
-    assert_block_composition "standard", "chk",  ["8e", "mi", "ds", "5dn", "chk"],
+    assert_block_composition "standard", "chk",  ["8ed", "mi", "ds", "5dn", "chk"],
       "Skullclamp" => "banned"
-    assert_block_composition "standard", "5dn",  ["on", "le", "sc", "8e", "mi", "ds", "5dn"]
-    assert_block_composition "standard", "ds",   ["on", "le", "sc", "8e", "mi", "ds"]
-    assert_block_composition "standard", "mi",   ["on", "le", "sc", "8e", "mi"]
-    assert_block_composition "standard", "8e",   ["od", "tr", "ju", "on", "le", "sc", "8e"]
+    assert_block_composition "standard", "5dn",  ["on", "le", "sc", "8ed", "mi", "ds", "5dn"]
+    assert_block_composition "standard", "ds",   ["on", "le", "sc", "8ed", "mi", "ds"]
+    assert_block_composition "standard", "mi",   ["on", "le", "sc", "8ed", "mi"]
+    assert_block_composition "standard", "8ed",  ["od", "tr", "ju", "on", "le", "sc", "8ed"]
 
     # Weird things happening from this point back..., ap came after 7e but will rotate earlier if I understand correctly
     # It's not guarenteed to be correct
 
-    assert_block_composition "standard", "sc",   ["7e", "od", "tr", "ju", "on", "le", "sc"]
-    assert_block_composition "standard", "le",   ["7e", "od", "tr", "ju", "on", "le"]
-    assert_block_composition "standard", "on",   ["7e", "od", "tr", "ju", "on"]
-    assert_block_composition "standard", "ju",   ["in", "ps", "7e", "ap", "od", "tr", "ju"]
-    assert_block_composition "standard", "tr",   ["in", "ps", "7e", "ap", "od", "tr"]
-    assert_block_composition "standard", "od",   ["in", "ps", "7e", "ap", "od"]
-    assert_block_composition "standard", "ap",   ["mm", "ne", "pr", "in", "ps", "7e", "ap"]
-    assert_block_composition "standard", "7e",   ["mm", "ne", "pr", "in", "ps", "7e"]
-    assert_block_composition "standard", "ps",   ["6e", "mm", "ne", "pr", "in", "ps"]
-    assert_block_composition "standard", "in",   ["6e", "mm", "ne", "pr", "in"]
-    assert_block_composition "standard", "pr",   ["us", "ul", "6e", "ud", "mm", "ne", "pr"],
+    assert_block_composition "standard", "sc",   ["7ed", "od", "tr", "ju", "on", "le", "sc"]
+    assert_block_composition "standard", "le",   ["7ed", "od", "tr", "ju", "on", "le"]
+    assert_block_composition "standard", "on",   ["7ed", "od", "tr", "ju", "on"]
+    assert_block_composition "standard", "ju",   ["in", "ps", "7ed", "ap", "od", "tr", "ju"]
+    assert_block_composition "standard", "tr",   ["in", "ps", "7ed", "ap", "od", "tr"]
+    assert_block_composition "standard", "od",   ["in", "ps", "7ed", "ap", "od"]
+    assert_block_composition "standard", "ap",   ["mm", "ne", "pr", "in", "ps", "7ed", "ap"]
+    assert_block_composition "standard", "7ed",  ["mm", "ne", "pr", "in", "ps", "7ed"]
+    assert_block_composition "standard", "ps",   ["6ed", "mm", "ne", "pr", "in", "ps"]
+    assert_block_composition "standard", "in",   ["6ed", "mm", "ne", "pr", "in"]
+    assert_block_composition "standard", "pr",   ["us", "ul", "6ed", "ud", "mm", "ne", "pr"],
       "Fluctuator" => "banned",
       "Memory Jar" => "banned",
       "Time Spiral" => "banned",
       "Tolarian Academy" => "banned",
       "Windfall" => "banned"
-    assert_block_composition "standard", "ne",   ["us", "ul", "6e", "ud", "mm", "ne"],
+    assert_block_composition "standard", "ne",   ["us", "ul", "6ed", "ud", "mm", "ne"],
       "Fluctuator" => "banned",
       "Memory Jar" => "banned",
       "Time Spiral" => "banned",
       "Tolarian Academy" => "banned",
       "Windfall" => "banned"
-    assert_block_composition "standard", "mm",   ["us", "ul", "6e", "ud", "mm"],
+    assert_block_composition "standard", "mm",   ["us", "ul", "6ed", "ud", "mm"],
       "Fluctuator" => "banned",
       "Memory Jar" => "banned",
       "Time Spiral" => "banned",
       "Tolarian Academy" => "banned",
       "Windfall" => "banned"
-    assert_block_composition "standard", "ud",   ["tp", "sh", "ex", "us", "ul", "6e", "ud"],
+    assert_block_composition "standard", "ud",   ["tp", "sh", "ex", "us", "ul", "6ed", "ud"],
       "Dream Halls" => "banned",
       "Earthcraft" => "banned",
       "Fluctuator" => "banned",
@@ -171,7 +171,7 @@ describe "Formats - Standard" do
       "Time Spiral" => "banned",
       "Tolarian Academy" => "banned",
       "Windfall" => "banned"
-    assert_block_composition "standard", "6e",   ["tp", "sh", "ex", "us", "ul", "6e"],
+    assert_block_composition "standard", "6ed",   ["tp", "sh", "ex", "us", "ul", "6ed"],
       "Dream Halls" => "banned",
       "Earthcraft" => "banned",
       "Fluctuator" => "banned",
@@ -181,20 +181,20 @@ describe "Formats - Standard" do
       "Time Spiral" => "banned",
       "Tolarian Academy" => "banned",
       "Windfall" => "banned"
-    assert_block_composition "standard", "ul",   ["5e", "tp", "sh", "ex", "us", "ul"],
+    assert_block_composition "standard", "ul",   ["5ed", "tp", "sh", "ex", "us", "ul"],
       "Tolarian Academy" => "banned",
       "Windfall" => "banned"
-    assert_block_composition "standard", "us",   ["5e", "tp", "sh", "ex", "us"]
-    assert_block_composition "standard", "ex",   ["mr", "vi", "5e", "wl", "tp", "sh", "ex"]
-    assert_block_composition "standard", "sh",   ["mr", "vi", "5e", "wl", "tp", "sh"]
-    assert_block_composition "standard", "tp",   ["mr", "vi", "5e", "wl", "tp"]
+    assert_block_composition "standard", "us",   ["5ed", "tp", "sh", "ex", "us"]
+    assert_block_composition "standard", "ex",   ["mr", "vi", "5ed", "wl", "tp", "sh", "ex"]
+    assert_block_composition "standard", "sh",   ["mr", "vi", "5ed", "wl", "tp", "sh"]
+    assert_block_composition "standard", "tp",   ["mr", "vi", "5ed", "wl", "tp"]
 
     # There aren't clear blocks going that far back
     # There was also time when Standard had ABUR duals explicitly added to it...
     # This ought to be fixed someday, but it's not urgent
 
-    # assert_block_composition "standard", "wl",   [???, "mr", "vi", "5e", "wl"]
-    # assert_block_composition "standard", "5e",   [???]
+    # assert_block_composition "standard", "wl",   [???, "mr", "vi", "5ed", "wl"]
+    # assert_block_composition "standard", "5ed",  [???]
     # assert_block_composition "standard", "vi",   [???]
     # assert_block_composition "standard", "mr",   [???]
     # assert_block_composition "standard", "ai",   [???]

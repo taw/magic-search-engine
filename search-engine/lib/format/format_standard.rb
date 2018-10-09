@@ -48,20 +48,20 @@ class FormatStandard < Format
       "2008-10-03" => ["10e", "lw", "mt", "shm", "eve", "ala", "cfx", "arb"], # ala
       "2007-10-12"  => ["cs", "ts", "tsts", "pc", "fut", "10e", "lw", "mt", "shm", "eve"], # lw
       "2007-07-13" => ["rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut", "10e"], # 10e
-      "2006-10-06" => ["9e", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut"], # ts
-      "2005-10-07" => ["chk", "bok", "sok", "9e", "rav", "gp", "di", "cs"], # rav
-      "2005-07-29" => ["mi", "ds", "5dn", "chk", "bok", "sok", "9e"], # 9e
-      "2004-10-01" => ["8e", "mi", "ds", "5dn", "chk", "bok", "sok"], # chk
-      "2003-10-02" => ["on", "le", "sc", "8e", "mi", "ds", "5dn"], # mi
-      "2003-07-28" => ["od", "tr", "ju", "on", "le", "sc", "8e"], # 8e
-      "2002-10-07" => ["7e", "od", "tr", "ju", "on", "le", "sc"], # on
-      "2001-10-01" => ["in", "ps", "7e", "ap", "od", "tr", "ju"], # od
-      "2001-04-11" => ["mm", "ne", "pr", "in", "ps", "7e", "ap"], # 7e
-      "2000-10-02" => ["6e", "mm", "ne", "pr", "in", "ps"], # in
-      "1999-10-04" => ["us", "ul", "6e", "ud", "mm", "ne", "pr"], # mm
-      "1999-04-21" => ["tp", "sh", "ex", "us", "ul", "6e", "ud"], # 6e
-      "1998-10-12" => ["5e", "tp", "sh", "ex", "us", "ul"], # us
-      "1997-10-14" => ["mr", "vi", "5e", "wl", "tp", "sh", "ex"], # tp
+      "2006-10-06" => ["9ed", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut"], # ts
+      "2005-10-07" => ["chk", "bok", "sok", "9ed", "rav", "gp", "di", "cs"], # rav
+      "2005-07-29" => ["mi", "ds", "5dn", "chk", "bok", "sok", "9ed"], # 9e
+      "2004-10-01" => ["8ed", "mi", "ds", "5dn", "chk", "bok", "sok"], # chk
+      "2003-10-02" => ["on", "le", "sc", "8ed", "mi", "ds", "5dn"], # mi
+      "2003-07-28" => ["od", "tr", "ju", "on", "le", "sc", "8ed"], # 8e
+      "2002-10-07" => ["7ed", "od", "tr", "ju", "on", "le", "sc"], # on
+      "2001-10-01" => ["in", "ps", "7ed", "ap", "od", "tr", "ju"], # od
+      "2001-04-11" => ["mm", "ne", "pr", "in", "ps", "7ed", "ap"], # 7e
+      "2000-10-02" => ["6ed", "mm", "ne", "pr", "in", "ps"], # in
+      "1999-10-04" => ["us", "ul", "6ed", "ud", "mm", "ne", "pr"], # mm
+      "1999-04-21" => ["tp", "sh", "ex", "us", "ul", "6ed", "ud"], # 6e
+      "1998-10-12" => ["5ed", "tp", "sh", "ex", "us", "ul"], # us
+      "1997-10-14" => ["mr", "vi", "5ed", "wl", "tp", "sh", "ex"], # tp
     }
   end
 end
