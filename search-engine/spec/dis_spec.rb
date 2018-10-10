@@ -1,5 +1,5 @@
 describe "DissentionTest" do
-  include_context "db", "di"
+  include_context "db", "dis"
 
   it "Transguild Courier" do
     "c:wubrg"   .should include_cards "Transguild Courier"

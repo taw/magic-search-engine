@@ -4,6 +4,6 @@ class FormatTimeSpiralBlock < Format
   end
 
   def build_included_sets
-    Set["ts", "tsts", "pc", "fut"]
+    Set["tsp", "tsb", "plc", "fut"]
   end
 end

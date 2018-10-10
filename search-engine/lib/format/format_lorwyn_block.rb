@@ -4,6 +4,6 @@ class FormatLorwynBlock < Format
   end
 
   def build_included_sets
-    Set["lw", "mt", "shm", "eve"]
+    Set["lrw", "mor", "shm", "eve"]
   end
 end

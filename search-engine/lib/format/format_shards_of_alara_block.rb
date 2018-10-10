@@ -4,6 +4,6 @@ class FormatShardsOfAlaraBlock < Format
   end
 
   def build_included_sets
-    Set["ala", "cfx", "arb"]
+    Set["ala", "con", "arb"]
   end
 end

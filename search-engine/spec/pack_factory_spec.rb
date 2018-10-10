@@ -42,7 +42,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[dgm uh jou frf ts cns].include?(set_code)
+      next if %W[dgm uh jou frf tsp cns].include?(set_code)
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = factory.for(set_code)
       next unless pack
@@ -55,7 +55,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[ts csn].include?(set_code)
+      next if %W[tsp csn].include?(set_code)
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = factory.for(set_code)
       next unless pack
@@ -242,7 +242,7 @@ describe PackFactory do
   end
 
   context "Time Spiral" do
-    let(:pack) { factory.for("ts") }
+    let(:pack) { factory.for("tsp") }
     let(:ev) { pack.expected_values }
     let(:basic) { physical_card("e:ts forest", foil) }
     let(:common) { physical_card("e:ts bonesplitter sliver", foil) }
@@ -274,7 +274,7 @@ describe PackFactory do
   end
 
   context "Planar Chaos" do
-    let(:pack) { factory.for("pc") }
+    let(:pack) { factory.for("plc") }
     let(:ev) { pack.expected_values }
     let(:common) { physical_card("e:pc Mire Boa", foil) }
     let(:uncommon) { physical_card("e:pc Necrotic Sliver", foil) }
@@ -570,7 +570,7 @@ describe PackFactory do
     end
 
     context "Alliances" do
-      let(:set_code) { "ai" }
+      let(:set_code) { "all" }
       let(:booster_contents) { {"C"=>8, "U"=>3, "R"=>1} }
       let(:sheet_size) { {"C"=>110, "U"=>110, "R"=>110} }
       it do
@@ -579,7 +579,7 @@ describe PackFactory do
     end
 
     context "Antiquities" do
-      let(:set_code) { "aq" }
+      let(:set_code) { "atq" }
       let(:booster_contents) { {"C"=>6, "U"=>2} }
       let(:sheet_size) { {"C"=>121, "U"=>121} }
       it do
@@ -588,7 +588,7 @@ describe PackFactory do
     end
 
     context "Arabian Nights" do
-      let(:set_code) { "an" }
+      let(:set_code) { "arn" }
       let(:booster_contents) { {"C"=>6, "U"=>2} }
       let(:sheet_size) { {"C"=>121, "U"=>121} }
       it do
@@ -597,7 +597,7 @@ describe PackFactory do
     end
 
     context "Chronicles" do
-      let(:set_code) { "ch" }
+      let(:set_code) { "chr" }
       let(:booster_contents) { {"C"=>9, "U"=>3} }
       let(:sheet_size) { {"C"=>121, "U"=>121} }
       it do
@@ -606,7 +606,7 @@ describe PackFactory do
     end
 
     context "Fallen Empires" do
-      let(:set_code) { "fe" }
+      let(:set_code) { "fem" }
       let(:booster_contents) { {"C"=>6, "U"=>2} }
       let(:sheet_size) { {"C"=>121, "U"=>121} }
       it do
@@ -615,7 +615,7 @@ describe PackFactory do
     end
 
     context "Homelands" do
-      let(:set_code) { "hl" }
+      let(:set_code) { "hml" }
       let(:booster_contents) { {"C"=>6, "U"=>2} }
       let(:sheet_size) { {"C"=>121, "U"=>121} }
       it do
@@ -624,7 +624,7 @@ describe PackFactory do
     end
 
     context "Legends" do
-      let(:set_code) { "lg" }
+      let(:set_code) { "leg" }
       let(:booster_contents) { {"C"=>12, "U"=>3, "R"=>1} }
       let(:sheet_size) { {"C"=>121, "U"=>121, "R"=>121} }
       it do
@@ -633,7 +633,7 @@ describe PackFactory do
     end
 
     context "The Dark" do
-      let(:set_code) { "dk" }
+      let(:set_code) { "drk" }
       let(:booster_contents) { {"C"=>6, "U"=>2} }
       let(:sheet_size) { {"C"=>121, "U"=>121} }
       it do

@@ -4,6 +4,6 @@ class FormatRavinicaBlock < Format
   end
 
   def build_included_sets
-    Set["rav", "gp", "di"]
+    Set["rav", "gpt", "dis"]
   end
 end

@@ -10,10 +10,12 @@ class PatchSetCodes < Patch
     end
 
     each_set do |set|
-      if set["type"] == "core"
+      if set["type"] == "core" or set["type"] == "expansion" or set["official_code"] == "chr"
         set["code"] = set["official_code"]
         set["alternative_code"] = set["mci_code"]
-        p [set["code"], set["alternative_code"]]
+        if set["code"] != set["alternative_code"]
+          p [set["alternative_code"], set["code"]]
+        end
       else
         set["code"] = set["mci_code"] || set["official_code"]
         set["alternative_code"] = set["official_code"]

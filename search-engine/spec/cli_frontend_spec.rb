@@ -42,7 +42,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Jace Beleren {1}{u}{u}
-        [lw jvc mbp m10 m11 ddajvc ss1]
+        [lrw jvc mbp m10 m11 ddajvc ss1]
         Legendary Planeswalker - Jace
         [+2]: Each player draws a card.
         [−1]: Target player draws a card.
@@ -72,7 +72,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Canopy Dragon {4}{g}{g}
-        [mr]
+        [mir]
         Creature - Dragon
         Trample
         {1}{G}: Canopy Dragon gains flying and loses trample until end of turn.
@@ -95,7 +95,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Transguild Courier {4}
-        [di]
+        [dis]
         Artifact Creature - Golem
         (Color indicator: Transguild Courier is all colors)
         3/3
@@ -110,7 +110,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Steam Vents
-        [gp rtr exp grn]
+        [gpt rtr exp grn]
         Land - Island Mountain
         ({T}: Add {U} or {R}.)
         As Steam Vents enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.

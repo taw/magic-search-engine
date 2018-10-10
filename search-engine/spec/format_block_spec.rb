@@ -3,11 +3,11 @@ describe "Formats - Block Constructed" do
 
   # After a while WotC abandoned block constructed, so we're making things up here
   describe "Block legal sets" do
-    let(:start_date) { db.sets["ia"].release_date }
+    let(:start_date) { db.sets["ice"].release_date }
     let(:end_date) { db.sets["rix"].release_date }
     let(:block_formats) { Format.formats_index.select{|k,v| k =~ /block\z/}.values.uniq }
     let(:expansion_sets) { db.sets.values.select{|s| s.type == "expansion" } }
-    let(:expected) { expansion_sets.select{|s| s.release_date >= start_date and s.release_date <= end_date and s.code != "hl" }.map(&:code).to_set }
+    let(:expected) { expansion_sets.select{|s| s.release_date >= start_date and s.release_date <= end_date and s.code != "hml" }.map(&:code).to_set }
     let(:actual) { block_formats.map{|f| f.new.included_sets.to_a }.flatten.to_set }
     it do
       expected.should eq actual
@@ -26,38 +26,38 @@ describe "Formats - Block Constructed" do
   ## Individual Block Constructed Formats
 
   it "ice_age" do
-    assert_block_composition "ice age block", "ia", ["ia"],
+    assert_block_composition "ice age block", "ice", ["ice"],
       "Amulet of Quoz" => "banned"
-    assert_block_composition "ice age block", "ai", ["ia", "ai"],
+    assert_block_composition "ice age block", "all", ["ice", "all"],
       "Amulet of Quoz" => "banned"
-    assert_block_composition "ice age block", "cs", ["ia", "ai", "cs"],
+    assert_block_composition "ice age block", "csp", ["ice", "all", "csp"],
       "Thawing Glaciers" => "banned",
       "Zuran Orb" => "banned",
       "Amulet of Quoz" => "banned"
   end
 
   it "mirage" do
-    assert_block_composition_sequence "mirage block", "mr", "vi", "wl"
+    assert_block_composition_sequence "mirage block", "mir", "vis", "wth"
   end
 
   it "tempest" do
     # No idea when Cursed Scroll was banned exactly
-    assert_block_composition "tempest block", "tp", ["tp"],
+    assert_block_composition "tempest block", "tmp", ["tmp"],
       "Cursed Scroll" => "banned"
-    assert_block_composition "tempest block", "sh", ["tp", "sh"],
+    assert_block_composition "tempest block", "sth", ["tmp", "sth"],
       "Cursed Scroll" => "banned"
-    assert_block_composition "tempest block", "ex", ["tp", "sh", "ex"],
+    assert_block_composition "tempest block", "exo", ["tmp", "sth", "exo"],
       "Cursed Scroll" => "banned"
   end
 
   it "urza" do
-    assert_block_composition "urza block", "us", ["us"]
-    assert_block_composition "urza block", "ul", ["us", "ul"]
-    assert_block_composition "urza block", "ud", ["us", "ul", "ud"],
+    assert_block_composition "urza block", "usg", ["usg"]
+    assert_block_composition "urza block", "ulg", ["usg", "ulg"]
+    assert_block_composition "urza block", "uds", ["usg", "ulg", "uds"],
       "Memory Jar" => "banned",
       "Time Spiral" => "banned",
       "Windfall" => "banned"
-    assert_block_composition "urza block", nil, ["us", "ul", "ud"],
+    assert_block_composition "urza block", nil, ["usg", "ulg", "uds"],
       "Gaea's Cradle" => "banned",
       "Memory Jar" => "banned",
       "Serra's Sanctum" => "banned",
@@ -68,27 +68,27 @@ describe "Formats - Block Constructed" do
   end
 
   it "masques" do
-    assert_block_composition_sequence "masques block", "mm", "ne", "pr"
-    assert_block_composition "masques block", nil, ["mm", "ne", "pr"],
+    assert_block_composition_sequence "masques block", "mmq", "nms", "pcy"
+    assert_block_composition "masques block", nil, ["mmq", "nms", "pcy"],
       "Lin Sivvi, Defiant Hero" => "banned",
       "Rishadan Port" => "banned"
   end
 
   it "invasion" do
-    assert_block_composition_sequence "invasion block", "in", "ps", "ap"
+    assert_block_composition_sequence "invasion block", "inv", "pls", "apc"
   end
 
   it "odyssey" do
-    assert_block_composition_sequence "odyssey block", "od", "tr", "ju"
+    assert_block_composition_sequence "odyssey block", "ody", "tor", "jud"
   end
 
   it "onslaught" do
-    assert_block_composition_sequence "onslaught block", "on", "le", "sc"
+    assert_block_composition_sequence "onslaught block", "ons", "lgn", "scg"
   end
 
   it "mirrodin" do
-    assert_block_composition_sequence "mirrodin block", "mi", "ds", "5dn"
-    assert_block_composition "mirrodin block", nil, ["mi", "ds", "5dn"],
+    assert_block_composition_sequence "mirrodin block", "mrd", "dst", "5dn"
+    assert_block_composition "mirrodin block", nil, ["mrd", "dst", "5dn"],
       "Aether Vial" => "banned",
       "Ancient Den" => "banned",
       "Arcbound Ravager" => "banned",
@@ -103,14 +103,14 @@ describe "Formats - Block Constructed" do
 
   it "time_spiral" do
     # Two sets released simultaneously
-    assert_block_composition "time spiral block", "ts", ["ts", "tsts"]
-    assert_block_composition "time spiral block", "tsts", ["ts", "tsts"]
-    assert_block_composition "time spiral block", "pc", ["ts", "tsts", "pc"]
-    assert_block_composition "time spiral block", "fut", ["ts", "tsts", "pc", "fut"]
+    assert_block_composition "time spiral block", "tsp", ["tsp", "tsb"]
+    assert_block_composition "time spiral block", "tsb", ["tsp", "tsb"]
+    assert_block_composition "time spiral block", "plc", ["tsp", "tsb", "plc"]
+    assert_block_composition "time spiral block", "fut", ["tsp", "tsb", "plc", "fut"]
   end
 
   it "ravnica" do
-    assert_block_composition_sequence "ravnica block", "rav", "gp", "di"
+    assert_block_composition_sequence "ravnica block", "rav", "gpt", "dis"
   end
 
   it "kamigawa" do
@@ -118,12 +118,12 @@ describe "Formats - Block Constructed" do
   end
 
   it "lorwyn_shadowmoor" do
-    assert_block_composition_sequence "lorwyn shadowmoor block", "lw", "mt", "shm", "eve"
-    assert_block_composition_sequence "lorwyn block", "lw", "mt", "shm", "eve"
+    assert_block_composition_sequence "lorwyn shadowmoor block", "lrw", "mor", "shm", "eve"
+    assert_block_composition_sequence "lorwyn block", "lrw", "mor", "shm", "eve"
   end
 
   it "shards_of_alara" do
-    assert_block_composition_sequence "shards of alara block", "ala", "cfx", "arb"
+    assert_block_composition_sequence "shards of alara block", "ala", "con", "arb"
   end
 
   it "zendikar" do
