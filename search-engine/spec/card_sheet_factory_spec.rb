@@ -102,7 +102,7 @@ describe CardSheetFactory do
 
   context "Unhinged" do
     context "rare sheet" do
-      let(:rare_sheet) { factory.rare_or_mythic("uh") }
+      let(:rare_sheet) { factory.rare_or_mythic("unh") }
       let(:ambiguity) { physical_card("ambiguity", false) }
       let(:super_secret_tech) { physical_card("super secret tech", false) }
 

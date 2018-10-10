@@ -6,7 +6,7 @@ describe "is:booster" do
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       should_have_boosters = (
         ["expansion", "core", "un", "reprint", "conspiracy", "masters", "starter", "two-headed giant"].include?(set.type) and
-        !%W[ced cedi tsts itp st2k cp1 cp2 cp3 w16 w17].include?(set.code)
+        !%W[ced cei tsts itp s00 cp1 cp2 cp3 w16 w17].include?(set.code)
       )
       should_be_included_in_boosters = (
         %W[tsb exp mps mps_akh].include?(set.code)

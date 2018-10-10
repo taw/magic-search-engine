@@ -1,5 +1,5 @@
 describe "Unsets" do
-  include_context "db", "ug", "uh", "uqc", "hho", "ust"
+  include_context "db", "ugl", "unh", "uqc", "hho", "ust"
 
   it "half power" do
     "pow=1"  .should exclude_cards "Little Girl"
@@ -88,7 +88,7 @@ describe "Unsets" do
       "Shichifukujin Dragon",
       "Splendid Genesis"
     )
-    "not:new".should equal_search "-e:uh,hho,ust -(Robot Chicken)"
+    "not:new".should equal_search "-e:unh,hho,ust -(Robot Chicken)"
     "not:silver-bordered -t:contraption".should return_cards(
       "Forest",
       "Mountain",
@@ -121,8 +121,8 @@ describe "Unsets" do
   end
 
   it "edition shortcut syntax" do
-    assert_search_equal "e:uh,ug", "e:uh or e:ug"
-    assert_count_printings "e:uh,ug", 233
+    assert_search_equal "e:unh,ugl", "e:unh or e:ugl"
+    assert_count_printings "e:unh,ugl", 233
   end
 
   it "other:" do

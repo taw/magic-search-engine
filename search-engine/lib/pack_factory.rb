@@ -69,11 +69,11 @@ class PackFactory
 
     # https://mtg.gamepedia.com/Booster_pack
     case set_code
-    when "p3k"
+    when "ptk"
       build_pack(set_code, {basic: 2, common: 5, uncommon: 2, rare: 1})
-    when "st"
+    when "s99"
       build_pack(set_code, {basic: 2, common: 9, uncommon: 3, rare: 1})
-    when "ug"
+    when "ugl"
       build_pack(set_code, {basic: 1, common: 6, uncommon: 2, rare: 1})
     when "7ed", "8ed", "9ed", "10e"
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare: 1})
@@ -84,7 +84,7 @@ class PackFactory
       "mir", "vis", "wth",
       "tmp", "sth", "exo",
       "usg",
-      "po", "po2"
+      "por", "po2"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Pre-mythic, with foils
     when "ulg", "uds",
@@ -124,7 +124,7 @@ class PackFactory
       build_pack_with_random_foil(set_code, :foil, :dgm_common, {dgm_common: 10, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1})
     when "frf"
       build_pack_with_random_foil(set_code, :foil, :frf_common, {frf_common: 10, uncommon: 3, rare_or_mythic: 1, frf_land: 1})
-    when "uh"
+    when "unh"
       build_pack_with_random_foil(set_code, :unhinged_foil, :common, {common: 10, uncommon: 3, rare_or_mythic: 1, basic: 1})
     when "jou"
       WeightedPack.new(

@@ -27,7 +27,7 @@ class PatchBlocks < Patch
     ["akh",  nil, "Amonkhet", "akh", "hou"],
     ["xln",  nil, "Ixalan", "xln", "rix"],
     ["dom",  nil, "Dominaria", "dom"],
-    [ "un",  nil, "Unsets", "ug", "uh", "ust"],
+    [ "un",  nil, "Unsets", "ugl", "unh", "ust"],
   ]
 
   def block_by_set_code(set_code)

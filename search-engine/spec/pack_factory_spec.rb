@@ -42,7 +42,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[dgm uh jou frf tsp cns].include?(set_code)
+      next if %W[dgm unh jou frf tsp cns].include?(set_code)
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = factory.for(set_code)
       next unless pack
@@ -115,13 +115,13 @@ describe PackFactory do
   end
 
   context "Unhinged" do
-    let(:pack) { factory.for("uh") }
+    let(:pack) { factory.for("unh") }
     let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("e:uh forest", foil) }
-    let(:common) { physical_card("e:uh awol", foil) }
-    let(:uncommon) { physical_card("e:uh cheatyface", foil) }
-    let(:rare) { physical_card("e:uh ambiguity", foil) }
-    let(:super_secret_tech) { physical_card("e:uh super secret tech", foil) }
+    let(:basic) { physical_card("e:unh forest", foil) }
+    let(:common) { physical_card("e:unh awol", foil) }
+    let(:uncommon) { physical_card("e:unh cheatyface", foil) }
+    let(:rare) { physical_card("e:unh ambiguity", foil) }
+    let(:super_secret_tech) { physical_card("e:unh super secret tech", foil) }
 
     context "normal" do
       let(:foil) { false }
