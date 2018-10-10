@@ -1,5 +1,5 @@
 describe "Time Spiral block" do
-  include_context "db", "ts", "tsts", "pc", "fut"
+  include_context "db", "tsp", "tsb", "plc", "fut"
 
   it "is:future" do
     assert_search_include "is:future", "Dryad Arbor"

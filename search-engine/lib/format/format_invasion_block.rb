@@ -4,6 +4,6 @@ class FormatInvasionBlock < Format
   end
 
   def build_included_sets
-    Set["in", "ps", "ap"]
+    Set["inv", "pls", "apc"]
   end
 end

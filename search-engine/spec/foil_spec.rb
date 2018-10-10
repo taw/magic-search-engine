@@ -66,9 +66,9 @@ describe "Foils" do
       end
 
       case set.code
-      when "ced", "cedi", "ch", "ug", "euro", "guru", "apac", "po", "po2", "p3k", "drc", "dcilm", "pot", "ugin", "uqc", "van", "st", "mgbc"
+      when "ced", "cedi", "chr", "ug", "euro", "guru", "apac", "po", "po2", "p3k", "drc", "dcilm", "pot", "ugin", "uqc", "van", "st", "mgbc"
         assert_foiling(set.printings, "nonfoil")
-      when "ust", "tsts", "cns"
+      when "ust", "tsb", "cns"
         assert_foiling(set.printings, "both")
       when "cm1", "15ann", "sus", "sum", "wpn", "thgt", "gpx", "wmcq", "hho", "mlp", "jr", "pro", "gtw", "wrl", "wotc", "rep", "fnmp"
         assert_foiling(set.printings, "foilonly")

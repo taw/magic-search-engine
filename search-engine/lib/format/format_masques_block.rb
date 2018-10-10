@@ -4,6 +4,6 @@ class FormatMasquesBlock < Format
   end
 
   def build_included_sets
-    Set["mm", "ne", "pr"]
+    Set["mmq", "nms", "pcy"]
   end
 end

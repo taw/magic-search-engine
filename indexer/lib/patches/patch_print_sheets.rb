@@ -71,14 +71,14 @@ class PatchPrintSheets < Patch
 
   def sources
     {
-      "ai" => "Alliances_checklist.txt",
-      "aq" => "Antiquities_Checklist.txt",
-      "an" => "Arabian_Nights_Checklist.txt",
-      "ch" => "Chronicles_checklist.txt",
-      "fe" => "Fallen_Empires_Checklist.txt",
-      "hl" => "Homelands_Checklist.txt",
-      "lg" => "Legends_Checklist.txt",
-      "dk" => "The_Dark_Checklist.txt",
+      "all" => "Alliances_checklist.txt",
+      "atq" => "Antiquities_Checklist.txt",
+      "arn" => "Arabian_Nights_Checklist.txt",
+      "chr" => "Chronicles_checklist.txt",
+      "fem" => "Fallen_Empires_Checklist.txt",
+      "hml" => "Homelands_Checklist.txt",
+      "leg" => "Legends_Checklist.txt",
+      "drk" => "The_Dark_Checklist.txt",
     }
   end
 

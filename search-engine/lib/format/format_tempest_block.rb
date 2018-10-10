@@ -4,6 +4,6 @@ class FormatTempestBlock < Format
   end
 
   def build_included_sets
-    Set["tp", "sh", "ex"]
+    Set["tmp", "sth", "exo"]
   end
 end

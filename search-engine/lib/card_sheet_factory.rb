@@ -239,10 +239,10 @@ class CardSheetFactory
   # and tsts replaces 1/4 of foil commons
   def ts_foil
     sheets = [
-      rarity("ts", "rare", foil: true),
-      rarity("ts", "uncommon", foil: true),
-      rarity("ts", "basic", foil: true),
-      rarity("ts", "common", foil: true),
+      rarity("tsp", "rare", foil: true),
+      rarity("tsp", "uncommon", foil: true),
+      rarity("tsp", "basic", foil: true),
+      rarity("tsp", "common", foil: true),
       from_query("e:tsts", 121, foil: true),
     ]
     weights = [
@@ -257,15 +257,15 @@ class CardSheetFactory
 
 
   def pc_common
-    from_query("e:pc r:common -is:colorshifted", 40)
+    from_query("e:plc r:common -is:colorshifted", 40)
   end
 
   def pc_uncommon
-    from_query("e:pc r:uncommon -is:colorshifted", 40)
+    from_query("e:plc r:uncommon -is:colorshifted", 40)
   end
 
   def pc_rare
-    from_query("e:pc r:rare -is:colorshifted", 40)
+    from_query("e:plc r:rare -is:colorshifted", 40)
   end
 
   def pc_cs_common

@@ -4,7 +4,7 @@ class FormatIceAgeBlock < Format
   end
 
   def build_included_sets
-    Set["ia", "ai", "cs"]
+    Set["ice", "all", "csp"]
   end
 end
 

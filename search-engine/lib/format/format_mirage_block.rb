@@ -4,7 +4,7 @@ class FormatMirageBlock < Format
   end
 
   def build_included_sets
-    Set["mr", "vi", "wl"]
+    Set["mir", "vis", "wth"]
   end
 end
 

@@ -81,28 +81,28 @@ class PackFactory
     # Back then there was no crazy variation
     # 6ed came out after foils started, but didn't have foils
     when "4ed", "5ed", "6ed",
-      "mr", "vi", "wl",
-      "tp", "sh", "ex",
-      "us",
+      "mir", "vis", "wth",
+      "tmp", "sth", "exo",
+      "usg",
       "po", "po2"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Pre-mythic, with foils
-    when "ul", "ud",
-      "mm", "pr", "ne",
-      "in", "ps", "ap",
-      "od", "tr", "ju",
-      "on", "le", "sc",
-      "mi", "ds", "5dn",
+    when "ulg", "uds",
+      "mmq", "pcy", "nms",
+      "inv", "pls", "apc",
+      "ody", "tor", "jud",
+      "ons", "lgd", "scg",
+      "mrd", "dst", "5dn",
       "chk", "bok", "sok",
-      "rav", "gp", "di",
-      "cs",
+      "rav", "gpt", "dis",
+      "csp",
       "fut", # Amazingly Future Sight has regular boring sheets
-      "lw", "mt", "shm", "eve"
+      "lrw", "mor", "shm", "eve"
       build_pack_with_random_foil(set_code, :foil, :common_or_basic, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Default configuration since mythics got introduced
     # A lot of sets don't fit this
     when "m10", "m11", "m12", "m13", "m14", "m15",
-      "ala", "cfx", "arb",
+      "ala", "con", "arb",
       "zen", "wwk", "roe",
       "som", "mbs", "nph",
       "avr",
@@ -135,12 +135,12 @@ class PackFactory
       build_pack_with_random_foil(set_code, :foil, :sfc_common, {isd_dfc: 1, basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1})
     when "dka"
       build_pack_with_random_foil(set_code, :foil, :sfc_common, {dka_dfc: 1, sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1})
-    when "ts"
+    when "tsp"
       # 10 commons, 3 uncommons, 1 rare, and 1 purple-rarity timeshifted card.
       # Basics don't fit anywhere
       build_pack_with_random_foil(set_code, :ts_foil, :common, {common: 10, uncommon: 3, rare: 1, tsts: 1})
-    when "pc"
-      # 8 commons, 2 uncommons, 1 rare, 3 timeshifted commons, and 1 uncommon or rare timeshifted card.s
+    when "plc"
+      # 8 commons, 2 uncommons, 1 rare, 3 timeshifted commons, and 1 uncommon or rare timeshifted card.
       build_pack_with_random_foil(set_code, :foil, :pc_common, {pc_common: 8, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1})
     when "vma"
       build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, vma_special: 1})
@@ -185,16 +185,16 @@ class PackFactory
       # assuming RNA will use the same rules as GRN
       build_pack_with_random_foil(set_code, :foil, :grn_common, {grn_common: 10, uncommon: 3, rare_or_mythic: 1, grn_land: 1})
     # These are just approximations, they actually used nonstandard sheets
-    when "lea", "leb", "2ed", "3ed", "ia"
+    when "lea", "leb", "2ed", "3ed", "ice"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Early sets had unusual rarities, indexer fills all the details for us
-    when "ai"
+    when "all"
       build_pack(set_code, {explicit_common: 8, explicit_uncommon: 3, explicit_rare: 1})
-    when "ch"
+    when "chr"
       build_pack(set_code, {explicit_common: 9, explicit_uncommon: 3})
-    when "aq", "an", "dk", "fe", "hl"
+    when "atq", "arn", "drk", "fem", "hml"
       build_pack(set_code, {explicit_common: 6, explicit_uncommon: 2})
-    when "lg"
+    when "leg"
       build_pack(set_code, {explicit_common: 12, explicit_uncommon: 3, explicit_rare: 1})
     else
       # No packs for this set, let caller figure it out

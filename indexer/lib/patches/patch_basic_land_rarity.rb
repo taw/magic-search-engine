@@ -18,7 +18,7 @@ class PatchBasicLandRarity < Patch
       end
 
       # Arabian Night Mountain is just a common
-      if card["set_code"] == "an"
+      if card["set_code"] == "arn"
         card["rarity"] = "common"
       end
     end
