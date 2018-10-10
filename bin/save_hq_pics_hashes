@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+require "pathname-glob"
+require "digest/sha1"
+
+class SaveHqPicsHashes
+  def initialize
+    @root = Pathname(__dir__) + "../frontend/public/cards_hq"
+  end
+
+  def call
+    results = []
+    @root.glob("*/*.png").each do |path|
+      set_code = path.dirname.basename.to_s
+      number = path.basename(".png").to_s
+      sha1 = Digest::SHA1.hexdigest(path.read)
+      results << [set_code, number.to_i, number, sha1]
+    end
+    open("data/hq_scan_files_sha1.txt", "w") do |fh|
+      results.sort.each do |set_code, _, number, sha1|
+        fh.puts([set_code, number, sha1].join("\t"))
+      end
+    end
+  end
+end
+
+SaveHqPicsHashes.new.call
