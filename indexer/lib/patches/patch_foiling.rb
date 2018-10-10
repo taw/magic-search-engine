@@ -28,7 +28,7 @@ class PatchFoiling < Patch
         if ["Forsaken Sanctuary", "Meandering River", "Timber Gorge", "Tranquil Expanse"].include?(name)
           card["foiling"] = "nonfoil"
         end
-      elsif set_code == "uh" and name == "Super Secret Tech"
+      elsif set_code == "unh" and name == "Super Secret Tech"
         card["foiling"] = "foilonly"
       elsif set_code == "cn2" and name == "Kaya, Ghost Assassin"
         if number == "75"
@@ -36,7 +36,7 @@ class PatchFoiling < Patch
         else
           card["foiling"] = "foilonly"
         end
-      elsif set_code == "pch" and name == "Tazeem"
+      elsif set_code == "hop" and name == "Tazeem"
         card["foiling"] = "nonfoil"
       elsif set_code == "pc2" and name == "Stairs to Infinity"
         card["foiling"] = "nonfoil"
@@ -46,7 +46,7 @@ class PatchFoiling < Patch
         if ["Dirtcowl Wurm", "Revenant", "Monstrous Hound"].include?(name)
           card["foiling"] = "nonfoil"
         end
-      elsif set_code == "st2k"
+      elsif set_code == "s00"
         if name == "Rhox"
           card["foiling"] = "foilonly"
         elsif ["Armored Pegasus", "Python", "Spined Wurm", "Stone Rain"].include?(name)
@@ -59,19 +59,19 @@ class PatchFoiling < Patch
       foiling = case set["code"]
       when "cm1", "15ann", "sus", "sum", "wpn", "thgt", "gpx", "wmcq", "hho", "mlp", "jr", "pro", "gtw", "wrl", "rep", "fnmp", "wotc", "ptc"
         "foilonly"
-      when "ced", "cedi", "chr", "guru", "apac", "drc", "euro", "dcilm", "ugin", "uqc", "van", "st", "mgbc"
+      when "ced", "cei", "chr", "guru", "apac", "drc", "euro", "dcilm", "ugin", "uqc", "van", "s99", "mgb"
         "nonfoil"
-      when "ug"
+      when "ugl"
         "nonfoil"
-      when "uh", "cn2"
+      when "unh", "cn2"
         "both"
       when "ust", "tsb", "cns"
         "both"
-      when "e02", "w16", "w17", "rqs", "itp", "cstd", "st2k"
+      when "e02", "w16", "w17", "rqs", "itp", "cst", "s00"
         "precon"
       when "cp1", "cp2", "cp3"
         "foilonly"
-      when "po", "po2", "p3k", "pot"
+      when "por", "po2", "ptk", "pot"
         "nonfoil"
       end
 

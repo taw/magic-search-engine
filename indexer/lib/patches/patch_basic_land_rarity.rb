@@ -13,7 +13,7 @@ class PatchBasicLandRarity < Patch
 
       # As far as I can tell, Unglued basics were printed on separate black-bordered sheet
       # contrary to what Gatherer says
-      if card["set_code"] == "ug"
+      if card["set_code"] == "ugl"
         card["rarity"] = "basic"
       end
 

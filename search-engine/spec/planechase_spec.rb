@@ -1,5 +1,5 @@
 describe "Planechase" do
-  include_context "db", "pch", "pc2", "pca", "m13"
+  include_context "db", "hop", "pc2", "pca", "m13"
 
   it "plane" do
     assert_search_results "t:plane t:Dominaria", "Krosa", "Llanowar", "Academy at Tolaria West", "Isle of Vesuva", "Otaria", "Shiv", "Talon Gates"
