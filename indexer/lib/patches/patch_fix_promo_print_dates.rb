@@ -8,13 +8,13 @@ class PatchFixPromoPrintDates < Patch
   def call
     each_card do |name, printings|
       # Prerelease
-      ptc_printing = printings.find{|c| c["set_code"] == "ptc" }
+      ptc_printing = printings.find{|c| c["set_code"] == "ppre" }
       # Release
-      mlp_printing = printings.find{|c| c["set_code"] == "mlp" }
+      mlp_printing = printings.find{|c| c["set_code"] == "plpa" }
       # Gameday
-      mgdc_printing = printings.find{|c| c["set_code"] == "mgdc" }
+      mgdc_printing = printings.find{|c| c["set_code"] == "pmgd" }
       # Media inserts
-      mbp_printing = printings.find{|c| c["set_code"] == "mbp" }
+      mbp_printing = printings.find{|c| c["set_code"] == "pmei" }
 
       guess_date = guess_date_for(printings)
 
@@ -42,7 +42,7 @@ class PatchFixPromoPrintDates < Patch
 
   def guess_date_for(printings)
     printings
-      .select{|c| !["ptc", "mlp", "mgdc", "mbp"].include?(c["set_code"]) }
+      .select{|c| !["ppre", "plpa", "pmgd", "pmei"].include?(c["set_code"]) }
       .map{|c| c["release_date"] || c["set"]["release_date"] || "9999-12-31" }
       .min
   end

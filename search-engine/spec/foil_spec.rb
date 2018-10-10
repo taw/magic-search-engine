@@ -66,11 +66,11 @@ describe "Foils" do
       end
 
       case set.code
-      when "ced", "cei", "chr", "ugl", "euro", "guru", "apac", "por", "po2", "ptk", "drc", "dcilm", "pot", "ugin", "uqc", "van", "s99", "mgb"
+      when "ced", "cei", "chr", "ugl", "pelp", "pgru", "palp", "por", "po2", "ptk", "pdrc", "plgm", "ppod", "frf_ugin", "pcel", "van", "s99", "mgb"
         assert_foiling(set.printings, "nonfoil")
       when "ust", "tsb", "cns"
         assert_foiling(set.printings, "both")
-      when "cm1", "15ann", "sus", "sum", "wpn", "thgt", "gpx", "wmcq", "hho", "mlp", "jr", "pro", "gtw", "wrl", "wotc", "rep", "fnmp"
+      when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "phho", "plpa", "pjgp", "ppro", "pgtw", "pwor", "pwos", "prel", "pfnm"
         assert_foiling(set.printings, "foilonly")
       when "w16", "w17", "cp1", "cp2", "cp3", "cst", "itp"
         assert_foiling_partial_precon(set.printings)
@@ -127,7 +127,7 @@ describe "Foils" do
         planes, rest = set.printings.partition{|c| c.types.include?("plane") }
         assert_foiling(planes, "nonfoil")
         assert_foiling_partial_precon(rest)
-      when "ptc"
+      when "ppre"
         cards = set.printings.sort_by(&:release_date)
         assert_foiling(cards[0..2], "nonfoil")
         assert_foiling(cards[3..-1], "foilonly")

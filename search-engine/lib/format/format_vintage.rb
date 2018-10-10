@@ -14,11 +14,11 @@ class FormatVintage < Format
     # * Arena League
     # * Release Events
 
-    excluded_sets = Set["arena", "uqc", "ugl", "rep", "unh", "hho", "ust"]
+    excluded_sets = Set["parl", "pcel", "ugl", "prel", "unh", "phho", "ust"]
 
     # Portal / Starter sets used to not be tournament legal
     if @time and @time < Date.parse("2005.3.20")
-      excluded_sets += Set["pot", "por", "po2", "ptk", "s99", "s00"]
+      excluded_sets += Set["ppod", "por", "po2", "ptk", "s99", "s00"]
     end
 
     excluded_sets
