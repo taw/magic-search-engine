@@ -4,7 +4,7 @@ class FormatOdysseyBlock < Format
   end
 
   def build_included_sets
-    Set["od", "tr", "ju"]
+    Set["ody", "tor", "jud"]
   end
 end
 

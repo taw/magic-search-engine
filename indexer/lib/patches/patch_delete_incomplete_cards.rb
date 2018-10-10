@@ -12,7 +12,7 @@ class PatchDeleteIncompleteCards < Patch
     ]
 
     delete_printing_if do |card|
-      incomplete_cards.include?(card["name"]) and card["set_code"] == "ptc"
+      incomplete_cards.include?(card["name"]) and card["set_code"] == "ppre"
     end
   end
 end

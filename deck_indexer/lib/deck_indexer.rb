@@ -43,8 +43,8 @@ class DeckIndexer
     end
 
     # Coldsnap had special set for Ice Age reprints
-    if deck["set_code"] == "cs"
-      return printings["cstd"] if printings["cstd"]
+    if deck["set_code"] == "csp"
+      return printings["cst"] if printings["cst"]
     end
 
     # It was printed in set we want

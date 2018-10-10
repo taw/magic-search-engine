@@ -26,7 +26,6 @@ class FormatStandard < Format
     # http://archive.wizards.com/magic/magazine/Article.aspx?x=mtgcom/feature/291
     # says Coldsnap rotates out with Time Spiral block
 
-    # ["al", "be", "an", "un", "aq", "rv", "lg", "dk", "fe", "4e", "ia", "hl", "ai", "mr", "vi", "5e", "wl", "tp", "sh", "ex", "us", "ul", "6e", "ud", "mm", "ne", "pr", "in", "ps", "7e", "ap", "od", "tr", "ju", "on", "le", "sc", "8e", "mi", "ds", "5dn", "chk", "bok", "sok", "9e", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut", "10e", "lw", "mt", "shm", "eve", "ala", "cfx", "arb", "m10"]
     {
       # 4 blocks system, 1 rotation/year
       "2018-10-05" => ["xln", "rix", "dom", "m19", "grn"],
@@ -42,26 +41,26 @@ class FormatStandard < Format
       "2012-10-05" => ["isd", "dka", "avr", "m13", "rtr", "gtc", "dgm", "m14"],  # rtr
       "2011-09-30" => ["som", "mbs", "nph", "m12", "isd", "dka", "avr", "m13"],  # isd
       "2010-10-01" => ["zen", "wwk", "roe", "m11", "som", "mbs", "nph", "m12"],  # som
-      "2009-10-02" => ["ala", "cfx", "arb", "m10", "zen", "wwk", "roe", "m11"],  # zen
+      "2009-10-02" => ["ala", "con", "arb", "m10", "zen", "wwk", "roe", "m11"],  # zen
       # 2 blocks + 1 core system
-      "2009-07-17" => ["lw", "mt", "shm", "eve", "ala", "cfx", "arb", "m10"], # m10
-      "2008-10-03" => ["10e", "lw", "mt", "shm", "eve", "ala", "cfx", "arb"], # ala
-      "2007-10-12"  => ["cs", "ts", "tsts", "pc", "fut", "10e", "lw", "mt", "shm", "eve"], # lw
-      "2007-07-13" => ["rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut", "10e"], # 10e
-      "2006-10-06" => ["9e", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut"], # ts
-      "2005-10-07" => ["chk", "bok", "sok", "9e", "rav", "gp", "di", "cs"], # rav
-      "2005-07-29" => ["mi", "ds", "5dn", "chk", "bok", "sok", "9e"], # 9e
-      "2004-10-01" => ["8e", "mi", "ds", "5dn", "chk", "bok", "sok"], # chk
-      "2003-10-02" => ["on", "le", "sc", "8e", "mi", "ds", "5dn"], # mi
-      "2003-07-28" => ["od", "tr", "ju", "on", "le", "sc", "8e"], # 8e
-      "2002-10-07" => ["7e", "od", "tr", "ju", "on", "le", "sc"], # on
-      "2001-10-01" => ["in", "ps", "7e", "ap", "od", "tr", "ju"], # od
-      "2001-04-11" => ["mm", "ne", "pr", "in", "ps", "7e", "ap"], # 7e
-      "2000-10-02" => ["6e", "mm", "ne", "pr", "in", "ps"], # in
-      "1999-10-04" => ["us", "ul", "6e", "ud", "mm", "ne", "pr"], # mm
-      "1999-04-21" => ["tp", "sh", "ex", "us", "ul", "6e", "ud"], # 6e
-      "1998-10-12" => ["5e", "tp", "sh", "ex", "us", "ul"], # us
-      "1997-10-14" => ["mr", "vi", "5e", "wl", "tp", "sh", "ex"], # tp
+      "2009-07-17" => ["lrw", "mor", "shm", "eve", "ala", "con", "arb", "m10"], # m10
+      "2008-10-03" => ["10e", "lrw", "mor", "shm", "eve", "ala", "con", "arb"], # ala
+      "2007-10-12" => ["csp", "tsp", "tsb", "plc", "fut", "10e", "lrw", "mor", "shm", "eve"], # lrw
+      "2007-07-13" => ["rav", "gpt", "dis", "csp", "tsp", "tsb", "plc", "fut", "10e"], # 10e
+      "2006-10-06" => ["9ed", "rav", "gpt", "dis", "csp", "tsp", "tsb", "plc", "fut"], # tsp
+      "2005-10-07" => ["chk", "bok", "sok", "9ed", "rav", "gpt", "dis", "csp"], # rav
+      "2005-07-29" => ["mrd", "dst", "5dn", "chk", "bok", "sok", "9ed"], # 9ed
+      "2004-10-01" => ["8ed", "mrd", "dst", "5dn", "chk", "bok", "sok"], # chk
+      "2003-10-02" => ["ons", "lgn", "scg", "8ed", "mrd", "dst", "5dn"], # mrd
+      "2003-07-28" => ["ody", "tor", "jud", "ons", "lgn", "scg", "8ed"], # 8ed
+      "2002-10-07" => ["7ed", "ody", "tor", "jud", "ons", "lgn", "scg"], # ons
+      "2001-10-01" => ["inv", "pls", "7ed", "apc", "ody", "tor", "jud"], # ody
+      "2001-04-11" => ["mmq", "nms", "pcy", "inv", "pls", "7ed", "apc"], # 7ed
+      "2000-10-02" => ["6ed", "mmq", "nms", "pcy", "inv", "pls"], # inv
+      "1999-10-04" => ["usg", "ulg", "6ed", "uds", "mmq", "nms", "pcy"], # mmq
+      "1999-04-21" => ["tmp", "sth", "exo", "usg", "ulg", "6ed", "uds"], # 6ed
+      "1998-10-12" => ["5ed", "tmp", "sth", "exo", "usg", "ulg"], # usg
+      "1997-10-14" => ["mir", "vis", "5ed", "wth", "tmp", "sth", "exo"], # tmp
     }
   end
 end

@@ -24,7 +24,7 @@ class PatchUseMciNumbersAsFallback < Patch
     mci_numbers = get_mci_numbers(set_code)
     cards = cards_by_set[set_code]
 
-    if set_code == "ced" or set_code == "cedi"
+    if set_code == "ced" or set_code == "cei"
       # Not on Gatherer
       cards.each do |card|
         name = card["name"]

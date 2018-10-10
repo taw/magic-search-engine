@@ -33,17 +33,17 @@ class CardControllerTest < ActionController::TestCase
   test "show card gallery - not first printing" do
     get "gallery", params: {set: "nph", id: "168"}
     assert_response 302
-    assert_redirected_to action: "gallery", set: "al", id: "281"
+    assert_redirected_to action: "gallery", set: "lea", id: "281"
   end
 
   test "show card gallery - not first card in first printing" do
-    get "gallery", params: {set: "al", id: "282"}
+    get "gallery", params: {set: "lea", id: "282"}
     assert_response 302
-    assert_redirected_to action: "gallery", set: "al", id: "281"
+    assert_redirected_to action: "gallery", set: "lea", id: "281"
   end
 
   test "show card gallery - first card in first printing" do
-    get "gallery", params: {set: "al", id: "281"}
+    get "gallery", params: {set: "lea", id: "281"}
     assert_response 200
     assert_equal "Island - #{APP_NAME}", html_document.title
   end

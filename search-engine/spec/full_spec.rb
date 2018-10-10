@@ -68,7 +68,7 @@ describe "Full Database Test" do
 
   it "year" do
     Query.new("year=2013 t:jace").search(db).card_names_and_set_codes.should eq([
-      ["Jace, Memory Adept", "m14", "mbp"],
+      ["Jace, Memory Adept", "m14", "pmei"],
       ["Jace, the Mind Sculptor", "v13"],
     ])
   end
@@ -382,9 +382,9 @@ describe "Full Database Test" do
     "e:cma".should have_count_printings(320)
   end
 
-  it "gtw/wpn/grc set codes" do
-    "e:gtw".should have_count_printings(20)
-    "e:wpn".should have_count_printings(45)
+  it "pgtw/pwpn/grc set codes" do
+    "e:pgtw".should have_count_printings(20)
+    "e:pwpn".should have_count_printings(45)
     "e:grc".should have_count_printings(0)
   end
 

@@ -6,14 +6,14 @@ describe "Formats - Modern" do
   }.to_set }
 
   describe "Modern legal sets" do
-    let(:start_date) { db.sets["8e"].release_date }
+    let(:start_date) { db.sets["8ed"].release_date }
     let(:expected) { regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set }
     let(:actual) { FormatModern.new.included_sets }
     it { expected.should eq actual }
   end
 
   it "modern" do
-    assert_block_composition "modern", "rix", ["8e", "mi", "ds", "5dn", "chk", "bok", "sok", "9e", "rav", "gp", "di", "cs", "ts", "tsts", "pc", "fut", "10e", "lw", "mt", "shm", "eve", "ala", "cfx", "arb", "m10", "zen", "wwk", "roe", "m11", "som", "mbs", "nph", "m12", "isd", "dka", "avr", "m13", "rtr", "gtc", "dgm", "m14", "ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori", "bfz", "ogw", "soi", "emn", "kld", "aer", "akh", "w17", "hou", "xln", "rix"],
+    assert_block_composition "modern", "rix", ["8ed", "mrd", "dst", "5dn", "chk", "bok", "sok", "9ed", "rav", "gpt", "dis", "csp", "tsp", "tsb", "plc", "fut", "10e", "lrw", "mor", "shm", "eve", "ala", "con", "arb", "m10", "zen", "wwk", "roe", "m11", "som", "mbs", "nph", "m12", "isd", "dka", "avr", "m13", "rtr", "gtc", "dgm", "m14", "ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori", "bfz", "ogw", "soi", "emn", "kld", "aer", "akh", "w17", "hou", "xln", "rix"],
       "Ancient Den" => "banned",
       "Birthing Pod" => "banned",
       "Blazing Shoal" => "banned",

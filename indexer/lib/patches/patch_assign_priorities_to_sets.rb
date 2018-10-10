@@ -13,9 +13,9 @@ class PatchAssignPrioritiesToSets < Patch
     # They never get updated, but since their cards have other printings in regular sets,
     # they'll still get all Oracle updates via reconciliation
     when *%W[
-        ced cedi bok st2k v17 cp1 cp2 cp3
-        rep mbp rqs arena itp at mprp wotc thgt dpa jr cp gtw ptc sus jr fnmp pro mgdc mlp
-        dm cstd dcilm wpn mgbc sum 15ann gpx wmcq
+        ced cei bok st2k v17 cp1 cp2 cp3
+        prel pmei rqs parl itp ath pmpr pwos p2hg dpa pjgp pcmp pgtw ppre psus pfnm ppro pmgd plpa
+        dkm cst plgm pwpn mgb psum p15a pgpx pwcq
       ]
       -1
     when "grn"

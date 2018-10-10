@@ -4,6 +4,6 @@ class FormatOnslaughtBlock < Format
   end
 
   def build_included_sets
-    Set["on", "le", "sc"]
+    Set["ons", "lgn", "scg"]
   end
 end

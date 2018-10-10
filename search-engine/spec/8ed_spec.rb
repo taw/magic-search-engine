@@ -1,5 +1,5 @@
 describe "8th Edition" do
-  include_context "db", "8e"
+  include_context "db", "8ed"
 
   it "type line apostrophe" do
     "Urza’s"  .should include_cards "Urza's Armor", "Urza's Mine", "Urza's Power Plant", "Urza's Tower"

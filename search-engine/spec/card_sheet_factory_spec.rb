@@ -102,7 +102,7 @@ describe CardSheetFactory do
 
   context "Unhinged" do
     context "rare sheet" do
-      let(:rare_sheet) { factory.rare_or_mythic("uh") }
+      let(:rare_sheet) { factory.rare_or_mythic("unh") }
       let(:ambiguity) { physical_card("ambiguity", false) }
       let(:super_secret_tech) { physical_card("super secret tech", false) }
 
@@ -167,10 +167,10 @@ describe CardSheetFactory do
 
   context "physical cards are properly setup" do
     describe "Dissention" do
-      let(:pack) { pack_factory.for("di") }
-      let(:rares) { factory.rarity("di", "uncommon").cards }
-      let(:uncommons) { factory.rarity("di", "uncommon").cards }
-      let(:commons) { factory.rarity("di", "common").cards }
+      let(:pack) { pack_factory.for("dis") }
+      let(:rares) { factory.rarity("dis", "uncommon").cards }
+      let(:uncommons) { factory.rarity("dis", "uncommon").cards }
+      let(:commons) { factory.rarity("dis", "common").cards }
       it do
         pack.nonfoil_cards.size.should eq(60+60+60)
         # 5 rares are split

@@ -1,22 +1,32 @@
-# mtgjson mostly uses gatherer codes as primary
-# we mostly use mci codes
-# with some exceptions in both cases
+# We're in process of switching from MCI to official codes as primary
+
 class PatchSetCodes < Patch
   def call
+    # Forced lower case for all codes
     each_set do |set|
-      set["code"] ||= set["official_code"].downcase
-      case set["official_code"]
-      when "pGTW"
-        set["code"] = "gtw"
-      when "pWPN"
-        set["code"] = "wpn"
-      when "CM1", "CMA", "MPS", "MPS_AKH", "CP1", "CP2", "CP3"
-        set["code"] = set["official_code"].downcase
+      set["mci_code"] = set["mci_code"]&.downcase
+      set["gatherer_code"] = set["gatherer_code"]&.downcase
+      set["official_code"] = set["official_code"]&.downcase
+    end
+
+    each_set do |set|
+      if %W[cm1 cma mps mps_akh cp1 cp2 cp3 pgtw pwpn].include?(set["official_code"])
+        set.delete("mci_code")
       end
-      # Only include it if different from both official and MCI codes
-      set.delete("gatherer_code") if set["gatherer_code"]&.downcase == set["code"]
-      # Delete ones conflicting with MCI codes for different sets
-      set.delete("gatherer_code") if %W[AL ST LE MI].include?(set["gatherer_code"])
+
+      set["code"] = set["official_code"] || set["mci_code"]
+      set["alternative_code"] = set["mci_code"]
+
+      # Delete if redundant
+      set.delete("alternative_code") if set["alternative_code"] == set["code"]
+      set.delete("gatherer_code") if set["gatherer_code"] == set["code"]
+      set.delete("gatherer_code") if set["gatherer_code"] == set["alternative_code"]
+
+      # Delete ones conflicting with official or alternative codes for different sets
+      set.delete("gatherer_code") if %W[al st le mi].include?(set["gatherer_code"])
+
+      set.delete("official_code")
+      set.delete("mci_code")
     end
 
     duplicated_codes = @sets

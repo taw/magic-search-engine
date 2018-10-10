@@ -128,7 +128,7 @@ class Card
 
   def first_regular_release_date
     @first_regular_release_date ||= @printings
-      .select{|cp| cp.set_code != "ptc"}
+      .select{|cp| cp.set_code != "ppre"}
       .map(&:release_date)
       .compact
       .min

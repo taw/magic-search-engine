@@ -79,7 +79,7 @@ describe Deck do
       deck_card_names = set.decks.flat_map(&:physical_cards).map(&:name).uniq
 
       # Special cases
-      if set_code == "pch"
+      if set_code == "hop"
         # Release event promo
         set_card_names.should match_array ["Tazeem", *deck_card_names]
       elsif set_code == "pc2"

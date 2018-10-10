@@ -16,7 +16,7 @@ class PatchFixCollectorNumbers < Patch
     case set_code
     when "van"
       cards.sort_by{|c| c["multiverseid"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
-    when "pch", "arc", "pc2", "pca", "e01"
+    when "hop", "arc", "pc2", "pca", "e01"
       cards.each do |card|
         unless (card["types"] & ["Plane", "Phenomenon", "Scheme"]).empty?
           card["number"] = (1000 + card["number"].to_i).to_s
@@ -49,7 +49,7 @@ class PatchFixCollectorNumbers < Patch
         end
       end
     # These are somewhat silly orders
-    when "st2k", "rqs"
+    when "s00", "rqs"
       cards
         .sort_by{|c| [c["name"], c["multiverseid"]] }
         .each_with_index{|c,i| c["number"] = "#{i+1}"}

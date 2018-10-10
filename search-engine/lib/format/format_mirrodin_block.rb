@@ -4,6 +4,6 @@ class FormatMirrodinBlock < Format
   end
 
   def build_included_sets
-    Set["mi", "ds", "5dn"]
+    Set["mrd", "dst", "5dn"]
   end
 end
