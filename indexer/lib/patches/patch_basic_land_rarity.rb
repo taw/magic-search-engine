@@ -7,7 +7,7 @@ class PatchBasicLandRarity < Patch
       next unless basic_land_names.include?(card["name"])
 
       # Fix rarities of promo basics
-      if %W[arena guru jr euro apac ptc].include?(card["set_code"])
+      if %W[parl pgru pjgp pelp palp ppre].include?(card["set_code"])
         card["rarity"] = "special"
       end
 

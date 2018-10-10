@@ -10,32 +10,12 @@ class PatchSetCodes < Patch
     end
 
     each_set do |set|
-      if set["type"] == "core" or set["type"] == "expansion" or set["official_code"] == "chr"
-        set["code"] = set["official_code"]
-        set["alternative_code"] = set["mci_code"]
-        # if set["code"] != set["alternative_code"]
-        #   p [set["alternative_code"], set["code"]]
-        # end
-      elsif set["type"] != "promo"
-        set["code"] = set["official_code"] || set["mci_code"]
-        set["alternative_code"] = set["mci_code"]
-        if set["code"] != set["alternative_code"]
-          p [set["alternative_code"], set["code"]]
-        end
-      else
-        set["code"] = set["mci_code"] || set["official_code"]
-        set["alternative_code"] = set["official_code"]
+      if %W[cm1 cma mps mps_akh cp1 cp2 cp3 pgtw pwpn].include?(set["official_code"])
+        set.delete("mci_code")
       end
 
-      case set["official_code"]
-      when "pgtw"
-        set["code"] = "gtw"
-      when "pwpn"
-        set["code"] = "wpn"
-      when "cm1", "cma", "mps", "mps_akh", "cp1", "cp2", "cp3"
-        set["code"] = set["official_code"]
-        set.delete("alternative_code")
-      end
+      set["code"] = set["official_code"] || set["mci_code"]
+      set["alternative_code"] = set["mci_code"]
 
       # Delete if redundant
       set.delete("alternative_code") if set["alternative_code"] == set["code"]

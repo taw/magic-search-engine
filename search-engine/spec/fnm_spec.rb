@@ -1,5 +1,5 @@
 describe "FNM" do
-  include_context "db", "fnmp"
+  include_context "db", "pfnm"
 
   it "year" do
     "year = 2000".should have_count_printings 11 # ???

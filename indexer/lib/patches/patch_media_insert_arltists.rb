@@ -10,7 +10,7 @@ class PatchMediaInsertArtists < Patch
   }
   def call
     each_printing do |card|
-      next unless card["set_code"] == "mbp"
+      next unless card["set_code"] == "pmei"
       next unless card["artist"] == "???"
       card["artist"] = CORRECT_ARTISTS.fetch(card["name"])
     end

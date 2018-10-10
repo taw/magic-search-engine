@@ -42,7 +42,7 @@ class PatchFoiling < Patch
         card["foiling"] = "nonfoil"
       elsif set_code == "pca" and types.include?("Plane")
         card["foiling"] = "nonfoil"
-      elsif set_code == "ptc"
+      elsif set_code == "ppre"
         if ["Dirtcowl Wurm", "Revenant", "Monstrous Hound"].include?(name)
           card["foiling"] = "nonfoil"
         end
@@ -57,9 +57,9 @@ class PatchFoiling < Patch
 
     each_set do |set|
       foiling = case set["code"]
-      when "cm1", "15ann", "sus", "sum", "wpn", "thgt", "gpx", "wmcq", "hho", "mlp", "jr", "pro", "gtw", "wrl", "rep", "fnmp", "wotc", "ptc"
+      when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "phho", "plpa", "pjgp", "ppro", "pgtw", "pwor", "prel", "pfnm", "pwos", "ppre"
         "foilonly"
-      when "ced", "cei", "chr", "guru", "apac", "drc", "euro", "dcilm", "ugin", "uqc", "van", "s99", "mgb"
+      when "ced", "cei", "chr", "pgru", "palp", "pdrc", "pelp", "plgm", "frf_ugin", "pcel", "van", "s99", "mgb"
         "nonfoil"
       when "ugl"
         "nonfoil"
@@ -71,7 +71,7 @@ class PatchFoiling < Patch
         "precon"
       when "cp1", "cp2", "cp3"
         "foilonly"
-      when "por", "po2", "ptk", "pot"
+      when "por", "po2", "ptk", "ppod"
         "nonfoil"
       end
 
