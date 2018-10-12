@@ -12,6 +12,7 @@ class ConditionIsKeywordsoup < Condition
       "odric, lunarch marshal",
       "soulflayer",
       # custom
+      "atares amplifier",
       "blade of choices",
     ]
 

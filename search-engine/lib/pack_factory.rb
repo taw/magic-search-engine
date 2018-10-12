@@ -198,8 +198,8 @@ class PackFactory
     when "leg"
       build_pack(set_code, {explicit_common: 12, explicit_uncommon: 3, explicit_rare: 1})
     # custom sets
-    when "ank", "ldo", "vln", "jan", "hlw", "rak", "dhm"
-      # Custom sets with default pack distribution, no foils, no basics
+    when "ank", "ldo", "vln", "jan", "hlw", "rak", "dhm", "net"
+      # Custom sets with default pack distribution, no foils, with basics
       build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1})
     when "dms", "cc18", "vst"
       # Same as above except no basics

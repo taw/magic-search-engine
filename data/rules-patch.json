@@ -168,11 +168,14 @@
                 "Gozani",
                 "Hohoja",
                 "Hupiri",
+                "L3-T",
                 "Luma",
                 "Nibinem",
+                "Nic",
                 "Patches",
                 "Roselyn",
                 "Sobki",
+                "Talya",
                 "Toahanga",
                 "Veila",
                 "Yemma"
@@ -188,6 +191,8 @@
                 "Dolphin",
                 "Farmer",
                 "Giraffe",
+                "Mech",
+                "Nanobot",
                 "Ship"
             ]
         },
@@ -200,6 +205,7 @@
                 "justice",
                 "machinate",
                 "spellbound",
+                "supremacy",
                 "trance",
                 "virtuoso"
             ]
@@ -531,7 +537,7 @@
                 "subrules": [
                     "“Journey” means “Exile the top card of your library. That card becomes journeyed.”",
                     "There is an inherent triggered ability associated with journeying. The full text of this ability is “Whenever a creature deals combat damage to one of its controller's opponents, if its controller owns any journeyed cards, the creature's controller puts a journeyed card they own into their hand.” This ability has no source and is controlled by the controller of the creature which dealt the damage that caused it to trigger. This is an exception to rule 112.8.",
-                    "Journeyed is a designation that has no rules meaning other than to act as a marker that the inherent triggered ability and other spells and abilities can identify. Only cards in exile can be or become journeyed. Once a card becomes journeyed, it stays journeyed until it leaves exile or becomes a new object (see rule 406.7). Journeyed is neither an ability nor part of the card's copiable values."
+                    "Journeyed is a designation that has no rules meaning other than to act as a marker that the inherent triggered ability and other spells and abilities can identify. Only cards in exile can gain or have this designation. Once a card becomes journeyed, it stays journeyed until it leaves exile or becomes a new object (see rule 406.7). Journeyed is neither an ability nor part of the card's copiable values."
                 ]
             }
         },
@@ -546,25 +552,49 @@
             }
         },
         {
-            "#": "“warband” is a variant of soulbond used in Lorado",
+            "#": "“arm” is a keyword action used in Netropolis",
+            "type": "addKeywordAction",
+            "rule": {
+                "text": "Arm",
+                "subrules": [
+                    "To arm a creature, create a colorless Equipment artifact token named Weapon attached to that creature. The token has equip {2} and “Equipped creature gets +1/+1”.",
+                    "An object that's not a creature or not on the battlefield can't be armed. If a player attempts to do so, the Equipment token is not created.",
+                    "If an ability causes a creature to enter the battlefield armed, this means “If this object would enter the battlefield, instead it enters the battlefield and you simultaneously arm it.” The object and the token enter the battlefield simultaneously, and the object is never on the battlefield unequipped. See rule 603.6b."
+                ]
+            }
+        },
+        {
+            "#": "“upload” is a keyword action used in Netropolis",
+            "type": "addKeywordAction",
+            "rule": {
+                "text": "Upload",
+                "subrules": [
+                    "To upload an object, exile it. It becomes uploaded.",
+                    "Each uploaded card in exile has the intrinsic ability “{2}: Put this card from exile into your hand. Activate this ability only during your turn.” This ability's activation cost is called an upload cost.",
+                    "Uploaded is a designation that has no rules meaning other than to act as a marker that this rule and other spells and abilities can identify. Only cards in exile can gain or have this designation. Once a card becomes uploaded, it stays uploaded until it leaves exile or becomes a new object (see rule 406.7). Uploaded is neither an ability nor part of the card's copiable values."
+                ]
+            }
+        },
+        {
+            "#": "“warband” is a variant of soulbond used in Lorado and Ruins of Doharum",
             "type": "insert",
             "rule": "702.94b",
             "text": "Warband is a variant of the soulbond ability. “Warband” means “Whenever this creature attacks, if you control both this creature and another attacking creature and both are unpaired, you may pair this creature with another unpaired attacking creature you control until end of turn”."
         },
         {
-            "#": "“warband” is a variant of soulbond used in Lorado",
+            "#": "“warband” is a variant of soulbond used in Lorado and Ruins of Doharum",
             "type": "insert",
             "rule": "702.94c",
             "text": "A warband ability is a soulbond ability. Any effect that looks for an object with soulbond will find a card with warband."
         },
         {
-            "#": "“warband” is a variant of soulbond used in Lorado",
+            "#": "“warband” is a variant of soulbond used in Lorado and Ruins of Doharum",
             "type": "append",
             "rule": "702.94f",
             "text": "(For example, a creature can't be paired with another creature using a warband ability and with a third creature using a regular soulbond ability at the same time.)"
         },
         {
-            "#": "“warband” is a variant of soulbond used in Lorado",
+            "#": "“warband” is a variant of soulbond used in Lorado and Ruins of Doharum",
             "type": "replace",
             "rule": "702.94g",
             "find": "or it or the creature it’s paired with leaves the battlefield\\.",
@@ -749,7 +779,7 @@
                 "subrules": [
                     "Salvage is an activated ability that functions while the card with salvage is in a graveyard. “Salvage [cost]” means “[Cost], Exile this card from your graveyard: Draw a card.”",
                     "Some cards have abilities that trigger whenever a card is salvaged. “Whenever you salvage a card” means “Whenever you exile a card to pay an activation cost of a salvage ability.”",
-                    "Some cards with salvage have abilities that trigger when they're salvaged. These abilities trigger from whatever zone the card winds up in after it's salvaged.",
+                    "Some cards with salvage have abilities that trigger when they're salvaged. These abilities trigger from whatever zone the card winds up in after it's salvaged."
                 ]
             }
         },
