@@ -179,5 +179,6 @@ end
 require_relative "format_vintage"
 require_relative "format_commander"
 require_relative "format_standard"
+require_relative "format_custom_standard"
 require_relative "format_custom_eternal"
 Dir["#{__dir__}/format_*.rb"].each do |path| require_relative path end

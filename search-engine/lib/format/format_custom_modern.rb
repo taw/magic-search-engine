@@ -8,6 +8,6 @@ class FormatCustomModern < Format
   end
 
   def build_included_sets
-    Set["ldo", "tsl", "vln", "jan", "hlw", "cc18"]
+    Format["custom modern"].new(@time).build_included_sets - Set["ayr", "dms", "ank"]
   end
 end

@@ -1,4 +1,4 @@
-class FormatECH < Format
+class FormatECH < FormatStandard
   def format_pretty_name
     "Elder Cockatrice Highlander"
   end
@@ -7,10 +7,13 @@ class FormatECH < Format
     true
   end
 
-  def build_included_sets
-    #TODO NET was part of the format from start until August/September 2018 format changes
-    #TODO CC18 was part of the format since the start (adjust other formats accordingly)
-    #TODO ECH (Ancient Elemental) was part of the format from 2018-01-09 until August/September 2018 format changes
-    Set["ayr", "dms", "ank", "ldo", "tsl", "vln", "jan", "hlw", "cc18", "vst", "dhm", "rak"]
+  def rotation_schedule
+    {
+      "2018-01-12" => ["ayr", "dms", "ank", "ldo", "tsl", "vln", "jan", "net", "cc18"],
+      "2018-01-16" => ["ayr", "dms", "ank", "ldo", "tsl", "vln", "jan", "net", "cc18", "ech"],
+      "2018-01-21" => ["ayr", "dms", "ank", "ldo", "tsl", "vln", "jan", "net", "cc18", "ech", "hlw"],
+      "2018-08-30" => ["ayr", "dms", "ank", "ldo", "tsl", "vln", "jan", "cc18", "hlw", "vst", "dhm", "rak"],
+      "2018-11-02" => ["ayr", "dms", "ank", "ldo", "tsl", "vln", "jan", "cc18", "hlw", "vst", "dhm", "rak", "net"] #TODO adjust date of this rotation, 2018-11-02 is just an approximation used as a placeholder
+    }
   end
 end
