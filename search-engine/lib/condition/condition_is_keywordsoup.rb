@@ -14,6 +14,7 @@ class ConditionIsKeywordsoup < Condition
       # custom
       "atares amplifier",
       "blade of choices",
+      "playful bottlenose",
     ]
 
     names
