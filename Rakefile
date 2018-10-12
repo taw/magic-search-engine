@@ -85,6 +85,11 @@ task "pics:hq" do
   sh "./bin/fetch_hq_pics"
 end
 
+desc "Save HQ pics hashes"
+task "pics:hq:save" do
+  sh "./bin/save_hq_pics_hashes"
+end
+
 desc "Print basic statistics about card pictures"
 task "pics:statistics" do
   sh "./bin/pics_statistics"
