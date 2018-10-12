@@ -41,7 +41,7 @@
             "subtypes": [
                 "Construct"
             ],
-            "text": "When Arms Merchant enters the battlefield, arm it. (Create a colorless Weapon artifact equipment token with \"Equipped creature gets +1/+1\" and Equip {2} and attach it to this creature.)\nOther equipped creatures you control get +1/+1.",
+            "text": "When Arms Merchant enters the battlefield, arm it. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to this creature.)\nOther equipped creatures you control get +1/+1.",
             "toughness": "2",
             "type": "Artifact Creature \u2014 Construct",
             "types": [
@@ -70,7 +70,7 @@
             "subtypes": [
                 "Vehicle"
             ],
-            "text": "Whenever Atares Amplifier is crewed by a creature with first strike, it gains first strike until end of turn. The same is true for flying, deathtouch, double strike, haste, hexproof, indestructible, lifelink, menace, prowess, trample, and vigilance.\nCrew 2 (Tap any number of creatures you control with total power 2 or greater: This Vehicle becomes an artifact creature until end of turn.)",
+            "text": "Whenever Atares Amplifier is crewed by a creature with flying, it gains flying until end of turn. The same is true for first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, prowess, trample, and vigilance.\nCrew 2 (Tap any number of creatures you control with total power 2 or greater: This Vehicle becomes an artifact creature until end of turn.)",
             "toughness": "5",
             "type": "Artifact \u2014 Vehicle",
             "types": [
@@ -95,7 +95,7 @@
             "originalText": "Return target creature card with converted mana cost 2 or less from your graveyard to the battlefield. Arm it. (Create a colorless Weapon artifact equipment token with \"Equipped creature gets +1/+1\" and Equip {2} and attach it to that creature.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Return target creature card with converted mana cost 2 or less from your graveyard to the battlefield. Arm it. (Create a colorless Weapon artifact equipment token with \"Equipped creature gets +1/+1\" and Equip {2} and attach it to that creature.)",
+            "text": "Return target creature card with converted mana cost 2 or less from your graveyard to the battlefield. Arm it. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to that creature.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -119,7 +119,7 @@
             "originalText": "Arm target creature. (Create a colorless Weapon artifact Equipment token with Equip 2 and \"Equipped creature gets +1/+1\" and attach it to that creature.)",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Arm target creature. (Create a colorless Weapon artifact Equipment token with Equip 2 and \"Equipped creature gets +1/+1\" and attach it to that creature.)",
+            "text": "Arm target creature. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to that creature.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -143,7 +143,7 @@
             "originalText": "Target creature gets +2/+4 until end of turn. If it's equipped, it gains lifelink until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Target creature gets +2/+4 until end of turn. If it's equipped, it gains lifelink until end of turn.",
+            "text": "Target creature gets +2/+4 until end of turn. If it's equipped, it also gains lifelink until end of turn.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -258,7 +258,7 @@
             "subtypes": [
                 "Samurai"
             ],
-            "text": "Double strike\nSupremacy \u2014 Whenever Cymurai Blademaster attacks, Cymurai Blademaster gains indestructible until end of turn if you have more life than an opponent.",
+            "text": "Double strike\nSupremacy \u2014 Whenever Cymurai Blademaster attacks, it gains indestructible until end of turn if you have more life than an opponent.",
             "toughness": "2",
             "type": "Artifact Creature \u2014 Samurai",
             "types": [
@@ -338,7 +338,7 @@
             "originalText": "Create three 1/1 white Soldier creature tokens.\nSupremacy \u2014 If you have more life than an opponent, target player skips their next combat step.",
             "originalType": "Sorcery",
             "rarity": "Common",
-            "text": "Create three 1/1 white Soldier creature tokens.\nSupremacy \u2014 If you have more life than an opponent, target player skips their next combat step.",
+            "text": "Create three 1/1 white Soldier creature tokens.\nSupremacy \u2014 If you have more life than an opponent, target player skips their next combat phase.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -361,7 +361,7 @@
             "originalText": "Arm each creature you control. They gain vigilance until end of turn. (Create colorless Weapon artifact equipment tokens with \"Equipped creature gets +1/+1\" and Equip {2} and attach one to each creature you control.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Arm each creature you control. They gain vigilance until end of turn. (Create colorless Weapon artifact equipment tokens with \"Equipped creature gets +1/+1\" and Equip {2} and attach one to each creature you control.)",
+            "text": "Arm each creature you control. They gain vigilance until end of turn. (For each creature you control, create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached that creature.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -391,7 +391,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "+2: You may have each player with the least amount of life gain 3 life.\n-3: Choose a nonland permanent type. Each player who controls the most of that permanent type sacrifices one.\n-10: Target player gets an emblem with \"At the beginning of your upkeep, if you control the most lands, sacrifice one. If you control the most creatures, sacrifice one. If you have the most cards in hand, discard a card.\"",
+            "text": "+2: You may have each player with the least amount of life gain 3 life.\n-3: Choose a nonland permanent type. Each player who controls the most permanents of that type sacrifices one of them.\n-10: Target player gets an emblem with \"At the beginning of your upkeep, sacrifice a land if you control the most lands or are tied for the most, sacrifice a creature if you control the most creatures or are tied for the most, and discard a card if you have the most cards in hand or are tied for the most.\"",
             "type": "Legendary Planeswalker \u2014 L3-T",
             "types": [
                 "Planeswalker"
@@ -415,7 +415,7 @@
             "originalText": "Whenever a creature enters the battlefield under your control, arm it. (Create a colorless artifact Equipment token named Weapon with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)",
             "originalType": "Enchantment",
             "rarity": "Rare",
-            "text": "Whenever a creature enters the battlefield under your control, arm it. (Create a colorless artifact Equipment token named Weapon with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)",
+            "text": "Whenever a creature enters the battlefield under your control, arm it. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to that creature.)",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -556,7 +556,7 @@
                 "Human",
                 "Soldier"
             ],
-            "text": "When N-FORCE Recruit enters the battlefield, arm it. (Create a colorless Weapon artifact equipment token with \"Equipped creature gets +1/+1\" and Equip {2} and attach it to this creature.)",
+            "text": "When N-FORCE Recruit enters the battlefield, arm it. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to this creature.)",
             "toughness": "1",
             "type": "Creature \u2014 Human Soldier",
             "types": [
@@ -585,7 +585,7 @@
                 "Human",
                 "Soldier"
             ],
-            "text": "When N-FORCE Squadron enters the battlefield, arm it twice. (Create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to this creature.)",
+            "text": "When N-FORCE Squadron enters the battlefield, arm it twice. (Create two colorless Equipment artifact tokens named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to this creature.)",
             "toughness": "3",
             "type": "Creature \u2014 Human Soldier",
             "types": [
@@ -717,7 +717,7 @@
             "originalText": "Choose one \u2014\n\u2022 Prevent all damage that would be dealt to you and creatures you control this turn.\n\u2022 Destroy target creature that dealt damage to you or a creature you control this turn.",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Choose one \u2014\n\u2022 Prevent all damage that would be dealt to you and creatures you control this turn.\n\u2022 Destroy target creature that dealt damage to you or a creature you control this turn.",
+            "text": "Choose one \u2014\n\u2022 Prevent all damage that would be dealt to you and creatures you control this turn.\n\u2022 Destroy target creature that dealt damage to you or a creature you controlled this turn.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -971,7 +971,7 @@
                 "Human",
                 "Soldier"
             ],
-            "text": "Supremacy \u2014 When Street Enforcer attacks, it gets +2/+2 until end of turn if you have more life than an opponent.",
+            "text": "Supremacy \u2014 Whenever Street Enforcer attacks, it gets +2/+2 until end of turn if you have more life than an opponent.",
             "toughness": "2",
             "type": "Creature \u2014 Human Soldier",
             "types": [
@@ -1023,7 +1023,7 @@
             "originalText": "When Taken for Questioning enters the battlefield, exile target creature or planeswalker until Taken for Questioning leaves the battlefield.\nSupremacy \u2014 If you have more life than an opponent when Taken for Questioning leaves the battlefield, the exiled card remains in exile instead.",
             "originalType": "Enchantment",
             "rarity": "Rare",
-            "text": "When Taken for Questioning enters the battlefield, exile target creature or planeswalker until Taken for Questioning leaves the battlefield.\nSupremacy \u2014 If you have more life than an opponent when Taken for Questioning leaves the battlefield, the exiled card remains in exile instead.",
+            "text": "When Taken for Questioning enters the battlefield, exile target creature or planeswalker.\nSupremacy \u2014 When Taken for Questioning leaves the battlefield, return the exiled card to the battlefield under its owner's control unless you have more life than an opponent.",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -1054,7 +1054,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Lifelink\nIf you would gain life, you gain twice that much life instead.\nAs long as your life total is at least double the highest life total among your opponents, Theos Artene, Demagogue gets +4/+4.",
+            "text": "Lifelink\nIf you would gain life, you gain twice that much life instead.\nAs long as your life total is at least twice the highest life total among your opponents, Theos Artene, Demagogue gets +4/+4.",
             "toughness": "1",
             "type": "Legendary Creature \u2014 Human Advisor",
             "types": [
@@ -1256,7 +1256,7 @@
             "originalText": "Choose target instant or sorcery card in a graveyard with converted mana cost X or less. You may cast that card without paying its mana cost. Then exile it.",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Choose target instant or sorcery card in a graveyard with converted mana cost X or less. You may cast that card without paying its mana cost. Then exile it.",
+            "text": "Choose target instant or sorcery card in a graveyard with converted mana cost X or less. You may cast that card without paying its mana cost. If that card would be put into your graveyard this turn, exile it instead.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -1363,6 +1363,12 @@
             "originalText": "At the beginning of your upkeep, upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into to their hand during their turn.)\nAt the beginning of your upkeep, if you own 20 or more uploaded cards in exile, you win the game.",
             "originalType": "Enchantment",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2018-10-12",
+                    "text": "Since the second ability contains an intervening if-clause, it doesn't trigger during the same upkeep the first trigger uploads your 20th card."
+                }
+            ],
             "text": "At the beginning of your upkeep, upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into to their hand during their turn.)\nAt the beginning of your upkeep, if you own 20 or more uploaded cards in exile, you win the game.",
             "type": "Enchantment",
             "types": [
@@ -1498,7 +1504,7 @@
             "originalText": "Reveal the top two cards of your library. An opponent chooses a card. Upload that card, then put the other into your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Reveal the top two cards of your library. An opponent chooses a card. Upload that card, then put the other into your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
+            "text": "Reveal the top two cards of your library. An opponent chooses one of them. Upload that card, then put the other into your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -1556,7 +1562,7 @@
                 "Construct",
                 "Ninja"
             ],
-            "text": "When Digiblade Shinobi enters the battlefield, upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)\nWhenever you put an uploaded card into your hand, Digiblade Shinobi can't be blocked until end of turn.",
+            "text": "When Digiblade Shinobi enters the battlefield, upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)\nWhenever you put an uploaded card into your hand, Digiblade Shinobi can't be blocked this turn.",
             "toughness": "2",
             "type": "Artifact Creature \u2014 Construct Ninja",
             "types": [
@@ -1585,7 +1591,7 @@
             "subtypes": [
                 "Construct"
             ],
-            "text": "Flying\nWhenever Flutter Droid attacks, if an artifact entered the battlefield under your control this turn, it gets +1/+0 until end of turn.",
+            "text": "Flying\nWhenever Flutter Droid attacks, if an artifact entered the battlefield under your control this turn, Flutter Droid gets +1/+0 until end of turn.",
             "toughness": "1",
             "type": "Artifact Creature \u2014 Construct",
             "types": [
@@ -1616,7 +1622,7 @@
                 "Human",
                 "Rogue"
             ],
-            "text": "Hacker Prodigy can't be blocked unless the defending player controls an untapped land.",
+            "text": "Hacker Prodigy can't be blocked unless defending player controls an untapped land.",
             "toughness": "1",
             "type": "Creature \u2014 Human Rogue",
             "types": [
@@ -1914,7 +1920,7 @@
             "subtypes": [
                 "Vehicle"
             ],
-            "text": "You may have Scion Mimic enter the battlefield as a copy of any creature on the battlefield, except it's an artifact vehicle instead of its other types and has Crew 1.\nCrew 1 (Tap any number of creatures you control with total power 1 or greater: This Vehicle becomes an artifact creature until end of turn.)",
+            "text": "You may have Scion Mimic enter the battlefield as a copy of any creature on the battlefield, except it's a Vehicle artifact and has crew 1.\nCrew 1 (Tap any number of creatures you control with total power 1 or greater: This Vehicle becomes an artifact creature until end of turn.)",
             "toughness": "0",
             "type": "Artifact \u2014 Vehicle",
             "types": [
@@ -2004,7 +2010,7 @@
                 "Human",
                 "Soldier"
             ],
-            "text": "Flying\nWhen Skyguard Officer enters the battlefield, arm it. (Create a colorless Weapon artifact equipment token with \"Equipped creature gets +1/+1\" and Equip {2} and attach it to this creature.)",
+            "text": "Flying\nWhen Skyguard Officer enters the battlefield, arm it. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to this creature.)",
             "toughness": "1",
             "type": "Creature \u2014 Human Soldier",
             "types": [
@@ -2118,7 +2124,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "+1: Up to one target creature gets -4/-0 until your next turn.\n-3: Until your next turn, the next time an opponent casts a spell, counter that spell.\n-8: You get an emblem with \"You may look at the top card of your library. You may play the top card of your library.\"",
+            "text": "+1: Up to one target creature gets -4/-0 until your next turn.\n-3: Until your next turn, the next time an opponent casts a spell, counter that spell.\n-8: You get an emblem with \"You may look at the top card of your library any time\" and \"You may play the top card of your library.\"",
             "type": "Legendary Planeswalker \u2014 Talya",
             "types": [
                 "Planeswalker"
@@ -2196,7 +2202,7 @@
             "originalText": "Target creature gets +3/+0 until end of turn.\nSupremacy \u2014 That creature gains indestructible until end of turn if you have more life than an opponent.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Target creature gets +3/+0 until end of turn.\nSupremacy \u2014 That creature gains indestructible until end of turn if you have more life than an opponent.",
+            "text": "Target creature gets +3/+0 until end of turn.\nSupremacy \u2014 That creature also gains indestructible until end of turn if you have more life than an opponent.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -2254,7 +2260,7 @@
                 "Human",
                 "Pilot"
             ],
-            "text": "Blackwatch Ace can't block.\nAs long as you control a vehicle, Blackwatch Ace gets +2/+0.",
+            "text": "Blackwatch Ace can't block.\nAs long as you control a Vehicle, Blackwatch Ace gets +2/+0.",
             "toughness": "1",
             "type": "Creature \u2014 Human Pilot",
             "types": [
@@ -2283,7 +2289,7 @@
                 "Human",
                 "Rogue"
             ],
-            "text": "Deathtouch\nWhen Blackwatch Assassin enters the battlefield, arm it. (Create a colorless Weapon artifact Equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to this creature.)",
+            "text": "Deathtouch\nWhen Blackwatch Assassin enters the battlefield, arm it. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to this creature.)",
             "toughness": "2",
             "type": "Creature \u2014 Human Rogue",
             "types": [
@@ -2337,7 +2343,7 @@
             "originalText": "Return target creature card from your graveyard to your hand, then you may upload another creature card in your graveyard. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "originalType": "Sorcery",
             "rarity": "Common",
-            "text": "Return target creature card from your graveyard to your hand, then you may upload another creature card in your graveyard. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
+            "text": "Return target creature card from your graveyard to your hand. If you do, you may upload another creature card from your graveyard. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -2366,7 +2372,7 @@
                 "Construct",
                 "Advisor"
             ],
-            "text": "Supremacy \u2014 At the beginning of your upkeep, if you have more life than an opponent, you lose 2 life and you draw a card.",
+            "text": "Supremacy \u2014 At the beginning of your upkeep, if you have more life than an opponent, you draw a card and you lose 2 life.",
             "toughness": "1",
             "type": "Artifact Creature \u2014 Construct Advisor",
             "types": [
@@ -3094,13 +3100,19 @@
             "originalText": "+1: Each player reveals the top card of his or her library, loses life equal to its converted mana cost, then puts it into his or her hand.\n-2: Target opponent reveals his or her hand. You choose a nonland card from it. That player discards that card.\n-7: Target opponent loses life equal to the difference between his or her life total and his or her starting life total.",
             "originalType": "Legendary Planeswalker \u2014 Nic",
             "rarity": "Mythic Rare",
+            "rulings": [
+                {
+                    "date": "2018-10-12",
+                    "text": "The [-7] works both if the player has more life than their starting life total, and if they have less."
+                }
+            ],
             "subtypes": [
                 "Nic"
             ],
             "supertypes": [
                 "Legendary"
             ],
-            "text": "+1: Each player reveals the top card of his or her library, loses life equal to its converted mana cost, then puts it into his or her hand.\n-2: Target opponent reveals his or her hand. You choose a nonland card from it. That player discards that card.\n-7: Target opponent loses life equal to the difference between his or her life total and his or her starting life total.",
+            "text": "+1: Each player reveals the top card of their library, loses life equal to its converted mana cost, then puts it into their hand.\n-2: Target opponent reveals their hand. You choose a nonland card from it. That player discards that card.\n-7: Target opponent loses life equal to the difference between their life total and their starting life total.",
             "type": "Legendary Planeswalker \u2014 Nic",
             "types": [
                 "Planeswalker"
@@ -3276,7 +3288,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "First strike\nAt least one creature must attack each turn if able.\nWhenever an attacking creature dies, Andreux Von, Extremist deals 1 damage to target player.",
+            "text": "First strike\nEach player must attack with at least one creature each combat if able.\nWhenever an attacking creature dies, Andreux Von, Extremist deals 1 damage to target player.",
             "toughness": "2",
             "type": "Legendary Creature \u2014 Human Rebel",
             "types": [
@@ -3365,7 +3377,7 @@
                 "Human",
                 "Rebel"
             ],
-            "text": "When Assault Squad enters the battlefield, arm it. (Create colorless Weapon artifact equipment tokens with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to this creature.)\nEquipped creatures you control have haste.",
+            "text": "When Assault Squad enters the battlefield, arm it. (Create colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to this creature.)\nEquipped creatures you control have haste.",
             "toughness": "3",
             "type": "Creature \u2014 Human Rebel",
             "types": [
@@ -3569,7 +3581,7 @@
             "subtypes": [
                 "Construct"
             ],
-            "text": "Menace (This creature can't be blocked except by two or more creatures.)\nWhen Hunter-Seeker enters the battlefield, arm it. (Create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to this creature.)",
+            "text": "Menace (This creature can't be blocked except by two or more creatures.)\nWhen Hunter-Seeker enters the battlefield, arm it. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to this creature.)",
             "toughness": "1",
             "type": "Artifact Creature \u2014 Construct",
             "types": [
@@ -3699,7 +3711,7 @@
             "originalText": "Arm target creature you control, then arm it again. That creature deals damage equal to its power to any target. (To arm a creature, create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Arm target creature you control, then arm it again. That creature deals damage equal to its power to any target. (To arm a creature, create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)",
+            "text": "Arm target creature you control twice. That creature deals damage equal to its power to any target. (To arm a creature, create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to that creature.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -3755,7 +3767,7 @@
                 "Dragon",
                 "Construct"
             ],
-            "text": "Flying\n{R}: Mecha Dragon gets +1/+0 until end of turn.\n{R}: Mecha Dragon gains haste until end of turn.\nSacrifice an artifact: Add {R}{R} to your mana pool. Spend this mana only to pay for activated abilities of Mecha Dragon.",
+            "text": "Flying\n{R}: Mecha Dragon gets +1/+0 until end of turn.\n{R}: Mecha Dragon gains haste until end of turn.\nSacrifice an artifact: Add {R}{R}. Spend this mana only to activate abilities of Mecha Dragon.",
             "toughness": "4",
             "type": "Artifact Creature \u2014 Dragon Construct",
             "types": [
@@ -3811,7 +3823,13 @@
             "originalText": "At the beginning of combat on your turn, you may choose at least three creatures you control that share no creature types among them. They get +3/+0 until end of turn.",
             "originalType": "Enchantment",
             "rarity": "Rare",
-            "text": "At the beginning of combat on your turn, you may choose at least three creatures you control that share no creature types among them. They get +3/+0 until end of turn.",
+            "rulings": [
+                {
+                    "date": "2018-10-12",
+                    "text": "Vehicle is an artifact type, not a creature type. For example, you can choose three crewed Vehicles for this trigger, or two Vehicles and any other creature."
+                }
+            ],
+            "text": "At the beginning of combat on your turn, you may choose at least three creatures you control that share no creature types among them. They each get +3/+0 until end of turn.",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -3835,7 +3853,7 @@
             "originalText": "Arm target creature. It gains double strike until end of turn. (Create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Arm target creature. It gains double strike until end of turn. (Create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)",
+            "text": "Arm target creature. It gains double strike until end of turn. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to that creature.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -3887,7 +3905,7 @@
                 "Lizard",
                 "Mutant"
             ],
-            "text": "Menace (This creature can't be blocked except by two or more creatures.)\nOther Mutant creatures you control have menace.",
+            "text": "Menace (This creature can't be blocked except by two or more creatures.)\nOther Mutants you control have menace.",
             "toughness": "3",
             "type": "Creature \u2014 Lizard Mutant",
             "types": [
@@ -3916,7 +3934,7 @@
                 "Human",
                 "Rebel"
             ],
-            "text": "Haste\nWhen Road Rebel enters the battlefield, arm it. (Create a colorless Weapon artifact Equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to this creature.)",
+            "text": "Haste\nWhen Road Rebel enters the battlefield, arm it. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to this creature.)",
             "toughness": "1",
             "type": "Creature \u2014 Human Rebel",
             "types": [
@@ -4004,7 +4022,7 @@
                 "Lizard",
                 "Mutant"
             ],
-            "text": "When Saurian Sniper enters the battlefield, arm target Mutant you control. (Create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)",
+            "text": "When Saurian Sniper enters the battlefield, arm target Mutant you control. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to that creature.)",
             "toughness": "2",
             "type": "Creature \u2014 Lizard Mutant",
             "types": [
@@ -4193,7 +4211,7 @@
             "originalText": "Arm target creature you control. (Create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)\nDestroy target artifact.",
             "originalType": "Sorcery",
             "rarity": "Common",
-            "text": "Arm target creature you control. (Create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)\nDestroy target artifact.",
+            "text": "Arm target creature you control. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to that creature.)\nDestroy target artifact.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -4568,7 +4586,7 @@
                 "Plant",
                 "Mutant"
             ],
-            "text": "When Garden Grafter enters the battlefield, upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)\nWhenever you put an uploaded land card into your hand, you may put it onto the battlefield tapped instead.",
+            "text": "When Garden Grafter enters the battlefield, upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)\nIf you would put an uploaded land card into your hand, you may put it onto the battlefield tapped instead.",
             "toughness": "4",
             "type": "Creature \u2014 Plant Mutant",
             "types": [
@@ -4597,7 +4615,7 @@
                 "Hydra",
                 "Construct"
             ],
-            "text": "Gunmetal Hydra enters the battlefield armed X times. (It is attached by X colorless Weapon artifact equipment tokens with \"Equipped creature gets +1/+1\" and Equip {2}.)",
+            "text": "Gunmetal Hydra enters the battlefield armed X times. (It is equipped with X colorless Equipment artifact tokens named Weapon with \"Equipped creature gets +1/+1\" and equip {2}.)",
             "toughness": "0",
             "type": "Artifact Creature \u2014 Hydra Construct",
             "types": [
@@ -4763,7 +4781,7 @@
                 "Mutant",
                 "Giant"
             ],
-            "text": "Monstrous Apex can't be countered.\nHexproof\n{1}{G}: Monstrous Apex gains indestructible until end of turn.",
+            "text": "This spell can't be countered.\nHexproof\n{1}{G}: Monstrous Apex gains indestructible until end of turn.",
             "toughness": "6",
             "type": "Creature \u2014 Mutant Giant",
             "types": [
@@ -4982,7 +5000,7 @@
                 "Mutant",
                 "Soldier"
             ],
-            "text": "Vigilance\nSupremacy \u2014 As long as you have more life than an opponent, Sapien Sergeant gets +2/+2, has trample, and attacks each turn if able.",
+            "text": "Vigilance\nSupremacy \u2014 As long as you have more life than an opponent, Sapien Sergeant gets +2/+2, has trample, and attacks each combat if able.",
             "toughness": "4",
             "type": "Artifact Creature \u2014 Mutant Soldier",
             "types": [
@@ -5120,7 +5138,7 @@
             "originalText": "Arm target creature you control. Then that creature fights target creature you don't control. (Create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)",
             "originalType": "Sorcery",
             "rarity": "Common",
-            "text": "Arm target creature you control. Then that creature fights target creature you don't control. (Create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)",
+            "text": "Arm target creature you control. Then that creature fights target creature you don't control. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to that creature.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -5178,7 +5196,7 @@
                 "Mutant",
                 "Warrior"
             ],
-            "text": "Trample\nSupremacy \u2014 When Splice Thug attacks, it gets +2/+2 until end of turn if you have more life than an opponent.",
+            "text": "Trample\nSupremacy \u2014 Whenever Splice Thug attacks, it gets +2/+2 until end of turn if you have more life than an opponent.",
             "toughness": "4",
             "type": "Creature \u2014 Mutant Warrior",
             "types": [
@@ -5424,7 +5442,7 @@
                 "Human",
                 "Rebel"
             ],
-            "text": "Flying, haste\nWhen Aerial Gunner enters the battlefield, arm it. (Create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to this creature.)",
+            "text": "Flying, haste\nWhen Aerial Gunner enters the battlefield, arm it. (Create a colorless Equipment artifact token with \"Equipped creature gets +1/+1\" and equip {2} attached to this creature.)",
             "toughness": "1",
             "type": "Creature \u2014 Human Rebel",
             "types": [
@@ -5486,7 +5504,7 @@
                 "Lizard",
                 "Mutant"
             ],
-            "text": "When Escaped Specimen enters the battlefield, choose +2/+0 and vigilance or +0/+2 and haste.\nMutants you control have the chosen ability and the chosen power and/or toughness increases.",
+            "text": "As Escaped Specimen enters the battlefield, choose +2/+0 and vigilance or +0/+2 and haste.\nMutants you control get the chosen power or toughness increase and have the chosen ability.",
             "toughness": "3",
             "type": "Creature \u2014 Lizard Mutant",
             "types": [
@@ -5542,7 +5560,7 @@
                 "Human",
                 "Rebel"
             ],
-            "text": "{1}, Sacrifice a nontoken artifact: Arm Gun Collector. (Create a colorless Weapon artifact equipment token with \"Equipped creature gets +1/+1\" and Equip {2} and attach it to this creature.)",
+            "text": "{1}, Sacrifice a nontoken artifact: Arm Gun Collector. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to this creature.)",
             "toughness": "2",
             "type": "Creature \u2014 Human Rebel",
             "types": [
@@ -5593,7 +5611,7 @@
             "originalText": "Creatures you control get +3/+3 until end of turn.\nSupremacy \u2014 If you have more life than each opponent, those creatures also gain lifelink and trample until end of turn.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Creatures you control get +3/+3 until end of turn.\nSupremacy \u2014 If you have more life than each opponent, those creatures also gain lifelink and trample until end of turn.",
+            "text": "Creatures you control get +3/+3 until end of turn.\nSupremacy \u2014 If you have more life than each opponent, those creatures also gain trample and lifelink until end of turn.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -5680,7 +5698,7 @@
                 "Construct",
                 "Pilot"
             ],
-            "text": "Lifelink\nWhenever Mercenary Autopilot crews a vehicle, that vehicle gains lifelink until end of turn.",
+            "text": "Lifelink\nWhenever Mercenary Autopilot crews a Vehicle, that Vehicle gains lifelink until end of turn.",
             "toughness": "1",
             "type": "Artifact Creature \u2014 Construct Pilot",
             "types": [
@@ -5745,7 +5763,7 @@
                 "Human",
                 "Rogue"
             ],
-            "text": "Net Runner can only be blocked by Rogues.\nWhenever Net Runner deals combat damage to an opponent, look at their hand and choose a nonland card from it. They upload that card. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
+            "text": "Net Runner can't be blocked except by Rogues.\nWhenever Net Runner deals combat damage to an opponent, look at their hand and choose a nonland card from it. They upload that card. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "toughness": "2",
             "type": "Creature \u2014 Human Rogue",
             "types": [
@@ -5834,7 +5852,7 @@
                 "Human",
                 "Warrior"
             ],
-            "text": "Vigilance\nWhenever Quickdraw Vigilante blocks or becomes blocked, arm it. (To arm a creature, create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)",
+            "text": "Vigilance\nWhenever Quickdraw Vigilante blocks or becomes blocked, arm it. (To arm a creature, create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to that creature.)",
             "toughness": "3",
             "type": "Creature \u2014 Human Warrior",
             "types": [
@@ -5981,7 +5999,7 @@
             "originalText": "Whenever Toxic Scrap Heap enters the battlefield or is put into your graveyard from the battlefield, choose one \u2014\n\u2022 Toxic Scrap Heap deals 2 damage to any target.\n\u2022 Target player discards a card.",
             "originalType": "Artifact",
             "rarity": "Rare",
-            "text": "Whenever Toxic Scrap Heap enters the battlefield or is put into your graveyard from the battlefield, choose one \u2014\n\u2022 Toxic Scrap Heap deals 2 damage to any target.\n\u2022 Target player discards a card.",
+            "text": "When Toxic Scrap Heap enters the battlefield or is put into your graveyard from the battlefield, choose one \u2014\n\u2022 Toxic Scrap Heap deals 2 damage to any target.\n\u2022 Target player discards a card.",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -6010,7 +6028,7 @@
             "subtypes": [
                 "Construct"
             ],
-            "text": "Supremacy \u2014 If you have more life than an opponent, whenever you tap a land for mana, add one mana of any type that land produced.\n{4}{B}{G}: Target player loses 2 life and you gain 2 life.",
+            "text": "Supremacy \u2014 Whenever you tap a land for mana, if you have more life than an opponent, add one mana of any type that land produced.\n{4}{B}{G}: Target player loses 2 life and you gain 2 life.",
             "toughness": "5",
             "type": "Artifact Creature \u2014 Construct",
             "types": [
@@ -6037,7 +6055,7 @@
             "originalText": "Supremacy \u2014 If you have more life than an opponent, choose both; otherwise, choose one \u2014\n\u2022 Destroy target artifact or creature.\n\u2022 Return target artifact or creature card from your graveyard to your hand.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Supremacy \u2014 If you have more life than an opponent, choose both; otherwise, choose one \u2014\n\u2022 Destroy target artifact or creature.\n\u2022 Return target artifact or creature card from your graveyard to your hand.",
+            "text": "Supremacy \u2014 If you have more life than an opponent, choose both. Otherwise, choose one.\n\u2022 Destroy target artifact or creature.\n\u2022 Return target artifact or creature card from your graveyard to your hand.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -6086,7 +6104,7 @@
             "subtypes": [
                 "Construct"
             ],
-            "text": "When Combat Droid enters the battlefield, arm it. (Create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" that's attached to this creature.)",
+            "text": "When Combat Droid enters the battlefield, arm it. (Create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to this creature.)",
             "toughness": "1",
             "type": "Artifact Creature \u2014 Construct",
             "types": [
@@ -6217,7 +6235,7 @@
             "subtypes": [
                 "Construct"
             ],
-            "text": "It costs {1} less to return an uploaded card to your hand.\n{5}: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
+            "text": "Upload costs of uploaded cards you own cost {1} less.\n{5}: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "toughness": "3",
             "type": "Artifact Creature \u2014 Construct",
             "types": [
@@ -6281,7 +6299,7 @@
             "originalText": "{1}, {T}, Pay 1 life: Arm target creature. (To arm a creature, create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)\n{1}, {T}, Sacrifice an equipment: Create a 2/2 colorless Construct artifact creature token.\n{1}, {T}, Sacrifice an artifact creature: You gain 4 life.",
             "originalType": "Artifact",
             "rarity": "Rare",
-            "text": "{1}, {T}, Pay 1 life: Arm target creature. (To arm a creature, create a colorless Weapon artifact equipment token with Equip {2} and \"Equipped creature gets +1/+1\" and attach it to that creature.)\n{1}, {T}, Sacrifice an equipment: Create a 2/2 colorless Construct artifact creature token.\n{1}, {T}, Sacrifice an artifact creature: You gain 4 life.",
+            "text": "{1}, {T}, Pay 1 life: Arm target creature. (To arm a creature, create a colorless Equipment artifact token named Weapon with \"Equipped creature gets +1/+1\" and equip {2} attached to that creature.)\n{1}, {T}, Sacrifice an Equipment: Create a 2/2 colorless Construct artifact creature token.\n{1}, {T}, Sacrifice an artifact creature: You gain 4 life.",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -6374,7 +6392,7 @@
             "originalText": "{T}, Sacrifice a nonartifact creature: Add {G}{G} to your mana pool.",
             "originalType": "Artifact",
             "rarity": "Rare",
-            "text": "{T}, Sacrifice a nonartifact creature: Add {G}{G} to your mana pool.",
+            "text": "{T}, Sacrifice a nonartifact creature: Add {G}{G}.",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -6481,10 +6499,16 @@
             "originalText": "Anytime you would mulligan and Talya's Private Server is in your hand, you may first exile Talya's Private Server from your hand. If you do, put it onto the battlefield at the beginning of the first upkeep.\n{T}, Sacrifice Talya's Private Server: Scry 1.",
             "originalType": "Legendary Artifact",
             "rarity": "Mythic Rare",
+            "rulings": [
+                {
+                    "date": "2018-10-12",
+                    "text": "The card you draw is immediately shuffled back into your library as part of mulliganing. The draw effect simply exists to avoid going from e.g. 7 cards to 5 cards if the ability is used."
+                }
+            ],
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Anytime you would mulligan and Talya's Private Server is in your hand, you may first exile Talya's Private Server from your hand. If you do, put it onto the battlefield at the beginning of the first upkeep.\n{T}, Sacrifice Talya's Private Server: Scry 1.",
+            "text": "As you mulligan, you may first exile Talya's Private Server from your hand and draw a card. If you do, put Talya's Private Server onto the battlefield at the beginning of the first upkeep.\n{T}, Sacrifice Talya's Private Server: Scry 1.",
             "type": "Legendary Artifact",
             "types": [
                 "Artifact"
@@ -6506,7 +6530,7 @@
             "originalText": "BiHelix Laboratory enters the battlefield tapped unless you control an artifact.\n{T}: Add {G} or {U} to your mana pool.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "BiHelix Laboratory enters the battlefield tapped unless you control an artifact.\n{T}: Add {G} or {U} to your mana pool.",
+            "text": "BiHelix Laboratory enters the battlefield tapped unless you control an artifact.\n{T}: Add {G} or {U}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6528,7 +6552,7 @@
             "originalText": "Blackwatch Territory enters the battlefield tapped unless you control an artifact.\n{T}: Add {B} or {G} to your mana pool.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Blackwatch Territory enters the battlefield tapped unless you control an artifact.\n{T}: Add {B} or {G} to your mana pool.",
+            "text": "Blackwatch Territory enters the battlefield tapped unless you control an artifact.\n{T}: Add {B} or {G}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6570,7 +6594,7 @@
             "originalText": "Cloud Reactor enters the battlefield tapped.\n{T}: Add {W} or {U} to your mana pool.\n{T}, Sacrifice Cloud Reactor: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "Cloud Reactor enters the battlefield tapped.\n{T}: Add {W} or {U} to your mana pool.\n{T}, Sacrifice Cloud Reactor: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
+            "text": "Cloud Reactor enters the battlefield tapped.\n{T}: Add {W} or {U}.\n{T}, Sacrifice Cloud Reactor: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "type": "Land",
             "types": [
                 "Land"
@@ -6592,7 +6616,7 @@
             "originalText": "CyCorp Research Facility enters the battlefield tapped unless you control an artifact.\n{T}: Add {U} or {R} to your mana pool.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "CyCorp Research Facility enters the battlefield tapped unless you control an artifact.\n{T}: Add {U} or {R} to your mana pool.",
+            "text": "CyCorp Research Facility enters the battlefield tapped unless you control an artifact.\n{T}: Add {U} or {R}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6613,7 +6637,7 @@
             "originalText": "Genesis Reactor enters the battlefield tapped.\n{T}: Add {G} or {W} to your mana pool.\n{T}, Sacrifice Genesis Reactor: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "Genesis Reactor enters the battlefield tapped.\n{T}: Add {G} or {W} to your mana pool.\n{T}, Sacrifice Genesis Reactor: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
+            "text": "Genesis Reactor enters the battlefield tapped.\n{T}: Add {G} or {W}.\n{T}, Sacrifice Genesis Reactor: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "type": "Land",
             "types": [
                 "Land"
@@ -6631,7 +6655,7 @@
             "originalText": "{T}: Add {C} to your mana pool.\n{1}: Holo-Den becomes the basic land type of your choice until end of turn. (You may tap it to add mana that the chosen basic land type produces.)",
             "originalType": "Land",
             "rarity": "Common",
-            "text": "{T}: Add {C} to your mana pool.\n{1}: Holo-Den becomes the basic land type of your choice until end of turn. (You may tap it to add mana that the chosen basic land type produces.)",
+            "text": "{T}: Add {C}.\n{1}: Holo-Den becomes the basic land type of your choice until end of turn. (You may tap it to add mana that the chosen basic land type produces.)",
             "type": "Land",
             "types": [
                 "Land"
@@ -6653,7 +6677,7 @@
             "originalText": "MekLab Factory enters the battlefield tapped unless you control an artifact.\n{T}: Add {R} or {W} to your mana pool.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "MekLab Factory enters the battlefield tapped unless you control an artifact.\n{T}: Add {R} or {W} to your mana pool.",
+            "text": "MekLab Factory enters the battlefield tapped unless you control an artifact.\n{T}: Add {R} or {W}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6675,7 +6699,7 @@
             "originalText": "N-FORCE Station enters the battlefield tapped unless you control an artifact.\n{T}: Add {W} or {B} to your mana pool.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "N-FORCE Station enters the battlefield tapped unless you control an artifact.\n{T}: Add {W} or {B} to your mana pool.",
+            "text": "N-FORCE Station enters the battlefield tapped unless you control an artifact.\n{T}: Add {W} or {B}.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6696,7 +6720,7 @@
             "originalText": "Null Reactor enters the battlefield tapped.\n{T}: Add {U} or {B} to your mana pool.\n{T}, Sacrifice Null Reactor: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "Null Reactor enters the battlefield tapped.\n{T}: Add {U} or {B} to your mana pool.\n{T}, Sacrifice Null Reactor: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
+            "text": "Null Reactor enters the battlefield tapped.\n{T}: Add {U} or {B}.\n{T}, Sacrifice Null Reactor: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "type": "Land",
             "types": [
                 "Land"
@@ -6717,7 +6741,7 @@
             "originalText": "Toxic Reactor enters the battlefield tapped.\n{T}: Add {B} or {R} to your mana pool.\n{T}, Sacrifice Toxic Reactor: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "Toxic Reactor enters the battlefield tapped.\n{T}: Add {B} or {R} to your mana pool.\n{T}, Sacrifice Toxic Reactor: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
+            "text": "Toxic Reactor enters the battlefield tapped.\n{T}: Add {B} or {R}.\n{T}, Sacrifice Toxic Reactor: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "type": "Land",
             "types": [
                 "Land"
