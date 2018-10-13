@@ -12,6 +12,7 @@ Usage:
 Options:
   -h, --help     Print this message and exit.
   -q, --quiet    Print less output.
+  --path=<path>  Specify the path at which the Lore Seeker repo is located.
   --port=<port>  Specify the port at which the Rails app will run [Default: 18803].
 """
 
@@ -134,19 +135,18 @@ def notify_crash(exc=None):
         mail_text += '\n' + traceback.format_exc()
     return subprocess.run(['ssmtp', 'fenhl@fenhl.net'], input=mail_text.encode('utf-8'), check=True)
 
-def run(*, do_name_check=True, port=18803, verbose=False):
+def run(*, do_name_check=True, path=gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path, port=18803, verbose=False):
     try:
-        stage = gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path
-        cmd(['git', 'reset-to-remote', '--branch=lore-seeker'], cwd=str(stage), announce=verbose)
+        cmd(['git', 'reset-to-remote'], cwd=str(path), announce=verbose)
         with contextlib.suppress(ConnectionRefusedError): # no need to reload Discord bot's card database if the bot isn't running
             bot_cmd('reload')
         #if do_name_check:
-        #    name_check(stage, verbose=verbose)
-        cmd(['rake', 'rules:update'], cwd=str(stage), announce=verbose)
-        cmd(['rake', 'index'], cwd=str(stage), announce=verbose)
-        cmd(['/opt/venv/py3.7/bin/python', 'bin/make-trice-download'], cwd=str(stage), announce=verbose)
-        cmd(['bundle', 'install'], cwd=str(stage / 'search-engine'), announce=verbose)
-        cmd(['bundle', 'install'], cwd=str(stage / 'frontend'), announce=verbose)
+        #    name_check(path, verbose=verbose)
+        cmd(['rake', 'rules:update'], cwd=str(path), announce=verbose)
+        cmd(['rake', 'index'], cwd=str(path), announce=verbose)
+        cmd(['/opt/venv/py3.7/bin/python', 'bin/make-trice-download'], cwd=str(path), announce=verbose)
+        cmd(['bundle', 'install'], cwd=str(path / 'search-engine'), announce=verbose)
+        cmd(['bundle', 'install'], cwd=str(path / 'frontend'), announce=verbose)
         with CONFIG_PATH.open() as config_f:
             config = json.load(config_f)
         env = {
@@ -157,7 +157,7 @@ def run(*, do_name_check=True, port=18803, verbose=False):
         notify_crash(e)
         raise
     with open('/var/www/loreseeker.fenhl.net/access.log', 'a') as access_log:
-        lore_seeker = cmd(['bundle', 'exec', 'rails', 'server', '-p', str(port)], env=env, cwd=str(stage / 'frontend'), stdout=access_log, stderr=access_log, wait=False, announce=verbose)
+        lore_seeker = cmd(['bundle', 'exec', 'rails', 'server', '-p', str(port)], env=env, cwd=str(path / 'frontend'), stdout=access_log, stderr=access_log, wait=False, announce=verbose)
         with PIDFILE_PATH.open('w') as pidfile:
             print(str(lore_seeker.pid), file=pidfile)
         lore_seeker.wait()
@@ -181,5 +181,9 @@ if __name__ == '__main__':
         os.kill(pid, signal.SIGTERM)
     else:
         while True:
-            run(port=int(arguments['--port']), verbose=not arguments['--quiet'])
+            if arguments['--path']:
+                path = pathlib.Path(arguments['--path'])
+            else:
+                path = None
+            run(path=path, port=int(arguments['--port']), verbose=not arguments['--quiet'])
             time.sleep(10)
