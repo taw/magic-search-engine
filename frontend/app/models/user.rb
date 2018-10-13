@@ -18,18 +18,24 @@ class User < ApplicationRecord
         []
       end
     end.first
-    JSON.load(user_path)
+    return JSON.load(user_path) if !user_path.nil?
   end
 
   def username
-    profile_data["username"]
+    profile = profile_data
+    return profile_data["username"] if !profile.nil?
   end
 
   def discrim
-    profile_data["discriminator"]
+    profile = profile_data
+    return profile_data["discriminator"] if !profile.nil?
   end
 
   def to_s
-    "#{self.username}##{self.discrim}"
+    if profile_data.nil?
+      "deleted user"
+    else
+      "#{self.username}##{self.discrim}"
+    end
   end
 end
