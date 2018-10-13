@@ -1,5 +1,3 @@
-require "active_record"
-
 class User < ActiveRecord::Base
   validates_presence_of :uid
   validates_uniqueness_of :uid
