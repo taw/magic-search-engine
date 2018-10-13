@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   get "deck" => "deck#index"
   get "sealed" => "sealed#index"
   get "/" => "card#index"
+  # Lore Seeker extensions
+  get "auth/discord/callback" => "session#create"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -24,9 +24,10 @@ module Frontend
     # -- all .rb files in that directory are automatically loaded.
     config.action_view.logger = nil
 
-    # No need for cookies
-    config.middleware.delete ActionDispatch::Cookies
-    config.middleware.delete ActionDispatch::Session::CookieStore
+    # Lore Seeker extension: need cookies for auth
+    config.session_store :cookie_store
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
     config.middleware.delete ActionDispatch::Flash
   end
 end

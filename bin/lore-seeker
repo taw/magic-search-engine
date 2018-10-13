@@ -54,6 +54,7 @@ GLOBAL_KEYS = [
     'reserved',
     'rulings'
 ]
+CONFIG_PATH = pathlib.Path('/var/www/loreseeker.fenhl.net/config.json')
 PIDFILE_PATH = pathlib.Path('/var/www/loreseeker.fenhl.net/pidfile')
 
 def bot_cmd(command_text):
@@ -145,11 +146,17 @@ def run(*, do_name_check=True, verbose=False):
         cmd(['/opt/venv/py3.7/bin/python', 'bin/make-trice-download'], cwd=str(stage), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(stage / 'search-engine'), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(stage / 'frontend'), announce=verbose)
+        with CONFIG_PATH.open() as config_f:
+            config = json.load(config_f)
+        env = {
+            'DISCORD_CLIENT_ID': config['clientID'],
+            'DISCORD_CLIENT_SECRET': config['clientSecret']
+        }
     except Exception as e:
         notify_crash(e)
         raise
     with open('/var/www/loreseeker.fenhl.net/access.log', 'a') as access_log:
-        lore_seeker = cmd(['bundle', 'exec', 'rails', 'server', '-p', '18803'], cwd=str(stage / 'frontend'), stdout=access_log, stderr=access_log, wait=False, announce=verbose)
+        lore_seeker = cmd(['bundle', 'exec', 'rails', 'server', '-p', '18803'], env=env, cwd=str(stage / 'frontend'), stdout=access_log, stderr=access_log, wait=False, announce=verbose)
         with PIDFILE_PATH.open('w') as pidfile:
             print(str(lore_seeker.pid), file=pidfile)
         lore_seeker.wait()

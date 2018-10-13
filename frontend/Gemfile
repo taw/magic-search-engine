@@ -64,3 +64,7 @@ end
 group :production do
   gem "unicorn"
 end
+
+# Lore Seeker extensions
+gem "omniauth"
+gem "omniauth-discord"
