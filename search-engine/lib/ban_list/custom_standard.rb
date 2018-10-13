@@ -27,7 +27,7 @@ BanList.for_format("custom standard") do
 
   change(
     "2018-10-05",
-    "https://discordapp.com/channels/205457071380889601/256560810237624320/500590574487732245",
+    "https://discordapp.com/channels/205457071380889601/256560810237624320/500592255153733632",
     "Dirty Work" => "banned",
   )
 end
