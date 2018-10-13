@@ -2,7 +2,13 @@ development:
   adapter: postgresql
   encoding: unicode
   database: lore_seeker
+  pool: 5
+  username: lore_seeker
+  password: /2ZcnhB^Y7aQw6kp
 production:
   adapter: postgresql
   encoding: unicode
   database: lore_seeker
+  pool: 5
+  username: lore_seeker
+  password: /2ZcnhB^Y7aQw6kp
