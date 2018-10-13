@@ -24,4 +24,10 @@ BanList.for_format("custom standard") do
     "https://discordapp.com/channels/205457071380889601/256560810237624320/484806817013301249",
     "Cursed by the Veil" => "legal",
   )
+
+  change(
+    "2018-10-05",
+    "https://discordapp.com/channels/205457071380889601/256560810237624320/500590574487732245",
+    "Dirty Work" => "banned",
+  )
 end
