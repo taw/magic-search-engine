@@ -4,9 +4,14 @@
   %body{"data-turbolinks" => content_for?(:disable_turbolinks) ? "false" : nil}
     .container{class: @empty_page ? "empty_page" : ""}
       .row.logo_row
-        .col-12
+        .col-12.col-md-6
           %h1
             %a.site_logo{href: "/"}= APP_NAME
+        .col-12.col-md-6.signin_status
+          - if signed_in?
+            = signed in as #{current_user}
+          - else
+            %a{href: "/auth/discord"} Sign in with Discord
       = form_tag("/card", method: :get, class: "search row search_form_row", enforce_utf8: false) do
         .col-12.col-md-10
           = text_field_tag(:q, @search, {class: 'form-control', tabindex: 1, autofocus: @empty_page})

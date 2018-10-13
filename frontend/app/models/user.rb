@@ -5,4 +5,8 @@ class User < ApplicationRecord
   def self.find_or_create_from_hash(hash)
     find_or_create_by!(uid: hash['uid'])
   end
+
+  def to_s
+    "#{self.uid}" #TODO show username#discrim
+  end
 end
