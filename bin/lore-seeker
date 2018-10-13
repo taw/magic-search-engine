@@ -151,7 +151,8 @@ def run(*, do_name_check=True, path=gitdir.host.github.GitHub().repo('fenhl/lore
             config = json.load(config_f)
         env = {
             'DISCORD_CLIENT_ID': config['clientID'],
-            'DISCORD_CLIENT_SECRET': config['clientSecret']
+            'DISCORD_CLIENT_SECRET': config['clientSecret'],
+            **os.environ
         }
     except Exception as e:
         notify_crash(e)
