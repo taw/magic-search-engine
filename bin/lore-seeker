@@ -135,7 +135,9 @@ def notify_crash(exc=None):
         mail_text += '\n' + traceback.format_exc()
     return subprocess.run(['ssmtp', 'fenhl@fenhl.net'], input=mail_text.encode('utf-8'), check=True)
 
-def run(*, do_name_check=True, path=gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path, port=18803, verbose=False):
+def run(*, do_name_check=True, path=None, port=18803, verbose=False):
+    if path is None:
+        path = gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path
     try:
         cmd(['git', 'reset-to-remote'], cwd=str(path), announce=verbose)
         with contextlib.suppress(ConnectionRefusedError): # no need to reload Discord bot's card database if the bot isn't running
