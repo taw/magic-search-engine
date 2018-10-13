@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   validates_presence_of :uid
   validates_uniqueness_of :uid
 

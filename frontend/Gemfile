@@ -66,6 +66,6 @@ group :production do
 end
 
 # Lore Seeker extensions
-gem "pg"
+gem "pg", "~> 0.18"
 gem "omniauth"
 gem "omniauth-discord"
