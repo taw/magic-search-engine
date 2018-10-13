@@ -142,8 +142,7 @@ def run(*, do_name_check=True, path=gitdir.host.github.GitHub().repo('fenhl/lore
             bot_cmd('reload')
         #if do_name_check:
         #    name_check(path, verbose=verbose)
-        cmd(['rake', 'rules:update'], cwd=str(path), announce=verbose)
-        cmd(['rake', 'index'], cwd=str(path), announce=verbose)
+        cmd(['rake', 'rules:update', 'index'], cwd=str(path), announce=verbose)
         cmd(['/opt/venv/py3.7/bin/python', 'bin/make-trice-download'], cwd=str(path), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(path / 'search-engine'), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(path / 'frontend'), announce=verbose)
