@@ -1,0 +1,31 @@
+server {
+    server_name loreseeker.fenhl.net;
+
+    listen 80;
+    listen [::]:80;
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    ssl_certificate /etc/letsencrypt/live/inwx/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/inwx/privkey.pem;
+
+    if ($scheme = http) {
+        return 301 https://$host$request_uri;
+    }
+
+    location / {
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-Port 443;
+        proxy_pass http://localhost:18803;
+    }
+
+    error_page 401 /error/401.html;
+    error_page 404 /error/404.html;
+    error_page 500 502 503 504 /error/50x.html;
+
+    location /error/ {
+        root /var/www/loreseeker.fenhl.net;
+        internal;
+    }
+}
