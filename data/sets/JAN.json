@@ -94,10 +94,10 @@
             "manaCost": "{3}{W}",
             "name": "Ancestral Aid",
             "number": "3",
-            "originalText": "Focus {4}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nWhen Ancestral Aid enters the battlefield, exile target nonland permanent an opponent controls until Ancestral Aid leaves the battlefield.",
+            "originalText": "Focus {5}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nWhen Ancestral Aid enters the battlefield, exile target nonland permanent an opponent controls until Ancestral Aid leaves the battlefield.",
             "originalType": "Enchantment",
             "rarity": "Uncommon",
-            "text": "Focus {4}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nWhen Ancestral Aid enters the battlefield, exile target nonland permanent an opponent controls until Ancestral Aid leaves the battlefield.",
+            "text": "Focus {5}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nWhen Ancestral Aid enters the battlefield, exile target nonland permanent an opponent controls until Ancestral Aid leaves the battlefield.",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -323,7 +323,7 @@
         },
         {
             "artist": "cg-sphinx",
-            "cmc": 4,
+            "cmc": 3,
             "colorIdentity": [
                 "W"
             ],
@@ -332,10 +332,10 @@
             ],
             "imageName": "duneshaper",
             "layout": "normal",
-            "manaCost": "{3}{W}",
+            "manaCost": "{1}{W}{W}",
             "name": "Duneshaper",
             "number": "12",
-            "originalText": "{2}{W}: Create a 1/1 white Elemental creature token.\n{2}{W}: Creatures you control get +1/+1 until end of turn.\n{2}{W}: You gain 1 life for each creature token you control.",
+            "originalText": "{2}{W}{W}: Create a 1/1 white Elemental creature token.\n{2}{W}{W}: Creatures you control get +1/+1 until end of turn.\n{2}{W}{W}: You gain 1 life for each creature token you control.",
             "originalType": "Creature \u2014 Human Wizard",
             "power": "2",
             "rarity": "Uncommon",
@@ -343,7 +343,7 @@
                 "Human",
                 "Wizard"
             ],
-            "text": "{2}{W}: Create a 1/1 white Elemental creature token.\n{2}{W}: Creatures you control get +1/+1 until end of turn.\n{2}{W}: You gain 1 life for each creature token you control.",
+            "text": "{2}{W}{W}: Create a 1/1 white Elemental creature token.\n{2}{W}{W}: Creatures you control get +1/+1 until end of turn.\n{2}{W}{W}: You gain 1 life for each creature token you control.",
             "toughness": "2",
             "type": "Creature \u2014 Human Wizard",
             "types": [
@@ -712,23 +712,24 @@
             ]
         },
         {
-            "artist": "Ascending-Storm",
-            "cmc": 5,
+            "artist": "Jeffrey Smith",
+            "cmc": 8,
             "colorIdentity": [
                 "W"
             ],
             "colors": [
                 "White"
             ],
-            "imageName": "radiant reckoning",
+            "flavor": "\"I looked and saw the sun, but not the sun I knew. As it rose, the people fell to their feet before it, and within an instant they were gone.\"\n\u2014 Rawaya, the Wanderer",
+            "imageName": "radiant dawn",
             "layout": "normal",
-            "manaCost": "{3}{W}{W}",
-            "name": "Radiant Reckoning",
+            "manaCost": "{5}{W}{W}{W}",
+            "name": "Radiant Dawn",
             "number": "26",
-            "originalText": "Focus {3}{W}{W}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nDestroy all creatures. If you have four or more cards in your hand, return all creature cards with converted mana cost 2 or less from your graveyard to the battlefield under your control.",
+            "originalText": "Destroy all creatures. Then, return all creature cards with converted mana cost 2 or less from your graveyard to the battlefield.",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Focus {3}{W}{W}{W} (You may cast this spell for its focus cost. When you do, draw a card.)\nDestroy all creatures. If you have four or more cards in your hand, return all creature cards with converted mana cost 2 or less from your graveyard to the battlefield under your control.",
+            "text": "Destroy all creatures. Then return all creature cards with converted mana cost 2 or less from your graveyard to the battlefield.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -1042,7 +1043,7 @@
         },
         {
             "artist": "Brandon Bailey",
-            "cmc": 3,
+            "cmc": 2,
             "colorIdentity": [
                 "W"
             ],
@@ -1052,17 +1053,17 @@
             "flavor": "Always alert, always afraid.",
             "imageName": "wildebeest herd",
             "layout": "normal",
-            "manaCost": "{2}{W}",
+            "manaCost": "{1}{W}",
             "name": "Wildebeest Herd",
             "number": "38",
-            "originalText": "Vigilance (Attacking doesn't cause this creature to tap.)\nSpellbound \u2014 {W}, Exile an instant or sorcery card from your graveyard: Untap target creature you control.",
+            "originalText": "Vigilance\nSpellbound \u2014 {1}{W}, Exile an instant or sorcery card from your graveyard: Other creatures you control gain vigilance until end of turn.",
             "originalType": "Creature \u2014 Antelope",
-            "power": "3",
+            "power": "2",
             "rarity": "Uncommon",
             "subtypes": [
                 "Antelope"
             ],
-            "text": "Vigilance (Attacking doesn't cause this creature to tap.)\nSpellbound \u2014 {W}, Exile an instant or sorcery card from your graveyard: Untap target creature you control.",
+            "text": "Vigilance\nSpellbound \u2014 {1}{W}, Exile an instant or sorcery card from your graveyard: Other creatures you control gain vigilance until end of turn.",
             "toughness": "2",
             "type": "Creature \u2014 Antelope",
             "types": [
@@ -1129,26 +1130,32 @@
             ]
         },
         {
-            "artist": "Tr1umph",
-            "cmc": 2,
+            "artist": "Scorpion451",
+            "cmc": 3,
             "colorIdentity": [
                 "U"
             ],
             "colors": [
                 "Blue"
             ],
-            "imageName": "beseech the gods",
+            "flavor": "\"Hiehe, the playful god of winds, sends his children to the earth to make mischief.\"\n\u2014 Kolako, Hikobo Storyteller",
+            "imageName": "cirrus winder",
             "layout": "normal",
-            "manaCost": "{1}{U}",
-            "name": "Beseech the Gods",
+            "manaCost": "{2}{U}",
+            "name": "Cirrus Winder",
             "number": "41",
-            "originalText": "Focus {2}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nLook at the top four cards of your library. Put any number of them into your graveyard and the rest back on top of your library in any order.",
-            "originalType": "Sorcery",
+            "originalText": "Flying\nWhen Cirrus Winder enters the battlefield, you may put the top two cards of your library into your graveyard.",
+            "originalType": "Creature \u2014 Elemental",
+            "power": "1",
             "rarity": "Common",
-            "text": "Focus {2}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nLook at the top four cards of your library. Put any number of them into your graveyard and the rest back on top of your library in any order.",
-            "type": "Sorcery",
+            "subtypes": [
+                "Elemental"
+            ],
+            "text": "Flying\nWhen Cirrus Winder enters the battlefield, you may put the top two cards of your library into your graveyard.",
+            "toughness": "4",
+            "type": "Creature \u2014 Elemental",
             "types": [
-                "Sorcery"
+                "Creature"
             ]
         },
         {
@@ -1242,7 +1249,7 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"I'd rather you not.\"",
+            "flavor": "\"I'd rather you try something else\"",
             "imageName": "effortless denial",
             "layout": "normal",
             "manaCost": "{U}",
@@ -1469,31 +1476,6 @@
             ]
         },
         {
-            "artist": "lauren k cannon",
-            "cmc": 2,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [
-                "Blue"
-            ],
-            "flavor": "Things are not always as they seem.",
-            "imageName": "invert",
-            "layout": "normal",
-            "manaCost": "{1}{U}",
-            "name": "JAN:Invert",
-            "number": "54",
-            "originalText": "Switch all creatures' power and toughness until end of turn.\nDraw a card.",
-            "originalType": "Instant",
-            "printedName": "Invert",
-            "rarity": "Rare",
-            "text": "Switch all creatures' power and toughness until end of turn.\nDraw a card.",
-            "type": "Instant",
-            "types": [
-                "Instant"
-            ]
-        },
-        {
             "artist": "Th\u00e9odore G\u00e9ricault",
             "cmc": 3,
             "colorIdentity": [
@@ -1506,7 +1488,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Lost at Sea",
-            "number": "55",
+            "number": "54",
             "originalText": "Return target nonland permanent to its owner's hand.\nScry 2. (To scry 2, look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)",
             "originalType": "Instant",
             "rarity": "Common",
@@ -1530,7 +1512,7 @@
             "layout": "normal",
             "manaCost": "{U}",
             "name": "Make Way",
-            "number": "56",
+            "number": "55",
             "originalText": "Focus {2}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nTarget creature you control gains hexproof until end of turn and can't be blocked this turn.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -1553,7 +1535,7 @@
             "layout": "normal",
             "manaCost": "{5}{U}{U}",
             "name": "Monarch of Galaxies",
-            "number": "57",
+            "number": "56",
             "originalText": "Flying\nSpellbound \u2014 {1}{U}{U}, Exile an instant or sorcery card from your graveyard: Choose one \u2014\n\u2022 Counter target creature spell.\n\u2022 Return target permanent to its owner's hand.\n\u2022 Tap up to two target creatures.\n\u2022 Scry 2, then draw a card.",
             "originalType": "Creature \u2014 Illusion Dragon",
             "power": "6",
@@ -1582,7 +1564,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Mystic Rebuttal",
-            "number": "58",
+            "number": "57",
             "originalText": "Focus {3}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nCounter target spell unless its controller pays {2}.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -1606,7 +1588,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Oracle's Sight",
-            "number": "59",
+            "number": "58",
             "originalText": "Look at the top four cards of your library. Put one of them into your hand and the rest into your graveyard.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -1630,7 +1612,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}",
             "name": "Owlkeeper",
-            "number": "60",
+            "number": "59",
             "originalText": "When Owlkeeper enters the battlefield, create a 1/1 blue Bird creature token with flying.",
             "originalType": "Creature \u2014 Human Wizard",
             "power": "2",
@@ -1659,7 +1641,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}{U}",
             "name": "Rainforest Sphinx",
-            "number": "61",
+            "number": "60",
             "originalText": "Flying\nWhenever Rainforest Sphinx deals combat damage to a player, put up to the top two cards of your library into your graveyard.\nSpellbound \u2014 {1}{U}{U}, Exile an instant or sorcery card from your graveyard: Draw a card, then discard a card.",
             "originalType": "Creature \u2014 Sphinx",
             "power": "3",
@@ -1672,6 +1654,30 @@
             "type": "Creature \u2014 Sphinx",
             "types": [
                 "Creature"
+            ]
+        },
+        {
+            "artist": "lauren k cannon",
+            "cmc": 2,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "flavor": "Things are not always as they seem.",
+            "imageName": "reality inversion",
+            "layout": "normal",
+            "manaCost": "{1}{U}",
+            "name": "Reality Inversion",
+            "number": "61",
+            "originalText": "Switch all creatures' power and toughness until end of turn.\nDraw a card.",
+            "originalType": "Instant",
+            "rarity": "Rare",
+            "text": "Switch all creatures' power and toughness until end of turn.\nDraw a card.",
+            "type": "Instant",
+            "types": [
+                "Instant"
             ]
         },
         {
@@ -1854,7 +1860,7 @@
             "manaCost": "{5}{U}{U}",
             "name": "Skyspan Thunderbird",
             "number": "68",
-            "originalText": "Flying\nSpellbound \u2014 {1}{U}{U}, Exile an instant or sorcery card from your graveyard: Tap up to three target nonland permanents. Activate this ability only during your turn.",
+            "originalText": "Flying\nSpellbound \u2014 {1}{U}, Exile an instant or sorcery card from your graveyard: Tap up to two target nonland permanents. Activate this ability only during your turn.",
             "originalType": "Creature \u2014 Elemental Bird",
             "power": "6",
             "rarity": "Rare",
@@ -1862,7 +1868,7 @@
                 "Elemental",
                 "Bird"
             ],
-            "text": "Flying\nSpellbound \u2014 {1}{U}{U}, Exile an instant or sorcery card from your graveyard: Tap up to three target nonland permanents. Activate this ability only during your turn.",
+            "text": "Flying\nSpellbound \u2014 {1}{U}, Exile an instant or sorcery card from your graveyard: Tap up to two target nonland permanents. Activate this ability only during your turn.",
             "toughness": "6",
             "type": "Creature \u2014 Elemental Bird",
             "types": [
@@ -2025,32 +2031,27 @@
             ]
         },
         {
-            "artist": "Scorpion451",
-            "cmc": 3,
+            "artist": "Tr1umph",
+            "cmc": 2,
             "colorIdentity": [
                 "U"
             ],
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"Hiehe, the playful god of winds, sends his children down to us, both for good and for mischief.\"\n\u2014 Kolako, Hikobo Storyteller",
-            "imageName": "updraft elemental",
+            "flavor": "Sometimes you don't know what you want, but you know it's not what you have.",
+            "imageName": "unearthly exchange",
             "layout": "normal",
-            "manaCost": "{2}{U}",
-            "name": "Updraft Elemental",
+            "manaCost": "{1}{U}",
+            "name": "Unearthly Exchange",
             "number": "75",
-            "originalText": "Flying",
-            "originalType": "Creature \u2014 Elemental",
-            "power": "1",
+            "originalText": "Focus {2}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nDiscard all the cards in your hand, then draw that many cards.",
+            "originalType": "Sorcery",
             "rarity": "Common",
-            "subtypes": [
-                "Elemental"
-            ],
-            "text": "Flying",
-            "toughness": "4",
-            "type": "Creature \u2014 Elemental",
+            "text": "Focus {2}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nDiscard all the cards in your hand, then draw that many cards.",
+            "type": "Sorcery",
             "types": [
-                "Creature"
+                "Sorcery"
             ]
         },
         {
@@ -3849,7 +3850,7 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "The Raniko rarely loot places they conquer. It's much more satisfying to see them burn.",
+            "flavor": "The Raniko rarely loot places they conquer.\nIt's much more satisfying to see them burn.",
             "imageName": "raniko arsonist",
             "layout": "normal",
             "manaCost": "{1}{R}",
@@ -4280,6 +4281,36 @@
             ]
         },
         {
+            "artist": "Francis Brunet",
+            "cmc": 7,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "flavor": "He never eats his meals alive, so he'll have to kill you first.",
+            "imageName": "brutal hunter",
+            "layout": "normal",
+            "manaCost": "{5}{G}{G}",
+            "name": "Brutal Hunter",
+            "number": "155",
+            "originalText": "Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\nThis spell costs {1} less to cast for each permanent card in your graveyard.",
+            "originalType": "Creature \u2014 Lizard Warrior",
+            "power": "4",
+            "rarity": "Uncommon",
+            "subtypes": [
+                "Lizard",
+                "Warrior"
+            ],
+            "text": "Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\nThis spell costs {1} less to cast for each permanent card in your graveyard.",
+            "toughness": "4",
+            "type": "Creature \u2014 Lizard Warrior",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "artist": "Cleon Peterson",
             "cmc": 3,
             "colorIdentity": [
@@ -4292,7 +4323,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Call of the Oasis",
-            "number": "155",
+            "number": "156",
             "originalText": "Reveal the top two cards of your library. Put all creature cards revealed this way into your hand and the rest into your graveyard.\nInvocation (As you cast this spell, you may tap two untapped creatures you control. When you do, copy it.)",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -4316,7 +4347,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Clean Shot",
-            "number": "156",
+            "number": "157",
             "originalText": "Focus {3}{G}{G} (You may cast this spell for its focus cost. When you do, draw a card.)\nDestroy target creature with flying.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -4339,7 +4370,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Collective Pilgrimage",
-            "number": "157",
+            "number": "158",
             "originalText": "Draw a card. You gain 2 life.\nInvocation (As you cast this spell, you may tap two untapped creatures you control. When you do, copy it.)",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -4363,7 +4394,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Cultivate",
-            "number": "158",
+            "number": "159",
             "originalText": "Search your library for up to two basic land cards, reveal those cards, and put one onto the battlefield tapped and the other into your hand. Then shuffle your library.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -4392,7 +4423,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "Deathcradle Weaver",
-            "number": "159",
+            "number": "160",
             "originalText": "Reach (This creature can block creatures with flying.)\nResurrect {4}{G}{G} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
             "originalType": "Creature \u2014 Spider",
             "power": "2",
@@ -4426,7 +4457,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Dragon Trapper",
-            "number": "160",
+            "number": "161",
             "originalText": "Reach (This creature can block creatures with flying.)\nSpellbound \u2014 {1}{G}, Exile an instant or sorcery card from your graveyard: Dragon Trapper deals 3 damage to target creature with flying.",
             "originalType": "Creature \u2014 Human Archer",
             "power": "3",
@@ -4456,7 +4487,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}{G}{G}",
             "name": "Enforcer of the Wild",
-            "number": "161",
+            "number": "162",
             "originalText": "Trample\nAt the beginning of each player's upkeep, that player gains control of each land on the battlefield until end of turn. Untap those lands.",
             "originalType": "Creature \u2014 Elemental",
             "power": "5",
@@ -4469,31 +4500,6 @@
             "type": "Creature \u2014 Elemental",
             "types": [
                 "Creature"
-            ]
-        },
-        {
-            "artist": "Schfier",
-            "cmc": 2,
-            "colorIdentity": [
-                "G"
-            ],
-            "colors": [
-                "Green"
-            ],
-            "flavor": "Nature is rarely humble in showcasing its magnificence.",
-            "imageName": "flourish",
-            "layout": "normal",
-            "manaCost": "{1}{G}",
-            "name": "JAN:Flourish",
-            "number": "162",
-            "originalText": "Create three 0/1 green Plant creature tokens. Then if you control seven or more creatures, add {G}{G}.",
-            "originalType": "Sorcery",
-            "printedName": "Flourish",
-            "rarity": "Common",
-            "text": "Create three 0/1 green Plant creature tokens. Then if you control seven or more creatures, add {G}{G}.",
-            "type": "Sorcery",
-            "types": [
-                "Sorcery"
             ]
         },
         {
@@ -4943,36 +4949,6 @@
             ]
         },
         {
-            "artist": "Francis Brunet",
-            "cmc": 8,
-            "colorIdentity": [
-                "G"
-            ],
-            "colors": [
-                "Green"
-            ],
-            "flavor": "He never eats things alive, so he'll have to kill you first.",
-            "imageName": "scavenger chieftan",
-            "layout": "normal",
-            "manaCost": "{6}{G}{G}",
-            "name": "Scavenger Chieftan",
-            "number": "179",
-            "originalText": "Deathtouch\nThis spell costs {1} less to cast for each card in your graveyard.",
-            "originalType": "Creature \u2014 Lizard Warrior",
-            "power": "4",
-            "rarity": "Uncommon",
-            "subtypes": [
-                "Lizard",
-                "Warrior"
-            ],
-            "text": "Deathtouch\nThis spell costs {1} less to cast for each card in your graveyard.",
-            "toughness": "4",
-            "type": "Creature \u2014 Lizard Warrior",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
             "artist": "Vance Kovacs",
             "cmc": 5,
             "colorIdentity": [
@@ -4985,7 +4961,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}{G}",
             "name": "Scavenging Tiger",
-            "number": "180",
+            "number": "179",
             "originalText": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\nScavenging Tiger enters the battlefield with a +1/+1 counter on it if you have two or more creature cards in your graveyard.",
             "originalType": "Creature \u2014 Cat",
             "power": "4",
@@ -5013,7 +4989,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Shaman of the Cycle",
-            "number": "181",
+            "number": "180",
             "originalText": "When Shaman of the Cycle enters the battlefield, target creature card in your graveyard gains resurrect until end of turn. The resurrect cost is equal to its mana cost. (You may cast a creature spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
             "originalType": "Creature \u2014 Human Shaman",
             "power": "2",
@@ -5049,7 +5025,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Snakeform Mystic",
-            "number": "182",
+            "number": "181",
             "originalText": "{1}{G}: Snakeform Mystic gains deathtouch until end of turn.",
             "originalType": "Creature \u2014 Elf Shaman",
             "power": "2",
@@ -5078,7 +5054,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "Spirit of the Jungle",
-            "number": "183",
+            "number": "182",
             "originalText": "Focus {5}{G} (You may cast this spell for its focus cost. When you do, draw a card.)\nReach\nSpirit of the Jungle's power and toughness are each equal to the number of cards in your hand.",
             "originalType": "Creature \u2014 Spirit",
             "power": "*",
@@ -5106,7 +5082,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "The Circle of Life",
-            "number": "184",
+            "number": "183",
             "originalText": "{G}, Discard a creature card: Search your library for a creature card, reveal that card, and put it into your hand. Then shuffle your library.\n{3}{G}: Return target creature card from your graveyard to your hand.",
             "originalType": "Enchantment",
             "rarity": "Mythic Rare",
@@ -5114,6 +5090,30 @@
             "type": "Enchantment",
             "types": [
                 "Enchantment"
+            ]
+        },
+        {
+            "artist": "Schfier",
+            "cmc": 2,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "flavor": "Nature is rarely humble in showcasing its magnificence.",
+            "imageName": "verdant grandeur",
+            "layout": "normal",
+            "manaCost": "{1}{G}",
+            "name": "Verdant Grandeur",
+            "number": "184",
+            "originalText": "Create three 0/1 green Plant creature tokens. Then if you control seven or more creatures, add {G}{G}.",
+            "originalType": "Sorcery",
+            "rarity": "Common",
+            "text": "Create three 0/1 green Plant creature tokens. Then if you control seven or more creatures, add {G}{G}.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
             ]
         },
         {
@@ -5309,7 +5309,7 @@
             "manaCost": "{1}{U}{R}",
             "name": "Faralyn, Doyen Polymorphist",
             "number": "191",
-            "originalText": "+1: Up to one target creature an opponent controls has base power and toughness 1/1 and loses all abilities until your next turn.\n0: Discard two cards, then draw a card for each card you discarded this way.\n-3: Exile target nontoken creature you don't control. Its owner reveals the top card of their library and may cast it without paying its mana cost.",
+            "originalText": "+1: Up to one target creature an opponent controls has base power and toughness 1/1 and loses all abilities until your next turn.\n0: You may discard up to two cards. If you do, draw that many cards.\n-3: Exile target nontoken creature you don't control. Its owner reveals the top card of their library and may cast it without paying its mana cost.",
             "originalType": "Legendary Planeswalker \u2014 Faralyn",
             "rarity": "Mythic Rare",
             "subtypes": [
@@ -5318,7 +5318,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "+1: Up to one target creature an opponent controls has base power and toughness 1/1 and loses all abilities until your next turn.\n0: Discard two cards, then draw a card for each card you discarded this way.\n-3: Exile target nontoken creature you don't control. Its owner reveals the top card of their library and may cast it without paying its mana cost.",
+            "text": "+1: Up to one target creature an opponent controls has base power and toughness 1/1 and loses all abilities until your next turn.\n0: You may discard up to two cards. If you do, draw that many cards.\n-3: Exile target nontoken creature you don't control. Its owner reveals the top card of their library and may cast it without paying its mana cost.",
             "type": "Legendary Planeswalker \u2014 Faralyn",
             "types": [
                 "Planeswalker"
@@ -5878,7 +5878,7 @@
             "manaCost": "{3}{W}{B}",
             "name": "Sandstorm Sovereign",
             "number": "209",
-            "originalText": "Menace, vigilance\nWhen Sandstorm Sovereign enters the battlefield, create two 1/1 white Elemental creature tokens.\nWhenever another creature you control dies, put a +1/+1 counter on each creature you control.",
+            "originalText": "Vigilance, menace\nWhen Sandstorm Sovereign enters the battlefield, create two 1/1 white Elemental creature tokens.\nWhenever another creature you control dies, put a +1/+1 counter on each creature you control.",
             "originalType": "Creature \u2014 Elemental",
             "power": "3",
             "rarity": "Rare",
@@ -6005,7 +6005,7 @@
         },
         {
             "artist": "Paul Lewin",
-            "cmc": 4,
+            "cmc": 5,
             "colorIdentity": [
                 "W",
                 "G"
@@ -6016,10 +6016,10 @@
             ],
             "imageName": "uaria, king of akuga",
             "layout": "normal",
-            "manaCost": "{2}{G}{W}",
+            "manaCost": "{3}{G}{W}",
             "name": "Uaria, King of Akuga",
             "number": "214",
-            "originalText": "When Uaria, King of Akuga enters the battlefield, each opponent creates three colorless Treasure artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nCreatures can't attack you or a planeswalker you control unless their controller pays {3} for each creature they control that's attacking you.",
+            "originalText": "When Uaria, King of Akuga enters the battlefield, each player creates three colorless Treasure artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nCreatures can't attack you or a planeswalker you control unless their controller pays {3} for each creature they control that's attacking you.",
             "originalType": "Legendary Creature \u2014 Human",
             "power": "2",
             "rarity": "Rare",
@@ -6029,7 +6029,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "When Uaria, King of Akuga enters the battlefield, each opponent creates three colorless Treasure artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nCreatures can't attack you or a planeswalker you control unless their controller pays {3} for each creature they control that's attacking you.",
+            "text": "When Uaria, King of Akuga enters the battlefield, each player creates three colorless Treasure artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nCreatures can't attack you or a planeswalker you control unless their controller pays {3} for each of those creatures.",
             "toughness": "4",
             "type": "Legendary Creature \u2014 Human",
             "types": [
@@ -6526,7 +6526,7 @@
             "name": "Plains",
             "number": "234",
             "originalType": "Basic Land \u2014 Plains",
-            "printedName": "Plains (2)",
+            "printedName": "Plains 2",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6589,7 +6589,7 @@
             "name": "Island",
             "number": "236",
             "originalType": "Basic Land \u2014 Island",
-            "printedName": "Island (2)",
+            "printedName": "Island 2",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6652,7 +6652,7 @@
             "name": "Swamp",
             "number": "238",
             "originalType": "Basic Land \u2014 Swamp",
-            "printedName": "Swamp (2)",
+            "printedName": "Swamp 2",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6715,7 +6715,7 @@
             "name": "Mountain",
             "number": "240",
             "originalType": "Basic Land \u2014 Mountain",
-            "printedName": "Mountain (2)",
+            "printedName": "Mountain 2",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6778,7 +6778,7 @@
             "name": "Forest",
             "number": "242",
             "originalType": "Basic Land \u2014 Forest",
-            "printedName": "Forest (2)",
+            "printedName": "Forest 2",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6804,5 +6804,5 @@
     "name": "Jannada",
     "releaseDate": "2017-11-05",
     "type": "expansion",
-    "version": "ultimate"
+    "version": "toto"
 }
