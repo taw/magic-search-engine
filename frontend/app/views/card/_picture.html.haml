@@ -15,8 +15,12 @@
     - elsif card.layout == "aftermath"
       = render partial: "card/card_picture", locals: { card: card, foil: foil, card_layout: "aftermath" }
     - elsif card.layout == "double-faced" and card.others.size == 1
-      = render partial: "card/card_picture", locals: { card: card, foil: foil, card_layout: "dfc" }
-      = render partial: "card/card_picture", locals: { card: card.others[0], foil: foil, card_layout: "dfc_reverse" }
+      - if card.secondary?
+        = render partial: "card/card_picture", locals: { card: card, foil: foil, card_layout: "dfc_back" }
+        = render partial: "card/card_picture", locals: { card: card.others[0], foil: foil, card_layout: "dfc_back_reverse" }
+      - else
+        = render partial: "card/card_picture", locals: { card: card, foil: foil, card_layout: "dfc" }
+        = render partial: "card/card_picture", locals: { card: card.others[0], foil: foil, card_layout: "dfc_reverse" }
     - elsif card.layout == "meld" and card.others.size == 1
       = render partial: "card/card_picture", locals: { card: card, foil: foil, card_layout: "dfc" }
       = render partial: "card/card_picture", locals: { card: card.others[0], foil: foil, card_layout: "dfc_reverse" }
