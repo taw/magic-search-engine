@@ -211,6 +211,7 @@ form.search {
 }
 .card_picture_container {
   position: relative;
+  perspective: 1000px;
 
   .foil_layer {
     position: absolute;
@@ -292,16 +293,27 @@ form.search {
       }
     }
   }
-  & .dfc {
+  & .dfc,
+  & .dfc_back {
   }
   &:hover .dfc {
+    transform: rotateY(-180deg);
+  }
+  &:hover .dfc_back {
     transform: rotateY(180deg);
   }
   & .dfc_reverse {
     position: absolute;
+    transform: rotateY(-180deg);
+  }
+  & .dfc_back_reverse {
+    position: absolute;
     transform: rotateY(180deg);
   }
   &:hover .dfc_reverse {
+    transform: rotateY(-360deg);
+  }
+  &:hover .dfc_back_reverse {
     transform: rotateY(360deg);
   }
   & .melded {
