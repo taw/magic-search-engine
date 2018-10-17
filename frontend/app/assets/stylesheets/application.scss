@@ -323,11 +323,11 @@ form.search {
   }
   & .meld0 {
     position: absolute;
-    transform: rotateY(180deg);
+    transform: translateY(0) rotateY(180deg); // the translateY(0) is a workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1499862
   }
   & .meld1 {
     position: absolute;
-    transform: rotateY(180deg);
+    transform: translateY(0) rotateY(180deg); // the translateY(0) is a workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1499862
   }
   &:hover .melded {
     transform: rotateY(180deg);
