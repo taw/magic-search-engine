@@ -65,15 +65,15 @@
             "name": "Arbiter of Sanctions",
             "number": "2",
             "originalText": "Flying\nEach player can't draw more than one card each turn.\nEach player can't cast more than one spell each turn.",
-            "originalType": "Creature \u2014 Avatar",
-            "power": "3",
+            "originalType": "Creature \u2014 Angel",
+            "power": "4",
             "rarity": "Mythic Rare",
             "subtypes": [
-                "Avatar"
+                "Angel"
             ],
             "text": "Flying\nEach player can't draw more than one card each turn.\nEach player can't cast more than one spell each turn.",
-            "toughness": "3",
-            "type": "Creature \u2014 Avatar",
+            "toughness": "4",
+            "type": "Creature \u2014 Angel",
             "types": [
                 "Creature"
             ]
@@ -828,10 +828,10 @@
             "manaCost": "{1}{W}{W}",
             "name": "Penitence",
             "number": "28",
-            "originalText": "Whenever one or more creatures deal damage to you, exile one of those creatures until Penitence leaves the battlefield.",
+            "originalText": "Whenever one or more creatures deal combat damage to you or a noncreature permanent you control, you may exile one of those creatures until Penitence leaves the battlefield.",
             "originalType": "Enchantment",
             "rarity": "Rare",
-            "text": "Whenever one or more creatures deal damage to you, exile one of those creatures until Penitence leaves the battlefield.",
+            "text": "Whenever one or more creatures deal combat damage to you or a noncreature permanent you control, you may exile one of those creatures until Penitence leaves the battlefield.",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -1157,14 +1157,14 @@
             "manaCost": "{1}{U}",
             "name": "Brackwater Kathari",
             "number": "40",
-            "originalText": "Flying\nWhenever Brackwater Kathari deals combat damage to an opponent, look at that player's hand and the top card of that player's library.",
+            "originalText": "Flying\nWhenever Brackwater Kathari deals combat damage to an opponent, look at that player's hand.",
             "originalType": "Creature \u2014 Bird",
             "power": "2",
             "rarity": "Uncommon",
             "subtypes": [
                 "Bird"
             ],
-            "text": "Flying\nWhenever Brackwater Kathari deals combat damage to an opponent, look at that player's hand and the top card of that player's library.",
+            "text": "Flying\nWhenever Brackwater Kathari deals combat damage to an opponent, look at that player's hand.",
             "toughness": "1",
             "type": "Creature \u2014 Bird",
             "types": [
@@ -4320,7 +4320,7 @@
                 "Tibalt, Gleeful Sadist"
             ],
             "number": "152a",
-            "originalText": "Tibalt, Devilish Doctor attacks each combat if able.\nWhen a creature deals damage to you, exile Tibalt, then return him to the battlefield transformed under his owner's control.",
+            "originalText": "Tibalt, Devilish Doctor attacks each combat if able.\nAt end of combat on your turn, if you have one or fewer cards in hand, exile Tibalt, then return him to the battlefield transformed under his owner's control.",
             "originalType": "Legendary Creature \u2014 Human Rogue",
             "power": "2",
             "rarity": "Mythic Rare",
@@ -4331,7 +4331,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Tibalt, Devilish Doctor attacks each combat if able.\nWhen a creature deals damage to you, exile Tibalt, then return him to the battlefield transformed under his owner's control.",
+            "text": "Tibalt, Devilish Doctor attacks each combat if able.\nAt end of combat on your turn, if you have one or fewer cards in hand, exile Tibalt, then return him to the battlefield transformed under his owner's control.",
             "toughness": "2",
             "type": "Legendary Creature \u2014 Human Rogue",
             "types": [
@@ -4349,7 +4349,7 @@
             ],
             "imageName": "tibalt, gleeful sadist",
             "layout": "double-faced",
-            "loyalty": 2,
+            "loyalty": 1,
             "name": "Tibalt, Gleeful Sadist",
             "names": [
                 "Tibalt, Devilish Doctor",
@@ -4698,7 +4698,7 @@
                 "Garruk the Huntsman"
             ],
             "number": "164a",
-            "originalText": "{2}{G}: Garruk, Son of Raklan fights target creature you don't control.\nWhen a creature dealt damage by Garruk this turn dies, exile Garruk, then return him to the battlefield transformed under his owner's control.",
+            "originalText": "{1}{G}, {T}: Garruk, Son of Raklan fights target creature you don't control.\nWhen a creature dealt damage by Garruk this turn dies, exile Garruk, then return him to the battlefield transformed under his owner's control.",
             "originalType": "Legendary Creature \u2014 Human",
             "power": "4",
             "rarity": "Mythic Rare",
@@ -4708,7 +4708,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "{2}{G}: Garruk, Son of Raklan fights target creature you don't control.\nWhen a creature dealt damage by Garruk this turn dies, exile Garruk, then return him to the battlefield transformed under his owner's control.",
+            "text": "{1}{G}, {T}: Garruk, Son of Raklan fights target creature you don't control.\nWhen a creature dealt damage by Garruk this turn dies, exile Garruk, then return him to the battlefield transformed under his owner's control.",
             "toughness": "4",
             "type": "Legendary Creature \u2014 Human",
             "types": [
@@ -4947,7 +4947,7 @@
         },
         {
             "artist": "Kekai Kotaki",
-            "cmc": 6,
+            "cmc": 5,
             "colorIdentity": [
                 "G"
             ],
@@ -4957,7 +4957,7 @@
             "flavor": "\"Ringsir's monsters know nothing \u2014 not even how to die!\"\n\u2014 Garruk, Son of Raklan",
             "imageName": "persistent hydra",
             "layout": "normal",
-            "manaCost": "{4}{G}{G}",
+            "manaCost": "{3}{G}{G}",
             "name": "Persistent Hydra",
             "number": "172",
             "originalText": "Trample\nWhen Persistent Hydra dies, if it had no -1/-1 counters on it, return it to the battlefield under its owner's control with a -1/-1 counter on it.",
@@ -5122,7 +5122,7 @@
             "manaCost": "{1}{G}",
             "name": "Roaming Lutist",
             "number": "178",
-            "originalText": "When Roaming Lutist dies, you draw a card and you gain 1 life.",
+            "originalText": "When Roaming Lutist dies, draw a card.",
             "originalType": "Creature \u2014 Elf Minion",
             "power": "2",
             "rarity": "Uncommon",
@@ -5130,8 +5130,8 @@
                 "Elf",
                 "Minion"
             ],
-            "text": "When Roaming Lutist dies, you draw a card and you gain 1 life.",
-            "toughness": "2",
+            "text": "When Roaming Lutist dies, draw a card.",
+            "toughness": "1",
             "type": "Creature \u2014 Elf Minion",
             "types": [
                 "Creature"
@@ -5754,8 +5754,42 @@
             ]
         },
         {
+            "artist": "Mikael M\u00e5rd",
+            "cmc": 9,
+            "colorIdentity": [
+                "U",
+                "B",
+                "R"
+            ],
+            "colors": [
+                "Blue",
+                "Black",
+                "Red"
+            ],
+            "imageName": "bolas the malefactor",
+            "layout": "normal",
+            "loyalty": 6,
+            "manaCost": "{6}{U}{B}{R}",
+            "name": "Bolas the Malefactor",
+            "number": "200",
+            "originalText": "+3: Each opponent discards two cards and loses 2 life. You draw two cards and you gain 2 life.\n-2: Each opponent sacrifices an artifact, a creature, and a land.\n-13: You control each opponent during their next X turns, where X is the number of players in the game.",
+            "originalType": "Legendary Planeswalker \u2014 Bolas",
+            "rarity": "Mythic Rare",
+            "subtypes": [
+                "Bolas"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "+3: Each opponent discards two cards and loses 2 life. You draw two cards and you gain 2 life.\n-2: Each opponent sacrifices an artifact, a creature, and a land.\n-13: You control each opponent during their next X turns, where X is the number of players in the game.",
+            "type": "Legendary Planeswalker \u2014 Bolas",
+            "types": [
+                "Planeswalker"
+            ]
+        },
+        {
             "artist": "Abel Vera",
-            "cmc": 6,
+            "cmc": 7,
             "colorIdentity": [
                 "B",
                 "G"
@@ -5766,17 +5800,17 @@
             ],
             "imageName": "cursed by the veil",
             "layout": "normal",
-            "manaCost": "{4}{B}{G}",
+            "manaCost": "{5}{B}{G}",
             "name": "Cursed by the Veil",
-            "number": "200",
-            "originalText": "Enchant player\nAt the beginning of enchanted player's end step, that player puts the top six cards of their library into their graveyard, then puts a creature card and a land card from their graveyard into their hand.",
+            "number": "201",
+            "originalText": "Enchant opponent\nAt the beginning of enchanted player's upkeep, put the top six cards of your library into your graveyard, then you put a creature card and a land card of enchanted player's choice onto the battlefield under your control.",
             "originalType": "Enchantment \u2014 Aura Curse",
             "rarity": "Rare",
             "subtypes": [
                 "Aura",
                 "Curse"
             ],
-            "text": "Enchant player\nAt the beginning of enchanted player's end step, that player puts the top six cards of their library into their graveyard, then puts a creature card and a land card from their graveyard into their hand.",
+            "text": "Enchant opponent\nAt the beginning of enchanted player's upkeep, put the top six cards of your library into your graveyard, then you put a creature card and a land card of enchanted player's choice onto the battlefield under your control.",
             "type": "Enchantment \u2014 Aura Curse",
             "types": [
                 "Enchantment"
@@ -5797,7 +5831,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}{R}",
             "name": "Elaborate Plan",
-            "number": "201",
+            "number": "202",
             "originalText": "Whenever you cast your first spell each turn, add {U}{R}.\nWhenever you cast your second spell each turn, draw a card, then discard a card.\nWhen you cast your third spell each turn, sacrifice Elaborate Plan. If you do, take an extra turn after this one.",
             "originalType": "Enchantment",
             "rarity": "Rare",
@@ -5822,7 +5856,7 @@
             "layout": "normal",
             "manaCost": "{2}{B}{R}",
             "name": "Ember Fiend",
-            "number": "202",
+            "number": "203",
             "originalText": "Torture (You can harm your creatures to cast this spell. Each creature you put a single -1/-1 counter on while casting this spell pays for {1}.)\nWhenever a -1/-1 counter is put on Ember Fiend, it deals 2 damage to any target.",
             "originalType": "Creature \u2014 Nightmare Assassin",
             "power": "3",
@@ -5854,7 +5888,7 @@
             "layout": "normal",
             "manaCost": "{W}{B}",
             "name": "Faceless Mob",
-            "number": "203",
+            "number": "204",
             "originalText": "Whenever a Minion creature you control dies for the first time each turn, create a 1/1 white Minion creature token.",
             "originalType": "Creature \u2014 Human Minion",
             "power": "2",
@@ -5885,7 +5919,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}{B}",
             "name": "Fleeting Mori",
-            "number": "204",
+            "number": "205",
             "originalText": "Possess (When this creature enters the battlefield, it possesses target creature an opponent controls until either leaves the battlefield.)\nFlying\nWhenever one of your possessions becomes the target of a spell, its controller sacrifices it.",
             "originalType": "Creature \u2014 Spirit Nightmare",
             "power": "2",
@@ -5916,7 +5950,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}{R}",
             "name": "Grixis Taskmage",
-            "number": "205",
+            "number": "206",
             "originalText": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhen Grixis Taskmage enters the battlefield, return an instant or sorcery card from your graveyard to your hand.",
             "originalType": "Creature \u2014 Zombie Wizard",
             "power": "2",
@@ -5947,7 +5981,7 @@
             "layout": "normal",
             "manaCost": "{B}{R}",
             "name": "Henchfiend",
-            "number": "206",
+            "number": "207",
             "originalText": "Henchfiend gets +1/+1 for each -1/-1 counter on it. (This effect neutralizes the counter's effect on power and toughness.)\nWhen Henchfiend dies, if it had a -1/-1 counter on it, return it to its owner's hand.",
             "originalType": "Creature \u2014 Devil Minion",
             "power": "3",
@@ -5989,7 +6023,7 @@
             "layout": "normal",
             "manaCost": "{4}{G}{G}{W}{W}",
             "name": "Immortality",
-            "number": "207",
+            "number": "208",
             "originalText": "At the beginning of your end step, your life total becomes equal to your starting life total.\nIf Immortality would be put into your graveyard from anywhere, shuffle it into your library instead.",
             "originalType": "Legendary Creature \u2014 Incarnation",
             "power": "6",
@@ -6023,7 +6057,7 @@
             "layout": "normal",
             "manaCost": "{G}{W}",
             "name": "Joraga Snaresetter",
-            "number": "208",
+            "number": "209",
             "originalText": "Flash (You may cast this spell any time you could cast an instant.)\nTrap spells you cast cost {1} less to cast.",
             "originalType": "Creature \u2014 Elf Scout",
             "power": "2",
@@ -6054,7 +6088,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}{G}",
             "name": "Kalonian Huntress",
-            "number": "209",
+            "number": "210",
             "originalText": "Frenzy 1 (Whenever this creature attacks and isn't blocked, it gets +1/+0 until end of turn.)\nAt the beginning of combat on your turn, target creature gains menace until end of turn. (It can't be blocked except by two or more creatures.)",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "3",
@@ -6086,7 +6120,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}{W}",
             "name": "Paragon Deputy",
-            "number": "210",
+            "number": "211",
             "originalText": "First strike\nAs long as Paragon Deputy is equipped, other creatures you control get +1/+0 and have first strike.",
             "originalType": "Creature \u2014 Human Knight",
             "power": "4",
@@ -6117,7 +6151,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}{B}",
             "name": "Paranoia Mori",
-            "number": "211",
+            "number": "212",
             "originalText": "Possess (When this creature enters the battlefield, it possesses target creature an opponent controls until either leaves the battlefield.)\nYour possessions have \"At the beginning of your upkeep, put the top card of your library into your graveyard. You lose life equal to its converted mana cost.\"",
             "originalType": "Creature \u2014 Spirit Nightmare",
             "power": "4",
@@ -6149,7 +6183,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}{B}",
             "name": "Sarru, Stonecult Rector",
-            "number": "212",
+            "number": "213",
             "originalText": "When Sarru, Stonecult Rector enters the battlefield, create a 1/1 white Minion creature token.\nWhenever a token you control is put into a graveyard from the battlefield, each opponent loses 1 life and you gain 1 life.",
             "originalType": "Legendary Creature \u2014 Dwarf Wizard",
             "power": "2",
@@ -6184,7 +6218,7 @@
             "layout": "normal",
             "manaCost": "{5}{R}{W}",
             "name": "Stoneforged Blade",
-            "number": "213",
+            "number": "214",
             "originalText": "Indestructible\nEquipped creature gets +5/+5 and has double strike.\nEquip {0}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Rare",
@@ -6213,7 +6247,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}{U}",
             "name": "Thurrost Oracle",
-            "number": "214",
+            "number": "215",
             "originalText": "You may look at the top card of your library. (You may do this at any time.)\nYou may cast the top card of your library if it's an instant card or a card with flash.",
             "originalType": "Creature \u2014 Human Shaman",
             "power": "3",
@@ -6245,7 +6279,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}{U}",
             "name": "Thurrost Sage-Owl",
-            "number": "215",
+            "number": "216",
             "originalText": "Flash (You may cast this spell any time you could cast an instant.)\nFlying\nWhen Thurrost Sage-Owl enters the battlefield, counter target activated or triggered ability. (Mana abilities can't be targeted.)",
             "originalType": "Creature \u2014 Bird",
             "power": "2",
@@ -6276,7 +6310,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}{G}",
             "name": "Wild Rage",
-            "number": "216",
+            "number": "217",
             "originalText": "Creatures you control have frenzy 2. (Whenever a creature you control attacks and isn't blocked, it gets +2/+0 until end of turn. If a creature has multiple instances of frenzy, each triggers separately.)",
             "originalType": "Enchantment",
             "rarity": "Rare",
@@ -6301,7 +6335,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}{W}",
             "name": "Zendikon Guardian",
-            "number": "217",
+            "number": "218",
             "originalText": "Vigilance, reach\nWhenever Zendikon Guardian attacks, exile two or more target Trap cards from your graveyard in a face-down pile, shuffle that pile, and look at it. Put one of those cards into your hand and the rest on the bottom of your library in any order.",
             "originalType": "Creature \u2014 Elemental",
             "power": "4",
@@ -6326,7 +6360,7 @@
             "layout": "normal",
             "manaCost": "{2}",
             "name": "Altorite Blade",
-            "number": "218",
+            "number": "219",
             "originalText": "Whenever equipped creature attacks, it gets +2/+2 until end of turn.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Common",
@@ -6349,7 +6383,7 @@
             "layout": "normal",
             "manaCost": "{2}",
             "name": "Bolgrim Patroller",
-            "number": "219",
+            "number": "220",
             "originalText": "Whenever Bolgrim Patroller becomes tapped, add {C}.",
             "originalType": "Artifact Creature \u2014 Minion",
             "power": "1",
@@ -6380,7 +6414,7 @@
             "layout": "normal",
             "manaCost": "{6}",
             "name": "Doomsday Clock",
-            "number": "220",
+            "number": "221",
             "originalText": "At the beginning of your end step, put a doom counter on Doomsday Clock.\nAt the beginning of each player's upkeep, that player flips a coin for each doom counter on Doomsday Clock and sacrifices a permanent for each coin that comes up tails.",
             "originalType": "Artifact",
             "rarity": "Rare",
@@ -6399,7 +6433,7 @@
             "layout": "normal",
             "manaCost": "{1}",
             "name": "Etherium Dagger",
-            "number": "221",
+            "number": "222",
             "originalText": "Equipped creature gets +1/+0.\nAs long as equipped creature is an artifact, it gets an additional +1/+0.\nEquip {1}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Common",
@@ -6422,7 +6456,7 @@
             "layout": "normal",
             "manaCost": "{2}",
             "name": "Executioner's Sledge",
-            "number": "222",
+            "number": "223",
             "originalText": "Equipped creature gets +3/+3.\nEquip {4}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Uncommon",
@@ -6444,7 +6478,7 @@
             "layout": "normal",
             "manaCost": "{1}",
             "name": "Golden Spellgun",
-            "number": "223",
+            "number": "224",
             "originalText": "Whenever you cast a noncreature spell, put a charge counter on Golden Spellgun.\n{1}, Remove a charge counter from Golden Spellgun: Equipped creature gets +1/+1 until end of turn and deals 1 damage to any target.\nEquip {1}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Rare",
@@ -6466,7 +6500,7 @@
             "layout": "normal",
             "manaCost": "{3}",
             "name": "Grafted Rig",
-            "number": "224",
+            "number": "225",
             "originalText": "Equipped creature gets +2/+2.\nIf equipped creature would deal damage to a creature, put that many -1/-1 counters on that creature instead.\nWhenever Grafted Rig becomes unattached from a permanent, sacrifice that permanent.\nEquip {2}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Uncommon",
@@ -6489,7 +6523,7 @@
             "layout": "normal",
             "manaCost": "{4}",
             "name": "Inexorable Golem",
-            "number": "225",
+            "number": "226",
             "originalText": "Inexorable Golem untaps during each other player's untap step. (It still untaps during your untap step.)",
             "originalType": "Artifact Creature \u2014 Golem",
             "power": "3",
@@ -6515,7 +6549,7 @@
             "layout": "normal",
             "manaCost": "{3}",
             "name": "Nemesis Mask",
-            "number": "226",
+            "number": "227",
             "originalText": "All creatures able to block equipped creature do so.\nEquip {3}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Uncommon",
@@ -6537,7 +6571,7 @@
             "layout": "normal",
             "manaCost": "{3}",
             "name": "Oracle Cauldron",
-            "number": "227",
+            "number": "228",
             "originalText": "When Oracle Cauldron enters the battlefield, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\n{T}: Add {C}.",
             "originalType": "Artifact",
             "rarity": "Common",
@@ -6556,7 +6590,7 @@
             "layout": "normal",
             "manaCost": "{3}",
             "name": "Pilgrim's Eye",
-            "number": "228",
+            "number": "229",
             "originalText": "Flying (This creature can't be blocked except by creatures with flying or reach.)\nWhen Pilgrim's Eye enters the battlefield, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle your library.",
             "originalType": "Artifact Creature \u2014 Thopter",
             "power": "1",
@@ -6582,7 +6616,7 @@
             "layout": "normal",
             "manaCost": "{6}",
             "name": "Stoneforge Titan",
-            "number": "229",
+            "number": "230",
             "originalText": "Whenever Stoneforge Titan enters the battlefield or attacks, each opponent sacrifices a permanent.",
             "originalType": "Artifact Creature \u2014 Giant",
             "power": "6",
@@ -6614,7 +6648,7 @@
             "layout": "normal",
             "manaCost": "{7}",
             "name": "Untouched Lotus",
-            "number": "230",
+            "number": "231",
             "originalText": "{T}: Add {W}{U}{B}{R}{G}.",
             "originalType": "Legendary Artifact",
             "rarity": "Mythic Rare",
@@ -6636,7 +6670,7 @@
             "layout": "normal",
             "manaCost": "{3}",
             "name": "Vascillitron",
-            "number": "231",
+            "number": "232",
             "originalText": "Machinate \u2014 {T}, Tap another untapped artifact you control: Choose one \u2014\n\u2022 Target creature gets +1/+1 until end of turn.\n\u2022 Scry 1.\n\u2022 Each opponent loses 1 life and you gain 1 life.\n\u2022 Vascillitron deals 1 damage to target creature.\n\u2022 Untap target land.",
             "originalType": "Artifact",
             "rarity": "Rare",
@@ -6656,7 +6690,7 @@
             "layout": "normal",
             "manaCost": "{5}",
             "name": "Winged Attendant",
-            "number": "232",
+            "number": "233",
             "originalText": "Flying (This creature can't be blocked except by creatures with flying or reach.)",
             "originalType": "Artifact Creature \u2014 Golem",
             "power": "3",
@@ -6683,7 +6717,7 @@
             "imageName": "dread mansion",
             "layout": "normal",
             "name": "Dread Mansion",
-            "number": "233",
+            "number": "234",
             "originalText": "When Dread Mansion enters the battlefield, you lose 2 life.\n{T}: Add {B} or {R}.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6703,7 +6737,7 @@
             "imageName": "everglade formation",
             "layout": "normal",
             "name": "Everglade Formation",
-            "number": "234",
+            "number": "235",
             "originalText": "Everglade Formation enters the battlefield tapped.\n{T}: Add {B}.\n{B}, {T}, Sacrifice Everglade Formation: Draw a card.",
             "originalType": "Land",
             "rarity": "Common",
@@ -6721,7 +6755,7 @@
             "imageName": "evolving wilds",
             "layout": "normal",
             "name": "Evolving Wilds",
-            "number": "235",
+            "number": "236",
             "originalText": "{T}, Sacrifice Evolving Wilds: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.",
             "originalType": "Land",
             "rarity": "Common",
@@ -6742,7 +6776,7 @@
             "imageName": "fieldmist ruin",
             "layout": "normal",
             "name": "Fieldmist Ruin",
-            "number": "236",
+            "number": "237",
             "originalText": "When Fieldmist Ruin enters the battlefield, you lose 2 life.\n{T}: Add {W} or {U}.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6763,7 +6797,7 @@
             "imageName": "fungal hollow",
             "layout": "normal",
             "name": "Fungal Hollow",
-            "number": "237",
+            "number": "238",
             "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {B} or {G}.\n{B}{G}, {T}: Put the exiled card into its owner's hand. Activate this ability only if there are four or more card types among cards in your graveyard.",
             "originalType": "Land",
             "rarity": "Rare",
@@ -6781,14 +6815,14 @@
             "imageName": "garden of meditation",
             "layout": "normal",
             "name": "Garden of Meditation",
-            "number": "238",
-            "originalText": "{T}: Add {C}.\n{8}, {T}, Sacrifice Garden of Meditation: Gain control of target spell. You may choose new targets for it. (If that spell becomes a permanent, it enters the battlefield under your control.)",
+            "number": "239",
+            "originalText": "{T}: Add {C}.\n{3}, {T}, Sacrifice Garden of Meditation: Search your library, graveyard, and/or cards you own from outside the game for a Bolas card, reveal it, then put it into your hand. If you searched your library this way, shuffle it.",
             "originalType": "Legendary Land",
             "rarity": "Mythic Rare",
             "supertypes": [
                 "Legendary"
             ],
-            "text": "{T}: Add {C}.\n{8}, {T}, Sacrifice Garden of Meditation: Gain control of target spell. You may choose new targets for it. (If that spell becomes a permanent, it enters the battlefield under your control.)",
+            "text": "{T}: Add {C}.\n{3}, {T}, Sacrifice Garden of Meditation: Search your library, graveyard, and/or cards you own outside the game for a Bolas card, reveal it, then put it into your hand. If you searched your library this way, shuffle it.",
             "type": "Legendary Land",
             "types": [
                 "Land"
@@ -6805,7 +6839,7 @@
             "imageName": "glacial crevasse",
             "layout": "normal",
             "name": "Glacial Crevasse",
-            "number": "239",
+            "number": "240",
             "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {U} or {R}.\n{U}{R}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you've cast two or more noncreature spells this turn.",
             "originalType": "Land",
             "rarity": "Rare",
@@ -6826,7 +6860,7 @@
             "imageName": "hedron formation",
             "layout": "normal",
             "name": "Hedron Formation",
-            "number": "240",
+            "number": "241",
             "originalText": "Hedron Formation enters the battlefield tapped.\n{T}: Add {W}.\n{W}, {T}, Sacrifice Hedron Formation: Draw a card.",
             "originalType": "Land",
             "rarity": "Common",
@@ -6847,7 +6881,7 @@
             "imageName": "highland path",
             "layout": "normal",
             "name": "Highland Path",
-            "number": "241",
+            "number": "242",
             "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {R} or {W}.\n{R}{W}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you control three or more artifacts.",
             "originalType": "Land",
             "rarity": "Rare",
@@ -6867,7 +6901,7 @@
             "imageName": "kederekt formation",
             "layout": "normal",
             "name": "Kederekt Formation",
-            "number": "242",
+            "number": "243",
             "originalText": "Kederekt Formation enters the battlefield tapped.\n{T}: Add {U}.\n{U}, {T}, Sacrifice Kederekt Formation: Draw a card.",
             "originalType": "Land",
             "rarity": "Common",
@@ -6887,7 +6921,7 @@
             "imageName": "mining formation",
             "layout": "normal",
             "name": "Mining Formation",
-            "number": "243",
+            "number": "244",
             "originalText": "Mining Formation enters the battlefield tapped.\n{T}: Add {R}.\n{R}, {T}, Sacrifice Mining Formation: Draw a card.",
             "originalType": "Land",
             "rarity": "Common",
@@ -6908,7 +6942,7 @@
             "imageName": "nightmare lagoon",
             "layout": "normal",
             "name": "Nightmare Lagoon",
-            "number": "244",
+            "number": "245",
             "originalText": "When Nightmare Lagoon enters the battlefield, you lose 2 life.\n{T}: Add {U} or {B}.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6929,7 +6963,7 @@
             "imageName": "roil garden",
             "layout": "normal",
             "name": "Roil Garden",
-            "number": "245",
+            "number": "246",
             "originalText": "When Roil Garden enters the battlefield, you lose 2 life.\n{T}: Add {G} or {W}.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6950,7 +6984,7 @@
             "imageName": "spears of valkas",
             "layout": "normal",
             "name": "Spears of Valkas",
-            "number": "246",
+            "number": "247",
             "originalText": "When Spears of Valkas enters the battlefield, you lose 2 life.\n{T}: Add {R} or {G}.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6971,7 +7005,7 @@
             "imageName": "unassuming falls",
             "layout": "normal",
             "name": "Unassuming Falls",
-            "number": "247",
+            "number": "248",
             "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {G} or {U}.\n{G}{U}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you control six or more lands with different names.",
             "originalType": "Land",
             "rarity": "Rare",
@@ -6992,11 +7026,11 @@
             "imageName": "valley of lost souls",
             "layout": "normal",
             "name": "Valley of Lost Souls",
-            "number": "248",
-            "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {W} or {B}.\n{W}{B}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you have 7 or less life.",
+            "number": "249",
+            "originalText": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {W} or {B}.\n{W}{B}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you have 8 or less life.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {W} or {B}.\n{W}{B}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you have 7 or less life.",
+            "text": "Hideaway (This land enters the battlefield tapped. When it does, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.)\n{T}: Add {W} or {B}.\n{W}{B}, {T}: Put the exiled card into its owner's hand. Activate this ability only if you have 8 or less life.",
             "type": "Land",
             "types": [
                 "Land"
@@ -7012,7 +7046,7 @@
             "imageName": "weald formation",
             "layout": "normal",
             "name": "Weald Formation",
-            "number": "249",
+            "number": "250",
             "originalText": "Weald Formation enters the battlefield tapped.\n{T}: Add {G}.\n{G}, {T}, Sacrifice Weald Formation: Draw a card.",
             "originalType": "Land",
             "rarity": "Common",
@@ -7032,7 +7066,69 @@
             "imageName": "plains",
             "layout": "normal",
             "name": "Plains",
-            "number": "250",
+            "number": "251",
+            "originalType": "Basic Land \u2014 Plains",
+            "rarity": "Basic Land",
+            "rulings": [
+                {
+                    "date": "2018-04-30",
+                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Plains, making Plains the official card name."
+                }
+            ],
+            "subtypes": [
+                "Plains"
+            ],
+            "supertypes": [
+                "Basic"
+            ],
+            "type": "Basic Land \u2014 Plains",
+            "types": [
+                "Land"
+            ],
+            "watermark": "White"
+        },
+        {
+            "artist": "Jorge Jacinto",
+            "cmc": 0,
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [],
+            "imageName": "plains",
+            "layout": "normal",
+            "name": "Plains",
+            "number": "252",
+            "originalType": "Basic Land \u2014 Plains",
+            "rarity": "Basic Land",
+            "rulings": [
+                {
+                    "date": "2018-04-30",
+                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Plains, making Plains the official card name."
+                }
+            ],
+            "subtypes": [
+                "Plains"
+            ],
+            "supertypes": [
+                "Basic"
+            ],
+            "type": "Basic Land \u2014 Plains",
+            "types": [
+                "Land"
+            ],
+            "watermark": "White"
+        },
+        {
+            "artist": "Ross Tran",
+            "cmc": 0,
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [],
+            "imageName": "plains",
+            "layout": "normal",
+            "name": "Plains",
+            "number": "253",
             "originalType": "Basic Land \u2014 Plains",
             "rarity": "Basic Land",
             "rulings": [
@@ -7063,116 +7159,26 @@
             "imageName": "plains",
             "layout": "normal",
             "name": "Plains",
-            "number": "251",
-            "rarity": "Basic Land",
-            "rulings": [
-                {
-                    "date": "2018-04-30",
-                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Plains, making Plains the official card name."
-                }
-            ],
-            "subtypes": [
-                "Plains"
-            ],
-            "supertypes": [
-                "Basic"
-            ],
-            "type": "Basic Land \u2014 Plains",
-            "types": [
-                "Land"
-            ],
-            "watermark": "White"
-        },
-        {
-            "artist": "Ross Tran",
-            "cmc": 0,
-            "colorIdentity": [
-                "W"
-            ],
-            "colors": [],
-            "imageName": "plains",
-            "layout": "normal",
-            "name": "Plains",
-            "number": "252",
-            "rarity": "Basic Land",
-            "rulings": [
-                {
-                    "date": "2018-04-30",
-                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Plains, making Plains the official card name."
-                }
-            ],
-            "subtypes": [
-                "Plains"
-            ],
-            "supertypes": [
-                "Basic"
-            ],
-            "type": "Basic Land \u2014 Plains",
-            "types": [
-                "Land"
-            ],
-            "watermark": "White"
-        },
-        {
-            "artist": "Jorge Jacinto",
-            "cmc": 0,
-            "colorIdentity": [
-                "W"
-            ],
-            "colors": [],
-            "imageName": "plains",
-            "layout": "normal",
-            "name": "Plains",
-            "number": "253",
-            "rarity": "Basic Land",
-            "rulings": [
-                {
-                    "date": "2018-04-30",
-                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Plains, making Plains the official card name."
-                }
-            ],
-            "subtypes": [
-                "Plains"
-            ],
-            "supertypes": [
-                "Basic"
-            ],
-            "type": "Basic Land \u2014 Plains",
-            "types": [
-                "Land"
-            ],
-            "watermark": "White"
-        },
-        {
-            "artist": "Thi\u00ean-Co",
-            "cmc": 0,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [],
-            "imageName": "island",
-            "layout": "normal",
-            "name": "Island",
             "number": "254",
-            "originalType": "Basic Land \u2014 Island",
+            "originalType": "Basic Land \u2014 Plains",
             "rarity": "Basic Land",
             "rulings": [
                 {
                     "date": "2018-04-30",
-                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Island, making Island the official card name."
+                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Plains, making Plains the official card name."
                 }
             ],
             "subtypes": [
-                "Island"
+                "Plains"
             ],
             "supertypes": [
                 "Basic"
             ],
-            "type": "Basic Land \u2014 Island",
+            "type": "Basic Land \u2014 Plains",
             "types": [
                 "Land"
             ],
-            "watermark": "Blue"
+            "watermark": "White"
         },
         {
             "artist": "jhtART",
@@ -7185,36 +7191,7 @@
             "layout": "normal",
             "name": "Island",
             "number": "255",
-            "rarity": "Basic Land",
-            "rulings": [
-                {
-                    "date": "2018-04-30",
-                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Island, making Island the official card name."
-                }
-            ],
-            "subtypes": [
-                "Island"
-            ],
-            "supertypes": [
-                "Basic"
-            ],
-            "type": "Basic Land \u2014 Island",
-            "types": [
-                "Land"
-            ],
-            "watermark": "Blue"
-        },
-        {
-            "artist": "Miguel Br\u00fccker",
-            "cmc": 0,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [],
-            "imageName": "island",
-            "layout": "normal",
-            "name": "Island",
-            "number": "256",
+            "originalType": "Basic Land \u2014 Island",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -7244,7 +7221,70 @@
             "imageName": "island",
             "layout": "normal",
             "name": "Island",
+            "number": "256",
+            "originalType": "Basic Land \u2014 Island",
+            "rarity": "Basic Land",
+            "rulings": [
+                {
+                    "date": "2018-04-30",
+                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Island, making Island the official card name."
+                }
+            ],
+            "subtypes": [
+                "Island"
+            ],
+            "supertypes": [
+                "Basic"
+            ],
+            "type": "Basic Land \u2014 Island",
+            "types": [
+                "Land"
+            ],
+            "watermark": "Blue"
+        },
+        {
+            "artist": "Miguel Br\u00fccker",
+            "cmc": 0,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [],
+            "imageName": "island",
+            "layout": "normal",
+            "name": "Island",
             "number": "257",
+            "originalType": "Basic Land \u2014 Island",
+            "rarity": "Basic Land",
+            "rulings": [
+                {
+                    "date": "2018-04-30",
+                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Island, making Island the official card name."
+                }
+            ],
+            "subtypes": [
+                "Island"
+            ],
+            "supertypes": [
+                "Basic"
+            ],
+            "type": "Basic Land \u2014 Island",
+            "types": [
+                "Land"
+            ],
+            "watermark": "Blue"
+        },
+        {
+            "artist": "Thi\u00ean-Co",
+            "cmc": 0,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [],
+            "imageName": "island",
+            "layout": "normal",
+            "name": "Island",
+            "number": "258",
+            "originalType": "Basic Land \u2014 Island",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -7274,7 +7314,38 @@
             "imageName": "swamp",
             "layout": "normal",
             "name": "Swamp",
-            "number": "258",
+            "number": "259",
+            "originalType": "Basic Land \u2014 Swamp",
+            "rarity": "Basic Land",
+            "rulings": [
+                {
+                    "date": "2018-04-30",
+                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Swamp, making Swamp the official card name."
+                }
+            ],
+            "subtypes": [
+                "Swamp"
+            ],
+            "supertypes": [
+                "Basic"
+            ],
+            "type": "Basic Land \u2014 Swamp",
+            "types": [
+                "Land"
+            ],
+            "watermark": "Black"
+        },
+        {
+            "artist": "Jan Drenovec",
+            "cmc": 0,
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [],
+            "imageName": "swamp",
+            "layout": "normal",
+            "name": "Swamp",
+            "number": "260",
             "originalType": "Basic Land \u2014 Swamp",
             "rarity": "Basic Land",
             "rulings": [
@@ -7305,7 +7376,8 @@
             "imageName": "swamp",
             "layout": "normal",
             "name": "Swamp",
-            "number": "259",
+            "number": "261",
+            "originalType": "Basic Land \u2014 Swamp",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -7335,37 +7407,8 @@
             "imageName": "swamp",
             "layout": "normal",
             "name": "Swamp",
-            "number": "260",
-            "rarity": "Basic Land",
-            "rulings": [
-                {
-                    "date": "2018-04-30",
-                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Swamp, making Swamp the official card name."
-                }
-            ],
-            "subtypes": [
-                "Swamp"
-            ],
-            "supertypes": [
-                "Basic"
-            ],
-            "type": "Basic Land \u2014 Swamp",
-            "types": [
-                "Land"
-            ],
-            "watermark": "Black"
-        },
-        {
-            "artist": "Jan Drenovec",
-            "cmc": 0,
-            "colorIdentity": [
-                "B"
-            ],
-            "colors": [],
-            "imageName": "swamp",
-            "layout": "normal",
-            "name": "Swamp",
-            "number": "261",
+            "number": "262",
+            "originalType": "Basic Land \u2014 Swamp",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -7395,7 +7438,38 @@
             "imageName": "mountain",
             "layout": "normal",
             "name": "Mountain",
-            "number": "262",
+            "number": "263",
+            "originalType": "Basic Land \u2014 Mountain",
+            "rarity": "Basic Land",
+            "rulings": [
+                {
+                    "date": "2018-04-30",
+                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Mountain, making Mountain the official card name."
+                }
+            ],
+            "subtypes": [
+                "Mountain"
+            ],
+            "supertypes": [
+                "Basic"
+            ],
+            "type": "Basic Land \u2014 Mountain",
+            "types": [
+                "Land"
+            ],
+            "watermark": "Red"
+        },
+        {
+            "artist": "Ferdinand Dumago Ladera",
+            "cmc": 0,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [],
+            "imageName": "mountain",
+            "layout": "normal",
+            "name": "Mountain",
+            "number": "264",
             "originalType": "Basic Land \u2014 Mountain",
             "rarity": "Basic Land",
             "rulings": [
@@ -7426,7 +7500,8 @@
             "imageName": "mountain",
             "layout": "normal",
             "name": "Mountain",
-            "number": "263",
+            "number": "265",
+            "originalType": "Basic Land \u2014 Mountain",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -7456,37 +7531,8 @@
             "imageName": "mountain",
             "layout": "normal",
             "name": "Mountain",
-            "number": "264",
-            "rarity": "Basic Land",
-            "rulings": [
-                {
-                    "date": "2018-04-30",
-                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Mountain, making Mountain the official card name."
-                }
-            ],
-            "subtypes": [
-                "Mountain"
-            ],
-            "supertypes": [
-                "Basic"
-            ],
-            "type": "Basic Land \u2014 Mountain",
-            "types": [
-                "Land"
-            ],
-            "watermark": "Red"
-        },
-        {
-            "artist": "Ferdinand Dumago Ladera",
-            "cmc": 0,
-            "colorIdentity": [
-                "R"
-            ],
-            "colors": [],
-            "imageName": "mountain",
-            "layout": "normal",
-            "name": "Mountain",
-            "number": "265",
+            "number": "266",
+            "originalType": "Basic Land \u2014 Mountain",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -7516,7 +7562,7 @@
             "imageName": "forest",
             "layout": "normal",
             "name": "Forest",
-            "number": "266",
+            "number": "267",
             "originalType": "Basic Land \u2014 Forest",
             "rarity": "Basic Land",
             "rulings": [
@@ -7538,37 +7584,7 @@
             "watermark": "Green"
         },
         {
-            "artist": "Tuomas Korpi",
-            "cmc": 0,
-            "colorIdentity": [
-                "G"
-            ],
-            "colors": [],
-            "imageName": "forest",
-            "layout": "normal",
-            "name": "Forest",
-            "number": "267",
-            "rarity": "Basic Land",
-            "rulings": [
-                {
-                    "date": "2018-04-30",
-                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Forest, making Forest the official card name."
-                }
-            ],
-            "subtypes": [
-                "Forest"
-            ],
-            "supertypes": [
-                "Basic"
-            ],
-            "type": "Basic Land \u2014 Forest",
-            "types": [
-                "Land"
-            ],
-            "watermark": "Green"
-        },
-        {
-            "artist": "lin bo",
+            "artist": "Lin Bo",
             "cmc": 0,
             "colorIdentity": [
                 "G"
@@ -7578,6 +7594,7 @@
             "layout": "normal",
             "name": "Forest",
             "number": "268",
+            "originalType": "Basic Land \u2014 Forest",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -7608,6 +7625,38 @@
             "layout": "normal",
             "name": "Forest",
             "number": "269",
+            "originalType": "Basic Land \u2014 Forest",
+            "rarity": "Basic Land",
+            "rulings": [
+                {
+                    "date": "2018-04-30",
+                    "text": "Some of the custom printings of this card appear with different names for technical reasons, but they are considered reprints of the card Forest, making Forest the official card name."
+                }
+            ],
+            "subtypes": [
+                "Forest"
+            ],
+            "supertypes": [
+                "Basic"
+            ],
+            "type": "Basic Land \u2014 Forest",
+            "types": [
+                "Land"
+            ],
+            "watermark": "Green"
+        },
+        {
+            "artist": "Tuomas Korpi",
+            "cmc": 0,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [],
+            "imageName": "forest",
+            "layout": "normal",
+            "name": "Forest",
+            "number": "270",
+            "originalType": "Basic Land \u2014 Forest",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -7633,5 +7682,5 @@
     "name": "Magic Villains",
     "releaseDate": "2017-08-06",
     "type": "core",
-    "version": "37"
+    "version": "37.1"
 }
