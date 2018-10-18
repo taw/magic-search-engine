@@ -215,6 +215,7 @@ form.search {
 .card_picture_container {
   position: relative;
   perspective: 1000px;
+  z-index: 0;
 
   .foil_layer {
     position: absolute;
@@ -233,7 +234,6 @@ form.search {
     left: 0;
     top: 0;
     position: relative;
-    z-index: 0;
 
     img {
       width: 100%;
@@ -243,9 +243,6 @@ form.search {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 
-    &:hover {
-      z-index: 1;
-    }
     &.flip:hover {
       transform: rotateZ(180deg);
     }
@@ -296,6 +293,9 @@ form.search {
       }
     }
   }
+  &:hover {
+    z-index: 1;
+  }
   & .dfc,
   & .dfc_back {
   }
@@ -331,15 +331,12 @@ form.search {
   }
   &:hover .melded {
     transform: rotateY(180deg);
-    z-index: 1;
   }
   &:hover .meld0 {
     transform: translateY(-30%) rotateY(360deg);
-    z-index: 1;
   }
   &:hover .meld1 {
     transform: translateY(72%) rotateY(360deg);
-    z-index: 1;
   }
 }
 .picture_missing {
