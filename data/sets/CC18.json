@@ -560,6 +560,36 @@
             ]
         },
         {
+            "artist": "Concept Art House",
+            "cmc": 3,
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [
+                "White"
+            ],
+            "flavor": "The standard is as much a weapon of the empire as much as any blade or bow.",
+            "imageName": "imperial banneret",
+            "layout": "normal",
+            "manaCost": "{1}{W}{W}",
+            "name": "Imperial Banneret",
+            "number": "20",
+            "originalText": "Battle cry (Whenever this creature attacks, each other attacking creature gets +1/+0 until end of turn.)\nWhenever Imperial Banneret and at least two other Knight creatures attack, create a 2/2 white Knight creature token with vigilance that's attacking.",
+            "originalType": "Creature \u2014 Human Knight",
+            "power": "3",
+            "rarity": "Rare",
+            "subtypes": [
+                "Human",
+                "Knight"
+            ],
+            "text": "Battle cry (Whenever this creature attacks, each other attacking creature gets +1/+0 until end of turn.)\nWhenever Imperial Banneret and at least two other Knight creatures attack, create a 2/2 white Knight creature token with vigilance that's attacking.",
+            "toughness": "3",
+            "type": "Creature \u2014 Human Knight",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "artist": "Daniel Warren",
             "cmc": 2,
             "colorIdentity": [
@@ -573,7 +603,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Knight Errant",
-            "number": "20",
+            "number": "21",
             "originalType": "Creature \u2014 Human Knight",
             "power": "2",
             "rarity": "Common",
@@ -581,53 +611,6 @@
                 "Human",
                 "Knight"
             ],
-            "toughness": "2",
-            "type": "Creature \u2014 Human Knight",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
-            "artist": "Jason Chan",
-            "cmc": 3,
-            "colorIdentity": [
-                "W"
-            ],
-            "colors": [
-                "White"
-            ],
-            "imageName": "knight exemplar",
-            "layout": "normal",
-            "manaCost": "{1}{W}{W}",
-            "name": "Knight Exemplar",
-            "number": "21",
-            "originalText": "First strike (This creature deals combat damage before creatures without first strike.)\nOther Knight creatures you control get +1/+1 and have indestructible. (Damage and effects that say \"destroy\" don't destroy them.)",
-            "originalType": "Creature \u2014 Human Knight",
-            "power": "2",
-            "rarity": "Rare",
-            "rulings": [
-                {
-                    "date": "2010-08-15",
-                    "text": "If an effect would simultaneously destroy Knight Exemplar and another Knight creature you control, only Knight Exemplar is destroyed."
-                },
-                {
-                    "date": "2013-07-01",
-                    "text": "Lethal damage, damage from a source with deathtouch, and effects that say \"destroy\" won't cause a creature with indestructible to be put into the graveyard. However, a creature with indestructible can be put into the graveyard for a number of reasons. The most likely reasons are if it's sacrificed, if it's legendary and another legendary creature with the same name is controlled by the same player, or if its toughness is 0 or less."
-                },
-                {
-                    "date": "2013-07-01",
-                    "text": "If another Knight creature you control is dealt lethal damage, the creature isn't destroyed, but the damage remains marked on it. If, at some point later in that turn, you no longer control Knight Exemplar or it loses its abilities, the other Knight creature will lose indestructible and will be destroyed."
-                },
-                {
-                    "date": "2013-07-01",
-                    "text": "If you control two Knight Exemplars, each one causes the other to get +1/+1 and have indestructible."
-                }
-            ],
-            "subtypes": [
-                "Human",
-                "Knight"
-            ],
-            "text": "First strike (This creature deals combat damage before creatures without first strike.)\nOther Knight creatures you control get +1/+1 and have indestructible. (Damage and effects that say \"destroy\" don't destroy them.)",
             "toughness": "2",
             "type": "Creature \u2014 Human Knight",
             "types": [
@@ -880,7 +863,7 @@
             "manaCost": "{W}{W}",
             "name": "Runeblade Knight",
             "number": "30",
-            "originalText": "As Runeblade Knight enters the battlefield, choose a card name.\nYou and other permanents you control have protection from the chosen name. (You and other permanents you control can't be targeted, dealt damage, blocked by, or enchanted by anything with that name.)",
+            "originalText": "As Runeblade Knight enters the battlefield, choose a card name.\nYou and permanents you control have hexproof from the chosen name. (You and permanents you control can't be the target of spells or abilities your opponents control with the chosen name.)",
             "originalType": "Creature \u2014 Human Knight",
             "power": "2",
             "rarity": "Rare",
@@ -888,7 +871,7 @@
                 "Human",
                 "Knight"
             ],
-            "text": "As Runeblade Knight enters the battlefield, choose a card name.\nYou and other permanents you control have protection from the chosen name. (You and other permanents you control can't be targeted, dealt damage, blocked by, or enchanted by anything with that name.)",
+            "text": "As Runeblade Knight enters the battlefield, choose a card name.\nYou and permanents you control have hexproof from the chosen name. (You and permanents you control can't be the target of spells or abilities your opponents control with the chosen name.)",
             "toughness": "2",
             "type": "Creature \u2014 Human Knight",
             "types": [
@@ -1774,7 +1757,7 @@
             "manaCost": "{1}{U}",
             "name": "Mistweaver Monk",
             "number": "60",
-            "originalText": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, target creature you control gains hexproof until end of turn.",
+            "originalText": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, Mistweaver Monk gains hexproof until end of turn.",
             "originalType": "Creature \u2014 Human Monk",
             "power": "2",
             "rarity": "Rare",
@@ -1782,7 +1765,7 @@
                 "Human",
                 "Monk"
             ],
-            "text": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, target creature you control gains hexproof until end of turn.",
+            "text": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, Mistweaver Monk gains hexproof until end of turn.",
             "toughness": "1",
             "type": "Creature \u2014 Human Monk",
             "types": [
@@ -4474,7 +4457,7 @@
         },
         {
             "artist": "Craig Simmons",
-            "cmc": 4,
+            "cmc": 3,
             "colorIdentity": [
                 "R"
             ],
@@ -4484,7 +4467,7 @@
             "flavor": "Don't let petty things like \"the physical limits of all possible multiverses\" stop your creativity.",
             "imageName": "wild imagination",
             "layout": "normal",
-            "manaCost": "{2}{R}{R}",
+            "manaCost": "{2}{R}",
             "name": "Wild Imagination",
             "number": "152",
             "originalText": "Reveal your hand to all players. Target opponent chooses a nonland card from your hand. Cast that card without paying its mana cost.",
@@ -5188,6 +5171,10 @@
             "rulings": [
                 {
                     "date": "2012-07-01",
+                    "text": "If either or both targets are illegal when Prey Upon tries to resolve, no creature will deal or be dealt damage."
+                },
+                {
+                    "date": "2018-10-05",
                     "text": "If either or both targets are illegal when Prey Upon tries to resolve, no creature will deal or be dealt damage."
                 }
             ],
@@ -7221,5 +7208,5 @@
     "name": "Custom Core 2018",
     "releaseDate": "2018-01-12",
     "type": "core",
-    "version": "1.1.2"
+    "version": "1.1.3.1"
 }
