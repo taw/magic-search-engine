@@ -26,4 +26,10 @@ BanList.for_format("elder cockatrice highlander") do
     "Sobki, World Severer" => "banned",
     "Garden of Meditation" => "banned",
   )
+
+  change(
+    "2018-10-25",
+    "https://docs.google.com/document/d/1GpPvx8cSS3MxpF0kF0UjpHTM53ydGieey4KDF-XnbtQ",
+    "Garden of Meditation" => "legal",
+  )
 end

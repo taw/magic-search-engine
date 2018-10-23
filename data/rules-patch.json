@@ -490,6 +490,19 @@
             "text": "If a spell or ability refers to the base power and/or toughness of a creature for a calculation, it uses the value as determined after this layer is applied, but before layers 7c–7e are applied."
         },
         {
+            "#": "for Heavy Iron Armor, add a new sublayer 7e for static P/T doubling effects",
+            "type": "insert",
+            "rule": "613.3e",
+            "text": "Effects from static abilities that double a creature's power and/or toughness are applied. Such effects give the creature +X/+0, where X is its power, and/or +0/+Y, where Y is its toughness. See rule 701.9d."
+        },
+        {
+            "#": "for Heavy Iron Armor, rename the existing layer 7e to 7f",
+            "type": "replace",
+            "rule": "613.3f",
+            "find": "7e",
+            "replace": "7f"
+        },
+        {
             "#": "for Tome of Infinity, clarify that Fate Reforged's Sieges don't have modal abilities",
             "type": "add",
             "rule": "700.2",
@@ -518,6 +531,19 @@
             "type": "insert",
             "rule": "700.9",
             "text": "The term wastes refers to a permanent named Wastes. A permanent is nonwastes if it's not named Wastes."
+        },
+        {
+            "#": "For Heavy Iron Armor, allow the “double” keyword action to work on static abilities.",
+            "type": "replace",
+            "rule": "701.9b",
+            "find": "To double a creature’s power,",
+            "replace": "If a resolving spell or ability doubles a creature's power,"
+        },
+        {
+            "#": "For Heavy Iron Armor, allow the “double” keyword action to work on static abilities.",
+            "type": "insert",
+            "rule": "701.9c",
+            "text": "Similarly, a static ability may also double a creature's power and/or toughness. See rule 613.3e."
         },
         {
             "#": "“recharge” is a keyword action used in Tesla",
