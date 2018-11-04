@@ -203,14 +203,14 @@ class PackFactory
       build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1})
     when "dms", "cc18", "vst"
       # Same as above except no basics
-      #TODO make sure DMS and VST follow http://thegraymerchants.com/?p=836
+      #TODO make sure DMS and VST follow https://web.archive.org/web/20170427075406/thegraymerchants.com/?p=836
       build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1})
     when "ayr"
       # AYR has only nonbasic lands in the land slot, and no lands in any other slot, like DGM
       build_pack(set_code, {ayr_common: 10, ayr_uncommon: 3, ayr_rare_mythic: 1, ayr_land: 1})
     when "tsl"
       # TSL packs always have exactly one DFC, replacing a common slot
-      #TODO make sure this follows http://thegraymerchants.com/?p=836
+      #TODO make sure this follows https://web.archive.org/web/20170427075406/thegraymerchants.com/?p=836
       build_pack(set_code, {tsl_dfc: 1, sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1})
     else
       # No packs for this set, let caller figure it out
