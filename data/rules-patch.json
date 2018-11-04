@@ -907,6 +907,13 @@
             "text": "On double-faced cards in the Tesla set, the back-face symbol is a flame."
         },
         {
+            "#": "remove Structures from combat when an effect ends the turn",
+            "type": "replace",
+            "rule": "716.1b",
+            "find": "all creatures and planeswalkers",
+            "replace": "all creatures, planeswalkers, and Structures"
+        },
+        {
             "#": "for Starsong Dragon and Thrill of Battle, ensure that a turn always ends with a cleanup step, even when an “end the turn” effect is used",
             "type": "append",
             "rule": "716.1d",
