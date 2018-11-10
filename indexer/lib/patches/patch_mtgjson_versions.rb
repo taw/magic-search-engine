@@ -29,6 +29,9 @@ class PatchMtgjsonVersions < Patch
       card.delete("text") if card["text"] == ""
       card.delete("manaCost") if card["manaCost"] == ""
 
+      # Renamed in v4
+      card["multiverseid"] ||= card.delete("multiverseId")
+
       # Unicode vs ASCII
       if card["rulings"]
         card["rulings"].each do |ruling|
