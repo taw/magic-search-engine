@@ -1,7 +1,9 @@
-require "test_helper"
+require "rails_helper"
 
-class FormatControllerTest < ActionController::TestCase
-  test "index" do
+RSpec.describe FormatController, type: :controller do
+  render_views
+
+  it "index" do
     get "index"
     assert_response 200
     assert_select %Q[a:contains("Commander")]
@@ -9,12 +11,12 @@ class FormatControllerTest < ActionController::TestCase
     assert_select %Q[a:contains("Shards of Alara Block")]
   end
 
-  test "show - fake format" do
+  it "show - fake format" do
     get "show", params: {id: "return-to-homelands-block"}
     assert_response 404
   end
 
-  test "show - Scars of Mirrodin Block" do
+  it "show - Scars of Mirrodin Block" do
     get "show", params: {id: "scars-of-mirrodin-block"}
     assert_response 200
     assert_select %Q[title:contains("Scars of Mirrodin Block")]
@@ -26,7 +28,7 @@ class FormatControllerTest < ActionController::TestCase
     assert_select %Q[p:contains("There are no restricted cards.")]
   end
 
-  test "show - Innistrad Block" do
+  it "show - Innistrad Block" do
     get "show", params: {id: "innistrad-block"}
     assert_response 200
     assert_select %Q[title:contains("Innistrad Block")]
@@ -40,7 +42,7 @@ class FormatControllerTest < ActionController::TestCase
 
   Format.all_format_classes.each do |format_class|
     format = format_class.new
-    test "format - #{format}" do
+    it "format - #{format}" do
       get "show", params: {id: format.format_pretty_name.parameterize}
       assert_response 200
     end

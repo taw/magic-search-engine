@@ -1,7 +1,9 @@
-require "test_helper"
+require "rails_helper"
 
-class SetControllerTest < ActionController::TestCase
-  test "list of sets" do
+RSpec.describe SetController, type: :controller do
+  render_views
+
+  it "list of sets" do
     get "index"
     assert_response 200
     assert_select %Q[a:contains("Magic 2015 Core Set")]
@@ -9,7 +11,7 @@ class SetControllerTest < ActionController::TestCase
     assert_equal "Sets - #{APP_NAME}", html_document.title
   end
 
-  test "actual set" do
+  it "actual set" do
     get "show", params: {id: "nph"}
     assert_response 200
     assert_select %Q[.results_summary:contains("New Phyrexia contains 175 cards.")]
@@ -19,12 +21,12 @@ class SetControllerTest < ActionController::TestCase
     assert_equal "New Phyrexia - #{APP_NAME}", html_document.title
   end
 
-  test "fake set" do
+  it "fake set" do
     get "show", params: {id: "lolwtf"}
     assert_response 404
   end
 
-  test "verify scans" do
+  it "verify scans" do
     get "show", params: {id: "akh"}
     assert_response 200
     assert_equal "Amonkhet - #{APP_NAME}", html_document.title

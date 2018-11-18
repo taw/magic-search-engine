@@ -1,7 +1,9 @@
-require "test_helper"
+require "rails_helper"
 
-class ArtistControllerTest < ActionController::TestCase
-  test "list of artists" do
+RSpec.describe ArtistController, type: :controller do
+  render_views
+
+  it "list of artists" do
     get "index"
     assert_response 200
     assert_select %Q[a:contains("Yang Hong")]
@@ -9,12 +11,12 @@ class ArtistControllerTest < ActionController::TestCase
     assert_equal "Artists - #{APP_NAME}", html_document.title
   end
 
-  test "actual artist" do
+  it "actual artist" do
     get "show", params: {id: "steve_ellis"}
     assert_response 200
   end
 
-  test "fake artist" do
+  it "fake artist" do
     get "show", params: {id: "katy_perry"}
     assert_response 404
   end
