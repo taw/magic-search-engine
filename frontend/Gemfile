@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "5.1.4"
+gem "rails", "5.2.1"
 # Use SCSS for stylesheets
 gem "sass-rails"
 # Use Uglifier as compressor for JavaScript assets
@@ -31,9 +31,6 @@ gem "select2-rails"
 # Use Unicorn as the app server
 # gem "unicorn"
 
-# Use Capistrano for deployment
-# gem "capistrano-rails", group: :development
-
 gem "haml"
 gem "will_paginate"
 gem "damerau-levenshtein"
@@ -42,7 +39,7 @@ gem "famfamfam_flags_rails"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
-  # gem "byebug"
+  gem "byebug"
   gem "pry"
   gem "erb2haml"
 end
@@ -58,7 +55,7 @@ group :development do
 end
 
 group :test do
-  gem "capybara"
+  gem "rspec-rails"
 end
 
 group :production do
