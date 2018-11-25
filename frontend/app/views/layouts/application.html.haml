@@ -10,6 +10,8 @@
         .col-12.col-md-6.signin_status
           - if signed_in?
             signed in as #{current_user}
+            %br
+            %a{href: "/logout"} Sign out
           - else
             %a{href: "/auth/discord"} Sign in with Discord
       = form_tag("/card", method: :get, class: "search row search_form_row", enforce_utf8: false) do

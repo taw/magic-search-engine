@@ -5,4 +5,9 @@ class SessionController < ApplicationController
     self.current_user = @user
     redirect_to request.env['omniauth.origin'] || '/'
   end
+
+  def destroy
+    self.current_user = nil
+    redirect_to '/' #TODO redirect back to original page?
+  end
 end

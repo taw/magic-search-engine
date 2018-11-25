@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   get "/" => "card#index"
   # Lore Seeker extensions
   get "auth/discord/callback" => "session#create"
+  get "logout" => "session#destroy"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
