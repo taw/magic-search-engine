@@ -3,7 +3,7 @@ describe "Full Database Test" do
 
   it "stats" do
     db.number_of_cards.should eq(18992)
-    db.number_of_printings.should eq(37587)
+    db.number_of_printings.should eq(37882)
   end
 
   it "block codes" do
@@ -177,6 +177,7 @@ describe "Full Database Test" do
       "Elven Cache",
       "Elvish Lyrist",
       "Elvish Piper",
+      "Fecundity",
       "Forest",
       "Gaea's Blessing",
       "Island",
