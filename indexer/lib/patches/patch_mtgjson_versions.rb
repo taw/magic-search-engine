@@ -1,18 +1,26 @@
 # Cleanup differences between mtgjson v3 and v4
 
 class PatchMtgjsonVersions < Patch
+  def get_cmc(*data)
+    cmc = data.compact.first
+    cmc = cmc.to_i if cmc.to_i == cmc
+    cmc
+  end
+
   def call
     each_set do |set|
       set["type"] = set["type"].gsub("_", " ")
     end
 
+    # drop all tokens
+    @cards.delete_if { |card| card["types"] =~ /Token/ }
+
     each_printing do |card|
-      # renamed cmc field and made it a float (for unsets presumably)
-      if card["convertedManaCost"] and not card["cmc"]
-        cmc = card.delete("convertedManaCost")
-        cmc = cmc.to_i if cmc.to_i == cmc
-        card["cmc"] = cmc
-      end
+      card["cmc"] = get_cmc(
+        card.delete("faceConvertedManaCost"),
+        card.delete("convertedManaCost"),
+        card.delete("cmc"),
+      )
 
       # This is text because of some X planeswalkers
       # It's more convenient for us to mix types
@@ -28,6 +36,9 @@ class PatchMtgjsonVersions < Patch
       card.delete("rulings") if card["rulings"] == []
       card.delete("text") if card["text"] == ""
       card.delete("manaCost") if card["manaCost"] == ""
+
+      # Renamed in v4
+      card["multiverseid"] ||= card.delete("multiverseId")
 
       # Unicode vs ASCII
       if card["rulings"]

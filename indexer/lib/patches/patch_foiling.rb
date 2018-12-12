@@ -67,7 +67,7 @@ class PatchFoiling < Patch
         "both"
       when "ust", "tsb", "cns"
         "both"
-      when "e02", "w16", "w17", "rqs", "itp", "cst", "s00"
+      when "e02", "w16", "w17", "rqs", "itp", "cst", "s00", "gk1"
         "precon"
       when "cp1", "cp2", "cp3"
         "foilonly"

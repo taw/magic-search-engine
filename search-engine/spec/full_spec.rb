@@ -3,15 +3,15 @@ describe "Full Database Test" do
 
   it "stats" do
     db.number_of_cards.should eq(18992)
-    db.number_of_printings.should eq(37459)
+    db.number_of_printings.should eq(37882)
   end
 
   it "block codes" do
     assert_search_equal "b:rtr", 'b:"Return to Ravnica"'
-    assert_search_equal "b:in", 'b:Invasion'
+    assert_search_equal "b:in", "b:Invasion"
     assert_search_equal "b:som", 'b:"Scars of Mirrodin"'
-    assert_search_equal "b:som", 'b:scars'
-    assert_search_equal "b:mi", 'b:Mirrodin'
+    assert_search_equal "b:som", "b:scars"
+    assert_search_equal "b:mi", "b:Mirrodin"
   end
 
   it "block special characters" do
@@ -31,9 +31,9 @@ describe "Full Database Test" do
     # Fake blocks
     assert_search_equal "e:dom", "b:dom"
     # Gatherer codes
-    assert_search_equal 'b:lw', "b:lrw"
-    assert_search_equal 'b:mi', "b:mrd"
-    assert_search_equal 'b:mr', "b:mir"
+    assert_search_equal "b:lw", "b:lrw"
+    assert_search_equal "b:mi", "b:mrd"
+    assert_search_equal "b:mr", "b:mir"
   end
 
   it "edition special characters" do
@@ -177,6 +177,7 @@ describe "Full Database Test" do
       "Elven Cache",
       "Elvish Lyrist",
       "Elvish Piper",
+      "Fecundity",
       "Forest",
       "Gaea's Blessing",
       "Island",
@@ -414,7 +415,7 @@ describe "Full Database Test" do
   end
 
   it "is:unique" do
-    number_of_unique_cards = db.cards.values.count{|c| c.printings.size == 1}
+    number_of_unique_cards = db.cards.values.count { |c| c.printings.size == 1 }
     assert_count_cards "is:unique", number_of_unique_cards
     assert_search_equal "is:unique", "++ is:unique"
     assert_search_equal "not:unique", "-is:unique"
@@ -446,7 +447,7 @@ describe "Full Database Test" do
     assert_search_equal %Q[e:"Magic: The Gathering—Conspiracy"], %Q[e:"Magic The Gathering Conspiracy"]
   end
 
-  def legality_information(name, date=nil)
+  def legality_information(name, date = nil)
     db.cards[name.downcase].legality_information(date)
   end
 end

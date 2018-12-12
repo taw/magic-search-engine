@@ -1,0 +1,2617 @@
+{
+    "baseSetSize": 0,
+    "cards": [
+        {
+            "artist": "Mark Tedin",
+            "borderColor": "borderless",
+            "colorIdentity": [],
+            "colors": [],
+            "convertedManaCost": 15.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Banned",
+                "commander": "Banned",
+                "duel": "Banned",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{15}",
+            "multiverseId": 457105,
+            "name": "Emrakul, the Aeons Torn",
+            "number": "U1",
+            "originalText": "This spell can't be countered.\nWhen you cast this spell, take an extra turn after this one.\nFlying, protection from colored spells, annihilator 6\nWhen Emrakul, the Aeons Torn is put into a graveyard from anywhere, its owner shuffles their graveyard into their library.",
+            "originalType": "Legendary Creature — Eldrazi",
+            "power": "15",
+            "printings": [
+                "MM2",
+                "PPRO",
+                "PRM",
+                "PROE",
+                "PUMA",
+                "ROE",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2010-06-15",
+                    "text": "Annihilator abilities trigger and resolve during the declare attackers step. The defending player chooses and sacrifices the required number of permanents before they declare blockers. Any creatures sacrificed this way won’t be able to block."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "If a creature with annihilator is attacking a planeswalker, and the defending player chooses to sacrifice that planeswalker, the attacking creature continues to attack. It may be blocked. If it isn’t blocked, it simply won’t deal combat damage to anything."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "Emrakul can be targeted by spells that try to counter it (such as Lay Bare). Those spells will resolve, but the part of their effect that would counter Emrakul won’t do anything. Any other effects those spells have will work as normal."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "“Protection from colored spells” means that Emrakul can’t be the target of colored spells (including colored Aura spells) or of abilities whose sources are colored spells (such as the “when you cast” ability of an Ulamog, the Infinite Gyre that’s been turned red by Painter’s Servant). It also means that all damage that would be dealt to Emrakul by colored spells is prevented. Like every protection ability, it works only while Emrakul is on the battlefield."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "“Colored spells” is not synonymous with “colored instants and sorceries.” For example, if a player cycles Choking Tethers, its triggered ability may target Emrakul because Choking Tethers wasn’t cast as a spell."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "Emrakul may be affected by colored spells that don’t target it or deal damage to it, including those that cause it to become blocked. Abilities of colored permanents (such as Journey to Nowhere) may target it. Auras may be moved onto it by abilities or by colored spells that don’t target it (such as Aura Graft)."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Eldrazi"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "This spell can't be countered.\nWhen you cast this spell, take an extra turn after this one.\nFlying, protection from colored spells, annihilator 6\nWhen Emrakul, the Aeons Torn is put into a graveyard from anywhere, its owner shuffles their graveyard into their library.",
+            "toughness": "15",
+            "type": "Legendary Creature — Eldrazi",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "38cd438d-be12-40aa-bd6c-be55e88b63ce"
+        },
+        {
+            "artist": "Jason Chan",
+            "borderColor": "black",
+            "colorIdentity": [],
+            "colors": [],
+            "convertedManaCost": 7.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": true,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "loyalty": "6",
+            "manaCost": "{7}",
+            "multiverseId": 457106,
+            "name": "Karn Liberated",
+            "number": "U2",
+            "originalText": "+4: Target player exiles a card from their hand.\n−3: Exile target permanent.\n−14: Restart the game, leaving in exile all non-Aura permanent cards exiled with Karn Liberated. Then put those cards onto the battlefield under your control.",
+            "originalType": "Legendary Planeswalker — Karn",
+            "printings": [
+                "MM2",
+                "NPH",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2011-06-01",
+                    "text": "After the pre-game procedure is complete, but before the new game’s first turn, Karn’s ability finishes resolving and the cards left in exile are put onto the battlefield. If this causes any triggered abilities to trigger, those abilities are put onto the stack at the beginning of the first upkeep step."
+                },
+                {
+                    "date": "2011-06-01",
+                    "text": "Creatures put onto the battlefield due to Karn’s ability will have been under their controller’s control continuously since the beginning of the first turn. They can attack and their activated abilities with {T} in the cost can be activated."
+                },
+                {
+                    "date": "2011-06-01",
+                    "text": "Any permanents put onto the battlefield with Karn’s ability that entered the battlefield tapped will untap during their controller’s first untap step."
+                },
+                {
+                    "date": "2011-06-01",
+                    "text": "No actions taken in the game that was restarted apply to the new game. For example, if you were dealt damage by Stigma Lasher in the original game, the effect that states you can’t gain life doesn’t carry over to the new game."
+                },
+                {
+                    "date": "2011-06-01",
+                    "text": "Players won’t have any poison counters or emblems they had in the original game."
+                },
+                {
+                    "date": "2011-06-01",
+                    "text": "In a Commander game, players put their commanders into the command zone before shuffling their deck."
+                },
+                {
+                    "date": "2011-06-01",
+                    "text": "The number of times a player has cast their commander from the command zone resets to zero. Also, the amount of combat damage dealt to players by each commander is reset to 0."
+                },
+                {
+                    "date": "2011-06-01",
+                    "text": "If a player’s commander was exiled with Karn at the game restarted, that commander won’t be put into the command zone at the beginning of the game. It will be put onto the battlefield when Karn’s ability finishes resolving."
+                },
+                {
+                    "date": "2011-06-01",
+                    "text": "In a multiplayer game using the limited range of influence option, all players are affected and will restart the game, not just those within the range of influence of the ability’s controller."
+                },
+                {
+                    "date": "2011-06-01",
+                    "text": "Karn’s first and third abilities are linked. Similarly, Karn’s second and third abilities are linked. Only cards exiled by either of Karn’s first two abilities will remain in exile when the game restarts."
+                },
+                {
+                    "date": "2011-06-01",
+                    "text": "A game that restarts immediately ends. The players in that game then immediately begin a new game. No player wins, loses, or draws the original game as a result of Karn’s ability."
+                },
+                {
+                    "date": "2011-06-01",
+                    "text": "In a multiplayer games (a game that started with three or more players in it), any player that left the game before it was restarted with Karn’s ability won’t be involved in the new game."
+                },
+                {
+                    "date": "2011-06-01",
+                    "text": "The player who controlled the ability that restarted the game is the starting player in the new game. The new game starts like a game normally does: -- Each player shuffles their deck (except the cards left in exile by Karn's ability). -- Each player's life total becomes 20 (or the starting life total for whatever format you're playing). -- Players draw a hand of seven cards. Players may take mulligans. -- Players may take actions based on cards in their opening hands, such as Chancellors and Leylines."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Karn"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "+4: Target player exiles a card from their hand.\n−3: Exile target permanent.\n−14: Restart the game, leaving in exile all non-Aura permanent cards exiled with Karn Liberated. Then put those cards onto the battlefield under your control.",
+            "type": "Legendary Planeswalker — Karn",
+            "types": [
+                "Planeswalker"
+            ],
+            "uuid": "247689bc-b97c-4a2a-8854-1cde24a185b0"
+        },
+        {
+            "artist": "Michael Komarck",
+            "borderColor": "black",
+            "colorIdentity": [],
+            "colors": [],
+            "convertedManaCost": 10.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": true,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{10}",
+            "multiverseId": 457107,
+            "name": "Kozilek, Butcher of Truth",
+            "number": "U3",
+            "originalText": "When you cast this spell, draw four cards.\nAnnihilator 4\nWhen Kozilek, Butcher of Truth is put into a graveyard from anywhere, its owner shuffles their graveyard into their library.",
+            "originalType": "Legendary Creature — Eldrazi",
+            "power": "12",
+            "printings": [
+                "MM2",
+                "PUMA",
+                "ROE",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2010-06-15",
+                    "text": "Annihilator abilities trigger and resolve during the declare attackers step. The defending player chooses and sacrifices the required number of permanents before they declare blockers. Any creatures sacrificed this way won’t be able to block."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "If a creature with annihilator is attacking a planeswalker, and the defending player chooses to sacrifice that planeswalker, the attacking creature continues to attack. It may be blocked. If it isn’t blocked, it simply won’t deal combat damage to anything."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Eldrazi"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "When you cast this spell, draw four cards.\nAnnihilator 4 (Whenever this creature attacks, defending player sacrifices four permanents.)\nWhen Kozilek, Butcher of Truth is put into a graveyard from anywhere, its owner shuffles their graveyard into their library.",
+            "toughness": "12",
+            "type": "Legendary Creature — Eldrazi",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "fedb3888-a020-4c13-a845-0b5c808b96d3"
+        },
+        {
+            "artist": "Aleksi Briclot",
+            "borderColor": "borderless",
+            "colorIdentity": [],
+            "colors": [],
+            "convertedManaCost": 11.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{11}",
+            "multiverseId": 457108,
+            "name": "Ulamog, the Infinite Gyre",
+            "number": "U4",
+            "originalText": "When you cast this spell, destroy target permanent.\nIndestructible, annihilator 4\nWhen Ulamog, the Infinite Gyre is put into a graveyard from anywhere, its owner shuffles their graveyard into their library.",
+            "originalType": "Legendary Creature — Eldrazi",
+            "power": "10",
+            "printings": [
+                "MM2",
+                "PUMA",
+                "ROE",
+                "UMA",
+                "V11"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2010-06-15",
+                    "text": "Annihilator abilities trigger and resolve during the declare attackers step. The defending player chooses and sacrifices the required number of permanents before they declare blockers. Any creatures sacrificed this way won’t be able to block."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "If a creature with annihilator is attacking a planeswalker, and the defending player chooses to sacrifice that planeswalker, the attacking creature continues to attack. It may be blocked. If it isn’t blocked, it simply won’t deal combat damage to anything."
+                },
+                {
+                    "date": "2013-07-01",
+                    "text": "Lethal damage and effects that say “destroy” won’t cause a creature with indestructible to be put into the graveyard. However, a creature with indestructible can be put into the graveyard for a number of reasons. The most likely reasons are if it’s sacrificed, if it’s legendary and another legendary creature with the same name is controlled by the same player, or if its toughness is 0 or less."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Eldrazi"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "When you cast this spell, destroy target permanent.\nIndestructible\nAnnihilator 4 (Whenever this creature attacks, defending player sacrifices four permanents.)\nWhen Ulamog, the Infinite Gyre is put into a graveyard from anywhere, its owner shuffles their graveyard into their library.",
+            "toughness": "10",
+            "type": "Legendary Creature — Eldrazi",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "d8705c3e-d620-43fb-8773-65b412f555ef"
+        },
+        {
+            "artist": "Ryan Alexander Lee",
+            "borderColor": "black",
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "U"
+            ],
+            "convertedManaCost": 2.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": true,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{1}{U}",
+            "multiverseId": 457109,
+            "name": "Snapcaster Mage",
+            "number": "U5",
+            "originalText": "Flash\nWhen Snapcaster Mage enters the battlefield, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost.",
+            "originalType": "Creature — Human Wizard",
+            "power": "2",
+            "printings": [
+                "ISD",
+                "MM3",
+                "PPRO",
+                "PRM",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2017-03-14",
+                    "text": "If you cast an instant or sorcery with {X} in its mana cost this way, you still choose the value of X as part of casting the spell and pay that cost."
+                },
+                {
+                    "date": "2017-03-14",
+                    "text": "If an instant or sorcery card in your graveyard already has flashback, you may use either flashback ability to cast it from your graveyard."
+                },
+                {
+                    "date": "2017-03-14",
+                    "text": "You may pay any optional additional costs the spell has, such as conspire costs. You must pay any mandatory additional costs the spell has, such as that of Bone Splinters."
+                },
+                {
+                    "date": "2017-04-18",
+                    "text": "For split cards, the flashback cost you pay is determined by the half you cast"
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Human",
+                "Wizard"
+            ],
+            "supertypes": [],
+            "text": "Flash\nWhen Snapcaster Mage enters the battlefield, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost. (You may cast that card from your graveyard for its flashback cost. Then exile it.)",
+            "toughness": "1",
+            "type": "Creature — Human Wizard",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "ee203ede-b9af-4f97-84ca-597debf2efd0"
+        },
+        {
+            "artist": "Franz Vohwinkel",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "U"
+            ],
+            "convertedManaCost": 5.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{3}{U}{U}",
+            "multiverseId": 457110,
+            "name": "Temporal Manipulation",
+            "number": "U6",
+            "originalText": "Take an extra turn after this one.",
+            "originalType": "Sorcery",
+            "printings": [
+                "J15",
+                "ME2",
+                "P02",
+                "PRM",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2004-10-04",
+                    "text": "If multiple “extra turn” effects resolve in the same turn, take them in the reverse of the order that the effects resolved."
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "Take an extra turn after this one.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ],
+            "uuid": "7b821fbd-5186-45bd-b154-176a1436d24d"
+        },
+        {
+            "artist": "Jesper Ejsing",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "B"
+            ],
+            "convertedManaCost": 2.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{1}{B}",
+            "multiverseId": 457111,
+            "name": "Bitterblossom",
+            "number": "U7",
+            "originalText": "At the beginning of your upkeep, you lose 1 life and create a 1/1 black Faerie Rogue creature token with flying.",
+            "originalType": "Tribal Enchantment — Faerie",
+            "printings": [
+                "G11",
+                "MM2",
+                "MOR",
+                "PRM",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2008-04-01",
+                    "text": "The effect is mandatory. You’ll lose 1 life even if you have only 1 life left."
+                },
+                {
+                    "date": "2008-04-01",
+                    "text": "The life loss isn’t a payment. You’ll get a token even if you had 0 life (and another effect is stopping you from losing the game)."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Faerie"
+            ],
+            "supertypes": [],
+            "text": "At the beginning of your upkeep, you lose 1 life and create a 1/1 black Faerie Rogue creature token with flying.",
+            "type": "Tribal Enchantment — Faerie",
+            "types": [
+                "Tribal",
+                "Enchantment"
+            ],
+            "uuid": "25dd861f-ee63-4d79-b31b-173c9c336426"
+        },
+        {
+            "artist": "Zack Stella",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "B"
+            ],
+            "convertedManaCost": 2.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Banned",
+                "vintage": "Restricted"
+            },
+            "manaCost": "{1}{B}",
+            "multiverseId": 457112,
+            "name": "Demonic Tutor",
+            "number": "U8",
+            "originalText": "Search your library for a card, put that card into your hand, then shuffle your library.",
+            "originalType": "Sorcery",
+            "printings": [
+                "2ED",
+                "3ED",
+                "CED",
+                "CEI",
+                "DDC",
+                "DVD",
+                "FBB",
+                "G08",
+                "LEA",
+                "LEB",
+                "ME4",
+                "PRM",
+                "PUMA",
+                "SUM",
+                "UMA",
+                "VMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2004-10-04",
+                    "text": "You pick a card on resolution."
+                },
+                {
+                    "date": "2004-10-04",
+                    "text": "You don’t reveal the card to your opponent."
+                },
+                {
+                    "date": "2004-10-04",
+                    "text": "This card is put directly into your hand. It is not drawn."
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "Search your library for a card and put that card into your hand. Then shuffle your library.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ],
+            "uuid": "2d957ecf-93e7-4a32-88bc-4d10feaab4ea"
+        },
+        {
+            "artist": "Randy Vargas",
+            "borderColor": "black",
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "B"
+            ],
+            "convertedManaCost": 2.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": true,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{1}{B}",
+            "multiverseId": 457113,
+            "name": "Goryo's Vengeance",
+            "number": "U9",
+            "originalText": "Return target legendary creature card from your graveyard to the battlefield. That creature gains haste. Exile it at the beginning of the next end step.\nSplice onto Arcane {2}{B}",
+            "originalType": "Instant — Arcane",
+            "printings": [
+                "BOK",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2013-06-07",
+                    "text": "You reveal all cards you intend to splice at the same time. Each individual card can be spliced only once onto any one spell."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "A card with a splice ability can’t be spliced onto itself because the spell is on the stack (and not in your hand) when you reveal the cards you want to splice onto it."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "You choose all targets for the spell after revealing cards you want to splice, including any targets required by the text of any of those cards. You may choose a different target for each instance of the word “target” on the resulting spell."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "If all of the spell’s targets are illegal when the spell tries to resolve, it won’t resolve and none of its effects will happen."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Arcane"
+            ],
+            "supertypes": [],
+            "text": "Return target legendary creature card from your graveyard to the battlefield. That creature gains haste. Exile it at the beginning of the next end step.\nSplice onto Arcane {2}{B} (As you cast an Arcane spell, you may reveal this card from your hand and pay its splice cost. If you do, add this card's effects to that spell.)",
+            "type": "Instant — Arcane",
+            "types": [
+                "Instant"
+            ],
+            "uuid": "35b6baa0-508a-403c-89a0-f6ea04aa93a8"
+        },
+        {
+            "artist": "Steve Argyle",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "B"
+            ],
+            "convertedManaCost": 3.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "loyalty": "3",
+            "manaCost": "{1}{B}{B}",
+            "multiverseId": 457114,
+            "name": "Liliana of the Veil",
+            "number": "U10",
+            "originalText": "+1: Each player discards a card.\n−2: Target player sacrifices a creature.\n−6: Separate all permanents target player controls into two piles. That player sacrifices all permanents in the pile of their choice.",
+            "originalType": "Legendary Planeswalker — Liliana",
+            "printings": [
+                "ISD",
+                "MM3",
+                "PPRO",
+                "PRM",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2017-03-14",
+                    "text": "When Liliana’s first ability resolves, first the player whose turn it is chooses a card to discard, then each other player in turn order chooses a card to discard, then those cards are discarded simultaneously. No one sees what the other players are discarding before deciding which card to discard."
+                },
+                {
+                    "date": "2017-03-14",
+                    "text": "The player targeted by Liliana’s second ability chooses which creature to sacrifice when the ability resolves. This ability doesn’t target any creature."
+                },
+                {
+                    "date": "2017-03-14",
+                    "text": "When Liliana’s third ability resolves, you put each permanent the player controls into one of the two piles. For example, you could put a creature into one pile and an Aura enchanting that creature into the other pile."
+                },
+                {
+                    "date": "2017-03-14",
+                    "text": "A pile can be empty. If the player chooses an empty pile, no permanents will be sacrificed."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Liliana"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "+1: Each player discards a card.\n−2: Target player sacrifices a creature.\n−6: Separate all permanents target player controls into two piles. That player sacrifices all permanents in the pile of their choice.",
+            "type": "Legendary Planeswalker — Liliana",
+            "types": [
+                "Planeswalker"
+            ],
+            "uuid": "1e945c79-6c1e-404a-8993-655851566928"
+        },
+        {
+            "artist": "Chris Rahn",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "B"
+            ],
+            "convertedManaCost": 6.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{3}{B}{B}{B}",
+            "multiverseId": 457115,
+            "name": "Mikaeus, the Unhallowed",
+            "number": "U11",
+            "originalText": "Intimidate\nWhenever a Human deals damage to you, destroy it.\nOther non-Human creatures you control get +1/+1 and have undying.",
+            "originalType": "Legendary Creature — Zombie Cleric",
+            "power": "5",
+            "printings": [
+                "DKA",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2011-01-22",
+                    "text": "Noncombat damage dealt to you by a Human and damage dealt to you by a Human you control will also cause Mikaeus’s triggered ability to trigger."
+                },
+                {
+                    "date": "2011-01-22",
+                    "text": "The +1/+1 bonus that Mikaeus gives to other non-Human creatures is not a counter and won’t prevent the undying ability from working."
+                },
+                {
+                    "date": "2011-01-22",
+                    "text": "Mikaeus, the Unhallowed and the Innistrad set’s Mikaeus, the Lunarch can be on the battlefield at the same time. The “legend rule” applies only to legendary permanents that have exactly the same name."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Zombie",
+                "Cleric"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "Intimidate (This creature can't be blocked except by artifact creatures and/or creatures that share a color with it.)\nWhenever a Human deals damage to you, destroy it.\nOther non-Human creatures you control get +1/+1 and have undying. (When a creature with undying dies, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it.)",
+            "toughness": "5",
+            "type": "Legendary Creature — Zombie Cleric",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "4b7c0082-5f92-4d8d-b327-e1461535e483"
+        },
+        {
+            "artist": "Johann Bodin",
+            "borderColor": "black",
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "B"
+            ],
+            "convertedManaCost": 1.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": true,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{B}",
+            "multiverseId": 457116,
+            "name": "Reanimate",
+            "number": "U12",
+            "originalText": "Put target creature card from a graveyard onto the battlefield under your control. You lose life equal to its converted mana cost.",
+            "originalType": "Sorcery",
+            "printings": [
+                "ARC",
+                "BRB",
+                "F04",
+                "PD3",
+                "PRM",
+                "PUMA",
+                "TMP",
+                "TPR",
+                "UMA",
+                "VMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2004-12-01",
+                    "text": "You lose life equal to the converted mana cost of the card you’re bringing back, so if you Reanimate Volrath’s Shapeshifter, you lose three life, regardless of what the next card down is."
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "Put target creature card from a graveyard onto the battlefield under your control. You lose life equal to its converted mana cost.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ],
+            "uuid": "ac394f35-d999-43ea-97cf-99a736d4b2dd"
+        },
+        {
+            "artist": "Igor Kieryluk",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "B",
+                "G",
+                "U"
+            ],
+            "colors": [
+                "B"
+            ],
+            "convertedManaCost": 6.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Restricted",
+                "frontier": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{5}{B}",
+            "multiverseId": 457117,
+            "name": "Tasigur, the Golden Fang",
+            "number": "U13",
+            "originalText": "Delve\n{2}{GW}{GW}: Put the top two cards of your library into your graveyard, then return a nonland card of an opponent's choice from your graveyard to your hand.",
+            "originalType": "Legendary Creature — Human Shaman",
+            "power": "4",
+            "printings": [
+                "FRF",
+                "PFRF",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2014-11-24",
+                    "text": "The chosen opponent can choose any nonland card in your graveyard, not just one of the cards that was just put there. The player must choose a nonland card if there’s one in your graveyard."
+                },
+                {
+                    "date": "2014-11-24",
+                    "text": "You exile cards from your graveyard at the same time you pay the spell’s cost. Exiling a card this way is simply another way to pay that cost."
+                },
+                {
+                    "date": "2014-11-24",
+                    "text": "Delve doesn’t change a spell’s mana cost or converted mana cost. For example, the converted mana cost of Tasigur’s Cruelty (with mana cost {5}{B}) is 6 even if you exile three cards to cast it."
+                },
+                {
+                    "date": "2014-11-24",
+                    "text": "The last ability doesn’t target any card or player. You choose an opponent as the ability resolves and that player chooses a nonland card."
+                },
+                {
+                    "date": "2014-11-24",
+                    "text": "You can’t exile more cards than the generic mana requirement of a spell with delve. For example, you can’t exile more than five cards from your graveyard to cast Tasigur’s Cruelty."
+                },
+                {
+                    "date": "2014-11-24",
+                    "text": "Because delve isn’t an alternative cost, it can be used in conjunction with alternative costs."
+                },
+                {
+                    "date": "2014-11-24",
+                    "text": "You can’t exile cards to pay for the colored mana requirements of a spell with delve."
+                },
+                {
+                    "date": "2015-01-19",
+                    "text": "Tasigur, the Golden Fang is banned as a commander in Duel Commander format, but it may be part of your deck."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Human",
+                "Shaman"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "Delve (Each card you exile from your graveyard while casting this spell pays for {1}.)\n{2}{G/U}{G/U}: Put the top two cards of your library into your graveyard, then return a nonland card of an opponent's choice from your graveyard to your hand.",
+            "toughness": "5",
+            "type": "Legendary Creature — Human Shaman",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "87e58c1d-a3b7-4752-928b-168ec0d8f154"
+        },
+        {
+            "artist": "Eric Deschamps",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "R"
+            ],
+            "convertedManaCost": 7.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{5}{R}{R}",
+            "multiverseId": 457118,
+            "name": "Balefire Dragon",
+            "number": "U14",
+            "originalText": "Flying\nWhenever Balefire Dragon deals combat damage to a player, it deals that much damage to each creature that player controls.",
+            "originalType": "Creature — Dragon",
+            "power": "6",
+            "printings": [
+                "ISD",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2011-09-22",
+                    "text": "The damage dealt by Balefire Dragon’s triggered ability isn’t combat damage."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Dragon"
+            ],
+            "supertypes": [],
+            "text": "Flying\nWhenever Balefire Dragon deals combat damage to a player, it deals that much damage to each creature that player controls.",
+            "toughness": "6",
+            "type": "Creature — Dragon",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "55f132a1-5c06-45a4-b4a8-fa6b03ffa9f5"
+        },
+        {
+            "artist": "Randy Vargas",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "R"
+            ],
+            "convertedManaCost": 5.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{4}{R}",
+            "multiverseId": 457119,
+            "name": "Through the Breach",
+            "number": "U15",
+            "originalText": "You may put a creature card from your hand onto the battlefield. That creature gains haste. Sacrifice that creature at the beginning of the next end step.\nSplice onto Arcane {2}{R}{R}",
+            "originalType": "Instant — Arcane",
+            "printings": [
+                "CHK",
+                "MP2",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2007-05-01",
+                    "text": "Putting the card onto the battlefield is optional. When the ability resolves, you can choose not to."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "You reveal all cards you intend to splice at the same time. Each individual card can be spliced only once onto any one spell."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "A card with a splice ability can’t be spliced onto itself because the spell is on the stack (and not in your hand) when you reveal the cards you want to splice onto it."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "You choose all targets for the spell after revealing cards you want to splice, including any targets required by the text of any of those cards. You may choose a different target for each instance of the word “target” on the resulting spell."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "If all of the spell’s targets are illegal when the spell tries to resolve, it won’t resolve and none of its effects will happen."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Arcane"
+            ],
+            "supertypes": [],
+            "text": "You may put a creature card from your hand onto the battlefield. That creature gains haste. Sacrifice that creature at the beginning of the next end step.\nSplice onto Arcane {2}{R}{R} (As you cast an Arcane spell, you may reveal this card from your hand and pay its splice cost. If you do, add this card's effects to that spell.)",
+            "type": "Instant — Arcane",
+            "types": [
+                "Instant"
+            ],
+            "uuid": "611e7909-6b74-4b8b-beb3-ec9e94804d5f"
+        },
+        {
+            "artist": "Chris Rahn",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "G"
+            ],
+            "convertedManaCost": 3.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{1}{G}{G}",
+            "multiverseId": 457120,
+            "name": "Eternal Witness",
+            "number": "U16",
+            "originalText": "When Eternal Witness enters the battlefield, you may return target card from your graveyard to your hand.",
+            "originalType": "Creature — Human Shaman",
+            "power": "2",
+            "printings": [
+                "5DN",
+                "C15",
+                "CM2",
+                "CMA",
+                "CMD",
+                "DDJ",
+                "F08",
+                "MMA",
+                "PRM",
+                "PUMA",
+                "PZ1",
+                "TD0",
+                "UMA",
+                "WC04"
+            ],
+            "rarity": "mythic",
+            "rulings": [],
+            "starter": true,
+            "subtypes": [
+                "Human",
+                "Shaman"
+            ],
+            "supertypes": [],
+            "text": "When Eternal Witness enters the battlefield, you may return target card from your graveyard to your hand.",
+            "toughness": "1",
+            "type": "Creature — Human Shaman",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "47961be7-f8c8-4aa0-afa1-51a20a129406"
+        },
+        {
+            "artist": "Sung Choi",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "G"
+            ],
+            "convertedManaCost": 2.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{1}{G}",
+            "multiverseId": 457121,
+            "name": "Life from the Loam",
+            "number": "U17",
+            "originalText": "Return up to three target land cards from your graveyard to your hand.\nDredge 3",
+            "originalType": "Sorcery",
+            "printings": [
+                "DDJ",
+                "MMA",
+                "PUMA",
+                "RAV",
+                "TD0",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2013-06-07",
+                    "text": "Dredge lets you replace any card draw, not just the one during your draw step."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "Once you decide to replace a draw using a card’s dredge ability, that card can’t be removed from your graveyard “in response.” (Replacement effects don’t use the stack.)"
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "You can’t use dredge unless you’re going to draw a card and the card with dredge is already in your graveyard."
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "Return up to three target land cards from your graveyard to your hand.\nDredge 3 (If you would draw a card, instead you may put exactly three cards from the top of your library into your graveyard. If you do, return this card from your graveyard to your hand. Otherwise, draw a card.)",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ],
+            "uuid": "2b6f329e-4ed8-4a19-a0c9-3690b8bb6894"
+        },
+        {
+            "artist": "Mark Zug",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "G",
+                "U",
+                "W"
+            ],
+            "colors": [
+                "G"
+            ],
+            "convertedManaCost": 1.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{G}",
+            "multiverseId": 457122,
+            "name": "Noble Hierarch",
+            "number": "U18",
+            "originalText": "Exalted\n{T}: Add {G}, {W}, or {U}.",
+            "originalType": "Creature — Human Druid",
+            "power": "0",
+            "printings": [
+                "CON",
+                "J12",
+                "MM2",
+                "PPRO",
+                "PRM",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [],
+            "starter": true,
+            "subtypes": [
+                "Human",
+                "Druid"
+            ],
+            "supertypes": [],
+            "text": "Exalted (Whenever a creature you control attacks alone, that creature gets +1/+1 until end of turn.)\n{T}: Add {G}, {W}, or {U}.",
+            "toughness": "1",
+            "type": "Creature — Human Druid",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "77cc142c-9e74-4bc0-ae3a-a7699cf516ee"
+        },
+        {
+            "artist": "Filip Burburan",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "G"
+            ],
+            "convertedManaCost": 2.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{1}{G}",
+            "multiverseId": 457123,
+            "name": "Tarmogoyf",
+            "number": "U19",
+            "originalText": "Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.",
+            "originalType": "Creature — Lhurgoyf",
+            "power": "*",
+            "printings": [
+                "FUT",
+                "MM2",
+                "MM3",
+                "MMA",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2017-03-14",
+                    "text": "Tarmogoyf’s ability works in all zones, not just while Tarmogoyf is on the battlefield."
+                },
+                {
+                    "date": "2017-03-14",
+                    "text": "Tarmogoyf counts card types, not cards. If the only card in all graveyards is a single artifact creature, Tarmogoyf will be 2/3. If the only cards in all graveyards are ten artifact creatures, Tarmogoyf will still be 2/3."
+                },
+                {
+                    "date": "2017-03-14",
+                    "text": "The card types that can appear on cards in a graveyard are artifact, creature, enchantment, instant, land, planeswalker, sorcery, and tribal (a card type that appears on some older cards). Legendary and basic are supertypes, not card types."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Lhurgoyf"
+            ],
+            "supertypes": [],
+            "text": "Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.",
+            "toughness": "1+*",
+            "type": "Creature — Lhurgoyf",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "8a34e2df-a9ee-4c61-bc4c-518475a39925"
+        },
+        {
+            "artist": "Raymond Swanland",
+            "borderColor": "black",
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "G"
+            ],
+            "convertedManaCost": 4.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": true,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{2}{G}{G}",
+            "multiverseId": 457124,
+            "name": "Vengevine",
+            "number": "U20",
+            "originalText": "Haste\nWhenever you cast a spell, if it's the second creature spell you cast this turn, you may return Vengevine from your graveyard to the battlefield.",
+            "originalType": "Creature — Elemental",
+            "power": "4",
+            "printings": [
+                "PRM",
+                "PUMA",
+                "PWCQ",
+                "ROE",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2010-06-15",
+                    "text": "If you cast your second creature spell in a turn and Vengevine is in your graveyard, Vengevine’s second ability triggers and goes on the stack on top of it. The ability will resolve, allowing you to return Vengevine to the battlefield, before the creature spell does."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "Vengevine’s triggered ability works only if Vengevine is already in your graveyard as you finish casting your second creature spell in a turn, and it remains there continuously until the ability resolves."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "Vengevine doesn’t need to be in your graveyard as you start casting your second creature spell in a turn, only as you finish. This matters if you sacrifice a Vengevine on the battlefield while casting that creature spell, perhaps to pay a cost of that spell or a cost of a mana ability."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "Vengevine’s triggered ability checks the card types of the spells you cast over the course of the entire turn, not just the ones you cast while Vengevine is in your graveyard. For example, if you cast a creature spell, then Vengevine is put into your graveyard, then you cast another creature spell, Vengevine’s ability triggers."
+                },
+                {
+                    "date": "2010-06-15",
+                    "text": "Vengevine’s ability triggers only for the second creature spell you cast in a turn. It won’t trigger for the third, fourth, or so on. It also doesn’t matter how many noncreature spells you cast in a turn; the ability counts just the creature spells."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Elemental"
+            ],
+            "supertypes": [],
+            "text": "Haste\nWhenever you cast a spell, if it's the second creature spell you cast this turn, you may return Vengevine from your graveyard to the battlefield.",
+            "toughness": "3",
+            "type": "Creature — Elemental",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "99556953-8425-4052-957a-dd28a42e2f44"
+        },
+        {
+            "artist": "Greg Staples",
+            "borderColor": "black",
+            "colorIdentity": [
+                "G",
+                "W"
+            ],
+            "colors": [
+                "G",
+                "W"
+            ],
+            "convertedManaCost": 2.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": true,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{G}{W}",
+            "multiverseId": 457125,
+            "name": "Gaddock Teeg",
+            "number": "U21",
+            "originalText": "Noncreature spells with converted mana cost 4 or greater can't be cast.\nNoncreature spells with {X} in their mana costs can't be cast.",
+            "originalType": "Legendary Creature — Kithkin Advisor",
+            "power": "2",
+            "printings": [
+                "J17",
+                "LRW",
+                "PRM",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2007-10-01",
+                    "text": "If one half of a split card has a converted mana cost of 3 or less and doesn’t have an {X} in its mana cost, Gaddock Teeg lets you cast that half."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Kithkin",
+                "Advisor"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "Noncreature spells with converted mana cost 4 or greater can't be cast.\nNoncreature spells with {X} in their mana costs can't be cast.",
+            "toughness": "2",
+            "type": "Legendary Creature — Kithkin Advisor",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "701418b2-5d26-4da8-9091-d7f909f3ea3b"
+        },
+        {
+            "artist": "Magali Villeneuve",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "B",
+                "G",
+                "U"
+            ],
+            "colors": [
+                "B",
+                "G",
+                "U"
+            ],
+            "convertedManaCost": 3.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Banned",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{B}{G}{U}",
+            "multiverseId": 457126,
+            "name": "Leovold, Emissary of Trest",
+            "number": "U22",
+            "originalText": "Each opponent can't draw more than one card each turn.\nWhenever you or a permanent you control becomes the target of a spell or ability an opponent controls, you may draw a card.",
+            "originalType": "Legendary Creature — Elf Advisor",
+            "power": "3",
+            "printings": [
+                "CN2",
+                "PUMA",
+                "PZ2",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2016-08-23",
+                    "text": "Your opponents can draw a maximum of one card on each player’s turn. Subsequent card draws are ignored."
+                },
+                {
+                    "date": "2016-08-23",
+                    "text": "If an opponent hasn’t drawn any cards in a turn, and a spell or ability instructs a player to draw multiple cards, that player will just draw one card. However, if the draws are an optional cost to generate an additional effect (“[That player] may draw two cards. If they do, [effect]” or similar), the player can’t pay that cost in full and can’t draw any cards."
+                },
+                {
+                    "date": "2016-08-23",
+                    "text": "Leovold will “see” cards drawn by opponents earlier in the turn on the turn it enters the battlefield, although Leovold can’t affect cards drawn before it entered the battlefield. For example, if an opponent draws two cards, then Leovold enters the battlefield, that opponent can’t draw more cards that turn, but the two drawn cards are unaffected."
+                },
+                {
+                    "date": "2016-08-23",
+                    "text": "Replacement effects can’t be used to replace draws that Leovold disallows."
+                },
+                {
+                    "date": "2016-08-23",
+                    "text": "If you and a permanent you control each become the target of the same spell or ability an opponent controls, Leovold’s ability will trigger twice."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Elf",
+                "Advisor"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "Each opponent can't draw more than one card each turn.\nWhenever you or a permanent you control becomes the target of a spell or ability an opponent controls, you may draw a card.",
+            "toughness": "3",
+            "type": "Legendary Creature — Elf Advisor",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "dda80811-0410-4b51-bc67-82c50209a0a2"
+        },
+        {
+            "artist": "Izzy",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "B",
+                "G"
+            ],
+            "colors": [
+                "B",
+                "G"
+            ],
+            "convertedManaCost": 5.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{3}{B}{G}",
+            "multiverseId": 457127,
+            "name": "Lord of Extinction",
+            "number": "U23",
+            "originalText": "Lord of Extinction's power and toughness are each equal to the number of cards in all graveyards.",
+            "originalType": "Creature — Elemental",
+            "power": "*",
+            "printings": [
+                "ARB",
+                "MP2",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [],
+            "starter": true,
+            "subtypes": [
+                "Elemental"
+            ],
+            "supertypes": [],
+            "text": "Lord of Extinction's power and toughness are each equal to the number of cards in all graveyards.",
+            "toughness": "*",
+            "type": "Creature — Elemental",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "9dcd19d9-2a84-4ae3-9cff-66c5b62c1440"
+        },
+        {
+            "artist": "John Avon",
+            "borderColor": "black",
+            "colorIdentity": [
+                "B",
+                "G"
+            ],
+            "colors": [
+                "B",
+                "G"
+            ],
+            "convertedManaCost": 3.0,
+            "flavorText": "During the collision of the shards, entire ways of life disappeared without a trace.",
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": true,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{1}{B}{G}",
+            "multiverseId": 457128,
+            "name": "Maelstrom Pulse",
+            "number": "U24",
+            "originalText": "Destroy target nonland permanent and all other permanents with the same name as that permanent.",
+            "originalType": "Sorcery",
+            "printings": [
+                "ARB",
+                "MMA",
+                "MP2",
+                "PGPX",
+                "PRM",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2009-05-01",
+                    "text": "Maelstrom Pulse has only one target. If that permanent is an illegal target as Maelstrom Pulse tries to resolve, it won’t resolve and none of its effects will happen. Nothing will be destroyed."
+                },
+                {
+                    "date": "2009-05-01",
+                    "text": "The name of a creature token is the same as its creature types unless the token is a copy of another creature or the effect that created the token specifically gives it a different name. For example, a 1/1 Soldier creature token is named “Soldier.”"
+                },
+                {
+                    "date": "2009-05-01",
+                    "text": "A face-down creature has no name, so it doesn’t have the same name as anything else."
+                },
+                {
+                    "date": "2013-07-01",
+                    "text": "If Maelstrom Pulse resolves but the targeted permanent isn’t destroyed (perhaps because it regenerates or has indestructible), all other permanents with the same name as it will still be destroyed (unless they also have indestructible."
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "Destroy target nonland permanent and all other permanents with the same name as that permanent.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ],
+            "uuid": "57418b2d-238c-4637-9830-9e672e3bc6da"
+        },
+        {
+            "artist": "Chris Rahn",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "G",
+                "W"
+            ],
+            "colors": [
+                "G",
+                "W"
+            ],
+            "convertedManaCost": 5.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{2}{G}{W}{W}",
+            "multiverseId": 457129,
+            "name": "Sigarda, Host of Herons",
+            "number": "U25",
+            "originalText": "Flying, hexproof\nSpells and abilities your opponents control can't cause you to sacrifice permanents.",
+            "originalType": "Legendary Creature — Angel",
+            "power": "5",
+            "printings": [
+                "AVR",
+                "PHEL",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2012-05-01",
+                    "text": "As a spell or ability an opponent controls resolves, if it would force you to sacrifice a permanent, you just don’t. That part of the effect does nothing. If that spell or ability gives you the option to sacrifice a permanent (as Brain Gorger’s ability does), you can’t take that option."
+                },
+                {
+                    "date": "2012-05-01",
+                    "text": "If a spell or ability an opponent controls instructs you to perform an action unless you sacrifice a permanent (as Ogre Marauder does), you can’t choose to sacrifice a permanent. You must perform the action. On the other hand, if a spell or ability an opponent controls instructs you to sacrifice a permanent unless you perform an action (as Killing Wave does), you can choose whether or not to perform the action. If you don’t perform the action, nothing happens, since you can’t sacrifice any permanents."
+                },
+                {
+                    "date": "2012-05-01",
+                    "text": "You may still sacrifice permanents to pay the costs of spells you cast and abilities you activate, or because a resolving spell or ability you control instructs or allows you to do so."
+                },
+                {
+                    "date": "2012-05-01",
+                    "text": "You may sacrifice a permanent to pay the activation cost of an ability, even if that ability comes from a permanent an opponent controls (such as Excavation)."
+                },
+                {
+                    "date": "2012-05-01",
+                    "text": "You may sacrifice a permanent as a special action, even if the effect that allows you to do so comes from an opponent’s permanent (such as Damping Engine or Volrath’s Curse). No one controls special actions."
+                },
+                {
+                    "date": "2012-05-01",
+                    "text": "This ability affects only sacrifices. It won’t stop a creature from being put into the graveyard due to lethal damage or having 0 toughness, and it won’t stop a permanent from being put into the graveyard due to the “legend rule.” None of these are sacrifices; they’re the result of game rules."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Angel"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "Flying, hexproof\nSpells and abilities your opponents control can't cause you to sacrifice permanents.",
+            "toughness": "5",
+            "type": "Legendary Creature — Angel",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "6027eb04-62a6-4044-9f48-26816e050e1a"
+        },
+        {
+            "artist": "Lucas Graciano",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "B",
+                "R"
+            ],
+            "colors": [
+                "B",
+                "R"
+            ],
+            "convertedManaCost": 3.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{1}{B/R}{B/R}",
+            "multiverseId": 457130,
+            "name": "Fulminator Mage",
+            "number": "U26",
+            "originalText": "Sacrifice Fulminator Mage: Destroy target nonbasic land.",
+            "originalType": "Creature — Elemental Shaman",
+            "power": "2",
+            "printings": [
+                "MM2",
+                "PUMA",
+                "SHM",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [],
+            "starter": true,
+            "subtypes": [
+                "Elemental",
+                "Shaman"
+            ],
+            "supertypes": [],
+            "text": "Sacrifice Fulminator Mage: Destroy target nonbasic land.",
+            "toughness": "2",
+            "type": "Creature — Elemental Shaman",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "e37bd3ef-3252-4ec3-9fc9-e12634748977"
+        },
+        {
+            "artist": "Kev Walker",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "G",
+                "W"
+            ],
+            "colors": [
+                "G",
+                "W"
+            ],
+            "convertedManaCost": 3.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{1}{G/W}{G/W}",
+            "multiverseId": 457131,
+            "name": "Kitchen Finks",
+            "number": "U27",
+            "originalText": "When Kitchen Finks enters the battlefield, you gain 2 life.\nPersist",
+            "originalType": "Creature — Ouphe",
+            "power": "3",
+            "printings": [
+                "F09",
+                "MMA",
+                "PRM",
+                "PUMA",
+                "SHM",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2013-06-07",
+                    "text": "If a creature with persist stops being a creature, persist will still work."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "The persist ability triggers when the permanent is put into a graveyard. Its last known information (that is, how the creature last existed on the battlefield) is used to determine whether it had a -1/-1 counter on it."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "If a permanent has multiple instances of persist, they’ll each trigger separately, but the redundant instances will have no effect. If one instance returns the card to the battlefield, the next to resolve will do nothing."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "If a token with no -1/-1 counters on it has persist, the ability will trigger when the token is put into the graveyard. However, the token will cease to exist and can’t return to the battlefield."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "When a permanent with persist returns to the battlefield, it’s a new object with no memory of or connection to its previous existence."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "If multiple creatures with persist are put into the graveyard at the same time (due to combat damage or a spell that destroys all creatures, for example), the active player (the player whose turn it is) puts all of their persist triggers on the stack in any order, then each other player in turn order does the same. The last trigger put on the stack is the first one that resolves. That means that in a two-player game, the nonactive player’s persist creatures will return to the battlefield first, then the active player’s persist creatures do the same. The creatures return to the battlefield one at a time."
+                },
+                {
+                    "date": "2013-06-07",
+                    "text": "If a creature with persist that has +1/+1 counters on it receives enough -1/-1 counters to cause it to be destroyed by lethal damage or put into its owner’s graveyard for having 0 or less toughness, persist won’t trigger and the card won’t return to the battlefield. That’s because persist checks the creature’s existence just before it leaves the battlefield, and it still has all those counters on it at that point."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Ouphe"
+            ],
+            "supertypes": [],
+            "text": "When Kitchen Finks enters the battlefield, you gain 2 life.\nPersist (When this creature dies, if it had no -1/-1 counters on it, return it to the battlefield under its owner's control with a -1/-1 counter on it.)",
+            "toughness": "2",
+            "type": "Creature — Ouphe",
+            "types": [
+                "Creature"
+            ],
+            "uuid": "763083c4-a1ec-4e90-af70-26b203b369ce"
+        },
+        {
+            "artist": "Lars Grant-West",
+            "borderColor": "borderless",
+            "colorIdentity": [],
+            "colors": [],
+            "convertedManaCost": 0.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{X}",
+            "multiverseId": 457132,
+            "name": "Engineered Explosives",
+            "number": "U28",
+            "originalText": "Sunburst\n{2}, Sacrifice Engineered Explosives: Destroy each nonland permanent with converted mana cost equal to the number of charge counters on Engineered Explosives.",
+            "originalType": "Artifact",
+            "printings": [
+                "5DN",
+                "MMA",
+                "MPS",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2004-12-01",
+                    "text": "If Engineered Explosives had no charge counters on it when you sacrificed it, it won’t destroy an animated land, because that permanent is a land in addition to being a creature."
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "Sunburst (This enters the battlefield with a charge counter on it for each color of mana spent to cast it.)\n{2}, Sacrifice Engineered Explosives: Destroy each nonland permanent with converted mana cost equal to the number of charge counters on Engineered Explosives.",
+            "type": "Artifact",
+            "types": [
+                "Artifact"
+            ],
+            "uuid": "67bf3b19-1037-4157-8f28-11edbb7b4545"
+        },
+        {
+            "artist": "Christine Choi",
+            "borderColor": "borderless",
+            "colorIdentity": [],
+            "colors": [],
+            "convertedManaCost": 1.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Banned",
+                "legacy": "Banned",
+                "vintage": "Restricted"
+            },
+            "manaCost": "{1}",
+            "multiverseId": 457133,
+            "name": "Mana Vault",
+            "number": "U29",
+            "originalText": "Mana Vault doesn't untap during your untap step.\nAt the beginning of your upkeep, you may pay {4}. If you do, untap Mana Vault.\nAt the beginning of your draw step, if Mana Vault is tapped, it deals 1 damage to you.\n{T}: Add {C}{C}{C}.",
+            "originalType": "Artifact",
+            "printings": [
+                "2ED",
+                "3ED",
+                "4ED",
+                "5ED",
+                "CED",
+                "CEI",
+                "FBB",
+                "LEA",
+                "LEB",
+                "ME4",
+                "MPS",
+                "PRM",
+                "PUMA",
+                "SUM",
+                "UMA",
+                "VMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "Mana Vault doesn't untap during your untap step.\nAt the beginning of your upkeep, you may pay {4}. If you do, untap Mana Vault.\nAt the beginning of your draw step, if Mana Vault is tapped, it deals 1 damage to you.\n{T}: Add {C}{C}{C}.",
+            "type": "Artifact",
+            "types": [
+                "Artifact"
+            ],
+            "uuid": "16951cdd-7367-46c7-b915-93d4ed656918"
+        },
+        {
+            "artist": "Igor Kieryluk",
+            "borderColor": "borderless",
+            "colorIdentity": [],
+            "colors": [],
+            "convertedManaCost": 8.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "manaCost": "{8}",
+            "multiverseId": 457134,
+            "name": "Platinum Emperion",
+            "number": "U30",
+            "originalText": "Your life total can't change.",
+            "originalType": "Artifact Creature — Golem",
+            "power": "8",
+            "printings": [
+                "PUMA",
+                "SOM",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2011-01-01",
+                    "text": "The ability doesn’t prevent damage. Rather, it changes the results of that damage. For example, if a creature with lifelink deals damage to you, you won’t lose any life, but its controller will still gain that much life. Similarly, if a creature you control with lifelink deals damage to another player, that player will lose life but you won’t gain any life. Notably, if a creature with infect deals damage to you, you’ll get that many poison counters."
+                },
+                {
+                    "date": "2011-01-01",
+                    "text": "Abilities that trigger whenever damage is dealt to you will still trigger because that damage is still dealt, even though your life total doesn’t change as a result."
+                },
+                {
+                    "date": "2011-01-01",
+                    "text": "Spells and abilities that would normally cause you to gain or lose life still resolve, but the life-gain or life-loss part simply has no effect."
+                },
+                {
+                    "date": "2011-01-01",
+                    "text": "You can’t pay a cost that includes the payment of any amount of life other than 0 life."
+                },
+                {
+                    "date": "2011-01-01",
+                    "text": "If a cost would include causing you to gain life (like the alternative cost of an opponent’s Invigorate does), that cost can’t be paid."
+                },
+                {
+                    "date": "2011-01-01",
+                    "text": "Effects that would replace having you gain life with some other effect won’t be able to be applied because it’s impossible for you to gain life. The same is true for events that would replace having you lose life with some other effect."
+                },
+                {
+                    "date": "2011-01-01",
+                    "text": "Effects that replace an event with having you gain life (like Words of Worship’s effect does) or having you lose life will end up replacing the event with nothing."
+                },
+                {
+                    "date": "2011-01-01",
+                    "text": "If an effect says to set your life total to a certain number that’s different than your current life total, that part of the effect won’t do anything."
+                },
+                {
+                    "date": "2011-01-01",
+                    "text": "If an effect would cause you to exchange life totals with another player, the exchange won’t happen. Neither player’s life total changes."
+                },
+                {
+                    "date": "2011-01-01",
+                    "text": "The ability won’t preclude you from losing the game. It just precludes your life total from changing."
+                }
+            ],
+            "starter": true,
+            "subtypes": [
+                "Golem"
+            ],
+            "supertypes": [],
+            "text": "Your life total can't change. (You can't gain or lose life. You can't pay any amount of life except 0.)",
+            "toughness": "8",
+            "type": "Artifact Creature — Golem",
+            "types": [
+                "Artifact",
+                "Creature"
+            ],
+            "uuid": "861100b0-ff7b-4aac-82aa-039365c826aa"
+        },
+        {
+            "artist": "Yeong-Hao Han",
+            "borderColor": "borderless",
+            "colorIdentity": [],
+            "colors": [],
+            "convertedManaCost": 0.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "vintage": "Legal"
+            },
+            "multiverseId": 457135,
+            "name": "Ancient Tomb",
+            "number": "U31",
+            "originalText": "{T}: Add {C}{C}. Ancient Tomb deals 2 damage to you.",
+            "originalType": "Land",
+            "printings": [
+                "EXP",
+                "PUMA",
+                "TMP",
+                "UMA",
+                "V12",
+                "VMA",
+                "WC99"
+            ],
+            "rarity": "mythic",
+            "rulings": [],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "{T}: Add {C}{C}. Ancient Tomb deals 2 damage to you.",
+            "type": "Land",
+            "types": [
+                "Land"
+            ],
+            "uuid": "2ca06f4f-1212-49c8-b45a-6f1597e0a3ed"
+        },
+        {
+            "artist": "Richard Wright",
+            "borderColor": "borderless",
+            "colorIdentity": [],
+            "colors": [],
+            "convertedManaCost": 0.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "multiverseId": 457136,
+            "name": "Cavern of Souls",
+            "number": "U32",
+            "originalText": "As Cavern of Souls enters the battlefield, choose a creature type.\n{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast a creature spell of the chosen type, and that spell can't be countered.",
+            "originalType": "Land",
+            "printings": [
+                "AVR",
+                "MM3",
+                "PUMA",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2017-03-14",
+                    "text": "You must choose an existing creature type, such as Zombie or Warrior. Card types such as artifact can’t be chosen."
+                },
+                {
+                    "date": "2017-03-14",
+                    "text": "The spell can’t be countered if the mana produced by Cavern of Souls is spent to cover any cost of the spell, even an additional cost such as a kicker cost. This is true even if you use the mana to pay an additional cost while casting a spell “without paying its mana cost.”"
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "As Cavern of Souls enters the battlefield, choose a creature type.\n{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast a creature spell of the chosen type, and that spell can't be countered.",
+            "type": "Land",
+            "types": [
+                "Land"
+            ],
+            "uuid": "bea9f6e9-69ae-4c49-9682-ad09e787c01e"
+        },
+        {
+            "artist": "Eric Deschamps",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "U",
+                "W"
+            ],
+            "colors": [],
+            "convertedManaCost": 0.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "multiverseId": 457137,
+            "name": "Celestial Colonnade",
+            "number": "U33",
+            "originalText": "Celestial Colonnade enters the battlefield tapped.\n{T}: Add {W} or {U}.\n{3}{W}{U}: Until end of turn, Celestial Colonnade becomes a 4/4 white and blue Elemental creature with flying and vigilance. It's still a land.",
+            "originalType": "Land",
+            "printings": [
+                "PRM",
+                "PUMA",
+                "PWWK",
+                "UMA",
+                "WWK"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2010-03-01",
+                    "text": "A land that becomes a creature may be affected by “summoning sickness.” You can’t attack with it or use any of its {T} abilities (including its mana abilities) unless it began your most recent turn on the battlefield under your control. Note that summoning sickness cares about when that permanent came under your control, not when it became a creature."
+                },
+                {
+                    "date": "2010-03-01",
+                    "text": "When a land becomes a creature, that doesn’t count as having a creature enter the battlefield. The permanent was already on the battlefield; it only changed its types. Abilities that trigger whenever a creature enters the battlefield won’t trigger."
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "Celestial Colonnade enters the battlefield tapped.\n{T}: Add {W} or {U}.\n{3}{W}{U}: Until end of turn, Celestial Colonnade becomes a 4/4 white and blue Elemental creature with flying and vigilance. It's still a land.",
+            "type": "Land",
+            "types": [
+                "Land"
+            ],
+            "uuid": "051f18b2-9d16-4831-8f7e-458877b0c1fa"
+        },
+        {
+            "artist": "Jason Felix",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "B",
+                "U"
+            ],
+            "colors": [],
+            "convertedManaCost": 0.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "multiverseId": 457138,
+            "name": "Creeping Tar Pit",
+            "number": "U34",
+            "originalText": "Creeping Tar Pit enters the battlefield tapped.\n{T}: Add {U} or {B}.\n{1}{U}{B}: Creeping Tar Pit becomes a 3/2 blue and black Elemental creature until end of turn and can't be blocked this turn. It's still a land.",
+            "originalType": "Land",
+            "printings": [
+                "PUMA",
+                "UMA",
+                "WWK"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2010-03-01",
+                    "text": "A land that becomes a creature may be affected by “summoning sickness.” You can’t attack with it or use any of its {T} abilities (including its mana abilities) unless it began your most recent turn on the battlefield under your control. Note that summoning sickness cares about when that permanent came under your control, not when it became a creature."
+                },
+                {
+                    "date": "2010-03-01",
+                    "text": "When a land becomes a creature, that doesn’t count as having a creature enter the battlefield. The permanent was already on the battlefield; it only changed its types. Abilities that trigger whenever a creature enters the battlefield won’t trigger."
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "Creeping Tar Pit enters the battlefield tapped.\n{T}: Add {U} or {B}.\n{1}{U}{B}: Creeping Tar Pit becomes a 3/2 blue and black Elemental creature until end of turn and can't be blocked this turn. It's still a land.",
+            "type": "Land",
+            "types": [
+                "Land"
+            ],
+            "uuid": "e7d7e102-c52d-4891-a2a2-55fead79dc61"
+        },
+        {
+            "artist": "Mathias Kollros",
+            "borderColor": "borderless",
+            "colorIdentity": [],
+            "colors": [],
+            "convertedManaCost": 0.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Banned",
+                "vintage": "Legal"
+            },
+            "multiverseId": 457139,
+            "name": "Dark Depths",
+            "number": "U35",
+            "originalText": "Dark Depths enters the battlefield with ten ice counters on it.\n{3}: Remove an ice counter from Dark Depths.\nWhen Dark Depths has no ice counters on it, sacrifice it. If you do, create Marit Lage, a legendary 20/20 black Avatar creature token with flying and indestructible.",
+            "originalType": "Legendary Snow Land",
+            "printings": [
+                "CSP",
+                "PUMA",
+                "UMA",
+                "V16"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2006-07-15",
+                    "text": "Dark Depths is a land with no mana ability."
+                },
+                {
+                    "date": "2006-07-15",
+                    "text": "Dark Depths’s last ability is a state trigger. It will not trigger again while the ability is on the stack, but if the ability is countered and Dark Depths is still on the battlefield with no ice counters on it, it will trigger again immediately."
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [
+                "Legendary",
+                "Snow"
+            ],
+            "text": "Dark Depths enters the battlefield with ten ice counters on it.\n{3}: Remove an ice counter from Dark Depths.\nWhen Dark Depths has no ice counters on it, sacrifice it. If you do, create a legendary 20/20 black Avatar creature token with flying and indestructible named Marit Lage.",
+            "type": "Legendary Snow Land",
+            "types": [
+                "Land"
+            ],
+            "uuid": "e8fa97f8-2f52-426a-84f3-a7b85fda1344"
+        },
+        {
+            "artist": "Drew Baker",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [],
+            "convertedManaCost": 0.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Banned",
+                "commander": "Banned",
+                "duel": "Banned",
+                "legacy": "Legal",
+                "vintage": "Legal"
+            },
+            "multiverseId": 457140,
+            "name": "Karakas",
+            "number": "U36",
+            "originalText": "{T}: Add {W}.\n{T}: Return target legendary creature to its owner's hand.",
+            "originalType": "Legendary Land",
+            "printings": [
+                "EMA",
+                "J12",
+                "LEG",
+                "ME3",
+                "PRM",
+                "PUMA",
+                "TD0",
+                "UMA"
+            ],
+            "rarity": "mythic",
+            "rulings": [],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "{T}: Add {W}.\n{T}: Return target legendary creature to its owner's hand.",
+            "type": "Legendary Land",
+            "types": [
+                "Land"
+            ],
+            "uuid": "ff790ded-af9f-4e93-84b7-ddadff5ccad4"
+        },
+        {
+            "artist": "Véronique Meignaud",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "B",
+                "R"
+            ],
+            "colors": [],
+            "convertedManaCost": 0.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "multiverseId": 457141,
+            "name": "Lavaclaw Reaches",
+            "number": "U37",
+            "originalText": "Lavaclaw Reaches enters the battlefield tapped.\n{T}: Add {B} or {R}.\n{1}{B}{R}: Until end of turn, Lavaclaw Reaches becomes a 2/2 black and red Elemental creature with \"{X}: This creature gets +X/+0 until end of turn.\" It's still a land.",
+            "originalType": "Land",
+            "printings": [
+                "PUMA",
+                "UMA",
+                "WWK"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2010-03-01",
+                    "text": "A land that becomes a creature may be affected by “summoning sickness.” You can’t attack with it or use any of its {T} abilities (including its mana abilities) unless it began your most recent turn on the battlefield under your control. Note that summoning sickness cares about when that permanent came under your control, not when it became a creature."
+                },
+                {
+                    "date": "2010-03-01",
+                    "text": "When a land becomes a creature, that doesn’t count as having a creature enter the battlefield. The permanent was already on the battlefield; it only changed its types. Abilities that trigger whenever a creature enters the battlefield won’t trigger."
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "Lavaclaw Reaches enters the battlefield tapped.\n{T}: Add {B} or {R}.\n{1}{B}{R}: Until end of turn, Lavaclaw Reaches becomes a 2/2 black and red Elemental creature with \"{X}: This creature gets +X/+0 until end of turn.\" It's still a land.",
+            "type": "Land",
+            "types": [
+                "Land"
+            ],
+            "uuid": "7c9fb3d9-e018-4aa3-9c14-1a51fae176b4"
+        },
+        {
+            "artist": "Todd Lockwood",
+            "borderColor": "borderless",
+            "colorIdentity": [
+                "G",
+                "R"
+            ],
+            "colors": [],
+            "convertedManaCost": 0.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": false,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "multiverseId": 457142,
+            "name": "Raging Ravine",
+            "number": "U38",
+            "originalText": "Raging Ravine enters the battlefield tapped.\n{T}: Add {R} or {G}.\n{2}{R}{G}: Until end of turn, Raging Ravine becomes a 3/3 red and green Elemental creature with \"Whenever this creature attacks, put a +1/+1 counter on it.\" It's still a land.",
+            "originalType": "Land",
+            "printings": [
+                "PUMA",
+                "UMA",
+                "WWK"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2010-03-01",
+                    "text": "A land that becomes a creature may be affected by “summoning sickness.” You can’t attack with it or use any of its {T} abilities (including its mana abilities) unless it began your most recent turn on the battlefield under your control. Note that summoning sickness cares about when that permanent came under your control, not when it became a creature."
+                },
+                {
+                    "date": "2010-03-01",
+                    "text": "When a land becomes a creature, that doesn’t count as having a creature enter the battlefield. The permanent was already on the battlefield; it only changed its types. Abilities that trigger whenever a creature enters the battlefield won’t trigger."
+                },
+                {
+                    "date": "2010-03-01",
+                    "text": "Each time you activate Raging Ravine’s last ability, it gains an instance of the triggered ability “Whenever this creature attacks, put a +1/+1 counter on it.” For example, if you activate the last ability twice and then attack with Raging Ravine, both of the triggered abilities it gained will trigger. It will get a total of two +1/+1 counters."
+                },
+                {
+                    "date": "2010-03-01",
+                    "text": "Any +1/+1 counters put on Raging Ravine remain on it even after it stops being a creature. They’ll have no effect until it becomes a creature again."
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "Raging Ravine enters the battlefield tapped.\n{T}: Add {R} or {G}.\n{2}{R}{G}: Until end of turn, Raging Ravine becomes a 3/3 red and green Elemental creature with \"Whenever this creature attacks, put a +1/+1 counter on it.\" It's still a land.",
+            "type": "Land",
+            "types": [
+                "Land"
+            ],
+            "uuid": "54f41726-e0bb-4154-a2db-4b68b50f5032"
+        },
+        {
+            "artist": "Eric Deschamps",
+            "borderColor": "black",
+            "colorIdentity": [
+                "G",
+                "W"
+            ],
+            "colors": [],
+            "convertedManaCost": 0.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": true,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "multiverseId": 457143,
+            "name": "Stirring Wildwood",
+            "number": "U39",
+            "originalText": "Stirring Wildwood enters the battlefield tapped.\n{T}: Add {G} or {W}.\n{1}{G}{W}: Until end of turn, Stirring Wildwood becomes a 3/4 green and white Elemental creature with reach. It's still a land.",
+            "originalType": "Land",
+            "printings": [
+                "C17",
+                "DDP",
+                "PUMA",
+                "UMA",
+                "WWK"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2010-03-01",
+                    "text": "A land that becomes a creature may be affected by “summoning sickness.” You can’t attack with it or use any of its {T} abilities (including its mana abilities) unless it began your most recent turn on the battlefield under your control. Note that summoning sickness cares about when that permanent came under your control, not when it became a creature."
+                },
+                {
+                    "date": "2010-03-01",
+                    "text": "When a land becomes a creature, that doesn’t count as having a creature enter the battlefield. The permanent was already on the battlefield; it only changed its types. Abilities that trigger whenever a creature enters the battlefield won’t trigger."
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [],
+            "text": "Stirring Wildwood enters the battlefield tapped.\n{T}: Add {G} or {W}.\n{1}{G}{W}: Until end of turn, Stirring Wildwood becomes a 3/4 green and white Elemental creature with reach. It's still a land.",
+            "type": "Land",
+            "types": [
+                "Land"
+            ],
+            "uuid": "5e63fd70-ca5b-45fd-b551-9ebe02410e9c"
+        },
+        {
+            "artist": "Jung Park",
+            "borderColor": "black",
+            "colorIdentity": [],
+            "colors": [],
+            "convertedManaCost": 0.0,
+            "foreignData": [],
+            "frameVersion": "2015",
+            "hasFoil": true,
+            "hasNonFoil": true,
+            "isReserved": false,
+            "layout": "normal",
+            "legalities": {
+                "1v1": "Legal",
+                "commander": "Legal",
+                "duel": "Legal",
+                "frontier": "Legal",
+                "legacy": "Legal",
+                "modern": "Legal",
+                "vintage": "Legal"
+            },
+            "multiverseId": 457144,
+            "name": "Urborg, Tomb of Yawgmoth",
+            "number": "U40",
+            "originalText": "Each land is a Swamp in addition to its other land types.",
+            "originalType": "Legendary Land",
+            "printings": [
+                "M15",
+                "PLC",
+                "PUMA",
+                "UMA",
+                "V12"
+            ],
+            "rarity": "mythic",
+            "rulings": [
+                {
+                    "date": "2008-04-01",
+                    "text": "If Urborg, Tomb of Yawgmoth and either Blood Moon or Magus of the Moon are on the battlefield, all nonbasic lands will be Mountains, not Swamps. Urborg, Tomb of Yawgmoth will be a Mountain as well. It will have “{T}: Add {R}” and no other abilities."
+                },
+                {
+                    "date": "2014-07-18",
+                    "text": "Urborg, Tomb of Yawgmoth isn’t a Swamp while it’s not on the battlefield."
+                },
+                {
+                    "date": "2014-07-18",
+                    "text": "Urborg’s ability causes each land on the battlefield to have the land type Swamp. Each land thus has the ability “{T}: Add {B}.” Nothing else changes about those lands, including their names, other subtypes, other abilities, and whether they’re legendary or basic."
+                },
+                {
+                    "date": "2014-07-18",
+                    "text": "If Urborg loses its abilities (for example, if it becomes a creature and then Turn to Frog targets it), all lands on the battlefield, including Urborg, will still be Swamps, but Urborg won’t have the ability “Each land is a Swamp in addition to its other land types.” Urborg also won’t be able to tap to produce {B}, but other lands (including those that enter the battlefield later in the turn) will. The way continuous effects work, Urborg’s type-changing ability is applied before the effect that removes both the type-changing ability and its own mana ability."
+                }
+            ],
+            "starter": true,
+            "subtypes": [],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "Each land is a Swamp in addition to its other land types.",
+            "type": "Legendary Land",
+            "types": [
+                "Land"
+            ],
+            "uuid": "ff92804a-0c62-4eb8-bbba-f1ca6f426b6e"
+        }
+    ],
+    "code": "puma",
+    "isFoilOnly": true,
+    "meta": {
+        "date": "2018-12-07",
+        "version": "4.1.3"
+    },
+    "mtgoCode": "puma",
+    "name": "Ultimate Box Topper",
+    "releaseDate": "2018-12-07",
+    "tcgplayerGroupId": -1,
+    "tokens": [],
+    "totalSetSize": 40,
+    "type": "masterpiece"
+}
