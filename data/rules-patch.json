@@ -414,7 +414,7 @@
             "replace": "creatures, planeswalkers, and Structures"
         },
         {
-            "#": "for Starsong Dragon and Thrill of Battle, ensure that a turn always ends with a cleanup step",
+            "#": "for Thrill of Battle, ensure that a turn always ends with a cleanup step",
             "type": "add",
             "rule": "514",
             "text": "If a turn would end and it's not a cleanup step, instead add an additional ending phase after the current phase which consists only of a cleanup step and end the current phase."
