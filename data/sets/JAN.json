@@ -726,10 +726,10 @@
             "manaCost": "{5}{W}{W}{W}",
             "name": "Radiant Dawn",
             "number": "26",
-            "originalText": "Destroy all creatures. Then, return all creature cards with converted mana cost 2 or less from your graveyard to the battlefield.",
+            "originalText": "Destroy all creatures, then return all creature cards with converted mana cost 2 or less from your graveyard to the battlefield.",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Destroy all creatures. Then return all creature cards with converted mana cost 2 or less from your graveyard to the battlefield.",
+            "text": "Destroy all creatures, then return all creature cards with converted mana cost 2 or less from your graveyard to the battlefield.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -1265,7 +1265,7 @@
             ]
         },
         {
-            "artist": "yuumei",
+            "artist": "Myles Pinkney",
             "cmc": 4,
             "colorIdentity": [
                 "U"
@@ -1278,10 +1278,10 @@
             "manaCost": "{2}{U}{U}",
             "name": "Eoncraft",
             "number": "46",
-            "originalText": "Focus {5}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nTake an extra turn after this one. You can't draw cards during that turn.\nExile Eoncraft.",
+            "originalText": "Focus {5}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nTake an extra turn after this one. Skip that turn's draw step. Exile Eoncraft.",
             "originalType": "Sorcery",
             "rarity": "Mythic Rare",
-            "text": "Focus {5}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nTake an extra turn after this one. You can't draw cards during that turn.\nExile Eoncraft.",
+            "text": "Focus {5}{U}{U} (You may cast this spell for its focus cost. When you do, draw a card.)\nTake an extra turn after this one. Skip that turn's draw step. Exile Eoncraft.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -3620,10 +3620,10 @@
             "manaCost": "{2}{R}",
             "name": "Incendiary Revel",
             "number": "131",
-            "originalText": "Incendiary Revel deals 2 damage to any target.\n{4}{R}, Exile Incendiary Revel from your graveyard: Incendiary Revel deals 4 damage to any target.\n{6}{R}, Put Incendiary Revel from exile on the bottom of its owner's library: Incendiary Revel deals 8 damage to any target",
+            "originalText": "Incendiary Revel deals 2 damage to any target.\n{4}{R}, Exile Incendiary Revel from your graveyard: Incendiary Revel deals 4 damage to any target.\n{6}{R}, Put Incendiary Revel from exile on the bottom of its owner's library: Incendiary Revel deals 6 damage to any target",
             "originalType": "Instant",
             "rarity": "Mythic Rare",
-            "text": "Incendiary Revel deals 2 damage to any target.\n{4}{R}, Exile Incendiary Revel from your graveyard: Incendiary Revel deals 4 damage to any target.\n{6}{R}, Put Incendiary Revel from exile on the bottom of its owner's library: Incendiary Revel deals 8 damage to any target",
+            "text": "Incendiary Revel deals 2 damage to any target.\n{4}{R}, Exile Incendiary Revel from your graveyard: Incendiary Revel deals 4 damage to any target.\n{6}{R}, Put Incendiary Revel from exile on the bottom of its owner's library: Incendiary Revel deals 6 damage to any target",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -4060,7 +4060,7 @@
                 "Bird"
             ],
             "text": "Flying, haste\nResurrect {5}{R}{R}{R} (You may cast this spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
-            "toughness": "4",
+            "toughness": "3",
             "type": "Creature \u2014 Elemental Bird",
             "types": [
                 "Creature"
@@ -6029,19 +6029,13 @@
             "originalType": "Legendary Creature \u2014 Human",
             "power": "2",
             "rarity": "Rare",
-            "rulings": [
-                {
-                    "date": "2018-10-16",
-                    "text": "Unlike most similar effects, the second ability protects not only you and your planeswalkers, but also your Structures."
-                }
-            ],
             "subtypes": [
                 "Human"
             ],
             "supertypes": [
                 "Legendary"
             ],
-            "text": "When Uaria, King of Akuga enters the battlefield, each player creates three colorless Treasure artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nCreatures can't attack you or a permanent you control unless their controller pays {3} for each of those creatures.",
+            "text": "When Uaria, King of Akuga enters the battlefield, each player creates three colorless Treasure artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nCreatures can't attack you unless their controller pays {3} for each creature they control that's attacking you.",
             "toughness": "4",
             "type": "Legendary Creature \u2014 Human",
             "types": [
@@ -6507,6 +6501,7 @@
             "name": "Plains",
             "number": "233",
             "originalType": "Basic Land \u2014 Plains",
+            "printedName": "Jannada Plains",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6538,7 +6533,7 @@
             "name": "Plains",
             "number": "234",
             "originalType": "Basic Land \u2014 Plains",
-            "printedName": "Plains 2",
+            "printedName": "Jannada Plains 2",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6570,6 +6565,7 @@
             "name": "Island",
             "number": "235",
             "originalType": "Basic Land \u2014 Island",
+            "printedName": "Jannada Island",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6601,7 +6597,7 @@
             "name": "Island",
             "number": "236",
             "originalType": "Basic Land \u2014 Island",
-            "printedName": "Island 2",
+            "printedName": "Jannada Island 2",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6633,6 +6629,7 @@
             "name": "Swamp",
             "number": "237",
             "originalType": "Basic Land \u2014 Swamp",
+            "printedName": "Jannada Swamp",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6664,7 +6661,7 @@
             "name": "Swamp",
             "number": "238",
             "originalType": "Basic Land \u2014 Swamp",
-            "printedName": "Swamp 2",
+            "printedName": "Jannada Swamp 2",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6696,6 +6693,7 @@
             "name": "Mountain",
             "number": "239",
             "originalType": "Basic Land \u2014 Mountain",
+            "printedName": "Jannada Mountain",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6727,7 +6725,7 @@
             "name": "Mountain",
             "number": "240",
             "originalType": "Basic Land \u2014 Mountain",
-            "printedName": "Mountain 2",
+            "printedName": "Jannada Mountain 2",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6759,6 +6757,7 @@
             "name": "Forest",
             "number": "241",
             "originalType": "Basic Land \u2014 Forest",
+            "printedName": "Jannada Forest",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6790,7 +6789,7 @@
             "name": "Forest",
             "number": "242",
             "originalType": "Basic Land \u2014 Forest",
-            "printedName": "Forest 2",
+            "printedName": "Jannada Forest 2",
             "rarity": "Basic Land",
             "rulings": [
                 {
@@ -6816,5 +6815,5 @@
     "name": "Jannada",
     "releaseDate": "2017-11-05",
     "type": "expansion",
-    "version": "toto"
+    "version": "RAKmidseason"
 }
