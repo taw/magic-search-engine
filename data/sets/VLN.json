@@ -1149,35 +1149,6 @@
             ]
         },
         {
-            "artist": "Lisa Cunha",
-            "cmc": 2,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [
-                "Blue"
-            ],
-            "flavor": "Grixis' scavengers are always cautious.",
-            "imageName": "brackwater kathari",
-            "layout": "normal",
-            "manaCost": "{1}{U}",
-            "name": "Brackwater Kathari",
-            "number": "40",
-            "originalText": "Flying\nWhenever Brackwater Kathari deals combat damage to an opponent, look at that player's hand.",
-            "originalType": "Creature \u2014 Bird",
-            "power": "2",
-            "rarity": "Uncommon",
-            "subtypes": [
-                "Bird"
-            ],
-            "text": "Flying\nWhenever Brackwater Kathari deals combat damage to an opponent, look at that player's hand.",
-            "toughness": "1",
-            "type": "Creature \u2014 Bird",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
             "artist": "Reiko Gross",
             "cmc": 5,
             "colorIdentity": [
@@ -1191,7 +1162,7 @@
             "layout": "normal",
             "manaCost": "{4}{U}",
             "name": "Burrowing Cancrix",
-            "number": "41",
+            "number": "40",
             "originalText": "Flash (You may cast this spell any time you could cast an instant.)\nHexproof (This creature can't be the target of spells or abilities your opponents control.)",
             "originalType": "Creature \u2014 Crab",
             "power": "3",
@@ -1219,7 +1190,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Carmot Manipulator",
-            "number": "42",
+            "number": "41",
             "originalText": "Machinate \u2014 {T}, Tap another untapped artifact you control: Choose a counter on target permanent or player. Give that permanent or player another counter of that kind.",
             "originalType": "Artifact Creature \u2014 Insect",
             "power": "1",
@@ -1249,7 +1220,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}",
             "name": "Chrome Manta",
-            "number": "43",
+            "number": "42",
             "originalText": "Flying (This creature can't be blocked except by creatures with flying or reach.)",
             "originalType": "Artifact Creature \u2014 Fish",
             "power": "3",
@@ -1278,7 +1249,7 @@
             "layout": "normal",
             "manaCost": "{5}{U}{U}",
             "name": "Cobalt Sphinx",
-            "number": "44",
+            "number": "43",
             "originalText": "Flying\nWhen Cobalt Sphinx enters the battlefield, tap up to three artifacts you control. If you do, draw that many cards.\nCobalt Sphinx has hexproof as long as it's tapped.",
             "originalType": "Artifact Creature \u2014 Sphinx",
             "power": "5",
@@ -1308,7 +1279,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Consortium Informants",
-            "number": "45",
+            "number": "44",
             "originalText": "Whenever you cast an artifact spell, you may untap Consortium Informants.\nMachinate \u2014 {T}, Tap another untapped artifact you control: Draw a card, then discard a card.",
             "originalType": "Artifact Creature \u2014 Vedalken",
             "power": "2",
@@ -1321,6 +1292,36 @@
             "type": "Artifact Creature \u2014 Vedalken",
             "types": [
                 "Artifact",
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Ekaterina Kazartseva",
+            "cmc": 2,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "flavor": "It swims currents others cannot see, weaves eddies others do not feel, and gazes upon an abyss others could never comprehend.",
+            "imageName": "dream delver",
+            "layout": "normal",
+            "manaCost": "{1}{U}",
+            "name": "Dream Delver",
+            "number": "45",
+            "originalText": "Flying\nWhenever Dream Delver deals combat damage to an opponent, look at that player's hand.",
+            "originalType": "Creature \u2014 Merfolk Wizard",
+            "power": "2",
+            "rarity": "Uncommon",
+            "subtypes": [
+                "Merfolk",
+                "Wizard"
+            ],
+            "text": "Flying\nWhenever Dream Delver deals combat damage to an opponent, look at that player's hand.",
+            "toughness": "1",
+            "type": "Creature \u2014 Merfolk Wizard",
+            "types": [
                 "Creature"
             ]
         },
@@ -2715,10 +2716,13 @@
             "name": "Dirty Work",
             "number": "93",
             "originalText": "Whenever you cast a noncreature spell, if you control no creatures, choose one \u2014\n\u2022 You draw a card and you lose 1 life.\n\u2022 Each opponent loses 2 life. You gain 2 life.\n\u2022 Target creature gets -3/-3 until end of turn.",
-            "originalType": "Enchantment",
+            "originalType": "Legendary Enchantment",
             "rarity": "Rare",
+            "supertypes": [
+                "Legendary"
+            ],
             "text": "Whenever you cast a noncreature spell, if you control no creatures, choose one \u2014\n\u2022 You draw a card and you lose 1 life.\n\u2022 Each opponent loses 2 life. You gain 2 life.\n\u2022 Target creature gets -3/-3 until end of turn.",
-            "type": "Enchantment",
+            "type": "Legendary Enchantment",
             "types": [
                 "Enchantment"
             ]
@@ -2980,7 +2984,7 @@
             ],
             "imageName": "ikelious the tormentor",
             "layout": "normal",
-            "manaCost": "{4}{B}{B}",
+            "manaCost": "{5}{B}",
             "name": "Ikelious the Tormentor",
             "number": "103",
             "originalText": "Torture (You can harm your creatures to cast this spell. Each creature you put a single -1/-1 counter on while casting this spell pays for {1}.)\nMenace\n{2}{U}: Move a counter from target permanent onto another target permanent that shares a card type with it.",
@@ -5795,7 +5799,7 @@
         },
         {
             "artist": "Abel Vera",
-            "cmc": 7,
+            "cmc": 5,
             "colorIdentity": [
                 "B",
                 "G"
@@ -5806,17 +5810,17 @@
             ],
             "imageName": "cursed by the veil",
             "layout": "normal",
-            "manaCost": "{5}{B}{G}",
+            "manaCost": "{3}{B}{G}",
             "name": "Cursed by the Veil",
             "number": "201",
-            "originalText": "Enchant opponent\nAt the beginning of enchanted player's upkeep, put the top six cards of your library into your graveyard, then you put a creature card and a land card of enchanted player's choice onto the battlefield under your control.",
+            "originalText": "Enchant opponent\nAt the beginning of enchanted player's upkeep, put the top six cards of your library into your graveyard, then you put a creature card and a land card of enchanted player's choice from your graveyard onto the battlefield under your control.",
             "originalType": "Enchantment \u2014 Aura Curse",
             "rarity": "Rare",
             "subtypes": [
                 "Aura",
                 "Curse"
             ],
-            "text": "Enchant opponent\nAt the beginning of enchanted player's upkeep, put the top six cards of your library into your graveyard, then put a creature card and a land card of enchanted player's choice from your graveyard onto the battlefield under your control.",
+            "text": "Enchant opponent\nAt the beginning of enchanted player's upkeep, put the top six cards of your library into your graveyard, then you put a creature card and a land card of enchanted player's choice from your graveyard onto the battlefield under your control.",
             "type": "Enchantment \u2014 Aura Curse",
             "types": [
                 "Enchantment"
@@ -6822,7 +6826,7 @@
             "layout": "normal",
             "name": "Garden of Meditation",
             "number": "239",
-            "originalText": "{T}: Add {C}.\n{3}, {T}, Sacrifice Garden of Meditation: Search your library, graveyard, and/or cards you own from outside the game for a Bolas card, reveal it, then put it into your hand. If you searched your library this way, shuffle it.",
+            "originalText": "{T}: Add {C}.\n{3}, {T}, Sacrifice Garden of Meditation: Search your library, graveyard, and/or cards you own outside the game for a Bolas card, reveal it, then put it into your hand. If you searched your library this way, shuffle it.",
             "originalType": "Legendary Land",
             "rarity": "Mythic Rare",
             "supertypes": [
@@ -7688,5 +7692,5 @@
     "name": "Magic Villains",
     "releaseDate": "2017-08-06",
     "type": "core",
-    "version": "37.1"
+    "version": "updated2"
 }
