@@ -42,6 +42,11 @@ class DeckIndexer
       return printings["cp3"] if set_code == "ori" and printings["cp3"]
     end
 
+    # otherwise it returns GRN and that's bad
+    if set_code == "gnt"
+      return printings["gnt"] || printings["m19"] || raise
+    end
+
     # Coldsnap had special set for Ice Age reprints
     if deck["set_code"] == "csp"
       return printings["cst"] if printings["cst"]
