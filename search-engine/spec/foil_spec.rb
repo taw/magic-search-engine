@@ -72,7 +72,7 @@ describe "Foils" do
         assert_foiling(set.printings, "both")
       when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "phho", "plpa", "pjgp", "ppro", "pgtw", "pwor", "pwos", "prel", "pfnm"
         assert_foiling(set.printings, "foilonly")
-      when "w16", "w17", "cp1", "cp2", "cp3", "cst", "itp"
+      when "w16", "w17", "cp1", "cp2", "cp3", "cst", "itp", "gk1"
         assert_foiling_partial_precon(set.printings)
       when "s00"
         promo, rest = set.printings.partition{|c| c.name == "Rhox"}

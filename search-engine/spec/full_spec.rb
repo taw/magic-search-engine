@@ -2,8 +2,8 @@ describe "Full Database Test" do
   include_context "db"
 
   it "stats" do
-    db.number_of_cards.should eq(18992)
-    db.number_of_printings.should eq(37882)
+    db.number_of_cards.should eq(18997)
+    db.number_of_printings.should eq(37950)
   end
 
   it "block codes" do
@@ -136,12 +136,10 @@ describe "Full Database Test" do
       "Magnifying Glass",
       "Pyre Hound",
       "Rabid Bite",
-      "Reckless Scholar",
       "Rush of Adrenaline",
       "Sleep Paralysis",
       "Stone Quarry",
       "Thornhide Wolves",
-      "Tormenting Voice",
       "Triskaidekaphobia",
       "Uncaged Fury",
       "Vampire Noble",
