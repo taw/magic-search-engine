@@ -32,8 +32,8 @@ class SplitMtgjson
 end
 
 unless ARGV.size == 1
-  STDERR.puts "Usage: #{$0} /path/to/AllSets-x.json"
-  STDERR.puts "   or: #{$0} http://url.to/AllSets-x.json"
+  STDERR.puts "Usage: #{$0} /path/to/AllSets.json"
+  STDERR.puts "   or: #{$0} http://url.to/AllSets.json"
   exit 1
 end
 

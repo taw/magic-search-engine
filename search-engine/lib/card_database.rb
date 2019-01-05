@@ -224,7 +224,9 @@ class CardDatabase
       end
     end
     data["cards"].each do |card_name, card_data|
-      next if card_data["layout"] == "token" # Do not include tokens
+      # Do not include tokens
+      # (indexer now strips them)
+      next if card_data["layout"] == "token"
       normalized_name = card_name.downcase.tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
       card = @cards[normalized_name] = Card.new(card_data.reject{|k,_| k == "printings"})
       color_identity_cache[card_name] = card.partial_color_identity
