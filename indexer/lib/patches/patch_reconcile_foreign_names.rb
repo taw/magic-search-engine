@@ -39,7 +39,7 @@ class PatchReconcileForeignNames < Patch
     raw_data = {}
     printings.each do |printing|
       set_code = printing["set_code"]
-      foreign_names_data = printing.delete("foreignNames") or next
+      foreign_names_data = printing.delete("foreignNames") || printing.delete("foreignData") || next
       foreign_names_data.each do |e|
         language_code = language_name_to_code.fetch(e["language"])
         foreign_name = e["name"].gsub("&nbsp;", " ").gsub("\u00a0", " ").sub(/ —\z/, "")
