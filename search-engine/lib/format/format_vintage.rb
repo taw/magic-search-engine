@@ -18,7 +18,7 @@ class FormatVintage < Format
 
     # Portal / Starter sets used to not be tournament legal
     if @time and @time < Date.parse("2005.3.20")
-      excluded_sets += Set["ppod", "por", "po2", "ptk", "s99", "s00"]
+      excluded_sets += Set["ppod", "por", "p02", "ptk", "s99", "s00"]
     end
 
     excluded_sets

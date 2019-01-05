@@ -71,7 +71,7 @@ class PatchFoiling < Patch
         "precon"
       when "cp1", "cp2", "cp3"
         "foilonly"
-      when "por", "po2", "ptk", "ppod"
+      when "por", "p02", "ptk", "ppod"
         "nonfoil"
       end
 

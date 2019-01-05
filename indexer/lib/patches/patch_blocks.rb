@@ -4,7 +4,7 @@ class PatchBlocks < Patch
     ["mir", "mr", "Mirage", "mir", "vis", "wth"],
     ["tmp", "tp", "Tempest", "tmp", "sth", "exo"],
     ["usg", "us", "Urza's Saga", "usg", "ulg", "uds"],
-    ["mmq", "mm", "Mercadian Masques", "mmq", "nms", "pcy"],
+    ["mmq", "mm", "Mercadian Masques", "mmq", "nem", "pcy"],
     ["inv", "in", "Invasion", "inv", "pls", "apc"],
     ["ody", "od", "Odyssey", "ody", "tor", "jud"],
     ["ons", "on", "Onslaught", "ons", "lgn", "scg"],
