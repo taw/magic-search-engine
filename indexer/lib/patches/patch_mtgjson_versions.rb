@@ -16,6 +16,8 @@ class PatchMtgjsonVersions < Patch
     @cards.delete_if { |card| card["types"] =~ /Token/ }
 
     each_printing do |card|
+      card_is_v4 = !!card["multiverseId"]
+
       card["cmc"] = get_cmc(
         card.delete("faceConvertedManaCost"),
         card.delete("convertedManaCost"),
@@ -36,9 +38,19 @@ class PatchMtgjsonVersions < Patch
       card.delete("rulings") if card["rulings"] == []
       card.delete("text") if card["text"] == ""
       card.delete("manaCost") if card["manaCost"] == ""
+      card.delete("names") if card["names"] == []
+
+      if card["flavorText"]
+        card["flavor"] = card.delete("flavorText")
+      end
 
       # Renamed in v4
       card["multiverseid"] ||= card.delete("multiverseId")
+      if card.has_key?("isReserved")
+        if card.delete("isReserved")
+          card["reserved"] = true
+        end
+      end
 
       # Unicode vs ASCII
       if card["rulings"]
@@ -48,6 +60,13 @@ class PatchMtgjsonVersions < Patch
       end
       if card["text"]
         card["text"] = cleanup_unicode_punctuation(card["text"])
+      end
+
+      if card["rulings"]
+        rulings_dates = card["rulings"].map{|x| x["date"] }
+        unless rulings_dates.sort == rulings_dates
+          warn "Rulings for #{card["name"]} in #{card["set"]["name"]} not in order"
+        end
       end
 
       # Rulings ordering is arbitrarily different, just pick canonical ordering
