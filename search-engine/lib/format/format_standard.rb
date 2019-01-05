@@ -55,9 +55,9 @@ class FormatStandard < Format
       "2003-07-28" => ["ody", "tor", "jud", "ons", "lgn", "scg", "8ed"], # 8ed
       "2002-10-07" => ["7ed", "ody", "tor", "jud", "ons", "lgn", "scg"], # ons
       "2001-10-01" => ["inv", "pls", "7ed", "apc", "ody", "tor", "jud"], # ody
-      "2001-04-11" => ["mmq", "nms", "pcy", "inv", "pls", "7ed", "apc"], # 7ed
-      "2000-10-02" => ["6ed", "mmq", "nms", "pcy", "inv", "pls"], # inv
-      "1999-10-04" => ["usg", "ulg", "6ed", "uds", "mmq", "nms", "pcy"], # mmq
+      "2001-04-11" => ["mmq", "nem", "pcy", "inv", "pls", "7ed", "apc"], # 7ed
+      "2000-10-02" => ["6ed", "mmq", "nem", "pcy", "inv", "pls"], # inv
+      "1999-10-04" => ["usg", "ulg", "6ed", "uds", "mmq", "nem", "pcy"], # mmq
       "1999-04-21" => ["tmp", "sth", "exo", "usg", "ulg", "6ed", "uds"], # 6ed
       "1998-10-12" => ["5ed", "tmp", "sth", "exo", "usg", "ulg"], # usg
       "1997-10-14" => ["mir", "vis", "5ed", "wth", "tmp", "sth", "exo"], # tmp

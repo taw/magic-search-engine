@@ -85,11 +85,11 @@ class PackFactory
       "mir", "vis", "wth",
       "tmp", "sth", "exo",
       "usg",
-      "por", "po2"
+      "por", "p02"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Pre-mythic, with foils
     when "ulg", "uds",
-      "mmq", "pcy", "nms",
+      "mmq", "pcy", "nem",
       "inv", "pls", "apc",
       "ody", "tor", "jud",
       "ons", "lgd", "scg",

@@ -91,6 +91,7 @@ class Indexer
       PatchMtgjsonVersions,
       # Each set needs unique code, by convention all lowercase
       PatchSetCodes,
+      PatchRemoveTokens,
 
       # All cards absolutely need unique numbers
       PatchFixCollectorNumbers,

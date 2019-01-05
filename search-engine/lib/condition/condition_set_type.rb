@@ -33,7 +33,7 @@ class ConditionSetType < Condition
 
       # starter sets fall into several categories
       if (%w(cp1 cp2 cp3).include?(set.code) and type_list.include?("deck")) ||
-        (%w(ptk por po2 s99).include?(set.code) and type_list.include?("booster")) ||
+        (%w(ptk por p02 s99).include?(set.code) and type_list.include?("booster")) ||
         (%w(s00 w16 itp).include?(set.code) and type_list.include?("fixed"))
         sets << set
       end
