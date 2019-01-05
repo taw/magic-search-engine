@@ -68,8 +68,8 @@ describe "Formats - Block Constructed" do
   end
 
   it "masques" do
-    assert_block_composition_sequence "masques block", "mmq", "nms", "pcy"
-    assert_block_composition "masques block", nil, ["mmq", "nms", "pcy"],
+    assert_block_composition_sequence "masques block", "mmq", "nem", "pcy"
+    assert_block_composition "masques block", nil, ["mmq", "nem", "pcy"],
       "Lin Sivvi, Defiant Hero" => "banned",
       "Rishadan Port" => "banned"
   end

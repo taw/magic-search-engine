@@ -139,17 +139,17 @@ describe "Formats - Standard" do
     assert_block_composition "standard", "jud",  ["inv", "pls", "7ed", "apc", "ody", "tor", "jud"]
     assert_block_composition "standard", "tor",  ["inv", "pls", "7ed", "apc", "ody", "tor"]
     assert_block_composition "standard", "ody",  ["inv", "pls", "7ed", "apc", "ody"]
-    assert_block_composition "standard", "apc",  ["mmq", "nms", "pcy", "inv", "pls", "7ed", "apc"]
-    assert_block_composition "standard", "7ed",  ["mmq", "nms", "pcy", "inv", "pls", "7ed"]
-    assert_block_composition "standard", "pls",  ["6ed", "mmq", "nms", "pcy", "inv", "pls"]
-    assert_block_composition "standard", "inv",  ["6ed", "mmq", "nms", "pcy", "inv"]
-    assert_block_composition "standard", "pcy",  ["usg", "ulg", "6ed", "uds", "mmq", "nms", "pcy"],
+    assert_block_composition "standard", "apc",  ["mmq", "nem", "pcy", "inv", "pls", "7ed", "apc"]
+    assert_block_composition "standard", "7ed",  ["mmq", "nem", "pcy", "inv", "pls", "7ed"]
+    assert_block_composition "standard", "pls",  ["6ed", "mmq", "nem", "pcy", "inv", "pls"]
+    assert_block_composition "standard", "inv",  ["6ed", "mmq", "nem", "pcy", "inv"]
+    assert_block_composition "standard", "pcy",  ["usg", "ulg", "6ed", "uds", "mmq", "nem", "pcy"],
       "Fluctuator" => "banned",
       "Memory Jar" => "banned",
       "Time Spiral" => "banned",
       "Tolarian Academy" => "banned",
       "Windfall" => "banned"
-    assert_block_composition "standard", "nms",   ["usg", "ulg", "6ed", "uds", "mmq", "nms"],
+    assert_block_composition "standard", "nem",   ["usg", "ulg", "6ed", "uds", "mmq", "nem"],
       "Fluctuator" => "banned",
       "Memory Jar" => "banned",
       "Time Spiral" => "banned",
