@@ -89,7 +89,7 @@ describe "CLI Frontend" do
     )
   end
 
-  it "verbose color indicator" do
+  it "verbose color indicator (gone now)" do
     assert_cli(
       search: "mana=4 c:u c:w",
       verbose: true,
@@ -97,8 +97,26 @@ describe "CLI Frontend" do
         Transguild Courier {4}
         [dis]
         Artifact Creature - Golem
-        (Color indicator: Transguild Courier is all colors)
         3/3
+        EOF
+      error: ""
+    )
+  end
+
+  it "verbose color indicator" do
+    assert_cli(
+      search: "in=3 bolas",
+      verbose: true,
+      output: <<-EOF,
+        Nicol Bolas, the Arisen
+        [m19]
+        Legendary Planeswalker - Bolas
+        (Color indicator: Nicol Bolas, the Arisen is blue, black, and red)
+        [+2]: Draw two cards.
+        [−3]: Nicol Bolas, the Arisen deals 10 damage to target creature or planeswalker.
+        [−4]: Put target creature or planeswalker card from a graveyard onto the battlefield under your control.
+        [−12]: Exile all but the bottom card of target player's library.
+        Loyalty: 7
         EOF
       error: ""
     )
