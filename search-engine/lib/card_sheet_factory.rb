@@ -406,4 +406,12 @@ class CardSheetFactory
   def grn_land
     from_query("e:grn is:booster is:guildgate", 10)
   end
+
+  def rna_common
+    from_query("e:rna is:booster r:common not:guildgate")
+  end
+
+  def rna_land
+    from_query("e:rna is:booster is:guildgate", 10)
+  end
 end

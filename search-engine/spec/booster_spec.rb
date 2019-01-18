@@ -42,7 +42,7 @@ describe "is:booster" do
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=272"
       when "m19"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=280"
-      when "grn"
+      when "grn", "rna"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=259"
       when "ogw"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} (-t:basic or number:/A/)"
