@@ -568,13 +568,12 @@
             "colors": [
                 "White"
             ],
-            "flavor": "The standard is as much a weapon of the empire as much as any blade or bow.",
             "imageName": "imperial banneret",
             "layout": "normal",
             "manaCost": "{1}{W}{W}",
             "name": "Imperial Banneret",
             "number": "20",
-            "originalText": "Battle cry (Whenever this creature attacks, each other attacking creature gets +1/+0 until end of turn.)\nWhenever Imperial Banneret and at least two other Knight creatures attack, create a 2/2 white Knight creature token with vigilance that's attacking.",
+            "originalText": "Battle cry (Whenever this creature attacks, each other attacking creature gets +1/+0 until end of turn.)\nWhenever Imperial Banneret and at least two other Knights attack, create a 2/2 white Knight creature token with vigilance that's attacking.",
             "originalType": "Creature \u2014 Human Knight",
             "power": "3",
             "rarity": "Rare",
@@ -582,7 +581,7 @@
                 "Human",
                 "Knight"
             ],
-            "text": "Battle cry (Whenever this creature attacks, each other attacking creature gets +1/+0 until end of turn.)\nWhenever Imperial Banneret and at least two other Knight creatures attack, create a 2/2 white Knight creature token with vigilance that's attacking.",
+            "text": "Battle cry (Whenever this creature attacks, each other attacking creature gets +1/+0 until end of turn.)\nWhenever Imperial Banneret and at least two other Knights attack, create a 2/2 white Knight creature token with vigilance that's attacking.",
             "toughness": "3",
             "type": "Creature \u2014 Human Knight",
             "types": [
@@ -3831,7 +3830,7 @@
             "manaCost": "{R}{R}",
             "name": "Innerflame Master",
             "number": "130",
-            "originalText": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, Innerflame Master deals 1 damage to target player",
+            "originalText": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you cast a noncreature spell, Innerflame Master deals 1 damage to target player.",
             "originalType": "Creature \u2014 Human Monk",
             "power": "2",
             "rarity": "Uncommon",
@@ -4325,7 +4324,7 @@
             "originalText": "Target creature gets +3/+0 and gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Target creature gets +3/+0 and gains first strike until end of turn.",
+            "text": "Target creature gets +3/+0 and gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -6362,10 +6361,6 @@
                 {
                     "date": "2013-04-15",
                     "text": "If the target permanent or player is an illegal target when Warleader's Helix tries to resolve, it won't resolve and none of its effects will happen. You won't gain 4 life."
-                },
-                {
-                    "date": "2013-04-15",
-                    "text": "If the target creature or player is an illegal target when Warleader's Helix tries to resolve, it will be countered and none of its effects will happen. You won't gain 4 life."
                 }
             ],
             "text": "Warleader's Helix deals 4 damage to any target and you gain 4 life.",
@@ -7108,7 +7103,7 @@
             "layout": "normal",
             "name": "Terramorphic Expanse",
             "number": "245",
-            "originalText": "{T}, Sacrifice Terramorphic Expanse: Search your library for a basic land card and put it onto the battlefield tapped. Then shuffle your library.",
+            "originalText": "{T}, Sacrifice Terramorphic Expanse: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.",
             "originalType": "Land",
             "rarity": "Common",
             "text": "{T}, Sacrifice Terramorphic Expanse: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.",
@@ -7208,5 +7203,5 @@
     "name": "Custom Core 2018",
     "releaseDate": "2018-01-12",
     "type": "core",
-    "version": "1.1.3.1"
+    "version": "1.2.0"
 }
