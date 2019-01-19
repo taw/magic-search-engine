@@ -122,10 +122,10 @@ RSpec.describe CardController, type: :controller do
     assert_includes text, "(Color indicator: Garruk, the Veil-Cursed is black and green)"
   end
 
-  it "Transguild Courier" do
-    get "index", params: {q: "Transguild Courier"}
+  it "Nicol Bolas, the Arisen" do
+    get "index", params: {q: "Nicol Bolas, the Arisen"}
     text = html_document.at(".oracle").inner_html.strip.gsub("<br>", "\n")
-    assert_includes text, "(Color indicator: Transguild Courier is all colors)"
+    assert_includes text, "(Color indicator: Nicol Bolas, the Arisen is blue, black, and red)"
   end
 
   it "Ghostfire" do
