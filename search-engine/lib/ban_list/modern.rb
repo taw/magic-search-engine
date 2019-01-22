@@ -106,4 +106,10 @@ BanList.for_format("modern") do
     "Jace, the Mind Sculptor" => "legal",
     "Bloodbraid Elf" => "legal"
   )
+
+  change(
+    "2019-01-21",
+    "https://magic.wizards.com/en/articles/archive/news/january-21-2019-banned-and-restricted-announcement",
+    "Krark-Clan Ironworks" => "banned",
+  )
 end
