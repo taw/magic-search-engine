@@ -13,11 +13,10 @@ describe "Formats - Modern" do
   end
 
   it "modern" do
-    assert_block_composition "modern", "rix", ["8ed", "mrd", "dst", "5dn", "chk", "bok", "sok", "9ed", "rav", "gpt", "dis", "csp", "tsp", "tsb", "plc", "fut", "10e", "lrw", "mor", "shm", "eve", "ala", "con", "arb", "m10", "zen", "wwk", "roe", "m11", "som", "mbs", "nph", "m12", "isd", "dka", "avr", "m13", "rtr", "gtc", "dgm", "m14", "ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori", "bfz", "ogw", "soi", "emn", "kld", "aer", "akh", "w17", "hou", "xln", "rix"],
+    assert_block_composition "modern", "rna", ["8ed", "mrd", "dst", "5dn", "chk", "bok", "sok", "9ed", "rav", "gpt", "dis", "csp", "tsp", "tsb", "plc", "fut", "10e", "lrw", "mor", "shm", "eve", "ala", "con", "arb", "m10", "zen", "wwk", "roe", "m11", "som", "mbs", "nph", "m12", "isd", "dka", "avr", "m13", "rtr", "gtc", "dgm", "m14", "ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori", "bfz", "ogw", "soi", "emn", "kld", "aer", "akh", "w17", "hou", "xln", "rix", "dom", "m19", "grn", "rna"],
       "Ancient Den" => "banned",
       "Birthing Pod" => "banned",
       "Blazing Shoal" => "banned",
-      "Bloodbraid Elf" => "banned",
       "Chrome Mox" => "banned",
       "Cloudpost" => "banned",
       "Dark Depths" => "banned",
@@ -31,7 +30,7 @@ describe "Formats - Modern" do
       "Great Furnace" => "banned",
       "Green Sun's Zenith" => "banned",
       "Hypergenesis" => "banned",
-      "Jace, the Mind Sculptor" => "banned",
+      "Krark-Clan Ironworks" => "banned",
       "Mental Misstep" => "banned",
       "Ponder" => "banned",
       "Preordain" => "banned",

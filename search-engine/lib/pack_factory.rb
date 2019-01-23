@@ -182,9 +182,10 @@ class PackFactory
         build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_legendary_rare_mythic: 1}) => 36*23,
         build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_nonlegendary_rare_mythic: 1}) => (121-36)*144,
       )
-    when "grn", "rna"
-      # assuming RNA will use the same rules as GRN
+    when "grn"
       build_pack_with_random_foil(set_code, :foil, :grn_common, {grn_common: 10, uncommon: 3, rare_or_mythic: 1, grn_land: 1})
+    when "rna"
+      build_pack_with_random_foil(set_code, :foil, :rna_common, {rna_common: 10, uncommon: 3, rare_or_mythic: 1, rna_land: 1})
     # These are just approximations, they actually used nonstandard sheets
     when "lea", "leb", "2ed", "3ed", "ice"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})

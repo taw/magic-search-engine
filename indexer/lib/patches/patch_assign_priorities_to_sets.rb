@@ -19,7 +19,7 @@ class PatchAssignPrioritiesToSets < Patch
          ]
       -10
       # v4 still has issues
-    when "gk1", "uma", "puma"
+    when "gk1", "uma", "puma", "rna"
       -1
     when "grn"
       1

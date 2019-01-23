@@ -7,7 +7,7 @@ describe "Formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
-      %Q[e:xln,rix,dom,m19,grn -"Rampaging Ferocidon"]
+      %Q[e:xln,rix,dom,m19,grn,rna -"Rampaging Ferocidon"]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal_cards 'f:"ravnica block"', 'b:ravnica'
@@ -24,11 +24,16 @@ describe "Formats" do
        ]],
     ])
     FormatModern.new.ban_events.should eq([
+      [Date.parse("2019-01-21"),
+        "https://magic.wizards.com/en/articles/archive/news/january-21-2019-banned-and-restricted-announcement",
+      [
+        {:name=>"Krark-Clan Ironworks", :new=>"banned", :old=>"legal"},
+      ]],
       [Date.parse("2018-02-19"),
         "https://magic.wizards.com/en/articles/archive/news/february-12-2018-banned-and-restricted-announcement-2018-02-12",
       [
         {:name=>"Jace, the Mind Sculptor", :old=>"banned", :new=>"legal"},
-        {:name=>"Bloodbraid Elf", :old=>"banned", :new=>"legal"}
+        {:name=>"Bloodbraid Elf", :old=>"banned", :new=>"legal"},
       ]],
       [Date.parse("2017-01-20"),
         "https://magic.wizards.com/en/articles/archive/news/january-9-2017-banned-and-restricted-announcement-2017-01-09",

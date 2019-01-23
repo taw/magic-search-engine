@@ -105,6 +105,15 @@ describe "Foils" do
         assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, grn_plains])
         assert_foiling([buy_a_box_promo], "foilonly")
         assert_foiling([grn_plains], "nonfoil")
+      when "rna"
+        booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
+        buy_a_box_promo = extra_cards.find{|c| c.name == "The Haunt of Hightower"}
+        # Yeah, one basic is Bundle-only
+        rna_swamp = extra_cards.find{|c| c.name == "Swamp"}
+        assert_foiling(booster_cards, "both")
+        assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, rna_swamp])
+        assert_foiling([buy_a_box_promo], "foilonly")
+        assert_foiling([rna_swamp], "nonfoil")
       when "unh"
         special, regular = set.printings.partition{|c| c.name == "Super Secret Tech"}
         assert_foiling(regular, "both")

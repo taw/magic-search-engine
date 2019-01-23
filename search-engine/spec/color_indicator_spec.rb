@@ -2,8 +2,11 @@ describe "Color Indicator Test" do
   include_context "db"
 
   it "indicator matches exactly" do
-    assert_search_results "in:wubrg",
-      "Transguild Courier"
+    # "Transguild Courier" used to be Oracled to color indicator WUBRG
+    # but they reverted it when they printed "Sphinx of the Guildpact"
+    # No card was actually printed like that
+    assert_search_results "in:wubrg"
+
     assert_search_results "in:r t:creature cmc=0",
       "Crimson Kobolds",
       "Crookshank Kobolds",
@@ -31,8 +34,9 @@ describe "Color Indicator Test" do
   end
 
   it "number" do
-    assert_search_equal "in=5", "in:wubrg"
-    assert_search_equal "in<5", "in:* -in:wubrg"
+    assert_search_results "in=5"
+    assert_search_results "in:wubrg"
+    assert_search_equal "in<3", "in:* -t:bolas"
     assert_search_results "in<1"
   end
 

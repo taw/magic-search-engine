@@ -3,6 +3,12 @@ describe "Banlist" do
   # Based on:
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
+  it "banlist_2019" do
+    # These were separate announcements
+    assert_banlist_changes "January 2019",
+      "modern banned", "Krark-Clan Ironworks"
+  end
+
   it "banlist_2018" do
     # These were separate announcements
     assert_banlist_changes "July 2018",
