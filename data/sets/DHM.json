@@ -37,7 +37,7 @@
             "originalText": "As long as you control a creature, you can't lose the game and your opponents can't win the game\n1-4: Seal\u2014{W}{W}, Sacrifice three permanents. (You may cast this card face down as a Relic artifact for {2}. You may exile it at any time to cast it for its seal cost.)",
             "originalType": "Enchantment",
             "rarity": "Rare",
-            "text": "As long as you control a creature, you can't lose the game and your opponents can't win the game\n1-4: Seal\u2014{W}{W}, Sacrifice three permanents. (You may cast this card face down as a Relic artifact for {2}. You may exile it at any time to cast it for its seal cost.)",
+            "text": "As long as you control a creature, you can't lose the game and your opponents can't win the game\nSeal\u2014{W}{W}, Sacrifice three permanents. (You may cast this card face down as a Relic artifact for {2}. You may exile it at any time to cast it for its seal cost.)",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -539,7 +539,7 @@
             "originalText": "Distribute two -1/-1 counters among attacking or blocking creatures. Until end of turn, prevent all damage that would be dealt by creatures with -1/-1 counters on them.",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Distribute two -1/-1 counters among attacking or blocking creatures. Until end of turn, prevent all damage that would be dealt by creatures with -1/-1 counters on them.",
+            "text": "Distribute two -1/-1 counters among any number of attacking or blocking creatures. Until end of turn, prevent all damage that would be dealt by creatures with -1/-1 counters on them.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -590,7 +590,7 @@
             "subtypes": [
                 "Spirit"
             ],
-            "text": "Sand Sentinel has flying as long as you cast an artifact this turn.",
+            "text": "Sand Sentinel has flying as long as you've cast an artifact this turn.",
             "toughness": "2",
             "type": "Creature \u2014 Spirit",
             "types": [
@@ -828,7 +828,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Creatures have base power and toughness 1/1.\nAs long as Temple to the Dohar has five or more stability, creatures you control have lifelink and vigilance\nSecure 1\u2014{2}{W} ({2}{W}: Put a stability counter on this. Secure only as a sorcery and only once each turn.)",
+            "text": "All creatures have base power and toughness 1/1.\nAs long as Temple to the Dohar has five or more stability, creatures you control have lifelink and vigilance.\nSecure 1\u2014{2}{W} ({2}{W}: Put a stability counter on this. Secure only as a sorcery and only once each turn.)",
             "type": "Legendary Artifact \u2014 Structure",
             "types": [
                 "Artifact"
@@ -1231,6 +1231,12 @@
             "originalText": "Reveal the top five cards of your library. You choose a revealed card that hasn't been chosen, then an opponent chooses a revealed card that hasn't been chosen. Repeat this process until all revealed cards are chosen. Return all cards you chose to your hand. Exile the rest and Fleeting Opportunity.",
             "originalType": "Instant",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2018-08-31",
+                    "text": "In a multiplayer game, you choose which opponent chooses a card immediately before they do so. You can choosethe same opponent or different opponents for each card."
+                }
+            ],
             "text": "Reveal the top five cards of your library. You choose a revealed card that hasn't been chosen, then an opponent chooses a revealed card that hasn't been chosen. Repeat this process until all revealed cards are chosen. Return all cards you chose to your hand. Exile the rest and Fleeting Opportunity.",
             "type": "Instant",
             "types": [
@@ -1309,7 +1315,7 @@
             "originalText": "Choose one\u2014\n\u2022 Counter target creature spell.\n\u2022 Target creature gets -5/-0 until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Choose one\u2014\n\u2022 Counter target creature spell.\n\u2022 Target creature gets -5/-0 until end of turn.",
+            "text": "Choose one \u2014\n\u2022 Counter target creature spell.\n\u2022 Target creature gets -5/-0 until end of turn.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -1362,7 +1368,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "At the beginning of your end step, if you have fewer cards in hand than Library of Tel'tor's stability, draw cards equal to the difference.\n1-5: As long as Library of Tel'tor has eight or more stability, you have no maximum hand size.\n6+: Secure 2\u2014{2}{U} ({2}{U}: Put two stability counters on this. Secure only as a sorcery and only once each turn.)",
+            "text": "At the beginning of your end step, if you have fewer cards in hand than Library of Tel'tor's stability, draw cards equal to the difference.\nAs long as Library of Tel'tor has eight or more stability, you have no maximum hand size.\nSecure 2\u2014{2}{U} ({2}{U}: Put two stability counters on this. Secure only as a sorcery and only once each turn.)",
             "type": "Legendary Artifact \u2014 Structure",
             "types": [
                 "Artifact"
@@ -1431,12 +1437,6 @@
             "originalText": "Simultaneously untap all tapped creatures and tap all untapped creatures.\nSeal {2}{U} (You may cast this card face down as a Relic artifact for {2}. You may exile it at any time to cast it for its seal cost.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "rulings": [
-                {
-                    "date": "2018-08-31",
-                    "text": "You either tap all of the untapped nonland permanents the targeted player controls, or untap all the tapped ones, never both."
-                }
-            ],
             "text": "Simultaneously untap all tapped creatures and tap all untapped creatures.\nSeal {2}{U} (You may cast this card face down as a Relic artifact for {2}. You may exile it at any time to cast it for its seal cost.)",
             "type": "Sorcery",
             "types": [
@@ -1630,7 +1630,7 @@
             "originalText": "Exile any number of permanents you control. Search your library for any number of nonland permanents cards with total converted mana cost equal to or less than the combined converted mana cost of cards exiled with Shape Reality and put them onto the battlefield. Then shuffle your library.",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Exile any number of permanents you control. Search your library for any number of nonland permanents cards with total converted mana cost equal to or less than the combined converted mana cost of cards exiled with Shape Reality and put them onto the battlefield. Then shuffle your library.",
+            "text": "Exile any number of permanents you control. Search your library for any number of nonland permanent cards with total converted mana cost less than or equal to the total converted mana cost of the cards exiled this way and put them onto the battlefield. Then shuffle your library.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -1713,7 +1713,7 @@
             "subtypes": [
                 "Human"
             ],
-            "text": "{A}: Time-Lost Ascetic becomes a Human Wizard with base power and toughness 2/2 and flying.\n1-4: {A}{A}{A}: If Time-Lost Ascetic is a Wizard, it becomes a Spirit Wizard with base power and toughness 4/4 and flying.\n5+: {A}{A}{A}{A}{A}: If Time-Lost Ascetic is a Spirit, it becomes an Avatar with flying, hexproof, and \"{2}: Draw a card.\"",
+            "text": "{A}: Time-Lost Ascetic becomes a Human Wizard with base power and toughness 2/2 and flying.\n{A}{A}{A}: If Time-Lost Ascetic is a Wizard, it becomes a Spirit Wizard with base power and toughness 4/4 and flying.\n{A}{A}{A}{A}{A}: If Time-Lost Ascetic is a Spirit, it becomes an Avatar with flying, hexproof, and \"{2}: Draw a card.\"",
             "toughness": "1",
             "type": "Creature \u2014 Human",
             "types": [
@@ -1795,7 +1795,7 @@
                 "Jellyfish",
                 "Horror"
             ],
-            "text": "Flying\nIf you control an Island, you may pay {A}{A}{A} rather than pay this spell's mana cost. ({A} can be paid with one mana from an artifact or by tapping an artifact you control.)",
+            "text": "If you control an Island, you may pay {A}{A}{A} rather than pay this spell's mana cost. ({A} can be paid with one mana from an artifact or by tapping an artifact you control.)\nFlying",
             "toughness": "4",
             "type": "Creature \u2014 Jellyfish Horror",
             "types": [
@@ -2114,7 +2114,7 @@
                 "Human",
                 "Shaman"
             ],
-            "text": "Warband (Whenever this creature attacks, if it's unpaired, you may pair it with an unpaired attacking creature you control until end of turn.)\nWhenever Ladar Ritualist or a creature it's paired with dies, target player loses life equal to that creature's power.",
+            "text": "Warband (Whenever this creature attacks, if it's unpaired, you may pair it with an unpaired attacking creature you control until end of turn.)\nWhenever Ladar Ritualist or the creature it's paired with dies, target player loses life equal to that creature's power.",
             "toughness": "1",
             "type": "Creature \u2014 Human Shaman",
             "types": [
@@ -2143,7 +2143,7 @@
                 "Human",
                 "Shaman"
             ],
-            "text": "Warband (Whenever this creature attacks, if it's unpaired, you may pair it with an unpaired attacking creature you control until end of turn.)\nWhenever a creature dealt damage by Ladar Warlord or a creature paired with it this turn dies, you may return that creature to the battlefield under your control.",
+            "text": "Warband (Whenever this creature attacks, if it's unpaired, you may pair it with an unpaired attacking creature you control until end of turn.)\nWhenever a creature that was dealt damage by Ladar Warlord or the creature it was paired with this turn dies, you may return that creature to the battlefield under your control.",
             "toughness": "4",
             "type": "Creature \u2014 Human Shaman",
             "types": [
@@ -2294,6 +2294,12 @@
             "originalType": "Creature \u2014 Insect Cleric",
             "power": "3",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2019-01-26",
+                    "text": "This ability can be activated even if Nerim Heretic is already tapped."
+                }
+            ],
             "subtypes": [
                 "Insect",
                 "Cleric"
@@ -2327,7 +2333,7 @@
             "subtypes": [
                 "Insect"
             ],
-            "text": "At the beginning your end step, if a nontoken permanent you control left the battlefield this turn, create two 1/1 green Insect creature tokens.",
+            "text": "At the beginning of your end step, if a nontoken permanent you controlled left the battlefield this turn, create two 1/1 green Insect creature tokens.",
             "toughness": "3",
             "type": "Creature \u2014 Insect",
             "types": [
@@ -2358,7 +2364,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "+1: Put a -1/-1 counter on up to two target creatures.\n0: Choose up to two target creatures. Until your next turn, when either of those creatures dies, you draw a card.\n-6: You gain an emblem with \"Whenever a card is put into an opponent's graveyard from anywhere, each opponent loses 1 life and you gain 1 life.\"",
+            "text": "+1: Put a -1/-1 counter on each of up to two target creatures.\n0: Choose up to two target creatures. Until your next turn, when either of those creatures dies, you draw a card.\n-6: You gain an emblem with \"Whenever a card is put into an opponent's graveyard from anywhere, each opponent loses 1 life and you gain 1 life.\"",
             "type": "Legendary Planeswalker \u2014 Nibinem",
             "types": [
                 "Planeswalker"
@@ -2381,7 +2387,7 @@
             "originalText": "This spell costs {2} less to cast for each creature that has died this turn.\nSearch your library for a card and cast it without paying its mana cost, then shuffle your library.\nSeal {8}{B}{B} (You may cast this card face down as a Relic artifact for {2}. You may exile it at any time to cast it for its seal cost.)",
             "originalType": "Sorcery",
             "rarity": "Mythic Rare",
-            "text": "This spell costs {2} less to cast for each creature that has died this turn.\nSearch your library for a card and cast it without paying its mana cost, then shuffle your library.\nSeal {8}{B}{B} (You may cast this card face down as a Relic artifact for {2}. You may exile it at any time to cast it for its seal cost.)",
+            "text": "This spell costs {2} less to cast for each creature that has died this turn.\nSearch your library for a nonland card and cast it without paying its mana cost, then shuffle your library.\nSeal {8}{B}{B} (You may cast this card face down as a Relic artifact for {2}. You may exile it at any time to cast it for its seal cost.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -2758,7 +2764,7 @@
                 "Dwarf",
                 "Soldier"
             ],
-            "text": "Warband (Whenever this creature attacks, if it's unpaired, you may pair it with an unpaired attacking creature you control until end of turn.)\nWhenever Azelduum Wardriver or a creature it's paired with becomes blocked by a creature, put a -1/-1 counter on that creature.",
+            "text": "Warband (Whenever this creature attacks, if it's unpaired, you may pair it with an unpaired attacking creature you control until end of turn.)\nWhenever Azelduum Wardriver or the creature it's paired with becomes blocked by a creature, put a -1/-1 counter on that creature.",
             "toughness": "2",
             "type": "Creature \u2014 Dwarf Soldier",
             "types": [
@@ -2787,7 +2793,7 @@
                 "Ogre",
                 "Mutant"
             ],
-            "text": "Warband (Whenever this creature attacks, if it's unpaired, you may pair it with an unpaired attacking creature you control until end of turn.)\nWhenever Blackscar Breaker or a creature it's paired with deals combat damage to a player, you may have it deal that much damage to target creature that player controls.",
+            "text": "Warband (Whenever this creature attacks, if it's unpaired, you may pair it with an unpaired attacking creature you control until end of turn.)\nWhenever Blackscar Breaker or the creature it's paired with deals combat damage to a player, you may have it deal that much damage to target creature that player controls.",
             "toughness": "4",
             "type": "Creature \u2014 Ogre Mutant",
             "types": [
@@ -2927,7 +2933,7 @@
                 "Elemental",
                 "Horror"
             ],
-            "text": "Trample\nWhenever Darkfire Roamer becomes blocked, put a -1/-1 counter on that creature.",
+            "text": "Trample\nWhenever Darkfire Roamer becomes blocked by a creature, put a -1/-1 counter on that creature.",
             "toughness": "3",
             "type": "Creature \u2014 Elemental Horror",
             "types": [
@@ -3524,7 +3530,7 @@
                 "Viashino",
                 "Warrior"
             ],
-            "text": "Warband (Whenever this creature attacks, if it's unpaired, you may pair it with an unpaired attacking creature you control until end of turn.)\nTerem Vanguard and creatures paired with it must be blocked if able.",
+            "text": "Warband (Whenever this creature attacks, if it's unpaired, you may pair it with an unpaired attacking creature you control until end of turn.)\nTerem Vanguard and the creature it's paired with it must be blocked if able.",
             "toughness": "3",
             "type": "Creature \u2014 Viashino Warrior",
             "types": [
@@ -3549,7 +3555,7 @@
             "originalText": "Target creature and each creature it's paired with each get +2/+1 and gain trample until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Target creature and each creature it's paired with each get +2/+1 and gain trample until end of turn.",
+            "text": "Target creature and the creature it's paired with each get +2/+1 and gain trample until end of turn.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -3729,7 +3735,7 @@
             "originalText": "Ths spell costs {1} less to cast for each creature you control with power 2 or less.\nUp to two target creatures get +2/+2 until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Ths spell costs {1} less to cast for each creature you control with power 2 or less.\nUp to two target creatures get +2/+2 until end of turn.",
+            "text": "Ths spell costs {1} less to cast for each creature you control with power 2 or less.\nUp to two target creatures each get +2/+2 until end of turn.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -3753,7 +3759,7 @@
             "originalText": "Choose one\u2014\n\u2022 Put two -1/-1 counters on target creature with flying.\n\u2022 Target creature you control gets +2/+2 and gains reach until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Choose one\u2014\n\u2022 Put two -1/-1 counters on target creature with flying.\n\u2022 Target creature you control gets +2/+2 and gains reach until end of turn.",
+            "text": "Choose one \u2014\n\u2022 Put two -1/-1 counters on target creature with flying.\n\u2022 Target creature you control gets +2/+2 and gains reach until end of turn.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -3807,6 +3813,12 @@
             "originalText": "Put a number of -1/-1 counters on target creature equal to the power of target creature you control.",
             "originalType": "Sorcery",
             "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2019-01-27",
+                    "text": "If the second target is illegal as this spell resolves, no counters are put on the first target."
+                }
+            ],
             "text": "Put a number of -1/-1 counters on target creature equal to the power of target creature you control.",
             "type": "Sorcery",
             "types": [
@@ -3878,7 +3890,7 @@
             "originalText": "Create a 1/1 green Insect creature tokens for each permanent that left the battlefield this turn.",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Create a 1/1 green Insect creature tokens for each permanent that left the battlefield this turn.",
+            "text": "Create a 1/1 green Insect creature token for each permanent that left the battlefield this turn.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -3908,7 +3920,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "At the beginning of your end step, you may put a permanent card from your hand onto the battlefield. If Husk of the Heart Tree has ten or more stability, put a stone counter on that permanent. It gains indestructible.\nSecure 3\u2014{3}{G} ({3}{G}: Put three stability counters on this. Secure only as a sorcery and only once each turn.)",
+            "text": "At the beginning of your end step, you may put a permanent card from your hand onto the battlefield. If Husk of the Heart Tree has ten or more stability, put a stone counter on that permanent and it gains indestructible.\nSecure 3\u2014{3}{G} ({3}{G}: Put three stability counters on this. Secure only as a sorcery and only once each turn.)",
             "type": "Legendary Artifact \u2014 Structure",
             "types": [
                 "Artifact"
@@ -3987,7 +3999,7 @@
             "subtypes": [
                 "Insect"
             ],
-            "text": "As an additional cost to cast this spell, sacrifice X permanents. This spell costs twice {X} less to cast. (X may be 0.)\nTrample",
+            "text": "As an additional cost to cast this spell, sacrifice X permanents. This spell costs {X}{X} less to cast. (X may be 0.)\nTrample",
             "toughness": "6",
             "type": "Creature \u2014 Insect",
             "types": [
@@ -4075,7 +4087,7 @@
                 "Insect",
                 "Scout"
             ],
-            "text": "Warband (Whenever this creature attacks, if it's unpaired, you may pair it with an unpaired attacking creature you control until end of turn.)\nWhenever Nerim Scavenger or a creature it's paired with dies, you draw a card.",
+            "text": "Warband (Whenever this creature attacks, if it's unpaired, you may pair it with an unpaired attacking creature you control until end of turn.)\nWhenever Nerim Scavenger or the creature it's paired with dies, draw a card.",
             "toughness": "2",
             "type": "Creature \u2014 Insect Scout",
             "types": [
@@ -4487,7 +4499,7 @@
             "originalText": "Target creature gets +2/+2 and vigilance until end of turn.\nWhenever you cast a creature spell with power 2 or less, you may pay {G}. If you do, return Wasteland Pathway from your graveyard to your hand.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Target creature gets +2/+2 and vigilance until end of turn.\nWhenever you cast a creature spell with power 2 or less, you may pay {G}. If you do, return Wasteland Pathway from your graveyard to your hand.",
+            "text": "Target creature gets +2/+2 and gains vigilance until end of turn.\nWhenever you cast a creature spell with power 2 or less, you may pay {G}. If you do, return Wasteland Pathway from your graveyard to your hand.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -4520,7 +4532,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Structures you control have hexproof.\nWhenever you secure a Structure, choose one\u2014\n\u2022 Tap or untap target nonland permanent.\n\u2022 Create a 1/1 white and blue Elemental Hound creature token.",
+            "text": "Structures you control have hexproof.\nWhenever you secure a Structure, choose one \u2014\n\u2022 Tap or untap target nonland permanent.\n\u2022 Create a 1/1 white and blue Elemental Hound creature token.",
             "toughness": "3",
             "type": "Legendary Creature \u2014 Wizard",
             "types": [
@@ -4554,7 +4566,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "You may pay {A}{A}{A} and discard a card rather than pay the mana cost for nonartifact spells that you cast. ({A} can be paid with one mana from an artifact or by tapping an artifact you control.)",
+            "text": "You may pay {A}{A}{A} and discard a card rather than pay the mana cost for nonartifact spells you cast. ({A} can be paid with one mana from an artifact or by tapping an artifact you control.)",
             "toughness": "4",
             "type": "Legendary Creature \u2014 Viashino Wizard",
             "types": [
@@ -4644,6 +4656,16 @@
             "originalType": "Legendary Creature \u2014 Human Warrior",
             "power": "3",
             "rarity": "Mythic Rare",
+            "rulings": [
+                {
+                    "date": "2019-01-27",
+                    "text": "Teremos remains paired with the Dragon token after the turn ends since the ability that paired them isn't a warband ability."
+                },
+                {
+                    "date": "2019-01-27",
+                    "text": "They will still become unpaired if either of them changes control, stops being a creature, or leaves the battlefield."
+                }
+            ],
             "subtypes": [
                 "Human",
                 "Warrior"
@@ -4651,7 +4673,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Whenever Dragon King Teremos attacks, if he is unpaired, create a tapped and attacking 4/4 red Dragon creature token with flying and pair it with him.\nPaired creatures you control have indestructible as long as it's your turn.",
+            "text": "Whenever Dragon King Teremos attacks, if he's unpaired, create a tapped and attacking 4/4 red Dragon creature token with flying and pair it with him.\nPaired creatures you control have indestructible as long as it's your turn.",
             "toughness": "3",
             "type": "Legendary Creature \u2014 Human Warrior",
             "types": [
@@ -4748,7 +4770,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Hexproof\n{2}, Sacrifice another creature or artifact: You may cast target instant or sorcery card from your graveyard this turn. If you do, exile it as it resolves.",
+            "text": "Hexproof\n{2}, Sacrifice another creature or artifact: You may cast target instant or sorcery card from your graveyard this turn. If that card would be put into your graveyard this turn, exile it instead.",
             "toughness": "3",
             "type": "Legendary Creature \u2014 Human Wizard",
             "types": [
@@ -4778,7 +4800,7 @@
             "subtypes": [
                 "Insect"
             ],
-            "text": "Trample\nAt the beginning of combat on your turn, if a permanent you control left the battlefield this turn, Nerim Siegebreaker gets +2/+2 until end of turn.",
+            "text": "Trample\nAt the beginning of combat on your turn, if a permanent you controlled left the battlefield this turn, Nerim Siegebreaker gets +2/+2 until end of turn.",
             "toughness": "4",
             "type": "Creature \u2014 Insect",
             "types": [
@@ -5177,7 +5199,7 @@
             "originalText": "At the beginning of your postcombat main phase add {C} to your mana pool for each tapped artifact or creature you control.",
             "originalType": "Artifact",
             "rarity": "Uncommon",
-            "text": "At the beginning of your postcombat main phase add {C} to your mana pool for each tapped artifact or creature you control.",
+            "text": "At the beginning of your postcombat main phase, add {C} for each tapped artifact or creature you control.",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -5362,7 +5384,7 @@
             "originalText": "{3}: Choose one\u2014\n\u2022 You gain 2 life.\n\u2022 Draw a card, then discard a card.\n\u2022 Target player loses 1 life.",
             "originalType": "Artifact",
             "rarity": "Uncommon",
-            "text": "{3}: Choose one\u2014\n\u2022 You gain 2 life.\n\u2022 Draw a card, then discard a card.\n\u2022 Target player loses 1 life.",
+            "text": "{3}: Choose one \u2014\n\u2022 You gain 2 life.\n\u2022 Draw a card, then discard a card.\n\u2022 Target player loses 1 life.",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -5441,7 +5463,7 @@
             "subtypes": [
                 "Structure"
             ],
-            "text": "At the beginning of your precombat main phase, add {C}{C}. If Dohar Mana Vault has six or more stability, add three mana of any color instead.\nSecure 2\u2014{1}{G} ({1}{G}: Put two stability counters on this. Secure only as a sorcery and only once each turn.)",
+            "text": "At the beginning of your precombat main phase, add {C}{C}. If Dohar Mana Vault has six or more stability, add three mana of any one color instead.\nSecure 2\u2014{1}{G} ({1}{G}: Put two stability counters on this. Secure only as a sorcery and only once each turn.)",
             "type": "Artifact \u2014 Structure",
             "types": [
                 "Artifact"
@@ -6274,11 +6296,17 @@
             "originalText": "At the beginning of each end step, tap or untap target permanent. If Stoneforge Archway has six or more stability, then tap or untap another target permanent.\nSecure 1\u2014{U} ({U}: Put a stability counter on this. Secure only as a sorcery and only once each turn.)",
             "originalType": "Artifact \u2014 Structure",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2019-01-27",
+                    "text": "The ability can only resolve if two legal targets exist, even if Stoneforge Archway has less than six stability."
+                }
+            ],
             "stability": 3,
             "subtypes": [
                 "Structure"
             ],
-            "text": "At the beginning of each end step, tap or untap target permanent. If Stoneforge Archway has six or more stability, then tap or untap another target permanent.\nSecure 1\u2014{U} ({U}: Put a stability counter on this. Secure only as a sorcery and only once each turn.)",
+            "text": "At the beginning of each end step, tap or untap target permanent. Then if Stoneforge Archway has six or more stability, tap or untap another target permanent.\nSecure 1\u2014{U} ({U}: Put a stability counter on this. Secure only as a sorcery and only once each turn.)",
             "type": "Artifact \u2014 Structure",
             "types": [
                 "Artifact"

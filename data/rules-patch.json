@@ -603,6 +603,12 @@
             }
         },
         {
+            "#": "For Ash Akhu, define when “is unearthed” triggers",
+            "type": "add",
+            "rule": "702.83",
+            "text": "A player “unearths a card” when that player activates an unearth ability of that card."
+        },
+        {
             "#": "“warband” is a variant of soulbond used in Lorado and Ruins of Doharum",
             "type": "insert",
             "rule": "702.94b",
@@ -613,6 +619,13 @@
             "type": "insert",
             "rule": "702.94c",
             "text": "A warband ability is a soulbond ability. Any effect that looks for an object with soulbond will find a card with warband."
+        },
+        {
+            "#": "Dragon King Teremos has an unkeyworded effect that can pair it with another creature.",
+            "type": "replace",
+            "rule": "702.94d",
+            "find": "A creature becomes \"paired\" with another as the result of a soulbond ability.",
+            "replace": "A creature may become “paired” with another as the result of a soulbond ability or another effect that pairs them."
         },
         {
             "#": "“warband” is a variant of soulbond used in Lorado and Ruins of Doharum",
