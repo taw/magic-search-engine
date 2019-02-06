@@ -11,6 +11,8 @@ SUBRULE_IDX = 'abcdefghijkmnpqrstuvwxyz'
 class CompRules:
     def __init__(self, comp_rules_f):
         self.patches = {}
+        self.keyword_actions = {}
+        self.keyword_abilities = {}
         lines = more_itertools.peekable(comp_rules_f)
         # title and date
         assert next(lines) == 'Magic: The Gathering Comprehensive Rules\n'
@@ -188,10 +190,14 @@ class CompRules:
                     card_rb_f.write(card_rb)
             elif patch['type'] == 'addKeywordAbility':
                 self['702']['rules'].append(patch['rule'])
-                self.patches['702.{}'.format(len(self['702']['rules']))] = patch['#']
+                rule_number = '702.{}'.format(len(self['702']['rules']))
+                self.patches[rule_number] = patch['#']
+                self.keyword_abilities[patch['rule']['text']] = rule_number
             elif patch['type'] == 'addKeywordAction':
                 self['701']['rules'].append(patch['rule'])
-                self.patches['701.{}'.format(len(self['701']['rules']))] = patch['#']
+                '701.{}'.format(len(self['701']['rules']))
+                self.patches[rule_number] = patch['#']
+                self.keyword_actions[patch['rule']['text']] = rule_number
             elif patch['type'] == 'addSpecialAction':
                 numbers = [
                     'zero',
@@ -291,11 +297,11 @@ class CompRules:
                 for k, rule in enumerate(subsection['rules']):
                     rule_number = k + 1
                     comp_rules_f.write('\n')
-                    comp_rules_f.write('{}.{}. {}\n'.format(subsection_number, rule_number, rule['text']))
+                    comp_rules_f.write('{}.{}. {}\n'.format(subsection_number, rule_number, self.process_references(rule['text'])))
                     for l, subrule in enumerate(rule['subrules']):
                         subrule_number = SUBRULE_IDX[l]
                         comp_rules_f.write('\n')
-                        comp_rules_f.write('{}.{}{} {}\n'.format(subsection_number, rule_number, subrule_number, subrule))
+                        comp_rules_f.write('{}.{}{} {}\n'.format(subsection_number, rule_number, subrule_number, self.process_references(subrule)))
         # footer
         #comp_rules_f.write(self.footer)
 
@@ -321,6 +327,13 @@ class CompRules:
             rule['subrules'].insert(SUBRULE_IDX.index(match.group(3)), value)
             return
         raise KeyError('Could not parse rule number: {!r}'.format(key))
+
+    def process_references(self, text):
+        for keyword_action, rule_number in self.keyword_actions:
+            text = text.replace('{{keywordAction:{}}}'.format(keyword_action), rule_number)
+        for keyword_ability, rule_number in self.keyword_abilities:
+            text = text.replace('{{keywordAbility:{}}}'.format(keyword_ability), rule_number)
+        return text
 
 def join(sequence, *, word='and', default=None):
     sequence = [str(elt) for elt in sequence]

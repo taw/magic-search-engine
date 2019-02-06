@@ -151,6 +151,7 @@
             "cardType": "Artifact",
             "subtypes": [
                 "Canister",
+                "Petal",
                 "Relic",
                 "Structure"
             ]
@@ -160,14 +161,17 @@
             "type": "addSubtypes",
             "cardType": "Planeswalker",
             "subtypes": [
+                "Cypress",
                 "Evis",
                 "Farajo",
                 "Faralyn",
                 "Foug",
                 "Gaile",
                 "Gozani",
+                "Helena",
                 "Hohoja",
                 "L3-T",
+                "Lazaire",
                 "Luma",
                 "Nibinem",
                 "Nic",
@@ -452,6 +456,12 @@
             "text": "If an object has an ability printed on it that allows a player to pay an optional cost as it's cast and an ability printed on it that refers to whether “this spell's additional cost was paid,” those abilities are linked. The second refers only to whether the intent to pay the additional cost listed in the first was declared as the object was cast as a spell."
         },
         {
+            "#": "for enspirit, link abilities referring to “the exiled card” to the first ability in the keyword",
+            "type": "add",
+            "rule": "607.2",
+            "text": "The two abilities represented by the enspirit keyword are linked. The first ability may also be linked with any number of other abilities printed on the card with enspirit which refer either to “the exiled card” or to cards “exiled with [this object]”. See rule {keywordAbility:Enspirit}."
+        },
+        {
             "#": "for Plagiarized Results, make copies of permanent spells become tokens as they resolve",
             "type": "insert",
             "rule": "608.3b",
@@ -534,6 +544,12 @@
             "text": "The term wastes refers to a permanent named Wastes. A permanent is nonwastes if it's not named Wastes."
         },
         {
+            "#": "“cursed” is a game term used on Boghex Witch in Eralou",
+            "type": "insert",
+            "rule": "700.10",
+            "text": "A player is cursed if a Curse is attached to them."
+        },
+        {
             "#": "For Heavy Iron Armor, allow the “double” keyword action to work on static abilities.",
             "type": "replace",
             "rule": "701.9b",
@@ -597,8 +613,28 @@
                 "text": "Upload",
                 "subrules": [
                     "To upload an object, exile it. It becomes uploaded.",
-                    "Each uploaded card in exile has the intrinsic ability “{2}: Put this card from exile into your hand. Activate this ability only during your turn.” This ability's activation cost is called an upload cost.",
+                    "Each uploaded card in exile has the intrinsic ability “{2}: Put this card from exile into your hand. Activate this ability only any time you could cast a sorcery.” This ability's activation cost is called an upload cost.",
                     "Uploaded is a designation that has no rules meaning other than to act as a marker that this rule and other spells and abilities can identify. Only cards in exile can gain or have this designation. Once a card becomes uploaded, it stays uploaded until it leaves exile or becomes a new object (see rule 406.7). Uploaded is neither an ability nor part of the card's copiable values."
+                ]
+            }
+        },
+        {
+            "#": "“germinate” is a keyword action used in Eralou",
+            "type": "addKeywordAction",
+            "rule": {
+                "text": "Germinate",
+                "subrules": [
+                    "“Germinate” means “You may put a +1/+1 counter on a creature. If you don't, create a 1/1 green Saproling creature token.”"
+                ]
+            }
+        },
+        {
+            "#": "“harmonize” is a keyword action used in Eralou",
+            "type": "addKeywordAction",
+            "rule": {
+                "text": "Harmonize",
+                "subrules": [
+                    "“Harmonize” means “Choose up to one harmony ability of a permanent you control.” Choosing an ability this way causes that ability to trigger. See rule {keywordAbility:Harmony}."
                 ]
             }
         },
@@ -870,6 +906,40 @@
                     "Voyage is an activated ability that functions on the battlefield. “Voyage” means “{W}{U}{B}{R}{G}: If you haven't discovered paradise, you discover paradise for the rest of the game.”",
                     "Discovering paradise is an event that has no rules meaning other than to act as a marker that other rules and effects can identify. Any number of players may discover paradise at the same time or at different times.",
                     "After a player discovers paradise, continuous effects are reapplied before the game checks to see if the game state or preceding events have matched any trigger conditions."
+                ]
+            }
+        },
+        {
+            "#": "“enspirit” is a keyword ability used in Eralou",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Enspirit",
+                "subrules": [
+                    "Enspirit represents two static abilities that function while the spell with enspirit is on the stack. “Enspirit” means “As an additional cost to cast this spell, you may exile a nonenchantment creature you control until this spell is put from the stack into a zone other than the battlefield or the permanent this spell becomes leaves the battlefield” and “If you chose to pay this spell's additional cost, its total cost is reduced by an amount of generic mana equal to the exiled card's converted mana cost.” Paying a spell's enspirit cost follows the rules for paying additional costs in rules 601.2b and 601.2f–h.",
+                    "The two abilities represented by enspirit are linked. The first ability may also be linked with any number of other abilities printed on the card with enspirit which refer either to “the exiled card” or to cards “exiled with [this object]”. See rule 607, “Linked Abilities.”",
+                    "You choose which creature to exile as you choose to pay a spell's enspirit cost (see rule 601.2b), and you exile that creature as you pay the total cost (see rule 601.2h).",
+                    "A creature “becomes enspirited” when it's exiled to pay a spell's enspirit cost. Abilities that trigger when a creature becomes enspirited are leaves-the-battlefield abilities (see rule 603.6c)."
+                ]
+            }
+        },
+        {
+            "#": "“harmony” is a keyword ability used in Eralou",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Harmony",
+                "subrules": [
+                    "A harmony ability is a special kind of triggered ability that only triggers when chosen as part of the harmonize keyword action (see rule {keywordAction:Harmonize}). “Harmony — [Effect]” means “Whenever you harmonize, if you choose this ability, [effect].”"
+                ]
+            }
+        },
+        {
+            "#": "“tithe” is a keyword ability used in Eralou",
+            "type": "addKeywordAbility",
+            "rule": {
+                "text": "Tithe",
+                "subrules": [
+                    "On a permanent card, tithe is a triggered ability. “Tithe” on a permanent means “When this permanent enters the battlefield, you may tap three untapped artifacts and/or creatures you control.” Tapping the three permanents is a cost (see rule 117) and may be referred to as paying the permanent's tithe.",
+                    "On an instant or sorcery card, tithe is a static ability that functions while the spell with tithe is on the stack. “Tithe” on an instant or sorcery spell means “As an additional cost to cast this spell, you may tap three untapped artifacts and/or creatures you control.” Paying an instant or sorcery spell's tithe cost follows the rules for paying additional costs in rules 601.2b and 601.2f–h. An instant or sorcery spell's tithe cost may also simply be referred to as its tithe."
                 ]
             }
         },
