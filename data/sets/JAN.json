@@ -167,7 +167,7 @@
             "manaCost": "{2}{W}{W}",
             "name": "Commander's Coup",
             "number": "6",
-            "originalText": "If an opponent controls more creatures than you, create four 1/1 white Soldier creature tokens. If an opponent has more cards in hand than you, draw a card. If an opponent has more life than you, you gain 4 life. If an opponent controls more lands than you, you may search your library for a land card, put it onto the battlefield, then shuffle your library.",
+            "originalText": "If an opponent controls more creatures than you, create four 1/1 white Soldier creature tokens. If an opponent has more cards in hand than you, draw a card. If an opponent has more life than you, you gain 4 life. If an opponent controls more lands than you, search your library for a basic land card and put that card onto the battlefield tapped. Then shuffle your library.",
             "originalType": "Sorcery",
             "rarity": "Mythic Rare",
             "rulings": [
@@ -176,7 +176,7 @@
                     "text": "If the effects of this spell cause multiple abilities to trigger (for example, a \u201cwhenever you gain life\u201d trigger and a landfall trigger), wait until Commander's Coup finishes resolving, then starting with the active player, each player puts his or her triggers on the stack in any order."
                 }
             ],
-            "text": "If an opponent controls more creatures than you, create four 1/1 white Soldier creature tokens. If an opponent has more cards in hand than you, draw a card. If an opponent has more life than you, you gain 4 life. If an opponent controls more lands than you, you may search your library for a land card, put it onto the battlefield, then shuffle your library.",
+            "text": "If an opponent controls more creatures than you, create four 1/1 white Soldier creature tokens. If an opponent has more cards in hand than you, draw a card. If an opponent has more life than you, you gain 4 life. If an opponent controls more lands than you, search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -1225,7 +1225,7 @@
             "manaCost": "{2}{U}",
             "name": "Dream Plunderer",
             "number": "44",
-            "originalText": "Prowess\nSpellbound \u2014 {2}{U}, Exile an instant or sorcery card from your graveyard: Create a colorless Treasure artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "Prowess\nSpellbound \u2014 {1}{U}, Exile an instant or sorcery card from your graveyard: Create a colorless Treasure artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Creature \u2014 Human Pirate",
             "power": "3",
             "rarity": "Uncommon",
@@ -1233,7 +1233,7 @@
                 "Human",
                 "Pirate"
             ],
-            "text": "Prowess\nSpellbound \u2014 {2}{U}, Exile an instant or sorcery card from your graveyard: Create a colorless Treasure artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "Prowess\nSpellbound \u2014 {1}{U}, Exile an instant or sorcery card from your graveyard: Create a colorless Treasure artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "toughness": "2",
             "type": "Creature \u2014 Human Pirate",
             "types": [
@@ -1524,7 +1524,7 @@
         },
         {
             "artist": "sintearkras",
-            "cmc": 7,
+            "cmc": 6,
             "colorIdentity": [
                 "U"
             ],
@@ -1533,19 +1533,19 @@
             ],
             "imageName": "monarch of galaxies",
             "layout": "normal",
-            "manaCost": "{5}{U}{U}",
+            "manaCost": "{3}{U}{U}{U}",
             "name": "Monarch of Galaxies",
             "number": "56",
-            "originalText": "Flying\nSpellbound \u2014 {1}{U}{U}, Exile an instant or sorcery card from your graveyard: Choose one \u2014\n\u2022 Counter target creature spell.\n\u2022 Return target permanent to its owner's hand.\n\u2022 Tap up to two target creatures.\n\u2022 Scry 2, then draw a card.",
+            "originalText": "Flying\nSpellbound \u2014 {1}{U}{U}{U}, Exile an instant or sorcery card from your graveyard: Choose one \u2014\n\u2022 Counter target spell.\n\u2022 Return target permanent to its owner's hand.\n\u2022 Tap all creatures target player controls.\n\u2022 Draw a card.",
             "originalType": "Creature \u2014 Illusion Dragon",
-            "power": "6",
+            "power": "5",
             "rarity": "Mythic Rare",
             "subtypes": [
                 "Illusion",
                 "Dragon"
             ],
-            "text": "Flying\nSpellbound \u2014 {1}{U}{U}, Exile an instant or sorcery card from your graveyard: Choose one \u2014\n\u2022 Counter target creature spell.\n\u2022 Return target permanent to its owner's hand.\n\u2022 Tap up to two target creatures.\n\u2022 Scry 2, then draw a card.",
-            "toughness": "8",
+            "text": "Flying\nSpellbound \u2014 {1}{U}{U}{U}, Exile an instant or sorcery card from your graveyard: Choose one \u2014\n\u2022 Counter target spell.\n\u2022 Return target permanent to its owner's hand.\n\u2022 Tap all creatures target player controls.\n\u2022 Draw a card.",
+            "toughness": "6",
             "type": "Creature \u2014 Illusion Dragon",
             "types": [
                 "Creature"
@@ -1639,17 +1639,17 @@
             ],
             "imageName": "rainforest sphinx",
             "layout": "normal",
-            "manaCost": "{1}{U}{U}",
+            "manaCost": "{2}{U}",
             "name": "Rainforest Sphinx",
             "number": "60",
-            "originalText": "Flying\nWhenever Rainforest Sphinx deals combat damage to a player, put up to the top two cards of your library into your graveyard.\nSpellbound \u2014 {1}{U}{U}, Exile an instant or sorcery card from your graveyard: Draw a card, then discard a card.",
+            "originalText": "Flying\nWhenever Rainforest Sphinx deals combat damage to a player, put up to the top three cards of your library into your graveyard.\nSpellbound \u2014 {2}{U}, Exile an instant or sorcery card from your graveyard: Draw a card, then discard a card.",
             "originalType": "Creature \u2014 Sphinx",
             "power": "3",
             "rarity": "Rare",
             "subtypes": [
                 "Sphinx"
             ],
-            "text": "Flying\nWhenever Rainforest Sphinx deals combat damage to a player, put up to the top two cards of your library into your graveyard.\nSpellbound \u2014 {1}{U}{U}, Exile an instant or sorcery card from your graveyard: Draw a card, then discard a card.",
+            "text": "Flying\nWhenever Rainforest Sphinx deals combat damage to a player, put up to the top three cards of your library into your graveyard.\nSpellbound \u2014 {2}{U}, Exile an instant or sorcery card from your graveyard: Draw a card, then discard a card.",
             "toughness": "2",
             "type": "Creature \u2014 Sphinx",
             "types": [
@@ -1957,7 +1957,7 @@
         },
         {
             "artist": "Stephen Hamilton",
-            "cmc": 2,
+            "cmc": 1,
             "colorIdentity": [
                 "U"
             ],
@@ -1966,16 +1966,16 @@
             ],
             "imageName": "stargazing",
             "layout": "normal",
-            "manaCost": "{1}{U}",
+            "manaCost": "{U}",
             "name": "Stargazing",
             "number": "72",
-            "originalText": "Scry 1, then draw a card. (Look at the top card of your library. You may put that card on the bottom of your library.)\nInvocation (As you cast this spell, you may tap two untapped creatures you control. When you do, copy it.)",
-            "originalType": "Sorcery",
+            "originalText": "Draw a card.\nInvocation (As you cast this spell, you may tap two untapped creatures you control. When you do, copy it.)",
+            "originalType": "Instant",
             "rarity": "Common",
-            "text": "Scry 1, then draw a card. (Look at the top card of your library. You may put that card on the bottom of your library.)\nInvocation (As you cast this spell, you may tap two untapped creatures you control. When you do, copy it.)",
-            "type": "Sorcery",
+            "text": "Draw a card.\nInvocation (As you cast this spell, you may tap two untapped creatures you control. When you do, copy it.)",
+            "type": "Instant",
             "types": [
-                "Sorcery"
+                "Instant"
             ]
         },
         {
@@ -4377,13 +4377,13 @@
             "manaCost": "{2}{G}",
             "name": "Collective Pilgrimage",
             "number": "158",
-            "originalText": "Draw a card. You gain 2 life.\nInvocation (As you cast this spell, you may tap two untapped creatures you control. When you do, copy it.)",
-            "originalType": "Sorcery",
+            "originalText": "Draw a card. You gain 4 life.\nInvocation (As you cast this spell, you may tap two untapped creatures you control. When you do, copy it.)",
+            "originalType": "Instant",
             "rarity": "Common",
-            "text": "Draw a card. You gain 2 life.\nInvocation (As you cast this spell, you may tap two untapped creatures you control. When you do, copy it.)",
-            "type": "Sorcery",
+            "text": "Draw a card. You gain 4 life.\nInvocation (As you cast this spell, you may tap two untapped creatures you control. When you do, copy it.)",
+            "type": "Instant",
             "types": [
-                "Sorcery"
+                "Instant"
             ]
         },
         {
@@ -4761,6 +4761,34 @@
             ]
         },
         {
+            "artist": "Toru-meow",
+            "cmc": 3,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "imageName": "kumra dryad",
+            "layout": "normal",
+            "manaCost": "{1}{G}{G}",
+            "name": "Kumra Dryad",
+            "number": "172",
+            "originalText": "Focus {2}{G}{G}{G} (You may cast this spell for its focus cost. When you do, draw a card.)\nKumra Dryad's power and toughness are each equal to the number of cards in your hand.",
+            "originalType": "Creature \u2014 Dryad",
+            "power": "*",
+            "rarity": "Rare",
+            "subtypes": [
+                "Dryad"
+            ],
+            "text": "Focus {2}{G}{G}{G} (You may cast this spell for its focus cost. When you do, draw a card.)\nKumra Dryad's power and toughness are each equal to the number of cards in your hand.",
+            "toughness": "*",
+            "type": "Creature \u2014 Dryad",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "artist": "Omi De Okan",
             "cmc": 2,
             "colorIdentity": [
@@ -4774,7 +4802,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Kumra Wilddancer",
-            "number": "172",
+            "number": "173",
             "originalText": "When Kumra Wilddancer enters the battlefield, create a 0/1 green Plant creature token.",
             "originalType": "Creature \u2014 Human Druid",
             "power": "2",
@@ -4804,7 +4832,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Maul",
-            "number": "173",
+            "number": "174",
             "originalText": "Target creature you control gets +1/+0 until end of turn. It deals damage equal to its power to target creature you don't control.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -4828,7 +4856,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "Moonmulch Umdhelbi",
-            "number": "174",
+            "number": "175",
             "originalText": "Defender (This creature can't attack.)\nWhen Moonmulch Umdhelbi enters the battlefield, put the top four cards of your library into your graveyard.",
             "originalType": "Creature \u2014 Plant",
             "power": "5",
@@ -4856,7 +4884,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Nomadic Druid",
-            "number": "175",
+            "number": "176",
             "originalText": "{T}: Add {G}.\nSpellbound \u2014 {T}, Exile an instant or sorcery card from your graveyard: Add {G}{G}.",
             "originalType": "Creature \u2014 Elf Druid",
             "power": "1",
@@ -4886,7 +4914,7 @@
             "layout": "normal",
             "manaCost": "{5}{G}{G}",
             "name": "Primordial Rampage",
-            "number": "176",
+            "number": "177",
             "originalText": "Put two +1/+1 counters on each creature you control. Those creatures gain trample until end of turn.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
@@ -4909,7 +4937,7 @@
             "layout": "normal",
             "manaCost": "{4}{G}{G}",
             "name": "Sahai Sandwurm",
-            "number": "177",
+            "number": "178",
             "originalText": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\nSpellbound \u2014 {1}{G}, Exile an instant or sorcery card from your graveyard: Another target creature you control gains trample until end of turn.",
             "originalType": "Creature \u2014 Wurm",
             "power": "6",
@@ -4938,8 +4966,8 @@
             "layout": "normal",
             "manaCost": "{G}",
             "name": "Sahai Wayfarer",
-            "number": "178",
-            "originalText": "Focus {2}{G} (You may cast this spell for its focus cost. When you do, draw a card.)\nThis spell can't be countered.",
+            "number": "179",
+            "originalText": "Focus {2}{G} (You may cast this spell for its focus cost. When you do, draw a card.)",
             "originalType": "Creature \u2014 Elf Scout",
             "power": "2",
             "rarity": "Uncommon",
@@ -4947,7 +4975,7 @@
                 "Elf",
                 "Scout"
             ],
-            "text": "Focus {2}{G} (You may cast this spell for its focus cost. When you do, draw a card.)\nThis spell can't be countered.",
+            "text": "Focus {2}{G} (You may cast this spell for its focus cost. When you do, draw a card.)",
             "toughness": "1",
             "type": "Creature \u2014 Elf Scout",
             "types": [
@@ -4967,7 +4995,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}{G}",
             "name": "Scavenging Tiger",
-            "number": "179",
+            "number": "180",
             "originalText": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\nScavenging Tiger enters the battlefield with a +1/+1 counter on it if you have two or more creature cards in your graveyard.",
             "originalType": "Creature \u2014 Cat",
             "power": "4",
@@ -4995,7 +5023,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Shaman of the Cycle",
-            "number": "180",
+            "number": "181",
             "originalText": "When Shaman of the Cycle enters the battlefield, target creature card in your graveyard gains resurrect until end of turn. The resurrect cost is equal to its mana cost. (You may cast a creature spell from your graveyard for its resurrect cost. If you do, put a +1/+1 counter on it. The next time it would leave the battlefield, exile it instead.)",
             "originalType": "Creature \u2014 Human Shaman",
             "power": "2",
@@ -5031,7 +5059,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Snakeform Mystic",
-            "number": "181",
+            "number": "182",
             "originalText": "{1}{G}: Snakeform Mystic gains deathtouch until end of turn.",
             "originalType": "Creature \u2014 Elf Shaman",
             "power": "2",
@@ -5043,34 +5071,6 @@
             "text": "{1}{G}: Snakeform Mystic gains deathtouch until end of turn.",
             "toughness": "3",
             "type": "Creature \u2014 Elf Shaman",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
-            "artist": "Toru-meow",
-            "cmc": 4,
-            "colorIdentity": [
-                "G"
-            ],
-            "colors": [
-                "Green"
-            ],
-            "imageName": "spirit of the jungle",
-            "layout": "normal",
-            "manaCost": "{3}{G}",
-            "name": "Spirit of the Jungle",
-            "number": "182",
-            "originalText": "Focus {5}{G} (You may cast this spell for its focus cost. When you do, draw a card.)\nReach\nSpirit of the Jungle's power and toughness are each equal to the number of cards in your hand.",
-            "originalType": "Creature \u2014 Spirit",
-            "power": "*",
-            "rarity": "Rare",
-            "subtypes": [
-                "Spirit"
-            ],
-            "text": "Focus {5}{G} (You may cast this spell for its focus cost. When you do, draw a card.)\nReach\nSpirit of the Jungle's power and toughness are each equal to the number of cards in your hand.",
-            "toughness": "*",
-            "type": "Creature \u2014 Spirit",
             "types": [
                 "Creature"
             ]
@@ -5788,14 +5788,14 @@
             "manaCost": "{G}{W}",
             "name": "Noble Abada",
             "number": "206",
-            "originalText": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\nSpellbound \u2014 {3}{G}{W}, Exile an instant or sorcery card from your graveyard: Other creatures you control get +2/+2 until end of turn.",
+            "originalText": "Trample\nSpellbound \u2014 {3}{G}{W}, Exile an instant or sorcery card from your graveyard: Other creatures you control get +2/+2 until end of turn.",
             "originalType": "Creature \u2014 Unicorn",
             "power": "2",
             "rarity": "Uncommon",
             "subtypes": [
                 "Unicorn"
             ],
-            "text": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\nSpellbound \u2014 {3}{G}{W}, Exile an instant or sorcery card from your graveyard: Other creatures you control get +2/+2 until end of turn.",
+            "text": "Trample\nSpellbound \u2014 {3}{G}{W}, Exile an instant or sorcery card from your graveyard: Other creatures you control get +2/+2 until end of turn.",
             "toughness": "2",
             "type": "Creature \u2014 Unicorn",
             "types": [
@@ -5884,14 +5884,14 @@
             "manaCost": "{3}{W}{B}",
             "name": "Sandstorm Sovereign",
             "number": "209",
-            "originalText": "Vigilance, menace\nWhen Sandstorm Sovereign enters the battlefield, create two 1/1 white Elemental creature tokens.\nWhenever another creature you control dies, put a +1/+1 counter on each creature you control.",
+            "originalText": "When Sandstorm Sovereign enters the battlefield, create two 1/1 white Elemental creature tokens.\nWhenever another creature you control dies, put a +1/+1 counter on each creature you control.",
             "originalType": "Creature \u2014 Elemental",
             "power": "3",
             "rarity": "Rare",
             "subtypes": [
                 "Elemental"
             ],
-            "text": "Vigilance, menace\nWhen Sandstorm Sovereign enters the battlefield, create two 1/1 white Elemental creature tokens.\nWhenever another creature you control dies, put a +1/+1 counter on each creature you control.",
+            "text": "When Sandstorm Sovereign enters the battlefield, create two 1/1 white Elemental creature tokens.\nWhenever another creature you control dies, put a +1/+1 counter on each creature you control.",
             "toughness": "3",
             "type": "Creature \u2014 Elemental",
             "types": [
@@ -5925,7 +5925,7 @@
         },
         {
             "artist": "moonga",
-            "cmc": 4,
+            "cmc": 3,
             "colorIdentity": [
                 "U",
                 "R"
@@ -5936,18 +5936,18 @@
             ],
             "imageName": "spellmaw crocodile",
             "layout": "normal",
-            "manaCost": "{2}{U}{R}",
+            "manaCost": "{1}{U}{R}",
             "name": "Spellmaw Crocodile",
             "number": "211",
             "originalText": "Haste\nWhenever Spellmaw Crocodile deals combat damage to a player, draw a card.\nDiscard a card: Spellmaw Crocodile can't be blocked this turn.",
             "originalType": "Creature \u2014 Crocodile",
-            "power": "3",
+            "power": "2",
             "rarity": "Rare",
             "subtypes": [
                 "Crocodile"
             ],
             "text": "Haste\nWhenever Spellmaw Crocodile deals combat damage to a player, draw a card.\nDiscard a card: Spellmaw Crocodile can't be blocked this turn.",
-            "toughness": "3",
+            "toughness": "2",
             "type": "Creature \u2014 Crocodile",
             "types": [
                 "Creature"
@@ -6035,7 +6035,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "When Uaria, King of Akuga enters the battlefield, each player creates three colorless Treasure artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nCreatures can't attack you unless their controller pays {3} for each creature they control that's attacking you.",
+            "text": "When Uaria, King of Akuga enters the battlefield, each player creates three colorless Treasure artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nCreatures can't attack you or a planeswalker you control unless their controller pays {3} for each of those creatures.",
             "toughness": "4",
             "type": "Legendary Creature \u2014 Human",
             "types": [
@@ -6755,5 +6755,5 @@
     "name": "Jannada",
     "releaseDate": "2017-11-05",
     "type": "expansion",
-    "version": "RAKmidseason"
+    "version": "EAU"
 }
