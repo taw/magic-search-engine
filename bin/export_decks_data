@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+require_relative "../search-engine/lib/card_database"
+
+class ExportDecksData
+  def initialize
+    @db = CardDatabase.load
+  end
+
+  def export_card(n, c)
+    {
+      name: c.name,
+      set_code: c.set_code,
+      number: c.number,
+      foil: c.foil,
+      count: n,
+    }
+  end
+
+  def call
+    exported_data = []
+    @db.decks.each do |deck|
+      exported_data << {
+        name: deck.name,
+        type: deck.type,
+        set_code: deck.set_code,
+        set_name: deck.set_name,
+        cards: deck.cards.map{|n,c| export_card(n, c) },
+        sideboard: deck.cards.map{|n,c| export_card(n, c) },
+      }
+    end
+    open("export_decks.json", "w") do |fh|
+      fh.puts JSON.pretty_generate(exported_data)
+    end
+  end
+end
+
+ExportDecksData.new.call
