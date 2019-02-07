@@ -195,7 +195,7 @@ class CompRules:
                 self.keyword_abilities[patch['rule']['text']] = rule_number
             elif patch['type'] == 'addKeywordAction':
                 self['701']['rules'].append(patch['rule'])
-                '701.{}'.format(len(self['701']['rules']))
+                rule_number = '701.{}'.format(len(self['701']['rules']))
                 self.patches[rule_number] = patch['#']
                 self.keyword_actions[patch['rule']['text']] = rule_number
             elif patch['type'] == 'addSpecialAction':
