@@ -36,4 +36,10 @@ BanList.for_format("custom standard") do
     "https://discordapp.com/channels/205457071380889601/256560810237624320/522980213571715075",
     "Flameblast" => "legal",
   )
+
+  change(
+    "2019-02-07",
+    "https://discordapp.com/channels/205457071380889601/256560810237624320/543180837181587467",
+    "Garruk Wildspeaker" => "banned",
+  )
 end
