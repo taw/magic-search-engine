@@ -448,7 +448,7 @@
             "colors": [
                 "White"
             ],
-            "flavor": "flavor text about Vampires",
+            "flavor": "Some whisper that The Faultless are just a cult to nourish the last surviving vampires. There may be some truth to this.",
             "imageName": "initiator of the flawed",
             "layout": "normal",
             "manaCost": "{2}{W}",
@@ -763,7 +763,6 @@
             "colors": [
                 "White"
             ],
-            "flavor": "flavor text about the faultless",
             "imageName": "recruit of the faultless",
             "layout": "normal",
             "manaCost": "{1}{W}",
@@ -1021,7 +1020,7 @@
             "colors": [
                 "White"
             ],
-            "flavor": "flavor text about griffins",
+            "flavor": "Griffins spot dangers so that nomads survive them.",
             "imageName": "sunscout griffin",
             "layout": "normal",
             "manaCost": "{W}",
@@ -1647,30 +1646,6 @@
             ]
         },
         {
-            "artist": "gabriel-de-soulages",
-            "cmc": 3,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [
-                "Blue"
-            ],
-            "flavor": "On Vastuum, every spell has consequences.",
-            "imageName": "leyline feedback",
-            "layout": "normal",
-            "manaCost": "{2}{U}",
-            "name": "Leyline Feedback",
-            "number": "59",
-            "originalText": "Return target permanent you control and target permanent you don't control to their owners' hands.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
-            "originalType": "Instant",
-            "rarity": "Common",
-            "text": "Return target permanent you control and target permanent you don't control to their owners' hands.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
-            "type": "Instant",
-            "types": [
-                "Instant"
-            ]
-        },
-        {
             "artist": "ertacaltinoz",
             "cmc": 4,
             "colorIdentity": [
@@ -1683,7 +1658,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}",
             "name": "Leyline Router",
-            "number": "60",
+            "number": "59",
             "originalText": "When Leyline Router enters the battlefield, you may waste two nonwastes lands you control. If you do, return target creature to its owner's hand. (Wastes lose all land types and abilities and gain \"{T}: Add {C}.\")",
             "originalType": "Creature \u2014 Human Wizard",
             "power": "3",
@@ -1695,6 +1670,59 @@
             "text": "When Leyline Router enters the battlefield, you may waste two nonwastes lands you control. If you do, return target creature to its owner's hand. (Wastes lose all land types and abilities and gain \"{T}: Add {C}.\")",
             "toughness": "3",
             "type": "Creature \u2014 Human Wizard",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "gabriel-de-soulages",
+            "cmc": 3,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "flavor": "Around Aethanis the air has become polluted with unstable mana.",
+            "imageName": "leyline sickness",
+            "layout": "normal",
+            "manaCost": "{2}{U}",
+            "name": "Leyline Sickness",
+            "number": "60",
+            "originalText": "Creatures your opponents control get -2/-0 until end of turn.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
+            "originalType": "Instant",
+            "rarity": "Common",
+            "text": "Creatures your opponents control get -2/-0 until end of turn.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
+            "type": "Instant",
+            "types": [
+                "Instant"
+            ]
+        },
+        {
+            "artist": "telthona",
+            "cmc": 3,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "imageName": "lore investigator",
+            "layout": "normal",
+            "manaCost": "{2}{U}",
+            "name": "Lore Investigator",
+            "number": "61",
+            "originalText": "{2}{U}, Sacrifice Lore Investigator: Return target instant or sorcery card from your graveyard to your hand.",
+            "originalType": "Creature \u2014 Human Artificer",
+            "power": "2",
+            "rarity": "Common",
+            "subtypes": [
+                "Human",
+                "Artificer"
+            ],
+            "text": "{2}{U}, Sacrifice Lore Investigator: Return target instant or sorcery card from your graveyard to your hand.",
+            "toughness": "3",
+            "type": "Creature \u2014 Human Artificer",
             "types": [
                 "Creature"
             ]
@@ -1713,7 +1741,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Master Scavenger",
-            "number": "61",
+            "number": "62",
             "originalText": "At the beginning of your upkeep, you may put the top three cards of your library into your graveyard.\n{3}, {T}: Return target exiled card you own with salvage to your hand.",
             "originalType": "Creature \u2014 Human Artificer",
             "power": "2",
@@ -1742,7 +1770,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}{U}",
             "name": "Mirage Oddity",
-            "number": "62",
+            "number": "63",
             "originalText": "Flying\nWaste two nonwastes lands you control: Exile Mirage Oddity. Return it to the battlefield under its owner's control at the beginning of the next end step. (Wastes lose all land types and abilities and gain \"{T}: Add {C}.\")",
             "originalType": "Creature \u2014 Mutant",
             "power": "4",
@@ -1770,7 +1798,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}{U}",
             "name": "Mirage's Alure",
-            "number": "63",
+            "number": "64",
             "originalText": "Put target creature on top of its owner's library.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -1793,7 +1821,7 @@
             "layout": "normal",
             "manaCost": "{5}{U}",
             "name": "Monstrosity of the End",
-            "number": "64",
+            "number": "65",
             "originalText": "Defender (This creature can't attack.)\n{6}{C}: Until end of turn, Monstrosity of the End can't be blocked and can attack as though it didn't have defender.",
             "originalType": "Creature \u2014 Serpent Mutant",
             "power": "6",
@@ -1822,7 +1850,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}{U}",
             "name": "Mysterious Undertaking",
-            "number": "65",
+            "number": "66",
             "originalText": "Return all creatures to their owners' hands.\nSalvage {5}{U}{U} ({5}{U}{U}, Exile this card from your graveyard: Draw a card.)\nWhen you salvage Mysterious Undertaking, target opponent chooses a creature they control. You gain control of that creature.",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -1845,7 +1873,7 @@
             "layout": "normal",
             "manaCost": "{4}{U}{U}",
             "name": "Nimbus Mantas",
-            "number": "66",
+            "number": "67",
             "originalText": "Flying\nWhen Nimbus Mantas deals combat damage to a player, you may exile target artifact, creature, or land you control, then return that card to the battlefield under its owner's control.",
             "originalType": "Creature \u2014 Fish",
             "power": "4",
@@ -1873,7 +1901,7 @@
             "layout": "normal",
             "manaCost": "{5}{U}{U}",
             "name": "Quintessence Gorger",
-            "number": "67",
+            "number": "68",
             "originalText": "Flash\nFlying\nWhen Quintessence Gorger enters the battlefield, exile target instant or sorcery spell.\nWhen Quintessence Gorger leaves the battlefield, you may cast the exiled card without paying its mana cost.",
             "originalType": "Creature \u2014 Fish",
             "power": "5",
@@ -1884,35 +1912,6 @@
             "text": "Flash\nFlying\nWhen Quintessence Gorger enters the battlefield, exile target instant or sorcery spell.\nWhen Quintessence Gorger leaves the battlefield, you may cast the exiled card without paying its mana cost.",
             "toughness": "6",
             "type": "Creature \u2014 Fish",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
-            "artist": "telthona",
-            "cmc": 3,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [
-                "Blue"
-            ],
-            "imageName": "relic investigator",
-            "layout": "normal",
-            "manaCost": "{2}{U}",
-            "name": "Relic Investigator",
-            "number": "68",
-            "originalText": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you salvage a card, Relic Investigator gets +1/+1 and can't be blocked this turn.",
-            "originalType": "Creature \u2014 Human Artificer",
-            "power": "2",
-            "rarity": "Common",
-            "subtypes": [
-                "Human",
-                "Artificer"
-            ],
-            "text": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you salvage a card, Relic Investigator gets +1/+1 and can't be blocked this turn.",
-            "toughness": "3",
-            "type": "Creature \u2014 Human Artificer",
             "types": [
                 "Creature"
             ]
@@ -2048,7 +2047,7 @@
         },
         {
             "artist": "majed-al-harbi",
-            "cmc": 4,
+            "cmc": 5,
             "colorIdentity": [
                 "U"
             ],
@@ -2058,10 +2057,10 @@
             "flavor": "\"I will learn what happened to our world.\"",
             "imageName": "seeker of the past",
             "layout": "normal",
-            "manaCost": "{3}{U}",
+            "manaCost": "{4}{U}",
             "name": "Seeker of the Past",
             "number": "74",
-            "originalText": "Prowess\nWhen Seeker of the Past enters the battlefield, you may search your library for a card with salvage, reveal it, then shuffle your library and put that card on top of it.",
+            "originalText": "When Seeker of the Past enters the battlefield, you may search your library for a card with salvage, reveal it, put it into your hand, then shuffle your library.",
             "originalType": "Creature \u2014 Human Artificer",
             "power": "3",
             "rarity": "Uncommon",
@@ -2069,8 +2068,8 @@
                 "Human",
                 "Artificer"
             ],
-            "text": "Prowess\nWhen Seeker of the Past enters the battlefield, you may search your library for a card with salvage, reveal it, then shuffle your library and put that card on top of it.",
-            "toughness": "2",
+            "text": "When Seeker of the Past enters the battlefield, you may search your library for a card with salvage, reveal it, put it into your hand, then shuffle your library.",
+            "toughness": "4",
             "type": "Creature \u2014 Human Artificer",
             "types": [
                 "Creature"
@@ -2150,7 +2149,7 @@
             "watermark": "Planeswalker"
         },
         {
-            "artist": "Chris Malidore",
+            "artist": "benny-kusnoto",
             "cmc": 4,
             "colorIdentity": [
                 "U"
@@ -2158,23 +2157,23 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "flavor text",
-            "imageName": "umbral swooper",
+            "flavor": "Not all the flying mantas are friendly.",
+            "imageName": "umbral glider",
             "layout": "normal",
             "manaCost": "{3}{U}",
-            "name": "Umbral Swooper",
+            "name": "Umbral Glider",
             "number": "78",
-            "originalText": "Flying\nWhenever Umbral Swooper attacks, return target permanent you control to its owner's hand.",
-            "originalType": "Creature \u2014 Drake Mutant",
+            "originalText": "Flying\nWhenever Umbral Glider attacks, return target permanent you control to its owner's hand.",
+            "originalType": "Creature \u2014 Fish Mutant",
             "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
-                "Drake",
+                "Fish",
                 "Mutant"
             ],
-            "text": "Flying\nWhenever Umbral Swooper attacks, return target permanent you control to its owner's hand.",
+            "text": "Flying\nWhenever Umbral Glider attacks, return target permanent you control to its owner's hand.",
             "toughness": "3",
-            "type": "Creature \u2014 Drake Mutant",
+            "type": "Creature \u2014 Fish Mutant",
             "types": [
                 "Creature"
             ]
@@ -2250,7 +2249,7 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "The glyphs could be crucial equations, or lists of casualties, or just more graffiti.",
+            "flavor": "The glyphs could be crucial equations, lists of casualties, or just more graffiti.",
             "imageName": "wall of mysteries",
             "layout": "normal",
             "manaCost": "{1}{U}",
@@ -2859,7 +2858,7 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "\"The Fallen took Ori last night. Her green cloak disappear under twisted flesh as I ran. I have no food and little water, but I still have the relic.\"\n\u2014Kali, Ruin Seeker",
+            "flavor": "\"The Fallen took Ori last night. Her green cloak disappeared under twisted flesh as I ran. I have no food and little water, but I still have the relic.\"\n\u2014Kali, Ruin Seeker",
             "imageName": "grasp of the fallen",
             "layout": "normal",
             "manaCost": "{3}{B}",
@@ -3205,11 +3204,10 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "\"Mirrodin is gone, but perhaps I can save Vastuum?\"\n\u2014Karn",
-            "imageName": "radaran remains",
+            "imageName": "radaran stirrings",
             "layout": "normal",
             "manaCost": "{B}",
-            "name": "Radaran Remains",
+            "name": "Radaran Stirrings",
             "number": "116",
             "originalText": "{2}, Waste two nonwastes lands you control: Create a tapped 2/2 black Zombie Mutant creature token with deathtouch. (Wastes lose all land types and abilities and gain \"{T}: Add {C}.\")",
             "originalType": "Enchantment",
@@ -3427,35 +3425,6 @@
             ]
         },
         {
-            "artist": "warlordwardog",
-            "cmc": 2,
-            "colorIdentity": [
-                "R"
-            ],
-            "colors": [
-                "Red"
-            ],
-            "imageName": "blade reaver",
-            "layout": "normal",
-            "manaCost": "{R}{R}",
-            "name": "Blade Reaver",
-            "number": "124",
-            "originalText": "First strike\nWhenever Blade Reaver deals combat damage to a player, exile the top card of your library. If it's a nonland card, you may cast that card this turn.",
-            "originalType": "Creature \u2014 Human Warrior",
-            "power": "2",
-            "rarity": "Rare",
-            "subtypes": [
-                "Human",
-                "Warrior"
-            ],
-            "text": "First strike\nWhenever Blade Reaver deals combat damage to a player, exile the top card of your library. If it's a nonland card, you may cast that card this turn.",
-            "toughness": "1",
-            "type": "Creature \u2014 Human Warrior",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
             "artist": "junc",
             "cmc": 6,
             "colorIdentity": [
@@ -3469,7 +3438,7 @@
             "layout": "normal",
             "manaCost": "{4}{R}{R}",
             "name": "Blood Feud",
-            "number": "125",
+            "number": "124",
             "originalText": "Target creature fights another target creature. (Each deals damage equal to its power to the other.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
@@ -3499,7 +3468,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Bloodrage Brawler",
-            "number": "126",
+            "number": "125",
             "originalText": "When Bloodrage Brawler enters the battlefield, discard a card.",
             "originalType": "Creature \u2014 Minotaur Warrior",
             "power": "4",
@@ -3535,7 +3504,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Clash on the Dunes",
-            "number": "127",
+            "number": "126",
             "originalText": "Target creature gets +2/+1 and gains trample until end of turn.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
             "originalType": "Instant",
             "rarity": "Common",
@@ -3558,7 +3527,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Colony Slaver",
-            "number": "128",
+            "number": "127",
             "originalText": "Haste\nWhen Colony Slaver enters the battlefield, gain control of another target creature with converted mana cost 2 or less until end of turn. Untap that creature. It gains haste until end of turn.",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "2",
@@ -3588,7 +3557,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Crucible of the Sun",
-            "number": "129",
+            "number": "128",
             "originalText": "Add {R}{R}{R}{R}.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
@@ -3612,8 +3581,8 @@
             "layout": "normal",
             "manaCost": "{R}",
             "name": "Derelict",
-            "number": "130",
-            "originalText": "Choose one \u2014\n\u2022 Destroy target artifact\n\u2022 Derelict deals 2 damage to target player.",
+            "number": "129",
+            "originalText": "Choose one \u2014\n\u2022 Destroy target artifact.\n\u2022 Derelict deals 2 damage to target player.",
             "originalType": "Sorcery",
             "rarity": "Common",
             "text": "Choose one \u2014\n\u2022 Destroy target artifact.\n\u2022 Derelict deals 2 damage to target player.",
@@ -3636,15 +3605,15 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Dustborn Phoenix",
-            "number": "131",
-            "originalText": "Flying, prowess\nWhen Dustborn Phoenix dies, if you've cast a noncreature spell this turn, return Dustborn Phoenix from your graveyard to the battlefield at the beginning of the next end step.",
+            "number": "130",
+            "originalText": "Flying, haste\nWhen Dustborn Phoenix dies, if you've cast a noncreature spell this turn, return Dustborn Phoenix from your graveyard to the battlefield at the beginning of the next end step.",
             "originalType": "Creature \u2014 Phoenix",
             "power": "2",
             "rarity": "Rare",
             "subtypes": [
                 "Phoenix"
             ],
-            "text": "Flying, prowess\nWhen Dustborn Phoenix dies, if you've cast a noncreature spell this turn, return Dustborn Phoenix from your graveyard to the battlefield at the beginning of the next end step.",
+            "text": "Flying, haste\nWhen Dustborn Phoenix dies, if you've cast a noncreature spell this turn, return Dustborn Phoenix from your graveyard to the battlefield at the beginning of the next end step.",
             "toughness": "2",
             "type": "Creature \u2014 Phoenix",
             "types": [
@@ -3664,7 +3633,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}{R}",
             "name": "Gnoll Raidleaders",
-            "number": "132",
+            "number": "131",
             "originalText": "Whenever Gnoll Raidleaders attacks, creatures you control get +1/+0 until end of turn.\nDash {4}{R} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)",
             "originalType": "Creature \u2014 Hyena Berserker",
             "power": "4",
@@ -3682,34 +3651,6 @@
         },
         {
             "artist": "Stephen Crowe at deviantart",
-            "cmc": 2,
-            "colorIdentity": [
-                "R"
-            ],
-            "colors": [
-                "Red"
-            ],
-            "flavor": "Gnolls' ability to eat nearly anything has allowed their packs to flourish even as the world falls apart around them.",
-            "imageName": "gnoll ravagers",
-            "layout": "normal",
-            "manaCost": "{1}{R}",
-            "name": "Gnoll Ravagers",
-            "number": "133",
-            "originalType": "Creature \u2014 Hyena Berserker",
-            "power": "2",
-            "rarity": "Common",
-            "subtypes": [
-                "Hyena",
-                "Berserker"
-            ],
-            "toughness": "2",
-            "type": "Creature \u2014 Hyena Berserker",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
-            "artist": "Mark Tarrisse",
             "cmc": 3,
             "colorIdentity": [
                 "R"
@@ -3717,12 +3658,12 @@
             "colors": [
                 "Red"
             ],
-            "imageName": "gnoll vanguard",
+            "imageName": "gnoll ravagers",
             "layout": "normal",
             "manaCost": "{2}{R}",
-            "name": "Gnoll Vanguard",
-            "number": "134",
-            "originalText": "Gnoll Vanguard can't attack or block alone.\nDash {1}{R} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)",
+            "name": "Gnoll Ravagers",
+            "number": "132",
+            "originalText": "Gnoll Ravagers can't attack or block alone.\nDash {1}{R} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)",
             "originalType": "Creature \u2014 Hyena Berserker",
             "power": "3",
             "rarity": "Common",
@@ -3730,7 +3671,7 @@
                 "Hyena",
                 "Berserker"
             ],
-            "text": "Gnoll Vanguard can't attack or block alone.\nDash {1}{R} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)",
+            "text": "Gnoll Ravagers can't attack or block alone.\nDash {1}{R} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)",
             "toughness": "3",
             "type": "Creature \u2014 Hyena Berserker",
             "types": [
@@ -3750,8 +3691,8 @@
             "layout": "normal",
             "manaCost": "{4}{R}",
             "name": "Goresand Champion",
-            "number": "135",
-            "originalText": "When Goresand Champion enters the battlefield, you may waste two nonwastes lands you control. If you do, creatures you control get +2/+0 until end of turn. (Wastes lose all land types and abilities and gain \"{T}: Add {C}.)",
+            "number": "133",
+            "originalText": "When Goresand Champion enters the battlefield, creatures you control get +1/+0 until end of turn.",
             "originalType": "Creature \u2014 Human Berserker",
             "power": "4",
             "rarity": "Common",
@@ -3759,7 +3700,7 @@
                 "Human",
                 "Berserker"
             ],
-            "text": "When Goresand Champion enters the battlefield, you may waste two nonwastes lands you control. If you do, creatures you control get +2/+0 until end of turn. (Wastes lose all land types and abilities and gain \"{T}: Add {C}.)",
+            "text": "When Goresand Champion enters the battlefield, creatures you control get +1/+0 until end of turn.",
             "toughness": "5",
             "type": "Creature \u2014 Human Berserker",
             "types": [
@@ -3779,7 +3720,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}{R}",
             "name": "Goresand Marauder",
-            "number": "136",
+            "number": "134",
             "originalText": "When Goresand Marauder enters the battlefield, target creature can't block this turn.\nDash {3}{R} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)",
             "originalType": "Creature \u2014 Hyena Berserker",
             "power": "3",
@@ -3809,7 +3750,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}",
             "name": "Hateseer Elder",
-            "number": "137",
+            "number": "135",
             "originalText": "Hyena spells you cast cost {1} less to cast.\nWhenever another Hyena enters the battlefield under your control, Hateseer Elder deals 1 damage to target creature.",
             "originalType": "Creature \u2014 Hyena Shaman",
             "power": "4",
@@ -3827,7 +3768,7 @@
         },
         {
             "artist": "Slawomir Maniak",
-            "cmc": 3,
+            "cmc": 2,
             "colorIdentity": [
                 "R"
             ],
@@ -3837,19 +3778,19 @@
             "flavor": "Gnolls often raid not for wealth or supplies but because they simply enjoy it.",
             "imageName": "huntscent pack",
             "layout": "normal",
-            "manaCost": "{2}{R}",
+            "manaCost": "{1}{R}",
             "name": "Huntscent Pack",
-            "number": "138",
+            "number": "136",
             "originalText": "Whenever Huntscent Pack attacks, if you control another Hyena, Huntscent Pack gets +1/+1 and gains menace until end of turn.",
             "originalType": "Creature \u2014 Hyena Berserker",
-            "power": "3",
+            "power": "2",
             "rarity": "Common",
             "subtypes": [
                 "Hyena",
                 "Berserker"
             ],
             "text": "Whenever Huntscent Pack attacks, if you control another Hyena, Huntscent Pack gets +1/+1 and gains menace until end of turn.",
-            "toughness": "2",
+            "toughness": "1",
             "type": "Creature \u2014 Hyena Berserker",
             "types": [
                 "Creature"
@@ -3869,7 +3810,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Incandescent Rain",
-            "number": "139",
+            "number": "137",
             "originalText": "Incandescent Rain deals 1 damage to each creature. Put a -1/-1 counter on each creature.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -3893,7 +3834,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}",
             "name": "Luma's Guidance",
-            "number": "140",
+            "number": "138",
             "originalText": "At the beginning of your upkeep, if you have no cards in hand, draw a card. Otherwise you may discard then draw a card.",
             "originalType": "Enchantment",
             "rarity": "Uncommon",
@@ -3917,7 +3858,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}{R}",
             "name": "Marauding Fire",
-            "number": "141",
+            "number": "139",
             "originalText": "Marauding Fire deals 5 damage to target creature and 2 damage to that creature's controller.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -3940,7 +3881,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}",
             "name": "Overwhelmed by the Pack",
-            "number": "142",
+            "number": "140",
             "originalText": "Each creature card in your hand has dash. The dash cost is equal to its mana cost.\nWhenever a creature enters the battlefield under your control, Overwhelmed by the Pack deals 1 damage to each opponent.",
             "originalType": "Enchantment",
             "rarity": "Rare",
@@ -3963,7 +3904,7 @@
             "layout": "normal",
             "manaCost": "{R}",
             "name": "Packless Raiders",
-            "number": "143",
+            "number": "141",
             "originalText": "Menace\nPackless Raiders gets +1/+0 as long as you control three or more creatures.\nDash {R} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)",
             "originalType": "Creature \u2014 Hyena Berserker",
             "power": "1",
@@ -3993,7 +3934,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Pillage the Weak",
-            "number": "144",
+            "number": "142",
             "originalText": "Pillage the Weak deals 3 damage to target creature. Then you may discard a card. If you do, draw a card.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -4017,14 +3958,14 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Plunder and Maim",
-            "number": "145",
-            "originalText": "Plunder and Maim deals 1 damage to each creature your opponents control.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
-            "originalType": "Instant",
+            "number": "143",
+            "originalText": "Put a -1/-1 counter on target creature an opponent controls. Plunder and Maim deals 1 damage to each other creature that opponent controls.",
+            "originalType": "Sorcery",
             "rarity": "Common",
-            "text": "Plunder and Maim deals 1 damage to each creature your opponents control.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
-            "type": "Instant",
+            "text": "Put a -1/-1 counter on target creature an opponent controls. Plunder and Maim deals 1 damage to each other creature that opponent controls.",
+            "type": "Sorcery",
             "types": [
-                "Instant"
+                "Sorcery"
             ]
         },
         {
@@ -4041,7 +3982,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}",
             "name": "Raider's Loyalty",
-            "number": "146",
+            "number": "144",
             "originalText": "Gain control of target creature until end of turn. Untap it. That creature gains haste until end of turn. Put a -1/-1 counter on it at end of combat.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -4049,6 +3990,35 @@
             "type": "Sorcery",
             "types": [
                 "Sorcery"
+            ]
+        },
+        {
+            "artist": "warlordwardog",
+            "cmc": 2,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "Red"
+            ],
+            "imageName": "reaver bandit",
+            "layout": "normal",
+            "manaCost": "{R}{R}",
+            "name": "Reaver Bandit",
+            "number": "145",
+            "originalText": "First strike\nWhenever Reaver Bandit deals combat damage to a player, exile the top card of that player's library. Until end of turn, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.",
+            "originalType": "Creature \u2014 Human Warrior",
+            "power": "2",
+            "rarity": "Rare",
+            "subtypes": [
+                "Human",
+                "Warrior"
+            ],
+            "text": "First strike\nWhenever Reaver Bandit deals combat damage to a player, exile the top card of that player's library. Until end of turn, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.",
+            "toughness": "1",
+            "type": "Creature \u2014 Human Warrior",
+            "types": [
+                "Creature"
             ]
         },
         {
@@ -4064,7 +4034,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}{R}",
             "name": "Reckless Undertaking",
-            "number": "147",
+            "number": "146",
             "originalText": "Each player discards their hand, then draws seven cards.\nSalvage {5}{R}{R} ({5}{R}{R}, Exile this card from your graveyard: Draw a card.)\nWhen you salvage Reckless Undertaking, target opponent reveals their hand. Copy any number of instant and/or sorcery cards in it. You may cast the copies without paying their mana costs.",
             "originalType": "Instant",
             "rarity": "Rare",
@@ -4088,7 +4058,7 @@
             "layout": "normal",
             "manaCost": "{X}{R}{R}",
             "name": "Reclaimed Power",
-            "number": "148",
+            "number": "147",
             "originalText": "Reclaimed Power deals X damage divided as you choose among any number of targets.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
             "originalType": "Instant",
             "rarity": "Rare",
@@ -4099,7 +4069,7 @@
             ]
         },
         {
-            "artist": "Tuomas Korpi",
+            "artist": "allen-wei",
             "cmc": 3,
             "colorIdentity": [
                 "R"
@@ -4112,11 +4082,11 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Regard the Remnants",
-            "number": "149",
-            "originalText": "As an additional cost to cast this spell, discard a card.\nDraw two cards.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
+            "number": "148",
+            "originalText": "You may discard a card. If you do, draw two cards.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "As an additional cost to cast this spell, discard a card.\nDraw two cards.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
+            "text": "You may discard a card. If you do, draw two cards.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -4124,29 +4094,28 @@
         },
         {
             "artist": "telthona",
-            "cmc": 2,
+            "cmc": 3,
             "colorIdentity": [
                 "R"
             ],
             "colors": [
                 "Red"
             ],
-            "imageName": "relic explorer",
+            "flavor": "Every group, from the human nomads to the gnollpacks plunder and trade in relics.",
+            "imageName": "relic surveyor",
             "layout": "normal",
-            "manaCost": "{1}{R}",
-            "name": "Relic Explorer",
-            "number": "150",
-            "originalText": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you salvage a card, Relic Explorer gets +1/+1 and gains menace until end of turn.",
-            "originalType": "Creature \u2014 Human Nomad",
-            "power": "2",
+            "manaCost": "{2}{R}",
+            "name": "Relic Surveyor",
+            "number": "149",
+            "originalType": "Creature \u2014 Human Artificer",
+            "power": "4",
             "rarity": "Common",
             "subtypes": [
                 "Human",
-                "Nomad"
+                "Artificer"
             ],
-            "text": "Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\nWhenever you salvage a card, Relic Explorer gets +1/+1 and gains menace until end of turn.",
-            "toughness": "1",
-            "type": "Creature \u2014 Human Nomad",
+            "toughness": "2",
+            "type": "Creature \u2014 Human Artificer",
             "types": [
                 "Creature"
             ]
@@ -4164,7 +4133,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}",
             "name": "Reveler of the End",
-            "number": "151",
+            "number": "150",
             "originalText": "Reach (This creature can block creatures with flying.)\n{6}{C}: Creatures you control get +1/+0 and gain first strike until end of turn.",
             "originalType": "Creature \u2014 Hyena Archer",
             "power": "4",
@@ -4189,13 +4158,13 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "\"If they didn't want their homes looted, they wouldn't have died with all their stuff there.\"",
+            "flavor": "\"If they didn't want their homes looted, they shouldn't have died with all their stuff there.\"",
             "imageName": "ruin claimer",
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Ruin Claimer",
-            "number": "152",
-            "originalText": "Whenever you cast a noncreature spell or salvage a card, Ruin Claimer deals 1 damage to target player or planeswalker.",
+            "number": "151",
+            "originalText": "Whenever you salvage a card, Ruin Claimer deals 2 damage to target player or planeswalker.",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "1",
             "rarity": "Uncommon",
@@ -4203,7 +4172,7 @@
                 "Human",
                 "Rogue"
             ],
-            "text": "Whenever you cast a noncreature spell or salvage a card, Ruin Claimer deals 1 damage to target player or planeswalker.",
+            "text": "Whenever you salvage a card, Ruin Claimer deals 2 damage to target player or planeswalker.",
             "toughness": "3",
             "type": "Creature \u2014 Human Rogue",
             "types": [
@@ -4224,7 +4193,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}",
             "name": "Sand Gleaner",
-            "number": "153",
+            "number": "152",
             "originalText": "{T}, Waste a nonwastes land you control, Discard a card: Draw a card. (Wastes lose all land types and abilities and gain \"{T}: Add {C}.\")",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "2",
@@ -4254,7 +4223,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Sandcrazed Frenzy",
-            "number": "154",
+            "number": "153",
             "originalText": "Enchant creature\nEnchanted creature gets +3/+0 and has first strike.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Common",
@@ -4280,7 +4249,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}{R}",
             "name": "Sandrunner Scourge",
-            "number": "155",
+            "number": "154",
             "originalText": "Whenever Sandrunner Scourge attacks, when you cast your next instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\nDash {2}{R} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)",
             "originalType": "Creature \u2014 Human Berserker",
             "power": "3",
@@ -4298,7 +4267,7 @@
         },
         {
             "artist": "appylon",
-            "cmc": 1,
+            "cmc": 2,
             "colorIdentity": [
                 "R"
             ],
@@ -4308,16 +4277,16 @@
             "flavor": "The remains of one settlement are often the foundations of the next.",
             "imageName": "sandscour",
             "layout": "normal",
-            "manaCost": "{R}",
+            "manaCost": "{1}{R}",
             "name": "Sandscour",
-            "number": "156",
-            "originalText": "Sandscour deals 2 damage to any target.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
-            "originalType": "Sorcery",
+            "number": "155",
+            "originalText": "Sandscour deals 3 damage to target creature or planeswalker.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
+            "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Sandscour deals 2 damage to any target.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
-            "type": "Sorcery",
+            "text": "Sandscour deals 3 damage to target creature or planeswalker.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
+            "type": "Instant",
             "types": [
-                "Sorcery"
+                "Instant"
             ]
         },
         {
@@ -4333,7 +4302,7 @@
             "layout": "normal",
             "manaCost": "{R}",
             "name": "Shi-Fang Ambusher",
-            "number": "157",
+            "number": "156",
             "originalText": "When Shi-Fang Ambusher enters the battlefield, it deals 1 damage to target player or planeswalker.\nDash {2}{R} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)",
             "originalType": "Creature \u2014 Hyena Archer",
             "power": "1",
@@ -4362,7 +4331,7 @@
             "layout": "normal",
             "manaCost": "{4}{R}{R}",
             "name": "Shimmering Dunekite",
-            "number": "158",
+            "number": "157",
             "originalText": "Flying\nWhenever Shimmering Dunekite or another creature enters the battlefield under your control, if it isn't a token, you may create a token that's a copy of that creature. It has haste and \"At the beginning of the end step, sacrifice this creature.\"",
             "originalType": "Creature \u2014 Dragon",
             "power": "4",
@@ -4390,7 +4359,7 @@
             "layout": "normal",
             "manaCost": "{5}{R}{R}",
             "name": "Sunflare Dragon",
-            "number": "159",
+            "number": "158",
             "originalText": "Flying\nWhenever Sunflare Dragon attacks, it deals 2 damage to each creature defending player controls.\nDash {5}{R} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)",
             "originalType": "Creature \u2014 Dragon",
             "power": "5",
@@ -4403,6 +4372,30 @@
             "type": "Creature \u2014 Dragon",
             "types": [
                 "Creature"
+            ]
+        },
+        {
+            "artist": "iwo widulinski",
+            "cmc": 2,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "Red"
+            ],
+            "flavor": "Gnolls' ability to take and use nearly anything has allowed them to flourish even as the world falls apart.",
+            "imageName": "take for the pack",
+            "layout": "normal",
+            "manaCost": "{1}{R}",
+            "name": "Take for the Pack",
+            "number": "159",
+            "originalText": "Create a 2/2 red Hyena creature token.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
+            "originalType": "Sorcery",
+            "rarity": "Common",
+            "text": "Create a 2/2 red Hyena creature token.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
             ]
         },
         {
@@ -4421,15 +4414,16 @@
             "name": "Territorial Sandshark",
             "number": "160",
             "originalText": "Menace\nWhen Territorial Sandshark enters the battlefield, it deals 2 damage to each opponent.",
-            "originalType": "Creature \u2014 Beast",
+            "originalType": "Creature \u2014 Fish Beast",
             "power": "5",
             "rarity": "Common",
             "subtypes": [
+                "Fish",
                 "Beast"
             ],
             "text": "Menace\nWhen Territorial Sandshark enters the battlefield, it deals 2 damage to each opponent.",
             "toughness": "4",
-            "type": "Creature \u2014 Beast",
+            "type": "Creature \u2014 Fish Beast",
             "types": [
                 "Creature"
             ]
@@ -4604,7 +4598,7 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "flavor text",
+            "flavor": "Stay together, stay alive.",
             "imageName": "convoy procession",
             "layout": "normal",
             "manaCost": "{G}",
@@ -4801,7 +4795,7 @@
             ]
         },
         {
-            "artist": "rawwad",
+            "artist": "Alejandro Mirabal",
             "cmc": 3,
             "colorIdentity": [
                 "G"
@@ -4810,10 +4804,10 @@
                 "Green"
             ],
             "flavor": "They are just natural enough to feed, and not natural enough to stop.",
-            "imageName": "falltouched predation",
+            "imageName": "falltouched hunger",
             "layout": "normal",
             "manaCost": "{2}{G}",
-            "name": "Falltouched Predation",
+            "name": "Falltouched Hunger",
             "number": "174",
             "originalText": "Put a -1/-1 counter on target creature an opponent controls. Then target creature you control deals damage equal to its power to that creature.",
             "originalType": "Sorcery",
@@ -4929,7 +4923,7 @@
             "manaCost": "{1}{G}",
             "name": "Geneshifted Warbler",
             "number": "178",
-            "originalText": "When Geneshifted Warbler enters the battlefield, look at the top three cards of your library. You may reveal a Mutant card from among them and put it into your hand. Put the rest in your graveyard.",
+            "originalText": "When Geneshifted Warbler enters the battlefield, look at the top four cards of your library. You may reveal a Mutant card from among them and put it into your hand. Put the rest in your graveyard.",
             "originalType": "Creature \u2014 Bird Mutant",
             "power": "2",
             "rarity": "Uncommon",
@@ -4937,7 +4931,7 @@
                 "Bird",
                 "Mutant"
             ],
-            "text": "When Geneshifted Warbler enters the battlefield, look at the top three cards of your library. You may reveal a Mutant card from among them and put it into your hand. Put the rest in your graveyard.",
+            "text": "When Geneshifted Warbler enters the battlefield, look at the top four cards of your library. You may reveal a Mutant card from among them and put it into your hand. Put the rest in your graveyard.",
             "toughness": "2",
             "type": "Creature \u2014 Bird Mutant",
             "types": [
@@ -5120,14 +5114,14 @@
             "manaCost": "{2}{G}",
             "name": "Mangle Spider",
             "number": "185",
-            "originalText": "Reach (This creature can block creatures with flying.)\nWhen Mangle Spider dies, put two -1/-1 counters on target creature with flying.",
+            "originalText": "Reach (This creature can block creatures with flying.)\nWhen Mangle Spider dies, you may put two -1/-1 counters on target creature with flying.",
             "originalType": "Creature \u2014 Spider",
             "power": "2",
             "rarity": "Common",
             "subtypes": [
                 "Spider"
             ],
-            "text": "Reach (This creature can block creatures with flying.)\nWhen Mangle Spider dies, put two -1/-1 counters on target creature with flying.",
+            "text": "Reach (This creature can block creatures with flying.)\nWhen Mangle Spider dies, you may put two -1/-1 counters on target creature with flying.",
             "toughness": "3",
             "type": "Creature \u2014 Spider",
             "types": [
@@ -5433,7 +5427,7 @@
                 "Nomad"
             ],
             "text": "When Swift Sandwarden enters the battlefield, target creature gets +1/+1 until end of turn.\nDash {2}{G} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)",
-            "toughness": "2",
+            "toughness": "1",
             "type": "Creature \u2014 Human Nomad",
             "types": [
                 "Creature"
@@ -5639,7 +5633,7 @@
         },
         {
             "artist": "Ben Wootten",
-            "cmc": 5,
+            "cmc": 4,
             "colorIdentity": [
                 "U",
                 "R"
@@ -5650,10 +5644,10 @@
             ],
             "imageName": "dune technician",
             "layout": "normal",
-            "manaCost": "{3}{U}{R}",
+            "manaCost": "{2}{U}{R}",
             "name": "Dune Technician",
             "number": "204",
-            "originalText": "Flying\nWhenever you salvage a card, Dune Technician gets +3/+0 until end of turn.\nSalvage abilities you activate cost {1} less to activate.",
+            "originalText": "Flying\nWhenever you salvage a card, Dune Technician gets +2/+0 until end of turn.\nSalvage abilities you activate cost {1} less to activate.",
             "originalType": "Creature \u2014 Human Artificer",
             "power": "2",
             "rarity": "Uncommon",
@@ -5661,8 +5655,8 @@
                 "Human",
                 "Artificer"
             ],
-            "text": "Flying\nWhenever you salvage a card, Dune Technician gets +3/+0 until end of turn.\nSalvage abilities you activate cost {1} less to activate.",
-            "toughness": "5",
+            "text": "Flying\nWhenever you salvage a card, Dune Technician gets +2/+0 until end of turn.\nSalvage abilities you activate cost {1} less to activate.",
+            "toughness": "4",
             "type": "Creature \u2014 Human Artificer",
             "types": [
                 "Creature"
@@ -5679,7 +5673,7 @@
                 "Blue",
                 "Black"
             ],
-            "flavor": "Flavor texts",
+            "flavor": "Hidden under the sands, they emerge only in the few hours of twilight.",
             "imageName": "dusk dancer",
             "layout": "normal",
             "manaCost": "{4}{U}{B}",
@@ -5742,6 +5736,7 @@
                 "White",
                 "Black"
             ],
+            "flavor": "Vaya's society of the faultless may not survive. But it will stay pure until the end.",
             "imageName": "fanatical persecution",
             "layout": "normal",
             "manaCost": "{1}{W}{B}",
@@ -6598,16 +6593,16 @@
             "cmc": 2,
             "colorIdentity": [],
             "colors": [],
-            "flavor": "flavor text?",
+            "flavor": "Even just a few years of the apocalypse can leave a lot of wear and tear.",
             "imageName": "weathered artifice",
             "layout": "normal",
             "manaCost": "{2}",
             "name": "Weathered Artifice",
             "number": "238",
-            "originalText": "{3}: Weathered Artifice becomes a 5/5 Golem artifact creature until end of turn.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
+            "originalText": "{2}: Weathered Artifice becomes a 4/4 Golem artifact creature until end of turn.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
             "originalType": "Artifact",
             "rarity": "Uncommon",
-            "text": "{3}: Weathered Artifice becomes a 5/5 Golem artifact creature until end of turn.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
+            "text": "{2}: Weathered Artifice becomes a 4/4 Golem artifact creature until end of turn.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -6664,7 +6659,7 @@
             "cmc": 0,
             "colorIdentity": [],
             "colors": [],
-            "flavor": "flavor text?",
+            "flavor": "Nvia survived the fall, hiding away, unable to approach Aethanis or The Source.",
             "imageName": "ancient shelter",
             "layout": "normal",
             "name": "Ancient Shelter",
@@ -6752,7 +6747,7 @@
             ]
         },
         {
-            "artist": "NetGraFX",
+            "artist": "Darum",
             "cmc": 0,
             "colorIdentity": [],
             "colors": [],
@@ -6819,7 +6814,6 @@
             "cmc": 0,
             "colorIdentity": [],
             "colors": [],
-            "flavor": "flavor text?",
             "imageName": "warped landscape",
             "layout": "normal",
             "name": "Warped Landscape",
@@ -6931,7 +6925,7 @@
             "watermark": "Blue"
         },
         {
-            "artist": "ace-carman",
+            "artist": "yefumm",
             "cmc": 0,
             "colorIdentity": [
                 "B"
@@ -6956,7 +6950,7 @@
             "watermark": "Black"
         },
         {
-            "artist": "Darkcloud013",
+            "artist": "liu-kang",
             "cmc": 0,
             "colorIdentity": [
                 "R"
@@ -7011,5 +7005,5 @@
     "name": "Vastuum",
     "releaseDate": "2018-06-18",
     "type": "expansion",
-    "version": "1.49"
+    "version": "1.53"
 }
