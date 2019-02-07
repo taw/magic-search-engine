@@ -329,9 +329,9 @@ class CompRules:
         raise KeyError('Could not parse rule number: {!r}'.format(key))
 
     def process_references(self, text):
-        for keyword_action, rule_number in self.keyword_actions:
+        for keyword_action, rule_number in self.keyword_actions.items():
             text = text.replace('{{keywordAction:{}}}'.format(keyword_action), rule_number)
-        for keyword_ability, rule_number in self.keyword_abilities:
+        for keyword_ability, rule_number in self.keyword_abilities.items():
             text = text.replace('{{keywordAbility:{}}}'.format(keyword_ability), rule_number)
         return text
 
