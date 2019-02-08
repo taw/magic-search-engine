@@ -84,12 +84,12 @@
                 "White"
             ],
             "flavor": "The shadow of their mounts are a welcome shade, a sign that the nomads are watched over.",
-            "imageName": "caravan sentinel",
+            "imageName": "caravan skyrider",
             "layout": "normal",
             "manaCost": "{2}{W}",
-            "name": "Caravan Sentinel",
+            "name": "Caravan Skyrider",
             "number": "3",
-            "originalText": "Flying\nCaravan Sentinel gets +1/+0 and has vigilance as long as you control another Human.",
+            "originalText": "Flying\nCaravan Skyrider gets +1/+0 and has vigilance as long as you control another Human.",
             "originalType": "Creature \u2014 Human Nomad",
             "power": "2",
             "rarity": "Common",
@@ -97,7 +97,7 @@
                 "Human",
                 "Nomad"
             ],
-            "text": "Flying\nCaravan Sentinel gets +1/+0 and has vigilance as long as you control another Human.",
+            "text": "Flying\nCaravan Skyrider gets +1/+0 and has vigilance as long as you control another Human.",
             "toughness": "1",
             "type": "Creature \u2014 Human Nomad",
             "types": [
@@ -4045,7 +4045,7 @@
             ]
         },
         {
-            "artist": "allen-wei",
+            "artist": "nikusenpa",
             "cmc": 2,
             "colorIdentity": [
                 "R"
@@ -5554,7 +5554,7 @@
             "manaCost": "{W}{U}",
             "name": "Amatun Safekeeper",
             "number": "201",
-            "originalText": "Lifelink\nAt the beginning of your upkeep, scry 1.",
+            "originalText": "Lifelink\nWhenever Amatun Safekeeper attacks, scry 1.",
             "originalType": "Creature \u2014 Human Soldier",
             "power": "1",
             "rarity": "Uncommon",
@@ -5562,7 +5562,7 @@
                 "Human",
                 "Soldier"
             ],
-            "text": "Lifelink\nAt the beginning of your upkeep, scry 1.",
+            "text": "Lifelink\nWhenever Amatun Safekeeper attacks, scry 1.",
             "toughness": "4",
             "type": "Creature \u2014 Human Soldier",
             "types": [
@@ -6130,33 +6130,6 @@
             ]
         },
         {
-            "artist": "Rhads",
-            "cmc": 3,
-            "colorIdentity": [],
-            "colors": [],
-            "flavor": "It has watched its civilization die, it has watched Vastuum decay, and it will keep watching even when nothing is left to watch.",
-            "imageName": "aethanis glider",
-            "layout": "normal",
-            "manaCost": "{2}{C}",
-            "name": "Aethanis Glider",
-            "number": "220",
-            "originalText": "Flying\nWhen Aethanis Glider enters the battlefield, each player may scry 1.",
-            "originalType": "Artifact Creature \u2014 Bird Construct",
-            "power": "3",
-            "rarity": "Common",
-            "subtypes": [
-                "Bird",
-                "Construct"
-            ],
-            "text": "Flying\nWhen Aethanis Glider enters the battlefield, each player may scry 1.",
-            "toughness": "2",
-            "type": "Artifact Creature \u2014 Bird Construct",
-            "types": [
-                "Artifact",
-                "Creature"
-            ]
-        },
-        {
             "artist": "oyo",
             "cmc": 3,
             "colorIdentity": [],
@@ -6166,7 +6139,7 @@
             "layout": "normal",
             "manaCost": "{2}{C}",
             "name": "Aethanis Leylinker",
-            "number": "221",
+            "number": "220",
             "originalText": "Vigilance\n{T}: Add one mana of any color.",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "3",
@@ -6176,6 +6149,32 @@
             ],
             "text": "Vigilance\n{T}: Add one mana of any color.",
             "toughness": "3",
+            "type": "Artifact Creature \u2014 Construct",
+            "types": [
+                "Artifact",
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Quentin Regnes",
+            "cmc": 3,
+            "colorIdentity": [],
+            "colors": [],
+            "flavor": "It has watched its civilization die, it has watched Vastuum decay, and it will keep watching even when nothing is left to watch.",
+            "imageName": "aethanis sentinel",
+            "layout": "normal",
+            "manaCost": "{2}{C}",
+            "name": "Aethanis Sentinel",
+            "number": "221",
+            "originalText": "Flying\nWhen Aethanis Sentinel enters the battlefield, each player may scry 1.",
+            "originalType": "Artifact Creature \u2014 Construct",
+            "power": "3",
+            "rarity": "Common",
+            "subtypes": [
+                "Construct"
+            ],
+            "text": "Flying\nWhen Aethanis Sentinel enters the battlefield, each player may scry 1.",
+            "toughness": "2",
             "type": "Artifact Creature \u2014 Construct",
             "types": [
                 "Artifact",
@@ -6242,15 +6241,15 @@
             "name": "Aether Conducer",
             "number": "224",
             "originalText": "Whenever Aether Conducer attacks, put a charge counter on it, then you may put a creature card with converted mana cost equal to the number of charge counters on Aether Conducer from your hand onto the battlefield tapped and attacking.",
-            "originalType": "Artifact Creature \u2014 Golem",
+            "originalType": "Artifact Creature \u2014 Construct",
             "power": "3",
             "rarity": "Rare",
             "subtypes": [
-                "Golem"
+                "Construct"
             ],
             "text": "Whenever Aether Conducer attacks, put a charge counter on it, then you may put a creature card with converted mana cost equal to the number of charge counters on Aether Conducer from your hand onto the battlefield tapped and attacking.",
             "toughness": "3",
-            "type": "Artifact Creature \u2014 Golem",
+            "type": "Artifact Creature \u2014 Construct",
             "types": [
                 "Artifact",
                 "Creature"
@@ -6267,7 +6266,7 @@
             "name": "Enigmatic Guardian",
             "number": "225",
             "originalText": "Triggered abilities from other sources you control trigger an additional time.\nWhenever an activated ability of a permanent you control is activated, if it isn't a mana ability, copy that ability. You may choose new targets for the copy.",
-            "originalType": "Artifact Creature \u2014 Golem",
+            "originalType": "Artifact Creature \u2014 Construct",
             "power": "6",
             "rarity": "Rare",
             "rulings": [
@@ -6277,11 +6276,11 @@
                 }
             ],
             "subtypes": [
-                "Golem"
+                "Construct"
             ],
             "text": "Triggered abilities from other sources you control trigger an additional time.\nWhenever an activated ability of a permanent you control is activated, if it isn't a mana ability, copy that ability. You may choose new targets for the copy.",
             "toughness": "8",
-            "type": "Artifact Creature \u2014 Golem",
+            "type": "Artifact Creature \u2014 Construct",
             "types": [
                 "Artifact",
                 "Creature"
@@ -6299,7 +6298,7 @@
             "name": "Glaring Guardian",
             "number": "226",
             "originalText": "Flying\nAs Glaring Guardian enters the battlefield, choose a nonland card name.\nPermanents with the chosen name lose all abilities.",
-            "originalType": "Artifact Creature \u2014 Golem",
+            "originalType": "Artifact Creature \u2014 Construct",
             "power": "4",
             "rarity": "Rare",
             "rulings": [
@@ -6309,11 +6308,11 @@
                 }
             ],
             "subtypes": [
-                "Golem"
+                "Construct"
             ],
             "text": "Flying\nAs Glaring Guardian enters the battlefield, choose a nonland card name.\nPermanents with the chosen name lose all abilities.",
             "toughness": "4",
-            "type": "Artifact Creature \u2014 Golem",
+            "type": "Artifact Creature \u2014 Construct",
             "types": [
                 "Artifact",
                 "Creature"
@@ -6383,7 +6382,7 @@
             ]
         },
         {
-            "artist": "Phuoc Quan",
+            "artist": "Datem",
             "cmc": 2,
             "colorIdentity": [],
             "colors": [],
@@ -6518,22 +6517,22 @@
             "name": "Timeless Eradicator",
             "number": "235",
             "originalText": "Timeless Eradicator can't have counters put on it.\nAt the beginning of your end step, destroy target nonland permanent with the lowest converted mana cost.",
-            "originalType": "Artifact Creature \u2014 Golem",
+            "originalType": "Artifact Creature \u2014 Construct",
             "power": "5",
             "rarity": "Rare",
             "subtypes": [
-                "Golem"
+                "Construct"
             ],
             "text": "Timeless Eradicator can't have counters put on it.\nAt the beginning of your end step, destroy target nonland permanent with the lowest converted mana cost.",
             "toughness": "3",
-            "type": "Artifact Creature \u2014 Golem",
+            "type": "Artifact Creature \u2014 Construct",
             "types": [
                 "Artifact",
                 "Creature"
             ]
         },
         {
-            "artist": "antifan",
+            "artist": "Deiv Calviz",
             "cmc": 5,
             "colorIdentity": [],
             "colors": [],
@@ -6558,7 +6557,7 @@
             ]
         },
         {
-            "artist": "Samarskiy",
+            "artist": "Gal Or",
             "cmc": 9,
             "colorIdentity": [],
             "colors": [],
@@ -6567,8 +6566,8 @@
             "manaCost": "{8}{C}",
             "name": "Warden of the Eons",
             "number": "237",
-            "originalText": "When Warden of the Eons enters the battlefield, each opponent skips their next combat phase. After this main phase, there is an additional combat phase followed by an additional main phase.",
-            "originalType": "Artifact Creature \u2014 Golem",
+            "originalText": "When Warden of the Eons enters the battlefield, each opponent skips their next combat phase. After this main phase, untap all other creatures you control then there is an additional combat phase followed by an additional main phase.",
+            "originalType": "Artifact Creature \u2014 Construct",
             "power": "10",
             "rarity": "Rare",
             "rulings": [
@@ -6578,11 +6577,11 @@
                 }
             ],
             "subtypes": [
-                "Golem"
+                "Construct"
             ],
-            "text": "When Warden of the Eons enters the battlefield, each opponent skips their next combat phase. After this main phase, there is an additional combat phase followed by an additional main phase.",
+            "text": "When Warden of the Eons enters the battlefield, each opponent skips their next combat phase. Untap all other creatures you control. After this main phase, there is an additional combat phase followed by an additional main phase.",
             "toughness": "10",
-            "type": "Artifact Creature \u2014 Golem",
+            "type": "Artifact Creature \u2014 Construct",
             "types": [
                 "Artifact",
                 "Creature"
@@ -6599,10 +6598,10 @@
             "manaCost": "{2}",
             "name": "Weathered Artifice",
             "number": "238",
-            "originalText": "{2}: Weathered Artifice becomes a 4/4 Golem artifact creature until end of turn.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
+            "originalText": "{2}: Weathered Artifice becomes a 4/4 Construct artifact creature until end of turn.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
             "originalType": "Artifact",
             "rarity": "Uncommon",
-            "text": "{2}: Weathered Artifice becomes a 4/4 Golem artifact creature until end of turn.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
+            "text": "{2}: Weathered Artifice becomes a 4/4 Construct artifact creature until end of turn.\nSalvage {3} ({3}, Exile this card from your graveyard: Draw a card.)",
             "type": "Artifact",
             "types": [
                 "Artifact"
