@@ -6,8 +6,8 @@ RSpec.describe SetController, type: :controller do
   it "list of sets" do
     get "index"
     assert_response 200
-    assert_select %Q[a:contains("Magic 2015 Core Set")]
-    assert_select %Q[li:contains("Magic 2015 Core Set\n(M15, 284 cards)")]
+    assert_select %Q[a:contains("Magic 2015")]
+    assert_select %Q[li:contains("Magic 2015\n(M15, 284 cards)")]
     assert_equal "Sets - #{APP_NAME}", html_document.title
   end
 
