@@ -1,0 +1,79 @@
+#!/usr/bin/env ruby
+
+require_relative "../search-engine/lib/card_database"
+require "memoist"
+
+class ReportMtgjson4Differences
+  extend Memoist
+
+  def initialize
+    @db = CardDatabase.load
+    @mtgjson = JSON.parse(Pathname("AllSets.json").read)
+  end
+
+  memoize def mtgjson_set_codes
+    @mtgjson.keys.map(&:downcase).to_set
+  end
+
+  memoize def db_set_codes
+    @db.sets.keys.to_set
+  end
+
+  memoize def shared_set_codes
+    db_set_codes & mtgjson_set_codes
+  end
+
+  memoize def db_set_only_codes
+    db_set_codes - mtgjson_set_codes
+  end
+
+  memoize def mtgjson_only_set_codes
+    mtgjson_set_codes - db_set_codes
+  end
+
+  def verify_match(code)
+    db_set = @db.sets[code]
+    mtgjson_set = @mtgjson[code.upcase]
+    if db_set.name != mtgjson_set["name"]
+      puts "#{code} - name - #{db_set.name.inspect} vs #{mtgjson_set["name"].inspect}"
+    end
+    db_names = db_set.printings.map(&:name).to_set
+    mtgjson_names = mtgjson_set["cards"].map{|x| x["name"] }.to_set
+    if db_names != mtgjson_names
+      if db_names.size == mtgjson_names.size
+        puts "#{code} - card names (count same) - #{db_names.size} vs #{mtgjson_names.size}"
+      else
+        puts "#{code} - card names - #{db_names.size} vs #{mtgjson_names.size}"
+      end
+    end
+
+    db_count = db_set.printings.size
+    mtgjson_count = mtgjson_set["cards"].size
+    if db_count != mtgjson_count
+      puts "#{code} - printing count - #{db_count} vs #{mtgjson_count}"
+    end
+
+    # If these are all OK, it's probably fine
+  end
+
+  def call
+    # First, deal with trivial matches
+    shared_set_codes.each do |code|
+      verify_match(code)
+    end
+
+    puts ""
+    db_set_only_codes.sort.each do |code|
+      set = @db.sets[code]
+      puts "#{code} - db only (#{set.printings.size} cards)"
+    end
+
+    puts ""
+    mtgjson_only_set_codes.sort.each do |code|
+      set = @mtgjson[code.upcase]
+      puts "#{code} - mtgjson only (#{set["cards"].size} cards)"
+    end
+  end
+end
+
+ReportMtgjson4Differences.new.call
