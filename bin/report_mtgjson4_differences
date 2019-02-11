@@ -65,13 +65,13 @@ class ReportMtgjson4Differences
     puts ""
     db_set_only_codes.sort.each do |code|
       set = @db.sets[code]
-      puts "#{code} - db only (#{set.printings.size} cards)"
+      puts "#{code} - db only - #{set.name.inspect} - #{set.printings.size} cards"
     end
 
     puts ""
     mtgjson_only_set_codes.sort.each do |code|
       set = @mtgjson[code.upcase]
-      puts "#{code} - mtgjson only (#{set["cards"].size} cards)"
+      puts "#{code} - mtgjson only -  #{set["name"].inspect} - #{set["cards"].size} cards"
     end
   end
 end
