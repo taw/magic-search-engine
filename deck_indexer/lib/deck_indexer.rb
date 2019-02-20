@@ -67,7 +67,7 @@ class DeckIndexer
     raise "All printings from the future" if printings.empty?
 
     # It seems that Masters Edition 2 precons contained Masters Edition cards too
-    return printings["med"] if set_code == "me2" and printings["med"]
+    return printings["me1"] if set_code == "me2" and printings["me1"]
 
     # Promos/Precons are never the right answer
     printings = printings.reject{|sc, _|
