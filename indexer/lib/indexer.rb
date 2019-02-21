@@ -95,7 +95,7 @@ class Indexer
 
       # All cards absolutely need unique numbers
       PatchFixCollectorNumbers,
-      PatchUseMciNumbersAsFallback,
+      PatchUseFallbackNumbers,
       PatchBattlebond,
       PatchVerifyCollectorNumbers,
 
