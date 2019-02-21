@@ -21,14 +21,14 @@ class PatchUseFallbackNumbers < Patch
   # then Forest with lower multiverse id gets 100
   # No idea if that's correct
   def use_fallback_numbers(set_code)
-    mci_numbers = get_fallback_numbers(set_code)
+    fallback_numbers = get_fallback_numbers(set_code)
     cards = cards_by_set[set_code]
 
     if set_code == "ced" or set_code == "cei"
       # Not on Gatherer
       cards.each do |card|
         name = card["name"]
-        card["number"] = mci_numbers[name.downcase].shift
+        card["number"] = fallback_numbers[name.downcase].shift
       end
     else
       mvids = cards.map{|c| [c["name"], c["multiverseid"]]}
@@ -37,8 +37,8 @@ class PatchUseFallbackNumbers < Patch
       cards.each do |card|
         name = card["name"]
         rel_idx = mvids[name].index(card["multiverseid"])
-        raise unless mci_numbers[name.downcase]
-        card["number"] = mci_numbers[name.downcase][rel_idx]
+        raise unless fallback_numbers[name.downcase]
+        card["number"] = fallback_numbers[name.downcase][rel_idx]
       end
     end
   end
