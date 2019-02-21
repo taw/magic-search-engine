@@ -14,7 +14,8 @@ class ExportDecksData
       number: c.number,
       foil: c.foil,
       count: n,
-    }
+      multiverseid: c.main_front.multiverseid,
+    }.compact
   end
 
   def call
