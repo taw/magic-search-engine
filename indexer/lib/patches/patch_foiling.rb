@@ -61,7 +61,7 @@ class PatchFoiling < Patch
 
     each_set do |set|
       foiling = case set["code"]
-      when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "phho", "plpa", "pjgp", "ppro", "pgtw", "pwor", "prel", "pfnm", "pwos", "ppre"
+      when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "hho", "plpa", "pjgp", "ppro", "pgtw", "pwor", "prel", "pfnm", "pwos", "ppre"
         "foilonly"
       when "ced", "cei", "chr", "pgru", "palp", "pdrc", "pelp", "plgm", "ugin", "pcel", "van", "s99", "mgb"
         "nonfoil"

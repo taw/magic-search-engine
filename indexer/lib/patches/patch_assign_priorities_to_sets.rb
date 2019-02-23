@@ -23,6 +23,8 @@ class PatchAssignPrioritiesToSets < Patch
       -1
     when "grn"
       1
+    when "med"
+      2
     else
       # Errata sets are just a way to apply Oracle erratas without creating any cards
       if set["type"] == "errata"
