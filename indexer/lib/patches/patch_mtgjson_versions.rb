@@ -78,6 +78,10 @@ class PatchMtgjsonVersions < Patch
       #   }
       # end
     end
+
+    # Remove sets without cards (v4 token only sets)
+    nonempty_sets = @cards.values.flatten(1).map{|x| x["set"] }.to_set
+    @sets.delete_if{|s| !nonempty_sets.include?(s) }
   end
 
   def cleanup_unicode_punctuation(text)
