@@ -14,7 +14,6 @@ db = CardDatabase.load
 
     path.open("w") do |fh|
       cards.each do |c|
-        # fh.puts [c.number, c.name].join("\t")
         fh.puts [c.number, c.name, c.multiverseid].join("\t")
       end
     end
