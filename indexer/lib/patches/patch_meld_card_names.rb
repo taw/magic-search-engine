@@ -8,7 +8,12 @@ class PatchMeldCardNames < Patch
       "Chittering Host",
     ]
     melded_cards.each do |melded|
-      part_names = @cards[melded][0]["names"] - [melded]
+      card = @cards[melded]
+      unless card
+        warn "Card #{melded} does not exist"
+        next
+      end
+      part_names = card[0]["names"] - [melded]
       part_names.each do |part_name|
         @cards[part_name].each do |part_printing|
           part_printing["names"] -= (part_names - [part_name])

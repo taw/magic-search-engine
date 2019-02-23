@@ -36,6 +36,11 @@ class PatchPrintSheets < Patch
     cards = cards_by_set[set_code]
     checklist = checklist_for(set_code)
 
+    unless cards
+      warn "Set #{set_code} does not exist"
+      return
+    end
+
     if cards.size != checklist.size
       warn "Can't connect print sheets for #{set_code} - #{cards.size} cards and #{checklist.size} checklist entries"
       return
