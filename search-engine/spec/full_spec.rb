@@ -3,7 +3,7 @@ describe "Full Database Test" do
 
   it "stats" do
     db.number_of_cards.should eq(19249)
-    db.number_of_printings.should eq(38233)
+    db.number_of_printings.should eq(38249)
   end
 
   it "block codes" do
@@ -156,7 +156,7 @@ describe "Full Database Test" do
     assert_search_results "t:planeswalker lastprint<=roe", "Chandra Ablaze", "Sarkhan the Mad"
     assert_search_results "t:planeswalker lastprint<=2011",
       "Ajani Goldmane", "Ajani Vengeant", "Chandra Ablaze", "Elspeth Tirel",
-      "Nissa Revane", "Sarkhan the Mad", "Sorin Markov", "Tezzeret, Agent of Bolas"
+      "Nissa Revane", "Sarkhan the Mad"
   end
 
   it "alt Rebecca Guay" do
