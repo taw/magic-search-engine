@@ -212,7 +212,7 @@ class PackFactory
     when "tsl"
       # TSL packs always have exactly one DFC, replacing a common slot
       #TODO make sure this follows https://web.archive.org/web/20170427075406/thegraymerchants.com/?p=836
-      build_pack(set_code, {tsl_dfc: 1, sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1})
+      build_pack(set_code, {tsl_dfc: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1})
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this
