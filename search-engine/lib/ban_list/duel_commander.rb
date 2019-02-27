@@ -129,4 +129,11 @@ BanList.for_format("duel commander") do
     "http://www.duelcommander.com/2018/05/classic-may-2018-rules-banlist-update/",
     "Zurgo Bellstriker" => "restricted",
   )
+
+  change(
+    "2019-03-01",
+    "http://www.duelcommander.com/2019/02/february-2019-rules-banned-restricted-update/",
+    "Prime Speaker Vannifar" => "restricted",
+    "Baral, Chief of Compliance" => "restricted",
+  )
 end
