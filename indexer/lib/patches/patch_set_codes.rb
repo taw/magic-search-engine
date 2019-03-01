@@ -10,7 +10,7 @@ class PatchSetCodes < Patch
     end
 
     each_set do |set|
-      if %W[cm1 cma mps mps_akh cp1 cp2 cp3 pgtw pwpn].include?(set["official_code"])
+      if %W[cm1 cma mps mp2 cp1 cp2 cp3 pgtw pwpn].include?(set["official_code"])
         set.delete("mci_code")
       end
 

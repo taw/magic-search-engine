@@ -110,7 +110,7 @@ class PackFactory
       "rtr", "gtc",
       "ths", "bng",
       "ktk", "dtk",
-      "tpr", "med", "me2", "me3", "me4",
+      "tpr", "me1", "me2", "me3", "me4",
       # They have DFCs but no separate slot for DFCs
       "ori", "xln", "rix",
       # CardSheetFactory is aware that mastrepieces go onto foil sheet, wo don't need to do anything

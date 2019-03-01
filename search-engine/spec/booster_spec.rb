@@ -9,7 +9,7 @@ describe "is:booster" do
         !%W[ced cei tsts itp s00 cp1 cp2 cp3 w16 w17 gk1].include?(set.code)
       )
       should_be_included_in_boosters = (
-        %W[tsb exp mps mps_akh].include?(set.code)
+        %W[tsb exp mps mp2].include?(set.code)
       )
       if should_have_boosters or should_be_included_in_boosters
         set.should have_boosters, "#{set_pp} should have boosters"

@@ -1,0 +1,99 @@
+#!/usr/bin/env ruby
+
+require_relative "../search-engine/lib/card_database"
+require "memoist"
+
+class ReportMtgjson4Differences
+  extend Memoist
+
+  def initialize
+    @db = CardDatabase.load
+    @mtgjson = JSON.parse(Pathname("AllSets.json").read)
+  end
+
+  memoize def mtgjson_set_codes
+    @mtgjson.keys.map(&:downcase).to_set
+  end
+
+  memoize def db_set_codes
+    @db.sets.keys.to_set
+  end
+
+  memoize def shared_set_codes
+    db_set_codes & mtgjson_set_codes
+  end
+
+  memoize def db_set_only_codes
+    db_set_codes - mtgjson_set_codes
+  end
+
+  memoize def mtgjson_only_set_codes
+    mtgjson_set_codes - db_set_codes
+  end
+
+  def verify_match(code)
+    db_set = @db.sets[code]
+    mtgjson_set = @mtgjson[code.upcase]
+    if db_set.name != mtgjson_set["name"]
+      puts "#{code} - name - #{db_set.name.inspect} vs #{mtgjson_set["name"].inspect}"
+    end
+
+    db_names = db_set.printings.map(&:name).to_set
+    mtgjson_names = mtgjson_set["cards"].map{|x| x["name"] }.to_set
+    if db_names != mtgjson_names
+      if db_names.size == mtgjson_names.size
+        puts "#{code} - card names (count same) - #{db_names.size} vs #{mtgjson_names.size}"
+      else
+        puts "#{code} - card names - #{db_names.size} vs #{mtgjson_names.size}"
+      end
+      return
+    end
+
+    db_count = db_set.printings.size
+    mtgjson_count = mtgjson_set["cards"].size
+    if db_count != mtgjson_count
+      puts "#{code} - printing count - #{db_count} vs #{mtgjson_count}"
+      return
+    end
+
+    db_numbers = db_set.printings.map{|c| [c.number, c.name] }.to_set
+    mtgjson_numbers = mtgjson_set["cards"].map{|c| [c["number"], c["name"]] }.to_set
+
+    # Most common problem is mtgjson having non-unique numbers for multipart cards
+    if db_numbers != mtgjson_numbers
+      db_numbers_i = db_set.printings.map{|c| [c.number.to_i, c.name] }.to_set
+      mtgjson_numbers_i = mtgjson_set["cards"].map{|c| [c["number"].to_i, c["name"]] }.to_set
+
+      if db_numbers_i == mtgjson_numbers_i
+        puts "#{code} - card numbers (suffix issues only)"
+      else
+        matching = (mtgjson_numbers & db_numbers).size
+        puts "#{code} - card numbers (#{matching}/#{db_numbers.size} match)"
+      end
+    end
+
+
+    # If these are all OK, it's probably fine
+  end
+
+  def call
+    # First, deal with trivial matches
+    shared_set_codes.each do |code|
+      verify_match(code)
+    end
+
+    puts ""
+    db_set_only_codes.sort.each do |code|
+      set = @db.sets[code]
+      puts "#{code} - db only - #{set.name.inspect} - #{set.printings.size} cards"
+    end
+
+    puts ""
+    mtgjson_only_set_codes.sort.each do |code|
+      set = @mtgjson[code.upcase]
+      puts "#{code} - mtgjson only -  #{set["name"].inspect} - #{set["cards"].size} cards"
+    end
+  end
+end
+
+ReportMtgjson4Differences.new.call

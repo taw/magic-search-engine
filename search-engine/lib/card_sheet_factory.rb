@@ -100,9 +100,9 @@ class CardSheetFactory
     when "aer"
       masterpiece_sheet(@db.sets["mps"], 31..54)
     when "akh"
-      masterpiece_sheet(@db.sets["mps_akh"], 1..30)
+      masterpiece_sheet(@db.sets["mp2"], 1..30)
     when "hou"
-      masterpiece_sheet(@db.sets["mps_akh"], 31..54)
+      masterpiece_sheet(@db.sets["mp2"], 31..54)
     else
       nil
     end

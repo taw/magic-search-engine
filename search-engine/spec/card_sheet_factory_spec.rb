@@ -42,14 +42,14 @@ describe CardSheetFactory do
 
     context "akh" do
       let(:set_code) { "akh" }
-      let(:masterpieces_set_code) { "mps_akh" }
+      let(:masterpieces_set_code) { "mp2" }
       let(:masterpieces_range) { 1..30 }
       it { masterpieces.should eq(expected_masterpieces) }
     end
 
     context "hou" do
       let(:set_code) { "hou" }
-      let(:masterpieces_set_code) { "mps_akh" }
+      let(:masterpieces_set_code) { "mp2" }
       let(:masterpieces_range) { 31..54 }
       it { masterpieces.should eq(expected_masterpieces) }
     end
