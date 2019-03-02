@@ -3,7 +3,7 @@ class PatchConspiracyWatermarks < Patch
     each_printing do |card|
       next unless card["set_code"] == "cns" or card["set_code"] == "cn2"
       next unless draft?(card)
-      raise "Already has a watermark" if card["watermark"]
+      warn "Already has a watermark #{card["watermark"]}" if card["watermark"]
       card["watermark"] = "draft"
     end
   end
