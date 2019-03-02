@@ -44,6 +44,10 @@ class PatchMtgjsonVersions < Patch
         card["flavor"] = card.delete("flavorText")
       end
 
+      if card["borderColor"]
+        card["border"] = card.delete("borderColor")
+      end
+
       # Renamed in v4
       card["multiverseid"] ||= card.delete("multiverseId")
       if card.has_key?("isReserved")

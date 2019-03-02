@@ -137,7 +137,6 @@ class Indexer
       PatchEmnCardNumbers,
       PatchItpRqsRarity,
       PatchDeleteIncompleteCards,
-      PatchClashPacksRarity,
       PatchAeLigature,
       PatchFlipCardManaCost,
 
