@@ -6,7 +6,7 @@ class DeckDatabase
   def resolve_card(count, set_code, card_number, foil=false)
     set = @db.sets[set_code] or raise "Set not found #{set_code}"
     printing = set.printings.find{|cp| cp.number == card_number}
-    raise "Card not found #{sc}/#{number}" unless printing
+    raise "Card not found #{set_code}/#{card_number}" unless printing
     [count, PhysicalCard.for(printing, !!foil)]
   end
 
