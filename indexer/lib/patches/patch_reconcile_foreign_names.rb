@@ -41,7 +41,11 @@ class PatchReconcileForeignNames < Patch
       set_code = printing["set_code"]
       foreign_names_data = printing.delete("foreignNames") || printing.delete("foreignData") || next
       foreign_names_data.each do |e|
-        language_code = language_name_to_code.fetch(e["language"])
+        language_code = language_name_to_code[e["language"]]
+        unless language_code
+          warn "Unknown language: #{e["language"]}"
+          next
+        end
         foreign_name = e["name"].gsub("&nbsp;", " ").gsub("\u00a0", " ").sub(/ —\z/, "")
         next if foreign_name == ""
         raw_data[language_code] ||= {}
