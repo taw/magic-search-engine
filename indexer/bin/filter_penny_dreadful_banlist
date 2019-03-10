@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require_relative "../../search-engine/lib/card_database"
+
+path = Pathname(__dir__) + "../../index/penny_dreadful_legal_cards.txt"
+cards_to_check = path.readlines.map(&:chomp)
+
+db = CardDatabase.load
+actual = db.search("f:pd").printings.map(&:name).to_set
+
+filtered = cards_to_check.select{|c| actual.include?(c) or actual.include? c.split("//")[0].strip }
+
+path.open("w") do |fh|
+  fh.puts *filtered
+end
