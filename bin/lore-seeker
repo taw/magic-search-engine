@@ -4,9 +4,9 @@
 
 Usage:
   lore-seeker [options]
-  lore-seeker discord [<command>]
+  lore-seeker discord [<command>...]
   lore-seeker name-check
-  lore-seeker restart
+  lore-seeker stop
   lore-seeker -h | --help
 
 Options:
@@ -58,11 +58,6 @@ GLOBAL_KEYS = [
 ]
 CONFIG_PATH = pathlib.Path('/var/www/loreseeker.fenhl.net/config.json')
 PIDFILE_PATH = pathlib.Path('/var/www/loreseeker.fenhl.net/pidfile')
-
-def bot_cmd(command_text):
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-        sock.connect(('127.0.0.1', 18806))
-        sock.sendall(command_text.encode('utf-8'))
 
 def cmd(args, *, announce=False, wait=True, check=True, **kwargs):
     if announce:
@@ -140,8 +135,7 @@ def run(*, do_name_check=True, path=None, port=18803, verbose=False):
         path = gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path
     try:
         cmd(['git', 'reset-to-remote'], cwd=str(path), announce=verbose)
-        with contextlib.suppress(ConnectionRefusedError): # no need to reload Discord bot's card database if the bot isn't running
-            bot_cmd('reload')
+        subprocess.run(['lore-seeker-discord', 'reload'])
         #if do_name_check:
         #    name_check(path, verbose=verbose)
         cmd(['rake', 'rules:update', 'index'], cwd=str(path), announce=verbose)
@@ -166,21 +160,21 @@ def run(*, do_name_check=True, path=None, port=18803, verbose=False):
         lore_seeker.wait()
         if lore_seeker.returncode != 0 and PIDFILE_PATH.exists():
             notify_crash()
+            return False
+        else:
+            return True
 
 if __name__ == '__main__':
     arguments = docopt.docopt(__doc__)
     if arguments['discord']:
-        if arguments['<command>']:
-            bot_cmd(arguments['<command>'])
-        else:
-            # quick alias for starting the Discord bot (https://github.com/fenhl/lore-seeker-discord)
-            sys.exit(subprocess.run(['lore-seeker-discord']).returncode)
+        # quick alias for starting the Discord bot (https://github.com/fenhl/lore-seeker-discord)
+        sys.exit(subprocess.run(['lore-seeker-discord', *arguments['<command>']]).returncode)
     elif arguments['name-check']:
         sys.exit(int(not name_check(verbose=not arguments['--quiet'])))
-    elif arguments['restart']:
+    elif arguments['stop']:
         with PIDFILE_PATH.open() as pidfile:
             pid = int(pidfile.read().strip())
-        PIDFILE_PATH.unlink() # remove pidfile to silence crash notification
+        PIDFILE_PATH.unlink() # remove pidfile to silence crash notification and prevent automatic restart
         os.kill(pid, signal.SIGTERM)
     else:
         while True:
@@ -188,5 +182,6 @@ if __name__ == '__main__':
                 path = pathlib.Path(arguments['--path'])
             else:
                 path = None
-            run(path=path, port=int(arguments['--port']), verbose=not arguments['--quiet'])
+            if run(path=path, port=int(arguments['--port']), verbose=not arguments['--quiet']):
+                break
             time.sleep(10)

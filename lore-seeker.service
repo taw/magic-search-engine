@@ -1,0 +1,15 @@
+[Unit]
+Description=Lore Seeker search engine
+Documentation=https://github.com/fenhl/lore-seeker
+After=network.target
+
+[Service]
+Restart=always
+ExecStart=/opt/git/github.com/fenhl/lore-seeker/stage/bin/lore-seeker
+ExecStop=/opt/git/github.com/fenhl/lore-seeker/stage/bin/lore-seeker stop
+User=fenhl
+Group=fenhl
+WorkingDirectory=/opt/git/github.com/fenhl/lore-seeker/stage
+
+[Install]
+WantedBy=multi-user.target
