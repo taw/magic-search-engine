@@ -58,8 +58,9 @@ GLOBAL_KEYS = [
     'reserved',
     'rulings'
 ]
-CONFIG_PATH = pathlib.Path('/var/www/loreseeker.fenhl.net/config.json')
-PIDFILE_PATH = pathlib.Path('/var/www/loreseeker.fenhl.net/pidfile')
+BASE_PATH = pathlib.Path('/usr/local/share/fenhl/lore-seeker')
+CONFIG_PATH = BASE_PATH / 'config.json'
+PIDFILE_PATH = BASE_PATH / 'pidfile'
 
 def cmd(args, *, announce=False, wait=True, check=True, **kwargs):
     if announce:
@@ -155,7 +156,7 @@ def run(*, do_name_check=True, path=None, port=18803, verbose=False):
     except Exception as e:
         notify_crash(e)
         raise
-    with open('/var/www/loreseeker.fenhl.net/access.log', 'a') as access_log:
+    with (BASE_PATH / 'access.log').open('a') as access_log:
         lore_seeker = cmd(['bundle', 'exec', 'rails', 'server', '-p', str(port)], env=env, cwd=str(path / 'frontend'), stdout=access_log, stderr=access_log, wait=False, announce=verbose)
         with PIDFILE_PATH.open('w') as pidfile:
             print(str(lore_seeker.pid), file=pidfile)
