@@ -137,7 +137,9 @@ def run(*, do_name_check=True, path=None, port=18803, verbose=False):
     if path is None:
         path = gitdir.host.github.GitHub().repo('fenhl/lore-seeker').stage_path
     try:
-        cmd(['git', 'reset-to-remote'], cwd=str(path), announce=verbose)
+        # git reset-to-remote
+        cmd(['git', 'fetch', 'origin'], cwd=str(path), announce=verbose)
+        cmd(['git', 'reset', '--hard', 'origin/lore-seeker'], cwd=str(path), announce=verbose)
         subprocess.run(['lore-seeker-discord', 'reload'])
         #if do_name_check:
         #    name_check(path, verbose=verbose)
