@@ -94,10 +94,18 @@ def write_trice_zipfile(z):
             set_info = json.load(set_f)
         if not set_info.get('custom', False):
             continue # only include custom sets in the download, real sets are already provided by Cockatrice
+        """
         with z.open('customSets/{}.xml'.format(set_info['code']), 'w') as cards_xml_f:
             cards_xml(set_info).write(cards_xml_f, encoding='utf-8', xml_declaration=True)
         with z.open('customSets/{}-tokens.xml'.format(set_info['code']), 'w') as tokens_xml_f:
             tokens_xml(set_info).write(tokens_xml_f, encoding='utf-8', xml_declaration=True)
+        """ #TODO use this instead once Debian stable has Python 3.6
+        buf = io.BytesIO()
+        cards_xml(set_info).write(buf, encoding='utf-8', xml_declaration=True)
+        z.writestr('customSets/{}.xml'.format(set_info['code']), buf.getvalue())
+        buf = io.BytesIO()
+        tokens_xml(set_info).write(buf, encoding='utf-8', xml_declaration=True)
+        z.writestr('customSets/{}-tokens.xml'.format(set_info['code']), buf.getvalue())
 
 if __name__ == '__main__':
     with zipfile.ZipFile('frontend/public/trice.zip', 'w', zipfile.ZIP_DEFLATED) as z:
