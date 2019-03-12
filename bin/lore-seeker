@@ -61,6 +61,7 @@ GLOBAL_KEYS = [
 BASE_PATH = pathlib.Path('/usr/local/share/fenhl/lore-seeker')
 CONFIG_PATH = BASE_PATH / 'config.json'
 PIDFILE_PATH = BASE_PATH / 'pidfile'
+DISCORD_BIN = pathlib.Path('/opt/git/github.com/fenhl/lore-seeker-discord/master/target/release/lore-seeker-discord')
 
 def cmd(args, *, announce=False, wait=True, check=True, **kwargs):
     if announce:
@@ -140,7 +141,7 @@ def run(*, do_name_check=True, path=None, port=18803, verbose=False):
         # git reset-to-remote
         cmd(['git', 'fetch', 'origin'], cwd=str(path), announce=verbose)
         cmd(['git', 'reset', '--hard', 'origin/lore-seeker'], cwd=str(path), announce=verbose)
-        subprocess.run(['lore-seeker-discord', 'reload'])
+        subprocess.run([str(DISCORD_BIN), 'reload'])
         #if do_name_check:
         #    name_check(path, verbose=verbose)
         cmd(['rake', 'rules:update', 'index'], cwd=str(path), announce=verbose)
@@ -173,7 +174,7 @@ if __name__ == '__main__':
     arguments = docopt.docopt(__doc__)
     if arguments['discord']:
         # quick alias for starting the Discord bot (https://github.com/fenhl/lore-seeker-discord)
-        sys.exit(subprocess.run(['lore-seeker-discord', *arguments['<command>']]).returncode)
+        sys.exit(subprocess.run([str(DISCORD_BIN), *arguments['<command>']]).returncode)
     elif arguments['name-check']:
         sys.exit(int(not name_check(verbose=not arguments['--quiet'])))
     elif arguments['stop']:
