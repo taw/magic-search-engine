@@ -61,7 +61,7 @@ GLOBAL_KEYS = [
 BASE_PATH = pathlib.Path('/usr/local/share/fenhl/lore-seeker')
 CONFIG_PATH = BASE_PATH / 'config.json'
 PIDFILE_PATH = BASE_PATH / 'pidfile'
-DISCORD_BIN = pathlib.Path('/opt/git/github.com/fenhl/lore-seeker-discord/master/target/release/lore-seeker-discord')
+DISCORD_BIN = pathlib.Path('/opt/git/github.com/fenhl/lore-seeker-discord/master/target/release/lore-seeker')
 
 def cmd(args, *, announce=False, wait=True, check=True, **kwargs):
     if announce:
