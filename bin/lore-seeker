@@ -18,6 +18,8 @@ Options:
 
 import sys
 
+sys.path.append('/opt/py')
+
 import contextlib
 import docopt
 import gitdir.host.github
