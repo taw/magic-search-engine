@@ -145,7 +145,7 @@ def run(*, do_name_check=True, path=None, port=18803, verbose=False):
         #if do_name_check:
         #    name_check(path, verbose=verbose)
         cmd(['rake', 'rules:update', 'index'], cwd=str(path), announce=verbose)
-        cmd(['/opt/venv/py3.7/bin/python', 'bin/make-trice-download'], cwd=str(path), announce=verbose)
+        cmd(['python3', 'bin/make-trice-download'], cwd=str(path), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(path / 'search-engine'), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(path / 'frontend'), announce=verbose)
         cmd(['rake', 'db:migrate'], cwd=str(path / 'frontend'), announce=verbose)

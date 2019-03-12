@@ -43,7 +43,7 @@ def cards_xml(set_info):
         card_elt = et.SubElement(cards, 'card')
         card_elt.text = '\n'
         et.SubElement(card_elt, 'name').text = card['name']
-        et.SubElement(card_elt, 'set', picURL=f'https://loreseeker.fenhl.net/cards/{set_info["code"].lower()}/{card["number"]}.png').text = set_info['code']
+        et.SubElement(card_elt, 'set', picURL='https://loreseeker.fenhl.net/cards/{}/{}.png'.format(set_info['code'].lower(), card["number"])).text = set_info['code']
         if len(card.get('names', [card['name']])) > 1:
             for alt_card in card['names'][1:]:
                 et.SubElement(card_elt, 'related').text = alt_card
@@ -52,7 +52,7 @@ def cards_xml(set_info):
         et.SubElement(card_elt, 'manacost').text = card.get('manaCost', '')
         et.SubElement(card_elt, 'cmc').text = str(card.get('cmc', 0))
         if 'power' in card:
-            et.SubElement(card_elt, 'pt').text = f'{card["power"]}/{card["toughness"]}'
+            et.SubElement(card_elt, 'pt').text = '{}/{}'.format(card['power'], card['toughness'])
         if 'loyalty' in card:
             et.SubElement(card_elt, 'loyalty').text = str(card['loyalty'])
         et.SubElement(card_elt, 'type').text = card['type']
@@ -69,7 +69,7 @@ def cards_xml(set_info):
         if 'names' in card and card['names'][0] != card['name']:
             # back face, don't allow in decks
             et.SubElement(card_elt, 'token').text = '1'
-        if 'Hideaway' in card.get('text', '') or re.search(f'{card["name"]} enters the battlefield tapped( with [^ ]+ [^ ]+ counters? on it)?\\.', card.get('text', '')):
+        if 'Hideaway' in card.get('text', '') or re.search('{} enters the battlefield tapped( with [^ ]+ [^ ]+ counters? on it)?\\.'.format(card['name']), card.get('text', '')):
             # always enters the battlefield tapped
             et.SubElement(card_elt, 'cipt').text = '1'
         for card_prop in card_elt:
@@ -94,9 +94,9 @@ def write_trice_zipfile(z):
             set_info = json.load(set_f)
         if not set_info.get('custom', False):
             continue # only include custom sets in the download, real sets are already provided by Cockatrice
-        with z.open(f'customSets/{set_info["code"]}.xml', 'w') as cards_xml_f:
+        with z.open('customSets/{}.xml'.format(set_info['code']), 'w') as cards_xml_f:
             cards_xml(set_info).write(cards_xml_f, encoding='utf-8', xml_declaration=True)
-        with z.open(f'customSets/{set_info["code"]}-tokens.xml', 'w') as tokens_xml_f:
+        with z.open('customSets/{}-tokens.xml'.format(set_info['code']), 'w') as tokens_xml_f:
             tokens_xml(set_info).write(tokens_xml_f, encoding='utf-8', xml_declaration=True)
 
 if __name__ == '__main__':
