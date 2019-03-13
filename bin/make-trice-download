@@ -44,7 +44,7 @@ def cards_xml(set_info):
         card_elt = et.SubElement(cards, 'card')
         card_elt.text = '\n'
         et.SubElement(card_elt, 'name').text = card['name']
-        et.SubElement(card_elt, 'set', picURL='https://loreseeker.fenhl.net/cards/{}/{}.png'.format(set_info['code'].lower(), card["number"])).text = set_info['code']
+        et.SubElement(card_elt, 'set', picURL='https://lore-seeker.cards/cards/{}/{}.png'.format(set_info['code'].lower(), card["number"])).text = set_info['code']
         if len(card.get('names', [card['name']])) > 1:
             for alt_card in card['names'][1:]:
                 et.SubElement(card_elt, 'related').text = alt_card

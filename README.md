@@ -2,7 +2,7 @@ Search engine for official and custom Magic: The Gathering cards.
 
 ### Ruby on Rails frontend
 
-To run frontend like https://loreseeker.fenhl.net/
+To run frontend like https://lore-seeker.cards/
 
     $ cd frontend
     $ bundle
