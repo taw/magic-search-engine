@@ -1,5 +1,7 @@
 server {
+    server_name lore-seeker.cards;
     server_name loreseeker.fenhl.net;
+    server_name laire.fenhl.net;
 
     listen 80;
     listen [::]:80;
@@ -8,7 +10,9 @@ server {
 }
 
 server {
+    server_name lore-seeker.cards;
     server_name loreseeker.fenhl.net;
+    server_name laire.fenhl.net;
 
     listen 443 ssl;
     listen [::]:443 ssl;
@@ -30,7 +34,7 @@ server {
     error_page 500 502 503 504 /error/50x.html;
 
     location /error/ {
-        root /var/www/loreseeker.fenhl.net;
+        root /usr/local/share/fenhl/lore-seeker/static;
         internal;
     }
 }
