@@ -10,7 +10,7 @@ class User < ApplicationRecord
   end
 
   def profile_data
-    user_path = Pathname.new("/var/www/loreseeker.fenhl.net/profiles").children.flat_map do |guild_dir|
+    user_path = Pathname.new("/usr/local/share/fenhl/lore-seeker/profiles").children.flat_map do |guild_dir|
       user_path = guild_dir + "#{self.uid}.json"
       if user_path.exist?
         [user_path]
