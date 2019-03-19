@@ -26,6 +26,7 @@ class ExportDecksData
         type: deck.type,
         set_code: deck.set_code,
         set_name: deck.set_name,
+        release_date: deck.release_date,
         cards: deck.cards.map{|n,c| export_card(n, c) },
         sideboard: deck.cards.map{|n,c| export_card(n, c) },
       }

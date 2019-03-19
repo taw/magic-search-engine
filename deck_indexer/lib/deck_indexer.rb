@@ -136,9 +136,10 @@ class DeckIndexer
       type: deck["type"],
       set_name: deck["set_name"],
       set_code: deck["set_code"],
+      release_date: deck["release_date"],
       cards: cards,
       sideboard: sideboard,
-    }
+    }.compact
   end
 
   def call
