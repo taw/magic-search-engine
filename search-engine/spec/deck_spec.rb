@@ -58,6 +58,14 @@ describe Deck do
     end
   end
 
+  it "precon decks have dates matching set release dates" do
+    precon_sets.each do |set_code, set|
+      set.decks.each do |deck|
+        deck.release_date.should eq set.release_date
+      end
+    end
+  end
+
   it "cards in precon sets have no off-set cards" do
     precon_sets.each do |set_code, set|
       # Contains some Amonkhet cards

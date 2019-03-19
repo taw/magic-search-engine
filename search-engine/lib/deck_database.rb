@@ -16,10 +16,13 @@ class DeckDatabase
       set = @db.sets[set_code] or raise "Set not found #{set_code}"
       cards = deck["cards"].map{|c| resolve_card(*c) }
       sideboard = deck["sideboard"].map{|c| resolve_card(*c) }
+      date = deck["release_date"]
+      date = date ? Date.parse(date) : nil
       deck = Deck.new(
         set,
         deck["name"],
         deck["type"],
+        date,
         cards,
         sideboard,
       )
