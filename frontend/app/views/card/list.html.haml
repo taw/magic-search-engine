@@ -1,6 +1,6 @@
 %ul#search-result
   - if @search.present?
-    - @cards.each do |card|
+    - @cards.each do |card, printings|
       %li
         = link_to_card(card) do
           = card.name

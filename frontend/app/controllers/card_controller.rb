@@ -87,7 +87,6 @@ class CardController < ApplicationController
 
   def list
     @search = (params[:q] || "").strip
-    page = [1, params[:page].to_i].max
 
     unless @search.present?
       @empty_page = true
@@ -96,7 +95,7 @@ class CardController < ApplicationController
     end
 
     @title = @search
-    query = Query.new(@search)
+    query = Query.new(@search, params[:random_seed])
     results = $CardDatabase.search(query)
     @cards = results.card_groups.map do |printings|
       choose_best_printing(printings)
