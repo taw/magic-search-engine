@@ -2,4 +2,5 @@
   - if @search.present?
     - @cards.each do |card|
       %li
-        = card
+        = link_to_card(card) do
+          = card.name
