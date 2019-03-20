@@ -98,7 +98,9 @@ class CardController < ApplicationController
     @title = @search
     query = Query.new(@search)
     results = $CardDatabase.search(query)
-    @cards = results.card_names
+    @cards = results.card_groups.map do |printings|
+      choose_best_printing(printings)
+    end
   end
 
   private
