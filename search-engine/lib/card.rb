@@ -175,7 +175,7 @@ class Card
   end
 
   def hard_normalize(s)
-    -UnicodeUtils.downcase(UnicodeUtils.nfd(s).gsub(/\p{Mn}/, ""))
+    -s.unicode_normalize(:nfd).gsub(/\p{Mn}/, "").downcase
   end
 
   def smart_convert_powtou(val)
