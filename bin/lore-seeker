@@ -145,7 +145,7 @@ def run(*, do_name_check=True, path=None, port=18803, verbose=False):
         cmd(['python3', 'bin/make-trice-download'], cwd=str(path), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(path / 'search-engine'), announce=verbose)
         cmd(['bundle', 'install'], cwd=str(path / 'frontend'), announce=verbose)
-        cmd(['rake', 'db:migrate'], cwd=str(path / 'frontend'), announce=verbose)
+        cmd(['rake', 'db:migrate', 'assets:precompile'], cwd=str(path / 'frontend'), announce=verbose)
         with CONFIG_PATH.open() as config_f:
             config = json.load(config_f)
         env = {
