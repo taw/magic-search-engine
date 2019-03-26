@@ -18,7 +18,9 @@ server {
 
     add_header Strict-Transport-Security "max-age=604800; includeSubDomains" always;
 
-    location / {
+    try_files $uri/index.html $uri @lore_seeker;
+
+    location @lore_seeker {
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-Proto https;
         proxy_set_header X-Forwarded-Port 443;
