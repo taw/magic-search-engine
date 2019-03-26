@@ -65,7 +65,7 @@ class QueryTokenizer
         ]xi)
         begin
           # Denormalization is highly questionable here
-          rxstr = UnicodeUtils.downcase(UnicodeUtils.nfd(s[2]).gsub(/\p{Mn}/, ""))
+          rxstr = s[2].unicode_normalize(:nfd).gsub(/\p{Mn}/, "").downcase
           rx = Regexp.new(rxstr, Regexp::IGNORECASE)
           tokens << [:test, ConditionForeignRegexp.new(s[1], rx)]
         rescue RegexpError => e

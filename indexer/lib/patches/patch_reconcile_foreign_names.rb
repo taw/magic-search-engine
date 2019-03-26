@@ -1,6 +1,3 @@
-# This is needed by old ruby versions, we can probably get rid of that and just require minimum version
-require "unicode_utils"
-
 class PatchReconcileForeignNames < Patch
   def language_name_to_code
     @language_name_to_code ||= {
@@ -66,10 +63,10 @@ class PatchReconcileForeignNames < Patch
         elsif names.size == 2 and names.include?(card_name)
           # English names are often mistakenly listed by Gatherer
           [(names.keys - [card_name])[0]]
-        elsif names.keys.map{|s| UnicodeUtils.upcase(s)}.uniq.size == 1
+        elsif names.keys.map(&:upcase).uniq.size == 1
           # If names differ only by capitalization, take the most capitalized name
           [names.keys.max_by{|s|
-            s.chars.count{|c| UnicodeUtils.upcase(c) == c}
+            s.chars.count{|c| c.upcase == c}
           }]
         elsif names.keys.any?{|n| n =~ /\(/}
           # Pointless A (A/B) for split cards

@@ -1,7 +1,7 @@
 source "https://rubygems.org"
+ruby ">= 2.3"
 gem "rake"
 gem "damerau-levenshtein"
-gem "unicode_utils"
 gem "nokogiri"
 gem "pry"
 gem "rspec", require: false, group: :test

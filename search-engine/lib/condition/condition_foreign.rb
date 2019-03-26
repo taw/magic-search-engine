@@ -1,4 +1,3 @@
-require "unicode_utils"
 class ConditionForeign < ConditionSimple
   def initialize(lang, query)
     @lang = lang.downcase
@@ -39,6 +38,6 @@ class ConditionForeign < ConditionSimple
   private
 
   def hard_normalize(s)
-    UnicodeUtils.downcase(UnicodeUtils.nfd(s).gsub(/\p{Mn}/, ""))
+    s.unicode_normalize(:nfd).gsub(/\p{Mn}/, "").downcase
   end
 end
