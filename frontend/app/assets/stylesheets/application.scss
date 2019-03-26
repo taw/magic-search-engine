@@ -379,7 +379,8 @@ h3 .manacost {
 .picture_preview_column {
   position: relative;
   .picture_preview_box {
-    position: relative;
+    position: sticky;
+    top: 10px;
     width: 100%;
   }
 }
