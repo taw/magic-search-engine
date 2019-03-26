@@ -27,7 +27,10 @@ server {
 
     error_page 401 /error/401.html;
     error_page 404 /error/404.html;
-    error_page 500 502 503 504 /error/50x.html;
+    error_page 500 /error/500.html;
+    error_page 502 /error/502.html;
+    error_page 503 /error/503.html;
+    error_page 504 /error/504.html;
 
     location /error/ {
         root /usr/local/share/fenhl/lore-seeker/static;
