@@ -151,7 +151,6 @@
             "cardType": "Artifact",
             "subtypes": [
                 "Canister",
-                "Petal",
                 "Relic",
                 "Structure"
             ]
@@ -214,6 +213,13 @@
                 "trance",
                 "virtuoso"
             ]
+        },
+        {
+            "#": "Soul of New Alores is a Vehicle without crew",
+            "type": "replace",
+            "rule": "301.7",
+            "find": "Vehicles have a crew ability",
+            "replace": "Most Vehicles have a crew ability"
         },
         {
             "#": "the rules for Structures, a new artifact subtype in Ruins of Doharum",
@@ -952,44 +958,16 @@
             "text": " or a Structure has stability 0"
         },
         {
-            "#": "define front-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
-            "type": "replace",
+            "#": "define front-face symbols for double-faced cards in custom sets",
+            "type": "replaceRule",
             "rule": "711.1a",
-            "find": "Magic Origins and Core Set 2019",
-            "replace": "Magic Origins, Core Set 2019, and Magic Villains"
+            "text": "A double-faced card's front face is marked by a front-face symbol in its upper left corner. This symbol may be a modified Planeswalker icon, a sun, a full moon, a compass rose, or a chalice."
         },
         {
-            "#": "define front-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
-            "type": "replace",
-            "rule": "711.1a",
-            "find": "On cards in the Innistrad block",
-            "replace": "On cards in the Rakoa set, the Innistrad block"
-        },
-        {
-            "#": "define front-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
-            "type": "append",
-            "rule": "711.1a",
-            "text": "On double-faced cards in the Tesla set, the front-face symbol is a chalice."
-        },
-        {
-            "#": "define back-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
-            "type": "replace",
+            "#": "define back-face symbols for double-faced cards in custom sets",
+            "type": "replaceRule",
             "rule": "711.1b",
-            "find": "Magic Origins and Core Set 2019",
-            "replace": "Magic Origins, Core Set 2019, and Magic Villains"
-        },
-        {
-            "#": "define back-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
-            "type": "replace",
-            "rule": "711.1b",
-            "find": "On cards in the Innistrad block",
-            "replace": "On cards in the Rakoa set, the Innistrad block"
-        },
-        {
-            "#": "define back-face symbols for double-faced cards in Tesla, Magic Villains, and Rakoa",
-            "type": "append",
-            "rule": "711.1b",
-            "text": "On double-faced cards in the Tesla set, the back-face symbol is a flame."
+            "text": "A double-faced card's back face is marked by a back-face symbol in its upper left corner. This symbol may be a full Planeswalker icon, a crestent moon, a stylized image of Emrakul, a land icon, or a flame."
         },
         {
             "#": "remove Structures from combat when an effect ends the turn",

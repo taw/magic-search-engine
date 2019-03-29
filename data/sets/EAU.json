@@ -29,7 +29,7 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"Faradia will rise soon. In the mean time, allow me to lead in her stead.\"\n\u2014Helana",
+            "flavor": "\"Every lotus was planted by Faradia, and for now on, every lotus will be Faradia's once more.\"\n\u2014Helena",
             "imageName": "acclaimed leadership",
             "layout": "normal",
             "manaCost": "{2}{W}",
@@ -133,21 +133,54 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"Do not listen to Helena's lies! It is not time for Faradia to wake.\"",
-            "imageName": "defector of the clergy",
+            "imageName": "containment priest",
             "layout": "normal",
-            "manaCost": "{W}{W}",
-            "name": "Defector of the Clergy",
+            "manaCost": "{1}{W}",
+            "name": "Containment Priest",
             "number": "5",
-            "originalText": "Creatures and artifacts your opponents control enter the battlefield tapped.",
+            "originalText": "Flash\nIf a nontoken creature would enter the battlefield and it wasn't cast, exile it instead.",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "2",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2014-11-07",
+                    "text": "Containment Priest's last ability won't affect any nontoken creatures that were cast, including ones cast from unusual zones such as your graveyard."
+                },
+                {
+                    "date": "2014-11-07",
+                    "text": "Containment Priest's last ability doesn't stop creature tokens from entering the battlefield. It also doesn't affect creatures that were already on the battlefield."
+                },
+                {
+                    "date": "2014-11-07",
+                    "text": "If Containment Priest enters the battlefield without being cast, it won't exile itself."
+                },
+                {
+                    "date": "2014-11-07",
+                    "text": "If Containment Priest enters the battlefield at the same time as other creatures, its ability won't affect those creatures."
+                },
+                {
+                    "date": "2014-11-07",
+                    "text": "Containment Priest\u2019s last ability won\u2019t affect any nontoken creatures that were cast, including ones cast from unusual zones such as your graveyard."
+                },
+                {
+                    "date": "2014-11-07",
+                    "text": "Containment Priest\u2019s last ability doesn\u2019t stop creature tokens from entering the battlefield. It also doesn\u2019t affect creatures that were already on the battlefield."
+                },
+                {
+                    "date": "2014-11-07",
+                    "text": "If Containment Priest enters the battlefield without being cast, it won\u2019t exile itself."
+                },
+                {
+                    "date": "2014-11-07",
+                    "text": "If Containment Priest enters the battlefield at the same time as other creatures, its ability won\u2019t affect those creatures."
+                }
+            ],
             "subtypes": [
                 "Human",
                 "Cleric"
             ],
-            "text": "Creatures and artifacts your opponents control enter the battlefield tapped.",
+            "text": "Flash\nIf a nontoken creature would enter the battlefield and it wasn't cast, exile it instead.",
             "toughness": "2",
             "type": "Creature \u2014 Human Cleric",
             "types": [
@@ -163,13 +196,13 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"Remember who this belongs to.\"",
+            "flavor": "\"Remember- this was never yours.\"",
             "imageName": "faradia's collector",
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Faradia's Collector",
             "number": "6",
-            "originalText": "First strike\nWhen Faradia's Collector enters the battlefield, if an opponent controls more lands than you, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "First strike\nWhen Faradia's Collector enters the battlefield, if an opponent controls more lands than you, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Creature \u2014 Human Knight",
             "power": "2",
             "rarity": "Uncommon",
@@ -177,7 +210,7 @@
                 "Human",
                 "Knight"
             ],
-            "text": "First strike\nWhen Faradia's Collector enters the battlefield, if an opponent controls more lands than you, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "First strike\nWhen Faradia's Collector enters the battlefield, if an opponent controls more lands than you, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "toughness": "1",
             "type": "Creature \u2014 Human Knight",
             "types": [
@@ -208,32 +241,6 @@
             ]
         },
         {
-            "artist": "hongqi zhang",
-            "cmc": 5,
-            "colorIdentity": [
-                "W"
-            ],
-            "colors": [
-                "White"
-            ],
-            "imageName": "faradia's presence",
-            "layout": "normal",
-            "manaCost": "{3}{W}{W}",
-            "name": "Faradia's Presence",
-            "number": "8",
-            "originalText": "Enchant creature\nTithe (When this enters, you may tap three other creatures and/or artifacts you control.)\nWhen Faradia's Presence's tithe is paid, if it isn't a token, create two tokens that are copies of it.\nEnchanted creature has base power and toughness 5/5, has flying and vigilance, and is an Angel in addition to its other types.",
-            "originalType": "Enchantment \u2014 Aura",
-            "rarity": "Rare",
-            "subtypes": [
-                "Aura"
-            ],
-            "text": "Enchant creature\nTithe (When this enters, you may tap three other creatures and/or artifacts you control.)\nWhen Faradia's Presence's tithe is paid, if it isn't a token, create two tokens that are copies of it.\nEnchanted creature has base power and toughness 5/5, has flying and vigilance, and is an Angel in addition to its other types.",
-            "type": "Enchantment \u2014 Aura",
-            "types": [
-                "Enchantment"
-            ]
-        },
-        {
             "artist": "Ochre Jelly",
             "cmc": 4,
             "colorIdentity": [
@@ -246,7 +253,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}{W}",
             "name": "Faradia, Honored Sovereign",
-            "number": "9",
+            "number": "8",
             "originalText": "Flying, first strike, vigilance\nFaradia, Honored Sovereign can't attack or block unless you tap three other untapped creatures and/or artifacts you control.",
             "originalType": "Legendary Creature \u2014 Angel",
             "power": "7",
@@ -273,22 +280,23 @@
             "colors": [
                 "White"
             ],
-            "flavor": "Those who plan Plum de Val can never agree whether the skies should be reserved for birds or fireworks.",
+            "flavor": "Those who plan Plume de Val can never agree whether the skies should be reserved for birds or fireworks.",
             "imageName": "festival songstress",
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Festival Songstress",
-            "number": "10",
+            "number": "9",
             "originalText": "Harmony \u2014 Create a 1/1 white Bird creature token with flying.\n{4}: Harmonize. (Trigger up to one harmony of one permanent you control.)",
-            "originalType": "Creature \u2014 Human",
+            "originalType": "Creature \u2014 Human Bard",
             "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
-                "Human"
+                "Human",
+                "Bard"
             ],
             "text": "Harmony \u2014 Create a 1/1 white Bird creature token with flying.\n{4}: Harmonize. (Trigger up to one harmony of one permanent you control.)",
             "toughness": "2",
-            "type": "Creature \u2014 Human",
+            "type": "Creature \u2014 Human Bard",
             "types": [
                 "Creature"
             ]
@@ -306,7 +314,7 @@
             "layout": "normal",
             "manaCost": "{3}{W}{W}",
             "name": "Glamorous Festivities",
-            "number": "11",
+            "number": "10",
             "originalText": "When Glamorous Festivities enters the battlefield or at the beginning of your upkeep, you may put two +1/+1 counters on each creature you control. If you do, each opponent may put a +1/+1 counter on each creature they control.",
             "originalType": "Enchantment",
             "rarity": "Rare",
@@ -330,7 +338,7 @@
             "layout": "normal",
             "manaCost": "{3}{W}",
             "name": "Gleaming Gallant",
-            "number": "12",
+            "number": "11",
             "originalText": "Lifelink (Damage dealt by this creature also causes you to gain that much life.)",
             "originalType": "Creature \u2014 Human Knight",
             "power": "3",
@@ -355,12 +363,12 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"Celebrate while it is Plum de Val. Soon, comes the great tithe, and all shall pay it.\"\n\u2014Faradia\nDesigned by DrChillbrain",
+            "flavor": "\"Celebrate while it is Plume de Val. Soon, comes the great tithe, and all shall pay it.\"\n\u2014Faradia\nDesigned by DrChillbrain",
             "imageName": "glorious celebration",
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Glorious Celebration",
-            "number": "13",
+            "number": "12",
             "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nYou gain 6 life. If this spell's tithe was paid, draw a card.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -384,7 +392,7 @@
             "layout": "normal",
             "manaCost": "{W}",
             "name": "Helena's Exaltation",
-            "number": "14",
+            "number": "13",
             "originalText": "Untap target creature. It gets +1/+3 until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -408,7 +416,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Helena's Rebuff",
-            "number": "15",
+            "number": "14",
             "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nCreatures you control gain indestructible until end of turn. If this spell's tithe was paid, put a +1/+1 counter on each creature you control.",
             "originalType": "Instant",
             "rarity": "Rare",
@@ -432,8 +440,8 @@
             "loyalty": 4,
             "manaCost": "{2}{W}{W}",
             "name": "Helena, the Awakener",
-            "number": "16",
-            "originalText": "+1: \nCreate a 1/1 red Cleric creature token. If you control three or more Clerics, you may instead create Aspect of Faradia, a legendary 5/5 white Angel creature token with flying and vigilance.\n-2: Exile target nonland permanent if you control an Angel. Otherwise, that permanent can't attack or block and its activated abilities can't be activated until your next turn.\n-7: Creatures you control get +5/+5 and gain flying and vigilance until end of turn.",
+            "number": "15",
+            "originalText": "+1: Create a 1/1 red Cleric creature token. If you control three or more Clerics, you may instead create Aspect of Faradia, a legendary 5/5 white Angel creature token with flying and vigilance.\n-1: Exile target nonland permanent if you control an Angel. Otherwise, that permanent can't attack or block and its activated abilities can't be activated until your next turn.\n-7: Creatures you control get +5/+5 and gain flying and vigilance until end of turn.",
             "originalType": "Legendary Planeswalker \u2014 Helena",
             "rarity": "Mythic Rare",
             "subtypes": [
@@ -442,10 +450,77 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "+1: Create a 1/1 red Cleric creature token. If you control three or more Clerics, you may instead create Aspect of Faradia, a legendary 5/5 white Angel creature token with flying and vigilance.\n-2: Exile target nonland permanent if you control an Angel. Otherwise, that permanent can't attack or block and its activated abilities can't be activated until your next turn.\n-7: Creatures you control get +5/+5 and gain flying and vigilance until end of turn.",
+            "text": "+1: Create a 1/1 red Cleric creature token. If you control three or more Clerics, you may instead create Aspect of Faradia, a legendary 5/5 white Angel creature token with flying and vigilance.\n-1: Exile target nonland permanent if you control an Angel. Otherwise, that permanent can't attack or block and its activated abilities can't be activated until your next turn.\n-7: Creatures you control get +5/+5 and gain flying and vigilance until end of turn.",
             "type": "Legendary Planeswalker \u2014 Helena",
             "types": [
                 "Planeswalker"
+            ]
+        },
+        {
+            "artist": "Carl Van Laguun",
+            "cmc": 3,
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [
+                "White"
+            ],
+            "flavor": "If you put your faith in Faradia...\nDesigned with Reuben",
+            "imageName": "heroric crusader",
+            "layout": "double-faced",
+            "manaCost": "{1}{W}{W}",
+            "name": "Heroric Crusader",
+            "names": [
+                "Heroric Crusader",
+                "Faradia's Ascendant"
+            ],
+            "number": "16a",
+            "originalText": "Lifelink\nTap three other untapped creatures and/or artifacts you control: Transform Heroric Crusader.",
+            "originalType": "Creature \u2014 Human Soldier",
+            "power": "3",
+            "rarity": "Rare",
+            "subtypes": [
+                "Human",
+                "Soldier"
+            ],
+            "text": "Lifelink\nTap three other untapped creatures and/or artifacts you control: Transform Heroric Crusader.",
+            "toughness": "3",
+            "type": "Creature \u2014 Human Soldier",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Sylvain Sarrailh",
+            "cmc": 3,
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [
+                "White"
+            ],
+            "flavor": "She will return the favor.\nDesigned with Reuben",
+            "imageName": "faradia's ascendant",
+            "layout": "double-faced",
+            "name": "Faradia's Ascendant",
+            "names": [
+                "Heroric Crusader",
+                "Faradia's Ascendant"
+            ],
+            "number": "16b",
+            "originalText": "Flying, lifelink",
+            "originalType": "Creature \u2014 Angel Soldier",
+            "power": "5",
+            "rarity": "Rare",
+            "subtypes": [
+                "Angel",
+                "Soldier"
+            ],
+            "text": "Flying, lifelink",
+            "toughness": "5",
+            "type": "Creature \u2014 Angel Soldier",
+            "types": [
+                "Creature"
             ]
         },
         {
@@ -552,15 +627,16 @@
             "name": "New Alores Fiddler",
             "number": "20",
             "originalText": "Harmony \u2014 You gain 2 life.\nWhen New Alores Fiddler enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
-            "originalType": "Creature \u2014 Human",
+            "originalType": "Creature \u2014 Human Bard",
             "power": "1",
             "rarity": "Common",
             "subtypes": [
-                "Human"
+                "Human",
+                "Bard"
             ],
             "text": "Harmony \u2014 You gain 2 life.\nWhen New Alores Fiddler enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
             "toughness": "2",
-            "type": "Creature \u2014 Human",
+            "type": "Creature \u2014 Human Bard",
             "types": [
                 "Creature"
             ]
@@ -574,7 +650,7 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"The best way to learn about the winds here is to experience them first hand!\"\n\u2014Adavane",
+            "flavor": "\"The best way to learn about the winds here is to experience them first hand!\"\n\u2014Adavene",
             "imageName": "nimbus glider",
             "layout": "normal",
             "manaCost": "{1}{W}",
@@ -826,7 +902,7 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"I've talked to Faradia from beyond the grave. Each lotus belongs to her and the Parish alone.\"\n\u2014Helena",
+            "flavor": "\"I invite those truly devoted to Faradia to place a lotus petal upon her grave, and hear her voice for themselves.\"\n\u2014Faradia",
             "imageName": "solemn offering",
             "layout": "normal",
             "manaCost": "{2}{W}",
@@ -960,7 +1036,7 @@
             "colors": [
                 "White"
             ],
-            "flavor": "Woopip open their homes to celebrate Plum de Val each year. Most of them, anyway.",
+            "flavor": "Woopip open their homes to celebrate Plume de Val each year. Most of them, anyway.",
             "imageName": "sporeflow repulsion",
             "layout": "normal",
             "manaCost": "{1}{W}",
@@ -1169,13 +1245,47 @@
             "manaCost": "{1}{U}",
             "name": "Aetherdrain",
             "number": "42",
-            "originalText": "Counter target spell unless its controller pays {1}.\nCreate a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "Counter target spell unless its controller pays {1}.\nCreate a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Counter target spell unless its controller pays {1}.\nCreate a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "Counter target spell unless its controller pays {1}.\nCreate a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Instant",
             "types": [
                 "Instant"
+            ]
+        },
+        {
+            "artist": "Lizzy John",
+            "cmc": 2,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "flavor": "\"I got a big one!\"\nDesigned with CasualR",
+            "imageName": "aspiring rascals",
+            "layout": "double-faced",
+            "manaCost": "{1}{U}",
+            "name": "Aspiring Rascals",
+            "names": [
+                "Aspiring Rascals",
+                "Marshback Knights"
+            ],
+            "number": "43a",
+            "originalText": "When you cast your third noncreature spell each turn, transform Aspiring Rascals.",
+            "originalType": "Creature \u2014 Human Scout",
+            "power": "2",
+            "rarity": "Rare",
+            "subtypes": [
+                "Human",
+                "Scout"
+            ],
+            "text": "When you cast your third noncreature spell each turn, transform Aspiring Rascals.",
+            "toughness": "1",
+            "type": "Creature \u2014 Human Scout",
+            "types": [
+                "Creature"
             ]
         },
         {
@@ -1187,22 +1297,26 @@
             "colors": [
                 "Blue"
             ],
-            "imageName": "aspiring rascals",
-            "layout": "normal",
-            "manaCost": "{1}{U}",
-            "name": "Aspiring Rascals",
-            "number": "43",
-            "originalText": "When you cast your third noncreature spell each turn, if Aspiring Rascals isn't a Frog, put three +1/+1 counters on it and it becomes a Frog in addition to its other types.\n{1}{U}: Aspiring Rascals gains flying until end of turn if it's a Frog.",
-            "originalType": "Creature \u2014 Human Warrior",
-            "power": "2",
+            "flavor": "\"Onward, to adventure!\"\nDesigned with CasualR",
+            "imageName": "marshback knights",
+            "layout": "double-faced",
+            "name": "Marshback Knights",
+            "names": [
+                "Aspiring Rascals",
+                "Marshback Knights"
+            ],
+            "number": "43b",
+            "originalText": "{1}{U}: Marshback Knights gains flying until end of turn.\nSpells opponents cast that target Marshback Knights cost {3} more to cast.",
+            "originalType": "Creature \u2014 Human Knight",
+            "power": "5",
             "rarity": "Rare",
             "subtypes": [
                 "Human",
-                "Warrior"
+                "Knight"
             ],
-            "text": "When you cast your third noncreature spell each turn, if Aspiring Rascals isn't a Frog, put three +1/+1 counters on it and it becomes a Frog in addition to its other types.\n{1}{U}: Aspiring Rascals gains flying until end of turn if it's a Frog.",
-            "toughness": "1",
-            "type": "Creature \u2014 Human Warrior",
+            "text": "{1}{U}: Marshback Knights gains flying until end of turn.\nSpells opponents cast that target Marshback Knights cost {3} more to cast.",
+            "toughness": "4",
+            "type": "Creature \u2014 Human Knight",
             "types": [
                 "Creature"
             ]
@@ -1222,17 +1336,17 @@
             "manaCost": "{4}{U}",
             "name": "Aven Acoustimancer",
             "number": "44",
-            "originalText": "Flying\nHarmony \u2014 Until the end of your next turn, you may cast target instant or sorcery card from your graveyard. If that card would be put into your graveyard this turn, exile it instead..\nWhen Aven Acoustimancer enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
-            "originalType": "Creature \u2014 Bird Wizard",
+            "originalText": "Flying\nHarmony \u2014 Until the end of your next turn, you may cast target instant or sorcery card from your graveyard. If that card would be put into your graveyard this turn, exile it instead.\nWhen Aven Acoustimancer enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
+            "originalType": "Creature \u2014 Bird Bard",
             "power": "2",
             "rarity": "Uncommon",
             "subtypes": [
                 "Bird",
-                "Wizard"
+                "Bard"
             ],
             "text": "Flying\nHarmony \u2014 Until the end of your next turn, you may cast target instant or sorcery card from your graveyard. If that card would be put into your graveyard this turn, exile it instead.\nWhen Aven Acoustimancer enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
             "toughness": "2",
-            "type": "Creature \u2014 Bird Wizard",
+            "type": "Creature \u2014 Bird Bard",
             "types": [
                 "Creature"
             ]
@@ -1302,14 +1416,14 @@
             "manaCost": "{2}{U}",
             "name": "Bogsnatcher Drake",
             "number": "47",
-            "originalText": "Flying\nWhen Bogsnatcher Drake enters the battlefield, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "Flying\nWhen Bogsnatcher Drake enters the battlefield, Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Creature \u2014 Drake",
             "power": "2",
             "rarity": "Common",
             "subtypes": [
                 "Drake"
             ],
-            "text": "Flying\nWhen Bogsnatcher Drake enters the battlefield, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "Flying\nWhen Bogsnatcher Drake enters the battlefield, Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "toughness": "1",
             "type": "Creature \u2014 Drake",
             "types": [
@@ -1384,16 +1498,16 @@
             "name": "Chilling Musician",
             "number": "50",
             "originalText": "Harmony \u2014 Tap target creature. That creature doesn't untap during its controller's next untap step.\nWhen Chilling Musician enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
-            "originalType": "Creature \u2014 Human Wizard",
+            "originalType": "Creature \u2014 Human Bard",
             "power": "3",
             "rarity": "Common",
             "subtypes": [
                 "Human",
-                "Wizard"
+                "Bard"
             ],
             "text": "Harmony \u2014 Tap target creature. That creature doesn't untap during its controller's next untap step.\nWhen Chilling Musician enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
             "toughness": "3",
-            "type": "Creature \u2014 Human Wizard",
+            "type": "Creature \u2014 Human Bard",
             "types": [
                 "Creature"
             ]
@@ -1465,16 +1579,16 @@
             "name": "Creeping Pianist",
             "number": "53",
             "originalText": "Harmony \u2014 Target player puts the top four cards of their library into their graveyard.\nWhen Creeping Pianist enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
-            "originalType": "Creature \u2014 Human Wizard",
+            "originalType": "Creature \u2014 Human Bard",
             "power": "2",
             "rarity": "Common",
             "subtypes": [
                 "Human",
-                "Wizard"
+                "Bard"
             ],
             "text": "Harmony \u2014 Target player puts the top four cards of their library into their graveyard.\nWhen Creeping Pianist enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
             "toughness": "3",
-            "type": "Creature \u2014 Human Wizard",
+            "type": "Creature \u2014 Human Bard",
             "types": [
                 "Creature"
             ]
@@ -1675,7 +1789,7 @@
         },
         {
             "artist": "Eric Ridgeway",
-            "cmc": 2,
+            "cmc": 3,
             "colorIdentity": [
                 "U"
             ],
@@ -1685,7 +1799,7 @@
             "flavor": "\"You should know exactly what I'm capable of: Everything.\"",
             "imageName": "lazaire's conjuring",
             "layout": "normal",
-            "manaCost": "{X}{U}{U}",
+            "manaCost": "{X}{U}{U}{U}",
             "name": "Lazaire's Conjuring",
             "number": "61",
             "originalText": "Repeat the following process X times. Exile a creature you control, then return it to the battlefield.\nExile Lazaire's Conjuring.",
@@ -1712,10 +1826,10 @@
             "manaCost": "{3}{U}",
             "name": "Lost in Admiration",
             "number": "62",
-            "originalText": "Put target nonland permanent on top of its owner's library.\nCreate a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "Put target nonland permanent on top of its owner's library.\nCreate a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Sorcery",
             "rarity": "Common",
-            "text": "Put target nonland permanent on top of its owner's library.\nCreate a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "Put target nonland permanent on top of its owner's library.\nCreate a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -1730,13 +1844,13 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "Only the most successful knights can offer women a complete lotus gown.",
+            "flavor": "Only the most successful knights can offer a woman a complete lotus gown.",
             "imageName": "lotus debutante",
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Lotus Debutante",
             "number": "63",
-            "originalText": "When Lotus Debutante enters the battlefield, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\n{3}{U}: Draw a card.",
+            "originalText": "When Lotus Debutante enters the battlefield, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\n{3}{U}: Draw a card.",
             "originalType": "Creature \u2014 Human Advisor",
             "power": "1",
             "rarity": "Uncommon",
@@ -1744,7 +1858,7 @@
                 "Human",
                 "Advisor"
             ],
-            "text": "When Lotus Debutante enters the battlefield, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\n{3}{U}: Draw a card.",
+            "text": "When Lotus Debutante enters the battlefield, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\n{3}{U}: Draw a card.",
             "toughness": "3",
             "type": "Creature \u2014 Human Advisor",
             "types": [
@@ -1789,7 +1903,7 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "The cruelest Zoulev practitioners do the most for keeping the community safe.",
+            "flavor": "Jeama brands the worst souls with a poetic and unmistakable form.",
             "imageName": "mark of the scaleblight",
             "layout": "normal",
             "manaCost": "{3}{U}{U}",
@@ -1897,7 +2011,7 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"And there's my ship. Everything according to plan.\"\n\u2014Antonin Lazaire",
+            "flavor": "\"My part is done. Play the tune, and the ship will drop you into the kantra's realm. I'm sure you'll find a way aboard.\"\n\u2014Adavene, to Antonin Lazaire",
             "imageName": "opt",
             "layout": "normal",
             "manaCost": "{U}",
@@ -2039,16 +2153,16 @@
             "name": "Riverguide Harpist",
             "number": "74",
             "originalText": "Harmony \u2014 Untap target permanent.\nWhenever you cast an instant or sorcery spell, harmonize. (Trigger up to one harmony of one permanent you control.)",
-            "originalType": "Creature \u2014 Human Shaman",
+            "originalType": "Creature \u2014 Human Bard",
             "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
                 "Human",
-                "Shaman"
+                "Bard"
             ],
             "text": "Harmony \u2014 Untap target permanent.\nWhenever you cast an instant or sorcery spell, harmonize. (Trigger up to one harmony of one permanent you control.)",
             "toughness": "3",
-            "type": "Creature \u2014 Human Shaman",
+            "type": "Creature \u2014 Human Bard",
             "types": [
                 "Creature"
             ]
@@ -2119,13 +2233,13 @@
             "manaCost": "{4}{U}{U}",
             "name": "Tempted by Lotuses",
             "number": "77",
-            "originalText": "Enchant permanent\nYou control enchanted permanent.\nWhen Tempted by Lotuses enters the battlefield, enchanted permanent's owner creates three colorless Petal artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "Enchant permanent\nYou control enchanted permanent.\nWhen Tempted by Lotuses enters the battlefield, enchanted permanent's owner create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
             "subtypes": [
                 "Aura"
             ],
-            "text": "Enchant permanent\nYou control enchanted permanent.\nWhen Tempted by Lotuses enters the battlefield, enchanted permanent's owner creates three colorless Petal artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "Enchant permanent\nYou control enchanted permanent.\nWhen Tempted by Lotuses enters the battlefield, enchanted permanent's owner creates a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Enchantment \u2014 Aura",
             "types": [
                 "Enchantment"
@@ -2133,7 +2247,7 @@
         },
         {
             "artist": "Fredrick Runtu",
-            "cmc": 5,
+            "cmc": 3,
             "colorIdentity": [
                 "U"
             ],
@@ -2142,13 +2256,13 @@
             ],
             "imageName": "wade through",
             "layout": "normal",
-            "manaCost": "{3}{U}{U}",
+            "manaCost": "{X}{U}{U}{U}",
             "name": "Wade Through",
             "number": "78",
-            "originalText": "Reveal the top five cards of your library. An opponent separates those cards into two piles. Put one pile into your hand. Put the other pile into your graveyard. Then for each card put into your graveyard this way, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "Draw X cards. Then you may discard any number of cards. For each card discarded this way, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Instant",
             "rarity": "Rare",
-            "text": "Reveal the top five cards of your library. An opponent separates those cards into two piles. Put one pile into your hand. Put the other pile into your graveyard. Then for each card put into your graveyard this way, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "Draw X cards. Then you may discard any number of cards. For each card discarded this way, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -2192,7 +2306,7 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"The most potent spells and hexes are no use if anyone could see them coming.\"\n\u2014Jeama",
+            "flavor": "\"The most potent spells and hexes will be of no use if Faradia sees them coming. I'll ensure she doesn't.\"\n\u2014Jeama to Lazaire",
             "imageName": "witch's invocation",
             "layout": "normal",
             "manaCost": "{1}{U}{U}",
@@ -2245,7 +2359,7 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "Kantra of the Raddi family use lotuses accrue from services to feed their pets.",
+            "flavor": "Kantra of the Raddi family use lotuses accrued from services to feed their pets.",
             "imageName": "zoulev offering",
             "layout": "normal",
             "manaCost": "{2}{U}",
@@ -2485,14 +2599,14 @@
             "manaCost": "{1}{B}",
             "name": "Curse of Bleeding",
             "number": "91",
-            "originalText": "Flash\nEnchant opponent\nEnchanted player can't gain life.\nWhen Curse of Bleeding enters the battlefield, it deals 2 damage to enchanted player.",
+            "originalText": "Flash\nEnchant opponent\nEnchanted player can't gain life.\nWhen Curse of Bleeding enters the battlefield, enchanted player loses 2 life.",
             "originalType": "Enchantment \u2014 Aura Curse",
             "rarity": "Rare",
             "subtypes": [
                 "Aura",
                 "Curse"
             ],
-            "text": "Flash\nEnchant opponent\nEnchanted player can't gain life.\nWhen Curse of Bleeding enters the battlefield, it deals 2 damage to enchanted player.",
+            "text": "Flash\nEnchant opponent\nEnchanted player can't gain life.\nWhen Curse of Bleeding enters the battlefield, enchanted player loses 2 life.",
             "type": "Enchantment \u2014 Aura Curse",
             "types": [
                 "Enchantment"
@@ -2512,14 +2626,14 @@
             "manaCost": "{1}{B}",
             "name": "Curse of Haunting",
             "number": "92",
-            "originalText": "Enchant opponent\nWhenever a creature enters the battlefield under enchanted player's control, Curse of Haunting deals 1 damage to them and you gain 1 life.",
+            "originalText": "Enchant opponent\nWhenever a creature enters the battlefield under enchanted player's control, that player loses 1 life and you gain 1 life.",
             "originalType": "Enchantment \u2014 Aura Curse",
             "rarity": "Common",
             "subtypes": [
                 "Aura",
                 "Curse"
             ],
-            "text": "Enchant opponent\nWhenever a creature enters the battlefield under enchanted player's control, Curse of Haunting deals 1 damage to them and you gain 1 life.",
+            "text": "Enchant opponent\nWhenever a creature enters the battlefield under enchanted player's control, that player loses 1 life and you gain 1 life.",
             "type": "Enchantment \u2014 Aura Curse",
             "types": [
                 "Enchantment"
@@ -2534,7 +2648,7 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "\"I would never resort to such things. I can get you in touch with a bokor who will though.\"\n\u2014Antonin Lazaire\nDesigned by pInkmoth",
+            "flavor": "\"I don't deal in curses, only favors. I do know a bokor who can help you, however.\"\n\u2014Antonin Lazaire\nDesigned by pInkmoth",
             "imageName": "curse of waning wealth",
             "layout": "normal",
             "manaCost": "{3}{B}",
@@ -2554,31 +2668,6 @@
             ]
         },
         {
-            "artist": "Slawomir Maniak",
-            "cmc": 2,
-            "colorIdentity": [
-                "B"
-            ],
-            "colors": [
-                "Black"
-            ],
-            "flavor": "\"The woopip don't seem to associate death with loss.\"\n\u2014Cypress",
-            "imageName": "eau:decomposition",
-            "layout": "normal",
-            "manaCost": "{1}{B}",
-            "name": "EAU:Decomposition",
-            "number": "94",
-            "originalText": "As an additional cost to cast this spell, sacrifice a creature.\nDraw two cards. You gain 2 life.",
-            "originalType": "Instant",
-            "printedName": "Decomposition",
-            "rarity": "Common",
-            "text": "As an additional cost to cast this spell, sacrifice a creature.\nDraw two cards. You gain 2 life.",
-            "type": "Instant",
-            "types": [
-                "Instant"
-            ]
-        },
-        {
             "artist": "Yanchong Lim",
             "cmc": 5,
             "colorIdentity": [
@@ -2591,15 +2680,15 @@
             "layout": "normal",
             "manaCost": "{4}{B}",
             "name": "Explorer's Fate",
-            "number": "95",
-            "originalText": "Enchant opponent\nAt the beginning of enchanted player's upkeep, you create a 3/2 green Crocodile creature token with trample if enchanted player has 10 or less life. Otherwise, Explorer's Fate deals 2 damage to them.",
+            "number": "94",
+            "originalText": "Enchant opponent\nAt the beginning of enchanted player's upkeep, you create a 3/2 green Crocodile creature token with trample if enchanted player has 10 or less life. Otherwise, they lose 2 life.",
             "originalType": "Enchantment \u2014 Aura Curse",
             "rarity": "Rare",
             "subtypes": [
                 "Aura",
                 "Curse"
             ],
-            "text": "Enchant opponent\nAt the beginning of enchanted player's upkeep, you create a 3/2 green Crocodile creature token with trample if enchanted player has 10 or less life. Otherwise, Explorer's Fate deals 2 damage to them.",
+            "text": "Enchant opponent\nAt the beginning of enchanted player's upkeep, you create a 3/2 green Crocodile creature token with trample if enchanted player has 10 or less life. Otherwise, they lose 2 life.",
             "type": "Enchantment \u2014 Aura Curse",
             "types": [
                 "Enchantment"
@@ -2619,7 +2708,7 @@
             "layout": "normal",
             "manaCost": "{3}{B}{B}",
             "name": "Greater Swooprat",
-            "number": "96",
+            "number": "95",
             "originalText": "Flying\nWhen Greater Swooprat enters the battlefield, creatures your opponents control get -1/-1 until end of turn.",
             "originalType": "Creature \u2014 Bat",
             "power": "3",
@@ -2647,7 +2736,7 @@
             "layout": "normal",
             "manaCost": "{4}{B}{B}",
             "name": "Grim Festivities",
-            "number": "97",
+            "number": "96",
             "originalText": "When Grim Festivities enters the battlefield or at beginning of your upkeep, you may return a creature card from your graveyard to the battlefield under your control. If you do, each opponent may return a creature card from their graveyard to their hand.",
             "originalType": "Enchantment",
             "rarity": "Rare",
@@ -2659,27 +2748,27 @@
         },
         {
             "artist": "Alexandr Elichev",
-            "cmc": 7,
+            "cmc": 8,
             "colorIdentity": [
                 "B"
             ],
             "colors": [
                 "Black"
             ],
-            "flavor": "\"I don't create monsters, I simply set them free.\"\n\u2014Jeama",
+            "flavor": "\"I don't create monsters, I simply reveal them\"\n\u2014Jeama",
             "imageName": "grisly hunger",
             "layout": "normal",
-            "manaCost": "{5}{B}{B}",
+            "manaCost": "{6}{B}{B}",
             "name": "Grisly Hunger",
-            "number": "98",
-            "originalText": "Enchant opponent\nWhen Grisly Hunger enters the battlefield, enchanted player's life total becomes 10.\nAt the beginning of enchanted player's end step, they sacrifice a creature and that creature deals damage equal to its power to them.",
+            "number": "97",
+            "originalText": "Enchant opponent\nWhen Grisly Hunger enters the battlefield, enchanted player's life total becomes 10.\nAt the beginning of enchanted player's end step, they sacrifice a creature and lose life equal to that creature's power.",
             "originalType": "Enchantment \u2014 Aura Curse",
             "rarity": "Rare",
             "subtypes": [
                 "Aura",
                 "Curse"
             ],
-            "text": "Enchant opponent\nWhen Grisly Hunger enters the battlefield, enchanted player's life total becomes 10.\nAt the beginning of enchanted player's end step, they sacrifice a creature and that creature deals damage equal to its power to them.",
+            "text": "Enchant opponent\nWhen Grisly Hunger enters the battlefield, enchanted player's life total becomes 10.\nAt the beginning of enchanted player's end step, they sacrifice a creature and lose life equal to that creature's power.",
             "type": "Enchantment \u2014 Aura Curse",
             "types": [
                 "Enchantment"
@@ -2698,7 +2787,7 @@
             "layout": "normal",
             "manaCost": "{6}{B}",
             "name": "Jeama, Zoulev Queen",
-            "number": "99",
+            "number": "98",
             "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nWhen Jeama enters the battlefield, exile up to four target creature cards from graveyards. You may cast them for as long as they remain exiled, spells cast this way have enspirit, and you may spend mana as though it were mana of any type to cast them.",
             "originalType": "Legendary Enchantment Creature \u2014 Spirit",
             "power": "4",
@@ -2730,15 +2819,15 @@
             "layout": "normal",
             "manaCost": "{6}{B}",
             "name": "Kantra of Avarice",
-            "number": "100",
-            "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nWhen Kantra of Avarice enters the battlefield, it deals 2 damage to target player. That player draws two cards.",
+            "number": "99",
+            "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nWhen Kantra of Avarice enters the battlefield, target player draws two cards and loses 2 life.",
             "originalType": "Enchantment Creature \u2014 Spirit",
             "power": "4",
             "rarity": "Uncommon",
             "subtypes": [
                 "Spirit"
             ],
-            "text": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nWhen Kantra of Avarice enters the battlefield, it deals 2 damage to target player. That player draws two cards.",
+            "text": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nWhen Kantra of Avarice enters the battlefield, target player draws two cards and loses 2 life.",
             "toughness": "3",
             "type": "Enchantment Creature \u2014 Spirit",
             "types": [
@@ -2759,7 +2848,7 @@
             "layout": "normal",
             "manaCost": "{6}{B}",
             "name": "Kantra of Plagues",
-            "number": "101",
+            "number": "100",
             "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nAt the beginning of each player's upkeep, they sacrifice a nonenchantment creature. Then if there are no nonenchantment creatures on the battlefield, sacrifice Kantra of Plagues.",
             "originalType": "Enchantment Creature \u2014 Spirit",
             "power": "6",
@@ -2788,11 +2877,11 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Lazaire's Altar",
-            "number": "102",
-            "originalText": "At the beginning of your upkeep, target player draws a card and Lazaire's Altar deals 1 damage to them. Each other player creates a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "number": "101",
+            "originalText": "At the beginning of your upkeep, target player draws a card and loses 1 life. Each other player creates a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Enchantment",
             "rarity": "Rare",
-            "text": "At the beginning of your upkeep, target player draws a card and Lazaire's Altar deals 1 damage to them. Each other player creates a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "At the beginning of your upkeep, target player draws a card and loses 1 life. Each other player creates a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -2808,11 +2897,11 @@
                 "Black"
             ],
             "flavor": "The sporeflow guards see every step you take in the Ontarachie. Whether or not you take another is up to them.",
-            "imageName": "murmers of the bayou",
+            "imageName": "murmurs of the bayou",
             "layout": "normal",
             "manaCost": "{1}{B}",
-            "name": "Murmers of the Bayou",
-            "number": "103",
+            "name": "Murmurs of the Bayou",
+            "number": "102",
             "originalText": "Target creature gets -1/-1 until end of turn. Germinate. (Put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
             "originalType": "Instant",
             "rarity": "Common",
@@ -2835,7 +2924,7 @@
             "layout": "normal",
             "manaCost": "{2}{B}{B}",
             "name": "Occult Tutor",
-            "number": "104",
+            "number": "103",
             "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nSearch your library for a card and put that card into your hand. Then shuffle your library. If this spell's tithe was paid, add {B}{B}{B}{B}.",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -2843,6 +2932,73 @@
             "type": "Sorcery",
             "types": [
                 "Sorcery"
+            ]
+        },
+        {
+            "artist": "Pedro Kr\u00fcger Garcia",
+            "cmc": 1,
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "Black"
+            ],
+            "flavor": "Designed with Zeu",
+            "imageName": "ontarachie hunter",
+            "layout": "double-faced",
+            "manaCost": "{B}",
+            "name": "Ontarachie Hunter",
+            "names": [
+                "Ontarachie Hunter",
+                "Scaleblight Cutthroat"
+            ],
+            "number": "104a",
+            "originalText": "Whenever Ontarachie Hunter attacks, each opponent loses 1 life.\nAt the beginning of your end step, if an opponent has 10 or less life, transform Ontarachie Hunter",
+            "originalType": "Creature \u2014 Merfolk Rogue",
+            "power": "1",
+            "rarity": "Rare",
+            "subtypes": [
+                "Merfolk",
+                "Rogue"
+            ],
+            "text": "Whenever Ontarachie Hunter attacks, each opponent loses 1 life.\nAt the beginning of your end step, if an opponent has 10 or less life, transform Ontarachie Hunter.",
+            "toughness": "1",
+            "type": "Creature \u2014 Merfolk Rogue",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Yasushi Matsuoka",
+            "cmc": 1,
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "Black"
+            ],
+            "flavor": "\"They call this a curse? People on the surface are such fools.\"\nDesigned with Zeu",
+            "imageName": "scaleblight cutthroat",
+            "layout": "double-faced",
+            "name": "Scaleblight Cutthroat",
+            "names": [
+                "Ontarachie Hunter",
+                "Scaleblight Cutthroat"
+            ],
+            "number": "104b",
+            "originalText": "Whenever Scaleblight Cutthroat attacks, each opponent loses life equal to its power.",
+            "originalType": "Creature \u2014 Crocodile Merfolk",
+            "power": "2",
+            "rarity": "Rare",
+            "subtypes": [
+                "Crocodile",
+                "Merfolk"
+            ],
+            "text": "Whenever Scaleblight Cutthroat attacks, each opponent loses life equal to its power.",
+            "toughness": "2",
+            "type": "Creature \u2014 Crocodile Merfolk",
+            "types": [
+                "Creature"
             ]
         },
         {
@@ -2887,10 +3043,10 @@
             "manaCost": "{1}{B}",
             "name": "Overwhelming Guilt",
             "number": "106",
-            "originalText": "Target opponent reveals their hand. You choose a noncreature, nonland card from it. That player discards that card and Overwhelming Guilt deals 2 damage to them.",
+            "originalText": "Target opponent reveals their hand. You may choose a noncreature, nonland card from it. If you do, that player discards that card. Otherwise, they lose 3 life.",
             "originalType": "Sorcery",
             "rarity": "Common",
-            "text": "Target opponent reveals their hand. You choose a noncreature, nonland card from it. That player discards that card and Overwhelming Guilt deals 2 damage to them.",
+            "text": "Target opponent reveals their hand. You may choose a noncreature, nonland card from it. If you do, that player discards that card. Otherwise, they lose 3 life.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -2940,10 +3096,10 @@
             "manaCost": "{1}{B}",
             "name": "Reclaim the Devout",
             "number": "108",
-            "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nReturn target creature or planeswalker card from your graveyard to your hand. If this spell's tithe was paid, returnt that card to the battlefield instead.",
+            "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nReturn target creature or planeswalker card from your graveyard to your hand. If this spell's tithe was paid, return that card to the battlefield instead.",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nReturn target creature or planeswalker card from your graveyard to your hand. If this spell's tithe was paid, returnt that card to the battlefield instead.",
+            "text": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nReturn target creature or planeswalker card from your graveyard to your hand. If this spell's tithe was paid, return that card to the battlefield instead.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -2980,36 +3136,6 @@
             ]
         },
         {
-            "artist": "Yasushi Matsuoka",
-            "cmc": 3,
-            "colorIdentity": [
-                "B"
-            ],
-            "colors": [
-                "Black"
-            ],
-            "flavor": "The most dangerous of the scaleblight embrace their new form.",
-            "imageName": "scaleblight hunter",
-            "layout": "normal",
-            "manaCost": "{2}{B}",
-            "name": "Scaleblight Hunter",
-            "number": "110",
-            "originalText": "Whenever Scaleblight Hunter attacks, create a 3/2 green Crocodile creature token with trample unless defending player sacrifices a creature or discards a card.",
-            "originalType": "Creature \u2014 Crocodile Merfolk",
-            "power": "3",
-            "rarity": "Rare",
-            "subtypes": [
-                "Crocodile",
-                "Merfolk"
-            ],
-            "text": "Whenever Scaleblight Hunter attacks, create a 3/2 green Crocodile creature token with trample unless defending player sacrifices a creature or discards a card.",
-            "toughness": "2",
-            "type": "Creature \u2014 Crocodile Merfolk",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
             "artist": "Giorgio Baroni",
             "cmc": 2,
             "colorIdentity": [
@@ -3023,7 +3149,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Scaleblight Warrior",
-            "number": "111",
+            "number": "110",
             "originalText": "When Scaleblight Warrior enters the battlefield, you gain 2 life.\nPay 2 life: Scaleblight Warrior gains menace until end of turn.",
             "originalType": "Creature \u2014 Crocodile Warrior",
             "power": "2",
@@ -3048,13 +3174,13 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "\"New Alores is a city of indulgence. Parades in the streets, fools held as royalty. It's the clergy's duty to remind them who their sovereign is.\"",
+            "flavor": "\"New Alores is a city of indulgence. Parades in the streets, fools held as royalty. It's the elder-clergy's duty to remind them who their sovereign is.\"",
             "imageName": "sin broker",
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Sin Broker",
-            "number": "112",
-            "originalText": "Whenever you pay a tithe, you may pay {2}. If you do, Sin Broker deals 3 damage to each opponent and you gain 3 life.",
+            "number": "111",
+            "originalText": "Whenever you pay a tithe, you may pay {2}. If you do, Sin Broker each opponent loses 3 life and you gain 3 life.",
             "originalType": "Creature \u2014 Zombie Cleric",
             "power": "0",
             "rarity": "Uncommon",
@@ -3062,7 +3188,7 @@
                 "Zombie",
                 "Cleric"
             ],
-            "text": "Whenever you pay a tithe, you may pay {2}. If you do, Sin Broker deals 3 damage to each opponent and you gain 3 life.",
+            "text": "Whenever you pay a tithe, you may pay {2}. If you do, each opponent loses 3 life and you gain 3 life.",
             "toughness": "4",
             "type": "Creature \u2014 Zombie Cleric",
             "types": [
@@ -3082,7 +3208,7 @@
             "layout": "normal",
             "manaCost": "{4}{B}",
             "name": "Souldebt Collector",
-            "number": "113",
+            "number": "112",
             "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nHaste",
             "originalType": "Enchantment Creature \u2014 Spirit",
             "power": "4",
@@ -3111,7 +3237,7 @@
             "layout": "normal",
             "manaCost": "{6}{B}",
             "name": "Spite Caster",
-            "number": "114",
+            "number": "113",
             "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nMenace",
             "originalType": "Enchantment Creature \u2014 Spirit",
             "power": "5",
@@ -3140,7 +3266,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Sporegraft",
-            "number": "115",
+            "number": "114",
             "originalText": "Enchant creature\nEnchanted creature has lifelink.\nWhen Sporegraft enters the battlefield, germinate. (Put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Common",
@@ -3167,7 +3293,7 @@
             "layout": "normal",
             "manaCost": "{3}{B}",
             "name": "Starving Swooprat",
-            "number": "116",
+            "number": "115",
             "originalText": "Flying\nSacrifice a Fungus, Saproling, Plant, or Insect: You gain 2 life.",
             "originalType": "Creature \u2014 Bat",
             "power": "3",
@@ -3196,7 +3322,7 @@
             "layout": "normal",
             "manaCost": "{B}",
             "name": "Stinghopper",
-            "number": "117",
+            "number": "116",
             "originalText": "Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)",
             "originalType": "Creature \u2014 Fungus Frog",
             "power": "1",
@@ -3221,12 +3347,12 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "\"I'll lead us out. I know exactly what to avoid, I was raised here.\"\n\u2014Lord Erollin, to the former passengers of The Soul of New Alores",
-            "imageName": "tear to shreads",
+            "flavor": "\"Follow me. I know the dangers of the Ontarachie from my lotus expeditions.\"\n\u2014Lord Erollin, to the passengers of The Soul of New Alores",
+            "imageName": "tear to shreds",
             "layout": "normal",
             "manaCost": "{X}{B}",
-            "name": "Tear to Shreads",
-            "number": "118",
+            "name": "Tear to Shreds",
+            "number": "117",
             "originalText": "Destroy target creature with converted mana cost X or less.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -3250,8 +3376,8 @@
             "layout": "normal",
             "manaCost": "{3}{B}{B}",
             "name": "Terror of the Ontarachie",
-            "number": "119",
-            "originalText": "When Terror of the Ontarachie enters the battlefield, choose one \u2014\n\u2022 Each player sacrifices a creature.\n\u2022 Terror of the Ontarachie deals 5 damage to each player.",
+            "number": "118",
+            "originalText": "When Terror of the Ontarachie enters the battlefield, choose one \u2014\n\u2022 Each player sacrifices a creature.\n\u2022 Each player loses 5 life.",
             "originalType": "Creature \u2014 Crab Horror",
             "power": "5",
             "rarity": "Uncommon",
@@ -3259,7 +3385,7 @@
                 "Crab",
                 "Horror"
             ],
-            "text": "When Terror of the Ontarachie enters the battlefield, choose one \u2014\n\u2022 Each player sacrifices a creature.\n\u2022 Terror of the Ontarachie deals 5 damage to each player.",
+            "text": "When Terror of the Ontarachie enters the battlefield, choose one \u2014\n\u2022 Each player sacrifices a creature.\n\u2022 Each player loses 5 life.",
             "toughness": "4",
             "type": "Creature \u2014 Crab Horror",
             "types": [
@@ -3279,7 +3405,7 @@
             "layout": "normal",
             "manaCost": "{3}{B}{B}",
             "name": "Undying Watcher",
-            "number": "120",
+            "number": "119",
             "originalText": "When Undying Watcher enters the battlefield, germinate. (Put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)\nSacrifice another creature: Undying Watcher gains indestructible until end of turn.",
             "originalType": "Creature \u2014 Fungus Zombie",
             "power": "3",
@@ -3304,16 +3430,16 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "\"If they hoard wealth to their deaths, we shall simply collect it thereafter.\"\n\u2014Faradia",
+            "flavor": "\"If they hoard wealth to their deaths, we shall simply expedite the process.\"\n\u2014Faradia",
             "imageName": "vibrant rapture",
             "layout": "normal",
             "manaCost": "{X}{B}{B}",
             "name": "Vibrant Rapture",
-            "number": "121",
-            "originalText": "All creatures get -X/-X until end of turn. Whenever a creature dies this turn, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "number": "120",
+            "originalText": "All creatures get -X/-X until end of turn. Whenever a creature dies this turn, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "All creatures get -X/-X until end of turn. Whenever a creature dies this turn, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "All creatures get -X/-X until end of turn. Whenever a creature dies this turn, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -3332,7 +3458,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}{B}",
             "name": "Vindictive Abbot",
-            "number": "122",
+            "number": "121",
             "originalText": "Tithe (When this enters, you may tap three other creatures and/or artifacts you control.)\nWhen Vindictive Abbot enters the battlefield, you may have target creature get -1/-1 until end of turn. If Vindictive Abbot's tithe was paid, destroy that creature.",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "2",
@@ -3361,18 +3487,18 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Wailing Chorus",
-            "number": "123",
+            "number": "122",
             "originalText": "Tithe (When this enters, you may tap three other creatures and/or artifacts you control.)\nWhen Wailing Chorus enters the battlefield, each opponent discards a card. If its tithe was paid, each opponent discards two cards instead.",
-            "originalType": "Creature \u2014 Zombie Cleric",
+            "originalType": "Creature \u2014 Zombie Bard",
             "power": "1",
             "rarity": "Common",
             "subtypes": [
                 "Zombie",
-                "Cleric"
+                "Bard"
             ],
             "text": "Tithe (When this enters, you may tap three other creatures and/or artifacts you control.)\nWhen Wailing Chorus enters the battlefield, each opponent discards a card. If its tithe was paid, each opponent discards two cards instead.",
             "toughness": "1",
-            "type": "Creature \u2014 Zombie Cleric",
+            "type": "Creature \u2014 Zombie Bard",
             "types": [
                 "Creature"
             ]
@@ -3391,7 +3517,7 @@
             "layout": "normal",
             "manaCost": "{2}{B}",
             "name": "Wanderspore Terrapin",
-            "number": "124",
+            "number": "123",
             "originalType": "Creature \u2014 Fungus Turtle",
             "power": "2",
             "rarity": "Common",
@@ -3407,7 +3533,7 @@
         },
         {
             "artist": "Nele Diel",
-            "cmc": 3,
+            "cmc": 2,
             "colorIdentity": [
                 "B"
             ],
@@ -3416,13 +3542,37 @@
             ],
             "imageName": "whispers of the ontarachie",
             "layout": "normal",
-            "manaCost": "{1}{B}{B}",
+            "manaCost": "{1}{B}",
             "name": "Whispers of the Ontarachie",
-            "number": "125",
-            "originalText": "Germinate three times. Whispers of the Ontarachie deals 3 damage to you. (To germinate, put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
+            "number": "124",
+            "originalText": "Germinate two times. You lose 2 life. (To germinate, put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Germinate three times. Whispers of the Ontarachie deals 3 damage to you. (To germinate, put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
+            "text": "Germinate two times. You lose 2 life. (To germinate, put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
+            "type": "Instant",
+            "types": [
+                "Instant"
+            ]
+        },
+        {
+            "artist": "Slawomir Maniak",
+            "cmc": 2,
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "Black"
+            ],
+            "flavor": "\"The woopip don't seem to associate death with loss.\"\n\u2014Cypress",
+            "imageName": "woopip decomposition",
+            "layout": "normal",
+            "manaCost": "{1}{B}",
+            "name": "Woopip Decomposition",
+            "number": "125",
+            "originalText": "As an additional cost to cast this spell, sacrifice a creature.\nDraw two cards. You gain 2 life.",
+            "originalType": "Instant",
+            "rarity": "Common",
+            "text": "As an additional cost to cast this spell, sacrifice a creature.\nDraw two cards. You gain 2 life.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -3472,7 +3622,7 @@
             "manaCost": "{1}{R}",
             "name": "Balloon Dragoon",
             "number": "127",
-            "originalText": "Haste (This creature can attack and {T} as soon as it comes under your control.) {1}{U}: Balloon Dragoon gains flying until end of turn.",
+            "originalText": "Haste (This creature can attack and {T} as soon as it comes under your control.)\n{1}{U}: Balloon Dragoon gains flying until end of turn.",
             "originalType": "Creature \u2014 Human Knight",
             "power": "2",
             "rarity": "Common",
@@ -3535,35 +3685,6 @@
             ]
         },
         {
-            "artist": "Sam Lamont",
-            "cmc": 1,
-            "colorIdentity": [
-                "R"
-            ],
-            "colors": [
-                "Red"
-            ],
-            "imageName": "bogborn apparition",
-            "layout": "normal",
-            "manaCost": "{R}",
-            "name": "Bogborn Apparition",
-            "number": "130",
-            "originalText": "Trample, haste\nBogborn Apparition gets +1/+0 for each creature you control.\nAt the beginning of the end step, if Bogborn Apparition dealt damage to a player this turn, sacrifice it.",
-            "originalType": "Creature \u2014 Devil Elemental",
-            "power": "0",
-            "rarity": "Uncommon",
-            "subtypes": [
-                "Devil",
-                "Elemental"
-            ],
-            "text": "Trample, haste\nBogborn Apparition gets +1/+0 for each creature you control.\nAt the beginning of the end step, if Bogborn Apparition dealt damage to a player this turn, sacrifice it.",
-            "toughness": "1",
-            "type": "Creature \u2014 Devil Elemental",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
             "artist": "SEPHIROTH \u2605 ART",
             "cmc": 2,
             "colorIdentity": [
@@ -3576,7 +3697,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Bogborn Charger",
-            "number": "131",
+            "number": "130",
             "originalText": "Whenever another creature enters the battlefield under your control, you may have it gain haste. If you do, return it to its owner's hand at the beginning of the next end step.",
             "originalType": "Creature \u2014 Devil",
             "power": "2",
@@ -3604,7 +3725,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Bogborn Exorcist",
-            "number": "132",
+            "number": "131",
             "originalText": "Menace\nWhen Bogborn Exorcist enters the battlefield, you may discard a card. When you do, exile target instant or sorcery card with converted mana cost 3 or less from an opponent's graveyard. Copy that card. You may cast the copy without paying its mana cost.",
             "originalType": "Creature \u2014 Devil Cleric",
             "power": "3",
@@ -3634,7 +3755,7 @@
             "layout": "normal",
             "manaCost": "{4}{R}",
             "name": "Bogstalker Snake",
-            "number": "133",
+            "number": "132",
             "originalText": "Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",
             "originalType": "Creature \u2014 Snake",
             "power": "5",
@@ -3662,18 +3783,82 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Bouquet Singer",
-            "number": "134",
-            "originalText": "Harmony \u2014 Create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nWhen Bouquet Singer enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
-            "originalType": "Creature \u2014 Human Shaman",
+            "number": "133",
+            "originalText": "Harmony \u2014 Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nWhen Bouquet Singer enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
+            "originalType": "Creature \u2014 Human Bard",
             "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
                 "Human",
-                "Shaman"
+                "Bard"
             ],
-            "text": "Harmony \u2014 Create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nWhen Bouquet Singer enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
+            "text": "Harmony \u2014 Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\nWhen Bouquet Singer enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
             "toughness": "1",
-            "type": "Creature \u2014 Human Shaman",
+            "type": "Creature \u2014 Human Bard",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Ken Hogan",
+            "cmc": 5,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "Red"
+            ],
+            "imageName": "brash hunter",
+            "layout": "double-faced",
+            "manaCost": "{3}{R}{R}",
+            "name": "Brash Hunter",
+            "names": [
+                "Brash Hunter",
+                "Grisly Rougarou"
+            ],
+            "number": "134a",
+            "originalText": "Sacrifice another creature: Brash Hunter deals 1 damage to any target.\nAt the beginning of your end step, if three or more creatures died this turn, transform Brash Hunter.",
+            "originalType": "Creature \u2014 Human Warrior",
+            "power": "3",
+            "rarity": "Rare",
+            "subtypes": [
+                "Human",
+                "Warrior"
+            ],
+            "text": "Sacrifice another creature: Brash Hunter deals 1 damage to any target.\nAt the beginning of your end step, if three or more creatures died this turn, transform Brash Hunter.",
+            "toughness": "3",
+            "type": "Creature \u2014 Human Warrior",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Santa Norvaisaite",
+            "cmc": 5,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "Red"
+            ],
+            "imageName": "grisly rougarou",
+            "layout": "double-faced",
+            "name": "Grisly Rougarou",
+            "names": [
+                "Brash Hunter",
+                "Grisly Rougarou"
+            ],
+            "number": "134b",
+            "originalText": "Sacrifice another creature: Grisly Rougarou deals damage equal to the sacrificed creature's power to any target.",
+            "originalType": "Creature \u2014 Werewolf",
+            "power": "4",
+            "rarity": "Rare",
+            "subtypes": [
+                "Werewolf"
+            ],
+            "text": "Sacrifice another creature: Grisly Rougarou deals damage equal to the sacrificed creature's power to any target.",
+            "toughness": "4",
+            "type": "Creature \u2014 Werewolf",
             "types": [
                 "Creature"
             ]
@@ -3692,7 +3877,7 @@
             "manaCost": "{3}{R}",
             "name": "Burning Revelations",
             "number": "135",
-            "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nAny opponent may have you draw three cards. If they don't, Burning Revelations deals 5 damage to them. Then if you this spell's tithe was paid, copy it twice.",
+            "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nAny opponent may have you draw three cards. If they don't, Burning Revelations deals 5 damage to them. Then if this spell's tithe was paid, copy it twice.",
             "originalType": "Instant",
             "rarity": "Rare",
             "text": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nAny opponent may have you draw three cards. If they don't, Burning Revelations deals 5 damage to them. Then if this spell's tithe was paid, copy it twice.",
@@ -3767,7 +3952,7 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "\"It is not my place to decide who is worthy of forgiveness.\"",
+            "flavor": "\"It is not my place to forgive sinners.\"",
             "imageName": "damning flames",
             "layout": "normal",
             "manaCost": "{1}{R}{R}",
@@ -3814,7 +3999,7 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "Some say that for every one storm during hurricane season, three lotuses will bloom by Plum de Val.",
+            "flavor": "Some say that for every storm during hurricane season, three lotuses will bloom by Plume de Val.",
             "imageName": "disrupting storms",
             "layout": "normal",
             "manaCost": "{3}{R}",
@@ -3843,10 +4028,10 @@
             "manaCost": "{1}{R}",
             "name": "Elegant Strike",
             "number": "141",
-            "originalText": "Elegant Strike deals 2 damage to target tapped creature. Create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "Elegant Strike deals 2 damage to target tapped creature. Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Elegant Strike deals 2 damage to target tapped creature. Create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "Elegant Strike deals 2 damage to target tapped creature. Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -3877,7 +4062,7 @@
         },
         {
             "artist": "Leonid Afremov",
-            "cmc": 2,
+            "cmc": 6,
             "colorIdentity": [
                 "R"
             ],
@@ -3886,20 +4071,20 @@
             ],
             "imageName": "exciting band",
             "layout": "normal",
-            "manaCost": "{1}{R}",
+            "manaCost": "{5}{R}",
             "name": "Exciting Band",
             "number": "143",
-            "originalText": "Harmony \u2014 Creatures you control gain first strike until end of turn.\nWhen Exciting Band enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
-            "originalType": "Creature \u2014 Human Wizard",
-            "power": "2",
-            "rarity": "Uncommon",
+            "originalText": "Harmony \u2014 Exciting Band deals 3 damage to any target.\nWhen Exciting Band enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
+            "originalType": "Creature \u2014 Human Bard",
+            "power": "4",
+            "rarity": "Rare",
             "subtypes": [
                 "Human",
-                "Wizard"
+                "Bard"
             ],
-            "text": "Harmony \u2014 Creatures you control gain first strike until end of turn.\nWhen Exciting Band enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
-            "toughness": "1",
-            "type": "Creature \u2014 Human Wizard",
+            "text": "Harmony \u2014 Exciting Band deals 3 damage to any target.\nWhen Exciting Band enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
+            "toughness": "4",
+            "type": "Creature \u2014 Human Bard",
             "types": [
                 "Creature"
             ]
@@ -3965,7 +4150,7 @@
             "manaCost": "{2}{R}",
             "name": "Festival Rioters",
             "number": "146",
-            "originalText": "When Festival Rioters enters the battlefield, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\n{2}{R}: Target creature gains menace until end of turn.",
+            "originalText": "When Festival Rioters enters the battlefield, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\n{1}{R}: Festival Rioters gets +2/+0 until end of turn.",
             "originalType": "Creature \u2014 Human Berserker",
             "power": "2",
             "rarity": "Common",
@@ -3973,7 +4158,7 @@
                 "Human",
                 "Berserker"
             ],
-            "text": "When Festival Rioters enters the battlefield, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\n{2}{R}: Target creature gains menace until end of turn.",
+            "text": "When Festival Rioters enters the battlefield, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\n{1}{R}: Festival Rioters gets +2/+0 until end of turn.",
             "toughness": "2",
             "type": "Creature \u2014 Human Berserker",
             "types": [
@@ -4013,7 +4198,7 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "The Phoenix dies with each performance, gaining a feather of another color on its return next Plum de Val.",
+            "flavor": "The Phoenix dies with each performance, gaining a feather of another color on its return next Plume de Val.",
             "imageName": "gift of the phoenix",
             "layout": "normal",
             "manaCost": "{R}",
@@ -4092,7 +4277,7 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "\"Devils just want attention, this is why they fit in so well with the Parish. With Faradia, you are never alone.\"\n\u2014Helena",
+            "flavor": "\"Devils just want companionship. This is why they're perfect soldiers for Faradia.\"\n\u2014Helena",
             "imageName": "lonely devil",
             "layout": "normal",
             "manaCost": "{1}{R}",
@@ -4127,10 +4312,10 @@
             "manaCost": "{3}{R}",
             "name": "Lord's Voyage",
             "number": "152",
-            "originalText": "Exile the top three cards of your library. For each land card exiled this way, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\" Until the end of your next turn, you may cast nonland cards exiled this way.",
+            "originalText": "Exile the top three cards of your library. For each land card exiled this way, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\" Until the end of your next turn, you may cast nonland cards exiled this way.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Exile the top three cards of your library. For each land card exiled this way, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\" Until the end of your next turn, you may cast nonland cards exiled this way.",
+            "text": "Exile the top three cards of your library. For each land card exiled this way, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\" Until the end of your next turn, you may cast nonland cards exiled this way.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -4161,30 +4346,30 @@
             ]
         },
         {
-            "artist": "Ayu Marques",
-            "cmc": 5,
+            "artist": "lidija raletic",
+            "cmc": 2,
             "colorIdentity": [
                 "R"
             ],
             "colors": [
                 "Red"
             ],
-            "flavor": "'The petal of a lotus will stop a rougarou in its tracks' is just an old wive's tale.",
-            "imageName": "lurking rougarou",
+            "imageName": "minister of zealots",
             "layout": "normal",
-            "manaCost": "{3}{R}{R}",
-            "name": "Lurking Rougarou",
+            "manaCost": "{1}{R}",
+            "name": "Minister of Zealots",
             "number": "154",
-            "originalText": "Whenever a creature dealt damage by Lurking Rougarou this turn dies, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
-            "originalType": "Creature \u2014 Werewolf",
-            "power": "5",
-            "rarity": "Uncommon",
+            "originalText": "At the beginning of combat on your turn, create a 1/1 red Cleric creature token with haste.\nAt the beginning of your end step, sacrifice each Cleric token you control unless you cast an instant or sorcery spell this turn.",
+            "originalType": "Creature \u2014 Human Cleric",
+            "power": "2",
+            "rarity": "Rare",
             "subtypes": [
-                "Werewolf"
+                "Human",
+                "Cleric"
             ],
-            "text": "Whenever a creature dealt damage by Lurking Rougarou this turn dies, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
-            "toughness": "5",
-            "type": "Creature \u2014 Werewolf",
+            "text": "At the beginning of combat on your turn, create a 1/1 red Cleric creature token with haste.\nAt the beginning of your end step, sacrifice each Cleric token you control unless you cast an instant or sorcery spell this turn.",
+            "toughness": "1",
+            "type": "Creature \u2014 Human Cleric",
             "types": [
                 "Creature"
             ]
@@ -4365,14 +4550,14 @@
             "manaCost": "{3}{R}{R}",
             "name": "Scuttling Bogbuster",
             "number": "161",
-            "originalText": "Creatures without flying can't block.",
+            "originalText": "{2}{R}: Target creature can't block this turn.",
             "originalType": "Creature \u2014 Crab",
-            "power": "4",
-            "rarity": "Rare",
+            "power": "5",
+            "rarity": "Uncommon",
             "subtypes": [
                 "Crab"
             ],
-            "text": "Creatures without flying can't block.",
+            "text": "{2}{R}: Target creature can't block this turn.",
             "toughness": "3",
             "type": "Creature \u2014 Crab",
             "types": [
@@ -4394,10 +4579,10 @@
             "manaCost": "{3}{R}",
             "name": "Shock and Awe",
             "number": "162",
-            "originalText": "Shock and Awe deals 2 damage to target creature. Other creatures can't block this turn.",
+            "originalText": "Shock and Awe deals 2 damage to target creature. Creatures can't block this turn.",
             "originalType": "Sorcery",
             "rarity": "Common",
-            "text": "Shock and Awe deals 2 damage to target creature. Other creatures can't block this turn.",
+            "text": "Shock and Awe deals 2 damage to target creature. Creatures can't block this turn.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -4418,10 +4603,10 @@
             "manaCost": "{2}{R}",
             "name": "Storehouse Collapse",
             "number": "163",
-            "originalText": "Destroy target artifact or nonbasic land. Its controller creates a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "Destroy target artifact or nonbasic land. Its controller create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Sorcery",
-            "rarity": "Rare",
-            "text": "Destroy target artifact or nonbasic land. Its controller creates a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "rarity": "Uncommon",
+            "text": "Destroy target artifact or nonbasic land. Its controller creates a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -4443,16 +4628,16 @@
             "name": "Streetside Entertainer",
             "number": "164",
             "originalText": "Harmony \u2014 Target creature gains haste until end of turn.\nWhen Streetside Entertainer enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
-            "originalType": "Creature \u2014 Human Wizard",
+            "originalType": "Creature \u2014 Human Bard",
             "power": "1",
             "rarity": "Common",
             "subtypes": [
                 "Human",
-                "Wizard"
+                "Bard"
             ],
             "text": "Harmony \u2014 Target creature gains haste until end of turn.\nWhen Streetside Entertainer enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
             "toughness": "1",
-            "type": "Creature \u2014 Human Wizard",
+            "type": "Creature \u2014 Human Bard",
             "types": [
                 "Creature"
             ]
@@ -4471,7 +4656,7 @@
             "manaCost": "{2}{R}",
             "name": "Sudden Conversion",
             "number": "165",
-            "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nYou may cast this spell as though it had flash if its tithe is paid.\nGain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.",
+            "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nYou may cast this spell as though it had flash if you pay its tithe.\nGain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
             "text": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nYou may cast this spell as though it had flash if you pay its tithe.\nGain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.",
@@ -4494,15 +4679,15 @@
             "manaCost": "{3}{R}",
             "name": "Twirling Duet",
             "number": "166",
-            "originalText": "Harmony \u2014 Target creature gets +1/+0 and gains double strike until end of turn.\nWhen Twirling Duet enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
+            "originalText": "Harmony \u2014 Creatures you control gain double strike until end of turn.\nWhen Twirling Duet enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
             "originalType": "Creature \u2014 Human Rogue",
-            "power": "3",
-            "rarity": "Rare",
+            "power": "2",
+            "rarity": "Uncommon",
             "subtypes": [
                 "Human",
                 "Rogue"
             ],
-            "text": "Harmony \u2014 Target creature gets +1/+0 and gains double strike until end of turn.\nWhen Twirling Duet enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
+            "text": "Harmony \u2014 Creatures you control gain double strike until end of turn.\nWhen Twirling Duet enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
             "toughness": "2",
             "type": "Creature \u2014 Human Rogue",
             "types": [
@@ -4524,10 +4709,10 @@
             "manaCost": "{R}",
             "name": "Vivid March",
             "number": "167",
-            "originalText": "Target creature you control gains trample until end of turn. Whenever that creature deals damage to a player this turn, create that many colorless Petal artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "Target creature you control gains trample until end of turn. Whenever that creature deals damage to a player this turn, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Target creature you control gains trample until end of turn. Whenever that creature deals damage to a player this turn, create that many colorless Petal artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "Target creature you control gains trample until end of turn. Whenever that creature deals damage to a player this turn, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -4542,7 +4727,7 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "\"If we can convert devils, we can convert another rejected soul.\"\n\u2014New Alores Preacher",
+            "flavor": "\"The Zoulev condemned these souls, but we may still redeem them.\"\n\u2014New Alores Preacher",
             "imageName": "zealous scaleblight",
             "layout": "normal",
             "manaCost": "{3}{R}",
@@ -4577,7 +4762,7 @@
             "manaCost": "{G}{G}",
             "name": "Ambushing Alligator",
             "number": "169",
-            "originalText": "Trample\nAs long as it's an opponent's turn, Ambushing Alligator is a blue Bird with base power toughness 1/1 and has flying and hexproof.",
+            "originalText": "Trample\nAs long as it's an opponent's turn, Ambushing Alligator is a blue Bird with base power and toughness 1/1 and has flying and hexproof.",
             "originalType": "Creature \u2014 Crocodile",
             "power": "3",
             "rarity": "Uncommon",
@@ -4711,10 +4896,10 @@
             "manaCost": "{1}{G}",
             "name": "Coat in Petals",
             "number": "173",
-            "originalText": "Target creature gets +4/+4 until end of turn. Create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "Target creature gets +4/+4 until end of turn. Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Target creature gets +4/+4 until end of turn. Create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "Target creature gets +4/+4 until end of turn. Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -4752,23 +4937,23 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "\"New Alores creates new and innovative sounds, but its always nice to return to classics from my youth.\"\n\u2014Lord Erollin",
+            "flavor": "\"New Alores creates new and innovative sounds, but it's always nice to return to classics from my youth.\"\n\u2014Lord Erollin",
             "imageName": "croakfolk troubadour",
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Croakfolk Troubadour",
             "number": "175",
             "originalText": "When Croakfolk Troubadour enters the battlefield, draw a card.",
-            "originalType": "Creature \u2014 Frog Scout",
+            "originalType": "Creature \u2014 Frog Bard",
             "power": "1",
             "rarity": "Common",
             "subtypes": [
                 "Frog",
-                "Scout"
+                "Bard"
             ],
             "text": "When Croakfolk Troubadour enters the battlefield, draw a card.",
             "toughness": "1",
-            "type": "Creature \u2014 Frog Scout",
+            "type": "Creature \u2014 Frog Bard",
             "types": [
                 "Creature"
             ]
@@ -4927,7 +5112,7 @@
             "manaCost": "{1}{G}",
             "name": "Cypress, the Wayfarer",
             "number": "181",
-            "originalText": "+2: Until end of turn, you may spend mana as though it were mana of any type to cast creature spells or activate abilities of creatures you control.\n-2: For each color, put a +1/+1 counter on a creature you control of that color.\n-7: For each color, search your library for up to one creature card of that color. Put those cards onto the battlefield, then shuffle your library.",
+            "originalText": "+2: Until end of turn, you may spend mana as though it were mana of any type to cast creature spells.\n-2: For each color, put a +1/+1 counter on a creature you control of that color.\n-7: For each color, search your library for up to one creature card of that color. Put those cards onto the battlefield, then shuffle your library.",
             "originalType": "Legendary Planeswalker \u2014 Cypress",
             "rarity": "Mythic Rare",
             "subtypes": [
@@ -4936,7 +5121,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "+2: Until end of turn, you may spend mana as though it were mana of any type to cast creature spells or activate abilities of creatures you control.\n-2: For each color, put a +1/+1 counter on a creature you control of that color.\n-7: For each color, search your library for up to one creature card of that color. Put those cards onto the battlefield, then shuffle your library.",
+            "text": "+2: Until end of turn, you may spend mana as though it were mana of any type to cast creature spells.\n-2: For each color, put a +1/+1 counter on a creature you control of that color.\n-7: For each color, search your library for up to one creature card of that color. Put those cards onto the battlefield, then shuffle your library.",
             "type": "Legendary Planeswalker \u2014 Cypress",
             "types": [
                 "Planeswalker"
@@ -4956,10 +5141,10 @@
             "manaCost": "{3}{G}{G}",
             "name": "Dance of the Dryads",
             "number": "182",
-            "originalText": "Whenever a player taps a permanent for mana, that player adds one mana of any type that permanent produced.\nWhen Dance of the Dryads enters the battlefield, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "Whenever a player taps a permanent for mana, that player adds one mana of any type that permanent produced.\nWhen Dance of the Dryads enters the battlefield, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Enchantment",
             "rarity": "Rare",
-            "text": "Whenever a player taps a permanent for mana, that player adds one mana of any type that permanent produced.\nWhen Dance of the Dryads enters the battlefield, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "Whenever a player taps a permanent for mana, that player adds one mana of any type that permanent produced.\nWhen Dance of the Dryads enters the battlefield, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -4994,35 +5179,6 @@
             ]
         },
         {
-            "artist": "Alvaro Cardozo",
-            "cmc": 7,
-            "colorIdentity": [
-                "G"
-            ],
-            "colors": [
-                "Green"
-            ],
-            "imageName": "harbinger of warriors",
-            "layout": "normal",
-            "manaCost": "{5}{G}{G}",
-            "name": "Harbinger of Warriors",
-            "number": "184",
-            "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nAll creatures able to block Harbinger of Warriors do so.",
-            "originalType": "Enchantment Creature \u2014 Spirit",
-            "power": "5",
-            "rarity": "Rare",
-            "subtypes": [
-                "Spirit"
-            ],
-            "text": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nAll creatures able to block Harbinger of Warriors do so.",
-            "toughness": "5",
-            "type": "Enchantment Creature \u2014 Spirit",
-            "types": [
-                "Enchantment",
-                "Creature"
-            ]
-        },
-        {
             "artist": "Jonatan Br\u00fcsch",
             "cmc": 7,
             "colorIdentity": [
@@ -5035,7 +5191,7 @@
             "layout": "normal",
             "manaCost": "{6}{G}",
             "name": "Kantra of Bounty",
-            "number": "185",
+            "number": "184",
             "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nYou may play any number of lands on each of your turns.",
             "originalType": "Enchantment Creature \u2014 Spirit",
             "power": "4",
@@ -5064,7 +5220,7 @@
             "layout": "normal",
             "manaCost": "{6}{G}",
             "name": "Kantra of Fortitude",
-            "number": "186",
+            "number": "185",
             "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nTrample",
             "originalType": "Enchantment Creature \u2014 Spirit",
             "power": "6",
@@ -5082,7 +5238,7 @@
         },
         {
             "artist": "Supratim Sarkar",
-            "cmc": 5,
+            "cmc": 6,
             "colorIdentity": [
                 "G"
             ],
@@ -5091,9 +5247,9 @@
             ],
             "imageName": "kantra of old majik",
             "layout": "normal",
-            "manaCost": "{4}{G}",
+            "manaCost": "{5}{G}",
             "name": "Kantra of Old Majik",
-            "number": "187",
+            "number": "186",
             "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nWhen Kantra of Old Majik enters the battlefield, you may return target card from your graveyard to your hand.",
             "originalType": "Enchantment Creature \u2014 Spirit",
             "power": "4",
@@ -5123,7 +5279,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Kantra's Envoy",
-            "number": "188",
+            "number": "187",
             "originalText": "{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast enchantment spells.",
             "originalType": "Creature \u2014 Human Shaman",
             "power": "1",
@@ -5153,15 +5309,15 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Lotus Feaster",
-            "number": "189",
-            "originalText": "When Lotus Feaster enters the battlefield, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "number": "188",
+            "originalText": "When Lotus Feaster enters the battlefield, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Creature \u2014 Frog",
             "power": "2",
             "rarity": "Common",
             "subtypes": [
                 "Frog"
             ],
-            "text": "When Lotus Feaster enters the battlefield, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "When Lotus Feaster enters the battlefield, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "toughness": "3",
             "type": "Creature \u2014 Frog",
             "types": [
@@ -5182,14 +5338,81 @@
             "layout": "normal",
             "manaCost": "{G}",
             "name": "Marsh's Veil",
-            "number": "190",
-            "originalText": "Target creature gains hexproof until end of turn.\nCreate a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "number": "189",
+            "originalText": "Target creature gains hexproof until end of turn.\nCreate a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Target creature gains hexproof until end of turn.\nCreate a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "Target creature gains hexproof until end of turn.\nCreate a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Instant",
             "types": [
                 "Instant"
+            ]
+        },
+        {
+            "artist": "Richard R\u00fccker",
+            "cmc": 5,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "flavor": "Designed with CasualR",
+            "imageName": "mushroom merchant",
+            "layout": "double-faced",
+            "manaCost": "{3}{G}{G}",
+            "name": "Mushroom Merchant",
+            "names": [
+                "Mushroom Merchant",
+                "Overgrowth Host"
+            ],
+            "number": "190a",
+            "originalText": "At the beginning of your upkeep, germinate. Then, if creatures you control have total power 10 or greater, transform Mushroom Merchant. (To germinate, put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
+            "originalType": "Creature \u2014 Human Advisor",
+            "power": "3",
+            "rarity": "Rare",
+            "subtypes": [
+                "Human",
+                "Advisor"
+            ],
+            "text": "At the beginning of your upkeep, germinate. Then if creatures you control have total power 10 or greater, transform Mushroom Merchant. (To germinate, put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
+            "toughness": "3",
+            "type": "Creature \u2014 Human Advisor",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Murdok X",
+            "cmc": 5,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "flavor": "Designed with CasualR",
+            "imageName": "overgrowth host",
+            "layout": "double-faced",
+            "name": "Overgrowth Host",
+            "names": [
+                "Mushroom Merchant",
+                "Overgrowth Host"
+            ],
+            "number": "190b",
+            "originalText": "Whenever Overgrowth Host attacks, germinate. Then, creatures you control that are Saprolings or have counters on them gain trample until end of turn.\nSaprolings you control get +1/+1.",
+            "originalType": "Creature \u2014 Fungus Druid",
+            "power": "3",
+            "rarity": "Rare",
+            "subtypes": [
+                "Fungus",
+                "Druid"
+            ],
+            "text": "Whenever Overgrowth Host attacks, germinate. Then, creatures you control that are Saprolings or have counters on them gain trample until end of turn.\nSaprolings you control get +1/+1.",
+            "toughness": "3",
+            "type": "Creature \u2014 Fungus Druid",
+            "types": [
+                "Creature"
             ]
         },
         {
@@ -5229,14 +5452,14 @@
             "manaCost": "{1}{G}{G}",
             "name": "Ontarachie Dryad",
             "number": "192",
-            "originalText": "Whenever you draw a card, put a +1/+1 counter on Ontarachie Dryad.\nRemove a counter from Ontarachie Dryad: Create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\".",
+            "originalText": "Whenever you draw a card, put a +1/+1 counter on Ontarachie Dryad.\nRemove a counter from Ontarachie Dryad: Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\".",
             "originalType": "Creature \u2014 Dryad",
             "power": "2",
             "rarity": "Rare",
             "subtypes": [
                 "Dryad"
             ],
-            "text": "Whenever you draw a card, put a +1/+1 counter on Ontarachie Dryad.\nRemove a counter from Ontarachie Dryad: Create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\".",
+            "text": "Whenever you draw a card, put a +1/+1 counter on Ontarachie Dryad.\nRemove a counter from Ontarachie Dryad: Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\".",
             "toughness": "1",
             "type": "Creature \u2014 Dryad",
             "types": [
@@ -5244,7 +5467,7 @@
             ]
         },
         {
-            "artist": "Murdok X",
+            "artist": "ma chun",
             "cmc": 2,
             "colorIdentity": [
                 "G"
@@ -5252,29 +5475,28 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "\"Some of the woopip are intelligent. Some seem to exist just to spread spores.\"\n\u2014Cypress",
-            "imageName": "ontarachie emisary",
+            "imageName": "ontarachie emissary",
             "layout": "normal",
             "manaCost": "{1}{G}",
-            "name": "Ontarachie Emisary",
+            "name": "Ontarachie Emissary",
             "number": "193",
-            "originalText": "When Ontarachie Emisary leaves the battlefield, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.",
-            "originalType": "Creature \u2014 Fungus Scout",
-            "power": "2",
+            "originalText": "When Ontarachie Emissary leaves the battlefield, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.",
+            "originalType": "Creature \u2014 Human Scout",
+            "power": "1",
             "rarity": "Uncommon",
             "subtypes": [
-                "Fungus",
+                "Human",
                 "Scout"
             ],
-            "text": "When Ontarachie Emisary leaves the battlefield, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.",
+            "text": "When Ontarachie Emissary leaves the battlefield, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.",
             "toughness": "1",
-            "type": "Creature \u2014 Fungus Scout",
+            "type": "Creature \u2014 Human Scout",
             "types": [
                 "Creature"
             ]
         },
         {
-            "artist": "Richard R\u00fccker",
+            "artist": "Oleg Kapustin",
             "cmc": 3,
             "colorIdentity": [
                 "G"
@@ -5288,16 +5510,16 @@
             "name": "Ontarachie Forager",
             "number": "194",
             "originalText": "Vigilance (Attacking doesn't cause this creature to tap.)\nSacrifice a Fungus, Saproling, Plant, or Insect: Put a +1/+1 counter on Ontarachie Forager.",
-            "originalType": "Creature \u2014 Human Scout",
+            "originalType": "Creature \u2014 Lizard Scout",
             "power": "3",
             "rarity": "Common",
             "subtypes": [
-                "Human",
+                "Lizard",
                 "Scout"
             ],
             "text": "Vigilance (Attacking doesn't cause this creature to tap.)\nSacrifice a Fungus, Saproling, Plant, or Insect: Put a +1/+1 counter on Ontarachie Forager.",
             "toughness": "2",
-            "type": "Creature \u2014 Human Scout",
+            "type": "Creature \u2014 Lizard Scout",
             "types": [
                 "Creature"
             ]
@@ -5340,7 +5562,7 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "\"So well behaved!. The only time I've seen a marshcroaker this focused is when they're defending their eggs. Best in show!\"\n\u2014 Lord Erollin",
+            "flavor": "\"So well behaved!. The only time I've seen a marshcroaker this focused is when they're defending their eggs. Best in show!\"\n\u2014Lord Erollin",
             "imageName": "prized marshcroaker",
             "layout": "normal",
             "manaCost": "{2}{G}{G}",
@@ -5461,7 +5683,7 @@
             "manaCost": "{1}{G}",
             "name": "Sporeflow Protector",
             "number": "200",
-            "originalText": "{1}{G}, Exile two cards from a single graveyard: Germinate. (Put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
+            "originalText": "{1}{G}: Exile two target cards from a single graveyard. When you do, germinate. (Put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
             "originalType": "Creature \u2014 Fungus Warrior",
             "power": "2",
             "rarity": "Rare",
@@ -5469,7 +5691,7 @@
                 "Fungus",
                 "Warrior"
             ],
-            "text": "{1}{G}, Exile two cards from a single graveyard: Germinate. (Put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
+            "text": "{1}{G}: Exile two target cards from a single graveyard. When you do, germinate. (Put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
             "toughness": "3",
             "type": "Creature \u2014 Fungus Warrior",
             "types": [
@@ -5687,7 +5909,7 @@
             "manaCost": "{3}{G}{G}",
             "name": "Woopip Wanderer",
             "number": "208",
-            "originalText": "When Woopip Wanderer enters the battlefield, create two colorless Petal artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\n{2}{G}: Germinate. (Put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
+            "originalText": "When Woopip Wanderer enters the battlefield, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\n{2}{G}: Germinate. (Put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
             "originalType": "Creature \u2014 Fungus Scout",
             "power": "3",
             "rarity": "Uncommon",
@@ -5695,7 +5917,7 @@
                 "Fungus",
                 "Scout"
             ],
-            "text": "When Woopip Wanderer enters the battlefield, create two colorless Petal artifact tokens with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\n{2}{G}: Germinate. (Put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
+            "text": "When Woopip Wanderer enters the battlefield, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"\n{2}{G}: Germinate. (Put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
             "toughness": "3",
             "type": "Creature \u2014 Fungus Scout",
             "types": [
@@ -5735,7 +5957,7 @@
             "colors": [
                 "Green"
             ],
-            "flavor": "\"I call the upon kantra for strength. I call upon them for guidance. I call upon them the same as my family.\"",
+            "flavor": "\"I call upon kantra for strength. I call upon them for guidance. I call upon them the same as my family.\"",
             "imageName": "zoulev ritualist",
             "layout": "normal",
             "manaCost": "{1}{G}{G}",
@@ -5771,10 +5993,10 @@
             ],
             "imageName": "adavene, dean of the arts",
             "layout": "normal",
-            "manaCost": "{3}{R}{W}{U}",
+            "manaCost": "{3}{U}{R}{W}",
             "name": "Adavene, Dean of the Arts",
             "number": "211",
-            "originalText": "Flying\nWhenever a permanent with harmony enters the battlefield under your control, harmonize. (Trigger up to one harmony of a permanent you control.)\nWhenever a creature you control deals combat damage to a player, you may exile it, then return it to the battlefield.",
+            "originalText": "Flying\nWhenever another creature enters the battlefield under your control, Adavene, Dean of the Arts deals 1 damage to each opponent.\nWhenever a creature you control deals combat damage to a player, you may exile it, then return it to the battlefield.",
             "originalType": "Legendary Creature \u2014 Bird Wizard",
             "power": "4",
             "rarity": "Mythic Rare",
@@ -5785,7 +6007,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Flying\nWhenever a permanent with harmony enters the battlefield under your control, harmonize. (Trigger up to one harmony of a permanent you control.)\nWhenever a creature you control deals combat damage to a player, you may exile it, then return it to the battlefield.",
+            "text": "Flying\nWhenever another creature enters the battlefield under your control, Adavene, Dean of the Arts deals 1 damage to each opponent.\nWhenever a creature you control deals combat damage to a player, you may exile it, then return it to the battlefield.",
             "toughness": "4",
             "type": "Legendary Creature \u2014 Bird Wizard",
             "types": [
@@ -5840,7 +6062,7 @@
             "manaCost": "{1}{W}{B}",
             "name": "Determined Evangelist",
             "number": "213",
-            "originalText": "Tithe (When this enters, you may tap three other creatures and/or artifacts you control.)\nMenace, lifelink\nWhen Determined Evangelist's tithe is paid, put two +1/+1 counters on it.",
+            "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nMenace, lifelink\nWhen Determined Evangelist's tithe is paid, put two +1/+1 counters on it.",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "2",
             "rarity": "Uncommon",
@@ -5848,7 +6070,7 @@
                 "Human",
                 "Cleric"
             ],
-            "text": "Tithe (When this enters, you may tap three other creatures and/or artifacts you control.)\nMenace, lifelink\nWhen Determined Evangelist's tithe is paid, put two +1/+1 counters on it.",
+            "text": "Tithe (When this enters, you may tap three artifacts and/or creatures you control.)\nMenace, lifelink\nWhen Determined Evangelist's tithe is paid, put two +1/+1 counters on it.",
             "toughness": "2",
             "type": "Creature \u2014 Human Cleric",
             "types": [
@@ -5872,16 +6094,16 @@
             "name": "Dramatic Artist",
             "number": "214",
             "originalText": "Harmony \u2014 Draw a card, then discard a card.\nWhenever Dramatic Artist attacks, harmonize. (Trigger up to one harmony of one permanent you control.)",
-            "originalType": "Creature \u2014 Human Rogue",
+            "originalType": "Creature \u2014 Human Bard",
             "power": "5",
             "rarity": "Uncommon",
             "subtypes": [
                 "Human",
-                "Rogue"
+                "Bard"
             ],
             "text": "Harmony \u2014 Draw a card, then discard a card.\nWhenever Dramatic Artist attacks, harmonize. (Trigger up to one harmony of one permanent you control.)",
             "toughness": "3",
-            "type": "Creature \u2014 Human Rogue",
+            "type": "Creature \u2014 Human Bard",
             "types": [
                 "Creature"
             ]
@@ -6028,7 +6250,7 @@
             "manaCost": "{G}{U}",
             "name": "Irrigation Trawler",
             "number": "219",
-            "originalText": "When Irrigation Trawler enters the battlefield, reveal the top card of your library. If that card was a land card, put that card into your hand. Otherwise, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one one mana of any color.\"",
+            "originalText": "When Irrigation Trawler enters the battlefield, reveal the top card of your library. If that card was a land card, put that card into your hand. Otherwise, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one one mana of any color.\"",
             "originalType": "Creature \u2014 Human Farmer",
             "power": "1",
             "rarity": "Uncommon",
@@ -6036,7 +6258,7 @@
                 "Human",
                 "Farmer"
             ],
-            "text": "When Irrigation Trawler enters the battlefield, reveal the top card of your library. If that card was a land card, put that card into your hand. Otherwise, create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one one mana of any color.\"",
+            "text": "When Irrigation Trawler enters the battlefield, reveal the top card of your library. If that card was a land card, put that card into your hand. Otherwise, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one one mana of any color.\"",
             "toughness": "3",
             "type": "Creature \u2014 Human Farmer",
             "types": [
@@ -6090,17 +6312,17 @@
             "manaCost": "{R}{W}",
             "name": "Plume de Val Singer",
             "number": "221",
-            "originalText": "Harmony \u2014 Other creatures you control get +1/+0 and gain vigilance until end of turn.\nWhen Plume de Val Singer enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
-            "originalType": "Creature \u2014 Human Wizard",
+            "originalText": "Harmony \u2014 Creatures you control get +1/+0 and gain vigilance until end of turn.\nWhen Plume de Val Singer enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
+            "originalType": "Creature \u2014 Human Bard",
             "power": "2",
             "rarity": "Uncommon",
             "subtypes": [
                 "Human",
-                "Wizard"
+                "Bard"
             ],
-            "text": "Harmony \u2014 Other creatures you control get +1/+0 and gain vigilance until end of turn.\nWhen Plume de Val Singer enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
+            "text": "Harmony \u2014 Creatures you control get +1/+0 and gain vigilance until end of turn.\nWhen Plume de Val Singer enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
             "toughness": "2",
-            "type": "Creature \u2014 Human Wizard",
+            "type": "Creature \u2014 Human Bard",
             "types": [
                 "Creature"
             ]
@@ -6149,16 +6371,16 @@
             "name": "Smooth Musician",
             "number": "223",
             "originalText": "{2}, Return a creature you control to its owner's hand: Smooth Musician gets +1/+1 and gains lifelink until end of turn.",
-            "originalType": "Creature \u2014 Human Wizard",
+            "originalType": "Creature \u2014 Human Bard",
             "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
                 "Human",
-                "Wizard"
+                "Bard"
             ],
             "text": "{2}, Return a creature you control to its owner's hand: Smooth Musician gets +1/+1 and gains lifelink until end of turn.",
             "toughness": "3",
-            "type": "Creature \u2014 Human Wizard",
+            "type": "Creature \u2014 Human Bard",
             "types": [
                 "Creature"
             ]
@@ -6248,16 +6470,16 @@
             "name": "Automated Maestromancer",
             "number": "227",
             "originalText": "Harmony \u2014 Scry 2.\n{T}: Harmonize. Activate this ability only any time you could cast a sorcery. (Trigger up to one harmony of a permanent you control.)",
-            "originalType": "Artifact Creature \u2014 Construct Wizard",
+            "originalType": "Artifact Creature \u2014 Construct Bard",
             "power": "3",
             "rarity": "Rare",
             "subtypes": [
                 "Construct",
-                "Wizard"
+                "Bard"
             ],
             "text": "Harmony \u2014 Scry 2.\n{T}: Harmonize. Activate this ability only any time you could cast a sorcery. (Trigger up to one harmony of a permanent you control.)",
             "toughness": "3",
-            "type": "Artifact Creature \u2014 Construct Wizard",
+            "type": "Artifact Creature \u2014 Construct Bard",
             "types": [
                 "Artifact",
                 "Creature"
@@ -6366,15 +6588,16 @@
             "name": "Improvising Automaton",
             "number": "232",
             "originalText": "Harmony \u2014 Target creature gains indestructible until end of turn.\nWhen Improvising Automaton enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
-            "originalType": "Artifact Creature \u2014 Construct",
+            "originalType": "Artifact Creature \u2014 Construct Bard",
             "power": "3",
             "rarity": "Common",
             "subtypes": [
-                "Construct"
+                "Construct",
+                "Bard"
             ],
             "text": "Harmony \u2014 Target creature gains indestructible until end of turn.\nWhen Improvising Automaton enters the battlefield, harmonize. (Trigger up to one harmony of one permanent you control.)",
             "toughness": "2",
-            "type": "Artifact Creature \u2014 Construct",
+            "type": "Artifact Creature \u2014 Construct Bard",
             "types": [
                 "Artifact",
                 "Creature"
@@ -6422,24 +6645,37 @@
         },
         {
             "artist": "Leonid Afremov",
-            "cmc": 3,
+            "cmc": 4,
             "colorIdentity": [],
             "colors": [],
             "imageName": "soul of new alores",
             "layout": "normal",
-            "manaCost": "{3}",
+            "manaCost": "{4}",
             "name": "Soul of New Alores",
             "number": "235",
-            "originalText": "Harmony \u2014 Soul of New Alores gains your choice of flying, first strike, deathtouch, haste, lifelink, menace, trample, or vigilance until end of turn.\nWhenever Soul of New Alores is crewed for the first time each turn, harmonize. (Trigger up to one harmony of one permanent you control.)\nCrew 3",
-            "originalType": "Artifact \u2014 Vehicle",
-            "power": "5",
+            "originalText": "Tap two creatures you control: Harmonize. (Trigger up to one harmony of one permanent you control.)\nHarmony \u2014 Choose one\n\u2022 Soul of New Alores becomes a creature in addition to its other types until end of turn.\n\u2022 Put two +1/+1 counters on target permanent.",
+            "originalType": "Legendary Artifact \u2014 Vehicle",
+            "power": "3",
             "rarity": "Mythic Rare",
+            "rulings": [
+                {
+                    "date": "2019-03-29",
+                    "text": "Both creatures must be untapped to pay the cost."
+                },
+                {
+                    "date": "2019-03-29",
+                    "text": "Tapping two creatures to harmonize and then animating Soul of New Alores does not count as crewing it."
+                }
+            ],
             "subtypes": [
                 "Vehicle"
             ],
-            "text": "Harmony \u2014 Soul of New Alores gains your choice of flying, first strike, deathtouch, haste, lifelink, menace, trample, or vigilance until end of turn.\nWhenever Soul of New Alores is crewed for the first time each turn, harmonize. (Trigger up to one harmony of one permanent you control.)\nCrew 3",
-            "toughness": "5",
-            "type": "Artifact \u2014 Vehicle",
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "Tap two creatures you control: Harmonize. (Trigger up to one harmony of one permanent you control.)\nHarmony \u2014 Choose one\n\u2022 Soul of New Alores becomes a creature in addition to its other types until end of turn.\n\u2022 Put two +1/+1 counters on target permanent.",
+            "toughness": "3",
+            "type": "Legendary Artifact \u2014 Vehicle",
             "types": [
                 "Artifact"
             ]
@@ -6472,19 +6708,19 @@
         },
         {
             "artist": "Jim Zaccaria",
-            "cmc": 1,
+            "cmc": 2,
             "colorIdentity": [],
             "colors": [],
             "flavor": "Each altar is made out of a kantra's favorite things and a single lotus petal.\nDesigned by Calibur",
             "imageName": "zoulev altar",
             "layout": "normal",
-            "manaCost": "{1}",
+            "manaCost": "{2}",
             "name": "Zoulev Altar",
             "number": "237",
-            "originalText": "Enchantment spells you cast cost {1} less to cast.\nEach enchantment creatures you control enter the battlefield with an additional +1/+1 counter on them.",
+            "originalText": "Enchantment spells you cast cost {1} less to cast.\nEnchantment creatures and enchanted creatures you control get +1/+1.",
             "originalType": "Artifact",
             "rarity": "Uncommon",
-            "text": "Enchantment spells you cast cost {1} less to cast.\nEach enchantment creature you control enters the battlefield with an additional +1/+1 counter on it.",
+            "text": "Enchantment spells you cast cost {1} less to cast.\nEnchantment creatures and enchanted creatures you control get +1/+1.",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -6495,7 +6731,7 @@
             "cmc": 0,
             "colorIdentity": [],
             "colors": [],
-            "flavor": "\"Countless students have attended the Foundation, each leaving their mark.\"\n\u2014Mater Adavene",
+            "flavor": "In a strange land with few resources, Adavene sought funding for his foundation with an art department.",
             "imageName": "art studio",
             "layout": "normal",
             "name": "Art Studio",
@@ -6726,10 +6962,10 @@
             "layout": "normal",
             "name": "Royal Domain",
             "number": "247",
-            "originalText": "{T}: Add {C}.\n{2}, {T}: Add three mana of any one color.\n{3}, {T}: Create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "{T}: Add {C}.\n{2}, {T}: Add three mana of any one color.\n{3}, {T}: Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "{T}: Add {C}.\n{2}, {T}: Add three mana of any one color.\n{3}, {T}: Create a colorless Petal artifact token with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "text": "{T}: Add {C}.\n{2}, {T}: Add three mana of any one color.\n{3}, {T}: Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Land",
             "types": [
                 "Land"
@@ -6873,7 +7109,7 @@
             "layout": "normal",
             "name": "Mountain",
             "number": "253",
-            "originalType": "Basic Land \u2014 Mounain",
+            "originalType": "Basic Land \u2014 Mountain",
             "rarity": "Basic Land",
             "subtypes": [
                 "Mountain"
@@ -6918,5 +7154,5 @@
     "name": "Eralou",
     "releaseDate": "2019-02-08",
     "type": "expansion",
-    "version": "38"
+    "version": "next"
 }
