@@ -55,6 +55,38 @@
             ]
         },
         {
+            "cmc": 5,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "layout": "normal",
+            "manaCost": "{3}{G}{G}",
+            "name": "Elvish Bard",
+            "number": "3",
+            "power": "2",
+            "rarity": "special",
+            "rulings": [
+                {
+                    "date": "2019-02-15",
+                    "text": "I have applied functional errata to this card: it is now a Bard. For the official text and new rulings, please look up the card on Gatherer. \u2014Fenhl"
+                }
+            ],
+            "subtypes": [
+                "Elf",
+                "Shaman",
+                "Bard"
+            ],
+            "text": "All creatures able to block Elvish Bard do so.",
+            "toughness": "4",
+            "type": "Creature \u2014 Elf Shaman Bard",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "cmc": 3,
             "colorIdentity": [
                 "R"
@@ -65,7 +97,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Falling Star",
-            "number": "3",
+            "number": "4",
             "rarity": "special",
             "reserved": true,
             "rulings": [
@@ -81,6 +113,43 @@
             ]
         },
         {
+            "cmc": 4,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "layout": "normal",
+            "manaCost": "{3}{G}",
+            "name": "Joraga Bard",
+            "number": "5",
+            "power": "1",
+            "rarity": "special",
+            "rulings": [
+                {
+                    "date": "2009-10-01",
+                    "text": "The ability affects only Allies you control at the time the ability resolves."
+                },
+                {
+                    "date": "2019-03-29",
+                    "text": "I have applied functional errata to this card: it is now a Bard. For the official text and new rulings, please look up the card on Gatherer. \u2014Fenhl"
+                }
+            ],
+            "subtypes": [
+                "Elf",
+                "Rogue",
+                "Bard",
+                "Ally"
+            ],
+            "text": "Whenever Joraga Bard or another Ally enters the battlefield under your control, you may have Ally creatures you control gain vigilance until end of turn.",
+            "toughness": "4",
+            "type": "Creature \u2014 Elf Rogue Bard Ally",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "cmc": 3,
             "colorIdentity": [
                 "U"
@@ -91,7 +160,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Portal Mage",
-            "number": "4",
+            "number": "6",
             "power": "2",
             "rarity": "special",
             "rulings": [
@@ -143,7 +212,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}{U}",
             "name": "Richard Garfield, Ph.D.",
-            "number": "5",
+            "number": "7",
             "power": "2",
             "rarity": "special",
             "rulings": [
@@ -221,7 +290,7 @@
             "layout": "normal",
             "manaCost": "{X}{2}{B}",
             "name": "Soul Burn",
-            "number": "6",
+            "number": "8",
             "rarity": "special",
             "rulings": [
                 {
@@ -237,6 +306,45 @@
             "type": "Sorcery",
             "types": [
                 "Sorcery"
+            ]
+        },
+        {
+            "cmc": 3,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "layout": "normal",
+            "manaCost": "{2}{G}",
+            "name": "Yisan, the Wanderer Bard",
+            "number": "9",
+            "power": "2",
+            "rarity": "special",
+            "rulings": [
+                {
+                    "date": "2014-07-18",
+                    "text": "If Yisan isn't on the battlefield when its ability resolves, use the number of verse counters on it when it left the battlefield to determine which creature cards may be put onto the battlefield. This number will include the counter you put on Yisan to activate the ability."
+                },
+                {
+                    "date": "2019-03-29",
+                    "text": "I have applied functional errata to this card: it is now a Bard. For the official text and new rulings, please look up the card on Gatherer. \u2014Fenhl"
+                }
+            ],
+            "subtypes": [
+                "Human",
+                "Rogue",
+                "Bard"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "{2}{G}, {T}, Put a verse counter on Yisan, the Wanderer Bard: Search your library for a creature card with converted mana cost equal to the number of verse counters on Yisan, put it onto the battlefield, then shuffle your library.",
+            "toughness": "3",
+            "type": "Legendary Creature \u2014 Human Rogue Bard",
+            "types": [
+                "Creature"
             ]
         }
     ],
