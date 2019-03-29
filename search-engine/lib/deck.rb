@@ -1,9 +1,10 @@
 class Deck
-  attr_reader :set, :name, :type, :cards, :sideboard, :slug
-  def initialize(set, name, type, cards, sideboard)
+  attr_reader :set, :name, :type, :release_date, :cards, :sideboard, :slug
+  def initialize(set, name, type, release_date, cards, sideboard)
     @set = set
     @name = name
     @type = type
+    @release_date = release_date
     @cards = cards
     @sideboard = sideboard
     @slug = @name.downcase.gsub("'s", "s").gsub(/[^a-z0-9s]+/, "-")
@@ -53,6 +54,7 @@ class Deck
     output = []
     output << "// NAME: #{@name} - #{@set.name} #{@type}"
     output << "// URL: http://mtg.wtf/deck/#{set.code}/#{slug}"
+    output << "// DATE: #{@release_date.to_s}" if @release_date
     @cards.each do |count, card|
       output << "#{count} #{card}"
     end

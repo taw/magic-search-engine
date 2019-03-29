@@ -281,10 +281,16 @@ class CardDatabase
       card.printings.each do |printing|
         printing.others = other_cards.map do |other_card|
           from_same_set = other_card.printings.select{|other_printing| other_printing.set_code == printing.set_code}
-          unless from_same_set.size == 1
-            raise "Can't link other side - #{card_name}"
+          if from_same_set.size == 1
+            from_same_set[0]
+          else
+            matching_number = from_same_set.select{|other_printing| other_printing.number.sub(/[ab]\z/, "") == printing.number.sub(/[ab]\z/, "") }
+            if matching_number.size == 1
+              matching_number[0]
+            else
+              raise "Can't link other side - #{card_name}"
+            end
           end
-          from_same_set[0]
         end
       end
     end
@@ -293,6 +299,10 @@ class CardDatabase
   def setup_artists!
     each_printing do |printing|
       artist_name = printing.artist_name
+      if artist_name.nil?
+        warn "No artist for #{printing}"
+        artist_name = "unknown"
+      end
       # Presumably same artist, just keep that consistent to simplify slug code
       # We could even fix some unset artists here
       if artist_name == "JOCK"

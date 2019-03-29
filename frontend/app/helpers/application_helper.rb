@@ -209,6 +209,16 @@ module ApplicationHelper
     }.fetch(language_code)
   end
 
+  # We should probably just use this everywhere
+  def official_language_code(language_code)
+    {
+      cs: "zh-CN",
+      ct: "zh-TW",
+      sp: "es",
+      jp: "ja",
+    }[language_code] || language_code
+  end
+
   def language_flag(language_code)
     {
       cs: "cn",

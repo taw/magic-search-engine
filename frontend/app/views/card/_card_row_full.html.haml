@@ -51,5 +51,5 @@
         - card.foreign_names.sort.each do |language_code, foreign_names|
           - foreign_names.each do |foreign_name|
             %li
-              %i{class: "famfamfam-flag-#{language_flag(language_code)}", title: language_name(language_code)}
+              %i{class: "famfamfam-flag-#{language_flag(language_code)}", title: language_name(language_code), lang: official_language_code(language_code)}
               = foreign_name
