@@ -5,14 +5,6 @@ module ApplicationHelper
       action: "show",
       set: card.set_code,
       id: card.number,
-      # This part is purely decorative, so we don't bother testing it
-      name: card.name
-                .gsub("'s", "s")
-                .gsub("I'm", "Im")
-                .gsub("You're", "youre")
-                .gsub("R&D", "RnD")
-                .gsub(/[^a-zA-Z0-9\-]+/, "-")
-                .gsub(/(\A-)|(-\z)/, ""),
       &blk)
   end
 
