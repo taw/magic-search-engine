@@ -14,6 +14,7 @@ describe "Sets" do
     "global series",
     "masterpiece",
     "masters",
+    "memorabilia",
     "planechase",
     "premium deck",
     "promo",
@@ -26,6 +27,6 @@ describe "Sets" do
   ]
 
   it "all sets have sensible type" do
-    db.sets.values.map(&:type).to_set.should eq KNOWS_SET_TYPES.to_set
+    db.sets.values.map(&:type).sort.to_set.should eq KNOWS_SET_TYPES.to_set
   end
 end

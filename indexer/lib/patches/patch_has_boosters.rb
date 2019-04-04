@@ -2,7 +2,7 @@ class PatchHasBoosters < Patch
   def call
     each_set do |set|
       booster = set.delete("booster") || set.delete("boosterV3")
-      if set["code"] == "tsb"
+      if set["code"] == "tsb" or set["code"] == "med"
         # https://github.com/mtgjson/mtgjson/issues/584
         has_own_boosters = false
       else
