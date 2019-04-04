@@ -68,7 +68,7 @@ class PatchMtgjsonVersions < Patch
 
       # Flavor text quick fix because v4 doesn't have newlines
       if card["flavor"]
-        card["flavor"] = card["flavor"].gsub(%Q[" —], %Q["\n—])
+        card["flavor"] = card["flavor"].gsub(%Q[" —], %Q["\n—]).gsub(%Q[" "], %Q["\n"])
       end
 
       if card["rulings"]
@@ -94,6 +94,6 @@ class PatchMtgjsonVersions < Patch
   end
 
   def cleanup_unicode_punctuation(text)
-    text.tr(%Q[’“”], %Q['""])
+    text.tr(%Q[‘’“”], %Q[''""])
   end
 end

@@ -97,6 +97,7 @@ describe "CLI Frontend" do
         Transguild Courier {4}
         [dis]
         Artifact Creature - Golem
+        Transguild Courier is all colors.
         3/3
         EOF
       error: ""

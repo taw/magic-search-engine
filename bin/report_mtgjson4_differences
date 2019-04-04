@@ -65,7 +65,8 @@ class ReportMtgjson4Differences
       mtgjson_numbers_i = mtgjson_set["cards"].map{|c| [c["number"].to_i, c["name"]] }.to_set
 
       if db_numbers_i == mtgjson_numbers_i
-        puts "#{code} - card numbers (suffix issues only)"
+        # Suffix issues _generally_ get autocorrected by indexer
+        # puts "#{code} - card numbers (suffix issues only)"
       else
         matching = (mtgjson_numbers & db_numbers).size
         puts "#{code} - card numbers (#{matching}/#{db_numbers.size} match)"
