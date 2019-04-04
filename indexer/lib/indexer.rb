@@ -69,6 +69,7 @@ class Indexer
       "block_code",
       "block_name",
       "booster",
+      "boosterV3",
       "border",
       "code",
       "custom",

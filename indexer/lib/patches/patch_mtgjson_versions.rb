@@ -66,6 +66,11 @@ class PatchMtgjsonVersions < Patch
         card["text"] = cleanup_unicode_punctuation(card["text"])
       end
 
+      # Flavor text quick fix because v4 doesn't have newlines
+      if card["flavor"]
+        card["flavor"] = card["flavor"].gsub(%Q[" —], %Q["\n—])
+      end
+
       if card["rulings"]
         rulings_dates = card["rulings"].map{|x| x["date"] }
         unless rulings_dates.sort == rulings_dates
