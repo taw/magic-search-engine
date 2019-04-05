@@ -68,7 +68,7 @@
             "#": "allow Structures to be dealt damage, and for Sobki, World Severer, allow players to deal damage",
             "type": "replace",
             "rule": "119.1",
-            "find": "Objects can deal damage to creatures, planeswalkers, and players.",
+            "find": "Objects can deal damage to creatures, planeswalkers, and players\\.",
             "replace": "Objects and players can deal damage to creatures, planeswalkers, Structures, and players."
         },
         {
@@ -136,7 +136,7 @@
             "#": "using the same card pool for all custom formats doesn't make a lot of sense, so the change to this rule from GRN has been reverted",
             "type": "replace",
             "rule": "201.3",
-            "find": "in the Oracle card reference. (See rule 108.1.)",
+            "find": "in the Oracle card reference. \\(See rule 108\\.1\\.\\)",
             "replace": "that is legal in the format of the game the player is playing. (See rule 100.6.)"
         },
         {
@@ -490,7 +490,7 @@
             "#": "using the same card pool for all custom formats doesn't make a lot of sense, so the change to this rule from GRN has been reverted",
             "type": "replace",
             "rule": "612.6",
-            "find": ". (See rule 108.1.)",
+            "find": "\\. \\(See rule 108\\.1\\.\\)",
             "replace": " that's legal in the format of the game it's in. (See rule 100.6.)"
         },
         {
@@ -666,7 +666,7 @@
             "#": "Dragon King Teremos has an unkeyworded effect that can pair it with another creature.",
             "type": "replace",
             "rule": "702.94d",
-            "find": "A creature becomes \"paired\" with another as the result of a soulbond ability.",
+            "find": "A creature becomes \"paired\" with another as the result of a soulbond ability\\.",
             "replace": "A creature may become “paired” with another as the result of a soulbond ability or another effect that pairs them."
         },
         {
