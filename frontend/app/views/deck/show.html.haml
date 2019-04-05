@@ -13,6 +13,9 @@
         = @set_name
         &mdash;
         = @type
+        - if @release_date
+          &mdash;
+          = @release_date
   .row
     .col-8.two-columns
       - @card_groups.each do |(i, group), cards|
