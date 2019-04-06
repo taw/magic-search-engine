@@ -116,6 +116,7 @@ describe Deck do
     <<~EOF
     // NAME: Wrath of the Mortals - Journey into Nyx Event Deck
     // URL: http://mtg.wtf/deck/jou/wrath-of-the-mortals
+    // DATE: 2014-05-23
     1 Battlefield Thaumaturge
     3 Young Pyromancer
     3 Guttersnipe
