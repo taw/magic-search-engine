@@ -78,6 +78,12 @@ class PatchMtgjsonVersions < Patch
         end
       end
 
+      # At least for now:
+      # "123a" but "U123"
+      if card["number"]
+        card["number"] = card["number"].sub(/(\D+)\z/){ $1.downcase }
+      end
+
       # Rulings ordering is arbitrarily different, just pick canonical ordering
       # (do it after Unicode normalization)
       # Just not now as it messes up witsh diffs

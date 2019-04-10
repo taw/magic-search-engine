@@ -174,8 +174,6 @@ class Indexer
 
     @data.each_set do |set_code, set_data|
       set = set_data.slice(
-        "booster",
-        "boosterV3",
         "border",
         "custom",
         "name",
@@ -186,6 +184,9 @@ class Indexer
         "gatherer_code" => set_data["gathererCode"],
         "official_code" => set_data["code"],
         "online_only" => set_data["onlineOnly"],
+        "booster" => set_data["booster"] || set_data["boosterV3"],
+        # Track v3 vs v4 for migration
+        "v4" => !!set_data["baseSetSize"],
       ).compact
       sets << set
       set_data["cards"].each_with_index do |card_data, i|
