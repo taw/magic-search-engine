@@ -34,7 +34,7 @@ describe Deck do
       ["expansion", "Planeswalker Deck"],
       ["expansion", "Theme Deck"],
       ["starter", "Intro Pack"],
-      ["starter", "Guild Kit"],
+      ["box", "Guild Kit"],
       ["starter", "Starter Deck"],
       ["starter", "Theme Deck"],
       ["starter", "Welcome Deck"],
