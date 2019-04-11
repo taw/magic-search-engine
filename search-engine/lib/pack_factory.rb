@@ -91,7 +91,7 @@ class PackFactory
       "mmq", "pcy", "nem",
       "inv", "pls", "apc",
       "ody", "tor", "jud",
-      "ons", "lgd", "scg",
+      "ons", "lgn", "scg",
       "mrd", "dst", "5dn",
       "chk", "bok", "sok",
       "rav", "gpt", "dis",
@@ -118,7 +118,7 @@ class PackFactory
       "akh", "hou",
       "m19"
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, common_if_no_basic: true)
-    when "mma", "mm2", "mm3", "ema", "ima", "a25"
+    when "mma", "mm2", "mm3", "ema", "ima", "a25", "uma"
       build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, foil: 1})
     when "dgm"
       build_pack_with_random_foil(set_code, :foil, :dgm_common, {dgm_common: 10, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1})
