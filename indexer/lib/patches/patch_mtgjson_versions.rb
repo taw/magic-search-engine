@@ -1,8 +1,21 @@
 # Cleanup differences between mtgjson v3 and v4
 
 class PatchMtgjsonVersions < Patch
-  def get_cmc(*data)
-    cmc = data.compact.first
+  def get_cmc(card)
+    cmc = [card.delete("convertedManaCost"), card.delete("cmc")].compact.first
+    fcmc = card.delete("faceConvertedManaCost")
+
+    if fcmc
+      if card["layout"] == "split" or card["layout"] == "aftermath"
+        cmc = fcmc
+      elsif card["layout"] == "flip" or card["layout"] == "transform"
+        # ignore because
+        # https://github.com/mtgjson/mtgjson/issues/294
+      elsif cmc != fcmc
+        warn "#{card["layout"]} #{card["name"]} has fcmc #{fcmc} != cmc #{cmc}"
+      end
+    end
+
     cmc = cmc.to_i if cmc.to_i == cmc
     cmc
   end
@@ -18,11 +31,7 @@ class PatchMtgjsonVersions < Patch
     each_printing do |card|
       card_is_v4 = !!card["multiverseId"]
 
-      card["cmc"] = get_cmc(
-        card.delete("faceConvertedManaCost"),
-        card.delete("convertedManaCost"),
-        card.delete("cmc"),
-      )
+      card["cmc"] = get_cmc(card)
 
       # This is text because of some X planeswalkers
       # It's more convenient for us to mix types
