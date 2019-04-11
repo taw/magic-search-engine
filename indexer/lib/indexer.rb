@@ -76,6 +76,7 @@ class Indexer
       "frame",
       "gatherer_code",
       "has_boosters",
+      "in_other_boosters",
       "name",
       "alternative_block_code",
       "alternative_code",

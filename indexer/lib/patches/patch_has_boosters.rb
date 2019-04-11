@@ -16,7 +16,8 @@ class PatchHasBoosters < Patch
 
       included_in_other_boosters = %W[exp mps mp2 tsb].include?(set["code"])
 
-      set["has_boosters"] = has_own_boosters || included_in_other_boosters
+      set["has_boosters"] = !!has_own_boosters
+      set["in_other_boosters"] = !!included_in_other_boosters
     end
   end
 end

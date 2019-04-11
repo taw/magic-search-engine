@@ -20,6 +20,7 @@ class CardSet
     @printings     = Set[]
     @online_only   = !!data["online_only"]
     @has_boosters  = !!data["has_boosters"]
+    @in_other_boosters = !!data["in_other_boosters"]
     @decks         = []
     @foiling       = data["foiling"]
   end
@@ -30,6 +31,10 @@ class CardSet
 
   def has_boosters?
     @has_boosters
+  end
+
+  def in_other_boosters?
+    @in_other_boosters
   end
 
   def online_only?
