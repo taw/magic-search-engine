@@ -3,7 +3,6 @@ describe "Sets" do
 
   KNOWS_SET_TYPES = [
     "archenemy",
-    "board game deck",
     "box",
     "commander",
     "conspiracy",
