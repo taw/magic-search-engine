@@ -9,7 +9,8 @@ class PatchHasBoosters < Patch
         has_own_boosters = !!booster
       end
 
-      if set["code"] == "uma" or set["code"] == "me1"
+      # v4 bug?
+      if set["code"] == "me1" or set["code"] == "nem"
         has_own_boosters = true
       end
 

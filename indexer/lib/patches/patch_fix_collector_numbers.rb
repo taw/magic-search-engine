@@ -1,4 +1,5 @@
 # This should probably be multiple patches
+# Also this whole file will need full rewrite for v4 migration
 class PatchFixCollectorNumbers < Patch
   def call
     each_set do |set|
