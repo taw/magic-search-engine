@@ -6,9 +6,9 @@ describe "Set types" do
     assert_search_results "angel of wrath st:dd", "Akroma, Angel of Wrath"
     assert_search_results "angel of wrath st:expansion", "Akroma, Angel of Wrath"
     assert_search_results "armageddon st:masters", "Armageddon", "Armageddon Clock"
-    assert_search_results "armageddon st:reprint", "Armageddon"
     assert_search_results "armageddon st:core", "Armageddon", "Armageddon Clock"
     assert_search_results "armageddon st:starter", "Armageddon"
+    assert_search_results "aladdin st:reprint", "Aladdin"
   end
 
   it "abbreviations" do
