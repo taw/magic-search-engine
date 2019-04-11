@@ -61,7 +61,7 @@ describe Deck do
   it "precon decks have dates matching set release dates" do
     precon_sets.each do |set_code, set|
       set.decks.each do |deck|
-        deck.release_date.should eq set.release_date
+        deck.release_date.should eq(set.release_date), "#{deck.name} for #{set.name}"
       end
     end
   end
