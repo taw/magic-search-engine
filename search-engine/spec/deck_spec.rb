@@ -15,7 +15,8 @@ describe Deck do
       ["box", "Intro Pack"],
       ["box", "Theme Deck"],
       ["masters", "MTGO Theme Deck"],
-      ["global series", "Planeswalker Deck"],
+      ["global series", "Planeswalker Deck"], # v3
+      ["duel deck", "Planeswalker Deck"], # v4
       ["board game deck", "Theme Deck"],
       ["box", "Game Night Deck"],
       # Standard sets
