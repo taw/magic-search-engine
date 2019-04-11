@@ -9,7 +9,7 @@ class PatchHasBoosters < Patch
         has_own_boosters = !!booster
       end
 
-      if set["code"] == "uma"
+      if set["code"] == "uma" or set["code"] == "me1"
         has_own_boosters = true
       end
 

@@ -183,7 +183,7 @@ class Indexer
         "mci_code" => set_data["magicCardsInfoCode"],
         "gatherer_code" => set_data["gathererCode"],
         "official_code" => set_data["code"],
-        "online_only" => set_data["onlineOnly"],
+        "online_only" => (set_data["onlineOnly"] || set_data["isOnlineOnly"]) ? true : nil,
         "booster" => set_data["booster"] || set_data["boosterV3"],
         # Track v3 vs v4 for migration
         "v4" => !!set_data["baseSetSize"],
