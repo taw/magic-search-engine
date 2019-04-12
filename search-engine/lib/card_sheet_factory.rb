@@ -28,6 +28,8 @@ class CardSheetFactory
   # Masterpieces supposedly are in 1/144 booster (then 1/129 for Amonkhet), and they're presumably equally likely
   #
   # These numbers could be totally wrong. I base them on a million guesses by various internet commenters.
+  #
+  # Maro says basic foils and common foils are equally likely [https://twitter.com/maro254/status/938830320094216192]
   def foil_sheet(set_code)
     sheets = [rare_or_mythic(set_code, foil: true), rarity(set_code, "uncommon", foil: true)]
     weights = [4, 8]
@@ -38,13 +40,7 @@ class CardSheetFactory
       weights << 1
     end
 
-    basic_sheet = rarity(set_code, "basic", foil: true)
-    if basic_sheet
-      sheets << basic_sheet
-      weights << 4
-    end
-
-    sheets << rarity(set_code, "common", foil: true)
+    sheets << common_or_basic(set_code, foil: true)
     weights << (32 - weights.inject(0, &:+))
 
     CardSheet.new(sheets, weights)
@@ -74,11 +70,11 @@ class CardSheetFactory
     )
   end
 
-  def common_or_basic(set_code)
+  def common_or_basic(set_code, foil: false)
     # Assume basics are just commons for sheet purposes
     mix_sheets(
-      [rarity(set_code, "common"), 1],
-      [rarity(set_code, "basic"), 1],
+      [rarity(set_code, "common", foil: foil), 1],
+      [rarity(set_code, "basic", foil: foil), 1],
     )
   end
 
