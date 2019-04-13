@@ -76,6 +76,7 @@ class Indexer
       "frame",
       "gatherer_code",
       "has_boosters",
+      "in_other_boosters",
       "name",
       "alternative_block_code",
       "alternative_code",
@@ -174,7 +175,6 @@ class Indexer
 
     @data.each_set do |set_code, set_data|
       set = set_data.slice(
-        "booster",
         "border",
         "custom",
         "name",
@@ -184,7 +184,10 @@ class Indexer
         "mci_code" => set_data["magicCardsInfoCode"],
         "gatherer_code" => set_data["gathererCode"],
         "official_code" => set_data["code"],
-        "online_only" => set_data["onlineOnly"],
+        "online_only" => (set_data["onlineOnly"] || set_data["isOnlineOnly"]) ? true : nil,
+        "booster" => set_data["booster"] || set_data["boosterV3"],
+        # Track v3 vs v4 for migration
+        "v4" => !!set_data["baseSetSize"],
       ).compact
       sets << set
       set_data["cards"].each_with_index do |card_data, i|
@@ -255,17 +258,20 @@ class Indexer
     name = result["name"]
     # Make sure it's reconciled at this point
     # This should be hard error once we're done
-    report_if_inconsistent(name, common_card_data)
+    report_if_inconsistent(name, common_card_data, card)
 
     # Output in canonical form, to minimize diffs between mtgjson updates
     result["printings"] = printing_data.sort_by{|sc,d| [set_order.fetch(sc), d["number"], d["multiverseid"]] }
     result
   end
 
-  def report_if_inconsistent(name, common_card_data)
+  def report_if_inconsistent(name, common_card_data, card)
     return if common_card_data.uniq.size == 1
     keys = common_card_data.map(&:keys).inject(&:|)
     inconsistent_keys = keys.select{|key| common_card_data.map{|ccd| ccd[key]}.uniq.size > 1 }
     warn "Data for card #{name} inconsistent on #{inconsistent_keys.join(", ")}"
+    inconsistent_keys.each do |key|
+      warn "* #{key}: #{card.map{|c| [c["set_code"], c[key]]}.inspect}"
+    end
   end
 end

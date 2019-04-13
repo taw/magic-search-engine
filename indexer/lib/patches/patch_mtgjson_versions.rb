@@ -1,8 +1,21 @@
 # Cleanup differences between mtgjson v3 and v4
 
 class PatchMtgjsonVersions < Patch
-  def get_cmc(*data)
-    cmc = data.compact.first
+  def get_cmc(card)
+    cmc = [card.delete("convertedManaCost"), card.delete("cmc")].compact.first
+    fcmc = card.delete("faceConvertedManaCost")
+
+    if fcmc
+      if card["layout"] == "split" or card["layout"] == "aftermath"
+        cmc = fcmc
+      elsif card["layout"] == "flip" or card["layout"] == "transform"
+        # ignore because
+        # https://github.com/mtgjson/mtgjson/issues/294
+      elsif cmc != fcmc
+        warn "#{card["layout"]} #{card["name"]} has fcmc #{fcmc} != cmc #{cmc}"
+      end
+    end
+
     cmc = cmc.to_i if cmc.to_i == cmc
     cmc
   end
@@ -18,11 +31,7 @@ class PatchMtgjsonVersions < Patch
     each_printing do |card|
       card_is_v4 = !!card["multiverseId"]
 
-      card["cmc"] = get_cmc(
-        card.delete("faceConvertedManaCost"),
-        card.delete("convertedManaCost"),
-        card.delete("cmc"),
-      )
+      card["cmc"] = get_cmc(card)
 
       # This is text because of some X planeswalkers
       # It's more convenient for us to mix types
@@ -66,11 +75,22 @@ class PatchMtgjsonVersions < Patch
         card["text"] = cleanup_unicode_punctuation(card["text"])
       end
 
+      # Flavor text quick fix because v4 doesn't have newlines
+      if card["flavor"]
+        card["flavor"] = card["flavor"].gsub(%Q[" —], %Q["\n—]).gsub(%Q[" "], %Q["\n"])
+      end
+
       if card["rulings"]
         rulings_dates = card["rulings"].map{|x| x["date"] }
         unless rulings_dates.sort == rulings_dates
           warn "Rulings for #{card["name"]} in #{card["set"]["name"]} not in order"
         end
+      end
+
+      # At least for now:
+      # "123a" but "U123"
+      if card["number"]
+        card["number"] = card["number"].sub(/(\D+)\z/){ $1.downcase }
       end
 
       # Rulings ordering is arbitrarily different, just pick canonical ordering
@@ -89,6 +109,6 @@ class PatchMtgjsonVersions < Patch
   end
 
   def cleanup_unicode_punctuation(text)
-    text.tr(%Q[’“”], %Q['""])
+    text.tr(%Q[‘’“”], %Q[''""])
   end
 end

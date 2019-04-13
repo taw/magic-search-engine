@@ -15,7 +15,8 @@ describe Deck do
       ["box", "Intro Pack"],
       ["box", "Theme Deck"],
       ["masters", "MTGO Theme Deck"],
-      ["global series", "Planeswalker Deck"],
+      ["global series", "Planeswalker Deck"], # v3
+      ["duel deck", "Planeswalker Deck"], # v4
       ["board game deck", "Theme Deck"],
       ["box", "Game Night Deck"],
       # Standard sets
@@ -34,7 +35,7 @@ describe Deck do
       ["expansion", "Planeswalker Deck"],
       ["expansion", "Theme Deck"],
       ["starter", "Intro Pack"],
-      ["starter", "Guild Kit"],
+      ["box", "Guild Kit"],
       ["starter", "Starter Deck"],
       ["starter", "Theme Deck"],
       ["starter", "Welcome Deck"],
@@ -61,7 +62,7 @@ describe Deck do
   it "precon decks have dates matching set release dates" do
     precon_sets.each do |set_code, set|
       set.decks.each do |deck|
-        deck.release_date.should eq set.release_date
+        deck.release_date.should eq(set.release_date), "#{deck.name} for #{set.name}"
       end
     end
   end
@@ -116,6 +117,7 @@ describe Deck do
     <<~EOF
     // NAME: Wrath of the Mortals - Journey into Nyx Event Deck
     // URL: http://mtg.wtf/deck/jou/wrath-of-the-mortals
+    // DATE: 2014-05-23
     1 Battlefield Thaumaturge
     3 Young Pyromancer
     3 Guttersnipe

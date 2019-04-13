@@ -52,8 +52,8 @@ describe CardSheet do
         foil_sheet.probabilities[mythic_card].should eq Rational(1, 121) * Rational(4,32)
         foil_sheet.probabilities[rare_card].should eq Rational(2, 121) * Rational(4,32)
         foil_sheet.probabilities[uncommon_card].should eq Rational(1, 60) * Rational(8,32)
-        foil_sheet.probabilities[common_card].should eq Rational(1, 101) * Rational(16,32)
-        foil_sheet.probabilities[basic_card].should eq Rational(1, 20) * Rational(4,32)
+        foil_sheet.probabilities[common_card].should eq Rational(1, 20+101) * Rational(20,32)
+        foil_sheet.probabilities[basic_card].should eq Rational(1, 20+101) * Rational(20,32)
       end
     end
   end
