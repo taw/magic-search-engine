@@ -75,7 +75,7 @@ class CardPrinting
   end
 
   def in_boosters?
-    (@set.has_boosters? or @set.has_other_boosters?) and !@exclude_from_boosters
+    (@set.has_boosters? or @set.in_other_boosters?) and !@exclude_from_boosters
   end
 
   def exclude_from_boosters?
