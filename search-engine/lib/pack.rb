@@ -59,7 +59,7 @@ class ReubenPack < Pack
       next unless cards.count{|c| c.rarity == "common" && c.main_front.colors.include?("r")} >= 1
       next unless cards.count{|c| c.rarity == "common" && c.main_front.colors.include?("g")} >= 1
       # rule 3
-      next unless cards.count{|c| c.rarity == "common" && c.main_front.type.include?("creature")} > 0
+      next unless cards.count{|c| c.rarity == "common" && c.main_front.types.include?("creature")} > 0
       # rule 4 (interpreting “of the same color” as “sharing a color”)
       next unless cards.count{|c| c.rarity == "uncommon" && c.main_front.colors.include?("w")} <= 2
       next unless cards.count{|c| c.rarity == "uncommon" && c.main_front.colors.include?("u")} <= 2
