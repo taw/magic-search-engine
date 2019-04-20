@@ -119,6 +119,7 @@ class Indexer
       PatchPrintSheets,
       PatchFrame,
       PatchFoiling,
+      PatchPartner,
 
       # Reconcile issues
       PatchReconcileForeignNames,
@@ -212,6 +213,7 @@ class Indexer
         "funny",
         "hand", # vanguard
         "hide_mana_cost",
+        "is_partner",
         "layout",
         "life", # vanguard
         "loyalty",
@@ -241,6 +243,7 @@ class Indexer
           "frame",
           "multiverseid",
           "number",
+          "partner",
           "print_sheet",
           "rarity",
           "release_date",
