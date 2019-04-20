@@ -422,18 +422,18 @@ class CardSheetFactory
     )
   end
 
-  def ayr_common
-    from_query("e:AYR r:C -t:land", 91)
+  def nonland_common(set_code)
+    from_query("e:#{set_code} is:primary r:C -t:land")
   end
 
-  def ayr_uncommon
-    from_query("e:AYR r:U -t:land", 78)
+  def nonland_uncommon(set_code)
+    from_query("e:#{set_code} is:primary r:U -t:land")
   end
 
-  def ayr_rare_mythic
+  def nonland_rare_mythic(set_code)
     mix_sheets(
-      [from_query("e:AYR r:R -t:land", 52), 2],
-      [from_query("e:AYR r:M -t:land", 14), 1]
+      [from_query("e:#{set_code} is:primary r:R -t:land"), 2],
+      [from_query("e:#{set_code} is:primary r:M -t:land"), 1]
     )
   end
 
@@ -443,6 +443,15 @@ class CardSheetFactory
       [from_query("e:TSL is:dfc r:U", 15), 6], # 3 / 14
       [from_query("e:TSL is:dfc r:R", 3), 10], # 1 / 14
       # no mythic DFCs in TSL
+    )
+  end
+
+  def rak_land
+    mix_sheets(
+      [from_query("e:RAK is:primary t:land r:C", 7), 110], # 10 / 14
+      [from_query("e:RAK is:primary t:land r:U", 7), 33], # 3 / 14
+      [from_query("e:RAK is:primary t:land r:R", 11), 7], # 1 / 14
+      # no mythic lands in RAK
     )
   end
 end

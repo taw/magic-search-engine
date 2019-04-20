@@ -8,7 +8,7 @@ class PackFactory
     "#{self.class}"
   end
 
-  private def build_pack(set_code, distribution, common_if_no_basic: false)
+  private def build_pack(set_code, distribution, common_if_no_basic: false, pack_class: Pack)
     # This awkwardness is for common_if_no_basic logic
     sheets = {}
     distribution.each do |name, weight|
@@ -18,7 +18,7 @@ class PackFactory
       distribution = distribution.dup
       distribution[:common] += distribution.delete(:basic)
     end
-    Pack.new(distribution.map{|name, weight|
+    pack_class.new(distribution.map{|name, weight|
       sheet = sheets[name] or raise "Can't build sheet #{name} for #{set_code}"
       [sheet, weight]
     }.to_h)
@@ -199,20 +199,30 @@ class PackFactory
     when "leg"
       build_pack(set_code, {explicit_common: 12, explicit_uncommon: 3, explicit_rare: 1})
     # custom sets
-    when "ank", "ldo", "vln", "jan", "hlw", "rak", "dhm", "net", "eau"
+    when "ank", "ldo", "vln", "jan", "hlw", "dhm", "net", "eau"
       # Custom sets with default pack distribution, no foils, with basics
       build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1})
-    when "dms", "cc18", "vst"
+    when "cc18"
       # Same as above except no basics
-      #TODO make sure DMS and VST follow https://web.archive.org/web/20170427075406/thegraymerchants.com/?p=836
       build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1})
+    when "dms", "vst"
+      # Same as above except follow Reuben's rules https://web.archive.org/web/20170427075406/thegraymerchants.com/?p=836
+      # 1. A pack must never have more than 4 commons of the same color
+      # 2. A pack must have at least 1 common card of each color
+      # 3. A pack must have at least 1 common creature
+      # 4. A pack must never have more than 2 uncommons of the same color
+      # 5. A pack must never have repeated cards
+      build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1}, pack_class: ReubenPack)
     when "ayr"
       # AYR has only nonbasic lands in the land slot, and no lands in any other slot, like DGM
-      build_pack(set_code, {ayr_common: 10, ayr_uncommon: 3, ayr_rare_mythic: 1, ayr_land: 1})
+      build_pack(set_code, {nonland_common: 10, nonland_uncommon: 3, nonland_rare_mythic: 1, ayr_land: 1})
+    when "rak"
+      # RAK is currently the same as AYR, except the rarity weights are different (e.g. there are no mythic lands)
+      build_pack(set_code, {nonland_common: 10, nonland_uncommon: 3, nonland_rare_mythic: 1, rak_land: 1})
     when "tsl"
       # TSL packs always have exactly one DFC, replacing a common slot
-      #TODO make sure this follows https://web.archive.org/web/20170427075406/thegraymerchants.com/?p=836
-      build_pack(set_code, {tsl_dfc: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1})
+      # also follow Reuben's rules
+      build_pack(set_code, {tsl_dfc: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1}, pack_class: ReubenPack)
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this

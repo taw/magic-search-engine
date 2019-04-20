@@ -41,3 +41,33 @@ class Pack
     cards.any?(&:foil)
   end
 end
+
+class ReubenPack < Pack
+  def open
+    while true
+      cards = super
+      # rule 1 (interpreting “of the same color” as “sharing a color”)
+      next unless cards.count{|c| c.rarity == "common" && c.main_front.colors.include?("w")} <= 4
+      next unless cards.count{|c| c.rarity == "common" && c.main_front.colors.include?("u")} <= 4
+      next unless cards.count{|c| c.rarity == "common" && c.main_front.colors.include?("b")} <= 4
+      next unless cards.count{|c| c.rarity == "common" && c.main_front.colors.include?("r")} <= 4
+      next unless cards.count{|c| c.rarity == "common" && c.main_front.colors.include?("g")} <= 4
+      # rule 2
+      next unless cards.count{|c| c.rarity == "common" && c.main_front.colors.include?("w")} >= 1
+      next unless cards.count{|c| c.rarity == "common" && c.main_front.colors.include?("u")} >= 1
+      next unless cards.count{|c| c.rarity == "common" && c.main_front.colors.include?("b")} >= 1
+      next unless cards.count{|c| c.rarity == "common" && c.main_front.colors.include?("r")} >= 1
+      next unless cards.count{|c| c.rarity == "common" && c.main_front.colors.include?("g")} >= 1
+      # rule 3
+      next unless cards.count{|c| c.rarity == "common" && c.main_front.type.include?("creature")} > 0
+      # rule 4 (interpreting “of the same color” as “sharing a color”)
+      next unless cards.count{|c| c.rarity == "uncommon" && c.main_front.colors.include?("w")} <= 2
+      next unless cards.count{|c| c.rarity == "uncommon" && c.main_front.colors.include?("u")} <= 2
+      next unless cards.count{|c| c.rarity == "uncommon" && c.main_front.colors.include?("b")} <= 2
+      next unless cards.count{|c| c.rarity == "uncommon" && c.main_front.colors.include?("r")} <= 2
+      next unless cards.count{|c| c.rarity == "uncommon" && c.main_front.colors.include?("g")} <= 2
+      # (rule 5 is already implemented in super)
+      return cards
+    end
+  end
+end
