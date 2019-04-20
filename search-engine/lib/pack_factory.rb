@@ -52,6 +52,9 @@ class PackFactory
     # Various old sheets
     when :explicit_common, :explicit_uncommon, :explicit_rare, :sfc_common, :sfc_uncommon, :sfc_rare_or_mythic
       @sheet_factory.send(name, set_code)
+    # Various set-specific custom sheets
+    when :nonland_common, :nonland_uncommon, :nonland_rare_mythic
+      @sheet_factory.send(name, set_code)
     # Various special sheets
     else
       if @sheet_factory.respond_to?(name)
