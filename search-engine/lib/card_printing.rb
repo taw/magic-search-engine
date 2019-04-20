@@ -1,14 +1,14 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date
   attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border, :timeshifted, :printed_name, :printed_text, :printed_typeline
-  attr_reader :rarity_code, :print_sheet
+  attr_reader :rarity_code, :print_sheet, :partner
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
   attr_reader :release_date_i
 
   # Set by CardDatabase initialization
-  attr_accessor :others, :artist, :default_sort_index
+  attr_accessor :others, :artist, :default_sort_index, :partner
 
   def initialize(card, set, data)
     @card = card
@@ -38,6 +38,7 @@ class CardPrinting
     @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
     @exclude_from_boosters = data["exclude_from_boosters"]
     @print_sheet = data["print_sheet"]
+    @partner = data["partner"]
 
     # Performance cache
     @stemmed_name = @card.stemmed_name
@@ -124,7 +125,7 @@ class CardPrinting
     foreign_names foreign_names_normalized mana_hash funny color_indicator color_indicator_set
     related first_regular_release_date reminder_text augment
     display_power display_toughness display_mana_cost
-    primary? secondary? front? back?
+    primary? secondary? front? back? partner?
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
   end

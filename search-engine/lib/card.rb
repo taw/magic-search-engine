@@ -53,6 +53,7 @@ class Card
     @life = data["life"]
     @rulings = data["rulings"]
     @secondary = data["secondary"]
+    @partner = data["is_partner"]
     if data["foreign_names"]
       @foreign_names = data["foreign_names"].map{|k,v| [k.to_sym,v]}.to_h
     else
@@ -71,6 +72,10 @@ class Card
     calculate_mana_hash
     calculate_color_indicator
     calculate_reminder_text
+  end
+
+  def partner?
+    !!@partner
   end
 
   def front?

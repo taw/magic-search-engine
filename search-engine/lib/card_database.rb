@@ -247,10 +247,23 @@ class CardDatabase
     end
     fix_multipart_cards_color_identity!(color_identity_cache)
     link_multipart_cards!(multipart_cards)
+    link_partner_cards!
     setup_artists!
     setup_sort_index!
     DeckDatabase.new(self).load!
     index_cards_in_precons!
+  end
+
+  # Change card number to CardPrinting reference
+  def link_partner_cards!
+    @sets.each do |set_code, set|
+      set.printings.each do |card|
+        if card.partner
+          partner = set.printings.find{|c| c.number == card.partner} or raise "Bad partner ID"
+          card.partner = partner
+        end
+      end
+    end
   end
 
   def index_cards_in_precons!

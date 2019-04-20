@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/card_database"
+require "paint"
+require "z3"
+require "pry"
+
+db = CardDatabase.load
+factory = PackFactory.new(db)
+
+sets = db.sets.values.select(&:has_boosters?)
+
+sets.each do |set|
+  # This ignores any special considerations
+  commons = db.search("r:common e:#{set.code} is:booster is:primary").printings
+
+  counts = commons.map(&:color_identity).map{|x|
+    x =~ /\A[wubrg]\z/ ? x : "."
+  }.group_by(&:itself).transform_values(&:size).sort.to_h
+
+  fully_balanced = "wubrg".chars.map{|c| counts[c] }.uniq.size == 1
+
+  solver = Z3::Solver.new
+  # Too many trivial variables
+  n, nw, nu, nb, nr, ng, nc = Z3::Real(%w[n nw nu nb nr ng nc])
+  pw, pu, pb, pr, pg, pc = Z3::Real(%w[pw pu pb pr pg pc])
+
+  solver.assert n == commons.size
+  solver.assert nw == (counts["w"] || 0)
+  solver.assert nu == (counts["u"] || 0)
+  solver.assert nb == (counts["b"] || 0)
+  solver.assert nr == (counts["r"] || 0)
+  solver.assert ng == (counts["g"] || 0)
+  solver.assert nc == (counts["."] || 0)
+
+  k = 10
+  solver.assert 1 + (k-5) * pw == k * (nw / n)
+  solver.assert 1 + (k-5) * pu == k * (nu / n)
+  solver.assert 1 + (k-5) * pb == k * (nb / n)
+  solver.assert 1 + (k-5) * pr == k * (nr / n)
+  solver.assert 1 + (k-5) * pg == k * (ng / n)
+  solver.assert     (k-5) * pc == k * (nc / n)
+  solver.assert pw + pu + pb + pr + pg + pc == 1
+  solver.assert pw >= 0
+  solver.assert pu >= 0
+  solver.assert pb >= 0
+  solver.assert pr >= 0
+  solver.assert pg >= 0
+  solver.assert pc >= 0
+
+  if solver.satisfiable?
+    puts "#{ set.code.upcase } #{ solver.model.inspect }"
+  else
+    puts "#{ set.code.upcase } MATH FAIL"
+  end
+end
