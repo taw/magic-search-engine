@@ -40,13 +40,19 @@ class PackFactory
 
   private def build_sheet(set_code, name)
     case name
-    when :basic, :common, :uncommon, :rare
+    when :common
+      @sheet_factory.rarity(set_code, name.to_s, kind: ColorBalancedCardSheet)
+    when :common_unbalanced
+      @sheet_factory.rarity(set_code, "common")
+    when :basic, :uncommon, :rare
       @sheet_factory.rarity(set_code, name.to_s)
     when :rare_or_mythic
       @sheet_factory.rare_or_mythic(set_code)
     # In old sets commons and basics were printed on shared sheet
     when :common_or_basic
       @sheet_factory.common_or_basic(set_code)
+    when :common_or_basic_unbalanced
+      @sheet_factory.common_or_basic(set_code, kind: CardSheet)
     when :foil
       @sheet_factory.foil_sheet(set_code)
     # Various old sheets
@@ -74,7 +80,7 @@ class PackFactory
     when "s99"
       build_pack(set_code, {basic: 2, common: 9, uncommon: 3, rare: 1})
     when "ugl"
-      build_pack(set_code, {basic: 1, common: 6, uncommon: 2, rare: 1})
+      build_pack(set_code, {basic: 1, common_unbalanced: 6, uncommon: 2, rare: 1})
     when "7ed", "8ed", "9ed", "10e"
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare: 1})
     # Default configuration before mythics
@@ -89,20 +95,26 @@ class PackFactory
     # Pre-mythic, with foils
     when "ulg", "uds",
       "mmq", "pcy", "nem",
-      "inv", "pls", "apc",
-      "ody", "tor", "jud",
+      "inv", "pls",
+      "ody", "tor",
       "ons", "lgn", "scg",
       "mrd", "dst", "5dn",
       "chk", "bok", "sok",
-      "rav", "gpt", "dis",
       "csp",
       "fut", # Amazingly Future Sight has regular boring sheets
-      "lrw", "mor", "shm", "eve"
+      "lrw", "mor"
       build_pack_with_random_foil(set_code, :foil, :common_or_basic, {common_or_basic: 11, uncommon: 3, rare: 1})
+    # Don't try to color balance them
+    # (APC should probably be balanced, just by c: not ci:)
+    when "apc",
+      "jud",
+      "rav", "gpt", "dis",
+      "shm", "eve"
+      build_pack_with_random_foil(set_code, :foil, :common_or_basic_unbalanced, {common_or_basic_unbalanced: 11, uncommon: 3, rare: 1})
     # Default configuration since mythics got introduced
     # A lot of sets don't fit this
     when "m10", "m11", "m12", "m13", "m14", "m15",
-      "ala", "con", "arb",
+      "ala", "con",
       "zen", "wwk", "roe",
       "som", "mbs", "nph",
       "avr",
@@ -118,6 +130,8 @@ class PackFactory
       "akh", "hou",
       "m19"
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, common_if_no_basic: true)
+    when "arb"
+      build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare_or_mythic: 1})
     when "mma", "mm2", "mm3", "ema", "ima", "a25", "uma"
       build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, foil: 1})
     when "dgm"
