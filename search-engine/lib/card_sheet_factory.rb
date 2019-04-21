@@ -14,12 +14,12 @@ class CardSheetFactory
     CardSheet.new(sheets.map(&:first), sheets.map{|s,w| s.elements.size * w})
   end
 
-  def from_query(query, assert_count=nil, foil: false)
+  def from_query(query, assert_count=nil, foil: false, kind: CardSheet)
     cards = @db.search("++ #{query}").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
     if assert_count and assert_count != cards.size
       raise "Expected query #{query} to return #{assert_count}, got #{cards.size}"
     end
-    CardSheet.new(cards)
+    kind.new(cards)
   end
 
   ### Usual Sheet Types

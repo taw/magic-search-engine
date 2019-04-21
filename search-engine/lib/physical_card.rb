@@ -46,6 +46,10 @@ class PhysicalCard
     main_front.in_boosters?
   end
 
+  def color_identity
+    main_front.color_identity
+  end
+
   def rarity
     main_front.rarity
   end
