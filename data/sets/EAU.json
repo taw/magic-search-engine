@@ -258,6 +258,16 @@
             "originalType": "Legendary Creature \u2014 Angel",
             "power": "7",
             "rarity": "Mythic Rare",
+            "rulings": [
+                {
+                    "date": "2019-04-26",
+                    "text": "A creature that's attacking in the same combat can only be tapped to pay the cost if it has vigilance."
+                },
+                {
+                    "date": "2019-04-26",
+                    "text": "If Faradia is put onto the battlefield attacking or blocking, you don't have to (and can't) pay the cost."
+                }
+            ],
             "subtypes": [
                 "Angel"
             ],
@@ -2440,6 +2450,16 @@
             "originalText": "Exile target creature or planeswalker and all other creatures its controller controls with the same name as that permanent. Search its controller's graveyard, hand, and library for any number of nonland cards with the same name as that permanent and exile them. Then that player shuffles their library.",
             "originalType": "Sorcery",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2019-04-26",
+                    "text": "If the target has the same name as any token creatures or planeswalkers, those are exiled as well. This can happen because of a copy effect, but there are also a few cards that just happen to have the same name as a token."
+                },
+                {
+                    "date": "2019-04-26",
+                    "text": "If the target somehow has multiple names, another permanent or card has \u201cthe same name\u201d as it if they share at least one name. Not all of the names need to match."
+                }
+            ],
             "text": "Exile target creature or planeswalker and all other creatures its controller controls with the same name as that permanent. Search its controller's graveyard, hand, and library for any number of nonland cards with the same name as that permanent and exile them. Then that player shuffles their library.",
             "type": "Sorcery",
             "types": [
@@ -6012,6 +6032,12 @@
             "originalType": "Legendary Creature \u2014 Bird Wizard",
             "power": "4",
             "rarity": "Mythic Rare",
+            "rulings": [
+                {
+                    "date": "2019-04-26",
+                    "text": "The exiled creature always returns under your control, even if you're not its owner."
+                }
+            ],
             "subtypes": [
                 "Bird",
                 "Wizard"
