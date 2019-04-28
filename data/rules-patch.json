@@ -2,992 +2,1374 @@
     "base": "2019-01-25",
     "patches": [
         {
-            "#": "for Mount Chromaziel, clarify that “could produce” can be checked in any zone",
-            "type": "replace",
-            "rule": "106.7",
-            "find": "permanent",
-            "replace": "object"
-        },
-        {
-            "#": "for Ruins of Doharum, define the runic mana symbol {A} as a mana symbol",
-            "type": "replace",
-            "rule": "107.4",
-            "find": "and the snow symbol {S}",
-            "replace": "the snow symbol {S}; and the runic mana symbol {A}"
-        },
-        {
-            "#": "for Ruins of Doharum, define what {A} means",
-            "type": "add",
-            "rule": "107.4",
-            "text": "The runic mana symbol {A} represents a cost that a player can pay either with one mana of any type produced by an artifact, or by tapping an untapped artifact they control. Despite its appearance, {A} is a colorless mana symbol."
-        },
-        {
-            "#": "a note on the rule for Future Sight card type symbols that Tesla's face symbols look similar",
-            "type": "add",
-            "rule": "107.10",
-            "text": "The front-face and back-face symbols on double-faced cards from the Tesla set are identical to the type symbols for artifact and sorcery, respectively. However, unlike the type symbols, these face symbols do have an effect on game play. (See rule 711.1.)"
-        },
-        {
-            "#": "for Structures, define stability as a characteristic",
-            "type": "insertText",
-            "rule": "109.3",
-            "after": "loyalty, ",
-            "text": "stability, "
-        },
-        {
-            "#": "for Plagiarized Results, define properties of tokens entering the battlefield from the stack",
-            "type": "add",
-            "rule": "110.5",
-            "text": "A token may also enter the battlefield from the stack. (See rule 608.3b.) This is an exception to rules 110.5a and 110.5b; the token enters the battlefield under the control of the spell's controller and retains its owner, text, and characteristics."
-        },
-        {
-            "#": "allow Structures to be targeted by “any target” damage spells",
-            "type": "replace",
-            "rule": "114.4",
-            "find": "creatures, players, or planeswalkers",
-            "replace": "creatures, players, planeswalkers, or Structures"
-        },
-        {
-            "#": "allow Structures to be targeted by “any target” damage spells",
-            "type": "replace",
-            "rule": "114.4",
-            "find": "such as noncreature artifacts or spells",
-            "replace": "such as noncreature enchantments or spells"
-        },
-        {
-            "#": "the special action for Dreamscape's premonition keyword",
-            "type": "addSpecialAction",
-            "text": "A player who has a card with premonition in their hand may put that card face up into their library. This is a special action. A player can take this action any time they have priority, but only if they could begin to cast that card by putting it onto the stack."
-        },
-        {
-            "#": "the special action for Ruins of Doharum's seal keyword",
-            "type": "addSpecialAction",
-            "text": "Exiling a face-down permanent with seal and casting that card for its seal cost is a special action."
-        },
-        {
-            "#": "allow Structures to be dealt damage, and for Sobki, World Severer, allow players to deal damage",
-            "type": "replace",
-            "rule": "119.1",
-            "find": "Objects can deal damage to creatures, planeswalkers, and players\\.",
-            "replace": "Objects and players can deal damage to creatures, planeswalkers, Structures, and players."
-        },
-        {
-            "#": "allow Structures to be dealt damage, and for Sobki, World Severer, allow players to deal damage",
-            "type": "replace",
-            "rule": "119.1",
-            "find": "An object that deals damage",
-            "replace": "An object or player that deals damage"
-        },
-        {
-            "#": "allow Structures to be dealt damage",
-            "type": "replace",
-            "rule": "119.1a",
-            "find": "neither a creature nor a planeswalker",
-            "replace": "not a creature, planeswalker, or Structure"
-        },
-        {
-            "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
-            "type": "replace",
-            "rule": "119.2",
-            "find": "Any object can deal damage\\.",
-            "replace": "Any object or player can deal damage."
-        },
-        {
-            "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
-            "type": "replace",
-            "rule": "119.2b",
-            "find": "The spell or ability will specify which object deals that damage\\.",
-            "replace": "The spell or ability will specify which object or player deals that damage."
-        },
-        {
-            "#": "allow Structures to be dealt damage",
-            "type": "insert",
-            "rule": "119.3d",
-            "text": "Damage dealt to a Structure causes that many stability counters to be removed from that Structure."
-        },
-        {
-            "#": "allow Structures to be dealt damage",
-            "type": "replace",
-            "rule": "119.3d",
-            "find": "creature or planeswalker",
-            "replace": "creature, planeswalker, or Structure"
-        },
-        {
-            "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
-            "type": "replace",
-            "rule": "119.7",
-            "find": "The source of damage is the object that dealt it\\. If an effect requires a player to choose a source of damage, they may choose a permanent;",
-            "replace": "The source of damage is the object or player that dealt it. If an effect requires a player to choose a source of damage, they may choose a player; a permanent;"
-        },
-        {
-            "#": "for Sobki, World Severer, the controller of the damage source is the player who dealt the damage",
-            "type": "add",
-            "rule": "119",
-            "text": "If an effect refers to the controller of a damage source, and the source of that damage is a player, it refers to that player."
-        },
-        {
-            "#": "for Structures, define stability as a part of a card",
-            "type": "insertText",
-            "rule": "200.1",
-            "after": "loyalty, ",
-            "text": "stability, "
-        },
-        {
-            "#": "using the same card pool for all custom formats doesn't make a lot of sense, so the change to this rule from GRN has been reverted",
-            "type": "replace",
-            "rule": "201.3",
-            "find": "in the Oracle card reference. \\(See rule 108\\.1\\.\\)",
-            "replace": "that is legal in the format of the game the player is playing. (See rule 100.6.)"
-        },
-        {
-            "#": "for Wildcard, allow an object's CMC to change",
-            "type": "add",
-            "rule": "202.3",
-            "text": "Effects may change an object's converted mana cost. If an effect gives an object a new converted mana cost, for the duration of the effect, the new converted mana cost becomes a characteristic of the card and replaces the previous converted mana cost the object had."
-        },
-        {
-            "#": "custom artifact types",
-            "type": "addSubtypes",
-            "cardType": "Artifact",
-            "subtypes": [
-                "Canister",
-                "Relic",
-                "Structure"
+            "sets": [
+                "AYR"
+            ],
+            "comment": "For {card:Mount Chromaziel}, types of mana an object “could produce” can be checked everywhere, and cards with basic land types have their intrinsic mana abilities everywhere",
+            "rules": [
+                {
+                    "type": "replace",
+                    "rule": "106.7",
+                    "find": "permanent",
+                    "replace": "object"
+                },
+                {
+                    "type": "replace",
+                    "rule": "305.6",
+                    "find": "A land",
+                    "replace": "In any zone and outside the game, a land"
+                }
             ]
         },
         {
-            "#": "custom planeswalker types",
-            "type": "addSubtypes",
-            "cardType": "Planeswalker",
-            "subtypes": [
-                "Cypress",
-                "Evis",
-                "Farajo",
-                "Faralyn",
-                "Foug",
-                "Gaile",
-                "Gozani",
-                "Helena",
-                "Hohoja",
-                "L3-T",
-                "Lazaire",
-                "Luma",
-                "Nibinem",
-                "Nic",
-                "Patches",
-                "Roselyn",
-                "Sarasa",
-                "Sobki",
-                "Talya",
-                "Toahanga",
-                "Veila",
-                "Wulani",
-                "Yemma"
+            "sets": [
+                "DHM"
+            ],
+            "comment": "The runic mana symbol {A} is defined here",
+            "rules": [
+                {
+                    "type": "replace",
+                    "rule": "107.4",
+                    "find": "and the snow symbol {S}",
+                    "replace": "the snow symbol {S}; and the runic mana symbol {A}"
+                },
+                {
+                    "type": "add",
+                    "rule": "107.4",
+                    "text": "The runic mana symbol {A} represents a cost that a player can pay either with one mana of any type produced by an artifact, or by tapping an untapped artifact they control. Despite its appearance, {A} is a colorless mana symbol."
+                }
             ]
         },
         {
-            "#": "custom creature types",
-            "type": "addSubtypes",
-            "cardType": "Creature",
-            "subtypes": [
-                "Bard",
-                "Coral",
-                "Dolphin",
-                "Farmer",
-                "Giraffe",
-                "Mech",
-                "Nanobot",
-                "Ship"
+            "sets": [
+                "DHM"
+            ],
+            "comment": "Structures, a new artifact subtype, are defined here",
+            "rules": [
+                {
+                    "type": "add",
+                    "rule": "301",
+                    "text": {
+                        "text": "Some artifacts have the subtype “Structure”.",
+                        "subrules": [
+                            "Stability is a characteristic only Structures have. Rules 306.5a–c apply to stability in relation to Structures just as they apply to loyalty in relation to planeswalkers. Structures' analog to loyalty counters are stability counters.",
+                            "Structures can be attacked. (See rule 508, “Declare Attackers Step.”)",
+                            "Damage dealt to a Structure results in that many stability counters being removed from it.",
+                            "If a Structure's stability is 0, it's put into its owner's graveyard. (This is a state-based action. See rule 704.)"
+                        ]
+                    }
+                }
             ]
         },
         {
-            "#": "custom ability words",
-            "type": "addAbilityWords",
-            "abilityWords": [
-                "expedition",
-                "imaginarium",
-                "justice",
-                "machinate",
-                "spellbound",
-                "supremacy",
-                "trance",
-                "virtuoso"
+            "sets": [
+                "DHM"
+            ],
+            "comment": "The stability of Structures is defined here",
+            "rules": [
+                {
+                    "type": "insertText",
+                    "rule": "109.3",
+                    "after": "loyalty, ",
+                    "text": "stability, "
+                },
+                {
+                    "type": "insertText",
+                    "rule": "200.1",
+                    "after": "loyalty, ",
+                    "text": "stability, "
+                }
             ]
         },
         {
-            "#": "Soul of New Alores is a Vehicle without crew",
-            "type": "replace",
-            "rule": "301.7",
-            "find": "Vehicles have a crew ability",
-            "replace": "Most Vehicles have a crew ability"
-        },
-        {
-            "#": "the rules for Structures, a new artifact subtype in Ruins of Doharum",
-            "type": "add",
-            "rule": "301",
-            "text": {
-                "text": "Some artifacts have the subtype “Structure”.",
-                "subrules": [
-                    "Stability is a characteristic only Structures have. Rules 306.5a–c apply to stability in relation to Structures just as they apply to loyalty in relation to planeswalkers. Structures' analog to loyalty counters are stability counters.",
-                    "Structures can be attacked. (See rule 508, “Declare Attackers Step.”)",
-                    "Damage dealt to a Structure results in that many stability counters being removed from it.",
-                    "If a Structure's stability is 0, it's put into its owner's graveyard. (This is a state-based action. See rule 704.)"
-                ]
-            }
-        },
-        {
-            "#": "for Mount Chromaziel, clarify that lands with basic land types have their intrinsic mana ability everywhere",
-            "type": "replace",
-            "rule": "305.6",
-            "find": "A land",
-            "replace": "In any zone and outside the game, a land"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "506.2",
-            "find": "that player and planeswalkers they control",
-            "replace": "that player, planeswalkers they control, and Structures they control"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "506.3",
-            "find": "a player or a planeswalker",
-            "replace": "a player, a planeswalker, or a Structure"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "506.3c",
-            "find": "a planeswalker",
-            "replace": "a planeswalker or Structure"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "506.3d",
-            "find": "a planeswalker",
-            "replace": "a planeswalker or Structure"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "506.4",
-            "find": "a planeswalker",
-            "replace": "a planeswalker or Structure"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "506.4c",
-            "find": "a planeswalker",
-            "replace": "a planeswalker or Structure"
-        },
-        {
-            "#": "clarify how type-changing effects interacting with Structures work in combat",
-            "type": "replaceRule",
-            "rule": "506.4d",
-            "text": "A permanent that's both a blocking creature and a planeswalker or Structure that's being attacked is removed from combat if it stops being a creature, a planeswalker, and a Structure. If it stops being a creature but continues to be a planeswalker or Structure, it stops being a blocking creature but continues to be a planeswalker or Structure that's being attacked. If it stops being a planeswalker or Structure but continues to be a creature, it stops being a planeswalker or Structure that's being attacked but continues to be a blocking creature. If a planeswalker that's being attacked becomes a Structure or vice versa, or if a permanent that's being attacked and is both a planeswalker and a Structure stops being one of the two but continues to be the other, it continues to be attacked."
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "508.1b",
-            "find": "any planeswalkers",
-            "replace": "any planeswalkers or Structures"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "508.1b",
-            "find": "player or planeswalker",
-            "replace": "player, planeswalker, or Structure"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "508.3a",
-            "find": "player or planeswalker",
-            "replace": "player, planeswalker, or Structure"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "508.3b",
-            "find": "player or planeswalker",
-            "replace": "player, planeswalker, or Structure"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "508.4",
-            "find": "planeswalker",
-            "replace": "planeswalker or Structure"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "508.4a",
-            "find": "planeswalker",
-            "replace": "planeswalker or Structure"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "508.5",
-            "find": "planeswalker",
-            "replace": "planeswalker or Structure"
-        },
-        {
-            "#": "make Portal Mage work with Structures",
-            "type": "replace",
-            "rule": "508.7",
-            "find": "player or planeswalker",
-            "replace": "player, planeswalker, or Structure"
-        },
-        {
-            "#": "make Portal Mage work with Structures",
-            "type": "replace",
-            "rule": "508.7a",
-            "find": "player or planeswalker",
-            "replace": "player, planeswalker, or Structure"
-        },
-        {
-            "#": "make Portal Mage work with Structures",
-            "type": "replace",
-            "rule": "508.7b",
-            "find": "player or planeswalker",
-            "replace": "player, planeswalker, or Structure"
-        },
-        {
-            "#": "make Portal Mage work with Structures",
-            "type": "replace",
-            "rule": "508.7c",
-            "find": "player or planeswalker",
-            "replace": "player, planeswalker, or Structure"
-        },
-        {
-            "#": "make Portal Mage work with Structures",
-            "type": "replace",
-            "rule": "508.7c",
-            "find": "a planeswalker",
-            "replace": "a planeswalker or Structure"
-        },
-        {
-            "#": "make Portal Mage work with Structures",
-            "type": "replace",
-            "rule": "508.7d",
-            "find": "player or planeswalker",
-            "replace": "player, planeswalker, or Structure"
-        },
-        {
-            "#": "make Portal Mage work with Structures",
-            "type": "replace",
-            "rule": "508.7d",
-            "find": "a planeswalker",
-            "replace": "a planeswalker or Structure"
-        },
-        {
-            "#": "make Portal Mage work with Structures",
-            "type": "replace",
-            "rule": "508.7e",
-            "find": "player or planeswalker",
-            "replace": "player, planeswalker, or Structure"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "509.1a",
-            "find": "planeswalker",
-            "replace": "planeswalker or Structure"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "510.1b",
-            "find": "player or planeswalker",
-            "replace": "player, planeswalker, or Structure"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "510.1b",
-            "find": "a planeswalker",
-            "replace": "a planeswalker or Structure"
-        },
-        {
-            "#": "allow Structures to be attacked",
-            "type": "replace",
-            "rule": "511.3",
-            "find": "creatures and planeswalkers",
-            "replace": "creatures, planeswalkers, and Structures"
-        },
-        {
-            "#": "for Thrill of Battle, ensure that a turn always ends with a cleanup step",
-            "type": "add",
-            "rule": "514",
-            "text": "If a turn would end and it's not a cleanup step, instead add an additional ending phase after the current phase which consists only of a cleanup step and end the current phase."
-        },
-        {
-            "#": "for Aenyr's resonance keyword, add the choice of whether to resonate to the casting process, and for Ruins of Doharum's runic mana, add the choice of whether to pay mana or to tap an artifact to the casting process",
-            "type": "insertText",
-            "rule": "601.2b",
-            "after": "If the player wishes to splice any cards onto the spell (see rule 702.46), they reveal those cards in their hand. ",
-            "text": "If the player wishes to apply any resonance effects to the spell, they announce their intention to do so. "
-        },
-        {
-            "#": "for Aenyr's resonance keyword, add the choice of whether to resonate to the casting process, and for Ruins of Doharum's runic mana, add the choice of whether to pay mana or to tap an artifact to the casting process",
-            "type": "insertText",
-            "rule": "601.2b",
-            "after": "If a cost that will be paid as the spell is being cast includes Phyrexian mana symbols, the player announces whether they intend to pay 2 life or the corresponding colored mana cost for each of those symbols. ",
-            "text": "If a cost that will be paid as the spell is being cast includes runic mana symbols, the player announces whether they intend to pay the corresponding generic mana cost or tap an untapped artifact they control for each of those symbols. "
-        },
-        {
-            "#": "for Richard Garfield, Ph.D. in the Bracket Cube, allow a spell cast as a copy of an instant spell to be cast at instant speed",
-            "type": "add",
-            "rule": "601.3",
-            "text": "A spell that is or would be an instant spell only if an additional or alternative cost is paid, or only with certain choices made during that spell's proposal, or only if certain conditions are met, follows the same rules as a spell that has or would have flash in these situations."
-        },
-        {
-            "#": "clarify that choosing targets for a delayed trigger happens as the delayed trigger triggers, not the spell or ability containing it",
-            "type": "insert",
-            "rule": "603.7d",
-            "text": "If a delayed triggered ability includes any targets, those targets are chosen as the delayed triggered ability is put onto the stack, not the spell or ability creating the delayed triggered ability.\nExample: Gaze of Pain is a sorcery with the text “Until end of turn, whenever a creature you control attacks and isn't blocked, you may choose to have it deal damage equal to its power to a target creature. If you do, it assigns no combat damage this turn.” The targets for multiple instances of the delayed triggered ability may be different creatures, and they don't have to be announced before combat."
-        },
-        {
-            "#": "for Vastuum's “you may waste” spells, link optional additional costs to effects checking whether they were paid",
-            "type": "add",
-            "rule": "607.2",
-            "text": "If an object has an ability printed on it that allows a player to pay an optional cost as it's cast and an ability printed on it that refers to whether “this spell's additional cost was paid,” those abilities are linked. The second refers only to whether the intent to pay the additional cost listed in the first was declared as the object was cast as a spell."
-        },
-        {
-            "#": "for enspirit, link abilities referring to “the exiled card” to the first ability in the keyword",
-            "type": "add",
-            "rule": "607.2",
-            "text": "The two abilities represented by the enspirit keyword are linked. The first ability may also be linked with any number of other abilities printed on the card with enspirit which refer either to “the exiled card” or to cards “exiled with [this object]”. See rule {keywordAbility:Enspirit}."
-        },
-        {
-            "#": "for Plagiarized Results, make copies of permanent spells become tokens as they resolve",
-            "type": "insert",
-            "rule": "608.3b",
-            "text": "If the object that's resolving is a permanent spell that's not represented by a card (i.e. a copy of a permanent spell), the object becomes a token as it enters the battlefield. It is no longer a copy of a spell."
-        },
-        {
-            "#": "for Sobki, World Severer, patch damage rules to allow players to deal damage",
-            "type": "replace",
-            "rule": "609.7a",
-            "find": "If an effect requires a player to choose a source of damage, they may choose a permanent;",
-            "replace": "If an effect requires a player to choose a source of damage, they may choose a player; a permanent;"
-        },
-        {
-            "#": "for Aenyr's resonance keyword, make sure resonated effects aren't affected by overload",
-            "type": "insert",
-            "rule": "612.1a",
-            "text": "A text-changing effect applying to its source only changes the text in the text box where it is defined. Other text boxes, such as those added by copy effects, are not modified. Text-changing effects that change the “full text” of an object are exempt from this rule. See rule 612.5."
-        },
-        {
-            "#": "using the same card pool for all custom formats doesn't make a lot of sense, so the change to this rule from GRN has been reverted",
-            "type": "replace",
-            "rule": "612.6",
-            "find": "\\. \\(See rule 108\\.1\\.\\)",
-            "replace": " that's legal in the format of the game it's in. (See rule 100.6.)"
-        },
-        {
-            "#": "for Wildcard, define that CMC changes apply in layer 5",
-            "type": "insertText",
-            "rule": "613.1e",
-            "after": "Color-changing effects",
-            "text": " and effects that change an object's converted mana cost"
-        },
-        {
-            "#": "for Persona Shift, make “base power/toughness” something that can be referred to by effects rather than just defined",
-            "type": "append",
-            "rule": "613.3b",
-            "text": "If a spell or ability refers to the base power and/or toughness of a creature for a calculation, it uses the value as determined after this layer is applied, but before layers 7c–7e are applied."
-        },
-        {
-            "#": "for Heavy Iron Armor, add a new sublayer 7e for static P/T doubling effects",
-            "type": "insert",
-            "rule": "613.3e",
-            "text": "Effects from static abilities that double a creature's power and/or toughness are applied. Such effects give the creature +X/+0, where X is its power, and/or +0/+Y, where Y is its toughness. See rule 701.9d."
-        },
-        {
-            "#": "for Heavy Iron Armor, rename the existing layer 7e to 7f",
-            "type": "replace",
-            "rule": "613.3f",
-            "find": "7e",
-            "replace": "7f"
-        },
-        {
-            "#": "for Tome of Infinity, clarify that Fate Reforged's Sieges don't have modal abilities",
-            "type": "add",
-            "rule": "700.2",
-            "text": "Despite similar appearance, an ability preceded by an anchor word is not a mode of a modal ability. It is a separate ability. See rule 614.12b."
-        },
-        {
-            "#": "a “straight” is a game term used in Lorado",
-            "type": "insert",
-            "rule": "700.7",
-            "text": {
-                "text": "One or more nonland permanents form a straight if they can be ordered in such a way that each but the first has a converted mana cost equal to one plus the converted mana cost of the previous permanent.",
-                "subrules": [
-                    "A “straight of N”, where N is a number, is a straight that contains exactly N permanents.",
-                    "“[A player's] longest straight” is the largest number of permanents in a straight consisting only of permanents controlled by that player."
-                ]
-            }
-        },
-        {
-            "#": "the “law” is a game term used in Tesla",
-            "type": "insert",
-            "rule": "700.8",
-            "text": "Some continuous effects state that a game action or game state is “against the law” for a player. A player “breaks the law” if they perform that action or if the game state matches that state. This is not to be confused with illegal actions and has no immediate effect on gameplay; however, spells and abilities can identify that the law has been broken."
-        },
-        {
-            "#": "“wastes” and “nonwastes” are game terms used in Vastuum",
-            "type": "insert",
-            "rule": "700.9",
-            "text": "The term wastes refers to a permanent named Wastes. A permanent is nonwastes if it's not named Wastes."
-        },
-        {
-            "#": "“cursed” is a game term used on Boghex Witch in Eralou",
-            "type": "insert",
-            "rule": "700.10",
-            "text": "A player is cursed if a Curse is attached to them."
-        },
-        {
-            "#": "For Heavy Iron Armor, allow the “double” keyword action to work on static abilities.",
-            "type": "replace",
-            "rule": "701.9b",
-            "find": "To double a creature's power,",
-            "replace": "If a resolving spell or ability doubles a creature's power,"
-        },
-        {
-            "#": "For Heavy Iron Armor, allow the “double” keyword action to work on static abilities.",
-            "type": "insert",
-            "rule": "701.9c",
-            "text": "Similarly, a static ability may also double a creature's power and/or toughness. See rule 613.3e."
-        },
-        {
-            "#": "“recharge” is a keyword action used in Tesla",
-            "type": "addKeywordAction",
-            "rule": {
-                "text": "Recharge",
-                "subrules": [
-                    "“Recharge” means “Create a colorless Canister artifact token with ‘{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.’”"
-                ]
-            }
-        },
-        {
-            "#": "“journey” is a keyword action used in Hollows of Lordran",
-            "type": "addKeywordAction",
-            "rule": {
-                "text": "Journey",
-                "subrules": [
-                    "“Journey” means “Exile the top card of your library. That card becomes journeyed.”",
-                    "There is an inherent triggered ability associated with journeying. The full text of this ability is “Whenever a creature deals combat damage to one of its controller's opponents, if its controller owns any journeyed cards, the creature's controller puts a journeyed card they own into their hand.” This ability has no source and is controlled by the controller of the creature which dealt the damage that caused it to trigger. This is an exception to rule 112.8.",
-                    "Journeyed is a designation that has no rules meaning other than to act as a marker that the inherent triggered ability and other spells and abilities can identify. Only cards in exile can gain or have this designation. Once a card becomes journeyed, it stays journeyed until it leaves exile or becomes a new object (see rule 406.7). Journeyed is neither an ability nor part of the card's copiable values."
-                ]
-            }
-        },
-        {
-            "#": "“waste” is a keyword action used in Vastuum",
-            "type": "addKeywordAction",
-            "rule": {
-                "text": "Waste",
-                "subrules": [
-                    "To waste a permanent means to create a continuous effect. The permanent's name is changed to Wastes, it loses all land types and abilities, and gains “{T}: Add {C}.”"
-                ]
-            }
-        },
-        {
-            "#": "“arm” is a keyword action used in Netropolis",
-            "type": "addKeywordAction",
-            "rule": {
-                "text": "Arm",
-                "subrules": [
-                    "To arm a creature, create a colorless Equipment artifact token named Weapon attached to that creature. The token has equip {2} and “Equipped creature gets +1/+1”.",
-                    "An object that's not a creature or not on the battlefield can't be armed. If a player attempts to do so, the Equipment token is not created.",
-                    "If an ability causes a creature to enter the battlefield armed, this means “If this object would enter the battlefield, instead it enters the battlefield and you simultaneously arm it.” The object and the token enter the battlefield simultaneously, and the object is never on the battlefield unequipped. See rule 603.6b."
-                ]
-            }
-        },
-        {
-            "#": "“upload” is a keyword action used in Netropolis",
-            "type": "addKeywordAction",
-            "rule": {
-                "text": "Upload",
-                "subrules": [
-                    "To upload an object, exile it. It becomes uploaded.",
-                    "Each uploaded card in exile has the intrinsic ability “{2}: Put this card from exile into your hand. Activate this ability only any time you could cast a sorcery.” This ability's activation cost is called an upload cost.",
-                    "Uploaded is a designation that has no rules meaning other than to act as a marker that this rule and other spells and abilities can identify. Only cards in exile can gain or have this designation. Once a card becomes uploaded, it stays uploaded until it leaves exile or becomes a new object (see rule 406.7). Uploaded is neither an ability nor part of the card's copiable values."
-                ]
-            }
-        },
-        {
-            "#": "“germinate” is a keyword action used in Eralou",
-            "type": "addKeywordAction",
-            "rule": {
-                "text": "Germinate",
-                "subrules": [
-                    "“Germinate” means “You may put a +1/+1 counter on a creature. If you don't, create a 1/1 green Saproling creature token.”"
-                ]
-            }
-        },
-        {
-            "#": "“harmonize” is a keyword action used in Eralou",
-            "type": "addKeywordAction",
-            "rule": {
-                "text": "Harmonize",
-                "subrules": [
-                    "“Harmonize” means “Choose up to one harmony ability of a permanent you control.” Choosing an ability this way causes that ability to trigger. See rule {keywordAbility:Harmony}."
-                ]
-            }
-        },
-        {
-            "#": "For Ash Akhu, define when “is unearthed” triggers",
-            "type": "add",
-            "rule": "702.83",
-            "text": "A player “unearths a card” when that player activates an unearth ability of that card."
-        },
-        {
-            "#": "“warband” is a variant of soulbond used in Lorado and Ruins of Doharum",
-            "type": "insert",
-            "rule": "702.94b",
-            "text": "Warband is a variant of the soulbond ability. “Warband” means “Whenever this creature attacks, if you control both this creature and another attacking creature and both are unpaired, you may pair this creature with another unpaired attacking creature you control until end of turn”."
-        },
-        {
-            "#": "“warband” is a variant of soulbond used in Lorado and Ruins of Doharum",
-            "type": "insert",
-            "rule": "702.94c",
-            "text": "A warband ability is a soulbond ability. Any effect that looks for an object with soulbond will find a card with warband."
-        },
-        {
-            "#": "Dragon King Teremos has an unkeyworded effect that can pair it with another creature.",
-            "type": "replace",
-            "rule": "702.94d",
-            "find": "A creature becomes \"paired\" with another as the result of a soulbond ability\\.",
-            "replace": "A creature may become “paired” with another as the result of a soulbond ability or another effect that pairs them."
-        },
-        {
-            "#": "“warband” is a variant of soulbond used in Lorado and Ruins of Doharum",
-            "type": "append",
-            "rule": "702.94f",
-            "text": "(For example, a creature can't be paired with another creature using a warband ability and with a third creature using a regular soulbond ability at the same time.)"
-        },
-        {
-            "#": "“warband” is a variant of soulbond used in Lorado and Ruins of Doharum",
-            "type": "replace",
-            "rule": "702.94g",
-            "find": "or it or the creature it's paired with leaves the battlefield\\.",
-            "replace": "it or the creature it's paired with leaves the battlefield; or (for warband) the turn ends."
-        },
-        {
-            "#": "“resonance” is a keyword ability used in Aenyr",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Resonance",
-                "subrules": [
-                    "Resonance appears on some instants and sorceries. It represents two abilities: a static ability that functions while the spell is on the stack and a spell ability which may create a replacement effect. “Resonance [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “If this spell's resonance cost was paid, exile it and, as you put your next instant or sorcery spell on the stack to cast it, put this card into its owner's graveyard. If you do, you may copy this card's text box onto that spell, except it doesn't have resonance, and have it become this card's colors in addition to its other colors.”",
-                    "The text box added by the copy effect is added below any existing text boxes. If the spell resolves, the instructions of its printed text will be followed first, and then the instructions of any spell abilities in the copied text are followed. If multiple replacement effects add text boxes onto the same spell, the one added by the most recently applied effect is ordered last.",
-                    "Putting the exiled spell into its owner's graveyard is a replacement effect that replaces the proposal of the next spell (rules 601.2a–d). Whether or not to apply the copy and color-changing effect is a decision made during the step described in rule 601.2b."
-                ]
-            }
-        },
-        {
-            "#": "“dreamwalk” is a keyword ability used in Dreamscape",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Dreamwalk",
-                "subrules": [
-                    "Dreamwalk is an evasion ability that modifies the rules for the declare blockers step. (See rule 509, “Declare Blockers Step.”)",
-                    "A creature with dreamwalk can't be blocked by untapped creatures. Instead, the defending player can choose tapped creatures they control to block an attacking creature with dreamwalk.",
-                    "Dreamwalk does not allow tapped creatures to block creatures without dreamwalk.",
-                    "Multiple instances of dreamwalk on the same creature are redundant."
-                ]
-            }
-        },
-        {
-            "#": "“premonition” is a keyword ability used in Dreamscape",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Premonition",
-                "subrules": [
-                    "Premonition is a keyword that represents a static ability that functions while the card with premonition is in a player's hand. “Premonition N—[cost]” means “If you could begin to cast this card by putting it onto the stack from your hand and your library has at least N cards in it, you may pay [cost] and put it onto your library beneath the Nth card of your library. This card becomes face up in your library. This action doesn't use the stack.”",
-                    "Cards that are put into a player's library by the premonition ability are put into the library face up. This is an exception to rule 401.2. Players should keep face up cards in an orientation separate from the orientation of cards in a library that are not face-up or otherwise easily visible to all players.",
-                    "As a face up card with premonition becomes the top card of a player's library, that player casts it without paying its mana cost if able. If that player can't, they turn the face up card face down instead and it becomes the top card of their library. It is no longer face up.",
-                    "If a one-shot effect causes a player to reveal (or look at, see rule 701.14d), shuffle, or change the order of a card or cards in a library, at least one of which is face up, each such card is turned face down, and then the cards are revealed, shuffled, or reordered.",
-                    "If a continuous effect causes a face up card to be revealed, that card is both revealed and is face up. If the card somehow ceases to be revealed, the card remains face up.",
-                    "If a one-shot effect causes a card to be put into the library “face up beneath the top N cards of [a player's] library,” that player puts that card into their library using the process described above."
-                ]
-            }
-        },
-        {
-            "#": "“decipher” is a keyword ability used in Ankheret",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Decipher",
-                "subrules": [
-                    "Decipher is a keyword that represents two abilities. The first is a static ability that functions while the spell with decipher is on the stack. The second is a triggered ability that functions while the spell with decipher is on the stack. “Decipher [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “When you cast this spell, if a decipher cost was paid for it, copy it X times, where X is the number of instant and sorcery cards in your graveyard. If the spell has any targets, you may choose new targets for any of the copies.”"
-                ]
-            }
-        },
-        {
-            "#": "“worship” is a keyword ability used in Ankheret",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Worship",
-                "subrules": [
-                    "Worship is an activated ability. “Worship [cost]” means “[Cost], {T}: If this permanent isn't devout, put a +1/+1 counter on this permanent and put a +1/+1 counter on target creature without worship. This permanent becomes devout. Activate this ability only any time you could cast a sorcery.”",
-                    "Devout is a designation that has no rules meaning other than to act as a marker that the worship ability and other spells and abilities can identify. Only permanents can be or become devout. Once a permanent becomes devout, it stays devout until it leaves the battlefield. Devout is neither an ability nor part of the permanent's copiable values.",
-                    "A creature “worships a creature” when one or more +1/+1 counters are put on the second creature as a result of the first creature's worship ability."
-                ]
-            }
-        },
-        {
-            "#": "“loaded” is a keyword ability used in Lorado",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Loaded",
-                "subrules": [
-                    "Loaded is a static ability. “Loaded N” means “This permanent enters the battlefield with N charge counters on it.”"
-                ]
-            }
-        },
-        {
-            "#": "“reflex” is a keyword ability used in Lorado",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Reflex",
-                "subrules": [
-                    "Reflex is a static ability that functions in any zone from which you could cast the card it's on. “Reflex [cost]” means “You may cast this card any time you could cast an instant by paying [cost] rather than paying its mana cost.”"
-                ]
-            }
-        },
-        {
-            "#": "“revolution” is a keyword ability used in Tesla",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Revolution",
-                "subrules": [
-                    "Revolution is an activated ability of some double-faced permanent cards. “Revolution” means “{T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Activate this ability only any time you could cast a sorcery.”",
-                    "You “revolt” when you activate a revolution ability. This is not to be confused with the ability word revolt, which has no rules meaning and does not appear in rules text."
-                ]
-            }
-        },
-        {
-            "#": "“possess” is a keyword ability used in Magic Villains",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Possess",
-                "subrules": [
-                    "Possess is a keyword that represents a triggered ability. “Possess” means “When this creature enters the battlefield, you may have target creature an opponent controls become one of your possessions for as long as both remain on the battlefield.”",
-                    "A permanent becomes “possessed” by another as the result of a possess ability, and becomes that permanent's “possession”. Abilities may refer to a possession, the permanent another permanent possesses, or whether a permanent is possessed. A player's possessions are all permanents possessed by permanents that player controls.",
-                    "When the possess ability resolves, if its source is no longer on the battlefield, the targeted object does not become possessed.",
-                    "A possessed permanent ceases to be possessed if it or the permanent possessing it leaves the battlefield."
-                ]
-            }
-        },
-        {
-            "#": "“torture” is a keyword ability used in Magic Villains",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Torture",
-                "subrules": [
-                    "Torture is a static ability that functions while the spell with torture is on the stack. “Torture” means “For each generic mana in this spell's total cost, you may put a -1/-1 counter on a creature you control rather than pay that mana.”",
-                    "A player may not put more than one -1/-1 counter on the same creature this way while casting that spell.",
-                    "The torture ability isn't an additional or alternative cost and applies only after the total cost of the spell with torture is determined.",
-                    "Multiple instances of torture on the same spell are redundant."
-                ]
-            }
-        },
-        {
-            "#": "“focus” is a keyword ability used in Jannada",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Focus",
-                "subrules": [
-                    "Focus is a keyword that represents two abilities: a static ability that functions while the spell with focus is on the stack, and a triggered ability that functions while the spell with focus is on the stack. “Focus [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “When you cast this spell, if its focus cost was paid, draw a card.” Paying a spell's focus cost follows the rules for paying alternative costs in rules 601.2b and 601.2f–h."
-                ]
-            }
-        },
-        {
-            "#": "“invocation” is a keyword ability used in Jannada",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Invocation",
-                "subrules": [
-                    "Invocation is a keyword that represents two abilities. The first is a static ability that functions while the spell with invocation is on the stack. The second is a triggered ability that functions while the spell with invocation is on the stack. “Invocation” means “As an additional cost to cast this spell, you may tap two untapped creatures you control” and “When you cast this spell, if its invocation cost was paid, copy it. If the spell has any targets, you may choose new targets for the copy.” Paying a spell's invocation cost follows the rules for paying additional costs in rules 601.2b and 601.2f–h.",
-                    "If a spell has multiple instances of invocation, each is paid separately and triggers based on its own payment, not any other instance of invocation."
-                ]
-            }
-        },
-        {
-            "#": "“resurrect” is a keyword ability used in Jannada",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Resurrect",
-                "subrules": [
-                    "Resurrect is a keyword that represents three static abilities. “Resurrect [cost]” means “You may cast this spell from your graveyard by paying [cost] rather than paying its mana cost”, “If this permanent was cast for its resurrect cost, it enters the battlefield with a +1/+1 counter on it”, and “If this permanent would leave the battlefield and it was cast for its resurrect cost, exile it instead of putting it anywhere else.” Casting a spell using its resurrect ability follows the rules for paying alternative costs in rules 601.2b and 601.2f–h."
-                ]
-            }
-        },
-        {
-            "#": "“desperation” is a keyword ability used in Hollows of Lordran",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Desperation",
-                "subrules": [
-                    "Desperation is a static ability. “Desperation” means “You may have this creature despair as it attacks. When it does, sacrifice it at the beginning of the next end step.”",
-                    "Despair is a keyword action with no inherent rules meaning. Only permanents can despair."
-                ]
-            }
-        },
-        {
-            "#": "“hollow” is a keyword ability used in Hollows of Lordran",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Hollow",
-                "subrules": [
-                    "Hollow is an activated ability that functions while the card with hollow is in a graveyard. “Hollow” means “Discard a card, Pay this card's mana cost, Exile this card from your graveyard: Create a token that's a copy of this card, except it's black and it's a Zombie in addition to its other types. Activate this ability only any time you could cast a sorcery.”"
-                ]
-            }
-        },
-        {
-            "#": "“salvage” is a keyword ability used in Vastuum",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Salvage",
-                "subrules": [
-                    "Salvage is an activated ability that functions while the card with salvage is in a graveyard. “Salvage [cost]” means “[Cost], Exile this card from your graveyard: Draw a card.”",
-                    "Some cards have abilities that trigger whenever a card is salvaged. “Whenever you salvage a card” means “Whenever you exile a card to pay an activation cost of a salvage ability.”",
-                    "Some cards with salvage have abilities that trigger when they're salvaged. These abilities trigger from whatever zone the card winds up in after it's salvaged."
-                ]
-            }
-        },
-        {
-            "#": "“seal” is a keyword ability used in Ruins of Doharum",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Seal",
-                "subrules": [
-                    "Seal is a static ability that functions in any zone from which you could play the card it's on, and the seal effect works any time the card is face down. “Seal [cost]” means “You may cast this card as a face-down Relic artifact with no text, no name, and no mana cost by paying {2} rather than paying its mana cost.” (See rule 707, “Face-Down Spells and Permanents.”)",
-                    "To cast a card using its seal ability, turn it face down. It becomes a face-down Relic artifact card with no text, no name, and no mana cost. Any effects or prohibitions that would apply to casting a card with these characteristics (and not the face-up card's characteristics) are applied to casting this card. These values are the copiable values of that object's characteristics. (See rule 613, “Interaction of Continuous Effects,” and rule 706, “Copying Objects.”) Put it onto the stack (as a face-down spell with the same characteristics), and pay {2} rather than pay its mana cost. This follows the rules for paying alternative costs. You can use a seal ability to cast a card from any zone from which you could normally play it. When the spell resolves, it enters the battlefield with the same characteristics the spell had. The seal effect applies to the face-down object wherever it is, and it ends when the permanent is turned face up.",
-                    "Any time you have priority, you may exile a face-down permanent you control, then cast it for its seal cost. This is a special action; it doesn't use the stack (see rule 115). To do this, show all players what the permanent's seal cost would be if it were face up, exile it, then cast it for that cost. This follows the rules for paying alternative costs. (If the permanent wouldn't have a seal cost if it were face up, it can't be exiled this way.) The card is turned face up and the seal effect on it ends as soon as it's exiled, and it regains its normal characteristics. Exiling and casting the card is considered a single action for the purposes of reversing illegal spells. If the spell proposal of casting the card for its seal cost is reversed, the action of exiling it is also reversed, returning it to the battlefield. (See rule 721, “Handling Illegal Actions.”)",
-                    "If a spell's controller declares the intention to pay that spell's seal cost, that spell has been “sealed.” If a spell has multiple seal costs, it may be sealed multiple times. See rule 601.2b.",
-                    "Objects with seal may have additional abilities that check whether they were sealed. These abilities are linked to the seal ability printed on that object: they can refer only to its printed seal ability. See rule 607, “Linked Abilities.”",
-                    "See rule 707, “Face-Down Spells and Permanents,” for more information about how to cast cards with seal."
-                ]
-            }
-        },
-        {
-            "#": "“secure” is a keyword ability used in Ruins of Doharum",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Secure",
-                "subrules": [
-                    "Secure is an activated ability that generally appears on Structures and functions on the battlefield. “Secure N—[cost]” means “[cost]: Put N stability counters on this permanent. Activate this ability only any time you could cast a sorcery and only once each turn.”",
-                    "A player “secures a Structure” when that player activates a secure ability of that Structure."
-                ]
-            }
-        },
-        {
-            "#": "“prestige” is a keyword ability used in Rakoa",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Prestige",
-                "subrules": [
-                    "Prestige is a triggered ability. “Prestige N” means “When this creature and two or more other creatures attack, if this creature isn't prestigious, put N +1/+1 counters on it and it becomes prestigious.”",
-                    "Prestigious is a designation that has no rules meaning other than to act as a marker that the prestige ability and other spells and abilities can identify. Only permanents can be or become prestigious. Once a permanent becomes prestigious, it stays prestigious until it leaves the battlefield. Prestigious is neither an ability nor part of the permanent's copiable values.",
-                    "If a creature has multiple instances of prestige, each triggers separately. The first such ability to resolve will cause the creature to become prestigious, and subsequent abilities will have no effect. (See rule 603.4)"
-                ]
-            }
-        },
-        {
-            "#": "“voyage” is a keyword ability used in Rakoa",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Voyage",
-                "subrules": [
-                    "Voyage is a triggered ability that functions while a spell with voyage is on the stack, as well as in all zones from which an object with voyage can be played as a land. “Voyage” means “When you play this object, if you don't have a voyage emblem, you get a voyage emblem with ‘{W}: Put a white counter on this emblem. Activate this ability only if this emblem doesn't have a white counter on it and only if this ability isn't on the stack’, ‘{U}: Put a blue counter on this emblem. Activate this ability only if this emblem doesn't have a blue counter on it and only if this ability isn't on the stack’, ‘{B}: Put a black counter on this emblem. Activate this ability only if this emblem doesn't have a black counter on it and only if this ability isn't on the stack’, ‘{R}: Put a red counter on this emblem. Activate this ability only if this emblem doesn't have a red counter on it and only if this ability isn't on the stack’, ‘{G}: Put a green counter on this emblem. Activate this ability only if this emblem doesn't have a green counter on it and only if this ability isn't on the stack’, and ‘When this emblem has a white counter, a blue counter, a black counter, a red counter, and a green counter on it, if you haven't discovered paradise, you discover paradise for the rest of the game.’”",
-                    "A voyage emblem is a kind of emblem that can be identified as such by the voyage ability. Voyage is not a supertype, card type, or subtype.",
-                    "Discovering paradise is an event that has no rules meaning other than to act as a marker that other rules and effects can identify. Any number of players may discover paradise at the same time or at different times.",
-                    "After a player discovers paradise, continuous effects are reapplied before the game checks to see if the game state or preceding events have matched any trigger conditions."
-                ]
-            }
-        },
-        {
-            "#": "“enspirit” is a keyword ability used in Eralou",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Enspirit",
-                "subrules": [
-                    "Enspirit represents two static abilities that function while the spell with enspirit is on the stack. “Enspirit” means “As an additional cost to cast this spell, you may exile a nonenchantment creature you control until this spell is put from the stack into a zone other than the battlefield or the permanent this spell becomes leaves the battlefield” and “If you chose to pay this spell's additional cost, its total cost is reduced by an amount of generic mana equal to the exiled card's converted mana cost.” Paying a spell's enspirit cost follows the rules for paying additional costs in rules 601.2b and 601.2f–h.",
-                    "The two abilities represented by enspirit are linked. The first ability may also be linked with any number of other abilities printed on the card with enspirit which refer either to “the exiled card” or to cards “exiled with [this object]”. See rule 607, “Linked Abilities.”",
-                    "You choose which creature to exile as you choose to pay a spell's enspirit cost (see rule 601.2b), and you exile that creature as you pay the total cost (see rule 601.2h).",
-                    "A creature “becomes enspirited” when it's exiled to pay a spell's enspirit cost. Abilities that trigger when a creature becomes enspirited are leaves-the-battlefield abilities (see rule 603.6c)."
-                ]
-            }
-        },
-        {
-            "#": "“harmony” is a keyword ability used in Eralou",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Harmony",
-                "subrules": [
-                    "A harmony ability is a special kind of triggered ability that only triggers when chosen as part of the harmonize keyword action (see rule {keywordAction:Harmonize}). “Harmony — [Effect]” means “Whenever you harmonize, if you choose this ability, [effect].”"
-                ]
-            }
-        },
-        {
-            "#": "“tithe” is a keyword ability used in Eralou",
-            "type": "addKeywordAbility",
-            "rule": {
-                "text": "Tithe",
-                "subrules": [
-                    "On a permanent card, tithe is a triggered ability. “Tithe” on a permanent means “When this permanent enters the battlefield, you may tap three untapped artifacts and/or creatures you control.” Tapping the three permanents is a cost (see rule 117) and may be referred to as paying the permanent's tithe.",
-                    "On an instant or sorcery card, tithe is a static ability that functions while the spell with tithe is on the stack. “Tithe” on an instant or sorcery spell means “As an additional cost to cast this spell, you may tap three untapped artifacts and/or creatures you control.” Paying an instant or sorcery spell's tithe cost follows the rules for paying additional costs in rules 601.2b and 601.2f–h. An instant or sorcery spell's tithe cost may also simply be referred to as its tithe."
-                ]
-            }
-        },
-        {
-            "#": "Structures with stability 0 are put into the graveyard as a state-based action",
-            "type": "insertText",
-            "rule": "704.5i",
-            "after": "a planeswalker has loyalty 0",
-            "text": " or a Structure has stability 0"
-        },
-        {
-            "#": "define front-face symbols for double-faced cards in custom sets",
-            "type": "replaceRule",
-            "rule": "711.1a",
-            "text": "A double-faced card's front face is marked by a front-face symbol in its upper left corner. This symbol may be a modified Planeswalker icon, a sun, a full moon, a compass rose, or a chalice."
-        },
-        {
-            "#": "define back-face symbols for double-faced cards in custom sets",
-            "type": "replaceRule",
-            "rule": "711.1b",
-            "text": "A double-faced card's back face is marked by a back-face symbol in its upper left corner. This symbol may be a full Planeswalker icon, a crestent moon, a stylized image of Emrakul, a land icon, or a flame."
-        },
-        {
-            "#": "remove Structures from combat when an effect ends the turn",
-            "type": "replace",
-            "rule": "716.1b",
-            "find": "all creatures and planeswalkers",
-            "replace": "all creatures, planeswalkers, and Structures"
-        },
-        {
-            "#": "for Starsong Dragon and Thrill of Battle, ensure that a turn always ends with a cleanup step, even when an “end the turn” effect is used",
-            "type": "append",
-            "rule": "716.1d",
-            "text": "If the remainder of the turn does not contain a cleanup step, a new ending phase which consists of only a cleanup step is added after the last phase of the turn."
-        },
-        {
-            "#": "for Iun, World Reborn, change the intro of the “restarting the game” rules",
-            "type": "replace",
-            "rule": "718.1",
-            "find": "One card \\(Karn Liberated\\) restarts the game\\.",
-            "replace": "Some cards allow a player to restart the game."
+            "sets": [
+                "TSL"
+            ],
+            "comment": "For {card:Plagiarized Results}, copies of permanent spells become tokens as they resolve",
+            "rules": [
+                {
+                    "type": "add",
+                    "rule": "110.5",
+                    "text": "A token may also enter the battlefield from the stack. (See rule 608.3b.) This is an exception to rules 110.5a and 110.5b; the token enters the battlefield under the control of the spell's controller and retains its owner, text, and characteristics."
+                },
+                {
+                    "type": "insert",
+                    "rule": "608.3b",
+                    "text": "If the object that's resolving is a permanent spell that's not represented by a card (i.e. a copy of a permanent spell), the object becomes a token as it enters the battlefield. It is no longer a copy of a spell."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "DHM"
+            ],
+            "comment": "Structures can be targeted by “any target” damage spells",
+            "rules": [
+                {
+                    "type": "replace",
+                    "rule": "114.4",
+                    "find": "creatures, players, or planeswalkers",
+                    "replace": "creatures, players, planeswalkers, or Structures"
+                },
+                {
+                    "type": "replace",
+                    "rule": "114.4",
+                    "find": "such as noncreature artifacts or spells",
+                    "replace": "such as noncreature enchantments or spells"
+                }
+            ]
+        },
+        {
+            "sets": [
+                "ANK"
+            ],
+            "comment": "For {card:Sobki, World Severer}, players can deal damage",
+            "rules": [
+                {
+                    "type": "replace",
+                    "rule": "119.1",
+                    "find": "Objects can deal damage",
+                    "replace": "Objects and players can deal damage"
+                },
+                {
+                    "type": "replace",
+                    "rule": "119.1",
+                    "find": "An object that deals damage",
+                    "replace": "An object or player that deals damage"
+                },
+                {
+                    "type": "replace",
+                    "rule": "119.2",
+                    "find": "Any object can deal damage\\.",
+                    "replace": "Any object or player can deal damage."
+                },
+                {
+                    "type": "replace",
+                    "rule": "119.2b",
+                    "find": "The spell or ability will specify which object deals that damage\\.",
+                    "replace": "The spell or ability will specify which object or player deals that damage."
+                },
+                {
+                    "type": "replace",
+                    "rule": "119.7",
+                    "find": "The source of damage is the object that dealt it\\. If an effect requires a player to choose a source of damage, they may choose a permanent;",
+                    "replace": "The source of damage is the object or player that dealt it. If an effect requires a player to choose a source of damage, they may choose a player; a permanent;"
+                },
+                {
+                    "type": "add",
+                    "rule": "119",
+                    "text": "If an effect refers to the controller of a damage source, and the source of that damage is a player, it refers to that player."
+                },
+                {
+                    "type": "replace",
+                    "rule": "609.7a",
+                    "find": "If an effect requires a player to choose a source of damage, they may choose a permanent;",
+                    "replace": "If an effect requires a player to choose a source of damage, they may choose a player; a permanent;"
+                }
+            ]
+        },
+        {
+            "sets": [
+                "DHM"
+            ],
+            "comment": "Structures can be dealt damage",
+            "rules": [
+                {
+                    "type": "replace",
+                    "rule": "119.1",
+                    "find": "to creatures, planeswalkers, and players\\.",
+                    "replace": "to creatures, planeswalkers, Structures, and players."
+                },
+                {
+                    "type": "replace",
+                    "rule": "119.1a",
+                    "find": "neither a creature nor a planeswalker",
+                    "replace": "not a creature, planeswalker, or Structure"
+                },
+                {
+                    "type": "insert",
+                    "rule": "119.3d",
+                    "text": "Damage dealt to a Structure causes that many stability counters to be removed from that Structure."
+                },
+                {
+                    "type": "replace",
+                    "rule": "119.5",
+                    "find": "creature or planeswalker",
+                    "replace": "creature, planeswalker, or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "614.9",
+                    "find": "creature, planeswalker, or player",
+                    "replace": "creature, planeswalker, Structure, or player"
+                },
+                {
+                    "type": "replace",
+                    "rule": "614.9",
+                    "find": "creature or planeswalker",
+                    "replace": "creature, planeswalker, or Structure"
+                }
+            ]
+        },
+        {
+            "sets": [
+                "LDO"
+            ],
+            "comment": "For {card:Wildcard}, an effect can change an object's CMC. Such an effect applies in layer 5",
+            "rules": [
+                {
+                    "type": "add",
+                    "rule": "202.3",
+                    "text": "Effects may change an object's converted mana cost. If an effect gives an object a new converted mana cost, for the duration of the effect, the new converted mana cost becomes a characteristic of the card and replaces the previous converted mana cost the object had."
+                },
+                {
+                    "type": "insertText",
+                    "rule": "613.1e",
+                    "after": "Color-changing effects",
+                    "text": " and effects that change an object's converted mana cost"
+                }
+            ]
+        },
+        {
+            "comment": "Various custom subtypes are defined here",
+            "rules": [
+                {
+                    "type": "addSubtypes",
+                    "cardType": "Artifact",
+                    "subtypes": [
+                        "Canister",
+                        "Relic",
+                        "Structure"
+                    ]
+                },
+                {
+                    "type": "addSubtypes",
+                    "cardType": "Planeswalker",
+                    "subtypes": [
+                        "Cypress",
+                        "Evis",
+                        "Farajo",
+                        "Faralyn",
+                        "Foug",
+                        "Gaile",
+                        "Gozani",
+                        "Helena",
+                        "Hohoja",
+                        "L3-T",
+                        "Lazaire",
+                        "Luma",
+                        "Nibinem",
+                        "Nic",
+                        "Patches",
+                        "Roselyn",
+                        "Sarasa",
+                        "Sobki",
+                        "Talya",
+                        "Toahanga",
+                        "Veila",
+                        "Wulani",
+                        "Yemma"
+                    ]
+                },
+                {
+                    "type": "addSubtypes",
+                    "cardType": "Creature",
+                    "subtypes": [
+                        "Bard",
+                        "Coral",
+                        "Dolphin",
+                        "Farmer",
+                        "Giraffe",
+                        "Mech",
+                        "Nanobot",
+                        "Ship"
+                    ]
+                }
+            ]
+        },
+        {
+            "comment": "Various custom ability words are defined here",
+            "rules": [
+                {
+                    "type": "addAbilityWords",
+                    "abilityWords": [
+                        "expedition",
+                        "imaginarium",
+                        "justice",
+                        "machinate",
+                        "spellbound",
+                        "supremacy",
+                        "trance",
+                        "virtuoso"
+                    ]
+                }
+            ]
+        },
+        {
+            "sets": [
+                "EAU"
+            ],
+            "comment": "The official rules say every Vehicle card has a crew ability. {card:Soul of New Alores} does not",
+            "rules": [
+                {
+                    "type": "replace",
+                    "rule": "301.7",
+                    "find": "Vehicles have a crew ability",
+                    "replace": "Most Vehicles have a crew ability"
+                }
+            ]
+        },
+        {
+            "sets": [
+                "DHM"
+            ],
+            "comment": "Structures can be attacked",
+            "rules": [
+                {
+                    "type": "replace",
+                    "rule": "506.2",
+                    "find": "that player and planeswalkers they control",
+                    "replace": "that player, planeswalkers they control, and Structures they control"
+                },
+                {
+                    "type": "replace",
+                    "rule": "506.3",
+                    "find": "a player or a planeswalker",
+                    "replace": "a player, a planeswalker, or a Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "506.3c",
+                    "find": "a planeswalker",
+                    "replace": "a planeswalker or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "506.3d",
+                    "find": "a planeswalker",
+                    "replace": "a planeswalker or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "506.4",
+                    "find": "a planeswalker",
+                    "replace": "a planeswalker or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "506.4c",
+                    "find": "a planeswalker",
+                    "replace": "a planeswalker or Structure"
+                },
+                {
+                    "type": "replaceRule",
+                    "rule": "506.4d",
+                    "text": "A permanent that's both a blocking creature and a planeswalker or Structure that's being attacked is removed from combat if it stops being a creature, a planeswalker, and a Structure. If it stops being a creature but continues to be a planeswalker or Structure, it stops being a blocking creature but continues to be a planeswalker or Structure that's being attacked. If it stops being a planeswalker or Structure but continues to be a creature, it stops being a planeswalker or Structure that's being attacked but continues to be a blocking creature. If a planeswalker that's being attacked becomes a Structure or vice versa, or if a permanent that's being attacked and is both a planeswalker and a Structure stops being one of the two but continues to be the other, it continues to be attacked."
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.1b",
+                    "find": "any planeswalkers",
+                    "replace": "any planeswalkers or Structures"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.1b",
+                    "find": "player or planeswalker",
+                    "replace": "player, planeswalker, or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.3a",
+                    "find": "player or planeswalker",
+                    "replace": "player, planeswalker, or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.3b",
+                    "find": "player or planeswalker",
+                    "replace": "player, planeswalker, or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.4",
+                    "find": "planeswalker",
+                    "replace": "planeswalker or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.4a",
+                    "find": "planeswalker",
+                    "replace": "planeswalker or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.5",
+                    "find": "planeswalker",
+                    "replace": "planeswalker or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.7",
+                    "find": "player or planeswalker",
+                    "replace": "player, planeswalker, or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.7a",
+                    "find": "player or planeswalker",
+                    "replace": "player, planeswalker, or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.7b",
+                    "find": "player or planeswalker",
+                    "replace": "player, planeswalker, or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.7c",
+                    "find": "player or planeswalker",
+                    "replace": "player, planeswalker, or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.7c",
+                    "find": "a planeswalker",
+                    "replace": "a planeswalker or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.7d",
+                    "find": "player or planeswalker",
+                    "replace": "player, planeswalker, or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.7d",
+                    "find": "a planeswalker",
+                    "replace": "a planeswalker or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "508.7e",
+                    "find": "player or planeswalker",
+                    "replace": "player, planeswalker, or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "509.1a",
+                    "find": "planeswalker",
+                    "replace": "planeswalker or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "510.1b",
+                    "find": "player or planeswalker",
+                    "replace": "player, planeswalker, or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "510.1b",
+                    "find": "a planeswalker",
+                    "replace": "a planeswalker or Structure"
+                },
+                {
+                    "type": "replace",
+                    "rule": "511.3",
+                    "find": "creatures and planeswalkers",
+                    "replace": "creatures, planeswalkers, and Structures"
+                },
+                {
+                    "type": "replace",
+                    "rule": "716.1b",
+                    "find": "all creatures and planeswalkers",
+                    "replace": "all creatures, planeswalkers, and Structures"
+                }
+            ]
+        },
+        {
+            "sets": [
+                "DMS"
+            ],
+            "comment": "For {card:Thrill of Battle}, these rules ensure that a turn always ends with a cleanup step",
+            "rules": [
+                {
+                    "type": "add",
+                    "rule": "514",
+                    "text": "If a turn would end and it's not a cleanup step, instead add an additional ending phase after the current phase which consists only of a cleanup step and end the current phase."
+                },
+                {
+                    "type": "append",
+                    "rule": "716.1d",
+                    "text": "If the remainder of the turn does not contain a cleanup step, a new ending phase which consists of only a cleanup step is added after the last phase of the turn."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "AYR",
+                "DHM"
+            ],
+            "comment": "This step in the spells-casting process now includes the decisions of whether to resonate and how to pay for {A} costs",
+            "rules": [
+                {
+                    "type": "insertText",
+                    "rule": "601.2b",
+                    "after": "If the player wishes to splice any cards onto the spell (see rule 702.46), they reveal those cards in their hand. ",
+                    "text": "If the player wishes to apply any resonance effects to the spell, they announce their intention to do so. "
+                },
+                {
+                    "type": "insertText",
+                    "rule": "601.2b",
+                    "after": "If a cost that will be paid as the spell is being cast includes Phyrexian mana symbols, the player announces whether they intend to pay 2 life or the corresponding colored mana cost for each of those symbols. ",
+                    "text": "If a cost that will be paid as the spell is being cast includes runic mana symbols, the player announces whether they intend to pay the corresponding generic mana cost or tap an untapped artifact they control for each of those symbols. "
+                }
+            ]
+        },
+        {
+            "comment": "For {card:Richard Garfield, Ph.D.} in the Bracket Cube, this rule allows a spell which is cast as a copy of an instant spell to be cast at instant speed",
+            "rules": [
+                {
+                    "type": "add",
+                    "rule": "601.3",
+                    "text": "A spell that is or would be an instant spell only if an additional or alternative cost is paid, or only with certain choices made during that spell's proposal, or only if certain conditions are met, follows the same rules as a spell that has or would have flash in these situations."
+                }
+            ]
+        },
+        {
+            "comment": "This rule clarifies that choosing targets for a delayed trigger happens as the delayed trigger triggers, not the spell or ability containing it",
+            "rules": [
+                {
+                    "type": "insert",
+                    "rule": "603.7d",
+                    "text": "If a delayed triggered ability includes any targets, those targets are chosen as the delayed triggered ability is put onto the stack, not the spell or ability creating the delayed triggered ability.\nExample: Gaze of Pain is a sorcery with the text “Until end of turn, whenever a creature you control attacks and isn't blocked, you may choose to have it deal damage equal to its power to a target creature. If you do, it assigns no combat damage this turn.” The targets for multiple instances of the delayed triggered ability may be different creatures, and they don't have to be announced before combat."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "VST"
+            ],
+            "comment": "For {card:Sandwarp}, this rule links optional additional costs to effects checking whether they were paid",
+            "rules": [
+                {
+                    "type": "add",
+                    "rule": "607.2",
+                    "text": "If an object has an ability printed on it that allows a player to pay an optional cost as it's cast and an ability printed on it that refers to whether “this spell's additional cost was paid,” those abilities are linked. The second refers only to whether the intent to pay the additional cost listed in the first was declared as the object was cast as a spell."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "AYR"
+            ],
+            "comment": "This rule ensures that resonance doesn't interact with overload",
+            "rules": [
+                {
+                    "type": "insert",
+                    "rule": "612.1a",
+                    "text": "A text-changing effect applying to its source only changes the text in the text box where it is defined. Other text boxes, such as those added by copy effects, are not modified. Text-changing effects that change the “full text” of an object are exempt from this rule. See rule 612.5."
+                }
+            ]
+        },
+        {
+            "comment": "Using the same card pool for all custom formats doesn't make a lot of sense, so the change to this rule from GRN has been reverted",
+            "rules": [
+                {
+                    "type": "replace",
+                    "rule": "612.6",
+                    "find": "\\. \\(See rule 108\\.1\\.\\)",
+                    "replace": " that's legal in the format of the game it's in. (See rule 100.6.)"
+                }
+            ]
+        },
+        {
+            "sets": [
+                "AYR"
+            ],
+            "comment": "For {card:Persona Shift}, this rule allows effects to use a creature's “base power/toughness” rather than just change it",
+            "rules": [
+                {
+                    "type": "append",
+                    "rule": "613.3b",
+                    "text": "If a spell or ability refers to the base power and/or toughness of a creature for a calculation, it uses the value as determined after this layer is applied, but before layers 7c–7e are applied."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "HLW"
+            ],
+            "comment": "For {card:Heavy Iron Armor}, the “double” keyword action is redefined as a continuous effect when used on static abilities",
+            "rules": [
+                {
+                    "type": "insert",
+                    "rule": "613.3e",
+                    "text": "Effects from static abilities that double a creature's power and/or toughness are applied. Such effects give the creature +X/+0, where X is its power, and/or +0/+Y, where Y is its toughness. See rule 701.9d."
+                },
+                {
+                    "type": "replace",
+                    "rule": "613.3f",
+                    "find": "7e",
+                    "replace": "7f"
+                },
+                {
+                    "type": "replace",
+                    "rule": "701.9b",
+                    "find": "To double a creature's power,",
+                    "replace": "If a resolving spell or ability doubles a creature's power,"
+                },
+                {
+                    "type": "insert",
+                    "rule": "701.9c",
+                    "text": "Similarly, a static ability may also double a creature's power and/or toughness. See rule 613.3e."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "AYR"
+            ],
+            "comment": "For {card:Tome of Infinity}, this rule clarifies that the Siege cycle doesn't have modal abilities",
+            "rules": [
+                {
+                    "type": "add",
+                    "rule": "700.2",
+                    "text": "Despite similar appearance, an ability preceded by an anchor word is not a mode of a modal ability. It is a separate ability. See rule 614.12b."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "LDO"
+            ],
+            "comment": "This rule defines the game term “straight”",
+            "rules": [
+                {
+                    "type": "insert",
+                    "rule": "700.7",
+                    "text": {
+                        "text": "One or more nonland permanents form a straight if they can be ordered in such a way that each but the first has a converted mana cost equal to one plus the converted mana cost of the previous permanent.",
+                        "subrules": [
+                            "A “straight of N”, where N is a number, is a straight that contains exactly N permanents.",
+                            "“[A player's] longest straight” is the largest number of permanents in a straight consisting only of permanents controlled by that player."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "TSL"
+            ],
+            "comment": "This rule defines the game term “against the law”",
+            "rules": [
+                {
+                    "type": "insert",
+                    "rule": "700.8",
+                    "text": "Some continuous effects state that a game action or game state is “against the law” for a player. A player “breaks the law” if they perform that action or if the game state matches that state. This is not to be confused with illegal actions and has no immediate effect on gameplay; however, spells and abilities can identify that the law has been broken."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "VST"
+            ],
+            "comment": "This rule defines the game terms “wastes” and “nonwastes”",
+            "rules": [
+                {
+                    "type": "insert",
+                    "rule": "700.9",
+                    "text": "The term wastes refers to a permanent named Wastes. A permanent is nonwastes if it's not named Wastes."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "EAU"
+            ],
+            "comment": "For {card:Boghex Witch}, this rule defines the game term “cursed”",
+            "rules": [
+                {
+                    "type": "insert",
+                    "rule": "700.10",
+                    "text": "A player is cursed if a Curse is attached to them."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "TSL"
+            ],
+            "comment": "The recharge keyword action is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAction",
+                    "rule": {
+                        "text": "Recharge",
+                        "subrules": [
+                            "“Recharge” means “Create a colorless Canister artifact token with ‘{T}, Sacrifice this artifact: Untap target permanent. Activate this ability only during your turn.’”"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "HLW"
+            ],
+            "comment": "The journey keyword action and the game term journeyed are defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAction",
+                    "rule": {
+                        "text": "Journey",
+                        "subrules": [
+                            "“Journey” means “Exile the top card of your library. That card becomes journeyed.”",
+                            "There is an inherent triggered ability associated with journeying. The full text of this ability is “Whenever a creature deals combat damage to one of its controller's opponents, if its controller owns any journeyed cards, the creature's controller puts a journeyed card they own into their hand.” This ability has no source and is controlled by the controller of the creature which dealt the damage that caused it to trigger. This is an exception to rule 112.8.",
+                            "Journeyed is a designation that has no rules meaning other than to act as a marker that the inherent triggered ability and other spells and abilities can identify. Only cards in exile can gain or have this designation. Once a card becomes journeyed, it stays journeyed until it leaves exile or becomes a new object (see rule 406.7). Journeyed is neither an ability nor part of the card's copiable values."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "VST"
+            ],
+            "comment": "The waste keyword action is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAction",
+                    "rule": {
+                        "text": "Waste",
+                        "subrules": [
+                            "To waste a permanent means to create a continuous effect. The permanent's name is changed to Wastes, it loses all land types and abilities, and gains “{T}: Add {C}.”"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "NET"
+            ],
+            "comment": "The arm keyword action is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAction",
+                    "rule": {
+                        "text": "Arm",
+                        "subrules": [
+                            "To arm a creature, create a colorless Equipment artifact token named Weapon attached to that creature. The token has equip {2} and “Equipped creature gets +1/+1”.",
+                            "An object that's not a creature or not on the battlefield can't be armed. If a player attempts to do so, the Equipment token is not created.",
+                            "If an ability causes a creature to enter the battlefield armed, this means “If this object would enter the battlefield, instead it enters the battlefield and you simultaneously arm it.” The object and the token enter the battlefield simultaneously, and the object is never on the battlefield unequipped. See rule 603.6b."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "NET"
+            ],
+            "comment": "The upload keyword action and the game term uploaded are defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAction",
+                    "rule": {
+                        "text": "Upload",
+                        "subrules": [
+                            "To upload an object, exile it. It becomes uploaded.",
+                            "Each uploaded card in exile has the intrinsic ability “{2}: Put this card from exile into your hand. Activate this ability only any time you could cast a sorcery.” This ability's activation cost is called an upload cost.",
+                            "Uploaded is a designation that has no rules meaning other than to act as a marker that this rule and other spells and abilities can identify. Only cards in exile can gain or have this designation. Once a card becomes uploaded, it stays uploaded until it leaves exile or becomes a new object (see rule 406.7). Uploaded is neither an ability nor part of the card's copiable values."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "EAU"
+            ],
+            "comment": "The germinate keyword action is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAction",
+                    "rule": {
+                        "text": "Germinate",
+                        "subrules": [
+                            "“Germinate” means “You may put a +1/+1 counter on a creature. If you don't, create a 1/1 green Saproling creature token.”"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "EAU"
+            ],
+            "comment": "The harmonize keyword action is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAction",
+                    "rule": {
+                        "text": "Harmonize",
+                        "subrules": [
+                            "“Harmonize” means “Choose up to one harmony ability of a permanent you control.” Choosing an ability this way causes that ability to trigger. See rule {keywordAbility:Harmony}."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "ANK"
+            ],
+            "comment": "For {card:Ash Akhu}, this rule defines when “is unearthed” abilities trigger",
+            "rules": [
+                {
+                    "type": "add",
+                    "rule": "702.83",
+                    "text": "A player “unearths a card” when that player activates an unearth ability of that card."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "LDO",
+                "DHM"
+            ],
+            "comment": "The warband keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "insert",
+                    "rule": "702.94b",
+                    "text": "Warband is a variant of the soulbond ability. “Warband” means “Whenever this creature attacks, if you control both this creature and another attacking creature and both are unpaired, you may pair this creature with another unpaired attacking creature you control until end of turn”."
+                },
+                {
+                    "type": "insert",
+                    "rule": "702.94c",
+                    "text": "A warband ability is a soulbond ability. Any effect that looks for an object with soulbond will find a card with warband."
+                },
+                {
+                    "type": "append",
+                    "rule": "702.94f",
+                    "text": "(For example, a creature can't be paired with another creature using a warband ability and with a third creature using a regular soulbond ability at the same time.)"
+                },
+                {
+                    "type": "replace",
+                    "rule": "702.94g",
+                    "find": "or it or the creature it's paired with leaves the battlefield\\.",
+                    "replace": "it or the creature it's paired with leaves the battlefield; or (for warband) the turn ends."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "DHM"
+            ],
+            "comment": "{card:Dragon King Teremos} has an unkeyworded effect that can pair it with another creature",
+            "rules": [
+                {
+                    "type": "replace",
+                    "rule": "702.94d",
+                    "find": "A creature becomes \"paired\" with another as the result of a soulbond ability\\.",
+                    "replace": "A creature may become “paired” with another as the result of a soulbond ability or another effect that pairs them."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "AYR"
+            ],
+            "comment": "The resonance keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Resonance",
+                        "subrules": [
+                            "Resonance appears on some instants and sorceries. It represents two abilities: a static ability that functions while the spell is on the stack and a spell ability which may create a replacement effect. “Resonance [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “If this spell's resonance cost was paid, exile it and, as you put your next instant or sorcery spell on the stack to cast it, put this card into its owner's graveyard. If you do, you may copy this card's text box onto that spell, except it doesn't have resonance, and have it become this card's colors in addition to its other colors.”",
+                            "The text box added by the copy effect is added below any existing text boxes. If the spell resolves, the instructions of its printed text will be followed first, and then the instructions of any spell abilities in the copied text are followed. If multiple replacement effects add text boxes onto the same spell, the one added by the most recently applied effect is ordered last.",
+                            "Putting the exiled spell into its owner's graveyard is a replacement effect that replaces the proposal of the next spell (rules 601.2a–d). Whether or not to apply the copy and color-changing effect is a decision made during the step described in rule 601.2b."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "DMS"
+            ],
+            "comment": "The dreamwalk keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Dreamwalk",
+                        "subrules": [
+                            "Dreamwalk is an evasion ability that modifies the rules for the declare blockers step. (See rule 509, “Declare Blockers Step.”)",
+                            "A creature with dreamwalk can't be blocked by untapped creatures. Instead, the defending player can choose tapped creatures they control to block an attacking creature with dreamwalk.",
+                            "Dreamwalk does not allow tapped creatures to block creatures without dreamwalk.",
+                            "Multiple instances of dreamwalk on the same creature are redundant."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "DMS"
+            ],
+            "comment": "The premonition keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addSpecialAction",
+                    "text": "A player who has a card with premonition in their hand may put that card face up into their library. This is a special action. A player can take this action any time they have priority, but only if they could begin to cast that card by putting it onto the stack."
+                },
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Premonition",
+                        "subrules": [
+                            "Premonition is a keyword that represents a static ability that functions while the card with premonition is in a player's hand. “Premonition N—[cost]” means “If you could begin to cast this card by putting it onto the stack from your hand and your library has at least N cards in it, you may pay [cost] and put it onto your library beneath the Nth card of your library. This card becomes face up in your library. This action doesn't use the stack.”",
+                            "Cards that are put into a player's library by the premonition ability are put into the library face up. This is an exception to rule 401.2. Players should keep face up cards in an orientation separate from the orientation of cards in a library that are not face-up or otherwise easily visible to all players.",
+                            "As a face up card with premonition becomes the top card of a player's library, that player casts it without paying its mana cost if able. If that player can't, they turn the face up card face down instead and it becomes the top card of their library. It is no longer face up.",
+                            "If a one-shot effect causes a player to reveal (or look at, see rule 701.14d), shuffle, or change the order of a card or cards in a library, at least one of which is face up, each such card is turned face down, and then the cards are revealed, shuffled, or reordered.",
+                            "If a continuous effect causes a face up card to be revealed, that card is both revealed and is face up. If the card somehow ceases to be revealed, the card remains face up.",
+                            "If a one-shot effect causes a card to be put into the library “face up beneath the top N cards of [a player's] library,” that player puts that card into their library using the process described above."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "ANK"
+            ],
+            "comment": "The decipher keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Decipher",
+                        "subrules": [
+                            "Decipher is a keyword that represents two abilities. The first is a static ability that functions while the spell with decipher is on the stack. The second is a triggered ability that functions while the spell with decipher is on the stack. “Decipher [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “When you cast this spell, if a decipher cost was paid for it, copy it X times, where X is the number of instant and sorcery cards in your graveyard. If the spell has any targets, you may choose new targets for any of the copies.”"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "ANK"
+            ],
+            "comment": "The worship keyword ability and the game term devout are defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Worship",
+                        "subrules": [
+                            "Worship is an activated ability. “Worship [cost]” means “[Cost], {T}: If this permanent isn't devout, put a +1/+1 counter on this permanent and put a +1/+1 counter on target creature without worship. This permanent becomes devout. Activate this ability only any time you could cast a sorcery.”",
+                            "Devout is a designation that has no rules meaning other than to act as a marker that the worship ability and other spells and abilities can identify. Only permanents can be or become devout. Once a permanent becomes devout, it stays devout until it leaves the battlefield. Devout is neither an ability nor part of the permanent's copiable values.",
+                            "A creature “worships a creature” when one or more +1/+1 counters are put on the second creature as a result of the first creature's worship ability."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "LDO"
+            ],
+            "comment": "The loaded keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Loaded",
+                        "subrules": [
+                            "Loaded is a static ability. “Loaded N” means “This permanent enters the battlefield with N charge counters on it.”"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "LDO"
+            ],
+            "comment": "The reflex keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Reflex",
+                        "subrules": [
+                            "Reflex is a static ability that functions in any zone from which you could cast the card it's on. “Reflex [cost]” means “You may cast this card any time you could cast an instant by paying [cost] rather than paying its mana cost.”"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "LDO"
+            ],
+            "comment": "The revolution keyword ability and the game term revolt are defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Revolution",
+                        "subrules": [
+                            "Revolution is an activated ability of some double-faced permanent cards. “Revolution” means “{T}, Tap two untapped creatures you control: Transform all permanents with revolution you control. Activate this ability only any time you could cast a sorcery.”",
+                            "You “revolt” when you activate a revolution ability. This is not to be confused with the ability word revolt, which has no rules meaning and does not appear in rules text."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "VLN"
+            ],
+            "comment": "The possess keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Possess",
+                        "subrules": [
+                            "Possess is a keyword that represents a triggered ability. “Possess” means “When this creature enters the battlefield, you may have target creature an opponent controls become one of your possessions for as long as both remain on the battlefield.”",
+                            "A permanent becomes “possessed” by another as the result of a possess ability, and becomes that permanent's “possession”. Abilities may refer to a possession, the permanent another permanent possesses, or whether a permanent is possessed. A player's possessions are all permanents possessed by permanents that player controls.",
+                            "When the possess ability resolves, if its source is no longer on the battlefield, the targeted object does not become possessed.",
+                            "A possessed permanent ceases to be possessed if it or the permanent possessing it leaves the battlefield."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "VLN"
+            ],
+            "comment": "The torture keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Torture",
+                        "subrules": [
+                            "Torture is a static ability that functions while the spell with torture is on the stack. “Torture” means “For each generic mana in this spell's total cost, you may put a -1/-1 counter on a creature you control rather than pay that mana.”",
+                            "A player may not put more than one -1/-1 counter on the same creature this way while casting that spell.",
+                            "The torture ability isn't an additional or alternative cost and applies only after the total cost of the spell with torture is determined.",
+                            "Multiple instances of torture on the same spell are redundant."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "JAN"
+            ],
+            "comment": "The focus keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Focus",
+                        "subrules": [
+                            "Focus is a keyword that represents two abilities: a static ability that functions while the spell with focus is on the stack, and a triggered ability that functions while the spell with focus is on the stack. “Focus [cost]” means “You may pay [cost] rather than pay this spell's mana cost as you cast this spell” and “When you cast this spell, if its focus cost was paid, draw a card.” Paying a spell's focus cost follows the rules for paying alternative costs in rules 601.2b and 601.2f–h."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "JAN"
+            ],
+            "comment": "The incvocation keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Invocation",
+                        "subrules": [
+                            "Invocation is a keyword that represents two abilities. The first is a static ability that functions while the spell with invocation is on the stack. The second is a triggered ability that functions while the spell with invocation is on the stack. “Invocation” means “As an additional cost to cast this spell, you may tap two untapped creatures you control” and “When you cast this spell, if its invocation cost was paid, copy it. If the spell has any targets, you may choose new targets for the copy.” Paying a spell's invocation cost follows the rules for paying additional costs in rules 601.2b and 601.2f–h.",
+                            "If a spell has multiple instances of invocation, each is paid separately and triggers based on its own payment, not any other instance of invocation."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "JAN"
+            ],
+            "comment": "The resurrect keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Resurrect",
+                        "subrules": [
+                            "Resurrect is a keyword that represents three static abilities. “Resurrect [cost]” means “You may cast this spell from your graveyard by paying [cost] rather than paying its mana cost”, “If this permanent was cast for its resurrect cost, it enters the battlefield with a +1/+1 counter on it”, and “If this permanent would leave the battlefield and it was cast for its resurrect cost, exile it instead of putting it anywhere else.” Casting a spell using its resurrect ability follows the rules for paying alternative costs in rules 601.2b and 601.2f–h."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "HLW"
+            ],
+            "comment": "The desperation keyword ability and the despair keyword action are defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Desperation",
+                        "subrules": [
+                            "Desperation is a static ability. “Desperation” means “You may have this creature despair as it attacks. When it does, sacrifice it at the beginning of the next end step.”",
+                            "Despair is a keyword action with no inherent rules meaning. Only permanents can despair."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "HLW"
+            ],
+            "comment": "The hollow keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Hollow",
+                        "subrules": [
+                            "Hollow is an activated ability that functions while the card with hollow is in a graveyard. “Hollow” means “Discard a card, Pay this card's mana cost, Exile this card from your graveyard: Create a token that's a copy of this card, except it's black and it's a Zombie in addition to its other types. Activate this ability only any time you could cast a sorcery.”"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "VST"
+            ],
+            "comment": "The salvage keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Salvage",
+                        "subrules": [
+                            "Salvage is an activated ability that functions while the card with salvage is in a graveyard. “Salvage [cost]” means “[Cost], Exile this card from your graveyard: Draw a card.”",
+                            "Some cards have abilities that trigger whenever a card is salvaged. “Whenever you salvage a card” means “Whenever you exile a card to pay an activation cost of a salvage ability.”",
+                            "Some cards with salvage have abilities that trigger when they're salvaged. These abilities trigger from whatever zone the card winds up in after it's salvaged."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "DHM"
+            ],
+            "comment": "The seal keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addSpecialAction",
+                    "text": "Exiling a face-down permanent with seal and casting that card for its seal cost is a special action."
+                },
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Seal",
+                        "subrules": [
+                            "Seal is a static ability that functions in any zone from which you could play the card it's on, and the seal effect works any time the card is face down. “Seal [cost]” means “You may cast this card as a face-down Relic artifact with no text, no name, and no mana cost by paying {2} rather than paying its mana cost.” (See rule 707, “Face-Down Spells and Permanents.”)",
+                            "To cast a card using its seal ability, turn it face down. It becomes a face-down Relic artifact card with no text, no name, and no mana cost. Any effects or prohibitions that would apply to casting a card with these characteristics (and not the face-up card's characteristics) are applied to casting this card. These values are the copiable values of that object's characteristics. (See rule 613, “Interaction of Continuous Effects,” and rule 706, “Copying Objects.”) Put it onto the stack (as a face-down spell with the same characteristics), and pay {2} rather than pay its mana cost. This follows the rules for paying alternative costs. You can use a seal ability to cast a card from any zone from which you could normally play it. When the spell resolves, it enters the battlefield with the same characteristics the spell had. The seal effect applies to the face-down object wherever it is, and it ends when the permanent is turned face up.",
+                            "Any time you have priority, you may exile a face-down permanent you control, then cast it for its seal cost. This is a special action; it doesn't use the stack (see rule 115). To do this, show all players what the permanent's seal cost would be if it were face up, exile it, then cast it for that cost. This follows the rules for paying alternative costs. (If the permanent wouldn't have a seal cost if it were face up, it can't be exiled this way.) The card is turned face up and the seal effect on it ends as soon as it's exiled, and it regains its normal characteristics. Exiling and casting the card is considered a single action for the purposes of reversing illegal spells. If the spell proposal of casting the card for its seal cost is reversed, the action of exiling it is also reversed, returning it to the battlefield. (See rule 721, “Handling Illegal Actions.”)",
+                            "If a spell's controller declares the intention to pay that spell's seal cost, that spell has been “sealed.” If a spell has multiple seal costs, it may be sealed multiple times. See rule 601.2b.",
+                            "Objects with seal may have additional abilities that check whether they were sealed. These abilities are linked to the seal ability printed on that object: they can refer only to its printed seal ability. See rule 607, “Linked Abilities.”",
+                            "See rule 707, “Face-Down Spells and Permanents,” for more information about how to cast cards with seal."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "DHM"
+            ],
+            "comment": "The secure keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Secure",
+                        "subrules": [
+                            "Secure is an activated ability that generally appears on Structures and functions on the battlefield. “Secure N—[cost]” means “[cost]: Put N stability counters on this permanent. Activate this ability only any time you could cast a sorcery and only once each turn.”",
+                            "A player “secures a Structure” when that player activates a secure ability of that Structure."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "RAK"
+            ],
+            "comment": "The prestige keyword ability and the game term prestigious are defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Prestige",
+                        "subrules": [
+                            "Prestige is a triggered ability. “Prestige N” means “When this creature and two or more other creatures attack, if this creature isn't prestigious, put N +1/+1 counters on it and it becomes prestigious.”",
+                            "Prestigious is a designation that has no rules meaning other than to act as a marker that the prestige ability and other spells and abilities can identify. Only permanents can be or become prestigious. Once a permanent becomes prestigious, it stays prestigious until it leaves the battlefield. Prestigious is neither an ability nor part of the permanent's copiable values.",
+                            "If a creature has multiple instances of prestige, each triggers separately. The first such ability to resolve will cause the creature to become prestigious, and subsequent abilities will have no effect. (See rule 603.4)"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "RAK"
+            ],
+            "comment": "The voyage keyword ability and the game term “discover paradise” are defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Voyage",
+                        "subrules": [
+                            "Voyage is a triggered ability that functions while a spell with voyage is on the stack, as well as in all zones from which an object with voyage can be played as a land. “Voyage” means “When you play this object, if you don't have a voyage emblem, you get a voyage emblem with ‘{W}: Put a white counter on this emblem. Activate this ability only if this emblem doesn't have a white counter on it and only if this ability isn't on the stack’, ‘{U}: Put a blue counter on this emblem. Activate this ability only if this emblem doesn't have a blue counter on it and only if this ability isn't on the stack’, ‘{B}: Put a black counter on this emblem. Activate this ability only if this emblem doesn't have a black counter on it and only if this ability isn't on the stack’, ‘{R}: Put a red counter on this emblem. Activate this ability only if this emblem doesn't have a red counter on it and only if this ability isn't on the stack’, ‘{G}: Put a green counter on this emblem. Activate this ability only if this emblem doesn't have a green counter on it and only if this ability isn't on the stack’, and ‘When this emblem has a white counter, a blue counter, a black counter, a red counter, and a green counter on it, if you haven't discovered paradise, you discover paradise for the rest of the game.’”",
+                            "A voyage emblem is a kind of emblem that can be identified as such by the voyage ability. Voyage is not a supertype, card type, or subtype.",
+                            "Discovering paradise is an event that has no rules meaning other than to act as a marker that other rules and effects can identify. Any number of players may discover paradise at the same time or at different times.",
+                            "After a player discovers paradise, continuous effects are reapplied before the game checks to see if the game state or preceding events have matched any trigger conditions."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "EAU"
+            ],
+            "comment": "The enspirit keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "add",
+                    "rule": "607.2",
+                    "text": "The two abilities represented by the enspirit keyword are linked. The first ability may also be linked with any number of other abilities printed on the card with enspirit which refer either to “the exiled card” or to cards “exiled with [this object]”. See rule {keywordAbility:Enspirit}."
+                },
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Enspirit",
+                        "subrules": [
+                            "Enspirit represents two static abilities that function while the spell with enspirit is on the stack. “Enspirit” means “As an additional cost to cast this spell, you may exile a nonenchantment creature you control until this spell is put from the stack into a zone other than the battlefield or the permanent this spell becomes leaves the battlefield” and “If you chose to pay this spell's additional cost, its total cost is reduced by an amount of generic mana equal to the exiled card's converted mana cost.” Paying a spell's enspirit cost follows the rules for paying additional costs in rules 601.2b and 601.2f–h.",
+                            "The two abilities represented by enspirit are linked. The first ability may also be linked with any number of other abilities printed on the card with enspirit which refer either to “the exiled card” or to cards “exiled with [this object]”. See rule 607, “Linked Abilities.”",
+                            "You choose which creature to exile as you choose to pay a spell's enspirit cost (see rule 601.2b), and you exile that creature as you pay the total cost (see rule 601.2h).",
+                            "A creature “becomes enspirited” when it's exiled to pay a spell's enspirit cost. Abilities that trigger when a creature becomes enspirited are leaves-the-battlefield abilities (see rule 603.6c)."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "EAU"
+            ],
+            "comment": "The harmony keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Harmony",
+                        "subrules": [
+                            "A harmony ability is a special kind of triggered ability that only triggers when chosen as part of the harmonize keyword action (see rule {keywordAction:Harmonize}). “Harmony — [Effect]” means “Whenever you harmonize, if you choose this ability, [effect].”"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "EAU"
+            ],
+            "comment": "The tithe keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Tithe",
+                        "subrules": [
+                            "On a permanent card, tithe is a triggered ability. “Tithe” on a permanent means “When this permanent enters the battlefield, you may tap three untapped artifacts and/or creatures you control.” Tapping the three permanents is a cost (see rule 117) and may be referred to as paying the permanent's tithe.",
+                            "On an instant or sorcery card, tithe is a static ability that functions while the spell with tithe is on the stack. “Tithe” on an instant or sorcery spell means “As an additional cost to cast this spell, you may tap three untapped artifacts and/or creatures you control.” Paying an instant or sorcery spell's tithe cost follows the rules for paying additional costs in rules 601.2b and 601.2f–h. An instant or sorcery spell's tithe cost may also simply be referred to as its tithe."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
+                "DHM"
+            ],
+            "comment": "Structures with stability 0 are put into the graveyard as a state-based action",
+            "rules": [
+                {
+                    "type": "insertText",
+                    "rule": "704.5i",
+                    "after": "a planeswalker has loyalty 0",
+                    "text": " or a Structure has stability 0"
+                }
+            ]
+        },
+        {
+            "sets": [
+                "TSL",
+                "VLN",
+                "RAK",
+                "EAU"
+            ],
+            "comment": "The face symbols on double-faced cards in custom and reprint sets are defined here",
+            "rules": [
+                {
+                    "type": "replaceRule",
+                    "rule": "711.1a",
+                    "text": "A double-faced card's front face is marked by a front-face symbol in its upper left corner. This symbol may be a modified Planeswalker icon, a sun, a full moon, a compass rose, or a chalice."
+                },
+                {
+                    "type": "replaceRule",
+                    "rule": "711.1b",
+                    "text": "A double-faced card's back face is marked by a back-face symbol in its upper left corner. This symbol may be a full Planeswalker icon, a crestent moon, a stylized image of Emrakul, a land icon, or a flame."
+                }
+            ]
+        },
+        {
+            "sets": [
+                "ANK"
+            ],
+            "comment": "The official rules say that {card:Karn Liberated} can restart the game. {card:Iun, World Reborn} can do so as well",
+            "rules": [
+                {
+                    "type": "replace",
+                    "rule": "718.1",
+                    "find": "One card \\(Karn Liberated\\) restarts the game\\.",
+                    "replace": "Some cards allow a player to restart the game."
+                }
+            ]
         }
     ]
 }
