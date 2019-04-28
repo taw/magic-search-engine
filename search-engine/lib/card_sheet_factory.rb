@@ -15,11 +15,16 @@ class CardSheetFactory
   end
 
   def from_query(query, assert_count=nil, foil: false, kind: CardSheet)
+    cards = find_cards(query, assert_count, foil: foil)
+    kind.new(cards)
+  end
+
+  def find_cards(query, assert_count=nil, foil: false)
     cards = @db.search("++ #{query}").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
     if assert_count and assert_count != cards.size
       raise "Expected query #{query} to return #{assert_count}, got #{cards.size}"
     end
-    kind.new(cards)
+    cards
   end
 
   ### Usual Sheet Types
@@ -406,5 +411,13 @@ class CardSheetFactory
 
   def rna_land
     from_query("e:rna is:booster is:guildgate", 10)
+  end
+
+  def bbd_uncommon(foil=false)
+    from_query("e:bbd r:uncommon -has:partner", foil: foil)
+  end
+
+  def bbd_uncommon_partner(foil=false)
+    from_query("e:bbd r:uncommon has:partner", foil: foil, kind: PartnerCardSheet)
   end
 end
