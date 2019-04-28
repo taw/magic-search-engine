@@ -283,8 +283,8 @@ class CompRules:
             'Introduction\n\n This document contains a series of house rules for playing the Custom Constructed formats. For ease of reading, they are presented within the context of the Comprehensive Rules which they are patching.\n\nThe following rules have been patched:\n\n',
             '\n'.join(
                 '({}) {}: {}'.format(
-                    'All sets' if sets is None else ', '.join(sets),
-                    comment,
+                    'All sets' if sets is None else ', '.join(sets), #TODO use set names, italicize and linkify sets
+                    self.process_references(comment),
                     ', '.join(sorted(rules, key=rule_sort_key))
                 )
                 for sets, comment, rules in self.patches
@@ -343,9 +343,9 @@ class CompRules:
             text = text.replace('{{keywordAction:{}}}'.format(keyword_action), rule_number)
         for keyword_ability, rule_number in self.keyword_abilities.items():
             text = text.replace('{{keywordAbility:{}}}'.format(keyword_ability), rule_number)
-        while re.match('\\{card:.+\\}', text):
-            match = re.match('\\{card:(.+?)\\}', text)
-            text = re.sub('\\{card:.+\\}', match.group(1), text, count=1) #TODO linkify card
+        while re.search('\\{card:.+\\}', text):
+            match = re.search('\\{card:(.+?)\\}', text)
+            text = re.sub('\\{card:.+?\\}', match.group(1), text, count=1) #TODO linkify card
         return text
 
 def join(sequence, *, word='and', default=None):
