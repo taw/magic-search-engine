@@ -179,6 +179,7 @@ describe "CLI Frontend" do
         Ral Zarek
         Ral, Caller of Storms
         Ral, Izzet Viceroy
+        Ral, Storm Conduit
         EOF
       error: <<-EOF
         Doesn't look like correct date, ignored: "battle for homelands"

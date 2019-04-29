@@ -8,12 +8,18 @@ class PatchExcludeFromBoosters < Patch
       if exclude_from_boosters(card["set_code"], card["number"].to_i)
         card["exclude_from_boosters"] = true
       end
+
       # They only have full art promos in boosters
       # Non full art are for precons
       # (we arbitrarily append A to full art versions)
       if %W[bfz ogw].include?(card["set_code"]) and
         card["supertypes"] == ["Basic"] and
         card["number"] !~ /A/
+        card["exclude_from_boosters"] = true
+      end
+
+      # Japanese alt arts are in boosters, just not in English boosters
+      if card["set_code"] == "war" and card["number"] =~ /\A\d+\z/ and card["number"].to_i > 264
         card["exclude_from_boosters"] = true
       end
     end
