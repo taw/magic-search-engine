@@ -13,6 +13,6 @@ describe "Formats - Frontier" do
   end
 
   it "frontier" do
-    assert_block_composition "frontier", "rix", ["m15", "ktk", "frf", "dtk", "ori", "bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh", "w17", "hou", "xln", "rix"]
+    assert_block_composition "frontier", "war", ["m15", "ktk", "frf", "dtk", "ori", "bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh", "w17", "hou", "xln", "rix", "dom", "m19", "grn", "rna", "war"]
   end
 end

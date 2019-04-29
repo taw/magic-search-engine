@@ -23,6 +23,8 @@ class PatchFoiling < Patch
         card["foiling"] = "foilonly"
       elsif set_code == "rna" and name == "Swamp"
         card["foiling"] = "nonfoil"
+      elsif set_code == "war" and name == "Tezzeret, Master of the Bridge"
+        card["foiling"] = "foilonly"
       elsif set_code == "ori" and number.to_i >= 273
         # Deck Builder's Toolkit (Magic Origins Edition)
         card["foiling"] = "nonfoil"

@@ -223,7 +223,7 @@ describe "Any queries" do
     end
 
     it "promo" do
-      assert_search_equal "any:promo", "is:promo or foreign:promo"
+      assert_search_equal "any:promo", "is:promo or foreign:promo or (Battlefield Promotion)"
     end
 
     it "reprint" do

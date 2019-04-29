@@ -28,7 +28,7 @@ class FormatStandard < Format
 
     {
       # 4 blocks system, 1 rotation/year
-      "2018-10-05" => ["xln", "rix", "dom", "m19", "grn", "rna"],
+      "2018-10-05" => ["xln", "rix", "dom", "m19", "grn", "rna", "war"],
       "2017-09-29" => ["kld", "aer", "akh", "w17", "hou", "xln", "rix", "dom", "m19"],
       "2016-09-30" => ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh", "w17", "hou"],
       # 3 blocks system, 2 rotations/year

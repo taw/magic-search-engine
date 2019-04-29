@@ -3,10 +3,11 @@ describe "Sorting" do
 
   it "name" do
     assert_search_results_ordered "t:chandra sort:name",
-      # Possibly we should skip commas while sorting ??? 
+      # Possibly we should skip commas while sorting ???
       "Chandra Ablaze",
       "Chandra Nalaar",
       "Chandra, Bold Pyromancer",
+      "Chandra, Fire Artisan",
       "Chandra, Flamecaller",
       "Chandra, Pyrogenius",
       "Chandra, Pyromaster",
@@ -17,6 +18,7 @@ describe "Sorting" do
 
   it "new" do
     assert_search_results_ordered "t:chandra sort:new",
+      "Chandra, Fire Artisan",
       "Chandra, Bold Pyromancer",
       "Chandra, Pyrogenius",
       "Chandra, Torch of Defiance",
@@ -30,6 +32,7 @@ describe "Sorting" do
 
   it "newall" do
     assert_search_results_ordered "t:chandra sort:newall",
+      "Chandra, Fire Artisan",
       "Chandra, Bold Pyromancer",
       "Chandra, Roaring Flame",
       "Chandra, Pyromaster",
@@ -51,7 +54,8 @@ describe "Sorting" do
       "Chandra, Flamecaller",
       "Chandra, Pyrogenius",
       "Chandra, Torch of Defiance",
-      "Chandra, Bold Pyromancer"
+      "Chandra, Bold Pyromancer",
+      "Chandra, Fire Artisan"
   end
 
   it "oldall" do
@@ -64,7 +68,8 @@ describe "Sorting" do
       "Chandra, Flamecaller",
       "Chandra, Pyrogenius",
       "Chandra, Torch of Defiance",
-      "Chandra, Bold Pyromancer"
+      "Chandra, Bold Pyromancer",
+      "Chandra, Fire Artisan"
     end
 
   it "cmc" do
@@ -74,6 +79,7 @@ describe "Sorting" do
       "Chandra, Flamecaller",       # 6
       "Chandra, Pyrogenius",        # 6
       "Chandra Nalaar",             # 5
+      "Chandra, Fire Artisan",      # 4
       "Chandra, Pyromaster",        # 4
       "Chandra, Torch of Defiance", # 4
       "Chandra, the Firebrand",     # 4
@@ -83,6 +89,7 @@ describe "Sorting" do
   it "-cmc" do
     assert_search_results_ordered "t:chandra sort:-cmc",
       "Chandra, Roaring Flame",     # 3
+      "Chandra, Fire Artisan",      # 4
       "Chandra, Pyromaster",        # 4
       "Chandra, Torch of Defiance", # 4
       "Chandra, the Firebrand",     # 4
@@ -121,6 +128,7 @@ describe "Sorting" do
       "Chandra, the Firebrand",     # 4
       "Chandra, Torch of Defiance", # 4
       "Chandra, Pyromaster",        # 4
+      "Chandra, Fire Artisan",      # 4
       "Chandra, Roaring Flame"      # 3
   end
 
