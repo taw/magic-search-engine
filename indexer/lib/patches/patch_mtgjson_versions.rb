@@ -23,6 +23,9 @@ class PatchMtgjsonVersions < Patch
   def call
     each_set do |set|
       set["type"] = set["type"].gsub("_", " ")
+      if set["official_code"] == "BBD"
+        set["type"] = "two-headed giant"
+      end
     end
 
     # drop all tokens
