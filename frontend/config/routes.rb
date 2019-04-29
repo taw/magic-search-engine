@@ -24,5 +24,7 @@ Rails.application.routes.draw do
   # Lore Seeker extensions
   get "auth/discord/callback" => "session#create"
   get "logout" => "session#destroy"
+  get "event" => "event#index"
+  get "event/cssl" => "event#cssl_index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
