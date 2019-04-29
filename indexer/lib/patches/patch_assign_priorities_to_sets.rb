@@ -15,8 +15,6 @@ class PatchAssignPrioritiesToSets < Patch
     # If you want to customize priority between different custom sets, just list them explicitly
     return 100 if set["custom"]
 
-    return 11 if set["code"] == "war"
-
     # v4 migration started by manually choosing some sets to migrate
     return 10 if set["v4"]
     # These sets have been tried but need fixing:
