@@ -1,9 +1,13 @@
 describe "Full Database Test" do
   include_context "db"
 
+  # This changes whenever a new set is added, and needs updating a lot
+  # The point of this test is to make sure cards don't get added or dropped
+  # by changes which are not expected to, like updating to new mtgjson data for same sets,
+  # indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(19496)
-    db.number_of_printings.should eq(38693)
+    db.number_of_printings.should eq(38701)
   end
 
   it "block codes" do

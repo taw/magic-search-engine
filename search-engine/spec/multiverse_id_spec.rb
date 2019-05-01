@@ -25,6 +25,7 @@ describe "multiverse ids" do
       # Known issues, ignore for now
       next if set_code == "pmei" or set_code == "s00"
       next if set_code == "war" # Japanese promos
+      next if set_code == "med" # reported mtgjson bug
       set.printings.group_by{|c| !!c.multiverseid}.size.should eq(1), "Set #{set_code} has cards with and without multiverseid"
     end
   end
