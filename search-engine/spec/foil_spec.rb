@@ -135,12 +135,11 @@ describe "Foils" do
         assert_foiling(promo, "nonfoil")
         assert_foiling_partial_precon(rest)
       when "pc2"
-        # FIXME: Known broken
-        # promo, rest = set.printings.partition{|c| c.name == "Stairs to Infinity" }
-        # assert_foiling(promo, "nonfoil")
-        # assert_foiling_partial_precon(rest)
+        promo, rest = set.printings.partition{|c| c.name == "Stairs to Infinity" }
+        assert_foiling(promo, "nonfoil")
+        assert_foiling_partial_precon(rest)
       when "pca"
-        planes, rest = set.printings.partition{|c| c.types.include?("plane") }
+        planes, rest = set.printings.partition{|c| c.types.include?("plane") or c.types.include?("phenomenon") }
         assert_foiling(planes, "nonfoil")
         assert_foiling_partial_precon(rest)
       when "ppre"

@@ -94,8 +94,7 @@ describe Deck do
         # Release event promo
         set_card_names.should match_array ["Tazeem", *deck_card_names]
       elsif set_code == "pc2"
-        # FIXME - pc2 is broken, it should include 86 non-deck plane cards
-        # set_card_names.should match_array ["Stairs to Infinity", *deck_card_names]
+        set_card_names.should match_array ["Stairs to Infinity", *deck_card_names]
       else
         set_card_names.should match_array deck_card_names
       end
