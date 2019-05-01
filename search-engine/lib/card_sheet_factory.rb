@@ -14,12 +14,17 @@ class CardSheetFactory
     CardSheet.new(sheets.map(&:first), sheets.map{|s,w| s.elements.size * w})
   end
 
-  def from_query(query, assert_count=nil, foil: false)
+  def from_query(query, assert_count=nil, foil: false, kind: CardSheet)
+    cards = find_cards(query, assert_count, foil: foil)
+    kind.new(cards)
+  end
+
+  def find_cards(query, assert_count=nil, foil: false)
     cards = @db.search("++ #{query}").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
     if assert_count and assert_count != cards.size
       raise "Expected query #{query} to return #{assert_count}, got #{cards.size}"
     end
-    CardSheet.new(cards)
+    cards
   end
 
   ### Usual Sheet Types
@@ -46,17 +51,22 @@ class CardSheetFactory
     CardSheet.new(sheets, weights)
   end
 
-  def rarity(set_code, rarity, foil: false)
+  def rarity(set_code, rarity, foil: false, kind: CardSheet)
     set = @db.sets[set_code]
     cards = set.physical_cards(foil).select(&:in_boosters?)
     # raise "#{set.code} #{set.same} has no cards in boosters" if cards.empty?
     cards = cards.select{|c| c.rarity == rarity}
     # raise "#{set.code} #{set.same} has no #{rarity} cards in boosters" if cards.empty?
-    if cards.empty?
-      nil
-    else
-      CardSheet.new(cards)
-    end
+    return nil if cards.empty?
+    kind.new(cards)
+  end
+
+  def common_or_basic(set_code, foil: false, kind: ColorBalancedCardSheet)
+    set = @db.sets[set_code]
+    cards = set.physical_cards(foil).select(&:in_boosters?)
+    cards = cards.select{|c| c.rarity == "basic" or c.rarity == "common"}
+    return nil if cards.empty?
+    kind.new(cards)
   end
 
   # If rare or mythic sheet contains subsheets
@@ -67,14 +77,6 @@ class CardSheetFactory
     mix_sheets(
       [rarity(set_code, "rare", foil: foil), 2],
       [rarity(set_code, "mythic", foil: foil), 1]
-    )
-  end
-
-  def common_or_basic(set_code, foil: false)
-    # Assume basics are just commons for sheet purposes
-    mix_sheets(
-      [rarity(set_code, "common", foil: foil), 1],
-      [rarity(set_code, "basic", foil: foil), 1],
     )
   end
 
@@ -136,7 +138,7 @@ class CardSheetFactory
   end
 
   def dgm_common
-    from_query("e:dgm r:common -t:gate", 60)
+    from_query("e:dgm r:common -t:gate", 60, kind: ColorBalancedCardSheet)
   end
 
   def dgm_rare_mythic
@@ -174,7 +176,7 @@ class CardSheetFactory
   end
 
   def frf_common
-    from_query("e:frf r:common -is:gainland", 60)
+    from_query("e:frf r:common -is:gainland", 60, kind: ColorBalancedCardSheet)
   end
 
   def theros_gods
@@ -211,8 +213,8 @@ class CardSheetFactory
     )
   end
 
-  def sfc_common(set_code)
-    from_query("e:#{set_code} r:common -is:dfc -is:meld")
+  def sfc_common(set_code, kind: ColorBalancedCardSheet)
+    from_query("e:#{set_code} r:common -is:dfc -is:meld", kind: kind)
   end
 
   def sfc_uncommon(set_code)
@@ -381,7 +383,7 @@ class CardSheetFactory
   end
 
   def cns_nondraft_common(foil=false)
-    from_query('e:cns -is:draft r:common', 80, foil: foil)
+    from_query('e:cns -is:draft r:common', 80, foil: foil, kind: ColorBalancedCardSheet)
   end
 
   def cns_nondraft_uncommon(foil=false)
@@ -396,7 +398,7 @@ class CardSheetFactory
   end
 
   def grn_common
-    from_query("e:grn is:booster r:common not:guildgate")
+    from_query("e:grn is:booster r:common not:guildgate", kind: ColorBalancedCardSheet)
   end
 
   def grn_land
@@ -404,11 +406,19 @@ class CardSheetFactory
   end
 
   def rna_common
-    from_query("e:rna is:booster r:common not:guildgate")
+    from_query("e:rna is:booster r:common not:guildgate", kind: ColorBalancedCardSheet)
   end
 
   def rna_land
     from_query("e:rna is:booster is:guildgate", 10)
+  end
+
+  def bbd_uncommon(foil=false)
+    from_query("e:bbd r:uncommon -has:partner", foil: foil)
+  end
+
+  def bbd_uncommon_partner(foil=false)
+    from_query("e:bbd r:uncommon has:partner", foil: foil, kind: PartnerCardSheet)
   end
 
   # for custom sets

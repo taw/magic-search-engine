@@ -18,7 +18,7 @@ class ExportDecksData
     }.compact
   end
 
-  def call
+  def call(output_path)
     exported_data = []
     @db.decks.each do |deck|
       exported_data << {
@@ -28,13 +28,14 @@ class ExportDecksData
         set_name: deck.set_name,
         release_date: deck.release_date,
         cards: deck.cards.map{|n,c| export_card(n, c) },
-        sideboard: deck.cards.map{|n,c| export_card(n, c) },
+        sideboard: deck.sideboard.map{|n,c| export_card(n, c) },
       }
     end
-    open("export_decks.json", "w") do |fh|
+    open(output_path, "w") do |fh|
       fh.puts JSON.pretty_generate(exported_data)
     end
   end
 end
 
-ExportDecksData.new.call
+output_path = ARGV[0] || "export_decks.json"
+ExportDecksData.new.call(output_path)

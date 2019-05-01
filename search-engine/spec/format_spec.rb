@@ -7,7 +7,7 @@ describe "Formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
-      %Q[e:xln,rix,dom,m19,grn,rna -"Rampaging Ferocidon"]
+      %Q[e:xln,rix,dom,m19,grn,rna,war -"Rampaging Ferocidon"]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal_cards 'f:"ravnica block"', 'b:ravnica'
@@ -16,12 +16,12 @@ describe "Formats" do
 
   it "ban_events" do
     FormatInnistradBlock.new.ban_events.should eq([
-       [Date.parse("2012-04-01"),
+      [Date.parse("2012-04-01"),
         "https://magic.wizards.com/en/articles/archive/feature/march-20-2012-dci-banned-restricted-list-announcement-2012-03-20",
-       [
-         {name: "Intangible Virtue", old: "legal", new: "banned"},
-         {name: "Lingering Souls", old: "legal", new: "banned"},
-       ]],
+      [
+        {name: "Intangible Virtue", old: "legal", new: "banned"},
+        {name: "Lingering Souls", old: "legal", new: "banned"},
+      ]],
     ])
     FormatModern.new.ban_events.should eq([
       [Date.parse("2019-01-21"),

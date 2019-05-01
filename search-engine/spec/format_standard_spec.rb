@@ -15,6 +15,20 @@ describe "Formats - Standard" do
   end
 
   it "standard" do
+    assert_block_composition "standard", "war",  ["xln", "rix", "dom", "m19", "grn", "rna", "war"],
+      "Rampaging Ferocidon" => "banned"
+    assert_block_composition "standard", "rna",  ["xln", "rix", "dom", "m19", "grn", "rna"],
+      "Rampaging Ferocidon" => "banned"
+    assert_block_composition "standard", "grn",  ["xln", "rix", "dom", "m19", "grn"],
+      "Rampaging Ferocidon" => "banned"
+    assert_block_composition "standard", "m19",  ["kld", "aer", "akh", "w17", "hou", "xln", "rix", "dom", "m19"],
+      "Smuggler's Copter" => "banned",
+      "Felidar Guardian" => "banned",
+      "Aetherworks Marvel" => "banned",
+      "Attune with Aether" => "banned",
+      "Rogue Refiner" => "banned",
+      "Rampaging Ferocidon" => "banned",
+      "Ramunap Ruins" => "banned"
     assert_block_composition "standard", "dom",  ["kld", "aer", "akh", "w17", "hou", "xln", "rix", "dom"],
       "Smuggler's Copter" => "banned",
       "Felidar Guardian" => "banned",

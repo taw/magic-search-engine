@@ -14,8 +14,6 @@ class FormatCompRules
     @output = []
     @output << "= content_for(:disable_turbolinks) do"
     @output << "  true"
-    @output << ".row"
-    @output << "  .col-12"
     paras = text_rules.split(/\n{2,}/)
 
     raise unless paras[0] == "Custom Magic Comprehensive Rules"
@@ -102,17 +100,17 @@ class FormatCompRules
 
   def glossary_entry!(text)
     term, definition = text.split("\n", 2)
-    @output << "    .glossary_entry"
-    @output << "      .glossary_term #{term}"
-    @output << "      .glossary_definition #{resolve_references(definition).oneline}"
+    @output << ".glossary_entry"
+    @output << "  .glossary_term #{term}"
+    @output << "  .glossary_definition #{resolve_references(definition).oneline}"
   end
 
   def rule!(rule)
     rule_id, rule_text = rule.split(" ", 2)
-    @output << "    .rule{id: #{ref(rule_id).inspect}}"
-    @output << "      .rule_id #{rule_id}"
+    @output << ".rule{id: #{ref(rule_id).inspect}}"
+    @output << "  .rule_id #{rule_id}"
     rule_text.split("\n").each do |rule_line|
-      @output << "      .rule_text #{resolve_references(rule_line)}"
+      @output << "  .rule_text #{resolve_references(rule_line)}"
     end
   end
 
@@ -122,28 +120,28 @@ class FormatCompRules
     else
       section_ref = "section-#{tos_entry.downcase}"
     end
-    @output << "      %li"
-    @output << "        %a{href: '##{section_ref}'} #{tos_entry.oneline}"
+    @output << "  %li"
+    @output << "    %a{href: '##{section_ref}'} #{tos_entry.oneline}"
   end
 
   def tos_section!(text)
-    @output << "    %ul.tos_section"
+    @output << "%ul.tos_section"
     text.split("\n").each do |tos_entry|
       tos_entry! tos_entry
     end
   end
 
   def primary_header!(text)
-    @output << "    %h4 #{text.oneline}"
+    @output << "%h4 #{text.oneline}"
   end
 
   def secondary_header!(text)
-    @output << "    %h3{id: #{ref(text).inspect}} #{text.oneline}"
+    @output << "%h3{id: #{ref(text).inspect}} #{text.oneline}"
   end
 
   def para!(text)
     text.split("\n").each do |para_line|
-      @output << "    %p #{resolve_references(para_line)}"
+      @output << "%p #{resolve_references(para_line)}"
     end
   end
 

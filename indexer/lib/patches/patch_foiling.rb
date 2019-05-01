@@ -23,6 +23,8 @@ class PatchFoiling < Patch
         card["foiling"] = "foilonly"
       elsif set_code == "rna" and name == "Swamp"
         card["foiling"] = "nonfoil"
+      elsif set_code == "war" and name == "Tezzeret, Master of the Bridge"
+        card["foiling"] = "foilonly"
       elsif set_code == "ori" and number.to_i >= 273
         # Deck Builder's Toolkit (Magic Origins Edition)
         card["foiling"] = "nonfoil"
@@ -44,7 +46,7 @@ class PatchFoiling < Patch
         card["foiling"] = "nonfoil"
       elsif set_code == "pc2" and name == "Stairs to Infinity"
         card["foiling"] = "nonfoil"
-      elsif set_code == "pca" and types.include?("Plane")
+      elsif set_code == "pca" and (types.include?("Plane") or types.include?("Phenomenon"))
         card["foiling"] = "nonfoil"
       elsif set_code == "ppre"
         if ["Dirtcowl Wurm", "Revenant", "Monstrous Hound"].include?(name)

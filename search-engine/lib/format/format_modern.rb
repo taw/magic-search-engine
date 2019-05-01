@@ -35,7 +35,7 @@ class FormatModern < Format
       "xln", "rix",
       "dom",
       "m19",
-      "grn", "rna",
+      "grn", "rna", "war",
     ]
   end
 end

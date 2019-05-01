@@ -185,6 +185,7 @@ describe "Card nicknames" do
       "Lavaclaw Reaches",
       "Lumbering Falls",
       "Mishra's Factory",
+      "Mobilized District",
       "Mutavault",
       "Nantuko Monastery",
       "Needle Spires",
