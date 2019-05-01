@@ -32,4 +32,10 @@ BanList.for_format("elder cockatrice highlander") do
     "https://docs.google.com/document/d/1GpPvx8cSS3MxpF0kF0UjpHTM53ydGieey4KDF-XnbtQ",
     "Garden of Meditation" => "legal",
   )
+
+  change(
+    "2019-05-01",
+    "https://discordapp.com/channels/205457071380889601/326822492222128138/573235377335435277",
+    "Eregon's Masterpiece" => "legal",
+  )
 end
