@@ -82,7 +82,27 @@ describe DeckParser do
   end
 
   describe "it deals with split cards" do
-    # TODO
+    let(:text) do
+      <<~EOF
+      4 Fire // Ice
+      4 Delver of Secrets
+      4 Awoken Horror
+      4 Assemble
+      EOF
+    end
+    let(:fire_ice) { PhysicalCard.for db.cards["fire"].printings.min_by(&:default_sort_index) }
+    let(:delver_of_secrets) { PhysicalCard.for db.cards["delver of secrets"].printings.min_by(&:default_sort_index) }
+    let(:thing_in_the_ice) { PhysicalCard.for db.cards["thing in the ice"].printings.min_by(&:default_sort_index) }
+    let(:assure_assemble) { PhysicalCard.for db.cards["assure"].printings.min_by(&:default_sort_index) }
+
+    it do
+      parser.main_cards.should eq([
+        [4, fire_ice],
+        [4, delver_of_secrets],
+        [4, thing_in_the_ice],
+        [4, assure_assemble],
+      ])
+    end
   end
 
   describe "it deals with unknown cards" do

@@ -51,11 +51,19 @@ class DeckParser
     card = @db.cards[normalize_name(name)]
     if card
       printing = card.printings.min_by(&:default_sort_index)
-      PhysicalCard.for(printing)
-    else
-      warn "Can't resolve card: #{name}"
-      nil
+      return PhysicalCard.for(printing)
     end
+    parts = name.split(%r[(?:&|/)+]).map{|n| normalize_name(n)}
+    if parts.size > 1
+      card = @db.cards[parts[0]]
+      if card
+        printing = card.printings.min_by(&:default_sort_index)
+        return PhysicalCard.for(printing)
+      end
+    end
+
+    warn "Can't resolve card: #{name}"
+    nil
   end
 
   # These method seem to occur in every single class out there
