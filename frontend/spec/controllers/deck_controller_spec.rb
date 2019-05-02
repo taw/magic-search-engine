@@ -31,17 +31,20 @@ RSpec.describe DeckController, type: :controller do
   end
 
   describe "visualizer" do
+    let(:deck_list) { html_document.css(".card_entry").map(&:text).map{|x| x.split(/\s+/).join(" ").strip } }
+
     it "shows visualizer" do
       get "visualize"
       assert_response 200
       assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
+      assert_equal deck_list, []
     end
 
     it "shows deck if you put it in textarea" do
       post "visualize", params: {deck: "40x Lightning Bolt\n20x Mountain" }
       assert_response 200
       assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
-      assert_equal html_document.css("img").map{|e| e[:alt]}, ["Lightning Bolt", "Mountain"]
+      assert_equal deck_list, ["40 Lightning Bolt {R}", "20 Mountain"]
     end
 
     it "shows deck if you upload it" do
@@ -49,16 +52,14 @@ RSpec.describe DeckController, type: :controller do
       post "visualize", params: { deck_upload: Rack::Test::UploadedFile.new(path) }
       assert_response 200
       assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
-      assert_equal html_document.css("img").map{|e| e[:alt]}, ["Lightning Bolt", "Mountain"]
+      assert_equal deck_list, ["40 Lightning Bolt {R}", "20 Mountain"]
     end
 
     it "deals with unknown cards" do
       post "visualize", params: {deck: "40x Lightning Bolt\n20x Pod of Greed" }
       assert_response 200
       assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
-      assert_equal html_document.css("img").map{|e| e[:alt]}, ["Lightning Bolt"]
-      assert_equal html_document.css(".card_entry").map(&:text).map{|x| x.split(/\s+/).join(" ").strip },
-        ["40 Lightning Bolt {R}", "20 Pod of Greed"]
+      assert_equal deck_list, ["40 Lightning Bolt {R}", "20 Pod of Greed"]
     end
   end
 end
