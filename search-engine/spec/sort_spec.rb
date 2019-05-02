@@ -33,12 +33,12 @@ describe "Sorting" do
   it "newall" do
     assert_search_results_ordered "t:chandra sort:newall",
       "Chandra, Fire Artisan",
+      "Chandra, Torch of Defiance",
       "Chandra, Bold Pyromancer",
       "Chandra, Roaring Flame",
       "Chandra, Pyromaster",
-      "Chandra, Pyrogenius",
-      "Chandra, Torch of Defiance",
       "Chandra, Flamecaller",
+      "Chandra, Pyrogenius",
       "Chandra Nalaar",
       "Chandra, the Firebrand",
       "Chandra Ablaze"
