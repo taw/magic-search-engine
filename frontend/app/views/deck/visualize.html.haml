@@ -1,0 +1,14 @@
+%h1 Deck visualizer
+
+
+%h3 Paste or upload a deck
+= form_tag("/deck/visualize", method: :post, class: "deck_submit", enforce_utf8: false, multipart: true) do
+  %textarea{name: "deck", placeholder: "60 Mountain\n\nSideboard\n\n15 Island"}= @deck
+  .input-group
+    .input-group-prepend
+      %span.input-group-text Upload
+    .custom-file
+      %input#deck_upload.custom-file-input{type: "file", name: "deck_upload"}/
+      %label.custom-file-label{for: "deck_upload"} Choose file
+  %button.btn.btn-primary{type: "submit"}
+    Submit

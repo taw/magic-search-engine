@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get "help/contact" => "help#contact"
   get "deck/:set/:id" => "deck#show"
   get "deck/:set/:id/download" => "deck#download"
+  get "deck/visualize" => "deck#visualize"
+  post "deck/visualize" => "deck#visualize"
   get "deck" => "deck#index"
   get "sealed" => "sealed#index"
   get "/" => "card#index"
