@@ -195,6 +195,16 @@ class PackFactory
         build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_legendary_rare_mythic: 1}) => 36*23,
         build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_nonlegendary_rare_mythic: 1}) => (121-36)*144,
       )
+    # To fully balance it like DOM, probabilities of double walker pack are negative!
+    # If we disallow double planeswalker packs (rare pw and uncommon pw in same pack),
+    # probabilities turn into almost perfect but not quite so values 1/1936 and 1/5808 deviation
+    #
+    # We can make this deviation go on rares on uncommons, either way it's too tiny to notice
+    when "war"
+      WeightedPack.new(
+        build_pack_with_random_foil(set_code, :war_foil, :common, {basic: 1, common: 10, war_nonplaneswalker_uncommon: 3, war_planeswalker_rare_mythic: 1}) => 29,
+        build_pack_with_random_foil(set_code, :war_foil, :common, {basic: 1, common: 10, war_nonplaneswalker_uncommon: 2, war_planeswalker_uncommon: 1, war_nonplaneswalker_rare_mythic: 1}) => (121-29),
+      )
     when "grn"
       build_pack_with_random_foil(set_code, :foil, :grn_common, {grn_common: 10, uncommon: 3, rare_or_mythic: 1, grn_land: 1})
     when "rna"

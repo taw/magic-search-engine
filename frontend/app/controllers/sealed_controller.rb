@@ -6,7 +6,7 @@ class SealedController < ApplicationController
 
     @packs_to_open = set_codes.zip(counts)
     packs_requested = !@packs_to_open.empty?
-    @packs_to_open << ["rna", 6] if @packs_to_open.empty?
+    @packs_to_open << ["war", 6] if @packs_to_open.empty?
     @packs_to_open << [nil, 0] while @packs_to_open.size < 3
 
     @sets = $CardDatabase.sets_with_packs

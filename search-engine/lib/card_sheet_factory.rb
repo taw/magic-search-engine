@@ -356,6 +356,37 @@ class CardSheetFactory
     )
   end
 
+  def war_planeswalker_uncommon
+    from_query('e:war is:booster t:planeswalker r:uncommon -number:/★/', 20)
+  end
+
+  def war_nonplaneswalker_uncommon
+    from_query('e:war is:booster -t:planeswalker r:uncommon', 60)
+  end
+
+  def war_planeswalker_rare_mythic
+    mix_sheets(
+      [from_query('e:war is:booster t:planeswalker r:rare -number:/★/', 13), 2],
+      [from_query('e:war is:booster t:planeswalker r:mythic -number:/★/', 3), 1],
+    )
+  end
+
+  def war_nonplaneswalker_rare_mythic
+    mix_sheets(
+      [from_query('e:war is:booster -t:planeswalker r:rare', 40), 2],
+      [from_query('e:war is:booster -t:planeswalker r:mythic', 12), 1],
+    )
+  end
+
+  def war_foil
+    m = from_query("e:war is:booster r:mythic -number:/★/", 15, foil: true)
+    r = from_query("e:war is:booster r:rare -number:/★/", 53, foil: true)
+    u = from_query("e:war is:booster r:uncommon -number:/★/", 80, foil: true)
+    c = common_or_basic("war", foil: true)
+    mr = mix_sheets([r, 2], [m, 1])
+    CardSheet.new([mr, u, c], [4, 8, 20])
+  end
+
   def cns_draft_foil
     cns_draft(true)
   end
