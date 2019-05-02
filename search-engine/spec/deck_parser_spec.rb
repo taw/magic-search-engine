@@ -41,6 +41,24 @@ describe DeckParser do
     end
   end
 
+
+  describe "SB:" do
+    let(:text) do
+      <<~EOF
+      // Amazing deck
+      30x Lightning Bolt
+      10  Lightning Bolt
+      SB: Taiga
+      SB: 10x Goblin Guide
+      20x Mountain
+      EOF
+    end
+    it do
+      parser.main.should eq({"Lightning Bolt"=>40, "Mountain"=>20})
+      parser.side.should eq({"Goblin Guide"=>10, "Taiga"=>1})
+    end
+  end
+
   # Add it in the future?
   describe "it ignores annotations" do
     let(:text) do

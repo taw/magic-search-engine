@@ -25,13 +25,18 @@ class DeckParser
         current = @side
         next
       end
+      if line =~ /\ASB:\s*(.*)/
+        target, line = @side, $1
+      else
+        target = current
+      end
       if line =~ /\A(\d+)x?\s*(.*)/
         num, name = $1.to_i, $2
       else
         num, name = 1, line
       end
       name.gsub!(/\s*\[.*?\]/, "")
-      current[name] += num
+      target[name] += num
     end
   end
 
