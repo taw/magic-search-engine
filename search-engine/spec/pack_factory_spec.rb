@@ -458,7 +458,7 @@ describe PackFactory do
         ev[legendary_uncommon].should eq Rational(3, 80)
         ev[legendary_rare].should eq Rational(2, 121)
         ev[legendary_mythic].should eq Rational(1, 121)
-        ev[nonlegendary_uncommon].should eq Rational(271, 7260)
+        ev[nonlegendary_uncommon].should eq Rational(3, 80)
         ev[nonlegendary_rare].should eq Rational(2, 121)
         ev[nonlegendary_mythic].should eq Rational(1, 121)
       end
@@ -499,7 +499,7 @@ describe PackFactory do
         ev[planeswalker_uncommon].should eq Rational(23, 605)
         ev[planeswalker_rare].should eq Rational(2, 121)
         ev[planeswalker_mythic].should eq Rational(1, 121)
-        ev[nonplaneswalker_uncommon].should eq Rational(3, 80)
+        ev[nonplaneswalker_uncommon].should eq Rational(271, 7260)
         ev[nonplaneswalker_rare].should eq Rational(2, 121)
         ev[nonplaneswalker_mythic].should eq Rational(1, 121)
       end
