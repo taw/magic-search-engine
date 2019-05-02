@@ -1,4 +1,7 @@
 class DeckController < ApplicationController
+  # We don't have any sensitive data, at some point might be good practice to enable it anyway
+  skip_before_action :verify_authenticity_token
+
   def index
     @sets = $CardDatabase.sets.values.reject{|s| s.decks.empty?}.sort_by{|s| [-s.release_date.to_i_sort, s.name] }
     @title = "Preconstructed Decks"
@@ -31,6 +34,14 @@ class DeckController < ApplicationController
     group_cards
 
     @title = "#{@deck.name} - #{@set.name} #{@deck.type}"
+  end
+
+  def visualize
+    if params[:deck_upload]
+      @deck = params[:deck_upload].read
+    else
+      @deck = params[:deck]
+    end
   end
 
   private
