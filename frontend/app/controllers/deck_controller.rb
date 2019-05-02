@@ -37,6 +37,8 @@ class DeckController < ApplicationController
   end
 
   def visualize
+    @title = "Deck Visualizer"
+
     if params[:deck_upload]
       @deck = params[:deck_upload].read
     else
