@@ -48,10 +48,14 @@ class DeckController < ApplicationController
     if @deck.present?
       parser = DeckParser.new($CardDatabase, @deck)
 
-      @cards = parser.main_cards.sort_by{|_,c| [c.name, c.set_code, c.number] }
-      @sideboard = parser.sideboard_cards.sort_by{|_,c| [c.name, c.set_code, c.number] }
+      @cards = parser.main_cards.sort_by{|_,c|
+        c.is_a?(PhysicalCard) ? [0, c.name, c.set_code, c.number] : [1, c.name]
+      }
+      @sideboard = parser.sideboard_cards.sort_by{|_,c|
+        c.is_a?(PhysicalCard) ? [0, c.name, c.set_code, c.number] : [1, c.name]
+      }
 
-      @card_previews = [*@cards.map(&:last), *@sideboard.map(&:last)].uniq
+      @card_previews = [*@cards.map(&:last), *@sideboard.map(&:last)].uniq.grep(PhysicalCard)
 
       choose_default_preview_card
       group_cards
@@ -81,28 +85,30 @@ class DeckController < ApplicationController
   end
 
   def group_cards
-    @card_groups = @cards.group_by{|count, card|
-      types = card.main_front.types
-      if card.nil?
-        [0, "Unknown"]
-      elsif types.include?("creature")
-        [1, "Creature"]
-      elsif types.include?("land")
-        [7, "Land"]
-      elsif types.include?("planeswalker")
-        [2, "Planeswalker"]
-      elsif types.include?("instant")
-        [3, "Instant"]
-      elsif types.include?("sorcery")
-        [4, "Sorcery"]
-      elsif types.include?("artifact")
-        [5, "Artifact"]
-      elsif types.include?("enchantment")
-        [6, "Enchantment"]
+    @card_groups = @cards.group_by do |count, card|
+      if card.is_a?(UnknownCard) or card.nil?
+        [9, "Other"]
       else
-        [8, "Other"]
+        types = card.main_front.types
+        if types.include?("creature")
+          [1, "Creature"]
+        elsif types.include?("land")
+          [7, "Land"]
+        elsif types.include?("planeswalker")
+          [2, "Planeswalker"]
+        elsif types.include?("instant")
+          [3, "Instant"]
+        elsif types.include?("sorcery")
+          [4, "Sorcery"]
+        elsif types.include?("artifact")
+          [5, "Artifact"]
+        elsif types.include?("enchantment")
+          [6, "Enchantment"]
+        else
+          [8, "Other"]
+        end
       end
-    }
+    end
     unless @sideboard.empty?
       @card_groups[[9, "Sideboard"]] = @sideboard
     end

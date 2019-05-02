@@ -30,24 +30,35 @@ RSpec.describe DeckController, type: :controller do
     assert_response 404
   end
 
-  it "shows visualizer" do
-    get "visualize"
-    assert_response 200
-    assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
-  end
+  describe "visualizer" do
+    it "shows visualizer" do
+      get "visualize"
+      assert_response 200
+      assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
+    end
 
-  it "shows deck if you put it in textarea" do
-    post "visualize", params: {deck: "40x Lightning Bolt\n20x Mountain" }
-    assert_response 200
-    assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
-    assert_equal html_document.css("img").map{|e| e[:alt]}, ["Lightning Bolt", "Mountain"]
-  end
+    it "shows deck if you put it in textarea" do
+      post "visualize", params: {deck: "40x Lightning Bolt\n20x Mountain" }
+      assert_response 200
+      assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
+      assert_equal html_document.css("img").map{|e| e[:alt]}, ["Lightning Bolt", "Mountain"]
+    end
 
-  it "shows deck if you upload it" do
-    path = "#{__dir__}/deck1.txt"
-    post "visualize", params: { deck_upload: Rack::Test::UploadedFile.new(path) }
-    assert_response 200
-    assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
-    assert_equal html_document.css("img").map{|e| e[:alt]}, ["Lightning Bolt", "Mountain"]
+    it "shows deck if you upload it" do
+      path = "#{__dir__}/deck1.txt"
+      post "visualize", params: { deck_upload: Rack::Test::UploadedFile.new(path) }
+      assert_response 200
+      assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
+      assert_equal html_document.css("img").map{|e| e[:alt]}, ["Lightning Bolt", "Mountain"]
+    end
+
+    it "deals with unknown cards" do
+      post "visualize", params: {deck: "40x Lightning Bolt\n20x Pod of Greed" }
+      assert_response 200
+      assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
+      assert_equal html_document.css("img").map{|e| e[:alt]}, ["Lightning Bolt"]
+      assert_equal html_document.css(".card_entry").map(&:text).map{|x| x.split(/\s+/).join(" ").strip },
+        ["40 Lightning Bolt {R}", "20 Pod of Greed"]
+    end
   end
 end
