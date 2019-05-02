@@ -42,6 +42,18 @@ class DeckController < ApplicationController
     else
       @deck = params[:deck]
     end
+
+    if @deck.present?
+      parser = DeckParser.new($CardDatabase, @deck)
+
+      @cards = parser.main_cards.sort_by{|_,c| [c.name, c.set_code, c.number] }
+      @sideboard = parser.sideboard_cards.sort_by{|_,c| [c.name, c.set_code, c.number] }
+
+      @card_previews = [*@cards.map(&:last), *@sideboard.map(&:last)].uniq
+
+      choose_default_preview_card
+      group_cards
+    end
   end
 
   private
