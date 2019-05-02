@@ -62,8 +62,7 @@ class DeckParser
       end
     end
 
-    warn "Can't resolve card: #{name}"
-    nil
+    return UnknownCard.new(name)
   end
 
   # These method seem to occur in every single class out there

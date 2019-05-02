@@ -106,6 +106,27 @@ describe DeckParser do
   end
 
   describe "it deals with unknown cards" do
-    # TODO
+    let(:text) do
+      <<~EOF
+      1 Lightning Bolt
+      2 Blue-Eyes White Dragon
+      3 Pod of Greed
+      4 Mountain
+      EOF
+    end
+
+    let(:lightning_bolt) { PhysicalCard.for db.cards["lightning bolt"].printings.min_by(&:default_sort_index) }
+    let(:blue_eyes_white_dragon) { UnknownCard.new("Blue-Eyes White Dragon") }
+    let(:pod_of_greed) { UnknownCard.new("Pod of Greed") }
+    let(:mountain) { PhysicalCard.for db.cards["mountain"].printings.min_by(&:default_sort_index) }
+
+    it do
+      parser.main_cards.should eq([
+        [1, lightning_bolt],
+        [2, blue_eyes_white_dragon],
+        [3, pod_of_greed],
+        [4, mountain],
+      ])
+    end
   end
 end

@@ -10,10 +10,13 @@
             - cards.each do |count, card|
               .card_entry
                 = count
-                %span.previewable_card_name{"data-preview-link": preview_id(card)}
-                  = link_to_card(card.main_front) do
-                    = card.name
-                    = card.front.map{|cp| format_oracle_text(cp.display_mana_cost)}.join("/").html_safe
+                - if card.is_a?(PhysicalCard)
+                  %span.previewable_card_name{"data-preview-link": preview_id(card)}
+                    = link_to_card(card.main_front) do
+                      = card.name
+                      = card.front.map{|cp| format_oracle_text(cp.display_mana_cost)}.join("/").html_safe
+                - else
+                  = card.name
       .col-4.picture_preview_column
         .picture_preview_box
           - @card_previews.each_with_index do |preview_card, i|
