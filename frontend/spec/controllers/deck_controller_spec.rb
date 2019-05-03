@@ -29,4 +29,37 @@ RSpec.describe DeckController, type: :controller do
     get "show", params: {set: "m11", id: "Homarids"}
     assert_response 404
   end
+
+  describe "visualizer" do
+    let(:deck_list) { html_document.css(".card_entry").map(&:text).map{|x| x.split(/\s+/).join(" ").strip } }
+
+    it "shows visualizer" do
+      get "visualize"
+      assert_response 200
+      assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
+      assert_equal deck_list, []
+    end
+
+    it "shows deck if you put it in textarea" do
+      post "visualize", params: {deck: "40x Lightning Bolt\n20x Mountain" }
+      assert_response 200
+      assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
+      assert_equal deck_list, ["40 Lightning Bolt {R}", "20 Mountain"]
+    end
+
+    it "shows deck if you upload it" do
+      path = "#{__dir__}/deck1.txt"
+      post "visualize", params: { deck_upload: Rack::Test::UploadedFile.new(path) }
+      assert_response 200
+      assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
+      assert_equal deck_list, ["40 Lightning Bolt {R}", "20 Mountain"]
+    end
+
+    it "deals with unknown cards" do
+      post "visualize", params: {deck: "40x Lightning Bolt\n20x Pod of Greed" }
+      assert_response 200
+      assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
+      assert_equal deck_list, ["40 Lightning Bolt {R}", "20 Pod of Greed"]
+    end
+  end
 end

@@ -17,7 +17,9 @@ require_relative "pack_factory"
 require_relative "weighted_pack"
 require_relative "sealed"
 require_relative "deck"
+require_relative "deck_parser"
 require_relative "deck_database"
+require_relative "unknown_card"
 
 class CardDatabase
   attr_reader :sets, :cards, :blocks, :artists, :cards_in_precons

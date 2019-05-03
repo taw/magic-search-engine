@@ -1,0 +1,36 @@
+%h1 Deck visualizer
+
+- if @card_groups.present?
+  .decklist
+    .row
+      .col-8.two-columns
+        - @card_groups.each do |(i, group), cards|
+          .card_group
+            %h6= "#{group} (#{cards.map{|c| c[0]}.inject(0, &:+)})"
+            - cards.each do |count, card|
+              .card_entry
+                = count
+                - if card.is_a?(PhysicalCard)
+                  %span.previewable_card_name{"data-preview-link": preview_id(card)}
+                    = link_to_card(card.main_front) do
+                      = card.name
+                      = card.front.map{|cp| format_oracle_text(cp.display_mana_cost)}.join("/").html_safe
+                - else
+                  = card.name
+      .col-4.picture_preview_column
+        .picture_preview_box
+          - @card_previews.each_with_index do |preview_card, i|
+            .card_picture_cell{"data-preview": preview_id(preview_card), style: (preview_card == @default_preview_card ? nil : "display: none;")}
+              = render "card/picture", card: preview_card
+
+%h3 Paste or upload a deck
+= form_tag("/deck/visualize", method: :post, class: "deck_submit", enforce_utf8: false, multipart: true) do
+  %textarea{name: "deck", placeholder: "60 Mountain\n\nSideboard\n\n15 Island"}= @deck
+  .input-group
+    .input-group-prepend
+      %span.input-group-text Upload
+    .custom-file
+      %input#deck_upload.custom-file-input{type: "file", name: "deck_upload"}/
+      %label.custom-file-label{for: "deck_upload"} Choose file
+  %button.btn.btn-primary{type: "submit"}
+    Submit

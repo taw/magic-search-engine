@@ -42,7 +42,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[dgm unh jou frf tsp cns].include?(set_code)
+      next if %W[dgm unh jou frf tsp cns war].include?(set_code)
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = factory.for(set_code)
       next unless pack
@@ -55,7 +55,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[tsp csn].include?(set_code)
+      next if %W[tsp csn war].include?(set_code)
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = factory.for(set_code)
       next unless pack
@@ -475,6 +475,47 @@ describe PackFactory do
         ev[nonlegendary_uncommon].should eq Rational(1,4) * Rational(1, 80) * Rational(8,32)
         ev[nonlegendary_rare].should eq Rational(1,4) * Rational(2, 121) * Rational(4,32)
         ev[nonlegendary_mythic].should eq Rational(1,4) * Rational(1, 121) * Rational(4,32)
+      end
+    end
+  end
+
+  context "War of the Spark" do
+    let(:pack) { factory.for("war") }
+    let(:ev) { pack.expected_values }
+    let(:basic) { physical_card("is:booster e:war r:basic", foil) }
+    let(:common) { physical_card("is:booster e:war r:common", foil) }
+    let(:planeswalker_uncommon) { physical_card("is:booster e:war r:uncommon t:planeswalker -number:/★/", foil) }
+    let(:nonplaneswalker_uncommon) { physical_card("is:booster e:war r:uncommon -t:planeswalker -number:/★/", foil) }
+    let(:planeswalker_rare) { physical_card("is:booster e:war r:rare t:planeswalker -number:/★/", foil) }
+    let(:nonplaneswalker_rare) { physical_card("is:booster e:war r:rare -t:planeswalker -number:/★/", foil) }
+    let(:planeswalker_mythic) { physical_card("is:booster e:war r:mythic t:planeswalker -number:/★/", foil) }
+    let(:nonplaneswalker_mythic) { physical_card("is:booster e:war r:mythic -t:planeswalker -number:/★/", foil) }
+
+    context "non-foil" do
+      let(:foil) { false }
+      it do
+        ev[basic].should eq Rational(1, 15)
+        ev[common].should eq Rational(975, 100) * Rational(1, 101)
+        ev[planeswalker_uncommon].should eq Rational(23, 605)
+        ev[planeswalker_rare].should eq Rational(2, 121)
+        ev[planeswalker_mythic].should eq Rational(1, 121)
+        ev[nonplaneswalker_uncommon].should eq Rational(271, 7260)
+        ev[nonplaneswalker_rare].should eq Rational(2, 121)
+        ev[nonplaneswalker_mythic].should eq Rational(1, 121)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+      it do
+        ev[basic].should eq Rational(1,4) * Rational(1, 15+101) * Rational(20,32)
+        ev[common].should eq Rational(1,4) * Rational(1, 15+101) * Rational(20,32)
+        ev[planeswalker_uncommon].should eq Rational(1,4) * Rational(1, 80) * Rational(8,32)
+        ev[planeswalker_rare].should eq Rational(1,4) * Rational(2, 121) * Rational(4,32)
+        ev[planeswalker_mythic].should eq Rational(1,4) * Rational(1, 121) * Rational(4,32)
+        ev[nonplaneswalker_uncommon].should eq Rational(1,4) * Rational(1, 80) * Rational(8,32)
+        ev[nonplaneswalker_rare].should eq Rational(1,4) * Rational(2, 121) * Rational(4,32)
+        ev[nonplaneswalker_mythic].should eq Rational(1,4) * Rational(1, 121) * Rational(4,32)
       end
     end
   end
