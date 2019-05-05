@@ -451,4 +451,18 @@ class CardSheetFactory
   def bbd_uncommon_partner(foil=false)
     from_query("e:bbd r:uncommon has:partner", foil: foil, kind: PartnerCardSheet)
   end
+
+  def bbd_rare_mythic(foil=false)
+    mix_sheets(
+      [from_query('e:bbd -has:partner r:rare', 43, foil: foil), 2],
+      [from_query('e:bbd -has:partner r:mythic', 13, foil: foil), 1],
+    )
+  end
+
+  def bbd_rare_mythic_partner
+    PartnerCardSheet.new(
+      (find_cards("e:bbd r:rare has:partner", 10) * 2) +
+      find_cards("e:bbd r:mythic has:partner is:nonfoilonly", 2)
+    )
+  end
 end
