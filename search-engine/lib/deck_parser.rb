@@ -12,12 +12,16 @@ class DeckParser
     resolve
   end
 
+  # This method is really messy, but is has decent test coverage
   def preparse
     in_sideboard = false
     @main = []
     @side = []
     current = @main
     @lines.each do |line|
+      foil = nil
+      set = nil
+      number = nil
       next if line =~ /\A\s*[#\/]/
       # In some decklist formats empty line separates sideboard
       next if line.empty?
@@ -35,8 +39,19 @@ class DeckParser
       else
         num, name = 1, line
       end
-      name.gsub!(/\s*\[.*?\]/, "")
-      target << {name: name, count: num, set: nil, number: nil, foil: nil}.compact
+      while name.sub!(/\s*\[(.*?)\]/, "")
+        tag = $1
+        case tag
+        when /\Afoil\z/i
+          foil = true
+        when %r[\A(.*)[/:](.*)\z]
+          set = $1
+          number = $2
+        else
+          set = tag
+        end
+      end
+      target << {name: name, count: num, set: set, number: number, foil: foil}.compact
     end
   end
 
