@@ -16,4 +16,8 @@ class UnknownCard
   def eql?(other)
     self == other
   end
+
+  def inspect
+    "UnknownCard[#{@name}]"
+  end
 end
