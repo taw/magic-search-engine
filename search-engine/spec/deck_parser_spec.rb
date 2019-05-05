@@ -100,18 +100,18 @@ describe DeckParser do
     end
     it do
       parser.main.should eq([
-        {name: "Lightning Bolt", count: 10},
-        {name: "Lightning Bolt", count: 10},
-        {name: "Lightning Bolt", count: 10},
-        {name: "Lightning Bolt", count: 10},
+        {name: "Lightning Bolt", count: 10, set: "M10"},
+        {name: "Lightning Bolt", count: 10, set: "4ed", number: "208"},
+        {name: "Lightning Bolt", count: 10, foil: true},
+        {name: "Lightning Bolt", count: 10, set: "M11", foil: true},
         {name: "A25 Lightning Bolt", count: 10}, # FIXME
-        {name: "A25 Lightning Bolt", count: 10}, # FIXME
-        {name: "Lightning Bolt", count: 10},
-        {name: "Lightning Bolt", count: 10},
+        {name: "A25 Lightning Bolt", count: 10, foil: true}, # FIXME
+        {name: "Lightning Bolt", count: 10, set: "A25", number: "141"},
+        {name: "Lightning Bolt", count: 10, set: "A25", number: "141", foil: true},
       ])
       parser.side.should eq([
-        {name: "Goblin Guide", count: 2},
-        {name: "Goblin Guide", count: 1},
+        {name: "Goblin Guide", count: 2, set: "ZEN", foil: true},
+        {name: "Goblin Guide", count: 1, set: "ZEN", foil: true},
       ])
     end
   end
