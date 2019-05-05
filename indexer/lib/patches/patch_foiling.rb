@@ -42,6 +42,18 @@ class PatchFoiling < Patch
         else
           card["foiling"] = "foilonly"
         end
+      elsif set_code == "bbd" and name == "Rowan Kenrith"
+        if number == "2"
+          card["foiling"] = "nonfoil"
+        else
+          card["foiling"] = "foilonly"
+        end
+      elsif set_code == "bbd" and name == "Will Kenrith"
+        if number == "1"
+          card["foiling"] = "nonfoil"
+        else
+          card["foiling"] = "foilonly"
+        end
       elsif set_code == "hop" and name == "Tazeem"
         card["foiling"] = "nonfoil"
       elsif set_code == "pc2" and name == "Stairs to Infinity"

@@ -130,6 +130,12 @@ describe "Foils" do
         normal_kaya, foil_kaya = special.sort_by{|c| c.number.to_i}
         assert_foiling([normal_kaya], "nonfoil")
         assert_foiling([foil_kaya], "foilonly")
+      when "bbd"
+        special, regular = set.printings.partition{|c| c.name == "Rowan Kenrith" or c.name == "Will Kenrith"}
+        assert_foiling(regular, "both")
+        kenriths = special.sort_by{|c| c.number.to_i}
+        assert_foiling(kenriths[0,2], "nonfoil")
+        assert_foiling(kenriths[2,2], "foilonly")
       when "hop"
         promo, rest = set.printings.partition{|c| c.name == "Tazeem" }
         assert_foiling(promo, "nonfoil")
