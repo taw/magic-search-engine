@@ -16,8 +16,13 @@ describe DeckParser do
       EOF
     end
     it do
-      parser.main.should eq({"Lightning Bolt"=>40, "Mountain"=>20})
-      parser.side.should eq({"Goblin Guide"=>15})
+      parser.main.should eq([
+        {name: "Lightning Bolt", count: 40},
+        {name: "Mountain", count: 20},
+      ])
+      parser.side.should eq([
+        {name: "Goblin Guide", count: 15},
+      ])
     end
   end
 
@@ -31,13 +36,22 @@ describe DeckParser do
       20x Mountain
 
       sideboard
+        # try this
       Taiga
+        // and that
       10x Goblin Guide
       EOF
     end
     it do
-      parser.main.should eq({"Lightning Bolt"=>40, "Mountain"=>20})
-      parser.side.should eq({"Goblin Guide"=>10, "Taiga"=>1})
+      parser.main.should eq([
+        {name: "Lightning Bolt", count: 30},
+        {name: "Lightning Bolt", count: 10},
+        {name: "Mountain", count: 20},
+      ])
+      parser.side.should eq([
+        {name: "Taiga", count: 1},
+        {name: "Goblin Guide", count: 10},
+      ])
     end
   end
 
@@ -54,8 +68,15 @@ describe DeckParser do
       EOF
     end
     it do
-      parser.main.should eq({"Lightning Bolt"=>40, "Mountain"=>20})
-      parser.side.should eq({"Goblin Guide"=>10, "Taiga"=>1})
+      parser.main.should eq([
+        {name: "Lightning Bolt", count: 30},
+        {name: "Lightning Bolt", count: 10},
+        {name: "Mountain", count: 20},
+      ])
+      parser.side.should eq([
+        {name: "Taiga", count: 1},
+        {name: "Goblin Guide", count: 10},
+      ])
     end
   end
 
@@ -67,6 +88,10 @@ describe DeckParser do
       10x Lightning Bolt [4ed/208]
       10x Lightning Bolt [foil]
       10x Lightning Bolt [M11] [foil]
+      10x A25 Lightning Bolt
+      10x A25 Lightning Bolt [foil]
+      10x Lightning Bolt [A25:141]
+      10x Lightning Bolt [A25/141] [foil]
 
       sideboard
       2 Goblin Guide [ZEN] [foil]
@@ -74,8 +99,20 @@ describe DeckParser do
       EOF
     end
     it do
-      parser.main.should eq({"Lightning Bolt"=>40})
-      parser.side.should eq({"Goblin Guide"=>3})
+      parser.main.should eq([
+        {name: "Lightning Bolt", count: 10},
+        {name: "Lightning Bolt", count: 10},
+        {name: "Lightning Bolt", count: 10},
+        {name: "Lightning Bolt", count: 10},
+        {name: "A25 Lightning Bolt", count: 10}, # FIXME
+        {name: "A25 Lightning Bolt", count: 10}, # FIXME
+        {name: "Lightning Bolt", count: 10},
+        {name: "Lightning Bolt", count: 10},
+      ])
+      parser.side.should eq([
+        {name: "Goblin Guide", count: 2},
+        {name: "Goblin Guide", count: 1},
+      ])
     end
   end
 

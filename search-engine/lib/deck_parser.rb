@@ -14,11 +14,11 @@ class DeckParser
 
   def preparse
     in_sideboard = false
-    @main = Hash.new(0)
-    @side = Hash.new(0)
+    @main = []
+    @side = []
     current = @main
     @lines.each do |line|
-      next if line =~ /\A[#\/]/
+      next if line =~ /\A\s*[#\/]/
       # In some decklist formats empty line separates sideboard
       next if line.empty?
       if line =~ /\Asideboard\z/i
@@ -36,17 +36,17 @@ class DeckParser
         num, name = 1, line
       end
       name.gsub!(/\s*\[.*?\]/, "")
-      target[name] += num
+      target << {name: name, count: num, set: nil, number: nil, foil: nil}.compact
     end
   end
 
   def resolve
-    @main_cards = @main.map do |name, num|
-      [num, resolve_card(name)]
+    @main_cards = @main.map do |card_description|
+      [card_description[:count], resolve_card(card_description[:name])]
     end.select(&:last)
 
-    @sideboard_cards = @side.map do |name, num|
-      [num, resolve_card(name)]
+    @sideboard_cards = @side.map do |card_description|
+      [card_description[:count], resolve_card(card_description[:name])]
     end.select(&:last)
   end
 
