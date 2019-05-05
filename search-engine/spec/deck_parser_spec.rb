@@ -184,4 +184,31 @@ describe DeckParser do
       ])
     end
   end
+
+  describe "if tag is foil, card is foil (regardless of such foil existing or not)" do
+    let(:text) do
+      <<~EOF
+      1 Tezzeret, Master of the Bridge
+      2 Tezzeret, Master of the Bridge [foil]
+      3 Black Lotus
+      4 Black Lotus [foil]
+      5 Pod of Greed
+      6 Pod of Greed [foil]
+      EOF
+    end
+
+    let(:tezzeret) { db.cards["tezzeret, master of the bridge"].printings.min_by(&:default_sort_index) }
+    let(:black_lotus) { db.cards["black lotus"].printings.min_by(&:default_sort_index) }
+
+    it do
+      parser.main_cards.should eq([
+        [1, PhysicalCard.for(tezzeret)],
+        [2, PhysicalCard.for(tezzeret, true)],
+        [3, PhysicalCard.for(black_lotus)],
+        [4, PhysicalCard.for(black_lotus, true)],
+        [5, UnknownCard.new("Pod of Greed")],
+        [6, UnknownCard.new("Pod of Greed")],
+      ])
+    end
+  end
 end

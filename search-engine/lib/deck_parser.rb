@@ -57,31 +57,34 @@ class DeckParser
 
   def resolve
     @main_cards = @main.map do |card_description|
-      [card_description[:count], resolve_card(card_description[:name])]
+      [card_description[:count], resolve_card(card_description)]
     end.select(&:last)
 
     @sideboard_cards = @side.map do |card_description|
-      [card_description[:count], resolve_card(card_description[:name])]
+      [card_description[:count], resolve_card(card_description)]
     end.select(&:last)
   end
 
   private
 
-  def resolve_card(name)
+  def resolve_card(card_description)
+    name = card_description[:name]
+    foil = !!card_description[:foil]
     card = @db.cards[normalize_name(name)]
     if card
       printing = card.printings.min_by(&:default_sort_index)
-      return PhysicalCard.for(printing)
+      return PhysicalCard.for(printing, foil)
     end
     parts = name.split(%r[(?:&|/)+]).map{|n| normalize_name(n)}
     if parts.size > 1
       card = @db.cards[parts[0]]
       if card
         printing = card.printings.min_by(&:default_sort_index)
-        return PhysicalCard.for(printing)
+        return PhysicalCard.for(printing, foil)
       end
     end
 
+    # Not tracking foils for that
     return UnknownCard.new(name)
   end
 
