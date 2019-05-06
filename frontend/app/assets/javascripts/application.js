@@ -29,4 +29,10 @@ $(function () {
   if (!('ontouchstart' in document.documentElement) && (document.location.hash === "")) {
     document.getElementById("q").focus();
   }
+
+  $('#deck_upload').on('change', function(){
+    var fileName = $(this).val().split("\\").pop();
+    $(this).next('.custom-file-label').html(fileName);
+    $(this).closest("form").submit();
+  })
 })
