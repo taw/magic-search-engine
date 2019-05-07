@@ -61,6 +61,8 @@ describe "Foils" do
     db.sets.each do |set_code, set|
       # Sets without foiling set are all known bad
       unless set.foiling
+        # For promos we'll just trust mtgjson
+        next if set.type == "promo"
         warn "Support for #{set.code} #{set.name} not implemented yet"
         next
       end
