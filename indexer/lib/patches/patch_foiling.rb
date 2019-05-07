@@ -11,6 +11,20 @@ class PatchFoiling < Patch
       types = card["types"]
       number = card["number"]
 
+      if card["set"]["v4"] and card["set"]["type"] == "promo"
+        case [card["hasNonFoil"], card["hasFoil"]]
+        when [true, true]
+          card["foiling"] = "both"
+        when [true, false]
+          card["foiling"] = "nonfoil"
+        when [false, true]
+          card["foiling"] = "foilonly"
+        else
+          warn "Bad foiling information for #{name} in #{set_code}"
+        end
+        next
+      end
+
       if set_code == "m19" and name == "Nexus of Fate"
         card["foiling"] = "foilonly"
       elsif set_code == "dom" and name == "Firesong and Sunspeaker"
@@ -74,6 +88,11 @@ class PatchFoiling < Patch
     end
 
     each_set do |set|
+      # On card by card basis
+      if set["v4"] and set["type"] == "promo"
+        next
+      end
+
       foiling = case set["code"]
       when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "hho", "plpa", "pjgp", "ppro", "pgtw", "pwor", "prel", "pfnm", "pwos", "ppre"
         "foilonly"
