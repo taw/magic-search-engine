@@ -144,7 +144,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Bloodbraid Elf {2}{r}{g}
-        [-arb +pfnm +pc2 -ema -c16 +pca]
+        [-arb +f10 +pfnm +pc2 -ema -c16 +pca]
         Creature - Elf Berserker
         Haste
         Cascade
