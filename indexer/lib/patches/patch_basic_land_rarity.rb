@@ -26,7 +26,12 @@ class PatchBasicLandRarity < Patch
       # Now fix exceptions
 
       # Fix rarities of promo basics
-      if %W[parl pal00 pal01 pal02 pal03 pal05 pal06 pgru pjgp pelp palp ppre].include?(card["set_code"])
+      # Should this just check for set type promo ?
+      if %W[
+        parl pal00 pal01 pal02 pal03 pal05 pal06 pgru pjgp pelp palp ppre
+        pmps pmps06 pmps07 pmps08 pmps09 pmps10 pmps01 prw2 prwk pss2 pss3
+        pf19
+      ].include?(card["set_code"])
         card["rarity"] = "special"
       end
 
