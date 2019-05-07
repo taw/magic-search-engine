@@ -88,8 +88,15 @@ class PatchFoiling < Patch
     end
 
     each_set do |set|
+      # v4 promo
+      case set["code"]
+      when "ced", "cei"
+        set["foiling"] = "nonfoil"
+        next
+      end
+
       # On card by card basis
-      if set["v4"] and set["type"] == "promo"
+      if set["v4"] and ["promo", "memorabilia"].include?(set["type"])
         next
       end
 
