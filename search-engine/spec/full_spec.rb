@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(19496)
-    db.number_of_printings.should eq(38755)
+    db.number_of_printings.should eq(39160)
   end
 
   it "block codes" do
@@ -95,6 +95,7 @@ describe "Full Database Test" do
 
     # This is fairly silly, as it includes prerelease promos etc.
     assert_search_results "e:soi firstprint<soi",
+      "Call the Bloodline", # mtgjson error
       "Catalog",
       "Compelling Deterrence",
       "Dead Weight",
@@ -115,6 +116,7 @@ describe "Full Database Test" do
       "Pore Over the Pages",
       "Puncturing Light",
       "Reckless Scholar",
+      "Rise from the Tides", # mtgjson error
       "Swamp",
       "Throttle",
       "Tooth Collector",
@@ -177,6 +179,7 @@ describe "Full Database Test" do
       "Coral Merfolk",
       "Dark Banishing",
       "Dark Ritual",
+      "Defense of the Heart",
       "Elven Cache",
       "Elvish Lyrist",
       "Elvish Piper",
@@ -280,7 +283,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 1252
+    assert_count_printings "is:promo", 1657
   end
 
   it "is:funny" do
