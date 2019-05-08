@@ -42,7 +42,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Jace Beleren {1}{u}{u}
-        [lrw dd2 pmei m10 m11 dd3_jvc ss1]
+        [lrw dd2 pmei pbok m10 m11 jvc ss1]
         Legendary Planeswalker - Jace
         [+2]: Each player draws a card.
         [−1]: Target player draws a card.
@@ -56,7 +56,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Siege Rhino {1}{w}{b}{g}
-        [ppre ktk cp3]
+        [pktk ppre ktk cp3]
         Creature - Rhino
         Trample
         When Siege Rhino enters the battlefield, each opponent loses 3 life and you gain 3 life.
@@ -144,7 +144,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Bloodbraid Elf {2}{r}{g}
-        [-arb +pfnm +pc2 -ema -c16 +pca]
+        [-arb +f10 +pfnm +pc2 -ema -c16 +pca]
         Creature - Elf Berserker
         Haste
         Cascade

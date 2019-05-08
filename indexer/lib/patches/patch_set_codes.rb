@@ -1,4 +1,4 @@
-  # This is a convoluted process due to v3 to v4 migration
+# This is a convoluted process due to v3 to v4 migration
 # We'll be able to clean it up (and just load from file) at some point
 
 class PatchSetCodes < Patch

@@ -48,11 +48,35 @@ RSpec.describe DeckController, type: :controller do
     end
 
     it "shows deck if you upload it" do
-      path = "#{__dir__}/deck1.txt"
+      path = "#{__dir__}/decks/normal.txt"
       post "visualize", params: { deck_upload: Rack::Test::UploadedFile.new(path) }
       assert_response 200
       assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
-      assert_equal deck_list, ["40 Lightning Bolt {R}", "20 Mountain"]
+      assert_equal deck_list, ["20 Dandân {U}{U}", "30 Lightning Bolt {R}", "10 Mountain"]
+    end
+
+    it "ignores UTF-8 BOM" do
+      path = "#{__dir__}/decks/utf8_bom.txt"
+      post "visualize", params: { deck_upload: Rack::Test::UploadedFile.new(path) }
+      assert_response 200
+      assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
+      assert_equal deck_list, ["20 Dandân {U}{U}", "30 Lightning Bolt {R}", "10 Mountain"]
+    end
+
+    it "deals with Windows encoding and line endings" do
+      path = "#{__dir__}/decks/windows.txt"
+      post "visualize", params: { deck_upload: Rack::Test::UploadedFile.new(path) }
+      assert_response 200
+      assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
+      assert_equal deck_list, ["20 Dandân {U}{U}", "30 Lightning Bolt {R}", "10 Mountain"]
+    end
+
+    it "deals with Mac line endings" do
+      path = "#{__dir__}/decks/mac.txt"
+      post "visualize", params: { deck_upload: Rack::Test::UploadedFile.new(path) }
+      assert_response 200
+      assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
+      assert_equal deck_list, ["20 Dandân {U}{U}", "30 Lightning Bolt {R}", "10 Mountain"]
     end
 
     it "deals with unknown cards" do

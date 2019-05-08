@@ -11,6 +11,20 @@ class PatchFoiling < Patch
       types = card["types"]
       number = card["number"]
 
+      if card["set"]["v4"] and card["set"]["type"] == "promo"
+        case [card["hasNonFoil"], card["hasFoil"]]
+        when [true, true]
+          card["foiling"] = "both"
+        when [true, false]
+          card["foiling"] = "nonfoil"
+        when [false, true]
+          card["foiling"] = "foilonly"
+        else
+          warn "Bad foiling information for #{name} in #{set_code}"
+        end
+        next
+      end
+
       if set_code == "m19" and name == "Nexus of Fate"
         card["foiling"] = "foilonly"
       elsif set_code == "dom" and name == "Firesong and Sunspeaker"
@@ -42,6 +56,18 @@ class PatchFoiling < Patch
         else
           card["foiling"] = "foilonly"
         end
+      elsif set_code == "bbd" and name == "Rowan Kenrith"
+        if number == "2"
+          card["foiling"] = "nonfoil"
+        else
+          card["foiling"] = "foilonly"
+        end
+      elsif set_code == "bbd" and name == "Will Kenrith"
+        if number == "1"
+          card["foiling"] = "nonfoil"
+        else
+          card["foiling"] = "foilonly"
+        end
       elsif set_code == "hop" and name == "Tazeem"
         card["foiling"] = "nonfoil"
       elsif set_code == "pc2" and name == "Stairs to Infinity"
@@ -62,6 +88,18 @@ class PatchFoiling < Patch
     end
 
     each_set do |set|
+      # v4 promo
+      case set["code"]
+      when "ced", "cei"
+        set["foiling"] = "nonfoil"
+        next
+      end
+
+      # On card by card basis
+      if set["v4"] and ["promo", "memorabilia"].include?(set["type"])
+        next
+      end
+
       foiling = case set["code"]
       when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "hho", "plpa", "pjgp", "ppro", "pgtw", "pwor", "prel", "pfnm", "pwos", "ppre"
         "foilonly"

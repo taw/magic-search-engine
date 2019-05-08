@@ -9,16 +9,21 @@ class DeckParser
     @text = text
     @lines = text.sub(/\A\s+/, "").sub(/\s+\z/, "").lines.map(&:chomp).map(&:strip)
     preparse
-    resolve
+    @main_cards = resolve_card_list(@main)
+    @sideboard_cards = resolve_card_list(@side.map)
   end
 
+  # This method is really messy, but is has decent test coverage
   def preparse
     in_sideboard = false
-    @main = Hash.new(0)
-    @side = Hash.new(0)
+    @main = []
+    @side = []
     current = @main
     @lines.each do |line|
-      next if line =~ /\A[#\/]/
+      foil = nil
+      set = nil
+      number = nil
+      next if line =~ /\A\s*[#\/]/
       # In some decklist formats empty line separates sideboard
       next if line.empty?
       if line =~ /\Asideboard\z/i
@@ -35,39 +40,72 @@ class DeckParser
       else
         num, name = 1, line
       end
-      name.gsub!(/\s*\[.*?\]/, "")
-      target[name] += num
+      while name.sub!(/\s*\[(.*?)\]/, "")
+        tag = $1
+        case tag
+        when /\Afoil\z/i
+          foil = true
+        when %r[\A(.*)[/:](.*)\z]
+          set_code = $1
+          number = $2
+        else
+          set_code = tag
+        end
+      end
+      target << {name: name, count: num, set_code: set_code, number: number, foil: foil}.compact
     end
-  end
-
-  def resolve
-    @main_cards = @main.map do |name, num|
-      [num, resolve_card(name)]
-    end.select(&:last)
-
-    @sideboard_cards = @side.map do |name, num|
-      [num, resolve_card(name)]
-    end.select(&:last)
   end
 
   private
 
-  def resolve_card(name)
+  def resolve_card_list(card_list)
+    card_list = card_list.map do |card_description|
+      [card_description[:count], resolve_card(card_description)]
+    end
+    card_list = card_list.select(&:last)
+    card_list.group_by(&:last).map{|c, num| [num.map(&:first).sum, c] }
+  end
+
+  def resolve_card(card_description)
+    name = card_description[:name]
+    set_code = card_description[:set_code]
+    number = card_description[:number]
+    foil = !!card_description[:foil]
     card = @db.cards[normalize_name(name)]
     if card
-      printing = card.printings.min_by(&:default_sort_index)
-      return PhysicalCard.for(printing)
+      printings = card.printings
+      best_printing = select_best_printing(printings, set_code, number)
+      return PhysicalCard.for(best_printing, foil)
     end
     parts = name.split(%r[(?:&|/)+]).map{|n| normalize_name(n)}
     if parts.size > 1
       card = @db.cards[parts[0]]
       if card
-        printing = card.printings.min_by(&:default_sort_index)
-        return PhysicalCard.for(printing)
+        printings = card.printings
+        best_printing = select_best_printing(printings, set_code, number)
+        return PhysicalCard.for(best_printing, foil)
       end
     end
 
+    # Not tracking foils for that
     return UnknownCard.new(name)
+  end
+
+  def select_best_printing(printings, set_code, number)
+    if set_code
+      sets = @db.resolve_editions(set_code)
+      printings_in_set = printings.select{|c| sets.include?(c.set) }
+      printings = printings_in_set unless printings_in_set.empty?
+    end
+    if number
+      printings_with_number = printings.select{|c| c.number.downcase == number.downcase }
+      if printings_with_number.empty?
+        # Deal with 123a / 123b split cards etc.
+        printings_with_number = printings.select{|c| c.number.to_i == number.to_i }
+      end
+      printings = printings_with_number unless printings_with_number.empty?
+    end
+    printings.min_by(&:default_sort_index)
   end
 
   # These method seem to occur in every single class out there

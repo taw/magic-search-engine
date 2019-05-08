@@ -41,6 +41,12 @@ class DeckController < ApplicationController
 
     if params[:deck_upload]
       @deck = params[:deck_upload].read
+      if @deck.force_encoding('utf-8').valid_encoding?
+        @deck = @deck.force_encoding('utf-8').sub(/\ufeff/, "")
+      else
+        @deck = @deck.force_encoding("cp1252").encode("utf-8")
+      end
+      @deck = @deck.gsub(/\r\n|\r|\n/, "\n")
     else
       @deck = params[:deck]
     end
