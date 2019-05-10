@@ -7,6 +7,10 @@
   %button{type: "submit", class: "btn btn-outline-primary"}
     Open packs
 - if @cards.present?
+  = form_tag("/deck/visualize", method: :post, enforce_utf8: false) do
+    %input{type: "hidden", name: "deck", value: @deck}
+    %button.btn.btn-outline-primary
+      Preview as Deck
   .row.multicard_row
     - @cards.each_with_index do |card, i|
       .col-4.col-sm-3.card_picture_cell
