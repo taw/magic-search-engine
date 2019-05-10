@@ -19,8 +19,11 @@
       = link_to controller: "format", action: "index" do
         Formats
       &bullet;
+      = link_to controller: "sealed", action: "index" do
+        Sealed
+      &bullet;
       = link_to controller: "deck", action: "index" do
         Decks
       &bullet;
-      = link_to controller: "sealed", action: "index" do
-        Sealed
+      = link_to controller: "deck", action: "visualize" do
+        View Your Deck

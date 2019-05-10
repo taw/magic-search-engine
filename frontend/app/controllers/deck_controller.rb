@@ -44,7 +44,13 @@ class DeckController < ApplicationController
       if @deck.force_encoding('utf-8').valid_encoding?
         @deck = @deck.force_encoding('utf-8').sub(/\ufeff/, "")
       else
-        @deck = @deck.force_encoding("cp1252").encode("utf-8")
+        begin
+          @deck = @deck.force_encoding("cp1252").encode("utf-8")
+        rescue
+          # Binary data
+          @warnings = ["Can't parse uploaded deck."]
+          @deck = ""
+        end
       end
       @deck = @deck.gsub(/\r\n|\r|\n/, "\n")
     else

@@ -1,5 +1,11 @@
 %h1 Deck visualizer
 
+- if @warnings.present?
+  .row
+    .col-12.warnings
+      - @warnings.each do |warning|
+        .warning= warning
+
 - if @card_groups.present?
   .decklist
     .row
