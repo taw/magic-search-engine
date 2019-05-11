@@ -70,4 +70,22 @@ describe UserDeckParser do
       )
     end
   end
+
+  describe "cockatrice .cod xml" do
+    let(:filename) { "knights.cod" }
+    let(:output) { Pathname("#{__dir__}/decklists/out_knights.txt").read }
+    it do
+      parser.should be_valid
+      parser.deck.should eq(output)
+    end
+  end
+
+  describe "mtgo .dek xml" do
+    let(:filename) { "allies.dek" }
+    let(:output) { Pathname("#{__dir__}/decklists/out_allies.txt").read }
+    it do
+      parser.should be_valid
+      parser.deck.should eq(output)
+    end
+  end
 end
