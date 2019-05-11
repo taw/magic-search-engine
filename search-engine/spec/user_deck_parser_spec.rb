@@ -73,7 +73,7 @@ describe UserDeckParser do
 
   describe "cockatrice .cod xml" do
     let(:filename) { "knights.cod" }
-    let(:output) { Pathname("#{__dir__}/decklists/out_knights.txt").read }
+    let(:output) { Pathname("#{__dir__}/decklists/knights.out").read }
     it do
       parser.should be_valid
       parser.deck.should eq(output)
@@ -82,7 +82,7 @@ describe UserDeckParser do
 
   describe "mtgo .dek xml" do
     let(:filename) { "allies.dek" }
-    let(:output) { Pathname("#{__dir__}/decklists/out_allies.txt").read }
+    let(:output) { Pathname("#{__dir__}/decklists/allies.out").read }
     it do
       parser.should be_valid
       parser.deck.should eq(output)
@@ -92,6 +92,15 @@ describe UserDeckParser do
   describe "xmage .dck" do
     let(:filename) { "free_win_red.dck" }
     let(:output) { Pathname("#{__dir__}/decklists/free_win_red.dck").read.gsub("\r", "") }
+    it do
+      parser.should be_valid
+      parser.deck.should eq(output)
+    end
+  end
+
+  describe "mtgo .txt" do
+    let(:filename) { "allies2.txt" }
+    let(:output) { Pathname("#{__dir__}/decklists/allies2.out").read }
     it do
       parser.should be_valid
       parser.deck.should eq(output)
