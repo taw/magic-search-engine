@@ -1,7 +1,6 @@
 class UserDeckParser
   def initialize(data)
     @data = data
-    # XML
     try_parse_xml or try_parse_text
   end
 
@@ -53,6 +52,15 @@ class UserDeckParser
         @data = ""
       end
     end
-    @deck = @data.gsub(/\r\n|\r|\n/, "\n")
+    @data = @data.gsub(/\r\n|\r|\n/, "\n")
+    # MTGO text Format marks sideboard with empty line
+    # Every other text format ignores empty lines
+    if @data !~ /^\s*(sideboard|SB:)/i and @data.split(/\n\n/).size == 2
+      main, side = @data.split(/\n\n/, 2)
+      side = side.lines.map{|x| "SB: #{x}" }.join
+      @data = "#{main}\n\n#{side}"
+    end
+
+    @deck = @data
   end
 end
