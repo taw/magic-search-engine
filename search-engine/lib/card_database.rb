@@ -1,5 +1,6 @@
-require "pathname"
 require "json"
+require "nokogiri"
+require "pathname"
 require "set"
 require_relative "artist"
 require_relative "card"

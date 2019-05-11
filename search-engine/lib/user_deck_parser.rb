@@ -18,13 +18,26 @@ class UserDeckParser
   def try_parse_xml
     begin
       doc = Nokogiri::XML(@data)
-      return false unless doc.errors.empty?
+      return false unless doc.errors.empty? and !doc.root.nil?
     rescue
       return false
     end
 
-    puts "MAYBE ITS XML"
-    return false
+    case doc.root.name
+    when "cockatrice_deck"
+      main = doc.css("zone[name=main] card").map{|c| "#{c["number"]}x #{c["name"]}\n" }.join
+      side = doc.css("zone[name=side] card").map{|c| "SB: #{c["number"]}x #{c["name"]}\n" }.join
+      @deck = "#{main}\n#{side}"
+      return true
+    when "Deck"
+      side, main = doc.css("Cards").partition{|c| c["Sideboard"] == "true" }
+      main = main.map{|c| "#{c["Quantity"]}x #{c["Name"]}\n" }.join
+      side = side.map{|c| "SB: #{c["Quantity"]}x #{c["Name"]}\n" }.join
+      @deck = "#{main}\n#{side}"
+      return true
+    else
+      return false
+    end
   end
 
   def try_parse_text
