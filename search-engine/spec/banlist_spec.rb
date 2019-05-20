@@ -4,7 +4,11 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2019" do
-    # These were separate announcements
+    assert_banlist_changes "May 2019",
+      "pauper banned", "Gush",
+      "pauper banned", "Gitaxian Probe",
+      "pauper banned", "Daze"
+
     assert_banlist_changes "January 2019",
       "modern banned", "Krark-Clan Ironworks"
   end
