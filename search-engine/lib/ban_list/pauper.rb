@@ -45,4 +45,12 @@ BanList.for_format("pauper") do
     "http://magic.wizards.com/en/articles/archive/magic-online/pauper-banned-list-change-2016-11-03",
     "Peregrine Drake" => "banned",
   )
+
+  change(
+    "2019-05-24",
+    "https://magic.wizards.com/en/articles/archive/news/may-20-2019-banned-and-restricted-announcement",
+    "Gush" => "banned",
+    "Gitaxian Probe" => "banned",
+    "Daze" => "banned",
+  )
 end
