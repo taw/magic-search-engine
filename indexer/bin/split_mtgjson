@@ -3,6 +3,7 @@
 require "open-uri"
 require "pathname"
 require "json"
+require "pry"
 
 class SplitMtgjson
   SETS_DIR = Pathname(__dir__) + "../../data/sets"
@@ -18,11 +19,14 @@ class SplitMtgjson
       set["cards"].each do |card|
         # Delete this, as it changes a ton and messes up git history
         card.delete "printings"
+        # We want it eventually, but for now it changes too much
+        card.delete "prices"
         # Sort this for better diffs
         if card["foreignNames"]
           card["foreignNames"].sort_by!{|c| [c["language"], c["multiverseid"]]}
         end
       end
+      set["meta"].delete "pricesDate"
 
       (SETS_DIR + "#{set_code}.json").open("w") do |fh|
         fh.puts set.to_json
