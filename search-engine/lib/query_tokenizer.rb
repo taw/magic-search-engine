@@ -91,7 +91,7 @@ class QueryTokenizer
         op = s[1]
         op = "=" if op == ":"
         tokens << [:test, ConditionNameComparison.new(op, s[2] || s[3])]
-      elsif s.scan(/e\s*[:=]\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/(?:e|set)\s*[:=]\s*(?:"(.*?)"|(\w+))/i)
         sets = [s[1] || s[2]]
         sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|(\w+))/i)
         tokens << [:test, ConditionEdition.new(*sets)]
