@@ -1,5 +1,11 @@
 %h1 Deck visualizer
 
+- if @warnings.present?
+  .row
+    .col-12.warnings
+      - @warnings.each do |warning|
+        .warning= warning
+
 - if @card_groups.present?
   .decklist
     .row
@@ -32,5 +38,5 @@
     .custom-file
       %input#deck_upload.custom-file-input{type: "file", name: "deck_upload"}/
       %label.custom-file-label{for: "deck_upload"} Choose file
-  %button.btn.btn-primary{type: "submit"}
+  %button.btn.btn-outline-primary{type: "submit"}
     Submit

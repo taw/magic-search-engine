@@ -410,4 +410,9 @@ describe "Scryfall" do
     # and I have no idea what's that
     assert_search_equal "is:digital", "e:me1 OR e:me2 OR e:me3 OR e:me4 OR e:vma OR e:tpr"
   end
+
+  it "set: is alias of e:" do
+    assert_search_equal "set:nph", "e:nph"
+    assert_search_equal 'set:"Dragons of Tarkir"', 'e:"Dragons of Tarkir"'
+  end
 end

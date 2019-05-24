@@ -41,12 +41,13 @@ class DeckController < ApplicationController
 
     if params[:deck_upload]
       @deck = params[:deck_upload].read
-      if @deck.force_encoding('utf-8').valid_encoding?
-        @deck = @deck.force_encoding('utf-8').sub(/\ufeff/, "")
+      parser = UserDeckParser.new(@deck)
+      if parser.valid?
+        @deck = parser.deck
       else
-        @deck = @deck.force_encoding("cp1252").encode("utf-8")
+        @warnings = ["Can't parse uploaded deck."]
+        @deck = ""
       end
-      @deck = @deck.gsub(/\r\n|\r|\n/, "\n")
     else
       @deck = params[:deck]
     end
