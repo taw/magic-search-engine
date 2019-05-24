@@ -240,6 +240,9 @@ form.search {
     }
 
     transition: 0.5s ease;
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 
