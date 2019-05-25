@@ -19,10 +19,9 @@ class CardPrinting
     @watermark = data["watermark"]
     @number = data["number"]
     @multiverseid = data["multiverseid"]
-    @artist_name = data["artist"]
+    @artist_name = data["artist"].normalize_accents # TODO: move to indexer
     @flavor = data["flavor"] || -""
-    @flavor_normalized = @flavor.tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
-    @flavor_normalized = @flavor if @flavor_normalized == @flavor # Memory saving trick
+    @flavor_normalized = @flavor.normalize_accents
     @foiling = data["foiling"]
     @border = data["border"] || @set.border
     @frame = data["frame"] || @set.frame

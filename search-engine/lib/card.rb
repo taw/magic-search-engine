@@ -20,7 +20,7 @@ class Card
   def initialize(data)
     @printings = []
     @name = data["name"]
-    @stemmed_name = normalize_name(@name).downcase.gsub(/s\b/, "").tr("-", " ")
+    @stemmed_name = -@name.downcase.normalize_accents.gsub(/s\b/, "").tr("-", " ")
     @names = data["names"]
     @layout = data["layout"]
     @colors = data["colors"] || ""
@@ -28,7 +28,7 @@ class Card
     @text = (data["text"] || "")
     @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless @funny
     @text = -@text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
-    @text_normalized = -@text.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
+    @text_normalized = -@text.normalize_accents
     @augment = !!(@text =~ /augment \{/i)
     @mana_cost = data["manaCost"]
     @reserved = data["reserved"] || false
@@ -173,10 +173,6 @@ class Card
 
   def normalize_mana_symbol(sym)
     -sym.downcase.tr("/{}", "").chars.sort.join
-  end
-
-  def normalize_name(name)
-    -name.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
   end
 
   def hard_normalize(s)

@@ -110,7 +110,7 @@ class DeckParser
 
   # These method seem to occur in every single class out there
   def normalize_text(text)
-    text.downcase.gsub(/[Ææ]/, "ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-").strip
+    text.downcase.normalize_accents.strip
   end
 
   def normalize_name(name)
