@@ -21,6 +21,7 @@ class PatchFixCollectorNumbers < Patch
       cards.each do |card|
         unless (card["types"] & ["Plane", "Phenomenon", "Scheme"]).empty?
           card["number"] = (1000 + card["number"].to_i).to_s
+          card["oversized"] = true
         end
       end
     when "bfz", "ogw"

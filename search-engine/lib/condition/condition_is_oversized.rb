@@ -1,7 +1,6 @@
 class ConditionIsOversized < ConditionSimple
   def match?(card)
-    types = card.types
-    types.include?("plane") or types.include?("phenomenon") or types.include?("scheme")
+    card.oversized
   end
 
   def to_s
