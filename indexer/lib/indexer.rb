@@ -240,6 +240,7 @@ class Indexer
           "frame",
           "multiverseid",
           "number",
+          "oversized",
           "partner",
           "print_sheet",
           "rarity",

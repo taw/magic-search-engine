@@ -1,7 +1,7 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date
   attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border, :timeshifted
-  attr_reader :rarity_code, :print_sheet, :partner
+  attr_reader :rarity_code, :print_sheet, :partner, :oversized
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
@@ -32,6 +32,7 @@ class CardPrinting
     @exclude_from_boosters = data["exclude_from_boosters"]
     @print_sheet = data["print_sheet"]
     @partner = data["partner"]
+    @oversized = data["oversized"]
 
     # Performance cache
     @stemmed_name = @card.stemmed_name
