@@ -11,6 +11,10 @@ class ReportMtgjson4Differences
     @mtgjson = JSON.parse(Pathname("AllSets.json").read)
   end
 
+  def sets_base_path
+    Pathname(__dir__) + "../data/sets"
+  end
+
   memoize def mtgjson_set_codes
     @mtgjson.keys.map(&:downcase).to_set
   end
@@ -73,7 +77,6 @@ class ReportMtgjson4Differences
       end
     end
 
-
     # If these are all OK, it's probably fine
   end
 
@@ -92,6 +95,14 @@ class ReportMtgjson4Differences
     puts ""
     mtgjson_only_set_codes.sort.each do |code|
       set = @mtgjson[code.upcase]
+
+      # Token only sets are currently excluded from the index
+      # We might revisit this someday
+      if set["cards"].size == 0
+        set_path = sets_base_path + "#{code}.json"
+        next if set_path.exist?
+      end
+
       puts "#{code} - mtgjson only -  #{set["name"].inspect} - #{set["cards"].size} cards"
     end
   end
