@@ -43,7 +43,7 @@ class PatchReconcileForeignNames < Patch
           warn "Unknown language: #{e["language"]}"
           next
         end
-        foreign_name = e["name"].gsub("&nbsp;", " ").gsub("\u00a0", " ").sub(/ —\z/, "")
+        foreign_name = e["name"].gsub("&nbsp;", " ").gsub("\u00a0", " ").sub(/ —\z/, "").gsub("\ufeff", "")
         next if foreign_name == ""
         raw_data[language_code] ||= {}
         raw_data[language_code][foreign_name] ||= []
@@ -70,7 +70,7 @@ class PatchReconcileForeignNames < Patch
           }]
         elsif names.keys.any?{|n| n =~ /\(/}
           # Pointless A (A/B) for split cards
-          short_names = names.keys.map{|x| x.sub(/\s*\(.*\)\z/, "")}.uniq
+          short_names = names.keys.map{|x| x.sub(/\s*\(.*\)\z/, "")}.uniq - [card_name]
           raise unless short_names.size == 1
           [short_names[0]]
         else
