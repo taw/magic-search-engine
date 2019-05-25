@@ -261,7 +261,9 @@ class Indexer
     report_if_inconsistent(name, common_card_data, card)
 
     # Output in canonical form, to minimize diffs between mtgjson updates
-    result["printings"] = printing_data.sort_by{|sc,d| [set_order.fetch(sc), d["number"], d["multiverseid"]] }
+    result["printings"] = printing_data.sort_by{|sc,d|
+      [set_order.fetch(sc), d["number"], d["multiverseid"]]
+    }
     result
   end
 
