@@ -29,19 +29,52 @@
             "colors": [
                 "White"
             ],
-            "flavor": "Artorias preferred the companionship of his wolf Sif to that of a fellow knight.",
+            "flavor": "Artorias stayed close by his loyal companion, the grey wolf Sif.",
             "imageName": "a knight's protection",
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "A Knight's Protection",
             "number": "1",
-            "originalText": "Search your library for a Knight creature card and reveal it, put that card into your hand, then shuffle your library. You gain 4 life.",
+            "originalText": "Search your library for a Knight creature card, reveal it, put it card into your hand, then shuffle your library. You gain 4 life.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Search your library for a Knight creature card and reveal it, put that card into your hand, then shuffle your library. You gain 4 life.",
+            "text": "Search your library for a Knight creature card, reveal it, put it into your hand, then shuffle your library. You gain 4 life.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
+            ]
+        },
+        {
+            "artist": "Dark Souls Concept Art",
+            "cmc": 3,
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [
+                "White"
+            ],
+            "flavor": "\"...The Undead are led north, locked away to await the end of the world...\"",
+            "imageName": "arrest",
+            "layout": "normal",
+            "manaCost": "{2}{W}",
+            "name": "Arrest",
+            "number": "2",
+            "originalText": "Enchant creature\nEnchanted creature can't attack or block, and its activated abilities can't be activated.",
+            "originalType": "Enchantment \u2014 Aura",
+            "rarity": "Common",
+            "rulings": [
+                {
+                    "date": "2016-06-08",
+                    "text": "Activated abilities contain a colon. They're generally written \"[Cost]: [Effect].\" Some keywords are activated abilities and will have colons in their reminder text."
+                }
+            ],
+            "subtypes": [
+                "Aura"
+            ],
+            "text": "Enchant creature\nEnchanted creature can't attack or block, and its activated abilities can't be activated.",
+            "type": "Enchantment \u2014 Aura",
+            "types": [
+                "Enchantment"
             ]
         },
         {
@@ -58,7 +91,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Astora Elite",
-            "number": "2",
+            "number": "3",
             "originalText": "Astora Elite has first strike as long as its attacking.",
             "originalType": "Creature \u2014 Human Knight",
             "power": "3",
@@ -85,9 +118,9 @@
             ],
             "imageName": "astora outcast",
             "layout": "normal",
-            "manaCost": "{2}{W}{W}",
+            "manaCost": "{3}{W}",
             "name": "Astora Outcast",
-            "number": "3",
+            "number": "4",
             "originalText": "Whenever Astora Outcast attacks, tap target creature an opponent controls.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Knight. Hollow only as a sorcery.)",
             "originalType": "Creature \u2014 Human Knight",
             "power": "3",
@@ -104,33 +137,6 @@
             ]
         },
         {
-            "artist": "Dark Souls Concept Art",
-            "cmc": 4,
-            "colorIdentity": [
-                "W"
-            ],
-            "colors": [
-                "White"
-            ],
-            "flavor": "\"...The Undead are led north, locked away to await the end of the world...\"",
-            "imageName": "asylum imprisonment",
-            "layout": "normal",
-            "manaCost": "{3}{W}",
-            "name": "Asylum Imprisonment",
-            "number": "4",
-            "originalText": "Enchant creature\nEnchanted creature can't attack or block.\nIf enchanted creature would die, exile it instead.",
-            "originalType": "Enchantment \u2014 Aura",
-            "rarity": "Common",
-            "subtypes": [
-                "Aura"
-            ],
-            "text": "Enchant creature\nEnchanted creature can't attack or block.\nIf enchanted creature would die, exile it instead.",
-            "type": "Enchantment \u2014 Aura",
-            "types": [
-                "Enchantment"
-            ]
-        },
-        {
             "artist": "Alex Buggenum",
             "cmc": 4,
             "colorIdentity": [
@@ -139,13 +145,13 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"Regrettably, no one can access the holy parish north of here. The place has become infested with Hollows.\"\n\u2014Petrus, Thorolund Cleric",
+            "flavor": "\"Regrettably, the holy parish north of here has become infested with Hollows.\"\n\u2014Petrus, Thorolund Cleric",
             "imageName": "balder knight",
             "layout": "normal",
             "manaCost": "{3}{W}",
             "name": "Balder Knight",
             "number": "5",
-            "originalText": "Balder Knight gets +2/+0 as long as you control another Zombie.",
+            "originalText": "When Balder Knight enters the battlefield, put a +1/+1 counter on another target Zombie you control.",
             "originalType": "Creature \u2014 Zombie Knight",
             "power": "2",
             "rarity": "Common",
@@ -153,7 +159,7 @@
                 "Zombie",
                 "Knight"
             ],
-            "text": "Balder Knight gets +2/+0 as long as you control another Zombie.",
+            "text": "When Balder Knight enters the battlefield, put a +1/+1 counter on another target Zombie you control.",
             "toughness": "4",
             "type": "Creature \u2014 Zombie Knight",
             "types": [
@@ -221,7 +227,7 @@
         },
         {
             "artist": "Dark Souls Screenshot",
-            "cmc": 3,
+            "cmc": 4,
             "colorIdentity": [
                 "W"
             ],
@@ -231,7 +237,7 @@
             "flavor": "\"And so you are chosen, to succeed the great Lord Gwyn and all the others.\"",
             "imageName": "chosen by the lords",
             "layout": "normal",
-            "manaCost": "{2}{W}",
+            "manaCost": "{2}{W}{W}",
             "name": "Chosen by the Lords",
             "number": "8",
             "originalText": "Choose target creature you control. Tap all other creatures. Put a +1/+1 counter on the chosen creature for each creature tapped this way.",
@@ -281,6 +287,34 @@
             ]
         },
         {
+            "artist": "David Demaret",
+            "cmc": 5,
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [
+                "White"
+            ],
+            "imageName": "darkbreaker angel",
+            "layout": "normal",
+            "manaCost": "{3}{W}{W}",
+            "name": "Darkbreaker Angel",
+            "number": "10",
+            "originalText": "Flying, vigilance, lifelink\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Angel. Hollow only as a sorcery.)",
+            "originalType": "Creature \u2014 Angel",
+            "power": "5",
+            "rarity": "Mythic Rare",
+            "subtypes": [
+                "Angel"
+            ],
+            "text": "Flying, vigilance, lifelink\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Angel. Hollow only as a sorcery.)",
+            "toughness": "4",
+            "type": "Creature \u2014 Angel",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "artist": "Ulises Serrano",
             "cmc": 3,
             "colorIdentity": [
@@ -294,44 +328,20 @@
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Darkmoon Deterrence",
-            "number": "10",
+            "number": "11",
             "originalText": "Destroy target attacking or blocking creature. Scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "originalType": "Instant",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2019-05-25",
+                    "text": "If the creature is no longer a legal target as Darkmoon Deterrence starts to resolve, none of its effects happen. You won't scry."
+                }
+            ],
             "text": "Destroy target attacking or blocking creature. Scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
             "type": "Instant",
             "types": [
                 "Instant"
-            ]
-        },
-        {
-            "artist": "El Jay",
-            "cmc": 4,
-            "colorIdentity": [
-                "W"
-            ],
-            "colors": [
-                "White"
-            ],
-            "flavor": "\"You learn to rely on others when you've fended off as many Hollow attacks as I have.\"",
-            "imageName": "elite captain",
-            "layout": "normal",
-            "manaCost": "{2}{W}{W}",
-            "name": "Elite Captain",
-            "number": "11",
-            "originalText": "When Elite Captain enters the battlefield, creatures you control get +1/+1 until end of turn.",
-            "originalType": "Creature \u2014 Human Knight",
-            "power": "3",
-            "rarity": "Common",
-            "subtypes": [
-                "Human",
-                "Knight"
-            ],
-            "text": "When Elite Captain enters the battlefield, creatures you control get +1/+1 until end of turn.",
-            "toughness": "3",
-            "type": "Creature \u2014 Human Knight",
-            "types": [
-                "Creature"
             ]
         },
         {
@@ -407,6 +417,36 @@
             "watermark": "Planeswalker"
         },
         {
+            "artist": "exileden",
+            "cmc": 4,
+            "colorIdentity": [
+                "W"
+            ],
+            "colors": [
+                "White"
+            ],
+            "flavor": "\"I pushed her too hard. Though we escaped danger, her body failed from the exertion. Her mind went soon after.\"\n\u2014Leon, Knight of Astora",
+            "imageName": "fallen steed",
+            "layout": "normal",
+            "manaCost": "{3}{W}",
+            "name": "Fallen Steed",
+            "number": "15",
+            "originalText": "When Fallen Steed enters the battlefield, create a 2/2 white Knight creature token.",
+            "originalType": "Creature \u2014 Zombie Horse",
+            "power": "2",
+            "rarity": "Common",
+            "subtypes": [
+                "Zombie",
+                "Horse"
+            ],
+            "text": "When Fallen Steed enters the battlefield, create a 2/2 white Knight creature token.",
+            "toughness": "2",
+            "type": "Creature \u2014 Zombie Horse",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "artist": "pixivid3590819",
             "cmc": 1,
             "colorIdentity": [
@@ -420,7 +460,7 @@
             "layout": "normal",
             "manaCost": "{W}",
             "name": "Gargoyle Helm",
-            "number": "15",
+            "number": "16",
             "originalText": "Equipped creature gets +1/+1 and has vigilance.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Common",
@@ -435,7 +475,7 @@
         },
         {
             "artist": "YMD",
-            "cmc": 7,
+            "cmc": 6,
             "colorIdentity": [
                 "W"
             ],
@@ -445,26 +485,22 @@
             "flavor": "\"You shall take Gwyn's place, to renew the First Flame and reverse the Undead curse.\"",
             "imageName": "gwyn's defeat",
             "layout": "normal",
-            "manaCost": "{5}{W}{W}",
+            "manaCost": "{4}{W}{W}",
             "name": "Gwyn's Defeat",
-            "number": "16",
-            "originalText": "Exile target attacking or blocking creature. If your life total is less than your starting life total, your life total becomes equal to your starting life total.",
-            "originalType": "Instant",
+            "number": "17",
+            "originalText": "Your life total becomes your starting life total. Shuffle all creature cards you own in exile into your library.",
+            "originalType": "Sorcery",
             "rarity": "Rare",
             "rulings": [
                 {
                     "date": "2018-12-16",
-                    "text": "For your life total to become equal to your starting life total, you gain life equal to the difference. If you can't gain life, that part of the spell won't have any effect."
-                },
-                {
-                    "date": "2018-12-16",
-                    "text": "If the creature becomes an illegal target (for example because it's removed from combat in response to Gwyn's Defeat), Gwyn's Defeat won't resolve. You won't gain any life."
+                    "text": "For your life total to become equal to your starting life total, you gain or lose life equal to the difference as appropriate. If you're below your starting life total but can't gain life, that part of the spell won't have any effect. The same is true if you're above your starting life total but can't lose life."
                 }
             ],
-            "text": "Exile target attacking or blocking creature. If your life total is less than your starting life total, your life total becomes equal to your starting life total.",
-            "type": "Instant",
+            "text": "Your life total becomes equal to your starting life total. Shuffle all creature cards you own in exile into your library.",
+            "type": "Sorcery",
             "types": [
-                "Instant"
+                "Sorcery"
             ],
             "watermark": "Planeswalker"
         },
@@ -480,19 +516,19 @@
             "flavor": "When Gwyn left to link the First Flame, his knights stayed behind to guard the gods' city.",
             "imageName": "gwyn's silver knight",
             "layout": "normal",
-            "manaCost": "{3}{W}",
+            "manaCost": "{2}{W}{W}",
             "name": "Gwyn's Silver Knight",
-            "number": "17",
-            "originalText": "Vigilance\nGwyn's Silver Knight gets +1/+1 for each creature you control.",
+            "number": "18",
+            "originalText": "Vigilance\nHexproof from black (This creature can't be the target of black spells or abilities your opponents control.)",
             "originalType": "Creature \u2014 Human Knight",
-            "power": "0",
+            "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
                 "Human",
                 "Knight"
             ],
-            "text": "Vigilance\nGwyn's Silver Knight gets +1/+1 for each creature you control.",
-            "toughness": "0",
+            "text": "Vigilance\nHexproof from black (This creature can't be the target of black spells or abilities your opponents control.)",
+            "toughness": "4",
             "type": "Creature \u2014 Human Knight",
             "types": [
                 "Creature"
@@ -512,7 +548,7 @@
             "layout": "normal",
             "manaCost": "{W}",
             "name": "Gwynevere's Benediction",
-            "number": "18",
+            "number": "19",
             "originalText": "Enchant creature\nEnchanted creature gets +1/+1 for each permanent attached to it and has lifelink.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
@@ -527,21 +563,22 @@
         },
         {
             "artist": "Pablo Mendoza",
-            "cmc": 5,
+            "cmc": 3,
             "colorIdentity": [
                 "W"
             ],
             "colors": [
                 "White"
             ],
+            "flavor": "Clad in stone to stand firm against dragon-breath.",
             "imageName": "havel, the rock",
             "layout": "normal",
-            "manaCost": "{3}{W}{W}",
+            "manaCost": "{1}{W}{W}",
             "name": "Havel, the Rock",
-            "number": "19",
-            "originalText": "When Havel, the Rock enters the battlefield, attach any number of Equipment you control to it.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Knight. Hollow only as a sorcery.)",
+            "number": "20",
+            "originalText": "Havel, the Rock gets +1/+1 for each equipment you control.\nEquip costs you pay cost {0}.",
             "originalType": "Legendary Creature \u2014 Human Knight",
-            "power": "5",
+            "power": "3",
             "rarity": "Mythic Rare",
             "subtypes": [
                 "Human",
@@ -550,8 +587,8 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "When Havel, the Rock enters the battlefield, attach any number of Equipment you control to it.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Knight. Hollow only as a sorcery.)",
-            "toughness": "5",
+            "text": "Havel, the Rock gets +1/+1 for each equipment you control.\nEquip costs you pay cost {0}.",
+            "toughness": "3",
             "type": "Legendary Creature \u2014 Human Knight",
             "types": [
                 "Creature"
@@ -566,19 +603,19 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"In this dangerous place, you rush in like a naked babe and you'll be skinned alive. Best armor up.\"",
+            "flavor": "\"In this dangerous place, you rush in like a naked babe and you'll be skinned alive.\"",
             "imageName": "heavy iron armor",
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Heavy Iron Armor",
-            "number": "20",
-            "originalText": "Double equipped creature's toughness.\nEquip {2}",
+            "number": "21",
+            "originalText": "If a source would deal damage to equipped creature, prevent half that damage, rounded up.\nEquip {2}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Uncommon",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "Double equipped creature's toughness.\nEquip {2}",
+            "text": "If a source would deal damage to equipped creature, prevent half that damage, rounded up.\nEquip {2}",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -593,12 +630,12 @@
             "colors": [
                 "White"
             ],
-            "flavor": "A chance few strong-willed Undead maintain a part of themselves when they inevitably rise as a Hollow.",
+            "flavor": "A chance few strong-willed Undead maintain a small part of themselves when they finally rise as a Hollow.",
             "imageName": "hollowed hero",
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Hollowed Hero",
-            "number": "21",
+            "number": "22",
             "originalText": "{2}{W}, {T}: Tap target creature.",
             "originalType": "Creature \u2014 Zombie Soldier",
             "power": "1",
@@ -628,7 +665,7 @@
             "layout": "normal",
             "manaCost": "{W}",
             "name": "Imprisoned Hollow",
-            "number": "22",
+            "number": "23",
             "originalType": "Creature \u2014 Zombie Soldier",
             "power": "0",
             "rarity": "Common",
@@ -657,7 +694,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Injured Paladin",
-            "number": "23",
+            "number": "24",
             "originalText": "When Injured Paladin dies, you gain 2 life.",
             "originalType": "Creature \u2014 Human Knight",
             "power": "2",
@@ -687,7 +724,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Jolly Cooperation",
-            "number": "24",
+            "number": "25",
             "originalText": "Two target creatures each gain double strike until end of turn.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -706,12 +743,12 @@
             "colors": [
                 "White"
             ],
-            "flavor": "In fear of the coming darkness, Gwyn sacrificed himself to the First Flame, to maintain the world that he had built.",
+            "flavor": "In fear of the coming darkness, Gwyn sacrificed himself to the First Flame, to maintain the kingdom that he had built.",
             "imageName": "last hope",
             "layout": "normal",
             "manaCost": "{2}{W}{W}",
             "name": "Last Hope",
-            "number": "25",
+            "number": "26",
             "originalText": "As an additional cost to cast this spell, sacrifice a creature.\nDestroy all creatures.",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -735,7 +772,7 @@
             "layout": "normal",
             "manaCost": "{3}{W}",
             "name": "Overcome the Odds",
-            "number": "26",
+            "number": "27",
             "originalText": "Destroy target creature with power 4 or greater. Put a +1/+1 counter on up to one target creature you control.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -758,10 +795,10 @@
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Paladin of Holy Relics",
-            "number": "27",
+            "number": "28",
             "originalText": "When Paladin of Holy Relics enters the battlefield, reveal the top five cards of your library. Put up to one Equipment card from among them into your hand, and the rest on the bottom of your library in any order.",
             "originalType": "Creature \u2014 Human Knight",
-            "power": "2",
+            "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
                 "Human",
@@ -788,7 +825,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Pilgrim Phantom",
-            "number": "28",
+            "number": "29",
             "originalText": "Flying, first strike",
             "originalType": "Creature \u2014 Spirit Knight",
             "power": "1",
@@ -813,20 +850,20 @@
             "colors": [
                 "White"
             ],
-            "flavor": "Oolacile's only princess was hidden away in a sanctuary, protected by the strongest guardians the city could muster.",
-            "imageName": "sanctuary guardian",
+            "flavor": "As the abyss encroahced, Oolacile's princess was hidden away, protected by the strongest guardians the city could muster.",
+            "imageName": "sanctuary manticore",
             "layout": "normal",
             "manaCost": "{3}{W}{W}",
-            "name": "Sanctuary Guardian",
-            "number": "29",
-            "originalText": "Flying\nWhenever Sanctuary Guardian attacks, you may tap target creature.",
+            "name": "Sanctuary Manticore",
+            "number": "30",
+            "originalText": "Flying\nWhen Sanctuary Manticore enters the battlefield, tap up to two target creatures.",
             "originalType": "Creature \u2014 Manticore",
             "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
                 "Manticore"
             ],
-            "text": "Flying\nWhenever Sanctuary Guardian attacks, you may tap target creature.",
+            "text": "Flying\nWhen Sanctuary Manticore enters the battlefield, tap up to two target creatures.",
             "toughness": "3",
             "type": "Creature \u2014 Manticore",
             "types": [
@@ -846,7 +883,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Seeker of the Cure",
-            "number": "30",
+            "number": "31",
             "originalText": "When Seeker of the Cure enters the battlefield, you gain 3 life.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Knight. Hollow only as a sorcery.)",
             "originalType": "Creature \u2014 Human Knight",
             "power": "3",
@@ -875,7 +912,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Solaire's Talisman",
-            "number": "31",
+            "number": "32",
             "originalText": "Equipped creature gets +2/+0.\nWhenever you cast a spell, equipped creature gains indestructible until end of turn.\nEquip {1}",
             "originalType": "Legendary Artifact \u2014 Equipment",
             "rarity": "Rare",
@@ -905,7 +942,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Soothing Sunlight",
-            "number": "32",
+            "number": "33",
             "originalText": "Enchant creature\nWhen Soothing Sunlight enters the battlefield, you gain 2 life.\nEnchanted creature gets +2/+2.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Common",
@@ -932,7 +969,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Sunlight Phantom",
-            "number": "33",
+            "number": "34",
             "originalText": "Flying\nWhenever Sunlight Phantom attacks, another target attacking creature gets +1/+1 until end of turn.",
             "originalType": "Creature \u2014 Spirit Warrior",
             "power": "1",
@@ -961,8 +998,8 @@
             "layout": "normal",
             "manaCost": "{2}{W}{W}",
             "name": "Tarkus, the Iron Knight",
-            "number": "34",
-            "originalText": "Vigilance\nTarkus, the Iron Knight can block an additional creature each combat.\nWhenever Tarkus attacks, other creatures you control gain indestructible until end of turn.",
+            "number": "35",
+            "originalText": "Vigilance\nTarkus, the Iron Knight can block any number of creatures each combat.\nWhenever Tarkus attacks, other creatures you control gain indestructible until end of turn.",
             "originalType": "Legendary Creature \u2014 Human Knight",
             "power": "4",
             "rarity": "Rare",
@@ -973,7 +1010,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Vigilance\nTarkus, the Iron Knight can block an additional creature each combat.\nWhenever Tarkus attacks, other creatures you control gain indestructible until end of turn.",
+            "text": "Vigilance\nTarkus, the Iron Knight can block any number of creatures.\nWhenever Tarkus attacks, other creatures you control gain indestructible until end of turn.",
             "toughness": "4",
             "type": "Legendary Creature \u2014 Human Knight",
             "types": [
@@ -993,8 +1030,8 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Thorolund Healer",
-            "number": "35",
-            "originalText": "Sacrifice Thorolund Healer: Creatures you control gain indestructible until end of turn.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric. Hollow only as a sorcery.)",
+            "number": "36",
+            "originalText": "Vigilance\n{T}, Sacrifice Thorolund Healer: Creatures you control gain indestructible until end of turn.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric. Hollow only as a sorcery.)",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "2",
             "rarity": "Rare",
@@ -1002,7 +1039,7 @@
                 "Human",
                 "Cleric"
             ],
-            "text": "Sacrifice Thorolund Healer: Creatures you control gain indestructible until end of turn.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric. Hollow only as a sorcery.)",
+            "text": "Vigilance\n{T}, Sacrifice Thorolund Healer: Creatures you control gain indestructible until end of turn.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric. Hollow only as a sorcery.)",
             "toughness": "2",
             "type": "Creature \u2014 Human Cleric",
             "types": [
@@ -1023,17 +1060,17 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Undead-Burg Guard",
-            "number": "36",
-            "originalText": "When Undead-Burg Guard enters the battlefield, if you control another Zombie, exile target creature an opponent controls until Undead-Burg Guard leaves the battlefield.",
+            "number": "37",
+            "originalText": "Undead-Burg Guard gets +1/+1 for each Zombie you control.",
             "originalType": "Creature \u2014 Zombie Soldier",
-            "power": "2",
+            "power": "0",
             "rarity": "Uncommon",
             "subtypes": [
                 "Zombie",
                 "Soldier"
             ],
-            "text": "When Undead-Burg Guard enters the battlefield, if you control another Zombie, exile target creature an opponent controls until Undead-Burg Guard leaves the battlefield.",
-            "toughness": "2",
+            "text": "Undead-Burg Guard gets +1/+1 for each Zombie you control.",
+            "toughness": "0",
             "type": "Creature \u2014 Zombie Soldier",
             "types": [
                 "Creature"
@@ -1053,7 +1090,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Velka's Justice",
-            "number": "37",
+            "number": "38",
             "originalText": "Velka's Justice deals 3 damage to target attacking or blocking creature.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -1076,7 +1113,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}",
             "name": "Velka's Missionary",
-            "number": "38",
+            "number": "39",
             "originalText": "When Velka's Missionary enters the battlefield, create a 1/1 white Zombie Soldier creature token.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Knight. Hollow only as a sorcery.)",
             "originalType": "Creature \u2014 Human Knight",
             "power": "2",
@@ -1094,7 +1131,7 @@
         },
         {
             "artist": "sanekyle",
-            "cmc": 3,
+            "cmc": 4,
             "colorIdentity": [
                 "W"
             ],
@@ -1104,16 +1141,16 @@
             "flavor": "\"Have you met that sunbathing Solaire? He's a bit of a fool, but he happens to be an awfully strong fool. If you keep him on your side, you'll be an unbreakable team!\"\n\u2014Trusty Patches",
             "imageName": "victory in numbers",
             "layout": "normal",
-            "manaCost": "{2}{W}",
+            "manaCost": "{3}{W}",
             "name": "Victory In Numbers",
-            "number": "39",
+            "number": "40",
             "originalText": "Creatures you control get +2/+1 until end of turn.",
-            "originalType": "Sorcery",
+            "originalType": "Instant",
             "rarity": "Common",
             "text": "Creatures you control get +2/+1 until end of turn.",
-            "type": "Sorcery",
+            "type": "Instant",
             "types": [
-                "Sorcery"
+                "Instant"
             ]
         },
         {
@@ -1130,7 +1167,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}{W}",
             "name": "Wondrous Incandescence",
-            "number": "40",
+            "number": "41",
             "originalText": "Whenever Wondrous Incandescence or a creature enters the battlefield under your control, creatures you control get +1/+1 until end of turn.",
             "originalType": "Enchantment",
             "rarity": "Rare",
@@ -1154,7 +1191,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}{U}",
             "name": "Absorbed In Thought",
-            "number": "41",
+            "number": "42",
             "originalText": "Draw three cards, then discard a card.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -1177,7 +1214,7 @@
             "layout": "normal",
             "manaCost": "{4}{U}",
             "name": "Banish to the Painting",
-            "number": "42",
+            "number": "43",
             "originalText": "Put target nonland permanent on top of its owner's library.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -1196,13 +1233,12 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"There is so much knowledge trapped here in Lordran. I will absorb it all, and share it with the world.\"",
             "imageName": "big hat logan",
             "layout": "normal",
-            "manaCost": "{2}{U}{U}",
+            "manaCost": "{3}{U}",
             "name": "Big Hat Logan",
-            "number": "43",
-            "originalText": "If you would put a journeyed card into your hand from exile, instead put up to three journeyed cards you own from exile into your hand.",
+            "number": "44",
+            "originalText": "When Big Hat Logan enters the battlefield, you may exile target instant or sorcery card from your graveyard. If you do, search your library for an instant or sorcery card with converted mana cost equal to 1 plus the exiled card's converted mana cost, reveal it, put it into your hand, then shuffle your library.",
             "originalType": "Legendary Creature \u2014 Human Wizard",
             "power": "3",
             "rarity": "Rare",
@@ -1213,7 +1249,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "If you would put a journeyed card into your hand from exile, instead put up to three journeyed cards you own from exile into your hand.",
+            "text": "When Big Hat Logan enters the battlefield, you may exile target instant or sorcery card from your graveyard. If you do, search your library for an instant or sorcery card with converted mana cost equal to 1 plus the exiled card's converted mana cost, reveal it, put it into your hand, then shuffle your library.",
             "toughness": "3",
             "type": "Legendary Creature \u2014 Human Wizard",
             "types": [
@@ -1232,17 +1268,17 @@
             "flavor": "\"Astounding! Every part of the cave was fashioned from glistening crystal. The walls, the floor, even the residents themselves.\"\n\u2014Notes of Big Hat Logan",
             "imageName": "blue crystal golem",
             "layout": "normal",
-            "manaCost": "{4}{U}{U}",
+            "manaCost": "{5}{U}",
             "name": "Blue Crystal Golem",
-            "number": "44",
-            "originalText": "Blue Crystal Golem can't attack unless there are five or more cards in your graveyard.",
+            "number": "45",
+            "originalText": "Blue Crystal Golem can't attack unless there are four or more cards in your graveyard.",
             "originalType": "Artifact Creature \u2014 Golem",
             "power": "6",
             "rarity": "Common",
             "subtypes": [
                 "Golem"
             ],
-            "text": "Blue Crystal Golem can't attack unless there are five or more cards in your graveyard.",
+            "text": "Blue Crystal Golem can't attack unless there are four or more cards in your graveyard.",
             "toughness": "6",
             "type": "Artifact Creature \u2014 Golem",
             "types": [
@@ -1264,7 +1300,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}{U}",
             "name": "Cancel",
-            "number": "45",
+            "number": "46",
             "originalText": "Counter target spell.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -1288,7 +1324,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Ciaran's Obsession",
-            "number": "46",
+            "number": "47",
             "originalText": "Look at the top four cards of your library. Put one of them into your hand and the rest into your graveyard.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -1311,7 +1347,7 @@
             "layout": "normal",
             "manaCost": "{U}",
             "name": "Crossing the Fog",
-            "number": "47",
+            "number": "48",
             "originalText": "Journey three times. (To journey, exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -1340,7 +1376,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Crystalline Armor",
-            "number": "48",
+            "number": "49",
             "originalText": "Equipped creature gets +4/+4.\nWhen equipped creature becomes the target of a spell, sacrifice Crystalline Armor.\nEquip {3}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Uncommon",
@@ -1367,7 +1403,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Crystallized Soldier",
-            "number": "49",
+            "number": "50",
             "originalType": "Creature \u2014 Zombie Soldier",
             "power": "2",
             "rarity": "Common",
@@ -1394,7 +1430,7 @@
             "layout": "normal",
             "manaCost": "{U}",
             "name": "Darkmoon Bow",
-            "number": "50",
+            "number": "51",
             "originalText": "Equipped creature gets +1/+0.\nWhenever equipped creature deals combat damage to a player, when that player casts their first spell on their next turn, counter that spell unless they pay {1}.\nEquip {1}",
             "originalType": "Legendary Artifact \u2014 Equipment",
             "rarity": "Rare",
@@ -1412,7 +1448,7 @@
         },
         {
             "artist": "Rirth",
-            "cmc": 5,
+            "cmc": 6,
             "colorIdentity": [
                 "U"
             ],
@@ -1422,13 +1458,13 @@
             "flavor": "In the absence of the other gods, it is Gwyndolin who now pulls the strings in Anor Londo.",
             "imageName": "darkmoon favor",
             "layout": "normal",
-            "manaCost": "{3}{U}{U}",
+            "manaCost": "{4}{U}{U}",
             "name": "Darkmoon Favor",
-            "number": "51",
-            "originalText": "Scry 4, then draw two cards.",
+            "number": "52",
+            "originalText": "Scry 3, then draw three cards. (To scry 3, look at the top three cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Scry 4, then draw two cards.",
+            "text": "Scry 3, then draw three cards. (To scry 3, look at the top three cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -1443,12 +1479,12 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"There's no hiding from the gods' justice.\"",
+            "flavor": "Gwyndolin, leader of the Darkmoon Knights, dispatches phantoms to defend those traveling the Undead Pilgrimage.",
             "imageName": "darkmoon spirit",
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Darkmoon Spirit",
-            "number": "52",
+            "number": "53",
             "originalText": "Flying",
             "originalType": "Creature \u2014 Spirit Knight",
             "power": "2",
@@ -1477,18 +1513,19 @@
             "layout": "normal",
             "manaCost": "{3}{U}",
             "name": "Darkroot Explorer",
-            "number": "53",
+            "number": "54",
             "originalText": "When Darkroot Explorer enters the battlefield, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
-            "originalType": "Creature \u2014 Human Scout",
+            "originalType": "Creature \u2014 Human Knight Scout",
             "power": "3",
             "rarity": "Common",
             "subtypes": [
                 "Human",
+                "Knight",
                 "Scout"
             ],
             "text": "When Darkroot Explorer enters the battlefield, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "toughness": "3",
-            "type": "Creature \u2014 Human Scout",
+            "type": "Creature \u2014 Human Knight Scout",
             "types": [
                 "Creature"
             ]
@@ -1507,7 +1544,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Darkroot Sorcerer",
-            "number": "54",
+            "number": "55",
             "originalText": "Flash (You may cast this spell any time you could cast an instant.)",
             "originalType": "Creature \u2014 Human Wizard",
             "power": "2",
@@ -1536,7 +1573,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Dour Vagrant",
-            "number": "55",
+            "number": "56",
             "originalText": "When Dour Vagrant enters the battlefield, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Rogue. Hollow only as a sorcery.)",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "2",
@@ -1566,14 +1603,14 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Essence Scatter",
-            "number": "56",
+            "number": "57",
             "originalText": "Counter target creature spell.",
             "originalType": "Instant",
             "rarity": "Common",
             "rulings": [
                 {
                     "date": "2009-10-01",
-                    "text": "A \"creature spell\" is any spell with the type creature, even if it has other types such as artifact or enchantment. Older cards of type summon are also creature spells."
+                    "text": "A \u201ccreature spell\u201d is any spell with the type creature, even if it has other types such as artifact or enchantment. Older cards of type summon are also creature spells."
                 }
             ],
             "text": "Counter target creature spell.",
@@ -1595,7 +1632,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}{U}",
             "name": "Evanescent Knight",
-            "number": "57",
+            "number": "58",
             "originalText": "When Evanescent Knight enters the battlefield, exile another target permanent. Return that card to the battlefield under its owner's control at the beginning of the next end step.",
             "originalType": "Creature \u2014 Human Knight",
             "power": "3",
@@ -1612,6 +1649,30 @@
             ]
         },
         {
+            "artist": "nele_diel",
+            "cmc": 2,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "flavor": "The Undead rely on the bonfires that trace the pilgrimage path as places for rest and recuperation.",
+            "imageName": "go cold",
+            "layout": "normal",
+            "manaCost": "{1}{U}",
+            "name": "Go Cold",
+            "number": "59",
+            "originalText": "Counter all activated or triggered abilities. (Mana abilities can't be countered.)",
+            "originalType": "Instant",
+            "rarity": "Uncommon",
+            "text": "Counter all abilities. (Mana abilities can't be countered.)",
+            "type": "Instant",
+            "types": [
+                "Instant"
+            ]
+        },
+        {
             "artist": "theocrata",
             "cmc": 1,
             "colorIdentity": [
@@ -1625,7 +1686,7 @@
             "layout": "normal",
             "manaCost": "{U}",
             "name": "Gwyndolin's Rebuke",
-            "number": "58",
+            "number": "60",
             "originalText": "Counter target spell that targets a spell or permanent you control.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -1633,29 +1694,6 @@
             "type": "Instant",
             "types": [
                 "Instant"
-            ]
-        },
-        {
-            "artist": "tacosauceninja",
-            "cmc": 2,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [
-                "Blue"
-            ],
-            "imageName": "into seath's domain",
-            "layout": "normal",
-            "manaCost": "{1}{U}",
-            "name": "Into Seath's Domain",
-            "number": "59",
-            "originalText": "Whenever a creature you control attacks alone, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)\n{2}{U}, Discard a card: Tap target creature an opponent controls. It doesn't untap during its controller's next untap step.",
-            "originalType": "Enchantment",
-            "rarity": "Uncommon",
-            "text": "Whenever a creature you control attacks alone, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)\n{2}{U}, Discard a card: Tap target creature an opponent controls. It doesn't untap during its controller's next untap step.",
-            "type": "Enchantment",
-            "types": [
-                "Enchantment"
             ]
         },
         {
@@ -1672,7 +1710,7 @@
             "layout": "normal",
             "manaCost": "{4}{U}{U}",
             "name": "Logan's Isolation",
-            "number": "60",
+            "number": "61",
             "originalText": "Enchant creature\nYou control enchanted creature.\nWhen enchanted creature dies, draw two cards.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Rare",
@@ -1687,20 +1725,19 @@
         },
         {
             "artist": "Rulin Liu",
-            "cmc": 2,
+            "cmc": 3,
             "colorIdentity": [
                 "U"
             ],
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"Demons, bandits, hordes of hollows... all worth facing in the pursuit of ultimate truth.\"",
             "imageName": "lost scholar",
             "layout": "normal",
-            "manaCost": "{1}{U}",
+            "manaCost": "{2}{U}",
             "name": "Lost Scholar",
-            "number": "61",
-            "originalText": "Whenever you journey for the first time each turn, journey an additional time.",
+            "number": "62",
+            "originalText": "Whenever a creature you control attacks alone, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Creature \u2014 Human Wizard",
             "power": "2",
             "rarity": "Uncommon",
@@ -1708,8 +1745,8 @@
                 "Human",
                 "Wizard"
             ],
-            "text": "Whenever you journey for the first time each turn, journey an additional time.",
-            "toughness": "1",
+            "text": "Whenever a creature you control attacks alone, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
+            "toughness": "3",
             "type": "Creature \u2014 Human Wizard",
             "types": [
                 "Creature"
@@ -1729,7 +1766,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}{U}",
             "name": "Masked Illusion",
-            "number": "62",
+            "number": "63",
             "originalText": "Flying\nWhen Masked Illusion becomes the target of a spell, sacrifice it.",
             "originalType": "Creature \u2014 Illusion Wizard",
             "power": "3",
@@ -1758,7 +1795,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}{U}",
             "name": "Moonlight Butterfly",
-            "number": "63",
+            "number": "64",
             "originalText": "Flash\nFlying\nWhen Moonlight Butterfly enters the battlefield, copy target instant or sorcery spell. You may choose new targets for the copy.",
             "originalType": "Creature \u2014 Insect",
             "power": "4",
@@ -1775,25 +1812,26 @@
         },
         {
             "artist": "legendary_memory",
-            "cmc": 4,
+            "cmc": 2,
             "colorIdentity": [
                 "U"
             ],
             "colors": [
                 "Blue"
             ],
+            "flavor": "The fate of the future is just too much to bear.",
             "imageName": "overwhelming burden",
             "layout": "normal",
-            "manaCost": "{3}{U}",
+            "manaCost": "{1}{U}",
             "name": "Overwhelming Burden",
-            "number": "64",
-            "originalText": "Flash (You may cast this spell any time you could cast an instant.)\nEnchant creature\nEnchanted creature doesn't untap during its controller's untap step.",
+            "number": "65",
+            "originalText": "Enchant creature\nEnchanted creature doesn't untap during its controller's untap step.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Common",
             "subtypes": [
                 "Aura"
             ],
-            "text": "Flash (You may cast this spell any time you could cast an instant.)\nEnchant creature\nEnchanted creature doesn't untap during its controller's untap step.",
+            "text": "Enchant creature\nEnchanted creature doesn't untap during its controller's untap step.",
             "type": "Enchantment \u2014 Aura",
             "types": [
                 "Enchantment"
@@ -1813,7 +1851,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Pale Dragonoid",
-            "number": "65",
+            "number": "66",
             "originalText": "Pale Dragonoid gets +1/+0 and has flying as long as there are four or more cards in your graveyard.",
             "originalType": "Creature \u2014 Human Dragon",
             "power": "1",
@@ -1842,8 +1880,8 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Petrification",
-            "number": "66",
-            "originalText": "Flash\nEnchant creature\nEnchanted creature has base power and toughness 0/4. It's a colorless Wall artifact creature with defender and \"{T}: Add {C}.\" and loses all other abilities.",
+            "number": "67",
+            "originalText": "Flash\nEnchant creature\nEnchanted creature has base power and toughness 0/4. It's a colorless Wall artifact creature with defender and loses all other abilities.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
             "rulings": [
@@ -1855,39 +1893,10 @@
             "subtypes": [
                 "Aura"
             ],
-            "text": "Flash\nEnchant creature\nEnchanted creature has base power and toughness 0/4. It's a colorless Wall artifact creature with defender and \"{T}: Add {C}\" and loses all other abilities.",
+            "text": "Flash\nEnchant creature\nEnchanted creature has base power and toughness 0/4. It's a colorless Wall artifact creature with defender and loses all other abilities.",
             "type": "Enchantment \u2014 Aura",
             "types": [
                 "Enchantment"
-            ]
-        },
-        {
-            "artist": "Ian Hinley",
-            "cmc": 3,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [
-                "Blue"
-            ],
-            "imageName": "revisit",
-            "layout": "normal",
-            "manaCost": "{2}{U}",
-            "name": "Revisit",
-            "number": "67",
-            "originalText": "Put target instant or sorcery card from your graveyard on top of your library. Then journey twice. (To journey, exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
-            "originalType": "Sorcery",
-            "rarity": "Uncommon",
-            "rulings": [
-                {
-                    "date": "2018-12-16",
-                    "text": "Both cards are journeyed at the same time. If the second one is a face-up card with premonition, you don't cast it."
-                }
-            ],
-            "text": "Put target instant or sorcery card from your graveyard on top of your library. Then journey twice. (To journey, exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
-            "type": "Sorcery",
-            "types": [
-                "Sorcery"
             ]
         },
         {
@@ -1962,13 +1971,13 @@
             "manaCost": "{U}",
             "name": "Scholar's Catalyst",
             "number": "70",
-            "originalText": "When Scholar's Catalyst enters the battlefield, put the top two cards of your library into your graveyard.\nEquipped creature gets +1/+1.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
+            "originalText": "When Scholar's Catalyst enters the battlefield, you may draw a card. If you do, discard a card.\nEquipped creature gets +1/+1.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Common",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "When Scholar's Catalyst enters the battlefield, put the top two cards of your library into your graveyard.\nEquipped creature gets +1/+1.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
+            "text": "When Scholar's Catalyst enters the battlefield, you may draw a card. If you do, discard a card.\nEquipped creature gets +1/+1.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -1983,7 +1992,7 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"...Seath the Scaleless sided with the lords, betraying his own. And so the Dragons were no more...\"",
+            "flavor": "\"...Seath the Scaleless sided with the lords, betraying his own...\"",
             "imageName": "seath's betrayal",
             "layout": "normal",
             "manaCost": "{7}{U}{U}",
@@ -1993,6 +2002,90 @@
             "originalType": "Sorcery",
             "rarity": "Mythic Rare",
             "text": "Target opponent skips their next turn. Take an extra turn after this one. Exile Seath's Betrayal.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ]
+        },
+        {
+            "artist": "tacosauceninja",
+            "cmc": 2,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "imageName": "seath's domain",
+            "layout": "normal",
+            "manaCost": "{1}{U}",
+            "name": "Seath's Domain",
+            "number": "72",
+            "originalText": "When Seath's Domain enters the battlefield, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)\nWhenever you cast an instant or sorcery spell, tap target creature an opponent controls.",
+            "originalType": "Enchantment",
+            "rarity": "Uncommon",
+            "text": "When Seath's Domain enters the battlefield, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)\nWhenever you cast an instant or sorcery spell, tap target creature an opponent controls.",
+            "type": "Enchantment",
+            "types": [
+                "Enchantment"
+            ]
+        },
+        {
+            "artist": "AzloRaimT",
+            "cmc": 5,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "imageName": "seath, scaleless betrayer",
+            "layout": "normal",
+            "manaCost": "{3}{U}{U}",
+            "name": "Seath, Scaleless Betrayer",
+            "number": "73",
+            "originalText": "This spell can't be countered.\nFlying, indestructible\nWhenever you are dealt combat damage, sacrifice Seath, Scaleless Betrayer.\n{1}{U}, Discard a card: Return Seath to its owner's hand.",
+            "originalType": "Legendary Creature \u2014 Dragon Wizard",
+            "power": "7",
+            "rarity": "Mythic Rare",
+            "subtypes": [
+                "Dragon",
+                "Wizard"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "This spell can't be countered.\nFlying, indestructible\nWhenever you are dealt combat damage, sacrifice Seath, Scaleless Betrayer.\n{1}{U}, Discard a card: Return Seath to its owner's hand.",
+            "toughness": "7",
+            "type": "Legendary Creature \u2014 Dragon Wizard",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Ian Hinley",
+            "cmc": 3,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "imageName": "seek the past",
+            "layout": "normal",
+            "manaCost": "{2}{U}",
+            "name": "Seek the Past",
+            "number": "74",
+            "originalText": "Shuffle your graveyard and any number of journeyed cards you own in exile into your library.\nJourney twice. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
+            "originalType": "Sorcery",
+            "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2019-05-25",
+                    "text": "Both cards are journeyed at the same time. If the second one is a face-up card with premonition, you don't cast it."
+                }
+            ],
+            "text": "Shuffle your graveyard and any number of journeyed cards you own in exile into your library.\nJourney twice. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -2011,39 +2104,20 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Sidetracked",
-            "number": "72",
+            "number": "75",
             "originalText": "Return target creature to its owner's hand.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
+            "rulings": [
+                {
+                    "date": "2019-05-25",
+                    "text": "If the creature is an illegal target as Sidetracked goes to resolve, none of its effects happen. You don't journey."
+                }
+            ],
             "text": "Return target creature to its owner's hand.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
-            ]
-        },
-        {
-            "artist": "nele_diel",
-            "cmc": 2,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [
-                "Blue"
-            ],
-            "flavor": "The Undead rely on the bonfires that trace the pilgrimage path as places for rest and recuperation. If those bonfires were to go out...",
-            "imageName": "hlw:snuff out",
-            "layout": "normal",
-            "manaCost": "{1}{U}",
-            "name": "HLW:Snuff Out",
-            "number": "73",
-            "originalText": "Counter all abilities. (Mana abilities can't be countered.)",
-            "originalType": "Instant",
-            "printedName": "Snuff Out",
-            "rarity": "Uncommon",
-            "text": "Counter all abilities. (Mana abilities can't be countered.)",
-            "type": "Instant",
-            "types": [
-                "Instant"
             ]
         },
         {
@@ -2059,7 +2133,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}{U}{U}",
             "name": "Soul Confluence",
-            "number": "74",
+            "number": "76",
             "originalText": "Reveal the top five cards of your library. An opponent separates those cards into three piles. Put the cards in one pile into your graveyard. Put the cards in another pile into your hand. Exile the cards in the third pile, then for each nonland card exiled this way not named Soul Confluence, you may cast that card without paying its mana cost.",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -2083,7 +2157,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Soulmass Witch",
-            "number": "75",
+            "number": "77",
             "originalText": "When Soulmass Witch enters the battlefield, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.",
             "originalType": "Creature \u2014 Human Wizard",
             "power": "2",
@@ -2112,7 +2186,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}",
             "name": "Spellguard Knight",
-            "number": "76",
+            "number": "78",
             "originalText": "Flash (You may cast this spell any time you could cast an instant.)\nWhen Spellguard Knight enters the battlefield, return target noncreature spell to its owner's hand.",
             "originalType": "Creature \u2014 Human Knight",
             "power": "3",
@@ -2141,7 +2215,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Time for Contemplation",
-            "number": "77",
+            "number": "79",
             "originalText": "Journey twice. (To journey, exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)\nScry 2.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -2170,7 +2244,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Traveler's Protection",
-            "number": "78",
+            "number": "80",
             "originalText": "Target creature you control gains hexproof until end of turn.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Instant",
             "rarity": "Common",
@@ -2192,18 +2266,18 @@
             "flavor": "The Valley of Drakes hosts the distant cousins of the ancient dragons.",
             "imageName": "valley drake",
             "layout": "normal",
-            "manaCost": "{4}{U}",
+            "manaCost": "{3}{U}{U}",
             "name": "Valley Drake",
-            "number": "79",
-            "originalText": "Flying\n{U}: Valley Drake gets +1/-1 until end of turn.",
+            "number": "81",
+            "originalText": "Flying",
             "originalType": "Creature \u2014 Drake",
-            "power": "3",
+            "power": "4",
             "rarity": "Uncommon",
             "subtypes": [
                 "Drake"
             ],
-            "text": "Flying\n{U}: Valley Drake gets +1/-1 until end of turn.",
-            "toughness": "5",
+            "text": "Flying",
+            "toughness": "4",
             "type": "Creature \u2014 Drake",
             "types": [
                 "Creature"
@@ -2223,18 +2297,18 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Vinheim Agent",
-            "number": "80",
+            "number": "82",
             "originalText": "{1}, Discard a card: Vinheim Agent can't be blocked this turn.",
-            "originalType": "Creature \u2014 Human Rogue",
+            "originalType": "Creature \u2014 Human Assassin",
             "power": "2",
             "rarity": "Common",
             "subtypes": [
                 "Human",
-                "Rogue"
+                "Assassin"
             ],
             "text": "{1}, Discard a card: Vinheim Agent can't be blocked this turn.",
             "toughness": "1",
-            "type": "Creature \u2014 Human Rogue",
+            "type": "Creature \u2014 Human Assassin",
             "types": [
                 "Creature"
             ]
@@ -2253,7 +2327,7 @@
             "layout": "normal",
             "manaCost": "{2}{B}",
             "name": "Artorias's Cursed Greatsword",
-            "number": "81",
+            "number": "83",
             "originalText": "Equipped creature gets +3/+0 and has menace.\nEquip\u2014Discard a card or pay 5 life.",
             "originalType": "Legendary Artifact \u2014 Equipment",
             "rarity": "Rare",
@@ -2282,11 +2356,11 @@
             "layout": "normal",
             "manaCost": "{2}{B}{B}",
             "name": "Artorias, the Abyss-Walker",
-            "number": "82",
+            "number": "84",
             "originalText": "Menace\nWhenever Artorias, the Abyss-Walker deals combat damage to a player, that player discards a card.\nWhenever a player discards a card, put a +1/+1 counter on Artorias.",
             "originalType": "Legendary Creature \u2014 Human Knight",
             "power": "4",
-            "rarity": "Rare",
+            "rarity": "Mythic Rare",
             "subtypes": [
                 "Human",
                 "Knight"
@@ -2313,9 +2387,9 @@
             "flavor": "The Undead Asylums are guarded by monsters considered as dangerous as the Undead themselves.",
             "imageName": "asylum demon",
             "layout": "normal",
-            "manaCost": "{2}{B}{B}",
+            "manaCost": "{3}{B}",
             "name": "Asylum Demon",
-            "number": "83",
+            "number": "85",
             "originalText": "When Asylum Demon enters the battlefield, you may sacrifice a creature. If you do, put two +1/+1 counters on Asylum Demon.",
             "originalType": "Creature \u2014 Beast Demon",
             "power": "3",
@@ -2345,7 +2419,7 @@
             "layout": "normal",
             "manaCost": "{B}",
             "name": "Backstab",
-            "number": "84",
+            "number": "86",
             "originalText": "Target tapped creature gets -2/-2 until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -2369,7 +2443,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Balder Captain",
-            "number": "85",
+            "number": "87",
             "originalText": "Other Zombies you control get +1/+1.\nOther Knights you control get +1/+1.",
             "originalType": "Creature \u2014 Zombie Knight",
             "power": "2",
@@ -2402,21 +2476,21 @@
             ],
             "imageName": "barbaric cleric",
             "layout": "normal",
-            "manaCost": "{2}{B}",
+            "manaCost": "{1}{B}{B}",
             "name": "Barbaric Cleric",
-            "number": "86",
-            "originalText": "When Barbaric Cleric enters the battlefield, it deals 2 damage to target opponent and you gain 2 life.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric Barbarian. Hollow only as a sorcery.)",
-            "originalType": "Creature \u2014 Human Cleric Barbarian",
+            "number": "88",
+            "originalText": "When Barbaric Cleric enters the battlefield, target opponent loses 2 life and you gain 2 life.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric Warrior. Hollow only as a sorcery.)",
+            "originalType": "Creature \u2014 Human Cleric Warrior",
             "power": "2",
             "rarity": "Common",
             "subtypes": [
                 "Human",
                 "Cleric",
-                "Barbarian"
+                "Warrior"
             ],
-            "text": "When Barbaric Cleric enters the battlefield, it deals 2 damage to target opponent and you gain 2 life.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric Barbarian. Hollow only as a sorcery.)",
+            "text": "When Barbaric Cleric enters the battlefield, target opponent loses 2 life and you gain 2 life.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric Warrior. Hollow only as a sorcery.)",
             "toughness": "2",
-            "type": "Creature \u2014 Human Cleric Barbarian",
+            "type": "Creature \u2014 Human Cleric Warrior",
             "types": [
                 "Creature"
             ]
@@ -2430,18 +2504,18 @@
             "colors": [
                 "Black"
             ],
-            "imageName": "barbed straight sword",
+            "imageName": "barbed blade",
             "layout": "normal",
             "manaCost": "{1}{B}",
-            "name": "Barbed Straight Sword",
-            "number": "87",
-            "originalText": "When Barbed Straight Sword enters the battlefield, it deals 2 damage to target opponent.\nEquipped creature gets +2/+0.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
+            "name": "Barbed Blade",
+            "number": "89",
+            "originalText": "When Barbed Straight Sword enters the battlefield, each opponent loses 2 life.\nEquipped creature gets +2/+0.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Common",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "When Barbed Straight Sword enters the battlefield, it deals 2 damage to target opponent.\nEquipped creature gets +2/+0.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
+            "text": "When Barbed Blade enters the battlefield, each opponent loses 2 life.\nEquipped creature gets +2/+0.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -2449,7 +2523,7 @@
         },
         {
             "artist": "W0LPE",
-            "cmc": 3,
+            "cmc": 2,
             "colorIdentity": [
                 "B"
             ],
@@ -2458,16 +2532,16 @@
             ],
             "imageName": "black knight armor",
             "layout": "normal",
-            "manaCost": "{2}{B}",
+            "manaCost": "{1}{B}",
             "name": "Black Knight Armor",
-            "number": "88",
-            "originalText": "Equipped creature gets +2/+3.\nWhenever Black Knight Armor becomes unattached from a permanent, sacrifice that permanent.\nEquip {1}",
+            "number": "90",
+            "originalText": "Equipped creature gets +2/+2.\nWhenever Black Knight Armor becomes unattached from a permanent, sacrifice that permanent.\nEquip {1}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Uncommon",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "Equipped creature gets +2/+3.\nWhenever Black Knight Armor becomes unattached from a permanent, sacrifice that permanent.\nEquip {1}",
+            "text": "Equipped creature gets +2/+2.\nWhenever Black Knight Armor becomes unattached from a permanent, sacrifice that permanent.\nEquip {1}",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -2475,28 +2549,29 @@
         },
         {
             "artist": "Andrew Odoerfer",
-            "cmc": 5,
+            "cmc": 7,
             "colorIdentity": [
                 "B"
             ],
             "colors": [
                 "Black"
             ],
+            "flavor": "The witch sisters gave their brother a ring to ease his pain. But fool that he was, he readily dropped it, and from that spot a terrible demon was born.",
             "imageName": "centipede demon",
             "layout": "normal",
-            "manaCost": "{3}{B}{B}",
+            "manaCost": "{5}{B}{B}",
             "name": "Centipede Demon",
-            "number": "89",
-            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Centipede Demon despairs, destroy target creature.",
+            "number": "91",
+            "originalText": "When Centipede Demon enters the battlefield, target opponent discards a card and sacrifices a creature.",
             "originalType": "Creature \u2014 Insect Demon",
-            "power": "5",
+            "power": "7",
             "rarity": "Uncommon",
             "subtypes": [
                 "Insect",
                 "Demon"
             ],
-            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Centipede Demon despairs, destroy target creature.",
-            "toughness": "4",
+            "text": "When Centipede Demon enters the battlefield, target opponent discards a card and sacrifices a creature.",
+            "toughness": "6",
             "type": "Creature \u2014 Insect Demon",
             "types": [
                 "Creature"
@@ -2516,7 +2591,7 @@
             "layout": "normal",
             "manaCost": "{3}{B}{B}",
             "name": "Consumed by the Abyss",
-            "number": "90",
+            "number": "92",
             "originalText": "Exile target creature.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -2527,29 +2602,52 @@
             ]
         },
         {
-            "artist": "moni158",
-            "cmc": 3,
+            "artist": "Demon Souls Cover Art",
+            "cmc": 4,
             "colorIdentity": [
                 "B"
             ],
             "colors": [
                 "Black"
             ],
-            "imageName": "darkwraith drainer",
+            "imageName": "countless failures",
             "layout": "normal",
-            "manaCost": "{2}{B}",
-            "name": "Darkwraith Drainer",
-            "number": "91",
-            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhenever a creature you control despairs, Darkwraith Drainer deals 1 damage to any target and you gain 1 life.",
+            "manaCost": "{3}{B}",
+            "name": "Countless Failures",
+            "number": "93",
+            "originalText": "When Countless Failures enters the battlefield, draw a card.\nWhenever you discard a card, you may pay {1}. If you do, each opponent loses 2 life and you gain 2 life.",
+            "originalType": "Enchantment",
+            "rarity": "Uncommon",
+            "text": "When Countless Failures enters the battlefield, draw a card.\nWhenever you discard a card, you may pay {1}. If you do, each opponent loses 2 life and you gain 2 life.",
+            "type": "Enchantment",
+            "types": [
+                "Enchantment"
+            ]
+        },
+        {
+            "artist": "moni158",
+            "cmc": 4,
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "Black"
+            ],
+            "imageName": "darkwraith captain",
+            "layout": "normal",
+            "manaCost": "{3}{B}",
+            "name": "Darkwraith Captain",
+            "number": "94",
+            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhenever a creature you control despairs, target creature an opponent controls gets -1/-1 until end of turn.",
             "originalType": "Creature \u2014 Skeleton Warrior",
-            "power": "2",
+            "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
                 "Skeleton",
                 "Warrior"
             ],
-            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhenever a creature you control despairs, Darkwraith Drainer deals 1 damage to any target and you gain 1 life.",
-            "toughness": "2",
+            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhenever a creature you control despairs, target creature an opponent controls gets -1/-1 until end of turn.",
+            "toughness": "3",
             "type": "Creature \u2014 Skeleton Warrior",
             "types": [
                 "Creature"
@@ -2569,7 +2667,7 @@
             "layout": "normal",
             "manaCost": "{B}",
             "name": "Duress",
-            "number": "92",
+            "number": "95",
             "originalText": "Target opponent reveals their hand. You choose a noncreature, nonland card from it. That player discards that card.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -2592,7 +2690,7 @@
             "layout": "normal",
             "manaCost": "{3}{B}",
             "name": "Fall From Favor",
-            "number": "93",
+            "number": "96",
             "originalText": "Exile target creature. If that creature was legendary, search its controller's graveyard, hand, and library for any number of cards with the same name as that creature and exile them, then that player shuffles their library.",
             "originalType": "Instant",
             "rarity": "Rare",
@@ -2615,7 +2713,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Fallen Champion",
-            "number": "94",
+            "number": "97",
             "originalText": "Lifelink\nDesperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Fallen Champion despairs, it gets +3/+0 until end of turn.",
             "originalType": "Creature \u2014 Human Knight",
             "power": "2",
@@ -2644,8 +2742,8 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Forsaken Adventurer",
-            "number": "95",
-            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Forsaken Adventurer despairs, you draw a card and Forsaken Adventurer deals 1 damage to you.",
+            "number": "98",
+            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Forsaken Adventurer despairs, you draw a card and you lose 1 life.",
             "originalType": "Creature \u2014 Human Knight",
             "power": "2",
             "rarity": "Common",
@@ -2653,7 +2751,7 @@
                 "Human",
                 "Knight"
             ],
-            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Forsaken Adventurer despairs, you draw a card and Forsaken Adventurer deals 1 damage to you.",
+            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Forsaken Adventurer despairs, you draw a card and you lose 1 life.",
             "toughness": "1",
             "type": "Creature \u2014 Human Knight",
             "types": [
@@ -2673,7 +2771,7 @@
             "layout": "normal",
             "manaCost": "{3}{B}{B}",
             "name": "Futile Pursuit",
-            "number": "96",
+            "number": "99",
             "originalText": "Target opponent discards three cards. You journey for each card discarded this way. (To journey, exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -2697,7 +2795,7 @@
             "layout": "normal",
             "manaCost": "{B}",
             "name": "Grim Determination",
-            "number": "97",
+            "number": "100",
             "originalText": "Until end of turn, target creature gets +2/+0 and gains \"When this creature dies, return it to the battlefield tapped under its owner's control.\"",
             "originalType": "Instant",
             "rarity": "Common",
@@ -2719,19 +2817,19 @@
             "flavor": "Many of Gwyn's knights were scorched black during the war he waged to contain the spread of the Chaos Demons.",
             "imageName": "gwyn's black knight",
             "layout": "normal",
-            "manaCost": "{3}{B}",
+            "manaCost": "{2}{B}{B}",
             "name": "Gwyn's Black Knight",
-            "number": "98",
-            "originalText": "Menace\nWhenever Gwyn's Black Knight attacks, sacrifice a creature.",
+            "number": "101",
+            "originalText": "Menace\nHexproof from white (This creature can't be the target of white spells or abilities your opponents control.)",
             "originalType": "Creature \u2014 Human Knight",
-            "power": "5",
+            "power": "4",
             "rarity": "Uncommon",
             "subtypes": [
                 "Human",
                 "Knight"
             ],
-            "text": "Menace\nWhenever Gwyn's Black Knight attacks, sacrifice a creature.",
-            "toughness": "5",
+            "text": "Menace\nHexproof from white (This creature can't be the target of white spells or abilities your opponents control.)",
+            "toughness": "3",
             "type": "Creature \u2014 Human Knight",
             "types": [
                 "Creature"
@@ -2751,19 +2849,19 @@
             "layout": "normal",
             "manaCost": "{5}{B}",
             "name": "Hollow Victory",
-            "number": "99",
-            "originalText": "This spell costs {1} less to cast for each Zombie you control.\nYou draw three cards. Hollow Victory deals 3 damage to you.",
-            "originalType": "Instant",
+            "number": "102",
+            "originalText": "This spell costs {1} less to cast for each Zombie you control.\nTarget player draws three cards and loses 3 life.",
+            "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "This spell costs {1} less to cast for each Zombie you control.\nYou draw three cards. Hollow Victory deals 3 damage to you.",
-            "type": "Instant",
+            "text": "This spell costs {1} less to cast for each Zombie you control.\nTarget player draws three cards and loses 3 life.",
+            "type": "Sorcery",
             "types": [
-                "Instant"
+                "Sorcery"
             ]
         },
         {
             "artist": "Vulpes Ipcutta",
-            "cmc": 4,
+            "cmc": 3,
             "colorIdentity": [
                 "B"
             ],
@@ -2772,9 +2870,9 @@
             ],
             "imageName": "humanity hunter",
             "layout": "normal",
-            "manaCost": "{3}{B}",
+            "manaCost": "{2}{B}",
             "name": "Humanity Hunter",
-            "number": "100",
+            "number": "103",
             "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Humanity Hunter despairs, it gets +2/+0 and gains menace until end of turn.",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "3",
@@ -2784,7 +2882,7 @@
                 "Rogue"
             ],
             "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Humanity Hunter despairs, it gets +2/+0 and gains menace until end of turn.",
-            "toughness": "3",
+            "toughness": "2",
             "type": "Creature \u2014 Human Rogue",
             "types": [
                 "Creature"
@@ -2804,7 +2902,7 @@
             "layout": "normal",
             "manaCost": "{2}{B}",
             "name": "Hungering Knight",
-            "number": "101",
+            "number": "104",
             "originalText": "Sacrifice a creature: Hungering Knight gets +2/+2 until end of turn.",
             "originalType": "Creature \u2014 Zombie Knight",
             "power": "2",
@@ -2822,7 +2920,7 @@
         },
         {
             "artist": "StefTastan",
-            "cmc": 6,
+            "cmc": 4,
             "colorIdentity": [
                 "B"
             ],
@@ -2832,13 +2930,13 @@
             "flavor": "As the First Flame faded, Izalith attempted the impossible\u2014To light a new Flame using her own soul.",
             "imageName": "izalith's ruination",
             "layout": "normal",
-            "manaCost": "{4}{B}{B}",
+            "manaCost": "{2}{B}{B}",
             "name": "Izalith's Ruination",
-            "number": "102",
-            "originalText": "Destroy up to one target creature and up to one target land.",
+            "number": "105",
+            "originalText": "As an additional cost to cast Izalith's Ruination, sacrifice a creature.\nDestroy target land. Its controller loses 4 life.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Destroy up to one target creature and up to one target land.",
+            "text": "As an additional cost to cast this spell, sacrifice a creature.\nDestroy target land. Its controller loses 4 life.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -2858,7 +2956,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Journey's End",
-            "number": "103",
+            "number": "106",
             "originalText": "As an additional cost to cast this spell, discard a card.\nDestroy target creature.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -2882,7 +2980,7 @@
             "layout": "normal",
             "manaCost": "{3}{B}",
             "name": "Kalameet's Grasp",
-            "number": "104",
+            "number": "107",
             "originalText": "Enchant creature\nEnchanted creature gets -3/-3.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Common",
@@ -2896,29 +2994,33 @@
             ]
         },
         {
-            "artist": "Vulpes Ipcutta",
-            "cmc": 5,
+            "artist": "Michele Giorgi",
+            "cmc": 3,
             "colorIdentity": [
                 "B"
             ],
             "colors": [
                 "Black"
             ],
-            "imageName": "king of the abyss",
+            "imageName": "lautrec, the embraced",
             "layout": "normal",
-            "manaCost": "{3}{B}{B}",
-            "name": "King of the Abyss",
-            "number": "105",
-            "originalText": "Flying\nWhen King of the Abyss enters the battlefield, you may search your library for a card named King of the Abyss, reveal it, put it into your hand, then shuffle your library.",
-            "originalType": "Creature \u2014 Horror",
-            "power": "3",
-            "rarity": "Uncommon",
+            "manaCost": "{1}{B}{B}",
+            "name": "Lautrec, the Embraced",
+            "number": "108",
+            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Lautrec, the Embraced despairs, defending player reveals their hand. You choose a nonland card from it and exile it. You may cast that card for as long as it remains exiled, and you may spend mana as though it were mana of any type to cast that spell.",
+            "originalType": "Legendary Creature \u2014 Human Knight",
+            "power": "4",
+            "rarity": "Rare",
             "subtypes": [
-                "Horror"
+                "Human",
+                "Knight"
             ],
-            "text": "Flying\nWhen King of the Abyss enters the battlefield, you may search your library for a card named King of the Abyss, reveal it, put it into your hand, then shuffle your library.",
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Lautrec, the Embraced despairs, defending player reveals their hand. You choose a nonland card from it and exile it. You may cast that card for as long as it remains exiled, and you may spend mana as though it were mana of any type to cast that spell.",
             "toughness": "3",
-            "type": "Creature \u2014 Horror",
+            "type": "Legendary Creature \u2014 Human Knight",
             "types": [
                 "Creature"
             ]
@@ -2937,7 +3039,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Mindless Hollow",
-            "number": "106",
+            "number": "109",
             "originalType": "Creature \u2014 Zombie",
             "power": "2",
             "rarity": "Common",
@@ -2964,7 +3066,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}{B}",
             "name": "Nito's Miasma",
-            "number": "107",
+            "number": "110",
             "originalText": "Target creature gets -4/-4 until end of turn.\nEach other creature gets -1/-1 until end of turn.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
@@ -2987,21 +3089,20 @@
             "layout": "normal",
             "manaCost": "{3}{B}{B}{B}",
             "name": "Nito, the Gravelord",
-            "number": "108",
+            "number": "111",
             "originalText": "When Nito, the Gravelord enters the battlefield, all other creatures get -2/-2 until end of turn.\nWhenever a nontoken creature dies, create a 1/1 black Skeleton creature token.",
-            "originalType": "Legendary Creature \u2014 Skeleton God",
+            "originalType": "Legendary Creature \u2014 Skeleton",
             "power": "6",
             "rarity": "Mythic Rare",
             "subtypes": [
-                "Skeleton",
-                "God"
+                "Skeleton"
             ],
             "supertypes": [
                 "Legendary"
             ],
             "text": "When Nito, the Gravelord enters the battlefield, all other creatures get -2/-2 until end of turn.\nWhenever a nontoken creature dies, create a 1/1 black Skeleton creature token.",
             "toughness": "6",
-            "type": "Legendary Creature \u2014 Skeleton God",
+            "type": "Legendary Creature \u2014 Skeleton",
             "types": [
                 "Creature"
             ]
@@ -3020,7 +3121,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Offering of Humanity",
-            "number": "109",
+            "number": "112",
             "originalText": "As an additional cost to cast this spell, sacrifice a creature.\nDraw two cards.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -3043,8 +3144,8 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Parasitic Wallhugger",
-            "number": "110",
-            "originalText": "Defender\nWhenever Parasitic Wallhugger or another creature you control dies, Parasitic Wallhugger deals 1 damage to each opponent and you gain 1 life.",
+            "number": "113",
+            "originalText": "Defender\nWhenever Parasitic Wallhugger or another creature you control dies, each opponent loses 1 life and you gain 1 life.",
             "originalType": "Creature \u2014 Insect Horror",
             "power": "0",
             "rarity": "Uncommon",
@@ -3052,7 +3153,7 @@
                 "Insect",
                 "Horror"
             ],
-            "text": "Defender\nWhenever Parasitic Wallhugger or another creature you control dies, Parasitic Wallhugger deals 1 damage to each opponent and you gain 1 life.",
+            "text": "Defender\nWhenever Parasitic Wallhugger or another creature you control dies, each opponent loses 1 life and you gain 1 life.",
             "toughness": "3",
             "type": "Creature \u2014 Insect Horror",
             "types": [
@@ -3072,7 +3173,7 @@
             "layout": "normal",
             "manaCost": "{3}{B}{B}",
             "name": "Reign of the Dark Lord",
-            "number": "111",
+            "number": "114",
             "originalText": "{2}{B}, Discard a card: Exile target creature card from your graveyard. Create a token that's a copy of it, except it's black and it's a Zombie in addition to its other types. Activate this ability only any time you could cast a sorcery.",
             "originalType": "Legendary Enchantment",
             "rarity": "Rare",
@@ -3100,8 +3201,8 @@
             "layout": "normal",
             "manaCost": "{B}",
             "name": "Ruin Delver",
-            "number": "112",
-            "originalText": "When Ruin Delver dies, target creature an opponent controls gets -1/-1 until end of turn.",
+            "number": "115",
+            "originalText": "When Ruin Delver dies, target creature an opponent controls gets -1/-1 until end of turn. If that creature would die this turn, exile it instead.",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "1",
             "rarity": "Common",
@@ -3109,7 +3210,7 @@
                 "Human",
                 "Rogue"
             ],
-            "text": "When Ruin Delver dies, target creature an opponent controls gets -1/-1 until end of turn.",
+            "text": "When Ruin Delver dies, target creature an opponent controls gets -1/-1 until end of turn. If that creature would die this turn, exile it instead.",
             "toughness": "1",
             "type": "Creature \u2014 Human Rogue",
             "types": [
@@ -3130,7 +3231,7 @@
             "layout": "normal",
             "manaCost": "{3}{B}",
             "name": "Sanity Melt",
-            "number": "113",
+            "number": "116",
             "originalText": "Target player discards two cards. Put the top four cards of your library into your graveyard.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -3153,15 +3254,15 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Sewer Nibbler",
-            "number": "114",
-            "originalText": "When Sewer Nibbler enters the battlefield, put the top two cards of your library into your graveyard.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Rat. Hollow only as a sorcery.)",
+            "number": "117",
+            "originalText": "When Sewer Nibbler enters the battlefield, put the top three cards of your library into your graveyard.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Rat. Hollow only as a sorcery.)",
             "originalType": "Creature \u2014 Rat",
             "power": "1",
             "rarity": "Common",
             "subtypes": [
                 "Rat"
             ],
-            "text": "When Sewer Nibbler enters the battlefield, put the top two cards of your library into your graveyard.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Rat. Hollow only as a sorcery.)",
+            "text": "When Sewer Nibbler enters the battlefield, put the top three cards of your library into your graveyard.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Rat. Hollow only as a sorcery.)",
             "toughness": "3",
             "type": "Creature \u2014 Rat",
             "types": [
@@ -3170,7 +3271,7 @@
         },
         {
             "artist": "banished_shadow",
-            "cmc": 3,
+            "cmc": 4,
             "colorIdentity": [
                 "B"
             ],
@@ -3179,19 +3280,19 @@
             ],
             "imageName": "sin caller",
             "layout": "normal",
-            "manaCost": "{1}{B}{B}",
+            "manaCost": "{3}{B}",
             "name": "Sin Caller",
-            "number": "115",
-            "originalText": "At the beginning of your upkeep, draw a card.\nAt the beginning of your end step, Sin Caller deals damage to you equal to the number of cards in your hand.",
+            "number": "118",
+            "originalText": "Whenever a creature you control dies, draw a card.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric. Hollow only as a sorcery.)",
             "originalType": "Creature \u2014 Human Cleric",
-            "power": "3",
+            "power": "4",
             "rarity": "Rare",
             "subtypes": [
                 "Human",
                 "Cleric"
             ],
-            "text": "At the beginning of your upkeep, draw a card.\nAt the beginning of your end step, Sin Caller deals damage to you equal to the number of cards in your hand.",
-            "toughness": "2",
+            "text": "Whenever a creature you control dies, draw a card.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric. Hollow only as a sorcery.)",
+            "toughness": "3",
             "type": "Creature \u2014 Human Cleric",
             "types": [
                 "Creature"
@@ -3210,7 +3311,7 @@
             "layout": "normal",
             "manaCost": "{2}{B}",
             "name": "Sin Cultist",
-            "number": "116",
+            "number": "119",
             "originalText": "When Sin Cultist enters the battlefield, each player sacrifices a creature.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric. Hollow only as a sorcery.)",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "3",
@@ -3236,15 +3337,15 @@
                 "Black"
             ],
             "flavor": "The spread of the abyss let loose new forms of souls, never before manipulated by sorcerers.",
-            "imageName": "soul pursuers",
+            "imageName": "soul pursuit",
             "layout": "normal",
             "manaCost": "{1}{B}",
-            "name": "Soul Pursuers",
-            "number": "117",
-            "originalText": "Exile up to three cards from target opponent's graveyard. Soul Pursuers deals 1 damage to that player for each creature card exiled this way.",
+            "name": "Soul Pursuit",
+            "number": "120",
+            "originalText": "Target opponent exiles three cards from their graveyard and loses 3 life.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Exile up to three cards from target opponent's graveyard. Soul Pursuers deals 1 damage to that player for each creature card exiled this way.",
+            "text": "Target opponent exiles three cards from their graveyard and loses 3 life.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -3264,7 +3365,7 @@
             "layout": "normal",
             "manaCost": "{4}{B}",
             "name": "Titanite Demon",
-            "number": "118",
+            "number": "121",
             "originalText": "When Titanite Demon dies, draw a card.",
             "originalType": "Artifact Creature \u2014 Demon Construct",
             "power": "4",
@@ -3295,7 +3396,7 @@
             "layout": "normal",
             "manaCost": "{3}{B}",
             "name": "Velka's Crow",
-            "number": "119",
+            "number": "122",
             "originalText": "Flying, deathtouch",
             "originalType": "Creature \u2014 Bird",
             "power": "2",
@@ -3323,7 +3424,7 @@
             "layout": "normal",
             "manaCost": "{B}",
             "name": "Venomous Bandit",
-            "number": "120",
+            "number": "123",
             "originalText": "Venomous Bandit can't block.\nDesperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Venomous Bandit despairs, creatures you control gain deathtouch until end of turn.",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "2",
@@ -3352,7 +3453,7 @@
             "layout": "normal",
             "manaCost": "{R}",
             "name": "Adventurer's Enthusiasm",
-            "number": "121",
+            "number": "124",
             "originalText": "Target creature gets +1/+1 and gains haste until end of turn.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -3376,7 +3477,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Bloodied Shotel",
-            "number": "122",
+            "number": "125",
             "originalText": "Equipped creature gets +3/+0.\nWhenever equipped creature attacks, target creature can't block this turn.\nEquip {3}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Uncommon",
@@ -3403,7 +3504,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}",
             "name": "Capra Demon",
-            "number": "123",
+            "number": "126",
             "originalText": "Menace",
             "originalType": "Creature \u2014 Goat Demon",
             "power": "3",
@@ -3433,7 +3534,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Ceaseless Destruction",
-            "number": "124",
+            "number": "127",
             "originalText": "Destroy target artifact. Add {R}{R}.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -3452,12 +3553,11 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "Designed by Calibur",
             "imageName": "ceaseless discharge",
             "layout": "normal",
             "manaCost": "{4}{R}{R}{R}{R}",
             "name": "Ceaseless Discharge",
-            "number": "125",
+            "number": "128",
             "originalText": "Trample\nAt the beginning of each of your main phases, add {R}{R}{R}{R}{R}{R}{R}{R} (eight red mana).\nWhenever you lose unspent mana, Ceaseless Discharge deals that much damage to you.",
             "originalType": "Legendary Creature \u2014 Elemental Demon",
             "power": "8",
@@ -3489,7 +3589,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Challenge Seeker",
-            "number": "126",
+            "number": "129",
             "originalText": "Haste\nWhen Challenge Seeker enters the battlefield, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Creature \u2014 Human Knight",
             "power": "2",
@@ -3518,7 +3618,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Chaos Pyromancer",
-            "number": "127",
+            "number": "130",
             "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Chaos Pyromancer despairs, it deals 3 damage to target player.",
             "originalType": "Creature \u2014 Human Wizard",
             "power": "3",
@@ -3554,7 +3654,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}",
             "name": "Crazed Butcher",
-            "number": "128",
+            "number": "131",
             "originalType": "Creature \u2014 Zombie Warrior",
             "power": "4",
             "rarity": "Common",
@@ -3582,7 +3682,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Daughter of Chaos",
-            "number": "129",
+            "number": "132",
             "originalText": "{3}{R}, Sacrifice a creature: Daughter of Chaos deals 2 damage to target opponent or planeswalker.",
             "originalType": "Creature \u2014 Human Wizard",
             "power": "2",
@@ -3611,7 +3711,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}{R}",
             "name": "Dive into Danger",
-            "number": "130",
+            "number": "133",
             "originalText": "At the beginning of your next main phase this turn, untap all creatures you control. After that main phase, there is an additional combat phase followed by an additional main phase.\nJourney twice. (To journey, exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -3641,7 +3741,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Doomsaying Sage",
-            "number": "131",
+            "number": "134",
             "originalText": "Whenever you journey, Doomsaying Sage gains menace until end of turn.",
             "originalType": "Creature \u2014 Human Shaman",
             "power": "2",
@@ -3666,22 +3766,21 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "Those that walk the Dragon-Path learn the true meaning of rage.",
             "imageName": "dragon-path ravager",
             "layout": "normal",
             "manaCost": "{3}{R}",
             "name": "Dragon-Path Ravager",
-            "number": "132",
-            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Dragon-Path Ravager despairs, up to two target creatures can't block this turn.",
+            "number": "135",
+            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhenever a creature you control despairs, it gets +1/+0 and gains trample until end of turn.",
             "originalType": "Creature \u2014 Human Dragon",
-            "power": "5",
+            "power": "4",
             "rarity": "Uncommon",
             "subtypes": [
                 "Human",
                 "Dragon"
             ],
-            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Dragon-Path Ravager despairs, up to two target creatures can't block this turn.",
-            "toughness": "2",
+            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhenever a creature you control despairs, it gets +1/+0 and gains trample until end of turn.",
+            "toughness": "3",
             "type": "Creature \u2014 Human Dragon",
             "types": [
                 "Creature"
@@ -3701,7 +3800,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Dragon-Path Warrior",
-            "number": "133",
+            "number": "136",
             "originalText": "{R}: Dragon-Path Warrior gets +1/+0 until end of turn.",
             "originalType": "Creature \u2014 Human Dragon",
             "power": "2",
@@ -3731,7 +3830,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Dragonslayer's Strike",
-            "number": "134",
+            "number": "137",
             "originalText": "Target creature gets +2/+0 and gains first strike until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -3754,7 +3853,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Ecstatic Prayer",
-            "number": "135",
+            "number": "138",
             "originalText": "As an additional cost to cast this spell, discard a card.\nScry 2, then draw two cards. (To scry 2, look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -3777,10 +3876,10 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Fearless Adventurer",
-            "number": "136",
+            "number": "139",
             "originalText": "Fearless Adventurer attacks each combat if able.\nWhenever you journey for the first time each turn, Fearless Adventurer gains first strike until end of turn.",
             "originalType": "Creature \u2014 Human Knight",
-            "power": "4",
+            "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
                 "Human",
@@ -3807,7 +3906,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}{R}",
             "name": "Fire Orb",
-            "number": "137",
+            "number": "140",
             "originalText": "Fire Orb deals 5 damage to target creature. Destroy all Equipment attached to that creature.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -3837,7 +3936,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}{R}",
             "name": "Flame Storm",
-            "number": "138",
+            "number": "141",
             "originalText": "Flame Storm deals 3 damage to each creature. Whenever a creature dealt damage this way dies this turn, Flame Storm deals 1 damage to that creature's controller.",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -3860,7 +3959,7 @@
             "layout": "normal",
             "manaCost": "{4}{R}{R}",
             "name": "Gatekeeper Hellkite",
-            "number": "139",
+            "number": "142",
             "originalText": "Flying\nDesperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Gatekeeper Hellkite despairs, it deals 5 damage to each other creature.",
             "originalType": "Creature \u2014 Dragon",
             "power": "5",
@@ -3888,7 +3987,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Grim Warrior",
-            "number": "140",
+            "number": "143",
             "originalText": "First strike\nDesperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Grim Warrior despairs, it gains double strike until end of turn.",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "2",
@@ -3918,7 +4017,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Gwyn's Army",
-            "number": "141",
+            "number": "144",
             "originalText": "Create two 1/1 red Soldier creature tokens.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -3942,7 +4041,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Kalameet's Gaze",
-            "number": "142",
+            "number": "145",
             "originalText": "Kalameet's Gaze deals 4 damage to any target that was dealt damage this turn.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
@@ -3966,7 +4065,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Lightning Spear",
-            "number": "143",
+            "number": "146",
             "originalText": "Lightning Spear deals 3 damage to any target.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -3989,7 +4088,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Linking of the Flame",
-            "number": "144",
+            "number": "147",
             "originalText": "Enchant creature you control\nEnchanted creature gets +3/+0.\nEnchanted creature has \"Sacrifice this creature and six permanents with different names attached to it: You win the game.\"",
             "originalType": "Legendary Enchantment \u2014 Aura",
             "rarity": "Rare",
@@ -4008,7 +4107,7 @@
         },
         {
             "artist": "Daniel Clasquin",
-            "cmc": 5,
+            "cmc": 6,
             "colorIdentity": [
                 "R"
             ],
@@ -4018,18 +4117,18 @@
             "flavor": "\"Wildlife near Lost Izalith have adapted well to its searing heat.\"\n\u2014Notes of Big Hat Logan",
             "imageName": "magma spider",
             "layout": "normal",
-            "manaCost": "{3}{R}{R}",
+            "manaCost": "{4}{R}{R}",
             "name": "Magma Spider",
-            "number": "145",
+            "number": "148",
             "originalText": "Reach\n{2}{R}: Magma Spider deals 1 damage to any target.",
             "originalType": "Creature \u2014 Spider",
-            "power": "4",
+            "power": "5",
             "rarity": "Uncommon",
             "subtypes": [
                 "Spider"
             ],
             "text": "Reach\n{2}{R}: Magma Spider deals 1 damage to any target.",
-            "toughness": "4",
+            "toughness": "5",
             "type": "Creature \u2014 Spider",
             "types": [
                 "Creature"
@@ -4048,7 +4147,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Molten Fury",
-            "number": "146",
+            "number": "149",
             "originalText": "Target creature gains double strike until end of turn.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -4071,7 +4170,7 @@
             "layout": "normal",
             "manaCost": "{R}",
             "name": "Path of Violence",
-            "number": "147",
+            "number": "150",
             "originalText": "When Path of Violence enters the battlefield, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)\nAt the beginning of combat on your turn, if you own a journeyed card in exile, target creature you control gets +2/+0 until end of turn.",
             "originalType": "Enchantment",
             "rarity": "Uncommon",
@@ -4095,18 +4194,18 @@
             "layout": "normal",
             "manaCost": "{R}",
             "name": "Pillar of Flame",
-            "number": "148",
+            "number": "151",
             "originalText": "Pillar of Flame deals 2 damage to any target. If a creature dealt damage this way would die this turn, exile it instead.",
             "originalType": "Sorcery",
             "rarity": "Common",
             "rulings": [
                 {
                     "date": "2017-11-17",
-                    "text": "A creature dealt damage by Pillar of Flame that dies this turn will be exiled even if it wasn't the target of Pillar of Flame (because the damage was redirected somehow). If the target creature isn't dealt damage (most likely because the damage was prevented), it won't be exiled if it dies that turn."
+                    "text": "A creature dealt damage by Pillar of Flame will be exiled no matter why the creature would die that turn. It could have its toughness reduced to 0 or less or be destroyed by another spell or ability."
                 },
                 {
                     "date": "2017-11-17",
-                    "text": "A creature dealt damage by Pillar of Flame will be exiled no matter why the creature would die that turn. It could have its toughness reduced to 0 or less or be destroyed by another spell or ability."
+                    "text": "A creature dealt damage by Pillar of Flame that dies this turn will be exiled even if it wasn't the target of Pillar of Flame (because the damage was redirected somehow). If the target creature isn't dealt damage (most likely because the damage was prevented), it won't be exiled if it dies that turn."
                 }
             ],
             "text": "Pillar of Flame deals 2 damage to any target. If a creature dealt damage this way would die this turn, exile it instead.",
@@ -4129,7 +4228,7 @@
             "layout": "normal",
             "manaCost": "{R}",
             "name": "Pyromancer's Flame",
-            "number": "149",
+            "number": "152",
             "originalText": "Whenever equipped creature attacks, it deals 2 damage to target opponent.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Common",
@@ -4155,7 +4254,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Pyromancer's Wisdom",
-            "number": "150",
+            "number": "153",
             "originalText": "Add {R}{R}{R}.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
@@ -4178,7 +4277,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Quelaag's Furysword",
-            "number": "151",
+            "number": "154",
             "originalText": "Equipped creature gets +2/+0 and has haste.\nWhenever equipped creature attacks or dies, Quelaag's Furysword deals 1 damage to any target.\nEquip {2}",
             "originalType": "Legendary Artifact \u2014 Equipment",
             "rarity": "Rare",
@@ -4207,7 +4306,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}{R}",
             "name": "Quelaag, Chaos Witch",
-            "number": "152",
+            "number": "155",
             "originalText": "Whenever Quelaag, Chaos Witch attacks, it deals 2 damage to the player or permanent it's attacking.\nWhen Quelaag dies, it deals 2 damage to target creature or planeswalker an opponent controls.",
             "originalType": "Legendary Creature \u2014 Spider Demon",
             "power": "2",
@@ -4239,7 +4338,7 @@
             "layout": "normal",
             "manaCost": "{R}",
             "name": "Rotting Hellhound",
-            "number": "153",
+            "number": "156",
             "originalText": "Haste\nDesperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Rotting Hellhound despairs, other creatures you control get +1/+0 until end of turn.",
             "originalType": "Creature \u2014 Zombie Hound",
             "power": "1",
@@ -4268,7 +4367,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}{R}",
             "name": "Scrappy Firebrand",
-            "number": "154",
+            "number": "157",
             "originalText": "When Scrappy Firebrand enters the battlefield, it deals damage to up to one target creature equal to the number of instant and sorcery cards in your graveyard.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Soldier. Hollow only as a sorcery.)",
             "originalType": "Creature \u2014 Human Soldier",
             "power": "3",
@@ -4297,7 +4396,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Shining Fervor",
-            "number": "155",
+            "number": "158",
             "originalText": "Enchant creature\nEnchanted creature gets +1/+0 for each other creature you control.\nWhenever enchanted creature attacks, create a 1/1 red Soldier creature token that's tapped and attacking.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
@@ -4324,7 +4423,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Solaire's Madness",
-            "number": "156",
+            "number": "159",
             "originalText": "Solaire's Madness deals 2 damage to target creature. Gain control of that creature until end of turn and untap it. It gains haste until end of turn.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
@@ -4348,7 +4447,7 @@
             "layout": "normal",
             "manaCost": "{4}{R}{R}",
             "name": "Sunlight Spear",
-            "number": "157",
+            "number": "160",
             "originalText": "Sunlight Spear deals 6 damage to any target. This damage can't be prevented.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -4372,7 +4471,7 @@
             "layout": "normal",
             "manaCost": "{4}{R}",
             "name": "Taurus Demon",
-            "number": "158",
+            "number": "161",
             "originalText": "Trample",
             "originalType": "Creature \u2014 Ox Demon",
             "power": "5",
@@ -4402,7 +4501,7 @@
             "layout": "normal",
             "manaCost": "{R}",
             "name": "The First Flame",
-            "number": "159",
+            "number": "162",
             "originalText": "Exile the top card of your library. You may play that card this turn. When you play that card this turn, repeat this process.",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -4425,7 +4524,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Tireless Quest",
-            "number": "160",
+            "number": "163",
             "originalText": "As an additional cost to cast this spell, discard any number of cards.\nFor each card discarded this way, journey twice. (To journey, exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
@@ -4455,7 +4554,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Adventurer's Rest",
-            "number": "161",
+            "number": "164",
             "originalText": "You gain 5 life. If a creature you control dealt combat damage to an opponent this turn, you gain 10 life instead.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
@@ -4485,7 +4584,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Ambush Spider",
-            "number": "162",
+            "number": "165",
             "originalText": "Flash (You may cast this spell any time you could cast an instant.)\nReach",
             "originalType": "Creature \u2014 Spider",
             "power": "1",
@@ -4513,7 +4612,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Blight Hatching",
-            "number": "163",
+            "number": "166",
             "originalText": "Whenever a non-Spider creature token enters the battlefield under your control, you may exile it. If you do, create a number of 1/2 green Spider creature tokens with reach equal to that token's toughness.",
             "originalType": "Enchantment",
             "rarity": "Rare",
@@ -4537,7 +4636,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Blight Slime",
-            "number": "164",
+            "number": "167",
             "originalText": "Trample\nWhenever another creature you control dies, put a +1/+1 counter on Blight Slime.",
             "originalType": "Creature \u2014 Ooze",
             "power": "2",
@@ -4554,7 +4653,7 @@
         },
         {
             "artist": "Dark Souls Concept Art",
-            "cmc": 4,
+            "cmc": 3,
             "colorIdentity": [
                 "G"
             ],
@@ -4564,9 +4663,9 @@
             "flavor": "The population of Blighttown are bloated Hollows, exposed for too long to the poison that permeates their home.",
             "imageName": "blighted barbarian",
             "layout": "normal",
-            "manaCost": "{3}{G}",
+            "manaCost": "{2}{G}",
             "name": "Blighted Barbarian",
-            "number": "165",
+            "number": "168",
             "originalType": "Creature \u2014 Zombie Barbarian",
             "power": "3",
             "rarity": "Common",
@@ -4574,7 +4673,7 @@
                 "Zombie",
                 "Barbarian"
             ],
-            "toughness": "4",
+            "toughness": "3",
             "type": "Creature \u2014 Zombie Barbarian",
             "types": [
                 "Creature"
@@ -4594,7 +4693,7 @@
             "layout": "normal",
             "manaCost": "{4}{G}{G}",
             "name": "Burrowing Rockworm",
-            "number": "166",
+            "number": "169",
             "originalText": "Flash\nWhen Burrowing Rockworm enters the battlefield, you may destroy target artifact or enchantment.",
             "originalType": "Creature \u2014 Worm",
             "power": "4",
@@ -4623,7 +4722,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "Chaos Eater",
-            "number": "167",
+            "number": "170",
             "originalText": "Chaos Eater can't be blocked by creatures with power 2 or less.",
             "originalType": "Creature \u2014 Horror",
             "power": "4",
@@ -4652,7 +4751,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "Darkroot Ambusher",
-            "number": "168",
+            "number": "171",
             "originalText": "Flash (You may cast this spell any time you could cast an instant.)",
             "originalType": "Creature \u2014 Human Knight",
             "power": "3",
@@ -4682,7 +4781,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}{G}",
             "name": "Darkroot Hunt-Pack",
-            "number": "169",
+            "number": "172",
             "originalText": "Flash\nWhenever you cast a noninstant spell during an opponent's turn, create a 2/2 green Wolf creature token.",
             "originalType": "Creature \u2014 Human Archer",
             "power": "2",
@@ -4712,7 +4811,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Darkroot Mists",
-            "number": "170",
+            "number": "173",
             "originalText": "Prevent all combat damage that would be dealt this turn by creatures that didn't enter the battlefield this turn.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -4735,7 +4834,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "Darkroot Tracker",
-            "number": "171",
+            "number": "174",
             "originalText": "Flash (You may cast this spell any time you could cast an instant.)\nWhen Darkroot Tracker enters the battlefield, return target instant card or card with flash from your graveyard to your hand.",
             "originalType": "Creature \u2014 Human Archer Scout",
             "power": "3",
@@ -4754,7 +4853,7 @@
         },
         {
             "artist": "Quentin Lecuiller",
-            "cmc": 3,
+            "cmc": 2,
             "colorIdentity": [
                 "G"
             ],
@@ -4764,13 +4863,13 @@
             "flavor": "\"Here lies Sir Artorias. None who trespass here shall remain alive.\"\n\u2014Sign at the entrance of the Forest Grave",
             "imageName": "defend the grave",
             "layout": "normal",
-            "manaCost": "{2}{G}",
+            "manaCost": "{1}{G}",
             "name": "Defend the Grave",
-            "number": "172",
-            "originalText": "Target creature you control gets +1/+0 until end of turn. It fights target creature an opponent controls. (Each deals damage equal to its power to the other.)",
+            "number": "175",
+            "originalText": "Target creature you control fights target creature you don't control. (Each deals damage equal to its power to the other.)",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Target creature you control gets +1/+0 until end of turn. It fights target creature an opponent controls. (Each deals damage equal to its power to the other.)",
+            "text": "Target creature you control fights target creature you don't control. (Each deals damage equal to its power to the other.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -4790,7 +4889,7 @@
             "layout": "normal",
             "manaCost": "{G}",
             "name": "Degradation",
-            "number": "173",
+            "number": "176",
             "originalText": "Destroy target artifact or enchantment with converted mana cost 4 or less.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -4814,7 +4913,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Dragon-Path Challenger",
-            "number": "174",
+            "number": "177",
             "originalText": "Spells your opponents cast that target Dragon-Path Challenger cost {2} more to cast.\nDragon-Path Challenger can't be blocked by creatures with power 2 or less.",
             "originalType": "Creature \u2014 Human Dragon",
             "power": "2",
@@ -4832,19 +4931,20 @@
         },
         {
             "artist": "ThemeFinland",
-            "cmc": 3,
+            "cmc": 4,
             "colorIdentity": [
                 "G"
             ],
             "colors": [
                 "Green"
             ],
+            "flavor": "They hunt the scales looted from dragons long ago.",
             "imageName": "dragon-path ripper",
             "layout": "normal",
-            "manaCost": "{2}{G}",
+            "manaCost": "{3}{G}",
             "name": "Dragon-Path Ripper",
-            "number": "175",
-            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Dragon-Path Ripper despairs, it gets +2/+2 and gains trample until end of turn.",
+            "number": "178",
+            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Dragon-Path Ripper despairs, destroy target artifact or enchantment.",
             "originalType": "Creature \u2014 Human Dragon",
             "power": "3",
             "rarity": "Common",
@@ -4852,8 +4952,8 @@
                 "Human",
                 "Dragon"
             ],
-            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Dragon-Path Ripper despairs, it gets +2/+2 and gains trample until end of turn.",
-            "toughness": "2",
+            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Dragon-Path Ripper despairs, destroy target artifact or enchantment.",
+            "toughness": "4",
             "type": "Creature \u2014 Human Dragon",
             "types": [
                 "Creature"
@@ -4873,7 +4973,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Executioner's Hunger",
-            "number": "176",
+            "number": "179",
             "originalText": "Choose one \u2014\n\u2022 Exile all cards from target player's graveyard.\n\u2022 Destroy target creature with flying.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -4896,8 +4996,8 @@
             "layout": "normal",
             "manaCost": "{X}{G}",
             "name": "Explorer's Reward",
-            "number": "177",
-            "originalText": "Journey X times. (Exile the top X cards of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)\nPut a creature card with converted mana cost X or less from among journeyed cards you own in exile onto the battlefield under your control.",
+            "number": "180",
+            "originalText": "Journey X times. (Exile the top X cards of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)\nYou may put a creature card with converted mana cost X or less from among journeyed cards you own in exile onto the battlefield under your control.",
             "originalType": "Sorcery",
             "rarity": "Mythic Rare",
             "rulings": [
@@ -4906,7 +5006,7 @@
                     "text": "All cards are journeyed at the same time. If any of them are face-up cards with premonition, you don't cast them."
                 }
             ],
-            "text": "Journey X times. (Exile the top X cards of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)\nPut a creature card with converted mana cost X or less from among journeyed cards you own in exile onto the battlefield under your control.",
+            "text": "Journey X times. (Exile the top X cards of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)\nYou may put a creature card with converted mana cost X or less from among journeyed cards you own in exile onto the battlefield under your control.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -4925,7 +5025,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Fading Sage",
-            "number": "178",
+            "number": "181",
             "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Fading Sage despairs, put two +1/+1 counters on another target creature you control.",
             "originalType": "Creature \u2014 Human Shaman",
             "power": "2",
@@ -4955,7 +5055,7 @@
             "layout": "normal",
             "manaCost": "{4}{G}{G}",
             "name": "Fang Boar",
-            "number": "179",
+            "number": "182",
             "originalText": "Trample",
             "originalType": "Creature \u2014 Boar",
             "power": "6",
@@ -4984,16 +5084,16 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Forest-Grave Guardian",
-            "number": "180",
-            "originalText": "Vigilance",
+            "number": "183",
+            "originalText": "Hexproof, trample",
             "originalType": "Creature \u2014 Human Knight",
-            "power": "3",
+            "power": "2",
             "rarity": "Common",
             "subtypes": [
                 "Human",
                 "Knight"
             ],
-            "text": "Vigilance",
+            "text": "Trample, hexproof",
             "toughness": "2",
             "type": "Creature \u2014 Human Knight",
             "types": [
@@ -5014,7 +5114,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}{G}",
             "name": "Gaping Dragon",
-            "number": "181",
+            "number": "184",
             "originalText": "Trample, haste\nAt the beginning of each end step, sacrifice a permanent and put a +1/+1 counter on Gaping Dragon.",
             "originalType": "Creature \u2014 Dragon Horror",
             "power": "5",
@@ -5044,7 +5144,7 @@
             "layout": "normal",
             "manaCost": "{G}",
             "name": "Giant Growth",
-            "number": "182",
+            "number": "185",
             "originalText": "Target creature gets +3/+3 until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -5067,7 +5167,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Gough's Greatbow",
-            "number": "183",
+            "number": "186",
             "originalText": "Equipped creature gets +3/+0 and has reach.\nWhenever equipped creature deals combat damage to a creature, it deals that much damage to up to one other target creature.\nEquip {3}",
             "originalType": "Legendary Artifact \u2014 Equipment",
             "rarity": "Rare",
@@ -5096,7 +5196,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}{G}",
             "name": "Gough, Hawk-Eye Hunter",
-            "number": "184",
+            "number": "187",
             "originalText": "Vigilance, reach\nWhen Gough, Hawk-Eye Hunter enters the battlefield, target opponent creates a 5/5 colorless Dragon artifact creature token with flying named Ancient Dragon.",
             "originalType": "Legendary Creature \u2014 Giant Archer",
             "power": "7",
@@ -5129,7 +5229,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Great Hammer",
-            "number": "185",
+            "number": "188",
             "originalText": "Equipped creature gets +2/+2.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Common",
@@ -5155,7 +5255,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "Gwynevere's Guidance",
-            "number": "186",
+            "number": "189",
             "originalText": "Enchant creature\nEnchanted creature gets +3/+3.\nWhen Gwynevere's Guidance enters the battlefield, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Common",
@@ -5182,7 +5282,7 @@
             "layout": "normal",
             "manaCost": "{X}{G}{G}{G}",
             "name": "Hydra Hunting",
-            "number": "187",
+            "number": "190",
             "originalText": "Target creature you control gets +X/+X until end of turn. Then that creature fights up to X target creatures you don't control. (All fight damage happens simultaneously.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -5205,7 +5305,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}{G}",
             "name": "Intrepid Companions",
-            "number": "188",
+            "number": "191",
             "originalText": "When Intrepid Companions enters the battlefield, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "4",
@@ -5234,7 +5334,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Keeper of the Old Fire",
-            "number": "189",
+            "number": "192",
             "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Keeper of the Old Fire despairs, return target card from your graveyard to your hand.",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "2",
@@ -5252,7 +5352,7 @@
         },
         {
             "artist": "GLV88",
-            "cmc": 2,
+            "cmc": 3,
             "colorIdentity": [
                 "G"
             ],
@@ -5261,13 +5361,13 @@
             ],
             "imageName": "londo showdown",
             "layout": "normal",
-            "manaCost": "{1}{G}",
+            "manaCost": "{2}{G}",
             "name": "Londo Showdown",
-            "number": "190",
-            "originalText": "Target creature you control fights target creature you don't control.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
+            "number": "193",
+            "originalText": "Target creature you control gets +1/+1 until end of turn, then fights target creature you don't control.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Target creature you control fights target creature you don't control.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
+            "text": "Target creature you control gets +1/+1 until end of turn, then fights target creature you don't control.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -5286,14 +5386,14 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Murakumo",
-            "number": "191",
-            "originalText": "Equipped creature gets +3/+2 and has trample.\nEquip creature with power 4 or greater {2} ({2}: Attach to target creature with power 4 or greater you control. Equip only as a sorcery.)\nEquip {5}",
+            "number": "194",
+            "originalText": "Equipped creature gets +3/+3 and has trample.\nEquip creature with power 5 or greater {2} ({2}: Attach to target creature with power 5 or greater you control. Equip only as a sorcery.)\nEquip {6}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Uncommon",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "Equipped creature gets +3/+2 and has trample.\nEquip creature with power 4 or greater {2} ({2}: Attach to target creature with power 4 or greater you control. Equip only as a sorcery.)\nEquip {5}",
+            "text": "Equipped creature gets +3/+3 and has trample.\nEquip creature with power 5 or greater {2} ({2}: Attach to target creature with power 5 or greater you control. Equip only as a sorcery.)\nEquip {6}",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -5313,7 +5413,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}{G}",
             "name": "Mushroom Family",
-            "number": "192",
+            "number": "195",
             "originalText": "{T}: Untap up to two target lands.",
             "originalType": "Creature \u2014 Fungus",
             "power": "3",
@@ -5342,7 +5442,7 @@
             "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "Provoke the Primeval",
-            "number": "193",
+            "number": "196",
             "originalText": "Put a +1/+1 counter on target creature you control. All creatures able to block that creature this turn do so.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
@@ -5367,7 +5467,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}",
             "name": "Pyromantic Shaman",
-            "number": "194",
+            "number": "197",
             "originalText": "{T}: Add {R}.",
             "originalType": "Creature \u2014 Human Shaman",
             "power": "2",
@@ -5385,7 +5485,7 @@
         },
         {
             "artist": "ludvikskp",
-            "cmc": 3,
+            "cmc": 2,
             "colorIdentity": [
                 "G"
             ],
@@ -5394,13 +5494,13 @@
             ],
             "imageName": "search for dusk",
             "layout": "normal",
-            "manaCost": "{2}{G}",
+            "manaCost": "{1}{G}",
             "name": "Search for Dusk",
-            "number": "195",
-            "originalText": "Look at the top three cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
+            "number": "198",
+            "originalText": "Look at the top five cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Look at the top three cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
+            "text": "Look at the top five cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -5420,7 +5520,7 @@
             "layout": "normal",
             "manaCost": "{G}",
             "name": "Servant of the Fair Lady",
-            "number": "196",
+            "number": "199",
             "originalText": "When Servant of the Fair Lady dies, create a 1/2 green Spider creature token with reach.",
             "originalType": "Creature \u2014 Zombie Horror",
             "power": "1",
@@ -5449,16 +5549,16 @@
             "layout": "normal",
             "manaCost": "{5}{G}{G}",
             "name": "Stranded Hydra",
-            "number": "197",
-            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Stranded Hydra despairs, creatures you control get +2/+2 and gain trample until end of turn.",
+            "number": "200",
+            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Stranded Hydra despairs, creatures you control get +3/+3 and gain trample until end of turn.",
             "originalType": "Creature \u2014 Hydra",
-            "power": "6",
+            "power": "5",
             "rarity": "Uncommon",
             "subtypes": [
                 "Hydra"
             ],
-            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Stranded Hydra despairs, creatures you control get +2/+2 and gain trample until end of turn.",
-            "toughness": "6",
+            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Stranded Hydra despairs, creatures you control get +3/+3 and gain trample until end of turn.",
+            "toughness": "5",
             "type": "Creature \u2014 Hydra",
             "types": [
                 "Creature"
@@ -5478,7 +5578,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Sudden Courage",
-            "number": "198",
+            "number": "201",
             "originalText": "Flash (You may cast this spell any time you could cast an instant.)\nEnchant creature\nEnchanted creature gets +2/+2.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Common",
@@ -5504,7 +5604,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "The Road Ahead",
-            "number": "199",
+            "number": "202",
             "originalText": "You may play an additional land on each of your turns.\nWhenever a land enters the battlefield under your control, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Enchantment",
             "rarity": "Rare",
@@ -5527,7 +5627,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Uncover the Lost",
-            "number": "200",
+            "number": "203",
             "originalText": "Search your library for a basic land card, put that card onto the battlefield tapped, then shuffle your library.\nJourney. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -5553,7 +5653,7 @@
             "layout": "normal",
             "manaCost": "{1}{W}{U}",
             "name": "A Cold and Gentle Place",
-            "number": "201",
+            "number": "204",
             "originalText": "Whenever a creature attacks you or a permanent you control, that creature doesn't untap during its controller's next untap step.",
             "originalType": "Enchantment",
             "rarity": "Uncommon",
@@ -5561,6 +5661,32 @@
             "type": "Enchantment",
             "types": [
                 "Enchantment"
+            ]
+        },
+        {
+            "artist": "cheo36",
+            "cmc": 4,
+            "colorIdentity": [
+                "R",
+                "G"
+            ],
+            "colors": [
+                "Red",
+                "Green"
+            ],
+            "flavor": "\"...and so the Dragons were no more...\"",
+            "imageName": "ancient extinction",
+            "layout": "normal",
+            "manaCost": "{2}{R}{G}",
+            "name": "Ancient Extinction",
+            "number": "205",
+            "originalText": "Choose one \u2014\n\u2022 Destroy all artifacts.\n\u2022 Destroy all creatures with flying.\n\u2022 Destroy all lands with activated abilities that aren't mana abilities.",
+            "originalType": "Sorcery",
+            "rarity": "Mythic Rare",
+            "text": "Choose one \u2014\n\u2022 Destroy all artifacts.\n\u2022 Destroy all creatures with flying.\n\u2022 Destroy all lands with activated abilities that aren't mana abilities.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
             ]
         },
         {
@@ -5579,8 +5705,8 @@
             "layout": "normal",
             "manaCost": "{1}{R}{W}",
             "name": "Brilliant Phantom",
-            "number": "202",
-            "originalText": "Flying\nWhenever Brilliant Phantom attacks, create a 1/1 red Soldier creature token.",
+            "number": "206",
+            "originalText": "Flying\nWhenever Brilliant Phantom attacks, create a 1/1 red Soldier creature token that's tapped and attacking.",
             "originalType": "Creature \u2014 Spirit Warrior",
             "power": "1",
             "rarity": "Uncommon",
@@ -5588,7 +5714,7 @@
                 "Spirit",
                 "Warrior"
             ],
-            "text": "Flying\nWhenever Brilliant Phantom attacks, create a 1/1 red Soldier creature token.",
+            "text": "Flying\nWhenever Brilliant Phantom attacks, create a 1/1 red Soldier creature token that's tapped and attacking.",
             "toughness": "3",
             "type": "Creature \u2014 Spirit Warrior",
             "types": [
@@ -5610,8 +5736,8 @@
             "layout": "normal",
             "manaCost": "{1}{U}{B}",
             "name": "Ciaran, Blade of the Lords",
-            "number": "203",
-            "originalText": "Deathtouch\nWhen Ciaran, Blade of the Lords enters the battlefield, each opponent chooses a creature card name.\nCiaran can't be blocked except by creatures with one of the chosen names.",
+            "number": "207",
+            "originalText": "Deathtouch\nAs Ciaran, Blade of the Lords enters the battlefield, each opponent chooses a creature card name.\nCiaran can't be blocked except by creatures with one of the chosen names.",
             "originalType": "Legendary Creature \u2014 Human Assassin",
             "power": "4",
             "rarity": "Rare",
@@ -5651,7 +5777,7 @@
             "layout": "normal",
             "manaCost": "{G}{U}",
             "name": "Darkroot Clan-Mother",
-            "number": "204",
+            "number": "208",
             "originalText": "Flash\nWhenever you cast a spell during an opponent's turn, scry 1.",
             "originalType": "Creature \u2014 Cat Advisor",
             "power": "1",
@@ -5682,21 +5808,15 @@
             "layout": "normal",
             "manaCost": "{X}{G}{U}",
             "name": "Deluge Hydra",
-            "number": "205",
-            "originalText": "Deluge Hydra enters the battlefield with X +1/+1 counters on it.\nWhenever Deluge Hydra attacks, choose up to X target permanents, where X is Deluge Hydra's power. Tap or untap those permanents.",
+            "number": "209",
+            "originalText": "Deluge Hydra enters the battlefield with X +1/+1 counters on it.\nWhenever Deluge Hydra attacks, for each +1/+1 counter on it, tap or untap up to one permanent.",
             "originalType": "Creature \u2014 Hydra",
             "power": "0",
             "rarity": "Mythic Rare",
-            "rulings": [
-                {
-                    "date": "2018-05-18",
-                    "text": "You either tap all of the untapped targets, or untap all of the tapped targets, never both."
-                }
-            ],
             "subtypes": [
                 "Hydra"
             ],
-            "text": "Deluge Hydra enters the battlefield with X +1/+1 counters on it.\nWhenever Deluge Hydra attacks, choose up to X target permanents, where X is Deluge Hydra's power. Tap or untap those permanents.",
+            "text": "Deluge Hydra enters the battlefield with X +1/+1 counters on it.\nWhenever Deluge Hydra attacks, for each +1/+1 counter on it, tap or untap up to one permanent.",
             "toughness": "0",
             "type": "Creature \u2014 Hydra",
             "types": [
@@ -5718,7 +5838,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}{G}",
             "name": "Dragon-Path Traveler",
-            "number": "206",
+            "number": "210",
             "originalText": "Menace\nWhenever Dragon-Path Traveler deals combat damage to a player, you may put a land card from your hand onto the battlefield.",
             "originalType": "Creature \u2014 Human Dragon",
             "power": "3",
@@ -5749,8 +5869,8 @@
             "layout": "normal",
             "manaCost": "{1}{G}{U}",
             "name": "Dusk, Princess of Oolacile",
-            "number": "207",
-            "originalText": "Flash\nWhen Dusk, Princess of Oolacile enters the battlefield, another target creature you control becomes a copy of another target permanent you control until end of turn.",
+            "number": "211",
+            "originalText": "Flash\nWhen Dusk, Princess of Oolacile enters the battlefield, another target creature you control becomes a copy of a permanent you control until end of turn.",
             "originalType": "Legendary Creature \u2014 Human Wizard",
             "power": "2",
             "rarity": "Rare",
@@ -5761,8 +5881,8 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Flash\nWhen Dusk, Princess of Oolacile enters the battlefield, another target creature you control becomes a copy of another target permanent you control until end of turn.",
-            "toughness": "1",
+            "text": "Flash\nWhen Dusk, Princess of Oolacile enters the battlefield, another target creature you control becomes a copy of a permanent you control until end of turn.",
+            "toughness": "2",
             "type": "Legendary Creature \u2014 Human Wizard",
             "types": [
                 "Creature"
@@ -5783,7 +5903,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}{R}{W}{W}",
             "name": "Gwyn, Lord of Sunlight",
-            "number": "208",
+            "number": "212",
             "originalText": "First strike, vigilance\nWhenever Gwyn, Lord of Sunlight or another creature you control attacks, Gwyn deals 3 damage to target creature defending player controls.",
             "originalType": "Legendary Creature \u2014 God",
             "power": "6",
@@ -5816,7 +5936,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}{U}",
             "name": "Gwyndolin, the Darkmoon",
-            "number": "209",
+            "number": "213",
             "originalText": "At the beginning of your upkeep, scry 1.\nWhenever an opponent casts a spell targeting you or a permanent you control, exile target creature, artifact, or enchantment that player controls.",
             "originalType": "Legendary Creature \u2014 God",
             "power": "3",
@@ -5855,10 +5975,10 @@
             "layout": "normal",
             "manaCost": "{3}{G}{W}",
             "name": "Gwynevere, Bountiful Sun",
-            "number": "210",
-            "originalText": "When Gwynevere, Bountiful Sun enters the battlefield, create two 2/2 green and white Knight creature tokens with lifelink named Princess Guard.\n{T}: Create a token attached to target creature that's a copy of target Aura you control.",
+            "number": "214",
+            "originalText": "Lifelink\nWhen Gwynevere, Bountiful Sun enters the battlefield, for each Aura you control, create a token that's a copy of that Aura. (Attach that token to any permanent it could legally enchant.)",
             "originalType": "Legendary Creature \u2014 God",
-            "power": "0",
+            "power": "2",
             "rarity": "Mythic Rare",
             "subtypes": [
                 "God"
@@ -5866,8 +5986,8 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "When Gwynevere, Bountiful Sun enters the battlefield, create two 2/2 green and white Knight creature tokens with lifelink named Princess Guard.\n{T}: Create a token attached to target creature that's a copy of target Aura you control.",
-            "toughness": "8",
+            "text": "Lifelink\nWhen Gwynevere, Bountiful Sun enters the battlefield, for each Aura you control, create a token that's a copy of that Aura. (Attach that token to something it could legally enchant.)",
+            "toughness": "6",
             "type": "Legendary Creature \u2014 God",
             "types": [
                 "Creature"
@@ -5888,10 +6008,10 @@
             "layout": "normal",
             "manaCost": "{3}{B}{R}",
             "name": "Izalith, Great Flame Witch",
-            "number": "211",
+            "number": "215",
             "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Izalith, Great Flame Witch despairs, search your library for a Demon creature card and put it onto the battlefield tapped and attacking, then shuffle your library.",
             "originalType": "Legendary Creature \u2014 God",
-            "power": "5",
+            "power": "6",
             "rarity": "Mythic Rare",
             "subtypes": [
                 "God"
@@ -5908,7 +6028,7 @@
         },
         {
             "artist": "white cyanide",
-            "cmc": 7,
+            "cmc": 6,
             "colorIdentity": [
                 "B",
                 "R"
@@ -5919,66 +6039,22 @@
             ],
             "imageName": "kalameet, abyss dragon",
             "layout": "normal",
-            "manaCost": "{5}{B}{R}",
+            "manaCost": "{4}{B}{R}",
             "name": "Kalameet, Abyss Dragon",
-            "number": "212",
-            "originalText": "Flying, menace\nIf another source would deal damage to an opponent, it deals double that damage to that player instead.\nIf a spell or ability would cause an opponent to sacrifice one or more creatures, that player sacrifices twice that many creatures instead.",
+            "number": "216",
+            "originalText": "Flying\nIf another source would deal damage to an opponent or a creature an opponent controls, it instead deals twice that much damage.",
             "originalType": "Legendary Creature \u2014 Dragon",
-            "power": "6",
-            "rarity": "Mythic Rare",
-            "rulings": [
-                {
-                    "date": "2018-01-26",
-                    "text": "The last ability makes it so instead of sacrificing a specific creature (e.g. because of a desperation effect or a spell like Final Answer), your opponent can sacrifice any two of their creatures."
-                },
-                {
-                    "date": "2018-01-26",
-                    "text": "Sacrificing creatures as a cost to cast a spell or activate an ability is not affected by Kalameet."
-                }
-            ],
+            "power": "5",
+            "rarity": "Rare",
             "subtypes": [
                 "Dragon"
             ],
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Flying, menace\nIf another source would deal damage to an opponent, it deals double that damage to that player instead.\nIf a spell or ability would cause an opponent to sacrifice one or more creatures, that player sacrifices twice that many creatures instead.",
-            "toughness": "6",
+            "text": "Flying\nIf another source would deal damage to an opponent or a creature an opponent controls, it deals double that damage to that creature or player instead.",
+            "toughness": "5",
             "type": "Legendary Creature \u2014 Dragon",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
-            "artist": "Michele Giorgi",
-            "cmc": 3,
-            "colorIdentity": [
-                "B",
-                "R"
-            ],
-            "colors": [
-                "Black",
-                "Red"
-            ],
-            "imageName": "lautrec, the embraced",
-            "layout": "normal",
-            "manaCost": "{1}{B}{R}",
-            "name": "Lautrec, the Embraced",
-            "number": "213",
-            "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Lautrec, the Embraced despairs, target opponent reveals their hand. You choose a nonland card from it and exile it. Lautrec deals damage to that player equal to that card's converted mana cost.",
-            "originalType": "Legendary Creature \u2014 Human Knight",
-            "power": "3",
-            "rarity": "Rare",
-            "subtypes": [
-                "Human",
-                "Knight"
-            ],
-            "supertypes": [
-                "Legendary"
-            ],
-            "text": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Lautrec, the Embraced despairs, target opponent reveals their hand. You choose a nonland card from it and exile it. Lautrec deals damage to that player equal to that card's converted mana cost.",
-            "toughness": "3",
-            "type": "Legendary Creature \u2014 Human Knight",
             "types": [
                 "Creature"
             ]
@@ -5998,8 +6074,8 @@
             "layout": "normal",
             "manaCost": "{5}{B}{G}",
             "name": "Manus, Father of the Abyss",
-            "number": "214",
-            "originalText": "Menace\nWhenever Manus, Father of the Abyss enters the battlefield or attacks, you may have it fight target creature.\nIf a creature an opponent controls would die, exile it instead.",
+            "number": "217",
+            "originalText": "Menace\nWhenever Manus, Father of the Abyss enters the battlefield or attacks, it fights up to one target creature.\nIf a creature an opponent controls would die, exile it instead.",
             "originalType": "Legendary Creature \u2014 Human Horror",
             "power": "5",
             "rarity": "Mythic Rare",
@@ -6010,7 +6086,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Menace\nWhenever Manus, Father of the Abyss enters the battlefield or attacks, you may have it fight target creature.\nIf a creature an opponent controls would die, exile it instead.",
+            "text": "Menace\nWhenever Manus, Father of the Abyss enters the battlefield or attacks, it fights up to one target creature.\nIf a creature an opponent controls would die, exile it instead.",
             "toughness": "7",
             "type": "Legendary Creature \u2014 Human Horror",
             "types": [
@@ -6032,7 +6108,7 @@
             "layout": "normal",
             "manaCost": "{W}{B}",
             "name": "Oscar, Undead Questant",
-            "number": "215",
+            "number": "218",
             "originalText": "When Oscar, Undead Questant enters the battlefield, put a +1/+1 counter on another target creature you control. It gains lifelink. (This effect lasts indefinitely).\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Knight. Hollow only as a sorcery.)",
             "originalType": "Legendary Creature \u2014 Human Knight",
             "power": "2",
@@ -6067,7 +6143,7 @@
             "layout": "normal",
             "manaCost": "{1}{G}{W}",
             "name": "Pass On",
-            "number": "216",
+            "number": "219",
             "originalText": "Create a 2/2 green Wolf creature token. Attach any number of Equipment and/or Auras you control to that token.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -6075,6 +6151,31 @@
             "type": "Instant",
             "types": [
                 "Instant"
+            ]
+        },
+        {
+            "artist": "blank aoz",
+            "cmc": 5,
+            "colorIdentity": [
+                "U",
+                "R"
+            ],
+            "colors": [
+                "Blue",
+                "Red"
+            ],
+            "imageName": "power within",
+            "layout": "normal",
+            "manaCost": "{3}{U}{R}",
+            "name": "Power Within",
+            "number": "220",
+            "originalText": "Whenever you cast an instant or sorcery spell, copy that spell. You may choose new targets for the copy. Power Within deals damage to you equal to that spell's converted mana cost.",
+            "originalType": "Enchantment",
+            "rarity": "Mythic Rare",
+            "text": "Whenever you cast an instant or sorcery spell, copy that spell. You may choose new targets for the copy. Power Within deals damage to you equal to that spell's converted mana cost.",
+            "type": "Enchantment",
+            "types": [
+                "Enchantment"
             ]
         },
         {
@@ -6092,8 +6193,8 @@
             "layout": "normal",
             "manaCost": "{2}{W}{B}",
             "name": "Priest of Velka",
-            "number": "217",
-            "originalText": "When Priest of Velka enters the battlefield, it deals damage to each opponent equal to the number of Zombies you control and you gain that much life.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric. Hollow only as a sorcery.)",
+            "number": "221",
+            "originalText": "When Priest of Velka enters the battlefield, each opponent loses life equal to the number of Zombies you control and you gain that much life.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric. Hollow only as a sorcery.)",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "3",
             "rarity": "Uncommon",
@@ -6101,7 +6202,7 @@
                 "Human",
                 "Cleric"
             ],
-            "text": "When Priest of Velka enters the battlefield, it deals damage to each opponent equal to the number of Zombies you control and you gain that much life.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric. Hollow only as a sorcery.)",
+            "text": "When Priest of Velka enters the battlefield, each opponent loses life equal to the number of Zombies you control and you gain that much life.\nHollow (Discard a card, Pay this card's mana cost and exile it from your graveyard: Create a token that's a copy of it, except it's a black Zombie Human Cleric. Hollow only as a sorcery.)",
             "toughness": "3",
             "type": "Creature \u2014 Human Cleric",
             "types": [
@@ -6123,7 +6224,7 @@
             "layout": "normal",
             "manaCost": "{W}{U}",
             "name": "Priscilla, Painting Protector",
-            "number": "218",
+            "number": "222",
             "originalText": "Defender, lifelink\nIf a creature dealt damage by Priscilla, Painting Protector this turn would die, instead return that card to its owner's hand.",
             "originalType": "Legendary Creature \u2014 Human Cleric",
             "power": "4",
@@ -6158,7 +6259,7 @@
             "layout": "normal",
             "manaCost": "{R}{G}",
             "name": "Quelana, Mother of Pyromancy",
-            "number": "219",
+            "number": "223",
             "originalText": "{T}: Add {R}.\n{3}, {T}: Create a 1/1 red and green Shaman creature token with haste and \"{T}: Add {R}.\"",
             "originalType": "Legendary Creature \u2014 Human Shaman",
             "power": "2",
@@ -6192,7 +6293,7 @@
             "layout": "normal",
             "manaCost": "{B}{R}",
             "name": "Relentless Marauder",
-            "number": "220",
+            "number": "224",
             "originalText": "Desperation (This creature may despair as it attacks. If it does, sacrifice it at the beginning of the next end step.)\nWhen Relentless Marauder despairs, other creatures you control gain \"When this creature dies, return it to the battlefield tapped under its owner's control\" until end of turn.",
             "originalType": "Creature \u2014 Human Berserker",
             "power": "2",
@@ -6209,40 +6310,6 @@
             ]
         },
         {
-            "artist": "AzloRaimT",
-            "cmc": 5,
-            "colorIdentity": [
-                "U",
-                "R"
-            ],
-            "colors": [
-                "Blue",
-                "Red"
-            ],
-            "imageName": "seath, scaleless betrayer",
-            "layout": "normal",
-            "manaCost": "{3}{U}{R}",
-            "name": "Seath, Scaleless Betrayer",
-            "number": "221",
-            "originalText": "Flying, indestructible\nWhenever you are dealt combat damage, sacrifice Seath, Scaleless Betrayer.\n{1}{U}{R}: Return Seath to its owner's hand. You draw two cards, then discard three cards.",
-            "originalType": "Legendary Creature \u2014 Dragon Wizard",
-            "power": "6",
-            "rarity": "Mythic Rare",
-            "subtypes": [
-                "Dragon",
-                "Wizard"
-            ],
-            "supertypes": [
-                "Legendary"
-            ],
-            "text": "Flying, indestructible\nWhenever you are dealt combat damage, sacrifice Seath, Scaleless Betrayer.\n{1}{U}{R}: Return Seath to its owner's hand. You draw two cards, then discard three cards.",
-            "toughness": "6",
-            "type": "Legendary Creature \u2014 Dragon Wizard",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
             "artist": "pixivid1474679",
             "cmc": 4,
             "colorIdentity": [
@@ -6253,12 +6320,12 @@
                 "Blue",
                 "Black"
             ],
-            "flavor": "Merchants traveling Lordran often leave with inventories fully stocked.",
+            "flavor": "Foreign merchants traveling Lordran often leave with inventories fully stocked.",
             "imageName": "shrewd collectors",
             "layout": "normal",
             "manaCost": "{2}{U}{B}",
             "name": "Shrewd Collectors",
-            "number": "222",
+            "number": "225",
             "originalText": "Whenever a card is put into your graveyard from anywhere for the first time each turn, put a +1/+1 counter on Shrewd Collectors.",
             "originalType": "Creature \u2014 Human Samurai",
             "power": "1",
@@ -6289,7 +6356,7 @@
             "layout": "normal",
             "manaCost": "{U}{R}",
             "name": "Siegmeyer, Errant Ally",
-            "number": "223",
+            "number": "226",
             "originalText": "At the beginning of your upkeep, journey. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)\nSiegmeyer attacks each combat if able.",
             "originalType": "Legendary Creature \u2014 Human Knight",
             "power": "3",
@@ -6324,7 +6391,7 @@
             "layout": "normal",
             "manaCost": "{2}{G}{W}",
             "name": "Sif, Great Grey Wolf",
-            "number": "224",
+            "number": "227",
             "originalText": "Vigilance, trample\nSif, Great Grey Wolf can't attack alone unless it's equipped.",
             "originalType": "Legendary Creature \u2014 Wolf",
             "power": "5",
@@ -6357,7 +6424,7 @@
             "layout": "normal",
             "manaCost": "{R}{W}",
             "name": "Solaire, Seeker of Sunlight",
-            "number": "225",
+            "number": "228",
             "originalText": "Haste\nWhen Solaire, Seeker of Sunlight enters the battlefield, another target creature you control gets +X/+X until end of turn, where X is the number of other creatures you control.",
             "originalType": "Legendary Creature \u2014 Human Knight",
             "power": "2",
@@ -6398,16 +6465,16 @@
             "layout": "normal",
             "manaCost": "{U}{R}",
             "name": "Stalking Phantom",
-            "number": "226",
-            "originalText": "Flying\nWhenever you journey for the first time each turn, Stalking Phantom gets +1/+0 until end of turn.",
+            "number": "229",
+            "originalText": "Flying, haste\nWhenever you journey for the first time each turn, put a +1/+1 counter on Stalking Phantom.",
             "originalType": "Creature \u2014 Spirit Wizard",
-            "power": "2",
+            "power": "1",
             "rarity": "Uncommon",
             "subtypes": [
                 "Spirit",
                 "Wizard"
             ],
-            "text": "Flying\nWhenever you journey for the first time each turn, Stalking Phantom gets +1/+0 until end of turn.",
+            "text": "Flying, haste\nWhenever you journey for the first time each turn, put a +1/+1 counter on Stalking Phantom.",
             "toughness": "1",
             "type": "Creature \u2014 Spirit Wizard",
             "types": [
@@ -6429,8 +6496,8 @@
             "layout": "normal",
             "manaCost": "{2}{B}{G}",
             "name": "The Fair Lady",
-            "number": "227",
-            "originalText": "Reach\nWhenever a nontoken creature dies, you may pay 2 life. If you do, create a 1/2 green Spider creature token with reach.\nWhenever a token creature you control dies, The Fair Lady deals 1 damage to each opponent and you gain 1 life.",
+            "number": "230",
+            "originalText": "Reach\nWhenever a nontoken creature dies, you may pay 2 life. If you do, create a 1/2 green Spider creature token with reach.\nWhenever a token creature you control dies, each opponent loses 1 life and you gain 1 life.",
             "originalType": "Legendary Creature \u2014 Spider Demon",
             "power": "2",
             "rarity": "Rare",
@@ -6441,7 +6508,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Reach\nWhenever a nontoken creature dies, you may pay 2 life. If you do, create a 1/2 green Spider creature token with reach.\nWhenever a token creature you control dies, The Fair Lady deals 1 damage to each opponent and you gain 1 life.",
+            "text": "Reach\nWhenever a nontoken creature dies, you may pay 2 life. If you do, create a 1/2 green Spider creature token with reach.\nWhenever a token creature you control dies, each opponent loses 1 life and you gain 1 life.",
             "toughness": "4",
             "type": "Legendary Creature \u2014 Spider Demon",
             "types": [
@@ -6463,7 +6530,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}{G}",
             "name": "Thorned Knight",
-            "number": "228",
+            "number": "231",
             "originalText": "You may have Thorned Knight assign its combat damage as though it weren't blocked.\nSacrifice another creature: Put a +1/+1 counter on Thorned Knight.",
             "originalType": "Creature \u2014 Human Knight",
             "power": "2",
@@ -6495,7 +6562,7 @@
             "loyalty": 3,
             "manaCost": "{1}{B}{R}",
             "name": "Trusty Patches",
-            "number": "229",
+            "number": "232",
             "originalText": "+1: Each player discards a card unless they sacrifice a creature.\n+1: Exile target card from a graveyard. Trusty Patches deals 2 damage to each opponent.\n-6: For each player, choose at random two nonland cards from that player's graveyard. For each card chosen this way, you may cast it without paying its mana cost.",
             "originalType": "Legendary Planeswalker \u2014 Patches",
             "rarity": "Mythic Rare",
@@ -6532,7 +6599,7 @@
             "layout": "normal",
             "manaCost": "{2}{W}{B}",
             "name": "Velka, Arbiter of Sin",
-            "number": "230",
+            "number": "233",
             "originalText": "Deathtouch, lifelink\nWhenever Velka, Arbiter of Sin or another creature enters the battlefield under your control, you may have each player gain 2 life. Otherwise, each player loses 2 life.",
             "originalType": "Legendary Creature \u2014 God",
             "power": "3",
@@ -6560,8 +6627,8 @@
             "layout": "normal",
             "manaCost": "{2}",
             "name": "Crystal Lizard",
-            "number": "231",
-            "originalText": "{2}, Sacrifice Crystal Lizard: Add two mana of any one color, then draw a card.",
+            "number": "234",
+            "originalText": "{2}, {T}, Sacrifice Crystal Lizard: Add two mana of any one color, then draw a card.",
             "originalType": "Artifact Creature \u2014 Lizard",
             "power": "0",
             "rarity": "Common",
@@ -6574,7 +6641,7 @@
             "subtypes": [
                 "Lizard"
             ],
-            "text": "{2}, Sacrifice Crystal Lizard: Add two mana of any one color, then draw a card.",
+            "text": "{2}, {T}, Sacrifice Crystal Lizard: Add two mana of any one color, then draw a card.",
             "toughness": "2",
             "type": "Artifact Creature \u2014 Lizard",
             "types": [
@@ -6592,7 +6659,7 @@
             "layout": "normal",
             "manaCost": "{2}",
             "name": "Estus Flask",
-            "number": "232",
+            "number": "235",
             "originalText": "Estus Flask enters the battlefield with five charge counters on it.\n{T}, Remove a charge counter from Estus Flask: You gain 2 life.",
             "originalType": "Artifact",
             "rarity": "Common",
@@ -6612,7 +6679,7 @@
             "layout": "normal",
             "manaCost": "{1}",
             "name": "Firebomb",
-            "number": "233",
+            "number": "236",
             "originalText": "{3}, {T}, Sacrifice Firebomb: Firebomb deals 2 damage to any target.",
             "originalType": "Artifact",
             "rarity": "Common",
@@ -6624,16 +6691,16 @@
         },
         {
             "artist": "Christof Grobelski",
-            "cmc": 4,
+            "cmc": 5,
             "colorIdentity": [],
             "colors": [],
             "flavor": "Ripped from the maw of an everlasting dragon.",
             "imageName": "havel's dragon tooth",
             "layout": "normal",
-            "manaCost": "{4}",
+            "manaCost": "{5}",
             "name": "Havel's Dragon Tooth",
-            "number": "234",
-            "originalText": "Indestructible\nEquipped creature gets +6/+6 and has trample and hexproof.\nEquip {8}",
+            "number": "237",
+            "originalText": "Indestructible\nEquipped creature gets +5/+5 and has trample.\nEquip {5}",
             "originalType": "Legendary Artifact \u2014 Equipment",
             "rarity": "Rare",
             "subtypes": [
@@ -6642,7 +6709,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Indestructible\nEquipped creature gets +6/+6 and has trample and hexproof.\nEquip {8}",
+            "text": "Indestructible\nEquipped creature gets +5/+5 and has trample.\nEquip {5}",
             "type": "Legendary Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -6658,14 +6725,14 @@
             "layout": "normal",
             "manaCost": "{3}",
             "name": "Zweihander",
-            "number": "235",
-            "originalText": "Equipped creature gets +3/+0.\nEquip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",
+            "number": "238",
+            "originalText": "Equipped creature gets +3/+0.\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Common",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "Equipped creature gets +3/+0.\nEquip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",
+            "text": "Equipped creature gets +3/+0.\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -6680,7 +6747,7 @@
             "imageName": "abandoned bonfire",
             "layout": "normal",
             "name": "Abandoned Bonfire",
-            "number": "236",
+            "number": "239",
             "originalText": "When Abandoned Bonfire enters the battlefield, you gain 2 life.\n{T}: Add {C}.",
             "originalType": "Land",
             "rarity": "Common",
@@ -6701,7 +6768,7 @@
             "imageName": "blight undergrowth",
             "layout": "normal",
             "name": "Blight Undergrowth",
-            "number": "237",
+            "number": "240",
             "originalText": "Blight Undergrowth enters the battlefield tapped.\n{T}: Add {B} or {G}.\n{T}, Sacrifice Blight Undergrowth: Look at the top card of your library. You may put that card into your graveyard.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6719,7 +6786,7 @@
             "imageName": "decaying domain",
             "layout": "normal",
             "name": "Decaying Domain",
-            "number": "238",
+            "number": "241",
             "originalText": "{T}: Add {C}.\n{2}, {T}, Sacrifice Decaying Domain: Destroy target nonbasic land. Its controller may scry 2.",
             "originalType": "Land",
             "rarity": "Rare",
@@ -6738,7 +6805,7 @@
             "imageName": "evolving wilds",
             "layout": "normal",
             "name": "Evolving Wilds",
-            "number": "239",
+            "number": "242",
             "originalText": "{T}, Sacrifice Evolving Wilds: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.",
             "originalType": "Land",
             "rarity": "Common",
@@ -6753,14 +6820,15 @@
             "cmc": 0,
             "colorIdentity": [],
             "colors": [],
+            "flavor": "Meeting place of the lowly and the lost.",
             "imageName": "firelink shrine",
             "layout": "normal",
             "name": "Firelink Shrine",
-            "number": "240",
-            "originalText": "{T}: Add {C}.\n{3}, {T}, Discard a card: Journey. Activate this ability only any time you could cast a sorcery. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
+            "number": "243",
+            "originalText": "{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast artifact, enchantment, or creature spells with converted mana cost 2 or less.",
             "originalType": "Land",
             "rarity": "Rare",
-            "text": "{T}: Add {C}.\n{3}, {T}, Discard a card: Journey. Activate this ability only any time you could cast a sorcery. (Exile the top card of your library face up. Whenever a creature you control deals combat damage to an opponent, put a journeyed card you own into your hand.)",
+            "text": "{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast an artifact, enchantment, or creature spell with converted mana cost 2 or less.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6777,7 +6845,7 @@
             "imageName": "frosted sanctuary",
             "layout": "normal",
             "name": "Frosted Sanctuary",
-            "number": "241",
+            "number": "244",
             "originalText": "Frosted Sanctuary enters the battlefield tapped.\n{T}: Add {W} or {U}.\n{T}, Sacrifice Frosted Sanctuary: Look at the top card of your library. You may put that card into your graveyard.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6798,7 +6866,7 @@
             "imageName": "hero's rest",
             "layout": "normal",
             "name": "Hero's Rest",
-            "number": "242",
+            "number": "245",
             "originalText": "Hero's Rest enters the battlefield tapped.\n{T}: Add {G} or {W}.\n{T}, Sacrifice Hero's Rest: Look at the top card of your library. You may put that card into your graveyard.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6819,7 +6887,7 @@
             "imageName": "hilltop archive",
             "layout": "normal",
             "name": "Hilltop Archive",
-            "number": "243",
+            "number": "246",
             "originalText": "Hilltop Archive enters the battlefield tapped.\n{T}: Add {U} or {R}.\n{T}, Sacrifice Hilltop Archive: Look at the top card of your library. You may put that card into your graveyard.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6840,7 +6908,7 @@
             "imageName": "lava roots",
             "layout": "normal",
             "name": "Lava Roots",
-            "number": "244",
+            "number": "247",
             "originalText": "Lava Roots enters the battlefield tapped.\n{T}: Add {R} or {G}.\n{T}, Sacrifice Lava Roots: Look at the top card of your library. You may put that card into your graveyard.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6861,7 +6929,7 @@
             "imageName": "parish chapel",
             "layout": "normal",
             "name": "Parish Chapel",
-            "number": "245",
+            "number": "248",
             "originalText": "Parish Chapel enters the battlefield tapped.\n{T}: Add {W} or {B}.\n{T}, Sacrifice Parish Chapel: Look at the top card of your library. You may put that card into your graveyard.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6882,7 +6950,7 @@
             "imageName": "sinister ruins",
             "layout": "normal",
             "name": "Sinister Ruins",
-            "number": "246",
+            "number": "249",
             "originalText": "Sinister Ruins enters the battlefield tapped.\n{T}: Add {B} or {R}.\n{T}, Sacrifice Sinister Ruins: Look at the top card of your library. You may put that card into your graveyard.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6903,7 +6971,7 @@
             "imageName": "sunlight keep",
             "layout": "normal",
             "name": "Sunlight Keep",
-            "number": "247",
+            "number": "250",
             "originalText": "Sunlight Keep enters the battlefield tapped.\n{T}: Add {R} or {W}.\n{T}, Sacrifice Sunlight Keep: Look at the top card of your library. You may put that card into your graveyard.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6924,7 +6992,7 @@
             "imageName": "watery depths",
             "layout": "normal",
             "name": "Watery Depths",
-            "number": "248",
+            "number": "251",
             "originalText": "Watery Depths enters the battlefield tapped.\n{T}: Add {U} or {B}.\n{T}, Sacrifice Watery Depths: Look at the top card of your library. You may put that card into your graveyard.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6945,7 +7013,7 @@
             "imageName": "wooded basin",
             "layout": "normal",
             "name": "Wooded Basin",
-            "number": "249",
+            "number": "252",
             "originalText": "Wooded Basin enters the battlefield tapped.\n{T}: Add {G} or {U}.\n{T}, Sacrifice Wooded Basin: Look at the top card of your library. You may put that card into your graveyard.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6965,7 +7033,7 @@
             "imageName": "plains",
             "layout": "normal",
             "name": "Plains",
-            "number": "250",
+            "number": "253",
             "originalType": "Basic Land \u2014 Plains",
             "rarity": "Basic Land",
             "subtypes": [
@@ -6990,7 +7058,7 @@
             "imageName": "island",
             "layout": "normal",
             "name": "Island",
-            "number": "251",
+            "number": "254",
             "originalType": "Basic Land \u2014 Island",
             "rarity": "Basic Land",
             "subtypes": [
@@ -7015,7 +7083,7 @@
             "imageName": "swamp",
             "layout": "normal",
             "name": "Swamp",
-            "number": "252",
+            "number": "255",
             "originalType": "Basic Land \u2014 Swamp",
             "rarity": "Basic Land",
             "subtypes": [
@@ -7040,7 +7108,7 @@
             "imageName": "mountain",
             "layout": "normal",
             "name": "Mountain",
-            "number": "253",
+            "number": "256",
             "originalType": "Basic Land \u2014 Mountain",
             "rarity": "Basic Land",
             "subtypes": [
@@ -7065,7 +7133,7 @@
             "imageName": "forest",
             "layout": "normal",
             "name": "Forest",
-            "number": "254",
+            "number": "257",
             "originalType": "Basic Land \u2014 Forest",
             "rarity": "Basic Land",
             "subtypes": [
@@ -7086,5 +7154,5 @@
     "name": "Hollows of Lordran",
     "releaseDate": "2018-01-21",
     "type": "expansion",
-    "version": "84"
+    "version": "1.08"
 }

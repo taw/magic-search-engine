@@ -599,36 +599,6 @@
         },
         {
             "sets": [
-                "HLW"
-            ],
-            "comment": "For {card:Heavy Iron Armor}, the “double” keyword action is redefined as a continuous effect when used on static abilities",
-            "rules": [
-                {
-                    "type": "insert",
-                    "rule": "613.3e",
-                    "text": "Effects from static abilities that double a creature's power and/or toughness are applied. Such effects give the creature +X/+0, where X is its power, and/or +0/+Y, where Y is its toughness. See rule 701.9d."
-                },
-                {
-                    "type": "replace",
-                    "rule": "613.3f",
-                    "find": "7e",
-                    "replace": "7f"
-                },
-                {
-                    "type": "replace",
-                    "rule": "701.9b",
-                    "find": "To double a creature’s power,",
-                    "replace": "If a resolving spell or ability doubles a creature's power,"
-                },
-                {
-                    "type": "insert",
-                    "rule": "701.9c",
-                    "text": "Similarly, a static ability may also double a creature's power and/or toughness. See rule 613.3e."
-                }
-            ]
-        },
-        {
-            "sets": [
                 "AYR"
             ],
             "comment": "For {card:Tome of Infinity}, this rule clarifies that the Siege cycle doesn't have modal abilities",
