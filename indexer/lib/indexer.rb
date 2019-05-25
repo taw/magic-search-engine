@@ -99,7 +99,6 @@ class Indexer
       PatchMultipartCardNumbers,
       PatchFixCollectorNumbers,
       PatchUseFallbackNumbers,
-      PatchBattlebond,
       PatchVerifyCollectorNumbers,
 
       # Normalize data into more convenient form
@@ -129,16 +128,13 @@ class Indexer
       PatchDeleteErrataSets,
 
       # Patch mtg.wtf bugs
-      PatchSaga,
       PatchCmc,
-      PatchNissa,
       PatchMediaInsertArtists,
       PatchCstdRarity,
       PatchWatermarks,
       PatchConspiracyWatermarks,
       PatchBasicLandRarity,
       PatchUnstableBorders,
-      PatchEmnCardNumbers,
       PatchItpRqsRarity,
       PatchDeleteIncompleteCards,
       PatchAeLigature,
