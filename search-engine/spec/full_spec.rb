@@ -445,6 +445,13 @@ describe "Full Database Test" do
     lim_duls_cohort.text.should eq("Whenever Lim-Dûl's Cohort blocks or becomes blocked by a creature, that creature can't be regenerated this turn.")
   end
 
+  it "artist unicode" do
+    assert_search_equal %Q[a:"baǵa"], %Q[a:"baga"]
+    assert_search_equal %Q[a:Snõddy], %Q[a:snoddy]
+    assert_search_equal %Q[a:Véronique], %Q[a:Veronique]
+    assert_search_equal %Q[a:Ćeran], %Q[a:ceran]
+  end
+
   it "Non-alphanumeric characters in set names are ignored and 's is normalized" do
     assert_search_equal %Q[e:"Elves vs Inventors"], %Q[e:"Elves vs. Inventors"]
     assert_search_equal %Q[e:"From the Vault: Transform"], %Q[e:"From the Vault Transform"]

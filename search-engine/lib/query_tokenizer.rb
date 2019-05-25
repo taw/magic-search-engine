@@ -72,61 +72,61 @@ class QueryTokenizer
           @warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, ConditionForeign.new(s[1], s[2])]
         end
-      elsif s.scan(/t\s*[:=]\s*(?:"(.*?)"|([’'\-\u2212\w\*]+))/i)
+      elsif s.scan(/t\s*[:=]\s*(?:"(.*?)"|([’'\-\u2212\p{L}\p{Digit}_\*]+))/i)
         tokens << [:test, ConditionTypes.new(s[1] || s[2])]
-      elsif s.scan(/ft\s*[:=]\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/ft\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionFlavor.new(s[1] || s[2])]
       elsif s.scan(/o\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionOracle.new(s[1] || s[2])]
-      elsif s.scan(/a\s*[:=]\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/a\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionArtist.new(s[1] || s[2])]
       elsif s.scan(/(cn|tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|foreign)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionForeign.new(s[1], s[2] || s[3])]
-      elsif s.scan(/any\s*[:=]\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/any\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionAny.new(s[1] || s[2])]
-      elsif s.scan(/(banned|restricted|legal)\s*[:=]\s*(?:"(.*?)"|([\w\-]+))/i)
+      elsif s.scan(/(banned|restricted|legal)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_\-]+))/i)
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(s[2] || s[3])]
-      elsif s.scan(/(?:name|n)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([\w\-]+))/i)
+      elsif s.scan(/(?:name|n)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([\p{L}\p{Digit}_\-]+))/i)
         op = s[1]
         op = "=" if op == ":"
         tokens << [:test, ConditionNameComparison.new(op, s[2] || s[3])]
-      elsif s.scan(/(?:e|set)\s*[:=]\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/(?:e|set)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         sets = [s[1] || s[2]]
-        sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|(\w+))/i)
+        sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionEdition.new(*sets)]
-      elsif s.scan(/number\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|(\w+|\*))/i)
+      elsif s.scan(/number\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
         tokens << [:test, ConditionNumber.new(s[2] || s[3], s[1])]
-      elsif s.scan(/w\s*[:=]\s*(?:"(.*?)"|(\w+|\*))/i)
+      elsif s.scan(/w\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
         tokens << [:test, ConditionWatermark.new(s[1] || s[2])]
-      elsif s.scan(/f\s*[:=]\s*(?:"(.*?)"|([\w\-]+))/i)
+      elsif s.scan(/f\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_\-]+))/i)
         tokens << [:test, ConditionFormat.new(s[1] || s[2])]
-      elsif s.scan(/deck\s*[:=]\s*(?:"(.*?)"|([\w\-]+))/i)
+      elsif s.scan(/deck\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_\-]+))/i)
         tokens << [:test, ConditionDeck.new(s[1] || s[2])]
-      elsif s.scan(/b\s*[:=]\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/b\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         blocks = [s[1] || s[2]]
-        blocks << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|(\w+))/i)
+        blocks << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionBlock.new(*blocks)]
-      elsif s.scan(/st\s*[:=]\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/st\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionSetType.new(s[1] || s[2])]
       elsif s.scan(/(c|ci|in)\s*(>=|>|<=|<|=)\s*(?:"(\d+)"|(\d+))/i)
         tokens << [:test, ConditionColorCountExpr.new(s[1].downcase, s[2], s[3] || s[4])]
-      elsif s.scan(/(?:c|color)\s*:\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/(?:c|color)\s*:\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionColors.new(parse_color(s[1] || s[2]))]
-      elsif s.scan(/(?:ci|id)\s*[:!]\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/(?:ci|id)\s*[:!]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionColorIdentity.new(parse_color(s[1] || s[2]))]
       elsif s.scan(/(?:in)\s*:\s*\*/i)
         tokens << [:test, ConditionColorIndicatorAny.new]
-      elsif s.scan(/(?:in)\s*[:=]\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/(?:in)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionColorIndicator.new(parse_color(s[1] || s[2]))]
-      elsif s.scan(/c!(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/c!(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionColorsExclusive.new(parse_color(s[1] || s[2]))]
-      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([\-\w+]+))/i)
+      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([\-[\p{L}\p{Digit}_]+]+))/i)
         op = s[2]
         op = "=" if op == ":"
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(op, s[3] || s[4])]
-      elsif s.scan(/r\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/r\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         op = s[1]
         op = "=" if op == ":"
         rarity = s[2] || s[3]
@@ -144,7 +144,7 @@ class QueryTokenizer
         b = s[3].downcase
         b = aliases[b] || b
         tokens << [:test, ConditionExpr.new(a, op, b)]
-      elsif s.scan(/(c|ci|in)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|(\w+))/i)
+      elsif s.scan(/(c|ci|in)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionColorExpr.new(s[1].downcase, s[2], parse_color(s[3] || s[4]))]
       elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})*)/i)
         op = s[1]
@@ -173,13 +173,13 @@ class QueryTokenizer
         tokens << [:test, ConditionBorder.new("none")]
       elsif s.scan(/border\s*[:=]\s*(black|silver|white|none)\b/i)
         tokens << [:test, ConditionBorder.new(s[1].downcase)]
-      elsif s.scan(/sort\s*[:=]\s*(?:"(.*?)"|([\-\,\.\w]+))/i)
+      elsif s.scan(/sort\s*[:=]\s*(?:"(.*?)"|([\-\,\.\p{L}\p{Digit}_]+))/i)
         tokens << [:metadata, {sort: (s[1]||s[2]).downcase}]
-      elsif s.scan(/view\s*[:=]\s*(?:"(.*?)"|([\.\w]+))/i)
+      elsif s.scan(/view\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)
         tokens << [:metadata, {view: (s[1]||s[2]).downcase}]
       elsif s.scan(/\+\+/i)
         tokens << [:metadata, {ungrouped: true}]
-      elsif s.scan(/time\s*[:=]\s*(?:"(.*?)"|([\.\w]+))/i)
+      elsif s.scan(/time\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)
         # Parsing is downstream responsibility
         tokens << [:time, parse_time(s[1] || s[2])]
       elsif s.scan(/"(.*?)"/i)
