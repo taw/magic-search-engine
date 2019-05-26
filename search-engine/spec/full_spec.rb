@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(19496)
-    db.number_of_printings.should eq(40104)
+    db.number_of_printings.should eq(40167)
   end
 
   it "block codes" do
