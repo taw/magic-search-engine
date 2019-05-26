@@ -16,6 +16,11 @@ class SplitMtgjson
   def call
     SETS_DIR.mkpath
     @data.each do |set_code, set|
+      if set_code != set["code"]
+        warn "Mismatched set code: #{set_code} != #{set["code"]}"
+        set_code = set["code"]
+      end
+
       set["cards"].each do |card|
         # Delete this, as it changes a ton and messes up git history
         card.delete "printings"
