@@ -245,9 +245,10 @@ class CompRules:
                     else:
                         raise NotImplementedError('Unknown card type: {!r}'.format(patch['cardType']))
                     subtypes = {re.sub(' \\(.+\\)', '', subtype): subtype for subtype in split(match.group(3))}
-                    for new_subtype in patch['subtypes']:
+                    for new_annotated_subtype in patch['subtypes']:
+                        new_subtype = re.sub(' \\(.+\\)', '', new_annotated_subtype)
                         if new_subtype not in subtypes:
-                            subtypes[new_subtype] = new_subtype
+                            subtypes[new_subtype] = new_annotated_subtype
                     self['205.3{}'.format(subrule_id)] = '{}. The {} types are {}.{}'.format(match.group(1), match.group(2), join(v for k, v in sorted(subtypes.items())), match.group(4))
                     patch_rules.add('205.3{}'.format(subrule_id))
                 elif patch['type'] == 'append':

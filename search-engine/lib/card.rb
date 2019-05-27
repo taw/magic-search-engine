@@ -238,6 +238,8 @@ class Card
         ci << $1 << $2
       when "chaos"
         # planechase special symbol, disregard
+      when "discover"
+        # (custom) SOU special symbol, disregard
       else
         raise "Unknown mana symbol `#{sym}'"
       end

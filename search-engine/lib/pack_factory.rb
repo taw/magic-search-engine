@@ -253,6 +253,9 @@ class PackFactory
       # TSL packs always have exactly one DFC, replacing a common slot
       # also follow Reuben's rules
       build_pack(set_code, {tsl_dfc: 1, sfc_common_unbalanced: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1}, pack_class: ReubenPack)
+    when "sou"
+      # SOU has opted into taw's color-balanced algorithm
+      build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1})
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this

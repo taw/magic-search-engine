@@ -42,6 +42,149 @@
         },
         {
             "sets": [
+                "SOU"
+            ],
+            "comment": "Discoveries, a new enchantment subtype, are defined here",
+            "rules": [
+                {
+                    "type": "replace",
+                    "rule": "107.15",
+                    "find": "of a Saga card",
+                    "replace": "of a Discovery or Saga card"
+                },
+                {
+                    "type": "replace",
+                    "rule": "107.15",
+                    "find": "includes a Roman numeral",
+                    "replace": "may include a Roman numeral"
+                },
+                {
+                    "type": "replace",
+                    "rule": "107.15",
+                    "find": "to the right of a chapter symbol",
+                    "replace": "to the right of such a chapter symbol"
+                },
+                {
+                    "type": "replace",
+                    "rule": "107.15",
+                    "find": "Saga Cards",
+                    "replace": "Discovery and Saga Cards"
+                },
+                {
+                    "type": "replace",
+                    "rule": "107.15a",
+                    "find": "Saga",
+                    "replace": "enchantment"
+                },
+                {
+                    "type": "add",
+                    "rule": "107.15",
+                    "text": "The discover symbol is {DISCOVER}. {DISCOVER} is a chapter symbol. The text box of a Discovery card also includes {DISCOVER}, which is a keyword ability that represents a static ability. The text printed in the text box striation to the right of {DISCOVER} is an ability granted by the static ability it represents. “{DISCOVER}—[Ability]” means “As long as the number of lore counters on this Discovery is greater than its final chapter number, it has [ability].”"
+                },
+                {
+                    "type": "replaceRule",
+                    "rule": "303.5",
+                    "text": "Some enchantments have the subtype “Discovery” or “Saga”. See rule 714 for more information about these cards."
+                },
+                {
+                    "type": "replace",
+                    "rule": "505.4",
+                    "find": "Saga enchantments",
+                    "replace": "Discovery enchantments with no more lore counters on them than their final chapter number and/or Saga enchantments"
+                },
+                {
+                    "type": "replace",
+                    "rule": "505.4",
+                    "find": "each Saga they control",
+                    "replace": "each of those permanents"
+                },
+                {
+                    "type": "replace",
+                    "rule": "505.4",
+                    "find": "Saga Cards",
+                    "replace": "Discovery and Saga Cards"
+                },
+                {
+                    "type": "replace",
+                    "rule": "703.4e",
+                    "find": "each Saga enchantment they control",
+                    "replace": "each Discovery enchantment they control with no more lore counters on it than its final chapter number and each Saga enchantment they control"
+                },
+                {
+                    "type": "replace",
+                    "rule": "703.4e",
+                    "find": "Saga Cards",
+                    "replace": "Discovery and Saga Cards"
+                },
+                {
+                    "type": "replace",
+                    "rule": "704.5s",
+                    "find": "Saga Cards",
+                    "replace": "Discovery and Saga Cards"
+                },
+                {
+                    "type": "replace",
+                    "rule": "714",
+                    "find": "Saga Cards",
+                    "replace": "Discovery and Saga Cards"
+                },
+                {
+                    "type": "replace",
+                    "rule": "714.1",
+                    "find": "Each Saga card",
+                    "replace": "Each Discovery card and each Saga card"
+                },
+                {
+                    "type": "replace",
+                    "rule": "714.2",
+                    "find": "triggered",
+                    "replace": "triggered or static"
+                },
+                {
+                    "type": "replace",
+                    "rule": "714.2a",
+                    "find": "includes",
+                    "replace": "may include"
+                },
+                {
+                    "type": "replace",
+                    "rule": "714.2b",
+                    "find": "Saga",
+                    "replace": "enchantment"
+                },
+                {
+                    "type": "replace",
+                    "rule": "714.2d",
+                    "find": "Saga",
+                    "replace": "Discovery or Saga"
+                },
+                {
+                    "type": "add",
+                    "rule": "714.2",
+                    "text": "A Discovery also has an additional chapter ability that uses the chapter symbol {DISCOVER}. “{DISCOVER}—[Abiltiy]” means “As long as the number of lore counters on this Discovery is greater than its final chapter number, it has [ability].” This chapter ability doesn't affect the Discovery's final chapter number."
+                },
+                {
+                    "type": "replace",
+                    "rule": "714.3",
+                    "find": "Sagas",
+                    "replace": "Discoveries and Sagas"
+                },
+                {
+                    "type": "replace",
+                    "rule": "714.3a",
+                    "find": "Saga",
+                    "replace": "Discovery or Saga"
+                },
+                {
+                    "type": "replace",
+                    "rule": "714.3b",
+                    "find": "each Saga they control",
+                    "replace": "each Discovery they control with no more lore counters on it than its final chapter number and each Saga they control"
+                }
+            ]
+        },
+        {
+            "sets": [
                 "DHM"
             ],
             "comment": "Structures, a new artifact subtype, are defined here",
@@ -237,9 +380,19 @@
                     "type": "addSubtypes",
                     "cardType": "Artifact",
                     "subtypes": [
+                        "Bullet",
                         "Canister",
+                        "Monument",
                         "Relic",
                         "Structure"
+                    ]
+                },
+                {
+                    "type": "addSubtypes",
+                    "cardType": "Enchantment",
+                    "subtypes": [
+                        "Cloister",
+                        "Discovery (see rule 714)"
                     ]
                 },
                 {
@@ -247,6 +400,7 @@
                     "cardType": "Planeswalker",
                     "subtypes": [
                         "Cypress",
+                        "Eli",
                         "Evis",
                         "Farajo",
                         "Faralyn",
@@ -257,12 +411,14 @@
                         "Hohoja",
                         "L3-T",
                         "Lazaire",
+                        "Lhosei",
                         "Luma",
                         "Nibinem",
                         "Nic",
                         "Patches",
                         "Roselyn",
                         "Sarasa",
+                        "Shala",
                         "Sobki",
                         "Talya",
                         "Toahanga",
@@ -293,6 +449,7 @@
                 {
                     "type": "addAbilityWords",
                     "abilityWords": [
+                        "civilized",
                         "expedition",
                         "imaginarium",
                         "justice",
@@ -528,7 +685,10 @@
             ]
         },
         {
-            "comment": "For {card:Richard Garfield, Ph.D.} in the Bracket Cube, this rule allows a spell which is cast as a copy of an instant spell to be cast at instant speed",
+            "sets": [
+                "SOU"
+            ],
+            "comment": "For {card:Stolen Innovations}, this rule allows a spell which is cast as a copy of an instant spell to be cast at instant speed",
             "rules": [
                 {
                     "type": "add",
@@ -549,9 +709,10 @@
         },
         {
             "sets": [
-                "VST"
+                "VST",
+                "SOU"
             ],
-            "comment": "For {card:Sandwarp}, this rule links optional additional costs to effects checking whether they were paid",
+            "comment": "For {card:Sandwarp} and {card:Blazing Offerings}, this rule links optional additional costs to effects checking whether they were paid",
             "rules": [
                 {
                     "type": "add",
@@ -1294,6 +1455,24 @@
         },
         {
             "sets": [
+                "SOU"
+            ],
+            "comment": "The assault keyword ability is defined here",
+            "rules": [
+                {
+                    "type": "addKeywordAbility",
+                    "rule": {
+                        "text": "Assault",
+                        "subrules": [
+                            "Assault is a triggered ability. “Assault [cost]” means “Whenever this creature attacks, if it has no +1/+1 counters on it, you may pay [cost]. If you do, put a +1/+1 counter on this creature.”",
+                            "A permanent “assaults” when its assault cost is paid, regardless of whether any counters are put on it."
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sets": [
                 "DHM"
             ],
             "comment": "Structures with stability 0 are put into the graveyard as a state-based action",
@@ -1318,12 +1497,12 @@
                 {
                     "type": "replaceRule",
                     "rule": "711.1a",
-                    "text": "A double-faced card's front face is marked by a front-face symbol in its upper left corner. This symbol may be a modified Planeswalker icon, a sun, a full moon, a compass rose, or a chalice."
+                    "text": "A double-faced card's front face is marked by a front-face symbol in its upper left corner. This symbol may be a modified Planeswalker icon, a sun, a full moon, a compass rose, a chalice, or a lion."
                 },
                 {
                     "type": "replaceRule",
                     "rule": "711.1b",
-                    "text": "A double-faced card's back face is marked by a back-face symbol in its upper left corner. This symbol may be a full Planeswalker icon, a crestent moon, a stylized image of Emrakul, a land icon, or a flame."
+                    "text": "A double-faced card's back face is marked by a back-face symbol in its upper left corner. This symbol may be a full Planeswalker icon, a crestent moon, a stylized image of Emrakul, a land icon, a flame, or the cuneiform character for god."
                 }
             ]
         },

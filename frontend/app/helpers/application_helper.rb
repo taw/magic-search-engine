@@ -182,7 +182,7 @@ module ApplicationHelper
       "chaos", "pw",
       "hw", "hr",
       # custom
-      "a"
+      "a", "discover"
     ]
   end
 
