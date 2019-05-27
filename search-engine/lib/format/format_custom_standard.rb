@@ -17,7 +17,7 @@ class FormatCustomStandard < FormatStandard
       "2018-04-15" => ["ldo", "vln", "jan", "hlw", "cc18"],
       "2018-10-25" => ["vln", "jan", "hlw", "cc18", "rak"],
       "2019-02-08" => ["jan", "hlw", "cc18", "rak", "eau"],
-      "2019-05-28" => ["jan", "hlw", "cc18", "rak", "eau", "sou"]
+      "2019-05-29" => ["jan", "hlw", "cc18", "rak", "eau", "sou"]
     }
   end
 end
