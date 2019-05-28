@@ -63,6 +63,7 @@ describe "Foils" do
       unless set.foiling
         # For promos we'll just trust mtgjson
         next if set.type == "promo"
+        next if set.type == "memorabilia"
         warn "Support for #{set.code} #{set.name} not implemented yet"
         next
       end

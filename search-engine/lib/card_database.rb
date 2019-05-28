@@ -23,6 +23,14 @@ require_relative "deck_database"
 require_relative "unknown_card"
 require_relative "user_deck_parser"
 
+class String
+  def normalize_accents
+    result = gsub("Æ", "Ae").gsub("æ", "ae").tr("ĆćÄàáâäèéêíõöúûüǵ’\u2212", "CcAaaaaeeeioouuug'-")
+    result = self if result == self # Memory saving trick
+    -result
+  end
+end
+
 class CardDatabase
   attr_reader :sets, :cards, :blocks, :artists, :cards_in_precons
   def initialize
@@ -233,7 +241,7 @@ class CardDatabase
       # Do not include tokens
       # (indexer now strips them)
       next if card_data["layout"] == "token"
-      normalized_name = card_name.downcase.tr("Äàáâäèéêíõöúûü", "Aaaaaeeeioouuu")
+      normalized_name = card_name.downcase.normalize_accents
       card = @cards[normalized_name] = Card.new(card_data.reject{|k,_| k == "printings"})
       color_identity_cache[card_name] = card.partial_color_identity
       if card_data["names"]
@@ -358,7 +366,7 @@ class CardDatabase
 
   # These method seem to occur in every single class out there
   def normalize_text(text)
-    text.downcase.gsub(/[Ææ]/, "ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-").strip
+    text.downcase.normalize_accents.strip
   end
 
   def normalize_name(name)

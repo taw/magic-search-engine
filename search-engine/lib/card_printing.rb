@@ -1,7 +1,7 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date
   attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border, :timeshifted, :printed_name, :printed_text, :printed_typeline
-  attr_reader :rarity_code, :print_sheet, :partner
+  attr_reader :rarity_code, :print_sheet, :partner, :oversized
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
@@ -19,10 +19,9 @@ class CardPrinting
     @watermark = data["watermark"]
     @number = data["number"]
     @multiverseid = data["multiverseid"]
-    @artist_name = data["artist"]
+    @artist_name = data["artist"].normalize_accents # TODO: move to indexer
     @flavor = data["flavor"] || -""
-    @flavor_normalized = @flavor.tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
-    @flavor_normalized = @flavor if @flavor_normalized == @flavor # Memory saving trick
+    @flavor_normalized = @flavor.normalize_accents
     @foiling = data["foiling"]
     @border = data["border"] || @set.border
     @frame = data["frame"] || @set.frame
@@ -39,6 +38,7 @@ class CardPrinting
     @exclude_from_boosters = data["exclude_from_boosters"]
     @print_sheet = data["print_sheet"]
     @partner = data["partner"]
+    @oversized = data["oversized"]
 
     # Performance cache
     @stemmed_name = @card.stemmed_name

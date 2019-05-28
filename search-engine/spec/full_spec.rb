@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(19496)
-    db.number_of_printings.should eq(40104)
+    db.number_of_printings.should eq(40167)
   end
 
   it "block codes" do
@@ -443,6 +443,13 @@ describe "Full Database Test" do
       "Oath of Lim-Dûl"
     lim_duls_cohort = db.search("Lim-Dûl's Cohort").printings[0]
     lim_duls_cohort.text.should eq("Whenever Lim-Dûl's Cohort blocks or becomes blocked by a creature, that creature can't be regenerated this turn.")
+  end
+
+  it "artist unicode" do
+    assert_search_equal %Q[a:"baǵa"], %Q[a:"baga"]
+    assert_search_equal %Q[a:Snõddy], %Q[a:snoddy]
+    assert_search_equal %Q[a:Véronique], %Q[a:Veronique]
+    assert_search_equal %Q[a:Ćeran], %Q[a:ceran]
   end
 
   it "Non-alphanumeric characters in set names are ignored and 's is normalized" do

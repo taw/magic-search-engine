@@ -1,7 +1,7 @@
 class ConditionFlavor < ConditionSimple
   def initialize(flavor)
     @flavor = flavor
-    flavor_normalized = @flavor.gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")    
+    flavor_normalized = @flavor.normalize_accents
     @flavor_rx = Regexp.new("\\b(?:" + Regexp.escape(flavor_normalized) + ")\\b", Regexp::IGNORECASE)
   end
 

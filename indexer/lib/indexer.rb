@@ -99,7 +99,6 @@ class Indexer
       PatchMultipartCardNumbers,
       PatchFixCollectorNumbers,
       PatchUseFallbackNumbers,
-      PatchBattlebond,
       PatchVerifyCollectorNumbers,
 
       # Normalize data into more convenient form
@@ -129,16 +128,13 @@ class Indexer
       PatchDeleteErrataSets,
 
       # Patch mtg.wtf bugs
-      PatchSaga,
       PatchCmc,
-      PatchNissa,
       PatchMediaInsertArtists,
       PatchCstdRarity,
       PatchWatermarks,
       PatchConspiracyWatermarks,
       PatchBasicLandRarity,
       PatchUnstableBorders,
-      PatchEmnCardNumbers,
       PatchItpRqsRarity,
       PatchDeleteIncompleteCards,
       PatchAeLigature,
@@ -245,6 +241,7 @@ class Indexer
           "frame",
           "multiverseid",
           "number",
+          "oversized",
           "partner",
           "print_sheet",
           "rarity",
@@ -265,7 +262,9 @@ class Indexer
     report_if_inconsistent(name, common_card_data, card)
 
     # Output in canonical form, to minimize diffs between mtgjson updates
-    result["printings"] = printing_data.sort_by{|sc,d| [set_order.fetch(sc), d["number"], d["multiverseid"]] }
+    result["printings"] = printing_data.sort_by{|sc,d|
+      [set_order.fetch(sc), d["number"], d["multiverseid"]]
+    }
     result
   end
 
