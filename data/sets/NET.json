@@ -115,10 +115,10 @@
             "manaCost": "{W}",
             "name": "Battle Ready",
             "number": "4",
-            "originalText": "Arm target creature. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)",
+            "originalText": "Arm target creature. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to that creature.)",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Arm target creature. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)",
+            "text": "Arm target creature. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to that creature.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -250,7 +250,7 @@
             "manaCost": "{1}{W}{W}",
             "name": "Cymurai Blademaster",
             "number": "9",
-            "originalText": "Double strike\nSupremacy \u2014 Whenever Cymurai Blademaster attacks, it gains indestructible until end of turn if you have more life than an opponent.",
+            "originalText": "Double strike\nSuperiority \u2014 Whenever Cymurai Blademaster attacks, it gains indestructible until end of turn if you have more life than an opponent.",
             "originalType": "Artifact Creature \u2014 Construct Samurai",
             "power": "2",
             "rarity": "Rare",
@@ -258,7 +258,7 @@
                 "Construct",
                 "Samurai"
             ],
-            "text": "Double strike\nSupremacy \u2014 Whenever Cymurai Blademaster attacks, it gains indestructible until end of turn if you have more life than an opponent.",
+            "text": "Double strike\nSuperiority \u2014 Whenever Cymurai Blademaster attacks, it gains indestructible until end of turn if you have more life than an opponent.",
             "toughness": "2",
             "type": "Artifact Creature \u2014 Construct Samurai",
             "types": [
@@ -305,7 +305,7 @@
             "manaCost": "{7}{W}{W}",
             "name": "Dominator Droid",
             "number": "11",
-            "originalText": "Dominator Droid costs {1} less to cast for each artifact you control.\nPrevent all combat damage that would be dealt to Dominator Droid.",
+            "originalText": "This spell costs {1} less to cast for each artifact you control.\nIndestructible",
             "originalType": "Artifact Creature \u2014 Giant Construct",
             "power": "7",
             "rarity": "Mythic Rare",
@@ -313,7 +313,7 @@
                 "Giant",
                 "Construct"
             ],
-            "text": "Dominator Droid costs {1} less to cast for each artifact you control.\nPrevent all combat damage that would be dealt to Dominator Droid.",
+            "text": "This spell costs {1} less to cast for each artifact you control.\nIndestructible",
             "toughness": "7",
             "type": "Artifact Creature \u2014 Giant Construct",
             "types": [
@@ -335,10 +335,10 @@
             "manaCost": "{3}{W}",
             "name": "Force Deployment",
             "number": "12",
-            "originalText": "Create three 1/1 white Soldier creature tokens.\nSupremacy \u2014 If you have more life than an opponent, target player skips their next combat phase.",
+            "originalText": "Create three 1/1 white Soldier creature tokens.\nSuperiority \u2014 If you have more life than an opponent, target player skips their next combat phase.",
             "originalType": "Sorcery",
             "rarity": "Common",
-            "text": "Create three 1/1 white Soldier creature tokens.\nSupremacy \u2014 If you have more life than an opponent, target player skips their next combat phase.",
+            "text": "Create three 1/1 white Soldier creature tokens.\nSuperiority \u2014 If you have more life than an opponent, target player skips their next combat phase.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -358,10 +358,10 @@
             "manaCost": "{1}{W}{W}",
             "name": "Forward Arsenal",
             "number": "13",
-            "originalText": "Arm each creature you control. They gain vigilance until end of turn. (Create colorless Equipment artifact tokens named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to those creatures.)",
+            "originalText": "Arm up to three creatures you control. They gain vigilance until end of turn. (Create colorless Equipment artifact tokens named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to those creatures.)",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Arm each creature you control. They gain vigilance until end of turn. (Create colorless Equipment artifact tokens named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to those creatures.)",
+            "text": "Arm up to three creatures you control. They gain vigilance until end of turn. (Create colorless Equipment artifact tokens named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to those creatures.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -406,7 +406,7 @@
             "manaCost": "{2}{W}{W}",
             "name": "L3-T, Equalizer",
             "number": "15",
-            "originalText": "+2: Each player gains 3 life.\n-2: Choose a nonland permanent type. Each player who controls the most permanents of that type sacrifices one of them.\n-10: Target opponent gets an emblem with \"You can't cast spells unless an opponent cast a spell last turn\" and \"Skip your combat phase unless you were attacked last turn.\"",
+            "originalText": "+2: Each player gains 3 life.\n-2: Choose a nonland permanent type. Each player who controls the most permanents of that type sacrifices one of them.\n-12: Target opponent gets an emblem with \"You can't cast spells during your turn unless an opponent cast a spell last turn\" and \"Skip your combat phase unless you were attacked last turn.\"",
             "originalType": "Legendary Planeswalker \u2014 L3-T",
             "rarity": "Mythic Rare",
             "subtypes": [
@@ -415,7 +415,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "+2: Each player gains 3 life.\n-2: Choose a nonland permanent type. Each player who controls the most permanents of that type sacrifices one of them.\n-10: Target opponent gets an emblem with \"You can't cast spells unless an opponent cast a spell last turn\" and \"Skip your combat phase unless you were attacked last turn.\"",
+            "text": "+2: Each player gains 3 life.\n-2: Choose a nonland permanent type. Each player who controls the most permanents of that type sacrifices one of them.\n-12: Target opponent gets an emblem with \"You can't cast spells during your turn unless an opponent cast a spell last turn\" and \"Skip your combat phase unless you were attacked last turn.\"",
             "type": "Legendary Planeswalker \u2014 L3-T",
             "types": [
                 "Planeswalker"
@@ -513,7 +513,7 @@
             "manaCost": "{2}{W}{W}",
             "name": "N-FORCE Captain",
             "number": "19",
-            "originalText": "When N-FORCE Captain enters the battlefield, create two 1/1 white Soldier creature tokens.\nSupremacy \u2014 Whenever N-FORCE Captain attacks, creatures you control get +1/+1 until end of turn if you have more life than an opponent.",
+            "originalText": "When N-FORCE Captain enters the battlefield, create two 1/1 white Soldier creature tokens.\nSuperiority \u2014 Whenever N-FORCE Captain attacks, creatures you control get +1/+1 until end of turn if you have more life than an opponent.",
             "originalType": "Creature \u2014 Human Soldier",
             "power": "2",
             "rarity": "Uncommon",
@@ -521,7 +521,7 @@
                 "Human",
                 "Soldier"
             ],
-            "text": "When N-FORCE Captain enters the battlefield, create two 1/1 white Soldier creature tokens.\nSupremacy \u2014 Whenever N-FORCE Captain attacks, creatures you control get +1/+1 until end of turn if you have more life than an opponent.",
+            "text": "When N-FORCE Captain enters the battlefield, create two 1/1 white Soldier creature tokens.\nSuperiority \u2014 Whenever N-FORCE Captain attacks, creatures you control get +1/+1 until end of turn if you have more life than an opponent.",
             "toughness": "2",
             "type": "Creature \u2014 Human Soldier",
             "types": [
@@ -785,16 +785,16 @@
             "colors": [
                 "White"
             ],
-            "flavor": "\"Telling them what to know is half the battle.\"\n\u2014 Theos Artene",
+            "flavor": "\"Telling them what to know is half the battle.\"\n\u2014Theos Artene",
             "imageName": "public broadcast",
             "layout": "normal",
             "manaCost": "{1}{W}",
             "name": "Public Broadcast",
             "number": "29",
-            "originalText": "You gain 4 life.\nSupremacy \u2014 Then, if you have more life than an opponent, draw a card.",
+            "originalText": "You gain 4 life.\nSuperiority \u2014 Then if you have more life than an opponent, draw a card.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "You gain 4 life.\nSupremacy \u2014 Then if you have more life than an opponent, draw a card.",
+            "text": "You gain 4 life.\nSuperiority \u2014 Then if you have more life than an opponent, draw a card.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -987,7 +987,7 @@
             "manaCost": "{2}{W}",
             "name": "Street Enforcer",
             "number": "36",
-            "originalText": "Supremacy \u2014 Whenever Street Enforcer attacks, it gets +2/+2 until end of turn if you have more life than an opponent.",
+            "originalText": "Superiority \u2014 Whenever Street Enforcer attacks, it gets +2/+2 until end of turn if you have more life than an opponent.",
             "originalType": "Creature \u2014 Human Soldier",
             "power": "2",
             "rarity": "Common",
@@ -995,7 +995,7 @@
                 "Human",
                 "Soldier"
             ],
-            "text": "Supremacy \u2014 Whenever Street Enforcer attacks, it gets +2/+2 until end of turn if you have more life than an opponent.",
+            "text": "Superiority \u2014 Whenever Street Enforcer attacks, it gets +2/+2 until end of turn if you have more life than an opponent.",
             "toughness": "2",
             "type": "Creature \u2014 Human Soldier",
             "types": [
@@ -1044,10 +1044,10 @@
             "manaCost": "{1}{W}{W}",
             "name": "Taken for Questioning",
             "number": "38",
-            "originalText": "When Taken for Questioning enters the battlefield, exile target nonland permanent.\nSupremacy \u2014 When Taken for Questioning leaves the battlefield, return the exiled card to the battlefield under its owner's control unless you have more life than an opponent.",
+            "originalText": "When Taken for Questioning enters the battlefield, exile another target nonland permanent.\nSuperiority \u2014 When Taken for Questioning leaves the battlefield, return the exiled card to the battlefield under its owner's control unless you have more life than an opponent.",
             "originalType": "Enchantment",
             "rarity": "Rare",
-            "text": "When Taken for Questioning enters the battlefield, exile target nonland permanent.\nSupremacy \u2014 When Taken for Questioning leaves the battlefield, return the exiled card to the battlefield under its owner's control unless you have more life than an opponent.",
+            "text": "When Taken for Questioning enters the battlefield, exile another target nonland permanent.\nSuperiority \u2014 When Taken for Questioning leaves the battlefield, return the exiled card to the battlefield under its owner's control unless you have more life than an opponent.",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -1124,7 +1124,7 @@
             "manaCost": "{3}{U}",
             "name": "Alignment Agent",
             "number": "41",
-            "originalText": "Flash\nWhenever Alignment Agent deals combat damage to a creature, you may upload that creature. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
+            "originalText": "Flash\nWhenever Alignment Agent deals damage to a creature, you may upload that creature. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "1",
             "rarity": "Uncommon",
@@ -1132,7 +1132,7 @@
                 "Human",
                 "Rogue"
             ],
-            "text": "Flash\nWhenever Alignment Agent deals combat damage to a creature, you may upload that creature. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
+            "text": "Flash\nWhenever Alignment Agent deals damage to a creature, you may upload that creature. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
             "toughness": "4",
             "type": "Creature \u2014 Human Rogue",
             "types": [
@@ -1154,10 +1154,10 @@
             "manaCost": "{U}",
             "name": "Ancestral Research",
             "number": "42",
-            "originalText": "If you own an uploaded card, put one into your hand. Otherwise, upload the top three cards of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into to their hand any time they could cast a sorcery.)",
+            "originalText": "Upload the top three cards of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into to their hand any time they could cast a sorcery.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "If you own an uploaded card, put one into your hand. Otherwise, upload the top three cards of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into to their hand any time they could cast a sorcery.)",
+            "text": "Upload the top three cards of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into to their hand any time they could cast a sorcery.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -1185,7 +1185,7 @@
                 "Vehicle"
             ],
             "text": "Flying\nWhen Atares 14 enters the battlefield, draw two cards.\nCrew 2 (Tap any number of creatures you control with total power 2 or greater: This Vehicle becomes an artifact creature until end of turn.)",
-            "toughness": "2",
+            "toughness": "3",
             "type": "Artifact \u2014 Vehicle",
             "types": [
                 "Artifact"
@@ -1229,34 +1229,10 @@
             "manaCost": "{X}{U}",
             "name": "Back Door",
             "number": "45",
-            "originalText": "Choose target instant or sorcery card in a graveyard with converted mana cost X or less. You may cast that card without paying its mana cost. If that card would be put into your graveyard this turn, exile it instead.",
+            "originalText": "Choose target instant or sorcery card in a graveyard with converted mana cost X or less. You may cast that card without paying its mana cost. If that card would be put into a graveyard this turn, exile it instead.",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Choose target instant or sorcery card in a graveyard with converted mana cost X or less. You may cast that card without paying its mana cost. If that card would be put into your graveyard this turn, exile it instead.",
-            "type": "Sorcery",
-            "types": [
-                "Sorcery"
-            ]
-        },
-        {
-            "artist": "Thomas Anderson",
-            "cmc": 5,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [
-                "Blue"
-            ],
-            "flavor": "The Masquerade found hints that the corporations were hiding something big.",
-            "imageName": "calculate",
-            "layout": "normal",
-            "manaCost": "{3}{U}{U}",
-            "name": "Calculate",
-            "number": "46",
-            "originalText": "Draw three cards. If you control no artifacts, discard a card.",
-            "originalType": "Sorcery",
-            "rarity": "Common",
-            "text": "Draw three cards. If you control no artifacts, discard a card.",
+            "text": "Choose target instant or sorcery card in a graveyard with converted mana cost X or less. You may cast that card without paying its mana cost. If that card would be put into a graveyard this turn, exile it instead.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -1276,15 +1252,15 @@
             "layout": "normal",
             "manaCost": "{5}{U}{U}",
             "name": "Cloud Colossus",
-            "number": "47",
-            "originalText": "Flying\nAt the beginning of each end step, untap each artifact you control.",
+            "number": "46",
+            "originalText": "Flying\nAt the beginning of your end step, untap each artifact you control.",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "6",
             "rarity": "Rare",
             "subtypes": [
                 "Construct"
             ],
-            "text": "Flying\nAt the beginning of each end step, untap each artifact you control.",
+            "text": "Flying\nAt the beginning of your end step, untap each artifact you control.",
             "toughness": "6",
             "type": "Artifact Creature \u2014 Construct",
             "types": [
@@ -1301,12 +1277,12 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"Artificial intelligence is most compelling when pushed past mere computing and into physicality.\"\n\u2014CyCorp Engineer",
+            "flavor": "\"A.I. is most compelling when pushed past mere computing and into physicality.\"\n\u2014CyCorp engineer",
             "imageName": "colossal construct",
             "layout": "normal",
             "manaCost": "{5}{U}",
             "name": "Colossal Construct",
-            "number": "48",
+            "number": "47",
             "originalText": "Defender\nColossal Construct can attack as though it didn't have defender if an artifact entered the battlefield under your control this turn.",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "6",
@@ -1335,7 +1311,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Corporate Ascension",
-            "number": "49",
+            "number": "48",
             "originalText": "At the beginning of your upkeep, upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into to their hand any time they could cast a sorcery.)\nWhenever you put an uploaded card into your hand, put a profit counter on Corporate Ascension.\nAt the beginning of your upkeep, if there are ten or more profit counters on Corporate Ascension, you win the game.",
             "originalType": "Enchantment",
             "rarity": "Rare",
@@ -1354,12 +1330,12 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "It's not as much of an exaggeration as it might seem to say that CyCorp owns everything.",
+            "flavor": "\"CyCorp owns everything in Netropolis. Even you and I, probably.\"\n\u2014Andreux Vol",
             "imageName": "corporate control",
             "layout": "normal",
             "manaCost": "{4}{U}{U}",
             "name": "Corporate Control",
-            "number": "50",
+            "number": "49",
             "originalText": "Enchant artifact or creature\nYou control enchanted permanent.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Rare",
@@ -1385,7 +1361,7 @@
             "layout": "normal",
             "manaCost": "{U}",
             "name": "Cryo Cell",
-            "number": "51",
+            "number": "50",
             "originalText": "Enchant creature\nWhen Cryo Cell enters the battlefield, tap enchanted creature.\nEnchanted creature doesn't untap during its controller's untap step.\nEnchanted creature has \"{4}: Destroy Cryo Cell.\"",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Common",
@@ -1412,7 +1388,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "CyCorp Engineer",
-            "number": "52",
+            "number": "51",
             "originalText": "{T}: Add {C}. Spend this mana only to cast an artifact spell or to pay an upload cost.",
             "originalType": "Creature \u2014 Human Advisor",
             "power": "1",
@@ -1422,7 +1398,7 @@
                 "Advisor"
             ],
             "text": "{T}: Add {C}. Spend this mana only to cast an artifact spell or to pay an upload cost.",
-            "toughness": "2",
+            "toughness": "3",
             "type": "Creature \u2014 Human Advisor",
             "types": [
                 "Creature"
@@ -1441,7 +1417,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Cyber Savant",
-            "number": "53",
+            "number": "52",
             "originalText": "When Cyber Savant enters the battlefield, upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
             "originalType": "Artifact Creature \u2014 Construct Advisor",
             "power": "1",
@@ -1471,17 +1447,17 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Cybersmith",
-            "number": "54",
+            "number": "53",
             "originalText": "{T}: Scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)\nWhenever an artifact enters the battlefield under your control, untap Cybersmith.",
             "originalType": "Artifact Creature \u2014 Construct Artificer",
-            "power": "1",
+            "power": "0",
             "rarity": "Uncommon",
             "subtypes": [
                 "Construct",
                 "Artificer"
             ],
             "text": "{T}: Scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)\nWhenever an artifact enters the battlefield under your control, untap Cybersmith.",
-            "toughness": "3",
+            "toughness": "4",
             "type": "Artifact Creature \u2014 Construct Artificer",
             "types": [
                 "Artifact",
@@ -1501,11 +1477,11 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Data Dig",
-            "number": "55",
-            "originalText": "Reveal the top two cards of your library. An opponent chooses one of them. Upload that card, then put the other into your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
+            "number": "54",
+            "originalText": "Look at the top two cards of your library. Put one into your hand and upload the other. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Reveal the top two cards of your library. An opponent chooses one of them. Upload that card, then put the other into your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
+            "text": "Look at the top two cards of your library. Put one into your hand and upload the other. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -1520,12 +1496,11 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"Strict upgrades are the best kind of upgrades.\"\n\u2014CyCorp motto",
             "imageName": "digiblade shinobi",
             "layout": "normal",
             "manaCost": "{3}{U}",
             "name": "Digiblade Shinobi",
-            "number": "56",
+            "number": "55",
             "originalText": "Digiblade Shinobi can't be blocked.\nWhen Digiblade Shinobi enters the battlefield, return an artifact you control to its owner's hand.",
             "originalType": "Artifact Creature \u2014 Construct Ninja",
             "power": "3",
@@ -1555,15 +1530,15 @@
             "layout": "normal",
             "manaCost": "{U}",
             "name": "Flutter Droid",
-            "number": "57",
-            "originalText": "Flying\nWhenever Flutter Droid attacks, if an artifact entered the battlefield under your control this turn, Flutter Droid gets +1/+0 until end of turn.",
+            "number": "56",
+            "originalText": "Flying\nWhenever Flutter Droid attacks, if an artifact entered the battlefield under your control this turn, Flutter Droid gets +1/+1 until end of turn.",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "1",
             "rarity": "Uncommon",
             "subtypes": [
                 "Construct"
             ],
-            "text": "Flying\nWhenever Flutter Droid attacks, if an artifact entered the battlefield under your control this turn, Flutter Droid gets +1/+0 until end of turn.",
+            "text": "Flying\nWhenever Flutter Droid attacks, if an artifact entered the battlefield under your control this turn, Flutter Droid gets +1/+1 until end of turn.",
             "toughness": "1",
             "type": "Artifact Creature \u2014 Construct",
             "types": [
@@ -1585,11 +1560,11 @@
             "layout": "normal",
             "manaCost": "{4}{U}{U}",
             "name": "Full Automation",
-            "number": "58",
-            "originalText": "Put any number of artifact cards from your hand onto the battlefield.",
+            "number": "57",
+            "originalText": "Draw two cards, then put any number of artifact cards from your hand onto the battlefield.",
             "originalType": "Instant",
             "rarity": "Mythic Rare",
-            "text": "Put any number of artifact cards from your hand onto the battlefield.",
+            "text": "Draw two cards, then put any number of artifact cards from your hand onto the battlefield.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -1609,7 +1584,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Hacker Prodigy",
-            "number": "59",
+            "number": "58",
             "originalText": "Hacker Prodigy can't be blocked unless defending player controls an untapped land.",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "2",
@@ -1639,7 +1614,7 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Masq Agent",
-            "number": "60",
+            "number": "59",
             "originalText": "When Masq Agent becomes the target of a spell, sacrifice it.\nMasq Agent can't be blocked except by Rogues.",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "3",
@@ -1664,12 +1639,12 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "Very few hackers are skilled and trusted enough to manage the highest circles of the Masquerade.",
+            "flavor": "Few hackers are skilled enough to reach the highest ranks of the Masquerade.",
             "imageName": "masq maven",
             "layout": "normal",
             "manaCost": "{1}{U}{U}",
             "name": "Masq Maven",
-            "number": "61",
+            "number": "60",
             "originalText": "Whenever a Rogue you control deals combat damage to a player, draw a card.\n{U}: Target Rogue you control can't be blocked this turn.",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "2",
@@ -1699,7 +1674,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Mat Harden, Detective",
-            "number": "62",
+            "number": "61",
             "originalText": "Whenever a creature dies, look at the top card of your library. You may put it into your graveyard.\n{U}, {T}: Draw a card. Activate this ability only if there is a creature card, an artifact card, and a land card in your graveyard.",
             "originalType": "Legendary Creature \u2014 Human Advisor",
             "power": "1",
@@ -1731,7 +1706,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Minimize",
-            "number": "63",
+            "number": "62",
             "originalText": "Target creature gets -4/-0 until end of turn.\nUpload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
             "originalType": "Instant",
             "rarity": "Common",
@@ -1755,7 +1730,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Moderator's Discretion",
-            "number": "64",
+            "number": "63",
             "originalText": "Choose one \u2014\n\u2022 Counter target spell unless its controller pays {1}.\n\u2022 Return target spell to its owner's hand.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -1774,12 +1749,12 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "Even the best hackers can't always beat the corporations' security protocols \u2014 but they can outpace them.",
+            "flavor": "\"Let's go for a ride, you and I.\"\n\u2014Talya",
             "imageName": "net run",
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Net Run",
-            "number": "65",
+            "number": "64",
             "originalText": "Target creature gains \"Whenever this creature deals combat damage to an opponent, draw a card\" until end of turn.\nDraw a card.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -1798,12 +1773,12 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "\"We're accustomed to intelligent machines acting independently, but now they are coordinating their efforts. I fear to consider what this portends.\"\n\u2014 CyCorp Engineer",
+            "flavor": "\"We're accustomed to intelligent machines acting independently, but now they are coordinating their efforts. I fear to consider what this portends.\"\n\u2014 CyCorp engineer",
             "imageName": "nugolem",
             "layout": "normal",
             "manaCost": "{3}{U}",
             "name": "NuGolem",
-            "number": "66",
+            "number": "65",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "3",
             "rarity": "Common",
@@ -1831,18 +1806,18 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Private Eye",
-            "number": "67",
+            "number": "66",
             "originalText": "Hexproof",
-            "originalType": "Creature \u2014 Human Advisor",
+            "originalType": "Creature \u2014 Human Scout",
             "power": "2",
             "rarity": "Common",
             "subtypes": [
                 "Human",
-                "Advisor"
+                "Scout"
             ],
             "text": "Hexproof",
             "toughness": "3",
-            "type": "Creature \u2014 Human Advisor",
+            "type": "Creature \u2014 Human Scout",
             "types": [
                 "Creature"
             ]
@@ -1861,8 +1836,8 @@
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Quarantine",
-            "number": "68",
-            "originalText": "Return target nonland permanent to its owner's hand. If it's tapped, draw a card.",
+            "number": "67",
+            "originalText": "Return target nonland permanent to its owner's hand. If it was tapped, draw a card.",
             "originalType": "Instant",
             "rarity": "Uncommon",
             "text": "Return target nonland permanent to its owner's hand. If it was tapped, draw a card.",
@@ -1885,7 +1860,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}",
             "name": "Reprogram",
-            "number": "69",
+            "number": "68",
             "originalText": "Put target creature or artifact on top of its owner's library.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -1908,7 +1883,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Scion Mimic",
-            "number": "70",
+            "number": "69",
             "originalText": "You may have Scion Mimic enter the battlefield as a copy of any creature or Vehicle on the battlefield, except it's a Vehicle artifact and has crew 1.\nCrew 1 (Tap any number of creatures you control with total power 1 or greater: This Vehicle becomes an artifact creature until end of turn.)",
             "originalType": "Artifact \u2014 Vehicle",
             "power": "0",
@@ -1937,11 +1912,11 @@
             "layout": "normal",
             "manaCost": "{1}{U}{U}",
             "name": "Shunt Access",
-            "number": "71",
-            "originalText": "Counter target spell.\nAt the beginning of your next main phase, add {C}{C}. This mana can't be spent to cast spells.",
+            "number": "70",
+            "originalText": "Counter target spell. If you control an artifact, draw a card, then discard a card.",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Counter target spell.\nAt the beginning of your next main phase, add {C}{C}. This mana can't be spent to cast spells.",
+            "text": "Counter target spell. If you control an artifact, draw a card, then discard a card.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -1956,13 +1931,13 @@
             "colors": [
                 "Blue"
             ],
-            "flavor": "What natural life still remains in Netropolis is found in the skies \u2014 tamed and bridled with cybernetics equipment.",
+            "flavor": "What natural life still remains in Netropolis is found in the skies, bridled with cybernetics equipment.",
             "imageName": "silicon drake",
             "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Silicon Drake",
-            "number": "72",
-            "originalText": "Flying",
+            "number": "71",
+            "originalText": "Flying\nWhen Silicon Drake enters the battlefield, scry 1.",
             "originalType": "Artifact Creature \u2014 Drake Construct",
             "power": "2",
             "rarity": "Common",
@@ -1970,7 +1945,7 @@
                 "Drake",
                 "Construct"
             ],
-            "text": "Flying",
+            "text": "Flying\nWhen Silicon Drake enters the battlefield, scry 1.",
             "toughness": "2",
             "type": "Artifact Creature \u2014 Drake Construct",
             "types": [
@@ -1992,7 +1967,7 @@
             "layout": "normal",
             "manaCost": "{4}{U}",
             "name": "Skyguard Droid",
-            "number": "73",
+            "number": "72",
             "originalText": "Flying\nWhenever another artifact enters the battlefield under your control, untap Skyguard Droid.",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "3",
@@ -2021,7 +1996,7 @@
             "layout": "normal",
             "manaCost": "{1}{U}",
             "name": "Skyguard Officer",
-            "number": "74",
+            "number": "73",
             "originalText": "Flying\nWhen Skyguard Officer enters the battlefield, arm it. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)",
             "originalType": "Creature \u2014 Human Soldier",
             "power": "0",
@@ -2033,35 +2008,6 @@
             "text": "Flying\nWhen Skyguard Officer enters the battlefield, arm it. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)",
             "toughness": "1",
             "type": "Creature \u2014 Human Soldier",
-            "types": [
-                "Creature"
-            ]
-        },
-        {
-            "artist": "manthos lappas",
-            "cmc": 2,
-            "colorIdentity": [
-                "U"
-            ],
-            "colors": [
-                "Blue"
-            ],
-            "imageName": "slipstream hacker",
-            "layout": "normal",
-            "manaCost": "{1}{U}",
-            "name": "Slipstream Hacker",
-            "number": "75",
-            "originalText": "Whenever Slipstream Hacker deals combat damage to an opponent, upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
-            "originalType": "Creature \u2014 Human Rogue",
-            "power": "2",
-            "rarity": "Uncommon",
-            "subtypes": [
-                "Human",
-                "Rogue"
-            ],
-            "text": "Whenever Slipstream Hacker deals combat damage to an opponent, upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
-            "toughness": "1",
-            "type": "Creature \u2014 Human Rogue",
             "types": [
                 "Creature"
             ]
@@ -2080,7 +2026,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}{U}",
             "name": "Standoff",
-            "number": "76",
+            "number": "74",
             "originalText": "Tap up to three target creatures. They don't untap during their controllers' next untap steps.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -2104,7 +2050,7 @@
             "layout": "normal",
             "manaCost": "{U}",
             "name": "Steel Sabotage",
-            "number": "77",
+            "number": "75",
             "originalText": "Choose one \u2014\n\u2022 Counter target artifact spell.\n\u2022 Return target artifact to its owner's hand.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -2134,8 +2080,8 @@
             "loyalty": 3,
             "manaCost": "{1}{U}{U}",
             "name": "Talya, Cyber Wayfarer",
-            "number": "78",
-            "originalText": "+1: Exile another target permanent you control, then return it to the battlefield.\n-1: Until end of turn, whenever target permanent becomes the target of a spell or ability, that permanent's controller sacrifices it.\n-7: Gain control of all permanents until end of turn. Permanents you don't own don't untap during their controllers' next untap steps.",
+            "number": "76",
+            "originalText": "+1: Exile another target permanent you control, then return it to the battlefield.\n-2: Return another target permanent you control to your hand and draw two cards.\n-7: Gain control of all permanents until end of turn. Permanents you don't own don't untap during their controllers' next untap steps.",
             "originalType": "Legendary Planeswalker \u2014 Talya",
             "rarity": "Mythic Rare",
             "subtypes": [
@@ -2144,7 +2090,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "+1: Exile another target permanent you control, then return it to the battlefield.\n-1: Until end of turn, whenever target permanent becomes the target of a spell or ability, that permanent's controller sacrifices it.\n-7: Gain control of all permanents until end of turn. Permanents you don't own don't untap during their controllers' next untap steps.",
+            "text": "+1: Exile another target permanent you control, then return it to the battlefield.\n-2: Return another target permanent you control to your hand and draw two cards.\n-7: Gain control of all permanents until end of turn. Permanents you don't own don't untap during their controllers' next untap steps.",
             "type": "Legendary Planeswalker \u2014 Talya",
             "types": [
                 "Planeswalker"
@@ -2164,7 +2110,7 @@
             "layout": "normal",
             "manaCost": "{3}{U}{U}",
             "name": "Tempest Droid",
-            "number": "79",
+            "number": "77",
             "originalText": "Flying",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "4",
@@ -2177,6 +2123,58 @@
             "type": "Artifact Creature \u2014 Construct",
             "types": [
                 "Artifact",
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Thomas Anderson",
+            "cmc": 5,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "imageName": "torrent seed",
+            "layout": "normal",
+            "manaCost": "{3}{U}{U}",
+            "name": "Torrent Seed",
+            "number": "78",
+            "originalText": "Draw three cards, then upload a card from your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into to their hand any time they could cast a sorcery.)",
+            "originalType": "Sorcery",
+            "rarity": "Common",
+            "text": "Draw three cards, then upload a card from your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into to their hand any time they could cast a sorcery.)",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ]
+        },
+        {
+            "artist": "Rostyslav Zagornov",
+            "cmc": 2,
+            "colorIdentity": [
+                "U"
+            ],
+            "colors": [
+                "Blue"
+            ],
+            "imageName": "vat-grown infiltrator",
+            "layout": "normal",
+            "manaCost": "{1}{U}",
+            "name": "Vat-Grown Infiltrator",
+            "number": "79",
+            "originalText": "Vat-Grown Infiltrator is each creature type among creatures you control in addition to its other types.\nWhenever Vat-Grown Infiltrator deals combat damage to an opponent, upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
+            "originalType": "Creature \u2014 Mutant Rogue",
+            "power": "2",
+            "rarity": "Uncommon",
+            "subtypes": [
+                "Mutant",
+                "Rogue"
+            ],
+            "text": "Vat-Grown Infiltrator is each creature type among creatures you control in addition to its other types.\nWhenever Vat-Grown Infiltrator deals combat damage to an opponent, upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
+            "toughness": "1",
+            "type": "Creature \u2014 Mutant Rogue",
+            "types": [
                 "Creature"
             ]
         },
@@ -2219,10 +2217,10 @@
             "manaCost": "{B}",
             "name": "Abuse of Power",
             "number": "81",
-            "originalText": "Target creature gets +3/+0 until end of turn.\nSupremacy \u2014 That creature also gains indestructible until end of turn if you have more life than an opponent.",
+            "originalText": "Target creature gets +3/+0 until end of turn.\nSuperiority \u2014 That creature also gains indestructible until end of turn if you have more life than an opponent.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Target creature gets +3/+0 until end of turn.\nSupremacy \u2014 That creature also gains indestructible until end of turn if you have more life than an opponent.",
+            "text": "Target creature gets +3/+0 until end of turn.\nSuperiority \u2014 That creature also gains indestructible until end of turn if you have more life than an opponent.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -2331,7 +2329,7 @@
             "manaCost": "{3}{B}",
             "name": "Blackwatch Intimidator",
             "number": "85",
-            "originalText": "Menace",
+            "originalText": "Sacrifice an artifact or creature: Blackwatch Intimidator gains lifelink until end of turn.",
             "originalType": "Creature \u2014 Human Ninja",
             "power": "4",
             "rarity": "Common",
@@ -2339,7 +2337,7 @@
                 "Human",
                 "Ninja"
             ],
-            "text": "Menace",
+            "text": "Sacrifice an artifact or creature: Blackwatch Intimidator gains lifelink until end of turn.",
             "toughness": "2",
             "type": "Creature \u2014 Human Ninja",
             "types": [
@@ -2361,7 +2359,7 @@
             "manaCost": "{1}{B}",
             "name": "Corporate Confidant",
             "number": "86",
-            "originalText": "Supremacy \u2014 At the beginning of your upkeep, if you have more life than an opponent, you draw a card and you lose 1 life.",
+            "originalText": "Superiority \u2014 At the beginning of your upkeep, if you have more life than an opponent, you draw a card and you lose 2 life.",
             "originalType": "Artifact Creature \u2014 Construct Advisor",
             "power": "3",
             "rarity": "Rare",
@@ -2369,7 +2367,7 @@
                 "Construct",
                 "Advisor"
             ],
-            "text": "Supremacy \u2014 At the beginning of your upkeep, if you have more life than an opponent, you draw a card and you lose 1 life.",
+            "text": "Superiority \u2014 At the beginning of your upkeep, if you have more life than an opponent, you draw a card and you lose 2 life.",
             "toughness": "1",
             "type": "Artifact Creature \u2014 Construct Advisor",
             "types": [
@@ -2391,7 +2389,7 @@
             "manaCost": "{2}{B}",
             "name": "Corporate Infiltrator",
             "number": "87",
-            "originalText": "Supremacy \u2014 {T}: Target opponent gains control of Corporate Infiltrator. Activate this ability only if you have more life than an opponent.\nAt the beginning of your upkeep, if you don't own Corporate Infiltrator, it deals 2 damage to you.",
+            "originalText": "Superiority \u2014 {T}: Target opponent gains control of Corporate Infiltrator. Activate this ability only if you have more life than an opponent.\nAt the beginning of your upkeep, if you don't own Corporate Infiltrator, it deals 2 damage to you.",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "1",
             "rarity": "Uncommon",
@@ -2399,7 +2397,7 @@
                 "Human",
                 "Rogue"
             ],
-            "text": "Supremacy \u2014 {T}: Target opponent gains control of Corporate Infiltrator. Activate this ability only if you have more life than an opponent.\nAt the beginning of your upkeep, if you don't own Corporate Infiltrator, it deals 2 damage to you.",
+            "text": "Superiority \u2014 {T}: Target opponent gains control of Corporate Infiltrator. Activate this ability only if you have more life than an opponent.\nAt the beginning of your upkeep, if you don't own Corporate Infiltrator, it deals 2 damage to you.",
             "toughness": "3",
             "type": "Creature \u2014 Human Rogue",
             "types": [
@@ -2408,7 +2406,7 @@
         },
         {
             "artist": "Jose Arias",
-            "cmc": 4,
+            "cmc": 3,
             "colorIdentity": [
                 "B"
             ],
@@ -2417,7 +2415,7 @@
             ],
             "imageName": "data demon",
             "layout": "normal",
-            "manaCost": "{2}{B}{B}",
+            "manaCost": "{1}{B}{B}",
             "name": "Data Demon",
             "number": "88",
             "originalText": "Flying\nAt the beginning of your upkeep, upload two cards from your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
@@ -2428,7 +2426,7 @@
                 "Demon"
             ],
             "text": "Flying\nAt the beginning of your upkeep, upload two cards from your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
-            "toughness": "5",
+            "toughness": "4",
             "type": "Creature \u2014 Demon",
             "types": [
                 "Creature"
@@ -2472,7 +2470,7 @@
             "manaCost": "{4}{B}",
             "name": "Dreadmoth",
             "number": "90",
-            "originalText": "Flying\nWhen Dreadmoth enters the battlefield, you may sacrifice an artifact. If you do, target player loses 3 life and you gain 3 life.",
+            "originalText": "Flying\nWhen Dreadmoth enters the battlefield, you may sacrifice an artifact. If you do, target player loses 2 life and you gain 2 life.",
             "originalType": "Artifact Creature \u2014 Faerie Construct",
             "power": "3",
             "rarity": "Common",
@@ -2480,8 +2478,8 @@
                 "Faerie",
                 "Construct"
             ],
-            "text": "Flying\nWhen Dreadmoth enters the battlefield, you may sacrifice an artifact. If you do, target player loses 3 life and you gain 3 life.",
-            "toughness": "2",
+            "text": "Flying\nWhen Dreadmoth enters the battlefield, you may sacrifice an artifact. If you do, target player loses 2 life and you gain 2 life.",
+            "toughness": "3",
             "type": "Artifact Creature \u2014 Faerie Construct",
             "types": [
                 "Artifact",
@@ -2490,7 +2488,7 @@
         },
         {
             "artist": "Marko-Djurdjevic (DeviantArt)",
-            "cmc": 1,
+            "cmc": 2,
             "colorIdentity": [
                 "B"
             ],
@@ -2500,7 +2498,7 @@
             "flavor": "\"Did you fail me, or did I fail you?\"",
             "imageName": "failed creation",
             "layout": "normal",
-            "manaCost": "{B}",
+            "manaCost": "{1}{B}",
             "name": "Failed Creation",
             "number": "91",
             "originalText": "Enchant artifact or creature\nEnchanted permanent can't block and has \"At the beginning of your upkeep, you lose 1 life.\"",
@@ -2601,7 +2599,7 @@
         },
         {
             "artist": "Clark Higgins",
-            "cmc": 4,
+            "cmc": 3,
             "colorIdentity": [
                 "B"
             ],
@@ -2611,7 +2609,7 @@
             "flavor": "\"Don't forget to wipe.\"",
             "imageName": "info dump",
             "layout": "normal",
-            "manaCost": "{3}{B}",
+            "manaCost": "{1}{B}{B}",
             "name": "Info Dump",
             "number": "95",
             "originalText": "Look at the top four cards of your library. Put two of them into your hand and the rest into your graveyard. You lose 2 life.",
@@ -2691,14 +2689,14 @@
             "number": "98",
             "originalText": "When Masq Hacker enters the battlefield, look at target player's hand and choose a nonland card from it. They upload that card. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
             "originalType": "Artifact Creature \u2014 Construct Rogue",
-            "power": "3",
+            "power": "2",
             "rarity": "Common",
             "subtypes": [
                 "Construct",
                 "Rogue"
             ],
             "text": "When Masq Hacker enters the battlefield, look at target player's hand and choose a nonland card from it. They upload that card. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
-            "toughness": "2",
+            "toughness": "3",
             "type": "Artifact Creature \u2014 Construct Rogue",
             "types": [
                 "Artifact",
@@ -2721,12 +2719,12 @@
             "name": "Misclick",
             "number": "99",
             "originalText": "Shuffle all uploaded cards and each graveyard into their owners' libraries.",
-            "originalType": "Sorcery",
+            "originalType": "Instant",
             "rarity": "Rare",
             "text": "Shuffle all uploaded cards and each graveyard into their owners' libraries.",
-            "type": "Sorcery",
+            "type": "Instant",
             "types": [
-                "Sorcery"
+                "Instant"
             ]
         },
         {
@@ -2761,13 +2759,13 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "\"You've gotta keep with the times, or time will kill ya.\"\n\u2014Sick Nic",
+            "flavor": "\"You've gotta keep with the times, or time won't keep with you.\"\n\u2014Sick Nic",
             "imageName": "out of date",
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Out of Date",
             "number": "101",
-            "originalText": "Destroy target nonartifact, unequipped creature.",
+            "originalText": "Destroy target unequipped nonartifact creature.",
             "originalType": "Instant",
             "rarity": "Uncommon",
             "text": "Destroy target unequipped nonartifact creature.",
@@ -2876,14 +2874,14 @@
             "manaCost": "{1}{B}",
             "name": "Reboot Droid",
             "number": "105",
-            "originalText": "Supremacy \u2014 {1}{B}: Return Reboot Droid from your graveyard to the battlefield tapped. Activate this ability only if you have more life than an opponent.",
+            "originalText": "Superiority \u2014 {1}{B}: Return Reboot Droid from your graveyard to the battlefield tapped. Activate this ability only if you have more life than an opponent.",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "2",
             "rarity": "Uncommon",
             "subtypes": [
                 "Construct"
             ],
-            "text": "Supremacy \u2014 {1}{B}: Return Reboot Droid from your graveyard to the battlefield tapped. Activate this ability only if you have more life than an opponent.",
+            "text": "Superiority \u2014 {1}{B}: Return Reboot Droid from your graveyard to the battlefield tapped. Activate this ability only if you have more life than an opponent.",
             "toughness": "2",
             "type": "Artifact Creature \u2014 Construct",
             "types": [
@@ -2893,7 +2891,7 @@
         },
         {
             "artist": "Bodan-MRK",
-            "cmc": 5,
+            "cmc": 4,
             "colorIdentity": [
                 "B"
             ],
@@ -2903,13 +2901,13 @@
             "flavor": "\"See? Good as new!\"",
             "imageName": "redeploy",
             "layout": "normal",
-            "manaCost": "{3}{B}{B}",
+            "manaCost": "{2}{B}{B}",
             "name": "Redeploy",
             "number": "106",
-            "originalText": "Return target creature card from your graveyard to the battlefield. If that creature is an artifact creature, each opponent loses 2 life and you gain 2 life.",
+            "originalText": "Return target creature card from your graveyard to the battlefield. If that creature is an artifact creature, each opponent loses 3 life and you gain 3 life.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Return target creature card from your graveyard to the battlefield. If that creature is an artifact creature, each opponent loses 2 life and you gain 2 life.",
+            "text": "Return target creature card from your graveyard to the battlefield. If that creature is an artifact creature, each opponent loses 3 life and you gain 3 life.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -3040,7 +3038,7 @@
             "colors": [
                 "Black"
             ],
-            "flavor": "When your facilities boast ironclad security protocols against external threats, it's the internal threats that become truly dangerous.",
+            "flavor": "It's the internal threats that are the most dangerous.",
             "imageName": "self-destruct sequence",
             "layout": "normal",
             "manaCost": "{2}{B}{B}",
@@ -3160,15 +3158,16 @@
             "name": "Sky Prowler",
             "number": "115",
             "originalText": "Flying\nSky Prowler can't block.",
-            "originalType": "Creature \u2014 Mutant",
+            "originalType": "Creature \u2014 Human Rogue",
             "power": "2",
             "rarity": "Common",
             "subtypes": [
-                "Mutant"
+                "Human",
+                "Rogue"
             ],
             "text": "Flying\nSky Prowler can't block.",
             "toughness": "1",
-            "type": "Creature \u2014 Mutant",
+            "type": "Creature \u2014 Human Rogue",
             "types": [
                 "Creature"
             ]
@@ -3187,7 +3186,7 @@
             "manaCost": "{3}{B}{B}",
             "name": "Szaro, Bounty Hunter",
             "number": "116",
-            "originalText": "Deathtouch\nAt the beginning of your end step, you may destroy target creature or planeswalker.\nAt the beginning of your upkeep, put Szaro, Bounty Hunter on the bottom of your library unless you pay {3}{B}{B}.",
+            "originalText": "Deathtouch\nAt the beginning of your end step, you may destroy target creature or planeswalker.\nAt the beginning of your upkeep, put Szaro, Bounty Hunter on the bottom of your library unless you pay 5 life.",
             "originalType": "Legendary Creature \u2014 Human Rogue",
             "power": "3",
             "rarity": "Rare",
@@ -3198,7 +3197,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Deathtouch\nAt the beginning of your end step, you may destroy target creature or planeswalker.\nAt the beginning of your upkeep, put Szaro, Bounty Hunter on the bottom of your library unless you pay {3}{B}{B}.",
+            "text": "Deathtouch\nAt the beginning of your end step, you may destroy target creature or planeswalker.\nAt the beginning of your upkeep, put Szaro, Bounty Hunter on the bottom of your library unless you pay 5 life.",
             "toughness": "2",
             "type": "Legendary Creature \u2014 Human Rogue",
             "types": [
@@ -3207,7 +3206,7 @@
         },
         {
             "artist": "panelgutter (DeviantArt)",
-            "cmc": 4,
+            "cmc": 5,
             "colorIdentity": [
                 "B"
             ],
@@ -3217,13 +3216,13 @@
             "flavor": "\"Welcome to the Cyburbs, fleshie.\"",
             "imageName": "turf killing",
             "layout": "normal",
-            "manaCost": "{3}{B}",
+            "manaCost": "{4}{B}",
             "name": "Turf Killing",
             "number": "117",
-            "originalText": "Supremacy \u2014 This spell costs {2} less to cast if you have more life than an opponent.\nTarget creature gets -3/-3 until end of turn.",
+            "originalText": "Superiority \u2014 This spell costs {3} less to cast if you have more life than an opponent.\nTarget creature gets -4/-4 until end of turn.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Supremacy \u2014 This spell costs {2} less to cast if you have more life than an opponent.\nTarget creature gets -3/-3 until end of turn.",
+            "text": "Superiority \u2014 This spell costs {3} less to cast if you have more life than an opponent.\nTarget creature gets -4/-4 until end of turn.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -3274,14 +3273,14 @@
             "manaCost": "{3}{B}",
             "name": "Vape Fiend",
             "number": "119",
-            "originalText": "Supremacy \u2014 When Vape Fiend enters the battlefield, if you have more life than an opponent, you may return a creature card from your graveyard to your hand.",
+            "originalText": "Superiority \u2014 When Vape Fiend enters the battlefield, if you have more life than an opponent, you may return a creature card from your graveyard to your hand.",
             "originalType": "Creature \u2014 Mutant",
             "power": "2",
             "rarity": "Common",
             "subtypes": [
                 "Mutant"
             ],
-            "text": "Supremacy \u2014 When Vape Fiend enters the battlefield, if you have more life than an opponent, you may return a creature card from your graveyard to your hand.",
+            "text": "Superiority \u2014 When Vape Fiend enters the battlefield, if you have more life than an opponent, you may return a creature card from your graveyard to your hand.",
             "toughness": "3",
             "type": "Creature \u2014 Mutant",
             "types": [
@@ -3289,8 +3288,32 @@
             ]
         },
         {
-            "artist": "barontieri",
+            "artist": "adamkuczek",
             "cmc": 3,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "Red"
+            ],
+            "flavor": "\"N-FORCE is betting we're not crazy enough to charge them through a minefield. They haven't seen crazy.\"\n\u2014Andreux Von",
+            "imageName": "aggressive demining",
+            "layout": "normal",
+            "manaCost": "{2}{R}",
+            "name": "Aggressive Demining",
+            "number": "120",
+            "originalText": "Destroy all artifact tokens. Aggressive Demining deals 2 damage to each creature.",
+            "originalType": "Sorcery",
+            "rarity": "Uncommon",
+            "text": "Destroy all artifact tokens. Aggressive Demining deals 2 damage to each creature.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ]
+        },
+        {
+            "artist": "barontieri",
+            "cmc": 4,
             "colorIdentity": [
                 "R"
             ],
@@ -3300,23 +3323,23 @@
             "flavor": "\"Every fire starts with a spark. So I tend to strike a lot of sparks.\"",
             "imageName": "andreux von, extremist",
             "layout": "normal",
-            "manaCost": "{2}{R}",
+            "manaCost": "{2}{R}{R}",
             "name": "Andreux Von, Extremist",
-            "number": "120",
+            "number": "121",
             "originalText": "First strike\nEach player must attack with at least one creature each combat if able.\nWhenever an attacking creature dies, Andreux Von, Extremist deals 1 damage to target player.",
-            "originalType": "Legendary Creature \u2014 Human Rebel",
-            "power": "3",
+            "originalType": "Legendary Creature \u2014 Mutant Rebel",
+            "power": "4",
             "rarity": "Rare",
             "subtypes": [
-                "Human",
+                "Mutant",
                 "Rebel"
             ],
             "supertypes": [
                 "Legendary"
             ],
             "text": "First strike\nEach player must attack with at least one creature each combat if able.\nWhenever an attacking creature dies, Andreux Von, Extremist deals 1 damage to target player.",
-            "toughness": "2",
-            "type": "Legendary Creature \u2014 Human Rebel",
+            "toughness": "3",
+            "type": "Legendary Creature \u2014 Mutant Rebel",
             "types": [
                 "Creature"
             ]
@@ -3335,7 +3358,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}",
             "name": "Angry Flamer",
-            "number": "121",
+            "number": "122",
             "originalText": "{R}: Angry Flamer gets +1/+0 until end of turn.",
             "originalType": "Creature \u2014 Human Rebel",
             "power": "3",
@@ -3349,36 +3372,6 @@
             "type": "Creature \u2014 Human Rebel",
             "types": [
                 "Creature"
-            ]
-        },
-        {
-            "artist": "Dmitry Leonovich",
-            "cmc": 4,
-            "colorIdentity": [
-                "R"
-            ],
-            "colors": [
-                "Red"
-            ],
-            "flavor": "Ammunition can take many forms.",
-            "imageName": "artillerize",
-            "layout": "normal",
-            "manaCost": "{3}{R}",
-            "name": "Artillerize",
-            "number": "122",
-            "originalText": "As an additional cost to cast this spell, sacrifice an artifact or creature.\nArtillerize deals 5 damage to any target.",
-            "originalType": "Instant",
-            "rarity": "Common",
-            "rulings": [
-                {
-                    "date": "2011-06-01",
-                    "text": "The artifact or creature is sacrificed as costs are paid. Players can't respond to the paying of costs by trying to destroy that artifact or creature."
-                }
-            ],
-            "text": "As an additional cost to cast this spell, sacrifice an artifact or creature.\nArtillerize deals 5 damage to any target.",
-            "type": "Instant",
-            "types": [
-                "Instant"
             ]
         },
         {
@@ -3447,7 +3440,7 @@
             "colors": [
                 "Red"
             ],
-            "flavor": "\"One of us is lucky, and one of us is broke. Let's found out who's who, shall we?\"",
+            "flavor": "\"We're nothing to these corporations, except as chips for their next big gamble.\"\n\u2014Andreux Von",
             "imageName": "corporate gamble",
             "layout": "normal",
             "manaCost": "{4}{R}{R}",
@@ -3471,6 +3464,7 @@
             "colors": [
                 "Red"
             ],
+            "flavor": "Programmed to deliver messages, one way or the other.",
             "imageName": "cyber courier",
             "layout": "normal",
             "manaCost": "{R}",
@@ -3523,6 +3517,30 @@
             ]
         },
         {
+            "artist": "kikicianjur (DeviantArt)",
+            "cmc": 4,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "Red"
+            ],
+            "flavor": "MekLab may lose construction contracts, but they've never lost a demolition contract.",
+            "imageName": "demolish",
+            "layout": "normal",
+            "manaCost": "{3}{R}",
+            "name": "Demolish",
+            "number": "128",
+            "originalText": "Destroy target artifact or land.",
+            "originalType": "Sorcery",
+            "rarity": "Common",
+            "text": "Destroy target artifact or land.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ]
+        },
+        {
             "artist": "Aurore Folny",
             "cmc": 3,
             "colorIdentity": [
@@ -3536,7 +3554,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Doxxing",
-            "number": "128",
+            "number": "129",
             "originalText": "Whenever you put an uploaded card into your hand, Doxxing deals 2 damage to any target.",
             "originalType": "Enchantment",
             "rarity": "Uncommon",
@@ -3560,7 +3578,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}{R}",
             "name": "Extremist's Discretion",
-            "number": "129",
+            "number": "130",
             "originalText": "Choose one \u2014\n\u2022 Extremist's Discretion deals damage to target creature equal to that creature's power.\n\u2022 Extremist's Discretion deals damage to target player equal to the number of cards in their hand.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -3568,6 +3586,35 @@
             "type": "Instant",
             "types": [
                 "Instant"
+            ]
+        },
+        {
+            "artist": "WildWeasel1339 (DeviantArt)",
+            "cmc": 3,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "Red"
+            ],
+            "imageName": "gun runner",
+            "layout": "normal",
+            "manaCost": "{2}{R}",
+            "name": "Gun Runner",
+            "number": "131",
+            "originalText": "When Gun Runner enters the battlefield, arm target creature you control. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to that creature.)",
+            "originalType": "Creature \u2014 Lizard Mutant",
+            "power": "2",
+            "rarity": "Common",
+            "subtypes": [
+                "Lizard",
+                "Mutant"
+            ],
+            "text": "When Gun Runner enters the battlefield, arm target creature you control. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to that creature.)",
+            "toughness": "1",
+            "type": "Creature \u2014 Lizard Mutant",
+            "types": [
+                "Creature"
             ]
         },
         {
@@ -3584,7 +3631,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Hard Crash",
-            "number": "130",
+            "number": "132",
             "originalText": "All permanents lose indestructible until end of turn.\nDestroy target artifact.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -3607,7 +3654,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Hired Hit",
-            "number": "131",
+            "number": "133",
             "originalText": "As an additional cost to cast Hired Hit, upload a card from your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)\nHired Hit deals 3 damage to any target.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -3630,43 +3677,20 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Hunter-Seeker",
-            "number": "132",
-            "originalText": "Menace\nWhen Hunter-Seeker enters the battlefield, arm it. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)\nHunter-Seeker attacks each combat if able.",
+            "number": "134",
+            "originalText": "Menace\nWhenever Hunter-Seeker deals combat damage to a player, arm it. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)",
             "originalType": "Artifact Creature \u2014 Construct",
-            "power": "1",
+            "power": "2",
             "rarity": "Uncommon",
             "subtypes": [
                 "Construct"
             ],
-            "text": "Menace\nWhen Hunter-Seeker enters the battlefield, arm it. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)\nHunter-Seeker attacks each combat if able.",
+            "text": "Menace\nWhenever Hunter-Seeker deals combat damage to a player, arm it. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)",
             "toughness": "1",
             "type": "Artifact Creature \u2014 Construct",
             "types": [
                 "Artifact",
                 "Creature"
-            ]
-        },
-        {
-            "artist": "adamkuczek",
-            "cmc": 4,
-            "colorIdentity": [
-                "R"
-            ],
-            "colors": [
-                "Red"
-            ],
-            "imageName": "incendiary sabotage",
-            "layout": "normal",
-            "manaCost": "{2}{R}{R}",
-            "name": "Incendiary Sabotage",
-            "number": "133",
-            "originalText": "As an additional cost to cast this spell, sacrifice an artifact.\nIncendiary Sabotage deals 3 damage to each creature.",
-            "originalType": "Instant",
-            "rarity": "Uncommon",
-            "text": "As an additional cost to cast this spell, sacrifice an artifact.\nIncendiary Sabotage deals 3 damage to each creature.",
-            "type": "Instant",
-            "types": [
-                "Instant"
             ]
         },
         {
@@ -3683,7 +3707,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}",
             "name": "Junkyard Boss",
-            "number": "134",
+            "number": "135",
             "originalText": "Sacrifice an artifact: Junkyard Boss gets +2/+2 until end of turn.",
             "originalType": "Creature \u2014 Human",
             "power": "3",
@@ -3699,8 +3723,8 @@
             ]
         },
         {
-            "artist": "BoxofLizards (DeviantArt)",
-            "cmc": 2,
+            "artist": "Cryptcrawler (DeviantArt)",
+            "cmc": 4,
             "colorIdentity": [
                 "R"
             ],
@@ -3710,18 +3734,18 @@
             "flavor": "\"How strong did you say this glass was, again?\"\n\u2014 BiHelix lab inspector, final words",
             "imageName": "lab wrecker",
             "layout": "normal",
-            "manaCost": "{R}{R}",
+            "manaCost": "{2}{R}{R}",
             "name": "Lab Wrecker",
-            "number": "135",
-            "originalText": "{R}, Sacrifice Lab Wrecker: Destroy target artifact.",
+            "number": "136",
+            "originalText": "When Lab Wrecker enters the battlefield, you may destroy target artifact or nonbasic land.",
             "originalType": "Creature \u2014 Mutant",
             "power": "3",
             "rarity": "Uncommon",
             "subtypes": [
                 "Mutant"
             ],
-            "text": "{R}, Sacrifice Lab Wrecker: Destroy target artifact.",
-            "toughness": "2",
+            "text": "When Lab Wrecker enters the battlefield, you may destroy target artifact or nonbasic land.",
+            "toughness": "3",
             "type": "Creature \u2014 Mutant",
             "types": [
                 "Creature"
@@ -3741,7 +3765,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Lizardman Outbreak",
-            "number": "136",
+            "number": "137",
             "originalText": "Create two 1/1 red Lizard Mutant creature tokens.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -3764,7 +3788,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}{R}",
             "name": "Lock and Load",
-            "number": "137",
+            "number": "138",
             "originalText": "Arm target creature you control twice. It deals damage equal to its power to target creature or planeswalker. (Create two colorless Equipment artifact tokens named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to that creature.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -3776,7 +3800,7 @@
         },
         {
             "artist": "LasloLF (DeviantArt)",
-            "cmc": 6,
+            "cmc": 5,
             "colorIdentity": [
                 "R"
             ],
@@ -3785,9 +3809,9 @@
             ],
             "imageName": "mx juggernaut",
             "layout": "normal",
-            "manaCost": "{4}{R}{R}",
+            "manaCost": "{3}{R}{R}",
             "name": "MX Juggernaut",
-            "number": "138",
+            "number": "139",
             "originalText": "Haste, trample\nWhen MX Juggernaut enters the battlefield, gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.\nCrew 3 (Tap any number of creatures you control with total power 3 or greater: This Vehicle becomes an artifact creature until end of turn.)",
             "originalType": "Artifact \u2014 Vehicle",
             "power": "6",
@@ -3815,7 +3839,7 @@
             "layout": "normal",
             "manaCost": "{3}{R}{R}",
             "name": "Mecha Dragon",
-            "number": "139",
+            "number": "140",
             "originalText": "Flying\n{R}: Mecha Dragon gains haste until end of turn.\n{R}: Mecha Dragon gets +1/+0 until end of turn.\nSacrifice an artifact: Add {R}.",
             "originalType": "Artifact Creature \u2014 Dragon Construct",
             "power": "4",
@@ -3829,36 +3853,6 @@
             "type": "Artifact Creature \u2014 Dragon Construct",
             "types": [
                 "Artifact",
-                "Creature"
-            ]
-        },
-        {
-            "artist": "Thomas Wievegg (DeviantArt)",
-            "cmc": 4,
-            "colorIdentity": [
-                "R"
-            ],
-            "colors": [
-                "Red"
-            ],
-            "flavor": "If the materials were good enough once, they're good enough twice.",
-            "imageName": "meklab engineer",
-            "layout": "normal",
-            "manaCost": "{2}{R}{R}",
-            "name": "MekLab Engineer",
-            "number": "140",
-            "originalText": "{R}, Sacrifice a nontoken artifact: Create a 2/2 colorless Construct artifact creature token.",
-            "originalType": "Creature \u2014 Human Artificer",
-            "power": "3",
-            "rarity": "Rare",
-            "subtypes": [
-                "Human",
-                "Artificer"
-            ],
-            "text": "{R}, Sacrifice a nontoken artifact: Create a 2/2 colorless Construct artifact creature token.",
-            "toughness": "3",
-            "type": "Creature \u2014 Human Artificer",
-            "types": [
                 "Creature"
             ]
         },
@@ -3916,6 +3910,29 @@
             ]
         },
         {
+            "artist": "mlappas (DeviantArt)",
+            "cmc": 3,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "Red"
+            ],
+            "imageName": "particular skills",
+            "layout": "normal",
+            "manaCost": "{2}{R}",
+            "name": "Particular Skills",
+            "number": "143",
+            "originalText": "Creatures you control get +2/+0 until end of turn.\nEquipped creatures you control gain first strike until end of turn.\nMutants you control gain trample until end of turn.",
+            "originalType": "Sorcery",
+            "rarity": "Uncommon",
+            "text": "Creatures you control get +2/+0 until end of turn.\nEquipped creatures you control gain first strike until end of turn.\nMutants you control gain trample until end of turn.",
+            "type": "Sorcery",
+            "types": [
+                "Sorcery"
+            ]
+        },
+        {
             "artist": "FlorentLlamas (DeviantArt)",
             "cmc": 2,
             "colorIdentity": [
@@ -3928,7 +3945,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Quick Draw",
-            "number": "143",
+            "number": "144",
             "originalText": "Target creature you control gets +3/+0 until end of turn. If that creature is equipped, it deals 1 damage to any target.",
             "originalType": "Instant",
             "rarity": "Common",
@@ -3952,7 +3969,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Rabid Tri-Limb",
-            "number": "144",
+            "number": "145",
             "originalText": "Menace (This creature can't be blocked except by two or more creatures.)\nOther Mutants you control have menace.",
             "originalType": "Creature \u2014 Lizard Mutant",
             "power": "2",
@@ -3970,7 +3987,7 @@
         },
         {
             "artist": "perun-tworek (DeviantArt)",
-            "cmc": 3,
+            "cmc": 4,
             "colorIdentity": [
                 "R"
             ],
@@ -3979,9 +3996,9 @@
             ],
             "imageName": "road rebel",
             "layout": "normal",
-            "manaCost": "{2}{R}",
+            "manaCost": "{3}{R}",
             "name": "Road Rebel",
-            "number": "145",
+            "number": "146",
             "originalText": "Haste\nWhen Road Rebel enters the battlefield, arm it. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)",
             "originalType": "Creature \u2014 Human Rebel",
             "power": "2",
@@ -3991,7 +4008,7 @@
                 "Rebel"
             ],
             "text": "Haste\nWhen Road Rebel enters the battlefield, arm it. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)",
-            "toughness": "1",
+            "toughness": "2",
             "type": "Creature \u2014 Human Rebel",
             "types": [
                 "Creature"
@@ -4011,7 +4028,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Robotic Revolutionary",
-            "number": "146",
+            "number": "147",
             "originalText": "As long as you've cast a spell this turn, Robotic Revolutionary gets +2/+0 and has trample.",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "2",
@@ -4041,7 +4058,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Rogue Prototype",
-            "number": "147",
+            "number": "148",
             "originalType": "Artifact Creature \u2014 Construct Rogue",
             "power": "3",
             "rarity": "Common",
@@ -4057,29 +4074,30 @@
             ]
         },
         {
-            "artist": "WildWeasel1339 (DeviantArt)",
-            "cmc": 4,
+            "artist": "MoonSkinned (DeviantArt)",
+            "cmc": 3,
             "colorIdentity": [
                 "R"
             ],
             "colors": [
                 "Red"
             ],
-            "imageName": "saurian sniper",
+            "flavor": "If the materials were good enough once, they're good enough twice.",
+            "imageName": "saurian mechanic",
             "layout": "normal",
-            "manaCost": "{3}{R}",
-            "name": "Saurian Sniper",
-            "number": "148",
-            "originalText": "When Saurian Sniper enters the battlefield, arm target Mutant you control. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)",
+            "manaCost": "{2}{R}",
+            "name": "Saurian Mechanic",
+            "number": "149",
+            "originalText": "{R}, Sacrifice a non-Construct artifact you control: Create a 2/2 colorless Construct artifact creature token.",
             "originalType": "Creature \u2014 Lizard Mutant",
             "power": "2",
-            "rarity": "Common",
+            "rarity": "Rare",
             "subtypes": [
                 "Lizard",
                 "Mutant"
             ],
-            "text": "When Saurian Sniper enters the battlefield, arm target Mutant you control. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to that creature.)",
-            "toughness": "2",
+            "text": "{R}, Sacrifice a non-Construct artifact you control: Create a 2/2 colorless Construct artifact creature token.",
+            "toughness": "3",
             "type": "Creature \u2014 Lizard Mutant",
             "types": [
                 "Creature"
@@ -4099,7 +4117,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Saurian Striker",
-            "number": "149",
+            "number": "150",
             "originalText": "Saurian Striker has first strike as long as it's attacking.",
             "originalType": "Creature \u2014 Lizard Mutant",
             "power": "2",
@@ -4116,26 +4134,27 @@
             ]
         },
         {
-            "artist": "REAL-ELMARIACHI (DeviantArt)",
-            "cmc": 3,
+            "artist": "ALGANTm",
+            "cmc": 1,
             "colorIdentity": [
                 "R"
             ],
             "colors": [
                 "Red"
             ],
-            "imageName": "short circuit",
+            "flavor": "\"Safety is our number eight priority!\"\n\u2014Warehouse motto for MekLab R&D",
+            "imageName": "shock",
             "layout": "normal",
-            "manaCost": "{2}{R}",
-            "name": "Short Circuit",
-            "number": "150",
-            "originalText": "Short Circuit deals 3 damage divided as you choose among one, two, or three target creatures. If a creature dealt damage this way would die this turn, exile it instead.",
-            "originalType": "Sorcery",
-            "rarity": "Uncommon",
-            "text": "Short Circuit deals 3 damage divided as you choose among one, two, or three target creatures. If a creature dealt damage this way would die this turn, exile it instead.",
-            "type": "Sorcery",
+            "manaCost": "{R}",
+            "name": "Shock",
+            "number": "151",
+            "originalText": "Shock deals 2 damage to any target.",
+            "originalType": "Instant",
+            "rarity": "Common",
+            "text": "Shock deals 2 damage to any target.",
+            "type": "Instant",
             "types": [
-                "Sorcery"
+                "Instant"
             ]
         },
         {
@@ -4150,9 +4169,9 @@
             "flavor": "Made from scraps. Makes others into scraps.",
             "imageName": "smash droid",
             "layout": "normal",
-            "manaCost": "{3}{R}{R}",
+            "manaCost": "{4}{R}",
             "name": "Smash Droid",
-            "number": "151",
+            "number": "152",
             "originalText": "Trample",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "5",
@@ -4182,7 +4201,7 @@
             "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Spice Den",
-            "number": "152",
+            "number": "153",
             "originalText": "Creatures you control have \"{T}, Discard a card: Draw a card.\"",
             "originalType": "Enchantment",
             "rarity": "Rare",
@@ -4205,8 +4224,8 @@
             "layout": "normal",
             "manaCost": "{R}",
             "name": "Street Hacker",
-            "number": "153",
-            "originalText": "As an additional cost to cast this spell, upload a card from your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)\nWhenever you put an uploaded card into your hand, target creature can't block Street Hacker this turn.",
+            "number": "154",
+            "originalText": "As an additional cost to cast this spell, upload a card from your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)\nWhenever you put an uploaded card into your hand, target creature can't block this turn.",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "2",
             "rarity": "Rare",
@@ -4214,7 +4233,7 @@
                 "Human",
                 "Rogue"
             ],
-            "text": "As an additional cost to cast this spell, upload a card from your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)\nWhenever you put an uploaded card into your hand, target creature can't block Street Hacker this turn.",
+            "text": "As an additional cost to cast this spell, upload a card from your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)\nWhenever you put an uploaded card into your hand, target creature can't block this turn.",
             "toughness": "2",
             "type": "Creature \u2014 Human Rogue",
             "types": [
@@ -4235,7 +4254,7 @@
             "layout": "normal",
             "manaCost": "{1}{R}",
             "name": "Street Thief",
-            "number": "154",
+            "number": "155",
             "originalText": "When Street Thief enters the battlefield, you may discard an artifact card. If you do, draw a card.",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "2",
@@ -4249,29 +4268,6 @@
             "type": "Creature \u2014 Human Rogue",
             "types": [
                 "Creature"
-            ]
-        },
-        {
-            "artist": "cyberpunk 2077",
-            "cmc": 4,
-            "colorIdentity": [
-                "R"
-            ],
-            "colors": [
-                "Red"
-            ],
-            "imageName": "target practice",
-            "layout": "normal",
-            "manaCost": "{3}{R}",
-            "name": "Target Practice",
-            "number": "155",
-            "originalText": "Arm up to one target creature you control. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)\nDestroy target artifact.",
-            "originalType": "Sorcery",
-            "rarity": "Common",
-            "text": "Arm up to one target creature you control. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to that creature.)\nDestroy target artifact.",
-            "type": "Sorcery",
-            "types": [
-                "Sorcery"
             ]
         },
         {
@@ -4289,7 +4285,7 @@
             "manaCost": "{2}{R}",
             "name": "Thrill Seekers",
             "number": "156",
-            "originalText": "Menace\nThrill Seekers attack each combat if able.",
+            "originalText": "Menace\nThrill Seekers attacks each combat if able.",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "3",
             "rarity": "Common",
@@ -4464,7 +4460,7 @@
             "manaCost": "{2}{G}",
             "name": "City Councilman",
             "number": "162",
-            "originalText": "Supremacy \u2014 When City Councilman enters the battlefield, if you have more life than an opponent, create a 1/1 white Soldier creature token.",
+            "originalText": "Superiority \u2014 When City Councilman enters the battlefield, if you have more life than an opponent, create a 1/1 white Soldier creature token.",
             "originalType": "Creature \u2014 Human Advisor",
             "power": "2",
             "rarity": "Common",
@@ -4472,7 +4468,7 @@
                 "Human",
                 "Advisor"
             ],
-            "text": "Supremacy \u2014 When City Councilman enters the battlefield, if you have more life than an opponent, create a 1/1 white Soldier creature token.",
+            "text": "Superiority \u2014 When City Councilman enters the battlefield, if you have more life than an opponent, create a 1/1 white Soldier creature token.",
             "toughness": "3",
             "type": "Creature \u2014 Human Advisor",
             "types": [
@@ -4554,7 +4550,7 @@
                 "Human"
             ],
             "text": "When Curious Aesthete enters the battlefield, search your library for a basic land card and upload it, then shuffle your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
-            "toughness": "1",
+            "toughness": "2",
             "type": "Creature \u2014 Human",
             "types": [
                 "Creature"
@@ -4738,7 +4734,7 @@
             "manaCost": "{G}",
             "name": "Machine Oracle",
             "number": "172",
-            "originalText": "Supremacy \u2014 {T}: Add one mana of any color. Activate this ability only if you have more life than an opponent.",
+            "originalText": "Superiority \u2014 {T}: Add one mana of any color. Activate this ability only if you have more life than an opponent.",
             "originalType": "Artifact Creature \u2014 Construct Advisor",
             "power": "2",
             "rarity": "Rare",
@@ -4746,7 +4742,7 @@
                 "Construct",
                 "Advisor"
             ],
-            "text": "Supremacy \u2014 {T}: Add one mana of any color. Activate this ability only if you have more life than an opponent.",
+            "text": "Superiority \u2014 {T}: Add one mana of any color. Activate this ability only if you have more life than an opponent.",
             "toughness": "1",
             "type": "Artifact Creature \u2014 Construct Advisor",
             "types": [
@@ -4797,7 +4793,7 @@
             "manaCost": "{G}",
             "name": "N-FORCE Ranger",
             "number": "174",
-            "originalText": "N-FORCE Ranger can't be blocked by creatures with power 2 or less.\nSupremacy \u2014 As long as you have more life than an opponent, N-FORCE Ranger has hexproof.",
+            "originalText": "N-FORCE Ranger can't be blocked by creatures with power 2 or less.\nSuperiority \u2014 As long as you have more life than an opponent, N-FORCE Ranger has hexproof.",
             "originalType": "Creature \u2014 Human Scout",
             "power": "1",
             "rarity": "Uncommon",
@@ -4805,7 +4801,7 @@
                 "Human",
                 "Scout"
             ],
-            "text": "N-FORCE Ranger can't be blocked by creatures with power 2 or less.\nSupremacy \u2014 As long as you have more life than an opponent, N-FORCE Ranger has hexproof.",
+            "text": "N-FORCE Ranger can't be blocked by creatures with power 2 or less.\nSuperiority \u2014 As long as you have more life than an opponent, N-FORCE Ranger has hexproof.",
             "toughness": "1",
             "type": "Creature \u2014 Human Scout",
             "types": [
@@ -4851,14 +4847,14 @@
             "manaCost": "{G}",
             "name": "Nanobirther",
             "number": "176",
-            "originalText": "Whenever you cast a creature spell, create a 0/1 colorless Nanobot artifact creature token.\n{2}{G}{G}, Sacrifice four Nanobots: Creatures you control get +2/+2 until end of turn.",
+            "originalText": "Whenever you cast a creature spell, create a 0/1 colorless Nanobot artifact creature token.",
             "originalType": "Artifact Creature \u2014 Nanobot",
             "power": "0",
             "rarity": "Mythic Rare",
             "subtypes": [
                 "Nanobot"
             ],
-            "text": "Whenever you cast a creature spell, create a 0/1 colorless Nanobot artifact creature token.\n{2}{G}{G}, Sacrifice four Nanobots: Creatures you control get +2/+2 until end of turn.",
+            "text": "Whenever you cast a creature spell, create a 0/1 colorless Nanobot artifact creature token.",
             "toughness": "1",
             "type": "Artifact Creature \u2014 Nanobot",
             "types": [
@@ -4973,6 +4969,37 @@
             ]
         },
         {
+            "artist": "Rafael Boo",
+            "cmc": 3,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "flavor": "\"We are what we are. Now it's time to embrace it, and never let the corporations lay a finger on us or our own ever again.\"",
+            "imageName": "resilient recluse",
+            "layout": "normal",
+            "manaCost": "{2}{G}",
+            "name": "Resilient Recluse",
+            "number": "181",
+            "originalText": "Reach",
+            "originalType": "Creature \u2014 Human Spider Mutant",
+            "power": "1",
+            "rarity": "Common",
+            "subtypes": [
+                "Human",
+                "Spider",
+                "Mutant"
+            ],
+            "text": "Reach",
+            "toughness": "4",
+            "type": "Creature \u2014 Human Spider Mutant",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "artist": "rahmatozz (DeviantArt)",
             "cmc": 4,
             "colorIdentity": [
@@ -4985,8 +5012,8 @@
             "layout": "normal",
             "manaCost": "{2}{G}{G}",
             "name": "Sapien Sergeant",
-            "number": "181",
-            "originalText": "Vigilance\nSupremacy \u2014 As long as you have more life than an opponent, Sapien Sergeant gets +2/+2 and has trample.",
+            "number": "182",
+            "originalText": "Vigilance\nSuperiority \u2014 As long as you have more life than an opponent, Sapien Sergeant gets +2/+2 and has trample.",
             "originalType": "Artifact Creature \u2014 Mutant Soldier",
             "power": "4",
             "rarity": "Rare",
@@ -4994,41 +5021,11 @@
                 "Mutant",
                 "Soldier"
             ],
-            "text": "Vigilance\nSupremacy \u2014 As long as you have more life than an opponent, Sapien Sergeant gets +2/+2 and has trample.",
+            "text": "Vigilance\nSuperiority \u2014 As long as you have more life than an opponent, Sapien Sergeant gets +2/+2 and has trample.",
             "toughness": "4",
             "type": "Artifact Creature \u2014 Mutant Soldier",
             "types": [
                 "Artifact",
-                "Creature"
-            ]
-        },
-        {
-            "artist": "Brollonks (DeviantArt)",
-            "cmc": 3,
-            "colorIdentity": [
-                "G"
-            ],
-            "colors": [
-                "Green"
-            ],
-            "flavor": "\"We are what we are. Now it's time to embrace it and show the corporations what they did to us.\"",
-            "imageName": "saurian brawler",
-            "layout": "normal",
-            "manaCost": "{2}{G}",
-            "name": "Saurian Brawler",
-            "number": "182",
-            "originalText": "Whenever Saurian Brawler attacks, target Mutant gets +1/+1 until end of turn.",
-            "originalType": "Creature \u2014 Lizard Mutant",
-            "power": "2",
-            "rarity": "Common",
-            "subtypes": [
-                "Lizard",
-                "Mutant"
-            ],
-            "text": "Whenever Saurian Brawler attacks, target Mutant gets +1/+1 until end of turn.",
-            "toughness": "3",
-            "type": "Creature \u2014 Lizard Mutant",
-            "types": [
                 "Creature"
             ]
         },
@@ -5077,7 +5074,7 @@
             "manaCost": "{1}{G}",
             "name": "Sewer Skinner",
             "number": "184",
-            "originalText": "Supremacy \u2014 Sewer Skinner has deathtouch and vigilance as long as you have more life than an opponent.",
+            "originalText": "Superiority \u2014 Sewer Skinner has vigilance and deathtouch as long as you have more life than an opponent.",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "2",
             "rarity": "Uncommon",
@@ -5085,7 +5082,7 @@
                 "Human",
                 "Rogue"
             ],
-            "text": "Supremacy \u2014 Sewer Skinner has vigilance and deathtouch as long as you have more life than an opponent.",
+            "text": "Superiority \u2014 Sewer Skinner has vigilance and deathtouch as long as you have more life than an opponent.",
             "toughness": "3",
             "type": "Creature \u2014 Human Rogue",
             "types": [
@@ -5188,7 +5185,7 @@
             "manaCost": "{3}{G}{G}",
             "name": "Splice Thug",
             "number": "188",
-            "originalText": "Trample\nSupremacy \u2014 Whenever Splice Thug attacks, it gets +2/+2 until end of turn if you have more life than an opponent.",
+            "originalText": "Trample\nSuperiority \u2014 Whenever Splice Thug attacks, it gets +2/+2 until end of turn if you have more life than an opponent.",
             "originalType": "Creature \u2014 Mutant Warrior",
             "power": "4",
             "rarity": "Common",
@@ -5196,7 +5193,7 @@
                 "Mutant",
                 "Warrior"
             ],
-            "text": "Trample\nSupremacy \u2014 Whenever Splice Thug attacks, it gets +2/+2 until end of turn if you have more life than an opponent.",
+            "text": "Trample\nSuperiority \u2014 Whenever Splice Thug attacks, it gets +2/+2 until end of turn if you have more life than an opponent.",
             "toughness": "4",
             "type": "Creature \u2014 Mutant Warrior",
             "types": [
@@ -5217,10 +5214,10 @@
             "manaCost": "{G}",
             "name": "State of Affairs",
             "number": "189",
-            "originalText": "Whenever a land enters the battlefield under your control, you gain 1 life.\nSupremacy \u2014 Sacrifice State of Affairs: Draw a card. Activate this ability only if you have more life than an opponent.",
+            "originalText": "Whenever a land enters the battlefield under your control, you gain 1 life.\nSuperiority \u2014 Sacrifice State of Affairs: Draw a card. Activate this ability only if you have more life than an opponent.",
             "originalType": "Enchantment",
             "rarity": "Rare",
-            "text": "Whenever a land enters the battlefield under your control, you gain 1 life.\nSupremacy \u2014 Sacrifice State of Affairs: Draw a card. Activate this ability only if you have more life than an opponent.",
+            "text": "Whenever a land enters the battlefield under your control, you gain 1 life.\nSuperiority \u2014 Sacrifice State of Affairs: Draw a card. Activate this ability only if you have more life than an opponent.",
             "type": "Enchantment",
             "types": [
                 "Enchantment"
@@ -5270,10 +5267,10 @@
             "manaCost": "{G}",
             "name": "Substantial Upgrade",
             "number": "191",
-            "originalText": "Target creature gets +2/+2 until end of turn.\nSupremacy \u2014 If you have more life than an opponent, it gets +4/+4 until end of turn instead.",
+            "originalText": "Target creature gets +2/+2 until end of turn.\nSuperiority \u2014 If you have more life than an opponent, it gets +4/+4 until end of turn instead.",
             "originalType": "Instant",
             "rarity": "Common",
-            "text": "Target creature gets +2/+2 until end of turn.\nSupremacy \u2014 If you have more life than an opponent, it gets +4/+4 until end of turn instead.",
+            "text": "Target creature gets +2/+2 until end of turn.\nSuperiority \u2014 If you have more life than an opponent, it gets +4/+4 until end of turn instead.",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -5321,15 +5318,15 @@
             "manaCost": "{4}{G}{G}",
             "name": "TC-8 Titan",
             "number": "193",
-            "originalText": "Trample\nWhen TC-8 Titan enters the battlefield, you may return target card from your graveyard to your hand.\nCrew 4 (Tap any number of creatures you control with total power 4 or greater: This Vehicle becomes an artifact creature until end of turn.)",
+            "originalText": "Trample\nWhen TC-8 Titan enters the battlefield, you may destroy target artifact or enchantment.\nCrew 3 (Tap any number of creatures you control with total power 3 or greater: This Vehicle becomes an artifact creature until end of turn.)",
             "originalType": "Artifact \u2014 Vehicle",
-            "power": "8",
+            "power": "7",
             "rarity": "Uncommon",
             "subtypes": [
                 "Vehicle"
             ],
-            "text": "Trample\nWhen TC-8 Titan enters the battlefield, you may return target card from your graveyard to your hand.\nCrew 4 (Tap any number of creatures you control with total power 4 or greater: This Vehicle becomes an artifact creature until end of turn.)",
-            "toughness": "8",
+            "text": "Trample\nWhen TC-8 Titan enters the battlefield, you may destroy target artifact or enchantment.\nCrew 3 (Tap any number of creatures you control with total power 3 or greater: This Vehicle becomes an artifact creature until end of turn.)",
+            "toughness": "7",
             "type": "Artifact \u2014 Vehicle",
             "types": [
                 "Artifact"
@@ -5379,7 +5376,7 @@
             "manaCost": "{2}{G}{G}",
             "name": "Unfettered Lusus",
             "number": "195",
-            "originalText": "Reach\nWhenever Unfettered Lusus blocks or becomes blocked by an equipped creature, destroy all equipment attached to that creature at end of combat.",
+            "originalText": "Reach\nWhenever Unfettered Lusus blocks or becomes blocked by an equipped creature, destroy all Equipment attached to that creature at end of combat.",
             "originalType": "Creature \u2014 Mutant",
             "power": "3",
             "rarity": "Uncommon",
@@ -5407,7 +5404,7 @@
             "manaCost": "{2}{G}",
             "name": "Urban Sprawl",
             "number": "196",
-            "originalText": "Search your library for a basic land card and put it onto the battlefield tapped. Then shuffle your library.\nYou gain 3 life.",
+            "originalText": "Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.\nYou gain 3 life.",
             "originalType": "Sorcery",
             "rarity": "Common",
             "text": "Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library.\nYou gain 3 life.",
@@ -5428,19 +5425,20 @@
             "flavor": "Proficient at navigating all kinds of webs.",
             "imageName": "web crawler",
             "layout": "normal",
-            "manaCost": "{3}{G}{G}",
+            "manaCost": "{4}{G}",
             "name": "Web Crawler",
             "number": "197",
             "originalText": "Reach",
-            "originalType": "Artifact Creature \u2014 Spider",
+            "originalType": "Artifact Creature \u2014 Spider Construct",
             "power": "3",
             "rarity": "Common",
             "subtypes": [
-                "Spider"
+                "Spider",
+                "Construct"
             ],
             "text": "Reach",
             "toughness": "5",
-            "type": "Artifact Creature \u2014 Spider",
+            "type": "Artifact Creature \u2014 Spider Construct",
             "types": [
                 "Artifact",
                 "Creature"
@@ -5493,10 +5491,10 @@
             "manaCost": "{2}{U}{R}",
             "name": "Duplicate Results",
             "number": "199",
-            "originalText": "Upload the top card of your library. If it's an instant or sorcery card, you may cast a copy of that spell without paying its mana cost. If it's a permanent card, create a token that's a copy of that permanent. That token gains haste. Exile it at the beginning of the next end step. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
+            "originalText": "Scry 1, then upload the top card of your library. If it's an instant or sorcery card, you may cast a copy of that spell without paying its mana cost. If it's a permanent card, create a token that's a copy of that permanent. That token gains haste. Exile it at the beginning of the next end step. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
             "originalType": "Sorcery",
             "rarity": "Rare",
-            "text": "Upload the top card of your library. If it's an instant or sorcery card, you may cast a copy of that spell without paying its mana cost. If it's a permanent card, create a token that's a copy of that permanent. That token gains haste. Exile it at the beginning of the next end step. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
+            "text": "Scry 1, then upload the top card of your library. If it's an instant or sorcery card, you may cast a copy of that spell without paying its mana cost. If it's a permanent card, create a token that's a copy of that permanent. That token gains haste. Exile it at the beginning of the next end step. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -5518,7 +5516,7 @@
             "manaCost": "{3}{R}{G}",
             "name": "Escaped Specimen",
             "number": "200",
-            "originalText": "Other Mutants you control get +1/+1.\nWhenever Escaped Specimen attacks, create a 1/1 red Lizard Mutant creature token tapped and attacking.",
+            "originalText": "Other Mutants you control get +1/+1.\nWhenever Escaped Specimen attacks, create a 1/1 red Lizard Mutant creature token that's tapped and attacking.",
             "originalType": "Creature \u2014 Lizard Mutant",
             "power": "4",
             "rarity": "Uncommon",
@@ -5605,10 +5603,10 @@
             "manaCost": "{3}{G}{W}",
             "name": "Institutional Inertia",
             "number": "203",
-            "originalText": "Creatures you control get +3/+3 until end of turn.\nSupremacy \u2014 If you have more life than each opponent, those creatures also gain trample and lifelink until end of turn.",
+            "originalText": "Creatures you control get +3/+3 until end of turn.\nSuperiority \u2014 If you have more life than each opponent, those creatures also gain trample and lifelink until end of turn.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Creatures you control get +3/+3 until end of turn.\nSupremacy \u2014 If you have more life than each opponent, those creatures also gain trample and lifelink until end of turn.",
+            "text": "Creatures you control get +3/+3 until end of turn.\nSuperiority \u2014 If you have more life than each opponent, those creatures also gain trample and lifelink until end of turn.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -5752,7 +5750,7 @@
             "manaCost": "{2}{U}{B}",
             "name": "Night Hacker",
             "number": "208",
-            "originalText": "When Night Hacker enters the battlefield, you may upload target creature. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)\nWhenever a creature enters the battlefield under an opponent's control, they lose 1 life and you gain 1 life.",
+            "originalText": "When Night Hacker enters the battlefield, you may upload another target creature. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)\nWhenever a creature enters the battlefield under an opponent's control, they lose 1 life and you gain 1 life.",
             "originalType": "Creature \u2014 Human Rogue",
             "power": "2",
             "rarity": "Uncommon",
@@ -5760,7 +5758,7 @@
                 "Human",
                 "Rogue"
             ],
-            "text": "When Night Hacker enters the battlefield, you may upload target creature. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)\nWhenever a creature enters the battlefield under an opponent's control, they lose 1 life and you gain 1 life.",
+            "text": "When Night Hacker enters the battlefield, you may upload another target creature. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)\nWhenever a creature enters the battlefield under an opponent's control, they lose 1 life and you gain 1 life.",
             "toughness": "2",
             "type": "Creature \u2014 Human Rogue",
             "types": [
@@ -5783,7 +5781,7 @@
             "manaCost": "{1}{R}{W}",
             "name": "Quickdraw Vigilante",
             "number": "209",
-            "originalText": "Vigilance\nWhenever Quickdraw Vigilante blocks or becomes blocked, arm it. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)",
+            "originalText": "Vigilance\nWhenever Quickdraw Vigilante attacks or blocks, if it's unequipped, arm it. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)",
             "originalType": "Creature \u2014 Human Warrior",
             "power": "2",
             "rarity": "Rare",
@@ -5791,7 +5789,7 @@
                 "Human",
                 "Warrior"
             ],
-            "text": "Vigilance\nWhenever Quickdraw Vigilante blocks or becomes blocked, arm it. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)",
+            "text": "Vigilance\nWhenever Quickdraw Vigilante attacks or blocks, if it's unequipped, arm it. (Create a colorless Equipment artifact token named Weapon with equip {2} and \"Equipped creature gets +1/+1\" attached to this creature.)",
             "toughness": "3",
             "type": "Creature \u2014 Human Warrior",
             "types": [
@@ -5814,17 +5812,17 @@
             "manaCost": "{1}{G}{U}",
             "name": "Re-spec",
             "number": "210",
-            "originalText": "Upload target creature, then its controller may put an uploaded creature card they own onto the battlefield. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
+            "originalText": "Upload target creature. Its controller may put an uploaded creature card they own onto the battlefield at the beginning of the next end step. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "originalType": "Instant",
             "rarity": "Rare",
-            "text": "Upload target creature, then its controller may put an uploaded creature card they own onto the battlefield. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
+            "text": "Upload target creature. Its controller may put an uploaded creature card they own onto the battlefield at the beginning of the next end step. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand during their turn.)",
             "type": "Instant",
             "types": [
                 "Instant"
             ]
         },
         {
-            "artist": "ALGANTm",
+            "artist": "REAL-ELMARIACHI (DeviantArt)",
             "cmc": 2,
             "colorIdentity": [
                 "U",
@@ -5834,15 +5832,15 @@
                 "Blue",
                 "Red"
             ],
-            "imageName": "server shock",
+            "imageName": "short circuit",
             "layout": "normal",
             "manaCost": "{U}{R}",
-            "name": "Server Shock",
+            "name": "Short Circuit",
             "number": "211",
-            "originalText": "Server Shock deals 2 damage to any target.\nUpload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
+            "originalText": "Short Circuit deals 2 damage to any target.\nUpload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "text": "Server Shock deals 2 damage to any target.\nUpload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
+            "text": "Short Circuit deals 2 damage to any target.\nUpload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -5899,7 +5897,7 @@
             "number": "213",
             "originalText": "Flying\nWhenever Skyguard Sovereign or another artifact enters the battlefield under your control, creatures you control get +1/+1 until end of turn.",
             "originalType": "Artifact Creature \u2014 Angel Construct",
-            "power": "3",
+            "power": "4",
             "rarity": "Rare",
             "subtypes": [
                 "Angel",
@@ -5929,13 +5927,13 @@
             "manaCost": "{1}{G}{W}",
             "name": "Stirring Pride",
             "number": "214",
-            "originalText": "Enchant creature\nEnchanted creature gets +2/+2 and has trample and lifelink.\nSupremacy \u2014 When Stirring Pride is put into a graveyard from the battlefield, if you have more life than an opponent, return it to its owner's hand.",
+            "originalText": "Enchant creature\nEnchanted creature gets +2/+2 and has trample and lifelink.\nSuperiority \u2014 When Stirring Pride is put into a graveyard from the battlefield, if you have more life than an opponent, return it to its owner's hand.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Rare",
             "subtypes": [
                 "Aura"
             ],
-            "text": "Enchant creature\nEnchanted creature gets +2/+2 and has trample and lifelink.\nSupremacy \u2014 When Stirring Pride is put into a graveyard from the battlefield, if you have more life than an opponent, return it to its owner's hand.",
+            "text": "Enchant creature\nEnchanted creature gets +2/+2 and has trample and lifelink.\nSuperiority \u2014 When Stirring Pride is put into a graveyard from the battlefield, if you have more life than an opponent, return it to its owner's hand.",
             "type": "Enchantment \u2014 Aura",
             "types": [
                 "Enchantment"
@@ -6039,15 +6037,15 @@
             "manaCost": "{4}{B}{G}",
             "name": "Turf Tender",
             "number": "218",
-            "originalText": "Supremacy \u2014 Whenever you tap a land for mana, if you have more life than an opponent, add one mana of any type that land produced.\n{4}{B}{G}: Target player loses 2 life and you gain 2 life.",
+            "originalText": "Superiority \u2014 Whenever you tap a land for mana, if you have more life than an opponent, add one mana of any type that land produced.\n{4}{B}{G}: Target player loses 2 life and you gain 2 life.",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "5",
             "rarity": "Rare",
             "subtypes": [
                 "Construct"
             ],
-            "text": "Supremacy \u2014 Whenever you tap a land for mana, if you have more life than an opponent, add one mana of any type that land produced.\n{4}{B}{G}: Target player loses 2 life and you gain 2 life.",
-            "toughness": "5",
+            "text": "Superiority \u2014 Whenever you tap a land for mana, if you have more life than an opponent, add one mana of any type that land produced.\n{4}{B}{G}: Target player loses 2 life and you gain 2 life.",
+            "toughness": "7",
             "type": "Artifact Creature \u2014 Construct",
             "types": [
                 "Artifact",
@@ -6070,10 +6068,10 @@
             "manaCost": "{2}{B}{G}",
             "name": "Underworld Deeds",
             "number": "219",
-            "originalText": "Supremacy \u2014 If you have more life than an opponent, choose both. Otherwise, choose one \u2014\n\u2022 Destroy target artifact or creature.\n\u2022 Return target artifact or creature card from your graveyard to your hand.",
+            "originalText": "Superiority \u2014 If you have more life than an opponent, choose both. Otherwise, choose one \u2014\n\u2022 Destroy target artifact or creature.\n\u2022 Return target artifact or creature card from your graveyard to your hand.",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
-            "text": "Supremacy \u2014 If you have more life than an opponent, choose both. Otherwise, choose one \u2014\n\u2022 Destroy target artifact or creature.\n\u2022 Return target artifact or creature card from your graveyard to your hand.",
+            "text": "Superiority \u2014 If you have more life than an opponent, choose both. Otherwise, choose one \u2014\n\u2022 Destroy target artifact or creature.\n\u2022 Return target artifact or creature card from your graveyard to your hand.",
             "type": "Sorcery",
             "types": [
                 "Sorcery"
@@ -6193,7 +6191,7 @@
             "manaCost": "{1}",
             "name": "Cultivation Nanotech",
             "number": "224",
-            "originalText": "When Cultivation Nanotech enters or leaves the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)\n{G}, Sacrifice Cultivation Nanotech: Put a land card from your hand onto the battlefield.",
+            "originalText": "When Cultivation Nanotech enters or leaves the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)\n{G}, Sacrifice Cultivation Nanotech: You may put a land card from your hand onto the battlefield.",
             "originalType": "Artifact",
             "rarity": "Common",
             "text": "When Cultivation Nanotech enters or leaves the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)\n{G}, Sacrifice Cultivation Nanotech: You may put a land card from your hand onto the battlefield.",
@@ -6222,6 +6220,28 @@
             ]
         },
         {
+            "artist": "Mehrdad Malek",
+            "cmc": 3,
+            "colorIdentity": [],
+            "colors": [],
+            "imageName": "hypercharge blade",
+            "layout": "normal",
+            "manaCost": "{3}",
+            "name": "Hypercharge Blade",
+            "number": "226",
+            "originalText": "Equipped creature gets +2/+2.\nWhenever equipped creature deals combat damage, put a charge counter on Hypercharge Blade.\nEquipped creature has \"{T}, Remove two charge counters from Hypercharge Blade: Destroy target permanent.\"\nEquip {2}",
+            "originalType": "Artifact \u2014 Equipment",
+            "rarity": "Mythic Rare",
+            "subtypes": [
+                "Equipment"
+            ],
+            "text": "Equipped creature gets +2/+2.\nWhenever equipped creature deals combat damage, put a charge counter on Hypercharge Blade.\nEquipped creature has \"{T}, Remove two charge counters from Hypercharge Blade: Destroy target permanent.\"\nEquip {2}",
+            "type": "Artifact \u2014 Equipment",
+            "types": [
+                "Artifact"
+            ]
+        },
+        {
             "artist": "Alex Vigini",
             "cmc": 1,
             "colorIdentity": [
@@ -6232,7 +6252,7 @@
             "layout": "normal",
             "manaCost": "{1}",
             "name": "Invasive Nanotech",
-            "number": "226",
+            "number": "227",
             "originalText": "When Invasive Nanotech enters or leaves the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)\n{R}, Sacrifice Invasive Nanotech: Target creature can't block this turn.",
             "originalType": "Artifact",
             "rarity": "Common",
@@ -6252,7 +6272,7 @@
             "layout": "normal",
             "manaCost": "{3}",
             "name": "JMD Dome",
-            "number": "227",
+            "number": "228",
             "originalText": "{2}, {T}: Upload the top card of your library. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)",
             "originalType": "Artifact",
             "rarity": "Uncommon",
@@ -6273,7 +6293,7 @@
             "layout": "normal",
             "manaCost": "{1}",
             "name": "Malign Nanotech",
-            "number": "228",
+            "number": "229",
             "originalText": "When Malign Nanotech enters or leaves the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)\n{B}, Sacrifice Malign Nanotech: Target player discards a card. Activate this ability only any time you could cast a sorcery.",
             "originalType": "Artifact",
             "rarity": "Common",
@@ -6294,7 +6314,7 @@
             "layout": "normal",
             "manaCost": "{1}",
             "name": "Medicinal Nanotech",
-            "number": "229",
+            "number": "230",
             "originalText": "When Medicinal Nanotech enters or leaves the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)\n{W}, Sacrifice Medicinal Nanotech: You gain 3 life.",
             "originalType": "Artifact",
             "rarity": "Common",
@@ -6315,34 +6335,12 @@
             "layout": "normal",
             "manaCost": "{1}",
             "name": "Neural Nanotech",
-            "number": "230",
+            "number": "231",
             "originalText": "When Neural Nanotech enters or leaves the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)\n{U}, Sacrifice Neural Nanotech: Draw a card.",
             "originalType": "Artifact",
             "rarity": "Common",
             "text": "When Neural Nanotech enters or leaves the battlefield, scry 1. (To scry 1, look at the top card of your library. You may put that card on the bottom of your library.)\n{U}, Sacrifice Neural Nanotech: Draw a card.",
             "type": "Artifact",
-            "types": [
-                "Artifact"
-            ]
-        },
-        {
-            "artist": "Mehrdad Malek",
-            "cmc": 3,
-            "colorIdentity": [],
-            "colors": [],
-            "imageName": "overcharge cleaver",
-            "layout": "normal",
-            "manaCost": "{3}",
-            "name": "Overcharge Cleaver",
-            "number": "231",
-            "originalText": "Equipped creature gets +2/+2.\nWhenever equipped creature deals combat damage, put a charge counter on Overcharge Cleaver.\nEquipped creature has \"{T}, Remove two charge counters from Overcharge Cleaver: Destroy target permanent.\"\nEquip {2}",
-            "originalType": "Artifact \u2014 Equipment",
-            "rarity": "Mythic Rare",
-            "subtypes": [
-                "Equipment"
-            ],
-            "text": "Equipped creature gets +2/+2.\nWhenever equipped creature deals combat damage, put a charge counter on Overcharge Cleaver.\nEquipped creature has \"{T}, Remove two charge counters from Overcharge Cleaver: Destroy target permanent.\"\nEquip {2}",
-            "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
             ]
@@ -6490,10 +6488,10 @@
             "manaCost": "{3}",
             "name": "Supercomputer",
             "number": "238",
-            "originalText": "Whenever you search your library for the first time each turn, also search your library for another card and put it into your hand.",
+            "originalText": "Whenever you search your library for the first time each turn, you may pay {1}. If you do, also search your library for another card, put it into your hand, then shuffle your library.",
             "originalType": "Artifact",
             "rarity": "Rare",
-            "text": "Whenever you search your library for the first time each turn, also search your library for another card, put it into your hand, then shuffle your library.",
+            "text": "Whenever you search your library for the first time each turn, you may pay {1}. If you do, also search your library for another card, put it into your hand, then shuffle your library.",
             "type": "Artifact",
             "types": [
                 "Artifact"
@@ -6501,18 +6499,18 @@
         },
         {
             "artist": "Fredaugis (DeviantArt)",
-            "cmc": 6,
+            "cmc": 8,
             "colorIdentity": [],
             "colors": [],
-            "flavor": "\"'The Net' is not a network, Talya, but an entity, a being brought to this plane thousands of years ago\u2014me.\"",
+            "flavor": "\"'The Net' is not merely a network, Talya, but an entity brought to this plane thousands of years ago\u2014me.\"",
             "imageName": "the network",
             "layout": "normal",
-            "manaCost": "{6}",
+            "manaCost": "{8}",
             "name": "The Network",
             "number": "239",
-            "originalText": "Artifacts you control enter the battlefield as a copy of The Network, except they aren't legendary.",
+            "originalText": "Artifacts you control have all activated abilities of each other artifact you control and of each artifact card in your graveyard.",
             "originalType": "Legendary Artifact Creature \u2014 Avatar",
-            "power": "6",
+            "power": "7",
             "rarity": "Mythic Rare",
             "subtypes": [
                 "Avatar"
@@ -6520,8 +6518,8 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Artifacts you control enter the battlefield as a copy of The Network, except they aren't legendary.",
-            "toughness": "6",
+            "text": "Artifacts you control have all activated abilities of each other artifact you control and of each artifact card in your graveyard.",
+            "toughness": "7",
             "type": "Legendary Artifact Creature \u2014 Avatar",
             "types": [
                 "Artifact",
@@ -6577,14 +6575,32 @@
             ],
             "colors": [],
             "flavor": "Where corruption meets community.",
-            "imageName": "blackwatch territory",
+            "imageName": "blackwatch turf",
             "layout": "normal",
-            "name": "Blackwatch Territory",
+            "name": "Blackwatch Turf",
             "number": "242",
-            "originalText": "Blackwatch Territory enters the battlefield tapped.\n{T}: Add {B} or {G}.",
+            "originalText": "Blackwatch Turf enters the battlefield tapped.\n{T}: Add {B} or {G}.",
             "originalType": "Land",
             "rarity": "Uncommon",
-            "text": "Blackwatch Territory enters the battlefield tapped.\n{T}: Add {B} or {G}.",
+            "text": "Blackwatch Turf enters the battlefield tapped.\n{T}: Add {B} or {G}.",
+            "type": "Land",
+            "types": [
+                "Land"
+            ]
+        },
+        {
+            "artist": "Artur Sadlos",
+            "cmc": 0,
+            "colorIdentity": [],
+            "colors": [],
+            "imageName": "coruscating cityscape",
+            "layout": "normal",
+            "name": "Coruscating Cityscape",
+            "number": "243",
+            "originalText": "As Coruscating Cityscape enters the battlefield, upload a card from your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)\n{T}: Add one mana of any color.",
+            "originalType": "Land",
+            "rarity": "Rare",
+            "text": "As Coruscating Cityscape enters the battlefield, upload a card from your hand. (To upload a card, exile it face-up. Its owner may pay {2} to put it into their hand any time they could cast a sorcery.)\n{T}: Add one mana of any color.",
             "type": "Land",
             "types": [
                 "Land"
@@ -6602,7 +6618,7 @@
             "imageName": "cycorp research facility",
             "layout": "normal",
             "name": "CyCorp Research Facility",
-            "number": "243",
+            "number": "244",
             "originalText": "CyCorp Research Facility enters the battlefield tapped.\n{T}: Add {U} or {R}.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6620,7 +6636,7 @@
             "imageName": "holo-den",
             "layout": "normal",
             "name": "Holo-Den",
-            "number": "244",
+            "number": "245",
             "originalText": "{T}: Add {C}.\n{1}: Holo-Den becomes the basic land type of your choice until end of turn. (You may tap it to add mana that the chosen basic land type produces.)",
             "originalType": "Land",
             "rarity": "Common",
@@ -6642,7 +6658,7 @@
             "imageName": "meklab factory",
             "layout": "normal",
             "name": "MekLab Factory",
-            "number": "245",
+            "number": "246",
             "originalText": "MekLab Factory enters the battlefield tapped.\n{T}: Add {R} or {W}.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6664,7 +6680,7 @@
             "imageName": "n-force station",
             "layout": "normal",
             "name": "N-FORCE Station",
-            "number": "246",
+            "number": "247",
             "originalText": "N-FORCE Station enters the battlefield tapped.\n{T}: Add {W} or {B}.",
             "originalType": "Land",
             "rarity": "Uncommon",
@@ -6682,7 +6698,7 @@
             "imageName": "shadowed pillar",
             "layout": "normal",
             "name": "Shadowed Pillar",
-            "number": "247",
+            "number": "248",
             "originalText": "{T}: Add {C}.\n{T}, Sacrifice Shadowed Pillar: Search your library for a Swamp or Mountain card, put it onto the battlefield tapped, then shuffle your library.",
             "originalType": "Land",
             "rarity": "Rare",
@@ -6700,7 +6716,7 @@
             "imageName": "sprawling coils",
             "layout": "normal",
             "name": "Sprawling Coils",
-            "number": "248",
+            "number": "249",
             "originalText": "{T}: Add {C}.\n{T}, Sacrifice Sprawling Coils: Search your library for a Mountain or Forest card, put it onto the battlefield tapped, then shuffle your library.",
             "originalType": "Land",
             "rarity": "Rare",
@@ -6718,7 +6734,7 @@
             "imageName": "umbrous depths",
             "layout": "normal",
             "name": "Umbrous Depths",
-            "number": "249",
+            "number": "250",
             "originalText": "{T}: Add {C}.\n{T}, Sacrifice Umbrous Depths: Search your library for an Island or Swamp card, put it onto the battlefield tapped, then shuffle your library.",
             "originalType": "Land",
             "rarity": "Rare",
@@ -6736,7 +6752,7 @@
             "imageName": "vibrant locale",
             "layout": "normal",
             "name": "Vibrant Locale",
-            "number": "250",
+            "number": "251",
             "originalText": "{T}: Add {C}.\n{T}, Sacrifice Vibrant Locale: Search your library for a Forest or Plains card, put it onto the battlefield tapped, then shuffle your library.",
             "originalType": "Land",
             "rarity": "Rare",
@@ -6755,7 +6771,7 @@
             "imageName": "plains",
             "layout": "normal",
             "name": "Plains",
-            "number": "251",
+            "number": "252",
             "originalType": "Basic Land \u2014 Plains",
             "rarity": "Basic Land",
             "subtypes": [
@@ -6779,7 +6795,7 @@
             "imageName": "island",
             "layout": "normal",
             "name": "Island",
-            "number": "252",
+            "number": "253",
             "originalType": "Basic Land \u2014 Island",
             "rarity": "Basic Land",
             "subtypes": [
@@ -6803,7 +6819,7 @@
             "imageName": "swamp",
             "layout": "normal",
             "name": "Swamp",
-            "number": "253",
+            "number": "254",
             "originalType": "Basic Land \u2014 Swamp",
             "rarity": "Basic Land",
             "subtypes": [
@@ -6827,7 +6843,7 @@
             "imageName": "mountain",
             "layout": "normal",
             "name": "Mountain",
-            "number": "254",
+            "number": "255",
             "originalType": "Basic Land \u2014 Mountain",
             "rarity": "Basic Land",
             "subtypes": [
@@ -6851,7 +6867,7 @@
             "imageName": "forest",
             "layout": "normal",
             "name": "Forest",
-            "number": "255",
+            "number": "256",
             "originalType": "Basic Land \u2014 Forest",
             "rarity": "Basic Land",
             "subtypes": [
@@ -6872,5 +6888,5 @@
     "name": "Netropolis",
     "releaseDate": "2018-01-12",
     "type": "expansion",
-    "version": "21"
+    "version": "25"
 }
