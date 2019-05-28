@@ -145,7 +145,7 @@
             "rulings": [
                 {
                     "date": "2014-11-07",
-                    "text": "Containment Priest's last ability won't affect any nontoken creatures that were cast, including ones cast from unusual zones such as your graveyard."
+                    "text": "Containment Priest's last ability won't affect any creatures that were cast, including ones cast from unusual zones such as your graveyard."
                 },
                 {
                     "date": "2014-11-07",
@@ -153,27 +153,15 @@
                 },
                 {
                     "date": "2014-11-07",
-                    "text": "If Containment Priest enters the battlefield without being cast, it won't exile itself."
+                    "text": "If Containment Priest enters the battlefield without being cast, its ability won't exile itself."
                 },
                 {
                     "date": "2014-11-07",
                     "text": "If Containment Priest enters the battlefield at the same time as other creatures, its ability won't affect those creatures."
                 },
                 {
-                    "date": "2014-11-07",
-                    "text": "Containment Priest\u2019s last ability won\u2019t affect any nontoken creatures that were cast, including ones cast from unusual zones such as your graveyard."
-                },
-                {
-                    "date": "2014-11-07",
-                    "text": "Containment Priest\u2019s last ability doesn\u2019t stop creature tokens from entering the battlefield. It also doesn\u2019t affect creatures that were already on the battlefield."
-                },
-                {
-                    "date": "2014-11-07",
-                    "text": "If Containment Priest enters the battlefield without being cast, it won\u2019t exile itself."
-                },
-                {
-                    "date": "2014-11-07",
-                    "text": "If Containment Priest enters the battlefield at the same time as other creatures, its ability won\u2019t affect those creatures."
+                    "date": "2018-12-07",
+                    "text": "If a noncreature card wasn't cast and is entering the battlefield as a creature (due to an effect such as that of March of the Machines), it will be exiled. Similarly, if a creature card wasn't cast and is entering the battlefield as a noncreature permanent (for example, Heliod, God of the Sun with insufficient devotion), it won't be exiled."
                 }
             ],
             "subtypes": [
@@ -254,7 +242,7 @@
             "manaCost": "{2}{W}{W}",
             "name": "Faradia, Honored Sovereign",
             "number": "8",
-            "originalText": "Flying, first strike, vigilance\nFaradia, Honored Sovereign can't attack or block unless you tap three other untapped creatures and/or artifacts you control.",
+            "originalText": "Flying, vigilance, indestructible\nFaradia, Honored Sovereign can't attack or block unless you tap three other untapped creatures and/or artifacts you control.",
             "originalType": "Legendary Creature \u2014 Angel",
             "power": "7",
             "rarity": "Mythic Rare",
@@ -274,7 +262,7 @@
             "supertypes": [
                 "Legendary"
             ],
-            "text": "Flying, first strike, vigilance\nFaradia, Honored Sovereign can't attack or block unless you tap three other untapped creatures and/or artifacts you control.",
+            "text": "Flying, vigilance, indestructible\nFaradia, Honored Sovereign can't attack or block unless you tap three other untapped creatures and/or artifacts you control.",
             "toughness": "7",
             "type": "Legendary Creature \u2014 Angel",
             "types": [
@@ -475,17 +463,17 @@
             "colors": [
                 "White"
             ],
-            "flavor": "If you put your faith in Faradia...\nDesigned with Reuben",
-            "imageName": "heroric crusader",
+            "flavor": "If you put your faith in Faradia\nDesigned with Reuben",
+            "imageName": "heroic crusader",
             "layout": "double-faced",
             "manaCost": "{1}{W}{W}",
-            "name": "Heroric Crusader",
+            "name": "Heroic Crusader",
             "names": [
-                "Heroric Crusader",
+                "Heroic Crusader",
                 "Faradia's Ascendant"
             ],
             "number": "16a",
-            "originalText": "Lifelink\nTap three other untapped creatures and/or artifacts you control: Transform Heroric Crusader.",
+            "originalText": "Heroic Crusader has first strike as long as it's attacking.\nTap three other untapped creatures and/or artifacts you control: Transform Heroic Crusader.",
             "originalType": "Creature \u2014 Human Soldier",
             "power": "3",
             "rarity": "Rare",
@@ -493,7 +481,7 @@
                 "Human",
                 "Soldier"
             ],
-            "text": "Lifelink\nTap three other untapped creatures and/or artifacts you control: Transform Heroric Crusader.",
+            "text": "Heroic Crusader has first strike as long as it's attacking.\nTap three other untapped creatures and/or artifacts you control: Transform Heroic Crusader.",
             "toughness": "3",
             "type": "Creature \u2014 Human Soldier",
             "types": [
@@ -514,11 +502,11 @@
             "layout": "double-faced",
             "name": "Faradia's Ascendant",
             "names": [
-                "Heroric Crusader",
+                "Heroic Crusader",
                 "Faradia's Ascendant"
             ],
             "number": "16b",
-            "originalText": "Flying, lifelink",
+            "originalText": "Flying\nFaradia's Ascendant has first strike as long as it's attacking.",
             "originalType": "Creature \u2014 Angel Soldier",
             "power": "5",
             "rarity": "Rare",
@@ -526,7 +514,7 @@
                 "Angel",
                 "Soldier"
             ],
-            "text": "Flying, lifelink",
+            "text": "Flying\nFaradia's Ascendant has first strike as long as it's attacking.",
             "toughness": "5",
             "type": "Creature \u2014 Angel Soldier",
             "types": [
@@ -2003,7 +1991,7 @@
             "rulings": [
                 {
                     "date": "2009-10-01",
-                    "text": "A \"creature spell\" is any spell with the type creature, even if it has other types such as artifact or enchantment. Older cards of type summon are also creature spells."
+                    "text": "A \u201ccreature spell\u201d is any spell with the type creature, even if it has other types such as artifact or enchantment. Older cards of type summon are also creature spells."
                 }
             ],
             "text": "Counter target noncreature spell.",
@@ -2243,7 +2231,7 @@
             "manaCost": "{4}{U}{U}",
             "name": "Tempted by Lotuses",
             "number": "77",
-            "originalText": "Enchant permanent\nYou control enchanted permanent.\nWhen Tempted by Lotuses enters the battlefield, enchanted permanent's owner create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "Enchant permanent\nYou control enchanted permanent.\nWhen Tempted by Lotuses enters the battlefield, enchanted permanent's owner creates a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
             "subtypes": [
@@ -2309,7 +2297,7 @@
         },
         {
             "artist": "Shawn Melchor",
-            "cmc": 3,
+            "cmc": 2,
             "colorIdentity": [
                 "U"
             ],
@@ -2319,7 +2307,7 @@
             "flavor": "\"The most potent spells and hexes will be of no use if Faradia sees them coming. I'll ensure she doesn't.\"\n\u2014Jeama to Lazaire",
             "imageName": "witch's invocation",
             "layout": "normal",
-            "manaCost": "{1}{U}{U}",
+            "manaCost": "{1}{U}",
             "name": "Witch's Invocation",
             "number": "80",
             "originalText": "Flash\nYou may cast spells as though they had flash.",
@@ -2795,38 +2783,6 @@
             ]
         },
         {
-            "artist": "Alessandra Pisano",
-            "cmc": 7,
-            "colorIdentity": [
-                "B"
-            ],
-            "colors": [
-                "Black"
-            ],
-            "imageName": "jeama, zoulev queen",
-            "layout": "normal",
-            "manaCost": "{6}{B}",
-            "name": "Jeama, Zoulev Queen",
-            "number": "98",
-            "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nWhen Jeama enters the battlefield, exile up to four target creature cards from graveyards. You may cast them for as long as they remain exiled, spells cast this way have enspirit, and you may spend mana as though it were mana of any type to cast them.",
-            "originalType": "Legendary Enchantment Creature \u2014 Spirit",
-            "power": "4",
-            "rarity": "Rare",
-            "subtypes": [
-                "Spirit"
-            ],
-            "supertypes": [
-                "Legendary"
-            ],
-            "text": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nWhen Jeama enters the battlefield, exile up to four target creature cards from graveyards. You may cast them for as long as they remain exiled, spells cast this way have enspirit, and you may spend mana as though it were mana of any type to cast them.",
-            "toughness": "4",
-            "type": "Legendary Enchantment Creature \u2014 Spirit",
-            "types": [
-                "Enchantment",
-                "Creature"
-            ]
-        },
-        {
             "artist": "Alexia Joulianos",
             "cmc": 7,
             "colorIdentity": [
@@ -2839,7 +2795,7 @@
             "layout": "normal",
             "manaCost": "{6}{B}",
             "name": "Kantra of Avarice",
-            "number": "99",
+            "number": "98",
             "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nWhen Kantra of Avarice enters the battlefield, target player draws two cards and loses 2 life.",
             "originalType": "Enchantment Creature \u2014 Spirit",
             "power": "4",
@@ -2868,7 +2824,7 @@
             "layout": "normal",
             "manaCost": "{6}{B}",
             "name": "Kantra of Plagues",
-            "number": "100",
+            "number": "99",
             "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nAt the beginning of each player's upkeep, they sacrifice a nonenchantment creature. Then if there are no nonenchantment creatures on the battlefield, sacrifice Kantra of Plagues.",
             "originalType": "Enchantment Creature \u2014 Spirit",
             "power": "6",
@@ -2897,7 +2853,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Lazaire's Altar",
-            "number": "101",
+            "number": "100",
             "originalText": "At the beginning of your upkeep, target player draws a card and loses 1 life. Each other player creates a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Enchantment",
             "rarity": "Rare",
@@ -2921,7 +2877,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Murmurs of the Bayou",
-            "number": "102",
+            "number": "101",
             "originalText": "Target creature gets -1/-1 until end of turn. Germinate. (Put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
             "originalType": "Instant",
             "rarity": "Common",
@@ -2944,7 +2900,7 @@
             "layout": "normal",
             "manaCost": "{2}{B}{B}",
             "name": "Occult Tutor",
-            "number": "103",
+            "number": "102",
             "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nSearch your library for a card and put that card into your hand. Then shuffle your library. If this spell's tithe was paid, add {B}{B}{B}{B}.",
             "originalType": "Sorcery",
             "rarity": "Rare",
@@ -2972,8 +2928,8 @@
                 "Ontarachie Hunter",
                 "Scaleblight Cutthroat"
             ],
-            "number": "104a",
-            "originalText": "Whenever Ontarachie Hunter attacks, each opponent loses 1 life.\nAt the beginning of your end step, if an opponent has 10 or less life, transform Ontarachie Hunter",
+            "number": "103a",
+            "originalText": "Whenever Ontarachie Hunter attacks, each opponent loses 1 life.\nAt the beginning of your end step, if an opponent has 10 or less life, transform Ontarachie Hunter.",
             "originalType": "Creature \u2014 Merfolk Rogue",
             "power": "1",
             "rarity": "Rare",
@@ -3005,7 +2961,7 @@
                 "Ontarachie Hunter",
                 "Scaleblight Cutthroat"
             ],
-            "number": "104b",
+            "number": "103b",
             "originalText": "Whenever Scaleblight Cutthroat attacks, each opponent loses life equal to its power.",
             "originalType": "Creature \u2014 Crocodile Merfolk",
             "power": "2",
@@ -3035,7 +2991,7 @@
             "layout": "normal",
             "manaCost": "{B}",
             "name": "Oracle's Ploy",
-            "number": "105",
+            "number": "104",
             "originalText": "Enchant creature\nEnchanted creature gets -3/-3.\nWhen enchanted creature dies, its controller may scry 1.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
@@ -3062,7 +3018,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Overwhelming Guilt",
-            "number": "106",
+            "number": "105",
             "originalText": "Target opponent reveals their hand. You may choose a noncreature, nonland card from it. If you do, that player discards that card. Otherwise, they lose 3 life.",
             "originalType": "Sorcery",
             "rarity": "Common",
@@ -3086,7 +3042,7 @@
             "layout": "normal",
             "manaCost": "{2}{B}",
             "name": "Parish Custodian",
-            "number": "107",
+            "number": "106",
             "originalText": "{W}: Parish Custodian gains lifelink until end of turn. (Damage dealt by this creature also causes you to gain that much life.)",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "3",
@@ -3115,7 +3071,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Reclaim the Devout",
-            "number": "108",
+            "number": "107",
             "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nReturn target creature or planeswalker card from your graveyard to your hand. If this spell's tithe was paid, return that card to the battlefield instead.",
             "originalType": "Instant",
             "rarity": "Uncommon",
@@ -3139,7 +3095,7 @@
             "layout": "normal",
             "manaCost": "{5}{B}",
             "name": "Returned Bokor",
-            "number": "109",
+            "number": "108",
             "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nWhen Returned Bokor dies, return it to its owner's hand.",
             "originalType": "Enchantment Creature \u2014 Spirit",
             "power": "4",
@@ -3169,7 +3125,7 @@
             "layout": "normal",
             "manaCost": "{1}{B}",
             "name": "Scaleblight Warrior",
-            "number": "110",
+            "number": "109",
             "originalText": "When Scaleblight Warrior enters the battlefield, you gain 2 life.\nPay 2 life: Scaleblight Warrior gains menace until end of turn.",
             "originalType": "Creature \u2014 Crocodile Warrior",
             "power": "2",
@@ -3182,6 +3138,35 @@
             "toughness": "1",
             "type": "Creature \u2014 Crocodile Warrior",
             "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Andrius Matijosius",
+            "cmc": 7,
+            "colorIdentity": [
+                "B"
+            ],
+            "colors": [
+                "Black"
+            ],
+            "imageName": "shaman of the first pact",
+            "layout": "normal",
+            "manaCost": "{6}{B}",
+            "name": "Shaman of the First Pact",
+            "number": "110",
+            "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nWhen Shaman of the First Pact enters the battlefield, exile up to four target creature cards from graveyards. You may cast them for as long as they remain exiled and you may spend mana as though it were mana of any type to cast them.",
+            "originalType": "Enchantment Creature \u2014 Spirit",
+            "power": "4",
+            "rarity": "Rare",
+            "subtypes": [
+                "Spirit"
+            ],
+            "text": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\nWhen Shaman of the First Pact enters the battlefield, exile up to four target creature cards from graveyards. You may cast them for as long as they remain exiled and you may spend mana as though it were mana of any type to cast them.",
+            "toughness": "4",
+            "type": "Enchantment Creature \u2014 Spirit",
+            "types": [
+                "Enchantment",
                 "Creature"
             ]
         },
@@ -3200,7 +3185,7 @@
             "manaCost": "{1}{B}",
             "name": "Sin Broker",
             "number": "111",
-            "originalText": "Whenever you pay a tithe, you may pay {2}. If you do, Sin Broker each opponent loses 3 life and you gain 3 life.",
+            "originalText": "Whenever you pay a tithe, you may pay {2}. If you do, each opponent loses 3 life and you gain 3 life.",
             "originalType": "Creature \u2014 Zombie Cleric",
             "power": "0",
             "rarity": "Uncommon",
@@ -3897,10 +3882,10 @@
             "manaCost": "{3}{R}",
             "name": "Burning Revelations",
             "number": "135",
-            "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nAny opponent may have you draw three cards. If they don't, Burning Revelations deals 5 damage to them. Then if this spell's tithe was paid, copy it twice.",
+            "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nAny opponent may have you draw three cards. If they don't, Burning Revelations deals 5 damage to them. Then if you cast this spell and its tithe was paid, copy it twice",
             "originalType": "Instant",
             "rarity": "Rare",
-            "text": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nAny opponent may have you draw three cards. If they don't, Burning Revelations deals 5 damage to them. Then if this spell's tithe was paid, copy it twice.",
+            "text": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nAny opponent may have you draw three cards. If they don't, Burning Revelations deals 5 damage to them. Then if you cast this spell and its tithe was paid, copy it twice",
             "type": "Instant",
             "types": [
                 "Instant"
@@ -4251,12 +4236,6 @@
             "originalType": "Legendary Creature \u2014 Phoenix",
             "power": "4",
             "rarity": "Mythic Rare",
-            "rulings": [
-                {
-                    "date": "2019-03-30",
-                    "text": "This can't be cast using mana from Art Studio's second ability, since it can harmonize but doesn't have harmony."
-                }
-            ],
             "subtypes": [
                 "Phoenix"
             ],
@@ -4498,12 +4477,6 @@
             "originalText": "Choose one \u2014\n\u2022 Radiant Outburst deals 3 damage to target creature.\n\u2022 Harmonize twice. (To harmonize, trigger up to one harmony of a permanent you control.)",
             "originalType": "Instant",
             "rarity": "Uncommon",
-            "rulings": [
-                {
-                    "date": "2019-03-30",
-                    "text": "This can't be cast using mana from Art Studio's second ability, since it can harmonize but doesn't have harmony."
-                }
-            ],
             "text": "Choose one \u2014\n\u2022 Radiant Outburst deals 3 damage to target creature.\n\u2022 Harmonize twice. (To harmonize, trigger up to one harmony of a permanent you control.)",
             "type": "Instant",
             "types": [
@@ -4635,7 +4608,7 @@
             "manaCost": "{2}{R}",
             "name": "Storehouse Collapse",
             "number": "163",
-            "originalText": "Destroy target artifact or nonbasic land. Its controller create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+            "originalText": "Destroy target artifact or nonbasic land. Its controller creates a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Sorcery",
             "rarity": "Uncommon",
             "text": "Destroy target artifact or nonbasic land. Its controller creates a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
@@ -5160,29 +5133,6 @@
             ]
         },
         {
-            "artist": "Angelica Lisunova",
-            "cmc": 5,
-            "colorIdentity": [
-                "G"
-            ],
-            "colors": [
-                "Green"
-            ],
-            "imageName": "dance of the dryads",
-            "layout": "normal",
-            "manaCost": "{3}{G}{G}",
-            "name": "Dance of the Dryads",
-            "number": "182",
-            "originalText": "Whenever a player taps a permanent for mana, that player adds one mana of any type that permanent produced.\nWhen Dance of the Dryads enters the battlefield, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
-            "originalType": "Enchantment",
-            "rarity": "Rare",
-            "text": "Whenever a player taps a permanent for mana, that player adds one mana of any type that permanent produced.\nWhen Dance of the Dryads enters the battlefield, create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
-            "type": "Enchantment",
-            "types": [
-                "Enchantment"
-            ]
-        },
-        {
             "artist": "Simon Cowell",
             "cmc": 6,
             "colorIdentity": [
@@ -5195,7 +5145,7 @@
             "layout": "normal",
             "manaCost": "{4}{G}{G}",
             "name": "Fungal Whomper",
-            "number": "183",
+            "number": "182",
             "originalText": "When Fungal Whomper enters the battlefield, you gain 4 life.\nWhen Fungal Whomper leaves the battlefield, germinate four times. (To germinate, put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
             "originalType": "Creature \u2014 Fungus",
             "power": "4",
@@ -5207,6 +5157,38 @@
             "toughness": "4",
             "type": "Creature \u2014 Fungus",
             "types": [
+                "Creature"
+            ]
+        },
+        {
+            "artist": "Alessandra Pisano",
+            "cmc": 5,
+            "colorIdentity": [
+                "G"
+            ],
+            "colors": [
+                "Green"
+            ],
+            "imageName": "jeama, zoulev queen",
+            "layout": "normal",
+            "manaCost": "{4}{G}",
+            "name": "Jeama, Zoulev Queen",
+            "number": "183",
+            "originalText": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\n{T}: The next creature spell you cast this turn has enspirit. When that creature enters the battlefield, it becomes an enchantment in addition to its other types.",
+            "originalType": "Legendary Enchantment Creature \u2014 Spirit",
+            "power": "4",
+            "rarity": "Rare",
+            "subtypes": [
+                "Spirit"
+            ],
+            "supertypes": [
+                "Legendary"
+            ],
+            "text": "Enspirit (As you cast this spell, you may exile a nonenchantment creature you control until this leaves the battlefield or fails to resolve. Reduce this spell's cost by the exiled card's converted mana cost.)\n{T}: The next creature spell you cast this turn has enspirit. When that creature enters the battlefield, it becomes an enchantment in addition to its other types.",
+            "toughness": "4",
+            "type": "Legendary Enchantment Creature \u2014 Spirit",
+            "types": [
+                "Enchantment",
                 "Creature"
             ]
         },
@@ -5399,7 +5381,7 @@
                 "Overgrowth Host"
             ],
             "number": "190a",
-            "originalText": "At the beginning of your upkeep, germinate. Then, if creatures you control have total power 10 or greater, transform Mushroom Merchant. (To germinate, put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
+            "originalText": "At the beginning of your upkeep, germinate. Then if creatures you control have total power 10 or greater, transform Mushroom Merchant. (To germinate, put a +1/+1 counter on a creature or create a 1/1 green Saproling creature token.)",
             "originalType": "Creature \u2014 Human Advisor",
             "power": "3",
             "rarity": "Rare",
@@ -5432,7 +5414,7 @@
                 "Overgrowth Host"
             ],
             "number": "190b",
-            "originalText": "Whenever Overgrowth Host attacks, germinate. Then, creatures you control that are Saprolings or have counters on them gain trample until end of turn.\nSaprolings you control get +1/+1.",
+            "originalText": "Whenever Overgrowth Host attacks, germinate. Then creatures you control that are Saprolings or have counters on them gain trample until end of turn.\nSaprolings you control get +1/+1.",
             "originalType": "Creature \u2014 Fungus Druid",
             "power": "3",
             "rarity": "Rare",
@@ -5440,7 +5422,7 @@
                 "Fungus",
                 "Druid"
             ],
-            "text": "Whenever Overgrowth Host attacks, germinate. Then, creatures you control that are Saprolings or have counters on them gain trample until end of turn.\nSaprolings you control get +1/+1.",
+            "text": "Whenever Overgrowth Host attacks, germinate. Then creatures you control that are Saprolings or have counters on them gain trample until end of turn.\nSaprolings you control get +1/+1.",
             "toughness": "3",
             "type": "Creature \u2014 Fungus Druid",
             "types": [
@@ -6065,7 +6047,7 @@
             ],
             "imageName": "antonin lazaire",
             "layout": "normal",
-            "loyalty": 4,
+            "loyalty": 5,
             "manaCost": "{5}{U}{B}",
             "name": "Antonin Lazaire",
             "number": "212",
@@ -6100,7 +6082,7 @@
             "manaCost": "{1}{W}{B}",
             "name": "Determined Evangelist",
             "number": "213",
-            "originalText": "Tithe (As you cast this spell, you may tap three artifacts and/or creatures you control.)\nMenace, lifelink\nWhen Determined Evangelist's tithe is paid, put two +1/+1 counters on it.",
+            "originalText": "Tithe (When this enters, you may tap three other creatures and/or artifacts you control.)\nMenace, lifelink\nWhen Determined Evangelist's tithe is paid, put two +1/+1 counters on it.",
             "originalType": "Creature \u2014 Human Cleric",
             "power": "2",
             "rarity": "Uncommon",
@@ -6108,7 +6090,7 @@
                 "Human",
                 "Cleric"
             ],
-            "text": "Tithe (When this enters, you may tap three artifacts and/or creatures you control.)\nMenace, lifelink\nWhen Determined Evangelist's tithe is paid, put two +1/+1 counters on it.",
+            "text": "Tithe (When this enters, you may tap three other creatures and/or artifacts you control.)\nMenace, lifelink\nWhen Determined Evangelist's tithe is paid, put two +1/+1 counters on it.",
             "toughness": "2",
             "type": "Creature \u2014 Human Cleric",
             "types": [
@@ -6240,7 +6222,7 @@
         },
         {
             "artist": "Sam lamont",
-            "cmc": 5,
+            "cmc": 4,
             "colorIdentity": [
                 "B",
                 "G"
@@ -6251,7 +6233,7 @@
             ],
             "imageName": "grindlesnap",
             "layout": "normal",
-            "manaCost": "{3}{B}{G}",
+            "manaCost": "{2}{B}{G}",
             "name": "Grindlesnap",
             "number": "218",
             "originalText": "Sacrifice another creature: Grindlesnap gets +3/+2 and gains trample until end of turn if that creature was a Crocodile. Otherwise, it gets +1/+1 until end of turn.\nWhenever Grindlesnap is dealt combat damage, create a 3/2 green Crocodile creature token with trample.",
@@ -6551,22 +6533,21 @@
         },
         {
             "artist": "Kobe Sek ",
-            "cmc": 3,
+            "cmc": 1,
             "colorIdentity": [],
             "colors": [],
-            "flavor": "\"The second most foolish thing he ever did was pick it up.\"",
             "imageName": "bogsworn club",
             "layout": "normal",
-            "manaCost": "{3}",
+            "manaCost": "{1}",
             "name": "Bogsworn Club",
             "number": "229",
-            "originalText": "Equipped creature gets +3/+2 and has trample.\nWhenever Bogsworn Club becomes unattached from a permanent, sacrifice that permanent.\nEquip {1}",
+            "originalText": "Equipped creature has menace.\nEquip {0} ({0}: Attach to target creature you control. Equip only as a sorcery.)",
             "originalType": "Artifact \u2014 Equipment",
-            "rarity": "Uncommon",
+            "rarity": "Common",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "Equipped creature gets +3/+2 and has trample.\nWhenever Bogsworn Club becomes unattached from a permanent, sacrifice that permanent.\nEquip {1}",
+            "text": "Equipped creature has menace.\nEquip {0} ({0}: Attach to target creature you control. Equip only as a sorcery.)",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -6574,22 +6555,22 @@
         },
         {
             "artist": "Cze Peku",
-            "cmc": 1,
+            "cmc": 2,
             "colorIdentity": [],
             "colors": [],
             "flavor": "No one knows what its made of. Its light, as if it were carved out of wood, but it hits like its carved out of stone.",
             "imageName": "fleshcarver knife",
             "layout": "normal",
-            "manaCost": "{1}",
+            "manaCost": "{2}",
             "name": "Fleshcarver Knife",
             "number": "230",
-            "originalText": "Equipped creature has menace.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",
+            "originalText": "Equipped creature gets +2/+2.\nEquip {3}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Common",
             "subtypes": [
                 "Equipment"
             ],
-            "text": "Equipped creature has menace.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",
+            "text": "Equipped creature gets +2/+2.\nEquip {3}",
             "type": "Artifact \u2014 Equipment",
             "types": [
                 "Artifact"
@@ -6769,21 +6750,21 @@
             "cmc": 0,
             "colorIdentity": [],
             "colors": [],
-            "flavor": "In a strange land with few resources, Adavene sought funding for his foundation with an art department.",
+            "flavor": "Designed with Chartate101",
             "imageName": "art studio",
             "layout": "normal",
             "name": "Art Studio",
             "number": "238",
-            "originalText": "{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast a spell with harmony.",
+            "originalText": "{T}: Add {C}.\nHarmony \u2014 Add one mana of any color for each permanent with harmony you control.\n{2}, {T}: Harmonize. (Trigger up to one harmony of one permanent you control.)",
             "originalType": "Land",
-            "rarity": "Common",
+            "rarity": "Rare",
             "rulings": [
                 {
                     "date": "2019-03-30",
-                    "text": "The second ability can't be used to cast Herald of Festivities or Radiant Outburst. They can harmonize but don't have harmony."
+                    "text": "The second ability doesn't count Herald of Festivities or Radiant Outburst. They can harmonize but don't have harmony."
                 }
             ],
-            "text": "{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast a spell with harmony.",
+            "text": "{T}: Add {C}.\nHarmony \u2014 Add one mana of any color for each permanent with harmony you control.\n{2}, {T}: Harmonize. (Trigger up to one harmony of one permanent you control.)",
             "type": "Land",
             "types": [
                 "Land"
@@ -7008,7 +6989,7 @@
             "number": "247",
             "originalText": "{T}: Add {C}.\n{2}, {T}: Add three mana of any one color.\n{3}, {T}: Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "originalType": "Land",
-            "rarity": "Rare",
+            "rarity": "Uncommon",
             "text": "{T}: Add {C}.\n{2}, {T}: Add three mana of any one color.\n{3}, {T}: Create a colorless artifact token named Lotus Petal with \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
             "type": "Land",
             "types": [
@@ -7198,5 +7179,5 @@
     "name": "Eralou",
     "releaseDate": "2019-02-08",
     "type": "expansion",
-    "version": "39"
+    "version": "40"
 }
