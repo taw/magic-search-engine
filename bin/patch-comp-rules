@@ -262,7 +262,10 @@ class CompRules:
                     self[patch['rule']] = left + patch['after'] + patch['text'] + right
                     patch_rules.add(patch['rule'])
                 elif patch['type'] == 'replace':
-                    self[patch['rule']] = re.sub(patch['find'], patch['replace'], self[patch['rule']])
+                    if isinstance(self[patch['rule']], dict):
+                        self[patch['rule']]['name'] = re.sub(patch['find'], patch['replace'], self[patch['rule']]['name'])
+                    else:
+                        self[patch['rule']] = re.sub(patch['find'], patch['replace'], self[patch['rule']])
                     patch_rules.add(patch['rule'])
                 elif patch['type'] == 'replaceRule':
                     self[patch['rule']] = patch['text']
