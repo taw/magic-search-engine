@@ -214,7 +214,7 @@ class Card
     ci = colors.chars
     "#{mana_cost} #{text}".scan(/{(.*?)}/).each do |sym,|
       case sym.downcase
-      when /\A(\d+|[½∞txyzsqpcea])\z/
+      when /\A(\d+|[½∞txyzsqpcev])\z/
         # 12xyz - colorless
         # ½∞ - unset colorless
         # t - tap
@@ -223,7 +223,7 @@ class Card
         # p - generic Phyrexian mana (like on Rage Extractor text)
         # c - colorless mana
         # e - energy
-        # a - runic mana (custom)
+        # v - runic mana (custom)
       when /\A([wubrg])\z/
         ci << $1
       when /\A([wubrg])\/p\z/

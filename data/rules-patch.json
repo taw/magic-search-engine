@@ -25,18 +25,18 @@
             "sets": [
                 "DHM"
             ],
-            "comment": "The runic mana symbol {A} is defined here",
+            "comment": "The runic mana symbol {V} is defined here",
             "rules": [
                 {
                     "type": "replace",
                     "rule": "107.4",
                     "find": "and the snow symbol {S}",
-                    "replace": "the snow symbol {S}; and the runic mana symbol {A}"
+                    "replace": "the snow symbol {S}; and the runic mana symbol {V}"
                 },
                 {
                     "type": "add",
                     "rule": "107.4",
-                    "text": "The runic mana symbol {A} represents a cost that a player can pay either with one mana of any type produced by an artifact, or by tapping an untapped artifact they control. Despite its appearance, {A} is a colorless mana symbol."
+                    "text": "The runic mana symbol {V} represents a cost that a player can pay either with one mana of any type produced by an artifact, or by tapping an untapped artifact they control. Despite its appearance, {V} is a colorless mana symbol."
                 }
             ]
         },
@@ -668,7 +668,7 @@
                 "AYR",
                 "DHM"
             ],
-            "comment": "This step in the spells-casting process now includes the decisions of whether to resonate and how to pay for {A} costs",
+            "comment": "This step in the spells-casting process now includes the decisions of whether to resonate and how to pay for {V} costs",
             "rules": [
                 {
                     "type": "insertText",
