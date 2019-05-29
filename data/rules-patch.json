@@ -184,6 +184,22 @@
             ]
         },
         {
+            "comment": "This rule defines Lore Seeker as the Oracle for the Custom Constructed formats",
+            "rules": [
+                {
+                    "type": "replace",
+                    "rule": "108.1",
+                    "find": "A",
+                    "replace": "Officially, a"
+                },
+                {
+                    "type": "append",
+                    "rule": "108.1",
+                    "text": "For the Custom Constructed formats, Lore Seeker should be used instead."
+                }
+            ]
+        },
+        {
             "sets": [
                 "DHM"
             ],
