@@ -72,7 +72,7 @@ class PatchFoiling < Patch
         card["foiling"] = "nonfoil"
       elsif set_code == "pc2" and name == "Stairs to Infinity"
         card["foiling"] = "nonfoil"
-      elsif set_code == "pca" or set_code == "opca"
+      elsif set_code == "pca" or set_code == "opca" or set_code == "parc"
         card["foiling"] = "nonfoil"
       elsif set_code == "ppre"
         if ["Dirtcowl Wurm", "Revenant", "Monstrous Hound"].include?(name)

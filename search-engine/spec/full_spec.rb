@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data for same sets,
   # indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(19502)
-    db.number_of_printings.should eq(40190)
+    db.number_of_cards.should eq(19500)
+    db.number_of_printings.should eq(39462)
   end
 
   it "block codes" do
@@ -73,7 +73,7 @@ describe "Full Database Test" do
 
   it "year" do
     Query.new("year=2013 t:jace").search(db).card_names_and_set_codes.should eq([
-      ["Jace, Memory Adept", "m14", "pmei", "psdc"],
+      ["Jace, Memory Adept", "m14", "psdc"],
       ["Jace, the Mind Sculptor", "v13"],
     ])
   end
@@ -161,7 +161,7 @@ describe "Full Database Test" do
   end
 
   it "lastprint" do
-    assert_search_results "t:planeswalker lastprint<=roe", "Chandra Ablaze", "Sarkhan the Mad"
+    assert_search_results "t:planeswalker lastprint<=roe", "Chandra Ablaze", "Sarkhan the Mad", "Nissa Revane"
     assert_search_results "t:planeswalker lastprint<=2011",
       "Ajani Goldmane", "Ajani Vengeant", "Chandra Ablaze", "Elspeth Tirel",
       "Nissa Revane", "Sarkhan the Mad"
@@ -284,7 +284,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 2615
+    assert_count_printings "is:promo", 1887
   end
 
   it "is:funny" do
@@ -390,12 +390,6 @@ describe "Full Database Test" do
     "e:cma".should have_count_printings(320)
   end
 
-  it "pgtw/pwpn/grc set codes" do
-    "e:pgtw".should have_count_printings(20)
-    "e:pwpn".should have_count_printings(45)
-    "e:grc".should have_count_printings(0)
-  end
-
   it "is:permanent" do
     assert_search_equal "is:permanent", "not (t:instant or t:sorcery or t:plane or t:scheme or t:phenomenon or t:conspiracy or t:vanguard)"
   end
@@ -459,6 +453,12 @@ describe "Full Database Test" do
     assert_search_equal %Q[e:"Ugin's Fate"], %Q[e:"Ugin Fate"]
     assert_search_equal %Q[e:"Ugin's Fate"], %Q[e:"Ugins Fate"]
     assert_search_equal %Q[e:"Duel Decks Anthology, Divine vs. Demonic"], %Q[e:"Duel Decks Anthology Divine vs Demonic"]
+  end
+
+  it "year" do
+    "t:planeswalker year = 2010".should have_count_printings 15
+    "t:planeswalker year < 2013".should have_count_printings 68
+    "t:planeswalker year > 2014".should equal_search "t:planeswalker year >= 2015"
   end
 
   def legality_information(name, date = nil)
