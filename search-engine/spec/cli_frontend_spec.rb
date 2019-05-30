@@ -110,7 +110,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Nicol Bolas, the Arisen
-        [m19]
+        [m19 pm19]
         Legendary Planeswalker - Bolas
         (Color indicator: Nicol Bolas, the Arisen is blue, black, and red)
         [+2]: Draw two cards.
