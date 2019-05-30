@@ -36,7 +36,7 @@ describe "Color Indicator Test" do
   it "number" do
     assert_search_results "in=5"
     assert_search_results "in:wubrg"
-    assert_search_equal "in<3", "in:* -t:bolas"
+    assert_search_equal "in<3", "in:* -t:bolas -grimlock"
     assert_search_results "in<1"
   end
 

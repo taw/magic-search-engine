@@ -10,6 +10,7 @@ describe "Sets" do
     "duel deck",
     "expansion",
     "from the vault",
+    "funny",
     "masterpiece",
     "masters",
     "memorabilia",
