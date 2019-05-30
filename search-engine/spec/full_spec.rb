@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(19508)
-    db.number_of_printings.should eq(39552)
+    db.number_of_printings.should eq(39599)
   end
 
   it "block codes" do
@@ -284,7 +284,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 1959
+    assert_count_printings "is:promo", 2006
   end
 
   it "is:funny" do
