@@ -42,9 +42,7 @@ describe "Regexp" do
   end
 
   it "regexp flavor text" do
-    assert_search_results 'ft:/\d{4,}/',
-      "Akroma, Angel of Wrath Avatar",
-      "Fallen Angel Avatar",
+    assert_search_results 'ft:/\d{4,}/ -e:olgc,ovnt',
       "Goblin Secret Agent",
       "Gore Vassal",
       "Invoke the Divine",

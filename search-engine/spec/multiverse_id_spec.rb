@@ -29,6 +29,7 @@ describe "multiverse ids" do
       next if set_code == "war" # Japanese promos
       next if set_code == "med" # reported mtgjson bug
       next if set_code == "phop" # fake set with stuff coming from 2 sources
+      next if set_code == "pmoa" # vanguard weirdness
       set.printings.group_by{|c| !!c.multiverseid}.size.should eq(1), "Set #{set_code} has cards with and without multiverseid"
     end
   end

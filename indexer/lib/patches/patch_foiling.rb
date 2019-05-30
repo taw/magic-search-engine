@@ -8,10 +8,11 @@ class PatchFoiling < Patch
     each_printing do |card|
       name = card["name"]
       set_code = card["set_code"]
+      set_type = card["set"]["type"]
       types = card["types"]
       number = card["number"]
 
-      if card["set"]["v4"] and card["set"]["type"] == "promo"
+      if card["set"]["v4"] and (set_type == "promo" or set_type == "vanguard" or set_type == "funny")
         case [card["hasNonFoil"], card["hasFoil"]]
         when [true, true]
           card["foiling"] = "both"
@@ -96,7 +97,7 @@ class PatchFoiling < Patch
       end
 
       # On card by card basis
-      if set["v4"] and ["promo", "memorabilia"].include?(set["type"])
+      if set["v4"] and ["promo", "memorabilia", "vanguard", "funny"].include?(set["type"])
         next
       end
 
