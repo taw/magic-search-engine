@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data for same sets,
   # indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(19501)
-    db.number_of_printings.should eq(40176)
+    db.number_of_cards.should eq(19502)
+    db.number_of_printings.should eq(40190)
   end
 
   it "block codes" do
@@ -30,7 +30,8 @@ describe "Full Database Test" do
     assert_search_equal "e:lw or e:mt or e:shm or e:eve", "b:lorwyn"
     assert_search_equal "e:som or e:mbs or e:nph", "b:som"
     assert_search_equal "e:mi or e:ds or e:5dn", "b:mi"
-    assert_search_equal "e:som", "e:scars"
+    # Promos are now per set
+    assert_search_equal "e:som or e:psom", "e:scars"
     assert_search_equal_cards 'f:"lorwyn shadowmoor block"', "b:lorwyn"
     # Fake blocks
     assert_search_equal "e:dom", "b:dom"
@@ -283,7 +284,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 2602
+    assert_count_printings "is:promo", 2615
   end
 
   it "is:funny" do
