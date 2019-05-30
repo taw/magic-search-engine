@@ -1,5 +1,5 @@
 describe "Archenemy" do
-  include_context "db", "arc"
+  include_context "db", "arc", "oarc"
 
   it "scheme" do
     assert_search_results 't:scheme o:trample', "Your Will Is Not Your Own", "The Very Soil Shall Shake"

@@ -56,7 +56,7 @@ describe Deck do
       [
         "archenemy", "commander", "duel deck", "planechase", "premium deck",
       ].include?(set.type) and ![
-        "cm1", "opca", "oe01",
+        "cm1", "opca", "oe01", "ohop", "phop", "oarc", "parc", "opc2",
       ].include?(set_code)
     end
   end
@@ -71,9 +71,20 @@ describe Deck do
 
   it "cards in precon sets have no off-set cards" do
     precon_sets.each do |set_code, set|
+      sets_found = set.decks.flat_map(&:physical_cards).map(&:set).map(&:code).uniq
       # Contains some Amonkhet cards
-      next if set_code == "e01"
-      set.decks.flat_map(&:physical_cards).map(&:set).map(&:code).uniq.should eq [set_code]
+      case set_code
+      when "e01"
+        sets_found.should match_array ["e01", "akh", "oe01"]
+      when "hop"
+        sets_found.should match_array ["hop", "ohop"]
+      when "arc"
+        sets_found.should match_array ["arc", "oarc"]
+      when "pc2"
+        sets_found.should match_array ["pc2", "opc2"]
+      else
+        sets_found.should eq [set_code]
+      end
     end
   end
 
@@ -94,9 +105,14 @@ describe Deck do
       # Special cases
       if set_code == "hop"
         # Release event promo
-        set_card_names.should match_array ["Tazeem", *deck_card_names]
+        set_card_names += db.sets["ohop"].physical_cards.map(&:name).uniq
+        set_card_names.should match_array deck_card_names
       elsif set_code == "pc2"
-        set_card_names.should match_array ["Stairs to Infinity", *deck_card_names]
+        set_card_names += db.sets["opc2"].physical_cards.map(&:name).uniq
+        set_card_names.should match_array deck_card_names
+      elsif set_code == "arc"
+        set_card_names += db.sets["oarc"].physical_cards.map(&:name).uniq
+        set_card_names.should match_array deck_card_names
       else
         set_card_names.should match_array deck_card_names
       end
