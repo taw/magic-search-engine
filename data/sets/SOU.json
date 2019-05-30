@@ -870,6 +870,12 @@
             "originalType": "Creature \u2014 Human Advisor",
             "power": "2",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2019-05-30",
+                    "text": "The Aura card you search for must have exactly the ability \u201cenchant land\u201d. Something like \u201cenchant creature or land\u201d or \u201cenchant land you control\u201d doesn't work."
+                }
+            ],
             "subtypes": [
                 "Human",
                 "Advisor"
@@ -3265,6 +3271,12 @@
             "originalType": "Legendary Creature \u2014 Naga Soldier",
             "power": "3",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2019-05-30",
+                    "text": "If you have multiple opponents, the triggered ability only resolves if you can choose a legal target for each opponent."
+                }
+            ],
             "subtypes": [
                 "Naga",
                 "Soldier"
@@ -6818,6 +6830,16 @@
             "originalText": "Equipped creature gets +1/+1 and has deathtouch.\n{1}: Serpent Staff becomes a 1/1 green Snake creature with deathtouch and loses all other abilities until end of turn.\nEquip {3}",
             "originalType": "Artifact \u2014 Equipment",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2019-05-30",
+                    "text": "As long as this is a creature, it's not an artifact and not an Equipment."
+                },
+                {
+                    "date": "2019-05-30",
+                    "text": "When this becomes a creature while it's attached to another creature, it becomes unequipped. It doesn't become reequipped automatically when it stops being a creature."
+                }
+            ],
             "subtypes": [
                 "Equipment"
             ],
@@ -6864,6 +6886,12 @@
             "originalType": "Artifact Creature \u2014 Elemental",
             "power": "1",
             "rarity": "Rare",
+            "rulings": [
+                {
+                    "date": "2019-05-30",
+                    "text": "This doesn't increase the number of lands you can play per turn."
+                }
+            ],
             "subtypes": [
                 "Elemental"
             ],
