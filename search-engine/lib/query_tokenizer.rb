@@ -159,7 +159,7 @@ class QueryTokenizer
         tokens << [:test, klass.new]
       elsif s.scan(/has:partner\b/)
       tokens << [:test, ConditionHasPartner.new]
-      elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld|aftermath|saga)\b/i)
+      elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld|aftermath|saga|planar)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionLayout.new(s[2])]
       elsif s.scan(/(is|frame|not)\s*[:=]\s*(old|new|future|modern|m15)\b/i)

@@ -305,7 +305,7 @@ shared_context "db" do |*sets|
     sets.each do |set_code|
       raise "Unknown set #{set_code}" unless db.sets[set_code]
       db.sets[set_code].printings.each do |card_printing|
-        next if %W[vanguard plane phenomenon scheme token].include?(card_printing.layout)
+        next if %W[vanguard planar scheme token].include?(card_printing.layout)
         next if card_printing.types == ["conspiracy"]
         expected_legality[card_printing.name] = "legal"
       end

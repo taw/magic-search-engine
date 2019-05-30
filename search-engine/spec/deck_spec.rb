@@ -55,7 +55,9 @@ describe Deck do
       # CM1 is a Commander product without precon decks
       [
         "archenemy", "commander", "duel deck", "planechase", "premium deck",
-      ].include?(set.type) and set_code != "cm1"
+      ].include?(set.type) and ![
+        "cm1", "opca", "oe01",
+      ].include?(set_code)
     end
   end
 
