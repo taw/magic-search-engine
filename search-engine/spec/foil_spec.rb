@@ -47,7 +47,10 @@ describe "Foils" do
     when "from the vault", "masterpiece", "premium deck"
       assert_foiling(set.printings, "foilonly")
     when "commander", "duel deck", "archenemy", "global series", "box", "board game deck", "planechase", "archenemy"
-      if set.decks.empty?
+      if ["oe01"].include?(set.code)
+        # Included in other sets
+        assert_foiling_partial_precon(set.printings)
+      elsif set.decks.empty?
         warn "Expected a deck for this product: #{set.name}"
       else
         assert_foiling_partial_precon(set.printings)
@@ -148,9 +151,9 @@ describe "Foils" do
         assert_foiling(promo, "nonfoil")
         assert_foiling_partial_precon(rest)
       when "pca"
-        planes, rest = set.printings.partition{|c| c.types.include?("plane") or c.types.include?("phenomenon") }
-        assert_foiling(planes, "nonfoil")
-        assert_foiling_partial_precon(rest)
+        assert_foiling_partial_precon(set.printings)
+      when "opca"
+        assert_foiling(set.printings, "nonfoil")
       when "ppre"
         cards = set.printings.sort_by(&:release_date)
         assert_foiling(cards[0..2], "nonfoil")

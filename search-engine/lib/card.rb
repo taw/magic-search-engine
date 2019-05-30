@@ -43,7 +43,7 @@ class Card
     @display_toughness = data["display_toughness"] ? data["display_toughness"] : @toughness
     @display_mana_cost = data["hide_mana_cost"] ? nil : @mana_cost
     @partial_color_identity = calculate_partial_color_identity
-    if ["vanguard", "plane", "scheme", "phenomenon"].include?(@layout) or @types.include?("conspiracy")
+    if ["vanguard", "planar", "scheme"].include?(@layout) or @types.include?("conspiracy")
       @extra = true
     else
       @extra = false

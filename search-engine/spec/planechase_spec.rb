@@ -1,10 +1,10 @@
 describe "Planechase" do
-  include_context "db", "hop", "pc2", "pca", "m13"
+  include_context "db", "hop", "pc2", "pca", "m13", "opca"
 
   it "plane" do
     assert_search_results "t:plane t:Dominaria", "Krosa", "Llanowar", "Academy at Tolaria West", "Isle of Vesuva", "Otaria", "Shiv", "Talon Gates"
     assert_search_results "t:Dominaria", "Krosa", "Llanowar", "Academy at Tolaria West", "Isle of Vesuva", "Otaria", "Shiv", "Talon Gates"
-    assert_search_equal "t:plane", "layout:plane"
+    assert_search_equal "t:plane or t:phenomenon", "layout:plane"
   end
 
   it "chaos symbol" do
