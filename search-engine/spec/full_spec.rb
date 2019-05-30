@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data for same sets,
   # indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(19500)
-    db.number_of_printings.should eq(39462)
+    db.number_of_cards.should eq(19508)
+    db.number_of_printings.should eq(39552)
   end
 
   it "block codes" do
@@ -284,7 +284,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 1887
+    assert_count_printings "is:promo", 1959
   end
 
   it "is:funny" do
@@ -398,10 +398,10 @@ describe "Full Database Test" do
     warn "not sure what to do with rarity special (v4 no longer uses it, should we?)"
 
     # Are promo basics really of basic rarity?
-    assert_search_equal "t:basic is:promo", "t:basic r:special"
+    assert_search_equal "t:basic (is:promo or e:g17)", "t:basic r:special"
     assert_search_equal "t:basic", "(r:basic -t:urza's) or (t:basic r:special) or (t:basic e:an)"
     # assert_search_results "is:promo -r:special -e:ugin"
-    assert_search_results %Q[r:special -is:promo -st:masterpiece -t:vanguard -e:anthologies -e:tsts -e:"clash pack" -e:vma -e:mgbc],
+    assert_search_results %Q[r:special -is:promo -st:masterpiece -t:vanguard -e:anthologies -e:tsts -e:"clash pack" -e:vma -e:mgbc -e:g17],
       "Giant Trap Door Spider",
       "Super Secret Tech"
   end

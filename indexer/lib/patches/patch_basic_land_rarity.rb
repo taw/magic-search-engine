@@ -30,7 +30,7 @@ class PatchBasicLandRarity < Patch
       if %W[
         parl pal00 pal01 pal02 pal03 pal05 pal06 pgru pjgp pelp palp ppre
         pmps pmps06 pmps07 pmps08 pmps09 pmps10 pmps01 prw2 prwk pss2 pss3
-        pf19 j14 pal04 pmps11 pal99
+        pf19 j14 pal04 pmps11 pal99 g17
       ].include?(card["set_code"])
         card["rarity"] = "special"
       end
