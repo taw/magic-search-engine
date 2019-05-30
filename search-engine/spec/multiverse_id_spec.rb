@@ -14,6 +14,8 @@ describe "multiverse ids" do
         # OK
       elsif cards[0].name == "Nalathni Dragon"
         # Known issue, ignore for now
+      elsif cards[0].name == "Spined Wurm"
+        # Known issue, ignore for now - PMEI / S00
       else
         cards.size.should eq(1), "#{id} #{cards}"
       end
