@@ -176,6 +176,26 @@ class PackFactory
         build_pack_with_random_foil(set_code, :cns_nondraft_foil, :cns_nondraft_common, {cns_draft: 1, cns_nondraft_common: 10, cns_nondraft_uncommon: 3, cns_nondraft_rare_or_mythic: 1}) => 39,
         build_pack_with_random_foil(set_code, :cns_nondraft_foil, :cns_nondraft_common, {cns_draft_foil: 1, cns_nondraft_common: 10, cns_nondraft_uncommon: 3, cns_nondraft_rare_or_mythic: 1}) => 1,
       )
+    when "bbd"
+      # I ran the math, and best numbers are totally weird, so some rounded:
+      # 1/4 have normal foil (very close to usual packs)
+      # 1/10 have partner rare/mythig (exact)
+      # 2/10 have partner uncommon (off by 12%)
+      # 1/100 has partner foil (who knows really)
+
+      WeightedPack.new(
+        # No partner
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 3, bbd_rare_mythic: 1})             => 7 * 30 - 40,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 3, bbd_rare_mythic: 1}) => 7 * 10,
+        # Uncommon partner
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 1, bbd_uncommon_partner: 2, bbd_rare_mythic: 1})             => 2 * 30,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 1, bbd_uncommon_partner: 2, bbd_rare_mythic: 1}) => 2 * 10,
+        # Rare partner
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 2, bbd_rare_mythic_partner: 2})             => 1 * 30,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 2, bbd_rare_mythic_partner: 2}) => 1 * 10,
+        # Foil partner
+        build_pack(set_code, {basic: 1, common: 9, bbd_uncommon: 2, bbd_foil_partner: 2, bbd_rare_mythic: 1}) => 4,
+      )
     when "dom"
       # there's guaranteed legendary creature, but no separate slots for that
       # If we don't model anything, there's 71% chance of opening a legendary creature, and EV of 1.45

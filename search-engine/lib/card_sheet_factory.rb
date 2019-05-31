@@ -445,11 +445,11 @@ class CardSheetFactory
   end
 
   def bbd_uncommon(foil=false)
-    from_query("e:bbd r:uncommon -has:partner", foil: foil)
+    from_query("e:bbd r:uncommon -has:partner", 70, foil: foil)
   end
 
   def bbd_uncommon_partner(foil=false)
-    from_query("e:bbd r:uncommon has:partner", foil: foil, kind: PartnerCardSheet)
+    from_query("e:bbd r:uncommon has:partner", 10, foil: foil, kind: PartnerCardSheet)
   end
 
   def bbd_rare_mythic(foil=false)
@@ -460,9 +460,43 @@ class CardSheetFactory
   end
 
   def bbd_rare_mythic_partner
-    PartnerCardSheet.new(
-      (find_cards("e:bbd r:rare has:partner", 10) * 2) +
-      find_cards("e:bbd r:mythic has:partner is:nonfoilonly", 2)
-    )
+    sheets = [
+      from_query("e:bbd r:rare has:partner", 10, kind: PartnerCardSheet),
+      from_query("e:bbd r:mythic has:partner is:nonfoilonly", 2, kind: PartnerCardSheet),
+    ]
+    weights = [
+      10,
+      1,
+    ]
+    MixedPartnerCardSheet.new(sheets, weights)
+  end
+
+  # These foil rates are pretty much total :poopemoji:
+  def bbd_foil
+    sheets = [
+      from_query("e:bbd (r:common or r:basic)", 101 + 5, foil: true),
+      bbd_uncommon(true),
+      bbd_rare_mythic(true),
+    ]
+    weights = [
+      5,
+      2,
+      1,
+    ]
+    CardSheet.new(sheets, weights)
+  end
+
+  def bbd_foil_partner
+    sheets = [
+      from_query("e:bbd r:uncommon has:partner", 10, foil: true, kind: PartnerCardSheet),
+      from_query("e:bbd r:rare has:partner", 10, foil: true, kind: PartnerCardSheet),
+      from_query("e:bbd r:mythic has:partner is:foilonly", 2, foil: true, kind: PartnerCardSheet),
+    ]
+    weights = [
+      20,
+      10,
+      1,
+    ]
+    MixedPartnerCardSheet.new(sheets, weights)
   end
 end
