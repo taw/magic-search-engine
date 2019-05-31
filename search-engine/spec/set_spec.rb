@@ -20,6 +20,7 @@ describe "Sets" do
     "reprint",
     "spellbook",
     "starter",
+    "token",
     "two-headed giant",
     "un",
     "vanguard",

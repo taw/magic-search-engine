@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data for same sets,
   # indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(19513)
-    db.number_of_printings.should eq(40109)
+    db.number_of_cards.should eq(19562)
+    db.number_of_printings.should eq(40159)
   end
 
   it "block codes" do

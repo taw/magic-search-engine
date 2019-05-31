@@ -97,7 +97,7 @@ class PatchFoiling < Patch
       end
 
       # On card by card basis
-      if set["v4"] and ["promo", "memorabilia", "vanguard", "funny"].include?(set["type"])
+      if set["v4"] and ["promo", "memorabilia", "vanguard", "funny", "token"].include?(set["type"])
         next
       end
 
