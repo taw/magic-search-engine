@@ -81,15 +81,22 @@ class ReportMtgjson4Differences
   end
 
   def call
+    # Apply fixes
+    @mtgjson["PRNA"] = @mtgjson["PRN"]
+    @mtgjson.delete("PRN")
+
+
     # First, deal with trivial matches
     shared_set_codes.each do |code|
       verify_match(code)
     end
 
-    puts ""
-    db_set_only_codes.sort.each do |code|
-      set = @db.sets[code]
-      puts "#{code} - db only - #{set.name.inspect} - #{set.printings.size} cards"
+    unless db_set_only_codes.empty?
+      puts ""
+      db_set_only_codes.sort.each do |code|
+        set = @db.sets[code]
+        puts "#{code} - db only - #{set.name.inspect} - #{set.printings.size} cards"
+      end
     end
 
     puts ""
