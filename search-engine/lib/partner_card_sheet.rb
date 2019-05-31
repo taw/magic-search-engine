@@ -3,7 +3,10 @@ class PartnerCardSheet
     @pairs = elements.group_by{|c| [c.main_front, c.main_front.partner].to_set }.values
     # It's a weird way to create weighted sheet
     unless @pairs.all?{|pair| pair.size == 2}
-      @pairs = @pairs.flat_map{|pair| raise unless pair.uniq.size == 2; [pair.uniq] * (pair.size / 2) }
+      @pairs = @pairs.flat_map do |pair|
+        raise "Expected two paired cards, got #{pair.uniq.size}/#{pair.size}" unless pair.uniq.size == 2
+        [pair.uniq] * (pair.size / 2)
+      end
     end
   end
 
