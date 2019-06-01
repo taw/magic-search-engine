@@ -428,6 +428,49 @@ class CardSheetFactory
     )
   end
 
+  def cn2_conspiracy_foil
+    cn2_conspiracy(true)
+  end
+
+  def cn2_conspiracy(foil=false)
+    mix_sheets(
+      [from_query('e:cn2 t:conspiracy r:common', 5, foil: foil), 8],
+      [from_query('e:cn2 t:conspiracy r:uncommon', 2, foil: foil), 4],
+      [from_query('e:cn2 t:conspiracy r:rare', 3, foil: foil), 2],
+      [from_query('e:cn2 t:conspiracy r:mythic', 2, foil: foil), 1],
+    )
+  end
+
+  def cn2_nonconspiracy_foil
+    sheets = [
+      cn2_nonconspiracy_common(true),
+      cn2_nonconspiracy_uncommon(true),
+      cn2_nonconspiracy_rare_or_mythic(true),
+    ]
+    weights = [
+      5,
+      2,
+      1,
+    ]
+    CardSheet.new(sheets, weights)
+  end
+
+  def cn2_nonconspiracy_common(foil=false)
+    from_query('e:cn2 -t:conspiracy r:common', 85, foil: foil, kind: ColorBalancedCardSheet)
+  end
+
+  def cn2_nonconspiracy_uncommon(foil=false)
+    from_query('e:cn2 -t:conspiracy r:uncommon', 65, foil: foil)
+  end
+
+  def cn2_nonconspiracy_rare_or_mythic(foil=false)
+    foilcond = foil ? "-is:nonfoilonly" : "-is:foilonly"
+    mix_sheets(
+      [from_query('e:cn2 -t:conspiracy r:rare', 47, foil: foil), 2],
+      [from_query("e:cn2 -t:conspiracy r:mythic #{foilcond}", 12, foil: foil), 1],
+    )
+  end
+
   def grn_common
     from_query("e:grn is:booster r:common not:guildgate", kind: ColorBalancedCardSheet)
   end
@@ -445,11 +488,11 @@ class CardSheetFactory
   end
 
   def bbd_uncommon(foil=false)
-    from_query("e:bbd r:uncommon -has:partner", foil: foil)
+    from_query("e:bbd r:uncommon -has:partner", 70, foil: foil)
   end
 
   def bbd_uncommon_partner(foil=false)
-    from_query("e:bbd r:uncommon has:partner", foil: foil, kind: PartnerCardSheet)
+    from_query("e:bbd r:uncommon has:partner", 10, foil: foil, kind: PartnerCardSheet)
   end
 
   def bbd_rare_mythic(foil=false)
@@ -460,10 +503,44 @@ class CardSheetFactory
   end
 
   def bbd_rare_mythic_partner
-    PartnerCardSheet.new(
-      (find_cards("e:bbd r:rare has:partner", 10) * 2) +
-      find_cards("e:bbd r:mythic has:partner is:nonfoilonly", 2)
-    )
+    sheets = [
+      from_query("e:bbd r:rare has:partner", 10, kind: PartnerCardSheet),
+      from_query("e:bbd r:mythic has:partner is:nonfoilonly", 2, kind: PartnerCardSheet),
+    ]
+    weights = [
+      10,
+      1,
+    ]
+    MixedPartnerCardSheet.new(sheets, weights)
+  end
+
+  # These foil rates are pretty much total :poopemoji:
+  def bbd_foil
+    sheets = [
+      from_query("e:bbd (r:common or r:basic)", 101 + 5, foil: true),
+      bbd_uncommon(true),
+      bbd_rare_mythic(true),
+    ]
+    weights = [
+      5,
+      2,
+      1,
+    ]
+    CardSheet.new(sheets, weights)
+  end
+
+  def bbd_foil_partner
+    sheets = [
+      from_query("e:bbd r:uncommon has:partner", 10, foil: true, kind: PartnerCardSheet),
+      from_query("e:bbd r:rare has:partner", 10, foil: true, kind: PartnerCardSheet),
+      from_query("e:bbd r:mythic has:partner is:foilonly", 2, foil: true, kind: PartnerCardSheet),
+    ]
+    weights = [
+      20,
+      10,
+      1,
+    ]
+    MixedPartnerCardSheet.new(sheets, weights)
   end
 
   # for custom sets

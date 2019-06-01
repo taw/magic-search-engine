@@ -29,7 +29,7 @@ class PatchAssignPrioritiesToSets < Patch
     # they'll still get all Oracle updates via reconciliation
     when *%W[
       st2k v17 cp1 cp2 cp3
-      prel pmei rqs parl itp ath pmpr pwos p2hg dpa pjgp pcmp pgtw ppre psus pfnm ppro pmgd plpa
+      prel rqs parl itp ath pmpr pwos p2hg dpa pjgp pcmp pgtw ppre psus pfnm ppro pmgd plpa
       dkm cst plgm pwpn mgb psum p15a pgpx pwcq
     ]
       -10

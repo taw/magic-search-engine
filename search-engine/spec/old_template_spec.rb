@@ -26,8 +26,9 @@ describe "Old templates" do
   end
 
   # Robot Chicken
+  # Garruk the Slayer
   it do
-    assert_count_cards %Q[o:"token onto the battlefield"], 1
+    assert_count_cards %Q[o:"token onto the battlefield"], 2
   end
 
   ### Recently fixed

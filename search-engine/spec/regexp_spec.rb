@@ -42,9 +42,7 @@ describe "Regexp" do
   end
 
   it "regexp flavor text" do
-    assert_search_results 'ft:/\d{4,}/',
-      "Akroma, Angel of Wrath Avatar",
-      "Fallen Angel Avatar",
+    assert_search_results 'ft:/\d{4,}/ -e:olgc,ovnt',
       "Goblin Secret Agent",
       "Gore Vassal",
       "Invoke the Divine",
@@ -60,12 +58,10 @@ describe "Regexp" do
   end
 
   it "regexp artist text" do
-    db.search("a:/.{40}/").printings.map(&:artist_name).should eq([
+    db.search("a:/.{40}/").printings.map(&:artist_name).should match_array([
       "Jim \"Stop the Da Vinci Beatdown\" Pavelec",
-      "Edward P. Beard, Jr. & Anthony S. Waters",
       "Pete \"Yes the Urza's Legacy One\" Venters",
       "Alan \"Don't Feel Like You Have to Pick Me\" Pollack",
-      "Edward P. Beard, Jr. & Anthony S. Waters",
     ])
   end
 

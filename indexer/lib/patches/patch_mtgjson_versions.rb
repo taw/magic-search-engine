@@ -62,6 +62,17 @@ class PatchMtgjsonVersions < Patch
 
       card["oversized"] = card.delete("isOversized")
 
+      # Drop v3 layouts, use v4 layout here
+      if card["layout"] == "plane" or card["layout"] == "phenomenon"
+        card["layout"] = "planar"
+      end
+
+      # Bug in v4
+      # https://github.com/mtgjson/mtgjson/issues/356
+      if card["layout"] == "planar" and card["subtypes"]
+        card["subtypes"] = [card["subtypes"].join(" ")]
+      end
+
       # Renamed in v4
       card["multiverseid"] ||= card.delete("multiverseId")
       if card.has_key?("isReserved")

@@ -1,5 +1,5 @@
 describe "Vanguard" do
-  include_context "db", "van"
+  include_context "db", "pvan", "pmoa"
 
   it "Vanguard cards" do
     "t:*"            .should equal_search "t:vanguard"

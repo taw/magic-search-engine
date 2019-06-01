@@ -5,7 +5,7 @@ require_relative "ban_list"
 require_relative "legality_information"
 
 class Card
-  ABILITY_WORD_LIST = ["Addendum", "Battalion", "Bloodrush", "Channel", "Chroma", "Cohort", "Constellation", "Converge", "Council's dilemma", "Delirium", "Domain", "Eminence", "Enrage", "Fateful hour", "Ferocious", "Formidable", "Gotcha", "Grandeur", "Hellbent", "Heroic", "Imprint", "Inspired", "Join forces", "Kinship", "Landfall", "Lieutenant", "Metalcraft", "Morbid", "Parley", "Radiance", "Raid", "Rally", "Revolt", "Spell mastery", "Strive", "Sweep", "Tempting offer", "Threshold", "Undergrowth", "Will of the council"]
+  ABILITY_WORD_LIST = ["Addendum", "Battalion", "Bloodrush", "Channel", "Chroma", "Cohort", "Constellation", "Converge", "Council's dilemma", "Delirium", "Domain", "Eminence", "Enrage", "Fateful hour", "Ferocious", "Formidable", "Gotcha", "Grandeur", "Hellbent", "Heroic", "Hero's Reward", "Imprint", "Inspired", "Join forces", "Kinship", "Landfall", "Lieutenant", "Metalcraft", "Morbid", "Parley", "Radiance", "Raid", "Rally", "Revolt", "Spell mastery", "Strive", "Sweep", "Tempting offer", "Threshold", "Undergrowth", "Will of the council"]
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 
   attr_reader :data, :printings
@@ -44,7 +44,7 @@ class Card
     @display_toughness = data["display_toughness"] ? data["display_toughness"] : @toughness
     @display_mana_cost = data["hide_mana_cost"] ? nil : @mana_cost
     @partial_color_identity = calculate_partial_color_identity
-    if ["vanguard", "plane", "scheme", "phenomenon"].include?(@layout) or @types.include?("conspiracy")
+    if ["vanguard", "planar", "scheme"].include?(@layout) or @types.include?("conspiracy")
       @extra = true
     else
       @extra = false

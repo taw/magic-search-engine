@@ -14,6 +14,8 @@ describe "multiverse ids" do
         # OK
       elsif cards[0].name == "Nalathni Dragon"
         # Known issue, ignore for now
+      elsif cards[0].name == "Spined Wurm"
+        # Known issue, ignore for now - PMEI / S00
       else
         cards.size.should eq(1), "#{id} #{cards}"
       end
@@ -26,6 +28,8 @@ describe "multiverse ids" do
       next if set_code == "pmei" or set_code == "s00"
       next if set_code == "war" # Japanese promos
       next if set_code == "med" # reported mtgjson bug
+      next if set_code == "phop" # fake set with stuff coming from 2 sources
+      next if set_code == "pmoa" # vanguard weirdness
       set.printings.group_by{|c| !!c.multiverseid}.size.should eq(1), "Set #{set_code} has cards with and without multiverseid"
     end
   end

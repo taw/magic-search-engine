@@ -64,6 +64,7 @@ describe "Foils" do
         # For promos we'll just trust mtgjson
         next if set.type == "promo"
         next if set.type == "memorabilia"
+        next if set.type == "token"
         warn "Support for #{set.code} #{set.name} not implemented yet"
         next
       end
@@ -147,10 +148,10 @@ describe "Foils" do
         promo, rest = set.printings.partition{|c| c.name == "Stairs to Infinity" }
         assert_foiling(promo, "nonfoil")
         assert_foiling_partial_precon(rest)
-      when "pca"
-        planes, rest = set.printings.partition{|c| c.types.include?("plane") or c.types.include?("phenomenon") }
-        assert_foiling(planes, "nonfoil")
-        assert_foiling_partial_precon(rest)
+      when "pca", "oe01", "oarc", "ohop", "opc2"
+        assert_foiling_partial_precon(set.printings)
+      when "opca", "parc"
+        assert_foiling(set.printings, "nonfoil")
       when "ppre"
         cards = set.printings.sort_by(&:release_date)
         assert_foiling(cards[0..2], "nonfoil")

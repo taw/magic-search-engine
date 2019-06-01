@@ -11,7 +11,7 @@ describe PackFactory do
         if pack
           pack.should be_a(Pack), "#{set_pp} should have packs"
         else
-          # TODO: pending
+          warn "#{set_pp} should have packs" # TODO: pending
         end
       else
         pack.should eq(nil), "#{set_pp} should not have packs"
@@ -42,7 +42,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[dgm unh jou frf tsp cns war].include?(set_code)
+      next if %W[dgm unh jou frf tsp cn2 bbd war].include?(set_code)
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = factory.for(set_code)
       next unless pack
@@ -55,7 +55,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[tsp csn war].include?(set_code)
+      next if %W[tsp cn2 bbd war].include?(set_code)
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = factory.for(set_code)
       next unless pack
@@ -594,6 +594,93 @@ describe PackFactory do
       end
     end
   end
+
+  # Conspiracy ratios and foils are uncertain
+  context "Conspiracy 2" do
+    let(:pack) { factory.for("cn2") }
+    let(:ev) { pack.expected_values }
+    let(:common) { physical_card("e:cn2 -t:conspiracy r:common", foil) }
+    let(:uncommon) { physical_card("e:cn2 -t:conspiracy r:uncommon", foil) }
+    let(:rare) { physical_card("e:cn2 -t:conspiracy r:rare", foil) }
+    let(:mythic) { physical_card("e:cn2 -t:conspiracy r:mythic", foil) }
+    let(:conspiracy_common) { physical_card("e:cn2 t:conspiracy r:common", foil) }
+    let(:conspiracy_uncommon) { physical_card("e:cn2 t:conspiracy r:uncommon", foil) }
+    let(:conspiracy_rare) { physical_card("e:cn2 t:conspiracy r:rare", foil) }
+    let(:conspiracy_mythic) { physical_card("e:cn2 t:conspiracy r:mythic", foil) }
+
+    context "non-foil" do
+      let(:foil) { false }
+      it do
+        ev[common].should eq Rational(975, 100) * Rational(1, 85)
+        ev[uncommon].should eq Rational(3, 65)
+        ev[rare].should eq Rational(2, 106)
+        ev[mythic].should eq Rational(1, 106)
+        ev[conspiracy_common].should eq Rational(39, 40) * Rational(8, 56)
+        ev[conspiracy_uncommon].should eq Rational(39, 40) * Rational(4,56)
+        ev[conspiracy_rare].should eq Rational(39, 40) * Rational(2, 56)
+        ev[conspiracy_mythic].should eq Rational(39, 40) * Rational(1, 56)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+      it do
+        ev[common].should eq Rational(1, 4) * Rational(1, 85) * Rational(5, 8)
+        ev[uncommon].should eq Rational(1, 4) * Rational(1, 65) * Rational(2, 8)
+        ev[rare].should eq Rational(1, 4) * Rational(2, 106) * Rational(1, 8)
+        ev[mythic].should eq Rational(1, 4) * Rational(1, 106) * Rational(1, 8)
+        ev[conspiracy_common].should eq Rational(1, 40) * Rational(8, 56)
+        ev[conspiracy_uncommon].should eq Rational(1, 40) * Rational(4, 56)
+        ev[conspiracy_rare].should eq Rational(1, 40) * Rational(2, 56)
+        ev[conspiracy_mythic].should eq Rational(1, 40) * Rational(1, 56)
+      end
+    end
+  end
+
+  # These are all approximate numbers
+  context "Battlebond" do
+    let(:pack) { factory.for("bbd") }
+    let(:ev) { pack.expected_values }
+    let(:basic) { physical_card("e:bbd r:basic", foil) }
+    let(:common) { physical_card("e:bbd r:common", foil) }
+    let(:uncommon) { physical_card("e:bbd -is:partner r:uncommon", foil) }
+    let(:rare) { physical_card("e:bbd -is:partner r:rare", foil) }
+    let(:mythic) { physical_card("e:bbd -is:partner r:mythic", foil) }
+    let(:partner_uncommon) { physical_card("e:bbd is:partner r:uncommon", foil) }
+    let(:partner_rare) { physical_card("e:bbd is:partner r:rare", foil) }
+
+
+    context "non-foil" do
+      let(:foil) { false }
+      let(:partner_mythic) { physical_card("e:bbd is:partner r:mythic is:nonfoilonly", foil) }
+      it do
+        ev[basic].should eq Rational(1, 5) # exact
+        ev[common].should eq Rational(68, 707)
+        ev[uncommon].should eq Rational(111, 3185)
+        ev[rare].should eq Rational(18, 1001)
+        ev[mythic].should eq Rational(9, 1001) # m:r ratio exact
+        ev[partner_uncommon].should eq Rational(4, 91)
+        ev[partner_rare].should eq Rational(20, 1001)
+        ev[partner_mythic].should eq Rational(10, 1001) # m:r ratio exact
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+      let(:partner_mythic) { physical_card("e:bbd is:partner r:mythic is:foilonly", foil) }
+      it do
+        ev[basic].should eq Rational(125, 77168) # b:c ratio exact
+        ev[common].should eq Rational(125, 77168)
+        ev[uncommon].should eq Rational(5, 5096)
+        ev[rare].should eq Rational(25, 36036)
+        ev[mythic].should eq Rational(25, 72072) # m:r ratio exact
+        ev[partner_uncommon].should eq Rational(4, 2821)
+        ev[partner_rare].should eq Rational(2, 2821)
+        ev[partner_mythic].should eq Rational(1, 2821)  # m:r ratio exact
+      end
+    end
+  end
+
 
   context "sets with explicit print sheets" do
     let(:pack) { factory.for(set_code) }
