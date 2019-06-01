@@ -42,7 +42,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[dgm unh jou frf tsp cns bbd war].include?(set_code)
+      next if %W[dgm unh jou frf tsp cn2 bbd war].include?(set_code)
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = factory.for(set_code)
       next unless pack
@@ -55,7 +55,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[tsp csn bbd war].include?(set_code)
+      next if %W[tsp cn2 bbd war].include?(set_code)
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = factory.for(set_code)
       next unless pack
@@ -591,6 +591,48 @@ describe PackFactory do
         ev[draft_common].should eq Rational(1, 40) * Rational(8, 120)
         ev[draft_uncommon].should eq Rational(1, 40) * Rational(4, 120)
         ev[draft_rare].should eq Rational(1, 40) * Rational(2, 120)
+      end
+    end
+  end
+
+  # Conspiracy ratios and foils are uncertain
+  context "Conspiracy 2" do
+    let(:pack) { factory.for("cn2") }
+    let(:ev) { pack.expected_values }
+    let(:common) { physical_card("e:cn2 -t:conspiracy r:common", foil) }
+    let(:uncommon) { physical_card("e:cn2 -t:conspiracy r:uncommon", foil) }
+    let(:rare) { physical_card("e:cn2 -t:conspiracy r:rare", foil) }
+    let(:mythic) { physical_card("e:cn2 -t:conspiracy r:mythic", foil) }
+    let(:conspiracy_common) { physical_card("e:cn2 t:conspiracy r:common", foil) }
+    let(:conspiracy_uncommon) { physical_card("e:cn2 t:conspiracy r:uncommon", foil) }
+    let(:conspiracy_rare) { physical_card("e:cn2 t:conspiracy r:rare", foil) }
+    let(:conspiracy_mythic) { physical_card("e:cn2 t:conspiracy r:mythic", foil) }
+
+    context "non-foil" do
+      let(:foil) { false }
+      it do
+        ev[common].should eq Rational(975, 100) * Rational(1, 85)
+        ev[uncommon].should eq Rational(3, 65)
+        ev[rare].should eq Rational(2, 106)
+        ev[mythic].should eq Rational(1, 106)
+        ev[conspiracy_common].should eq Rational(39, 40) * Rational(8, 56)
+        ev[conspiracy_uncommon].should eq Rational(39, 40) * Rational(4,56)
+        ev[conspiracy_rare].should eq Rational(39, 40) * Rational(2, 56)
+        ev[conspiracy_mythic].should eq Rational(39, 40) * Rational(1, 56)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+      it do
+        ev[common].should eq Rational(1, 4) * Rational(1, 85) * Rational(5, 8)
+        ev[uncommon].should eq Rational(1, 4) * Rational(1, 65) * Rational(2, 8)
+        ev[rare].should eq Rational(1, 4) * Rational(2, 106) * Rational(1, 8)
+        ev[mythic].should eq Rational(1, 4) * Rational(1, 106) * Rational(1, 8)
+        ev[conspiracy_common].should eq Rational(1, 40) * Rational(8, 56)
+        ev[conspiracy_uncommon].should eq Rational(1, 40) * Rational(4, 56)
+        ev[conspiracy_rare].should eq Rational(1, 40) * Rational(2, 56)
+        ev[conspiracy_mythic].should eq Rational(1, 40) * Rational(1, 56)
       end
     end
   end
