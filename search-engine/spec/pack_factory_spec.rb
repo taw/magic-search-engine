@@ -637,6 +637,58 @@ describe PackFactory do
     end
   end
 
+  # Foil and contraption rates speculative
+  # FIXME: It should balance cards with multiple variants
+  context "Unstable" do
+    let(:pack) { factory.for("ust") }
+    let(:ev) { pack.expected_values }
+    let(:basic) { physical_card("e:ust r:basic", foil) }
+    let(:steamflogger_boss) { physical_card("e:ust Steamflogger Boss", foil) }
+    let(:common) { physical_card("e:ust -t:contraption r:common", foil) }
+    let(:uncommon) { physical_card("e:ust -t:contraption r:uncommon", foil) }
+    let(:rare) { physical_card("e:ust -t:contraption r:rare -border:black", foil) }
+    let(:mythic) { physical_card("e:ust -t:contraption r:mythic", foil) }
+    let(:contraption_common) { physical_card("e:ust t:contraption r:common", foil) }
+    let(:contraption_uncommon) { physical_card("e:ust t:contraption r:uncommon", foil) }
+    let(:contraption_rare) { physical_card("e:ust t:contraption r:rare", foil) }
+    let(:contraption_mythic) { physical_card("e:ust t:contraption r:mythic", foil) }
+
+    context "non-foil" do
+      let(:foil) { false }
+      it do
+        ev[basic].should eq Rational(24, 121) * Rational(39, 40)
+        ev[steamflogger_boss].should eq Rational(1, 121) * Rational(39, 40)
+
+        ev[common].should eq Rational(1, 82) * Rational(775, 100)
+        ev[uncommon].should eq Rational(3, 75)
+        ev[rare].should eq Rational(2, 110)
+        ev[mythic].should eq Rational(1, 110)
+        ev[contraption_common].should eq Rational(8, 205) * Rational(78, 40)
+        ev[contraption_uncommon].should eq Rational(4, 205) * Rational(78, 40)
+        ev[contraption_rare].should eq Rational(2, 205) * Rational(78, 40)
+        ev[contraption_mythic].should eq Rational(1, 205) * Rational(78, 40)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+      it do
+        ev[basic].should eq Rational(24, 121) * Rational(1, 40)
+        ev[steamflogger_boss].should eq Rational(1, 121) * Rational(1, 40)
+
+        ev[common].should eq Rational(1, 82) * Rational(1, 4) * Rational(5, 8)
+        ev[uncommon].should eq Rational(1, 75) * Rational(1, 4) * Rational(2, 8)
+        ev[rare].should eq Rational(2, 110) * Rational(1, 4) * Rational(1, 8)
+        ev[mythic].should eq Rational(1, 110) * Rational(1, 4) * Rational(1, 8)
+
+        ev[contraption_common].should eq Rational(8, 205) * Rational(2, 40)
+        ev[contraption_uncommon].should eq Rational(4, 205) * Rational(2, 40)
+        ev[contraption_rare].should eq Rational(2, 205) * Rational(2, 40)
+        ev[contraption_mythic].should eq Rational(1, 205) * Rational(2, 40)
+      end
+    end
+  end
+
   # These are all approximate numbers
   context "Battlebond" do
     let(:pack) { factory.for("bbd") }
