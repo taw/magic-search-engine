@@ -10,7 +10,7 @@ describe CardSheet do
     end
 
     it "cards" do
-      sheet = factory.rare_or_mythic("m10")
+      sheet = factory.rare_mythic("m10")
       sheet.cards.size.should eq(15+53)
       expected = db.search("e:m10 r>=rare").printings
       actual = sheet.cards.map(&:main_front)
@@ -20,7 +20,7 @@ describe CardSheet do
 
   context "#probabilities" do
     context "typical set" do
-      let(:rare_or_mythic_sheet) { factory.rare_or_mythic("m10") }
+      let(:rare_mythic_sheet) { factory.rare_mythic("m10") }
       let(:uncommon_sheet) { factory.rarity("m10", "uncommon") }
       let(:common_sheet) { factory.rarity("m10", "common") }
       let(:basic_sheet) { factory.rarity("m10", "basic") }
@@ -31,8 +31,8 @@ describe CardSheet do
       let(:basic_card) { physical_card("e:m10 island") }
 
       it do
-        rare_or_mythic_sheet.probabilities[mythic_card].should eq Rational(1, 121)
-        rare_or_mythic_sheet.probabilities[rare_card].should eq Rational(2, 121)
+        rare_mythic_sheet.probabilities[mythic_card].should eq Rational(1, 121)
+        rare_mythic_sheet.probabilities[rare_card].should eq Rational(2, 121)
         uncommon_sheet.probabilities[uncommon_card].should eq Rational(1, 60)
         common_sheet.probabilities[common_card].should eq Rational(1, 101)
         basic_sheet.probabilities[basic_card].should eq Rational(1, 20)
