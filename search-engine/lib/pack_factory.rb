@@ -61,9 +61,12 @@ class PackFactory
     # Various custom sheets
     when :sfc_common_unbalanced
       @sheet_factory.sfc_common(set_code, kind: CardSheet)
-    # Various set-specific custom sheets
-    when :nonland_common, :nonland_uncommon, :nonland_rare_mythic
+    when :nonland_common
+      @sheet_factory.send(name, set_code, kind: ColorBalancedCardSheet)
+    when :nonland_uncommon, :nonland_rare_mythic
       @sheet_factory.send(name, set_code)
+    when :nonland_common_unbalanced
+      @sheet_factory.nonland_common(set_code)
     # Various special sheets
     else
       if @sheet_factory.respond_to?(name)
@@ -254,7 +257,7 @@ class PackFactory
     when "leg"
       build_pack(set_code, {explicit_common: 12, explicit_uncommon: 3, explicit_rare: 1})
     # custom sets
-    when "ank", "ldo", "vln", "jan", "hlw", "dhm", "net", "eau"
+    when "ank", "ldo", "jan", "dhm", "net"
       # Custom sets with default pack distribution, no foils, with basics
       build_pack(set_code, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_or_mythic: 1})
     when "cc18"
@@ -270,16 +273,23 @@ class PackFactory
       build_pack(set_code, {common_unbalanced: 10, uncommon: 3, rare_or_mythic: 1}, pack_class: ReubenPack)
     when "ayr"
       # AYR has only nonbasic lands in the land slot, and no lands in any other slot, like DGM
-      build_pack(set_code, {nonland_common: 10, nonland_uncommon: 3, nonland_rare_mythic: 1, ayr_land: 1})
+      # there is explicitly no color balancing for the commons
+      # the rare-to-mythic ration is also explicitly 7:1 overall instead of 2:1 per card
+      build_pack(set_code, {nonland_common_unbalanced: 10, nonland_uncommon: 3, naive_nonland_rare_mythic: 1, ayr_land: 1})
     when "rak"
-      # RAK is currently the same as AYR, except the rarity weights are different (e.g. there are no mythic lands)
+      # RAK is currently the same as AYR, except using color balancing and the usual mythic ratio, and the rarity weights are different (e.g. there are no mythic lands)
       build_pack(set_code, {nonland_common: 10, nonland_uncommon: 3, nonland_rare_mythic: 1, rak_land: 1})
     when "tsl"
       # TSL packs always have exactly one DFC, replacing a common slot
       # also follow Reuben's rules
       build_pack(set_code, {tsl_dfc: 1, sfc_common_unbalanced: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1}, pack_class: ReubenPack)
-    when "sou"
-      # SOU has opted into taw's color-balanced algorithm
+    when "vln", "eau"
+      # VLN and EAU packs check the naïve generator for two rules:
+      # 1. no more than 6 cards of a single color in a pack
+      # 2. no less than 1 card of a color in a pack
+      build_pack(set_code, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_or_mythic: 1}, pack_class: SimonPack)
+    when "hlw", "sou"
+      # These sets have opted into taw's color-balanced algorithm
       build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1})
     else
       # No packs for this set, let caller figure it out

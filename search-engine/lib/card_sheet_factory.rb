@@ -554,8 +554,8 @@ class CardSheetFactory
     )
   end
 
-  def nonland_common(set_code)
-    from_query("e:#{set_code} is:primary r:C -t:land")
+  def nonland_common(set_code, kind: CardSheet)
+    from_query("e:#{set_code} is:primary r:C -t:land", kind: kind)
   end
 
   def nonland_uncommon(set_code)
@@ -567,6 +567,13 @@ class CardSheetFactory
       [from_query("e:#{set_code} is:primary r:R -t:land"), 2],
       [from_query("e:#{set_code} is:primary r:M -t:land"), 1]
     )
+  end
+
+  def naive_nonland_rare_mythic(set_code)
+    CardSheet.new([
+      from_query("e:#{set_code} is:primary r:R -t:land"),
+      from_query("e:#{set_code} is:primary r:M -t:land")
+    ], [7, 1])
   end
 
   def tsl_dfc

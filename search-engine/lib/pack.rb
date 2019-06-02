@@ -71,3 +71,25 @@ class ReubenPack < Pack
     end
   end
 end
+
+class SimonPack < Pack
+  def open
+    while true
+      cards = super
+      # rule 1 (interpreting “of a single color” as “sharing a color”)
+      next unless cards.count{|c| c.main_front.colors.include?("w")} <= 6
+      next unless cards.count{|c| c.main_front.colors.include?("u")} <= 6
+      next unless cards.count{|c| c.main_front.colors.include?("b")} <= 6
+      next unless cards.count{|c| c.main_front.colors.include?("r")} <= 6
+      next unless cards.count{|c| c.main_front.colors.include?("g")} <= 6
+      # rule 2
+      next unless cards.count{|c| c.main_front.colors.include?("w")} >= 1
+      next unless cards.count{|c| c.main_front.colors.include?("u")} >= 1
+      next unless cards.count{|c| c.main_front.colors.include?("b")} >= 1
+      next unless cards.count{|c| c.main_front.colors.include?("r")} >= 1
+      next unless cards.count{|c| c.main_front.colors.include?("g")} >= 1
+      # booster is valid
+      return cards
+    end
+  end
+end
