@@ -26,6 +26,13 @@ class PatchMtgjsonVersions < Patch
       if set["official_code"] == "BBD"
         set["type"] = "two-headed giant"
       end
+
+      # I trust unsourced mtg wiki claim here more
+      # since this is definitely wrong
+      # https://mtg.gamepedia.com/Duel_Decks:_Mirrodin_Pure_vs._New_Phyrexia
+      if set["official_code"] == "TD2"
+        set["releaseDate"] = "2013-01-11"
+      end
     end
 
     # drop all tokens

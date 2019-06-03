@@ -41,6 +41,8 @@ describe Deck do
       ["starter", "Welcome Deck"],
       ["starter", "Advanced Pack"],
       ["expansion", "Challenger Deck"],
+      ["box", "MTGO Theme Deck"], # MTGO
+      ["box", "Commander Deck"], # MTGO
     ]
 
     db.sets.each do |set_code, set|
