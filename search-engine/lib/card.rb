@@ -193,7 +193,7 @@ class Card
       # "*" < "*²" < "1+*" < "2+*"
       # but let's not get anywhere near that
       case val
-      when "*", "*²", "1+*", "2+*", "7-*", "X", "∞", "?"
+      when "*", "*²", "1+*", "2+*", "7-*", "X", "∞", "?", "1d4+1"
         val
       else
         raise "Unrecognized value #{val.inspect}"
