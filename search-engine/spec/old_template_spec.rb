@@ -5,7 +5,7 @@ describe "Old templates" do
   include_context "db"
 
   it do
-    assert_count_cards %Q[o:"mana pool"], 2
+    assert_count_cards %Q[o:"mana pool"], 1
   end
 
   it do
@@ -19,8 +19,7 @@ describe "Old templates" do
 
   ### On non-Gatherer cards only
   it do
-    # Gifts Given
-    assert_count_cards %Q[o:"his or her"], 1
+    assert_count_cards %Q[o:"his or her"], 0
     assert_count_cards %Q[o:"he or she"], 0
     assert_count_cards %Q[o:"him or her"], 0
   end
