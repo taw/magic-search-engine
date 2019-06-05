@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data for same sets,
   # indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(19565)
-    db.number_of_printings.should eq(41239)
+    db.number_of_cards.should eq(19569)
+    db.number_of_printings.should eq(41521)
   end
 
   it "block codes" do
@@ -161,10 +161,16 @@ describe "Full Database Test" do
   end
 
   it "lastprint" do
-    assert_search_results "t:planeswalker lastprint<=roe", "Chandra Ablaze", "Sarkhan the Mad", "Nissa Revane"
+    assert_search_results "t:planeswalker lastprint<=roe",
+      "Chandra Ablaze",
+      "Sarkhan the Mad",
+      "Nissa Revane"
     assert_search_results "t:planeswalker lastprint<=2011",
-      "Ajani Goldmane", "Ajani Vengeant", "Chandra Ablaze", "Elspeth Tirel",
-      "Nissa Revane", "Sarkhan the Mad"
+      "Ajani Vengeant",
+      "Chandra Ablaze",
+      "Elspeth Tirel",
+      "Nissa Revane",
+      "Sarkhan the Mad"
   end
 
   it "alt Rebecca Guay" do
@@ -284,7 +290,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 2417
+    assert_count_printings "is:promo", 2676
   end
 
   it "is:funny" do
@@ -457,7 +463,7 @@ describe "Full Database Test" do
 
   it "year" do
     "t:planeswalker year = 2010".should have_count_printings 15
-    "t:planeswalker year < 2013".should have_count_printings 68
+    "t:planeswalker year < 2013".should have_count_printings 66
     "t:planeswalker year > 2014".should equal_search "t:planeswalker year >= 2015"
   end
 
