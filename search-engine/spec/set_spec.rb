@@ -14,6 +14,7 @@ describe "Sets" do
     "masterpiece",
     "masters",
     "memorabilia",
+    "modern",
     "planechase",
     "premium deck",
     "promo",

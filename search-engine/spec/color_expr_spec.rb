@@ -56,6 +56,7 @@ describe "Color Expr Test" do
       "Bringer of the White Dawn",
       "General Tazri",
       "Paragon of the Amesha",
+      "Sisay, Weatherlight Captain",
       "Who"
   end
 

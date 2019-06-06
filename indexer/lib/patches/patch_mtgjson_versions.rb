@@ -22,9 +22,14 @@ class PatchMtgjsonVersions < Patch
 
   def call
     each_set do |set|
-      set["type"] = set["type"].gsub("_", " ")
+      if set["type"]
+        set["type"] = set["type"].gsub("_", " ")
+      end
       if set["official_code"] == "BBD"
         set["type"] = "two-headed giant"
+      end
+      if set["official_code"] == "MH1"
+        set["type"] = "modern"
       end
 
       # I trust unsourced mtg wiki claim here more
