@@ -7,6 +7,7 @@ class ConditionIsManland < Condition
       "dread statuary",
       "faerie conclave",
       "forbidding watchtower",
+      "frostwalk bastion",
       "ghitu encampment",
       "hissing quagmire",
       "hostile desert",
