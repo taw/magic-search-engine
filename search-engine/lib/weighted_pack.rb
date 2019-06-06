@@ -17,6 +17,30 @@ class WeightedPack < Pack
 
   ## Testing support
 
+  attr_reader :packs, :total_weight
+
+  def flatten_weighted_pack
+    return self unless @packs.keys.any?{ |pack| pack.is_a?(WeightedPack) }
+    result = Hash.new(0)
+    @packs.each do |pack, weight|
+      if pack.is_a?(WeightedPack)
+        pack = pack.flatten_weighted_pack
+        pack.packs.each do |subpack, subweight|
+          result[subpack] = Rational(weight * subweight, pack.total_weight)
+        end
+      else
+        result[pack] = weight
+      end
+    end
+    lcm = result.values.map(&:denominator).inject(&:lcm)
+    result = result.map do |pack, weight|
+      weight *= lcm
+      raise unless weight.to_i == weight
+      [pack, weight.to_i]
+    end.to_h
+    WeightedPack.new(result)
+  end
+
   def expected_values
     result = Hash.new(0)
     @packs.each do |pack, weight|
