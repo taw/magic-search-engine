@@ -10,7 +10,7 @@ class PatchHasBoosters < Patch
       end
 
       # v4 bug?
-      if set["code"] == "me1" or set["code"] == "nem"
+      if set["code"] == "me1" or set["code"] == "nem" or set["code"] == "mh1"
         has_own_boosters = true
       end
 
