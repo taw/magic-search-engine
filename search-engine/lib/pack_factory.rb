@@ -65,7 +65,7 @@ class PackFactory
         @sheet_factory.sfc_common(set_code, kind: CardSheet)
       when :nonland_common
         @sheet_factory.send(name, set_code, kind: ColorBalancedCardSheet)
-      when :nonland_uncommon, :nonland_rare_mythic
+      when :nonland_uncommon, :nonland_rare_mythic, :naive_nonland_rare_mythic
         @sheet_factory.send(name, set_code)
       when :nonland_common_unbalanced
         @sheet_factory.nonland_common(set_code)
