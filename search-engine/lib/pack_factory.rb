@@ -2,6 +2,7 @@ class PackFactory
   def initialize(db)
     @db = db
     @sheet_factory = CardSheetFactory.new(@db)
+    @sheet_cache = {}
   end
 
   def inspect
@@ -39,40 +40,42 @@ class PackFactory
   end
 
   private def build_sheet(set_code, name)
-    case name
-    when :common
-      @sheet_factory.rarity(set_code, name.to_s, kind: ColorBalancedCardSheet)
-    when :common_unbalanced
-      @sheet_factory.rarity(set_code, "common")
-    when :basic, :uncommon, :rare
-      @sheet_factory.rarity(set_code, name.to_s)
-    when :rare_or_mythic
-      @sheet_factory.rare_or_mythic(set_code)
-    # In old sets commons and basics were printed on shared sheet
-    when :common_or_basic
-      @sheet_factory.common_or_basic(set_code)
-    when :common_or_basic_unbalanced
-      @sheet_factory.common_or_basic(set_code, kind: CardSheet)
-    when :foil
-      @sheet_factory.foil_sheet(set_code)
-    # Various old sheets
-    when :explicit_common, :explicit_uncommon, :explicit_rare, :sfc_common, :sfc_uncommon, :sfc_rare_or_mythic
-      @sheet_factory.send(name, set_code)
-    # Various custom sheets
-    when :sfc_common_unbalanced
-      @sheet_factory.sfc_common(set_code, kind: CardSheet)
-    when :nonland_common
-      @sheet_factory.send(name, set_code, kind: ColorBalancedCardSheet)
-    when :nonland_uncommon, :nonland_rare_mythic
-      @sheet_factory.send(name, set_code)
-    when :nonland_common_unbalanced
-      @sheet_factory.nonland_common(set_code)
-    # Various special sheets
-    else
-      if @sheet_factory.respond_to?(name)
-        @sheet_factory.send(name)
+    @sheet_cache[[set_code, name]] ||= begin
+      case name
+      when :common
+        @sheet_factory.rarity(set_code, name.to_s, kind: ColorBalancedCardSheet)
+      when :common_unbalanced
+        @sheet_factory.rarity(set_code, "common")
+      when :basic, :uncommon, :rare
+        @sheet_factory.rarity(set_code, name.to_s)
+      when :rare_mythic
+        @sheet_factory.rare_mythic(set_code)
+      # In old sets commons and basics were printed on shared sheet
+      when :common_or_basic
+        @sheet_factory.common_or_basic(set_code)
+      when :common_or_basic_unbalanced
+        @sheet_factory.common_or_basic(set_code, kind: CardSheet)
+      when :foil
+        @sheet_factory.foil_sheet(set_code)
+      # Various old sheets
+      when :explicit_common, :explicit_uncommon, :explicit_rare, :sfc_common, :sfc_uncommon, :sfc_rare_mythic
+        @sheet_factory.send(name, set_code)
+      # Various custom sheets
+      when :sfc_common_unbalanced
+        @sheet_factory.sfc_common(set_code, kind: CardSheet)
+      when :nonland_common
+        @sheet_factory.send(name, set_code, kind: ColorBalancedCardSheet)
+      when :nonland_uncommon, :nonland_rare_mythic
+        @sheet_factory.send(name, set_code)
+      when :nonland_common_unbalanced
+        @sheet_factory.nonland_common(set_code)
+      # Various special sheets
       else
-        raise "Unknown sheet type #{name}"
+        if @sheet_factory.respond_to?(name)
+          @sheet_factory.send(name)
+        else
+          raise "Unknown sheet type #{name}"
+        end
       end
     end
   end
@@ -138,27 +141,28 @@ class PackFactory
       "bfz", "ogw",
       "kld", "aer",
       "akh", "hou",
-      "m19"
-      build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1}, common_if_no_basic: true)
+      "m19",
+      "mh1"
+      build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "arb"
-      build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare_or_mythic: 1})
+      build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare_mythic: 1})
     when "mma", "mm2", "mm3", "ema", "ima", "a25", "uma"
-      build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, foil: 1})
+      build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, foil: 1})
     when "dgm"
       build_pack_with_random_foil(set_code, :foil, :dgm_common, {dgm_common: 10, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1})
     when "frf"
-      build_pack_with_random_foil(set_code, :foil, :frf_common, {frf_common: 10, uncommon: 3, rare_or_mythic: 1, frf_land: 1})
+      build_pack_with_random_foil(set_code, :foil, :frf_common, {frf_common: 10, uncommon: 3, rare_mythic: 1, frf_land: 1})
     when "unh"
-      build_pack_with_random_foil(set_code, :unhinged_foil, :common, {common: 10, uncommon: 3, rare_or_mythic: 1, basic: 1})
+      build_pack_with_random_foil(set_code, :unhinged_foil, :common, {common: 10, uncommon: 3, rare_mythic: 1, basic: 1})
     when "jou"
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare_or_mythic: 1}) => 4319,
+        build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare_mythic: 1}) => 4319,
         build_pack(set_code, {theros_gods: 15}) => 1,
       )
     when "isd"
-      build_pack_with_random_foil(set_code, :foil, :sfc_common, {isd_dfc: 1, basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1})
+      build_pack_with_random_foil(set_code, :foil, :sfc_common, {isd_dfc: 1, basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1})
     when "dka"
-      build_pack_with_random_foil(set_code, :foil, :sfc_common, {dka_dfc: 1, sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1})
+      build_pack_with_random_foil(set_code, :foil, :sfc_common, {dka_dfc: 1, sfc_common: 10, sfc_uncommon: 3, sfc_rare_mythic: 1})
     when "tsp"
       # 10 commons, 3 uncommons, 1 rare, and 1 purple-rarity timeshifted card.
       # Basics don't fit anywhere
@@ -167,29 +171,39 @@ class PackFactory
       # 8 commons, 2 uncommons, 1 rare, 3 timeshifted commons, and 1 uncommon or rare timeshifted card.
       build_pack_with_random_foil(set_code, :foil, :pc_common, {pc_common: 8, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1})
     when "vma"
-      build_pack(set_code, {common: 10, uncommon: 3, rare_or_mythic: 1, vma_special: 1})
+      build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, vma_special: 1})
     when "soi"
       # Assume foil rate (1:4) and rare/mythic dfc rates (1:8) are independent
       # They probably aren't
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, :foil, :sfc_common, {basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1}) => 7,
-        build_pack_with_random_foil(set_code, :foil, :sfc_common, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_or_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1}) => 1,
+        build_pack_with_random_foil(set_code, :foil, :sfc_common, {basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1, soi_dfc_common_uncommon: 1}) => 7,
+        build_pack_with_random_foil(set_code, :foil, :sfc_common, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1}) => 1,
       )
     when "emn"
       # Same assumptions as SOI, except no basics in the set
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, :foil, :sfc_common, {sfc_common: 10, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1}) => 7,
-        build_pack_with_random_foil(set_code, :foil, :sfc_common, {sfc_common: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}) => 1,
+        build_pack_with_random_foil(set_code, :foil, :sfc_common, {sfc_common: 10, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1}) => 7,
+        build_pack_with_random_foil(set_code, :foil, :sfc_common, {sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}) => 1,
       )
     when "cns"
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, :cns_nondraft_foil, :cns_nondraft_common, {cns_draft: 1, cns_nondraft_common: 10, cns_nondraft_uncommon: 3, cns_nondraft_rare_or_mythic: 1}) => 39,
-        build_pack_with_random_foil(set_code, :cns_nondraft_foil, :cns_nondraft_common, {cns_draft_foil: 1, cns_nondraft_common: 10, cns_nondraft_uncommon: 3, cns_nondraft_rare_or_mythic: 1}) => 1,
+        build_pack_with_random_foil(set_code, :cns_nondraft_foil, :cns_nondraft_common, {cns_draft: 1, cns_nondraft_common: 10, cns_nondraft_uncommon: 3, cns_nondraft_rare_mythic: 1}) => 39,
+        build_pack_with_random_foil(set_code, :cns_nondraft_foil, :cns_nondraft_common, {cns_draft_foil: 1, cns_nondraft_common: 10, cns_nondraft_uncommon: 3, cns_nondraft_rare_mythic: 1}) => 1,
       )
     when "cn2"
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, :cn2_nonconspiracy_foil, :cn2_nonconspiracy_common, {cn2_conspiracy: 1, cn2_nonconspiracy_common: 10, cn2_nonconspiracy_uncommon: 3, cn2_nonconspiracy_rare_or_mythic: 1}) => 39,
-        build_pack_with_random_foil(set_code, :cn2_nonconspiracy_foil, :cn2_nonconspiracy_common, {cn2_conspiracy_foil: 1, cn2_nonconspiracy_common: 10, cn2_nonconspiracy_uncommon: 3, cn2_nonconspiracy_rare_or_mythic: 1}) => 1,
+        build_pack_with_random_foil(set_code, :cn2_nonconspiracy_foil, :cn2_nonconspiracy_common, {cn2_conspiracy: 1, cn2_nonconspiracy_common: 10, cn2_nonconspiracy_uncommon: 3, cn2_nonconspiracy_rare_mythic: 1}) => 39,
+        build_pack_with_random_foil(set_code, :cn2_nonconspiracy_foil, :cn2_nonconspiracy_common, {cn2_conspiracy_foil: 1, cn2_nonconspiracy_common: 10, cn2_nonconspiracy_uncommon: 3, cn2_nonconspiracy_rare_mythic: 1}) => 1,
+      )
+    when "ust"
+      # Box opening videos suggest that foil basic goes into basic slot
+      # Foil contraptions would do too?
+      # Ratios are total guesses
+      WeightedPack.new(
+        build_pack(set_code, {ust_basic: 1, ust_contraption: 2, ust_common: 8, ust_uncommon: 3, ust_rare_mythic: 1}) => 27,
+        build_pack(set_code, {ust_basic: 1, ust_contraption: 2, ust_foil: 1, ust_common: 7, ust_uncommon: 3, ust_rare_mythic: 1}) => 10,
+        build_pack(set_code, {ust_basic_foil: 1, ust_contraption: 2, ust_common: 8, ust_uncommon: 3, ust_rare_mythic: 1}) => 1,
+        build_pack(set_code, {ust_basic: 1, ust_contraption: 1, ust_contraption_foil: 1, ust_common: 8, ust_uncommon: 3, ust_rare_mythic: 1}) => 2,
       )
     when "bbd"
       # I ran the math, and best numbers are totally weird, so some rounded:
@@ -241,9 +255,9 @@ class PackFactory
         build_pack_with_random_foil(set_code, :war_foil, :common, {basic: 1, common: 10, war_nonplaneswalker_uncommon: 2, war_planeswalker_uncommon: 1, war_nonplaneswalker_rare_mythic: 1}) => (121-29),
       )
     when "grn"
-      build_pack_with_random_foil(set_code, :foil, :grn_common, {grn_common: 10, uncommon: 3, rare_or_mythic: 1, grn_land: 1})
+      build_pack_with_random_foil(set_code, :foil, :grn_common, {grn_common: 10, uncommon: 3, rare_mythic: 1, grn_land: 1})
     when "rna"
-      build_pack_with_random_foil(set_code, :foil, :rna_common, {rna_common: 10, uncommon: 3, rare_or_mythic: 1, rna_land: 1})
+      build_pack_with_random_foil(set_code, :foil, :rna_common, {rna_common: 10, uncommon: 3, rare_mythic: 1, rna_land: 1})
     # These are just approximations, they actually used nonstandard sheets
     when "lea", "leb", "2ed", "3ed", "ice"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})

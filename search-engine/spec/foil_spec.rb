@@ -128,6 +128,10 @@ describe "Foils" do
         special, regular = set.printings.partition{|c| c.name == "Super Secret Tech"}
         assert_foiling(regular, "both")
         assert_foiling(special, "foilonly")
+      when "mh1"
+        special, regular = set.printings.partition{|c| c.name == "Flusterstorm"}
+        assert_foiling(regular, "both")
+        assert_foiling(special, "nonfoil")
       when "cn2"
         special, regular = set.printings.partition{|c| c.name == "Kaya, Ghost Assassin"}
         assert_foiling(regular, "both")

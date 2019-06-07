@@ -14,6 +14,8 @@ class Pack
 
   ## Testing support
 
+  attr_reader :sheets
+
   def expected_values
     result = Hash.new(0)
     @sheets.each do |sheet, count|

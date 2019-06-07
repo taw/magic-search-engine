@@ -9,6 +9,7 @@ describe "Sorting" do
       "Chandra, Bold Pyromancer",
       "Chandra, Fire Artisan",
       "Chandra, Flamecaller",
+      "Chandra, Gremlin Wrangler",
       "Chandra, Pyrogenius",
       "Chandra, Pyromaster",
       "Chandra, Roaring Flame",
@@ -27,7 +28,8 @@ describe "Sorting" do
       "Chandra, Pyromaster",
       "Chandra, the Firebrand",
       "Chandra Nalaar",
-      "Chandra Ablaze"
+      "Chandra Ablaze",
+      "Chandra, Gremlin Wrangler"
   end
 
   it "newall" do
@@ -36,6 +38,7 @@ describe "Sorting" do
       "Chandra, Torch of Defiance",
       "Chandra, Bold Pyromancer",
       "Chandra, Roaring Flame",
+      "Chandra, Gremlin Wrangler",
       "Chandra, Pyromaster",
       "Chandra, Flamecaller",
       "Chandra, Pyrogenius",
@@ -55,7 +58,8 @@ describe "Sorting" do
       "Chandra, Pyrogenius",
       "Chandra, Torch of Defiance",
       "Chandra, Bold Pyromancer",
-      "Chandra, Fire Artisan"
+      "Chandra, Fire Artisan",
+      "Chandra, Gremlin Wrangler"
   end
 
   it "oldall" do
@@ -68,6 +72,7 @@ describe "Sorting" do
       "Chandra, Flamecaller",
       "Chandra, Pyrogenius",
       "Chandra, Torch of Defiance",
+      "Chandra, Gremlin Wrangler",
       "Chandra, Bold Pyromancer",
       "Chandra, Fire Artisan"
     end
@@ -80,6 +85,7 @@ describe "Sorting" do
       "Chandra, Pyrogenius",        # 6
       "Chandra Nalaar",             # 5
       "Chandra, Fire Artisan",      # 4
+      "Chandra, Gremlin Wrangler",  # 4
       "Chandra, Pyromaster",        # 4
       "Chandra, Torch of Defiance", # 4
       "Chandra, the Firebrand",     # 4
@@ -90,6 +96,7 @@ describe "Sorting" do
     assert_search_results_ordered "t:chandra sort:-cmc",
       "Chandra, Roaring Flame",     # 3
       "Chandra, Fire Artisan",      # 4
+      "Chandra, Gremlin Wrangler",  # 4
       "Chandra, Pyromaster",        # 4
       "Chandra, Torch of Defiance", # 4
       "Chandra, the Firebrand",     # 4
@@ -128,6 +135,7 @@ describe "Sorting" do
       "Chandra, the Firebrand",     # 4
       "Chandra, Torch of Defiance", # 4
       "Chandra, Pyromaster",        # 4
+      "Chandra, Gremlin Wrangler",  # 4
       "Chandra, Fire Artisan",      # 4
       "Chandra, Roaring Flame"      # 3
   end

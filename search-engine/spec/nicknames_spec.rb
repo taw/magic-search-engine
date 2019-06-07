@@ -181,6 +181,7 @@ describe "Card nicknames" do
       "Ghitu Encampment",
       "Hissing Quagmire",
       "Hostile Desert",
+      "Frostwalk Bastion",
       "Inkmoth Nexus",
       "Lavaclaw Reaches",
       "Lumbering Falls",

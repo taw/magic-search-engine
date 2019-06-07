@@ -1,0 +1,88 @@
+#!/usr/bin/env ruby
+
+require_relative "../search-engine/lib/card_database"
+
+class ExportSealedData
+  def initialize
+    @db = CardDatabase.load
+    @factory = factory = PackFactory.new(@db)
+  end
+
+  def serialize_information(pack, sheets={})
+    if pack.is_a?(WeightedPack)
+      pack = pack.flatten_weighted_pack
+    else
+      pack = WeightedPack.new(pack => 1)
+    end
+    pack.packs.each do |subpack, weight|
+      subpack.sheets.each do |sheet, count|
+        sheets[sheet] ||= "sheet-#{sheets.size+1}"
+      end
+    end
+    pack
+  end
+
+  def serialize_subpack(pack, weight, sheets)
+    {
+      sheets: pack.sheets.map{|s,c| [sheets[s], c]}.to_h,
+      weight: weight,
+    }
+  end
+
+  def serialize_sheet(sheet)
+    if sheet.is_a?(PartnerCardSheet)
+      return {
+        partner: true,
+        cards: 'todo',
+      }
+    end
+
+    elements = sheet.elements
+    weights = sheet.weights || [1] * elements.size
+    cards = elements.zip(weights).map do |e,w|
+      if e.is_a?(PhysicalCard)
+        {
+          card: "#{e.set_code}:#{e.number}",
+          foil: e.foil ? true : nil,
+          weight: w,
+        }.compact
+      else
+        {
+          subsheet: serialize_sheet(e),
+          weight: w,
+        }
+      end
+    end
+    {
+      balance_color: sheet.is_a?(ColorBalancedCardSheet),
+      cards: cards,
+    }
+  end
+
+  def serialize_sheets(sheets)
+    sheets.map{|sheet, id|
+      [id, serialize_sheet(sheet)]
+    }.to_h
+  end
+
+  def call(output_path)
+    exported_data = []
+    @db.sets_with_packs.each do |set|
+      pack = @factory.for(set.code)
+      sheets = {}
+      pack = serialize_information(pack, sheets)
+      exported_data << {
+        name: set.name,
+        code: set.code,
+        boosters: pack.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
+        sheets: serialize_sheets(sheets),
+      }
+    end
+    open(output_path, "w") do |fh|
+      fh.puts JSON.pretty_generate(exported_data)
+    end
+  end
+end
+
+output_path = ARGV[0] || "export_sealed.json"
+ExportSealedData.new.call(output_path)

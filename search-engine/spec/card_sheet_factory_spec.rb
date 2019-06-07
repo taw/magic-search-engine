@@ -60,8 +60,8 @@ describe CardSheetFactory do
     let(:common_sheet) { factory.dgm_common }
     let(:uncommon_sheet) { factory.rarity("dgm", "uncommon") }
     let(:rare_mythic_sheet) { factory.dgm_rare_mythic }
-    let(:rtr_rare_mythic_sheet) { factory.rare_or_mythic("rtr") }
-    let(:gtc_rare_mythic_sheet) { factory.rare_or_mythic("gtc") }
+    let(:rtr_rare_mythic_sheet) { factory.rare_mythic("rtr") }
+    let(:gtc_rare_mythic_sheet) { factory.rare_mythic("gtc") }
 
     let(:guildgate_card) { physical_card("simic guilddate e:dgm") }
     let(:rtr_shockland){ physical_card("Overgrown Tomb e:rtr") }
@@ -102,7 +102,7 @@ describe CardSheetFactory do
 
   context "Unhinged" do
     context "rare sheet" do
-      let(:rare_sheet) { factory.rare_or_mythic("unh") }
+      let(:rare_sheet) { factory.rare_mythic("unh") }
       let(:ambiguity) { physical_card("ambiguity", false) }
       let(:super_secret_tech) { physical_card("super secret tech", false) }
 
@@ -130,7 +130,7 @@ describe CardSheetFactory do
     let(:number_of_basics) { factory.rarity(set_code, "basic").cards.size }
     let(:number_of_commons) { factory.rarity(set_code, "common").cards.size }
     let(:number_of_uncommons) { factory.rarity(set_code, "uncommon").cards.size }
-    let(:number_of_rares) { factory.rare_or_mythic(set_code).cards.size }
+    let(:number_of_rares) { factory.rare_mythic(set_code).cards.size }
 
     describe "Champions of Kamigawa" do
       let(:set_code) { "chk" }
@@ -192,7 +192,7 @@ describe CardSheetFactory do
   end
 
   it "Origins" do
-    mythics = factory.rare_or_mythic("ori").cards.select{|c| c.rarity == "mythic"}.map(&:name)
+    mythics = factory.rare_mythic("ori").cards.select{|c| c.rarity == "mythic"}.map(&:name)
     mythics.should match_array([
       "Alhammarret's Archive",
       "Archangel of Tithes",

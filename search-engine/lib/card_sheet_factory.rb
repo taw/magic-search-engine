@@ -36,7 +36,7 @@ class CardSheetFactory
   #
   # Maro says basic foils and common foils are equally likely [https://twitter.com/maro254/status/938830320094216192]
   def foil_sheet(set_code)
-    sheets = [rare_or_mythic(set_code, foil: true), rarity(set_code, "uncommon", foil: true)]
+    sheets = [rare_mythic(set_code, foil: true), rarity(set_code, "uncommon", foil: true)]
     weights = [4, 8]
 
     masterpieces = masterpieces_for(set_code)
@@ -73,7 +73,7 @@ class CardSheetFactory
   # treat variants as 1/N chance eachs
   # This only matters for Unstable
   # Rares appear 2x more frequently on shared sheet
-  def rare_or_mythic(set_code, foil: false)
+  def rare_mythic(set_code, foil: false)
     mix_sheets(
       [rarity(set_code, "rare", foil: foil), 2],
       [rarity(set_code, "mythic", foil: foil), 1]
@@ -221,7 +221,7 @@ class CardSheetFactory
     from_query("e:#{set_code} r:uncommon -is:dfc -is:meld")
   end
 
-  def sfc_rare_or_mythic(set_code)
+  def sfc_rare_mythic(set_code)
     mix_sheets(
       [from_query("e:#{set_code} r:rare -is:dfc -is:meld"), 2],
       [from_query("e:#{set_code} r:mythic -is:dfc -is:meld"), 1],
@@ -403,7 +403,7 @@ class CardSheetFactory
     sheets = [
       cns_nondraft_common(true),
       cns_nondraft_uncommon(true),
-      cns_nondraft_rare_or_mythic(true),
+      cns_nondraft_rare_mythic(true),
     ]
     weights = [
       5,
@@ -421,7 +421,7 @@ class CardSheetFactory
     from_query('e:cns -is:draft r:uncommon', 60, foil: foil)
   end
 
-  def cns_nondraft_rare_or_mythic(foil=false)
+  def cns_nondraft_rare_mythic(foil=false)
     mix_sheets(
       [from_query('e:cns -is:draft r:rare', 35, foil: foil), 2],
       [from_query('e:cns -is:draft r:mythic', 10, foil: foil), 1],
@@ -445,7 +445,7 @@ class CardSheetFactory
     sheets = [
       cn2_nonconspiracy_common(true),
       cn2_nonconspiracy_uncommon(true),
-      cn2_nonconspiracy_rare_or_mythic(true),
+      cn2_nonconspiracy_rare_mythic(true),
     ]
     weights = [
       5,
@@ -463,7 +463,7 @@ class CardSheetFactory
     from_query('e:cn2 -t:conspiracy r:uncommon', 65, foil: foil)
   end
 
-  def cn2_nonconspiracy_rare_or_mythic(foil=false)
+  def cn2_nonconspiracy_rare_mythic(foil=false)
     foilcond = foil ? "-is:nonfoilonly" : "-is:foilonly"
     mix_sheets(
       [from_query('e:cn2 -t:conspiracy r:rare', 47, foil: foil), 2],
@@ -541,6 +541,61 @@ class CardSheetFactory
       1,
     ]
     MixedPartnerCardSheet.new(sheets, weights)
+  end
+
+  def ust_basic(foil: false)
+    mix_sheets(
+      [from_query('e:ust r:basic', 5, foil: foil), 24],
+      [from_query("e:ust border:black", 1, foil: foil), 1],
+    )
+  end
+
+  def ust_basic_foil
+    ust_basic(foil: true)
+  end
+
+  def ust_common(foil: false)
+    from_query("e:ust r:common -t:contraption", 82, foil: foil)
+  end
+
+  def ust_uncommon(foil: false)
+    from_query("e:ust r:uncommon -t:contraption", 75, foil: foil)
+  end
+
+  def ust_rare_mythic(foil: false)
+    mix_sheets(
+      [from_query('e:ust -t:contraption -border:black r:rare', 50, foil: foil), 2],
+      [from_query('e:ust -t:contraption r:mythic', 10, foil: foil), 1],
+    )
+  end
+
+  # Numbers are totally made up
+  # Maybe some rarity is actually not exact?
+  def ust_contraption(foil: false)
+    mix_sheets(
+      [from_query('e:ust t:contraption r:common', 15, foil: foil), 8],
+      [from_query('e:ust t:contraption r:uncommon', 15, foil: foil), 4],
+      [from_query('e:ust t:contraption r:rare', 10, foil: foil), 2],
+      [from_query('e:ust t:contraption r:mythic', 5, foil: foil), 1],
+    )
+  end
+
+  def ust_contraption_foil
+    ust_contraption(foil: true)
+  end
+
+  def ust_foil
+    sheets = [
+      ust_common(foil: true),
+      ust_uncommon(foil: true),
+      ust_rare_mythic(foil: true),
+    ]
+    weights = [
+      5,
+      2,
+      1,
+    ]
+    CardSheet.new(sheets, weights)
   end
 
   # for custom sets

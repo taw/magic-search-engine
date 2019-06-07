@@ -157,7 +157,7 @@ class Card
       case m
       when /\A\d+\z/
         @mana_hash["?"] += m.to_i
-      when /\A[wubrgxyzc]\z/
+      when /\A[wubrgxyzcs]\z/
         # x is basically a color for this kind of queries
         @mana_hash[m] += 1
       when /\Ah([wubrg])\z/
@@ -198,7 +198,7 @@ class Card
       # "*" < "*²" < "1+*" < "2+*"
       # but let's not get anywhere near that
       case val
-      when "*", "*²", "1+*", "2+*", "7-*", "X", "∞", "?"
+      when "*", "*²", "1+*", "2+*", "7-*", "X", "∞", "?", "1d4+1"
         val
       else
         raise "Unrecognized value #{val.inspect}"
@@ -254,7 +254,7 @@ class Card
   def calculate_color_indicator
     colors_inferred_from_mana_cost = (@mana_hash || {}).keys
       .flat_map do |x|
-        next [] if x =~ /[?xyzc]/
+        next [] if x =~ /[?xyzcs]/
         x = x.sub(/[p2]/, "")
         if x =~ /\A[wubrg]+\z/
           x.chars

@@ -81,6 +81,8 @@ class ConditionExpr < ConditionSimple
       [:question_mark, 0]
     when /\A∞\z/
       [:number, Float::INFINITY]
+    when "1d4+1"
+      [:"1d4", 1]
     else
       warn "Expr variable parse error: #{expr.inspect}"
       [nil, nil]

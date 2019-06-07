@@ -88,7 +88,7 @@ describe "Unsets" do
       "Shichifukujin Dragon",
       "Splendid Genesis"
     )
-    "not:new".should equal_search "-e:unh,hho,ust -(Robot Chicken)"
+    "not:new".should equal_search "-e:unh,hho,ust"
     "not:silver-bordered -t:contraption".should return_cards(
       "Forest",
       "Mountain",
@@ -97,11 +97,14 @@ describe "Unsets" do
       "Island",
       "1996 World Champion",
       "Fraternal Exaltation",
+      "Gifts Given",
+      "Phoenix Heart",
       "Proposal",
       "Robot Chicken",
       "Shichifukujin Dragon",
       "Splendid Genesis",
       "Steamflogger Boss",
+      "Stocking Tiger"
     )
     "is:black-bordered".should return_cards(
       "Forest",
@@ -111,11 +114,14 @@ describe "Unsets" do
       "Island",
       "1996 World Champion",
       "Fraternal Exaltation",
+      "Gifts Given",
+      "Phoenix Heart",
       "Proposal",
       "Robot Chicken",
       "Shichifukujin Dragon",
       "Splendid Genesis",
       "Steamflogger Boss",
+      "Stocking Tiger",
     )
     "is:white-bordered".should return_no_cards
   end
