@@ -42,16 +42,13 @@ class ExportSealedData
     cards = elements.zip(weights).map do |e,w|
       if e.is_a?(PhysicalCard)
         {
-          type: 'card',
-          name: e.set_code,
-          number: e.number,
-          foil: e.foil,
+          card: "#{e.set_code}:#{e.number}",
+          foil: e.foil ? true : nil,
           weight: w,
-        }
+        }.compact
       else
         {
-          type: 'subsheet',
-          data: serialize_sheet(e),
+          subsheet: serialize_sheet(e),
           weight: w,
         }
       end
