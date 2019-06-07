@@ -2,6 +2,7 @@ class PackFactory
   def initialize(db)
     @db = db
     @sheet_factory = CardSheetFactory.new(@db)
+    @sheet_cache = {}
   end
 
   def inspect
@@ -39,31 +40,33 @@ class PackFactory
   end
 
   private def build_sheet(set_code, name)
-    case name
-    when :common
-      @sheet_factory.rarity(set_code, name.to_s, kind: ColorBalancedCardSheet)
-    when :common_unbalanced
-      @sheet_factory.rarity(set_code, "common")
-    when :basic, :uncommon, :rare
-      @sheet_factory.rarity(set_code, name.to_s)
-    when :rare_mythic
-      @sheet_factory.rare_mythic(set_code)
-    # In old sets commons and basics were printed on shared sheet
-    when :common_or_basic
-      @sheet_factory.common_or_basic(set_code)
-    when :common_or_basic_unbalanced
-      @sheet_factory.common_or_basic(set_code, kind: CardSheet)
-    when :foil
-      @sheet_factory.foil_sheet(set_code)
-    # Various old sheets
-    when :explicit_common, :explicit_uncommon, :explicit_rare, :sfc_common, :sfc_uncommon, :sfc_rare_mythic
-      @sheet_factory.send(name, set_code)
-    # Various special sheets
-    else
-      if @sheet_factory.respond_to?(name)
-        @sheet_factory.send(name)
+    @sheet_cache[[set_code, name]] ||= begin
+      case name
+      when :common
+        @sheet_factory.rarity(set_code, name.to_s, kind: ColorBalancedCardSheet)
+      when :common_unbalanced
+        @sheet_factory.rarity(set_code, "common")
+      when :basic, :uncommon, :rare
+        @sheet_factory.rarity(set_code, name.to_s)
+      when :rare_mythic
+        @sheet_factory.rare_mythic(set_code)
+      # In old sets commons and basics were printed on shared sheet
+      when :common_or_basic
+        @sheet_factory.common_or_basic(set_code)
+      when :common_or_basic_unbalanced
+        @sheet_factory.common_or_basic(set_code, kind: CardSheet)
+      when :foil
+        @sheet_factory.foil_sheet(set_code)
+      # Various old sheets
+      when :explicit_common, :explicit_uncommon, :explicit_rare, :sfc_common, :sfc_uncommon, :sfc_rare_mythic
+        @sheet_factory.send(name, set_code)
+      # Various special sheets
       else
-        raise "Unknown sheet type #{name}"
+        if @sheet_factory.respond_to?(name)
+          @sheet_factory.send(name)
+        else
+          raise "Unknown sheet type #{name}"
+        end
       end
     end
   end
