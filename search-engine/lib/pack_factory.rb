@@ -273,10 +273,10 @@ class PackFactory
     # custom sets
     when "ank", "ldo", "dhm", "net"
       # Custom sets with default pack distribution, no foils, with basics
-      build_pack(set_code, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_or_mythic: 1})
+      build_pack(set_code, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_mythic: 1})
     when "cc18"
       # Same as above except no basics
-      build_pack(set_code, {common_unbalanced: 10, uncommon: 3, rare_or_mythic: 1})
+      build_pack(set_code, {common_unbalanced: 10, uncommon: 3, rare_mythic: 1})
     when "dms", "vst"
       # Same as above except follow Reuben's rules https://web.archive.org/web/20170427075406/thegraymerchants.com/?p=836
       # 1. A pack must never have more than 4 commons of the same color
@@ -284,7 +284,7 @@ class PackFactory
       # 3. A pack must have at least 1 common creature
       # 4. A pack must never have more than 2 uncommons of the same color
       # 5. A pack must never have repeated cards
-      build_pack(set_code, {common_unbalanced: 10, uncommon: 3, rare_or_mythic: 1}, pack_class: ReubenPack)
+      build_pack(set_code, {common_unbalanced: 10, uncommon: 3, rare_mythic: 1}, pack_class: ReubenPack)
     when "ayr"
       # AYR has only nonbasic lands in the land slot, and no lands in any other slot, like DGM
       # there is explicitly no color balancing for the commons
@@ -296,15 +296,15 @@ class PackFactory
     when "tsl"
       # TSL packs always have exactly one DFC, replacing a common slot
       # also follow Reuben's rules
-      build_pack(set_code, {tsl_dfc: 1, sfc_common_unbalanced: 9, sfc_uncommon: 3, sfc_rare_or_mythic: 1}, pack_class: ReubenPack)
+      build_pack(set_code, {tsl_dfc: 1, sfc_common_unbalanced: 9, sfc_uncommon: 3, sfc_rare_mythic: 1}, pack_class: ReubenPack)
     when "vln", "eau"
       # VLN and EAU packs check the naïve generator for two rules:
       # 1. no more than 6 cards of a single color in a pack
       # 2. no less than 1 card of a color in a pack
-      build_pack(set_code, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_or_mythic: 1}, pack_class: SimonPack)
+      build_pack(set_code, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_mythic: 1}, pack_class: SimonPack)
     when "jan", "hlw", "sou"
       # These sets have opted into taw's color-balanced algorithm
-      build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_or_mythic: 1})
+      build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this
