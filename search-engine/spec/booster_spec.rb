@@ -5,7 +5,7 @@ describe "is:booster" do
     db.sets.each do |set_code, set|
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       should_have_boosters = (
-        ["expansion", "core", "un", "reprint", "conspiracy", "masters", "starter", "two-headed giant"].include?(set.type) and
+        ["expansion", "core", "un", "reprint", "conspiracy", "masters", "starter", "two-headed giant", "modern"].include?(set.type) and
         !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1].include?(set.code)
       )
       if should_have_boosters
