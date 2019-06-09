@@ -1,13 +1,11 @@
 {
-    "border": "bronze",
     "cards": [
         {
-            "cmc": 2,
-            "layout": "normal",
+            "colorIdentity": [],
+            "colors": [],
             "manaCost": "{2}",
             "name": "Chaos Orb",
             "number": "1",
-            "rarity": "special",
             "reserved": true,
             "rulings": [
                 {
@@ -15,6 +13,8 @@
                     "text": "I have applied functional errata to this card in order to make it work more reasonably in our games. It is no longer a dexterity card. For the official text and rulings, please look up the card on Gatherer. \u2014Fenhl"
                 }
             ],
+            "subtypes": [],
+            "supertypes": [],
             "text": "{1}, {T}, Sacrifice Chaos Orb: For each nontoken permanent, flip a coin. Then destroy all permanents whose coin came up tails.",
             "type": "Artifact",
             "types": [
@@ -22,18 +22,15 @@
             ]
         },
         {
-            "cmc": 2,
             "colorIdentity": [
                 "B"
             ],
             "colors": [
-                "Black"
+                "B"
             ],
-            "layout": "normal",
             "manaCost": "{X}{1}{B}",
             "name": "Drain Life",
             "number": "2",
-            "rarity": "special",
             "rulings": [
                 {
                     "date": "2004-10-04",
@@ -48,6 +45,8 @@
                     "text": "I have applied functional errata to this card in order to make it work with Structures from Ruins of Doharum. For the official text and new rulings, please look up the card on Gatherer. \u2014Fenhl"
                 }
             ],
+            "subtypes": [],
+            "supertypes": [],
             "text": "Spend only black mana on X.\nDrain Life deals X damage to any target. You gain life equal to the damage dealt, but not more life than the player's life total before the damage was dealt, the planeswalker's loyalty before the damage was dealt, the Structure's stability before the damage was dealt, or the creature's toughness.",
             "type": "Sorcery",
             "types": [
@@ -55,19 +54,16 @@
             ]
         },
         {
-            "cmc": 5,
             "colorIdentity": [
                 "G"
             ],
             "colors": [
                 "Green"
             ],
-            "layout": "normal",
             "manaCost": "{3}{G}{G}",
             "name": "Elvish Bard",
             "number": "3",
             "power": "2",
-            "rarity": "special",
             "rulings": [
                 {
                     "date": "2019-02-15",
@@ -79,6 +75,7 @@
                 "Shaman",
                 "Bard"
             ],
+            "supertypes": [],
             "text": "All creatures able to block Elvish Bard do so.",
             "toughness": "4",
             "type": "Creature \u2014 Elf Shaman Bard",
@@ -87,18 +84,15 @@
             ]
         },
         {
-            "cmc": 3,
             "colorIdentity": [
                 "R"
             ],
             "colors": [
-                "Red"
+                "R"
             ],
-            "layout": "normal",
             "manaCost": "{2}{R}",
             "name": "Falling Star",
             "number": "4",
-            "rarity": "special",
             "reserved": true,
             "rulings": [
                 {
@@ -106,6 +100,8 @@
                     "text": "I have applied functional errata to this card in order to make it work more reasonably in our games. It is no longer a dexterity card. For the official text and rulings, please look up the card on Gatherer. \u2014Fenhl"
                 }
             ],
+            "subtypes": [],
+            "supertypes": [],
             "text": "For each creature on the battlefield, flip a coin. Then Falling Star deals 3 damage to each creature whose coin came up tails. Tap all creatures dealt damage by Falling Star.",
             "type": "Sorcery",
             "types": [
@@ -113,19 +109,48 @@
             ]
         },
         {
-            "cmc": 4,
+            "colorIdentity": [
+                "R"
+            ],
+            "colors": [
+                "R"
+            ],
+            "manaCost": "{2}{R}{R}",
+            "name": "Hellrider",
+            "number": "5",
+            "power": "3",
+            "rulings": [
+                {
+                    "date": "2017-03-14",
+                    "text": "Creatures you control may attack multiple players and/or planeswalkers. For each attacking creature, Hellrider will deal damage to the corresponding player or planeswalker."
+                },
+                {
+                    "date": "2019-06-09",
+                    "text": "I have applied functional errata to this card in order to make it work with Structures from Ruins of Doharum. For the official text and new rulings, please look up the card on Gatherer. \u2014Fenhl"
+                }
+            ],
+            "subtypes": [
+                "Devil"
+            ],
+            "supertypes": [],
+            "text": "Haste\nWhenever a creature you control attacks, Hellrider deals 1 damage to the player, planeswalker, or Structure it's attacking.",
+            "toughness": "3",
+            "type": "Creature \u2014 Devil",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "colorIdentity": [
                 "G"
             ],
             "colors": [
-                "Green"
+                "G"
             ],
-            "layout": "normal",
             "manaCost": "{3}{G}",
             "name": "Joraga Bard",
-            "number": "5",
+            "number": "6",
             "power": "1",
-            "rarity": "special",
             "rulings": [
                 {
                     "date": "2009-10-01",
@@ -142,6 +167,7 @@
                 "Bard",
                 "Ally"
             ],
+            "supertypes": [],
             "text": "Whenever Joraga Bard or another Ally enters the battlefield under your control, you may have Ally creatures you control gain vigilance until end of turn.",
             "toughness": "4",
             "type": "Creature \u2014 Elf Rogue Bard Ally",
@@ -150,19 +176,90 @@
             ]
         },
         {
-            "cmc": 3,
+            "colorIdentity": [
+                "R",
+                "G"
+            ],
+            "colors": [
+                "R",
+                "G"
+            ],
+            "manaCost": "{1}{R}{G}",
+            "name": "Mage Slayer",
+            "number": "7",
+            "rulings": [
+                {
+                    "date": "2009-05-01",
+                    "text": "This ability triggers and resolves in the declare attackers step. The creature will still deal its combat damage as normal later on during the combat phase."
+                },
+                {
+                    "date": "2009-05-01",
+                    "text": "When the equipped creature attacks, the first ability will trigger. When that ability resolves, that creature will deal damage equal to its power to player, planeswalker, or Structure it's attacking, even if Mage Slayer has left the battlefield or is equipping a different creature by that time."
+                },
+                {
+                    "date": "2019-06-09",
+                    "text": "I have applied functional errata to this card in order to make it work with Structures from Ruins of Doharum. For the official text and new rulings, please look up the card on Gatherer. \u2014Fenhl"
+                }
+            ],
+            "subtypes": [
+                "Equipment"
+            ],
+            "supertypes": [],
+            "text": "Whenever equipped creature attacks, it deals damage equal to its power to the player, planeswalker, or Structure it's attacking.\nEquip {3}",
+            "type": "Artifact \u2014 Equipment",
+            "types": [
+                "Artifact"
+            ]
+        },
+        {
+            "colorIdentity": [],
+            "colors": [],
+            "manaCost": "{7}",
+            "name": "Myr Battlesphere",
+            "number": "8",
+            "power": "4",
+            "rulings": [
+                {
+                    "date": "2011-01-01",
+                    "text": "You choose the value for X as the last ability resolves. You can't choose a value for X that's greater than the number of untapped Myr you control."
+                },
+                {
+                    "date": "2011-01-01",
+                    "text": "You can tap any untapped Myr you control as the last ability resolves, not just the Myr tokens you put onto the battlefield with the first ability. This includes Myr that haven't been under your control since your most recent turn began."
+                },
+                {
+                    "date": "2011-01-01",
+                    "text": "As the last ability resolves, you can tap untapped Myr you control even if Myr Battlesphere is no longer on the battlefield by then. If that has happened, Myr Battlesphere won't be able to get the +X/+0 bonus, but it will still deal X damage to the player, planeswalker, or Structure it's attacking."
+                },
+                {
+                    "date": "2019-06-09",
+                    "text": "I have applied functional errata to this card in order to make it work with Structures from Ruins of Doharum. For the official text and new rulings, please look up the card on Gatherer. \u2014Fenhl"
+                }
+            ],
+            "subtypes": [
+                "Myr",
+                "Construct"
+            ],
+            "supertypes": [],
+            "text": "When Myr Battlesphere enters the battlefield, create four 1/1 colorless Myr artifact creature tokens.\nWhenever Myr Battlesphere attacks, you may tap X untapped Myr you control. If you do, Myr Battlesphere gets +X/+0 until end of turn and deals X damage to the player, planeswalker, or Structure it's attacking.",
+            "toughness": "7",
+            "type": "Artifact Creature \u2014 Myr Construct",
+            "types": [
+                "Artifact",
+                "Creature"
+            ]
+        },
+        {
             "colorIdentity": [
                 "U"
             ],
             "colors": [
-                "Blue"
+                "U"
             ],
-            "layout": "normal",
             "manaCost": "{2}{U}",
             "name": "Portal Mage",
-            "number": "6",
+            "number": "9",
             "power": "2",
-            "rarity": "special",
             "rulings": [
                 {
                     "date": "2017-08-25",
@@ -193,6 +290,7 @@
                 "Human",
                 "Wizard"
             ],
+            "supertypes": [],
             "text": "Flash\nWhen Portal Mage enters the battlefield during the declare attackers step, you may reselect which player, planeswalker, or Structure target attacking creature is attacking. (It can't attack its controller or its controller's planeswalkers or Structures.)",
             "toughness": "2",
             "type": "Creature \u2014 Human Wizard",
@@ -201,20 +299,51 @@
             ]
         },
         {
-            "border": "silver",
-            "cmc": 5,
+            "colorIdentity": [
+                "B",
+                "R"
+            ],
+            "colors": [
+                "B",
+                "R"
+            ],
+            "manaCost": "{1}{B}{R}",
+            "name": "Rakdos Roustabout",
+            "number": "10",
+            "power": "3",
+            "rulings": [
+                {
+                    "date": "2019-01-25",
+                    "text": "An ability that triggers when a creature becomes blocked triggers only once if two or more creatures block it."
+                },
+                {
+                    "date": "2019-06-09",
+                    "text": "I have applied functional errata to this card in order to make it work with Structures from Ruins of Doharum. For the official text and new rulings, please look up the card on Gatherer. \u2014Fenhl"
+                }
+            ],
+            "subtypes": [
+                "Ogre",
+                "Warrior"
+            ],
+            "supertypes": [],
+            "text": "Whenever Rakdos Roustabout becomes blocked, it deals 1 damage to the player, planeswalker, or Structure it's attacking.",
+            "toughness": "2",
+            "type": "Creature \u2014 Ogre Warrior",
+            "types": [
+                "Creature"
+            ]
+        },
+        {
             "colorIdentity": [
                 "U"
             ],
             "colors": [
-                "Blue"
+                "U"
             ],
-            "layout": "normal",
             "manaCost": "{3}{U}{U}",
             "name": "Richard Garfield, Ph.D.",
-            "number": "7",
+            "number": "11",
             "power": "2",
-            "rarity": "special",
             "rulings": [
                 {
                     "date": "2018-07-05",
@@ -280,18 +409,15 @@
             ]
         },
         {
-            "cmc": 3,
             "colorIdentity": [
                 "B"
             ],
             "colors": [
                 "Black"
             ],
-            "layout": "normal",
             "manaCost": "{X}{2}{B}",
             "name": "Soul Burn",
-            "number": "8",
-            "rarity": "special",
+            "number": "12",
             "rulings": [
                 {
                     "date": "2004-10-04",
@@ -302,6 +428,8 @@
                     "text": "I have applied functional errata to this card in order to make it work with Structures from Ruins of Doharum. For the official text and new rulings, please look up the card on Gatherer. \u2014Fenhl"
                 }
             ],
+            "subtypes": [],
+            "supertypes": [],
             "text": "Spend only black and/or red mana on X.\nSoul Burn deals X damage to any target. You gain life equal to the damage dealt, but not more than the amount of {B} spent on X, the player's life total before the damage was dealt, the planeswalker's loyalty before the damage was dealt, the Structure's stability before the damage was dealt, or the creature's toughness.",
             "type": "Sorcery",
             "types": [
@@ -309,19 +437,16 @@
             ]
         },
         {
-            "cmc": 3,
             "colorIdentity": [
                 "G"
             ],
             "colors": [
                 "Green"
             ],
-            "layout": "normal",
             "manaCost": "{2}{G}",
             "name": "Yisan, the Wanderer Bard",
-            "number": "9",
+            "number": "13",
             "power": "2",
-            "rarity": "special",
             "rulings": [
                 {
                     "date": "2014-07-18",
@@ -349,6 +474,10 @@
         }
     ],
     "code": "LORESEEKERERRATA",
+    "meta": {
+        "date": "2019-06-09",
+        "version": "4.4.1"
+    },
     "name": "Lore Seeker errata",
     "releaseDate": "2016-12-14",
     "type": "errata"
