@@ -19,7 +19,12 @@ class CardPrinting
     @watermark = data["watermark"]
     @number = data["number"]
     @multiverseid = data["multiverseid"]
-    @artist_name = data["artist"].normalize_accents # TODO: move to indexer
+    if data["artist"]
+      @artist_name = data["artist"].normalize_accents # TODO: move to indexer
+    else
+      warn "Card #{card.name} in #{set.code} lacks artist"
+      @artist_name = "Unknown"
+    end
     @flavor = data["flavor"] || -""
     @flavor_normalized = @flavor.normalize_accents
     @foiling = data["foiling"]
