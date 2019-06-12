@@ -72,6 +72,10 @@ class PatchMtgjsonVersions < Patch
         card["border"] = card.delete("borderColor")
       end
 
+      if card["frameEffect"]
+        card["frame_effect"] = card.delete("frameEffect")
+      end
+
       card["oversized"] = card.delete("isOversized")
 
       # Drop v3 layouts, use v4 layout here
