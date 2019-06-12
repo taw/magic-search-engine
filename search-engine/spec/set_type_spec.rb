@@ -8,7 +8,6 @@ describe "Set types" do
     assert_search_results "armageddon st:masters", "Armageddon", "Armageddon Clock"
     assert_search_results "armageddon st:core", "Armageddon", "Armageddon Clock"
     assert_search_results "armageddon st:starter", "Armageddon"
-    assert_search_results "aladdin st:reprint", "Aladdin"
   end
 
   it "abbreviations" do
@@ -18,7 +17,6 @@ describe "Set types" do
     assert_search_equal "st:arc", "st:archenemy"
     assert_search_equal "st:cns", "st:conspiracy"
     assert_search_equal "st:dd", 'st:"duel deck"'
-    assert_search_equal "st:rep", "st:reprint"
     assert_search_equal "st:me", "st:masters"
     assert_search_equal "st:starter", "st:st"
     assert_search_equal "st:pds", 'st:"premium deck"'

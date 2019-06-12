@@ -242,17 +242,26 @@ describe "Full Database Test" do
   it "alt rarity" do
     assert_search_include "r:common alt:r:uncommon", "Doom Blade"
     assert_search_results "r:common alt:r:mythic",
+      "Boil",
       "Cabal Ritual",
+      "Capsize",
+      "Chain Lightning",
       "Chainer's Edict",
+      "Counterspell",
       "Dark Ritual",
+      "Daze",
       "Delver of Secrets",
       "Desert",
+      "Diabolic Edict",
       "Fyndhorn Elves",
       "Hymn to Tourach",
       "Impulse",
       "Insectile Aberration",
       "Kird Ape",
-      "Lotus Petal"
+      "Lotus Petal",
+      "Meekstone",
+      "Ornithopter",
+      "Spell Pierce"
   end
 
   it "pow:special" do
@@ -290,7 +299,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 2800
+    assert_count_printings "is:promo", 2794
   end
 
   it "is:funny" do
