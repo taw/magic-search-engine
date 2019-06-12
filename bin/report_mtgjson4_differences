@@ -80,6 +80,26 @@ class ReportMtgjson4Differences
     # If these are all OK, it's probably fine
   end
 
+  memoize def sets_version
+    result = {}
+    sets_base_path.glob("*.json").map do |path|
+      set_code = path.basename(".json").to_s
+      set_data = JSON.parse(path.read)
+      if set_data["meta"] and set_data["meta"]["version"]
+        version = set_data["meta"]["version"]
+      else
+        version = "3.x"
+      end
+      result[version] ||= []
+      result[version] << set_code
+    end
+    result
+  end
+
+  memoize def most_recent_mtgjson_version
+    sets_version.keys.max
+  end
+
   def call
     # First, deal with trivial matches
     shared_set_codes.each do |code|
@@ -106,6 +126,12 @@ class ReportMtgjson4Differences
       end
 
       puts "#{code} - mtgjson only -  #{set["name"].inspect} - #{set["cards"].size} cards"
+    end
+
+    puts ""
+    sets_version.sort.each do |version, sets|
+      next if version == most_recent_mtgjson_version
+      puts "mtgjson #{version}: #{sets.join(" ")}"
     end
   end
 end
