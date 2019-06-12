@@ -20,7 +20,7 @@ class CardSheetFactory
   end
 
   def find_cards(query, assert_count=nil, foil: false)
-    cards = @db.search("++ #{query}").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
+    cards = @db.search("++ is:booster #{query}").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
     if assert_count and assert_count != cards.size
       raise "Expected query #{query} to return #{assert_count}, got #{cards.size}"
     end
@@ -335,53 +335,53 @@ class CardSheetFactory
   # These are legendary creatures only according to maro
   # not planeswalkers or other legendaries
   def dom_legendary_uncommon
-    from_query('e:dom is:booster t:"legendary creature" r:uncommon', 20)
+    from_query('e:dom t:"legendary creature" r:uncommon', 20)
   end
 
   def dom_nonlegendary_uncommon
-    from_query('e:dom is:booster -t:"legendary creature" r:uncommon', 60)
+    from_query('e:dom -t:"legendary creature" r:uncommon', 60)
   end
 
   def dom_legendary_rare_mythic
     mix_sheets(
-      [from_query('e:dom is:booster t:"legendary creature" r:rare', 14), 2],
-      [from_query('e:dom is:booster t:"legendary creature" r:mythic', 8), 1],
+      [from_query('e:dom t:"legendary creature" r:rare', 14), 2],
+      [from_query('e:dom t:"legendary creature" r:mythic', 8), 1],
     )
   end
 
   def dom_nonlegendary_rare_mythic
     mix_sheets(
-      [from_query('e:dom is:booster -t:"legendary creature" r:rare', 39), 2],
-      [from_query('e:dom is:booster -t:"legendary creature" r:mythic', 7), 1],
+      [from_query('e:dom -t:"legendary creature" r:rare', 39), 2],
+      [from_query('e:dom -t:"legendary creature" r:mythic', 7), 1],
     )
   end
 
   def war_planeswalker_uncommon
-    from_query('e:war is:booster t:planeswalker r:uncommon -number:/★/', 20)
+    from_query('e:war t:planeswalker r:uncommon -number:/★/', 20)
   end
 
   def war_nonplaneswalker_uncommon
-    from_query('e:war is:booster -t:planeswalker r:uncommon', 60)
+    from_query('e:war -t:planeswalker r:uncommon', 60)
   end
 
   def war_planeswalker_rare_mythic
     mix_sheets(
-      [from_query('e:war is:booster t:planeswalker r:rare -number:/★/', 13), 2],
-      [from_query('e:war is:booster t:planeswalker r:mythic -number:/★/', 3), 1],
+      [from_query('e:war t:planeswalker r:rare -number:/★/', 13), 2],
+      [from_query('e:war t:planeswalker r:mythic -number:/★/', 3), 1],
     )
   end
 
   def war_nonplaneswalker_rare_mythic
     mix_sheets(
-      [from_query('e:war is:booster -t:planeswalker r:rare', 40), 2],
-      [from_query('e:war is:booster -t:planeswalker r:mythic', 12), 1],
+      [from_query('e:war -t:planeswalker r:rare', 40), 2],
+      [from_query('e:war -t:planeswalker r:mythic', 12), 1],
     )
   end
 
   def war_foil
-    m = from_query("e:war is:booster r:mythic -number:/★/", 15, foil: true)
-    r = from_query("e:war is:booster r:rare -number:/★/", 53, foil: true)
-    u = from_query("e:war is:booster r:uncommon -number:/★/", 80, foil: true)
+    m = from_query("e:war r:mythic -number:/★/", 15, foil: true)
+    r = from_query("e:war r:rare -number:/★/", 53, foil: true)
+    u = from_query("e:war r:uncommon -number:/★/", 80, foil: true)
     c = common_or_basic("war", foil: true)
     mr = mix_sheets([r, 2], [m, 1])
     CardSheet.new([mr, u, c], [4, 8, 20])
@@ -472,19 +472,19 @@ class CardSheetFactory
   end
 
   def grn_common
-    from_query("e:grn is:booster r:common not:guildgate", kind: ColorBalancedCardSheet)
+    from_query("e:grn r:common not:guildgate", kind: ColorBalancedCardSheet)
   end
 
   def grn_land
-    from_query("e:grn is:booster is:guildgate", 10)
+    from_query("e:grn is:guildgate", 10)
   end
 
   def rna_common
-    from_query("e:rna is:booster r:common not:guildgate", kind: ColorBalancedCardSheet)
+    from_query("e:rna r:common not:guildgate", kind: ColorBalancedCardSheet)
   end
 
   def rna_land
-    from_query("e:rna is:booster is:guildgate", 10)
+    from_query("e:rna is:guildgate", 10)
   end
 
   def bbd_uncommon(foil=false)

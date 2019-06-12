@@ -81,11 +81,6 @@ class ReportMtgjson4Differences
   end
 
   def call
-    # Apply fixes
-    @mtgjson["PRNA"] = @mtgjson["PRN"]
-    @mtgjson.delete("PRN")
-
-
     # First, deal with trivial matches
     shared_set_codes.each do |code|
       verify_match(code)

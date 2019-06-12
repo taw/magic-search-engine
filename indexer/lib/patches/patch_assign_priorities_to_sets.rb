@@ -16,6 +16,8 @@ class PatchAssignPrioritiesToSets < Patch
     return 100 if set["custom"]
 
     # v4 migration started by manually choosing some sets to migrate
+    return 20 if set["code"] == "mh1"
+
     return 10 if set["v4"]
     # These sets have been tried but need fixing:
     # tsp tsb plc fut
