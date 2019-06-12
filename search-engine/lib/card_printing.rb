@@ -1,7 +1,7 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date
   attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border, :timeshifted
-  attr_reader :rarity_code, :print_sheet, :partner, :oversized, :frame_effect
+  attr_reader :rarity_code, :print_sheet, :partner, :oversized, :frame_effect, :foiling
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
@@ -42,44 +42,6 @@ class CardPrinting
     # Performance cache
     @stemmed_name = @card.stemmed_name
     @set_code = @set.code
-  end
-
-  # "foilonly", "nonfoil", "both"
-  def foiling
-    return @foiling if @foiling
-    # Don't rerun this multiple times
-    @foiling ||= case @set.foiling
-    when "nonfoil", "foilonly", "both"
-      @set.foiling
-    when "booster_both"
-      if in_boosters?
-        "both"
-      else
-        foiling_in_precons
-      end
-    when "precon"
-      foiling_in_precons
-    else
-      "#{set.code} #{@set.foiling} -> totally_unknown"
-    end
-  end
-
-  # TODO: This could seriously move to indexer once deck index and primary index are merged
-  private def foiling_in_precons
-    raise "No #{set_code} cards in any precon deck" unless @set.cards_in_precons
-    nonfoils, foils = @set.cards_in_precons
-    has_nonfoil = nonfoils.include?(name)
-    has_foil = foils.include?(name)
-
-    if has_foil and has_nonfoil
-      "precon with both, wat?"
-    elsif has_nonfoil
-      "nonfoil"
-    elsif has_foil
-      "foilonly"
-    else
-      "missing_from_precon"
-    end
   end
 
   def in_boosters?

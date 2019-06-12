@@ -1,10 +1,5 @@
 class PatchFoiling < Patch
-  # FIXME:
-  # Deck index is separate, so we currently can't specify anything useful for precons
-  # and DeckDatabase needs to check it. This should change.
-
-  # It's all based on manual research, so mistakes are possible.
-  def call
+  def calculate_mtgjson_foiling
     # Translate v4 foiling into system we use
     each_printing do |card|
       if card["set"]["v4"]
@@ -22,134 +17,144 @@ class PatchFoiling < Patch
       card.delete "hasFoil"
       card.delete "hasNonFoil"
     end
+  end
 
+  def calculate_indexer_foiling
     each_printing do |card|
       name = card["name"]
       set_code = card["set_code"]
-      set_type = card["set"]["type"]
-      types = card["types"]
+      set = card["set"]
       number = card["number"]
 
-      if card["mtgjson_foiling"] and (
-          ["promo", "vanguard", "funny", "box"].include?(set_type)
-        )
-        card["foiling"] = card["mtgjson_foiling"]
-        next
+      case set["type"]
+      when "masters", "spellbook", "two-headed giant", "reprint"
+        card["indexer_foiling"] = "both"
+      when "from the vault", "premium deck", "masterpiece"
+        card["indexer_foiling"] = "foilonly"
+      when "core", "expansion"
+        if set["release_date"] < "1999-02-15" or set_code == "6ed"
+          card["indexer_foiling"] = "nonfoil"
+        else
+          if card["exclude_from_boosters"]
+            card["indexer_foiling"] = "nonfoil"
+          else
+            card["indexer_foiling"] = "both"
+          end
+        end
       end
 
+      # By set
+      case set_code
+      when "ced", "cei"
+        card["indexer_foiling"] = "nonfoil"
+      when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "hho", "plpa", "pjgp", "ppro", "pgtw", "pwor", "prel", "pfnm", "pwos", "ppre"
+        card["indexer_foiling"] = "foilonly"
+      when "ced", "cei", "chr", "pgru", "palp", "pdrc", "pelp", "plgm", "ugin", "pcel", "van", "s99", "mgb"
+        card["indexer_foiling"] = "nonfoil"
+      when "ugl"
+        card["indexer_foiling"] = "nonfoil"
+      when "unh", "cn2"
+        card["indexer_foiling"] = "both"
+      when "ust", "tsb", "cns"
+        card["indexer_foiling"] = "both"
+      when "e02", "w16", "w17", "rqs", "itp", "cst", "s00", "gk1"
+        card["indexer_foiling"] = "nonfoil" # was: "precon"
+      when "cp1", "cp2", "cp3"
+        card["indexer_foiling"] = "foilonly"
+      when "por", "p02", "ptk", "ppod"
+        card["indexer_foiling"] = "nonfoil"
+      end
+
+      # Special cards
       if set_code == "m19" and name == "Nexus of Fate"
-        card["foiling"] = "foilonly"
+        card["indexer_foiling"] = "foilonly"
       elsif set_code == "dom" and name == "Firesong and Sunspeaker"
-        card["foiling"] = "foilonly"
+        card["indexer_foiling"] = "foilonly"
       elsif set_code == "grn" and name == "Impervious Greatwurm"
-        card["foiling"] = "foilonly"
+        card["indexer_foiling"] = "foilonly"
       elsif set_code == "grn" and name == "Plains"
-        card["foiling"] = "nonfoil"
+        card["indexer_foiling"] = "nonfoil"
       elsif set_code == "rna" and name == "The Haunt of Hightower"
-        card["foiling"] = "foilonly"
+        card["indexer_foiling"] = "foilonly"
       elsif set_code == "rna" and name == "Swamp"
-        card["foiling"] = "nonfoil"
+        card["indexer_foiling"] = "nonfoil"
       elsif set_code == "war" and name == "Tezzeret, Master of the Bridge"
-        card["foiling"] = "foilonly"
+        card["indexer_foiling"] = "foilonly"
       elsif set_code == "ori" and number.to_i >= 273
         # Deck Builder's Toolkit (Magic Origins Edition)
-        card["foiling"] = "nonfoil"
+        card["indexer_foiling"] = "nonfoil"
       elsif set_code == "akh"
         # There's boosters, precons, and also Deck Builder's Toolkit
         # These are Deck Builder's Toolkit only
         if ["Forsaken Sanctuary", "Meandering River", "Timber Gorge", "Tranquil Expanse"].include?(name)
-          card["foiling"] = "nonfoil"
+          card["indexer_foiling"] = "nonfoil"
         end
       elsif set_code == "unh" and name == "Super Secret Tech"
-        card["foiling"] = "foilonly"
+        card["indexer_foiling"] = "foilonly"
       elsif set_code == "cn2" and name == "Kaya, Ghost Assassin"
         if number == "75"
-          card["foiling"] = "nonfoil"
+          card["indexer_foiling"] = "nonfoil"
         else
-          card["foiling"] = "foilonly"
+          card["indexer_foiling"] = "foilonly"
         end
       elsif set_code == "bbd" and name == "Rowan Kenrith"
         if number == "2"
-          card["foiling"] = "nonfoil"
+          card["indexer_foiling"] = "nonfoil"
         else
-          card["foiling"] = "foilonly"
+          card["indexer_foiling"] = "foilonly"
         end
       elsif set_code == "bbd" and name == "Will Kenrith"
         if number == "1"
-          card["foiling"] = "nonfoil"
+          card["indexer_foiling"] = "nonfoil"
         else
-          card["foiling"] = "foilonly"
+          card["indexer_foiling"] = "foilonly"
         end
       elsif set_code == "hop" and name == "Tazeem"
-        card["foiling"] = "nonfoil"
+        card["indexer_foiling"] = "nonfoil"
       elsif set_code == "pc2" and name == "Stairs to Infinity"
-        card["foiling"] = "nonfoil"
+        card["indexer_foiling"] = "nonfoil"
       elsif set_code == "pca" or set_code == "opca" or set_code == "parc"
-        card["foiling"] = "nonfoil"
+        card["indexer_foiling"] = "nonfoil"
       elsif set_code == "ppre"
         if ["Dirtcowl Wurm", "Revenant", "Monstrous Hound"].include?(name)
-          card["foiling"] = "nonfoil"
+          card["indexer_foiling"] = "nonfoil"
         end
       elsif set_code == "s00"
         if name == "Rhox"
-          card["foiling"] = "foilonly"
+          card["indexer_foiling"] = "foilonly"
         elsif ["Armored Pegasus", "Python", "Spined Wurm", "Stone Rain"].include?(name)
-          card["foiling"] = "nonfoil"
+          card["indexer_foiling"] = "nonfoil"
         end
       end
     end
+  end
 
-    each_set do |set|
-      # v4 promo
-      case set["code"]
-      when "ced", "cei"
-        set["foiling"] = "nonfoil"
-        next
-      end
-
-      # On card by card basis
-      if set["v4"] and ["promo", "memorabilia", "vanguard", "funny", "token"].include?(set["type"])
-        next
-      end
-
-      foiling = case set["code"]
-      when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "hho", "plpa", "pjgp", "ppro", "pgtw", "pwor", "prel", "pfnm", "pwos", "ppre"
-        "foilonly"
-      when "ced", "cei", "chr", "pgru", "palp", "pdrc", "pelp", "plgm", "ugin", "pcel", "van", "s99", "mgb"
-        "nonfoil"
-      when "ugl"
-        "nonfoil"
-      when "unh", "cn2"
-        "both"
-      when "ust", "tsb", "cns"
-        "both"
-      when "e02", "w16", "w17", "rqs", "itp", "cst", "s00", "gk1"
-        "precon"
-      when "cp1", "cp2", "cp3"
-        "foilonly"
-      when "por", "p02", "ptk", "ppod"
-        "nonfoil"
-      end
-
-      foiling ||= case set["type"]
-      when "core", "expansion"
-        if set["release_date"] < "1999-02-15"
-          "nonfoil"
+  def reconcile_foiling_data
+    each_printing do |card|
+      indexer_foiling = card.delete("indexer_foiling")
+      mtgjson_foiling = card.delete("mtgjson_foiling")
+      name = "#{card["name"]} [#{card["set_code"]}:#{card["number"]}]"
+      if mtgjson_foiling.nil?
+        if indexer_foiling.nil?
+          warn "Foiling for #{name} missing, assuming foilboth"
+          card["foiling"] = "foilboth"
         else
-          "booster_both"
+          card["foiling"] = indexer_foiling
         end
-      when "masters", "spellbook", "two-headed giant", "reprint"
-        "both"
-      when "from the vault", "premium deck", "masterpiece"
-        "foilonly"
-      when "duel deck", "global series", "commander", "box", "planechase", "archenemy"
-        "precon"
+      elsif indexer_foiling.nil?
+        card["foiling"] = mtgjson_foiling
+      elsif mtgjson_foiling == indexer_foiling
+        card["foiling"] = indexer_foiling
       else
-        warn "No idea what's foiling for #{set["name"]} / #{set["code"]} / #{set["type"]}"
-        nil
+        warn "Foiling for #{name} mismatching, m:#{mtgjson_foiling} i:#{indexer_foiling}"
+        card["foiling"] = mtgjson_foiling
       end
-
-      set["foiling"] = foiling
     end
+  end
+
+  def call
+    calculate_mtgjson_foiling
+    calculate_indexer_foiling
+    reconcile_foiling_data
   end
 end
