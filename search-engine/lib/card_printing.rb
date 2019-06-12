@@ -47,7 +47,8 @@ class CardPrinting
   # "foilonly", "nonfoil", "both"
   def foiling
     return @foiling if @foiling
-    case @set.foiling
+    # Don't rerun this multiple times
+    @foiling ||= case @set.foiling
     when "nonfoil", "foilonly", "both"
       @set.foiling
     when "booster_both"
@@ -59,7 +60,7 @@ class CardPrinting
     when "precon"
       foiling_in_precons
     else
-      "#{@set.foiling} -> totally_unknown"
+      "#{set.code} #{@set.foiling} -> totally_unknown"
     end
   end
 

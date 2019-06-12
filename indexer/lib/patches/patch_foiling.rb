@@ -5,6 +5,24 @@ class PatchFoiling < Patch
 
   # It's all based on manual research, so mistakes are possible.
   def call
+    # Translate v4 foiling into system we use
+    each_printing do |card|
+      if card["set"]["v4"]
+        case [card["hasNonFoil"], card["hasFoil"]]
+        when [true, true]
+          card["mtgjson_foiling"] = "both"
+        when [true, false]
+          card["mtgjson_foiling"] = "nonfoil"
+        when [false, true]
+          card["mtgjson_foiling"] = "foilonly"
+        else
+          warn "Bad foiling information for #{name} in #{set_code}"
+        end
+      end
+      card.delete "hasFoil"
+      card.delete "hasNonFoil"
+    end
+
     each_printing do |card|
       name = card["name"]
       set_code = card["set_code"]
@@ -12,17 +30,10 @@ class PatchFoiling < Patch
       types = card["types"]
       number = card["number"]
 
-      if card["set"]["v4"] and (set_type == "promo" or set_type == "vanguard" or set_type == "funny")
-        case [card["hasNonFoil"], card["hasFoil"]]
-        when [true, true]
-          card["foiling"] = "both"
-        when [true, false]
-          card["foiling"] = "nonfoil"
-        when [false, true]
-          card["foiling"] = "foilonly"
-        else
-          warn "Bad foiling information for #{name} in #{set_code}"
-        end
+      if card["mtgjson_foiling"] and (
+          ["promo", "vanguard", "funny", "box"].include?(set_type)
+        )
+        card["foiling"] = card["mtgjson_foiling"]
         next
       end
 
