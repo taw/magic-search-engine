@@ -600,13 +600,21 @@ class CardSheetFactory
 
   # for custom sets
 
-  def ayr_land
-    mix_sheets(
-      [from_query("e:AYR t:land r:C", 10), 8], # 80 / 112
-      [from_query("e:AYR t:land r:U", 2), 12], # 24 / 112
-      [from_query("e:AYR t:land r:R", 1), 7], # 7 / 112
-      [from_query("e:AYR t:land r:M", 1), 1] # 1 / 112
-    )
+  def nonbasic_land(set_code)
+    if find_cards("e:#{set_code} is:primary t:land r:M").count > 0 then
+      CardSheet.new([
+        from_query("e:#{set_code} is:primary t:land r:C"),
+        from_query("e:#{set_code} is:primary t:land r:U"),
+        from_query("e:#{set_code} is:primary t:land r:R"),
+        from_query("e:#{set_code} is:primary t:land r:M")
+      ], [80, 24, 7, 1])
+    else
+      CardSheet.new([
+        from_query("e:#{set_code} is:primary t:land r:C"),
+        from_query("e:#{set_code} is:primary t:land r:U"),
+        from_query("e:#{set_code} is:primary t:land r:R")
+      ], [10, 3, 1])
+    end
   end
 
   def nonland_common(set_code, kind: CardSheet)
@@ -637,15 +645,6 @@ class CardSheetFactory
       [from_query("e:TSL is:dfc r:U", 15), 6], # 3 / 14
       [from_query("e:TSL is:dfc r:R", 3), 10], # 1 / 14
       # no mythic DFCs in TSL
-    )
-  end
-
-  def rak_land
-    mix_sheets(
-      [from_query("e:RAK is:primary t:land r:C", 7), 110], # 10 / 14
-      [from_query("e:RAK is:primary t:land r:U", 7), 33], # 3 / 14
-      [from_query("e:RAK is:primary t:land r:R", 11), 7], # 1 / 14
-      # no mythic lands in RAK
     )
   end
 end

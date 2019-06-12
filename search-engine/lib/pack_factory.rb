@@ -65,7 +65,7 @@ class PackFactory
         @sheet_factory.sfc_common(set_code, kind: CardSheet)
       when :nonland_common
         @sheet_factory.send(name, set_code, kind: ColorBalancedCardSheet)
-      when :nonland_uncommon, :nonland_rare_mythic, :naive_nonland_rare_mythic
+      when :nonbasic_land, :nonland_uncommon, :nonland_rare_mythic, :naive_nonland_rare_mythic
         @sheet_factory.send(name, set_code)
       when :nonland_common_unbalanced
         @sheet_factory.nonland_common(set_code)
@@ -271,7 +271,7 @@ class PackFactory
     when "leg"
       build_pack(set_code, {explicit_common: 12, explicit_uncommon: 3, explicit_rare: 1})
     # custom sets
-    when "ank", "ldo", "dhm", "net"
+    when "ldo", "dhm", "net"
       # Custom sets with default pack distribution, no foils, with basics
       build_pack(set_code, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_mythic: 1})
     when "cc18"
@@ -289,10 +289,10 @@ class PackFactory
       # AYR has only nonbasic lands in the land slot, and no lands in any other slot, like DGM
       # there is explicitly no color balancing for the commons
       # the rare-to-mythic ration is also explicitly 7:1 overall instead of 2:1 per card
-      build_pack(set_code, {nonland_common_unbalanced: 10, nonland_uncommon: 3, naive_nonland_rare_mythic: 1, ayr_land: 1})
-    when "rak"
-      # RAK is currently the same as AYR, except using color balancing and the usual mythic ratio, and the rarity weights are different (e.g. there are no mythic lands)
-      build_pack(set_code, {nonland_common: 10, nonland_uncommon: 3, nonland_rare_mythic: 1, rak_land: 1})
+      build_pack(set_code, {nonland_common_unbalanced: 10, nonland_uncommon: 3, naive_nonland_rare_mythic: 1, nonbasic_land: 1})
+    when "ank", "rak"
+      # these sets are the same as AYR, except using color balancing and the usual mythic ratio
+      build_pack(set_code, {nonland_common: 10, nonland_uncommon: 3, nonland_rare_mythic: 1, nonbasic_land: 1})
     when "tsl"
       # TSL packs always have exactly one DFC, replacing a common slot
       # also follow Reuben's rules
