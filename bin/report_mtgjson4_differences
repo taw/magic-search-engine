@@ -82,7 +82,7 @@ class ReportMtgjson4Differences
 
   memoize def sets_version
     result = {}
-    sets_base_path.glob("*.json").map do |path|
+    sets_base_path.glob("*.json").sort.each do |path|
       set_code = path.basename(".json").to_s
       set_data = JSON.parse(path.read)
       if set_data["meta"] and set_data["meta"]["version"]

@@ -18,7 +18,6 @@ describe "Sets" do
     "planechase",
     "premium deck",
     "promo",
-    "reprint",
     "spellbook",
     "starter",
     "token",
