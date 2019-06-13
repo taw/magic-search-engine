@@ -22,7 +22,11 @@ describe "Foils" do
         elsif has_nonfoil and not has_foil
           card.foiling.should eq("nonfoil"), "#{card} should be nonfoil"
         elsif has_nonfoil and has_foil
-          card.foiling.should eq("totally broken"), "#{card} is marked as both foil and nonfoil, that is wrong for precon cards generally"
+          if card.set.code == "dkm"
+            # it's totally fine
+          else
+            card.foiling.should eq("totally broken"), "#{card} is marked as both foil and nonfoil, that is wrong for precon cards generally"
+          end
         else
           card.foiling.should eq("totally broken"), "#{card} expected in precons but missing"
         end
@@ -48,7 +52,7 @@ describe "Foils" do
       assert_foiling(set.printings, "foilonly")
     when "commander", "duel deck", "archenemy", "global series", "box", "board game deck", "planechase", "archenemy"
       if set.decks.empty?
-        warn "Expected a deck for this product: #{set.name}"
+        warn "Expected a deck for this product: #{set.code} #{set.name}"
       else
         assert_foiling_partial_precon(set.printings)
       end
@@ -58,25 +62,26 @@ describe "Foils" do
   end
 
   it do
+    # We're only interested in booster and precon sets
+    # as that can mess up with other site functionality
+    # For promo sets, just trust mtgjson without verifying anything
     db.sets.each do |set_code, set|
-      # Sets without foiling set are all known bad
-      unless set.foiling
-        # For promos we'll just trust mtgjson
-        next if set.type == "promo"
-        next if set.type == "memorabilia"
-        next if set.type == "token"
-        warn "Support for #{set.code} #{set.name} not implemented yet"
-        next
-      end
+      next if set.type == "promo"
+      next if set.type == "memorabilia"
+      next if set.type == "token"
 
       case set.code
+      when "g17", "g18"
+        assert_foiling(set.printings, "foilonly")
+      when "phuk"
+        assert_foiling(set.printings, "nonfoil")
       when "ced", "cei", "chr", "ugl", "pelp", "pgru", "palp", "por", "p02", "ptk", "pdrc", "plgm", "ppod", "ugin", "pcel", "van", "s99", "mgb"
         assert_foiling(set.printings, "nonfoil")
       when "ust", "tsb", "cns"
         assert_foiling(set.printings, "both")
       when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "hho", "plpa", "pjgp", "ppro", "pgtw", "pwor", "pwos", "prel", "pfnm"
         assert_foiling(set.printings, "foilonly")
-      when "w16", "w17", "cp1", "cp2", "cp3", "cst", "itp", "gk1"
+      when "w16", "w17", "cp1", "cp2", "cp3", "cst", "itp", "gk1", "gk2", "btd", "dkm"
         assert_foiling_partial_precon(set.printings)
       when "s00"
         promo, rest = set.printings.partition{|c| c.name == "Rhox"}
@@ -166,6 +171,8 @@ describe "Foils" do
         lands, rest = extra_cards.partition{|c| c.types.include?("land") }
         assert_foiling(lands, "nonfoil")
         assert_foiling_partial_precon(rest)
+      when "6ed"
+        assert_foiling(set.printings, "nonfoil")
       else
         assert_by_type(set)
       end

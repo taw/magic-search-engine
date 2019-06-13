@@ -57,7 +57,7 @@ class PatchFoiling < Patch
         card["indexer_foiling"] = "both"
       when "ust", "tsb", "cns"
         card["indexer_foiling"] = "both"
-      when "e02", "w16", "w17", "rqs", "itp", "cst", "s00", "gk1"
+      when "e02", "w16", "w17", "rqs", "itp", "cst", "s00"
         card["indexer_foiling"] = "nonfoil" # was: "precon"
       when "cp1", "cp2", "cp3"
         card["indexer_foiling"] = "foilonly"
@@ -137,7 +137,7 @@ class PatchFoiling < Patch
       if mtgjson_foiling.nil?
         if indexer_foiling.nil?
           warn "Foiling for #{name} missing, assuming foilboth"
-          card["foiling"] = "foilboth"
+          card["foiling"] = "both"
         else
           card["foiling"] = indexer_foiling
         end

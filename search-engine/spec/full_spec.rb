@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(19778)
-    db.number_of_printings.should eq(41900)
+    db.number_of_printings.should eq(41902)
   end
 
   it "block codes" do
@@ -417,7 +417,6 @@ describe "Full Database Test" do
     assert_search_equal "t:basic", "(r:basic -t:urza's) or (t:basic r:special) or (t:basic e:an)"
     # assert_search_results "is:promo -r:special -e:ugin"
     assert_search_results %Q[r:special -is:promo -st:masterpiece -t:vanguard -e:anthologies -e:tsts -e:"clash pack" -e:vma -e:mgbc -e:g17],
-      "Giant Trap Door Spider",
       "Super Secret Tech"
   end
 
