@@ -1,7 +1,7 @@
 = content_for(:disable_turbolinks) do
   true
 %h4 Magic: The Gathering Comprehensive Rules
-%p These rules are effective as of May 3, 2019.
+%p These rules are effective as of June 14, 2019.
 %h3{id: "section-introduction"} Introduction
 %p This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
 %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules. If you have questions, you can get the answers from us at Support.Wizards.com.
@@ -663,15 +663,18 @@
   .rule_text If an effect would add mana represented by a generic mana symbol to a player’s mana pool, that much colorless mana is added to that player’s mana pool.
 .rule{id: "section-106-11"}
   .rule_id 106.11.
-  .rule_text To “tap [a permanent] for mana” is to activate a mana ability of that permanent that includes the <span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span> symbol in its activation cost. See rule <a href="#section-605">605</a>, “Mana Abilities.”
-.rule{id: "section-106-11a"}
-  .rule_id 106.11a
-  .rule_text An ability that triggers whenever a permanent “is tapped for mana” or is tapped for mana of a specified type triggers whenever such a mana ability resolves and produces mana or the specified type of mana.
-.rule{id: "section-106-11b"}
-  .rule_id 106.11b
-  .rule_text A replacement effect that applies if a permanent “is tapped for mana” or tapped for mana of a specific type and/or amount modifies the mana production event while such an ability is resolving and producing mana or the specified type and/or amount of mana.
+  .rule_text If an effect would add mana represented by one or more snow mana symbols to a player’s mana pool, that much colorless mana is added to that player’s mana pool.
 .rule{id: "section-106-12"}
   .rule_id 106.12.
+  .rule_text To “tap [a permanent] for mana” is to activate a mana ability of that permanent that includes the <span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span> symbol in its activation cost. See rule <a href="#section-605">605</a>, “Mana Abilities.”
+.rule{id: "section-106-12a"}
+  .rule_id 106.12a
+  .rule_text An ability that triggers whenever a permanent “is tapped for mana” or is tapped for mana of a specified type triggers whenever such a mana ability resolves and produces mana or the specified type of mana.
+.rule{id: "section-106-12b"}
+  .rule_id 106.12b
+  .rule_text A replacement effect that applies if a permanent “is tapped for mana” or tapped for mana of a specific type and/or amount modifies the mana production event while such an ability is resolving and producing mana or the specified type and/or amount of mana.
+.rule{id: "section-106-13"}
+  .rule_id 106.13.
   .rule_text One card (Drain Power) causes one player to lose unspent mana and another to add “the mana lost this way.” (Note that these may be the same player.) This empties the former player’s mana pool and causes the mana emptied this way to be put into the latter player’s mana pool. Which permanents, spells, and/or abilities produced that mana are unchanged, as are any restrictions or additional effects associated with any of that mana.
 .rule{id: "section-107"}
   .rule_id 107.
@@ -758,7 +761,7 @@
   .rule_text In rules text, the Phyrexian symbol <span class="manacost"><span class="mana mana-p"><span class="sr-only">{P}</span></span></span> with no colored background means any of the five Phyrexian mana symbols.
 .rule{id: "section-107-4h"}
   .rule_id 107.4h
-  .rule_text The snow mana symbol <span class="manacost"><span class="mana mana-cost mana-s"><span class="sr-only">{S}</span></span></span> represents one generic mana in a cost. This generic mana can be paid with one mana of any type produced by a snow permanent (see rule <a href="#section-205-4g">205.4g</a>). Effects that reduce the amount of generic mana you pay don’t affect <span class="manacost"><span class="mana mana-cost mana-s"><span class="sr-only">{S}</span></span></span> costs. (There is no such thing as “snow mana”; “snow” is not a type of mana.)
+  .rule_text The snow mana symbol <span class="manacost"><span class="mana mana-cost mana-s"><span class="sr-only">{S}</span></span></span> represents one mana in a cost. This mana can be paid with one mana of any type produced by a snow permanent (see rule <a href="#section-205-4g">205.4g</a>). Effects that reduce the amount of generic mana you pay don’t affect <span class="manacost"><span class="mana mana-cost mana-s"><span class="sr-only">{S}</span></span></span> costs. Snow is neither a color nor a type of mana.
 .rule{id: "section-107-5"}
   .rule_id 107.5.
   .rule_text The tap symbol is <span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>. The tap symbol in an activation cost means “Tap this permanent.” A permanent that’s already tapped can’t be tapped again to pay the cost. A creature’s activated ability with the tap symbol in its activation cost can’t be activated unless the creature has been under its controller’s control continuously since their most recent turn began. See rule <a href="#section-302-6">302.6</a>.
@@ -1357,6 +1360,9 @@
 .rule{id: "section-117-7f"}
   .rule_id 117.7f
   .rule_text If a cost is reduced by an amount of mana represented by a Phyrexian mana symbol, the cost is reduced by one mana of that symbol’s color.
+.rule{id: "section-117-7g"}
+  .rule_id 117.7g
+  .rule_text If a cost is reduced by an amount of mana represented by one or more snow mana symbols, the cost is reduced by that much generic mana.
 .rule{id: "section-117-8"}
   .rule_id 117.8.
   .rule_text Some spells and abilities have additional costs. An additional cost is a cost listed in a spell’s rules text, or applied to a spell or ability from another effect, that its controller must pay at the same time they pay the spell’s mana cost or the ability’s activation cost. Note that some additional costs are listed in keywords; see rule <a href="#section-702">702</a>.
@@ -3147,7 +3153,7 @@
 .rule{id: "section-601-3a"}
   .rule_id 601.3a
   .rule_text If an effect prohibits a player from casting a spell with certain qualities, that player may consider any choices to be made during that spell’s proposal that may cause those qualities to change. If any such choices could cause that effect to no longer prohibit that player from casting that spell, the player may begin to cast the spell, ignoring the effect.
-  .rule_text Example: A player controls Void Winnower, which reads in part, “Your opponents can't cast spells with even converted mana costs.” That player’s opponent may begin to cast Rolling Thunder, a card whose mana cost is <span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span></span>, because the chosen value of X may cause the spell’s converted mana cost to become odd.
+  .rule_text Example: A player controls Void Winnower, which reads, in part, “Your opponents can't cast spells with even converted mana costs.” That player’s opponent may begin to cast Rolling Thunder, a card whose mana cost is <span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span></span>, because the chosen value of X may cause the spell’s converted mana cost to become odd.
 .rule{id: "section-601-3b"}
   .rule_id 601.3b
   .rule_text If an effect allows a player to cast a spell with certain qualities as though it had flash, that player may consider any choices to be made during that spell’s proposal that may cause that spell’s qualities to change. If any such choices could cause that effect to apply, that player may begin to cast that spell as though it had flash.
@@ -3407,7 +3413,7 @@
   .rule_text An activated ability is a mana ability if it meets all of the following criteria: it doesn’t require a target (see rule <a href="#section-114-6">114.6</a>), it could add mana to a player’s mana pool when it resolves, and it’s not a loyalty ability. (See rule <a href="#section-606">606</a>, “Loyalty Abilities.”)
 .rule{id: "section-605-1b"}
   .rule_id 605.1b
-  .rule_text A triggered ability is a mana ability if it meets all of the following criteria: it doesn’t require a target (see rule <a href="#section-114-6">114.6</a>), it triggers from the resolution of an activated mana ability (see rule <a href="#section-106-11a">106.11a</a>) or from mana being added to a player’s mana pool, and it could add mana to a player’s mana pool when it resolves.
+  .rule_text A triggered ability is a mana ability if it meets all of the following criteria: it doesn’t require a target (see rule <a href="#section-114-6">114.6</a>), it triggers from the resolution of an activated mana ability (see rule <a href="#section-605-1a">605.1a</a>) or from mana being added to a player’s mana pool, and it could add mana to a player’s mana pool when it resolves.
 .rule{id: "section-605-2"}
   .rule_id 605.2.
   .rule_text A mana ability remains a mana ability even if the game state doesn’t allow it to produce mana.
@@ -3710,6 +3716,9 @@
 .rule{id: "section-612-7"}
   .rule_id 612.7.
   .rule_text One card (Awakening of Vitu-Ghazi) creates a continuous effect that sets the name of an object. This changes the text that represents the object’s name. That object loses any names it had and has only the specified name.
+.rule{id: "section-612-8"}
+  .rule_id 612.8.
+  .rule_text A splice ability changes a spell’s text by adding the rules text of the card with splice to the spell, following that spell’s own rules text. It doesn’t modify or replace any of that spell’s own text. (See rule <a href="#section-702-46">702.46</a>, “Splice.”) 
 .rule{id: "section-613"}
   .rule_id 613.
   .rule_text Interaction of Continuous Effects
@@ -4341,6 +4350,9 @@
   .rule_text If an effect offers a player a choice to search a zone and take additional actions with the cards found, that player may choose to search even if the additional actions are illegal or impossible.
 .rule{id: "section-701-18h"}
   .rule_id 701.18h
+  .rule_text An effect may instruct a player to search a library for one or more cards more than once before instructing a player to shuffle that library. This is the same as a single instruction for that player to search that library for all those cards. The player searches that library only once.
+.rule{id: "section-701-18i"}
+  .rule_id 701.18i
   .rule_text If multiple players search at once, each of those players looks at the appropriate cards at the same time, then those players decide in APNAP order (see rule <a href="#section-101-4">101.4</a>) which card to find.
 .rule{id: "section-701-19"}
   .rule_id 701.19.
@@ -5252,7 +5264,7 @@
   .rule_text Entwine
 .rule{id: "section-702-41a"}
   .rule_id 702.41a
-  .rule_text Entwine is a static ability of modal spells (see rule <a href="#section-700-2">700.2</a>) that functions while the spell is on the stack. “Entwine [cost]” means “You may choose all modes of this spell instead of just one. If you do, you pay an additional [cost].” Using the entwine ability follows the rules for choosing modes and paying additional costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
+  .rule_text Entwine is a static ability of modal spells (see rule <a href="#section-700-2">700.2</a>) that functions while the spell is on the stack. “Entwine [cost]” means “You may choose all modes of this spell instead of just the number specified. If you do, you pay an additional [cost].” Using the entwine ability follows the rules for choosing modes and paying additional costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
 .rule{id: "section-702-41b"}
   .rule_id 702.41b
   .rule_text If the entwine cost was paid, follow the text of each of the modes in the order written on the card when the spell resolves.
@@ -5304,14 +5316,14 @@
   .rule_text Splice
 .rule{id: "section-702-46a"}
   .rule_id 702.46a
-  .rule_text Splice is a static ability that functions while a card is in your hand. “Splice onto [subtype] [cost]” means “You may reveal this card from your hand as you cast a [subtype] spell. If you do, copy this card’s text box onto that spell and pay [cost] as an additional cost to cast that spell.” Paying a card’s splice cost follows the rules for paying additional costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
+  .rule_text Splice is a static ability that functions while a card is in your hand. “Splice onto [quality] [cost]” means “You may reveal this card from your hand as you cast a [quality] spell. If you do, that spell gains the text of this card’s rules text and you pay [cost] as an additional cost to cast that spell.” Paying a card’s splice cost follows the rules for paying additional costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
   .rule_text Example: Since the card with splice remains in the player’s hand, it can later be cast normally or spliced onto another spell. It can even be discarded to pay a “discard a card” cost of the spell it’s spliced onto.
 .rule{id: "section-702-46b"}
   .rule_id 702.46b
-  .rule_text You can’t choose to use a splice ability if you can’t make the required choices (targets, etc.) for that card’s instructions. You can’t splice any one card onto the same spell more than once. If you’re splicing more than one card onto a spell, reveal them all at once and choose the order in which their instructions will be followed. The instructions on the main spell have to be followed first.
+  .rule_text You can’t choose to use a splice ability if you can’t make the required choices (targets, etc.) for that card’s rules text. You can’t splice any one card onto the same spell more than once. If you’re splicing more than one card onto a spell, reveal them all at once and choose the order in which their effects will happen. The effects of the main spell must happen first.
 .rule{id: "section-702-46c"}
   .rule_id 702.46c
-  .rule_text The spell has the characteristics of the main spell, plus the text boxes of each of the spliced cards. The spell doesn’t gain any other characteristics (name, mana cost, color, supertypes, card types, subtypes, etc.) of the spliced cards. Text copied onto the spell that refers to a card by name refers to the spell on the stack, not the card from which the text was copied.
+  .rule_text The spell has the characteristics of the main spell, plus the rules text of each of the spliced cards. This is a text-changing effect (see rule <a href="#section-612">612</a>, “Text-Changing Effects”). The spell doesn’t gain any other characteristics (name, mana cost, color, supertypes, card types, subtypes, etc.) of the spliced cards. Text gained by the spell that refers to a card by name refers to the spell on the stack, not the card from which the text was copied.
   .rule_text Example: Glacial Ray is a red card with splice onto Arcane that reads, “Glacial Ray deals 2 damage to any target.” Suppose Glacial Ray is spliced onto Reach Through Mists, a blue spell. The spell is still blue, and Reach Through Mists deals the damage. This means that the ability can target a creature with protection from red and deal 2 damage to that creature.
 .rule{id: "section-702-46d"}
   .rule_id 702.46d
@@ -5330,7 +5342,7 @@
   .rule_text You choose which permanent to sacrifice as you make choices for the spell (see rule <a href="#section-601-2b">601.2b</a>), and you sacrifice that permanent as you pay the total cost (see rule <a href="#section-601-2h">601.2h</a>).
 .rule{id: "section-702-47c"}
   .rule_id 702.47c
-  .rule_text Generic mana in the sacrificed permanent’s mana cost reduces generic mana in the spell’s total cost. Colored and colorless mana in the sacrificed permanent’s mana cost reduces mana of the same type in spell’s total cost, and any excess reduces that much generic mana in spell’s total cost.
+  .rule_text Generic mana in the sacrificed permanent’s mana cost reduces generic mana in the spell’s total cost. Colored and colorless mana in the sacrificed permanent’s mana cost reduces mana of the same type in spell’s total cost, and any excess reduces that much generic mana in spell’s total cost. (See rule <a href="#section-117-7">117.7</a>.)
 .rule{id: "section-702-48"}
   .rule_id 702.48.
   .rule_text Ninjutsu
@@ -6391,7 +6403,7 @@
 .rule{id: "section-706-2"}
   .rule_id 706.2.
   .rule_text When copying an object, the copy acquires the copiable values of the original object’s characteristics and, for an object on the stack, choices made when casting or activating it (mode, targets, the value of X, whether it was kicked, how it will affect multiple targets, and so on). The “copiable values” are the values derived from the text printed on the object (that text being name, mana cost, color indicator, card type, subtype, supertype, rules text, power, toughness, and/or loyalty), as modified by other copy effects, by its face-down status, and by “as . . . enters the battlefield” and “as . . . is turned face up” abilities that set power and toughness (and may also set additional characteristics). Other effects (including type-changing and text-changing effects), status, and counters are not copied.
-  .rule_text Example: Chimeric Staff is an artifact that reads “<span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span>: Chimeric Staff becomes an X/X artifact creature until end of turn.” Clone is a creature that reads, “You may have Clone enter the battlefield as a copy of any creature on the battlefield.” After a Staff has become a 5/5 artifact creature, a Clone enters the battlefield as a copy of it. The Clone is an artifact, not a 5/5 artifact creature. (The copy has the Staff’s ability, however, and will become a creature if that ability is activated.)
+  .rule_text Example: Chimeric Staff is an artifact that reads, “<span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span>: Chimeric Staff becomes an X/X artifact creature until end of turn.” Clone is a creature that reads, “You may have Clone enter the battlefield as a copy of any creature on the battlefield.” After a Staff has become a 5/5 artifact creature, a Clone enters the battlefield as a copy of it. The Clone is an artifact, not a 5/5 artifact creature. (The copy has the Staff’s ability, however, and will become a creature if that ability is activated.)
   .rule_text Example: Clone enters the battlefield as a copy of a face-down Grinning Demon (a creature with morph <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span></span>). The Clone is a colorless 2/2 creature with no name, no types, no abilities, and no mana cost. It will still be face up. Its controller can’t pay <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span></span> to turn it face up.
 .rule{id: "section-706-2a"}
   .rule_id 706.2a
@@ -6439,7 +6451,7 @@
 .rule{id: "section-706-9a"}
   .rule_id 706.9a
   .rule_text Some copy effects cause the copy to gain an ability as part of the copying process. This ability becomes part of the copiable values for the copy, along with any other abilities that were copied.
-  .rule_text Example: Quirion Elves enters the battlefield and an Unstable Shapeshifter copies it. The copiable values of the Shapeshifter now match those of the Elves, except that the Shapeshifter also has the ability “Whenever a creature enters the battlefield, Unstable Shapeshifter becomes a copy of that creature and gains this ability.” Then a Clone enters the battlefield as a copy of the Unstable Shapeshifter. The Clone copies the new copiable values of the Shapeshifter, including the ability that the Shapeshifter gave itself when it copied the Elves.
+  .rule_text Example: Quirion Elves enters the battlefield and an Unstable Shapeshifter copies it. The copiable values of the Shapeshifter now match those of the Elves, except that the Shapeshifter also has the ability “Whenever a creature enters the battlefield, Unstable Shapeshifter becomes a copy of that creature, except it has this ability.” Then a Clone enters the battlefield as a copy of the Unstable Shapeshifter. The Clone copies the new copiable values of the Shapeshifter, including the ability that the Shapeshifter gave itself when it copied the Elves.
 .rule{id: "section-706-9b"}
   .rule_id 706.9b
   .rule_text Some copy effects specifically state that they don’t copy certain characteristics and instead retain their original values. They may also simply state that certain characteristics are not copied.
@@ -6451,6 +6463,10 @@
   .rule_id 706.9d
   .rule_text When applying a copy effect that doesn’t copy a certain characteristic, retains an original value for a certain characteristic, or modifies the final value of a certain characteristic, any characteristic-defining ability (see rule <a href="#section-604-3">604.3</a>) of the object being copied that defines that characteristic is not copied. If that characteristic is color, any color indicator (see rule <a href="#section-204">204</a>) of that object is also not copied.
   .rule_text Example: Quicksilver Gargantuan is a creature that reads, “You may have Quicksilver Gargantuan enter the battlefield as a copy of any creature on the battlefield, except it’s 7/7.” Quicksilver Gargantuan enters the battlefield as a copy of Tarmogoyf, which has a characteristic-defining ability that defines its power and toughness. Quicksilver Gargantuan does not have that ability. It will be 7/7.
+.rule{id: "section-706-9e"}
+  .rule_id 706.9e
+  .rule_text Some replacement effects that generate copy effects include an exception that’s an additional effect rather than a modification of the affected object’s characteristics. If another copy effect is applied to that object after applying the copy effect with that exception, the exception’s effect doesn’t happen.
+  .rule_text Example: Altered Ego reads, “You may have Altered Ego enter the battlefield as a copy of any creature on the battlefield, except it enters with X additional +1/+1 counters on it.” You choose for it to enter the battlefield as a copy of Clone, which reads “You may have Clone enter the battlefield as a copy of any creature on the battlefield,” for which no creature was chosen as it entered the battlefield. If you then choose a creature to copy as you apply the replacement effect Altered Ego gains by copying Clone, Altered Ego’s replacement effect won’t cause it to enter the battlefield with any +1/+1 counters on it.
 .rule{id: "section-706-10"}
   .rule_id 706.10.
   .rule_text To copy a spell, activated ability, or triggered ability means to put a copy of it onto the stack; a copy of a spell isn’t cast and a copy of an activated ability isn’t activated. A copy of a spell or ability copies both the characteristics of the spell or ability and all decisions made for it, including modes, targets, the value of X, and additional or alternative costs. (See rule <a href="#section-601">601</a>, “Casting Spells.”) Choices that are normally made on resolution are not copied. If an effect of the copy refers to objects used to pay its costs, it uses the objects used to pay the costs of the original spell or ability. A copy of a spell is owned by the player under whose control it was put on the stack. A copy of a spell or ability is controlled by the player under whose control it was put on the stack. A copy of a spell is itself a spell, even though it has no spell card associated with it. A copy of an ability is itself an ability.
@@ -8491,7 +8507,7 @@
   .glossary_definition A nontoken permanent “enters the battlefield” when it’s moved onto the battlefield from another zone. A token “enters the battlefield” when it’s created. See rules <a href="#section-403-3">403.3</a>, <a href="#section-603-6a">603.6a</a>, <a href="#section-603-6d">603.6d</a>, and <a href="#section-614-12">614.12</a>.
 .glossary_entry
   .glossary_term Entwine
-  .glossary_definition A keyword ability that lets a player choose all modes for a spell rather than just one. See rule <a href="#section-702-41">702.41</a>, “Entwine.”
+  .glossary_definition A keyword ability that lets a player choose all modes for a spell rather than just the number specified. See rule <a href="#section-702-41">702.41</a>, “Entwine.”
 .glossary_entry
   .glossary_term Epic
   .glossary_definition A keyword ability that lets a player copy a spell at the beginning of each of their upkeeps at the expense of casting any other spells for the rest of the game. See rule <a href="#section-702-49">702.49</a>, “Epic.”
@@ -9334,7 +9350,7 @@
   .glossary_definition A subtype that’s correlated to the instant card type and the sorcery card type. See rule <a href="#section-304">304</a>, “Instants,” and rule <a href="#section-307">307</a>, “Sorceries.” See rule <a href="#section-205-3k">205.3k</a> for the list of spell types.
 .glossary_entry
   .glossary_term Splice
-  .glossary_definition A keyword ability that lets a player copy a card’s text box onto another spell. See rule <a href="#section-702-46">702.46</a>, “Splice.”
+  .glossary_definition A keyword ability that lets a player add a card’s rules text onto another spell. See rule <a href="#section-702-46">702.46</a>, “Splice.”
 .glossary_entry
   .glossary_term Split Cards
   .glossary_definition Cards with two card faces on a single card. See rule <a href="#section-708">708</a>, “Split Cards.”
@@ -9630,5 +9646,5 @@
 %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, and Matt Tabak, with contributions from Charlie C. Atino, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Eli Shiffrin, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead), Ira Humphrey, Gregg Luben, Nat Moes, Matt Tabak, and Hans Ziegler Magic Rules Management: Eli Shiffrin
 %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie C. Atino, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
 %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-%p These rules are effective as of May 3, 2019.
+%p These rules are effective as of June 14, 2019.
 %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, Magic: The Gathering—Conspiracy, Conspiracy: Take the Crown, Ixalan, Rivals of Ixalan, Unglued, Unstable, Dominaria, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. Unhinged is a trademark of Horn Abbot Ltd. and is used with permission. ©2019 Wizards. U.S. Pat. No. RE 37,957.
