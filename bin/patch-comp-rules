@@ -281,7 +281,7 @@ class CompRules:
         comp_rules_f.write('These rules are effective as of {0:%B} {1}, {0:%Y}.\n'.format(self.date, self.date.day))
         comp_rules_f.write('\n')
         # header
-        header = '\n'.join(self.header.split('\n')[:-3])
+        header = '\n'.join(self.header.split('\n')[:-2])
         intro, contents = header.split('Contents', 1)
         header = ''.join([
             'Introduction\n\n This document contains a series of house rules for playing the Custom Constructed formats. For ease of reading, they are presented within the context of the Comprehensive Rules which they are patching.\n\nThe following rules have been patched:\n\n',
