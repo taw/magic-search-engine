@@ -78,12 +78,12 @@ class PatchFoiling < Patch
         card["indexer_foiling"] = "foilonly"
       elsif set_code == "grn" and name == "Impervious Greatwurm"
         card["indexer_foiling"] = "foilonly"
-      elsif set_code == "grn" and name == "Plains"
-        card["indexer_foiling"] = "nonfoil"
+      elsif set_code == "grn" and card["supertypes"] == ["Basic"]
+        card["indexer_foiling"] = "both"
       elsif set_code == "rna" and name == "The Haunt of Hightower"
         card["indexer_foiling"] = "foilonly"
-      elsif set_code == "rna" and name == "Swamp"
-        card["indexer_foiling"] = "nonfoil"
+      elsif set_code == "rna" and card["supertypes"] == ["Basic"]
+        card["indexer_foiling"] = "both"
       elsif set_code == "war" and name == "Tezzeret, Master of the Bridge"
         card["indexer_foiling"] = "foilonly"
       elsif set_code == "ori" and number.to_i >= 273
