@@ -63,6 +63,12 @@ class PatchFoiling < Patch
         card["indexer_foiling"] = "foilonly"
       when "por", "p02", "ptk", "ppod"
         card["indexer_foiling"] = "nonfoil"
+      when "8ed", "9ed"
+        if number =~ /\AS/
+          card["indexer_foiling"] = "nonfoil"
+        else
+          card["indexer_foiling"] = "both"
+        end
       end
 
       # Special cards

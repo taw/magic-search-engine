@@ -5,7 +5,7 @@ describe "Foils" do
 
   def assert_foiling(cards, foiling)
     cards.each do |c|
-      c.foiling.should eq(foiling), "#{c.set_code} #{c.name} got:#{c.foiling} expected:#{foiling}"
+      c.foiling.should eq(foiling), "#{c.set_code} #{c.name} #{c.number} got:#{c.foiling} expected:#{foiling}"
     end
   end
 
@@ -89,7 +89,7 @@ describe "Foils" do
         assert_foiling_partial_precon(regular)
         assert_foiling(promo, "foilonly")
         assert_foiling(sampler, "nonfoil")
-      when "ori"
+      when "m15", "ori"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         assert_foiling(booster_cards, "both")
         assert_foiling(extra_cards, "nonfoil")
@@ -173,6 +173,10 @@ describe "Foils" do
         assert_foiling_partial_precon(rest)
       when "6ed"
         assert_foiling(set.printings, "nonfoil")
+      when "8ed", "9ed"
+        special, regular = set.printings.partition{|c| c.number =~ /\AS/ }
+        assert_foiling(special, "nonfoil")
+        assert_foiling(regular, "both")
       else
         assert_by_type(set)
       end

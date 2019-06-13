@@ -29,6 +29,8 @@ class PatchExcludeFromBoosters < Patch
     number_i = number.to_i
 
     case set_code
+    when "m15"
+      number_i > 269
     when "kld"
       number_i > 264
     when "aer"
