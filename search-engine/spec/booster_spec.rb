@@ -29,6 +29,8 @@ describe "is:booster" do
     db.sets.each do |set_code, set|
       # Exclude planesawlker deck cards
       case set_code
+      when "m15"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=269"
       when "kld"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=264"
       when "aer"
