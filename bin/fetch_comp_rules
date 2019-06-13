@@ -9,5 +9,5 @@ doc = Nokogiri::HTML(open(page_url).read)
 txt_url = doc.css("a").map{|a| a[:href]}.find{|link| link =~ /MagicCompRules.*txt\z/}
 raise "Can't find rules text url, please check the site manually" unless txt_url
 rules_txt = open(txt_url).read
-rules_txt = rules_txt.force_encoding("utf-8").tr("\uFEFF", "").tr("\r\n", "\n")
+rules_txt = rules_txt.force_encoding("utf-8").tr("\r\uFEFF", "")
 Pathname("#{__dir__}/../data/MagicCompRules.txt").write(rules_txt)
