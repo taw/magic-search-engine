@@ -1,13 +1,12 @@
 Magic: The Gathering Comprehensive Rules
 
-These rules are effective as of May 3, 2019.
+These rules are effective as of June 14, 2019.
 
 Introduction
 
 This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
 
 Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules. If you have questions, you can get the answers from us at Support.Wizards.com.
-
 
 Contents
 
@@ -162,7 +161,6 @@ Contents
 Glossary
 
 Credits
-
 
 1. Game Concepts
 
@@ -407,13 +405,15 @@ Example: Exotic Orchard has the ability “{T}: Add one mana of any color that a
 
 106.10. If an effect would add mana represented by a generic mana symbol to a player’s mana pool, that much colorless mana is added to that player’s mana pool.
 
-106.11. To “tap [a permanent] for mana” is to activate a mana ability of that permanent that includes the {T} symbol in its activation cost. See rule 605, “Mana Abilities.”
+106.11. If an effect would add mana represented by one or more snow mana symbols to a player’s mana pool, that much colorless mana is added to that player’s mana pool.
 
-106.11a An ability that triggers whenever a permanent “is tapped for mana” or is tapped for mana of a specified type triggers whenever such a mana ability resolves and produces mana or the specified type of mana.
+106.12. To “tap [a permanent] for mana” is to activate a mana ability of that permanent that includes the {T} symbol in its activation cost. See rule 605, “Mana Abilities.”
 
-106.11b A replacement effect that applies if a permanent “is tapped for mana” or tapped for mana of a specific type and/or amount modifies the mana production event while such an ability is resolving and producing mana or the specified type and/or amount of mana.
+106.12a An ability that triggers whenever a permanent “is tapped for mana” or is tapped for mana of a specified type triggers whenever such a mana ability resolves and produces mana or the specified type of mana.
 
-106.12. One card (Drain Power) causes one player to lose unspent mana and another to add “the mana lost this way.” (Note that these may be the same player.) This empties the former player’s mana pool and causes the mana emptied this way to be put into the latter player’s mana pool. Which permanents, spells, and/or abilities produced that mana are unchanged, as are any restrictions or additional effects associated with any of that mana.
+106.12b A replacement effect that applies if a permanent “is tapped for mana” or tapped for mana of a specific type and/or amount modifies the mana production event while such an ability is resolving and producing mana or the specified type and/or amount of mana.
+
+106.13. One card (Drain Power) causes one player to lose unspent mana and another to add “the mana lost this way.” (Note that these may be the same player.) This empties the former player’s mana pool and causes the mana emptied this way to be put into the latter player’s mana pool. Which permanents, spells, and/or abilities produced that mana are unchanged, as are any restrictions or additional effects associated with any of that mana.
 
 107. Numbers and Symbols
 
@@ -472,7 +472,7 @@ Example: {W/P}{W/P} can be paid by spending {W}{W}, by spending {W} and paying 2
 
 107.4g In rules text, the Phyrexian symbol {P} with no colored background means any of the five Phyrexian mana symbols.
 
-107.4h The snow mana symbol {S} represents one generic mana in a cost. This generic mana can be paid with one mana of any type produced by a snow permanent (see rule 205.4g). Effects that reduce the amount of generic mana you pay don’t affect {S} costs. (There is no such thing as “snow mana”; “snow” is not a type of mana.)
+107.4h The snow mana symbol {S} represents one mana in a cost. This mana can be paid with one mana of any type produced by a snow permanent (see rule 205.4g). Effects that reduce the amount of generic mana you pay don’t affect {S} costs. Snow is neither a color nor a type of mana.
 
 107.5. The tap symbol is {T}. The tap symbol in an activation cost means “Tap this permanent.” A permanent that’s already tapped can’t be tapped again to pay the cost. A creature’s activated ability with the tap symbol in its activation cost can’t be activated unless the creature has been under its controller’s control continuously since their most recent turn began. See rule 302.6.
 
@@ -876,6 +876,8 @@ Example: A player controls Lodestone Golem, which says “Nonartifact spells cos
 
 117.7f If a cost is reduced by an amount of mana represented by a Phyrexian mana symbol, the cost is reduced by one mana of that symbol’s color.
 
+117.7g If a cost is reduced by an amount of mana represented by one or more snow mana symbols, the cost is reduced by that much generic mana.
+
 117.8. Some spells and abilities have additional costs. An additional cost is a cost listed in a spell’s rules text, or applied to a spell or ability from another effect, that its controller must pay at the same time they pay the spell’s mana cost or the ability’s activation cost. Note that some additional costs are listed in keywords; see rule 702.
 
 117.8a Any number of additional costs may be applied to a spell as it’s being cast or to an ability as it’s being activated. The controller of the spell or ability announces their intentions to pay any or all of those costs as described in rule 601.2b.
@@ -1043,7 +1045,6 @@ Example: A player casts Lightning Bolt, an instant that says “Lightning Bolt d
 121.6. Some spells and abilities refer to counters being put on an object. This refers to putting counters on that object while it’s on the battlefield and also to an object that’s given counters as it enters the battlefield.
 
 121.6a If an object enters the battlefield with counters on it, the effect causing the object to be given counters may specify which player puts those counters on it. If the effect doesn’t specify a player, the object’s controller puts those counters on it.
-
 
 2. Parts of a Card
 
@@ -1299,7 +1300,6 @@ Example: Veteran Motorist has the ability “Whenever Veteran Motorist crews a V
 212.1e The illustration credit for a card follows the paintbrush icon or, on older cards, the abbreviation “Illus.”
 
 212.1f Legal text (the fine print at the bottom or bottom-right of the card) lists the trademark and copyright information.
-
 
 3. Card Types
 
@@ -1570,7 +1570,6 @@ Example: “Basic Land — Mountain” means the card is a land with the subtype
 313.7. At any time, you may look at a face-down conspiracy card you control. You can’t look at face-down conspiracy cards controlled by other players.
 
 
-
 4. Zones
 
 400. General
@@ -1735,7 +1734,6 @@ Example: Exquisite Archangel has an ability which reads “If you would lose the
 408.2. Emblems may be created in the command zone. See rule 113, “Emblems.”
 
 408.3. In the Planechase, Vanguard, Commander, Archenemy, and Conspiracy Draft casual variants, nontraditional Magic cards and/or specially designated cards start the game in the command zone. Each variant has its own rules regarding such cards. See section 9, “Casual Variants.”
-
 
 
 5. Turn Structure
@@ -2057,7 +2055,6 @@ Example: Squadron Hawk (a 1/1 creature with flying) and Goblin Piker (a 2/1 crea
 514.3a At this point, the game checks to see if any state-based actions would be performed and/or any triggered abilities are waiting to be put onto the stack (including those that trigger “at the beginning of the next cleanup step”). If so, those state-based actions are performed, then those triggered abilities are put on the stack, then the active player gets priority. Players may cast spells and activate abilities. Once the stack is empty and all players pass in succession, another cleanup step begins.
 
 
-
 6. Spells, Abilities, and Effects
 
 600. General
@@ -2093,7 +2090,7 @@ Example: You cast Altar’s Reap, which costs {1}{B} and has an additional cost 
 601.3. A player can’t begin to cast a spell unless a rule or effect allows that player to cast it. If that player is no longer allowed to cast that spell after completing its proposal, the casting of the spell is illegal and the game returns to the moment before the casting of that spell was proposed (see rule 721, “Handling Illegal Actions”).
 
 601.3a If an effect prohibits a player from casting a spell with certain qualities, that player may consider any choices to be made during that spell’s proposal that may cause those qualities to change. If any such choices could cause that effect to no longer prohibit that player from casting that spell, the player may begin to cast the spell, ignoring the effect.
-Example: A player controls Void Winnower, which reads in part, “Your opponents can't cast spells with even converted mana costs.” That player’s opponent may begin to cast Rolling Thunder, a card whose mana cost is {X}{R}{R}, because the chosen value of X may cause the spell’s converted mana cost to become odd.
+Example: A player controls Void Winnower, which reads, in part, “Your opponents can't cast spells with even converted mana costs.” That player’s opponent may begin to cast Rolling Thunder, a card whose mana cost is {X}{R}{R}, because the chosen value of X may cause the spell’s converted mana cost to become odd.
 
 601.3b If an effect allows a player to cast a spell with certain qualities as though it had flash, that player may consider any choices to be made during that spell’s proposal that may cause that spell’s qualities to change. If any such choices could cause that effect to apply, that player may begin to cast that spell as though it had flash.
 Example: An effect says that you may cast Aura spells as though they had flash, and you have a creature card with bestow in your hand. Because choosing the bestow ability’s alternative cost causes that spell to become an Aura spell, you may legally begin to cast that spell as though it had flash.
@@ -2271,7 +2268,7 @@ Example: Heart-Piercer Manticore has an ability that reads “When Heart-Piercer
 
 605.1a An activated ability is a mana ability if it meets all of the following criteria: it doesn’t require a target (see rule 114.6), it could add mana to a player’s mana pool when it resolves, and it’s not a loyalty ability. (See rule 606, “Loyalty Abilities.”)
 
-605.1b A triggered ability is a mana ability if it meets all of the following criteria: it doesn’t require a target (see rule 114.6), it triggers from the resolution of an activated mana ability (see rule 106.11a) or from mana being added to a player’s mana pool, and it could add mana to a player’s mana pool when it resolves.
+605.1b A triggered ability is a mana ability if it meets all of the following criteria: it doesn’t require a target (see rule 114.6), it triggers from the resolution of an activated mana ability (see rule 605.1a) or from mana being added to a player’s mana pool, and it could add mana to a player’s mana pool when it resolves.
 
 605.2. A mana ability remains a mana ability even if the game state doesn’t allow it to produce mana.
 Example: A permanent has an ability that reads “{T}: Add {G} for each creature you control.” The ability is still a mana ability even if you control no creatures or if the permanent is already tapped.
@@ -2480,6 +2477,8 @@ Example: A permanent with the static ability “All white creatures get +1/+1”
 612.6. One card (Spy Kit) states that an object has “all names of nonlegendary creature cards.” This changes the text that represents the object’s name. That object has the name of each nonlegendary creature card in the Oracle card reference. (See rule 108.1.)
 
 612.7. One card (Awakening of Vitu-Ghazi) creates a continuous effect that sets the name of an object. This changes the text that represents the object’s name. That object loses any names it had and has only the specified name.
+
+612.8. A splice ability changes a spell’s text by adding the rules text of the card with splice to the spell, following that spell’s own rules text. It doesn’t modify or replace any of that spell’s own text. (See rule 702.46, “Splice.”) 
 
 613. Interaction of Continuous Effects
 
@@ -2701,7 +2700,6 @@ Example: A player is instructed to create a token that’s a copy of Voice of Al
 Example: One effect reads “If you would gain life, draw that many cards instead,” and another reads “If you would draw a card, return a card from your graveyard to your hand instead.” Both effects combine (regardless of the order they came into existence): Instead of gaining 1 life, the player puts a card from their graveyard into their hand.
 
 
-
 7. Additional Rules
 
 700. General
@@ -2913,7 +2911,9 @@ Example: Aven Mindcensor says, in part, “If an opponent would search a library
 
 701.18g If an effect offers a player a choice to search a zone and take additional actions with the cards found, that player may choose to search even if the additional actions are illegal or impossible.
 
-701.18h If multiple players search at once, each of those players looks at the appropriate cards at the same time, then those players decide in APNAP order (see rule 101.4) which card to find.
+701.18h An effect may instruct a player to search a library for one or more cards more than once before instructing a player to shuffle that library. This is the same as a single instruction for that player to search that library for all those cards. The player searches that library only once.
+
+701.18i If multiple players search at once, each of those players looks at the appropriate cards at the same time, then those players decide in APNAP order (see rule 101.4) which card to find.
 
 701.19. Shuffle
 
@@ -3526,7 +3526,7 @@ Example: You control a phased-out creature. You cast a spell that says “Destro
 
 702.41. Entwine
 
-702.41a Entwine is a static ability of modal spells (see rule 700.2) that functions while the spell is on the stack. “Entwine [cost]” means “You may choose all modes of this spell instead of just one. If you do, you pay an additional [cost].” Using the entwine ability follows the rules for choosing modes and paying additional costs in rules 601.2b and 601.2f–h.
+702.41a Entwine is a static ability of modal spells (see rule 700.2) that functions while the spell is on the stack. “Entwine [cost]” means “You may choose all modes of this spell instead of just the number specified. If you do, you pay an additional [cost].” Using the entwine ability follows the rules for choosing modes and paying additional costs in rules 601.2b and 601.2f–h.
 
 702.41b If the entwine cost was paid, follow the text of each of the modes in the order written on the card when the spell resolves.
 
@@ -3561,12 +3561,12 @@ Example: The ability “Modular—Sunburst” means “This permanent enters the
 
 702.46. Splice
 
-702.46a Splice is a static ability that functions while a card is in your hand. “Splice onto [subtype] [cost]” means “You may reveal this card from your hand as you cast a [subtype] spell. If you do, copy this card’s text box onto that spell and pay [cost] as an additional cost to cast that spell.” Paying a card’s splice cost follows the rules for paying additional costs in rules 601.2b and 601.2f–h.
+702.46a Splice is a static ability that functions while a card is in your hand. “Splice onto [quality] [cost]” means “You may reveal this card from your hand as you cast a [quality] spell. If you do, that spell gains the text of this card’s rules text and you pay [cost] as an additional cost to cast that spell.” Paying a card’s splice cost follows the rules for paying additional costs in rules 601.2b and 601.2f–h.
 Example: Since the card with splice remains in the player’s hand, it can later be cast normally or spliced onto another spell. It can even be discarded to pay a “discard a card” cost of the spell it’s spliced onto.
 
-702.46b You can’t choose to use a splice ability if you can’t make the required choices (targets, etc.) for that card’s instructions. You can’t splice any one card onto the same spell more than once. If you’re splicing more than one card onto a spell, reveal them all at once and choose the order in which their instructions will be followed. The instructions on the main spell have to be followed first.
+702.46b You can’t choose to use a splice ability if you can’t make the required choices (targets, etc.) for that card’s rules text. You can’t splice any one card onto the same spell more than once. If you’re splicing more than one card onto a spell, reveal them all at once and choose the order in which their effects will happen. The effects of the main spell must happen first.
 
-702.46c The spell has the characteristics of the main spell, plus the text boxes of each of the spliced cards. The spell doesn’t gain any other characteristics (name, mana cost, color, supertypes, card types, subtypes, etc.) of the spliced cards. Text copied onto the spell that refers to a card by name refers to the spell on the stack, not the card from which the text was copied.
+702.46c The spell has the characteristics of the main spell, plus the rules text of each of the spliced cards. This is a text-changing effect (see rule 612, “Text-Changing Effects”). The spell doesn’t gain any other characteristics (name, mana cost, color, supertypes, card types, subtypes, etc.) of the spliced cards. Text gained by the spell that refers to a card by name refers to the spell on the stack, not the card from which the text was copied.
 Example: Glacial Ray is a red card with splice onto Arcane that reads, “Glacial Ray deals 2 damage to any target.” Suppose Glacial Ray is spliced onto Reach Through Mists, a blue spell. The spell is still blue, and Reach Through Mists deals the damage. This means that the ability can target a creature with protection from red and deal 2 damage to that creature.
 
 702.46d Choose targets for the added text normally (see rule 601.2c). Note that a spell with one or more targets won’t resolve if all of its targets are illegal on resolution.
@@ -3579,7 +3579,7 @@ Example: Glacial Ray is a red card with splice onto Arcane that reads, “Glacia
 
 702.47b You choose which permanent to sacrifice as you make choices for the spell (see rule 601.2b), and you sacrifice that permanent as you pay the total cost (see rule 601.2h).
 
-702.47c Generic mana in the sacrificed permanent’s mana cost reduces generic mana in the spell’s total cost. Colored and colorless mana in the sacrificed permanent’s mana cost reduces mana of the same type in spell’s total cost, and any excess reduces that much generic mana in spell’s total cost.
+702.47c Generic mana in the sacrificed permanent’s mana cost reduces generic mana in the spell’s total cost. Colored and colorless mana in the sacrificed permanent’s mana cost reduces mana of the same type in spell’s total cost, and any excess reduces that much generic mana in spell’s total cost. (See rule 117.7.)
 
 702.48. Ninjutsu
 
@@ -4289,7 +4289,7 @@ Example: You control Young Wolf, a 1/1 creature with undying, and it has a +1/+1
 706.1. Some objects become or turn another object into a “copy” of a spell, permanent, or card. Some effects create a token that’s a copy of another object. (Certain older cards were printed with the phrase “search for a copy.” This section doesn’t cover those cards, which have received new text in the Oracle card reference.)
 
 706.2. When copying an object, the copy acquires the copiable values of the original object’s characteristics and, for an object on the stack, choices made when casting or activating it (mode, targets, the value of X, whether it was kicked, how it will affect multiple targets, and so on). The “copiable values” are the values derived from the text printed on the object (that text being name, mana cost, color indicator, card type, subtype, supertype, rules text, power, toughness, and/or loyalty), as modified by other copy effects, by its face-down status, and by “as . . . enters the battlefield” and “as . . . is turned face up” abilities that set power and toughness (and may also set additional characteristics). Other effects (including type-changing and text-changing effects), status, and counters are not copied.
-Example: Chimeric Staff is an artifact that reads “{X}: Chimeric Staff becomes an X/X artifact creature until end of turn.” Clone is a creature that reads, “You may have Clone enter the battlefield as a copy of any creature on the battlefield.” After a Staff has become a 5/5 artifact creature, a Clone enters the battlefield as a copy of it. The Clone is an artifact, not a 5/5 artifact creature. (The copy has the Staff’s ability, however, and will become a creature if that ability is activated.)
+Example: Chimeric Staff is an artifact that reads, “{X}: Chimeric Staff becomes an X/X artifact creature until end of turn.” Clone is a creature that reads, “You may have Clone enter the battlefield as a copy of any creature on the battlefield.” After a Staff has become a 5/5 artifact creature, a Clone enters the battlefield as a copy of it. The Clone is an artifact, not a 5/5 artifact creature. (The copy has the Staff’s ability, however, and will become a creature if that ability is activated.)
 Example: Clone enters the battlefield as a copy of a face-down Grinning Demon (a creature with morph {2}{B}{B}). The Clone is a colorless 2/2 creature with no name, no types, no abilities, and no mana cost. It will still be face up. Its controller can’t pay {2}{B}{B} to turn it face up.
 
 706.2a A copy acquires the color of the object it’s copying because that value is derived from its mana cost or color indicator. A copy acquires the abilities of the object it’s copying because those values are derived from its rules text. A copy doesn’t wind up with two values of each ability (that is, it doesn’t copy the object’s abilities and its rules text, then have that rules text define a new set of abilities).
@@ -4325,7 +4325,7 @@ Example: A Vesuvan Doppelganger enters the battlefield as a copy of Voice of All
 706.9. Copy effects may include modifications or exceptions to the copying process.
 
 706.9a Some copy effects cause the copy to gain an ability as part of the copying process. This ability becomes part of the copiable values for the copy, along with any other abilities that were copied.
-Example: Quirion Elves enters the battlefield and an Unstable Shapeshifter copies it. The copiable values of the Shapeshifter now match those of the Elves, except that the Shapeshifter also has the ability “Whenever a creature enters the battlefield, Unstable Shapeshifter becomes a copy of that creature and gains this ability.” Then a Clone enters the battlefield as a copy of the Unstable Shapeshifter. The Clone copies the new copiable values of the Shapeshifter, including the ability that the Shapeshifter gave itself when it copied the Elves.
+Example: Quirion Elves enters the battlefield and an Unstable Shapeshifter copies it. The copiable values of the Shapeshifter now match those of the Elves, except that the Shapeshifter also has the ability “Whenever a creature enters the battlefield, Unstable Shapeshifter becomes a copy of that creature, except it has this ability.” Then a Clone enters the battlefield as a copy of the Unstable Shapeshifter. The Clone copies the new copiable values of the Shapeshifter, including the ability that the Shapeshifter gave itself when it copied the Elves.
 
 706.9b Some copy effects specifically state that they don’t copy certain characteristics and instead retain their original values. They may also simply state that certain characteristics are not copied.
 
@@ -4334,6 +4334,9 @@ Example: Copy Artifact is an enchantment that reads, “You may have Copy Artifa
 
 706.9d When applying a copy effect that doesn’t copy a certain characteristic, retains an original value for a certain characteristic, or modifies the final value of a certain characteristic, any characteristic-defining ability (see rule 604.3) of the object being copied that defines that characteristic is not copied. If that characteristic is color, any color indicator (see rule 204) of that object is also not copied.
 Example: Quicksilver Gargantuan is a creature that reads, “You may have Quicksilver Gargantuan enter the battlefield as a copy of any creature on the battlefield, except it’s 7/7.” Quicksilver Gargantuan enters the battlefield as a copy of Tarmogoyf, which has a characteristic-defining ability that defines its power and toughness. Quicksilver Gargantuan does not have that ability. It will be 7/7.
+
+706.9e Some replacement effects that generate copy effects include an exception that’s an additional effect rather than a modification of the affected object’s characteristics. If another copy effect is applied to that object after applying the copy effect with that exception, the exception’s effect doesn’t happen.
+Example: Altered Ego reads, “You may have Altered Ego enter the battlefield as a copy of any creature on the battlefield, except it enters with X additional +1/+1 counters on it.” You choose for it to enter the battlefield as a copy of Clone, which reads “You may have Clone enter the battlefield as a copy of any creature on the battlefield,” for which no creature was chosen as it entered the battlefield. If you then choose a creature to copy as you apply the replacement effect Altered Ego gains by copying Clone, Altered Ego’s replacement effect won’t cause it to enter the battlefield with any +1/+1 counters on it.
 
 706.10. To copy a spell, activated ability, or triggered ability means to put a copy of it onto the stack; a copy of a spell isn’t cast and a copy of an activated ability isn’t activated. A copy of a spell or ability copies both the characteristics of the spell or ability and all decisions made for it, including modes, targets, the value of X, and additional or alternative costs. (See rule 601, “Casting Spells.”) Choices that are normally made on resolution are not copied. If an effect of the copy refers to objects used to pay its costs, it uses the objects used to pay the costs of the original spell or ability. A copy of a spell is owned by the player under whose control it was put on the stack. A copy of a spell or ability is controlled by the player under whose control it was put on the stack. A copy of a spell is itself a spell, even though it has no spell card associated with it. A copy of an ability is itself an ability.
 Example: A player casts Fork, targeting an Emerald Charm. Fork reads, “Copy target instant or sorcery spell, except that the copy is red. You may choose new targets for the copy.” Emerald Charm is a modal green instant. When the Fork resolves, it puts a copy of the Emerald Charm on the stack except the copy is red, not green. The copy has the same mode that was chosen for the original Emerald Charm. It does not necessarily have the same target, but only because Fork allows choosing of new targets.
@@ -4728,7 +4731,6 @@ Example: A player controls Seal of Cleansing, an enchantment that reads, “Sacr
 721.1. If a player takes an illegal action or starts to take an action but can’t legally complete it, the entire action is reversed and any payments already made are canceled. No abilities trigger and no effects apply as a result of an undone action. If the action was casting a spell, the spell returns to the zone it came from. Each player may also reverse any legal mana abilities that player activated while making the illegal play, unless mana from those abilities or from any triggered mana abilities they caused to trigger was spent on another mana ability that wasn’t reversed. Players may not reverse actions that moved cards to a library, moved cards from a library to any zone other than the stack, caused a library to be shuffled, or caused cards from a library to be revealed.
 
 721.2. When reversing illegal spells and abilities, the player who had priority retains it and may take another action or pass. The player may redo the reversed action in a legal way or take any other action allowed by the rules.
-
 
 8. Multiplayer Rules
 
@@ -5132,7 +5134,6 @@ Example: In an Alternating Teams game with three teams, A, B, and C, the seating
 811.5. In the Alternating Teams variant, a team’s resources (cards in hand, mana, and so on) are not shared. Teammates can’t review each other’s hands unless they are sitting next to each other. Teammates may discuss strategies at any time. Teammates can’t manipulate each other’s cards or permanents.
 
 
-
 9. Casual Variants
 
 900. General
@@ -5366,7 +5367,6 @@ Example: Wort, the Raidmother’s color identity is red and green. A Wort Comman
 905.5. The owner of a conspiracy card is the player who put it into the command zone at the start of the game. The controller of a conspiracy card is its owner.
 
 905.6. Once the starting player has been determined, each player sets their life total to 20 and draws a hand of seven cards.
-
 
 Glossary
 
@@ -5912,7 +5912,7 @@ Enters the Battlefield
 A nontoken permanent “enters the battlefield” when it’s moved onto the battlefield from another zone. A token “enters the battlefield” when it’s created. See rules 403.3, 603.6a, 603.6d, and 614.12.
 
 Entwine
-A keyword ability that lets a player choose all modes for a spell rather than just one. See rule 702.41, “Entwine.”
+A keyword ability that lets a player choose all modes for a spell rather than just the number specified. See rule 702.41, “Entwine.”
 
 Epic
 A keyword ability that lets a player copy a spell at the beginning of each of their upkeeps at the expense of casting any other spells for the rest of the game. See rule 702.49, “Epic.”
@@ -6774,7 +6774,7 @@ Spell Type
 A subtype that’s correlated to the instant card type and the sorcery card type. See rule 304, “Instants,” and rule 307, “Sorceries.” See rule 205.3k for the list of spell types.
 
 Splice
-A keyword ability that lets a player copy a card’s text box onto another spell. See rule 702.46, “Splice.”
+A keyword ability that lets a player add a card’s rules text onto another spell. See rule 702.46, “Splice.”
 
 Split Cards
 Cards with two card faces on a single card. See rule 708, “Split Cards.”
@@ -7071,7 +7071,6 @@ Zone-Change Triggers
 Trigger events that involve objects changing zones. See rule 603.6.
 
 
-
 Credits
 
 Magic: The Gathering Original Game Design: Richard Garfield
@@ -7094,7 +7093,7 @@ Thanks to all our project team members and the many others too numerous to menti
 
 
 
-These rules are effective as of May 3, 2019.
+These rules are effective as of June 14, 2019.
 
 Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, Magic: The Gathering—Conspiracy, Conspiracy: Take the Crown, Ixalan, Rivals of Ixalan, Unglued, Unstable, Dominaria, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. Unhinged is a trademark of Horn Abbot Ltd. and is used with permission. ©2019 Wizards. U.S. Pat. No. RE 37,957.
 
