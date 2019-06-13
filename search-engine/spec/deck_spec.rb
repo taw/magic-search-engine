@@ -206,6 +206,13 @@ describe Deck do
         next
       end
 
+      # Some crazy foiling in them
+      # Deck indexer doesn't even try, it's just marked on decklist manually
+      next if set_code == "btd"
+      next if set_code == "dkm"
+      next if set_code == "gk1"
+      next if set_code == "gk2"
+
       set.decks.each do |deck|
         if deck.type == "Clash Pack"
           foils = deck.physical_cards.select(&:foil)

@@ -5,7 +5,7 @@ describe "Foils" do
 
   def assert_foiling(cards, foiling)
     cards.each do |c|
-      c.foiling.should eq(foiling), "#{c.set_code} #{c.name} got:#{c.foiling} expected:#{foiling}"
+      c.foiling.should eq(foiling), "#{c.set_code} #{c.name} #{c.number} got:#{c.foiling} expected:#{foiling}"
     end
   end
 
@@ -22,7 +22,11 @@ describe "Foils" do
         elsif has_nonfoil and not has_foil
           card.foiling.should eq("nonfoil"), "#{card} should be nonfoil"
         elsif has_nonfoil and has_foil
-          card.foiling.should eq("totally broken"), "#{card} is marked as both foil and nonfoil, that is wrong for precon cards generally"
+          if card.set.code == "dkm"
+            # it's totally fine
+          else
+            card.foiling.should eq("totally broken"), "#{card} is marked as both foil and nonfoil, that is wrong for precon cards generally"
+          end
         else
           card.foiling.should eq("totally broken"), "#{card} expected in precons but missing"
         end
@@ -48,7 +52,7 @@ describe "Foils" do
       assert_foiling(set.printings, "foilonly")
     when "commander", "duel deck", "archenemy", "global series", "box", "board game deck", "planechase", "archenemy"
       if set.decks.empty?
-        warn "Expected a deck for this product: #{set.name}"
+        warn "Expected a deck for this product: #{set.code} #{set.name}"
       else
         assert_foiling_partial_precon(set.printings)
       end
@@ -58,25 +62,26 @@ describe "Foils" do
   end
 
   it do
+    # We're only interested in booster and precon sets
+    # as that can mess up with other site functionality
+    # For promo sets, just trust mtgjson without verifying anything
     db.sets.each do |set_code, set|
-      # Sets without foiling set are all known bad
-      unless set.foiling
-        # For promos we'll just trust mtgjson
-        next if set.type == "promo"
-        next if set.type == "memorabilia"
-        next if set.type == "token"
-        warn "Support for #{set.code} #{set.name} not implemented yet"
-        next
-      end
+      next if set.type == "promo"
+      next if set.type == "memorabilia"
+      next if set.type == "token"
 
       case set.code
+      when "g17", "g18"
+        assert_foiling(set.printings, "foilonly")
+      when "phuk"
+        assert_foiling(set.printings, "nonfoil")
       when "ced", "cei", "chr", "ugl", "pelp", "pgru", "palp", "por", "p02", "ptk", "pdrc", "plgm", "ppod", "ugin", "pcel", "van", "s99", "mgb"
         assert_foiling(set.printings, "nonfoil")
       when "ust", "tsb", "cns"
         assert_foiling(set.printings, "both")
       when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "hho", "plpa", "pjgp", "ppro", "pgtw", "pwor", "pwos", "prel", "pfnm"
         assert_foiling(set.printings, "foilonly")
-      when "w16", "w17", "cp1", "cp2", "cp3", "cst", "itp", "gk1"
+      when "w16", "w17", "cp1", "cp2", "cp3", "cst", "itp", "gk1", "gk2", "btd", "dkm", "cma"
         assert_foiling_partial_precon(set.printings)
       when "s00"
         promo, rest = set.printings.partition{|c| c.name == "Rhox"}
@@ -84,7 +89,7 @@ describe "Foils" do
         assert_foiling_partial_precon(regular)
         assert_foiling(promo, "foilonly")
         assert_foiling(sampler, "nonfoil")
-      when "ori"
+      when "m15", "ori"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         assert_foiling(booster_cards, "both")
         assert_foiling(extra_cards, "nonfoil")
@@ -109,21 +114,19 @@ describe "Foils" do
       when "grn"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         buy_a_box_promo = extra_cards.find{|c| c.name == "Impervious Greatwurm"}
-        # Yeah, one basic is Bundle-only
-        grn_plains = extra_cards.find{|c| c.name == "Plains"}
+        basics = extra_cards.select{|c| c.types.include?("basic") }
         assert_foiling(booster_cards, "both")
-        assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, grn_plains])
+        assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, *basics])
         assert_foiling([buy_a_box_promo], "foilonly")
-        assert_foiling([grn_plains], "nonfoil")
+        assert_foiling(basics, "both")
       when "rna"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         buy_a_box_promo = extra_cards.find{|c| c.name == "The Haunt of Hightower"}
-        # Yeah, one basic is Bundle-only
-        rna_swamp = extra_cards.find{|c| c.name == "Swamp"}
+        basics = extra_cards.select{|c| c.types.include?("basic") }
         assert_foiling(booster_cards, "both")
-        assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, rna_swamp])
+        assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, *basics])
         assert_foiling([buy_a_box_promo], "foilonly")
-        assert_foiling([rna_swamp], "nonfoil")
+        assert_foiling(basics, "both")
       when "unh"
         special, regular = set.printings.partition{|c| c.name == "Super Secret Tech"}
         assert_foiling(regular, "both")
@@ -166,6 +169,12 @@ describe "Foils" do
         lands, rest = extra_cards.partition{|c| c.types.include?("land") }
         assert_foiling(lands, "nonfoil")
         assert_foiling_partial_precon(rest)
+      when "6ed"
+        assert_foiling(set.printings, "nonfoil")
+      when "8ed", "9ed"
+        special, regular = set.printings.partition{|c| c.number =~ /\AS/ }
+        assert_foiling(special, "nonfoil")
+        assert_foiling(regular, "both")
       else
         assert_by_type(set)
       end

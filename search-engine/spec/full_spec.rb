@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(19778)
-    db.number_of_printings.should eq(41900)
+    db.number_of_printings.should eq(41902)
   end
 
   it "block codes" do
@@ -242,17 +242,26 @@ describe "Full Database Test" do
   it "alt rarity" do
     assert_search_include "r:common alt:r:uncommon", "Doom Blade"
     assert_search_results "r:common alt:r:mythic",
+      "Boil",
       "Cabal Ritual",
+      "Capsize",
+      "Chain Lightning",
       "Chainer's Edict",
+      "Counterspell",
       "Dark Ritual",
+      "Daze",
       "Delver of Secrets",
       "Desert",
+      "Diabolic Edict",
       "Fyndhorn Elves",
       "Hymn to Tourach",
       "Impulse",
       "Insectile Aberration",
       "Kird Ape",
-      "Lotus Petal"
+      "Lotus Petal",
+      "Meekstone",
+      "Ornithopter",
+      "Spell Pierce"
   end
 
   it "pow:special" do
@@ -290,7 +299,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 2800
+    assert_count_printings "is:promo", 2794
   end
 
   it "is:funny" do
@@ -408,7 +417,6 @@ describe "Full Database Test" do
     assert_search_equal "t:basic", "(r:basic -t:urza's) or (t:basic r:special) or (t:basic e:an)"
     # assert_search_results "is:promo -r:special -e:ugin"
     assert_search_results %Q[r:special -is:promo -st:masterpiece -t:vanguard -e:anthologies -e:tsts -e:"clash pack" -e:vma -e:mgbc -e:g17],
-      "Giant Trap Door Spider",
       "Super Secret Tech"
   end
 

@@ -239,6 +239,7 @@ class Indexer
           "flavor",
           "foiling",
           "frame",
+          "frame_effect",
           "multiverseid",
           "number",
           "oversized",

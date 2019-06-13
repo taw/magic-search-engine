@@ -5,7 +5,7 @@
 class PatchExcludeFromBoosters < Patch
   def call
     each_printing do |card|
-      if exclude_from_boosters(card["set_code"], card["number"].to_i)
+      if exclude_from_boosters(card["set_code"], card["number"])
         card["exclude_from_boosters"] = true
       end
 
@@ -26,27 +26,31 @@ class PatchExcludeFromBoosters < Patch
   end
 
   def exclude_from_boosters(set_code, number)
+    number_i = number.to_i
+
     case set_code
+    when "m15"
+      number_i > 269
     when "kld"
-      number > 264
+      number_i > 264
     when "aer"
-      number > 184
+      number_i > 184
     when "akh"
-      number > 269
+      number_i > 269
     when "hou"
-      number > 199
+      number_i > 199
     when "xln"
-      number > 279
+      number_i > 279
     when "rix"
-      number > 196
+      number_i > 196
     when "dom"
-      number > 269
+      number_i > 269
     when "ori"
-      number > 272
+      number_i > 272
     when "m19"
-      number > 280
+      number_i > 280
     when "grn", "rna"
-      number > 259
+      number_i > 259
     else
       false
     end
