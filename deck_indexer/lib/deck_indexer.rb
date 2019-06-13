@@ -34,6 +34,12 @@ class DeckIndexer
     end
     printings = card_info["printings"].group_by(&:first)
 
+    if card["set"]
+      printings_in_specified_set = printings[card["set"].downcase]
+      return printings_in_specified_set if printings_in_specified_set
+      raise "Set #{card["set"]} explicitly specified but no such printing for #{card_name}"
+    end
+
     # Special logic for those
     # Cards from Clash Packs take priority even over their official set
     if deck["type"] == "Clash Pack"
@@ -113,6 +119,13 @@ class DeckIndexer
   def resolve_card(card, deck)
     printings = resolve_set(card, deck)
     raise if printings.empty?
+
+    if card["number"]
+      specified_card = printings.find{|s,c| c["number"].downcase == card["number"].downcase}
+      return specified_card if specified_card
+      raise "Number #{card["number"]} requested for #{card["name"]} but no such card found"
+    end
+
     return printings[0] if printings.size == 1
     # Not unique, but we hopefully got the set right, so we mostly don't care
     # At some point we should support disambiguation hints upstream
