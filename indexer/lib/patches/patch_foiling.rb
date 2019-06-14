@@ -36,7 +36,18 @@ class PatchFoiling < Patch
           card["indexer_foiling"] = "nonfoil"
         else
           if card["exclude_from_boosters"]
-            card["indexer_foiling"] = "nonfoil"
+            # it's for precons to figure it out, not for us
+            # There will be usually 1 foilonly planeswalker +
+            # a bunch of nonfoil pw cards there, but no point duplicating that list here
+
+            # TODO: temporary v3 hacks
+            if number =~ /★/ and %W[pls].include?(set_code)
+              card["indexer_foiling"] = "foilonly"
+            end
+
+            if set_code == "bfz" or set_code == "ogw"
+              card["indexer_foiling"] = "nonfoil"
+            end
           else
             card["indexer_foiling"] = "both"
           end
@@ -47,7 +58,7 @@ class PatchFoiling < Patch
       case set_code
       when "ced", "cei"
         card["indexer_foiling"] = "nonfoil"
-      when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "hho", "plpa", "pjgp", "ppro", "pgtw", "pwor", "prel", "pfnm", "pwos", "ppre"
+      when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "plpa", "pjgp", "ppro", "pgtw", "pwor", "prel", "pfnm", "pwos", "ppre"
         card["indexer_foiling"] = "foilonly"
       when "ced", "cei", "chr", "pgru", "palp", "pdrc", "pelp", "plgm", "ugin", "pcel", "van", "s99", "mgb"
         card["indexer_foiling"] = "nonfoil"
@@ -140,6 +151,13 @@ class PatchFoiling < Patch
       indexer_foiling = card.delete("indexer_foiling")
       mtgjson_foiling = card.delete("mtgjson_foiling")
       name = "#{card["name"]} [#{card["set_code"]}:#{card["number"]}]"
+
+      # https://github.com/mtgjson/mtgjson/issues/374
+      if card["set_code"] == "mir"
+        card["foiling"] = indexer_foiling
+        next
+      end
+
       if mtgjson_foiling.nil?
         if indexer_foiling.nil?
           warn "Foiling for #{name} missing, assuming foilboth"

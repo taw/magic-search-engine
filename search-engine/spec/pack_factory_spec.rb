@@ -26,8 +26,14 @@ describe PackFactory do
     let(:regular_sets) { db.sets.values.select{|s|
       s.type == "core" or s.type == "expansion"
     }.to_set }
-    let(:expected) {
+    let(:expected_official) {
       regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15]
+    }
+    let(:expected_mtgjson_variant) {
+      ["arn", "mir", "ody", "pls", "por"]
+    }
+    let(:expected) {
+      expected_official | expected_mtgjson_variant
     }
     let(:sets_with_boosters) { db.sets.values.select(&:has_boosters?) }
     let(:sets_with_nonbooster_cards) {
@@ -42,7 +48,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[dgm unh jou frf tsp cn2 bbd war].include?(set_code)
+      next if %W[dgm unh jou frf tsp cn2 bbd war arn].include?(set_code)
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       pack = factory.for(set_code)
       next unless pack
