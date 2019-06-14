@@ -176,7 +176,7 @@ class QueryTokenizer
         tokens << [:test, ConditionBorder.new("none")]
       elsif s.scan(/border\s*[:=]\s*(black|silver|white|none)\b/i)
         tokens << [:test, ConditionBorder.new(s[1].downcase)]
-      elsif s.scan(/sort\s*[:=]\s*(?:"(.*?)"|([\-\,\.\p{L}\p{Digit}_]+))/i)
+      elsif s.scan(/(?:sort|order)\s*[:=]\s*(?:"(.*?)"|([\-\,\.\p{L}\p{Digit}_]+))/i)
         tokens << [:metadata, {sort: (s[1]||s[2]).downcase}]
       elsif s.scan(/view\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)
         tokens << [:metadata, {view: (s[1]||s[2]).downcase}]
