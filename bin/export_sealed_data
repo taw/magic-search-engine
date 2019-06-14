@@ -5,21 +5,20 @@ require_relative "../search-engine/lib/card_database"
 class ExportSealedData
   def initialize
     @db = CardDatabase.load
-    @factory = factory = PackFactory.new(@db)
+    @factory = PackFactory.new(@db)
   end
 
-  def serialize_information(pack, sheets={})
+  def flatten_pack(pack)
     if pack.is_a?(WeightedPack)
-      pack = pack.flatten_weighted_pack
+      pack.flatten_weighted_pack
     else
-      pack = WeightedPack.new(pack => 1)
+      WeightedPack.new(pack => 1)
     end
-    pack.packs.each do |subpack, weight|
-      subpack.sheets.each do |sheet, count|
-        sheets[sheet] ||= "sheet-#{sheets.size+1}"
-      end
-    end
-    pack
+  end
+
+  def extract_sheets(pack)
+    sheets = pack.packs.keys.map(&:sheets).flat_map(&:keys)
+    sheets.map{|s| [s, @factory.sheet_cache.invert[s].join("_")] }.to_h
   end
 
   def serialize_subpack(pack, weight, sheets)
@@ -30,33 +29,21 @@ class ExportSealedData
   end
 
   def serialize_sheet(sheet)
-    if sheet.is_a?(PartnerCardSheet)
-      return {
-        partner: true,
-        cards: 'todo',
-      }
-    end
+    ev = sheet.probabilities
+    # Normalize rationals to weights
+    lcm = ev.values.map(&:denominator).inject(&:lcm)
+    ev = ev.map{|k,v| vv = v*lcm; raise unless vv.to_i == vv; [k, vv.to_i] }.to_h
 
-    elements = sheet.elements
-    weights = sheet.weights || [1] * elements.size
-    cards = elements.zip(weights).map do |e,w|
-      if e.is_a?(PhysicalCard)
-        {
-          card: "#{e.set_code}:#{e.number}",
-          foil: e.foil ? true : nil,
-          weight: w,
-        }.compact
-      else
-        {
-          subsheet: serialize_sheet(e),
-          weight: w,
-        }
-      end
-    end
+    cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
+      name = "#{e.set_code}:#{e.number}"
+      name = "#{name}:foil" if e.foil
+      [name, w]
+    end.sort.to_h
     {
-      balance_color: sheet.is_a?(ColorBalancedCardSheet),
+      partner: sheet.is_a?(PartnerCardSheet) ? true : nil,
+      balance_colors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
       cards: cards,
-    }
+    }.compact
   end
 
   def serialize_sheets(sheets)
@@ -69,8 +56,8 @@ class ExportSealedData
     exported_data = []
     @db.sets_with_packs.each do |set|
       pack = @factory.for(set.code)
-      sheets = {}
-      pack = serialize_information(pack, sheets)
+      pack = flatten_pack(pack)
+      sheets = extract_sheets(pack)
       exported_data << {
         name: set.name,
         code: set.code,
