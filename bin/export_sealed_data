@@ -34,14 +34,11 @@ class ExportSealedData
     lcm = ev.values.map(&:denominator).inject(&:lcm)
     ev = ev.map{|k,v| vv = v*lcm; raise unless vv.to_i == vv; [k, vv.to_i] }.to_h
 
-    cards = ev.map do |e,w|
-      {
-        card: "#{e.set_code}:#{e.number}",
-        foil: e.foil ? true : nil,
-        weight: w,
-      }.compact
-    end
-
+    cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
+      name = "#{e.set_code}:#{e.number}"
+      name = "#{name}:foil" if e.foil
+      [name, w]
+    end.sort.to_h
     {
       partner: sheet.is_a?(PartnerCardSheet) ? true : nil,
       balance_colors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
