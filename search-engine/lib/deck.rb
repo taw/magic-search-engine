@@ -53,7 +53,7 @@ class Deck
   def to_text
     output = []
     output << "// NAME: #{@name} - #{@set.name} #{@type}"
-    output << "// URL: http://mtg.wtf/deck/#{set.code}/#{slug}"
+    output << "// URL: https://lore-seeker.cards/deck/#{set.code}/#{slug}"
     output << "// DATE: #{@release_date.to_s}" if @release_date
     @cards.each do |count, card|
       output << "#{count} #{card}"
