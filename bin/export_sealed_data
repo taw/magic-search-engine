@@ -5,21 +5,24 @@ require_relative "../search-engine/lib/card_database"
 class ExportSealedData
   def initialize
     @db = CardDatabase.load
-    @factory = factory = PackFactory.new(@db)
+    @factory = PackFactory.new(@db)
   end
 
-  def serialize_information(pack, sheets={})
+  def flatten_pack(pack)
     if pack.is_a?(WeightedPack)
-      pack = pack.flatten_weighted_pack
+      pack.flatten_weighted_pack
     else
-      pack = WeightedPack.new(pack => 1)
+      WeightedPack.new(pack => 1)
     end
-    pack.packs.each do |subpack, weight|
-      subpack.sheets.each do |sheet, count|
-        sheets[sheet] ||= "sheet-#{sheets.size+1}"
-      end
+  end
+
+  def extract_sheets(pack)
+    sheets = pack.packs.keys.map(&:sheets).flat_map(&:keys)
+    sheet_names = {}
+    sheets.each do |sheet|
+      sheet_names[sheet] ||= "sheet-#{sheet_names.size+1}"
     end
-    pack
+    sheet_names
   end
 
   def serialize_subpack(pack, weight, sheets)
@@ -60,8 +63,8 @@ class ExportSealedData
     exported_data = []
     @db.sets_with_packs.each do |set|
       pack = @factory.for(set.code)
-      sheets = {}
-      pack = serialize_information(pack, sheets)
+      pack = flatten_pack(pack)
+      sheets = extract_sheets(pack)
       exported_data << {
         name: set.name,
         code: set.code,
