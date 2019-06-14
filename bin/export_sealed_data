@@ -30,33 +30,24 @@ class ExportSealedData
   end
 
   def serialize_sheet(sheet)
-    if sheet.is_a?(PartnerCardSheet)
-      return {
-        partner: true,
-        cards: 'todo',
-      }
+    ev = sheet.probabilities
+    # Normalize rationals to weights
+    lcm = ev.values.map(&:denominator).inject(&:lcm)
+    ev = ev.map{|k,v| vv = v*lcm; raise unless vv.to_i == vv; [k, vv.to_i] }.to_h
+
+    cards = ev.map do |e,w|
+      {
+        card: "#{e.set_code}:#{e.number}",
+        foil: e.foil ? true : nil,
+        weight: w,
+      }.compact
     end
 
-    elements = sheet.elements
-    weights = sheet.weights || [1] * elements.size
-    cards = elements.zip(weights).map do |e,w|
-      if e.is_a?(PhysicalCard)
-        {
-          card: "#{e.set_code}:#{e.number}",
-          foil: e.foil ? true : nil,
-          weight: w,
-        }.compact
-      else
-        {
-          subsheet: serialize_sheet(e),
-          weight: w,
-        }
-      end
-    end
     {
-      balance_color: sheet.is_a?(ColorBalancedCardSheet),
+      partner: sheet.is_a?(PartnerCardSheet) ? true : nil,
+      balance_colors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
       cards: cards,
-    }
+    }.compact
   end
 
   def serialize_sheets(sheets)
