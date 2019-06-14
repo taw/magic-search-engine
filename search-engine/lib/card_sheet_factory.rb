@@ -20,7 +20,12 @@ class CardSheetFactory
   end
 
   def find_cards(query, assert_count=nil, foil: false)
-    cards = @db.search("++ is:booster #{query}").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
+    if foil
+      base_query = "++ is:booster is:foil"
+    else
+      base_query = "++ is:booster is:nonfoil"
+    end
+    cards = @db.search("#{base_query} (#{query})").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
     if assert_count and assert_count != cards.size
       raise "Expected query #{query} to return #{assert_count}, got #{cards.size}"
     end
