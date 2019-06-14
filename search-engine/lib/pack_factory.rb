@@ -1,4 +1,6 @@
 class PackFactory
+  attr_reader :sheet_cache
+
   def initialize(db)
     @db = db
     @sheet_factory = CardSheetFactory.new(@db)

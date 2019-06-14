@@ -18,11 +18,7 @@ class ExportSealedData
 
   def extract_sheets(pack)
     sheets = pack.packs.keys.map(&:sheets).flat_map(&:keys)
-    sheet_names = {}
-    sheets.each do |sheet|
-      sheet_names[sheet] ||= "sheet-#{sheet_names.size+1}"
-    end
-    sheet_names
+    sheets.map{|s| [s, @factory.sheet_cache.invert[s].join("_")] }.to_h
   end
 
   def serialize_subpack(pack, weight, sheets)
