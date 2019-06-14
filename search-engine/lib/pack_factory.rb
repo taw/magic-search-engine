@@ -276,9 +276,6 @@ class PackFactory
     when "ldo", "dhm", "net"
       # Custom sets with default pack distribution, no foils, with basics
       build_pack(set_code, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_mythic: 1})
-    when "cc18"
-      # Same as above except no basics
-      build_pack(set_code, {common_unbalanced: 10, uncommon: 3, rare_mythic: 1})
     when "dms", "vst"
       # Same as above except follow Reuben's rules https://web.archive.org/web/20170427075406/thegraymerchants.com/?p=836
       # 1. A pack must never have more than 4 commons of the same color
@@ -307,6 +304,9 @@ class PackFactory
     when "jan", "hlw", "sou"
       # These sets have opted into taw's color-balanced algorithm
       build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
+    when "cc18"
+      # Same as above except no basics
+      build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1})
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this
