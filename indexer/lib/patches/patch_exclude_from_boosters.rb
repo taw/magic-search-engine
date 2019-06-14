@@ -18,8 +18,9 @@ class PatchExcludeFromBoosters < Patch
         card["exclude_from_boosters"] = true
       end
 
-      # Japanese alt arts are in boosters, just not in English boosters
-      if card["set_code"] == "war" and card["number"] =~ /\A\d+\z/ and card["number"].to_i > 264
+      # Japanese alt arts are in boosters,
+      # just not in English boosters, so count them out
+      if card["number"] =~ /†|★/
         card["exclude_from_boosters"] = true
       end
     end
@@ -51,6 +52,8 @@ class PatchExcludeFromBoosters < Patch
       number_i > 280
     when "grn", "rna"
       number_i > 259
+    when "war"
+      number_i > 264
     else
       false
     end

@@ -73,13 +73,13 @@ describe "Foils" do
       case set.code
       when "g17", "g18"
         assert_foiling(set.printings, "foilonly")
-      when "phuk"
+      when "phuk", "arn", "mir"
         assert_foiling(set.printings, "nonfoil")
       when "ced", "cei", "chr", "ugl", "pelp", "pgru", "palp", "por", "p02", "ptk", "pdrc", "plgm", "ppod", "ugin", "pcel", "van", "s99", "mgb"
         assert_foiling(set.printings, "nonfoil")
-      when "ust", "tsb", "cns"
+      when "ust", "tsb", "cns", "ody"
         assert_foiling(set.printings, "both")
-      when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "hho", "plpa", "pjgp", "ppro", "pgtw", "pwor", "pwos", "prel", "pfnm"
+      when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "plpa", "pjgp", "ppro", "pgtw", "pwor", "pwos", "prel", "pfnm"
         assert_foiling(set.printings, "foilonly")
       when "w16", "w17", "cp1", "cp2", "cp3", "cst", "itp", "gk1", "gk2", "btd", "dkm", "cma"
         assert_foiling_partial_precon(set.printings)
@@ -89,6 +89,10 @@ describe "Foils" do
         assert_foiling_partial_precon(regular)
         assert_foiling(promo, "foilonly")
         assert_foiling(sampler, "nonfoil")
+      when "pls"
+        foil_alt_art, regular_cards = set.printings.partition{|c| !!(c.number =~ /★/) }
+        assert_foiling(foil_alt_art, "foilonly")
+        assert_foiling(regular_cards, "both")
       when "m15", "ori"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         assert_foiling(booster_cards, "both")
@@ -108,8 +112,10 @@ describe "Foils" do
       when "war"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         buy_a_box_promo = extra_cards.find{|c| c.name == "Tezzeret, Master of the Bridge"}
+        japanese_alt_art = extra_cards.select{|c| c.number =~ /★/}
         assert_foiling(booster_cards, "both")
-        assert_foiling_partial_precon(extra_cards - [buy_a_box_promo])
+        assert_foiling(japanese_alt_art, "both")
+        assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, *japanese_alt_art])
         assert_foiling([buy_a_box_promo], "foilonly")
       when "grn"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
