@@ -152,9 +152,9 @@ def run(*, do_name_check=True, path=None, port=18803, verbose=False):
             cmd(['rake', 'rules:update', 'index'], env=env, cwd=str(path), announce=verbose)
             cmd(['python3', 'bin/make-trice-download'], cwd=str(path), announce=verbose)
             cmd(['bundle', 'install'], cwd=str(path / 'search-engine'), announce=verbose)
-            cmd(['bundle', 'update'], cwd=str(path / 'search-engine'), announce=verbose)
+            #cmd(['bundle', 'update'], cwd=str(path / 'search-engine'), announce=verbose)
             cmd(['bundle', 'install'], cwd=str(path / 'frontend'), announce=verbose)
-            cmd(['bundle', 'update'], cwd=str(path / 'frontend'), announce=verbose)
+            #cmd(['bundle', 'update'], cwd=str(path / 'frontend'), announce=verbose)
             cmd(['rake', 'db:migrate', 'assets:precompile'], env=env, cwd=str(path / 'frontend'), announce=verbose)
     except Exception as e:
         notify_crash(e)
