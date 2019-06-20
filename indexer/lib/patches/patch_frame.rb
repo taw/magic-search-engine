@@ -23,6 +23,16 @@ class PatchFrame < Patch
         card["frame"] = frame_by_release_date(card["release_date"])
       end
     end
+
+    # To match how mtgjson v4 does it (but still keep compatibility for transition)
+    # we get rid of set.frame and move it all to card.frame at this stage
+    each_printing do |card|
+      card["frame"] ||= card["set"]["frame"]
+    end
+
+    each_set do |set|
+      set.delete("frame")
+    end
   end
 
   def frame_by_release_date(release_date)

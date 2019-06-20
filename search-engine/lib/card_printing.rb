@@ -29,7 +29,7 @@ class CardPrinting
     @flavor_normalized = @flavor.normalize_accents
     @foiling = data["foiling"]
     @border = data["border"] || @set.border
-    @frame = data["frame"] || @set.frame
+    @frame = data["frame"]
     @frame_effect = data["frame_effect"]
     rarity = data["rarity"]
     @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
