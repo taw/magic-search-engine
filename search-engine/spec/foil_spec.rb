@@ -147,6 +147,12 @@ describe "Foils" do
         normal_kaya, foil_kaya = special.sort_by{|c| c.number.to_i}
         assert_foiling([normal_kaya], "nonfoil")
         assert_foiling([foil_kaya], "foilonly")
+      when "shm"
+        special, regular = set.printings.partition{|c| c.name == "Reflecting Pool"}
+        assert_foiling(regular, "both")
+        normal_pool, foil_pool = special.sort_by{|c| c.number}
+        assert_foiling([normal_pool], "nonfoil")
+        assert_foiling([foil_pool], "foilonly")
       when "bbd"
         special, regular = set.printings.partition{|c| c.name == "Rowan Kenrith" or c.name == "Will Kenrith"}
         assert_foiling(regular, "both")
@@ -175,7 +181,7 @@ describe "Foils" do
         lands, rest = extra_cards.partition{|c| c.types.include?("land") }
         assert_foiling(lands, "nonfoil")
         assert_foiling_partial_precon(rest)
-      when "6ed"
+      when "5ed", "6ed"
         assert_foiling(set.printings, "nonfoil")
       when "8ed", "9ed"
         special, regular = set.printings.partition{|c| c.number =~ /\AS/ }
