@@ -74,7 +74,6 @@ class Indexer
       "code",
       "custom",
       "foiling",
-      "frame",
       "gatherer_code",
       "has_boosters",
       "in_other_boosters",
