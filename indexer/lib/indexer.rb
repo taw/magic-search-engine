@@ -246,7 +246,6 @@ class Indexer
           "print_sheet",
           "rarity",
           "release_date",
-          "timeshifted",
           "watermark",
         ).compact
       ]

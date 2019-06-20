@@ -1,11 +1,14 @@
 # mtgjson docs also describe some that don't seem to be in use:
-# - frame:colorshifted
 # - frame:draft
 #
 # These are sanity checks not comprehensive specs
 
 describe "frame effect queries" do
   include_context "db"
+
+  it "frame:colorshifted" do
+    assert_search_equal "frame:colorshifted", "e:plc frame:colorshifted"
+  end
 
   it "frame:compasslanddfc" do
     assert_search_equal "e:xln frame:compasslanddfc", "e:xln //"
