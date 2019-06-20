@@ -57,8 +57,6 @@ class PatchMtgjsonVersions < Patch
     @cards.delete_if { |card| card["types"] =~ /Token/ }
 
     each_printing do |card|
-      card_is_v4 = !!card["multiverseId"]
-
       card["cmc"] = get_cmc(card)
 
       # This is text because of some X planeswalkers
@@ -77,6 +75,10 @@ class PatchMtgjsonVersions < Patch
       card.delete("manaCost") if card["manaCost"] == ""
       card.delete("names") if card["names"] == []
 
+      if card["frameVersion"] == "future"
+        card["timeshifted"] = true
+      end
+
       if card["flavorText"]
         card["flavor"] = card.delete("flavorText")
       end
@@ -94,12 +96,6 @@ class PatchMtgjsonVersions < Patch
       # Drop v3 layouts, use v4 layout here
       if card["layout"] == "plane" or card["layout"] == "phenomenon"
         card["layout"] = "planar"
-      end
-
-      # Bug in v4
-      # https://github.com/mtgjson/mtgjson/issues/356
-      if card["layout"] == "planar" and card["subtypes"]
-        card["subtypes"] = [card["subtypes"].join(" ")]
       end
 
       # Renamed in v4
