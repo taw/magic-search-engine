@@ -133,15 +133,6 @@ class PatchMtgjsonVersions < Patch
       if card["number"]
         card["number"] = card["number"].sub(/(\D+)\z/){ $1.downcase }
       end
-
-      # Rulings ordering is arbitrarily different, just pick canonical ordering
-      # (do it after Unicode normalization)
-      # Just not now as it messes up witsh diffs
-      # if card["rulings"]
-      #   card["rulings"] = card["rulings"].sort_by{|ruling|
-      #     [ruling["date"], ruling["text"]]
-      #   }
-      # end
     end
 
     # Remove sets without cards (v4 token only sets)
