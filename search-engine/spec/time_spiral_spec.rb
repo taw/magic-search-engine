@@ -75,8 +75,12 @@ describe "Time Spiral block" do
     assert_search_equal "not:old", "-is:old"
   end
 
+  it "is:colorshifted" do
+    assert_count_printings "is:colorshifted", 45
+  end
+
   it "is:timeshifted" do
-    assert_count_printings "is:timeshifted", 45
+    assert_count_printings "is:timeshifted", 122
   end
 
   it "manaless suspend cards" do

@@ -9,7 +9,7 @@ class PatchFrame < Patch
     each_set do |set|
       set["frame"] = begin
         if set["code"] == "tsb"
-         "old"
+          "old"
         else
           frame_by_release_date(set["release_date"])
         end
