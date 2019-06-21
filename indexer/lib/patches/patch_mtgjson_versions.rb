@@ -51,6 +51,10 @@ class PatchMtgjsonVersions < Patch
       if set["official_code"] == "PPRO"
         set["releaseDate"] = "2018-01-01"
       end
+
+      if set["official_code"] == "P02"
+        set["releaseDate"] = "1998-06-24"
+      end
     end
 
     # drop all tokens
