@@ -53,9 +53,9 @@ describe "is:booster" do
       when "grn", "rna"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=259"
       when "ogw"
-        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} (-t:basic or number:/A/)"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} (-t:basic or -number:/a/)"
       when "bfz"
-        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} (-t:basic or number:/A/)"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} (-t:basic or -number:/a/)"
       when "war"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=264 -number:/†|★/"
       else

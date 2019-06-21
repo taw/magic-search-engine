@@ -13,6 +13,7 @@ class PatchBasicLandRarity < Patch
       "Snow-Covered Swamp",
       "Snow-Covered Island",
       "Snow-Covered Forest",
+      "Wastes",
     ].to_set
 
     each_printing do |card|
