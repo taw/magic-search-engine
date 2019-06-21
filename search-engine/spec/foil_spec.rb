@@ -89,9 +89,12 @@ describe "Foils" do
         assert_foiling_partial_precon(regular)
         assert_foiling(promo, "foilonly")
         assert_foiling(sampler, "nonfoil")
-      when "pls"
+      when "pls", "shm"
         foil_alt_art, regular_cards = set.printings.partition{|c| !!(c.number =~ /★/) }
+        foil_alt_art_names = foil_alt_art.map(&:name).to_set
+        has_foil_alt_art, regular_cards = regular_cards.partition{|c| foil_alt_art_names.include?(c.name) }
         assert_foiling(foil_alt_art, "foilonly")
+        assert_foiling(has_foil_alt_art, "nonfoil")
         assert_foiling(regular_cards, "both")
       when "m15", "ori"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
@@ -175,7 +178,7 @@ describe "Foils" do
         lands, rest = extra_cards.partition{|c| c.types.include?("land") }
         assert_foiling(lands, "nonfoil")
         assert_foiling_partial_precon(rest)
-      when "6ed"
+      when "5ed", "6ed"
         assert_foiling(set.printings, "nonfoil")
       when "8ed", "9ed"
         special, regular = set.printings.partition{|c| c.number =~ /\AS/ }

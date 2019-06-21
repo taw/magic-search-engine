@@ -1,6 +1,6 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date
-  attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border, :timeshifted, :printed_name, :printed_text, :printed_typeline
+  attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border, :printed_name, :printed_text, :printed_typeline
   attr_reader :rarity_code, :print_sheet, :partner, :oversized, :frame_effect, :foiling
 
   # Performance cache of derived information
@@ -29,9 +29,8 @@ class CardPrinting
     @flavor_normalized = @flavor.normalize_accents
     @foiling = data["foiling"]
     @border = data["border"] || @set.border
-    @frame = data["frame"] || @set.frame
+    @frame = data["frame"]
     @frame_effect = data["frame_effect"]
-    @timeshifted = data["timeshifted"] || false
     @printed_name = data["printedName"] || @card.name
     @printed_text = (data["originalText"] || "").gsub("Æ", "Ae").tr("Äàáâäèéêíõöúûü’\u2212", "Aaaaaeeeioouuu'-")
     unless card.funny

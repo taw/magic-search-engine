@@ -38,14 +38,29 @@ class PatchMtgjsonVersions < Patch
       if set["official_code"] == "TD2"
         set["releaseDate"] = "2013-01-11"
       end
+
+      # Some random tweaks
+      if set["official_code"] == "C18"
+        set["releaseDate"] = "2018-08-10"
+      end
+
+      if set["official_code"] == "DDT"
+        set["releaseDate"] = "2017-11-10"
+      end
+
+      if set["official_code"] == "PPRO"
+        set["releaseDate"] = "2018-01-01"
+      end
+
+      if set["official_code"] == "P02"
+        set["releaseDate"] = "1998-06-24"
+      end
     end
 
     # drop all tokens
     @cards.delete_if { |card| card["types"] =~ /Token/ }
 
     each_printing do |card|
-      card_is_v4 = !!card["multiverseId"]
-
       card["cmc"] = get_cmc(card)
 
       # This is text because of some X planeswalkers
@@ -64,6 +79,10 @@ class PatchMtgjsonVersions < Patch
       card.delete("manaCost") if card["manaCost"] == ""
       card.delete("names") if card["names"] == []
 
+      if card["frameVersion"] == "future"
+        card["timeshifted"] = true
+      end
+
       if card["flavorText"]
         card["flavor"] = card.delete("flavorText")
       end
@@ -81,12 +100,6 @@ class PatchMtgjsonVersions < Patch
       # Drop v3 layouts, use v4 layout here
       if card["layout"] == "plane" or card["layout"] == "phenomenon"
         card["layout"] = "planar"
-      end
-
-      # Bug in v4
-      # https://github.com/mtgjson/mtgjson/issues/356
-      if card["layout"] == "planar" and card["subtypes"]
-        card["subtypes"] = [card["subtypes"].join(" ")]
       end
 
       # Renamed in v4
@@ -124,15 +137,6 @@ class PatchMtgjsonVersions < Patch
       if card["number"]
         card["number"] = card["number"].sub(/(\D+)\z/){ $1.downcase }
       end
-
-      # Rulings ordering is arbitrarily different, just pick canonical ordering
-      # (do it after Unicode normalization)
-      # Just not now as it messes up witsh diffs
-      # if card["rulings"]
-      #   card["rulings"] = card["rulings"].sort_by{|ruling|
-      #     [ruling["date"], ruling["text"]]
-      #   }
-      # end
     end
 
     # Remove sets without cards (v4 token only sets)

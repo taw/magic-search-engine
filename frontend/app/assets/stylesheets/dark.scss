@@ -1,0 +1,30 @@
+@media (prefers-color-scheme: dark) {
+  body,
+  .form-control,
+  .form-control:focus {
+    background-color: black;
+  }
+
+  body {
+    color: #dedad6;
+  }
+
+  a {
+    color: #007bff;
+  }
+
+  a:hover {
+    color: #00a0ff;
+  }
+
+  .alert-danger {
+    color: #f8d7da;
+    background-color: #721c24;
+    border-color: #6f0b15;
+  }
+
+  .form-control,
+  .form-control:focus {
+    color: #a8afb6;
+  }
+}

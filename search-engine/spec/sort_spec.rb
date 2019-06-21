@@ -147,6 +147,10 @@ describe "Sorting" do
     results1.sort.should eq(results2.sort)
   end
 
+  it "order: aliases sort:" do
+    search("sort:cmc,-name").should eq search("order:cmc,-name")
+  end
+
   let(:expected_color_order) {
     # Magic cards are ordered:
     # * monocolored (wubrg)

@@ -1,6 +1,6 @@
 class ConditionIsTimeshifted < ConditionSimple
   def match?(card)
-    card.timeshifted and card.set_code.downcase == "plc"
+    card.set_code.downcase == "tsb"
   end
 
   def to_s

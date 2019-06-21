@@ -1,5 +1,6 @@
 // Custom bootstrap variables must be set or imported before bootstrap itself.
 @import "bootstrap";
+@import "dark";
 @import "famfamfam-flags";
 @import "mana";
 @import "select2";
@@ -21,6 +22,9 @@
 }
 a.site_logo {
   color: black;
+  @media (prefers-color-scheme: dark) {
+    color: #dedad6;
+  }
 }
 .signin_status {
   text-align: right;
@@ -82,6 +86,9 @@ form.search {
 
 .infolabel {
   color: #444;
+  @media (prefers-color-scheme: dark) {
+    color: #bbb;
+  }
   font-size: small;
 }
 
@@ -114,6 +121,9 @@ form.search {
   }
   .infolabel {
     color: #444;
+    @media (prefers-color-scheme: dark) {
+      color: #bbb;
+    }
     font-size: small;
   }
   .typeline {
@@ -149,12 +159,21 @@ form.search {
   }
   .legality-legal {
     background-color: #8f8;
+    @media (prefers-color-scheme: dark) {
+      background-color: #080;
+    }
   }
   .legality-banned {
     background-color: #f88;
+    @media (prefers-color-scheme: dark) {
+      background-color: #800;
+    }
   }
   .legality-restricted {
     background-color: #fa4;
+    @media (prefers-color-scheme: dark) {
+      background-color: #880;
+    }
   }
 }
 .foreign_names {
@@ -163,13 +182,22 @@ form.search {
 
 .printings_list {
   color: #888;
+  @media (prefers-color-scheme: dark) {
+    color: #bbb;
+  }
   font-size: small;
   .selected {
     font-weight: bold;
     color: black;
+    @media (prefers-color-scheme: dark) {
+      color: #dedad6;
+    }
   }
   .matching {
     color: black;
+    @media (prefers-color-scheme: dark) {
+      color: #dedad6;
+    }
   }
   .not_matching a {
     color: inherit;
@@ -180,14 +208,23 @@ form.search {
 
 .printings_box {
   color: #888;
+  @media (prefers-color-scheme: dark) {
+    color: #bbb;
+  }
   max-width: 200px;
   font-size: xx-small;
   .selected {
     font-weight: bold;
     color: black;
+    @media (prefers-color-scheme: dark) {
+      color: #dedad6;
+    }
   }
   .matching {
     color: black;
+    @media (prefers-color-scheme: dark) {
+      color: #dedad6;
+    }
   }
   .not_matching a {
     color: inherit;
@@ -347,6 +384,10 @@ form.search {
   font-style: italic;
   background-color: #ccc;
   color: black;
+  @media (prefers-color-scheme: dark) {
+    background-color: #333;
+    color: #dedad6;
+  }
   text-align: center;
   height: 100%;
   width: 100%;
@@ -362,6 +403,14 @@ form.search {
 }
 h3 .manacost {
   font-size: 19.6px;
+}
+@media (prefers-color-scheme: dark) {
+  .mana-loyalty-up,
+  .mana-loyalty-down,
+  .mana-loyalty-zero,
+  .mana-loyalty-start {
+    color: #505050;
+  }
 }
 .decklist {
   border: 1px solid black;

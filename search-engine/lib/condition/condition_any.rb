@@ -37,6 +37,8 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsBounceland.new
     when "checkland"
       @conds << ConditionIsCheckland.new
+    when "colorshifted"
+      @conds << ConditionIsColorshifted.new
     when "commander" # ???
       @conds << ConditionIsCommander.new
     when "digital"

@@ -15,16 +15,6 @@ class PatchFixCollectorNumbers < Patch
     cards = cards_by_set[set_code]
 
     case set_code
-    when "van"
-      cards.sort_by{|c| c["multiverseid"]}.each_with_index{|c,i| c["number"] = "#{i+1}"}
-    when "bfz", "ogw"
-      # No idea if this is correct
-      basic_land_cards = cards.select{|c| (c["supertypes"]||[]) .include?("Basic") }
-      basic_land_cards = basic_land_cards.sort_by{|c| [c["number"], c["multiverseid"]]}
-      basic_land_cards.each_slice(2) do |a,b|
-        raise unless a["number"] == b["number"]
-        b["number"] += "A"
-      end
     when "ust"
       cards_with_variants = %W[3 12 41 49 54 67 82 98 103 113 145 147 165]
       variant_counter = {}

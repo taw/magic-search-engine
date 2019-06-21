@@ -261,11 +261,9 @@ describe "Scryfall" do
   end
 
   it "is_colorshifted" do
-    # MCI is:timeshifted is SF is:colorshifted
-    # SF is:timeshifted is e:tsts
-    # no good way out so we just alias is:colorshifted to is:timeshifted
-    assert_search_equal "is:colorshifted", "is:timeshifted"
-    assert_count_printings "is:timeshifted", 45
+    # MCI/v3 is:timeshifted is SF/v4 is:colorshifted
+    assert_search_equal "is:colorshifted", "frame:colorshifted"
+    assert_search_equal "is:timeshifted", "e:tsb"
   end
 
   it "oracle_tilde" do
@@ -409,7 +407,7 @@ describe "Scryfall" do
   it "is_digital" do
     # scryfall includes "Gleemox" - https://scryfall.com/card/pgmx/1
     # and I have no idea what's that
-    assert_search_equal "is:digital", "e:me1,me2,me3,me4,vma,tpr,pana,pmoa,td0,td2"
+    assert_search_equal "is:digital", "e:me1,me2,me3,me4,vma,tpr,pana,pmoa,td0,td2,ana"
   end
 
   it "set: is alias of e:" do

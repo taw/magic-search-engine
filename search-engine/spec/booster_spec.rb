@@ -6,7 +6,7 @@ describe "is:booster" do
       set_pp = "#{set.name} [#{set.code}/#{set.type}]"
       should_have_boosters = (
         ["expansion", "core", "un", "reprint", "conspiracy", "masters", "starter", "two-headed giant", "modern"].include?(set.type) and
-        !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod].include?(set.code)
+        !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana].include?(set.code)
       )
       if should_have_boosters
         set.should have_boosters, "#{set_pp} should have boosters"
@@ -53,9 +53,9 @@ describe "is:booster" do
       when "grn", "rna"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=259"
       when "ogw"
-        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} (-t:basic or number:/A/)"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} (-t:basic or -number:/a/)"
       when "bfz"
-        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} (-t:basic or number:/A/)"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} (-t:basic or -number:/a/)"
       when "war"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=264 -number:/†|★/"
       else
