@@ -11,10 +11,11 @@ class PatchExcludeFromBoosters < Patch
 
       # They only have full art promos in boosters
       # Non full art are for precons
-      # (we arbitrarily append A to full art versions)
+      #
+      # in v4 non-booster version got -a suffix
       if %W[bfz ogw].include?(card["set_code"]) and
         card["supertypes"] == ["Basic"] and
-        card["number"] !~ /A/
+        card["number"] =~ /a/
         card["exclude_from_boosters"] = true
       end
 
