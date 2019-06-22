@@ -1,6 +1,6 @@
 class SetController < ApplicationController
   def index
-    @sets = $CardDatabase.sets.values.sort_by{|s| [-s.release_date.to_i_sort, s.name] }
+    @custom_sets, @official_sets = $CardDatabase.sets.values.sort_by{|s| [-s.release_date.to_i_sort, s.name] }.partition{|s| s.custom? }
     @title = "Sets"
   end
 

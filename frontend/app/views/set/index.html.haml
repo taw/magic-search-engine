@@ -1,8 +1,15 @@
 .row
   .col-12
-    %h3 Magic Sets
+    %h3 Custom Magic Sets
     %ul
-      - @sets.each do |set|
+      - @custom_sets.each do |set|
+        %li
+          = link_to_set(set) do
+            = "#{set.name}"
+          = "(#{set.code.upcase}, #{set.printings.size} cards)"
+    %h3 Official Magic Sets
+    %ul
+      - @official_sets.each do |set|
         %li
           = link_to_set(set) do
             = "#{set.name}"
