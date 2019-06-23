@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(19796)
-    db.number_of_printings.should eq(42082)
+    db.number_of_printings.should eq(42084)
   end
 
   it "block codes" do
@@ -471,7 +471,7 @@ describe "Full Database Test" do
 
   it "year" do
     "t:planeswalker year = 2010".should have_count_printings 15
-    "t:planeswalker year < 2013".should have_count_printings 66
+    "t:planeswalker year < 2013".should have_count_printings 68
     "t:planeswalker year > 2014".should equal_search "t:planeswalker year >= 2015"
   end
 
