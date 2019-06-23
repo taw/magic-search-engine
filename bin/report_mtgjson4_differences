@@ -125,6 +125,11 @@ class ReportMtgjson4Differences
         next if set_path.exist?
       end
 
+      # Foreign only sets are maybe interesting if they're Japanese promos
+      if set["isForeignOnly"] and %W[4bb fbb ren rin].include?(code)
+        next
+      end
+
       puts "#{code} - mtgjson only -  #{set["name"].inspect} - #{set["cards"].size} cards"
     end
 
