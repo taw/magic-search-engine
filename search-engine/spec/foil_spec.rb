@@ -89,7 +89,7 @@ describe "Foils" do
         assert_foiling_partial_precon(regular)
         assert_foiling(promo, "foilonly")
         assert_foiling(sampler, "nonfoil")
-      when "pls", "shm"
+      when "pls", "shm", "10e"
         foil_alt_art, regular_cards = set.printings.partition{|c| !!(c.number =~ /★/) }
         foil_alt_art_names = foil_alt_art.map(&:name).to_set
         has_foil_alt_art, regular_cards = regular_cards.partition{|c| foil_alt_art_names.include?(c.name) }
