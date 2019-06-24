@@ -143,6 +143,7 @@ class Format
         "mtgocommander"              => FormatMTGOCommander,
         "mtgoedh"                    => FormatMTGOCommander,
         "customstandard"             => FormatCustomStandard,
+        "custard"                    => FormatCustomStandard,
         "cstd"                       => FormatCustomStandard,
         "cs"                         => FormatCustomStandard,
         "custometernal"              => FormatCustomEternal,
@@ -162,6 +163,9 @@ class Format
         "cedh"                       => FormatECH,
         "custompauper"               => FormatCustomPauper,
         "cp"                         => FormatCustomPauper,
+        "custombrawl"                => FormatCustomBrawl,
+        "crawl"                      => FormatCustomBrawl,
+        "cb"                         => FormatCustomBrawl,
       }
     end
 
