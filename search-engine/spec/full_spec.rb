@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(19796)
-    db.number_of_printings.should eq(41957)
+    db.number_of_printings.should eq(41928)
   end
 
   it "block codes" do
@@ -79,13 +79,14 @@ describe "Full Database Test" do
   end
 
   it "print date" do
-    assert_search_results %Q[print="29 september 2012"],
-      "Archon of the Triumvirate",
-      "Carnival Hellsteed",
-      "Corpsejack Menace",
-      "Grove of the Guardian",
-      "Hypersonic Dragon"
-    assert_search_equal %Q[print="29 september 2012"], %Q[print=2012-09-29]
+    # M13 prerelease
+    assert_search_results %Q[print="12 july 2012"],
+      "Cathedral of War",
+      "Magmaquake",
+      "Mwonvuli Beast Tracker",
+      "Staff of Nin",
+      "Xathrid Gorgon"
+    assert_search_equal %Q[print="12 july 2012"], %Q[print=2012-07-12]
   end
 
   it "print" do
@@ -299,7 +300,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 2795
+    assert_count_printings "is:promo", 2493
   end
 
   it "is:funny" do
@@ -471,7 +472,7 @@ describe "Full Database Test" do
 
   it "year" do
     "t:planeswalker year = 2010".should have_count_printings 15
-    "t:planeswalker year < 2013".should have_count_printings 66
+    "t:planeswalker year < 2013".should have_count_printings 67
     "t:planeswalker year > 2014".should equal_search "t:planeswalker year >= 2015"
   end
 
