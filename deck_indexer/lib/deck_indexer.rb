@@ -129,7 +129,15 @@ class DeckIndexer
     return printings[0] if printings.size == 1
     # Not unique, but we hopefully got the set right, so we mostly don't care
     # At some point we should support disambiguation hints upstream
-    return printings[0]
+
+    # Avoid full art basics, precons generally don't have them
+    # They all happen to be before non-full arts in those sets:
+    if %w[bfz ogw akh hou].include?(printings[0][0])
+      return printings[-1]
+    end
+
+    # Otherwise just get first one
+    printings[0]
   end
 
   def index_card(card, deck)

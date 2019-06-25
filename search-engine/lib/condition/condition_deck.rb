@@ -42,6 +42,9 @@ class ConditionDeck < Condition
   def resolve_deck_name(db)
     deck_name = @deck_name.strip
 
+    # This is just for debugging, and UI is questionable for it
+    return db.decks if deck_name == "*"
+
     if deck_name.include?("/")
       set_query, deck_query = @deck_name.split("/", 2)
       sets = db.resolve_editions(set_query.strip)
