@@ -32,6 +32,9 @@ class PatchMtgjsonVersions < Patch
         set["type"] = "modern"
       end
 
+      # mtgjson v4 decided to make releaseDate per-set
+      # that leads to need for a lot of BS adjustments
+
       # I trust unsourced mtg wiki claim here more
       # since this is definitely wrong
       # https://mtg.gamepedia.com/Duel_Decks:_Mirrodin_Pure_vs._New_Phyrexia
@@ -54,6 +57,10 @@ class PatchMtgjsonVersions < Patch
 
       if set["official_code"] == "P02"
         set["releaseDate"] = "1998-06-24"
+      end
+
+      if set["official_code"] == "PZ2"
+        set["releaseDate"] = "2018-08-10"
       end
     end
 

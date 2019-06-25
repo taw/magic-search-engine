@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(19796)
-    db.number_of_printings.should eq(41928)
+    db.number_of_printings.should eq(42359)
   end
 
   it "block codes" do
@@ -215,12 +215,9 @@ describe "Full Database Test" do
   end
 
   it "alt test of time" do
-    assert_search_results "year=1993 alt:year=2015",
+    assert_search_results "year=1993 alt:(year=2015 -is:digital)",
       "Basalt Monolith",
-      "Counterspell",
-      "Dark Ritual",
       "Desert Twister",
-      "Disenchant",
       "Earthquake",
       "Forest",
       "Island",
@@ -232,12 +229,9 @@ describe "Full Database Test" do
       "Plains",
       "Sengir Vampire",
       "Serra Angel",
-      "Shatter",
       "Shivan Dragon",
       "Sol Ring",
-      "Spell Blast",
-      "Swamp",
-      "Tranquility"
+      "Swamp"
   end
 
   it "alt rarity" do
