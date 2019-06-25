@@ -64,8 +64,13 @@ class PatchMtgjsonVersions < Patch
       end
     end
 
-    # drop all tokens
-    @cards.delete_if { |card| card["types"] =~ /Token/ }
+    # maybe I'll add them someday, right now they're just too much hassle
+    @cards.each do |name, printings|
+      printings.delete_if do |card|
+        (card["set"]["official_code"] == "ATQ" and card["number"] =~ /†/) or
+        (card["set"]["official_code"] == "DRK" and card["number"] =~ /†/)
+      end
+    end
 
     each_printing do |card|
       card["cmc"] = get_cmc(card)
