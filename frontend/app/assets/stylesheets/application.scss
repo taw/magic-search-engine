@@ -1,9 +1,9 @@
 // Custom bootstrap variables must be set or imported before bootstrap itself.
 @import "bootstrap";
-@import "dark";
 @import "famfamfam-flags";
 @import "mana";
 @import "select2";
+@import "dark";
 
 .container {
   display: flex;
@@ -408,6 +408,9 @@ h3 .manacost {
 }
 .decklist {
   border: 1px solid black;
+  @media (prefers-color-scheme: dark) {
+    border-color: #dedad6;
+  }
   padding: 0.5em;
   header {
     padding-bottom: 4px;
@@ -444,8 +447,19 @@ h3 .manacost {
   textarea {
     width: 100%;
     min-height: 40em;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: black;
+      color: #dedad6;
+    }
   }
   .upload-group {
     width: 100%;
+  }
+}
+.custom-file-label {
+  @media (prefers-color-scheme: dark) {
+    background-color: black;
+    color: #dedad6;
   }
 }
