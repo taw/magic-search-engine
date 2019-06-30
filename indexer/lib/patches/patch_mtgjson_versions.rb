@@ -1,5 +1,7 @@
 # Cleanup differences between mtgjson v3 and v4
 
+# This patch ended up as dumping ground for far too much random stuff
+
 class PatchMtgjsonVersions < Patch
   def get_cmc(card)
     cmc = [card.delete("convertedManaCost"), card.delete("cmc")].compact.first
@@ -64,11 +66,28 @@ class PatchMtgjsonVersions < Patch
       end
     end
 
-    # maybe I'll add them someday, right now they're just too much hassle
+    vma_special = [
+      "Ancestral Recall",
+      "Black Lotus",
+      "Mox Emerald",
+      "Mox Jet",
+      "Mox Pearl",
+      "Mox Ruby",
+      "Mox Sapphire",
+      "Time Walk",
+      "Timetwister",
+    ]
+
     @cards.each do |name, printings|
-      printings.delete_if do |card|
-        (card["set"]["official_code"] == "ATQ" and card["number"] =~ /†/) or
-        (card["set"]["official_code"] == "DRK" and card["number"] =~ /†/)
+      if vma_special.include?(name)
+        printings.find{|c| c["set"]["official_code"] == "VMA" }["rarity"] = "special"
+      end
+    end
+
+    each_printing do |card|
+      if card["name"] == "Tamiyo's Journal" and card["set"]["official_code"] == "SOI"
+        card["hasFoil"] = true
+        card["hasNonFoil"] = true
       end
     end
 

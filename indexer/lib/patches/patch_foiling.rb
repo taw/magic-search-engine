@@ -152,10 +152,9 @@ class PatchFoiling < Patch
       mtgjson_foiling = card.delete("mtgjson_foiling")
       name = "#{card["name"]} [#{card["set_code"]}:#{card["number"]}]"
 
-      # https://github.com/mtgjson/mtgjson/issues/374
-      if card["set_code"] == "mir"
-        card["foiling"] = indexer_foiling
-        next
+      # Too many warnigs
+      if card["set_code"] == "10e"
+        indexer_foiling = nil
       end
 
       if mtgjson_foiling.nil?

@@ -30,7 +30,7 @@ describe PackFactory do
       regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15]
     }
     let(:expected_mtgjson_variant) {
-      ["arn", "mir", "ody", "pls", "por", "5ed", "shm", "10e"]
+      ["mir", "ody", "pls", "por", "5ed", "shm", "10e", "soi", "atq", "drk"]
     }
     let(:expected) {
       expected_official | expected_mtgjson_variant
@@ -743,7 +743,7 @@ describe PackFactory do
   context "sets with explicit print sheets" do
     let(:pack) { factory.for(set_code) }
     let(:ev) { pack.expected_values }
-    let(:cards) { db.search("++ e:#{set_code}").printings }
+    let(:cards) { db.search("++ is:booster e:#{set_code}").printings }
     let(:expected_ev) do
       cards.map do |card|
         sheet = card.print_sheet[0]

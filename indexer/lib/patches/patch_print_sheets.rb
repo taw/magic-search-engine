@@ -34,6 +34,10 @@ class PatchPrintSheets < Patch
 
   def add_print_sheet_information_for_set(set_code)
     cards = cards_by_set[set_code]
+    # Ignore printing error variants, but keep in ARN
+    if set_code != "arn"
+      cards = cards.select{|c| c["number"] !~ /†/ }
+    end
     checklist = checklist_for(set_code)
 
     unless cards

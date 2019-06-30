@@ -126,7 +126,7 @@ class CardSheetFactory
   end
 
   def explicit_sheet(set_code, print_sheet_code)
-    cards = @db.sets[set_code].printings.select{|c| c.print_sheet[0] == print_sheet_code}
+    cards = @db.sets[set_code].printings.select{|c| c.in_boosters? and c.print_sheet[0] == print_sheet_code}
     groups = cards.group_by{|c| c.print_sheet[1..-1].to_i}
     subsheets = groups.map{|mult,cards| [CardSheet.new(cards.map{|c| PhysicalCard.for(c) }), mult] }
     mix_sheets(*subsheets)

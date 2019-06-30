@@ -73,11 +73,11 @@ describe "Foils" do
       case set.code
       when "g17", "g18"
         assert_foiling(set.printings, "foilonly")
-      when "phuk", "arn", "mir"
+      when "phuk", "arn", "mir", "drk", "atq"
         assert_foiling(set.printings, "nonfoil")
       when "ced", "cei", "chr", "ugl", "pelp", "pgru", "palp", "por", "p02", "ptk", "pdrc", "plgm", "ppod", "ugin", "pcel", "van", "s99", "mgb"
         assert_foiling(set.printings, "nonfoil")
-      when "ust", "tsb", "cns", "ody"
+      when "ust", "tsb", "cns", "ody", "soi"
         assert_foiling(set.printings, "both")
       when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "plpa", "pjgp", "ppro", "pgtw", "pwor", "pwos", "prel", "pfnm"
         assert_foiling(set.printings, "foilonly")

@@ -21,7 +21,7 @@ class PatchExcludeFromBoosters < Patch
 
       # Japanese alt arts are in boosters,
       # just not in English boosters, so count them out
-      if card["number"] =~ /†|★/
+      if card["number"] =~ /†|★/ and card["set_code"] != "arn"
         card["exclude_from_boosters"] = true
       end
     end
