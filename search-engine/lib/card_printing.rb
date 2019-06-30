@@ -38,9 +38,25 @@ class CardPrinting
     @partner = data["partner"]
     @oversized = data["oversized"]
 
+    @paper = data["paper"]
+    @arena = data["arena"]
+    @mtgo = data["mtgo"]
+
     # Performance cache
     @stemmed_name = @card.stemmed_name
     @set_code = @set.code
+  end
+
+  def arena?
+    !!@arena
+  end
+
+  def paper?
+    !!@paper
+  end
+
+  def mtgo?
+    !!@mtgo
   end
 
   def in_boosters?
