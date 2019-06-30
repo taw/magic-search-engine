@@ -110,6 +110,10 @@ class PatchMtgjsonVersions < Patch
       card.delete("manaCost") if card["manaCost"] == ""
       card.delete("names") if card["names"] == []
 
+      card["arena"] = true if card.delete("isArena")
+      card["paper"] = true if card.delete("isPaper")
+      card["mtgo"] = true if card.delete("isMtgo")
+
       if card["frameVersion"] == "future"
         card["timeshifted"] = true
       end
