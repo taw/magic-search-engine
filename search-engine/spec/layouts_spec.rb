@@ -25,7 +25,7 @@ describe "Card layouts" do
     # It's totally possible that a card will get printed which does not follow them
     assert_search_equal "layout:scheme", "t:scheme"
     assert_search_equal "layout:planar", "t:plane or t:phenomenon"
-    assert_search_equal "layout:flip", '// o:"flip it" or o:"flip ~" or o:flipped'
+    assert_search_equal "layout:flip", '// o:"flip it" or o:"flip ~" or o:flipped or o:"Fire Penguin"'
     assert_search_equal "layout:vanguard", "t:vanguard"
     assert_search_equal "layout:split", "((t:instant or t:sorcery) // (t:instant or t:sorcery)) -(// o:aftermath)"
     assert_search_equal "layout:aftermath", "// o:aftermath"

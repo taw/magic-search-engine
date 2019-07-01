@@ -30,7 +30,7 @@ describe PackFactory do
       regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15]
     }
     let(:expected_mtgjson_variant) {
-      ["mir", "ody", "pls", "por", "5ed", "shm", "10e", "soi", "atq", "drk"]
+      ["mir", "ody", "por", "5ed", "soi", "atq", "drk"]
     }
     let(:expected) {
       expected_official | expected_mtgjson_variant
@@ -124,7 +124,7 @@ describe PackFactory do
     let(:pack) { factory.for("unh") }
     let(:ev) { pack.expected_values }
     let(:basic) { physical_card("e:unh forest", foil) }
-    let(:common) { physical_card("e:unh awol", foil) }
+    let(:common) { physical_card("e:unh artful looter", foil) }
     let(:uncommon) { physical_card("e:unh cheatyface", foil) }
     let(:rare) { physical_card("e:unh ambiguity", foil) }
     let(:super_secret_tech) { physical_card("e:unh super secret tech", foil) }

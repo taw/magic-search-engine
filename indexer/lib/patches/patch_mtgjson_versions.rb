@@ -153,6 +153,9 @@ class PatchMtgjsonVersions < Patch
       if card["text"]
         card["text"] = cleanup_unicode_punctuation(card["text"])
       end
+      if card["artist"]
+        card["artist"] = cleanup_unicode_punctuation(card["artist"])
+      end
 
       # Flavor text quick fix because v4 doesn't have newlines
       if card["flavor"]

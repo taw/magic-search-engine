@@ -101,19 +101,19 @@ describe Deck do
       next if set_code == "e01"
 
       # All names match both ways
-      set_card_names = set.physical_cards.map(&:name).uniq
-      deck_card_names = set.decks.flat_map(&:physical_cards).map(&:name).uniq
+      set_card_names = set.physical_card_names
+      deck_card_names = set.decks.flat_map(&:physical_card_names).uniq
 
       # Special cases
       if set_code == "hop"
         # Release event promo
-        set_card_names += db.sets["ohop"].physical_cards.map(&:name).uniq
+        set_card_names += db.sets["ohop"].physical_card_names
         set_card_names.should match_array deck_card_names
       elsif set_code == "pc2"
-        set_card_names += db.sets["opc2"].physical_cards.map(&:name).uniq
+        set_card_names += db.sets["opc2"].physical_card_names
         set_card_names.should match_array deck_card_names
       elsif set_code == "arc"
-        set_card_names += db.sets["oarc"].physical_cards.map(&:name).uniq
+        set_card_names += db.sets["oarc"].physical_card_names
         set_card_names.should match_array deck_card_names
       else
         set_card_names.should match_array deck_card_names

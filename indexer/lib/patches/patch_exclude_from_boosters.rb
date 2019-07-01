@@ -19,9 +19,16 @@ class PatchExcludeFromBoosters < Patch
         card["exclude_from_boosters"] = true
       end
 
-      # Japanese alt arts are in boosters,
+      # WAR are Japanese alt arts are in boosters,
       # just not in English boosters, so count them out
-      if card["number"] =~ /†|★/ and card["set_code"] != "arn"
+      #
+      # Other star cards are foil alt arts and in boosters
+      if card["number"] =~ /★/ and card["set_code"] == "war"
+        card["exclude_from_boosters"] = true
+      end
+
+      # Mostly misprints and such
+      if card["number"] =~ /†/ and card["set_code"] != "arn"
         card["exclude_from_boosters"] = true
       end
     end
