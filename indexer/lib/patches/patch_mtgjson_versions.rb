@@ -33,6 +33,12 @@ class PatchMtgjsonVersions < Patch
       if set["official_code"] == "MH1"
         set["type"] = "modern"
       end
+      if set["official_code"] == "CNS"
+        set["type"] = "conspiracy"
+      end
+      if set["official_code"] == "CN2"
+        set["type"] = "conspiracy"
+      end
 
       # mtgjson v4 decided to make releaseDate per-set
       # that leads to need for a lot of BS adjustments
