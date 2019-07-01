@@ -153,7 +153,8 @@ class PatchFoiling < Patch
       name = "#{card["name"]} [#{card["set_code"]}:#{card["number"]}]"
 
       # Too many warnigs
-      if card["set_code"] == "10e"
+      case card["set_code"]
+      when "10e", "unh"
         indexer_foiling = nil
       end
 

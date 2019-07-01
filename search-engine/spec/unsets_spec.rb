@@ -128,14 +128,16 @@ describe "Unsets" do
 
   it "edition shortcut syntax" do
     assert_search_equal "e:unh,ugl", "e:unh or e:ugl"
-    assert_count_printings "e:unh,ugl", 233
+    assert_count_printings "e:unh,ugl", 261
   end
 
   it "other:" do
     assert_search_results "other:c:g", "What", "Who", "When", "Where"
     # Any other has cmc != 4
-    assert_search_results "other:-cmc=4", "Who", "What", "When", "Where", "Why", "Naughty", "Nice",
-      "B.F.M. (Big Furry Monster)", "B.F.M. (Big Furry Monster, Right Side)"
+    assert_search_results "other:-cmc=4",
+      "Who", "What", "When", "Where", "Why", "Naughty", "Nice",
+      "B.F.M. (Big Furry Monster)", "B.F.M. (Big Furry Monster, Right Side)",
+      "Curse of the Fire Penguin", "Curse of the Fire Penguin Creature"
     # Doesn't have other side with cmc=4
     # This includes Where (cmc=4) and all single-sided cards
     assert_search_include "-other:cmc=4", "Where", "Chicken Egg"
@@ -179,7 +181,11 @@ describe "Unsets" do
   end
 
   it "//" do
-    assert_search_results "//", "Who", "What", "When", "Where", "Why", "B.F.M. (Big Furry Monster)", "B.F.M. (Big Furry Monster, Right Side)", "Naughty", "Nice"
+    assert_search_results "//",
+      "Who", "What", "When", "Where", "Why",
+      "B.F.M. (Big Furry Monster)", "B.F.M. (Big Furry Monster, Right Side)",
+      "Naughty", "Nice",
+      "Curse of the Fire Penguin Creature", "Curse of the Fire Penguin"
     assert_search_results "When // Where // What", "Who", "What", "When", "Where", "Why"
     assert_search_results "When // Where // Whatever"
     assert_search_results "c:u // c:w // c:r", "Who", "What", "When", "Where", "Why"
@@ -192,12 +198,12 @@ describe "Unsets" do
 
   it "deep other: nesting doesn't crash the engine" do
     assert_search_results("other:"*20 + "cmc=1", "Who", "What", "When", "Where", "Why")
-    assert_search_results("other:"*20 + "cmc=6")
+    assert_search_results("other:"*20 + "cmc=7")
   end
 
   it "deep part: nesting doesn't crash the engine" do
     assert_search_results("part:"*20 + "cmc=1", "Who", "What", "When", "Where", "Why")
-    assert_search_results("part:"*20 + "cmc=6")
+    assert_search_results("part:"*20 + "cmc=7")
   end
 
   it "is:augment" do

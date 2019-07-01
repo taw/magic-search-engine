@@ -96,6 +96,13 @@ describe "Foils" do
         assert_foiling(foil_alt_art, "foilonly")
         assert_foiling(has_foil_alt_art, "nonfoil")
         assert_foiling(regular_cards, "both")
+      when "unh"
+        foil_alt_art, regular_cards = set.printings.partition{|c| c.name == "Super Secret Tech" or c.number =~ /★/ }
+        foil_alt_art_names = foil_alt_art.map(&:name).to_set
+        has_foil_alt_art, regular_cards = regular_cards.partition{|c| foil_alt_art_names.include?(c.name) }
+        assert_foiling(foil_alt_art, "foilonly")
+        assert_foiling(has_foil_alt_art, "nonfoil")
+        assert_foiling(regular_cards, "both")
       when "m15", "ori"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         assert_foiling(booster_cards, "both")
@@ -136,10 +143,6 @@ describe "Foils" do
         assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, *basics])
         assert_foiling([buy_a_box_promo], "foilonly")
         assert_foiling(basics, "both")
-      when "unh"
-        special, regular = set.printings.partition{|c| c.name == "Super Secret Tech"}
-        assert_foiling(regular, "both")
-        assert_foiling(special, "foilonly")
       when "mh1"
         special, regular = set.printings.partition{|c| c.name == "Flusterstorm"}
         assert_foiling(regular, "both")
