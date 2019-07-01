@@ -128,13 +128,10 @@ class Indexer
 
       # Patch mtg.wtf bugs
       PatchCmc,
-      PatchMediaInsertArtists,
       PatchCstdRarity,
       PatchWatermarks,
       PatchBasicLandRarity,
       PatchUnstableBorders,
-      PatchItpRqsRarity,
-      PatchDeleteIncompleteCards,
       PatchAeLigature,
       PatchFlipCardManaCost,
 
