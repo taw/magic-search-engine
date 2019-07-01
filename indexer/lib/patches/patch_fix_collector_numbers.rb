@@ -34,7 +34,7 @@ class PatchFixCollectorNumbers < Patch
         end
       end
     # These are somewhat silly orders
-    when "s00", "rqs"
+    when "s00"
       cards
         .sort_by{|c| [c["name"], c["multiverseid"]] }
         .each_with_index{|c,i| c["number"] = "#{i+1}"}

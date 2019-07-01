@@ -2,7 +2,10 @@ describe "Formats - Modern" do
   include_context "db"
 
   let(:regular_sets) { db.sets.values.select{|s|
-    s.type == "core" or s.type == "expansion" or s.name =~ /Welcome Deck/
+    s.type == "core" or
+    s.type == "expansion" or
+    s.name =~ /Welcome Deck/ or
+    s.type == "modern"
   }.to_set }
 
   describe "Modern legal sets" do
