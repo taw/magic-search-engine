@@ -64,6 +64,11 @@ class PatchMtgjsonVersions < Patch
       if set["official_code"] == "PZ2"
         set["releaseDate"] = "2018-08-10"
       end
+
+      if set["official_code"] == "PRM"
+        set["releaseDate"] = "2018-08-10"
+      end
+
     end
 
     vma_special = [

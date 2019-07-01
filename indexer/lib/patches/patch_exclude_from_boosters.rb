@@ -55,6 +55,8 @@ class PatchExcludeFromBoosters < Patch
       number_i > 259
     when "war"
       number_i > 264
+    when "m20"
+      number_i > 280
     else
       false
     end
