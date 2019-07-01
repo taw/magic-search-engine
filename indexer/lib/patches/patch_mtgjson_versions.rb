@@ -27,17 +27,15 @@ class PatchMtgjsonVersions < Patch
       if set["type"]
         set["type"] = set["type"].gsub("_", " ")
       end
-      if set["official_code"] == "BBD"
+      case set["official_code"]
+      when "BBD"
         set["type"] = "two-headed giant"
-      end
-      if set["official_code"] == "MH1"
+      when "MH1"
         set["type"] = "modern"
-      end
-      if set["official_code"] == "CNS"
+      when "CNS", "CN2"
         set["type"] = "conspiracy"
-      end
-      if set["official_code"] == "CN2"
-        set["type"] = "conspiracy"
+      when "UGL", "UNH", "UST"
+        set["type"] = "un"
       end
 
       # mtgjson v4 decided to make releaseDate per-set
@@ -46,35 +44,23 @@ class PatchMtgjsonVersions < Patch
       # I trust unsourced mtg wiki claim here more
       # since this is definitely wrong
       # https://mtg.gamepedia.com/Duel_Decks:_Mirrodin_Pure_vs._New_Phyrexia
-      if set["official_code"] == "TD2"
+      case set["official_code"]
+      when "TD2"
         set["releaseDate"] = "2013-01-11"
-      end
-
       # Some random tweaks
-      if set["official_code"] == "C18"
+      when "C18"
         set["releaseDate"] = "2018-08-10"
-      end
-
-      if set["official_code"] == "DDT"
+      when "DDT"
         set["releaseDate"] = "2017-11-10"
-      end
-
-      if set["official_code"] == "PPRO"
+      when "PPRO"
         set["releaseDate"] = "2018-01-01"
-      end
-
-      if set["official_code"] == "P02"
+      when "P02"
         set["releaseDate"] = "1998-06-24"
-      end
-
-      if set["official_code"] == "PZ2"
+      when "PZ2"
+        set["releaseDate"] = "2018-08-10"
+      when "PRM"
         set["releaseDate"] = "2018-08-10"
       end
-
-      if set["official_code"] == "PRM"
-        set["releaseDate"] = "2018-08-10"
-      end
-
     end
 
     vma_special = [
@@ -88,6 +74,8 @@ class PatchMtgjsonVersions < Patch
       "Time Walk",
       "Timetwister",
     ]
+
+    # Rename cards
 
     @cards.each do |name, printings|
       if vma_special.include?(name)
