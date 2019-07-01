@@ -22,6 +22,21 @@ class Patch
     @cards_by_set ||= @cards.values.flatten.group_by{|c| c["set_code"]}
   end
 
+  def rename(from, to)
+    raise unless @cards[from]
+    @cards[from].each do |c|
+      raise unless c["name"] == from
+      c["name"] = to
+    end
+
+    if @cards[to]
+      # Merging isn't that complicated
+      binding.pry
+    else
+      @cards[to] = @cards.delete(from)
+    end
+  end
+
   def delete_printing_if(&block)
     @cards.each do |name, printings|
       printings.delete_if(&block)
