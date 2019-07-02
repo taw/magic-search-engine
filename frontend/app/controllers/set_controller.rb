@@ -32,4 +32,21 @@ class SetController < ApplicationController
       .printings
       .sort_by{|cp| [cp.name, cp.number.to_i, cp.number]}
   end
+
+  def missing_scans
+    id = params[:id]
+    @set = $CardDatabase.sets[id]
+    unless @set
+      render_404
+      return
+    end
+
+    @title = @set.name
+    @cards = @set
+      .printings
+      .sort_by{|cp| [cp.name, cp.number.to_i, cp.number]}
+      .select{|cp| !ApplicationHelper.card_picture_path(cp) }
+
+    render :verify_scans
+  end
 end
