@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(19798)
-    db.number_of_printings.should eq(43990)
+    db.number_of_printings.should eq(43952)
   end
 
   it "is:promo" do
