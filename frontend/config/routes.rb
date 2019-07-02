@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "card/:set/:id/:name" => "card#show"
   get "card" => "card#index"
   get "set/:id/verify_scans" => "set#verify_scans"
+  get "set/:id/missing_scans" => "set#missing_scans"
   get "set/:id" => "set#show"
   get "set" => "set#index"
   get "artist/:id" => "artist#show"
