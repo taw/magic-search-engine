@@ -96,7 +96,6 @@ class Indexer
 
       # All cards absolutely need unique numbers
       PatchMultipartCardNumbers,
-      PatchFixCollectorNumbers,
       PatchUseFallbackNumbers,
       PatchVerifyCollectorNumbers,
 
