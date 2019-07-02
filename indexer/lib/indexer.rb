@@ -137,6 +137,7 @@ class Indexer
 
       # Not bugs, more like different judgment calls than mtgjson
       PatchBfm,
+      PatchUnstable,
       PatchUrza,
       PatchFixPromoPrintDates,
       PatchMeldCardNames,

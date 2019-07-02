@@ -30,8 +30,7 @@ class Patch
     end
 
     if @cards[to]
-      # Merging isn't that complicated
-      binding.pry
+      @cards[to] += @cards.delete(from)
     else
       @cards[to] = @cards.delete(from)
     end
