@@ -58,6 +58,12 @@ class DeckIndexer
       return printings["cst"] if printings["cst"]
     end
 
+    # S00 on Gatherer includes all 6ED reprints but mtgjson doesn't
+    if deck["set_code"] == "s00"
+      return printings["s00"] if printings["s00"]
+      return printings["6ed"] if printings["6ed"]
+    end
+
     # It was printed in set we want
     return printings[set_code] if printings[set_code]
 
