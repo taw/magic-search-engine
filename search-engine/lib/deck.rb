@@ -30,6 +30,10 @@ class Deck
     [*@cards.map(&:last), *@sideboard.map(&:last)].uniq
   end
 
+  def physical_card_names
+    physical_cards.map(&:name).uniq
+  end
+
   def inspect
     "Deck<#{set.name} - #{@name} - #{@type}>"
   end

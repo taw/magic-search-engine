@@ -21,6 +21,7 @@ describe "Sets" do
     "spellbook",
     "starter",
     "token",
+    "treasure chest",
     "two-headed giant",
     "un",
     "vanguard",

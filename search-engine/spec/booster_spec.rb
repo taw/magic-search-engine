@@ -32,9 +32,9 @@ describe "is:booster" do
       when "m15"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=269"
       when "kld"
-        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=264 -number:/†|★/"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=264 -number:/†/"
       when "aer"
-        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=184 -number:/†|★/"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=184 -number:/†/"
       when "akh"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=269"
       when "hou"
@@ -58,9 +58,11 @@ describe "is:booster" do
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} (-t:basic or -number:/a/)"
       when "war"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=264 -number:/†|★/"
+      when "arn"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code}"
       else
         if set.has_boosters? or set.in_other_boosters?
-          assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/†|★/"
+          assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/†/"
         else
           assert_search_equal "e:#{set_code} -is:booster", "e:#{set_code}"
         end

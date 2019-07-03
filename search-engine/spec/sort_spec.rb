@@ -1,8 +1,9 @@
+# Digital sets often have BS realese date
 describe "Sorting" do
   include_context "db"
 
   it "name" do
-    assert_search_results_ordered "t:chandra sort:name",
+    assert_search_results_ordered "t:chandra -is:digital sort:name",
       # Possibly we should skip commas while sorting ???
       "Chandra Ablaze",
       "Chandra Nalaar",
@@ -18,7 +19,7 @@ describe "Sorting" do
   end
 
   it "new" do
-    assert_search_results_ordered "t:chandra sort:new",
+    assert_search_results_ordered "t:chandra -is:digital sort:new",
       "Chandra, Fire Artisan",
       "Chandra, Bold Pyromancer",
       "Chandra, Pyrogenius",
@@ -33,7 +34,7 @@ describe "Sorting" do
   end
 
   it "newall" do
-    assert_search_results_ordered "t:chandra sort:newall",
+    assert_search_results_ordered "t:chandra -is:digital sort:newall",
       "Chandra, Fire Artisan",
       "Chandra, Torch of Defiance",
       "Chandra, Bold Pyromancer",
@@ -48,7 +49,7 @@ describe "Sorting" do
   end
 
   it "old" do
-    assert_search_results_ordered "t:chandra sort:old",
+    assert_search_results_ordered "t:chandra -is:digital sort:old",
       "Chandra Nalaar",
       "Chandra Ablaze",
       "Chandra, the Firebrand",
@@ -63,7 +64,7 @@ describe "Sorting" do
   end
 
   it "oldall" do
-    assert_search_results_ordered "t:chandra sort:oldall",
+    assert_search_results_ordered "t:chandra -is:digital sort:oldall",
       "Chandra Nalaar",
       "Chandra Ablaze",
       "Chandra, the Firebrand",
@@ -78,7 +79,7 @@ describe "Sorting" do
     end
 
   it "cmc" do
-    assert_search_results_ordered "t:chandra sort:cmc",
+    assert_search_results_ordered "t:chandra -is:digital sort:cmc",
       "Chandra Ablaze",             # 6
       "Chandra, Bold Pyromancer",   # 6
       "Chandra, Flamecaller",       # 6
@@ -93,7 +94,7 @@ describe "Sorting" do
   end
 
   it "-cmc" do
-    assert_search_results_ordered "t:chandra sort:-cmc",
+    assert_search_results_ordered "t:chandra -is:digital sort:-cmc",
       "Chandra, Roaring Flame",     # 3
       "Chandra, Fire Artisan",      # 4
       "Chandra, Gremlin Wrangler",  # 4
@@ -126,7 +127,7 @@ describe "Sorting" do
   end
 
   it "mixing orders" do
-    assert_search_results_ordered "t:chandra sort:cmc,-name",
+    assert_search_results_ordered "t:chandra -is:digital sort:cmc,-name",
       "Chandra, Pyrogenius",        # 6
       "Chandra, Flamecaller",       # 6
       "Chandra, Bold Pyromancer",   # 6

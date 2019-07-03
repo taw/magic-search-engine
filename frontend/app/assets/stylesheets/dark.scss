@@ -27,4 +27,27 @@
   .form-control:focus {
     color: #a8afb6;
   }
+
+  input {
+    color:#dedad6;
+    background-color: black;
+  }
+
+  .select2-dropdown {
+    background-color: black;
+  }
+
+  .select2-container--default .select2-results__option[aria-selected="true"] {
+    background-color: #555;
+  }
+  .select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #5897fb;
+  }
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color:#dedad6;
+  }
+  .select2-container--default .select2-selection--single {
+    background-color: black;
+    border-color: #dedad6;
+  }
 }

@@ -96,7 +96,6 @@ class Indexer
 
       # All cards absolutely need unique numbers
       PatchMultipartCardNumbers,
-      PatchFixCollectorNumbers,
       PatchUseFallbackNumbers,
       PatchVerifyCollectorNumbers,
 
@@ -128,19 +127,16 @@ class Indexer
 
       # Patch mtg.wtf bugs
       PatchCmc,
-      PatchMediaInsertArtists,
       PatchCstdRarity,
       PatchWatermarks,
-      PatchConspiracyWatermarks,
       PatchBasicLandRarity,
       PatchUnstableBorders,
-      PatchItpRqsRarity,
-      PatchDeleteIncompleteCards,
       PatchAeLigature,
       PatchFlipCardManaCost,
 
       # Not bugs, more like different judgment calls than mtgjson
       PatchBfm,
+      PatchUnstable,
       PatchUrza,
       PatchFixPromoPrintDates,
       PatchMeldCardNames,
@@ -232,16 +228,19 @@ class Indexer
       printing_data << [
         printing["set_code"],
         printing.slice(
+          "arena",
           "artist",
           "border",
           "exclude_from_boosters",
           "flavor",
           "foiling",
-          "frame",
           "frame_effect",
+          "frame",
+          "mtgo",
           "multiverseid",
           "number",
           "oversized",
+          "paper",
           "partner",
           "print_sheet",
           "rarity",

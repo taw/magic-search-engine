@@ -42,7 +42,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Jace Beleren {1}{u}{u}
-        [lrw dd2 dd2 pbok m10 m11 jvc ss1]
+        [lrw dd2 dd2 pbok m10 m11 jvc ss1 prm]
         Legendary Planeswalker - Jace
         [+2]: Each player draws a card.
         [−1]: Target player draws a card.
@@ -56,7 +56,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Siege Rhino {1}{w}{b}{g}
-        [pktk ktk cp3]
+        [pktk ktk cp3 prm]
         Creature - Rhino
         Trample
         When Siege Rhino enters the battlefield, each opponent loses 3 life and you gain 3 life.
@@ -129,7 +129,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Steam Vents
-        [gpt rtr exp grn]
+        [gpt rtr exp prm grn]
         Land - Island Mountain
         ({T}: Add {U} or {R}.)
         As Steam Vents enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.
@@ -144,7 +144,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Bloodbraid Elf {2}{r}{g}
-        [-arb +f10 +pc2 -ema -c16 +pca]
+        [-arb +f10 +pc2 -ema -c16 +pca +prm]
         Creature - Elf Berserker
         Haste
         Cascade

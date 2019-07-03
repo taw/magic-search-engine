@@ -1,6 +1,6 @@
 %h3 Preconstructed Decks
 - @sets.each do |set|
-  %div= "#{set.name}"
+  %div= "#{set.name} (#{set.code.upcase})"
   %ul
     - set.decks.each do |deck|
       %li

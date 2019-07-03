@@ -73,11 +73,11 @@ describe "Foils" do
       case set.code
       when "g17", "g18"
         assert_foiling(set.printings, "foilonly")
-      when "phuk", "arn", "mir"
+      when "phuk", "arn", "mir", "drk", "atq"
         assert_foiling(set.printings, "nonfoil")
       when "ced", "cei", "chr", "ugl", "pelp", "pgru", "palp", "por", "p02", "ptk", "pdrc", "plgm", "ppod", "ugin", "pcel", "van", "s99", "mgb"
         assert_foiling(set.printings, "nonfoil")
-      when "ust", "tsb", "cns", "ody"
+      when "ust", "tsb", "cns", "ody", "soi"
         assert_foiling(set.printings, "both")
       when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "plpa", "pjgp", "ppro", "pgtw", "pwor", "pwos", "prel", "pfnm"
         assert_foiling(set.printings, "foilonly")
@@ -91,6 +91,13 @@ describe "Foils" do
         assert_foiling(sampler, "nonfoil")
       when "pls", "shm", "10e"
         foil_alt_art, regular_cards = set.printings.partition{|c| !!(c.number =~ /★/) }
+        foil_alt_art_names = foil_alt_art.map(&:name).to_set
+        has_foil_alt_art, regular_cards = regular_cards.partition{|c| foil_alt_art_names.include?(c.name) }
+        assert_foiling(foil_alt_art, "foilonly")
+        assert_foiling(has_foil_alt_art, "nonfoil")
+        assert_foiling(regular_cards, "both")
+      when "unh"
+        foil_alt_art, regular_cards = set.printings.partition{|c| c.name == "Super Secret Tech" or c.number =~ /★/ }
         foil_alt_art_names = foil_alt_art.map(&:name).to_set
         has_foil_alt_art, regular_cards = regular_cards.partition{|c| foil_alt_art_names.include?(c.name) }
         assert_foiling(foil_alt_art, "foilonly")
@@ -136,10 +143,6 @@ describe "Foils" do
         assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, *basics])
         assert_foiling([buy_a_box_promo], "foilonly")
         assert_foiling(basics, "both")
-      when "unh"
-        special, regular = set.printings.partition{|c| c.name == "Super Secret Tech"}
-        assert_foiling(regular, "both")
-        assert_foiling(special, "foilonly")
       when "mh1"
         special, regular = set.printings.partition{|c| c.name == "Flusterstorm"}
         assert_foiling(regular, "both")

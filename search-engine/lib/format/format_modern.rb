@@ -36,6 +36,7 @@ class FormatModern < Format
       "dom",
       "m19",
       "grn", "rna", "war",
+      "mh1",
     ]
   end
 end
