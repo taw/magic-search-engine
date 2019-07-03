@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+
+import sys
+
+sys.path.append('/opt/py')
+
+import copy
+import io
+import json
+import mse_to_json
+import pathlib
+import zipfile
+
+def input_default(question, default, convert=lambda x: x):
+    result = input('[ ?? ] {} [{}]: '.format(question, default)).strip()
+    if result == '':
+        return default
+    return convert(result)
+
+def merge_set_jsons(*, old, new, errata):
+    set_json = copy.deepcopy(errata)
+    if 'boosterV3' not in set_json:
+        if 'boosterV3' in old:
+            set_json['boosterV3'] = old['boosterV3']
+        else:
+            set_json['boosterV3'] = input_default('boosterV3', ['common'] * 10 + ['uncommon'] * 3 + [['rare', 'mythic rare']], convert=json.loads)
+    #TODO build rename map
+    #TODO 3-way card merge
+    if 'releaseDate' not in set_json:
+        if 'releaseDate' in old:
+            set_json['releaseDate'] = old['releaseDate']
+        else:
+            set_json['releaseDate'] = input('[ ?? ] release date [YYYY-MM-DD]: ')
+    if 'type' not in set_json:
+        if 'type' in old:
+            set_json['type'] = old['type']
+        else:
+            set_json['type'] = 'core' if yesno('is core set?') else 'expansion'
+    return set_json
+
+def yesno(question):
+    answer = input('[ ?? ] {} [y/n] '.format(question))
+    while True:
+        if answer.lower() in ('y', 'yes'):
+            return True
+        elif answer.lower() in ('n', 'no'):
+            return False
+        answer = input('[ ?? ] unrecognized answer, type “yes” or “no”: ')
+
+if __name__ == '__main__':
+    if sys.argv[1] == 'import':
+        set_code = sys.argv[2]
+        set_version = sys.argv[3]
+        set_dir = pathlib.Path.home() / 'games' / 'magic' / 'set' / set_code.lower()
+        if not set_dir.exists():
+            raise FileNotFoundError('No such set directory: {}'.format(set_dir))
+        ver_dir = set_dir / 'v{}'.format(set_version)
+        if (ver_dir / 'errata.mse-set').exists():
+            with zipfile.ZipFile(ver_dir / 'errata.mse-set') as set_file:
+                errata_set_json = mse_to_json.convert_mse_set(set_file, set_code=set_code, version=set_version)
+            with zipfile.ZipFile(ver_dir / 'set.mse-set') as set_file:
+                new_set_json = mse_to_json.convert_mse_set(set_file, set_code=set_code, version=set_version)
+        else:
+            with zipfile.ZipFile(ver_dir / 'set.mse-set') as set_file:
+                new_set_json = errata_set_json = mse_to_json.convert_mse_set(set_file, set_code=set_code, version=set_version)
+        set_json_path = pathlib.Path('data/sets/{}.json'.format(set_code))
+        if set_json_path.exists():
+            with set_json_path.open() as set_file:
+            old_set_json = json.load(set_file)
+        else:
+            old_set_json = {}
+        set_json = merge_set_jsons(old=old_set_json, new=new_set_json, errata=errata_set_json)
+        with set_json_path.open('w') as set_file:
+            json.dump(set_json, set_file, indent=4, sort_keys=True)
+    else:
+        sys.exit('lsutil: unknown subcommand: {}'.format(sys.argv[1]))
