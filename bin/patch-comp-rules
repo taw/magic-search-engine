@@ -145,7 +145,10 @@ class CompRules:
     def apply_patch(self, patch_json):
         if parse_iso_date(patch_json['base']) != self.date:
             raise ValueError('This rules patch is for a different version of the rules')
-        self.date = datetime.datetime.utcfromtimestamp(int(subprocess.run(['git', 'log', '-n1', '--pretty=format:%ct', '--', 'data/rules-patch.json'], stdout=subprocess.PIPE, universal_newlines=True).stdout)).date()
+        if 'effective' in patch_json:
+            self.date = parse_iso_date(patch_json['effective'])
+        else:
+            self.date = datetime.datetime.utcfromtimestamp(int(subprocess.run(['git', 'log', '-n1', '--pretty=format:%ct', '--', 'data/rules-patch.json'], stdout=subprocess.PIPE, universal_newlines=True).stdout)).date()
         for patch_group in patch_json['patches']:
             patch_rules = set()
             for patch in patch_group['rules']:
