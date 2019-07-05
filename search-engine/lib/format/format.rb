@@ -27,6 +27,27 @@ class Format
     false
   end
 
+  def deck_legality(deck)
+    # Returns nil if the deck is legal, or an error message if it's not. If there are multiple issues that make the deck illegal, only one of them is returned.
+    offending_card = deck.physical_cards.map(&:main_front).find{|card| legality(card).nil? }
+    return "#{offending_card.name} is not legal in #{format_pretty_name}" unless offending_card.nil?
+    offending_card = deck.physical_cards.map(&:main_front).find{|card| legality(card) == "banned" }
+    return "#{offending_card.name} is banned in #{format_pretty_name}" unless offending_card.nil?
+    min_mainboard_size = 60 - 5 * deck.sideboard.select{|iter_card| iter_card.last.name == "Advantageous Proclamation"}.map(&:first).inject(0, &:+) # assumes all Proclamations in the sideboard are used
+    return "Minimum mainboard size is #{min_mainboard_size} cards, but this deck only has #{deck.number_of_mainboard_cards}." if deck.number_of_mainboard_cards < min_mainboard_size
+    return "Maximum sideboard size is 15 cards, but this deck has #{deck.number_of_sideboard_cards}." if deck.number_of_sideboard_cards > 15
+    offending_card = deck.physical_cards.map(&:main_front).find{|card| !card.types.include?("basic") && !["Relentless Rats", "Shadowborn Apostle", "Rat Colony", "Persistent Petitioners"].include?(card.name) && deck.cards_with_sideboard.select{|iter_card| iter_card.last.main_front.name == card.name}.map(&:first).inject(0, &:+) > 4 }
+    unless offending_card.nil?
+      count = deck.cards_with_sideboard.select{|iter_card| iter_card.last.main_front.name == offending_card.name}.map(&:first).inject(0, &:+)
+      return "A maximum of 4 copies of the same nonbasic card are allowed, but this deck has #{count} copies of #{offending_card.name}."
+    end
+    offending_card = deck.physical_cards.map(&:main_front).find{|card| legality(card) == "restricted" && deck.cards_with_sideboard.select{|iter_card| iter_card.last.main_front.name == card.name}.map(&:first).inject(0, &:+) > 1 }
+    unless offending_card.nil?
+      count = deck.cards_with_sideboard.select{|iter_card| iter_card.last.main_front.name == offending_card.name}.map(&:first).inject(0, &:+)
+      return "#{offending_card.name} is restricted in #{format_pretty_name} so only one copy is allowed per deck, but this deck has #{count} copies."
+    end
+  end
+
   def in_format?(card)
     card.printings.each do |printing|
       next if @time and printing.release_date > @time
