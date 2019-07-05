@@ -24,6 +24,14 @@ require_relative "deck_database"
 require_relative "unknown_card"
 require_relative "user_deck_parser"
 
+# Backport from >=2.4 to 2.3
+module Enumerable
+  def sum(accumulator = 0, &block)
+    values = block_given? ? map(&block) : self
+    values.inject(accumulator, :+)
+  end unless method_defined? :sum
+end
+
 class String
   def normalize_accents
     result = gsub("Æ", "Ae").gsub("æ", "ae").tr("ĆćÄàáâäèéêíõöúûüǵ’\u2212", "CcAaaaaeeeioouuug'-")

@@ -15,11 +15,11 @@ class Deck
   end
 
   def number_of_mainboard_cards
-    @cards.map(&:first).inject(0, &:+)
+    @cards.sum(&:first)
   end
 
   def number_of_sideboard_cards
-    @sideboard.map(&:first).inject(0, &:+)
+    @sideboard.sum(&:first)
   end
 
   def number_of_total_cards

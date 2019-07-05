@@ -5,7 +5,7 @@ class MixedPartnerCardSheet
     @elements = elements
     raise "MixedPartnerCardSheet can only contain PartnerCardSheets" unless @elements.all?{|el| el.is_a?(PartnerCardSheet)}
     @weights = weights
-    @total_weight = @weights.inject(0, &:+)
+    @total_weight = @weights.sum
   end
 
   def random_card
