@@ -3,7 +3,7 @@ class WeightedPack < Pack
   # Takes Hash<Pack, Integer>
   def initialize(packs)
     @packs = packs
-    @total_weight = @packs.values.inject(0, &:+)
+    @total_weight = @packs.values.sum
   end
 
   def open

@@ -6,7 +6,7 @@ class CardSheet
     @elements = elements
     @weights = weights
     if @weights
-      @total_weight = @weights.inject(0, &:+)
+      @total_weight = @weights.sum
     else
       @total_weight = @elements.size
     end

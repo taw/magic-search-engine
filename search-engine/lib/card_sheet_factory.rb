@@ -51,7 +51,7 @@ class CardSheetFactory
     end
 
     sheets << common_or_basic(set_code, foil: true)
-    weights << (32 - weights.inject(0, &:+))
+    weights << (32 - weights.sum)
 
     CardSheet.new(sheets, weights)
   end
