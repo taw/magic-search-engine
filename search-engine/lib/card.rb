@@ -138,6 +138,12 @@ class Card
     @last_release_date ||= @printings.map(&:release_date).compact.max
   end
 
+  def allowed_in_any_number?
+    @types.include?("basic") or (
+      @text and @text.include?("A deck can have any number of cards named")
+    )
+  end
+
   private
 
   def calculate_mana_hash
