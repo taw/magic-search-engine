@@ -22,6 +22,12 @@ describe "Color Indicator Test" do
       "Ulrich, Uncontested Alpha"
     assert_search_equal "in:gr", "in:rg"
     assert_search_equal "in:grrgr", "in:rg"
+    assert_search_results "in:ubr",
+      "Nicol Bolas, the Arisen"
+    assert_search_results "in:wrg",
+      "Grimlock, Ferocious King"
+    assert_search_equal "in:ubr", "in:bur"
+    assert_search_equal "in:wrg", "in:gwr"
   end
 
   it "in:*" do
