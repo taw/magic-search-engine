@@ -50,6 +50,10 @@ class PhysicalCard
     main_front.color_identity
   end
 
+  def allowed_in_any_number?
+    main_front.allowed_in_any_number?
+  end
+
   def rarity
     main_front.rarity
   end
