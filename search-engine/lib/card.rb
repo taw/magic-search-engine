@@ -144,6 +144,21 @@ class Card
     )
   end
 
+  def commander?
+    return false if @secondary
+    return true if @types.include?("legendary") and @types.include?("creature")
+    if @types.include?("planeswalker")
+      return true if @text.include?("can be your commander")
+    end
+    false
+  end
+
+  def brawler?
+    return false if @secondary
+    return true if @types.include?("legendary") and (@types.include?("creature") or @types.include?("planeswalker"))
+    false
+  end
+
   private
 
   def calculate_mana_hash
