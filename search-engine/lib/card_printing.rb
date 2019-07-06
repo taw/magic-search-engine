@@ -117,10 +117,6 @@ class CardPrinting
     "http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=#{multiverseid}"
   end
 
-  def magiccards_info_link
-    "http://magiccards.info/#{set_code}/en/#{number}.html"
-  end
-
   include Comparable
   def <=>(other)
     [name, set, number.to_i, number] <=> [other.name, other.set, other.number.to_i, other.number]
