@@ -59,16 +59,6 @@ class Format
     @ban_list.events
   end
 
-  def mainboard_size
-    # In Ruby 2.6+
-    # (60..)
-    (60..Float::INFINITY)
-  end
-
-  def sideboard_size
-    (0..15)
-  end
-
   class << self
     def formats_index
       # Removed spaces so you can say "lw block" lw-block lwblock lw_block or whatever
