@@ -140,12 +140,12 @@ class CardPrinting
 
   def valid_partner_for?(other)
     return unless partner? and other.partner?
-    if partner or other.partner
-      # Partner with each other
-      partner.name == other.name
-    else
-      # Partner with anything
-      true
+    if partner
+      return false unless partner.name == other.name
     end
+    if other.partner
+      return false unless name == other.partner.name
+    end
+    true
   end
 end

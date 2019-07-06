@@ -54,6 +54,10 @@ class Deck
     inspect
   end
 
+  def inspect
+    "Deck<#{@name}>"
+  end
+
   def to_text
     output = []
     output << "// NAME: #{@name} - #{@set.name} #{@type}"
