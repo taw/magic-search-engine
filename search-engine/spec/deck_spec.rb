@@ -242,4 +242,17 @@ describe Deck do
       end
     end
   end
+
+  it "Commander qdecks have valid commander" do
+    db.decks.each do |deck|
+      if deck.type == "Commander Deck"
+        deck.should be_valid_commander
+        # Brawler is superset of commander, so even though none of theme are Brawl decks, give it a go
+        deck.should be_valid_brawler
+      else
+        deck.should_not be_valid_commander
+        deck.should_not be_valid_brawler
+      end
+    end
+  end
 end

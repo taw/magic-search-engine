@@ -71,4 +71,34 @@ class Deck
     end
     output.join("\n") + "\n"
   end
+
+  def valid_commander?
+    case number_of_sideboard_cards
+    when 1
+      a = @sideboard[0][1]
+      a.commander?
+    when 2
+      return false unless @sideboard.size == 2 # 2x same card is not valid
+      a = @sideboard[0][1]
+      b = @sideboard[1][1]
+      a.commander? and b.commander? and a.valid_partner_for?(b)
+    else
+      false
+    end
+  end
+
+  def valid_brawler?
+    case number_of_sideboard_cards
+    when 1
+      a = @sideboard[0][1]
+      a.brawler?
+    when 2
+      return false unless @sideboard.size == 2 # 2x same card is not valid
+      a = @sideboard[0][1]
+      b = @sideboard[1][1]
+      a.brawler? and b.brawler? and a.valid_partner_for?(b)
+    else
+      false
+    end
+  end
 end

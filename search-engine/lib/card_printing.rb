@@ -137,4 +137,15 @@ class CardPrinting
   def to_s
     inspect
   end
+
+  def valid_partner_for?(other)
+    return unless partner? and other.partner?
+    if partner or other.partner
+      # Partner with each other
+      partner.name == other.name
+    else
+      # Partner with anything
+      true
+    end
+  end
 end
