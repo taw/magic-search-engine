@@ -54,6 +54,14 @@ class PhysicalCard
     main_front.allowed_in_any_number?
   end
 
+  def commander?
+    main_front.commander?
+  end
+
+  def brawler?
+    main_front.brawler?
+  end
+
   def rarity
     main_front.rarity
   end
