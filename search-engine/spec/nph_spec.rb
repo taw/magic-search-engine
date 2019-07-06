@@ -18,10 +18,6 @@ describe "New Phyrexia" do
     birthing_pod.gatherer_link.should eq("http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=218006")
   end
 
-  it "magiccards_info_link" do
-    birthing_pod.magiccards_info_link.should eq("http://magiccards.info/nph/en/104.html")
-  end
-
   it "legalities" do
     birthing_pod.legality_information.to_h.should eq({
       "Modern" => "banned",
