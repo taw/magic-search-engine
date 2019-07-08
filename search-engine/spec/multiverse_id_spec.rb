@@ -32,6 +32,7 @@ describe "multiverse ids" do
           [true, true], [false, false]
         ]), "Set #{set_code} should have all non-gatherer cards marked with † or ★"
       # Known issues, ignore for now
+      when "ppre" # Weird "Promo set for Gatherer"
       when "pmei"
       when "s00"
       when "war" # Japanese promos
