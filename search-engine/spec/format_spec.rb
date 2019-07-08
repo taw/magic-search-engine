@@ -24,6 +24,11 @@ describe "Formats" do
       ]],
     ])
     FormatModern.new.ban_events.should eq([
+      [Date.parse("2019-07-12"),
+        "https://magic.wizards.com/en/articles/archive/news/july-8-2019-banned-and-restricted-announcement-2019-07-08",
+      [
+        {:name=>"Bridge from Below", :new=>"banned", :old=>"legal"},
+      ]],
       [Date.parse("2019-01-21"),
         "https://magic.wizards.com/en/articles/archive/news/january-21-2019-banned-and-restricted-announcement",
       [

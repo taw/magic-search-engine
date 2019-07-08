@@ -112,4 +112,10 @@ BanList.for_format("modern") do
     "https://magic.wizards.com/en/articles/archive/news/january-21-2019-banned-and-restricted-announcement",
     "Krark-Clan Ironworks" => "banned",
   )
+
+  change(
+    "2019-07-12",
+    "https://magic.wizards.com/en/articles/archive/news/july-8-2019-banned-and-restricted-announcement-2019-07-08",
+    "Bridge from Below" => "banned",
+  )
 end
