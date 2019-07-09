@@ -5,6 +5,8 @@
     .col-12.warnings
       - @warnings.each do |warning|
         .warning= warning
+- else
+  = "This deck is #{@format} legal."
 
 - if @card_groups.present?
   .decklist
@@ -38,5 +40,6 @@
     .custom-file
       %input#deck_upload.custom-file-input{type: "file", name: "deck_upload"}/
       %label.custom-file-label{for: "deck_upload"} Choose file
+  = select_tag "format", options_for_select(@formats.map{|fmt| [fmt.format_pretty_name, fmt.format_name]}, @format)
   %button.btn.btn-outline-primary{type: "submit"}
     Submit

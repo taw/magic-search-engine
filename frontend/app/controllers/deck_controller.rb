@@ -60,6 +60,7 @@ class DeckController < ApplicationController
 
   def visualize
     @title = "Deck Visualizer"
+    @formats = Format.all_format_classes.map(&:new)
 
     if params[:deck_upload]
       @deck = params[:deck_upload].read
@@ -73,6 +74,7 @@ class DeckController < ApplicationController
     else
       @deck = params[:deck]
     end
+    @format = params[:format]
 
     if @deck.present?
       parser = DeckParser.new($CardDatabase, @deck)
