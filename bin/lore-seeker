@@ -149,7 +149,8 @@ def run(*, do_name_check=True, path=None, port=18803, verbose=False):
         with subprocess.Popen([str(DISCORD_BIN), 'reload']):
             #if do_name_check:
             #    name_check(path, verbose=verbose)
-            #cmd(['rake', 'rules:update', 'index'], env=env, cwd=str(path), announce=verbose) #TODO notify about updated rules to allow patching manually
+            #cmd(['rake', 'rules:update'], env=env, cwd=str(path), announce=verbose) #TODO notify about updated rules to allow patching manually
+            cmd(['rake', 'index'], env=env, cwd=str(path), announce=verbose)
             cmd(['python3', 'bin/make-trice-download'], cwd=str(path), announce=verbose)
             cmd(['bundle', 'install'], cwd=str(path / 'search-engine'), announce=verbose)
             #cmd(['bundle', 'update'], cwd=str(path / 'search-engine'), announce=verbose) # skipped due to Ruby incompatibility issues
