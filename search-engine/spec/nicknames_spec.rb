@@ -51,12 +51,12 @@ describe "Card nicknames" do
       "Tundra",
       "Underground Sea",
       "Volcanic Island"
-      assert_search_results "is:dual",
-        *cards_matching{|c|
-          c.types.include?("land") &&
-          !c.types.include?("basic") &&
-          c.types.size == 3 &&
-          c.text == "" }
+    assert_search_results "is:dual",
+      *cards_matching{|c|
+        c.types.include?("land") &&
+        !c.types.include?("basic") &&
+        c.types.size == 3 &&
+        c.text == "" }
   end
 
   # The name is unique
@@ -72,9 +72,11 @@ describe "Card nicknames" do
       "Rakdos Carnarium",
       "Selesnya Sanctuary",
       "Simic Growth Chamber"
-      assert_search_results "is:bounceland",
-        *cards_matching{|c|
-          c.text =~ %r[#{c.name} enters the battlefield tapped.\nWhen #{c.name} enters the battlefield, return a land you control to its owner's hand.\n\{T\}: Add \{.\}\{.\}]}
+    assert_search_results "is:bounceland",
+      *cards_matching{|c|
+        c.text =~ %r[#{c.name} enters the battlefield tapped.\nWhen #{c.name} enters the battlefield, return (a land|an? untapped \S+) you control to its owner's hand.\n\{T\}: Add \{.\}\{.\}]
+      }
+    assert_search_equal "is:bounceland", "is:karoo"
   end
 
   # The name is unique
@@ -90,10 +92,10 @@ describe "Card nicknames" do
       "Razorverge Thicket",
       "Seachrome Coast",
       "Spirebluff Canal"
-      assert_search_results "is:fastland",
-        *cards_matching{|c|
-          c.text =~ %r[#{c.name} enters the battlefield tapped unless you control two or fewer other lands.\n\{T\}: Add \{.\} or \{.\}.]
-        }
+    assert_search_results "is:fastland",
+      *cards_matching{|c|
+        c.text =~ %r[#{c.name} enters the battlefield tapped unless you control two or fewer other lands.\n\{T\}: Add \{.\} or \{.\}.]
+      }
   end
 
   # The name is unique
@@ -200,6 +202,7 @@ describe "Card nicknames" do
       "Treetop Village",
       "Wandering Fumarole"
     assert_search_equal "is:manland", "t:land o:becomes o:creature"
+    assert_search_equal "is:manland", "is:creatureland"
   end
 
   # There are other lands with scry (New Benalia, Soldevi Excavations),
@@ -246,7 +249,39 @@ describe "Card nicknames" do
       "Boros Guildgate",
       "Simic Guildgate"
     assert_search_equal "is:guildgate",
-      't:Gate ci=2'
+      "t:Gate ci=2"
+  end
+
+  it "is:painland" do
+    assert_search_results "is:painland",
+      "Adarkar Wastes",
+      "Battlefield Forge",
+      "Brushland",
+      "Caves of Koilos",
+      "Karplusan Forest",
+      "Llanowar Wastes",
+      "Shivan Reef",
+      "Sulfurous Springs",
+      "Underground River",
+      "Yavimaya Coast"
+    assert_search_equal "is:painland",
+      't:land -o:tapped o:/\{T\}: Add \{.\} or \{.\}. (.*?) deals 1 damage to you./'
+  end
+
+  it "is:triland" do
+    assert_search_results "is:triland",
+      "Arcane Sanctum",
+      "Crumbling Necropolis",
+      "Frontier Bivouac",
+      "Jungle Shrine",
+      "Mystic Monastery",
+      "Nomad Outpost",
+      "Opulent Palace",
+      "Sandsteppe Citadel",
+      "Savage Lands",
+      "Seaside Citadel"
+    assert_search_equal "is:triland",
+      't:land o:/\{T\}: Add \{.\}, \{.\}, or \{.\}/ -o:sacrifice o:tapped'
   end
 
   # A card that lists a lot of keywords in a single list, in an order that's different from the canonical keyword order
