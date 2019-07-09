@@ -129,10 +129,12 @@ class Format
         "pauper"                     => FormatPauper,
         "pennydreadful"              => FormatPennyDreadful,
         "pd"                         => FormatPennyDreadful,
+        "penny"                      => FormatPennyDreadful,
         "commander"                  => FormatCommander,
         "edh"                        => FormatCommander,
         "duelcommander"              => FormatDuelCommander,
         "dueledh"                    => FormatDuelCommander,
+        "duel"                       => FormatDuelCommander,
         "mtgocommander"              => FormatMTGOCommander,
         "mtgoedh"                    => FormatMTGOCommander,
       }
