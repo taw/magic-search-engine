@@ -149,6 +149,8 @@ describe "QueryParser" do
     assert_search_parse 'o:"draw a card"', 'oracle:"draw a card"'
     assert_search_parse 'o:/draw \d+ cards/', 'oracle:/draw \d+ cards/'
     assert_search_parse_except_warning 'o:/draw ( card/', 'oracle:/draw ( card/'
+    assert_search_parse "r>=uncommon", "rarity>=uncommon"
+    assert_search_parse "r:rare", "rarity:rare"
     assert_search_parse "sort:cmc", "order:cmc"
     assert_search_parse "view:full", "display:full"
     assert_search_parse "w:abzan", "wm:abzan"
