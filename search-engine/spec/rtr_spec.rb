@@ -166,7 +166,9 @@ describe "Return to Ravnica block" do
 
   # In addition to 2/c hybrid
   it "is:hybrid" do
-    assert_search_equal "is:hybrid", "mana>={u/w} or mana>={b/w} or mana>={r/w} or mana>={g/w} or mana>={b/u} or mana>={r/u} or mana>={g/u} or mana>={b/r} or mana>={b/g} or mana>={g/r}"
+    assert_search_equal "is:hybrid",
+      "mana>={u/w} or mana>={b/w} or mana>={r/w} or mana>={g/w} or mana>={b/u} or
+       mana>={r/u} or mana>={g/u} or mana>={b/r} or mana>={b/g} or mana>={g/r}"
   end
 
   it "hybrid mana Oracle search" do
