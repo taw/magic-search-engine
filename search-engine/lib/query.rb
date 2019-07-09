@@ -12,6 +12,7 @@ end
 
 class Query
   attr_reader :warnings, :seed
+  attr_reader :cond, :metadata # for tests only
 
   def initialize(query_string, seed=nil)
     @query_string = query_string

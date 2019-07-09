@@ -3,6 +3,15 @@ describe "QueryParser" do
     Query.new(query1).should eq(Query.new(query2))
   end
 
+  def assert_search_parse_except_warning(query1, query2)
+    q1 = Query.new(query1)
+    q2 = Query.new(query2)
+    q1.should_not eq(q2)
+    q1.warnings.should_not eq(q2.warnings)
+    q1.cond.should eq(q2.cond)
+    q1.metadata.should eq(q2.metadata)
+  end
+
   def refute_search_parse(query1, query2)
     Query.new(query1).should_not eq(Query.new(query2))
   end
@@ -111,6 +120,39 @@ describe "QueryParser" do
     assert_search_parse "c!u", "c!blue"
     assert_search_parse "c>=w", "c>=white"
     assert_search_parse "in:r", "in:red"
+  end
+
+  it "aliases" do
+    assert_search_parse "a:daarken", "art:daarken"
+    assert_search_parse "a:daarken", "artist:daarken"
+    assert_search_parse "a:/daarken/", "art:/daarken/"
+    assert_search_parse "a:/daarken/", "artist:/daarken/"
+    assert_search_parse_except_warning "a:/daa(rken/", "art:/daa(rken/"
+    assert_search_parse_except_warning "a:/daa(rken/", "artist:/daa(rken/"
+    assert_search_parse "c:red", "color:red"
+    assert_search_parse "c>red", "color>red"
+    assert_search_parse "c:wu", "color:wu"
+    assert_search_parse "c>wu", "color>wu"
+    assert_search_parse "c=3", "color=3"
+    assert_search_parse "f:modern", "format:modern"
+    assert_search_parse %Q[ft:"here's some gold"], %Q[flavor:"here's some gold"]
+    assert_search_parse %Q[ft:/here's some gold/], %Q[flavor:/here's some gold/]
+    assert_search_parse_except_warning %Q[ft:/here's (some gold/], %Q[flavor:/here's (some gold/]
+    assert_search_parse "id:wu", "identity:wu"
+    assert_search_parse "id<=wu", "identity<=wu"
+    assert_search_parse "id:3", "identity:3"
+    assert_search_parse "in:wu", "indicator:wu"
+    assert_search_parse "in<wu", "indicator<wu"
+    assert_search_parse "in=3", "indicator=3"
+    assert_search_parse "in:*", "indicator:*"
+    assert_search_parse "mana:2ww", "m:2ww"
+    assert_search_parse 'o:"draw a card"', 'oracle:"draw a card"'
+    assert_search_parse 'o:/draw \d+ cards/', 'oracle:/draw \d+ cards/'
+    assert_search_parse_except_warning 'o:/draw ( card/', 'oracle:/draw ( card/'
+    assert_search_parse "sort:cmc", "order:cmc"
+    assert_search_parse "view:full", "display:full"
+    assert_search_parse "w:abzan", "wm:abzan"
+    assert_search_parse "w:abzan", "watermark:abzan"
   end
 
   it "query_to_s" do
