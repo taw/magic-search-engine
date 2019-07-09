@@ -32,6 +32,7 @@ describe "Color Indicator Test" do
 
   it "in:*" do
     assert_search_equal "in:*", "in>=c"
+    assert_search_equal "in:*", "has:indicator"
   end
 
   it "comparisons" do

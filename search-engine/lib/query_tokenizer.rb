@@ -176,8 +176,10 @@ class QueryTokenizer
         cond = "Manland" if cond == "Creatureland"
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/has:partner\b/)
-        tokens << [:test, ConditionHasPartner.new]
+      elsif s.scan(/has:(partner|watermark|indicator)\b/)
+        cond = s[1].capitalize
+        klass = Kernel.const_get("ConditionHas#{cond}")
+        tokens << [:test, klass.new]
       elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld|aftermath|saga|planar|augment|host)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionLayout.new(s[2])]

@@ -12,6 +12,7 @@ describe "New Phyrexia" do
     assert_search_results "w:mirran c:g", "Greenhilt Trainee", "Melira, Sylvok Outcast", "Viridian Harvest"
     assert_search_equal "w:mirran OR w:phyrexian", "w:*"
     assert_search_equal "-w:mirran -w:phyrexian", "-w:*"
+    assert_search_equal "has:watermark", "w:*"
   end
 
   it "gatherer link" do
