@@ -12,6 +12,8 @@ describe "Formats" do
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal_cards 'f:"ravnica block"', 'b:ravnica'
     assert_search_differ_cards 'f:"mirrodin block" t:land', 'b:"mirrodin" t:land'
+    assert_search_equal "f:duel", 'f:"duel commander"'
+    assert_search_equal "f:penny", 'f:"penny dreadful"'
   end
 
   it "ban_events" do
