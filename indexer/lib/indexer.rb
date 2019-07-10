@@ -133,6 +133,7 @@ class Indexer
       PatchUnstableBorders,
       PatchAeLigature,
       PatchFlipCardManaCost,
+      PatchArtistNames,
 
       # Not bugs, more like different judgment calls than mtgjson
       PatchBfm,
