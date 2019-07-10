@@ -16,8 +16,8 @@ class PatchAssignPrioritiesToSets < Patch
     return 100 if set["custom"]
 
     case set["code"]
-    when "m20"
-      return 20
+    when "pwar", "war"
+      return 5
     end
 
     return 10 if set["v4"]
