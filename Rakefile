@@ -95,6 +95,11 @@ task "pics:statistics" do
   sh "./bin/pics_statistics"
 end
 
+desc "List cards without pictures"
+task "pics:missing" do
+  sh "./bin/cards_without_pics"
+end
+
 desc "Clanup Rails files"
 task "clean" do
   [

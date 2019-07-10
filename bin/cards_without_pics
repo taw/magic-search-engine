@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+require "pathname-glob"
+require_relative "../search-engine/lib/card_database"
+
+class CardPrinting
+  def path_lq
+    Pathname("frontend/public/cards/#{set_code}/#{number}.png")
+  end
+
+  def path_hq
+    Pathname("frontend/public/cards_hq/#{set_code}/#{number}.png")
+  end
+end
+
+class CardsWithoutPics
+  attr_reader :db
+
+  def initialize
+    @db = CardDatabase.load
+  end
+
+  def call
+    missing = db
+      .printings
+      .reject{|card| card.path_hq.exist? or card.path_lq.exist? }
+      .sort_by{|c| [c.set, c.number.to_i, c.number] }
+
+    missing.each do |c|
+      puts "#{c.set_code}/#{c.number} #{c.name}"
+      if c.number =~ /\A(.*)[ab]/
+        if Pathname("frontend/public/cards/#{c.set_code}/#{$1}.png").exist?
+          puts "- LQ exists as #{c.set_code}/#{$1}"
+        end
+        if Pathname("frontend/public/cards_hq/#{c.set_code}/#{$1}.png").exist?
+          puts "- HQ exists as #{c.set_code}/#{$1}"
+        end
+      end
+    end
+  end
+end
+
+CardsWithoutPics.new.call
