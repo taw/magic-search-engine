@@ -415,13 +415,7 @@ describe "Full Database Test" do
 
   it "promo and special" do
     warn "not sure what to do with rarity special (v4 no longer uses it, should we?)"
-
-    # Are promo basics really of basic rarity?
-    assert_search_equal "t:basic (is:promo or e:g17)", "t:basic r:special"
-    assert_search_equal "t:basic", "(r:basic -t:urza's) or (t:basic r:special) or (t:basic e:an)"
-    # assert_search_results "is:promo -r:special -e:ugin"
-    assert_search_results %Q[r:special -is:promo -st:masterpiece -t:vanguard -e:anthologies -e:tsts -e:"clash pack" -e:vma -e:mgbc -e:g17],
-      "Super Secret Tech"
+    assert_search_equal "r:special", "(Super Secret Tech) or (e:vma r:special)"
   end
 
   it "all planeswalkers are legendary" do

@@ -199,9 +199,11 @@ class QueryTokenizer
         tokens << [:test, ConditionBorder.new(s[2].sub("-bordered", "").downcase)]
       elsif s.scan(/(is|not)\s*[:=]\s*borderless\b/i)
         tokens << [:not] if s[1].downcase == "not"
-        tokens << [:test, ConditionBorder.new("none")]
-      elsif s.scan(/border\s*[:=]\s*(black|silver|white|none)\b/i)
-        tokens << [:test, ConditionBorder.new(s[1].downcase)]
+        tokens << [:test, ConditionBorder.new("borderless")]
+      elsif s.scan(/border\s*[:=]\s*(black|silver|white|none|borderless)\b/i)
+        kind = s[1].downcase
+        kind = "borderless" if kind == "none"
+        tokens << [:test, ConditionBorder.new(kind)]
       elsif s.scan(/(?:sort|order)\s*[:=]\s*(?:"(.*?)"|([\-\,\.\p{L}\p{Digit}_]+))/i)
         tokens << [:metadata, {sort: (s[1]||s[2]).downcase}]
       elsif s.scan(/(?:view|display)\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)

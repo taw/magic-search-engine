@@ -129,6 +129,8 @@ describe "QueryParser" do
     assert_search_parse "a:/daarken/", "artist:/daarken/"
     assert_search_parse_except_warning "a:/daa(rken/", "art:/daa(rken/"
     assert_search_parse_except_warning "a:/daa(rken/", "artist:/daa(rken/"
+    assert_search_parse "border:borderless", "border:none"
+    assert_search_parse "border:borderless", "is:borderless"
     assert_search_parse "c:red", "color:red"
     assert_search_parse "c>red", "color>red"
     assert_search_parse "c:wu", "color:wu"

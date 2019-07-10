@@ -100,7 +100,6 @@ class Indexer
       PatchVerifyCollectorNumbers,
 
       # Normalize data into more convenient form
-      PatchNormalizeRarity,
       PatchNormalizeColors,
       PatchLoyaltySymbol,
       PatchDisplayPowerToughness,
@@ -126,11 +125,8 @@ class Indexer
       PatchDeleteErrataSets,
 
       # Patch mtg.wtf bugs
-      PatchCmc,
       PatchCstdRarity,
-      PatchWatermarks,
       PatchBasicLandRarity,
-      PatchUnstableBorders,
       PatchAeLigature,
       PatchFlipCardManaCost,
       PatchArtistNames,
