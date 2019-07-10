@@ -43,6 +43,7 @@ describe Deck do
       ["expansion", "Challenger Deck"],
       ["box", "MTGO Theme Deck"], # MTGO
       ["box", "Commander Deck"], # MTGO
+      ["core", "Spellslinger Starter Kit"],
     ]
 
     db.sets.each do |set_code, set|

@@ -6,15 +6,15 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data for same sets,
   # indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(19798)
-    db.number_of_printings.should eq(43992)
+    db.number_of_cards.should eq(19972)
+    db.number_of_printings.should eq(44343)
   end
 
   it "is:promo" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 3791
+    assert_count_printings "is:promo", 3797
   end
 
   it "block codes" do
@@ -163,15 +163,12 @@ describe "Full Database Test" do
       "Mindwrack Demon",
       "Nephalia Moondrakes",
       "Pyre Hound",
-      "Rabid Bite",
       "Ravenous Bloodseeker",
       "Rush of Adrenaline",
-      "Sleep Paralysis",
       "Soul Swallower",
       "Stone Quarry",
       "Thornhide Wolves",
       "Triskaidekaphobia",
-      "Uncaged Fury",
       "Vampire Noble",
       "Vessel of Nascency",
       "Warped Landscape",

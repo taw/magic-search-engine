@@ -37,6 +37,7 @@ class FormatModern < Format
       "m19",
       "grn", "rna", "war",
       "mh1",
+      "m20",
     ]
   end
 end

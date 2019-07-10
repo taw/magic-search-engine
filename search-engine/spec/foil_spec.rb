@@ -119,6 +119,15 @@ describe "Foils" do
         assert_foiling(booster_cards, "both")
         assert_foiling_partial_precon(extra_cards - [buy_a_box_promo])
         assert_foiling([buy_a_box_promo], "foilonly")
+      when "m20"
+        booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
+        misprint = extra_cards.select{|c| c.number =~ /†/}
+        buy_a_box_promo = extra_cards.find{|c| c.name == "Rienne, Angel of Rebirth"}
+        assert_foiling(booster_cards, "both")
+        warn "M20 lacks Welcome Decks, so can't verify precons"
+        # assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, *misprint])
+        assert_foiling([buy_a_box_promo], "foilonly")
+        assert_foiling(misprint, "both")
       when "war"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         buy_a_box_promo = extra_cards.find{|c| c.name == "Tezzeret, Master of the Bridge"}

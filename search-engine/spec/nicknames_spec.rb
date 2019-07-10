@@ -303,7 +303,7 @@ describe "Card nicknames" do
       "Sunbaked Canyon",
       "Waterlogged Grove"
     assert_search_equal "is:canopyland",
-      't:land o:"{1}, {T}, Sacrifice ~: Draw a card."'
+      't:land o:"pay 1 life" o:"{1}, {T}, Sacrifice ~: Draw a card."'
   end
 
   it "is:shadowland" do

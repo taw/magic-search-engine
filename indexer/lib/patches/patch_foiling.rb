@@ -11,7 +11,7 @@ class PatchFoiling < Patch
         when [false, true]
           card["mtgjson_foiling"] = "foilonly"
         else
-          warn "Bad foiling information for #{name} in #{set_code}"
+          warn "Bad foiling information for #{card["name"]} in #{card["set_code"]}"
         end
       end
       card.delete "hasFoil"

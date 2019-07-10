@@ -339,11 +339,6 @@ class CardDatabase
         warn "No artist for #{printing}"
         artist_name = "unknown"
       end
-      # Presumably same artist, just keep that consistent to simplify slug code
-      # We could even fix some unset artists here
-      if artist_name == "JOCK"
-        artist_name = "Jock"
-      end
       artist_slug = artist_name.downcase.gsub(/[^a-z0-9\p{Han}\p{Katakana}\p{Hiragana}\p{Hangul}]+/, "_")
       @artists[artist_slug] ||= Artist.new(artist_name)
       artist = @artists[artist_slug]

@@ -7,10 +7,14 @@ describe "Sorting" do
       # Possibly we should skip commas while sorting ???
       "Chandra Ablaze",
       "Chandra Nalaar",
+      "Chandra, Acolyte of Flame",
+      "Chandra, Awakened Inferno",
       "Chandra, Bold Pyromancer",
       "Chandra, Fire Artisan",
+      "Chandra, Flame's Fury",
       "Chandra, Flamecaller",
       "Chandra, Gremlin Wrangler",
+      "Chandra, Novice Pyromancer",
       "Chandra, Pyrogenius",
       "Chandra, Pyromaster",
       "Chandra, Roaring Flame",
@@ -20,6 +24,10 @@ describe "Sorting" do
 
   it "new" do
     assert_search_results_ordered "t:chandra -is:digital sort:new",
+      "Chandra, Acolyte of Flame",
+      "Chandra, Awakened Inferno",
+      "Chandra, Flame's Fury",
+      "Chandra, Novice Pyromancer",
       "Chandra, Fire Artisan",
       "Chandra, Bold Pyromancer",
       "Chandra, Pyrogenius",
@@ -35,6 +43,10 @@ describe "Sorting" do
 
   it "newall" do
     assert_search_results_ordered "t:chandra -is:digital sort:newall",
+      "Chandra, Acolyte of Flame",
+      "Chandra, Awakened Inferno",
+      "Chandra, Flame's Fury",
+      "Chandra, Novice Pyromancer",
       "Chandra, Fire Artisan",
       "Chandra, Torch of Defiance",
       "Chandra, Bold Pyromancer",
@@ -60,6 +72,10 @@ describe "Sorting" do
       "Chandra, Torch of Defiance",
       "Chandra, Bold Pyromancer",
       "Chandra, Fire Artisan",
+      "Chandra, Acolyte of Flame",
+      "Chandra, Awakened Inferno",
+      "Chandra, Flame's Fury",
+      "Chandra, Novice Pyromancer",
       "Chandra, Gremlin Wrangler"
   end
 
@@ -75,37 +91,50 @@ describe "Sorting" do
       "Chandra, Torch of Defiance",
       "Chandra, Gremlin Wrangler",
       "Chandra, Bold Pyromancer",
-      "Chandra, Fire Artisan"
+      "Chandra, Fire Artisan",
+      "Chandra, Acolyte of Flame",
+      "Chandra, Awakened Inferno",
+      "Chandra, Flame's Fury",
+      "Chandra, Novice Pyromancer"
+
     end
 
   it "cmc" do
     assert_search_results_ordered "t:chandra -is:digital sort:cmc",
-      "Chandra Ablaze",             # 6
-      "Chandra, Bold Pyromancer",   # 6
-      "Chandra, Flamecaller",       # 6
-      "Chandra, Pyrogenius",        # 6
-      "Chandra Nalaar",             # 5
-      "Chandra, Fire Artisan",      # 4
-      "Chandra, Gremlin Wrangler",  # 4
-      "Chandra, Pyromaster",        # 4
-      "Chandra, Torch of Defiance", # 4
-      "Chandra, the Firebrand",     # 4
-      "Chandra, Roaring Flame"      # 3
+      "Chandra Ablaze",
+      "Chandra, Awakened Inferno",
+      "Chandra, Bold Pyromancer",
+      "Chandra, Flame's Fury",
+      "Chandra, Flamecaller",
+      "Chandra, Pyrogenius",
+      "Chandra Nalaar",
+      "Chandra, Fire Artisan",
+      "Chandra, Gremlin Wrangler",
+      "Chandra, Novice Pyromancer",
+      "Chandra, Pyromaster",
+      "Chandra, Torch of Defiance",
+      "Chandra, the Firebrand",
+      "Chandra, Acolyte of Flame",
+      "Chandra, Roaring Flame"
   end
 
   it "-cmc" do
     assert_search_results_ordered "t:chandra -is:digital sort:-cmc",
-      "Chandra, Roaring Flame",     # 3
-      "Chandra, Fire Artisan",      # 4
-      "Chandra, Gremlin Wrangler",  # 4
-      "Chandra, Pyromaster",        # 4
-      "Chandra, Torch of Defiance", # 4
-      "Chandra, the Firebrand",     # 4
-      "Chandra Nalaar",             # 5
-      "Chandra Ablaze",             # 6
-      "Chandra, Bold Pyromancer",   # 6
-      "Chandra, Flamecaller",       # 6
-      "Chandra, Pyrogenius"         # 6
+      "Chandra, Acolyte of Flame",
+      "Chandra, Roaring Flame",
+      "Chandra, Fire Artisan",
+      "Chandra, Gremlin Wrangler",
+      "Chandra, Novice Pyromancer",
+      "Chandra, Pyromaster",
+      "Chandra, Torch of Defiance",
+      "Chandra, the Firebrand",
+      "Chandra Nalaar",
+      "Chandra Ablaze",
+      "Chandra, Awakened Inferno",
+      "Chandra, Bold Pyromancer",
+      "Chandra, Flame's Fury",
+      "Chandra, Flamecaller",
+      "Chandra, Pyrogenius"
   end
 
   it "number" do
@@ -128,17 +157,21 @@ describe "Sorting" do
 
   it "mixing orders" do
     assert_search_results_ordered "t:chandra -is:digital sort:cmc,-name",
-      "Chandra, Pyrogenius",        # 6
-      "Chandra, Flamecaller",       # 6
-      "Chandra, Bold Pyromancer",   # 6
-      "Chandra Ablaze",             # 6
-      "Chandra Nalaar",             # 5
-      "Chandra, the Firebrand",     # 4
-      "Chandra, Torch of Defiance", # 4
-      "Chandra, Pyromaster",        # 4
-      "Chandra, Gremlin Wrangler",  # 4
-      "Chandra, Fire Artisan",      # 4
-      "Chandra, Roaring Flame"      # 3
+      "Chandra, Pyrogenius",
+      "Chandra, Flamecaller",
+      "Chandra, Flame's Fury",
+      "Chandra, Bold Pyromancer",
+      "Chandra, Awakened Inferno",
+      "Chandra Ablaze",
+      "Chandra Nalaar",
+      "Chandra, the Firebrand",
+      "Chandra, Torch of Defiance",
+      "Chandra, Pyromaster",
+      "Chandra, Novice Pyromancer",
+      "Chandra, Gremlin Wrangler",
+      "Chandra, Fire Artisan",
+      "Chandra, Roaring Flame",
+      "Chandra, Acolyte of Flame"
   end
 
   it "random" do
