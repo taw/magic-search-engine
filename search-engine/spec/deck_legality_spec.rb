@@ -365,7 +365,7 @@ describe "Deck legality" do
 
   describe "deck_card_issues for brawl" do
     # Lock time as it's a rotating format
-    let(:brawl) { FormatBrawl.new(Date.parse("2019-07-11")) }
+    let(:brawl) { FormatBrawl.new(Date.parse("2019-07-01")) }
     let(:deck) {
       parse_decklist <<~EOF
       1x Lightning Bolt
@@ -389,6 +389,57 @@ describe "Deck legality" do
         "Deck contains 3 copies of Karn, the Great Creator, only up to 1 allowed",
         "Deck contains 2 copies of Ajani's Pridemate, only up to 1 allowed",
         "Deck contains 2 copies of Bulwark Giant, only up to 1 allowed",
+      ])
+    end
+  end
+
+  # Those methods already assume it is checked that:
+  # * card is in format (legal or restricted) - by deck_card_issues
+  # * there are 1 or 2 cards in sideboard - by deck_size_issues
+
+  describe "deck_commander_issues" do
+    let(:format) { FormatDuelCommander.new }
+
+    it do
+      format.deck_commander_issues(parse_decklist_for_commander()).should be_empty
+      format.deck_commander_issues(parse_decklist_for_commander("7x Arcades, the Strategist")).should be_empty
+      format.deck_commander_issues(parse_decklist_for_commander("1x Arcades, the Strategist")).should be_empty
+      format.deck_commander_issues(parse_decklist_for_commander("1x Gideon Blackblade")).should match_array([
+        "Gideon Blackblade is not a valid commander"
+      ])
+      format.deck_commander_issues(parse_decklist_for_commander("Sylvia Brightspear")).should be_empty
+      format.deck_commander_issues(parse_decklist_for_commander("Khorvath Brightflame", "Sylvia Brightspear")).should be_empty
+      format.deck_commander_issues(parse_decklist_for_commander("Khorvath Brightflame", "Karn, Silver Golem")).should match_array([
+        "Karn, Silver Golem is not a valid partner card",
+        "Khorvath Brightflame can only partner with Sylvia Brightspear",
+      ])
+      format.deck_commander_issues(parse_decklist_for_commander("Gorm the Great", "Rowan Kenrith")).should match_array([
+        "Gorm the Great can only partner with Virtus the Veiled",
+        "Rowan Kenrith can only partner with Will Kenrith",
+      ])
+    end
+  end
+
+  describe "deck_commander_issues" do
+    # Lock time as it's a rotating format
+    let(:format) { FormatBrawl.new(Date.parse("2019-07-01")) }
+
+    it do
+      format.deck_commander_issues(parse_decklist_for_commander()).should be_empty
+      format.deck_commander_issues(parse_decklist_for_commander("7x Arcades, the Strategist")).should be_empty
+      format.deck_commander_issues(parse_decklist_for_commander("1x Arcades, the Strategist")).should be_empty
+      format.deck_commander_issues(parse_decklist_for_commander("1x Gideon Blackblade")).should be_empty
+
+      # Never occurs in Brawl, but test anyway
+      format.deck_commander_issues(parse_decklist_for_commander("Sylvia Brightspear")).should be_empty
+      format.deck_commander_issues(parse_decklist_for_commander("Khorvath Brightflame", "Sylvia Brightspear")).should be_empty
+      format.deck_commander_issues(parse_decklist_for_commander("Khorvath Brightflame", "Karn, Silver Golem")).should match_array([
+        "Karn, Silver Golem is not a valid partner card",
+        "Khorvath Brightflame can only partner with Sylvia Brightspear",
+      ])
+      format.deck_commander_issues(parse_decklist_for_commander("Gorm the Great", "Rowan Kenrith")).should match_array([
+        "Gorm the Great can only partner with Virtus the Veiled",
+        "Rowan Kenrith can only partner with Will Kenrith",
       ])
     end
   end

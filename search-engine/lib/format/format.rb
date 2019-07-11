@@ -36,6 +36,13 @@ class Format
     false
   end
 
+  def deck_issues(deck)
+    [
+      *deck_size_issues(deck),
+      *deck_card_issues(deck),
+    ]
+  end
+
   def deck_size_issues(deck)
     issues = []
     if deck.number_of_mainboard_cards < 60
