@@ -8,6 +8,9 @@ import subprocess
 
 SUBRULE_IDX = 'abcdefghijkmnpqrstuvwxyz'
 
+class BaseDateError(ValueError):
+    pass
+
 class CompRules:
     def __init__(self, comp_rules_f):
         self.patches = []
@@ -144,7 +147,7 @@ class CompRules:
 
     def apply_patch(self, patch_json):
         if parse_iso_date(patch_json['base']) != self.date:
-            raise ValueError('This rules patch is for a different version of the rules')
+            raise BaseDateError('This rules patch is for a different version of the rules')
         if 'effective' in patch_json:
             self.date = parse_iso_date(patch_json['effective'])
         else:
@@ -406,16 +409,26 @@ def rule_sort_key(key):
     raise KeyError('Could not parse rule number: {!r}'.format(key))
 
 if __name__ == '__main__':
-    print('[....] parsing Comprehensive Rules', end='', flush=True)
+    print('parsing Comprehensive Rules')
     with open('data/MagicCompRules.txt') as comp_rules_f:
         comp_rules = CompRules(comp_rules_f)
-    print('\r[ ok ]')
-    print('[....] applying Comprehensive Rules patch', end='', flush=True)
+    print('applying Comprehensive Rules patch')
     with open('data/rules-patch.json') as rules_patch_f:
         rules_patch = json.load(rules_patch_f)
-    comp_rules.apply_patch(rules_patch)
-    print('\r[ ok ]')
-    print('[....] saving patched Comprehensive Rules', end='', flush=True)
+    try:
+        comp_rules.apply_patch(rules_patch)
+    except BaseDateError:
+        print('mismatched base date, updating base CR')
+        subprocess.run(['bin/fetch_comp_rules'], check=True)
+        print('parsing Comprehensive Rules')
+        with open('data/MagicCompRules.txt') as comp_rules_f:
+            comp_rules = CompRules(comp_rules_f)
+        print('applying Comprehensive Rules patch')
+        with open('data/rules-patch.json') as rules_patch_f:
+            rules_patch = json.load(rules_patch_f)
+        comp_rules.apply_patch(rules_patch)
+    print('saving patched Comprehensive Rules')
     with open('data/MagicCompRules.txt', 'w') as comp_rules_f:
         comp_rules.dump(comp_rules_f)
-    print('\r[ ok ]')
+    print('formatting patched rules')
+    subprocess.run(['bin/format_comp_rules'], check=True) #TODO do custom formatting to highlight changes

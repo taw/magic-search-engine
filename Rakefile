@@ -117,6 +117,5 @@ end
 desc "Fetch new Comprehensive Rules"
 task "rules:update" do
   sh "bin/fetch_comp_rules"
-  sh "bin/patch-comp-rules"
   sh "bin/format_comp_rules"
 end
