@@ -72,4 +72,9 @@ class Deck
       false
     end
   end
+
+  def color_identity
+    return nil unless number_of_sideboard_cards.between?(1, 2)
+    @sideboard.map{|n,c| c.color_identity}.inject{|c1, c2| (c1.chars | c2.chars).sort.join }
+  end
 end
