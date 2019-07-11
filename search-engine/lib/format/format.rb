@@ -47,6 +47,28 @@ class Format
     issues
   end
 
+  def deck_card_issues(deck)
+    issues = []
+    deck.card_counts.each do |card, name, count|
+      card_legality = legality(card)
+      case card_legality
+      when "legal"
+        if count > 4 and not card.allowed_in_any_number?
+          issues << "Deck contains #{count} copies of #{name}, only up to 4 allowed"
+        end
+      when "restricted"
+        if count > 1
+          issues << "Deck contains #{count} copies of #{name}, which is restricted to only up to 1 allowed"
+        end
+      when "banned"
+        issues << "Deck contains #{name} which is banned"
+      else
+        issues << "Deck contains #{name} which is not in the format"
+      end
+    end
+    issues
+  end
+
   def format_pretty_name
     raise "Subclass responsibility"
   end

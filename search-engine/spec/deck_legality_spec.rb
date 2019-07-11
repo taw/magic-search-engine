@@ -263,4 +263,49 @@ describe "Deck legality" do
     parser = DeckParser.new(db, decklist)
     Deck.new(parser.main_cards, parser.sideboard_cards)
   end
+
+  describe "deck_card_issues" do
+    let(:vintage) { FormatVintage.new }
+    let(:deck) {
+      decklist = <<~EOF
+      1x Lightning Bolt
+      3x [M10] Birds of Paradise
+      2x Forest
+      7x Mountain
+      2x Black Lotus
+      1x Mox Pearl
+      15x Shadowborn Apostle
+      4x Relentless Rats
+      7x Amulet of Quoz
+      1x Bronze Tablet
+      3x Aerial Toastmaster
+      1x Ancestral Recall
+
+      Sideboard
+      2x [M11] Birds of Paradise
+      1x Mox Pearl
+      1x Mox Diamond
+      4x Relentless Rats
+      12x Rat Colony
+      19x Snow-Covered Island
+      1x Eager Beaver
+      12x Embrace My Diabolical Vision
+      EOF
+      parser = DeckParser.new(db, decklist)
+      Deck.new(parser.main_cards, parser.sideboard_cards)
+    }
+
+    it do
+      vintage.deck_card_issues(deck).should match_array([
+        "Deck contains 5 copies of Birds of Paradise, only up to 4 allowed",
+        "Deck contains 2 copies of Black Lotus, which is restricted to only up to 1 allowed",
+        "Deck contains 2 copies of Mox Pearl, which is restricted to only up to 1 allowed",
+        "Deck contains Amulet of Quoz which is banned",
+        "Deck contains Bronze Tablet which is banned",
+        "Deck contains Aerial Toastmaster which is not in the format",
+        "Deck contains Eager Beaver which is not in the format",
+        "Deck contains Embrace My Diabolical Vision which is not in the format",
+      ])
+    end
+  end
 end
