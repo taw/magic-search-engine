@@ -243,6 +243,7 @@ describe "Card nicknames" do
       "Canopy Vista"
     assert_search_equal "is:battleland",
       'o:"~ enters the battlefield tapped unless you control two or more basic lands."'
+    assert_search_equal "is:battleland", "is:tangoland"
   end
 
   # There are other Gates (only one as of GRN), Guildgate specifically refers to the original double-cycle
@@ -304,6 +305,7 @@ describe "Card nicknames" do
       "Waterlogged Grove"
     assert_search_equal "is:canopyland",
       't:land o:"pay 1 life" o:"{1}, {T}, Sacrifice ~: Draw a card."'
+    assert_search_equal "is:canland", "is:canopyland"
   end
 
   it "is:shadowland" do
