@@ -1,6 +1,45 @@
 describe "Deck legality" do
   include_context "db"
 
+  def parse_decklist(decklist)
+    parser = DeckParser.new(db, decklist)
+    Deck.new(parser.main_cards, parser.sideboard_cards)
+  end
+
+  def build_deck_of_size(mb, sb)
+    parse_decklist <<~EOF
+    #{mb}x Forest
+    Sideboard
+    #{sb}x Mountain
+    EOF
+  end
+
+  def parse_decklist_for_commander(*cards)
+    parse_decklist <<~EOF
+    100x Forest
+    Sideboard
+    #{ cards.join("\n") }
+    EOF
+  end
+
+  def assert_valid_commander(*cards)
+    deck = parse_decklist_for_commander(*cards)
+    deck.should be_valid_commander
+    deck.should be_valid_brawler
+  end
+
+  def assert_valid_brawler_only(*cards)
+    deck = parse_decklist_for_commander(*cards)
+    deck.should_not be_valid_commander
+    deck.should be_valid_brawler
+  end
+
+  def assert_invalid_commander(*cards)
+    deck = parse_decklist_for_commander(*cards)
+    deck.should_not be_valid_commander
+    deck.should_not be_valid_brawler
+  end
+
   it "allowed_in_any_number?" do
     db.printings.select(&:allowed_in_any_number?).map(&:name).uniq.should match_array([
       "Forest",
@@ -114,30 +153,6 @@ describe "Deck legality" do
       assert_valid_commander "Richard Garfield, Ph.D."
       assert_valid_brawler_only "Urza, Academy Headmaster"
     end
-  end
-
-  def parse_deck_for_commander(*cards)
-    decklist = "100x Forest\n\nSideboard\n" + cards.join("\n") + "\n"
-    parser = DeckParser.new(db, decklist)
-    Deck.new(parser.main_cards, parser.sideboard_cards)
-  end
-
-  def assert_valid_commander(*cards)
-    deck = parse_deck_for_commander(*cards)
-    deck.should be_valid_commander
-    deck.should be_valid_brawler
-  end
-
-  def assert_valid_brawler_only(*cards)
-    deck = parse_deck_for_commander(*cards)
-    deck.should_not be_valid_commander
-    deck.should be_valid_brawler
-  end
-
-  def assert_invalid_commander(*cards)
-    deck = parse_deck_for_commander(*cards)
-    deck.should_not be_valid_commander
-    deck.should_not be_valid_brawler
   end
 
   describe "deck_size_issues" do
@@ -258,16 +273,10 @@ describe "Deck legality" do
     end
   end
 
-  def build_deck_of_size(mb, sb)
-    decklist = "#{mb}x Forest\n\nSideboard\n#{sb}x Mountain\n"
-    parser = DeckParser.new(db, decklist)
-    Deck.new(parser.main_cards, parser.sideboard_cards)
-  end
-
   describe "deck_card_issues" do
     let(:vintage) { FormatVintage.new }
     let(:deck) {
-      decklist = <<~EOF
+      parse_decklist <<~EOF
       1x Lightning Bolt
       3x [M10] Birds of Paradise
       2x Forest
@@ -291,8 +300,6 @@ describe "Deck legality" do
       1x Eager Beaver
       12x Embrace My Diabolical Vision
       EOF
-      parser = DeckParser.new(db, decklist)
-      Deck.new(parser.main_cards, parser.sideboard_cards)
     }
 
     it do
@@ -305,6 +312,83 @@ describe "Deck legality" do
         "Deck contains Aerial Toastmaster which is not in the format",
         "Deck contains Eager Beaver which is not in the format",
         "Deck contains Embrace My Diabolical Vision which is not in the format",
+      ])
+    end
+  end
+
+  describe "deck_card_issues for singleton formats" do
+    let(:duel) { FormatDuelCommander.new }
+    let(:deck) {
+      parse_decklist <<~EOF
+      1x Lightning Bolt
+      1x [M10] Birds of Paradise
+      1x [M11] Birds of Paradise
+      2x Forest
+      7x Mountain
+      1x Eager Beaver
+      2x Embrace My Diabolical Vision
+      1x Black Lotus
+      15x Shadowborn Apostle
+      4x Relentless Rats
+      7x Amulet of Quoz
+      1x Bronze Tablet
+      1x Aerial Toastmaster
+      1x Ancestral Recall
+      1x Prime Speaker Vannifar
+      2x Edric, Spymaster of Trest
+
+      Sideboard
+      1x Mox Pearl
+      1x Mox Diamond
+      1x Giant Growth
+      12x Rat Colony
+      19x Snow-Covered Island
+      1x Baral, Chief of Compliance
+      EOF
+    }
+    it do
+      duel.deck_card_issues(deck).should match_array([
+        "Deck contains 2 copies of Birds of Paradise, only up to 1 allowed",
+        "Deck contains Eager Beaver which is not in the format",
+        "Deck contains Embrace My Diabolical Vision which is not in the format",
+        "Deck contains Black Lotus which is banned",
+        "Deck contains Amulet of Quoz which is banned",
+        "Deck contains Bronze Tablet which is banned",
+        "Deck contains Aerial Toastmaster which is not in the format",
+        "Deck contains Ancestral Recall which is banned",
+        "Deck contains Mox Pearl which is banned",
+        "Deck contains Mox Diamond which is banned",
+        "Deck contains 2 copies of Edric, Spymaster of Trest, only up to 1 allowed",
+      ])
+    end
+  end
+
+  describe "deck_card_issues for brawl" do
+    # Lock time as it's a rotating format
+    let(:brawl) { FormatBrawl.new(Date.parse("2019-07-11")) }
+    let(:deck) {
+      parse_decklist <<~EOF
+      1x Lightning Bolt
+      1x Sorcerous Spyglass
+      2x Black Lotus
+      3x Karn, the Great Creator
+      1x Bulwark Giant
+
+      Sideboard
+      2x Ajani's Pridemate
+      1x Bond of Discipline
+      1x Bulwark Giant
+      EOF
+    }
+
+    it do
+      brawl.deck_card_issues(deck).should match_array([
+        "Deck contains Lightning Bolt which is not in the format",
+        "Deck contains Sorcerous Spyglass which is banned",
+        "Deck contains Black Lotus which is not in the format",
+        "Deck contains 3 copies of Karn, the Great Creator, only up to 1 allowed",
+        "Deck contains 2 copies of Ajani's Pridemate, only up to 1 allowed",
+        "Deck contains 2 copies of Bulwark Giant, only up to 1 allowed",
       ])
     end
   end
