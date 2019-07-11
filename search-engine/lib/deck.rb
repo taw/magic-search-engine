@@ -11,7 +11,11 @@ class Deck
   end
 
   def cards_with_sideboard
-    @cards + @sideboard
+    result = Hash.new(0)
+    [*@cards, *@sideboard].each do |number, card|
+      result[card] += number
+    end
+    result.map(&:reverse)
   end
 
   def number_of_mainboard_cards
