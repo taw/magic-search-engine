@@ -36,6 +36,17 @@ class Format
     false
   end
 
+  def deck_size_issues(deck)
+    issues = []
+    if deck.number_of_mainboard_cards < 60
+      issues << "Deck must contain at least 60 mainboard cards, has only #{deck.number_of_mainboard_cards}"
+    end
+    if deck.number_of_sideboard_cards > 15
+      issues << "Deck must contain at most 15 sideboard cards, has #{deck.number_of_sideboard_cards}"
+    end
+    issues
+  end
+
   def format_pretty_name
     raise "Subclass responsibility"
   end
