@@ -297,9 +297,9 @@ class CardDatabase
       .map(&:last)
       .flat_map{|c| c.parts.map(&:name).map{|n| [c.set_code, c.foil, n] }}
       .each do |set_code, foil, name|
-      @cards_in_precons[set_code] ||= [Set.new, Set.new]
-      @cards_in_precons[set_code][foil ? 1 : 0] << name
-    end
+        @cards_in_precons[set_code] ||= [Set.new, Set.new]
+        @cards_in_precons[set_code][foil ? 1 : 0] << name
+      end
   end
 
   def fix_multipart_cards_color_identity!(color_identity_cache)

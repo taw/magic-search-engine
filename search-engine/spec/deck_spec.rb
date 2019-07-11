@@ -244,7 +244,7 @@ describe Deck do
     end
   end
 
-  it "Commander qdecks have valid commander" do
+  it "Commander decks have valid commander" do
     db.decks.each do |deck|
       if deck.type == "Commander Deck"
         deck.should be_valid_commander
@@ -254,6 +254,25 @@ describe Deck do
         deck.should_not be_valid_commander
         deck.should_not be_valid_brawler
       end
+    end
+  end
+
+  describe "#cards_with_sideboard adds up mainboard and sideboard" do
+    let(:deck) { db.sets["grn"].decks.find{|d| d.name == "United Assault" } }
+    let(:main) { deck.cards }
+    let(:side) { deck.sideboard }
+    let(:all) { deck.cards_with_sideboard }
+    let(:conclave_tribunal) {
+      PhysicalCard.for db.search("Conclave Tribunal e:grn").printings.first
+    }
+
+    it do
+      main.sum(&:first).should eq 60
+      side.sum(&:first).should eq 15
+      all.sum(&:first).should eq 75
+      main.should include [3, conclave_tribunal]
+      side.should include [1, conclave_tribunal]
+      all.should include [4, conclave_tribunal]
     end
   end
 end

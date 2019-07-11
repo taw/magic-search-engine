@@ -93,6 +93,11 @@ class PhysicalCard
     self == other
   end
 
+  include Comparable
+  def <=>(other)
+    [main_front, foil ? 1 : 0] <=> [other.main_front, other.foil ? 1 : 0]
+  end
+
   def self.for(card, foil=false)
     # meld really doesn't fit this model, as we have one CardPrinting that's on two physical card backs
     # just fake something that works
