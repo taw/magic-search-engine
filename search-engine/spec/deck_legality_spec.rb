@@ -2,8 +2,7 @@ describe "Deck legality" do
   include_context "db"
 
   def parse_decklist(decklist)
-    parser = DeckParser.new(db, decklist)
-    Deck.new(parser.main_cards, parser.sideboard_cards)
+    DeckParser.new(db, decklist).deck
   end
 
   def build_deck_of_size(mb, sb)

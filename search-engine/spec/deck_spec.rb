@@ -291,4 +291,23 @@ describe Deck do
       open_hostility.card_counts.should include([db.cards["order"], "Order // Chaos", 1])
     end
   end
+
+  describe "#color_identity" do
+    let(:open_hostility) { db.sets["c16"].deck_named("Open Hostility") }
+
+    it "supports a single commander" do
+      db.sets["cmd"].decks.map(&:color_identity).should match_array(["bgw", "bgu", "brw", "gru", "ruw"])
+      db.sets["c13"].decks.map(&:color_identity).should match_array(["buw", "guw", "bru", "grw", "bgr"])
+      db.sets["c14"].decks.map(&:color_identity).should match_array(["r", "w", "g", "u", "b"])
+      db.sets["c15"].decks.map(&:color_identity).should match_array(["bw", "bg", "ru", "gu", "rw"])
+      db.sets["c16"].decks.map(&:color_identity).should match_array(["bguw", "bgru", "bruw", "bgrw", "gruw"])
+      db.sets["c17"].decks.map(&:color_identity).should match_array(["bru", "bgruw", "gw", "brw"])
+      db.sets["c18"].decks.map(&:color_identity).should match_array(["guw", "ru", "bgr", "buw"])
+    end
+
+    it "supports partner commanders" do
+      DeckParser.new(db, "Sideboard\n Akiri, Line-Slinger\n Ikra Shidiqi, the Usurper").deck.color_identity.should eq("bgrw")
+      DeckParser.new(db, "Sideboard\n Kydele, Chosen of Kruphix\n Ikra Shidiqi, the Usurper").deck.color_identity.should eq("bgu")
+    end
+  end
 end

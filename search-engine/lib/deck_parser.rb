@@ -56,6 +56,10 @@ class DeckParser
     end
   end
 
+  def deck
+    Deck.new(@main_cards, @sideboard_cards)
+  end
+
   private
 
   def resolve_card_list(card_list)
