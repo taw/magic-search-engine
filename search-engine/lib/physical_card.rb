@@ -62,6 +62,14 @@ class PhysicalCard
     main_front.brawler?
   end
 
+  def partner?
+    main_front.partner?
+  end
+
+  def partner
+    main_front.partner
+  end
+
   def valid_partner_for?(other)
     main_front.valid_partner_for?(other.main_front)
   end
