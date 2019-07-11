@@ -119,7 +119,7 @@ describe "Deck legality" do
   def parse_deck_for_commander(*cards)
     decklist = "100x Forest\n\nSideboard\n" + cards.join("\n") + "\n"
     parser = DeckParser.new(db, decklist)
-    Deck.new(nil, cards.join(" "), nil, nil, parser.main_cards, parser.sideboard_cards)
+    Deck.new(parser.main_cards, parser.sideboard_cards)
   end
 
 
