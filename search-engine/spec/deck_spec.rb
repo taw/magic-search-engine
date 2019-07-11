@@ -173,7 +173,7 @@ describe Deck do
   end
 
   it "#to_text" do
-    deck = db.sets["jou"].decks.find{|d| d.name == "Wrath of the Mortals"}
+    deck = db.sets["jou"].deck_named("Wrath of the Mortals")
     deck.to_text.should eq(deck_export)
   end
 
@@ -258,7 +258,7 @@ describe Deck do
   end
 
   describe "#cards_with_sideboard adds up mainboard and sideboard" do
-    let(:deck) { db.sets["grn"].decks.find{|d| d.name == "United Assault" } }
+    let(:deck) { db.sets["grn"].deck_named("United Assault") }
     let(:main) { deck.cards }
     let(:side) { deck.sideboard }
     let(:all) { deck.cards_with_sideboard }
@@ -273,6 +273,22 @@ describe Deck do
       main.should include [3, conclave_tribunal]
       side.should include [1, conclave_tribunal]
       all.should include [4, conclave_tribunal]
+    end
+  end
+
+  # Including physical card full name here might be questionable API
+  describe "#card_counts" do
+    let(:united_assault) { db.sets["grn"].deck_named("United Assault") }
+    let(:spiritbane) { db.sets["chk"].deck_named("Spiritbane") }
+    let(:spiritcraft) { db.sets["bok"].deck_named("Spiritcraft") }
+    let(:open_hostility) { db.sets["c16"].deck_named("Open Hostility") }
+
+    it do
+      united_assault.card_counts.should include([db.cards["conclave tribunal"], "Conclave Tribunal", 4])
+      spiritbane.card_counts.should include([db.cards["brothers yamazaki"], "Brothers Yamazaki", 2])
+      spiritcraft.card_counts.should include([db.cards["budoka pupil"], "Budoka Pupil // Ichiga, Who Topples Oaks", 1])
+      spiritcraft.card_counts.should include([db.cards["faithful squire"], "Faithful Squire // Kaiso, Memory of Loyalty", 2])
+      open_hostility.card_counts.should include([db.cards["order"], "Order // Chaos", 1])
     end
   end
 end
