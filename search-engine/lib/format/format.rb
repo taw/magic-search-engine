@@ -15,6 +15,7 @@ class Format
   end
 
   def legality(card)
+    card = card.main_front if card.is_a?(PhysicalCard)
     if card.extra or !in_format?(card)
       nil
     else
