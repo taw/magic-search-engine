@@ -174,5 +174,19 @@ describe "Formats" do
     assert_search_results "is:meld not:primary -f:pd -other:-f:pd"
   end
 
+  describe "can check PhysicalCard or CardPrinting" do
+    let(:not_in_format) { db.search("Adorable Kitten").printings.first }
+    let(:banned) { db.search("Contract from Below").printings.first }
+    let(:restricted) { db.search("Black Lotus" ).printings.first}
+    let(:legal) { db.search("Giant Spider").printings.first }
+    let(:vintage) { FormatVintage.new }
+
+    it do
+      [not_in_format, banned, restricted, legal].each do |c|
+        vintage.legality(c).should eq vintage.legality(PhysicalCard.for(c))
+      end
+    end
+  end
+
   ## TODO - Extended, and various weirdo formats
 end
