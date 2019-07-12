@@ -19,10 +19,19 @@ require_relative "pack_factory"
 require_relative "weighted_pack"
 require_relative "sealed"
 require_relative "deck"
+require_relative "precon_deck"
 require_relative "deck_parser"
 require_relative "deck_database"
 require_relative "unknown_card"
 require_relative "user_deck_parser"
+
+# Backport from >=2.4 to 2.3
+module Enumerable
+  def sum(accumulator = 0, &block)
+    values = block_given? ? map(&block) : self
+    values.inject(accumulator, :+)
+  end unless method_defined? :sum
+end
 
 class String
   def normalize_accents
@@ -289,9 +298,9 @@ class CardDatabase
       .map(&:last)
       .flat_map{|c| c.parts.map(&:name).map{|n| [c.set_code, c.foil, n] }}
       .each do |set_code, foil, name|
-      @cards_in_precons[set_code] ||= [Set.new, Set.new]
-      @cards_in_precons[set_code][foil ? 1 : 0] << name
-    end
+        @cards_in_precons[set_code] ||= [Set.new, Set.new]
+        @cards_in_precons[set_code][foil ? 1 : 0] << name
+      end
   end
 
   def fix_multipart_cards_color_identity!(color_identity_cache)
@@ -330,11 +339,6 @@ class CardDatabase
       if artist_name.nil?
         warn "No artist for #{printing}"
         artist_name = "unknown"
-      end
-      # Presumably same artist, just keep that consistent to simplify slug code
-      # We could even fix some unset artists here
-      if artist_name == "JOCK"
-        artist_name = "Jock"
       end
       artist_slug = artist_name.downcase.gsub(/[^a-z0-9\p{Han}\p{Katakana}\p{Hiragana}\p{Hangul}]+/, "_")
       @artists[artist_slug] ||= Artist.new(artist_name)

@@ -18,7 +18,7 @@ class DeckDatabase
       sideboard = deck["sideboard"].map{|c| resolve_card(*c) }
       date = deck["release_date"]
       date = date ? Date.parse(date) : nil
-      deck = Deck.new(
+      deck = PreconDeck.new(
         set,
         deck["name"],
         deck["type"],

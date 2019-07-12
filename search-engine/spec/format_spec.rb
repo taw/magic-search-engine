@@ -7,11 +7,13 @@ describe "Formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
-      %Q[e:xln,rix,dom,m19,grn,rna,war -"Rampaging Ferocidon"]
+      %Q[e:xln,rix,dom,m19,grn,rna,war,m20 -"Rampaging Ferocidon"]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal_cards 'f:"ravnica block"', 'b:ravnica'
     assert_search_differ_cards 'f:"mirrodin block" t:land', 'b:"mirrodin" t:land'
+    assert_search_equal "f:duel", 'f:"duel commander"'
+    assert_search_equal "f:penny", 'f:"penny dreadful"'
   end
 
   it "ban_events" do
@@ -24,6 +26,11 @@ describe "Formats" do
       ]],
     ])
     FormatModern.new.ban_events.should eq([
+      [Date.parse("2019-07-12"),
+        "https://magic.wizards.com/en/articles/archive/news/july-8-2019-banned-and-restricted-announcement-2019-07-08",
+      [
+        {:name=>"Bridge from Below", :new=>"banned", :old=>"legal"},
+      ]],
       [Date.parse("2019-01-21"),
         "https://magic.wizards.com/en/articles/archive/news/january-21-2019-banned-and-restricted-announcement",
       [
@@ -165,6 +172,20 @@ describe "Formats" do
     assert_search_results "is:meld not:primary f:pd other:-f:pd"
     # If AB not in PD, but A and B both PD, then fail
     assert_search_results "is:meld not:primary -f:pd -other:-f:pd"
+  end
+
+  describe "can check PhysicalCard or CardPrinting" do
+    let(:not_in_format) { db.search("Adorable Kitten").printings.first }
+    let(:banned) { db.search("Contract from Below").printings.first }
+    let(:restricted) { db.search("Black Lotus" ).printings.first}
+    let(:legal) { db.search("Giant Spider").printings.first }
+    let(:vintage) { FormatVintage.new }
+
+    it do
+      [not_in_format, banned, restricted, legal].each do |c|
+        vintage.legality(c).should eq vintage.legality(PhysicalCard.for(c))
+      end
+    end
   end
 
   ## TODO - Extended, and various weirdo formats

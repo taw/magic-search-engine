@@ -57,6 +57,10 @@ class CardSet
     @code.hash
   end
 
+  def deck_named(name)
+    @decks.find{|d| d.name == name}
+  end
+
   def physical_cards(foil=false)
     @printings
       .select do |card|

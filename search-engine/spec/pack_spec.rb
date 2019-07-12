@@ -7,8 +7,8 @@ describe Pack do
   ## All these are used just by tests, but it's good to sanity check them
 
   it "expected_values" do
-    pack_ala.expected_values.values.inject(&:+).should eq Rational(15, 1)
-    pack_4ed.expected_values.values.inject(&:+).should eq Rational(15, 1)
+    pack_ala.expected_values.values.sum.should eq Rational(15, 1)
+    pack_4ed.expected_values.values.sum.should eq Rational(15, 1)
   end
 
   it "#has_foils?" do
