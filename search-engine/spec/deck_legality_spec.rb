@@ -445,7 +445,7 @@ describe "Deck legality" do
 
   describe "#deck_color_identity_issues" do
     let(:commander) { FormatCommander.new }
-    let(:brawler) { FormatCommander.new }
+    let(:brawl) { FormatBrawl.new }
     let(:deck) do
       parse_decklist <<~EOF
       Lightning Bolt
@@ -467,7 +467,163 @@ describe "Deck legality" do
         "Birds of Paradise is outside deck color identity",
         "Mox Sapphire is outside deck color identity",
       ])
-      commander.deck_color_identity_issues(deck).should eq brawler.deck_color_identity_issues(deck)
+      commander.deck_color_identity_issues(deck).should eq brawl.deck_color_identity_issues(deck)
+    end
+  end
+
+  describe "#deck_color_identity_issues - brawl basic land exception" do
+    let(:brawl) { FormatBrawl.new }
+    let(:deck_no_basics) {
+      parse_decklist <<~EOF
+      1x Aether Hub
+      1x Lightning Bolt
+      1x Birds of Paradise
+      10x Wastes
+
+      Sideboard
+      Karn, Scion of Urza
+      EOF
+    }
+    let(:deck_same_basics) {
+      parse_decklist <<~EOF
+      1x Aether Hub
+      1x Lightning Bolt
+      1x Birds of Paradise
+      10x Wastes
+      10x Mountain
+      10x Snow-Covered Mountain
+
+      Sideboard
+      Karn, Scion of Urza
+      EOF
+    }
+    let(:deck_mixed_basics) {
+      parse_decklist <<~EOF
+      1x Aether Hub
+      1x Lightning Bolt
+      1x Birds of Paradise
+      10x Wastes
+      10x Mountain
+      10x Snow-Covered Mountain
+      10x Forest
+      10x Snow-Covered Island
+
+      Sideboard
+      Karn, Scion of Urza
+      EOF
+    }
+
+    it do
+      brawl.deck_color_identity_issues(deck_no_basics).should match_array([
+        "Lightning Bolt is outside deck color identity",
+        "Birds of Paradise is outside deck color identity",
+      ])
+      brawl.deck_color_identity_issues(deck_same_basics).should match_array([
+        "Lightning Bolt is outside deck color identity",
+        "Birds of Paradise is outside deck color identity",
+      ])
+      brawl.deck_color_identity_issues(deck_mixed_basics).should match_array([
+        "Lightning Bolt is outside deck color identity",
+        "Birds of Paradise is outside deck color identity",
+        "Deck with colorless commander can contain basic lands of only one color",
+      ])
+    end
+  end
+
+  describe "deck_issues integration test for Constructed" do
+    let(:format) { FormatVintage.new }
+    let(:deck) {
+      parse_decklist <<~EOF
+      15x Black Lotus
+      25x Lightning Bolt
+
+      Sideboard
+      10x Force of Negation
+      1x Mox Ruby
+      4x Mox Sapphire
+      1x Chaos Orb
+      1x Adriana's Valor
+      EOF
+    }
+    let(:issues) { format.deck_issues(deck) }
+    it do
+      issues.should match_array([
+        "Deck must contain at least 60 mainboard cards, has only 40",
+        "Deck must contain at most 15 sideboard cards, has 17",
+        "Deck contains 15 copies of Black Lotus, which is restricted to only up to 1 allowed",
+        "Deck contains 25 copies of Lightning Bolt, only up to 4 allowed",
+        "Deck contains 10 copies of Force of Negation, only up to 4 allowed",
+        "Deck contains 4 copies of Mox Sapphire, which is restricted to only up to 1 allowed",
+        "Chaos Orb is banned",
+        "Adriana's Valor is not in the format",
+      ])
+    end
+  end
+
+  describe "deck_issues integration test for Commander" do
+    let(:format) { FormatCommander.new }
+    let(:deck) {
+      parse_decklist <<~EOF
+      10x Forest
+      10x Overgrown Tomb
+      1x Mountain
+      1x Island
+      1x Llanowar Elves
+      1x Chaos Orb
+      1x Adriana's Valor
+      1x Sorcerous Spyglass
+
+      Sideboard
+      Glissa, the Traitor
+      Kydele, Chosen of Kruphix
+      EOF
+    }
+    let(:issues) { format.deck_issues(deck) }
+    it do
+      issues.should match_array([
+        "Deck must contain exactly 100 cards, has 28",
+        "Deck contains 10 copies of Overgrown Tomb, only up to 1 allowed",
+        "Chaos Orb is banned",
+        "Adriana's Valor is not in the format",
+        "Glissa, the Traitor is not a valid partner card",
+        "Mountain is outside deck color identity",
+        "Adriana's Valor is outside deck color identity",
+      ])
+    end
+  end
+
+  describe "deck_issues integration test for Brawl" do
+    let(:format) { FormatBrawl.new(Date.parse("2019-07-01")) }
+    let(:deck) {
+      parse_decklist <<~EOF
+      10x Forest
+      10x Overgrown Tomb
+      1x Mountain
+      1x Island
+      1x Llanowar Elves
+      1x Chaos Orb
+      1x Adriana's Valor
+      1x Sorcerous Spyglass
+
+      Sideboard
+      Glissa, the Traitor
+      Kydele, Chosen of Kruphix
+      EOF
+    }
+    let(:issues) { format.deck_issues(deck) }
+    it do
+      issues.should match_array([
+        "Deck must contain exactly 60 cards, has 28",
+        "Deck contains 10 copies of Overgrown Tomb, only up to 1 allowed",
+        "Chaos Orb is not in the format",
+        "Adriana's Valor is not in the format",
+        "Sorcerous Spyglass is banned",
+        "Glissa, the Traitor is not in the format",
+        "Kydele, Chosen of Kruphix is not in the format",
+        "Glissa, the Traitor is not a valid partner card",
+        "Mountain is outside deck color identity",
+        "Adriana's Valor is outside deck color identity",
+      ])
     end
   end
 end

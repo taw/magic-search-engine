@@ -75,11 +75,18 @@ class FormatBrawl < FormatStandard
     return [] unless color_identity
     color_identity = color_identity.chars.to_set
     issues = []
+    basics = Set[]
     deck.card_counts.each do |card, name, count|
       card_color_identity = card.color_identity.chars.to_set
-      unless card_color_identity <= color_identity
+      next if card_color_identity <= color_identity
+      if color_identity.empty? and card.types.include?("basic")
+        basics << card_color_identity
+      else
         issues << "#{name} is outside deck color identity"
       end
+    end
+    if basics.size > 1
+      issues << "Deck with colorless commander can contain basic lands of only one color"
     end
     issues
   end
