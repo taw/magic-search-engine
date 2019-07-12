@@ -29,6 +29,19 @@ describe "Banlist" do
     end
   end
 
+  it "2019" do
+    assert_commander_banlist_changes "July 2019",
+      "banned", "Paradox Engine",
+      "banned", "Iona, Shield of Emeria",
+      "unbanned", "Painter's Servant"
+  end
+
+ it "2017" do
+    assert_commander_banlist_changes "April 2017",
+      "banned", "Leovold, Emissary of Trest",
+      "unbanned", "Protean Hulk"
+  end
+
   it "2016" do
     assert_commander_banlist_changes "January 2016",
       "banned", "Prophet of Kruphix"

@@ -15,6 +15,7 @@ class Format
   end
 
   def legality(card)
+    card = card.main_front if card.is_a?(PhysicalCard)
     if card.extra or !in_format?(card)
       nil
     else
@@ -40,6 +41,46 @@ class Format
       return true
     end
     false
+  end
+
+  def deck_issues(deck)
+    [
+      *deck_size_issues(deck),
+      *deck_card_issues(deck),
+    ]
+  end
+
+  def deck_size_issues(deck)
+    issues = []
+    if deck.number_of_mainboard_cards < 60
+      issues << "Deck must contain at least 60 mainboard cards, has only #{deck.number_of_mainboard_cards}"
+    end
+    if deck.number_of_sideboard_cards > 15
+      issues << "Deck must contain at most 15 sideboard cards, has #{deck.number_of_sideboard_cards}"
+    end
+    issues
+  end
+
+  def deck_card_issues(deck)
+    issues = []
+    deck.card_counts.each do |card, name, count|
+      card_legality = legality(card)
+      case card_legality
+      when "legal"
+        if count > 4 and not card.allowed_in_any_number?
+          issues << "Deck contains #{count} copies of #{name}, only up to 4 allowed"
+        end
+      when "restricted"
+        if count > 1
+          issues << "Deck contains #{count} copies of #{name}, which is restricted to only up to 1 allowed"
+        end
+      when "banned"
+        issues << "#{name} is banned"
+      else
+        issues << "#{name} is not in the format"
+      end
+    end
+    issues
   end
 
   def format_pretty_name
@@ -136,10 +177,12 @@ class Format
         "pauper"                     => FormatPauper,
         "pennydreadful"              => FormatPennyDreadful,
         "pd"                         => FormatPennyDreadful,
+        "penny"                      => FormatPennyDreadful,
         "commander"                  => FormatCommander,
         "edh"                        => FormatCommander,
         "duelcommander"              => FormatDuelCommander,
         "dueledh"                    => FormatDuelCommander,
+        "duel"                       => FormatDuelCommander,
         "mtgocommander"              => FormatMTGOCommander,
         "mtgoedh"                    => FormatMTGOCommander,
         "customstandard"             => FormatCustomStandard,
@@ -183,6 +226,7 @@ end
 require_relative "format_vintage"
 require_relative "format_commander"
 require_relative "format_standard"
+require_relative "format_commander"
 require_relative "format_custom_standard"
 require_relative "format_custom_eternal"
 Dir["#{__dir__}/format_*.rb"].each do |path| require_relative path end

@@ -1,5 +1,7 @@
 # Cleanup differences between mtgjson v3 and v4
 
+# This patch ended up as dumping ground for far too much random stuff
+
 class PatchMtgjsonVersions < Patch
   def get_cmc(card)
     cmc = [card.delete("convertedManaCost"), card.delete("cmc")].compact.first
@@ -25,40 +27,68 @@ class PatchMtgjsonVersions < Patch
       if set["type"]
         set["type"] = set["type"].gsub("_", " ")
       end
-      if set["official_code"] == "BBD"
+      case set["official_code"]
+      when "BBD"
         set["type"] = "two-headed giant"
-      end
-      if set["official_code"] == "MH1"
+      when "MH1"
         set["type"] = "modern"
+      when "CNS", "CN2"
+        set["type"] = "conspiracy"
+      when "UGL", "UNH", "UST"
+        set["type"] = "un"
       end
+
+      # mtgjson v4 decided to make releaseDate per-set
+      # that leads to need for a lot of BS adjustments
 
       # I trust unsourced mtg wiki claim here more
       # since this is definitely wrong
       # https://mtg.gamepedia.com/Duel_Decks:_Mirrodin_Pure_vs._New_Phyrexia
-      if set["official_code"] == "TD2"
+      case set["official_code"]
+      when "TD2"
         set["releaseDate"] = "2013-01-11"
-      end
-
       # Some random tweaks
-      if set["official_code"] == "C18"
+      when "C18"
         set["releaseDate"] = "2018-08-10"
-      end
-
-      if set["official_code"] == "DDT"
+      when "DDT"
         set["releaseDate"] = "2017-11-10"
-      end
-
-      if set["official_code"] == "PPRO"
+      when "PPRO"
         set["releaseDate"] = "2018-01-01"
-      end
-
-      if set["official_code"] == "P02"
+      when "P02"
         set["releaseDate"] = "1998-06-24"
+      when "PZ2"
+        set["releaseDate"] = "2018-08-10"
+      when "PRM"
+        set["releaseDate"] = "2018-08-10"
       end
     end
 
-    # drop all tokens
-    @cards.delete_if { |card| card["types"] =~ /Token/ }
+    vma_special = [
+      "Ancestral Recall",
+      "Black Lotus",
+      "Mox Emerald",
+      "Mox Jet",
+      "Mox Pearl",
+      "Mox Ruby",
+      "Mox Sapphire",
+      "Time Walk",
+      "Timetwister",
+    ]
+
+    # Rename cards
+
+    @cards.each do |name, printings|
+      if vma_special.include?(name)
+        printings.find{|c| c["set"]["official_code"] == "VMA" }["rarity"] = "special"
+      end
+    end
+
+    each_printing do |card|
+      if card["name"] == "Tamiyo's Journal" and card["set"]["official_code"] == "SOI"
+        card["hasFoil"] = true
+        card["hasNonFoil"] = true
+      end
+    end
 
     each_printing do |card|
       card["cmc"] = get_cmc(card)
@@ -78,6 +108,10 @@ class PatchMtgjsonVersions < Patch
       card.delete("text") if card["text"] == ""
       card.delete("manaCost") if card["manaCost"] == ""
       card.delete("names") if card["names"] == []
+
+      card["arena"] = true if card.delete("isArena")
+      card["paper"] = true if card.delete("isPaper")
+      card["mtgo"] = true if card.delete("isMtgo")
 
       if card["frameVersion"] == "future"
         card["timeshifted"] = true
@@ -118,6 +152,9 @@ class PatchMtgjsonVersions < Patch
       end
       if card["text"]
         card["text"] = cleanup_unicode_punctuation(card["text"])
+      end
+      if card["artist"]
+        card["artist"] = cleanup_unicode_punctuation(card["artist"])
       end
 
       # Flavor text quick fix because v4 doesn't have newlines

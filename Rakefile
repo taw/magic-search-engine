@@ -95,6 +95,11 @@ task "pics:statistics" do
   sh "./bin/pics_statistics"
 end
 
+desc "List cards without pictures"
+task "pics:missing" do
+  sh "./bin/cards_without_pics"
+end
+
 desc "Clanup Rails files"
 task "clean" do
   [
@@ -117,6 +122,5 @@ end
 desc "Fetch new Comprehensive Rules"
 task "rules:update" do
   sh "bin/fetch_comp_rules"
-  sh "bin/patch-comp-rules"
   sh "bin/format_comp_rules"
 end

@@ -26,11 +26,19 @@ private
       "all colors"
     when 1, 2
       color_indicator.join(" and ")
+    when 3
+      a, b, c = color_indicator
+      "#{a}, #{b}, and #{c}"
+    when 4
+      # No such cards
+      a, b, c, d = color_indicator
+      "#{a}, #{b}, #{c}, and #{d}"
     when 0
       # devoid and Ghostfire - for some reason they use rules text, not color indicator
       # "colorless"
       nil # You can ask, but no matches possible
-    else # find phrasing for 3/4 colors
+    else
+      # Nothing here
       nil # You can ask, but no matches possible
     end
   end

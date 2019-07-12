@@ -11,7 +11,7 @@ class PatchFoiling < Patch
         when [false, true]
           card["mtgjson_foiling"] = "foilonly"
         else
-          warn "Bad foiling information for #{name} in #{set_code}"
+          warn "Bad foiling information for #{card["name"]} in #{card["set_code"]}"
         end
       end
       card.delete "hasFoil"
@@ -152,10 +152,10 @@ class PatchFoiling < Patch
       mtgjson_foiling = card.delete("mtgjson_foiling")
       name = "#{card["name"]} [#{card["set_code"]}:#{card["number"]}]"
 
-      # https://github.com/mtgjson/mtgjson/issues/374
-      if card["set_code"] == "mir"
-        card["foiling"] = indexer_foiling
-        next
+      # Too many warnigs
+      case card["set_code"]
+      when "10e", "unh"
+        indexer_foiling = nil
       end
 
       if mtgjson_foiling.nil?

@@ -43,6 +43,7 @@ describe Deck do
       ["expansion", "Challenger Deck"],
       ["box", "MTGO Theme Deck"], # MTGO
       ["box", "Commander Deck"], # MTGO
+      ["core", "Spellslinger Starter Kit"],
     ]
 
     db.sets.each do |set_code, set|
@@ -101,19 +102,19 @@ describe Deck do
       next if set_code == "e01"
 
       # All names match both ways
-      set_card_names = set.physical_cards.map(&:name).uniq
-      deck_card_names = set.decks.flat_map(&:physical_cards).map(&:name).uniq
+      set_card_names = set.physical_card_names
+      deck_card_names = set.decks.flat_map(&:physical_card_names).uniq
 
       # Special cases
       if set_code == "hop"
         # Release event promo
-        set_card_names += db.sets["ohop"].physical_cards.map(&:name).uniq
+        set_card_names += db.sets["ohop"].physical_card_names
         set_card_names.should match_array deck_card_names
       elsif set_code == "pc2"
-        set_card_names += db.sets["opc2"].physical_cards.map(&:name).uniq
+        set_card_names += db.sets["opc2"].physical_card_names
         set_card_names.should match_array deck_card_names
       elsif set_code == "arc"
-        set_card_names += db.sets["oarc"].physical_cards.map(&:name).uniq
+        set_card_names += db.sets["oarc"].physical_card_names
         set_card_names.should match_array deck_card_names
       else
         set_card_names.should match_array deck_card_names
@@ -172,7 +173,7 @@ describe Deck do
   end
 
   it "#to_text" do
-    deck = db.sets["jou"].decks.find{|d| d.name == "Wrath of the Mortals"}
+    deck = db.sets["jou"].deck_named("Wrath of the Mortals")
     deck.to_text.should eq(deck_export)
   end
 
@@ -240,6 +241,73 @@ describe Deck do
           )
         end
       end
+    end
+  end
+
+  it "Commander decks have valid commander" do
+    db.decks.each do |deck|
+      if deck.type == "Commander Deck"
+        deck.should be_valid_commander
+        # Brawler is superset of commander, so even though none of theme are Brawl decks, give it a go
+        deck.should be_valid_brawler
+      else
+        deck.should_not be_valid_commander
+        deck.should_not be_valid_brawler
+      end
+    end
+  end
+
+  describe "#cards_with_sideboard adds up mainboard and sideboard" do
+    let(:deck) { db.sets["grn"].deck_named("United Assault") }
+    let(:main) { deck.cards }
+    let(:side) { deck.sideboard }
+    let(:all) { deck.cards_with_sideboard }
+    let(:conclave_tribunal) {
+      PhysicalCard.for db.search("Conclave Tribunal e:grn").printings.first
+    }
+
+    it do
+      main.sum(&:first).should eq 60
+      side.sum(&:first).should eq 15
+      all.sum(&:first).should eq 75
+      main.should include [3, conclave_tribunal]
+      side.should include [1, conclave_tribunal]
+      all.should include [4, conclave_tribunal]
+    end
+  end
+
+  # Including physical card full name here might be questionable API
+  describe "#card_counts" do
+    let(:united_assault) { db.sets["grn"].deck_named("United Assault") }
+    let(:spiritbane) { db.sets["chk"].deck_named("Spiritbane") }
+    let(:spiritcraft) { db.sets["bok"].deck_named("Spiritcraft") }
+    let(:open_hostility) { db.sets["c16"].deck_named("Open Hostility") }
+
+    it do
+      united_assault.card_counts.should include([db.cards["conclave tribunal"], "Conclave Tribunal", 4])
+      spiritbane.card_counts.should include([db.cards["brothers yamazaki"], "Brothers Yamazaki", 2])
+      spiritcraft.card_counts.should include([db.cards["budoka pupil"], "Budoka Pupil // Ichiga, Who Topples Oaks", 1])
+      spiritcraft.card_counts.should include([db.cards["faithful squire"], "Faithful Squire // Kaiso, Memory of Loyalty", 2])
+      open_hostility.card_counts.should include([db.cards["order"], "Order // Chaos", 1])
+    end
+  end
+
+  describe "#color_identity" do
+    let(:open_hostility) { db.sets["c16"].deck_named("Open Hostility") }
+
+    it "supports a single commander" do
+      db.sets["cmd"].decks.map(&:color_identity).should match_array(["bgw", "bgu", "brw", "gru", "ruw"])
+      db.sets["c13"].decks.map(&:color_identity).should match_array(["buw", "guw", "bru", "grw", "bgr"])
+      db.sets["c14"].decks.map(&:color_identity).should match_array(["r", "w", "g", "u", "b"])
+      db.sets["c15"].decks.map(&:color_identity).should match_array(["bw", "bg", "ru", "gu", "rw"])
+      db.sets["c16"].decks.map(&:color_identity).should match_array(["bguw", "bgru", "bruw", "bgrw", "gruw"])
+      db.sets["c17"].decks.map(&:color_identity).should match_array(["bru", "bgruw", "gw", "brw"])
+      db.sets["c18"].decks.map(&:color_identity).should match_array(["guw", "ru", "bgr", "buw"])
+    end
+
+    it "supports partner commanders" do
+      DeckParser.new(db, "Sideboard\n Akiri, Line-Slinger\n Ikra Shidiqi, the Usurper").deck.color_identity.should eq("bgrw")
+      DeckParser.new(db, "Sideboard\n Kydele, Chosen of Kruphix\n Ikra Shidiqi, the Usurper").deck.color_identity.should eq("bgu")
     end
   end
 end

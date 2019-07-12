@@ -8,18 +8,19 @@ describe "New Phyrexia" do
     assert_search_results "mana>=3{p/g}", "Birthing Pod", "Thundering Tanadon"
   end
 
+  it "is:phyrexian" do
+    assert_search_equal "is:phyrexian", "mana>={wp} or mana>={up} or mana>={bp} or mana>={rp} or mana>={gp}"
+  end
+
   it "watermark:" do
     assert_search_results "w:mirran c:g", "Greenhilt Trainee", "Melira, Sylvok Outcast", "Viridian Harvest"
     assert_search_equal "w:mirran OR w:phyrexian", "w:*"
     assert_search_equal "-w:mirran -w:phyrexian", "-w:*"
+    assert_search_equal "has:watermark", "w:*"
   end
 
   it "gatherer link" do
     birthing_pod.gatherer_link.should eq("http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=218006")
-  end
-
-  it "magiccards_info_link" do
-    birthing_pod.magiccards_info_link.should eq("http://magiccards.info/nph/en/104.html")
   end
 
   it "legalities" do

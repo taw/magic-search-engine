@@ -360,7 +360,8 @@ describe "Scryfall" do
 
     # no old/future frame mythics
     # (well, except ovnt, but that's a fake set)
-    assert_search_equal "is:new r:mythic", "r:mythic -e:ovnt -(Phoenix Heart)"
+    # ppre looks like a bug
+    assert_search_equal "is:new r:mythic", "r:mythic -e:ovnt,ppre -(Phoenix Heart)"
   end
 
   it "scryfall_bug_cmc" do
@@ -402,12 +403,6 @@ describe "Scryfall" do
       "Abomination of Gudul"
     assert_search_exclude 'o:"draw" t:creature',
       "Tireless Tracker"
-  end
-
-  it "is_digital" do
-    # scryfall includes "Gleemox" - https://scryfall.com/card/pgmx/1
-    # and I have no idea what's that
-    assert_search_equal "is:digital", "e:me1,me2,me3,me4,vma,tpr,pana,pmoa,td0,td2,ana"
   end
 
   it "set: is alias of e:" do

@@ -10,7 +10,11 @@ describe PhysicalCard do
   it "all sets can return list of physical cards" do
     db.sets.each do |set_code, set|
       # Need to .uniq as meld appears twice on the left side and once on the right side
-      set.physical_cards.flat_map{|c| [*c.front, *c.back]}.uniq.should match_array(set.printings)
+      # Also because of foils
+      [*set.physical_cards(true), *set.physical_cards(false)]
+        .flat_map{|c| [*c.front, *c.back]}
+        .uniq
+        .should match_array(set.printings)
     end
   end
 

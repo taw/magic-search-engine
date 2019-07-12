@@ -6,8 +6,16 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data for same sets,
   # indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(19796)
-    db.number_of_printings.should eq(41928)
+    db.number_of_cards.should eq(19972)
+    db.number_of_printings.should eq(44466)
+  end
+
+  # I'm not even sure what good this test does, delete?
+  it "is:promo" do
+    # it's not totally clear what counts as "promo"
+    # and different engines return different results
+    # It might be a good idea to sort out edge cases someday
+    assert_count_printings "is:promo", 3920
   end
 
   it "block codes" do
@@ -89,6 +97,7 @@ describe "Full Database Test" do
     assert_search_equal %Q[print="12 july 2012"], %Q[print=2012-07-12]
   end
 
+  # Digital only cards with their bullshit release dates are really messing up with this test
   it "print" do
     assert_search_equal "t:planeswalker print=m12", "t:planeswalker e:m12"
     assert_search_results "t:jace print=2013", "Jace, Memory Adept", "Jace, the Mind Sculptor"
@@ -128,29 +137,39 @@ describe "Full Database Test" do
 
     assert_search_results "e:soi lastprint>soi lastprint<grn",
       "Aim High",
+      "Angel of Deliverance",
+      "Anguished Unmaking",
       "Archangel Avacyn",
       "Arlinn Kord",
       "Arlinn, Embraced by the Moon",
       "Avacyn, the Purifier",
+      "Call the Bloodline",
       "Dauntless Cathar",
+      "Drogskol Cavalry",
       "Dual Shot",
+      "Elusive Tormentor",
       "Engulf the Shore",
       "Explosive Apparatus",
+      "Flameblade Angel",
       "Forsaken Sanctuary",
       "Foul Orchard",
       "Grotesque Mutation",
       "Highland Lake",
+      "Incorrigible Youths",
+      "Insidious Mist",
       "Jace, Unraveler of Secrets",
       "Macabre Waltz",
       "Magnifying Glass",
+      "Markov Dreadknight",
+      "Mindwrack Demon",
+      "Nephalia Moondrakes",
       "Pyre Hound",
-      "Rabid Bite",
+      "Ravenous Bloodseeker",
       "Rush of Adrenaline",
-      "Sleep Paralysis",
+      "Soul Swallower",
       "Stone Quarry",
       "Thornhide Wolves",
       "Triskaidekaphobia",
-      "Uncaged Fury",
       "Vampire Noble",
       "Vessel of Nascency",
       "Warped Landscape",
@@ -167,7 +186,6 @@ describe "Full Database Test" do
       "Sarkhan the Mad",
       "Nissa Revane"
     assert_search_results "t:planeswalker lastprint<=2011",
-      "Ajani Vengeant",
       "Chandra Ablaze",
       "Elspeth Tirel",
       "Nissa Revane",
@@ -215,12 +233,9 @@ describe "Full Database Test" do
   end
 
   it "alt test of time" do
-    assert_search_results "year=1993 alt:year=2015",
+    assert_search_results "year=1993 alt:(year=2015 -is:digital)",
       "Basalt Monolith",
-      "Counterspell",
-      "Dark Ritual",
       "Desert Twister",
-      "Disenchant",
       "Earthquake",
       "Forest",
       "Island",
@@ -232,22 +247,18 @@ describe "Full Database Test" do
       "Plains",
       "Sengir Vampire",
       "Serra Angel",
-      "Shatter",
       "Shivan Dragon",
       "Sol Ring",
-      "Spell Blast",
-      "Swamp",
-      "Tranquility"
+      "Swamp"
   end
 
   it "alt rarity" do
     assert_search_include "r:common alt:r:uncommon", "Doom Blade"
-    assert_search_results "r:common alt:r:mythic",
+    assert_search_results "r:common -is:digital alt:(r:mythic -is:digital)",
       "Boil",
       "Cabal Ritual",
       "Capsize",
       "Chain Lightning",
-      "Chainer's Edict",
       "Counterspell",
       "Dark Ritual",
       "Daze",
@@ -294,13 +305,6 @@ describe "Full Database Test" do
     assert_search_results "tou>8-*"
     assert_search_results "tou<=8-*", "Shapeshifter"
     assert_search_results "tou<=2-*"
-  end
-
-  it "is:promo" do
-    # it's not totally clear what counts as "promo"
-    # and different engines return different results
-    # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 2493
   end
 
   it "is:funny" do
@@ -412,13 +416,7 @@ describe "Full Database Test" do
 
   it "promo and special" do
     warn "not sure what to do with rarity special (v4 no longer uses it, should we?)"
-
-    # Are promo basics really of basic rarity?
-    assert_search_equal "t:basic (is:promo or e:g17)", "t:basic r:special"
-    assert_search_equal "t:basic", "(r:basic -t:urza's) or (t:basic r:special) or (t:basic e:an)"
-    # assert_search_results "is:promo -r:special -e:ugin"
-    assert_search_results %Q[r:special -is:promo -st:masterpiece -t:vanguard -e:anthologies -e:tsts -e:"clash pack" -e:vma -e:mgbc -e:g17],
-      "Super Secret Tech"
+    assert_search_equal "r:special", "(Super Secret Tech) or (e:vma r:special)"
   end
 
   it "all planeswalkers are legendary" do
@@ -472,7 +470,7 @@ describe "Full Database Test" do
 
   it "year" do
     "t:planeswalker year = 2010".should have_count_printings 15
-    "t:planeswalker year < 2013".should have_count_printings 67
+    "t:planeswalker year < 2013".should have_count_printings 68
     "t:planeswalker year > 2014".should equal_search "t:planeswalker year >= 2015"
   end
 

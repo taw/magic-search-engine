@@ -1,21 +1,23 @@
 class ConditionIsFilterland < Condition
   def search(db)
     names = [
-      "skycloud expanse",
-      "darkwater catacombs",
-      "shadowblood ridge",
-      "mossfire valley",
-      "sungrass prairie",
-      "mystic gate",
-      "sunken ruins",
-      "graven cairns",
-      "fire-lit thicket",
-      "wooded bastion",
-      "fetid heath",
       "cascade bluffs",
-      "twilight mire",
+      "cascading cataracts",
+      "crystal quarry",
+      "darkwater catacombs",
+      "fetid heath",
+      "fire-lit thicket",
+      "flooded grove",
+      "graven cairns",
+      "mossfire valley",
+      "mystic gate",
       "rugged prairie",
-      "flooded grove"
+      "shadowblood ridge",
+      "skycloud expanse",
+      "sungrass prairie",
+      "sunken ruins",
+      "twilight mire",
+      "wooded bastion",
     ]
 
     names

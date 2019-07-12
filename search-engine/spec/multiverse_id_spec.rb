@@ -26,12 +26,13 @@ describe "multiverse ids" do
     db.sets.each do |set_code, set|
       # These are gatherer sets to which mtgjson adds some extra cards
       case set_code
-      when "aer", "kld", "mir", "ody", "5ed", "shm", "10e"
+      when "aer", "kld", "mir", "ody", "5ed", "shm", "10e", "soi", "atq", "drk", "unh", "m20"
         # It's a very specific check as we want to do the same check in PatchExcludeFromBoosters
         set.printings.group_by{|x| [!(x.number =~ /†|★/), !!x.multiverseid]}.keys.should match_array([
           [true, true], [false, false]
         ]), "Set #{set_code} should have all non-gatherer cards marked with † or ★"
       # Known issues, ignore for now
+      when "ppre" # Weird "Promo set for Gatherer"
       when "pmei"
       when "s00"
       when "war" # Japanese promos

@@ -343,7 +343,7 @@
             "manaCost": "{3}{W}",
             "name": "Enrobe in Light",
             "number": "12",
-            "originalText": "Enchant creature\nEnchanted creature gets +2/+2.\nWhen Enrobe in Light enters the battlefield, tap all creatures your opponents control.",
+            "originalText": "Enchant creature\nWhen Enrobe in Light enters the battlefield, tap all creatures your opponents control.\nEnchanted creature gets +2/+2.",
             "originalType": "Enchantment \u2014 Aura",
             "rarity": "Uncommon",
             "subtypes": [
@@ -1474,7 +1474,7 @@
             "rulings": [
                 {
                     "date": "2009-10-01",
-                    "text": "A \"creature spell\" is any spell with the type creature, even if it has other types such as artifact or enchantment. Older cards of type summon are also creature spells."
+                    "text": "A \u201ccreature spell\u201d is any spell with the type creature, even if it has other types such as artifact or enchantment. Older cards of type summon are also creature spells."
                 }
             ],
             "text": "Counter target creature spell.",
@@ -1983,7 +1983,7 @@
             "manaCost": "{1}{U}{U}",
             "name": "Sandwarp",
             "number": "71",
-            "originalText": "As an additional cost to cast this spell, you may waste two nonwastes lands you control. (Wastes lose all land types and abilities and gain \"{T}: Add {C}.\")\nCounter target spell. If Sandwarp's additional cost was paid, instead exile that spell, you may cast that card for as long as it remains exiled, and you may spend mana as though it were mana of any type to cast that spell.",
+            "originalText": "As an additional cost to cast this spell, you may waste two nonwastes lands you control. (Wastes lose all land types and abilities and gain \"{T}: Add {C}.\")\nCounter target spell. If this spell's additional cost was paid, instead exile that spell, you may cast that card for as long as it remains exiled, and you may spend mana as though it were mana of any type to cast that spell.",
             "originalType": "Instant",
             "rarity": "Rare",
             "text": "As an additional cost to cast this spell, you may waste two nonwastes lands you control. (Wastes lose all land types and abilities and gain \"{T}: Add {C}.\")\nCounter target spell. If this spell's additional cost was paid, instead exile that spell, you may cast that card for as long as it remains exiled, and you may spend mana as though it were mana of any type to cast that spell.",
@@ -3835,7 +3835,7 @@
             "manaCost": "{3}{R}",
             "name": "Luma's Guidance",
             "number": "138",
-            "originalText": "At the beginning of your upkeep, if you have no cards in hand, draw a card. Otherwise you may discard then draw a card.",
+            "originalText": "At the beginning of your upkeep, you may discard a card. If you do or if you have no cards in hand, draw a card.",
             "originalType": "Enchantment",
             "rarity": "Uncommon",
             "text": "At the beginning of your upkeep, you may discard a card. If you do or if you have no cards in hand, draw a card.",
@@ -4476,13 +4476,13 @@
             "manaCost": "{G}",
             "name": "Behold the End",
             "number": "162",
-            "originalText": "{2}{G}: Search your library for a basic land card, reveal it, put it into your hand, then shuffle your library.\n{9}{G}{G}{G}, Sacrifice Behold the End: Create a legendary 15/15 green Wurm creature token named Wurm of World's End with hexproof and trample.",
+            "originalText": "{2}{G}: Search your library for a basic land card, reveal it, put it into your hand, then shuffle your library.\n{9}{G}{G}{G}, Sacrifice Behold the End: Create Wurm of World's End, a legendary 15/15 green Wurm creature token with trample and hexproof.",
             "originalType": "Legendary Enchantment",
             "rarity": "Mythic Rare",
             "supertypes": [
                 "Legendary"
             ],
-            "text": "{2}{G}: Search your library for a basic land card, reveal it, put it into your hand, then shuffle your library.\n{9}{G}{G}{G}, Sacrifice Behold the End: Create a legendary 15/15 green Wurm creature token named Wurm of World's End with trample and hexproof.",
+            "text": "{2}{G}: Search your library for a basic land card, reveal it, put it into your hand, then shuffle your library.\n{9}{G}{G}{G}, Sacrifice Behold the End: Create Wurm of World's End, a legendary 15/15 green Wurm creature token with trample and hexproof.",
             "type": "Legendary Enchantment",
             "types": [
                 "Enchantment"
@@ -5892,7 +5892,7 @@
             "manaCost": "{X}{X}{U}{R}",
             "name": "Nvia's Genius",
             "number": "212",
-            "originalText": "Search your library for any number of instant, sorcery and/or artifact cards with converted mana cost X or less, each with different converted mana costs. Reveal them and put them into your hand. Then shuffle your library.",
+            "originalText": "Search your library for any number of instant, sorcery, and/or artifact cards with converted mana cost X or less, each with different converted mana costs. Reveal them and put them into your hand. Then shuffle your library.",
             "originalType": "Instant",
             "rarity": "Rare",
             "text": "Search your library for any number of instant, sorcery, and/or artifact cards with converted mana cost X or less, each with different converted mana costs. Reveal them and put them into your hand. Then shuffle your library.",
@@ -6566,7 +6566,7 @@
             "manaCost": "{8}{C}",
             "name": "Warden of the Eons",
             "number": "237",
-            "originalText": "When Warden of the Eons enters the battlefield, each opponent skips their next combat phase. After this main phase, untap all other creatures you control then there is an additional combat phase followed by an additional main phase.",
+            "originalText": "When Warden of the Eons enters the battlefield, each opponent skips their next combat phase. Untap all other creatures you control. After this main phase, there is an additional combat phase followed by an additional main phase.",
             "originalType": "Artifact Creature \u2014 Construct",
             "power": "10",
             "rarity": "Rare",
@@ -6640,7 +6640,7 @@
             "layout": "normal",
             "name": "Aethanis, the Fallen Capital",
             "number": "240",
-            "originalText": "{T}: Add {C}.\n{C}{C}{C}{C}, {T}: Target player loses 1 life, discards a card, then sacrifices a permanent. Activate this ability only as a sorcery.",
+            "originalText": "{T}: Add {C}.\n{C}{C}{C}{C}, {T}: Target player loses 1 life, discards a card, then sacrifices a permanent. Activate this ability only any time you could cast a sorcery.",
             "originalType": "Legendary Land",
             "rarity": "Rare",
             "supertypes": [
@@ -6835,7 +6835,7 @@
             "layout": "normal",
             "name": "Wastes",
             "number": "250",
-            "originalType": "Bas1c Land",
+            "originalType": "B\u200basic Land",
             "rarity": "Common",
             "rulings": [
                 {
@@ -6857,10 +6857,6 @@
                 {
                     "date": "2016-01-22",
                     "text": "Similarly, colorless is not a color. If something asks you to choose a color, you can't choose colorless."
-                },
-                {
-                    "date": "2018-06-21",
-                    "text": "The Vastuum printing of this card uses the type line \u201cBas1c Land\u201d. This is a workaround for a PlaneSculptors.net bug and not the card's actual text."
                 }
             ],
             "supertypes": [

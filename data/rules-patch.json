@@ -1,5 +1,6 @@
 {
-    "base": "2019-06-14",
+    "base": "2019-07-12",
+    "effective": "2019-07-12",
     "patches": [
         {
             "sets": [
@@ -248,8 +249,8 @@
             "rules": [
                 {
                     "type": "add",
-                    "rule": "110.5",
-                    "text": "A token may also enter the battlefield from the stack. (See rule 608.3b.) This is an exception to rules 110.5a and 110.5b; the token enters the battlefield under the control of the spell's controller and retains its owner, text, and characteristics."
+                    "rule": "111",
+                    "text": "A token may also enter the battlefield from the stack. (See rule 608.3b.) This is an exception to rules 111.2 and 111.3; the token enters the battlefield under the control of the spell's controller and retains its owner, text, and characteristics."
                 },
                 {
                     "type": "insert",
@@ -266,13 +267,13 @@
             "rules": [
                 {
                     "type": "replace",
-                    "rule": "114.4",
+                    "rule": "115.4",
                     "find": "creatures, players, or planeswalkers",
                     "replace": "creatures, players, planeswalkers, or Structures"
                 },
                 {
                     "type": "replace",
-                    "rule": "114.4",
+                    "rule": "115.4",
                     "find": "such as noncreature artifacts or spells",
                     "replace": "such as noncreature enchantments or spells"
                 }
@@ -286,37 +287,37 @@
             "rules": [
                 {
                     "type": "replace",
-                    "rule": "119.1",
+                    "rule": "120.1",
                     "find": "Objects can deal damage",
                     "replace": "Objects and players can deal damage"
                 },
                 {
                     "type": "replace",
-                    "rule": "119.1",
+                    "rule": "120.1",
                     "find": "An object that deals damage",
                     "replace": "An object or player that deals damage"
                 },
                 {
                     "type": "replace",
-                    "rule": "119.2",
+                    "rule": "120.2",
                     "find": "Any object can deal damage\\.",
                     "replace": "Any object or player can deal damage."
                 },
                 {
                     "type": "replace",
-                    "rule": "119.2b",
+                    "rule": "120.2b",
                     "find": "The spell or ability will specify which object deals that damage\\.",
                     "replace": "The spell or ability will specify which object or player deals that damage."
                 },
                 {
                     "type": "replace",
-                    "rule": "119.7",
+                    "rule": "120.7",
                     "find": "The source of damage is the object that dealt it\\. If an effect requires a player to choose a source of damage, they may choose a permanent;",
                     "replace": "The source of damage is the object or player that dealt it. If an effect requires a player to choose a source of damage, they may choose a player; a permanent;"
                 },
                 {
                     "type": "add",
-                    "rule": "119",
+                    "rule": "120",
                     "text": "If an effect refers to the controller of a damage source, and the source of that damage is a player, it refers to that player."
                 },
                 {
@@ -335,24 +336,24 @@
             "rules": [
                 {
                     "type": "replace",
-                    "rule": "119.1",
+                    "rule": "120.1",
                     "find": "to creatures, planeswalkers, and players\\.",
                     "replace": "to creatures, planeswalkers, Structures, and players."
                 },
                 {
                     "type": "replace",
-                    "rule": "119.1a",
+                    "rule": "120.1a",
                     "find": "neither a creature nor a planeswalker",
                     "replace": "not a creature, planeswalker, or Structure"
                 },
                 {
                     "type": "insert",
-                    "rule": "119.3d",
+                    "rule": "120.3d",
                     "text": "Damage dealt to a Structure causes that many stability counters to be removed from that Structure."
                 },
                 {
                     "type": "replace",
-                    "rule": "119.5",
+                    "rule": "120.5",
                     "find": "creature or planeswalker",
                     "replace": "creature, planeswalker, or Structure"
                 },
@@ -434,11 +435,13 @@
                         "Patches",
                         "Roselyn",
                         "Sarasa",
+                        "Serra",
                         "Shala",
                         "Sobki",
                         "Talya",
                         "Toahanga",
                         "Veila",
+                        "Wrenn",
                         "Wulani",
                         "Yemma"
                     ]
@@ -874,7 +877,7 @@
                         "text": "Journey",
                         "subrules": [
                             "“Journey” means “Exile the top card of your library. That card becomes journeyed.”",
-                            "There is an inherent triggered ability associated with journeying. The full text of this ability is “Whenever a creature deals combat damage to one of its controller's opponents, if its controller owns any journeyed cards, the creature's controller puts a journeyed card they own into their hand.” This ability has no source and is controlled by the controller of the creature which dealt the damage that caused it to trigger. This is an exception to rule 112.8.",
+                            "There is an inherent triggered ability associated with journeying. The full text of this ability is “Whenever a creature deals combat damage to one of its controller's opponents, if its controller owns any journeyed cards, the creature's controller puts a journeyed card they own into their hand.” This ability has no source and is controlled by the controller of the creature which dealt the damage that caused it to trigger. This is an exception to rule 113.8.",
                             "Journeyed is a designation that has no rules meaning other than to act as a marker that the inherent triggered ability and other spells and abilities can identify. Only cards in exile can gain or have this designation. Once a card becomes journeyed, it stays journeyed until it leaves exile or becomes a new object (see rule 406.7). Journeyed is neither an ability nor part of the card's copiable values."
                         ]
                     }
@@ -1343,7 +1346,7 @@
                         "subrules": [
                             "Seal is a static ability that functions in any zone from which you could play the card it's on, and the seal effect works any time the card is face down. “Seal [cost]” means “You may cast this card as a face-down Relic artifact with no text, no name, and no mana cost by paying {2} rather than paying its mana cost.” (See rule 707, “Face-Down Spells and Permanents.”)",
                             "To cast a card using its seal ability, turn it face down. It becomes a face-down Relic artifact card with no text, no name, and no mana cost. Any effects or prohibitions that would apply to casting a card with these characteristics (and not the face-up card's characteristics) are applied to casting this card. These values are the copiable values of that object's characteristics. (See rule 613, “Interaction of Continuous Effects,” and rule 706, “Copying Objects.”) Put it onto the stack (as a face-down spell with the same characteristics), and pay {2} rather than pay its mana cost. This follows the rules for paying alternative costs. You can use a seal ability to cast a card from any zone from which you could normally play it. When the spell resolves, it enters the battlefield with the same characteristics the spell had. The seal effect applies to the face-down object wherever it is, and it ends when the permanent is turned face up.",
-                            "Any time you have priority, you may exile a face-down permanent you control, then cast it for its seal cost. This is a special action; it doesn't use the stack (see rule 115). To do this, show all players what the permanent's seal cost would be if it were face up, exile it, then cast it for that cost. This follows the rules for paying alternative costs. (If the permanent wouldn't have a seal cost if it were face up, it can't be exiled this way.) The card is turned face up and the seal effect on it ends as soon as it's exiled, and it regains its normal characteristics. Exiling and casting the card is considered a single action for the purposes of reversing illegal spells. If the spell proposal of casting the card for its seal cost is reversed, the action of exiling it is also reversed, returning it to the battlefield. (See rule 721, “Handling Illegal Actions.”)",
+                            "Any time you have priority, you may exile a face-down permanent you control, then cast it for its seal cost. This is a special action; it doesn't use the stack (see rule 116). To do this, show all players what the permanent's seal cost would be if it were face up, exile it, then cast it for that cost. This follows the rules for paying alternative costs. (If the permanent wouldn't have a seal cost if it were face up, it can't be exiled this way.) The card is turned face up and the seal effect on it ends as soon as it's exiled, and it regains its normal characteristics. Exiling and casting the card is considered a single action for the purposes of reversing illegal spells. If the spell proposal of casting the card for its seal cost is reversed, the action of exiling it is also reversed, returning it to the battlefield. (See rule 721, “Handling Illegal Actions.”)",
                             "If a spell's controller declares the intention to pay that spell's seal cost, that spell has been “sealed.” If a spell has multiple seal costs, it may be sealed multiple times. See rule 601.2b.",
                             "Objects with seal may have additional abilities that check whether they were sealed. These abilities are linked to the seal ability printed on that object: they can refer only to its printed seal ability. See rule 607, “Linked Abilities.”",
                             "See rule 707, “Face-Down Spells and Permanents,” for more information about how to cast cards with seal."
@@ -1462,7 +1465,7 @@
                     "rule": {
                         "text": "Tithe",
                         "subrules": [
-                            "On a permanent card, tithe is a triggered ability. “Tithe” on a permanent means “When this permanent enters the battlefield, you may tap three other untapped artifacts and/or creatures you control.” Tapping the three permanents is a cost (see rule 117) and may be referred to as paying the permanent's tithe.",
+                            "On a permanent card, tithe is a triggered ability. “Tithe” on a permanent means “When this permanent enters the battlefield, you may tap three other untapped artifacts and/or creatures you control.” Tapping the three permanents is a cost (see rule 118) and may be referred to as paying the permanent's tithe.",
                             "On an instant or sorcery card, tithe is a static ability that functions while the spell with tithe is on the stack. “Tithe” on an instant or sorcery spell means “As an additional cost to cast this spell, you may tap three untapped artifacts and/or creatures you control.” Paying an instant or sorcery spell's tithe cost follows the rules for paying additional costs in rules 601.2b and 601.2f–h. An instant or sorcery spell's tithe cost may also simply be referred to as its tithe."
                         ]
                     }

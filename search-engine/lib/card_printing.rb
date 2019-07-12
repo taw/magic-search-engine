@@ -45,9 +45,25 @@ class CardPrinting
     @partner = data["partner"]
     @oversized = data["oversized"]
 
+    @paper = data["paper"]
+    @arena = data["arena"]
+    @mtgo = data["mtgo"]
+
     # Performance cache
     @stemmed_name = @card.stemmed_name
     @set_code = @set.code
+  end
+
+  def arena?
+    !!@arena
+  end
+
+  def paper?
+    !!@paper
+  end
+
+  def mtgo?
+    !!@mtgo
   end
 
   def in_boosters?
@@ -93,7 +109,8 @@ class CardPrinting
     foreign_names foreign_names_normalized mana_hash funny color_indicator color_indicator_set
     related first_regular_release_date reminder_text augment
     display_power display_toughness display_mana_cost
-    primary? secondary? front? back? partner?
+    primary? secondary? front? back? partner? allowed_in_any_number?
+    commander? brawler?
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
   end
@@ -105,10 +122,6 @@ class CardPrinting
   def gatherer_link
     return nil unless multiverseid
     "http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=#{multiverseid}"
-  end
-
-  def magiccards_info_link
-    "http://magiccards.info/#{set_code}/en/#{number}.html"
   end
 
   include Comparable
@@ -130,5 +143,16 @@ class CardPrinting
 
   def to_s
     inspect
+  end
+
+  def valid_partner_for?(other)
+    return unless partner? and other.partner?
+    if partner
+      return false unless partner.name == other.name
+    end
+    if other.partner
+      return false unless name == other.partner.name
+    end
+    true
   end
 end

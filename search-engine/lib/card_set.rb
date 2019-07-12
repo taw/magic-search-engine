@@ -57,10 +57,27 @@ class CardSet
     @code.hash
   end
 
+  def deck_named(name)
+    @decks.find{|d| d.name == name}
+  end
+
   def physical_cards(foil=false)
-    @printings.map do |card|
-      PhysicalCard.for(card, foil)
-    end.uniq
+    @printings
+      .select do |card|
+        if foil
+          card.foiling != "nonfoil"
+        else
+          card.foiling != "foilonly"
+        end
+      end
+      .map do |card|
+        PhysicalCard.for(card, foil)
+      end
+      .uniq
+  end
+
+  def physical_card_names
+    [*physical_cards(true), *physical_cards(false)].map(&:name).uniq
   end
 
   def physical_cards_in_boosters(foil=false)

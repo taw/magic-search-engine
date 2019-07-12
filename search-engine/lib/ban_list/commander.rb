@@ -286,4 +286,12 @@ BanList.for_format("commander") do
     "Leovold, Emissary of Trest" => "banned",
     "Protean Hulk" => "legal",
   )
+
+  change(
+    "2019-07-08",
+    "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=19171", # posted 2019-07-08
+    "Paradox Engine" => "banned",
+    "Iona, Shield of Emeria" => "banned",
+    "Painter's Servant" => "legal",
+  )
 end
