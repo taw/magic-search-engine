@@ -222,16 +222,16 @@ class CompRules:
                         'eleven',
                         'twelve'
                     ]
-                    match = re.fullmatch('There are ([^ ]+) special actions:', self['115.2'])
+                    match = re.fullmatch('There are ([^ ]+) special actions:', self['116.2'])
                     try:
                         num_special_actions = int(match.group(1))
                     except ValueError:
                         num_special_actions = numbers.index(match.group(1))
                     num_special_actions += 1
-                    self['115.2'] = 'There are {} special actions:'.format(numbers[num_special_actions] if num_special_actions < len(numbers) else num_special_actions)
-                    self['115']['rules'][1]['subrules'].append(patch['text'])
-                    patch_rules.add('115.2')
-                    patch_rules.add('115.2' + SUBRULE_IDX[len(self['115']['rules'][1]['subrules']) - 1])
+                    self['116.2'] = 'There are {} special actions:'.format(numbers[num_special_actions] if num_special_actions < len(numbers) else num_special_actions)
+                    self['116']['rules'][1]['subrules'].append(patch['text'])
+                    patch_rules.add('116.2')
+                    patch_rules.add('116.2' + SUBRULE_IDX[len(self['116']['rules'][1]['subrules']) - 1])
                 elif patch['type'] == 'addSubtypes':
                     rule = self['205.3']
                     subrule_id = {
