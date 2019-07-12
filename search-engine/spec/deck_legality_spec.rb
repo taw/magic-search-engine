@@ -306,11 +306,11 @@ describe "Deck legality" do
         "Deck contains 5 copies of Birds of Paradise, only up to 4 allowed",
         "Deck contains 2 copies of Black Lotus, which is restricted to only up to 1 allowed",
         "Deck contains 2 copies of Mox Pearl, which is restricted to only up to 1 allowed",
-        "Deck contains Amulet of Quoz which is banned",
-        "Deck contains Bronze Tablet which is banned",
-        "Deck contains Aerial Toastmaster which is not in the format",
-        "Deck contains Eager Beaver which is not in the format",
-        "Deck contains Embrace My Diabolical Vision which is not in the format",
+        "Amulet of Quoz is banned",
+        "Bronze Tablet is banned",
+        "Aerial Toastmaster is not in the format",
+        "Eager Beaver is not in the format",
+        "Embrace My Diabolical Vision is not in the format",
       ])
     end
   end
@@ -348,15 +348,15 @@ describe "Deck legality" do
     it do
       duel.deck_card_issues(deck).should match_array([
         "Deck contains 2 copies of Birds of Paradise, only up to 1 allowed",
-        "Deck contains Eager Beaver which is not in the format",
-        "Deck contains Embrace My Diabolical Vision which is not in the format",
-        "Deck contains Black Lotus which is banned",
-        "Deck contains Amulet of Quoz which is banned",
-        "Deck contains Bronze Tablet which is banned",
-        "Deck contains Aerial Toastmaster which is not in the format",
-        "Deck contains Ancestral Recall which is banned",
-        "Deck contains Mox Pearl which is banned",
-        "Deck contains Mox Diamond which is banned",
+        "Eager Beaver is not in the format",
+        "Embrace My Diabolical Vision is not in the format",
+        "Black Lotus is banned",
+        "Amulet of Quoz is banned",
+        "Bronze Tablet is banned",
+        "Aerial Toastmaster is not in the format",
+        "Ancestral Recall is banned",
+        "Mox Pearl is banned",
+        "Mox Diamond is banned",
         "Deck contains 2 copies of Edric, Spymaster of Trest, only up to 1 allowed",
       ])
     end
@@ -382,9 +382,9 @@ describe "Deck legality" do
 
     it do
       brawl.deck_card_issues(deck).should match_array([
-        "Deck contains Lightning Bolt which is not in the format",
-        "Deck contains Sorcerous Spyglass which is banned",
-        "Deck contains Black Lotus which is not in the format",
+        "Lightning Bolt is not in the format",
+        "Sorcerous Spyglass is banned",
+        "Black Lotus is not in the format",
         "Deck contains 3 copies of Karn, the Great Creator, only up to 1 allowed",
         "Deck contains 2 copies of Ajani's Pridemate, only up to 1 allowed",
         "Deck contains 2 copies of Bulwark Giant, only up to 1 allowed",
@@ -440,6 +440,34 @@ describe "Deck legality" do
         "Gorm the Great can only partner with Virtus the Veiled",
         "Rowan Kenrith can only partner with Will Kenrith",
       ])
+    end
+  end
+
+  describe "#deck_color_identity_issues" do
+    let(:commander) { FormatCommander.new }
+    let(:brawler) { FormatCommander.new }
+    let(:deck) do
+      parse_decklist <<~EOF
+      Lightning Bolt
+      Lightning Helix
+      Manamorphose
+      Aether Vial
+      Mox Pearl
+      Birds of Paradise
+      Mox Sapphire
+
+      Sideboard
+      Kaalia of the Vast
+      EOF
+    end
+
+    it do
+      commander.deck_color_identity_issues(deck).should match_array([
+        "Manamorphose is outside deck color identity",
+        "Birds of Paradise is outside deck color identity",
+        "Mox Sapphire is outside deck color identity",
+      ])
+      commander.deck_color_identity_issues(deck).should eq brawler.deck_color_identity_issues(deck)
     end
   end
 end

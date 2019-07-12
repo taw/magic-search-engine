@@ -68,7 +68,6 @@ describe DeckParser do
     end
   end
 
-
   describe "SB:" do
     let(:text) do
       <<~EOF
