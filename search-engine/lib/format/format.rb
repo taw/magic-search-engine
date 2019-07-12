@@ -68,9 +68,9 @@ class Format
           issues << "Deck contains #{count} copies of #{name}, which is restricted to only up to 1 allowed"
         end
       when "banned"
-        issues << "Deck contains #{name} which is banned"
+        issues << "#{name} is banned"
       else
-        issues << "Deck contains #{name} which is not in the format"
+        issues << "#{name} is not in the format"
       end
     end
     issues

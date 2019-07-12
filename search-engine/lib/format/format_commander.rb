@@ -33,9 +33,9 @@ class FormatCommander < FormatVintage
           issues << "Deck contains #{count} copies of #{name}, only up to 1 allowed"
         end
       when "banned"
-        issues << "Deck contains #{name} which is banned"
+        issues << "#{name} is banned"
       else
-        issues << "Deck contains #{name} which is not in the format"
+        issues << "#{name} is not in the format"
       end
     end
     issues
@@ -66,6 +66,20 @@ class FormatCommander < FormatVintage
       end
     end
 
+    issues
+  end
+
+  def deck_color_identity_issues(deck)
+    color_identity = deck.color_identity
+    return [] unless color_identity
+    color_identity = color_identity.chars.to_set
+    issues = []
+    deck.card_counts.each do |card, name, count|
+      card_color_identity = card.color_identity.chars.to_set
+      unless card_color_identity <= color_identity
+        issues << "#{name} is outside deck color identity"
+      end
+    end
     issues
   end
 end
