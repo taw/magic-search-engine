@@ -122,6 +122,7 @@ describe "QueryParser" do
     assert_search_parse "ind:r", "ind:red"
   end
 
+  # These could be handled by parser or somewhere else
   it "aliases" do
     assert_search_parse "a:daarken", "art:daarken"
     assert_search_parse "a:daarken", "artist:daarken"
@@ -149,6 +150,7 @@ describe "QueryParser" do
     assert_search_parse "ind<wu", "indicator<wu"
     assert_search_parse "ind=3", "indicator=3"
     assert_search_parse "ind:*", "indicator:*"
+    assert_search_parse "is:transform", "is:dfc"
     assert_search_parse "mana:2ww", "m:2ww"
     assert_search_parse 'o:"draw a card"', 'oracle:"draw a card"'
     assert_search_parse 'o:/draw \d+ cards/', 'oracle:/draw \d+ cards/'

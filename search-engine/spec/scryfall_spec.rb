@@ -1,5 +1,7 @@
 # Examples from https://scryfall.com/docs/syntax
 # and how they work on mtg.wtf
+#
+# This spec is not really maintained, and parts should probably be moved around
 describe "Scryfall" do
   include_context "db"
 
