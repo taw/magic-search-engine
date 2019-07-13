@@ -106,7 +106,7 @@ describe "CLI Frontend" do
 
   it "verbose color indicator" do
     assert_cli(
-      search: "in=3 bolas",
+      search: "ind=3 bolas",
       verbose: true,
       output: <<-EOF,
         Nicol Bolas, the Arisen

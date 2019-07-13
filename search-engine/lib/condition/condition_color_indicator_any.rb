@@ -5,6 +5,6 @@ class ConditionColorIndicatorAny < ConditionSimple
   end
 
   def to_s
-    "in:*"
+    "ind:*"
   end
 end

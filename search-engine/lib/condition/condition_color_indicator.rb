@@ -5,13 +5,13 @@ class ConditionColorIndicator < ConditionSimple
   end
 
   # Only exact match
-  # For "has no color indicator" use -in:*
+  # For "has no color indicator" use -ind:*
   def match?(card)
     card.color_indicator and @indicator_name == card.color_indicator
   end
 
   def to_s
-    "in:#{@indicator.to_a.join}"
+    "ind:#{@indicator.to_a.join}"
   end
 
 private
