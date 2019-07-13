@@ -200,6 +200,9 @@ class QueryTokenizer
         cond = s[1].capitalize
         klass = Kernel.const_get("ConditionIn#{cond}")
         tokens << [:test, klass.new]
+      elsif s.scan(/in\s*[:=]\s*(basic|common|uncommon|rare|mythic|special)\b/i)
+        kind = s[1].downcase
+        tokens << [:test, ConditionInRarity.new(kind)]
       elsif s.scan(/(is|frame|not)\s*[:=]\s*(compasslanddfc|colorshifted|devoid|legendary|miracle|mooneldrazidfc|nyxtouched|originpwdfc|sunmoondfc|tombstone)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrameEffect.new(s[2].downcase)]

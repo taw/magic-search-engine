@@ -24,4 +24,13 @@ describe "in queries" do
   it "in:nonfoil" do
     assert_search_equal "in:nonfoil", "alt:in:nonfoil"
   end
+
+  it "in:rarity" do
+    assert_search_equal "in:basic", "alt:r:basic"
+    assert_search_equal "in:common", "alt:r:common"
+    assert_search_equal "in:uncommon", "alt:r:uncommon"
+    assert_search_equal "in:rare", "alt:r:rare"
+    assert_search_equal "in:mythic", "alt:r:mythic"
+    assert_search_equal "in:special", "alt:r:special"
+  end
 end
