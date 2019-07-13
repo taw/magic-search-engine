@@ -257,7 +257,6 @@ private
 
   def parse_color(color_text)
     color_text = color_text.downcase
-    return color_text if color_text =~ /\A[wubrgcml]+\z/
     case color_text
     when "white"
       "w"
@@ -269,7 +268,48 @@ private
       "r"
     when "green"
       "g"
+    when "azorius"
+      "wu"
+    when "dimir"
+      "ub"
+    when "rakdos"
+      "br"
+    when "gruul"
+      "rg"
+    when "selesnya"
+      "gw"
+    when "boros"
+      "wr"
+    when "simic"
+      "ug"
+    when "orzhov"
+      "bw"
+    when "izzet"
+      "ru"
+    when "golgari"
+      "gb"
+    when "bant"
+      "gwu"
+    when "esper"
+      "wub"
+    when "grixis"
+      "ubr"
+    when "jund"
+      "brg"
+    when "naya"
+      "rgw"
+    when "abzan"
+      "wbg"
+    when "jeskai"
+      "urw"
+    when "sultai"
+      "bgu"
+    when "mardu"
+      "rwb"
+    when "temur"
+      "gur"
     else
+      return color_text if color_text =~ /\A[wubrgcml]+\z/
       fixed = color_text.gsub(/[^wubrgcml]/, "")
       @warnings << "Unrecognized color query: #{color_text.inspect}, correcting to #{fixed.inspect}"
       fixed
