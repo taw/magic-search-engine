@@ -5,59 +5,59 @@ describe "Color Indicator Test" do
     # "Transguild Courier" used to be Oracled to color indicator WUBRG
     # but they reverted it when they printed "Sphinx of the Guildpact"
     # No card was actually printed like that
-    assert_search_results "in:wubrg"
+    assert_search_results "ind:wubrg"
 
-    assert_search_results "in:r t:creature cmc=0",
+    assert_search_results "ind:r t:creature cmc=0",
       "Crimson Kobolds",
       "Crookshank Kobolds",
       "Kobolds of Kher Keep",
       "Half-Orc, Half-"
-    assert_search_results "in:r t:instant",
+    assert_search_results "ind:r t:instant",
       "Pact of the Titan"
-    assert_search_results "in:w t:sorcery",
+    assert_search_results "ind:w t:sorcery",
       "Restore Balance"
-    assert_search_results "in:rg",
+    assert_search_results "ind:rg",
       "Arlinn, Embraced by the Moon",
       "Ravager of the Fells",
       "Ulrich, Uncontested Alpha"
-    assert_search_equal "in:gr", "in:rg"
-    assert_search_equal "in:grrgr", "in:rg"
-    assert_search_results "in:ubr",
+    assert_search_equal "ind:gr", "ind:rg"
+    assert_search_equal "ind:grrgr", "ind:rg"
+    assert_search_results "ind:ubr",
       "Nicol Bolas, the Arisen"
-    assert_search_results "in:wrg",
+    assert_search_results "ind:wrg",
       "Grimlock, Ferocious King"
-    assert_search_equal "in:ubr", "in:bur"
-    assert_search_equal "in:wrg", "in:gwr"
+    assert_search_equal "ind:ubr", "ind:bur"
+    assert_search_equal "ind:wrg", "ind:gwr"
   end
 
-  it "in:*" do
-    assert_search_equal "in:*", "in>=c"
-    assert_search_equal "in:*", "has:indicator"
+  it "ind:*" do
+    assert_search_equal "ind:*", "ind>=c"
+    assert_search_equal "ind:*", "has:indicator"
   end
 
   it "comparisons" do
-    assert_search_equal "in>=r", "in=r OR in>r"
-    assert_search_equal "in>r", "in>=rg OR in>=rw OR in>=rb OR in>=ru"
+    assert_search_equal "ind>=r", "ind=r OR ind>r"
+    assert_search_equal "ind>r", "ind>=rg OR ind>=rw OR ind>=rb OR ind>=ru"
   end
 
   it "number" do
-    assert_search_results "in=5"
-    assert_search_results "in:wubrg"
-    assert_search_equal "in<3", "in:* -t:bolas -grimlock"
-    assert_search_results "in<1"
+    assert_search_results "ind=5"
+    assert_search_results "ind:wubrg"
+    assert_search_equal "ind<3", "ind:* -t:bolas -grimlock"
+    assert_search_results "ind<1"
   end
 
   it "c/l/m are ignored" do
-    assert_search_equal "in:rgm", "in:rg"
-    assert_search_equal "in:rgl", "in:rg"
-    assert_search_equal "in:rgc", "in:rg"
+    assert_search_equal "ind:rgm", "ind:rg"
+    assert_search_equal "ind:rgl", "ind:rg"
+    assert_search_equal "ind:rgc", "ind:rg"
   end
 
   it "bad indicators return no results silently" do
-    "in:l".should return_no_cards
-    "in:rug".should return_no_cards
-    "in:c".should return_no_cards
-    "in:rbgu".should return_no_cards
-    "in:rbgurgbu".should return_no_cards
+    "ind:l".should return_no_cards
+    "ind:rug".should return_no_cards
+    "ind:c".should return_no_cards
+    "ind:rbgu".should return_no_cards
+    "ind:rbgurgbu".should return_no_cards
   end
 end

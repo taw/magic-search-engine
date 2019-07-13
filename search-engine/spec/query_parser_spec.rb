@@ -50,7 +50,7 @@ describe "QueryParser" do
     assert_search_parse "b:isd", "b=isd"
     assert_search_parse "w:abzan", "w=abzan"
     assert_search_parse "st:core", "st=core"
-    assert_search_parse "in:g", "in=g"
+    assert_search_parse "ind:g", "ind=g"
     assert_search_parse "print=m10", "print:m10"
     assert_search_parse "firstprint=m10", "firstprint:m10"
     assert_search_parse "lastprint=m10", "lastprint:m10"
@@ -119,7 +119,7 @@ describe "QueryParser" do
     assert_search_parse "ci:b", "ci:black"
     assert_search_parse "c!u", "c!blue"
     assert_search_parse "c>=w", "c>=white"
-    assert_search_parse "in:r", "in:red"
+    assert_search_parse "ind:r", "ind:red"
   end
 
   it "aliases" do
@@ -143,10 +143,10 @@ describe "QueryParser" do
     assert_search_parse "id:wu", "identity:wu"
     assert_search_parse "id<=wu", "identity<=wu"
     assert_search_parse "id:3", "identity:3"
-    assert_search_parse "in:wu", "indicator:wu"
-    assert_search_parse "in<wu", "indicator<wu"
-    assert_search_parse "in=3", "indicator=3"
-    assert_search_parse "in:*", "indicator:*"
+    assert_search_parse "ind:wu", "indicator:wu"
+    assert_search_parse "ind<wu", "indicator<wu"
+    assert_search_parse "ind=3", "indicator=3"
+    assert_search_parse "ind:*", "indicator:*"
     assert_search_parse "mana:2ww", "m:2ww"
     assert_search_parse 'o:"draw a card"', 'oracle:"draw a card"'
     assert_search_parse 'o:/draw \d+ cards/', 'oracle:/draw \d+ cards/'

@@ -117,10 +117,10 @@ class QueryTokenizer
         tokens << [:test, ConditionBlock.new(*blocks)]
       elsif s.scan(/st\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionSetType.new(s[1] || s[2])]
-      elsif s.scan(/(c|ci|color|id|in|identity|indicator)\s*(>=|>|<=|<|=)\s*(?:"(\d+)"|(\d+))/i)
+      elsif s.scan(/(c|ci|color|id|ind|identity|indicator)\s*(>=|>|<=|<|=)\s*(?:"(\d+)"|(\d+))/i)
         kind = s[1].downcase
         kind = "c" if kind == "color"
-        kind = "in" if kind == "indicator"
+        kind = "ind" if kind == "indicator"
         kind = "ci" if kind == "id"
         kind = "ci" if kind == "identity"
         tokens << [:test, ConditionColorCountExpr.new(kind, s[2], s[3] || s[4])]
@@ -128,9 +128,9 @@ class QueryTokenizer
         tokens << [:test, ConditionColors.new(parse_color(s[1] || s[2]))]
       elsif s.scan(/(?:ci|id|identity)\s*[:!]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionColorIdentity.new(parse_color(s[1] || s[2]))]
-      elsif s.scan(/(?:in|indicator)\s*:\s*\*/i)
+      elsif s.scan(/(?:ind|indicator)\s*:\s*\*/i)
         tokens << [:test, ConditionColorIndicatorAny.new]
-      elsif s.scan(/(?:in|indicator)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+      elsif s.scan(/(?:ind|indicator)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionColorIndicator.new(parse_color(s[1] || s[2]))]
       elsif s.scan(/c!(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionColorsExclusive.new(parse_color(s[1] || s[2]))]
@@ -157,12 +157,12 @@ class QueryTokenizer
         b = s[3].downcase
         b = aliases[b] || b
         tokens << [:test, ConditionExpr.new(a, op, b)]
-      elsif s.scan(/(c|ci|id|in|color|identity|indicator)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+      elsif s.scan(/(c|ci|id|ind|color|identity|indicator)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         kind = s[1].downcase
         kind = "c" if kind == "color"
         kind = "ci" if kind == "id"
         kind = "ci" if kind == "identity"
-        kind = "in" if kind == "indicator"
+        kind = "ind" if kind == "indicator"
         tokens << [:test, ConditionColorExpr.new(kind, s[2], parse_color(s[3] || s[4]))]
       elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})*)/i)
         op = s[1]
@@ -189,6 +189,10 @@ class QueryTokenizer
         tokens << [:not] if s[1].downcase == "not"
         cond = s[2].capitalize
         klass = Kernel.const_get("ConditionIs#{cond}")
+        tokens << [:test, klass.new]
+      elsif s.scan(/in\s*[:=]\s*(paper|arena|mtgo)\b/i)
+        cond = s[1].capitalize
+        klass = Kernel.const_get("ConditionIn#{cond}")
         tokens << [:test, klass.new]
       elsif s.scan(/(is|frame|not)\s*[:=]\s*(compasslanddfc|colorshifted|devoid|legendary|miracle|mooneldrazidfc|nyxtouched|originpwdfc|sunmoondfc|tombstone)\b/i)
         tokens << [:not] if s[1].downcase == "not"
