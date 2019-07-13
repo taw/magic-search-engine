@@ -182,9 +182,15 @@ class QueryTokenizer
         cond = s[1].capitalize
         klass = Kernel.const_get("ConditionHas#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld|aftermath|saga|planar|augment|host)\b/i)
+      elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|dfc|double-faced|transform|token|split|flip|plane|scheme|phenomenon|meld|aftermath|saga|planar|augment|host)\b/i)
         tokens << [:not] if s[1].downcase == "not"
-        tokens << [:test, ConditionLayout.new(s[2])]
+        kind = s[2].downcase
+        kind = "double-faced" if kind == "transform"
+        kind = "double-faced" if kind == "dfc"
+        # mtgjson v3 vs v4 differences
+        kind = "planar" if kind == "plane"
+        kind = "planar" if kind == "phenomenon"
+        tokens << [:test, ConditionLayout.new(kind)]
       elsif s.scan(/(is|not|game)\s*[:=]\s*(paper|arena|mtgo)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         cond = s[2].capitalize
