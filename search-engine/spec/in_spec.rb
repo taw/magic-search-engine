@@ -12,4 +12,16 @@ describe "in queries" do
   it "in:arena" do
     assert_search_equal "in:arena", "alt:game:arena"
   end
+
+  it "in:booster" do
+    assert_search_equal "in:booster", "alt:is:booster"
+  end
+
+  it "in:foil" do
+    assert_search_equal "in:foil", "alt:in:foil"
+  end
+
+  it "in:nonfoil" do
+    assert_search_equal "in:nonfoil", "alt:in:nonfoil"
+  end
 end

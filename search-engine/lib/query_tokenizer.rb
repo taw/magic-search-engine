@@ -190,7 +190,7 @@ class QueryTokenizer
         cond = s[2].capitalize
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/in\s*[:=]\s*(paper|arena|mtgo)\b/i)
+      elsif s.scan(/in\s*[:=]\s*(paper|arena|mtgo|foil|nonfoil|booster)\b/i)
         cond = s[1].capitalize
         klass = Kernel.const_get("ConditionIn#{cond}")
         tokens << [:test, klass.new]
