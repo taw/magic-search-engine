@@ -80,7 +80,7 @@ class QueryTokenizer
           @warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, ConditionForeign.new(s[1], s[2])]
         end
-      elsif s.scan(/t\s*[:=]\s*(?:"(.*?)"|([’'\-\u2212\p{L}\p{Digit}_\*]+))/i)
+      elsif s.scan(/(?:t|type)\s*[:=]\s*(?:"(.*?)"|([’'\-\u2212\p{L}\p{Digit}_\*]+))/i)
         tokens << [:test, ConditionTypes.new(s[1] || s[2])]
       elsif s.scan(/(?:ft|flavor)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionFlavor.new(s[1] || s[2])]
@@ -99,7 +99,7 @@ class QueryTokenizer
         op = s[1]
         op = "=" if op == ":"
         tokens << [:test, ConditionNameComparison.new(op, s[2] || s[3])]
-      elsif s.scan(/(?:e|set)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+      elsif s.scan(/(?:e|set|edition)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         sets = [s[1] || s[2]]
         sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionEdition.new(*sets)]

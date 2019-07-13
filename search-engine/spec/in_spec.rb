@@ -1,15 +1,15 @@
 describe "in queries" do
   include_context "db"
 
-  it "it:paper" do
+  it "in:paper" do
     assert_search_equal "in:paper", "alt:game:paper"
   end
 
-  it "it:mtgo" do
+  it "in:mtgo" do
     assert_search_equal "in:mtgo", "alt:game:mtgo"
   end
 
-  it "it:arena" do
+  it "in:arena" do
     assert_search_equal "in:arena", "alt:game:arena"
   end
 end
