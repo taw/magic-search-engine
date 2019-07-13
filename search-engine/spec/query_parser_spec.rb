@@ -136,6 +136,8 @@ describe "QueryParser" do
     assert_search_parse "c:wu", "color:wu"
     assert_search_parse "c>wu", "color>wu"
     assert_search_parse "c=3", "color=3"
+    assert_search_parse "e:m12", "set:m12"
+    assert_search_parse "e:m12", "edition:m12"
     assert_search_parse "f:modern", "format:modern"
     assert_search_parse %Q[ft:"here's some gold"], %Q[flavor:"here's some gold"]
     assert_search_parse %Q[ft:/here's some gold/], %Q[flavor:/here's some gold/]
@@ -154,6 +156,7 @@ describe "QueryParser" do
     assert_search_parse "r>=uncommon", "rarity>=uncommon"
     assert_search_parse "r:rare", "rarity:rare"
     assert_search_parse "sort:cmc", "order:cmc"
+    assert_search_parse "t:goblin", "type:goblin"
     assert_search_parse "view:full", "display:full"
     assert_search_parse "w:abzan", "wm:abzan"
     assert_search_parse "w:abzan", "watermark:abzan"
