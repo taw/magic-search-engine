@@ -1,9 +1,7 @@
-describe "Scryfall" do
+describe "Game queries" do
   include_context "db"
 
   it "is_digital" do
-    # scryfall includes "Gleemox" - https://scryfall.com/card/pgmx/1
-    # and I have no idea what's that
     assert_search_equal "is:digital", "e:me1,me2,me3,me4,vma,tpr,pana,pmoa,td0,td2,ana,pz1,pz2,prm"
   end
 
