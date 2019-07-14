@@ -13,7 +13,7 @@ class Sorter
   attr_reader :warnings, :sort_order
 
   def initialize(sort_order, seed)
-    known_sort_orders = ["ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou", "artist", "released"]
+    known_sort_orders = ["ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou", "artist", "released", "set"]
     known_sort_orders += known_sort_orders.map{|s| "-#{s}"}
 
     @seed = seed
@@ -72,6 +72,10 @@ class Sorter
         [c.set.name, c.number.to_i, c.number]
       when "-number"
         [reverse_string_order(c.set.name), -c.number.to_i, reverse_string_order(c.number)]
+      when "set"
+        [c.set_code, c.number.to_i, c.number]
+      when "-set"
+        [reverse_string_order(c.set_code), -c.number.to_i, reverse_string_order(c.number)]
       when "color"
         [COLOR_ORDER.fetch(c.colors)]
       when "-color"
