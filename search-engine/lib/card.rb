@@ -280,32 +280,10 @@ class Card
     if colors_inferred_from_mana_cost.sort == actual_colors.sort
       @color_indicator = nil
     else
-      @color_indicator = color_indicator_name(actual_colors)
+      @color_indicator = Color.color_indicator_name(actual_colors)
     end
     if @color_indicator
       @color_indicator_set = actual_colors.to_set
-    end
-  end
-
-  def color_indicator_name(indicator)
-    names = {"w" => "white", "u" => "blue", "b" => "black", "r" => "red", "g" => "green"}
-    color_indicator = names.map{|c,cv| indicator.include?(c) ? cv : nil}.compact
-    case color_indicator.size
-    when 5
-      # It got removed with Sphinx of the Guildpact printing (RNA)
-      nil
-    when 1, 2
-      color_indicator.join(" and ")
-    when 3
-      # Nicol Bolas from M19
-      a, b, c = color_indicator
-      "#{a}, #{b}, and #{c}"
-    when 0
-      # devoid and Ghostfire - for some reason they use rules text, not color indicator
-      # "colorless"
-      nil
-    else # find phrasing for 3/4 colors
-      raise
     end
   end
 

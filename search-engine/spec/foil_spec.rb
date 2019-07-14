@@ -56,6 +56,8 @@ describe "Foils" do
       else
         assert_foiling_partial_precon(set.printings)
       end
+    when "treasure chest"
+      # does it really matter for non-paper?
     else
       warn "No idea about #{set.name} / #{set.type}"
     end
