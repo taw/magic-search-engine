@@ -88,6 +88,11 @@ describe "Sorting" do
     ])
   end
 
+  it "released" do
+    ordered_search("t:chandra -is:digital sort:newall", :name, :set_code).should eq(
+      ordered_search("t:chandra -is:digital sort:released", :name, :set_code))
+  end
+
   it "old" do
     ordered_search("t:chandra -is:digital sort:old", :name, :set_code).should eq([
       ["Chandra Nalaar", "lrw"],
