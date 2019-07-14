@@ -173,6 +173,46 @@ describe "Sorting" do
     ])
   end
 
+  it "set" do
+    ordered_search("t:chandra -is:digital sort:set", :name, :set_code, :number).should eq([
+      ["Chandra Nalaar", "dd2", "34"],
+      ["Chandra, Bold Pyromancer", "dom", "275"],
+      ["Chandra, Pyromaster", "e01", "42"],
+      ["Chandra, Gremlin Wrangler", "htr", "1"],
+      ["Chandra, Torch of Defiance", "kld", "110"],
+      ["Chandra, Pyrogenius", "kld", "265"],
+      ["Chandra, the Firebrand", "m12", "124"],
+      ["Chandra, Acolyte of Flame", "m20", "126"],
+      ["Chandra, Awakened Inferno", "m20", "127"],
+      ["Chandra, Novice Pyromancer", "m20", "128"],
+      ["Chandra, Flame's Fury", "m20", "294"],
+      ["Chandra, Flamecaller", "ogw", "104"],
+      ["Chandra, Roaring Flame", "ori", "135b"],
+      ["Chandra, Fire Artisan", "pwar", "119s"],
+      ["Chandra Ablaze", "zen", "120"],
+    ])
+  end
+
+  it "-set" do
+    ordered_search("t:chandra -is:digital sort:-set", :name, :set_code, :number).should eq([
+      ["Chandra Ablaze", "zen", "120"],
+      ["Chandra, Fire Artisan", "war", "119"],
+      ["Chandra, Roaring Flame", "v17", "6b"],
+      ["Chandra, Pyromaster", "psdc", "131"],
+      ["Chandra, Torch of Defiance", "ps18", "110"],
+      ["Chandra, Flamecaller", "ps16", "104"],
+      ["Chandra, Flame's Fury", "m20", "294"],
+      ["Chandra, Novice Pyromancer", "m20", "128"],
+      ["Chandra, Awakened Inferno", "m20", "127"],
+      ["Chandra, Acolyte of Flame", "m20", "126"],
+      ["Chandra, the Firebrand", "m13", "123"],
+      ["Chandra Nalaar", "m11", "127"],
+      ["Chandra, Pyrogenius", "kld", "265"],
+      ["Chandra, Gremlin Wrangler", "htr", "1"],
+      ["Chandra, Bold Pyromancer", "dom", "275"],
+    ])
+  end
+
   it "number" do
     ordered_search("t:planeswalker e:m10,m12 sort:number", :name, :set_code, :number).should eq([
       ["Ajani Goldmane", "m10", "1"],
