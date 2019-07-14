@@ -174,22 +174,32 @@ describe "Sorting" do
   end
 
   it "number" do
-    ordered_search("t:planeswalker e:m10 sort:number", :name, :number).should eq([
-      ["Ajani Goldmane", "1"],
-      ["Jace Beleren", "58"],
-      ["Liliana Vess", "102"],
-      ["Chandra Nalaar", "132"],
-      ["Garruk Wildspeaker", "183"],
+    ordered_search("t:planeswalker e:m10,m12 sort:number", :name, :set_code, :number).should eq([
+      ["Ajani Goldmane", "m10", "1"],
+      ["Jace Beleren", "m10", "58"],
+      ["Liliana Vess", "m10", "102"],
+      ["Chandra Nalaar", "m10", "132"],
+      ["Garruk Wildspeaker", "m10", "183"],
+      ["Gideon Jura", "m12", "16"],
+      ["Jace, Memory Adept", "m12", "58"],
+      ["Sorin Markov", "m12", "109"],
+      ["Chandra, the Firebrand", "m12", "124"],
+      ["Garruk, Primal Hunter", "m12", "174"],
     ])
   end
 
   it "-number" do
-    ordered_search("t:planeswalker e:m10 sort:-number", :name, :number).should eq([
-      ["Garruk Wildspeaker", "183"],
-      ["Chandra Nalaar", "132"],
-      ["Liliana Vess", "102"],
-      ["Jace Beleren", "58"],
-      ["Ajani Goldmane", "1"],
+    ordered_search("t:planeswalker e:m10,m12 sort:-number", :name, :set_code, :number).should eq([
+      ["Garruk, Primal Hunter", "m12", "174"],
+      ["Chandra, the Firebrand", "m12", "124"],
+      ["Sorin Markov", "m12", "109"],
+      ["Jace, Memory Adept", "m12", "58"],
+      ["Gideon Jura", "m12", "16"],
+      ["Garruk Wildspeaker", "m10", "183"],
+      ["Chandra Nalaar", "m10", "132"],
+      ["Liliana Vess", "m10", "102"],
+      ["Jace Beleren", "m10", "58"],
+      ["Ajani Goldmane", "m10", "1"],
     ])
   end
 

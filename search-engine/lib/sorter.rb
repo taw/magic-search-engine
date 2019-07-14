@@ -71,7 +71,7 @@ class Sorter
       when "number"
         [c.set.name, c.number.to_i, c.number]
       when "-number"
-        [c.set.name, -c.number.to_i, reverse_string_order(c.number)]
+        [reverse_string_order(c.set.name), -c.number.to_i, reverse_string_order(c.number)]
       when "color"
         [COLOR_ORDER.fetch(c.colors)]
       when "-color"
