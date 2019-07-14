@@ -203,6 +203,11 @@ class QueryTokenizer
       elsif s.scan(/in\s*[:=]\s*(basic|common|uncommon|rare|mythic|special)\b/i)
         kind = s[1].downcase
         tokens << [:test, ConditionInRarity.new(kind)]
+      elsif s.scan(/in\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+        # This needs to be last after all other in:
+        sets = [s[1] || s[2]]
+        sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+        tokens << [:test, ConditionInEdition.new(*sets)]
       elsif s.scan(/(is|frame|not)\s*[:=]\s*(compasslanddfc|colorshifted|devoid|legendary|miracle|mooneldrazidfc|nyxtouched|originpwdfc|sunmoondfc|tombstone)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrameEffect.new(s[2].downcase)]
