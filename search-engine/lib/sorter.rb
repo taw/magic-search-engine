@@ -13,7 +13,7 @@ class Sorter
   attr_reader :warnings, :sort_order
 
   def initialize(sort_order, seed)
-    known_sort_orders = ["ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou"]
+    known_sort_orders = ["ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou", "artist"]
     known_sort_orders += known_sort_orders.map{|s| "-#{s}"}
 
     @seed = seed
@@ -88,6 +88,10 @@ class Sorter
         [c.name]
       when "-name"
         [reverse_string_order(c.name)]
+      when "artist"
+        [c.artist_name.downcase]
+      when "-artist"
+        [reverse_string_order(c.artist_name.downcase)]
       else # unknown key, should have been caught by initializer
         raise "Invalid sort order #{part}"
       end

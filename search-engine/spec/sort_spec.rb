@@ -28,6 +28,26 @@ describe "Sorting" do
     ])
   end
 
+  it "artist" do
+    ordered_search("t:chandra -is:digital sort:artist", :name, :artist_name).should eq([
+      ["Chandra Nalaar", "Aleksi Briclot"],
+      ["Chandra, Acolyte of Flame", "Anna Steinbauer"],
+      ["Chandra, Novice Pyromancer", "Anna Steinbauer"],
+      ["Chandra, Awakened Inferno", "Chris Rahn"],
+      ["Chandra, Pyromaster", "Chris Rahn"],
+      ["Chandra, the Firebrand", "D. Alexander Gregory"],
+      ["Chandra, Flamecaller", "Eric Deschamps"],
+      ["Chandra, Roaring Flame", "Eric Deschamps"],
+      ["Chandra, Pyrogenius", "Jason Rainville"],
+      ["Chandra, Gremlin Wrangler", "Kari Christensen"],
+      ["Chandra, Flame's Fury", "Magali Villeneuve"],
+      ["Chandra, Torch of Defiance", "Magali Villeneuve"],
+      ["Chandra, Fire Artisan", "Ryota-H"],
+      ["Chandra Ablaze", "Steve Argyle"],
+      ["Chandra, Bold Pyromancer", "Zack Stella"],
+    ])
+  end
+
   it "new" do
     ordered_search("t:chandra -is:digital sort:new", :name, :set_code).should eq([
       ["Chandra, Acolyte of Flame", "m20"],
