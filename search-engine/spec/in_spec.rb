@@ -33,4 +33,10 @@ describe "in queries" do
     assert_search_equal "in:mythic", "alt:r:mythic"
     assert_search_equal "in:special", "alt:r:special"
   end
+
+  it "in: edition" do
+    assert_search_equal "in:lea in:m10", "alt:e:lea alt:e:m10"
+    assert_search_equal "in:zendikar in:commander", "alt:e:zendikar alt:e:commander"
+    assert_search_equal "in:commander,m10,m11,m12", "alt:e:commander or alt:e:m10 or alt:e:m11 or alt:e:m12"
+  end
 end
