@@ -89,9 +89,18 @@ describe UserDeckParser do
     end
   end
 
-  describe "xmage .dck" do
+  describe "old xmage .dck" do
     let(:filename) { "free_win_red.dck" }
     let(:output) { Pathname("#{__dir__}/decklists/free_win_red.dck").read.gsub("\r", "") }
+    it do
+      parser.should be_valid
+      parser.deck.should eq(output)
+    end
+  end
+
+  describe "humans xmage .dck" do
+    let(:filename) { "humans.dck" }
+    let(:output) { Pathname("#{__dir__}/decklists/humans.out").read }
     it do
       parser.should be_valid
       parser.deck.should eq(output)

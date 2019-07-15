@@ -53,6 +53,10 @@ class UserDeckParser
       end
     end
     @data = @data.gsub(/\r\n|\r|\n/, "\n")
+    # XMage has metadata we seriously don't care for
+    # (maybe we could use NAME: ???)
+    @data = @data.gsub(/^(NAME:|LAYOUT MAIN:|LAYOUT SIDEBOARD:).*\n/, "")
+
     # MTGO text Format marks sideboard with empty line
     # Every other text format ignores empty lines
     if @data !~ /^\s*(sideboard|SB:)/i and @data.split(/\n\n/).size == 2
