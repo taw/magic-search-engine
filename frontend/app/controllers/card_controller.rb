@@ -79,6 +79,9 @@ class CardController < ApplicationController
     when "text"
       @cards = @cards.paginate(page: page, per_page: 60)
       render "index_text"
+    when "checklist"
+      @cards = @cards.paginate(page: page, per_page: 500)
+      render "index_checklist"
     else
       # default view
       @cards = @cards.paginate(page: page, per_page: 25)
