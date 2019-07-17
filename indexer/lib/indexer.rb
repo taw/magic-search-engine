@@ -137,6 +137,7 @@ class Indexer
       PatchUrza,
       PatchFixPromoPrintDates,
       PatchMeldCardNames,
+      PatchSetTypes,
 
       # One more round of normalization, it throws away some information
       PatchNormalizeNames,

@@ -24,20 +24,6 @@ class PatchMtgjsonVersions < Patch
 
   def call
     each_set do |set|
-      if set["type"]
-        set["type"] = set["type"].gsub("_", " ")
-      end
-      case set["official_code"]
-      when "BBD"
-        set["type"] = "two-headed giant"
-      when "MH1"
-        set["type"] = "modern"
-      when "CNS", "CN2"
-        set["type"] = "conspiracy"
-      when "UGL", "UNH", "UST"
-        set["type"] = "un"
-      end
-
       # mtgjson v4 decided to make releaseDate per-set
       # that leads to need for a lot of BS adjustments
 
