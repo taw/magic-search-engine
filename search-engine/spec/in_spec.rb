@@ -34,9 +34,40 @@ describe "in queries" do
     assert_search_equal "in:special", "alt:r:special"
   end
 
+  it "in: set type" do
+    assert_search_equal "in:2hg", "alt:st:2hg"
+    assert_search_equal %Q[in:"two-headed giant"], %Q[alt:st:"two-headed giant"]
+    assert_search_equal %Q[in:"archenemy"], %Q[alt:st:"archenemy"]
+    assert_search_equal %Q[in:"commander"], %Q[alt:st:"commander"]
+    assert_search_equal %Q[in:"conspiracy"], %Q[alt:st:"conspiracy"]
+    assert_search_equal "in:dd", "alt:st:dd"
+    assert_search_equal %Q[in:"duel deck"], %Q[alt:st:"duel deck"]
+    assert_search_equal "in:ex", "alt:st:ex"
+    assert_search_equal %Q[in:"expansion"], %Q[alt:st:"expansion"]
+    assert_search_equal "in:ftv", "alt:st:ftv"
+    assert_search_equal %Q[in:"from the vault"], %Q[alt:st:"from the vault"]
+    assert_search_equal "in:me", "alt:st:me"
+    assert_search_equal %Q[in:"masters"], %Q[alt:st:"masters"]
+    assert_search_equal "in:pc", "alt:st:pc"
+    assert_search_equal %Q[in:"planechase"], %Q[alt:st:"planechase"]
+    assert_search_equal "in:pds", "alt:st:pds"
+    assert_search_equal %Q[in:"premium deck"], %Q[alt:st:"premium deck"]
+    assert_search_equal "in:st", "alt:st:st"
+    assert_search_equal %Q[in:"starter"], %Q[alt:st:"starter"]
+    assert_search_equal "in:std", "alt:st:std"
+    assert_search_equal %Q[in:"standard"], %Q[alt:st:"standard"]
+    assert_search_equal "in:un", "alt:st:un"
+    assert_search_equal %Q[in:"funny"], %Q[alt:st:"funny"]
+  end
+
+  # Should check all of them maybe?
   it "in: edition" do
     assert_search_equal "in:lea in:m10", "alt:e:lea alt:e:m10"
     assert_search_equal "in:zendikar in:commander", "alt:e:zendikar alt:e:commander"
     assert_search_equal "in:commander,m10,m11,m12", "alt:e:commander or alt:e:m10 or alt:e:m11 or alt:e:m12"
+
+    db.sets.each do |set_code, _|
+      assert_search_equal "in:#{set_code}", "alt:e:#{set_code}"
+    end
   end
 end

@@ -207,7 +207,65 @@ class QueryTokenizer
         # This needs to be last after all other in:
         sets = [s[1] || s[2]]
         sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
-        tokens << [:test, ConditionInEdition.new(*sets)]
+        sets = sets.map(&:downcase)
+
+        # Does it look like a set type?
+        # We have a list
+        # Commented out things are also set codes so they take priority
+        #
+        # It's a bit awkward as both set lists and set types lists are in db
+        # and we don't have access to it here
+        set_types = [
+          "2hg",
+          # "arc",
+          "archenemy",
+          "booster",
+          "box",
+          # "cmd",
+          # "cns",
+          "commander",
+          "conspiracy",
+          "core",
+          "dd",
+          "deck",
+          "duel deck",
+          "duel_deck",
+          "ex",
+          "expansion",
+          "fixed",
+          "from the vault",
+          "from_the_vault",
+          "ftv",
+          "funny",
+          "masterpiece",
+          "masters",
+          "me",
+          "memorabilia",
+          "modern",
+          "multiplayer",
+          "pc",
+          "pds",
+          "planechase",
+          "premium deck",
+          "premium_deck",
+          "promo",
+          "spellbook",
+          "st",
+          "standard",
+          "starter",
+          "std",
+          "token",
+          "treasure chest",
+          "two-headed giant",
+          "un",
+          "vanguard",
+        ]
+
+        if sets.size == 1 and set_types.include?(sets[0].tr("_", " "))
+          tokens << [:test, ConditionInSetType.new(sets[0])]
+        else
+          tokens << [:test, ConditionInEdition.new(*sets)]
+        end
       elsif s.scan(/(is|frame|not)\s*[:=]\s*(compasslanddfc|colorshifted|devoid|legendary|miracle|mooneldrazidfc|nyxtouched|originpwdfc|sunmoondfc|tombstone)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrameEffect.new(s[2].downcase)]
