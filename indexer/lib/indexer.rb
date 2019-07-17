@@ -82,7 +82,7 @@ class Indexer
       "alternative_code",
       "online_only",
       "release_date",
-      "type",
+      "types",
     ).compact
   end
 

@@ -2,7 +2,7 @@ describe "Formats - Standard" do
   include_context "db"
 
   let(:regular_sets) { db.sets.values.select{|s|
-    s.type == "core" or s.type == "expansion" or s.name =~ /Welcome Deck/
+    s.types.include?("core") or s.types.include?("expansion") or s.name =~ /Welcome Deck/
   }.to_set }
 
   describe "Standard legal sets" do

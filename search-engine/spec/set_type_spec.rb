@@ -32,7 +32,7 @@ describe "Set types" do
   end
 
   it "composite types" do
-    assert_search_equal "st:standard", "(st:core or st:expansion)"
+    assert_search_equal "st:standard", "(st:core or st:expansion or e:w16,w17)"
   end
 
   it "cm1 exception" do
