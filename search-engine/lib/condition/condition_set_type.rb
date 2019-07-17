@@ -10,7 +10,6 @@ class ConditionSetType < Condition
     "me" => "masters",
     "pc" => "planechase",
     "pds" => "premium deck",
-    "rep" => "reprint",
     "st" => "starter",
     "std" => "standard",
     "un" => "funny",
