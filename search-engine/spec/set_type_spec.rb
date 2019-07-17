@@ -11,17 +11,27 @@ describe "Set types" do
   end
 
   it "abbreviations" do
-    assert_search_equal "st:cmd", "st:commander"
-    assert_search_equal "st:ex", "st:expansion"
-    assert_search_equal "st:ftv", 'st:"from the vault"'
+    assert_search_equal "st:2hg", 'st:"two-headed giant"'
     assert_search_equal "st:arc", "st:archenemy"
+    assert_search_equal "st:cmd", "st:commander"
     assert_search_equal "st:cns", "st:conspiracy"
     assert_search_equal "st:dd", 'st:"duel deck"'
+    assert_search_equal "st:ex", "st:expansion"
+    assert_search_equal "st:ftv", 'st:"from the vault"'
     assert_search_equal "st:me", "st:masters"
-    assert_search_equal "st:starter", "st:st"
-    assert_search_equal "st:pds", 'st:"premium deck"'
     assert_search_equal "st:pc", "st:planechase"
-    assert_search_equal "st:2hg", 'st:"two-headed giant"'
+    assert_search_equal "st:pds", 'st:"premium deck"'
+    assert_search_equal "st:st", "st:starter"
+    assert_search_equal "st:std", "st:standard"
+  end
+
+  it "underscores and capitalization" do
+    assert_search_equal "st:duel_deck", 'st:"duel deck"'
+    assert_search_equal "st:duel_deck", 'st:"DUEL DECK"'
+    assert_search_equal "st:dd", 'st:DD'
+  end
+
+  it "composite types" do
     assert_search_equal "st:standard", "(st:core or st:expansion)"
   end
 
