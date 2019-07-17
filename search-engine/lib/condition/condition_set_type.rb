@@ -1,6 +1,6 @@
 class ConditionSetType < Condition
   def initialize(set_type)
-    set_type = normalize_name(set_type)
+    set_type = normalize_name(set_type).gsub("_", " ")
     @set_type = deabbreviate(set_type)
   end
 
