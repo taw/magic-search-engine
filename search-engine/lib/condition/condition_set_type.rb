@@ -1,7 +1,23 @@
 class ConditionSetType < Condition
+  TypeAliases = {
+    "2hg" => "two-headed giant",
+    "arc" => "archenemy",
+    "cmd" => "commander",
+    "cns" => "conspiracy",
+    "dd" => "duel deck",
+    "ex" => "expansion",
+    "ftv" => "from the vault",
+    "me" => "masters",
+    "pc" => "planechase",
+    "pds" => "premium deck",
+    "rep" => "reprint",
+    "st" => "starter",
+    "std" => "standard",
+  }
+
   def initialize(set_type)
     set_type = normalize_name(set_type).gsub("_", " ")
-    @set_type = deabbreviate(set_type)
+    @set_type = TypeAliases[set_type] || set_type
   end
 
   def search(db)
@@ -49,23 +65,6 @@ class ConditionSetType < Condition
       end
     end
     sets
-  end
-
-  def deabbreviate(set_type)
-    set_type = "expansion" if set_type == "ex"
-    set_type = "from the vault" if set_type == "ftv"
-    set_type = "archenemy" if set_type == "arc"
-    set_type = "commander" if set_type == "cmd"
-    set_type = "conspiracy" if set_type == "cns"
-    set_type = "duel deck" if set_type == "dd"
-    set_type = "reprint" if set_type == "rep"
-    set_type = "masters" if set_type == "me"
-    set_type = "starter" if set_type == "st"
-    set_type = "premium deck" if set_type == "pds"
-    set_type = "planechase" if set_type == "pc"
-    set_type = "standard" if set_type == "std"
-    set_type = "two-headed giant" if set_type == "2hg"
-    set_type
   end
 
   def get_type_list(set_type)
