@@ -4,9 +4,6 @@ class ConditionSetType < Condition
     @set_type = deabbreviate(set_type)
   end
 
-  # For sets and blocks:
-  # "in" is code for "Invasion", don't substring match "Innistrad" etc.
-  # "Mirrodin" is name for "Mirrodin", don't substring match "Scars of Mirrodin"
   def search(db)
     merge_into_set matching_sets(db).map(&:printings)
   end
@@ -73,8 +70,8 @@ class ConditionSetType < Condition
 
   def get_type_list(set_type)
     case set_type
-    when "multi"
-      ["archenemy", "commander", "conspiracy", "planechase", "vanguard", "multi"]
+    when "multiplayer"
+      ["archenemy", "commander", "conspiracy", "planechase", "vanguard", "multiplayer", "two-headed giant"]
     when "booster"
       ["expansion", "conspiracy", "reprint", "core", "masters", "un", "booster"]
     when "fixed"
