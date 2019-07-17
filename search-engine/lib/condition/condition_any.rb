@@ -31,10 +31,12 @@ class ConditionAny < ConditionOr
       )
     when "augment"
       @conds << ConditionIsAugment.new
-    when "battleland"
+    when "battleland", "tangoland"
       @conds << ConditionIsBattleland.new
-    when "bounceland"
+    when "bounceland", "karoo"
       @conds << ConditionIsBounceland.new
+    when "canopyland", "canland"
+      @conds << ConditionIsCanopyland.new
     when "checkland"
       @conds << ConditionIsCheckland.new
     when "colorshifted"
@@ -57,16 +59,26 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsFunny.new
     when "gainland"
       @conds << ConditionIsGainland.new
-    when "manland"
+    when "keywordsoup"
+      @conds << ConditionIsKeywordsoup.new
+    when "manland", "creatureland"
       @conds << ConditionIsManland.new
     when "multipart"
       @conds << ConditionIsMultipart.new
+    when "painland"
+      @conds << ConditionIsPainland.new
     when "permanent"
       @conds << ConditionIsPermanent.new
     when "primary"
       @conds << ConditionIsPrimary.new
     when "secondary"
       @conds << ConditionIsSecondary.new
+    when "shadowland"
+      @conds << ConditionIsShadowland.new
+    when "storageland"
+      @conds << ConditionIsStorageland.new
+    when "triland"
+      @conds << ConditionIsTriland.new
     when "front"
       @conds << ConditionIsFront.new
     when "back"
