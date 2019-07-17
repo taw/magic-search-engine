@@ -1,6 +1,6 @@
 class ConditionIsPromo < ConditionSimple
   def match?(card)
-    card.set.type == "promo"
+    card.set.types.include?("promo")
   end
 
   def to_s

@@ -4,7 +4,7 @@ describe PackFactory do
 
   it "Only sets of appropriate types have sealed packs" do
     db.sets.each do |set_code, set|
-      set_pp = "#{set.name} [#{set.code}/#{set.type}]"
+      set_pp = "#{set.name} [#{set.code}]"
       # Indexer responsibility to set this flag
       if set.has_boosters?
         pack = factory.for(set_code)
@@ -24,7 +24,7 @@ describe PackFactory do
   context "Standard legal sets since Origins generally have non-booster cards" do
     let(:start_date) { db.sets["ori"].release_date }
     let(:regular_sets) { db.sets.values.select{|s|
-      s.type == "core" or s.type == "expansion"
+      s.types.include?("core") or s.types.include?("expansion")
     }.to_set }
     let(:expected_official) {
       regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15]
@@ -49,7 +49,7 @@ describe PackFactory do
       # Some sets don't follow these rules
       # They should have own tests
       next if %W[dgm unh jou frf tsp cn2 bbd war arn].include?(set_code)
-      set_pp = "#{set.name} [#{set.code}/#{set.type}]"
+      set_pp = "#{set.name} [#{set.code}]"
       pack = factory.for(set_code)
       next unless pack
       pack.nonfoil_cards.should match_array(set.physical_cards_in_boosters),
@@ -62,11 +62,11 @@ describe PackFactory do
       # Some sets don't follow these rules
       # They should have own tests
       next if %W[tsp cn2 bbd war].include?(set_code)
-      set_pp = "#{set.name} [#{set.code}/#{set.type}]"
+      set_pp = "#{set.name} [#{set.code}]"
       pack = factory.for(set_code)
       next unless pack
       next unless pack.has_foils?
-      actual_cards = pack.foil_cards.select{|c| c.set.type != "masterpiece"}
+      actual_cards = pack.foil_cards.select{|c| !c.set.types.include?("masterpiece") }
       expected_cards = set.physical_cards_in_boosters(true)
       actual_cards.should match_array(expected_cards),
         "All cards in #{set_pp} should be possible in its packs as foil"

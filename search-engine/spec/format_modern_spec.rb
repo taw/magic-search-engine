@@ -1,12 +1,11 @@
 describe "Formats - Modern" do
   include_context "db"
 
-  let(:regular_sets) { db.sets.values.select{|s|
-    s.type == "core" or
-    s.type == "expansion" or
-    s.name =~ /Welcome Deck/ or
-    s.type == "modern"
-  }.to_set }
+  let(:regular_sets) do
+    db.sets.values.select do |s|
+      s.types.include?("standard") or s.types.include?("modern")
+    end.to_set
+  end
 
   describe "Modern legal sets" do
     let(:start_date) { db.sets["8ed"].release_date }
