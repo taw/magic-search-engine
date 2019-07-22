@@ -26,7 +26,7 @@ class DeckParser
       next if line =~ /\A\s*[#\/]/
       # In some decklist formats empty line separates sideboard
       next if line.empty?
-      if line =~ /\Asideboard\z/i
+      if line =~ /\Asideboard:?\z/i
         current = @side
         next
       end
