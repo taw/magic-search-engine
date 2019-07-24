@@ -14,7 +14,9 @@ class PatchSetTypes < Patch
         set_types << "conspiracy" << "multiplayer"
       when "cp1", "cp2", "cp3"
         set_types << "deck"
-      when "ptk", "por", "p02", "s99"
+      when "por", "p02", "ptk"
+        set_types << "portal" << "booster"
+      when "s99"
         set_types << "booster"
       when "s00", "w16", "itp", "cm1"
         set_types << "fixed"
@@ -22,6 +24,24 @@ class PatchSetTypes < Patch
         set_types << "un"
       when "tpr"
         set_types << "masters"
+      when "ocmd", /\Aoc\d\d\z/
+        set_types << "commander" << "multiplayer"
+      when "pwpn", /\Apwp\d+\z/
+        set_types << "wpn"
+      when "parl", /\Apal\d+\z/
+        set_types << "arena league"
+      when "jgp", /\A[gj]\d\d\z/
+        set_types << "judge gift"
+      when "pdtp", /\Apdp\d\d\z/
+        set_types << "duels"
+      when /\Apmps\d\d\z/
+        set_types << "premiere shop"
+      when "mpr", /\Ap0[3-9]\z/, /\Ap[1-9]\d\z/
+        set_types << "player rewards"
+      when "pgtw", /\Apg\d\d\z/
+        set_types << "gateway"
+      when "fnm", /\Af\d\d\z/, "pdom", "pgrn", "pm19", "prna", "pwar"
+        set_types << "fnm"
       end
 
       if set["name"] =~ /Welcome Deck/

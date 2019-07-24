@@ -48,11 +48,24 @@ describe "Set types" do
 
   # mtgjson follows some but not all of them
   it "scryfall types" do
-    "st:commander".should return_some_cards
+    "st:arena_league".should include_search "e:pal00,pal01,pal02,pal03,pal04,pal05,pal06,pal99,parl"
+    "st:commander".should include_search "e:cmd,c13,c14,c15,c16,c17,c18,oc13,oc14,oc15,oc16,oc17,oc18,cma,cm2"
     "st:core".should include_search "e:lea,leb,2ed,3ed,4ed,5ed,6ed,7ed,8ed,9ed,10e,m10,m11,m12,m13,m14,m15,m19,m20"
+    "st:duel_deck".should include_search "e:dd1,dd2,ddc,ddd,dde,ddf,ddg,ddh,ddi,ddj,ddk,ddl,ddm,ddn,ddo,ddp,ddq,ddr,dds,ddt,ddu,dvd,evg,gvl,jvc,td2"
+    "st:duels".should include_search "e:pdp10,pdp11,pdp12,pdp13,pdp14,pdtp"
     "st:expansion".should return_some_cards
+    "st:fnm".should include_search "e:f01,f02,f03,f04,f05,f06,f07,f08,f09,f10,f11,f12,f13,f14,f15,f16,f17,fnm,pdom,pgrn,pm19,prna,pwar"
+    "st:from_the_vault".should return_some_cards
+    "st:gateway".should include_search "e:pgtw,pg07,pg08"
+    "st:judge_gift".should include_search "e:g00,g01,g02,g03,g04,g05,g06,g07,g08,g09,g10,g11,g17,g18,g99,j12,j13,j14,j15,j16,j17,j18,j19,jgp"
     "st:masterpiece".should return_some_cards
     "st:masters".should return_some_cards
-    "st:multiplayer".should return_some_cards
+    "st:multiplayer".should include_search "st:cmd or e:bbd,cns,cn2"
+    "st:player_rewards".should include_search "e:mpr,p03,p04,p05,p06,p07,p08,p09,p10,p11"
+    "st:portal".should include_search "e:por,p02,ptk"
+    "st:premiere_shop".should include_search "e:pmps08,pmps11"
+    "st:premium_deck".should return_some_cards
+    "st:unset".should include_search "e:ugl,unh,ust"
+    "st:wpn".should include_search "e:pwp09,pwp10,pwp11,pwp12,pwpn"
   end
 end

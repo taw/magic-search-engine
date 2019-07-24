@@ -13,6 +13,7 @@ class ConditionSetType < Condition
     "st" => "starter",
     "std" => "standard",
     "un" => "funny",
+    "unset" => "funny",
   }
 
   def initialize(set_type)
