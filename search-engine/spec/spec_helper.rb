@@ -120,7 +120,7 @@ RSpec::Matchers.define :include_search do |query_string2|
   failure_message do |query_string1|
     results1 = search(query_string1)
     results2 = search(query_string2)
-    if results1 >= results2
+    if results1 != results2
       "Expected `#{query_string1}' to include all results from `#{query_string2}', got:\n"+
         (results1 | results2).sort.map{|c|
         (results1.include?(c) ? "[*]" : "[ ]") +
