@@ -16,7 +16,7 @@ server {
     ssl_certificate /etc/letsencrypt/live/inwx/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/inwx/privkey.pem;
 
-    add_header Strict-Transport-Security "max-age=2592000; includeSubDomains" always;
+    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
 
     root /opt/git/github.com/fenhl/lore-seeker/stage/frontend/public;
     try_files $uri/index.html $uri @lore_seeker;
