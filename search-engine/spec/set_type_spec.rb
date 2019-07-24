@@ -45,4 +45,14 @@ describe "Set types" do
     assert_search_results "alert shu st:booster", "Alert Shu Infantry"
     assert_search_results "knight errant st:fixed", "Knight Errant"
   end
+
+  # mtgjson follows some but not all of them
+  it "scryfall types" do
+    "st:commander".should return_some_cards
+    "st:core".should include_search "e:lea,leb,2ed,3ed,4ed,5ed,6ed,7ed,8ed,9ed,10e,m10,m11,m12,m13,m14,m15,m19,m20"
+    "st:expansion".should return_some_cards
+    "st:masterpiece".should return_some_cards
+    "st:masters".should return_some_cards
+    "st:multiplayer".should return_some_cards
+  end
 end

@@ -61,6 +61,16 @@ RSpec::Matchers.define :return_no_cards do
   end
 end
 
+RSpec::Matchers.define :return_some_cards do
+  match do |query_string|
+    search(query_string) != []
+  end
+
+  failure_message do |query_string|
+    "Expected `#{query_string}' to have some results, but got nothing"
+  end
+end
+
 RSpec::Matchers.define :return_cards do |*cards|
   match do |query_string|
     search_names(query_string).sort == cards.sort
@@ -89,6 +99,29 @@ RSpec::Matchers.define :equal_search do |query_string2|
     results2 = search(query_string2)
     if results1 != results2
       "Expected `#{query_string1}' and `#{query_string2}' to return same results, got:\n"+
+        (results1 | results2).sort.map{|c|
+        (results1.include?(c) ? "[*]" : "[ ]") +
+        (results2.include?(c) ? "[*]" : "[ ]") +
+        "#{c}\n"
+      }.join
+    else
+      "Test is unreliable because results are empty: #{query_string1}"
+    end
+  end
+end
+
+RSpec::Matchers.define :include_search do |query_string2|
+  match do |query_string1|
+    results1 = search(query_string1)
+    results2 = search(query_string2)
+    results1 != [] and results2 != [] and results1.to_set >= results2.to_set
+  end
+
+  failure_message do |query_string1|
+    results1 = search(query_string1)
+    results2 = search(query_string2)
+    if results1 >= results2
+      "Expected `#{query_string1}' to include all results from `#{query_string2}', got:\n"+
         (results1 | results2).sort.map{|c|
         (results1.include?(c) ? "[*]" : "[ ]") +
         (results2.include?(c) ? "[*]" : "[ ]") +
