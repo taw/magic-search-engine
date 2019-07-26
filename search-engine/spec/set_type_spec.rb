@@ -63,7 +63,7 @@ describe "Set types" do
     "st:multiplayer".should include_search "st:cmd or e:bbd,cns,cn2"
     "st:player_rewards".should include_search "e:mpr,p03,p04,p05,p06,p07,p08,p09,p10,p11"
     "st:portal".should include_search "e:por,p02,ptk"
-    "st:premiere_shop".should include_search "e:pmps08,pmps11"
+    "st:premiere_shop".should include_search "e:pmps06,pmps07,pmps08,pmps09,pmps10,pmps11"
     "st:premium_deck".should return_some_cards
     "st:unset".should include_search "e:ugl,unh,ust"
     "st:wpn".should include_search "e:pwp09,pwp10,pwp11,pwp12,pwpn"
