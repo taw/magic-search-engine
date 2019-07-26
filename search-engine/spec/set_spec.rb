@@ -4,6 +4,7 @@ describe "Sets" do
   let(:known_set_types) do
     [
       "archenemy",
+      "arena league",
       "booster",
       "box",
       "commander",
@@ -12,16 +13,23 @@ describe "Sets" do
       "deck",
       "draft innovation",
       "duel deck",
+      "duels",
       "expansion",
       "fixed",
+      "fnm",
       "from the vault",
       "funny",
+      "gateway",
+      "judge gift",
       "masterpiece",
       "masters",
       "memorabilia",
       "modern",
       "multiplayer",
       "planechase",
+      "player rewards",
+      "portal",
+      "premiere shop",
       "premium deck",
       "promo",
       "spellbook",
@@ -32,6 +40,7 @@ describe "Sets" do
       "two-headed giant",
       "un",
       "vanguard",
+      "wpn",
     ].to_set
   end
 

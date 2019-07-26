@@ -53,6 +53,7 @@ describe Deck do
     end
   end
 
+  # This is not great
   let(:precon_sets) do
     db
       .sets
@@ -65,6 +66,7 @@ describe Deck do
       .select{|set|
         ![
           "cm1", "opca", "oe01", "ohop", "phop", "oarc", "parc", "opc2",
+          "ocmd", "oc13", "oc14", "oc15", "oc16", "oc17", "oc18"
         ].include?(set.code)
       }
   end
