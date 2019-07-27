@@ -53,18 +53,18 @@ describe "Set types" do
     "st:core".should include_search "e:lea,leb,2ed,3ed,4ed,5ed,6ed,7ed,8ed,9ed,10e,m10,m11,m12,m13,m14,m15,m19,m20"
     "st:duel_deck".should include_search "e:dd1,dd2,ddc,ddd,dde,ddf,ddg,ddh,ddi,ddj,ddk,ddl,ddm,ddn,ddo,ddp,ddq,ddr,dds,ddt,ddu,dvd,evg,gvl,jvc,td2"
     "st:duels".should include_search "e:pdp10,pdp11,pdp12,pdp13,pdp14,pdtp"
-    "st:expansion".should return_some_cards
+    "st:expansion".should include_search "e:arn,atq,leg,drk,fem,ice,hml,all,mir,vis,wth,tmp,sth,exo,usg,ulg,uds,mmq,nem,pcy,inv,pls,apc,ody,tor,jud,ons,lgn,scg,mrd,dst,5dn,chk,bok,sok,rav,gpt,dis,csp,tsp,tsb,plc,fut,lrw,mor,shm,eve,ala,con,arb,zen,wwk,roe,som,mbs,nph,isd,dka,avr,rtr,gtc,dgm,ths,bng,jou,ktk,frf,dtk,bfz,ogw,soi,emn,kld,aer,akh,hou,xln,rix,dom,grn,rna,war"
     "st:fnm".should include_search "e:f01,f02,f03,f04,f05,f06,f07,f08,f09,f10,f11,f12,f13,f14,f15,f16,f17,fnm,pdom,pgrn,pm19,prna,pwar"
-    "st:from_the_vault".should return_some_cards
+    "st:from_the_vault".should include_search "e:drb,v09,v10,v11,v12,v13,v14,v15,v16,v17"
     "st:gateway".should include_search "e:pgtw,pg07,pg08"
     "st:judge_gift".should include_search "e:g00,g01,g02,g03,g04,g05,g06,g07,g08,g09,g10,g11,g17,g18,g99,j12,j13,j14,j15,j16,j17,j18,j19,jgp"
-    "st:masterpiece".should return_some_cards
-    "st:masters".should return_some_cards
+    "st:masterpiece".should include_search "e:exp,mps,mp2,med,puma"
+    "st:masters".should include_search "e:chr,me1,me2,me3,me4,mma,vma,tpr,mm2,ema,mm3,ima,a25,uma"
     "st:multiplayer".should include_search "st:cmd or e:bbd,cns,cn2"
     "st:player_rewards".should include_search "e:mpr,p03,p04,p05,p06,p07,p08,p09,p10,p11"
     "st:portal".should include_search "e:por,p02,ptk"
     "st:premiere_shop".should include_search "e:pmps06,pmps07,pmps08,pmps09,pmps10,pmps11"
-    "st:premium_deck".should return_some_cards
+    "st:premium_deck".should include_search "e:h09,pd2,pd3"
     "st:unset".should include_search "e:ugl,unh,ust"
     "st:wpn".should include_search "e:pwp09,pwp10,pwp11,pwp12,pwpn"
   end
