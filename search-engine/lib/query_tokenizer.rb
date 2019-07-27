@@ -46,7 +46,7 @@ class QueryTokenizer
             "oracle" => ConditionOracleRegexp,
             "number"  => ConditionNumberRegexp,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
-          rx = Regexp.new(s[2], Regexp::IGNORECASE)
+          rx = Regexp.new(s[2], Regexp::IGNORECASE | Regexp::MULTILINE)
           tokens << [:test, cond.new(rx)]
         rescue RegexpError => e
           cond = {

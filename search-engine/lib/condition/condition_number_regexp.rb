@@ -4,6 +4,6 @@ class ConditionNumberRegexp < ConditionRegexp
   end
 
   def to_s
-    "number:#{@regexp.inspect.sub(/i\z/, "")}"
+    "number:#{@regexp.inspect.sub(/[im]+\z/, "")}"
   end
 end
