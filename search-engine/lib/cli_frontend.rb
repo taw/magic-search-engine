@@ -16,6 +16,10 @@ class CLIFrontend
 
     if verbose
       print_results!(results)
+    elsif query.view == "checklist"
+      results.printings.each do |card|
+        puts [card.set_code.upcase, card.number, card.name].join("\t")
+      end
     else
       puts results.card_names
     end
