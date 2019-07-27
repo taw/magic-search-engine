@@ -233,6 +233,7 @@ class Indexer
           "foiling",
           "frame_effect",
           "frame",
+          "fullart",
           "mtgo",
           "multiverseid",
           "number",
@@ -243,6 +244,7 @@ class Indexer
           "rarity",
           "release_date",
           "spotlight",
+          "textless",
           "watermark",
         ).compact
       ]
