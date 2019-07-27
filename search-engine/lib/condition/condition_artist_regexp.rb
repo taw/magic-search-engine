@@ -4,6 +4,6 @@ class ConditionArtistRegexp < ConditionRegexp
   end
 
   def to_s
-    "a:#{@regexp.inspect.sub(/i\z/, "")}"
+    "a:#{@regexp.inspect.sub(/[im]+\z/, "")}"
   end
 end
