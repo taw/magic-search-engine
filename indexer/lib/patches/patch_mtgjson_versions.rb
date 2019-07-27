@@ -116,6 +116,7 @@ class PatchMtgjsonVersions < Patch
       end
 
       card["oversized"] = card.delete("isOversized")
+      card["spotlight"] = card.delete("isStorySpotlight")
 
       # Drop v3 layouts, use v4 layout here
       if card["layout"] == "plane" or card["layout"] == "phenomenon"
