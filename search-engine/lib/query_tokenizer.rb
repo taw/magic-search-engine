@@ -229,14 +229,15 @@ class QueryTokenizer
           "dd",
           "deck",
           "duel deck",
-          "duel_deck",
+          "duels",
           "ex",
           "expansion",
           "fixed",
+          # "fnm", # this one doesn't have longer alternative form :-/
           "from the vault",
-          "from_the_vault",
           "ftv",
           "funny",
+          "judge gift",
           "masterpiece",
           "masters",
           "me",
@@ -246,8 +247,8 @@ class QueryTokenizer
           "pc",
           "pds",
           "planechase",
+          "portal",
           "premium deck",
-          "premium_deck",
           "promo",
           "spellbook",
           "st",
@@ -258,7 +259,10 @@ class QueryTokenizer
           "treasure chest",
           "two-headed giant",
           "un",
+          "unset",
           "vanguard",
+          "wpn",
+          "instore",
         ]
 
         if sets.size == 1 and set_types.include?(sets[0].tr("_", " "))
