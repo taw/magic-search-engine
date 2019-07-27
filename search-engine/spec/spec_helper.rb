@@ -202,6 +202,10 @@ shared_context "db" do |*sets|
     query.should include_cards(*cards)
   end
 
+  def assert_include_search(query1, query2)
+    query1.should include_search(query2)
+  end
+
   def assert_search_exclude(query, *cards)
     query.should exclude_cards(*cards)
   end
