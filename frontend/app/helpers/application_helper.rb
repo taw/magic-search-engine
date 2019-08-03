@@ -44,6 +44,13 @@ module ApplicationHelper
     link_to(controller: "card", action: "index", q: search, &blk)
   end
 
+  def format_mana_symbols_in_text(text)
+    text
+      .gsub(/(?:\{.*?\})+/) do
+        %Q[<span class="manacost">] + format_mana_symbols($&) + %Q[</span>]
+      end
+  end
+
   def format_oracle_text(card_text)
     h(card_text || "")
       .gsub(/\A\n+/, "")
