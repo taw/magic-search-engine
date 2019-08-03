@@ -3,7 +3,13 @@
     %h3 Search Help
 
     %div
-      Most syntax from magiccards.info works here. Everything is case insensitive. All Unicode characters like "Æ" can be spelled with their plain equivalents like "Ae" as well.
+      Here are some examples.
+      Everything is case insensitive.
+      All Unicode characters like "Æ" can be spelled with their plain equivalents like "Ae" as well.
+
+    %div
+      Most syntax from other search engines works here.
+      If you have any suggestions for new useful syntax, feel free to contact me.
 
     %h4 Search by name
     %ul
@@ -102,6 +108,8 @@
       = search_help "mana>={2/r}", "cards with mana cost including {2/r} Shadowmoor hybrid mana"
       = search_help "mana={p/r}", "cards with mana cost equal {p/r} Phyrexian mana"
       = search_help "mana!=2gr", "cards with mana cost different from {2}{g}{r} (or no mana cost)"
+      = search_help "mana>={x}", "cards with mana cost including {x}"
+      = search_help "mana>={s}", "cards with mana cost including {s}"
 
     %div This search supports variable symbols: "m", "n", and "o" each represent a single mana of any color but must each differ from the others; "h" represents a single hybrid mana.
     %ul
@@ -226,7 +234,7 @@
       = search_help "number:117", "cards with collector number 117 (old cards, promos etc. have arbitrarily assiged unique numbers)"
       = search_help "is:partner", "is a partner"
       = search_help "has:partner", "has a partner card"
-      = search_help "frame:legendary", "has frame effect legendary. Other alues are <code>compasslanddfc<code>, </code>devoid<code>, </code>miracle<code>, </code>mooneldrazidfc<code>, </code>nyxtouched<code>, </code>originpwdfc<code>, </code>sunmoondfc<code>, </code>tombstone</code>"
+      = search_help "frame:legendary", "has frame effect <code>legendary</code>. Other values are <code>compasslanddfc</code>, <code>devoid</code>, <code>miracle</code>, <code>mooneldrazidfc</code>, <code>nyxtouched</code>, <code>originpwdfc</code>, <code>sunmoondfc</code>, <code>tombstone</code>"
 
     %h4 Search by card nickname
     %div A few common nicknames are supported as queries.
