@@ -30,6 +30,8 @@
       = search_help "is:commander", "search cards you can play as commanders (legendary creatures or planeswalkers with ability saying so)"
       = search_help "is:brawler", "search cards you can play as Brawl commanders (legendary creatures or planeswalkers)"
       = search_help "is:historic", "search for historic cards (legendary, artifact, and/or Saga)"
+      = search_help "is:modal", "search modal cards"
+      = search_help "is:vanilla", "search vanilla cards"
 
     %h4 Search by Oracle text
     %div Reminder text is not included in Oracle search
@@ -112,6 +114,8 @@
       = search_help "mana>={x}", "cards with mana cost including {x}"
       = search_help "mana>={s}", "cards with mana cost including {s}"
       = search_help "mana>={c}", "cards with mana cost including {c}"
+      = search_help "is:hybrid", "has hybrid mana cost"
+      = search_help "is:phyrexian", "has Phyrexian mana cost"
 
     %div This search supports variable symbols: "m", "n", and "o" each represent a single mana of any color but must each differ from the others; "h" represents a single hybrid mana.
     %ul
@@ -216,6 +220,7 @@
       = search_help "is:future", "cards with future-style frames"
       = search_help "is:holofoil", "cards with holographic foil"
       = search_help "is:timeshifted", "timeshifted cards"
+      = search_help "is:colorshifted", "colorshifted cards"
       = search_help "is:split", "split cards"
       = search_help "is:flip", "flip cards (Kamigawa)"
       = search_help "is:dfc", "double-faced cards"
@@ -240,6 +245,12 @@
       = search_help "frame:legendary", "has frame effect <code>legendary</code>. Other values are <code>compasslanddfc</code>, <code>devoid</code>, <code>miracle</code>, <code>mooneldrazidfc</code>, <code>nyxtouched</code>, <code>originpwdfc</code>, <code>sunmoondfc</code>, <code>tombstone</code>"
       = search_help "is:fullart", "is full art card"
       = search_help "is:textless", "is textless card"
+      = search_help "is:spotlight", "is Story Spotlight"
+      = search_help "is:foil", "has foil version"
+      = search_help "is:nonfoil", "has nonfoil version"
+      = search_help "is:foilonly", "has only foil version"
+      = search_help "is:nonfoilonly", "has onlyy nonfoil version"
+      = search_help "is:foilboth", "has both foil and nonfoil versions"
 
     %h4 Search by card nickname
     %div A few common nicknames are supported as queries.
@@ -364,6 +375,19 @@
       = search_help "not:paper", "cards not available as tournament-legal paper cards"
       = search_help "not:mtgo", "cards not available on Magic: The Gathering Online"
       = search_help "not:arena", "cards not available on Arena"
+
+    %h4 Search by at least one printing with given property
+    %div
+      Search engine generally operates printing by printing,
+      but sometimes you might want to search for card properties between printings.
+      <code>in:</code> operator matches any card with at least one printing of given property.
+    %ul
+      = search_help "in:m10 in:m11", "card that were in both Magic 2010 and Magic 2011"
+      = search_help "in:core in:commander", "card that were in both a core set, and in a Commander set"
+      = search_help "in:common in:mythic", "card that was printed both as a common and as a mythic rare"
+      = search_help "in:foil", "card with any foil version"
+      = search_help "in:nonfoil", "card with any non-foil version"
+      = search_help "in:booster", "card with any version in boosters"
       = search_help "in:paper", "cards with any printing available as tournament-legal paper cards (not oversized or gold-bordered)"
       = search_help "in:mtgo", "cards with any printing available on Magic: The Gathering Online"
       = search_help "in:arena", "cards with any printing available on Arena"
@@ -397,9 +421,11 @@
       = search_help "sort:newall", "sort results by most recent first, counting all printings"
       = search_help "sort:old", "sort results by oldest first, counting only regular sets for sake of order"
       = search_help "sort:oldall", "sort results by oldest first, counting all printings"
+      = search_help "sort:artist", "sort results by artist"
       = search_help "sort:cmc", "sort results by converted mana cost (highest first)"
       = search_help "sort:pow", "sort results by power (highest first)"
       = search_help "sort:tou", "sort results by toughness (highest first)"
+      = search_help "sort:set", "sort results by set code and collector number"
       = search_help "sort:number", "sort results by set name and collector number"
       = search_help "sort:color", "sort results by color"
       = search_help "sort:ci", "sort results by color identity"
