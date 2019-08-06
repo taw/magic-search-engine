@@ -88,6 +88,7 @@
       = search_help "ind:wubrg", "cards with color indicator exactly wubrg"
       = search_help "ind>=r", "cards with color indicator including red"
       = search_help "ind:*", "cards with any color indicator"
+      = search_help "has:indicator", "cards with any color indicator"
 
     %h4 Search by converted mana cost
     %ul
@@ -197,6 +198,7 @@
       = search_help "w:izzet", "cards with Izzet watermark (Return to Ravnica block)"
       = search_help "w:phyrexian", "cards with Phyrexian watermark (Scars of Mirrodin block)"
       = search_help "w:*", "cards with any watermark"
+      = search_help "has:watermark", "cards with any watermark"
       = search_help "-w:*", "cards with no watermark"
 
     %h4 Search by card frame features
@@ -236,6 +238,8 @@
       = search_help "is:partner", "is a partner"
       = search_help "has:partner", "has a partner card"
       = search_help "frame:legendary", "has frame effect <code>legendary</code>. Other values are <code>compasslanddfc</code>, <code>devoid</code>, <code>miracle</code>, <code>mooneldrazidfc</code>, <code>nyxtouched</code>, <code>originpwdfc</code>, <code>sunmoondfc</code>, <code>tombstone</code>"
+      = search_help "is:fullart", "is full art card"
+      = search_help "is:textless", "is textless card"
 
     %h4 Search by card nickname
     %div A few common nicknames are supported as queries.
@@ -262,6 +266,12 @@
       = search_help "is:scryland o:{g}", "all green scrylands"
       = search_help "is:battleland", "all 5 battlelands"
       = search_help "is:battleland t:island", "both blue battlelands"
+      = search_help "is:canopyland", "all 6 canopylands"
+      = search_help "is:guildgate", "all 10 guildgates"
+      = search_help "is:painland", "all 10 painlands"
+      = search_help "is:shadowland", "all 5 shadowlands"
+      = search_help "is:storageland", "all 12 storagelands"
+      = search_help "is:triland", "all 10 tri-colored lands"
       = search_help "is:augment", "all 13 augment cards from Unstable"
       = search_help "is:keywordsoup", "cards that list a large number of keywords"
 
@@ -345,6 +355,18 @@
       = search_help 'ft:/\bice\b/', 'cards with word "ice" in flavor text'
       = search_help 'a:/.{40}/', "cards with artist credit of 40 or more characters"
       = search_help 'n:/.{30}/', "cards with names of 30 or more characters"
+
+    %h4 Search by game
+    %ul
+      = search_help "game:paper", "cards available as tournament-legal paper cards (not oversized or gold-bordered)"
+      = search_help "game:mtgo", "cards available on Magic: The Gathering Online"
+      = search_help "game:arena", "cards available on Arena"
+      = search_help "not:paper", "cards not available as tournament-legal paper cards"
+      = search_help "not:mtgo", "cards not available on Magic: The Gathering Online"
+      = search_help "not:arena", "cards not available on Arena"
+      = search_help "in:paper", "cards with any printing available as tournament-legal paper cards (not oversized or gold-bordered)"
+      = search_help "in:mtgo", "cards with any printing available on Magic: The Gathering Online"
+      = search_help "in:arena", "cards with any printing available on Arena"
 
     %h4 Search in preconstructed deck
     %ul
