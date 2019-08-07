@@ -1,4 +1,6 @@
 class ConditionAny < ConditionOr
+  attr_reader :query
+
   def initialize(query)
     @query = query.downcase
     @conds = [
@@ -109,5 +111,10 @@ class ConditionAny < ConditionOr
 
   def to_s
     "any:#{maybe_quote(@query)}"
+  end
+
+  def ==(other)
+    self.class == other.class and
+      self.query == other.query
   end
 end

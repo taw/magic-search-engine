@@ -52,6 +52,7 @@ class Query
       @cond.to_s,
       # ("time:#{maybe_quote(@metadata[:time])}" if @metadata[:time]),
       ("sort:#{@metadata[:sort]}" if @metadata[:sort]),
+      ("view:#{@metadata[:view]}" if @metadata[:view]),
     ].compact.join(" ")
     (@metadata[:ungrouped] ? "++#{str}" : str)
   end

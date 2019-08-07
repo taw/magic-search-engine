@@ -117,13 +117,15 @@ class QueryTokenizer
         tokens << [:test, ConditionBlock.new(*blocks)]
       elsif s.scan(/st\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionSetType.new(s[1] || s[2])]
-      elsif s.scan(/(c|ci|color|id|ind|identity|indicator)\s*(>=|>|<=|<|=)\s*(?:"(\d+)"|(\d+))/i)
+      elsif s.scan(/(c|ci|color|id|ind|identity|indicator)\s*(>=|>|<=|<|=|:)\s*(?:"(\d+)"|(\d+))/i)
         kind = s[1].downcase
         kind = "c" if kind == "color"
         kind = "ind" if kind == "indicator"
         kind = "ci" if kind == "id"
         kind = "ci" if kind == "identity"
-        tokens << [:test, ConditionColorCountExpr.new(kind, s[2], s[3] || s[4])]
+        cmp = s[2]
+        cmp = "=" if cmp == ":"
+        tokens << [:test, ConditionColorCountExpr.new(kind, cmp, s[3] || s[4])]
       elsif s.scan(/(?:c|color)\s*:\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionColors.new(parse_color(s[1] || s[2]))]
       elsif s.scan(/(?:ci|id|identity)\s*[:!]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)

@@ -1,114 +1,611 @@
-!ACIDIC  SLIME
-!Acidic
-!Alive & Well
-!Alive // Well
-!Alive&Well
-!Alive//Well
-!Mutual Epiphany
-!Ponder
-!Secrets of Paradise
-!Slime
-!Slime Acidic
-!Talon Gates
-!Well & Alive
-!Well // Alive
-!Well&Alive
-!Well//Alive
-!Your Will Is Not Your Own
-!acidic slime
-!ponder
-"Wall of"
-"of Wall"
-"of bo"
-&
-((e:rtr OR e:dgm) t:goblin) or t:elf
-(-e:uh) -(Robot Chicken)
-(// c:mu) or (c:w // c:u)
-(cmc=1 (c:w))
-(cmc=1 c:w) r:common
-(e:rtr OR e:dgm) (t:goblin or t:elf)
-(e:rtr OR e:dgm) t:goblin or t:elf
-(e:rtr or e:dgm) r:mythic c:w
-(far // away) or t:ral)
+_____
 -(c:w or c:u or c:b or c:g or c:c or c:l)
+-(is:modal)
+-(is:oversized)
+-(is:spotlight)
+-c:u id:u
 -c:w -c:u -c:b -c:g -c:c -c:l
+-e:unh,hho,ust
+-is:augment
+-is:borderless
 -is:future
 -is:new
 -is:old
 -is:permanent
 -is:permanent r:mythic
+-is:secondary
 -is:spell
+-is:unique
 -layout:dfc
 -layout:split
+-mana=
+-mana=2r
+-mana>=0
+-number:/b/
+-number:1 -number:2
+-number:1 -number:2 -number:3
 -other:cmc=4
+-w:*
+-w:mirran -w:phyrexian
+!_____
+!Acidic
+!ACIDIC  SLIME
+!acidic slime
+!Alive // Well
+!Alive & Well
+!Alive//Well
+!Alive&Well
+!capital offense
+!Everythingamajig (a)
+!Everythingamajig (b)
+!Mutual Epiphany
+!Ponder
+!séance
+!Secrets of Paradise
+!Slime
+!Slime Acidic
+!Talon Gates
+!Well // Alive
+!Well & Alive
+!Well//Alive
+!Well&Alive
+!Your Will Is Not Your Own
+"ach! hans, run!"
+"ACH! HANS, RUN!"
+"Ach! Hans, Run!"
+"First Wing"
+"First-Wing"
+"Firstwing"
+"of bo"
+"of Wall"
+"of wall"
+"RUMORS OF MY DEATH . . ."
+"Rumors of My Death . . ."
+"rumors of my death . . ."
+"urza's"
+"wall of"
+"Wall of"
+(-e:uh) -(Robot Chicken)
+("lim dul" the necromancer)
+(((e:rtr or e:dgm) t:goblin) or t:elf)
+((e:rtr or e:dgm) (t:goblin or t:elf))
+((e:rtr or e:dgm) r=mythic c:w)
+((e:rtr OR e:dgm) t:goblin) or t:elf
+((not c:w) (not c:u) (not c:b) (not c:g) (not c:c) (not c:l))
+((not e:uh) (not (robot chicken)))
+((not is:permanent) r=mythic)
+((t:instant or t:sorcery) // (t:instant or t:sorcery)) -(// o:aftermath)
+((time:"1000.1.1" print<="1000.1.1"))
+((time:"2010.1.1" print<="2010.1.1"))
+((time:"3000.1.1" print<="3000.1.1"))
+((time:"battle for homelands" f:standard) (time:"battle for homelands" print<="battle for homelands"))
+((time:"battle for homelands" print<="battle for homelands"))
+((time:dgm f:returntoravnicablock) naturalize (time:dgm print<=dgm))
+((time:gtc f:returntoravnicablock) naturalize (time:gtc print<=gtc))
+((time:m11 f:legacy) rancor (time:m11 print<=m11))
+((time:m11 f:modern) rancor (time:m11 print<=m11))
+((time:nph f:commander) t:jace (time:nph print<=nph))
+((time:nph f:legacy) t:jace (time:nph print<=nph))
+((time:nph f:vintage) t:jace (time:nph print<=nph))
+((time:rtr f:returntoravnicablock) naturalize (time:rtr print<=rtr))
+(// c:mu) or (c:w // c:u)
+(a:"rebecca guay" alt:(not a:"rebecca guay"))
+(angel serenity)
+(b:mirrodin t:land)
+(birthing pod)
+(bloodbraid elf a:steve)
+(c:b or c:r) is:spell f:standard
+(c:b other:(not c:b))
+(c:b other:c:b)
+(c:g o:flying)
+(c:u AND c:w) -c:r
+(c:u OR c:w) -c:r
+(c:w cmc=1)
+(ci:wu t:basic)
+(cmc=0 o:suspend c:c)
+(cmc=0 o:suspend c:u)
+(cmc=0 o:suspend ci:c)
+(cmc=0 o:suspend ci:u)
+(cmc=0 o:suspend mana=0)
+(cmc=0 o:suspend)
+(cmc=1 (c:w))
+(cmc=1 (not (not c:w)))
+(cmc=1 c:w r=common)
+(cmc=1 c:w)
+(cmc=1 c:w) r:common
+(cmc=1 or c:w)
+(cmc=2 other:cmc=1)
+(cmc=7 c:u)
+(cmc>=7 c:r)
+(cutthroat "il dal")
+(cutthroat il dal)
+(cutthroat ildal)
+(dralnu lich lord)
+(e:al (not banned:legacy))
+(e:al (not banned:vintage))
+(e:al f:commander)
+(e:al f:edh)
+(e:al f:legacy)
+(e:al f:modern)
+(e:al f:vintage)
+(e:al legal:commander)
+(e:al legal:edh)
+(e:al legal:modern)
+(e:dgm is:vanilla)
+(e:gtc mana={gu})
+(e:gtc mana=u)
+(e:gtc t:angel (not (c:r or tou=3)))
+(e:gtc t:angel (not (c:r tou=3)))
+(e:in or e:ps or e:ap)
+(e:isd or e:dka or e:avr)
+(e:ktk firstprint<ktk)
+(e:ktk lastprint>ktk)
+(e:KTK or e:FRF) -t:basic -(Act of Treason) -(Dutiful Return) -(Naturalize)       -(Summit Prowler) -(Smite the Monstrous)       -(Throttle) -(Tormenting Voice) -(Weave Fate) -(Incremental Growth)
+(e:lw or e:mt or e:shm or e:eve)
+(e:lw t:planeswalker)
+(e:m10 r=rare ci:c is:spell)
+(e:m10 r=rare ci:c)
+(e:mi or e:ds or e:5dn)
+(e:ori or e:ktk or e:frf or e:dtk or e:bfz)
+(e:rav or e:gp or e:di)
+(e:rtr OR e:dgm) (t:goblin or t:elf)
+(e:rtr or e:dgm) r:mythic c:w
+(e:rtr OR e:dgm) t:goblin or t:elf
+(e:rtr or e:gtc or e:dgm)
+(e:som or e:mbs or e:nph)
+(e:us or e:ul or e:ud)
+(Emrakul, the Promised End) or (Reflector Mage) or (Smuggler's Copter)
+(f:commander t:jace)
+(f:legacy rancor)
+(f:legacy t:jace)
+(f:mirrodinblock t:land)
+(f:modern rancor)
+(f:returntoravnicablock naturalize)
+(f:vintage t:jace)
+(far // away) or t:ral)
+(ft:only ft:to)
+(garruk (not "veil cursed"))
+(garruk relentless)
+(garruk the "veil cursed")
+(is:future is:vanilla)
+(is:primary t:legendary t:creature) OR (is:primary t:planeswalker)
+(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,c18,bbd)
+(is:spell or t:land)
+(jace beleren)
+(layout:double-faced c:c)
+(layout:double-faced ci:c)
+(layout:double-faced t:artifact)
+(layout:double-faced t:planeswalker)
+(legal:vintage or restricted:vintage)
+(lim dul necromancer)
+(lim dul the necromancer)
+(limdul necromancer)
+(limdul the necromancer)
+(mana=4gg t:dragon)
+(mana>=2rr mana<=6rr)
+(not (c:w or c:u or c:b or c:g or c:c or c:l))
+(not is:black-bordered)
+(not is:funny)
+(not is:future)
+(not is:new)
+(not is:old)
+(not is:permanent)
+(not is:reserved)
+(not is:silver-bordered)
+(not is:spell)
+(not is:white-bordered)
+(not layout:double-faced)
+(not layout:flip)
+(not layout:split)
+(not other:cmc=4)
+(o:"{T}" o:"add one mana of any color")
+(o:"First strike" c:r)
+(o:"partner with" e:bbd,pbbd,pz2) OR (o:"partner" t:legendary t:creature e:c16,cm2,pz2)
+(o:extort ci:b)
+(o:extort ci:bw (not ci:w) (not ci:b))
+(o:extort ci:w)
+(o:Flying r=rare)
+(o:fuse o:"gain 2 life")
+(o:fuse o:centaur o:"gain 2 life")
+(o:fuse o:centaur)
+(of wall)
+(other:(not t:werewolf) c:r)
+(part:(far other:away) or t:ral)
+(part:c:mu or part:(c:w other:c:u))
+(part:cmc=0 part:cmc=3 part:c:b)
+(part:cmc=1 part:cmc=2)
+(pow<=4 c:c)
+(pow<4 c:c)
+(pow<tou c:r)
+(pow=-1 tou=-1) or o:"-1/-1"
+(pow=0 c:g)
+(pow>=4 c:u)
+(pow>4 c:u)
+(pow>cmc c:r)
+(r=common (time:"2010.1.1" print<="2010.1.1"))
+(r=common (time:"2010.3.1" print<="2010.3.1"))
+(r=common (time:"2010.3.3" print<="2010.3.3"))
+(r=common (time:"2011.1.1" print<="2011.1.1"))
+(r=common (time:rtr print<=rtr))
+(r=common alt:r=mythic)
+(r=common alt:r=uncommon)
+(r=common t:land)
+(r=mythic c:c)
+(r=rare t:land)
+(r=uncommon t:equipment)
+(sakashima t:"*")
+(sarpadian empires "vol." vii)
+(sarpadian empires vol vii)
+(sarpadian empires)
+(siege rhino)
+(st:core or st:expansion or e:w16,w17)
+(Super Secret Tech) or (e:vma r:special)
+(t:"*" e:cns)
+(t:"*" t:conspiracy)
+(t:"*" t:creature)
+(t:angel (not (r=mythic c:r)))
+(t:angel (not (r=mythic or c:r)))
+(t:angel (not r=mythic) (not c:r))
+(t:conspiracy o:"one mana of any color")
+(t:garruk c:b)
+(t:garruk c:g)
+(t:garruk c:gb)
+(t:garruk c!g)
+(t:human or t:warrior)
+(t:human t:warrior)
+(t:jace (time:nph lastprint=wwk) (time:nph print<=nph))
+(t:jace (time:nph print<=nph))
+(t:jace (time:nph print=vma) (time:nph print<=nph))
+(t:jace (time:wwk print<=wwk))
+(t:jace firstprint=2012)
+(t:jace lastprint=wwk)
+(t:jace print=2012)
+(t:jace print=2013)
+(t:jace print=vma)
+(t:land t:creature)
+(t:legendary t:angel)
+(t:lhurgoyf pow<=tou)
+(t:lhurgoyf pow<tou)
+(t:lhurgoyf pow=0)
+(t:lhurgoyf pow=tou)
+(t:lhurgoyf pow>=0)
+(t:lhurgoyf pow>=tou)
+(t:lhurgoyf pow>tou)
+(t:lhurgoyf tou=0)
+(t:lhurgoyf tou=1)
+(t:lhurgoyf tou>=0)
+(t:ongoing o:trample)
+(t:phenomenon o:"each player draws four cards")
+(t:plane o:"whenever you roll CHAOS, untap all creatures you control")
+(t:plane t:dominaria)
+(t:planeswalker (time:lw print<=lw))
+(t:planeswalker e:m12)
+(t:planeswalker firstprint=m12)
+(t:planeswalker lastprint<=2011)
+(t:planeswalker lastprint<=roe)
+(t:planeswalker print=m12)
+(t:ral (time:"battle for homelands" print<="battle for homelands"))
+(t:scheme o:trample)
+(time:KLD f:standard) not (time:AER f:standard)
+(time:OGW f:Standard) not (time:SOI f:Standard)
+(tou<=cmc c:c)
+(w:mirran c:g)
+(wall of)
+(year=1993 alt:year=2015)
+(year=2013 t:jace)
+*
 //
+// (// o:meld)
 // Alive
+// o:"flip it" or o:"flip ~" or o:flipped or o:"Fire Penguin"
+// o:aftermath
+&
+++ (r>=rare or (e:ust r:basic)) frame=m15 -t:contraption -is:back
+++ alive e:dgm
+++ appeal e:hou
+++ authority e:hou
+++ brisela e:emn
+++ bruna e:emn
+++ budoka pupil e:bok
+++ crime e:di
+++ delver of secrets e:isd
+++ gisela e:emn
+++ ichiga e:bok
+++ is:booster e:all
+++ is:booster e:arn
+++ is:booster e:atq
+++ is:booster e:chr
+++ is:booster e:drk
+++ is:booster e:fem
+++ is:booster e:hml
+++ is:booster e:leg
+++ is:booster is:foil (e:bbd -has:partner r:mythic)
+++ is:booster is:foil (e:bbd (r:common or r:basic))
+++ is:booster is:foil (e:cn2 -t:conspiracy r:mythic -is:nonfoilonly)
+++ is:booster is:foil (e:war r:mythic -number:/★/)
+++ is:booster is:nonfoil (e:dka r:common -is:dfc -is:meld)
+++ is:booster is:nonfoil (e:dom t:"legendary creature" r:uncommon)
+++ is:booster is:nonfoil (e:emn r:uncommon is:front (is:dfc or is:meld))
+++ is:booster is:nonfoil (e:war t:planeswalker r:uncommon -number:/★/)
+++ is:holofoil
+++ is:unique
+++ isnsectile aberration e:isd
+++ lightning bolt e:m10
+++ punishment e:di
+++ well e:dgm
+++!"Lightning Bolt"
+++e:all
+++t:forest a:"john avon"
+++yamazaki
+a:"?"
+a:"rebecca guay" alt:(-a:"rebecca guay")
+a:/.{40}/
+a:/daarken/
+a:argyle
+a:ceran
+a:Ćeran
+a:daarken
+a:goblin
+a:snoddy
+a:Snõddy
+a:Veronique
+a:Véronique
+a=goblin
+aetherize
 AEtherize
 Aetherize
+Ætherize
+ætherize
 Alive
-Alive & Well
 Alive //
 Alive // Well
-Alive&Well
+Alive & Well
 Alive//Well
-Birthing Pod
-C:B
-CMC=1 C:W
-Cutthroat il Dal
-Cutthroat il-Dal
-Cutthroat ildal
-Dandan
-Dandân
-Dralnu
-Dralnu , Lich Lord
-Dralnu Lich Lord
-Dralnu, Lich Lord
-Garruk
-Garruk -Veil-Cursed
-Garruk Relentless
-Garruk, the Veil-Cursed
-Lim Dul the Necromancer
-Lim-Dul the Necromancer
-Lim-Dûl the Necromancer
-Limdul the Necromancer
-Ponder
-Sarpadian Empires, Vol. VII
-Urza’s
-Wall
-Wall of
-Well
-Well & Alive
-Well // Alive
-Well&Alive
-Well//Alive
-When // Where // What
-When // Where // Whatever
-a:"rebecca guay" alt:(-a:"rebecca guay")
-a:argyle
-aetherize
+Alive&Well
+alt:e:10e
+alt:e:commander or alt:e:m10 or alt:e:m11 or alt:e:m12
+alt:e:zen
+alt:e:zendikar alt:e:commander
+alt:game:arena
+alt:game:mtgo
+alt:game:paper
+alt:in:foil
+alt:in:nonfoil
+alt:is:booster
+alt:r:basic
+alt:r:common
+alt:r:mythic
+alt:r:rare
+alt:r:special
+alt:r:uncommon
+alt:st:"archenemy"
+alt:st:"arena league"
+alt:st:"wpn"
+alt:st:2hg
+alt:st:dd
+alt:st:DUEL_DECK
+alt:st:ex
+alt:st:ftv
+alt:st:me
+alt:st:pc
+alt:st:pds
+alt:st:st
+alt:st:std
+alt:st:un
+alt:t:planeswalker
+alt=t=planeswalker
 angel serenity
+any:"-1/-1"
+any:"-1/3"
+any:"2/4" any:spider
+any:"ABRUPT decay"
+any:"Abrupt Decay"
+any:"Abrupter Verfall"
+any:"Decomposition abrupte"
+any:"Décomposition abrupte"
+any:"décomposition ABRUPTE"
+any:"Deterioramento Improvviso"
+any:"JAYA ballard"
+any:"Jaya Ballard"
+any:"Legendary GOBLIN"
+any:"legendary goblin"
+any:"mythic rare"
+any:"mythic"
+any:"Ponte Traiçoeira"
+any:"Puente engañoso"
+any:"UNCOMMON"
+any:"uncommon"
+any:"Wayne England"
+any:"WAYNE england"
+any:"win the game"
+any:"Win THE gaME"
+any:"Кровавая луна"
+any:"축복받은 신령들"
+any:"刻拉諾斯的電擊"
+any:"刻拉诺斯的电击"
+any:"血染めの月"
+any:augment
+any:back
+any:battleland
+any:booster
+any:bounceland
+any:canland
+any:canopyland
+any:checkland
+any:commander
+any:creatureland
+any:digital
+any:draft
+any:dual
+any:fastland
+any:fetchland
+any:filterland
+any:front
+any:funny
+any:gainland
+any:guildgate
+any:karoo
+any:keywordsoup
+any:manland
+any:multipart
+any:painland
+any:permanent
+any:primary
+any:promo
+any:reprint
+any:reserved
+any:scryland
+any:secondary
+any:shadowland
+any:shockland
+any:spell
+any:storageland
+any:tangoland
+any:timeshifted
+any:triland
+any:unique
+any:vanilla
+art:/daarken/
+art:daarken
+artist:/daarken/
+artist:daarken
+b:"mirrodin" t:land
+b:"return to ravnica"
 b:"Return to Ravnica"
 b:"Scars of Mirrodin"
+b:"scars of mirrodin"
 b:"Urza's"
-b:"mirrodin" t:land
+b:"urza's"
+b:dom
+b:in
+b:innistrad
 b:Innistrad
 b:Invasion
-b:Mirrodin
-b:in
+b:invasion
+b:isd
+b:isd or b:soi
+b:isd,soi
 b:lorwyn
+b:lrw
+b:lw
 b:mi
+b:mir
+b:mirrodin
+b:Mirrodin
+b:mr
+b:mrd
 b:ravnica
+b:ravnica guildmage c:m cmc=2
+b:ravnica guildmage mana=hh
 b:rtr
 b:scars
 b:som
 b:urza
 b:us
+b:wwk
+b:zen
+b=isd
+bad ass
+banned:"duel commander"
+banned:commander
 banned:legacy
 banned:modern
 banned:vintage
+banned=modern
+Birthing Pod
 bloodbraid elf a:steve
+border:black
+border:borderless
+border:none
+border:none border:black
+border:none border:silver
+border:none border:white
+border:white t:creature
+border=black
+brothers yamazaki number=160a
+brothers yamazaki number=160b
+c:abzan
+c:azorius
+C:B
+c:B
+c:b
+c:b other:-c:b
+c:b other:c:b
+c:bant
+c:bgu
+c:black
+c:blue
+c:boros
+c:br
+c:br is:spell f:standard
+c:brg
+c:bw
+c:c
+c:c t:creature
+c:c t:creature cmc=0
+c:dimir
+c:esper
+c:g
+c:g o:flying
+c:gb
+c:gcm
+c:golgari
+c:green
+c:grixis
+c:gruul
+c:gur
+c:gw
+c:gwu
+c:izzet
+c:jeskai
+c:jund
+c:l
+c:m
+c:m t:instant
+c:mardu
+c:naya
+c:orzhov
+c:r
+c:r // c:r
+c:r AND c:g
+c:r OR c:g
+c:r t:creature cmc<=2
+c:rakdos
+c:red
+c:rg
+c:rgw
+c:ru
+c:rw
+c:rwb
+c:selesnya
+c:simic
+c:sultai
+c:temur
+c:u
+c:u // c:r // c:u
+c:u // c:u
+c:u // c:w // c:r
+c:u cmc=5
+c:ub
+c:ubr
+c:ucm
+c:ug
+c:urw
+c:uw
+c:w
+c:w cmc=1
+c:w OR cmc=1
+c:w t:creature f:standard
+c:wbg
+c:white
+c:wr
+c:wu
+c:wub
+c:wubrg
+c:wubrgm
 c!b
 c!bgm
+c!blue
 c!bu
 c!c
 c!g
@@ -117,46 +614,110 @@ c!r
 c!u
 c!w
 c!wubrg
-c:B
-c:b
-c:b other:-c:b
-c:b other:c:b
-c:c
-c:g
-c:g o:flying
-c:gcm
-c:l
-c:m
-c:r
-c:r // c:r
-c:rw
-c:u
-c:u // c:r // c:u
-c:u // c:u
-c:u // c:w // c:r
-c:ub
-c:ucm
-c:uw
-c:w
-c:w cmc=1
-c:wu
-c:wubrg
-c:wubrgm
+c<=3
+c<=gr
+c<=r or c<=g or c=gr
+c<3
+c<w
+c=0
+c=1
+c=2 or c=1 or c=0
+c=3
+c=3 or c=2 or c=1 or c=0
+c=3 or c=4 or c=5
+c=4 or c=5
+c=c
+c=g
+c=r
+c=w ci=5
+c=w or c=u or c=b or c=r or c=g
+c=wur
+c=WUR
+C=wur
+c>=3
+c>=g (c>=w or c>=u or c>=b or c>=r)
+c>=g c>=r
+c>=gr
+c>=r
+c>=rg
+c>=w
+c>=white
+c>=wu
+c>3
+c>g
+c>r c>g
+c>red
+c>wu
+capital offense
+cardboard carapace
+cardpecker
+carnivorous death-parrot
+censorship
+chaos confetti
+charm school
+cheap ass
+cheatyface
+checks and balances
+chicken à la king
+chicken egg
+chipper chopper
+chittering doom
+chivalrous chevalier
+ci <= 3
+ci >= 3
 ci:b
+ci:bant
+ci:black
 ci:c
+ci:c t:land
 ci:g
+ci:GB
 ci:gb
 ci:gw
+ci:gwu
 ci:r
 ci:rg
 ci:rgw
 ci:rug
 ci:rw
+ci:u
+ci:uw
 ci:w
 ci:wb
 ci:wu t:basic
 ci:wubrg
+ci!wu
+ci<=3
+ci<=gr
+ci<=r or ci<=g or ci=gr
+ci<=uw
+ci<=wru
+ci<=wur
+ci<3
+ci<w
+ci=0
+ci=1
+ci=2 or ci=1 or ci=0
+ci=3 or ci=2 or ci=1 or ci=0
+ci=3 or ci=4 or ci=5
+ci=4 or ci=5
+ci=c
+ci=g
+ci=w or ci=u or ci=b or ci=r or ci=g
+ci=WUR
+CI=wur
+ci=wur
+ci>=3
+ci>=g (ci>=w or ci>=u or ci>=b or ci>=r)
+ci>=g ci>=r
+ci>=gr
+ci>=rg
+ci>3
+ci>g
+ci>r ci>g
+cmc : 5
 cmc >= 7
+cmc:5
 cmc<1
 cmc=0
 cmc=0 o:suspend
@@ -167,29 +728,82 @@ cmc=0 o:suspend ci:u
 cmc=0 o:suspend mana=0
 cmc=0.5
 cmc=1
-cmc=1 (c:w r:common)
 cmc=1 -(-c:w)
+cmc=1 (c:w r:common)
 cmc=1 AND c:w
-cmc=1 OR c:w
 cmc=1 c:w
+CMC=1 C:W
+cmc=1 OR c:w
+cmc=½
 cmc=2 other: cmc=1
+cmc=4
+cmc=4 c:w m:2ww
+cmc=5
 cmc=5 // cmc=2
 cmc=7 c:u
-cmc=½
-cmc>0
-cmc>1
+cmc=loy
+cmc=loyalty
 cmc>=7
 cmc>=7 c:r
+cmc>0
+cmc>1
+cn:拱翼巨龍
+cn:拱翼巨龙
+color:red
+color:uw -c:r
+color:wu
+color=3
+color>red
+color>wu
+cs:"刻拉诺斯的电击"
+cs:拱翼巨龍
+cs:拱翼巨龙
+ct:"刻拉諾斯的電擊"
+ct:拱翼巨龍
+ct:拱翼巨龙
+Cutthroat il Dal
+Cutthroat il-Dal
+Cutthroat ildal
+Dandan
+Dandân
+de:"Abrupter Verfall"
+de:"harscher mentor"
+de:/\bdes\b/
+de:/\bvon der\b/
+de:engel
+deck:"Amonkhet / Gideon"
+deck:"Gideon, Martial Paragon"
+deck:"Ingenious Machinists" or deck:"Woodland Warriors"
+deck:"teferi timebender"
+deck:"Teferi Timebender"
+deck:"Teferi, Timebender"
+Denied!
+display:checklist
+display:full
+display:images
+display:text
+Dralnu
+Dralnu , Lich Lord
+Dralnu Lich Lord
+Dralnu, Lich Lord
+e:"dragon's maze"
 e:"Return to Ravnica"
 e:"Urza's Saga"
-e:"Urza’s Saga"
-e:"dragon's maze"
-e:"urza"
 e:"urza's"
+e:"Urza’s Saga"
 e:"urza’s"
-e:Gatecrash
+e:"urza"
+e:a25 -number:/†/
+e:a25 is:booster
+e:aer is:booster
+e:aer name>"Sram, Senior Edificer"
+e:aer number<=184 -number:/†/
+e:akh is:booster
+e:akh name>"Liliana, Death's Majesty"
+e:akh number<=269
 e:al -banned:legacy
 e:al -banned:vintage
+e:al f:brawl
 e:al f:commander
 e:al f:edh
 e:al f:legacy
@@ -198,15 +812,18 @@ e:al f:vintage
 e:al legal:commander
 e:al legal:edh
 e:al legal:modern
+e:arn,atq,leg,drk,fem,ice,hml,all,mir,vis,wth,tmp,sth,exo,usg,ulg,uds,mmq,nem,pcy,inv,pls,apc,ody,tor,jud,ons,lgn,scg,mrd,dst,5dn,chk,bok,sok,rav,gpt,dis,csp,tsp,tsb,plc,fut,lrw,mor,shm,eve,ala,con,arb,zen,wwk,roe,som,mbs,nph,isd,dka,avr,rtr,gtc,dgm,ths,bng,jou,ktk,frf,dtk,bfz,ogw,soi,emn,kld,aer,akh,hou,xln,rix,dom,grn,rna,war
 e:cns
+e:dd1,dd2,ddc,ddd,dde,ddf,ddg,ddh,ddi,ddj,ddk,ddl,ddm,ddn,ddo,ddp,ddq,ddr,dds,ddt,ddu,dvd,evg,gvl,jvc,td2
 e:dgm
 e:dgm is:vanilla
+e:Gatecrash
 e:gtc
-e:gtc mana=u
 e:gtc mana={G/U}
-e:gtc mana={UG}
 e:gtc mana={gu}
 e:gtc mana={u/g}
+e:gtc mana={UG}
+e:gtc mana=u
 e:gtc t:angel -(c:r or tou=3)
 e:gtc t:angel -(c:r tou=3)
 e:in or e:ps or e:ap
@@ -220,7 +837,10 @@ e:m10 r:rare ci:c is:spell
 e:maze
 e:mi or e:ds or e:5dn
 e:ori or e:ktk or e:frf or e:dtk or e:bfz
+e:rav -number:/†/
+e:rav is:booster
 e:rav or e:gp or e:di
+e:rav,gp,di
 e:ravnica
 e:return
 e:rtr
@@ -228,124 +848,1075 @@ e:rtr OR e:gtc OR e:dgm
 e:scars
 e:som
 e:som or e:mbs or e:nph
+e:unh,ugl,uqc,hho,ust,pust,ppc1,htr,htr17,h17,tbth,tdag,tfth,thp1,thp2,thp3 -t:basic -(Steamflogger Boss) -(Hall of Triumph)
 e:us
 e:us or e:ul or e:ud
+e:usg -number:/†/
+e:usg is:booster
+e:ust -number:/†/
+e:ust -t:contraption r:common
+e:ust -t:contraption r:mythic
+e:ust -t:contraption r:rare -border:black
+e:ust -t:contraption r:uncommon
+e:ust (t:basic or t:contraption)
+e:ust is:booster
+e:ust r:basic
+e:ust Steamflogger Boss
+e:ust t:contraption r:common
+e:ust t:contraption r:mythic
+e:ust t:contraption r:rare
+e:ust t:contraption r:uncommon
+e:war number<=264 -number:/†|★/
+e:xln,rix,dom,m19,grn,rna,war,m20 -"Rampaging Ferocidon"
+e=isd
+EVERYTHINGAMAJIG (A)
+EVERYTHINGAMAJIG (B)
+f:"duel commander"
+f:"lorwyn shadowmoor block"
 f:"lorwyn-shadowmoor block"
 f:"mirrodin block" t:land
+f:"penny dreadful"
 f:"ravnica block"
 f:"return to ravnica block" naturalize
 f:commander t:jace
 f:commander time:nph t:jace
+f:duel
 f:extended
 f:legacy
 f:legacy rancor
 f:legacy t:jace
 f:legacy time:nph t:jace
+f:lorwynshadowmoorblock
 f:modern
+f:modern n:/.{30}/
 f:modern rancor
+f:pd other:-f:pd -is:meld
+f:penny
+f:ravnicablock
 f:standard
 f:vintage
 f:vintage t:jace
 f:vintage time:nph t:jace
+f=modern
+flavor:"here's some gold"
+flavor:/here's (some gold/
+flavor:/here's some gold/
+foreign:"Abrupter Verfall"
+foreign:"Decomposition abrupte"
+foreign:"Décomposition abrupte"
+foreign:"décomposition ABRUPTE"
+foreign:"Deterioramento Improvviso"
+foreign:"Ponte Traiçoeira"
+foreign:"Puente engañoso"
+foreign:"Кровавая луна"
+foreign:"축복받은 신령들"
+foreign:"刻拉諾斯的電擊"
+foreign:"刻拉诺斯的电击"
+foreign:"血染めの月"
+foreign:/\bred\b/
+foreign:/\bvon der\b/
+foreign:/\b电击\b/
+foreign:/red/
+foreign:/축복받은/
+foreign:/电击/
+foreign:red
+foreign:电击
+fr:"Décomposition abrupte"
+fr:"lumiere d'albatre"
+fr:"Lumière d'albâtre"
+fr:Fragments
+fr:goblin
+fr=goblin
+frame:colorshifted
+frame:future
+frame:m15
+frame:modern
+frame:modern OR frame:m15
+frame:new
+frame=future
+ft:"designed" e:m15
+ft:"here's some gold"
+ft:"Jaya Ballard" OR ("Jaya Ballard")
+ft:"Lim-Dul"
+ft:"Lim-Dûl"
+ft:"mishra"
 ft:"only to"
+FT:/(?-i)land/
+FT:/(?i)land/
+FT:/[a-z]/
+FT:/[a-z/
+FT:/\bland\b/
+ft:/\bto\b/
+ft:/\d{4,}/ -e:olgc,ovnt
+ft:/\d+/
+FT:/AJANI/
+FT:/ajani/
+ft:/ajani/
+ft:/here's (some gold/
+ft:/here's some gold/
+ft:/land/
+ft:/to/
 ft:chandra
+ft:gideon or o:gideon or t:gideon or gideon
+ft:goblin
 ft:only ft:to
+ft:to
+ft=goblin
+game:arena
+game:mtgo
+game:paper
+Garruk
+Garruk -Veil-Cursed
+Garruk Relentless
+Garruk, the Veil Cursed
+Garruk, the Veil-Cursed
+Garruk, the VeilCursed
+Ghazbán Ogress
+Goblin S.W.A.T. Team
+HALF-SQUIRREL, HALF-
+HUMMING-
+id:3
+id:c t:land
+id:g
+id:rug is:permanent
+id:wu
+id<=wu
+id=g
+identity:3
+identity:wu
+identity<=wu
+in:"archenemy"
+in:"arena league"
+in:"commander"
+in:"conspiracy"
+in:"core"
+in:"duel deck"
+in:"duels"
+in:"expansion"
+in:"from the vault"
+in:"funny"
+in:"gateway"
+in:"judge gift"
+in:"masterpiece"
+in:"masters"
+in:"multiplayer"
+in:"planechase"
+in:"player rewards"
+in:"portal"
+in:"premiere shop"
+in:"premium deck"
+in:"standard"
+in:"starter"
+in:"two-headed giant"
+in:"unset"
+in:"wpn"
+in:10e
+in:2ed
+in:2hg
+in:3ed
+in:4ed
+in:5dn
+in:5ed
+in:6ed
+in:7ed
+in:8ed
+in:9ed
+in:a25
+in:aer
+in:akh
+in:ala
+in:all
+in:ana
+in:apc
+in:arb
+in:arc
+in:arena
+in:arn
+in:ath
+in:atq
+in:avr
+in:basic
+in:bbd
+in:bfz
+in:bng
+in:bok
+in:booster
+in:brb
+in:btd
+in:c13
+in:c14
+in:c15
+in:c16
+in:c17
+in:c18
+in:ced
+in:cei
+in:chk
+in:chr
+in:cm1
+in:cm2
+in:cma
+in:cmd
+in:cn2
+in:cns
+in:commander,m10,m11,m12
+in:common
+in:con
+in:cp1
+in:cp2
+in:cp3
+in:csp
+in:cst
+in:dd
+in:dd1
+in:dd2
+in:ddc
+in:ddd
+in:dde
+in:ddf
+in:ddg
+in:ddh
+in:ddi
+in:ddj
+in:ddk
+in:ddl
+in:ddm
+in:ddn
+in:ddo
+in:ddp
+in:ddq
+in:ddr
+in:dds
+in:ddt
+in:ddu
+in:dgm
+in:dis
+in:dka
+in:dkm
+in:dom
+in:dpa
+in:drb
+in:drk
+in:dst
+in:dtk
+in:dvd
+in:e01
+in:e02
+in:ema
+in:emn
+in:eve
+in:evg
+in:ex
+in:exo
+in:exp
+in:f01
+in:f02
+in:f03
+in:f04
+in:f05
+in:f06
+in:f07
+in:f08
+in:f09
+in:f10
+in:f11
+in:f12
+in:f13
+in:f14
+in:f15
+in:f16
+in:f17
+in:fem
+in:fnm
+in:foil
+in:frf
+in:ftv
+in:fut
+in:g00
+in:g01
+in:g02
+in:g03
+in:g04
+in:g05
+in:g06
+in:g07
+in:g08
+in:g09
+in:g10
+in:g11
+in:g17
+in:g18
+in:g99
+in:gk1
+in:gk2
+in:gnt
+in:gpt
+in:grn
+in:gs1
+in:gtc
+in:gvl
+in:h09
+in:h17
+in:hho
+in:hml
+in:hop
+in:hou
+in:htr
+in:htr17
+in:ice
+in:ima
+in:inv
+in:isd
+in:itp
+in:j12
+in:j13
+in:j14
+in:j15
+in:j16
+in:j17
+in:j18
+in:j19
+in:jgp
+in:jou
+in:jud
+in:jvc
+in:kld
+in:ktk
+in:lea
+in:lea in:m10
+in:leb
+in:leg
+in:lgn
+in:lrw
+in:m10
+in:m11
+in:m12
+in:m13
+in:m14
+in:m15
+in:m19
+in:m20
+in:mbs
+in:md1
+in:me
+in:me1
+in:me2
+in:me3
+in:me4
+in:med
+in:mgb
+in:mh1
+in:mir
+in:mm2
+in:mm3
+in:mma
+in:mmq
+in:mor
+in:mp2
+in:mpr
+in:mps
+in:mrd
+in:mtgo
+in:mythic
+in:nem
+in:nonfoil
+in:nph
+in:oarc
+in:oc13
+in:oc14
+in:oc15
+in:oc16
+in:oc17
+in:oc18
+in:ocm1
+in:ocmd
+in:ody
+in:oe01
+in:ogw
+in:ohop
+in:olgc
+in:ons
+in:opc2
+in:opca
+in:ori
+in:ovnt
+in:p02
+in:p03
+in:p04
+in:p05
+in:p06
+in:p07
+in:p08
+in:p09
+in:p10
+in:p10e
+in:p11
+in:p15a
+in:p2hg
+in:paer
+in:pakh
+in:pal00
+in:pal01
+in:pal02
+in:pal03
+in:pal04
+in:pal05
+in:pal06
+in:pal99
+in:palp
+in:pana
+in:paper
+in:parc
+in:parl
+in:pavr
+in:pbbd
+in:pbfz
+in:pbng
+in:pbok
+in:pc
+in:pc2
+in:pca
+in:pcel
+in:pcmd
+in:pcmp
+in:pcy
+in:pd2
+in:pd3
+in:pdgm
+in:pdka
+in:pdom
+in:pdp10
+in:pdp11
+in:pdp12
+in:pdp13
+in:pdp14
+in:pdrc
+in:pds
+in:pdtk
+in:pdtp
+in:pelp
+in:pemn
+in:pf19
+in:pfrf
+in:pg07
+in:pg08
+in:pgpx
+in:pgrn
+in:pgru
+in:pgtc
+in:pgtw
+in:phel
+in:phj
+in:phop
+in:phou
+in:phpr
+in:phuk
+in:pi13
+in:pi14
+in:pidw
+in:pisd
+in:pjas
+in:pjjt
+in:pjou
+in:pjse
+in:pkld
+in:pktk
+in:plc
+in:plgm
+in:plpa
+in:pls
+in:pm10
+in:pm11
+in:pm12
+in:pm13
+in:pm14
+in:pm15
+in:pm19
+in:pm20
+in:pmbs
+in:pmei
+in:pmh1
+in:pmoa
+in:pmps
+in:pmps06
+in:pmps07
+in:pmps08
+in:pmps09
+in:pmps10
+in:pmps11
+in:pnat
+in:pnph
+in:pogw
+in:por
+in:pori
+in:ppc1
+in:ppod
+in:ppp1
+in:ppre
+in:ppro
+in:pred
+in:prel
+in:pres
+in:prix
+in:prm
+in:prna
+in:proe
+in:prtr
+in:prw2
+in:prwk
+in:ps14
+in:ps15
+in:ps16
+in:ps17
+in:ps18
+in:ps19
+in:psdc
+in:psoi
+in:psom
+in:pss1
+in:pss2
+in:pss3
+in:psum
+in:psus
+in:ptc
+in:pths
+in:ptk
+in:ptkdf
+in:puma
+in:purl
+in:pust
+in:pvan
+in:pwar
+in:pwcq
+in:pwor
+in:pwos
+in:pwp09
+in:pwp10
+in:pwp11
+in:pwp12
+in:pwpn
+in:pwwk
+in:pxln
+in:pxtc
+in:pz1
+in:pz2
+in:pzen
+in:rare
+in:rav
+in:rix
+in:rna
+in:roe
+in:rqs
+in:rtr
+in:s00
+in:s99
+in:scg
+in:shm
+in:soi
+in:sok
+in:som
+in:special
+in:ss1
+in:ss2
+in:st
+in:std
+in:sth
+in:tbth
+in:td0
+in:td2
+in:tdag
+in:tfth
+in:thp1
+in:thp2
+in:thp3
+in:ths
+in:tmp
+in:tor
+in:tpr
+in:tsb
+in:tsp
+in:uds
+in:ugin
+in:ugl
+in:ulg
+in:uma
+in:un
+in:uncommon
+in:unh
+in:usg
+in:ust
+in:v09
+in:v10
+in:v11
+in:v12
+in:v13
+in:v14
+in:v15
+in:v16
+in:v17
+in:vis
+in:vma
+in:w16
+in:w17
+in:war
+in:wc00
+in:wc01
+in:wc02
+in:wc03
+in:wc04
+in:wc97
+in:wc98
+in:wc99
+in:wth
+in:wwk
+in:xln
+in:zen
+in:zendikar in:commander
+incoming!
+INCOMING!
+ind:*
+ind:* -t:bolas -grimlock
+ind:azorius
+ind:bur
+ind:c
+ind:g
+ind:gr
+ind:grrgr
+ind:gwr
+ind:l
+ind:r
+ind:r t:creature cmc=0
+ind:r t:instant
+ind:rbgu
+ind:rbgurgbu
+ind:red
+ind:rg
+ind:rgc
+ind:rgl
+ind:rgm
+ind:rug
+ind:u
+ind:ubr
+ind:uw
+ind:w t:sorcery
+ind:wrg
+ind:wu
+ind:wubrg
+ind<1
+ind<3
+ind<wu
+ind=3
+ind=3 bolas
+ind=5
+ind=g
+ind=r OR ind>r
+ind>=c
+ind>=r
+ind>=rg OR ind>=rw OR ind>=rb OR ind>=ru
+ind>r
+indicator:*
+indicator:wu
+indicator<wu
+indicator=3
+ineffable blessing (a)
+ineffable blessing (b)
+Ineffable Blessing o:"white-bordered"
+is:aftermath
+is:arena
+is:augment
+is:augment or o:augment or ft:augment or (augment) or foreign:augment
+is:back
+is:back or o:back or ft:back or (back)
+is:battleland
 is:black-bordered
+is:booster e:dom r:basic
+is:booster e:dom r:common
+is:booster e:dom r:mythic -t:legendary
+is:booster e:dom r:mythic t:legendary
+is:booster e:dom r:rare -t:legendary
+is:booster e:dom r:rare t:legendary
+is:booster e:dom r:uncommon -t:legendary
+is:booster e:dom r:uncommon t:legendary
+is:booster e:m19 r:basic
+is:booster e:m19 r:common
+is:booster e:m19 r:mythic -is:dfc
+is:booster e:m19 r:rare
+is:booster e:m19 r:uncommon
+is:booster e:war r:basic
+is:booster e:war r:common
+is:booster e:war r:mythic -t:planeswalker -number:/★/
+is:booster e:war r:mythic t:planeswalker -number:/★/
+is:booster e:war r:rare -t:planeswalker -number:/★/
+is:booster e:war r:rare t:planeswalker -number:/★/
+is:booster e:war r:uncommon -t:planeswalker -number:/★/
+is:booster e:war r:uncommon t:planeswalker -number:/★/
+is:booster or o:booster
+is:borderless
+is:bounceland
+is:brawler
+is:canland
+is:canopyland
+is:checkland
+is:colorshifted
+is:commander
+is:commander or ft:commander or o:commander or (commander) or foreign:commander
+is:creatureland
 is:dfc
 is:dfc c:c
 is:dfc ci:c
 is:dfc t:artifact
+is:dfc t:land
 is:dfc t:planeswalker
+is:digital
+is:digital or foreign:digital
+is:double-faced
+is:draft
+is:draft or draft
+is:dual
+is:dual or (dual) or ft:dual
+is:fastland
+is:fetchland
+is:filterland
 is:flip
+is:flip mana=3w
+is:foil
+is:front
+is:front or ft:front
+is:full
+is:fullart
 is:funny
+is:funny or ft:funny
 is:future
 is:future is:vanilla
+is:gainland
+is:guildgate
+is:guildgate or ft:guildgate
+is:historic
+is:host
+is:hybrid
+is:karoo
+is:karoo or (Karoo Meerkat)
+is:keywordsoup
+is:leveler
+is:manland
+is:meld
+is:meld cmc=0
+is:meld cmc=11
+is:meld cmc=2
+is:meld cmc=3
+is:meld cmc=4
+is:meld cmc=5
+is:meld cmc=7
+is:meld not:primary -f:pd -other:-f:pd
+is:meld not:primary f:pd other:-f:pd
+is:modal
+is:mtgo
+is:multipart
 is:new
+is:new r:mythic
+is:nonfoil
+is:normal
 is:old
+is:oversized
+is:painland
+is:paper
+is:partner
 is:permanent
+is:permanent or o:permanent or ft:permanent
+is:phyrexian
+is:planar
+is:primary
+is:primary jace
+is:primary layout:meld
+is:primary t:fox
+is:primary t:legendary t:creature
 is:promo
+is:promo or foreign:promo or (Battlefield Promotion)
+is:reprint
 is:reserved
+is:reserved or ft:reserved
+is:saga
+is:scheme
+is:scryland
+is:secondary
+is:shadowland
+is:shockland
 is:silver-bordered
 is:spell
+is:spell or o:spell
 is:spell or t:land
 is:split
+is:spotlight e:dom
+is:storageland
+is:tangoland
 is:timeshifted
+is:transform
+is:triland
+is:unique
+is:unique or ft:unique
+is:vanguard
 is:vanilla
 is:white-bordered
+is:white-bordered t:creature
+is=fetchland
+is=future
+is=silver-bordered
+is=split
+island
+it that gets left hanging
+it:"Deterioramento Improvviso"
+it:/\bdell\b/
+it:clemenza
 jace beleren
+jp:"血染めの月"
+jp:/ブルーナ/
+jp:ブルーナ
 kolagan
+kr:"축복받은 신령들"
+kr:/아바신/
+kr:/축복받은/
+kr:아바신
+layout:aftermath
+layout:augment
 layout:dfc
+layout:double-faced
+layout:flip
+layout:host
+layout:leveler
+layout:meld
+layout:normal
+layout:phenomenon
+layout:planar
 layout:plane
+layout:saga
+layout:scheme
 layout:split
 layout:vanguard
+layout=scheme
 legal:"ravnica block"
 legal:legacy
 legal:modern
+legal:ravnicablock
 legal:standard
 legal:vintage
 legal:vintage or restricted:vintage
+legal=modern
 lim dul necromancer
+Lim Dul the Necromancer
+Lim-Dul the Necromancer
+Lim-Dûl the Necromancer
 limdul necromancer
+Limdul the Necromancer
+look at me, i'm r&d
+look at me, i'm the dci
+loy:5
+loy<=4
+loy=0
+loy=5
+loy=x
+loy=X
+loy>cmc
 loyalty<=4
 loyalty=5
 loyalty>cmc
-mana=0
-mana=11
-mana=3rr
-mana=4g
-mana=4gg t:dragon
-mana=w
+m:{g}{g}
+m:{U/P}
+m:2u
+m:2ww
+m:2WW
+m:4
+m={g}{g}
+m=2u
+m>=4
+mana:{g}{g}
+mana:2u
+mana:2ww
+mana!=
+mana!={}
+mana!=2r
+mana=
+mana={}
+mana={10}
 mana={3}{r}{r}
+mana={g}{g}
 mana={hw}
 mana={hw}{hw}
-mana>2WW
-mana>=0
-mana>=2RR mana<=6RR
-mana>=3WW
-mana>=3{GP}
-mana>=3{p/g}
-mana>=w
-mana>=xw
-mana>=xyz
-mana>={2/b}
-mana>={R}{X}
-mana>={hw}
-mana>={x}{z}
-mana>w
-mana>xw
-mana>xx
+mana={m}{h}
+mana={m}{n}{o}
+mana={m}{w/b}
+mana={w}{h} OR mana={u}{h} OR mana={b}{h} OR mana={r}{h} OR mana={g}{h}
+mana={w}{m}
+mana={w}{u} OR mana={w}{b} OR mana={w}{r} OR mana={w}{g}
+mana={w}{w/b} OR mana={u}{w/b} OR mana={b}{w/b} OR mana={r}{w/b} OR mana={g}{w/b}
+mana=0
+mana=10
+mana=11
+mana=2u
+mana=3rr
+mana=3w
+mana=4 c:u c:w
+mana=4g
+mana=4gg t:dragon
+mana=mh
+mana=mmn
+mana=mmnnnoo
+mana=mnn
+mana=mno
+mana=nnooomm
+mana=w
+mana=wwmmmnn
 mana>{hw}
 mana>{hw}{hw}
+mana>{x}{x}
+mana>={2/b}
+mana>={2/w} or mana>={2/u} or mana>={2/b} or mana>={2/r} or mana>={2/g} or          mana>={u/w} or mana>={b/w} or mana>={r/w} or mana>={g/w} or mana>={b/u} or          mana>={r/u} or mana>={g/u} or mana>={b/r} or mana>={b/g} or mana>={g/r}
+mana>={2b}
+mana>={hw}
+mana>={R}{X}
+mana>={u/w} or mana>={b/w} or mana>={r/w} or mana>={g/w} or mana>={b/u} or        mana>={r/u} or mana>={g/u} or mana>={b/r} or mana>={b/g} or mana>={g/r}
+mana>={wp} or mana>={up} or mana>={bp} or mana>={rp} or mana>={gp}
+mana>={x}{y}{z}
+mana>={x}{z}
+mana>=0
+mana>=2RR mana<=6RR
+mana>=3{gp}
+mana>=3{GP}
+mana>=3{p/g}
+mana>=3WW
+mana>=3ww
+mana>=mh
+mana>=mnn mana <=mmn
+mana>=r{x}
+mana>=w
+mana>=w{x}
+mana>=xw
+mana>=xyz
+mana>2WW
+mana>2ww
+mana>mmmmm
+mana>nnnnn
+mana>ooooo
+mana>w
+mana>w{x}
+mana>xw
+mana>xx
+n:/[a-z]/
+n:/[a-z/
+n:/goblin/
+n:bitterblossom
+n=/goblin/
+n=bitterblossom
+name dropping
+name:/goblin/
+name:bitterblossom
+name="Painter's Servant" or name=Grindstone
+name=/goblin/
+name=bitterblossom
+not (t:instant or t:sorcery or t:plane or t:scheme or t:phenomenon or t:conspiracy or t:vanguard)
+not:augment
 not:black-bordered
+not:borderless
 not:dfc
 not:flip
 not:funny
 not:future
+not:modal
 not:new
 not:old
+not:oversized
 not:permanent
+not:primary jace
+not:primary layout:meld
+not:primary t:fox
 not:reserved
 not:silver-bordered
+not:silver-bordered -t:contraption
 not:spell
 not:split
+not:spotlight
+not:unique
 not:white-bordered
+not=future
+not=silver-bordered
+number:/[ab]/
+number:15
+number:17
+number<=100
+number<=121a
+number<=121b
+number<100 or number=100
+number<121a or number=121a
+number<121b or number=121b
+number=17
+number>=100
+number>=121a
+number>=121b
+number>=3
+number>100 or number=100
+number>121 number<122
+number>121a or number=121a
+number>121b or number=121b
+number>3
+numbing jellyfish
+o:-2
 o:"-2"
-o:"First strike" c:r
+o:"{p/u}"
+o:"{P/U}"
+o:"{pu}"
+o:"{R/W}"
+o:"{r/w}"
+o:"{rw}"
+o:"{U/P}"
+o:"{u/p}"
+o:"{up}"
+o:"{W/R}"
+o:"{w/r}"
+o:"{wr}"
+o:"~ can't be countered"
+o:"~ enters the battlefield tapped unless you control two or more basic lands."
+o:"~ enters the battlefield tapped." o:"When ~ enters the battlefield, scry 1." o:"} or {"
+o:"~ enters the battlefield tapped"
+o:"−2"
+o:"As ~ enters the battlefield, you may pay 2 life. If you don't, ~ enters the battlefield tapped." or o:"As ~ enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped."
+o:"augment {"
+o:"can't be countered by spells or abilities"
+o:"creature or player"
+o:"draw a card"
+o:"draw" t:creature
 o:"each player draws four cards"
+o:"First strike" c:r
+o:"he or she"
+o:"him or her"
+o:"his or her"
+o:"Lim-Dul"
+o:"Lim-Dûl"
+o:"mana pool"
 o:"one mana of any color"
+o:"partner with" e:bbd,pbbd
 o:"power plant"
 o:"power-plant"
 o:"power−plant"
 o:"untap all creatures you control"
+o:"Urza’s"
 o:"whenever ~ deals combat damage"
-o:"−2"
-o:-2
-o:Flying r:rare
-o:Urza’s
+o:{T} o:"add one mana of any color"
+o:/([^e]?){50}[^e]{50}/
+o:/(choose|opponent chooses) .* •/
+o:/[a-z]/
+o:/[a-z/
+o:/\d{3,}/
+o:/\d+/
+o:/draw ( card/
+o:/draw \d+ cards/
+o:/foo/
+o:/FOO/
+o:/level up \{/
+o:−2
 o:bloodrush
 o:extort ci:b
 o:extort ci:bw -ci:w -ci:b
 o:extort ci:w
+o:Flying r:rare
 o:fuse
 o:fuse o:"gain 2 life"
 o:fuse o:centaur
@@ -355,100 +1926,279 @@ o:power−plant
 o:trample
 o:urza
 o:urza's
-o:{T} o:"add one mana of any color"
-o:−2
+o:Urza’s
+o=goblin
 of Wall
-other:(a:eric)
-other:(mana=w)
-other:(o:wolf o:token)
+oracle:"draw a card"
+oracle:/draw ( card/
+oracle:/draw \d+ cards/
+order:cmc
+order:cmc,-name
 other:-cmc=4
 other:-t:werewolf c:r
-other:c!bgm
+other:(a:eric)
+other:(mana=w)
+other:(not cmc=4)
+other:(o:wolf o:token)
+other:a:eric
 other:c:g
+other:c!bgm
 other:cmc=3
+other:mana=w
 other:other:(cmc=1)
+other:other:cmc=1
 other:other:other:other:other:other:other:other:other:other:other:other:other:other:other:other:other:other:other:other:cmc=1
 other:other:other:other:other:other:other:other:other:other:other:other:other:other:other:other:other:other:other:other:cmc=6
+other:t:planeswalker
+other=t=planeswalker
 part:cmc=0 part:cmc=3 part:c:b
 part:cmc=1 part:cmc=2
 part:part:part:part:part:part:part:part:part:part:part:part:part:part:part:part:part:part:part:part:cmc=1
 part:part:part:part:part:part:part:part:part:part:part:part:part:part:part:part:part:part:part:part:cmc=6
+part:t:planeswalker
+part:well
+part=t=planeswalker
+Ponder
+pow = 5
 pow = cmc
+pow:5
+pow<?
+pow<=?
+pow<=∞
+pow<=10000 or (Infinity Elemental)
+pow<=4 c:c
+pow<∞
 pow<0
 pow<1
+pow<10000
 pow<4 c:c
-pow<=4 c:c
 pow<tou c:r
+pow=-1
+pow=-1 tou=3
+pow=?
 pow=*
 pow=*+1
 pow=*2
 pow=*²
-pow=-1
+pow=∞
 pow=0 c:g
 pow=0.5
 pow=1
 pow=1+*
+pow=½
+pow=10
+pow=2 tou=4 t:spider
 pow=2+*
+pow=5
 pow=6
 pow=cmc
 pow=tou
-pow=½
-pow>*
+pow=toughness
 pow>-1
-pow>0
-pow>1
-pow>1+*
-pow>4 c:u
+pow>?
+pow>*
 pow>=-1
 pow>=-2
+pow>=?
+pow>=∞
 pow>=1+*
 pow>=2+*
 pow>=4 c:u
+pow>=8
+pow>0
+pow>1
+pow>1+*
+pow>30
+pow>4 c:u
 pow>cmc c:r
+pow>tou c:w t:creature
+power=5
+power=tou
+print:m10
+print="12 july 2012"
 print="29 september 2012"
+print=2012-07-12
+print=m10
+print>="2014-6"
+print>=2014-6
+pt:"Ponte Traiçoeira"
+pt:/estacas/
+pt:estacas
+r:"mythic" or ft:"mythic" or o:"mythic" or "Mythic Proportions"
+r:"mythic" or o:"mythic rare"
+r:b
+r:basic
+r:c
+r:common
+r:common -is:digital alt:(r:mythic -is:digital)
 r:common alt:(r:uncommon)
 r:common alt:r:mythic
 r:common alt:r:uncommon
+r:common t:artifact
 r:common t:land
+r:l
+r:m
+r:mythic
+r:mythic -e:ovnt,ppre -(Phoenix Heart)
 r:mythic c:c
+r:mythic or r:special
+r:r
+r:rare
 r:rare t:land
+r:s
+r:special
+r:u
+r:uncommon
+r:uncommon or r:common or r:basic
 r:uncommon t:equipment
+r&d's secret lair
+r<=basic
+r<=uncommon
+r<basic
+r<rare
+r=rare
+r=uncommon
+r>=mythic
+r>=uncommon
+r>rare
+r>special
+rare-b-gone
+rarity:rare
+rarity>=uncommon
+ravager cmc=0
+related:*
+related:cmc=9
+related:t:*
+related:t:ajani
+related:t:planeswalker
+related:Zndrsplt
+related=t=planeswalker
+restricted:"duel commander"
 restricted:legacy
 restricted:modern
 restricted:vintage
+restricted=modern
+ru:"Кровавая луна"
+ru:/\bАНГЕЛ\b/
+ru:АНГЕЛ
+ru:Ангел
+ru:ангел
 sakashima
 sakashima t:*
 sarpadian empires
 sarpadian empires vol vii
+Sarpadian Empires, Vol. VII
+Sauté
+sauté
+set:"Dragons of Tarkir"
+set:m12
+set:nph
 siege rhino
+sort:ci
+sort:cmc
+sort:cmc,-name
+sort:color
 sort:new
+sort:rarity
+sort=new
+sp:"Puente engañoso"
+sp:/astillas/
+sp:Astillas
+st:"duel deck"
+st:"DUEL DECK"
+st:"from the vault"
+st:"premium deck"
+st:"two-headed giant"
+st:2hg
+st:arc
+st:archenemy
+st:arena_league
+st:cmd
+st:cmd or e:bbd,cns,cn2
+st:cns
+st:commander
+st:conspiracy
+st:core
+st:dd
+st:DD
+st:duel_deck
+st:duels
+st:ex
+st:expansion
+st:fnm
+st:from_the_vault
+st:ftv
+st:gateway
+st:judge_gift
+st:masterpiece
+st:masters
+st:me
+st:multiplayer
+st:pc
+st:pds
+st:planechase
+st:player_rewards
+st:portal
+st:portal -alt:-st:portal
+st:premiere_shop
+st:premium_deck
+st:st
+st:standard
+st:starter
+st:std
+st:unset
+st:wpn
+st=commander
+st=core
+t:"*"
+t:"angel legendary"
+t:"basic land"
 t:"Basic Land"
+t:"bolas meditation realm"
+t:"bolas-meditation-realm"
+t:"bolas's meditation realm"
+t:"bolas's-meditation-realm"
 t:"human warrior"
 t:"legendary angel"
+t:"legendary goblin"
+t:"new phyrexia"
+t:"new-phyrexia"
+t:"plant power"
 t:"power plant"
 t:"power-plant"
 t:"power−plant"
+t:"serra realm"
+t:"serra-realm"
 t:"warrior human"
 t:*
 t:* e:cns
 t:* t:conspiracy
 t:* t:creature
-t:Basic
-t:Dominaria
-t:Garruk
-t:Garruk c!g
-t:Garruk c:b
-t:Garruk c:g
-t:Garruk c:gb
-t:Jace
-t:Skeleton
-t:Sorcery
-t:Urza’s
 t:angel -(r:mythic and c:r)
 t:angel -(r:mythic c:r)
 t:angel -(r:mythic or c:r)
 t:angel -r:mythic -c:r
+t:angel c:c
+t:angel c:w
 t:artifact
+t:Basic
+t:basic e:ust,unh,ugl
+t:bolas
+t:bolas-meditation-realm
+t:bolas's
+t:bolas's-meditation-realm
+t:chandra -is:digital sort:-cmc
+t:chandra -is:digital sort:-set
+t:chandra -is:digital sort:artist
+t:chandra -is:digital sort:cmc
+t:chandra -is:digital sort:cmc,-name
+t:chandra -is:digital sort:name
+t:chandra -is:digital sort:new
+t:chandra -is:digital sort:newall
+t:chandra -is:digital sort:old
+t:chandra -is:digital sort:oldall
+t:chandra -is:digital sort:released
+t:chandra -is:digital sort:set
 t:chandra sort:name
 t:chandra sort:new
 t:chandra sort:newall
@@ -457,19 +2207,36 @@ t:chandra sort:oldall
 t:conspiracy
 t:conspiracy o:"one mana of any color"
 t:creature
+t:Dominaria
 t:forest
+t:Garruk
+t:Garruk c:b
+t:Garruk c:g
+t:Garruk c:gb
+t:Garruk c!g
+t:Gate ci=2
 t:human // t:insect
 t:human AND t:warrior
 t:human OR t:warrior
 t:human t:warrior
+t:Jace
 t:jace
 t:jace firstprint=2012
 t:jace lastprint=wwk
 t:jace print=2012
 t:jace print=2013
 t:jace print=vma
+t:killbot
 t:land
+t:land -o:tapped o:/\{T\}: Add \{.\} or \{.\}. (.*?) deals 1 damage to you./
+t:land cmc>0
+t:land o:"pay 1 life" o:"{1}, {T}, Sacrifice ~: Draw a card."
+t:land o:"Remove" o:"storage counters from" -o:"you may"
+t:land o:/\{T\}: Add \{.\}, \{.\}, or \{.\}/ -o:sacrifice o:tapped
+t:land o:/As (.*) enters the battlefield, you may reveal an? \S+ or \S+/ o:"If you don't, ~ enters the battlefield tapped"
+t:land o:becomes o:creature
 t:land t:creature
+t:legendary (t:goblin or t:elf)
 t:legendary t:angel
 t:lhurgoyf
 t:lhurgoyf pow<=tou
@@ -482,29 +2249,57 @@ t:lhurgoyf pow>tou
 t:lhurgoyf tou=0
 t:lhurgoyf tou=1
 t:lhurgoyf tou>=0
+t:meditation
+t:merfolk t:legendary
+t:new
+t:new-phyrexia
 t:ongoing o:trample
 t:phenomenon o:"each player draws four cards"
+t:phyrexia
 t:plane
+t:plane o:"whenever you roll {CHAOS}, untap all creatures you control"
 t:plane o:"whenever you roll CHAOS, untap all creatures you control"
+t:plane or t:phenomenon
+t:plane or t:phenomenon or t:scheme or e:pcmd,oc13,oc14,oc15,oc16,oc17,oc18,ocm1,ocmd,ppc1,phel,ovnt,olgc,pvan
 t:plane t:Dominaria
+t:planeswalker -ru:* de:*
+t:planeswalker -t:legendary
 t:planeswalker //
+t:planeswalker e:c14,c18
+t:planeswalker e:m10,m12 sort:-number
+t:planeswalker e:m10,m12 sort:number
 t:planeswalker e:m12
 t:planeswalker firstprint=m12
 t:planeswalker lastprint<=2011
 t:planeswalker lastprint<=roe
+t:planeswalker loy=3
+t:planeswalker loyalty=3
 t:planeswalker print=m12
+t:planeswalker year < 2013
+t:planeswalker year = 2010
+t:planeswalker year > 2014
+t:planeswalker year >= 2015
 t:power-plant
 t:power−plant
+t:realm
+t:saga
+t:scheme
 t:scheme o:trample
+t:serra
+t:serra-realm
+t:Skeleton
+t:Sorcery
 t:sorcery
 t:urza
 t:urza's
+t:Urza’s
 t:vanguard
+t=goblin
 time:"1 march 2010" r:common
 time:"3 march 2010" r:common
-time:"Battle for Homelands" t:ral
 time:"battle for homelands"
 time:"battle for homelands" f:standard
+time:"Battle for Homelands" t:ral
 time:1000
 time:2010
 time:2010 r:common
@@ -513,84 +2308,85 @@ time:2010.3 r:common
 time:2010.3.3 r:common
 time:2011 r:common
 time:3000
-time:RTR r:common
 time:dgm f:"return to ravnica block" naturalize
 time:gtc f:"return to ravnica block" naturalize
 time:lw t:planeswalker
 time:m11 f:legacy rancor
 time:m11 f:modern rancor
+time:mi f:standard
+time:MRD f:standard
 time:nph t:jace
 time:nph t:jace lastprint=wwk
 time:nph t:jace print=vma
 time:rtr f:"return to ravnica block" naturalize
+time:RTR r:common
 time:rtr r:common
 time:wwk t:jace
+time=2012
 tou < 3
-tou<1
-tou<3
+tou: 5
+tou:5
+tou<?
+tou<=?
 tou<=2-*
 tou<=8-*
 tou<=cmc c:c
+tou<1
+tou<3
+tou=?
 tou=0.5
 tou=1
-tou=7-*
 tou=½
+tou=5
+tou=7
+tou=7-*
+tou=power
+tou>?
+tou>=?
+tou>=9
 tou>0
 tou>1
 tou>2-*
 tou>8-*
 tou>9
-tou>=9
+touch and go
+toughness=5
+toughness=pow
+tw:拱翼巨龍
+tw:拱翼巨龙
+type:goblin
 urza
 urza's
+Urza’s
+VERY CRYPTIC COMMAND (A)
+Very Cryptic Command (a)
+Very Cryptic Command o:"wayne england"
+view:checklist
+view:full
+view:images
+view:text
+w:*
+w:abzan
 w:boros
 w:gruul
 w:mirran c:g
+w:mirran OR w:phyrexian
+w=abzan
+Wall
+Wall of
+watermark:abzan
+Well
 well //
+Well // Alive
+Well & Alive
+Well//Alive
+Well&Alive
+When // Where // What
+When // Where // Whatever
+wm:abzan
 year < 2003
 year = 2000
 year > 2004
 year >= 2005
 year=1993 alt:year=2015
 year=2013 t:jace
-Ætherize
-ætherize
-is:battleland
-is:bounceland
-is:checkland
-is:dual
-is:fastland
-is:fetchland
-is:filterland
-is:gainland
-is:manland
-is:scryland
-is:shockland
-is:digital
-is:primary
-is:reprint
-is:commander
-de:"harscher mentor"
-o:/\d+/
-ft:/\d+/
-related:t:ajani
-c>=wu
-print>=2014-6
-ind:u
-st=commander
-ci<=wru
-game:paper
-game:mtgo
-game:arena
-is:paper
-is:mtgo
-is:arena
-in:paper
-in:mtgo
-in:arena
-in:basic
-in:common
-in:uncommon
-in:rare
-in:mythic
-in:special
