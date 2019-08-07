@@ -11,6 +11,6 @@ class ConditionInEdition < Condition
   end
 
   def to_s
-    "e:#{@editions.map{|e| maybe_quote(e)}.join(",")}"
+    "in:#{@editions.map{|e| maybe_quote(e)}.join(",")}"
   end
 end
