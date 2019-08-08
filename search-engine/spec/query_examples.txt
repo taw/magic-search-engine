@@ -1,10 +1,10 @@
 _____
--(c:w or c:u or c:b or c:g or c:c or c:l)
+-(c:w or c:u or c:b or c:g or c:c)
 -(is:modal)
 -(is:oversized)
 -(is:spotlight)
 -c:u id:u
--c:w -c:u -c:b -c:g -c:c -c:l
+-c:w -c:u -c:b -c:g -c:c
 -e:unh,hho,ust
 -is:augment
 -is:borderless
@@ -71,7 +71,7 @@ _____
 ((e:rtr or e:dgm) (t:goblin or t:elf))
 ((e:rtr or e:dgm) r=mythic c:w)
 ((e:rtr OR e:dgm) t:goblin) or t:elf
-((not c:w) (not c:u) (not c:b) (not c:g) (not c:c) (not c:l))
+((not c:w) (not c:u) (not c:b) (not c:g) (not c:c))
 ((not e:uh) (not (robot chicken)))
 ((not is:permanent) r=mythic)
 ((t:instant or t:sorcery) // (t:instant or t:sorcery)) -(// o:aftermath)
@@ -183,7 +183,7 @@ _____
 (limdul the necromancer)
 (mana=4gg t:dragon)
 (mana>=2rr mana<=6rr)
-(not (c:w or c:u or c:b or c:g or c:c or c:l))
+(not (c:w or c:u or c:b or c:g or c:c))
 (not is:black-bordered)
 (not is:funny)
 (not is:future)
@@ -559,7 +559,6 @@ c:gwu
 c:izzet
 c:jeskai
 c:jund
-c:l
 c:m
 c:m t:instant
 c:mardu
@@ -1483,7 +1482,6 @@ ind:g
 ind:gr
 ind:grrgr
 ind:gwr
-ind:l
 ind:r
 ind:r t:creature cmc=0
 ind:r t:instant
@@ -1492,7 +1490,6 @@ ind:rbgurgbu
 ind:red
 ind:rg
 ind:rgc
-ind:rgl
 ind:rgm
 ind:rug
 ind:u

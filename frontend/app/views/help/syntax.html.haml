@@ -55,33 +55,38 @@
       = search_help %Q[b:"return to ravnica"], %Q[cards from "Return to Ravnica" block]
       = search_help "b:isd,soi", "cards from Innistrad and Shadow of Innistrad blocks"
 
-    %h4 Search by color expression
+    %h4 Search by color
+    %div
+      Color expressions are supported, with either list of colors, number of colors, or common aliases
+
     %ul
       = search_help "c=w", "cards which are exactly white"
       = search_help "c=gr", "cards which are exactly green and red"
       = search_help "c>=gr", "cards which are at least green and red"
       = search_help "c<=gr", "cards which are at most green and red"
       = search_help "c=4", "cards which are exactly 4 colors"
+      = search_help "c=boros", "cards which are exactly red and white (Boros), same as <code>c=rw</code>"
+      = search_help "c=abzan", "cards which are exactly white, black, and green (Abzan), same as <code>c=wbg</code>"
+
+    %div
+      In addition to these, there are special color queries.
+    %ul
+      = search_help "c:c", "colorless cards, same as <code>c=0</code>"
+      = search_help "c:m", "multicolored cards, same as <code>c>1</code>"
+
+    %h4 Search by color identity
+    %div
+      You can search by color identity same way you can search by color.
+      If you want to find cards legal in your Commander deck, you usually want <code>ci<=temur</code> style query.
+      If you want a Commander of specific identity, you usually want <code>ci=temur</code> style query.
+
+    %ul
       = search_help "ci=w", "cards whose identity is exactly white"
       = search_help "ci=gr", "cards whose identity is exactly green and red"
       = search_help "ci>=gr", "cards whose identity is at least green and red"
       = search_help "ci<=gr", "cards whose identity is at most green and red"
       = search_help "ci>=3", "cards whose identity is 3 or more colors"
-
-    %h4 Search by color
-    %ul
-      = search_help "c:w", "white cards (possibly also other colors)"
-      = search_help "c!w", "white cards (no other colors)"
-      = search_help "c:c", "colorless nonland cards"
-      = search_help "c:l", "colorless land cards"
-      = search_help "c:m", "multicolored cards"
-      = search_help "c:wu", "blue or white cards"
-      = search_help "c!wu", "blue or white cards (but no other colors)"
-
-    %h4 Search by color identity
-    %ul
-      = search_help "ci:rg", "cards with color identity allowed in red/green commander deck"
-      = search_help "ci:c", "cards with color identity allowed in colorless commander deck"
+      = search_help "ci=temur", "cards whose identity is exactly blue, red, and green (Temur)"
 
     %h4 Search by color indicator
     %ul
