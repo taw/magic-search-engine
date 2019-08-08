@@ -68,4 +68,18 @@ describe "Color Expr Test" do
     assert_search_equal "ci<=3", "ci=3 or ci=2 or ci=1 or ci=0"
     assert_search_equal "ci<3", "ci=2 or ci=1 or ci=0"
   end
+
+  it "MCI style queries" do
+    assert_search_equal "c!w", "c=w"
+    assert_search_equal "c:w", "c>=w"
+    assert_search_equal "c!c", "c=0"
+    assert_search_equal "c:c", "c=0"
+    assert_search_equal "c:m", "c>1"
+    assert_search_equal "c:mr", "c>r"
+    # Weird stuff
+    assert_search_equal "c:mur", "c>u or c>r" # no idea when that would be useful
+    assert_search_results "c!m" # can't be both multicolored and colorless
+    assert_search_results "c!mr" # can't be both multicolored and exactly-red
+    assert_search_equal "c!mur", "c=ur"
+  end
 end

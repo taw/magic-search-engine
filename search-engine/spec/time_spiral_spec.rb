@@ -34,7 +34,6 @@ describe "Time Spiral block" do
 
   it "Dryad Arbor" do
     assert_search_include "c:g", "Dryad Arbor"
-    assert_search_exclude "c:l", "Dryad Arbor"
     assert_search_exclude "c:c", "Dryad Arbor"
     assert_search_include "is:permanent", "Dryad Arbor"
     assert_search_exclude "is:spell", "Dryad Arbor"

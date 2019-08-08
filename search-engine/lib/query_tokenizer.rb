@@ -125,7 +125,8 @@ class QueryTokenizer
         kind = "ci" if kind == "identity"
         cmp = s[2]
         cmp = "=" if cmp == ":"
-        tokens << [:test, ConditionColorCountExpr.new(kind, cmp, s[3] || s[4])]
+        color = s[3] || s[4]
+        tokens << [:test, ConditionColorCountExpr.new(kind, cmp, color)]
       elsif s.scan(/(?:c|color)\s*:\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionColors.new(parse_color(s[1] || s[2]))]
       elsif s.scan(/(?:ci|id|identity)\s*[:!]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
@@ -333,8 +334,8 @@ private
     if Color::Names[color_text]
       Color::Names[color_text]
     else
-      return color_text if color_text =~ /\A[wubrgcml]+\z/
-      fixed = color_text.gsub(/[^wubrgcml]/, "")
+      return color_text if color_text =~ /\A[wubrgcm]+\z/
+      fixed = color_text.gsub(/[^wubrgcm]/, "")
       @warnings << "Unrecognized color query: #{color_text.inspect}, correcting to #{fixed.inspect}"
       fixed
     end

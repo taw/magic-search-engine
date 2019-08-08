@@ -30,8 +30,8 @@ describe "Return to Ravnica block" do
   end
 
   it "minus" do
-    assert_search_equal "c!r", "-c:w -c:u -c:b -c:g -c:c -c:l"
-    assert_search_equal "c!r", "-(c:w or c:u or c:b or c:g or c:c or c:l)"
+    assert_search_equal "c!r", "-c:w -c:u -c:b -c:g -c:c"
+    assert_search_equal "c!r", "-(c:w or c:u or c:b or c:g or c:c)"
     assert_search_equal "t:angel -(r:mythic and c:r)", "t:angel -(r:mythic c:r)"
     assert_search_equal "t:angel -(r:mythic or c:r)", "t:angel -r:mythic -c:r"
   end
@@ -48,7 +48,6 @@ describe "Return to Ravnica block" do
     assert_search_exclude "c!g", "Rubblebelt Raiders"
     assert_search_exclude "c!r", "Rubblebelt Raiders"
     assert_search_exclude "c:c", "Rubblebelt Raiders"
-    assert_search_exclude "c:l", "Rubblebelt Raiders"
   end
 
   # It is broken in magiccards.info, fixing so "ci:rg" means "can be played in RG commander deck"
