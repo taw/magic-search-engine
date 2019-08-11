@@ -29,8 +29,8 @@ describe "Magic 2010" do
   it "filter_colors" do
     assert_search_include "c:u", "Ponder"
     assert_search_include "c!u", "Ponder"
-    assert_search_include "c:ub", "Ponder"
-    assert_search_exclude "c:ucm", "Ponder" # Seriously?
+    "c:ub".should return_no_cards
+    assert_search_equal "c:ucm", "c:c" # Questionable
     assert_search_include "c:c", "Howling Mine"
     assert_search_exclude "c:g", "Ponder"
     "c!bu".should return_no_cards
