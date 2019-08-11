@@ -40,9 +40,9 @@ describe "Return to Ravnica block" do
     assert_search_include "c:g", "Rubblebelt Raiders"
     assert_search_include "c:r", "Rubblebelt Raiders"
     assert_search_include "c:m", "Rubblebelt Raiders"
-    assert_search_include "c:rw", "Rubblebelt Raiders"
-    assert_search_include "c:wubrg", "Rubblebelt Raiders"
-    assert_search_include "c:wubrgm", "Rubblebelt Raiders"
+    assert_search_exclude "c:rw", "Rubblebelt Raiders"
+    assert_search_results "c:wubrg"
+    assert_search_results "c:wubrgm"
 
     assert_search_exclude "c:w", "Rubblebelt Raiders"
     assert_search_exclude "c!g", "Rubblebelt Raiders"
@@ -180,9 +180,9 @@ describe "Return to Ravnica block" do
   end
 
   it "extort reminder text does not affect ci:" do
-    assert_search_results "o:extort ci:w", "Basilica Guards", "Blind Obedience", "Knight of Obligation", "Syndic of Tithes"
-    assert_search_results "o:extort ci:b", "Basilica Screecher", "Crypt Ghast", "Pontiff of Blight", "Syndicate Enforcer", "Thrull Parasite"
-    assert_search_results "o:extort ci:bw -ci:w -ci:b", "Kingpin's Pet", "Tithe Drinker", "Treasury Thrull", "Vizkopa Confessor"
+    assert_search_results "o:extort ci=w", "Basilica Guards", "Blind Obedience", "Knight of Obligation", "Syndic of Tithes"
+    assert_search_results "o:extort ci=b", "Basilica Screecher", "Crypt Ghast", "Pontiff of Blight", "Syndicate Enforcer", "Thrull Parasite"
+    assert_search_results "o:extort ci=bw", "Kingpin's Pet", "Tithe Drinker", "Treasury Thrull", "Vizkopa Confessor"
   end
 
   it "other:" do

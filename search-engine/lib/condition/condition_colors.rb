@@ -9,14 +9,13 @@ class ConditionColors < ConditionSimple
     end
   end
 
-  # c: system is rather illogical
-  # This seems to be the logic as implemented
+  # Old c: system removed
+  # Now it's >= except for :c and :m
   def match?(card)
     card_colors = card.colors
-    return true if @colors_c and card_colors.size == 0
+    return card_colors.size == 0 if @colors_c
     return false if @colors_m and card_colors.size <= 1
-    return true if @colors_m and @colors_query_actual_colors.empty?
-    @colors_query_actual_colors.any? do |q|
+    @colors_query_actual_colors.all? do |q|
       card_colors.include?(q)
     end
   end
