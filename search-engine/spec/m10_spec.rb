@@ -33,8 +33,8 @@ describe "Magic 2010" do
     assert_search_exclude "c:ucm", "Ponder" # Seriously?
     assert_search_include "c:c", "Howling Mine"
     assert_search_exclude "c:g", "Ponder"
-    assert_search_include "c!bu", "Ponder"
-    "c:m".should return_no_cards # "Ponder"
+    "c!bu".should return_no_cards
+    "c:m".should return_no_cards
     assert_search_exclude "c:gcm", "Ponder"
 
     # Only true for core sets
