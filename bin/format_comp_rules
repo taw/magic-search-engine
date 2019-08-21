@@ -27,7 +27,7 @@ class FormatCompRules
       tos_section! paras.shift
     end
 
-    while paras[0]
+    while paras[0] =~ /\A\d/
       rule! paras.shift
     end
 
