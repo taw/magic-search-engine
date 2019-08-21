@@ -26,6 +26,8 @@ class SplitMtgjson
         card.delete "printings"
         # We want it eventually, but for now it changes too much
         card.delete "prices"
+        # This will change a lot
+        card.delete "edhrecRank"
         # Sort this for better diffs
         if card["foreignNames"]
           card["foreignNames"].sort_by!{|c| [c["language"], c["multiverseid"]]}
