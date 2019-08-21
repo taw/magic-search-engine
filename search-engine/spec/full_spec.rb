@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data for same sets,
   # indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(19972)
-    db.number_of_printings.should eq(44466)
+    db.number_of_cards.should eq(20031)
+    db.number_of_printings.should eq(44771)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -152,9 +152,7 @@ describe "Full Database Test" do
       "Explosive Apparatus",
       "Flameblade Angel",
       "Forsaken Sanctuary",
-      "Foul Orchard",
       "Grotesque Mutation",
-      "Highland Lake",
       "Incorrigible Youths",
       "Insidious Mist",
       "Jace, Unraveler of Secrets",
@@ -167,13 +165,11 @@ describe "Full Database Test" do
       "Ravenous Bloodseeker",
       "Rush of Adrenaline",
       "Soul Swallower",
-      "Stone Quarry",
       "Thornhide Wolves",
       "Triskaidekaphobia",
       "Vampire Noble",
       "Vessel of Nascency",
-      "Warped Landscape",
-      "Woodland Stream"
+      "Warped Landscape"
   end
 
   it "firstprint" do
