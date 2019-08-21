@@ -349,6 +349,7 @@ describe "Card nicknames" do
       "Greater Morphling",
       "Majestic Myriarch",
       "Odric, Lunarch Marshal",
+      "Rayami, First of the Fallen",
       "Soulflayer"
     assert_search_results "is:keywordsoup",
       *cards_matching{|c|

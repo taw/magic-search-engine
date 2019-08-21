@@ -125,7 +125,7 @@ describe "Foils" do
         misprint = extra_cards.select{|c| c.number =~ /†/}
         buy_a_box_promo = extra_cards.find{|c| c.name == "Rienne, Angel of Rebirth"}
         assert_foiling(booster_cards, "both")
-        warn "M20 lacks Welcome Decks, so can't verify precons"
+        # https://github.com/mtgjson/mtgjson/issues/429
         # assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, *misprint])
         assert_foiling([buy_a_box_promo], "foilonly")
         assert_foiling(misprint, "both")
