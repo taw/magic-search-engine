@@ -71,9 +71,8 @@ class DeckIndexer
     return printings.values[0] if printings.size == 1
 
     # First, filter out all printings from future sets
-    printings = printings.select{|sc, _|
-      release_date(sc) <= set_date
-    }
+    printings = printings.select{|sc, _| release_date(sc) <= set_date }
+
     # All other printings in the future, so we don't care
     return printings.values[0] if printings.size == 1
     raise "All printings from the future" if printings.empty?
@@ -85,7 +84,7 @@ class DeckIndexer
     printings = printings.reject{|sc, _|
       ["promo", "commander", "masters", "duel deck", "planechase",
        "premium deck", "un", "conspiracy", "from the vault", "archenemy",
-      ].include?(@sets[sc]["type"])
+      ].any?{|st| @sets[sc]["types"].include?(st) }
     }
     return printings.values[0] if printings.size == 1
     raise "All printings from the promo/precon cards" if printings.empty?
@@ -102,7 +101,7 @@ class DeckIndexer
 
     # At this point we can guess most recent standard set printing
     most_recent_standard_set, most_recent_standard_printing = printings.select{|sc,_|
-      @sets[sc]["type"] == "core" or @sets[sc]["type"] == "expansion"
+      @sets[sc]["types"].include?("core") or @sets[sc]["types"].include?("expansion")
     }.sort_by{|sc, _|
       release_date(sc)
     }.last
