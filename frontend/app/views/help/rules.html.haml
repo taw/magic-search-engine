@@ -1,7 +1,7 @@
 = content_for(:disable_turbolinks) do
   true
 %h4 Magic: The Gathering Comprehensive Rules
-%p These rules are effective as of July 12, 2019.
+%p These rules are effective as of August 23, 2019.
 %h3{id: "section-introduction"} Introduction
 %p This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
 %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules. If you have questions, you can get the answers from us at Support.Wizards.com.
@@ -242,7 +242,7 @@
   %li
     %a{href: '#section-715'} 715. Controlling Another Player
   %li
-    %a{href: '#section-716'} 716. Ending the Turn
+    %a{href: '#section-716'} 716. Ending Turns and Phases
   %li
     %a{href: '#section-717'} 717. The Monarch
   %li
@@ -656,7 +656,7 @@
   .rule_text Example: Exotic Orchard has the ability “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add one mana of any color that a land an opponent controls could produce.” If your opponent controls no lands, activating Exotic Orchard’s mana ability will produce no mana. The same is true if you and your opponent each control no lands other than Exotic Orchards. However, if you control a Forest and an Exotic Orchard, and your opponent controls an Exotic Orchard, then each Exotic Orchard could produce <span class="manacost"><span class="mana mana-cost mana-g"><span class="sr-only">{G}</span></span></span>.
 .rule{id: "section-106-8"}
   .rule_id 106.8.
-  .rule_text If an effect would add mana represented by a hybrid mana symbol to a player’s mana pool, that player chooses one half of that symbol. If a colored half is chosen, one mana of that color is added to that player’s mana pool. If a colorless half is chosen, an amount of colorless mana represented by that half’s number is added to that player’s mana pool.
+  .rule_text If an effect would add mana represented by a hybrid mana symbol to a player’s mana pool, that player chooses one half of that symbol. If a colored half is chosen, one mana of that color is added to that player’s mana pool. If a generic half is chosen, an amount of colorless mana represented by that half’s number is added to that player’s mana pool.
 .rule{id: "section-106-9"}
   .rule_id 106.9.
   .rule_text If an effect would add mana represented by a Phyrexian mana symbol to a player’s mana pool, one mana of the color of that symbol is added to that player’s mana pool.
@@ -713,7 +713,7 @@
   .rule_text If a spell or activated ability has an <span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span>, <i class="mana mana-loyalty mana-loyalty-down" data-loyalty="–X"></i><span class="sr-only">[–X]</span>, or X in its cost and/or its text, and the value of X is defined by the text of that spell or ability, then that’s the value of X while that spell or ability is on the stack. The controller of that spell or ability doesn’t get to choose the value. Note that the value of X may change while that spell or ability is on the stack.
 .rule{id: "section-107-3d"}
   .rule_id 107.3d
-  .rule_text If a cost associated with a special action, such as a suspend cost or a morph cost, has an <span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span> or an X in it, the value of X is chosen by the player taking the special action as they pay that cost.
+  .rule_text If a cost associated with a special action, such as a suspend cost or a morph cost, has an <span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span> or an X in it, the value of X is chosen by the player taking the special action immediately before they pay that cost.
 .rule{id: "section-107-3e"}
   .rule_id 107.3e
   .rule_text Sometimes X appears in the text of a spell or ability but not in a mana cost, alternative cost, additional cost, or activation cost. If the value of X isn’t defined, the controller of the spell or ability chooses the value of X at the appropriate time (either as it’s put on the stack or as it resolves).
@@ -902,6 +902,9 @@
 .rule{id: "section-110-2a"}
   .rule_id 110.2a
   .rule_text If an effect instructs a player to put an object onto the battlefield, that object enters the battlefield under that player’s control unless the effect states otherwise.
+.rule{id: "section-110-2b"}
+  .rule_id 110.2b
+  .rule_text If an effect causes a player to gain control of another player’s permanent spell, the first player controls the permanent that spell becomes, but the permanent’s controller by default is the player who put that spell onto the stack. (This distinction is relevant in multiplayer games; see rule <a href="#section-800-4c">800.4c</a>.)
 .rule{id: "section-110-3"}
   .rule_id 110.3.
   .rule_text A nontoken permanent’s characteristics are the same as those printed on its card, as modified by any continuous effects. See rule <a href="#section-613">613</a>, “Interaction of Continuous Effects.”
@@ -1373,7 +1376,7 @@
   .rule_text If a cost is reduced by an amount of colorless mana that exceeds its colorless mana component, the cost’s colorless mana component is reduced to nothing and the cost’s generic mana component is reduced by the difference.
 .rule{id: "section-118-7e"}
   .rule_id 118.7e
-  .rule_text If a cost is reduced by an amount of mana represented by a hybrid mana symbol, the player paying that cost chooses one half of that symbol at the time the cost reduction is applied (see rule <a href="#section-601-2f">601.2f</a>). If a colored half is chosen, the cost is reduced by one mana of that color. If a colorless half is chosen, the cost is reduced by an amount of generic mana equal to that half’s number.
+  .rule_text If a cost is reduced by an amount of mana represented by a hybrid mana symbol, the player paying that cost chooses one half of that symbol at the time the cost reduction is applied (see rule <a href="#section-601-2f">601.2f</a>). If a colored half is chosen, the cost is reduced by one mana of that color. If a generic half is chosen, the cost is reduced by an amount of generic mana equal to that half’s number.
 .rule{id: "section-118-7f"}
   .rule_id 118.7f
   .rule_text If a cost is reduced by an amount of mana represented by a Phyrexian mana symbol, the cost is reduced by one mana of that symbol’s color.
@@ -1428,6 +1431,18 @@
 .rule{id: "section-118-12b"}
   .rule_id 118.12b
   .rule_text Some effects offer a player a choice to search a zone and take additional actions with the cards found in that zone, followed by an “If [a player] does” clause. This clause checks whether the player chose to search, not whether the player took any of the additional actions.
+.rule{id: "section-118-13"}
+  .rule_id 118.13.
+  .rule_text Some costs contain mana symbols that can be paid in multiple ways. These include hybrid mana symbols and Phyrexian mana symbols.
+.rule{id: "section-118-13a"}
+  .rule_id 118.13a
+  .rule_text If the mana cost of a spell or the activation cost of an activated ability contains a mana symbol that can be paid in multiple ways, the choice of how to pay for that symbol is made as its controller proposes that spell or ability (see rule <a href="#section-601-2b">601.2b</a>).
+.rule{id: "section-118-13b"}
+  .rule_id 118.13b
+  .rule_text If a cost paid during the resolution of a spell or ability contains a mana symbol that can be paid in multiple ways, the player paying that cost chooses how to pay for that symbol immediately before they pay that cost.
+.rule{id: "section-118-13c"}
+  .rule_id 118.13c
+  .rule_text If the cost associated with a special action contains a mana symbol that can be paid in multiple ways, the player taking the special action chooses how to pay for that symbol immediately before they pay that cost.
 .rule{id: "section-119"}
   .rule_id 119.
   .rule_text Life
@@ -1845,13 +1860,13 @@
   .rule_text      Of that list, Forest, Island, Mountain, Plains, and Swamp are the basic land types. See rule <a href="#section-305-6">305.6</a>.
 .rule{id: "section-205-3j"}
   .rule_id 205.3j
-  .rule_text Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Aminatou, Angrath, Arlinn, Ashiok, Bolas, Chandra, Dack, Daretti, Davriel, Domri, Dovin, Elspeth, Estrid, Freyalise, Garruk, Gideon, Huatli, Jace, Jaya, Karn, Kasmina, Kaya, Kiora, Koth, Liliana, Nahiri, Narset, Nissa, Nixilis, Ral, Rowan, Saheeli, Samut, Sarkhan, Sorin, Tamiyo, Teferi, Teyo, Tezzeret, Tibalt, Ugin, Venser, Vivien, Vraska, Will, Windgrace, Xenagos, Yanggu, and Yanling.
+  .rule_text Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Aminatou, Angrath, Arlinn, Ashiok, Bolas, Chandra, Dack, Daretti, Davriel, Domri, Dovin, Elspeth, Estrid, Freyalise, Garruk, Gideon, Huatli, Jace, Jaya, Karn, Kasmina, Kaya, Kiora, Koth, Liliana, Nahiri, Narset, Nissa, Nixilis, Ral, Rowan, Saheeli, Samut, Sarkhan, Serra, Sorin, Tamiyo, Teferi, Teyo, Tezzeret, Tibalt, Ugin, Venser, Vivien, Vraska, Will, Windgrace, Wrenn, Xenagos, Yanggu, and Yanling.
 .rule{id: "section-205-3k"}
   .rule_id 205.3k
   .rule_text Instants and sorceries share their lists of subtypes; these subtypes are called spell types. The spell types are Arcane and Trap.
 .rule{id: "section-205-3m"}
   .rule_id 205.3m
-  .rule_text Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Ally, Angel, Antelope, Ape, Archer, Archon, Army, Artificer, Assassin, Assembly-Worker, Atog, Aurochs, Avatar, Azra, Badger, Barbarian, Basilisk, Bat, Bear, Beast, Beeble, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Caribou, Carrier, Cat, Centaur, Cephalid, Chimera, Citizen, Cleric, Cockatrice, Construct, Coward, Crab, Crocodile, Cyclops, Dauthi, Demon, Deserter, Devil, Dinosaur, Djinn, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Frog, Fungus, Gargoyle, Germ, Giant, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Hag, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Hound, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mutant, Myr, Mystic, Naga, Nautilus, Nephilim, Nightmare, Nightstalker, Ninja, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Ouphe, Ox, Oyster, Pangolin, Pegasus, Pentavite, Pest, Phelddagrif, Phoenix, Pilot, Pincher, Pirate, Plant, Praetor, Prism, Processor, Rabbit, Rat, Rebel, Reflection, Rhino, Rigger, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scion, Scorpion, Scout, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Sheep, Siren, Skeleton, Slith, Sliver, Slug, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Tetravite, Thalakos, Thopter, Thrull, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Unicorn, Vampire, Vedalken, Viashino, Volver, Wall, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
+  .rule_text Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Ally, Angel, Antelope, Ape, Archer, Archon, Army, Artificer, Assassin, Assembly-Worker, Atog, Aurochs, Avatar, Azra, Badger, Barbarian, Basilisk, Bat, Bear, Beast, Beeble, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Caribou, Carrier, Cat, Centaur, Cephalid, Chimera, Citizen, Cleric, Cockatrice, Construct, Coward, Crab, Crocodile, Cyclops, Dauthi, Demon, Deserter, Devil, Dinosaur, Djinn, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Frog, Fungus, Gargoyle, Germ, Giant, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Hag, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Hound, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mutant, Myr, Mystic, Naga, Nautilus, Nephilim, Nightmare, Nightstalker, Ninja, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Ouphe, Ox, Oyster, Pangolin, Pegasus, Pentavite, Pest, Phelddagrif, Phoenix, Pilot, Pincher, Pirate, Plant, Praetor, Prism, Processor, Rabbit, Rat, Rebel, Reflection, Rhino, Rigger, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scion, Scorpion, Scout, Sculpture, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Sheep, Siren, Skeleton, Slith, Sliver, Slug, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Tetravite, Thalakos, Thopter, Thrull, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Unicorn, Vampire, Vedalken, Viashino, Volver, Wall, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
 .rule{id: "section-205-3n"}
   .rule_id 205.3n
   .rule_text Planes have their own unique set of subtypes; these subtypes are called planar types. The planar types are Alara, Arkhos, Azgol, Belenon, Bolas’s Meditation Realm, Dominaria, Equilor, Ergamon, Fabacin, Innistrad, Iquatana, Ir, Kaldheim, Kamigawa, Karsus, Kephalai, Kinshala, Kolbahan, Kyneth, Lorwyn, Luvion, Mercadia, Mirrodin, Moag, Mongseng, Muraganda, New Phyrexia, Phyrexia, Pyrulea, Rabiah, Rath, Ravnica, Regatha, Segovia, Serra’s Realm, Shadowmoor, Shandalar, Ulgrotha, Valla, Vryn, Wildfire, Xerex, and Zendikar.
@@ -2147,6 +2162,9 @@
   .rule_text If an effect attempts to attach an Aura on the battlefield to an object or player it can’t legally enchant, the Aura doesn’t move.
 .rule{id: "section-303-4k"}
   .rule_id 303.4k
+  .rule_text If an effect allows an Aura that’s being turned face up to become attached to an object or player, the Aura’s controller considers the characteristics of that Aura as it would exist if it were face up to determine what it may be attached to, and they must choose a legal object or player according to the Aura’s enchant ability and any other applicable effects.
+.rule{id: "section-303-4m"}
+  .rule_id 303.4m
   .rule_text An ability of a permanent that refers to the “enchanted [object or player]” refers to whatever object or player that permanent is attached to, even if the permanent with the ability isn’t an Aura.
 .rule{id: "section-303-5"}
   .rule_id 303.5.
@@ -2440,7 +2458,7 @@
   .rule_text An object that moves from one zone to another becomes a new object with no memory of, or relation to, its previous existence. There are nine exceptions to this rule:
 .rule{id: "section-400-7a"}
   .rule_id 400.7a
-  .rule_text Effects from spells, activated abilities, and triggered abilities that change the characteristics of a permanent spell on the stack continue to apply to the permanent that spell becomes.
+  .rule_text Effects from spells, activated abilities, and triggered abilities that change the characteristics or controller of a permanent spell on the stack continue to apply to the permanent that spell becomes.
 .rule{id: "section-400-7b"}
   .rule_id 400.7b
   .rule_text Prevention effects that apply to damage from a permanent spell on the stack continue to apply to damage from the permanent that spell becomes.
@@ -2907,13 +2925,16 @@
   .rule_text An ability that reads “Whenever [a creature] attacks and isn’t blocked, . . .” triggers during the declare blockers step, not the declare attackers step. See rule <a href="#section-509-5g">509.5g</a>.
 .rule{id: "section-508-4"}
   .rule_id 508.4.
-  .rule_text If a creature is put onto the battlefield attacking, its controller chooses which defending player or which planeswalker a defending player controls it’s attacking as it enters the battlefield (unless the effect that put it onto the battlefield specifies what it’s attacking). Such creatures are “attacking” but, for the purposes of trigger events and effects, they never “attacked.”
+  .rule_text If a creature is put onto the battlefield attacking, its controller chooses which defending player or which planeswalker a defending player controls it’s attacking as it enters the battlefield (unless the effect that put it onto the battlefield specifies what it’s attacking). Similarly, if an effect states that a creature is attacking, its controller chooses which defending player or which planeswalker a defending player controls it’s attacking it becomes attacking (unless the effect has already specified). Such creatures are “attacking” but, for the purposes of trigger events and effects, they never “attacked.”
 .rule{id: "section-508-4a"}
   .rule_id 508.4a
   .rule_text If the effect that puts a creature onto the battlefield attacking specifies it’s attacking a certain player, and that player is no longer in the game when the effect resolves, the creature is put onto the battlefield but is never considered an attacking creature. The same is true if the effect specifies a creature is put onto the battlefield attacking a planeswalker and that planeswalker is no longer on the battlefield or is no longer a planeswalker when the effect resolves.
 .rule{id: "section-508-4b"}
   .rule_id 508.4b
-  .rule_text A creature that’s put onto the battlefield attacking isn’t affected by requirements or restrictions that apply to the declaration of attackers.
+  .rule_text If the effect that states a creature is attacking specifies it’s attacking a certain player, and that player is no longer in the game when the effect resolves, the creature doesn’t become an attacking creature. The same is true if the effect specifies a creature is attacking a planeswalker and that planeswalker is no longer on the battlefield or is no longer a planeswalker when the effect resolves.
+.rule{id: "section-508-4c"}
+  .rule_id 508.4c
+  .rule_text A creature that’s put onto the battlefield attacking or that is stated to be attacking isn’t affected by requirements or restrictions that apply to the declaration of attackers.
 .rule{id: "section-508-5"}
   .rule_id 508.5.
   .rule_text If an ability of an attacking creature refers to a defending player, or a spell or ability refers to both an attacking creature and a defending player, then unless otherwise specified, the defending player it’s referring to is the player that creature is attacking, or the controller of the planeswalker that creature is attacking. If that creature is no longer attacking, the defending player it’s referring to is the player that creature was attacking before it was removed from combat or the controller of the planeswalker that creature was attacking before it was removed from combat.
@@ -4597,6 +4618,12 @@
 .rule{id: "section-701-37a"}
   .rule_id 701.37a
   .rule_text Certain spells and abilities can goad a creature. Until the next turn of the controller of that spell or ability, that creature attacks each combat if able and attacks a player other than that player if able.
+.rule{id: "section-701-37b"}
+  .rule_id 701.37b
+  .rule_text A static ability may state that a creature “is goaded.” That creature attacks each combat if able and attacks a player other than the controller of the permanent with that static ability if able.
+.rule{id: "section-701-37c"}
+  .rule_id 701.37c
+  .rule_text Once a player has goaded a creature, the same player goading it again has no effect. It doesn’t create additional combat requirements.
 .rule{id: "section-701-38"}
   .rule_id 701.38.
   .rule_text Exert
@@ -4669,6 +4696,13 @@
   .rule_text An effect that grants an object a keyword ability may define a variable in that ability based on characteristics of that object or other information about the game state. For these abilities, the value of that variable is constantly reevaluated.
   .rule_text Example: Volcano Hellion has the ability “Volcano Hellion has echo <span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span>, where X is your life total.” If your life total is 10 when Volcano Hellion’s echo ability triggers but 5 when it resolves, the echo cost to pay is <span class="manacost"><span class="mana mana-cost mana-5"><span class="sr-only">{5}</span></span></span>.
   .rule_text Example: Fire//Ice is a split card whose halves have the mana costs <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span></span> and <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span></span>. Past in Flames reads “Each instant and sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost.” Fire//Ice has “Flashback <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span></span>” while it is in your graveyard, but if you choose to cast Fire, the resulting spell has “Flashback <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span></span>.”
+.rule{id: "section-702-1c"}
+  .rule_id 702.1c
+  .rule_text An effect may state that “the same is true for” a list of keyword abilities. If one of those keyword abilities has variants or variables and the effect grants that keyword to one or more objects and/or players, it grants each appropriate variant and variable of that keyword.
+  .rule_text Example: Concerted Effort is an enchantment that reads “At the beginning of each upkeep, creatures you control gain flying until end of turn if a creature you control has flying. The same is true for fear, first strike, double strike, landwalk, protection, trample, and vigilance.” As that triggered ability resolves, each landwalk and protection ability from among creatures you control is granted to each creature you control.
+.rule{id: "section-702-1d"}
+  .rule_id 702.1d
+  .rule_text An effect may refer to an object “with [keyword ability]” or “that has [keyword ability].” This means the same thing as an object “with a [keyword ability] ability” or an object “that has a [keyword ability] ability.”
 .rule{id: "section-702-2"}
   .rule_id 702.2.
   .rule_text Deathtouch
@@ -4922,15 +4956,18 @@
   .rule_text “Protection from all [characteristic]” is shorthand for “protection from [quality A],” “protection from [quality B],” and so on for each possible quality the listed characteristic could have; it behaves as multiple separate protection abilities. If an effect causes an object with such an ability to lose protection from [quality A], for example, that object would still have protection from [quality B], [quality C], and so on.
 .rule{id: "section-702-16i"}
   .rule_id 702.16i
-  .rule_text “Protection from everything” is a variant of the protection ability. A permanent with protection from everything has protection from each object regardless of that object’s characteristic values. Such a permanent can’t be targeted by spells or abilities, enchanted by Auras, equipped by Equipment, fortified by Fortifications, or blocked by creatures, and all damage that would be dealt to it is prevented.
+  .rule_text “Protection from each [set of characteristics, qualities, or players]” is shorthand for “protection from [A],” “protection from [B],” and so on for each characteristic, quality, or player in the set. It behaves as multiple separate protection abilities.
 .rule{id: "section-702-16j"}
   .rule_id 702.16j
-  .rule_text “Protection from [a player]” is a variant of the protection ability. A permanent with protection from a specific player has protection from each object the player controls and protection from each object the player owns not controlled by another player, regardless of that object’s characteristic values. Such a permanent can’t be targeted by spells or abilities the player controls, enchanted by Auras the player controls, equipped by Equipment the player controls, fortified by Fortifications the player controls, or blocked by creatures the player controls, and all damage that would be dealt to it by sources controlled by the player or owned by the player but not controlled by another player is prevented.
+  .rule_text “Protection from everything” is a variant of the protection ability. A permanent with protection from everything has protection from each object regardless of that object’s characteristic values. Such a permanent can’t be targeted by spells or abilities, enchanted by Auras, equipped by Equipment, fortified by Fortifications, or blocked by creatures, and all damage that would be dealt to it is prevented.
 .rule{id: "section-702-16k"}
   .rule_id 702.16k
-  .rule_text Multiple instances of protection from the same quality on the same permanent or player are redundant.
+  .rule_text “Protection from [a player]” is a variant of the protection ability. A permanent with protection from a specific player has protection from each object the player controls and protection from each object the player owns not controlled by another player, regardless of that object’s characteristic values. Such a permanent can’t be targeted by spells or abilities the player controls, enchanted by Auras the player controls, equipped by Equipment the player controls, fortified by Fortifications the player controls, or blocked by creatures the player controls, and all damage that would be dealt to it by sources controlled by the player or owned by the player but not controlled by another player is prevented.
 .rule{id: "section-702-16m"}
   .rule_id 702.16m
+  .rule_text Multiple instances of protection from the same quality on the same permanent or player are redundant.
+.rule{id: "section-702-16n"}
+  .rule_id 702.16n
   .rule_text Some Auras both give the enchanted creature protection and say “this effect doesn’t remove” either that specific Aura or all Auras. This means that the specified Auras can legally enchant that creature and aren’t put into their owners’ graveyards as a state-based action. If the creature has other instances of protection from the same quality, those instances affect Auras as normal.
 .rule{id: "section-702-17"}
   .rule_id 702.17.
@@ -6493,6 +6530,9 @@
   .rule_id 706.9e
   .rule_text Some replacement effects that generate copy effects include an exception that’s an additional effect rather than a modification of the affected object’s characteristics. If another copy effect is applied to that object after applying the copy effect with that exception, the exception’s effect doesn’t happen.
   .rule_text Example: Altered Ego reads, “You may have Altered Ego enter the battlefield as a copy of any creature on the battlefield, except it enters with X additional +1/+1 counters on it.” You choose for it to enter the battlefield as a copy of Clone, which reads “You may have Clone enter the battlefield as a copy of any creature on the battlefield,” for which no creature was chosen as it entered the battlefield. If you then choose a creature to copy as you apply the replacement effect Altered Ego gains by copying Clone, Altered Ego’s replacement effect won’t cause it to enter the battlefield with any +1/+1 counters on it.
+.rule{id: "section-706-9f"}
+  .rule_id 706.9f
+  .rule_text Some replacement effects that generate copy effects are linked to triggered abilities written in the same paragraph. (See rule <a href="#section-603-11">603.11</a>.) The triggered ability will only trigger if the resulting object after applying all continuous effects has that ability.
 .rule{id: "section-706-10"}
   .rule_id 706.10.
   .rule_text To copy a spell, activated ability, or triggered ability means to put a copy of it onto the stack; a copy of a spell isn’t cast and a copy of an activated ability isn’t activated. A copy of a spell or ability copies both the characteristics of the spell or ability and all decisions made for it, including modes, targets, the value of X, and additional or alternative costs. (See rule <a href="#section-601">601</a>, “Casting Spells.”) Choices that are normally made on resolution are not copied. If an effect of the copy refers to objects used to pay its costs, it uses the objects used to pay the costs of the original spell or ability. A copy of a spell is owned by the player under whose control it was put on the stack. A copy of a spell or ability is controlled by the player under whose control it was put on the stack. A copy of a spell is itself a spell, even though it has no spell card associated with it. A copy of an ability is itself an ability.
@@ -6893,28 +6933,52 @@
   .rule_text A player may gain control of themselves. That player will make their own decisions and choices as normal.
 .rule{id: "section-716"}
   .rule_id 716.
-  .rule_text Ending the Turn
+  .rule_text Ending Turns and Phases
 .rule{id: "section-716-1"}
   .rule_id 716.1.
   .rule_text Some cards end the turn. When an effect ends the turn, follow these steps in order, as they differ from the normal process for resolving spells and abilities (see rule <a href="#section-608">608</a>, “Resolving Spells and Abilities”).
 .rule{id: "section-716-1a"}
   .rule_id 716.1a
-  .rule_text If there are any triggered abilities that triggered before this process began but haven’t been put onto the stack yet, those abilities cease to exist. They won’t be put onto the stack. This rule does not apply to abilities that trigger during this process (see rule <a href="#section-716-2">716.2</a>).
+  .rule_text If there are any triggered abilities that triggered before this process began but haven’t been put onto the stack yet, those abilities cease to exist. They won’t be put onto the stack. This rule does not apply to abilities that trigger during this process (see rule <a href="#section-716-1f">716.1f</a>).
 .rule{id: "section-716-1b"}
   .rule_id 716.1b
-  .rule_text Exile every object on the stack, including the object that’s resolving. Remove all creatures and planeswalkers from combat. All objects not on the battlefield or in the command zone that aren’t represented by cards will cease to exist the next time state-based actions are checked (see rule <a href="#section-704">704</a>, “State-Based Actions”).
+  .rule_text Exile every object on the stack, including the object that’s resolving. All objects not on the battlefield or in the command zone that aren’t represented by cards will cease to exist the next time state-based actions are checked (see rule <a href="#section-704">704</a>, “State-Based Actions”).
 .rule{id: "section-716-1c"}
   .rule_id 716.1c
   .rule_text Check state-based actions. No player gets priority, and no triggered abilities are put onto the stack.
 .rule{id: "section-716-1d"}
   .rule_id 716.1d
-  .rule_text The current phase and/or step ends. The game skips straight to the cleanup step; skip any phases or steps between this phase or step and the cleanup step. If an effect ends the turn during the cleanup step, a new cleanup step begins.
+  .rule_text The current phase and/or step ends. If this happens during combat, remove all creatures and planeswalkers from combat. The game skips straight to the cleanup step; skip any phases or steps between this phase or step and the cleanup step. If an effect ends the turn during the cleanup step, a new cleanup step begins.
+.rule{id: "section-716-1e"}
+  .rule_id 716.1e
+  .rule_text Even though the turn ends, “at the beginning of the end step” triggered abilities don’t trigger because the end step is skipped.
+.rule{id: "section-716-1f"}
+  .rule_id 716.1f
+  .rule_text No player gets priority during this process, so triggered abilities are not put onto the stack. If any triggered abilities have triggered since this process began, those abilities are put onto the stack during the cleanup step, then the active player gets priority and players can cast spells and activate abilities. Then there will be another cleanup step before the turn finally ends. If no triggered abilities have triggered during this process, no player gets priority during the cleanup step. See rule <a href="#section-514">514</a>, “Cleanup Step.”
 .rule{id: "section-716-2"}
   .rule_id 716.2.
-  .rule_text No player gets priority during this process, so triggered abilities are not put onto the stack. If any triggered abilities have triggered since this process began, those abilities are put onto the stack during the cleanup step, then the active player gets priority and players can cast spells and activate abilities. Then there will be another cleanup step before the turn finally ends. If no triggered abilities have triggered during this process, no player gets priority during the cleanup step. See rule <a href="#section-514">514</a>, “Cleanup Step.”
-.rule{id: "section-716-3"}
-  .rule_id 716.3.
-  .rule_text Even though the turn ends, “at the beginning of the end step” triggered abilities don’t trigger because the end step is skipped.
+  .rule_text One card (Mandate of Peace) ends the combat phase. When an effect ends the combat phase, follow these steps in order, as they differ from the normal process for resolving spells and abilities (see rule <a href="#section-608">608</a>, “Resolving Spells and Abilities”).
+.rule{id: "section-716-2a"}
+  .rule_id 716.2a
+  .rule_text If there are any triggered abilities that triggered before this process began but haven’t been put onto the stack yet, those abilities cease to exist. They won’t be put onto the stack. This rule does not apply to abilities that trigger during this process (see rule <a href="#section-716-2f">716.2f</a>).
+.rule{id: "section-716-2b"}
+  .rule_id 716.2b
+  .rule_text Exile every object on the stack, including the object that’s resolving. All objects not on the battlefield or in the command zone that aren’t represented by cards will cease to exist the next time state-based actions are checked (see rule <a href="#section-704">704</a>, “State-Based Actions”).
+.rule{id: "section-716-2c"}
+  .rule_id 716.2c
+  .rule_text Check state-based actions. No player gets priority, and no triggered abilities are put onto the stack.
+.rule{id: "section-716-2d"}
+  .rule_id 716.2d
+  .rule_text The current combat phase ends. Remove all creatures and planeswalkers from combat. Effects that last “until end of combat” expire. The game skips straight to the next phase, usually the postcombat main phase; skip any steps between this step and that phase.
+.rule{id: "section-716-2e"}
+  .rule_id 716.2e
+  .rule_text Even though the combat phase ends, “at end of combat” triggered abilities don’t trigger because the end of combat step is skipped.
+.rule{id: "section-716-2f"}
+  .rule_id 716.2f
+  .rule_text No player gets priority during this process, so triggered abilities are not put onto the stack. If any triggered abilities have triggered since this process began, those abilities are put onto the stack during the following phase, then the active player gets priority and players can cast spells and activate abilities.
+.rule{id: "section-716-2g"}
+  .rule_id 716.2g
+  .rule_text If an effect attempts to end the combat phase at any time that’s not a combat phase, nothing happens.
 .rule{id: "section-717"}
   .rule_id 717.
   .rule_text The Monarch
@@ -7101,7 +7165,7 @@
   .rule_text If an object would change to the control of a player who has left the game, it doesn’t. If a token would be created under the control of a player who has left the game, no token is created. If an object would be put onto the battlefield or onto the stack under the control of a player who has left the game, that object remains in its current zone. If a player would be controlled by a player who has left the game, they aren’t.
 .rule{id: "section-800-4c"}
   .rule_id 800.4c
-  .rule_text If an effect that gives a player still in the game control of an object ends, there is no other effect giving control of that object to another player in the game, and the object entered the battlefield under the control of a player who has left the game, the object is exiled. This is not a state-based action. It happens as soon as the control-changing effect ends.
+  .rule_text If an effect that gives a player still in the game control of an object ends, there is no other effect giving control of that object to another player in the game, and the player who controlled that object by default has left the game, the object is exiled. This is not a state-based action. It happens as soon as the control-changing effect ends.
 .rule{id: "section-800-4d"}
   .rule_id 800.4d
   .rule_text If an object that would be owned by a player who has left the game would be created in any zone, it isn’t created. If a triggered ability that would be controlled by a player who has left the game would be put onto the stack, it isn’t put on the stack.
@@ -7117,7 +7181,7 @@
   .rule_text If a rule requires a player who has left the game to make a choice, the next player in turn order makes that choice.
 .rule{id: "section-800-4h"}
   .rule_id 800.4h
-  .rule_text If an effect requires information about a specific player, the effect uses the current information about that player if they are still in the game; otherwise, the effect uses the last known information about that player before they left the game.
+  .rule_text If an effect requires information about a specific player, the effect uses the current information about that player if they are still in the game; otherwise, the effect uses the last known information about that player before they left the game. If an effect requires information from the game about actions players have taken, the effect can find actions that were taken by a player who has left the game.
 .rule{id: "section-800-4i"}
   .rule_id 800.4i
   .rule_text If a player leaves the game during their turn, that turn continues to its completion without an active player. If the active player would receive priority, instead the next player in turn order receives priority, or the top object on the stack resolves, or the phase or step ends, whichever is appropriate.
@@ -7135,9 +7199,12 @@
   .rule_text In a Planechase game, if the player designated as the planar controller would leave the game, instead the next player in turn order that wouldn’t leave the game becomes the planar controller, then the old planar controller leaves the game. See rule <a href="#section-309-5">309.5</a>.
 .rule{id: "section-800-5"}
   .rule_id 800.5.
-  .rule_text In a multiplayer game, the first mulligan a player takes doesn’t count toward the number of cards that player will put on the bottom of their library or the number of mulligans that player may take. Subsequent mulligans are counted toward these numbers as normal.
+  .rule_text Unless a chosen variant or option prescribes otherwise, seating order is determined by any mutually agreeable method. For example, players could agree to remain where they were before the game began, roll dice to determine seating order, and so on.
 .rule{id: "section-800-6"}
   .rule_id 800.6.
+  .rule_text In a multiplayer game, the first mulligan a player takes doesn’t count toward the number of cards that player will put on the bottom of their library or the number of mulligans that player may take. Subsequent mulligans are counted toward these numbers as normal.
+.rule{id: "section-800-7"}
+  .rule_id 800.7.
   .rule_text In a multiplayer game other than a Two-Headed Giant game, the starting player doesn’t skip the draw step of their first turn. In a Two-Headed Giant game, the team who plays first skips the draw step of their first turn. See rule <a href="#section-103-7">103.7</a>.
 .rule{id: "section-801"}
   .rule_id 801.
@@ -8520,8 +8587,11 @@
   .glossary_term End Step
   .glossary_definition Part of the turn. This step is the first step of the ending phase. See rule <a href="#section-513">513</a>, “End Step.”
 .glossary_entry
+  .glossary_term End the Combat Phase
+  .glossary_definition To “end the combat phase” as the result of an effect is to perform an expedited process that skips everything else that would happen that phase. See rule <a href="#section-716">716</a>, “Ending Turns and Phases.”
+.glossary_entry
   .glossary_term End the Turn
-  .glossary_definition To “end the turn” as the result of an effect is to perform an expedited process that skips nearly everything else that would happen that turn. See rule <a href="#section-716">716</a>, “Ending the Turn.”
+  .glossary_definition To “end the turn” as the result of an effect is to perform an expedited process that skips nearly everything else that would happen that turn. See rule <a href="#section-716">716</a>, “Ending Turns and Phases.”
 .glossary_entry
   .glossary_term Ending Phase
   .glossary_definition Part of the turn. This phase is the fifth and final phase of the turn. See rule <a href="#section-512">512</a>, “Ending Phase.”
@@ -9684,5 +9754,5 @@
 %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, and Matt Tabak, with contributions from Charlie Cátinò, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Eli Shiffrin, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead), Ira Humphrey, Gregg Luben, Nat Moes, Matt Tabak, and Hans Ziegler Magic Rules Management: Eli Shiffrin
 %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cátinò, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
 %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-%p These rules are effective as of July 12, 2019.
+%p These rules are effective as of August 23, 2019.
 %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, Magic: The Gathering—Conspiracy, Conspiracy: Take the Crown, Ixalan, Rivals of Ixalan, Unglued, Unstable, Dominaria, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. Unhinged is a trademark of Horn Abbot Ltd. and is used with permission. ©2019 Wizards. U.S. Pat. No. RE 37,957.
