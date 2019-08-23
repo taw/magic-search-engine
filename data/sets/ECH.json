@@ -1,9 +1,9 @@
 {
-    "border": "black",
+    "baseSetSize": 1,
     "cards": [
         {
             "artist": "AlexKonstad",
-            "cmc": 4,
+            "borderColor": "black",
             "colorIdentity": [
                 "W",
                 "U",
@@ -12,20 +12,24 @@
                 "G"
             ],
             "colors": [
-                "White",
-                "Blue",
-                "Black",
-                "Red",
-                "Green"
+                "W",
+                "U",
+                "B",
+                "R",
+                "G"
             ],
-            "imageName": "ancient elemental",
+            "convertedManaCost": 4.0,
+            "faceConvertedManaCost": 4.0,
+            "frameVersion": "2015",
+            "hasFoil": false,
+            "hasNonFoil": true,
             "layout": "normal",
             "manaCost": "{4}",
             "name": "Ancient Elemental",
             "number": "1",
             "originalText": "Ancient Elemental is all colors.",
-            "originalType": "Legendary Creature \u2014 Elemental",
-            "rarity": "Mythic Rare",
+            "originalType": "Legendary Creature — Elemental",
+            "rarity": "mythic",
             "rulings": [
                 {
                     "date": "2018-08-27",
@@ -39,7 +43,7 @@
                 "Legendary"
             ],
             "text": "Ancient Elemental is all colors.",
-            "type": "Legendary Creature \u2014 Elemental",
+            "type": "Legendary Creature — Elemental",
             "types": [
                 "Creature"
             ]
@@ -47,7 +51,12 @@
     ],
     "code": "ECH",
     "custom": true,
+    "meta": {
+        "date": "2019-08-23",
+        "version": "4.4.1"
+    },
     "name": "Elder Cockatrice Highlander Supplement",
     "releaseDate": "2018-01-16",
+    "totalSetSize": 1,
     "type": "box"
 }
