@@ -302,7 +302,8 @@ class CompRules:
             '\n\nThese are not the official Magic rules, you can find those at ',
             intro.split(' ')[-1],
             'Contents',
-            contents
+            contents,
+            '\n'
         ])
         comp_rules_f.write(header)
         # rules

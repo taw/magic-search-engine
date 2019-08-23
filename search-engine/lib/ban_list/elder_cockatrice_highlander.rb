@@ -38,4 +38,12 @@ BanList.for_format("elder cockatrice highlander") do
     "https://discordapp.com/channels/205457071380889601/326822492222128138/573235377335435277",
     "Eregon's Masterpiece" => "legal",
   )
+
+  change(
+    "2019-07-16",
+    "https://discordapp.com/channels/205457071380889601/326822492222128138/600559724928303125",
+    "Treasure Room of Akhamesses" => "legal",
+    "Clean Slate" => "banned",
+    "Karn, Heart of Guilt" => "banned",
+  )
 end

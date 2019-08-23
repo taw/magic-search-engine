@@ -1,6 +1,6 @@
 {
-    "base": "2019-07-12",
-    "effective": "2019-07-12",
+    "base": "2019-08-23",
+    "effective": "2019-08-23",
     "patches": [
         {
             "sets": [
@@ -37,7 +37,13 @@
                 {
                     "type": "add",
                     "rule": "107.4",
-                    "text": "The runic mana symbol {V} represents one mana in a cost. A player can pay this cost either with one mana of any type produced by an artifact, or by tapping an untapped artifact they control. Despite its appearance, {V} is a colorless mana symbol."
+                    "text": "The runic mana symbol {V} represents one mana in a cost. A player can pay this cost either with one mana of any type produced by an artifact, or by tapping an untapped artifact they control. Despite its appearance, {V} is not a colored mana symbol."
+                },
+                {
+                    "type": "replace",
+                    "rule": "118.13",
+                    "find": "hybrid mana symbols and Phyrexian mana symbols",
+                    "replace": "hybrid mana symbols, Phyrexian mana symbols, and runic mana symbols"
                 }
             ]
         },
@@ -435,13 +441,11 @@
                         "Patches",
                         "Roselyn",
                         "Sarasa",
-                        "Serra",
                         "Shala",
                         "Sobki",
                         "Talya",
                         "Toahanga",
                         "Veila",
-                        "Wrenn",
                         "Wulani",
                         "Yemma"
                     ]
@@ -580,6 +584,12 @@
                 },
                 {
                     "type": "replace",
+                    "rule": "508.4b",
+                    "find": "planeswalker",
+                    "replace": "planeswalker or Structure"
+                },
+                {
+                    "type": "replace",
                     "rule": "508.5",
                     "find": "planeswalker",
                     "replace": "planeswalker or Structure"
@@ -658,7 +668,13 @@
                 },
                 {
                     "type": "replace",
-                    "rule": "716.1b",
+                    "rule": "716.1d",
+                    "find": "all creatures and planeswalkers",
+                    "replace": "all creatures, planeswalkers, and Structures"
+                },
+                {
+                    "type": "replace",
+                    "rule": "716.2d",
                     "find": "all creatures and planeswalkers",
                     "replace": "all creatures, planeswalkers, and Structures"
                 }
