@@ -7,9 +7,54 @@ sys.path.append('/opt/py')
 import copy
 import io
 import json
-import mse_to_json
 import pathlib
+import re
+import subprocess
+import tempfile
 import zipfile
+
+import mse_to_json # https://github.com/fenhl/mse-to-json
+
+CACHE = {'set_files': {}}
+
+PRINTING_SPECIFIC_KEYS = {
+    'artist',
+    'flavorText',
+    'frameVersion',
+    'hasFoil',
+    'hasNonFoil',
+    'number',
+    'originalName',
+    'originalText',
+    'originalType',
+    'rarity',
+    'watermark'
+}
+
+def edit(original):
+    with tempfile.NamedTemporaryFile('w', delete=False) as f:
+        f.write(original)
+        tmp = pathlib.Path(f.name)
+    subprocess.run(['nano', tmp], check=True)
+    with tmp.open() as f:
+        edited = f.read()
+    tmp.unlink()
+    return edited
+
+def edit_rulings(card_name, old_rulings):
+    edited_rulings = edit('# rulings for {}\n'.format(card_name) + '\n'.join('{} {}'.format(ruling['date'], ruling['text']) for ruling in old_rulings))
+    return [
+        {'date': line[:len('YYYY-mm-dd')], 'text': line[len('YYYY-mm-dd '):]}
+        for line in edited_rulings.splitlines()
+        if not line.strip().startswith('#')
+    ]
+
+def get_cached_set_file(set_path):
+    set_path = set_path.resolve()
+    if set_path not in CACHE['set_files']:
+        with set_path.open() as set_f:
+            CACHE['set_files'][set_path] = json.load(set_f)
+    return CACHE['set_files'][set_path]
 
 def input_default(question, default, convert=lambda x: x):
     result = input('[ ?? ] {} [{}]: '.format(question, default)).strip()
@@ -17,15 +62,170 @@ def input_default(question, default, convert=lambda x: x):
         return default
     return convert(result)
 
-def merge_set_jsons(*, old, new, errata):
+def merge_card_fields(old_card, new_card, errata_card, fields):
+    if old_card is not None and any(
+        (field_name in old_card != field_name in new_card and field_name in new_card == field_name in errata_card)
+        or old_card.get(field_name) != new_card.get(field_name) == errata_card.get(field_name)
+        for field_name in fields
+    ):
+        print('[ ** ] changes for {}'.format(errata_card['name']))
+        for field_name in fields:
+            if field_name not in old_card and field_name in new_card and field_name in errata_card and new_card[field_name] == errata_card[field_name]:
+                print('[ ** ] new {}: {}'.format(field_name, json.dumps(new_card.get(field_name))))
+            elif field_name in old_card and field_name not in new_card and field_name not in errata_card:
+                print('[ ** ] {} removed, was {}'.format(field_name, json.dumps(old_card.get(field_name))))
+            elif old_card.get(field_name) != new_card.get(field_name) == errata_card.get(field_name):
+                print('[ ** ] {}:'.format(field_name))
+                print('[old:] {}'.format(json.dumps(old_card.get(field_name))))
+                print('[new:] {}'.format(json.dumps(new_card.get(field_name))))
+        if yesno('use fields from new card with errata?'):
+            return {
+                field_name: errata_card[field_name]
+                for field_name in fields
+                if field_name in errata_card
+            }
+        else:
+            def edit_render_field(field_name):
+                if field_name in new_card and field_name in errata_card and (field_name not in old_card or [field_name] != new_card[field_name] == errata_card[field_name]):
+                    return '# old: {}\n    # new: {}\n    {}: {}'.format(
+                        '    \n'.join(line for line in json.dumps(old_card[field_name]).split('\n')) if field_name in old_card else 'missing',
+                        '    \n'.join(line for line in json.dumps(new_card[field_name]).split('\n')),
+                        json.dumps(field_name),
+                        '    \n'.join(line for line in json.dumps(errata_card[field_name]).split('\n'))
+                    )
+                elif field_name in old_card and field_name not in new_card and field_name not in errata_card:
+                    return '# {} removed, was {}'.format(json.dumps(field_name), '    \n'.join(line for line in json.dumps(old_card[field_name]).split('\n')))
+                else:
+                    return '{}: {}'.format(json.dumps(field_name), '    \n'.join(line for line in json.dumps(errata_card[field_name]).split('\n')))
+
+            return json.loads('\n'.join(
+                line
+                for line in edit('{\n    ' + ',\n    '.join(
+                    edit_render_field(field_name)
+                    for field_name in fields
+                    if field_name in old_card or field_name in errata_card
+                ) + '\n}').splitlines()
+                if not line.strip().startswith('#')
+            ))
+    else:
+        return {
+            field_name: errata_card[field_name]
+            for field_name in fields
+            if field_name in errata_card
+        }
+
+def merge_set_jsons(set_json_path, *, old, new, errata):
     set_json = copy.deepcopy(errata)
     if 'boosterV3' not in set_json:
         if 'boosterV3' in old:
             set_json['boosterV3'] = old['boosterV3']
         else:
             set_json['boosterV3'] = input_default('boosterV3', ['common'] * 10 + ['uncommon'] * 3 + [['rare', 'mythic rare']], convert=json.loads)
-    #TODO build rename map
-    #TODO 3-way card merge
+    # build rename map
+    if 'cards' in old:
+        name_map_doc = '\n'.join([
+            '# name mapping between old version with errata and new version with errata'
+        ] + [
+            '=> {}'.format(new_card['name'])
+            for new_card in errata['cards']
+            if not any(old_card['name'] == new_card['name'] for old_card in old['cards'])
+        ] + [
+            '{} =>'.format(old_card['name'])
+            for old_card in old['cards']
+            if not any(old_card['name'] == new_card['name'] for new_card in errata['cards'])
+        ] + [
+            '{0} => {0}'.format(new_card['name'])
+            for new_card in errata['cards']
+            if any(old_card['name'] == new_card['name'] for old_card in old['cards'])
+        ])
+        name_map_doc = edit(name_map_doc)
+        name_map = {}
+        for line in name_map_doc.splitlines():
+            if not line.strip():
+                continue
+            if line.strip().startswith('#'):
+                continue
+            match = re.fullmatch(' *=> *([^=]+?) *', line)
+            if match:
+                name_map[match.group(1)] = None
+                continue
+            match = re.fullmatch(' *([^=]+?) *=> *', line)
+            if match:
+                continue # removed cards currently unused
+            match = re.fullmatch(' *([^=]+?) *=> *([^=]+?) *', line)
+            if match:
+                name_map[match.group(2)] = match.group(1)
+                continue
+            raise ValueError('Invalid line in name map')
+    else:
+        name_map = {card['name']: card['name'] for card in errata['cards']}
+    #TODO also make a name map from new/errata diff, replacing rename.json and auto-matching set code prefixes
+    set_json['cards'] = []
+    for errata_card in errata['cards']:
+        # if this is a reprint, find another printing
+        reprint_card = min([
+            (reprint_card, get_cached_set_file(iter_set_path))
+            for iter_set_path in pathlib.Path('data/sets').iterdir()
+            if iter_set_path.resolve() != set_json_path.resolve()
+            for i, reprint_card in enumerate(get_cached_set_file(iter_set_path)['cards'])
+            if reprint_card['name'] == errata_card['name']
+        ], key=lambda tup: (
+            tup[1].get('custom', False), # prefer official sets
+            tup[1]['meta']['date']
+        ), default=(None, None))[0]
+        new_card = next(card for card in new['cards'] if card['name'] == errata_card['name']) #TODO use errata name map
+        for old_card in old.get('cards', []):
+            if old_card['name'] == name_map[errata_card['name']]:
+                break
+        else:
+            old_card = None
+        card = merge_card_fields(old_card, new_card, errata_card, [ #TODO take reprints into account
+            'artist',
+            'borderColor',
+            'colorIdentity',
+            'colorIndicator',
+            'colors',
+            'convertedManaCost',
+            'faceConvertedManaCost',
+            'frameVersion',
+            'hasFoil',
+            'hasNonFoil',
+            'layout',
+            'loyalty',
+            'manaCost',
+            'power',
+            'rarity',
+            'stability',
+            'subtypes',
+            'supertypes',
+            'text',
+            'toughness',
+            'type',
+            'types',
+            'watermark'
+        ])
+        if 'flavorText' in errata_card:
+            card['flavorText'] = errata_card['flavorText']
+        card['name'] = errata_card['name']
+        if 'names' in errata_card:
+            card['names'] = errata_card['names'] #TODO check if consistent with name maps and reprint_card
+        card['number'] = errata_card['number']
+        card['originalName'] = new_card['name']
+        card['originalText'] = new_card['text']
+        card['originalType'] = new_card['type']
+        if reprint_card is None:
+            if old_card is None:
+                card['rulings'] = edit_rulings(card['name'], [])
+            elif all(card[k] == v for k, v in old_card.items() if k != 'rulings' and k not in PRINTING_SPECIFIC_KEYS):
+                card['rulings'] = old_card['rulings']
+            else:
+                card['rulings'] = edit_rulings(card['name'], old_card['rulings'])
+        else:
+            if old_card is None:
+                card['rulings'] = reprint_card['rulings']
+            else:
+                card['rulings'] = sorted(reprint_card['rulings'] + [ruling for ruling in old_card['rulings'] if ruling not in reprint_card['rulings']], key=lambda ruling: ruling['date'])
+        set_json['cards'].append(card)
     if 'releaseDate' not in set_json:
         if 'releaseDate' in old:
             set_json['releaseDate'] = old['releaseDate']
@@ -66,11 +266,12 @@ if __name__ == '__main__':
         set_json_path = pathlib.Path('data/sets/{}.json'.format(set_code))
         if set_json_path.exists():
             with set_json_path.open() as set_file:
-            old_set_json = json.load(set_file)
+                old_set_json = json.load(set_file)
         else:
             old_set_json = {}
-        set_json = merge_set_jsons(old=old_set_json, new=new_set_json, errata=errata_set_json)
+        set_json = merge_set_jsons(set_json_path, old=old_set_json, new=new_set_json, errata=errata_set_json)
         with set_json_path.open('w') as set_file:
             json.dump(set_json, set_file, indent=4, sort_keys=True)
+            print(file=set_file)
     else:
         sys.exit('lsutil: unknown subcommand: {}'.format(sys.argv[1]))
