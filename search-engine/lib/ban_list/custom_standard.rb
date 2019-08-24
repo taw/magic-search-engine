@@ -48,4 +48,10 @@ BanList.for_format("custom standard") do
     "https://discordapp.com/channels/481200347189084170/564298775942660122/584161594246692935",
     "Art Studio" => "banned",
   )
+
+  change(
+    "2019-08-26",
+    "https://discordapp.com/channels/481200347189084170/564298775942660122/614858659692019733",
+    "Art Studio" => "legal",
+  )
 end
