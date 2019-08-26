@@ -274,7 +274,7 @@ class PackFactory
     when "leg"
       build_pack(set_code, {explicit_common: 12, explicit_uncommon: 3, explicit_rare: 1})
     # custom sets
-    when "ldo", "dhm", "net"
+    when "ldo", "dhm"
       # Custom sets with default pack distribution, no foils, with basics
       build_pack(set_code, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_mythic: 1})
     when "dms", "vst"
@@ -302,7 +302,7 @@ class PackFactory
       # 1. no more than 6 cards of a single color in a pack
       # 2. no less than 1 card of a color in a pack
       build_pack(set_code, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_mythic: 1}, pack_class: SimonPack)
-    when "jan", "hlw", "sou"
+    when "jan", "hlw", "sou", "net"
       # These sets have opted into taw's color-balanced algorithm
       build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
     when "cc18"
