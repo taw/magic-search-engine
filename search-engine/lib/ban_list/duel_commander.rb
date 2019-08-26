@@ -136,4 +136,18 @@ BanList.for_format("duel commander") do
     "Prime Speaker Vannifar" => "restricted",
     "Baral, Chief of Compliance" => "restricted",
   )
+
+  change(
+    "2019-08-31",
+    "http://www.duelcommander.com/2019/08/august-2019-rules-banned-restricted-update/",
+    "Arahbo, Roar of the World" => "restricted",
+    "Najeela, the Blade-Blossom" => "restricted",
+    "Teferi, Temporal Archmage" => "restricted",
+    "Urza, Lord High Artificer" => "restricted",
+    "Yuriko, the Tiger's Shadow" => "restricted",
+    "Timetwister" => "banned",
+    "Edric, Spymaster of Trest" => "legal",
+    "Erayo, Soratami Ascendant" => "legal",
+    "Zur the Enchanter" => "legal",
+  )
 end
