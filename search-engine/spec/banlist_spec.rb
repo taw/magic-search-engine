@@ -4,6 +4,17 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2019" do
+    assert_banlist_changes "August 2019",
+      "standard unbanned", "Rampaging Ferocidon",
+      "modern banned", "Hogaak, Arisen Necropolis ",
+      "modern banned", "Faithless Looting",
+      "modern unbanned", "Stoneforge Mystic",
+      "vintage restricted", "Karn, the Great Creator",
+      "vintage restricted", "Mystic Forge",
+      "vintage restricted", "Mental Misstep",
+      "vintage restricted", "Golgari Grave-Troll",
+      "vintage unrestricted", "Fastbond"
+
     assert_banlist_changes "July 2019",
       "modern banned", "Bridge from Below",
       "pauper banned", "Hymn to Tourach",
