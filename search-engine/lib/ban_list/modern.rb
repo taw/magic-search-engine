@@ -118,4 +118,12 @@ BanList.for_format("modern") do
     "https://magic.wizards.com/en/articles/archive/news/july-8-2019-banned-and-restricted-announcement-2019-07-08",
     "Bridge from Below" => "banned",
   )
+
+  change(
+    "2019-08-30",
+    "https://magic.wizards.com/en/articles/archive/news/august-26-2019-banned-and-restricted-announcement-2019-08-26",
+    "Hogaak, Arisen Necropolis " => "banned",
+    "Faithless Looting" => "banned",
+    "Stoneforge Mystic" => "legal",
+  )
 end
