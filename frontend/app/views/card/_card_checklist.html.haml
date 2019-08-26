@@ -1,0 +1,22 @@
+%tr
+  %td
+    = link_to_card(card) do
+      = card.set_code.upcase
+  %td
+    = link_to_card(card) do
+      = card.number
+  %td
+    = link_to_card(card) do
+      = card.name
+  %td
+    = link_to_card(card) do
+      = format_oracle_text(card.display_mana_cost)
+  %td
+    = link_to_card(card) do
+      = card.typeline
+  %td
+    = link_to_card(card) do
+      = card.rarity.upcase[0,1]
+  %td
+    = link_to_card(card) do
+      = card.artist_name

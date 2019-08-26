@@ -4,22 +4,22 @@ describe "Regexp" do
   context "handles parse errors" do
     it "o:" do
       Query.new('o:/\d+/').warnings.should eq([])
-      Query.new('o:/[a-z/').warnings.should eq(["bad regular expression in o:/[a-z/ - premature end of char-class: /[a-z/i"])
+      Query.new('o:/[a-z/').warnings.should eq(["bad regular expression in o:/[a-z/ - premature end of char-class: /[a-z/mi"])
       Query.new('o:/[a-z]/').warnings.should eq([])
     end
 
     it "ft:" do
-      Query.new('FT:/[a-z/').warnings.should eq(["bad regular expression in FT:/[a-z/ - premature end of char-class: /[a-z/i"])
+      Query.new('FT:/[a-z/').warnings.should eq(["bad regular expression in FT:/[a-z/ - premature end of char-class: /[a-z/mi"])
       Query.new('FT:/[a-z]/').warnings.should eq([])
     end
 
     it "a:" do
-      Query.new('a:/[a-z/').warnings.should eq(["bad regular expression in a:/[a-z/ - premature end of char-class: /[a-z/i"])
+      Query.new('a:/[a-z/').warnings.should eq(["bad regular expression in a:/[a-z/ - premature end of char-class: /[a-z/mi"])
       Query.new('a:/[a-z]/').warnings.should eq([])
     end
 
     it "n:" do
-      Query.new('n:/[a-z/').warnings.should eq(["bad regular expression in n:/[a-z/ - premature end of char-class: /[a-z/i"])
+      Query.new('n:/[a-z/').warnings.should eq(["bad regular expression in n:/[a-z/ - premature end of char-class: /[a-z/mi"])
       Query.new('n:/[a-z]/').warnings.should eq([])
     end
   end

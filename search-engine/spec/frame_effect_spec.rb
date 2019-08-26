@@ -45,4 +45,13 @@ describe "frame effect queries" do
   it "frame:tombstone" do
     assert_search_equal "e:tor frame:tombstone", "e:tor (o:flashback or Ichorid)"
   end
+
+  it "is:fullart" do
+    assert_search_equal "is:fullart", "is:full"
+    assert_include_search "is:fullart", "t:basic e:ust,unh,ugl"
+  end
+
+  it "is:textless" do
+    assert_include_search "is:fullart", "e:p10"
+  end
 end

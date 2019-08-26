@@ -48,24 +48,31 @@ describe Deck do
 
     db.sets.each do |set_code, set|
       set.decks.each do |deck|
-        allowed_combinations.should include([set.type, deck.type])
+        (allowed_combinations & set.types.map{|st| [st, deck.type]}).should_not be_empty
       end
     end
   end
 
+  # This is not great
   let(:precon_sets) do
-    db.sets.select do |set_code, set|
-      # CM1 is a Commander product without precon decks
-      [
+    db
+      .sets
+      .values
+      .select{|set|
+        !([
         "archenemy", "commander", "duel deck", "planechase", "premium deck",
-      ].include?(set.type) and ![
-        "cm1", "opca", "oe01", "ohop", "phop", "oarc", "parc", "opc2",
-      ].include?(set_code)
-    end
+        ] & (set.types)).empty?
+      }
+      .select{|set|
+        ![
+          "cm1", "opca", "oe01", "ohop", "phop", "oarc", "parc", "opc2",
+          "ocmd", "oc13", "oc14", "oc15", "oc16", "oc17", "oc18"
+        ].include?(set.code)
+      }
   end
 
   it "precon decks have dates matching set release dates" do
-    precon_sets.each do |set_code, set|
+    precon_sets.each do |set|
       set.decks.each do |deck|
         deck.release_date.should eq(set.release_date), "#{deck.name} for #{set.name}"
       end
@@ -73,10 +80,10 @@ describe Deck do
   end
 
   it "cards in precon sets have no off-set cards" do
-    precon_sets.each do |set_code, set|
+    precon_sets.each do |set|
       sets_found = set.decks.flat_map(&:physical_cards).map(&:set).map(&:code).uniq
       # Contains some Amonkhet cards
-      case set_code
+      case set.code
       when "e01"
         sets_found.should match_array ["e01", "akh", "oe01"]
       when "hop"
@@ -86,7 +93,7 @@ describe Deck do
       when "pc2"
         sets_found.should match_array ["pc2", "opc2"]
       else
-        sets_found.should eq [set_code]
+        sets_found.should eq [set.code]
       end
     end
   end
@@ -95,25 +102,25 @@ describe Deck do
   # * we don't have any alt art information on decklist side (mostly for basic lands)
   # * we don't have any foil information, on either side
   it "cards in precon sets are all in their precon decks" do
-    precon_sets.each do |set_code, set|
+    precon_sets.each do |set|
       # Plane cards are technically not part of any precon in it
-      next if set_code == "pca"
+      next if set.code == "pca"
       # Contains some Amonkhet cards
-      next if set_code == "e01"
+      next if set.code == "e01"
 
       # All names match both ways
       set_card_names = set.physical_card_names
       deck_card_names = set.decks.flat_map(&:physical_card_names).uniq
 
       # Special cases
-      if set_code == "hop"
+      if set.code == "hop"
         # Release event promo
         set_card_names += db.sets["ohop"].physical_card_names
         set_card_names.should match_array deck_card_names
-      elsif set_code == "pc2"
+      elsif set.code == "pc2"
         set_card_names += db.sets["opc2"].physical_card_names
         set_card_names.should match_array deck_card_names
-      elsif set_code == "arc"
+      elsif set.code == "arc"
         set_card_names += db.sets["oarc"].physical_card_names
         set_card_names.should match_array deck_card_names
       else

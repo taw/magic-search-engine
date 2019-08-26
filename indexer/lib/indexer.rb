@@ -82,7 +82,7 @@ class Indexer
       "alternative_code",
       "online_only",
       "release_date",
-      "type",
+      "types",
     ).compact
   end
 
@@ -137,6 +137,7 @@ class Indexer
       PatchUrza,
       PatchFixPromoPrintDates,
       PatchMeldCardNames,
+      PatchSetTypes,
 
       # One more round of normalization, it throws away some information
       PatchNormalizeNames,
@@ -233,6 +234,7 @@ class Indexer
           "foiling",
           "frame_effect",
           "frame",
+          "fullart",
           "mtgo",
           "multiverseid",
           "number",
@@ -242,6 +244,8 @@ class Indexer
           "print_sheet",
           "rarity",
           "release_date",
+          "spotlight",
+          "textless",
           "watermark",
           "printedName",
           "originalType",

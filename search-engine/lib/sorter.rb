@@ -13,7 +13,7 @@ class Sorter
   attr_reader :warnings, :sort_order
 
   def initialize(sort_order, seed)
-    known_sort_orders = ["ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou"]
+    known_sort_orders = ["ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou", "artist", "released", "set"]
     known_sort_orders += known_sort_orders.map{|s| "-#{s}"}
 
     @seed = seed
@@ -50,9 +50,9 @@ class Sorter
         [c.set.regular? ? 0 : 1, -c.release_date_i]
       when "old", "-new"
         [c.set.regular? ? 0 : 1, c.release_date_i]
-      when "newall", "-oldall"
+      when "newall", "-oldall", "released"
         [-c.release_date_i]
-      when "oldall", "-newall"
+      when "oldall", "-newall", "-released"
         [c.release_date_i]
       when "cmc"
         [c.cmc ? 0 : 1, -c.cmc.to_i]
@@ -71,7 +71,11 @@ class Sorter
       when "number"
         [c.set.name, c.number.to_i, c.number]
       when "-number"
-        [c.set.name, -c.number.to_i, reverse_string_order(c.number)]
+        [reverse_string_order(c.set.name), -c.number.to_i, reverse_string_order(c.number)]
+      when "set"
+        [c.set_code, c.number.to_i, c.number]
+      when "-set"
+        [reverse_string_order(c.set_code), -c.number.to_i, reverse_string_order(c.number)]
       when "color"
         [COLOR_ORDER.fetch(c.colors)]
       when "-color"
@@ -88,6 +92,10 @@ class Sorter
         [c.name]
       when "-name"
         [reverse_string_order(c.name)]
+      when "artist"
+        [c.artist_name.downcase]
+      when "-artist"
+        [reverse_string_order(c.artist_name.downcase)]
       else # unknown key, should have been caught by initializer
         raise "Invalid sort order #{part}"
       end

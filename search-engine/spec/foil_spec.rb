@@ -37,8 +37,7 @@ describe "Foils" do
   end
 
   def assert_by_type(set)
-    case set.type
-    when "core", "expansion"
+    if !(set.types & ["core", "expansion"]).empty?
       booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
       if set.release_date >= urza_legacy_release_date
         assert_foiling(booster_cards, "both")
@@ -46,18 +45,20 @@ describe "Foils" do
         assert_foiling(booster_cards, "nonfoil")
       end
       assert_foiling_partial_precon(extra_cards)
-    when "masters", "spellbook", "reprint", "two-headed giant"
+    elsif !(set.types & ["masters", "spellbook", "reprint", "two-headed giant"]).empty?
       assert_foiling(set.printings, "both")
-    when "from the vault", "masterpiece", "premium deck"
+    elsif !(set.types & ["from the vault", "masterpiece", "premium deck"]).empty?
       assert_foiling(set.printings, "foilonly")
-    when "commander", "duel deck", "archenemy", "global series", "box", "board game deck", "planechase", "archenemy"
+    elsif !(set.types & ["commander", "duel deck", "archenemy", "global series", "box", "board game deck", "planechase", "archenemy"]).empty?
       if set.decks.empty?
         warn "Expected a deck for this product: #{set.code} #{set.name}"
       else
         assert_foiling_partial_precon(set.printings)
       end
+    elsif !(set.types & ["treasure chest"]).empty?
+      # does it really matter for non-paper?
     else
-      warn "No idea about #{set.name} / #{set.type}"
+      warn "No idea about #{set.name} / #{set.types.join(" / ")}"
     end
   end
 
@@ -66,9 +67,9 @@ describe "Foils" do
     # as that can mess up with other site functionality
     # For promo sets, just trust mtgjson without verifying anything
     db.sets.each do |set_code, set|
-      next if set.type == "promo"
-      next if set.type == "memorabilia"
-      next if set.type == "token"
+      next if set.types.include?("promo")
+      next if set.types.include?("memorabilia")
+      next if set.types.include?("token")
 
       case set.code
       when "g17", "g18"
@@ -124,7 +125,7 @@ describe "Foils" do
         misprint = extra_cards.select{|c| c.number =~ /†/}
         buy_a_box_promo = extra_cards.find{|c| c.name == "Rienne, Angel of Rebirth"}
         assert_foiling(booster_cards, "both")
-        warn "M20 lacks Welcome Decks, so can't verify precons"
+        # https://github.com/mtgjson/mtgjson/issues/429
         # assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, *misprint])
         assert_foiling([buy_a_box_promo], "foilonly")
         assert_foiling(misprint, "both")

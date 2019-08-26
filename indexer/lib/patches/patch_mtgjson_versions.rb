@@ -24,20 +24,6 @@ class PatchMtgjsonVersions < Patch
 
   def call
     each_set do |set|
-      if set["type"]
-        set["type"] = set["type"].gsub("_", " ")
-      end
-      case set["official_code"]
-      when "BBD"
-        set["type"] = "two-headed giant"
-      when "MH1"
-        set["type"] = "modern"
-      when "CNS", "CN2"
-        set["type"] = "conspiracy"
-      when "UGL", "UNH", "UST"
-        set["type"] = "un"
-      end
-
       # mtgjson v4 decided to make releaseDate per-set
       # that leads to need for a lot of BS adjustments
 
@@ -130,6 +116,9 @@ class PatchMtgjsonVersions < Patch
       end
 
       card["oversized"] = card.delete("isOversized")
+      card["spotlight"] = card.delete("isStorySpotlight")
+      card["fullart"] = card.delete("isFullArt")
+      card["textless"] = card.delete("isTextless")
 
       # Drop v3 layouts, use v4 layout here
       if card["layout"] == "plane" or card["layout"] == "phenomenon"

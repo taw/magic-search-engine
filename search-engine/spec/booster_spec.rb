@@ -1,11 +1,25 @@
 describe "is:booster" do
   include_context "db"
 
+  let(:set_types_with_boosters) do
+    Set[
+      "conspiracy",
+      "core",
+      "expansion",
+      "masters",
+      "modern",
+      "reprint",
+      "starter",
+      "two-headed giant",
+      "un",
+    ]
+  end
+
   it "set has boosters" do
     db.sets.each do |set_code, set|
-      set_pp = "#{set.name} [#{set.code}/#{set.type}]"
+      set_pp = "#{set.name} [#{set.code}]"
       should_have_boosters = (
-        ["expansion", "core", "un", "reprint", "conspiracy", "masters", "starter", "two-headed giant", "modern"].include?(set.type) and
+        !(set_types_with_boosters & set.types).empty? and
         !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana].include?(set.code)
       )
       if should_have_boosters

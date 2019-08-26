@@ -4,6 +4,6 @@ class ConditionFlavorRegexp < ConditionRegexp
   end
 
   def to_s
-    "ft:#{@regexp.inspect.sub(/i\z/, "")}"
+    "ft:#{@regexp.inspect.sub(/[im]+\z/, "")}"
   end
 end

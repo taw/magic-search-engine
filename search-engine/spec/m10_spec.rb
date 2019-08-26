@@ -29,17 +29,16 @@ describe "Magic 2010" do
   it "filter_colors" do
     assert_search_include "c:u", "Ponder"
     assert_search_include "c!u", "Ponder"
-    assert_search_include "c:ub", "Ponder"
-    assert_search_exclude "c:ucm", "Ponder" # Seriously?
+    "c:ub".should return_no_cards
+    assert_search_equal "c:ucm", "c:c" # Questionable
     assert_search_include "c:c", "Howling Mine"
     assert_search_exclude "c:g", "Ponder"
-    assert_search_include "c!bu", "Ponder"
-    "c:m".should return_no_cards # "Ponder"
+    "c!bu".should return_no_cards
+    "c:m".should return_no_cards
     assert_search_exclude "c:gcm", "Ponder"
 
     # Only true for core sets
-    assert_search_equal "c:c", "t:artifact"
-    assert_search_equal "c:l", "t:land"
+    assert_search_equal "c:c", "t:artifact or t:land"
   end
 
   it "filter_type" do

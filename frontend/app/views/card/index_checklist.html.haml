@@ -1,0 +1,27 @@
+- if @warnings.present?
+  .row
+    .col-12.warnings
+      - @warnings.each do |warning|
+        .warning= warning
+- if @search.present?
+  = render 'summary'
+  %table.checklist
+    %tr
+      %th
+        Set
+      %th
+        Number
+      %th
+        Name
+      %th
+        Cost
+      %th
+        Type
+      %th
+        Rarity
+      %th
+        Artist
+    - @cards.each do |card, printings|
+      = render 'card_checklist', card: card
+
+  = render "pagination", cards: @cards

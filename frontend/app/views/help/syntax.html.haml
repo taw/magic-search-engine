@@ -3,7 +3,13 @@
     %h3 Search Help
 
     %div
-      Most syntax from magiccards.info works here. Everything is case insensitive. All Unicode characters like "Æ" can be spelled with their plain equivalents like "Ae" as well.
+      Here are some examples.
+      Everything is case insensitive.
+      All Unicode characters like "Æ" can be spelled with their plain equivalents like "Ae" as well.
+
+    %div
+      Most syntax from other search engines works here.
+      If you have any suggestions for new useful syntax, feel free to contact me.
 
     %h4 Custom cards
     %ul
@@ -30,6 +36,8 @@
       = search_help "is:commander", "search cards you can play as commanders (legendary creatures or planeswalkers with ability saying so)"
       = search_help "is:brawler", "search cards you can play as Brawl commanders (legendary creatures or planeswalkers)"
       = search_help "is:historic", "search for historic cards (legendary, artifact, and/or Saga)"
+      = search_help "is:modal", "search modal cards"
+      = search_help "is:vanilla", "search vanilla cards"
 
     %h4 Search by Oracle text
     %div Reminder text is not included in Oracle search
@@ -54,41 +62,47 @@
       = search_help %Q[b:"return to ravnica"], %Q[cards from "Return to Ravnica" block]
       = search_help "b:isd,soi", "cards from Innistrad and Shadow of Innistrad blocks"
 
-    %h4 Search by color expression
+    %h4 Search by color
+    %div
+      Color expressions are supported, with either list of colors, number of colors, or common aliases
+
     %ul
       = search_help "c=w", "cards which are exactly white"
       = search_help "c=gr", "cards which are exactly green and red"
       = search_help "c>=gr", "cards which are at least green and red"
       = search_help "c<=gr", "cards which are at most green and red"
       = search_help "c=4", "cards which are exactly 4 colors"
+      = search_help "c=boros", "cards which are exactly red and white (Boros), same as <code>c=rw</code>"
+      = search_help "c=abzan", "cards which are exactly white, black, and green (Abzan), same as <code>c=wbg</code>"
+
+    %div
+      In addition to these, there are special color queries.
+    %ul
+      = search_help "c:c", "colorless cards, same as <code>c=0</code>"
+      = search_help "c:m", "multicolored cards, same as <code>c>1</code>"
+
+    %h4 Search by color identity
+    %div
+      You can search by color identity same way you can search by color.
+      If you want to find cards legal in your Commander deck, you usually want <code>ci<=temur</code> style query.
+      If you want a Commander of specific identity, you usually want <code>ci=temur</code> style query.
+
+    %ul
       = search_help "ci=w", "cards whose identity is exactly white"
       = search_help "ci=gr", "cards whose identity is exactly green and red"
       = search_help "ci>=gr", "cards whose identity is at least green and red"
       = search_help "ci<=gr", "cards whose identity is at most green and red"
       = search_help "ci>=3", "cards whose identity is 3 or more colors"
-
-    %h4 Search by color
-    %ul
-      = search_help "c:w", "white cards (possibly also other colors)"
-      = search_help "c!w", "white cards (no other colors)"
-      = search_help "c:c", "colorless nonland cards"
-      = search_help "c:l", "colorless land cards"
-      = search_help "c:m", "multicolored cards"
-      = search_help "c:wu", "blue or white cards"
-      = search_help "c!wu", "blue or white cards (but no other colors)"
-
-    %h4 Search by color identity
-    %ul
-      = search_help "ci:rg", "cards with color identity allowed in red/green commander deck"
-      = search_help "ci:c", "cards with color identity allowed in colorless commander deck"
+      = search_help "ci=temur", "cards whose identity is exactly blue, red, and green (Temur)"
 
     %h4 Search by color indicator
     %ul
-      = search_help "in:rg", "cards with color indicator exactly reg/green"
-      = search_help "in:r", "cards with color indicator exactly red"
-      = search_help "in:wubrg", "cards with color indicator exactly wubrg"
-      = search_help "in>=r", "cards with color indicator including red"
-      = search_help "in:*", "cards with any color indicator"
+      = search_help "ind:rg", "cards with color indicator exactly reg/green"
+      = search_help "ind:r", "cards with color indicator exactly red"
+      = search_help "ind:wubrg", "cards with color indicator exactly wubrg"
+      = search_help "ind>=r", "cards with color indicator including red"
+      = search_help "ind:*", "cards with any color indicator"
+      = search_help "has:indicator", "cards with any color indicator"
 
     %h4 Search by converted mana cost
     %ul
@@ -107,8 +121,13 @@
       = search_help "mana={3}{u}{u}", "cards with mana cost {3}{u}{u}"
       = search_help "mana>={b/g}", "cards with mana cost including {b/g} hybrid mana"
       = search_help "mana>={2/r}", "cards with mana cost including {2/r} Shadowmoor hybrid mana"
-      = search_help "mana={p/r}", "cards with mana cost equal {p/r} Phyrexian mana"
+      = search_help "mana={r/p}", "cards with mana cost equal {r/p} Phyrexian mana"
       = search_help "mana!=2gr", "cards with mana cost different from {2}{g}{r} (or no mana cost)"
+      = search_help "mana>={x}", "cards with mana cost including {x}"
+      = search_help "mana>={s}", "cards with mana cost including {s}"
+      = search_help "mana>={c}", "cards with mana cost including {c}"
+      = search_help "is:hybrid", "has hybrid mana cost"
+      = search_help "is:phyrexian", "has Phyrexian mana cost"
 
     %div This search supports variable symbols: "m", "n", and "o" each represent a single mana of any color but must each differ from the others; "h" represents a single hybrid mana.
     %ul
@@ -200,6 +219,7 @@
       = search_help "w:izzet", "cards with Izzet watermark (Return to Ravnica block)"
       = search_help "w:phyrexian", "cards with Phyrexian watermark (Scars of Mirrodin block)"
       = search_help "w:*", "cards with any watermark"
+      = search_help "has:watermark", "cards with any watermark"
       = search_help "-w:*", "cards with no watermark"
 
     %h4 Search by card frame features
@@ -217,6 +237,7 @@
       = search_help "is:future", "cards with future-style frames"
       = search_help "is:holofoil", "cards with holographic foil"
       = search_help "is:timeshifted", "timeshifted cards"
+      = search_help "is:colorshifted", "colorshifted cards"
       = search_help "is:split", "split cards"
       = search_help "is:flip", "flip cards (Kamigawa)"
       = search_help "is:dfc", "double-faced cards"
@@ -238,7 +259,15 @@
       = search_help "number:117", "cards with collector number 117 (old cards, promos etc. have arbitrarily assiged unique numbers)"
       = search_help "is:partner", "is a partner"
       = search_help "has:partner", "has a partner card"
-      = search_help "frame:legendary", "has frame effect legendary. Other alues are <code>compasslanddfc<code>, </code>devoid<code>, </code>miracle<code>, </code>mooneldrazidfc<code>, </code>nyxtouched<code>, </code>originpwdfc<code>, </code>sunmoondfc<code>, </code>tombstone</code>"
+      = search_help "frame:legendary", "has frame effect <code>legendary</code>. Other values are <code>compasslanddfc</code>, <code>devoid</code>, <code>miracle</code>, <code>mooneldrazidfc</code>, <code>nyxtouched</code>, <code>originpwdfc</code>, <code>sunmoondfc</code>, <code>tombstone</code>"
+      = search_help "is:fullart", "is full art card"
+      = search_help "is:textless", "is textless card"
+      = search_help "is:spotlight", "is Story Spotlight"
+      = search_help "is:foil", "has foil version"
+      = search_help "is:nonfoil", "has nonfoil version"
+      = search_help "is:foilonly", "has only foil version"
+      = search_help "is:nonfoilonly", "has onlyy nonfoil version"
+      = search_help "is:foilboth", "has both foil and nonfoil versions"
 
     %h4 Search by card nickname
     %div A few common nicknames are supported as queries.
@@ -265,6 +294,12 @@
       = search_help "is:scryland o:{g}", "all green scrylands"
       = search_help "is:battleland", "all 5 battlelands"
       = search_help "is:battleland t:island", "both blue battlelands"
+      = search_help "is:canopyland", "all 6 canopylands"
+      = search_help "is:guildgate", "all 10 guildgates"
+      = search_help "is:painland", "all 10 painlands"
+      = search_help "is:shadowland", "all 5 shadowlands"
+      = search_help "is:storageland", "all 12 storagelands"
+      = search_help "is:triland", "all 10 tri-colored lands"
       = search_help "is:augment", "all 13 augment cards from Unstable"
       = search_help "is:keywordsoup", "cards that list a large number of keywords"
 
@@ -349,6 +384,31 @@
       = search_help 'a:/.{40}/', "cards with artist credit of 40 or more characters"
       = search_help 'n:/.{30}/', "cards with names of 30 or more characters"
 
+    %h4 Search by game
+    %ul
+      = search_help "game:paper", "cards available as tournament-legal paper cards (not oversized or gold-bordered)"
+      = search_help "game:mtgo", "cards available on Magic: The Gathering Online"
+      = search_help "game:arena", "cards available on Arena"
+      = search_help "not:paper", "cards not available as tournament-legal paper cards"
+      = search_help "not:mtgo", "cards not available on Magic: The Gathering Online"
+      = search_help "not:arena", "cards not available on Arena"
+
+    %h4 Search by at least one printing with given property
+    %div
+      Search engine generally operates printing by printing,
+      but sometimes you might want to search for card properties between printings.
+      <code>in:</code> operator matches any card with at least one printing of given property.
+    %ul
+      = search_help "in:m10 in:m11", "card that were in both Magic 2010 and Magic 2011"
+      = search_help "in:core in:commander", "card that were in both a core set, and in a Commander set"
+      = search_help "in:common in:mythic", "card that was printed both as a common and as a mythic rare"
+      = search_help "in:foil", "card with any foil version"
+      = search_help "in:nonfoil", "card with any non-foil version"
+      = search_help "in:booster", "card with any version in boosters"
+      = search_help "in:paper", "cards with any printing available as tournament-legal paper cards (not oversized or gold-bordered)"
+      = search_help "in:mtgo", "cards with any printing available on Magic: The Gathering Online"
+      = search_help "in:arena", "cards with any printing available on Arena"
+
     %h4 Search in preconstructed deck
     %ul
       = search_help 'deck:"Feline Ferocity"', "cards in Feline Ferocity deck (Commander 2017)"
@@ -378,9 +438,11 @@
       = search_help "sort:newall", "sort results by most recent first, counting all printings"
       = search_help "sort:old", "sort results by oldest first, counting only regular sets for sake of order"
       = search_help "sort:oldall", "sort results by oldest first, counting all printings"
+      = search_help "sort:artist", "sort results by artist"
       = search_help "sort:cmc", "sort results by converted mana cost (highest first)"
       = search_help "sort:pow", "sort results by power (highest first)"
       = search_help "sort:tou", "sort results by toughness (highest first)"
+      = search_help "sort:set", "sort results by set code and collector number"
       = search_help "sort:number", "sort results by set name and collector number"
       = search_help "sort:color", "sort results by color"
       = search_help "sort:ci", "sort results by color identity"
@@ -396,6 +458,7 @@
       = search_help "t:dragon view:full", "search for Dragons, display results in full detail"
       = search_help "t:dragon view:images", "search for Dragons, display results as just images"
       = search_help "t:dragon view:text", "search for Dragons, display results as just text"
+      = search_help "t:dragon view:checklist", "search for Dragons, display results as just checklist"
 
     %h4 Name comparison
     %div To help with spoiler season number crunch you can now see which cards could possibly fit in a gap.

@@ -3,14 +3,14 @@ describe "Indexer Fixes Test" do
 
   it "rqs" do
     %W[basic common uncommon rare].each do |rarity|
-      (search("e:rqs r:#[rarity}") - search("e:4e r:#[rarity}")).should be_empty
+      (search_names("e:rqs r:#{rarity}") - search_names("e:4e r:#{rarity}")).should be_empty
     end
     search("e:rqs -r:rare -r:uncommon -r:common -r:basic").should be_empty
   end
 
   it "itp" do
     %W[basic common uncommon rare].each do |rarity|
-      (search("e:rqs r:#[rarity}") - search("e:4e r:#[rarity}")).should be_empty
+      (search_names("e:rqs r:#{rarity}") - search_names("e:4e r:#{rarity}")).should be_empty
     end
     search("e:itp -r:rare -r:uncommon -r:common -r:basic").should be_empty
   end

@@ -53,4 +53,15 @@ BanList.for_format("pauper") do
     "Gitaxian Probe" => "banned",
     "Daze" => "banned",
   )
+
+  # No banlist date as such, but:
+  # "Magic Online will implement the new format with its Core Set 2020 update
+  #  and will launch new leagues with the new format starting July 2."
+  change(
+    "2019-07-02",
+    "https://magic.wizards.com/en/articles/archive/news/pauper-comes-paper-2019-06-27",
+    "Hymn to Tourach" => "banned",
+    "Sinkhole" => "banned",
+    "High Tide" => "banned",
+  )
 end

@@ -46,7 +46,7 @@ class QueryTokenizer
             "oracle" => ConditionOracleRegexp,
             "number"  => ConditionNumberRegexp,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
-          rx = Regexp.new(s[2], Regexp::IGNORECASE)
+          rx = Regexp.new(s[2], Regexp::IGNORECASE | Regexp::MULTILINE)
           tokens << [:test, cond.new(rx)]
         rescue RegexpError => e
           cond = {
@@ -80,7 +80,7 @@ class QueryTokenizer
           @warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, ConditionForeign.new(s[1], s[2])]
         end
-      elsif s.scan(/t\s*[:=]\s*(?:"(.*?)"|([’'\-\u2212\p{L}\p{Digit}_\*]+))/i)
+      elsif s.scan(/(?:t|type)\s*[:=]\s*(?:"(.*?)"|([’'\-\u2212\p{L}\p{Digit}_\*]+))/i)
         tokens << [:test, ConditionTypes.new(s[1] || s[2])]
       elsif s.scan(/(?:ft|flavor)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionFlavor.new(s[1] || s[2])]
@@ -99,7 +99,7 @@ class QueryTokenizer
         op = s[1]
         op = "=" if op == ":"
         tokens << [:test, ConditionNameComparison.new(op, s[2] || s[3])]
-      elsif s.scan(/(?:e|set)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+      elsif s.scan(/(?:e|set|edition)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         sets = [s[1] || s[2]]
         sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionEdition.new(*sets)]
@@ -111,29 +111,30 @@ class QueryTokenizer
         tokens << [:test, ConditionFormat.new(s[1] || s[2])]
       elsif s.scan(/deck\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_\-]+))/i)
         tokens << [:test, ConditionDeck.new(s[1] || s[2])]
-      elsif s.scan(/b\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+      elsif s.scan(/(?:b|block)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         blocks = [s[1] || s[2]]
         blocks << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionBlock.new(*blocks)]
       elsif s.scan(/st\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionSetType.new(s[1] || s[2])]
-      elsif s.scan(/(c|ci|color|id|in|identity|indicator)\s*(>=|>|<=|<|=)\s*(?:"(\d+)"|(\d+))/i)
+      elsif s.scan(/(c|ci|color|id|ind|identity|indicator)\s*(>=|>|<=|<|=|:)\s*(?:"(\d+)"|(\d+))/i)
         kind = s[1].downcase
         kind = "c" if kind == "color"
-        kind = "in" if kind == "indicator"
+        kind = "ind" if kind == "indicator"
         kind = "ci" if kind == "id"
         kind = "ci" if kind == "identity"
-        tokens << [:test, ConditionColorCountExpr.new(kind, s[2], s[3] || s[4])]
+        cmp = s[2]
+        cmp = "=" if cmp == ":"
+        color = s[3] || s[4]
+        tokens << [:test, ConditionColorCountExpr.new(kind, cmp, color)]
       elsif s.scan(/(?:c|color)\s*:\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionColors.new(parse_color(s[1] || s[2]))]
       elsif s.scan(/(?:ci|id|identity)\s*[:!]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionColorIdentity.new(parse_color(s[1] || s[2]))]
-      elsif s.scan(/(?:in|indicator)\s*:\s*\*/i)
+      elsif s.scan(/(?:ind|indicator)\s*:\s*\*/i)
         tokens << [:test, ConditionColorIndicatorAny.new]
-      elsif s.scan(/(?:in|indicator)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+      elsif s.scan(/(?:ind|indicator)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionColorIndicator.new(parse_color(s[1] || s[2]))]
-      elsif s.scan(/c!(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
-        tokens << [:test, ConditionColorsExclusive.new(parse_color(s[1] || s[2]))]
       elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([\-[\p{L}\p{Digit}_]+]+))/i)
         op = s[2]
         op = "=" if op == ":"
@@ -157,39 +158,122 @@ class QueryTokenizer
         b = s[3].downcase
         b = aliases[b] || b
         tokens << [:test, ConditionExpr.new(a, op, b)]
-      elsif s.scan(/(c|ci|id|in|color|identity|indicator)\s*(>=|>|<=|<|=)\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+      elsif s.scan(/(c|ci|id|ind|color|identity|indicator)\s*(>=|>|<=|<|=|!)\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         kind = s[1].downcase
         kind = "c" if kind == "color"
         kind = "ci" if kind == "id"
         kind = "ci" if kind == "identity"
-        kind = "in" if kind == "indicator"
-        tokens << [:test, ConditionColorExpr.new(kind, s[2], parse_color(s[3] || s[4]))]
+        kind = "ind" if kind == "indicator"
+        cmp = s[2]
+        cmp = "=" if cmp == "!"
+        tokens << [:test, ConditionColorExpr.new(kind, cmp, parse_color(s[3] || s[4]))]
       elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})*)/i)
         op = s[1]
         op = "=" if op == ":"
         mana = s[2]
         tokens << [:test, ConditionMana.new(op, mana)]
-      elsif s.scan(/(is|not)\s*[:=]\s*(vanilla|spell|permanent|funny|timeshifted|colorshifted|reserved|multipart|promo|primary|secondary|front|back|commander|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|creatureland|scryland|battleland|guildgate|karoo|painland|triland|canopyland|shadowland|storageland|tangoland|canland|phyrexian|hybrid|augment|unique|booster|draft|historic|holofoil|foilonly|nonfoilonly|foil|nonfoil|foilboth|brawler|keywordsoup|partner|oversized|errata|custom)\b/i)
+      elsif s.scan(/(is|not)\s*[:=]\s*(vanilla|spell|permanent|funny|timeshifted|colorshifted|reserved|multipart|promo|primary|secondary|front|back|commander|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|creatureland|scryland|battleland|guildgate|karoo|painland|triland|canopyland|shadowland|storageland|tangoland|canland|phyrexian|hybrid|augment|unique|booster|draft|historic|holofoil|foilonly|nonfoilonly|foil|nonfoil|foilboth|brawler|keywordsoup|partner|oversized|spotlight|modal|textless|fullart|full|errata|custom)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         cond = s[2].capitalize
         cond = "Bounceland" if cond == "Karoo"
         cond = "Manland" if cond == "Creatureland"
         cond = "Battleland" if cond == "Tangoland"
         cond = "Canopyland" if cond == "Canland"
+        cond = "Fullart" if cond == "Full"
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
       elsif s.scan(/has:(partner|watermark|indicator)\b/)
         cond = s[1].capitalize
         klass = Kernel.const_get("ConditionHas#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|dfc|double-faced|token|split|flip|plane|scheme|phenomenon|meld|aftermath|saga|planar|augment|host)\b/i)
+      elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|dfc|double-faced|transform|token|split|flip|plane|scheme|phenomenon|meld|aftermath|saga|planar|augment|host)\b/i)
         tokens << [:not] if s[1].downcase == "not"
-        tokens << [:test, ConditionLayout.new(s[2])]
+        kind = s[2].downcase
+        kind = "double-faced" if kind == "transform"
+        kind = "double-faced" if kind == "dfc"
+        # mtgjson v3 vs v4 differences
+        kind = "planar" if kind == "plane"
+        kind = "planar" if kind == "phenomenon"
+        tokens << [:test, ConditionLayout.new(kind)]
       elsif s.scan(/(is|not|game)\s*[:=]\s*(paper|arena|mtgo)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         cond = s[2].capitalize
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
+      elsif s.scan(/in\s*[:=]\s*(paper|arena|mtgo|foil|nonfoil|booster)\b/i)
+        cond = s[1].capitalize
+        klass = Kernel.const_get("ConditionIn#{cond}")
+        tokens << [:test, klass.new]
+      elsif s.scan(/in\s*[:=]\s*(basic|common|uncommon|rare|mythic|special)\b/i)
+        kind = s[1].downcase
+        tokens << [:test, ConditionInRarity.new(kind)]
+      elsif s.scan(/in\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+        # This needs to be last after all other in:
+        sets = [s[1] || s[2]]
+        sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+        sets = sets.map(&:downcase)
+
+        # Does it look like a set type?
+        # We have a list
+        # Commented out things are also set codes so they take priority
+        #
+        # It's a bit awkward as both set lists and set types lists are in db
+        # and we don't have access to it here
+        set_types = [
+          "2hg",
+          # "arc",
+          "archenemy",
+          "booster",
+          "box",
+          # "cmd",
+          # "cns",
+          "commander",
+          "conspiracy",
+          "core",
+          "dd",
+          "deck",
+          "duel deck",
+          "duels",
+          "ex",
+          "expansion",
+          "fixed",
+          # "fnm", # this one doesn't have longer alternative form :-/
+          "from the vault",
+          "ftv",
+          "funny",
+          "judge gift",
+          "masterpiece",
+          "masters",
+          "me",
+          "memorabilia",
+          "modern",
+          "multiplayer",
+          "pc",
+          "pds",
+          "planechase",
+          "portal",
+          "premium deck",
+          "promo",
+          "spellbook",
+          "st",
+          "standard",
+          "starter",
+          "std",
+          "token",
+          "treasure chest",
+          "two-headed giant",
+          "un",
+          "unset",
+          "vanguard",
+          "wpn",
+          "instore",
+        ]
+
+        if sets.size == 1 and set_types.include?(sets[0].tr("_", " "))
+          tokens << [:test, ConditionInSetType.new(sets[0])]
+        else
+          tokens << [:test, ConditionInEdition.new(*sets)]
+        end
       elsif s.scan(/(is|frame|not)\s*[:=]\s*(compasslanddfc|colorshifted|devoid|legendary|miracle|mooneldrazidfc|nyxtouched|originpwdfc|sunmoondfc|tombstone)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrameEffect.new(s[2].downcase)]
@@ -247,20 +331,11 @@ private
 
   def parse_color(color_text)
     color_text = color_text.downcase
-    return color_text if color_text =~ /\A[wubrgcml]+\z/
-    case color_text
-    when "white"
-      "w"
-    when "blue"
-      "u"
-    when "black"
-      "b"
-    when "red"
-      "r"
-    when "green"
-      "g"
+    if Color::Names[color_text]
+      Color::Names[color_text]
     else
-      fixed = color_text.gsub(/[^wubrgcml]/, "")
+      return color_text if color_text =~ /\A[wubrgcm]+\z/
+      fixed = color_text.gsub(/[^wubrgcm]/, "")
       @warnings << "Unrecognized color query: #{color_text.inspect}, correcting to #{fixed.inspect}"
       fixed
     end

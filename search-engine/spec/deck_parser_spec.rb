@@ -48,7 +48,7 @@ describe DeckParser do
       # Do we need more mountains?
       20x Mountain
 
-      sideboard
+      sideboard:
         # try this
       Taiga
         // and that

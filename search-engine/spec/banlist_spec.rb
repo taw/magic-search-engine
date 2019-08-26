@@ -5,7 +5,10 @@ describe "Banlist" do
 
   it "banlist_2019" do
     assert_banlist_changes "July 2019",
-      "modern banned", "Bridge from Below"
+      "modern banned", "Bridge from Below",
+      "pauper banned", "Hymn to Tourach",
+      "pauper banned", "Sinkhole",
+      "pauper banned", "High Tide"
 
     assert_banlist_changes "May 2019",
       "pauper banned", "Gush",

@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data for same sets,
   # indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(19972)
-    db.number_of_printings.should eq(44466)
+    db.number_of_cards.should eq(20031)
+    db.number_of_printings.should eq(44771)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -152,9 +152,7 @@ describe "Full Database Test" do
       "Explosive Apparatus",
       "Flameblade Angel",
       "Forsaken Sanctuary",
-      "Foul Orchard",
       "Grotesque Mutation",
-      "Highland Lake",
       "Incorrigible Youths",
       "Insidious Mist",
       "Jace, Unraveler of Secrets",
@@ -167,13 +165,11 @@ describe "Full Database Test" do
       "Ravenous Bloodseeker",
       "Rush of Adrenaline",
       "Soul Swallower",
-      "Stone Quarry",
       "Thornhide Wolves",
       "Triskaidekaphobia",
       "Vampire Noble",
       "Vessel of Nascency",
-      "Warped Landscape",
-      "Woodland Stream"
+      "Warped Landscape"
   end
 
   it "firstprint" do
@@ -372,7 +368,7 @@ describe "Full Database Test" do
 
   it "comma separated set list" do
     assert_search_equal "e:cmd or e:cm1 or e:c13 or e:c14 or e:c15 or e:c16 or e:c17 or e:c18 or e:cma or e:cm2", "e:cmd,cm1,c13,c14,c15,c16,c17,c18,cma,cm2"
-    assert_search_equal "st:cmd -alt:-st:cmd", "e:cmd,cm1,c13,c14,c15,c16,c17,c18,cma,cm2 -alt:-e:cmd,cm1,c13,c14,c15,c16,c17,c18,cma,cm2"
+    assert_search_equal "st:portal -alt:-st:portal", "e:por,p02,ptk -alt:-e:por,p02,ptk"
   end
 
   it "comma separated block list" do

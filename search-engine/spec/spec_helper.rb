@@ -61,6 +61,16 @@ RSpec::Matchers.define :return_no_cards do
   end
 end
 
+RSpec::Matchers.define :return_some_cards do
+  match do |query_string|
+    search(query_string) != []
+  end
+
+  failure_message do |query_string|
+    "Expected `#{query_string}' to have some results, but got nothing"
+  end
+end
+
 RSpec::Matchers.define :return_cards do |*cards|
   match do |query_string|
     search_names(query_string).sort == cards.sort
@@ -77,21 +87,6 @@ RSpec::Matchers.define :return_cards do |*cards|
   end
 end
 
-RSpec::Matchers.define :return_cards_in_order do |*cards|
-  match do |query_string|
-    search_names(query_string) == cards
-  end
-
-  # TODO: Better error message here
-  failure_message do |query_string|
-    results = search_names(query_string)
-    "Expected `#{query_string}' to return:\n" +
-      cards.map{|c| "* #{c}\n"}.join +
-    "\nInstead got:\n" +
-      results.map{|c| "* #{c}\n"}.join
-  end
-end
-
 RSpec::Matchers.define :equal_search do |query_string2|
   match do |query_string1|
     results1 = search(query_string1)
@@ -104,6 +99,29 @@ RSpec::Matchers.define :equal_search do |query_string2|
     results2 = search(query_string2)
     if results1 != results2
       "Expected `#{query_string1}' and `#{query_string2}' to return same results, got:\n"+
+        (results1 | results2).sort.map{|c|
+        (results1.include?(c) ? "[*]" : "[ ]") +
+        (results2.include?(c) ? "[*]" : "[ ]") +
+        "#{c}\n"
+      }.join
+    else
+      "Test is unreliable because results are empty: #{query_string1}"
+    end
+  end
+end
+
+RSpec::Matchers.define :include_search do |query_string2|
+  match do |query_string1|
+    results1 = search(query_string1)
+    results2 = search(query_string2)
+    results1 != [] and results2 != [] and results1.to_set >= results2.to_set
+  end
+
+  failure_message do |query_string1|
+    results1 = search(query_string1)
+    results2 = search(query_string2)
+    if results1 != results2
+      "Expected `#{query_string1}' to include all results from `#{query_string2}', got:\n"+
         (results1 | results2).sort.map{|c|
         (results1.include?(c) ? "[*]" : "[ ]") +
         (results2.include?(c) ? "[*]" : "[ ]") +
@@ -179,33 +197,43 @@ shared_context "db" do |*sets|
   def assert_search_results(query, *cards)
     query.should return_cards(*cards)
   end
+
   def assert_search_include(query, *cards)
     query.should include_cards(*cards)
   end
+
+  def assert_include_search(query1, query2)
+    query1.should include_search(query2)
+  end
+
   def assert_search_exclude(query, *cards)
     query.should exclude_cards(*cards)
   end
+
   def assert_search_equal(query1, query2)
     query1.should equal_search(query2)
   end
+
   def assert_search_equal_cards(query1, query2)
     query1.should equal_search_cards(query2)
   end
+
   def assert_search_differ(query1, query2)
     query1.should_not equal_search(query2)
   end
+
   def assert_search_differ_cards(query1, query2)
     query1.should_not equal_search_cards(query2)
   end
+
   def assert_count_cards(query, count)
     query.should have_count_cards(count)
   end
+
   def assert_count_printings(query, count)
     query.should have_count_printings(count)
   end
-  def assert_search_results_ordered(query, *results)
-    query.should return_cards_in_order(*results)
-  end
+
   def assert_full_banlist(format, time, banned_cards, restricted_cards=[])
     time = Date.parse(time)
     expected_banlist = Hash[
@@ -215,6 +243,7 @@ shared_context "db" do |*sets|
     actual_banlist = BanList[format].full_ban_list(time)
     expected_banlist.should eq(actual_banlist)
   end
+
   def assert_banlist_changes(date, *changes)
     prev_date = Date.parse(date)
     this_date = (prev_date >> 1) + 5
@@ -223,6 +252,7 @@ shared_context "db" do |*sets|
       assert_banlist_change prev_date, this_date, $1, $2, card
     end
   end
+
   def assert_banlist_change(prev_date, this_date, format, change, card)
     if format == "vintage+"
       change_legacy = change
@@ -263,6 +293,7 @@ shared_context "db" do |*sets|
       raise "Unknown transition `#{change}'"
     end
   end
+
   def assert_banlist_status(date, format, expected_legality, card_name)
     if date.is_a?(Date)
       dsc = "#{date}"

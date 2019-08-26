@@ -10,6 +10,7 @@ class ConditionIsKeywordsoup < Condition
       "greater morphling",
       "majestic myriarch",
       "odric, lunarch marshal",
+      "rayami, first of the fallen",
       "soulflayer",
       # custom
       "atares amplifier",

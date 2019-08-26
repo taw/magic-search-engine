@@ -1,9 +1,11 @@
 describe "Formats - Frontier" do
   include_context "db"
 
-  let(:regular_sets) { db.sets.values.select{|s|
-    s.type == "core" or s.type == "expansion" or s.name =~ /Welcome Deck/
-  }.to_set }
+  let(:regular_sets) do
+    db.sets.values.select{|s|
+      s.types.include?("core") or s.types.include?("expansion") or s.name =~ /Welcome Deck/
+    }.to_set
+  end
 
   describe "Frontier legal sets" do
     let(:start_date) { db.sets["m15"].release_date }

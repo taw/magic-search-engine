@@ -1,7 +1,9 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date
-  attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border, :printed_name, :printed_text, :printed_typeline
-  attr_reader :rarity_code, :print_sheet, :partner, :oversized, :frame_effect, :foiling
+  attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border
+  attr_reader :rarity_code, :print_sheet, :partner, :oversized, :frame_effect, :foiling, :spotlight
+  attr_reader :textless, :fullart
+  attr_reader :printed_name, :printed_text, :printed_typeline
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
@@ -44,6 +46,9 @@ class CardPrinting
     @print_sheet = data["print_sheet"]
     @partner = data["partner"]
     @oversized = data["oversized"]
+    @spotlight = data["spotlight"]
+    @fullart = data["fullart"]
+    @textless = data["textless"]
 
     @paper = data["paper"]
     @arena = data["arena"]
@@ -88,10 +93,6 @@ class CardPrinting
 
   def year
     @release_date.year
-  end
-
-  def set_type
-    @set.type
   end
 
   # This is a bit too performance-critical to use method_missing

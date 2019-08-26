@@ -1,23 +1,18 @@
 # Examples from https://scryfall.com/docs/syntax
 # and how they work on mtg.wtf
+#
+# This spec is not really maintained, and parts should probably be moved around
 describe "Scryfall" do
   include_context "db"
 
-  it "crg_and_or" do
-    # we follow MCI style AND
-    assert_search_equal "c:rg", "c:r OR c:g"
-    # scryfall follows AND
-    assert_search_differ "c:rg", "c:r AND c:g"
-    # It's arguable which behaviour is better
+  it "c:rg is and" do
+    assert_search_equal "c:rg", "c:r AND c:g"
   end
 
-  # scryfall supports "c:red" too
-  # should I add that?
-  it "color_alias" do
-    # color: is alias for c:
-    assert_search_equal "color:uw -c:r", "(c:u OR c:w) -c:r"
-    # it's still OR, not AND
-    assert_search_differ "color:uw -c:r", "(c:u AND c:w) -c:r"
+  it "color: alias" do
+    assert_search_equal "color:uw", "c:uw"
+    assert_search_equal "color:red", "c:red"
+    assert_search_equal "color:mardu", "c:mardu"
   end
 
   it "colorless" do
@@ -86,7 +81,7 @@ describe "Scryfall" do
       "Taurean Mauler"
   end
 
-  it "tribal_type" do
+  it "tribal type" do
     # scryfall includes changelings as every creature type
     assert_search_include "t:goblin -t:creature",
       "Tarfire"
@@ -94,7 +89,7 @@ describe "Scryfall" do
       "Ego Erasure"
   end
 
-  it "banned_commander" do
+  it "banned commander" do
     # scryfall does the silly thing of counting conspiracies
     # as "banned" instead of as non-cards
     assert_search_include "banned:commander",
@@ -329,14 +324,10 @@ describe "Scryfall" do
       "Azorius Chancery",      # land with uw color identity
       "Agent of Horizons",     # g card with gu color identity
       "Turn", "Burn"           # split card with ur color identity
-
   end
 
   it "br_spell_standard" do
-    # MCI/mtg.wtf c: works as OR
-    # scryfall c: works as AND
-
-    assert_search_equal "c:br is:spell f:standard", "(c:b or c:r) is:spell f:standard"
+    assert_search_equal "c:br is:spell f:standard", "(c:b and c:r) is:spell f:standard"
   end
 
   it "ignore_plusplus" do
@@ -397,7 +388,7 @@ describe "Scryfall" do
       "Paper Tiger" # uncard
   end
 
-  it "oracle_ignores_reminder_text" do
+  it "oracle ignores reminder text" do
     # scryfall repeating MCI's mistakes and not cleaning up reminder text
     assert_search_include 'o:"draw" t:creature',
       "Abomination of Gudul"

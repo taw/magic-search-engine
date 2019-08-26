@@ -19,7 +19,7 @@ class ConditionForeignRegexp < ConditionRegexp
   end
 
   def to_s
-    "#{@lang}:#{@regexp.inspect.sub(/i\z/, "")}"
+    "#{@lang}:#{@regexp.inspect.sub(/[im]+\z/, "")}"
   end
 
   private
