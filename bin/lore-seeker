@@ -156,7 +156,7 @@ def run(*, do_name_check=True, path=None, port=18803, verbose=False):
             #cmd(['bundle', 'update'], cwd=str(path / 'search-engine'), announce=verbose) # skipped due to Ruby incompatibility issues
             cmd(['bundle', 'install'], cwd=str(path / 'frontend'), announce=verbose)
             #cmd(['bundle', 'update'], cwd=str(path / 'frontend'), announce=verbose) # skipped due to Ruby incompatibility issues
-            cmd(['rake', 'db:migrate', 'assets:precompile'], env=env, cwd=str(path / 'frontend'), announce=verbose)
+            cmd(['bundle', 'exec', 'rake', 'db:migrate', 'assets:precompile'], env=env, cwd=str(path / 'frontend'), announce=verbose)
     except Exception as e:
         notify_crash(e)
         raise
