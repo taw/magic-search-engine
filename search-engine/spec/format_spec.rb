@@ -7,7 +7,7 @@ describe "Formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
-      %Q[e:xln,rix,dom,m19,grn,rna,war,m20 -"Rampaging Ferocidon"]
+      %Q[e:xln,rix,dom,m19,grn,rna,war,m20]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal_cards 'f:"ravnica block"', 'b:ravnica'
@@ -26,6 +26,13 @@ describe "Formats" do
       ]],
     ])
     FormatModern.new.ban_events.should eq([
+      [Date.parse("2019-08-30"),
+        "https://magic.wizards.com/en/articles/archive/news/august-26-2019-banned-and-restricted-announcement-2019-08-26",
+      [
+        {:name=>"Stoneforge Mystic", :new=>"legal", :old=>"banned"},
+        {:name=>"Hogaak, Arisen Necropolis ", :new=>"banned", :old=>"legal"},
+        {:name=>"Faithless Looting", :new=>"banned", :old=>"legal"},
+      ]],
       [Date.parse("2019-07-12"),
         "https://magic.wizards.com/en/articles/archive/news/july-8-2019-banned-and-restricted-announcement-2019-07-08",
       [

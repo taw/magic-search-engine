@@ -123,4 +123,10 @@ BanList.for_format("standard") do
     "Rampaging Ferocidon" => "banned",
     "Ramunap Ruins" => "banned",
   )
+
+  change(
+    "2019-08-30",
+    "https://magic.wizards.com/en/articles/archive/news/august-26-2019-banned-and-restricted-announcement-2019-08-26",
+    "Rampaging Ferocidon" => "legal",
+  )
 end
