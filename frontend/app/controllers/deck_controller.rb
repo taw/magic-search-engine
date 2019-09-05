@@ -4,6 +4,7 @@ class DeckController < ApplicationController
 
   def index
     @sets = $CardDatabase.sets.values.reject{|s| s.decks.empty?}.sort_by{|s| [-s.release_date.to_i_sort, s.name] }
+    @custom_brawl_precons = DeckDatabase.new($CardDatabase).load_ech
     @title = "Preconstructed Decks"
   end
 
