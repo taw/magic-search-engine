@@ -37,6 +37,27 @@ class DeckController < ApplicationController
     @title = "#{@deck.name} - #{@set.name} #{@deck.type}"
   end
 
+  def show_crawl
+    @deck = DeckDatabase.new($CardDatabase).load_ech.find{|d| d.slug == params[:id]} or return render_404
+    @set = @deck.set
+
+    @type = @deck.type
+    @name = @deck.name
+    @set_code = @set.code
+    @set_name = @set.name
+    @release_date = @deck.release_date
+
+    @cards = @deck.cards.sort_by{|_,c| [c.name, c.set_code, c.number] }
+    @sideboard = @deck.sideboard.sort_by{|_,c| [c.name, c.set_code, c.number] }
+
+    @card_previews = @deck.physical_cards
+
+    choose_default_preview_card
+    group_cards
+
+    @title = "#{@deck.name} - #{@set.name} #{@deck.type}"
+  end
+
   def visualize
     @title = "Deck Visualizer"
 

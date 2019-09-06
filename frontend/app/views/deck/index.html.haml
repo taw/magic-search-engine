@@ -3,7 +3,7 @@
 %ul
   - @custom_brawl_precons.each do |deck|
     %li
-      = link_to_deck(deck) do
+      = link_to(controller: "deck", action: "show_crawl", id: deck.slug) do
         = "#{deck.name}"
       = "(#{deck.type}, #{deck.number_of_total_cards} cards)"
 %h4 Sets

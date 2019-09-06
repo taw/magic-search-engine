@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "help/rules" => "help#rules"
   get "help/contact" => "help#contact"
   get "list" => "card#list"
+  get "deck/crawl/:id" => "deck#show_crawl"
   get "deck/:set/:id" => "deck#show"
   get "deck/:set/:id/download" => "deck#download"
   get "deck/visualize" => "deck#visualize"
