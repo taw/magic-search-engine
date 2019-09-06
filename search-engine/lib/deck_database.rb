@@ -36,7 +36,7 @@ class DeckDatabase
     return deck
   end
 
-  def load_ech(path=Pathname("#{__dir__}/../../data/ech-precons.json"))
+  def load_ech(path=Pathname("#{__dir__}/../../data/crawl-precons.json"))
     JSON.parse(path.read).map{ |deck| load_deck(deck) }
   end
 end

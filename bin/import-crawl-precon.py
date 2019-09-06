@@ -10,7 +10,7 @@ import xml.etree.ElementTree
 import more_itertools # PyPI: more-itertools
 
 CACHE = {}
-PRECONS_PATH = pathlib.Path('data/ech-precons.json')
+PRECONS_PATH = pathlib.Path('data/crawl-precons.json')
 
 def custom_sets():
     if 'custom_sets' not in CACHE:
@@ -66,3 +66,4 @@ if __name__ == '__main__':
     })
     with PRECONS_PATH.open('w') as f:
         json.dump(precons, f, indent=4, sort_keys=True)
+        print(file=f)
