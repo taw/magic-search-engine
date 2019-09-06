@@ -60,7 +60,9 @@ if __name__ == '__main__':
     precons.append({
         'cards': parse_zone(deck_xml, 'main'),
         'name': deck_xml.find('./deckname').text,
-        'release_date': sys.argv[2] if len(sys.argv) > 2 else f'{datetime.datetime.utcnow().date():%Y-%m-%d}',
+        'release_date': sys.argv[3] if len(sys.argv) > 3 else f'{datetime.datetime.utcnow().date():%Y-%m-%d}',
+        'set_code': sys.argv[2],
+        'set_name': custom_sets()[sys.argv[2]]['name'],
         'sideboard': parse_zone(deck_xml, 'side'),
         'type': 'Brawl Deck'
     })
