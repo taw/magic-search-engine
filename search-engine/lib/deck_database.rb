@@ -37,6 +37,6 @@ class DeckDatabase
   end
 
   def load_ech(path=Pathname("#{__dir__}/../../data/ech-precons.json"))
-    JSON.parse(path.read).map(&:load_deck)
+    JSON.parse(path.read).map{ |deck| load_deck(deck) }
   end
 end
