@@ -50,6 +50,8 @@ class DeckController < ApplicationController
     @cards = @deck.cards.sort_by{|_,c| [c.name, c.set_code, c.number] }
     @sideboard = @deck.sideboard.sort_by{|_,c| [c.name, c.set_code, c.number] }
 
+    @legality = Format["custom brawl"].new.deck_legality(@deck)
+
     @card_previews = @deck.physical_cards
 
     choose_default_preview_card

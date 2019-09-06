@@ -7,6 +7,10 @@ class FormatECH < FormatStandard
     true
   end
 
+  def deck_legality(deck)
+    commander_legality(deck) #TODO sideboards
+  end
+
   def rotation_schedule
     {
       "2018-01-12" => ["ayr", "dms", "ank", "ldo", "tsl", "vln", "jan", "net", "cc18"],

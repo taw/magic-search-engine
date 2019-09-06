@@ -1,3 +1,10 @@
+- if not @legality.nil?
+  .alert.alert-danger
+    %p
+      %strong
+        This deck is not legal in Custom Brawl.
+    %p
+      = @legality
 .decklist
   %header
     %h4= @name

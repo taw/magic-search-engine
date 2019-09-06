@@ -15,6 +15,10 @@ class FormatFDH < Format
     true
   end
 
+  def deck_legality(deck)
+    commander_legality(deck) #TODO sideboards
+  end
+
   def build_included_sets
     Format["custom eternal"].new(@time).build_included_sets
   end
