@@ -135,41 +135,7 @@ describe "Full Database Test" do
       "Tormenting Voice",
       "Unruly Mob"
 
-    assert_search_results "e:soi lastprint>soi lastprint<grn",
-      "Aim High",
-      "Angel of Deliverance",
-      "Anguished Unmaking",
-      "Archangel Avacyn",
-      "Arlinn Kord",
-      "Arlinn, Embraced by the Moon",
-      "Avacyn, the Purifier",
-      "Call the Bloodline",
-      "Dauntless Cathar",
-      "Drogskol Cavalry",
-      "Dual Shot",
-      "Elusive Tormentor",
-      "Engulf the Shore",
-      "Explosive Apparatus",
-      "Flameblade Angel",
-      "Forsaken Sanctuary",
-      "Grotesque Mutation",
-      "Incorrigible Youths",
-      "Insidious Mist",
-      "Jace, Unraveler of Secrets",
-      "Macabre Waltz",
-      "Magnifying Glass",
-      "Markov Dreadknight",
-      "Mindwrack Demon",
-      "Nephalia Moondrakes",
-      "Pyre Hound",
-      "Ravenous Bloodseeker",
-      "Rush of Adrenaline",
-      "Soul Swallower",
-      "Thornhide Wolves",
-      "Triskaidekaphobia",
-      "Vampire Noble",
-      "Vessel of Nascency",
-      "Warped Landscape"
+    assert_search_equal "in:soi lastprint>soi", "in:soi -lastprint<=soi"
   end
 
   it "firstprint" do
