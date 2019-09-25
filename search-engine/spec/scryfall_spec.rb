@@ -326,11 +326,11 @@ describe "Scryfall" do
       "Turn", "Burn"           # split card with ur color identity
   end
 
-  it "br_spell_standard" do
+  it "br spell standard" do
     assert_search_equal "c:br is:spell f:standard", "(c:b and c:r) is:spell f:standard"
   end
 
-  it "ignore_plusplus" do
+  it "ignore plusplus" do
     # ++ is display control directive, and right now they live on frontend side,
     # not on search engine side (except sort:, which lives in between)
     # It shouldn't affect the results
@@ -344,7 +344,7 @@ describe "Scryfall" do
     assert_search_equal '++e:all', 'e:all'
   end
 
-  it "new_frame" do
+  it "new frame" do
     # scryfall distinguishes "modern" and "new" frame
     # mtg.wtf and MCI treat them as same frame
     # maybe scryfall has a point here?
@@ -352,35 +352,35 @@ describe "Scryfall" do
     # no old/future frame mythics
     # (well, except ovnt, but that's a fake set)
     # ppre looks like a bug
-    assert_search_equal "is:new r:mythic", "r:mythic -e:ovnt,ppre -(Phoenix Heart)"
+    assert_search_equal "is:new r:mythic is:paper", "r:mythic is:paper"
   end
 
-  it "scryfall_bug_cmc" do
+  it "scryfall bug cmc" do
     # meld cmc is sum of part cmcs
     "c:c t:creature cmc=0".should exclude_cards("Chittering Host")
     # flip cmc equals other part, weirdly it only affect some cards, not all
     "ravager cmc=0".should return_no_cards # "Ravager of the Fells"
   end
 
-  it "scryfall_bug_uncards" do
+  it "scryfall bug uncards" do
     # scryfall doesn't include uncards at all
     assert_search_include "clay", "Clay Pigeon"
   end
 
-  it "red_creatures_with_cmc_2_or_less" do
+  it "red creatures with cmc 2 or less" do
     # scryfall currently failing due to cmc bugs
     assert_search_exclude "c:r t:creature cmc<=2",
       "Ravager of the Fells"
   end
 
-  it "blue_cmc_5" do
+  it "blue cmc 5" do
     # scryfall cmc errors again
     assert_search_include "c:u cmc=5",
       "Ghastly Haunting",
       "Soul Seizer"
   end
 
-  it "common_artifact" do
+  it "common artifact" do
     # differ due to uncards
     assert_search_include "r:common t:artifact",
       "Abzan Banner",
