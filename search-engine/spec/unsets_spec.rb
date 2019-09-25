@@ -88,7 +88,8 @@ describe "Unsets" do
       "Shichifukujin Dragon",
       "Splendid Genesis"
     )
-    "not:new".should equal_search "-e:unh,hho,ust"
+    # (Old Fogey) is mtgjson bug
+    "not:new -e:pcel -(Old Fogey)".should equal_search "(Blast from the Past) or e:ugl"
     "not:silver-bordered -t:contraption".should return_cards(
       "Forest",
       "Mountain",

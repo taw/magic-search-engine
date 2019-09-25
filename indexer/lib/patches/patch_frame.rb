@@ -1,50 +1,22 @@
-# VMA is sort of fake
-# as far as I can tell it was modern frames at release, but it's m15 frames now
-# and we have it scanned in m15 frames
-#
-# There were promos between VMA and M15 with M15 frames, so at least it fixes this issue
+# We used to calculate it here,
+# now just trust mtgjson v4
 class PatchFrame < Patch
   def call
-
-    each_set do |set|
-      set["frame"] = begin
-        if set["code"] == "tsb"
-          "old"
-        else
-          frame_by_release_date(set["release_date"])
-        end
-      end
-    end
-
     each_printing do |card|
-      if card["set_code"] == "fut" and card["timeshifted"]
+      fv = card.delete("frameVersion")
+      case fv
+      when "1993", "1997"
+        card["frame"] = "old"
+      when "2003"
+        card["frame"] = "modern"
+      when "2015"
+        card["frame"] = "m15"
+      when "future"
         card["frame"] = "future"
-      elsif card["release_date"]
-        card["frame"] = frame_by_release_date(card["release_date"])
+      else
+        card["frame"] = "m15"
+        puts "Unknown frame version: #{card["frame"].inspect}"
       end
-    end
-
-    # To match how mtgjson v4 does it (but still keep compatibility for transition)
-    # we get rid of set.frame and move it all to card.frame at this stage
-    each_printing do |card|
-      card["frame"] ||= card["set"]["frame"]
-    end
-
-    each_set do |set|
-      set.delete("frame")
-    end
-  end
-
-  def frame_by_release_date(release_date)
-    eight_edition_release_date = "2003-07-28"
-    vma_release_date = "2014-06-16"
-    if release_date < eight_edition_release_date
-      "old"
-    elsif release_date < vma_release_date
-      # Were there any 8e+ old frame printings?
-      "modern"
-    else
-      "m15"
     end
   end
 end
