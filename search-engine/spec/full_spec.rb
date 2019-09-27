@@ -198,7 +198,8 @@ describe "Full Database Test" do
       "Twiddle",
       "Wall of Wood",
       "Wanderlust",
-      "Wood Elves"
+      "Wood Elves",
+      "Youthful Knight"
   end
 
   it "alt test of time" do
