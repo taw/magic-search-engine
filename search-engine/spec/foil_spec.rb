@@ -129,6 +129,13 @@ describe "Foils" do
         # assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, *misprint])
         assert_foiling([buy_a_box_promo], "foilonly")
         assert_foiling(misprint, "both")
+      when "eld"
+        booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
+        buy_a_box_promo = extra_cards.find{|c| c.name == "Kenrith, the Returned King"}
+        assert_foiling(booster_cards, "both")
+        # assert_foiling_partial_precon(extra_cards - [buy_a_box_promo])
+        warn "TODO: ELD precons"
+        assert_foiling([buy_a_box_promo], "foilonly")
       when "war"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         buy_a_box_promo = extra_cards.find{|c| c.name == "Tezzeret, Master of the Bridge"}

@@ -55,6 +55,7 @@ describe "Color Expr Test" do
     assert_search_results "c=w ci=5",
       "Bringer of the White Dawn",
       "General Tazri",
+      "Kenrith, the Returned King",
       "Paragon of the Amesha",
       "Sisay, Weatherlight Captain",
       "Who"

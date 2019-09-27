@@ -5,7 +5,7 @@ require_relative "ban_list"
 require_relative "legality_information"
 
 class Card
-  ABILITY_WORD_LIST = ["Addendum", "Battalion", "Bloodrush", "Channel", "Chroma", "Cohort", "Constellation", "Converge", "Council's dilemma", "Delirium", "Domain", "Eminence", "Enrage", "Fateful hour", "Ferocious", "Formidable", "Gotcha", "Grandeur", "Hellbent", "Heroic", "Hero's Reward", "Imprint", "Inspired", "Join forces", "Kinship", "Landfall", "Lieutenant", "Metalcraft", "Morbid", "Parley", "Radiance", "Raid", "Rally", "Revolt", "Spell mastery", "Strive", "Sweep", "Tempting offer", "Threshold", "Undergrowth", "Will of the council"]
+  ABILITY_WORD_LIST = ["Adamant", "Addendum", "Battalion", "Bloodrush", "Channel", "Chroma", "Cohort", "Constellation", "Converge", "Council's dilemma", "Delirium", "Domain", "Eminence", "Enrage", "Fateful hour", "Ferocious", "Formidable", "Gotcha", "Grandeur", "Hellbent", "Heroic", "Hero's Reward", "Imprint", "Inspired", "Join forces", "Kinship", "Landfall", "Lieutenant", "Metalcraft", "Morbid", "Parley", "Radiance", "Raid", "Rally", "Revolt", "Spell mastery", "Strive", "Sweep", "Tempting offer", "Threshold", "Undergrowth", "Will of the council"]
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 
   attr_reader :data, :printings
@@ -78,7 +78,7 @@ class Card
   end
 
   def front?
-    !@secondary or @layout == "aftermath" or @layout == "flip"
+    !@secondary or @layout == "aftermath" or @layout == "flip" or @layout == "adventure"
   end
 
   def back?

@@ -32,6 +32,7 @@ describe "Card layouts" do
     assert_search_equal "layout:leveler", 'o:/level up \{/'
     assert_search_equal "layout:meld", "// (// o:meld)"
     assert_search_equal "layout:saga", "t:saga"
+    assert_search_equal "layout:adventure", "t:adventure or (// t:adventure)"
 
     # No longer true since they got merged in v4,
     # we keep aliases but they're not exact

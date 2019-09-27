@@ -17,6 +17,7 @@ class FormatFrontier < Format
       "m19",
       "grn", "rna", "war",
       "m20",
+      "eld",
     ]
   end
 end

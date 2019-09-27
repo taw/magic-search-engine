@@ -43,6 +43,7 @@ describe "Regexp" do
 
   it "regexp flavor text" do
     assert_search_results 'ft:/\d{4,}/ -e:olgc,ovnt',
+      "Fervent Champion",
       "Goblin Secret Agent",
       "Gore Vassal",
       "Invoke the Divine",

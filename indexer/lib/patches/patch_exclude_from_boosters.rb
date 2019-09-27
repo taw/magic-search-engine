@@ -64,6 +64,8 @@ class PatchExcludeFromBoosters < Patch
       number_i > 264
     when "m20"
       number_i > 280
+    when "eld"
+      number_i > 269
     else
       false
     end

@@ -269,13 +269,6 @@ describe "Scryfall" do
       "Izzet Boilerworks"
   end
 
-  it "white_creature_standard" do
-    # identical results
-    assert_search_include 'c:w t:creature f:standard',
-      "Aerial Engineer",
-      "Tragic Poet"
-  end
-
   it "pow_gt_tou" do
     # identical results except uncards and spoilers
     assert_search_include "pow>tou c:w t:creature",
