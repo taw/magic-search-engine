@@ -75,6 +75,17 @@ describe PhysicalCard do
     end
   end
 
+  context "adventure" do
+    let(:card1) { find_unique("beanstack giant e:eld") }
+    let(:card2) { find_unique("fertile footsteps e:eld") }
+    it do
+      physical_card1.should eq(physical_card2)
+      physical_card1.front.should eq([card1, card2])
+      physical_card1.back.should eq([])
+      physical_card1.foil.should eq(false)
+    end
+  end
+
   context "DFC" do
     let(:card1) { find_unique("delver of secrets e:isd") }
     let(:card2) { find_unique("isnsectile aberration e:isd") }

@@ -236,7 +236,7 @@ describe "Any queries" do
     end
 
     it "vanilla" do
-      assert_search_equal "any:vanilla", "is:vanilla"
+      assert_search_equal "any:vanilla", "is:vanilla or ft:vanilla"
     end
 
     it "draft" do

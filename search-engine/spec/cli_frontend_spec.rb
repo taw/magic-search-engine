@@ -20,6 +20,7 @@ describe "CLI Frontend" do
         Cinder Glade
         Dryad Arbor
         Forest
+        Gingerbread Cabin
         Murmuring Bosk
         Overgrown Tomb
         Sapseep Forest

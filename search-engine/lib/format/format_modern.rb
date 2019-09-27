@@ -38,6 +38,7 @@ class FormatModern < Format
       "grn", "rna", "war",
       "mh1",
       "m20",
+      "eld",
     ]
   end
 end
