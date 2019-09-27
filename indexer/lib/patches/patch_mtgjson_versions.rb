@@ -8,13 +8,16 @@ class PatchMtgjsonVersions < Patch
     fcmc = card.delete("faceConvertedManaCost")
 
     if fcmc
-      if card["layout"] == "split" or card["layout"] == "aftermath"
+      case card["layout"]
+      when "split", "aftermath", "adventure"
         cmc = fcmc
-      elsif card["layout"] == "flip" or card["layout"] == "transform"
+      when "flip", "transform"
         # ignore because
         # https://github.com/mtgjson/mtgjson/issues/294
-      elsif cmc != fcmc
-        warn "#{card["layout"]} #{card["name"]} has fcmc #{fcmc} != cmc #{cmc}"
+      else
+        if cmc != fcmc
+          warn "#{card["layout"]} #{card["name"]} has fcmc #{fcmc} != cmc #{cmc}"
+        end
       end
     end
 
