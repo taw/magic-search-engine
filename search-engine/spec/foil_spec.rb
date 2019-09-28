@@ -134,8 +134,8 @@ describe "Foils" do
         assert_foiling(booster_cards, "both")
         # assert_foiling_partial_precon(extra_cards - [buy_a_box_promo])
         warn "TODO: ELD precons"
-        # assert_foiling([buy_a_box_promo], "foilonly")
-        warn "TODO: https://github.com/mtgjson/mtgjson/issues/449"
+        # Apparently it's available nonfoil in the $450 product
+        assert_foiling([buy_a_box_promo], "both")
       when "war"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         buy_a_box_promo = extra_cards.find{|c| c.name == "Tezzeret, Master of the Bridge"}
