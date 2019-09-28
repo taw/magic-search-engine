@@ -135,7 +135,8 @@ class PackFactory
       "akh", "hou",
       "m19",
       "mh1",
-      "m20"
+      "m20",
+      "eld" # ELD has other pack types too
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "arb"
       build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare_mythic: 1})

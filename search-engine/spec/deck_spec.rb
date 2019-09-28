@@ -34,6 +34,7 @@ describe Deck do
       ["expansion", "MTGO Theme Deck"],
       ["expansion", "Planeswalker Deck"],
       ["expansion", "Theme Deck"],
+      ["expansion", "Brawl Deck"],
       ["starter", "Intro Pack"],
       ["box", "Guild Kit"],
       ["starter", "Starter Deck"],
@@ -256,6 +257,10 @@ describe Deck do
       if deck.type == "Commander Deck"
         deck.should be_valid_commander
         # Brawler is superset of commander, so even though none of theme are Brawl decks, give it a go
+        deck.should be_valid_brawler
+      elsif deck.type == "Brawl Deck"
+        # Not guaranteed but true so far
+        deck.should be_valid_commander
         deck.should be_valid_brawler
       else
         deck.should_not be_valid_commander
