@@ -66,6 +66,8 @@ describe "is:booster" do
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=280"
       when "m20"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=280 -number:/†/"
+      when "eld"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=269"
       when "grn", "rna"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=259"
       when "ogw"
