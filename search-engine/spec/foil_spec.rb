@@ -125,9 +125,8 @@ describe "Foils" do
         misprint = extra_cards.select{|c| c.number =~ /†/}
         buy_a_box_promo = extra_cards.find{|c| c.name == "Rienne, Angel of Rebirth"}
         assert_foiling(booster_cards, "both")
-        # https://github.com/mtgjson/mtgjson/issues/429
-        # assert_foiling_partial_precon(extra_cards - [buy_a_box_promo, *misprint])
-        assert_foiling([buy_a_box_promo], "foilonly")
+        # Apparently it's available nonfoil in the $450 product
+        assert_foiling([buy_a_box_promo], "both")
         assert_foiling(misprint, "both")
       when "eld"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
