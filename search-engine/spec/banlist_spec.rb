@@ -6,7 +6,7 @@ describe "Banlist" do
   it "banlist_2019" do
     assert_banlist_changes "August 2019",
       "standard unbanned", "Rampaging Ferocidon",
-      "modern banned", "Hogaak, Arisen Necropolis ",
+      "modern banned", "Hogaak, Arisen Necropolis",
       "modern banned", "Faithless Looting",
       "modern unbanned", "Stoneforge Mystic",
       "vintage restricted", "Karn, the Great Creator",
