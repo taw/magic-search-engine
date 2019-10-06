@@ -467,6 +467,9 @@ h3 .manacost {
   a { color: inherit; }
   tr:nth-child(even) {
     background-color: #d8d8d8;
+    @media (prefers-color-scheme: dark) {
+      background-color: #272727;
+    }
   }
   td, th {
     padding: 1px 2px 1px 2px;
