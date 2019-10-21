@@ -37,7 +37,7 @@ Whenever new set is released:
 
 * Run `rake rules:update` in case Comprehensive Rules changed
 * If set is not Vintage-legal, add new set code to FormatVintage exclusions list
-* Add new set code and date to legalities in Standard, Modern, and Frontier if applicable
+* Add new set code and date to legalities in Standard, Modern, Pioneer, and Frontier if applicable
 * Add new set code to appropriate block in indexer
 * Create new block format if applicable and add it to indexer and Format class
 * Update format tests

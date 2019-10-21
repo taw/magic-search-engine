@@ -165,6 +165,7 @@ class Format
         "brawl"                      => FormatBrawl,
         "modern"                     => FormatModern,
         "frontier"                   => FormatFrontier,
+        "pioneer"                    => FormatPioneer,
         "legacy"                     => FormatLegacy,
         "vintage"                    => FormatVintage,
         "pauper"                     => FormatPauper,
