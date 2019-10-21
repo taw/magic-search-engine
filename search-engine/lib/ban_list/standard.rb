@@ -129,4 +129,10 @@ BanList.for_format("standard") do
     "https://magic.wizards.com/en/articles/archive/news/august-26-2019-banned-and-restricted-announcement-2019-08-26",
     "Rampaging Ferocidon" => "legal",
   )
+
+  change(
+    "2019-10-21",
+    "https://magic.wizards.com/en/articles/archive/news/october-21-2019-banned-and-restricted-announcement",
+    "Field of the Dead" => "banned",
+  )
 end

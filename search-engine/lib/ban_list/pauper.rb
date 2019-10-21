@@ -64,4 +64,10 @@ BanList.for_format("pauper") do
     "Sinkhole" => "banned",
     "High Tide" => "banned",
   )
+
+  change(
+    "2019-10-21",
+    "https://magic.wizards.com/en/articles/archive/news/october-21-2019-banned-and-restricted-announcement",
+    "Arcum's Astrolabe" => "banned",
+  )
 end
