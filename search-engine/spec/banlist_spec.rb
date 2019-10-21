@@ -4,6 +4,10 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2019" do
+    assert_banlist_changes "October 2019",
+      "standard banned", "Field of the Dead",
+      "pauper banned", "Arcum's Astrolabe"
+
     assert_banlist_changes "August 2019",
       "standard unbanned", "Rampaging Ferocidon",
       "modern banned", "Hogaak, Arisen Necropolis",
