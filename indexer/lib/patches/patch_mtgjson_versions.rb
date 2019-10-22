@@ -114,8 +114,10 @@ class PatchMtgjsonVersions < Patch
         card["border"] = card.delete("borderColor")
       end
 
-      if card["frameEffect"]
-        card["frame_effect"] = card.delete("frameEffect")
+      if card["frameEffects"]
+        card["frame_effects"] = card.delete("frameEffects")
+      elsif card["frameEffect"]
+        card["frame_effects"] = [card.delete("frameEffect")]
       end
 
       card["oversized"] = card.delete("isOversized")
