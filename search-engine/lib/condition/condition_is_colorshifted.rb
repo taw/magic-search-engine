@@ -1,6 +1,6 @@
 class ConditionIsColorshifted < ConditionSimple
   def match?(card)
-    card.frame_effect == "colorshifted"
+    card.frame_effects.include?("colorshifted")
   end
 
   def to_s
