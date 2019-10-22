@@ -4,7 +4,7 @@ class ConditionFrameEffect < ConditionSimple
   end
 
   def match?(card)
-    card.frame_effect == @frame_effect
+    card.frame_effects.include?(@frame_effect)
   end
 
   def to_s
