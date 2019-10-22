@@ -31,7 +31,7 @@ class CardPrinting
     @foiling = data["foiling"]
     @border = data["border"] || @set.border
     @frame = data["frame"]
-    @frame_effects = data["frame_effects"]
+    @frame_effects = data["frame_effects"] || []
     rarity = data["rarity"]
     @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
     @exclude_from_boosters = data["exclude_from_boosters"]
