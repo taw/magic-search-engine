@@ -1,7 +1,7 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date
   attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border
-  attr_reader :rarity_code, :print_sheet, :partner, :oversized, :frame_effect, :foiling, :spotlight
+  attr_reader :rarity_code, :print_sheet, :partner, :oversized, :frame_effects, :foiling, :spotlight
   attr_reader :textless, :fullart
 
   # Performance cache of derived information
@@ -31,7 +31,7 @@ class CardPrinting
     @foiling = data["foiling"]
     @border = data["border"] || @set.border
     @frame = data["frame"]
-    @frame_effect = data["frame_effect"]
+    @frame_effects = data["frame_effects"]
     rarity = data["rarity"]
     @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
     @exclude_from_boosters = data["exclude_from_boosters"]
