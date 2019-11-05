@@ -7,4 +7,12 @@ BanList.for_format("pioneer") do
     "Windswept Heath" => "banned",
     "Wooded Foothills" => "banned",
   )
+
+  change(
+    "2019-11-04",
+    "https://magic.wizards.com/en/articles/archive/news/november-4-2019-pioneer-banned-announcement",
+    "Felidar Guardian" => "banned",
+    "Leyline of Abundance" => "banned",
+    "Oath of Nissa" => "banned",
+  )
 end
