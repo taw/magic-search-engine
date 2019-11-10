@@ -35,7 +35,13 @@ class SplitMtgjson
       end
       set["meta"].delete "pricesDate"
 
-      (SETS_DIR + "#{set_code}.json").open("w") do |fh|
+      if set_code == "CON"
+        fn = SETS_DIR + "#{set_code}_.json"
+      else
+        fn = SETS_DIR + "#{set_code}.json"
+      end
+
+      fn.open("w") do |fh|
         fh.puts set.to_json
       end
     end
