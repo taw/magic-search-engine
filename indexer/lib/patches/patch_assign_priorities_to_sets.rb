@@ -16,7 +16,7 @@ class PatchAssignPrioritiesToSets < Patch
     return 100 if set["custom"]
 
     case set["code"]
-    when "pwar", "war", "prm"
+    when "pwar", "war", "prm", "eld", "celd"
       return 5
     end
 
