@@ -18,6 +18,10 @@ describe "frame effect queries" do
     assert_search_equal "e:pbfz frame:devoid", "e:pbfz o:devoid"
   end
 
+  it "is:extendedart" do
+    assert_include_search "is:extendedart", "e:puma"
+  end
+
   it "frame:legendary" do
     assert_search_equal "e:dom frame:legendary", "e:dom t:legendary -t:planeswalker"
   end

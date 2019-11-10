@@ -274,7 +274,7 @@ class QueryTokenizer
         else
           tokens << [:test, ConditionInEdition.new(*sets)]
         end
-      elsif s.scan(/(is|frame|not)\s*[:=]\s*(compasslanddfc|colorshifted|devoid|legendary|miracle|mooneldrazidfc|nyxtouched|originpwdfc|sunmoondfc|tombstone)\b/i)
+      elsif s.scan(/(is|frame|not)\s*[:=]\s*(compasslanddfc|colorshifted|devoid|extendedart|legendary|miracle|mooneldrazidfc|nyxtouched|originpwdfc|sunmoondfc|tombstone)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrameEffect.new(s[2].downcase)]
       elsif s.scan(/(is|frame|not)\s*[:=]\s*(old|new|future|modern|m15)\b/i)
