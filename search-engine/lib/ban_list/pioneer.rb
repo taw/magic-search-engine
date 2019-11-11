@@ -9,10 +9,16 @@ BanList.for_format("pioneer") do
   )
 
   change(
-    "2019-11-04",
+    "2019-11-08",
     "https://magic.wizards.com/en/articles/archive/news/november-4-2019-pioneer-banned-announcement",
     "Felidar Guardian" => "banned",
     "Leyline of Abundance" => "banned",
     "Oath of Nissa" => "banned",
+  )
+
+  change(
+    "2019-11-12",
+    "https://magic.wizards.com/en/articles/archive/news/november-11-2019-pioneer-banned-announcement",
+    "Veil of Summer" => "banned",
   )
 end
