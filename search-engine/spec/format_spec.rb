@@ -7,7 +7,7 @@ describe "Formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
-      %Q[e:grn,rna,war,m20,eld -(Field of the Dead)]
+      %Q[e:grn,rna,war,m20,eld -(Field of the Dead) -(Veil of Summer) -(Oko Thief of Crowns) -(Once Upon Time)]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal_cards 'f:"ravnica block"', 'b:ravnica'

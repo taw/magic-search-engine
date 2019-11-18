@@ -299,4 +299,10 @@ BanList.for_format("legacy") do
     "Gitaxian Probe" => "banned",
     "Deathrite Shaman" => "banned",
   )
+
+  change(
+    "2019-11-18",
+    "https://magic.wizards.com/en/articles/archive/news/november-18-2019-banned-and-restricted-announcement",
+    "Wrenn and Six" => "banned",
+  )
 end

@@ -4,6 +4,13 @@ describe "Banlist" do
   # http://mtgsalvation.gamepedia.com/Timeline_of_DCI_bans_and_restrictions#2015
 
   it "banlist_2019" do
+    assert_banlist_changes "November 2019",
+      "standard banned", "Oko, Thief of Crowns",
+      "standard banned", "Once Upon a Time",
+      "standard banned", "Veil of Summer",
+      "legacy banned", "Wrenn and Six",
+      "vintage restricted", "Narset, Parter of Veils"
+
     assert_banlist_changes "October 2019",
       "standard banned", "Field of the Dead",
       "pauper banned", "Arcum's Astrolabe"
