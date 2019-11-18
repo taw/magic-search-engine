@@ -135,4 +135,12 @@ BanList.for_format("standard") do
     "https://magic.wizards.com/en/articles/archive/news/october-21-2019-banned-and-restricted-announcement",
     "Field of the Dead" => "banned",
   )
+
+  change(
+    "2019-11-18",
+    "https://magic.wizards.com/en/articles/archive/news/november-18-2019-banned-and-restricted-announcement",
+    "Oko, Thief of Crowns" => "banned",
+    "Once Upon a Time" => "banned",
+    "Veil of Summer" => "banned",
+  )
 end

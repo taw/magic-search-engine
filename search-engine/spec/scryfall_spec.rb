@@ -100,7 +100,7 @@ describe "Scryfall" do
 
   it "restricted_vintage" do
     # Identical results
-    assert_count_cards "restricted:vintage", 49
+    assert_count_cards "restricted:vintage", 50
   end
 
   it "e_mm2" do

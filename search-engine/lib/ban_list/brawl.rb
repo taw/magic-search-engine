@@ -24,4 +24,10 @@ BanList.for_format("brawl") do
     "Baral, Chief of Compliance" => "banned",
     "Sorcerous Spyglass" => "banned",
   )
+
+  change(
+    "2019-11-18",
+    "https://magic.wizards.com/en/articles/archive/news/november-18-2019-banned-and-restricted-announcement",
+    "Oko, Thief of Crowns" => "banned",
+  )
 end

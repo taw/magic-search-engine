@@ -331,4 +331,10 @@ BanList.for_format("vintage") do
     "Golgari Grave-Troll" => "restricted",
     "Fastbond" => "legal",
   )
+
+  change(
+    "2019-11-18",
+    "https://magic.wizards.com/en/articles/archive/news/november-18-2019-banned-and-restricted-announcement",
+    "Narset, Parter of Veils" => "restricted",
+  )
 end
