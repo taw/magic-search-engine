@@ -6,7 +6,7 @@ class ConditionColorIdentity < ConditionSimple
   end
 
   def match?(card)
-    card_ci  = card.color_identity.chars
+    card_ci = card.color_identity.chars
     return card_ci == [] if @commander_ci.include?("c")
     card_ci.all? do |color|
       @commander_ci.include?(color)

@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -34,6 +34,7 @@ end
 # will_paginate hacks
 # based on https://stackoverflow.com/questions/4592489/adding-rel-nofollow-to-will-paginate-links-in-rails/12075691
 require "will_paginate/view_helpers/action_view"
+
 class LinkRendererRelNofollow < WillPaginate::ActionView::LinkRenderer
   def rel_value(page)
     case page

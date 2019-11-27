@@ -104,7 +104,7 @@ BanList.for_format("modern") do
     "2018-02-19",
     "https://magic.wizards.com/en/articles/archive/news/february-12-2018-banned-and-restricted-announcement-2018-02-12",
     "Jace, the Mind Sculptor" => "legal",
-    "Bloodbraid Elf" => "legal"
+    "Bloodbraid Elf" => "legal",
   )
 
   change(

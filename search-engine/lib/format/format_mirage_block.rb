@@ -7,4 +7,3 @@ class FormatMirageBlock < Format
     Set["mir", "vis", "wth"]
   end
 end
-

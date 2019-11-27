@@ -7,4 +7,3 @@ class FormatKamigawaBlock < Format
     Set["chk", "bok", "sok"]
   end
 end
-

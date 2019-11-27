@@ -5,7 +5,7 @@ class PatchSecondary < Patch
       # https://github.com/mtgjson/mtgjson/issues/227
       if card["name"] == "B.F.M. (Big Furry Monster)" or card["name"] == "B.F.M. (Big Furry Monster, Right Side)"
         # just give up on this one
-      elsif  card["layout"] == "split"
+      elsif card["layout"] == "split"
         # All primary
       elsif card["layout"] == "double-faced"
         if card["number"] =~ /a\z/i
@@ -34,4 +34,3 @@ class PatchSecondary < Patch
     end
   end
 end
-

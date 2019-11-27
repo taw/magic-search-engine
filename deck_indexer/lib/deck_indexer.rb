@@ -112,7 +112,7 @@ class DeckIndexer
 
     mrsp_date = release_date(most_recent_standard_set)
     age = (set_date - mrsp_date).to_i
-    if age < 2*365
+    if age < 2 * 365
       # Would be nicer to check if actually same Standard
       # OK
     else
