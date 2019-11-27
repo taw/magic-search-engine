@@ -61,7 +61,7 @@ class Indexer
       "sets" => sets,
       "cards" => cards.map{|name, card_data|
         [name, index_card(card_data, set_order)]
-      }.sort.to_h
+      }.sort.to_h,
     }
   end
 
@@ -247,7 +247,7 @@ class Indexer
           "spotlight",
           "textless",
           "watermark",
-        ).compact
+        ).compact,
       ]
     end
 

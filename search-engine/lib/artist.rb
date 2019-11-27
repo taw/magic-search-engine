@@ -9,6 +9,7 @@ class Artist
   end
 
   include Comparable
+
   def <=>(other)
     @name <=> other.name
   end

@@ -11,7 +11,7 @@ class Hash
 
   def transform_values
     result = {}
-    each do |k,v|
+    each do |k, v|
       result[k] = yield(v)
     end
     result

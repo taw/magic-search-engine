@@ -7,4 +7,3 @@ class FormatUrzaBlock < Format
     Set["usg", "ulg", "uds"]
   end
 end
-

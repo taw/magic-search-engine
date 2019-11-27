@@ -44,6 +44,7 @@ end
 
 class CardDatabase
   attr_reader :sets, :cards, :blocks, :artists, :cards_in_precons
+
   def initialize
     @sets = {}
     @blocks = Set[]

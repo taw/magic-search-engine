@@ -7,4 +7,3 @@ class FormatOdysseyBlock < Format
     Set["ody", "tor", "jud"]
   end
 end
-
