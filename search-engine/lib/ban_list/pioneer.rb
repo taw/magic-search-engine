@@ -29,4 +29,11 @@ BanList.for_format("pioneer") do
     "Field of the Dead" => "banned",
     "Smuggler's Copter" => "banned",
   )
+
+  change(
+    "2019-12-17",
+    "https://magic.wizards.com/en/articles/archive/news/december-16-2019-pioneer-banned-announcement",
+    "Oko, Thief of Crowns" => "banned",
+    "Nexus of Fate" => "banned",
+  )
 end
