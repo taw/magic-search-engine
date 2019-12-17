@@ -8,13 +8,14 @@ require "pry"
 class SplitMtgjson
   SETS_DIR = Pathname(__dir__) + "../../data/sets"
 
-  def initialize(path)
+  def initialize(path, output_dir=SETS_DIR)
     @data = JSON.parse(open(path).read)
+    @output_dir = Pathname(output_dir)
   end
 
   # It doesn't remove any extra files
   def call
-    SETS_DIR.mkpath
+    @output_dir.mkpath
     @data.each do |set_code, set|
       if set_code != set["code"]
         warn "Mismatched set code: #{set_code} != #{set["code"]}"
@@ -36,9 +37,9 @@ class SplitMtgjson
       set["meta"].delete "pricesDate"
 
       if set_code == "CON"
-        fn = SETS_DIR + "#{set_code}_.json"
+        fn = @output_dir + "#{set_code}_.json"
       else
-        fn = SETS_DIR + "#{set_code}.json"
+        fn = @output_dir + "#{set_code}.json"
       end
 
       fn.open("w") do |fh|
@@ -48,10 +49,12 @@ class SplitMtgjson
   end
 end
 
-unless ARGV.size == 1
+unless ARGV.size == 1 or ARGV.size == 2
   STDERR.puts "Usage: #{$0} /path/to/AllSets.json"
   STDERR.puts "   or: #{$0} http://url.to/AllSets.json"
+  STDERR.puts "   or: #{$0} /path/to/AllSets.json /output/directory"
+  STDERR.puts "   or: #{$0} http://url.to/AllSets.json /output/directory"
   exit 1
 end
 
-SplitMtgjson.new(ARGV[0]).call
+SplitMtgjson.new(*ARGV).call
