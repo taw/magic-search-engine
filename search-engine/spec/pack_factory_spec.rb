@@ -30,7 +30,7 @@ describe PackFactory do
       regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15]
     }
     let(:expected_mtgjson_variant) {
-      ["mir", "ody", "por", "5ed", "soi", "atq", "drk"]
+      ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "4ed"]
     }
     let(:expected) {
       expected_official | expected_mtgjson_variant
