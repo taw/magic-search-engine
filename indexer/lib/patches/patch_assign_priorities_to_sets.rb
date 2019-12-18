@@ -15,10 +15,10 @@ class PatchAssignPrioritiesToSets < Patch
     # If you want to customize priority between different custom sets, just list them explicitly
     return 100 if set["custom"]
 
-    case set["code"]
-    when "pwar", "prm", "eld", "celd"
-      return 5
-    end
+    # case set["code"]
+    # when "pwar", "prm", "eld", "celd"
+    #   return 5
+    # end
 
     return 10 if set["v4"]
     # Default priority for everything else

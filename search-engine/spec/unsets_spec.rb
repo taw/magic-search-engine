@@ -138,7 +138,8 @@ describe "Unsets" do
     assert_search_results "other:-cmc=4",
       "Who", "What", "When", "Where", "Why", "Naughty", "Nice",
       "B.F.M. (Big Furry Monster)", "B.F.M. (Big Furry Monster, Right Side)",
-      "Curse of the Fire Penguin", "Curse of the Fire Penguin Creature"
+      "Curse of the Fire Penguin", "Curse of the Fire Penguin Creature",
+      "Decorated Knight"
     # Doesn't have other side with cmc=4
     # This includes Where (cmc=4) and all single-sided cards
     assert_search_include "-other:cmc=4", "Where", "Chicken Egg"
@@ -186,11 +187,12 @@ describe "Unsets" do
       "Who", "What", "When", "Where", "Why",
       "B.F.M. (Big Furry Monster)", "B.F.M. (Big Furry Monster, Right Side)",
       "Naughty", "Nice",
-      "Curse of the Fire Penguin Creature", "Curse of the Fire Penguin"
+      "Curse of the Fire Penguin Creature", "Curse of the Fire Penguin",
+      "Decorated Knight", "Present Arms"
     assert_search_results "When // Where // What", "Who", "What", "When", "Where", "Why"
     assert_search_results "When // Where // Whatever"
     assert_search_results "c:u // c:w // c:r", "Who", "What", "When", "Where", "Why"
-    assert_search_results "c:u // c:u"
+    assert_search_results "c:u // c:u", "Present Arms", "Decorated Knight"
 
     # This is limitation of the syntax, I might change my mind about it,
     # but it only affects this one uncard
