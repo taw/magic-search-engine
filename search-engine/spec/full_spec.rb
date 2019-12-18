@@ -15,7 +15,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 4041
+    assert_count_printings "is:promo", 4049
   end
 
   it "block codes" do

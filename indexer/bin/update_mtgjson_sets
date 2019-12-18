@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+require "json"
+require "pathname"
+require "pathname-glob"
+require "fileutils"
+require "memoist"
+
+class UpdateMtgjsonSets
+  extend Memoist
+
+  def current_dir
+    Pathname(__dir__) + "../../data/sets"
+  end
+
+  def new_dir
+    Pathname(__dir__) + "../../data/sets-incoming"
+  end
+
+  memoize def possible_upgrades
+    new_dir.glob("*.json").map do |path|
+      [path, (current_dir + path.basename)]
+    end.select do |new_path, current_path|
+      current_path.exist? and compatible?(new_path, current_path)
+    end
+  end
+
+  def compatible?(new_path, current_path)
+    new_data = JSON.parse(new_path.read)
+    current_data = JSON.parse(current_path.read)
+    return false unless new_data["name"] == current_data["name"]
+    new_cards = new_data["cards"].map{|c| [c["name"], c["number"]] }.sort
+    current_cards = current_data["cards"].map{|c| [c["name"], c["number"]] }.sort
+    new_cards == current_cards
+  end
+
+  def call
+    possible_upgrades.each do |new_path, current_path|
+      FileUtils.mv new_path, current_path, force: true, verbose: true
+    end
+  end
+end
+
+UpdateMtgjsonSets.new.call
