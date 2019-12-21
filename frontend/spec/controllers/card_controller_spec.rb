@@ -67,11 +67,11 @@ RSpec.describe CardController, type: :controller do
   end
 
   it "nothing found" do
-    get "index", params: { q: "optimus prime" }
+    get "index", params: { q: "italian spiderman" }
     assert_response 200
     assert_select ".cardinfo", 0
     assert_select %Q[.results_summary:contains("No cards found")]
-    assert_equal "optimus prime - #{APP_NAME}", html_document.title
+    assert_equal "italian spiderman - #{APP_NAME}", html_document.title
   end
 
   it "search something" do
