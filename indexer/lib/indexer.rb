@@ -125,7 +125,6 @@ class Indexer
       PatchDeleteErrataSets,
 
       # Patch mtg.wtf bugs
-      PatchCstdRarity,
       PatchBasicLandRarity,
       PatchAeLigature,
       PatchFlipCardManaCost,
