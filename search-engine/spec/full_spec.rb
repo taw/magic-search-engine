@@ -371,7 +371,7 @@ describe "Full Database Test" do
   end
 
   it "is brawler" do
-    assert_search_equal_cards "is:brawler", "(is:primary t:legendary t:creature) OR (is:primary t:planeswalker)"
+    assert_search_equal_cards "is:brawler", "(is:primary t:legendary t:creature) OR (is:primary t:legendary t:planeswalker)"
   end
 
   # Bugfix

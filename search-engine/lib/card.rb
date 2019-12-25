@@ -317,6 +317,7 @@ class Card
           raise "Unknown mana cost: #{x}"
         end
       end
+      .uniq
 
     actual_colors = @colors.chars
 
