@@ -56,6 +56,7 @@ describe "Deck legality" do
       "Snow-Covered Swamp",
       "Swamp",
       "Wastes",
+      "Barry's Land", # CMB1
     ])
   end
 

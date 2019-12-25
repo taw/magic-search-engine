@@ -187,6 +187,7 @@ describe "Card nicknames" do
       "Blinkmoth Nexus",
       "Celestial Colonnade",
       "Creeping Tar Pit",
+      "Domesticated Watercourse",
       "Dread Statuary",
       "Faerie Conclave",
       "Forbidding Watchtower",

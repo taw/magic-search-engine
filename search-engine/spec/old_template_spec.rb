@@ -8,9 +8,10 @@ describe "Old templates" do
     assert_count_cards %Q[o:"mana pool"], 1
   end
 
+  # Sarah's Wings (CMB1)
   it do
     # "Firesong and Sunspeaker" is an exception
-    assert_count_cards %Q[o:"creature or player"], 2
+    assert_count_cards %Q[o:"creature or player"], 3
   end
 
   it do
@@ -28,11 +29,6 @@ describe "Old templates" do
   # Garruk the Slayer
   it do
     assert_count_cards %Q[o:"token onto the battlefield"], 2
-  end
-
-  ### Recently fixed
-  it do
-    assert_count_cards "t:planeswalker -t:legendary", 0
   end
 
   it do

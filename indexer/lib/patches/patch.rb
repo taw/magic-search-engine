@@ -44,4 +44,8 @@ class Patch
       printings.empty?
     end
   end
+
+  def update_names_index
+    @cards.replace @cards.values.flatten(1).group_by{|c| c["name"] }
+  end
 end

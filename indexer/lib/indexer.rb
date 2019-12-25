@@ -94,6 +94,9 @@ class Indexer
       PatchSetCodes,
       PatchRemoveTokens,
 
+      # This renames cards so it needs to be done early
+      PatchPlaytestCards,
+
       # All cards absolutely need unique numbers
       PatchMultipartCardNumbers,
       PatchUseFallbackNumbers,

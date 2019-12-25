@@ -18,6 +18,7 @@ describe "Ability Word Regexp" do
       "I",
       "II",
       "III",
+      "Target opponent chooses one",
     ]
 
     card_texts = db.cards.values.map(&:text)
