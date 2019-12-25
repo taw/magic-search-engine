@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data for same sets,
   # indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(20345)
-    db.number_of_printings.should eq(47459)
+    db.number_of_cards.should eq(20470)
+    db.number_of_printings.should eq(47584)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -71,8 +71,8 @@ describe "Full Database Test" do
       "Faerie Guidemother", "Gift of the Fae",
       "Rimrock Knight", "Boulder Rush",
       "Shepherd of the Flock", "Usher to Safety",
-      "Smitten Swordmaster", "Curry Favor"
-
+      "Smitten Swordmaster", "Curry Favor",
+      "Smelt (CMB1)", "Herd", "Saw"
     # Semantics of that changed
     assert_search_results "part:cmc=0 part:cmc=3 part:c:b"
   end
@@ -83,7 +83,8 @@ describe "Full Database Test" do
       "Plains",
       "Snow-Covered Island",
       "Snow-Covered Plains",
-      "Wastes"
+      "Wastes",
+      "Barry's Land"
   end
 
   it "year" do
@@ -389,8 +390,8 @@ describe "Full Database Test" do
     assert_search_equal "r:special", "(Super Secret Tech) or (e:vma r:special)"
   end
 
-  it "all planeswalkers are legendary" do
-    assert_search_results "t:planeswalker -t:legendary"
+  it "all planeswalkers are legendary (except CMB1)" do
+    assert_search_results "t:planeswalker -t:legendary", "Personal Decoy"
   end
 
   it "frame:" do

@@ -32,6 +32,7 @@ describe "Regexp" do
   it "regexp oracle text" do
     assert_search_results 'o:/\d{3,}/',
       "1996 World Champion",
+      "A Good Thing",
       "Ajani, Mentor of Heroes",
       "As Luck Would Have It",
       "Battle of Wits",

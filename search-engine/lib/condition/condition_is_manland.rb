@@ -4,6 +4,7 @@ class ConditionIsManland < Condition
       "blinkmoth nexus",
       "celestial colonnade",
       "creeping tar pit",
+      "domesticated watercourse",
       "dread statuary",
       "faerie conclave",
       "forbidding watchtower",
