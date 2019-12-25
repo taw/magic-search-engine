@@ -7,11 +7,24 @@ describe "Ability Word Regexp" do
 
     # If this list ever changes, this test should fail
 
+    other_phrases = [
+      "An opponent chooses one",
+      "Choose one or both",
+      "Choose one or more",
+      "Choose one",
+      "Choose two",
+      "DCI ruling",
+      "Forecast",
+      "I",
+      "II",
+      "III",
+    ]
+
     card_texts = db.cards.values.map(&:text)
     dash_prefixes = card_texts.map{|t| t.scan(/^([a-zA-Z' ]+) —/)}.flatten.uniq.sort
     ability_words = card_texts.map{|t| t.scan(Card::ABILITY_WORD_RX)}.flatten.uniq.sort
     (ability_words - dash_prefixes).should eq([])
-    (dash_prefixes - ability_words).should match_array(["An opponent chooses one", "Choose one", "Choose one or both", "Choose one or more", "Choose two", "Forecast", "DCI ruling", "I", "II", "III"])
+    (dash_prefixes - ability_words).should match_array(other_phrases)
     ability_words.should match_array(Card::ABILITY_WORD_LIST)
   end
 end
