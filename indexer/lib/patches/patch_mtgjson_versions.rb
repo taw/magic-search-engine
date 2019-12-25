@@ -52,26 +52,8 @@ class PatchMtgjsonVersions < Patch
       end
     end
 
-    vma_special = [
-      "Ancestral Recall",
-      "Black Lotus",
-      "Mox Emerald",
-      "Mox Jet",
-      "Mox Pearl",
-      "Mox Ruby",
-      "Mox Sapphire",
-      "Time Walk",
-      "Timetwister",
-    ]
-
-    # Rename cards
-
-    @cards.each do |name, printings|
-      if vma_special.include?(name)
-        printings.find{|c| c["set"]["official_code"] == "VMA" }["rarity"] = "special"
-      end
-    end
-
+    # Someone should investigate if this is true
+    # This also applies to PSOI
     each_printing do |card|
       if card["name"] == "Tamiyo's Journal" and card["set"]["official_code"] == "SOI"
         card["hasFoil"] = true
