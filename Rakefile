@@ -26,18 +26,16 @@ task "index" do
   sh "./indexer/bin/indexer"
 end
 
-desc "Fetch new mtgjson database"
+desc "Update mtgjson database"
 task "mtgjson:fetch" do
-  sh "indexer/bin/split_mtgjson", "http://mtgjson.com/json/AllSets-x.json"
-end
-
-desc "Fetch new mtgjson database, then revert known bad ones"
-task "mtgjson:fetch:good" do
-  sh "indexer/bin/split_mtgjson", "http://mtgjson.com/json/AllSets-x.json"
-  # Unsets and Kamigawa block are broken, mostly flip/split cards
-  # CP2 has long uncorrected typo
-  # V17 has duplicate Brisela
-  sh "git checkout data/sets/{UGL,UNH,UST,BOK,V17,CP2}.json"
+  unless Pathname("AllSets.json").exist?
+    sh "wget", "https://www.mtgjson.com/json/AllSets.json"
+  end
+  if Pathname("data/sets-incoming").exist?
+    sh "trash", "data/sets-incoming"
+  end
+  sh "./indexer/bin/split_mtgjson", "./AllSets.json", "data/sets-incoming"
+  sh "./indexer/bin/update_mtgjson_sets"
 end
 
 desc "Fetch new mtgjson database and update index"

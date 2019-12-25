@@ -6,37 +6,109 @@ require "pathname-glob"
 require "fileutils"
 require "memoist"
 
-class UpdateMtgjsonSets
+class SingleSetUpdater
   extend Memoist
 
+  attr_reader :incoming_path, :current_path
+
+  def initialize(incoming_path, current_path)
+    @incoming_path = incoming_path
+    @current_path = current_path
+  end
+
+  memoize def incoming_data
+    JSON.parse(@incoming_path.read)
+  end
+
+  memoize def current_data
+    JSON.parse(@current_path.read)
+  end
+
+  memoize def incoming_name
+    incoming_data["name"]
+  end
+
+  memoize def current_name
+    current_data["name"]
+  end
+
+  memoize def incoming_code
+    incoming_data["code"]
+  end
+
+  memoize def current_code
+    current_data["code"]
+  end
+
+  memoize def incoming_cards
+    incoming_data["cards"].map{|c| [c["name"], c["number"]] }.sort
+  end
+
+  memoize def current_cards
+    current_data["cards"].map{|c| [c["name"], c["number"]] }.sort
+  end
+
+  def call
+    if current_path.exist?
+      handle_update
+    else
+      handle_new
+    end
+  end
+
+  def bad_foregin_only_sets
+    %W[FBB 4BB REN RIN]
+  end
+
+  def handle_new
+    return :drop if incoming_data["isPartialPreview"]
+    # We're actually OK with foreign promo sets
+    return :drop if incoming_data["isForeignOnly"] and bad_foregin_only_sets.include?(incoming_code)
+    # Just ignore it
+    return :drop if incoming_code == "SUM"
+    # More reasons to delete ?
+    :new
+  end
+
+  def handle_update
+    return :conflict if incoming_name != current_name
+    return :conflict if incoming_code != current_code
+    return :conflict if incoming_cards != current_cards
+    return :update
+  end
+end
+
+class UpdateMtgjsonSets
   def current_dir
     Pathname(__dir__) + "../../data/sets"
   end
 
-  def new_dir
+  def incoming_dir
     Pathname(__dir__) + "../../data/sets-incoming"
   end
 
-  memoize def possible_upgrades
-    new_dir.glob("*.json").map do |path|
-      [path, (current_dir + path.basename)]
-    end.select do |new_path, current_path|
-      current_path.exist? and compatible?(new_path, current_path)
-    end
-  end
-
-  def compatible?(new_path, current_path)
-    new_data = JSON.parse(new_path.read)
-    current_data = JSON.parse(current_path.read)
-    return false unless new_data["name"] == current_data["name"]
-    new_cards = new_data["cards"].map{|c| [c["name"], c["number"]] }.sort
-    current_cards = current_data["cards"].map{|c| [c["name"], c["number"]] }.sort
-    new_cards == current_cards
+  def incoming_files
+    incoming_dir.glob("*.json")
   end
 
   def call
-    possible_upgrades.each do |new_path, current_path|
-      FileUtils.mv new_path, current_path, force: true, verbose: true
+    incoming_files.each do |incoming_path|
+      name = incoming_path.basename(".json").to_s
+      current_path = current_dir + incoming_path.basename
+      command = SingleSetUpdater.new(incoming_path, current_path).call
+
+      case command
+      when :drop
+        FileUtils.rm incoming_path, force: true, verbose: true
+      when :update
+        FileUtils.mv incoming_path, current_path, force: true, verbose: true
+      when :conflict
+        puts "#{name} - conflicting update"
+      when :new
+        puts "#{name} - new set"
+      else
+        raise
+      end
     end
   end
 end
