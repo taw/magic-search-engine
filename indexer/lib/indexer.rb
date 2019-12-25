@@ -126,6 +126,7 @@ class Indexer
 
       # Patch mtg.wtf bugs
       PatchBasicLandRarity,
+      PatchRaritySpecial,
       PatchAeLigature,
       PatchFlipCardManaCost,
       PatchArtistNames,
