@@ -6,7 +6,8 @@ class PatchPlaytestCards < Patch
       "Liberate",
       "Start",
       "Smelt",
-    ].to_h{|n| [n, "#{n} (CMB1)"]}
+    ].map{|n| [n, "#{n} (CMB1)"]}
+    .to_h
     name_map.default_proc = proc{|ht, x| x}
 
     each_printing do |card|
