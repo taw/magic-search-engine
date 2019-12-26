@@ -10,7 +10,7 @@
         = render partial: "card/card_picture", locals: { card: card, foil: foil, card_layout: "flip_secondary" }
       - else
         = render partial: "card/card_picture", locals: { card: card, foil: foil, card_layout: "flip" }
-    - elsif card.layout == "split" and card.others.size == 1
+    - elsif card.layout == "split" and card.others.size == 1 and card.set_code != "cmb1"
       = render partial: "card/card_picture", locals: { card: card, foil: foil, card_layout: "split" }
     - elsif card.layout == "aftermath"
       = render partial: "card/card_picture", locals: { card: card, foil: foil, card_layout: "aftermath" }
