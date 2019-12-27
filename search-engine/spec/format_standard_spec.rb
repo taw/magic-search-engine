@@ -2,7 +2,7 @@ describe "Formats - Standard" do
   include_context "db"
 
   let(:regular_sets) { db.sets.values.select{|s|
-    s.types.include?("core") or s.types.include?("expansion") or s.name =~ /Welcome Deck/
+    s.types.include?("core") or s.types.include?("expansion") or s.name =~ /Welcome Deck/ or s.name =~ /M19 Gift Pack/
   }.to_set }
 
   describe "Standard legal sets" do
@@ -15,9 +15,12 @@ describe "Formats - Standard" do
   end
 
   it "standard" do
-    assert_block_composition "standard", "war",  ["xln", "rix", "dom", "m19", "grn", "rna", "war"],
+    assert_block_composition "standard", "war",  ["xln", "rix", "dom", "m19", "g18", "grn", "rna", "war"],
       "Rampaging Ferocidon" => "banned"
-    assert_block_composition "standard", "rna",  ["xln", "rix", "dom", "m19", "grn", "rna"],
+    # G18 considered part of M19, but released much later
+    assert_block_composition "standard", "rna",  ["xln", "rix", "dom", "m19", "grn", "g18", "rna"],
+      "Rampaging Ferocidon" => "banned"
+    assert_block_composition "standard", "g18",  ["xln", "rix", "dom", "m19", "grn", "g18"],
       "Rampaging Ferocidon" => "banned"
     assert_block_composition "standard", "grn",  ["xln", "rix", "dom", "m19", "grn"],
       "Rampaging Ferocidon" => "banned"

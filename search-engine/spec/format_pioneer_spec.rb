@@ -3,7 +3,7 @@ describe "Formats - Pioneer" do
 
   let(:regular_sets) do
     db.sets.values.select{|s|
-      s.types.include?("core") or s.types.include?("expansion") or s.name =~ /Welcome Deck/
+      s.types.include?("core") or s.types.include?("expansion") or s.name =~ /Welcome Deck/ or s.name =~ /M19 Gift Pack/
     }.to_set
   end
 
@@ -15,7 +15,7 @@ describe "Formats - Pioneer" do
   end
 
   it do
-    assert_block_composition "Pioneer", "eld", ["rtr", "gtc", "dgm", "m14", "ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori", "bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh", "w17", "hou", "xln", "rix", "dom", "m19", "grn", "rna", "war", "m20", "eld"],
+    assert_block_composition "Pioneer", "eld", ["rtr", "gtc", "dgm", "m14", "ths", "bng", "jou", "m15", "ktk", "frf", "dtk", "ori", "bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh", "w17", "hou", "xln", "rix", "dom", "m19", "g18", "grn", "rna", "war", "m20", "eld"],
       "Bloodstained Mire" => "banned",
       "Flooded Strand" => "banned",
       "Polluted Delta" => "banned",
