@@ -17,7 +17,7 @@ class FormatVintage < Format
     # Excluded due to mix of bad timestamps (which confuses tests and time travel):
     # * Resale Promos
 
-    excluded_sets = Set["parl", "pcel", "ugl", "prel", "unh", "hho", "ust", "pust", "ppc1", "htr", "htr17", "pres", "pal04", "h17", "j17", "tbth", "tdag", "tfth", "thp1", "thp2", "thp3"]
+    excluded_sets = Set["parl", "pcel", "ugl", "prel", "unh", "hho", "ust", "pust", "ppc1", "htr", "htr17", "pres", "pal04", "h17", "j17", "tbth", "tdag", "tfth", "thp1", "thp2", "thp3", "ptg", "cmb1"]
 
     # Portal / Starter sets used to not be tournament legal
     if @time and @time < Date.parse("2005.3.20")
