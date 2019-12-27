@@ -1,0 +1,97 @@
+#!/usr/bin/env ruby
+
+require_relative "../search-engine/lib/card_database"
+require "memoist"
+
+class ReportLegalityDifferences
+  extend Memoist
+
+  def initialize
+    @db = CardDatabase.load
+    @mtgjson = JSON.parse(Pathname("AllSets.json").read)
+  end
+
+  # This method mostly just verifies and filters out data
+  # It's not in very convenient format
+  memoize def mtgjson_legalities_data
+    result = {}
+    @mtgjson.each do |set_code, set_data|
+      # Name conflicts
+      next if set_code == "CMB1"
+      set_data["cards"].each do |card|
+        name = card["name"]
+        legalities = card["legalities"].dup
+        # It's a stupid fake format not following per-card legality rules
+        legalities.delete "oldschool"
+        result[name] ||= legalities
+        if result[name] != legalities
+          warn "Internally inconsistent legalities for #{name}"
+          binding.pry
+        end
+      end
+    end
+    result
+  end
+
+  memoize def mtgjson_formats
+    mtgjson_legalities_data.values.map(&:keys).flatten.uniq.sort
+  end
+
+  memoize def mtgjson_format_legalities
+    result = {}
+    mtgjson_legalities_data.each do |card_name, legalities|
+      legalities.each do |format_name, status|
+        result[format_name] ||= {}
+        result[format_name][card_name] = status.downcase
+      end
+    end
+    result
+  end
+
+  def verify_format(name)
+    return if Format[name] == FormatUnknown
+    format = Format[name].new
+    mtgjson_legalities = mtgjson_format_legalities[name]
+    db_legalities = @db.cards.values.map{|c| [c.name, format.legality(c)] }.select(&:last).to_h
+    card_names = (mtgjson_legalities.keys | db_legalities.keys)
+
+    statuses = []
+    card_names.sort.each do |name|
+      statuses << [name, mtgjson_legalities[name], db_legalities[name]]
+    end
+    differences = statuses.select{|_,a,b| a != b}
+
+    return if differences.empty?
+
+    puts "Format #{name} - #{differences.size} / #{statuses.size} differences"
+    differences.sort.each do |name, a, b|
+      puts "* #{name} - mtgjson:#{a || 'not it format'} - db:#{b || 'not in format'}"
+    end
+    puts ""
+  end
+
+  def call
+    mtgjson_formats.each do |name|
+      verify_format name
+    end
+  end
+end
+
+ReportLegalityDifferences.new.call
+
+__END__
+
+[
+  "commander",
+  "duel",
+  "legacy",
+  "modern",
+  "vintage",
+  "penny",
+  "pauper",
+  "historic",
+  "pioneer",
+  "brawl",
+  "future",
+  "standard",
+]
