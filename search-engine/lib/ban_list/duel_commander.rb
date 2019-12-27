@@ -150,4 +150,13 @@ BanList.for_format("duel commander") do
     "Erayo, Soratami Ascendant" => "legal",
     "Zur the Enchanter" => "legal",
   )
+
+  change(
+    "2019-11-25",
+    "http://www.duelcommander.com/2019/11/november-2019-rules-banned-restricted-update/",
+    "Emry, Lurker of the Loch" => "restricted", # was experimentally legal
+    "Edric, Spymaster of Trest" => "restricted", # was experimentally legal
+    # "Erayo, Soratami Ascendant" => "legal", # officialy legal, was experimentally legal
+    "Scapeshift" => "banned",
+  )
 end
