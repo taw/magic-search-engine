@@ -3,7 +3,7 @@ describe "Formats - Frontier" do
 
   let(:regular_sets) do
     db.sets.values.select{|s|
-      s.types.include?("core") or s.types.include?("expansion") or s.name =~ /Welcome Deck/
+      s.types.include?("core") or s.types.include?("expansion") or s.name =~ /Welcome Deck/ or s.name =~ /M19 Gift Pack/
     }.to_set
   end
 
@@ -15,6 +15,32 @@ describe "Formats - Frontier" do
   end
 
   it "frontier" do
-    assert_block_composition "frontier", "war", ["m15", "ktk", "frf", "dtk", "ori", "bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh", "w17", "hou", "xln", "rix", "dom", "m19", "grn", "rna", "war"]
+    assert_block_composition "frontier", "eld", [
+      "m15",
+      "ktk",
+      "frf",
+      "dtk",
+      "ori",
+      "bfz",
+      "ogw",
+      "soi",
+      "w16",
+      "emn",
+      "kld",
+      "aer",
+      "akh",
+      "w17",
+      "hou",
+      "xln",
+      "rix",
+      "dom",
+      "m19",
+      "g18",
+      "grn",
+      "rna",
+      "war",
+      "m20",
+      "eld",
+    ]
   end
 end

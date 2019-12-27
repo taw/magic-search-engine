@@ -106,6 +106,7 @@ BanList.for_format("duel commander") do
     "Bruse Tarl, Boorish Herder" => "restricted",
     "Geist of Saint Traft" => "restricted",
     "Jace, Vryn's Prodigy" => "restricted",
+    # "Jace, Telepath Unbound" => "restricted", # DFC of previous, should it be listed explicitly?
   )
 
   change(

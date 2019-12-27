@@ -44,7 +44,7 @@ class PatchSetTypes < Patch
         set_types << "fnm"
       end
 
-      if set["name"] =~ /Welcome Deck/
+      if set["name"] =~ /Welcome Deck/ or set["name"] == "M19 Gift Pack"
         set_types << "standard"
       end
 

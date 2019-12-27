@@ -165,8 +165,8 @@ describe "Formats" do
   # We don't have all historical legality for Duel Commander yet,
   # maybe add it at some later point
   it "duel commander" do
-    assert_count_cards 'banned:"duel commander"', 62
-    assert_count_cards 'restricted:"duel commander"', 19
+    assert_count_cards 'banned:"duel commander"', 63
+    assert_count_cards 'restricted:"duel commander"', 21
   end
 
   # We don't keep historical legality for Petty Dreadful yet
