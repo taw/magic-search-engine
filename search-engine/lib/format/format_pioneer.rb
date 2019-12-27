@@ -17,7 +17,7 @@ class FormatPioneer < Format
       "akh", "w17", "hou",
       "xln", "rix",
       "dom",
-      "m19",
+      "m19", "g18",
       "grn", "rna", "war",
       "m20",
       "eld",
