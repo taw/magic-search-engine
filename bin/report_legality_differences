@@ -57,7 +57,17 @@ class ReportLegalityDifferences
 
     statuses = []
     card_names.sort.each do |name|
-      statuses << [name, mtgjson_legalities[name], db_legalities[name]]
+      a = mtgjson_legalities[name]
+      b = db_legalities[name]
+      # Conspiracies are "banned" on Gatherer / mtgjson, but "not in format" for us
+      # Ignore this difference
+      if a == "banned" and b == nil
+        card = @db.cards[name.downcase] or raise
+        if card.types.include?("conspiracy")
+          a = nil
+        end
+      end
+      statuses << [name, a, b]
     end
     differences = statuses.select{|_,a,b| a != b}
 
