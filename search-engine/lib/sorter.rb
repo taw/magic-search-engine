@@ -1,5 +1,6 @@
 class Sorter
   COLOR_ORDER = ["w", "u", "b", "r", "g", "uw", "bu", "br", "gr", "gw", "bw", "ru", "bg", "rw", "gu", "buw", "bru", "bgr", "grw", "guw", "brw", "gru", "bgw", "ruw", "bgu", "bruw", "bgru", "bgrw", "gruw", "bguw", "bgruw", ""].each_with_index.to_h.freeze
+  SORT_ORDERS = ["ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou", "artist", "released", "set"].sort
 
   # Fallback sorting for printings of each card:
   # * not MTGO only
@@ -13,8 +14,7 @@ class Sorter
   attr_reader :warnings, :sort_order
 
   def initialize(sort_order, seed)
-    known_sort_orders = ["ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou", "artist", "released", "set"]
-    known_sort_orders += known_sort_orders.map{|s| "-#{s}"}
+    known_sort_orders = SORT_ORDERS + SORT_ORDERS.map{|s| "-#{s}"}
 
     @seed = seed
     @sort_order = sort_order ? sort_order.split(",") : []
@@ -23,7 +23,7 @@ class Sorter
       if known_sort_orders.include?(part)
         part
       else
-        @warnings << "Unknown sort order: #{part}"
+        @warnings << "Unknown sort order: #{part}. Known options are: #{SORT_ORDERS.join(", ")}; and their combinations."
         nil
       end
     end.compact

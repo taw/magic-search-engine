@@ -222,4 +222,12 @@ describe "QueryParser" do
 
     fails.should eq(0)
   end
+
+  it "warns for bad sort:" do
+    Query.new('sort:awesomeness').warnings.should eq(["Unknown sort order: awesomeness. Known options are: artist, ci, cmc, color, name, new, newall, number, old, oldall, pow, rand, rarity, released, set, tou; and their combinations."])
+  end
+
+  it "warns for bad view:" do
+    Query.new('view:cardback').warnings.should eq(["Unknown view: cardback. Known options are: checklist, full, images, text, and default."])
+  end
 end
