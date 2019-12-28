@@ -27,7 +27,7 @@ class QueryTokenizer
       elsif s.scan(/\)/i)
         tokens << [:close]
       elsif s.scan(%r[
-        (o|oracle|ft|flavor|a|art|artist|n|name|number)
+        (o|oracle|ft|flavor|a|art|artist|n|name|number|rulings)
         \s*[:=]\s*
         /(
           (?:[^\\/]|\\.)*
@@ -44,7 +44,8 @@ class QueryTokenizer
             "name" => ConditionNameRegexp,
             "o" => ConditionOracleRegexp,
             "oracle" => ConditionOracleRegexp,
-            "number"  => ConditionNumberRegexp,
+            "number" => ConditionNumberRegexp,
+            "rulings" => ConditionRulingsRegexp,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
           rx = Regexp.new(s[2], Regexp::IGNORECASE | Regexp::MULTILINE)
           tokens << [:test, cond.new(rx)]
@@ -60,6 +61,7 @@ class QueryTokenizer
             "o" => ConditionOracle,
             "oracle" => ConditionOracle,
             "number" => ConditionNumber,
+            "rulings" => ConditionRulings,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
           @warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, cond.new(s[2])]
@@ -88,6 +90,8 @@ class QueryTokenizer
         tokens << [:test, ConditionOracle.new(s[1] || s[2])]
       elsif s.scan(/(?:a|art|artist)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionArtist.new(s[1] || s[2])]
+      elsif s.scan(/(?:rulings)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+        tokens << [:test, ConditionRulings.new(s[1] || s[2])]
       elsif s.scan(/(cn|tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|foreign)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionForeign.new(s[1], s[2] || s[3])]
       elsif s.scan(/any\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)

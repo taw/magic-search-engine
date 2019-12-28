@@ -172,6 +172,10 @@
       = search_help %Q[a:argyle], "cards with art drawn by (Steve) Argyle"
       = search_help %Q[a:"rebecca guay"], "cards with art drawn by Rebecca Guay"
 
+    %h4 Search by rulings
+    %ul
+      = search_help %Q[rulings:"Blood Moon"], "cards mentioning Blood Moon in their rulings"
+
     %h4 Search by format
     %ul
       = search_help "legal:standard", "cards legal in Standard format"
@@ -371,6 +375,7 @@
       = search_help 'ft:/\bice\b/', 'cards with word "ice" in flavor text'
       = search_help 'a:/.{40}/', "cards with artist credit of 40 or more characters"
       = search_help 'n:/.{30}/', "cards with names of 30 or more characters"
+      = search_help 'rulings:/twitter/', "cards with twitter mentioned in rulings"
 
     %h4 Search by game
     %ul
