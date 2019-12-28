@@ -22,6 +22,11 @@ describe "Regexp" do
       Query.new('n:/[a-z/').warnings.should eq(["bad regular expression in n:/[a-z/ - premature end of char-class: /[a-z/mi"])
       Query.new('n:/[a-z]/').warnings.should eq([])
     end
+
+    it "rulings:" do
+      Query.new('rulings:/[a-z/').warnings.should eq(["bad regular expression in rulings:/[a-z/ - premature end of char-class: /[a-z/mi"])
+      Query.new('rulings:/[a-z]/').warnings.should eq([])
+    end
   end
 
   it "handles timeouts" do
@@ -78,5 +83,11 @@ describe "Regexp" do
       "Oviya Pashiri, Sage Lifecrafter",
       "Sunhome, Fortress of the Legion",
       "Tezzeret, Master of the Bridge"
+  end
+
+  it "regexp rulings text" do
+    assert_search_results "rulings:fly"
+    assert_search_equal "rulings:flying", 'rulings:/\bflying\b/'
+    assert_search_include 'rulings:/\d{6,}/', "Echo Storm"
   end
 end
