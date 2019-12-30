@@ -230,4 +230,8 @@ describe "QueryParser" do
   it "warns for bad view:" do
     Query.new('view:cardback').warnings.should eq(["Unknown view: cardback. Known options are: checklist, full, images, text, and default."])
   end
+
+  it "warns for bad frame:" do
+    Query.new('frame:pokemon').warnings[0].should match(/Unknown frame: pokemon/)
+  end
 end
