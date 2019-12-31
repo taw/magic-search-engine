@@ -169,6 +169,10 @@ describe "Formats" do
     assert_count_cards 'restricted:"duel commander"', 21
   end
 
+  it "historic" do
+    assert_count_cards "banned:historic", 4
+  end
+
   # We don't keep historical legality for Petty Dreadful yet
   it "penny dreadful" do
     assert_search_include 'f:"penny dreadful"', *FormatPennyDreadful::PrimaryCards

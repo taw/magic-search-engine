@@ -179,6 +179,7 @@ class Format
         "duel"                       => FormatDuelCommander,
         "mtgocommander"              => FormatMTGOCommander,
         "mtgoedh"                    => FormatMTGOCommander,
+        "historic"                   => FormatHistoric,
       }
     end
 
