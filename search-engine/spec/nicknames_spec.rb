@@ -360,4 +360,19 @@ describe "Card nicknames" do
         } > 6
       }
   end
+
+  it "is:ante" do
+    assert_search_results "is:ante",
+      "Amulet of Quoz",
+      "Bronze Tablet",
+      "Contract from Below",
+      "Darkpact",
+      "Demonic Attorney",
+      "Jeweled Bird",
+      "Rebirth",
+      "Tempest Efreet",
+      "Timmerian Fiends"
+
+    assert_search_equal "is:ante", 'o:/\bante\b/'
+  end
 end
