@@ -801,6 +801,7 @@ describe "Banlist" do
   ##################################################
   # Formats in mtgjson are verified by indexer
   # Formats not in mtgjson should all be listed here
+  # FIXME: (that was with v3, no longer true)
 
   it "pauper_banlist_now" do
     assert_full_banlist "pauper", "1 October 2015", [
@@ -871,6 +872,18 @@ describe "Banlist" do
       "Painter's Servant",
       "Sensei's Divining Top",
       "Trade Secrets",
+      "Amulet of Quoz",
+      "Bronze Tablet",
+      "Chaos Orb",
+      "Contract from Below",
+      "Darkpact",
+      "Demonic Attorney",
+      "Falling Star",
+      "Jeweled Bird",
+      "Rebirth",
+      "Shahrazad",
+      "Tempest Efreet",
+      "Timmerian Fiends",
     ]
   end
 
