@@ -206,6 +206,7 @@ class Format
 
     def [](format_name)
       format_name = format_name.downcase.gsub(/\s|-|_/, "")
+      return FormatAny if format_name == "*"
       formats_index[format_name] || FormatUnknown
     end
   end
