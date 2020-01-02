@@ -5,7 +5,7 @@ class ConditionLegal < ConditionFormat
 
   private
 
-  def legality_ok?(legality)
-    legality == "legal"
+  def card_ok?(card)
+    @format.legal?(card)
   end
 end
