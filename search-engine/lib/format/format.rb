@@ -23,6 +23,23 @@ class Format
     end
   end
 
+  def banned?(card)
+    legality(card) == "banned"
+  end
+
+  def restricted?(card)
+    legality(card) == "restricted"
+  end
+
+  def legal?(card)
+    legality(card) == "legal"
+  end
+
+  def legal_or_restricted?(card)
+    l = legality(card)
+    l == "legal" or l == "restricted"
+  end
+
   def in_format?(card)
     card.printings.each do |printing|
       next if @time and printing.release_date > @time
@@ -184,7 +201,7 @@ class Format
     end
 
     def all_format_classes
-      formats_index.values.uniq
+      @all_format_classes ||= formats_index.values.uniq
     end
 
     def [](format_name)
