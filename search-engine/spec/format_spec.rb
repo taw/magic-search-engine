@@ -169,6 +169,10 @@ describe "Formats" do
     assert_count_cards 'restricted:"duel commander"', 21
   end
 
+  it "mtgo commander" do
+    assert_count_cards 'banned:vintage legal:"mtgo commander"', 0
+  end
+
   it "historic" do
     assert_count_cards "banned:historic", 4
   end
