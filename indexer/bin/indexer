@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require_relative "../lib/indexer"
-path = "#{__dir__}/../../index/index.json"
 verbose = (ARGV[0] == "--verbose")
 
-Indexer.new(path, verbose).call
+Indexer.new(verbose).call
