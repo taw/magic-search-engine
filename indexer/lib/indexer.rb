@@ -14,8 +14,9 @@ class Indexer
   ROOT = Pathname(__dir__).parent.parent + "data"
 
   # In verbose mode we validate each patch to make sure it actually does something
-  def initialize(save_path, verbose=false)
-    @save_path = Pathname(save_path)
+  def initialize(verbose=false)
+    @save_path = Pathname("#{__dir__}/../../index/index.json")
+    @uuids_path = Pathname("#{__dir__}/../../index/uuids.txt")
     @verbose = verbose
     @data = CardSetsData.new
   end
@@ -37,12 +38,13 @@ class Indexer
   def call
     @save_path.parent.mkpath
     # Keep set index order as is, normalize eveything else
-    index = prepare_index
-    index["cards"] = json_normalize(index["cards"])
-    index["sets"].each do |set_code, set|
-      index["sets"][set_code] = set
+    index_data, uuids_data = prepare_index
+    index_data["cards"] = json_normalize(index_data["cards"])
+    index_data["sets"].each do |set_code, set|
+      index_data["sets"][set_code] = set
     end
-    @save_path.write(index.to_json)
+    @save_path.write(index_data.to_json)
+    @uuids_path.write(uuids_data)
   end
 
   private
@@ -55,6 +57,10 @@ class Indexer
     apply_patches(cards, sets)
 
     ### Return data for saving
+    [index_data(sets, cards), uuid_data(cards)]
+  end
+
+  def index_data(sets, cards)
     sets = sets.map{|s| [s["code"], index_set(s)]}.to_h
     set_order = sets.keys.each_with_index.to_h
     {
@@ -63,6 +69,17 @@ class Indexer
         [name, index_card(card_data, set_order)]
       }.sort.to_h,
     }
+  end
+
+  def uuid_data(cards)
+    cards.flat_map do |name, printings|
+      printings.map do |data|
+        [data["set_code"], data["number"], data["uuid"], name]
+      end
+    end
+      .sort_by{|sc,n,u,name| [sc, n.to_i, n, name, u || ""] }
+      .map{|row| row.join("\t") + "\n" }
+      .join
   end
 
   def index_set(set)
