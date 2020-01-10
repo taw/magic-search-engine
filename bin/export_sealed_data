@@ -39,9 +39,11 @@ class ExportSealedData
       name = "#{name}:foil" if e.foil
       [name, w]
     end.sort.to_h
+    total_weight = cards.values.sum
     {
       partner: sheet.is_a?(PartnerCardSheet) ? true : nil,
       balance_colors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
+      total_weight: total_weight,
       cards: cards,
     }.compact
   end
