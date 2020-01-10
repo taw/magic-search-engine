@@ -1,6 +1,6 @@
-class ConditionIsShockland < Condition
-  def search(db)
-    names = [
+class ConditionIsShockland < ConditionNickname
+  def names
+    [
       "blood crypt",
       "breeding pool",
       "godless shrine",
@@ -12,11 +12,6 @@ class ConditionIsShockland < Condition
       "temple garden",
       "watery grave",
     ]
-
-    names
-      .map{|n| db.cards[n]}
-      .flat_map{|card| card ? card.printings : []}
-      .to_set
   end
 
   def to_s

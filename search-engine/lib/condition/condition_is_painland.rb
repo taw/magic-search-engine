@@ -1,6 +1,6 @@
-class ConditionIsPainland < Condition
-  def search(db)
-    names = [
+class ConditionIsPainland < ConditionNickname
+  def names
+    [
       "adarkar wastes",
       "battlefield forge",
       "brushland",
@@ -11,12 +11,7 @@ class ConditionIsPainland < Condition
       "sulfurous springs",
       "underground river",
       "yavimaya coast",
-  ]
-
-    names
-      .map{|n| db.cards[n]}
-      .flat_map{|card| card ? card.printings : []}
-      .to_set
+    ]
   end
 
   def to_s

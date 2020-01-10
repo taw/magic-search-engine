@@ -1,6 +1,6 @@
-class ConditionIsFetchland < Condition
-  def search(db)
-    names = [
+class ConditionIsFetchland < ConditionNickname
+  def names
+    [
       "arid mesa",
       "marsh flats",
       "misty rainforest",
@@ -12,11 +12,6 @@ class ConditionIsFetchland < Condition
       "windswept heath",
       "wooded foothills",
     ]
-
-    names
-      .map{|n| db.cards[n]}
-      .flat_map{|card| card ? card.printings : []}
-      .to_set
   end
 
   def to_s

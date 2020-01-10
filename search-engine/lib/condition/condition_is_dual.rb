@@ -1,6 +1,6 @@
-class ConditionIsDual < Condition
-  def search(db)
-    names = [
+class ConditionIsDual < ConditionNickname
+  def names
+    [
       "badlands",
       "bayou",
       "plateau",
@@ -12,11 +12,6 @@ class ConditionIsDual < Condition
       "underground sea",
       "volcanic island",
     ]
-
-    names
-      .map{|n| db.cards[n]}
-      .flat_map{|card| card ? card.printings : []}
-      .to_set
   end
 
   def to_s
