@@ -3,9 +3,25 @@
 require_relative "../search-engine/lib/card_database"
 
 class ExportSealedData
-  def initialize
+  def initialize(output_folder)
     @db = CardDatabase.load
     @factory = PackFactory.new(@db)
+    @output_folder = Pathname(output_folder)
+    load_uuids
+  end
+
+  def uuid_file_path
+    Pathname(__dir__) + "../index/uuids.txt"
+  end
+
+  def load_uuids
+    @uuids = {}
+    uuid_file_path.each_line do |line|
+      s, n, u, _ = line.chomp.split("\t")
+      @uuids[s] ||= {}
+      raise if @uuids[s][n]
+      @uuids[s][n] = u
+    end
   end
 
   def flatten_pack(pack)
@@ -54,7 +70,11 @@ class ExportSealedData
     }.to_h
   end
 
-  def call(output_path)
+  def output_path
+    @output_folder + "export_sealed.json"
+  end
+
+  def call
     exported_data = []
     @db.sets_with_packs.each do |set|
       pack = @factory.for(set.code)
@@ -67,11 +87,9 @@ class ExportSealedData
         sheets: serialize_sheets(sheets),
       }
     end
-    open(output_path, "w") do |fh|
-      fh.puts JSON.pretty_generate(exported_data)
-    end
+    output_path.write JSON.pretty_generate(exported_data)
   end
 end
 
-output_path = ARGV[0] || "export_sealed.json"
-ExportSealedData.new.call(output_path)
+output_folder = ARGV[0] || "."
+ExportSealedData.new(output_folder).call
