@@ -1,6 +1,6 @@
-class ConditionIsFastland < Condition
-  def search(db)
-    names = [
+class ConditionIsFastland < ConditionNickname
+  def names
+    [
       "blackcleave cliffs",
       "blooming marsh",
       "botanical sanctum",
@@ -12,11 +12,6 @@ class ConditionIsFastland < Condition
       "seachrome coast",
       "spirebluff canal",
     ]
-
-    names
-      .map{|n| db.cards[n]}
-      .flat_map{|card| card ? card.printings : []}
-      .to_set
   end
 
   def to_s

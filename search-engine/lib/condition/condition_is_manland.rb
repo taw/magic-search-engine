@@ -1,6 +1,6 @@
-class ConditionIsManland < Condition
-  def search(db)
-    names = [
+class ConditionIsManland < ConditionNickname
+  def names
+    [
       "blinkmoth nexus",
       "celestial colonnade",
       "creeping tar pit",
@@ -30,11 +30,6 @@ class ConditionIsManland < Condition
       "treetop village",
       "wandering fumarole",
     ]
-
-    names
-      .map{|n| db.cards[n]}
-      .flat_map{|card| card ? card.printings : []}
-      .to_set
   end
 
   def to_s

@@ -1,6 +1,6 @@
-class ConditionIsCheckland < Condition
-  def search(db)
-    names = [
+class ConditionIsCheckland < ConditionNickname
+  def names
+    [
       "clifftop retreat",
       "dragonskull summit",
       "drowned catacomb",
@@ -12,11 +12,6 @@ class ConditionIsCheckland < Condition
       "sunpetal grove",
       "woodland cemetery",
     ]
-
-    names
-      .map{|n| db.cards[n]}
-      .flat_map{|card| card ? card.printings : []}
-      .to_set
   end
 
   def to_s

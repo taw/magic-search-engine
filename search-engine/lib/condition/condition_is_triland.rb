@@ -1,6 +1,6 @@
-class ConditionIsTriland < Condition
-  def search(db)
-    names = [
+class ConditionIsTriland < ConditionNickname
+  def names
+    [
       "arcane sanctum",
       "crumbling necropolis",
       "frontier bivouac",
@@ -12,11 +12,6 @@ class ConditionIsTriland < Condition
       "savage lands",
       "seaside citadel",
     ]
-
-    names
-      .map{|n| db.cards[n]}
-      .flat_map{|card| card ? card.printings : []}
-      .to_set
   end
 
   def to_s

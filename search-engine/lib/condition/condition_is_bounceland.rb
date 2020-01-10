@@ -1,6 +1,6 @@
-class ConditionIsBounceland < Condition
-  def search(db)
-    names = [
+class ConditionIsBounceland < ConditionNickname
+  def names
+    [
       "azorius chancery",
       "boros garrison",
       "coral atoll",
@@ -17,11 +17,6 @@ class ConditionIsBounceland < Condition
       "selesnya sanctuary",
       "simic growth chamber",
     ]
-
-    names
-      .map{|n| db.cards[n]}
-      .flat_map{|card| card ? card.printings : []}
-      .to_set
   end
 
   def to_s

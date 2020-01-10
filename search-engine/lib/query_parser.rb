@@ -7,6 +7,7 @@ require_relative "condition/condition_regexp"
 require_relative "condition/condition_or"
 require_relative "condition/condition_in"
 require_relative "condition/condition_set_type"
+require_relative "condition/condition_nickname"
 Dir["#{__dir__}/condition/condition_*.rb"].sort.each do |path| require_relative path end
 require_relative "query_tokenizer"
 

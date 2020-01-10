@@ -1,6 +1,6 @@
-class ConditionIsCanopyland < Condition
-  def search(db)
-    names = [
+class ConditionIsCanopyland < ConditionNickname
+  def names
+    [
       "fiery islet",
       "horizon canopy",
       "nurturing peatland",
@@ -8,11 +8,6 @@ class ConditionIsCanopyland < Condition
       "sunbaked canyon",
       "waterlogged grove",
     ]
-
-    names
-      .map{|n| db.cards[n]}
-      .flat_map{|card| card ? card.printings : []}
-      .to_set
   end
 
   def to_s

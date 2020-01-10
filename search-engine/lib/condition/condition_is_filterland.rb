@@ -1,6 +1,6 @@
-class ConditionIsFilterland < Condition
-  def search(db)
-    names = [
+class ConditionIsFilterland < ConditionNickname
+  def names
+    [
       "cascade bluffs",
       "cascading cataracts",
       "crystal quarry",
@@ -19,11 +19,6 @@ class ConditionIsFilterland < Condition
       "twilight mire",
       "wooded bastion",
     ]
-
-    names
-      .map{|n| db.cards[n]}
-      .flat_map{|card| card ? card.printings : []}
-      .to_set
   end
 
   def to_s
