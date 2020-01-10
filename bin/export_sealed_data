@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
 
 require_relative "../search-engine/lib/card_database"
+require "memoist"
 
 class ExportSealedData
+  include Memoist
+
   def initialize(output_folder)
     @db = CardDatabase.load
     @factory = PackFactory.new(@db)
@@ -44,18 +47,38 @@ class ExportSealedData
     }
   end
 
-  def serialize_sheet(sheet)
+  def uuid_for(set_code, number)
+    @uuids.fetch(set_code).fetch(number)
+  end
+
+  def serialize_sheet(sheet, extended)
     ev = sheet.probabilities
     # Normalize rationals to weights
     lcm = ev.values.map(&:denominator).inject(&:lcm)
     ev = ev.map{|k,v| vv = v*lcm; raise unless vv.to_i == vv; [k, vv.to_i] }.to_h
 
-    cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
-      name = "#{e.set_code}:#{e.number}"
-      name = "#{name}:foil" if e.foil
-      [name, w]
-    end.sort.to_h
-    total_weight = cards.values.sum
+    if extended
+      cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
+        name = "#{e.set_code}:#{e.number}"
+        name = "#{name}:foil" if e.foil
+        {
+          set: e.set_code,
+          number: e.number,
+          weight: w,
+          foil: e.foil,
+          uuid: uuid_for(e.set_code, e.number)
+        }
+      end.sort_by{|x| [x[:set_code], x[:number].to_i, x[:number]] }
+      total_weight = cards.map{|x| x[:weight]}.sum
+    else
+      cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
+        name = "#{e.set_code}:#{e.number}"
+        name = "#{name}:foil" if e.foil
+        [name, w]
+      end.sort.to_h
+      total_weight = cards.values.sum
+    end
+
     {
       partner: sheet.is_a?(PartnerCardSheet) ? true : nil,
       balance_colors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
@@ -64,30 +87,55 @@ class ExportSealedData
     }.compact
   end
 
-  def serialize_sheets(sheets)
+  def serialize_sheets(sheets, extended)
     sheets.map{|sheet, id|
-      [id, serialize_sheet(sheet)]
+      [id, serialize_sheet(sheet, extended)]
     }.to_h
   end
 
-  def output_path
-    @output_folder + "export_sealed.json"
+  def basic_output_path
+    @output_folder + "sealed_basic_data.json"
   end
 
-  def call
-    exported_data = []
+  def extended_output_path
+    @output_folder + "sealed_extended_data.json"
+  end
+
+  def basic_data
+    result = []
     @db.sets_with_packs.each do |set|
       pack = @factory.for(set.code)
       pack = flatten_pack(pack)
       sheets = extract_sheets(pack)
-      exported_data << {
+      result << {
         name: set.name,
         code: set.code,
         boosters: pack.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
-        sheets: serialize_sheets(sheets),
+        sheets: serialize_sheets(sheets, false),
       }
     end
-    output_path.write JSON.pretty_generate(exported_data)
+    result
+  end
+
+  def extended_data
+    result = []
+    @db.sets_with_packs.each do |set|
+      pack = @factory.for(set.code)
+      pack = flatten_pack(pack)
+      sheets = extract_sheets(pack)
+      result << {
+        name: set.name,
+        code: set.code,
+        boosters: pack.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
+        sheets: serialize_sheets(sheets, true),
+      }
+    end
+    result
+  end
+
+  def call
+    basic_output_path.write JSON.pretty_generate(basic_data)
+    extended_output_path.write JSON.pretty_generate(extended_data)
   end
 end
 
