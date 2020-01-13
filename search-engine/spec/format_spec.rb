@@ -26,6 +26,13 @@ describe "Formats" do
       ]],
     ])
     FormatModern.new.ban_events.should eq([
+      [Date.parse("2020-01-14"),
+        "https://magic.wizards.com/en/articles/archive/news/january-13-2020-banned-and-restricted-announcement",
+      [
+        {:name=>"Mox Opal", :new=>"banned", :old=>"legal"},
+        {:name=>"Oko, Thief of Crowns", :new=>"banned", :old=>"legal"},
+        {:name=>"Mycosynth Lattice", :new=>"banned", :old=>"legal"},
+      ]],
       [Date.parse("2019-08-30"),
         "https://magic.wizards.com/en/articles/archive/news/august-26-2019-banned-and-restricted-announcement-2019-08-26",
       [

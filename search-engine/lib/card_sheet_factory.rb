@@ -34,7 +34,7 @@ class CardSheetFactory
 
   ### Usual Sheet Types
 
-  # Wo don't have anywhere near reliable information
+  # We don't have anywhere near reliable information
   # Masterpieces supposedly are in 1/144 booster (then 1/129 for Amonkhet), and they're presumably equally likely
   #
   # These numbers could be totally wrong. I base them on a million guesses by various internet commenters.

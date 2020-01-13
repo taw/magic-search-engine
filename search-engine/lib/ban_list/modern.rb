@@ -126,4 +126,12 @@ BanList.for_format("modern") do
     "Faithless Looting" => "banned",
     "Stoneforge Mystic" => "legal",
   )
+
+  change(
+    "2020-01-14",
+    "https://magic.wizards.com/en/articles/archive/news/january-13-2020-banned-and-restricted-announcement",
+    "Mox Opal" => "banned",
+    "Oko, Thief of Crowns" => "banned",
+    "Mycosynth Lattice" => "banned",
+  )
 end
