@@ -20,6 +20,8 @@ class CardSet
     @online_only   = !!data["online_only"]
     @has_boosters  = !!data["has_boosters"]
     @in_other_boosters = !!data["in_other_boosters"]
+    @custom        = !!data["custom"]
+    @funny         = !!data["funny"]
     @decks         = []
   end
 
@@ -37,6 +39,14 @@ class CardSet
 
   def online_only?
     @online_only
+  end
+
+  def custom?
+    !!@custom
+  end
+
+  def funny?
+    !!@funny
   end
 
   # counting MH1 in addition to core sets and expansions

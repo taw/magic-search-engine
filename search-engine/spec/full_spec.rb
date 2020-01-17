@@ -445,6 +445,15 @@ describe "Full Database Test" do
     "t:planeswalker year > 2014".should equal_search "t:planeswalker year >= 2015"
   end
 
+  it "is:custom" do
+    assert_search_results "is:custom"
+  end
+
+  it "is:mainfront" do
+    # Not the same for split cards
+    assert_search_equal "-is:split is:mainfront", "-is:split is:front is:primary"
+  end
+
   def legality_information(name, date = nil)
     db.cards[name.downcase].legality_information(date)
   end
