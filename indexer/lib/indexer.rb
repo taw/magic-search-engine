@@ -91,6 +91,7 @@ class Indexer
       "code",
       "custom",
       "foiling",
+      "funny",
       "gatherer_code",
       "has_boosters",
       "in_other_boosters",
@@ -131,11 +132,12 @@ class Indexer
       PatchHasBoosters,
       PatchSecondary,
       PatchExcludeFromBoosters,
+      PatchFoiling,
+      PatchSetTypes,
       PatchFunny,
       PatchLinkRelated,
       PatchPrintSheets,
       PatchFrame,
-      PatchFoiling,
       PatchPartner,
 
       # Reconcile issues
@@ -157,7 +159,6 @@ class Indexer
       PatchUrza,
       PatchFixPromoPrintDates,
       PatchMeldCardNames,
-      PatchSetTypes,
 
       # One more round of normalization, it throws away some information
       PatchNormalizeNames,

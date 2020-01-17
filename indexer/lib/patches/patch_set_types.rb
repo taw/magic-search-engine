@@ -5,6 +5,10 @@ class PatchSetTypes < Patch
       main_set_type = set.delete("type").gsub("_", " ")
       set_types = [main_set_type]
 
+      if set["custom"]
+        set_types << "custom"
+      end
+
       case set_code
       when "bbd"
         set_types << "two-headed giant" << "multiplayer"
@@ -44,6 +48,12 @@ class PatchSetTypes < Patch
         set_types << "fnm"
       end
 
+      funny_sets = %W[unh ugl pcel hho parl prel ust pust ppc1 htr htr17 pal04 h17 j17 tbth tdag tfth thp1 thp2 thp3 ptg cmb1 htr18]
+      if funny_sets.include?(set_code)
+        set_types << "funny"
+        set["funny"] = true
+      end
+
       if set["name"] =~ /Welcome Deck/ or set["name"] == "M19 Gift Pack"
         set_types << "standard"
       end
@@ -76,7 +86,7 @@ class PatchSetTypes < Patch
         set_types << "deck" unless set_code == "cm1"
       end
 
-      set["types"] = set_types.sort
+      set["types"] = set_types.sort.uniq
     end
   end
 end
