@@ -1,4 +1,4 @@
-class FormatAny
+class FormatAny < Format
   def initialize(time=nil)
     raise ArgumentError unless time.nil? or time.is_a?(Date)
     @formats = Format.all_format_classes.map{|f| f.new(time)}

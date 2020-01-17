@@ -74,7 +74,7 @@ class ColorBalancedCardSheet < CardSheet
 
     weights = weights_for(count)
     if weights.nil?
-      warn "Can't color balance #{count} for #{@elements[0].set_code}"
+      raise "Can't color balance #{count} for #{@elements[0].set_code}"
     end
     return super if weights.nil?
     den, *nums = weights

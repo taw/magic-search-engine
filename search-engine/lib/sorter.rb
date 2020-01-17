@@ -1,6 +1,6 @@
 class Sorter
-  COLOR_ORDER = ["w", "u", "b", "r", "g", "uw", "bu", "br", "gr", "gw", "bw", "ru", "bg", "rw", "gu", "buw", "bru", "bgr", "grw", "guw", "brw", "gru", "bgw", "ruw", "bgu", "bruw", "bgru", "bgrw", "gruw", "bguw", "bgruw", ""].each_with_index.to_h.freeze
-  SORT_ORDERS = ["ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou", "artist", "released", "set"].sort
+  COLOR_ORDER = ["", "w", "u", "b", "r", "g", "uw", "bu", "br", "gr", "gw", "bw", "ru", "bg", "rw", "gu", "guw", "buw", "bru", "bgr", "grw", "bgw", "ruw", "bgu", "brw", "gru", "bruw", "bgru", "bgrw", "gruw", "bguw", "bgruw"].each_with_index.to_h.freeze
+  SORT_ORDERS = ["default", "ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou", "artist", "released", "set"].sort
 
   # Fallback sorting for printings of each card:
   # * not MTGO only
@@ -46,6 +46,10 @@ class Sorter
   def card_key(c)
     @sort_order.flat_map do |part|
       case part
+      when "default"
+        [c.default_sort_index]
+      when "-default"
+        [-c.default_sort_index]
       when "new", "-old"
         [c.set.regular? ? 0 : 1, -c.release_date_i]
       when "old", "-new"
