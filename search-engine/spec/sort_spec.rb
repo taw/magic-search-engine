@@ -300,22 +300,22 @@ describe "Sorting" do
 
   let(:expected_color_order) {
     # Magic cards are ordered:
+    # * colorless
     # * monocolored (wubrg)
     # * multicolored
-    # * colorless
     #
     # In most sets multicolored are grouped together.
     # Alara was ordered like below.
     # Wedges and 4/5-color order is completely arbitrary
     [
+      "",
       "w", "u", "b", "r", "g",
       "wu", "ub", "br", "rg", "gw",
       "wb", "ur", "bg", "rw", "gu",
-      "wub", "ubr", "brg", "rgw", "gwu",
-      "wbr", "urg", "bgw", "rwu", "gub",
+      "gwu", "wub", "ubr", "brg", "rgw",
+      "bgw", "rwu", "gub", "wbr", "urg",
       "wubr", "ubrg", "brgw", "rgwu", "gwub",
       "wubrg",
-      "",
     ].map{|cc| cc.chars.sort.join}
   }
 

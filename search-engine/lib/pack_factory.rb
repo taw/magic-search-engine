@@ -119,7 +119,7 @@ class PackFactory
     # Default configuration since mythics got introduced
     # A lot of sets don't fit this
     when "m10", "m11", "m12", "m13", "m14", "m15",
-      "ala", "con",
+      "con",
       "zen", "wwk", "roe",
       "som", "mbs", "nph",
       "avr",
@@ -138,6 +138,8 @@ class PackFactory
       "m20",
       "eld" # ELD has other pack types too
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
+    when "ala"
+      build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
     when "arb"
       build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare_mythic: 1})
     when "mma", "mm2", "mm3", "ema", "ima", "a25", "uma"
