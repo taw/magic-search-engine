@@ -122,3 +122,18 @@ task "rules:update" do
   sh "bin/fetch_comp_rules"
   sh "bin/format_comp_rules"
 end
+
+desc "Full update"
+task "update" do
+  Rake::Task["rules:update"].invoke
+  Rake::Task["pennydreadful:update"].invoke
+  Rake::Task["mtgjson:update"].invoke
+  Rake::Task["mtgjson:fetch"].invoke
+  Rake::Task["index"].invoke
+  sh "~/github/magic-preconstructed-decks/bin/build_jsons ./decks.json"
+  sh "./deck_indexer/bin/deck_indexer"
+  sh "./bin/export_sealed_data  ~/github/magic-sealed-data"
+  sh "./bin/export_decks_data  ~/github/magic-preconstructed-decks-data/decks.json"
+  # sh "trash ./decks.json"
+  # sh "trash ./AllSets.json"
+end
