@@ -99,9 +99,9 @@ class UpdateMtgjsonSets
 
       case command
       when :drop
-        FileUtils.rm incoming_path, force: true, verbose: true
+        FileUtils.rm incoming_path, force: true #, verbose: true
       when :update
-        FileUtils.mv incoming_path, current_path, force: true, verbose: true
+        FileUtils.mv incoming_path, current_path, force: true #, verbose: true
       when :conflict
         puts "#{name} - conflicting update"
       when :new
