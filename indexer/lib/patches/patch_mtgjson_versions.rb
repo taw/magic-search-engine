@@ -120,6 +120,12 @@ class PatchMtgjsonVersions < Patch
         end
       end
 
+      if card.has_key?("isBuyABox")
+        if card.delete("isBuyABox")
+          card["buyabox"] = true
+        end
+      end
+
       # Unicode vs ASCII
       if card["rulings"]
         card["rulings"].each do |ruling|
