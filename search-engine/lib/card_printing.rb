@@ -2,7 +2,7 @@ class CardPrinting
   attr_reader :card, :set, :date, :release_date
   attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border
   attr_reader :rarity_code, :print_sheet, :partner, :oversized, :frame_effects, :foiling, :spotlight
-  attr_reader :textless, :fullart
+  attr_reader :textless, :fullart, :buyabox
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
@@ -41,6 +41,7 @@ class CardPrinting
     @spotlight = data["spotlight"]
     @fullart = data["fullart"]
     @textless = data["textless"]
+    @buyabox = data["buyabox"]
 
     @paper = data["paper"]
     @arena = data["arena"]

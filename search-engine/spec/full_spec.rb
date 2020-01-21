@@ -454,6 +454,11 @@ describe "Full Database Test" do
     assert_search_equal "-is:split is:mainfront", "-is:split is:front is:primary"
   end
 
+  it "is:buyabox" do
+    assert_search_include "is:buyabox", "Nexus of Fate"
+    assert_search_results "is:buyabox is:booster"
+  end
+
   def legality_information(name, date = nil)
     db.cards[name.downcase].legality_information(date)
   end
