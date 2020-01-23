@@ -127,7 +127,6 @@ desc "Full update"
 task "update" do
   Rake::Task["rules:update"].invoke
   Rake::Task["pennydreadful:update"].invoke
-  Rake::Task["mtgjson:update"].invoke
   Rake::Task["mtgjson:fetch"].invoke
   Rake::Task["index"].invoke
   sh "~/github/magic-preconstructed-decks/bin/build_jsons ./decks.json"
