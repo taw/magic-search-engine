@@ -61,7 +61,7 @@ class SingleSetUpdater
   end
 
   def handle_new
-    return :drop if incoming_data["isPartialPreview"]
+    return :spoiler if incoming_data["isPartialPreview"]
     # We're actually OK with foreign promo sets
     return :drop if incoming_data["isForeignOnly"] and bad_foregin_only_sets.include?(incoming_code)
     # Just ignore it
@@ -104,6 +104,8 @@ class UpdateMtgjsonSets
         FileUtils.mv incoming_path, current_path, force: true #, verbose: true
       when :conflict
         puts "#{name} - conflicting update"
+      when :spoiler
+        puts "#{name} - spoiler set"
       when :new
         puts "#{name} - new set"
       else
