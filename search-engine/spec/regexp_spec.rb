@@ -78,6 +78,7 @@ describe "Regexp" do
       "Coax from the Blind Eternities",
       "Hanweir, the Writhing Township",
       "Ib Halfheart, Goblin Tactician",
+      "Kroxa, Titan of Death's Hunger",
       "Minamo, School at Water's Edge",
       "Okina, Temple to the Grandfathers",
       "Oviya Pashiri, Sage Lifecrafter",
@@ -86,7 +87,7 @@ describe "Regexp" do
   end
 
   it "regexp rulings text" do
-    assert_search_results "rulings:fly"
+    assert_search_results "rulings:fly", "Wings of Hubris"
     assert_search_equal "rulings:flying", 'rulings:/\bflying\b/'
     assert_search_include 'rulings:/\d{6,}/', "Echo Storm"
   end

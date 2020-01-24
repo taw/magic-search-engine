@@ -14,10 +14,12 @@ describe "Ability Word Regexp" do
       "Choose one",
       "Choose two",
       "DCI ruling",
+      "Escape",
       "Forecast",
       "I",
       "II",
       "III",
+      "IV",
       "Target opponent chooses one",
     ]
 
