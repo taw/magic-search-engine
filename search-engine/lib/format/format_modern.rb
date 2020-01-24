@@ -39,6 +39,7 @@ class FormatModern < Format
       "mh1",
       "m20",
       "eld",
+      "thb",
     ]
   end
 end

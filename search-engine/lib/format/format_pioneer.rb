@@ -21,6 +21,7 @@ class FormatPioneer < Format
       "grn", "rna", "war",
       "m20",
       "eld",
+      "thb",
     ]
   end
 end
