@@ -135,6 +135,13 @@ describe "Foils" do
         # assert_foiling_partial_precon(extra_cards - [buy_a_box_promo])
         # Apparently it's available nonfoil in the $450 product
         assert_foiling([buy_a_box_promo], "both")
+      when "thb"
+        booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
+        buy_a_box_promo = extra_cards.find{|c| c.name == "Athreos, Shroud-Veiled"}
+        assert_foiling(booster_cards, "both")
+        # Some but not all of them appear in collector boosters too:
+        # assert_foiling_partial_precon(extra_cards - [buy_a_box_promo])
+        assert_foiling([buy_a_box_promo], "foilonly")
       when "war"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         buy_a_box_promo = extra_cards.find{|c| c.name == "Tezzeret, Master of the Bridge"}
