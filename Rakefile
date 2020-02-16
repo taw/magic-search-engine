@@ -44,6 +44,8 @@ task "mtgjson:update" => ["mtgjson:fetch", "index"]
 desc "Update penny dreadful banlist"
 task "pennydreadful:update" do
   system "wget -q http://pdmtgo.com/legal_cards.txt -O index/penny_dreadful_legal_cards.txt"
+  list = Pathname("index/penny_dreadful_legal_cards.txt")
+  list.write list.read.gsub("\r", "")
 end
 
 desc "Fetch Gatherer pics"
