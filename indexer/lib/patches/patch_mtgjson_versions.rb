@@ -156,6 +156,11 @@ class PatchMtgjsonVersions < Patch
       if card["number"]
         card["number"] = card["number"].sub(/(\D+)\z/){ $1.downcase }
       end
+
+      # Weird Escape formatting, make it match other similar abilities
+      if card["text"] =~ /^Escape—/
+        card["text"] = card["text"].gsub(/^Escape—/, "Escape — ")
+      end
     end
 
     # Remove sets without cards (v4 token only sets)
