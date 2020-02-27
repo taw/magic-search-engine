@@ -192,6 +192,7 @@ class Indexer
         "name",
         "releaseDate",
         "type",
+        "meta",
       ).merge(
         "mci_code" => set_data["magicCardsInfoCode"],
         "gatherer_code" => set_data["gathererCode"],
