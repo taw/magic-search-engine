@@ -39,6 +39,7 @@ describe "multiverse ids" do
       when "med" # reported mtgjson bug
       when "phop" # fake set with stuff coming from 2 sources
       when "pmoa" # vanguard weirdness
+      when "sld" # set keeps getting updated
       when "eld"
         # Something's really messed up here, possibly related to ELD vs CELD
       when "thb"
