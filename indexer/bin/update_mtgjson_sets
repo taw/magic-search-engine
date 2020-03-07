@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
 
-require "json"
-require "pathname"
-require "pathname-glob"
 require "fileutils"
+require "json"
 require "memoist"
+require "pathname-glob"
+require "pathname"
+require "pry"
 
 class SingleSetUpdater
   extend Memoist
@@ -70,11 +71,20 @@ class SingleSetUpdater
     :new
   end
 
+  # Display reason for debugging
   def handle_update
-    return :conflict if incoming_name != current_name
-    return :conflict if incoming_code != current_code
-    return :conflict if incoming_cards != current_cards
-    return :update
+    issues = []
+    issues << :name if incoming_name != current_name
+    issues << :code if incoming_code != current_code
+    if incoming_cards != current_cards
+      if current_cards.map(&:first) != incoming_cards.map(&:first)
+        issues << :card_names
+      else
+        issues << :card_numbers
+      end
+    end
+    return :update if issues.empty?
+    return [:conflict, issues]
   end
 end
 
@@ -95,7 +105,7 @@ class UpdateMtgjsonSets
     incoming_files.each do |incoming_path|
       name = incoming_path.basename(".json").to_s
       current_path = current_dir + incoming_path.basename
-      command = SingleSetUpdater.new(incoming_path, current_path).call
+      command, comment = SingleSetUpdater.new(incoming_path, current_path).call
 
       case command
       when :drop
@@ -103,7 +113,7 @@ class UpdateMtgjsonSets
       when :update
         FileUtils.mv incoming_path, current_path, force: true #, verbose: true
       when :conflict
-        puts "#{name} - conflicting update"
+        puts "#{name} - conflicting update (#{comment.inspect})"
       when :spoiler
         puts "#{name} - spoiler set"
       when :new
