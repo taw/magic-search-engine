@@ -1,5 +1,5 @@
 describe "Unsets" do
-  include_context "db", "ugl", "unh", "pcel", "hho", "ust"
+  include_context "db", "ugl", "unh", "pcel", "hho", "ust", "und"
 
   it "half power" do
     "pow=1"  .should exclude_cards "Little Girl"
