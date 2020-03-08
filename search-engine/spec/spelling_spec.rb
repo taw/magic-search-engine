@@ -85,6 +85,7 @@ describe "Spelling" do
       next if name == "Monkey-"
       next if name == "Rhino-"
       next if name == "Robo-"
+      next if name == "Bat-"
 
       name.should return_cards(name)
       name.gsub("-", "").should return_cards(name)
