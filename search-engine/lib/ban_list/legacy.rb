@@ -305,4 +305,10 @@ BanList.for_format("legacy") do
     "https://magic.wizards.com/en/articles/archive/news/november-18-2019-banned-and-restricted-announcement",
     "Wrenn and Six" => "banned",
   )
+
+  change(
+    "2020-03-10",
+    "https://magic.wizards.com/en/articles/archive/news/march-9-2020-banned-and-restricted-announcement",
+    "Underworld Breach" => "banned",
+  )
 end

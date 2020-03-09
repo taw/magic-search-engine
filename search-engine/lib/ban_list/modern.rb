@@ -134,4 +134,10 @@ BanList.for_format("modern") do
     "Oko, Thief of Crowns" => "banned",
     "Mycosynth Lattice" => "banned",
   )
+
+  change(
+    "2020-03-10",
+    "https://magic.wizards.com/en/articles/archive/news/march-9-2020-banned-and-restricted-announcement",
+    "Once Upon a Time" => "banned",
+  )
 end

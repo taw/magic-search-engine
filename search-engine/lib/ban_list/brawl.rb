@@ -30,4 +30,10 @@ BanList.for_format("brawl") do
     "https://magic.wizards.com/en/articles/archive/news/november-18-2019-banned-and-restricted-announcement",
     "Oko, Thief of Crowns" => "banned",
   )
+
+  change(
+    "2020-03-10",
+    "https://magic.wizards.com/en/articles/archive/news/march-9-2020-banned-and-restricted-announcement",
+    "Golos, Tireless Pilgrim" => "banned",
+  )
 end
