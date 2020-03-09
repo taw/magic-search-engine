@@ -7,4 +7,10 @@ BanList.for_format("historic") do
     "Veil of Summer" => "banned",
     "Oko, Thief of Crowns" => "banned",
   )
+
+  change(
+    "2020-03-10",
+    "https://magic.wizards.com/en/articles/archive/news/march-9-2020-banned-and-restricted-announcement",
+    "Field of the Dead" => "legal",
+  )
 end
