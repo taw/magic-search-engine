@@ -50,11 +50,6 @@ describe Deck do
 
     db.sets.each do |set_code, set|
       set.decks.each do |deck|
-        if (allowed_combinations & set.types.map{|st| [st, deck.type]}).empty?
-          p :empty
-          p allowed_combinations
-          p set.types.map{|st| [st, deck.type]}
-        end
         (allowed_combinations & set.types.map{|st| [st, deck.type]}).should_not be_empty
       end
     end
