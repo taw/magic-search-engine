@@ -3,7 +3,7 @@ class PhysicalCard
   def initialize(front, back, foil)
     @front = front
     @back = back
-    @foil = foil
+    @foil = !!foil
   end
 
   def name

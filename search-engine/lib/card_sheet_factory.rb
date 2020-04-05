@@ -125,11 +125,81 @@ class CardSheetFactory
     explicit_sheet(set_code, "R")
   end
 
+  def mb1_white_a
+    explicit_sheet_1("mb1", "WA")
+  end
+
+  def mb1_white_b
+    explicit_sheet_1("mb1", "WB")
+  end
+
+  def mb1_blue_a
+    explicit_sheet_1("mb1", "UA")
+  end
+
+  def mb1_blue_b
+    explicit_sheet_1("mb1", "UB")
+  end
+
+  def mb1_black_a
+    explicit_sheet_1("mb1", "BA")
+  end
+
+  def mb1_black_b
+    explicit_sheet_1("mb1", "BB")
+  end
+
+  def mb1_red_a
+    explicit_sheet_1("mb1", "RA")
+  end
+
+  def mb1_red_b
+    explicit_sheet_1("mb1", "RB")
+  end
+
+  def mb1_green_a
+    explicit_sheet_1("mb1", "GA")
+  end
+
+  def mb1_green_b
+    explicit_sheet_1("mb1", "GB")
+  end
+
+  def mb1_multicolor
+    explicit_sheet_1("mb1", "MC")
+  end
+
+  def mb1_colorless
+    explicit_sheet_1("mb1", "CL")
+  end
+
+  def mb1_old_frame
+    explicit_sheet_1("mb1", "OF")
+  end
+
+  def mb1_rare
+    explicit_sheet_1("mb1", "R")
+  end
+
+  def mb1_foil
+    from_query("e:fmb1", foil: true)
+  end
+
+  def mb1_playtest
+    from_query("e:cmb1")
+  end
+
   def explicit_sheet(set_code, print_sheet_code)
     cards = @db.sets[set_code].printings.select{|c| c.in_boosters? and c.print_sheet[0] == print_sheet_code}
     groups = cards.group_by{|c| c.print_sheet[1..-1].to_i}
     subsheets = groups.map{|mult,cards| [CardSheet.new(cards.map{|c| PhysicalCard.for(c) }), mult] }
     mix_sheets(*subsheets)
+  end
+
+  def explicit_sheet_1(set_code, print_sheet_code)
+    cards = @db.sets[set_code].printings.select{|c| c.in_boosters? and c.print_sheet == print_sheet_code}
+    physical_cards = cards.map{|c| PhysicalCard.for(c) }.uniq
+    CardSheet.new(physical_cards)
   end
 
   ### These are really unique sheets

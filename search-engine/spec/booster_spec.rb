@@ -19,8 +19,10 @@ describe "is:booster" do
     db.sets.each do |set_code, set|
       set_pp = "#{set.name} [#{set.code}]"
       should_have_boosters = (
-        !(set_types_with_boosters & set.types).empty? and
-        !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana].include?(set.code)
+        %W[mb1 cmb1].include?(set_code) or (
+          !(set_types_with_boosters & set.types).empty? and
+          !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana fmb1].include?(set.code)
+        )
       )
       if should_have_boosters
         set.should have_boosters, "#{set_pp} should have boosters"
@@ -29,7 +31,7 @@ describe "is:booster" do
       end
 
       should_be_in_other_boosters = (
-        %W[tsb exp mps mp2].include?(set.code)
+        %W[tsb exp mps mp2 fmb1].include?(set.code)
       )
       if should_be_in_other_boosters
         set.should be_in_other_boosters, "#{set_pp} should be included in other boosters"
