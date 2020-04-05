@@ -15,7 +15,7 @@ describe "Old templates" do
   end
 
   it do
-    assert_count_cards %Q[o:"~ can't be countered"], 1
+    assert_count_cards %Q[o:"~ can't be countered"], 0
   end
 
   ### On non-Gatherer cards only
