@@ -267,6 +267,42 @@ class PackFactory
       build_pack(set_code, {explicit_common: 6, explicit_uncommon: 2})
     when "leg"
       build_pack(set_code, {explicit_common: 12, explicit_uncommon: 3, explicit_rare: 1})
+    when "mb1"
+      build_pack(set_code, {
+        mb1_white_a: 1,
+        mb1_white_b: 1,
+        mb1_blue_a: 1,
+        mb1_blue_b: 1,
+        mb1_black_a: 1,
+        mb1_black_b: 1,
+        mb1_red_a: 1,
+        mb1_red_b: 1,
+        mb1_green_a: 1,
+        mb1_green_b: 1,
+        mb1_multicolor: 1,
+        mb1_colorless: 1,
+        mb1_old_frame: 1,
+        mb1_rare: 1,
+        mb1_foil: 1,
+      })
+    when "cmb1"
+      build_pack(set_code, {
+        mb1_white_a: 1,
+        mb1_white_b: 1,
+        mb1_blue_a: 1,
+        mb1_blue_b: 1,
+        mb1_black_a: 1,
+        mb1_black_b: 1,
+        mb1_red_a: 1,
+        mb1_red_b: 1,
+        mb1_green_a: 1,
+        mb1_green_b: 1,
+        mb1_multicolor: 1,
+        mb1_colorless: 1,
+        mb1_old_frame: 1,
+        mb1_rare: 1,
+        mb1_playtest: 1,
+      })
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this

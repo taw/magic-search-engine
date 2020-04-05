@@ -48,7 +48,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[dgm unh jou frf tsp cn2 bbd war arn].include?(set_code)
+      next if %W[dgm unh jou frf tsp cn2 bbd war arn cmb1].include?(set_code)
       set_pp = "#{set.name} [#{set.code}]"
       pack = factory.for(set_code)
       next unless pack
@@ -61,7 +61,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[tsp cn2 bbd war].include?(set_code)
+      next if %W[tsp cn2 bbd war mb1].include?(set_code)
       set_pp = "#{set.name} [#{set.code}]"
       pack = factory.for(set_code)
       next unless pack
@@ -739,7 +739,6 @@ describe PackFactory do
     end
   end
 
-
   context "sets with explicit print sheets" do
     let(:pack) { factory.for(set_code) }
     let(:ev) { pack.expected_values }
@@ -822,6 +821,38 @@ describe PackFactory do
       let(:set_code) { "drk" }
       let(:booster_contents) { {"C"=>6, "U"=>2} }
       let(:sheet_size) { {"C"=>121, "U"=>121} }
+      it do
+        ev.should eq(expected_ev)
+      end
+    end
+  end
+
+  context "MB1/CMB1/FMB1" do
+    let(:mb1_cards) { db.search("++ e:mb1").printings }
+    let(:fmb1_cards) { db.search("++ e:fmb1").printings }
+    let(:cmb1_cards) { db.search("++ e:cmb1").printings }
+
+    let(:mb1_physical_cards) { mb1_cards.map{|c| PhysicalCard.for(c)}.uniq }
+    let(:fmb1_physical_cards) { fmb1_cards.map{|c| PhysicalCard.for(c, true)}.uniq }
+    let(:cmb1_physical_cards) { cmb1_cards.map{|c| PhysicalCard.for(c)}.uniq }
+
+    let(:ev) { pack.expected_values }
+
+    context "MB1" do
+      let(:pack) { factory.for("mb1") }
+      let(:expected_cards) { mb1_physical_cards + fmb1_physical_cards }
+      let(:expected_ev) { expected_cards.map{|c| [c, Rational(1,121)] }.to_h }
+
+      it do
+        ev.should eq(expected_ev)
+      end
+    end
+
+    context "CMB1" do
+      let(:pack) { factory.for("cmb1") }
+      let(:expected_cards) { mb1_physical_cards + cmb1_physical_cards }
+      let(:expected_ev) { expected_cards.map{|c| [c, Rational(1,121)] }.to_h }
+
       it do
         ev.should eq(expected_ev)
       end
