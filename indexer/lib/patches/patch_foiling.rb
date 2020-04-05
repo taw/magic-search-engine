@@ -58,7 +58,7 @@ class PatchFoiling < Patch
       case set_code
       when "ced", "cei"
         card["indexer_foiling"] = "nonfoil"
-      when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "plpa", "pjgp", "ppro", "pgtw", "pwor", "prel", "pfnm", "pwos", "ppre"
+      when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "plpa", "pjgp", "ppro", "pgtw", "pwor", "prel", "pfnm", "pwos", "ppre", "fmb1"
         card["indexer_foiling"] = "foilonly"
       when "ced", "cei", "chr", "pgru", "palp", "pdrc", "pelp", "plgm", "ugin", "pcel", "van", "s99", "mgb"
         card["indexer_foiling"] = "nonfoil"
