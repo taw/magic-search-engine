@@ -72,7 +72,7 @@ describe "Foils" do
       next if set.types.include?("token")
 
       case set.code
-      when "g17", "g18"
+      when "g17", "g18", "fmb1"
         assert_foiling(set.printings, "foilonly")
       when "phuk", "arn", "mir", "drk", "atq", "4ed"
         assert_foiling(set.printings, "nonfoil")
