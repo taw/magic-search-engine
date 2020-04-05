@@ -137,6 +137,7 @@ class Indexer
       PatchFunny,
       PatchLinkRelated,
       PatchPrintSheets,
+      PatchMB1,
       PatchFrame,
       PatchPartner,
 
