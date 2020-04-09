@@ -84,6 +84,8 @@ describe "is:booster" do
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=264 -number:/†|★/"
       when "arn"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code}"
+      when "ice", "mir", "tmp", "usg"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -t:basic -number:/†/"
       else
         if set.has_boosters? or set.in_other_boosters?
           assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/†/"

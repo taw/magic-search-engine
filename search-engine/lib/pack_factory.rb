@@ -92,11 +92,12 @@ class PackFactory
     # Back then there was no crazy variation
     # 6ed came out after foils started, but didn't have foils
     when "4ed", "5ed", "6ed",
-      "mir", "vis", "wth",
-      "tmp", "sth", "exo",
-      "usg",
       "por", "p02"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
+    when "mir", "vis", "wth",
+      "tmp", "sth", "exo",
+      "usg"
+      build_pack(set_code, {common: 11, uncommon: 3, rare: 1})
     # Pre-mythic, with foils
     when "ulg", "uds",
       "mmq", "pcy", "nem",
@@ -256,8 +257,10 @@ class PackFactory
     when "rna"
       build_pack_with_random_foil(set_code, :foil, :rna_common, {rna_common: 10, uncommon: 3, rare_mythic: 1, rna_land: 1})
     # These are just approximations, they actually used nonstandard sheets
-    when "lea", "leb", "2ed", "3ed", "ice"
+    when "lea", "leb", "2ed", "3ed"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
+    when "ice"
+      build_pack(set_code, {common: 11, uncommon: 3, rare: 1})
     # Early sets had unusual rarities, indexer fills all the details for us
     when "all"
       build_pack(set_code, {explicit_common: 8, explicit_uncommon: 3, explicit_rare: 1})
