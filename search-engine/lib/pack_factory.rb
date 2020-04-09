@@ -80,17 +80,19 @@ class PackFactory
     case set_code
     when "ptk"
       build_pack(set_code, {basic: 2, common: 5, uncommon: 2, rare: 1})
-    when "s99", "por"
+    when "s99", "por", "p02"
       build_pack(set_code, {basic: 2, common: 9, uncommon: 3, rare: 1})
     when "ugl"
       build_pack(set_code, {basic: 1, common_unbalanced: 6, uncommon: 2, rare: 1})
     when "7ed", "8ed", "9ed", "10e"
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare: 1})
-    # Default configuration before mythics
-    # Back then there was no crazy variation
-    # 6ed came out after foils started, but didn't have foils
-    when "4ed", "5ed", "6ed", "p02"
+    # These are just approximations, they actually used nonstandard sheets
+    # Basics are on common, uncommon, and rare sheets
+    when "lea", "leb", "2ed", "3ed" 
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
+    # 6ed came out after foils started, but didn't have foils
+    when "4ed", "5ed", "6ed"
+      build_pack(set_code, {common: 11, uncommon: 3, rare: 1})
     when "mir", "vis", "wth",
       "tmp", "sth", "exo",
       "usg"
@@ -263,9 +265,6 @@ class PackFactory
       build_pack_with_random_foil(set_code, :foil, :grn_common, {grn_common: 10, uncommon: 3, rare_mythic: 1, grn_land: 1})
     when "rna"
       build_pack_with_random_foil(set_code, :foil, :rna_common, {rna_common: 10, uncommon: 3, rare_mythic: 1, rna_land: 1})
-    # These are just approximations, they actually used nonstandard sheets
-    when "lea", "leb", "2ed", "3ed"
-      build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
     when "ice"
       build_pack(set_code, {common: 11, uncommon: 3, rare: 1})
     # Early sets had unusual rarities, indexer fills all the details for us
