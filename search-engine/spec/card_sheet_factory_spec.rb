@@ -135,7 +135,7 @@ describe CardSheetFactory do
     describe "Champions of Kamigawa" do
       let(:set_code) { "chk" }
       it do
-        number_of_cards.should eq(88+89+110+20)
+        number_of_cards.should eq(88+89+110)
         number_of_rares.should eq(88)
         # TODO: Brothers Yamazaki alt art
         number_of_uncommons.should eq(88+1)

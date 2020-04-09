@@ -104,26 +104,28 @@ class PackFactory
          "tor",
          "lgn", "scg",
          "dst", "5dn",
+         "fut", # Amazingly Future Sight has regular boring sheets
          "bok", "sok",
          "mor"
       build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare: 1})
-    # Pre-mythic, with foils
+    # Pre-mythic, with foils, only foil basics in packs
     when "mmq",
       "inv",
       "ody",
       "ons",
       "mrd",
       "chk",
-      "csp",
-      "fut", # Amazingly Future Sight has regular boring sheets
       "lrw"
+      build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare: 1})
+    # According to pack opening videos, Coldsnap has common_or_basic slot
+    when "csp"
       build_pack_with_random_foil(set_code, :foil, :common_or_basic, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Don't try to color balance them
     # (APC should probably be balanced, just by c: not ci:)
     when "apc", "jud", "gpt", "dis", "eve"
       build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare: 1})
     when "rav", "shm"
-      build_pack_with_random_foil(set_code, :foil, :common_or_basic_unbalanced, {common_or_basic_unbalanced: 11, uncommon: 3, rare: 1})
+      build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare: 1})
     # Default configuration since mythics got introduced
     # A lot of sets don't fit this
     when "m10", "m11", "m12", "m13", "m14", "m15",
