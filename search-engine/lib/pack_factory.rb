@@ -91,8 +91,7 @@ class PackFactory
     # Default configuration before mythics
     # Back then there was no crazy variation
     # 6ed came out after foils started, but didn't have foils
-    when "4ed", "5ed", "6ed",
-      "p02"
+    when "4ed", "5ed", "6ed", "p02"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
     when "mir", "vis", "wth",
       "tmp", "sth", "exo",
@@ -103,25 +102,27 @@ class PackFactory
          "pcy", "nem",
          "pls",
          "tor",
-         "lgn", "scg"
+         "lgn", "scg",
+         "dst", "5dn",
+         "bok", "sok",
+         "mor"
       build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare: 1})
     # Pre-mythic, with foils
     when "mmq",
       "inv",
       "ody",
       "ons",
-      "mrd", "dst", "5dn",
-      "chk", "bok", "sok",
+      "mrd",
+      "chk",
       "csp",
       "fut", # Amazingly Future Sight has regular boring sheets
-      "lrw", "mor"
+      "lrw"
       build_pack_with_random_foil(set_code, :foil, :common_or_basic, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Don't try to color balance them
     # (APC should probably be balanced, just by c: not ci:)
-    when "apc", "jud"
+    when "apc", "jud", "gpt", "dis", "eve"
       build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare: 1})
-    when "rav", "gpt", "dis",
-      "shm", "eve"
+    when "rav", "shm"
       build_pack_with_random_foil(set_code, :foil, :common_or_basic_unbalanced, {common_or_basic_unbalanced: 11, uncommon: 3, rare: 1})
     # Default configuration since mythics got introduced
     # A lot of sets don't fit this
