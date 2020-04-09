@@ -52,11 +52,9 @@ class PackFactory
         @sheet_factory.rarity(set_code, name.to_s)
       when :rare_mythic
         @sheet_factory.rare_mythic(set_code)
-      # In old sets commons and basics were printed on shared sheet
+      # In some old sets commons and basics were printed on shared sheet
       when :common_or_basic
         @sheet_factory.common_or_basic(set_code)
-      when :common_or_basic_unbalanced
-        @sheet_factory.common_or_basic(set_code, kind: CardSheet)
       when :foil
         @sheet_factory.foil_sheet(set_code)
       # Various old sheets
