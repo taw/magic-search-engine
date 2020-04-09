@@ -32,8 +32,11 @@ describe PackFactory do
     let(:expected_mtgjson_variant) {
       ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "4ed"]
     }
+    let(:expeted_basics_not_in_boosters) {
+      ["ice", "mir", "tmp", "usg"]
+    }
     let(:expected) {
-      expected_official | expected_mtgjson_variant
+      expected_official | expected_mtgjson_variant | expeted_basics_not_in_boosters
     }
     let(:sets_with_boosters) { db.sets.values.select(&:has_boosters?) }
     let(:sets_with_nonbooster_cards) {

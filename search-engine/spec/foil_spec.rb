@@ -210,6 +210,8 @@ describe "Foils" do
         special, regular = set.printings.partition{|c| c.number =~ /\AS/ }
         assert_foiling(special, "nonfoil")
         assert_foiling(regular, "both")
+      when "ice"
+        assert_foiling(set.printings, "nonfoil")
       else
         assert_by_type(set)
       end
