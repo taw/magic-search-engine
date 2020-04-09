@@ -111,6 +111,7 @@ task "clean" do
     "search-engine/.respec_failures",
     "search-engine/coverage",
     "search-engine/Gemfile.lock",
+    "tmp",
   ].each do |path|
     system "trash", path if Pathname(path).exist?
   end
@@ -135,6 +136,6 @@ task "update" do
   sh "./deck_indexer/bin/deck_indexer"
   sh "./bin/export_sealed_data  ~/github/magic-sealed-data"
   sh "./bin/export_decks_data  ~/github/magic-preconstructed-decks-data/decks.json"
-  # sh "trash ./decks.json"
-  # sh "trash ./AllSets.json"
+  # sh "trash ./tmp/decks.json"
+  # sh "trash ./tmp/AllSets.json"
 end

@@ -41,7 +41,11 @@ class PatchExcludeFromBoosters < Patch
   end
 
   # Based on http://www.lethe.xyz/mtg/collation/index.html
-  # (list here might be incomplete)
+  # These sets do not have foils
+  #
+  # Many other sets had foil basics in boosters
+  # but nonfoil basics only in other products
+  # These do not belong here
   def sets_without_basics_in_boosters
     ["ice", "mir", "tmp", "usg"]
   end
