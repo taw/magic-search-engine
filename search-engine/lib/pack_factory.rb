@@ -99,8 +99,9 @@ class PackFactory
       "usg"
       build_pack(set_code, {common: 11, uncommon: 3, rare: 1})
     # Pre-mythic, with foils
-    when "ulg", "uds",
-      "mmq", "pcy", "nem",
+    when "ulg", "uds"
+      build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare: 1})
+    when "mmq", "pcy", "nem",
       "inv", "pls",
       "ody", "tor",
       "ons", "lgn", "scg",
