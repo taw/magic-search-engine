@@ -47,7 +47,7 @@ class PatchExcludeFromBoosters < Patch
   # but nonfoil basics only in other products
   # These do not belong here
   def sets_without_basics_in_boosters
-    ["ice", "mir", "tmp", "usg"]
+    ["ice", "mir", "tmp", "usg", "4ed", "5ed", "6ed"]
   end
 
   def exclude_from_boosters(set_code, number)

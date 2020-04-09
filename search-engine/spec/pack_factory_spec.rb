@@ -33,7 +33,7 @@ describe PackFactory do
       ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "4ed"]
     }
     let(:expected_basics_not_in_boosters) {
-      ["ice", "mir", "tmp", "usg"]
+      ["ice", "mir", "tmp", "usg", "4ed", "5ed", "6ed"]
     }
     let(:expected) {
       expected_official | expected_mtgjson_variant | expected_basics_not_in_boosters
