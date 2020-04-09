@@ -86,10 +86,14 @@ class PackFactory
       build_pack(set_code, {basic: 1, common_unbalanced: 6, uncommon: 2, rare: 1})
     when "7ed", "8ed", "9ed", "10e"
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare: 1})
-    # These are just approximations, they actually used nonstandard sheets
-    # Basics are on common, uncommon, and rare sheets
-    when "lea", "leb", "2ed", "3ed" 
-      build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
+    when "lea"
+      build_pack(set_code, {lea_common: 11, lea_uncommon: 3, lea_rare: 1})
+    when "leb"
+      build_pack(set_code, {leb_common: 11, leb_uncommon: 3, leb_rare: 1})
+    when "2ed"
+      build_pack(set_code, {ed2_common: 11, ed2_uncommon: 3, ed2_rare: 1})
+    when "3ed"
+      build_pack(set_code, {ed3_common: 11, ed3_uncommon: 3, ed3_rare: 1})
     # 6ed came out after foils started, but didn't have foils
     when "4ed", "5ed", "6ed"
       build_pack(set_code, {common: 11, uncommon: 3, rare: 1})
