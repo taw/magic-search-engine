@@ -32,11 +32,11 @@ describe PackFactory do
     let(:expected_mtgjson_variant) {
       ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "4ed"]
     }
-    let(:expeted_basics_not_in_boosters) {
+    let(:expected_basics_not_in_boosters) {
       ["ice", "mir", "tmp", "usg"]
     }
     let(:expected) {
-      expected_official | expected_mtgjson_variant | expeted_basics_not_in_boosters
+      expected_official | expected_mtgjson_variant | expected_basics_not_in_boosters
     }
     let(:sets_with_boosters) { db.sets.values.select(&:has_boosters?) }
     let(:sets_with_nonbooster_cards) {
@@ -47,6 +47,7 @@ describe PackFactory do
     end
   end
 
+  let(:only_foil_basics_in_boosters) { ["mmq", "inv", "ody", "ons", "mrd", "chk", "rav", "lrw", "shm"] }
   it "Every card can appear in a pack" do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
@@ -55,8 +56,15 @@ describe PackFactory do
       set_pp = "#{set.name} [#{set.code}]"
       pack = factory.for(set_code)
       next unless pack
-      pack.nonfoil_cards.should match_array(set.physical_cards_in_boosters),
-        "All cards in #{set_pp} should be possible in its packs as nonfoil"
+      if only_foil_basics_in_boosters.include?(set_code)
+        basics, rest = set.physical_cards_in_boosters.partition{|c| c.main_front.types.include?("basic") }
+        basics.should_not be_empty
+        pack.nonfoil_cards.should match_array(rest),
+          "All cards in #{set_pp} should be possible in its packs as nonfoil except basics"
+      else
+        pack.nonfoil_cards.should match_array(set.physical_cards_in_boosters),
+          "All cards in #{set_pp} should be possible in its packs as nonfoil"
+      end
     end
   end
 
