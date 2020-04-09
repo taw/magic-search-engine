@@ -82,7 +82,7 @@ class PackFactory
     case set_code
     when "ptk"
       build_pack(set_code, {basic: 2, common: 5, uncommon: 2, rare: 1})
-    when "s99"
+    when "s99", "por"
       build_pack(set_code, {basic: 2, common: 9, uncommon: 3, rare: 1})
     when "ugl"
       build_pack(set_code, {basic: 1, common_unbalanced: 6, uncommon: 2, rare: 1})
@@ -92,19 +92,24 @@ class PackFactory
     # Back then there was no crazy variation
     # 6ed came out after foils started, but didn't have foils
     when "4ed", "5ed", "6ed",
-      "por", "p02"
+      "p02"
       build_pack(set_code, {common_or_basic: 11, uncommon: 3, rare: 1})
     when "mir", "vis", "wth",
       "tmp", "sth", "exo",
       "usg"
       build_pack(set_code, {common: 11, uncommon: 3, rare: 1})
-    # Pre-mythic, with foils
-    when "ulg", "uds"
+    # Pre-mythic, with foils, sets without basics
+    when "ulg", "uds",
+         "pcy", "nem",
+         "pls",
+         "tor",
+         "lgn", "scg"
       build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare: 1})
-    when "mmq", "pcy", "nem",
-      "inv", "pls",
-      "ody", "tor",
-      "ons", "lgn", "scg",
+    # Pre-mythic, with foils
+    when "mmq",
+      "inv",
+      "ody",
+      "ons",
       "mrd", "dst", "5dn",
       "chk", "bok", "sok",
       "csp",
@@ -113,9 +118,9 @@ class PackFactory
       build_pack_with_random_foil(set_code, :foil, :common_or_basic, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Don't try to color balance them
     # (APC should probably be balanced, just by c: not ci:)
-    when "apc",
-      "jud",
-      "rav", "gpt", "dis",
+    when "apc", "jud"
+      build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare: 1})
+    when "rav", "gpt", "dis",
       "shm", "eve"
       build_pack_with_random_foil(set_code, :foil, :common_or_basic_unbalanced, {common_or_basic_unbalanced: 11, uncommon: 3, rare: 1})
     # Default configuration since mythics got introduced
