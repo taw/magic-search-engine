@@ -51,9 +51,26 @@ class PatchABUR < Patch
     Pathname(__dir__).parent.parent.parent + "data"
   end
 
+
+  # Most sheets are frow http://www.lethe.xyz/mtg/collation/lea.html
+  #
+  # The uncommon and rare sheets for Alpha are not known exactly,
+  # but the evidence from pack openings is consistent with the popular theory
+  # that they are basically the same as the Beta sheets. The most notable difference
+  # is the absence of Circle of Protection: Black and Volcanic Island that were added for Beta.
+  # Beta also added a third art variation for each basic land, but it appears that positions
+  # were not changed — only some of the existing lands were changed to the new art.
+  # There is, however, an exception to this on the common sheet where analysis of pack
+  # openings has revealed that the land to the left of Circle of Protection: Black is also different.
+  #
+  # I assume both variants of each Alpha land are equally common
+  # Except rare sheet has 5 Islands, so I arbitrarily assume first is twice as likely
+
   def sheets
     [
       ["lea-c.txt", "lea", "C"],
+      ["lea-u.txt", "lea", "U"], # approximation for just basics, as real is unknown
+      ["lea-r.txt", "lea", "R"], # approximation for just basics, as real is unknown
 
       ["leb-c.txt", "leb", "C"],
       ["leb-u.txt", "leb", "U"],

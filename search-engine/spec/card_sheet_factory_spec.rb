@@ -285,15 +285,27 @@ describe CardSheetFactory do
         )
       end
 
-      # it "uncommon" do
-      #   uncommon_sheet.should eq uncommons_once.merge(
-      #   )
-      # end
+      it "uncommon" do
+        uncommon_sheet.should eq uncommons_once.merge(
+          plains_286 => Rational(3, 121),
+          plains_287 => Rational(3, 121),
+          island_288 => Rational(1, 121),
+          island_289 => Rational(1, 121),
+          swamp_290 => Rational(3, 121),
+          swamp_291 => Rational(3, 121),
+          mountain_292 => Rational(3, 121),
+          mountain_293 => Rational(3, 121),
+          forest_294 => Rational(3, 121),
+          forest_295 => Rational(3, 121),
+        )
+      end
 
-      # it "rare" do
-      #   rare_sheet.should eq rares_once.merge(
-      #   )
-      # end
+      it "rare" do
+        rare_sheet.should eq rares_once.merge(
+          island_288 => Rational(3, 121),
+          island_289 => Rational(2, 121),
+        )
+      end
     end
 
     context "Limited Edition Beta" do
