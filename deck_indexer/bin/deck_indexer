@@ -3,6 +3,6 @@
 require_relative "../lib/deck_indexer"
 DeckIndexer.new(
   "#{__dir__}/../../index/index.json",
-  "#{__dir__}/../../decks.json",
+  "#{__dir__}/../../tmp/decks.json",
   "#{__dir__}/../../index/deck_index.json"
 ).call
