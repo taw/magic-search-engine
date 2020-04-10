@@ -242,4 +242,252 @@ describe CardSheetFactory do
       probabilities[common].should eq Rational(12, 80)
     end
   end
+
+  context "ABUR basic lands" do
+    let(:common_sheet) { factory.explicit_common(set_code).probabilities }
+    let(:uncommon_sheet) { factory.explicit_uncommon(set_code).probabilities }
+    let(:rare_sheet) { factory.explicit_rare(set_code).probabilities }
+
+    let(:common_cards) { physical_cards("r:common e:#{set_code}") }
+    let(:uncommon_cards) { physical_cards("r:uncommon e:#{set_code}") }
+    let(:rare_cards) { physical_cards("r:rare e:#{set_code}") }
+
+    let(:commons_once) { common_cards.to_h{|c| [c, Rational(1,121)] } }
+    let(:uncommons_once) { uncommon_cards.to_h{|c| [c, Rational(1,121)] } }
+    let(:rares_once) { rare_cards.to_h{|c| [c, Rational(1,121)] } }
+
+    context "Limited Edition Alpha" do
+      let(:set_code) { "lea" }
+
+      let(:plains_286) { physical_card("e:lea plains number=286") }
+      let(:plains_287) { physical_card("e:lea plains number=287") }
+      let(:island_288) { physical_card("e:lea island number=288") }
+      let(:island_289) { physical_card("e:lea island number=289") }
+      let(:swamp_290) { physical_card("e:lea swamp number=290") }
+      let(:swamp_291) { physical_card("e:lea swamp number=291") }
+      let(:mountain_292) { physical_card("e:lea mountain number=292") }
+      let(:mountain_293) { physical_card("e:lea mountain number=293") }
+      let(:forest_294) { physical_card("e:lea forest number=294") }
+      let(:forest_295) { physical_card("e:lea forest number=295") }
+
+      it "common" do
+        common_sheet.should eq commons_once.merge(
+          plains_286 => Rational(5, 121),
+          plains_287 => Rational(4, 121),
+          island_288 => Rational(5, 121),
+          island_289 => Rational(5, 121),
+          swamp_290 => Rational(5, 121),
+          swamp_291 => Rational(4, 121),
+          mountain_292 => Rational(5, 121),
+          mountain_293 => Rational(4, 121),
+          forest_294 => Rational(5, 121),
+          forest_295 => Rational(5, 121),
+        )
+      end
+
+      # it "uncommon" do
+      #   uncommon_sheet.should eq uncommons_once.merge(
+      #   )
+      # end
+
+      # it "rare" do
+      #   rare_sheet.should eq rares_once.merge(
+      #   )
+      # end
+    end
+
+    context "Limited Edition Beta" do
+      let(:set_code) { "leb" }
+
+      let(:plains_288) { physical_card("e:leb plains number=288") }
+      let(:plains_289) { physical_card("e:leb plains number=289") }
+      let(:plains_290) { physical_card("e:leb plains number=290") }
+      let(:island_291) { physical_card("e:leb island number=291") }
+      let(:island_292) { physical_card("e:leb island number=292") }
+      let(:island_293) { physical_card("e:leb island number=293") }
+      let(:swamp_294) { physical_card("e:leb swamp number=294") }
+      let(:swamp_295) { physical_card("e:leb swamp number=295") }
+      let(:swamp_296) { physical_card("e:leb swamp number=296") }
+      let(:mountain_297) { physical_card("e:leb mountain number=297") }
+      let(:mountain_298) { physical_card("e:leb mountain number=298") }
+      let(:mountain_299) { physical_card("e:leb mountain number=299") }
+      let(:forest_300) { physical_card("e:leb forest number=300") }
+      let(:forest_301) { physical_card("e:leb forest number=301") }
+      let(:forest_302) { physical_card("e:leb forest number=302") }
+
+      it "common" do
+        common_sheet.should eq commons_once.merge(
+          plains_288 => Rational(2, 121),
+          plains_289 => Rational(3, 121),
+          plains_290 => Rational(3, 121),
+          island_291 => Rational(3, 121),
+          island_292 => Rational(4, 121),
+          island_293 => Rational(3, 121),
+          swamp_294 => Rational(3, 121),
+          swamp_295 => Rational(3, 121),
+          swamp_296 => Rational(3, 121),
+          mountain_297 => Rational(3, 121),
+          mountain_298 => Rational(3, 121),
+          mountain_299 => Rational(4, 121),
+          forest_300 => Rational(3, 121),
+          forest_301 => Rational(3, 121),
+          forest_302 => Rational(3, 121),
+        )
+      end
+
+      it "uncommon" do
+        uncommon_sheet.should eq uncommons_once.merge(
+          plains_288 => Rational(2, 121),
+          plains_289 => Rational(2, 121),
+          plains_290 => Rational(2, 121),
+          island_292 => Rational(1, 121),
+          island_293 => Rational(1, 121),
+          swamp_294 => Rational(2, 121),
+          swamp_295 => Rational(2, 121),
+          swamp_296 => Rational(2, 121),
+          mountain_297 => Rational(2, 121),
+          mountain_298 => Rational(2, 121),
+          mountain_299 => Rational(2, 121),
+          forest_300 => Rational(2, 121),
+          forest_301 => Rational(2, 121),
+          forest_302 => Rational(2, 121),
+        )
+      end
+
+      it "rare" do
+        rare_sheet.should eq rares_once.merge(
+          island_291 => Rational(2, 121),
+          island_292 => Rational(2, 121),
+        )
+      end
+    end
+
+    context "Unlimited / 2nd Edition" do
+      let(:set_code) { "2ed" }
+
+      let(:plains_288) { physical_card("e:2ed plains number=288") }
+      let(:plains_289) { physical_card("e:2ed plains number=289") }
+      let(:plains_290) { physical_card("e:2ed plains number=290") }
+      let(:island_291) { physical_card("e:2ed island number=291") }
+      let(:island_292) { physical_card("e:2ed island number=292") }
+      let(:island_293) { physical_card("e:2ed island number=293") }
+      let(:swamp_294) { physical_card("e:2ed swamp number=294") }
+      let(:swamp_295) { physical_card("e:2ed swamp number=295") }
+      let(:swamp_296) { physical_card("e:2ed swamp number=296") }
+      let(:mountain_297) { physical_card("e:2ed mountain number=297") }
+      let(:mountain_298) { physical_card("e:2ed mountain number=298") }
+      let(:mountain_299) { physical_card("e:2ed mountain number=299") }
+      let(:forest_300) { physical_card("e:2ed forest number=300") }
+      let(:forest_301) { physical_card("e:2ed forest number=301") }
+      let(:forest_302) { physical_card("e:2ed forest number=302") }
+
+      it "common" do
+        common_sheet.should eq commons_once.merge(
+          plains_288 => Rational(2, 121),
+          plains_289 => Rational(3, 121),
+          plains_290 => Rational(3, 121),
+          island_291 => Rational(3, 121),
+          island_292 => Rational(4, 121),
+          island_293 => Rational(3, 121),
+          swamp_294 => Rational(3, 121),
+          swamp_295 => Rational(3, 121),
+          swamp_296 => Rational(3, 121),
+          mountain_297 => Rational(4, 121),
+          mountain_298 => Rational(3, 121),
+          mountain_299 => Rational(3, 121),
+          forest_300 => Rational(3, 121),
+          forest_301 => Rational(3, 121),
+          forest_302 => Rational(3, 121),
+        )
+      end
+
+      it "uncommon" do
+        uncommon_sheet.should eq uncommons_once.merge(
+          plains_288 => Rational(2, 121),
+          plains_289 => Rational(2, 121),
+          plains_290 => Rational(2, 121),
+          island_291 => Rational(1, 121),
+          island_292 => Rational(1, 121),
+          swamp_294 => Rational(2, 121),
+          swamp_295 => Rational(2, 121),
+          swamp_296 => Rational(2, 121),
+          mountain_297 => Rational(2, 121),
+          mountain_298 => Rational(2, 121),
+          mountain_299 => Rational(2, 121),
+          forest_300 => Rational(2, 121),
+          forest_301 => Rational(2, 121),
+          forest_302 => Rational(2, 121),
+        )
+      end
+
+      it "rare" do
+        rare_sheet.should eq rares_once.merge(
+          island_292 => Rational(2, 121),
+          island_293 => Rational(2, 121),
+        )
+      end
+    end
+
+    context "Revised / 3rd Edition" do
+      let(:set_code) { "3ed" }
+
+      let(:plains_292) { physical_card("e:3ed plains number=292") }
+      let(:plains_293) { physical_card("e:3ed plains number=293") }
+      let(:plains_294) { physical_card("e:3ed plains number=294") }
+      let(:island_295) { physical_card("e:3ed island number=295") }
+      let(:island_296) { physical_card("e:3ed island number=296") }
+      let(:island_297) { physical_card("e:3ed island number=297") }
+      let(:swamp_298) { physical_card("e:3ed swamp number=298") }
+      let(:swamp_299) { physical_card("e:3ed swamp number=299") }
+      let(:swamp_300) { physical_card("e:3ed swamp number=300") }
+      let(:mountain_301) { physical_card("e:3ed mountain number=301") }
+      let(:mountain_302) { physical_card("e:3ed mountain number=302") }
+      let(:mountain_303) { physical_card("e:3ed mountain number=303") }
+      let(:forest_304) { physical_card("e:3ed forest number=304") }
+      let(:forest_305) { physical_card("e:3ed forest number=305") }
+      let(:forest_306) { physical_card("e:3ed forest number=306") }
+
+      it "common" do
+        common_sheet.should eq commons_once.merge(
+          plains_292 => Rational(2, 121),
+          plains_293 => Rational(3, 121),
+          plains_294 => Rational(3, 121),
+          island_295 => Rational(3, 121),
+          island_296 => Rational(4, 121),
+          island_297 => Rational(3, 121),
+          swamp_298 => Rational(3, 121),
+          swamp_299 => Rational(3, 121),
+          swamp_300 => Rational(3, 121),
+          mountain_301 => Rational(4, 121),
+          mountain_302 => Rational(3, 121),
+          mountain_303 => Rational(3, 121),
+          forest_304 => Rational(3, 121),
+          forest_305 => Rational(2, 121),
+          forest_306 => Rational(4, 121),
+        )
+      end
+
+      it "uncommon" do
+        uncommon_sheet.should eq uncommons_once.merge(
+          plains_292 => Rational(3, 121),
+          plains_293 => Rational(2, 121),
+          plains_294 => Rational(1, 121),
+          island_296 => Rational(1, 121),
+          island_297 => Rational(1, 121),
+          swamp_298 => Rational(3, 121),
+          swamp_299 => Rational(3, 121),
+          mountain_301 => Rational(2, 121),
+          mountain_302 => Rational(2, 121),
+          mountain_303 => Rational(2, 121),
+          forest_304 => Rational(3, 121),
+          forest_305 => Rational(2, 121),
+          forest_306 => Rational(1, 121),
+        )
+      end
+
+      it "rare" do
+        rare_sheet.should eq rares_once
+      end
+    end
+  end
 end

@@ -356,4 +356,10 @@ shared_context "db" do |*sets|
     raise "No card matching #{query.inspect}" if card_printings.empty?
     PhysicalCard.for(card_printings[0], foil)
   end
+
+  def physical_cards(query, foil=false)
+    card_printings = db.search(query).printings
+    raise "No card matching #{query.inspect}" if card_printings.empty?
+    card_printings.map{|c| PhysicalCard.for(c, foil) }.uniq
+  end
 end
