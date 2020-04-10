@@ -18,7 +18,7 @@ describe Pack do
 
   it "#cards" do
     pack_ala.cards.size.should eq 249 + 249
-    pack_4ed.cards.size.should eq 378 + 0
+    pack_4ed.cards.size.should eq 363 + 0
   end
 
   it "#foil_cards" do
@@ -28,6 +28,6 @@ describe Pack do
 
   it "#nonfoil_cards" do
     pack_ala.nonfoil_cards.size.should eq 249
-    pack_4ed.nonfoil_cards.size.should eq 378
+    pack_4ed.nonfoil_cards.size.should eq 363
   end
 end
