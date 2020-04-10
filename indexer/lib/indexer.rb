@@ -138,6 +138,7 @@ class Indexer
       PatchLinkRelated,
       PatchPrintSheets,
       PatchMB1,
+      PatchABUR,
       PatchFrame,
       PatchPartner,
 
