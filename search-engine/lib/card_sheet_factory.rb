@@ -190,8 +190,8 @@ class CardSheetFactory
   end
 
   def explicit_sheet(set_code, print_sheet_code)
-    cards = @db.sets[set_code].printings.select{|c| c.in_boosters? and c.print_sheet[0] == print_sheet_code}
-    groups = cards.group_by{|c| c.print_sheet[1..-1].to_i}
+    cards = @db.sets[set_code].printings.select{|c| c.in_boosters? and c.print_sheet.include?(print_sheet_code) }
+    groups = cards.group_by{|c| c.print_sheet[/#{print_sheet_code}(\d+)/, 1].to_i }
     subsheets = groups.map{|mult,cards| [CardSheet.new(cards.map{|c| PhysicalCard.for(c) }), mult] }
     mix_sheets(*subsheets)
   end
@@ -671,57 +671,5 @@ class CardSheetFactory
       1,
     ]
     CardSheet.new(sheets, weights)
-  end
-
-  def lea_common
-    # rarity("lea", "common")
-    from_query("e:lea r<=common", kind: ColorBalancedCardSheet)
-  end
-
-  def lea_uncommon
-    rarity("lea", "uncommon")
-  end
-
-  def lea_rare
-    rarity("lea", "rare")
-  end
-
-  def leb_common
-    # rarity("leb", "common")
-    from_query("e:leb r<=common", kind: ColorBalancedCardSheet)
-  end
-
-  def leb_uncommon
-    rarity("leb", "uncommon")
-  end
-
-  def leb_rare
-    rarity("leb", "rare")
-  end
-
-  def ed2_common
-    # rarity("2ed", "common")
-    from_query("e:2ed r<=common", kind: ColorBalancedCardSheet)
-  end
-
-  def ed2_uncommon
-    rarity("2ed", "uncommon")
-  end
-
-  def ed2_rare
-    rarity("2ed", "rare")
-  end
-
-  def ed3_common
-    # rarity("3ed", "common")
-    from_query("e:3ed r<=common", kind: ColorBalancedCardSheet)
-  end
-
-  def ed3_uncommon
-    rarity("3ed", "uncommon")
-  end
-
-  def ed3_rare
-    rarity("3ed", "rare")
   end
 end
