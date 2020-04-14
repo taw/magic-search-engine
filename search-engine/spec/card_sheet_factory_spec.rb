@@ -252,9 +252,9 @@ describe CardSheetFactory do
     let(:uncommon_cards) { physical_cards("r:uncommon e:#{set_code}") }
     let(:rare_cards) { physical_cards("r:rare e:#{set_code}") }
 
-    let(:commons_once) { common_cards.to_h{|c| [c, Rational(1,121)] } }
-    let(:uncommons_once) { uncommon_cards.to_h{|c| [c, Rational(1,121)] } }
-    let(:rares_once) { rare_cards.to_h{|c| [c, Rational(1,121)] } }
+    let(:commons_once) { common_cards.map{|c| [c, Rational(1,121)] }.to_h }
+    let(:uncommons_once) { uncommon_cards.map{|c| [c, Rational(1,121)] }.to_h }
+    let(:rares_once) { rare_cards.map{|c| [c, Rational(1,121)] }.to_h }
 
     context "Limited Edition Alpha" do
       let(:set_code) { "lea" }
