@@ -78,7 +78,7 @@ describe "Foils" do
         assert_foiling(set.printings, "nonfoil")
       when "ced", "cei", "chr", "ugl", "pelp", "pgru", "palp", "por", "p02", "ptk", "pdrc", "plgm", "ppod", "ugin", "pcel", "van", "s99", "mgb"
         assert_foiling(set.printings, "nonfoil")
-      when "ust", "tsb", "cns", "ody", "soi"
+      when "ust", "tsb", "cns", "soi"
         assert_foiling(set.printings, "both")
       when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "plpa", "pjgp", "ppro", "pgtw", "pwor", "pwos", "prel", "pfnm"
         assert_foiling(set.printings, "foilonly")
@@ -90,8 +90,12 @@ describe "Foils" do
         assert_foiling_partial_precon(regular)
         assert_foiling(promo, "foilonly")
         assert_foiling(sampler, "nonfoil")
+      when "ody"
+        promo, rest = set.printings.partition{|c| c.number == "325†"}
+        assert_foiling(promo, "foilonly")
+        assert_foiling(rest, "both")
       when "pls", "shm", "10e"
-        foil_alt_art, regular_cards = set.printings.partition{|c| !!(c.number =~ /★/) }
+        foil_alt_art, regular_cards = set.printings.partition{|c| !!(c.number =~ /★|†/) }
         foil_alt_art_names = foil_alt_art.map(&:name).to_set
         has_foil_alt_art, regular_cards = regular_cards.partition{|c| foil_alt_art_names.include?(c.name) }
         assert_foiling(foil_alt_art, "foilonly")
