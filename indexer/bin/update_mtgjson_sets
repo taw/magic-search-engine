@@ -62,7 +62,9 @@ class SingleSetUpdater
   end
 
   def handle_new
-    return :spoiler if incoming_data["isPartialPreview"]
+    if incoming_data["isPartialPreview"]
+      return [:spoiler, "#{incoming_data["cards"].size} / #{incoming_data["baseSetSize"]}"]
+    end
     # We're actually OK with foreign promo sets
     return :drop if incoming_data["isForeignOnly"] and bad_foregin_only_sets.include?(incoming_code)
     # Just ignore it
@@ -116,7 +118,7 @@ class UpdateMtgjsonSets
       when :conflict
         puts "#{name} - conflicting update (#{comment.inspect})"
       when :spoiler
-        puts "#{name} - spoiler set"
+        puts "#{name} - spoiler set (#{comment})"
       when :new
         puts "#{name} - new set"
       else
