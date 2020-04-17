@@ -67,6 +67,7 @@ class SingleSetUpdater
     return :drop if incoming_data["isForeignOnly"] and bad_foregin_only_sets.include?(incoming_code)
     # Just ignore it
     return :drop if incoming_code == "SUM"
+    return :drop if incoming_code == "PSAL"
     # More reasons to delete ?
     :new
   end
@@ -94,7 +95,7 @@ class UpdateMtgjsonSets
   end
 
   def incoming_dir
-    Pathname(__dir__) + "../../data/sets-incoming"
+    Pathname(__dir__) + "../../tmp/sets-incoming"
   end
 
   def incoming_files
