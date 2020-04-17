@@ -1,7 +1,7 @@
 = content_for(:disable_turbolinks) do
   true
 %h4 Magic: The Gathering Comprehensive Rules
-%p These rules are effective as of January 24, 2020.
+%p These rules are effective as of April 17, 2020.
 %h3{id: "section-introduction"} Introduction
 %p This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
 %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules. If you have questions, you can get the answers from us at Support.Wizards.com.
@@ -252,9 +252,11 @@
   %li
     %a{href: '#section-720'} 720. Subgames
   %li
-    %a{href: '#section-721'} 721. Taking Shortcuts
+    %a{href: '#section-721'} 721. Merging with Permanents
   %li
-    %a{href: '#section-722'} 722. Handling Illegal Actions
+    %a{href: '#section-722'} 722. Taking Shortcuts
+  %li
+    %a{href: '#section-723'} 723. Handling Illegal Actions
 %ul.tos_section
   %li
     %a{href: '#section-8'} 8. Multiplayer Rules
@@ -323,10 +325,13 @@
   .rule_text To play, each player needs their own deck of traditional Magic cards, small items to represent any tokens and counters, and some way to clearly track life totals.
 .rule{id: "section-100-2a"}
   .rule_id 100.2a
-  .rule_text In constructed play (a way of playing in which each player creates their own deck ahead of time), each deck must contain at least sixty cards. A constructed deck may contain any number of basic land cards and no more than four of any card with a particular English name other than basic land cards.
+  .rule_text In constructed play (a way of playing in which each player creates their own deck ahead of time), each deck has a minimum deck size of 60 cards. A constructed deck may contain any number of basic land cards and no more than four of any card with a particular English name other than basic land cards.
 .rule{id: "section-100-2b"}
   .rule_id 100.2b
-  .rule_text In limited play (a way of playing in which each player gets the same quantity of unopened Magic product such as booster packs and creates their own deck using only this product and basic land cards), each deck must contain at least forty cards. A limited deck may contain as many duplicates of a card as are included with the product.
+  .rule_text In limited play (a way of playing in which each player gets the same quantity of unopened Magic product such as booster packs and creates their own deck using only this product and basic land cards), each deck has a minimum deck size of 40 cards. A limited deck may contain as many duplicates of a card as are included with the product.
+.rule{id: "section-100-2c"}
+  .rule_id 100.2c
+  .rule_text Commander decks are subject to additional deckbuilding restrictions and requirements. See rule <a href="#section-903">903</a>, “Commander,” for details.
 .rule{id: "section-100-3"}
   .rule_id 100.3.
   .rule_text Some casual variants require additional items, such as specially designated cards, nontraditional Magic cards, and dice. See section 9, “Casual Variants.”
@@ -347,7 +352,7 @@
   .rule_text In limited play involving other multiplayer team variants, each card in a team’s card pool but not in any player’s deck is assigned to the sideboard of one of those players. Each player has their own sideboard; cards may not be transferred between players.
 .rule{id: "section-100-5"}
   .rule_id 100.5.
-  .rule_text There is no maximum deck size.
+  .rule_text If a deck must contain at least a certain number of cards, that number is referred to as a minimum deck size. There is no maximum deck size for non-Commander decks.
 .rule{id: "section-100-6"}
   .rule_id 100.6.
   .rule_text Most Magic tournaments (organized play activities where players compete against other players to win prizes) have additional rules covered in the Magic: The Gathering Tournament Rules (found at WPN.Wizards.com/en/resources/rules-documents). These rules may limit the use of some cards, including barring all cards from some older sets.
@@ -418,9 +423,12 @@
   .rule_text If a player is using a sideboard (see rule <a href="#section-100-4">100.4</a>) or cards being represented by checklist cards (see rule <a href="#section-713">713</a>), those cards are set aside before shuffling.
 .rule{id: "section-103-1b"}
   .rule_id 103.1b
-  .rule_text In a Commander game, each player puts their commander from their deck face up into the command zone before shuffling. See rule <a href="#section-903-6">903.6</a>.
+  .rule_text If a player wishes to reveal a card with a companion ability that they own from outside the game, they may do so after setting aside their sideboard. A player may reveal no more than one card this way, and may do so only if their deck fulfills the condition of that card’s companion ability. (See rule <a href="#section-702-138">702.138</a>, “Companion.”)
 .rule{id: "section-103-1c"}
   .rule_id 103.1c
+  .rule_text In a Commander game, each player puts their commander from their deck face up into the command zone after having the opportunity to reveal a card with a companion ability and before shuffling. See rule <a href="#section-903-6">903.6</a>.
+.rule{id: "section-103-1d"}
+  .rule_id 103.1d
   .rule_text In a Conspiracy Draft game, each player puts any number of conspiracy cards from their sideboard into the command zone before shuffling. See rule <a href="#section-905-4">905.4</a>.
 .rule{id: "section-103-2"}
   .rule_id 103.2.
@@ -837,7 +845,7 @@
   .rule_text In a Planechase game using the single planar deck option, the planar controller is considered to be the owner of all cards in the planar deck. See rule <a href="#section-901-6">901.6</a>.
 .rule{id: "section-108-3b"}
   .rule_id 108.3b
-  .rule_text Some spells and abilities allow a player to take cards they own from outside the game and bring them into the game. (See rule <a href="#section-400-10b">400.10b</a>.) If a card outside that game is involved in a Magic game, its owner is determined as described in rule <a href="#section-108-3">108.3</a>. If a card outside that game is in the sideboard of a Magic game (see rule <a href="#section-100-4">100.4</a>), its owner is considered to be the player who started the game with it in their sideboard. In all other cases, the owner of a card outside the game is its legal owner.
+  .rule_text Some spells and abilities allow a player to take cards they own from outside the game and bring them into the game. (See rule <a href="#section-400-11b">400.11b</a>.) If a card outside that game is involved in a Magic game, its owner is determined as described in rule <a href="#section-108-3">108.3</a>. If a card outside that game is in the sideboard of a Magic game (see rule <a href="#section-100-4">100.4</a>), its owner is considered to be the player who started the game with it in their sideboard. In all other cases, the owner of a card outside the game is its legal owner.
 .rule{id: "section-108-4"}
   .rule_id 108.4.
   .rule_text A card doesn’t have a controller unless that card represents a permanent or spell; in those cases, its controller is determined by the rules for permanents or spells. See rules <a href="#section-110-2">110.2</a> and <a href="#section-112-2">112.2</a>.
@@ -1163,7 +1171,7 @@
   .rule_text Example: A sorcery card has the ability “When you cycle this card, target creature gets -1/-1 until end of turn.” This triggered ability is targeted, but that doesn’t make the card it’s on targeted.
 .rule{id: "section-115-1b"}
   .rule_id 115.1b
-  .rule_text Aura spells are always targeted. These are the only permanent spells with targets. An Aura’s target is specified by its enchant keyword ability (see rule <a href="#section-702-5">702.5</a>, “Enchant”). The target(s) are chosen as the spell is cast; see rule <a href="#section-601-2c">601.2c</a>. An Aura permanent doesn’t target anything; only the spell is targeted. (An activated or triggered ability of an Aura permanent can also be targeted.)
+  .rule_text Aura spells are always targeted. An Aura’s target is specified by its enchant keyword ability (see rule <a href="#section-702-5">702.5</a>, “Enchant”). The target is chosen as the spell is cast; see rule <a href="#section-601-2c">601.2c</a>. An Aura permanent doesn’t target anything; only the spell is targeted. (An activated or triggered ability of an Aura permanent can also be targeted.)
 .rule{id: "section-115-1c"}
   .rule_id 115.1c
   .rule_text An activated ability is targeted if it identifies something it will affect by using the phrase “target [something],” where the “something” is a phrase that describes an object and/or player. The target(s) are chosen as the ability is activated; see rule <a href="#section-602-2b">602.2b</a>.
@@ -1172,7 +1180,7 @@
   .rule_text A triggered ability is targeted if it identifies something it will affect by using the phrase “target [something],” where the “something” is a phrase that describes an object and/or player. The target(s) are chosen as the ability is put on the stack; see rule <a href="#section-603-3d">603.3d</a>.
 .rule{id: "section-115-1e"}
   .rule_id 115.1e
-  .rule_text Some keyword abilities, such as equip and provoke, represent targeted activated or triggered abilities. In those cases, the phrase “target [something]” appears in the rule for that keyword ability rather than in the ability itself. (The keyword’s reminder text will often contain the word “target.”) See rule <a href="#section-702">702</a>, “Keyword Abilities.”
+  .rule_text Some keyword abilities, such as equip and modular, represent targeted activated or triggered abilities, and some keyword abilities, such as mutate, cause spells to have targets. In those cases, the phrase “target [something]” appears in the rule for that keyword ability rather than in the ability itself. (The keyword’s reminder text will often contain the word “target.”) See rule <a href="#section-702">702</a>, “Keyword Abilities.”
 .rule{id: "section-115-2"}
   .rule_id 115.2.
   .rule_text Only permanents are legal targets for spells and abilities, unless a spell or ability (a) specifies that it can target an object in another zone or a player, or (b) targets an object that can’t exist on the battlefield, such as a spell or ability. See also rule <a href="#section-115-4">115.4</a>.
@@ -1471,7 +1479,7 @@
   .rule_text In a Commander game, each player’s starting life total is 40. See rule <a href="#section-903">903</a>, “Commander.”
 .rule{id: "section-119-1d"}
   .rule_id 119.1d.
-  .rule_text In a two-player Brawl game, each player’s starting life total is 25. In a multiplayer Brawl game, each player’s starting life total is 30. See rule <a href="#section-903-11">903.11</a>, “Brawl Option.”
+  .rule_text In a two-player Brawl game, each player’s starting life total is 25. In a multiplayer Brawl game, each player’s starting life total is 30. See rule <a href="#section-903-12">903.12</a>, “Brawl Option.”
 .rule{id: "section-119-1e"}
   .rule_id 119.1e
   .rule_text In an Archenemy game, the archenemy’s starting life total is 40. See rule <a href="#section-904">904</a>, “Archenemy.”
@@ -1546,15 +1554,18 @@
   .rule_text Damage dealt by a source with lifelink causes that source’s controller to gain that much life, in addition to the damage’s other results.
 .rule{id: "section-120-4"}
   .rule_id 120.4.
-  .rule_text Damage is processed in a three-part sequence.
+  .rule_text Damage is processed in a four-part sequence.
 .rule{id: "section-120-4a"}
   .rule_id 120.4a
-  .rule_text First, damage is dealt, as modified by replacement and prevention effects that interact with damage. (See rule <a href="#section-614">614</a>, “Replacement Effects,” and rule <a href="#section-615">615</a>, “Prevention Effects.”) Abilities that trigger when damage is dealt trigger now and wait to be put on the stack.
+  .rule_text First, if an effect is causing damage to be dealt to a creature and that effect specifies that excess damage is dealt to another object or player instead, the damage event is modified to deal damage accordingly. Excess damage is damage greater than the creature’s toughness, taking into account damage marked on that creature and other damage being dealt to it at the same time as this damage. Any damage greater than 1 is excess damage if the source dealing that damage has deathtouch.
 .rule{id: "section-120-4b"}
   .rule_id 120.4b
-  .rule_text Next, damage that’s been dealt is processed into its results, as modified by replacement effects that interact with those results (such as life loss or counters).
+  .rule_text Second, damage is dealt, as modified by replacement and prevention effects that interact with damage. (See rule <a href="#section-614">614</a>, “Replacement Effects,” and rule <a href="#section-615">615</a>, “Prevention Effects.”) Abilities that trigger when damage is dealt trigger now and wait to be put on the stack.
 .rule{id: "section-120-4c"}
   .rule_id 120.4c
+  .rule_text Third, damage that’s been dealt is processed into its results, as modified by replacement effects that interact with those results (such as life loss or counters).
+.rule{id: "section-120-4d"}
+  .rule_id 120.4d
   .rule_text Finally, the damage event occurs.
   .rule_text Example: A player who controls Boon Reflection, an enchantment that says “If you would gain life, you gain twice that much life instead,” attacks with a 3/3 creature with wither and lifelink. It’s blocked by a 2/2 creature, and the defending player casts a spell that prevents the next 2 damage that would be dealt to the blocking creature. The damage event starts out as [3 damage is dealt to the 2/2 creature, 2 damage is dealt to the 3/3 creature]. The prevention effect is applied, so the damage event becomes [1 damage is dealt to the 2/2 creature, 2 damage is dealt to the 3/3 creature]. That’s processed into its results, so the damage event is now [one -1/-1 counter is put on the 2/2 creature, the active player gains 1 life, 2 damage is marked on the 3/3 creature]. Boon Reflection’s effect is applied, so the damage event becomes [one -1/-1 counter is put on the 2/2 creature, the active player gains 2 life, 2 damage is marked on the 3/3 creature]. Then the damage event occurs.
   .rule_text Example: The defending player controls a creature and Worship, an enchantment that says “If you control a creature, damage that would reduce your life total to less than 1 reduces it to 1 instead.” That player is at 2 life, and is being attacked by two unblocked 5/5 creatures. The player casts Awe Strike, which says “The next time target creature would deal damage this turn, prevent that damage. You gain life equal to the damage prevented this way,” targeting one of the attackers. The damage event starts out as [10 damage is dealt to the defending player]. Awe Strike’s effect is applied, so the damage event becomes [5 damage is dealt to the defending player, the defending player gains 5 life]. That’s processed into its results, so the damage event is now [the defending player loses 5 life, the defending player gains 5 life]. Worship’s effect sees that the damage event would not reduce the player’s life total to less than 1, so Worship’s effect is not applied. Then the damage event occurs.
@@ -1621,7 +1632,7 @@
   .rule_text Some replacement effects and prevention effects result in one or more card draws. In such a case, if there are any parts of the original event that haven’t been replaced, those parts occur first, then the card draws happen one at a time.
 .rule{id: "section-121-8"}
   .rule_id 121.8.
-  .rule_text If a spell or ability causes a card to be drawn while another spell is being cast, the drawn card is kept face down until that spell becomes cast (see rule <a href="#section-601-2i">601.2i</a>). While face down, it’s considered to have no characteristics. The same is true with relation to another ability being activated. If an effect allows or instructs a player to reveal the card as it’s being drawn, it’s revealed after the spell becomes cast or the ability becomes activated.
+  .rule_text If a spell or ability causes a card to be drawn while another spell is being cast, the drawn card is kept face down until that spell becomes cast (see rule <a href="#section-601-2i">601.2i</a>) or until the casting process is reversed (see rule <a href="#section-723">723</a>, “Handling Illegal Actions”). While face down, it’s considered to have no characteristics. The same is true with relation to another ability being activated. If an effect allows or instructs a player to reveal the card as it’s being drawn, it’s revealed after the spell becomes cast or the ability becomes activated.
 .rule{id: "section-121-9"}
   .rule_id 121.9.
   .rule_text If an effect gives a player the option to reveal a card as they draw it, that player may look at that card as they draw it before choosing whether to reveal it.
@@ -1633,12 +1644,15 @@
   .rule_text A counter is a marker placed on an object or player that modifies its characteristics and/or interacts with a rule, ability, or effect. Counters are not objects and have no characteristics. Notably, a counter is not a token, and a token is not a counter. Counters with the same name or description are interchangeable.
 .rule{id: "section-122-1a"}
   .rule_id 122.1a
-  .rule_text A +X/+Y counter on a creature or on a creature card in a zone other than the battlefield, where X and Y are numbers, adds X to that object’s power and Y to that object’s toughness. Similarly, -X/-Y counters subtract from power and toughness. See rule <a href="#section-613-3">613.3</a>.
+  .rule_text A +X/+Y counter on a creature or on a creature card in a zone other than the battlefield, where X and Y are numbers, adds X to that object’s power and Y to that object’s toughness. Similarly, -X/-Y counters subtract from power and toughness. See rule <a href="#section-613-4c">613.4c</a>.
 .rule{id: "section-122-1b"}
   .rule_id 122.1b
-  .rule_text The number of loyalty counters on a planeswalker on the battlefield indicates how much loyalty it has. A planeswalker with 0 loyalty is put into its owner’s graveyard as a state-based action. See rule <a href="#section-704">704</a>.
+  .rule_text A keyword counter on a permanent or on a card in a zone other than the battlefield causes that object to gain that keyword. The keywords that a keyword counter can be are flying, first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance, as well as any variants of those keywords. See rule <a href="#section-613-1f">613.1f</a>.
 .rule{id: "section-122-1c"}
   .rule_id 122.1c
+  .rule_text The number of loyalty counters on a planeswalker on the battlefield indicates how much loyalty it has. A planeswalker with 0 loyalty is put into its owner’s graveyard as a state-based action. See rule <a href="#section-704">704</a>.
+.rule{id: "section-122-1d"}
+  .rule_id 122.1d
   .rule_text If a player has ten or more poison counters, that player loses the game as a state-based action. See rule <a href="#section-704">704</a>. A player is “poisoned” if they have one or more poison counters. (See rule <a href="#section-810">810</a> for additional rules for Two-Headed Giant games.)
 .rule{id: "section-122-2"}
   .rule_id 122.2.
@@ -1661,6 +1675,9 @@
 .rule{id: "section-122-7"}
   .rule_id 122.7.
   .rule_text An ability that triggers “When/Whenever the Nth [kind] counter” is put on an object triggers when one or more counters of the appropriate kind are put on the object such that the object had fewer than N counters on it before the counters were put on it and N or more counters on it after.
+.rule{id: "section-122-8"}
+  .rule_id 122.8.
+  .rule_text If a triggered ability instructs a player to “put those counters” or to “put [an object’s] counters” on another object and that ability’s trigger condition or effect checks that the object with those counters left the battlefield, that player puts a number of counters on the second object of each kind the first object had before it left the battlefield. The player doesn’t move counters from one object to another.
 .rule{id: "section-2"}
   .rule_id 2.
   .rule_text Parts of a Card
@@ -1732,6 +1749,9 @@
 .rule{id: "section-201-4c"}
   .rule_id 201.4c
   .rule_text Text printed on some legendary cards refers to that card by a shortened version of its name. Instances of a card’s shortened name used in this manner are treated as though they used the card’s full name.
+.rule{id: "section-201-5"}
+  .rule_id 201.5.
+  .rule_text Some promotional versions of Ikoria™: Lair of Behemoths cards feature a name other than their own in the upper left corner, with their normal name in a secondary title bar below it. These cards have only the card name specified in the secondary title bar, not the name printed where a card’s name would normally appear.
 .rule{id: "section-202"}
   .rule_id 202.
   .rule_text Mana Cost and Color
@@ -1877,13 +1897,13 @@
   .rule_text      Of that list, Forest, Island, Mountain, Plains, and Swamp are the basic land types. See rule <a href="#section-305-6">305.6</a>.
 .rule{id: "section-205-3j"}
   .rule_id 205.3j
-  .rule_text Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Aminatou, Angrath, Arlinn, Ashiok, Bolas, Calix, Chandra, Dack, Daretti, Davriel, Domri, Dovin, Elspeth, Estrid, Freyalise, Garruk, Gideon, Huatli, Jace, Jaya, Karn, Kasmina, Kaya, Kiora, Koth, Liliana, Nahiri, Narset, Nissa, Nixilis, Oko, Ral, Rowan, Saheeli, Samut, Sarkhan, Serra, Sorin, Tamiyo, Teferi, Teyo, Tezzeret, Tibalt, Ugin, Venser, Vivien, Vraska, Will, Windgrace, Wrenn, Xenagos, Yanggu, and Yanling.
+  .rule_text Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Aminatou, Angrath, Arlinn, Ashiok, Bolas, Calix, Chandra, Dack, Daretti, Davriel, Domri, Dovin, Elspeth, Estrid, Freyalise, Garruk, Gideon, Huatli, Jace, Jaya, Karn, Kasmina, Kaya, Kiora, Koth, Liliana, Lukka, Nahiri, Narset, Nissa, Nixilis, Oko, Ral, Rowan, Saheeli, Samut, Sarkhan, Serra, Sorin, Tamiyo, Teferi, Teyo, Tezzeret, Tibalt, Ugin, Venser, Vivien, Vraska, Will, Windgrace, Wrenn, Xenagos, Yanggu, and Yanling.
 .rule{id: "section-205-3k"}
   .rule_id 205.3k
   .rule_text Instants and sorceries share their lists of subtypes; these subtypes are called spell types. The spell types are Adventure, Arcane, and Trap.
 .rule{id: "section-205-3m"}
   .rule_id 205.3m
-  .rule_text Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Ally, Angel, Antelope, Ape, Archer, Archon, Army, Artificer, Assassin, Assembly-Worker, Atog, Aurochs, Avatar, Azra, Badger, Barbarian, Basilisk, Bat, Bear, Beast, Beeble, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Caribou, Carrier, Cat, Centaur, Cephalid, Chimera, Citizen, Cleric, Cockatrice, Construct, Coward, Crab, Crocodile, Cyclops, Dauthi, Demigod, Demon, Deserter, Devil, Dinosaur, Djinn, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Frog, Fungus, Gargoyle, Germ, Giant, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Hag, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Hound, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mouse, Mutant, Myr, Mystic, Naga, Nautilus, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Pest, Phelddagrif, Phoenix, Pilot, Pincher, Pirate, Plant, Praetor, Prism, Processor, Rabbit, Rat, Rebel, Reflection, Rhino, Rigger, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scion, Scorpion, Scout, Sculpture, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Sheep, Siren, Skeleton, Slith, Sliver, Slug, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Unicorn, Vampire, Vedalken, Viashino, Volver, Wall, Warlock, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
+  .rule_text Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Ally, Angel, Antelope, Ape, Archer, Archon, Army, Artificer, Assassin, Assembly-Worker, Atog, Aurochs, Avatar, Azra, Badger, Barbarian, Basilisk, Bat, Bear, Beast, Beeble, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Caribou, Carrier, Cat, Centaur, Cephalid, Chimera, Citizen, Cleric, Cockatrice, Construct, Coward, Crab, Crocodile, Cyclops, Dauthi, Demigod, Demon, Deserter, Devil, Dinosaur, Djinn, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Frog, Fungus, Gargoyle, Germ, Giant, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Hag, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Hound, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mouse, Mutant, Myr, Mystic, Naga, Nautilus, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Pest, Phelddagrif, Phoenix, Pilot, Pincher, Pirate, Plant, Praetor, Prism, Processor, Rabbit, Rat, Rebel, Reflection, Rhino, Rigger, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scion, Scorpion, Scout, Sculpture, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Slith, Sliver, Slug, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Unicorn, Vampire, Vedalken, Viashino, Volver, Wall, Warlock, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
 .rule{id: "section-205-3n"}
   .rule_id 205.3n
   .rule_text Planes have their own unique set of subtypes; these subtypes are called planar types. The planar types are Alara, Arkhos, Azgol, Belenon, Bolas’s Meditation Realm, Dominaria, Equilor, Ergamon, Fabacin, Innistrad, Iquatana, Ir, Kaldheim, Kamigawa, Karsus, Kephalai, Kinshala, Kolbahan, Kyneth, Lorwyn, Luvion, Mercadia, Mirrodin, Moag, Mongseng, Muraganda, New Phyrexia, Phyrexia, Pyrulea, Rabiah, Rath, Ravnica, Regatha, Segovia, Serra’s Realm, Shadowmoor, Shandalar, Ulgrotha, Valla, Vryn, Wildfire, Xerex, and Zendikar.
@@ -2231,7 +2251,7 @@
   .rule_text Example: “Basic Land — Mountain” means the card is a land with the subtype Mountain.
 .rule{id: "section-305-6"}
   .rule_id 305.6.
-  .rule_text The basic land types are Plains, Island, Swamp, Mountain, and Forest. If an object uses the words “basic land type,” it’s referring to one of these subtypes. A land with a basic land type has the intrinsic ability “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add [mana symbol],” even if the text box doesn’t actually contain that text or the object has no text box. For Plains, [mana symbol] is <span class="manacost"><span class="mana mana-cost mana-w"><span class="sr-only">{W}</span></span></span>; for Islands, <span class="manacost"><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span></span>; for Swamps, <span class="manacost"><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span></span>; for Mountains, <span class="manacost"><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span></span>; and for Forests, <span class="manacost"><span class="mana mana-cost mana-g"><span class="sr-only">{G}</span></span></span>. See rule <a href="#section-107-4a">107.4a</a>. See also rule <a href="#section-605">605</a>, “Mana Abilities.”
+  .rule_text The basic land types are Plains, Island, Swamp, Mountain, and Forest. If an object uses the words “basic land type,” it’s referring to one of these subtypes. An object with the land card type and a basic land type has the intrinsic ability “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add [mana symbol],” even if the text box doesn’t actually contain that text or the object has no text box. For Plains, [mana symbol] is <span class="manacost"><span class="mana mana-cost mana-w"><span class="sr-only">{W}</span></span></span>; for Islands, <span class="manacost"><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span></span>; for Swamps, <span class="manacost"><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span></span>; for Mountains, <span class="manacost"><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span></span>; and for Forests, <span class="manacost"><span class="mana mana-cost mana-g"><span class="sr-only">{G}</span></span></span>. See rule <a href="#section-107-4a">107.4a</a>. See also rule <a href="#section-605">605</a>, “Mana Abilities.”
 .rule{id: "section-305-7"}
   .rule_id 305.7.
   .rule_text If an effect sets a land’s subtype to one or more of the basic land types, the land no longer has its old land type. It loses all abilities generated from its rules text, its old land types, and any copy effects affecting that land, and it gains the appropriate mana ability for each new basic land type. Note that this doesn’t remove any abilities that were granted to the land by other effects. Setting a land’s subtype doesn’t add or remove any card types (such as creature) or supertypes (such as basic, legendary, and snow) the land may have. If a land gains one or more land types in addition to its own, it keeps its land types and rules text, and it gains the new land types and mana abilities.
@@ -2508,18 +2528,21 @@
   .rule_text If a face-up object in the command zone is turned face down, it becomes a new object.
 .rule{id: "section-400-10"}
   .rule_id 400.10.
-  .rule_text An object is outside the game if it isn’t in any of the game’s zones. Outside the game is not a zone.
-.rule{id: "section-400-10a"}
-  .rule_id 400.10a
-  .rule_text Cards in a player’s sideboard are outside the game. See rule <a href="#section-100-4">100.4</a>.
-.rule{id: "section-400-10b"}
-  .rule_id 400.10b
-  .rule_text Some effects bring cards into a game from outside of it. Those cards remain in the game until it ends.
-.rule{id: "section-400-10c"}
-  .rule_id 400.10c
-  .rule_text Cards outside the game can’t be affected by spells or abilities, except for characteristic-defining abilities printed on them (see rule <a href="#section-604-3">604.3</a>) and spells and abilities that allow those cards to be brought into the game.
+  .rule_text If an object in the command zone is put into the command zone, it doesn’t change zones, but it becomes a new object that has just entered the command zone.
 .rule{id: "section-400-11"}
   .rule_id 400.11.
+  .rule_text An object is outside the game if it isn’t in any of the game’s zones. Outside the game is not a zone.
+.rule{id: "section-400-11a"}
+  .rule_id 400.11a
+  .rule_text Cards in a player’s sideboard are outside the game. See rule <a href="#section-100-4">100.4</a>.
+.rule{id: "section-400-11b"}
+  .rule_id 400.11b
+  .rule_text Some effects bring cards into a game from outside of it. Those cards remain in the game until it ends.
+.rule{id: "section-400-11c"}
+  .rule_id 400.11c
+  .rule_text Cards outside the game can’t be affected by spells or abilities, except for characteristic-defining abilities printed on them (see rule <a href="#section-604-3">604.3</a>) and spells and abilities that allow those cards to be brought into the game.
+.rule{id: "section-400-12"}
+  .rule_id 400.12.
   .rule_text Some effects instruct a player to do something to a zone (such as “Shuffle your hand into your library”). That action is performed on all cards in that zone. The zone itself is not affected.
 .rule{id: "section-401"}
   .rule_id 401.
@@ -2876,7 +2899,7 @@
   .rule_text Declare Attackers Step
 .rule{id: "section-508-1"}
   .rule_id 508.1.
-  .rule_text First, the active player declares attackers. This turn-based action doesn’t use the stack. To declare attackers, the active player follows the steps below, in order. If at any point during the declaration of attackers, the active player is unable to comply with any of the steps listed below, the declaration is illegal; the game returns to the moment before the declaration (see rule <a href="#section-722">722</a>, “Handling Illegal Actions”).
+  .rule_text First, the active player declares attackers. This turn-based action doesn’t use the stack. To declare attackers, the active player follows the steps below, in order. If at any point during the declaration of attackers, the active player is unable to comply with any of the steps listed below, the declaration is illegal; the game returns to the moment before the declaration (see rule <a href="#section-723">723</a>, “Handling Illegal Actions”).
 .rule{id: "section-508-1a"}
   .rule_id 508.1a
   .rule_text The active player chooses which creatures that they control, if any, will attack. The chosen creatures must be untapped, and each one must either have haste or have been controlled by the active player continuously since the turn began.
@@ -2987,7 +3010,7 @@
   .rule_text Declare Blockers Step
 .rule{id: "section-509-1"}
   .rule_id 509.1.
-  .rule_text First, the defending player declares blockers. This turn-based action doesn’t use the stack. To declare blockers, the defending player follows the steps below, in order. If at any point during the declaration of blockers, the defending player is unable to comply with any of the steps listed below, the declaration is illegal; the game returns to the moment before the declaration (see rule <a href="#section-722">722</a>, “Handling Illegal Actions”).
+  .rule_text First, the defending player declares blockers. This turn-based action doesn’t use the stack. To declare blockers, the defending player follows the steps below, in order. If at any point during the declaration of blockers, the defending player is unable to comply with any of the steps listed below, the declaration is illegal; the game returns to the moment before the declaration (see rule <a href="#section-723">723</a>, “Handling Illegal Actions”).
 .rule{id: "section-509-1a"}
   .rule_id 509.1a
   .rule_text The defending player chooses which creatures they control, if any, will block. The chosen creatures must be untapped. For each of the chosen creatures, the defending player chooses one creature for it to block that’s attacking that player or a planeswalker they control.
@@ -3099,7 +3122,7 @@
   .rule_text A blocking creature assigns combat damage to the creatures it’s blocking. If it isn’t currently blocking any creatures (if, for example, they were destroyed or removed from combat), it assigns no combat damage. If it’s blocking exactly one creature, it assigns all its combat damage to that creature. If it’s blocking two or more creatures, it assigns its combat damage to those creatures according to the damage assignment order announced for it. This may allow the blocking creature to divide its combat damage. However, it can’t assign combat damage to a creature that it’s blocking unless, when combat damage assignments are complete, each creature that precedes that blocked creature is assigned lethal damage. When checking for assigned lethal damage, take into account damage already marked on the creature and damage from other creatures that’s being assigned during the same combat damage step, but not any abilities or effects that might change the amount of damage that’s actually dealt. An amount of damage that’s greater than a creature’s lethal damage may be assigned to it.
 .rule{id: "section-510-1e"}
   .rule_id 510.1e
-  .rule_text Once a player has assigned combat damage from each attacking or blocking creature they control, the total damage assignment (not solely the damage assignment of any individual attacking or blocking creature) is checked to see if it complies with the above rules. If it doesn’t, the combat damage assignment is illegal; the game returns to the moment before that player began to assign combat damage. (See rule <a href="#section-722">722</a>, “Handling Illegal Actions.”)
+  .rule_text Once a player has assigned combat damage from each attacking or blocking creature they control, the total damage assignment (not solely the damage assignment of any individual attacking or blocking creature) is checked to see if it complies with the above rules. If it doesn’t, the combat damage assignment is illegal; the game returns to the moment before that player began to assign combat damage. (See rule <a href="#section-723">723</a>, “Handling Illegal Actions.”)
 .rule{id: "section-510-2"}
   .rule_id 510.2.
   .rule_text Second, all combat damage that’s been assigned is dealt simultaneously. This turn-based action doesn’t use the stack. No player has the chance to cast spells or activate abilities between the time combat damage is assigned and the time it’s dealt.
@@ -3175,7 +3198,7 @@
   .rule_text Some effects still refer to “playing” a card. “Playing a card” means playing that card as a land or casting that card as a spell, whichever is appropriate.
 .rule{id: "section-601-2"}
   .rule_id 601.2.
-  .rule_text To cast a spell is to take it from where it is (usually the hand), put it on the stack, and pay its costs, so that it will eventually resolve and have its effect. Casting a spell includes proposal of the spell (rules <a href="#section-601-2a">601.2a</a>–d) and determination and payment of costs (rules <a href="#section-601-2f">601.2f</a>–h). To cast a spell, a player follows the steps listed below, in order. A player must be legally allowed to cast the spell to begin this process (see rule <a href="#section-601-3">601.3</a>). If a player is unable to comply with the requirements of a step listed below while performing that step, the casting of the spell is illegal ; the game returns to the moment before the casting of that spell was proposed (see rule <a href="#section-722">722</a>, “Handling Illegal Actions”).
+  .rule_text To cast a spell is to take it from where it is (usually the hand), put it on the stack, and pay its costs, so that it will eventually resolve and have its effect. Casting a spell includes proposal of the spell (rules <a href="#section-601-2a">601.2a</a>–d) and determination and payment of costs (rules <a href="#section-601-2f">601.2f</a>–h). To cast a spell, a player follows the steps listed below, in order. A player must be legally allowed to cast the spell to begin this process (see rule <a href="#section-601-3">601.3</a>). If a player is unable to comply with the requirements of a step listed below while performing that step, the casting of the spell is illegal ; the game returns to the moment before the casting of that spell was proposed (see rule <a href="#section-723">723</a>, “Handling Illegal Actions”).
 .rule{id: "section-601-2a"}
   .rule_id 601.2a
   .rule_text To propose the casting of a spell, a player first moves that card (or that copy of a card) from where it is to the stack. It becomes the topmost object on the stack. It has all the characteristics of the card (or the copy of a card) associated with it, and that player becomes its controller. The spell remains on the stack until it’s countered, it resolves, or an effect moves it elsewhere.
@@ -3191,7 +3214,7 @@
   .rule_text If the spell requires the player to divide or distribute an effect (such as damage or counters) among one or more targets, the player announces the division. Each of these targets must receive at least one of whatever is being divided.
 .rule{id: "section-601-2e"}
   .rule_id 601.2e
-  .rule_text The game checks to see if the proposed spell can legally be cast. If the proposed spell is illegal, the game returns to the moment before the casting of that spell was proposed (see rule <a href="#section-722">722</a>, “Handling Illegal Actions”).
+  .rule_text The game checks to see if the proposed spell can legally be cast. If the proposed spell is illegal, the game returns to the moment before the casting of that spell was proposed (see rule <a href="#section-723">723</a>, “Handling Illegal Actions”).
 .rule{id: "section-601-2f"}
   .rule_id 601.2f
   .rule_text The player determines the total cost of the spell. Usually this is just the mana cost. Some spells have additional or alternative costs. Some effects may increase or reduce the cost to pay, or may provide other alternative costs. Costs may include paying mana, tapping permanents, sacrificing permanents, discarding cards, and so on. The total cost is the mana cost or alternative cost (as determined in rule <a href="#section-601-2b">601.2b</a>), plus all additional costs and cost increases, and minus all cost reductions. If multiple cost reductions apply, the player may apply them in any order. If the mana component of the total cost is reduced to nothing by cost reduction effects, it is considered to be <span class="manacost"><span class="mana mana-cost mana-0"><span class="sr-only">{0}</span></span></span>. It can’t be reduced to less than <span class="manacost"><span class="mana mana-cost mana-0"><span class="sr-only">{0}</span></span></span>. Once the total cost is determined, any effects that directly affect the total cost are applied. Then the resulting total cost becomes “locked in.” If effects would change the total cost after this time, they have no effect.
@@ -3225,11 +3248,11 @@
 .rule{id: "section-601-3e"}
   .rule_id 601.3e
   .rule_text Some rules and effects state that an alternative set of characteristics or a subset of characteristics are considered to determine if a card or copy of a card is legal to cast. These alternative characteristics replace the object’s characteristics for this determination. Continuous effects that would apply to that object once it has those characteristics are also considered.
-  .rule_text Example: Garruk’s Horde says, in part, “You may cast the top card of your library if it’s a creature card.” If you control Garruk’s Horde and the top card of your library is a noncreature card with morph, you may cast it using its morph ability.
-  .rule_text Example: Melek, Izzet Paragon says, in part, “You may cast the top card of your library if it’s an instant or sorcery card.” If you control Melek, Izzet Paragon and the top card of your library is Giant Killer, an adventurer creature card whose Adventure is an instant named Chop Down, you may cast Chop Down but not Giant Killer. If instead you control Garruk’s Horde and the top card of your library is Giant Killer, you may cast Giant Killer but not Chop Down.
+  .rule_text Example: Garruk’s Horde says, in part, “You may cast creature spells from the top of your library.” If you control Garruk’s Horde and the top card of your library is a noncreature card with morph, you may cast it using its morph ability.
+  .rule_text Example: Melek, Izzet Paragon says, in part, “You may cast instant and sorcery spells from the top of your library.” If you control Melek, Izzet Paragon and the top card of your library is Giant Killer, an adventurer creature card whose Adventure is an instant named Chop Down, you may cast Chop Down but not Giant Killer. If instead you control Garruk’s Horde and the top card of your library is Giant Killer, you may cast Giant Killer but not Chop Down.
 .rule{id: "section-601-4"}
   .rule_id 601.4.
-  .rule_text If a player is no longer allowed to cast a spell after completing its proposal (see rules <a href="#section-601-2a">601.2a</a>–d), the casting of the spell is illegal and the game returns to the moment before the casting of that spell was proposed (see rule <a href="#section-722">722</a>, “Handling Illegal Actions”). It doesn’t matter if a rule or effect would make the casting of the spell illegal while determining and paying that spell’s costs (see rules <a href="#section-601-2f">601.2f</a>-h) or any time after the spell has been cast.
+  .rule_text If a player is no longer allowed to cast a spell after completing its proposal (see rules <a href="#section-601-2a">601.2a</a>–d), the casting of the spell is illegal and the game returns to the moment before the casting of that spell was proposed (see rule <a href="#section-723">723</a>, “Handling Illegal Actions”). It doesn’t matter if a rule or effect would make the casting of the spell illegal while determining and paying that spell’s costs (see rules <a href="#section-601-2f">601.2f</a>-h) or any time after the spell has been cast.
 .rule{id: "section-601-5"}
   .rule_id 601.5.
   .rule_text Some spells specify that one of their controller’s opponents does something the controller would normally do while it’s being cast, such as choose a mode or choose targets. In these cases, the opponent does so when the spell’s controller normally would do so.
@@ -3263,7 +3286,7 @@
   .rule_text Previously, the action of using an activated ability was referred to on cards as “playing” that ability. Cards that were printed with that text have received errata in the Oracle card reference so they now refer to “activating” that ability.
 .rule{id: "section-602-2"}
   .rule_id 602.2.
-  .rule_text To activate an ability is to put it onto the stack and pay its costs, so that it will eventually resolve and have its effect. Only an object’s controller (or its owner, if it doesn’t have a controller) can activate its activated ability unless the object specifically says otherwise. Activating an ability follows the steps listed below, in order. If, at any point during the activation of an ability, a player is unable to comply with any of those steps, the activation is illegal; the game returns to the moment before that ability started to be activated (see rule <a href="#section-722">722</a>, “Handling Illegal Actions”). Announcements and payments can’t be altered after they’ve been made.
+  .rule_text To activate an ability is to put it onto the stack and pay its costs, so that it will eventually resolve and have its effect. Only an object’s controller (or its owner, if it doesn’t have a controller) can activate its activated ability unless the object specifically says otherwise. Activating an ability follows the steps listed below, in order. If, at any point during the activation of an ability, a player is unable to comply with any of those steps, the activation is illegal; the game returns to the moment before that ability started to be activated (see rule <a href="#section-723">723</a>, “Handling Illegal Actions”). Announcements and payments can’t be altered after they’ve been made.
 .rule{id: "section-602-2a"}
   .rule_id 602.2a
   .rule_text The player announces that they are activating the ability. If an activated ability is being activated from a hidden zone, the card that has that ability is revealed. That ability is created on the stack as an object that’s not a card. It becomes the topmost object on the stack. It has the text of the ability that created it, and no other characteristics. Its controller is the player who activated the ability. The ability remains on the stack until it’s countered, it resolves, or an effect moves it elsewhere.
@@ -3595,6 +3618,11 @@
   .rule_id 607.5.
   .rule_text If an object acquires a pair of linked abilities as part of the same effect, the abilities will be similarly linked to one another on that object even though they weren’t printed on that object. They can’t be linked to any other ability, regardless of what other abilities the object may currently have or may have had in the past.
   .rule_text Example: Arc-Slogger has the ability “<span class="manacost"><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span></span>, Exile the top ten cards of your library: Arc-Slogger deals 2 damage to any target.” Sisters of Stone Death has the ability “<span class="manacost"><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span><span class="mana mana-cost mana-g"><span class="sr-only">{G}</span></span></span>: Exile target creature blocking or blocked by Sisters of Stone Death” and the ability “<span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span></span>: Put a creature card exiled with Sisters of Stone Death onto the battlefield under your control.” Quicksilver Elemental has the ability “<span class="manacost"><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span></span>: Quicksilver Elemental gains all activated abilities of target creature until end of turn.” If a player has Quicksilver Elemental gain Arc-Slogger’s ability, activates it, then has Quicksilver Elemental gain Sisters of Stone Death’s abilities, activates the exile ability, and then activates the return-to-the-battlefield ability, only the creature card Quicksilver Elemental exiled with Sisters of Stone Death’s ability can be returned to the battlefield. Creature cards Quicksilver Elemental exiled with Arc-Slogger’s ability can’t be returned.
+.rule{id: "section-607-5a"}
+  .rule_id 607.5a
+  .rule_text If an object gains an ability that refers to a choice, but either (a) doesn’t copy that ability’s linked ability or (b) does copy the linked ability but no choice is made for it, then the choice is considered to be “undefined.” If an ability refers to an undefined choice, that part of the ability won’t do anything.
+  .rule_text Example: Voice of All enters the battlefield and Unstable Shapeshifter copies it. Voice of All reads, in part, “As Voice of All enters the battlefield, choose a color.” and “Voice of All has protection from the chosen color.” Unstable Shapeshifter never had a chance for a color to be chosen for it, because it didn’t enter the battlefield as Voice of All so it doesn’t gain a protection ability.
+  .rule_text Example: A Vesuvan Doppelganger enters the battlefield as a copy of Voice of All, and the Doppelganger’s controller chooses blue. Later, the Doppelganger copies Quirion Elves, which has the ability, “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add one mana of the chosen color.” Even though a color was chosen for the Doppelganger, it wasn’t chosen for the ability linked to the mana ability copied from the Elves. If that mana ability of the Doppelganger is activated, it will not produce mana.
 .rule{id: "section-608"}
   .rule_id 608.
   .rule_text Resolving Spells and Abilities
@@ -3609,7 +3637,7 @@
   .rule_text If a triggered ability has an intervening “if” clause, it checks whether the clause’s condition is true. If it isn’t, the ability is removed from the stack and does nothing. Otherwise, it continues to resolve. See rule <a href="#section-603-4">603.4</a>.
 .rule{id: "section-608-2b"}
   .rule_id 608.2b
-  .rule_text If the spell or ability specifies targets, it checks whether the targets are still legal. A target that’s no longer in the zone it was in when it was targeted is illegal. Other changes to the game state may cause a target to no longer be legal; for example, its characteristics may have changed or an effect may have changed the text of the spell. If the source of an ability has left the zone it was in, its last known information is used during this process. If all its targets, for every instance of the word “target,” are now illegal, the spell or ability doesn’t resolve. It’s removed from the stack and, if it’s a spell, put into its owner’s graveyard. Otherwise, the spell or ability will resolve normally. Illegal targets, if any, won’t be affected by parts of a resolving spell’s effect for which they’re illegal. Other parts of the effect for which those targets are not illegal may still affect them. If the spell or ability creates any continuous effects that affect game rules (see rule <a href="#section-613-10">613.10</a>), those effects don’t apply to illegal targets. If part of the effect requires information about an illegal target, it fails to determine any such information. Any part of the effect that requires that information won’t happen.
+  .rule_text If the spell or ability specifies targets, it checks whether the targets are still legal. A target that’s no longer in the zone it was in when it was targeted is illegal. Other changes to the game state may cause a target to no longer be legal; for example, its characteristics may have changed or an effect may have changed the text of the spell. If the source of an ability has left the zone it was in, its last known information is used during this process. If all its targets, for every instance of the word “target,” are now illegal, the spell or ability doesn’t resolve. It’s removed from the stack and, if it’s a spell, put into its owner’s graveyard. Otherwise, the spell or ability will resolve normally. Illegal targets, if any, won’t be affected by parts of a resolving spell’s effect for which they’re illegal. Other parts of the effect for which those targets are not illegal may still affect them. If the spell or ability creates any continuous effects that affect game rules (see rule <a href="#section-613-11">613.11</a>), those effects don’t apply to illegal targets. If part of the effect requires information about an illegal target, it fails to determine any such information. Any part of the effect that requires that information won’t happen.
   .rule_text Example: Sorin’s Thirst is a black instant that reads, “Sorin’s Thirst deals 2 damage to target creature and you gain 2 life.” If the creature isn’t a legal target during the resolution of Sorin’s Thirst (say, if the creature has gained protection from black or left the battlefield), then Sorin’s Thirst doesn’t resolve. Its controller doesn’t gain any life.
   .rule_text Example: Plague Spores reads, “Destroy target nonblack creature and target land. They can’t be regenerated.” Suppose the same creature land is chosen both as the nonblack creature and as the land, and the color of the creature land is changed to black before Plague Spores resolves. Plague Spores still resolves because the black creature land is still a legal target for the “target land” part of the spell. The “destroy target nonblack creature” part of the spell won’t affect that permanent, but the “destroy target land” part of the spell will still destroy it. It can’t be regenerated.
 .rule{id: "section-608-2c"}
@@ -3644,12 +3672,15 @@
   .rule_text As the final part of an instant or sorcery spell’s resolution, the spell is put into its owner’s graveyard. As the final part of an ability’s resolution, the ability is removed from the stack and ceases to exist.
 .rule{id: "section-608-3"}
   .rule_id 608.3.
-  .rule_text If the object that’s resolving is a permanent spell, its resolution involves a single step (unless it’s an Aura). The spell card becomes a permanent and is put onto the battlefield under the control of the spell’s controller.
+  .rule_text If the object that’s resolving is a permanent spell, its resolution involves a single step (unless it’s an Aura or a mutating creature spell). The spell card becomes a permanent and is put onto the battlefield under the control of the spell’s controller.
 .rule{id: "section-608-3a"}
   .rule_id 608.3a
   .rule_text If the object that’s resolving is an Aura spell, its resolution involves two steps. First, it checks whether the target specified by its enchant ability is still legal, as described in rule <a href="#section-608-2b">608.2b</a>. (See rule <a href="#section-702-5">702.5</a>, “Enchant.”) If so, the spell card becomes a permanent and is put onto the battlefield under the control of the spell’s controller attached to the object it was targeting.
 .rule{id: "section-608-3b"}
   .rule_id 608.3b
+  .rule_text If the object that’s resolving is a mutating creature spell, its resolution involves two steps. First, it checks whether the target creature with the same owner as the spell is still legal. If so, the spell card merges with that permanent. Otherwise, it becomes a creature spell and is put onto the battlefield under the control of the spell’s controller. (See rule <a href="#section-702-139">702.139</a>, “Mutate.”)
+.rule{id: "section-608-3c"}
+  .rule_id 608.3c
   .rule_text If a permanent spell resolves but its controller can’t put it onto the battlefield, that player puts it into its owner’s graveyard.
   .rule_text Example: Worms of the Earth has the ability “Lands can’t enter the battlefield.” Clone says “You may have Clone enter the battlefield as a copy of any creature on the battlefield.” If a player casts Clone and chooses to copy Dryad Arbor (a land creature) while Worms of the Earth is on the battlefield, Clone can’t enter the battlefield from the stack. It’s put into its owner’s graveyard.
 .rule{id: "section-609"}
@@ -3672,7 +3703,7 @@
 .rule{id: "section-609-4a"}
   .rule_id 609.4a
   .rule_text If two effects state that a player may (or a creature can) do the same thing “as though” different conditions were true, both conditions could apply. If one “as though” effect satisfies the requirements for another “as though” effect, then both effects will apply.
-  .rule_text Example: A player controls Vedalken Orrery, an artifact that says “You may cast nonland cards as though they had flash.” That player casts Shaman’s Trance, an instant that says, in part, “You may play cards from other players’ graveyards as though they were in your graveyard.” The player may cast a sorcery with flashback from another player’s graveyard as though it were in that player’s graveyard and as though it had flash.
+  .rule_text Example: A player controls Vedalken Orrery, an artifact that says “You may cast spells as though they had flash.” That player casts Shaman’s Trance, an instant that says, in part, “You may play lands and cast spells from other players’ graveyards this turn as though those cards were in your graveyard.” The player may cast a sorcery with flashback from another player’s graveyard as though it were in that player’s graveyard and as though it had flash.
 .rule{id: "section-609-4b"}
   .rule_id 609.4b
   .rule_text If an effect allows a player to spend mana “as though it were mana of any [type or color],” this affects only how the player may pay a cost. It doesn’t change that cost, and it doesn’t change what mana was actually spent to pay that cost.
@@ -3796,7 +3827,7 @@
   .rule_text The values of an object’s characteristics are determined by starting with the actual object. For a card, that means the values of the characteristics printed on that card. For a token or a copy of a spell or card, that means the values of the characteristics defined by the effect that created it. Then all applicable continuous effects are applied in a series of layers in the following order:
 .rule{id: "section-613-1a"}
   .rule_id 613.1a
-  .rule_text Layer 1: Copy effects are applied. See rule <a href="#section-706">706</a>, “Copying Objects.”
+  .rule_text Layer 1: Rules and effects that modify copiable values are applied.
 .rule{id: "section-613-1b"}
   .rule_id 613.1b
   .rule_text Layer 2: Control-changing effects are applied.
@@ -3811,102 +3842,114 @@
   .rule_text Layer 5: Color-changing effects are applied.
 .rule{id: "section-613-1f"}
   .rule_id 613.1f
-  .rule_text Layer 6: Ability-adding effects, ability-removing effects, and effects that say an object can’t have an ability are applied.
+  .rule_text Layer 6: Ability-adding effects, keyword counters, ability-removing effects, and effects that say an object can’t have an ability are applied.
 .rule{id: "section-613-1g"}
   .rule_id 613.1g
   .rule_text Layer 7: Power- and/or toughness-changing effects are applied.
 .rule{id: "section-613-2"}
   .rule_id 613.2.
-  .rule_text Within layers 1–6, apply effects from characteristic-defining abilities first (see rule <a href="#section-604-3">604.3</a>), then all other effects in timestamp order (see rule <a href="#section-613-6">613.6</a>). Note that dependency may alter the order in which effects are applied within a layer. (See rule <a href="#section-613-7">613.7</a>.)
+  .rule_text Within layer 1, apply effects in a series of sublayers in the order described below. Within each sublayer, apply effects in timestamp order (see rule <a href="#section-613-7">613.7</a>). Note that dependency may alter the order in which effects are applied within a sublayer. (See rule <a href="#section-613-8">613.8</a>.)
+.rule{id: "section-613-2a"}
+  .rule_id 613.2a
+  .rule_text Layer 1a: Copiable effects are applied. This includes copy effects (see rule <a href="#section-706">706</a>, “Copying Objects”) and changes to an object’s base characteristics determined by merging an object with a permanent (see rule <a href="#section-721">721</a>, “Merging with Permanents”).
+.rule{id: "section-613-2b"}
+  .rule_id 613.2b
+  .rule_text Layer 1b: Face-down spells and permanents have their characteristics modified as defined in rule <a href="#section-707-2">707.2</a>.
+.rule{id: "section-613-2c"}
+  .rule_id 613.2c
+  .rule_text After all rules and effects in layer 1 have been applied, the object’s characteristics are its copiable values. (See rule <a href="#section-706-2">706.2</a>.)
 .rule{id: "section-613-3"}
   .rule_id 613.3.
-  .rule_text Within layer 7, apply effects in a series of sublayers in the order described below. Within each sublayer, apply effects in timestamp order. (See rule <a href="#section-613-6">613.6</a>.) Note that dependency may alter the order in which effects are applied within a sublayer. (See rule <a href="#section-613-7">613.7</a>.)
-.rule{id: "section-613-3a"}
-  .rule_id 613.3a
+  .rule_text Within layers 2–6, apply effects from characteristic-defining abilities first (see rule <a href="#section-604-3">604.3</a>), then all other effects in timestamp order (see rule <a href="#section-613-7">613.7</a>). Note that dependency may alter the order in which effects are applied within a layer. (See rule <a href="#section-613-8">613.8</a>.)
+.rule{id: "section-613-4"}
+  .rule_id 613.4.
+  .rule_text Within layer 7, apply effects in a series of sublayers in the order described below. Within each sublayer, apply effects in timestamp order. (See rule <a href="#section-613-7">613.7</a>.) Note that dependency may alter the order in which effects are applied within a sublayer. (See rule <a href="#section-613-8">613.8</a>.)
+.rule{id: "section-613-4a"}
+  .rule_id 613.4a
   .rule_text Layer 7a: Effects from characteristic-defining abilities that define power and/or toughness are applied. See rule <a href="#section-604-3">604.3</a>.
-.rule{id: "section-613-3b"}
-  .rule_id 613.3b
+.rule{id: "section-613-4b"}
+  .rule_id 613.4b
   .rule_text Layer 7b: Effects that set power and/or toughness to a specific number or value are applied. Effects that refer to the base power and/or toughness of a creature apply in this layer.
-.rule{id: "section-613-3c"}
-  .rule_id 613.3c
-  .rule_text Layer 7c: Effects that modify power and/or toughness (but don’t set power and/or toughness to a specific number or value) are applied.
-.rule{id: "section-613-3d"}
-  .rule_id 613.3d
-  .rule_text Layer 7d: Power and/or toughness changes from counters are applied. See rule <a href="#section-122">122</a>, “Counters.”
-.rule{id: "section-613-3e"}
-  .rule_id 613.3e
-  .rule_text Layer 7e: Effects that switch a creature’s power and toughness are applied. Such effects take the value of power and apply it to the creature’s toughness, and take the value of toughness and apply it to the creature’s power.
+.rule{id: "section-613-4c"}
+  .rule_id 613.4c
+  .rule_text Layer 7c: Effects and counters that modify power and/or toughness (but don’t set power and/or toughness to a specific number or value) are applied.
+.rule{id: "section-613-4d"}
+  .rule_id 613.4d
+  .rule_text Layer 7d: Effects that switch a creature’s power and toughness are applied. Such effects take the value of power and apply it to the creature’s toughness, and take the value of toughness and apply it to the creature’s power.
   .rule_text Example: A 1/3 creature is given +0/+1 by an effect. Then another effect switches the creature’s power and toughness. Its new power and toughness is 4/1. A new effect gives the creature +5/+0. Its “unswitched” power and toughness would be 6/4, so its actual power and toughness is 4/6.
   .rule_text Example: A 1/3 creature is given +0/+1 by an effect. Then another effect switches the creature’s power and toughness. Its new power and toughness is 4/1. If the +0/+1 effect ends before the switch effect ends, the creature becomes 3/1.
   .rule_text Example: A 1/3 creature is given +0/+1 by an effect. Then another effect switches the creature’s power and toughness. Then another effect switches its power and toughness again. The two switches essentially cancel each other, and the creature becomes 1/4.
-.rule{id: "section-613-4"}
-  .rule_id 613.4.
+.rule{id: "section-613-5"}
+  .rule_id 613.5.
   .rule_text The application of continuous effects as described by the layer system is continually and automatically performed by the game. All resulting changes to an object’s characteristics are instantaneous.
   .rule_text Example: Honor of the Pure is an enchantment that reads “White creatures you control get +1/+1.” Honor of the Pure and a 2/2 black creature are on the battlefield under your control. If an effect then turns the creature white (layer 5), it gets +1/+1 from Honor of the Pure (layer 7c), becoming 3/3. If the creature’s color is later changed to red (layer 5), Honor of the Pure’s effect stops applying to it, and it will return to being 2/2.
   .rule_text Example: Gray Ogre, a 2/2 creature, is on the battlefield. An effect puts a +1/+1 counter on it (layer 7d), making it 3/3. A spell targeting it that says “Target creature gets +4/+4 until end of turn” resolves (layer 7c), making it 7/7. An enchantment that says “Creatures you control get +0/+2” enters the battlefield (layer 7c), making it 7/9. An effect that says “Target creature becomes 0/1 until end of turn” is applied to it (layer 7b), making it 5/8 (0/1, with +4/+4 from the resolved spell, +0/+2 from the enchantment, and +1/+1 from the counter).
-.rule{id: "section-613-5"}
-  .rule_id 613.5.
+.rule{id: "section-613-6"}
+  .rule_id 613.6.
   .rule_text If an effect should be applied in different layers and/or sublayers, the parts of the effect each apply in their appropriate ones. If an effect starts to apply in one layer and/or sublayer, it will continue to be applied to the same set of objects in each other applicable layer and/or sublayer, even if the ability generating the effect is removed during this process.
   .rule_text Example: An effect that reads “Wild Mongrel gets +1/+1 and becomes the color of your choice until end of turn” is both a power- and toughness-changing effect and a color-changing effect. The “becomes the color of your choice” part is applied in layer 5, and then the “gets +1/+1” part is applied in layer 7c.
   .rule_text Example: Act of Treason has an effect that reads “Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.” This is both a control-changing effect and an effect that adds an ability to an object. The “gain control” part is applied in layer 2, and then the “it gains haste” part is applied in layer 6.
   .rule_text Example: An effect that reads “All noncreature artifacts become 2/2 artifact creatures until end of turn” is both a type-changing effect and a power- and toughness-setting effect. The type-changing effect is applied to all noncreature artifacts in layer 4 and the power- and toughness-setting effect is applied to those same permanents in layer 7b, even though those permanents aren’t noncreature artifacts by then.
   .rule_text Example: Svogthos, the Restless Tomb, is on the battlefield. An effect that says “Until end of turn, target land becomes a 3/3 creature that’s still a land” is applied to it (layers 4 and 7b). An effect that says “Target creature gets +1/+1 until end of turn” is applied to it (layer 7c), making it a 4/4 land creature. Then while you have ten creature cards in your graveyard, you activate Svogthos’s ability: “Until end of turn, Svogthos, the Restless Tomb becomes a black and green Plant Zombie creature with ‘This creature’s power and toughness are each equal to the number of creature cards in your graveyard.’ It’s still a land.” (layers 4, 5, and 7b). It becomes an 11/11 land creature. If a creature card enters or leaves your graveyard, Svogthos’s power and toughness will be modified accordingly. If the first effect is applied to it again, it will become a 4/4 land creature again.
-.rule{id: "section-613-6"}
-  .rule_id 613.6.
-  .rule_text Within a layer or sublayer, determining which order effects are applied in is usually done using a timestamp system. An effect with an earlier timestamp is applied before an effect with a later timestamp.
-.rule{id: "section-613-6a"}
-  .rule_id 613.6a
-  .rule_text A continuous effect generated by a static ability has the same timestamp as the object the static ability is on, or the timestamp of the effect that created the ability, whichever is later.
-.rule{id: "section-613-6b"}
-  .rule_id 613.6b
-  .rule_text A continuous effect generated by the resolution of a spell or ability receives a timestamp at the time it’s created.
-.rule{id: "section-613-6c"}
-  .rule_id 613.6c
-  .rule_text An object receives a timestamp at the time it enters a zone.
-.rule{id: "section-613-6d"}
-  .rule_id 613.6d
-  .rule_text An Aura, Equipment, or Fortification receives a new timestamp at the time it becomes attached to an object or player.
-.rule{id: "section-613-6e"}
-  .rule_id 613.6e
-  .rule_text A permanent receives a new timestamp at the time it turns face up or face down.
-.rule{id: "section-613-6f"}
-  .rule_id 613.6f
-  .rule_text A double-faced permanent receives a new timestamp at the time it transforms.
-.rule{id: "section-613-6g"}
-  .rule_id 613.6g
-  .rule_text A face-up plane card, phenomenon card, or scheme card receives a timestamp at the time it’s turned face up.
-.rule{id: "section-613-6h"}
-  .rule_id 613.6h
-  .rule_text A face-up vanguard card receives a timestamp at the beginning of the game.
-.rule{id: "section-613-6i"}
-  .rule_id 613.6i
-  .rule_text A conspiracy card receives a timestamp at the beginning of the game. If it’s face down, it receives a new timestamp at the time it turns face up.
-.rule{id: "section-613-6j"}
-  .rule_id 613.6j
-  .rule_text If two or more objects would receive a timestamp simultaneously, such as by entering a zone simultaneously or becoming attached simultaneously, the active player determines their relative timestamp order at that time.
 .rule{id: "section-613-7"}
   .rule_id 613.7.
-  .rule_text Within a layer or sublayer, determining which order effects are applied in is sometimes done using a dependency system. If a dependency exists, it will override the timestamp system.
+  .rule_text Within a layer or sublayer, determining which order effects are applied in is usually done using a timestamp system. An effect with an earlier timestamp is applied before an effect with a later timestamp.
 .rule{id: "section-613-7a"}
   .rule_id 613.7a
-  .rule_text An effect is said to “depend on” another if (a) it’s applied in the same layer (and, if applicable, sublayer) as the other effect (see rules <a href="#section-613-1">613.1</a> and <a href="#section-613-3">613.3</a>); (b) applying the other would change the text or the existence of the first effect, what it applies to, or what it does to any of the things it applies to; and (c) neither effect is from a characteristic-defining ability or both effects are from characteristic-defining abilities. Otherwise, the effect is considered to be independent of the other effect.
+  .rule_text A continuous effect generated by a static ability has the same timestamp as the object the static ability is on, or the timestamp of the effect that created the ability, whichever is later.
 .rule{id: "section-613-7b"}
   .rule_id 613.7b
-  .rule_text An effect dependent on one or more other effects waits to apply until just after all of those effects have been applied. If multiple dependent effects would apply simultaneously in this way, they’re applied in timestamp order relative to each other. If several dependent effects form a dependency loop, then this rule is ignored and the effects in the dependency loop are applied in timestamp order.
+  .rule_text A continuous effect generated by the resolution of a spell or ability receives a timestamp at the time it’s created.
 .rule{id: "section-613-7c"}
   .rule_id 613.7c
-  .rule_text After each effect is applied, the order of remaining effects is reevaluated and may change if an effect that has not yet been applied becomes dependent on or independent of one or more other effects that have not yet been applied.
+  .rule_text Each counter receives a timestamp as it’s put on an object or player. If that object or player already has a counter of that kind on it, each counter of that kind receives a new timestamp identical to that of the new counter.
+.rule{id: "section-613-7d"}
+  .rule_id 613.7d
+  .rule_text An object receives a timestamp at the time it enters a zone.
+.rule{id: "section-613-7e"}
+  .rule_id 613.7e
+  .rule_text An Aura, Equipment, or Fortification receives a new timestamp each time it becomes attached to an object or player.
+.rule{id: "section-613-7f"}
+  .rule_id 613.7f
+  .rule_text A permanent receives a new timestamp each time it turns face up or face down.
+.rule{id: "section-613-7g"}
+  .rule_id 613.7g
+  .rule_text A double-faced permanent receives a new timestamp each it transforms.
+.rule{id: "section-613-7h"}
+  .rule_id 613.7h
+  .rule_text A face-up plane card, phenomenon card, or scheme card receives a timestamp at the time it’s turned face up.
+.rule{id: "section-613-7i"}
+  .rule_id 613.7i
+  .rule_text A face-up vanguard card receives a timestamp at the beginning of the game.
+.rule{id: "section-613-7j"}
+  .rule_id 613.7j
+  .rule_text A conspiracy card receives a timestamp at the beginning of the game. If it’s face down, it receives a new timestamp at the time it turns face up.
+.rule{id: "section-613-7k"}
+  .rule_id 613.7k
+  .rule_text If two or more objects would receive a timestamp simultaneously, such as by entering a zone simultaneously or becoming attached simultaneously, their relative timestamps are determined in APNAP order (see rule <a href="#section-101-4">101.4</a>). Objects controlled by the active player (or owned by the active player, if they have no controller) have an earlier relative timestamp in the order of that player’s choice, followed by each other player in turn order.
 .rule{id: "section-613-8"}
   .rule_id 613.8.
+  .rule_text Within a layer or sublayer, determining which order effects are applied in is sometimes done using a dependency system. If a dependency exists, it will override the timestamp system.
+.rule{id: "section-613-8a"}
+  .rule_id 613.8a
+  .rule_text An effect is said to “depend on” another if (a) it’s applied in the same layer (and, if applicable, sublayer) as the other effect; (b) applying the other would change the text or the existence of the first effect, what it applies to, or what it does to any of the things it applies to; and (c) neither effect is from a characteristic-defining ability or both effects are from characteristic-defining abilities. Otherwise, the effect is considered to be independent of the other effect.
+.rule{id: "section-613-8b"}
+  .rule_id 613.8b
+  .rule_text An effect dependent on one or more other effects waits to apply until just after all of those effects have been applied. If multiple dependent effects would apply simultaneously in this way, they’re applied in timestamp order relative to each other. If several dependent effects form a dependency loop, then this rule is ignored and the effects in the dependency loop are applied in timestamp order.
+.rule{id: "section-613-8c"}
+  .rule_id 613.8c
+  .rule_text After each effect is applied, the order of remaining effects is reevaluated and may change if an effect that has not yet been applied becomes dependent on or independent of one or more other effects that have not yet been applied.
+.rule{id: "section-613-9"}
+  .rule_id 613.9.
   .rule_text One continuous effect can override another. Sometimes the results of one effect determine whether another effect applies or what another effect does.
   .rule_text Example: Two effects are affecting the same creature: one from an Aura that says “Enchanted creature has flying” and one from an Aura that says “Enchanted creature loses flying.” Neither of these depends on the other, since nothing changes what they affect or what they’re doing to it. Applying them in timestamp order means the one that was generated last “wins.” The same process would be followed, and the same result reached, if either of the effects had a duration (such as “Target creature loses flying until end of turn”) or came from a non-Aura source (such as “All creatures lose flying”).
   .rule_text Example: One effect reads, “White creatures get +1/+1,” and another reads, “Enchanted creature is white.” The enchanted creature gets +1/+1 from the first effect, regardless of its previous color.
-.rule{id: "section-613-9"}
-  .rule_id 613.9.
-  .rule_text Some continuous effects affect players rather than objects. For example, an effect might give a player protection from red. All such effects are applied in timestamp order after the determination of objects’ characteristics. See also the rules for timestamp order and dependency (rules <a href="#section-613-6">613.6</a> and <a href="#section-613-7">613.7</a>).
 .rule{id: "section-613-10"}
   .rule_id 613.10.
-  .rule_text Some continuous effects affect game rules rather than objects. For example, effects may modify a player’s maximum hand size, or say that a creature must attack this turn if able. These effects are applied after all other continuous effects have been applied. Continuous effects that affect the costs of spells or abilities are applied according to the order specified in rule <a href="#section-601-2f">601.2f</a>. All other such effects are applied in timestamp order. See also the rules for timestamp order and dependency (rules <a href="#section-613-6">613.6</a> and <a href="#section-613-7">613.7</a>).
+  .rule_text Some continuous effects affect players rather than objects. For example, an effect might give a player protection from red. All such effects are applied in timestamp order after the determination of objects’ characteristics. See also the rules for timestamp order and dependency (rules <a href="#section-613-7">613.7</a> and <a href="#section-613-8">613.8</a>).
+.rule{id: "section-613-11"}
+  .rule_id 613.11.
+  .rule_text Some continuous effects affect game rules rather than objects. For example, effects may modify a player’s maximum hand size, or say that a creature must attack this turn if able. These effects are applied after all other continuous effects have been applied. Continuous effects that affect the costs of spells or abilities are applied according to the order specified in rule <a href="#section-601-2f">601.2f</a>. All other such effects are applied in timestamp order. See also the rules for timestamp order and dependency (rules <a href="#section-613-7">613.7</a> and <a href="#section-613-8">613.8</a>).
 .rule{id: "section-614"}
   .rule_id 614.
   .rule_text Replacement Effects
@@ -3940,7 +3983,7 @@
   .rule_text Example: A player can activate an ability to regenerate a creature in response to a spell that would destroy it. Once the spell resolves, though, it’s too late to regenerate the creature.
 .rule{id: "section-614-5"}
   .rule_id 614.5.
-  .rule_text A replacement effect doesn’t invoke itself repeatedly; it gets only one opportunity to affect an event or any modified events that may replace it.
+  .rule_text A replacement effect doesn’t invoke itself repeatedly; it gets only one opportunity to affect an event or any modified events that may replace that event.
   .rule_text Example: A player controls two permanents, each with an ability that reads “If a creature you control would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.” A creature that normally deals 2 damage will deal 8 damage—not just 4, and not an infinite amount.
 .rule{id: "section-614-6"}
   .rule_id 614.6.
@@ -4259,13 +4302,13 @@
   .rule_text By default, effects that cause a player to discard a card allow the affected player to choose which card to discard. Some effects, however, require a random discard or allow another player to choose which card is discarded.
 .rule{id: "section-701-8c"}
   .rule_id 701.8c
-  .rule_text If a card is discarded, but an effect causes it to be put into a hidden zone instead of into its owner’s graveyard without being revealed, all values of that card’s characteristics are considered to be undefined. If a card is discarded this way to pay a cost that specifies a characteristic about the discarded card, that cost payment is illegal; the game returns to the moment before the cost was paid (see rule <a href="#section-722">722</a>, “Handling Illegal Actions”).
+  .rule_text If a card is discarded, but an effect causes it to be put into a hidden zone instead of into its owner’s graveyard without being revealed, all values of that card’s characteristics are considered to be undefined. If a card is discarded this way to pay a cost that specifies a characteristic about the discarded card, that cost payment is illegal; the game returns to the moment before the cost was paid (see rule <a href="#section-723">723</a>, “Handling Illegal Actions”).
 .rule{id: "section-701-9"}
   .rule_id 701.9.
   .rule_text Double
 .rule{id: "section-701-9a"}
   .rule_id 701.9a
-  .rule_text Doubling a creature’s power and/or toughness creates a continuous effect. This effect modifies that creature’s power and/or toughness but doesn’t set those characteristics to a specific value. See rule <a href="#section-613-3c">613.3c</a>.
+  .rule_text Doubling a creature’s power and/or toughness creates a continuous effect. This effect modifies that creature’s power and/or toughness but doesn’t set those characteristics to a specific value. See rule <a href="#section-613-4c">613.4c</a>.
 .rule{id: "section-701-9b"}
   .rule_id 701.9b
   .rule_text To double a creature’s power, that creature gets +X/+0, where X is that creature’s power as the spell or ability that doubles its power resolves. Similarly, an effect that doubles a creature’s toughness gives it +0/+X, where X is that creature’s toughness. Doubling a creature’s power and toughness gives it +X/+Y, where X is its power and Y is its toughness.
@@ -4305,7 +4348,7 @@
   .rule_text If a spell or ability instructs a player to simply exchange two zones, and one of the zones is empty, the cards in the zones are still exchanged.
 .rule{id: "section-701-10g"}
   .rule_id 701.10g
-  .rule_text A spell or ability may instruct a player to exchange two numerical values. In such an exchange, each value becomes equal to the previous value of the other. If either of those values is a life total, the affected player gains or loses the amount of life necessary to equal the other value. Replacement effects may modify this gain or loss, and triggered abilities may trigger on it. A player who can’t gain life can’t be given a higher life total this way, and a player who can’t lose life can’t be given a lower life total this way (see rules <a href="#section-119-7">119.7</a>–8). If either of those values is a power or toughness, a continuous effect is created setting that power or toughness to the other value (see rule <a href="#section-613-3b">613.3b</a>). This rule does not apply to spells and abilities that switch a creature’s power and toughness.
+  .rule_text A spell or ability may instruct a player to exchange two numerical values. In such an exchange, each value becomes equal to the previous value of the other. If either of those values is a life total, the affected player gains or loses the amount of life necessary to equal the other value. Replacement effects may modify this gain or loss, and triggered abilities may trigger on it. A player who can’t gain life can’t be given a higher life total this way, and a player who can’t lose life can’t be given a lower life total this way (see rules <a href="#section-119-7">119.7</a>–8). If either of those values is a power or toughness, a continuous effect is created setting that power or toughness to the other value (see rule <a href="#section-613-4b">613.4b</a>). This rule does not apply to spells and abilities that switch a creature’s power and toughness.
 .rule{id: "section-701-11"}
   .rule_id 701.11.
   .rule_text Exile
@@ -4726,7 +4769,7 @@
   .rule_text Example: Fire//Ice is a split card whose halves have the mana costs <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span></span> and <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span></span>. Past in Flames reads “Each instant and sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost.” Fire//Ice has “Flashback <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span></span>” while it is in your graveyard, but if you choose to cast Fire, the resulting spell has “Flashback <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span></span>.”
 .rule{id: "section-702-1c"}
   .rule_id 702.1c
-  .rule_text An effect may state that “the same is true for” a list of keyword abilities. If one of those keyword abilities has variants or variables and the effect grants that keyword to one or more objects and/or players, it grants each appropriate variant and variable of that keyword.
+  .rule_text An effect may state that “the same is true for” a list of keyword abilities or similar. If one of those keyword abilities has variants or variables and the effect grants that keyword or counters of that keyword to one or more objects and/or players, it grants each appropriate variant and variable of that keyword.
   .rule_text Example: Concerted Effort is an enchantment that reads “At the beginning of each upkeep, creatures you control gain flying until end of turn if a creature you control has flying. The same is true for fear, first strike, double strike, landwalk, protection, trample, and vigilance.” As that triggered ability resolves, each landwalk and protection ability from among creatures you control is granted to each creature you control.
 .rule{id: "section-702-1d"}
   .rule_id 702.1d
@@ -5026,7 +5069,7 @@
   .rule_text Trample is a static ability that modifies the rules for assigning an attacking creature’s combat damage. The ability has no effect when a creature with trample is blocking or is dealing noncombat damage. (See rule <a href="#section-510">510</a>, “Combat Damage Step.”)
 .rule{id: "section-702-19b"}
   .rule_id 702.19b
-  .rule_text The controller of an attacking creature with trample first assigns damage to the creature(s) blocking it. Once all those blocking creatures are assigned lethal damage, any remaining damage is assigned as its controller chooses among those blocking creatures and the player or planeswalker the creature is attacking. When checking for assigned lethal damage, take into account damage already marked on the creature and damage from other creatures that’s being assigned during the same combat damage step, but not any abilities or effects that might change the amount of damage that’s actually dealt. The attacking creature’s controller need not assign lethal damage to all those blocking creatures but in that case can’t assign any damage to the player or planeswalker it’s attacking.
+  .rule_text The controller of an attacking creature with trample first assigns damage to the creature(s) blocking it. Once all those blocking creatures are assigned lethal damage, any excess damage is assigned as its controller chooses among those blocking creatures and the player or planeswalker the creature is attacking. When checking for assigned lethal damage, take into account damage already marked on the creature and damage from other creatures that’s being assigned during the same combat damage step, but not any abilities or effects that might change the amount of damage that’s actually dealt. The attacking creature’s controller need not assign lethal damage to all those blocking creatures but in that case can’t assign any damage to the player or planeswalker it’s attacking.
   .rule_text Example: A 2/2 creature that can block an additional creature blocks two attackers: a 1/1 with no abilities and a 3/3 with trample. The active player could assign 1 damage from the first attacker and 1 damage from the second to the blocking creature, and 2 damage to the defending player from the creature with trample.
   .rule_text Example: A 6/6 green creature with trample is blocked by a 2/2 creature with protection from green. The attacking creature’s controller must assign at least 2 damage to the blocker, even though that damage will be prevented by the blocker’s protection ability. The attacking creature’s controller can divide the rest of the damage as they choose between the blocking creature and the defending player.
 .rule{id: "section-702-19c"}
@@ -5981,7 +6024,7 @@
   .rule_id 702.102c
   .rule_text When casting a spell bestowed, only its characteristics as modified by the bestow ability are evaluated to determine if it can be cast.
   .rule_text Example: Aether Storm is an enchantment with the ability “Creature spells can’t be cast.” This effect doesn’t stop a creature card with bestow from being cast bestowed.
-  .rule_text Example: Garruk’s Horde says, in part, “You may cast the top card of your library if it’s a creature card.” If you control Garruk’s Horde and the top card of your library is a creature card with bestow, you can cast it as a creature spell, but you can’t cast it bestowed.
+  .rule_text Example: Garruk’s Horde says, in part, “You may cast creature spells from the top of your library.” If you control Garruk’s Horde and the top card of your library is a creature card with bestow, you can cast it as a creature spell, but you can’t cast it bestowed.
 .rule{id: "section-702-102d"}
   .rule_id 702.102d
   .rule_text As a bestowed Aura spell begins resolving, if its target is illegal, it ceases to be bestowed and the effect making it an Aura spell ends. It continues resolving as a creature spell and will be put onto the battlefield under the control of the spell’s controller. This is an exception to rule <a href="#section-608-3a">608.3a</a>.
@@ -6194,7 +6237,7 @@
   .rule_text A rule or effect that refers to your commander’s color identity refers to the combined color identities of your two commanders. See rule <a href="#section-903-4">903.4</a>.
 .rule{id: "section-702-123d"}
   .rule_id 702.123d
-  .rule_text Except for determining the color identity of your commander, the two commanders function independently. When casting a commander with partner, ignore how many times your other commander has been cast. When determining whether a player has been dealt 21 or more combat damage by the same commander, consider damage from each of your two commanders separately. See rule <a href="#section-903-11a">903.11a</a>.
+  .rule_text Except for determining the color identity of your commander, the two commanders function independently. When casting a commander with partner, ignore how many times your other commander has been cast (see rule <a href="#section-903-6">903.6</a>). When determining whether a player has been dealt 21 or more combat damage by the same commander, consider damage from each of your two commanders separately (see rule <a href="#section-903-10a">903.10a</a>).
 .rule{id: "section-702-123e"}
   .rule_id 702.123e
   .rule_text If an effect refers to your commander while you have two commanders, it refers to either one. If an effect causes you to perform an action on your commander and it could affect both, you choose which it refers to at the time the effect is applied.
@@ -6327,6 +6370,39 @@
 .rule{id: "section-702-137c"}
   .rule_id 702.137c
   .rule_text An ability that reads “[This permanent] escapes with . . .” means “If this permanent escaped, it enters the battlefield with . . .” That ability may have a triggered ability linked to it that triggers “When it enters the battlefield this way.” (See rule <a href="#section-603-11">603.11</a>.) Such a triggered ability triggers when that permanent enters the battlefield after its replacement effect was applied, even if that replacement effect had no effect.
+.rule{id: "section-702-138"}
+  .rule_id 702.138.
+  .rule_text Companion
+.rule{id: "section-702-138a"}
+  .rule_id 702.138a
+  .rule_text Companion is a keyword ability that functions outside the game. It’s written as “Companion—[Condition].” Before the game begins, you may reveal one card you own from outside the game with a companion ability whose condition is fulfilled by your starting deck. (See rule <a href="#section-103-1b">103.1b</a>.) If you do, once during that game, you may play that card from outside the game.
+.rule{id: "section-702-138b"}
+  .rule_id 702.138b
+  .rule_text If a companion ability refers to your starting deck, it refers to your deck after you’ve set aside any sideboard cards. In a Commander game, this is also before you’ve set aside your commander.
+.rule{id: "section-702-138c"}
+  .rule_id 702.138c
+  .rule_text Once you play the card with companion, it remains in the game until the game ends.
+.rule{id: "section-702-139"}
+  .rule_id 702.139.
+  .rule_text Mutate
+.rule{id: "section-702-139a"}
+  .rule_id 702.139a
+  .rule_text Mutate appears on some creature cards. It represents a static ability that functions while the spell with mutate is on the stack. “Mutate [cost]” means “You may pay [cost] rather than pay this spell’s mana cost. If you do, it becomes a mutating creature spell and targets a non-Human creature with the same owner as this spell.” Casting a spell using its mutate ability follows the rules for paying alternative costs (see <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h).
+.rule{id: "section-702-139b"}
+  .rule_id 702.139b
+  .rule_text As a mutating creature spell begins resolving, if its target is illegal, it ceases to be a mutating creature spell and continues resolving as a creature spell and will be put onto the battlefield under the control of the spell’s controller.
+.rule{id: "section-702-139c"}
+  .rule_id 702.139c
+  .rule_text As a mutating creature spell resolves, if its target is legal, it doesn’t enter the battlefield. Rather, it merges with the target creature and becomes one object represented by more than one card or token (see rule <a href="#section-721">721</a>, “Merging with Permanents”). The spell’s controller chooses whether the spell is put on top of the creature or on the bottom. The resulting permanent is a mutated permanent.
+.rule{id: "section-702-139d"}
+  .rule_id 702.139d
+  .rule_text An ability that triggers whenever a creature mutates triggers when a spell merges with a creature as a result of a resolving mutating creature spell.
+.rule{id: "section-702-139e"}
+  .rule_id 702.139e
+  .rule_text A mutated permanent has all abilities of each card and token that represents it. Its other characteristics are derived from the topmost card or token.
+.rule{id: "section-702-139f"}
+  .rule_id 702.139f
+  .rule_text Any effect that refers to or modifies the mutating creature spell refers to or modifies the mutated permanent it merges with as it resolves.
 .rule{id: "section-703"}
   .rule_id 703.
   .rule_text Turn-Based Actions
@@ -6432,7 +6508,7 @@
   .rule_text If a creature has toughness 0 or less, it’s put into its owner’s graveyard. Regeneration can’t replace this event.
 .rule{id: "section-704-5g"}
   .rule_id 704.5g
-  .rule_text If a creature has toughness greater than 0, and the total damage marked on it is greater than or equal to its toughness, that creature has been dealt lethal damage and is destroyed. Regeneration can replace this event.
+  .rule_text If a creature has toughness greater than 0, it has damage marked on it, and the total damage marked on it is greater than or equal to its toughness, that creature has been dealt lethal damage and is destroyed. Regeneration can replace this event.
 .rule{id: "section-704-5h"}
   .rule_id 704.5h
   .rule_text If a creature has toughness greater than 0, and it’s been dealt damage by a source with deathtouch since the last time state-based actions were checked, that creature is destroyed. Regeneration can replace this event.
@@ -6506,7 +6582,7 @@
   .rule_text Some objects become or turn another object into a “copy” of a spell, permanent, or card. Some effects create a token that’s a copy of another object. (Certain older cards were printed with the phrase “search for a copy.” This section doesn’t cover those cards, which have received new text in the Oracle card reference.)
 .rule{id: "section-706-2"}
   .rule_id 706.2.
-  .rule_text When copying an object, the copy acquires the copiable values of the original object’s characteristics and, for an object on the stack, choices made when casting or activating it (mode, targets, the value of X, whether it was kicked, how it will affect multiple targets, and so on). The “copiable values” are the values derived from the text printed on the object (that text being name, mana cost, color indicator, card type, subtype, supertype, rules text, power, toughness, and/or loyalty), as modified by other copy effects, by its face-down status, and by “as . . . enters the battlefield” and “as . . . is turned face up” abilities that set power and toughness (and may also set additional characteristics). Other effects (including type-changing and text-changing effects), status, and counters are not copied.
+  .rule_text When copying an object, the copy acquires the copiable values of the original object’s characteristics and, for an object on the stack, choices made when casting or activating it (mode, targets, the value of X, whether it was kicked, how it will affect multiple targets, and so on). The copiable values are the values derived from the text printed on the object (that text being name, mana cost, color indicator, card type, subtype, supertype, rules text, power, toughness, and/or loyalty), as modified by other copy effects, by its face-down status, and by “as . . . enters the battlefield” and “as . . . is turned face up” abilities that set power and toughness (and may also set additional characteristics). Other effects (including type-changing and text-changing effects), status, and counters are not copied.
   .rule_text Example: Chimeric Staff is an artifact that reads, “<span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span>: Chimeric Staff becomes an X/X artifact creature until end of turn.” Clone is a creature that reads, “You may have Clone enter the battlefield as a copy of any creature on the battlefield.” After a Staff has become a 5/5 artifact creature, a Clone enters the battlefield as a copy of it. The Clone is an artifact, not a 5/5 artifact creature. (The copy has the Staff’s ability, however, and will become a creature if that ability is activated.)
   .rule_text Example: Clone enters the battlefield as a copy of a face-down Grinning Demon (a creature with morph <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span></span>). The Clone is a colorless 2/2 creature with no name, no types, no abilities, and no mana cost. It will still be face up. Its controller can’t pay <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span></span> to turn it face up.
 .rule{id: "section-706-2a"}
@@ -6541,11 +6617,6 @@
 .rule{id: "section-706-7"}
   .rule_id 706.7.
   .rule_text If a pair of linked abilities are copied, those abilities will be similarly linked to one another on the object that copied them. One ability refers only to actions that were taken or objects that were affected by the other. They can’t be linked to any other ability, regardless of what other abilities the copy may currently have or may have had in the past. See rule <a href="#section-607">607</a>, “Linked Abilities.”
-.rule{id: "section-706-7a"}
-  .rule_id 706.7a
-  .rule_text If an ability causes a player to “choose a [value]” and a second, linked ability refers to that choice, the second ability is the only ability that can refer to that choice. An object doesn’t “remember” that choice and use it for other abilities it may copy later. If an object copies an ability that refers to a choice, but either (a) doesn’t copy that ability’s linked ability or (b) does copy the linked ability but no choice is made for it, then the choice is considered to be “undefined.” If an ability refers to an undefined choice, that part of the ability won’t do anything.
-  .rule_text Example: Voice of All enters the battlefield and Unstable Shapeshifter copies it. Voice of All reads, in part, “As Voice of All enters the battlefield, choose a color.” and “Voice of All has protection from the chosen color.” Unstable Shapeshifter never had a chance for a color to be chosen for it, because it didn’t enter the battlefield as a Voice of All card, so the protection ability doesn’t protect it from anything at all.
-  .rule_text Example: A Vesuvan Doppelganger enters the battlefield as a copy of Voice of All, and the Doppelganger’s controller chooses blue. Later, the Doppelganger copies Quirion Elves, which has the ability, “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add one mana of the chosen color.” Even though a color was chosen for the Doppelganger, it wasn’t chosen for the ability linked to the mana ability copied from the Elves. If that mana ability of the Doppelganger is activated, it will not produce mana.
 .rule{id: "section-706-8"}
   .rule_id 706.8.
   .rule_text When copying a double-faced permanent, a face-up meld card, or a melded permanent, only the copiable values of the face that’s currently up are copied. (See rule <a href="#section-711">711</a>, “Double-Faced Cards,” and rule <a href="#section-712">712</a>, “Meld Cards.”)
@@ -6670,8 +6741,9 @@
   .rule_text Each split card has two names. If an effect instructs a player to choose a card name and the player wants to choose a split card’s name, the player must choose one of those names and not both. An object has the chosen name if one of its names is the chosen name.
 .rule{id: "section-708-4b"}
   .rule_id 708.4b
-  .rule_text The mana cost of a split card is the combined mana costs of its two halves. A split card’s colors and converted mana cost are determined from its combined mana cost.
-  .rule_text Example: Assault/Battery’s mana cost is <span class="manacost"><span class="mana mana-cost mana-3"><span class="sr-only">{3}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span><span class="mana mana-cost mana-g"><span class="sr-only">{G}</span></span></span>. It’s a red and green card with a converted mana cost of 5. If you cast Assault, the resulting spell is a red spell with a converted mana cost of 1.
+  .rule_text The mana cost of a split card is the combined mana costs of its two halves. A split card’s colors and converted mana cost are determined from its combined mana cost. An effect that refers specifically to the symbols in a split card’s mana cost sees the separate symbols rather than the whole mana cost.
+  .rule_text Example: Assault//Battery’s mana cost is <span class="manacost"><span class="mana mana-cost mana-3"><span class="sr-only">{3}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span><span class="mana mana-cost mana-g"><span class="sr-only">{G}</span></span></span>. It’s a red and green card with a converted mana cost of 5. If you cast Assault, the resulting spell is a red spell with a converted mana cost of 1.
+  .rule_text Example: Fire//Ice’s mana cost is <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span></span>. It has the same mana cost as Steam Augury, but an effect such as that of Jegantha, the Wellspring sees that it contains the mana symbol <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span></span> twice.
 .rule{id: "section-708-4c"}
   .rule_id 708.4c
   .rule_text A split card has each card type specified on either of its halves and each ability in the text box of each half.
@@ -6839,7 +6911,7 @@
   .rule_text If a melded permanent is put into its owner’s graveyard or library, that player may arrange the two cards in any order. If it’s put into its owner’s library, that player doesn’t reveal the order.
 .rule{id: "section-712-4b"}
   .rule_id 712.4b
-  .rule_text If a player exiles a melded permanent, that player determines the relative timestamp order of the two cards at that time. This is an exception to the procedure described in rule <a href="#section-613-6j">613.6j</a>.
+  .rule_text If a player exiles a melded permanent, that player determines the relative timestamp order of the two cards at that time. This is an exception to the procedure described in rule <a href="#section-613-7k">613.7k</a>.
   .rule_text Example: Duplicant is a card with the abilities “When Duplicant enters the battlefield, you may exile target nontoken creature” and “As long as a card exiled with Duplicant is a creature card, Duplicant has the power, toughness, and creature types of the last creature card exiled with Duplicant. It’s still a Shapeshifter.” As Duplicant’s first ability exiles Chittering Host, a melded permanent, Duplicant’s controller chooses whether the last creature card exiled is Midnight Scavengers or Graf Rats.
 .rule{id: "section-712-4c"}
   .rule_id 712.4c
@@ -7166,55 +7238,109 @@
   .rule_text A subgame can be created within a subgame. The existing subgame becomes the main game in relation to the new subgame.
 .rule{id: "section-721"}
   .rule_id 721.
-  .rule_text Taking Shortcuts
+  .rule_text Merging with Permanents
 .rule{id: "section-721-1"}
   .rule_id 721.1.
-  .rule_text When playing a game, players typically make use of mutually understood shortcuts rather than explicitly identifying each game choice (either taking an action or passing priority) a player makes.
-.rule{id: "section-721-1a"}
-  .rule_id 721.1a
-  .rule_text The rules for taking shortcuts are largely informal. As long as each player in the game understands the intent of each other player, any shortcut system they use is acceptable.
-.rule{id: "section-721-1b"}
-  .rule_id 721.1b
-  .rule_text Occasionally the game gets into a state in which a set of actions could be repeated indefinitely (thus creating a “loop”). In that case, the shortcut rules can be used to determine how many times those actions are repeated without having to actually perform them, and how the loop is broken.
-.rule{id: "section-721-1c"}
-  .rule_id 721.1c
-  .rule_text Tournaments use a modified version of the rules governing shortcuts and loops. These rules are covered in the Magic: The Gathering Tournament Rules (found at WPN.Wizards.com/en/resources/rules-documents). Whenever the Tournament Rules contradict these rules during a tournament, the Tournament Rules take precedence.
+  .rule_text One keyword causes an object to merge with a permanent. See rule <a href="#section-702-139">702.139</a>, “Mutate.”
 .rule{id: "section-721-2"}
   .rule_id 721.2.
-  .rule_text Taking a shortcut follows the following procedure.
+  .rule_text To merge an object with a permanent, place that object on top of or under that permanent. That permanent becomes a merged permanent represented by the card that represented that object in addition to any other components that were representing it.
 .rule{id: "section-721-2a"}
   .rule_id 721.2a
-  .rule_text At any point in the game, the player with priority may suggest a shortcut by describing a sequence of game choices, for all players, that may be legally taken based on the current game state and the predictable results of the sequence of choices. This sequence may be a non-repetitive series of choices, a loop that repeats a specified number of times, multiple loops, or nested loops, and may even cross multiple turns. It can’t include conditional actions, where the outcome of a game event determines the next action a player takes. The ending point of this sequence must be a place where a player has priority, though it need not be the player proposing the shortcut.
-  .rule_text Example: A player controls a creature enchanted by Presence of Gond, which grants the creature the ability “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Create a 1/1 green Elf Warrior creature token,” and another player controls Intruder Alarm, which reads, in part, “Whenever a creature enters the battlefield, untap all creatures.” When the player has priority, they may suggest “I’ll create a million tokens,” indicating the sequence of activating the creature’s ability, all players passing priority, letting the creature’s ability resolve and create a token (which causes Intruder Alarm’s ability to trigger), Intruder Alarm’s controller putting that triggered ability on the stack, all players passing priority, Intruder Alarm’s triggered ability resolving, all players passing priority until the player proposing the shortcut has priority, and repeating that sequence <a href="#section-999">999</a>,<a href="#section-999">999</a> more times, ending just after the last token-creating ability resolves.
+  .rule_text A merged permanent has only the characteristics of its topmost component, unless otherwise specified by the effect that caused them to merge. This is a copiable effect whose timestamp is the time the objects merged. (See rule <a href="#section-613-2">613.2</a>.)
 .rule{id: "section-721-2b"}
   .rule_id 721.2b
-  .rule_text Each other player, in turn order starting after the player who suggested the shortcut, may either accept the proposed sequence, or shorten it by naming a place where they will make a game choice that’s different than what’s been proposed. (The player doesn’t need to specify at this time what the new choice will be.) This place becomes the new ending point of the proposed sequence.
-  .rule_text Example: The active player draws a card during her draw step, then says, “Go.” The nonactive player is holding Into the Fray (an instant that says “Target creature attacks this turn if able”) and says, “I’d like to cast a spell during your beginning of combat step.” The current proposed shortcut is that all players pass priority at all opportunities during the turn until the nonactive player has priority during the beginning of combat step.
+  .rule_text As an object merges with a permanent, that object leaves its previous zone and becomes part of an object on the battlefield, but the resulting permanent isn’t considered to have just entered the battlefield.
 .rule{id: "section-721-2c"}
   .rule_id 721.2c
-  .rule_text Once the last player has either accepted or shortened the shortcut proposal, the shortcut is taken. The game advances to the last proposed ending point, with all game choices contained in the shortcut proposal having been taken. If the shortcut was shortened from the original proposal, the player who now has priority must make a different game choice than what was originally proposed for that player.
+  .rule_text Because a merged permanent is the same object that it was before, it hasn’t just come under a player’s control, any continuous effects that affected it continue to do so, and so on.
+.rule{id: "section-721-2d"}
+  .rule_id 721.2d
+  .rule_text If a merged permanent contains a token, the resulting permanent is a token only if the topmost component is a token.
+.rule{id: "section-721-2e"}
+  .rule_id 721.2e
+  .rule_text If a merged permanent contains face-up and face-down components, the permanent’s status is determined by its topmost component. If a face-down permanent becomes a face-up permanent as a result of an object merging with it, other effects don’t count it as being turned face up.
+.rule{id: "section-721-2f"}
+  .rule_id 721.2f
+  .rule_text If a merged permanent is turned face down, each face-up component that represents it is turned face down. If a face-down merged permanent is turned face up, each face-down component that represents it is turned face up.
+.rule{id: "section-721-2g"}
+  .rule_id 721.2g
+  .rule_text A face-down merged permanent that contains an instant or sorcery card can’t be turned face up. If such a permanent would turn face up, its controller reveals it and leaves it face down. Abilities that trigger when a permanent is turned face up won’t trigger.
+.rule{id: "section-721-2h"}
+  .rule_id 721.2h
+  .rule_text If a merged permanent contains a flip card (see rule <a href="#section-709">709</a>), that component’s alternative characteristics are used instead of its normal characteristics if the merged permanent is flipped.
+.rule{id: "section-721-2i"}
+  .rule_id 721.2i
+  .rule_text If a merged permanent contains one or more double-faced cards (see rule <a href="#section-711">711</a>), transforming that permanent causes each of those double-faced cards to turn so that its other face is up.
+.rule{id: "section-721-2j"}
+  .rule_id 721.2j
+  .rule_text A face-up merged permanent that contains a double-faced card or meld card can’t be turned face down.
 .rule{id: "section-721-3"}
   .rule_id 721.3.
-  .rule_text Sometimes a loop can be fragmented, meaning that each player involved in the loop performs an independent action that results in the same game state being reached multiple times. If that happens, the active player (or, if the active player is not involved in the loop, the first player in turn order who is involved) must then make a different game choice so the loop does not continue.
-  .rule_text Example: In a two-player game, the active player controls a creature with the ability “<span class="manacost"><span class="mana mana-cost mana-0"><span class="sr-only">{0}</span></span></span>: [This creature] gains flying,” the nonactive player controls a permanent with the ability “<span class="manacost"><span class="mana mana-cost mana-0"><span class="sr-only">{0}</span></span></span>: Target creature loses flying,” and nothing in the game cares how many times an ability has been activated. Say the active player activates his creature’s ability, it resolves, then the nonactive player activates her permanent’s ability targeting that creature, and it resolves. This returns the game to a game state it was at before. The active player must make a different game choice (in other words, anything other than activating that creature’s ability again). The creature doesn’t have flying. Note that the nonactive player could have prevented the fragmented loop simply by not activating her permanent’s ability, in which case the creature would have had flying. The nonactive player always has the final choice and is therefore able to determine whether the creature has flying.
-.rule{id: "section-721-4"}
-  .rule_id 721.4.
-  .rule_text If a loop contains only mandatory actions, the game is a draw. (See rules <a href="#section-104-4b">104.4b</a> and <a href="#section-104-4f">104.4f</a>.)
-.rule{id: "section-721-5"}
-  .rule_id 721.5.
-  .rule_text No player can be forced to perform an action that would end a loop other than actions called for by objects involved in the loop.
-  .rule_text Example: A player controls Seal of Cleansing, an enchantment that reads, “Sacrifice Seal of Cleansing: Destroy target artifact or enchantment.” A mandatory loop that involves an artifact begins. The player is not forced to sacrifice Seal of Cleansing to destroy the artifact and end the loop.
-.rule{id: "section-721-6"}
-  .rule_id 721.6.
-  .rule_text If a loop contains an effect that says “[A] unless [B],” where [A] and [B] are each actions, no player can be forced to perform [B] to break the loop. If no player chooses to perform [B], the loop will continue as though [A] were mandatory.
+  .rule_text If a merged permanent leaves the battlefield, one permanent leaves the battlefield and each of the individual components are put into the appropriate zone.
+.rule{id: "section-721-3a"}
+  .rule_id 721.3a
+  .rule_text If a merged permanent is put into its owner’s graveyard or library, that player may arrange the new objects in any order. If it’s put into its owner’s library, that player doesn’t reveal the order.
+.rule{id: "section-721-3b"}
+  .rule_id 721.3b
+  .rule_text If a player exiles a merged permanent, that player determines the relative timestamp order of the cards at that time. This is an exception to the procedure described in rule <a href="#section-613-7k">613.7k</a>.
+.rule{id: "section-721-3c"}
+  .rule_id 721.3c
+  .rule_text If an effect can find the new object that a merged permanent becomes as it leaves the battlefield, it finds all of those objects. (See rule <a href="#section-400-7">400.7</a>.) If that effect causes actions to be taken upon those objects, the same actions are taken upon each of them.
+.rule{id: "section-721-3d"}
+  .rule_id 721.3d
+  .rule_text If multiple replacement effects could be applied to the event of a merged permanent leaving the battlefield or being put into the new zone, applying one of those replacement effects to one of the objects affects all of the objects. If the merged permanent is a commander, it may be exempt from this rule; see rule <a href="#section-903-9a">903.9a</a>.
 .rule{id: "section-722"}
   .rule_id 722.
-  .rule_text Handling Illegal Actions
+  .rule_text Taking Shortcuts
 .rule{id: "section-722-1"}
   .rule_id 722.1.
-  .rule_text If a player takes an illegal action or starts to take an action but can’t legally complete it, the entire action is reversed and any payments already made are canceled. No abilities trigger and no effects apply as a result of an undone action. If the action was casting a spell, the spell returns to the zone it came from. Each player may also reverse any legal mana abilities that player activated while making the illegal play, unless mana from those abilities or from any triggered mana abilities they caused to trigger was spent on another mana ability that wasn’t reversed. Players may not reverse actions that moved cards to a library, moved cards from a library to any zone other than the stack, caused a library to be shuffled, or caused cards from a library to be revealed.
+  .rule_text When playing a game, players typically make use of mutually understood shortcuts rather than explicitly identifying each game choice (either taking an action or passing priority) a player makes.
+.rule{id: "section-722-1a"}
+  .rule_id 722.1a
+  .rule_text The rules for taking shortcuts are largely informal. As long as each player in the game understands the intent of each other player, any shortcut system they use is acceptable.
+.rule{id: "section-722-1b"}
+  .rule_id 722.1b
+  .rule_text Occasionally the game gets into a state in which a set of actions could be repeated indefinitely (thus creating a “loop”). In that case, the shortcut rules can be used to determine how many times those actions are repeated without having to actually perform them, and how the loop is broken.
+.rule{id: "section-722-1c"}
+  .rule_id 722.1c
+  .rule_text Tournaments use a modified version of the rules governing shortcuts and loops. These rules are covered in the Magic: The Gathering Tournament Rules (found at WPN.Wizards.com/en/resources/rules-documents). Whenever the Tournament Rules contradict these rules during a tournament, the Tournament Rules take precedence.
 .rule{id: "section-722-2"}
   .rule_id 722.2.
+  .rule_text Taking a shortcut follows the following procedure.
+.rule{id: "section-722-2a"}
+  .rule_id 722.2a
+  .rule_text At any point in the game, the player with priority may suggest a shortcut by describing a sequence of game choices, for all players, that may be legally taken based on the current game state and the predictable results of the sequence of choices. This sequence may be a non-repetitive series of choices, a loop that repeats a specified number of times, multiple loops, or nested loops, and may even cross multiple turns. It can’t include conditional actions, where the outcome of a game event determines the next action a player takes. The ending point of this sequence must be a place where a player has priority, though it need not be the player proposing the shortcut.
+  .rule_text Example: A player controls a creature enchanted by Presence of Gond, which grants the creature the ability “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Create a 1/1 green Elf Warrior creature token,” and another player controls Intruder Alarm, which reads, in part, “Whenever a creature enters the battlefield, untap all creatures.” When the player has priority, they may suggest “I’ll create a million tokens,” indicating the sequence of activating the creature’s ability, all players passing priority, letting the creature’s ability resolve and create a token (which causes Intruder Alarm’s ability to trigger), Intruder Alarm’s controller putting that triggered ability on the stack, all players passing priority, Intruder Alarm’s triggered ability resolving, all players passing priority until the player proposing the shortcut has priority, and repeating that sequence <a href="#section-999">999</a>,<a href="#section-999">999</a> more times, ending just after the last token-creating ability resolves.
+.rule{id: "section-722-2b"}
+  .rule_id 722.2b
+  .rule_text Each other player, in turn order starting after the player who suggested the shortcut, may either accept the proposed sequence, or shorten it by naming a place where they will make a game choice that’s different than what’s been proposed. (The player doesn’t need to specify at this time what the new choice will be.) This place becomes the new ending point of the proposed sequence.
+  .rule_text Example: The active player draws a card during her draw step, then says, “Go.” The nonactive player is holding Into the Fray (an instant that says “Target creature attacks this turn if able”) and says, “I’d like to cast a spell during your beginning of combat step.” The current proposed shortcut is that all players pass priority at all opportunities during the turn until the nonactive player has priority during the beginning of combat step.
+.rule{id: "section-722-2c"}
+  .rule_id 722.2c
+  .rule_text Once the last player has either accepted or shortened the shortcut proposal, the shortcut is taken. The game advances to the last proposed ending point, with all game choices contained in the shortcut proposal having been taken. If the shortcut was shortened from the original proposal, the player who now has priority must make a different game choice than what was originally proposed for that player.
+.rule{id: "section-722-3"}
+  .rule_id 722.3.
+  .rule_text Sometimes a loop can be fragmented, meaning that each player involved in the loop performs an independent action that results in the same game state being reached multiple times. If that happens, the active player (or, if the active player is not involved in the loop, the first player in turn order who is involved) must then make a different game choice so the loop does not continue.
+  .rule_text Example: In a two-player game, the active player controls a creature with the ability “<span class="manacost"><span class="mana mana-cost mana-0"><span class="sr-only">{0}</span></span></span>: [This creature] gains flying,” the nonactive player controls a permanent with the ability “<span class="manacost"><span class="mana mana-cost mana-0"><span class="sr-only">{0}</span></span></span>: Target creature loses flying,” and nothing in the game cares how many times an ability has been activated. Say the active player activates his creature’s ability, it resolves, then the nonactive player activates her permanent’s ability targeting that creature, and it resolves. This returns the game to a game state it was at before. The active player must make a different game choice (in other words, anything other than activating that creature’s ability again). The creature doesn’t have flying. Note that the nonactive player could have prevented the fragmented loop simply by not activating her permanent’s ability, in which case the creature would have had flying. The nonactive player always has the final choice and is therefore able to determine whether the creature has flying.
+.rule{id: "section-722-4"}
+  .rule_id 722.4.
+  .rule_text If a loop contains only mandatory actions, the game is a draw. (See rules <a href="#section-104-4b">104.4b</a> and <a href="#section-104-4f">104.4f</a>.)
+.rule{id: "section-722-5"}
+  .rule_id 722.5.
+  .rule_text No player can be forced to perform an action that would end a loop other than actions called for by objects involved in the loop.
+  .rule_text Example: A player controls Seal of Cleansing, an enchantment that reads, “Sacrifice Seal of Cleansing: Destroy target artifact or enchantment.” A mandatory loop that involves an artifact begins. The player is not forced to sacrifice Seal of Cleansing to destroy the artifact and end the loop.
+.rule{id: "section-722-6"}
+  .rule_id 722.6.
+  .rule_text If a loop contains an effect that says “[A] unless [B],” where [A] and [B] are each actions, no player can be forced to perform [B] to break the loop. If no player chooses to perform [B], the loop will continue as though [A] were mandatory.
+.rule{id: "section-723"}
+  .rule_id 723.
+  .rule_text Handling Illegal Actions
+.rule{id: "section-723-1"}
+  .rule_id 723.1.
+  .rule_text If a player takes an illegal action or starts to take an action but can’t legally complete it, the entire action is reversed and any payments already made are canceled. No abilities trigger and no effects apply as a result of an undone action. If the action was casting a spell, the spell returns to the zone it came from. Each player may also reverse any legal mana abilities that player activated while making the illegal play, unless mana from those abilities or from any triggered mana abilities they caused to trigger was spent on another mana ability that wasn’t reversed. Players may not reverse actions that moved cards to a library, moved cards from a library to any zone other than the stack, caused a library to be shuffled, or caused cards from a library to be revealed.
+.rule{id: "section-723-2"}
+  .rule_id 723.2.
   .rule_text When reversing illegal spells and abilities, the player who had priority retains it and may take another action or pass. The player may redo the reversed action in a legal way or take any other action allowed by the rules.
 .rule{id: "section-8"}
   .rule_id 8.
@@ -7975,6 +8101,9 @@
 .rule{id: "section-903-3b"}
   .rule_id 903.3b
   .rule_text If a player’s commander is a meld card and it’s melded with the other member of its meld pair, the resulting melded permanent is that player’s commander.
+.rule{id: "section-903-3c"}
+  .rule_id 903.3c
+  .rule_text If a player’s commander is a component of a merged permanent, the resulting merged permanent is that player’s commander.
 .rule{id: "section-903-4"}
   .rule_id 903.4.
   .rule_text The Commander variant uses color identity to determine what cards can be in a deck with a certain commander. The color identity of a card is the color or colors of any mana symbols in that card’s mana cost or rules text, plus any colors defined by its characteristic-defining abilities (see rule <a href="#section-604-3">604.3</a>) or color indicator (see rule <a href="#section-204">204</a>).
@@ -7994,7 +8123,7 @@
   .rule_text Each Commander deck is subject to the following deck construction rules.
 .rule{id: "section-903-5a"}
   .rule_id 903.5a
-  .rule_text Each deck must contain exactly <a href="#section-100">100</a> cards, including its commander.
+  .rule_text Each deck must contain exactly <a href="#section-100">100</a> cards, including its commander. In other words, the minimum deck size and the maximum deck size are both <a href="#section-100">100</a>.
 .rule{id: "section-903-5b"}
   .rule_id 903.5b
   .rule_text Other than basic lands, each card in a Commander deck must have a different English name.
@@ -8020,7 +8149,7 @@
   .rule_text If a commander would be exiled from anywhere or put into its owner’s hand, graveyard, or library from anywhere, its owner may put it into the command zone instead. This replacement effect may apply more than once to the same event. This is an exception to rule <a href="#section-614-5">614.5</a>.
 .rule{id: "section-903-9a"}
   .rule_id 903.9a
-  .rule_text If a commander is a melded permanent and its owner chooses to put it into the command zone this way, that permanent and the card representing it that isn’t a commander are put into the appropriate zone, and the card that represents it and is a commander is put into the command zone.
+  .rule_text If a commander is a melded permanent or a merged permanent and its owner chooses to put it into the command zone this way, that permanent and each component representing it that isn’t a commander are put into the appropriate zone, and the card that represents it and is a commander is put into the command zone.
 .rule{id: "section-903-10"}
   .rule_id 903.10.
   .rule_text The Commander variant includes the following specification for winning and losing the game. All other rules for ending the game also apply. (See rule <a href="#section-104">104</a>.)
@@ -8029,30 +8158,33 @@
   .rule_text A player that’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. (This is a state-based action. See rule <a href="#section-704">704</a>.)
 .rule{id: "section-903-11"}
   .rule_id 903.11.
+  .rule_text If a player is allowed to bring a card from outside the game into a Commander game, that player can’t bring a card into the game this way if it has the same name as a card that player had in their starting deck, if it has the same name as a card that the player has already brought into the game, or if any color in its color identity isn’t in the color identity of the player’s commander.
+.rule{id: "section-903-12"}
+  .rule_id 903.12.
   .rule_text Brawl Option
-.rule{id: "section-903-11a"}
-  .rule_id 903.11a
+.rule{id: "section-903-12a"}
+  .rule_id 903.12a
   .rule_text Brawl is an option for a different style of Commander game. Brawl games use the normal rules for the Commander variant with the following modifications.
-.rule{id: "section-903-11b"}
-  .rule_id 903.11b
+.rule{id: "section-903-12b"}
+  .rule_id 903.12b
   .rule_text Brawl decks are usually constructed using cards from the Standard format.
-.rule{id: "section-903-11c"}
-  .rule_id 903.11c
+.rule{id: "section-903-12c"}
+  .rule_id 903.12c
   .rule_text A player designates either a legendary planeswalker or a legendary creature as their commander.
-.rule{id: "section-903-11d"}
-  .rule_id 903.11d
-  .rule_text A player’s deck must contain exactly 60 cards, including its commander.
-.rule{id: "section-903-11e"}
-  .rule_id 903.11e
+.rule{id: "section-903-12d"}
+  .rule_id 903.12d
+  .rule_text A player’s deck must contain exactly 60 cards, including its commander. In other words, the minimum deck size and the maximum deck size are both 60.
+.rule{id: "section-903-12e"}
+  .rule_id 903.12e
   .rule_text If a player’s commander has no colors in its color identity, that player’s deck may contain any number of basic lands of one basic land type of their choice. This is an exception to rule <a href="#section-903-5d">903.5d</a>.
-.rule{id: "section-903-11f"}
-  .rule_id 903.11f
+.rule{id: "section-903-12f"}
+  .rule_id 903.12f
   .rule_text In a two-player Brawl game, each player’s starting life total is 25. In a multiplayer Brawl game, each player’s starting life total is 30.
-.rule{id: "section-903-11g"}
-  .rule_id 903.11g
+.rule{id: "section-903-12g"}
+  .rule_id 903.12g
   .rule_text In any Brawl game, the first mulligan a player takes doesn’t count toward the number of cards that player will put on the bottom of their library or the number of mulligans that player may take. Subsequent mulligans are counted toward these numbers as normal.
-.rule{id: "section-903-11h"}
-  .rule_id 903.11h
+.rule{id: "section-903-12h"}
+  .rule_id 903.12h
   .rule_text Brawl games do not use the state-based action described in rule <a href="#section-704-5v">704.5v</a>, which causes a player to lose the game if they’ve been dealt 21 or more combat damage by a commander.
 .rule{id: "section-904"}
   .rule_id 904.
@@ -8357,7 +8489,7 @@
   .glossary_definition A group of unopened Magic cards from a particular expansion. Booster packs are used in Limited formats. See rule <a href="#section-100-2b">100.2b</a>.
 .glossary_entry
   .glossary_term Brawl
-  .glossary_definition An option for the Commander casual variant. See rule <a href="#section-903-11">903.11</a>, “Brawl Option.”
+  .glossary_definition An option for the Commander casual variant. See rule <a href="#section-903-12">903.12</a>, “Brawl Option.”
 .glossary_entry
   .glossary_term Bury (Obsolete)
   .glossary_definition A term that meant “put [a permanent] into its owner’s graveyard.” In general, cards that were printed with the term “bury” have received errata in the Oracle card reference to read, “Destroy [a permanent]. It can’t be regenerated,” or “Sacrifice [a permanent].”
@@ -8461,6 +8593,9 @@
   .glossary_term Commander Tax
   .glossary_definition Informal term for the additional cost to cast a commander based on the number of times a player has cast it previously this game. See rule <a href="#section-903-8">903.8</a>.
 .glossary_entry
+  .glossary_term Companion
+  .glossary_definition A keyword ability that allows a player to cast one creature card from outside the game if the restriction of that card’s companion ability is met. See rule <a href="#section-702-138">702.138</a>, “Companion.”
+.glossary_entry
   .glossary_term Concede
   .glossary_definition To quit the game. Conceding a game immediately causes that player to leave that game and lose that game. See rule <a href="#section-104">104</a>, “Ending the Game.”
 .glossary_entry
@@ -8495,7 +8630,7 @@
   .glossary_definition A keyword ability that lets you tap creatures rather than pay mana to cast a spell. See rule <a href="#section-702-50">702.50</a>, “Convoke.”
 .glossary_entry
   .glossary_term Copiable Values
-  .glossary_definition Values of an object’s characteristics that are checked by copy effects. See rules <a href="#section-706-2">706.2</a> and <a href="#section-706-3">706.3</a>.
+  .glossary_definition Values of an object’s characteristics that are checked by copy effects. See rules <a href="#section-613-2">613.2</a>, <a href="#section-706-2">706.2</a>, and <a href="#section-706-3">706.3</a>.
 .glossary_entry
   .glossary_term Copy
   .glossary_definition 1. To create a new object whose copiable values have been set to those of another object. 2. An object whose copiable values have been set to those of another object. See rule <a href="#section-706">706</a>, “Copying Objects.”
@@ -8573,7 +8708,7 @@
   .glossary_definition A keyword ability that lets you exile cards from your graveyard rather than pay generic mana to cast a spell. See rule <a href="#section-702-65">702.65</a>, “Delve.”
 .glossary_entry
   .glossary_term Dependency
-  .glossary_definition A system that may be used to determine in which order continuous effects in the same layer or sublayer are applied. See rule <a href="#section-613-7">613.7</a>. See also Timestamp Order.
+  .glossary_definition A system that may be used to determine in which order continuous effects in the same layer or sublayer are applied. See rule <a href="#section-613-8">613.8</a>. See also Timestamp Order.
 .glossary_entry
   .glossary_term Deploy Creatures Option
   .glossary_definition An option that may be used in certain multiplayer variants to pass control of creatures between teammates. See rule <a href="#section-804">804</a>, “Deploy Creatures Option.”
@@ -8729,7 +8864,10 @@
   .glossary_definition To swap two things, such as objects, sets of objects, or life totals. See rule <a href="#section-701-10">701.10</a>, “Exchange.”
 .glossary_entry
   .glossary_term Exert
-  .glossary_definition A keyword action that stops a permanent from untapping during the next uptap step of the player who exerted it. See rule <a href="#section-701-38">701.38</a>, “Exert.”
+  .glossary_definition A keyword action that stops a permanent from untapping during the next untap step of the player who exerted it. See rule <a href="#section-701-38">701.38</a>, “Exert.”
+.glossary_entry
+  .glossary_term Excess Damage
+  .glossary_definition Some spells that result in damage being dealt to a creature state that excess damage is dealt to another object or player instead. See rule <a href="#section-120-4a">120.4a</a>.
 .glossary_entry
   .glossary_term Exile
   .glossary_definition 1. A zone. Exile is essentially a holding area for cards. It used to be known as the “removed-from-the-game” zone. 2. To put an object into the exile zone from whatever zone it’s currently in. An “exiled” card is one that’s been put into the exile zone. See rule <a href="#section-406">406</a>, “Exile.”
@@ -8894,7 +9032,7 @@
   .glossary_definition See Intervening “If” Clause.
 .glossary_entry
   .glossary_term Illegal Action
-  .glossary_definition An action that violates the rules of the game and/or requirements or restrictions created by effects. See rule <a href="#section-722">722</a>, “Handling Illegal Actions.”
+  .glossary_definition An action that violates the rules of the game and/or requirements or restrictions created by effects. See rule <a href="#section-723">723</a>, “Handling Illegal Actions.”
 .glossary_entry
   .glossary_term Illegal Target
   .glossary_definition A target that no longer exists or no longer meets the specifications stated by the spell or ability that’s targeting it. See rule <a href="#section-608-2b">608.2b</a>.
@@ -8967,6 +9105,9 @@
 .glossary_entry
   .glossary_term Keyword Action
   .glossary_definition A verb, such as “destroy” or “cast,” used as a game term rather than as its normal English meaning. See rule <a href="#section-701">701</a>, “Keyword Actions.”
+.glossary_entry
+  .glossary_term Keyword Counter
+  .glossary_definition A marker placed on an object that modifies its characteristics by granting it a keyword. See rule <a href="#section-122">122</a>, “Counters.”
 .glossary_entry
   .glossary_term Kicker, Kicked
   .glossary_definition Kicker is a keyword ability that represents an optional additional cost. A spell has been kicked if its controller declared the intention to pay any or all of its kicker costs. See rule <a href="#section-702-32">702.32</a>, “Kicker.”
@@ -9044,7 +9185,7 @@
   .glossary_definition Informal term for the current system of mulligan rules. See rule <a href="#section-103-4">103.4</a>.
 .glossary_entry
   .glossary_term Loop
-  .glossary_definition A set of actions that could be repeated indefinitely. See rule <a href="#section-721">721</a>, “Taking Shortcuts.”
+  .glossary_definition A set of actions that could be repeated indefinitely. See rule <a href="#section-722">722</a>, “Taking Shortcuts.”
 .glossary_entry
   .glossary_term Lose the Game
   .glossary_definition There are several ways to lose the game. See rule <a href="#section-104">104</a>, “Ending the Game,” rule <a href="#section-810-8">810.8</a> (for additional rules for Two-Headed Giant games), rule <a href="#section-809-5">809.5</a> (for additional rules for Emperor games), and rule <a href="#section-903-10">903.10</a> (for an additional rule for Commander games).
@@ -9112,6 +9253,12 @@
   .glossary_term Mentor
   .glossary_definition A keyword ability that lets your bigger creatures power up your smaller creatures when they attack together. See rule <a href="#section-702-133">702.133</a>, “Mentor.”
 .glossary_entry
+  .glossary_term Merged Permanent
+  .glossary_definition A card or token may merge with a permanent to form a merged permanent. This merged permanent is represented by more than one card and/or token. See rule <a href="#section-721">721</a>, “Merging with Permanents.”
+.glossary_entry
+  .glossary_term Minimum Deck Size
+  .glossary_definition If a rule or effect states that a player’s deck must contain at least a specific number of cards, that number is the player’s minimum deck size.
+.glossary_entry
   .glossary_term Miracle
   .glossary_definition A keyword ability that lets you cast a spell for a reduced cost if it’s the first card you draw in a turn. See rule <a href="#section-702-93">702.93</a>, “Miracle.”
 .glossary_entry
@@ -9166,6 +9313,12 @@
   .glossary_term Multiplayer Game
   .glossary_definition A game that begins with more than two players. See section 8, “Multiplayer Rules.”
 .glossary_entry
+  .glossary_term Mutate
+  .glossary_definition A keyword that lets a creature card be cast as a mutating creature spell. See rule <a href="#section-702-139">702.139</a>, “Mutate.”
+.glossary_entry
+  .glossary_term Mutating Creature Spell
+  .glossary_definition A creature spell cast using the mutate keyword ability. As it resolves, if its target creature is legal, it merges with the target creature. The resulting creature has all characteristics of the topmost component and has the abilities of each component. See rule <a href="#section-702-139">702.139</a>, “Mutate,” and rule <a href="#section-721">721</a>, “Merging with Permanents.”
+.glossary_entry
   .glossary_term Myriad
   .glossary_definition Myriad is a triggered ability that effectively lets a creature attack in all possible directions. See rule <a href="#section-702-115">702.115</a>, “Myriad.”
 .glossary_entry
@@ -9209,7 +9362,7 @@
   .glossary_definition A keyword ability that allows a creature to grow larger over time. See rule <a href="#section-702-106">702.106</a>, “Outlast.”
 .glossary_entry
   .glossary_term Outside the Game
-  .glossary_definition An object is “outside the game” if it isn’t in any of the game’s zones. See rule <a href="#section-400-10">400.10</a>.
+  .glossary_definition An object is “outside the game” if it isn’t in any of the game’s zones. See rule <a href="#section-400-11">400.11</a>.
 .glossary_entry
   .glossary_term Overload
   .glossary_definition A keyword ability that allows a spell to affect either a single target or many objects. See rule <a href="#section-702-95">702.95</a>, “Overload.”
@@ -9482,7 +9635,7 @@
   .glossary_definition An option that may be used in certain multiplayer variants, such as Two-Headed Giant and Archenemy. See rule <a href="#section-805">805</a>, “Shared Team Turns Option.”
 .glossary_entry
   .glossary_term Shortcut
-  .glossary_definition A mutually understood way for the game to advance forward a number of game choices (either taking an action or passing priority) without players needing to explicitly identify each such choice. See rule <a href="#section-721">721</a>, “Taking Shortcuts.”
+  .glossary_definition A mutually understood way for the game to advance forward a number of game choices (either taking an action or passing priority) without players needing to explicitly identify each such choice. See rule <a href="#section-722">722</a>, “Taking Shortcuts.”
 .glossary_entry
   .glossary_term Shroud
   .glossary_definition A keyword ability that precludes a permanent or player from being targeted. See rule <a href="#section-702-18">702.18</a>, “Shroud.”
@@ -9555,6 +9708,9 @@
 .glossary_entry
   .glossary_term Stack
   .glossary_definition A zone. The stack is the zone in which spells, activated abilities, and triggered abilities wait to resolve. See rule <a href="#section-405">405</a>, “Stack.”
+.glossary_entry
+  .glossary_term Starting Deck
+  .glossary_definition After a player has set aside their sideboard, their remaining deck becomes their starting deck. See rule <a href="#section-103-1">103.1</a>.
 .glossary_entry
   .glossary_term Starting Hand Size
   .glossary_definition The number of cards a player draws as a game begins. In most games, each player’s starting hand size is seven. See rule <a href="#section-103-4">103.4</a>.
@@ -9662,7 +9818,7 @@
   .glossary_definition “Threshold” used to be a keyword ability. It is now an ability word and has no rules meaning. All cards printed with the threshold keyword have received errata in the Oracle card reference.
 .glossary_entry
   .glossary_term Timestamp Order
-  .glossary_definition A system used to determine in which order continuous effects in the same layer or sublayer are applied. See rule <a href="#section-613-6">613.6</a>. See also Dependency.
+  .glossary_definition A system used to determine in which order continuous effects in the same layer or sublayer are applied. See rule <a href="#section-613-7">613.7</a>. See also Dependency.
 .glossary_entry
   .glossary_term Token
   .glossary_definition A marker used to represent any permanent that isn’t represented by a card. See rule <a href="#section-111">111</a>, “Tokens.”
@@ -9847,5 +10003,5 @@
 %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, and Matt Tabak, with contributions from Charlie Cátinò, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Eli Shiffrin, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead), Gregg Luben, Nat Moes, Matt Tabak, and Hans Ziegler Magic Rules Management: Eli Shiffrin
 %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cátinò, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
 %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-%p These rules are effective as of January 24, 2020.
-%p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, Magic: The Gathering—Conspiracy, Conspiracy: Take the Crown, Ixalan, Rivals of Ixalan, Unglued, Unstable, Dominaria, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. Unhinged is a trademark of Horn Abbot Ltd. and is used with permission. ©2020 Wizards. U.S. Pat. No. RE 37,957.
+%p These rules are effective as of April 17, 2020.
+%p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, Magic: The Gathering—Conspiracy, Conspiracy: Take the Crown, Ixalan, Rivals of Ixalan, Unglued, Unstable, Dominaria, Ikoria, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. Unhinged is a trademark of Horn Abbot Ltd. and is used with permission. ©2020 Wizards. U.S. Pat. No. RE 37,957.
