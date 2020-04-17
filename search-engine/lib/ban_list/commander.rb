@@ -294,4 +294,10 @@ BanList.for_format("commander") do
     "Iona, Shield of Emeria" => "banned",
     "Painter's Servant" => "legal",
   )
+
+  change(
+    "2020-04-02",
+    "https://articles.starcitygames.com/news/lutri-the-spellchaser-fastest-banned-card-ever/",
+    "Lutri, the Spellchaser" => "banned",
+  )
 end
