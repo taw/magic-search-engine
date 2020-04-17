@@ -34,7 +34,7 @@ task "mtgjson:fetch" do
   if Pathname("data/sets-incoming").exist?
     sh "trash", "data/sets-incoming"
   end
-  sh "./indexer/bin/split_mtgjson", "./AllSets.json", "data/sets-incoming"
+  sh "./indexer/bin/split_mtgjson", "./AllSets.json", "tmp/sets-incoming"
   sh "./indexer/bin/update_mtgjson_sets"
 end
 
