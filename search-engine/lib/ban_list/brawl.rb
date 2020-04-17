@@ -36,4 +36,10 @@ BanList.for_format("brawl") do
     "https://magic.wizards.com/en/articles/archive/news/march-9-2020-banned-and-restricted-announcement",
     "Golos, Tireless Pilgrim" => "banned",
   )
+
+  change(
+    "2020-04-16",
+    "https://magic.wizards.com/en/articles/archive/news/april-13-2020-banned-and-restricted-announcement",
+    "Lutri, the Spellchaser" => "banned",
+  )
 end
