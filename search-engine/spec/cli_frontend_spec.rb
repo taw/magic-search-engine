@@ -21,6 +21,8 @@ describe "CLI Frontend" do
         Dryad Arbor
         Forest
         Gingerbread Cabin
+        Indatha Triome
+        Ketria Triome
         Murmuring Bosk
         Overgrown Tomb
         Sapseep Forest
@@ -32,6 +34,7 @@ describe "CLI Frontend" do
         Taiga
         Temple Garden
         Tropical Island
+        Zagoth Triome
         EOF
       error: ""
     )

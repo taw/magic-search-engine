@@ -13,6 +13,7 @@ describe "Ability Word Regexp" do
       "Choose one or more",
       "Choose one",
       "Choose two",
+      "Companion",
       "DCI ruling",
       "Escape",
       "Forecast",

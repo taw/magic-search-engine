@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data for same sets,
   # indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(20732)
-    db.number_of_printings.should eq(48586)
+    db.number_of_cards.should eq(20960)
+    db.number_of_printings.should eq(48974)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -307,10 +307,17 @@ describe "Full Database Test" do
       "Brilliant Ultimatum",
       "Clarion Ultimatum",
       "Cruel Ultimatum",
+      "Eerie Ultimatum",
+      "Emergent Ultimatum",
+      "Genesis Ultimatum",
+      "Inspired Ultimatum",
+      "Ruinous Ultimatum",
       "Titanic Ultimatum",
       "Violent Ultimatum"
     assert_search_results "mana=wwmmmnn",
       "Brilliant Ultimatum",
+      "Eerie Ultimatum",
+      "Inspired Ultimatum",
       "Titanic Ultimatum"
     assert_search_equal "mana=mmnnnoo", "mana=nnooomm"
     assert_search_equal "mana>nnnnn", "mana>ooooo"
