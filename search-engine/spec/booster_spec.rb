@@ -82,7 +82,8 @@ describe "is:booster" do
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} (-t:basic or -number:/a/)"
       when "war"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=264 -number:/†|★/"
-      when "arn"
+      when "arn", "shm"
+        # They include † cards
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code}"
       when "ice", "mir", "tmp", "usg", "4ed", "5ed", "6ed"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -t:basic -number:/†/"
