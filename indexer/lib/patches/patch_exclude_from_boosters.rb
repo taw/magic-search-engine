@@ -34,7 +34,7 @@ class PatchExcludeFromBoosters < Patch
       end
 
       # Mostly misprints and such
-      if card["number"] =~ /†/ and set_code != "arn"
+      if card["number"] =~ /†/ and (set_code != "arn" and set_code != "shm")
         card["exclude_from_boosters"] = true
       end
     end
