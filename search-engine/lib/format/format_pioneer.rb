@@ -22,6 +22,7 @@ class FormatPioneer < Format
       "m20",
       "eld",
       "thb",
+      "iko",
     ]
   end
 end
