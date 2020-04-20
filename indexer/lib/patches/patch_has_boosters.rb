@@ -18,6 +18,12 @@ class PatchHasBoosters < Patch
 
       set["has_boosters"] = !!has_own_boosters
       set["in_other_boosters"] = !!included_in_other_boosters
+
+      if set["code"] == "ala"
+        set["booster_variants"] = {
+          "premium" => "Alara Premium Foil Booster"
+        }
+      end
     end
   end
 end
