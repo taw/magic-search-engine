@@ -44,6 +44,7 @@ describe "multiverse ids" do
       when "eld"
         # Something's really messed up here, possibly related to ELD vs CELD
       when "thb"
+      when "iko"
         # Not yet
       else
         set.printings.group_by{|c| !!c.multiverseid}.size.should eq(1), "Set #{set_code} has cards with and without multiverseid"

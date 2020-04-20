@@ -143,9 +143,11 @@ class PackFactory
       "akh", "hou",
       "m19",
       "mh1",
-      "m20",
       "eld", # ELD and newer sets have multiple nonstandard pack types too
       "thb"
+      build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
+    when "m20", "iko"
+      # THIS IS WRONG
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "ala"
       build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_mythic: 1})
