@@ -53,6 +53,10 @@ class DeckIndexer
       return printings["gnt"] || printings["m19"] || raise
     end
 
+    if set_code == "c20"
+      return printings["c20"] || printings["iko"] || raise
+    end
+
     # Coldsnap had special set for Ice Age reprints
     if deck["set_code"] == "csp"
       return printings["cst"] if printings["cst"]

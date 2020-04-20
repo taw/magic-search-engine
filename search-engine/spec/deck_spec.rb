@@ -94,6 +94,10 @@ describe Deck do
         sets_found.should match_array ["arc", "oarc"]
       when "pc2"
         sets_found.should match_array ["pc2", "opc2"]
+      when "c20"
+        # It looks like it uses IKO basics and a lot of other cards
+        # Not sure if legit
+        sets_found.should match_array ["c20", "iko"]
       else
         sets_found.should eq [set.code]
       end
@@ -109,6 +113,8 @@ describe Deck do
       next if set.code == "pca"
       # Contains some Amonkhet cards
       next if set.code == "e01"
+      # Contains some Ikoria cards
+      next if set.code == "c20"
 
       # All names match both ways
       set_card_names = set.physical_card_names
