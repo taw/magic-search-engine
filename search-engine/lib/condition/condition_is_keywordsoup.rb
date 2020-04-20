@@ -6,6 +6,7 @@ class ConditionIsKeywordsoup < ConditionNickname
       "animus of predation",
       "cairn wanderer",
       "concerted effort",
+      "crystalline giant",
       "death-mask duplicant",
       "greater morphling",
       "majestic myriarch",
