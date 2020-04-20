@@ -8,10 +8,12 @@ class ConditionIsKeywordsoup < ConditionNickname
       "concerted effort",
       "crystalline giant",
       "death-mask duplicant",
+      "kathril, aspect warper",
       "greater morphling",
       "majestic myriarch",
       "odric, lunarch marshal",
       "rayami, first of the fallen",
+      "selective adaptation",
       "soulflayer",
     ]
   end
