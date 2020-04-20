@@ -2,7 +2,7 @@ class CardSet
   attr_reader :name, :code, :alternative_code, :gatherer_code
   attr_reader :block_name, :block_code, :alternative_block_code
   attr_reader :border, :release_date, :printings, :types
-  attr_reader :decks
+  attr_reader :decks, :booster_variants
 
   def initialize(db, data)
     @db = db
@@ -20,6 +20,7 @@ class CardSet
     @online_only   = !!data["online_only"]
     @has_boosters  = !!data["has_boosters"]
     @in_other_boosters = !!data["in_other_boosters"]
+    @booster_variants = data["booster_variants"] || {}
     @custom        = !!data["custom"]
     @funny         = !!data["funny"]
     @decks         = []
