@@ -688,4 +688,23 @@ class CardSheetFactory
   def basic_or_gainland(set_code)
     from_query("e:#{set_code} (t:basic or is:gainland)")
   end
+
+  def alara_premium_basic
+    from_query("b:ala r:basic", 20 + 0 + 0, foil: true)
+  end
+
+  def alara_premium_common
+    from_query("b:ala r:common", 101 + 60 + 60, foil: true)
+  end
+
+  def alara_premium_uncommon
+    from_query("b:ala r:uncommon", 60 + 40 + 40, foil: true)
+  end
+
+  def alara_premium_rare_mythic
+    mix_sheets(
+      [from_query("b:ala r:rare", 53+35+35, foil: true), 2],
+      [from_query("b:ala r:mythic", 15+10+10, foil: true), 1]
+    )
+  end
 end
