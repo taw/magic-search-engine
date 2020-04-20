@@ -672,4 +672,20 @@ class CardSheetFactory
     ]
     CardSheet.new(sheets, weights)
   end
+
+  def nonland_common(set_code)
+    from_query("e:#{set_code} r:common -t:land", kind: ColorBalancedCardSheet)
+  end
+
+  def nongainland_common(set_code)
+    from_query("e:#{set_code} r:common -is:gainland", kind: ColorBalancedCardSheet)
+  end
+
+  def basic_or_common_land(set_code)
+    from_query("e:#{set_code} t:land r<=common")
+  end
+
+  def basic_or_gainland(set_code)
+    from_query("e:#{set_code} (t:basic or is:gainland)")
+  end
 end

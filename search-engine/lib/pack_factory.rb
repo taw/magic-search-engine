@@ -57,8 +57,9 @@ class PackFactory
         @sheet_factory.common_or_basic(set_code)
       when :foil
         @sheet_factory.foil_sheet(set_code)
-      # Various old sheets
-      when :explicit_common, :explicit_uncommon, :explicit_rare, :sfc_common, :sfc_uncommon, :sfc_rare_mythic
+      # Various special sheets
+      when :explicit_common, :explicit_uncommon, :explicit_rare, :sfc_common, :sfc_uncommon, :sfc_rare_mythic,
+        :basic_or_common_land, :basic_or_gainland, :nonland_common, :nongainland_common
         @sheet_factory.send(name, set_code)
       # Various special sheets
       else
@@ -141,14 +142,19 @@ class PackFactory
       "bfz", "ogw",
       "kld", "aer",
       "akh", "hou",
-      "m19",
       "mh1",
       "eld", # ELD and newer sets have multiple nonstandard pack types too
       "thb"
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
-    when "m20", "iko"
-      # THIS IS WRONG
-      build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
+    when "m19"
+      # According to The Collation Project, if pack has DFC (at least nonfoil), it will have checklist card in land slot
+      # We do not simulate this
+      build_pack_with_random_foil(set_code, :foil, :nonland_common, {basic_or_common_land: 1, nonland_common: 10, uncommon: 3, rare_mythic: 1})
+    when "m20"
+      build_pack_with_random_foil(set_code, :foil, :nonland_common, {basic_or_common_land: 1, nonland_common: 10, uncommon: 3, rare_mythic: 1})
+    when "iko"
+      # This works almost like M19/M20, but one of the common lands seems to be on common not on land sheet
+      build_pack_with_random_foil(set_code, :foil, :nongainland_common, {basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
     when "ala"
       build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_mythic: 1})
     when "arb"
