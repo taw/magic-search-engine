@@ -86,6 +86,8 @@ class PatchExcludeFromBoosters < Patch
       number_i > 254
     when "thb"
       number_i > 254
+    when "iko"
+      number_i > 274
     else
       false
     end

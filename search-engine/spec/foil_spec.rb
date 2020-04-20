@@ -131,6 +131,9 @@ describe "Foils" do
         assert_foiling(booster_cards, "both")
         assert_foiling([buy_a_box_promo], "foilonly")
         assert_foiling(misprint, "both")
+      when "iko"
+        booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
+        assert_foiling(booster_cards, "both")
       when "eld"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         buy_a_box_promo = extra_cards.find{|c| c.name == "Kenrith, the Returned King"}
