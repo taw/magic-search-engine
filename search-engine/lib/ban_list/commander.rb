@@ -297,7 +297,13 @@ BanList.for_format("commander") do
 
   change(
     "2020-04-02",
-    "https://articles.starcitygames.com/news/lutri-the-spellchaser-fastest-banned-card-ever/",
+    "https://mtgcommander.net/index.php/2020/04/20/april-2020-rules-update/",
     "Lutri, the Spellchaser" => "banned",
+  )
+
+  change(
+    "2020-04-20",
+    "https://mtgcommander.net/index.php/2020/04/20/april-2020-rules-update/",
+    "Flash" => "banned",
   )
 end

@@ -246,7 +246,6 @@ describe "Banlist" do
     # Vintage-illegal cards are banned.
     # Test of Endurance is banned.
 
-
     # It's format start, not change...
     assert_commander_banlist_changes "October 2002",
       "banned", "Test of Endurance"
