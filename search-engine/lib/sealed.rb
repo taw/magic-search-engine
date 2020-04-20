@@ -10,7 +10,8 @@ class Sealed
         count = 1
         set_code = descriptor
       end
-      pack = factory.for(set_code)
+      set_code, variant = set_code.split("-", 2)
+      pack = factory.for(set_code, variant)
       raise "No pack for set #{set_code}" unless pack
       @packs << [count, pack]
     end
