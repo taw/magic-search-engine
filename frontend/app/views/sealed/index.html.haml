@@ -3,7 +3,7 @@
   - @packs_to_open.each do |set_code, count|
     %div.pack_selection
       %input{type: "number", name: "count[]", value: count, min: 0}
-      = select_tag "set[]", options_for_select(@sets.map{|set| [set.name, set.code]}, set_code)
+      = select_tag "set[]", options_for_select(@booster_types.map{|k,(v,n)| [n,k]}, set_code)
   %button{type: "submit", class: "btn btn-outline-primary"}
     Open packs
 - if @cards.present?

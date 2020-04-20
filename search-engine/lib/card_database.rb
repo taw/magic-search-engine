@@ -99,11 +99,22 @@ class CardDatabase
 
   # Excluding unsupported ones
   # It's a very slow method, so memoize, but better just make it fast
-  def sets_with_packs
-    @sets_with_packs ||= begin
+  #
+  # TODO: Pack should know its name and code to simplify API
+  def supported_booster_types
+    unless @supported_booster_types
       factory = PackFactory.new(self)
-      @sets.values.reverse.select{|set| factory.for(set.code)}
+      @supported_booster_types = {}
+      @sets.values.reverse.each do |set|
+        booster = factory.for(set.code)
+        @supported_booster_types[set.code] = [booster, set.name] if booster
+        set.booster_variants.each do |variant_code, variant_name|
+          booster = factory.for(set.code, variant_code)
+          @supported_booster_types["#{set.code}-#{variant_code}"] = [booster, variant_name] if booster
+        end
+      end
     end
+    @supported_booster_types
   end
 
   def resolve_time(time)
