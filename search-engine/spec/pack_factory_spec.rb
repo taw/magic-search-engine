@@ -952,4 +952,48 @@ describe PackFactory do
       end
     end
   end
+
+  context "Alara Premium" do
+    let(:pack) { factory.for("ala", "premium") }
+    let(:ev) { pack.expected_values }
+    let(:basic) { physical_card("e:#{set_code} r:basic", true) }
+    let(:common) { physical_card("e:#{set_code} r:common", true) }
+    let(:uncommon) { physical_card("e:#{set_code} r:uncommon", true) }
+    let(:rare) { physical_card("e:#{set_code} r:rare", true) }
+    let(:mythic) { physical_card("e:#{set_code} r:mythic", true) }
+
+    context "ALA" do
+      let(:set_code) { "ala" }
+
+      it do
+        ev[basic].should eq Rational(1, 20)
+        ev[common].should eq Rational(10, 221)
+        ev[uncommon].should eq Rational(3, 140)
+        ev[rare].should eq Rational(2, 35 + 2*123)
+        ev[mythic].should eq Rational(1, 35 + 2*123)
+      end
+    end
+
+    context "CON" do
+      let(:set_code) { "con" }
+
+      it do
+        ev[common].should eq Rational(10, 221)
+        ev[uncommon].should eq Rational(3, 140)
+        ev[rare].should eq Rational(2, 35 + 2*123)
+        ev[mythic].should eq Rational(1, 35 + 2*123)
+      end
+    end
+
+    context "ARB" do
+      let(:set_code) { "arb" }
+
+      it do
+        ev[common].should eq Rational(10, 221)
+        ev[uncommon].should eq Rational(3, 140)
+        ev[rare].should eq Rational(2, 35 + 2*123)
+        ev[mythic].should eq Rational(1, 35 + 2*123)
+      end
+    end
+  end
 end

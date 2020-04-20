@@ -72,13 +72,14 @@ class PackFactory
     end
   end
 
-  def for(set_code)
+  def for(set_code, variant=nil)
     set = @db.resolve_edition(set_code)
     raise "Invalid set code #{set_code}" unless set
     set_code = set.code # Normalize
+    booster_code = [set_code, variant].compact.join("-")
 
     # https://mtg.gamepedia.com/Booster_pack
-    case set_code
+    case booster_code
     when "ptk"
       build_pack(set_code, {basic: 2, common: 5, uncommon: 2, rare: 1})
     when "s99", "por", "p02"
@@ -317,6 +318,13 @@ class PackFactory
         mb1_old_frame: 1,
         mb1_rare: 1,
         mb1_playtest: 1,
+      })
+    when "ala-premium"
+      build_pack(set_code, {
+        alara_premium_basic: 1,
+        alara_premium_common: 10,
+        alara_premium_uncommon: 3,
+        alara_premium_rare_mythic: 1,
       })
     else
       # No packs for this set, let caller figure it out
