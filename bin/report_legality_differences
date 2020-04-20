@@ -8,7 +8,7 @@ class ReportLegalityDifferences
 
   def initialize
     @db = CardDatabase.load
-    @mtgjson = JSON.parse(Pathname("AllSets.json").read)
+    @mtgjson = JSON.parse(Pathname("#{__dir__}/../tmp/AllSets.json").read)
   end
 
   # This method mostly just verifies and filters out data
