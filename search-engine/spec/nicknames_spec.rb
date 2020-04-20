@@ -362,9 +362,11 @@ describe "Card nicknames" do
       "Crystalline Giant",
       "Death-Mask Duplicant",
       "Greater Morphling",
+      "Kathril, Aspect Warper",
       "Majestic Myriarch",
       "Odric, Lunarch Marshal",
       "Rayami, First of the Fallen",
+      "Selective Adaptation",
       "Soulflayer"
     assert_search_results "is:keywordsoup",
       *cards_matching{|c|

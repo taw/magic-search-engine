@@ -70,6 +70,7 @@ describe "Sorting" do
 
   it "newall" do
     ordered_search("t:chandra -is:digital -is:promo sort:newall", :name, :set_code).should eq([
+      ["Chandra, Flamecaller", "c20"],
       ["Chandra, Acolyte of Flame", "m20"],
       ["Chandra, Awakened Inferno", "m20"],
       ["Chandra, Flame's Fury", "m20"],
@@ -81,7 +82,6 @@ describe "Sorting" do
       ["Chandra, Pyromaster", "e01"],
       ["Chandra, Pyrogenius", "kld"],
       ["Chandra, Torch of Defiance", "kld"],
-      ["Chandra, Flamecaller", "ogw"],
       ["Chandra Nalaar", "jvc"],
       ["Chandra, the Firebrand", "m13"],
       ["Chandra Ablaze", "zen"],
@@ -175,6 +175,7 @@ describe "Sorting" do
 
   it "set" do
     ordered_search("t:chandra -is:digital -is:promo sort:set", :name, :set_code, :number).should eq([
+      ["Chandra, Flamecaller", "c20", "145"],
       ["Chandra Nalaar", "dd2", "34"],
       ["Chandra, Bold Pyromancer", "dom", "275"],
       ["Chandra, Pyromaster", "e01", "42"],
@@ -186,7 +187,6 @@ describe "Sorting" do
       ["Chandra, Awakened Inferno", "m20", "127"],
       ["Chandra, Novice Pyromancer", "m20", "128"],
       ["Chandra, Flame's Fury", "m20", "294"],
-      ["Chandra, Flamecaller", "ogw", "104"],
       ["Chandra, Roaring Flame", "ori", "135b"],
       ["Chandra, Fire Artisan", "war", "119"],
       ["Chandra Ablaze", "zen", "120"],
