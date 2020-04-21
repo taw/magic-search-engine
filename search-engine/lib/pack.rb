@@ -12,6 +12,18 @@ class Pack
     result
   end
 
+  ## Metadata
+
+  attr_accessor :set, :code, :name
+
+  def set_name
+    @set&.name
+  end
+
+  def set_code
+    @set&.code
+  end
+
   ## Testing support
 
   attr_reader :sheets

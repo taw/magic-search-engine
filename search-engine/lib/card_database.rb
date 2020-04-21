@@ -103,17 +103,15 @@ class CardDatabase
 
   # Excluding unsupported ones
   # It's a very slow method, so memoize, but better just make it fast
-  #
-  # TODO: Pack should know its name and code to simplify API
   def supported_booster_types
     unless @supported_booster_types
       @supported_booster_types = {}
       @sets.values.reverse.each do |set|
         booster = pack_factory.for(set.code)
-        @supported_booster_types[set.code] = [booster, set.name] if booster
+        @supported_booster_types[booster.code] = booster if booster
         set.booster_variants.each do |variant_code, variant_name|
           booster = pack_factory.for(set.code, variant_code)
-          @supported_booster_types["#{set.code}-#{variant_code}"] = [booster, variant_name] if booster
+          @supported_booster_types[booster.code] = booster if booster
         end
       end
     end

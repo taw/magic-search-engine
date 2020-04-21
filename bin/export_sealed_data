@@ -27,11 +27,15 @@ class ExportSealedData
   end
 
   def flatten_pack(pack)
-    if pack.is_a?(WeightedPack)
+    result = if pack.is_a?(WeightedPack)
       pack.flatten_weighted_pack
     else
       WeightedPack.new(pack => 1)
     end
+    result.set = pack.set
+    result.code = pack.code
+    result.name = pack.name
+    result
   end
 
   def extract_sheets(pack)
@@ -100,17 +104,15 @@ class ExportSealedData
 
   def basic_data
     result = []
-    @db.supported_booster_types.each do |booster_code, (pack, booster_name)|
-      pack = flatten_pack(pack)
-      sheets = extract_sheets(pack)
-      set_code = booster_code.split("-",2)[0]
-      set_name = @db.sets[set_code].name
+    @db.supported_booster_types.each do |booster_code, booster|
+      booster = flatten_pack(booster)
+      sheets = extract_sheets(booster)
       result << {
-        name: booster_name,
-        code: booster_code,
-        set_code: set_code,
-        set_name: set_name,
-        boosters: pack.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
+        name: booster.name,
+        code: booster.code,
+        set_code: booster.set_code,
+        set_name: booster.set_name,
+        boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
         sheets: serialize_sheets(sheets, false),
       }
     end
@@ -119,17 +121,15 @@ class ExportSealedData
 
   def extended_data
     result = []
-    @db.supported_booster_types.each do |booster_code, (pack, booster_name)|
-      pack = flatten_pack(pack)
-      sheets = extract_sheets(pack)
-      set_code = booster_code.split("-",2)[0]
-      set_name = @db.sets[set_code].name
+    @db.supported_booster_types.each do |booster_code, booster|
+      booster = flatten_pack(booster)
+      sheets = extract_sheets(booster)
       result << {
-        name: booster_name,
-        code: booster_code,
-        set_code: set_code,
-        set_name: set_name,
-        boosters: pack.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
+        name: booster.name,
+        code: booster.code,
+        set_code: booster.set_code,
+        set_name: booster.set_name,
+        boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
         sheets: serialize_sheets(sheets, true),
       }
     end
