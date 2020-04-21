@@ -43,31 +43,16 @@ class PackFactory
 
   private def build_sheet(set_code, name)
     @sheet_cache[[set_code, name]] ||= begin
-      case name
-      when :common
-        @sheet_factory.rarity(set_code, name.to_s, kind: ColorBalancedCardSheet)
-      when :common_unbalanced
-        @sheet_factory.rarity(set_code, "common")
-      when :basic, :uncommon, :rare
-        @sheet_factory.rarity(set_code, name.to_s)
-      when :rare_mythic
-        @sheet_factory.rare_mythic(set_code)
-      # In some old sets commons and basics were printed on shared sheet
-      when :common_or_basic
-        @sheet_factory.common_or_basic(set_code)
-      when :foil
-        @sheet_factory.foil_sheet(set_code)
-      # Various special sheets
-      when :explicit_common, :explicit_uncommon, :explicit_rare, :sfc_common, :sfc_uncommon, :sfc_rare_mythic,
-        :basic_or_common_land, :basic_or_gainland, :nonland_common, :nongainland_common
-        @sheet_factory.send(name, set_code)
-      # Various special sheets
-      else
-        if @sheet_factory.respond_to?(name)
+      if @sheet_factory.respond_to?(name)
+        # .arity and keyword arguments are weird together
+        arity = @sheet_factory.method(name).arity
+        if arity == 0 or arity == -1
           @sheet_factory.send(name)
         else
-          raise "Unknown sheet type #{name}"
+          @sheet_factory.send(name, set_code)
         end
+      else
+        raise "Unknown sheet type #{name}"
       end
     end
   end

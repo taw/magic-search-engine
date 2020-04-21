@@ -40,7 +40,7 @@ describe CardSheet do
     end
 
     context "typical set - foil sheet" do
-      let(:foil_sheet) { factory.foil_sheet("m10") }
+      let(:foil_sheet) { factory.foil("m10") }
       let(:mythic_card) { physical_card("e:m10 baneslayer angel", true) }
       let(:rare_card) { physical_card("e:m10 birds of paradise", true) }
       let(:uncommon_card) { physical_card("e:m10 acidic slime", true) }
