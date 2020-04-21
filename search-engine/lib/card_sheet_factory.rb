@@ -40,7 +40,7 @@ class CardSheetFactory
   # These numbers could be totally wrong. I base them on a million guesses by various internet commenters.
   #
   # Maro says basic foils and common foils are equally likely [https://twitter.com/maro254/status/938830320094216192]
-  def foil_sheet(set_code)
+  def foil(set_code)
     sheets = [rare_mythic(set_code, foil: true), rarity(set_code, "uncommon", foil: true)]
     weights = [4, 8]
 
@@ -72,6 +72,26 @@ class CardSheetFactory
     cards = cards.select{|c| c.rarity == "basic" or c.rarity == "common"}
     return nil if cards.empty?
     kind.new(cards)
+  end
+
+  def common(set_code)
+    rarity(set_code, "common", kind: ColorBalancedCardSheet)
+  end
+
+  def common_unbalanced(set_code)
+    rarity(set_code, "common")
+  end
+
+  def basic(set_code)
+    rarity(set_code, "basic")
+  end
+
+  def uncommon(set_code)
+    rarity(set_code, "uncommon")
+  end
+
+  def rare(set_code)
+    rarity(set_code, "rare")
   end
 
   # If rare or mythic sheet contains subsheets
