@@ -29,6 +29,7 @@ end
 desc "Update mtgjson database"
 task "mtgjson:fetch" do
   unless Pathname("tmp/AllSets.json").exist?
+    Pathname("tmp").mkpath
     sh "wget", "https://www.mtgjson.com/json/AllSets.json", "-O", "tmp/AllSets.json"
   end
   if Pathname("data/sets-incoming").exist?
