@@ -42,6 +42,7 @@ class FormatVintage < Format
       "thp2",
       "thp3",
       "ugl",
+      "und",
       "unh",
       "ust",
       "wc97",
