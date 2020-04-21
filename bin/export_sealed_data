@@ -8,7 +8,6 @@ class ExportSealedData
 
   def initialize(output_folder)
     @db = CardDatabase.load
-    @factory = PackFactory.new(@db)
     @output_folder = Pathname(output_folder)
     load_uuids
   end
@@ -37,7 +36,7 @@ class ExportSealedData
 
   def extract_sheets(pack)
     sheets = pack.packs.keys.map(&:sheets).flat_map(&:keys)
-    sheets.map{|s| [s, @factory.sheet_cache.invert[s].join("_")] }.to_h
+    sheets.map{|s| [s, @db.pack_factory.sheet_cache.invert[s].join("_")] }.to_h
   end
 
   def serialize_subpack(pack, weight, sheets)
@@ -59,8 +58,6 @@ class ExportSealedData
 
     if extended
       cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
-        name = "#{e.set_code}:#{e.number}"
-        name = "#{name}:foil" if e.foil
         {
           set: e.set_code,
           number: e.number,
@@ -103,13 +100,16 @@ class ExportSealedData
 
   def basic_data
     result = []
-    @db.sets_with_packs.each do |set|
-      pack = @factory.for(set.code)
+    @db.supported_booster_types.each do |booster_code, (pack, booster_name)|
       pack = flatten_pack(pack)
       sheets = extract_sheets(pack)
+      set_code = booster_code.split("-",2)[0]
+      set_name = @db.sets[set_code].name
       result << {
-        name: set.name,
-        code: set.code,
+        name: booster_name,
+        code: booster_code,
+        set_code: set_code,
+        set_name: set_name,
         boosters: pack.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
         sheets: serialize_sheets(sheets, false),
       }
@@ -119,13 +119,16 @@ class ExportSealedData
 
   def extended_data
     result = []
-    @db.sets_with_packs.each do |set|
-      pack = @factory.for(set.code)
+    @db.supported_booster_types.each do |booster_code, (pack, booster_name)|
       pack = flatten_pack(pack)
       sheets = extract_sheets(pack)
+      set_code = booster_code.split("-",2)[0]
+      set_name = @db.sets[set_code].name
       result << {
-        name: set.name,
-        code: set.code,
+        name: booster_name,
+        code: booster_code,
+        set_code: set_code,
+        set_name: set_name,
         boosters: pack.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
         sheets: serialize_sheets(sheets, true),
       }
