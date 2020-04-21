@@ -79,7 +79,7 @@ class PackFactory
     booster_code = [set_code, variant].compact.join("-")
 
     # https://mtg.gamepedia.com/Booster_pack
-    case booster_code
+    pack = case booster_code
     when "ptk"
       build_pack(set_code, {basic: 2, common: 5, uncommon: 2, rare: 1})
     when "s99", "por", "p02"
@@ -331,5 +331,16 @@ class PackFactory
       # Specs make sure right specs hit this
       nil
     end
+
+    if pack
+      pack.set = set
+      pack.code = booster_code
+      if variant
+        pack.name = set.booster_variants[variant]
+      else
+        pack.name = set.name
+      end
+    end
+    pack
   end
 end
