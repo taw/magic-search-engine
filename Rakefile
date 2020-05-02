@@ -101,6 +101,11 @@ task "pics:missing" do
   sh "./bin/cards_without_pics"
 end
 
+desc "List cards with duplicated pictures (except where valid)"
+task "pics:dup" do
+  sh "./bin/cards_with_dup_pics"
+end
+
 desc "Clanup Rails files"
 task "clean" do
   [

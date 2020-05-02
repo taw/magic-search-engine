@@ -1,0 +1,77 @@
+#!/usr/bin/env ruby
+
+require "pathname-glob"
+require_relative "../search-engine/lib/card_database"
+
+class Pathname
+  def sha1
+    Digest::SHA1.hexdigest(read)
+  end
+end
+
+class CardPrinting
+  def path_lq
+    Pathname("frontend/public/cards/#{set_code}/#{number}.png")
+  end
+
+  def path_lq_sha1
+    path_lq.sha1 if path_lq.exist?
+  end
+
+  def path_hq
+    Pathname("frontend/public/cards_hq/#{set_code}/#{number}.png")
+  end
+
+  def path_hq_sha1
+    path_hq.sha1 if path_hq.exist?
+  end
+end
+
+class CardsWithBadDfcPics
+  attr_reader :db
+
+  def initialize
+    @db = CardDatabase.load
+  end
+
+  def lq_dups
+    @lq_dups ||= db
+      .printings
+      .group_by(&:path_lq_sha1)
+      .select{|k,v| k and v.size > 1}
+  end
+
+  def hq_dups
+    @hq_dups ||= db
+      .printings
+      .group_by(&:path_hq_sha1)
+      .select{|k,v| k and v.size > 1}
+  end
+
+  def evaluate_dup(kind, pics)
+    if pics.map{|c| PhysicalCard.for(c) }.uniq.size > 1
+      bad = pics.map{|c| "#{c.set_code}/#{c.number} #{c.name}"}.join(", ")
+      fail_type = "duplicate for unrelated cards"
+    elsif  pics.all?(&:front?)
+      # This is OK!
+      # split/aftermath/etc.
+      return
+    else
+      bad = pics.map{|c| "#{c.set_code}/#{c.number} #{c.name}"}.join(", ")
+      fail_type = "duplicate for DFC"
+    end
+    puts "#{kind} #{fail_type}: #{bad}"
+  end
+
+  def call
+    lq_dups.each do |_, pics|
+      evaluate_dup("LQ", pics)
+    end
+
+    hq_dups.each do |_, pics|
+      evaluate_dup("HQ", pics)
+    end
+  end
+end
+
+CardsWithBadDfcPics.new.call
