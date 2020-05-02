@@ -56,7 +56,7 @@ class PatchFoiling < Patch
 
       # By set
       case set_code
-      when "ced", "cei"
+      when "ced", "cei", "mb1"
         card["indexer_foiling"] = "nonfoil"
       when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "plpa", "pjgp", "ppro", "pgtw", "pwor", "prel", "pfnm", "pwos", "ppre", "fmb1"
         card["indexer_foiling"] = "foilonly"

@@ -144,6 +144,11 @@ class PatchMtgjsonVersions < Patch
         card["flavor"] = card["flavor"].gsub(%Q[" —], %Q["\n—]).gsub(%Q[" "], %Q["\n"])
       end
 
+      # mtgjson started using * to indicate italics? annoying
+      if card["flavor"]
+        card["flavor"] = card["flavor"].gsub("*", "")
+      end
+
       if card["rulings"]
         rulings_dates = card["rulings"].map{|x| x["date"] }
         unless rulings_dates.sort == rulings_dates
