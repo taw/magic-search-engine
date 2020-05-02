@@ -3,6 +3,12 @@
 require "pathname-glob"
 require_relative "../search-engine/lib/card_database"
 
+class Array
+  def all_same?
+    uniq.size == 1
+  end
+end
+
 class Pathname
   def sha1
     Digest::SHA1.hexdigest(read)
@@ -49,17 +55,22 @@ class CardsWithBadDfcPics
   end
 
   def evaluate_dup(kind, pics)
-    if pics.map{|c| PhysicalCard.for(c) }.uniq.size > 1
+    if pics.map{|c| PhysicalCard.for(c) }.all_same?
+      # split/aftermath/etc.
+      return if pics.all?(&:front?)
+
+      fail_type = "duplicate for DFC"
+    else
+      # They hae same fronts, different backs
+      if pics.map(&:set_code).sort == ["ced", "cei"] and pics.map(&:name).all_same? and pics.map(&:number).all_same?
+        return
+      end
+
       bad = pics.map{|c| "#{c.set_code}/#{c.number} #{c.name}"}.join(", ")
       fail_type = "duplicate for unrelated cards"
-    elsif  pics.all?(&:front?)
-      # This is OK!
-      # split/aftermath/etc.
-      return
-    else
-      bad = pics.map{|c| "#{c.set_code}/#{c.number} #{c.name}"}.join(", ")
-      fail_type = "duplicate for DFC"
     end
+
+    bad = pics.map{|c| "#{c.set_code}/#{c.number} #{c.name}"}.join(", ")
     puts "#{kind} #{fail_type}: #{bad}"
   end
 
