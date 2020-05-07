@@ -192,6 +192,14 @@ describe "QueryParser" do
     assert_search_parse "w:abzan", "watermark:abzan"
   end
 
+  it "++" do
+    assert_search_parse "++ pow=3 tou=2 c:g", "pow=3 tou=2 c:g ++"
+    assert_search_parse "++ pow=3 tou=2 c:g", "pow=3 ++ tou=2 c:g"
+    assert_search_parse "++ c:g //", "c:g // ++"
+    # FIXME: This is a bug, just documenting so it can get fixed someday
+    proc { Query.new("c:g ++ //") }.should raise_error(/Unknown token type/)
+  end
+
   it "query_to_s" do
     query_examples = (Pathname(__dir__) + "query_examples.txt").readlines.map(&:chomp)
 
