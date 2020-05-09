@@ -3,27 +3,30 @@
 require_relative "../search-engine/lib/card_database"
 require "memoist"
 
-class ExportSealedData
-  include Memoist
-
-  def initialize(output_folder)
-    @db = CardDatabase.load
-    @output_folder = Pathname(output_folder)
-    load_uuids
+class ExportFormatter
+  def initialize(exporter)
+    @db = exporter.db
+    @uuids = exporter.uuids
   end
 
-  def uuid_file_path
-    Pathname(__dir__) + "../index/uuids.txt"
+  def uuid_for(set_code, number)
+    @uuids.fetch(set_code).fetch(number)
   end
 
-  def load_uuids
-    @uuids = {}
-    uuid_file_path.each_line do |line|
-      s, n, u, _ = line.chomp.split("\t")
-      @uuids[s] ||= {}
-      raise if @uuids[s][n]
-      @uuids[s][n] = u
-    end
+  def integerize_evs(ev)
+    # Normalize rationals to weights
+    lcm = ev.values.map(&:denominator).inject(&:lcm)
+    ev.map{|k,v|
+      vv = v*lcm
+      raise unless vv.to_i == vv
+      [k, vv.to_i]
+    }.to_h
+  end
+
+  def serialize_sheets(sheets)
+    sheets.map{|sheet, id|
+      [id, serialize_sheet(sheet)]
+    }.to_h
   end
 
   def flatten_pack(pack)
@@ -52,21 +55,13 @@ class ExportSealedData
     }
   end
 
-  def uuid_for(set_code, number)
-    @uuids.fetch(set_code).fetch(number)
+  def call(path)
+    path.write JSON.pretty_generate(data)
   end
+end
 
-  def integerize_evs(ev)
-    # Normalize rationals to weights
-    lcm = ev.values.map(&:denominator).inject(&:lcm)
-    ev.map{|k,v|
-      vv = v*lcm
-      raise unless vv.to_i == vv
-      [k, vv.to_i]
-    }.to_h
-  end
-
-  def serialize_sheet_basic(sheet)
+class ExportFormatterBasic < ExportFormatter
+  def serialize_sheet(sheet)
     ev = integerize_evs sheet.probabilities
 
     cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
@@ -74,7 +69,6 @@ class ExportSealedData
       name = "#{name}:foil" if e.foil
       [name, w]
     end.sort.to_h
-    total_weight =
 
     {
       partner: sheet.is_a?(PartnerCardSheet) ? true : nil,
@@ -84,7 +78,26 @@ class ExportSealedData
     }.compact
   end
 
-  def serialize_sheet_extended(sheet)
+  def data
+    result = []
+    @db.supported_booster_types.each do |booster_code, booster|
+      booster = flatten_pack(booster)
+      sheets = extract_sheets(booster)
+      result << {
+        name: booster.name,
+        code: booster.code,
+        set_code: booster.set_code,
+        set_name: booster.set_name,
+        boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
+        sheets: serialize_sheets(sheets),
+      }
+    end
+    result
+  end
+end
+
+class ExportFormatterExtended < ExportFormatter
+  def serialize_sheet(sheet)
     ev = integerize_evs sheet.probabilities
 
     cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
@@ -96,7 +109,6 @@ class ExportSealedData
         uuid: uuid_for(e.set_code, e.number)
       }
     end.sort_by{|x| [x[:set_code], x[:number].to_i, x[:number]] }
-    total_weight =
 
     {
       partner: sheet.is_a?(PartnerCardSheet) ? true : nil,
@@ -106,22 +118,65 @@ class ExportSealedData
     }.compact
   end
 
-  def serialize_sheets_basic(sheets)
-    sheets.map{|sheet, id|
-      [id, serialize_sheet_basic(sheet)]
-    }.to_h
+  def data
+    result = []
+    @db.supported_booster_types.each do |booster_code, booster|
+      booster = flatten_pack(booster)
+      sheets = extract_sheets(booster)
+      result << {
+        name: booster.name,
+        code: booster.code,
+        set_code: booster.set_code,
+        set_name: booster.set_name,
+        boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
+        sheets: serialize_sheets(sheets),
+      }
+    end
+    result
+  end
+end
+
+class ExportFormatterExperimental < ExportFormatterExtended
+  def data
+    result = []
+    @db.supported_booster_types.each do |booster_code, booster|
+      booster = flatten_pack(booster)
+      sheets = extract_sheets(booster)
+      result << {
+        name: booster.name,
+        code: booster.code.upcase,
+        setCode: booster.set_code.upcase,
+        setName: booster.set_name,
+        boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
+        sheets: serialize_sheets(sheets),
+      }
+    end
+    result
+  end
+end
+
+class ExportSealedData
+  include Memoist
+  attr_reader :db, :uuids
+
+  def initialize(output_folder)
+    @db = CardDatabase.load
+    @output_folder = Pathname(output_folder)
+    load_uuids
   end
 
-  def serialize_sheets_extended(sheets)
-    sheets.map{|sheet, id|
-      [id, serialize_sheet_extended(sheet)]
-    }.to_h
+  def uuid_file_path
+    Pathname(__dir__) + "../index/uuids.txt"
   end
 
-  def serialize_sheets_experimental(sheets)
-    sheets.map{|sheet, id|
-      [id, serialize_sheet_extended(sheet)]
-    }.to_h
+  def load_uuids
+    @uuids = {}
+    uuid_file_path.each_line do |line|
+      s, n, u, _ = line.chomp.split("\t")
+      @uuids[s] ||= {}
+      raise if @uuids[s][n]
+      @uuids[s][n] = u
+    end
   end
 
   def basic_output_path
@@ -136,61 +191,10 @@ class ExportSealedData
     @output_folder + "experimental_export_for_mtgjson.json"
   end
 
-  def basic_data
-    result = []
-    @db.supported_booster_types.each do |booster_code, booster|
-      booster = flatten_pack(booster)
-      sheets = extract_sheets(booster)
-      result << {
-        name: booster.name,
-        code: booster.code,
-        set_code: booster.set_code,
-        set_name: booster.set_name,
-        boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
-        sheets: serialize_sheets_basic(sheets),
-      }
-    end
-    result
-  end
-
-  def extended_data
-    result = []
-    @db.supported_booster_types.each do |booster_code, booster|
-      booster = flatten_pack(booster)
-      sheets = extract_sheets(booster)
-      result << {
-        name: booster.name,
-        code: booster.code,
-        set_code: booster.set_code,
-        set_name: booster.set_name,
-        boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
-        sheets: serialize_sheets_extended(sheets),
-      }
-    end
-    result
-  end
-
-  def experimental_data
-    result = []
-    @db.supported_booster_types.each do |booster_code, booster|
-      booster = flatten_pack(booster)
-      sheets = extract_sheets(booster)
-      result << {
-        name: booster.name,
-        code: booster.code.upcase,
-        setCode: booster.set_code.upcase,
-        setName: booster.set_name,
-        boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
-        sheets: serialize_sheets_experimental(sheets),
-      }
-    end
-    result
-  end
-
   def call
-    basic_output_path.write JSON.pretty_generate(basic_data)
-    extended_output_path.write JSON.pretty_generate(extended_data)
-    experimental_output_path.write JSON.pretty_generate(experimental_data)
+    ExportFormatterBasic.new(self).call(basic_output_path)
+    ExportFormatterExtended.new(self).call(extended_output_path)
+    ExportFormatterExperimental.new(self).call(experimental_output_path)
   end
 end
 
