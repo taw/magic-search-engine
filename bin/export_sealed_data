@@ -40,7 +40,9 @@ class ExportSealedData
 
   def extract_sheets(pack)
     sheets = pack.packs.keys.map(&:sheets).flat_map(&:keys)
-    sheets.map{|s| [s, @db.pack_factory.sheet_cache.invert[s].join("_")] }.to_h
+    sheets.map{|s|
+      [s, @db.pack_factory.sheet_cache.invert[s].join("_")]
+    }.to_h
   end
 
   def serialize_subpack(pack, weight, sheets)
@@ -54,43 +56,71 @@ class ExportSealedData
     @uuids.fetch(set_code).fetch(number)
   end
 
-  def serialize_sheet(sheet, extended)
-    ev = sheet.probabilities
+  def integerize_evs(ev)
     # Normalize rationals to weights
     lcm = ev.values.map(&:denominator).inject(&:lcm)
-    ev = ev.map{|k,v| vv = v*lcm; raise unless vv.to_i == vv; [k, vv.to_i] }.to_h
+    ev.map{|k,v|
+      vv = v*lcm
+      raise unless vv.to_i == vv
+      [k, vv.to_i]
+    }.to_h
+  end
 
-    if extended
-      cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
-        {
-          set: e.set_code,
-          number: e.number,
-          weight: w,
-          foil: e.foil,
-          uuid: uuid_for(e.set_code, e.number)
-        }
-      end.sort_by{|x| [x[:set_code], x[:number].to_i, x[:number]] }
-      total_weight = cards.map{|x| x[:weight]}.sum
-    else
-      cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
-        name = "#{e.set_code}:#{e.number}"
-        name = "#{name}:foil" if e.foil
-        [name, w]
-      end.sort.to_h
-      total_weight = cards.values.sum
-    end
+  def serialize_sheet_basic(sheet)
+    ev = integerize_evs sheet.probabilities
+
+    cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
+      name = "#{e.set_code}:#{e.number}"
+      name = "#{name}:foil" if e.foil
+      [name, w]
+    end.sort.to_h
+    total_weight =
 
     {
       partner: sheet.is_a?(PartnerCardSheet) ? true : nil,
       balance_colors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
-      total_weight: total_weight,
+      total_weight: cards.values.sum,
       cards: cards,
     }.compact
   end
 
-  def serialize_sheets(sheets, extended)
+  def serialize_sheet_extended(sheet)
+    ev = integerize_evs sheet.probabilities
+
+    cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
+      {
+        set: e.set_code,
+        number: e.number,
+        weight: w,
+        foil: e.foil,
+        uuid: uuid_for(e.set_code, e.number)
+      }
+    end.sort_by{|x| [x[:set_code], x[:number].to_i, x[:number]] }
+    total_weight =
+
+    {
+      partner: sheet.is_a?(PartnerCardSheet) ? true : nil,
+      balance_colors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
+      total_weight: cards.map{|x| x[:weight]}.sum,
+      cards: cards,
+    }.compact
+  end
+
+  def serialize_sheets_basic(sheets)
     sheets.map{|sheet, id|
-      [id, serialize_sheet(sheet, extended)]
+      [id, serialize_sheet_basic(sheet)]
+    }.to_h
+  end
+
+  def serialize_sheets_extended(sheets)
+    sheets.map{|sheet, id|
+      [id, serialize_sheet_extended(sheet)]
+    }.to_h
+  end
+
+  def serialize_sheets_experimental(sheets)
+    sheets.map{|sheet, id|
+      [id, serialize_sheet_extended(sheet)]
     }.to_h
   end
 
@@ -100,6 +130,10 @@ class ExportSealedData
 
   def extended_output_path
     @output_folder + "sealed_extended_data.json"
+  end
+
+  def experimental_output_path
+    @output_folder + "experimental_export_for_mtgjson.json"
   end
 
   def basic_data
@@ -113,7 +147,7 @@ class ExportSealedData
         set_code: booster.set_code,
         set_name: booster.set_name,
         boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
-        sheets: serialize_sheets(sheets, false),
+        sheets: serialize_sheets_basic(sheets),
       }
     end
     result
@@ -130,7 +164,24 @@ class ExportSealedData
         set_code: booster.set_code,
         set_name: booster.set_name,
         boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
-        sheets: serialize_sheets(sheets, true),
+        sheets: serialize_sheets_extended(sheets),
+      }
+    end
+    result
+  end
+
+  def experimental_data
+    result = []
+    @db.supported_booster_types.each do |booster_code, booster|
+      booster = flatten_pack(booster)
+      sheets = extract_sheets(booster)
+      result << {
+        name: booster.name,
+        code: booster.code.upcase,
+        setCode: booster.set_code.upcase,
+        setName: booster.set_name,
+        boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
+        sheets: serialize_sheets_experimental(sheets),
       }
     end
     result
@@ -139,6 +190,7 @@ class ExportSealedData
   def call
     basic_output_path.write JSON.pretty_generate(basic_data)
     extended_output_path.write JSON.pretty_generate(extended_data)
+    experimental_output_path.write JSON.pretty_generate(experimental_data)
   end
 end
 
