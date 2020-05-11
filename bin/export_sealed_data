@@ -3,6 +3,12 @@
 require_relative "../search-engine/lib/card_database"
 require "memoist"
 
+class String
+  def camelize
+    gsub(/_([a-z])/) { $1.upcase }
+  end
+end
+
 class ExportFormatter
   def initialize(exporter)
     @db = exporter.db
@@ -17,7 +23,7 @@ class ExportFormatter
     # Normalize rationals to weights
     lcm = ev.values.map(&:denominator).inject(&:lcm)
     ev.map{|k,v|
-      vv = v*lcm
+      vv = v * lcm
       raise unless vv.to_i == vv
       [k, vv.to_i]
     }.to_h
@@ -64,7 +70,7 @@ class ExportFormatterBasic < ExportFormatter
   def serialize_sheet(sheet)
     ev = integerize_evs sheet.probabilities
 
-    cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
+    cards = ev.map do |e,w|
       name = "#{e.set_code}:#{e.number}"
       name = "#{name}:foil" if e.foil
       [name, w]
@@ -100,7 +106,7 @@ class ExportFormatterExtended < ExportFormatter
   def serialize_sheet(sheet)
     ev = integerize_evs sheet.probabilities
 
-    cards = ev.sort_by{|e,w| [e.set_code, e.number, e.foil ? 0 : 1]}.map do |e,w|
+    cards = ev.map do |e,w|
       {
         set: e.set_code,
         number: e.number,
@@ -108,7 +114,7 @@ class ExportFormatterExtended < ExportFormatter
         foil: e.foil,
         uuid: uuid_for(e.set_code, e.number)
       }
-    end.sort_by{|x| [x[:set_code], x[:number].to_i, x[:number]] }
+    end.sort_by{|x| [x[:set], x[:number].to_i, x[:number], x[:foil] ? 0 : 1] }
 
     {
       partner: sheet.is_a?(PartnerCardSheet) ? true : nil,
@@ -136,7 +142,26 @@ class ExportFormatterExtended < ExportFormatter
   end
 end
 
-class ExportFormatterExperimental < ExportFormatterExtended
+class ExportFormatterExperimental < ExportFormatter
+  def serialize_sheet(sheet)
+    ev = integerize_evs sheet.probabilities
+
+    cards = ev.map do |e,w|
+      {
+        weight: w,
+        foil: e.foil,
+        uuid: uuid_for(e.set_code, e.number)
+      }
+    end.sort_by{|x| [x[:uuid], x[:foil] ? 0 : 1] }
+
+    {
+      partner: sheet.is_a?(PartnerCardSheet) ? true : nil,
+      balanceColors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
+      totalWeight: cards.map{|x| x[:weight]}.sum,
+      cards: cards,
+    }.compact
+  end
+
   def data
     result = []
     @db.supported_booster_types.each do |booster_code, booster|
