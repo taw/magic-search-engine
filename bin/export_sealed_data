@@ -5,7 +5,13 @@ require "memoist"
 
 class String
   def camelize
-    gsub(/_([a-z])/) { $1.upcase }
+    gsub(/_([a-zA-Z0-9])/) { $1.upcase }
+  end
+end
+
+class Array
+  def all_different?
+    uniq.size == size
   end
 end
 
@@ -94,7 +100,9 @@ class ExportFormatterBasic < ExportFormatter
         code: booster.code,
         set_code: booster.set_code,
         set_name: booster.set_name,
-        boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
+        boosters: booster.packs.map{|subpack, weight|
+          serialize_subpack(subpack, weight, sheets)
+        },
         sheets: serialize_sheets(sheets),
       }
     end
@@ -134,7 +142,9 @@ class ExportFormatterExtended < ExportFormatter
         code: booster.code,
         set_code: booster.set_code,
         set_name: booster.set_name,
-        boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
+        boosters: booster.packs.map{|subpack, weight|
+          serialize_subpack(subpack, weight, sheets)
+        },
         sheets: serialize_sheets(sheets),
       }
     end
@@ -146,20 +156,38 @@ class ExportFormatterExperimental < ExportFormatter
   def serialize_sheet(sheet)
     ev = integerize_evs sheet.probabilities
 
-    cards = ev.map do |e,w|
-      {
-        weight: w,
-        foil: e.foil,
-        uuid: uuid_for(e.set_code, e.number)
-      }
-    end.sort_by{|x| [x[:uuid], x[:foil] ? 0 : 1] }
+    cards = ev.map do |e, w|
+      [
+        uuid_for(e.set_code, e.number),
+        {
+          foil: e.foil,
+          weight: w,
+        }
+      ]
+    end.sort_by(&:first)
+
+
+    unless cards.map(&:first).all_different?
+      raise "UUID not unique (foil and nonfoil on same sheet)"
+    end
+    cards = cards.to_h
 
     {
       partner: sheet.is_a?(PartnerCardSheet) ? true : nil,
       balanceColors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
-      totalWeight: cards.map{|x| x[:weight]}.sum,
+      totalWeight: cards.values.map{|x| x[:weight]}.sum,
       cards: cards,
     }.compact
+  end
+
+  def serialize_subpack(pack, weight, sheets)
+    result = super
+    result[:sheets] = result[:sheets].transform_keys(&:camelize)
+    result
+  end
+
+  def serialize_sheets(sheets)
+    super.transform_keys(&:camelize)
   end
 
   def data
@@ -172,7 +200,9 @@ class ExportFormatterExperimental < ExportFormatter
         code: booster.code.upcase,
         setCode: booster.set_code.upcase,
         setName: booster.set_name,
-        boosters: booster.packs.map{|subpack, weight| serialize_subpack(subpack, weight, sheets) },
+        boosters: booster.packs.map{|subpack, weight|
+          serialize_subpack(subpack, weight, sheets)
+        },
         sheets: serialize_sheets(sheets),
       }
     end
