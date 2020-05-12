@@ -377,14 +377,17 @@ class CardSheetFactory
   end
 
   def vma_special
+    from_query("e:vma r:special", 9)
+  end
+
+  def vma_foil
     # https://magic.wizards.com/en/articles/archive/arcana/vintage-masterss-special-rarity-2014-05-12-0
-    power_9 = from_query("e:vma r:special", 9)
     vma_foil_rare = mix_sheets(
       [rarity("vma", "special", foil: true), 1],
       [rarity("vma", "mythic", foil: true), 2],
       [rarity("vma", "rare", foil: true), 4],
     )
-    vma_foil = CardSheet.new(
+    CardSheet.new(
       [
         vma_foil_rare,
         rarity("vma", "uncommon", foil: true),
@@ -392,7 +395,6 @@ class CardSheetFactory
       ],
       [1, 2, 5],
     )
-    CardSheet.new([power_9, vma_foil], [9, 471])
   end
 
   def soi_dfc_common_uncommon
