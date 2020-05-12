@@ -170,7 +170,11 @@ class PackFactory
       # 8 commons, 2 uncommons, 1 rare, 3 timeshifted commons, and 1 uncommon or rare timeshifted card.
       build_pack_with_random_foil(set_code, :foil, :pc_common, {pc_common: 8, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1})
     when "vma"
-      build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, vma_special: 1})
+      WeightedPack.new(
+        build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, vma_special: 1}) => 9,
+        build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, vma_foil: 1}) => 471,
+      )
+      # CardSheet.new([power_9, vma_foil], [9, 471])
     when "soi"
       # Assume foil rate (1:4) and rare/mythic dfc rates (1:8) are independent
       # They probably aren't
