@@ -166,7 +166,6 @@ class ExportFormatterExperimental < ExportFormatter
       ]
     end.sort_by(&:first)
 
-
     unless cards.map(&:first).all_different?
       raise "UUID not unique (foil and nonfoil on same sheet)"
     end
