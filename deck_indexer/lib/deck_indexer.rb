@@ -139,13 +139,39 @@ class DeckIndexer
     # Not unique, but we hopefully got the set right, so we mostly don't care
     # At some point we should support disambiguation hints upstream
 
-    # Avoid full art basics, precons generally don't have them
-    # They all happen to be before non-full arts in those sets:
-    if %w[bfz ogw akh hou].include?(printings[0][0])
-      return printings[-1]
+    printings = printings.sort_by{|sc,c| [sc,c["number"].to_i, c["number"]] }
+
+    allowed_conflicts = [
+      "Plains",
+      "Island",
+      "Swamp",
+      "Mountain",
+      "Forest",
+    ]
+
+    numbers = printings.map{|_, c| c["number"]}
+
+    # Basics
+    if allowed_conflicts.include?(card["name"])
+      # Avoid full art basics, precons generally don't have them
+      # They all happen to be before non-full arts in those sets:
+      if %w[bfz ogw akh hou].include?(printings[0][0])
+        return printings[-1]
+      end
+
+      return printings[0]
     end
 
-    # Otherwise just get first one
+    # If there are variant cards († or ★), choose non-variant version
+    # If this needs to be reversed, mark it explicitly in the data
+    if numbers.map(&:to_i).uniq.size == 1
+      base_number = numbers.map(&:to_i).uniq[0].to_s
+      base_variant = printings.find{|_, c| c["number"] == base_number}
+      return base_variant if base_variant
+    end
+
+    # Otherwise just get one with lowest number, but print a warning
+    warn "#{deck["set_code"]} #{deck["name"]}: Cannot resolve #{card["name"]}. Candidates are: #{printings.map{|c| [c[0], "/", c[1]["number"]].join }.join(", ")}"
     printings[0]
   end
 
