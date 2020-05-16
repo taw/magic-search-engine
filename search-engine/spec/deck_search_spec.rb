@@ -16,29 +16,25 @@ describe "deck: search" do
 
   it "Each deck can be searched by set code and slug" do
     db.decks.each do |deck|
-      cond = ConditionDeck.new("#{deck.set_code}/#{deck.slug}")
-      cond.resolve_deck_name(db).should eq [deck]
+      db.resolve_deck_name("#{deck.set_code}/#{deck.slug}").should eq [deck]
     end
   end
 
   it "Each deck can be searched by full set name and deck name" do
     db.decks.each do |deck|
-      cond = ConditionDeck.new("#{deck.set_name} / #{deck.name}")
-      cond.resolve_deck_name(db).should eq [deck]
+      db.resolve_deck_name("#{deck.set_name} / #{deck.name}").should eq [deck]
     end
   end
 
   it "Each deck can be searched by slug only" do
     db.decks.each do |deck|
-      cond = ConditionDeck.new(deck.slug)
-      cond.resolve_deck_name(db).should include deck
+      db.resolve_deck_name(deck.slug).should include deck
     end
   end
 
   it "Each deck can be searched by deck name only" do
     db.decks.each do |deck|
-      cond = ConditionDeck.new(deck.name)
-      cond.resolve_deck_name(db).should include deck
+      db.resolve_deck_name(deck.name).should include deck
     end
   end
 end
