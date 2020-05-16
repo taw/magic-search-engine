@@ -188,6 +188,8 @@ class CardDatabase
     end
     deck_query = deck_query.downcase.strip.gsub("'s", "").gsub(",", "")
 
+    return possible_decks if deck_query == "*"
+
     decks = possible_decks.select do |deck|
       deck.slug == deck_query
     end
