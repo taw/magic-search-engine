@@ -154,6 +154,10 @@ class DeckIndexer
     printings_without_fullart = printings.select{|_,c| !c["fullart"] }
     printings = printings_without_fullart unless printings_without_fullart.empty?
 
+    # And same logic for borderless cards
+    printings_with_borders = printings.select{|_,c| c["border"] != "borderless" }
+    printings = printings_with_borders unless printings_with_borders.empty?
+
     return printings[0] if printings.size == 1
 
     # We know basics are ambiguous, we don't even care
