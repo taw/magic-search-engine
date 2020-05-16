@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/card_database"
+
+def print_deck(deck)
+  puts "#{deck}"
+  puts deck.cards.map{|cnt,c| "%2dx %s [%s/%s]" % [cnt, c.name, c.set_code, c.number] }
+  if deck.sideboard
+    puts deck.sideboard.map{|cnt,c| "%2dx %s [%s/%s]" % [cnt, c.name, c.set_code, c.number] }
+  end
+end
+
+if ARGV.size == 0
+  STDERR.puts "Usage: #{$0} [-v] <query>"
+  exit 1
+end
+
+query = ARGV.join(" ")
+
+db = CardDatabase.load
+decks = db.resolve_deck_name(query)
+
+if decks.empty?
+  puts %Q[No deck matching "#{query}"]
+else
+  decks.each_with_index do |deck, i|
+    print_deck deck
+    puts "" unless i == decks.size - 1
+  end
+end
