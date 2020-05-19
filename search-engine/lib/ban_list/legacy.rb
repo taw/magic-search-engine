@@ -311,4 +311,11 @@ BanList.for_format("legacy") do
     "https://magic.wizards.com/en/articles/archive/news/march-9-2020-banned-and-restricted-announcement",
     "Underworld Breach" => "banned",
   )
+
+  change(
+    "2020-05-18",
+    "https://magic.wizards.com/en/articles/archive/news/may-18-2020-banned-and-restricted-announcement",
+    "Lurrus of the Dream-Den" => "banned",
+    "Zirda, the Dawnwaker" => "banned",
+    )
 end

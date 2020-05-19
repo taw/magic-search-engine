@@ -42,4 +42,11 @@ BanList.for_format("brawl") do
     "https://magic.wizards.com/en/articles/archive/news/april-13-2020-banned-and-restricted-announcement",
     "Lutri, the Spellchaser" => "banned",
   )
+
+  change(
+    "2020-05-18",
+    "https://magic.wizards.com/en/articles/archive/news/may-18-2020-banned-and-restricted-announcement",
+    "Drannith Magistrate" => "banned",
+    "Winota, Joiner of Forces" => "banned",
+  )
 end

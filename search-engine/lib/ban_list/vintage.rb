@@ -337,4 +337,10 @@ BanList.for_format("vintage") do
     "https://magic.wizards.com/en/articles/archive/news/november-18-2019-banned-and-restricted-announcement",
     "Narset, Parter of Veils" => "restricted",
   )
+
+  change(
+    "2020-05-18",
+    "https://magic.wizards.com/en/articles/archive/news/may-18-2020-banned-and-restricted-announcement",
+    "Lurrus of the Dream-Den" => "banned",
+  )
 end
