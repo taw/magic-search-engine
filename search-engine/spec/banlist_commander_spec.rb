@@ -14,7 +14,7 @@ describe "Banlist" do
     )
   end
 
-  it "vintage_banned_means_commander_banned" do
+  it "vintage banned means commander banned (except Lurrus)" do
     BanList.all_change_dates.each do |date|
       vintage_banlist  = BanList["vintage"].full_ban_list(date)
       commander_banlist = BanList["commander"].full_ban_list(date)
@@ -24,8 +24,7 @@ describe "Banlist" do
 
       vintage_only_banned = vintage_banned - commander_banned
 
-      # "All Vintage banned cards should be EDH banned too (#{date})"
-      vintage_only_banned.should eq([])
+      vintage_only_banned.should eq(["Lurrus of the Dream-Den"])
     end
   end
 
