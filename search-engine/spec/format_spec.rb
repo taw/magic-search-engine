@@ -182,7 +182,7 @@ describe "Formats" do
   end
 
   it "mtgo commander" do
-    assert_count_cards 'banned:vintage legal:"mtgo commander"', 0
+    assert_count_cards 'banned:vintage legal:"mtgo commander"', 1
   end
 
   it "historic" do
