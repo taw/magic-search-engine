@@ -24,7 +24,11 @@ describe "Banlist" do
 
       vintage_only_banned = vintage_banned - commander_banned
 
-      vintage_only_banned.should eq(["Lurrus of the Dream-Den"])
+      if date >= Date.parse("2020-05-18")
+        vintage_only_banned.should eq(["Lurrus of the Dream-Den"])
+      else
+        vintage_only_banned.should eq([])
+      end
     end
   end
 
