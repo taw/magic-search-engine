@@ -217,24 +217,35 @@ class PackFactory
 
       WeightedPack.new(
         # No partner
-        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 3, bbd_rare_mythic: 1})             => 7 * 30 - 40,
-        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 3, bbd_rare_mythic: 1}) => 7 * 10,
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 3, bbd_rare_mythic: 1})             => (7 * 30 - 40) * 11,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 3, bbd_rare_mythic: 1}) => (7 * 10) * 11,
         # Uncommon partner
-        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 1, bbd_uncommon_partner_1: 2, bbd_rare_mythic: 1})             => 2 * 6,
-        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 1, bbd_uncommon_partner_1: 2, bbd_rare_mythic: 1}) => 2 * 2,
-        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 1, bbd_uncommon_partner_2: 2, bbd_rare_mythic: 1})             => 2 * 6,
-        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 1, bbd_uncommon_partner_2: 2, bbd_rare_mythic: 1}) => 2 * 2,
-        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 1, bbd_uncommon_partner_3: 2, bbd_rare_mythic: 1})             => 2 * 6,
-        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 1, bbd_uncommon_partner_3: 2, bbd_rare_mythic: 1}) => 2 * 2,
-        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 1, bbd_uncommon_partner_4: 2, bbd_rare_mythic: 1})             => 2 * 6,
-        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 1, bbd_uncommon_partner_4: 2, bbd_rare_mythic: 1}) => 2 * 2,
-        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 1, bbd_uncommon_partner_5: 2, bbd_rare_mythic: 1})             => 2 * 6,
-        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 1, bbd_uncommon_partner_5: 2, bbd_rare_mythic: 1}) => 2 * 2,
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 1, bbd_uncommon_partner_1: 2, bbd_rare_mythic: 1})             => 2 * 6 * 11,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 1, bbd_uncommon_partner_1: 2, bbd_rare_mythic: 1}) => 2 * 2 * 11,
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 1, bbd_uncommon_partner_2: 2, bbd_rare_mythic: 1})             => 2 * 6 * 11,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 1, bbd_uncommon_partner_2: 2, bbd_rare_mythic: 1}) => 2 * 2 * 11,
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 1, bbd_uncommon_partner_3: 2, bbd_rare_mythic: 1})             => 2 * 6 * 11,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 1, bbd_uncommon_partner_3: 2, bbd_rare_mythic: 1}) => 2 * 2 * 11,
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 1, bbd_uncommon_partner_4: 2, bbd_rare_mythic: 1})             => 2 * 6 * 11,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 1, bbd_uncommon_partner_4: 2, bbd_rare_mythic: 1}) => 2 * 2 * 11,
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 1, bbd_uncommon_partner_5: 2, bbd_rare_mythic: 1})             => 2 * 6 * 11,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 1, bbd_uncommon_partner_5: 2, bbd_rare_mythic: 1}) => 2 * 2 * 11,
         # Rare partner
-        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 2, bbd_rare_mythic_partner: 2})             => 1 * 30,
-        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 2, bbd_rare_mythic_partner: 2}) => 1 * 10,
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 2, bbd_rare_partner_1: 2})             => 1 * 30 * 2,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 2, bbd_rare_partner_1: 2}) => 1 * 10 * 2,
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 2, bbd_rare_partner_2: 2})             => 1 * 30 * 2,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 2, bbd_rare_partner_2: 2}) => 1 * 10 * 2,
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 2, bbd_rare_partner_3: 2})             => 1 * 30 * 2,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 2, bbd_rare_partner_3: 2}) => 1 * 10 * 2,
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 2, bbd_rare_partner_4: 2})             => 1 * 30 * 2,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 2, bbd_rare_partner_4: 2}) => 1 * 10 * 2,
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 2, bbd_rare_partner_5: 2})             => 1 * 30 * 2,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 2, bbd_rare_partner_5: 2}) => 1 * 10 * 2,
+        # Mythic partner
+        build_pack(set_code, {basic: 1, common: 10, bbd_uncommon: 2, bbd_mythic_partner_1: 2})             => 1 * 30 * 1,
+        build_pack(set_code, {basic: 1, common: 9, bbd_foil: 1, bbd_uncommon: 2, bbd_mythic_partner_1: 2}) => 1 * 10 * 1,
         # Foil partner
-        build_pack(set_code, {basic: 1, common: 9, bbd_uncommon: 2, bbd_foil_partner: 2, bbd_rare_mythic: 1}) => 4,
+        build_pack(set_code, {basic: 1, common: 9, bbd_uncommon: 2, bbd_foil_partner: 2, bbd_rare_mythic: 1}) => 4 * 11,
       )
     when "dom"
       # there's guaranteed legendary creature, but no separate slots for that

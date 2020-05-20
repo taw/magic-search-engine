@@ -588,6 +588,30 @@ class CardSheetFactory
     from_query("e:bbd r:uncommon -has:partner", 70, foil: foil)
   end
 
+  def bbd_mythic_partner_1(foil=false)
+    from_query("e:bbd r:mythic has:partner (number=1 or number=2)", 2, foil: foil)
+  end
+
+  def bbd_rare_partner_1(foil=false)
+    from_query("e:bbd r:rare has:partner (number=3 or number=4)", 2, foil: foil)
+  end
+
+  def bbd_rare_partner_2(foil=false)
+    from_query("e:bbd r:rare has:partner (number=5 or number=6)", 2, foil: foil)
+  end
+
+  def bbd_rare_partner_3(foil=false)
+    from_query("e:bbd r:rare has:partner (number=7 or number=8)", 2, foil: foil)
+  end
+
+  def bbd_rare_partner_4(foil=false)
+    from_query("e:bbd r:rare has:partner (number=9 or number=10)", 2, foil: foil)
+  end
+
+  def bbd_rare_partner_5(foil=false)
+    from_query("e:bbd r:rare has:partner (number=11 or number=12)", 2, foil: foil)
+  end
+
   def bbd_uncommon_partner_1(foil=false)
     from_query("e:bbd r:uncommon has:partner (number=13 or number=14)", 2, foil: foil)
   end
