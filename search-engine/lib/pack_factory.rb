@@ -211,7 +211,7 @@ class PackFactory
     when "bbd"
       # I ran the math, and best numbers are totally weird, so some rounded:
       # 1/4 have normal foil (very close to usual packs)
-      # 1/10 have partner rare/mythig (exact)
+      # 1/10 have partner rare/mythic (exact)
       # 2/10 have partner uncommon (off by 12%)
       # 1/100 has partner foil (who knows really)
 
