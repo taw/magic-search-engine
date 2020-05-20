@@ -996,4 +996,72 @@ describe PackFactory do
       end
     end
   end
+
+  # These are largely guesswork
+  context "Battlebond" do
+    let(:set_code) { "bbd" }
+    let(:pack) { factory.for("bbd") }
+    let(:ev) { pack.expected_values }
+
+    let(:basic_cards) { physical_cards("r:basic e:#{set_code}") }
+    let(:common_cards) { physical_cards("r:common e:#{set_code}") }
+    let(:uncommon_cards) { physical_cards("r:uncommon e:#{set_code} -is:partner") }
+    let(:rare_cards) { physical_cards("r:rare e:#{set_code} -is:partner") }
+    let(:mythic_cards) { physical_cards("r:mythic e:#{set_code} -is:partner is:nonfoil") }
+    let(:uncommon_partner_cards) { physical_cards("r:uncommon e:#{set_code} is:partner") }
+    let(:rare_partner_cards) { physical_cards("r:rare e:#{set_code} is:partner") }
+    let(:mythic_partner_cards) { physical_cards("r:mythic e:#{set_code} is:partner is:nonfoil") }
+
+    let(:foil_basic_cards) { physical_cards("r:basic e:#{set_code}", true) }
+    let(:foil_common_cards) { physical_cards("r:common e:#{set_code}", true) }
+    let(:foil_uncommon_cards) { physical_cards("r:uncommon e:#{set_code} -is:partner", true) }
+    let(:foil_rare_cards) { physical_cards("r:rare e:#{set_code} -is:partner", true) }
+    let(:foil_mythic_cards) { physical_cards("r:mythic e:#{set_code} -is:partner is:nonfoil", true) }
+    let(:foil_uncommon_partner_cards) { physical_cards("r:uncommon e:#{set_code} is:partner", true) }
+    let(:foil_rare_partner_cards) { physical_cards("r:rare e:#{set_code} is:partner", true) }
+    let(:foil_mythic_partner_cards) { physical_cards("r:mythic e:#{set_code} is:partner is:foil", true) }
+
+    let(:basics_ev) { basic_cards.map{|c| [c, Rational(1,5)] }.to_h }
+    let(:commons_ev) { common_cards.map{|c| [c, Rational(68, 707)] }.to_h }
+    let(:uncommons_ev) { uncommon_cards.map{|c| [c, Rational(111, 3185)] }.to_h }
+    let(:rares_ev) { rare_cards.map{|c| [c, Rational(18, 1001)] }.to_h }
+    let(:mythics_ev) { mythic_cards.map{|c| [c, Rational(9, 1001)] }.to_h }
+    let(:uncommon_partners_ev) { uncommon_partner_cards.map{|c| [c, Rational(4, 91)] }.to_h }
+    let(:rare_partners_ev) { rare_partner_cards.map{|c| [c, Rational(20, 1001)] }.to_h }
+    let(:mythic_partners_ev) { mythic_partner_cards.map{|c| [c, Rational(10, 1001)] }.to_h }
+
+    let(:foil_basics_ev) { foil_basic_cards.map{|c| [c, Rational(125, 77168)] }.to_h }
+    let(:foil_commons_ev) { foil_common_cards.map{|c| [c, Rational(125, 77168)] }.to_h }
+    let(:foil_uncommons_ev) { foil_uncommon_cards.map{|c| [c, Rational(5, 5096)] }.to_h }
+    let(:foil_rares_ev) { foil_rare_cards.map{|c| [c, Rational(25, 36036)] }.to_h }
+    let(:foil_mythics_ev) { foil_mythic_cards.map{|c| [c, Rational(25, 72072)] }.to_h }
+    let(:foil_uncommon_partners_ev) { foil_uncommon_partner_cards.map{|c| [c, Rational(4, 2821)] }.to_h }
+    let(:foil_rare_partners_ev) { foil_rare_partner_cards.map{|c| [c, Rational(2, 2821)] }.to_h }
+    let(:foil_mythic_partners_ev) { foil_mythic_partner_cards.map{|c| [c, Rational(1, 2821)] }.to_h }
+
+    let(:expected_ev) {
+      {}.merge(
+        basics_ev,
+        commons_ev,
+        uncommons_ev,
+        rares_ev,
+        mythics_ev,
+        uncommon_partners_ev,
+        rare_partners_ev,
+        mythic_partners_ev,
+        foil_basics_ev,
+        foil_commons_ev,
+        foil_uncommons_ev,
+        foil_rares_ev,
+        foil_mythics_ev,
+        foil_uncommon_partners_ev,
+        foil_rare_partners_ev,
+        foil_mythic_partners_ev,
+      )
+    }
+
+    it do
+      ev.should eq(expected_ev)
+    end
+  end
 end
