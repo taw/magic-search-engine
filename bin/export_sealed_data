@@ -187,15 +187,15 @@ class ExportFormatterExperimental < ExportFormatter
   end
 
   def data
-    result = []
+    result = {}
     @db.supported_booster_types.each do |booster_code, booster|
+      set_code = booster.set_code.upcase
+      booster_type = booster.code.split("-", 2)[1] || "default"
       booster = flatten_pack(booster)
       sheets = extract_sheets(booster)
-      result << {
+      result[set_code] ||= {}
+      result[set_code][booster_type] = {
         name: booster.name,
-        code: booster.code.upcase,
-        setCode: booster.set_code.upcase,
-        setName: booster.set_name,
         boosters: booster.packs.map{|subpack, weight|
           serialize_subpack(subpack, weight, sheets)
         },
