@@ -195,12 +195,12 @@ class ExportFormatterExperimental < ExportFormatter
       sheets = extract_sheets(booster)
       result[set_code] ||= {}
       result[set_code][booster_type] = {
-        name: booster.name,
+        name: booster_type == "default" ? nil : booster.name,
         boosters: booster.packs.map{|subpack, weight|
           serialize_subpack(subpack, weight, sheets)
         },
         sheets: serialize_sheets(sheets),
-      }
+      }.compact
     end
     result
   end
