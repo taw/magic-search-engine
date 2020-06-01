@@ -143,4 +143,11 @@ BanList.for_format("standard") do
     "Once Upon a Time" => "banned",
     "Veil of Summer" => "banned",
   )
+
+  change(
+    "2020-06-01",
+    "https://magic.wizards.com/en/articles/archive/news/june-1-2020-banned-and-restricted-announcement",
+    "Agent of Treachery" => "banned",
+    "Fires of Invention" => "banned",
+  )
 end

@@ -13,4 +13,11 @@ BanList.for_format("historic") do
     "https://magic.wizards.com/en/articles/archive/news/march-9-2020-banned-and-restricted-announcement",
     "Field of the Dead" => "legal",
   )
+
+  change(
+    "2020-06-01",
+    "https://magic.wizards.com/en/articles/archive/news/june-1-2020-banned-and-restricted-announcement",
+    "Agent of Treachery" => "banned",
+    "Fires of Invention" => "banned",
+  )
 end
