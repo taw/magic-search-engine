@@ -20,4 +20,10 @@ BanList.for_format("historic") do
     "Agent of Treachery" => "banned",
     "Fires of Invention" => "banned",
   )
+
+  change(
+    "2020-06-09",
+    "https://magic.wizards.com/en/articles/archive/news/suspension-update-historic-digital-format-2020-06-08",
+    "Winota, Joiner of Forces" => "banned", # "suspended"
+  )
 end
