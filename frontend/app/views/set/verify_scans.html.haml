@@ -37,6 +37,8 @@
         = link_to_card(card) do
           = card.name
         = format_oracle_text(card.display_mana_cost)
+        - if card.flavor_name
+          .flavor_name= "(#{card.flavor_name})"
       %ul
         %li.infolabel
           %span
