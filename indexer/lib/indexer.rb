@@ -257,6 +257,7 @@ class Indexer
           "buyabox",
           "exclude_from_boosters",
           "flavor",
+          "flavor_name",
           "foiling",
           "frame_effects",
           "frame",

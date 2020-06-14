@@ -149,6 +149,10 @@ class PatchMtgjsonVersions < Patch
         card["flavor"] = card["flavor"].gsub("*", "")
       end
 
+      if card["flavorName"]
+        card["flavor_name"] = card.delete("flavorName")
+      end
+
       if card["rulings"]
         rulings_dates = card["rulings"].map{|x| x["date"] }
         unless rulings_dates.sort == rulings_dates

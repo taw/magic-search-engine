@@ -2,7 +2,7 @@ class CardPrinting
   attr_reader :card, :set, :date, :release_date
   attr_reader :watermark, :rarity, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border
   attr_reader :rarity_code, :print_sheet, :partner, :oversized, :frame_effects, :foiling, :spotlight
-  attr_reader :textless, :fullart, :buyabox
+  attr_reader :textless, :fullart, :buyabox, :flavor_name
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
@@ -27,6 +27,7 @@ class CardPrinting
       @artist_name = "Unknown"
     end
     @flavor = data["flavor"] || -""
+    @flavor_name = data["flavor_name"]
     @flavor_normalized = @flavor.normalize_accents
     @foiling = data["foiling"]
     @border = data["border"] || @set.border
