@@ -28,6 +28,7 @@ class FormatVintage < Format
       "j17",
       "pal04",
       "parl",
+      "past",
       "pcel",
       "ppc1",
       "prel",
@@ -45,15 +46,15 @@ class FormatVintage < Format
       "und",
       "unh",
       "ust",
-      "wc97",
-      "wc98",
-      "wc99",
-      "wc99",
       "wc00",
       "wc01",
       "wc02",
       "wc03",
       "wc04",
+      "wc97",
+      "wc98",
+      "wc99",
+      "wc99",
     ]
 
     # Portal / Starter sets used to not be tournament legal
