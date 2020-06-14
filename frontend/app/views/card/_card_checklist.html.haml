@@ -8,6 +8,8 @@
   %td
     = link_to_card(card) do
       = card.name
+    - if card.flavor_name
+      .flavor_name= "(#{card.flavor_name})"
   %td
     = link_to_card(card) do
       = format_oracle_text(card.display_mana_cost)
