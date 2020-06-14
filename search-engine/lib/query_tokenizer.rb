@@ -86,6 +86,8 @@ class QueryTokenizer
         tokens << [:test, ConditionTypes.new(s[1] || s[2])]
       elsif s.scan(/(?:ft|flavor)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionFlavor.new(s[1] || s[2])]
+      elsif s.scan(/(?:fn)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
+        tokens << [:test, ConditionFlavorName.new(s[1] || s[2])]
       elsif s.scan(/(?:o|oracle)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionOracle.new(s[1] || s[2])]
       elsif s.scan(/(?:a|art|artist)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)

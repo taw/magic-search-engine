@@ -168,6 +168,11 @@
       = search_help %Q[ft:"Jaya Ballard"], %Q[cards with "Jaya Ballard" in flavor text]
       = search_help "lore:gideon", %Q[cards mentioning gideon in name, type, or flavor text]
 
+    %h4 Search by flavor name
+    %ul
+      = search_help %Q[fn:*], "cards with any flavor name"
+      = search_help %Q[fn:mothra], "cards with flavor name including mothra (full words only)"
+
     %h4 Search by artist
     %ul
       = search_help %Q[a:argyle], "cards with art drawn by (Steve) Argyle"
