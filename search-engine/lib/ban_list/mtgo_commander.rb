@@ -151,4 +151,16 @@ BanList.for_format("mtgo commander") do
     "Worldly Tutor" => "legal",
     "Yawgmoth's Bargain" => "legal",
   )
+
+  change(
+    "2020-06-10",
+    "https://magic.wizards.com/en/articles/archive/news/depictions-racism-magic-2020-06-10",
+    "Cleanse" => "banned",
+    "Crusade" => "banned",
+    "Imprison" => "banned",
+    "Invoke Prejudice" => "banned",
+    "Jihad" => "banned",
+    "Pradesh Gypsies" => "banned",
+    "Stone-Throwing Devils" => "banned",
+  )
 end

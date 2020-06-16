@@ -70,4 +70,11 @@ BanList.for_format("pauper") do
     "https://magic.wizards.com/en/articles/archive/news/october-21-2019-banned-and-restricted-announcement",
     "Arcum's Astrolabe" => "banned",
   )
+
+  change(
+    "2020-06-10",
+    "https://magic.wizards.com/en/articles/archive/news/depictions-racism-magic-2020-06-10",
+    "Pradesh Gypsies" => "banned",
+    "Stone-Throwing Devils" => "banned",
+  )
 end
