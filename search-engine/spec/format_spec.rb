@@ -269,8 +269,15 @@ describe "Formats" do
     assert_search_include "banned:* time:war", "Splinter Twin"
   end
 
-  it "racist cards are banned in all formats" do
-    assert_search_results "is:racist f:*"
+  it "racist cards are banned in all official formats" do
+    assert_search_results "is:racist f:legacy"
+    assert_search_results "is:racist f:vintage"
+    assert_search_results "is:racist f:pauper"
+    assert_search_results "is:racist f:modern"
+    assert_search_results "is:racist f:commander"
+    assert_search_results "is:racist f:\"mtgo commander\""
+    assert_search_results "is:racist f:pioneer"
+    assert_search_results "is:racist f:standard"
   end
 
   ## TODO - Extended, and various weirdo formats

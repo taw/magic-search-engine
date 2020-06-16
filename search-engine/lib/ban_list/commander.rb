@@ -309,7 +309,7 @@ BanList.for_format("commander") do
 
   # Not sure if it counts as "official" ban
   change(
-    "2020-06-14",
+    "2020-06-10",
     "https://mtgcommander.net/index.php/2020/06/14/rc-statement-on-wizards-removal-of-inappropriate-cards/",
     "Cleanse" => "banned",
     "Crusade" => "banned",
