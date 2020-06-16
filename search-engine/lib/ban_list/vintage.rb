@@ -343,4 +343,16 @@ BanList.for_format("vintage") do
     "https://magic.wizards.com/en/articles/archive/news/may-18-2020-banned-and-restricted-announcement",
     "Lurrus of the Dream-Den" => "banned",
   )
+
+  change(
+    "2020-06-10",
+    "https://magic.wizards.com/en/articles/archive/news/depictions-racism-magic-2020-06-10",
+    "Cleanse" => "banned",
+    "Crusade" => "banned",
+    "Imprison" => "banned",
+    "Invoke Prejudice" => "banned",
+    "Jihad" => "banned",
+    "Pradesh Gypsies" => "banned",
+    "Stone-Throwing Devils" => "banned",
+  )
 end
