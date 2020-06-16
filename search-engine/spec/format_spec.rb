@@ -177,8 +177,8 @@ describe "Formats" do
   # We don't have all historical legality for Duel Commander yet,
   # maybe add it at some later point
   it "duel commander" do
-    assert_count_cards 'banned:"duel commander"', 63
-    assert_count_cards 'restricted:"duel commander"', 21
+    assert_count_cards 'banned:"duel commander"', 72
+    assert_count_cards 'restricted:"duel commander"', 20
   end
 
   it "mtgo commander" do
@@ -267,6 +267,10 @@ describe "Formats" do
   it "banned:* time:nph" do
     assert_search_exclude "banned:* time:rtr", "Splinter Twin"
     assert_search_include "banned:* time:war", "Splinter Twin"
+  end
+
+  it "racist cards are banned in all formats" do
+    assert_search_results "is:racist f:*"
   end
 
   ## TODO - Extended, and various weirdo formats

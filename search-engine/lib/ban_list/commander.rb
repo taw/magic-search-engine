@@ -306,4 +306,17 @@ BanList.for_format("commander") do
     "https://mtgcommander.net/index.php/2020/04/20/april-2020-rules-update/",
     "Flash" => "banned",
   )
+
+  # Not sure if it counts as "official" ban
+  change(
+    "2020-06-14",
+    "https://mtgcommander.net/index.php/2020/06/14/rc-statement-on-wizards-removal-of-inappropriate-cards/",
+    "Cleanse" => "banned",
+    "Crusade" => "banned",
+    "Imprison" => "banned",
+    "Invoke Prejudice" => "banned",
+    "Jihad" => "banned",
+    "Pradesh Gypsies" => "banned",
+    "Stone-Throwing Devils" => "banned",
+  )
 end

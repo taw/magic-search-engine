@@ -160,4 +160,31 @@ BanList.for_format("duel commander") do
     # "Erayo, Soratami Ascendant" => "legal", # officialy legal, was experimentally legal
     "Scapeshift" => "banned",
   )
+
+  change(
+    "2020-02-28",
+    "https://www.duelcommander.com/2020/02/february-2020-rules-banned-restricted-update/",
+    "Thassa’s Oracle" => "banned",
+    "Ancient Tomb" => "banned",
+    "Mox Opal" => "banned",
+    "Sulfuric Vortex" => "legal",
+  )
+
+  change(
+    "2020-05-29",
+    "https://www.duelcommander.com/2020/05/may-2020-rules-banned-restricted-update/",
+    "Lutri, The Spellchaser" => "banned",
+    "Deflecting Swat" => "banned",
+    "Fierce Guardianship" => "banned",
+    "High Tide" => "banned",
+    "Capture of Jingzhou" => "banned",
+    "Temporal Manipulation" => "banned",
+    "Time Warp" => "banned",
+    "Cavern of Souls" => "banned",
+    "Field of the Dead" => "banned",
+    "Wasteland" => "banned",
+    "Lion’s Eye Diamond" => "banned",
+    "Gifts Ungiven" => "legal",
+    "Jace, Vryn's Prodigy" => "legal",
+  )
 end
