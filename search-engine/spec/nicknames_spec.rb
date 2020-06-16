@@ -391,4 +391,15 @@ describe "Card nicknames" do
 
     assert_search_equal "is:ante", 'o:/\bante\b/'
   end
+
+  it "is:racist" do
+    assert_search_results "is:racist",
+      "Cleanse",
+      "Crusade",
+      "Imprison",
+      "Invoke Prejudice",
+      "Jihad",
+      "Pradesh Gypsies",
+      "Stone-Throwing Devils"
+  end
 end
