@@ -49,6 +49,8 @@ class PatchMtgjsonVersions < Patch
         set["releaseDate"] = "2018-08-10"
       when "PRM"
         set["releaseDate"] = "2018-08-10"
+      when "C20"
+        set["releaseDate"] = "2020-04-17"
       end
     end
 
