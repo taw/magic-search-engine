@@ -363,3 +363,5 @@ shared_context "db" do |*sets|
     card_printings.map{|c| PhysicalCard.for(c, foil) }.uniq
   end
 end
+
+RSpec::Support::ObjectFormatter.default_instance.max_formatted_output_length = 1_000_000

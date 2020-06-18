@@ -20,6 +20,7 @@ class FormatFrontier < Format
       "eld",
       "thb",
       "iko",
+      "m21",
     ]
   end
 end

@@ -16,9 +16,11 @@ describe "Sorting" do
       ["Chandra, Awakened Inferno"],
       ["Chandra, Bold Pyromancer"],
       ["Chandra, Fire Artisan"],
+      ["Chandra, Flame's Catalyst"],
       ["Chandra, Flame's Fury"],
       ["Chandra, Flamecaller"],
       ["Chandra, Gremlin Wrangler"],
+      ["Chandra, Heart of Fire"],
       ["Chandra, Novice Pyromancer"],
       ["Chandra, Pyrogenius"],
       ["Chandra, Pyromaster"],
@@ -37,7 +39,9 @@ describe "Sorting" do
       ["Chandra, Pyromaster", "Chris Rahn"],
       ["Chandra, the Firebrand", "D. Alexander Gregory"],
       ["Chandra, Roaring Flame", "Eric Deschamps"],
+      ["Chandra, Flame's Catalyst", "Grzegorz Rutkowski"],
       ["Chandra, Flamecaller", "Jason Rainville"],
+      ["Chandra, Heart of Fire", "Jason Rainville"],
       ["Chandra, Pyrogenius", "Jason Rainville"],
       ["Chandra, Gremlin Wrangler", "Kari Christensen"],
       ["Chandra, Flame's Fury", "Magali Villeneuve"],
@@ -50,6 +54,8 @@ describe "Sorting" do
 
   it "new" do
     ordered_search("t:chandra -is:digital -is:promo sort:new", :name, :set_code).should eq([
+      ["Chandra, Flame's Catalyst", "m21"],
+      ["Chandra, Heart of Fire", "m21"],
       ["Chandra, Acolyte of Flame", "m20"],
       ["Chandra, Awakened Inferno", "m20"],
       ["Chandra, Flame's Fury", "m20"],
@@ -70,6 +76,8 @@ describe "Sorting" do
 
   it "newall" do
     ordered_search("t:chandra -is:digital -is:promo sort:newall", :name, :set_code).should eq([
+      ["Chandra, Flame's Catalyst", "m21"],
+      ["Chandra, Heart of Fire", "m21"],
       ["Chandra, Flamecaller", "c20"],
       ["Chandra, Acolyte of Flame", "m20"],
       ["Chandra, Awakened Inferno", "m20"],
@@ -109,6 +117,8 @@ describe "Sorting" do
       ["Chandra, Awakened Inferno", "m20"],
       ["Chandra, Flame's Fury", "m20"],
       ["Chandra, Novice Pyromancer", "m20"],
+      ["Chandra, Flame's Catalyst", "m21"],
+      ["Chandra, Heart of Fire", "m21"],
       ["Chandra, Gremlin Wrangler", "htr"],
     ])
   end
@@ -130,6 +140,8 @@ describe "Sorting" do
       ["Chandra, Awakened Inferno", "m20"],
       ["Chandra, Flame's Fury", "m20"],
       ["Chandra, Novice Pyromancer", "m20"],
+      ["Chandra, Flame's Catalyst", "m21"],
+      ["Chandra, Heart of Fire", "m21"],
     ])
   end
 
@@ -138,10 +150,12 @@ describe "Sorting" do
       ["Chandra Ablaze", 6],
       ["Chandra, Awakened Inferno", 6],
       ["Chandra, Bold Pyromancer", 6],
+      ["Chandra, Flame's Catalyst", 6],
       ["Chandra, Flame's Fury", 6],
       ["Chandra, Flamecaller", 6],
       ["Chandra, Pyrogenius", 6],
       ["Chandra Nalaar", 5],
+      ["Chandra, Heart of Fire", 5],
       ["Chandra, Fire Artisan", 4],
       ["Chandra, Gremlin Wrangler", 4],
       ["Chandra, Novice Pyromancer", 4],
@@ -164,9 +178,11 @@ describe "Sorting" do
       ["Chandra, Torch of Defiance", 4],
       ["Chandra, the Firebrand", 4],
       ["Chandra Nalaar", 5],
+      ["Chandra, Heart of Fire", 5],
       ["Chandra Ablaze", 6],
       ["Chandra, Awakened Inferno", 6],
       ["Chandra, Bold Pyromancer", 6],
+      ["Chandra, Flame's Catalyst", 6],
       ["Chandra, Flame's Fury", 6],
       ["Chandra, Flamecaller", 6],
       ["Chandra, Pyrogenius", 6],
@@ -187,6 +203,8 @@ describe "Sorting" do
       ["Chandra, Awakened Inferno", "m20", "127"],
       ["Chandra, Novice Pyromancer", "m20", "128"],
       ["Chandra, Flame's Fury", "m20", "294"],
+      ["Chandra, Heart of Fire", "m21", "135"],
+      ["Chandra, Flame's Catalyst", "m21", "332"],
       ["Chandra, Roaring Flame", "ori", "135b"],
       ["Chandra, Fire Artisan", "war", "119"],
       ["Chandra Ablaze", "zen", "120"],
@@ -199,6 +217,8 @@ describe "Sorting" do
       ["Chandra, Fire Artisan", "war", "119"],
       ["Chandra, Roaring Flame", "v17", "6b"],
       ["Chandra, Flamecaller", "ogw", "104"],
+      ["Chandra, Flame's Catalyst", "m21", "332"],
+      ["Chandra, Heart of Fire", "m21", "301"],
       ["Chandra, Flame's Fury", "m20", "294"],
       ["Chandra, Novice Pyromancer", "m20", "128"],
       ["Chandra, Awakened Inferno", "m20", "127"],
@@ -248,9 +268,11 @@ describe "Sorting" do
       ["Chandra, Pyrogenius", 6],
       ["Chandra, Flamecaller", 6],
       ["Chandra, Flame's Fury", 6],
+      ["Chandra, Flame's Catalyst", 6],
       ["Chandra, Bold Pyromancer", 6],
       ["Chandra, Awakened Inferno", 6],
       ["Chandra Ablaze", 6],
+      ["Chandra, Heart of Fire", 5],
       ["Chandra Nalaar", 5],
       ["Chandra, the Firebrand", 4],
       ["Chandra, Torch of Defiance", 4],

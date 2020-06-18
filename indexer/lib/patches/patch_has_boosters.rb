@@ -10,7 +10,7 @@ class PatchHasBoosters < Patch
       end
 
       # v4 bug?
-      if %W[me1 nem mh1 p02 m20 eld thb mb1 cmb1 iko].include?(set["code"])
+      if %W[me1 nem mh1 p02 m20 eld thb mb1 cmb1 iko m21].include?(set["code"])
         has_own_boosters = true
       end
 
