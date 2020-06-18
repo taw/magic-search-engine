@@ -13,7 +13,7 @@ describe "Old templates" do
   # Firesong and Sunspeaker (legitimate)
   # Sarah's Wings (CMB1)
   it do
-    assert_count_cards %Q[o:"creature or player"], 4
+    assert_count_cards %Q[o:"creature or player"], 5
   end
 
   it do

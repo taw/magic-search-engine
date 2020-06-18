@@ -3,11 +3,11 @@ describe "Full Database Test" do
 
   # This changes whenever a new set is added, and needs updating a lot
   # The point of this test is to make sure cards don't get added or dropped
-  # by changes which are not expected to, like updating to new mtgjson data for same sets,
-  # indexer changes etc.
+  # by changes which are not expected to, like updating to new mtgjson data
+  # for same sets, indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(21043)
-    db.number_of_printings.should eq(49507)
+    db.number_of_cards.should eq(21053)
+    db.number_of_printings.should eq(49555)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -15,7 +15,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 4842
+    assert_count_printings "is:promo", 4852
   end
 
   it "block codes" do
