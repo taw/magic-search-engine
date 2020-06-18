@@ -41,6 +41,7 @@ class FormatModern < Format
       "eld",
       "thb",
       "iko",
+      "m21",
     ]
   end
 end
