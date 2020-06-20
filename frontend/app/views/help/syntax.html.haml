@@ -462,6 +462,11 @@
       = search_help "sort:-number", "sort results by set name and collector number, backwards"
       = search_help "sort:pow,-tou,color", "sort results by power (highest first), then toughness (lowest first), then color"
 
+    %h4 Display all printings
+    %div If multiple printings of same card match, by default only one is shown (with most recent Standard-legal printing having priority). You can choose to see all printings with <code>++</code>:
+    %ul
+      = search_help "++ birds of paradise", "search for all printings of Birds of Paradise"
+
     %h4 Display results
     %div By default results are displayed in detailed format when only one card matches, or in more concise format otherwise. You can select another format.
     %ul
