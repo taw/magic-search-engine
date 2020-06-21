@@ -94,12 +94,19 @@ describe "Foils" do
         promo, rest = set.printings.partition{|c| c.number == "325†"}
         assert_foiling(promo, "foilonly")
         assert_foiling(rest, "both")
-      when "pls", "shm", "10e"
+      when "shm", "10e"
         foil_alt_art, regular_cards = set.printings.partition{|c| !!(c.number =~ /★|†/) }
         foil_alt_art_names = foil_alt_art.map(&:name).to_set
         has_foil_alt_art, regular_cards = regular_cards.partition{|c| foil_alt_art_names.include?(c.name) }
         assert_foiling(foil_alt_art, "foilonly")
         assert_foiling(has_foil_alt_art, "nonfoil")
+        assert_foiling(regular_cards, "both")
+      when "pls"
+        foil_alt_art, regular_cards = set.printings.partition{|c| !!(c.number =~ /★|†/) }
+        foil_alt_art_names = foil_alt_art.map(&:name).to_set
+        has_foil_alt_art, regular_cards = regular_cards.partition{|c| foil_alt_art_names.include?(c.name) }
+        assert_foiling(foil_alt_art, "foilonly")
+        assert_foiling(has_foil_alt_art, "both")
         assert_foiling(regular_cards, "both")
       when "unh"
         foil_alt_art, regular_cards = set.printings.partition{|c| c.name == "Super Secret Tech" or c.number =~ /★/ }
@@ -131,6 +138,9 @@ describe "Foils" do
         assert_foiling(booster_cards, "both")
         assert_foiling([buy_a_box_promo], "foilonly")
         assert_foiling(misprint, "both")
+      when "m21"
+        booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
+        assert_foiling(booster_cards, "both")
       when "iko"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         assert_foiling(booster_cards, "both")
@@ -219,6 +229,11 @@ describe "Foils" do
         assert_foiling(regular, "both")
       when "ice"
         assert_foiling(set.printings, "nonfoil")
+      when "c20"
+          # foil cards from precon also nonfoil in IKO collector boosters
+        nonfoils, foils = set.cards_in_precons
+        assert_foiling(set.printings.select{|c| nonfoils.include?(c.name)}, "nonfoil")
+        assert_foiling(set.printings.select{|c| foils.include?(c.name)}, "both")
       else
         assert_by_type(set)
       end
