@@ -81,7 +81,7 @@ class PatchSetTypes < Patch
 
       case main_set_type
       when "archenemy", "duel deck", "premium deck", "planechase", "box", "deck"
-        set_types << "deck"
+        set_types << "deck" unless %w[ha1 ha2 ha3].include?(set_code)
       when "commander"
         set_types << "deck" unless set_code == "cm1"
       end
