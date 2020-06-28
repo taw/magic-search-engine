@@ -17,6 +17,10 @@ class SingleSetUpdater
     @current_path = current_path
   end
 
+  memoize def name
+    incoming_path.basename(".json").to_s
+  end
+
   memoize def incoming_data
     JSON.parse(@incoming_path.read)
   end
@@ -49,6 +53,10 @@ class SingleSetUpdater
     current_data["cards"].map{|c| [c["name"], c["number"]] }.sort
   end
 
+  def bad_foregin_only_sets
+    %W[FBB 4BB REN RIN PSAL PS11]
+  end
+
   def call
     if current_path.exist?
       handle_update
@@ -57,24 +65,21 @@ class SingleSetUpdater
     end
   end
 
-  def bad_foregin_only_sets
-    %W[FBB 4BB REN RIN PSAL PS11]
-  end
-
   def handle_new
     if incoming_data["isPartialPreview"]
-      return [:spoiler, "#{incoming_data["cards"].size} / #{incoming_data["baseSetSize"]}"]
+      command_spoiler
+    elsif incoming_data["isForeignOnly"] and bad_foregin_only_sets.include?(incoming_code)
+      # We're actually OK with foreign promo sets
+      command_drop
+    elsif incoming_code == "SUM" or incoming_code == "PSAL"
+      # Just ignore it
+      command_drop
+    else
+      # Any more reasons to delete ?
+      command_new
     end
-    # We're actually OK with foreign promo sets
-    return :drop if incoming_data["isForeignOnly"] and bad_foregin_only_sets.include?(incoming_code)
-    # Just ignore it
-    return :drop if incoming_code == "SUM"
-    return :drop if incoming_code == "PSAL"
-    # More reasons to delete ?
-    :new
   end
 
-  # Display reason for debugging
   def handle_update
     issues = []
     issues << :name if incoming_name != current_name
@@ -86,8 +91,49 @@ class SingleSetUpdater
         issues << :card_numbers
       end
     end
-    return :update if issues.empty?
-    return [:conflict, issues]
+
+    if issues.empty?
+      command_update
+    else
+      command_conflict
+    end
+  end
+
+  def command_drop
+    FileUtils.rm incoming_path, force: true #, verbose: true
+  end
+
+  def command_update
+    FileUtils.mv incoming_path, current_path, force: true #, verbose: true
+  end
+
+  def command_new
+    puts "#{name} - new set"
+  end
+
+  def command_spoiler
+    comment = "#{incoming_data["cards"].size} / #{incoming_data["baseSetSize"]}"
+    puts "#{name} - spoiler set (#{comment})"
+  end
+
+  def command_conflict
+    puts "#{name} - conflicting update"
+    # Print all issues
+    if incoming_name != current_name
+      puts "  NAME: #{current_name} -> #{incoming_name}"
+    end
+
+    if incoming_name != current_name
+      puts "  CODE: #{current_code} -> #{incoming_code}"
+    end
+
+    (current_cards - incoming_cards).each do |card, num|
+      puts "  CARD DEL: #{num} #{card}"
+    end
+
+    (incoming_cards - current_cards).each do |card, num|
+      puts "  CARD ADD: #{num} #{card}"
+    end
   end
 end
 
@@ -106,24 +152,8 @@ class UpdateMtgjsonSets
 
   def call
     incoming_files.each do |incoming_path|
-      name = incoming_path.basename(".json").to_s
       current_path = current_dir + incoming_path.basename
-      command, comment = SingleSetUpdater.new(incoming_path, current_path).call
-
-      case command
-      when :drop
-        FileUtils.rm incoming_path, force: true #, verbose: true
-      when :update
-        FileUtils.mv incoming_path, current_path, force: true #, verbose: true
-      when :conflict
-        puts "#{name} - conflicting update (#{comment.inspect})"
-      when :spoiler
-        puts "#{name} - spoiler set (#{comment})"
-      when :new
-        puts "#{name} - new set"
-      else
-        raise
-      end
+      SingleSetUpdater.new(incoming_path, current_path).call
     end
   end
 end
