@@ -154,25 +154,27 @@ class ExportFormatterExperimental < ExportFormatter
   def serialize_sheet(sheet)
     ev = integerize_evs sheet.probabilities
 
+    foil_status = ev.keys.map(&:foil).uniq
+    raise "Sheet must be all-foil or all-nonfoil" unless foil_status == [true] or foil_status == [false]
+
     cards = ev.map do |e, w|
       [
         uuid_for(e.set_code, e.number),
-        {
-          foil: e.foil,
-          weight: w,
-        }
+        w
       ]
     end.sort_by(&:first)
 
-    unless cards.map(&:first).all_different?
-      raise "UUID not unique (foil and nonfoil on same sheet)"
-    end
+    # unless cards.map(&:first).all_different?
+    #   raise "UUID not unique (foil and nonfoil on same sheet)"
+    # end
+
     cards = cards.to_h
 
     {
       balanceColors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
-      totalWeight: cards.values.map{|x| x[:weight]}.sum,
       cards: cards,
+      foil: foil_status[0],
+      totalWeight: cards.values.sum,
     }.compact
   end
 
