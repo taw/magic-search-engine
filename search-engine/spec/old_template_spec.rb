@@ -4,6 +4,8 @@
 describe "Old templates" do
   include_context "db"
 
+  # Gem Bazaar (Astral Cards)
+  # R&D's Secret Lair (Unhinged)
   it do
     assert_count_cards %Q[o:"mana pool"], 2
   end
@@ -12,18 +14,19 @@ describe "Old templates" do
   # Crovax (avatar)
   # Firesong and Sunspeaker (legitimate)
   # Sarah's Wings (CMB1)
+  # Tornellan Protector (Sega Dreamcast Cards)
   it do
     assert_count_cards %Q[o:"creature or player"], 5
   end
 
   it do
-    assert_count_cards %Q[o:"~ can't be countered"], 0
+    assert_count_cards %Q[o:"~ can't be countered"], 1 # Allosaurus Shepherd
   end
 
   ### On non-Gatherer cards only
   it do
     assert_count_cards %Q[o:"his or her"], 0
-    assert_count_cards %Q[o:"he or she"], 1
+    assert_count_cards %Q[o:"he or she"], 1 # Power Struggle
     assert_count_cards %Q[o:"him or her"], 0
   end
 
