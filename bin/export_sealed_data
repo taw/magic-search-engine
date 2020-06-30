@@ -179,7 +179,7 @@ class ExportFormatterExperimental < ExportFormatter
   end
 
   def simplify_name(name, set_code)
-    name.gsub(/\A(#{set_code}_)*(explicit_)*/i, "").camelize
+    name.gsub(/\A(#{set_code}_)*(mb1_)?(explicit_)*/i, "").camelize
   end
 
   def serialize_subpack(pack, weight, sheets, set_code)
