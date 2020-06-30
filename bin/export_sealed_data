@@ -193,12 +193,14 @@ class ExportFormatterExperimental < ExportFormatter
       booster_type = booster.code.split("-", 2)[1] || "default"
       booster = flatten_pack(booster)
       sheets = extract_sheets(booster)
+      total_weight = booster.packs.values.sum
       result[set_code] ||= {}
       result[set_code][booster_type] = {
         name: booster_type == "default" ? nil : booster.name,
         boosters: booster.packs.map{|subpack, weight|
           serialize_subpack(subpack, weight, sheets)
         },
+        boostersTotalWeight: total_weight,
         contents: serialize_sheets(sheets),
       }.compact
     end
