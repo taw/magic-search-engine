@@ -199,7 +199,7 @@ class ExportFormatterExperimental < ExportFormatter
         boosters: booster.packs.map{|subpack, weight|
           serialize_subpack(subpack, weight, sheets)
         },
-        sheets: serialize_sheets(sheets),
+        contents: serialize_sheets(sheets),
       }.compact
     end
     result
