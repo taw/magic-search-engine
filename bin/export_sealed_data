@@ -180,7 +180,7 @@ class ExportFormatterExperimental < ExportFormatter
 
   def serialize_subpack(pack, weight, sheets)
     result = super
-    result[:sheets] = result[:sheets].transform_keys(&:camelize)
+    result[:contents] = result.delete(:sheets).transform_keys(&:camelize)
     result
   end
 
@@ -203,7 +203,7 @@ class ExportFormatterExperimental < ExportFormatter
           serialize_subpack(subpack, weight, sheets)
         },
         boostersTotalWeight: total_weight,
-        contents: serialize_sheets(sheets),
+        sheets: serialize_sheets(sheets),
       }.compact
     end
     result
