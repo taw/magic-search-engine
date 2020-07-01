@@ -765,8 +765,18 @@ class CardSheetFactory
     from_query("e:#{set_code} t:land r<=common")
   end
 
-  def basic_or_gainland(set_code)
-    from_query("e:#{set_code} (t:basic or is:gainland)")
+  def iko_basic_or_gainland
+    mix_sheets(
+      [from_query("e:iko t:basic", 15), 4],
+      [from_query("e:iko is:gainland", 10), 6]
+    )
+  end
+
+  def m21_basic_or_gainland
+    mix_sheets(
+      [from_query("e:m21 t:basic", 20), 3],
+      [from_query("e:m21 is:gainland", 10), 6]
+    )
   end
 
   def alara_premium_basic

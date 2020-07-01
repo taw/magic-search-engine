@@ -933,8 +933,8 @@ describe PackFactory do
         ev[uncommon].should eq Rational(3, 80)
         ev[rare].should eq Rational(2, 121)
         ev[mythic].should eq Rational(1, 121)
-        ev[gainland_common].should eq Rational(1, 25)
-        ev[basic].should eq Rational(1, 25)
+        ev[gainland_common].should eq Rational(6, 120)
+        ev[basic].should eq Rational(4, 120)
       end
     end
 
@@ -950,6 +950,21 @@ describe PackFactory do
         ev[rare].should eq Rational(1,4) * Rational(1,8) * Rational(2,121)
         ev[mythic].should eq Rational(1,4) * Rational(1,8) * Rational(1,121)
       end
+    end
+  end
+
+  context "M21" do
+    let(:pack) { factory.for("m21") }
+    let(:ev) { pack.expected_values }
+    let(:nonland_common) { physical_card("e:m21 is:booster r:common -t:land", foil) }
+    let(:gainland_common) { physical_card("e:m21 is:booster r:common is:gainland", foil) }
+    let(:basic) { physical_card("e:m21 is:booster r:basic", foil) }
+    let(:foil) { false }
+
+    it do
+      ev[nonland_common].should eq Rational(1, 101) * Rational(39, 4)
+        ev[gainland_common].should eq Rational(6, 120)
+        ev[basic].should eq Rational(3, 120)
     end
   end
 
