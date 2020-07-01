@@ -130,8 +130,7 @@ class PackFactory
       "akh", "hou",
       "mh1",
       "eld", # ELD and newer sets have multiple nonstandard pack types too
-      "thb",
-      "m21"
+      "thb"
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "m19"
       # According to The Collation Project, if pack has DFC (at least nonfoil), it will have checklist card in land slot
@@ -141,7 +140,11 @@ class PackFactory
       build_pack_with_random_foil(set_code, :foil, :nonland_common, {basic_or_common_land: 1, nonland_common: 10, uncommon: 3, rare_mythic: 1})
     when "iko"
       # This works almost like M19/M20, but one of the common lands seems to be on common not on land sheet
-      build_pack_with_random_foil(set_code, :foil, :nongainland_common, {basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
+      # gainlands x6, basics x4
+      build_pack_with_random_foil(set_code, :foil, :nongainland_common, {iko_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
+    when "m21"
+      # gainlands x6, basics x3
+      build_pack_with_random_foil(set_code, :foil, :nongainland_common, {m21_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
     when "ala"
       build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_mythic: 1})
     when "arb"
