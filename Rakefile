@@ -146,3 +146,22 @@ task "update" do
   # sh "trash ./tmp/decks.json"
   # sh "trash ./tmp/AllSets.json"
 end
+
+desc "Run Rails frontend, localhost only"
+task "rails:localhost" do
+  Dir.chdir("frontend") do
+    sh "bundle exec rails server"
+  end
+end
+
+desc "Run Rails frontend, local network"
+task "rails" do
+  Dir.chdir("frontend") do
+    sh "bundle exec rails server -b 0.0.0.0"
+  end
+end
+
+desc "Run pry with database loaded"
+task "pry" do
+  sh "./search-engine/bin/pry_cards"
+end
