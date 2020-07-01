@@ -86,8 +86,11 @@ class PatchExcludeFromBoosters < Patch
       number_i > 254
     when "thb"
       number_i > 254
-    when "iko", "m21"
+    when "iko"
       number_i > 274
+    when "m21"
+      # showcase basics acluatty in boosters
+      number_i > 274 and not (309..313).include?(number_i)
     else
       false
     end
