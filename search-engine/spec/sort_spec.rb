@@ -78,6 +78,7 @@ describe "Sorting" do
     ordered_search("t:chandra -is:digital -is:promo sort:newall", :name, :set_code).should eq([
       ["Chandra, Flame's Catalyst", "m21"],
       ["Chandra, Heart of Fire", "m21"],
+      ["Chandra, Torch of Defiance", "ss3"],
       ["Chandra, Flamecaller", "c20"],
       ["Chandra, Acolyte of Flame", "m20"],
       ["Chandra, Awakened Inferno", "m20"],
@@ -89,7 +90,6 @@ describe "Sorting" do
       ["Chandra, Gremlin Wrangler", "htr"],
       ["Chandra, Pyromaster", "e01"],
       ["Chandra, Pyrogenius", "kld"],
-      ["Chandra, Torch of Defiance", "kld"],
       ["Chandra Nalaar", "jvc"],
       ["Chandra, the Firebrand", "m13"],
       ["Chandra Ablaze", "zen"],
@@ -216,6 +216,7 @@ describe "Sorting" do
       ["Chandra Ablaze", "zen", "120"],
       ["Chandra, Fire Artisan", "war", "119"],
       ["Chandra, Roaring Flame", "v17", "6b"],
+      ["Chandra, Torch of Defiance", "ss3", "1"],
       ["Chandra, Flamecaller", "ogw", "104"],
       ["Chandra, Flame's Catalyst", "m21", "332"],
       ["Chandra, Heart of Fire", "m21", "301"],
@@ -227,7 +228,6 @@ describe "Sorting" do
       ["Chandra, the Firebrand", "m13", "123"],
       ["Chandra Nalaar", "m11", "127"],
       ["Chandra, Pyrogenius", "kld", "265"],
-      ["Chandra, Torch of Defiance", "kld", "110"],
       ["Chandra, Gremlin Wrangler", "htr", "1"],
       ["Chandra, Bold Pyromancer", "dom", "275"],
     ])

@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # for same sets, indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(21286)
-    db.number_of_printings.should eq(50460)
+    db.number_of_printings.should eq(50468)
   end
 
   # I'm not even sure what good this test does, delete?
