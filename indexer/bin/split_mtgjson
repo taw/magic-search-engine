@@ -16,6 +16,16 @@ class SplitMtgjson
   # It doesn't remove any extra files
   def call
     @output_dir.mkpath
+
+    # v5 specific code
+    if @data.keys.sort == ["data", "meta"]
+      meta = @data["meta"]
+      @data = @data["data"]
+      @data.each do |set_code, set|
+        set["meta"] = meta
+      end
+    end
+
     @data.each do |set_code, set|
       if set_code != set["code"]
         warn "Mismatched set code: #{set_code} != #{set["code"]}"
