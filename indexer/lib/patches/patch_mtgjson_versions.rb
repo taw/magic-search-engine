@@ -54,9 +54,10 @@ class PatchMtgjsonVersions < Patch
       card.delete("manaCost") if card["manaCost"] == ""
       card.delete("names") if card["names"] == []
 
-      card["arena"] = true if card.delete("isArena")
-      card["paper"] = true if card.delete("isPaper")
-      card["mtgo"] = true if card.delete("isMtgo")
+      # Moved in v5
+      card["arena"] = true if card.delete("isArena") or card["availability"]&.delete("arena")
+      card["paper"] = true if card.delete("isPaper") or card["availability"]&.delete("paper")
+      card["mtgo"] = true if card.delete("isMtgo") or card["availability"]&.delete("mtgo")
 
       if card["frameVersion"] == "future"
         card["timeshifted"] = true
@@ -86,8 +87,11 @@ class PatchMtgjsonVersions < Patch
         card["layout"] = "planar"
       end
 
-      # Renamed in v4
+      # Renamed in v4, then moved in v5. v5 makes it a String
       card["multiverseid"] ||= card.delete("multiverseId")
+      card["multiverseid"] ||= card["identifiers"]&.delete("multiverseId")
+      card["multiverseid"] = card["multiverseid"].to_i if card["multiverseid"].is_a?(String) and card["multiverseid"] =~ /\A\d+\z/
+
       if card.has_key?("isReserved")
         if card.delete("isReserved")
           card["reserved"] = true
