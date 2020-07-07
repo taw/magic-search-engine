@@ -29,6 +29,11 @@ class PatchMtgjsonVersions < Patch
     # Someone should investigate if this is true
     # This also applies to PSOI
     each_printing do |card|
+      if card["faceName"]
+        card["names"] = card["name"].split(" // ")
+        card["name"] = card.delete("faceName")
+      end
+
       if card["name"] == "Tamiyo's Journal" and card["set"]["official_code"] == "SOI"
         card["hasFoil"] = true
         card["hasNonFoil"] = true
