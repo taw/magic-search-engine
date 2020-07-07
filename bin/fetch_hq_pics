@@ -42,23 +42,34 @@ db.sets.each do |set_code, set|
     clean_name = card.name.tr("®", "r").tr(':"?', "")
                      .sub(" (Big Furry Monster)", " ")
                      .sub(" Shows That Players Like Really Long Card Names So We Made this Card to Have the Absolute Longest Card Name Ever Elemental", "")
+
+    index = nth_card[card.name]
+
     candidate_names = [
       "#{clean_name}.jpg",
       "#{clean_name}.full.jpg",
-      "#{clean_name}#{nth_card[card.name]}.jpg",
-      "#{clean_name}#{nth_card[card.name]}.full.jpg",
-      "#{clean_name} [#{nth_card[card.name]}].jpg",
-      "#{clean_name} [#{nth_card[card.name]}].full.jpg",
-      ("#{card.names.join(" - ")}.full.jpg" if card.names),
-      ("#{card.names.reverse.join(" - ")}.full.jpg" if card.names),
-      ("#{card.names.join("_")}.full.jpg" if card.names),
-      ("#{card.names.reverse.join("_")}.full.jpg" if card.names),
-      ("#{card.names.join("-+")}.full.jpg" if card.names),
-      ("#{card.names.reverse.join("-+")}.full.jpg" if card.names),
-      ("#{card.names.join("»")}.full.jpg" if card.names),
-      ("#{card.names.reverse.join("»")}.full.jpg" if card.names),
-    ].compact
+      "#{clean_name}#{index}.jpg",
+      "#{clean_name}#{index}.full.jpg",
+      "#{clean_name} [#{index}].jpg",
+      "#{clean_name} [#{index}].full.jpg"
+    ]
+    if card.names
+      card_names = card.names.map{|x| x.sub(" (CMB1)", "") }
+      candidate_names += [
+        "#{card_names.join(" - ")}.full.jpg",
+        "#{card_names.reverse.join(" - ")}.full.jpg",
+        "#{card_names.join("_")}.full.jpg",
+        "#{card_names.reverse.join("_")}.full.jpg",
+        "#{card_names.join("-+")}.full.jpg",
+        "#{card_names.reverse.join("-+")}.full.jpg",
+        "#{card_names.join("»")}.full.jpg",
+        "#{card_names.reverse.join("»")}.full.jpg",
+        "#{card_names.join("»")}#{index}.full.jpg",
+        "#{card_names.reverse.join("»")}#{index}.full.jpg",
+      ]
+    end
     candidate_names << "Who What When Where Why.full.jpg" if card.names and card.names.size == 5
+    candidate_names << "Smelt»Herd»Saw.full.jpg" if card.names and card.names.size == 3
 
     match = candidate_names.find{|bn| (source_dir + bn).exist?}
 
