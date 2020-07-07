@@ -112,6 +112,7 @@ class Indexer
       # Each set needs unique code, by convention all lowercase
       PatchSetCodes,
       PatchRemoveTokens,
+      PatchReleaseDates,
 
       # This renames cards so it needs to be done early
       PatchPlaytestCards,

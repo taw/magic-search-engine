@@ -1,4 +1,4 @@
-# Cleanup differences between mtgjson v3 and v4
+# Cleanup differences between mtgjson v3 / v4 / v5
 
 # This patch ended up as dumping ground for far too much random stuff
 
@@ -26,34 +26,6 @@ class PatchMtgjsonVersions < Patch
   end
 
   def call
-    each_set do |set|
-      # mtgjson v4 decided to make releaseDate per-set
-      # that leads to need for a lot of BS adjustments
-
-      # I trust unsourced mtg wiki claim here more
-      # since this is definitely wrong
-      # https://mtg.gamepedia.com/Duel_Decks:_Mirrodin_Pure_vs._New_Phyrexia
-      case set["official_code"]
-      when "TD2"
-        set["releaseDate"] = "2013-01-11"
-      # Some random tweaks
-      when "C18"
-        set["releaseDate"] = "2018-08-10"
-      when "DDT"
-        set["releaseDate"] = "2017-11-10"
-      when "PPRO"
-        set["releaseDate"] = "2018-01-01"
-      when "P02"
-        set["releaseDate"] = "1998-06-24"
-      when "PZ2"
-        set["releaseDate"] = "2018-08-10"
-      when "PRM"
-        set["releaseDate"] = "2018-08-10"
-      when "C20"
-        set["releaseDate"] = "2020-04-17"
-      end
-    end
-
     # Someone should investigate if this is true
     # This also applies to PSOI
     each_printing do |card|
