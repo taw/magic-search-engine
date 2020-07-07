@@ -109,6 +109,11 @@ class PatchMtgjsonVersions < Patch
         end
       end
 
+      if card["promoTypes"]&.include?("buyabox")
+        card["promoTypes"].delete("buyabox")
+        card["buyabox"] = true
+      end
+
       # Unicode vs ASCII
       if card["rulings"]
         card["rulings"].each do |ruling|
