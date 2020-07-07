@@ -16,6 +16,7 @@ describe "Ability Word Regexp" do
       "Companion",
       "DCI ruling",
       "Escape",
+      "Family gathering",
       "Forecast",
       "I",
       "II",
