@@ -36,6 +36,15 @@ class Patch
     end
   end
 
+  def rename_printing(card, to)
+    from = card["name"]
+    card["name"] = to
+    @cards[to] ||= []
+    @cards[to] << card
+    @cards[from].delete(card)
+    @cards.delete(from) if @cards[from].empty?
+  end
+
   def delete_printing_if(&block)
     @cards.each do |name, printings|
       printings.delete_if(&block)

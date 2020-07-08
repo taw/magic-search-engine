@@ -2,8 +2,28 @@
 # so power/toughness/colors need to be already normalized
 class PatchBfm < Patch
   def call
-    rename "B.F.M. (Big Furry Monster) (b)", "B.F.M. (Big Furry Monster, Right Side)"
+    if @cards["B.F.M. (Big Furry Monster) (b)"]
+      rename_cards_v4
+    else
+      rename_cards_v5
+    end
 
+    make_sides_same
+  end
+
+  def rename_cards_v4
+    rename "B.F.M. (Big Furry Monster) (b)", "B.F.M. (Big Furry Monster, Right Side)"
+  end
+
+  def rename_cards_v5
+    @cards["B.F.M. (Big Furry Monster)"].each do |card|
+      if card["number"] == "29"
+        rename_printing card, "B.F.M. (Big Furry Monster, Right Side)"
+      end
+    end
+  end
+
+  def make_sides_same
     each_printing do |card|
       case card["name"]
       when "B.F.M. (Big Furry Monster)"
