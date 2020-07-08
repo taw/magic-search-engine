@@ -71,7 +71,7 @@ class SingleSetUpdater
     elsif incoming_data["isForeignOnly"] and bad_foregin_only_sets.include?(incoming_code)
       # We're actually OK with foreign promo sets
       command_drop
-    elsif incoming_code == "SUM" or incoming_code == "PSAL"
+    elsif ["SUM", "PSAL", "FJMP"].include?(incoming_code)
       # Just ignore it
       command_drop
     else
