@@ -26,14 +26,39 @@ class PatchMtgjsonVersions < Patch
   end
 
   def call
-    # Someone should investigate if this is true
-    # This also applies to PSOI
     each_printing do |card|
       if card["faceName"]
         card["names"] = card["name"].split(" // ")
         card["name"] = card.delete("faceName")
       end
 
+      if card["layout"] == "meld" and not card["names"]
+        case card["name"]
+        when "Brisela, Voice of Nightmares"
+          card["names"] = [
+            "Bruna, the Fading Light",
+            "Gisela, the Broken Blade",
+            "Brisela, Voice of Nightmares",
+          ]
+        when "Chittering Host"
+          card["names"] = [
+            "Graf Rats",
+            "Midnight Scavengers",
+            "Chittering Host",
+          ]
+        when "Hanweir, the Writhing Township"
+          card["names"] = [
+            "Hanweir Battlements",
+            "Hanweir Garrison",
+            "Hanweir, the Writhing Township",
+          ]
+        else
+          raise "No front names for melded card: #{card["name"]}"
+        end
+      end
+
+      # Someone should investigate if this is true
+      # This also applies to PSOI
       if card["name"] == "Tamiyo's Journal" and card["set"]["official_code"] == "SOI"
         card["hasFoil"] = true
         card["hasNonFoil"] = true
