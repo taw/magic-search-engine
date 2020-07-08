@@ -1,6 +1,15 @@
 class PatchUnstable < Patch
   def call
-    hard_variants = [
+    hard_variants.each do |name|
+      @cards[name].dup.each do |card|
+        variant = card["number"][/[a-z]/]
+        rename_printing card, "#{name} (#{variant})"
+      end
+    end
+  end
+
+  def hard_variants
+    [
       "Everythingamajig",
       "Garbage Elemental",
       "Ineffable Blessing",
@@ -8,6 +17,9 @@ class PatchUnstable < Patch
       "Sly Spy",
       "Very Cryptic Command",
     ]
+  end
+
+  def call_v4
     soft_variants = [
       "Amateur Auteur (b)",
       "Amateur Auteur (c)",
