@@ -27,7 +27,7 @@ class PatchMtgjsonVersions < Patch
 
   def call
     each_printing do |card|
-      if card["faceName"]
+      if card["faceName"] and card["name"].include?("//")
         card["names"] = card["name"].split(" // ")
         card["name"] = card.delete("faceName")
       end
