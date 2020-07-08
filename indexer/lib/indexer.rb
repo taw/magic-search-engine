@@ -143,6 +143,8 @@ class Indexer
       PatchABUR,
       PatchFrame,
       PatchPartner,
+      PatchBfm,
+      PatchUnstable,
 
       # Reconcile issues
       PatchReconcileForeignNames,
@@ -158,8 +160,6 @@ class Indexer
       PatchArtistNames,
 
       # Not bugs, more like different judgment calls than mtgjson
-      PatchBfm,
-      PatchUnstable,
       PatchUrza,
       PatchFixPromoPrintDates,
       PatchMeldCardNames,
