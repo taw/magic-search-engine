@@ -46,11 +46,11 @@ class SingleSetUpdater
   end
 
   memoize def incoming_cards
-    incoming_data["cards"].map{|c| [c["name"], c["number"]] }.sort
+    incoming_data["cards"].map{|c| [c["faceName"] || c["name"], c["number"]] }.sort
   end
 
   memoize def current_cards
-    current_data["cards"].map{|c| [c["name"], c["number"]] }.sort
+    current_data["cards"].map{|c| [c["faceName"] || c["name"], c["number"]] }.sort
   end
 
   def bad_foregin_only_sets
