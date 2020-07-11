@@ -391,6 +391,11 @@
       = search_help 'n:/.{30}/', "cards with names of 30 or more characters"
       = search_help 'rulings:/twitter/', "cards with twitter mentioned in rulings"
 
+    %h4 Search by keyword
+    %div It will generally return creatures and vehicles who have given keyword, and skip cards which merely interact with that keyword without having it themselves.
+    %ul
+      = search_help "keyword:flying", "cards with flying keyword"
+
     %h4 Search by game
     %ul
       = search_help "game:paper", "cards available as tournament-legal paper cards (not oversized or gold-bordered)"

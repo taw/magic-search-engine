@@ -231,6 +231,7 @@ class Indexer
         "hand", # vanguard
         "hide_mana_cost",
         "is_partner",
+        "keywords",
         "layout",
         "life", # vanguard
         "loyalty",

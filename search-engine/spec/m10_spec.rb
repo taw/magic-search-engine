@@ -235,4 +235,8 @@ describe "Magic 2010" do
     assert_search_results "mana=11",
       "Darksteel Colossus"
   end
+
+  it "keyword" do
+    assert_search_equal "keyword:flying", "o:flying t:creature -(Stone Giant) -(Vampire Nocturnus)"
+  end
 end
