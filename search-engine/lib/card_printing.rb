@@ -105,7 +105,7 @@ class CardPrinting
     related first_regular_release_date reminder_text augment
     display_power display_toughness display_mana_cost
     primary? secondary? front? back? partner? allowed_in_any_number?
-    commander? brawler? custom?
+    commander? brawler? custom? keywords
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
   end

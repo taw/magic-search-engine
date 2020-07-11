@@ -173,6 +173,10 @@ class PatchMtgjsonVersions < Patch
         end
       end
 
+      if card["keywords"]
+        card["keywords"] = card["keywords"].map(&:downcase)
+      end
+
       # At least for now:
       # "123a" but "U123"
       if card["number"]
