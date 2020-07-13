@@ -1,3 +1,5 @@
+# This banlist doesn't distinguish "suspended" from "banned"
+
 BanList.for_format("historic") do
   change(
     "2019-12-10",
@@ -25,5 +27,12 @@ BanList.for_format("historic") do
     "2020-06-09",
     "https://magic.wizards.com/en/articles/archive/news/suspension-update-historic-digital-format-2020-06-08",
     "Winota, Joiner of Forces" => "banned", # "suspended"
+  )
+
+  change(
+    "2020-07-13",
+    "https://magic.wizards.com/en/articles/archive/news/july-13-2020-banned-and-restricted-announcement-2020-07-13",
+    "Nexus of Fate" => "banned",
+    "Burning-Tree Emissary" => "banned",
   )
 end
