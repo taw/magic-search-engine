@@ -26,6 +26,11 @@ describe "Formats" do
       ]],
     ])
     FormatModern.new.ban_events.should eq([
+      [Date.parse("2020-07-13"),
+        "https://magic.wizards.com/en/articles/archive/news/july-13-2020-banned-and-restricted-announcement-2020-07-13",
+      [
+        {:name=>"Arcum's Astrolabe", :new=>"banned", :old=>"legal"},
+      ]],
       [Date.parse("2020-03-10"),
         "https://magic.wizards.com/en/articles/archive/news/march-9-2020-banned-and-restricted-announcement",
       [
@@ -186,7 +191,7 @@ describe "Formats" do
   end
 
   it "historic" do
-    assert_count_cards "banned:historic", 6
+    assert_count_cards "banned:historic", 8
   end
 
   # We don't keep historical legality for Petty Dreadful yet
@@ -228,6 +233,7 @@ describe "Formats" do
       banned:pauper or
       banned:duel or
       banned:brawl or
+      banned:historic or
       banned:"Mirrodin Block" or
       banned:"Urza Block" or
       banned:"Ice Age Block" or

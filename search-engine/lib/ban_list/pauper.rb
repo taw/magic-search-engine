@@ -77,4 +77,11 @@ BanList.for_format("pauper") do
     "Pradesh Gypsies" => "banned",
     "Stone-Throwing Devils" => "banned",
   )
+
+  change(
+    "2020-07-13",
+    "https://magic.wizards.com/en/articles/archive/news/july-13-2020-banned-and-restricted-announcement-2020-07-13",
+    "Expedition Map" => "banned",
+    "Mystic Sanctuary" => "banned",
+  )
 end

@@ -140,4 +140,10 @@ BanList.for_format("modern") do
     "https://magic.wizards.com/en/articles/archive/news/march-9-2020-banned-and-restricted-announcement",
     "Once Upon a Time" => "banned",
   )
+
+  change(
+    "2020-07-13",
+    "https://magic.wizards.com/en/articles/archive/news/july-13-2020-banned-and-restricted-announcement-2020-07-13",
+    "Arcum's Astrolabe" => "banned",
+  )
 end

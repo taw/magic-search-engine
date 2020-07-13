@@ -36,4 +36,10 @@ BanList.for_format("pioneer") do
     "Oko, Thief of Crowns" => "banned",
     "Nexus of Fate" => "banned",
   )
+
+  change(
+    "2020-07-13",
+    "https://magic.wizards.com/en/articles/archive/news/july-13-2020-banned-and-restricted-announcement-2020-07-13",
+    "Oath of Nissa" => "legal",
+  )
 end
