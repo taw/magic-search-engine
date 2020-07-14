@@ -12,6 +12,11 @@ describe "Spelling" do
       "Okaun, Eye of Chaos"
   end
 
+  it "Domesticated Mammoth" do
+    assert_search_results "related:Pacifism",
+      "Domesticated Mammoth"
+  end
+
   it "*" do
     assert_search_equal "related:t:*", "related:*"
   end

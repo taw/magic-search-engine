@@ -8,7 +8,7 @@ class PatchLinkRelated < Patch
     # "Take Inventory" doesn't mistakenly seem to refer to "Take" etc.
     # Second regexp for empire series
     any_card = Regexp.union(all_card_names.sort_by(&:size).reverse)
-    rx = /\b(?:named|Partner with) (#{any_card})(?:(?:,|,? and|,? or) (#{any_card}))?(?:(?:,|,? and|,? or) (#{any_card}))?/
+    rx = /\b(?:named|Partner with|token copy of) (#{any_card})(?:(?:,|,? and|,? or) (#{any_card}))?(?:(?:,|,? and|,? or) (#{any_card}))?/
 
     # Extract links
     links = {}
