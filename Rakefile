@@ -148,6 +148,14 @@ task "update" do
   # sh "trash ./tmp/AllSets.json"
 end
 
+desc "Update decklists only"
+task "update:decks" do
+  Pathname("tmp").mkpath
+  sh "~/github/magic-preconstructed-decks/bin/build_jsons ./tmp/decks.json"
+  sh "./deck_indexer/bin/deck_indexer"
+  sh "./bin/export_decks_data  ~/github/magic-preconstructed-decks-data/decks.json"
+end
+
 desc "Run Rails frontend, localhost only"
 task "rails:localhost" do
   Dir.chdir("frontend") do
