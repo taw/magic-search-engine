@@ -25,7 +25,10 @@ describe "is:booster" do
         )
       )
       if set_code == "jmp"
-        warn "JMP needs boosters!!! FIXME please"
+        # There are 121 random precon/booster things
+        # These could be modelled as 121 boosters, for total of 2420 one-card sheets
+        # Or as 121 precons
+        # It's not perfect match either way, but I went with 121 precons
         set.should_not have_boosters, "#{set_pp} should not have boosters yet"
       elsif should_have_boosters
         set.should have_boosters, "#{set_pp} should have boosters"
