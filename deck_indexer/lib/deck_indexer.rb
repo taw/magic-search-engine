@@ -201,7 +201,11 @@ class DeckIndexer
     end
 
     # Otherwise just get one with lowest number, but print a warning
-    warn "#{deck["set_code"]} #{deck["name"]}: Cannot resolve #{card["name"]}. Candidates are: #{printings.map{|c| [c[0], "/", c[1]["number"]].join }.join(", ")}"
+    # Use same format as magic-preconstructed-decks for easy copypasta
+    candidates = printings.map{|c|
+      "[#{c[0].upcase}:#{c[1]["number"]}]"
+    }.join(" ")
+    warn "#{deck["set_code"]} #{deck["name"]}: Cannot resolve #{card["name"]}. Candidates are: #{candidates}"
     printings[0]
   end
 

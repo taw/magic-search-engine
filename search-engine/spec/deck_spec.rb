@@ -47,6 +47,7 @@ describe Deck do
       ["core", "Spellslinger Starter Kit"],
       ["funny", "Halfdeck"],
       ["starter", "Jumpstart"], # JMP only
+      ["memorabilia", "World Championship Decks"], # WCxx
     ]
 
     db.sets.each do |set_code, set|
