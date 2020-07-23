@@ -1,6 +1,7 @@
+require "date"
 require "json"
 require "pathname"
-require "date"
+require "pry"
 
 class DeckIndexer
   def initialize(card_index_json, decks_json, save_path)
@@ -188,7 +189,9 @@ class DeckIndexer
 
     # Basics and guildgates (without special effects), nobody really cares
     # which one you'll get
-    if allowed_conflicts.include?(card["name"])
+    #
+    # JMP and WC need special treatment
+    if allowed_conflicts.include?(card["name"]) and deck["set_code"] !~ /\Awc/i
       return printings[0]
     end
 
