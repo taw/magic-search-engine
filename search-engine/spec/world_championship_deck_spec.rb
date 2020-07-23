@@ -15,7 +15,6 @@ describe "World Championship Decks" do
         end
       end
 
-      # https://github.com/mtgjson/mtgjson/issues/629
       it "mainboard contains non-SB cards" do
         set.decks.each do |deck|
           bad_cards = deck.cards.map(&:last).select{|c| c.number =~ /sb.?\z/ }
@@ -23,7 +22,6 @@ describe "World Championship Decks" do
         end
       end
 
-      # https://github.com/mtgjson/mtgjson/issues/629
       it "sideboard contains SB cards" do
         set.decks.each do |deck|
           bad_cards = deck.sideboard.map(&:last).reject{|c| c.number =~ /sb.?\z/ }
