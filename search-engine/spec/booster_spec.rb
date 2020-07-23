@@ -24,7 +24,7 @@ describe "is:booster" do
           !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana fmb1].include?(set.code)
         )
       )
-      if set_code == "jmp"
+      if set_code == "jmp" or set_code == "ajmp"
         # There are 121 random precon/booster things
         # These could be modelled as 121 boosters, for total of 2420 one-card sheets
         # Or as 121 precons
