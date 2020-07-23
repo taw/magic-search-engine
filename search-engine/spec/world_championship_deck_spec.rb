@@ -6,7 +6,6 @@ describe "World Championship Decks" do
       let(:set) { db.sets[set_code] }
       let(:decks) { set.decks }
 
-      # FIXME
       it "every deck contains cards for same player" do
         set.decks.each do |deck|
           numbers = deck.physical_cards.map(&:number)
@@ -34,7 +33,6 @@ describe "World Championship Decks" do
         cards.none?(&:foil).should be(true)
       end
 
-      # FIXME
       it "every card card in the set is in one of the decks" do
         cards_in_set = set.physical_cards
         cards_in_decks = set.decks.flat_map(&:physical_cards).uniq
