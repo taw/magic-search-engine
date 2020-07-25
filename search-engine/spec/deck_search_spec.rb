@@ -54,4 +54,18 @@ describe "deck: search" do
       db.resolve_deck_name("#{set.code}/*").should eq(decks)
     end
   end
+
+  it "ignores accented characters" do
+    assert_search_equal "deck:Šlemr", "deck:Slemr"
+    assert_search_equal "deck:ŠLEMR", "deck:šlemr"
+
+    assert_search_equal "deck:Kröger", "deck:Kroger"
+    assert_search_equal "deck:KRÖGER", "deck:kroger"
+
+    assert_search_equal "deck:Kühn", "deck:Kühn"
+    assert_search_equal "deck:KÜHN", "deck:kühn"
+
+    assert_search_equal "deck:Romão", "deck:Romao"
+    assert_search_equal "deck:ROMÃO", "deck:romao"
+  end
 end
