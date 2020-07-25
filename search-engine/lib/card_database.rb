@@ -34,7 +34,7 @@ end
 
 class String
   def normalize_accents
-    result = gsub("Æ", "Ae").gsub("æ", "ae").tr("ĆćÄàáâäèéêíõöúûüǵ’\u2212", "CcAaaaaeeeioouuug'-")
+    result = gsub("Æ", "Ae").gsub("æ", "ae").tr("ĆćÄàáâäãèéêíõöúûüǵŠš’\u2212", "CcAaaaaaeeeioouuugSs'-")
     result = self if result == self # Memory saving trick
     -result
   end
@@ -184,7 +184,12 @@ class CardDatabase
       possible_decks = decks
       deck_query = deck_name
     end
-    deck_query = deck_query.downcase.strip.gsub("'s", "").gsub(",", "")
+    deck_query = deck_query
+      .downcase
+      .strip
+      .gsub("'s", "")
+      .gsub(",", "")
+      .normalize_accents
 
     return possible_decks if deck_query == "*"
 
@@ -194,14 +199,14 @@ class CardDatabase
     return decks unless decks.empty?
 
     decks = possible_decks.select do |deck|
-      deck.name.downcase.gsub("'s", "").gsub(",", "") == deck_query
+      deck.name.downcase.gsub("'s", "").gsub(",", "").normalize_accents == deck_query
     end
     return decks unless decks.empty?
 
     normalized_query_words = deck_query.split
 
     possible_decks.select do |deck|
-      normalized_words = deck.name.downcase.gsub("'s", "").gsub(",", "").split
+      normalized_words = deck.name.downcase.gsub("'s", "").gsub(",", "").normalize_accents.split
       normalized_query_words.all?{|qw| normalized_words.include?(qw)}
     end
   end

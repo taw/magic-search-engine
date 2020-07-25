@@ -12,6 +12,10 @@ class ConditionDeck < Condition
       warning %Q[Multiple decks matching "#{@deck_name}": #{deck_names.join(", ")}]
     end
 
+    # FIXME:
+    # This is true only for non-special basics (plus Wastes and guildgates).
+    # Everything else should have exact resolution.
+    #
     # We don't have printing resolution within same set
     # so we need extra step, so all C17 Forests get included, not just some
     matching_card_names = {}
