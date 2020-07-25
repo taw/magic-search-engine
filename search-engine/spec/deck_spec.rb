@@ -83,6 +83,12 @@ describe Deck do
     end
   end
 
+  it "all decks have release date" do
+    db.decks.each do |deck|
+      deck.release_date.should_not eq(nil), "#{deck.name} for #{deck.set.name}"
+    end
+  end
+
   it "cards in precon sets have no off-set cards" do
     precon_sets.each do |set|
       sets_found = set.decks.flat_map(&:physical_cards).map(&:set).map(&:code).uniq
