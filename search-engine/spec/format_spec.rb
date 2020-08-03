@@ -7,7 +7,18 @@ describe "Formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
-      %Q[e:grn,rna,war,m20,eld,thb,iko,m21 -(Field of the Dead) -(Veil of Summer) -(Oko Thief of Crowns) -(Once Upon Time) -(Fires of Invention) -(Agent of Treachery)]
+      %Q[e:grn,rna,war,m20,eld,thb,iko,m21
+        -(Field of the Dead)
+        -(Veil of Summer)
+        -(Oko Thief of Crowns)
+        -(Once Upon Time)
+        -(Fires of Invention)
+        -(Agent of Treachery)
+        -(Wilderness Reclamation)
+        -(Growth Spiral)
+        -(Teferi, Time Raveler)
+        -(Cauldron Familiar)
+    ]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal_cards 'f:"ravnica block"', 'b:ravnica'
@@ -191,7 +202,7 @@ describe "Formats" do
   end
 
   it "historic" do
-    assert_count_cards "banned:historic", 8
+    assert_count_cards "banned:historic", 10
   end
 
   # We don't keep historical legality for Petty Dreadful yet

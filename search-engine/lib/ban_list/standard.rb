@@ -150,4 +150,13 @@ BanList.for_format("standard") do
     "Agent of Treachery" => "banned",
     "Fires of Invention" => "banned",
   )
+
+  change(
+    "2020-08-03",
+    "https://magic.wizards.com/en/articles/archive/news/august-8-2020-banned-and-restricted-announcement",
+    "Wilderness Reclamation" => "banned",
+    "Growth Spiral" => "banned",
+    "Teferi, Time Raveler" => "banned",
+    "Cauldron Familiar" => "banned",
+  )
 end

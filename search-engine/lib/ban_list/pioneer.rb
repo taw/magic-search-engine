@@ -42,4 +42,13 @@ BanList.for_format("pioneer") do
     "https://magic.wizards.com/en/articles/archive/news/july-13-2020-banned-and-restricted-announcement-2020-07-13",
     "Oath of Nissa" => "legal",
   )
+
+  change(
+    "2020-08-03",
+    "https://magic.wizards.com/en/articles/archive/news/august-8-2020-banned-and-restricted-announcement",
+    "Inverter of Truth" => "banned",
+    "Kethis, the Hidden Hand" => "banned",
+    "Walking Ballista" => "banned",
+    "Underworld Breach" => "banned",
+  )
 end
