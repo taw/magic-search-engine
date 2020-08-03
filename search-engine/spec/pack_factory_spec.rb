@@ -27,7 +27,7 @@ describe PackFactory do
       s.types.include?("core") or s.types.include?("expansion")
     }.to_set }
     let(:expected_official) {
-      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1]
+      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm]
     }
     let(:expected_mtgjson_variant) {
       ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "4ed"]

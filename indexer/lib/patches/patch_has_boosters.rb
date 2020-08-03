@@ -1,3 +1,6 @@
+# This is really silly, as we're running the show now
+# It is leftover from how it used to work in v3 / v4
+
 class PatchHasBoosters < Patch
   def call
     each_set do |set|
@@ -9,8 +12,7 @@ class PatchHasBoosters < Patch
         has_own_boosters = !!booster
       end
 
-      # v4 bug?
-      if %W[me1 nem mh1 p02 m20 eld thb mb1 cmb1 iko m21].include?(set["code"])
+      if %W[me1 nem mh1 p02 m20 eld thb mb1 cmb1 iko m21 2xm].include?(set["code"])
         has_own_boosters = true
       end
 
