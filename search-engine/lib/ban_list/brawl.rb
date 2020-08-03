@@ -49,4 +49,10 @@ BanList.for_format("brawl") do
     "Drannith Magistrate" => "banned",
     "Winota, Joiner of Forces" => "banned",
   )
+
+  change(
+    "2020-08-03",
+    "https://magic.wizards.com/en/articles/archive/news/august-8-2020-banned-and-restricted-announcement",
+    "Teferi, Time Raveler" => "banned",
+  )
 end

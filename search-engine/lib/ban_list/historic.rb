@@ -35,4 +35,11 @@ BanList.for_format("historic") do
     "Nexus of Fate" => "banned",
     "Burning-Tree Emissary" => "banned",
   )
+
+  change(
+    "2020-08-03",
+    "https://magic.wizards.com/en/articles/archive/news/august-8-2020-banned-and-restricted-announcement",
+    "Wilderness Reclamation" => "banned", # "suspended",
+    "Teferi, Time Raveler" => "banned", # "suspended"
+  )
 end
