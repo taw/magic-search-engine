@@ -47,6 +47,7 @@ describe "multiverse ids" do
       when "iko"
       when "m21"
         # Not yet
+      when "jmp"
       else
         set.printings.group_by{|c| !!c.multiverseid}.size.should eq(1), "Set #{set_code} has cards with and without multiverseid"
       end
