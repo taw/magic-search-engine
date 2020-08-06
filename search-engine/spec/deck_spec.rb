@@ -46,13 +46,15 @@ describe Deck do
       ["box", "Commander Deck"], # MTGO
       ["core", "Spellslinger Starter Kit"],
       ["funny", "Halfdeck"],
-      ["starter", "Jumpstart"], # JMP only
+      ["draft innovation", "Jumpstart"], # JMP only
       ["memorabilia", "World Championship Decks"], # WCxx
     ]
 
     db.sets.each do |set_code, set|
       set.decks.each do |deck|
-        (allowed_combinations & set.types.map{|st| [st, deck.type]}).should_not be_empty
+        allowed_set_types = allowed_combinations.select{|_,dt| dt == deck.type}.map(&:first)
+        (allowed_set_types & set.types).should_not be_empty,
+          "Deck #{deck.name} has type:\n  #{deck.type}\nIt is allowed for set types:\n  #{allowed_set_types.join(", ")}\nbut set #{set.code} #{set.name} has types:\n  #{set.types.join(", ")}"
       end
     end
   end
