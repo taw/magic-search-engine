@@ -188,7 +188,7 @@ describe "Any queries" do
     end
 
     it "permanent" do
-      assert_search_equal "any:permanent", "is:permanent or o:permanent or ft:permanent"
+      assert_search_equal "any:permanent", "is:permanent or o:permanent or ft:permanent or foreign:permanent"
     end
 
     it "primary" do

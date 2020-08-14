@@ -22,6 +22,8 @@ describe "multiverse ids" do
     end
   end
 
+  # This used to be true, but it hasn't been true in ages
+
   it "each set is all with or all without multiveresids" do
     db.sets.each do |set_code, set|
       # These are gatherer sets to which mtgjson adds some extra cards
@@ -48,6 +50,7 @@ describe "multiverse ids" do
       when "m21"
         # Not yet
       when "jmp"
+      when "2xm"
       else
         set.printings.group_by{|c| !!c.multiverseid}.size.should eq(1), "Set #{set_code} has cards with and without multiverseid"
       end
