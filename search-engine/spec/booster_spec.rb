@@ -21,7 +21,7 @@ describe "is:booster" do
       should_have_boosters = (
         %W[mb1 cmb1].include?(set_code) or (
           !(set_types_with_boosters & set.types).empty? and
-          !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana fmb1].include?(set.code)
+          !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana fmb1 anb].include?(set.code)
         )
       )
       if set_code == "jmp" or set_code == "ajmp"
