@@ -42,4 +42,10 @@ BanList.for_format("historic") do
     "Wilderness Reclamation" => "banned", # "suspended",
     "Teferi, Time Raveler" => "banned", # "suspended"
   )
+
+  change(
+    "2020-08-24",
+    "https://magic.wizards.com/en/articles/archive/news/august-24-2020-banned-and-restricted-announcement",
+    "Field of the Dead" => "banned",
+  )
 end
