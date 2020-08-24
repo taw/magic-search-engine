@@ -202,7 +202,7 @@ describe "Formats" do
   end
 
   it "historic" do
-    assert_count_cards "banned:historic", 10
+    assert_count_cards "banned:historic", 11
   end
 
   # We don't keep historical legality for Petty Dreadful yet
