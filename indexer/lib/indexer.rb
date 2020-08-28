@@ -198,7 +198,6 @@ class Indexer
         "type",
         "meta",
       ).merge(
-        "mci_code" => set_data["magicCardsInfoCode"],
         "gatherer_code" => set_data["gathererCode"],
         "official_code" => set_data["code"],
         "online_only" => (set_data["onlineOnly"] || set_data["isOnlineOnly"]) ? true : nil,

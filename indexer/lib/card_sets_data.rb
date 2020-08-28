@@ -1,10 +1,18 @@
 class CardSetsData
   def initialize
-    @data = set_paths.map{|path| JSON.parse(path.read)}.map{|set|
-      [set["code"], set]
-    }.sort_by{|set_code, set|
-      [set["releaseDate"] || "9999-12-31", set_code]
-    }.to_h
+    @data = set_paths
+      .map{|path| JSON.parse(path.read)}
+      .map{|set|
+        # accept v4 and v5
+        if set["data"]
+          set["data"].merge("meta" => set["meta"])
+        else
+          set
+        end
+      }
+      .map{|set| [set["code"], set] }
+      .sort_by{|set_code, set| [set["releaseDate"] || "9999-12-31", set_code] }
+    .to_h
   end
 
   def sets_path
