@@ -21,39 +21,4 @@ describe "multiverse ids" do
       end
     end
   end
-
-  # This used to be true, but it hasn't been true in ages
-
-  it "each set is all with or all without multiveresids" do
-    db.sets.each do |set_code, set|
-      # These are gatherer sets to which mtgjson adds some extra cards
-      case set_code
-      when "aer", "kld", "mir", "ody", "5ed", "shm", "10e", "soi", "atq", "drk", "unh", "m20", "4ed"
-        # It's a very specific check as we want to do the same check in PatchExcludeFromBoosters
-        set.printings.group_by{|x| [!(x.number =~ /†|★/), !!x.multiverseid]}.keys.should match_array([
-          [true, true], [false, false]
-        ]), "Set #{set_code} should have all non-gatherer cards marked with † or ★"
-      # Known issues, ignore for now
-      when "ppre" # Weird "Promo set for Gatherer"
-      when "pmei"
-      when "s00"
-      when "war" # Japanese promos
-      when "med" # reported mtgjson bug
-      when "phop" # fake set with stuff coming from 2 sources
-      when "pmoa" # vanguard weirdness
-      when "sld" # set keeps getting updated
-      when "cmb1"
-      when "eld"
-        # Something's really messed up here, possibly related to ELD vs CELD
-      when "thb"
-      when "iko"
-      when "m21"
-        # Not yet
-      when "jmp"
-      when "2xm"
-      else
-        set.printings.group_by{|c| !!c.multiverseid}.size.should eq(1), "Set #{set_code} has cards with and without multiverseid"
-      end
-    end
-  end
 end
