@@ -68,6 +68,9 @@ class Format
     if deck.number_of_sideboard_cards > 15
       issues << "Deck must contain at most 15 sideboard cards, has #{deck.number_of_sideboard_cards}"
     end
+    if deck.number_of_commander_cards > 0
+      issues << "Format does not support commanders"
+    end
     issues
   end
 

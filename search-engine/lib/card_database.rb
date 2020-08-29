@@ -347,7 +347,7 @@ class CardDatabase
     @cards_in_precons = {}
     @sets.values
       .flat_map(&:decks)
-      .flat_map(&:cards_with_sideboard)
+      .flat_map(&:cards_in_all_zones)
       .map(&:last)
       .flat_map{|c| c.parts.map(&:name).map{|n| [c.set_code, c.foil, n] }}
       .each do |set_code, foil, name|

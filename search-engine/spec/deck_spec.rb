@@ -286,11 +286,12 @@ describe Deck do
     end
   end
 
-  describe "#cards_with_sideboard adds up mainboard and sideboard" do
+  describe "#cards_in_all_zones adds up mainboard and sideboard" do
     let(:deck) { db.sets["grn"].deck_named("United Assault") }
     let(:main) { deck.cards }
     let(:side) { deck.sideboard }
-    let(:all) { deck.cards_with_sideboard }
+    let(:commander) { deck.commander }
+    let(:all) { deck.cards_in_all_zones }
     let(:conclave_tribunal) {
       PhysicalCard.for db.search("Conclave Tribunal e:grn").printings.first
     }
@@ -298,10 +299,30 @@ describe Deck do
     it do
       main.sum(&:first).should eq 60
       side.sum(&:first).should eq 15
+      commander.sum(&:first).should eq 0
       all.sum(&:first).should eq 75
       main.should include [3, conclave_tribunal]
       side.should include [1, conclave_tribunal]
       all.should include [4, conclave_tribunal]
+    end
+  end
+
+  describe "#cards_in_all_zones adds up mainboard and sideboard and commander" do
+    let(:deck) { db.sets["eld"].deck_named("Savage Hunter") }
+    let(:main) { deck.cards }
+    let(:side) { deck.sideboard }
+    let(:commander) { deck.commander }
+    let(:all) { deck.cards_in_all_zones }
+    let(:korvold) {
+      PhysicalCard.for db.search("Korvold, Fae-Cursed King e:eld").printings.first, true
+    }
+
+    it do
+      main.sum(&:first).should eq 59
+      side.sum(&:first).should eq 0
+      commander.sum(&:first).should eq 1
+      commander.should include [1, korvold]
+      all.should include [1, korvold]
     end
   end
 
@@ -335,8 +356,8 @@ describe Deck do
     end
 
     it "supports partner commanders" do
-      DeckParser.new(db, "Sideboard\n Akiri, Line-Slinger\n Ikra Shidiqi, the Usurper").deck.color_identity.should eq("bgrw")
-      DeckParser.new(db, "Sideboard\n Kydele, Chosen of Kruphix\n Ikra Shidiqi, the Usurper").deck.color_identity.should eq("bgu")
+      DeckParser.new(db, "COMMANDER: 1x Akiri, Line-Slinger\nCOMMANDER: 1x Ikra Shidiqi, the Usurper").deck.color_identity.should eq("bgrw")
+      DeckParser.new(db, "COMMANDER: 1x Kydele, Chosen of Kruphix\nCOMMANDER: 1x Ikra Shidiqi, the Usurper").deck.color_identity.should eq("bgu")
     end
   end
 end

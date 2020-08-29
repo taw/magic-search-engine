@@ -1,8 +1,8 @@
 class DeckParser
   # For testing only:
-  attr_reader :lines, :main, :side
+  attr_reader :lines, :main, :side, :commander
 
-  attr_reader :main_cards, :sideboard_cards
+  attr_reader :main_cards, :sideboard_cards, :commander_cards
 
   def initialize(db, text)
     @db = db
@@ -10,7 +10,8 @@ class DeckParser
     @lines = text.sub(/\A\s+/, "").sub(/\s+\z/, "").lines.map(&:chomp).map(&:strip)
     preparse
     @main_cards = resolve_card_list(@main)
-    @sideboard_cards = resolve_card_list(@side.map)
+    @sideboard_cards = resolve_card_list(@side)
+    @commander_cards = resolve_card_list(@commander)
   end
 
   # This method is really messy, but is has decent test coverage
@@ -18,6 +19,7 @@ class DeckParser
     in_sideboard = false
     @main = []
     @side = []
+    @commander = []
     current = @main
     @lines.each do |line|
       foil = nil
@@ -32,6 +34,8 @@ class DeckParser
       end
       if line =~ /\ASB:\s*(.*)/
         target, line = @side, $1
+      elsif line =~ /\ACOMMANDER:\s*(.*)/
+        target, line = @commander, $1
       else
         target = current
       end
@@ -54,10 +58,11 @@ class DeckParser
       end
       target << {name: name, count: num, set_code: set_code, number: number, foil: foil}.compact
     end
+    commander_detection_heuristic!
   end
 
   def deck
-    Deck.new(@main_cards, @sideboard_cards)
+    Deck.new(@main_cards, @sideboard_cards, @commander_cards)
   end
 
   private
@@ -119,5 +124,18 @@ class DeckParser
 
   def normalize_name(name)
     normalize_text(name).split.join(" ")
+  end
+
+  # Many deck formats do not have commander slot and use sideboard for that
+  def commander_detection_heuristic!
+    return unless @commander.empty?
+    return if @side.empty?
+    main_size = @main.map{|x| x[:count] }.sum
+    side_size = @side.map{|x| x[:count] }.sum
+    total_size = main_size + side_size
+    return unless total_size == 60 or total_size == 100
+    if side_size == 1 or side_size == 2
+      @commander, @side = @side, @commander
+    end
   end
 end
