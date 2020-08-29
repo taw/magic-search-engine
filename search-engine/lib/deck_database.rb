@@ -16,6 +16,7 @@ class DeckDatabase
       set = @db.sets[set_code] or raise "Set not found #{set_code}"
       cards = deck["cards"].map{|c| resolve_card(*c) }
       sideboard = deck["sideboard"].map{|c| resolve_card(*c) }
+      commander = deck["commander"].map{|c| resolve_card(*c) }
       date = deck["release_date"]
       date = date ? Date.parse(date) : nil
       deck = PreconDeck.new(
@@ -25,6 +26,7 @@ class DeckDatabase
         date,
         cards,
         sideboard,
+        commander,
       )
       set.decks << deck
     end

@@ -16,8 +16,7 @@ describe "Deck legality" do
   def parse_decklist_for_commander(*cards)
     parse_decklist <<~EOF
     100x Forest
-    Sideboard
-    #{ cards.join("\n") }
+    #{ cards.map{|c| "COMMANDER: #{c}"}.join("\n") }
     EOF
   end
 
@@ -186,53 +185,78 @@ describe "Deck legality" do
           when FormatBrawl
             legality_40_0.should match_array([
               "Deck must contain exactly 60 cards, has 40",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 0"])
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
+            ])
             legality_40_22.should match_array([
               "Deck must contain exactly 60 cards, has 62",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 22"])
+              "Deck cannot have sideboard, has 22 (1-2 card sideboard is treated as commander not sideboard)",
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
+            ])
             legality_60_0.should match_array([
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 0"])
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
+            ])
             legality_60_15.should match_array([
               "Deck must contain exactly 60 cards, has 75",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 15"])
+              "Deck cannot have sideboard, has 15 (1-2 card sideboard is treated as commander not sideboard)",
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0"
+            ])
             legality_61_15.should match_array([
               "Deck must contain exactly 60 cards, has 76",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 15"])
+              "Deck cannot have sideboard, has 15 (1-2 card sideboard is treated as commander not sideboard)",
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0"
+            ])
             legality_240_15.should match_array([
               "Deck must contain exactly 60 cards, has 255",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 15"])
+              "Deck cannot have sideboard, has 15 (1-2 card sideboard is treated as commander not sideboard)",
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0"
+            ])
             legality_59_1.should be_empty
             legality_58_2.should be_empty
             legality_99_1.should match_array([
-              "Deck must contain exactly 60 cards, has 100"])
+              "Deck must contain exactly 60 cards, has 100",
+            ])
             legality_98_2.should match_array([
-              "Deck must contain exactly 60 cards, has 100"])
+              "Deck must contain exactly 60 cards, has 100",
+            ])
             legality_100_0.should match_array([
               "Deck must contain exactly 60 cards, has 100",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 0"])
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
+            ])
             legality_99_16.should match_array([
               "Deck must contain exactly 60 cards, has 115",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 16"])
+              "Deck cannot have sideboard, has 16 (1-2 card sideboard is treated as commander not sideboard)",
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
+            ])
 
           when FormatCommander, FormatDuelCommander, FormatMTGOCommander
             legality_40_0.should match_array([
               "Deck must contain exactly 100 cards, has 40",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 0"])
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
+            ])
             legality_40_22.should match_array([
               "Deck must contain exactly 100 cards, has 62",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 22"])
+              "Deck cannot have sideboard, has 22 (1-2 card sideboard is treated as commander not sideboard)",
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
+            ])
             legality_60_0.should match_array([
               "Deck must contain exactly 100 cards, has 60",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 0"])
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
+            ])
             legality_60_15.should match_array([
               "Deck must contain exactly 100 cards, has 75",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 15"])
+              "Deck cannot have sideboard, has 15 (1-2 card sideboard is treated as commander not sideboard)",
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
+            ])
             legality_61_15.should match_array([
               "Deck must contain exactly 100 cards, has 76",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 15"])
+              "Deck cannot have sideboard, has 15 (1-2 card sideboard is treated as commander not sideboard)",
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
+            ])
             legality_240_15.should match_array([
               "Deck must contain exactly 100 cards, has 255",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 15"])
+              "Deck cannot have sideboard, has 15 (1-2 card sideboard is treated as commander not sideboard)",
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
+            ])
 
             legality_59_1.should match_array([
               "Deck must contain exactly 100 cards, has 60"])
@@ -241,32 +265,47 @@ describe "Deck legality" do
             legality_99_1.should be_empty
             legality_98_2.should be_empty
             legality_100_0.should match_array([
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 0"])
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
+            ])
             legality_99_16.should match_array([
               "Deck must contain exactly 100 cards, has 115",
-              "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has 16"])
+              "Deck cannot have sideboard, has 16 (1-2 card sideboard is treated as commander not sideboard)",
+              "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
+            ])
 
           else
             legality_40_0.should match_array([
-              "Deck must contain at least 60 mainboard cards, has only 40"])
+              "Deck must contain at least 60 mainboard cards, has only 40",
+            ])
             legality_40_22.should match_array([
               "Deck must contain at least 60 mainboard cards, has only 40",
-              "Deck must contain at most 15 sideboard cards, has 22"])
+              "Deck must contain at most 15 sideboard cards, has 22",
+            ])
             legality_60_0.should be_empty
             legality_60_15.should be_empty
             legality_61_15.should be_empty
             legality_240_15.should be_empty
 
             legality_59_1.should match_array([
-              "Deck must contain at least 60 mainboard cards, has only 59"])
+              "Deck must contain at least 60 mainboard cards, has only 59",
+              "Format does not support commanders", # due to autodetection
+            ])
             legality_58_2.should match_array([
-              "Deck must contain at least 60 mainboard cards, has only 58"])
+              "Deck must contain at least 60 mainboard cards, has only 58",
+              "Format does not support commanders", # due to autodetection
+            ])
             # Commander decks just so happen to be legal Constructed decks
-            legality_99_1.should be_empty
-            legality_98_2.should be_empty
+            # except our heuristics breaks them by moving sideboard to commander
+            legality_99_1.should  match_array([
+              "Format does not support commanders", # due to autodetection
+            ])
+            legality_98_2.should  match_array([
+              "Format does not support commanders", # due to autodetection
+            ])
             legality_100_0.should be_empty
             legality_99_16.should match_array([
-              "Deck must contain at most 15 sideboard cards, has 16"])
+              "Deck must contain at most 15 sideboard cards, has 16",
+            ])
           end
         end
       end
@@ -289,6 +328,8 @@ describe "Deck legality" do
       1x Bronze Tablet
       3x Aerial Toastmaster
       1x Ancestral Recall
+      COMMANDER: 1x Birds of Paradise
+      COMMANDER: 1x Korvold, Fae-Cursed King
 
       Sideboard
       2x [M11] Birds of Paradise
@@ -304,7 +345,7 @@ describe "Deck legality" do
 
     it do
       vintage.deck_card_issues(deck).should match_array([
-        "Deck contains 5 copies of Birds of Paradise, only up to 4 allowed",
+        "Deck contains 6 copies of Birds of Paradise, only up to 4 allowed",
         "Deck contains 2 copies of Black Lotus, which is restricted to only up to 1 allowed",
         "Deck contains 2 copies of Mox Pearl, which is restricted to only up to 1 allowed",
         "Amulet of Quoz is banned",
@@ -457,8 +498,7 @@ describe "Deck legality" do
       Birds of Paradise
       Mox Sapphire
 
-      Sideboard
-      Kaalia of the Vast
+      COMMANDER: Kaalia of the Vast
       EOF
     end
 
@@ -481,8 +521,7 @@ describe "Deck legality" do
       1x Birds of Paradise
       10x Wastes
 
-      Sideboard
-      Karn, Scion of Urza
+      COMMANDER: Karn, Scion of Urza
       EOF
     }
     let(:deck_same_basics) {
@@ -494,8 +533,7 @@ describe "Deck legality" do
       10x Mountain
       10x Snow-Covered Mountain
 
-      Sideboard
-      Karn, Scion of Urza
+      COMMANDER: Karn, Scion of Urza
       EOF
     }
     let(:deck_mixed_basics) {
@@ -509,8 +547,7 @@ describe "Deck legality" do
       10x Forest
       10x Snow-Covered Island
 
-      Sideboard
-      Karn, Scion of Urza
+      COMMANDER: Karn, Scion of Urza
       EOF
     }
 
@@ -574,9 +611,8 @@ describe "Deck legality" do
       1x Adriana's Valor
       1x Sorcerous Spyglass
 
-      Sideboard
-      Glissa, the Traitor
-      Kydele, Chosen of Kruphix
+      COMMANDER: Glissa, the Traitor
+      COMMANDER: Kydele, Chosen of Kruphix
       EOF
     }
     let(:issues) { format.deck_issues(deck) }
@@ -606,9 +642,8 @@ describe "Deck legality" do
       1x Adriana's Valor
       1x Sorcerous Spyglass
 
-      Sideboard
-      Glissa, the Traitor
-      Kydele, Chosen of Kruphix
+      COMMANDER: Glissa, the Traitor
+      COMMANDER: Kydele, Chosen of Kruphix
       EOF
     }
     let(:issues) { format.deck_issues(deck) }

@@ -17,8 +17,11 @@ class FormatBrawl < FormatStandard
     if deck.number_of_total_cards != 60
       issues << "Deck must contain exactly 60 cards, has #{deck.number_of_total_cards}"
     end
-    unless deck.number_of_sideboard_cards.between?(1, 2)
-      issues << "Deck's sideboard must be exactly 1 card or 2 partner cards designated as commander, has #{deck.number_of_sideboard_cards}"
+    unless deck.number_of_commander_cards.between?(1, 2)
+      issues << "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has #{deck.number_of_commander_cards}"
+    end
+    unless deck.number_of_sideboard_cards == 0
+      issues << "Deck cannot have sideboard, has #{deck.number_of_sideboard_cards} (1-2 card sideboard is treated as commander not sideboard)"
     end
     issues
   end
@@ -42,7 +45,7 @@ class FormatBrawl < FormatStandard
   end
 
   def deck_commander_issues(deck)
-    cards = deck.sideboard.flat_map{|n,c| [c] * n}
+    cards = deck.commander.flat_map{|n,c| [c] * n}
     return [] unless cards.size.between?(1, 2)
 
     issues = []

@@ -1,7 +1,7 @@
 class PreconDeck < Deck
   attr_reader :set, :name, :type, :release_date, :slug
-  def initialize(set, name, type, release_date, cards, sideboard)
-    super(cards, sideboard)
+  def initialize(set, name, type, release_date, cards, sideboard, commander)
+    super(cards, sideboard, commander)
     @set = set
     @name = name
     @type = type
@@ -18,7 +18,7 @@ class PreconDeck < Deck
   end
 
   def all_set_codes
-    @all_set_codes ||= [*@cards, *@sideboard].map{|_,card| card.set_code}.to_set
+    @all_set_codes ||= [*@cards, *@sideboard, *@commander].map{|_,card| card.set_code}.to_set
   end
 
   def set_code
@@ -34,6 +34,9 @@ class PreconDeck < Deck
     output << "// NAME: #{@name} - #{@set.name} #{@type}"
     output << "// URL: http://mtg.wtf/deck/#{set.code}/#{slug}"
     output << "// DATE: #{@release_date.to_s}" if @release_date
+    @commander.each do |count, card|
+      output << "COMMANDER: #{count} #{card}"
+    end
     @cards.each do |count, card|
       output << "#{count} #{card}"
     end
