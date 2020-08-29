@@ -224,6 +224,9 @@ class DeckIndexer
     sideboard = deck["sideboard"].map do |card|
       index_card(card, deck)
     end
+    commander = deck["commander"].map do |card|
+      index_card(card, deck)
+    end
     {
       name: deck["name"],
       type: deck["type"],
@@ -232,6 +235,7 @@ class DeckIndexer
       release_date: deck["release_date"],
       cards: cards,
       sideboard: sideboard,
+      commander: commander,
     }.compact
   end
 
