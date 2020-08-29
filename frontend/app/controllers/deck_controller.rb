@@ -27,6 +27,7 @@ class DeckController < ApplicationController
 
     @cards = @deck.cards.sort_by{|_,c| [c.name, c.set_code, c.number] }
     @sideboard = @deck.sideboard.sort_by{|_,c| [c.name, c.set_code, c.number] }
+    @commander = @deck.commander.sort_by{|_,c| [c.name, c.set_code, c.number] }
 
     @card_previews = @deck.physical_cards
 
@@ -61,8 +62,15 @@ class DeckController < ApplicationController
       @sideboard = parser.sideboard_cards.sort_by{|_,c|
         c.is_a?(PhysicalCard) ? [0, c.name, c.set_code, c.number] : [1, c.name]
       }
+      @commander = parser.commander_cards.sort_by{|_,c|
+        c.is_a?(PhysicalCard) ? [0, c.name, c.set_code, c.number] : [1, c.name]
+      }
 
-      @card_previews = [*@cards.map(&:last), *@sideboard.map(&:last)].uniq.grep(PhysicalCard)
+      @card_previews = [
+        *@cards.map(&:last),
+        *@sideboard.map(&:last),
+        *@commander.map(&:last),
+      ].uniq.grep(PhysicalCard)
 
       choose_default_preview_card
       group_cards
@@ -73,8 +81,11 @@ class DeckController < ApplicationController
 
   def choose_default_preview_card
     # Choose best card to preview
-    if @sideboard.size == 1
+    if @commander.size.between?(1,2)
       # Commander
+      @default_preview_card = @commander.first.last
+    elsif @sideboard.size.between?(1,2)
+      # Commander, if it didn't get migrated to new system
       @default_preview_card = @sideboard.first.last
     else
       @default_preview_card = @card_previews.min_by do |c|
@@ -118,6 +129,9 @@ class DeckController < ApplicationController
     end
     unless @sideboard.empty?
       @card_groups[[9, "Sideboard"]] = @sideboard
+    end
+    unless @commander.empty?
+      @card_groups[[0, "Commander"]] = @commander
     end
     @card_groups = @card_groups.sort
   end
