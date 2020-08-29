@@ -37,6 +37,11 @@ class PatchExcludeFromBoosters < Patch
       if card["number"] =~ /†/ and (set_code != "arn" and set_code != "shm")
         card["exclude_from_boosters"] = true
       end
+
+      # Mostly Chinese non-skeleton versions
+      if card["number"] =~ /s/i and ["por", "usg", "inv", "pcy", "5ed", "6ed", "7ed", "8ed", "9ed"].include?(set_code)
+        card["exclude_from_boosters"] = true
+      end
     end
   end
 
