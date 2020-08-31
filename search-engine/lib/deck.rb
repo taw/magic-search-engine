@@ -15,6 +15,14 @@ class Deck
     result.map(&:reverse)
   end
 
+  def sideboard_and_commander
+    result = Hash.new(0)
+    [*@sideboard, *@commander].each do |number, card|
+      result[card] += number
+    end
+    result.map(&:reverse)
+  end
+
   def card_counts
     result = {}
     cards_in_all_zones.each do |number, physical_card|

@@ -142,8 +142,9 @@ task "update" do
   Rake::Task["index"].invoke
   sh "~/github/magic-preconstructed-decks/bin/build_jsons ./tmp/decks.json"
   sh "./deck_indexer/bin/deck_indexer"
-  sh "./bin/export_sealed_data  ~/github/magic-sealed-data"
-  sh "./bin/export_decks_data  ~/github/magic-preconstructed-decks-data/decks.json"
+  sh "./bin/export_sealed_data ~/github/magic-sealed-data"
+  sh "./bin/export_decks_data_old ~/github/magic-preconstructed-decks-data/decks.json"
+  sh "./bin/export_decks_data ~/github/magic-preconstructed-decks-data/decks_v2.json"
   # sh "trash ./tmp/decks.json"
   # sh "trash ./tmp/AllSets.json"
 end
@@ -153,7 +154,8 @@ task "update:decks" do
   Pathname("tmp").mkpath
   sh "~/github/magic-preconstructed-decks/bin/build_jsons ./tmp/decks.json"
   sh "./deck_indexer/bin/deck_indexer"
-  sh "./bin/export_decks_data  ~/github/magic-preconstructed-decks-data/decks.json"
+  sh "./bin/export_decks_data_old ~/github/magic-preconstructed-decks-data/decks.json"
+  sh "./bin/export_decks_data ~/github/magic-preconstructed-decks-data/decks_v2.json"
 end
 
 desc "Run Rails frontend, localhost only"
