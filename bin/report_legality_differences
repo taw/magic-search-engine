@@ -11,15 +11,24 @@ class ReportLegalityDifferences
     @mtgjson = JSON.parse(Pathname("#{__dir__}/../tmp/AllSets.json").read)
   end
 
+  # v4 vs v5
+  memoize def all_sets
+    if @mtgjson.keys.sort == ["data", "meta"]
+       @mtgjson["data"]
+    else
+       @mtgjson
+    end
+  end
+
   # This method mostly just verifies and filters out data
   # It's not in very convenient format
   memoize def mtgjson_legalities_data
     result = {}
-    @mtgjson.each do |set_code, set_data|
+    all_sets.each do |set_code, set_data|
       # Name conflicts
       next if set_code == "CMB1"
       set_data["cards"].each do |card|
-        name = card["name"]
+        name = card["faceName"] || card["name"]
         legalities = card["legalities"].dup
         # It's a stupid fake format not following per-card legality rules
         legalities.delete "oldschool"
@@ -62,7 +71,7 @@ class ReportLegalityDifferences
       # Conspiracies are "banned" on Gatherer / mtgjson, but "not in format" for us
       # Ignore this difference
       if a == "banned" and b == nil
-        card = @db.cards[name.downcase] or raise
+        card = @db.cards[name.downcase] or raise "No card #{name.downcase} in db"
         if card.types.include?("conspiracy")
           a = nil
         end
