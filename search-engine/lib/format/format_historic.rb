@@ -6,8 +6,10 @@ class FormatHistoric < FormatVintage
   def in_format?(card)
     card.printings.each do |printing|
       next if @time and printing.release_date > @time
-      # These are currently no excluded sets
-      return true if printing.arena?
+      # These is currently one excluded set - XANA
+      if printing.arena? and printing.set_code != "xana"
+        return true
+      end
     end
     false
   end
