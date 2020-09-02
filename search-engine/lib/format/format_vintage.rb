@@ -16,9 +16,12 @@ class FormatVintage < Format
     #
     # Excluded due to mix of bad timestamps (which confuses tests and time travel):
     # * Resale Promos
+    #
+    # Sets which exist only on Arena
 
     excluded_sets = Set[
       "ana",
+      "anb",
       "cmb1",
       "h17",
       "hho",
@@ -57,6 +60,7 @@ class FormatVintage < Format
       "wc98",
       "wc99",
       "wc99",
+      "xana",
     ]
 
     # Portal / Starter sets used to not be tournament legal
