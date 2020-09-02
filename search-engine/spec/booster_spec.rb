@@ -98,10 +98,10 @@ describe "is:booster" do
         # They include † cards
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code}"
       when "ice", "mir", "tmp", "usg", "4ed", "5ed", "6ed"
-        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -t:basic -number:/†/"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -t:basic -number:/†|s/"
       else
         if set.has_boosters? or set.in_other_boosters?
-          assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/†/"
+          assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/†|s/"
         else
           assert_search_equal "e:#{set_code} -is:booster", "e:#{set_code}"
         end

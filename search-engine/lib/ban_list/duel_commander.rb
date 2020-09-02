@@ -187,4 +187,10 @@ BanList.for_format("duel commander") do
     "Gifts Ungiven" => "legal",
     "Jace, Vryn's Prodigy" => "legal",
   )
+
+  change(
+    "2020-08-24",
+    "https://www.duelcommander.com/2020/08/august-2020-rules-banned-restricted-update/",
+    "Genesis Storm" => "banned",
+  )
 end
