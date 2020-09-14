@@ -130,7 +130,7 @@ class CardPrinting
   end
 
   def inspect
-    "CardPrinting(#{name}, #{set_code})"
+    "CardPrinting(#{name}, #{set_code}/#{number})"
   end
 
   def id

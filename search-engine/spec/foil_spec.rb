@@ -227,9 +227,9 @@ describe "Foils" do
         special, regular = set.printings.partition{|c| c.number =~ /\AS/ }
         assert_foiling(special, "nonfoil")
         assert_foiling(regular, "both")
-      when "7ed"
+      when "7ed", "inv", "pcy"
         assert_foiling(set.printings, "both")
-      when "ice"
+      when "ice", "por", "usg"
         assert_foiling(set.printings, "nonfoil")
       when "c20"
           # foil cards from precon also nonfoil in IKO collector boosters
