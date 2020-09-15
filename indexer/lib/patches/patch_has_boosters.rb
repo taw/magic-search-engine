@@ -2,17 +2,17 @@
 # It is leftover from how it used to work in v3 / v4
 
 class PatchHasBoosters < Patch
+  # This just needs to list sets that didn't get to mtgjson yet
+  def new_sets_with_boosters
+    %W[]
+  end
+
   def call
     each_set do |set|
       booster = set.delete("booster")
-      if set["code"] == "tsb" or set["code"] == "med"
-        # https://github.com/mtgjson/mtgjson/issues/584
-        has_own_boosters = false
-      else
-        has_own_boosters = !!booster
-      end
+      has_own_boosters = !!booster
 
-      if %W[me1 nem mh1 p02 m20 eld thb mb1 cmb1 iko m21 2xm].include?(set["code"])
+      if new_sets_with_boosters.include?(set["code"])
         has_own_boosters = true
       end
 
