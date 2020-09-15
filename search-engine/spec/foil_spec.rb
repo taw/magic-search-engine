@@ -232,10 +232,16 @@ describe "Foils" do
       when "ice", "por", "usg"
         assert_foiling(set.printings, "nonfoil")
       when "c20"
-          # foil cards from precon also nonfoil in IKO collector boosters
+        # foil cards from precon also nonfoil in IKO collector boosters
         nonfoils, foils = set.cards_in_precons
         assert_foiling(set.printings.select{|c| nonfoils.include?(c.name)}, "nonfoil")
         assert_foiling(set.printings.select{|c| foils.include?(c.name)}, "both")
+      when "ogw"
+        promo_cards, regular_cards = set.printings.partition{|c| c.number =~ /†/ }
+        booster_cards, extra_cards = regular_cards.partition(&:in_boosters?)
+        assert_foiling(promo_cards, "foilonly")
+        assert_foiling(booster_cards, "both")
+        assert_foiling_partial_precon(extra_cards)
       else
         assert_by_type(set)
       end
