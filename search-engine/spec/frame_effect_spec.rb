@@ -7,7 +7,7 @@ describe "frame effect queries" do
   include_context "db"
 
   it "frame:colorshifted" do
-    assert_search_equal "frame:colorshifted", "e:plc frame:colorshifted"
+    assert_search_equal "frame:colorshifted", "e:plc,plist frame:colorshifted"
   end
 
   it "frame:compasslanddfc" do

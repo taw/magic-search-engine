@@ -117,6 +117,10 @@ class PatchMtgjsonVersions < Patch
         card["layout"] = "planar"
       end
 
+      if card["layout"] == "modal_dfc"
+        card["layout"] = "modaldfc"
+      end
+
       # Renamed in v4, then moved in v5. v5 makes it a String
       card["multiverseid"] ||= card.delete("multiverseId")
       card["multiverseid"] ||= card["identifiers"]&.delete("multiverseId")

@@ -252,8 +252,10 @@ describe "Scryfall" do
   it "tazeem" do
     assert_search_results "tazeem",
       "Guardian of Tazeem",
-      "Tazeem"
-  end
+      "Tazeem",
+      "Tazeem Raptor",
+      "Tazeem Roilmage"
+    end
 
   it "is_colorshifted" do
     # MCI/v3 is:timeshifted is SF/v4 is:colorshifted
@@ -345,7 +347,7 @@ describe "Scryfall" do
     # no old/future frame mythics
     # (well, except ovnt, but that's a fake set)
     # ppre looks like a bug
-    assert_search_equal "is:new r:mythic is:paper", "r:mythic is:paper"
+    assert_search_equal "is:new r:mythic is:paper", "r:mythic is:paper -e:tsr"
   end
 
   it "scryfall bug cmc" do

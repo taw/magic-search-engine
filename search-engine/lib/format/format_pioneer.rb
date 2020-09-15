@@ -24,6 +24,7 @@ class FormatPioneer < Format
       "thb",
       "iko",
       "m21",
+      "znr",
     ]
   end
 end

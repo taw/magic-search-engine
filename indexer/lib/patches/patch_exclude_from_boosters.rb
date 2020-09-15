@@ -98,6 +98,8 @@ class PatchExcludeFromBoosters < Patch
       number_i > 274 and not (309..313).include?(number_i)
     when "2xm"
       number_i > 332
+    when "znr"
+      number_i > 280
     else
       false
     end
