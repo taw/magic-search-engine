@@ -58,6 +58,7 @@ describe "Color Expr Test" do
       "Kenrith, the Returned King",
       "Paragon of the Amesha",
       "Sisay, Weatherlight Captain",
+      "Tazri, Beacon of Unity",
       "Who"
   end
 

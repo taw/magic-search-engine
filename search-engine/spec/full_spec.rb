@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data
   # for same sets, indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(21278)
-    db.number_of_printings.should eq(51581)
+    db.number_of_cards.should eq(21585)
+    db.number_of_printings.should eq(52406)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -152,12 +152,10 @@ describe "Full Database Test" do
 
   it "lastprint" do
     assert_search_results "t:planeswalker lastprint<=roe",
-      "Chandra Ablaze",
-      "Nissa Revane"
+      "Chandra Ablaze"
     assert_search_results "t:planeswalker lastprint<=2011",
       "Chandra Ablaze",
-      "Elspeth Tirel",
-      "Nissa Revane"
+      "Elspeth Tirel"
   end
 
   it "alt Rebecca Guay" do
@@ -243,6 +241,7 @@ describe "Full Database Test" do
       "Lotus Petal",
       "Meekstone",
       "Ornithopter",
+      "Relentless Rats",
       "Spell Pierce"
   end
 
@@ -250,7 +249,12 @@ describe "Full Database Test" do
     assert_search_equal "pow=1+*", "pow=*+1"
     assert_search_include "pow=*", "Krovikan Mist"
     assert_search_results "pow=1+*",
-      "Gaea's Avenger", "Lost Order of Jarkeld", "Haunting Apparition", "Mwonvuli Ooze", "Allosaurus Rider"
+      "Allosaurus Rider",
+      "Gaea's Avenger",
+      "Haunting Apparition",
+      "Lost Order of Jarkeld",
+      "Mwonvuli Ooze",
+      "Nighthawk Scavenger"
     assert_search_results "pow=2+*",
       "Angry Mob", "Aysen Crusader"
     assert_search_equal "pow>*", "pow>=1+*"
