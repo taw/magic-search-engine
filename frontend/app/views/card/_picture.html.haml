@@ -14,7 +14,7 @@
       = render partial: "card/card_picture", locals: { card: card, foil: foil, card_layout: "split" }
     - elsif card.layout == "aftermath"
       = render partial: "card/card_picture", locals: { card: card, foil: foil, card_layout: "aftermath" }
-    - elsif card.layout == "double-faced" and card.others.size == 1
+    - elsif (card.layout == "double-faced" or card.layout == "modaldfc") and card.others.size == 1
       - if card.secondary?
         = render partial: "card/card_picture", locals: { card: card, foil: foil, card_layout: "dfc_back" }
         = render partial: "card/card_picture", locals: { card: card.others[0], foil: foil, card_layout: "dfc_back_reverse" }
