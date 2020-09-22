@@ -242,6 +242,9 @@ describe "Foils" do
         assert_foiling(promo_cards, "foilonly")
         assert_foiling(booster_cards, "both")
         assert_foiling_partial_precon(extra_cards)
+      when "plist"
+        # looks like it, but can't find a definite source
+        assert_foiling(set.printings, "nonfoil")
       else
         assert_by_type(set)
       end
