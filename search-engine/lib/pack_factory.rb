@@ -153,6 +153,8 @@ class PackFactory
       build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, foil: 1})
     when "2xm"
       build_pack(set_code, {common: 8, uncommon: 3, rare_mythic: 2, foil: 2})
+    when "znr"
+      build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
     when "dgm"
       build_pack_with_random_foil(set_code, :foil, :dgm_common, {dgm_common: 10, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1})
     when "frf"

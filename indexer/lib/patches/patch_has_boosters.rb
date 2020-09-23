@@ -4,7 +4,7 @@
 class PatchHasBoosters < Patch
   # This just needs to list sets that didn't get to mtgjson yet
   def new_sets_with_boosters
-    %W[]
+    %W[znr]
   end
 
   def call
@@ -16,7 +16,7 @@ class PatchHasBoosters < Patch
         has_own_boosters = true
       end
 
-      included_in_other_boosters = %W[exp mps mp2 tsb fmb1].include?(set["code"])
+      included_in_other_boosters = %W[exp mps mp2 tsb fmb1 plist].include?(set["code"])
 
       set["has_boosters"] = !!has_own_boosters
       set["in_other_boosters"] = !!included_in_other_boosters
