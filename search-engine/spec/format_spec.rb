@@ -12,6 +12,7 @@ describe "Formats" do
       -(Fires of Invention)
       -(Oko Thief of Crowns)
       -(Once Upon Time)
+      -(Uro, Titan of Nature's Wrath)
     ]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'

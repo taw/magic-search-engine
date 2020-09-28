@@ -159,4 +159,10 @@ BanList.for_format("standard") do
     "Teferi, Time Raveler" => "banned",
     "Cauldron Familiar" => "banned",
   )
+
+  change(
+    "2020-09-28",
+    "https://magic.wizards.com/en/articles/archive/news/september-28-2020-banned-and-restricted-announcement-2020-09-28",
+    "Uro, Titan of Nature's Wrath" => "banned",
+  )
 end
