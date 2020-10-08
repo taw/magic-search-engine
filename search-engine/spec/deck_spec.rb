@@ -108,6 +108,8 @@ describe Deck do
         # It looks like it uses IKO basics and a lot of other cards
         # Not sure if legit
         sets_found.should match_array ["c20", "iko"]
+      when "znc"
+        sets_found.should match_array ["znr", "znc"]
       else
         sets_found.should eq [set.code]
       end

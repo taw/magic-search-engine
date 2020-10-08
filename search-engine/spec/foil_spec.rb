@@ -78,7 +78,7 @@ describe "Foils" do
         assert_foiling(set.printings, "nonfoil")
       when "ced", "cei", "chr", "ugl", "pelp", "pgru", "palp", "por", "p02", "ptk", "pdrc", "plgm", "ppod", "ugin", "pcel", "van", "s99", "mgb"
         assert_foiling(set.printings, "nonfoil")
-      when "ust", "tsb", "cns", "soi"
+      when "ust", "tsb", "cns", "soi", "zne", "cc1"
         assert_foiling(set.printings, "both")
       when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "plpa", "pjgp", "ppro", "pgtw", "pwor", "pwos", "prel", "pfnm"
         assert_foiling(set.printings, "foilonly")
@@ -141,7 +141,7 @@ describe "Foils" do
       when "m21"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         assert_foiling(booster_cards, "both")
-      when "iko"
+      when "iko", "znr"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         assert_foiling(booster_cards, "both")
       when "eld"
