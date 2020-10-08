@@ -9,7 +9,7 @@ describe "Sorting" do
   end
 
   it "name" do
-    ordered_search("t:chandra -is:digital -is:promo sort:name", :name).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:name", :name).should eq([
       ["Chandra Ablaze"],
       ["Chandra Nalaar"],
       ["Chandra, Acolyte of Flame"],
@@ -31,7 +31,7 @@ describe "Sorting" do
   end
 
   it "artist" do
-    ordered_search("t:chandra -is:digital -is:promo sort:artist", :name, :artist_name).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:artist", :name, :artist_name).should eq([
       ["Chandra Nalaar", "Aleksi Briclot"],
       ["Chandra, Acolyte of Flame", "Anna Steinbauer"],
       ["Chandra, Novice Pyromancer", "Anna Steinbauer"],
@@ -53,7 +53,7 @@ describe "Sorting" do
   end
 
   it "new" do
-    ordered_search("t:chandra -is:digital -is:promo sort:new", :name, :set_code).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:new", :name, :set_code).should eq([
       ["Chandra, Flame's Catalyst", "m21"],
       ["Chandra, Heart of Fire", "m21"],
       ["Chandra, Acolyte of Flame", "m20"],
@@ -75,7 +75,7 @@ describe "Sorting" do
   end
 
   it "newall" do
-    ordered_search("t:chandra -is:digital -is:promo sort:newall", :name, :set_code).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:newall", :name, :set_code).should eq([
       ["Chandra, Flame's Catalyst", "m21"],
       ["Chandra, Heart of Fire", "m21"],
       ["Chandra, Torch of Defiance", "ss3"],
@@ -97,12 +97,12 @@ describe "Sorting" do
   end
 
   it "released" do
-    ordered_search("t:chandra -is:digital -is:promo sort:newall", :name, :set_code).should eq(
-      ordered_search("t:chandra -is:digital -is:promo sort:released", :name, :set_code))
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:newall", :name, :set_code).should eq(
+      ordered_search("t:chandra -is:digital -is:promo -e:sld sort:released", :name, :set_code))
   end
 
   it "old" do
-    ordered_search("t:chandra -is:digital -is:promo sort:old", :name, :set_code).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:old", :name, :set_code).should eq([
       ["Chandra Nalaar", "lrw"],
       ["Chandra Ablaze", "zen"],
       ["Chandra, the Firebrand", "m12"],
@@ -124,7 +124,7 @@ describe "Sorting" do
   end
 
   it "oldall" do
-    ordered_search("t:chandra -is:digital -is:promo sort:oldall", :name, :set_code).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:oldall", :name, :set_code).should eq([
       ["Chandra Nalaar", "lrw"],
       ["Chandra Ablaze", "zen"],
       ["Chandra, the Firebrand", "m12"],
@@ -146,7 +146,7 @@ describe "Sorting" do
   end
 
   it "cmc" do
-    ordered_search("t:chandra -is:digital -is:promo sort:cmc", :name, :cmc).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:cmc", :name, :cmc).should eq([
       ["Chandra Ablaze", 6],
       ["Chandra, Awakened Inferno", 6],
       ["Chandra, Bold Pyromancer", 6],
@@ -168,7 +168,7 @@ describe "Sorting" do
   end
 
   it "-cmc" do
-    ordered_search("t:chandra -is:digital -is:promo sort:-cmc", :name, :cmc).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:-cmc", :name, :cmc).should eq([
       ["Chandra, Acolyte of Flame", 3],
       ["Chandra, Roaring Flame", 3],
       ["Chandra, Fire Artisan", 4],
@@ -190,7 +190,7 @@ describe "Sorting" do
   end
 
   it "set" do
-    ordered_search("t:chandra -is:digital -is:promo sort:set", :name, :set_code, :number).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:set", :name, :set_code, :number).should eq([
       ["Chandra, Flamecaller", "c20", "145"],
       ["Chandra Nalaar", "dd2", "34"],
       ["Chandra, Bold Pyromancer", "dom", "275"],
@@ -212,7 +212,7 @@ describe "Sorting" do
   end
 
   it "-set" do
-    ordered_search("t:chandra -is:digital -is:promo sort:-set", :name, :set_code, :number).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:-set", :name, :set_code, :number).should eq([
       ["Chandra Ablaze", "zen", "120"],
       ["Chandra, Fire Artisan", "war", "119"],
       ["Chandra, Roaring Flame", "v17", "6b"],
@@ -264,7 +264,7 @@ describe "Sorting" do
   end
 
   it "mixing orders" do
-    ordered_search("t:chandra -is:digital -is:promo sort:cmc,-name", :name, :cmc).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:cmc,-name", :name, :cmc).should eq([
       ["Chandra, Pyrogenius", 6],
       ["Chandra, Flamecaller", 6],
       ["Chandra, Flame's Fury", 6],
