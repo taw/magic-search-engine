@@ -51,15 +51,19 @@ class DeckIndexer
 
     # otherwise it returns GRN and that's bad
     if set_code == "gnt"
-      return printings["gnt"] || printings["m19"] || raise
+      return printings["gnt"] || printings["m19"] || raise("Can't find #{card["name"]} in any possible set")
     end
 
     if set_code == "c20"
-      return printings["c20"] || printings["iko"] || raise
+      return printings["c20"] || printings["iko"] || raise("Can't find #{card["name"]} in any possible set")
+    end
+
+    if set_code == "znc"
+      return printings["znc"] || printings["znr"] || raise("Can't find #{card["name"]} in any possible set")
     end
 
     if set_code == "jmp"
-      return printings["jmp"] || printings["m21"] || raise
+      return printings["jmp"] || printings["m21"] || raise("Can't find #{card["name"]} in any possible set")
     end
 
     # Coldsnap had special set for Ice Age reprints
