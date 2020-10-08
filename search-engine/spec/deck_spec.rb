@@ -127,6 +127,8 @@ describe Deck do
       next if set.code == "e01"
       # Contains some Ikoria cards
       next if set.code == "c20"
+      # Contains some ZNR cards
+      next if set.code == "znc"
 
       # All names match both ways
       set_card_names = set.physical_card_names
