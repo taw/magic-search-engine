@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # for same sets, indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(21585)
-    db.number_of_printings.should eq(52412)
+    db.number_of_printings.should eq(52409)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -241,7 +241,6 @@ describe "Full Database Test" do
       "Lotus Petal",
       "Meekstone",
       "Ornithopter",
-      "Relentless Rats",
       "Spell Pierce"
   end
 
