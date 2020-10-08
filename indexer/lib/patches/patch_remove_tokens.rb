@@ -2,7 +2,7 @@
 class PatchRemoveTokens < Patch
   def call
     delete_printing_if do |printing|
-      printing["layout"] == "token"
+      printing["layout"] == "token" or printing["name"] == "Double-Faced Substitute Card"
     end
   end
 end
