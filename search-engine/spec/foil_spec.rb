@@ -231,7 +231,7 @@ describe "Foils" do
         assert_foiling(set.printings, "both")
       when "ice", "por", "usg"
         assert_foiling(set.printings, "nonfoil")
-      when "c20"
+      when "c20", "znc"
         # foil cards from precon also nonfoil in IKO collector boosters
         nonfoils, foils = set.cards_in_precons
         assert_foiling(set.printings.select{|c| nonfoils.include?(c.name)}, "nonfoil")
