@@ -48,4 +48,13 @@ BanList.for_format("historic") do
     "https://magic.wizards.com/en/articles/archive/news/august-24-2020-banned-and-restricted-announcement",
     "Field of the Dead" => "banned",
   )
+
+  change(
+    "2020-10-12",
+    "https://magic.wizards.com/en/articles/archive/news/october-12-2020-banned-and-restricted-announcement",
+    "Omnath, Locus of Creation" => "banned", # "suspended"
+    # "Teferi, Time Raveler" => "banned", # from "suspended"
+    # "Wilderness Reclamation" => "banned", # from "suspended"
+    "Burning-Tree Emissary" => "legal", # from unsuspended.
+  )
 end

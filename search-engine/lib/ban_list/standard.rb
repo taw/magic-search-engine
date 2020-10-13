@@ -165,4 +165,12 @@ BanList.for_format("standard") do
     "https://magic.wizards.com/en/articles/archive/news/september-28-2020-banned-and-restricted-announcement-2020-09-28",
     "Uro, Titan of Nature's Wrath" => "banned",
   )
+
+  change(
+    "2020-10-12",
+    "https://magic.wizards.com/en/articles/archive/news/october-12-2020-banned-and-restricted-announcement",
+    "Omnath, Locus of Creation" => "banned",
+    "Lucky Clover" => "banned",
+    "Escape to the Wilds" => "banned",
+  )
 end
