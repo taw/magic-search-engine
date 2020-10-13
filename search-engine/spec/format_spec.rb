@@ -13,6 +13,9 @@ describe "Formats" do
       -(Oko Thief of Crowns)
       -(Once Upon Time)
       -(Uro, Titan of Nature's Wrath)
+      -(Omnath, Locus of Creation)
+      -(Lucky Clover)
+      -(Escape to the Wilds)
     ]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'

@@ -55,4 +55,10 @@ BanList.for_format("brawl") do
     "https://magic.wizards.com/en/articles/archive/news/august-8-2020-banned-and-restricted-announcement",
     "Teferi, Time Raveler" => "banned",
   )
+
+  change(
+    "2020-10-12",
+    "https://magic.wizards.com/en/articles/archive/news/october-12-2020-banned-and-restricted-announcement",
+    "Omnath, Locus of Creation" => "banned",
+  )
 end
