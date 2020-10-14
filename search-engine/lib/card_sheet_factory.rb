@@ -397,11 +397,12 @@ class CardSheetFactory
     )
   end
 
+  # https://www.lethe.xyz/mtg/collation/soi.html
   def soi_dfc_common_uncommon
-    # sheet size 32?
+    # 10x4xC + 4x20xU = 120 cards on sheet
     mix_sheets(
-      [from_query("e:soi r:common is:dfc", 4), 3],
-      [from_query("e:soi r:uncommon is:dfc", 20), 1],
+      [from_query("e:soi r:common is:dfc", 4), 5],
+      [from_query("e:soi r:uncommon is:dfc", 20), 2],
     )
   end
 
@@ -413,11 +414,12 @@ class CardSheetFactory
     )
   end
 
+  # https://www.lethe.xyz/mtg/collation/emn.html
   def emn_dfc_common_uncommon
-    # sheet size 22?
+    # 15x4xC + 6x10xU = 120 cards od sheet
     mix_sheets(
-      [from_query("e:emn r:common is:front (is:dfc or is:meld)", 4), 3],
-      [from_query("e:emn r:uncommon is:front (is:dfc or is:meld)", 10), 1],
+      [from_query("e:emn r:common is:front (is:dfc or is:meld)", 4), 5],
+      [from_query("e:emn r:uncommon is:front (is:dfc or is:meld)", 10), 2],
     )
   end
 

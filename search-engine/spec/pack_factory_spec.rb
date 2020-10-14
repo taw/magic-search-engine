@@ -389,8 +389,8 @@ describe PackFactory do
         ev[sfc_uncommon].should eq Rational(3, 80)
         ev[sfc_rare].should eq Rational(2, 121)
         ev[sfc_mythic].should eq Rational(1, 121)
-        ev[dfc_common].should eq Rational(3, 32)
-        ev[dfc_uncommon].should eq Rational(1, 32)
+        ev[dfc_common].should eq Rational(10, 120)
+        ev[dfc_uncommon].should eq Rational(4, 120)
         ev[dfc_rare].should eq Rational(1, 8) * Rational(2, 15)
         ev[dfc_mythic].should eq Rational(1, 8) * Rational(1, 15)
       end
@@ -433,8 +433,8 @@ describe PackFactory do
         ev[sfc_uncommon].should eq Rational(3, 60)
         ev[sfc_rare].should eq Rational(2, 96)
         ev[sfc_mythic].should eq Rational(1, 96)
-        ev[dfc_common].should eq Rational(3, 22)
-        ev[dfc_uncommon].should eq Rational(1, 22)
+        ev[dfc_common].should eq Rational(15, 120)
+        ev[dfc_uncommon].should eq Rational(6, 120)
         ev[dfc_rare].should eq Rational(1, 8) * Rational(2, 12)
         ev[dfc_mythic].should eq Rational(1, 8) * Rational(1, 12)
       end
