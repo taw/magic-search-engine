@@ -67,7 +67,7 @@ BanList.for_format("commander") do
     "Burning Wish" => "banned",
     "Cunning Wish" => "banned",
     "Death Wish" => "banned",
-    "Enlightened Wish" => "banned",
+    "Enlightened Tutor" => "banned",
     "Living Wish" => "banned",
   )
 
@@ -77,7 +77,7 @@ BanList.for_format("commander") do
     "Burning Wish" => "legal",
     "Cunning Wish" => "legal",
     "Death Wish" => "legal",
-    "Enlightened Wish" => "legal",
+    "Enlightened Tutor" => "legal",
     "Living Wish" => "legal",
   )
 

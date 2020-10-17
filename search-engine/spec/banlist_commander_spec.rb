@@ -225,7 +225,7 @@ describe "Banlist" do
       "unbanned", "Burning Wish",
       "unbanned", "Cunning Wish",
       "unbanned", "Death Wish",
-      "unbanned", "Enlightened Wish",
+      "unbanned", "Enlightened Tutor",
       "unbanned", "Living Wish"
       # No announcement actually banning it, presumably banned with wishes?
       # "unbanned", "Ring of Ma'ruf"
@@ -236,7 +236,7 @@ describe "Banlist" do
       "banned", "Burning Wish",
       "banned", "Cunning Wish",
       "banned", "Death Wish",
-      "banned", "Enlightened Wish",
+      "banned", "Enlightened Tutor",
       "banned", "Living Wish"
   end
 
