@@ -157,7 +157,7 @@ describe "Banlist" do
       "vintage restricted", "Gush",
       "commander banned", "Leovold, Emissary of Trest",
       "commander unbanned", "Protean Hulk",
-      "duel commander unrestricted", "Yisan, The Wanderer Bard",
+      "duel commander unrestricted", "Yisan, the Wanderer Bard",
       "duel commander banned", "Chrome Mox",
       "duel commander banned", "Mox Diamond",
       "duel commander restricted", "Breya, Etherium Shaper",
@@ -911,5 +911,16 @@ describe "Banlist" do
         ]
       ]
     )
+  end
+
+  it "all ban events have correctly named cards" do
+    Format.all_format_classes.each do |format_class|
+      format_class.new.ban_events.each do |_, _, cards|
+        cards.each do |card|
+          name = card[:name]
+          db.has_card_named?(name).should eq(true), "Card named `#{name}' should exist"
+        end
+      end
+    end
   end
 end

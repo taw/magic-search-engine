@@ -63,7 +63,7 @@ BanList.for_format("duel commander") do
     "Oloro, Ageless Ascetic" => "restricted",
     "Rofellos, Llanowar Emissary" => "restricted",
     "Tasigur, the Golden Fang" => "restricted",
-    "Yisan, The Wanderer Bard" => "restricted",
+    "Yisan, the Wanderer Bard" => "restricted",
     "Zur the Enchanter" => "restricted",
     "Yawgmoth's Bargain" => "banned",
     "Serra Ascendant" => "banned",
@@ -90,7 +90,7 @@ BanList.for_format("duel commander") do
     "http://www.duelcommander.com/2017/04/classic-april-2017-rules-banlist-update/",
     "Chrome Mox" => "banned",
     "Mox Diamond" => "banned",
-    "Yisan, The Wanderer Bard" => "legal",
+    "Yisan, the Wanderer Bard" => "legal",
     "Breya, Etherium Shaper" => "restricted",
     "Vial Smasher the Fierce" => "restricted",
   )
@@ -164,7 +164,7 @@ BanList.for_format("duel commander") do
   change(
     "2020-02-28",
     "https://www.duelcommander.com/2020/02/february-2020-rules-banned-restricted-update/",
-    "Thassa’s Oracle" => "banned",
+    "Thassa's Oracle" => "banned",
     "Ancient Tomb" => "banned",
     "Mox Opal" => "banned",
     "Sulfuric Vortex" => "legal",
@@ -173,7 +173,7 @@ BanList.for_format("duel commander") do
   change(
     "2020-05-29",
     "https://www.duelcommander.com/2020/05/may-2020-rules-banned-restricted-update/",
-    "Lutri, The Spellchaser" => "banned",
+    "Lutri, the Spellchaser" => "banned",
     "Deflecting Swat" => "banned",
     "Fierce Guardianship" => "banned",
     "High Tide" => "banned",
@@ -183,7 +183,7 @@ BanList.for_format("duel commander") do
     "Cavern of Souls" => "banned",
     "Field of the Dead" => "banned",
     "Wasteland" => "banned",
-    "Lion’s Eye Diamond" => "banned",
+    "Lion's Eye Diamond" => "banned",
     "Gifts Ungiven" => "legal",
     "Jace, Vryn's Prodigy" => "legal",
   )

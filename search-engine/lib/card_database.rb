@@ -247,6 +247,11 @@ class CardDatabase
     printings.size
   end
 
+  def has_card_named?(name)
+    c = cards[normalize_name(name)]
+    !!c and c.name == name
+  end
+
   private
 
   def freeze_strings!(data)
