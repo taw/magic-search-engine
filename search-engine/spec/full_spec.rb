@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data
   # for same sets, indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(21591)
-    db.number_of_printings.should eq(52771)
+    db.number_of_cards.should eq(21581)
+    db.number_of_printings.should eq(52709)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -15,7 +15,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 5212
+    assert_count_printings "is:promo", 5173
   end
 
   it "block codes" do
