@@ -3,12 +3,14 @@
 require_relative "../search-engine/lib/card_database"
 require "memoist"
 
-class ReportMtgjson4Differences
+class ReportMtgjsonDifferences
   extend Memoist
 
   def initialize
     @db = CardDatabase.load
     @mtgjson = JSON.parse(Pathname("#{__dir__}/../tmp/AllSets.json").read)
+    # v4 / v5
+    @mtgjson = @mtgjson["data"] if @mtgjson["data"]
   end
 
   def sets_base_path
@@ -43,7 +45,8 @@ class ReportMtgjson4Differences
     end
 
     db_names = db_set.printings.map(&:name).to_set
-    mtgjson_names = mtgjson_set["cards"].map{|x| x["name"] }.to_set
+
+    mtgjson_names = mtgjson_set["cards"].map{|x| x["faceName"] || x["name"] }.to_set
     if db_names != mtgjson_names
       if db_names.size == mtgjson_names.size
         puts "#{code} - card names (count same) - #{db_names.size} vs #{mtgjson_names.size}"
@@ -61,12 +64,12 @@ class ReportMtgjson4Differences
     end
 
     db_numbers = db_set.printings.map{|c| [c.number, c.name] }.to_set
-    mtgjson_numbers = mtgjson_set["cards"].map{|c| [c["number"], c["name"]] }.to_set
+    mtgjson_numbers = mtgjson_set["cards"].map{|c| [c["number"], c["faceName"] || c["name"]] }.to_set
 
     # Most common problem is mtgjson having non-unique numbers for multipart cards
     if db_numbers != mtgjson_numbers
       db_numbers_i = db_set.printings.map{|c| [c.number.to_i, c.name] }.to_set
-      mtgjson_numbers_i = mtgjson_set["cards"].map{|c| [c["number"].to_i, c["name"]] }.to_set
+      mtgjson_numbers_i = mtgjson_set["cards"].map{|c| [c["number"].to_i, c["faceName"] || c["name"]] }.to_set
 
       if db_numbers_i == mtgjson_numbers_i
         # Suffix issues _generally_ get autocorrected by indexer
@@ -141,4 +144,4 @@ class ReportMtgjson4Differences
   end
 end
 
-ReportMtgjson4Differences.new.call
+ReportMtgjsonDifferences.new.call
