@@ -279,55 +279,61 @@ form.search {
     }
 
     transition: 0.5s ease;
+    @media screen and (prefers-reduced-motion: reduce) {
+      transition-duration: 0.001ms;
+    }
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 
-    &.flip:hover {
-      transform: rotateZ(180deg);
-    }
     &.flip_secondary {
       transform: rotateZ(180deg);
     }
-    &.flip_secondary:hover {
+  }
+
+  &:hover {
+    .card_picture.flip {
+      transform: rotateZ(180deg);
+    }
+    .card_picture.flip_secondary {
       transform: rotateZ(0deg);
     }
     /* xs */
-    &.split:hover {
+    .card_picture.split {
       transform: translateX(20%) rotateZ(90deg);
     }
-    .card_0_of_2 &.split:hover {
+    .card_0_of_2 & .card_picture.split {
       transform: translateX(20%) rotateZ(90deg);
     }
-    .card_1_of_2 &.split:hover {
+    .card_1_of_2 & .card_picture.split {
       transform: translateX(-20%) rotateZ(90deg);
     }
-    &.aftermath:hover {
+    .card_picture.aftermath {
       transform: translateX(20%) rotateZ(-90deg);
     }
-    .card_0_of_2 &.aftermath:hover {
+    .card_0_of_2 & .card_picture.aftermath {
       transform: translateX(20%) rotateZ(-90deg);
     }
-    .card_1_of_2 &.aftermath:hover {
+    .card_1_of_2 & .card_picture.aftermath {
       transform: translateX(-20%) rotateZ(-90deg);
     }
     /* sm+ */
     @media (min-width: 576px) {
-      .card_0_of_3 &.split:hover {
+      .card_0_of_3 & .card_picture.split {
         transform: translateX(20%) rotateZ(90deg);
       }
-      .card_1_of_3 &.split:hover {
+      .card_1_of_3 & .card_picture.split {
         transform: translateX(0%) rotateZ(90deg);
       }
-      .card_2_of_3 &.split:hover {
+      .card_2_of_3 & .card_picture.split {
         transform: translateX(-20%) rotateZ(90deg);
       }
-      .card_0_of_3 &.aftermath:hover {
+      .card_0_of_3 & .card_picture.aftermath {
         transform: translateX(20%) rotateZ(-90deg);
       }
-      .card_1_of_3 &.aftermath:hover {
+      .card_1_of_3 & .card_picture.aftermath {
         transform: translateX(0%) rotateZ(-90deg);
       }
-      .card_2_of_3 &.aftermath:hover {
+      .card_2_of_3 & .card_picture.aftermath {
         transform: translateX(-20%) rotateZ(-90deg);
       }
     }
