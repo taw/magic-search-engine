@@ -297,6 +297,9 @@ form.search {
     .card_picture.flip_secondary {
       transform: rotateZ(0deg);
     }
+    .decklist & .card_picture.split {
+      transform: translateX(-20%) rotateZ(90deg);
+    }
     /* xs */
     .card_picture.split {
       transform: translateX(20%) rotateZ(90deg);
