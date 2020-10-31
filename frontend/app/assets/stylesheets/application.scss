@@ -300,6 +300,9 @@ form.search {
     .decklist & .card_picture.split {
       transform: translateX(-20%) rotateZ(90deg);
     }
+    .decklist & .card_picture.aftermath {
+      transform: translateX(-20%) rotateZ(90deg);
+    }
     /* xs */
     .card_picture.split {
       transform: translateX(20%) rotateZ(90deg);
