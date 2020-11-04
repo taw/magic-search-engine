@@ -1,0 +1,78 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+require "json"
+
+# They mostly match, just document exceptions
+XMAGE_TO_MTGJSON_SET_MAP = {
+  "APAC" => "PALP",
+  "EURO "=> "PELP",
+}
+
+# FIXME: This importer has a lot of issues right now
+
+class XMagePreprocess
+  def cards_data
+    @cards_data ||= Pathname("#{__dir__}/../tmp/mtg-cards-data.txt").readlines.map(&:chomp)
+  end
+
+  def sets_data
+    @sets_data ||= Pathname("#{__dir__}/../tmp/mtg-sets-data.txt").readlines.map(&:chomp)
+  end
+
+  def sets
+    @sets ||= sets_data.map{|line|
+      name, code = line.split("|")[0,2]
+      [name, XMAGE_TO_MTGJSON_SET_MAP[code] || code]
+    }.to_h
+  end
+
+  def cards
+    @cards ||= cards_data.map{|line|
+      name, set_name = line.split("|")[0,2]
+      # Data bugs
+      case set_name
+      when "Premium Deck Series: Fire & Lightning"
+        set_name = "Premium Deck Series: Fire and Lightning"
+      when "Commander 2018"
+        set_name = "Commander 2018 Edition"
+      when "Commander 2019"
+        set_name = "Commander 2019 Edition"
+      when "Commander 2020"
+        set_name = "Commander 2020 Edition"
+      when "World Magic Cup Qualifier", "Champs", "Masterpiece Series Amonkhet", "Double Masters"
+        next
+      end
+      [sets.fetch(set_name).downcase, name]
+    }.compact
+  end
+
+  def verify_set_codes!
+    sets.each do |name, code|
+      data_path = Pathname("#{__dir__}/../data/sets/#{code}.json")
+      if data_path.exist?
+        data = JSON.parse(data_path.read)
+        mtgjson_name = data["name"]
+        if name == mtgjson_name
+          # OK
+        else
+          # A lot of these are totally fine like `Commander 2013 Edition' vs `Commander 2013'
+          warn "Mismatching name for #{code}: `#{name}' vs `#{mtgjson_name}'"
+        end
+      else
+        warn "No data for #{code}: `#{name}'"
+      end
+    end
+  end
+
+  def call
+    # verify_set_codes!
+    Pathname("#{__dir__}/../data/xmage_cards.txt").open("w") do |fh|
+      cards.each do |code, name|
+        fh.puts [code, name].join("\t")
+      end
+    end
+  end
+end
+
+XMagePreprocess.new.call
