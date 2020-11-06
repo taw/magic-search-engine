@@ -207,7 +207,7 @@ class QueryTokenizer
         kind = "planar" if kind == "plane"
         kind = "planar" if kind == "phenomenon"
         tokens << [:test, ConditionLayout.new(kind)]
-      elsif s.scan(/(is|not|game)\s*[:=]\s*(paper|arena|mtgo)\b/i)
+      elsif s.scan(/(is|not|game)\s*[:=]\s*(paper|arena|mtgo|shandalar)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         cond = s[2].capitalize
         klass = Kernel.const_get("ConditionIs#{cond}")

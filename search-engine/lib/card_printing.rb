@@ -47,6 +47,7 @@ class CardPrinting
     @paper = data["paper"]
     @arena = data["arena"]
     @mtgo = data["mtgo"]
+    @shandalar = data["shandalar"]
 
     # Performance cache
     @stemmed_name = @card.stemmed_name
@@ -63,6 +64,10 @@ class CardPrinting
 
   def mtgo?
     !!@mtgo
+  end
+
+  def shandalar?
+    !!@shandalar
   end
 
   def in_boosters?
