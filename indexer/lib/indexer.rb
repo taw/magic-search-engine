@@ -146,6 +146,7 @@ class Indexer
       PatchPartner,
       PatchBfm,
       PatchUnstable,
+      PatchShandalar,
 
       # Reconcile issues
       PatchReconcileForeignNames,
@@ -258,8 +259,8 @@ class Indexer
           "border",
           "buyabox",
           "exclude_from_boosters",
-          "flavor",
           "flavor_name",
+          "flavor",
           "foiling",
           "frame_effects",
           "frame",
@@ -273,6 +274,7 @@ class Indexer
           "print_sheet",
           "rarity",
           "release_date",
+          "shandalar",
           "spotlight",
           "textless",
           "watermark",
