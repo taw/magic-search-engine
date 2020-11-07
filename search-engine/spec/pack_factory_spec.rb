@@ -1099,12 +1099,18 @@ describe PackFactory do
     context "normal" do
       let(:foil) { false }
 
+      # either rare or uncommon mdfc rate will be off
+      # Proper uncommon rate results in nice 3:1 booster type ratio, but rare ratio is then 50% off
+      # Proper rare rate results in really weird booster type ratio, but uncommon ratio is then 12% off (this is what we use)
       it do
         ev[basic].should eq Rational(1, 15)
         ev[common].should eq Rational(1, 101) * Rational(39, 4)
-        ev[uncommon].should eq Rational(3, 80)
-        ev[rare].should eq Rational(2, 2*(53+11)+(15+5))
-        ev[mythic].should eq Rational(1, 2*(53+11)+(15+5))
+        ev[uncommon].should eq Rational(323, 8880) # about 3/80
+        ev[rare].should eq Rational(2, 148)
+        ev[mythic].should eq Rational(1, 148)
+        ev[mdfc_uncommon].should eq Rational(121, 2960) # about 3/80
+        ev[mdfc_rare].should eq Rational(2, 148)
+        ev[mdfc_mythic].should eq Rational(1, 148)
       end
     end
 
@@ -1114,9 +1120,12 @@ describe PackFactory do
       it do
         ev[basic].should eq Rational(1,4) * Rational(5,8) * Rational(1, 101+15)
         ev[common].should eq Rational(1,4) * Rational(5,8) * Rational(1, 101+15)
-        ev[uncommon].should eq Rational(1,4) * Rational(2,8) * Rational(3, 80)
+        ev[uncommon].should eq Rational(1,4) * Rational(2,8) * Rational(1, 80)
         ev[rare].should eq Rational(1,4) * Rational(1,8) * Rational(2, 2*(53+11)+(15+5))
         ev[mythic].should eq Rational(1,4) * Rational(1,8) * Rational(1, 2*(53+11)+(15+5))
+        ev[mdfc_uncommon].should eq Rational(1,4) * Rational(2,8) * Rational(1, 80)
+        ev[mdfc_rare].should eq Rational(1,4) * Rational(1,8) * Rational(2, 2*(53+11)+(15+5))
+        ev[mdfc_mythic].should eq Rational(1,4) * Rational(1,8) * Rational(1, 2*(53+11)+(15+5))
       end
     end
   end
