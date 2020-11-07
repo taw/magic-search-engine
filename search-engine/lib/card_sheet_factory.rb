@@ -309,17 +309,17 @@ class CardSheetFactory
   end
 
   def sfc_common(set_code)
-    from_query("e:#{set_code} r:common -is:dfc -is:meld", kind: ColorBalancedCardSheet)
+    from_query("e:#{set_code} r:common -is:dfc -is:meld -is:modaldfc", kind: ColorBalancedCardSheet)
   end
 
   def sfc_uncommon(set_code)
-    from_query("e:#{set_code} r:uncommon -is:dfc -is:meld")
+    from_query("e:#{set_code} r:uncommon -is:dfc -is:meld -is:modaldfc")
   end
 
   def sfc_rare_mythic(set_code)
     mix_sheets(
-      [from_query("e:#{set_code} r:rare -is:dfc -is:meld"), 2],
-      [from_query("e:#{set_code} r:mythic -is:dfc -is:meld"), 1],
+      [from_query("e:#{set_code} r:rare -is:dfc -is:meld -is:modaldfc"), 2],
+      [from_query("e:#{set_code} r:mythic -is:dfc -is:meld -is:modaldfc"), 1],
     )
   end
 
@@ -798,5 +798,16 @@ class CardSheetFactory
       [from_query("b:ala r:rare", 53+35+35, foil: true), 2],
       [from_query("b:ala r:mythic", 15+10+10, foil: true), 1]
     )
+  end
+
+  def modaldfc_rare_mythic(set_code)
+    mix_sheets(
+      [from_query("e:#{set_code} r:rare is:modaldfc"), 2],
+      [from_query("e:#{set_code} r:mythic is:modaldfc"), 1],
+    )
+  end
+
+  def modaldfc_uncommon(set_code)
+    from_query("e:#{set_code} r:uncommon is:modaldfc")
   end
 end
