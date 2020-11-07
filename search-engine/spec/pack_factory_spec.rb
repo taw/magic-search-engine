@@ -1079,4 +1079,45 @@ describe PackFactory do
       ev.should eq(expected_ev)
     end
   end
+
+  # https://www.lethe.xyz/mtg/collation/znr.html
+  # "Every pack contains exactly one non-foil double-faced card, appearing in a normal slot according to its rarity."
+  context "Zendikar Rising" do
+    let(:set_code) { "znr" }
+    let(:pack) { factory.for(set_code) }
+    let(:ev) { pack.expected_values }
+
+    let(:basic) { physical_card("r:basic is:booster e:#{set_code}", foil) }
+    let(:common) { physical_card("r:common is:booster e:#{set_code}", foil) }
+    let(:uncommon) { physical_card("r:uncommon -layout:modaldfc is:booster e:#{set_code}", foil) }
+    let(:rare) { physical_card("r:rare -layout:modaldfc is:booster e:#{set_code}", foil) }
+    let(:mythic) { physical_card("r:mythic -layout:modaldfc is:booster e:#{set_code}", foil) }
+    let(:mdfc_uncommon) { physical_card("r:uncommon layout:modaldfc is:booster e:#{set_code}", foil) }
+    let(:mdfc_rare) { physical_card("r:rare layout:modaldfc is:booster e:#{set_code}", foil) }
+    let(:mdfc_mythic) { physical_card("r:mythic layout:modaldfc is:booster e:#{set_code}", foil) }
+
+    context "normal" do
+      let(:foil) { false }
+
+      it do
+        ev[basic].should eq Rational(1, 15)
+        ev[common].should eq Rational(1, 101) * Rational(39, 4)
+        ev[uncommon].should eq Rational(3, 80)
+        ev[rare].should eq Rational(2, 2*(53+11)+(15+5))
+        ev[mythic].should eq Rational(1, 2*(53+11)+(15+5))
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+
+      it do
+        ev[basic].should eq Rational(1,4) * Rational(5,8) * Rational(1, 101+15)
+        ev[common].should eq Rational(1,4) * Rational(5,8) * Rational(1, 101+15)
+        ev[uncommon].should eq Rational(1,4) * Rational(2,8) * Rational(3, 80)
+        ev[rare].should eq Rational(1,4) * Rational(1,8) * Rational(2, 2*(53+11)+(15+5))
+        ev[mythic].should eq Rational(1,4) * Rational(1,8) * Rational(1, 2*(53+11)+(15+5))
+      end
+    end
+  end
 end
