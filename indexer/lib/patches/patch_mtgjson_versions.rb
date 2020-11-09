@@ -3,9 +3,29 @@
 # This patch ended up as dumping ground for far too much random stuff
 
 class PatchMtgjsonVersions < Patch
+  def calculate_cmc(mana_cost)
+    mana_cost.split(/[\{\}]+/).reject(&:empty?).map{|c|
+      case c
+      when "W", "U", "B", "R", "G"
+        1
+      when "X"
+        0
+      when /\d+/
+        c.to_i
+      else
+        binding.pry
+      end
+    }.sum
+  end
+
   def get_cmc(card)
     cmc = [card.delete("convertedManaCost"), card.delete("cmc")].compact.first
     fcmc = card.delete("faceConvertedManaCost")
+
+    # mtgjson bug
+    if card["layout"] == "modal_dfc"
+      return calculate_cmc(card["manaCost"] || "")
+    end
 
     if fcmc
       case card["layout"]
