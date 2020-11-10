@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require_relative "../search-engine/lib/card_database"
+require "open-uri"
 
 class FetchGathererPics
   def db
@@ -21,8 +22,16 @@ class FetchGathererPics
 
   def download(card, path)
     url = url_for(card)
-    puts "Downloading #{card.name} #{card.set_code} #{card.multiverseid}"
-    system "wget", "-nv", "-nc", url, "-O", path.to_s
+    STDERR.puts "Downloading #{card.name} #{card.set_code} #{card.multiverseid}"
+    URI.open(url) do |f|
+      s = f.status[0]
+      ct = f.content_type
+      if s == "200" && ct.start_with?("image/")
+        Pathname(path).write(f.read)
+      else
+        STDERR.puts "Expected 200 image/*, got #{s} #{ct}, not saving"
+      end
+    end
   end
 
   def call
