@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+require_relative "../search-engine/lib/card_database"
+
+class FetchGathererPics
+  def db
+    @db ||= CardDatabase.load
+  end
+
+  def pics
+    @pics ||= Pathname("#{__dir__}").parent + "frontend/public/cards"
+  end
+
+  def url_for(card)
+    "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=#{card.multiverseid}&type=card"
+  end
+
+  def path_for(card)
+    pics + Pathname("#{card.set_code}/#{card.number}.png")
+  end
+
+  def download(card, path)
+    url = url_for(card)
+    puts "Downloading #{card.name} #{card.set_code} #{card.multiverseid}"
+    system "wget", "-nv", "-nc", url, "-O", path.to_s
+  end
+
+  def call
+    db.printings.each do |card|
+      next unless card.multiverseid
+      path = path_for(card)
+      path.parent.mkpath
+      next if path.exist?
+      download(card, path)
+    end
+  end
+end
+
+FetchGathererPics.new.call

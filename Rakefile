@@ -64,16 +64,7 @@ end
 
 desc "Fetch Gatherer pics"
 task "pics:gatherer" do
-  pics = Pathname("frontend/public/cards")
-  db.printings.each do |c|
-    next unless c.multiverseid
-    path = pics + Pathname("#{c.set_code}/#{c.number}.png")
-    path.parent.mkpath
-    next if path.exist?
-    url = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=#{c.multiverseid}&type=card"
-    puts "Downloading #{c.name} #{c.set_code} #{c.multiverseid}"
-    system "wget", "-nv", "-nc", url, "-O", path.to_s
-  end
+  system "./bin/fetch_gatherer_pics"
 end
 
 desc "Connect links to HQ pics"
