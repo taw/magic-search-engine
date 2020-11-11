@@ -100,6 +100,8 @@ class PatchExcludeFromBoosters < Patch
       number_i > 332
     when "znr"
       number_i > 280
+    when "cmr"
+      number_i > 361
     else
       false
     end
