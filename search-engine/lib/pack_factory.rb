@@ -357,6 +357,15 @@ class PackFactory
         alara_premium_uncommon: 3,
         alara_premium_rare_mythic: 1,
       })
+    when "cmr"
+      # Unofficial, based on some opening videos
+      build_pack(set_code, {
+        common: 13,
+        cmr_nonlegendary_uncommon: 3,
+        cmr_nonlegendary_rare_mythic: 1,
+        cmr_legendary: 2,
+        foil: 1,
+      })
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this
