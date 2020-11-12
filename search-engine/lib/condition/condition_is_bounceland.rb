@@ -9,6 +9,7 @@ class ConditionIsBounceland < ConditionNickname
       "everglades",
       "golgari rot farm",
       "gruul turf",
+      "guildless commons",
       "izzet boilerworks",
       "jungle basin",
       "karoo",

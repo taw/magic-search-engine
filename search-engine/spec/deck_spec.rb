@@ -73,6 +73,7 @@ describe Deck do
         ![
           "cm1", "opca", "oe01", "ohop", "phop", "oarc", "parc", "opc2",
           "ocmd", "oc13", "oc14", "oc15", "oc16", "oc17", "oc18", "oc19", "oc20",
+          "cmr",
         ].include?(set.code)
       }
   end

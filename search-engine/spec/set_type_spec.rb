@@ -49,7 +49,7 @@ describe "Set types" do
   # mtgjson follows some but not all of them
   it "scryfall types" do
     "st:arena_league".should include_search "e:pal00,pal01,pal02,pal03,pal04,pal05,pal06,pal99,parl"
-    "st:commander".should include_search "e:cmd,c13,c14,c15,c16,c17,c18,oc13,oc14,oc15,oc16,oc17,oc18,cma,cm2"
+    "st:commander".should include_search "e:cmd,c13,c14,c15,c16,c17,c18,oc13,oc14,oc15,oc16,oc17,oc18,cma,cm2,cmr"
     "st:core".should include_search "e:lea,leb,2ed,3ed,4ed,5ed,6ed,7ed,8ed,9ed,10e,m10,m11,m12,m13,m14,m15,m19,m20"
     "st:duel_deck".should include_search "e:dd1,dd2,ddc,ddd,dde,ddf,ddg,ddh,ddi,ddj,ddk,ddl,ddm,ddn,ddo,ddp,ddq,ddr,dds,ddt,ddu,dvd,evg,gvl,jvc,td2"
     "st:duels".should include_search "e:pdp10,pdp11,pdp12,pdp13,pdp14,pdtp"

@@ -70,6 +70,7 @@ describe "Card nicknames" do
       "Everglades",
       "Golgari Rot Farm",
       "Gruul Turf",
+      "Guildless Commons",
       "Izzet Boilerworks",
       "Jungle Basin",
       "Karoo",
@@ -296,7 +297,6 @@ describe "Card nicknames" do
       't:land o:/\{T\}: Add \{.\}, \{.\}, or \{.\}/ -o:sacrifice o:tapped -o:cycling'
   end
 
-
   it "is:triome" do
     assert_search_results "is:triome",
       "Indatha Triome",
@@ -356,6 +356,7 @@ describe "Card nicknames" do
   # This definition is more strict than some people use the term “keyword soup”, but it is useful for figuring out relative order of keywords by filtering these cards out
   it "is:keywordsoup" do
     assert_search_results "is:keywordsoup",
+      "Akroma, Vision of Ixidor",
       "Animus of Predation",
       "Cairn Wanderer",
       "Concerted Effort",

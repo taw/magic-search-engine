@@ -7,13 +7,20 @@ class PatchPartner < Patch
   def call
     each_printing do |card|
       text = card["text"] or next
-      if text.include?("Partner (You can have two commanders if both have partner.)")
+      if text.include?("Partner (You can have two commanders")
+        card["is_partner"] = true
+      elsif text.include?("Legendary Partner (You can have two commanders")
         card["is_partner"] = true
       elsif text =~ /\bPartner with ([^\n\(]*)/
         card["is_partner"] = true
         partner_name = $1.strip
         # partners[card] = partner_name
         card["partner"] = find_partner_card_for(card, partner_name)
+      elsif text =~ /Partner\s*\z/
+        # CMR, some have no remainder text
+        card["is_partner"] = true
+      elsif text =~ /\bpartner\b/i
+        raise "Unknown partner text"
       end
     end
   end
