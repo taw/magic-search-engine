@@ -50,16 +50,9 @@ task "pennydreadful:update" do
   list.write list.read.gsub("\r", "")
 end
 
-desc "Fetch XMage card lists"
-task "xmage:fetch" do
-  Pathname("tmp").mkpath
-  system "wget -q https://raw.githubusercontent.com/magefree/mage/master/Utils/mtg-cards-data.txt -O tmp/mtg-cards-data.txt"
-  system "wget -q https://raw.githubusercontent.com/magefree/mage/master/Utils/mtg-sets-data.txt -O tmp/mtg-sets-data.txt"
-end
-
-desc "Fetch XMage card lists"
-task "xmage:preprocess" do
-  system "./bin/xmage_preprocess"
+desc "Update XMage card lists"
+task "xmage:update" do
+  sh "rescue bin/extract_xmage_card_list ~/src/mage"
 end
 
 desc "Fetch Gatherer pics"
