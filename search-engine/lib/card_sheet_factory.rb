@@ -810,4 +810,25 @@ class CardSheetFactory
   def modaldfc_uncommon(set_code)
     from_query("e:#{set_code} r:uncommon is:modaldfc")
   end
+
+  def cmr_nonlegendary_uncommon
+    from_query('e:cmr -t:legendary r:uncommon', 80)
+  end
+
+  # Not sure what's the rate, 4:2:1 is likely incorrect
+  def cmr_legendary
+    mix_sheets(
+      [from_query('e:cmr t:legendary r:uncommon', 39), 4],
+      [from_query('e:cmr t:legendary r:rare', 25), 2],
+      [from_query('e:cmr t:legendary r:mythic', 5), 1],
+    )
+  end
+
+  # 2*52 + 17 = 121
+  def cmr_nonlegendary_rare_mythic
+    mix_sheets(
+      [from_query('e:cmr -t:legendary r:rare', 52), 2],
+      [from_query('e:cmr -t:legendary r:mythic', 17), 1],
+    )
+  end
 end
