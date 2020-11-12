@@ -13,6 +13,14 @@ describe "in queries" do
     assert_search_equal "in:arena", "alt:game:arena"
   end
 
+  it "in:shandalar" do
+    assert_search_equal "in:shandalar", "alt:game:shandalar"
+  end
+
+  it "in:xmage" do
+    assert_search_equal "in:xmage", "alt:game:xmage"
+  end
+
   it "in:booster" do
     assert_search_equal "in:booster", "alt:is:booster"
   end
@@ -80,7 +88,7 @@ describe "in queries" do
   # Should check all of them maybe?
   it "in: edition" do
     assert_search_equal "in:lea in:m10", "alt:e:lea alt:e:m10"
-    assert_search_equal "in:zendikar in:commander", "alt:e:zendikar alt:e:commander"
+    assert_search_equal "in:zendikar in:commander", "alt:e:zendikar alt:st:commander"
     assert_search_equal "in:commander,m10,m11,m12", "alt:e:commander or alt:e:m10 or alt:e:m11 or alt:e:m12"
 
     db.sets.each do |set_code, _|

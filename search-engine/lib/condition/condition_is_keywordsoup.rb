@@ -3,13 +3,14 @@ class ConditionIsKeywordsoup < ConditionNickname
   # A good indicator of this is that haste is listed before trample.
   def names
     [
+      "akroma, vision of ixidor",
       "animus of predation",
       "cairn wanderer",
       "concerted effort",
       "crystalline giant",
       "death-mask duplicant",
-      "kathril, aspect warper",
       "greater morphling",
+      "kathril, aspect warper",
       "majestic myriarch",
       "odric, lunarch marshal",
       "rayami, first of the fallen",

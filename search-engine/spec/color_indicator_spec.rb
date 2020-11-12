@@ -11,7 +11,8 @@ describe "Color Indicator Test" do
       "Crimson Kobolds",
       "Crookshank Kobolds",
       "Kobolds of Kher Keep",
-      "Half-Orc, Half-"
+      "Half-Orc, Half-",
+      "Rograkh, Son of Rohgahh"
     assert_search_results "ind:r t:instant",
       "Pact of the Titan"
     assert_search_results "ind:w t:sorcery",

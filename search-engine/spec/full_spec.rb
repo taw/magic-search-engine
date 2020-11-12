@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data
   # for same sets, indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(21581)
-    db.number_of_printings.should eq(52709)
+    db.number_of_cards.should eq(21751)
+    db.number_of_printings.should eq(53428)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -15,7 +15,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 5173
+    assert_count_printings "is:promo", 5174
   end
 
   it "block codes" do
@@ -74,7 +74,16 @@ describe "Full Database Test" do
       "Smitten Swordmaster", "Curry Favor",
       "Smelt (CMB1)", "Herd", "Saw"
     # Semantics of that changed
-    assert_search_results "part:cmc=0 part:cmc=3 part:c:b"
+    # it used to match a lot of double-faced cards
+    # then it all disappeared as DFCs share cmc
+    # but then MDFCs came out using previous rules
+    assert_search_results "part:cmc=0 part:cmc=3 part:c:b",
+      "Agadeem, the Undercrypt",
+      "Agadeem's Awakening",
+      "Blackbloom Bog",
+      "Blackbloom Rogue",
+      "Pelakka Caverns",
+      "Pelakka Predation"
   end
 
   it "color identity" do
@@ -265,7 +274,7 @@ describe "Full Database Test" do
   end
 
   it "loy:special" do
-    assert_search_results "loy=0"
+    assert_search_results "loy=0", "Jeska, Thrice Reborn"
     assert_search_equal "loy=x", "loy=X"
     assert_search_results "loy=x", "Nissa, Steward of Elements"
   end
@@ -378,7 +387,8 @@ describe "Full Database Test" do
 
   it "is commander" do
     # Some C14 commanders got reprited
-    assert_search_equal_cards "is:commander", "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,c18,bbd)"
+    assert_search_equal_cards "is:commander",
+      "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,c18,bbd,cmr)"
   end
 
   it "is brawler" do
