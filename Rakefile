@@ -152,6 +152,11 @@ task "update" do
   # sh "trash ./tmp/AllSets.json"
 end
 
+desc "Update sealed only"
+task "update:sealed" do
+  sh "./bin/export_sealed_data ~/github/magic-sealed-data"
+end
+
 desc "Update decklists only"
 task "update:decks" do
   Pathname("tmp").mkpath
