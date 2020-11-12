@@ -1,0 +1,75 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+require "pathname-glob"
+require "pry"
+
+# Unicode differences are handled by indexer
+# Variants unimplemented based on https://github.com/magefree/mage/wiki/List-of-cards-that-will-not-be-implemented-on-Xmage
+CARDS_NAME_FIXES = {
+  "Garbage Elemental" => "Garbage Elemental (a) // Garbage Elemental (c) // Garbage Elemental (d) // Garbage Elemental (f)",
+  "Very Cryptic Command" => "Very Cryptic Command (b) // Very Cryptic Command (c) // Very Cryptic Command (d) // Very Cryptic Command (e)",
+  "Everythingamajig" => "Everythingamajig (a) // Everythingamajig (b) // Everythingamajig (c) // Everythingamajig (d) // Everythingamajig (e) // Everythingamajig (f)",
+}
+
+class ExtractXmageCardList
+  def initialize(xmage_root)
+    @xmage_root = Pathname(xmage_root)
+    @cards = []
+  end
+
+  def sets_path
+    @xmage_root + "Mage.Sets/src/mage/sets"
+  end
+
+  def output_path
+    Pathname(__dir__) + "../data/xmage_cards.txt"
+  end
+
+  def extract_set_data(line)
+    args = line[/super\((.*)\)/,1]
+    results = args.scan(/"((?:\\.|.)*?)"/).flatten[0,2].map{|x| x.gsub('\"', '"')}
+    unless results.size == 2 and results[1] != ""
+      raise "Can't extract set name and code from: #{line}"
+    end
+    [results[0], results[1].downcase]
+  end
+
+  def extract_card_name(line)
+    if line =~ /\A\s*cards\.add\(new (?:ExpansionSet\.)?SetCardInfo\(\"((?:\\.|.)*?)\"/
+      $1.gsub('\"', '"')
+    else
+      raise "Can't extract card name from: #{line}"
+    end
+  end
+
+  def process_set_file(path)
+    data = path.readlines
+    super_lines = data.grep(/\A\s*super/)
+    card_add_lines = data.grep(/\A\s*cards\.add/)
+    unless super_lines.size == 1 and card_add_lines.size > 0
+      warn "#{path} is not is expected format, skipping"
+      return
+    end
+    set_name, set_code = extract_set_data(super_lines[0])
+    return if set_code == "sws"
+    card_add_lines.each do |line|
+      card_name = extract_card_name(line)
+      card_name = CARDS_NAME_FIXES[card_name] || card_name
+      card_name.split(" // ").each do |n|
+        @cards << [set_code, n]
+      end
+    end
+  end
+
+  def call
+    sets_path.glob("*.java").each do |path|
+      process_set_file(path)
+    end
+    output_path.write(
+      @cards.map{|sc,cn| "#{sc}\t#{cn}\n"}.sort.uniq.join
+    )
+  end
+end
+
+ExtractXmageCardList.new(ARGV[0]).call

@@ -1,5 +1,3 @@
-# This is not exposed in syntax help as data quality is still questionable
-
 class PatchXmage < Patch
   def xmage_cards_path
     Pathname(__dir__) + "../../../data/xmage_cards.txt"
@@ -15,19 +13,41 @@ class PatchXmage < Patch
     end
   end
 
+  def strip_accents(str)
+    str.tr("àáââéíöûûú", "aaaaeiouuu")
+  end
+
+  def card_names(card)
+    names = card["names"] || [card["name"]]
+    names.map{|n| strip_accents(n) }
+  end
+
+  def all_card_names
+    @all_card_names ||= @cards.keys.map{|n| strip_accents(n)}
+  end
+
   def call
     matched = Set[]
 
     each_printing do |card|
-      name = card["name"]
+      names = card_names(card)
       set_code = card["set_code"]
-      next unless xmage_cards.include?([set_code, name])
-      card["xmage"] = true
-      matched << [set_code, name]
+      names.each do |name|
+        if xmage_cards.include?([set_code, name])
+          card["xmage"] = true
+          matched << [set_code, name]
+        end
+      end
     end
 
-    # This list is unfortunately quite long, and contains a lot of different cards
-    # there for different reasons
+    # XMage sets do not always correspond to mtgjson sets
     missed_cards = xmage_cards - matched
+    # These are mostly missing unicode diacritics
+    likely_typos = missed_cards.map(&:last) - all_card_names
+    unless likely_typos.empty?
+      likely_typos.each do |name|
+        puts "Likely typo in XMage card list: #{name}"
+      end
+    end
   end
 end
