@@ -147,6 +147,7 @@ class Indexer
       PatchBfm,
       PatchUnstable,
       PatchShandalar,
+      PatchXmage,
 
       # Reconcile issues
       PatchReconcileForeignNames,
@@ -265,6 +266,7 @@ class Indexer
           "frame_effects",
           "frame",
           "fullart",
+          "xmage",
           "mtgo",
           "multiverseid",
           "number",
