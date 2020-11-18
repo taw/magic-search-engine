@@ -203,6 +203,10 @@ describe "Formats" do
     assert_count_cards "banned:historic", 11
   end
 
+  it "premodern" do
+    assert_count_cards "banned:premodern", 32
+  end
+
   # We don't keep historical legality for Petty Dreadful yet
   it "penny dreadful" do
     assert_search_include 'f:"penny dreadful"', *FormatPennyDreadful::PrimaryCards
@@ -250,7 +254,8 @@ describe "Formats" do
       banned:"Mirage Block" or
       banned:"Innistrad Block" or
       banned:"Tempest Block" or
-      banned:"MTGO Commander"
+      banned:"MTGO Commander" or
+      banned:premodern
     ]
   end
 
