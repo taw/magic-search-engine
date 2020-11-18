@@ -200,6 +200,7 @@ class Format
         "mtgocommander"              => FormatMTGOCommander,
         "mtgoedh"                    => FormatMTGOCommander,
         "historic"                   => FormatHistoric,
+        "premodern"                  => FormatPremodern,
       }
     end
 
