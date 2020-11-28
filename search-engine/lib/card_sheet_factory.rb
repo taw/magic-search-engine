@@ -818,7 +818,7 @@ class CardSheetFactory
   # Not sure what's the rate, 4:2:1 is likely incorrect
   def cmr_legendary
     mix_sheets(
-      [from_query('e:cmr t:legendary r:uncommon', 39), 4],
+      [from_query('e:cmr t:legendary r:uncommon', 40), 4],
       [from_query('e:cmr t:legendary r:rare', 25), 2],
       [from_query('e:cmr t:legendary r:mythic', 5), 1],
     )
