@@ -1,7 +1,7 @@
 = content_for(:disable_turbolinks) do
   true
 %h4 Magic: The Gathering Comprehensive Rules
-%p These rules are effective as of September 25, 2020.
+%p These rules are effective as of November 20, 2020.
 %h3{id: "section-introduction"} Introduction
 %p This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
 %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules. If you have questions, you can get the answers from us at Support.Wizards.com.
@@ -1650,7 +1650,7 @@
   .rule_text Some replacement effects and prevention effects result in one or more card draws. In such a case, if there are any parts of the original event that haven’t been replaced, those parts occur first, then the card draws happen one at a time.
 .rule{id: "section-121-8"}
   .rule_id 121.8.
-  .rule_text If a spell or ability causes a card to be drawn while another spell is being cast, the drawn card is kept face down until that spell becomes cast (see rule <a href="#section-601-2i">601.2i</a>) or until the casting process is reversed (see rule <a href="#section-723">723</a>, “Handling Illegal Actions”). While face down, it’s considered to have no characteristics. The same is true with relation to another ability being activated. If an effect allows or instructs a player to reveal the card as it’s being drawn, it’s revealed after the spell becomes cast or the ability becomes activated.
+  .rule_text If a spell or ability causes a card to be drawn while another spell is being cast, the drawn card is kept face down until that spell becomes cast (see rule <a href="#section-601-2i">601.2i</a>) or until the casting process is reversed (see rule <a href="#section-723">723</a>, “Handling Illegal Actions”). The same is true with relation to another ability being activated. If an effect allows or instructs a player to reveal the card as it’s being drawn, it’s revealed after the spell becomes cast or the ability becomes activated. While face down, the drawn card is considered to have no characteristics and can’t be used to pay any part of the cost of the spell or ability that would require the card to have specific characteristics.
 .rule{id: "section-121-9"}
   .rule_id 121.9.
   .rule_text If an effect gives a player the option to reveal a card as they draw it, that player may look at that card as they draw it before choosing whether to reveal it.
@@ -1722,13 +1722,13 @@
   .rule_text A card’s name is always considered to be the English version of its name, regardless of printed language.
 .rule{id: "section-201-2a"}
   .rule_id 201.2a
-  .rule_text Two objects have the same name if their names are identical.
+  .rule_text Two objects have the same name if their names are identical. An object with no name doesn’t have the same name as any other object, including another object with no name.
 .rule{id: "section-201-2b"}
   .rule_id 201.2b
   .rule_text If an object has more than one name, it has the same name as another object if there are one or more names that both objects have in common.
 .rule{id: "section-201-2c"}
   .rule_id 201.2c
-  .rule_text Two or more objects have different names if there are no names that both objects have in common.
+  .rule_text Two or more objects have different names only if each of them has at least one name and no two objects in that group have the same name.
 .rule{id: "section-201-3"}
   .rule_id 201.3.
   .rule_text If an effect instructs a player to choose a card name, the player must choose the name of a card in the Oracle card reference. (See rule <a href="#section-108-1">108.1</a>.) A player may not choose the name of a token unless it’s also the name of a card.
@@ -1769,7 +1769,7 @@
   .rule_text Text printed on some legendary cards refers to that card by a shortened version of its name. Instances of a card’s shortened name used in this manner are treated as though they used the card’s full name.
 .rule{id: "section-201-5"}
   .rule_id 201.5.
-  .rule_text Some promotional versions of Ikoria™: Lair of Behemoths cards feature a name other than their own in the upper left corner, with their normal name in a secondary title bar below it. These cards have only the card name specified in the secondary title bar, not the name printed where a card’s name would normally appear.
+  .rule_text Some versions of Ikoria™: Lair of Behemoths cards and other promotional cards feature a name other than their own in the upper left corner, with their normal name in a secondary title bar below it. These cards have only the card name specified in the secondary title bar, not the name printed where a card’s name would normally appear. That name is considered flavor text and has no effect on game play.
 .rule{id: "section-202"}
   .rule_id 202.
   .rule_text Mana Cost and Color
@@ -3492,7 +3492,7 @@
   .rule_text Example: An ability that reads “Reveal the first card you draw each turn. Whenever you reveal a basic land card this way, draw a card” is a static ability linked to a triggered ability.
 .rule{id: "section-603-12"}
   .rule_id 603.12.
-  .rule_text A resolving spell or ability may allow or instruct a player to take an action and create a triggered ability that triggers “when [a player] [does or doesn’t]” take that action or “when [something happens] this way.” These reflexive triggered abilities follow the rules for delayed triggered abilities (see rule <a href="#section-603-7">603.7</a>), except that they’re checked immediately after being created and trigger based on whether the trigger event or events occurred earlier during the resolution of the spell or ability that created them.
+  .rule_text A resolving spell or ability may allow or instruct a player to take an action and create a triggered ability that triggers “when [a player] [does or doesn’t]” take that action or “when [something happens] this way.” These reflexive triggered abilities follow the rules for delayed triggered abilities (see rule <a href="#section-603-7">603.7</a>), except that they’re checked immediately after being created and trigger based on whether the trigger event or events occurred earlier during the resolution of the spell or ability that created them. If the trigger event or events occur multiple times during that time, the reflexive triggered ability will trigger once for each of those times.
   .rule_text Example: Heart-Piercer Manticore has an ability that reads “When Heart-Piercer Manticore enters the battlefield, you may sacrifice another creature. When you do, Heart-Piercer Manticore deals damage equal to that creature’s power to any target.” The reflexive triggered ability triggers only when you sacrifice another creature due to the original triggered ability, and not if you sacrifice a creature for any other reason.
 .rule{id: "section-604"}
   .rule_id 604.
@@ -3637,6 +3637,9 @@
 .rule{id: "section-607-2m"}
   .rule_id 607.2m
   .rule_text If an object has a static ability printed on it that allows a player to exile one or more cards “before you shuffle your deck to start the game” and an ability printed on it that refers to cards “exiled with cards named [this object’s name],” the second ability is linked to the first ability of any objects that had the specified name before the game began.
+.rule{id: "section-607-2n"}
+  .rule_id 607.2n
+  .rule_text If an object has both a static ability that causes a player to make a choice for a characteristic-defining ability before the game begins and that characteristic-defining ability printed on it in the same paragraph, those abilities are linked. The second ability refers only to the choice made as a result of the first ability and continues to refer to that choice as the object changes zones during the game.
 .rule{id: "section-607-3"}
   .rule_id 607.3.
   .rule_text If, within a pair of linked abilities, one ability refers to a single object as “the exiled card,” “a card exiled with [this card],” or a similar phrase, and the other ability has exiled multiple cards (usually because it was copied), the ability refers to each of the exiled cards. If that ability asks for any information about the exiled card, such as a characteristic or converted mana cost, it gets multiple answers. If these answers are used to determine the value of a variable, the sum of the answers is used. If that ability performs any actions on “the” card, it performs that action on each exiled card. If that ability performs any actions on “a” card, the controller of the ability chooses which card is affected.
@@ -3661,7 +3664,7 @@
   .rule_text Each time all players pass in succession, the spell or ability on top of the stack resolves. (See rule <a href="#section-609">609</a>, “Effects.”)
 .rule{id: "section-608-2"}
   .rule_id 608.2.
-  .rule_text If the object that’s resolving is an instant spell, a sorcery spell, or an ability, its resolution may involve several steps. The steps described in rules <a href="#section-608-2a">608.2a</a> and <a href="#section-608-2b">608.2b</a> are followed first. The steps described in rules <a href="#section-608-2c">608.2c</a>–j are then followed as appropriate, in no specific order. The step described in rule <a href="#section-608-2k">608.2k</a> is followed last.
+  .rule_text If the object that’s resolving is an instant spell, a sorcery spell, or an ability, its resolution may involve several steps. The steps described in rules <a href="#section-608-2a">608.2a</a> and <a href="#section-608-2b">608.2b</a> are followed first. The steps described in rules <a href="#section-608-2c">608.2c</a>–k are then followed as appropriate, in no specific order. The step described in rule <a href="#section-608-2m">608.2m</a> is followed last.
 .rule{id: "section-608-2a"}
   .rule_id 608.2a
   .rule_text If a triggered ability has an intervening “if” clause, it checks whether the clause’s condition is true. If it isn’t, the ability is removed from the stack and does nothing. Otherwise, it continues to resolve. See rule <a href="#section-603-4">603.4</a>.
@@ -3682,23 +3685,28 @@
   .rule_text Some spells and abilities have multiple steps or actions, denoted by separate sentences or clauses, that involve multiple players. In these cases, the choices for the first action are made in APNAP order, and then the first action is processed simultaneously. Then the choices for the second action are made in APNAP order, and then that action is processed simultaneously, and so on. See rule <a href="#section-101-4">101.4</a>.
 .rule{id: "section-608-2f"}
   .rule_id 608.2f
-  .rule_text If an effect gives a player the option to pay mana, they may activate mana abilities before taking that action. If an effect specifically instructs or allows a player to cast a spell during resolution, they do so by following the steps in rules <a href="#section-601-2a">601.2a</a>–i, except no player receives priority after it’s cast. That spell becomes the topmost object on the stack, and the currently resolving spell or ability continues to resolve, which may include casting other spells this way. No other spells can normally be cast and no other abilities can normally be activated during resolution.
+  .rule_text Some spells and abilities include actions taken on multiple players and/or objects. In most cases, each such action is processed simultaneously. If the action can’t be processed simultaneously, it’s instead processed considering each affected player or object individually. APNAP order is used to make the primary determination of the order of those actions. Secondarily, if the action is to be taken on both a player and an object they control or on multiple objects controlled by the same player, the player who controls the resolving spell or ability chooses the relative order of those actions. 
+  .rule_text Example: Blatant Thievery says “For each opponent, gain control of target permanent that player controls.” As Blatant Thievery resolves, its controller gains control of all permanents chosen as targets simultaneously.
+  .rule_text Example: Soulfire Eruption says, in part, “Choose any number of target creatures, planeswalkers, and/or players. For each of them, exile the top card of your library, then Soulfire Eruption deals damage equal to that card’s converted mana cost to that permanent or player.” A player casts Soulfire Eruption targeting an opponent and a creature that opponent controls. As Soulfire Eruption resolves, the player can’t exile the top card of their library multiple times at the same time, so they first choose which target they are considering, then they exile the top card of their library, and finally Soulfire Eruption deals damage to that target. They then repeat this process for the remaining target. 
 .rule{id: "section-608-2g"}
   .rule_id 608.2g
-  .rule_text If an effect requires information from the game (such as the number of creatures on the battlefield), the answer is determined only once, when the effect is applied. If the effect requires information from a specific object, including the source of the ability itself, the effect uses the current information of that object if it’s in the public zone it was expected to be in; if it’s no longer in that zone, or if the effect has moved it from a public zone to a hidden zone, the effect uses the object’s last known information. See rule <a href="#section-113-7a">113.7a</a>. If an ability states that an object does something, it’s the object as it exists—or as it most recently existed—that does it, not the ability.
+  .rule_text If an effect gives a player the option to pay mana, they may activate mana abilities before taking that action. If an effect specifically instructs or allows a player to cast a spell during resolution, they do so by following the steps in rules <a href="#section-601-2a">601.2a</a>–i, except no player receives priority after it’s cast. That spell becomes the topmost object on the stack, and the currently resolving spell or ability continues to resolve, which may include casting other spells this way. No other spells can normally be cast and no other abilities can normally be activated during resolution.
 .rule{id: "section-608-2h"}
   .rule_id 608.2h
-  .rule_text If an effect refers to certain characteristics, it checks only for the value of the specified characteristics, regardless of any related ones an object may also have.
-  .rule_text Example: An effect that reads “Destroy all black creatures” destroys a white-and-black creature, but one that reads “Destroy all nonblack creatures” doesn’t.
+  .rule_text If an effect requires information from the game (such as the number of creatures on the battlefield), the answer is determined only once, when the effect is applied. If the effect requires information from a specific object, including the source of the ability itself, the effect uses the current information of that object if it’s in the public zone it was expected to be in; if it’s no longer in that zone, or if the effect has moved it from a public zone to a hidden zone, the effect uses the object’s last known information. See rule <a href="#section-113-7a">113.7a</a>. If an ability states that an object does something, it’s the object as it exists—or as it most recently existed—that does it, not the ability.
 .rule{id: "section-608-2i"}
   .rule_id 608.2i
-  .rule_text If an ability’s effect refers to a specific untargeted object that has been previously referred to by that ability’s cost or trigger condition, it still affects that object even if the object has changed characteristics.
-  .rule_text Example: Wall of Tears says “Whenever Wall of Tears blocks a creature, return that creature to its owner’s hand at end of combat.” If Wall of Tears blocks a creature, then that creature ceases to be a creature before the triggered ability resolves, the permanent will still be returned to its owner’s hand.
+  .rule_text If an effect refers to certain characteristics, it checks only for the value of the specified characteristics, regardless of any related ones an object may also have.
+  .rule_text Example: An effect that reads “Destroy all black creatures” destroys a white-and-black creature, but one that reads “Destroy all nonblack creatures” doesn’t.
 .rule{id: "section-608-2j"}
   .rule_id 608.2j
-  .rule_text If an instant spell, sorcery spell, or ability that can legally resolve leaves the stack once it starts to resolve, it will continue to resolve fully.
+  .rule_text If an ability’s effect refers to a specific untargeted object that has been previously referred to by that ability’s cost or trigger condition, it still affects that object even if the object has changed characteristics.
+  .rule_text Example: Wall of Tears says “Whenever Wall of Tears blocks a creature, return that creature to its owner’s hand at end of combat.” If Wall of Tears blocks a creature, then that creature ceases to be a creature before the triggered ability resolves, the permanent will still be returned to its owner’s hand.
 .rule{id: "section-608-2k"}
   .rule_id 608.2k
+  .rule_text If an instant spell, sorcery spell, or ability that can legally resolve leaves the stack once it starts to resolve, it will continue to resolve fully.
+.rule{id: "section-608-2m"}
+  .rule_id 608.2m
   .rule_text As the final part of an instant or sorcery spell’s resolution, the spell is put into its owner’s graveyard. As the final part of an ability’s resolution, the ability is removed from the stack and ceases to exist.
 .rule{id: "section-608-3"}
   .rule_id 608.3.
@@ -3821,7 +3829,7 @@
   .rule_text Example: An effect that reads “Prevent all damage creatures would deal this turn” doesn’t modify any object’s characteristics, so it’s modifying the rules of the game. That means the effect will apply even to damage from creatures that weren’t on the battlefield when the continuous effect began. It also affects damage from permanents that become creatures later in the turn.
 .rule{id: "section-611-2d"}
   .rule_id 611.2d
-  .rule_text If a resolving spell or ability that creates a continuous effect contains a variable such as X, the value of that variable is determined only once, on resolution. See rule <a href="#section-608-2g">608.2g</a>.
+  .rule_text If a resolving spell or ability that creates a continuous effect contains a variable such as X, the value of that variable is determined only once, on resolution. See rule <a href="#section-608-2h">608.2h</a>.
 .rule{id: "section-611-2e"}
   .rule_id 611.2e
   .rule_text If a resolving spell or ability both puts a nontoken permanent onto the battlefield and creates a continuous effect stating that the permanent “is [characteristic],” that continuous effect applies simultaneously with the permanent entering the battlefield. This characteristic is usually a color or a creature type. If the continuous effect says the permanent “becomes [characteristic]” or “gains [an ability],” that effect applies after the permanent is on the battlefield.
@@ -5109,7 +5117,10 @@
   .rule_text Multiple instances of protection from the same quality on the same permanent or player are redundant.
 .rule{id: "section-702-16n"}
   .rule_id 702.16n
-  .rule_text Some Auras both give the enchanted creature protection and say “this effect doesn’t remove” either that specific Aura or all Auras. This means that the specified Auras can legally enchant that creature and aren’t put into their owners’ graveyards as a state-based action. If the creature has other instances of protection from the same quality, those instances affect Auras as normal.
+  .rule_text Some Auras both give the enchanted creature protection from a quality and say “this effect doesn’t remove” either that specific Aura or all Auras. This means that the specified Auras aren’t put into their owners’ graveyards as a state-based action. If the creature has other instances of protection from the same quality, those instances affect Auras as normal.
+.rule{id: "section-702-16p"}
+  .rule_id 702.16p
+  .rule_text One Aura (Benevolent Blessing) gives the enchanted creature protection from a quality and says the effect doesn’t remove certain permanents that are “already attached to” that creature. This means that any object with the stated quality attached to that creature at the moment the protection effect starts to apply (including the Aura giving the permanent protection) aren’t put into their owners’ graveyards as a state-based action. Other permanents with the stated quality can’t become attached to the creature. If the creature has other instances of protection from the same quality, those instances affect attached permanents as normal. 
 .rule{id: "section-702-17"}
   .rule_id 702.17.
   .rule_text Reach
@@ -5903,6 +5914,9 @@
   .rule_text Cascade is a triggered ability that functions only while the spell with cascade is on the stack. “Cascade” means “When you cast this spell, exile cards from the top of your library until you exile a nonland card whose converted mana cost is less than this spell’s converted mana cost. You may cast that card without paying its mana cost. Then put all cards exiled this way that weren’t cast on the bottom of your library in a random order.”
 .rule{id: "section-702-84b"}
   .rule_id 702.84b
+  .rule_text If an effect allows a player to take an action with one or more of the exiled cards “as you cascade,” the player may take that action after they have finished exiling cards due to the cascade ability. This action is taken before choosing whether to cast the last exiled card or, if no appropriate card was exiled, before putting the exiled cards on the bottom of their library in a random order.
+.rule{id: "section-702-84c"}
+  .rule_id 702.84c
   .rule_text If a spell has multiple instances of cascade, each triggers separately.
 .rule{id: "section-702-85"}
   .rule_id 702.85.
@@ -6476,6 +6490,12 @@
 .rule{id: "section-702-139f"}
   .rule_id 702.139f
   .rule_text Any effect that refers to or modifies the mutating creature spell refers to or modifies the mutated permanent it merges with as it resolves.
+.rule{id: "section-702-140"}
+  .rule_id 702.140.
+  .rule_text Encore
+.rule{id: "section-702-140a"}
+  .rule_id 702.140a
+  .rule_text Encore is an activated ability that functions while the card with encore is in a graveyard. “Encore [cost]” means “[Cost], Exile this card from your graveyard: For each opponent, create a token that’s a copy of this card that attacks that opponent this turn if able. The tokens gain haste. Sacrifice them at the beginning of the next end step. Activate this ability only any time you could cast a sorcery.”
 .rule{id: "section-703"}
   .rule_id 703.
   .rule_text Turn-Based Actions
@@ -6952,34 +6972,37 @@
   .rule_text Only the face that will be face up on the stack is evaluated to determine if it can be cast. Only that face is considered to be put onto the stack.
 .rule{id: "section-711-8"}
   .rule_id 711.8.
-  .rule_text A resolving transforming double-faced spell is put onto the battlefield front face up. A resolving modal double-faced spell that becomes a permanent is put onto the battlefield with the same face up that was face up on the stack.
+  .rule_text A player playing a modal double-faced card as a land chooses one of its faces that’s a land before putting it onto the battlefield. It enters the battlefield with that face up. See rule <a href="#section-305">305</a>, “Lands.”
 .rule{id: "section-711-9"}
   .rule_id 711.9.
-  .rule_text A double-faced card put onto the battlefield from a zone other than the stack enters the battlefield with its front face up by default.
-.rule{id: "section-711-9a"}
-  .rule_id 711.9a
-  .rule_text If a spell or ability puts a transforming double-faced card onto the battlefield “transformed,” it enters the battlefield with its back face up. If a player is instructed to put a card that isn’t a transforming double-faced card onto the battlefield transformed, that card stays in its current zone.
-.rule{id: "section-711-9b"}
-  .rule_id 711.9b
-  .rule_text If a player is instructed to put a modal double-faced card onto the battlefield and its front face isn’t a permanent card, the card stays in its current zone.
+  .rule_text A resolving transforming double-faced spell is put onto the battlefield front face up. A resolving modal double-faced spell that becomes a permanent is put onto the battlefield with the same face up that was face up on the stack.
 .rule{id: "section-711-10"}
   .rule_id 711.10.
-  .rule_text If an effect allows a player to cast a double-faced card as a face-down creature spell, or if a double-faced card enters the battlefield face down, it will have the characteristics given to it by the rule or effect that caused it to be face down. That card remains hidden, using a face-down substitute card (see rule <a href="#section-713">713</a>) and/or opaque sleeves. See rule <a href="#section-707">707</a>, “Face-Down Spells and Permanents.”
+  .rule_text A double-faced card put onto the battlefield from a zone other than the stack enters the battlefield with its front face up by default.
 .rule{id: "section-711-10a"}
   .rule_id 711.10a
-  .rule_text While face down, a transforming double-faced permanent can’t transform. If it’s turned face up, it will have its front face up.
+  .rule_text If a spell or ability puts a transforming double-faced card onto the battlefield “transformed,” it enters the battlefield with its back face up. If a player is instructed to put a card that isn’t a transforming double-faced card onto the battlefield transformed, that card stays in its current zone.
+.rule{id: "section-711-10b"}
+  .rule_id 711.10b
+  .rule_text If a player is instructed to put a modal double-faced card onto the battlefield and its front face isn’t a permanent card, the card stays in its current zone.
 .rule{id: "section-711-11"}
   .rule_id 711.11.
-  .rule_text Double-faced permanents can’t be turned face down. If a spell or ability tries to turn a double-faced permanent face down, nothing happens.
+  .rule_text If an effect allows a player to cast a double-faced card as a face-down creature spell, or if a double-faced card enters the battlefield face down, it will have the characteristics given to it by the rule or effect that caused it to be face down. That card remains hidden, using a face-down substitute card (see rule <a href="#section-713">713</a>) and/or opaque sleeves. See rule <a href="#section-707">707</a>, “Face-Down Spells and Permanents.”
+.rule{id: "section-711-11a"}
+  .rule_id 711.11a
+  .rule_text While face down, a transforming double-faced permanent can’t transform. If it’s turned face up, it will have its front face up.
 .rule{id: "section-711-12"}
   .rule_id 711.12.
-  .rule_text A double-faced card that is exiled face down remains hidden, using a face-down substitute card and/or opaque sleeves. See rule <a href="#section-713">713</a>, “Substitute Cards.”
+  .rule_text Double-faced permanents can’t be turned face down. If a spell or ability tries to turn a double-faced permanent face down, nothing happens.
 .rule{id: "section-711-13"}
   .rule_id 711.13.
-  .rule_text When a transforming double-faced permanent transforms, it doesn’t become a new object. Any effects that applied to that permanent will continue to apply to it after it transforms.
-  .rule_text Example: An effect gives Village Ironsmith (the front face of a transforming double-faced card) +2/+2 until end of turn and then Village Ironsmith transforms into Ironfang. Ironfang will continue to get +2/+2 until end of turn.
+  .rule_text A double-faced card that is exiled face down remains hidden, using a face-down substitute card and/or opaque sleeves. See rule <a href="#section-713">713</a>, “Substitute Cards.”
 .rule{id: "section-711-14"}
   .rule_id 711.14.
+  .rule_text When a transforming double-faced permanent transforms, it doesn’t become a new object. Any effects that applied to that permanent will continue to apply to it after it transforms.
+  .rule_text Example: An effect gives Village Ironsmith (the front face of a transforming double-faced card) +2/+2 until end of turn and then Village Ironsmith transforms into Ironfang. Ironfang will continue to get +2/+2 until end of turn.
+.rule{id: "section-711-15"}
+  .rule_id 711.15.
   .rule_text If an effect instructs a player to choose a card name, the player may name either face of a double-faced card but not both.
 .rule{id: "section-712"}
   .rule_id 712.
@@ -7262,7 +7285,7 @@
   .rule_text Only one player can be the monarch at a time. As a player becomes the monarch, the current monarch ceases to be the monarch.
 .rule{id: "section-718-4"}
   .rule_id 718.4.
-  .rule_text If the monarch leaves the game, the active player becomes the monarch at the same time as that player leaves the game. If the active player is leaving the game or if there is no active player, the next player in turn order becomes the monarch.
+  .rule_text If the monarch leaves the game, the active player becomes the monarch at the same time as that player leaves the game. If the active player is leaving the game or if there is no active player, the next player in turn order becomes the monarch. If no player still in the game can become the monarch, the game continues with no monarch.
 .rule{id: "section-719"}
   .rule_id 719.
   .rule_text Restarting the Game
@@ -8235,11 +8258,17 @@
   .rule_text Color identity is established before the game begins.
 .rule{id: "section-903-4b"}
   .rule_id 903.4b
-  .rule_text Reminder text is ignored when determining a card’s color identity. See rule <a href="#section-207-2">207.2</a>.
+  .rule_text If a commander has a static ability that causes a player to choose its color before the game begins, that choice applies during deck construction and throughout the game, even as the commander changes zones. That choice affects the commander’s color identity. The player reveals that choice as they put their commander into the command zone before the game begins. See rules <a href="#section-103-2c">103.2c</a> and <a href="#section-607-2n">607.2n</a>.
 .rule{id: "section-903-4c"}
   .rule_id 903.4c
+  .rule_text Reminder text is ignored when determining a card’s color identity. See rule <a href="#section-207-2">207.2</a>.
+.rule{id: "section-903-4d"}
+  .rule_id 903.4d
   .rule_text The back face of a double-faced card (see rule <a href="#section-711">711</a>) is included when determining a card’s color identity. This is an exception to rule <a href="#section-711-4a">711.4a</a>.
   .rule_text Example: Civilized Scholar is the front face of a double-faced card with mana cost <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span></span>. Homicidal Brute is the back face of that double-faced card and has a red color indicator. The card’s color identity is blue and red.
+.rule{id: "section-903-4e"}
+  .rule_id 903.4e
+  .rule_text If an ability refers to the colors or number of colors in a commander’s color identity, that quality is undefined if that player doesn’t have a commander. That part of the ability won’t do anything. Costs that refer to that quality are unpayable.
 .rule{id: "section-903-5"}
   .rule_id 903.5.
   .rule_text Each Commander deck is subject to the following deck construction rules.
@@ -8314,6 +8343,30 @@
 .rule{id: "section-903-12h"}
   .rule_id 903.12h
   .rule_text Brawl games do not use the state-based action described in rule <a href="#section-704-6c">704.6c</a>, which causes a player to lose the game if they’ve been dealt 21 or more combat damage by a commander.
+.rule{id: "section-903-13"}
+  .rule_id 903.13.
+  .rule_text Commander Draft
+.rule{id: "section-903-13a"}
+  .rule_id 903.13a
+  .rule_text Commander Draft is an option for a different style of Commander game. It consists of a draft (a style of limited play where players choose cards from sealed booster packs to build their decks) followed by a multiplayer game. The Commander Draft option uses Commander Legends booster packs by default.
+.rule{id: "section-903-13b"}
+  .rule_id 903.13b
+  .rule_text A draft typically consists of three draft rounds. In each draft round, each player opens a booster pack, drafts two cards by placing them in a face-down pile in front of them, then passes the remaining cards to the next player. Each player then drafts two cards from the booster pack passed to them and passes the remaining cards. This procedure continues until all cards in that draft round have been drafted.
+.rule{id: "section-903-13c"}
+  .rule_id 903.13c
+  .rule_text In the first and third draft rounds, booster packs are passed to each player’s left. In the second draft round, booster packs are passed to each player’s right.
+.rule{id: "section-903-13d"}
+  .rule_id 903.13d
+  .rule_text During the draft, a player can look only at cards in the booster pack they are currently drafting from and cards they have already drafted. A player may not reveal drafted cards to other players unless an ability instructs them to.
+.rule{id: "section-903-13e"}
+  .rule_id 903.13e
+  .rule_text After the draft is complete, the cards a player drafted become that player’s card pool. A player may add up to two cards named The Prismatic Piper to their card pool, but only if those cards are used as the player’s commander(s).
+.rule{id: "section-903-13f"}
+  .rule_id 903.13f
+  .rule_text Commander Draft deck construction follows the same rules as Commander deck construction (see rule <a href="#section-903-5">903.5</a>) with two exceptions: (1) A player’s deck must contain at least 60 cards. There is no maximum deck size. (2) A player’s deck may include any number of cards from that player’s card pool with the same name.
+.rule{id: "section-903-13g"}
+  .rule_id 903.13g
+  .rule_text Commander Draft games follow the same rules as Commander games. See rules <a href="#section-903-6">903.6</a>–<a href="#section-903-11">903.11</a>.
 .rule{id: "section-904"}
   .rule_id 904.
   .rule_text Archenemy
@@ -8712,6 +8765,9 @@
   .glossary_term Commander
   .glossary_definition 1. A casual variant in which each deck is led by a legendary creature. See rule <a href="#section-903">903</a>, “Commander.” 2. A designation given to one legendary creature card in each player’s deck in the Commander casual variant.
 .glossary_entry
+  .glossary_term Commander Draft
+  .glossary_definition A casual variant in which players participate in a booster draft and then play multiplayer games. See rule <a href="#section-903-13">903.13</a>, “Commander Draft.”
+.glossary_entry
   .glossary_term Commander Ninjutsu
   .glossary_definition A variant of the ninjutsu ability. See rule <a href="#section-702-48">702.48</a>, “Ninjutsu.”
 .glossary_entry
@@ -8924,6 +8980,9 @@
 .glossary_entry
   .glossary_term Encoded
   .glossary_definition A term that describes the relationship between a permanent and a card exiled by a cipher ability. See rule <a href="#section-702-98">702.98</a>, “Cipher.”
+.glossary_entry
+  .glossary_term Encore
+  .glossary_definition A keyword ability that lets a player exile a creature card from their graveyard to, for each opponent, create a token that’s a copy of that card to attack that opponent.
 .glossary_entry
   .glossary_term Encounter
   .glossary_definition To move a phenomenon card off the top of a planar deck and turn it face up. See rule <a href="#section-310">310</a>, “Phenomena.”
@@ -9250,7 +9309,7 @@
   .glossary_definition A generic term for a group of keyword abilities that restrict whether a creature may be blocked. See rule <a href="#section-702-14">702.14</a>, “Landwalk.”
 .glossary_entry
   .glossary_term Last Known Information
-  .glossary_definition Information about an object that’s no longer in the zone it’s expected to be in, or information about a player that’s no longer in the game. This information captures that object’s last existence in that zone or that player’s last existence in the game. See rules <a href="#section-113-7a">113.7a</a>, <a href="#section-608-2b">608.2b</a>, <a href="#section-608-2g">608.2g</a>, and <a href="#section-800-4h">800.4h</a>.
+  .glossary_definition Information about an object that’s no longer in the zone it’s expected to be in, or information about a player that’s no longer in the game. This information captures that object’s last existence in that zone or that player’s last existence in the game. See rules <a href="#section-113-7a">113.7a</a>, <a href="#section-608-2b">608.2b</a>, <a href="#section-608-2h">608.2h</a>, and <a href="#section-800-4h">800.4h</a>.
 .glossary_entry
   .glossary_term Layer
   .glossary_definition A system used to determine in which order continuous effects are applied. See rule <a href="#section-613">613</a>, “Interaction of Continuous Effects.” See also Dependency, Timestamp Order.
@@ -10143,8 +10202,8 @@
   .glossary_term Zone-Change Triggers
   .glossary_definition Trigger events that involve objects changing zones. See rule <a href="#section-603-6">603.6</a>.
 %h3{id: "section-credits"} Credits
-%p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cátinò, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead), Gregg Luben, Nat Moes, Matt Tabak, and Hans Ziegler Magic Rules Management: Eli Shiffrin and Matt Tabak
+%p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cátinò, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead), Gregg Luben, Nat Moes, Matt Tabak, Michael Zhang, and Hans Ziegler Magic Rules Management: Eli Shiffrin and Matt Tabak
 %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cátinò, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
 %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-%p These rules are effective as of September 25, 2020.
+%p These rules are effective as of November 20, 2020.
 %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, Oracle, Arabian Nights, Antiquities, Homelands, Exodus, Odyssey, Mirrodin, Kamigawa, Ravnica: City of Guilds, Time Spiral, Future Sight, Lorwyn, Shadowmoor, Zendikar, Scars of Mirrodin, Innistrad, Return to Ravnica, Khans of Tarkir, Magic Origins, Shadows over Innistrad, Eldritch Moon, Magic: The Gathering—Conspiracy, Conspiracy: Take the Crown, Ixalan, Rivals of Ixalan, Unglued, Unstable, Dominaria, Ikoria, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. Unhinged is a trademark of Horn Abbot Ltd. and is used with permission. ©2020 Wizards. U.S. Pat. No. RE 37,957.
