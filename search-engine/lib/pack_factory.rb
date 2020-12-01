@@ -130,7 +130,8 @@ class PackFactory
       "akh", "hou",
       "mh1",
       "eld", # ELD and newer sets have multiple nonstandard pack types too
-      "thb"
+      "thb",
+      "klr"
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "m19"
       # According to The Collation Project, if pack has DFC (at least nonfoil), it will have checklist card in land slot
