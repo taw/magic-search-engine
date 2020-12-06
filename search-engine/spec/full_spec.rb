@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # for same sets, indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(21753)
-    db.number_of_printings.should eq(53796)
+    db.number_of_printings.should eq(53794)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -15,7 +15,7 @@ describe "Full Database Test" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 5178
+    assert_count_printings "is:promo", 5175
   end
 
   it "block codes" do
@@ -52,9 +52,9 @@ describe "Full Database Test" do
   it "edition special characters" do
     assert_search_equal "e:us", %Q[e:"Urza's Saga"]
     assert_search_equal "e:us", %Q[e:"Urza’s Saga"]
-    assert_search_equal "e:us or e:ul or e:ud", %Q[e:"urza's"]
-    assert_search_equal "e:us or e:ul or e:ud", %Q[e:"urza’s"]
-    assert_search_equal "e:us or e:ul or e:ud", %Q[e:"urza"]
+    assert_search_equal "e:us or e:ul or e:ud or e:pusg or e:puds", %Q[e:"urza's"]
+    assert_search_equal "e:us or e:ul or e:ud or e:pusg or e:puds", %Q[e:"urza’s"]
+    assert_search_equal "e:us or e:ul or e:ud or e:pusg or e:puds", %Q[e:"urza"]
   end
 
   it "part" do
