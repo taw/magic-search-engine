@@ -189,8 +189,31 @@ BanList.for_format("duel commander") do
   )
 
   change(
+    "2020-06-10",
+    "https://www.mtgdc.info/announcements/2020/duel-commander-policy-about-offensive-cards",
+    "Cleanse" => "banned",
+    "Crusade" => "banned",
+    "Imprison" => "banned",
+    "Invoke Prejudice" => "banned",
+    "Jihad" => "banned",
+    "Pradesh Gypsies" => "banned",
+    "Stone-Throwing Devils" => "banned",
+  )
+
+  change(
     "2020-08-24",
     "https://www.duelcommander.com/2020/08/august-2020-rules-banned-restricted-update/",
     "Genesis Storm" => "banned",
+  )
+
+  change(
+    "2020-12-04",
+    "https://www.mtgdc.info/announcements/2020/november-2020-rules-bannedrestricted-update",
+    "Akiri, Line-Slinger" => "restricted",
+    "Omnath, Locus of Creation" => "restricted",
+    "Thrasios, Triton Hero" => "restricted",
+    "Tymna the Weaver" => "restricted",
+    "Jeweled Lotus" => "banned",
+    "Uro, Titan of Nature's Wrath" => "banned",
   )
 end
