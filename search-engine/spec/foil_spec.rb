@@ -231,11 +231,6 @@ describe "Foils" do
         assert_foiling(set.printings, "both")
       when "ice", "por", "usg"
         assert_foiling(set.printings, "nonfoil")
-      when "c20", "znc"
-        # foil cards from precon also nonfoil in IKO collector boosters
-        nonfoils, foils = set.cards_in_precons
-        assert_foiling(set.printings.select{|c| nonfoils.include?(c.name)}, "nonfoil")
-        assert_foiling(set.printings.select{|c| foils.include?(c.name)}, "both")
       when "ogw"
         promo_cards, regular_cards = set.printings.partition{|c| c.number =~ /†/ }
         booster_cards, extra_cards = regular_cards.partition(&:in_boosters?)
@@ -245,6 +240,19 @@ describe "Foils" do
       when "plist"
         # looks like it, but can't find a definite source
         assert_foiling(set.printings, "nonfoil")
+      when "c20"
+        # foil cards from precon also nonfoil in IKO collector boosters
+        nonfoils, foils = set.cards_in_precons
+        assert_foiling(set.printings.select{|c| nonfoils.include?(c.name)}, "nonfoil")
+        assert_foiling(set.printings.select{|c| foils.include?(c.name)}, "both")
+      when "znc"
+        # is it like C20?
+        warn "znr foiling: how it even works?"
+      when "cmr"
+        # It is sort of described in:
+        # https://mtg.fandom.com/wiki/Commander_Legends#Set_details
+        # but it's not very clear
+        warn "cmr foiling: how it even works?"
       else
         assert_by_type(set)
       end
