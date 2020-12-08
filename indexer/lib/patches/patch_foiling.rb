@@ -17,5 +17,23 @@ class PatchFoiling < Patch
       card.delete "hasFoil"
       card.delete "hasNonFoil"
     end
+
+    # And now fix foiling errors in mtgjson
+    each_printing do |card|
+      if card["set_code"] == "usg"
+        fix_to card, "nonfoil"
+        card["foiling"] = "nonfoil"
+      end
+
+      if card["set_code"] == "inv"
+        fix_to card, "both"
+        card["foiling"] = "both"
+      end
+    end
+  end
+
+  def fix_to(card, fixed)
+    return if card["foiling"] == fixed
+    warn "Fixing foiling of #{card["name"]} [#{card["set_code"]}/#{card["number"]}] to #{fixed}"
   end
 end
