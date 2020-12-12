@@ -13,7 +13,6 @@ describe "Avacyn Restored" do
     assert_search_results "cs:拱翼巨龙", "Archwing Dragon"
     assert_search_results "tw:拱翼巨龙"
     assert_search_results "ct:拱翼巨龙"
-    # @
   end
 
   it "chinese_traditional" do
@@ -21,7 +20,6 @@ describe "Avacyn Restored" do
     assert_search_results "tw:拱翼巨龍", "Archwing Dragon"
     assert_search_results "cs:拱翼巨龍"
     assert_search_results "cn:拱翼巨龍"
-    # @
   end
 
   it "fr" do
@@ -36,6 +34,9 @@ describe "Avacyn Restored" do
       "Angel of Glory's Rise",
       "Angel of Jubilation",
       "Angelic Wall",
+      "Archangel", # not full word
+      "Angel's Mercy", # not full word
+      "Angel's Tomb", # not full word
       "Avacyn, Angel of Hope",
       "Emancipation Angel",
       "Entreat the Angels",
