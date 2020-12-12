@@ -4,14 +4,16 @@ class ConditionForeignRegexp < ConditionRegexp
     # Support both Gatherer and MCI naming conventions
     @lang = "ct" if @lang == "tw"
     @lang = "cs" if @lang == "cn"
+    @lang = @lang.to_sym
+    @lang_match_all = (@lang == :foreign)
     super(regexp)
   end
 
   def match?(card)
-    if @lang == "foreign"
+    if @lang_match_all
       foreign_names = card.foreign_names_normalized.values.flatten
     else
-      foreign_names = card.foreign_names_normalized[@lang.to_sym] || []
+      foreign_names = card.foreign_names_normalized[@lang] || []
     end
     foreign_names.any?{|n|
       n =~ @regexp

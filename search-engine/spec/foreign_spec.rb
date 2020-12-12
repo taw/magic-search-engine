@@ -1,9 +1,19 @@
 describe "Any queries" do
   include_context "db"
 
-  it "includes German name" do
-    assert_search_equal %Q[foreign:"Abrupter Verfall"], %Q[de:"Abrupter Verfall"]
-    assert_search_equal %q[foreign:/\bvon der\b/], %q[de:/\bvon der\b/]
+  context "German name" do
+    it "includes German name" do
+      assert_search_equal %Q[foreign:"Abrupter Verfall"], %Q[de:"Abrupter Verfall"]
+      assert_search_equal %q[foreign:/\bvon der\b/], %q[de:/\bvon der\b/]
+    end
+
+    it "is anywhere match with de:" do
+      assert_search_equal %Q[de:"Spinner"], %Q[de:/Spinner/]
+    end
+
+    it "is word match with foreign:" do
+      assert_search_equal %Q[foreign:"Spinner"], %Q[foreign:/\bSpinner\b/ or (Arachnus Spinner)]
+    end
   end
 
   context "French name" do
@@ -56,7 +66,7 @@ describe "Any queries" do
     assert_search_equal_cards "t:planeswalker -ru:* de:*", "t:planeswalker e:c14,c18,cmr"
   end
 
-  it "only caes for full words (except CJK)" do
+  it "only matches full words (except CJK and German)" do
     assert_search_differ %q[foreign:/red/], %q[foreign:/\bred\b/]
     assert_search_differ %q[foreign:/电击/], %q[foreign:/\b电击\b/]
     assert_search_equal %q[foreign:red], %q[foreign:/\bred\b/]
