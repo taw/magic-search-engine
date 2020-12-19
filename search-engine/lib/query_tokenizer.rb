@@ -177,11 +177,13 @@ class QueryTokenizer
         cmp = s[2]
         cmp = "=" if cmp == "!"
         tokens << [:test, ConditionColorExpr.new(kind, cmp, parse_color(s[3] || s[4]))]
-      elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmno]|\{.*?\})*)/i)
+      elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmnos]|\{.*?\})*)/i)
         op = s[1]
         op = "=" if op == ":"
         mana = s[2]
         tokens << [:test, ConditionMana.new(op, mana)]
+      elsif s.scan(/(?:cast)\s*(?:=|:)\s*((?:[\dwubrgxyzchmnos]|\{.*?\})*)/i)
+        tokens << [:test, ConditionCast.new(s[1])]
       elsif s.scan(/(is|not)\s*[:=]\s*(vanilla|spell|permanent|funny|timeshifted|colorshifted|reserved|multipart|promo|primary|secondary|front|back|commander|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|creatureland|scryland|battleland|guildgate|karoo|painland|triland|canopyland|shadowland|storageland|tangoland|canland|phyrexian|hybrid|augment|unique|booster|draft|historic|holofoil|foilonly|nonfoilonly|foil|nonfoil|foilboth|brawler|keywordsoup|partner|oversized|spotlight|modal|textless|fullart|full|ante|custom|mainfront|buyabox|tricycleland|triome|racist)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         cond = s[2].capitalize
