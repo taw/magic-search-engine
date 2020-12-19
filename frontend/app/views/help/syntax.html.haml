@@ -132,6 +132,20 @@
       = search_help "mana=hh", "cards that cost exactly two hybrid mana"
       = search_help "mana>h", "cards with at least one hybrid mana in their mana cost"
 
+    %h4 Search by cards castable by sperific colors
+    %div Supported queries are each color, colorless, and snow.
+
+    %div Generic mana can by paid by anything so it always matches. So does Phyrexian and twobrid.
+
+    %div Hybrid will be matched by either part.
+
+    %div Lands and cards without mana costs will never be returned.
+
+    %ul
+      = search_help "cast:r", "cards you can cast if your deck contains just Mountains"
+      = search_help "cast:sb", "cards you can cast if your deck contains just Snow Swamps"
+      = search_help "cast:cu", "cards you can cast if your deck contains just Wastes and Islands"
+
     %h4 Search by power, toughness, and loyalty
     %ul
       = search_help "pow=4", "creature cards with power 4"
