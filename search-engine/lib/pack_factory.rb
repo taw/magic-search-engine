@@ -82,34 +82,79 @@ class PackFactory
       "tmp", "sth", "exo",
       "usg"
       build_pack(set_code, {common: 11, uncommon: 3, rare: 1})
-    # Pre-mythic, with foils, sets without basics
-    when "ulg", "uds",
-         "pcy", "nem",
-         "pls",
-         "tor",
-         "lgn", "scg",
-         "dst", "5dn",
-         "fut", # Amazingly Future Sight has regular boring sheets
-         "bok", "sok",
-         "mor"
-      build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare: 1})
-    # Pre-mythic, with foils, only foil basics in packs
+    # Pre-mythic, old foil system, sets with basics
     when "mmq",
       "inv",
       "ody",
       "ons",
       "mrd",
-      "chk",
-      "lrw"
+      "chk"
+      WeightedPack.new(
+        build_pack(set_code, {common: 11,                          uncommon: 3,                   rare: 1})      => 89 * 97 * 99,
+        build_pack(set_code, {common: 10, foil_common_or_basic: 1, uncommon: 3,                   rare: 1})      => 11 * 97 * 99,
+        build_pack(set_code, {common: 11,                          uncommon: 2, foil_uncommon: 1, rare: 1})      => 89 *  3 * 99,
+        build_pack(set_code, {common: 10, foil_common_or_basic: 1, uncommon: 2, foil_uncommon: 1, rare: 1})      => 11 *  3 * 99,
+        build_pack(set_code, {common: 11,                          uncommon: 3,                   foil_rare: 1}) => 89 * 97 *  1,
+        build_pack(set_code, {common: 10, foil_common_or_basic: 1, uncommon: 3,                   foil_rare: 1}) => 11 * 97 *  1,
+        build_pack(set_code, {common: 11,                          uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 89 *  3 *  1,
+        build_pack(set_code, {common: 10, foil_common_or_basic: 1, uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 11 *  3 *  1,
+      )
+    # Pre-mythic, old foil system, sets with basics, don't try to color balance them
+    when "rav"
+      WeightedPack.new(
+        build_pack(set_code, {common_unbalanced: 11,                          uncommon: 3,                   rare: 1})      => 89 * 97 * 99,
+        build_pack(set_code, {common_unbalanced: 10, foil_common_or_basic: 1, uncommon: 3,                   rare: 1})      => 11 * 97 * 99,
+        build_pack(set_code, {common_unbalanced: 11,                          uncommon: 2, foil_uncommon: 1, rare: 1})      => 89 *  3 * 99,
+        build_pack(set_code, {common_unbalanced: 10, foil_common_or_basic: 1, uncommon: 2, foil_uncommon: 1, rare: 1})      => 11 *  3 * 99,
+        build_pack(set_code, {common_unbalanced: 11,                          uncommon: 3,                   foil_rare: 1}) => 89 * 97 *  1,
+        build_pack(set_code, {common_unbalanced: 10, foil_common_or_basic: 1, uncommon: 3,                   foil_rare: 1}) => 11 * 97 *  1,
+        build_pack(set_code, {common_unbalanced: 11,                          uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 89 *  3 *  1,
+        build_pack(set_code, {common_unbalanced: 10, foil_common_or_basic: 1, uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 11 *  3 *  1,
+      )
+    # Pre-mythic, old foil system, sets without basics
+    when "ulg", "uds",
+      "pcy", "nem",
+      "pls", # apc below
+      "tor", # jud below
+      "lgn", "scg",
+      "dst", "5dn",
+      "bok", "sok"
+      WeightedPack.new(
+        build_pack(set_code, {common: 11,                 uncommon: 3,                   rare: 1})      => 89 * 97 * 99,
+        build_pack(set_code, {common: 10, foil_common: 1, uncommon: 3,                   rare: 1})      => 11 * 97 * 99,
+        build_pack(set_code, {common: 11,                 uncommon: 2, foil_uncommon: 1, rare: 1})      => 89 *  3 * 99,
+        build_pack(set_code, {common: 10, foil_common: 1, uncommon: 2, foil_uncommon: 1, rare: 1})      => 11 *  3 * 99,
+        build_pack(set_code, {common: 11,                 uncommon: 3,                   foil_rare: 1}) => 89 * 97 *  1,
+        build_pack(set_code, {common: 10, foil_common: 1, uncommon: 3,                   foil_rare: 1}) => 11 * 97 *  1,
+        build_pack(set_code, {common: 11,                 uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 89 *  3 *  1,
+        build_pack(set_code, {common: 10, foil_common: 1, uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 11 *  3 *  1,
+      )
+    # Pre-mythic, old foil system, sets without basics, don't try to color balance them
+    # (APC should probably be balanced, just by c: not ci:)
+    when "apc", "jud",
+      "gpt", "dis"
+      WeightedPack.new(
+        build_pack(set_code, {common_unbalanced: 11,                 uncommon: 3,                   rare: 1})      => 89 * 97 * 99,
+        build_pack(set_code, {common_unbalanced: 10, foil_common: 1, uncommon: 3,                   rare: 1})      => 11 * 97 * 99,
+        build_pack(set_code, {common_unbalanced: 11,                 uncommon: 2, foil_uncommon: 1, rare: 1})      => 89 *  3 * 99,
+        build_pack(set_code, {common_unbalanced: 10, foil_common: 1, uncommon: 2, foil_uncommon: 1, rare: 1})      => 11 *  3 * 99,
+        build_pack(set_code, {common_unbalanced: 11,                 uncommon: 3,                   foil_rare: 1}) => 89 * 97 *  1,
+        build_pack(set_code, {common_unbalanced: 10, foil_common: 1, uncommon: 3,                   foil_rare: 1}) => 11 * 97 *  1,
+        build_pack(set_code, {common_unbalanced: 11,                 uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 89 *  3 *  1,
+        build_pack(set_code, {common_unbalanced: 10, foil_common: 1, uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 11 *  3 *  1,
+      )
+    # Pre-mythic, with new style foils, only foil basics in packs
+    when "lrw"
+      build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare: 1})
+    # Pre-mythic, with new style foils, sets without basics
+    when "fut", # Amazingly Future Sight has regular boring sheets
+         "mor"
       build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare: 1})
     # According to pack opening videos, Coldsnap has common_or_basic slot
     when "csp"
       build_pack_with_random_foil(set_code, :foil, :common_or_basic, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Don't try to color balance them
-    # (APC should probably be balanced, just by c: not ci:)
-    when "apc", "jud", "gpt", "dis", "eve"
-      build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare: 1})
-    when "rav", "shm"
+    when "eve", "shm"
       build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare: 1})
     # Default configuration since mythics got introduced
     # A lot of sets don't fit this

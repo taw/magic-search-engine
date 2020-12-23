@@ -1129,4 +1129,65 @@ describe PackFactory do
       end
     end
   end
+
+  context "Old foiling - set without basics" do
+    let(:set_code) { "ulg" }
+    let(:pack) { factory.for(set_code) }
+    let(:ev) { pack.expected_values }
+    let(:common) { physical_card("e:#{set_code} r:common", foil) }
+    let(:uncommon) { physical_card("e:#{set_code} r:uncommon", foil) }
+    let(:rare) { physical_card("e:#{set_code} r:rare", foil) }
+
+    context "normal" do
+      let(:foil) { false }
+
+      it do
+        ev[common].should eq Rational(99, 100) * Rational(11, 55)
+        ev[uncommon].should eq Rational(99, 100) * Rational(3, 44)
+        ev[rare].should eq Rational(99, 100) * Rational(1, 44)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+
+      it do
+        ev[common].should eq Rational(1, 100) * Rational(11, 55)
+        ev[uncommon].should eq Rational(1, 100) * Rational(3, 44)
+        ev[rare].should eq Rational(1, 100) * Rational(1, 44)
+      end
+    end
+  end
+
+  context "Old foiling - set with basics" do
+    let(:set_code) { "mmq" }
+    let(:pack) { factory.for(set_code) }
+    let(:ev) { pack.expected_values }
+    let(:basic) { physical_card("e:#{set_code} r:basic", foil) }
+    let(:common) { physical_card("e:#{set_code} r:common", foil) }
+    let(:uncommon) { physical_card("e:#{set_code} r:uncommon", foil) }
+    let(:rare) { physical_card("e:#{set_code} r:rare", foil) }
+
+    context "normal" do
+      let(:foil) { false }
+
+      it do
+        ev[basic].should eq 0
+        ev[common].should eq Rational(99, 100) * Rational(11, 110)
+        ev[uncommon].should eq Rational(99, 100) * Rational(3, 110)
+        ev[rare].should eq Rational(99, 100) * Rational(1, 110)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+
+      it do
+        ev[basic].should eq Rational(1, 100) * Rational(11, 110+20)
+        ev[common].should eq Rational(1, 100) * Rational(11, 110+20)
+        ev[uncommon].should eq Rational(1, 100) * Rational(3, 110)
+        ev[rare].should eq Rational(1, 100) * Rational(1, 110)
+      end
+    end
+  end
 end

@@ -831,4 +831,20 @@ class CardSheetFactory
       [from_query('e:cmr -t:legendary r:mythic', 17), 1],
     )
   end
+
+  def foil_common(set_code)
+    rarity(set_code, "common", foil: true)
+  end
+
+  def foil_common_or_basic(set_code)
+    common_or_basic(set_code, foil: true, kind: CardSheet)
+  end
+
+  def foil_uncommon(set_code)
+    rarity(set_code, "uncommon", foil: true)
+  end
+
+  def foil_rare(set_code)
+    rarity(set_code, "rare", foil: true)
+  end
 end
