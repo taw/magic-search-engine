@@ -21,18 +21,18 @@ describe "is:booster" do
       should_have_boosters = (
         %W[mb1 cmb1 cmr].include?(set_code) or (
           !(set_types_with_boosters & set.types).empty? and
-          !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana oana fmb1 anb akr plist].include?(set.code)
+          !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana oana fmb1 anb plist].include?(set.code)
         )
       )
       should_be_in_other_boosters = (
         %W[tsb exp mps mp2 fmb1 plist].include?(set.code)
       )
-      if set_code == "jmp" or set_code == "ajmp"
+      if %W[jmp ajmp].include?(set_code)
         # There are 121 random precon/booster things
         # These could be modelled as 121 boosters, for total of 2420 one-card sheets
         # Or as 121 precons
         # It's not perfect match either way, but I went with 121 precons
-        set.should_not have_boosters, "#{set_pp} should not have boosters yet"
+        set.should_not have_boosters, "#{set_pp} should not have boosters"
       elsif should_have_boosters
         set.should have_boosters, "#{set_pp} should have boosters"
       else
@@ -104,6 +104,8 @@ describe "is:booster" do
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=361"
       when "klr"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=301"
+      when "akr"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=338"
       else
         if set.has_boosters? or set.in_other_boosters?
           assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/†|s/"

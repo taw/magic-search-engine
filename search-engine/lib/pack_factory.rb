@@ -58,6 +58,7 @@ class PackFactory
   end
 
   def for(set_code, variant=nil)
+    variant = nil if variant == "default"
     set = @db.resolve_edition(set_code)
     raise "Invalid set code #{set_code}" unless set
     set_code = set.code # Normalize
@@ -175,8 +176,7 @@ class PackFactory
       "akh", "hou",
       "mh1",
       "eld", # ELD and newer sets have multiple nonstandard pack types too
-      "thb",
-      "klr"
+      "thb"
       build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "m19"
       # According to The Collation Project, if pack has DFC (at least nonfoil), it will have checklist card in land slot
@@ -403,6 +403,9 @@ class PackFactory
         alara_premium_uncommon: 3,
         alara_premium_rare_mythic: 1,
       })
+    when "klr-arena", "akr-arena"
+      # Arena-only boosters
+      build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1})
     when "cmr"
       # Unofficial, based on some opening videos
       build_pack(set_code, {

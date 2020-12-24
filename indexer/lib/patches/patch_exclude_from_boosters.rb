@@ -104,6 +104,8 @@ class PatchExcludeFromBoosters < Patch
       number_i > 361
     when "klr"
       number_i > 301
+    when "akr"
+      number_i > 338
     else
       false
     end

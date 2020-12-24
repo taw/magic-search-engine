@@ -84,9 +84,11 @@ class Indexer
 
   def index_set(set)
     set.slice(
+      "alternative_block_code",
+      "alternative_code",
       "block_code",
       "block_name",
-      "booster",
+      "booster_variants",
       "border",
       "code",
       "custom",
@@ -95,10 +97,7 @@ class Indexer
       "gatherer_code",
       "has_boosters",
       "in_other_boosters",
-      "booster_variants",
       "name",
-      "alternative_block_code",
-      "alternative_code",
       "online_only",
       "release_date",
       "types",
