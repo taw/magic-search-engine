@@ -4,7 +4,7 @@
 class PatchHasBoosters < Patch
   # This just needs to list sets that didn't get to mtgjson yet
   def new_sets_with_boosters
-    %W[znr cmr klr]
+    %W[znr cmr klr akr]
   end
 
   def call
@@ -21,10 +21,25 @@ class PatchHasBoosters < Patch
       set["has_boosters"] = !!has_own_boosters
       set["in_other_boosters"] = !!included_in_other_boosters
 
-      if set["code"] == "ala"
+      case set["code"]
+      when "ala"
         set["booster_variants"] = {
-          "premium" => "Alara Premium Foil Booster"
+          "premium" => "Alara Premium Foil Booster",
+          "default" => nil,
         }
+      when "klr", "akr"
+        # Does not have normal boosters
+        set["booster_variants"] = {
+          "arena" => "#{set["name"]} Arena Booster",
+        }
+      else
+        if has_own_boosters
+          set["booster_variants"] = {
+            "default" => nil,
+          }
+        else
+          set["booster_variants"] = nil
+        end
       end
     end
   end

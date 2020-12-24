@@ -6,7 +6,10 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       set_pp = "#{set.name} [#{set.code}]"
       # Indexer responsibility to set this flag
-      if set.has_boosters?
+      if %W[akr klr].include?(set_code)
+        factory.for(set_code).should eq(nil), "#{set_pp} should not have regular packs"
+        factory.for(set_code, "arena").should_not eq(nil), "#{set_pp} should have Arena packs"
+      elsif set.has_boosters?
         pack = factory.for(set_code)
         if pack
           pack.should be_a(Pack), "#{set_pp} should have packs"
@@ -27,7 +30,7 @@ describe PackFactory do
       s.types.include?("core") or s.types.include?("expansion")
     }.to_set }
     let(:expected_official) {
-      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr]
+      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr]
     }
     let(:expected_mtgjson_variant) {
       ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed"]
