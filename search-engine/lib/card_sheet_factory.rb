@@ -836,6 +836,10 @@ class CardSheetFactory
     rarity(set_code, "common", foil: true)
   end
 
+  def foil_basic(set_code)
+    rarity(set_code, "basic", foil: true)
+  end
+
   def foil_common_or_basic(set_code)
     common_or_basic(set_code, foil: true, kind: CardSheet)
   end

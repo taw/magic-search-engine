@@ -1193,4 +1193,36 @@ describe PackFactory do
       end
     end
   end
+
+  context "Old foiling - core set with basics in packs" do
+    let(:set_code) { "7ed" }
+    let(:pack) { factory.for(set_code) }
+    let(:ev) { pack.expected_values }
+    let(:basic) { physical_card("e:#{set_code} r:basic", foil) }
+    let(:common) { physical_card("e:#{set_code} r:common", foil) }
+    let(:uncommon) { physical_card("e:#{set_code} r:uncommon", foil) }
+    let(:rare) { physical_card("e:#{set_code} r:rare", foil) }
+
+    context "normal" do
+      let(:foil) { false }
+
+      it do
+        ev[basic].should eq Rational(99, 100) * Rational(1, 20)
+        ev[common].should eq Rational(99, 100) * Rational(10, 110)
+        ev[uncommon].should eq Rational(99, 100) * Rational(3, 110)
+        ev[rare].should eq Rational(99, 100) * Rational(1, 110)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+
+      it do
+        ev[basic].should eq Rational(1, 100) * Rational(1, 20)
+        ev[common].should eq Rational(1, 100) * Rational(10, 110)
+        ev[uncommon].should eq Rational(1, 100) * Rational(3, 110)
+        ev[rare].should eq Rational(1, 100) * Rational(1, 110)
+      end
+    end
+  end
 end
