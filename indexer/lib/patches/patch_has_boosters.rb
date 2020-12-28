@@ -7,6 +7,23 @@ class PatchHasBoosters < Patch
     %W[znr cmr klr akr]
   end
 
+  def arena_standard_sets
+    %W[
+      xln
+      rix
+      m19
+      grn
+      rna
+      war
+      m20
+      eld
+      thb
+      iko
+      m21
+      znr
+    ]
+  end
+
   def call
     each_set do |set|
       booster = set.delete("booster")
@@ -31,6 +48,12 @@ class PatchHasBoosters < Patch
         # Does not have normal boosters
         set["booster_variants"] = {
           "arena" => "#{set["name"]} Arena Booster",
+        }
+      when *arena_standard_sets
+        # Also available on Arena
+        set["booster_variants"] = {
+          "arena" => "#{set["name"]} Arena Booster",
+          "default" => nil,
         }
       else
         if has_own_boosters

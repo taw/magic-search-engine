@@ -422,9 +422,37 @@ class PackFactory
         alara_premium_uncommon: 3,
         alara_premium_rare_mythic: 1,
       })
-    when "klr-arena", "akr-arena"
-      # Arena-only boosters
+    when "klr-arena", "akr-arena",
+      "znr-arena", "eld-arena", "thb-arena", "rix-arena", "xln-arena"
+      # Arena-only boosters, 14 card booster (no basic at all)
       build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1})
+    when "m19-arena"
+      # Arena-only boosters, 15 card booster (basic or common land in last slot)
+      # every set does it slightly differently so listed separately
+      build_pack(set_code, {basic_or_common_land: 1, nonland_common: 10, uncommon: 3, rare_mythic: 1})
+    when "m20-arena"
+      build_pack(set_code, {basic_or_common_land: 1, nonland_common: 10, uncommon: 3, rare_mythic: 1})
+    when "iko-arena"
+      build_pack(set_code, {iko_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
+    when "m21-arena"
+      build_pack(set_code, {m21_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
+    when "war-arena"
+      # 14 card, special
+      WeightedPack.new(
+        build_pack(set_code, {basic: 1, common: 10, war_nonplaneswalker_uncommon: 3, war_planeswalker_rare_mythic: 1}) => 29,
+        build_pack(set_code, {basic: 1, common: 10, war_nonplaneswalker_uncommon: 2, war_planeswalker_uncommon: 1, war_nonplaneswalker_rare_mythic: 1}) => (121-29),
+      )
+    when "grn-arena"
+      build_pack(set_code, {grn_common: 10, uncommon: 3, rare_mythic: 1, grn_land: 1})
+    when "rna-arena"
+      build_pack(set_code, {rna_common: 10, uncommon: 3, rare_mythic: 1, rna_land: 1})
+    when "dom-arena"
+      # Same notes as with regular boosters, this math isn't completely trustworthy
+      WeightedPack.new(
+        build_pack(set_code, {basic: 1, common: 10, dom_nonlegendary_uncommon: 3, dom_legendary_rare_mythic: 1}) => 36*(144-23),
+        build_pack(set_code, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_legendary_rare_mythic: 1}) => 36*23,
+        build_pack(set_code, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_nonlegendary_rare_mythic: 1}) => (121-36)*144,
+      )
     when "cmr"
       # Unofficial, based on some opening videos
       build_pack(set_code, {

@@ -115,4 +115,35 @@ describe "is:booster" do
       end
     end
   end
+
+  describe "Arena boosters" do
+    let(:pack_factory) { PackFactory.new(db) }
+
+    let(:standard_arena_sets) do
+      db.sets.values.select{|s|
+        s.types.include?("standard") and
+        s.types.include?("booster") and
+        s.printings.any?(&:arena?) and
+        s.code != "ogw"
+      }.map(&:code).to_set
+    end
+
+    let(:remaster_arena_sets) do
+      %W[akr klr].to_set
+    end
+
+    it do
+      db.sets.each do |set_code, set|
+        if standard_arena_sets.include?(set_code)
+          pack_factory.for(set_code, "arena").should_not(be_nil, "#{set_code} should have Arena boosters")
+          pack_factory.for(set_code, nil).should_not(be_nil, "#{set_code} should have regular boosters")
+        elsif remaster_arena_sets.include?(set_code)
+          pack_factory.for(set_code, "arena").should_not(be_nil, "#{set_code} should have Arena boosters")
+          pack_factory.for(set_code, nil).should(be_nil, "#{set_code} should not have regular boosters")
+        else
+          pack_factory.for(set_code, "arena").should(be_nil, "#{set_code} should not have Arena boosters")
+        end
+      end
+    end
+  end
 end
