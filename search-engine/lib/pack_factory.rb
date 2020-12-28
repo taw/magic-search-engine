@@ -72,8 +72,6 @@ class PackFactory
       build_pack(set_code, {basic: 2, common: 9, uncommon: 3, rare: 1})
     when "ugl"
       build_pack(set_code, {basic: 1, common_unbalanced: 6, uncommon: 2, rare: 1})
-    when "7ed", "8ed", "9ed", "10e"
-      build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare: 1})
     when "lea", "leb", "2ed", "3ed"
       build_pack(set_code, {explicit_common: 11, explicit_uncommon: 3, explicit_rare: 1})
     # 6ed came out after foils started, but didn't have foils
@@ -143,6 +141,27 @@ class PackFactory
         build_pack(set_code, {common_unbalanced: 10, foil_common: 1, uncommon: 3,                   foil_rare: 1}) => 11 * 97 *  1,
         build_pack(set_code, {common_unbalanced: 11,                 uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 89 *  3 *  1,
         build_pack(set_code, {common_unbalanced: 10, foil_common: 1, uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 11 *  3 *  1,
+      )
+    # I couldn't find information about foils in core sets, so I'm somewhat guessing here
+    # Treating all of these as independent, totals look hilariously high
+    when "7ed", "8ed", "9ed", "10e"
+      WeightedPack.new(
+        build_pack(set_code, {basic: 1,      common: 10,                 uncommon: 3,                   rare: 1})      => 9 * 97 * 99 * 99,
+        build_pack(set_code, {basic: 1,      common:  9, foil_common: 1, uncommon: 3,                   rare: 1})      => 1 * 97 * 99 * 99,
+        build_pack(set_code, {basic: 1,      common: 10,                 uncommon: 2, foil_uncommon: 1, rare: 1})      => 9 *  3 * 99 * 99,
+        build_pack(set_code, {basic: 1,      common:  9, foil_common: 1, uncommon: 2, foil_uncommon: 1, rare: 1})      => 1 *  3 * 99 * 99,
+        build_pack(set_code, {basic: 1,      common: 10,                 uncommon: 3,                   foil_rare: 1}) => 9 * 97 *  1 * 99,
+        build_pack(set_code, {basic: 1,      common:  9, foil_common: 1, uncommon: 3,                   foil_rare: 1}) => 1 * 97 *  1 * 99,
+        build_pack(set_code, {basic: 1,      common: 10,                 uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 9 *  3 *  1 * 99,
+        build_pack(set_code, {basic: 1,      common:  9, foil_common: 1, uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 1 *  3 *  1 * 99,
+        build_pack(set_code, {foil_basic: 1, common: 10,                 uncommon: 3,                   rare: 1})      => 9 * 97 * 99 *  1,
+        build_pack(set_code, {foil_basic: 1, common:  9, foil_common: 1, uncommon: 3,                   rare: 1})      => 1 * 97 * 99 *  1,
+        build_pack(set_code, {foil_basic: 1, common: 10,                 uncommon: 2, foil_uncommon: 1, rare: 1})      => 9 *  3 * 99 *  1,
+        build_pack(set_code, {foil_basic: 1, common:  9, foil_common: 1, uncommon: 2, foil_uncommon: 1, rare: 1})      => 1 *  3 * 99 *  1,
+        build_pack(set_code, {foil_basic: 1, common: 10,                 uncommon: 3,                   foil_rare: 1}) => 9 * 97 *  1 *  1,
+        build_pack(set_code, {foil_basic: 1, common:  9, foil_common: 1, uncommon: 3,                   foil_rare: 1}) => 1 * 97 *  1 *  1,
+        build_pack(set_code, {foil_basic: 1, common: 10,                 uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 9 *  3 *  1 *  1,
+        build_pack(set_code, {foil_basic: 1, common:  9, foil_common: 1, uncommon: 2, foil_uncommon: 1, foil_rare: 1}) => 1 *  3 *  1 *  1,
       )
     # Pre-mythic, with new style foils, only foil basics in packs
     when "lrw"
