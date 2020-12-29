@@ -214,6 +214,8 @@ class QueryTokenizer
         cond = s[2].capitalize
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
+      elsif s.scan(/in\s*[:=]\s*(cs|ct|de|fr|it|jp|kr|pt|ru|sp|cn|tw)/i)
+        tokens << [:test, ConditionInForeign.new(s[1].downcase)]
       elsif s.scan(/in\s*[:=]\s*(paper|arena|mtgo|shandalar|xmage|foil|nonfoil|booster)\b/i)
         cond = s[1].capitalize
         klass = Kernel.const_get("ConditionIn#{cond}")

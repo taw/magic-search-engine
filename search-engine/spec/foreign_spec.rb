@@ -72,4 +72,20 @@ describe "Any queries" do
     assert_search_equal %q[foreign:red], %q[foreign:/\bred\b/]
     assert_search_equal %q[foreign:电击], %q[foreign:/电击/]
   end
+
+  # It looks like scryfall went for in:* so for compatibility
+  it "in:X aliases X:*" do
+    assert_search_equal "in:cs", "cs: *"
+    assert_search_equal "in:ct", "ct: *"
+    assert_search_equal "in:de", "de: *"
+    assert_search_equal "in:fr", "fr: *"
+    assert_search_equal "in:it", "it: *"
+    assert_search_equal "in:jp", "jp: *"
+    assert_search_equal "in:kr", "kr: *"
+    assert_search_equal "in:pt", "pt: *"
+    assert_search_equal "in:ru", "ru: *"
+    assert_search_equal "in:sp", "sp: *"
+    assert_search_equal "in:cn", "cn: *"
+    assert_search_equal "in:tw", "tw: *"
+  end
 end
