@@ -439,8 +439,8 @@ class PackFactory
     when "war-arena"
       # 14 card, special
       WeightedPack.new(
-        build_pack(set_code, {basic: 1, common: 10, war_nonplaneswalker_uncommon: 3, war_planeswalker_rare_mythic: 1}) => 29,
-        build_pack(set_code, {basic: 1, common: 10, war_nonplaneswalker_uncommon: 2, war_planeswalker_uncommon: 1, war_nonplaneswalker_rare_mythic: 1}) => (121-29),
+        build_pack(set_code, {common: 10, war_nonplaneswalker_uncommon: 3, war_planeswalker_rare_mythic: 1}) => 29,
+        build_pack(set_code, {common: 10, war_nonplaneswalker_uncommon: 2, war_planeswalker_uncommon: 1, war_nonplaneswalker_rare_mythic: 1}) => (121-29),
       )
     when "grn-arena"
       build_pack(set_code, {grn_common: 10, uncommon: 3, rare_mythic: 1, grn_land: 1})
@@ -449,9 +449,9 @@ class PackFactory
     when "dom-arena"
       # Same notes as with regular boosters, this math isn't completely trustworthy
       WeightedPack.new(
-        build_pack(set_code, {basic: 1, common: 10, dom_nonlegendary_uncommon: 3, dom_legendary_rare_mythic: 1}) => 36*(144-23),
-        build_pack(set_code, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_legendary_rare_mythic: 1}) => 36*23,
-        build_pack(set_code, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_nonlegendary_rare_mythic: 1}) => (121-36)*144,
+        build_pack(set_code, {common: 10, dom_nonlegendary_uncommon: 3, dom_legendary_rare_mythic: 1}) => 36*(144-23),
+        build_pack(set_code, {common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_legendary_rare_mythic: 1}) => 36*23,
+        build_pack(set_code, {common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_nonlegendary_rare_mythic: 1}) => (121-36)*144,
       )
     when "cmr"
       # Unofficial, based on some opening videos
