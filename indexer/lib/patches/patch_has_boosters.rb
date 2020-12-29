@@ -12,6 +12,7 @@ class PatchHasBoosters < Patch
       xln
       rix
       m19
+      dom
       grn
       rna
       war
