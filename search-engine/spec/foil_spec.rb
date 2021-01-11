@@ -238,8 +238,7 @@ describe "Foils" do
         assert_foiling(booster_cards, "both")
         assert_foiling_partial_precon(extra_cards)
       when "plist"
-        # looks like it, but can't find a definite source
-        assert_foiling(set.printings, "nonfoil")
+        # I'll just trust mtgjson, can't find a definite source
       when "c20"
         # foil cards from precon also nonfoil in IKO collector boosters
         nonfoils, foils = set.cards_in_precons
