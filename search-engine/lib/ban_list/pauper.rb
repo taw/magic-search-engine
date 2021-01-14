@@ -84,4 +84,10 @@ BanList.for_format("pauper") do
     "Expedition Map" => "banned",
     "Mystic Sanctuary" => "banned",
   )
+
+  change(
+    "2021-01-14",
+    "https://magic.wizards.com/en/articles/archive/news/january-14-2021-banned-and-restricted-announcement",
+    "Fall from Favor" => "banned",
+  )
 end
