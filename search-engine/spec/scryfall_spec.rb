@@ -177,32 +177,6 @@ describe "Scryfall" do
     assert_search_results '!"sift through sands"', "Sift Through Sands"
   end
 
-
-  it "is_commander" do
-    # arguable if banned cards should be included,
-    # but there are multiple commander-like formats
-    # with multiple banlists
-    assert_search_include "is:commander",
-      "Erayo, Soratami Ascendant",
-      "Daretti, Scrap Savant",
-      "Agrus Kos, Wojek Veteran",
-      "Griselbrand",
-      "Bruna, the Fading Light",
-      "Ulrich of the Krallenhorde"
-
-    # Ton of scryfall bugs with cards which are
-    # legendary creatures on non-prmary sides
-    assert_search_exclude "is:commander",
-      "Erayo's Essence",
-      "Autumn-Tail, Kitsune Sage",
-      "Brisela, Voice of Nightmares",
-      "Hanweir, the Writhing Township",
-      "Ormendahl, Profane Prince",
-      "Ulrich, Uncontested Alpha",
-      "Withengar Unbound",
-      "Elbrus, the Binding Blade"
-  end
-
   it "parentheses" do
     # Identical results
     assert_search_results "through (depths or sands or mists)",

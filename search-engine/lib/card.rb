@@ -208,6 +208,9 @@ class Card
     if @types.include?("planeswalker")
       return true if @text.include?("can be your commander")
     end
+    if @types.include?("saga")
+      return true if @text.include?("can be your commander")
+    end
     false
   end
 
