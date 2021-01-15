@@ -386,16 +386,6 @@ describe "Full Database Test" do
     legality_information("Backup Plan").should be_legal_nowhere
   end
 
-  it "is commander" do
-    # Some C14 commanders got reprited
-    assert_search_equal_cards "is:commander",
-      "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,c18,bbd,cmr)"
-  end
-
-  it "is brawler" do
-    assert_search_equal_cards "is:brawler", "(is:primary t:legendary t:creature) OR (is:primary t:legendary t:planeswalker)"
-  end
-
   # Bugfix
   it "cm1/cma set codes" do
     "e:cm1".should have_count_printings(18)
