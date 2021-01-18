@@ -19,7 +19,8 @@ describe "Spelling" do
     # two words
     spelling_suggestions("gutshot").should eq([ "gut shot" ])
     # do not match "dark more" just because they are words
-    spelling_suggestions("darkmore").should eq([ "dakmor" ])
+    # (it used to match dakmor)
+    spelling_suggestions("darkmore").should eq([ "darkbore" ])
   end
 
   it "spelling_search" do
