@@ -1,10 +1,12 @@
-# This is really silly, as we're running the show now
-# It is leftover from how it used to work in v3 / v4
+# Data flow between this system and mtgjson is bidirectional
+# - index says set has boosters if mtgjson says
+# - mtgjson says so because old index said so
+# - this is just an extra
 
 class PatchHasBoosters < Patch
   # This just needs to list sets that didn't get to mtgjson yet
   def new_sets_with_boosters
-    %W[znr cmr klr akr]
+    %W[khm]
   end
 
   def arena_standard_sets
@@ -22,6 +24,7 @@ class PatchHasBoosters < Patch
       iko
       m21
       znr
+      khm
     ]
   end
 
@@ -31,7 +34,11 @@ class PatchHasBoosters < Patch
       has_own_boosters = !!booster
 
       if new_sets_with_boosters.include?(set["code"])
-        has_own_boosters = true
+        if has_own_boosters
+          warn "#{set["code"]} already has boosters, no need to include it in the patch list"
+        else
+          has_own_boosters = true
+        end
       end
 
       included_in_other_boosters = %W[exp mps mp2 tsb fmb1 plist].include?(set["code"])
