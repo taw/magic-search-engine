@@ -141,7 +141,7 @@ describe "Foils" do
       when "m21"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         assert_foiling(booster_cards, "both")
-      when "iko", "znr"
+      when "iko", "znr", "khm"
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         assert_foiling(booster_cards, "both")
       when "eld"

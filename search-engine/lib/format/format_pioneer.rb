@@ -25,6 +25,7 @@ class FormatPioneer < Format
       "iko",
       "m21",
       "znr",
+      "khm",
     ]
   end
 end

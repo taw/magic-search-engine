@@ -6,6 +6,7 @@ class ConditionIsManland < ConditionNickname
       "creeping tar pit",
       "domesticated watercourse",
       "dread statuary",
+      "faceless haven",
       "faerie conclave",
       "forbidding watchtower",
       "frostwalk bastion",
