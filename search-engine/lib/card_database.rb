@@ -114,6 +114,14 @@ class CardDatabase
     @supported_booster_types
   end
 
+  # Exclude Arena boosters
+  def most_recent_booster_type
+    @most_recent_booster_type ||= supported_booster_types
+      .reject{|k,v| k.include?("-")}
+      .first
+      .first
+  end
+
   def resolve_time(time)
     return nil unless time
     return time if time.is_a?(Date)

@@ -10,10 +10,10 @@ class SealedController < ApplicationController
     @booster_types = $CardDatabase.supported_booster_types
 
     if @packs_to_open.empty?
-      most_recent_set_code = @booster_types.keys.first
-      @packs_to_open << [most_recent_set_code, 6]
+      most_recent_booster_type = $CardDatabase.most_recent_booster_type
+      @packs_to_open << [most_recent_booster_type, 6]
     end
-    @packs_to_open << [nil, 0] while @packs_to_open.size < 3
+    @packs_to_open << [most_recent_booster_type, 0] while @packs_to_open.size < 3
 
     if packs_requested
       @cards = []
