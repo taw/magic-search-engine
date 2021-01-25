@@ -7,7 +7,7 @@ describe "Formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
-      %Q[e:eld,thb,iko,m21,znr
+      %Q[e:eld,thb,iko,m21,znr,khm
       -(Cauldron Familiar)
       -(Fires of Invention)
       -(Oko Thief of Crowns)

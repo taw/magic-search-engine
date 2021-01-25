@@ -14,6 +14,7 @@ describe "CLI Frontend" do
       search: "t:forest",
       verbose: false,
       output: <<-EOF,
+        Arctic Treeline
         Bayou
         Breeding Pool
         Canopy Vista
@@ -21,10 +22,12 @@ describe "CLI Frontend" do
         Dryad Arbor
         Forest
         Gingerbread Cabin
+        Highland Forest
         Indatha Triome
         Ketria Triome
         Murmuring Bosk
         Overgrown Tomb
+        Rimewood Falls
         Sapseep Forest
         Savannah
         Scattered Groves
@@ -34,6 +37,7 @@ describe "CLI Frontend" do
         Taiga
         Temple Garden
         Tropical Island
+        Woodland Chasm
         Zagoth Triome
         EOF
       error: ""

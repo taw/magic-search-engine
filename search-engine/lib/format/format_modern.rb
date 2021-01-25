@@ -43,6 +43,7 @@ class FormatModern < Format
       "iko",
       "m21",
       "znr",
+      "khm",
     ]
   end
 end

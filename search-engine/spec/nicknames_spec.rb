@@ -190,12 +190,13 @@ describe "Card nicknames" do
       "Creeping Tar Pit",
       "Domesticated Watercourse",
       "Dread Statuary",
+      "Faceless Haven",
       "Faerie Conclave",
       "Forbidding Watchtower",
+      "Frostwalk Bastion",
       "Ghitu Encampment",
       "Hissing Quagmire",
       "Hostile Desert",
-      "Frostwalk Bastion",
       "Inkmoth Nexus",
       "Lavaclaw Reaches",
       "Lumbering Falls",
@@ -213,7 +214,7 @@ describe "Card nicknames" do
       "Svogthos, the Restless Tomb",
       "Treetop Village",
       "Wandering Fumarole"
-    assert_search_equal "is:manland", "t:land o:becomes o:creature"
+    assert_search_equal "is:manland", "t:land o:becomes o:creature -(Tyrite Sanctum)"
     assert_search_equal "is:manland", "is:creatureland"
   end
 

@@ -9,6 +9,7 @@ describe "Ability Word Regexp" do
 
     other_phrases = [
       "An opponent chooses one",
+      "Boast",
       "Choose one or both",
       "Choose one or more",
       "Choose one",
