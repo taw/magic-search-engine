@@ -245,8 +245,13 @@ class DeckIndexer
 
   def call
     index = @decks.map do |deck|
-      index_deck(deck)
-    end
+      if @sets[deck["set_code"]]
+        index_deck(deck)
+      else
+        warn "Unknown set #{deck["set_code"]}"
+        nil
+      end
+    end.compact
     @save_path.write(index.to_json)
   end
 end
