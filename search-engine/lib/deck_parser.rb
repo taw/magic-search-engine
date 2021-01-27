@@ -16,7 +16,6 @@ class DeckParser
 
   # This method is really messy, but is has decent test coverage
   def preparse
-    in_sideboard = false
     @main = []
     @side = []
     @commander = []

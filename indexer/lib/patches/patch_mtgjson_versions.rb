@@ -13,7 +13,7 @@ class PatchMtgjsonVersions < Patch
       when /\d+/
         c.to_i
       else
-        binding.pry
+        rescue "Cannot calculate cmc of #{c} mana symbol"
       end
     }.sum
   end

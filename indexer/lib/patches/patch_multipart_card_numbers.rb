@@ -9,7 +9,6 @@ class PatchMultipartCardNumbers < Patch
 
   def fix_numbers(set)
     set_code = set["code"]
-    set_name = set["name"]
     cards = cards_by_set[set_code]
     numbers = cards.map{|c| c["number"]}
     duplicates = cards
