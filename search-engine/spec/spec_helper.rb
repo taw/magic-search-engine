@@ -296,10 +296,8 @@ shared_context "db" do |*sets|
 
   def assert_banlist_status(date, format, expected_legality, card_name)
     if date.is_a?(Date)
-      dsc = "#{date}"
       set_date = date
     else
-      dsc = "#{set} (#{set_date})"
       set_date = db.sets[set].release_date
     end
     actual_legality = BanList[format].legality(card_name, set_date) || "legal"

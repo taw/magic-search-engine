@@ -47,12 +47,12 @@ class PatchPartner < Patch
         if found_partner
           return found_partner["number"]
         else
-          raise "Can't find partner by card number for #{card["name"]}"
+          raise "Can't find partner by card number for #{card_name}"
         end
       end
     end
 
-    warn "Can't link partners: #{card["name"]} to #{partner_name}"
+    warn "Can't link partners: #{card_name} to #{partner_name}"
     nil
   end
 end
