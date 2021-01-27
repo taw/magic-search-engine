@@ -24,8 +24,8 @@ describe "Avacyn Restored" do
 
   it "fr" do
     assert_search_results "fr:Fragments", "Bone Splinters"
-    assert_search_results %Q[fr:"Lumière d'albâtre"], "Bruna, Light of Alabaster"
-    assert_search_results %Q[fr:"lumiere d'albatre"], "Bruna, Light of Alabaster"
+    assert_search_results %[fr:"Lumière d'albâtre"], "Bruna, Light of Alabaster"
+    assert_search_results %[fr:"lumiere d'albatre"], "Bruna, Light of Alabaster"
     #@
   end
 

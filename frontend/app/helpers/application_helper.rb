@@ -47,7 +47,7 @@ module ApplicationHelper
   def format_mana_symbols_in_text(text)
     text
       .gsub(/(?:\{.*?\})+/) do
-        %Q[<span class="manacost">] + format_mana_symbols($&) + %Q[</span>]
+        %[<span class="manacost">] + format_mana_symbols($&) + %[</span>]
       end
   end
 
@@ -59,7 +59,7 @@ module ApplicationHelper
       end
       .gsub("\n", "<br/>")
       .gsub(/(?:\{.*?\})+/) do
-        %Q[<span class="manacost">] + format_mana_symbols($&) + %Q[</span>]
+        %[<span class="manacost">] + format_mana_symbols($&) + %[</span>]
       end
       .gsub(/\[([\+\-\u2013\u2212]?(?:\d+|N|X))\]/) do
         symbol = $1
@@ -71,15 +71,15 @@ module ApplicationHelper
         else
           dir = "zero"
         end
-        %Q[<i class="mana mana-loyalty mana-loyalty-#{dir}" data-loyalty="#{usymbol}"></i>] +
-        %Q[<span class="sr-only">[#{usymbol}]</span>]
+        %[<i class="mana mana-loyalty mana-loyalty-#{dir}" data-loyalty="#{usymbol}"></i>] +
+        %[<span class="sr-only">[#{usymbol}]</span>]
       end
       .gsub(/
         \(
           (?: [^\(\)] | \( [^\(\)]* \) )*
         \)/x) do
         # Urza has nested parentheses
-        %Q[<i class="reminder-text">#{$&}</i>]
+        %[<i class="reminder-text">#{$&}</i>]
       end
       .html_safe
   end
@@ -171,11 +171,11 @@ module ApplicationHelper
       mana = $1.gsub("/", "").downcase
       if good_mana_symbols.include?(mana)
         if mana[0] == "h"
-          %Q[<span class="mana mana-half"><span class="mana mana-cost mana-#{mana[1..-1]}"><span class="sr-only">#{sym}</span></span></span>]
+          %[<span class="mana mana-half"><span class="mana mana-cost mana-#{mana[1..-1]}"><span class="sr-only">#{sym}</span></span></span>]
         elsif mana == "p" or mana == "chaos" or mana == "pw" or mana == "e"
-          %Q[<span class="mana mana-#{mana}"><span class="sr-only">#{sym}</span></span>]
+          %[<span class="mana mana-#{mana}"><span class="sr-only">#{sym}</span></span>]
         else
-          %Q[<span class="mana mana-cost mana-#{mana}"><span class="sr-only">#{sym}</span></span>]
+          %[<span class="mana mana-cost mana-#{mana}"><span class="sr-only">#{sym}</span></span>]
         end
       else
         sym

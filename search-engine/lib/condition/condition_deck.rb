@@ -6,10 +6,10 @@ class ConditionDeck < Condition
   def search(db)
     decks = db.resolve_deck_name(@deck_name)
     if decks.empty?
-      warning %Q[No deck matching "#{@deck_name}"]
+      warning %[No deck matching "#{@deck_name}"]
     elsif decks.size > 1
       deck_names = decks.map{|deck| "#{deck.name} (#{deck.set_name})"}
-      warning %Q[Multiple decks matching "#{@deck_name}": #{deck_names.join(", ")}]
+      warning %[Multiple decks matching "#{@deck_name}": #{deck_names.join(", ")}]
     end
 
     # FIXME:

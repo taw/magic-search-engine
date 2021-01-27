@@ -178,7 +178,7 @@ class PatchMtgjsonVersions < Patch
 
       # Flavor text quick fix because v4 doesn't have newlines
       if card["flavor"]
-        card["flavor"] = card["flavor"].gsub(%Q[" —], %Q["\n—]).gsub(%Q[" "], %Q["\n"])
+        card["flavor"] = card["flavor"].gsub(%[" —], %["\n—]).gsub(%[" "], %["\n"])
       end
 
       # mtgjson started using * to indicate italics? annoying
@@ -215,6 +215,6 @@ class PatchMtgjsonVersions < Patch
   end
 
   def cleanup_unicode_punctuation(text)
-    text.tr(%Q[‘’“”], %Q[''""])
+    text.tr(%[‘’“”], %[''""])
   end
 end

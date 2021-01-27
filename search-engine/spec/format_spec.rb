@@ -7,7 +7,7 @@ describe "Formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
-      %Q[e:eld,thb,iko,m21,znr,khm
+      %[e:eld,thb,iko,m21,znr,khm
       -(Cauldron Familiar)
       -(Fires of Invention)
       -(Oko Thief of Crowns)
@@ -237,7 +237,7 @@ describe "Formats" do
 
   it "banned:*" do
     # This can be a long list
-    assert_search_equal "banned:*", %Q[
+    assert_search_equal "banned:*", %[
       banned:standard or
       banned:pioneer or
       banned:modern or
@@ -264,7 +264,7 @@ describe "Formats" do
   end
 
   it "legal:*" do
-    assert_search_equal "legal:*", %Q[
+    assert_search_equal "legal:*", %[
       legal:vintage or
       legal:unsets or
       legal:historic or

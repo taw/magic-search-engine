@@ -14,7 +14,7 @@ RSpec.describe DeckController, type: :controller do
       set.decks.each do |deck|
         get "show", params: { set: set_code, id: deck.slug }
         assert_response 200
-        assert_select %Q[h4:contains("#{deck.name}")]
+        assert_select %[h4:contains("#{deck.name}")]
         assert_equal "#{deck.name} - #{set.name} #{deck.type} - #{APP_NAME}", html_document.title
       end
     end

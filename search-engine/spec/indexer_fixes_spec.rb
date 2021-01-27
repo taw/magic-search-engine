@@ -86,7 +86,7 @@ describe "Indexer Fixes Test" do
   end
 
   it "No unknown artists" do
-    assert_search_results %Q[a:"?"]
+    assert_search_results %[a:"?"]
   end
 
   # Some old issues fixed since then, but extra regression tests won't hurt

@@ -13,8 +13,8 @@ class FormatController < ApplicationController
       return
     end
     @title = @format.format_pretty_name
-    @banned = search_best_printings(%Q[banned:"#{@format.format_pretty_name}"])
-    @restricted = search_best_printings(%Q[restricted:"#{@format.format_pretty_name}"])
+    @banned = search_best_printings(%[banned:"#{@format.format_pretty_name}"])
+    @restricted = search_best_printings(%[restricted:"#{@format.format_pretty_name}"])
     if @format.included_sets
       @included_sets = @format.included_sets.map{|set_code| $CardDatabase.sets[set_code] }.reverse
     end

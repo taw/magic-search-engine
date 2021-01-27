@@ -19,11 +19,11 @@ describe "8th Edition" do
     "t:power\u2212plant"    .should include_cards "Urza's Power Plant"
     't:"power plant"'       .should return_no_cards
     't:"power-plant"'       .should include_cards "Urza's Power Plant"
-    %Q[t:"power\u2212plant"].should include_cards "Urza's Power Plant"
+    %[t:"power\u2212plant"].should include_cards "Urza's Power Plant"
     "o:power-plant"         .should include_cards "Urza's Mine", "Urza's Tower"
     "o:power\u2212plant"    .should include_cards "Urza's Mine", "Urza's Tower"
     'o:"power plant"'       .should return_no_cards
     'o:"power-plant"'       .should include_cards "Urza's Mine", "Urza's Tower"
-    %Q[o:"power\u2212plant"].should include_cards "Urza's Mine", "Urza's Tower"
+    %[o:"power\u2212plant"].should include_cards "Urza's Mine", "Urza's Tower"
   end
 end

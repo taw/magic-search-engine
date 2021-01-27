@@ -79,7 +79,7 @@ describe "Return to Ravnica block" do
     assert_search_equal "e:rtr", "e:return"
     assert_search_equal "e:rtr", 'e:"Return to Ravnica"'
     assert_search_equal "e:gtc", "e:Gatecrash"
-    assert_search_equal "e:dgm", %Q[e:"dragon's maze"]
+    assert_search_equal "e:dgm", %[e:"dragon's maze"]
     assert_search_equal "e:dgm", "e:maze"
   end
 
@@ -171,12 +171,12 @@ describe "Return to Ravnica block" do
   end
 
   it "hybrid mana Oracle search" do
-    assert_search_results %Q[o:"{r/w}"], "Boros Reckoner"
-    assert_search_results %Q[o:"{w/r}"], "Boros Reckoner"
-    assert_search_results %Q[o:"{R/W}"], "Boros Reckoner"
-    assert_search_results %Q[o:"{W/R}"], "Boros Reckoner"
-    assert_search_results %Q[o:"{rw}"], "Boros Reckoner"
-    assert_search_results %Q[o:"{wr}"], "Boros Reckoner"
+    assert_search_results %[o:"{r/w}"], "Boros Reckoner"
+    assert_search_results %[o:"{w/r}"], "Boros Reckoner"
+    assert_search_results %[o:"{R/W}"], "Boros Reckoner"
+    assert_search_results %[o:"{W/R}"], "Boros Reckoner"
+    assert_search_results %[o:"{rw}"], "Boros Reckoner"
+    assert_search_results %[o:"{wr}"], "Boros Reckoner"
   end
 
   it "extort reminder text does not affect ci:" do

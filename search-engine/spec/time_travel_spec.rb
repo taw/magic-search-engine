@@ -47,9 +47,9 @@ describe "Time Travel Test" do
     assert_count_printings "sort:new", db.printings.size
     assert_count_printings "is:spell or t:land", db.printings.size
     assert_count_printings "time:3000", db.printings.size
-    assert_count_printings %Q[time:"battle for homelands"], db.printings.size
+    assert_count_printings %[time:"battle for homelands"], db.printings.size
     assert_count_printings "time:1000", 0
-    assert_search_equal %Q[time:"battle for homelands" f:standard], "f:standard"
+    assert_search_equal %[time:"battle for homelands" f:standard], "f:standard"
   end
 
   it "time travel scoped" do

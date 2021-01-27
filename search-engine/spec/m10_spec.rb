@@ -194,10 +194,10 @@ describe "Magic 2010" do
   it "unicode_hyphen" do
     ascii_hyphen = "-"
     unicode_hyphen = "\u2212"
-    assert_search_results %Q[o:"#{ascii_hyphen}2"],  "Liliana Vess", "Weakness"
-    assert_search_results %Q[o:"#{unicode_hyphen}2"], "Liliana Vess", "Weakness"
-    assert_search_results %Q[o:#{ascii_hyphen}2],  "Liliana Vess", "Weakness"
-    assert_search_results %Q[o:#{unicode_hyphen}2], "Liliana Vess", "Weakness"
+    assert_search_results %[o:"#{ascii_hyphen}2"],  "Liliana Vess", "Weakness"
+    assert_search_results %[o:"#{unicode_hyphen}2"], "Liliana Vess", "Weakness"
+    assert_search_results %[o:#{ascii_hyphen}2],  "Liliana Vess", "Weakness"
+    assert_search_results %[o:#{unicode_hyphen}2], "Liliana Vess", "Weakness"
   end
 
   it "mana" do

@@ -10,7 +10,7 @@ class ConditionWord < ConditionSimple
     return true if name.include?(@stem_word)
     @suggestions.each do |alt, alt_stem|
       if name.include?(alt_stem)
-        warning %Q[Trying spelling "#{alt}" in addition to "#{@word}"]
+        warning %[Trying spelling "#{alt}" in addition to "#{@word}"]
         return true
       end
     end

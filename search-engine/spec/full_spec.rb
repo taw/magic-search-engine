@@ -27,8 +27,8 @@ describe "Full Database Test" do
   end
 
   it "block special characters" do
-    assert_search_equal %Q[b:us], "b:urza"
-    assert_search_equal %Q[b:"Urza's"], "b:urza"
+    assert_search_equal %[b:us], "b:urza"
+    assert_search_equal %[b:"Urza's"], "b:urza"
   end
 
   it "block contents" do
@@ -50,11 +50,11 @@ describe "Full Database Test" do
   end
 
   it "edition special characters" do
-    assert_search_equal "e:us", %Q[e:"Urza's Saga"]
-    assert_search_equal "e:us", %Q[e:"Urza’s Saga"]
-    assert_search_equal "e:us or e:ul or e:ud or e:pusg or e:puds or e:pulg", %Q[e:"urza's"]
-    assert_search_equal "e:us or e:ul or e:ud or e:pusg or e:puds or e:pulg", %Q[e:"urza’s"]
-    assert_search_equal "e:us or e:ul or e:ud or e:pusg or e:puds or e:pulg", %Q[e:"urza"]
+    assert_search_equal "e:us", %[e:"Urza's Saga"]
+    assert_search_equal "e:us", %[e:"Urza’s Saga"]
+    assert_search_equal "e:us or e:ul or e:ud or e:pusg or e:puds or e:pulg", %[e:"urza's"]
+    assert_search_equal "e:us or e:ul or e:ud or e:pusg or e:puds or e:pulg", %[e:"urza’s"]
+    assert_search_equal "e:us or e:ul or e:ud or e:pusg or e:puds or e:pulg", %[e:"urza"]
   end
 
   it "part" do
@@ -105,13 +105,13 @@ describe "Full Database Test" do
 
   it "print date" do
     # M13 prerelease
-    assert_search_results %Q[print="12 july 2012"],
+    assert_search_results %[print="12 july 2012"],
       "Cathedral of War",
       "Magmaquake",
       "Mwonvuli Beast Tracker",
       "Staff of Nin",
       "Xathrid Gorgon"
-    assert_search_equal %Q[print="12 july 2012"], %Q[print=2012-07-12]
+    assert_search_equal %[print="12 july 2012"], %[print=2012-07-12]
   end
 
   # Digital only cards with their bullshit release dates are really messing up with this test
@@ -168,7 +168,7 @@ describe "Full Database Test" do
   end
 
   it "alt Rebecca Guay" do
-    assert_search_results %Q[a:"rebecca guay" alt:(-a:"rebecca guay")],
+    assert_search_results %[a:"rebecca guay" alt:(-a:"rebecca guay")],
       "Ancestral Memories",
       "Angelic Page",
       "Angelic Wall",
@@ -423,8 +423,8 @@ describe "Full Database Test" do
   end
 
   it "Oracle unicode" do
-    assert_search_equal %Q[o:"Lim-Dûl"], %Q[o:"Lim-Dul"]
-    assert_search_results %Q[o:"Lim-Dul"],
+    assert_search_equal %[o:"Lim-Dûl"], %[o:"Lim-Dul"]
+    assert_search_results %[o:"Lim-Dul"],
       "Lim-Dûl's Cohort",
       "Lim-Dûl's Hex",
       "Lim-Dûl's High Guard",
@@ -435,19 +435,19 @@ describe "Full Database Test" do
   end
 
   it "artist unicode" do
-    assert_search_equal %Q[a:"baǵa"], %Q[a:"baga"]
-    assert_search_equal %Q[a:Snõddy], %Q[a:snoddy]
-    assert_search_equal %Q[a:Véronique], %Q[a:Veronique]
-    assert_search_equal %Q[a:Ćeran], %Q[a:ceran]
+    assert_search_equal %[a:"baǵa"], %[a:"baga"]
+    assert_search_equal %[a:Snõddy], %[a:snoddy]
+    assert_search_equal %[a:Véronique], %[a:Veronique]
+    assert_search_equal %[a:Ćeran], %[a:ceran]
   end
 
   it "Non-alphanumeric characters in set names are ignored and 's is normalized" do
-    assert_search_equal %Q[e:"Elves vs Inventors"], %Q[e:"Elves vs. Inventors"]
-    assert_search_equal %Q[e:"From the Vault: Transform"], %Q[e:"From the Vault Transform"]
-    assert_search_equal %Q[e:"Duel Decks: Nissa vs. Ob Nixilis"], %Q[e:"Duel Decks Nissa vs Ob Nixilis"]
-    assert_search_equal %Q[e:"Ugin's Fate"], %Q[e:"Ugin Fate"]
-    assert_search_equal %Q[e:"Ugin's Fate"], %Q[e:"Ugins Fate"]
-    assert_search_equal %Q[e:"Duel Decks Anthology, Divine vs. Demonic"], %Q[e:"Duel Decks Anthology Divine vs Demonic"]
+    assert_search_equal %[e:"Elves vs Inventors"], %[e:"Elves vs. Inventors"]
+    assert_search_equal %[e:"From the Vault: Transform"], %[e:"From the Vault Transform"]
+    assert_search_equal %[e:"Duel Decks: Nissa vs. Ob Nixilis"], %[e:"Duel Decks Nissa vs Ob Nixilis"]
+    assert_search_equal %[e:"Ugin's Fate"], %[e:"Ugin Fate"]
+    assert_search_equal %[e:"Ugin's Fate"], %[e:"Ugins Fate"]
+    assert_search_equal %[e:"Duel Decks Anthology, Divine vs. Demonic"], %[e:"Duel Decks Anthology Divine vs Demonic"]
   end
 
   it "year" do

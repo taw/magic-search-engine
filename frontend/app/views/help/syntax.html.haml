@@ -13,9 +13,9 @@
 
     %h4 Search by name
     %ul
-      = search_help "channel", %Q[cards with "channel" in name]
-      = search_help "!channel", %Q[cards with name exactly "channel" (only works as complete query)]
-      = search_help %Q["sword of"], %Q[cards with "sword of" in name]
+      = search_help "channel", %[cards with "channel" in name]
+      = search_help "!channel", %[cards with name exactly "channel" (only works as complete query)]
+      = search_help %["sword of"], %[cards with "sword of" in name]
 
     %h4 Search by type
     %div All cards including non-Standard cards (planes, vanguard, conspiracies etc.) and un-cards are searched. Tokens are not included.
@@ -36,23 +36,23 @@
     %h4 Search by Oracle text
     %div Reminder text is not included in Oracle search
     %ul
-      = search_help "o:delve", %Q[search cards with "delve" in Oracle text]
-      = search_help %Q[o:"destroy target creature"], %Q[search cards with "destroy target creature" in Oracle text]
-      = search_help "o:flying", %Q[search cards with "flying" in Oracle text - without cards with rearch simply in reminder text like ones with reach ability]
-      = search_help %Q[o:"when ~ enters the battlefield"], %Q[You can use ~ as placeholder for name of the card]
+      = search_help "o:delve", %[search cards with "delve" in Oracle text]
+      = search_help %[o:"destroy target creature"], %[search cards with "destroy target creature" in Oracle text]
+      = search_help "o:flying", %[search cards with "flying" in Oracle text - without cards with rearch simply in reminder text like ones with reach ability]
+      = search_help %[o:"when ~ enters the battlefield"], %[You can use ~ as placeholder for name of the card]
 
     %h4 Search by edition
     %ul
-      = search_help "e:bfz", %Q[cards from "Battle for Zendikar" set]
-      = search_help %Q[e:"scars of mirrodin"], %Q[cards from "Scars of Mirrodin" set]
-      = search_help %Q[e:ascension], %Q[cards from all sets including "ascension" in name (only if there's no exact match)]
-      = search_help "e:isd,dka", %Q[cards from "Innistrad" and "Dark Ascension" sets]
+      = search_help "e:bfz", %[cards from "Battle for Zendikar" set]
+      = search_help %[e:"scars of mirrodin"], %[cards from "Scars of Mirrodin" set]
+      = search_help %[e:ascension], %[cards from all sets including "ascension" in name (only if there's no exact match)]
+      = search_help "e:isd,dka", %[cards from "Innistrad" and "Dark Ascension" sets]
 
     %h4 Search by block
     %ul
       = search_help "b:zendikar", "cards from Zendikar block"
       = search_help "b:isd", "cards from Innistrad block"
-      = search_help %Q[b:"return to ravnica"], %Q[cards from "Return to Ravnica" block]
+      = search_help %[b:"return to ravnica"], %[cards from "Return to Ravnica" block]
       = search_help "b:isd,soi", "cards from Innistrad and Shadow of Innistrad blocks"
 
     %h4 Search by color
@@ -178,38 +178,38 @@
 
     %h4 Search by flavor text
     %ul
-      = search_help "ft:chandra", %Q[cards with "chandra" in flavor text]
-      = search_help %Q[ft:"Jaya Ballard"], %Q[cards with "Jaya Ballard" in flavor text]
-      = search_help "lore:gideon", %Q[cards mentioning gideon in name, type, or flavor text]
+      = search_help "ft:chandra", %[cards with "chandra" in flavor text]
+      = search_help %[ft:"Jaya Ballard"], %[cards with "Jaya Ballard" in flavor text]
+      = search_help "lore:gideon", %[cards mentioning gideon in name, type, or flavor text]
 
     %h4 Search by flavor name
     %ul
-      = search_help %Q[fn:*], "cards with any flavor name"
-      = search_help %Q[fn:mothra], "cards with flavor name including mothra (full words only)"
+      = search_help %[fn:*], "cards with any flavor name"
+      = search_help %[fn:mothra], "cards with flavor name including mothra (full words only)"
 
     %h4 Search by artist
     %ul
-      = search_help %Q[a:argyle], "cards with art drawn by (Steve) Argyle"
-      = search_help %Q[a:"rebecca guay"], "cards with art drawn by Rebecca Guay"
+      = search_help %[a:argyle], "cards with art drawn by (Steve) Argyle"
+      = search_help %[a:"rebecca guay"], "cards with art drawn by Rebecca Guay"
 
     %h4 Search by rulings
     %ul
-      = search_help %Q[rulings:"Blood Moon"], "cards mentioning Blood Moon in their rulings"
+      = search_help %[rulings:"Blood Moon"], "cards mentioning Blood Moon in their rulings"
 
     %h4 Search by format
     %ul
       = search_help "legal:standard", "cards legal in Standard format"
       = search_help "restricted:vintage", "cards restricted in Vintage format"
       = search_help "f:vintage", "cards legal (or restricted) in Vintage format"
-      = search_help %Q[banned:pauper], "cards banned in Pauper format (doesn't include cards which aren't in format in the first place)"
-      = search_help %Q[f:commander], "cards legal in Commander format"
-      = search_help %Q[f:edh], "cards legal in Commander format"
-      = search_help %Q[f:"innistrad block"], "cards legal in Innistrad Block Constructed format"
-      = search_help %Q[banned:*], "cards banned in any format"
-      = search_help %Q[banned:* time=2010-01-01], "cards banned in any format at 2010-01-01"
-      = search_help %Q[restricted:*], "cards restricted in any format"
-      = search_help %Q[legal:*], "cards legal in any format"
-      = search_help %Q[format:*], "cards included in any format (fully or restricted)"
+      = search_help %[banned:pauper], "cards banned in Pauper format (doesn't include cards which aren't in format in the first place)"
+      = search_help %[f:commander], "cards legal in Commander format"
+      = search_help %[f:edh], "cards legal in Commander format"
+      = search_help %[f:"innistrad block"], "cards legal in Innistrad Block Constructed format"
+      = search_help %[banned:*], "cards banned in any format"
+      = search_help %[banned:* time=2010-01-01], "cards banned in any format at 2010-01-01"
+      = search_help %[restricted:*], "cards restricted in any format"
+      = search_help %[legal:*], "cards legal in any format"
+      = search_help %[format:*], "cards included in any format (fully or restricted)"
 
     %h4 Search by set type
     %div Set type includes both individual types of sets (like expansions, core sets, or duel decks) and broader categories (booster sets, multiplayer sets.)
@@ -348,7 +348,7 @@
       = search_help "year=2003", "cards printed in year 2003"
       = search_help "year<=1995", "cards printed in year 1995 or before"
       = search_help "print>ktk", "cards printed after release of Khans of Tarkir"
-      = search_help %Q[print="29 September 2012"], "cards printed on 29 September 2012 (Return to Ravnica prerelease)"
+      = search_help %[print="29 September 2012"], "cards printed on 29 September 2012 (Return to Ravnica prerelease)"
       = search_help "firstprint=m10", "cards first printed in Magic 2010 set"
       = search_help "lastprint=m10", "cards last printed in Magic 2010 set"
       = search_help "lastprint<lw", "cards last printed in in Lorwyn set or earlier"
@@ -377,23 +377,23 @@
     %div Every card printing is treated as separate object, so you can't search for cards which were printing in both Magic 2010 and Magic 2011 with e:m10 e:m11. There's special syntax for that.
     %ul
       = search_help "e:m10 alt:e:m11", "cards from Magic 2010 which were also printed in Magic 2011"
-      = search_help %Q[a:"Rebecca Guay" alt:(not a:"Rebecca Guay")], "cards drawn by Rebecca Guay which were also printed by someone who's not Rebecca Guay"
+      = search_help %[a:"Rebecca Guay" alt:(not a:"Rebecca Guay")], "cards drawn by Rebecca Guay which were also printed by someone who's not Rebecca Guay"
 
     %h4 Search by foreign name
     %ul
-      = search_help "cs:巨龙", %Q[cards with "巨龙" in Chinese Simplified name]
-      = search_help "ct:巨龍", %Q[cards with "巨龍" in Chinese Traditional name]
-      = search_help "fr:Intrusion", %Q[cards with "Intrusion" in French name]
-      = search_help "de:Wunderkind", %Q[cards with "Wunderkind" in German name]
-      = search_help "it:mostro", %Q[cards with "mostro" in Italian name]
-      = search_help "jp:エルフ", %Q[cards with "エルフ" in Japanese name]
-      = search_help "kr:우진", %Q[cards with "우진" in Korean name]
-      = search_help "pt:pesadelo", %Q[cards with "pesadelo" in Brazilian Portuguese name]
-      = search_help "ru:Дракон", %Q[cards with "Дракон" in Russian name]
-      = search_help %Q[sp:"Llave maestra"], %Q[cards with "Llave maestra" in Spanish name]
-      = search_help %Q[foreign:"龍"], %Q[cards with "龍" in any foreign name]
-      = search_help %Q[t:planeswalker kr:*], %Q[planeswalker cards with Korean version]
-      = search_help "de:/\w{20,}/", %Q[cards with 20+ letter word in German name]
+      = search_help "cs:巨龙", %[cards with "巨龙" in Chinese Simplified name]
+      = search_help "ct:巨龍", %[cards with "巨龍" in Chinese Traditional name]
+      = search_help "fr:Intrusion", %[cards with "Intrusion" in French name]
+      = search_help "de:Wunderkind", %[cards with "Wunderkind" in German name]
+      = search_help "it:mostro", %[cards with "mostro" in Italian name]
+      = search_help "jp:エルフ", %[cards with "エルフ" in Japanese name]
+      = search_help "kr:우진", %[cards with "우진" in Korean name]
+      = search_help "pt:pesadelo", %[cards with "pesadelo" in Brazilian Portuguese name]
+      = search_help "ru:Дракон", %[cards with "Дракон" in Russian name]
+      = search_help %[sp:"Llave maestra"], %[cards with "Llave maestra" in Spanish name]
+      = search_help %[foreign:"龍"], %[cards with "龍" in any foreign name]
+      = search_help %[t:planeswalker kr:*], %[planeswalker cards with Korean version]
+      = search_help "de:/\w{20,}/", %[cards with 20+ letter word in German name]
 
     %h4 Search by regular expression
     %div Reglar expressions follow ruby syntax and are case insensitive by default.
@@ -467,9 +467,9 @@
     %div You can specify multiple time periods with use of parentheses.
     %ul
       = search_help "time:rtr f:standard", "all cards in Standard at time of Return to Ravnica set"
-      = search_help %Q[time:"1 march 2009" banned:commander], "Commander banned cards as of 1 March 2009"
+      = search_help %[time:"1 march 2009" banned:commander], "Commander banned cards as of 1 March 2009"
       = search_help "time:m10 t:planeswalker", "All Planeswalker cards in existence as of printing of Magic 2010 set"
-      = search_help "time:2010 restricted:commander", %Q[Cards restricted in Commander as of beginning of 2010 (in Commander context "restricted" means historical contept of "banned as general"]
+      = search_help "time:2010 restricted:commander", %[Cards restricted in Commander as of beginning of 2010 (in Commander context "restricted" means historical contept of "banned as general"]
       = search_help "(time:OGW f:Standard) not (time:SOI f:Standard)", "Cards in Oath of Gatewatch Standard which are not in Shadows Over Innistrad Standard"
 
     %h4 Sort results
@@ -513,4 +513,4 @@
     %h4 Name comparison
     %div To help with spoiler season number crunch you can now see which cards could possibly fit in a gap.
     %ul
-      = search_help %Q[f:Modern print<=M14 t:land name>"Selesnya Guildgate" name<"Simic Guildgate"], "Modern cards printed up to M14 which could fit in land slot between Selesnya Guildgate and Simic Guildgate"
+      = search_help %[f:Modern print<=M14 t:land name>"Selesnya Guildgate" name<"Simic Guildgate"], "Modern cards printed up to M14 which could fit in land slot between Selesnya Guildgate and Simic Guildgate"
