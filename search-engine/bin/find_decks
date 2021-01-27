@@ -21,7 +21,7 @@ db = CardDatabase.load
 decks = db.resolve_deck_name(query)
 
 if decks.empty?
-  puts %Q[No deck matching "#{query}"]
+  puts %[No deck matching "#{query}"]
 else
   decks.each_with_index do |deck, i|
     print_deck deck

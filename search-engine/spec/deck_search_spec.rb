@@ -4,15 +4,15 @@ describe "deck: search" do
   let(:decks_by_set) { db.decks.group_by(&:set) }
 
   it "Unique names" do
-    assert_search_equal %Q[deck:"Ingenious Machinists" or deck:"Woodland Warriors"], %Q[e:"Elves vs Inventors"]  end
+    assert_search_equal %[deck:"Ingenious Machinists" or deck:"Woodland Warriors"], %[e:"Elves vs Inventors"]  end
 
   it "Case insensitive" do
-    assert_search_equal %Q[deck:"Teferi, Timebender"], %Q[deck:"Teferi Timebender"]
-    assert_search_equal %Q[deck:"Teferi, Timebender"], %Q[deck:"teferi timebender"]
+    assert_search_equal %[deck:"Teferi, Timebender"], %[deck:"Teferi Timebender"]
+    assert_search_equal %[deck:"Teferi, Timebender"], %[deck:"teferi timebender"]
   end
 
   it "Partial names" do
-    assert_search_equal %Q[deck:"Amonkhet / Gideon"], %Q[deck:"Gideon, Martial Paragon"]
+    assert_search_equal %[deck:"Amonkhet / Gideon"], %[deck:"Gideon, Martial Paragon"]
   end
 
   it "Each deck can be searched by set code and slug" do

@@ -3,62 +3,62 @@ describe "Any queries" do
 
   context "German name" do
     it "includes German name" do
-      assert_search_equal %Q[foreign:"Abrupter Verfall"], %Q[de:"Abrupter Verfall"]
+      assert_search_equal %[foreign:"Abrupter Verfall"], %[de:"Abrupter Verfall"]
       assert_search_equal %q[foreign:/\bvon der\b/], %q[de:/\bvon der\b/]
     end
 
     it "is anywhere match with de:" do
-      assert_search_equal %Q[de:"Spinner"], %Q[de:/Spinner/]
+      assert_search_equal %[de:"Spinner"], %[de:/Spinner/]
     end
 
     it "is word match with foreign:" do
-      assert_search_equal %Q[foreign:"Spinner"], %Q[foreign:/\bSpinner\b/ or (Arachnus Spinner)]
+      assert_search_equal %[foreign:"Spinner"], %[foreign:/\bSpinner\b/ or (Arachnus Spinner)]
     end
   end
 
   context "French name" do
     it do
-      assert_search_equal %Q[foreign:"Décomposition abrupte"], %Q[fr:"Décomposition abrupte"]
+      assert_search_equal %[foreign:"Décomposition abrupte"], %[fr:"Décomposition abrupte"]
     end
     it "is case insensitive" do
-      assert_search_equal %Q[foreign:"Décomposition abrupte"], %Q[foreign:"décomposition ABRUPTE"]
+      assert_search_equal %[foreign:"Décomposition abrupte"], %[foreign:"décomposition ABRUPTE"]
     end
     it "ignores diacritics" do
-      assert_search_equal %Q[foreign:"Décomposition abrupte"], %Q[foreign:"Decomposition abrupte"]
+      assert_search_equal %[foreign:"Décomposition abrupte"], %[foreign:"Decomposition abrupte"]
     end
   end
 
   it "includes Italian name" do
-    assert_search_equal %Q[foreign:"Deterioramento Improvviso"], %Q[it:"Deterioramento Improvviso"]
+    assert_search_equal %[foreign:"Deterioramento Improvviso"], %[it:"Deterioramento Improvviso"]
   end
 
   it "includes Japanese name" do
-    assert_search_equal %Q[foreign:"血染めの月"], %Q[jp:"血染めの月"]
+    assert_search_equal %[foreign:"血染めの月"], %[jp:"血染めの月"]
   end
 
   it "includes Russian name" do
-    assert_search_equal %Q[foreign:"Кровавая луна"], %Q[ru:"Кровавая луна"]
+    assert_search_equal %[foreign:"Кровавая луна"], %[ru:"Кровавая луна"]
   end
 
   it "includes Spanish name" do
-    assert_search_equal %Q[foreign:"Puente engañoso"], %Q[sp:"Puente engañoso"]
+    assert_search_equal %[foreign:"Puente engañoso"], %[sp:"Puente engañoso"]
   end
 
   it "includes Portuguese name" do
-    assert_search_equal %Q[foreign:"Ponte Traiçoeira"], %Q[pt:"Ponte Traiçoeira"]
+    assert_search_equal %[foreign:"Ponte Traiçoeira"], %[pt:"Ponte Traiçoeira"]
   end
 
   it "includes Korean name" do
-    assert_search_equal %Q[foreign:"축복받은 신령들"], %Q[kr:"축복받은 신령들"]
+    assert_search_equal %[foreign:"축복받은 신령들"], %[kr:"축복받은 신령들"]
     assert_search_equal %q[foreign:/축복받은/], %q[kr:/축복받은/]
   end
 
   it "includes Chinese Traditional name" do
-    assert_search_equal %Q[foreign:"刻拉諾斯的電擊"], %Q[ct:"刻拉諾斯的電擊"]
+    assert_search_equal %[foreign:"刻拉諾斯的電擊"], %[ct:"刻拉諾斯的電擊"]
   end
 
   it "includes Chinese Simplified name" do
-    assert_search_equal %Q[foreign:"刻拉诺斯的电击"], %Q[cs:"刻拉诺斯的电击"]
+    assert_search_equal %[foreign:"刻拉诺斯的电击"], %[cs:"刻拉诺斯的电击"]
   end
 
   it "wildcard" do

@@ -181,7 +181,7 @@ describe "CLI Frontend" do
         EOF
     )
     assert_cli(
-      search: %Q[time:"Battle for Homelands" t:ral],
+      search: %[time:"Battle for Homelands" t:ral],
       verbose: false,
       output: <<-EOF,
         Ral Zarek

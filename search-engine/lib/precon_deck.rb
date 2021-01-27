@@ -33,7 +33,7 @@ class PreconDeck < Deck
     output = []
     output << "// NAME: #{@name} - #{@set.name} #{@type}"
     output << "// URL: http://mtg.wtf/deck/#{set.code}/#{slug}"
-    output << "// DATE: #{@release_date.to_s}" if @release_date
+    output << "// DATE: #{@release_date}" if @release_date
     @commander.each do |count, card|
       output << "COMMANDER: #{count} #{card}"
     end

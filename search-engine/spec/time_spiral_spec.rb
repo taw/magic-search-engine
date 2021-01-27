@@ -116,7 +116,7 @@ describe "Time Spiral block" do
   end
 
   it "oracle unicode" do
-    assert_search_results %Q[ft:"Lim-Dûl"], "Drudge Reavers"
-    assert_search_results %Q[ft:"Lim-Dul"], "Drudge Reavers"
+    assert_search_results %[ft:"Lim-Dûl"], "Drudge Reavers"
+    assert_search_results %[ft:"Lim-Dul"], "Drudge Reavers"
   end
 end

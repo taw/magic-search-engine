@@ -3,7 +3,7 @@ describe "Name Comparison" do
 
   it do
     assert_search_results(
-      %Q[
+      %[
         f:Modern
         print<=M14
         t:land
@@ -23,16 +23,16 @@ describe "Name Comparison" do
   end
 
   it "punctuation" do
-    assert_search_include %Q[e:aer name>"Sram, Senior Edificer"],
+    assert_search_include %[e:aer name>"Sram, Senior Edificer"],
       "Sram's Expertise"
-    assert_search_include %Q[e:akh name>"Liliana, Death's Majesty"],
+    assert_search_include %[e:akh name>"Liliana, Death's Majesty"],
       "Liliana's Mastery"
-    assert_search_include %Q[e:kld name<"Consul's Shieldguard"],
+    assert_search_include %[e:kld name<"Consul's Shieldguard"],
       "Consulate Surveillance"
   end
 
   it "=" do
-    assert_search_results %Q[name="Painter's Servant" or name=Grindstone],
+    assert_search_results %[name="Painter's Servant" or name=Grindstone],
       "Painter's Servant",
       "Grindstone"
   end

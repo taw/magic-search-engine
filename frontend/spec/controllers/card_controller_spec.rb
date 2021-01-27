@@ -7,7 +7,7 @@ RSpec.describe CardController, type: :controller do
   it "show card" do
     get "show", params: { set: "nph", id: "1" }
     assert_response 200
-    assert_select %Q[.cardinfo:contains("Karn Liberated")]
+    assert_select %[.cardinfo:contains("Karn Liberated")]
     assert_equal "Karn Liberated - #{APP_NAME}", html_document.title
   end
 
@@ -70,15 +70,15 @@ RSpec.describe CardController, type: :controller do
     get "index", params: { q: "italian spiderman" }
     assert_response 200
     assert_select ".cardinfo", 0
-    assert_select %Q[.results_summary:contains("No cards found")]
+    assert_select %[.results_summary:contains("No cards found")]
     assert_equal "italian spiderman - #{APP_NAME}", html_document.title
   end
 
   it "search something" do
     get "index", params: { q: "Karn Liberated" }
     assert_response 200
-    assert_select %Q[.cardinfo:contains("Karn Liberated")]
-    assert_select %Q[.results_summary:contains("1 card found")]
+    assert_select %[.cardinfo:contains("Karn Liberated")]
+    assert_select %[.results_summary:contains("1 card found")]
     assert_equal "Karn Liberated - #{APP_NAME}", html_document.title
   end
 

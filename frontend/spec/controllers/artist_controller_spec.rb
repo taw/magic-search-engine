@@ -6,8 +6,8 @@ RSpec.describe ArtistController, type: :controller do
   it "list of artists" do
     get "index"
     assert_response 200
-    assert_select %Q[a:contains("Yang Hong")]
-    assert_select %Q[li:contains("Yang Hong\n(9 cards)")]
+    assert_select %[a:contains("Yang Hong")]
+    assert_select %[li:contains("Yang Hong\n(9 cards)")]
     assert_equal "Artists - #{APP_NAME}", html_document.title
   end
 

@@ -61,7 +61,7 @@ class ConditionPrint < Condition
         date = Date.parse("#{date}-01")
         [date.year*12 + date.month, 2]
       else
-        warning %Q[Doesn't look like correct date, ignored: "#{date}"]
+        warning %[Doesn't look like correct date, ignored: "#{date}"]
         nil
       end
     end

@@ -15,6 +15,4 @@ class ConditionInForeign < ConditionSimple
   def to_s
     "in:#{maybe_quote(@lang)}"
   end
-
-  private
 end

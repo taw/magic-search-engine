@@ -104,10 +104,10 @@ describe "QueryParser" do
 
   it "time" do
     refute_search_parse "time:2010", "time:2011 r:common"
-    assert_search_parse %Q[time:2010 r:common], %Q[time:2010.1.1 r:common]
-    assert_search_parse %Q[time:2010.3.3 r:common], %Q[time:"3 march 2010" r:common]
-    assert_search_parse %Q[time:2010.3 r:common], %Q[time:"1 march 2010" r:common]
-    assert_search_parse %Q[time:rtr r:common], %Q[time:RTR r:common]
+    assert_search_parse %[time:2010 r:common], %[time:2010.1.1 r:common]
+    assert_search_parse %[time:2010.3.3 r:common], %[time:"3 march 2010" r:common]
+    assert_search_parse %[time:2010.3 r:common], %[time:"1 march 2010" r:common]
+    assert_search_parse %[time:rtr r:common], %[time:RTR r:common]
   end
 
   it "color aliases" do
@@ -168,9 +168,9 @@ describe "QueryParser" do
     assert_search_parse "e:m12", "set:m12"
     assert_search_parse "e:m12", "edition:m12"
     assert_search_parse "f:modern", "format:modern"
-    assert_search_parse %Q[ft:"here's some gold"], %Q[flavor:"here's some gold"]
-    assert_search_parse %Q[ft:/here's some gold/], %Q[flavor:/here's some gold/]
-    assert_search_parse_except_warning %Q[ft:/here's (some gold/], %Q[flavor:/here's (some gold/]
+    assert_search_parse %[ft:"here's some gold"], %[flavor:"here's some gold"]
+    assert_search_parse %[ft:/here's some gold/], %[flavor:/here's some gold/]
+    assert_search_parse_except_warning %[ft:/here's (some gold/], %[flavor:/here's (some gold/]
     assert_search_parse "id:wu", "identity:wu"
     assert_search_parse "id<=wu", "identity<=wu"
     assert_search_parse "id:3", "identity:3"

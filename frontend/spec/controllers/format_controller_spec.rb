@@ -6,9 +6,9 @@ RSpec.describe FormatController, type: :controller do
   it "index" do
     get "index"
     assert_response 200
-    assert_select %Q[a:contains("Commander")]
-    assert_select %Q[a:contains("Modern")]
-    assert_select %Q[a:contains("Shards of Alara Block")]
+    assert_select %[a:contains("Commander")]
+    assert_select %[a:contains("Modern")]
+    assert_select %[a:contains("Shards of Alara Block")]
   end
 
   it "show - fake format" do
@@ -19,25 +19,25 @@ RSpec.describe FormatController, type: :controller do
   it "show - Scars of Mirrodin Block" do
     get "show", params: { id: "scars-of-mirrodin-block" }
     assert_response 200
-    assert_select %Q[title:contains("Scars of Mirrodin Block")]
-    assert_select %Q[h3:contains("Scars of Mirrodin Block")]
-    assert_select %Q[a:contains("Scars of Mirrodin")]
-    assert_select %Q[a:contains("Mirrodin Besieged")]
-    assert_select %Q[a:contains("New Phyrexia")]
-    assert_select %Q[p:contains("There are no banned cards.")]
-    assert_select %Q[p:contains("There are no restricted cards.")]
+    assert_select %[title:contains("Scars of Mirrodin Block")]
+    assert_select %[h3:contains("Scars of Mirrodin Block")]
+    assert_select %[a:contains("Scars of Mirrodin")]
+    assert_select %[a:contains("Mirrodin Besieged")]
+    assert_select %[a:contains("New Phyrexia")]
+    assert_select %[p:contains("There are no banned cards.")]
+    assert_select %[p:contains("There are no restricted cards.")]
   end
 
   it "show - Innistrad Block" do
     get "show", params: { id: "innistrad-block" }
     assert_response 200
-    assert_select %Q[title:contains("Innistrad Block")]
-    assert_select %Q[h3:contains("Innistrad Block")]
-    assert_select %Q[a:contains("Innistrad")]
-    assert_select %Q[a:contains("Dark Ascension")]
-    assert_select %Q[a:contains("Avacyn Restored")]
-    assert_select %Q[a:contains("Lingering Souls")]
-    assert_select %Q[p:contains("There are no restricted cards.")]
+    assert_select %[title:contains("Innistrad Block")]
+    assert_select %[h3:contains("Innistrad Block")]
+    assert_select %[a:contains("Innistrad")]
+    assert_select %[a:contains("Dark Ascension")]
+    assert_select %[a:contains("Avacyn Restored")]
+    assert_select %[a:contains("Lingering Souls")]
+    assert_select %[p:contains("There are no restricted cards.")]
   end
 
   Format.all_format_classes.each do |format_class|
