@@ -1,6 +1,16 @@
 describe PackFactory do
   include_context "db"
   let(:factory) { PackFactory.new(db) }
+  let(:variant) { nil }
+  let(:foil) { false }
+  let(:pack) { factory.for(set_code, variant) }
+  let(:ev) { pack.expected_values }
+
+  def card(query, **args)
+    query_set_code = args[:set_code] || set_code
+    query_foil = args[:foil] || foil
+    physical_card("e:#{query_set_code} is:booster #{query}", query_foil)
+  end
 
   it "Only sets of appropriate types have sealed packs" do
     db.sets.each do |set_code, set|
@@ -88,19 +98,16 @@ describe PackFactory do
   end
 
   context "Dragon's Maze" do
-    let(:pack) { factory.for("dgm") }
-    let(:ev) { pack.expected_values }
-    let(:maze_end) { physical_card("e:dgm maze end", foil) }
-    let(:guildgate) { physical_card("e:dgm azorius guildgate", foil) }
-    let(:common) { physical_card("e:dgm azorius cluestone", foil) }
-    let(:uncommon) { physical_card("e:dgm alive // well", foil) }
-    let(:rare) { physical_card("e:dgm advent of the wurm", foil) }
-    let(:mythic) { physical_card("e:dgm progenitor mimic", foil) }
-    let(:shockland) { physical_card("e:rtr temple garden", foil) }
+    let(:set_code) { "dgm" }
+    let(:maze_end) { card("maze end") }
+    let(:guildgate) { card("azorius guildgate") }
+    let(:common) { card("azorius cluestone") }
+    let(:uncommon) { card("alive // well") }
+    let(:rare) { card("advent of the wurm") }
+    let(:mythic) { card("progenitor mimic") }
+    let(:shockland) { card("temple garden", set_code: "rtr") }
 
     context "normal" do
-      let(:foil) { false }
-
       it do
         ev[guildgate].should eq Rational(23, 242)
         ev[maze_end].should eq Rational(2, 242)
@@ -135,16 +142,14 @@ describe PackFactory do
   end
 
   context "Unhinged" do
-    let(:pack) { factory.for("unh") }
-    let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("e:unh forest", foil) }
-    let(:common) { physical_card("e:unh artful looter", foil) }
-    let(:uncommon) { physical_card("e:unh cheatyface", foil) }
-    let(:rare) { physical_card("e:unh ambiguity", foil) }
-    let(:super_secret_tech) { physical_card("e:unh super secret tech", foil) }
+    let(:set_code) { "unh" }
+    let(:basic) { card("forest") }
+    let(:common) { card("artful looter") }
+    let(:uncommon) { card("cheatyface") }
+    let(:rare) { card("ambiguity") }
+    let(:super_secret_tech) { card("super secret tech") }
 
     context "normal" do
-      let(:foil) { false }
       it do
         ev[basic].should eq Rational(1,5)
         ev[common].should eq Rational(975,100) * Rational(1,55)
@@ -167,19 +172,16 @@ describe PackFactory do
   end
 
   context "Fate Reforged" do
-    let(:pack) { factory.for("frf") }
-    let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("e:frf forest", foil) }
-    let(:gainland) { physical_card("e:frf blossoming sands", foil) }
-    let(:common) { physical_card("e:frf abzan runemark", foil) }
-    let(:uncommon) { physical_card("e:frf break through the line", foil) }
-    let(:rare) { physical_card("e:frf atarka world render", foil) }
-    let(:mythic) { physical_card("e:frf soulfire grand master", foil) }
-    let(:fetchland) { physical_card("e:ktk flooded strand", foil) }
+    let(:set_code) { "frf" }
+    let(:basic) { card("forest") }
+    let(:gainland) { card("blossoming sands") }
+    let(:common) { card("abzan runemark") }
+    let(:uncommon) { card("break through the line") }
+    let(:rare) { card("atarka world render") }
+    let(:mythic) { card("soulfire grand master") }
+    let(:fetchland) { card("flooded strand", set_code: "ktk") }
 
     context "normal" do
-      let(:foil) { false }
-
       it do
         # Basics only in fat packs - also 2 of each type
         ev[basic].should eq 0
@@ -212,8 +214,7 @@ describe PackFactory do
   end
 
   context "Journey Into Nyx" do
-    let(:pack) { factory.for("jou") }
-    let(:ev) { pack.expected_values }
+    let(:set_code) { "jou" }
     let(:old_gods) { db.search("t:god e:ths,bng").printings.map{|c| PhysicalCard.for(c) } }
     let(:new_gods) { db.search("t:god e:jou").printings.map{|c| PhysicalCard.for(c) } }
     let(:rate) { 4320 }
@@ -230,12 +231,11 @@ describe PackFactory do
   end
 
   context "Innistrad" do
-    let(:pack) { factory.for("isd") }
-    let(:ev) { pack.expected_values }
-    let(:dfc_mythic) { physical_card("e:isd Garruk Relentless") }
-    let(:sfc_mythic) { physical_card("e:isd Army of the Damned") }
-    let(:foil_dfc_mythic) { physical_card("e:isd Garruk Relentless", true) }
-    let(:foil_sfc_mythic) { physical_card("e:isd Army of the Damned", true) }
+    let(:set_code) { "isd" }
+    let(:dfc_mythic) { card("Garruk Relentless") }
+    let(:sfc_mythic) { card("Army of the Damned") }
+    let(:foil_dfc_mythic) { card("Garruk Relentless", foil: true) }
+    let(:foil_sfc_mythic) { card("Army of the Damned", foil: true) }
 
     it do
       ev[dfc_mythic].should eq Rational(1, 121)
@@ -246,12 +246,11 @@ describe PackFactory do
   end
 
   context "Dark Ascension" do
-    let(:pack) { factory.for("dka") }
-    let(:ev) { pack.expected_values }
-    let(:dfc_mythic) { physical_card("e:dka Elbrus, the Binding Blade") }
-    let(:sfc_mythic) { physical_card("e:dka Beguiler of Wills") }
-    let(:foil_dfc_mythic) { physical_card("e:dka Elbrus, the Binding Blade", true) }
-    let(:foil_sfc_mythic) { physical_card("e:dka Beguiler of Wills", true) }
+    let(:set_code) { "dka" }
+    let(:dfc_mythic) { card("Elbrus, the Binding Blade") }
+    let(:sfc_mythic) { card("Beguiler of Wills") }
+    let(:foil_dfc_mythic) { card("Elbrus, the Binding Blade", foil: true) }
+    let(:foil_sfc_mythic) { card("Beguiler of Wills", foil: true) }
 
     it do
       ev[dfc_mythic].should eq Rational(1, 80)
@@ -262,16 +261,14 @@ describe PackFactory do
   end
 
   context "Time Spiral" do
-    let(:pack) { factory.for("tsp") }
-    let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("e:ts forest", foil) }
-    let(:common) { physical_card("e:ts bonesplitter sliver", foil) }
-    let(:uncommon) { physical_card("e:ts dread return", foil) }
-    let(:rare) { physical_card("e:ts academy ruins", foil) }
-    let(:timeshifted) { physical_card("e:tsts akroma", foil) }
+    let(:set_code) { "tsp" }
+    let(:basic) { card("forest") }
+    let(:common) { card("bonesplitter sliver") }
+    let(:uncommon) { card("dread return") }
+    let(:rare) { card("academy ruins") }
+    let(:timeshifted) { card("akroma", set_code: "tsts") }
 
     context "non-foil" do
-      let(:foil) { false }
       it do
         ev[basic].should eq 0
         ev[common].should eq Rational(975, 100) * Rational(1, 121)
@@ -294,17 +291,15 @@ describe PackFactory do
   end
 
   context "Planar Chaos" do
-    let(:pack) { factory.for("plc") }
-    let(:ev) { pack.expected_values }
-    let(:common) { physical_card("e:pc Mire Boa", foil) }
-    let(:uncommon) { physical_card("e:pc Necrotic Sliver", foil) }
-    let(:rare) { physical_card("e:pc Akroma, Angel of Fury", foil) }
-    let(:cs_common) { physical_card("e:pc Brute Force", foil) }
-    let(:cs_uncommon) { physical_card("e:pc Blood Knight", foil) }
-    let(:cs_rare) { physical_card("e:pc Damnation", foil) }
+    let(:set_code) { "plc" }
+    let(:common) { card("Mire Boa") }
+    let(:uncommon) { card("Necrotic Sliver") }
+    let(:rare) { card("Akroma, Angel of Fury") }
+    let(:cs_common) { card("Brute Force") }
+    let(:cs_uncommon) { card("Blood Knight") }
+    let(:cs_rare) { card("Damnation") }
 
     context "non-foil" do
-      let(:foil) { false }
       it do
         # Even in nonfoil packs (foiling assumes replaces regular common)
         # 8/40 != 3/20
@@ -334,16 +329,14 @@ describe PackFactory do
   end
 
   context "Vintage Masters" do
-    let(:pack) { factory.for("vma") }
-    let(:ev) { pack.expected_values }
-    let(:common) { physical_card("e:vma r:common", foil) }
-    let(:uncommon) { physical_card("e:vma r:uncommon", foil) }
-    let(:rare) { physical_card("e:vma r:rare", foil) }
-    let(:mythic) { physical_card("e:vma r:mythic", foil) }
-    let(:special) { physical_card("e:vma r:special", foil) }
+    let(:set_code) { "vma" }
+    let(:common) { card("r:common") }
+    let(:uncommon) { card("r:uncommon") }
+    let(:rare) { card("r:rare") }
+    let(:mythic) { card("r:mythic") }
+    let(:special) { card("r:special") }
 
     context "non-foil" do
-      let(:foil) { false }
       it do
         ev[common].should eq Rational(10, 101)
         ev[uncommon].should eq Rational(3, 80)
@@ -372,20 +365,18 @@ describe PackFactory do
   end
 
   context "Shadows over Innistrad" do
-    let(:pack) { factory.for("soi") }
-    let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("e:soi r:basic", foil) }
-    let(:dfc_common) { physical_card("e:soi r:common is:dfc", foil) }
-    let(:sfc_common) { physical_card("e:soi r:common -is:dfc", foil) }
-    let(:dfc_uncommon) { physical_card("e:soi r:uncommon is:dfc", foil) }
-    let(:sfc_uncommon) { physical_card("e:soi r:uncommon -is:dfc", foil) }
-    let(:dfc_rare) { physical_card("e:soi r:rare is:dfc", foil) }
-    let(:sfc_rare) { physical_card("e:soi r:rare -is:dfc", foil) }
-    let(:dfc_mythic) { physical_card("e:soi r:mythic is:dfc", foil) }
-    let(:sfc_mythic) { physical_card("e:soi r:mythic -is:dfc", foil) }
+    let(:set_code) { "soi" }
+    let(:basic) { card("r:basic") }
+    let(:dfc_common) { card("r:common is:dfc") }
+    let(:sfc_common) { card("r:common -is:dfc") }
+    let(:dfc_uncommon) { card("r:uncommon is:dfc") }
+    let(:sfc_uncommon) { card("r:uncommon -is:dfc") }
+    let(:dfc_rare) { card("r:rare is:dfc") }
+    let(:sfc_rare) { card("r:rare -is:dfc") }
+    let(:dfc_mythic) { card("r:mythic is:dfc") }
+    let(:sfc_mythic) { card("r:mythic -is:dfc") }
 
     context "non-foil" do
-      let(:foil) { false }
       it do
         ev[basic].should eq Rational(1, 15)
         ev[sfc_common].should eq Rational(9*32 - 8 - 4, 32) * Rational(1, 101)
@@ -416,21 +407,19 @@ describe PackFactory do
   end
 
   context "Eldritch Moon" do
-    let(:pack) { factory.for("emn") }
-    let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("e:emn r:basic", foil) }
+    let(:set_code) { "emn" }
+    let(:basic) { card("r:basic") }
     # Meld cards can have different rarities front/back
-    let(:dfc_common) { physical_card("e:emn is:front r:common (is:dfc or is:meld)", foil) }
-    let(:sfc_common) { physical_card("e:emn is:front r:common -(is:dfc or is:meld)", foil) }
-    let(:dfc_uncommon) { physical_card("e:emn is:front r:uncommon (is:dfc or is:meld)", foil) }
-    let(:sfc_uncommon) { physical_card("e:emn is:front r:uncommon -(is:dfc or is:meld)", foil) }
-    let(:dfc_rare) { physical_card("e:emn is:front r:rare (is:dfc or is:meld)", foil) }
-    let(:sfc_rare) { physical_card("e:emn is:front r:rare -(is:dfc or is:meld)", foil) }
-    let(:dfc_mythic) { physical_card("e:emn is:front r:mythic (is:dfc or is:meld)", foil) }
-    let(:sfc_mythic) { physical_card("e:emn is:front r:mythic -(is:dfc or is:meld)", foil) }
+    let(:dfc_common) { card("is:front r:common (is:dfc or is:meld)") }
+    let(:sfc_common) { card("is:front r:common -(is:dfc or is:meld)") }
+    let(:dfc_uncommon) { card("is:front r:uncommon (is:dfc or is:meld)") }
+    let(:sfc_uncommon) { card("is:front r:uncommon -(is:dfc or is:meld)") }
+    let(:dfc_rare) { card("is:front r:rare (is:dfc or is:meld)") }
+    let(:sfc_rare) { card("is:front r:rare -(is:dfc or is:meld)") }
+    let(:dfc_mythic) { card("is:front r:mythic (is:dfc or is:meld)") }
+    let(:sfc_mythic) { card("is:front r:mythic -(is:dfc or is:meld)") }
 
     context "non-foil" do
-      let(:foil) { false }
       it do
         ev[sfc_common].should eq Rational(10*32 - 8 - 4, 32) * Rational(1, 70)
         ev[sfc_uncommon].should eq Rational(3, 60)
@@ -459,19 +448,17 @@ describe PackFactory do
   end
 
   context "Dominaria" do
-    let(:pack) { factory.for("dom") }
-    let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("is:booster e:dom r:basic", foil) }
-    let(:common) { physical_card("is:booster e:dom r:common", foil) }
-    let(:legendary_uncommon) { physical_card("is:booster e:dom r:uncommon t:legendary", foil) }
-    let(:nonlegendary_uncommon) { physical_card("is:booster e:dom r:uncommon -t:legendary", foil) }
-    let(:legendary_rare) { physical_card("is:booster e:dom r:rare t:legendary", foil) }
-    let(:nonlegendary_rare) { physical_card("is:booster e:dom r:rare -t:legendary", foil) }
-    let(:legendary_mythic) { physical_card("is:booster e:dom r:mythic t:legendary", foil) }
-    let(:nonlegendary_mythic) { physical_card("is:booster e:dom r:mythic -t:legendary", foil) }
+    let(:set_code) { "dom" }
+    let(:basic) { card("r:basic") }
+    let(:common) { card("r:common") }
+    let(:legendary_uncommon) { card("r:uncommon t:legendary") }
+    let(:nonlegendary_uncommon) { card("r:uncommon -t:legendary") }
+    let(:legendary_rare) { card("r:rare t:legendary") }
+    let(:nonlegendary_rare) { card("r:rare -t:legendary") }
+    let(:legendary_mythic) { card("r:mythic t:legendary") }
+    let(:nonlegendary_mythic) { card("r:mythic -t:legendary") }
 
     context "non-foil" do
-      let(:foil) { false }
       it do
         ev[basic].should eq Rational(1, 20)
         ev[common].should eq Rational(975, 100) * Rational(1, 101)
@@ -500,19 +487,17 @@ describe PackFactory do
   end
 
   context "War of the Spark" do
-    let(:pack) { factory.for("war") }
-    let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("is:booster e:war r:basic", foil) }
-    let(:common) { physical_card("is:booster e:war r:common", foil) }
-    let(:planeswalker_uncommon) { physical_card("is:booster e:war r:uncommon t:planeswalker -number:/★/", foil) }
-    let(:nonplaneswalker_uncommon) { physical_card("is:booster e:war r:uncommon -t:planeswalker -number:/★/", foil) }
-    let(:planeswalker_rare) { physical_card("is:booster e:war r:rare t:planeswalker -number:/★/", foil) }
-    let(:nonplaneswalker_rare) { physical_card("is:booster e:war r:rare -t:planeswalker -number:/★/", foil) }
-    let(:planeswalker_mythic) { physical_card("is:booster e:war r:mythic t:planeswalker -number:/★/", foil) }
-    let(:nonplaneswalker_mythic) { physical_card("is:booster e:war r:mythic -t:planeswalker -number:/★/", foil) }
+    let(:set_code) { "war" }
+    let(:basic) { card("r:basic") }
+    let(:common) { card("r:common") }
+    let(:planeswalker_uncommon) { card("r:uncommon t:planeswalker -number:/★/") }
+    let(:nonplaneswalker_uncommon) { card("r:uncommon -t:planeswalker -number:/★/") }
+    let(:planeswalker_rare) { card("r:rare t:planeswalker -number:/★/") }
+    let(:nonplaneswalker_rare) { card("r:rare -t:planeswalker -number:/★/") }
+    let(:planeswalker_mythic) { card("r:mythic t:planeswalker -number:/★/") }
+    let(:nonplaneswalker_mythic) { card("r:mythic -t:planeswalker -number:/★/") }
 
     context "non-foil" do
-      let(:foil) { false }
       it do
         ev[basic].should eq Rational(1, 15)
         ev[common].should eq Rational(975, 100) * Rational(1, 101)
@@ -543,18 +528,16 @@ describe PackFactory do
   # Foil rates are total speculation
   # But there's definitely separate draft and nondraft foils
   context "Conspiracy" do
-    let(:pack) { factory.for("cns") }
-    let(:ev) { pack.expected_values }
-    let(:common) { physical_card("e:cns -is:draft r:common", foil) }
-    let(:uncommon) { physical_card("e:cns -is:draft r:uncommon", foil) }
-    let(:rare) { physical_card("e:cns -is:draft r:rare", foil) }
-    let(:mythic) { physical_card("e:cns -is:draft r:mythic", foil) }
-    let(:draft_common) { physical_card("e:cns is:draft r:common", foil) }
-    let(:draft_uncommon) { physical_card("e:cns is:draft r:uncommon", foil) }
-    let(:draft_rare) { physical_card("e:cns is:draft r:rare", foil) }
+    let(:set_code) { "cns" }
+    let(:common) { card("-is:draft r:common") }
+    let(:uncommon) { card("-is:draft r:uncommon") }
+    let(:rare) { card("-is:draft r:rare") }
+    let(:mythic) { card("-is:draft r:mythic") }
+    let(:draft_common) { card("is:draft r:common") }
+    let(:draft_uncommon) { card("is:draft r:uncommon") }
+    let(:draft_rare) { card("is:draft r:rare") }
 
     context "non-foil" do
-      let(:foil) { false }
       it do
         ev[common].should eq Rational(975, 100) * Rational(1, 80)
         ev[uncommon].should eq Rational(3, 60)
@@ -582,19 +565,17 @@ describe PackFactory do
 
   # Conspiracy ratios and foils are uncertain
   context "Conspiracy 2" do
-    let(:pack) { factory.for("cn2") }
-    let(:ev) { pack.expected_values }
-    let(:common) { physical_card("e:cn2 -t:conspiracy r:common", foil) }
-    let(:uncommon) { physical_card("e:cn2 -t:conspiracy r:uncommon", foil) }
-    let(:rare) { physical_card("e:cn2 -t:conspiracy r:rare", foil) }
-    let(:mythic) { physical_card("e:cn2 -t:conspiracy r:mythic", foil) }
-    let(:conspiracy_common) { physical_card("e:cn2 t:conspiracy r:common", foil) }
-    let(:conspiracy_uncommon) { physical_card("e:cn2 t:conspiracy r:uncommon", foil) }
-    let(:conspiracy_rare) { physical_card("e:cn2 t:conspiracy r:rare", foil) }
-    let(:conspiracy_mythic) { physical_card("e:cn2 t:conspiracy r:mythic", foil) }
+    let(:set_code) { "cn2" }
+    let(:common) { card("-t:conspiracy r:common") }
+    let(:uncommon) { card("-t:conspiracy r:uncommon") }
+    let(:rare) { card("-t:conspiracy r:rare") }
+    let(:mythic) { card("-t:conspiracy r:mythic") }
+    let(:conspiracy_common) { card("t:conspiracy r:common") }
+    let(:conspiracy_uncommon) { card("t:conspiracy r:uncommon") }
+    let(:conspiracy_rare) { card("t:conspiracy r:rare") }
+    let(:conspiracy_mythic) { card("t:conspiracy r:mythic") }
 
     context "non-foil" do
-      let(:foil) { false }
       it do
         ev[common].should eq Rational(975, 100) * Rational(1, 85)
         ev[uncommon].should eq Rational(3, 65)
@@ -625,21 +606,19 @@ describe PackFactory do
   # Foil and contraption rates speculative
   # FIXME: It should balance cards with multiple variants
   context "Unstable" do
-    let(:pack) { factory.for("ust") }
-    let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("e:ust r:basic", foil) }
-    let(:steamflogger_boss) { physical_card("e:ust Steamflogger Boss", foil) }
-    let(:common) { physical_card("e:ust -t:contraption r:common", foil) }
-    let(:uncommon) { physical_card("e:ust -t:contraption r:uncommon", foil) }
-    let(:rare) { physical_card("e:ust -t:contraption r:rare -border:black", foil) }
-    let(:mythic) { physical_card("e:ust -t:contraption r:mythic", foil) }
-    let(:contraption_common) { physical_card("e:ust t:contraption r:common", foil) }
-    let(:contraption_uncommon) { physical_card("e:ust t:contraption r:uncommon", foil) }
-    let(:contraption_rare) { physical_card("e:ust t:contraption r:rare", foil) }
-    let(:contraption_mythic) { physical_card("e:ust t:contraption r:mythic", foil) }
+    let(:set_code) { "ust" }
+    let(:basic) { card("r:basic") }
+    let(:steamflogger_boss) { card("Steamflogger Boss") }
+    let(:common) { card("-t:contraption r:common") }
+    let(:uncommon) { card("-t:contraption r:uncommon") }
+    let(:rare) { card("-t:contraption r:rare -border:black") }
+    let(:mythic) { card("-t:contraption r:mythic") }
+    let(:contraption_common) { card("t:contraption r:common") }
+    let(:contraption_uncommon) { card("t:contraption r:uncommon") }
+    let(:contraption_rare) { card("t:contraption r:rare") }
+    let(:contraption_mythic) { card("t:contraption r:mythic") }
 
     context "non-foil" do
-      let(:foil) { false }
       it do
         ev[basic].should eq Rational(24, 121) * Rational(39, 40)
         ev[steamflogger_boss].should eq Rational(1, 121) * Rational(39, 40)
@@ -676,20 +655,18 @@ describe PackFactory do
 
   # These are all approximate numbers
   context "Battlebond" do
-    let(:pack) { factory.for("bbd") }
-    let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("e:bbd r:basic", foil) }
-    let(:common) { physical_card("e:bbd r:common", foil) }
-    let(:uncommon) { physical_card("e:bbd -is:partner r:uncommon", foil) }
-    let(:rare) { physical_card("e:bbd -is:partner r:rare", foil) }
-    let(:mythic) { physical_card("e:bbd -is:partner r:mythic", foil) }
-    let(:partner_uncommon) { physical_card("e:bbd is:partner r:uncommon", foil) }
-    let(:partner_rare) { physical_card("e:bbd is:partner r:rare", foil) }
+    let(:set_code) { "bbd" }
+    let(:basic) { card("r:basic") }
+    let(:common) { card("r:common") }
+    let(:uncommon) { card("-is:partner r:uncommon") }
+    let(:rare) { card("-is:partner r:rare") }
+    let(:mythic) { card("-is:partner r:mythic") }
+    let(:partner_uncommon) { card("is:partner r:uncommon") }
+    let(:partner_rare) { card("is:partner r:rare") }
 
 
     context "non-foil" do
-      let(:foil) { false }
-      let(:partner_mythic) { physical_card("e:bbd is:partner r:mythic is:nonfoilonly", foil) }
+      let(:partner_mythic) { card("is:partner r:mythic is:nonfoilonly") }
       it do
         ev[basic].should eq Rational(1, 5) # exact
         ev[common].should eq Rational(68, 707)
@@ -704,7 +681,7 @@ describe PackFactory do
 
     context "foil" do
       let(:foil) { true }
-      let(:partner_mythic) { physical_card("e:bbd is:partner r:mythic is:foilonly", foil) }
+      let(:partner_mythic) { card("is:partner r:mythic is:foilonly") }
       it do
         ev[basic].should eq Rational(125, 77168) # b:c ratio exact
         ev[common].should eq Rational(125, 77168)
@@ -719,8 +696,6 @@ describe PackFactory do
   end
 
   context "sets with explicit print sheets" do
-    let(:pack) { factory.for(set_code) }
-    let(:ev) { pack.expected_values }
     let(:cards) { db.search("++ is:booster e:#{set_code}").printings }
     let(:expected_ev) do
       cards.map do |card|
@@ -815,10 +790,9 @@ describe PackFactory do
     let(:fmb1_physical_cards) { fmb1_cards.map{|c| PhysicalCard.for(c, true)}.uniq }
     let(:cmb1_physical_cards) { cmb1_cards.map{|c| PhysicalCard.for(c)}.uniq }
 
-    let(:ev) { pack.expected_values }
 
     context "MB1" do
-      let(:pack) { factory.for("mb1") }
+      let(:set_code) { "mb1" }
       let(:expected_cards) { mb1_physical_cards + fmb1_physical_cards }
       let(:expected_ev) { expected_cards.map{|c| [c, Rational(1,121)] }.to_h }
 
@@ -828,7 +802,7 @@ describe PackFactory do
     end
 
     context "CMB1" do
-      let(:pack) { factory.for("cmb1") }
+      let(:set_code) { "cmb1" }
       let(:expected_cards) { mb1_physical_cards + cmb1_physical_cards }
       let(:expected_ev) { expected_cards.map{|c| [c, Rational(1,121)] }.to_h }
 
@@ -839,18 +813,16 @@ describe PackFactory do
   end
 
   context "M19" do
-    let(:pack) { factory.for("m19") }
-    let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("is:booster e:m19 r:basic", foil) }
-    let(:nonland_common) { physical_card("is:booster e:m19 r:common -t:land", foil) }
-    let(:land_common) { physical_card("is:booster e:m19 r:common t:land", foil) }
-    let(:uncommon) { physical_card("is:booster e:m19 r:uncommon", foil) }
-    let(:rare) { physical_card("is:booster e:m19 r:rare", foil) }
-    let(:mythic) { physical_card("is:booster e:m19 r:mythic -is:dfc", foil) }
-    let(:bolas) { physical_card("e:m19 (Nicol Bolas, the Ravager)", foil) }
+    let(:set_code) { "m19" }
+    let(:basic) { card("r:basic") }
+    let(:nonland_common) { card("r:common -t:land") }
+    let(:land_common) { card("r:common t:land") }
+    let(:uncommon) { card("r:uncommon") }
+    let(:rare) { card("r:rare") }
+    let(:mythic) { card("r:mythic -is:dfc") }
+    let(:bolas) { card("(Nicol Bolas, the Ravager)") }
 
     context "non-foil" do
-      let(:foil) { false }
       it do
         ev[basic].should eq Rational(1, 30)
         ev[land_common].should eq Rational(1, 30)
@@ -877,19 +849,16 @@ describe PackFactory do
   end
 
   context "M20" do
-    let(:pack) { factory.for("m20") }
-    let(:ev) { pack.expected_values }
-    let(:nonland_common) { physical_card("e:m20 is:booster r:common -t:land", foil) }
-    let(:gainland_common) { physical_card("e:m20 is:booster r:common is:gainland", foil) }
-    let(:evolving_wilds) { physical_card("e:m20 is:booster Evolving Wilds", foil) }
-    let(:basic) { physical_card("e:m20 is:booster r:basic", foil) }
-    let(:uncommon) { physical_card("e:m20 is:booster r:uncommon", foil) }
-    let(:rare) { physical_card("e:m20 is:booster r:rare", foil) }
-    let(:mythic) { physical_card("e:m20 is:booster r:mythic", foil) }
+    let(:set_code) { "m20" }
+    let(:nonland_common) { card("r:common -t:land") }
+    let(:gainland_common) { card("r:common is:gainland") }
+    let(:evolving_wilds) { card("Evolving Wilds") }
+    let(:basic) { card("r:basic") }
+    let(:uncommon) { card("r:uncommon") }
+    let(:rare) { card("r:rare") }
+    let(:mythic) { card("r:mythic") }
 
     context "normal" do
-      let(:foil) { false }
-
       it do
         ev[nonland_common].should eq Rational(1, 101) * Rational(39, 4)
         ev[uncommon].should eq Rational(3, 80)
@@ -917,19 +886,16 @@ describe PackFactory do
   end
 
   context "IKO" do
-    let(:pack) { factory.for("iko") }
-    let(:ev) { pack.expected_values }
-    let(:nonland_common) { physical_card("e:iko is:booster r:common -t:land", foil) }
-    let(:gainland_common) { physical_card("e:iko is:booster r:common is:gainland", foil) }
-    let(:evolving_wilds) { physical_card("e:iko is:booster Evolving Wilds", foil) }
-    let(:basic) { physical_card("e:iko is:booster r:basic", foil) }
-    let(:uncommon) { physical_card("e:iko is:booster r:uncommon", foil) }
-    let(:rare) { physical_card("e:iko is:booster r:rare", foil) }
-    let(:mythic) { physical_card("e:iko is:booster r:mythic", foil) }
+    let(:set_code) { "iko" }
+    let(:nonland_common) { card("r:common -t:land") }
+    let(:gainland_common) { card("r:common is:gainland") }
+    let(:evolving_wilds) { card("Evolving Wilds") }
+    let(:basic) { card("r:basic") }
+    let(:uncommon) { card("r:uncommon") }
+    let(:rare) { card("r:rare") }
+    let(:mythic) { card("r:mythic") }
 
     context "normal" do
-      let(:foil) { false }
-
       it do
         ev[nonland_common].should eq Rational(1, 101) * Rational(39, 4)
         ev[evolving_wilds].should eq Rational(1, 101) * Rational(39, 4)
@@ -957,12 +923,10 @@ describe PackFactory do
   end
 
   context "M21" do
-    let(:pack) { factory.for("m21") }
-    let(:ev) { pack.expected_values }
-    let(:nonland_common) { physical_card("e:m21 is:booster r:common -t:land", foil) }
-    let(:gainland_common) { physical_card("e:m21 is:booster r:common is:gainland", foil) }
-    let(:basic) { physical_card("e:m21 is:booster r:basic", foil) }
-    let(:foil) { false }
+    let(:set_code) { "m21" }
+    let(:nonland_common) { card("r:common -t:land") }
+    let(:gainland_common) { card("r:common is:gainland") }
+    let(:basic) { card("r:basic") }
 
     it do
       ev[nonland_common].should eq Rational(1, 101) * Rational(39, 4)
@@ -973,12 +937,12 @@ describe PackFactory do
 
   context "Alara Premium" do
     let(:pack) { factory.for("ala", "premium") }
-    let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("e:#{set_code} r:basic", true) }
-    let(:common) { physical_card("e:#{set_code} r:common", true) }
-    let(:uncommon) { physical_card("e:#{set_code} r:uncommon", true) }
-    let(:rare) { physical_card("e:#{set_code} r:rare", true) }
-    let(:mythic) { physical_card("e:#{set_code} r:mythic", true) }
+    let(:foil) { true }
+    let(:basic) { card("r:basic") }
+    let(:common) { card("r:common") }
+    let(:uncommon) { card("r:uncommon") }
+    let(:rare) { card("r:rare") }
+    let(:mythic) { card("r:mythic") }
 
     context "ALA" do
       let(:set_code) { "ala" }
@@ -1018,8 +982,6 @@ describe PackFactory do
   # These are largely guesswork
   context "Battlebond" do
     let(:set_code) { "bbd" }
-    let(:pack) { factory.for("bbd") }
-    let(:ev) { pack.expected_values }
 
     let(:basic_cards) { physical_cards("r:basic e:#{set_code}") }
     let(:common_cards) { physical_cards("r:common e:#{set_code}") }
@@ -1087,21 +1049,17 @@ describe PackFactory do
   # "Every pack contains exactly one non-foil double-faced card, appearing in a normal slot according to its rarity."
   context "Zendikar Rising" do
     let(:set_code) { "znr" }
-    let(:pack) { factory.for(set_code) }
-    let(:ev) { pack.expected_values }
 
-    let(:basic) { physical_card("r:basic is:booster e:#{set_code}", foil) }
-    let(:common) { physical_card("r:common is:booster e:#{set_code}", foil) }
-    let(:uncommon) { physical_card("r:uncommon -layout:modaldfc is:booster e:#{set_code}", foil) }
-    let(:rare) { physical_card("r:rare -layout:modaldfc is:booster e:#{set_code}", foil) }
-    let(:mythic) { physical_card("r:mythic -layout:modaldfc is:booster e:#{set_code}", foil) }
-    let(:mdfc_uncommon) { physical_card("r:uncommon layout:modaldfc is:booster e:#{set_code}", foil) }
-    let(:mdfc_rare) { physical_card("r:rare layout:modaldfc is:booster e:#{set_code}", foil) }
-    let(:mdfc_mythic) { physical_card("r:mythic layout:modaldfc is:booster e:#{set_code}", foil) }
+    let(:basic) { card("r:basic") }
+    let(:common) { card("r:common") }
+    let(:uncommon) { card("r:uncommon -layout:modaldfc") }
+    let(:rare) { card("r:rare -layout:modaldfc") }
+    let(:mythic) { card("r:mythic -layout:modaldfc") }
+    let(:mdfc_uncommon) { card("r:uncommon layout:modaldfc") }
+    let(:mdfc_rare) { card("r:rare layout:modaldfc") }
+    let(:mdfc_mythic) { card("r:mythic layout:modaldfc") }
 
     context "normal" do
-      let(:foil) { false }
-
       # either rare or uncommon mdfc rate will be off
       # Proper uncommon rate results in nice 3:1 booster type ratio, but rare ratio is then 50% off
       # Proper rare rate results in really weird booster type ratio, but uncommon ratio is then 12% off (this is what we use)
@@ -1135,15 +1093,11 @@ describe PackFactory do
 
   context "Old foiling - set without basics" do
     let(:set_code) { "ulg" }
-    let(:pack) { factory.for(set_code) }
-    let(:ev) { pack.expected_values }
-    let(:common) { physical_card("e:#{set_code} r:common", foil) }
-    let(:uncommon) { physical_card("e:#{set_code} r:uncommon", foil) }
-    let(:rare) { physical_card("e:#{set_code} r:rare", foil) }
+    let(:common) { card("r:common") }
+    let(:uncommon) { card("r:uncommon") }
+    let(:rare) { card("r:rare") }
 
     context "normal" do
-      let(:foil) { false }
-
       it do
         ev[common].should eq Rational(99, 100) * Rational(11, 55)
         ev[uncommon].should eq Rational(99, 100) * Rational(3, 44)
@@ -1164,16 +1118,12 @@ describe PackFactory do
 
   context "Old foiling - set with basics" do
     let(:set_code) { "mmq" }
-    let(:pack) { factory.for(set_code) }
-    let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("e:#{set_code} r:basic", foil) }
-    let(:common) { physical_card("e:#{set_code} r:common", foil) }
-    let(:uncommon) { physical_card("e:#{set_code} r:uncommon", foil) }
-    let(:rare) { physical_card("e:#{set_code} r:rare", foil) }
+    let(:basic) { card("r:basic") }
+    let(:common) { card("r:common") }
+    let(:uncommon) { card("r:uncommon") }
+    let(:rare) { card("r:rare") }
 
     context "normal" do
-      let(:foil) { false }
-
       it do
         ev[basic].should eq 0
         ev[common].should eq Rational(99, 100) * Rational(11, 110)
@@ -1196,16 +1146,12 @@ describe PackFactory do
 
   context "Old foiling - core set with basics in packs" do
     let(:set_code) { "7ed" }
-    let(:pack) { factory.for(set_code) }
-    let(:ev) { pack.expected_values }
-    let(:basic) { physical_card("e:#{set_code} r:basic", foil) }
-    let(:common) { physical_card("e:#{set_code} r:common", foil) }
-    let(:uncommon) { physical_card("e:#{set_code} r:uncommon", foil) }
-    let(:rare) { physical_card("e:#{set_code} r:rare", foil) }
+    let(:basic) { card("r:basic") }
+    let(:common) { card("r:common") }
+    let(:uncommon) { card("r:uncommon") }
+    let(:rare) { card("r:rare") }
 
     context "normal" do
-      let(:foil) { false }
-
       it do
         ev[basic].should eq Rational(99, 100) * Rational(1, 20)
         ev[common].should eq Rational(99, 100) * Rational(10, 110)
@@ -1222,6 +1168,44 @@ describe PackFactory do
         ev[common].should eq Rational(1, 100) * Rational(10, 110)
         ev[uncommon].should eq Rational(1, 100) * Rational(3, 110)
         ev[rare].should eq Rational(1, 100) * Rational(1, 110)
+      end
+    end
+  end
+
+  # first document wrong values, then fix them
+  context "KHM" do
+    let(:set_code) { "khm"}
+    let(:nonland_common) { card("r:common -t:land") }
+    let(:snow_dual_common) { card("r:common t:land -(Shimmerdrift Vale)") }
+    let(:shimmerdrift_vale) { card("Shimmerdrift Vale") }
+    let(:basic) { card("r:basic") }
+    let(:uncommon) { card("r:uncommon") }
+    let(:rare) { card("r:rare") }
+    let(:mythic) { card("r:mythic") }
+
+    context "normal" do
+      it do
+        ev[nonland_common].should eq Rational(1, 101+10) * Rational(39, 4)
+        ev[shimmerdrift_vale].should eq Rational(1, 101+10) * Rational(39, 4)
+        ev[snow_dual_common].should eq Rational(1, 101+10) * Rational(39, 4)
+        ev[basic].should eq Rational(1, 10)
+        ev[uncommon].should eq Rational(3, 80)
+        ev[rare].should eq Rational(2, 20+64*2)
+        ev[mythic].should eq Rational(1, 20+64*2)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+
+      it do
+        ev[nonland_common].should eq Rational(1,4) * Rational(5,8) * Rational(1,101+10+10)
+        ev[shimmerdrift_vale].should eq Rational(1,4) * Rational(5,8) * Rational(1,101+10+10)
+        ev[snow_dual_common].should eq Rational(1,4) * Rational(5,8) * Rational(1,101+10+10)
+        ev[basic].should eq Rational(1,4) * Rational(5,8) * Rational(1,101+10+10)
+        ev[uncommon].should eq Rational(1,4) * Rational(2,8) * Rational(1,80)
+        ev[rare].should eq Rational(1,4) * Rational(1,8) * Rational(2,20+64*2)
+        ev[mythic].should eq Rational(1,4) * Rational(1,8) * Rational(1,20+64*2)
       end
     end
   end
