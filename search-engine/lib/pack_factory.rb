@@ -454,11 +454,9 @@ class PackFactory
         build_pack(set_code, {common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_nonlegendary_rare_mythic: 1}) => (121-36)*144,
       )
     when "khm"
-      # FIXME: Placeholder
-      build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
+      build_pack_with_random_foil(set_code, :foil, :non_basictype_common, {basictype: 1, non_basictype_common: 10, uncommon: 3, rare_mythic: 1})
     when "khm-arena"
-      # FIXME: Placeholder
-      build_pack(set_code, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
+      build_pack(set_code, {basictype: 1, non_basictype_common: 10, uncommon: 3, rare_mythic: 1})
     when "cmr"
       # Unofficial, based on some opening videos
       build_pack(set_code, {
