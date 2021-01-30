@@ -851,4 +851,12 @@ class CardSheetFactory
   def foil_rare(set_code)
     rarity(set_code, "rare", foil: true)
   end
+
+  def basictype(set_code)
+    from_query("e:#{set_code} (t:island or t:mountain or t:swamp or t:forest or t:plains)")
+  end
+
+  def non_basictype_common(set_code)
+    from_query("e:#{set_code} r:common -t:island -t:mountain -t:swamp -t:forest -t:plains", kind: ColorBalancedCardSheet)
+  end
 end
