@@ -46,7 +46,7 @@ class PatchXmage < Patch
     likely_typos = missed_cards.map(&:last) - all_card_names
     unless likely_typos.empty?
       likely_typos.each do |name|
-        puts "Likely typo in XMage card list: #{name}"
+        puts "Likely typo or spoiler card in XMage card list: #{name}"
       end
     end
   end
