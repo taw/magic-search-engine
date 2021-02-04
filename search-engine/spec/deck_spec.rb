@@ -111,6 +111,8 @@ describe Deck do
         sets_found.should match_array ["c20", "iko"]
       when "znc"
         sets_found.should match_array ["znr", "znc"]
+      when "khc"
+        sets_found.should match_array ["khm", "khc"]
       else
         sets_found.should eq [set.code]
       end
@@ -130,6 +132,8 @@ describe Deck do
       next if set.code == "c20"
       # Contains some ZNR cards
       next if set.code == "znc"
+      # Contains some KHM cards
+      next if set.code == "khc"
 
       # All names match both ways
       set_card_names = set.physical_card_names
