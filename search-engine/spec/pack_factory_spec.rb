@@ -1187,8 +1187,8 @@ describe PackFactory do
       it do
         ev[nonland_common].should eq Rational(1, 101) * Rational(39, 4)
         ev[shimmerdrift_vale].should eq Rational(1, 101) * Rational(39, 4)
-        ev[snow_dual_common].should eq Rational(1, 20)
-        ev[basic].should eq Rational(1, 20)
+        ev[snow_dual_common].should eq Rational(5, 120)
+        ev[basic].should eq Rational(7, 120)
         ev[uncommon].should eq Rational(3, 80)
         ev[rare].should eq Rational(2, 20+64*2)
         ev[mythic].should eq Rational(1, 20+64*2)

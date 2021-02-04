@@ -852,8 +852,11 @@ class CardSheetFactory
     rarity(set_code, "rare", foil: true)
   end
 
-  def basictype(set_code)
-    from_query("e:#{set_code} (t:island or t:mountain or t:swamp or t:forest or t:plains)")
+  def khm_basictype(set_code)
+    mix_sheets(
+      [from_query("e:#{set_code} r:common (t:island or t:mountain or t:swamp or t:forest or t:plains)", 10), 5],
+      [from_query("e:#{set_code} r:basic", 10), 7],
+    )
   end
 
   def non_basictype_common(set_code)
