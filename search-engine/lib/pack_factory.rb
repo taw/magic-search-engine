@@ -27,18 +27,22 @@ class PackFactory
     }.to_h)
   end
 
-  private def build_pack_with_random_foil(set_code, foil_sheet, replacement_sheet, distribution, common_if_no_basic: false)
-    # Based on https://www.reddit.com/r/magicTCG/comments/snzvt/simple_avr_sealed_simulator_i_just_made/c4fk0sr/
-    # Details probably vary by set and I don't have too much trust in any of these numbers anyway
+  private def build_pack_with_random_foil(set_code, rate, foil_sheet, replacement_sheet, distribution, common_if_no_basic: false)
+    # Previously based on https://www.reddit.com/r/magicTCG/comments/snzvt/simple_avr_sealed_simulator_i_just_made/c4fk0sr/
+    #
+    # We have sort of official numbers from WotC now, so use them
+    # No guarantee they apply to every set ever
     foil_distribution = distribution.dup
     raise "Foil requested, but not sure which slot to replace" if foil_distribution[foil_sheet]
     raise "Foil requested, but not sure which slot to replace" unless foil_distribution[replacement_sheet]
     foil_distribution[replacement_sheet] -= 1
     foil_distribution[foil_sheet] = 1
+    normal_rate = rate.denominator - rate.numerator
+    foil_rate = rate.numerator
 
     normal_pack = build_pack(set_code, distribution, common_if_no_basic: common_if_no_basic)
     foil_pack = build_pack(set_code, foil_distribution, common_if_no_basic: common_if_no_basic)
-    return WeightedPack.new({normal_pack => 3, foil_pack => 1})
+    return WeightedPack.new({normal_pack => normal_rate, foil_pack => foil_rate})
   end
 
   private def build_sheet(set_code, name)
@@ -165,17 +169,17 @@ class PackFactory
       )
     # Pre-mythic, with new style foils, only foil basics in packs
     when "lrw"
-      build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {common: 11, uncommon: 3, rare: 1})
     # Pre-mythic, with new style foils, sets without basics
     when "fut", # Amazingly Future Sight has regular boring sheets
          "mor"
-      build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {common: 11, uncommon: 3, rare: 1})
     # According to pack opening videos, Coldsnap has common_or_basic slot
     when "csp"
-      build_pack_with_random_foil(set_code, :foil, :common_or_basic, {common_or_basic: 11, uncommon: 3, rare: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :common_or_basic, {common_or_basic: 11, uncommon: 3, rare: 1})
     # Don't try to color balance them
     when "eve", "shm"
-      build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare: 1})
     # Default configuration since mythics got introduced
     # A lot of sets don't fit this
     when "m10", "m11", "m12", "m13", "m14", "m15",
@@ -193,58 +197,59 @@ class PackFactory
       "bfz", "ogw",
       "kld", "aer",
       "akh", "hou",
-      "mh1",
-      "eld", # ELD and newer sets have multiple nonstandard pack types too
+      "mh1"
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
+    when "eld", # ELD and newer sets have multiple nonstandard pack types too
       "thb"
-      build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
+      build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "m19"
       # According to The Collation Project, if pack has DFC (at least nonfoil), it will have checklist card in land slot
       # We do not simulate this
-      build_pack_with_random_foil(set_code, :foil, :nonland_common, {basic_or_common_land: 1, nonland_common: 10, uncommon: 3, rare_mythic: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :nonland_common, {basic_or_common_land: 1, nonland_common: 10, uncommon: 3, rare_mythic: 1})
     when "m20"
-      build_pack_with_random_foil(set_code, :foil, :nonland_common, {basic_or_common_land: 1, nonland_common: 10, uncommon: 3, rare_mythic: 1})
+      build_pack_with_random_foil(set_code, 1/3r, :foil, :nonland_common, {basic_or_common_land: 1, nonland_common: 10, uncommon: 3, rare_mythic: 1})
     when "iko"
       # This works almost like M19/M20, but one of the common lands seems to be on common not on land sheet
       # gainlands x6, basics x4
-      build_pack_with_random_foil(set_code, :foil, :nongainland_common, {iko_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
+      build_pack_with_random_foil(set_code, 1/3r, :foil, :nongainland_common, {iko_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
     when "m21"
       # gainlands x6, basics x3
-      build_pack_with_random_foil(set_code, :foil, :nongainland_common, {m21_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
+      build_pack_with_random_foil(set_code, 1/3r, :foil, :nongainland_common, {m21_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
     when "ala"
-      build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_mythic: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :common_unbalanced, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_mythic: 1})
     when "arb"
-      build_pack_with_random_foil(set_code, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare_mythic: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :common_unbalanced, {common_unbalanced: 11, uncommon: 3, rare_mythic: 1})
     when "mma", "mm2", "mm3", "ema", "ima", "a25", "uma"
       build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, foil: 1})
     when "2xm"
       build_pack(set_code, {common: 8, uncommon: 3, rare_mythic: 2, foil: 2})
     when "znr"
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, sfc_uncommon: 3, modaldfc_rare_mythic: 1}) => 27,
-        build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, modaldfc_uncommon: 1, sfc_uncommon: 2, sfc_rare_mythic: 1}) => 121,
+        build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, sfc_uncommon: 3, modaldfc_rare_mythic: 1}) => 27,
+        build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, modaldfc_uncommon: 1, sfc_uncommon: 2, sfc_rare_mythic: 1}) => 121,
       )
     when "dgm"
-      build_pack_with_random_foil(set_code, :foil, :dgm_common, {dgm_common: 10, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :dgm_common, {dgm_common: 10, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1})
     when "frf"
-      build_pack_with_random_foil(set_code, :foil, :frf_common, {frf_common: 10, uncommon: 3, rare_mythic: 1, frf_land: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :frf_common, {frf_common: 10, uncommon: 3, rare_mythic: 1, frf_land: 1})
     when "unh"
-      build_pack_with_random_foil(set_code, :unhinged_foil, :common, {common: 10, uncommon: 3, rare_mythic: 1, basic: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :unhinged_foil, :common, {common: 10, uncommon: 3, rare_mythic: 1, basic: 1})
     when "jou"
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, :foil, :common, {common: 11, uncommon: 3, rare_mythic: 1}) => 4319,
+        build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {common: 11, uncommon: 3, rare_mythic: 1}) => 4319,
         build_pack(set_code, {theros_gods: 15}) => 1,
       )
     when "isd"
-      build_pack_with_random_foil(set_code, :foil, :sfc_common, {isd_dfc: 1, basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :sfc_common, {isd_dfc: 1, basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1})
     when "dka"
-      build_pack_with_random_foil(set_code, :foil, :sfc_common, {dka_dfc: 1, sfc_common: 10, sfc_uncommon: 3, sfc_rare_mythic: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :sfc_common, {dka_dfc: 1, sfc_common: 10, sfc_uncommon: 3, sfc_rare_mythic: 1})
     when "tsp"
       # 10 commons, 3 uncommons, 1 rare, and 1 purple-rarity timeshifted card.
       # Basics don't fit anywhere
-      build_pack_with_random_foil(set_code, :ts_foil, :common, {common: 10, uncommon: 3, rare: 1, tsts: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :ts_foil, :common, {common: 10, uncommon: 3, rare: 1, tsts: 1})
     when "plc"
       # 8 commons, 2 uncommons, 1 rare, 3 timeshifted commons, and 1 uncommon or rare timeshifted card.
-      build_pack_with_random_foil(set_code, :foil, :pc_common, {pc_common: 8, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :pc_common, {pc_common: 8, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1})
     when "vma"
       WeightedPack.new(
         build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, vma_special: 1}) => 9,
@@ -255,24 +260,26 @@ class PackFactory
       # Assume foil rate (1:4) and rare/mythic dfc rates (1:8) are independent
       # They probably aren't
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, :foil, :sfc_common, {basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1, soi_dfc_common_uncommon: 1}) => 7,
-        build_pack_with_random_foil(set_code, :foil, :sfc_common, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1}) => 1,
+        build_pack_with_random_foil(set_code, 9/40r, :foil, :sfc_common, {basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1, soi_dfc_common_uncommon: 1}) => 7,
+        build_pack_with_random_foil(set_code, 9/40r, :foil, :sfc_common, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1}) => 1,
       )
     when "emn"
       # Same assumptions as SOI, except no basics in the set
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, :foil, :sfc_common, {sfc_common: 10, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1}) => 7,
-        build_pack_with_random_foil(set_code, :foil, :sfc_common, {sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}) => 1,
+        build_pack_with_random_foil(set_code, 9/40r, :foil, :sfc_common, {sfc_common: 10, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1}) => 7,
+        build_pack_with_random_foil(set_code, 9/40r, :foil, :sfc_common, {sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}) => 1,
       )
     when "cns"
+      # 1:67 cards were foil back then, so assume this is true for conspiracies, all while keeping 9/40 rate same for rest-of-the-pack (even though there's 1 less cards to in rest-of-the-pack)?
+      # This cannot possibly be correct, but it's unclear which way it is incorrect
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, :cns_nondraft_foil, :cns_nondraft_common, {cns_draft: 1, cns_nondraft_common: 10, cns_nondraft_uncommon: 3, cns_nondraft_rare_mythic: 1}) => 39,
-        build_pack_with_random_foil(set_code, :cns_nondraft_foil, :cns_nondraft_common, {cns_draft_foil: 1, cns_nondraft_common: 10, cns_nondraft_uncommon: 3, cns_nondraft_rare_mythic: 1}) => 1,
+        build_pack_with_random_foil(set_code, 9/40r, :cns_nondraft_foil, :cns_nondraft_common, {cns_draft: 1, cns_nondraft_common: 10, cns_nondraft_uncommon: 3, cns_nondraft_rare_mythic: 1}) => 66,
+        build_pack_with_random_foil(set_code, 9/40r, :cns_nondraft_foil, :cns_nondraft_common, {cns_draft_foil: 1, cns_nondraft_common: 10, cns_nondraft_uncommon: 3, cns_nondraft_rare_mythic: 1}) => 1,
       )
     when "cn2"
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, :cn2_nonconspiracy_foil, :cn2_nonconspiracy_common, {cn2_conspiracy: 1, cn2_nonconspiracy_common: 10, cn2_nonconspiracy_uncommon: 3, cn2_nonconspiracy_rare_mythic: 1}) => 39,
-        build_pack_with_random_foil(set_code, :cn2_nonconspiracy_foil, :cn2_nonconspiracy_common, {cn2_conspiracy_foil: 1, cn2_nonconspiracy_common: 10, cn2_nonconspiracy_uncommon: 3, cn2_nonconspiracy_rare_mythic: 1}) => 1,
+        build_pack_with_random_foil(set_code, 9/40r, :cn2_nonconspiracy_foil, :cn2_nonconspiracy_common, {cn2_conspiracy: 1, cn2_nonconspiracy_common: 10, cn2_nonconspiracy_uncommon: 3, cn2_nonconspiracy_rare_mythic: 1}) => 66,
+        build_pack_with_random_foil(set_code, 9/40r, :cn2_nonconspiracy_foil, :cn2_nonconspiracy_common, {cn2_conspiracy_foil: 1, cn2_nonconspiracy_common: 10, cn2_nonconspiracy_uncommon: 3, cn2_nonconspiracy_rare_mythic: 1}) => 1,
       )
     when "ust"
       # Box opening videos suggest that foil basic goes into basic slot
@@ -350,9 +357,9 @@ class PackFactory
       # (9/64 and 1/64 if DOM was a regular set), so we could add more cases
       # and adjus numbers accordingly
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, dom_nonlegendary_uncommon: 3, dom_legendary_rare_mythic: 1}) => 36*(144-23),
-        build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_legendary_rare_mythic: 1}) => 36*23,
-        build_pack_with_random_foil(set_code, :foil, :common, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_nonlegendary_rare_mythic: 1}) => (121-36)*144,
+        build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {basic: 1, common: 10, dom_nonlegendary_uncommon: 3, dom_legendary_rare_mythic: 1}) => 36*(144-23),
+        build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_legendary_rare_mythic: 1}) => 36*23,
+        build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {basic: 1, common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_nonlegendary_rare_mythic: 1}) => (121-36)*144,
       )
     # To fully balance it like DOM, probabilities of double walker pack are negative!
     # If we disallow double planeswalker packs (rare pw and uncommon pw in same pack),
@@ -361,13 +368,13 @@ class PackFactory
     # We can make this deviation go on rares on uncommons, either way it's too tiny to notice
     when "war"
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, :war_foil, :common, {basic: 1, common: 10, war_nonplaneswalker_uncommon: 3, war_planeswalker_rare_mythic: 1}) => 29,
-        build_pack_with_random_foil(set_code, :war_foil, :common, {basic: 1, common: 10, war_nonplaneswalker_uncommon: 2, war_planeswalker_uncommon: 1, war_nonplaneswalker_rare_mythic: 1}) => (121-29),
+        build_pack_with_random_foil(set_code, 9/40r, :war_foil, :common, {basic: 1, common: 10, war_nonplaneswalker_uncommon: 3, war_planeswalker_rare_mythic: 1}) => 29,
+        build_pack_with_random_foil(set_code, 9/40r, :war_foil, :common, {basic: 1, common: 10, war_nonplaneswalker_uncommon: 2, war_planeswalker_uncommon: 1, war_nonplaneswalker_rare_mythic: 1}) => (121-29),
       )
     when "grn"
-      build_pack_with_random_foil(set_code, :foil, :grn_common, {grn_common: 10, uncommon: 3, rare_mythic: 1, grn_land: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :grn_common, {grn_common: 10, uncommon: 3, rare_mythic: 1, grn_land: 1})
     when "rna"
-      build_pack_with_random_foil(set_code, :foil, :rna_common, {rna_common: 10, uncommon: 3, rare_mythic: 1, rna_land: 1})
+      build_pack_with_random_foil(set_code, 9/40r, :foil, :rna_common, {rna_common: 10, uncommon: 3, rare_mythic: 1, rna_land: 1})
     when "ice"
       build_pack(set_code, {common: 11, uncommon: 3, rare: 1})
     # Early sets had unusual rarities, indexer fills all the details for us
@@ -454,7 +461,7 @@ class PackFactory
         build_pack(set_code, {common: 10, dom_nonlegendary_uncommon: 2, dom_legendary_uncommon: 1, dom_nonlegendary_rare_mythic: 1}) => (121-36)*144,
       )
     when "khm"
-      build_pack_with_random_foil(set_code, :foil, :non_basictype_common, {khm_basictype: 1, non_basictype_common: 10, uncommon: 3, rare_mythic: 1})
+      build_pack_with_random_foil(set_code, 1/3r, :foil, :non_basictype_common, {khm_basictype: 1, non_basictype_common: 10, uncommon: 3, rare_mythic: 1})
     when "khm-arena"
       build_pack(set_code, {khm_basictype: 1, non_basictype_common: 10, uncommon: 3, rare_mythic: 1})
     when "cmr"
