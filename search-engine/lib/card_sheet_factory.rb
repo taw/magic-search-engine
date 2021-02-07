@@ -35,24 +35,41 @@ class CardSheetFactory
   ### Usual Sheet Types
 
   # We don't have anywhere near reliable information
-  # Masterpieces supposedly are in 1/144 booster (then 1/129 for Amonkhet), and they're presumably equally likely
   #
   # These numbers could be totally wrong. I base them on a million guesses by various internet commenters.
   #
   # Maro says basic foils and common foils are equally likely [https://twitter.com/maro254/status/938830320094216192]
   def foil(set_code)
-    sheets = [rare_mythic(set_code, foil: true), rarity(set_code, "uncommon", foil: true)]
-    weights = [4, 8]
+    sheets = [
+      rare_mythic(set_code, foil: true),
+      rarity(set_code, "uncommon", foil: true),
+      common_or_basic(set_code, foil: true),
+    ]
+    weights = [3, 5, 12]
+    CardSheet.new(sheets, weights)
+  end
 
-    masterpieces = masterpieces_for(set_code)
-    if masterpieces
-      sheets << masterpieces
-      weights << 1
-    end
+  # Masterpieces supposedly are in 1/144 booster (then 1/129 for Amonkhet), and they're presumably equally likely
+  # 1:129 rate is not too hard to get, 1:144 is hard
+  def foil_or_masterpiece_1_in_144(set_code)
+    sheets = [
+      rare_mythic(set_code, foil: true),
+      rarity(set_code, "uncommon", foil: true),
+      common_or_basic(set_code, foil: true),
+      masterpieces_for(set_code),
+    ]
+    weights = [3*8, 5*8, 12*8-2, 5]
+    CardSheet.new(sheets, weights)
+  end
 
-    sheets << common_or_basic(set_code, foil: true)
-    weights << (32 - weights.sum)
-
+  def foil_or_masterpiece_1_in_129(set_code)
+    sheets = [
+      rare_mythic(set_code, foil: true),
+      rarity(set_code, "uncommon", foil: true),
+      common_or_basic(set_code, foil: true),
+      masterpieces_for(set_code),
+    ]
+    weights = [3*7, 5*7, 12*7, 5]
     CardSheet.new(sheets, weights)
   end
 
@@ -251,14 +268,12 @@ class CardSheetFactory
     sheets = [
       unhinged_foil_rares,
       rarity("unh", "uncommon", foil: true),
-      rarity("unh", "basic", foil: true),
-      rarity("unh", "common", foil: true),
+      common_or_basic("unh", foil: true),
     ]
     weights = [
-      1,
-      2,
-      1,
-      4,
+      3,
+      5,
+      12,
     ]
     CardSheet.new(sheets, weights)
   end
@@ -334,15 +349,13 @@ class CardSheetFactory
     sheets = [
       rarity("tsp", "rare", foil: true),
       rarity("tsp", "uncommon", foil: true),
-      rarity("tsp", "basic", foil: true),
-      rarity("tsp", "common", foil: true),
+      foil_common_or_basic("tsp"),
       from_query("e:tsb", 121, foil: true),
     ]
     weights = [
       1,
       2,
-      1,
-      3,
+      4,
       1,
     ]
     CardSheet.new(sheets, weights)
@@ -393,7 +406,7 @@ class CardSheetFactory
         rarity("vma", "uncommon", foil: true),
         rarity("vma", "common", foil: true),
       ],
-      [1, 2, 5],
+      [3, 5, 12],
     )
   end
 
@@ -483,7 +496,7 @@ class CardSheetFactory
     u = from_query("e:war r:uncommon -number:/★/", 80, foil: true)
     c = common_or_basic("war", foil: true)
     mr = mix_sheets([r, 2], [m, 1])
-    CardSheet.new([mr, u, c], [4, 8, 20])
+    CardSheet.new([mr, u, c], [3, 5, 12])
   end
 
   def cns_draft_foil
@@ -505,9 +518,9 @@ class CardSheetFactory
       cns_nondraft_rare_mythic(true),
     ]
     weights = [
+      12,
       5,
-      2,
-      1,
+      3,
     ]
     CardSheet.new(sheets, weights)
   end
@@ -547,9 +560,9 @@ class CardSheetFactory
       cn2_nonconspiracy_rare_mythic(true),
     ]
     weights = [
+      12,
       5,
-      2,
-      1,
+      3,
     ]
     CardSheet.new(sheets, weights)
   end
@@ -693,9 +706,9 @@ class CardSheetFactory
       bbd_rare_mythic(true),
     ]
     weights = [
+      12,
       5,
-      2,
-      1,
+      3,
     ]
     CardSheet.new(sheets, weights)
   end
@@ -721,8 +734,8 @@ class CardSheetFactory
 
   def ust_rare_mythic(foil: false)
     mix_sheets(
-      [from_query('e:ust -t:contraption -border:black r:rare', 50, foil: foil), 2],
-      [from_query('e:ust -t:contraption r:mythic', 10, foil: foil), 1],
+      [from_query("e:ust -t:contraption -border:black r:rare", 50, foil: foil), 2],
+      [from_query("e:ust -t:contraption r:mythic", 10, foil: foil), 1],
     )
   end
 
@@ -730,10 +743,10 @@ class CardSheetFactory
   # Maybe some rarity is actually not exact?
   def ust_contraption(foil: false)
     mix_sheets(
-      [from_query('e:ust t:contraption r:common', 15, foil: foil), 8],
-      [from_query('e:ust t:contraption r:uncommon', 15, foil: foil), 4],
-      [from_query('e:ust t:contraption r:rare', 10, foil: foil), 2],
-      [from_query('e:ust t:contraption r:mythic', 5, foil: foil), 1],
+      [from_query("e:ust t:contraption r:common", 15, foil: foil), 8],
+      [from_query("e:ust t:contraption r:uncommon", 15, foil: foil), 4],
+      [from_query("e:ust t:contraption r:rare", 10, foil: foil), 2],
+      [from_query("e:ust t:contraption r:mythic", 5, foil: foil), 1],
     )
   end
 
@@ -748,9 +761,9 @@ class CardSheetFactory
       ust_rare_mythic(foil: true),
     ]
     weights = [
+      12,
       5,
-      2,
-      1,
+      3,
     ]
     CardSheet.new(sheets, weights)
   end

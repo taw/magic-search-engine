@@ -131,12 +131,12 @@ describe PackFactory do
         # - base rarity rates on foils are guesses
         # - assumption that foiling treats maze's end and guildgates like regular cards is a guess
         # Perhaps it's wrong, and we should instead assume land slot works like basic-land foils?
-        ev[guildgate].should eq Rational(9,40) * Rational(5,8) * Rational(1,70)
-        ev[common].should eq Rational(9,40) * Rational(5,8) * Rational(1,70)
-        ev[uncommon].should eq Rational(9,40) * Rational(2,8) * Rational(1,40)
-        ev[rare].should eq Rational(9,40) * Rational(1,8) * Rational(2,81)
-        ev[mythic].should eq Rational(9,40) * Rational(1,8) * Rational(1,81)
-        ev[maze_end].should eq Rational(9,40) * Rational(1,8) * Rational(1,81)
+        ev[guildgate].should eq Rational(9,40) * Rational(12,20) * Rational(1,70)
+        ev[common].should eq Rational(9,40) * Rational(12,20) * Rational(1,70)
+        ev[uncommon].should eq Rational(9,40) * Rational(5,20) * Rational(1,40)
+        ev[rare].should eq Rational(9,40) * Rational(3,20) * Rational(2,81)
+        ev[mythic].should eq Rational(9,40) * Rational(3,20) * Rational(1,81)
+        ev[maze_end].should eq Rational(9,40) * Rational(3,20) * Rational(1,81)
       end
     end
   end
@@ -162,11 +162,11 @@ describe PackFactory do
     context "foil" do
       let(:foil) { true }
       it do
-        ev[basic].should eq Rational(9,40) * Rational(1,8) * Rational(1,5)
-        ev[common].should eq Rational(9,40) * Rational(4,8) * Rational(1,55)
-        ev[uncommon].should eq Rational(9,40) * Rational(2,8) * Rational(1,40)
-        ev[rare].should eq Rational(9,40) * Rational(1,8) * Rational(1,41)
-        ev[super_secret_tech].should eq Rational(9,40) * Rational(1,8) * Rational(1,41)
+        ev[basic].should eq Rational(9,40) * Rational(12,20) * Rational(1,55+5)
+        ev[common].should eq Rational(9,40) * Rational(12,20) * Rational(1,55+5)
+        ev[uncommon].should eq Rational(9,40) * Rational(5,20) * Rational(1,40)
+        ev[rare].should eq Rational(9,40) * Rational(3,20) * Rational(1,40+1)
+        ev[super_secret_tech].should eq Rational(9,40) * Rational(3,20) * Rational(1,40+1)
       end
     end
   end
@@ -203,12 +203,12 @@ describe PackFactory do
       it do
         # Definitely no fetchlands
         ev[fetchland].should eq 0
-        ev[basic].should eq Rational(9,40) * Rational(5,8) * Rational(1,10+70)
-        ev[gainland].should eq Rational(9,40) * Rational(5,8) * Rational(1,10+70)
-        ev[common].should eq Rational(9,40) * Rational(5,8) * Rational(1,10+70)
-        ev[uncommon].should eq Rational(9,40) * Rational(2,8) * Rational(1,60)
-        ev[rare].should eq Rational(9,40) * Rational(1,8) * Rational(2,80)
-        ev[mythic].should eq Rational(9,40) * Rational(1,8) * Rational(1,80)
+        ev[basic].should eq Rational(9,40) * Rational(12,20) * Rational(1,10+70)
+        ev[gainland].should eq Rational(9,40) * Rational(12,20) * Rational(1,10+70)
+        ev[common].should eq Rational(9,40) * Rational(12,20) * Rational(1,10+70)
+        ev[uncommon].should eq Rational(9,40) * Rational(5,20) * Rational(1,60)
+        ev[rare].should eq Rational(9,40) * Rational(3,20) * Rational(2,80)
+        ev[mythic].should eq Rational(9,40) * Rational(3,20) * Rational(1,80)
       end
     end
   end
@@ -240,8 +240,8 @@ describe PackFactory do
     it do
       ev[dfc_mythic].should eq Rational(1, 121)
       ev[sfc_mythic].should eq Rational(1, 121)
-      ev[foil_dfc_mythic].should eq Rational(9,40) * Rational(1, 1072)
-      ev[foil_sfc_mythic].should eq Rational(9,40) * Rational(1, 1072)
+      ev[foil_dfc_mythic].should eq Rational(9,40) * Rational(1, 2*59+16) * Rational(3, 20)
+      ev[foil_sfc_mythic].should eq Rational(9,40) * Rational(1, 2*59+16) * Rational(3, 20)
     end
   end
 
@@ -255,8 +255,8 @@ describe PackFactory do
     it do
       ev[dfc_mythic].should eq Rational(1, 80)
       ev[sfc_mythic].should eq Rational(1, 80)
-      ev[foil_dfc_mythic].should eq Rational(9,40) * Rational(1, 704)
-      ev[foil_sfc_mythic].should eq Rational(9,40) * Rational(1, 704)
+      ev[foil_dfc_mythic].should eq Rational(9,40) * Rational(1, 2*38+12) * Rational(3, 20)
+      ev[foil_sfc_mythic].should eq Rational(9,40) * Rational(1, 2*38+12) * Rational(3, 20)
     end
   end
 
@@ -281,8 +281,8 @@ describe PackFactory do
     context "foil" do
       let(:foil) { true }
       it do
-        ev[basic].should eq Rational(9,40) * Rational(1, 8) * Rational(1, 20)
-        ev[common].should eq Rational(9,40) * Rational(3, 8) * Rational(1, 121)
+        ev[basic].should eq Rational(9,40) * Rational(4, 8) * Rational(1, 121+20)
+        ev[common].should eq Rational(9,40) * Rational(4, 8) * Rational(1, 121+20)
         ev[uncommon].should eq Rational(9,40) * Rational(2, 8) * Rational(1, 80)
         ev[rare].should eq Rational(9,40) * Rational(1, 8) * Rational(1, 80)
         ev[timeshifted].should eq Rational(9,40) * Rational(1, 8) * Rational(1, 121)
@@ -318,12 +318,12 @@ describe PackFactory do
     context "foil" do
       let(:foil) { true }
       it do
-        ev[common].should eq Rational(9,40) * Rational(5, 8) * Rational(1, 40+20)
-        ev[cs_common].should eq Rational(9,40) * Rational(5, 8) * Rational(1, 40+20)
-        ev[uncommon].should eq Rational(9,40) * Rational(2, 8) * Rational(1, 40+15)
-        ev[cs_uncommon].should eq Rational(9,40) * Rational(2, 8) * Rational(1, 40+15)
-        ev[rare].should eq Rational(9,40) * Rational(1, 8) * Rational(1, 40+10)
-        ev[cs_rare].should eq Rational(9,40) * Rational(1, 8) * Rational(1, 40+10)
+        ev[common].should eq Rational(9,40) * Rational(12,20) * Rational(1, 40+20)
+        ev[cs_common].should eq Rational(9,40) * Rational(12,20) * Rational(1, 40+20)
+        ev[uncommon].should eq Rational(9,40) * Rational(5,20) * Rational(1, 40+15)
+        ev[cs_uncommon].should eq Rational(9,40) * Rational(5,20) * Rational(1, 40+15)
+        ev[rare].should eq Rational(9,40) * Rational(3,20) * Rational(1, 40+10)
+        ev[cs_rare].should eq Rational(9,40) * Rational(3,20) * Rational(1, 40+10)
       end
     end
   end
@@ -355,11 +355,11 @@ describe PackFactory do
         #
         # Then again, it's a digital-only product, so normal print sheet constraints
         # don't affect it
-        ev[common].should eq Rational(471, 480) * Rational(5, 8) * Rational(1, 101)
-        ev[uncommon].should eq Rational(471, 480) * Rational(2, 8) * Rational(1, 80)
-        ev[rare].should eq Rational(471, 480) * Rational(1, 8) * Rational(4, 489)
-        ev[mythic].should eq Rational(471, 480) * Rational(1, 8) * Rational(2, 489)
-        ev[special].should eq Rational(471, 480) * Rational(1, 8) * Rational(1, 489)
+        ev[common].should eq Rational(471, 480) * Rational(12,20) * Rational(1, 101)
+        ev[uncommon].should eq Rational(471, 480) * Rational(5,20) * Rational(1, 80)
+        ev[rare].should eq Rational(471, 480) * Rational(3,20) * Rational(4, 489)
+        ev[mythic].should eq Rational(471, 480) * Rational(3,20) * Rational(2, 489)
+        ev[special].should eq Rational(471, 480) * Rational(3,20) * Rational(1, 489)
       end
     end
   end
@@ -393,15 +393,15 @@ describe PackFactory do
     context "foil" do
       let(:foil) { true }
       it do
-        ev[basic].should eq Rational(9,40) * Rational(5, 8) * Rational(1, 15+105)
-        ev[sfc_common].should eq Rational(9,40) * Rational(5, 8) * Rational(1, 15+105)
-        ev[dfc_common].should eq Rational(9,40) * Rational(5, 8) * Rational(1, 15+105)
-        ev[sfc_uncommon].should eq Rational(9,40) * Rational(2, 8) * Rational(1, 100)
-        ev[dfc_uncommon].should eq Rational(9,40) * Rational(2, 8) * Rational(1, 100)
-        ev[sfc_rare].should eq Rational(9,40) * Rational(1, 8) * Rational(2, 136)
-        ev[dfc_rare].should eq Rational(9,40) * Rational(1, 8) * Rational(2, 136)
-        ev[sfc_mythic].should eq Rational(9,40) * Rational(1, 8) * Rational(1, 136)
-        ev[dfc_mythic].should eq Rational(9,40) * Rational(1, 8) * Rational(1, 136)
+        ev[basic].should eq Rational(9,40) * Rational(12,20) * Rational(1, 15+105)
+        ev[sfc_common].should eq Rational(9,40) * Rational(12,20) * Rational(1, 15+105)
+        ev[dfc_common].should eq Rational(9,40) * Rational(12,20) * Rational(1, 15+105)
+        ev[sfc_uncommon].should eq Rational(9,40) * Rational(5,20) * Rational(1, 100)
+        ev[dfc_uncommon].should eq Rational(9,40) * Rational(5,20) * Rational(1, 100)
+        ev[sfc_rare].should eq Rational(9,40) * Rational(3,20) * Rational(2, 136)
+        ev[dfc_rare].should eq Rational(9,40) * Rational(3,20) * Rational(2, 136)
+        ev[sfc_mythic].should eq Rational(9,40) * Rational(3,20) * Rational(1, 136)
+        ev[dfc_mythic].should eq Rational(9,40) * Rational(3,20) * Rational(1, 136)
       end
     end
   end
@@ -435,14 +435,14 @@ describe PackFactory do
     context "foil" do
       let(:foil) { true }
       it do
-        ev[sfc_common].should eq Rational(9,40) * Rational(5, 8) * Rational(1, 74)
-        ev[dfc_common].should eq Rational(9,40) * Rational(5, 8) * Rational(1, 74)
-        ev[sfc_uncommon].should eq Rational(9,40) * Rational(2, 8) * Rational(1, 70)
-        ev[dfc_uncommon].should eq Rational(9,40) * Rational(2, 8) * Rational(1, 70)
-        ev[sfc_rare].should eq Rational(9,40) * Rational(1, 8) * Rational(2, 108)
-        ev[dfc_rare].should eq Rational(9,40) * Rational(1, 8) * Rational(2, 108)
-        ev[sfc_mythic].should eq Rational(9,40) * Rational(1, 8) * Rational(1, 108)
-        ev[dfc_mythic].should eq Rational(9,40) * Rational(1, 8) * Rational(1, 108)
+        ev[sfc_common].should eq Rational(9,40) * Rational(12,20) * Rational(1, 74)
+        ev[dfc_common].should eq Rational(9,40) * Rational(12,20) * Rational(1, 74)
+        ev[sfc_uncommon].should eq Rational(9,40) * Rational(5,20) * Rational(1, 70)
+        ev[dfc_uncommon].should eq Rational(9,40) * Rational(5,20) * Rational(1, 70)
+        ev[sfc_rare].should eq Rational(9,40) * Rational(3,20) * Rational(2, 108)
+        ev[dfc_rare].should eq Rational(9,40) * Rational(3,20) * Rational(2, 108)
+        ev[sfc_mythic].should eq Rational(9,40) * Rational(3,20) * Rational(1, 108)
+        ev[dfc_mythic].should eq Rational(9,40) * Rational(3,20) * Rational(1, 108)
       end
     end
   end
@@ -474,14 +474,14 @@ describe PackFactory do
     context "foil" do
       let(:foil) { true }
       it do
-        ev[basic].should eq Rational(9,40) * Rational(1, 20+101) * Rational(20,32)
-        ev[common].should eq Rational(9,40) * Rational(1, 20+101) * Rational(20,32)
-        ev[legendary_uncommon].should eq Rational(9,40) * Rational(1, 80) * Rational(8,32)
-        ev[legendary_rare].should eq Rational(9,40) * Rational(2, 121) * Rational(4,32)
-        ev[legendary_mythic].should eq Rational(9,40) * Rational(1, 121) * Rational(4,32)
-        ev[nonlegendary_uncommon].should eq Rational(9,40) * Rational(1, 80) * Rational(8,32)
-        ev[nonlegendary_rare].should eq Rational(9,40) * Rational(2, 121) * Rational(4,32)
-        ev[nonlegendary_mythic].should eq Rational(9,40) * Rational(1, 121) * Rational(4,32)
+        ev[basic].should eq Rational(9,40) * Rational(1, 20+101) * Rational(12,20)
+        ev[common].should eq Rational(9,40) * Rational(1, 20+101) * Rational(12,20)
+        ev[legendary_uncommon].should eq Rational(9,40) * Rational(1, 80) * Rational(5,20)
+        ev[legendary_rare].should eq Rational(9,40) * Rational(2, 121) * Rational(3,20)
+        ev[legendary_mythic].should eq Rational(9,40) * Rational(1, 121) * Rational(3,20)
+        ev[nonlegendary_uncommon].should eq Rational(9,40) * Rational(1, 80) * Rational(5,20)
+        ev[nonlegendary_rare].should eq Rational(9,40) * Rational(2, 121) * Rational(3,20)
+        ev[nonlegendary_mythic].should eq Rational(9,40) * Rational(1, 121) * Rational(3,20)
       end
     end
   end
@@ -513,14 +513,14 @@ describe PackFactory do
     context "foil" do
       let(:foil) { true }
       it do
-        ev[basic].should eq Rational(9,40) * Rational(1, 15+101) * Rational(20,32)
-        ev[common].should eq Rational(9,40) * Rational(1, 15+101) * Rational(20,32)
-        ev[planeswalker_uncommon].should eq Rational(9,40) * Rational(1, 80) * Rational(8,32)
-        ev[planeswalker_rare].should eq Rational(9,40) * Rational(2, 121) * Rational(4,32)
-        ev[planeswalker_mythic].should eq Rational(9,40) * Rational(1, 121) * Rational(4,32)
-        ev[nonplaneswalker_uncommon].should eq Rational(9,40) * Rational(1, 80) * Rational(8,32)
-        ev[nonplaneswalker_rare].should eq Rational(9,40) * Rational(2, 121) * Rational(4,32)
-        ev[nonplaneswalker_mythic].should eq Rational(9,40) * Rational(1, 121) * Rational(4,32)
+        ev[basic].should eq Rational(9,40) * Rational(1, 15+101) * Rational(12,20)
+        ev[common].should eq Rational(9,40) * Rational(1, 15+101) * Rational(12,20)
+        ev[planeswalker_uncommon].should eq Rational(9,40) * Rational(1, 80) * Rational(5,20)
+        ev[planeswalker_rare].should eq Rational(9,40) * Rational(2, 121) * Rational(3,20)
+        ev[planeswalker_mythic].should eq Rational(9,40) * Rational(1, 121) * Rational(3,20)
+        ev[nonplaneswalker_uncommon].should eq Rational(9,40) * Rational(1, 80) * Rational(5,20)
+        ev[nonplaneswalker_rare].should eq Rational(9,40) * Rational(2, 121) * Rational(3,20)
+        ev[nonplaneswalker_mythic].should eq Rational(9,40) * Rational(1, 121) * Rational(3,20)
       end
     end
   end
@@ -552,10 +552,10 @@ describe PackFactory do
     context "foil" do
       let(:foil) { true }
       it do
-        ev[common].should eq Rational(9,40) * Rational(1, 80) * Rational(5, 8)
-        ev[uncommon].should eq Rational(9,40) * Rational(1, 60) * Rational(2, 8)
-        ev[rare].should eq Rational(9,40) * Rational(2, 80) * Rational(1, 8)
-        ev[mythic].should eq Rational(9,40) * Rational(1, 80) * Rational(1, 8)
+        ev[common].should eq Rational(9,40) * Rational(1, 80) * Rational(12, 20)
+        ev[uncommon].should eq Rational(9,40) * Rational(1, 60) * Rational(5, 20)
+        ev[rare].should eq Rational(9,40) * Rational(2, 80) * Rational(3, 20)
+        ev[mythic].should eq Rational(9,40) * Rational(1, 80) * Rational(3, 20)
         ev[draft_common].should eq Rational(1,67) * Rational(8, 120)
         ev[draft_uncommon].should eq Rational(1,67) * Rational(4, 120)
         ev[draft_rare].should eq Rational(1,67) * Rational(2, 120)
@@ -591,10 +591,10 @@ describe PackFactory do
     context "foil" do
       let(:foil) { true }
       it do
-        ev[common].should eq Rational(9,40) * Rational(1, 85) * Rational(5, 8)
-        ev[uncommon].should eq Rational(9,40) * Rational(1, 65) * Rational(2, 8)
-        ev[rare].should eq Rational(9,40) * Rational(2, 106) * Rational(1, 8)
-        ev[mythic].should eq Rational(9,40) * Rational(1, 106) * Rational(1, 8)
+        ev[common].should eq Rational(9,40) * Rational(1, 85) * Rational(12, 20)
+        ev[uncommon].should eq Rational(9,40) * Rational(1, 65) * Rational(5, 20)
+        ev[rare].should eq Rational(9,40) * Rational(2, 106) * Rational(3, 20)
+        ev[mythic].should eq Rational(9,40) * Rational(1, 106) * Rational(3, 20)
         ev[conspiracy_common].should eq Rational(1,67) * Rational(8, 56)
         ev[conspiracy_uncommon].should eq Rational(1,67) * Rational(4, 56)
         ev[conspiracy_rare].should eq Rational(1,67) * Rational(2, 56)
@@ -640,10 +640,10 @@ describe PackFactory do
         ev[basic].should eq Rational(24, 121) * Rational(1, 40)
         ev[steamflogger_boss].should eq Rational(1, 121) * Rational(1, 40)
 
-        ev[common].should eq Rational(1, 82) * Rational(1, 4) * Rational(5, 8)
-        ev[uncommon].should eq Rational(1, 75) * Rational(1, 4) * Rational(2, 8)
-        ev[rare].should eq Rational(2, 110) * Rational(1, 4) * Rational(1, 8)
-        ev[mythic].should eq Rational(1, 110) * Rational(1, 4) * Rational(1, 8)
+        ev[common].should eq Rational(1, 82) * Rational(1, 4) * Rational(12,20)
+        ev[uncommon].should eq Rational(1, 75) * Rational(1, 4) * Rational(5,20)
+        ev[rare].should eq Rational(2, 110) * Rational(1, 4) * Rational(3,20)
+        ev[mythic].should eq Rational(1, 110) * Rational(1, 4) * Rational(3,20)
 
         ev[contraption_common].should eq Rational(8, 205) * Rational(2, 40)
         ev[contraption_uncommon].should eq Rational(4, 205) * Rational(2, 40)
@@ -664,7 +664,6 @@ describe PackFactory do
     let(:partner_uncommon) { card("is:partner r:uncommon") }
     let(:partner_rare) { card("is:partner r:rare") }
 
-
     context "non-foil" do
       let(:partner_mythic) { card("is:partner r:mythic is:nonfoilonly") }
       it do
@@ -683,11 +682,11 @@ describe PackFactory do
       let(:foil) { true }
       let(:partner_mythic) { card("is:partner r:mythic is:foilonly") }
       it do
-        ev[basic].should eq Rational(125, 77168) # b:c ratio exact
-        ev[common].should eq Rational(125, 77168)
-        ev[uncommon].should eq Rational(5, 5096)
-        ev[rare].should eq Rational(25, 36036)
-        ev[mythic].should eq Rational(25, 72072) # m:r ratio exact
+        ev[basic].should eq Rational(25,91) * Rational(12,20) * Rational(1,101+5) # b:c ratio exact
+        ev[common].should eq Rational(25,91) * Rational(12,20) * Rational(1,101+5)
+        ev[uncommon].should eq Rational(25,91) * Rational(5,20) * Rational(1,70)
+        ev[rare].should eq Rational(25,91) * Rational(3,20) * Rational(2,99)
+        ev[mythic].should eq Rational(25,91) * Rational(3,20) * Rational(1,99) # m:r ratio exact
         ev[partner_uncommon].should eq Rational(4, 2821)
         ev[partner_rare].should eq Rational(2, 2821)
         ev[partner_mythic].should eq Rational(1, 2821)  # m:r ratio exact
@@ -837,13 +836,13 @@ describe PackFactory do
     context "foil" do
       let(:foil) { true }
       it do
-        ev[basic].should eq Rational(9,40) * Rational(1, 30+101) * Rational(20,32)
-        ev[land_common].should eq Rational(9,40) * Rational(1, 30+101) * Rational(20,32)
-        ev[nonland_common].should eq Rational(9,40) * Rational(1, 30+101) * Rational(20,32)
-        ev[uncommon].should eq Rational(9,40) * Rational(1, 80) * Rational(8,32)
-        ev[rare].should eq Rational(9,40) * Rational(2, 122) * Rational(4,32)
-        ev[mythic].should eq Rational(9,40) * Rational(1, 122) * Rational(4,32)
-        ev[bolas].should eq Rational(9,40) * Rational(1, 122) * Rational(4,32)
+        ev[basic].should eq Rational(9,40) * Rational(1, 30+101) * Rational(12,20)
+        ev[land_common].should eq Rational(9,40) * Rational(1, 30+101) * Rational(12,20)
+        ev[nonland_common].should eq Rational(9,40) * Rational(1, 30+101) * Rational(12,20)
+        ev[uncommon].should eq Rational(9,40) * Rational(1, 80) * Rational(5,20)
+        ev[rare].should eq Rational(9,40) * Rational(2, 122) * Rational(3,20)
+        ev[mythic].should eq Rational(9,40) * Rational(1, 122) * Rational(3,20)
+        ev[bolas].should eq Rational(9,40) * Rational(1, 122) * Rational(3,20)
       end
     end
   end
@@ -874,13 +873,13 @@ describe PackFactory do
       let(:foil) { true }
 
       it do
-        ev[nonland_common].should eq Rational(1,3) * Rational(5,8) * Rational(1,132)
-        ev[evolving_wilds].should eq Rational(1,3) * Rational(5,8) * Rational(1,132)
-        ev[gainland_common].should eq Rational(1,3) * Rational(5,8) * Rational(1,132)
-        ev[basic].should eq Rational(1,3) * Rational(5,8) * Rational(1,132)
-        ev[uncommon].should eq Rational(1,3) * Rational(2,8) * Rational(1,80)
-        ev[rare].should eq Rational(1,3) * Rational(1,8) * Rational(2,121)
-        ev[mythic].should eq Rational(1,3) * Rational(1,8) * Rational(1,121)
+        ev[nonland_common].should eq Rational(1,3) * Rational(12,20) * Rational(1,132)
+        ev[evolving_wilds].should eq Rational(1,3) * Rational(12,20) * Rational(1,132)
+        ev[gainland_common].should eq Rational(1,3) * Rational(12,20) * Rational(1,132)
+        ev[basic].should eq Rational(1,3) * Rational(12,20) * Rational(1,132)
+        ev[uncommon].should eq Rational(1,3) * Rational(5,20) * Rational(1,80)
+        ev[rare].should eq Rational(1,3) * Rational(3,20) * Rational(2,121)
+        ev[mythic].should eq Rational(1,3) * Rational(3,20) * Rational(1,121)
       end
     end
   end
@@ -911,13 +910,13 @@ describe PackFactory do
       let(:foil) { true }
 
       it do
-        ev[nonland_common].should eq Rational(1,3) * Rational(5,8) * Rational(1,126)
-        ev[evolving_wilds].should eq Rational(1,3) * Rational(5,8) * Rational(1,126)
-        ev[gainland_common].should eq Rational(1,3) * Rational(5,8) * Rational(1,126)
-        ev[basic].should eq Rational(1,3) * Rational(5,8) * Rational(1,126)
-        ev[uncommon].should eq Rational(1,3) * Rational(2,8) * Rational(1,80)
-        ev[rare].should eq Rational(1,3) * Rational(1,8) * Rational(2,121)
-        ev[mythic].should eq Rational(1,3) * Rational(1,8) * Rational(1,121)
+        ev[nonland_common].should eq Rational(1,3) * Rational(12,20) * Rational(1,126)
+        ev[evolving_wilds].should eq Rational(1,3) * Rational(12,20) * Rational(1,126)
+        ev[gainland_common].should eq Rational(1,3) * Rational(12,20) * Rational(1,126)
+        ev[basic].should eq Rational(1,3) * Rational(12,20) * Rational(1,126)
+        ev[uncommon].should eq Rational(1,3) * Rational(5,20) * Rational(1,80)
+        ev[rare].should eq Rational(1,3) * Rational(3,20) * Rational(2,121)
+        ev[mythic].should eq Rational(1,3) * Rational(3,20) * Rational(1,121)
       end
     end
   end
@@ -1010,11 +1009,11 @@ describe PackFactory do
     let(:rare_partners_ev) { rare_partner_cards.map{|c| [c, Rational(20, 1001)] }.to_h }
     let(:mythic_partners_ev) { mythic_partner_cards.map{|c| [c, Rational(10, 1001)] }.to_h }
 
-    let(:foil_basics_ev) { foil_basic_cards.map{|c| [c, Rational(125, 77168)] }.to_h }
-    let(:foil_commons_ev) { foil_common_cards.map{|c| [c, Rational(125, 77168)] }.to_h }
+    let(:foil_basics_ev) { foil_basic_cards.map{|c| [c, Rational(15, 9646)] }.to_h }
+    let(:foil_commons_ev) { foil_common_cards.map{|c| [c, Rational(15, 9646)] }.to_h }
     let(:foil_uncommons_ev) { foil_uncommon_cards.map{|c| [c, Rational(5, 5096)] }.to_h }
-    let(:foil_rares_ev) { foil_rare_cards.map{|c| [c, Rational(25, 36036)] }.to_h }
-    let(:foil_mythics_ev) { foil_mythic_cards.map{|c| [c, Rational(25, 72072)] }.to_h }
+    let(:foil_rares_ev) { foil_rare_cards.map{|c| [c, Rational(5, 6006)] }.to_h }
+    let(:foil_mythics_ev) { foil_mythic_cards.map{|c| [c, Rational(5, 12012)] }.to_h }
     let(:foil_uncommon_partners_ev) { foil_uncommon_partner_cards.map{|c| [c, Rational(4, 2821)] }.to_h }
     let(:foil_rare_partners_ev) { foil_rare_partner_cards.map{|c| [c, Rational(2, 2821)] }.to_h }
     let(:foil_mythic_partners_ev) { foil_mythic_partner_cards.map{|c| [c, Rational(1, 2821)] }.to_h }
@@ -1079,14 +1078,14 @@ describe PackFactory do
       let(:foil) { true }
 
       it do
-        ev[basic].should eq Rational(1,3) * Rational(5,8) * Rational(1, 101+15)
-        ev[common].should eq Rational(1,3) * Rational(5,8) * Rational(1, 101+15)
-        ev[uncommon].should eq Rational(1,3) * Rational(2,8) * Rational(1, 80)
-        ev[rare].should eq Rational(1,3) * Rational(1,8) * Rational(2, 2*(53+11)+(15+5))
-        ev[mythic].should eq Rational(1,3) * Rational(1,8) * Rational(1, 2*(53+11)+(15+5))
-        ev[mdfc_uncommon].should eq Rational(1,3) * Rational(2,8) * Rational(1, 80)
-        ev[mdfc_rare].should eq Rational(1,3) * Rational(1,8) * Rational(2, 2*(53+11)+(15+5))
-        ev[mdfc_mythic].should eq Rational(1,3) * Rational(1,8) * Rational(1, 2*(53+11)+(15+5))
+        ev[basic].should eq Rational(1,3) * Rational(12,20) * Rational(1, 101+15)
+        ev[common].should eq Rational(1,3) * Rational(12,20) * Rational(1, 101+15)
+        ev[uncommon].should eq Rational(1,3) * Rational(5,20) * Rational(1, 80)
+        ev[rare].should eq Rational(1,3) * Rational(3,20) * Rational(2, 2*(53+11)+(15+5))
+        ev[mythic].should eq Rational(1,3) * Rational(3,20) * Rational(1, 2*(53+11)+(15+5))
+        ev[mdfc_uncommon].should eq Rational(1,3) * Rational(5,20) * Rational(1, 80)
+        ev[mdfc_rare].should eq Rational(1,3) * Rational(3,20) * Rational(2, 2*(53+11)+(15+5))
+        ev[mdfc_mythic].should eq Rational(1,3) * Rational(3,20) * Rational(1, 2*(53+11)+(15+5))
       end
     end
   end
@@ -1198,78 +1197,86 @@ describe PackFactory do
       let(:foil) { true }
 
       it do
-        ev[nonland_common].should eq Rational(1,3) * Rational(5,8) * Rational(1,101+10+10)
-        ev[shimmerdrift_vale].should eq Rational(1,3) * Rational(5,8) * Rational(1,101+10+10)
-        ev[snow_dual_common].should eq Rational(1,3) * Rational(5,8) * Rational(1,101+10+10)
-        ev[basic].should eq Rational(1,3) * Rational(5,8) * Rational(1,101+10+10)
-        ev[uncommon].should eq Rational(1,3) * Rational(2,8) * Rational(1,80)
-        ev[rare].should eq Rational(1,3) * Rational(1,8) * Rational(2,20+64*2)
-        ev[mythic].should eq Rational(1,3) * Rational(1,8) * Rational(1,20+64*2)
+        ev[nonland_common].should eq Rational(1,3) * Rational(12,20) * Rational(1,101+10+10)
+        ev[shimmerdrift_vale].should eq Rational(1,3) * Rational(12,20) * Rational(1,101+10+10)
+        ev[snow_dual_common].should eq Rational(1,3) * Rational(12,20) * Rational(1,101+10+10)
+        ev[basic].should eq Rational(1,3) * Rational(12,20) * Rational(1,101+10+10)
+        ev[uncommon].should eq Rational(1,3) * Rational(5,20) * Rational(1,80)
+        ev[rare].should eq Rational(1,3) * Rational(3,20) * Rational(2,20+64*2)
+        ev[mythic].should eq Rational(1,3) * Rational(3,20) * Rational(1,20+64*2)
       end
     end
   end
 
+  # Pretty much 128.88 == 129
+  # but 144.88 is somewhat far from 144, and that formula is uglier
   context "Masterpieces" do
     let(:foil) { true }
-    let(:masterpiece_rate) { ev[masterpiece] * number_of_masterpiece_cards }
+    let(:masterpiece_rate) { (1 / (ev[masterpiece] * number_of_masterpiece_cards)).to_f }
 
     context "BFZ" do
       let(:set_code) { "bfz" }
-      let(:official_rate) { Rational(1,144) }
+      let(:official_rate) { 144 }
+      let(:approximate_rate) { 144.88888888888889 }
       let(:masterpiece) { card("number=1", set_code: "exp") }
       let(:number_of_masterpiece_cards) { 25 }
       it do
-        masterpiece_rate.should eq official_rate
+        masterpiece_rate.should eq approximate_rate
       end
     end
 
     context "OGW" do
       let(:set_code) { "ogw" }
-      let(:official_rate) { Rational(1,144) }
+      let(:official_rate) { 144 }
+      let(:approximate_rate) { 144.88888888888889 }
       let(:masterpiece) { card("number=26", set_code: "exp") }
       let(:number_of_masterpiece_cards) { 20 }
       it do
-        masterpiece_rate.should eq official_rate
+        masterpiece_rate.should eq approximate_rate
       end
     end
 
     context "KLD" do
       let(:set_code) { "kld" }
-      let(:official_rate) { Rational(1,144) }
+      let(:official_rate) { 144 }
+      let(:approximate_rate) { 144.88888888888889 }
       let(:masterpiece) { card("number=1", set_code: "mps") }
       let(:number_of_masterpiece_cards) { 30 }
       it do
-        masterpiece_rate.should eq official_rate
+        masterpiece_rate.should eq approximate_rate
       end
     end
 
     context "AER" do
       let(:set_code) { "aer" }
-      let(:official_rate) { Rational(1,144) }
+      let(:official_rate) { 144 }
+      let(:approximate_rate) { 144.88888888888889 }
       let(:masterpiece) { card("number=31", set_code: "mps") }
       let(:number_of_masterpiece_cards) { 24 }
       it do
-        masterpiece_rate.should eq official_rate
+        masterpiece_rate.should eq approximate_rate
       end
     end
 
     context "AKH" do
       let(:set_code) { "akh" }
-      let(:official_rate) { Rational(1,129) }
+      let(:official_rate) { 129 }
+      let(:approximate_rate) { 128.88888888888889 }
       let(:masterpiece) { card("number=1", set_code: "mp2") }
       let(:number_of_masterpiece_cards) { 30 }
       it do
-        masterpiece_rate.should eq official_rate
+        masterpiece_rate.should eq approximate_rate
       end
     end
 
     context "HOU" do
       let(:set_code) { "hou" }
-      let(:official_rate) { Rational(1,129) }
+      let(:official_rate) { 129 }
+      let(:approximate_rate) { 128.88888888888889 }
       let(:masterpiece) { card("number=31", set_code: "mp2") }
       let(:number_of_masterpiece_cards) { 24 }
       it do
-        masterpiece_rate.should eq official_rate
+        masterpiece_rate.should eq approximate_rate
       end
     end
   end
