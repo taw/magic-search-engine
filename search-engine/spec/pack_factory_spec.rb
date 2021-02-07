@@ -1090,7 +1090,7 @@ describe PackFactory do
     end
   end
 
-  context "Old foiling - set without basics" do
+  context "Old foiling - set without basics - 1:100" do
     let(:set_code) { "ulg" }
     let(:common) { card("r:common") }
     let(:uncommon) { card("r:uncommon") }
@@ -1115,7 +1115,32 @@ describe PackFactory do
     end
   end
 
-  context "Old foiling - set with basics" do
+  context "Old foiling - set without basics - 1:70" do
+    let(:set_code) { "5dn" }
+    let(:common) { card("r:common") }
+    let(:uncommon) { card("r:uncommon") }
+    let(:rare) { card("r:rare") }
+
+    context "normal" do
+      it do
+        ev[common].should eq Rational(69, 70) * Rational(11, 55)
+        ev[uncommon].should eq Rational(69, 70) * Rational(3, 55)
+        ev[rare].should eq Rational(69, 70) * Rational(1, 55)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+
+      it do
+        ev[common].should eq Rational(1, 70) * Rational(11, 55)
+        ev[uncommon].should eq Rational(1, 70) * Rational(3, 55)
+        ev[rare].should eq Rational(1, 70) * Rational(1, 55)
+      end
+    end
+  end
+
+  context "Old foiling - set with basics - 1:100" do
     let(:set_code) { "mmq" }
     let(:basic) { card("r:basic") }
     let(:common) { card("r:common") }
@@ -1143,7 +1168,35 @@ describe PackFactory do
     end
   end
 
-  context "Old foiling - core set with basics in packs" do
+  context "Old foiling - set with basics - 1:70" do
+    let(:set_code) { "mrd" }
+    let(:basic) { card("r:basic") }
+    let(:common) { card("r:common") }
+    let(:uncommon) { card("r:uncommon") }
+    let(:rare) { card("r:rare") }
+
+    context "normal" do
+      it do
+        ev[basic].should eq 0
+        ev[common].should eq Rational(69, 70) * Rational(11, 110)
+        ev[uncommon].should eq Rational(69, 70) * Rational(3, 88)
+        ev[rare].should eq Rational(69, 70) * Rational(1, 88)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+
+      it do
+        ev[basic].should eq Rational(1, 70) * Rational(11, 110+20)
+        ev[common].should eq Rational(1, 70) * Rational(11, 110+20)
+        ev[uncommon].should eq Rational(1, 70) * Rational(3, 88)
+        ev[rare].should eq Rational(1, 70) * Rational(1, 88)
+      end
+    end
+  end
+
+  context "Old foiling - core set with basics in packs - 1:100" do
     let(:set_code) { "7ed" }
     let(:basic) { card("r:basic") }
     let(:common) { card("r:common") }
@@ -1167,6 +1220,36 @@ describe PackFactory do
         ev[common].should eq Rational(1, 100) * Rational(10, 110)
         ev[uncommon].should eq Rational(1, 100) * Rational(3, 110)
         ev[rare].should eq Rational(1, 100) * Rational(1, 110)
+      end
+    end
+  end
+
+  # 10e has a lot of foil / nonfoil alt arts that get different card numbers
+  # but both foil and nonfoil sheets are 121 cards
+  context "Old foiling - core set with basics in packs - 1:70" do
+    let(:set_code) { "10e" }
+    let(:basic) { card("r:basic") }
+    let(:common) { card("r:common") }
+    let(:uncommon) { card("r:uncommon") }
+    let(:rare) { card("r:rare") }
+
+    context "normal" do
+      it do
+        ev[basic].should eq Rational(69, 70) * Rational(1, 20)
+        ev[common].should eq Rational(69, 70) * Rational(10, 121)
+        ev[uncommon].should eq Rational(69, 70) * Rational(3, 121)
+        ev[rare].should eq Rational(69, 70) * Rational(1, 121)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+
+      it do
+        ev[basic].should eq Rational(1, 70) * Rational(1, 20)
+        ev[common].should eq Rational(1, 70) * Rational(10, 121)
+        ev[uncommon].should eq Rational(1, 70) * Rational(3, 121)
+        ev[rare].should eq Rational(1, 70) * Rational(1, 121)
       end
     end
   end
