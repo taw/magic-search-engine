@@ -1172,7 +1172,6 @@ describe PackFactory do
     end
   end
 
-  # first document wrong values, then fix them
   context "KHM" do
     let(:set_code) { "khm"}
     let(:nonland_common) { card("r:common -t:land") }
@@ -1206,6 +1205,71 @@ describe PackFactory do
         ev[uncommon].should eq Rational(1,3) * Rational(2,8) * Rational(1,80)
         ev[rare].should eq Rational(1,3) * Rational(1,8) * Rational(2,20+64*2)
         ev[mythic].should eq Rational(1,3) * Rational(1,8) * Rational(1,20+64*2)
+      end
+    end
+  end
+
+  context "Masterpieces" do
+    let(:foil) { true }
+    let(:masterpiece_rate) { ev[masterpiece] * number_of_masterpiece_cards }
+
+    context "BFZ" do
+      let(:set_code) { "bfz" }
+      let(:official_rate) { Rational(1,144) }
+      let(:masterpiece) { card("number=1", set_code: "exp") }
+      let(:number_of_masterpiece_cards) { 25 }
+      it do
+        masterpiece_rate.should eq official_rate
+      end
+    end
+
+    context "OGW" do
+      let(:set_code) { "ogw" }
+      let(:official_rate) { Rational(1,144) }
+      let(:masterpiece) { card("number=26", set_code: "exp") }
+      let(:number_of_masterpiece_cards) { 20 }
+      it do
+        masterpiece_rate.should eq official_rate
+      end
+    end
+
+    context "KLD" do
+      let(:set_code) { "kld" }
+      let(:official_rate) { Rational(1,144) }
+      let(:masterpiece) { card("number=1", set_code: "mps") }
+      let(:number_of_masterpiece_cards) { 30 }
+      it do
+        masterpiece_rate.should eq official_rate
+      end
+    end
+
+    context "AER" do
+      let(:set_code) { "aer" }
+      let(:official_rate) { Rational(1,144) }
+      let(:masterpiece) { card("number=31", set_code: "mps") }
+      let(:number_of_masterpiece_cards) { 24 }
+      it do
+        masterpiece_rate.should eq official_rate
+      end
+    end
+
+    context "AKH" do
+      let(:set_code) { "akh" }
+      let(:official_rate) { Rational(1,129) }
+      let(:masterpiece) { card("number=1", set_code: "mp2") }
+      let(:number_of_masterpiece_cards) { 30 }
+      it do
+        masterpiece_rate.should eq official_rate
+      end
+    end
+
+    context "HOU" do
+      let(:set_code) { "hou" }
+      let(:official_rate) { Rational(1,129) }
+      let(:masterpiece) { card("number=31", set_code: "mp2") }
+      let(:number_of_masterpiece_cards) { 24 }
+      it do
+        masterpiece_rate.should eq official_rate
       end
     end
   end
