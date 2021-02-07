@@ -19,8 +19,8 @@ db = CardDatabase.load
 factory = PackFactory.new(db)
 
 if ARGV[0] == "--list"
-  db.sets_with_packs.each do |set|
-    puts "%3s %s" % [set.code.upcase, set.name]
+  db.supported_booster_types.each do |code, pack|
+    puts "%3s %s" % [code.upcase, pack.name]
   end
 elsif ARGV[0] == "--unsupported"
   db.sets.values.select{|set|
