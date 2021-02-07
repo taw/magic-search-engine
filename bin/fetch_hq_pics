@@ -7,7 +7,7 @@ def db
   @db ||= CardDatabase.load
 end
 
-source_base = Pathname("/Users/taw/Downloads/hq_pics/") # "Full" resolution
+source_base = Pathname("/Users/taw/Downloads/hq_pics/") # "Full" resolution or 200DPI
 total = Hash.new(0)
 
 db.sets.each do |set_code, set|
@@ -58,6 +58,8 @@ db.sets.each do |set_code, set|
       candidate_names += [
         "#{card_names.join(" - ")}.full.jpg",
         "#{card_names.reverse.join(" - ")}.full.jpg",
+        "#{card_names.join(" -- ")}.full.jpg",
+        "#{card_names.reverse.join(" -- ")}.full.jpg",
         "#{card_names.join("_")}.full.jpg",
         "#{card_names.reverse.join("_")}.full.jpg",
         "#{card_names.join("-+")}.full.jpg",
