@@ -1280,4 +1280,96 @@ describe PackFactory do
       end
     end
   end
+
+  # They have very different odds, so every rarity is 1:15 chance of foil
+  #
+  # No guarantee it will apply to all of them, seems so far
+  context "Sets with dedicated foil slot" do
+    context "A25" do
+      let(:set_code) { "a25" }
+      let(:common) { card("r:common") }
+      let(:uncommon) { card("r:uncommon") }
+      let(:rare) { card("r:rare") }
+      let(:mythic) { card("r:mythic") }
+
+      context "non-foil" do
+        it do
+          ev[common].should eq Rational(10, 101)
+          ev[uncommon].should eq Rational(3, 80)
+          ev[rare].should eq Rational(2, 121)
+          ev[mythic].should eq Rational(1, 121)
+        end
+      end
+
+      context "foil" do
+        let(:foil) { true }
+        it do
+          ev[common].should eq Rational(10, 101) * Rational(1, 14)
+          ev[uncommon].should eq Rational(3, 80) * Rational(1, 14)
+          ev[rare].should eq Rational(2, 121) * Rational(1, 14)
+          ev[mythic].should eq Rational(1, 121) * Rational(1, 14)
+        end
+      end
+    end
+
+    # foil and nonfoil full art basics are only found in "VIP edition"
+    context "2XM" do
+      let(:set_code) { "2xm" }
+      let(:common) { card("r:common") }
+      let(:uncommon) { card("r:uncommon") }
+      let(:rare) { card("r:rare") }
+      let(:mythic) { card("r:mythic") }
+
+      context "non-foil" do
+        it do
+          ev[common].should eq Rational(8, 91)
+          ev[uncommon].should eq Rational(3, 80)
+          ev[rare].should eq Rational(4, 121*2+40)
+          ev[mythic].should eq Rational(2, 121*2+40)
+        end
+      end
+
+      context "foil" do
+        let(:foil) { true }
+        it do
+          ev[common].should eq Rational(8, 91) * Rational(2, 13)
+          ev[uncommon].should eq Rational(3, 80) * Rational(2, 13)
+          ev[rare].should eq Rational(4, 121*2+40) * Rational(2, 13)
+          ev[mythic].should eq Rational(2, 121*2+40) * Rational(2, 13)
+        end
+      end
+    end
+
+    # Now these numbers are really questionable, as CMR
+    # has a lot of rarities (C, U, R, M, LU, LR, LM)
+    # and we're kinda ignoring the details
+    #
+    # This more documents the choices than asserts they're right
+    context "CMR" do
+      let(:set_code) { "cmr" }
+      let(:common) { card("r:common") }
+      let(:uncommon) { card("r:uncommon -t:legendary") }
+      let(:rare) { card("r:rare -t:legendary") }
+      let(:mythic) { card("r:mythic -t:legendary") }
+
+      context "non-foil" do
+        it do
+          ev[common].should eq Rational(13, 142)
+          ev[uncommon].should eq Rational(3, 80)
+          ev[rare].should eq Rational(2, 2*52+17)
+          ev[mythic].should eq Rational(1, 2*52+17)
+        end
+      end
+
+      context "foil" do
+        let(:foil) { true }
+        it do
+          ev[common].should eq Rational(13, 142) * Rational(1, 17)
+          ev[uncommon].should eq Rational(3, 120) * Rational(1, 17)
+          ev[rare].should eq Rational(2, 2*77+22) * Rational(1, 17)
+          ev[mythic].should eq Rational(1, 2*77+22) * Rational(1, 17)
+        end
+      end
+    end
+  end
 end

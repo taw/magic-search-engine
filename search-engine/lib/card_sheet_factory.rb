@@ -73,6 +73,44 @@ class CardSheetFactory
     CardSheet.new(sheets, weights)
   end
 
+  # According to tehtmi from Collation Project
+  # foil rate in regular sets is close to 12 / 5 / 3
+  # but sets with dedicated slots have much worse 10 / 3 / 1 rate
+  #
+  # This rate guarantees same foil:nonfoil rate for every rarity
+  def dedicated_foil(set_code)
+    sheets = [
+      rare_mythic(set_code, foil: true),
+      rarity(set_code, "uncommon", foil: true),
+      common_or_basic(set_code, foil: true),
+    ]
+    weights = [1, 3, 10]
+    CardSheet.new(sheets, weights)
+  end
+
+  # name backwards as name starts with a number
+  def dedicated_foil_2xm
+    set_code = "2xm"
+    sheets = [
+      rare_mythic(set_code, foil: true),
+      rarity(set_code, "uncommon", foil: true),
+      common_or_basic(set_code, foil: true),
+    ]
+    weights = [2, 3, 8]
+    CardSheet.new(sheets, weights)
+  end
+
+  def cmr_dedicated_foil
+    set_code = "cmr"
+    sheets = [
+      rare_mythic(set_code, foil: true),
+      rarity(set_code, "uncommon", foil: true),
+      common_or_basic(set_code, foil: true),
+    ]
+    weights = [1, 3, 13]
+    CardSheet.new(sheets, weights)
+  end
+
   def rarity(set_code, rarity, foil: false, kind: CardSheet)
     set = @db.sets[set_code]
     cards = set.physical_cards(foil).select(&:in_boosters?)
