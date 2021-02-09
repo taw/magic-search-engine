@@ -138,6 +138,7 @@ class Indexer
       PatchSetTypes,
       PatchFunny,
       PatchLinkRelated,
+      PatchColorshifted,
       PatchPrintSheets,
       PatchMB1,
       PatchABUR,
