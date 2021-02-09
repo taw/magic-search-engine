@@ -20,4 +20,10 @@ describe "Spelling" do
   it "*" do
     assert_search_equal "related:t:*", "related:*"
   end
+
+  # Should it be a different operator?
+  it "Planar Chaos" do
+    assert_search_results %Q[related:"Malach of the Dawn"], "Ghost Ship"
+    assert_search_results %Q[related:"Ghost Ship"], "Malach of the Dawn"
+  end
 end

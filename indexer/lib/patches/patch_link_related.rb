@@ -27,7 +27,9 @@ class PatchLinkRelated < Patch
     # Apply links
     links.each do |name, others|
       @cards[name].each do |printing|
-        printing["related"] = others.sort
+        printing["related"] ||= []
+        printing["related"] += others.to_a
+        printing["related"] = printing["related"].sort
       end
     end
   end
