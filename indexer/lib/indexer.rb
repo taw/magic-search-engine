@@ -208,8 +208,7 @@ class Indexer
         "official_code" => set_data["code"],
         "online_only" => (set_data["onlineOnly"] || set_data["isOnlineOnly"]) ? true : nil,
         "booster" => set_data["booster"] || set_data["boosterV3"],
-        # Track v3 vs v4 for migration
-        "v4" => !!set_data["baseSetSize"],
+        "base_set_size" => set_data["baseSetSize"],
       ).compact
       sets << set
       set_data["cards"].each_with_index do |card_data, i|

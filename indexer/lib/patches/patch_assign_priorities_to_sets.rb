@@ -17,7 +17,7 @@ class PatchAssignPrioritiesToSets < Patch
     # If you want to customize priority between different custom sets, just list them explicitly
     return 1000 if set["custom"]
 
-    if set["v4"]
+    if set.dig("meta", "date")
       # Automatically make more recent sets take priority
       date = set.dig("meta", "date")
       return 10 + @versions.index(date)
