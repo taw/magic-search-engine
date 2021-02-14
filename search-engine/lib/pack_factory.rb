@@ -236,7 +236,10 @@ class PackFactory
     when "iko"
       # This works almost like M19/M20, but one of the common lands seems to be on common not on land sheet
       # gainlands x6, basics x4
-      build_pack_with_random_foil(set_code, 1/3r, :foil, :nongainland_common, {iko_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
+      # U and R sheets have showcases, but not on Arena
+      build_pack_with_random_foil(set_code, 1/3r, :iko_foil, :explicit_common, {iko_basic_or_gainland: 1, explicit_common: 10, explicit_uncommon: 3, explicit_rare: 1})
+    when "iko-arena"
+      build_pack(set_code, {iko_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
     when "m21"
       # gainlands x6, basics x3
       build_pack_with_random_foil(set_code, 1/3r, :foil, :nongainland_common, {m21_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
@@ -464,8 +467,6 @@ class PackFactory
       build_pack(set_code, {basic_or_common_land: 1, nonland_common: 10, uncommon: 3, rare_mythic: 1})
     when "m20-arena"
       build_pack(set_code, {basic_or_common_land: 1, nonland_common: 10, uncommon: 3, rare_mythic: 1})
-    when "iko-arena"
-      build_pack(set_code, {iko_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
     when "m21-arena"
       build_pack(set_code, {m21_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
     when "war-arena"

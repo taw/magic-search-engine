@@ -129,6 +129,10 @@ class Indexer
       PatchNormalizeReleaseDate,
       PatchManaCost,
 
+      # Patch mtg.wtf bugs
+      PatchBasicLandRarity,
+      PatchRaritySpecial,
+
       # Calculate extra fields
       PatchBlocks,
       PatchHasBoosters,
@@ -141,6 +145,7 @@ class Indexer
       PatchColorshifted,
       PatchPrintSheets,
       PatchMB1,
+      PatchShowcase,
       PatchABUR,
       PatchFrame,
       PatchPartner,
@@ -149,18 +154,16 @@ class Indexer
       PatchShandalar,
       PatchXmage,
 
+      # Patch more mtg.wtf bugs
+      PatchAeLigature, # is this even needed anymore?
+      PatchFlipCardManaCost,
+      PatchArtistNames,
+
       # Reconcile issues
       PatchReconcileForeignNames,
       PatchAssignPrioritiesToSets,
       PatchReconcileOnSetPriority,
       PatchDeleteErrataSets,
-
-      # Patch mtg.wtf bugs
-      PatchBasicLandRarity,
-      PatchRaritySpecial,
-      PatchAeLigature,
-      PatchFlipCardManaCost,
-      PatchArtistNames,
 
       # Not bugs, more like different judgment calls than mtgjson
       PatchUrza,
