@@ -2,7 +2,7 @@ class CardSet
   attr_reader :name, :code, :alternative_code, :gatherer_code
   attr_reader :block_name, :block_code, :alternative_block_code
   attr_reader :border, :release_date, :printings, :types
-  attr_reader :decks, :booster_variants
+  attr_reader :decks, :booster_variants, :base_set_size
 
   def initialize(db, data)
     @db = db
@@ -24,6 +24,7 @@ class CardSet
     @custom        = !!data["custom"]
     @funny         = !!data["funny"]
     @decks         = []
+    @base_set_size = data["base_set_size"]
   end
 
   def cards_in_precons

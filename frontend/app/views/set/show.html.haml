@@ -8,12 +8,15 @@
   - if @set.block_name
     .col-12
       It is part of #{@set.block_name} block.
-  - if @set.release_date
-    .col-12
-      = "Released: #{@set.release_date}"
   - if @set.online_only?
     .col-12
       Is it an online only set.
+  - if @set.release_date
+    .col-12
+      = "Released: #{@set.release_date}"
+  - if @set.base_set_size
+    .col-12
+      Base set size: #{@set.base_set_size} cards.
   - unless @set.decks.empty?
     .col-12
       %div Preconstructed decks:
