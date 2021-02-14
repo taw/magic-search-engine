@@ -92,7 +92,10 @@ class PatchExcludeFromBoosters < Patch
     when "thb"
       number_i > 254
     when "iko"
-      number_i > 274
+      # borderless planeswalkers are numbered #276-278
+      # showcase cards are numbered #279-313
+      # extended artwork cards are numbered #314-363
+      ![1..274, 276..278, 279..313, 314..363].any?{|r| r.include?(number_i)}
     when "m21"
       # showcase basics actually in boosters
       number_i > 274 and not (309..313).include?(number_i)

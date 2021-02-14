@@ -886,21 +886,35 @@ describe PackFactory do
 
   context "IKO" do
     let(:set_code) { "iko" }
-    let(:nonland_common) { card("r:common -t:land") }
+    let(:nonland_common) { card("r:common -t:land Adaptive Shimmerer") }
+    let(:boring_common) { card("r:common Cloudpiercer number=112") }
+    let(:fancy_common) { card("r:common Cloudpiercer number=291") }
     let(:gainland_common) { card("r:common is:gainland") }
     let(:evolving_wilds) { card("Evolving Wilds") }
     let(:basic) { card("r:basic") }
-    let(:uncommon) { card("r:uncommon") }
-    let(:rare) { card("r:rare") }
-    let(:mythic) { card("r:mythic") }
+    let(:normal_uncommon) { card("r:uncommon Dire Tactics") }
+    let(:boring_uncommon) { card("r:uncommon Archipelagore number=41") }
+    let(:fancy_uncommon) { card("r:uncommon Archipelagore number=283") }
+    # There are no normal rares (R6)
+    let(:boring_rare) { card("r:rare Colossification number=148") }
+    let(:fancy_rare) { card("r:rare Colossification number=327 ") }
+    # There are no normal mythics (R2)
+    let(:boring_mythic) { card("r:mythic Winota number=216") }
+    let(:fancy_mythic) { card("r:mythic Winota number=349") }
 
     context "normal" do
       it do
         ev[nonland_common].should eq Rational(1, 101) * Rational(29, 3)
+        ev[boring_common].should eq Rational(1, 101) * Rational(29, 3) * Rational(2, 3)
+        ev[fancy_common].should eq Rational(1, 101) * Rational(29, 3) * Rational(1, 3)
         ev[evolving_wilds].should eq Rational(1, 101) * Rational(29, 3)
-        ev[uncommon].should eq Rational(3, 80)
-        ev[rare].should eq Rational(2, 121)
-        ev[mythic].should eq Rational(1, 121)
+        ev[normal_uncommon].should eq Rational(3, 80)
+        ev[boring_uncommon].should eq Rational(3, 80) * Rational(2, 3)
+        ev[fancy_uncommon].should eq Rational(3, 80) * Rational(1, 3)
+        ev[boring_rare].should eq Rational(2, 121) * Rational(2, 3)
+        ev[fancy_rare].should eq Rational(2, 121) * Rational(1, 3)
+        ev[boring_mythic].should eq Rational(1, 121) * Rational(2, 3)
+        ev[fancy_mythic].should eq Rational(1, 121) * Rational(1, 3)
         ev[gainland_common].should eq Rational(6, 120)
         ev[basic].should eq Rational(4, 120)
       end
@@ -910,13 +924,19 @@ describe PackFactory do
       let(:foil) { true }
 
       it do
-        ev[nonland_common].should eq Rational(1,3) * Rational(12,20) * Rational(1,126)
-        ev[evolving_wilds].should eq Rational(1,3) * Rational(12,20) * Rational(1,126)
-        ev[gainland_common].should eq Rational(1,3) * Rational(12,20) * Rational(1,126)
-        ev[basic].should eq Rational(1,3) * Rational(12,20) * Rational(1,126)
-        ev[uncommon].should eq Rational(1,3) * Rational(5,20) * Rational(1,80)
-        ev[rare].should eq Rational(1,3) * Rational(3,20) * Rational(2,121)
-        ev[mythic].should eq Rational(1,3) * Rational(3,20) * Rational(1,121)
+        ev[nonland_common].should eq Rational(1,3) * Rational(12,20) * Rational(1,101+25)
+        ev[boring_common].should eq Rational(1,3) * Rational(12,20) * Rational(1,101+25) * Rational(2,3)
+        ev[fancy_common].should eq Rational(1,3) * Rational(12,20) * Rational(1,101+25) * Rational(1,3)
+        ev[evolving_wilds].should eq Rational(1,3) * Rational(12,20) * Rational(1,101+25)
+        ev[gainland_common].should eq Rational(1,3) * Rational(12,20) * Rational(1,101+25)
+        ev[basic].should eq Rational(1,3) * Rational(12,20) * Rational(1,101+25)
+        ev[normal_uncommon].should eq Rational(1,3) * Rational(5,20) * Rational(1,80)
+        ev[boring_uncommon].should eq Rational(1,3) * Rational(5,20) * Rational(1,80) * Rational(2, 3)
+        ev[fancy_uncommon].should eq Rational(1,3) * Rational(5,20) * Rational(1,80) * Rational(1, 3)
+        ev[boring_rare].should eq Rational(1,3) * Rational(3,20) * Rational(2,121) * Rational(2, 3)
+        ev[fancy_rare].should eq Rational(1,3) * Rational(3,20) * Rational(2,121) * Rational(1, 3)
+        ev[boring_mythic].should eq Rational(1,3) * Rational(3,20) * Rational(1,121) * Rational(2, 3)
+        ev[fancy_mythic].should eq Rational(1,3) * Rational(3,20) * Rational(1,121) * Rational(1, 3)
       end
     end
   end

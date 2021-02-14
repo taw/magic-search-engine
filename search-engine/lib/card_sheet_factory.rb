@@ -187,17 +187,20 @@ class CardSheetFactory
   end
 
   ### Based on explicit data from indexer
-
-  def explicit_common(set_code)
-    explicit_sheet(set_code, "C")
+  def explicit_land(set_code, foil: false)
+    explicit_sheet(set_code, "L", foil: foil)
   end
 
-  def explicit_uncommon(set_code)
-    explicit_sheet(set_code, "U")
+  def explicit_common(set_code, foil: false)
+    explicit_sheet(set_code, "C", foil: foil)
   end
 
-  def explicit_rare(set_code)
-    explicit_sheet(set_code, "R")
+  def explicit_uncommon(set_code, foil: false)
+    explicit_sheet(set_code, "U", foil: foil)
+  end
+
+  def explicit_rare(set_code, foil: false)
+    explicit_sheet(set_code, "R", foil: foil)
   end
 
   def mb1_white_a
@@ -264,10 +267,10 @@ class CardSheetFactory
     from_query("e:cmb1")
   end
 
-  def explicit_sheet(set_code, print_sheet_code)
-    cards = @db.sets[set_code].printings.select{|c| c.in_boosters? and c.print_sheet.include?(print_sheet_code) }
+  def explicit_sheet(set_code, print_sheet_code, foil: false)
+    cards = @db.sets[set_code].printings.select{|c| c.in_boosters? and c.print_sheet&.include?(print_sheet_code) }
     groups = cards.group_by{|c| c.print_sheet[/#{print_sheet_code}(\d+)/, 1].to_i }
-    subsheets = groups.map{|mult,cards| [CardSheet.new(cards.map{|c| PhysicalCard.for(c) }), mult] }
+    subsheets = groups.map{|mult,cards| [CardSheet.new(cards.map{|c| PhysicalCard.for(c, foil) }), mult] }
     mix_sheets(*subsheets)
   end
 
@@ -806,6 +809,31 @@ class CardSheetFactory
     CardSheet.new(sheets, weights)
   end
 
+  # The whole this is a mess, the only consistent thing is that showcases are 1/3 of each card occurences
+  # rare and uncommon have same ratio as normally
+  # commons/lands are just messed up
+  def iko_foil
+    # L = 60 = 15 x 2 + 10 x 3
+    # C = 303 = 101 x 3
+    # U = 240 = 80 x 3
+    # R = 363 = 121 x 3
+    sheets = [
+      CardSheet.new([
+          from_query("e:iko (r:basic or is:gainland)", 25, foil: true),
+          explicit_common("iko", foil: true),
+        ], [25, 101],
+      ),
+      explicit_uncommon("iko", foil: true),
+      explicit_rare("iko", foil: true),
+    ]
+    weights = [
+      12,
+      5,
+      3,
+    ]
+    CardSheet.new(sheets, weights)
+  end
+
   def nonland_common(set_code)
     from_query("e:#{set_code} r:common -t:land", kind: ColorBalancedCardSheet)
   end
@@ -818,10 +846,11 @@ class CardSheetFactory
     from_query("e:#{set_code} t:land r<=common")
   end
 
-  def iko_basic_or_gainland
+  # These also have L2/L3 codes, but these aren't actually used by the code
+  def iko_basic_or_gainland(foil: false)
     mix_sheets(
-      [from_query("e:iko t:basic", 15), 4],
-      [from_query("e:iko is:gainland", 10), 6]
+      [from_query("e:iko t:basic", 15, foil: foil), 2],
+      [from_query("e:iko is:gainland", 10, foil: foil), 3]
     )
   end
 

@@ -84,7 +84,7 @@ describe "is:booster" do
       when "thb"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=254"
       when "iko"
-        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=274"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=363 -number:275"
       when "ogw"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} (-t:basic or -number:/a/) -number:/†/"
       when "bfz"
