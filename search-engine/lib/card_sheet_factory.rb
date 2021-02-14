@@ -834,6 +834,21 @@ class CardSheetFactory
     CardSheet.new(sheets, weights)
   end
 
+  def iko_regular_nongainland_common
+    from_query("e:iko r:common -is:gainland number<=274", 101, kind: ColorBalancedCardSheet)
+  end
+
+  def iko_regular_uncommon
+    from_query("e:iko r:uncommon number<=274", 80)
+  end
+
+  def iko_regular_rare_mythic
+    mix_sheets(
+      [from_query("e:iko r:rare number<=274", 53), 2],
+      [from_query("e:iko r:mythic number<=274", 15), 1],
+    )
+  end
+
   def nonland_common(set_code)
     from_query("e:#{set_code} r:common -t:land", kind: ColorBalancedCardSheet)
   end
