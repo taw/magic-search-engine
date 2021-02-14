@@ -86,6 +86,7 @@ class Indexer
     set.slice(
       "alternative_block_code",
       "alternative_code",
+      "base_set_size",
       "block_code",
       "block_name",
       "booster_variants",
