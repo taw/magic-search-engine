@@ -57,4 +57,8 @@ class Patch
   def update_names_index
     @cards.replace @cards.values.flatten(1).group_by{|c| c["name"] }
   end
+
+  def set_by_code(code)
+    @sets.find{|s| s["code"] == code} or raise "Set not found #{code}"
+  end
 end
