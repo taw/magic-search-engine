@@ -57,60 +57,50 @@ class PatchExcludeFromBoosters < Patch
 
   def exclude_from_boosters(set_code, number)
     number_i = number.to_i
+    set = set_by_code(set_code)
+    base_size = set["base_set_size"]
+    # Not correct for all sets:
+    # https://github.com/mtgjson/mtgjson/issues/765
 
     case set_code
-    when "m15"
-      number_i > 269
-    when "kld"
-      number_i > 264
-    when "aer"
-      number_i > 184
-    when "akh"
-      number_i > 269
-    when "hou"
-      number_i > 199
-    when "xln"
-      number_i > 279
-    when "rix"
-      number_i > 196
-    when "dom"
-      number_i > 269
-    when "ori"
-      number_i > 272
-    when "m19"
-      number_i > 280
-    when "grn", "rna"
-      number_i > 259
-    when "war"
-      number_i > 264
-    when "m20"
-      number_i > 280
-    when "eld"
-      number_i > 269
-    when "mh1"
-      number_i > 254
-    when "thb"
-      number_i > 254
+    when "2xm",
+      "aer",
+      "akh",
+      "akr",
+      "cmr",
+      "dom",
+      "eld",
+      "grn",
+      "hou",
+      "kld",
+      "klr",
+      "m15",
+      "m19",
+      "m20",
+      "mh1",
+      "ori",
+      "rix",
+      "rna",
+      "thb",
+      "war",
+      "xln"
+      # no weird cards in boosters and we can rely on mtgjson data
+      number_i > base_size
     when "iko"
       # borderless planeswalkers are numbered #276-278
       # showcase cards are numbered #279-313
       # extended artwork cards are numbered #314-363
       ![1..274, 276..278, 279..313, 314..363].any?{|r| r.include?(number_i)}
+    when "znr"
+      # incorrect mtgjson data
+      number_i > 280
+    when "khm"
+      # incorrect mtgjson data
+      number_i > 285
     when "m21"
       # showcase basics actually in boosters
+      # also incorrect mtgjson data
       number_i > 274 and not (309..313).include?(number_i)
-    when "2xm"
-      number_i > 332
-    when "znr"
-      number_i > 280
-    when "cmr"
-      number_i > 361
-    when "klr"
-      number_i > 301
-    when "akr"
-      number_i > 338
-    when "khm"
-      number_i > 285
     else
       false
     end
