@@ -51,4 +51,14 @@ BanList.for_format("pioneer") do
     "Walking Ballista" => "banned",
     "Underworld Breach" => "banned",
   )
+
+  change(
+    "2021-02-15",
+    "https://magic.wizards.com/en/articles/archive/news/february-15-2021-banned-and-restricted-announcement",
+    "Balustrade Spy" => "banned",
+    "Teferi, Time Raveler" => "banned",
+    "Undercity Informer" => "banned",
+    "Uro, Titan of Nature's Wrath" => "banned",
+    "Wilderness Reclamation" => "banned",
+  )
 end

@@ -355,4 +355,10 @@ BanList.for_format("vintage") do
     "Pradesh Gypsies" => "banned",
     "Stone-Throwing Devils" => "banned",
   )
+
+  change(
+    "2021-02-15",
+    "https://magic.wizards.com/en/articles/archive/news/february-15-2021-banned-and-restricted-announcement",
+    "Lurrus of the Dream-Den" => "legal",
+  )
 end

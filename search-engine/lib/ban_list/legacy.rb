@@ -330,4 +330,12 @@ BanList.for_format("legacy") do
     "Pradesh Gypsies" => "banned",
     "Stone-Throwing Devils" => "banned",
   )
+
+  change(
+    "2021-02-15",
+    "https://magic.wizards.com/en/articles/archive/news/february-15-2021-banned-and-restricted-announcement",
+    "Arcum's Astrolabe" => "banned",
+    "Dreadhorde Arcanist" => "banned",
+    "Oko, Thief of Crowns" => "banned",
+  )
 end

@@ -57,4 +57,11 @@ BanList.for_format("historic") do
     # "Wilderness Reclamation" => "banned", # from "suspended"
     "Burning-Tree Emissary" => "legal", # from unsuspended.
   )
+
+  change(
+    "2021-02-15",
+    "https://magic.wizards.com/en/articles/archive/news/february-15-2021-banned-and-restricted-announcement",
+    # "Omnath, Locus of Creation" => "banned", # from "suspended"
+    "Uro, Titan of Nature's Wrath" => "banned",
+  )
 end
