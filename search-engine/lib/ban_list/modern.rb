@@ -146,4 +146,14 @@ BanList.for_format("modern") do
     "https://magic.wizards.com/en/articles/archive/news/july-13-2020-banned-and-restricted-announcement-2020-07-13",
     "Arcum's Astrolabe" => "banned",
   )
+
+  change(
+    "2021-02-15",
+    "https://magic.wizards.com/en/articles/archive/news/february-15-2021-banned-and-restricted-announcement",
+    "Field of the Dead" => "banned",
+    "Mystic Sanctuary" => "banned",
+    "Simian Spirit Guide" => "banned",
+    "Tibalt's Trickery" => "banned",
+    "Uro, Titan of Nature's Wrath" => "banned",
+  )
 end

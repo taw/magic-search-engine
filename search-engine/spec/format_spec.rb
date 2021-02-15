@@ -35,6 +35,15 @@ describe "Formats" do
       ]],
     ])
     FormatModern.new.ban_events.should eq([
+      [Date.parse("2021-02-15"),
+        "https://magic.wizards.com/en/articles/archive/news/february-15-2021-banned-and-restricted-announcement",
+      [
+        {:name=>"Field of the Dead", :new=>"banned", :old=>"legal"},
+        {:name=>"Mystic Sanctuary", :new=>"banned", :old=>"legal"},
+        {:name=>"Simian Spirit Guide", :new=>"banned", :old=>"legal"},
+        {:name=>"Tibalt's Trickery", :new=>"banned", :old=>"legal"},
+        {:name=>"Uro, Titan of Nature's Wrath", :new=>"banned", :old=>"legal"}
+      ]],
       [Date.parse("2020-07-13"),
         "https://magic.wizards.com/en/articles/archive/news/july-13-2020-banned-and-restricted-announcement-2020-07-13",
       [
@@ -195,12 +204,13 @@ describe "Formats" do
     assert_count_cards 'restricted:"duel commander"', 24
   end
 
+  # Used to be Lurrus
   it "mtgo commander" do
-    assert_count_cards 'banned:vintage legal:"mtgo commander"', 1
+    assert_count_cards 'banned:vintage legal:"mtgo commander"', 0
   end
 
   it "historic" do
-    assert_count_cards "banned:historic", 11
+    assert_count_cards "banned:historic", 12
   end
 
   it "premodern" do
