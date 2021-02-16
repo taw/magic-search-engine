@@ -46,7 +46,7 @@ class ExtractXmageCardList
 
   def process_set_file(path)
     data = path.readlines
-    super_lines = data.grep(/\A\s*super/)
+    super_lines = data.grep(/\A\s*super.*"/)
     card_add_lines = data.grep(/\A\s*cards\.add/)
     unless super_lines.size == 1 and card_add_lines.size > 0
       warn "#{path} is not is expected format, skipping"
