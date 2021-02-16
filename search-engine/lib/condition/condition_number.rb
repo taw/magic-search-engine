@@ -6,19 +6,27 @@ class ConditionNumber < ConditionSimple
   end
 
   def match?(card)
-    card_number_s = card.number.downcase
-    card_number_i = card.number.to_i
+    if @number_s == "set"
+      left = card.number.to_i
+      right = card.set.base_set_size
+    else
+      card_number_s = card.number.downcase
+      card_number_i = card.number.to_i
+      left = [card_number_i, card_number_s]
+      right = [@number_i, @number_s]
+    end
+
     case @op
     when ">"
-      ([card_number_i, card_number_s] <=> [@number_i, @number_s]) > 0
+      (left <=> right) > 0
     when ">="
-      ([card_number_i, card_number_s] <=> [@number_i, @number_s]) >= 0
+      (left <=> right) >= 0
     when "<"
-      ([card_number_i, card_number_s] <=> [@number_i, @number_s]) < 0
+      (left <=> right) < 0
     when "<="
-      ([card_number_i, card_number_s] <=> [@number_i, @number_s]) <= 0
+      (left <=> right) <= 0
     else # = or :
-      card_number_s == @number_s
+      left == right
     end
   end
 
