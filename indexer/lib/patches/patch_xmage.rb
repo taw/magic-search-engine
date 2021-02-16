@@ -8,7 +8,7 @@ class PatchXmage < Patch
       xmage_cards_path
         .readlines
         .map(&:chomp)
-        .map{|line| line.split("\t",2)}
+        .map{|line| line.split("\t",3)[0,2]}
         .to_set
     end
   end

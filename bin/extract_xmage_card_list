@@ -35,9 +35,10 @@ class ExtractXmageCardList
     [results[0], results[1].downcase]
   end
 
-  def extract_card_name(line)
-    if line =~ /\A\s*cards\.add\(new (?:ExpansionSet\.)?SetCardInfo\(\"((?:\\.|.)*?)\"/
-      $1.gsub('\"', '"')
+  def extract_card_name_and_number(line)
+    if line =~ /\A\s*cards\.add\(new (?:ExpansionSet\.)?SetCardInfo\(\"((?:\\.|.)*?)\",\s*(\d+|"[^\"]+")\,/
+      name, number = $1, $2
+      [name.gsub('\"', '"'), number.tr("\"", "")]
     else
       raise "Can't extract card name from: #{line}"
     end
@@ -54,10 +55,10 @@ class ExtractXmageCardList
     set_name, set_code = extract_set_data(super_lines[0])
     return if set_code == "sws"
     card_add_lines.each do |line|
-      card_name = extract_card_name(line)
+      card_name, card_number = extract_card_name_and_number(line)
       card_name = CARDS_NAME_FIXES[card_name] || card_name
-      card_name.split(" // ").each do |n|
-        @cards << [set_code, n]
+      card_name.split(" // ").each do |name_part|
+        @cards << [set_code, name_part, card_number]
       end
     end
   end
@@ -67,7 +68,7 @@ class ExtractXmageCardList
       process_set_file(path)
     end
     output_path.write(
-      @cards.map{|sc,cn| "#{sc}\t#{cn}\n"}.sort.uniq.join
+      @cards.map{|set_code,name,number| "#{set_code}\t#{name}\t#{number}\n"}.sort.uniq.join
     )
   end
 end
