@@ -72,4 +72,8 @@ class CardSheet
     end
     result
   end
+
+  def ==(other)
+    other.class == self.class and elements == other.elements and weights == other.weights
+  end
 end
