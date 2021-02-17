@@ -14,22 +14,39 @@ class CardSheetFactory
     CardSheet.new(sheets.map(&:first), sheets.map{|s,w| s.elements.size * w})
   end
 
-  def from_query(query, assert_count=nil, foil: false, kind: CardSheet)
-    cards = find_cards(query, assert_count, foil: foil)
+  def from_query(query, assert_count=nil, foil: false, kind: CardSheet, extra: false)
+    cards = find_cards(query, assert_count, foil: foil, extra: extra)
     kind.new(cards)
   end
 
-  def find_cards(query, assert_count=nil, foil: false)
+  def find_cards(query, assert_count=nil, foil: false, extra: false)
+    base_query = "++ is:booster"
     if foil
-      base_query = "++ is:booster is:foil"
+      base_query += " is:foil"
     else
-      base_query = "++ is:booster is:nonfoil"
+      base_query += " is:nonfoil"
+    end
+    unless extra
+      base_query += " number<=set"
     end
     cards = @db.search("#{base_query} (#{query})").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
     if assert_count and assert_count != cards.size
       raise "Expected query #{query} to return #{assert_count}, got #{cards.size}"
     end
     cards
+  end
+
+  def rarity(set_code, rarity, foil: false, extra: false, kind: CardSheet)
+    set = @db.sets[set_code]
+    cards = set.physical_cards(foil).select(&:in_boosters?)
+    # raise "#{set.code} #{set.same} has no cards in boosters" if cards.empty?
+    cards = cards.select{|c| c.rarity == rarity}
+    unless extra
+      cards = cards.select{|c| c.number.to_i <= c.set.base_set_size }
+    end
+    # raise "#{set.code} #{set.same} has no #{rarity} cards in boosters" if cards.empty?
+    return nil if cards.empty?
+    kind.new(cards)
   end
 
   ### Usual Sheet Types
@@ -109,16 +126,6 @@ class CardSheetFactory
     ]
     weights = [1, 3, 13]
     CardSheet.new(sheets, weights)
-  end
-
-  def rarity(set_code, rarity, foil: false, kind: CardSheet)
-    set = @db.sets[set_code]
-    cards = set.physical_cards(foil).select(&:in_boosters?)
-    # raise "#{set.code} #{set.same} has no cards in boosters" if cards.empty?
-    cards = cards.select{|c| c.rarity == rarity}
-    # raise "#{set.code} #{set.same} has no #{rarity} cards in boosters" if cards.empty?
-    return nil if cards.empty?
-    kind.new(cards)
   end
 
   def common_or_basic(set_code, foil: false, kind: ColorBalancedCardSheet)
@@ -618,9 +625,11 @@ class CardSheetFactory
 
   def cn2_nonconspiracy_rare_mythic(foil=false)
     foilcond = foil ? "-is:nonfoilonly" : "-is:foilonly"
+    # foil Kaya is extra
+    # nonfoil Kaya is not
     mix_sheets(
       [from_query('e:cn2 -t:conspiracy r:rare', 47, foil: foil), 2],
-      [from_query("e:cn2 -t:conspiracy r:mythic #{foilcond}", 12, foil: foil), 1],
+      [from_query("e:cn2 -t:conspiracy r:mythic #{foilcond}", 12, foil: foil, extra: true), 1],
     )
   end
 
@@ -689,7 +698,7 @@ class CardSheetFactory
   end
 
   def bbd_foil_mythic_partner_1
-    from_query("e:bbd r:mythic has:partner (number=255 or number=256)", 2, foil: true)
+    from_query("e:bbd r:mythic has:partner (number=255 or number=256)", 2, foil: true, extra: true)
   end
 
   def bbd_foil_rare_partner_1
@@ -834,21 +843,6 @@ class CardSheetFactory
     CardSheet.new(sheets, weights)
   end
 
-  def iko_regular_nongainland_common
-    from_query("e:iko r:common -is:gainland number<=274", 101, kind: ColorBalancedCardSheet)
-  end
-
-  def iko_regular_uncommon
-    from_query("e:iko r:uncommon number<=274", 80)
-  end
-
-  def iko_regular_rare_mythic
-    mix_sheets(
-      [from_query("e:iko r:rare number<=274", 53), 2],
-      [from_query("e:iko r:mythic number<=274", 15), 1],
-    )
-  end
-
   def nonland_common(set_code)
     from_query("e:#{set_code} r:common -t:land", kind: ColorBalancedCardSheet)
   end
@@ -870,8 +864,9 @@ class CardSheetFactory
   end
 
   def m21_basic_or_gainland
+    # showcase variant which is just as common as any other basic land variation
     mix_sheets(
-      [from_query("e:m21 t:basic", 20), 3],
+      [from_query("e:m21 t:basic", 20, extra: true), 3],
       [from_query("e:m21 is:gainland", 10), 6]
     )
   end
