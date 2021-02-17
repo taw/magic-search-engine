@@ -83,24 +83,19 @@ class PatchExcludeFromBoosters < Patch
       "rna",
       "thb",
       "war",
-      "xln"
+      "xln",
+      "znr",
+      "khm"
       # no weird cards in boosters and we can rely on mtgjson data
       number_i > base_size
+    when "m21"
+      # showcase basics actually in boosters
+      number_i > base_size and not (309..313).include?(number_i)
     when "iko"
       # borderless planeswalkers are numbered #276-278
       # showcase cards are numbered #279-313
       # extended artwork cards are numbered #314-363
       ![1..274, 276..278, 279..313, 314..363].any?{|r| r.include?(number_i)}
-    when "znr"
-      # incorrect mtgjson data
-      number_i > 280
-    when "khm"
-      # incorrect mtgjson data
-      number_i > 285
-    when "m21"
-      # showcase basics actually in boosters
-      # also incorrect mtgjson data
-      number_i > 274 and not (309..313).include?(number_i)
     else
       false
     end
