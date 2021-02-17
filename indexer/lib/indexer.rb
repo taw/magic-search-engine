@@ -130,9 +130,10 @@ class Indexer
       PatchNormalizeReleaseDate,
       PatchManaCost,
 
-      # Patch mtg.wtf bugs
+      # Patch mtg.wtf bugs - these need to happen early to support patches below
       PatchBasicLandRarity,
       PatchRaritySpecial,
+      PatchBaseSize,
 
       # Calculate extra fields
       PatchBlocks,
