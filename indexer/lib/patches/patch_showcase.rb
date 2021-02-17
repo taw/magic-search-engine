@@ -53,7 +53,7 @@ class PatchShowcase < Patch
     end
 
     sheets.each do |rarity, (sn, sb, sf)|
-      cards_in_rarity = cards_in_set.select{|c| c["rarity"] == rarity}
+      cards_in_rarity = cards_in_set.select{|c| c["rarity"] == rarity and not c["exclude_from_boosters"]}
       fancy_cards = cards_in_rarity.select{|c| fancy_numbers.include? c["number"].to_i }
       fancy_names = fancy_cards.map{|c| c["name"]}.to_set
 
