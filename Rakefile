@@ -157,6 +157,7 @@ task "update:decks" do
   sh "./deck_indexer/bin/deck_indexer"
   sh "./bin/export_decks_data_old ~/github/magic-preconstructed-decks-data/decks.json"
   sh "./bin/export_decks_data ~/github/magic-preconstructed-decks-data/decks_v2.json"
+  sh "./bin/export_xmage_best_card_list ~/github/mtg/data/xmage_cards.txt"
 end
 
 desc "Run Rails frontend, localhost only"

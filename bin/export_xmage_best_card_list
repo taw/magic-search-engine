@@ -1,0 +1,66 @@
+#!/usr/bin/env ruby
+
+require_relative "../search-engine/lib/card_database"
+
+class ExportXmageBestCardList
+  def initialize(output_path)
+    @db = CardDatabase.load
+    @output_path = Pathname(output_path)
+  end
+
+  # Just because something looks fancy in paper doesn't mean it will look fancy in xmage
+  FancySets = %W[
+    mps
+    mp2
+    exp
+    fut
+    ss1
+    ss2
+    ss3
+    puma
+    med
+  ].to_set
+
+  FancyCards = [
+    ["Forest", "ust", "216"],
+    ["Indatha Triome", "iko", "309"],
+    ["Island", "ust", "213"],
+    ["Ketria Triome", "iko", "310"],
+    ["Mountain", "ust", "215"],
+    ["Plains", "ust", "212"],
+    ["Raugrin Triome", "iko", "311"],
+    ["Savai Triome", "iko", "312"],
+    ["Snow-Covered Forest", "mh1", "254"],
+    ["Snow-Covered Island", "mh1", "251"],
+    ["Snow-Covered Mountain", "mh1", "253"],
+    ["Snow-Covered Plains", "mh1", "250"],
+    ["Snow-Covered Swamp", "mh1", "252"],
+    ["Swamp", "ust", "214"],
+    ["Wastes", "ogw", "184"], # is this the same one in XMage?
+    ["Zagoth Triome", "iko", "313"],
+  ]
+
+  def select_best_printing(card, printings)
+    printings = printings
+      .sort_by{|c| [
+        FancyCards.include?([c.name, c.set_code, c.number]) ? 0 : 1,
+        FancySets.include?(c.set_code) ? 0 : 1,
+        c.default_sort_index,
+      ] }
+    printings[0]
+  end
+
+  def xmage_printings
+    @db.printings.select(&:xmage?).group_by(&:card).map{|card, printings|
+      select_best_printing(card, printings)
+    }
+  end
+
+  def call
+    @output_path.parent.mkpath
+    @output_path.write xmage_printings.map{|c| [c.set_code, c.name, c.number].join("\t") + "\n" }.join
+  end
+end
+
+output_path = ARGV[0] || "tmp/xmage_best_card_list.txt"
+ExportXmageBestCardList.new(output_path).call
