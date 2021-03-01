@@ -256,6 +256,12 @@ class PackFactory
         build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, sfc_uncommon: 3, modaldfc_rare_mythic: 1}) => 27,
         build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, modaldfc_uncommon: 1, sfc_uncommon: 2, sfc_rare_mythic: 1}) => 121,
       )
+    when "znr-arena"
+      # Arena-only boosters, 14 card booster (no basic at all)
+      WeightedPack.new(
+        build_pack(set_code, {common: 10, sfc_uncommon: 3, modaldfc_rare_mythic: 1}) => 27,
+        build_pack(set_code, {common: 10, modaldfc_uncommon: 1, sfc_uncommon: 2, sfc_rare_mythic: 1}) => 121,
+      )
     when "dgm"
       build_pack_with_random_foil(set_code, 9/40r, :foil, :dgm_common, {dgm_common: 10, uncommon: 3, dgm_rare_mythic: 1, dgm_land: 1})
     when "frf"
@@ -457,8 +463,7 @@ class PackFactory
         alara_premium_uncommon: 3,
         alara_premium_rare_mythic: 1,
       })
-    when "klr-arena", "akr-arena",
-      "znr-arena", "eld-arena", "thb-arena", "rix-arena", "xln-arena"
+    when "klr-arena", "akr-arena", "eld-arena", "thb-arena", "rix-arena", "xln-arena"
       # Arena-only boosters, 14 card booster (no basic at all)
       build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1})
     when "m19-arena"
