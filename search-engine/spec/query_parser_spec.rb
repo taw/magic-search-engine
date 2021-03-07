@@ -242,4 +242,8 @@ describe "QueryParser" do
   it "warns for bad frame:" do
     Query.new('frame:pokemon').warnings[0].should match(/Unknown frame: pokemon/)
   end
+
+  it "warns for bad layout:" do
+    Query.new('layout:pokemon').warnings[0].should match(/Unknown layout: pokemon/)
+  end
 end
