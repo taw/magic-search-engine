@@ -40,7 +40,7 @@ describe PackFactory do
       s.types.include?("core") or s.types.include?("expansion")
     }.to_set }
     let(:expected_official) {
-      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr]
+      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr]
     }
     let(:expected_mtgjson_variant) {
       ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed"]
@@ -1458,20 +1458,24 @@ describe PackFactory do
       let(:uncommon) { card("r:uncommon -t:legendary") }
       let(:rare) { card("r:rare -t:legendary") }
       let(:mythic) { card("r:mythic -t:legendary") }
+      let(:piper) { card("The Prismatic Piper") }
 
       context "non-foil" do
         it do
-          ev[common].should eq Rational(13, 142)
+          ev[piper].should eq Rational(1, 6)
+          ev[common].should eq Rational(1, 141) * Rational(12*6+5, 6)
           ev[uncommon].should eq Rational(3, 80)
           ev[rare].should eq Rational(2, 2*52+17)
           ev[mythic].should eq Rational(1, 2*52+17)
         end
       end
 
+      # Totally guessing the Piper here
       context "foil" do
         let(:foil) { true }
         it do
-          ev[common].should eq Rational(13, 142) * Rational(1, 17)
+          ev[piper].should eq Rational(13, 141+1) * Rational(1, 17)
+          ev[common].should eq Rational(13, 141+1) * Rational(1, 17)
           ev[uncommon].should eq Rational(3, 120) * Rational(1, 17)
           ev[rare].should eq Rational(2, 2*77+22) * Rational(1, 17)
           ev[mythic].should eq Rational(1, 2*77+22) * Rational(1, 17)

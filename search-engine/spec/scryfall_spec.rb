@@ -319,9 +319,7 @@ describe "Scryfall" do
     # maybe scryfall has a point here?
 
     # no old/future frame mythics
-    # (well, except ovnt, but that's a fake set)
-    # ppre looks like a bug
-    assert_search_equal "is:new r:mythic is:paper", "r:mythic is:paper -e:tsr"
+    assert_search_equal "is:new r:mythic is:paper -e:tsr", "r:mythic is:paper -e:tsr"
   end
 
   it "scryfall bug cmc" do

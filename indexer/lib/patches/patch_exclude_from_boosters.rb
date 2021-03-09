@@ -85,7 +85,8 @@ class PatchExcludeFromBoosters < Patch
       "war",
       "xln",
       "znr",
-      "khm"
+      "khm",
+      "tsr"
       # no weird cards in boosters and we can rely on mtgjson data
       number_i > base_size
     when "m21"
