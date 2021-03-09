@@ -87,6 +87,25 @@ RSpec::Matchers.define :return_cards do |*cards|
   end
 end
 
+RSpec::Matchers.define :return_printings do |*printings|
+  match do |query_string|
+    printings = printings.flatten
+    search_printings(query_string).sort == printings.sort
+  end
+
+  failure_message do |query_string|
+    "BAD for #{query_string}"
+    # printings = printings.flatten
+    # results = search_printings(query_string)
+    # "Expected `#{query_string}' to return:\n" +
+    #   (printings | results).sort.map{|c|
+    #     (printings.include?(c) ? "[*]" : "[ ]") +
+    #     (results.include?(c) ? "[*]" : "[ ]") +
+    #     "#{c}\n"
+    #   }.join
+  end
+end
+
 RSpec::Matchers.define :equal_search do |query_string2|
   match do |query_string1|
     results1 = search(query_string1)
@@ -189,6 +208,10 @@ shared_context "db" do |*sets|
 
   def search_names(query_string)
     Query.new(query_string).search(db).card_names
+  end
+
+  def search_printings(query_string)
+    Query.new(query_string).search(db).printings
   end
 
   let!(:db) { load_database(*sets) }

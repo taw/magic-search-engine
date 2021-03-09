@@ -1,10 +1,38 @@
-# mtgjson docs also describe some that don't seem to be in use:
-# - frame:draft
-#
 # These are sanity checks not comprehensive specs
 
-describe "frame effect queries" do
+describe "frame type and effect queries" do
   include_context "db"
+
+  def printings_matching(&block)
+    db.printings.select(&block)
+  end
+
+  let(:frame_effects) { db.printings.flat_map(&:frame_effects).uniq }
+  let(:frame_types) { db.printings.map(&:frame).uniq }
+
+  it "every frame type has corresending frame: operator" do
+    frame_types.each do |frame|
+      "frame:#{frame}".should return_printings(
+          *printings_matching{|c| c.frame == frame}
+        )
+    end
+  end
+
+  it "every frame effect has corresending frame: operator" do
+    frame_effects.each do |frame|
+      "frame:#{frame}".should return_printings(
+        *printings_matching{|c| c.frame_effects.include?(frame) }
+      )
+    end
+  end
+
+  it "every frame: also works as is:" do
+    [*frame_effects, *frame_types].each do |frame|
+      next if frame == "draft" # is:draft already used for something else
+      next if frame == "fullart" # isFullArt and frameEffects:["fullart"] do not agree, 🤷‍♂️
+      assert_search_equal "frame:#{frame}", "is:#{frame}"
+    end
+  end
 
   it "frame:colorshifted" do
     assert_search_equal "frame:colorshifted", "e:plc,plist frame:colorshifted"
