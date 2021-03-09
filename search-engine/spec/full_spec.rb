@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # for same sets, indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(22072)
-    db.number_of_printings.should eq(54635)
+    db.number_of_printings.should eq(54660)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -397,8 +397,9 @@ describe "Full Database Test" do
   end
 
   it "promo and special" do
-    warn "not sure what to do with rarity special (v4 no longer uses it, should we?)"
-    assert_search_equal "r:special", "(Super Secret Tech) or (e:vma r:special)"
+    # warn "not sure what to do with rarity special (v4 no longer uses it, should we?)"
+    # it's back in v5 now ???
+    assert_search_equal "r:special", "(Super Secret Tech) or (e:vma r:special) or (e:tsb) or (Prismatic Piper)"
   end
 
   it "all planeswalkers are legendary (except CMB1)" do
