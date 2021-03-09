@@ -25,6 +25,11 @@ class PatchFoiling < Patch
         fix_to card, "nonfoil"
       when "inv", "khm"
         fix_to card, "both"
+      when "tsr"
+        if card["number"] == "411"
+          # I think?
+          fix_to card, "foilonly"
+        end
       end
     end
   end

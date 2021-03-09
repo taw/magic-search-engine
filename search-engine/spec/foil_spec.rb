@@ -250,6 +250,10 @@ describe "Foils" do
         # https://mtg.fandom.com/wiki/Commander_Legends#Set_details
         # but it's not very clear
         warn "cmr foiling: how it even works?"
+      when "tsr"
+        booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
+        assert_foiling(extra_cards, "foilonly")
+        assert_foiling(booster_cards, "both")
       else
         assert_by_type(set)
       end

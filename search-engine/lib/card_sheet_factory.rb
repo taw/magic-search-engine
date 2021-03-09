@@ -122,7 +122,7 @@ class CardSheetFactory
     sheets = [
       rare_mythic(set_code, foil: true),
       rarity(set_code, "uncommon", foil: true),
-      common_or_basic(set_code, foil: true),
+      from_query('e:cmr (r:common or r:special)', 141 + 1, foil: true)
     ]
     weights = [1, 3, 13]
     CardSheet.new(sheets, weights)
@@ -134,6 +134,10 @@ class CardSheetFactory
     cards = cards.select{|c| c.rarity == "basic" or c.rarity == "common"}
     return nil if cards.empty?
     kind.new(cards)
+  end
+
+  def special(set_code)
+    rarity(set_code, "special")
   end
 
   def common(set_code)
@@ -409,6 +413,22 @@ class CardSheetFactory
     CardSheet.new(sheets, weights)
   end
 
+  # Basically making it up
+  def tsr_foil
+    sheets = [
+      rare_mythic("tsr", foil: true),
+      rarity("tsr", "uncommon", foil: true),
+      rarity("tsr", "common", foil: true),
+      rarity("tsr", "special", foil: true),
+    ]
+    weights = [
+      1,
+      2,
+      4,
+      1,
+    ]
+    CardSheet.new(sheets, weights)
+  end
 
   def pc_common
     from_query("e:plc r:common -is:colorshifted", 40)

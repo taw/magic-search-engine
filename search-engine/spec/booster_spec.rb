@@ -108,6 +108,8 @@ describe "is:booster" do
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=338"
       when "khm"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=285"
+      when "tsr"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=410"
       else
         if set.has_boosters? or set.in_other_boosters?
           assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/†|s/"

@@ -281,6 +281,8 @@ class PackFactory
       # 10 commons, 3 uncommons, 1 rare, and 1 purple-rarity timeshifted card.
       # Basics don't fit anywhere
       build_pack_with_random_foil(set_code, 9/40r, :ts_foil, :common, {common: 10, uncommon: 3, rare: 1, tsts: 1})
+    when "tsr"
+      build_pack_with_random_foil(set_code, 1/3r, :tsr_foil, :common, {common: 10, uncommon: 3, rare_mythic: 1, special: 1})
     when "plc"
       # 8 commons, 2 uncommons, 1 rare, 3 timeshifted commons, and 1 uncommon or rare timeshifted card.
       build_pack_with_random_foil(set_code, 9/40r, :foil, :pc_common, {pc_common: 8, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1})
@@ -496,14 +498,10 @@ class PackFactory
     when "khm-arena"
       build_pack(set_code, {khm_basictype: 1, non_basictype_common: 10, uncommon: 3, rare_mythic: 1})
     when "cmr"
-      # Unofficial, based on some opening videos
-      build_pack(set_code, {
-        common: 13,
-        cmr_nonlegendary_uncommon: 3,
-        cmr_nonlegendary_rare_mythic: 1,
-        cmr_legendary: 2,
-        cmr_dedicated_foil: 1,
-      })
+      WeightedPack.new(
+        build_pack(set_code, {common: 13, cmr_nonlegendary_uncommon: 3, cmr_nonlegendary_rare_mythic: 1, cmr_legendary: 2, cmr_dedicated_foil: 1}) => 5,
+        build_pack(set_code, {common: 12, special: 1, cmr_nonlegendary_uncommon: 3, cmr_nonlegendary_rare_mythic: 1, cmr_legendary: 2, cmr_dedicated_foil: 1}) => 1,
+      )
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this
