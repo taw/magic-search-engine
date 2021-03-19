@@ -309,6 +309,27 @@ describe "Sorting" do
     ])
   end
 
+  it "sort:firstprint" do
+    ordered_search("c=c o:regenerate sort:firstprint", :name)[0,3].should eq([
+      ["Birthing Hulk"],
+      ["Unnatural Endurance"],
+      ["Skitterskin"],
+    ])
+  end
+
+  # test shouldn't need updates as they won't be reprinting those (even is:reserved gets MTGO promos)
+  it "sort:lastprint" do
+    ordered_search("is:racist sort:lastprint", :name).should eq([
+      ["Crusade"],
+      ["Cleanse"],
+      ["Pradesh Gypsies"],
+      ["Imprison"],
+      ["Invoke Prejudice"],
+      ["Jihad"],
+      ["Stone-Throwing Devils"],
+    ])
+  end
+
   it "random" do
     results1 = search("t:creature sort:rand")
     results2 = search("t:creature sort:name")
