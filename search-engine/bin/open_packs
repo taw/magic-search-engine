@@ -55,8 +55,12 @@ class OpenPacks
     end
   end
 
+  def sealed
+    @sealed ||= Sealed.new(db, *ARGV)
+  end
+
   def open_some_packs
-    cards = Sealed.new(db, *ARGV).call
+    cards = sealed.call
     # There could be muliple basic arts etc., ignore everything except foil flag
     cards_with_counts = cards
       .group_by{|x| [x.name, x.foil]}

@@ -34,10 +34,13 @@ class CardSheet
   # FIXME: We should check we're not infinite looping here
   def random_cards_without_duplicates(count)
     result = Set[]
+    seen_names = Set[]
     count.times do
       card = random_card
-      redo if result.include?(card)
+      name = card.name
+      redo if seen_names.include?(name)
       result << card
+      seen_names << name
     end
     result.to_a
   end

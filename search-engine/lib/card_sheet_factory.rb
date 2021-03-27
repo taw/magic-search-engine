@@ -795,7 +795,7 @@ class CardSheetFactory
   end
 
   def ust_common(foil: false)
-    from_query("e:ust r:common -t:contraption", 82, foil: foil)
+    from_query("e:ust r:common -t:contraption", 82, foil: foil, kind: ColorBalancedCardSheet)
   end
 
   def ust_uncommon(foil: false)
