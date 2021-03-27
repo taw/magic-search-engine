@@ -2,47 +2,92 @@
 
 require_relative "../lib/card_database"
 require_relative "../lib/sealed"
+require "optimist"
+require "pry"
 
-if ARGV.size == 0
-  STDERR.puts "Usage: #{$0} [SETCODE COUNTxSETCODE ...]"
-  STDERR.puts "Examples:"
-  STDERR.puts "  #{$0} 6xM11"
-  STDERR.puts "  #{$0} NPH MBS SOM"
-  STDERR.puts "To see list of supported packs:"
-  STDERR.puts "  #{$0} --list"
-  STDERR.puts "To see list of packs which are not implemented yet:"
-  STDERR.puts "  #{$0} --unsupported"
-  exit 1
-end
-
-db = CardDatabase.load
-factory = PackFactory.new(db)
-
-if ARGV[0] == "--list"
-  db.supported_booster_types.each do |code, pack|
-    puts "%3s %s" % [code.upcase, pack.name]
+class OpenPacks
+  def db
+    @db ||= CardDatabase.load
   end
-elsif ARGV[0] == "--unsupported"
-  db.sets.values.select{|set|
-    set.has_boosters? and !factory.for(set.code)
-  }.each do |set|
-    puts "%3s %s" % [set.code.upcase, set.name]
+
+  def factory
+    @factory ||= PackFactory.new(db)
   end
-else
-  cards = Sealed.new(db, *ARGV).call
-  # There could be muliple basic arts etc., ignore everything except foil flag
-  cards_with_counts = cards
-    .group_by{|x| [x.name, x.foil]}
-    .map{|k,v| [k, v.count]}
-    .sort_by{|(n,f),v| [n,f ? 1 : 0]}
-  count_width = cards_with_counts.map(&:last).map(&:to_s).map(&:size).max
-  cards_with_counts.each do |(name, foil), count|
-    foil_indicator = foil ? " [foil]" : ""
-    if count == 1
-      count_indicator =  " " * (count_width+1)
-    else
-      count_indicator =  "%#{count_width}dx" % count
+
+  def option_parser
+    @option_parser ||= Optimist::Parser.new do
+      banner <<~EOS
+        Open packs.
+
+        Usage:
+          #{$0} 6xM19
+          #{$0} NPH MBS SOM
+
+        Options:
+        EOS
+      opt :list, "List of supported packs"
+      opt :unsupported, "List of packs that are not implemented yet"
+      opt :count, "Get multiple pools, separated by empty line", type: Integer, default: 1
     end
-    puts "#{count_indicator} #{name}#{foil_indicator}"
+  end
+
+  def parse_options
+    @opts = Optimist::with_standard_exception_handling(option_parser) do
+      o = option_parser.parse ARGV
+      unless o[:list] or o[:unsupported] or !ARGV.empty?
+        raise Optimist::HelpNeeded
+      end
+      o
+    end
+  end
+
+  def show_list
+    db.supported_booster_types.each do |code, pack|
+      puts "%3s %s" % [code.upcase, pack.name]
+    end
+  end
+
+  def show_unsupported
+    db.sets.values.select{|set|
+      set.has_boosters? and !factory.for(set.code)
+    }.each do |set|
+      puts "%3s %s" % [set.code.upcase, set.name]
+    end
+  end
+
+  def open_some_packs
+    cards = Sealed.new(db, *ARGV).call
+    # There could be muliple basic arts etc., ignore everything except foil flag
+    cards_with_counts = cards
+      .group_by{|x| [x.name, x.foil]}
+      .map{|k,v| [k, v.count]}
+      .sort_by{|(n,f),v| [n,f ? 1 : 0]}
+    count_width = cards_with_counts.map(&:last).map(&:to_s).map(&:size).max
+    cards_with_counts.each do |(name, foil), count|
+      foil_indicator = foil ? " [foil]" : ""
+      if count == 1
+        count_indicator =  " " * (count_width+1)
+      else
+        count_indicator =  "%#{count_width}dx" % count
+      end
+      puts "#{count_indicator} #{name}#{foil_indicator}"
+    end
+  end
+
+  def call
+    parse_options
+    if @opts[:list]
+      show_list
+    elsif @opts[:unsupported]
+      show_unsupported
+    else
+      count = @opts[:count]
+      count.times do |i|
+        open_some_packs
+        puts "" unless i == count - 1
+      end
+    end
   end
 end
+
+OpenPacks.new.call
