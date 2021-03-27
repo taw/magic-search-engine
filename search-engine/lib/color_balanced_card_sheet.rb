@@ -64,6 +64,7 @@ class ColorBalancedCardSheet < CardSheet
   end
 
   def random_cards_without_duplicates(count)
+    seen_names = Set[]
     # Reshuffle all subsheets
     w = @w.shuffle
     u = @u.shuffle
@@ -85,6 +86,7 @@ class ColorBalancedCardSheet < CardSheet
     [w, u, b, r, g].each do |subsheet|
       card = subsheet.shift
       result << card
+      seen_names << card.name
     end
     # Mixed slots
     (count-5).times do
@@ -92,8 +94,11 @@ class ColorBalancedCardSheet < CardSheet
       # but probability indicates we should return another card from it
       # Whenever this happens, a tiny bias is introduced
       card = random_card_by_weights(den, nums, subsheets)
+      name = card.name
       redo if card.nil?
+      redo if seen_names.include?(name)
       result << card
+      seen_names << name
     end
     result.to_a
   end
