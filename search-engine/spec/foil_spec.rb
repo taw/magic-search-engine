@@ -254,6 +254,9 @@ describe "Foils" do
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         assert_foiling(extra_cards, "foilonly")
         assert_foiling(booster_cards, "both")
+      when "sta"
+        # so says mtgjson
+        assert_foiling(set.printings, "both")
       else
         assert_by_type(set)
       end
