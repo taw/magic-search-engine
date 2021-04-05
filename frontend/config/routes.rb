@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post "deck/visualize" => "deck#visualize"
   get "deck" => "deck#index"
   get "sealed" => "sealed#index"
+  get "pack" => "pack#index"
   get "/" => "card#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

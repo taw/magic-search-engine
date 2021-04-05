@@ -11,13 +11,12 @@ end
 task "default" => "spec"
 task "test" => "spec"
 
-# Run specs
 task "spec" do
   Dir.chdir("search-engine") do
     sh "rspec"
   end
   Dir.chdir("frontend") do
-    sh "rake test"
+    sh "rspec"
   end
 end
 
@@ -30,7 +29,6 @@ desc "Update mtgjson database"
 task "mtgjson:fetch" do
   unless Pathname("tmp/AllSets.json").exist?
     Pathname("tmp").mkpath
-    # sh "wget", "https://www.mtgjson.com/json/AllSets.json", "-O", "tmp/AllSets.json" # v4
     sh "wget", "https://mtgjson.com/api/v5/AllPrintings.json", "-O", "tmp/AllSets.json" # v5
   end
   if Pathname("data/sets-incoming").exist?

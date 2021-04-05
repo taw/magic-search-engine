@@ -1,0 +1,8 @@
+.row
+  .col-12
+    %h3 Magic Boosters
+    %ul
+      - @booster_types.each do |code, pack|
+        %li
+          = pack.name
+          = "(#{code.upcase})"
