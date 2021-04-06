@@ -40,6 +40,8 @@ describe "Deck legality" do
 
   it "allowed_in_any_number?" do
     db.printings.select(&:allowed_in_any_number?).map(&:name).uniq.should match_array([
+      "Barry's Land", # CMB1
+      "Dragon's Approach",
       "Forest",
       "Island",
       "Mountain",
@@ -55,7 +57,6 @@ describe "Deck legality" do
       "Snow-Covered Swamp",
       "Swamp",
       "Wastes",
-      "Barry's Land", # CMB1
     ])
   end
 

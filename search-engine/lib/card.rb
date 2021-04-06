@@ -37,6 +37,7 @@ class Card
     "Landship",
     "Legacy",
     "Lieutenant",
+    "Magecraft",
     "Metalcraft",
     "Morbid",
     "Parley",

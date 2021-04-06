@@ -79,7 +79,7 @@ describe "Any queries" do
 
   context "Oracle text" do
     it do
-      assert_search_equal %[any:"win the game"], %[o:"win the game"]
+      assert_search_equal %[any:"win the game"], %[o:"win the game" or ft:"win the game"]
     end
     it "is case insensitive" do
       assert_search_equal %[any:"win the game"], %[any:"Win THE gaME"]

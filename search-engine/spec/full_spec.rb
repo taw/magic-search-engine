@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data
   # for same sets, indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(22073)
-    db.number_of_printings.should eq(55205)
+    db.number_of_cards.should eq(22363)
+    db.number_of_printings.should eq(55606)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -339,7 +339,7 @@ describe "Full Database Test" do
     assert_search_equal "mana=mno", "mana={m}{n}{o}"
     assert_search_equal "mana=mmn", "mana=mnn"
     assert_search_equal "mana=mmn", "mana>=mnn mana <=mmn"
-    assert_count_cards "mana>=mh", 15
+    assert_count_cards "mana>=mh", 20
     assert_search_results "mana=mh",
       "Bant Sureblade",
       "Crystallization",

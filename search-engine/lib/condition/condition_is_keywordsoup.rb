@@ -16,6 +16,7 @@ class ConditionIsKeywordsoup < ConditionNickname
       "rayami, first of the fallen",
       "selective adaptation",
       "soulflayer",
+      "thunderous orator",
     ]
   end
 

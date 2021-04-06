@@ -328,8 +328,13 @@ describe "Card nicknames" do
       "Choked Estuary",
       "Foreboding Ruins",
       "Fortified Village",
+      "Frostboil Snarl",
+      "Furycalm Snarl",
       "Game Trail",
-      "Port Town"
+      "Necroblossom Snarl",
+      "Port Town",
+      "Shineshadow Snarl",
+      "Vineglimmer Snarl"
     assert_search_equal "is:shadowland",
       %q[t:land o:/As (.*) enters the battlefield, you may reveal an? \S+ or \S+/ o:"If you don't, ~ enters the battlefield tapped"]
   end
@@ -369,7 +374,8 @@ describe "Card nicknames" do
       "Odric, Lunarch Marshal",
       "Rayami, First of the Fallen",
       "Selective Adaptation",
-      "Soulflayer"
+      "Soulflayer",
+      "Thunderous Orator"
     assert_search_results "is:keywordsoup",
       *cards_matching{|c|
         c.name != "Urza, Academy Headmaster" and

@@ -5,5 +5,5 @@
       - @sets.each do |set|
         %li
           = link_to_set(set) do
-            = "#{set.name}"
+            = set.name
           = "(#{set.code.upcase}, #{set.printings.size} cards)"
