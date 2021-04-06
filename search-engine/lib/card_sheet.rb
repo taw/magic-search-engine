@@ -1,6 +1,7 @@
 # CardSheet is collection of CardSheet and PhysicalCard elements
 class CardSheet
   attr_reader :elements, :weights, :total_weight
+  attr_accessor :name
 
   def initialize(elements, weights=nil)
     @elements = elements

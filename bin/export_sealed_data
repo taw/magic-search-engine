@@ -36,8 +36,8 @@ class ExportFormatter
   end
 
   def serialize_sheets(sheets)
-    sheets.map{|sheet, id|
-      [id, serialize_sheet(sheet)]
+    sheets.map{|sheet|
+      [sheet.name, serialize_sheet(sheet)]
     }.to_h
   end
 
@@ -54,15 +54,12 @@ class ExportFormatter
   end
 
   def extract_sheets(pack)
-    sheets = pack.packs.keys.map(&:sheets).flat_map(&:keys)
-    sheets.map{|s|
-      [s, @db.pack_factory.sheet_cache.invert[s].join("_")]
-    }.to_h
+    pack.packs.keys.map(&:sheets).flat_map(&:keys)
   end
 
   def serialize_subpack(pack, weight, sheets)
     {
-      sheets: pack.sheets.map{|s,c| [sheets[s], c]}.to_h,
+      sheets: pack.sheets.map{|s,c| [s.name, c]}.to_h,
       weight: weight,
     }
   end
@@ -178,20 +175,16 @@ class ExportFormatterExperimental < ExportFormatter
     }.compact
   end
 
-  def simplify_name(name, set_code)
-    name.gsub(/\A(#{set_code}_)*(mb1_)?(explicit_)*/i, "").gsub(/_unbalanced/, "").camelize
-  end
-
   def serialize_subpack(pack, weight, sheets, set_code)
     result = super(pack, weight, sheets)
-    result[:contents] = result.delete(:sheets).transform_keys{|n| simplify_name(n, set_code) }
+    result[:contents] = result.delete(:sheets).transform_keys(&:camelize)
     result
   end
 
   def serialize_sheets(sheets, set_code)
     result = super(sheets)
-    raise unless result.keys.map{|n| simplify_name(n, set_code)}.all_different?
-    result.transform_keys{|n| simplify_name(n, set_code)}
+    raise unless result.keys.map(&:camelize).all_different?
+    result.transform_keys(&:camelize)
   end
 
   def data

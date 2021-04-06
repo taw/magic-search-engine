@@ -50,15 +50,21 @@ class PackFactory
       if @sheet_factory.respond_to?(name)
         # .arity and keyword arguments are weird together
         arity = @sheet_factory.method(name).arity
-        if arity == 0 or arity == -1
+        sheet = if arity == 0 or arity == -1
           @sheet_factory.send(name)
         else
           @sheet_factory.send(name, set_code)
         end
+        sheet.name = sheet_name(set_code, name) if sheet
+        sheet
       else
         raise "Unknown sheet type #{name}"
       end
     end
+  end
+
+  private def sheet_name(set_code, name)
+    "#{name}".gsub(/\A(#{set_code}_)*(mb1_)?(explicit_)*/i, "").gsub(/_unbalanced/, "")
   end
 
   private def build_pack_with_independent_foils(set_code, rate, *sheets)

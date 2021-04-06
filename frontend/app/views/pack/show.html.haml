@@ -1,1 +1,33 @@
-= @pack.inspect
+- if @pack.is_a?(WeightedPack)
+  #{@pack.name} has variants:
+  %ul
+    - @pack.packs.each do |pack, weight|
+      %li
+        #{weight}/#{@pack.total_weight} (#{(100.0*weight/@pack.total_weight).round(2)}%)
+        %ul
+          - pack.sheets.each do |sheet, count|
+            %li
+              #{count}x Sheet ##{sheet.name}
+- else
+  %div
+    #{@pack.name} has no variants
+  %div
+    %ul
+      - @pack.sheets.each do |sheet, count|
+        %li
+          #{count}x Sheet ##{sheet.name}
+
+- if @pack.is_a?(WeightedPack)
+  - sheets = @pack.packs.keys.flat_map(&:sheets).flat_map(&:keys).uniq
+- else
+  - sheets = @pack.sheets.keys
+
+%h3 Sheets
+
+- sheets.each do |sheet|
+  %h4
+    Sheet #{sheet.name} #{sheet.class}
+  %ul
+    - sheet.probabilities.each do |c, i|
+      %li
+        #{i} #{c}
