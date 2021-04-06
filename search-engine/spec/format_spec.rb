@@ -210,7 +210,8 @@ describe "Formats" do
   end
 
   it "historic" do
-    assert_count_cards "banned:historic", 12
+    # including STA pre-banned
+    assert_count_cards "banned:historic", 19
   end
 
   it "premodern" do
