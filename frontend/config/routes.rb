@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get "deck" => "deck#index"
   get "sealed" => "sealed#index"
   get "pack" => "pack#index"
+  get "pack/:id" => "pack#show"
   get "/" => "card#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
