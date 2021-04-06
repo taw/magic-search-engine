@@ -29,6 +29,18 @@ class PatchHasBoosters < Patch
     ]
   end
 
+  def included_in_other_boosters
+    %W[
+      exp
+      mps
+      mp2
+      tsb
+      fmb1
+      plist
+      sta
+    ]
+  end
+
   def call
     each_set do |set|
       booster = set.delete("booster")
@@ -42,10 +54,8 @@ class PatchHasBoosters < Patch
         end
       end
 
-      included_in_other_boosters = %W[exp mps mp2 tsb fmb1 plist].include?(set["code"])
-
       set["has_boosters"] = !!has_own_boosters
-      set["in_other_boosters"] = !!included_in_other_boosters
+      set["in_other_boosters"] = !!included_in_other_boosters.include?(set["code"])
 
       case set["code"]
       when "ala"
