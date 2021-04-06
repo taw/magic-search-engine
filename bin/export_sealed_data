@@ -43,7 +43,7 @@ class ExportFormatter
 
   def flatten_pack(pack)
     result = if pack.is_a?(WeightedPack)
-      pack.flatten_weighted_pack
+      pack
     else
       WeightedPack.new(pack => 1)
     end
