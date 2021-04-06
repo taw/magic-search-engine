@@ -972,4 +972,13 @@ class CardSheetFactory
   def non_basictype_common(set_code)
     from_query("e:#{set_code} r:common -t:island -t:mountain -t:swamp -t:forest -t:plains", kind: ColorBalancedCardSheet)
   end
+
+  def sta
+    # ratio is guessed, and most likely wrong
+    mix_sheets(
+      [from_query("e:sta r:mythic", 15), 1],
+      [from_query("e:sta r:rare", 30), 2],
+      [from_query("e:sta r:uncommon", 18), 8],
+    )
+  end
 end
