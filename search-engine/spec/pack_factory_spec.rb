@@ -1483,4 +1483,44 @@ describe PackFactory do
       end
     end
   end
+
+  context "STX / STA" do
+    let(:set_code) { "stx" }
+    let(:common) { card("r:common") }
+    let(:uncommon) { card("r:uncommon") }
+    let(:rare) { card("r:rare") }
+    let(:mythic) { card("r:mythic") }
+    let(:sta_uncommon) { card("r:uncommon", set_code: "sta") }
+    let(:sta_rare) { card("r:rare", set_code: "sta") }
+    let(:sta_mythic) { card("r:mythic", set_code: "sta") }
+
+    context "normal" do
+      it do
+        ev[common].should eq Rational(29,30) * Rational(10,105)
+        ev[uncommon].should eq Rational(3, 80)
+        ev[rare].should eq Rational(2, 69*2+21)
+        ev[mythic].should eq Rational(1, 69*2+21)
+
+        ev[sta_uncommon].should eq Rational(8, 219)
+        ev[sta_rare].should eq Rational(2, 219)
+        ev[sta_mythic].should eq Rational(1, 219)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+
+      it do
+        ev[common].should eq Rational(1,105) * Rational(1,3) * Rational(12,20)
+        ev[uncommon].should eq Rational(1, 80) * Rational(1,3) * Rational(5,20)
+        ev[rare].should eq Rational(2, 69*2+21) * Rational(1,3) * Rational(3,20)
+        ev[mythic].should eq Rational(1, 69*2+21) * Rational(1,3) * Rational(3,20)
+
+        # This is likely incorrect?
+        ev[sta_uncommon].should eq 0
+        ev[sta_rare].should eq 0
+        ev[sta_mythic].should eq 0
+      end
+    end
+  end
 end
