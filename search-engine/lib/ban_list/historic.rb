@@ -64,4 +64,17 @@ BanList.for_format("historic") do
     # "Omnath, Locus of Creation" => "banned", # from "suspended"
     "Uro, Titan of Nature's Wrath" => "banned",
   )
+
+  # preemptively banned
+  change(
+    "2021-04-23",
+    "https://twitter.com/MTG_Arena/status/1362555679844814853",
+    "Swords to Plowshares" => "banned",
+    "Counterspell" => "banned",
+    "Dark Ritual" => "banned",
+    "Demonic Tutor" => "banned",
+    "Lightning Bolt" => "banned",
+    "Channel" => "banned",
+    "Natural Order" => "banned",
+  )
 end
