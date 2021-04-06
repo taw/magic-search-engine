@@ -33,7 +33,7 @@ describe "Card layouts" do
     assert_search_equal "layout:meld", "// (// o:meld)"
     assert_search_equal "layout:saga", "t:saga"
     assert_search_equal "layout:adventure", "t:adventure or (// t:adventure)"
-    assert_search_equal "layout:modaldfc -e:pmei,slu", "// e:znr,pznr,khm,pkhm"
+    assert_search_equal "layout:modaldfc -e:pmei,slu", "// e:znr,pznr,khm,pkhm,stx"
 
     # Alias
     assert_search_equal "layout:mdfc", "layout:modaldfc"

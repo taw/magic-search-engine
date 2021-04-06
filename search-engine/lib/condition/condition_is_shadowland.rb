@@ -4,8 +4,13 @@ class ConditionIsShadowland < ConditionNickname
       "choked estuary",
       "foreboding ruins",
       "fortified village",
+      "frostboil snarl",
+      "furycalm snarl",
       "game trail",
+      "necroblossom snarl",
       "port town",
+      "shineshadow snarl",
+      "vineglimmer snarl",
     ]
   end
 

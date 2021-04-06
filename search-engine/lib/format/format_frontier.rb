@@ -23,6 +23,7 @@ class FormatFrontier < Format
       "m21",
       "znr",
       "khm",
+      "stx",
     ]
   end
 end
