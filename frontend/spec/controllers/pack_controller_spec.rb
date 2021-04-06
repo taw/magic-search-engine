@@ -14,6 +14,11 @@ RSpec.describe PackController, type: :controller do
   it "actual pack" do
     get "show", params: { id: "m14" }
     assert_response 200
+    # assert_select %[.results_summary:contains("New Phyrexia contains 175 cards.")]
+    # assert_select %[.results_summary:contains("It is part of Scars of Mirrodin block.")]
+    # assert_select %[h3:contains("New Phyrexia")]
+    # assert_select %[a:contains("Karn Liberated")]
+    # assert_equal "New Phyrexia - #{APP_NAME}", html_document.title
   end
 
   it "set without packs" do

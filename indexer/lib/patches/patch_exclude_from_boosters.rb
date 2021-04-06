@@ -86,10 +86,12 @@ class PatchExcludeFromBoosters < Patch
       "xln",
       "znr",
       "khm",
-      "tsr",
-      "stx"
+      "tsr"
       # no weird cards in boosters and we can rely on mtgjson data
       number_i > base_size
+    when "stx"
+      # incorrect in mtgjson
+      number_i > 275
     when "sta"
       # incorrect in mtgjson
       number_i > 63
