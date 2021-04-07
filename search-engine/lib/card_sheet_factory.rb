@@ -974,11 +974,37 @@ class CardSheetFactory
   end
 
   def sta
+    # Each Draft Booster also has a dedicated slot with an uncommon (67%), rare (26.4%), or mythic rare (6.6%) Mystical Archive card.
+    # https://magic.wizards.com/en/articles/archive/feature/collecting-strixhaven-school-mages-2021-03-25
+    mix_sheets(
+      [from_query("e:sta r:mythic", 15), 3],
+      [from_query("e:sta r:rare", 30), 6],
+      [from_query("e:sta r:uncommon", 18), 25],
+    )
+  end
+
+  def stx_lesson
     # ratio is guessed, and most likely wrong
     mix_sheets(
-      [from_query("e:sta r:mythic", 15), 1],
-      [from_query("e:sta r:rare", 30), 2],
-      [from_query("e:sta r:uncommon", 18), 8],
+      [from_query("e:stx t:lesson r:mythic", 1), 1],
+      [from_query("e:stx t:lesson r:rare", 5), 2],
+      [from_query("e:stx t:lesson r:uncommon", 5), 4],
+      [from_query("e:stx t:lesson r:common", 9), 8],
+    )
+  end
+
+  def nonlesson_common(set_code)
+    from_query("e:#{set_code} r:common -t:lesson", kind: ColorBalancedCardSheet)
+  end
+
+  def nonlesson_uncommon(set_code)
+    from_query("e:#{set_code} r:uncommon -t:lesson")
+  end
+
+  def nonlesson_rare_mythic(set_code)
+    mix_sheets(
+      [from_query("e:#{set_code} r:rare -t:lesson"), 2],
+      [from_query("e:#{set_code} r:mythic -t:lesson"), 1],
     )
   end
 end

@@ -65,7 +65,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[dgm unh jou frf tsp cn2 bbd war arn cmb1].include?(set_code)
+      next if %W[dgm unh jou frf tsp cn2 bbd war arn cmb1 stx].include?(set_code)
       set_pp = "#{set.name} [#{set.code}]"
       pack = factory.for(set_code)
       next unless pack
@@ -1486,24 +1486,36 @@ describe PackFactory do
 
   context "STX / STA" do
     let(:set_code) { "stx" }
-    let(:common) { card("r:common") }
-    let(:uncommon) { card("r:uncommon") }
-    let(:rare) { card("r:rare") }
-    let(:mythic) { card("r:mythic") }
+    let(:common) { card("r:common -t:lesson") }
+    let(:uncommon) { card("r:uncommon -t:lesson") }
+    let(:rare) { card("r:rare -t:lesson") }
+    let(:mythic) { card("r:mythic -t:lesson") }
+    let(:lesson_common) { card("r:common t:lesson") }
+    let(:lesson_uncommon) { card("r:uncommon t:lesson") }
+    let(:lesson_rare) { card("r:rare t:lesson") }
+    let(:lesson_mythic) { card("r:mythic t:lesson") }
     let(:sta_uncommon) { card("r:uncommon", set_code: "sta") }
     let(:sta_rare) { card("r:rare", set_code: "sta") }
     let(:sta_mythic) { card("r:mythic", set_code: "sta") }
 
     context "normal" do
       it do
-        ev[common].should eq Rational(29,30) * Rational(10,105)
-        ev[uncommon].should eq Rational(3, 80)
-        ev[rare].should eq Rational(2, 69*2+21)
-        ev[mythic].should eq Rational(1, 69*2+21)
+        # Presumed to match regular set, but not guaranteed correct due to MDFCs
+        ev[common].should eq Rational(26,27) * Rational(9,96)
+        ev[uncommon].should eq Rational(3, 75)
+        ev[rare].should eq Rational(2, 64*2+20)
+        ev[mythic].should eq Rational(1, 64*2+20)
 
-        ev[sta_uncommon].should eq Rational(8, 219)
-        ev[sta_rare].should eq Rational(2, 219)
-        ev[sta_mythic].should eq Rational(1, 219)
+        # Guessed rates
+        ev[lesson_common].should eq Rational(8, 103)
+        ev[lesson_uncommon].should eq Rational(4, 103)
+        ev[lesson_rare].should eq Rational(2, 103)
+        ev[lesson_mythic].should eq Rational(1, 103)
+
+        # Official rates
+        ev[sta_uncommon].should eq Rational(2, 3) * Rational(1, 18)
+        ev[sta_rare].should eq Rational(1, 3) * Rational(2, 75)
+        ev[sta_mythic].should eq Rational(1, 3) * Rational(1, 75)
       end
     end
 
@@ -1511,10 +1523,16 @@ describe PackFactory do
       let(:foil) { true }
 
       it do
+        # just put everything into same slot due to no better information
         ev[common].should eq Rational(1,105) * Rational(1,3) * Rational(12,20)
         ev[uncommon].should eq Rational(1, 80) * Rational(1,3) * Rational(5,20)
         ev[rare].should eq Rational(2, 69*2+21) * Rational(1,3) * Rational(3,20)
         ev[mythic].should eq Rational(1, 69*2+21) * Rational(1,3) * Rational(3,20)
+
+        ev[lesson_common].should eq Rational(1,105) * Rational(1,3) * Rational(12,20)
+        ev[lesson_uncommon].should eq Rational(1, 80) * Rational(1,3) * Rational(5,20)
+        ev[lesson_rare].should eq Rational(2, 69*2+21) * Rational(1,3) * Rational(3,20)
+        ev[lesson_mythic].should eq Rational(1, 69*2+21) * Rational(1,3) * Rational(3,20)
 
         # This is likely incorrect?
         ev[sta_uncommon].should eq 0
