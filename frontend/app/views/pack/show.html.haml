@@ -22,6 +22,10 @@
 - else
   - sheets = @pack.sheets.keys
 
+%div
+  = link_to controller: "sealed", set: [params[:id]], count: [6] do
+    Explore this pack in Sealed.
+
 %h3 Sheets
 
 - sheets.each do |sheet|
