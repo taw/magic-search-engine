@@ -510,10 +510,10 @@ class PackFactory
       )
     when "stx"
       # PLACEHOLDER
-      build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {sta: 1, common: 10, uncommon: 3, rare_mythic: 1})
+      build_pack_with_random_foil(set_code, 1/3r, :foil, :nonlesson_common, {sta: 1, stx_lesson: 1, nonlesson_common: 9, nonlesson_uncommon: 3, nonlesson_rare_mythic: 1})
     when "stx-arena"
       # PLACEHOLDER
-      build_pack(set_code, {sta: 1, common: 10, uncommon: 3, rare_mythic: 1})
+      build_pack(set_code, {sta: 1, stx_lesson: 1, nonlesson_common: 9, nonlesson_uncommon: 3, nonlesson_rare_mythic: 1})
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this
