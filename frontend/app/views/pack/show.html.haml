@@ -36,6 +36,6 @@
       At rate #{weight} (#{(100.0*weight).round(2)}%)
     .row.multicard_row
       - cards.each_with_index do |card, i|
-        .col-3.col-sm-2.card_picture_cell{class: "card_#{i % 6}_of_6 card_#{i % 4}_of_4"}
+        .col-3.col-sm-2.card_picture_cell
           = link_to_card(card) do
             = render 'card/picture', card: card
