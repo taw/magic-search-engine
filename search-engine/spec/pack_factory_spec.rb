@@ -1502,15 +1502,16 @@ describe PackFactory do
       it do
         # Presumed to match regular set, but not guaranteed correct due to MDFCs
         ev[common].should eq Rational(26,27) * Rational(9,96)
-        ev[uncommon].should eq Rational(3, 75)
+        ev[uncommon].should eq Rational(3, 80)
         ev[rare].should eq Rational(2, 64*2+20)
         ev[mythic].should eq Rational(1, 64*2+20)
 
-        # Guessed rates
-        ev[lesson_common].should eq Rational(8, 103)
-        ev[lesson_uncommon].should eq Rational(4, 103)
-        ev[lesson_rare].should eq Rational(2, 103)
-        ev[lesson_mythic].should eq Rational(1, 103)
+        # Uncommon lessons just in regular uncommon slot
+        # Other rates guessed
+        ev[lesson_common].should eq Rational(11, 110)
+        ev[lesson_uncommon].should eq Rational(3, 80)
+        ev[lesson_rare].should eq Rational(2, 110)
+        ev[lesson_mythic].should eq Rational(1, 110)
 
         # Official rates
         ev[sta_uncommon].should eq Rational(2, 3) * Rational(1, 18)

@@ -19,8 +19,5 @@ class PackController < ApplicationController
       render_404
       return
     end
-
-    # ...
   end
-
 end
