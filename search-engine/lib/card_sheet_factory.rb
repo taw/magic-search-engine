@@ -985,20 +985,16 @@ class CardSheetFactory
 
   def stx_lesson
     # ratio is guessed, and most likely wrong
+    # uncommons are on uncommon sheet!
     mix_sheets(
       [from_query("e:stx t:lesson r:mythic", 1), 1],
       [from_query("e:stx t:lesson r:rare", 5), 2],
-      [from_query("e:stx t:lesson r:uncommon", 5), 4],
-      [from_query("e:stx t:lesson r:common", 9), 8],
+      [from_query("e:stx t:lesson r:common", 9), 11],
     )
   end
 
   def nonlesson_common(set_code)
     from_query("e:#{set_code} r:common -t:lesson", kind: ColorBalancedCardSheet)
-  end
-
-  def nonlesson_uncommon(set_code)
-    from_query("e:#{set_code} r:uncommon -t:lesson")
   end
 
   def nonlesson_rare_mythic(set_code)
