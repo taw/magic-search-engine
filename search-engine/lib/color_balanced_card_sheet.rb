@@ -94,8 +94,8 @@ class ColorBalancedCardSheet < CardSheet
       # but probability indicates we should return another card from it
       # Whenever this happens, a tiny bias is introduced
       card = random_card_by_weights(den, nums, subsheets)
-      name = card.name
       redo if card.nil?
+      name = card.name
       redo if seen_names.include?(name)
       result << card
       seen_names << name
