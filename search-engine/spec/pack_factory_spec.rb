@@ -609,9 +609,12 @@ describe PackFactory do
     let(:set_code) { "ust" }
     let(:basic) { card("r:basic") }
     let(:steamflogger_boss) { card("Steamflogger Boss") }
-    let(:common) { card("-t:contraption r:common") }
-    let(:uncommon) { card("-t:contraption r:uncommon") }
-    let(:rare) { card("-t:contraption r:rare -border:black") }
+    let(:common) { card("-t:contraption r:common Adorable Kitten") }
+    let(:variant_common) {  card("-t:contraption r:common Killbot") }
+    let(:uncommon) { card("-t:contraption r:uncommon Clever Combo") }
+    let(:variant_uncommon) { card("-t:contraption r:uncommon Garbage Elemental") }
+    let(:rare) { card("-t:contraption r:rare -border:black Animate Library") }
+    let(:variant_rare) { card("-t:contraption r:rare -border:black Very Cryptic Command") }
     let(:mythic) { card("-t:contraption r:mythic") }
     let(:contraption_common) { card("t:contraption r:common") }
     let(:contraption_uncommon) { card("t:contraption r:uncommon") }
@@ -623,10 +626,14 @@ describe PackFactory do
         ev[basic].should eq Rational(24, 121) * Rational(39, 40)
         ev[steamflogger_boss].should eq Rational(1, 121) * Rational(39, 40)
 
-        ev[common].should eq Rational(1, 82) * Rational(775, 100)
-        ev[uncommon].should eq Rational(3, 75)
-        ev[rare].should eq Rational(2, 110)
-        ev[mythic].should eq Rational(1, 110)
+        # Secret Base is overprinted, so numbers do not add up
+        ev[common].should eq Rational(4, 241) * Rational(775, 100)
+        ev[variant_common].should eq Rational(4, 241) * Rational(775, 100) * Rational(1, 4)
+        ev[uncommon].should eq Rational(3, 60)
+        ev[variant_uncommon].should eq Rational(3, 60) * Rational(1, 6)
+        ev[rare].should eq Rational(2, 10+35*2)
+        ev[variant_rare].should eq Rational(2, 10+35*2) * Rational(1, 6)
+        ev[mythic].should eq Rational(1, 10+35*2)
         ev[contraption_common].should eq Rational(8, 205) * Rational(78, 40)
         ev[contraption_uncommon].should eq Rational(4, 205) * Rational(78, 40)
         ev[contraption_rare].should eq Rational(2, 205) * Rational(78, 40)
@@ -640,10 +647,13 @@ describe PackFactory do
         ev[basic].should eq Rational(24, 121) * Rational(1, 40)
         ev[steamflogger_boss].should eq Rational(1, 121) * Rational(1, 40)
 
-        ev[common].should eq Rational(1, 82) * Rational(1, 4) * Rational(12,20)
-        ev[uncommon].should eq Rational(1, 75) * Rational(1, 4) * Rational(5,20)
-        ev[rare].should eq Rational(2, 110) * Rational(1, 4) * Rational(3,20)
-        ev[mythic].should eq Rational(1, 110) * Rational(1, 4) * Rational(3,20)
+        ev[common].should eq Rational(4, 241) * Rational(1, 4) * Rational(12,20)
+        ev[variant_common].should eq Rational(4, 241) * Rational(1, 4) * Rational(12,20) * Rational(1, 4)
+        ev[uncommon].should eq Rational(1, 60) * Rational(1, 4) * Rational(5,20)
+        ev[variant_uncommon].should eq Rational(1, 60) * Rational(1, 4) * Rational(5,20) * Rational(1, 6)
+        ev[rare].should eq Rational(2, 80) * Rational(1, 4) * Rational(3,20)
+        ev[variant_rare].should eq Rational(2, 80) * Rational(1, 4) * Rational(3,20) * Rational(1, 6)
+        ev[mythic].should eq Rational(1, 80) * Rational(1, 4) * Rational(3,20)
 
         ev[contraption_common].should eq Rational(8, 205) * Rational(2, 40)
         ev[contraption_uncommon].should eq Rational(4, 205) * Rational(2, 40)
