@@ -328,10 +328,10 @@ class PackFactory
       # Foil contraptions would do too?
       # Ratios are total guesses
       WeightedPack.new(
-        build_pack(set_code, {ust_basic: 1, ust_contraption: 2, ust_common: 8, ust_uncommon: 3, ust_rare_mythic: 1}) => 27,
-        build_pack(set_code, {ust_basic: 1, ust_contraption: 2, ust_foil: 1, ust_common: 7, ust_uncommon: 3, ust_rare_mythic: 1}) => 10,
-        build_pack(set_code, {ust_basic_foil: 1, ust_contraption: 2, ust_common: 8, ust_uncommon: 3, ust_rare_mythic: 1}) => 1,
-        build_pack(set_code, {ust_basic: 1, ust_contraption: 1, ust_contraption_foil: 1, ust_common: 8, ust_uncommon: 3, ust_rare_mythic: 1}) => 2,
+        build_pack(set_code, {ust_basic: 1, ust_contraption: 2, explicit_common: 8, explicit_uncommon: 3, explicit_rare: 1}) => 27,
+        build_pack(set_code, {ust_basic: 1, ust_contraption: 2, ust_foil: 1, explicit_common: 7, explicit_uncommon: 3, explicit_rare: 1}) => 10,
+        build_pack(set_code, {ust_basic_foil: 1, ust_contraption: 2, explicit_common: 8, explicit_uncommon: 3, explicit_rare: 1}) => 1,
+        build_pack(set_code, {ust_basic: 1, ust_contraption: 1, ust_contraption_foil: 1, explicit_common: 8, explicit_uncommon: 3, explicit_rare: 1}) => 2,
       )
     when "bbd"
       # I ran the math, and best numbers are totally weird, so some rounded:

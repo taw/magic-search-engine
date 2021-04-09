@@ -794,21 +794,6 @@ class CardSheetFactory
     ust_basic(foil: true)
   end
 
-  def ust_common(foil: false)
-    from_query("e:ust r:common -t:contraption", 82, foil: foil, kind: ColorBalancedCardSheet)
-  end
-
-  def ust_uncommon(foil: false)
-    from_query("e:ust r:uncommon -t:contraption", 75, foil: foil)
-  end
-
-  def ust_rare_mythic(foil: false)
-    mix_sheets(
-      [from_query("e:ust -t:contraption -border:black r:rare", 50, foil: foil), 2],
-      [from_query("e:ust -t:contraption r:mythic", 10, foil: foil), 1],
-    )
-  end
-
   # Numbers are totally made up
   # Maybe some rarity is actually not exact?
   def ust_contraption(foil: false)
@@ -826,9 +811,9 @@ class CardSheetFactory
 
   def ust_foil
     sheets = [
-      ust_common(foil: true),
-      ust_uncommon(foil: true),
-      ust_rare_mythic(foil: true),
+      explicit_common("ust", foil: true),
+      explicit_uncommon("ust", foil: true),
+      explicit_rare("ust", foil: true),
     ]
     weights = [
       12,
