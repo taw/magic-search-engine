@@ -14,6 +14,9 @@
   - if @set.release_date
     .col-12
       = "Released: #{@set.release_date}"
+  - if @set.has_individual_card_release_dates?
+    .col-12
+      = "Individual cards released between #{@set.individual_card_release_dates.join(" and ")}."
   - if @set.base_set_size
     .col-12
       Base set size: #{@set.base_set_size} cards.

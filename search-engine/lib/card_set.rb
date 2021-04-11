@@ -27,6 +27,14 @@ class CardSet
     @base_set_size = data["base_set_size"]
   end
 
+  def has_individual_card_release_dates?
+    @printings.any?{|c| c.release_date != @release_date}
+  end
+
+  def individual_card_release_dates
+    @printings.map(&:release_date).minmax
+  end
+
   def cards_in_precons
     @db.cards_in_precons[@code]
   end
