@@ -1,7 +1,8 @@
 class PatchNormalizeReleaseDate < Patch
   def call
+    # mtgjson droped them, then readded them under different name
     each_printing do |card|
-      release_date = card.delete("releaseDate") or next
+      release_date = (card.delete("releaseDate") or card.delete("originalReleaseDate") or next)
       card["release_date"] = normalize_release_date(release_date)
     end
 

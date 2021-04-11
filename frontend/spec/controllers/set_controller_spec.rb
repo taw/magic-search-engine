@@ -21,6 +21,13 @@ RSpec.describe SetController, type: :controller do
     assert_equal "New Phyrexia - #{APP_NAME}", html_document.title
   end
 
+  it "release dates" do
+    get "show", params: { id: "prna" }
+    assert_response 200
+    expect(css_select(".results_summary").text).to match(/Released: 2019-01-25/)
+    expect(css_select(".results_summary").text).to match(/Individual cards released between 2019-01-25 and 2020-09-25/)
+  end
+
   it "fake set" do
     get "show", params: { id: "lolwtf" }
     assert_response 404

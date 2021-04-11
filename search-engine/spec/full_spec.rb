@@ -156,13 +156,17 @@ describe "Full Database Test" do
   end
 
   it "firstprint" do
-    assert_search_results "t:planeswalker firstprint=m12", "Chandra, the Firebrand", "Garruk, Primal Hunter", "Jace, Memory Adept"
+    assert_search_results "t:planeswalker firstprint=m12",
+      "Chandra, the Firebrand",
+      "Garruk, Primal Hunter",
+      "Jace, Memory Adept"
   end
 
   it "lastprint" do
     assert_search_results "t:planeswalker lastprint<=roe",
       "Chandra Ablaze"
     assert_search_results "t:planeswalker lastprint<=2011",
+      "Ajani Goldmane",
       "Chandra Ablaze",
       "Elspeth Tirel"
   end
@@ -221,13 +225,15 @@ describe "Full Database Test" do
       "Lightning Bolt",
       "Mahamoti Djinn",
       "Mountain",
+      "Mox Emerald",
       "Nightmare",
       "Plains",
       "Sengir Vampire",
       "Serra Angel",
       "Shivan Dragon",
       "Sol Ring",
-      "Swamp"
+      "Swamp",
+      "Tundra"
   end
 
   it "alt rarity" do
@@ -453,8 +459,8 @@ describe "Full Database Test" do
   end
 
   it "year" do
-    "t:planeswalker year = 2010".should have_count_printings 15
-    "t:planeswalker year < 2013".should have_count_printings 68
+    "t:planeswalker year = 2010".should have_count_printings 16
+    "t:planeswalker year < 2013".should have_count_printings 72
     "t:planeswalker year > 2014".should equal_search "t:planeswalker year >= 2015"
   end
 

@@ -50,7 +50,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Jace Beleren {1}{u}{u}
-        [lrw dd2 dd2 pbook m10 m11 jvc ss1 prm]
+        [lrw dd2 dd2 pbook m10 m11 prm jvc ss1]
         Legendary Planeswalker - Jace
         [+2]: Each player draws a card.
         [−1]: Target player draws a card.
@@ -137,7 +137,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Steam Vents
-        [gpt rtr exp prm grn pgrn]
+        [gpt rtr exp grn pgrn prm]
         Land - Island Mountain
         ({T}: Add {U} or {R}.)
         As Steam Vents enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.
@@ -152,7 +152,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Bloodbraid Elf {2}{r}{g}
-        [-arb +f10 +pc2 -ema -c16 +pca +prm +mb1 -tsr]
+        [-arb +f10 +pc2 +prm -ema -c16 +pca +mb1 -tsr]
         Creature - Elf Berserker
         Haste
         Cascade
