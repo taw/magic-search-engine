@@ -9,7 +9,9 @@ describe "Game queries" do
     assert_search_equal "is:paper", "game:paper"
     # This should work once everything is migrated and all issues fixed:
     # (or something like that without gold bordered / oversized / etc.)
-    # assert_search_equal "is:paper", "-is:digital"
+    assert_search_results "is:paper is:digital"
+    assert_search_results "is:paper border:gold"
+    assert_search_results "is:paper is:oversized"
   end
 
   it "is:mtgo" do
@@ -23,6 +25,9 @@ describe "Game queries" do
     assert_search_results "e:isd is:arena"
   end
 
-  # TODO: "is:shandalar"
+  it "is:shandalar" do
+    assert_search_equal "is:shandalar", "game:shandalar"
+  end
+
   # TODO: "is:sega"
 end
