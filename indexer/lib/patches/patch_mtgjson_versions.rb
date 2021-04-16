@@ -104,11 +104,6 @@ class PatchMtgjsonVersions < Patch
       card.delete("manaCost") if card["manaCost"] == ""
       card.delete("names") if card["names"] == []
 
-      # Moved in v5
-      card["arena"] = true if card.delete("isArena") or card["availability"]&.delete("arena")
-      card["paper"] = true if card.delete("isPaper") or card["availability"]&.delete("paper")
-      card["mtgo"] = true if card.delete("isMtgo") or card["availability"]&.delete("mtgo")
-
       if card["frameVersion"] == "future"
         card["timeshifted"] = true
       end
@@ -131,6 +126,20 @@ class PatchMtgjsonVersions < Patch
       card["spotlight"] = card.delete("isStorySpotlight")
       card["fullart"] = card.delete("isFullArt")
       card["textless"] = card.delete("isTextless")
+
+      # Moved in v5
+      card["arena"] = true if card.delete("isArena") or card["availability"]&.delete("arena")
+      card["paper"] = true if card.delete("isPaper") or card["availability"]&.delete("paper")
+      card["mtgo"] = true if card.delete("isMtgo") or card["availability"]&.delete("mtgo")
+
+      # This logic changed at some point, I like old logic better
+      if card["paper"] and card["oversized"]
+        card.delete("paper")
+      end
+
+      if card["paper"] and card["border"] == "gold"
+        card.delete("paper")
+      end
 
       # Drop v3 layouts, use v4 layout here
       if card["layout"] == "plane" or card["layout"] == "phenomenon"
