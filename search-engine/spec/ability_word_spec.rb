@@ -10,6 +10,7 @@ describe "Ability Word Regexp" do
     other_phrases = [
       "An opponent chooses one",
       "Boast",
+      "Choose one at random", # playtest cards
       "Choose one or both",
       "Choose one or more",
       "Choose one",
@@ -23,6 +24,7 @@ describe "Ability Word Regexp" do
       "II",
       "III",
       "IV",
+      "Ransom", # playtest cards
       "Target opponent chooses one",
     ]
 

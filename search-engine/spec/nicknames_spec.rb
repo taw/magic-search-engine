@@ -34,8 +34,7 @@ describe "Card nicknames" do
       "Wooded Foothills"
     assert_search_results "is:fetchland",
       *cards_matching{|c|
-        c.text =~ %r[\{T\}, Pay 1 life, Sacrifice #{c.name}: Search your library for an? \S+ or \S+ card, put it onto the battlefield, then shuffle your library.] }
-                  # %r[\{T\}, Pay 1 life, Sacrifice #{c.name}: Search your library for an? \S+ or \S+ card, put it onto the battlefield, then shuffle your library.
+        c.text =~ %r[\{T\}, Pay 1 life, Sacrifice #{c.name}: Search your library for an? \S+ or \S+ card, put it onto the battlefield, then shuffle.] }
   end
 
   # The name is also used for all lands that produce 2 mana colors
