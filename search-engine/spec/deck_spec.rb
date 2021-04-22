@@ -106,13 +106,13 @@ describe Deck do
       when "pc2"
         sets_found.should match_array ["pc2", "opc2"]
       when "c20"
-        # It looks like it uses IKO basics and a lot of other cards
-        # Not sure if legit
         sets_found.should match_array ["c20", "iko"]
       when "znc"
         sets_found.should match_array ["znr", "znc"]
       when "khc"
         sets_found.should match_array ["khm", "khc"]
+      when "c21"
+        sets_found.should match_array ["c21", "stx"]
       else
         sets_found.should eq [set.code]
       end
@@ -134,6 +134,8 @@ describe Deck do
       next if set.code == "znc"
       # Contains some KHM cards
       next if set.code == "khc"
+      # Contains some STX cards
+      next if set.code == "c21"
 
       # All names match both ways
       set_card_names = set.physical_card_names
