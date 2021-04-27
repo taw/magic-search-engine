@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # for same sets, indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(22451)
-    db.number_of_printings.should eq(56038)
+    db.number_of_printings.should eq(56064)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -239,6 +239,7 @@ describe "Full Database Test" do
   it "alt rarity" do
     assert_search_include "r:common alt:r:uncommon", "Doom Blade"
     assert_search_results "r:common -is:digital alt:(r:mythic -is:digital)",
+      "All Is Dust",
       "Boil",
       "Cabal Ritual",
       "Capsize",

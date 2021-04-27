@@ -259,6 +259,10 @@ describe "Foils" do
         assert_foiling(set.printings, "both")
       when "c21"
         warn "C21 mtgjson foiling data is not fixed yet"
+      when "2xm"
+        promo_cards, regular_cards = set.printings.partition{|c| c.number == "383" }
+        assert_foiling(promo_cards, "foilonly")
+        assert_foiling(regular_cards, "both")
       else
         assert_by_type(set)
       end
