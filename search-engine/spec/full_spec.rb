@@ -239,7 +239,6 @@ describe "Full Database Test" do
   it "alt rarity" do
     assert_search_include "r:common alt:r:uncommon", "Doom Blade"
     assert_search_results "r:common -is:digital alt:(r:mythic -is:digital)",
-      "All Is Dust",
       "Boil",
       "Cabal Ritual",
       "Capsize",

@@ -72,6 +72,8 @@ describe "Foils" do
       next if set.types.include?("token")
 
       case set.code
+      when "ha1", "ha2", "ha3", "ha4"
+        # Does it even matter on Arena
       when "g17", "g18", "fmb1"
         assert_foiling(set.printings, "foilonly")
       when "phuk", "arn", "mir", "drk", "atq", "4ed", "mb1"
