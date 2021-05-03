@@ -127,6 +127,11 @@ class PatchMtgjsonVersions < Patch
       card["fullart"] = card.delete("isFullArt")
       card["textless"] = card.delete("isTextless")
 
+      # mtgjson bug
+      if card["set"]["official_code"] == "OC21"
+        card["oversized"] = true
+      end
+
       # Moved in v5
       card["arena"] = true if card.delete("isArena") or card["availability"]&.delete("arena")
       card["paper"] = true if card.delete("isPaper") or card["availability"]&.delete("paper")

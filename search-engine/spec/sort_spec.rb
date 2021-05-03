@@ -70,7 +70,7 @@ describe "Sorting" do
       ["Chandra, the Firebrand", "m13"],
       ["Chandra Nalaar", "m11"],
       ["Chandra Ablaze", "zen"],
-      ["Chandra, Gremlin Wrangler", "htr"],
+      ["Chandra, Gremlin Wrangler", "htr16"],
     ])
   end
 
@@ -87,7 +87,7 @@ describe "Sorting" do
       ["Chandra, Fire Artisan", "war"],
       ["Chandra, Bold Pyromancer", "dom"],
       ["Chandra, Roaring Flame", "v17"],
-      ["Chandra, Gremlin Wrangler", "htr"],
+      ["Chandra, Gremlin Wrangler", "htr16"],
       ["Chandra, Pyromaster", "e01"],
       ["Chandra, Pyrogenius", "kld"],
       ["Chandra Nalaar", "jvc"],
@@ -119,7 +119,7 @@ describe "Sorting" do
       ["Chandra, Novice Pyromancer", "m20"],
       ["Chandra, Flame's Catalyst", "m21"],
       ["Chandra, Heart of Fire", "m21"],
-      ["Chandra, Gremlin Wrangler", "htr"],
+      ["Chandra, Gremlin Wrangler", "htr16"],
     ])
   end
 
@@ -133,7 +133,7 @@ describe "Sorting" do
       ["Chandra, Flamecaller", "ogw"],
       ["Chandra, Pyrogenius", "kld"],
       ["Chandra, Torch of Defiance", "kld"],
-      ["Chandra, Gremlin Wrangler", "htr"],
+      ["Chandra, Gremlin Wrangler", "htr16"],
       ["Chandra, Bold Pyromancer", "dom"],
       ["Chandra, Fire Artisan", "war"],
       ["Chandra, Acolyte of Flame", "m20"],
@@ -195,7 +195,7 @@ describe "Sorting" do
       ["Chandra Nalaar", "dd2", "34"],
       ["Chandra, Bold Pyromancer", "dom", "275"],
       ["Chandra, Pyromaster", "e01", "42"],
-      ["Chandra, Gremlin Wrangler", "htr", "1"],
+      ["Chandra, Gremlin Wrangler", "htr16", "1"],
       ["Chandra, Torch of Defiance", "kld", "110"],
       ["Chandra, Pyrogenius", "kld", "265"],
       ["Chandra, the Firebrand", "m12", "124"],
@@ -228,7 +228,7 @@ describe "Sorting" do
       ["Chandra, the Firebrand", "m13", "123"],
       ["Chandra Nalaar", "m11", "127"],
       ["Chandra, Pyrogenius", "kld", "265"],
-      ["Chandra, Gremlin Wrangler", "htr", "1"],
+      ["Chandra, Gremlin Wrangler", "htr16", "1"],
       ["Chandra, Bold Pyromancer", "dom", "275"],
     ])
   end
