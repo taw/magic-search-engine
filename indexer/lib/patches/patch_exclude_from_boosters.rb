@@ -94,7 +94,7 @@ class PatchExcludeFromBoosters < Patch
       number_i > 275
     when "sta"
       # incorrect in mtgjson
-      number_i > 63
+      number_i > 63 or number =~ /e/
     when "m21"
       # showcase basics actually in boosters
       number_i > base_size and not (309..313).include?(number_i)

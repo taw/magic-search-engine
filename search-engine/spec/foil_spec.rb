@@ -258,9 +258,14 @@ describe "Foils" do
         booster_cards, extra_cards = set.printings.partition(&:in_boosters?)
         assert_foiling(extra_cards, "foilonly")
         assert_foiling(booster_cards, "both")
-      when "sta", "stx"
+      when "stx"
         # so says mtgjson
         assert_foiling(set.printings, "both")
+      when "sta"
+        # so says mtgjson
+        normal_cards, extra_cards = set.printings.partition{|c| c.number !~ /e/}
+        assert_foiling(normal_cards, "both")
+        assert_foiling(extra_cards, "foilonly")
       when "c21"
         warn "C21 mtgjson foiling data is not fixed yet"
       when "2xm"
