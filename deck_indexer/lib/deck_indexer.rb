@@ -88,7 +88,7 @@ class DeckIndexer
 
     # All other printings in the future, so we don't care
     return printings.values[0] if printings.size == 1
-    raise "All printings from the future" if printings.empty?
+    raise "All printings of #{card_name} from the future" if printings.empty?
 
     # It seems that Masters Edition 2 precons contained Masters Edition cards too
     return printings["me1"] if set_code == "me2" and printings["me1"]
@@ -100,7 +100,7 @@ class DeckIndexer
       ].any?{|st| @sets[sc]["types"].include?(st) }
     }
     return printings.values[0] if printings.size == 1
-    raise "All printings from the promo/precon cards" if printings.empty?
+    raise "All printings of #{card_name} from the promo/precon cards" if printings.empty?
 
     # If it was printed in earlier sets of same block, ignore everything else
     block_name = @sets[set_code]["block_name"]
