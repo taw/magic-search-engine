@@ -42,6 +42,7 @@ describe Deck do
       ["starter", "Welcome Deck"],
       ["starter", "Advanced Pack"],
       ["expansion", "Challenger Deck"],
+      ["core", "Challenger Deck"],
       ["box", "MTGO Theme Deck"], # MTGO
       ["box", "Commander Deck"], # MTGO
       ["core", "Spellslinger Starter Kit"],
