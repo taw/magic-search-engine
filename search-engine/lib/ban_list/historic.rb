@@ -77,4 +77,10 @@ BanList.for_format("historic") do
     "Channel" => "banned",
     "Natural Order" => "banned",
   )
+
+  change(
+    "2021-05-20",
+    "https://magic.wizards.com/en/articles/archive/news/may-19-2021-banned-and-restricted-announcement",
+    "Thassa's Oracle" => "banned",
+  )
 end
