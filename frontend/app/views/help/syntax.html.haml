@@ -97,8 +97,12 @@
       = search_help "ind:*", "cards with any color indicator"
       = search_help "has:indicator", "cards with any color indicator"
 
-    %h4 Search by converted mana cost
+    %h4 Search by mana value / converted mana cost
+    %div It works the same with either name
     %ul
+      = search_help "mv=3", "cards with mana value 3"
+      = search_help "mv>=3", "cards with mana value 3 or more"
+      = search_help "mv<2", "cards with mana value less than 2"
       = search_help "cmc=3", "cards with converted mana cost 3"
       = search_help "cmc>=3", "cards with converted mana cost 3 or more"
       = search_help "cmc<2", "cards with converted mana cost less than 2"
@@ -151,7 +155,7 @@
       = search_help "pow=4", "creature cards with power 4"
       = search_help "tou>=5", "creature cards with toughness 5 or more"
       = search_help "pow>tou", "creature cards with power greater than toughness"
-      = search_help "tou=cmc", "creature cards with toughness equal to converted mana cost"
+      = search_help "tou=mv", "creature cards with toughness equal to mana value"
       = search_help "loyalty=3", "planeswalker cards with starting loyalty 3"
       = search_help "pow=1+*", "creature cards with power equal 1+*"
       = search_help "tou=7-*", "creature cards with toughness equal 7-*"
@@ -159,12 +163,12 @@
 
     %h4 Boolean expressions
     %ul
-      = search_help "t:goblin AND cmc=2", "cards which are Goblins and have converted mana cost 2"
-      = search_help "t:goblin AND cmc=2", "cards which are Goblins and have converted mana cost 2 (AND is optional)"
-      = search_help "t:goblin OR cmc=2", "cards which are Goblins or have converted mana cost 2"
+      = search_help "t:goblin AND mv=2", "cards which are Goblins and have mana value 2"
+      = search_help "t:goblin AND mv=2", "cards which are Goblins and have mana value 2 (AND is optional)"
+      = search_help "t:goblin OR mv=2", "cards which are Goblins or have mana value 2"
       = search_help "c:u (t:goblin OR t:elf)", "cards which are blue Goblins or blue Elves"
-      = search_help "t:goblin -cmc=2", "cards which are Goblins but do not have converted mana cost 2"
-      = search_help "t:goblin not cmc=2", "cards which are Goblins but do not have converted mana cost 2"
+      = search_help "t:goblin -mv=2", "cards which are Goblins but do not have mana value 2"
+      = search_help "t:goblin not mv=2", "cards which are Goblins but do not have mana value 2"
 
     %h4 Search by rarity
     %div Search engine recognizes 6 rarities - basic, common, uncommon, rare, mythic, and special.
@@ -363,18 +367,18 @@
       = search_help "lastprint<lw", "cards last printed in in Lorwyn set or earlier"
 
     %h4 Search by other part
-    %div Every card part (of split, flip, or double-faced card) is treated as separate object, so search like cmc=2 cmc=3 won't return anything, as no part has cmc of 2 and 3 simultaneously. There's special syntax for that.
+    %div Every card part (of split, flip, or double-faced card) is treated as separate object, so search like mv=2 mv=3 won't return anything, as no part has mana value of 2 and 3 simultaneously. There's special syntax for that.
 
     %ul
-      = search_help "cmc=2 // cmc=3", "cards with converted mana cost 2 or one side and converted mana cost 3 on another (split spells)"
+      = search_help "mv=2 // mv=3", "cards with mana value 2 or one side and mana value 3 on another (split spells)"
       = search_help "t:creature // t:planeswalker", "cards where one side is a creature and the other side is a planeswalker (Magic Origins Planeswalkers)"
       = search_help "t:creature //", "cards where one side is a creature, and there's other side"
       = search_help "far // away", "card named Far on one side and Away on another side"
 
     %div There's also lower level syntax if you prefer that. Unlike // it will return only specifically requested side, not both.
     %ul
-      = search_help "cmc=2 other:color:w", "cards parts with converted mana cost 2, for which other side is white"
-      = search_help "cmc=2 part:color:w", "cards parts with converted mana cost 2, for which either side is white"
+      = search_help "mv=2 other:color:w", "cards parts with mana value 2, for which other side is white"
+      = search_help "mv=2 part:color:w", "cards parts with mana value 2, for which either side is white"
 
     %h4 Search by related card
     %div If a card is related to another card (e.g. the card names the other card, or vice versa), you can use that in your search.
@@ -485,7 +489,7 @@
     %h4 Sort results
     %div Use sort: operator to order results in a different way. By default alphabetical sorting is used.
     %div Results with equal sort key are then sorted by name.
-    %div Missing values (like cards with no cmc when sorting by cmc) go last.
+    %div Missing values (like cards with no mana value when sorting by mana value) go last.
     %div You can use minus to reverse search order, or comma to specify multiple search keys.
     %ul
       = search_help "sort:name", "sort by name alphabetically (default)"
@@ -494,7 +498,8 @@
       = search_help "sort:old", "sort results by oldest first, counting only regular sets for sake of order"
       = search_help "sort:oldall", "sort results by oldest first, counting all printings"
       = search_help "sort:artist", "sort results by artist"
-      = search_help "sort:cmc", "sort results by converted mana cost (highest first)"
+      = search_help "sort:mv", "sort results by mana value (highest first)"
+      = search_help "sort:cmc", "sort results by converted mana cost (highest first; synonym of sort:mv)"
       = search_help "sort:pow", "sort results by power (highest first)"
       = search_help "sort:tou", "sort results by toughness (highest first)"
       = search_help "sort:set", "sort results by set code and collector number"

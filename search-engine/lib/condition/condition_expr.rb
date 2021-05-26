@@ -39,7 +39,7 @@ class ConditionExpr < ConditionSimple
       eval_card_value(card.power)
     when "tou"
       eval_card_value(card.toughness)
-    when "cmc"
+    when "cmc", "mv"
       eval_card_value(card.cmc)
     when "loy"
       eval_card_value(card.loyalty)

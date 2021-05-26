@@ -33,6 +33,16 @@ describe "Unsets" do
     "cmc>1"  .should exclude_cards "Little Girl"
   end
 
+  it "half mv" do
+    "mv=1"  .should exclude_cards "Little Girl"
+    "mv>0"  .should include_cards "Little Girl"
+    "mv=0.5".should include_cards "Little Girl"
+    "mv=½"  .should include_cards "Little Girl"
+    "mv<1"  .should include_cards "Little Girl"
+    "mv=1"  .should exclude_cards "Little Girl"
+    "mv>1"  .should exclude_cards "Little Girl"
+  end
+
   it "infinite power" do
     "pow>30".should return_cards "B.F.M. (Big Furry Monster)",
       "B.F.M. (Big Furry Monster, Right Side)",

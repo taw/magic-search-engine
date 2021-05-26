@@ -189,6 +189,50 @@ describe "Sorting" do
     ])
   end
 
+  it "mv" do
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:mv", :name, :cmc).should eq([
+      ["Chandra Ablaze", 6],
+      ["Chandra, Awakened Inferno", 6],
+      ["Chandra, Bold Pyromancer", 6],
+      ["Chandra, Flame's Catalyst", 6],
+      ["Chandra, Flame's Fury", 6],
+      ["Chandra, Flamecaller", 6],
+      ["Chandra, Pyrogenius", 6],
+      ["Chandra Nalaar", 5],
+      ["Chandra, Heart of Fire", 5],
+      ["Chandra, Fire Artisan", 4],
+      ["Chandra, Gremlin Wrangler", 4],
+      ["Chandra, Novice Pyromancer", 4],
+      ["Chandra, Pyromaster", 4],
+      ["Chandra, Torch of Defiance", 4],
+      ["Chandra, the Firebrand", 4],
+      ["Chandra, Acolyte of Flame", 3],
+      ["Chandra, Roaring Flame", 3],
+    ])
+  end
+
+  it "-mv" do
+    ordered_search("t:chandra -is:digital -is:promo -e:sld sort:-mv", :name, :cmc).should eq([
+      ["Chandra, Acolyte of Flame", 3],
+      ["Chandra, Roaring Flame", 3],
+      ["Chandra, Fire Artisan", 4],
+      ["Chandra, Gremlin Wrangler", 4],
+      ["Chandra, Novice Pyromancer", 4],
+      ["Chandra, Pyromaster", 4],
+      ["Chandra, Torch of Defiance", 4],
+      ["Chandra, the Firebrand", 4],
+      ["Chandra Nalaar", 5],
+      ["Chandra, Heart of Fire", 5],
+      ["Chandra Ablaze", 6],
+      ["Chandra, Awakened Inferno", 6],
+      ["Chandra, Bold Pyromancer", 6],
+      ["Chandra, Flame's Catalyst", 6],
+      ["Chandra, Flame's Fury", 6],
+      ["Chandra, Flamecaller", 6],
+      ["Chandra, Pyrogenius", 6],
+    ])
+  end
+
   it "set" do
     ordered_search("t:chandra -is:digital -is:promo -e:sld sort:set", :name, :set_code, :number).should eq([
       ["Chandra, Flamecaller", "c20", "145"],
