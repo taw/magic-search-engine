@@ -1,6 +1,6 @@
 class Sorter
   COLOR_ORDER = ["", "w", "u", "b", "r", "g", "uw", "bu", "br", "gr", "gw", "bw", "ru", "bg", "rw", "gu", "guw", "buw", "bru", "bgr", "grw", "bgw", "ruw", "bgu", "brw", "gru", "bruw", "bgru", "bgrw", "gruw", "bguw", "bgruw"].each_with_index.to_h.freeze
-  SORT_ORDERS = ["default", "ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou", "artist", "released", "set", "firstprint", "lastprint"].sort
+  SORT_ORDERS = ["default", "ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou", "artist", "released", "set", "firstprint", "lastprint", "mv"].sort
 
   # Fallback sorting for printings of each card:
   # * not MTGO only
@@ -66,9 +66,9 @@ class Sorter
         [-c.last_release_date.to_i_sort]
       when "-lastprint"
         [c.last_release_date.to_i_sort]
-      when "cmc"
+      when "cmc", "mv"
         [c.cmc ? 0 : 1, -c.cmc.to_i]
-      when "-cmc"
+      when "-cmc", "-mv"
         [c.cmc ? 0 : 1, c.cmc.to_i]
       when "pow"
         [c.power ? 0 : 1, -c.power.to_i]
