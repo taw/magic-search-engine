@@ -316,6 +316,8 @@ class Card
         ci << $1 << $2
       when "chaos"
         # planechase special symbol, disregard
+      when "+1"
+        # loyaty symbol, on Carth the Lion
       else
         raise "Unknown mana symbol `#{sym}'"
       end
