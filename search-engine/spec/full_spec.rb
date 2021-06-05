@@ -6,8 +6,8 @@ describe "Full Database Test" do
   # by changes which are not expected to, like updating to new mtgjson data
   # for same sets, indexer changes etc.
   it "stats" do
-    db.number_of_cards.should eq(22453)
-    db.number_of_printings.should eq(56508)
+    db.number_of_cards.should eq(22711)
+    db.number_of_printings.should eq(57005)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -210,6 +210,7 @@ describe "Full Database Test" do
       "Twiddle",
       "Wall of Wood",
       "Wanderlust",
+      "Wonder",
       "Wood Elves",
       "Youthful Knight"
   end
@@ -279,7 +280,7 @@ describe "Full Database Test" do
   end
 
   it "loy:special" do
-    assert_search_results "loy=0", "Jeska, Thrice Reborn"
+    assert_search_results "loy=0", "Jeska, Thrice Reborn", "Dakkon, Shadow Slayer"
     assert_search_equal "loy=x", "loy=X"
     assert_search_results "loy=x", "Nissa, Steward of Elements"
   end

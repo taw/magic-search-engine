@@ -74,6 +74,7 @@ describe "Regexp" do
 
   it "regexp name text" do
     assert_search_results "f:modern n:/.{30}/",
+      "Asmoranomardicadaistinaculdacar",
       "Circle of Protection: Artifacts",
       "Coax from the Blind Eternities",
       "Hanweir, the Writhing Township",

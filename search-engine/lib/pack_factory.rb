@@ -225,6 +225,9 @@ class PackFactory
       # CardSheetFactory is aware that mastrepieces go onto foil sheet, wo don't need to do anything
       "mh1"
       build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
+    when "mh2"
+      # very preliminary
+      build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "bfz", "ogw",
       "kld", "aer"
       build_pack_with_random_foil(set_code, 9/40r, :foil_or_masterpiece_1_in_144, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)

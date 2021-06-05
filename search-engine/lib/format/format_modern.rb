@@ -45,6 +45,7 @@ class FormatModern < Format
       "znr",
       "khm",
       "stx",
+      "mh2",
     ]
   end
 end

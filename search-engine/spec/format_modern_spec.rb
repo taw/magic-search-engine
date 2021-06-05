@@ -15,7 +15,7 @@ describe "Formats - Modern" do
   end
 
   it "modern" do
-    assert_block_composition "modern", "war", [
+    assert_block_composition "modern", "mh2", [
       "8ed",
       "mrd",
       "dst",
@@ -82,10 +82,22 @@ describe "Formats - Modern" do
       "grn",
       "rna",
       "war",
+      "mh1",
+      "m20",
+      "eld",
+      "thb",
+      "iko",
+      "m21",
+      "znr",
+      "khm",
+      "stx",
+      "mh2",
     ],
       "Ancient Den" => "banned",
+      "Arcum's Astrolabe" => "banned",
       "Birthing Pod" => "banned",
       "Blazing Shoal" => "banned",
+      "Bridge from Below" => "banned",
       "Chrome Mox" => "banned",
       "Cloudpost" => "banned",
       "Dark Depths" => "banned",
@@ -93,14 +105,22 @@ describe "Formats - Modern" do
       "Dig Through Time" => "banned",
       "Dread Return" => "banned",
       "Eye of Ugin" => "banned",
+      "Faithless Looting" => "banned",
+      "Field of the Dead" => "banned",
       "Gitaxian Probe" => "banned",
       "Glimpse of Nature" => "banned",
       "Golgari Grave-Troll" => "banned",
       "Great Furnace" => "banned",
       "Green Sun's Zenith" => "banned",
+      "Hogaak, Arisen Necropolis" => "banned",
       "Hypergenesis" => "banned",
       "Krark-Clan Ironworks" => "banned",
       "Mental Misstep" => "banned",
+      "Mox Opal" => "banned",
+      "Mycosynth Lattice" => "banned",
+      "Mystic Sanctuary" => "banned",
+      "Oko, Thief of Crowns" => "banned",
+      "Once Upon a Time" => "banned",
       "Ponder" => "banned",
       "Preordain" => "banned",
       "Punishing Fire" => "banned",
@@ -109,14 +129,17 @@ describe "Formats - Modern" do
       "Second Sunrise" => "banned",
       "Seething Song" => "banned",
       "Sensei's Divining Top" => "banned",
+      "Simian Spirit Guide" => "banned",
       "Skullclamp" => "banned",
       "Splinter Twin" => "banned",
-      "Stoneforge Mystic" => "banned",
       "Summer Bloom" => "banned",
+      "Tibalt's Trickery" => "banned",
       "Treasure Cruise" => "banned",
       "Tree of Tales" => "banned",
       "Umezawa's Jitte" => "banned",
+      "Uro, Titan of Nature's Wrath" => "banned",
       "Vault of Whispers" => "banned"
+
     assert_legality "modern", "avr", "Rancor", nil
     assert_legality "modern", "m13", "Rancor", "legal"
     assert_legality "modern", "m12", "Wild Nacatl", "legal"

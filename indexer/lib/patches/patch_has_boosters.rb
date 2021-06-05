@@ -6,7 +6,7 @@
 class PatchHasBoosters < Patch
   # This just needs to list sets that didn't get to mtgjson yet
   def new_sets_with_boosters
-    %W[]
+    %W[mh2]
   end
 
   def arena_standard_sets
