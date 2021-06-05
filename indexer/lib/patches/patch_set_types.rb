@@ -12,7 +12,7 @@ class PatchSetTypes < Patch
       case set_code
       when "bbd"
         set_types << "two-headed giant" << "multiplayer"
-      when "mh1"
+      when "mh1", "mh2"
         set_types << "modern"
       when "cns", "cn2"
         set_types << "conspiracy" << "multiplayer"

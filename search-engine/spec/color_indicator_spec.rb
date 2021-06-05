@@ -16,7 +16,8 @@ describe "Color Indicator Test" do
     assert_search_results "ind:r t:instant",
       "Pact of the Titan"
     assert_search_results "ind:w t:sorcery",
-      "Restore Balance"
+      "Restore Balance",
+      "Resurgent Belief"
     assert_search_results "ind:rg",
       "Arlinn, Embraced by the Moon",
       "Ravager of the Fells",
