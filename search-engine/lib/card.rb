@@ -65,6 +65,7 @@ class Card
   attr_reader :hand, :life, :rulings, :foreign_names, :foreign_names_normalized, :stemmed_name
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :color_indicator_set, :related
   attr_reader :reminder_text, :augment, :display_power, :display_toughness, :display_mana_cost, :keywords
+  attr_reader :commander, :brawler
 
   def initialize(data)
     @printings = []
@@ -102,6 +103,8 @@ class Card
     @rulings = data["rulings"]
     @secondary = data["secondary"]
     @partner = data["is_partner"]
+    @commander = data["commander"]
+    @brawler = data["brawler"]
     if data["foreign_names"]
       @foreign_names = data["foreign_names"].map{|k,v| [k.to_sym,v]}.to_h
     else
@@ -204,21 +207,11 @@ class Card
   end
 
   def commander?
-    return false if @secondary
-    return true if @types.include?("legendary") and @types.include?("creature")
-    if @types.include?("planeswalker")
-      return true if @text.include?("can be your commander")
-    end
-    if @types.include?("saga")
-      return true if @text.include?("can be your commander")
-    end
-    false
+    !!@commander
   end
 
   def brawler?
-    return false if @secondary
-    return true if @types.include?("legendary") and (@types.include?("creature") or @types.include?("planeswalker"))
-    false
+    !!@brawler
   end
 
   private
