@@ -155,6 +155,7 @@ class Indexer
       PatchUnstable,
       PatchShandalar,
       PatchXmage,
+      PatchCommander,
 
       # Patch more mtg.wtf bugs
       PatchAeLigature, # is this even needed anymore?
@@ -227,8 +228,10 @@ class Indexer
     printing_data = []
     card.each do |printing|
       common_card_data << printing.slice(
+        "brawler",
         "cmc",
         "colors",
+        "commander",
         "display_power",
         "display_toughness",
         "foreign_names",
