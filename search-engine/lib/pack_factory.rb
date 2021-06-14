@@ -226,8 +226,7 @@ class PackFactory
       "mh1"
       build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "mh2"
-      # very preliminary
-      build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
+      build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {common: 10, mh2_normal_uncommon: 3, mh2_normal_rare_mythic: 1, mh2_new_to_modern: 1})
     when "bfz", "ogw",
       "kld", "aer"
       build_pack_with_random_foil(set_code, 9/40r, :foil_or_masterpiece_1_in_144, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
