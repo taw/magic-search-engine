@@ -988,4 +988,23 @@ class CardSheetFactory
       [from_query("e:#{set_code} r:mythic -t:lesson"), 1],
     )
   end
+
+  def mh2_new_to_modern
+    mix_sheets(
+      [from_query('e:mh2 number>=262 r:uncommon', 20), 5],
+      [from_query('e:mh2 number>=262 r:rare', 18), 2],
+      [from_query('e:mh2 number>=262 r:mythic', 4), 1],
+    )
+  end
+
+  def mh2_normal_uncommon
+    from_query('e:mh2 number<262 r:uncommon', 80)
+  end
+
+  def mh2_normal_rare_mythic
+    mix_sheets(
+      [from_query('e:mh2 number<262 r:rare', 60), 2],
+      [from_query('e:mh2 number<262 r:mythic', 20), 1],
+    )
+  end
 end

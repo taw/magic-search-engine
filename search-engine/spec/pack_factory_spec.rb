@@ -1552,4 +1552,43 @@ describe PackFactory do
       end
     end
   end
+
+  context "MH2" do
+    let(:set_code) { "mh2" }
+    let(:common) { card("r:common number<262") }
+    let(:uncommon) { card("r:uncommon number<262") }
+    let(:rare) { card("r:rare number<262") }
+    let(:mythic) { card("r:mythic number<262") }
+    let(:uncommon_ntm) { card("r:uncommon number>=262") }
+    let(:rare_ntm) { card("r:rare number>=262") }
+    let(:mythic_ntm) { card("r:mythic number>=262") }
+
+    context "normal" do
+      it do
+        ev[common].should eq Rational(29,3) * Rational(1,101)
+        ev[uncommon].should eq Rational(3, 80)
+        ev[rare].should eq Rational(2, 140)
+        ev[mythic].should eq Rational(1, 140)
+
+        ev[uncommon_ntm].should eq Rational(5, 140)
+        ev[rare_ntm].should eq Rational(2, 140)
+        ev[mythic_ntm].should eq Rational(1, 140)
+      end
+    end
+
+    context "foil" do
+      let(:foil) { true }
+
+      it do
+        ev[common].should eq Rational(1,3) * Rational(12,20) * Rational(1,101)
+        ev[uncommon].should eq Rational(1,3) * Rational(5,20) * Rational(1, 80+20)
+        ev[rare].should eq Rational(1,3) * Rational(3,20) * Rational(2, 140+40)
+        ev[mythic].should eq Rational(1,3) * Rational(3,20) * Rational(1, 140+40)
+
+        ev[uncommon_ntm].should eq Rational(1,3) * Rational(5,20) * Rational(1, 80+20)
+        ev[rare_ntm].should eq Rational(1,3) * Rational(3,20) * Rational(2, 140+40)
+        ev[mythic_ntm].should eq Rational(1,3) *  Rational(3,20) * Rational(1, 140+40)
+      end
+    end
+  end
 end

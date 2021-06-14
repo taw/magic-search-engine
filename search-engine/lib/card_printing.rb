@@ -163,6 +163,10 @@ class CardPrinting
   end
 
   def main_front
-    PhysicalCard.for(self).main_front
+    physical_card.main_front
+  end
+
+  def physical_card
+    PhysicalCard.for(self)
   end
 end
