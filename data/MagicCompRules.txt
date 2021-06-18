@@ -1,6 +1,6 @@
 Magic: The Gathering Comprehensive Rules
 
-These rules are effective as of April 22, 2021.
+These rules are effective as of June 18, 2021.
 
 Introduction
 
@@ -333,7 +333,7 @@ Example: A card reads “Each player sacrifices a creature.” First, the active
 
 104.3i In an Emperor game, a team loses the game if its emperor loses the game. (See rule 809.5.)
 
-104.3j In a Commander game, a player that’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. (This is a state-based action. See rule 704. See also rule 903.10.)
+104.3j In a Commander game, a player who’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. (This is a state-based action. See rule 704. See also rule 903.10.)
 
 104.3k In a tournament, a player may lose the game as a result of a penalty given by a judge. See rule 100.6.
 
@@ -491,7 +491,7 @@ Example: {W/P}{W/P} can be paid by spending {W}{W}, by spending {W} and paying 2
 
 107.6. The untap symbol is {Q}. The untap symbol in an activation cost means “Untap this permanent.” A permanent that’s already untapped can’t be untapped again to pay the cost. A creature’s activated ability with the untap symbol in its activation cost can’t be activated unless the creature has been under its controller’s control continuously since their most recent turn began. See rule 302.6.
 
-107.7. Each activated ability of a planeswalker has a loyalty symbol in its cost. Positive loyalty symbols point upward and feature a plus sign followed by a number. Negative loyalty symbols point downward and feature a minus sign followed by a number or an X. Neutral loyalty symbols don’t point in either direction and feature a 0. [+N] means “Put N loyalty counters on this permanent,” [-N] means “Remove N loyalty counters from this permanent,” and [0] means “Put zero loyalty counters on this permanent.”
+107.7. Each activated ability of a planeswalker has a loyalty symbol in its cost. Positive loyalty symbols point upward and feature a plus sign followed by a number. Negative loyalty symbols point downward and feature a minus sign followed by a number or an X. Neutral loyalty symbols don’t point in either direction and feature a 0. [+N] means “Put N loyalty counters on this permanent,” [-N] means “Remove N loyalty counters from this permanent,” and [0] means “Put zero loyalty counters on this permanent.” Loyalty symbols may also appear in abilities that modify loyalty costs.
 
 107.8. The text box of a leveler card contains two level symbols, each of which is a keyword ability that represents a static ability. The level symbol includes either a range of numbers, indicated here as “N1-N2,” or a single number followed by a plus sign, indicated here as “N3+.” Any abilities printed within the same text box striation as a level symbol are part of its static ability. The same is true of the power/toughness box printed within that striation, indicated here as “[P/T].” See rule 710, “Leveler Cards.”
 
@@ -561,15 +561,17 @@ Example: {W/P}{W/P} can be paid by spending {W}{W}, by spending {W} and paying 2
 
 109.4a The controller of a mana ability is determined as though it were on the stack. See rule 605, “Mana Abilities.”
 
-109.4b An emblem is controlled by the player that puts it into the command zone. See rule 114, “Emblems.”
+109.4b A triggered ability that has triggered but is waiting to be placed on the stack is controlled by the player who controlled its source at the time it triggered, unless it’s a delayed triggered ability. To determine the controller of a delayed triggered ability, see rules 603.7d–f. See also rule 603, “Handling Triggered Abilities.”
 
-109.4c In a Planechase game, a face-up plane or phenomenon card is controlled by the player designated as the planar controller. This is usually the active player. See rule 901.6.
+109.4c An emblem is controlled by the player who puts it into the command zone. See rule 114, “Emblems.”
 
-109.4d In a Vanguard game, each vanguard card is controlled by its owner. See rule 902.6.
+109.4d In a Planechase game, a face-up plane or phenomenon card is controlled by the player designated as the planar controller. This is usually the active player. See rule 901.6.
 
-109.4e In an Archenemy game, each scheme card is controlled by its owner. See rule 904.7.
+109.4e In a Vanguard game, each vanguard card is controlled by its owner. See rule 902.6.
 
-109.4f In a Conspiracy Draft game, each conspiracy card is controlled by its owner. See rule 905.5.
+109.4f In an Archenemy game, each scheme card is controlled by its owner. See rule 904.7.
+
+109.4g In a Conspiracy Draft game, each conspiracy card is controlled by its owner. See rule 905.5.
 
 109.5. The words “you” and “your” on an object refer to the object’s controller, its would-be controller (if a player is attempting to play, cast, or activate it), or its owner (if it has no controller). For a static ability, this is the current controller of the object it’s on. For an activated ability, this is the player who activated the ability. For a triggered ability, this is the controller of the object when the ability triggered, unless it’s a delayed triggered ability. To determine the controller of a delayed triggered ability, see rules 603.7d–f.
 
@@ -637,6 +639,8 @@ Example: Jade Mage has the ability “{2}{G}: Create a 1/1 green Saproling creat
 
 111.10e A Shard token is a colorless enchantment token with “{2}, Sacrifice this enchantment: Scry 1, then draw a card.”
 
+111.10f A Clue token is a colorless Clue artifact token with “{2}, Sacrifice this artifact: Draw a card.”
+
 111.11. A copy of a permanent spell becomes a token as it resolves. The token has the characteristics of the spell that became that token. The token is not “created” for the purposes of any replacement effects or triggered abilities that refer to creating a token.
 
 112. Spells
@@ -691,33 +695,35 @@ Example: “[This creature] can’t block” is an ability.
 
 113.6. Abilities of an instant or sorcery spell usually function only while that object is on the stack. Abilities of all other objects usually function only while that object is on the battlefield. The exceptions are as follows:
 
-113.6a Characteristic-defining abilities function everywhere, even outside the game. (See rule 604.3.)
+113.6a Characteristic-defining abilities function everywhere, even outside the game and before the game begins. (See rule 604.3.)
 
 113.6b An ability that states which zones it functions in functions only from those zones.
 
-113.6c An object’s ability that allows a player to pay an alternative cost rather than its mana cost or otherwise modifies what that particular object costs to cast functions on the stack.
+113.6c An ability that states which zones it doesn’t function in functions everywhere except for the specified zones, even outside the game and before the game begins.
 
-113.6d An object’s ability that restricts or modifies how that particular object can be played or cast functions in any zone from which it could be played or cast and also on the stack. An object’s ability that grants it another ability that restricts or modifies how that particular object can be played or cast functions only on the stack.
+113.6d An object’s ability that allows a player to pay an alternative cost rather than its mana cost or otherwise modifies what that particular object costs to cast functions on the stack.
 
-113.6e An object’s ability that restricts or modifies what zones that particular object can be played or cast from functions everywhere, even outside the game.
+113.6e An object’s ability that restricts or modifies how that particular object can be played or cast functions in any zone from which it could be played or cast and also on the stack. An object’s ability that grants it another ability that restricts or modifies how that particular object can be played or cast functions only on the stack.
 
-113.6f An object’s ability that states it can’t be countered functions on the stack.
+113.6f An object’s ability that restricts or modifies what zones that particular object can be played or cast from functions everywhere, even outside the game.
 
-113.6g An object’s ability that modifies how that particular object enters the battlefield functions as that object is entering the battlefield. See rule 614.12.
+113.6g An object’s ability that states it can’t be countered functions on the stack.
 
-113.6h An object’s ability that states counters can’t be put on that object functions as that object is entering the battlefield in addition to functioning while that object is on the battlefield.
+113.6h An object’s ability that modifies how that particular object enters the battlefield functions as that object is entering the battlefield. See rule 614.12.
 
-113.6i An object’s activated ability that has a cost that can’t be paid while the object is on the battlefield functions from any zone in which its cost can be paid.
+113.6i An object’s ability that states counters can’t be put on that object functions as that object is entering the battlefield in addition to functioning while that object is on the battlefield.
 
-113.6j A trigger condition that can’t trigger from the battlefield functions in all zones it can trigger from. Other trigger conditions of the same triggered ability may function in different zones.
+113.6j An object’s activated ability that has a cost that can’t be paid while the object is on the battlefield functions from any zone in which its cost can be paid.
+
+113.6k A trigger condition that can’t trigger from the battlefield functions in all zones it can trigger from. Other trigger conditions of the same triggered ability may function in different zones.
 Example: Absolver Thrull has the ability “When Absolver Thrull enters the battlefield or the creature it haunts dies, destroy target enchantment.” The first trigger condition functions from the battlefield and the second trigger condition functions from the exile zone. (See rule 702.55, “Haunt.”)
 
-113.6k An ability whose cost or effect specifies that it moves the object it’s on out of a particular zone functions only in that zone, unless its trigger condition or a previous part of its cost or effect specifies that the object is put into that zone or, if the object is an Aura, that the object it enchants leaves the battlefield. The same is true if the effect of that ability creates a delayed triggered ability whose effect moves the object out of a particular zone.
+113.6m An ability whose cost or effect specifies that it moves the object it’s on out of a particular zone functions only in that zone, unless its trigger condition or a previous part of its cost or effect specifies that the object is put into that zone or, if the object is an Aura, that the object it enchants leaves the battlefield. The same is true if the effect of that ability creates a delayed triggered ability whose effect moves the object out of a particular zone.
 Example: Reassembling Skeleton says “{1}{B}: Return Reassembling Skeleton from your graveyard to the battlefield tapped.” A player may activate this ability only if Reassembling Skeleton is in their graveyard.
 
-113.6m An ability that modifies the rules for deck construction functions before the game begins. Such an ability modifies not just the Comprehensive Rules, but also the Magic: The Gathering Tournament Rules and any other documents that set the deck construction rules for a specific format. However, such an ability can’t affect the format legality of a card, including whether it’s banned or restricted. The current Magic: The Gathering Tournament Rules can be found at WPN.Wizards.com/en/resources/rules-documents.
+113.6n An ability that modifies the rules for deck construction functions before the game begins. Such an ability modifies not just the Comprehensive Rules, but also the Magic: The Gathering Tournament Rules and any other documents that set the deck construction rules for a specific format. However, such an ability can’t affect the format legality of a card, including whether it’s banned or restricted. The current Magic: The Gathering Tournament Rules can be found at WPN.Wizards.com/en/resources/rules-documents.
 
-113.6n Abilities of emblems, plane cards, vanguard cards, scheme cards, and conspiracy cards function in the command zone. See rule 114, “Emblems”; rule 901, “Planechase”; rule 902, “Vanguard”; rule 904, “Archenemy”; and rule 905, “Conspiracy Draft.”
+113.6p Abilities of emblems, plane cards, vanguard cards, scheme cards, and conspiracy cards function in the command zone. See rule 114, “Emblems”; rule 901, “Planechase”; rule 902, “Vanguard”; rule 904, “Archenemy”; and rule 905, “Conspiracy Draft.”
 
 113.7. The source of an ability is the object that generated it. The source of an activated ability on the stack is the object whose ability was activated. The source of a triggered ability (other than a delayed triggered ability) on the stack, or one that has triggered and is waiting to be put on the stack, is the object whose ability triggered. To determine the source of a delayed triggered ability, see rules 603.7d–f.
 
@@ -944,7 +950,7 @@ Example: A player controls Lodestone Golem, which says “Nonartifact spells cos
 118.11. The actions performed when paying a cost may be modified by effects. Even if they are, meaning the actions that are performed don’t match the actions that are called for, the cost has still been paid.
 Example: A player controls Psychic Vortex, an enchantment with a cumulative upkeep cost of “Draw a card,” and Obstinate Familiar, a creature that says “If you would draw a card, you may skip that draw instead.” The player may decide to pay Psychic Vortex’s cumulative upkeep cost and then draw no cards instead of drawing the appropriate amount. The cumulative upkeep cost has still been paid.
 
-118.12. Some spells, activated abilities, and triggered abilities read, “[Do something]. If [a player] [does, doesn’t, or can’t], [effect].” or “[A player] may [do something]. If [that player] [does, doesn’t, or can’t], [effect].” The action [do something] is a cost, paid when the spell or ability resolves. The “If [a player] [does, doesn’t, or can’t]” clause checks whether the player chose to pay an optional cost or started to pay a mandatory cost, regardless of what events actually occurred.
+118.12. Some spells, activated abilities, and triggered abilities read, “[Do something]. If [a player] [does, doesn’t, or can’t], [effect].” Or “[A player] may [do something]. If [that player] [does, doesn’t, or can’t], [effect].” The action [do something] is a cost, paid when the spell or ability resolves. The “If [a player] [does, doesn’t, or can’t]” clause checks whether the player chose to pay an optional cost or started to pay a mandatory cost, regardless of what events actually occurred.
 Example: You control Standstill, an enchantment that says “When a player casts a spell, sacrifice Standstill. If you do, each of that player’s opponents draws three cards.” A spell is cast, causing Standstill’s ability to trigger. Then an ability is activated that exiles Standstill. When Standstill’s ability resolves, you’re unable to pay the “sacrifice Standstill” cost. No player will draw cards.
 Example: Your opponent has cast Gather Specimens, a spell that says “If a creature would enter the battlefield under an opponent’s control this turn, it enters the battlefield under your control instead.” You control a face-down Dermoplasm, a creature with morph that says “When Dermoplasm is turned face up, you may put a creature card with morph from your hand onto the battlefield face up. If you do, return Dermoplasm to its owner’s hand.” You turn Dermoplasm face up, and you choose to put a creature card with morph from your hand onto the battlefield. Due to Gather Specimens, it enters the battlefield under your opponent’s control instead of yours. However, since you chose to pay the cost, Dermoplasm is still returned to its owner’s hand.
 
@@ -1263,11 +1269,11 @@ Example: When choosing a creature type, “Merfolk” or “Wizard” is accepta
 205.3i Lands have their own unique set of subtypes; these subtypes are called land types. The land types are Desert, Forest, Gate, Island, Lair, Locus, Mine, Mountain, Plains, Power-Plant, Swamp, Tower, and Urza’s.
      Of that list, Forest, Island, Mountain, Plains, and Swamp are the basic land types. See rule 305.6.
 
-205.3j Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Aminatou, Angrath, Arlinn, Ashiok, Basri, Bolas, Calix, Chandra, Dack, Daretti, Davriel, Domri, Dovin, Elspeth, Estrid, Freyalise, Garruk, Gideon, Huatli, Jace, Jaya, Jeska, Karn, Kasmina, Kaya, Kiora, Koth, Liliana, Lukka, Nahiri, Narset, Niko, Nissa, Nixilis, Oko, Ral, Rowan, Saheeli, Samut, Sarkhan, Serra, Sorin, Szat, Tamiyo, Teferi, Teyo, Tezzeret, Tibalt, Tyvar, Ugin, Venser, Vivien, Vraska, Will, Windgrace, Wrenn, Xenagos, Yanggu, and Yanling.
+205.3j Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Aminatou, Angrath, Arlinn, Ashiok, Basri, Bolas, Calix, Chandra, Dack, Dakkon, Daretti, Davriel, Dihada, Domri, Dovin, Elspeth, Estrid, Freyalise, Garruk, Gideon, Grist, Huatli, Jace, Jaya, Jeska, Karn, Kasmina, Kaya, Kiora, Koth, Liliana, Lukka, Nahiri, Narset, Niko, Nissa, Nixilis, Oko, Ral, Rowan, Saheeli, Samut, Sarkhan, Serra, Sorin, Szat, Tamiyo, Teferi, Teyo, Tezzeret, Tibalt, Tyvar, Ugin, Venser, Vivien, Vraska, Will, Windgrace, Wrenn, Xenagos, Yanggu, and Yanling.
 
 205.3k Instants and sorceries share their lists of subtypes; these subtypes are called spell types. The spell types are Adventure, Arcane, Lesson, and Trap.
 
-205.3m Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Ally, Angel, Antelope, Ape, Archer, Archon, Army, Artificer, Assassin, Assembly-Worker, Atog, Aurochs, Avatar, Azra, Badger, Barbarian, Basilisk, Bat, Bear, Beast, Beeble, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Caribou, Carrier, Cat, Centaur, Cephalid, Chimera, Citizen, Cleric, Cockatrice, Construct, Coward, Crab, Crocodile, Cyclops, Dauthi, Demigod, Demon, Deserter, Devil, Dinosaur, Djinn, Dog, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gargoyle, Germ, Giant, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Hag, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inkling, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mouse, Mutant, Myr, Mystic, Naga, Nautilus, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Praetor, Prism, Processor, Rabbit, Rat, Rebel, Reflection, Rhino, Rigger, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scion, Scorpion, Scout, Sculpture, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Slith, Sliver, Slug, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Unicorn, Vampire, Vedalken, Viashino, Volver, Wall, Warlock, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
+205.3m Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Ally, Angel, Antelope, Ape, Archer, Archon, Army, Artificer, Assassin, Assembly-Worker, Atog, Aurochs, Avatar, Azra, Badger, Barbarian, Basilisk, Bat, Bear, Beast, Beeble, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Caribou, Carrier, Cat, Centaur, Cephalid, Chimera, Citizen, Cleric, Cockatrice, Construct, Coward, Crab, Crocodile, Cyclops, Dauthi, Demigod, Demon, Deserter, Devil, Dinosaur, Djinn, Dog, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gargoyle, Germ, Giant, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Hag, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inkling, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mouse, Mutant, Myr, Mystic, Naga, Nautilus, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Praetor, Prism, Processor, Rabbit, Ranger, Rat, Rebel, Reflection, Rhino, Rigger, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scion, Scorpion, Scout, Sculpture, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Slith, Sliver, Slug, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Unicorn, Vampire, Vedalken, Viashino, Volver, Wall, Warlock, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
 
 205.3n Planes have their own unique set of subtypes; these subtypes are called planar types. The planar types are Alara, Arkhos, Azgol, Belenon, Bolas’s Meditation Realm, Dominaria, Equilor, Ergamon, Fabacin, Innistrad, Iquatana, Ir, Kaldheim, Kamigawa, Karsus, Kephalai, Kinshala, Kolbahan, Kyneth, Lorwyn, Luvion, Mercadia, Mirrodin, Moag, Mongseng, Muraganda, New Phyrexia, Phyrexia, Pyrulea, Rabiah, Rath, Ravnica, Regatha, Segovia, Serra’s Realm, Shadowmoor, Shandalar, Ulgrotha, Valla, Vryn, Wildfire, Xerex, and Zendikar.
 
@@ -1413,7 +1419,7 @@ Example: Veteran Motorist has the ability “Whenever Veteran Motorist crews a V
 
 301.6. Some artifacts have the subtype “Fortification.” A Fortification can be attached to a land. It can’t legally be attached to an object that isn’t a land. Fortification’s analog to the equip keyword ability is the fortify keyword ability. Rules 301.5a–e apply to Fortifications in relation to lands just as they apply to Equipment in relation to creatures, with one clarification relating to rule 301.5c: a Fortification that’s also a creature (not a land) can’t fortify a land. (See rule 702.67, “Fortify.”)
 
-301.7. Some artifacts have the subtype “Vehicle.” Vehicles have a crew ability, which allows them to become artifact creatures. See rule 702.122, “Crew.”
+301.7. Some artifacts have the subtype “Vehicle.” Most Vehicles have a crew ability which allows them to become artifact creatures. See rule 702.122, “Crew.”
 
 301.7a Each Vehicle has a printed power and toughness, but it has these characteristics only if it’s also a creature. See rule 208.3.
 
@@ -1509,7 +1515,7 @@ Example: “Basic Land — Mountain” means the card is a land with the subtype
 
 305.6. The basic land types are Plains, Island, Swamp, Mountain, and Forest. If an object uses the words “basic land type,” it’s referring to one of these subtypes. An object with the land card type and a basic land type has the intrinsic ability “{T}: Add [mana symbol],” even if the text box doesn’t actually contain that text or the object has no text box. For Plains, [mana symbol] is {W}; for Islands, {U}; for Swamps, {B}; for Mountains, {R}; and for Forests, {G}. See rule 107.4a. See also rule 605, “Mana Abilities.”
 
-305.7. If an effect sets a land’s subtype to one or more of the basic land types, the land no longer has its old land type. It loses all abilities generated from its rules text, its old land types, and any copy effects affecting that land, and it gains the appropriate mana ability for each new basic land type. Note that this doesn’t remove any abilities that were granted to the land by other effects. Setting a land’s subtype doesn’t add or remove any card types (such as creature) or supertypes (such as basic, legendary, and snow) the land may have. If a land gains one or more land types in addition to its own, it keeps its land types and rules text, and it gains the new land types and mana abilities.
+305.7. If an effect sets a land’s subtype to one or more of the basic land types, the land no longer has its old land type. It loses all abilities generated from its rules text, its old land types, and any copiable effects affecting that land, and it gains the appropriate mana ability for each new basic land type. Note that this doesn’t remove any abilities that were granted to the land by other effects. Setting a land’s subtype doesn’t add or remove any card types (such as creature) or supertypes (such as basic, legendary, and snow) the land may have. If a land gains one or more land types in addition to its own, it keeps its land types and rules text, and it gains the new land types and mana abilities.
 
 305.8. Any land with the supertype “basic” is a basic land. Any land that doesn’t have this supertype is a nonbasic land, even if it has a basic land type.
 
@@ -2176,7 +2182,7 @@ Example: You cast Altar’s Reap, which costs {1}{B} and has an additional cost 
 601.3. A player can begin to cast a spell only if a rule or effect allows that player to cast it and no rule or effect prohibits that player from casting it.
 
 601.3a If an effect prohibits a player from casting a spell with certain qualities, that player may consider any choices to be made during that spell’s proposal that may cause those qualities to change. If any such choices could cause that effect to no longer prohibit that player from casting that spell, the player may begin to cast the spell, ignoring the effect.
-Example: A player controls Void Winnower, which reads, in part, “Your opponents can't cast spells with even mana values.” That player’s opponent may begin to cast Rolling Thunder, a card whose mana cost is {X}{R}{R}, because the chosen value of X may cause the spell’s mana value to become odd.
+Example: A player controls Void Winnower, which reads, in part, “Your opponents can’t cast spells with even mana values.” That player’s opponent may begin to cast Rolling Thunder, a card whose mana cost is {X}{R}{R}, because the chosen value of X may cause the spell’s mana value to become odd.
 
 601.3b If an effect allows a player to cast a spell with certain qualities as though it had flash, that player may consider any choices to be made during that spell’s proposal that may cause that spell’s qualities to change. If any such choices could cause that effect to apply, that player may begin to cast that spell as though it had flash.
 Example: An effect says that you may cast Aura spells as though they had flash, and you have a creature card with bestow in your hand. Because choosing the bestow ability’s alternative cost causes that spell to become an Aura spell, you may legally begin to cast that spell as though it had flash.
@@ -2267,11 +2273,13 @@ Example: An ability that triggers when a permanent “becomes tapped” triggers
 603.2g An ability triggers only if its trigger event actually occurs. An event that’s prevented or replaced won’t trigger anything.
 Example: An ability that triggers on damage being dealt won’t trigger if all the damage is prevented.
 
+603.2h A triggered ability may have an instruction followed by “Do this only once each turn.” This ability triggers only if its source’s controller has not yet taken the indicated action that turn.
+
 603.3. Once an ability has triggered, its controller puts it on the stack as an object that’s not a card the next time a player would receive priority. See rule 117, “Timing and Priority.” The ability becomes the topmost object on the stack. It has the text of the ability that created it, and no other characteristics. It remains on the stack until it’s countered, it resolves, a rule causes it to be removed from the stack, or an effect moves it elsewhere.
 
 603.3a A triggered ability is controlled by the player who controlled its source at the time it triggered, unless it’s a delayed triggered ability. To determine the controller of a delayed triggered ability, see rules 603.7d–f.
 
-603.3b If multiple abilities have triggered since the last time a player received priority, the abilities are placed on the stack in a two-part process. First, each player, in APNAP order, puts each triggered ability they control with a trigger condition that isn’t another ability triggering on the stack in any order they choose. (See rule 101.4.) Second, each player, in APNAP order, puts all remaining triggered abilities they control on the stack. Then the game once again checks for and performs state-based actions until none are performed, then abilities that triggered during this process go on the stack. This process repeats until no new state-based actions are performed and no abilities trigger. Then the appropriate player gets priority.
+603.3b If multiple abilities have triggered since the last time a player received priority, the abilities are placed on the stack in a two-part process. First, each player, in APNAP order, puts each triggered ability they control with a trigger condition that isn’t another ability triggering on the stack in any order they choose. (See rule 101.4.) Second, each player, in APNAP order, puts all remaining triggered abilities they control on the stack in any order they choose. Then the game once again checks for and performs state-based actions until none are performed, then abilities that triggered during this process go on the stack. This process repeats until no new state-based actions are performed and no abilities trigger. Then the appropriate player gets priority.
 
 603.3c If a triggered ability is modal, its controller announces the mode choice when putting the ability on the stack. If one of the modes would be illegal (due to an inability to choose legal targets, for example), that mode can’t be chosen. If no mode is chosen, the ability is removed from the stack. (See rule 700.2.)
 
@@ -2339,7 +2347,7 @@ Example: Two creatures are on the battlefield along with an artifact that has th
 603.11. Some objects have a static ability that’s linked to one or more triggered abilities. (See rule 607, “Linked Abilities.”) These objects combine the abilities into one paragraph, with the static ability first, followed by each triggered ability that’s linked to it. A very few objects have triggered abilities which are written with the trigger condition in the middle of the ability, rather than at the beginning.
 Example: An ability that reads “Reveal the first card you draw each turn. Whenever you reveal a basic land card this way, draw a card” is a static ability linked to a triggered ability.
 
-603.12. A resolving spell or ability may allow or instruct a player to take an action and create a triggered ability that triggers “when [a player] [does or doesn’t]” take that action or “when [something happens] this way.” These reflexive triggered abilities follow the rules for delayed triggered abilities (see rule 603.7), except that they’re checked immediately after being created and trigger based on whether the trigger event or events occurred earlier during the resolution of the spell or ability that created them. If the trigger event or events occur multiple times during that time, the reflexive triggered ability will trigger once for each of those times.
+603.12. A replacement effect or a resolving spell or ability may allow or instruct a player to take an action and create a triggered ability that triggers “when [a player] [does or doesn’t]” take that action or “when [something happens] this way.” These reflexive triggered abilities follow the rules for delayed triggered abilities (see rule 603.7), except that they’re checked immediately after being created and trigger based on whether the trigger event or events occurred earlier during the resolution of the spell or ability that created them. If the trigger event or events occur multiple times during that time, the reflexive triggered ability will trigger once for each of those times.
 Example: Heart-Piercer Manticore has an ability that reads “When Heart-Piercer Manticore enters the battlefield, you may sacrifice another creature. When you do, Heart-Piercer Manticore deals damage equal to that creature’s power to any target.” The reflexive triggered ability triggers only when you sacrifice another creature due to the original triggered ability, and not if you sacrifice a creature for any other reason.
 
 604. Handling Static Abilities
@@ -2348,7 +2356,7 @@ Example: Heart-Piercer Manticore has an ability that reads “When Heart-Piercer
 
 604.2. Static abilities create continuous effects, some of which are prevention effects or replacement effects. These effects are active as long as the permanent with the ability remains on the battlefield and has the ability, or as long as the object with the ability remains in the appropriate zone, as described in rule 113.6.
 
-604.3. Some static abilities are characteristic-defining abilities. A characteristic-defining ability conveys information about an object’s characteristics that would normally be found elsewhere on that object (such as in its mana cost, type line, or power/toughness box). Characteristic-defining abilities can add to or override information found elsewhere on that object. Characteristic-defining abilities function in all zones. They also function outside the game.
+604.3. Some static abilities are characteristic-defining abilities. A characteristic-defining ability conveys information about an object’s characteristics that would normally be found elsewhere on that object (such as in its mana cost, type line, or power/toughness box). Characteristic-defining abilities can add to or override information found elsewhere on that object. Characteristic-defining abilities function in all zones. They also function outside the game and before the game begins.
 
 604.3a A static ability is a characteristic-defining ability if it meets the following criteria: (1) It defines an object’s colors, subtypes, power, or toughness; (2) it is printed on the card it affects, it was granted to the token it affects by the effect that created the token, or it was acquired by the object it affects as the result of a copy effect or text-changing effect; (3) it does not directly affect the characteristics of any other objects; (4) it is not an ability that an object grants to itself; and (5) it does not set the values of such characteristics only if certain conditions are met.
 
@@ -2398,9 +2406,12 @@ Example: An enchantment reads, “Whenever a player taps a land for mana, that p
 
 606.3. A player may activate a loyalty ability of a permanent they control any time they have priority and the stack is empty during a main phase of their turn, but only if no player has previously activated a loyalty ability of that permanent that turn.
 
-606.4. The cost to activate a loyalty ability of a permanent is to put on or remove from that permanent a certain number of loyalty counters, as shown by the loyalty symbol in the ability’s cost.
+606.4. The cost to activate a loyalty ability of a permanent is to put on or remove from that permanent a certain number of loyalty counters, as shown by the loyalty symbol in the ability’s cost. This cost may be modified by other effects.
 
-606.5. A loyalty ability with a negative loyalty cost can’t be activated unless the permanent has at least that many loyalty counters on it.
+606.5 If the total cost to activate a loyalty ability contains multiple costs to add or remove loyalty counters, those costs are combined into a single cost to add or remove loyalty counters, as appropriate.
+Example: A player controls Carth the Lion, which says, in part, “Planeswalkers’ loyalty abilities you control cost an additional [+1] to activate. That player also controls a planeswalker with three loyalty counters. To activate one of that planeswalker’s abilities that normally costs [+1], they put two loyalty counters on it. To activate one of its abilities that normally costs [−4], they remove three loyalty counters from it.
+
+606.6. A loyalty ability with a negative loyalty cost, taking into account any additional costs, can’t be activated unless the permanent has at least that many loyalty counters on it.
 
 607. Linked Abilities
 
@@ -2442,6 +2453,8 @@ Example: An enchantment reads, “Whenever a player taps a land for mana, that p
 
 607.2n If an object has both a static ability that causes a player to make a choice for a characteristic-defining ability before the game begins and that characteristic-defining ability printed on it in the same paragraph, those abilities are linked. The second ability refers only to the choice made as a result of the first ability and continues to refer to that choice as the object changes zones during the game.
 
+607.2p If a permanent spell has an ability printed on it that allows cards to be exiled while paying a cost to cast it and the permanent that spell becomes has an ability that refers to “cards exiled with [this object],” those abilities are linked. The second ability refers only to cards exiled to pay the cost of the spell that became that permanent.
+
 607.3. If, within a pair of linked abilities, one ability refers to a single object as “the exiled card,” “a card exiled with [this card],” or a similar phrase, and the other ability has exiled multiple cards (usually because it was copied), the ability refers to each of the exiled cards. If that ability asks for any information about the exiled card, such as a characteristic or mana value, it gets multiple answers. If these answers are used to determine the value of a variable, the sum of the answers is used. If that ability performs any actions on “the” card, it performs that action on each exiled card. If that ability performs any actions on “a” card, the controller of the ability chooses which card is affected.
 
 607.4. An ability may be part of more than one pair of linked abilities.
@@ -2451,7 +2464,7 @@ Example: Paradise Plume has the following three abilities: “As Paradise Plume 
 Example: Arc-Slogger has the ability “{R}, Exile the top ten cards of your library: Arc-Slogger deals 2 damage to any target.” Sisters of Stone Death has the ability “{B}{G}: Exile target creature blocking or blocked by Sisters of Stone Death” and the ability “{2}{B}: Put a creature card exiled with Sisters of Stone Death onto the battlefield under your control.” Quicksilver Elemental has the ability “{U}: Quicksilver Elemental gains all activated abilities of target creature until end of turn.” If a player has Quicksilver Elemental gain Arc-Slogger’s ability, activates it, then has Quicksilver Elemental gain Sisters of Stone Death’s abilities, activates the exile ability, and then activates the return-to-the-battlefield ability, only the creature card Quicksilver Elemental exiled with Sisters of Stone Death’s ability can be returned to the battlefield. Creature cards Quicksilver Elemental exiled with Arc-Slogger’s ability can’t be returned.
 
 607.5a If an object gains an ability that refers to a choice, but either (a) doesn’t copy that ability’s linked ability or (b) does copy the linked ability but no choice is made for it, then the choice is considered to be “undefined.” If an ability refers to an undefined choice, that part of the ability won’t do anything.
-Example: Voice of All enters the battlefield and Unstable Shapeshifter copies it. Voice of All reads, in part, “As Voice of All enters the battlefield, choose a color.” and “Voice of All has protection from the chosen color.” Unstable Shapeshifter never had a chance for a color to be chosen for it, because it didn’t enter the battlefield as Voice of All so it doesn’t gain a protection ability.
+Example: Voice of All enters the battlefield and Unstable Shapeshifter copies it. Voice of All reads, in part, “As Voice of All enters the battlefield, choose a color.” And “Voice of All has protection from the chosen color.” Unstable Shapeshifter never had a chance for a color to be chosen for it, because it didn’t enter the battlefield as Voice of All so it doesn’t gain a protection ability.
 Example: A Vesuvan Doppelganger enters the battlefield as a copy of Voice of All, and the Doppelganger’s controller chooses blue. Later, the Doppelganger copies Quirion Elves, which has the ability, “{T}: Add one mana of the chosen color.” Even though a color was chosen for the Doppelganger, it wasn’t chosen for the ability linked to the mana ability copied from the Elves. If that mana ability of the Doppelganger is activated, it will not produce mana.
 
 608. Resolving Spells and Abilities
@@ -2628,7 +2641,7 @@ Example: A permanent with the static ability “All white creatures get +1/+1”
 
 613.2. Within layer 1, apply effects in a series of sublayers in the order described below. Within each sublayer, apply effects in timestamp order (see rule 613.7). Note that dependency may alter the order in which effects are applied within a sublayer. (See rule 613.8.)
 
-613.2a Layer 1a: Copiable effects are applied. This includes copy effects (see rule 706, “Copying Objects”) and changes to an object’s base characteristics determined by merging an object with a permanent (see rule 721, “Merging with Permanents”). “As . . . enters the battlefield” and “as . . . is turned face up” abilities generate copiable effects if they set power and toughness, even if they also define other characteristics. 
+613.2a Layer 1a: Copiable effects are applied. This includes copy effects (see rule 706, “Copying Objects”) and changes to an object’s characteristics determined by merging an object with a permanent (see rule 721, “Merging with Permanents”). “As . . . enters the battlefield” and “as . . . is turned face up” abilities generate copiable effects if they set power and toughness, even if they also define other characteristics. 
 
 613.2b Layer 1b: Face-down spells and permanents have their characteristics modified as defined in rule 707.2.
 
@@ -2991,7 +3004,7 @@ Example: If a spell attempts to exchange control of two target creatures but one
 
 701.13a For a player to mill a number of cards, that player puts that many cards from the top of their library into their graveyard.
 
-701.13b A player can’t mill a number of cards greater than the number of cards in their library. If given the choice to do so, they can’t choose to take that action. If instructed to do so, they mill as many as possible. Similarly, the player can't pay a cost that includes milling a number of cards greater than the number of cards in their library.
+701.13b A player can’t mill a number of cards greater than the number of cards in their library. If given the choice to do so, they can’t choose to take that action. If instructed to do so, they mill as many as possible. Similarly, the player can’t pay a cost that includes milling a number of cards greater than the number of cards in their library.
 
 701.13c An effect that refers to a milled card can find that card in the zone it moved to from the library, as long as that zone is a public zone.
 
@@ -3200,7 +3213,7 @@ Example: Darksteel Colossus and Gravebane Zombie are put into a player’s grave
 
 701.36. Investigate
 
-701.36a “Investigate” means “Create a colorless Clue artifact token with ‘{2}, Sacrifice this artifact: Draw a card.’”
+701.36a “Investigate” means “Create a Clue token.” See rule 111.10f.
 
 701.37. Meld
 
@@ -3327,11 +3340,9 @@ Example: Concerted Effort is an enchantment that reads “At the beginning of ea
 
 702.6b For more information about Equipment, see rule 301, “Artifacts.”
 
-702.6c “Equip [quality] creature” is a variant of the equip ability. “Equip [quality] [cost]” means “[Cost]: Attach this permanent to target [quality] creature you control. Activate only as a sorcery.” This ability doesn’t restrict what the Equipment may be attached to.
+702.6c Equip abilities may further restrict what creatures may be chosen as legal targets. Such restrictions usually appear in the form “Equip [quality]” or “Equip [quality] creature.” These equip abilities may legally target only a creature that’s controlled by the player activating the ability and that has the chosen quality. Additional restrictions for an equip ability don’t restrict what the Equipment may be attached to.
 
-702.6d An “equip [quality] creature” ability is an equip ability, and an “equip [quality] creature” cost is an equip cost. Any effect that modifies how or whether a player may activate an equip ability of an object affects “equip [quality] creature” abilities of that object. Any effect that increases or reduces an equip cost will increase or reduce a “equip [quality] creature” cost.
-
-702.6e If a permanent has multiple equip abilities, any of its equip abilities may be activated.
+702.6d If a permanent has multiple equip abilities, any of its equip abilities may be activated.
 
 702.7. First Strike
 
@@ -3447,7 +3458,7 @@ Example: A player controls Ajani’s Pridemate, which reads “Whenever you gain
 
 702.16i “Protection from each [set of characteristics, qualities, or players]” is shorthand for “protection from [A],” “protection from [B],” and so on for each characteristic, quality, or player in the set. It behaves as multiple separate protection abilities.
 
-702.16j “Protection from everything” is a variant of the protection ability. A permanent with protection from everything has protection from each object regardless of that object’s characteristic values. Such a permanent can’t be targeted by spells or abilities, enchanted by Auras, equipped by Equipment, fortified by Fortifications, or blocked by creatures, and all damage that would be dealt to it is prevented.
+702.16j “Protection from everything” is a variant of the protection ability. A permanent or player with protection from everything has protection from each object regardless of that object’s characteristic values. Such a permanent or player can’t be targeted by spells or abilities and can’t be enchanted by Auras. Such a permanent can’t be equipped by Equipment, fortified by Fortifications, or blocked by creatures. All damage that would be dealt to such a permanent or player is prevented.
 
 702.16k “Protection from [a player]” is a variant of the protection ability. A permanent with protection from a specific player has protection from each object the player controls and protection from each object the player owns not controlled by another player, regardless of that object’s characteristic values. Such a permanent can’t be targeted by spells or abilities the player controls, enchanted by Auras the player controls, equipped by Equipment the player controls, fortified by Fortifications the player controls, or blocked by creatures the player controls, and all damage that would be dealt to it by sources controlled by the player or owned by the player but not controlled by another player is prevented.
 
@@ -3455,7 +3466,7 @@ Example: A player controls Ajani’s Pridemate, which reads “Whenever you gain
 
 702.16n Some Auras both give the enchanted creature protection from a quality and say “this effect doesn’t remove” either that specific Aura or all Auras. This means that the specified Auras aren’t put into their owners’ graveyards as a state-based action. If the creature has other instances of protection from the same quality, those instances affect Auras as normal.
 
-702.16p One Aura (Benevolent Blessing) gives the enchanted creature protection from a quality and says the effect doesn’t remove certain permanents that are “already attached to” that creature. This means that, when the protection effect starts to apply, any objects with the stated quality that are already attached to that creature (including the Aura giving that creature protection) will not be put into their owners’ graveyards as a state-based action. Other permanents with the stated quality can’t become attached to the creature. If the creature has other instances of protection from the same quality, those instances affect attached permanents as normal. 
+702.16p One Aura (Benevolent Blessing) gives the enchanted creature protection from a quality and says the effect doesn’t remove certain permanents that are “already attached to” that creature. This means that, when the protection effect starts to apply, any objects with the stated quality that are already attached to that creature (including the Aura giving that creature protection) will not be put into their owners’ graveyards as a state-based action. Other permanents with the stated quality can’t become attached to the creature. If the creature has other instances of protection from the same quality, those instances affect attached permanents as normal.
 
 702.17. Reach
 
@@ -3479,11 +3490,16 @@ Example: A player controls Ajani’s Pridemate, which reads “Whenever you gain
 Example: A 2/2 creature that can block an additional creature blocks two attackers: a 1/1 with no abilities and a 3/3 with trample. The active player could assign 1 damage from the first attacker and 1 damage from the second to the blocking creature, and 2 damage to the defending player from the creature with trample.
 Example: A 6/6 green creature with trample is blocked by a 2/2 creature with protection from green. The attacking creature’s controller must assign at least 2 damage to the blocker, even though that damage will be prevented by the blocker’s protection ability. The attacking creature’s controller can divide the rest of the damage as they choose between the blocking creature and the defending player.
 
-702.19c If an attacking creature with trample is blocked, but there are no creatures blocking it when damage is assigned, all its damage is assigned to the player or planeswalker it’s attacking.
+702.19c Trample over planeswalkers is a variant of trample that modifies the rules for assigning combat damage to planeswalkers. The controller of a creature with trample over planeswalkers assigns that creature’s combat damage as described in rule 702.19b, with one exception. If that creature is attacking a planeswalker, after lethal damage is assigned to all blocking creatures and damage at least equal to the loyalty of the planeswalker the creature is attacking is assigned to that planeswalker, further excess damage may be assigned as the attacking creature’s controller chooses among those blocking creatures, that planeswalker, and that planeswalker’s controller. When checking for assigned damage equal to a planeswalker’s loyalty, take into account damage from other creatures that’s being assigned during the same combat damage step, but not any abilities or effects that might change the amount of damage that’s actually dealt.
+Example: A player controls a planeswalker with three loyalty counters that is being attacked by a 1/1 with no abilities and a 7/7 with trample over planeswalkers. The active player could assign 1 damage from the first attacker and 2 damage from the second to the planeswalker and 5 damage to the defending player from the creature with trample over planeswalkers.
 
-702.19d If a creature with trample is attacking a planeswalker, none of its combat damage can be assigned to the defending player, even if that planeswalker has been removed from combat or the damage the attacking creature could assign is greater than the planeswalker’s loyalty.
+702.19d If an attacking creature with trample or trample over planeswalkers is blocked, but there are no creatures blocking it when damage is assigned, its damage is assigned to the defending player and/or planeswalker as though all blocking creatures have been assigned lethal damage.
 
-702.19e Multiple instances of trample on the same creature are redundant.
+702.19e If a creature with trample over planeswalkers is attacking a planeswalker and that planeswalker is removed from combat, the creature’s damage may be assigned to the defending player once all blocking creatures have been dealt lethal damage or, if there are no blocking creatures when damage is assigned, all its damage is assigned to the defending player. This does not cause the creature to be attacking that player.
+
+702.19f If a creature without trample over planeswalkers is attacking a planeswalker, none of its combat damage can be assigned to the defending player, even if that planeswalker has been removed from combat or the damage the attacking creature could assign is greater than the planeswalker’s loyalty.
+
+702.19g Multiple instances of trample on the same creature are redundant. Multiple instances of trample over planeswalkers on the same creature are redundant.
 
 702.20. Vigilance
 
@@ -3979,6 +3995,8 @@ Example: You activate the aura swap ability of an Aura that you control but you 
 
 702.82b Some objects have abilities that refer to the number of creatures the permanent devoured. “It devoured” means “sacrificed as a result of its devour ability as it entered the battlefield.”
 
+702.82c Devour [type] is a variant of devour. “Devour [type] N” means “As this object enters the battlefield, you may sacrifice any number of [type] permanents. This permanent enters the battlefield with N +1/+1 counters on it for each permanent sacrificed this way.”
+
 702.83. Exalted
 
 702.83a Exalted is a triggered ability. “Exalted” means “Whenever a creature you control attacks alone, that creature gets +1/+1 until end of turn.”
@@ -4043,7 +4061,7 @@ Example: You activate the aura swap ability of an Aura that you control but you 
 
 702.92. Living Weapon
 
-702.92a Living weapon is a triggered ability. “Living weapon” means “When this Equipment enters the battlefield, create a 0/0 black Germ creature token, then attach this Equipment to it.”
+702.92a Living weapon is a triggered ability. “Living weapon” means “When this Equipment enters the battlefield, create a 0/0 black Phyrexian Germ creature token, then attach this Equipment to it.”
 
 702.93. Undying
 
@@ -4504,7 +4522,7 @@ Example: A player controls a creature with the ability “This creature’s powe
 
 704.6b In a Two-Headed Giant game, if a team has fifteen or more poison counters, that team loses the game. See rule 810, “Two-Headed Giant Variant.”
 
-704.6c In a Commander game, a player that’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. See rule 903, “Commander.”
+704.6c In a Commander game, a player who’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. See rule 903, “Commander.”
 
 704.6d In a Commander game, if a commander is in a graveyard or in exile and that object was put into that zone since the last time state-based actions were checked, its owner may put it into the command zone. See rule 903, “Commander.” 
 
@@ -4603,6 +4621,8 @@ Example: Dawnglow Infusion is a sorcery that reads, “You gain X life if {G} wa
 Example: An Unstable Shapeshifter copies a Crazed Armodon. Crazed Armodon reads, “{G}: Crazed Armodon gets +3/+0 and gains trample until end of turn. Destroy Crazed Armodon at the beginning of the next end step. Activate this ability only once each turn.” If this ability of the Shapeshifter is activated, the Shapeshifter will be destroyed at the beginning of the next end step, even if it’s no longer a copy of Crazed Armodon at that time.
 
 706.12. An effect that instructs a player to cast a copy of an object (and not just copy a spell) follows the rules for casting spells, except that the copy is created in the same zone the object is in and then cast while another spell or ability is resolving. Casting a copy of an object follows steps 601.2a–h of rule 601, “Casting Spells,” and then the copy becomes cast. Once cast, the copy is a spell on the stack, and just like any other spell it can resolve or be countered.
+
+706.13. One card (Garth One-Eye) instructs a player to create a copy of a card defined by name rather than by indicating an object to be copied. To do so, the player uses the Oracle card reference to determine the characteristics of the copy and creates the copy outside of the game.
 
 707. Face-Down Spells and Permanents
 
@@ -5603,7 +5623,7 @@ Example: The hand modifier of a player’s vanguard card is -1. That player’s 
 903.3. Each deck has a legendary creature card designated as its commander. This designation is not a characteristic of the object represented by the card; rather, it is an attribute of the card itself. The card retains this designation even when it changes zones.
 Example: A commander that’s been turned face down (due to Ixidron’s effect, for example) is still a commander. A commander that’s copying another card (due to Cytoshape’s effect, for example) is still a commander. A permanent that’s copying a commander (such as a Body Double, for example, copying a commander in a player’s graveyard) is not a commander.
 
-903.3a Some planeswalker cards have an ability that states the card can be your commander. This ability modifies the rules for deck construction, and it functions before the game begins. See also rule 113.6m.
+903.3a Some planeswalker cards have an ability that states the card can be your commander. This ability modifies the rules for deck construction, and it functions before the game begins. See also rule 113.6n.
 
 903.3b If a player’s commander is a meld card and it’s melded with the other member of its meld pair, the resulting melded permanent is that player’s commander.
 
@@ -5653,7 +5673,7 @@ Example: Wort, the Raidmother’s color identity is red and green. A Wort Comman
 
 903.10. The Commander variant includes the following specification for winning and losing the game. All other rules for ending the game also apply. (See rule 104.)
 
-903.10a A player that’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. (This is a state-based action. See rule 704.)
+903.10a A player ’who’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. (This is a state-based action. See rule 704.)
 
 903.11. If a player is allowed to bring a card from outside the game into a Commander game, that player can’t bring a card into the game this way if it has the same name as a card that player had in their starting deck, if it has the same name as a card that the player has already brought into the game, or if any color in its color identity isn’t in the color identity of the player’s commander.
 
@@ -5762,8 +5782,7 @@ Glossary
 Abandon
 To turn a face-up ongoing scheme card face down and put it on the bottom of its owner’s scheme deck. See rule 701.26, “Abandon.”
 
-Ability
-1. Text on an object that explains what that object does or can do.
+Ability1. Text on an object that explains what that object does or can do.
 2. An activated or triggered ability on the stack. This kind of ability is an object.
 See rule 113, “Abilities,” and section 6, “Spells, Abilities, and Effects.”
 
@@ -5830,8 +5849,7 @@ A word that precedes one of two abilities a permanent may enter the battlefield 
 Annihilator
 A keyword ability that can make a creature particularly brutal when it attacks. See rule 702.86, “Annihilator.”
 
-Ante
-1. A zone used only when playing “for keeps.”
+Ante1. A zone used only when playing “for keeps.”
 2. To put a card into the ante zone.
 See rule 407, “Ante.”
 
@@ -5841,8 +5859,7 @@ A spell or ability may require “any target.” “Any target” is the same as
 APNAP Order
 See Active Player, Nonactive Player Order.
 
-Archenemy
-1. A casual variant in which a team of players faces off against a single opponent strengthened with powerful scheme cards. See rule 904, “Archenemy.”
+Archenemy1. A casual variant in which a team of players faces off against a single opponent strengthened with powerful scheme cards. See rule 904, “Archenemy.”
 2. A player in an Archenemy game who is playing with a scheme deck.
 
 Artifact
@@ -6033,6 +6050,9 @@ To have a mini-contest involving the top cards of players’ libraries. See rule
 
 Cleanup Step
 Part of the turn. This step is the second and final step of the ending phase. See rule 514, “Cleanup Step.”
+
+Clue Token
+A Clue token is a colorless artifact token with “{2}, Sacrifice this artifact: Draw a card.” For more information about predefined tokens, see rule 111.10.
 
 Collector Number
 A number printed on most cards that has no effect on game play. See rule 212, “Information Below the Text Box.”
@@ -6242,8 +6262,7 @@ Draft
 Draft Round
 Part of a draft in which each player opens an unopened booster pack and the cards in those booster packs are drafted. See rules 905.1a and 905.1b.
 
-Draw
-1. To put the top card of a player’s library into their hand as a turn-based action or as the result of an effect that uses the word “draw.” See rule 121, “Drawing a Card.”
+Draw1. To put the top card of a player’s library into their hand as a turn-based action or as the result of an effect that uses the word “draw.” See rule 121, “Drawing a Card.”
 2. The result of a game in which neither player wins or loses. See rule 104.4.
 
 Draw Step
@@ -6292,7 +6311,7 @@ Encoded
 A term that describes the relationship between a permanent and a card exiled by a cipher ability. See rule 702.99, “Cipher.”
 
 Encore
-A keyword ability that lets a player exile a creature card from their graveyard to, for each opponent, create a token that’s a copy of that card to attack that opponent.
+A keyword ability that lets a player exile a creature card from their graveyard to, for each opponent, create a token that’s a copy of that card to attack that opponent. See rule 702.141, “Encore”
 
 Encounter
 To move a phenomenon card off the top of a planar deck and turn it face up. See rule 310, “Phenomena.”
@@ -6363,8 +6382,7 @@ A keyword action that stops a permanent from untapping during the next untap ste
 Excess Damage
 Damage dealt to a creature greater than what would be lethal damage or damage dealt to a planeswalker greater than its loyalty. See rule 120.4a.
 
-Exile
-1. A zone. Exile is essentially a holding area for cards. It used to be known as the “removed-from-the-game” zone.
+Exile1. A zone. Exile is essentially a holding area for cards. It used to be known as the “removed-from-the-game” zone.
 2. To put an object into the exile zone from whatever zone it’s currently in. An “exiled” card is one that’s been put into the exile zone.
 See rule 406, “Exile.”
 
@@ -6386,13 +6404,11 @@ A turn created by an effect of a spell or ability. See rule 500.7. For rules abo
 Fabricate
 A keyword ability that lets you choose whether to create Servo tokens or put +1/+1 counters on a creature. See rule 702.123, “Fabricate.”
 
-Face Down
-1. A card is “face down” if it’s physically positioned so the card back is showing. Cards in some zones are normally kept face down. See section 4, “Zones.”
+Face Down1. A card is “face down” if it’s physically positioned so the card back is showing. Cards in some zones are normally kept face down. See section 4, “Zones.”
 2. A status a permanent may have. See rule 110.5 and rule 702.37, “Morph.”
 3. Face-down spells have additional rules. See rule 707, “Face-Down Spells and Permanents,” and rule 702.37, “Morph.”
 
-Face Up
-1. A card is “face up” if it’s physically positioned so the card front is showing. Cards in some zones are normally kept face up. See section 4, “Zones.”
+Face Up1. A card is “face up” if it’s physically positioned so the card front is showing. Cards in some zones are normally kept face up. See section 4, “Zones.”
 2. A default status a permanent may have. See rule 110.5 and rule 702.37, “Morph.”
 
 Fading
@@ -6500,13 +6516,11 @@ A multiplayer variant in which a large group of players (usually ten or more) co
 Gravestorm
 A keyword ability that creates copies of a spell. See rule 702.69, “Gravestorm.”
 
-Graveyard
-1. A zone. A player’s graveyard is their discard pile.
+Graveyard1. A zone. A player’s graveyard is their discard pile.
 2. All the cards in a player’s graveyard.
 See rule 404, “Graveyard.”
 
-Hand
-1. A zone. A player’s hand is where that player holds cards they have drawn but not played yet.
+Hand1. A zone. A player’s hand is where that player holds cards they have drawn but not played yet.
 2. All the cards in a player’s hand.
 See rule 402, “Hand.”
 
@@ -6637,13 +6651,13 @@ Landwalk
 A generic term for a group of keyword abilities that restrict whether a creature may be blocked. See rule 702.14, “Landwalk.”
 
 Last Known Information
-Information about an object that’s no longer in the zone it’s expected to be in, or information about a player that’s no longer in the game. This information captures that object’s last existence in that zone or that player’s last existence in the game. See rules 113.7a, 608.2b, 608.2h, and 800.4h.
+Information about an object that’s no longer in the zone it’s expected to be in, or information about a player ’who’s no longer in the game. This information captures that object’s last existence in that zone or that player’s last existence in the game. See rules 113.7a, 608.2b, 608.2h, and 800.4h.
 
 Layer
 A system used to determine in which order continuous effects are applied. See rule 613, “Interaction of Continuous Effects.” See also Dependency, Timestamp Order.
 
 Learn
-A keyword ability that lets a player add a Lesson card to their hand from outside the game or discard a card to draw a card. See rule 701.45, “Learn.”
+A keyword action that lets a player add a Lesson card to their hand from outside the game or discard a card to draw a card. See rule 701.45, “Learn.”
 
 Leaves the Battlefield
 A permanent “leaves the battlefield” when it’s moved from the battlefield to another zone, or (if it’s phased in) when it leaves the game because its owner leaves the game. See rules 603.6c and 603.10.
@@ -6672,8 +6686,7 @@ A keyword ability that can put level counters on a creature. See rule 702.87, �
 Leveler Cards
 Cards with striated text boxes and three power/toughness boxes. See rule 710, “Leveler Cards.”
 
-Library
-1. A zone. A player’s library is where that player draws cards from.
+Library1. A zone. A player’s library is where that player draws cards from.
 2. All the cards in a player’s library.
 See rule 401, “Library.”
 
@@ -6710,8 +6723,7 @@ A set of actions that could be repeated indefinitely. See rule 722, “Taking Sh
 Lose the Game
 There are several ways to lose the game. See rule 104, “Ending the Game,” rule 810.8 (for additional rules for Two-Headed Giant games), rule 809.5 (for additional rules for Emperor games), and rule 903.10 (for an additional rule for Commander games).
 
-Loyalty
-1. Part of a card that only planeswalkers have. A planeswalker card’s loyalty is printed in its lower right corner. See rule 209, “Loyalty.”
+Loyalty1. Part of a card that only planeswalkers have. A planeswalker card’s loyalty is printed in its lower right corner. See rule 209, “Loyalty.”
 2. A characteristic that only planeswalkers have. See rule 306.5.
 
 Loyalty Ability
@@ -7184,7 +7196,7 @@ Shroud
 A keyword ability that precludes a permanent or player from being targeted. See rule 702.18, “Shroud.”
 
 Shuffle
-To randomize the cards in a deck (before a game) or library (during a game). See rule 103.2.
+To randomize the cards in a deck (before a game) or library (during a game). See rule 103.2 and rule 701.20.
 
 Sideboard
 Extra cards that may be used to modify a deck between games of a match. See rules 100.4.
@@ -7400,6 +7412,9 @@ A Magic card that measures approximately 2.5 inches (6.3 centimeters) by 3.5 inc
 Trample
 A keyword ability that modifies how a creature assigns combat damage. See rule 702.19, “Trample.”
 
+Trample Over Planeswalkers
+A variant of trample that modifies how a creature assigns combat damage if it’s attacking a planeswalker. See rule 702.19, “Trample”
+
 Transfigure
 A keyword ability that lets a player search their library for a replacement creature card. See rule 702.71, “Transfigure.”
 
@@ -7566,7 +7581,7 @@ Credits
 
 Magic: The Gathering Original Game Design: Richard Garfield
 Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cátinò, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski
-Editing: Del Laugel (lead), Gregg Luben, Nat Moes, Matt Tabak, Michael Zhang, and Hans Ziegler
+Editing: Del Laugel (lead), Lyz Liddell, Gregg Luben, Nat Moes, Samantha Phelan, Matt Tabak, Michael Zhang, and Hans Ziegler
 Magic Rules Management: Jess Dunks, Eli Shiffrin, and Matt Tabak
 
 The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cátinò, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
@@ -7584,7 +7599,7 @@ Thanks to all our project team members and the many others too numerous to menti
 
 
 
-These rules are effective as of April 22, 2021.
+These rules are effective as of June18, 2021.
 
 Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unglued, Unstable, Dominaria, Ikoria, Kaldheim, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2021 Wizards. U.S. Pat. No. RE 37,957.
 
