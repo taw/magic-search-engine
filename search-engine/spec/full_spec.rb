@@ -7,7 +7,7 @@ describe "Full Database Test" do
   # for same sets, indexer changes etc.
   it "stats" do
     db.number_of_cards.should eq(22711)
-    db.number_of_printings.should eq(57095)
+    db.number_of_printings.should eq(57135)
   end
 
   # I'm not even sure what good this test does, delete?
@@ -195,6 +195,7 @@ describe "Full Database Test" do
       "Island",
       "Mana Breach",
       "Memory Lapse",
+      "Mother of Runes",
       "Mountain",
       "Mulch",
       "Path to Exile",
