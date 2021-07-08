@@ -34,7 +34,7 @@ describe "Card nicknames" do
       "Wooded Foothills"
     assert_search_results "is:fetchland",
       *cards_matching{|c|
-        c.text =~ %r[\{T\}, Pay 1 life, Sacrifice #{c.name}: Search your library for an? \S+ or \S+ card, put it onto the battlefield, then shuffle.] }
+        c.text =~ %r[\{T\}, Pay 1 life, Sacrifice #{Regexp.escape c.name}: Search your library for an? \S+ or \S+ card, put it onto the battlefield, then shuffle.] }
   end
 
   # The name is also used for all lands that produce 2 mana colors
@@ -79,8 +79,8 @@ describe "Card nicknames" do
       "Simic Growth Chamber"
     assert_search_results "is:bounceland",
       *cards_matching{|c|
-        c.text =~ %r[#{c.name} enters the battlefield tapped.\nWhen #{c.name} enters the battlefield, return a land you control to its owner's hand.\n\{T\}: Add \{.\}\{.\}] or
-        c.text =~ %r[#{c.name} enters the battlefield tapped.\nWhen #{c.name} enters the battlefield, sacrifice it unless you return an? untapped \S+ you control to its owner's hand.\n\{T\}: Add \{.\}\{.\}]
+        c.text =~ %r[#{Regexp.escape c.name} enters the battlefield tapped.\nWhen #{Regexp.escape c.name} enters the battlefield, return a land you control to its owner's hand.\n\{T\}: Add \{.\}\{.\}] or
+        c.text =~ %r[#{Regexp.escape c.name} enters the battlefield tapped.\nWhen #{Regexp.escape c.name} enters the battlefield, sacrifice it unless you return an? untapped \S+ you control to its owner's hand.\n\{T\}: Add \{.\}\{.\}]
       }
     assert_search_equal "is:bounceland", "is:karoo"
   end
@@ -100,7 +100,7 @@ describe "Card nicknames" do
       "Spirebluff Canal"
     assert_search_results "is:fastland",
       *cards_matching{|c|
-        c.text =~ %r[#{c.name} enters the battlefield tapped unless you control two or fewer other lands.\n\{T\}: Add \{.\} or \{.\}.]
+        c.text =~ %r[#{Regexp.escape c.name} enters the battlefield tapped unless you control two or fewer other lands.\n\{T\}: Add \{.\} or \{.\}.]
       }
   end
 
@@ -128,7 +128,7 @@ describe "Card nicknames" do
       "Wind-Scarred Crag"
     assert_search_results "is:gainland",
       *cards_matching{|c|
-        c.text =~ %r[#{c.name} enters the battlefield tapped.\nWhen #{c.name} enters the battlefield, you gain 1 life.\n\{T\}: Add \{.\} or \{.\}.]}
+        c.text =~ %r[#{Regexp.escape c.name} enters the battlefield tapped.\nWhen #{Regexp.escape c.name} enters the battlefield, you gain 1 life.\n\{T\}: Add \{.\} or \{.\}.]}
   end
 
   # The name is unique
@@ -146,7 +146,7 @@ describe "Card nicknames" do
       "Woodland Cemetery"
     assert_search_results "is:checkland",
       *cards_matching{|c|
-        c.text =~ %r[#{c.name} enters the battlefield tapped unless you control an? \S+ or an? \S+.\n\{T\}: Add \{.\} or \{.\}.]}
+        c.text =~ %r[#{Regexp.escape c.name} enters the battlefield tapped unless you control an? \S+ or an? \S+.\n\{T\}: Add \{.\} or \{.\}.]}
   end
 
   # This is a bit dubious
