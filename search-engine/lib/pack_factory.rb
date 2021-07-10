@@ -223,7 +223,7 @@ class PackFactory
       # They have DFCs but no separate slot for DFCs
       "ori", "xln", "rix",
       # CardSheetFactory is aware that mastrepieces go onto foil sheet, wo don't need to do anything
-      "mh1"
+      "mh1",
       build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "mh2"
       build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {common: 10, mh2_normal_uncommon: 3, mh2_normal_rare_mythic: 1, mh2_new_to_modern: 1})
@@ -233,7 +233,8 @@ class PackFactory
     when "akh", "hou"
       build_pack_with_random_foil(set_code, 9/40r, :foil_or_masterpiece_1_in_129, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "eld", # ELD and newer sets have multiple nonstandard pack types too
-      "thb"
+      "thb",
+      "afr"
       build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "m19"
       # According to The Collation Project, if pack has DFC (at least nonfoil), it will have checklist card in land slot

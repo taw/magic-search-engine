@@ -27,6 +27,7 @@ class FormatPioneer < Format
       "znr",
       "khm",
       "stx",
+      "afr",
     ]
   end
 end

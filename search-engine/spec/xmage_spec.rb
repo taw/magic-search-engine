@@ -2,7 +2,7 @@ describe "XMage" do
   include_context "db"
 
   it "has almost all Modern legal cards" do
-    assert_search_results "f:modern -in:xmage -e:mh2",
+    assert_search_results "f:modern -in:xmage -e:mh2,pmh2,afr",
       "Brokkos, Apex of Forever",
       "Glamerdye",
       "Mind Bend",

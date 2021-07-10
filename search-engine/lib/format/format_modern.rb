@@ -46,6 +46,7 @@ class FormatModern < Format
       "khm",
       "stx",
       "mh2",
+      "afr",
     ]
   end
 end
