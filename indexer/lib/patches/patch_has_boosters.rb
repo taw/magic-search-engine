@@ -26,6 +26,7 @@ class PatchHasBoosters < Patch
       znr
       khm
       stx
+      afr
     ]
   end
 
