@@ -28,7 +28,7 @@ class FormatStandard < Format
 
     {
       # 4 blocks system, 1 rotation/year
-      "2020-09-25" => ["eld", "thb", "iko", "m21", "znr", "khm", "stx"],
+      "2020-09-25" => ["eld", "thb", "iko", "m21", "znr", "khm", "stx", "afr"],
       "2019-10-04" => ["grn", "rna", "war", "m20", "eld", "thb", "iko", "m21"],
       "2018-10-05" => ["xln", "rix", "dom", "m19", "g18", "grn", "rna", "war", "m20"],
       "2017-09-29" => ["kld", "aer", "akh", "w17", "hou", "xln", "rix", "dom", "m19", "g18"],

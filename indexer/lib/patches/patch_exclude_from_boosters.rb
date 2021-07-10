@@ -95,6 +95,8 @@ class PatchExcludeFromBoosters < Patch
     when "stx"
       # incorrect in mtgjson
       number_i > 275
+    when "afr"
+      number_i > 281
     when "sta"
       # incorrect in mtgjson
       number_i > 63 or number =~ /e/
