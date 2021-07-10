@@ -223,7 +223,7 @@ class PackFactory
       # They have DFCs but no separate slot for DFCs
       "ori", "xln", "rix",
       # CardSheetFactory is aware that mastrepieces go onto foil sheet, wo don't need to do anything
-      "mh1",
+      "mh1"
       build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "mh2"
       build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {common: 10, mh2_normal_uncommon: 3, mh2_normal_rare_mythic: 1, mh2_new_to_modern: 1})
@@ -474,7 +474,7 @@ class PackFactory
         alara_premium_uncommon: 3,
         alara_premium_rare_mythic: 1,
       })
-    when "klr-arena", "akr-arena", "eld-arena", "thb-arena", "rix-arena", "xln-arena"
+    when "klr-arena", "akr-arena", "eld-arena", "thb-arena", "rix-arena", "xln-arena", "afr-arena"
       # Arena-only boosters, 14 card booster (no basic at all)
       build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1})
     when "m19-arena"
