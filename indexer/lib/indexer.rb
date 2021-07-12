@@ -120,12 +120,10 @@ class Indexer
 
       # All cards absolutely need unique numbers
       PatchMultipartCardNumbers,
-      PatchUseFallbackNumbers,
       PatchVerifyCollectorNumbers,
 
       # Normalize data into more convenient form
       PatchNormalizeColors,
-      PatchLoyaltySymbol,
       PatchDisplayPowerToughness,
       PatchNormalizeReleaseDate,
       PatchManaCost,

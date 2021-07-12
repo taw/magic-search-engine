@@ -1,4 +1,6 @@
-# We currently don't use information about tokens so don't keep it in the index
+# mtgjson moved them to a separate data structure so this doesn't do anything
+# anymore unless they mess up
+
 class PatchRemoveTokens < Patch
   def call
     delete_printing_if do |printing|
