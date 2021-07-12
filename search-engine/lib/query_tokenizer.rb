@@ -199,7 +199,7 @@ class QueryTokenizer
         cond = s[1].capitalize
         klass = Kernel.const_get("ConditionHas#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|dfc|double-faced|modal-dfc|modaldfc|mdfc|transform|token|split|flip|plane|scheme|phenomenon|meld|aftermath|adventure|saga|planar|augment|host|class)\b/i)
+      elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|dfc|double-faced|modal-dfc|modaldfc|mdfc|transform|token|split|flip|plane|scheme|phenomenon|meld|aftermath|adventure|saga|planar|augment|host|class|dungeon)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         kind = s[2].downcase
         kind = "double-faced" if kind == "transform"
@@ -212,7 +212,7 @@ class QueryTokenizer
         tokens << [:test, ConditionLayout.new(kind)]
       elsif s.scan(/layout\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)
         layout = (s[1]||s[2]).downcase
-        layouts = %W[normal leveler vanguard dfc double-faced mdfc modal-dfc modaldfc transform token split flip plane scheme phenomenon meld aftermath adventure saga planar augment host]
+        layouts = %W[normal leveler vanguard dfc double-faced mdfc modal-dfc modaldfc transform token split flip plane scheme phenomenon meld aftermath adventure saga planar augment host class dungeon]
         @warnings << "Unknown layout: #{layout}. Known layout types are: #{layouts.join(", ")}."
       elsif s.scan(/(is|not|game)\s*[:=]\s*(paper|arena|mtgo|shandalar|xmage)\b/i)
         tokens << [:not] if s[1].downcase == "not"
