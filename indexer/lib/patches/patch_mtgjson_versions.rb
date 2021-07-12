@@ -127,7 +127,8 @@ class PatchMtgjsonVersions < Patch
       card["fullart"] = card.delete("isFullArt")
       card["textless"] = card.delete("isTextless")
 
-      # mtgjson bug
+      # ok, these are technically "display cards" not oversized
+      # https://github.com/mtgjson/mtgjson/issues/815
       if card["set"]["official_code"] == "OC21"
         card["oversized"] = true
       end
