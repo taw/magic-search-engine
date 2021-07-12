@@ -169,7 +169,6 @@ class Indexer
       # Not bugs, more like different judgment calls than mtgjson
       PatchUrza,
       PatchFixPromoPrintDates,
-      PatchMeldCardNames,
 
       # One more round of normalization, it throws away some information
       PatchNormalizeNames,
