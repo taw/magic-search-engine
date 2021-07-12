@@ -9,7 +9,7 @@ class PatchPartner < Patch
       text = card["text"] or next
       if text.include?("Partner (You can have two commanders")
         card["is_partner"] = true
-      elsif text.include?("Legendary Partner (You can have two commanders")
+      elsif text.include?("Legendary Partner (You can have two commanders") or text.include?("Legendary partner (You can have two commanders")
         card["is_partner"] = true
       elsif text =~ /\bPartner with ([^\n\(]*)/
         card["is_partner"] = true
