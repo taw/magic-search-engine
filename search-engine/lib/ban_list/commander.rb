@@ -319,4 +319,10 @@ BanList.for_format("commander") do
     "Pradesh Gypsies" => "banned",
     "Stone-Throwing Devils" => "banned",
   )
+
+  change(
+    "2021-07-12",
+    "https://mtgcommander.net/index.php/2021/07/12/july-2021-update/",
+    "Hullbreacher" => "banned",
+  )
 end
