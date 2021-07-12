@@ -45,6 +45,7 @@ class FormatVintage < Format
       "ptg",
       "punh",
       "pust",
+      "tafr",
       "tbth",
       "tdag",
       "tfth",

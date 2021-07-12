@@ -103,6 +103,29 @@ class Card
       "Whirlwind",
       "Whispers of the Grave",
       "Wild Magic Surge",
+    ] + [
+      # AFR Dungeon Rooms
+      "Cave Entrance",
+      "Cradle of the Death God",
+      "Dark Pool",
+      "Deep Mines",
+      "Dungeon Level",
+      "Fungi Cavern",
+      "Goblin Bazaar",
+      "Goblin Lair",
+      "Lost Level",
+      "Mad Wizard's Lair",
+      "Mine Tunnels",
+      "Muiral's Graveyard",
+      "Oubliette",
+      "Runestone Caverns",
+      "Sandfall Cell",
+      "Storeroom",
+      "Temple of Dumathoin",
+      "Trapped Entry",
+      "Twisted Caverns",
+      "Veils of Fear",
+      "Yawning Portal",
     ]
   ).sort
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i

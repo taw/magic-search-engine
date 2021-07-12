@@ -58,6 +58,7 @@ module ApplicationHelper
   def format_oracle_text(card_text)
     h(card_text || "")
       .gsub(/\A\n+/, "")
+      .gsub("&#39;", "'") # regex doesn't work if we escape here, and later we have legit html in the output already
       .gsub(Card::ABILITY_WORD_RX) do |m|
         "<i class='ability_word'>#{$1}</i> —"
       end

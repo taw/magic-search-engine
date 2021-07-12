@@ -107,6 +107,8 @@ class Indexer
 
   def patches
     [
+      # Create basically a fake set
+      PatchTokens,
       # For transition period we support any mix of mtgjson v3 and v4
       PatchMtgjsonVersions,
       # Each set needs unique code, by convention all lowercase
@@ -199,15 +201,16 @@ class Indexer
       set = set_data.slice(
         "border",
         "custom",
+        "meta",
         "name",
         "releaseDate",
+        "tokens",
         "type",
-        "meta",
       ).merge(
         "gatherer_code" => set_data["gathererCode"],
         "official_code" => set_data["code"],
         "online_only" => (set_data["onlineOnly"] || set_data["isOnlineOnly"]) ? true : nil,
-        "booster" => set_data["booster"] || set_data["boosterV3"],
+        "has_boosters" => !!(set_data["booster"] || set_data["boosterV3"]),
         "base_set_size" => set_data["baseSetSize"],
       ).compact
       sets << set
