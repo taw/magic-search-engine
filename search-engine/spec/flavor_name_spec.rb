@@ -1,5 +1,5 @@
 describe "DissentionTest" do
-  include_context "db", "iko", "plgs"
+  include_context "db", "iko", "plg20"
 
   it "fn:name" do
     assert_search_results "fn:corona",
@@ -15,6 +15,6 @@ describe "DissentionTest" do
 
   it "fn:*" do
     assert_count_cards "fn:* e:iko", 19
-    assert_count_cards "fn:* e:plgs", 1
+    assert_count_cards "fn:* e:plg20", 1
   end
 end
