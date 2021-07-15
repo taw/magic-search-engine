@@ -114,6 +114,8 @@ describe Deck do
         sets_found.should match_array ["khm", "khc"]
       when "c21"
         sets_found.should match_array ["c21", "stx"]
+      when "afc"
+        sets_found.should match_array ["afc", "afr"]
       else
         sets_found.should eq [set.code]
       end
