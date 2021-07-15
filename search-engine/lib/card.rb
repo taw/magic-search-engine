@@ -126,6 +126,16 @@ class Card
       "Twisted Caverns",
       "Veils of Fear",
       "Yawning Portal",
+    ] + [
+      # AFC flavor words
+      "Astral Projection",
+      "Berserk",
+      "Create Undead",
+      "Focus Beam",
+      "Mystic Arcanum",
+      "Negative Energy Cone",
+      "Pact Boon",
+      "Perfect Illumination",
     ]
   ).sort
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
