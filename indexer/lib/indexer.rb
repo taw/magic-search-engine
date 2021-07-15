@@ -107,7 +107,7 @@ class Indexer
 
   def patches
     [
-      # Create basically a fake set
+      # Load data
       PatchTokens,
       # For transition period we support any mix of mtgjson v3 and v4
       PatchMtgjsonVersions,
@@ -131,6 +131,7 @@ class Indexer
       PatchManaCost,
 
       # Patch mtg.wtf bugs - these need to happen early to support patches below
+      PatchMeld,
       PatchBasicLandRarity,
       PatchRaritySpecial,
       PatchBaseSize,

@@ -3,17 +3,21 @@
 # This patch ended up as dumping ground for far too much random stuff
 
 class PatchMtgjsonVersions < Patch
+  # This can go away once mtgjson fixes their bugs
   def calculate_cmc(mana_cost)
     mana_cost.split(/[\{\}]+/).reject(&:empty?).map{|c|
       case c
-      when "W", "U", "B", "R", "G"
+      when /\A[WUBRGCS]\z/, /\A[WUBRG]\/[WUBRGP]\z/
         1
-      when "X"
+      when "X", "Y", "Z"
         0
+      when "HW"
+        0.5
       when /\d+/
         c.to_i
       else
-        raise "Cannot calculate cmc of #{c} mana symbol"
+        warn "Cannot calculate cmc of #{c} mana symbol"
+        0
       end
     }.sum
   end
@@ -23,6 +27,7 @@ class PatchMtgjsonVersions < Patch
     fcmc = card.delete("faceConvertedManaCost")
 
     # mtgjson bug
+    # https://github.com/mtgjson/mtgjson/issues/818
     if card["layout"] == "modal_dfc"
       return calculate_cmc(card["manaCost"] || "")
     end
@@ -31,7 +36,7 @@ class PatchMtgjsonVersions < Patch
       case card["layout"]
       when "split", "aftermath", "adventure"
         cmc = fcmc
-      when "flip", "transform"
+      when "transform"
         # ignore because
         # https://github.com/mtgjson/mtgjson/issues/294
       else
@@ -51,40 +56,9 @@ class PatchMtgjsonVersions < Patch
         card["names"] = card["name"].split(" // ")
         card["name"] = card.delete("faceName")
       end
+    end
 
-      # mtgjson has completely random names here, without any system
-      # just override them all with the correct ones
-      if card["layout"] == "meld"
-        card["names"] = case card["name"]
-        when "Bruna, the Fading Light", "Gisela, the Broken Blade"
-          [card["name"], "Brisela, Voice of Nightmares"]
-        when "Graf Rats", "Midnight Scavengers"
-          [card["name"], "Chittering Host"]
-        when "Hanweir Battlements", "Hanweir Garrison"
-          [card["name"], "Hanweir, the Writhing Township"]
-        when "Brisela, Voice of Nightmares"
-          [
-            "Bruna, the Fading Light",
-            "Gisela, the Broken Blade",
-            "Brisela, Voice of Nightmares",
-          ]
-        when "Chittering Host"
-          [
-            "Graf Rats",
-            "Midnight Scavengers",
-            "Chittering Host",
-          ]
-        when "Hanweir, the Writhing Township"
-          [
-            "Hanweir Battlements",
-            "Hanweir Garrison",
-            "Hanweir, the Writhing Township",
-          ]
-        else
-          raise "No front names for melded card: #{card["name"]}"
-        end
-      end
-
+    each_printing do |card|
       # Someone should investigate if this is true
       # This also applies to PSOI
       if card["name"] == "Tamiyo's Journal" and card["set"]["official_code"] == "SOI"
