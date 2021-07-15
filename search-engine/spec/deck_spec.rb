@@ -139,6 +139,8 @@ describe Deck do
       next if set.code == "khc"
       # Contains some STX cards
       next if set.code == "c21"
+      # Contains some AFR cards
+      next if set.code == "afc"
 
       # All names match both ways
       set_card_names = set.physical_card_names
