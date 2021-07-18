@@ -59,15 +59,6 @@ class PatchMtgjsonVersions < Patch
     end
 
     each_printing do |card|
-      # Someone should investigate if this is true
-      # This also applies to PSOI
-      if card["name"] == "Tamiyo's Journal" and card["set"]["official_code"] == "SOI"
-        card["hasFoil"] = true
-        card["hasNonFoil"] = true
-      end
-    end
-
-    each_printing do |card|
       card["cmc"] = get_cmc(card)
 
       # This is text because of some X planeswalkers
