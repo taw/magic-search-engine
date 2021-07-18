@@ -4,6 +4,15 @@
 class PatchFoiling < Patch
   def call
     each_printing do |card|
+      # Someone should investigate if this is true
+      # This also applies to PSOI
+      if card["name"] == "Tamiyo's Journal" and card["set_code"] == "soi"
+        card["hasFoil"] = true
+        card["hasNonFoil"] = true
+      end
+    end
+
+    each_printing do |card|
       case [card["hasNonFoil"], card["hasFoil"]]
       when [true, true]
         card["foiling"] = "both"
