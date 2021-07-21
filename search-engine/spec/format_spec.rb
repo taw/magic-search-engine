@@ -211,7 +211,7 @@ describe "Formats" do
 
   it "historic" do
     # including STA pre-banned
-    assert_count_cards "banned:historic", 20
+    assert_count_cards "banned:historic", 21
   end
 
   it "premodern" do

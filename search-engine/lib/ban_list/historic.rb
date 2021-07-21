@@ -83,4 +83,10 @@ BanList.for_format("historic") do
     "https://magic.wizards.com/en/articles/archive/news/may-19-2021-banned-and-restricted-announcement",
     "Thassa's Oracle" => "banned",
   )
+
+  change(
+    "2021-07-21",
+    "https://magic.wizards.com/en/articles/archive/news/july-21-2021-banned-and-restricted-announcement",
+    "Brainstorm" => "banned",
+  )
 end
