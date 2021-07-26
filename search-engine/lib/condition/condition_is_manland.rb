@@ -28,7 +28,6 @@ class ConditionIsManland < ConditionNickname
       "needle spires",
       "raging ravine",
       "shambling vent",
-      "sorrow's path",
       "spawning pool",
       "stalking stones",
       "stirring wildwood",

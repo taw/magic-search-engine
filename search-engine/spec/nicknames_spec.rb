@@ -211,14 +211,13 @@ describe "Card nicknames" do
       "Needle Spires",
       "Raging Ravine",
       "Shambling Vent",
-      "Sorrow's Path",
       "Spawning Pool",
       "Stalking Stones",
       "Stirring Wildwood",
       "Svogthos, the Restless Tomb",
       "Treetop Village",
       "Wandering Fumarole"
-    assert_search_equal "is:manland", "t:land o:becomes o:creature -(Tyrite Sanctum)"
+    assert_search_equal "is:manland", "t:land o:becomes o:creature -(Tyrite Sanctum) -(Sorrow's Path)"
     assert_search_equal "is:manland", "is:creatureland"
   end
 
