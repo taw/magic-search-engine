@@ -413,4 +413,8 @@ describe "Card nicknames" do
       "Pradesh Gypsies",
       "Stone-Throwing Devils"
   end
+
+  it "is:masterpiece" do
+    assert_search_equal "is:masterpiece", "st:masterpiece"
+  end
 end
