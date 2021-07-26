@@ -417,4 +417,17 @@ describe "Card nicknames" do
   it "is:masterpiece" do
     assert_search_equal "is:masterpiece", "st:masterpiece"
   end
+
+  it "is:cycleland" do
+    assert_search_results "is:cycleland",
+      "Canyon Slough",
+      "Fetid Pools",
+      "Irrigated Farmland",
+      "Scattered Groves",
+      "Sheltered Thicket"
+
+    assert_search_equal "is:cycleland", 't:land o:"cycling {2}" (t:plains or t:island or t:swamp or t:mountain or t:forest)'
+    assert_search_equal "is:cycleland", "is:bicycleland"
+    assert_search_equal "is:cycleland", "is:bikeland"
+  end
 end
