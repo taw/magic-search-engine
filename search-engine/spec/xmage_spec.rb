@@ -3,7 +3,7 @@ describe "XMage" do
 
   it "has almost all Modern legal cards" do
     # st:modern to ignore reprints in promo sets
-    assert_search_results "f:modern (st:std or st:modern) -in:xmage -e:mh2,afr",
+    assert_search_results "f:modern (st:std or st:modern) -in:xmage -e:afr",
       "Brokkos, Apex of Forever",
       "Glamerdye",
       "Mind Bend",
