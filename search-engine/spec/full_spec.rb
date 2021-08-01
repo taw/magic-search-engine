@@ -1,21 +1,13 @@
 describe "Full Database Test" do
   include_context "db"
 
-  # This changes whenever a new set is added, and needs updating a lot
-  # The point of this test is to make sure cards don't get added or dropped
-  # by changes which are not expected to, like updating to new mtgjson data
-  # for same sets, indexer changes etc.
-  it "stats" do
-    db.number_of_cards.should eq(23058)
-    db.number_of_printings.should eq(58078)
-  end
+  # There's no point checking db.number_of_cards / db.number_of_printings, uuid index will flag any unexpected changes
 
-  # I'm not even sure what good this test does, delete?
   it "is:promo" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
-    assert_count_printings "is:promo", 5693
+    assert_search_equal "is:promo", "st:promo"
   end
 
   it "block codes" do
