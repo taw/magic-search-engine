@@ -269,7 +269,7 @@ describe "Foils" do
       when "c21"
         warn "C21 mtgjson foiling data is not fixed yet"
       when "2xm"
-        promo_cards, regular_cards = set.printings.partition{|c| c.number == "383" }
+        promo_cards, regular_cards = set.printings.partition{|c| c.number.to_i >= 383 }
         assert_foiling(promo_cards, "foilonly")
         assert_foiling(regular_cards, "both")
       when "afr"
