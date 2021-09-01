@@ -163,49 +163,11 @@ describe "Full Database Test" do
       "Elspeth Tirel"
   end
 
-  it "alt Rebecca Guay" do
-    assert_search_results %[a:"rebecca guay" alt:(-a:"rebecca guay")],
-      "Ancestral Memories",
-      "Angelic Page",
-      "Angelic Wall",
-      "Auramancer",
-      "Aven Mindcensor",
-      "Bitterblossom",
-      "Boomerang",
-      "Channel",
-      "Coral Merfolk",
-      "Dark Banishing",
-      "Dark Ritual",
-      "Defense of the Heart",
-      "Elven Cache",
-      "Elvish Lyrist",
-      "Elvish Piper",
-      "Enchanted Evening",
-      "Fecundity",
-      "Forest",
-      "Gaea's Blessing",
+  it "alt a" do
+    assert_search_results %[a:"Randy Elliott" alt:(-a:"Randy Elliott")],
       "Island",
-      "Mana Breach",
-      "Memory Lapse",
-      "Mother of Runes",
-      "Mountain",
-      "Mulch",
-      "Path to Exile",
-      "Phantom Monster",
-      "Plains",
-      "Sea Sprite",
-      "Serra Angel",
-      "Spellstutter Sprite",
-      "Starlit Angel",
-      "Swamp",
-      "Taunting Elf",
-      "Thoughtleech",
-      "Twiddle",
-      "Wall of Wood",
-      "Wanderlust",
-      "Wonder",
-      "Wood Elves",
-      "Youthful Knight"
+      "Paladin en-Vec",
+      "Peace of Mind"
   end
 
   it "alt test of time" do
