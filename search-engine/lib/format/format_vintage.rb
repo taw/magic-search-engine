@@ -23,6 +23,7 @@ class FormatVintage < Format
       "ana",
       "anb",
       "cmb1",
+      "cmb2",
       "h17",
       "hho",
       "htr",

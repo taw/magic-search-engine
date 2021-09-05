@@ -43,7 +43,7 @@ describe PackFactory do
       regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2]
     }
     let(:expected_mtgjson_variant) {
-      ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed"]
+      ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "mb1"]
     }
     let(:expected_basics_not_in_boosters) {
       ["ice", "mir", "tmp", "usg", "4ed", "5ed", "6ed"]
@@ -65,7 +65,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[dgm unh jou frf tsp cn2 bbd war arn cmb1 stx].include?(set_code)
+      next if %W[dgm unh jou frf tsp cn2 bbd war arn cmb1 cmb2 stx].include?(set_code)
       set_pp = "#{set.name} [#{set.code}]"
       pack = factory.for(set_code)
       next unless pack
@@ -791,7 +791,7 @@ describe PackFactory do
   end
 
   context "MB1/CMB1/FMB1" do
-    let(:mb1_cards) { db.search("++ e:mb1").printings }
+    let(:mb1_cards) { db.search("++ e:mb1 -number:/†/").printings }
     let(:fmb1_cards) { db.search("++ e:fmb1").printings }
     let(:cmb1_cards) { db.search("++ e:cmb1").printings }
 
