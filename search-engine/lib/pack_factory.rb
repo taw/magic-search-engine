@@ -467,6 +467,24 @@ class PackFactory
         mb1_rare: 1,
         mb1_playtest: 1,
       })
+    when "cmb2"
+      build_pack(set_code, {
+        mb1_white_a: 1,
+        mb1_white_b: 1,
+        mb1_blue_a: 1,
+        mb1_blue_b: 1,
+        mb1_black_a: 1,
+        mb1_black_b: 1,
+        mb1_red_a: 1,
+        mb1_red_b: 1,
+        mb1_green_a: 1,
+        mb1_green_b: 1,
+        mb1_multicolor: 1,
+        mb1_colorless: 1,
+        mb1_old_frame: 1,
+        mb1_rare: 1,
+        mb1_playtest2: 1,
+      })
     when "ala-premium"
       build_pack(set_code, {
         alara_premium_basic: 1,

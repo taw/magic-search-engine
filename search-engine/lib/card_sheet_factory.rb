@@ -278,6 +278,10 @@ class CardSheetFactory
     from_query("e:cmb1")
   end
 
+  def mb1_playtest2
+    from_query("e:cmb2")
+  end
+
   def explicit_sheet(set_code, print_sheet_code, foil: false)
     cards = @db.sets[set_code].printings.select{|c| c.in_boosters? and c.print_sheet&.include?(print_sheet_code) }
     groups = cards.group_by{|c| c.print_sheet[/#{print_sheet_code}(\d+)/, 1].to_i }
