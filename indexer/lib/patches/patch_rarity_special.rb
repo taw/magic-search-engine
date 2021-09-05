@@ -1,4 +1,5 @@
 # mtgjson v4 dropped "special" rarity, but it's useful for a few cards
+# (and now v5 has a lot of rarities back)
 class PatchRaritySpecial < Patch
   def call
     vma_special = [
@@ -23,6 +24,19 @@ class PatchRaritySpecial < Patch
         next
       end
       card["rarity"] = "special"
+    end
+
+    each_printing do |card|
+      case card["rarity"]
+      when "common", "uncommon", "basic", "rare", "mythic", "special"
+        # OK
+      when "bonus"
+        # wtf now mtgjson...
+        card["rarity"] = "special"
+      else
+        warn "Unknown rarity: #{card["rarity"]}"
+        binding.pry
+      end
     end
   end
 end
