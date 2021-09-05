@@ -11,7 +11,7 @@ class PatchPlaytestCards < Patch
     name_map.default_proc = proc{|ht, x| x}
 
     each_printing do |card|
-      next unless card["set_code"] == "cmb1"
+      next unless card["set_code"] == "cmb1" or card["set_code"] == "cmb2"
       # Semantically they're split
       # Visually they're not
       # if card["layout"] == "split"
