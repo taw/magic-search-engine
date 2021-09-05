@@ -82,7 +82,7 @@ describe "Foils" do
         assert_foiling(set.printings, "nonfoil")
       when "ced", "cei", "chr", "ugl", "pelp", "pgru", "palp", "por", "p02", "ptk", "pdrc", "plgm", "ppod", "ugin", "pcel", "van", "s99", "mgb", "ice", "usg"
         assert_foiling(set.printings, "nonfoil")
-      when "ust", "tsb", "cns", "soi", "zne", "cc1"
+      when "ust", "tsb", "cns", "soi", "zne", "cc1", "cc2"
         assert_foiling(set.printings, "both")
       when "cm1", "p15a", "psus", "psum", "pwpn", "p2hg", "pgpx", "pwcq", "plpa", "pjgp", "ppro", "pgtw", "pwor", "pwos", "prel", "pfnm"
         assert_foiling(set.printings, "foilonly")
