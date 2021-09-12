@@ -1,3 +1,6 @@
+# This file is more double checking mtgjson's work that anything we really should be doing
+# Normally I wouldn't bother, but it caught a huge number of mtgjson bugs
+
 describe "Foils" do
   include_context "db"
 
@@ -272,8 +275,8 @@ describe "Foils" do
         promo_cards, regular_cards = set.printings.partition{|c| c.number.to_i >= 383 }
         assert_foiling(promo_cards, "foilonly")
         assert_foiling(regular_cards, "both")
-      when "afr"
-        warn "afr foiling: how it even works?"
+      when "afr", "mid"
+        warn "#{set.code} foiling: how it even works?"
       when "afc"
         warn "afc mtgjson foiling data is not fixed yet"
       else
