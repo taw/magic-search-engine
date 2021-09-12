@@ -7,15 +7,8 @@ describe "Formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
-      %[e:eld,thb,iko,m21,znr,khm,stx,afr
-      -(Cauldron Familiar)
-      -(Fires of Invention)
-      -(Oko Thief of Crowns)
-      -(Once Upon Time)
-      -(Uro, Titan of Nature's Wrath)
+      %[e:znr,khm,stx,afr,mid
       -(Omnath, Locus of Creation)
-      -(Lucky Clover)
-      -(Escape to the Wilds)
     ]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'

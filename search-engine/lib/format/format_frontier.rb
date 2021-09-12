@@ -25,6 +25,7 @@ class FormatFrontier < Format
       "khm",
       "stx",
       "afr",
+      "mid",
     ]
   end
 end

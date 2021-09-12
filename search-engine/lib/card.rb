@@ -17,6 +17,7 @@ class Card
       "Constellation",
       "Converge",
       "Council's dilemma",
+      "Coven",
       "Delirium",
       "Domain",
       "Eminence",
@@ -354,6 +355,8 @@ class Card
       case val
       when "*", "*²", "1+*", "2+*", "7-*", "X", "∞", "?", "1d4+1"
         val
+      when "*+1"
+        "1+*"
       else
         raise "Unrecognized value #{val.inspect}"
       end
