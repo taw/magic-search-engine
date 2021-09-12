@@ -47,6 +47,7 @@ class FormatModern < Format
       "stx",
       "mh2",
       "afr",
+      "mid",
     ]
   end
 end

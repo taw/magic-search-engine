@@ -79,6 +79,7 @@ describe "Regexp" do
       "Coax from the Blind Eternities",
       "Hanweir, the Writhing Township",
       "Ib Halfheart, Goblin Tactician",
+      "Jadar, Ghoulcaller of Nephalia",
       "Kroxa, Titan of Death's Hunger",
       "Minamo, School at Water's Edge",
       "Okina, Temple to the Grandfathers",
