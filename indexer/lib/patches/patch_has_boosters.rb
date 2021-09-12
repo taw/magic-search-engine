@@ -8,6 +8,7 @@ class PatchHasBoosters < Patch
   def new_sets_with_boosters
     %W[
       cmb2
+      mid
     ]
   end
 
@@ -29,6 +30,7 @@ class PatchHasBoosters < Patch
       khm
       stx
       afr
+      mid
     ]
   end
 
