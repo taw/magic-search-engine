@@ -234,9 +234,18 @@ class PackFactory
       build_pack_with_random_foil(set_code, 9/40r, :foil_or_masterpiece_1_in_129, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
     when "eld", # ELD and newer sets have multiple nonstandard pack types too
       "thb",
-      "afr",
-      "mid"
+      "afr"
       build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, common_if_no_basic: true)
+    when "mid"
+      WeightedPack.new(
+        build_pack_with_random_foil(set_code, 1/3r, :foil, :sfc_common, {basic: 1, sfc_common: 9, dfc_common: 1, sfc_uncommon: 2, dfc_uncommon: 1, sfc_rare_mythic: 1}) => 5,
+        build_pack_with_random_foil(set_code, 1/3r, :foil, :sfc_common, {basic: 1, sfc_common: 9, dfc_common: 1, sfc_uncommon: 3, dfc_rare_mythic: 1}) => 1,
+      )
+    when "mid-arena"
+      WeightedPack.new(
+        build_pack(set_code, {sfc_common: 9, dfc_common: 1, sfc_uncommon: 2, dfc_uncommon: 1, sfc_rare_mythic: 1}) => 5,
+        build_pack(set_code, {sfc_common: 9, dfc_common: 1, sfc_uncommon: 3, dfc_rare_mythic: 1}) => 1,
+      )
     when "m19"
       # According to The Collation Project, if pack has DFC (at least nonfoil), it will have checklist card in land slot
       # We do not simulate this
@@ -493,7 +502,7 @@ class PackFactory
         alara_premium_uncommon: 3,
         alara_premium_rare_mythic: 1,
       })
-    when "klr-arena", "akr-arena", "eld-arena", "thb-arena", "rix-arena", "xln-arena", "afr-arena", "mid-arena"
+    when "klr-arena", "akr-arena", "eld-arena", "thb-arena", "rix-arena", "xln-arena", "afr-arena"
       # Arena-only boosters, 14 card booster (no basic at all)
       build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1})
     when "m19-arena"
