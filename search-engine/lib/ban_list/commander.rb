@@ -325,4 +325,11 @@ BanList.for_format("commander") do
     "https://mtgcommander.net/index.php/2021/07/12/july-2021-update/",
     "Hullbreacher" => "banned",
   )
+
+  change(
+    "2021-09-13",
+    "https://mtgcommander.net/index.php/2021/09/13/september-2021-quarterly-update/",
+    "Worldfire" => "legal",
+    "Golos, Tireless Pilgrim" => "banned",
+  )
 end
