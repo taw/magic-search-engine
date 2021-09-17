@@ -9,5 +9,7 @@ describe "Story Spotlight cards" do
       "Settle the Score"
 
     assert_search_equal "not:spotlight", "-(is:spotlight)"
+    assert_search_equal "is:story", "is:spotlight"
+    assert_search_equal "not:story", "not:spotlight"
   end
 end
