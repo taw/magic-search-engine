@@ -249,9 +249,6 @@ describe "Foils" do
         nonfoils, foils = set.cards_in_precons
         assert_foiling(set.printings.select{|c| nonfoils.include?(c.name)}, "nonfoil")
         assert_foiling(set.printings.select{|c| foils.include?(c.name)}, "both")
-      when "znc"
-        # is it like C20?
-        warn "znr foiling: how it even works?"
       when "cmr"
         # It is sort of described in:
         # https://mtg.fandom.com/wiki/Commander_Legends#Set_details
@@ -269,16 +266,14 @@ describe "Foils" do
         normal_cards, extra_cards = set.printings.partition{|c| c.number !~ /e/}
         assert_foiling(normal_cards, "both")
         assert_foiling(extra_cards, "foilonly")
-      when "c21"
-        warn "C21 mtgjson foiling data is not fixed yet"
       when "2xm"
         promo_cards, regular_cards = set.printings.partition{|c| c.number.to_i >= 383 }
         assert_foiling(promo_cards, "foilonly")
         assert_foiling(regular_cards, "both")
-      when "afr", "mid"
-        warn "#{set.code} foiling: how it even works?"
-      when "afc"
-        warn "afc mtgjson foiling data is not fixed yet"
+      when "afr", "afc", "mid", "mic", "znc", "c21"
+        # I'm giving up on everything from booster fun onwards
+        # they're probably have extra versions in set/collector boosters
+        # but it's not documented anywhere
       else
         assert_by_type(set)
       end
