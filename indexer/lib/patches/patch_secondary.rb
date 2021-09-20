@@ -7,7 +7,7 @@ class PatchSecondary < Patch
         # just give up on this one
       elsif card["layout"] == "split"
         # All primary
-      elsif card["layout"] == "double-faced" or card["layout"] == "modaldfc"
+      elsif card["layout"] == "transform" or card["layout"] == "modaldfc"
         if card["number"] =~ /a\z/i
           # Primary
         elsif card["number"] =~ /b\z/i
