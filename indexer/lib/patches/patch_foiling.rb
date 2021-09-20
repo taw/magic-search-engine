@@ -32,7 +32,7 @@ class PatchFoiling < Patch
       case card["set_code"]
       when "usg", "por", "mb1"
         fix_to card, "nonfoil"
-      when "inv", "khm"
+      when "inv", "khm", "stx"
         fix_to card, "both"
       when "tsr"
         if card["number"] == "411"
