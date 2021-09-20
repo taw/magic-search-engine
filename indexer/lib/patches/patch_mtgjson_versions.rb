@@ -65,9 +65,8 @@ class PatchMtgjsonVersions < Patch
       # It's more convenient for us to mix types
       card["loyalty"] = card["loyalty"].to_i if card["loyalty"] and card["loyalty"] =~ /\A\d+\z/
 
-      # That got renamed. New version probably makes more sense,
-      # as meld is also "double-faced"
-      card["layout"] = "double-faced" if card["layout"] == "transform"
+      # That got renamed a few times as DFCs are now of 3 types (transform, meld, mdfc)
+      card["layout"] = "transform" if card["layout"] == "double-faced"
 
       # v4 uses []/"" while v3 just dropped such fields
       card.delete("supertypes") if card["supertypes"] == []
