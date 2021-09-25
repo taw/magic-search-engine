@@ -77,7 +77,7 @@ describe "Foils" do
       case set.code
       when "ha1", "ha2", "ha3", "ha4", "ha5"
         # Does it even matter on Arena
-      when "htr16", "htr17", "htr18", "htr19"
+      when "htr16", "htr17", "htr18", "htr19", "htr20"
         # Does it even matter?
       when "g17", "g18", "fmb1"
         assert_foiling(set.printings, "foilonly")
