@@ -31,6 +31,7 @@ class FormatVintage < Format
       "htr17",
       "htr18",
       "htr19",
+      "htr20",
       "j17",
       "oana",
       "pal04",
