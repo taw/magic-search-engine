@@ -11,7 +11,7 @@ class DeckController < ApplicationController
     @set = $CardDatabase.sets[params[:set]] or return render_404
     @deck = @set.decks.find{|d| d.slug == params[:id]} or return render_404
 
-    headers["Content-Disposition"] = "attachment; filename=#{@deck.name}.txt"
+    headers["Content-Disposition"] = %Q[attachment; filename="#{@deck.name}.txt"]
     render plain: @deck.to_text
   end
 
