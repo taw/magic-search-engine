@@ -89,4 +89,11 @@ BanList.for_format("historic") do
     "https://magic.wizards.com/en/articles/archive/news/july-21-2021-banned-and-restricted-announcement",
     "Brainstorm" => "banned",
   )
+
+  change(
+    "2021-10-13",
+    "https://magic.wizards.com/en/articles/archive/news/october-13-2021-banned-and-restricted-announcement",
+    "Tibalt's Trickery" => "banned",
+    "Memory Lapse" => "banned",
+  )
 end
