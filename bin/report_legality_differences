@@ -2,6 +2,7 @@
 
 require_relative "../search-engine/lib/card_database"
 require "memoist"
+require "pry"
 
 class ReportLegalityDifferences
   extend Memoist
@@ -26,7 +27,7 @@ class ReportLegalityDifferences
     result = {}
     all_sets.each do |set_code, set_data|
       # Name conflicts
-      next if set_code == "CMB1"
+      next if set_code == "CMB1" or set_code == "CMB2"
       set_data["cards"].each do |card|
         name = card["faceName"] || card["name"]
         legalities = card["legalities"].dup
