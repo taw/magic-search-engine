@@ -43,6 +43,14 @@ class ConditionExpr < ConditionSimple
       eval_card_value(card.cmc)
     when "loy"
       eval_card_value(card.loyalty)
+    when "sets"
+      eval_card_value(card.count_sets)
+    when "papersets"
+      eval_card_value(card.count_papersets)
+    when "prints"
+      eval_card_value(card.count_prints)
+    when "paperprints"
+      eval_card_value(card.count_paperprints)
     when "year"
       [:number, card.year]
     else

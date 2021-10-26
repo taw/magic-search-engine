@@ -298,6 +298,22 @@ class Card
     !!@brawler
   end
 
+  def count_prints
+    @count_prints ||= printings.size
+  end
+
+  def count_paperprints
+    @count_paperprints ||= printings.select(&:paper?).size
+  end
+
+  def count_sets
+    @count_sets ||= printings.map(&:set).uniq.size
+  end
+
+  def count_papersets
+    @count_papersets ||= printings.select(&:paper?).map(&:set).uniq.size
+  end
+
   private
 
   def calculate_mana_hash
