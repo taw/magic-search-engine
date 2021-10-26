@@ -371,8 +371,15 @@
       = search_help "lastprint=m10", "cards last printed in Magic 2010 set"
       = search_help "lastprint<lw", "cards last printed in in Lorwyn set or earlier"
 
-    %h4 Search by other part
-    %div Every card part (of split, flip, or double-faced card) is treated as separate object, so search like mv=2 mv=3 won't return anything, as no part has mana value of 2 and 3 simultaneously. There's special syntax for that.
+    %h4 Search by number of printings
+    %div If you want to search for cards that had a lot of printings, or were printed in a lot of sets, you can use these operators
+    %div Foil and nonfoil aren't counted separately except when foil version has a different art.
+    %div Due to inclusion of some misprints and other special printings in the database, and due to different ways of interpretting what counts as a promo "set", these queries don't always have "objective" answers.
+    %ul
+      = search_help "prints=7", "cards with exactly 7 different printings"
+      = search_help "paperprints=7", "cards with exactly 7 different paper printings"
+      = search_help "sets=7", "cards which appeared in exactly 7 different sets"
+      = search_help "papersets=7", "cards which appeared in exactly 7 different paper sets"
 
     %ul
       = search_help "mv=2 // mv=3", "cards with mana value 2 or one side and mana value 3 on another (split spells)"

@@ -376,12 +376,6 @@ describe "Full Database Test" do
     assert_search_equal %[e:"Duel Decks Anthology, Divine vs. Demonic"], %[e:"Duel Decks Anthology Divine vs Demonic"]
   end
 
-  it "year" do
-    "t:planeswalker year = 2010".should have_count_printings 16
-    "t:planeswalker year < 2013".should have_count_printings 72
-    "t:planeswalker year > 2014".should equal_search "t:planeswalker year >= 2015"
-  end
-
   it "is:custom" do
     assert_search_results "is:custom"
   end
