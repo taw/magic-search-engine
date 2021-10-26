@@ -317,7 +317,8 @@ class CardSheetFactory
   end
 
   def unhinged_foil_rares
-    from_query("e:unh r>=rare", 40+1, foil: true)
+    # Super Secret Tech is 141/140
+    from_query("e:unh r>=rare", 40+1, foil: true, extra: true)
   end
 
   def unhinged_foil
