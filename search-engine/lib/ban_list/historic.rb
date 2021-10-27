@@ -85,6 +85,12 @@ BanList.for_format("historic") do
   )
 
   change(
+    "2021-06-09",
+    "https://magic.wizards.com/en/articles/archive/news/june-9-2021-banned-and-restricted-announcement",
+    "Time Warp" => "banned",
+  )
+
+  change(
     "2021-07-21",
     "https://magic.wizards.com/en/articles/archive/news/july-21-2021-banned-and-restricted-announcement",
     "Brainstorm" => "banned",
