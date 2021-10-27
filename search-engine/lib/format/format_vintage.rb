@@ -39,6 +39,7 @@ class FormatVintage < Format
       "parl",
       "past",
       "pcel",
+      "plist",
       "pmic",
       "ppc1",
       "prel",

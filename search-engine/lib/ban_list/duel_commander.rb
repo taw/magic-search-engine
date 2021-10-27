@@ -216,4 +216,41 @@ BanList.for_format("duel commander") do
     "Jeweled Lotus" => "banned",
     "Uro, Titan of Nature's Wrath" => "banned",
   )
+
+  change(
+    "2021-01-25",
+    "https://www.mtgdc.info/announcements/2021/january-2021-rules-bannedrestricted-update",
+    "Esior, Wardwing Familiar" => "restricted",
+    "Jeska, Thrice Reborn" => "restricted",
+    "Fireblast" => "legal",
+  )
+
+  change(
+    "2021-03-29",
+    "https://www.mtgdc.info/announcements/2021/march-2021-rules-bannedrestricted-update",
+    "Ardenn, Intrepid Archaeologist" => "restricted",
+    "Keleth, Sunmane Familiar" => "restricted",
+    "Krark, the Thumbless" => "restricted",
+    "Ludevic, Necro-Alchemist" => "restricted",
+    "Reyhan, Last of the Abzan" => "restricted",
+    "Rograkh, Son of Rohgahh" => "restricted",
+  )
+
+  change(
+    "2021-07-26",
+    "https://www.mtgdc.info/announcements/2021/july-2021-rules-bannedrestricted-update",
+    "Inalla, Archmage Ritualist" => "restricted",
+    "Ragavan, Nimble Pilferer" => "restricted",
+    "Gifts Ungiven" => "banned",
+  )
+
+  change(
+    "2021-09-27",
+    "https://www.mtgdc.info/announcements/2021/september-2021-rules-bannedrestricted-update",
+    "Maddening Hex" => "banned",
+    "Asmoranomardicadaistinaculdacar" => "restricted",
+    "Winota, Joiner of Forces" => "restricted",
+  )
+
+  # next one Nov 29
 end

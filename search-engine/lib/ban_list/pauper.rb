@@ -90,4 +90,11 @@ BanList.for_format("pauper") do
     "https://magic.wizards.com/en/articles/archive/news/january-14-2021-banned-and-restricted-announcement",
     "Fall from Favor" => "banned",
   )
+
+  change(
+    "2021-09-08",
+    "https://magic.wizards.com/en/articles/archive/news/september-8-2021-banned-and-restricted-announcement",
+    "Chatterstorm" => "banned",
+    "Sojourner's Companion" => "banned",
+  )
 end
