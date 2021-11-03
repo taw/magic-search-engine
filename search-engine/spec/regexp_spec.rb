@@ -90,7 +90,6 @@ describe "Regexp" do
 
   it "regexp rulings text" do
     assert_search_results "rulings:fly",
-      "Druid of Purification", # gatherer bug
       "Wings of Hubris",
       "Sarah's Wings"
     assert_search_equal "rulings:flying", 'rulings:/\bflying\b/'
