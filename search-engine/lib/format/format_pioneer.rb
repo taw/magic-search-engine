@@ -29,6 +29,7 @@ class FormatPioneer < Format
       "stx",
       "afr",
       "mid",
+      "vow",
     ]
   end
 end

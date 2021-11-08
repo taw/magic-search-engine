@@ -48,6 +48,7 @@ class FormatModern < Format
       "mh2",
       "afr",
       "mid",
+      "vow",
     ]
   end
 end

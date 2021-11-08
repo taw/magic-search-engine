@@ -23,6 +23,7 @@ describe "Color Indicator Test" do
       "Arlinn, the Moon's Fury",
       "Lord of the Ulvenwald",
       "Ravager of the Fells",
+      "Savage Packmate",
       "Tovolar, the Midnight Scourge",
       "Ulrich, Uncontested Alpha"
     assert_search_equal "ind:gr", "ind:rg"

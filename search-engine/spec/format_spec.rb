@@ -7,7 +7,7 @@ describe "Formats" do
     assert_search_equal "f:standard", "legal:standard"
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
-      %[e:znr,khm,stx,afr,mid
+      %[e:znr,khm,stx,afr,mid,vow
       -(Omnath, Locus of Creation)
     ]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"

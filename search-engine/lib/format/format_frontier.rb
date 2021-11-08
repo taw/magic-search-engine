@@ -26,6 +26,7 @@ class FormatFrontier < Format
       "stx",
       "afr",
       "mid",
+      "vow",
     ]
   end
 end
