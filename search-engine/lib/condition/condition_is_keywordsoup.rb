@@ -12,6 +12,7 @@ class ConditionIsKeywordsoup < ConditionNickname
       "greater morphling",
       "kathril, aspect warper",
       "majestic myriarch",
+      "odric, blood-cursed",
       "odric, lunarch marshal",
       "rayami, first of the fallen",
       "selective adaptation",

@@ -374,6 +374,7 @@ describe "Card nicknames" do
       "Greater Morphling",
       "Kathril, Aspect Warper",
       "Majestic Myriarch",
+      "Odric, Blood-Cursed",
       "Odric, Lunarch Marshal",
       "Rayami, First of the Fallen",
       "Selective Adaptation",
