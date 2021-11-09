@@ -16,6 +16,7 @@ class PatchBaseSize < Patch
       "tsr" => 410, # 289, # THIS IS INCORRECT, need fixes downstream in sealed code
       "und" => 96,
       "znr" => 280,
+      "vow" => 277,
     }
 
     sizes.each do |code, size|
