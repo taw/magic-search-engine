@@ -1,6 +1,6 @@
 Magic: The Gathering Comprehensive Rules
 
-These rules are effective as of September 24, 2021.
+These rules are effective as of November 19, 2021.
 
 Introduction
 
@@ -623,7 +623,10 @@ Example: Dimir Doppelganger says “{1}{U}{B}: Exile target creature card from a
 111.3. The spell or ability that creates a token may define the values of any number of characteristics for the token. This becomes the token’s “text.” The characteristic values defined this way are functionally equivalent to the characteristic values that are printed on a card; for example, they define the token’s copiable values. A token doesn’t have any characteristics not defined by the spell or ability that created it.
 Example: Jade Mage has the ability “{2}{G}: Create a 1/1 green Saproling creature token.” The resulting token has no mana cost, supertypes, rules text, or abilities.
 
-111.4. A spell or ability that creates a token sets both its name and its subtype(s). If the spell or ability doesn’t specify the name of the token, its name is the same as its subtype(s). A “Goblin Scout creature token,” for example, is named “Goblin Scout” and has the creature subtypes Goblin and Scout. Once a token is on the battlefield, changing its name doesn’t change its subtype, and vice versa.
+111.4. A spell or ability that creates a token sets both its name and its subtype(s). If the spell or ability doesn’t specify the name of the token, its name is the same as its subtype(s) plus the word “Token.” Once a token is on the battlefield, changing its name doesn’t change its subtype(s), and vice versa.
+Example: Dwarven Reinforcements is a sorcery that says, in part, “Create two 2/1 red Dwarf Berserker creature tokens.” The tokens created as it resolves are each named Dwarf Berserker Token and each have the creature types Dwarf and Berserker.
+Example: Minsc, Beloved Ranger says, in part, “When Minsc, Beloved Ranger enters the battlefield, create Boo, a legendary 1/1 red Hamster creature token with trample and haste.” That token’s subtype is Hamster, but because Minsc specifies that the token’s name is Boo, neither “Hamster” nor “Token” are part of its name.
+Example: Spitting Image is a sorcery that says, in part, “Create a token that’s a copy of target creature.” All of that token’s characteristics will match the copiable characteristics of the creature targeted by that spell. If Spitting Image targets Doomed Dissenter, a Human creature, the name of the token the spell creates will be Doomed Dissenter, not Human Token or Doomed Dissenter Token.
 
 111.5. If a spell or ability would create a token, but a rule or effect states that a permanent with one or more of that token’s characteristics can’t enter the battlefield, the token is not created.
 
@@ -648,6 +651,8 @@ Example: Jade Mage has the ability “{2}{G}: Create a 1/1 green Saproling creat
 111.10e A Shard token is a colorless Shard enchantment token with “{2}, Sacrifice this enchantment: Scry 1, then draw a card.”
 
 111.10f A Clue token is a colorless Clue artifact token with “{2}, Sacrifice this artifact: Draw a card.”
+
+111.10g A Blood token is a colorless Blood artifact token with “{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.”
 
 111.11. A copy of a permanent spell becomes a token as it resolves. The token has the characteristics of the spell that became that token. The token is not “created” for the purposes of any replacement effects or triggered abilities that refer to creating a token.
 
@@ -1175,7 +1180,7 @@ Example: Dimir Doppelganger says “{1}{U}{B}: Exile target creature card from a
 
 201.4c Text printed on some legendary cards refers to that card by a shortened version of its name. Instances of a card’s shortened name used in this manner are treated as though they used the card’s full name.
 
-201.5. Some versions of Ikoria®: Lair of Behemoths cards and other promotional cards feature a name other than their own in the upper left corner, with their normal name in a secondary title bar below it. These cards have only the card name specified in the secondary title bar, not the name printed where a card’s name would normally appear. That name is considered flavor text and has no effect on game play.
+201.5. Promotional or alternate-art versions of some cards feature a secondary title bar below the name line. The card’s name as listed in the Oracle card reference is displayed in the secondary title bar, and an alternate name appears in the upper left corner. For the purposes of deck construction, game rules, and effects, these cards have only the card name specified in the secondary title bar. The alternate name is considered flavor text and has no effect on game play.
 
 202. Mana Cost and Color
 
@@ -1270,7 +1275,7 @@ Example: When choosing a creature type, “Merfolk” or “Wizard” is accepta
 
 205.3f Many cards were printed with subtypes that are now obsolete. Many cards have retroactively received subtypes. Use the Oracle card reference to determine what a card’s subtypes are. (See rule 108.1.)
 
-205.3g Artifacts have their own unique set of subtypes; these subtypes are called artifact types. The artifact types are Clue, Contraption, Equipment (see rule 301.5), Food, Fortification (see rule 301.6), Gold, Treasure, and Vehicle (see rule 301.7).
+205.3g Artifacts have their own unique set of subtypes; these subtypes are called artifact types. The artifact types are Blood, Clue, Contraption, Equipment (see rule 301.5), Food, Fortification (see rule 301.6), Gold, Treasure, and Vehicle (see rule 301.7).
 
 205.3h Enchantments have their own unique set of subtypes; these subtypes are called enchantment types. The enchantment types are Aura (see rule 303.4), Cartouche, Class (see rule 717), Curse, Rune, Saga (see rule 715), Shard, and Shrine.
 
@@ -1906,9 +1911,9 @@ Example: Exquisite Archangel has an ability which reads “If you would lose the
 
 502.1. First, all phased-in permanents with phasing that the active player controls phase out, and all phased-out permanents that the active player controlled when they phased out phase in. This all happens simultaneously. This turn-based action doesn’t use the stack. See rule 702.26, “Phasing.”
 
-502.2. Second, if it’s day and the previous turn’s active player didn’t cast any spells during that turn, it becomes night. If it’s night and the previous turn’s active player cast two or more spells during that turn, it becomes day. If it’s neither day nor night, this check doesn’t happen and it remains neither.
+502.2. Second, if it’s day and the previous turn’s active player didn’t cast any spells during that turn, it becomes night. If it’s night and the previous turn’s active player cast two or more spells during that turn, it becomes day. If it’s neither day nor night, this check doesn’t happen and it remains neither. This turn-based action doesn’t use the stack. See rule 724, “Day and Night.”
 
-502.2a Multiplayer games using the shared team turns option use a modified rule. If it’s day and no player on the previous turn’s active team cast a spell during that turn, it becomes night. If it’s night and any player on the previous turn’s active team cast two or more spells during the previous turn, it becomes day. If it’s neither day nor night, this check doesn’t happen and it remains neither.
+502.2a Multiplayer games using the shared team turns option use a modified rule. If it’s day and no player on the previous turn’s active team cast a spell during that turn, it becomes night. If it’s night and any player on the previous turn’s active team cast two or more spells during the previous turn, it becomes day. If it’s neither day nor night, this check doesn’t happen and it remains neither. This turn-based action doesn’t use the stack.
 
 502.3. Third, the active player determines which permanents they control will untap. Then they untap them all simultaneously. This turn-based action doesn’t use the stack. Normally, all of a player’s permanents untap, but effects can keep one or more of a player’s permanents from untapping.
 
@@ -4527,6 +4532,20 @@ Example: Garruk’s Horde says, in part, “You may cast creature spells from th
 
 702.147a Decayed represents a static ability and a triggered ability. “Decayed” means “This creature can’t block” and “When this creature attacks, sacrifice it at end of combat.”
 
+702.148. Cleave
+
+702.148a Cleave is a keyword that represents two static abilities that function while a spell with cleave is on the stack. “Cleave [cost]” means “You may cast this spell by paying [cost] rather than paying its mana cost” and “If this spell’s cleave cost was paid, change its text by removing all text found within square brackets in the spell’s rules text.” Casting a spell for its cleave cost follows the rules for paying alternative costs in rules 601.2b and 601.2f–h.
+
+702.148b Cleave’s second ability is a text-changing effect. See rule 612, “Text-Changing Effects.”
+f
+702.149. Training
+
+702.149a Training is a triggered ability. “Training” means “Whenever this creature and at least one other creature with power greater than this creature’s power attack, put a +1/+1 counter on this creature.”
+
+702.149b If a creature has multiple instances of training, each triggers separately.
+
+702.149c Some creatures with training have abilities that trigger when they train. “When this creature trains” means “When a resolving training ability puts a +1/+1 counter on this creature.”
+
 703. Turn-Based Actions
 
 703.1. Turn-based actions are game actions that happen automatically when certain steps or phases begin, or when each step and phase ends. Turn-based actions don’t use the stack.
@@ -4541,33 +4560,35 @@ Example: Garruk’s Horde says, in part, “You may cast creature spells from th
 
 703.4a Immediately after the untap step begins, all phased-in permanents with phasing that the active player controls phase out, and all phased-out permanents that the active player controlled when they phased out phase in. This all happens simultaneously. See rule 502.1.
 
-703.4b Immediately after the phasing action has been completed during the untap step, the active player determines which permanents they control will untap. Then they untap them all simultaneously. See rule 502.3.
+703.4b Immediately after the phasing action has been completed during the untap step, if the game has either the day or night designation, it checks to see whether that designation should change. If it’s neither day nor night, this check doesn’t happen. See rule 502.2.
 
-703.4c Immediately after the draw step begins, the active player draws a card. See rule 504.1.
+703.4c Immediately after the game checks to see if its day or night designation should change during the untap step or, if the game doesn’t have a day or night designation, immediately after the phasing action has been completed during the untap step, the active player determines which permanents they control will untap. Then they untap them all simultaneously. See rule 502.3.
 
-703.4d In an Archenemy game (see rule 904), immediately after the archenemy’s precombat main phase begins, that player sets the top card of their scheme deck in motion. See rule 701.25.
+703.4d Immediately after the draw step begins, the active player draws a card. See rule 504.1.
 
-703.4e Immediately after a player’s precombat main phase begins, that player puts a lore counter on each Saga enchantment they control. In an Archenemy game, this happens after the archenemy’s scheme action. See rule 715, “Saga Cards.”
+703.4e In an Archenemy game (see rule 904), immediately after the archenemy’s precombat main phase begins, that player sets the top card of their scheme deck in motion. See rule 701.25.
 
-703.4f Immediately after the beginning of combat step begins, if the game being played is a multiplayer game in which the active player’s opponents don’t all automatically become defending players, the active player chooses one of their opponents. That player becomes the defending player. See rule 507.1.
+703.4f Immediately after a player’s precombat main phase begins, that player puts a lore counter on each Saga enchantment they control. In an Archenemy game, this happens after the archenemy’s scheme action. See rule 715, “Saga Cards.”
 
-703.4g Immediately after the declare attackers step begins, the active player declares attackers. See rule 508.1.
+703.4g Immediately after the beginning of combat step begins, if the game being played is a multiplayer game in which the active player’s opponents don’t all automatically become defending players, the active player chooses one of their opponents. That player becomes the defending player. See rule 507.1.
 
-703.4h Immediately after the declare blockers step begins, the defending player declares blockers. See rule 509.1.
+703.4h Immediately after the declare attackers step begins, the active player declares attackers. See rule 508.1.
 
-703.4i Immediately after blockers have been declared during the declare blockers step, for each attacking creature that’s become blocked by multiple creatures, the active player announces the damage assignment order among the blocking creatures. See rule 509.2.
+703.4i Immediately after the declare blockers step begins, the defending player declares blockers. See rule 509.1.
 
-703.4j Immediately after the active player has announced damage assignment orders (if necessary) during the declare blockers step, for each creature that’s blocking multiple creatures, the defending player announces the damage assignment order among the attacking creatures. See rule 509.3.
+703.4j Immediately after blockers have been declared during the declare blockers step, for each attacking creature that’s become blocked by multiple creatures, the active player announces the damage assignment order among the blocking creatures. See rule 509.2.
 
-703.4k Immediately after the combat damage step begins, each player in APNAP order announces how each attacking or blocking creature they control assigns its combat damage. See rule 510.1.
+703.4k Immediately after the active player has announced damage assignment orders (if necessary) during the declare blockers step, for each creature that’s blocking multiple creatures, the defending player announces the damage assignment order among the attacking creatures. See rule 509.3.
 
-703.4m Immediately after combat damage has been assigned during the combat damage step, all combat damage is dealt simultaneously. See rule 510.2.
+703.4m Immediately after the combat damage step begins, each player in APNAP order announces how each attacking or blocking creature they control assigns its combat damage. See rule 510.1.
 
-703.4n Immediately after the cleanup step begins, if the active player’s hand contains more cards than their maximum hand size (normally seven), they discard enough cards to reduce their hand size to that number. See rule 514.1.
+703.4n Immediately after combat damage has been assigned during the combat damage step, all combat damage is dealt simultaneously. See rule 510.2.
 
-703.4p Immediately after the active player has discarded cards (if necessary) during the cleanup step, all damage is removed from permanents and all “until end of turn” and “this turn” effects end. These actions happen simultaneously. See rule 514.2.
+703.4p Immediately after the cleanup step begins, if the active player’s hand contains more cards than their maximum hand size (normally seven), they discard enough cards to reduce their hand size to that number. See rule 514.1.
 
-703.4q When each step or phase ends, any unused mana left in a player’s mana pool empties. See rule 500.4.
+703.4q Immediately after the active player has discarded cards (if necessary) during the cleanup step, all damage is removed from permanents and all “until end of turn” and “this turn” effects end. These actions happen simultaneously. See rule 514.2.
+
+703.4r When each step or phase ends, any unused mana left in a player’s mana pool empties. See rule 500.4.
 
 704. State-Based Actions
 
@@ -5231,11 +5252,11 @@ Example: If a card was brought into the subgame either from the main game or fro
 
 724.2. As the second part of the untap step, the game checks the previous turn to see if the game’s day/night designation should change. See rule 502, “Untap Step.”
 
-724.3a If it’s day and the previous turn’s active player didn’t cast any spells during that turn, it becomes night. Multiplayer games using the shared team turns option (see rule 805) use a modified rule: if it’s day and no player from the previous turn’s active team cast a spell during that turn, it becomes night.
+724.2a If it’s day and the previous turn’s active player didn’t cast any spells during that turn, it becomes night. Multiplayer games using the shared team turns option (see rule 805) use a modified rule: if it’s day and no player from the previous turn’s active team cast a spell during that turn, it becomes night.
 
-724.3b If it’s night, and previous turn’s active player cast two or more spells during the previous turn, it becomes day. Multiplayer games using the shared team turns option (see rule 805) use a modified rule: if it’s night and any player from the previous turn’s active team cast two or more spells during that turn, it becomes day.
+724.2b If it’s night, and previous turn’s active player cast two or more spells during the previous turn, it becomes day. Multiplayer games using the shared team turns option (see rule 805) use a modified rule: if it’s night and any player from the previous turn’s active team cast two or more spells during that turn, it becomes day.
 
-724.3c If it’s neither day nor night, this check doesn’t happen and it remains neither.
+724.2c If it’s neither day nor night, this check doesn’t happen and it remains neither.
 
 725. Taking Shortcuts
 
@@ -5842,7 +5863,7 @@ Example: Wort, the Raidmother’s color identity is red and green. A Wort Comman
 
 903.10. The Commander variant includes the following specification for winning and losing the game. All other rules for ending the game also apply. (See rule 104.)
 
-903.10a A player ‘who’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. (This is a state-based action. See rule 704.)
+903.10a A player who’s been dealt 21 or more combat damage by the same commander over the course of the game loses the game. (This is a state-based action. See rule 704.)
 
 903.11. If a player is allowed to bring a card from outside the game into a Commander game, that player can’t bring a card into the game this way if it has the same name as a card that player had in their starting deck, if it has the same name as a card that the player owns in the current game, or if any color in its color identity isn’t in the color identity of the player’s commander.
 
@@ -6006,6 +6027,9 @@ A multiplayer variant played among two or more teams of equal size. See rule 811
 Alternative Cost
 A cost a spell may have that its controller can pay rather than paying its mana cost. See rule 118, “Costs,” and rule 601, “Casting Spells.”
 
+Alternate Name
+A different name used on promotional or alternate-art versions of some cards. This name has no rules meaning. See rule 201.5.
+
 Amass
 A keyword action than gives you a Zombie Army creature token or grows an Army you already have. See rule 701.44, “Amass.”
 
@@ -6144,6 +6168,9 @@ An attacking creature that another creature blocks or that an effect causes to b
 Blocking Creature
 A creature that has either been declared as part of a legal block during the combat phase (once all costs to block, if any, have been paid), or a creature that has been put onto the battlefield blocking. It remains a blocking creature until it’s removed from combat or the combat phase ends, whichever comes first. See rule 509, “Declare Blockers Step.”
 
+Blood Token
+A Blood token is a colorless artifact token with “{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.” For more information about predefined tokens, see rule 111.10.
+
 Bloodthirst
 A keyword ability that can have a creature enter the battlefield with +1/+1 counters on it. See rule 702.54, “Bloodthirst.”
 
@@ -6224,6 +6251,9 @@ An enchantment subtype. Classes have a number of class level abilities that incr
 
 Cleanup Step
 Part of the turn. This step is the second and final step of the ending phase. See rule 514, “Cleanup Step.”
+
+Cleave
+A keyword ability that allows you to pay an alternative cost to remove some of a spell’s text. See rule 702.148, “Cleave.”
 
 Clue Token
 A Clue token is a colorless artifact token with “{2}, Sacrifice this artifact: Draw a card.” For more information about predefined tokens, see rule 111.10.
@@ -6634,6 +6664,9 @@ A keyword ability that lets a player cast a card from their graveyard. See rule 
 Flavor Text
 Text in italics (but not in parentheses) in the text box of a card that has no effect on play. See rule 207.2.
 
+Flavor Word
+An italicized word with no rules meaning that provides a flavorful description of an ability. See rule 207.2d.
+
 Flip Cards
 Cards with a two-part card frame (one part of which is printed upside down) on a single card. See rule 710, “Flip Cards.”
 
@@ -6852,7 +6885,7 @@ Landwalk
 A generic term for a group of keyword abilities that restrict whether a creature may be blocked. See rule 702.14, “Landwalk.”
 
 Last Known Information
-Information about an object that’s no longer in the zone it’s expected to be in, or information about a player ‘who’s no longer in the game. This information captures that object’s last existence in that zone or that player’s last existence in the game. See rules 113.7a, 608.2b, 608.2h, and 800.4h.
+Information about an object that’s no longer in the zone it’s expected to be in, or information about a player who’s no longer in the game. This information captures that object’s last existence in that zone or that player’s last existence in the game. See rules 113.7a, 608.2b, 608.2h, and 800.4h.
 
 Layer
 A system used to determine in which order continuous effects are applied. See rule 613, “Interaction of Continuous Effects.” See also Dependency, Timestamp Order.
@@ -7392,6 +7425,9 @@ To manipulate some of the cards on top of your library. See rule 701.18, “Scry
 Search
 To look at all cards in a stated zone and possibly find a card that matches a given description. See rule 701.19, “Search.”
 
+Secondary Title Bar
+A smaller name line with the Oracle reference name of a card which has an alternate name in its upper left corner. See rule 201.5.
+
 Set Aside (Obsolete)
 “Set [something] aside” is an obsolete term for “exile [something].” Cards with that text have received errata in the Oracle card reference. See Exile.
 
@@ -7630,6 +7666,9 @@ Additional rules that apply to games played in a sanctioned tournament. See rule
 Traditional Magic Card
 A Magic card that measures approximately 2.5 inches (6.3 centimeters) by 3.5 inches (8.8 centimeters) and is included in players’ decks. See rule 108.2.
 
+Training
+A keyword ability that means “Whenever this creature and at least one other creature with power greater that this creature’s power attack, put a +1/+1 counter on this creature.” See rule 702.149, “Training.”
+
 Trample
 A keyword ability that modifies how a creature assigns combat damage. See rule 702.19, “Trample.”
 
@@ -7826,6 +7865,6 @@ Thanks to all our project team members and the many others too numerous to menti
 
 
 
-These rules are effective as of September 24, 2021.
+These rules are effective as of November 19, 2021.
 
 Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unglued, Unstable, Dominaria, Ikoria, Kaldheim, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2021 Wizards. U.S. Pat. No. RE 37,957.
