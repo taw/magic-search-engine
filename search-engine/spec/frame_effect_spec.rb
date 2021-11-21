@@ -86,4 +86,8 @@ describe "frame type and effect queries" do
   it "is:textless" do
     assert_include_search "is:fullart", "e:p10"
   end
+
+  it "frame:lesson" do
+    assert_include_search "is:lesson", "e:stx t:lesson"
+  end
 end
