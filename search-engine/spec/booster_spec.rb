@@ -19,7 +19,7 @@ describe "is:booster" do
     db.sets.each do |set_code, set|
       set_pp = "#{set.name} [#{set.code}]"
       should_have_boosters = (
-        %W[mb1 cmb1 cmb2 cmr].include?(set_code) or (
+        %W[mb1 cmb1 cmb2 cmr dbl].include?(set_code) or (
           !(set_types_with_boosters & set.types).empty? and
           !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana oana fmb1 anb plist].include?(set.code)
         )
@@ -120,6 +120,8 @@ describe "is:booster" do
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=281 -number:/★/"
       when "mid", "vow"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=277 -number:/†/"
+      when "dbl"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=534"
       else
         if set.has_boosters? or set.in_other_boosters?
           assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/†|s/"

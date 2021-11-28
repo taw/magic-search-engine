@@ -17,6 +17,7 @@ class PatchBaseSize < Patch
       "und" => 96,
       "znr" => 280,
       "vow" => 277,
+      "dbl" => 534,
     }
 
     sizes.each do |code, size|

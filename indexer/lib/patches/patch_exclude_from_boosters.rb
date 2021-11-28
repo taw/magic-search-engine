@@ -90,7 +90,8 @@ class PatchExcludeFromBoosters < Patch
       "mid",
       "mh2",
       "stx",
-      "vow"
+      "vow",
+      "dbl"
       # no weird cards in boosters and we can rely on mtgjson data
       number_i > base_size
     when "afr"
