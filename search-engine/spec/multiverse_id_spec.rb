@@ -16,6 +16,8 @@ describe "multiverse ids" do
         # Known issue, ignore for now
       elsif cards[0].name == "Spined Wurm"
         # Known issue, ignore for now - PMEI / S00
+      elsif cards[0].name == "Village Watch"
+        # mtgjson bug
       else
         cards.size.should eq(1), "#{id} #{cards}"
       end

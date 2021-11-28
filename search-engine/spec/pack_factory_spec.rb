@@ -40,7 +40,7 @@ describe PackFactory do
       s.types.include?("core") or s.types.include?("expansion")
     }.to_set }
     let(:expected_official) {
-      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2]
+      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2 dbl]
     }
     let(:expected_mtgjson_variant) {
       ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "mb1"]
@@ -1652,6 +1652,48 @@ describe PackFactory do
         ev[dfc_uncommon].should eq Rational(1,3) * Rational(5,20) * Rational(1,60+23)
         ev[dfc_rare].should eq Rational(1,3) * Rational(3,20) * Rational(2, 15 + 53*2 + 5 + 11*2)
         ev[dfc_mythic].should eq Rational(1,3) * Rational(3,20) * Rational(1, 15 + 53*2 + 5 + 11*2)
+      end
+    end
+  end
+
+  # https://magic.wizards.com/en/articles/archive/feature/innistrad-double-feature-product-overview-2021-11-15
+  # 4x Innistrad: Midnight Hunt commons
+  # 4x Innistrad: Crimson Vow commons
+  # 2x Innistrad: Midnight Hunt uncommons
+  # 2x Innistrad: Crimson Vow uncommons
+  # 1x Innistrad: Midnight Hunt rare or mythic rare
+  # 1x Innistrad: Crimson Vow rare or mythic rare
+  # 1x Silver screen foil card
+  #
+  # No information about DFC rarity rates is provided, so I assume:
+  # * C SFC EV = C DFC EV (so C is 2/5 of packs, U+R+M is 3/5 of packs)
+  # * U/R/M ratios are like in VOW/MID packs
+  context "DBL" do
+    let(:set_code) { "dbl" }
+    let(:basic) { card("r:basic") }
+    {
+      "mid" => "number<=267",
+      "vow" => "number<=554 number>=268",
+    }.each do |subset, range|
+      let(:common) { card("r:common #{range} -layout:dfc") }
+      let(:uncommon) { card("r:uncommon #{range} -layout:dfc") }
+      let(:rare) { card("r:rare #{range} -layout:dfc") }
+      let(:mythic) { card("r:mythic #{range} -layout:dfc") }
+      let(:dfc_common) { card("r:common #{range} layout:dfc") }
+      let(:dfc_uncommon) { card("r:uncommon #{range} layout:dfc") }
+      let(:dfc_rare) { card("r:rare #{range} layout:dfc") }
+      let(:dfc_mythic) { card("r:mythic #{range} layout:dfc") }
+
+      it do
+        ev[common].should eq Rational(4, 100)
+        ev[uncommon].should eq Rational(2, 83) * (1079/960r)
+        ev[rare].should eq Rational(2, 119+35) * (217/220r)
+        ev[mythic].should eq Rational(1, 119+35) * (217/220r)
+
+        ev[dfc_common].should eq Rational(4, 100)
+        ev[dfc_uncommon].should eq Rational(2, 83) * (249/368r)
+        ev[dfc_rare].should eq Rational(2, 119+35) * (77/60r)
+        ev[dfc_mythic].should eq Rational(1, 119+35) * (77/60r)
       end
     end
   end

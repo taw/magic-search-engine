@@ -241,6 +241,54 @@ class PackFactory
         build_pack_with_random_foil(set_code, 1/3r, :foil, :sfc_common, {basic: 1, sfc_common: 9, dfc_common: 1, sfc_uncommon: 2, dfc_uncommon: 1, sfc_rare_mythic: 1}) => 5,
         build_pack_with_random_foil(set_code, 1/3r, :foil, :sfc_common, {basic: 1, sfc_common: 9, dfc_common: 1, sfc_uncommon: 3, dfc_rare_mythic: 1}) => 1,
       )
+    when "dbl"
+      WeightedPack.new(
+        build_pack(set_code, {
+          dbl_mid_sfc_common: 3, dbl_mid_dfc_common: 1, dbl_mid_sfc_uncommon: 2, dbl_mid_sfc_rare_mythic: 1,
+          dbl_vow_sfc_common: 3, dbl_vow_dfc_common: 1, dbl_vow_sfc_uncommon: 2, dbl_vow_sfc_rare_mythic: 1,
+          foil: 1,
+        }) => 16*16, # C+C
+        build_pack(set_code, {
+          dbl_mid_sfc_common: 4, dbl_mid_sfc_uncommon: 1, dbl_mid_dfc_uncommon: 1, dbl_mid_sfc_rare_mythic: 1,
+          dbl_vow_sfc_common: 3, dbl_vow_dfc_common: 1, dbl_vow_sfc_uncommon: 2, dbl_vow_sfc_rare_mythic: 1,
+          foil: 1,
+        }) => 15*16, # U+C
+        build_pack(set_code, {
+          dbl_mid_sfc_common: 4, dbl_mid_sfc_uncommon: 2, dbl_mid_dfc_rare_mythic: 1,
+          dbl_vow_sfc_common: 3, dbl_vow_dfc_common: 1, dbl_vow_sfc_uncommon: 2, dbl_vow_sfc_rare_mythic: 1,
+          foil: 1,
+        }) => 9*16, # R+C
+        build_pack(set_code, {
+          dbl_mid_sfc_common: 3, dbl_mid_dfc_common: 1, dbl_mid_sfc_uncommon: 2, dbl_mid_sfc_rare_mythic: 1,
+          dbl_vow_sfc_common: 4, dbl_vow_sfc_uncommon: 1, dbl_vow_dfc_uncommon: 1, dbl_vow_sfc_rare_mythic: 1,
+          foil: 1,
+        }) => 16*15, # C+U
+        build_pack(set_code, {
+          dbl_mid_sfc_common: 4, dbl_mid_sfc_uncommon: 1, dbl_mid_dfc_uncommon: 1, dbl_mid_sfc_rare_mythic: 1,
+          dbl_vow_sfc_common: 4, dbl_vow_sfc_uncommon: 1, dbl_vow_dfc_uncommon: 1, dbl_vow_sfc_rare_mythic: 1,
+          foil: 1,
+        }) => 15*15, # U+U
+        build_pack(set_code, {
+          dbl_mid_sfc_common: 4, dbl_mid_sfc_uncommon: 2, dbl_mid_dfc_rare_mythic: 1,
+          dbl_vow_sfc_common: 4, dbl_vow_sfc_uncommon: 1, dbl_vow_dfc_uncommon: 1, dbl_vow_sfc_rare_mythic: 1,
+          foil: 1,
+        }) => 9*15, # R+U
+        build_pack(set_code, {
+          dbl_mid_sfc_common: 3, dbl_mid_dfc_common: 1, dbl_mid_sfc_uncommon: 2, dbl_mid_sfc_rare_mythic: 1,
+          dbl_vow_sfc_common: 4, dbl_vow_sfc_uncommon: 2, dbl_vow_dfc_rare_mythic: 1,
+          foil: 1,
+        }) => 16*9, # C+R
+        build_pack(set_code, {
+          dbl_mid_sfc_common: 4, dbl_mid_sfc_uncommon: 1, dbl_mid_dfc_uncommon: 1, dbl_mid_sfc_rare_mythic: 1,
+          dbl_vow_sfc_common: 4, dbl_vow_sfc_uncommon: 2, dbl_vow_dfc_rare_mythic: 1,
+          foil: 1,
+        }) => 15*9, # U+R
+        build_pack(set_code, {
+          dbl_mid_sfc_common: 4, dbl_mid_sfc_uncommon: 2, dbl_mid_dfc_rare_mythic: 1,
+          dbl_vow_sfc_common: 4, dbl_vow_sfc_uncommon: 2, dbl_vow_dfc_rare_mythic: 1,
+          foil: 1,
+        }) => 9*9, # R+R
+      )
     when "mid-arena", "vow-arena"
       WeightedPack.new(
         build_pack(set_code, {sfc_common: 9, dfc_common: 1, sfc_uncommon: 2, dfc_uncommon: 1, sfc_rare_mythic: 1}) => 5,

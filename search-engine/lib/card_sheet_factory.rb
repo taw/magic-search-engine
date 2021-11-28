@@ -1027,4 +1027,64 @@ class CardSheetFactory
       [from_query('e:mh2 number<262 r:mythic', 20), 1],
     )
   end
+
+  def dbl_mid_sfc_common
+    from_query("e:dbl r:common is:sfc number<=267", 90)
+  end
+
+  def dbl_mid_dfc_common
+    from_query("e:dbl r:common is:dfc number<=267", 10)
+  end
+
+  def dbl_mid_sfc_uncommon
+    from_query("e:dbl r:uncommon is:sfc number<=267", 60)
+  end
+
+  def dbl_mid_dfc_uncommon
+    from_query("e:dbl r:uncommon is:dfc number<=267", 23)
+  end
+
+  def dbl_mid_sfc_rare_mythic
+    mix_sheets(
+      [from_query("e:dbl r:rare is:sfc number<=267", 53), 2],
+      [from_query("e:dbl r:mythic is:sfc number<=267", 15), 1],
+    )
+  end
+
+  def dbl_mid_dfc_rare_mythic
+    mix_sheets(
+      [from_query("e:dbl r:rare is:dfc number<=267", 11), 2],
+      [from_query("e:dbl r:mythic is:dfc number<=267", 5), 1],
+    )
+  end
+
+  def dbl_vow_sfc_common
+    from_query("e:dbl r:common is:sfc number>267", 90)
+  end
+
+  def dbl_vow_dfc_common
+    from_query("e:dbl r:common is:dfc number>267", 10)
+  end
+
+  def dbl_vow_sfc_uncommon
+    from_query("e:dbl r:uncommon is:sfc number>267", 60)
+  end
+
+  def dbl_vow_dfc_uncommon
+    from_query("e:dbl r:uncommon is:dfc number>267", 23)
+  end
+
+  def dbl_vow_sfc_rare_mythic
+    mix_sheets(
+      [from_query("e:dbl r:rare is:sfc number>267", 53), 2],
+      [from_query("e:dbl r:mythic is:sfc number>267", 15), 1],
+    )
+  end
+
+  def dbl_vow_dfc_rare_mythic
+    mix_sheets(
+      [from_query("e:dbl r:rare is:dfc number>267", 11), 2],
+      [from_query("e:dbl r:mythic is:dfc number>267", 5), 1],
+    )
+  end
 end
