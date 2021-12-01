@@ -149,6 +149,8 @@ describe Deck do
       # also cards 31-38 are not in precons,
       # so this set should maybe check that?
       next if set.code == "mic"
+      # Eight additional cards with the VOC code (#31/38 to #38/38) can only be found in the Set and Collector Boosters. They aren't found in the Innistrad: Crimson Vow Commander decks.
+      next if set.code == "voc"
 
       # All names match both ways
       set_card_names = set.physical_card_names
