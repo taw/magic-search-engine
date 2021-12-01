@@ -118,6 +118,8 @@ describe Deck do
         sets_found.should match_array ["afc", "afr"]
       when "mic"
         sets_found.should match_array ["mic", "mid"]
+      when "voc"
+        sets_found.should match_array ["voc", "vow"]
       else
         sets_found.should eq [set.code]
       end

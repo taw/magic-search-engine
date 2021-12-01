@@ -34,14 +34,23 @@ class PatchPartner < Patch
     potential_partners = @cards[partner_name].select{|c| c["set_code"] == set_code }
     return potential_partners[0]["number"] if potential_partners.size == 1
 
-    if set_code == "bbd"
-      partner_numbers = {
-        "1" => "2",
-        "2" => "1",
-        "255" => "256",
-        "256" => "255",
-      }
+    special_pairs = {
+      "bbd" => [
+        ["1", "2"],
+        ["255", "256"],
+      ],
+      "voc" => [
+        ["19", "25"],
+        ["57", "63"],
+        ["8", "16"],
+        ["46", "54"],
+      ],
+    }
+
+    if special_pairs[set_code]
+      partner_numbers = special_pairs[set_code].flat_map{|a,b| [[a,b],[b,a]]}.to_h
       # Will / Rowan have two versions
+      # VOC has two versions of each partner card too
       if partner_numbers[number]
         found_partner = potential_partners.find{|c| c["number"] == partner_numbers[number] }
         if found_partner
