@@ -791,7 +791,7 @@ describe PackFactory do
   end
 
   context "MB1/CMB1/FMB1" do
-    let(:mb1_cards) { db.search("++ e:mb1 -number:/†/").printings }
+    let(:mb1_cards) { db.search("++ e:mb1 -number:/†/ -number>=1695").printings }
     let(:fmb1_cards) { db.search("++ e:fmb1").printings }
     let(:cmb1_cards) { db.search("++ e:cmb1").printings }
 
