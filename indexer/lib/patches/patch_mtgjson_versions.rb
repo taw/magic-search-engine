@@ -28,7 +28,7 @@ class PatchMtgjsonVersions < Patch
 
     # mtgjson bug
     # https://github.com/mtgjson/mtgjson/issues/818
-    if card["layout"] == "modal_dfc"
+    if card["layout"] == "modal_dfc" or card["layout"] == "reversible_card"
       return calculate_cmc(card["manaCost"] || "")
     end
 
@@ -50,8 +50,20 @@ class PatchMtgjsonVersions < Patch
     cmc
   end
 
+  def assign_number(card)
+    @seen ||= {}
+    set_code = card["set"]["official_code"]
+    base_number = card["number"]
+    counter = "a"
+    while @seen[[set_code, base_number, counter]]
+      counter.succ!
+    end
+    @seen[[set_code, base_number, counter]] = true
+    card["number"] = "#{base_number}#{counter}"
+  end
+
   def call
-    each_printing do |card|
+     each_printing do |card|
       if card["faceName"] and card["name"].include?("//")
         card["names"] = card["name"].split(" // ")
         card["name"] = card.delete("faceName")
@@ -60,6 +72,14 @@ class PatchMtgjsonVersions < Patch
 
     each_printing do |card|
       card["cmc"] = get_cmc(card)
+
+      # I don't know of any better way of handling them
+      # These are two separate cards as far as game rules are concerned
+      if card["layout"] == "reversible_card"
+        card["layout"] = "normal"
+        card.delete "names"
+        assign_number(card)
+      end
 
       # This is text because of some X planeswalkers
       # It's more convenient for us to mix types

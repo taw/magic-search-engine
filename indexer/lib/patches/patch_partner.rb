@@ -45,6 +45,10 @@ class PatchPartner < Patch
         ["8", "16"],
         ["46", "54"],
       ],
+      "sld" => [
+        ["379a", "380a"],
+        ["379b", "380b"],
+      ]
     }
 
     if special_pairs[set_code]
@@ -61,7 +65,7 @@ class PatchPartner < Patch
       end
     end
 
-    warn "Can't link partners: #{card_name} to #{partner_name}"
+    warn "Can't link partners: #{card_name} [#{set_code}/#{number}] to #{partner_name}"
     nil
   end
 end
