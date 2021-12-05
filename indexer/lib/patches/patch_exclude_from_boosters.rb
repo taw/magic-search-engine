@@ -107,6 +107,8 @@ class PatchExcludeFromBoosters < Patch
       # showcase cards are numbered #279-313
       # extended artwork cards are numbered #314-363 - these are just collector boosters
       ![1..274, 276..278, 279..313].any?{|r| r.include?(number_i)}
+    when "mb1"
+      number_i >= 1695 or number =~ /†/
     else
       false
     end

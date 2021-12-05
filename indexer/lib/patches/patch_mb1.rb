@@ -4,7 +4,9 @@ class PatchMB1 < Patch
     raise "Assignment is not unique" unless assignment.map(&:first).uniq.size == assignment.size
     assignment = assignment.to_h
 
-    cards = cards_by_set["mb1"].select{|c| c["number"] !~ /†/}
+    # There's some extra cards in the reprint, we ignore them
+    cards = cards_by_set["mb1"].select{|c| c["number"] !~ /†/ and c["number"].to_i < 1695 }
+
     raise "Card names don't match" unless cards.map{|c| c["name"] }.sort  == assignment.keys.sort
 
     cards.each do |card|
