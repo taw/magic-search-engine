@@ -74,7 +74,7 @@ describe Deck do
         ![
           "cm1", "opca", "oe01", "ohop", "phop", "oarc", "parc", "opc2",
           "ocmd", "oc13", "oc14", "oc15", "oc16", "oc17", "oc18", "oc19", "oc20", "oc21",
-          "cmr",
+          "cmr", "cc1", "cc2",
         ].include?(set.code)
       }
   end
@@ -168,6 +168,9 @@ describe Deck do
         set_card_names += db.sets["oarc"].physical_card_names
         set_card_names.should match_array deck_card_names
       else
+        unless set_card_names.to_set == deck_card_names.to_set
+          pp [:bad, set.code]
+        end
         set_card_names.should match_array deck_card_names
       end
     end
