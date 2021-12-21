@@ -75,7 +75,7 @@ describe PackFactory do
         pack.nonfoil_cards.should match_array(rest),
           "All cards in #{set_pp} should be possible in its packs as nonfoil except basics"
       else
-        pack.nonfoil_cards.should match_array(set.physical_cards_in_boosters),
+        pack.nonfoil_cards.should include(*set.physical_cards_in_boosters),
           "All cards in #{set_pp} should be possible in its packs as nonfoil"
       end
     end
@@ -421,7 +421,7 @@ describe PackFactory do
 
     context "non-foil" do
       it do
-        ev[sfc_common].should eq (10 - (1/8r) - (9/40r)) * Rational(1, 70)
+        ev[sfc_common].should eq (9 - (1/8r) - (9/40r)) * Rational(1, 70)
         ev[sfc_uncommon].should eq Rational(3, 60)
         ev[sfc_rare].should eq Rational(2, 96)
         ev[sfc_mythic].should eq Rational(1, 96)
@@ -993,7 +993,7 @@ describe PackFactory do
       let(:set_code) { "con" }
 
       it do
-        ev[common].should eq Rational(10, 221)
+        ev[common].should eq Rational(10,  221)
         ev[uncommon].should eq Rational(3, 140)
         ev[rare].should eq Rational(2, 35 + 2*123)
         ev[mythic].should eq Rational(1, 35 + 2*123)
