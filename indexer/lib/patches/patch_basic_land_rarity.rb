@@ -13,7 +13,7 @@ class PatchBasicLandRarity < Patch
       "Snow-Covered Swamp",
       "Snow-Covered Island",
       "Snow-Covered Forest",
-      "Wastes",
+      # "Wastes", # card actually has C rarity, not L
     ].to_set
 
     each_printing do |card|
