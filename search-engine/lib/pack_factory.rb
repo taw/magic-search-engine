@@ -20,6 +20,7 @@ class PackFactory
       "gtc" => "rtr",
       "bng" => "ths",
       "jou" => "ths",
+      "ogw" => "bfz",
       "emn" => "soi",
       "aer" => "kld",
     }
@@ -241,10 +242,9 @@ class PackFactory
       build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, borrow_basic: true)
     when "mh2"
       build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {common: 10, mh2_normal_uncommon: 3, mh2_normal_rare_mythic: 1, mh2_new_to_modern: 1})
-    when "bfz", "ogw",
-      "kld"
+    when "bfz", "kld"
       build_pack_with_random_foil(set_code, 9/40r, :foil_or_masterpiece_1_in_144, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
-    when "aer"
+    when "ogw", "aer"
       build_pack_with_random_foil(set_code, 9/40r, :foil_or_masterpiece_1_in_144, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, borrow_basic: true)
     when "akh", "hou"
       build_pack_with_random_foil(set_code, 9/40r, :foil_or_masterpiece_1_in_129, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
