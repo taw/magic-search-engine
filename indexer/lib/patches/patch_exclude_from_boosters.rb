@@ -109,6 +109,9 @@ class PatchExcludeFromBoosters < Patch
       ![1..274, 276..278, 279..313].any?{|r| r.include?(number_i)}
     when "mb1"
       number_i >= 1695 or number =~ /†/
+    when "zen"
+      # non-fullart basics are excluded
+      number =~ /a/
     else
       false
     end

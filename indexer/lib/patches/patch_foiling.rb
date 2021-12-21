@@ -34,6 +34,8 @@ class PatchFoiling < Patch
         fix_to card, "nonfoil"
       when "inv", "khm", "stx"
         fix_to card, "both"
+      when "zen"
+        fix_to card, "nonfoil" if card["number"] =~ /a/
       when "tsr"
         if card["number"] == "411"
           # I think?
