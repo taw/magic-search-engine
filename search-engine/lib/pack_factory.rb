@@ -244,8 +244,10 @@ class PackFactory
       build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {common: 10, mh2_normal_uncommon: 3, mh2_normal_rare_mythic: 1, mh2_new_to_modern: 1})
     when "bfz", "kld"
       build_pack_with_random_foil(set_code, 9/40r, :foil_or_masterpiece_1_in_144, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
-    when "ogw", "aer"
-      build_pack_with_random_foil(set_code, 9/40r, :foil_or_masterpiece_1_in_144, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, borrow_basic: true)
+    when "ogw"
+      build_pack_with_random_foil(set_code, 9/40r, :ogw_foil_or_masterpiece_1_in_144, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, borrow_basic: true)
+    when "aer"
+      build_pack_with_random_foil(set_code, 9/40r, :aer_foil_or_masterpiece_1_in_144, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1}, borrow_basic: true)
     when "akh", "hou"
       build_pack_with_random_foil(set_code, 9/40r, :foil_or_masterpiece_1_in_129, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
     when "eld", # ELD and newer sets have multiple nonstandard pack types too
@@ -383,10 +385,10 @@ class PackFactory
         build_pack_with_random_foil(set_code, 9/40r, :foil, :sfc_common, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1}) => 1,
       )
     when "emn"
-      # Same assumptions as SOI, except no basics in the set
+      # Same assumptions as SOI, except borrowed basics in the set
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, 9/40r, :foil, :sfc_common, {basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1}, borrow_basic: true) => 7,
-        build_pack_with_random_foil(set_code, 9/40r, :foil, :sfc_common, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}, borrow_basic: true) => 1,
+        build_pack_with_random_foil(set_code, 9/40r, :emn_foil, :sfc_common, {basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1}, borrow_basic: true) => 7,
+        build_pack_with_random_foil(set_code, 9/40r, :emn_foil, :sfc_common, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}, borrow_basic: true) => 1,
       )
     when "cns"
       # 1:67 cards were foil back then, so assume this is true for conspiracies, all while keeping 9/40 rate same for rest-of-the-pack (even though there's 1 less cards to in rest-of-the-pack)?
