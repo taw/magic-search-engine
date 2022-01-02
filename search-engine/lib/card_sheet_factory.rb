@@ -66,6 +66,16 @@ class CardSheetFactory
     CardSheet.new(sheets, weights)
   end
 
+  def emn_foil
+    sheets = [
+      rare_mythic("emn", foil: true),
+      rarity("emn", "uncommon", foil: true),
+      foil_common_or_borrowed_basic("emn", "soi"),
+    ]
+    weights = [3, 5, 12]
+    CardSheet.new(sheets, weights)
+  end
+
   # Masterpieces supposedly are in 1/144 booster (then 1/129 for Amonkhet), and they're presumably equally likely
   # 1:129 rate is not too hard to get, 1:144 is hard
   def foil_or_masterpiece_1_in_144(set_code)
@@ -74,6 +84,28 @@ class CardSheetFactory
       rarity(set_code, "uncommon", foil: true),
       common_or_basic(set_code, foil: true),
       masterpieces_for(set_code),
+    ]
+    weights = [3*8, 5*8, 12*8-2, 5]
+    CardSheet.new(sheets, weights)
+  end
+
+  def ogw_foil_or_masterpiece_1_in_144
+    sheets = [
+      rare_mythic("ogw", foil: true),
+      rarity("ogw", "uncommon", foil: true),
+      foil_common_or_borrowed_basic("ogw", "bfz"),
+      masterpieces_for("ogw"),
+    ]
+    weights = [3*8, 5*8, 12*8-2, 5]
+    CardSheet.new(sheets, weights)
+  end
+
+  def aer_foil_or_masterpiece_1_in_144
+    sheets = [
+      rare_mythic("aer", foil: true),
+      rarity("aer", "uncommon", foil: true),
+      foil_common_or_borrowed_basic("aer", "kld"),
+      masterpieces_for("aer"),
     ]
     weights = [3*8, 5*8, 12*8-2, 5]
     CardSheet.new(sheets, weights)
@@ -134,6 +166,10 @@ class CardSheetFactory
     cards = cards.select{|c| c.rarity == "basic" or c.rarity == "common"}
     return nil if cards.empty?
     kind.new(cards)
+  end
+
+  def foil_common_or_borrowed_basic(set_code, borrow_set_code)
+    from_query("(r:common e:#{set_code}) or (r:basic e:#{borrow_set_code})", foil: true)
   end
 
   def special(set_code)

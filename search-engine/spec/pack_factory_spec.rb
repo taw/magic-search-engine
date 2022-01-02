@@ -92,7 +92,7 @@ describe PackFactory do
       next unless pack.has_foils?
       actual_cards = pack.foil_cards.select{|c| !c.set.types.include?("masterpiece") }
       expected_cards = set.physical_cards_in_boosters(true)
-      actual_cards.should match_array(expected_cards),
+      actual_cards.should include(*expected_cards),
         "All cards in #{set_pp} should be possible in its packs as foil"
     end
   end
@@ -435,8 +435,9 @@ describe PackFactory do
     context "foil" do
       let(:foil) { true }
       it do
-        ev[sfc_common].should eq Rational(9,40) * Rational(12,20) * Rational(1, 74)
-        ev[dfc_common].should eq Rational(9,40) * Rational(12,20) * Rational(1, 74)
+        # SOI basics included on foil sheet
+        ev[sfc_common].should eq Rational(9,40) * Rational(12,20) * Rational(1, 74 + 15)
+        ev[dfc_common].should eq Rational(9,40) * Rational(12,20) * Rational(1, 74 + 15)
         ev[sfc_uncommon].should eq Rational(9,40) * Rational(5,20) * Rational(1, 70)
         ev[dfc_uncommon].should eq Rational(9,40) * Rational(5,20) * Rational(1, 70)
         ev[sfc_rare].should eq Rational(9,40) * Rational(3,20) * Rational(2, 108)
