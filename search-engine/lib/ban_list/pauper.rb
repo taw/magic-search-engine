@@ -97,4 +97,12 @@ BanList.for_format("pauper") do
     "Chatterstorm" => "banned",
     "Sojourner's Companion" => "banned",
   )
+
+  change(
+    "2022-01-22",
+    "https://magic.wizards.com/en/articles/archive/news/january-20-2022-banned-and-restricted-announcement",
+    "Atog" => "banned",
+    "Bonder's Ornament" => "banned",
+    "Prophetic Prism" => "banned",
+  )
 end
