@@ -99,7 +99,7 @@ BanList.for_format("pauper") do
   )
 
   change(
-    "2022-01-22",
+    "2022-01-21",
     "https://magic.wizards.com/en/articles/archive/news/january-20-2022-banned-and-restricted-announcement",
     "Atog" => "banned",
     "Bonder's Ornament" => "banned",
