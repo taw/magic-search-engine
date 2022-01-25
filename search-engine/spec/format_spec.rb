@@ -9,6 +9,9 @@ describe "Formats" do
     assert_search_equal_cards "f:standard",
       %[e:znr,khm,stx,afr,mid,vow
       -(Omnath, Locus of Creation)
+      -(Alrund's Epiphany)
+      -(Divide by Zero)
+      -(Faceless Haven)
     ]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
@@ -204,7 +207,7 @@ describe "Formats" do
 
   it "historic" do
     # including STA pre-banned
-    assert_count_cards "banned:historic", 24
+    assert_count_cards "banned:historic", 23
   end
 
   it "premodern" do
