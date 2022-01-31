@@ -63,6 +63,11 @@ class PatchMtgjsonVersions < Patch
   end
 
   def call
+    # Delete all Alchemy cards
+    delete_printing_if do |card|
+      card["isRebalanced"]
+    end
+
      each_printing do |card|
       if card["faceName"] and card["name"].include?("//")
         card["names"] = card["name"].split(" // ")
