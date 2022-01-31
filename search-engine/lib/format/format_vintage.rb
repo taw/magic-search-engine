@@ -70,6 +70,7 @@ class FormatVintage < Format
       "wc99",
       "wc99",
       "xana",
+      "y22",
     ]
 
     # Portal / Starter sets used to not be tournament legal
