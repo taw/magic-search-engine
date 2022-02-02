@@ -2,7 +2,7 @@ describe "Game queries" do
   include_context "db"
 
   it "is_digital" do
-    assert_search_equal "is:digital", "e:me1,me2,me3,me4,vma,tpr,pana,pmoa,td0,td2,ana,pz1,pz2,prm,ha1,ha2,ha3,ha4,ha5,xana,past,pmic,psdg,ajmp,akr,anb,oana,klr,j21"
+    assert_search_equal "is:digital", "e:me1,me2,me3,me4,vma,tpr,pana,pmoa,td0,td2,ana,pz1,pz2,prm,ha1,ha2,ha3,ha4,ha5,xana,past,pmic,psdg,ajmp,akr,anb,oana,klr,j21,y22"
   end
 
   it "is:paper" do

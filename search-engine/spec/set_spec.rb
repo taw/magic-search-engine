@@ -3,8 +3,10 @@ describe "Sets" do
 
   let(:known_set_types) do
     [
+      "alchemy",
       "archenemy",
       "arena league",
+      "arsenal",
       "booster",
       "box",
       "commander",
