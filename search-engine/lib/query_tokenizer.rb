@@ -282,6 +282,7 @@ class QueryTokenizer
           "multiplayer",
           "pc",
           "pds",
+          "player rewards",
           "planechase",
           "portal",
           "premium deck",
