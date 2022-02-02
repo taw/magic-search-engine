@@ -16,6 +16,8 @@ class ConditionCast < ConditionSimple
         # always OK
       when "2w", "2u", "2b", "2r", "2g"
         # always OK
+      when "gpu"
+        # always OK
       when /\A[wubrg][wubrg]\z/
         return false unless @query_mana.include?(m[0]) or @query_mana.include?(m[1])
       else

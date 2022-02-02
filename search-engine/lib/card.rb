@@ -339,6 +339,8 @@ class Card
         @mana_hash[normalize_mana_symbol(m)] += 1
       when /\A2\/([wubrg])\z/
         @mana_hash[normalize_mana_symbol(m)] += 1
+      when /\A([wubrg])\/([wubrg])\/p\z/
+        @mana_hash[normalize_mana_symbol(m)] += 1
       else
         raise "Unrecognized mana type: #{m}"
       end
@@ -408,6 +410,9 @@ class Card
       when /\A2\/([wubrg])\z/
         ci << $1
       when /\A([wubrg])\/([wubrg])\z/
+        ci << $1 << $2
+      when /\A([wubrg])\/([wubrg])\/p\z/
+        # Double Phyrexian mana from NEO
         ci << $1 << $2
       when "chaos"
         # planechase special symbol, disregard
