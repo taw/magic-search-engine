@@ -85,6 +85,8 @@ class PatchSetTypes < Patch
         set_types << "deck" unless %w[ha1 ha2 ha3].include?(set_code)
       when "commander"
         set_types << "deck" unless %w[cm1 cc1 cc2].include?(set_code)
+      when "arsenal"
+        set_types << "commander" << "multiplayer"
       end
 
       set["types"] = set_types.sort.uniq
