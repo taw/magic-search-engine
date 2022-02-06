@@ -27,6 +27,7 @@ class FormatFrontier < Format
       "afr",
       "mid",
       "vow",
+      "neo",
     ]
   end
 end

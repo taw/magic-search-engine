@@ -49,6 +49,7 @@ class FormatModern < Format
       "afr",
       "mid",
       "vow",
+      "neo",
     ]
   end
 end
