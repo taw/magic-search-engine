@@ -97,6 +97,12 @@ describe "Foils" do
         assert_foiling_partial_precon(regular)
         assert_foiling(promo, "foilonly")
         assert_foiling(sampler, "nonfoil")
+      when "ons"
+        promo, rest = set.printings.partition{|c| c.number == "200†"}
+        nonpromo, rest = rest.partition{|c| c.number == "200"}
+        assert_foiling(promo, "foilonly")
+        assert_foiling(nonpromo, "nonfoil")
+        assert_foiling(rest, "both")
       when "ody"
         promo, rest = set.printings.partition{|c| c.number == "325†"}
         assert_foiling(promo, "foilonly")
