@@ -276,7 +276,7 @@ describe "Foils" do
         promo_cards, regular_cards = set.printings.partition{|c| c.number.to_i >= 383 }
         assert_foiling(promo_cards, "foilonly")
         assert_foiling(regular_cards, "both")
-      when "afr", "afc", "mid", "mic", "znc", "c21", "vow", "voc", "klr", "akr"
+      when "afr", "afc", "mid", "mic", "znc", "c21", "vow", "voc", "klr", "akr", "neo", "nec"
         # I'm giving up on everything from booster fun onwards
         # they're probably have extra versions in set/collector boosters
         # but it's not documented anywhere

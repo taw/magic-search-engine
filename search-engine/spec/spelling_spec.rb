@@ -81,6 +81,8 @@ describe "Spelling" do
       next if name == "Silumgar Spell-Eater"
       next if name == "Prosper, Tome-Bound" # Tomebound Lich is a card name
       next if name == "Yuan-Ti Fang-Blade" # Fangblade are card names too
+      next if name == "Silver-Fur Master"
+      next if name == "Spring-Leaf Avenger"
       # Too complex
       next if name == "Death's-Head Buzzard"
       # I don't even
