@@ -9,6 +9,7 @@ class ConditionIsKeywordsoup < ConditionNickname
       "concerted effort",
       "crystalline giant",
       "death-mask duplicant",
+      "eater of virtue",
       "greater morphling",
       "kathril, aspect warper",
       "majestic myriarch",
