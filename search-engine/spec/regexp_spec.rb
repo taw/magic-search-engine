@@ -84,6 +84,7 @@ describe "Regexp" do
       "Minamo, School at Water's Edge",
       "Okina, Temple to the Grandfathers",
       "Oviya Pashiri, Sage Lifecrafter",
+      "Sokenzan, Crucible of Defiance",
       "Sunhome, Fortress of the Legion",
       "Tezzeret, Master of the Bridge"
   end

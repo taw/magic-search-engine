@@ -56,6 +56,7 @@ describe "Color Expr Test" do
       "Bringer of the White Dawn",
       "General Tazri",
       "Kenrith, the Returned King",
+      "Kyodai, Soul of Kamigawa",
       "Paragon of the Amesha",
       "Sisay, Weatherlight Captain",
       "Tazri, Beacon of Unity",

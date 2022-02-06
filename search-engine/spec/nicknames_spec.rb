@@ -217,7 +217,7 @@ describe "Card nicknames" do
       "Svogthos, the Restless Tomb",
       "Treetop Village",
       "Wandering Fumarole"
-    assert_search_equal "is:manland", "t:land o:becomes o:creature -(Tyrite Sanctum) -(Sorrow's Path)"
+    assert_search_equal "is:manland", "t:land o:becomes o:creature -(Tyrite Sanctum) -(Sorrow's Path) -(Mech Hangar)"
     assert_search_equal "is:manland", "is:creatureland"
   end
 
@@ -371,6 +371,7 @@ describe "Card nicknames" do
       "Concerted Effort",
       "Crystalline Giant",
       "Death-Mask Duplicant",
+      "Eater of Virtue",
       "Greater Morphling",
       "Kathril, Aspect Warper",
       "Majestic Myriarch",
