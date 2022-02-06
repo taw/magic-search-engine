@@ -1123,4 +1123,23 @@ class CardSheetFactory
       [from_query("e:dbl r:mythic is:dfc number>267", 5), 1],
     )
   end
+
+  def neo_dfc_common_uncommon
+    # Guessing the rate. With this rate:
+    # SFC uncommon rarity 3/80
+    # DFC uncommon rarity 3/10 * (1/10) = 3/80
+    # but SFC commons are vastly overrepresented
+    sheets = [
+      from_query("e:neo r:common is:dfc", 6),
+      from_query("e:neo r:uncommon is:dfc", 8),
+    ]
+    CardSheet.new(sheets, [7, 3])
+  end
+
+  def neo_basic
+    mix_sheets(
+      [from_query("e:neo r:basic number<=292", 10), 2],
+      [from_query("e:neo r:basic number>292", 10), 1],
+    )
+  end
 end

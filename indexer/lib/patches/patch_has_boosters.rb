@@ -7,7 +7,7 @@ class PatchHasBoosters < Patch
   # This just needs to list sets that didn't get to mtgjson yet
   def new_sets_with_boosters
     %W[
-      dbl
+      neo
     ]
   end
 
@@ -31,6 +31,7 @@ class PatchHasBoosters < Patch
       afr
       mid
       vow
+      neo
     ]
   end
 
