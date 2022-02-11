@@ -1,6 +1,6 @@
 Magic: The Gathering Comprehensive Rules
 
-These rules are effective as of November 19, 2021.
+These rules are effective as of February 18, 2022.
 
 Introduction
 
@@ -471,7 +471,7 @@ Example: Chameleon Colossus is a 4/4 creature with the ability “{2}{G}{G}: Cha
 
 107.3n Some objects use the letter Y in addition to the letter X. Y follows the same rules as X.
 
-107.4. The mana symbols are {W}, {U}, {B}, {R}, {G}, and {C}; the numerical symbols {0}, {1}, {2}, {3}, {4}, and so on; the variable symbol {X}; the hybrid symbols {W/U}, {W/B}, {U/B}, {U/R}, {B/R}, {B/G}, {R/G}, {R/W}, {G/W}, and {G/U}; the monocolored hybrid symbols {2/W}, {2/U}, {2/B}, {2/R}, and {2/G}; the Phyrexian mana symbols {W/P}, {U/P}, {B/P}, {R/P}, and {G/P}; and the snow mana symbol {S}.
+107.4. The mana symbols are {W}, {U}, {B}, {R}, {G}, and {C}; the numerical symbols {0}, {1}, {2}, {3}, {4}, and so on; the variable symbol {X}; the hybrid symbols {W/U}, {W/B}, {U/B}, {U/R}, {B/R}, {B/G}, {R/G}, {R/W}, {G/W}, and {G/U}; the monocolored hybrid symbols {2/W}, {2/U}, {2/B}, {2/R}, and {2/G}; the Phyrexian mana symbols {W/P}, {U/P}, {B/P}, {R/P}, and {G/P}; the hybrid Phyrexian symbols {W/U/P}, {W/B/P}, {U/B/P}, {U/R/P}, {B/R/P}, {B/G/P}, {R/G/P}, {R/W/P}, {G/W/P}, and {G/U/P}; and the snow mana symbol {S}.
 
 107.4a There are five primary colored mana symbols: {W} is white, {U} blue, {B} black, {R} red, and {G} green. These symbols are used to represent colored mana, and also to represent colored mana in costs. Colored mana in costs can be paid only with the appropriate color of mana. See rule 202, “Mana Cost and Color.”
 
@@ -484,10 +484,10 @@ Example: Chameleon Colossus is a 4/4 creature with the ability “{2}{G}{G}: Cha
 107.4e Hybrid mana symbols are also colored mana symbols. Each one represents a cost that can be paid in one of two ways, as represented by the two halves of the symbol. A hybrid symbol such as {W/U} can be paid with either white or blue mana, and a monocolored hybrid symbol such as {2/B} can be paid with either one black mana or two mana of any type. A hybrid mana symbol is all of its component colors.
 Example: {G/W}{G/W} can be paid by spending {G}{G}, {G}{W}, or {W}{W}.
 
-107.4f Phyrexian mana symbols are colored mana symbols: {W/P} is white, {U/P} is blue, {B/P} is black, {R/P} is red, and {G/P} is green. A Phyrexian mana symbol represents a cost that can be paid either with one mana of its color or by paying 2 life.
+107.4f Phyrexian mana symbols are colored mana symbols: {W/P} is white, {U/P} is blue, {B/P} is black, {R/P} is red, and {G/P} is green. A Phyrexian mana symbol represents a cost that can be paid either with one mana of its color or by paying 2 life. There are also ten hybrid Phyrexian mana symbols. A hybrid Phyrexian mana symbol represents a cost that can be paid with one mana of either of its component colors or by paying 2 life. A hybrid Phyrexian mana symbol is both of its component colors.
 Example: {W/P}{W/P} can be paid by spending {W}{W}, by spending {W} and paying 2 life, or by paying 4 life.
 
-107.4g In rules text, the Phyrexian symbol {P} with no colored background means any of the five Phyrexian mana symbols.
+107.4g In rules text, the Phyrexian symbol {P} with no colored background means any of the fifteen Phyrexian mana symbols.
 
 107.4h When used in a cost, the snow mana symbol {S} represents a cost that can be paid with one mana of any type produced by a snow source (see rule 106.3). Effects that reduce the amount of generic mana you pay don’t affect {S} costs. The {S} symbol can also be used to refer to mana of any type produced by a snow source spent to pay a cost. Snow is neither a color nor a type of mana.
 
@@ -523,7 +523,7 @@ Example: {W/P}{W/P} can be paid by spending {W}{W}, by spending {W} and paying 2
 
 107.16. The text box of a Class card contains class level bars, each of which is a keyword ability that represents both an activated ability and a static ability. A class level bar includes the activation cost of its activated ability and a level number. Any abilities printed within the same text box section as the class level bar are part of its static ability. See rule 717, “Class Cards.”
 
-107.16a “[Cost]: Level N — [Abilities]” means “[Cost]: This Class’s level becomes N. Activate this ability only if this Class is level N-1 and only as a sorcery” and “As long as this Class is level N or greater, it has [abilities].”
+107.16a “[Cost]: Level N — [Abilities]” means “[Cost]: This Class’s level becomes N. Activate only if this Class is level N-1 and only as a sorcery” and “As long as this Class is level N or greater, it has [abilities].”
 
 108. Cards
 
@@ -1072,7 +1072,7 @@ Example: A player casts Lightning Bolt, an instant that says “Lightning Bolt d
 
 121.2. Cards may only be drawn one at a time. If a player is instructed to draw multiple cards, that player performs that many individual card draws.
 
-121.2a An instruction to draw multiple cards can be modified by replacement effects that refer to the number of cards drawn. This modification occurs before considering any of the individual card draws. See rule 616.1f.
+121.2a An instruction to draw multiple cards can be modified by replacement effects that refer to the number of cards drawn. This modification occurs before considering any of the individual card draws. See rule 616.1g.
 
 121.2b Some effects say that a player can’t draw more than one card each turn. Such an effect applies to individual card draws. Instructions to draw multiple cards may still be partially carried out. However, if an effect offers the player a choice to draw multiple cards, the affected player can’t choose to do so. Similarly, the player can’t pay a cost that includes drawing multiple cards.
 
@@ -1282,7 +1282,7 @@ Example: When choosing a creature type, “Merfolk” or “Wizard” is accepta
 205.3i Lands have their own unique set of subtypes; these subtypes are called land types. The land types are Desert, Forest, Gate, Island, Lair, Locus, Mine, Mountain, Plains, Power-Plant, Swamp, Tower, and Urza’s.
      Of that list, Forest, Island, Mountain, Plains, and Swamp are the basic land types. See rule 305.6.
 
-205.3j Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Aminatou, Angrath, Arlinn, Ashiok, Bahamut, Basri, Bolas, Calix, Chandra, Dack, Dakkon, Daretti, Davriel, Dihada, Domri, Dovin, Ellywick, Elspeth, Estrid, Freyalise, Garruk, Gideon, Grist, Huatli, Jace, Jaya, Jeska, Karn, Kasmina, Kaya, Kiora, Koth, Liliana, Lolth, Lukka, Mordenkainen, Nahiri, Narset, Niko, Nissa, Nixilis, Oko, Ral, Rowan, Saheeli, Samut, Sarkhan, Serra, Sorin, Szat, Tamiyo, Teferi, Teyo, Tezzeret, Tibalt, Tyvar, Ugin, Venser, Vivien, Vraska, Will, Windgrace, Wrenn, Xenagos, Yanggu, Yanling, and Zariel.
+205.3j Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Aminatou, Angrath, Arlinn, Ashiok, Bahamut, Basri, Bolas, Calix, Chandra, Dack, Dakkon, Daretti, Davriel, Dihada, Domri, Dovin, Ellywick, Elspeth, Estrid, Freyalise, Garruk, Gideon, Grist, Huatli, Jace, Jaya, Jeska, Kaito, Karn, Kasmina, Kaya, Kiora, Koth, Liliana, Lolth, Lukka, Mordenkainen, Nahiri, Narset, Niko, Nissa, Nixilis, Oko, Ral, Rowan, Saheeli, Samut, Sarkhan, Serra, Sorin, Szat, Tamiyo, Teferi, Teyo, Tezzeret, Tibalt, Tyvar, Ugin, Venser, Vivien, Vraska, Will, Windgrace, Wrenn, Xenagos, Yanggu, Yanling, and Zariel.
 
 205.3k Instants and sorceries share their lists of subtypes; these subtypes are called spell types. The spell types are Adventure, Arcane, Lesson, and Trap.
 
@@ -1340,7 +1340,7 @@ Example: An ability reads, “All lands are 1/1 creatures that are still lands.�
 
 207.2b Flavor text is italicized text that, like the illustration, adds artistic appeal to the game. It usually appears below the rules text.
 
-207.2c An ability word appears in italics at the beginning of some abilities. Ability words are similar to keywords in that they tie together cards that have similar functionality, but they have no special rules meaning and no individual entries in the Comprehensive Rules. The ability words are adamant, addendum, battalion, bloodrush, channel, chroma, cohort, constellation, converge, council’s dilemma, delirium, domain, eminence, enrage, fateful hour, ferocious, formidable, grandeur, hellbent, heroic, imprint, inspired, join forces, kinship, landfall, lieutenant, magecraft, metalcraft, morbid, pack tactics, parley, radiance, raid, rally, revolt, spell mastery, strive, sweep, tempting offer, threshold, undergrowth, and will of the council.
+207.2c An ability word appears in italics at the beginning of some abilities. Ability words are similar to keywords in that they tie together cards that have similar functionality, but they have no special rules meaning and no individual entries in the Comprehensive Rules. The ability words are adamant, addendum, battalion, bloodrush, channel, chroma, cohort, constellation, converge, council’s dilemma, coven, delirium, domain, eminence, enrage, fateful hour, ferocious, formidable, grandeur, hellbent, heroic, imprint, inspired, join forces, kinship, landfall, lieutenant, magecraft, metalcraft, morbid, pack tactics, parley, radiance, raid, rally, revolt, spell mastery, strive, sweep, tempting offer, threshold, undergrowth, and will of the council.
 
 207.2d Similar to ability words, flavor words appear in italics at the beginning of some abilities. Flavor words provide a flavorful description of abilities, but they have no special rules meaning and are not listed in the Comprehensive Rules. While an ability word ties together several abilities with similar functionality, each flavor word is tailored to the specific ability it appears with.
 
@@ -1426,7 +1426,7 @@ Example: Veteran Motorist has the ability “Whenever Veteran Motorist crews a V
 
 301.5b Equipment spells are cast like other artifact spells. Equipment enter the battlefield like other artifacts. They don’t enter the battlefield attached to a creature. The equip keyword ability attaches the Equipment to a creature you control (see rule 702.6, “Equip”). Control of the creature matters only when the equip ability is activated and when it resolves. Spells and other abilities may also attach an Equipment to a creature. If an effect attempts to attach an Equipment to an object that can’t be equipped by it, the Equipment doesn’t move.
 
-301.5c An Equipment that’s also a creature can’t equip a creature. An Equipment that loses the subtype “Equipment” can’t equip a creature. An Equipment can’t equip itself. An Equipment that equips an illegal or nonexistent permanent becomes unattached from that permanent but remains on the battlefield. (This is a state-based action. See rule 704.) An Equipment can’t equip more than one creature. If a spell or ability would cause an Equipment to equip more than one creature, the Equipment’s controller chooses which creature it equips.
+301.5c An Equipment that’s also a creature can’t equip a creature unless that Equipment has reconfigure (see rule 702.151, “Reconfigure”). An Equipment that loses the subtype “Equipment” can’t equip a creature. An Equipment can’t equip itself. An Equipment that equips an illegal or nonexistent permanent becomes unattached from that permanent but remains on the battlefield. (This is a state-based action. See rule 704.) An Equipment can’t equip more than one creature. If a spell or ability would cause an Equipment to equip more than one creature, the Equipment’s controller chooses which creature it equips.
 
 301.5d An Equipment’s controller is separate from the equipped creature’s controller; the two need not be the same. Changing control of the creature doesn’t change control of the Equipment, and vice versa. Only the Equipment’s controller can activate its abilities. However, if the Equipment grants an ability to the equipped creature (with “gains” or “has”), the equipped creature’s controller is the only one who can activate that ability.
 
@@ -1842,7 +1842,7 @@ Example: Exquisite Archangel has an ability which reads “If you would lose the
 
 406.2. To exile an object is to put it into the exile zone from whatever zone it’s currently in. An exiled card is a card that’s been put into the exile zone.
 
-406.3. Exiled cards are, by default, kept face up and may be examined by any player at any time. Cards “exiled face down” can’t be examined by any player except when instructions allow it. However, once a player is allowed to look at a card exiled face down, that player may continue to look at that card as long as it remains exiled, even if the instruction allowing the player to do so no longer applies.
+406.3. Exiled cards are, by default, kept face up and may be examined by any player at any time. Cards “exiled face down” can’t be examined by any player except when instructions allow it. However, if a player is instructed to look at a card and then exile it face down, or once a player is allowed to look at a card exiled face down, that player may continue to look at that card as long as it remains exiled, even if the instruction allowing the player to do so no longer applies.
 
 406.3a A card exiled face down has no characteristics, but the spell or ability that exiled it may allow it to be played from exile. Unless that card is being cast face down (see rule 708.4), the card is turned face up just before the player announces that they are playing the card (see rule 601.2).
 
@@ -2048,9 +2048,13 @@ Example: A permanent has the ability “Whenever a green creature attacks, destr
 
 508.3b An ability that reads “Whenever [a player or planeswalker] is attacked, . . .” triggers if one or more creatures are declared as attackers attacking that player or planeswalker. It won’t trigger if a creature is put onto the battlefield attacking that player or planeswalker.
 
-508.3c An ability that reads “Whenever [a player] attacks with [a creature], . . .” triggers whenever a creature that player controls is declared as an attacker.
+508.3c An ability that reads “Whenever [a player] attacks with [a creature], . . .” triggers if a creature that player controls is declared as an attacker.
 
-508.3d An ability that reads “Whenever [a creature] attacks and isn’t blocked, . . .” triggers during the declare blockers step, not the declare attackers step. See rule 509.5g.
+508.3d An ability that reads “Whenever [a player] attacks, . . .” triggers if one or more creatures that player controls are declared as attackers.
+
+508.3e An ability that reads “Whenever [a player] attacks [another player], . . .” triggers if one or more creatures the first player controls are declared as attackers attacking the second player. It won’t trigger if a creature is put onto the battlefield attacking or if a creature attacks a planeswalker.
+
+508.3f An ability that reads “Whenever [a creature] attacks and isn’t blocked, . . .” triggers during the declare blockers step, not the declare attackers step. See rule 509.5g.
 
 508.4. If a creature is put onto the battlefield attacking, its controller chooses which defending player or which planeswalker a defending player controls it’s attacking as it enters the battlefield (unless the effect that put it onto the battlefield specifies what it’s attacking). Similarly, if an effect states that a creature is attacking, its controller chooses which defending player or which planeswalker a defending player controls it’s attacking it becomes attacking (unless the effect has already specified). Such creatures are “attacking” but, for the purposes of trigger events and effects, they never “attacked.”
 
@@ -2216,7 +2220,7 @@ Example: Squadron Hawk (a 1/1 creature with flying) and Goblin Piker (a 2/1 crea
 
 601.2a To propose the casting of a spell, a player first moves that card (or that copy of a card) from where it is to the stack. It becomes the topmost object on the stack. It has all the characteristics of the card (or the copy of a card) associated with it, and that player becomes its controller. The spell remains on the stack until it resolves, it’s countered, or a rule or effect moves it elsewhere.
 
-601.2b If the spell is modal, the player announces the mode choice (see rule 700.2). If the player wishes to splice any cards onto the spell (see rule 702.47), they reveal those cards in their hand. If the spell has alternative or additional costs that will be paid as it’s being cast such as buyback or kicker costs (see rules 118.8 and 118.9), the player announces their intentions to pay any or all of those costs (see rule 601.2f). A player can’t apply two alternative methods of casting or two alternative costs to a single spell. If the spell has a variable cost that will be paid as it’s being cast (such as an {X} in its mana cost; see rule 107.3), the player announces the value of that variable. If the value of that variable is defined in the text of the spell by a choice that player would make later in the announcement or resolution of the spell, that player makes that choice at this time instead of that later time. If a cost that will be paid as the spell is being cast includes hybrid mana symbols, the player announces the nonhybrid equivalent cost they intend to pay. If a cost that will be paid as the spell is being cast includes Phyrexian mana symbols, the player announces whether they intend to pay 2 life or the corresponding colored mana cost for each of those symbols. Previously made choices (such as choosing to cast a spell with flashback from a graveyard or choosing to cast a creature with morph face down) may restrict the player’s options when making these choices.
+601.2b If the spell is modal, the player announces the mode choice (see rule 700.2). If the player wishes to splice any cards onto the spell (see rule 702.47), they reveal those cards in their hand. If the spell has alternative or additional costs that will be paid as it’s being cast such as buyback or kicker costs (see rules 118.8 and 118.9), the player announces their intentions to pay any or all of those costs (see rule 601.2f). A player can’t apply two alternative methods of casting or two alternative costs to a single spell. If the spell has a variable cost that will be paid as it’s being cast (such as an {X} in its mana cost; see rule 107.3), the player announces the value of that variable. If the value of that variable is defined in the text of the spell by a choice that player would make later in the announcement or resolution of the spell, that player makes that choice at this time instead of that later time. If a cost that will be paid as the spell is being cast includes hybrid mana symbols, the player announces the nonhybrid equivalent cost they intend to pay. If a cost that will be paid as the spell is being cast includes Phyrexian mana symbols, the player announces whether they intend to pay 2 life or a corresponding colored mana cost for each of those symbols. Previously made choices (such as choosing to cast a spell with flashback from a graveyard or choosing to cast a creature with morph face down) may restrict the player’s options when making these choices.
 
 601.2c The player announces their choice of an appropriate object or player for each target the spell requires. A spell may require some targets only if an alternative or additional cost (such as a kicker cost) or a particular mode was chosen for it; otherwise, the spell is cast as though it did not require those targets. Similarly, a spell may require alternative targets only if an alternative or additional cost was chosen for it. If the spell has a variable number of targets, the player announces how many targets they will choose before they announce those targets. In some cases, the number of targets will be defined by the spell’s text. Once the number of targets the spell has is determined, that number doesn’t change, even if the information used to determine the number of targets does. The same target can’t be chosen multiple times for any one instance of the word “target” on the spell. However, if the spell uses the word “target” in multiple places, the same object or player can be chosen once for each instance of the word “target” (as long as it fits the targeting criteria). If any effects say that an object or player must be chosen as a target, the player chooses targets so that they obey the maximum possible number of such effects without violating any rules or effects that say that an object or player can’t be chosen as a target. The chosen objects and/or players each become a target of that spell. (Any abilities that trigger when those objects and/or players become the target of a spell trigger at this point; they’ll wait to be put on the stack until the spell has finished being cast.)
 Example: If a spell says “Tap two target creatures,” then the same creature can’t be chosen twice; the spell requires two different legal targets. A spell that says “Destroy target artifact and target land,” however, can target the same artifact land twice because it uses the word “target” in multiple places.
@@ -2293,15 +2297,13 @@ Example: The activation cost of an ability that reads “{2}, {T}: You gain 1 li
 
 602.5a A creature’s activated ability with the tap symbol ({T}) or the untap symbol ({Q}) in its activation cost can’t be activated unless the creature has been under its controller’s control since the start of their most recent turn. Ignore this rule for creatures with haste (see rule 702.10).
 
-602.5b If an activated ability has a restriction on its use (for example, “Activate this ability only once each turn”), the restriction continues to apply to that object even if its controller changes.
+602.5b If an activated ability has a restriction on its use (for example, “Activate only once each turn”), the restriction continues to apply to that object even if its controller changes.
 
 602.5c If an object acquires an activated ability with a restriction on its use from another object, that restriction applies only to that ability as acquired from that object. It doesn’t apply to other, identically worded abilities.
 
 602.5d Activated abilities that read “Activate only as a sorcery” mean the player must follow the timing rules for casting a sorcery spell, though the ability isn’t actually a sorcery. The player doesn’t actually need to have a sorcery card that they could cast.
 
 602.5e Activated abilities that read “Activate only as an instant” mean the player must follow the timing rules for casting an instant spell, though the ability isn’t actually an instant. The player doesn’t actually need to have an instant card that they could cast.
-
-602.5f Some older cards have printed text that reads “Activate this ability only any time you could cast an [instant or sorcery].” These cards have received errata in Oracle card reference to match the text in 602.5d or 602.5e, as appropriate.
 
 603. Handling Triggered Abilities
 
@@ -2901,13 +2903,15 @@ Example: Wojek Apothecary has an ability that says “{T}: Prevent the next 1 da
 
 616.1c If any of the replacement and/or prevention effects would cause an object to become a copy of another object as it enters the battlefield, one of them must be chosen. If not, proceed to rule 616.1d.
 
-616.1d Any of the applicable replacement and/or prevention effects may be chosen.
+616.1d If any of the replacement and/or prevention effects would cause a card to enter the battlefield with its back face up, one of them must be chosen (See rule 701.28, “Transform”). If not, proceed to 616.1e.
 
-616.1e Once the chosen effect has been applied, this process is repeated (taking into account only replacement or prevention effects that would now be applicable) until there are no more left to apply.
+616.1e Any of the applicable replacement and/or prevention effects may be chosen.
+
+616.1f Once the chosen effect has been applied, this process is repeated (taking into account only replacement or prevention effects that would now be applicable) until there are no more left to apply.
 Example: Two permanents are on the battlefield. One is an enchantment that reads “If a card would be put into a graveyard from anywhere, instead exile it,” and the other is a creature that reads “If [this creature] would die, instead shuffle it into its owner’s library.” If the creature is destroyed, its controller decides which replacement to apply first; the other does nothing.
 Example: Essence of the Wild reads “Creatures you control enter the battlefield as a copy of Essence of the Wild.” A player who controls Essence of the Wild casts Rusted Sentinel, which normally enters the battlefield tapped. As it enters the battlefield, the copy effect from Essence of the Wild is applied first. As a result, it no longer has the ability that causes it to enter the battlefield tapped. Rusted Sentinel will enter the battlefield as an untapped copy of Essence of the Wild.
 
-616.1f While following the steps in 616.1a–d, one replacement or prevention effect may apply to an event, and another may apply to an event contained within the first event. In this case, the second effect can’t be chosen until after the first effect has been chosen.
+616.1g While following the steps in 616.1a–f, one replacement or prevention effect may apply to an event, and another may apply to an event contained within the first event. In this case, the second effect can’t be chosen until after the first effect has been chosen.
 Example: A player is instructed to create a token that’s a copy of Voice of All, which has the ability “As Voice of All enters the battlefield, choose a color.” Doubling Season has an ability that reads “If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.” Because entering the battlefield is an event contained within the event of creating a token, the effect of Doubling Season must be applied first, and then the effects of the two Voice of All tokens may be applied in either order.
 
 616.2. A replacement or prevention effect can become applicable to an event as the result of another replacement or prevention effect that modifies the event.
@@ -2967,6 +2971,8 @@ Example: An ability reads “Target creature gets +2/+2 until end of turn. Destr
 700.8b If a creature has multiple creature types for which it could be the party member, it is counted as the party member for only one of those types. If there are different ways to count such a creature that results in different numbers of creatures in a player’s party, it is counted in such a way to get the highest result.
 
 700.8c A player has a full party if there are four creatures in that player’s party.
+
+700.9. Some cards refer to modified creatures. A creature is modified if it has one or more counters on it (see rule 122), if it is equipped (see rule 301.5), or if it is enchanted by an Aura that is controlled by that creature’s controller. (see rule 303.4). If an ability of a permanent checks to see whether that permanent is modified, the answer is always no if that permanent isn’t a currently a creature.
 
 701. Keyword Actions
 
@@ -3146,7 +3152,7 @@ Example: Aven Mindcensor says, in part, “If an opponent would search a library
 
 701.20a To shuffle a library or a face-down pile of cards, randomize the cards within it so that no player knows their order.
 
-701.20b Some effects cause a player to search a library for a card or cards, shuffle that library, then put the found card or cards in a certain position in that library. Even though the found card or cards never leave that library, they aren’t included in the shuffle. Rather, all the cards in that library except those are shuffled. Abilities that trigger when a library is shuffled will still trigger. See also rule 401, “Library.”
+701.20b Some effects cause a player to search a library for a card or cards, shuffle that library, then put some or all of the found cards into a different zone or in a certain position in that library. In such cases, the found cards aren’t included in the shuffle, even though they remain in the library at that time. Rather, all the cards in that library except those are shuffled. Abilities that trigger when a library is shuffled will still trigger. See also rule 401, “Library.”
 
 701.20c If an effect would cause a player to shuffle one or more specific objects into a library, that library is shuffled even if none of those objects are in the zone they’re expected to be in or an effect causes all of those objects to be moved to another zone or remain in their current zone.
 Example: Guile says, in part, “When Guile is put into a graveyard from anywhere, shuffle it into its owner’s library.” It’s put into a graveyard and its ability triggers, then a player exiles it from that graveyard in response. When the ability resolves, the library is shuffled.
@@ -3489,11 +3495,11 @@ Example: Concerted Effort is an enchantment that reads “At the beginning of ea
 
 702.14. Landwalk
 
-702.14a Landwalk is a generic term that appears within an object’s rules text as “[type]walk,” where [type] is usually a subtype, but can be the card type land, any land type, any supertype, or any combination thereof.
+702.14a Landwalk is a generic term that appears within an object’s rules text as “[type]walk,” where [type] is usually a land type, but it can also be the card type land plus any combination of land types, card types, and/or supertypes.
 
 702.14b Landwalk is an evasion ability.
 
-702.14c A creature with landwalk can’t be blocked as long as the defending player controls at least one land with the specified subtype (as in “islandwalk”), with the specified supertype (as in “legendary landwalk”), without the specified supertype (as in “nonbasic landwalk”), or with both the specified supertype and the specified subtype (as in “snow swampwalk”). (See rule 509, “Declare Blockers Step.”)
+702.14c A creature with landwalk can’t be blocked as long as the defending player controls at least one land with the specified land type (as in “islandwalk”), with the specified type or supertype (as in “artifact landwalk”), without the specified type or supertype (as in “nonbasic landwalk”), or with both the specified type or supertype and the specified subtype (as in “snow swampwalk”). (See rule 509, “Declare Blockers Step.”)
 
 702.14d Landwalk abilities don’t “cancel” one another.
 Example: If a player controls a snow Forest, that player can’t block an attacking creature with snow forestwalk even if they also control a creature with snow forestwalk.
@@ -4346,11 +4352,13 @@ Example: Garruk’s Horde says, in part, “You may cast creature spells from th
 
 702.122. Crew
 
-702.122a Crew is an activated ability of Vehicle cards. “Crew N” means “Tap any number of untapped creatures you control with total power N or greater: This permanent becomes an artifact creature until end of turn.”
+702.122a Crew is an activated ability of Vehicle cards. “Crew N” means “Tap any number of other untapped creatures you control with total power N or greater: This permanent becomes an artifact creature until end of turn.”
 
 702.122b A creature “crews a Vehicle” when it’s tapped to pay the cost to activate a Vehicle’s crew ability.
 
 702.122c If an effect states that a creature “can’t crew Vehicles,” that creature can’t be tapped to pay the crew cost of a Vehicle.
+
+702.122d Some Vehicles have abilities that trigger when they become crewed. “Whenever [this Vehicle] becomes crewed” means “Whenever a crew ability of [this Vehicle] resolves.”
 
 702.123. Fabricate
 
@@ -4484,7 +4492,7 @@ Example: Garruk’s Horde says, in part, “You may cast creature spells from th
 
 702.142. Boast
 
-702.142a A boast ability is a special kind of activated ability. “Boast — [Cost]: [Effect]” means “[Cost]: [Effect]. Activate this ability only if this creature attacked this turn and only once each turn.”
+702.142a A boast ability is a special kind of activated ability. “Boast — [Cost]: [Effect]” means “[Cost]: [Effect]. Activate only if this creature attacked this turn and only once each turn.”
 
 702.142b Effects may refer to boast abilities. If an effect refers to a creature boasting, it means its boast ability being activated.
 
@@ -4537,7 +4545,7 @@ Example: Garruk’s Horde says, in part, “You may cast creature spells from th
 702.148a Cleave is a keyword that represents two static abilities that function while a spell with cleave is on the stack. “Cleave [cost]” means “You may cast this spell by paying [cost] rather than paying its mana cost” and “If this spell’s cleave cost was paid, change its text by removing all text found within square brackets in the spell’s rules text.” Casting a spell for its cleave cost follows the rules for paying alternative costs in rules 601.2b and 601.2f–h.
 
 702.148b Cleave’s second ability is a text-changing effect. See rule 612, “Text-Changing Effects.”
-f
+
 702.149. Training
 
 702.149a Training is a triggered ability. “Training” means “Whenever this creature and at least one other creature with power greater than this creature’s power attack, put a +1/+1 counter on this creature.”
@@ -4545,6 +4553,16 @@ f
 702.149b If a creature has multiple instances of training, each triggers separately.
 
 702.149c Some creatures with training have abilities that trigger when they train. “When this creature trains” means “When a resolving training ability puts a +1/+1 counter on this creature.”
+
+702.150. Compleated
+
+702.150a Compleated is a static ability found on some planeswalker cards. Compleated means “If this permanent would enter the battlefield with one or more loyalty counters on it and the player who cast it chose to pay life for any part of its cost represented by Phyrexian mana symbols, it instead enters the battlefield with that many loyalty counters minus two for each of those mana symbols.”
+
+702.151. Reconfigure
+
+702.151a Reconfigure represents two activated abilities. Reconfigure [cost] means “[Cost]: Attach this permanent to another target creature you control. Activate only as a sorcery” and “[Cost]: Unattach this permanent. Activate only if this permanent is attached to a creature and only as a sorcery.”
+
+702.151b Attaching an Equipment with reconfigure to another creature causes the Equipment to stop being a creature until it becomes unattached from that creature.
 
 703. Turn-Based Actions
 
@@ -4708,7 +4726,7 @@ Example: Clone enters the battlefield as a copy of a face-down Grinning Demon (a
 707.2c If a static ability generates a continuous effect that’s a copy effect, the copiable values that effect grants are determined only at the time that effect first starts to apply.
 
 707.3. The copy’s copiable values become the copied information, as modified by the copy’s status (see rule 110.5). Objects that copy the object will use the new copiable values.
-Example: Vesuvan Doppelganger reads, “You may have Vesuvan Doppelganger enter the battlefield as a copy of any creature on the battlefield, except it doesn’t copy that creature’s color and it gains ‘At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color. If you do, this creature gains this ability.’” A Vesuvan Doppelganger enters the battlefield as a copy of Runeclaw Bear (a 2/2 green Bear creature with no abilities). Then a Clone enters the battlefield as a copy of the Doppelganger. The Clone is a 2/2 blue Bear named Runeclaw Bear that has the Doppelganger’s upkeep-triggered ability.
+Example: Vesuvan Doppelganger reads, “You may have Vesuvan Doppelganger enter the battlefield as a copy of any creature on the battlefield, except it doesn’t copy that creature’s color and it has ‘At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.’” A Vesuvan Doppelganger enters the battlefield as a copy of Runeclaw Bear (a 2/2 green Bear creature with no abilities). Then a Clone enters the battlefield as a copy of the Doppelganger. The Clone is a 2/2 blue Bear named Runeclaw Bear that has the Doppelganger’s upkeep-triggered ability.
 Example: Tomoya the Revealer (a flipped flip card) becomes a copy of Nezumi Shortfang (an unflipped flip card). Tomoya’s characteristics become the characteristics of Stabwhisker the Odious, which is the flipped version of Nezumi Shortfang.
 Example: A face-down Grinning Demon (a creature with morph) becomes a copy of a face-up Branchsnap Lorian (a 4/1 green creature with trample and morph {G}). The Demon’s characteristics become the characteristics of Branchsnap Lorian. However, since the creature is face down, it remains a 2/2 colorless creature with no name, types, or abilities, and no mana cost. It can be turned face up for {G}. If it’s turned face up, it will have the characteristics of Branchsnap Lorian.
 Example: A face-down Grinning Demon (a creature with morph) becomes a copy of Wandering Ones (a 1/1 blue Spirit creature that doesn’t have morph). It will be a face-down Wandering Ones. It remains a 2/2 colorless creature with no name, types, or abilities, and no mana cost. Its controller can’t turn it face up as a special action. If an effect turns it face up, it will have the characteristics of Wandering Ones.
@@ -4725,7 +4743,7 @@ Example: A Clone enters the battlefield as a copy of Adaptive Automaton. Adaptiv
 
 707.7. If a pair of linked abilities are copied, those abilities will be similarly linked to one another on the object that copied them. One ability refers only to actions that were taken or objects that were affected by the other. They can’t be linked to any other ability, regardless of what other abilities the copy may currently have or may have had in the past. See rule 607, “Linked Abilities.”
 
-707.8. When copying a double-faced permanent, a face-up meld card, or a melded permanent, only the copiable values of the face that’s currently up are copied. (See rule 712, “Double-Faced Cards,” and rule 713, “Meld Cards.”)
+707.8. When copying a double-faced card, a face-up meld card, or a melded permanent, only the copiable values of the face that’s currently up are copied. (See rule 712, “Double-Faced Cards,” and rule 713, “Meld Cards.”)
 
 707.9. Copy effects may include modifications or exceptions to the copying process.
 
@@ -4767,7 +4785,7 @@ Example: Dawnglow Infusion is a sorcery that reads, “You gain X life if {G} wa
 707.10f Some effects copy a permanent spell. As that copy resolves, it ceases being a copy of a spell and becomes a token permanent. (See rule 608.3b.)
 
 707.11. If an effect refers to a permanent by name, the effect still tracks that permanent even if it changes names or becomes a copy of something else.
-Example: An Unstable Shapeshifter copies a Crazed Armodon. Crazed Armodon reads, “{G}: Crazed Armodon gets +3/+0 and gains trample until end of turn. Destroy Crazed Armodon at the beginning of the next end step. Activate this ability only once each turn.” If this ability of the Shapeshifter is activated, the Shapeshifter will be destroyed at the beginning of the next end step, even if it’s no longer a copy of Crazed Armodon at that time.
+Example: An Unstable Shapeshifter copies a Crazed Armodon. Crazed Armodon reads, “{G}: Crazed Armodon gets +3/+0 and gains trample until end of turn. Destroy Crazed Armodon at the beginning of the next end step. Activate only once each turn.” If this ability of the Shapeshifter is activated, the Shapeshifter will be destroyed at the beginning of the next end step, even if it’s no longer a copy of Crazed Armodon at that time.
 
 707.12. An effect that instructs a player to cast a copy of an object (and not just copy a spell) follows the rules for casting spells, except that the copy is created in the same zone the object is in and then cast while another spell or ability is resolving. Casting a copy of an object follows steps 601.2a–h of rule 601, “Casting Spells,” and then the copy becomes cast. Once cast, the copy is a spell on the stack, and just like any other spell it can resolve or be countered.
 
@@ -5059,7 +5077,7 @@ Example: Leyline of the Void is an enchantment that reads, in part, “If a card
 
 717.2. A class level bar is a keyword ability that represents both an activated ability and a static ability. A class level bar includes the activation cost of its activated ability and a level number. Any abilities printed within the same text box section as the class level bar are part of its static ability.
 
-717.2a “[Cost]: Level N — [Abilities]” means “[Cost]: This Class’s level becomes N. Activate this ability only if this Class is level N-1 and only as a sorcery” and “As long as this Class is level N or greater, it has [abilities].”
+717.2a “[Cost]: Level N — [Abilities]” means “[Cost]: This Class’s level becomes N. Activate only if this Class is level N-1 and only as a sorcery” and “As long as this Class is level N or greater, it has [abilities].”
 
 717.2b A level is a designation that any permanent can have. A Class retains its level even if it stops being a Class. Levels are not a copiable characteristic.
 
@@ -5813,7 +5831,7 @@ Example: The hand modifier of a player’s vanguard card is -1. That player’s 
 903.3. Each deck has a legendary creature card designated as its commander. This designation is not a characteristic of the object represented by the card; rather, it is an attribute of the card itself. The card retains this designation even when it changes zones.
 Example: A commander that’s been turned face down (due to Ixidron’s effect, for example) is still a commander. A commander that’s copying another card (due to Cytoshape’s effect, for example) is still a commander. A permanent that’s copying a commander (such as a Body Double, for example, copying a commander in a player’s graveyard) is not a commander.
 
-903.3a Some planeswalker cards have an ability that states the card can be your commander. This ability modifies the rules for deck construction, and it functions before the game begins. See also rule 113.6n.
+903.3a Some cards have an ability that states the card can be your commander. This ability modifies the rules for deck construction, and it functions before the game begins. See also rule 113.6n.
 
 903.3b If a player’s commander is a meld card and it’s melded with the other member of its meld pair, the resulting melded permanent is that player’s commander.
 
@@ -6303,6 +6321,9 @@ Informal term for the additional cost to cast a commander based on the number of
 Companion
 A keyword ability that allows a player to choose one creature card from outside the game as a companion if the restriction of that card’s companion ability is met. Once a player has chosen a companion, that player may pay {3} to put it into their hand once during the game. See rule 702.139, “Companion.”
 
+Compleated
+A keyword ability that causes a planeswalker to enter the battlefield with fewer loyalty counters if a player chose to pay life for Phyrexian mana symbols in its cost. See rule 702.150, “Compleated.”
+
 Complete a Dungeon
 To remove a dungeon card from the game after reaching that dungeon card’s bottommost room. See rule 309, “Dungeons.”
 
@@ -6791,6 +6812,9 @@ A card with one or more hybrid mana symbols in its mana cost. See rule 202.2f.
 Hybrid Mana Symbols
 A mana symbol that represents a cost that can be paid in one of two ways. See rule 107.4.
 
+Hybrid Phyrexian Mana Symbols
+A mana symbol that represents a cost that can be paid in one of three ways. See rule 107.4.
+
 If
 See Intervening “If” Clause.
 
@@ -7045,6 +7069,9 @@ A spell or ability is “modal” if it has two or more options in a bulleted li
 
 Modal Double-Faced Cards
 One of two kinds of double-faced cards. Modal double-faced cards can be played with either of their two faces up and can’t transform. See rule 712, “Double-Faced Cards.”
+
+Modified
+A modified creature is a creature that has a counter on it, is equipped, or is enchanted by an Aura its controller also controls. See rule 700.9.
 
 Modular
 A keyword ability that has a permanent enter the battlefield with +1/+1 counters on it and can move those counters to other artifact creatures. See rule 702.43, “Modular.”
@@ -7328,6 +7355,9 @@ A keyword ability that allows a creature to block an attacking creature with fly
 
 Rebound
 A keyword ability that allows an instant or sorcery spell to be cast a second time. See rule 702.88, “Rebound.”
+
+Reconfigure
+A keyword ability that allows an Equipment creature to temporarily stop being a creature and become attached to another creature. See rule 702.151, “Reconfigure.”
 
 Recover
 A keyword ability that lets a player return a card from their graveyard to their hand. See rule 702.59, “Recover.”
@@ -7848,7 +7878,7 @@ Credits
 Magic: The Gathering Original Game Design: Richard Garfield
 Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cátinò, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski
 Editing: Del Laugel (lead), Lyz Liddell, Gregg Luben, Nat Moes, Samantha Phelan, Matt Tabak, Michael Zhang, and Hans Ziegler
-Magic Rules Management: Jess Dunks, Eli Shiffrin, and Matt Tabak
+Magic Rules Management: Jess Dunks
 
 The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cátinò, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
 
@@ -7865,6 +7895,6 @@ Thanks to all our project team members and the many others too numerous to menti
 
 
 
-These rules are effective as of November 19, 2021.
+These rules are effective as of February 18, 2022.
 
-Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unglued, Unstable, Dominaria, Ikoria, Kaldheim, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2021 Wizards. U.S. Pat. No. RE 37,957.
+Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unglued, Unstable, Dominaria, Ikoria, Kaldheim, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2022 Wizards. U.S. Pat. No. RE 37,957.
