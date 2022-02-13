@@ -1136,10 +1136,11 @@ class CardSheetFactory
     CardSheet.new(sheets, [7, 3])
   end
 
-  def neo_basic
-    mix_sheets(
-      [from_query("e:neo r:basic number<=292", 10), 2],
-      [from_query("e:neo r:basic number>292", 10), 1],
-    )
+  def neo_sfc_common
+    from_query("e:neo r:common -is:gainland -is:dfc", kind: ColorBalancedCardSheet)
+  end
+
+  def neo_land
+    from_query("e:neo (r:basic or is:gainland)", 30)
   end
 end
