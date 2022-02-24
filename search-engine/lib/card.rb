@@ -137,6 +137,18 @@ class Card
       "Negative Energy Cone",
       "Pact Boon",
       "Perfect Illumination",
+    ] + [
+      # SLD Street Fighter
+      "Electric Thunder",
+      "Fierce Punch",
+      "Hadoken",
+      "Hundred Hand Slap",
+      "Iron Muscle",
+      "Lightning Kick",
+      "Rolling Attack",
+      "Shoryuken",
+      "Spinning Piledriver",
+      "Sumo Spirit",
     ]
   ).sort
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
