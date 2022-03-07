@@ -105,4 +105,12 @@ BanList.for_format("pauper") do
     "Bonder's Ornament" => "banned",
     "Prophetic Prism" => "banned",
   )
+
+  change(
+    "2022-03-07",
+    "https://magic.wizards.com/en/articles/archive/news/march-7-2022-banned-and-restricted-announcement",
+    "Galvanic Relay" => "banned",
+    "Disciple of the Vault" => "banned",
+    "Expedition Map" => "legal",
+  )
 end

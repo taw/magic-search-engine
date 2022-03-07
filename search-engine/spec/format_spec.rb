@@ -31,6 +31,11 @@ describe "Formats" do
       ]],
     ])
     FormatModern.new.ban_events.should eq([
+      [Date.parse("2022-03-07"),
+      "https://magic.wizards.com/en/articles/archive/news/march-7-2022-banned-and-restricted-announcement",
+      [
+        {:name=>"Lurrus of the Dream-Den", :new=>"banned", :old=>"legal"},
+      ]],
       [Date.parse("2021-02-15"),
         "https://magic.wizards.com/en/articles/archive/news/february-15-2021-banned-and-restricted-announcement",
       [
