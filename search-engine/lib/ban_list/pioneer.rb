@@ -61,4 +61,10 @@ BanList.for_format("pioneer") do
     "Uro, Titan of Nature's Wrath" => "banned",
     "Wilderness Reclamation" => "banned",
   )
+
+  change(
+    "2022-03-07",
+    "https://magic.wizards.com/en/articles/archive/news/march-7-2022-banned-and-restricted-announcement",
+    "Lurrus of the Dream-Den" => "banned",
+  )
 end
