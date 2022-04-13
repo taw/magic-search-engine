@@ -49,6 +49,7 @@ describe "Regexp" do
 
   it "regexp flavor text" do
     assert_search_results 'ft:/\d{4,}/ -e:olgc,ovnt',
+      "Collector Ouphe",
       "Fervent Champion",
       "Goblin Secret Agent",
       "Gore Vassal",
@@ -91,6 +92,7 @@ describe "Regexp" do
 
   it "regexp rulings text" do
     assert_search_results "rulings:fly",
+      "Druid of Purification",
       "Wings of Hubris",
       "Sarah's Wings"
     assert_search_equal "rulings:flying", 'rulings:/\bflying\b/'
