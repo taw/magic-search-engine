@@ -29,6 +29,14 @@ class PatchPlaytestCards < Patch
       end
     end
 
+    # tbth so not related
+    each_printing do |card|
+      next unless card["set_code"] == "tbth"
+      if card["name"] == "Unquenchable Fury"
+        card["name"] = "Unquenchable Fury (TBTH)"
+      end
+    end
+
     update_names_index
   end
 end
