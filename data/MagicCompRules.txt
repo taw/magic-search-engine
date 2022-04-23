@@ -1,6 +1,6 @@
 Magic: The Gathering Comprehensive Rules
 
-These rules are effective as of February 18, 2022.
+These rules are effective as of April 29, 2022.
 
 Introduction
 
@@ -181,7 +181,7 @@ Credits
 
 100.2. To play, each player needs their own deck of traditional Magic cards, small items to represent any tokens and counters, and some way to clearly track life totals.
 
-100.2a In constructed play (a way of playing in which each player creates their own deck ahead of time), each deck has a minimum deck size of 60 cards. A constructed deck may contain any number of basic land cards and no more than four of any card with a particular English name other than basic land cards.
+100.2a In constructed play (a way of playing in which each player creates their own deck ahead of time), each deck has a minimum deck size of 60 cards. A constructed deck may contain any number of basic land cards and no more than four of any card with a particular English name other than basic land cards. For the purposes of deck construction, cards with interchangeable names have the same English name (see rule 201.3).
 
 100.2b In limited play (a way of playing in which each player gets the same quantity of unopened Magic product such as booster packs and creates their own deck using only this product and basic land cards), each deck has a minimum deck size of 40 cards. A limited deck may contain as many duplicates of a card as are included with the product.
 
@@ -1110,9 +1110,11 @@ Example: A player casts Lightning Bolt, an instant that says “Lightning Bolt d
 
 122.1b A keyword counter on a permanent or on a card in a zone other than the battlefield causes that object to gain that keyword. The keywords that a keyword counter can be are flying, first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance, as well as any variants of those keywords. See rule 613.1f.
 
-122.1c The number of loyalty counters on a planeswalker on the battlefield indicates how much loyalty it has. A planeswalker with 0 loyalty is put into its owner’s graveyard as a state-based action. See rule 704.
+122.1c A shield counter on a permanent creates one replacement effect and one prevention effect that protect the permanent. These effects are “If this permanent would be destroyed as the result of an effect, instead remove a shield counter from it” and “If damage would be dealt to this permanent, prevent that damage and remove a shield counter from it.” See rule 614, “Replacement Effects,” and rule 615, “Prevention Effects.”
 
-122.1d If a player has ten or more poison counters, that player loses the game as a state-based action. See rule 704. A player is “poisoned” if they have one or more poison counters. (See rule 810 for additional rules for Two-Headed Giant games.)
+122.1d The number of loyalty counters on a planeswalker on the battlefield indicates how much loyalty it has. A planeswalker with 0 loyalty is put into its owner’s graveyard as a state-based action. See rule 704.
+
+122.1e If a player has ten or more poison counters, that player loses the game as a state-based action. See rule 704. A player is “poisoned” if they have one or more poison counters. (See rule 810 for additional rules for Two-Headed Giant games.)
 
 122.2. Counters on an object are not retained if that object moves from one zone to another. The counters are not “removed”; they simply cease to exist. See rule 400.7.
 
@@ -1153,34 +1155,44 @@ Example: A player controls Liliana’s Contract, which says, in part, “At the 
 
 201.2c Some spells or abilities check if one object has a different name than a second object or group of objects. The first object has a different name than those objects if the first object has at least one name and has no names in common with any of the other objects, even if one or more of the other objects have no names. If the first object has no name, it does not have a different name than any of the other objects, even if those other objects themselves have names.
 
-201.3. If an effect instructs a player to choose a card name, the player must choose the name of a card in the Oracle card reference. (See rule 108.1.) A player may not choose the name of a token unless it’s also the name of a card.
+201.3.  Some cards with different English names are treated as though they had the same English name. Pairs of cards with this property have names that are interchangeable.
 
-201.3a If a player is instructed to choose a card name with certain characteristics, the player must choose the name of a card whose Oracle text matches those characteristics. (See rule 108.1.)
+201.3a For the purposes of all rules, abilities, and effects that refer to a card’s name, objects with interchangeable names have the same name. (See rules 201.2a–b.)
+
+201.3b For the purposes of deck construction and format legality, cards with interchangeable names have the same name.
+
+201.3c If a card has later printings with interchangeable names, the later printings will have an interchangeable names indicator in the bottom left-hand corner referring to the original printing’s three-letter set code and collector number (see rule 212.1d).
+
+201.4. If an effect instructs a player to choose a card name, the player must choose the name of a card in the Oracle card reference. (See rule 108.1.) A player may not choose the name of a token unless it’s also the name of a card.
+
+201.4a If a player is instructed to choose a card name with certain characteristics, the player must choose the name of a card whose Oracle text matches those characteristics. (See rule 108.1.)
 Example: Dispossess reads, in part, “Choose an artifact card name.” The player can choose the name of any artifact card, even one that’s not legal in the format of the current game. The player can’t choose Island, even if an Island on the battlefield has been turned into artifact by some effect.
 
-201.3b If a player wants to choose the name of a split card, the player must choose the name of one of its halves, but not both. (See rule 709.) If a player is instructed to choose a card name with certain characteristics, use only that half’s characteristics to determine if this name can be chosen.
+201.4b If a player wants to choose the name of a split card, the player must choose the name of one of its halves, but not both. (See rule 709.) If a player is instructed to choose a card name with certain characteristics, use only that half’s characteristics to determine if this name can be chosen.
 
-201.3c If a player wants to choose a flip card’s alternative name, the player may do so. (See rule 710.) If a player is instructed to choose a card name with certain characteristics, use the card’s characteristics as modified by its alternative characteristics to determine if this name can be chosen.
+201.4c If a player wants to choose a flip card’s alternative name, the player may do so. (See rule 710.) If a player is instructed to choose a card name with certain characteristics, use the card’s characteristics as modified by its alternative characteristics to determine if this name can be chosen.
 
-201.3d If a player wants to choose the name of the back face of a double-faced card, the player may do so. (See rule 712.) If a player is instructed to choose a card name with certain characteristics, use only the characteristics of the back face to determine if this name can be chosen.
+201.4d If a player wants to choose the name of the back face of a double-faced card, the player may do so. (See rule 712.) If a player is instructed to choose a card name with certain characteristics, use only the characteristics of the back face to determine if this name can be chosen.
 
-201.3e If a player wants to choose the name of the combined back face of a meld pair, the player may do so. (See rule 713.) If a player is instructed to choose a card name with certain characteristics, use only the characteristics of the combined back face to determine if this name can be chosen.
+201.4e If a player wants to choose the name of the combined back face of a meld pair, the player may do so. (See rule 713.) If a player is instructed to choose a card name with certain characteristics, use only the characteristics of the combined back face to determine if this name can be chosen.
 
-201.3f If a player wants to choose an adventurer card’s alternative name, the player may do so. (See rule 716.) If a player is instructed to choose a card name with certain characteristics, use the card’s characteristics as modified by its alternative characteristics to determine if this name can be chosen.
+201.4f If a player wants to choose an adventurer card’s alternative name, the player may do so. (See rule 716.) If a player is instructed to choose a card name with certain characteristics, use the card’s characteristics as modified by its alternative characteristics to determine if this name can be chosen.
 
-201.4. Text that refers to the object it’s on by name means just that particular object and not any other objects with that name, regardless of any name changes caused by game effects.
+201.4g Some cards have interchangeable names (see rule 201.3). For all game purposes, these cards have the same name. If a player chooses the name of a card which has interchangeable names, the name of each of those cards has been chosen.
 
-201.4a If an ability’s effect grants another ability to an object, and that second ability refers to that first ability’s source by name, the name refers only to the specific object which is that first ability’s source. The second ability does not refer to any other object with the same name as the first ability’s source. However, if the second ability also moved the first ability’s source to a different public zone, the name refers to the object the source became in its new zone. This is also true if the second ability is copied onto a new object.
+201.5. Text that refers to the object it’s on by name means just that particular object and not any other objects with that name, regardless of any name changes caused by game effects.
+
+201.5a If an ability’s effect grants another ability to an object, and that second ability refers to that first ability’s source by name, the name refers only to the specific object which is that first ability’s source. The second ability does not refer to any other object with the same name as the first ability’s source. However, if the second ability also moved the first ability’s source to a different public zone, the name refers to the object the source became in its new zone. This is also true if the second ability is copied onto a new object.
 Example: Gutter Grime has an ability that reads “Whenever a nontoken creature you control dies, put a slime counter on Gutter Grime, then create a green Ooze creature token with ‘This creature’s power and toughness are each equal to the number of slime counters on Gutter Grime.’” The ability granted to the token only looks at the Gutter Grime that created the token, not at any other Gutter Grime on the battlefield. A copy of that token would also have an ability that referred only to the Gutter Grime that created the original token.
 
-201.4b If an ability of an object refers to that object by name, and an object with a different name gains that ability, each instance of the first name in the gained ability that refers to the first object by name should be treated as the second name.
+201.5b If an ability of an object refers to that object by name, and an object with a different name gains that ability, each instance of the first name in the gained ability that refers to the first object by name should be treated as the second name.
 Example: Quicksilver Elemental says, in part, “{U}: Quicksilver Elemental gains all activated abilities of target creature until end of turn.” If it gains an ability that says “{G}: Regenerate Cudgel Troll,” activating that ability will regenerate Quicksilver Elemental, not the Cudgel Troll it gained the ability from.
 Example: Glacial Ray is an instant with splice onto Arcane that says “Glacial Ray deals 2 damage to any target.” If it’s spliced onto a Kodama’s Reach, that Kodama’s Reach deals 2 damage to the target.
 Example: Dimir Doppelganger says “{1}{U}{B}: Exile target creature card from a graveyard. Dimir Doppelganger becomes a copy of that card and gains this ability.” Dimir Doppelganger’s ability is activated targeting a Runeclaw Bear card. The Doppelganger becomes a copy of Runeclaw Bear and gains an ability that should be treated as saying “{1}{U}{B}: Exile target creature card from a graveyard. Runeclaw Bear becomes a copy of that card and gains this ability.”
 
-201.4c Text printed on some legendary cards refers to that card by a shortened version of its name. Instances of a card’s shortened name used in this manner are treated as though they used the card’s full name.
+201.5c Text printed on some legendary cards refers to that card by a shortened version of its name. Instances of a card’s shortened name used in this manner are treated as though they used the card’s full name.
 
-201.5. Promotional or alternate-art versions of some cards feature a secondary title bar below the name line. The card’s name as listed in the Oracle card reference is displayed in the secondary title bar, and an alternate name appears in the upper left corner. For the purposes of deck construction, game rules, and effects, these cards have only the card name specified in the secondary title bar. The alternate name is considered flavor text and has no effect on game play.
+201.6. Promotional or alternate-art versions of some cards feature a secondary title bar below the name line. The card’s name as listed in the Oracle card reference is displayed in the secondary title bar, and an alternate name appears in the upper left corner. For the purposes of deck construction, game rules, and effects, these cards have only the card name specified in the secondary title bar. Rules text may also refer to a card’s alternate name; instances of the alternate name that are present in rules text refer to the name specified in the secondary title bar. The alternate name has no effect on game play.
 
 202. Mana Cost and Color
 
@@ -1286,7 +1298,7 @@ Example: When choosing a creature type, “Merfolk” or “Wizard” is accepta
 
 205.3k Instants and sorceries share their lists of subtypes; these subtypes are called spell types. The spell types are Adventure, Arcane, Lesson, and Trap.
 
-205.3m Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Ally, Angel, Antelope, Ape, Archer, Archon, Army, Artificer, Assassin, Assembly-Worker, Atog, Aurochs, Avatar, Azra, Badger, Barbarian, Bard, Basilisk, Bat, Bear, Beast, Beeble, Beholder, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Caribou, Carrier, Cat, Centaur, Cephalid, Chimera, Citizen, Cleric, Cockatrice, Construct, Coward, Crab, Crocodile, Cyclops, Dauthi, Demigod, Demon, Deserter, Devil, Dinosaur, Djinn, Dog, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gargoyle, Germ, Giant, Gnoll, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Hag, Halfling, Hamster, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inkling, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mouse, Mutant, Myr, Mystic, Naga, Nautilus, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Praetor, Prism, Processor, Rabbit, Ranger, Rat, Rebel, Reflection, Rhino, Rigger, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scion, Scorpion, Scout, Sculpture, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Slith, Sliver, Slug, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Tiefling, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Unicorn, Vampire, Vedalken, Viashino, Volver, Wall, Warlock, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
+205.3m Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Ally, Angel, Antelope, Ape, Archer, Archon, Army, Artificer, Assassin, Assembly-Worker, Atog, Aurochs, Avatar, Azra, Badger, Barbarian, Bard, Basilisk, Bat, Bear, Beast, Beeble, Beholder, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Caribou, Carrier, Cat, Centaur, Cephalid, Chimera, Citizen, Cleric, Cockatrice, Construct, Coward, Crab, Crocodile, Cyclops, Dauthi, Demigod, Demon, Deserter, Devil, Dinosaur, Djinn, Dog, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gargoyle, Germ, Giant, Gnoll, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Hag, Halfling, Hamster, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inkling, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mouse, Mutant, Myr, Mystic, Naga, Nautilus, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Praetor, Prism, Processor, Rabbit, Raccoon, Ranger, Rat, Rebel, Reflection, Rhino, Rigger, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scion, Scorpion, Scout, Sculpture, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Slith, Sliver, Slug, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Tiefling, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Unicorn, Vampire, Vedalken, Viashino, Volver, Wall, Warlock, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
 
 205.3n Planes have their own unique set of subtypes; these subtypes are called planar types. The planar types are Alara, Arkhos, Azgol, Belenon, Bolas’s Meditation Realm, Dominaria, Equilor, Ergamon, Fabacin, Innistrad, Iquatana, Ir, Kaldheim, Kamigawa, Karsus, Kephalai, Kinshala, Kolbahan, Kyneth, Lorwyn, Luvion, Mercadia, Mirrodin, Moag, Mongseng, Muraganda, New Phyrexia, Phyrexia, Pyrulea, Rabiah, Rath, Ravnica, Regatha, Segovia, Serra’s Realm, Shadowmoor, Shandalar, Ulgrotha, Valla, Vryn, Wildfire, Xerex, and Zendikar.
 
@@ -1340,7 +1352,7 @@ Example: An ability reads, “All lands are 1/1 creatures that are still lands.�
 
 207.2b Flavor text is italicized text that, like the illustration, adds artistic appeal to the game. It usually appears below the rules text.
 
-207.2c An ability word appears in italics at the beginning of some abilities. Ability words are similar to keywords in that they tie together cards that have similar functionality, but they have no special rules meaning and no individual entries in the Comprehensive Rules. The ability words are adamant, addendum, battalion, bloodrush, channel, chroma, cohort, constellation, converge, council’s dilemma, coven, delirium, domain, eminence, enrage, fateful hour, ferocious, formidable, grandeur, hellbent, heroic, imprint, inspired, join forces, kinship, landfall, lieutenant, magecraft, metalcraft, morbid, pack tactics, parley, radiance, raid, rally, revolt, spell mastery, strive, sweep, tempting offer, threshold, undergrowth, and will of the council.
+207.2c An ability word appears in italics at the beginning of some abilities. Ability words are similar to keywords in that they tie together cards that have similar functionality, but they have no special rules meaning and no individual entries in the Comprehensive Rules. The ability words are adamant, addendum, alliance, battalion, bloodrush, channel, chroma, cohort, constellation, converge, council’s dilemma, coven, delirium, domain, eminence, enrage, fateful hour, ferocious, formidable, grandeur, hellbent, heroic, imprint, inspired, join forces, kinship, landfall, lieutenant, magecraft, metalcraft, morbid, pack tactics, parley, radiance, raid, rally, revolt, spell mastery, strive, sweep, tempting offer, threshold, undergrowth, and will of the council.
 
 207.2d Similar to ability words, flavor words appear in italics at the beginning of some abilities. Flavor words provide a flavorful description of abilities, but they have no special rules meaning and are not listed in the Comprehensive Rules. While an ability word ties together several abilities with similar functionality, each flavor word is tailored to the specific ability it appears with.
 
@@ -1364,13 +1376,17 @@ Example: Lost Order of Jarkeld has power and toughness each equal to 1+*. It has
 208.3a If an effect would be created that affects the power and/or toughness of a noncreature permanent, that effect is created even though it doesn’t do anything unless that permanent becomes a creature.
 Example: Veteran Motorist has the ability “Whenever Veteran Motorist crews a Vehicle, that Vehicle gets +1/+1 until end of turn,” and it’s tapped to pay the crew cost of a Vehicle. This triggered ability resolves while the Vehicle it crewed isn’t yet a creature. The continuous effect is created and will apply to the Vehicle once it becomes a creature.
 
-208.4. Effects that set a creature’s power and/or toughness to specific values may refer to that creature’s “base power,” “base toughness,” or “base power and toughness.” Other continuous effects may further modify the creature’s power and toughness. See rule 613, “Interaction of Continuous Effects.”
+208.4. Some effects refer to a creature’s “base power,” “base toughness,” or “base power and toughness.”
+
+208.4a Effects that set a creature’s power and/or toughness to specific values may refer to base power and/or toughness. Other continuous effects may further modify the creature’s power and toughness. See rule 613, “Interaction of Continuous Effects.”
+
+208.4b Some effects check a creature’s base power and/or toughness. These effects see that creature’s characteristics after applying any characteristic-defining abilities and abilities that set power and/or toughness, ignoring any effects and counters that modify power and/or toughness without setting them. See rule 613, “Interaction of Continuous Effects.”
 
 208.5. If a creature somehow has no value for its power, its power is 0. The same is true for toughness.
 
 209. Loyalty
 
-209.1. Each planeswalker card has a loyalty number printed in its lower right corner. This indicates its loyalty while it’s not on the battlefield, and it also indicates that the planeswalker enters the battlefield with that many loyalty counters on it.
+209.1. Each planeswalker card has a loyalty number printed in its lower right corner. This indicates its loyalty while it’s not on the battlefield, and it also indicates that the planeswalker enters the battlefield with that many loyalty counters on it (see rule 306.5b).
 
 209.2. An activated ability with a loyalty symbol in its cost is a loyalty ability. Loyalty abilities follow special rules: A player may activate a loyalty ability of a permanent they control any time they have priority and the stack is empty during a main phase of their turn, but only if none of that permanent’s loyalty abilities have been activated that turn. See rule 606, “Loyalty Abilities.”
 
@@ -1392,11 +1408,13 @@ Example: Veteran Motorist has the ability “Whenever Veteran Motorist crews a V
 
 212.1c Some promotional cards include information to indicate the specific promotion the card is associated with.
 
-212.1d The three-character code representing the set in which a card is printed and the two-character code representing the language in which a card is printed are separated by a bullet point. If a card is premium, these codes are instead separated by a star.
+212.1d Some cards with interchangeable names include information about a specific version of a card with that interchangeable name. See rule 201.3.
 
-212.1e The illustration credit for a card follows the paintbrush icon or, on older cards, the abbreviation “Illus.”
+212.1e The three-character code representing the set in which a card is printed and the two-character code representing the language in which a card is printed are separated by a bullet point. If a card is premium, these codes are instead separated by a star.
 
-212.1f Legal text (the fine print at the bottom or bottom-right of the card) lists the trademark and copyright information.
+212.1f The illustration credit for a card follows the paintbrush icon or, on older cards, the abbreviation “Illus.”
+
+212.1g Legal text (the fine print at the bottom or bottom-right of the card) lists the trademark and copyright information.
 
 3. Card Types
 
@@ -2227,7 +2245,7 @@ Example: If a spell says “Tap two target creatures,” then the same creature 
 
 601.2d If the spell requires the player to divide or distribute an effect (such as damage or counters) among one or more targets, the player announces the division. Each of these targets must receive at least one of whatever is being divided.
 
-601.2e The game checks to see if the proposed spell can legally be cast. If the proposed spell is illegal, the game returns to the moment before the casting of that spell was proposed (see rule 726, “Handling Illegal Actions”).
+601.2e The game checks to see if proposed spell can legally be cast. If the proposed spell is illegal, the game returns to the moment before the casting of that spell was proposed (see rule 726, “Handling Illegal Actions”).
 
 601.2f The player determines the total cost of the spell. Usually this is just the mana cost. Some spells have additional or alternative costs. Some effects may increase or reduce the cost to pay, or may provide other alternative costs. Costs may include paying mana, tapping permanents, sacrificing permanents, discarding cards, and so on. The total cost is the mana cost or alternative cost (as determined in rule 601.2b), plus all additional costs and cost increases, and minus all cost reductions. If multiple cost reductions apply, the player may apply them in any order. If the mana component of the total cost is reduced to nothing by cost reduction effects, it is considered to be {0}. It can’t be reduced to less than {0}. Once the total cost is determined, any effects that directly affect the total cost are applied. Then the resulting total cost becomes “locked in.” If effects would change the total cost after this time, they have no effect.
 
@@ -2256,7 +2274,9 @@ Example: Melek, Izzet Paragon says, in part, “You may cast instant and sorcery
 
 601.3f Some effects allow a player to cast a spell with certain qualities from among face-down cards in exile. A player may begin to cast such a spell only if they can look at the face-down card in exile.
 
-601.4. If a player is no longer allowed to cast a spell after completing its proposal (see rules 601.2a–d), the casting of the spell is illegal and the game returns to the moment before the casting of that spell was proposed (see rule 726, “Handling Illegal Actions”). It doesn’t matter if a rule or effect would make the casting of the spell illegal while determining and paying that spell’s costs (see rules 601.2f-h) or any time after the spell has been cast.
+601.4. If a player is no longer allowed to cast a spell after completing its proposal (see rules 601.2a–d), the casting of the spell is illegal and the game returns to the moment before the casting of that spell was proposed (see rule 726, “Handling Illegal Actions”). It doesn’t matter if a rule or effect would make the casting of the spell illegal while determining and paying that spell’s costs (see rules 601.2f–h) or any time after the spell has been cast.
+
+601.4a Once a player has begun casting a spell that had flash because certain conditions were met or that could be cast as though it had flash because certain conditions were met (see 601.3d), they may continue to cast that spell as though it had flash even if those conditions stop being met.
 
 601.5. Some spells specify that one of their controller’s opponents does something the controller would normally do while it’s being cast, such as choose a mode or choose targets. In these cases, the opponent does so when the spell’s controller normally would do so.
 
@@ -2683,7 +2703,7 @@ Example: A permanent with the static ability “All white creatures get +1/+1”
 
 612.6. One card (Spy Kit) states that an object has “all names of nonlegendary creature cards.” This changes the text that represents the object’s name. That object has the name of each nonlegendary creature card in the Oracle card reference. (See rule 108.1.)
 
-612.7. One card (Awakening of Vitu-Ghazi) creates a continuous effect that sets the name of an object. This changes the text that represents the object’s name. That object loses any names it had and has only the specified name.
+612.7. Some cards create a continuous effect that sets the name of an object. This changes the text that represents the object’s name. That object loses any names it had and has only the specified name.
 
 612.8. A splice ability changes a spell’s text by adding the rules text of the card with splice to the spell, following that spell’s own rules text. It doesn’t modify or replace any of that spell’s own text. (See rule 702.47, “Splice.”) 
 
@@ -3357,6 +3377,18 @@ Example: A player owns and controls Midnight Scavengers and a token that’s a c
 
 701.46c If a player is instructed to venture into the dungeon while their venture marker is in the bottommost room of a dungeon card, they remove that dungeon card from the game. Doing so causes the player to complete that dungeon (see rule 309.7). They then complete the procedure outlined in rule 701.46a again.
 
+701.47. Connive
+
+701.47a Certain abilities instruct a permanent to connive. To do so, that permanent’s controller draws a card, then discards a card. If a nonland card is discarded this way, that player puts a +1/+1 counter on the conniving permanent.
+
+701.47b A permanent “connives” after the process described in rule 701.47a is complete, even if some or all of those actions were impossible.
+
+701.47c If a permanent changes zones before an effect causes it to connive, its last known information is used to determine which object connived and who controlled it.
+
+701.47d  If multiple permanents are instructed to connive at the same time, the first player in APNAP order who controls one or more of those permanents chooses one of them and it connives. Then if any permanents remain on the battlefield which have been instructed to connive and have not done so, this process is repeated.
+
+701.47e Connive N is a variant of connive. The permanent’s controller draws N cards, discards N cards, then puts a number of +1/+1 counters on the permanent equal to the number of nonland cards discarded this way.
+
 702. Keyword Abilities
 
 702.1. Most abilities describe exactly what they do in the card’s rules text. Some, though, are very common or would require too much space to define on the card. In these cases, the object lists only the name of the ability as a “keyword”; sometimes reminder text summarizes the game rule.
@@ -3426,6 +3458,8 @@ Example: Concerted Effort is an enchantment that reads “At the beginning of ea
 702.6c Equip abilities may further restrict what creatures may be chosen as legal targets. Such restrictions usually appear in the form “Equip [quality]” or “Equip [quality] creature.” These equip abilities may legally target only a creature that’s controlled by the player activating the ability and that has the chosen quality. Additional restrictions for an equip ability don’t restrict what the Equipment may be attached to.
 
 702.6d If a permanent has multiple equip abilities, any of its equip abilities may be activated.
+
+702.6e “Equip planeswalker” is a variant of the equip ability. “Equip planeswalker [cost]” means “[Cost]: Attach this permanent to target planeswalker you control as though that planeswalker were a creature. Activate only as a sorcery.”
 
 702.7. First Strike
 
@@ -4036,7 +4070,9 @@ Example: You activate the aura swap ability of an Aura that you control but you 
 
 702.75. Hideaway
 
-702.75a Hideaway represents a static ability and a triggered ability. “Hideaway” means “This permanent enters the battlefield tapped” and “When this permanent enters the battlefield, look at the top four cards of your library. Exile one of them face down and put the rest on the bottom of your library in any order. The exiled card gains ‘Any player who has controlled the permanent that exiled this card may look at this card in the exile zone.’”
+702.75a Hideaway is a triggered ability. “Hideaway N” means “When this permanent enters the battlefield, look at the top N cards of your library. Exile one of them face down and put the rest on the bottom of your library in a random order. The exiled card gains ‘The player who controls the permanent that exiled this card may look at this card in the exile zone.’”
+
+702.75b Previously, the rules for the hideaway ability caused the permanent to enter the battlefield tapped, and the number of cards the player looked at was fixed at four. Cards printed before this rules change had the printed text “Hideaway” with no numeral after the word. Those older cards have received errata in the Oracle card reference to have “Hideaway 4” and the additional ability “[This permanent] enters the battlefield tapped.”
 
 702.76. Prowl
 
@@ -4374,11 +4410,13 @@ Example: Garruk’s Horde says, in part, “You may cast creature spells from th
 
 702.124c A rule or effect that refers to your commander’s color identity refers to the combined color identities of your two commanders. See rule 903.4.
 
-702.124d Except for determining the color identity of your commander, the two commanders function independently. When casting a commander with partner, ignore how many times your other commander has been cast (see rule 903.6). When determining whether a player has been dealt 21 or more combat damage by the same commander, consider damage from each of your two commanders separately (see rule 903.10a).
+702.124d Except for determining the color identity of your commander, the two commanders function independently. When casting a commander with partner, ignore how many times your other commander has been cast (see rule 903.8). When determining whether a player has been dealt 21 or more combat damage by the same commander, consider damage from each of your two commanders separately (see rule 903.10a).
 
 702.124e If an effect refers to your commander while you have two commanders, it refers to either one. If an effect causes you to perform an action on your commander and it could affect both, you choose which it refers to at the time the effect is applied.
 
 702.124f “Partner with [name]” is a variant of the partner ability. “Partner with [name]” represents two abilities. One is a static ability that modifies the rules for deck construction. Rather than a single legendary creature card, you may designate two legendary creature cards as your commander if each has a “partner with [name]” ability with the other’s name. You can’t designate two legendary cards as your commander if one has a “partner with [name]” ability and the other isn’t the named card. The other ability represented by “partner with [name]” is a triggered ability that means “When this permanent enters the battlefield, target player may search their library for a card named [name], reveal it, put it into their hand, then shuffle their library.”
+
+702.124g Friends forever is a variant of the partner ability. Friends forever modifies the rules for deck construction in the Commander variant, and it functions before the game begins. Rather than a single legendary creature card, you may designate two legendary creature cards as your commander if each has friends forever.
 
 702.125. Undaunted
 
@@ -4462,7 +4500,9 @@ Example: Garruk’s Horde says, in part, “You may cast creature spells from th
 
 702.138b A spell or permanent “escaped” if that spell or the spell that became that permanent as it resolved was cast from a graveyard with an escape ability.
 
-702.138c An ability that reads “[This permanent] escapes with . . .” means “If this permanent escaped, it enters the battlefield with . . .” That ability may have a triggered ability linked to it that triggers “When it enters the battlefield this way.” (See rule 603.11.) Such a triggered ability triggers when that permanent enters the battlefield after its replacement effect was applied, even if that replacement effect had no effect.
+702.138c An ability that reads “[This permanent] escapes with [one or more of a kind of counter]” means “If this permanent escaped, it enters the battlefield with [those counters]” That ability may have a triggered ability linked to it that triggers “When it enters the battlefield this way.” (See rule 603.11.) Such a triggered ability triggers when that permanent enters the battlefield after its replacement effect was applied, even if that replacement effect had no effect.
+
+702.138d An ability that reads “[This permanent] escapes with [ability]” means “If this permanent escaped, it has [ability].”
 
 702.139. Companion
 
@@ -4563,6 +4603,16 @@ Example: Garruk’s Horde says, in part, “You may cast creature spells from th
 702.151a Reconfigure represents two activated abilities. Reconfigure [cost] means “[Cost]: Attach this permanent to another target creature you control. Activate only as a sorcery” and “[Cost]: Unattach this permanent. Activate only if this permanent is attached to a creature and only as a sorcery.”
 
 702.151b Attaching an Equipment with reconfigure to another creature causes the Equipment to stop being a creature until it becomes unattached from that creature.
+
+702.152. Blitz
+
+702.152a Blitz represents three abilities: two static abilities that function while the card with blitz is on the stack, one of which may create a delayed triggered ability, and a static ability that functions while the object with blitz is on the battlefield. “Blitz [cost]” means “You may cast this card by paying [cost] rather than its mana cost,” “If this spell’s blitz cost was paid, sacrifice the permanent this spell becomes at the beginning of the next end step,” and “As long as this permanent’s blitz cost was paid, it has haste and ‘When this permanent is put into a graveyard from the battlefield, draw a card.’” Casting a spell for its blitz cost follows the rules for paying alternative costs in rules 601.2b and 601.2f–h.
+
+702.153. Casualty
+
+702.153a Casualty is a keyword that represents two abilities. The first is a static ability that functions while the spell with casualty is on the stack. The second is a triggered ability that functions while the spell with casualty is on the stack. Casualty N means “As an additional cost to cast this spell, you may sacrifice a creature with power N or greater,” and “When you cast this spell, if a casualty cost was paid for it, copy it. If the spell has any targets, you may choose new targets for the copy.” Paying a spell’s casualty cost follows the rules for paying additional costs in rules 601.2b and 601.2f–h.
+
+702.153b If a spell has multiple instances of casualty, each is paid separately and triggers based on the payments made for it, not any other instance of casualty.
 
 703. Turn-Based Actions
 
@@ -5737,6 +5787,7 @@ Example: In an Alternating Teams game with three teams, A, B, and C, the seating
 901.3. In addition to the normal game materials, each player needs a planar deck of at least ten plane and/or phenomenon cards and the game needs one planar die. No more than two cards in a planar deck can be phenomenon cards. Each card in a planar deck must have a different English name. (See rule 310, “Planes,” and rule 311, “Phenomena.”)
 
 901.3a A planar die is a six-sided die. One face has the Planeswalker symbol {PW}. One face has the chaos symbol {CHAOS}. The other faces are blank.
+
 901.4. At the start of the game, each player shuffles their planar deck so that the cards are in a random order. Each deck is placed face down next to its owner’s library. All plane and phenomenon cards remain in the command zone throughout the game, both while they’re part of a planar deck and while they’re face up.
 
 901.5. Once all players have kept their opening hands and used the abilities of cards that allow them to take an action with those cards from their opening hands, the starting player moves the top card of their planar deck off that planar deck and turns it face up. If it’s a phenomenon card, the player puts that card on the bottom of their planar deck and repeats this process until a plane card is turned face up. (See rule 103.6.) No abilities of any card turned face up this way trigger during this process. The face-up plane card becomes the starting plane.
@@ -5857,7 +5908,7 @@ Example: Civilized Scholar is the front face of a double-faced card with mana co
 
 903.5a Each deck must contain exactly 100 cards, including its commander. In other words, the minimum deck size and the maximum deck size are both 100.
 
-903.5b Other than basic lands, each card in a Commander deck must have a different English name.
+903.5b Other than basic lands, each card in a Commander deck must have a different English name. For the purposes of deck construction, cards with interchangeable names have the same English name (see rule 201.3).
 
 903.5c A card can be included in a Commander deck only if every color in its color identity is also found in the color identity of the deck’s commander.
 Example: Wort, the Raidmother is a legendary creature with mana cost {4}{R/G}{R/G}. Wort’s color identity is red and green. Each card in a Wort Commander deck must be only red, only green, both red and green, or have no color. Each mana symbol in the mana cost or rules text of a card in this deck must be only red, only green, both red and green, or have no color.
@@ -6046,7 +6097,7 @@ Alternative Cost
 A cost a spell may have that its controller can pay rather than paying its mana cost. See rule 118, “Costs,” and rule 601, “Casting Spells.”
 
 Alternate Name
-A different name used on promotional or alternate-art versions of some cards. This name has no rules meaning. See rule 201.5.
+A different name used on promotional or alternate-art versions of some cards. This name has no rules meaning. See rule 201.6.
 
 Amass
 A keyword action than gives you a Zombie Army creature token or grows an Army you already have. See rule 701.44, “Amass.”
@@ -6174,6 +6225,9 @@ Part of the turn. This phase is the first phase of the turn. See rule 501, “Be
 Bestow
 A keyword ability that lets a creature card be cast as an Aura. See rule 702.103, “Bestow.”
 
+Blitz
+A keyword ability found on creature cards that allows them to be cast for an alternative cost. See rule 702.152, “Blitz.”
+
 Block
 To send a creature into combat defensively. A creature can block an attacking creature. See rule 509, “Declare Blockers Step.”
 
@@ -6233,6 +6287,9 @@ An obsolete term that referred to the player who cast a spell. In general, cards
 
 Casting Cost (Obsolete)
 An obsolete term for mana cost. Cards printed with this text have received errata in the Oracle card reference.
+
+Casualty
+A keyword ability that allows you to sacrifice a creature to create a copy of a spell. See 702.153, “Casualty.”
 
 Champion, Championed
 “Champion” is a keyword ability that lets one creature temporarily replace another. A permanent is “championed” by another permanent if the latter exiles the former as the direct result of a champion ability. See rule 702.72, “Champion.”
@@ -6330,6 +6387,9 @@ To remove a dungeon card from the game after reaching that dungeon card’s bott
 Concede
 To quit the game. Conceding a game immediately causes that player to leave that game and lose that game. See rule 104, “Ending the Game.”
 
+Connive
+A keyword action that causes a player to draw a card, discard a card, and then to put a +1/+1 counter on a creature if a nonland card was discarded this way. See rule 701.47, “Connive.”
+
 Conspiracy
 A card type used in Limited formats such as Conspiracy Draft. A conspiracy card is not a permanent. See rule 314, “Conspiracies.”
 
@@ -6403,7 +6463,7 @@ Damage Assignment Order
 The order, announced during the declare blockers step, that an attacking creature will assign its combat damage among the multiple creatures blocking it, or that a blocking creature will assign its combat damage among the multiple creatures it’s blocking. See rules 509.2 and 509.3.
 
 Dash
-A keyword ability that allows creatures to be especially aggressive. See rule 702.109, “Dash.”
+A keyword ability found on creature cards that allows them to be cast for an alternative cost. See rule 702.109, “Dash.”
 
 Day
 Along with night, a designation the game can have. See rule 724, “Day and Night,” and rule 702.145, “Daybound and Nightbound.”
@@ -6732,6 +6792,9 @@ A keyword ability that can make a creature better in combat. See rule 702.68, �
 
 Free-for-All
 A multiplayer variant in which a group of players compete as individuals against each other. See rule 806, “Free-for-All Variant.”
+
+Friends Forever
+A variant of the partner ability that lets two legendary creatures be your commander in the Commander variant rather than one if both have the friends forever ability. See rule 702.124, “Partner,” and rule 903, “Commander.”
 
 Full Party
 A player has a full party if the number of creatures in their party is four. See rule 700.8.
@@ -7456,7 +7519,7 @@ Search
 To look at all cards in a stated zone and possibly find a card that matches a given description. See rule 701.19, “Search.”
 
 Secondary Title Bar
-A smaller name line with the Oracle reference name of a card which has an alternate name in its upper left corner. See rule 201.5.
+A smaller name line with the Oracle reference name of a card which has an alternate name in its upper left corner. See rule 201.6.
 
 Set Aside (Obsolete)
 “Set [something] aside” is an obsolete term for “exile [something].” Cards with that text have received errata in the Oracle card reference. See Exile.
@@ -7475,6 +7538,9 @@ In the Two-Headed Giant multiplayer variant, each team has a “shared life tota
 
 Shared Team Turns Option
 An option that may be used in certain multiplayer variants, such as Two-Headed Giant and Archenemy. See rule 805, “Shared Team Turns Option.”
+
+Shield Counter
+A counter that protects a permanent from being damaged or destroyed. See rule 122.1c.
 
 Shortcut
 A mutually understood way for the game to advance forward a number of game choices (either taking an action or passing priority) without players needing to explicitly identify each such choice. See rule 725, “Taking Shortcuts.”
@@ -7895,6 +7961,6 @@ Thanks to all our project team members and the many others too numerous to menti
 
 
 
-These rules are effective as of February 18, 2022.
+These rules are effective as of April 29, 2022.
 
 Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unglued, Unstable, Dominaria, Ikoria, Kaldheim, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2022 Wizards. U.S. Pat. No. RE 37,957.
