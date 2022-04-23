@@ -513,6 +513,16 @@ class Card
         "{R}, {W}, or {B}"
       when "forest island swamp"
         "{B}, {G}, or {U}"
+      when "forest mountain plains"
+        "{R}, {G}, or {W}"
+      when "island plains swamp"
+        "{W}, {U}, or {B}"
+      when "forest island plains"
+        "{G}, {W}, or {U}"
+      when "island mountain swamp"
+        "{U}, {B}, or {R}"
+      when "forest mountain swamp"
+        "{B}, {R}, or {G}"
       else
         raise "No idea what's correct line for #{basic_land_types.inspect}"
       end
