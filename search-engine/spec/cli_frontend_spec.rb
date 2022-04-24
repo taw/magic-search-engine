@@ -24,6 +24,7 @@ describe "CLI Frontend" do
         Gingerbread Cabin
         Highland Forest
         Indatha Triome
+        Jetmir's Garden
         Ketria Triome
         Murmuring Bosk
         Overgrown Tomb
@@ -33,12 +34,14 @@ describe "CLI Frontend" do
         Scattered Groves
         Sheltered Thicket
         Snow-Covered Forest
+        Spara's Headquarters
         Stomping Ground
         Taiga
         Temple Garden
         Tropical Island
         Woodland Chasm
         Zagoth Triome
+        Ziatora's Proving Ground
         EOF
       error: ""
     )
