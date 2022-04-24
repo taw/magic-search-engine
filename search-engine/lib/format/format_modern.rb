@@ -50,6 +50,7 @@ class FormatModern < Format
       "mid",
       "vow",
       "neo",
+      "snc",
     ]
   end
 end

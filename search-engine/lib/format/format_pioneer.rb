@@ -31,6 +31,7 @@ class FormatPioneer < Format
       "mid",
       "vow",
       "neo",
+      "snc",
     ]
   end
 end
