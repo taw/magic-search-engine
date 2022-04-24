@@ -9,6 +9,7 @@ class Card
     [
       "Adamant",
       "Addendum",
+      "Alliance",
       "Battalion",
       "Bloodrush",
       "Channel",

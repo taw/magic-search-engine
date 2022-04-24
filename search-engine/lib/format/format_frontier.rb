@@ -28,6 +28,7 @@ class FormatFrontier < Format
       "mid",
       "vow",
       "neo",
+      "snc",
     ]
   end
 end
