@@ -122,6 +122,8 @@ describe Deck do
         sets_found.should match_array ["voc", "vow"]
       when "nec"
         sets_found.should match_array ["nec", "neo"]
+      when "ncc"
+        sets_found.should match_array ["ncc", "snc"]
       else
         sets_found.should eq [set.code]
       end
@@ -154,6 +156,7 @@ describe Deck do
       # Eight additional cards with the VOC code (#31/38 to #38/38) can only be found in the Set and Collector Boosters. They aren't found in the Innistrad: Crimson Vow Commander decks.
       next if set.code == "voc"
       next if set.code == "nec"
+      next if set.code == "ncc"
 
       # All names match both ways
       set_card_names = set.physical_card_names
