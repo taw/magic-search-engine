@@ -48,7 +48,7 @@ class PatchSetTypes < Patch
         set_types << "fnm"
       when "phed"
         # OK, technically this is Commander deck, but I really don't want to deal with it
-        set_type = ["fixed"]
+        set_types = ["box"]
       end
 
       # Some of these are not actually funny sets, just promo sets mixing funny and regular cards (like plist)
