@@ -1143,4 +1143,11 @@ class CardSheetFactory
   def neo_land
     from_query("e:neo (r:basic or is:gainland)", 30)
   end
+
+  def snc_basic
+    mix_sheets(
+      [from_query("e:snc r:basic number<272", 10), 2],
+      [from_query("e:snc r:basic number>=272", 10), 1],
+    )
+  end
 end
