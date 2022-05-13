@@ -304,12 +304,17 @@ describe "Card nicknames" do
   it "is:triome" do
     assert_search_results "is:triome",
       "Indatha Triome",
+      "Jetmir's Garden",
       "Ketria Triome",
+      "Raffine's Tower",
       "Raugrin Triome",
       "Savai Triome",
-      "Zagoth Triome"
+      "Spara's Headquarters",
+      "Xander's Lounge",
+      "Zagoth Triome",
+      "Ziatora's Proving Ground"
     assert_search_equal "is:triome",
-      't:land o:tapped o:cycling triome'
+      't:land o:tapped o:"cycling {3}"'
     assert_search_equal "is:tricycleland", "is:triome"
   end
 
