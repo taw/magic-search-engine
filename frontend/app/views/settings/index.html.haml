@@ -1,0 +1,24 @@
+.row.settings
+  .col-12
+    %div Choose default view. You can override it with view: query.
+    %form
+      %div
+        %label
+          %input{type: "radio", name: "default_view", value: "default"}
+          Card Details (view:default)
+      %div
+        %label
+          %input{type: "radio", name: "default_view", value: "full"}
+          Full Details (view:full)
+      %div
+        %label
+          %input{type: "radio", name: "default_view", value: "images"}
+          Images Only (view:images)
+      %div
+        %label
+          %input{type: "radio", name: "default_view", value: "text"}
+          Text Only (view:text)
+      %div
+        %label
+          %input{type: "radio", name: "default_view", value: "checklist"}
+          Checklist (view:checklist)
