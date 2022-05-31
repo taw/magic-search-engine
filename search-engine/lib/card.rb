@@ -327,6 +327,16 @@ class Card
     @count_papersets ||= printings.select(&:paper?).map(&:set).uniq.size
   end
 
+  def name_slug
+    name
+      .gsub("'s", "s")
+      .gsub("I'm", "Im")
+      .gsub("You're", "youre")
+      .gsub("R&D", "RnD")
+      .gsub(/[^a-zA-Z0-9\-]+/, "-")
+      .gsub(/(\A-)|(-\z)/, "")
+  end
+
   private
 
   def calculate_mana_hash
