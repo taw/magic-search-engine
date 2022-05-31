@@ -329,9 +329,10 @@ class Card
 
   def name_slug
     name
+      .normalize_accents
       .gsub("'s", "s")
       .gsub("I'm", "Im")
-      .gsub("You're", "youre")
+      .gsub("You're", "Youre")
       .gsub("R&D", "RnD")
       .gsub(/[^a-zA-Z0-9\-]+/, "-")
       .gsub(/(\A-)|(-\z)/, "")

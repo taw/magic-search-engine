@@ -393,4 +393,27 @@ describe "Full Database Test" do
   def legality_information(name, date = nil)
     db.cards[name.downcase].legality_information(date)
   end
+
+  # Some are not amazing
+  it "#name_slug" do
+    db.cards.values.to_h{|c| [c.name, c.name_slug] }.should include(
+      "_____" => "",
+      "\"Ach! Hans, Run!\"" => "Ach-Hans-Run",
+      "\"Rumors of My Death . . .\"" => "Rumors-of-My-Death",
+      "+2 Mace" => "2-Mace",
+      "1996 World Champion" => "1996-World-Champion",
+      "Bind (CMB1)" => "Bind-CMB1",
+      "Jötun Owl Keeper" => "Jotun-Owl-Keeper",
+      "Junún Efreet" => "Junun-Efreet",
+      "Look at Me, I'm R&D" => "Look-at-Me-Im-RnD",
+      "You're in Command" => "Youre-in-Command",
+    )
+  end
 end
+
+#     .gsub("'s", "s")
+#     .gsub("I'm", "Im")
+#     .gsub("You're", "youre")
+#     .gsub("R&D", "RnD")
+#     .gsub(/[^a-zA-Z0-9\-]+/, "-")
+#     .gsub(/(\A-)|(-\z)/, "")
