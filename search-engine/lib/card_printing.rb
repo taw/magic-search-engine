@@ -116,7 +116,7 @@ class CardPrinting
     display_power display_toughness display_mana_cost
     primary? secondary? front? back? partner? allowed_in_any_number?
     commander? brawler? custom? keywords
-    count_sets count_prints count_papersets count_paperprints
+    count_sets count_prints count_papersets count_paperprints name_slug
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
   end

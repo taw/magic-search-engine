@@ -5,15 +5,18 @@ module ApplicationHelper
       action: "show",
       set: card.set_code,
       id: card.number,
-      # This part is purely decorative, so we don't bother testing it
-      name: card.name
-                .gsub("'s", "s")
-                .gsub("I'm", "Im")
-                .gsub("You're", "youre")
-                .gsub("R&D", "RnD")
-                .gsub(/[^a-zA-Z0-9\-]+/, "-")
-                .gsub(/(\A-)|(-\z)/, ""),
+      name: card.name_slug,
       &blk)
+  end
+
+  def url_for_card(card)
+    url_for(
+      controller: "card",
+      action: "show",
+      set: card.set_code,
+      id: card.number,
+      name: card.name_slug,
+    )
   end
 
   def link_to_card_name(card_name, &blk)
