@@ -17,7 +17,7 @@
 //= require select2
 //= require_tree .
 
-$(function () {
+function onLoad() {
   $(document).on("mouseover", ".previewable_card_name", function() {
     var preview_link = $(this).data("preview-link");
     $(this).closest(".decklist").find(".card_picture_cell").hide();
@@ -26,7 +26,7 @@ $(function () {
 
   $(".pack_selection select").select2();
 
-  if (!('ontouchstart' in document.documentElement) && (document.location.hash === "")) {
+  if(!('ontouchstart' in document.documentElement) && (document.location.hash === "")) {
     document.getElementById("q").focus();
   }
 
@@ -35,4 +35,13 @@ $(function () {
     $(this).next('.custom-file-label').html(fileName);
     $(this).closest("form").submit();
   })
-})
+
+  // Settings
+  $("[name=default_view]").val([$.cookie("default_view")])
+  $("[name=default_view]").on("input", function(e) {
+    $.cookie("default_view", e.target.value);
+  })
+}
+
+document.addEventListener("load", onLoad)
+document.addEventListener("turbolinks:load", onLoad)

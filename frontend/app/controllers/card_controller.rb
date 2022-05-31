@@ -56,7 +56,6 @@ class CardController < ApplicationController
       render_403
       return
     end
-
     # End of temporary bot code
 
     @title = @search
@@ -68,7 +67,9 @@ class CardController < ApplicationController
       choose_best_printing(printings)
     end
 
-    case query.view
+    view_mode = query.view || cookies["default_view"] || "default"
+
+    case view_mode
     when "full"
       # force detailed view
       @cards = @cards.paginate(page: page, per_page: 10)
