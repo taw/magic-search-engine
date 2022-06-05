@@ -44,7 +44,8 @@ describe "Regexp" do
       "Helix Pinnacle",
       "Mox Lotus",
       "Rules Lawyer",
-      "Urza, Academy Headmaster"
+      "Urza, Academy Headmaster",
+      "Vexing Puzzlebox"
   end
 
   it "regexp flavor text" do
@@ -92,7 +93,6 @@ describe "Regexp" do
 
   it "regexp rulings text" do
     assert_search_results "rulings:fly",
-      "Druid of Purification",
       "Wings of Hubris",
       "Sarah's Wings"
     assert_search_equal "rulings:flying", 'rulings:/\bflying\b/'
