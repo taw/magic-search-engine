@@ -20,7 +20,7 @@ class ConditionDeck < Condition
     # so we need extra step, so all C17 Forests get included, not just some
     matching_card_names = {}
     decks.each do |deck|
-      [*deck.cards, *deck.sideboard].each do |count, card|
+      [*deck.cards, *deck.sideboard, *deck.commander].each do |count, card|
         card.parts.each do |cp|
           matching_card_names[cp.set_code] ||= Set.new
           matching_card_names[cp.set_code] << cp.name
