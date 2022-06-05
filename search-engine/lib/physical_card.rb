@@ -10,6 +10,10 @@ class PhysicalCard
     @front.map(&:name).join(" // ")
   end
 
+  def name_slug
+    main_front.name_slug
+  end
+
   def back_name
     @back.map(&:name).join(" // ")
   end
