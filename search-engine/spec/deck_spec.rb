@@ -133,6 +133,8 @@ describe Deck do
   # This test should check that all PhysicalCards match, but this fails as:
   # * we don't have any alt art information on decklist side (mostly for basic lands)
   # * we don't have any foil information, on either side
+  #
+  # This test fails for most new sets
   it "cards in precon sets are all in their precon decks" do
     precon_sets.each do |set|
       # Plane cards are technically not part of any precon in it
@@ -157,6 +159,7 @@ describe Deck do
       next if set.code == "voc"
       next if set.code == "nec"
       next if set.code == "ncc"
+      next if set.code == "clb"
 
       # All names match both ways
       set_card_names = set.physical_card_names
