@@ -21,6 +21,7 @@ gem "turbolinks"
 gem "bootstrap", "~> 4.3.1"
 gem "rails-assets-tether"
 gem "select2-rails"
+gem "net-smtp", require: false # Ruby 3.1 issue
 
 # Use ActiveModel has_secure_password
 # gem "bcrypt", "~> 3.1.7"
