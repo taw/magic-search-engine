@@ -96,6 +96,12 @@ describe "CLI Frontend" do
         When Destructor Dragon dies, destroy target noncreature permanent.
         4/4
 
+        Emerald Dragon {4}{g}{g}
+        [clb]
+        Creature - Dragon
+        Flying, trample
+        4/4
+
         Green Dragon {4}{g}{g}
         [afr afr]
         Creature - Dragon
@@ -162,7 +168,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Bloodbraid Elf {2}{r}{g}
-        [-arb +f10 +pc2 +prm -ema -c16 +pca +mb1 -tsr]
+        [-arb +f10 +pc2 +prm -ema -c16 +pca +mb1 -tsr -clb]
         Creature - Elf Berserker
         Haste
         Cascade
