@@ -6,6 +6,10 @@ class PatchExcludeFromBoosters < Patch
   def call
     each_printing do |card|
       set_code = card["set_code"]
+      set = card["set"]
+
+      # No point writing rules for these, even if they have some kind of base set size
+      next unless set["has_boosters"] or set["in_other_boosters"]
 
       if sets_without_basics_in_boosters.include?(set_code) and card["supertypes"]&.include?("Basic")
         card["exclude_from_boosters"] = true
@@ -58,44 +62,10 @@ class PatchExcludeFromBoosters < Patch
   def exclude_from_boosters(set_code, number)
     number_i = number.to_i
     set = set_by_code(set_code)
+    # We need to patch this for a few sets
     base_size = set["base_set_size"]
-    # Not correct for all sets:
-    # https://github.com/mtgjson/mtgjson/issues/765
 
     case set_code
-    when "2xm",
-      "aer",
-      "akh",
-      "akr",
-      "cmr",
-      "dom",
-      "eld",
-      "grn",
-      "hou",
-      "kld",
-      "klr",
-      "m15",
-      "m19",
-      "m20",
-      "mh1",
-      "ori",
-      "rix",
-      "rna",
-      "thb",
-      "war",
-      "xln",
-      "znr",
-      "khm",
-      "tsr",
-      "mid",
-      "mh2",
-      "stx",
-      "vow",
-      "dbl",
-      "neo",
-      "snc"
-      # no weird cards in boosters and we can rely on mtgjson data
-      number_i > base_size
     when "afr"
       number_i > base_size or number =~ /★/
     when "sta"
@@ -114,8 +84,19 @@ class PatchExcludeFromBoosters < Patch
     when "zen"
       # non-fullart basics are excluded
       number =~ /a/
-    else
+    when "plist"
+      # not sure what to do with this, it's not in draft boosters?
       false
+    when "bbd", "cn2", "unh"
+      # have over-set-size cards in boosters
+      false
+    else
+      # Default is to exclude everything beyond base size
+      if base_size
+        number_i > base_size
+      else
+        false
+      end
     end
   end
 end
