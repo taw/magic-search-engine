@@ -154,7 +154,18 @@ class CardSheetFactory
     sheets = [
       rare_mythic(set_code, foil: true),
       rarity(set_code, "uncommon", foil: true),
-      from_query('e:cmr (r:common or r:special)', 141 + 1, foil: true)
+      from_query("e:#{set_code} (r:common or r:special)", 141 + 1, foil: true)
+    ]
+    weights = [1, 3, 13]
+    CardSheet.new(sheets, weights)
+  end
+
+  def clb_dedicated_foil
+    set_code = "clb"
+    sheets = [
+      rare_mythic(set_code, foil: true),
+      rarity(set_code, "uncommon", foil: true),
+      from_query("e:#{set_code} (r:common or r:special)", 140 + 1, foil: true)
     ]
     weights = [1, 3, 13]
     CardSheet.new(sheets, weights)
@@ -980,6 +991,39 @@ class CardSheetFactory
     mix_sheets(
       [from_query('e:cmr -t:legendary r:rare', 52), 2],
       [from_query('e:cmr -t:legendary r:mythic', 17), 1],
+    )
+  end
+
+  def clb_nonlegendary_common
+    from_query('e:clb -t:legendary r:common', 136)
+  end
+
+  def clb_nonlegendary_uncommon
+    from_query('e:clb -t:legendary r:uncommon', 75)
+  end
+
+  def clb_nonlegendary_rare_mythic
+    mix_sheets(
+      [from_query('e:clb -t:"legendary creature" -t:"legendary planeswalker" -t:background r:rare', 47), 2], # legendary land in this slot???
+      [from_query('e:clb -t:legendary r:mythic', 17), 1],
+    )
+  end
+
+  # no idea about ratios
+  def clb_legendary
+    mix_sheets(
+      [from_query('e:clb t:legendary -t:background -t:land r:uncommon', 30), 4],
+      [from_query('e:clb t:legendary -t:background -t:land r:rare', 25), 2],
+      [from_query('e:clb t:legendary -t:background -t:land r:mythic', 5), 1],
+    )
+  end
+
+  # no idea about ratios
+  def clb_background
+    mix_sheets(
+      [from_query('e:clb t:background r:common', 5), 4],
+      [from_query('e:clb t:background r:uncommon', 15), 2],
+      [from_query('e:clb t:background r:rare', 5), 1],
     )
   end
 
