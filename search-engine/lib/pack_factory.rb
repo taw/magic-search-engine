@@ -607,6 +607,12 @@ class PackFactory
         build_pack(set_code, {common: 13, cmr_nonlegendary_uncommon: 3, cmr_nonlegendary_rare_mythic: 1, cmr_legendary: 2, cmr_dedicated_foil: 1}) => 5,
         build_pack(set_code, {common: 12, special: 1, cmr_nonlegendary_uncommon: 3, cmr_nonlegendary_rare_mythic: 1, cmr_legendary: 2, cmr_dedicated_foil: 1}) => 1,
       )
+    when "clb"
+      # There's almost no documentation, so this is based on a few pack opening videos and analogy to CMR
+      WeightedPack.new(
+        build_pack(set_code, {clb_nonlegendary_common: 13, clb_nonlegendary_uncommon: 3, clb_nonlegendary_rare_mythic: 1, clb_legendary: 1, clb_background: 1, clb_dedicated_foil: 1}) => 5,
+        build_pack(set_code, {clb_nonlegendary_common: 12, special: 1, clb_nonlegendary_uncommon: 3, clb_nonlegendary_rare_mythic: 1, clb_legendary: 1, clb_background: 1, clb_dedicated_foil: 1}) => 1,
+      )
     when "stx"
       build_pack_with_random_foil(set_code, 1/3r, :foil, :nonlesson_common, {sta: 1, stx_lesson: 1, nonlesson_common: 9, uncommon: 3, nonlesson_rare_mythic: 1})
     when "stx-arena"
