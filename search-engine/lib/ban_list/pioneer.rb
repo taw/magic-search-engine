@@ -67,4 +67,11 @@ BanList.for_format("pioneer") do
     "https://magic.wizards.com/en/articles/archive/news/march-7-2022-banned-and-restricted-announcement",
     "Lurrus of the Dream-Den" => "banned",
   )
+
+  change(
+    "2022-06-07",
+    "https://magic.wizards.com/en/articles/archive/news/june-7-2022-banned-and-restricted-announcement-2022-06-07",
+    "Winota, Joiner of Forces" => "banned",
+    "Expressive Iteration" => "banned",
+  )
 end
