@@ -10,8 +10,8 @@ describe "Time Spiral block" do
       "Blind Phantasm",
       "Fomori Nomad",
       "Mass of Ghouls",
-      "Nessian Courser",
-      "Dryad Arbor" # not sure if it ought to be so
+      "Nessian Courser"
+      # "Dryad Arbor" # used to be here, but no more
   end
 
   it "is:new" do
