@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Temporary
-  get "api/:set/:id" => "api#show"
-  get "api/:set/:id/:name" => "api#show"
-  get "api/search" => "api#search"
+  get "card/api/search" => "api#search"
+  get "card/api/:set/:id" => "api#show"
+  get "card/api/:set/:id/:name" => "api#show"
 end
