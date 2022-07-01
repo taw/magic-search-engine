@@ -252,5 +252,36 @@ BanList.for_format("duel commander") do
     "Winota, Joiner of Forces" => "restricted",
   )
 
-  # next one Nov 29
+  change(
+    "2022-01-31",
+    "https://www.mtgdc.info/announcements/2022/january-2022-rules-bannedrestricted-update",
+    "Kraum, Ludevic's Opus" => "restricted",
+    "Livio, Oathsworn Sentinel" => "restricted",
+    "Teferi, Temporal Archmage" => "legal",
+    "Marath, Will of the Wild" => "legal",
+  )
+
+  change(
+    "2022-02-28",
+    "https://www.mtgdc.info/announcements/2022/february-2022-rules-bannedrestricted-update",
+    "Bruse Tarl, Boorish Herder" => "legal",
+    "Jeska, Thrice Reborn" => "legal",
+    "Keleth, Sunmane Familiar" => "legal",
+    "Kraum, Ludevic's Opus" => "legal",
+    "Livio, Oathsworn Sentinel" => "legal",
+    "Ludevic, Necro-Alchemist" => "legal",
+    "Reyhan, Last of the Abzan" => "legal",
+    "Rograkh, Son of Rohgahh" => "legal",
+    "Tymna the Weaver" => "legal",
+    "Yoshimaru, Ever Faithful" => "restricted",
+  )
+
+  change(
+    "2022-05-30",
+    "https://www.mtgdc.info/announcements/2022/may-2022-rules-bannedrestricted-update",
+    "Shorikai, Genesis Engine" => "restricted",
+    "Bazaar of Baghdad" => "banned",
+    "Ragavan, Nimble Pilferer" => "banned",
+    "Serra's Sanctum"  => "banned",
+  )
 end
