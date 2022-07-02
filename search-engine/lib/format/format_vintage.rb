@@ -25,6 +25,7 @@ class FormatVintage < Format
       "cmb1",
       "cmb2",
       "h17",
+      "hbg",
       "hho",
       "htr",
       "htr16",
@@ -70,7 +71,9 @@ class FormatVintage < Format
       "wc99",
       "wc99",
       "xana",
-      "y22",
+      "ymid",
+      "yneo",
+      "ysnc",
     ]
 
     # Portal / Starter sets used to not be tournament legal
