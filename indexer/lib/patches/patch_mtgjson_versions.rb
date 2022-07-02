@@ -126,7 +126,7 @@ class PatchMtgjsonVersions < Patch
 
       # ok, these are technically "display cards" not oversized
       # https://github.com/mtgjson/mtgjson/issues/815
-      if card["set"]["official_code"] == "OC21"
+      if card["set"]["official_code"] == "OC21" or card["set"]["official_code"] == "OAFC"
         card["oversized"] = true
       end
 
