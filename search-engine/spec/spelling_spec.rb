@@ -83,6 +83,7 @@ describe "Spelling" do
       next if name == "Yuan-Ti Fang-Blade" # Fangblade are card names too
       next if name == "Silver-Fur Master"
       next if name == "Spring-Leaf Avenger"
+      next if name == "Rabble-Rouser"
       # Too complex
       next if name == "Death's-Head Buzzard"
       # I don't even
