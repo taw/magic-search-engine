@@ -21,6 +21,7 @@ describe "CLI Frontend" do
         Cinder Glade
         Dryad Arbor
         Forest
+        Gate to Manorborn
         Gingerbread Cabin
         Highland Forest
         Indatha Triome
@@ -97,7 +98,7 @@ describe "CLI Frontend" do
         4/4
 
         Emerald Dragon {4}{g}{g}
-        [clb]
+        [clb hbg]
         Creature - Dragon
         Flying, trample
         4/4
@@ -108,8 +109,15 @@ describe "CLI Frontend" do
         Flying
         Poison Breath — When Green Dragon enters the battlefield, until end of turn, whenever a creature an opponent controls is dealt damage, destroy it.
         4/4
+
+        Skanos, Green Dragon Vassal {4}{g}{g}
+        [hbg]
+        Legendary Creature - Dragon Ranger
+        Vigilance
+        Whenever Skanos, Green Dragon Vassal attacks, untap another target attacking creature. It gets +X/+0 until end of turn, where X is Skanos's power.
+        6/6
         EOF
-      error: ""
+        error: ""
     )
   end
 

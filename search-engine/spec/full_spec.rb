@@ -229,6 +229,7 @@ describe "Full Database Test" do
       "Abyssal Nocturnus",
       "Abyssal Persecutor",
       "Abyssal Specter",
+      "Gale, Abyssal Conduit",
       "Magus of the Abyss",
       "Peer into the Abyss",
       "Reaper from the Abyss",

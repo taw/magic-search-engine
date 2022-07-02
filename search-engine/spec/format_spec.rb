@@ -201,8 +201,8 @@ describe "Formats" do
   # We don't have all historical legality for Duel Commander yet,
   # maybe add it at some later point
   it "duel commander" do
-    assert_count_cards 'banned:"duel commander"', 86
-    assert_count_cards 'restricted:"duel commander"', 36
+    assert_count_cards 'banned:"duel commander"', 89
+    assert_count_cards 'restricted:"duel commander"', 28
   end
 
   # Used to be Lurrus
