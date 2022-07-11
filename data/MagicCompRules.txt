@@ -1,6 +1,6 @@
 Magic: The Gathering Comprehensive Rules
 
-These rules are effective as of June 10, 2022.
+These rules are effective as of July 8, 2022.
 
 Introduction
 
@@ -1367,6 +1367,8 @@ Example: An ability reads, “All lands are 1/1 creatures that are still lands.�
 
 207.4. The chaos symbol {CHAOS} appears in the text box of each plane card to the left of a triggered ability that triggers whenever {CHAOS} is rolled on the planar die. The symbol itself has no special rules meaning. See rule 901, “Planechase.”
 
+207.5. One card (Cryptic Spires) has a set of symbols below the text box that represent each color and an ability that instructs a player to circle two of those colors as they create their deck. To circle a color, the player circles (or otherwise clearly indicates) that color’s symbol. The mana symbol of each circled color is considered part of that card’s printed rules text (see rule 613.1) and affects that card’s color identity (see rule 903.4).
+
 208. Power/Toughness
 
 208.1. A creature card has two numbers separated by a slash printed in its lower right corner. The first number is its power (the amount of damage it deals in combat); the second is its toughness (the amount of damage needed to destroy it). For example, 2/3 means the object has power 2 and toughness 3. Power and toughness can be modified or set to particular values by effects.
@@ -2254,7 +2256,7 @@ Example: If a spell says “Tap two target creatures,” then the same creature 
 
 601.2d If the spell requires the player to divide or distribute an effect (such as damage or counters) among one or more targets, the player announces the division. Each of these targets must receive at least one of whatever is being divided.
 
-601.2e The game checks to see if proposed spell can legally be cast. If the proposed spell is illegal, the game returns to the moment before the casting of that spell was proposed (see rule 727, “Handling Illegal Actions”).
+601.2e The game checks to see if the proposed spell can legally be cast. If the proposed spell is illegal, the game returns to the moment before the casting of that spell was proposed (see rule 727, “Handling Illegal Actions”).
 
 601.2f The player determines the total cost of the spell. Usually this is just the mana cost. Some spells have additional or alternative costs. Some effects may increase or reduce the cost to pay, or may provide other alternative costs. Costs may include paying mana, tapping permanents, sacrificing permanents, discarding cards, and so on. The total cost is the mana cost or alternative cost (as determined in rule 601.2b), plus all additional costs and cost increases, and minus all cost reductions. If multiple cost reductions apply, the player may apply them in any order. If the mana component of the total cost is reduced to nothing by cost reduction effects, it is considered to be {0}. It can’t be reduced to less than {0}. Once the total cost is determined, any effects that directly affect the total cost are applied. Then the resulting total cost becomes “locked in.” If effects would change the total cost after this time, they have no effect.
 
@@ -2971,7 +2973,7 @@ Example: If an attacking creature is blocked by two creatures, this is one event
 
 700.2c If a spell or ability targets one or more targets only if a particular mode is chosen for it, its controller will need to choose those targets only if they chose that mode. Otherwise, the spell or ability is treated as though it did not have those targets. (See rule 601.2c.)
 
-700.2d If a player is allowed to choose more than one mode for a modal spell or ability, that player normally can’t choose the same mode more than once. However, a few modal spells include the instruction “You may choose the same mode more than once.” If a particular mode is chosen multiple times, the spell is treated as if that mode appeared that many times in sequence. If that mode requires a target, the same player or object may be chosen as the target for each of those modes, or different targets may be chosen.
+700.2d If a player is allowed to choose more than one mode for a modal spell or ability, that player normally can’t choose the same mode more than once. However, some modal spells include the instruction “You may choose the same mode more than once.” If a particular mode is chosen multiple times, the spell is treated as if that mode appeared that many times in sequence. If that mode requires a target, the same player or object may be chosen as the target for each of those modes, or different targets may be chosen.
 
 700.2e Some spells and abilities specify that a player other than their controller chooses a mode for it. In that case, the other player does so when the spell or ability’s controller normally would do so. If there is more than one other player who could make such a choice, the spell or ability’s controller decides which of those players will make the choice.
 
@@ -3599,7 +3601,7 @@ Example: A player controls Ajani’s Pridemate, which reads “Whenever you gain
 
 702.16j “Protection from everything” is a variant of the protection ability. A permanent or player with protection from everything has protection from each object regardless of that object’s characteristic values. Such a permanent or player can’t be targeted by spells or abilities and can’t be enchanted by Auras. Such a permanent can’t be equipped by Equipment, fortified by Fortifications, or blocked by creatures. All damage that would be dealt to such a permanent or player is prevented.
 
-702.16k “Protection from [a player]” is a variant of the protection ability. A permanent with protection from a specific player has protection from each object the player controls and protection from each object the player owns not controlled by another player, regardless of that object’s characteristic values. Such a permanent can’t be targeted by spells or abilities the player controls, enchanted by Auras the player controls, equipped by Equipment the player controls, fortified by Fortifications the player controls, or blocked by creatures the player controls, and all damage that would be dealt to it by sources controlled by the player or owned by the player but not controlled by another player is prevented.
+702.16k “Protection from [a player]” is a variant of the protection ability. A permanent or player with protection from a specific player has protection from each object that player controls and protection from each object that player owns not controlled by another player, regardless of that object’s characteristic values. Such a permanent or player can’t be targeted by spells or abilities the specified player controls and can’t be enchanted by Auras that player controls. Such a permanent can’t be equipped by Equipment that player controls, fortified by Fortifications that player controls, or blocked by creatures that player controls. All damage that would be dealt to such a permanent or player by sources controlled by the specified player or owned by that player but not controlled by another player is prevented.
 
 702.16m Multiple instances of protection from the same quality on the same permanent or player are redundant.
 
@@ -4586,7 +4588,7 @@ Example: Garruk’s Horde says, in part, “You may cast creature spells from th
 
 702.145a Daybound and nightbound are found on opposite faces of some transforming double-faced cards (see rule 712, “Double-Faced Cards”).
 
-702.145b Daybound is found on the front faces of some transforming double-faced cards and represents three static abilities. “Daybound” means “If it is night and this permanent is represented by a double-faced card, it enters the battlefield transformed,” “As it becomes night, if this permanent is front face up, transform it,” and “This permanent can’t be transformed except by its daybound ability.” See rule 725, “Day and Night.”
+702.145b Daybound is found on the front faces of some transforming double-faced cards and represents three static abilities. “Daybound” means “If it is night and this permanent is represented by a transforming double-faced card, it enters the battlefield transformed,” “As it becomes night, if this permanent is front face up, transform it,” and “This permanent can’t be transformed except by its daybound ability.” See rule 725, “Day and Night.”
 
 702.145c Any time a player controls a permanent that is front face up with daybound and it’s night, that player transforms that permanent. This happens immediately and isn’t a state-based action.
 
@@ -8011,6 +8013,6 @@ Thanks to all our project team members and the many others too numerous to menti
 
 
 
-These rules are effective as of June 10, 2022.
+These rules are effective as of July 8, 2022.
 
 Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unglued, Unstable, Dominaria, Ikoria, Kaldheim, Baldur’s Gate, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2022 Wizards. U.S. Pat. No. RE 37,957.
