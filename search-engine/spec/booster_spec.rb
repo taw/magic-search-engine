@@ -132,6 +132,8 @@ describe "is:booster" do
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=281"
       when "clb"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=361"
+      when "2x2"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=331"
       else
         if set.has_boosters? or set.in_other_boosters?
           assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/†|s/"

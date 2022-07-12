@@ -336,8 +336,8 @@ class PackFactory
         build_pack_with_random_foil(set_code, 9/40r, :foil, :common_unbalanced, {basic: 1, common_unbalanced: 10, uncommon: 3, rare_mythic: 1}, borrow_basic: true)
     when "mma", "mm2", "mm3", "ema", "ima", "a25", "uma"
       build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, dedicated_foil: 1})
-    when "2xm"
-      build_pack(set_code, {common: 8, uncommon: 3, rare_mythic: 2, dedicated_foil_2xm: 2})
+    when "2xm", "2x2"
+      build_pack(set_code, {common: 8, uncommon: 3, rare_mythic: 2, dedicated_foil_double_masters: 2})
     when "znr"
       WeightedPack.new(
         build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, sfc_uncommon: 3, modaldfc_rare_mythic: 1}) => 27,
