@@ -138,8 +138,7 @@ class CardSheetFactory
   end
 
   # name backwards as name starts with a number
-  def dedicated_foil_2xm
-    set_code = "2xm"
+  def dedicated_foil_double_masters(set_code)
     sheets = [
       rare_mythic(set_code, foil: true),
       rarity(set_code, "uncommon", foil: true),
