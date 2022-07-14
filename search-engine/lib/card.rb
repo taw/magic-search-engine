@@ -193,6 +193,15 @@ class Card
     "Psionic Adept",
     "Rage Beyond Death",
     "Wild Shape",
+    # CLB Dungeon
+    "Archives",
+    "Arena",
+    "Catacombs",
+    "Forge",
+    "Lost Well",
+    "Secret Entrance",
+    "Stash",
+    "Throne of the Dead Three",
   ].sort
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 
