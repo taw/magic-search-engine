@@ -224,7 +224,7 @@ class Card
     @colors = data["colors"] || ""
     @funny = data["funny"]
     @text = (data["text"] || "")
-    @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless @funny
+    @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless @funny or @layout == "dungeon"
     @text = -@text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
     @text_normalized = -@text.normalize_accents
     @augment = !!(@text =~ /augment \{/i)
