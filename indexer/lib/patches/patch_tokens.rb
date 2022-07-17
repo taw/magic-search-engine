@@ -50,6 +50,5 @@ class PatchTokens < Patch
       dungeon["name"] = dungeon.delete("faceName")
       (@cards[dungeon["name"]] ||= []) << dungeon
     end
-    pp dungeons
   end
 end
