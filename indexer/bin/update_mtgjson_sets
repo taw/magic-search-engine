@@ -112,6 +112,7 @@ class SingleSetUpdater
   end
 
   def command_spoiler
+    return if incoming_data["cards"].size == 0 # no point reporting that
     comment = "#{incoming_data["cards"].size} / #{incoming_data["baseSetSize"]}"
     puts "#{name} - spoiler set (#{comment})"
   end
