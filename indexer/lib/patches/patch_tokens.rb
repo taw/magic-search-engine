@@ -48,6 +48,7 @@ class PatchTokens < Patch
       dungeon["layout"] = "dungeon"
       dungeon["availability"].delete("paper")
       dungeon["name"] = dungeon.delete("faceName")
+      dungeon.delete("artist")
       (@cards[dungeon["name"]] ||= []) << dungeon
     end
   end
