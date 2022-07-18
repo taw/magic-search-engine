@@ -14,6 +14,17 @@ class PatchReconcileForeignNames < Patch
     }
   end
 
+  def known_promo_language
+    @known_promo_language ||= Set[
+      "Ancient Greek",
+      "Arabic",
+      "Hebrew",
+      "Latin",
+      "Phyrexian",
+      "Sanskrit",
+    ]
+  end
+
   def call
     each_card do |name, printings|
       ### Extract raw data
@@ -40,7 +51,9 @@ class PatchReconcileForeignNames < Patch
       foreign_names_data.each do |e|
         language_code = language_name_to_code[e["language"]]
         unless language_code
-          warn "Unknown language: #{e["language"]}"
+          unless known_promo_language.include?(e["language"])
+            warn "Unknown language: #{e["language"]}"
+          end
           next
         end
         unless e["name"]
