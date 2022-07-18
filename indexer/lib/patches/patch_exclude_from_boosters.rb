@@ -74,6 +74,10 @@ class PatchExcludeFromBoosters < Patch
     when "m21"
       # showcase basics actually in boosters
       number_i > base_size and not (309..313).include?(number_i)
+    when "stx"
+      number_i > base_size or number =~ /★/
+    when "por"
+      number_i > base_size or number =~ /d/
     when "iko"
       # borderless planeswalkers are numbered #276-278
       # showcase cards are numbered #279-313
