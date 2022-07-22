@@ -119,6 +119,11 @@ class PatchMtgjsonVersions < Patch
         card["frame_effects"] = [card.delete("frameEffect")]
       end
 
+      # This conflicts with isTextless in annoying ways
+      if card["frame_effects"]
+        card["frame_effects"].delete("textless")
+      end
+
       card["oversized"] = card.delete("isOversized")
       card["spotlight"] = card.delete("isStorySpotlight")
       card["fullart"] = card.delete("isFullArt")
