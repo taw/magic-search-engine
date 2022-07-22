@@ -52,6 +52,7 @@ class FormatVintage < Format
       "pust",
       "tafr",
       "tbth",
+      "tclb",
       "tdag",
       "tfth",
       "thp1",
