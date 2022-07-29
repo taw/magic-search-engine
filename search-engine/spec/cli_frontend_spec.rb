@@ -68,7 +68,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Siege Rhino {1}{w}{b}{g}
-        [ktk pktk cp3 prm]
+        [ktk pktk cp3 prm ea1]
         Creature - Rhino
         Trample
         When Siege Rhino enters the battlefield, each opponent loses 3 life and you gain 3 life.

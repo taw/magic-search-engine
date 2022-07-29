@@ -74,7 +74,7 @@ class PatchExcludeFromBoosters < Patch
     when "m21"
       # showcase basics actually in boosters
       number_i > base_size and not (309..313).include?(number_i)
-    when "stx"
+    when "stx", "gpt"
       number_i > base_size or number =~ /★/
     when "por"
       number_i > base_size or number =~ /d/

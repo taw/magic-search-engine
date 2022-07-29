@@ -20,7 +20,7 @@ describe "Old templates" do
   end
 
   it do
-    assert_count_cards %[o:"~ can't be countered"], 1 # Allosaurus Shepherd
+    assert_count_cards %[o:"~ can't be countered"], 0
   end
 
   ### On non-Gatherer cards only
