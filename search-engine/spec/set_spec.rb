@@ -28,6 +28,7 @@ describe "Sets" do
       "memorabilia",
       "modern",
       "multiplayer",
+      "pioneer",
       "planechase",
       "player rewards",
       "portal",
