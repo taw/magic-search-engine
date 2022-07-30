@@ -128,6 +128,8 @@ class DeckIndexer
     if age < 2 * 365
       # Would be nicer to check if actually same Standard
       # OK
+    elsif deck["type"] == "Pioneer Challenger Deck"
+      # OK
     else
       warn "#{age} is too old #{set_code} #{card_name} #{most_recent_standard_set}"
     end

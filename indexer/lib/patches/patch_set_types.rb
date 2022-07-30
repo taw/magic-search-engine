@@ -46,6 +46,8 @@ class PatchSetTypes < Patch
         set_types << "gateway"
       when "fnm", /\Af\d\d\z/, "pdom", "pgrn", "pm19", "prna", "pwar"
         set_types << "fnm"
+      when "q06", "q08"
+        set_types << "pioneer"
       when "phed"
         # OK, technically this is Commander deck, but I really don't want to deal with it
         set_types = ["box"]
