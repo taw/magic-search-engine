@@ -19,6 +19,7 @@ describe Deck do
       ["duel deck", "Planeswalker Deck"], # v4
       ["board game deck", "Theme Deck"],
       ["box", "Game Night Deck"],
+      ["pioneer", "Pioneer Challenger Deck"],
       # Standard sets
       ["core", "Clash Pack"],
       ["core", "Event Deck"],
