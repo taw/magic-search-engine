@@ -68,7 +68,7 @@ describe "Unsets" do
   end
 
   it "border:none" do
-    assert_search_equal "border:none", "e:ust (t:basic or t:contraption)"
+    assert_search_equal "border:none", "(e:ust (t:basic or t:contraption)) or (e:pcel Zur)"
     assert_search_equal "border:none", "is:borderless"
     assert_search_equal "not:borderless", "-is:borderless"
     # Can't have multiple borders
@@ -90,6 +90,7 @@ describe "Unsets" do
       "Plains",
       "Swamp",
       "Steamflogger Boss",
+      "Zur the Enchanter",
     )
     "not:new"           .should include_cards(
       "1996 World Champion",
@@ -115,7 +116,8 @@ describe "Unsets" do
       "Shichifukujin Dragon",
       "Splendid Genesis",
       "Steamflogger Boss",
-      "Stocking Tiger"
+      "Stocking Tiger",
+      "Zur the Enchanter",
     )
     "is:black-bordered".should return_cards(
       "Forest",
