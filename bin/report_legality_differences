@@ -23,7 +23,7 @@ class ReportLegalityDifferences
 
   # This method mostly just verifies and filters out data
   # It's not in very convenient format
-  memoize def mtgjson_legalities_data
+  memoize def mtgjson_legalities_data_before_alchemy
     result = {}
     all_sets.each do |set_code, set_data|
       # Name conflicts
@@ -41,6 +41,19 @@ class ReportLegalityDifferences
       end
     end
     result
+  end
+
+  memoize def mtgjson_legalities_data
+    alchemy, normal = mtgjson_legalities_data_before_alchemy.partition{|k,v| k =~ /\AA-/}.map(&:to_h)
+
+    alchemy.each do |k, v|
+      base_name = k.sub(/A-/, "")
+      if v["historic"] == "Legal" and normal[base_name]["historic"] == nil
+        normal[base_name]["historic"] = "Legal"
+      end
+    end
+
+    normal
   end
 
   memoize def mtgjson_formats
