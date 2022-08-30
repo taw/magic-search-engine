@@ -129,9 +129,10 @@ class PatchMtgjsonVersions < Patch
       card["fullart"] = card.delete("isFullArt")
       card["textless"] = card.delete("isTextless")
 
-      # ok, these are technically "display cards" not oversized
+      # OC21/OAFC are technically "display cards" not oversized
       # https://github.com/mtgjson/mtgjson/issues/815
-      if card["set"]["official_code"] == "OC21" or card["set"]["official_code"] == "OAFC"
+      # O90P and OLEP are just mtgjson bug
+      if %W[OC21 OAFC O90P OLEP].include?(card["set"]["official_code"])
         card["oversized"] = true
       end
 
