@@ -51,6 +51,7 @@ class FormatModern < Format
       "vow",
       "neo",
       "snc",
+      "dmu",
     ]
   end
 end
