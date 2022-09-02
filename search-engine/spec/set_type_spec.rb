@@ -4,7 +4,7 @@ describe "Set types" do
   it "basic types" do
     assert_search_results "angel of wrath st:ftv", "Akroma, Angel of Wrath"
     assert_search_results "angel of wrath st:dd", "Akroma, Angel of Wrath"
-    assert_search_results "angel of wrath st:expansion", "Akroma, Angel of Wrath"
+    assert_search_results "angel of wrath st:expansion", "Akroma, Angel of Wrath", "Archangel of Wrath"
     assert_search_results "armageddon st:masters", "Armageddon", "Armageddon Clock"
     assert_search_results "armageddon st:core", "Armageddon", "Armageddon Clock"
     assert_search_results "armageddon st:starter", "Armageddon"

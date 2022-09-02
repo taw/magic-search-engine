@@ -175,7 +175,7 @@ BanList.for_format("standard") do
   )
 
   change(
-    "2025-01-25",
+    "2022-01-25",
     "https://magic.wizards.com/en/articles/archive/news/january-25-2022-banned-and-restricted-announcement",
     "Alrund's Epiphany" => "banned",
     "Divide by Zero" => "banned",

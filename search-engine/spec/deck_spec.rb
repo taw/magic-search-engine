@@ -125,6 +125,8 @@ describe Deck do
         sets_found.should match_array ["nec", "neo"]
       when "ncc"
         sets_found.should match_array ["ncc", "snc"]
+      when "dmc"
+        sets_found.should match_array ["dmu", "dmc"]
       else
         sets_found.should eq [set.code]
       end
@@ -152,6 +154,8 @@ describe Deck do
       next if set.code == "c21"
       # Contains some AFR cards
       next if set.code == "afc"
+      # Contains some DMU cards
+      next if set.code == "dmc"
       # Contains some MID cards
       # also cards 31-38 are not in precons,
       # so this set should maybe check that?
