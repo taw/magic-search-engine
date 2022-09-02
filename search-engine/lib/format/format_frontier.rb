@@ -29,6 +29,7 @@ class FormatFrontier < Format
       "vow",
       "neo",
       "snc",
+      "dmu",
     ]
   end
 end

@@ -23,12 +23,14 @@ describe "CLI Frontend" do
         Forest
         Gate to Manorborn
         Gingerbread Cabin
+        Haunted Mire
         Highland Forest
         Indatha Triome
         Jetmir's Garden
         Ketria Triome
         Murmuring Bosk
         Overgrown Tomb
+        Radiant Grove
         Rimewood Falls
         Sapseep Forest
         Savannah
@@ -38,8 +40,10 @@ describe "CLI Frontend" do
         Spara's Headquarters
         Stomping Ground
         Taiga
+        Tangled Islet
         Temple Garden
         Tropical Island
+        Wooded Ridgeline
         Woodland Chasm
         Zagoth Triome
         Ziatora's Proving Ground
@@ -127,7 +131,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Transguild Courier {4}
-        [dis]
+        [dis dmc]
         Artifact Creature - Golem
         Transguild Courier is all colors.
         3/3
