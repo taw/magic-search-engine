@@ -1,7 +1,7 @@
 = content_for(:disable_turbolinks) do
   true
 %h4 Magic: The Gathering Comprehensive Rules
-%p These rules are effective as of July 8, 2022.
+%p These rules are effective as of September 8, 2022.
 %h3{id: "section-introduction"} Introduction
 %p This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
 %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules. If you have questions, you can get the answers from us at Support.Wizards.com.
@@ -1038,6 +1038,9 @@
 .rule{id: "section-111-10g"}
   .rule_id 111.10g
   .rule_text A Blood token is a colorless Blood artifact token with “<span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span></span>, <span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>, Discard a card, Sacrifice this artifact: Draw a card.”
+.rule{id: "section-111-10h"}
+  .rule_id 111.10h
+  .rule_text A Powerstone token is a colorless Powerstone artifact token with “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add <span class="manacost"><span class="mana mana-cost mana-c"><span class="sr-only">{C}</span></span></span>. This mana can’t be spent to cast a nonartifact spell.”
 .rule{id: "section-111-11"}
   .rule_id 111.11.
   .rule_text A copy of a permanent spell becomes a token as it resolves. The token has the characteristics of the spell that became that token. The token is not “created” for the purposes of any replacement effects or triggered abilities that refer to creating a token.
@@ -1723,9 +1726,12 @@
   .rule_text A shield counter on a permanent creates one replacement effect and one prevention effect that protect the permanent. These effects are “If this permanent would be destroyed as the result of an effect, instead remove a shield counter from it” and “If damage would be dealt to this permanent, prevent that damage and remove a shield counter from it.” See rule <a href="#section-614">614</a>, “Replacement Effects,” and rule <a href="#section-615">615</a>, “Prevention Effects.”
 .rule{id: "section-122-1d"}
   .rule_id 122.1d
-  .rule_text The number of loyalty counters on a planeswalker on the battlefield indicates how much loyalty it has. A planeswalker with 0 loyalty is put into its owner’s graveyard as a state-based action. See rule <a href="#section-704">704</a>.
+  .rule_text A stun counter on a permanent creates a replacement effect that stops the permanent from untapping. That effect is “If a permanent with a stun counter on it would become untapped, instead remove a stun counter from it.”
 .rule{id: "section-122-1e"}
   .rule_id 122.1e
+  .rule_text The number of loyalty counters on a planeswalker on the battlefield indicates how much loyalty it has. A planeswalker with 0 loyalty is put into its owner’s graveyard as a state-based action. See rule <a href="#section-704">704</a>.
+.rule{id: "section-122-1f"}
+  .rule_id 122.1f
   .rule_text If a player has ten or more poison counters, that player loses the game as a state-based action. See rule <a href="#section-704">704</a>. A player is “poisoned” if they have one or more poison counters. (See rule <a href="#section-810">810</a> for additional rules for Two-Headed Giant games.)
 .rule{id: "section-122-2"}
   .rule_id 122.2.
@@ -1976,17 +1982,16 @@
   .rule_text Many cards were printed with subtypes that are now obsolete. Many cards have retroactively received subtypes. Use the Oracle card reference to determine what a card’s subtypes are. (See rule <a href="#section-108-1">108.1</a>.)
 .rule{id: "section-205-3g"}
   .rule_id 205.3g
-  .rule_text Artifacts have their own unique set of subtypes; these subtypes are called artifact types. The artifact types are Blood, Clue, Contraption, Equipment (see rule <a href="#section-301-5">301.5</a>), Food, Fortification (see rule <a href="#section-301-6">301.6</a>), Gold, Treasure, and Vehicle (see rule <a href="#section-301-7">301.7</a>).
+  .rule_text Artifacts have their own unique set of subtypes; these subtypes are called artifact types. The artifact types are Blood, Clue, Contraption, Equipment (see rule <a href="#section-301-5">301.5</a>), Food, Fortification (see rule <a href="#section-301-6">301.6</a>), Gold, Powerstone, Treasure, and Vehicle (see rule <a href="#section-301-7">301.7</a>).
 .rule{id: "section-205-3h"}
   .rule_id 205.3h
   .rule_text Enchantments have their own unique set of subtypes; these subtypes are called enchantment types. The enchantment types are Aura (see rule <a href="#section-303-4">303.4</a>), Background, Cartouche, Class (see rule <a href="#section-717">717</a>), Curse, Rune, Saga (see rule <a href="#section-715">715</a>), Shard, and Shrine.
 .rule{id: "section-205-3i"}
   .rule_id 205.3i
-  .rule_text Lands have their own unique set of subtypes; these subtypes are called land types. The land types are Desert, Forest, Gate, Island, Lair, Locus, Mine, Mountain, Plains, Power-Plant, Swamp, Tower, and Urza’s.
-  .rule_text      Of that list, Forest, Island, Mountain, Plains, and Swamp are the basic land types. See rule <a href="#section-305-6">305.6</a>.
+  .rule_text Lands have their own unique set of subtypes; these subtypes are called land types. The land types are Desert, Forest, Gate, Island, Lair, Locus, Mine, Mountain, Plains, Power-Plant, Swamp, Tower, and Urza’s. Of that list, Forest, Island, Mountain, Plains, and Swamp are the basic land types. See rule <a href="#section-305-6">305.6</a>.
 .rule{id: "section-205-3j"}
   .rule_id 205.3j
-  .rule_text Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Aminatou, Angrath, Arlinn, Ashiok, Bahamut, Basri, Bolas, Calix, Chandra, Dack, Dakkon, Daretti, Davriel, Dihada, Domri, Dovin, Ellywick, Elminster, Elspeth, Estrid, Freyalise, Garruk, Gideon, Grist, Huatli, Jace, Jaya, Jeska, Kaito, Karn, Kasmina, Kaya, Kiora, Koth, Liliana, Lolth, Lukka, Minsc, Mordenkainen, Nahiri, Narset, Niko, Nissa, Nixilis, Oko, Ral, Rowan, Saheeli, Samut, Sarkhan, Serra, Sorin, Szat, Tamiyo, Tasha, Teferi, Teyo, Tezzeret, Tibalt, Tyvar, Ugin, Venser, Vivien, Vraska, Will, Windgrace, Wrenn, Xenagos, Yanggu, Yanling, and Zariel.
+  .rule_text Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Aminatou, Angrath, Arlinn, Ashiok, Bahamut, Basri, Bolas, Calix, Chandra, Dack, Dakkon, Daretti, Davriel, Dihada, Domri, Dovin, Ellywick, Elminster, Elspeth, Estrid, Freyalise, Garruk, Gideon, Grist, Huatli, Jace, Jaya, Jeska, Kaito, Karn, Kasmina, Kaya, Kiora, Koth, Liliana, Lolth, Lukka, Minsc, Mordenkainen, Nahiri, Narset, Niko, Nissa, Nixilis, Oko, Ral, Rowan, Saheeli, Samut, Sarkhan, Serra, Sivitri, Sorin, Szat, Tamiyo, Tasha, Teferi, Teyo, Tezzeret, Tibalt, Tyvar, Ugin, Venser, Vivien, Vraska, Will, Windgrace, Wrenn, Xenagos, Yanggu, Yanling, and Zariel.
 .rule{id: "section-205-3k"}
   .rule_id 205.3k
   .rule_text Instants and sorceries share their lists of subtypes; these subtypes are called spell types. The spell types are Adventure, Arcane, Lesson, and Trap.
@@ -2221,10 +2226,13 @@
   .rule_text An Equipment’s controller is separate from the equipped creature’s controller; the two need not be the same. Changing control of the creature doesn’t change control of the Equipment, and vice versa. Only the Equipment’s controller can activate its abilities. However, if the Equipment grants an ability to the equipped creature (with “gains” or “has”), the equipped creature’s controller is the only one who can activate that ability.
 .rule{id: "section-301-5e"}
   .rule_id 301.5e
+  .rule_text If an effect attempts to put an Equipment that isn’t also an Aura (see rule <a href="#section-303-4i">303.4i</a>) onto the battlefield attached to an object it can’t legally equip, the Equipment enters the battlefield unattached. If the Equipment is a token, it’s created and enters the battlefield unattached.
+.rule{id: "section-301-5f"}
+  .rule_id 301.5f
   .rule_text An ability of a permanent that refers to the “equipped creature” refers to whatever creature that permanent is attached to, even if the permanent with the ability isn’t an Equipment.
 .rule{id: "section-301-6"}
   .rule_id 301.6.
-  .rule_text Some artifacts have the subtype “Fortification.” A Fortification can be attached to a land. It can’t legally be attached to an object that isn’t a land. Fortification’s analog to the equip keyword ability is the fortify keyword ability. Rules <a href="#section-301-5a">301.5a</a>–e apply to Fortifications in relation to lands just as they apply to Equipment in relation to creatures, with one clarification relating to rule <a href="#section-301-5c">301.5c</a>: a Fortification that’s also a creature (not a land) can’t fortify a land. (See rule <a href="#section-702-67">702.67</a>, “Fortify.”)
+  .rule_text Some artifacts have the subtype “Fortification.” A Fortification can be attached to a land. It can’t legally be attached to an object that isn’t a land. Fortification’s analog to the equip keyword ability is the fortify keyword ability. Rules <a href="#section-301-5a">301.5a</a>–f apply to Fortifications in relation to lands just as they apply to Equipment in relation to creatures, with one clarification relating to rule <a href="#section-301-5c">301.5c</a>: a Fortification that’s also a creature (not a land) can’t fortify a land. (See rule <a href="#section-702-67">702.67</a>, “Fortify.”)
 .rule{id: "section-301-7"}
   .rule_id 301.7.
   .rule_text Some artifacts have the subtype “Vehicle.” Most Vehicles have a crew ability which allows them to become artifact creatures. See rule <a href="#section-702-122">702.122</a>, “Crew.”
@@ -5660,7 +5668,7 @@
   .rule_text Objects with kicker or multikicker have additional abilities that specify what happens if they are kicked. These abilities are linked to the kicker or multikicker abilities printed on that object: they can refer only to those specific kicker or multikicker abilities. See rule <a href="#section-607">607</a>, “Linked Abilities.”
 .rule{id: "section-702-33f"}
   .rule_id 702.33f
-  .rule_text Objects with more than one kicker cost have abilities that each correspond to a specific kicker cost. They contain the phrases “if it was kicked with its [A] kicker” and “if it was kicked with its [B] kicker,” where A and B are the first and second kicker costs listed on the card, respectively. Each of those abilities is linked to the appropriate kicker ability.
+  .rule_text Objects with more than one kicker cost may also have abilities that each correspond to a specific kicker cost. Those abilities contain the phrases “if it was kicked with its [A] kicker” and “if it was kicked with its [B] kicker,” where A and B are the first and second kicker costs listed on the card, respectively. Each of those abilities is linked to the appropriate kicker ability.
 .rule{id: "section-702-33g"}
   .rule_id 702.33g
   .rule_text If part of a spell’s ability has its effect only if that spell was kicked, and that part of the ability includes any targets, the spell’s controller chooses those targets only if that spell was kicked. Otherwise, the spell is cast as if it did not have those targets. See rule <a href="#section-601-2c">601.2c</a>.
@@ -6929,6 +6937,27 @@
 .rule{id: "section-702-153b"}
   .rule_id 702.153b
   .rule_text If a spell has multiple instances of casualty, each is paid separately and triggers based on the payments made for it, not any other instance of casualty.
+.rule{id: "section-702-154"}
+  .rule_id 702.154.
+  .rule_text Enlist
+.rule{id: "section-702-154a"}
+  .rule_id 702.154a
+  .rule_text Enlist represents a static ability and a triggered ability. Enlist means “As this creature attacks, you may tap up to one untapped creature you control that you didn’t choose to attack with and that either has haste or has been under your control continuously since this turn began. When you do, this creature gets +X/+0 until end of turn, where X is the tapped creature’s power.”
+.rule{id: "section-702-154b"}
+  .rule_id 702.154b
+  .rule_text Enlist’s static ability represents an optional cost to attack (see rule <a href="#section-508-1g">508.1g</a>). Its triggered ability is linked to that static ability (see rule <a href="#section-607-2h">607.2h</a>).
+.rule{id: "section-702-154c"}
+  .rule_id 702.154c
+  .rule_text A creature “enlists” another creature when you pay the cost of the creature’s enlist ability by tapping the other creature. Note that it isn’t possible for a creature to enlist itself.
+.rule{id: "section-702-154d"}
+  .rule_id 702.154d
+  .rule_text Multiple instances of enlist on a single creature function independently. The triggered ability represented by each instance of enlist triggers only once and only for the cost associated with that enlist ability.
+.rule{id: "section-702-155"}
+  .rule_id 702.155.
+  .rule_text Read Ahead
+.rule{id: "section-702-155a"}
+  .rule_id 702.155a
+  .rule_text Read ahead is a keyword found on some Saga cards and represents two static abilities. The first ability is “As this Saga enters the battlefield, choose a number from one to this Saga’s final chapter number. This Saga enters the battlefield with the chosen number of lore counters on it.” The second ability is “Chapter abilities of this Saga can’t trigger the turn it entered the battlefield unless it has exactly the number of lore counters on it specified in the chapter symbol of that ability.” See rule <a href="#section-715">715</a>, “Saga Cards.”
 .rule{id: "section-703"}
   .rule_id 703.
   .rule_text Turn-Based Actions
@@ -7046,7 +7075,7 @@
   .rule_text If a planeswalker has loyalty 0, it’s put into its owner’s graveyard.
 .rule{id: "section-704-5j"}
   .rule_id 704.5j
-  .rule_text If a player controls two or more legendary permanents with the same name, that player chooses one of them, and the rest are put into their owners’ graveyards. This is called the “legend rule.”
+  .rule_text If two or more legendary permanents with the same name are controlled by the same player, that player chooses one of them, and the rest are put into their owners’ graveyards. This is called the “legend rule.”
 .rule{id: "section-704-5k"}
   .rule_id 704.5k
   .rule_text If two or more permanents have the supertype world, all except the one that has had the world supertype for the shortest amount of time are put into their owners’ graveyards. In the event of a tie for the shortest amount of time, all are put into their owners’ graveyards. This is called the “world rule.”
@@ -7398,10 +7427,10 @@
   .rule_text A double-faced card has a Magic card face on each side rather than a Magic card face on one side and a Magic card back on the other. There are two kinds of double-faced cards. Transforming double-faced cards include abilities on one or both of their faces that allow the card to “transform” (turn over to its other face) or allow the card to be cast or enter the battlefield “transformed” (with its back face up). Modal double-faced cards have two faces that are independent from one another, and they can’t transform.
 .rule{id: "section-712-1a"}
   .rule_id 712.1a
-  .rule_text A transforming double-faced card’s front face is marked by a front-face symbol in its upper left corner. On Magic Origins® and Core Set 2019 double-faced cards, the front-face symbol is a modified Planeswalker icon. On cards in the Innistrad® block, Shadows over Innistrad set, and Innistrad: Midnight Hunt set, as well as on Ulrich of the Krallenhorde in the Eldritch Moon™ set, the front-face symbol is a sun. On other Eldritch Moon double-faced cards, the front-face symbol is a full moon. On Ixalan™ and Rivals of Ixalan™ cards, the front-face symbol is a compass rose.
+  .rule_text A transforming double-faced card’s front face is marked by a front-face symbol in its upper left corner. On Magic Origins® and Core Set 2019 double-faced cards, the front-face symbol is a modified Planeswalker icon. On cards in the Innistrad® block, Shadows over Innistrad set, and Innistrad: Midnight Hunt set, as well as on Ulrich of the Krallenhorde in the Eldritch Moon™ set, the front-face symbol is a sun. On other Eldritch Moon double-faced cards, the front-face symbol is a full moon. On Ixalan™ and Rivals of Ixalan™ cards, the front-face symbol is a compass rose. On Kamigawa®: Neon Dynasty double-faced cards, the front-face symbol is a closed fan.
 .rule{id: "section-712-1b"}
   .rule_id 712.1b
-  .rule_text A transforming double-faced card’s back face is marked by a back-face symbol in its upper left corner. On Magic Origins and Core Set 2019 double-faced cards, the back-face symbol is a full Planeswalker icon. On cards in the Innistrad block, Shadows over Innistrad set, and Innistrad: Midnight Hunt set, as well as on Ulrich, Uncontested Alpha in the Eldritch Moon set, the back-face symbol is a crescent moon. On other Eldritch Moon double-faced cards, the back-face symbol is a stylized image of Emrakul. On Ixalan and Rivals of Ixalan cards, the back-face symbol is a land icon.
+  .rule_text A transforming double-faced card’s back face is marked by a back-face symbol in its upper left corner. On Magic Origins and Core Set 2019 double-faced cards, the back-face symbol is a full Planeswalker icon. On cards in the Innistrad block, Shadows over Innistrad set, and Innistrad: Midnight Hunt set, as well as on Ulrich, Uncontested Alpha in the Eldritch Moon set, the back-face symbol is a crescent moon. On other Eldritch Moon double-faced cards, the back-face symbol is a stylized image of Emrakul. On Ixalan and Rivals of Ixalan cards, the back-face symbol is a land icon. On Kamigawa: Neon Dynasty double-faced cards, the back-face symbol is an open fan.
 .rule{id: "section-712-1c"}
   .rule_id 712.1c
   .rule_text The front face of a transforming double-faced card whose back face is a creature has the back face’s power and toughness printed in gray above the power and toughness box. This is reminder text and has no effect on game play.
@@ -7617,12 +7646,15 @@
 .rule{id: "section-715-2d"}
   .rule_id 715.2d
   .rule_text A Saga’s final chapter number is the greatest value among chapter abilities it has. If a Saga somehow has no chapter abilities, its final chapter number is 0.
+.rule{id: "section-715-2e"}
+  .rule_id 715.2e
+  .rule_text A Saga’s final chapter ability is the chapter ability which has its final chapter number in its chapter symbol.
 .rule{id: "section-715-3"}
   .rule_id 715.3.
   .rule_text Sagas use lore counters to track their progress.
 .rule{id: "section-715-3a"}
   .rule_id 715.3a
-  .rule_text As a Saga enters the battlefield, its controller puts a lore counter on it.
+  .rule_text As a Saga without the read ahead ability enters the battlefield, its controller puts a lore counter on it. (See rule <a href="#section-702-155">702.155</a>, “Read Ahead.”)
 .rule{id: "section-715-3b"}
   .rule_id 715.3b
   .rule_text As a player’s precombat main phase begins, that player puts a lore counter on each Saga they control. This turn-based action doesn’t use the stack.
@@ -9623,6 +9655,9 @@
   .glossary_term Energy Symbol
   .glossary_definition The energy symbol <span class="manacost"><span class="mana mana-e"><span class="sr-only">{E}</span></span></span> represents one energy counter. To pay <span class="manacost"><span class="mana mana-e"><span class="sr-only">{E}</span></span></span>, a player removes one energy counter from themselves.
 .glossary_entry
+  .glossary_term Enlist
+  .glossary_definition A keyword ability that allows a creature that could have attacked to support another creature. See rule <a href="#section-702-154">702.154</a>, “Enlist.”
+.glossary_entry
   .glossary_term Enters the Battlefield
   .glossary_definition A nontoken permanent “enters the battlefield” when it’s moved onto the battlefield from another zone. A token “enters the battlefield” when it’s created. See rules <a href="#section-403-3">403.3</a>, <a href="#section-603-6a">603.6a</a>, <a href="#section-603-6d">603.6d</a>, and <a href="#section-614-12">614.12</a>.
 .glossary_entry
@@ -10346,6 +10381,9 @@
   .glossary_term Power
   .glossary_definition 1. Part of a card that only creatures have. A creature card’s power is printed before the slash in its lower right corner. See rule <a href="#section-208">208</a>, “Power/Toughness.” 2. A characteristic that only creatures have. See rule <a href="#section-302-4">302.4</a>.
 .glossary_entry
+  .glossary_term Powerstone Token
+  .glossary_definition A Powerstone token is a colorless artifact token with “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add <span class="manacost"><span class="mana mana-cost mana-c"><span class="sr-only">{C}</span></span></span>. This mana can’t be spent to cast a nonartifact spell.” For more information about predefined tokens, see rule <a href="#section-111-10">111.10</a>.
+.glossary_entry
   .glossary_term Precombat Main Phase
   .glossary_definition The first main phase of a turn. See Main Phase.
 .glossary_entry
@@ -10384,6 +10422,9 @@
 .glossary_entry
   .glossary_term Reach
   .glossary_definition A keyword ability that allows a creature to block an attacking creature with flying. See rule <a href="#section-702-17">702.17</a>, “Reach.” See also Flying.
+.glossary_entry
+  .glossary_term Read Ahead
+  .glossary_definition A keyword ability found on some Sagas that allows their controller to choose which chapter it starts on. See rule <a href="#section-702-155">702.155</a>, “Read Ahead.”
 .glossary_entry
   .glossary_term Rebound
   .glossary_definition A keyword ability that allows an instant or sorcery spell to be cast a second time. See rule <a href="#section-702-88">702.88</a>, “Rebound.”
@@ -10621,6 +10662,9 @@
 .glossary_entry
   .glossary_term Storm
   .glossary_definition A keyword ability that creates copies of a spell. See rule <a href="#section-702-40">702.40</a>, “Storm.”
+.glossary_entry
+  .glossary_term Stun Counter
+  .glossary_definition A counter that stops a permanent from untapping. See rule <a href="#section-122-1d">122.1d</a>.
 .glossary_entry
   .glossary_term Subgame
   .glossary_definition A completely separate Magic game created by an effect. See rule <a href="#section-723">723</a>, “Subgames.”
@@ -10910,5 +10954,5 @@
 %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cátinò, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead), Lyz Liddell, Gregg Luben, Nat Moes, Samantha Phelan, Matt Tabak, Michael Zhang, and Hans Ziegler Magic Rules Management: Jess Dunks
 %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cátinò, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
 %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-%p These rules are effective as of July 8, 2022.
+%p These rules are effective as of September 8, 2022.
 %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unglued, Unstable, Dominaria, Ikoria, Kaldheim, Baldur’s Gate, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2022 Wizards. U.S. Pat. No. RE 37,957. 
