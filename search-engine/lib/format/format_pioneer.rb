@@ -32,6 +32,7 @@ class FormatPioneer < Format
       "vow",
       "neo",
       "snc",
+      "dmu",
     ]
   end
 end
