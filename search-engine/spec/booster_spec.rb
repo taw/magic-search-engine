@@ -138,6 +138,8 @@ describe "is:booster" do
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/†|s|d/"
       when "gpt"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/★/"
+      when "dmu"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=281"
       else
         if set.has_boosters? or set.in_other_boosters?
           assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/†|s/"

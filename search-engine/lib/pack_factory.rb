@@ -252,7 +252,8 @@ class PackFactory
       build_pack_with_random_foil(set_code, 9/40r, :foil_or_masterpiece_1_in_129, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
     when "eld", # ELD and newer sets have multiple nonstandard pack types too
       "thb",
-      "afr"
+      "afr",
+      "dmu"
       build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
     when "snc"
       build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {snc_basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
@@ -570,7 +571,7 @@ class PackFactory
         alara_premium_uncommon: 3,
         alara_premium_rare_mythic: 1,
       })
-    when "klr-arena", "akr-arena", "eld-arena", "thb-arena", "rix-arena", "xln-arena", "afr-arena", "snc-arena"
+    when "klr-arena", "akr-arena", "eld-arena", "thb-arena", "rix-arena", "xln-arena", "afr-arena", "snc-arena", "dmu-arena"
       # Arena-only boosters, 14 card booster (no basic at all)
       build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1})
     when "m19-arena"
