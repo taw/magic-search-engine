@@ -230,6 +230,7 @@ class Indexer
     card.each do |printing|
       common_card_data << printing.slice(
         "brawler",
+        "ci",
         "cmc",
         "colors",
         "commander",

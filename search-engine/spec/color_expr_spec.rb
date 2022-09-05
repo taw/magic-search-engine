@@ -93,4 +93,8 @@ describe "Color Expr Test" do
     assert_search_equal "c!m", "c=c" # can't be both multicolored and colorless
     assert_search_equal "c!mr", "c=r" # can't be both multicolored and exactly-red
   end
+
+  it "Fallaji" do
+    assert_search_equal "ci=1 c=5", "Fallaji Wayfarer"
+  end
 end

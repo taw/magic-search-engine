@@ -24,7 +24,7 @@ describe "Indexer hacks" do
       bfm.cmc.should eq(15)
       bfm.power.should eq(99)
       bfm.toughness.should eq(99)
-      bfm.card.partial_color_identity.should eq("b")
+      bfm.card.color_identity.should eq("b")
       bfm.typeline.should eq("Creature - The-Biggest-Baddest-Nastiest-Scariest-Creature-You'll-Ever-See")
       bfm.color_identity.should eq("b")
       bfm.flavor.should eq("\"It was big. Really, really big. No, bigger than that. Even bigger. Keep going. More. No, more. Look, we're talking krakens and dreadnoughts for jewelry. It was big\"\n-Arna Kennerd, skyknight")

@@ -209,7 +209,7 @@ class Card
   attr_writer :printings # For db subset
 
   attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
-  attr_reader :partial_color_identity, :cmc, :text, :text_normalized, :power, :toughness, :loyalty, :extra
+  attr_reader :color_identity, :cmc, :text, :text_normalized, :power, :toughness, :loyalty, :extra
   attr_reader :hand, :life, :rulings, :foreign_names, :foreign_names_normalized, :stemmed_name
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :color_indicator_set, :related
   attr_reader :reminder_text, :augment, :display_power, :display_toughness, :display_mana_cost, :keywords
@@ -222,6 +222,7 @@ class Card
     @names = data["names"]
     @layout = data["layout"]
     @colors = data["colors"] || ""
+    @color_identity = data["ci"]
     @funny = data["funny"]
     @text = (data["text"] || "")
     @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless @funny or @layout == "dungeon"
@@ -240,7 +241,6 @@ class Card
     @display_power = data["display_power"] ? data["display_power"] : @power
     @display_toughness = data["display_toughness"] ? data["display_toughness"] : @toughness
     @display_mana_cost = data["hide_mana_cost"] ? nil : @mana_cost
-    @partial_color_identity = calculate_partial_color_identity
     if ["vanguard", "planar", "scheme"].include?(@layout) or @types.include?("conspiracy")
       @extra = true
     else
@@ -294,14 +294,6 @@ class Card
 
   def secondary?
     @secondary
-  end
-
-  attr_writer :color_identity
-  def color_identity
-    @color_identity ||= begin
-      return partial_color_identity unless @names
-      raise "Multi-part cards need to have CI set by database"
-    end
   end
 
   def custom?
@@ -458,50 +450,6 @@ class Card
     else
       val.to_f
     end
-  end
-
-  def calculate_partial_color_identity
-    ci = colors.chars
-    "#{mana_cost} #{text}".scan(/{(.*?)}/).each do |sym,|
-      case sym.downcase
-      when /\A(\d+|[½∞txyzsqpcea])\z/
-        # 12xyz - colorless
-        # ½∞ - unset colorless
-        # t - tap
-        # q - untap
-        # s - snow
-        # p - generic Phyrexian mana (like on Rage Extractor text)
-        # c - colorless mana
-        # e - energy
-        # a - acorn
-      when /\A([wubrg])\z/
-        ci << $1
-      when /\A([wubrg])\/p\z/
-        # Phyrexian mana
-        ci << $1
-      when /\Ah([wubrg])\z/
-        # Unset half colored mana
-        ci << $1
-      when /\A2\/([wubrg])\z/
-        ci << $1
-      when /\A([wubrg])\/([wubrg])\z/
-        ci << $1 << $2
-      when /\A([wubrg])\/([wubrg])\/p\z/
-        # Double Phyrexian mana from NEO
-        ci << $1 << $2
-      when "chaos"
-        # planechase special symbol, disregard
-      when "+1"
-        # loyaty symbol, on Carth the Lion
-      else
-        raise "Unknown mana symbol `#{sym}'"
-      end
-    end
-    types.each do |t|
-      tci = {"forest" => "g", "mountain" => "r", "plains" => "w", "island" => "u", "swamp" => "b"}[t]
-      ci << tci if tci
-    end
-    -ci.sort.uniq.join
   end
 
   def calculate_color_indicator
