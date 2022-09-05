@@ -9,6 +9,8 @@ class PatchNormalizeColors < Patch
       }
       colors = card["colors"] || []
       card["colors"] = colors.map{|c| color_codes.fetch(c)}.sort.join
+      ci = card.delete("colorIdentity") || []
+      card["ci"] = ci.map{|c| color_codes.fetch(c)}.sort.join
     end
   end
 end

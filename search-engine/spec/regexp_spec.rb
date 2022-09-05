@@ -97,6 +97,6 @@ describe "Regexp" do
       "Wings of Hubris",
       "Sarah's Wings"
     assert_search_equal "rulings:flying", 'rulings:/\bflying\b/'
-    assert_search_include 'rulings:/\d{6,}/', "Echo Storm"
+    assert_search_include 'rulings:/\d{5,}/', "Bloodletter"
   end
 end

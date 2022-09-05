@@ -295,11 +295,9 @@ class CardDatabase
       @cards[card_name] = card.dup
       @cards[card_name].printings = printings
     end
-    # color_identity already set in parent database
   end
 
   def load_from_json!(path)
-    color_identity_cache = {}
     multipart_cards = {}
     data = JSON.parse(path.open.read)
     freeze_strings!(data)
@@ -317,7 +315,6 @@ class CardDatabase
       next if card_data["layout"] == "token"
       normalized_name = card_name.downcase.normalize_accents
       card = @cards[normalized_name] = Card.new(card_data.reject{|k,_| k == "printings"})
-      color_identity_cache[card_name] = card.partial_color_identity
       if card_data["names"]
         multipart_cards[card_name] = card_data["names"] - [card_name]
       end
@@ -333,7 +330,6 @@ class CardDatabase
       card.first_release_date
       card.last_release_date
     end
-    fix_multipart_cards_color_identity!(color_identity_cache)
     link_multipart_cards!(multipart_cards)
     link_partner_cards!
     setup_artists!
@@ -365,14 +361,6 @@ class CardDatabase
         @cards_in_precons[set_code] ||= [Set.new, Set.new]
         @cards_in_precons[set_code][foil ? 1 : 0] << name
       end
-  end
-
-  def fix_multipart_cards_color_identity!(color_identity_cache)
-    @cards.each do |card_name, card|
-      if card.has_multiple_parts?
-        card.color_identity = -card.names.map{|n| color_identity_cache[n].chars }.inject(&:|).sort.join
-      end
-    end
   end
 
   def link_multipart_cards!(multipart_cards)
