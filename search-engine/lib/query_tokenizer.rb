@@ -27,7 +27,7 @@ class QueryTokenizer
       elsif s.scan(/\)/i)
         tokens << [:close]
       elsif s.scan(%r[
-        (o|oracle|ft|flavor|a|art|artist|n|name|number|rulings)
+        (o|oracle|fo|fulloracle|ft|flavor|a|art|artist|n|name|number|rulings)
         \s*[:=]\s*
         /(
           (?:[^\\/]|\\.)*
@@ -44,6 +44,8 @@ class QueryTokenizer
             "name" => ConditionNameRegexp,
             "o" => ConditionOracleRegexp,
             "oracle" => ConditionOracleRegexp,
+            "fo" => ConditionFullOracleRegexp,
+            "fulloracle" => ConditionFullOracleRegexp,
             "number" => ConditionNumberRegexp,
             "rulings" => ConditionRulingsRegexp,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
@@ -60,6 +62,8 @@ class QueryTokenizer
             "name" => ConditionWord,
             "o" => ConditionOracle,
             "oracle" => ConditionOracle,
+            "fo" => ConditionFullOracle,
+            "fulloracle" => ConditionFullOracle,
             "number" => ConditionNumber,
             "rulings" => ConditionRulings,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
@@ -90,6 +94,8 @@ class QueryTokenizer
         tokens << [:test, ConditionFlavorName.new(s[1] || s[2])]
       elsif s.scan(/(?:o|oracle)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionOracle.new(s[1] || s[2])]
+      elsif s.scan(/(?:fo|fulloracle)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
+        tokens << [:test, ConditionFullOracle.new(s[1] || s[2])]
       elsif s.scan(/(?:keyword)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionKeyword.new(s[1] || s[2])]
       elsif s.scan(/(?:a|art|artist)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)

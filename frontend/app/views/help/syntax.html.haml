@@ -34,11 +34,13 @@
       = search_help "is:vanilla", "search vanilla cards"
 
     %h4 Search by Oracle text
-    %div Reminder text is not included in Oracle search
+    %div Reminder text is not included in Oracle search with <code>o:</code>, but is with <code>fo:</code>
+    %div Reminder text is always kept on uncards, as it's meaningful there
     %ul
       = search_help "o:delve", %[search cards with "delve" in Oracle text]
       = search_help %[o:"destroy target creature"], %[search cards with "destroy target creature" in Oracle text]
       = search_help "o:flying", %[search cards with "flying" in Oracle text - without cards with rearch simply in reminder text like ones with reach ability]
+      = search_help "fo:flying", %[search cards with "flying" in Oracle text - including cards with rearch that mention flying in remainder text]
       = search_help %[o:"when ~ enters the battlefield"], %[You can use ~ as placeholder for name of the card]
 
     %h4 Search by edition
