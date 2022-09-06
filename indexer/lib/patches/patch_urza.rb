@@ -86,7 +86,7 @@ class PatchUrza < Patch
       "[-6]: Head to AskUrza.com and click -6.\n",
       "(Randomly choose one of —\n",
       Abilities[2].map{|a| "• #{a}"}.join("\n"),
-      ")\n",
+      ")",
     ].join
   end
 
