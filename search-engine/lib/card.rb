@@ -213,7 +213,7 @@ class Card
   attr_reader :hand, :life, :rulings, :foreign_names, :foreign_names_normalized, :stemmed_name
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :color_indicator_set, :related
   attr_reader :reminder_text, :augment, :display_power, :display_toughness, :display_mana_cost, :keywords
-  attr_reader :commander, :brawler
+  attr_reader :commander, :brawler, :fulltext, :fulltext_normalized
 
   def initialize(data)
     @printings = []
@@ -224,7 +224,9 @@ class Card
     @colors = data["colors"] || ""
     @color_identity = data["ci"]
     @funny = data["funny"]
-    @text = (data["text"] || "")
+    @fulltext = -(data["text"] || "")
+    @fulltext_normalized = -@fulltext.normalize_accents
+    @text = @fulltext
     @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless @funny or @layout == "dungeon"
     @text = -@text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
     @text_normalized = -@text.normalize_accents

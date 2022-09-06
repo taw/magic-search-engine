@@ -118,8 +118,16 @@ describe "Magic 2010" do
       "Birds of Paradise"
   end
 
-  it "oracle_ignores_remainder_text" do
+  it "oracle ignores remainder text" do
     assert_search_results "c:g o:flying", "Birds of Paradise", "Windstorm"
+  end
+
+  it "full oracle keeps remainder text" do
+    assert_search_results "c:g fo:flying",
+      "Birds of Paradise", # flying
+      "Deadly Recluse",    # reach remainder text
+      "Giant Spider",      # reach remainder text
+      "Windstorm"          # flying
   end
 
   it "oracle_cardname" do
