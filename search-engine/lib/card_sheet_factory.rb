@@ -578,8 +578,8 @@ class CardSheetFactory
     )
   end
 
-  # These are legendary creatures only according to maro
-  # not planeswalkers or other legendaries
+  # According to maro, these are legendary creatures, not planeswalkers or other legendaries
+  # For DMU it's officially confirmed https://github.com/taw/magic-sealed-data/issues/24
   def dom_legendary_uncommon
     from_query('e:dom t:"legendary creature" r:uncommon', 20)
   end
@@ -599,6 +599,28 @@ class CardSheetFactory
     mix_sheets(
       [from_query('e:dom -t:"legendary creature" r:rare', 39), 2],
       [from_query('e:dom -t:"legendary creature" r:mythic', 7), 1],
+    )
+  end
+
+  def dmu_legendary_uncommon
+    from_query('e:dmu t:"legendary creature" r:uncommon', 20)
+  end
+
+  def dmu_nonlegendary_uncommon
+    from_query('e:dmu -t:"legendary creature" r:uncommon', 60)
+  end
+
+  def dmu_legendary_rare_mythic
+    mix_sheets(
+      [from_query('e:dmu t:"legendary creature" r:rare', 14), 2],
+      [from_query('e:dmu t:"legendary creature" r:mythic', 7), 1],
+    )
+  end
+
+  def dmu_nonlegendary_rare_mythic
+    mix_sheets(
+      [from_query('e:dmu -t:"legendary creature" r:rare', 46), 2],
+      [from_query('e:dmu -t:"legendary creature" r:mythic', 13), 1],
     )
   end
 
