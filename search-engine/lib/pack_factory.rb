@@ -380,17 +380,20 @@ class PackFactory
       )
       # CardSheet.new([power_9, vma_foil], [9, 471])
     when "soi"
-      # Assume foil rate (1:4) and rare/mythic dfc rates (1:8) are independent
-      # They probably aren't
+      # Assume foil rate (1:4) and rare/mythic dfc rates (1:8) are exclusive as per
+      # https://www.lethe.xyz/mtg/collation/soi.html
+      # https://www.lethe.xyz/mtg/collation/emn.html
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, 9/40r, :foil, :sfc_common, {basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1, soi_dfc_common_uncommon: 1}) => 7,
-        build_pack_with_random_foil(set_code, 9/40r, :foil, :sfc_common, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1}) => 1,
+        build_pack(set_code, {basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1, soi_dfc_common_uncommon: 1}) => 40-9-5,
+        build_pack(set_code, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_mythic: 1, soi_dfc_common_uncommon: 1, foil: 1}) => 9,
+        build_pack(set_code, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_mythic: 1, soi_dfc_common_uncommon: 1, soi_dfc_rare_mythic: 1}) => 5,
       )
     when "emn"
       # Same assumptions as SOI, except borrowed basics in the set
       WeightedPack.new(
-        build_pack_with_random_foil(set_code, 9/40r, :emn_foil, :sfc_common, {basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1}, borrow_basic: true) => 7,
-        build_pack_with_random_foil(set_code, 9/40r, :emn_foil, :sfc_common, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}, borrow_basic: true) => 1,
+        build_pack(set_code, {basic: 1, sfc_common: 9, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1}, borrow_basic: true) => 40-5-9,
+        build_pack(set_code, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1, emn_foil: 1}, borrow_basic: true) => 9,
+        build_pack(set_code, {basic: 1, sfc_common: 8, sfc_uncommon: 3, sfc_rare_mythic: 1, emn_dfc_common_uncommon: 1, emn_dfc_rare_mythic: 1}, borrow_basic: true) => 5,
       )
     when "cns"
       # 1:67 cards were foil back then, so assume this is true for conspiracies, all while keeping 9/40 rate same for rest-of-the-pack (even though there's 1 less cards to in rest-of-the-pack)?
