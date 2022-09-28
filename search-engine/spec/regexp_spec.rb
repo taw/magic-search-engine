@@ -53,6 +53,7 @@ describe "Regexp" do
       "Automatic Librarian",
       "Collector Ouphe",
       "Fervent Champion",
+      "Gilded Lotus",
       "Goblin Secret Agent",
       "Gore Vassal",
       "Invoke the Divine",
