@@ -165,6 +165,8 @@ describe Deck do
       next if set.code == "nec"
       next if set.code == "ncc"
       next if set.code == "clb"
+      # Extra card Fabricate as promo
+      next if set.code == "40k"
 
       # All names match both ways
       set_card_names = set.physical_card_names
@@ -183,7 +185,7 @@ describe Deck do
         set_card_names.should match_array deck_card_names
       else
         unless set_card_names.to_set == deck_card_names.to_set
-          pp [:bad, set.code]
+          warn "For precon set #{set.code}, cards do not match decklists (...and they won't for most new sets)"
         end
         set_card_names.should match_array deck_card_names
       end
