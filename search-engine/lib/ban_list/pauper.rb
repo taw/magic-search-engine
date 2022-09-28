@@ -113,4 +113,13 @@ BanList.for_format("pauper") do
     "Disciple of the Vault" => "banned",
     "Expedition Map" => "legal",
   )
+
+  change(
+    "2022-09-19",
+    "https://magic.wizards.com/en/articles/archive/news/september-19-2022-banned-and-restricted-announcement",
+    "Aarakocra Sneak" => "banned",
+    "Stirring Bard" => "banned",
+    "Underdark Explorer" => "banned",
+    "Vicious Battlerager" => "banned",
+  )
 end
