@@ -284,4 +284,16 @@ BanList.for_format("duel commander") do
     "Ragavan, Nimble Pilferer" => "banned",
     "Serra's Sanctum"  => "banned",
   )
+
+  change(
+    "2022-07-25",
+    "https://www.mtgdc.info/announcements/2022/july-2022-rules-bannedrestricted-update",
+    "Minsc & Boo, Timeless Heroes" => "restricted",
+  )
+
+  change(
+    "2022-09-26",
+    "https://www.mtgdc.info/announcements/2022/september-2022-rules-bannedrestricted-update",
+    "Yoshimaru, Ever Faithful" => "legal",
+  )
 end
