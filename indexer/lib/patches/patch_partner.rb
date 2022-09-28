@@ -7,7 +7,7 @@ class PatchPartner < Patch
   def call
     each_printing do |card|
       text = card["text"] or next
-      if text.include?("Partner (You can have two commanders")
+      if text.include?("Partner (You can have two commanders") or text.include?("Partner (You can have two comanders if they both have partner.)")
         card["is_partner"] = true
       elsif text.include?("Legendary Partner (You can have two commanders") or text.include?("Legendary partner (You can have two commanders")
         card["is_partner"] = true
