@@ -38,6 +38,7 @@ class FormatVintage < Format
       "o90p",
       "oana",
       "olep",
+      "p30a",
       "pal04",
       "parl",
       "past",
