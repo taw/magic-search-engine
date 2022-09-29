@@ -165,7 +165,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Steam Vents
-        [gpt rtr exp pgrn grn prm sld unf unf]
+        [gpt rtr exp grn pgrn prm sld unf unf]
         Land - Island Mountain
         ({T}: Add {U} or {R}.)
         As Steam Vents enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.
