@@ -63,7 +63,8 @@ describe "Any queries" do
 
   it "wildcard" do
     # Searching cards, as languages are not attached to printings
-    assert_search_equal_cards "t:planeswalker -ru:* de:*", "t:planeswalker in:c14,c18,cmr,dmu -in:c21"
+    # this data is not always reliable in mtgjson and often lags set releases
+    assert_search_equal_cards "t:planeswalker it:* -pt:*", "t:planeswalker in:c14 -in:c21"
   end
 
   it "only matches full words (except CJK and German)" do
