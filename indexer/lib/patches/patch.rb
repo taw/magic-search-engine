@@ -61,4 +61,8 @@ class Patch
   def set_by_code(code)
     @sets.find{|s| s["code"] == code} or raise "Set not found #{code}"
   end
+
+  def inspect
+    "#{self.class}"
+  end
 end

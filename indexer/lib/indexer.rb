@@ -153,6 +153,7 @@ class Indexer
       PatchFrame,
       PatchPartner,
       PatchBfm,
+      PatchUnfinity, # before UST
       PatchUnstable,
       PatchShandalar,
       PatchXmage,

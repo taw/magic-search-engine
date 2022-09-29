@@ -41,6 +41,7 @@ describe "Regexp" do
       "Ajani, Mentor of Heroes",
       "As Luck Would Have It",
       "Battle of Wits",
+      "Celebr-8000",
       "Helix Pinnacle",
       "Mox Lotus",
       "Rules Lawyer",
@@ -50,6 +51,7 @@ describe "Regexp" do
 
   it "regexp flavor text" do
     assert_search_results 'ft:/\d{4,}/ -e:olgc,ovnt',
+      "Aardwolf's Advantage",
       "Automatic Librarian",
       "Collector Ouphe",
       "Fervent Champion",
@@ -59,7 +61,8 @@ describe "Regexp" do
       "Invoke the Divine",
       "Mise",
       "Nalathni Dragon",
-      "Remodel"
+      "Remodel",
+      "Spinnerette, Arachnobat"
 
     assert_search_equal 'ft:/ajani/', 'FT:/ajani/'
     assert_search_equal 'ft:/ajani/', 'FT:/AJANI/'
