@@ -232,7 +232,7 @@ describe "Any queries" do
     end
 
     it "unique" do
-      assert_search_equal "any:unique", "is:unique or ft:unique"
+      assert_search_equal "any:unique", "is:unique or ft:unique or o:unique"
     end
 
     it "vanilla" do

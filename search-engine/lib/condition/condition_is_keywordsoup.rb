@@ -8,6 +8,7 @@ class ConditionIsKeywordsoup < ConditionNickname
       "cairn wanderer",
       "concerted effort",
       "crystalline giant",
+      "d00-dl, caricaturist",
       "death-mask duplicant",
       "eater of virtue",
       "greater morphling",

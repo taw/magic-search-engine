@@ -375,6 +375,7 @@ describe "Card nicknames" do
       "Cairn Wanderer",
       "Concerted Effort",
       "Crystalline Giant",
+      "D00-DL, Caricaturist",
       "Death-Mask Duplicant",
       "Eater of Virtue",
       "Greater Morphling",

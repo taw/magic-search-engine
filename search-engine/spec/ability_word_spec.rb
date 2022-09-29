@@ -24,8 +24,10 @@ describe "Ability Word Regexp" do
       "II",
       "III",
       "IV",
+      "Prize",
       "Ransom", # playtest cards
       "Target opponent chooses one",
+      "Visit",
     ]
 
     card_texts = db.cards.values.map(&:text)
