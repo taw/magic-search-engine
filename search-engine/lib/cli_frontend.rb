@@ -32,10 +32,11 @@ class CLIFrontend
     end
     cards.each_with_index do |(card_name, printings), i|
       card = printings[0].card
+      sorted_printings = card.printings.sort_by{|c| [c.release_date] }
       if printings.size == card.printings.size
-        codes = printings.sort_by(&:release_date).map(&:set_code)
+        codes = sorted_printings.map(&:set_code)
       else
-        codes = card.printings.sort_by(&:release_date).map do |cp|
+        codes = sorted_printings.map do |cp|
           if printings.include?(cp)
             "+#{cp.set_code}"
           else
