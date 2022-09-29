@@ -32,12 +32,12 @@ describe "Time Travel Test" do
     assert_search_results "time:m11 f:modern rancor"
   end
 
-  it "time travel eternal formats accept all sets" do
-    assert_search_equal "f:legacy t:jace", "t:jace"
+  it "time travel eternal formats accept all black border sets" do
+    assert_search_equal "f:legacy t:jace", "t:jace -e:unf"
     assert_search_equal "f:legacy time:nph t:jace", "time:nph t:jace"
-    assert_search_equal "f:vintage t:jace", "t:jace"
+    assert_search_equal "f:vintage t:jace", "t:jace -e:unf"
     assert_search_equal "f:vintage time:nph t:jace", "time:nph t:jace"
-    assert_search_equal "f:commander t:jace", "t:jace"
+    assert_search_equal "f:commander t:jace", "t:jace -e:unf"
     assert_search_equal "f:commander time:nph t:jace", "time:nph t:jace"
   end
 

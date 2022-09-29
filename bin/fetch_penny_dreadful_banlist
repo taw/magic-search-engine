@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+require "open-uri"
+
+url = "http://pdmtgo.com/legal_cards.txt"
+path = Pathname("#{__dir__}/../index/penny_dreadful_legal_cards.txt")
+
+data = URI.open(url).read.gsub("\r", "")
+data.sub!("Tura Kenner\n", "") # Typo on the list, legit card is there too
+path.write data
