@@ -93,6 +93,12 @@ class DeckIndexer
     # It seems that Masters Edition 2 precons contained Masters Edition cards too
     return printings["me1"] if set_code == "me2" and printings["me1"]
 
+    # Is this just incomplete on mtgjson?
+    if set_code == "gn3"
+      warn "GN3 is incomplete, return random printing"
+      return printings.values[0]
+    end
+
     # Promos/Precons are never the right answer
     printings = printings.reject{|sc, _|
       ["promo", "commander", "masters", "duel deck", "planechase",
