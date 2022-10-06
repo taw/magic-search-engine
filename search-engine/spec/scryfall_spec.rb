@@ -319,7 +319,7 @@ describe "Scryfall" do
     # maybe scryfall has a point here?
 
     # no old/future frame mythics
-    assert_search_equal "is:new r:mythic is:paper -e:tsr,mh2,h1r,sld,plist", "r:mythic is:paper -e:tsr,mh2,h1r,sld,plist"
+    assert_search_equal "is:new r:mythic is:paper -e:tsr,mh2,h1r,sld,plist,p30a", "r:mythic is:paper -e:tsr,mh2,h1r,sld,plist,p30a"
   end
 
   it "scryfall bug cmc" do

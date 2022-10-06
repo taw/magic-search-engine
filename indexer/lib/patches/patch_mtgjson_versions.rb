@@ -142,12 +142,11 @@ class PatchMtgjsonVersions < Patch
       card["mtgo"] = true if card.delete("isMtgo") or card["availability"]&.delete("mtgo")
 
       # This logic changed at some point, I like old logic better
-      if card["paper"] and card["oversized"]
+      if card["oversized"] or %W[CEI CED 30A].include?(card["set"]["official_code"]) or card["border"] == "gold"
+        card["nontournament"] = true
+        card.delete("arena")
         card.delete("paper")
-      end
-
-      if card["paper"] and card["border"] == "gold"
-        card.delete("paper")
+        card.delete("mtgo")
       end
 
       # Drop v3 layouts, use v4 layout here

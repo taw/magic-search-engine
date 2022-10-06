@@ -216,6 +216,7 @@ describe "Full Database Test" do
       "Kird Ape",
       "Lotus Petal",
       "Ornithopter",
+      "Sol Ring",
       "Spell Pierce"
   end
 

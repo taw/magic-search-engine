@@ -407,7 +407,7 @@ class CardDatabase
     printings.sort_by{|c|
       [
         c.name,
-        c.oversized ? 1 : 0,
+        c.nontournament ? 1 : 0,
         c.online_only? ? 1 : 0,
         c.frame == "old" ? 1 : 0,
         c.set.regular? ? 0 : 1,

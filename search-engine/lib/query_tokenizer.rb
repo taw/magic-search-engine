@@ -191,7 +191,7 @@ class QueryTokenizer
         tokens << [:test, ConditionMana.new(op, mana)]
       elsif s.scan(/(?:cast)\s*(?:=|:)\s*((?:[\dwubrgxyzchmnos]|\{.*?\})*)/i)
         tokens << [:test, ConditionCast.new(s[1])]
-      elsif s.scan(/(is|not)\s*[:=]\s*(vanilla|spell|permanent|funny|timeshifted|colorshifted|reserved|multipart|promo|primary|secondary|front|back|commander|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|creatureland|scryland|battleland|guildgate|karoo|painland|triland|canopyland|shadowland|storageland|tangoland|canland|phyrexian|hybrid|augment|unique|booster|draft|historic|holofoil|foilonly|nonfoilonly|foil|nonfoil|foilboth|brawler|keywordsoup|partner|oversized|spotlight|story|modal|textless|fullart|full|ante|custom|mainfront|buyabox|tricycleland|triome|racist|masterpiece|cycleland|bikeland|bicycleland)\b/i)
+      elsif s.scan(/(is|not)\s*[:=]\s*(vanilla|spell|permanent|funny|timeshifted|colorshifted|reserved|multipart|promo|primary|secondary|front|back|commander|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|creatureland|scryland|battleland|guildgate|karoo|painland|triland|canopyland|shadowland|storageland|tangoland|canland|phyrexian|hybrid|augment|unique|booster|draft|historic|holofoil|foilonly|nonfoilonly|foil|nonfoil|foilboth|brawler|keywordsoup|partner|oversized|tournament|spotlight|story|modal|textless|fullart|full|ante|custom|mainfront|buyabox|tricycleland|triome|racist|masterpiece|cycleland|bikeland|bicycleland)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         cond = s[2].capitalize
         cond = "Bounceland" if cond == "Karoo"
