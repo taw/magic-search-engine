@@ -276,9 +276,9 @@ class Indexer
           "frame_effects",
           "frame",
           "fullart",
-          "xmage",
           "mtgo",
           "multiverseid",
+          "nontournament",
           "number",
           "oversized",
           "paper",
@@ -290,6 +290,7 @@ class Indexer
           "spotlight",
           "textless",
           "watermark",
+          "xmage",
         ).compact,
       ]
     end
