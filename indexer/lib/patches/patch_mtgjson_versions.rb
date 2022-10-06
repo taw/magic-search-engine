@@ -180,6 +180,10 @@ class PatchMtgjsonVersions < Patch
         card["buyabox"] = true
       end
 
+      if card["securityStamp"] == "acorn"
+        card["acorn"] = true
+      end
+
       # Unicode vs ASCII
       if card["rulings"]
         card["rulings"].each do |ruling|

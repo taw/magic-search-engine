@@ -265,6 +265,7 @@ class Indexer
       printing_data << [
         printing["set_code"],
         printing.slice(
+          "acorn",
           "arena",
           "artist",
           "border",
