@@ -16,6 +16,7 @@ class ConditionIsKeywordsoup < ConditionNickname
       "majestic myriarch",
       "odric, blood-cursed",
       "odric, lunarch marshal",
+      "priest of possibility",
       "rayami, first of the fallen",
       "selective adaptation",
       "soulflayer",

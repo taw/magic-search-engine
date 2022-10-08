@@ -383,6 +383,7 @@ describe "Card nicknames" do
       "Majestic Myriarch",
       "Odric, Blood-Cursed",
       "Odric, Lunarch Marshal",
+      "Priest of Possibility",
       "Rayami, First of the Fallen",
       "Selective Adaptation",
       "Soulflayer",

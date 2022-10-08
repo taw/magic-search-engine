@@ -78,6 +78,7 @@ class FormatVintage < Format
       wc99
       wc99
       xana
+      ydmu
       ymid
       yneo
       ysnc
