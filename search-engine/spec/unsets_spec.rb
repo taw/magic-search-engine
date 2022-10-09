@@ -141,9 +141,16 @@ describe "Unsets" do
     "is:white-bordered".should return_no_cards
   end
 
-  # TODO: unf funny
+  it "unf funny" do
+    assert_search_equal "e:unf is:funny", "e:unf is:acorn"
+  end
 
-  # TODO: unf legality
+  it "unf funny" do
+    assert_search_equal "e:unf f:vintage", "e:unf -is:acorn"
+    assert_search_equal "e:unf f:legacy", "e:unf -is:acorn"
+    assert_search_equal "e:unf f:commander", "e:unf -is:acorn"
+    assert_search_equal "e:unf f:pauper", "e:unf -is:acorn (r:common or r:basic)"
+  end
 
   it "edition shortcut syntax" do
     assert_search_equal "e:unh,ugl", "e:unh or e:ugl"

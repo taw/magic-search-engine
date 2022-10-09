@@ -64,7 +64,6 @@ class FormatVintage < Format
       thp3
       ugl
       und
-      unf
       unh
       uplist
       ust
