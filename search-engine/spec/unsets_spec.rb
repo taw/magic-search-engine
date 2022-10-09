@@ -1,5 +1,5 @@
 describe "Unsets" do
-  include_context "db", "ugl", "unh", "pcel", "hho", "ust", "und"
+  include_context "db", "ugl", "unh", "pcel", "hho", "ust", "und", "unf"
 
   it "half power" do
     "pow=1"  .should exclude_cards "Little Girl"
@@ -68,7 +68,9 @@ describe "Unsets" do
   end
 
   it "border:none" do
-    assert_search_equal "border:none", "(e:ust (t:basic or t:contraption)) or (e:pcel Zur)"
+    assert_search_equal "border:none -(e:unf t:land) -(e:unf Comet) -(e:unf Beleren)",
+      "(e:ust (t:basic or t:contraption)) or
+      (e:pcel Zur)"
     assert_search_equal "border:none", "is:borderless"
     assert_search_equal "not:borderless", "-is:borderless"
     # Can't have multiple borders
@@ -83,7 +85,7 @@ describe "Unsets" do
     "is:silver-bordered".should include_cards "Little Girl"
     "not:black-bordered".should include_cards "Little Girl"
     "not:white-bordered".should include_cards "Little Girl"
-    "not:funny"         .should return_cards(
+    "not:funny -e:unf".should return_cards(
       "Forest",
       "Island",
       "Mountain",
@@ -101,7 +103,7 @@ describe "Unsets" do
     )
     # (Old Fogey) is mtgjson bug
     "not:new -e:pcel -(Old Fogey)".should equal_search "(Blast from the Past) or e:ugl"
-    "not:silver-bordered -t:contraption".should return_cards(
+    "not:silver-bordered -t:contraption -e:unf".should return_cards(
       "Forest",
       "Mountain",
       "Swamp",
@@ -119,7 +121,7 @@ describe "Unsets" do
       "Stocking Tiger",
       "Zur the Enchanter",
     )
-    "is:black-bordered".should return_cards(
+    "is:black-bordered -e:unf".should return_cards(
       "Forest",
       "Mountain",
       "Swamp",
@@ -139,6 +141,10 @@ describe "Unsets" do
     "is:white-bordered".should return_no_cards
   end
 
+  # TODO: unf funny
+
+  # TODO: unf legality
+
   it "edition shortcut syntax" do
     assert_search_equal "e:unh,ugl", "e:unh or e:ugl"
     assert_count_printings "e:unh,ugl", 261
@@ -151,7 +157,8 @@ describe "Unsets" do
       "Who", "What", "When", "Where", "Why", "Naughty", "Nice",
       "B.F.M. (Big Furry Monster)", "B.F.M. (Big Furry Monster, Right Side)",
       "Curse of the Fire Penguin", "Curse of the Fire Penguin Creature",
-      "Decorated Knight"
+      "Decorated Knight",
+      "Omniclown Colossus", "Pie-roclasm"
     # Doesn't have other side with cmc=4
     # This includes Where (cmc=4) and all single-sided cards
     assert_search_include "-other:cmc=4", "Where", "Chicken Egg"
@@ -200,7 +207,8 @@ describe "Unsets" do
       "B.F.M. (Big Furry Monster)", "B.F.M. (Big Furry Monster, Right Side)",
       "Naughty", "Nice",
       "Curse of the Fire Penguin Creature", "Curse of the Fire Penguin",
-      "Decorated Knight", "Present Arms"
+      "Decorated Knight", "Present Arms",
+      "Omniclown Colossus", "Pie-roclasm"
     assert_search_results "When // Where // What", "Who", "What", "When", "Where", "Why"
     assert_search_results "When // Where // Whatever"
     assert_search_results "c:u // c:w // c:r", "Who", "What", "When", "Where", "Why"
@@ -254,5 +262,9 @@ describe "Unsets" do
         validate.(card, card.toughness, card.display_toughness)
       end
     end
+  end
+
+  it "is:acorn" do
+    assert_search_equal "is:acorn", "is:acorn e:unf"
   end
 end
