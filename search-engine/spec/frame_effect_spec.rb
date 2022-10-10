@@ -10,7 +10,7 @@ describe "frame type and effect queries" do
   let(:frame_effects) { db.printings.flat_map(&:frame_effects).uniq }
   let(:frame_types) { db.printings.map(&:frame).uniq }
 
-  it "every frame type has corresending frame: operator" do
+  it "every frame type has corresponding frame: operator" do
     frame_types.each do |frame|
       "frame:#{frame}".should return_printings(
           *printings_matching{|c| c.frame == frame}
@@ -18,7 +18,7 @@ describe "frame type and effect queries" do
     end
   end
 
-  it "every frame effect has corresending frame: operator" do
+  it "every frame effect has corresponding frame: operator" do
     frame_effects.each do |frame|
       "frame:#{frame}".should return_printings(
         *printings_matching{|c| c.frame_effects.include?(frame) }
