@@ -233,7 +233,7 @@ describe "QueryParser" do
   end
 
   it "warns for bad sort:" do
-    Query.new('sort:awesomeness').warnings.should eq(["Unknown sort order: awesomeness. Known options are: artist, ci, cmc, color, default, firstprint, lastprint, mv, name, new, newall, number, old, oldall, pow, rand, rarity, released, set, tou; and their combinations."])
+    Query.new('sort:awesomeness').warnings.should eq(["Unknown sort order: awesomeness. Known options are: artist, ci, cmc, color, default, firstprint, lastprint, mv, name, new, newall, number, old, oldall, pow, power, rand, random, rarity, released, set, tou, toughness; and their combinations."])
   end
 
   it "warns for bad view:" do
