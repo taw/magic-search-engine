@@ -342,8 +342,32 @@ describe "Sorting" do
     ])
   end
 
+  it "sort:pow" do
+    ordered_search("e:kld r:mythic t:artifact sort:power", :name, :power, proc{|c| c.types.include?("vehicle")}).should eq([
+      ["Combustible Gearhulk", 6, false],
+      ["Skysovereign, Consul Flagship", 6, true],
+      ["Noxious Gearhulk", 5, false],
+      ["Torrential Gearhulk", 5, false],
+      ["Cataclysmic Gearhulk", 4, false],
+      ["Verdurous Gearhulk", 4, false],
+      ["Aetherworks Marvel", nil, false],
+    ])
+  end
+
   it "sort:tou" do
     ordered_search("e:kld r:mythic t:artifact sort:tou", :name, :toughness, proc{|c| c.types.include?("vehicle")}).should eq([
+      ["Combustible Gearhulk", 6, false],
+      ["Torrential Gearhulk", 6, false],
+      ["Cataclysmic Gearhulk", 5, false],
+      ["Skysovereign, Consul Flagship", 5, true],
+      ["Noxious Gearhulk", 4, false],
+      ["Verdurous Gearhulk", 4, false],
+      ["Aetherworks Marvel", nil, false],
+    ])
+  end
+
+  it "sort:toughness" do
+    ordered_search("e:kld r:mythic t:artifact sort:toughness", :name, :toughness, proc{|c| c.types.include?("vehicle")}).should eq([
       ["Combustible Gearhulk", 6, false],
       ["Torrential Gearhulk", 6, false],
       ["Cataclysmic Gearhulk", 5, false],
@@ -375,8 +399,15 @@ describe "Sorting" do
     ])
   end
 
-  it "random" do
+  it "sort:rand" do
     results1 = search("t:creature sort:rand")
+    results2 = search("t:creature sort:name")
+    results1.should_not eq(results2)
+    results1.sort.should eq(results2.sort)
+  end
+
+  it "sort:random" do
+    results1 = search("t:creature sort:random")
     results2 = search("t:creature sort:name")
     results1.should_not eq(results2)
     results1.sort.should eq(results2.sort)

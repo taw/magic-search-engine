@@ -1,9 +1,9 @@
 class Sorter
   COLOR_ORDER = ["", "w", "u", "b", "r", "g", "uw", "bu", "br", "gr", "gw", "bw", "ru", "bg", "rw", "gu", "guw", "buw", "bru", "bgr", "grw", "bgw", "ruw", "bgu", "brw", "gru", "bruw", "bgru", "bgrw", "gruw", "bguw", "bgruw"].each_with_index.to_h.freeze
-  SORT_ORDERS = ["default", "ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "rand", "rarity", "tou", "artist", "released", "set", "firstprint", "lastprint", "mv"].sort
+  SORT_ORDERS = ["default", "ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "power", "rand", "random", "rarity", "tou", "toughness", "artist", "released", "set", "firstprint", "lastprint", "mv"].sort
 
   # Fallback sorting for printings of each card:
-  # * not MTGO only
+  # * not MTGO/Arena only
   # * new frame
   # * Standard only printing
   # * most recent
@@ -70,15 +70,15 @@ class Sorter
         [c.cmc ? 0 : 1, -c.cmc.to_i]
       when "-cmc", "-mv"
         [c.cmc ? 0 : 1, c.cmc.to_i]
-      when "pow"
+      when "pow", "power"
         [c.power ? 0 : 1, -c.power.to_i]
-      when "-pow"
+      when "-pow", "-power"
         [c.power ? 0 : 1, c.power.to_i]
-      when "tou"
+      when "tou", "toughness"
         [c.toughness ? 0 : 1, -c.toughness.to_i]
-      when "-tou"
+      when "-tou", "-toughness"
         [c.toughness ? 0 : 1, c.toughness.to_i]
-      when "rand", "-rand"
+      when "rand", "-rand", "random", "-random"
         [Digest::MD5.hexdigest(@seed + c.name)]
       when "number"
         [c.set.name, c.number.to_i, c.number]
@@ -92,9 +92,9 @@ class Sorter
         [COLOR_ORDER.fetch(c.colors)]
       when "-color"
         [-COLOR_ORDER.fetch(c.colors)]
-      when "ci"
+      when "ci", "identity"
         [COLOR_ORDER.fetch(c.color_identity)]
-      when "-ci"
+      when "-ci", "-identity"
         [-COLOR_ORDER.fetch(c.color_identity)]
       when "rarity"
         [-c.rarity_code]
