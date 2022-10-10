@@ -56,6 +56,9 @@ module ApplicationHelper
       .gsub(/(?:\{.*?\})+/) do
         %[<span class="manacost">] + format_mana_symbols($&) + %[</span>]
       end
+      .gsub(/\[([\+\-\u2013\u2212]?(?:\d+|N|X))\]/i) do
+        replace_planeswalker_symbol($1)
+      end
   end
 
   def format_oracle_text(card_text)
@@ -69,18 +72,8 @@ module ApplicationHelper
       .gsub(/(?:\{.*?\})+/) do
         %[<span class="manacost">] + format_mana_symbols($&) + %[</span>]
       end
-      .gsub(/\[([\+\-\u2013\u2212]?(?:\d+|N|X))\]/) do
-        symbol = $1
-        usymbol = symbol.sub("-", "\u2013").sub("\u2212", "\u2013")
-        if usymbol[0] == "+"
-          dir = "up"
-        elsif usymbol[0] == "\u2013"
-          dir = "down"
-        else
-          dir = "zero"
-        end
-        %[<i class="mana mana-loyalty mana-loyalty-#{dir}" data-loyalty="#{usymbol}"></i>] +
-        %[<span class="sr-only">[#{usymbol}]</span>]
+      .gsub(/\[([\+\-\u2013\u2212]?(?:\d+|N|X))\]/i) do
+        replace_planeswalker_symbol($1)
       end
       .gsub(/
         \(
@@ -90,6 +83,20 @@ module ApplicationHelper
         %[<i class="reminder-text">#{$&}</i>]
       end
       .html_safe
+  end
+
+  def replace_planeswalker_symbol(symbol)
+    symbol = symbol.upcase
+    usymbol = symbol.sub("-", "\u2013").sub("\u2212", "\u2013")
+    if usymbol[0] == "+"
+      dir = "up"
+    elsif usymbol[0] == "\u2013"
+      dir = "down"
+    else
+      dir = "zero"
+    end
+    %[<i class="mana mana-loyalty mana-loyalty-#{dir}" data-loyalty="#{usymbol}"></i>] +
+    %[<span class="sr-only">[#{usymbol}]</span>]
   end
 
   def card_picture_path(card)
