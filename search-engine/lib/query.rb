@@ -27,7 +27,7 @@ class Query
   end
 
   def needs_seed?
-    @metadata[:sort] && @metadata[:sort] =~ /\brand\b/
+    @metadata[:sort] && @metadata[:sort] =~ /\b(rand|random)\b/i
   end
 
   def search(db)
