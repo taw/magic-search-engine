@@ -9,6 +9,7 @@ describe "Formats" do
     assert_search_equal_cards "f:standard",
       %[
         e:mid,vow,neo,snc,dmu
+        -(The Meathook Massacre)
       ]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
@@ -28,8 +29,13 @@ describe "Formats" do
       ]],
     ])
     FormatModern.new.ban_events.should eq([
+      [Date.parse("2022-10-10"),
+        "https://magic.wizards.com/en/articles/archive/news/october-10-2022-banned-and-restricted-announcement",
+      [
+        {name: "Yorion, Sky Nomad", old: "legal", new: "banned"},
+      ]],
       [Date.parse("2022-03-07"),
-      "https://magic.wizards.com/en/articles/archive/news/march-7-2022-banned-and-restricted-announcement",
+        "https://magic.wizards.com/en/articles/archive/news/march-7-2022-banned-and-restricted-announcement",
       [
         {:name=>"Lurrus of the Dream-Den", :new=>"banned", :old=>"legal"},
       ]],
