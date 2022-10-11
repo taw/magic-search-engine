@@ -181,4 +181,10 @@ BanList.for_format("standard") do
     "Divide by Zero" => "banned",
     "Faceless Haven" => "banned",
   )
+
+  change(
+    "2022-10-10",
+    "https://magic.wizards.com/en/articles/archive/news/october-10-2022-banned-and-restricted-announcement",
+    "The Meathook Massacre" => "banned",
+  )
 end
