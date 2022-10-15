@@ -1215,4 +1215,8 @@ class CardSheetFactory
       [from_query("e:snc r:basic number>=272", 10), 1],
     )
   end
+
+  def sunf_sticker
+    from_query("e:sunf t:sticker", 48)
+  end
 end

@@ -40,7 +40,7 @@ describe PackFactory do
       s.types.include?("core") or s.types.include?("expansion")
     }.to_set }
     let(:expected_official) {
-      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2 dbl clb 2x2]
+      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2 dbl clb 2x2 unf]
     }
     let(:expected_mtgjson_variant) {
       ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "mb1", "ons", "gpt"]
@@ -65,7 +65,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[dgm unh jou frf tsp cn2 bbd war arn cmb1 cmb2 stx].include?(set_code)
+      next if %W[dgm unh jou frf tsp cn2 bbd war arn cmb1 cmb2 stx unf].include?(set_code)
       set_pp = "#{set.name} [#{set.code}]"
       pack = factory.for(set_code)
       next unless pack
