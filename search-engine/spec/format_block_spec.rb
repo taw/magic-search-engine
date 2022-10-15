@@ -14,9 +14,10 @@ describe "Formats - Block Constructed" do
     end
   end
 
+  # I don't even know what this means anymore
   describe "Un legal sets" do
     let(:unsets) { db.sets.values.select{|s| s.types.include?("un") } }
-    let(:expected) { unsets.map(&:code).to_set }
+    let(:expected) { unsets.map(&:code).to_set - ["unf"] }
     let(:actual) { FormatUnsets.new.included_sets }
     it do
       expected.should eq actual
