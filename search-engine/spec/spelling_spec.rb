@@ -100,4 +100,12 @@ describe "Spelling" do
       name.gsub("-", " ").should include_cards(name)
     end
   end
+
+  it "special handling of &" do
+    "R&D".should include_cards("Look at Me, I'm R&D", "R&D's Secret Lair")
+    "Dungeons & Dragons".should include_cards("Sword of Dungeons & Dragons")
+    "Dungeons and Dragons".should include_cards("Sword of Dungeons & Dragons")
+    "Minsc & Boo".should include_cards("Minsc & Boo, Timeless Heroes")
+    "Minsc and Boo".should include_cards("Minsc & Boo, Timeless Heroes")
+  end
 end

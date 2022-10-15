@@ -25,7 +25,7 @@ describe "is:booster" do
         )
       )
       should_be_in_other_boosters = (
-        %W[tsb exp mps mp2 fmb1 plist sta].include?(set.code)
+        %W[tsb exp mps mp2 fmb1 plist sta sunf].include?(set.code)
       )
       if %W[jmp ajmp].include?(set_code)
         # There are 121 random precon/booster things
@@ -140,6 +140,8 @@ describe "is:booster" do
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/★/"
       when "dmu"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=281"
+      when "unf"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=244"
       else
         if set.has_boosters? or set.in_other_boosters?
           assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/†|s/"

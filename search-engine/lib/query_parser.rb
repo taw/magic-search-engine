@@ -27,10 +27,11 @@ class QueryParser
       # * R&D's Secret Lair
       # * Sword of Dungeons & Dragons
       # * "Rumors of My Death . . ."
+      # * Minsc & Boo, Timeless Heroes
       unless name =~ /Ach.*Hans.*Run/i or name =~ /Rumors.*of.*My.*Death/i
         name = name.sub(/\A"(.*)"\z/) { $1 }
       end
-      if name =~ %r[&|/] && name !~ /R&D/i && name !~ /Dungeons\s*&\s*Dragons/i
+      if name =~ %r[&|/] && name !~ /R&D|Dungeons\s*&\s*Dragons|Minsc\s*&|&\s*Boo/i
         cond = ConditionExactMultipart.new(name)
       else
         cond = ConditionExact.new(name)
