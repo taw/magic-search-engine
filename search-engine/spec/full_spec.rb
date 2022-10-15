@@ -410,6 +410,7 @@ describe "Full Database Test" do
       "Junún Efreet" => "Junun-Efreet",
       "Look at Me, I'm R&D" => "Look-at-Me-Im-RnD",
       "You're in Command" => "Youre-in-Command",
+      "Minsc & Boo, Timeless Heroes" => "Minsc-Boo-Timeless-Heroes",
     )
   end
 end

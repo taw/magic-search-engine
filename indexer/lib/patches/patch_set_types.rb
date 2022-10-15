@@ -24,7 +24,7 @@ class PatchSetTypes < Patch
         set_types << "booster"
       when "s00", "w16", "itp", "cm1"
         set_types << "fixed"
-      when "ugl", "unh", "ust"
+      when "ugl", "unh", "ust", "unf"
         set_types << "un"
       when "tpr"
         set_types << "masters"
