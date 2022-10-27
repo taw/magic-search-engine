@@ -108,7 +108,7 @@ describe "CLI Frontend" do
         4/4
 
         Green Dragon {4}{g}{g}
-        [afr afr]
+        [afr afr prm]
         Creature - Dragon
         Flying
         Poison Breath — When Green Dragon enters the battlefield, until end of turn, whenever a creature an opponent controls is dealt damage, destroy it.
@@ -180,7 +180,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Bloodbraid Elf {2}{r}{g}
-        [-arb +f10 +pc2 +prm -ema -c16 +pca +mb1 -tsr -clb -2x2 -2x2]
+        [-arb +f10 +pc2 +prm -ema -c16 +pca +mb1 -tsr -clb -2x2 -2x2 -prm]
         Creature - Elf Berserker
         Haste
         Cascade

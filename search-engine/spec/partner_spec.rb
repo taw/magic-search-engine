@@ -6,6 +6,6 @@ describe "partner queries" do
   end
 
   it "has:partner" do
-    assert_search_equal "has:partner", %[o:"partner with" e:bbd,pbbd,c20,plist,cmr,voc,sld,clb]
+    assert_search_equal "has:partner -e:prm", %[o:"partner with" e:bbd,pbbd,c20,plist,cmr,voc,sld,clb]
   end
 end
