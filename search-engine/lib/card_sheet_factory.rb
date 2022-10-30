@@ -1217,6 +1217,6 @@ class CardSheetFactory
   end
 
   def sunf_sticker
-    from_query("e:sunf t:sticker", 48)
+    from_query("e:sunf t:stickers", 48)
   end
 end
