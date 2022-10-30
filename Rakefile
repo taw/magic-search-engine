@@ -156,6 +156,11 @@ task "update:decks" do
   sh "./bin/export_xmage_best_card_list ~/github/mtg/data/xmage_cards.txt"
 end
 
+desc "Export decklists as text"
+task "decks:export:text" do
+  sh "./bin/export_decks_data_text"
+end
+
 desc "Run Rails frontend, localhost only"
 task "rails:localhost" do
   Dir.chdir("frontend") do

@@ -1,0 +1,58 @@
+#!/usr/bin/env ruby
+
+require_relative "../search-engine/lib/card_database"
+
+class ExportDecksData
+  def initialize(output_path)
+    @db = CardDatabase.load
+    @output_path = Pathname(output_path)
+  end
+
+  def serialize_card(count, card)
+    output = ["#{count}"]
+    output << card.name
+    output << "[#{card.set_code}:#{card.number}]"
+    output << "[foil]" if card.foil
+    output.join(" ")
+  end
+
+  def serialize_deck(deck)
+    output = []
+    output << "// NAME: #{deck.name}"
+    # We don't have this in the JSON:
+    # output << "COMMENTS: #{deck.source_url}"
+    output << "// DATE: #{deck.release_date}"
+
+    deck.commander.each do |c|
+      output << "COMMANDER: #{serialize_card(*c)}"
+    end
+    deck.cards.each do |c|
+      output << serialize_card(*c)
+    end
+
+    output << ""
+    output << "Sideboard"
+
+    deck.sideboard.each do |c|
+      output << serialize_card(*c)
+    end
+
+    output.join("\n") + "\n"
+  end
+
+  def path_for(deck)
+    @output_path + "#{deck.set_code}/#{deck.name}.txt"
+  end
+
+  def call
+    @db.decks.each do |deck|
+      text = serialize_deck(deck)
+      path = path_for(deck)
+      path.parent.mkpath
+      path.write(text)
+    end
+  end
+end
+
+output_path = ARGV[0] || "tmp/decks"
+ExportDecksData.new(output_path).call
