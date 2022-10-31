@@ -220,7 +220,14 @@ class DeckIndexer
 
   def index_card(card, deck)
     printing = resolve_card(card, deck)
-    [card["count"], printing[0], printing[1]["number"]] + (card["foil"] ? ["foil"] : [])
+
+    set_code = printing[0]
+    printing_card = printing[1]
+
+    foil_res = (card["foil"] || printing_card["foiling"] == "foilonly") ?
+      ["foil"] : []
+    
+    [card["count"], set_code, printing_card["number"]] + foil_res
   end
 
   def index_deck(deck)
