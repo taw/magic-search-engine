@@ -295,7 +295,7 @@ class Card
     "Psychic Stimulus",
     "Rapacious Hunger",
     "Rapid Regeneration",
-    "Relentless Mind",
+    "Relentless March",
     "Repair Barge",
     "Reverberating Summons",
     "Rites of Banishment",
