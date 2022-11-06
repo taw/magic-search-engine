@@ -11,6 +11,12 @@ class PatchMeld < Patch
           [card["name"], "Chittering Host"]
         when "Hanweir Battlements", "Hanweir Garrison"
           [card["name"], "Hanweir, the Writhing Township"]
+        when "Mishra, Claimed by Gix", "Phyrexian Dragon Engine"
+          [card["name"], "Mishra, Lost to Phyrexia"]
+        when "Titania, Voice of Gaea", "Argoth, Sanctum of Nature"
+          [card["name"], "Titania, Gaea Incarnate"]
+        when "The Mightstone and Weakstone", "Urza, Lord Protector"
+          [card["name"], "Urza, Planeswalker"]
         when "Brisela, Voice of Nightmares"
           [
             "Bruna, the Fading Light",
@@ -28,6 +34,24 @@ class PatchMeld < Patch
             "Hanweir Battlements",
             "Hanweir Garrison",
             "Hanweir, the Writhing Township",
+          ]
+        when "Mishra, Lost to Phyrexia"
+          [
+            "Mishra, Claimed by Gix",
+            "Phyrexian Dragon Engine",
+            "Mishra, Lost to Phyrexia",
+          ]
+        when "Titania, Gaea Incarnate"
+          [
+            "Titania, Voice of Gaea",
+            "Argoth, Sanctum of Nature",
+            "Titania, Gaea Incarnate",
+          ]
+        when "Urza, Planeswalker"
+          [
+            "The Mightstone and Weakstone",
+            "Urza, Lord Protector",
+            "Urza, Planeswalker",
           ]
         else
           raise "No front names for melded card: #{card["name"]}"
