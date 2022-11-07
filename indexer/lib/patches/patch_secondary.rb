@@ -23,11 +23,7 @@ class PatchSecondary < Patch
         raise unless card["number"] =~ /[ab]\z/i
         card["secondary"] = true if card["number"] =~ /b\z/i
       elsif card["layout"] == "meld"
-        if card["manaCost"] or card["name"] == "Hanweir Battlements" or card["name"] == "Argoth, Sanctum of Nature"
-          # Primary side
-        else
-          card["secondary"] = true
-        end
+        # leave it for PatchMeld
       else
         raise "Unknown multipart card layout: #{card["layout"]} for #{card["name"]}"
       end
