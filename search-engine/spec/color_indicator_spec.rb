@@ -21,6 +21,7 @@ describe "Color Indicator Test" do
     assert_search_results "ind:rg",
       "Arlinn, Embraced by the Moon",
       "Arlinn, the Moon's Fury",
+      "Blaster, Morale Booster",
       "Lord of the Ulvenwald",
       "Ravager of the Fells",
       "Savage Packmate",
@@ -31,7 +32,8 @@ describe "Color Indicator Test" do
     assert_search_results "ind:ubr",
       "Nicol Bolas, the Arisen"
     assert_search_results "ind:wrg",
-      "Grimlock, Ferocious King"
+      "Grimlock, Ferocious King",
+      "Ultra Magnus, Armored Carrier"
     assert_search_equal "ind:ubr", "ind:bur"
     assert_search_equal "ind:wrg", "ind:gwr"
   end
@@ -49,7 +51,8 @@ describe "Color Indicator Test" do
   it "number" do
     assert_search_results "ind=5"
     assert_search_results "ind:wubrg"
-    assert_search_equal "ind<3", "ind:* -t:bolas -grimlock"
+    assert_search_equal "ind<3 -e:bot", "ind:* -t:bolas -grimlock -e:bot"
+    assert_search_equal "ind<4", "ind:*"
     assert_search_results "ind<1"
   end
 

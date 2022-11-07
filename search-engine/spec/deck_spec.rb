@@ -165,6 +165,7 @@ describe Deck do
       next if set.code == "nec"
       next if set.code == "ncc"
       next if set.code == "clb"
+      next if set.code == "brc"
       # Extra card Fabricate as promo
       next if set.code == "40k"
 

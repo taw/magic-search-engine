@@ -208,7 +208,7 @@ describe "Any queries" do
     end
 
     it "booster" do
-      assert_search_equal "any:booster", "is:booster or o:booster"
+      assert_search_equal "any:booster", "is:booster or o:booster or (Blaster Morale Booster)"
     end
 
     it "promo" do
