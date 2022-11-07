@@ -22,6 +22,7 @@ class ConditionIsManland < ConditionNickname
       "lavaclaw reaches",
       "lumbering falls",
       "mishra's factory",
+      "mishra's foundry",
       "mobilized district",
       "mutavault",
       "nantuko monastery",

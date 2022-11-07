@@ -30,6 +30,7 @@ class FormatFrontier < Format
       "neo",
       "snc",
       "dmu",
+      "bro",
     ]
   end
 end
