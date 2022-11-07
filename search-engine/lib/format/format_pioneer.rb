@@ -33,6 +33,7 @@ class FormatPioneer < Format
       "neo",
       "snc",
       "dmu",
+      "bro",
     ]
   end
 end

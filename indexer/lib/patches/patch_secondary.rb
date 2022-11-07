@@ -23,7 +23,7 @@ class PatchSecondary < Patch
         raise unless card["number"] =~ /[ab]\z/i
         card["secondary"] = true if card["number"] =~ /b\z/i
       elsif card["layout"] == "meld"
-        if card["manaCost"] or card["name"] == "Hanweir Battlements"
+        if card["manaCost"] or card["name"] == "Hanweir Battlements" or card["name"] == "Argoth, Sanctum of Nature"
           # Primary side
         else
           card["secondary"] = true

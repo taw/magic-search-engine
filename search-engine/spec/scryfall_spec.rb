@@ -45,7 +45,7 @@ describe "Scryfall" do
 
   it "meld" do
     # identical behaviour, count both parts and melded cards
-    assert_count_cards "is:meld", 9
+    assert_count_cards "is:meld", 18
   end
 
   it "ft_designed" do
@@ -319,7 +319,8 @@ describe "Scryfall" do
     # maybe scryfall has a point here?
 
     # no old/future frame mythics
-    assert_search_equal "is:new r:mythic is:paper -e:tsr,mh2,h1r,sld,plist,p30a,slc", "r:mythic is:paper -e:tsr,mh2,h1r,sld,plist,p30a,slc"
+    # (well, that's no longer true, tons of old frame reprints)
+    assert_search_equal "is:new r:mythic is:paper -e:tsr,mh2,h1r,sld,plist,p30a,slc,brc", "r:mythic is:paper -e:tsr,mh2,h1r,sld,plist,p30a,slc,brc"
   end
 
   it "scryfall bug cmc" do

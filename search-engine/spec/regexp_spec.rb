@@ -90,6 +90,7 @@ describe "Regexp" do
       "Ib Halfheart, Goblin Tactician",
       "Jadar, Ghoulcaller of Nephalia",
       "Kroxa, Titan of Death's Hunger",
+      "Liberator, Urza's Battlethopter",
       "Minamo, School at Water's Edge",
       "Okina, Temple to the Grandfathers",
       "Oviya Pashiri, Sage Lifecrafter",
