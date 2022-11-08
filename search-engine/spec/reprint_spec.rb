@@ -48,11 +48,6 @@ describe "Shadowmoor" do
     )
   end
 
-  it "don't count as reprint a card that was preceeded by just its prerelease card" do
-    warn "is:reprint functionality might not be working after v4 migration, please fix someday"
-    # "e:ptc alt:(not:reprint -e:ptc)".should equal_search("e:ptc")
-  end
-
   it "sanity check" do
     "e:alpha not:reprint".should equal_search("e:alpha")
     "e:beta not:reprint".should return_cards(

@@ -85,7 +85,7 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[tsp cn2 bbd war mb1].include?(set_code)
+      next if %W[tsp cn2 bbd war mb1 bro].include?(set_code)
       set_pp = "#{set.name} [#{set.code}]"
       pack = factory.for(set_code)
       next unless pack
