@@ -340,7 +340,7 @@ BanList.for_format("legacy") do
   )
 
   change(
-    "2025-01-25",
+    "2022-01-25",
     "https://magic.wizards.com/en/articles/archive/news/january-25-2022-banned-and-restricted-announcement",
     "Ragavan, Nimble Pilferer" => "banned",
   )

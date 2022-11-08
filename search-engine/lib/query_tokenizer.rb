@@ -343,7 +343,7 @@ class QueryTokenizer
         tokens << [:metadata, {view: view}]
       elsif s.scan(/\+\+/i)
         tokens << [:metadata, {ungrouped: true}]
-      elsif s.scan(/time\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)
+      elsif s.scan(/time\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_\-]+))/i)
         # Parsing is downstream responsibility
         tokens << [:time, parse_time(s[1] || s[2])]
       elsif s.scan(/"(.*?)"/i)
