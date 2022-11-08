@@ -1219,4 +1219,40 @@ class CardSheetFactory
   def sunf_sticker
     from_query("e:sunf t:stickers", 48)
   end
+
+  def brr_retro_artifact
+    # Officially 1/6 schematc rate
+    # U/R/M rates guessed to be at 4x/2x/1x multiples
+    mix_sheets(
+      [from_query("e:brr ++ number<=63 r:uncommon", 18), 4*5],
+      [from_query("e:brr ++ number<=63 r:rare", 30), 2*5],
+      [from_query("e:brr ++ number<=63 r:mythic", 15), 1*5],
+      [from_query("e:brr ++ number>=64 r:uncommon", 18), 4],
+      [from_query("e:brr ++ number>=64 r:rare", 30), 2],
+      [from_query("e:brr ++ number>=64 r:mythic", 15), 1],
+    )
+  end
+
+  # Just treat BRO+BRR as one set for foiling purposes
+  # This is likely to be inaccurate, but we never get accurate foil rate information anyway
+  def bro_foil
+    sheets = [
+      mix_sheets(
+        [from_query("e:bro,brr r:rare", foil: true), 2],
+        [from_query("e:bro,brr r:mythic", foil: true), 1],
+      ),
+      from_query("e:bro,brr r:uncommon", foil: true),
+      from_query("e:bro,brr r:common,basic", foil: true),
+    ]
+    weights = [3, 5, 12]
+    CardSheet.new(sheets, weights)
+  end
+
+  # Mech basic officially 1/4 rate
+  def bro_basic
+    mix_sheets(
+      [from_query("e:bro r:basic number<278", 10), 3],
+      [from_query("e:bro r:basic number>=278", 10), 1],
+    )
+  end
 end
