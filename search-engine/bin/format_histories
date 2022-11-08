@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/card_database"
+require "pry"
+
+db = CardDatabase.load
+
+# Rotation always happens on set printing?
+# TODO: format_start events
+# TODO: ptk date - 2005-03-20
+all_printing_dates = db.printings.map(&:release_date).uniq.sort
+rotation_dates = FormatStandard.new.rotation_schedule.keys.map{|k| Date.parse(k) }
+banlist_dates = Format.all_format_classes.map(&:new).flat_map(&:ban_events).map(&:first).uniq.compact
+
+format_change_dates = (all_printing_dates | rotation_dates | banlist_dates).sort
+
+# codes = Format.formats_index.uniq(&:last).map(&:first)
+codes = ["legacy"]
+code.each do |code|
+  next unless code == "legacy"
+  info = []
+
+  format_change_dates.each do |date|
+    # this does not distinguish banned and rotated out / and restricted vs legal
+    legal = db.search("time:#{date} legal:#{code}").printings.map(&:name).to_set
+    banned = db.search("time:#{date} banned:#{code}").printings.map(&:name).to_set
+    restricted = db.search("time:#{date} restricted:#{code}").printings.map(&:name).to_set
+    key = [legal, banned, restricted]
+    if info.empty? or info[-1][1] != key
+      info << [date, key]
+      p [code, date, legal.size, banned.size, restricted.size, key.hash]
+    end
+  end
+end
