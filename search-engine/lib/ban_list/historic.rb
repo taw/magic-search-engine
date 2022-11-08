@@ -104,7 +104,7 @@ BanList.for_format("historic") do
   )
 
   change(
-    "2025-01-25",
+    "2022-01-25",
     "https://magic.wizards.com/en/articles/archive/news/january-25-2022-banned-and-restricted-announcement",
     # Memory Lapse is banned (from suspended).
     "Teferi, Time Raveler" => "legal", # rebalanced version
