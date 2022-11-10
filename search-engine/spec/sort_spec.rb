@@ -77,9 +77,9 @@ describe "Sorting" do
 
   it "newall" do
     ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:newall", :name, :set_code).should eq([
+      ["Chandra, Torch of Defiance", "q06"],
       ["Chandra, Flame's Catalyst", "m21"],
       ["Chandra, Heart of Fire", "m21"],
-      ["Chandra, Torch of Defiance", "ss3"],
       ["Chandra, Flamecaller", "c20"],
       ["Chandra, Acolyte of Flame", "m20"],
       ["Chandra, Awakened Inferno", "m20"],
