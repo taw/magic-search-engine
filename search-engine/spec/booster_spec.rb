@@ -143,7 +143,7 @@ describe "is:booster" do
       when "unf"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=244"
       when "bro"
-        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=287"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=287 (number<268 or number>=278)"
       else
         if set.has_boosters? or set.in_other_boosters?
           assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} -number:/†|s/"

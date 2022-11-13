@@ -1249,10 +1249,8 @@ class CardSheetFactory
   end
 
   # Mech basic officially 1/4 rate
-  def bro_basic
-    mix_sheets(
-      [from_query("e:bro r:basic number<278", 10), 3],
-      [from_query("e:bro r:basic number>=278", 10), 1],
-    )
+  # Regular nonfoil basics are not in the packs
+  def bro_mech_basic
+    from_query("e:bro r:basic number>=278", 10)
   end
 end
