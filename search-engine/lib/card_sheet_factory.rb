@@ -1242,7 +1242,7 @@ class CardSheetFactory
         [from_query("e:bro,brr r:mythic", foil: true), 1],
       ),
       from_query("e:bro,brr r:uncommon", foil: true),
-      from_query("e:bro,brr r:common,basic", foil: true),
+      from_query("e:bro,brr r<=common", foil: true),
     ]
     weights = [3, 5, 12]
     CardSheet.new(sheets, weights)
