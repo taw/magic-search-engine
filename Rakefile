@@ -132,6 +132,7 @@ task "update" do
   Rake::Task["pennydreadful:update"].invoke
   Rake::Task["mtgjson:fetch"].invoke
   Rake::Task["index"].invoke
+  Rake::Task["xmage:update"].invoke
   sh "~/github/magic-preconstructed-decks/bin/build_jsons ./tmp/decks.json"
   sh "./deck_indexer/bin/deck_indexer"
   sh "./bin/export_sealed_data ~/github/magic-sealed-data"
