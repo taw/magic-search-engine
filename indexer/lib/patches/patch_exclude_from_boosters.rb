@@ -74,6 +74,10 @@ class PatchExcludeFromBoosters < Patch
     when "m21"
       # showcase basics actually in boosters
       number_i > base_size and not (309..313).include?(number_i)
+    when "bro"
+      # only special basics in boosters
+      # normal boosters are in printed range, but not actually in boosters
+      number_i > base_size or (268..277).include?(number_i)
     when "stx", "gpt"
       number_i > base_size or number =~ /★/
     when "por"
