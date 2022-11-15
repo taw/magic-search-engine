@@ -11,10 +11,14 @@ raise "Can't find rules text url, please check the site manually" unless txt_url
 rules_txt = URI.open(txt_url).read
 
 # Sometimes it's UTF-8, sometimes it's not
-begin
-  rules_txt = rules_txt.force_encoding("utf-8").tr("\uFEFF", "")
-rescue
-  rules_txt = rules_txt.force_encoding("windows-1252").encode("utf-8")
+if rules_txt[0,2].b == "\xFE\xFF".b
+  rules_txt = rules_txt.unpack("n*")[1..].pack("U*")
+else
+  begin
+    rules_txt = rules_txt.force_encoding("utf-8").tr("\uFEFF", "")
+  rescue
+    rules_txt = rules_txt.force_encoding("windows-1252").encode("utf-8")
+  end
 end
 
 rules_txt.gsub!(/\r\n|\r|\n/, "\n")
