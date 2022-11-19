@@ -20,6 +20,7 @@ describe Deck do
       ["board game deck", "Theme Deck"],
       ["box", "Game Night Deck"],
       ["pioneer", "Pioneer Challenger Deck"],
+      ["standard", "Pioneer Challenger Deck"], # q08 listed under bro?
       # Standard sets
       ["core", "Clash Pack"],
       ["core", "Event Deck"],
