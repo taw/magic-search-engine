@@ -2,7 +2,8 @@ class ConditionColorExpr < ConditionSimple
   def initialize(a, op, b)
     @a = a.downcase
     @op = op
-    @b = (b.downcase.chars & %W[w u b r g]).to_set
+    @b = b.downcase
+    @bset = Color.matching(@op, @b)
   end
 
   def match?(card)
@@ -15,25 +16,13 @@ class ConditionColorExpr < ConditionSimple
       a = card.color_identity.chars.to_set
     end
 
-    case @op
-    when "="
-      a == @b
-    when ">="
-      a >= @b
-    when ">"
-      a > @b
-    when "<="
-      a <= @b
-    when "<"
-      a < @b
-    else
-      raise "Expr comparison parse error: #{@op}"
-    end
+    @bset.include?(a)
   end
 
+  # c:c instead of c:""
   def to_s
-    b = (["w", "u", "b", "r", "g"] & @b.to_a).join
+    b = @b
     b = "c" if b == ""
-    "#{@a}#{@op}#{b}"
+    "#{@a}#{@op}#{maybe_quote(b)}"
   end
 end

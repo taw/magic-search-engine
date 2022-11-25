@@ -72,13 +72,17 @@ describe "Color Expr Test" do
     assert_search_equal "ci<3", "ci=2 or ci=1 or ci=0"
   end
 
+  # there' been a few changes in the new color engine
   it "MCI style queries" do
     assert_search_equal "c!boros", "c!wr"
-    assert_search_equal "c:boros", "c:wr"
+    assert_search_equal "c:boros", "c=wr"
+    assert_search_equal "c>=boros", "c:wr"
     assert_search_equal "c!abzan", "c!bwg"
-    assert_search_equal "c:abzan", "c:bwg"
+    assert_search_equal "c>=abzan", "c:bwg"
+    assert_search_equal "c:abzan", "c=bwg"
     assert_search_equal "c!green", "c!g"
-    assert_search_equal "c:green", "c:g"
+    assert_search_equal "c:green", "c=g" # changed
+    assert_search_equal "c>=green", "c:g" # changed
 
     assert_search_equal "c!w", "c=w"
     assert_search_equal "c:w", "c>=w"
@@ -89,9 +93,9 @@ describe "Color Expr Test" do
     # These used to do silly things, no more:
     assert_search_equal "c:mur", "c>=ur"
     assert_search_equal "c!mur", "c=ur"
-    # No longer supported
-    assert_search_equal "c!m", "c=c" # can't be both multicolored and colorless
-    assert_search_equal "c!mr", "c=r" # can't be both multicolored and exactly-red
+    # No longer supported, and in fact changed a few times
+    assert_search_results "c!m" # can't be both multicolored and colorless
+    assert_search_results "c!mr" # can't be both multicolored and exactly-red
   end
 
   it "Fallaji" do
