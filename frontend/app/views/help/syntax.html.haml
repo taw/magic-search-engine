@@ -74,10 +74,16 @@
       = search_help "c=indatha", "you can also use Ikoria triome names in color queries, same as <code>c=wbg</code>"
 
     %div
-      In addition to these, there are special color queries.
+      In addition to these, there are special color queries. <code>c:</code> and <code>ci:</code> with a colon follow traditional system from MCI - they're still supported, but not recommended. I recommend using <code>=</code>, <code>&gt;=</code> instead, as they're much more consistent.
     %ul
-      = search_help "c=c", "colorless cards, same as <code>c=0</code>"
-      = search_help "c=m", "multicolored cards, same as <code>c>1</code>"
+      = search_help "c:c", "colorless cards, same as <code>c=0</code>"
+      = search_help "c:m", "multicolored cards, same as <code>c>1</code>"
+      = search_help "c=ally", "cards which are exactly 2 allied colors"
+      = search_help "c=enemy", "cards which are exactly 2 enemy colors"
+      = search_help "c=shard", "cards which are exactly 3 shard colors"
+      = search_help "c=wedge", "cards which are exactly 3 wedge colors"
+      = search_help "ci=ally", "cards whose color identity is exactly 2 allied colors"
+      = search_help "ind=ally", "cards whose color indicator is exactly 2 allied colors"
 
     %h4 Search by color identity
     %div
