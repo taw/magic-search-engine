@@ -116,7 +116,7 @@ module Color
       # we can safely ignore c (colorless), c=c and c="" are the same thing
       target = (expr.chars & %W[w u b r g]).to_set
       if expr.include?("m")
-        return matching(op, target.join).select{|c| c.size >= 2}.to_set
+        return matching(op, target.to_a.join).select{|c| c.size >= 2}.to_set
       end
       ColorCombinations.select{|color|
         case op
