@@ -76,8 +76,8 @@
     %div
       In addition to these, there are special color queries.
     %ul
-      = search_help "c:c", "colorless cards, same as <code>c=0</code>"
-      = search_help "c:m", "multicolored cards, same as <code>c>1</code>"
+      = search_help "c=c", "colorless cards, same as <code>c=0</code>"
+      = search_help "c=m", "multicolored cards, same as <code>c>1</code>"
 
     %h4 Search by color identity
     %div
@@ -95,9 +95,9 @@
 
     %h4 Search by color indicator
     %ul
-      = search_help "ind:rg", "cards with color indicator exactly reg/green"
-      = search_help "ind:r", "cards with color indicator exactly red"
-      = search_help "ind:wubrg", "cards with color indicator exactly wubrg"
+      = search_help "ind=rg", "cards with color indicator exactly reg/green"
+      = search_help "ind=r", "cards with color indicator exactly red"
+      = search_help "ind=wubrg", "cards with color indicator exactly wubrg"
       = search_help "ind>=r", "cards with color indicator including red"
       = search_help "ind:*", "cards with any color indicator"
       = search_help "has:indicator", "cards with any color indicator"
@@ -171,7 +171,7 @@
       = search_help "t:goblin AND mv=2", "cards which are Goblins and have mana value 2"
       = search_help "t:goblin AND mv=2", "cards which are Goblins and have mana value 2 (AND is optional)"
       = search_help "t:goblin OR mv=2", "cards which are Goblins or have mana value 2"
-      = search_help "c:u (t:goblin OR t:elf)", "cards which are blue Goblins or blue Elves"
+      = search_help "c=u (t:goblin OR t:elf)", "cards which are blue Goblins or blue Elves"
       = search_help "t:goblin -mv=2", "cards which are Goblins but do not have mana value 2"
       = search_help "t:goblin not mv=2", "cards which are Goblins but do not have mana value 2"
 
