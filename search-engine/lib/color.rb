@@ -29,6 +29,12 @@ module Color
     "sultai" => "bgu",
     "mardu" => "rwb",
     "temur" => "gur",
+
+    "indatha" => "wbg",
+    "ketria" => "gur",
+    "raugrin" => "urw",
+    "savai" => "rwb",
+    "zagoth" => "bgu",
   }
 
   def self.color_indicator_name(indicator)
