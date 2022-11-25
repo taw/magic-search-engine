@@ -30,12 +30,12 @@ describe "Magic 2010" do
     assert_search_include "c:u", "Ponder"
     assert_search_include "c!u", "Ponder"
     "c:ub".should return_no_cards
-    assert_search_equal "c:ucm", "c:c" # Questionable
+    "c:ucm".should return_no_cards
     assert_search_include "c:c", "Howling Mine"
     assert_search_exclude "c:g", "Ponder"
     "c!bu".should return_no_cards
     "c:m".should return_no_cards
-    assert_search_exclude "c:gcm", "Ponder"
+    "c:gcm".should return_no_cards
 
     # Only true for core sets
     assert_search_equal "c:c", "t:artifact or t:land"

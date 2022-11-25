@@ -110,49 +110,91 @@ describe "QueryParser" do
     assert_search_parse %[time:rtr r:common], %[time:RTR r:common]
   end
 
-  it "color aliases" do
+  it "color aliases with =" do
     # Single colors
-    assert_search_parse "c:w", "c:white"
-    assert_search_parse "c:u", "c:blue"
-    assert_search_parse "c:b", "c:black"
-    assert_search_parse "c:r", "c:red"
-    assert_search_parse "c:g", "c:green"
+    assert_search_parse "c=w", "c=white"
+    assert_search_parse "c=u", "c=blue"
+    assert_search_parse "c=b", "c=black"
+    assert_search_parse "c=r", "c=red"
+    assert_search_parse "c=g", "c=green"
     # Guilds
-    assert_search_parse "c:wu", "c:azorius"
-    assert_search_parse "c:ub", "c:dimir"
-    assert_search_parse "c:br", "c:rakdos"
-    assert_search_parse "c:rg", "c:gruul"
-    assert_search_parse "c:gw", "c:selesnya"
-    assert_search_parse "c:wr", "c:boros"
-    assert_search_parse "c:ug", "c:simic"
-    assert_search_parse "c:bw", "c:orzhov"
-    assert_search_parse "c:ru", "c:izzet"
-    assert_search_parse "c:gb", "c:golgari"
+    assert_search_parse "c=wu", "c=azorius"
+    assert_search_parse "c=ub", "c=dimir"
+    assert_search_parse "c=br", "c=rakdos"
+    assert_search_parse "c=rg", "c=gruul"
+    assert_search_parse "c=gw", "c=selesnya"
+    assert_search_parse "c=wr", "c=boros"
+    assert_search_parse "c=ug", "c=simic"
+    assert_search_parse "c=bw", "c=orzhov"
+    assert_search_parse "c=ru", "c=izzet"
+    assert_search_parse "c=gb", "c=golgari"
     # Shards
-    assert_search_parse "c:gwu", "c:bant"
-    assert_search_parse "c:wub", "c:esper"
-    assert_search_parse "c:ubr", "c:grixis"
-    assert_search_parse "c:brg", "c:jund"
-    assert_search_parse "c:rgw", "c:naya"
+    assert_search_parse "c=gwu", "c=bant"
+    assert_search_parse "c=wub", "c=esper"
+    assert_search_parse "c=ubr", "c=grixis"
+    assert_search_parse "c=brg", "c=jund"
+    assert_search_parse "c=rgw", "c=naya"
     # Wedges
-    assert_search_parse "c:wbg", "c:abzan"
-    assert_search_parse "c:urw", "c:jeskai"
-    assert_search_parse "c:bgu", "c:sultai"
-    assert_search_parse "c:rwb", "c:mardu"
-    assert_search_parse "c:gur", "c:temur"
+    assert_search_parse "c=wbg", "c=abzan"
+    assert_search_parse "c=urw", "c=jeskai"
+    assert_search_parse "c=bgu", "c=sultai"
+    assert_search_parse "c=rwb", "c=mardu"
+    assert_search_parse "c=gur", "c=temur"
     # Triomes
-    assert_search_parse "c:wbg", "c:indatha"
-    assert_search_parse "c:gur", "c:ketria"
-    assert_search_parse "c:urw", "c:raugrin"
-    assert_search_parse "c:rwb", "c:savai"
-    assert_search_parse "c:bgu", "c:zagoth"
+    assert_search_parse "c=wbg", "c=indatha"
+    assert_search_parse "c=gur", "c=ketria"
+    assert_search_parse "c=urw", "c=raugrin"
+    assert_search_parse "c=rwb", "c=savai"
+    assert_search_parse "c=bgu", "c=zagoth"
 
-    assert_search_parse "ci:b", "ci:black"
-    assert_search_parse "ci:gwu", "ci:bant"
-    assert_search_parse "c!u", "c!blue"
+    assert_search_parse "ci=b", "ci=black"
+    assert_search_parse "ci=gwu", "ci=bant"
     assert_search_parse "c>=w", "c>=white"
-    assert_search_parse "ind:r", "ind:red"
-    assert_search_parse "ind:uw", "ind:azorius"
+    assert_search_parse "ind=r", "ind=red"
+    assert_search_parse "ind=wu", "ind=azorius"
+  end
+
+  # All the weird MCI logic, but only with MCI color names
+  it "color aliases with :" do
+    # Single colors
+    assert_search_parse "c:w", "c>=white"
+    assert_search_parse "c:u", "c>=blue"
+    assert_search_parse "c:b", "c>=black"
+    assert_search_parse "c:r", "c>=red"
+    assert_search_parse "c:g", "c>=green"
+    # Guilds
+    assert_search_parse "c:wu", "c>=azorius"
+    assert_search_parse "c:ub", "c>=dimir"
+    assert_search_parse "c:br", "c>=rakdos"
+    assert_search_parse "c:rg", "c>=gruul"
+    assert_search_parse "c:gw", "c>=selesnya"
+    assert_search_parse "c:wr", "c>=boros"
+    assert_search_parse "c:ug", "c>=simic"
+    assert_search_parse "c:bw", "c>=orzhov"
+    assert_search_parse "c:ru", "c>=izzet"
+    assert_search_parse "c:gb", "c>=golgari"
+    # Shards
+    assert_search_parse "c:gwu", "c>=bant"
+    assert_search_parse "c:wub", "c>=esper"
+    assert_search_parse "c:ubr", "c>=grixis"
+    assert_search_parse "c:brg", "c>=jund"
+    assert_search_parse "c:rgw", "c>=naya"
+    # Wedges
+    assert_search_parse "c:wbg", "c>=abzan"
+    assert_search_parse "c:urw", "c>=jeskai"
+    assert_search_parse "c:bgu", "c>=sultai"
+    assert_search_parse "c:rwb", "c>=mardu"
+    assert_search_parse "c:gur", "c>=temur"
+    # Triomes
+    assert_search_parse "c:wbg", "c>=indatha"
+    assert_search_parse "c:gur", "c>=ketria"
+    assert_search_parse "c:urw", "c>=raugrin"
+    assert_search_parse "c:rwb", "c>=savai"
+    assert_search_parse "c:bgu", "c>=zagoth"
+
+    assert_search_parse "ci:b", "ci<=black"
+    assert_search_parse "ci:gwu", "ci<=bant"
+    assert_search_parse "c!u", "c!blue"
   end
 
   # These could be handled by parser or somewhere else
