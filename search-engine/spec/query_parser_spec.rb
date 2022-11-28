@@ -37,7 +37,7 @@ describe "QueryParser" do
   it ": and = equivalence" do
     assert_search_parse "o:/foo/", "O:/foo/"
     refute_search_parse "o:/foo/", "o:/FOO/"
-    assert_search_parse "t:goblin", "t=goblin"
+    # assert_search_parse "t:goblin", "t=goblin" # used to be true, but no longer true
     assert_search_parse "ft:goblin", "ft=goblin"
     assert_search_parse "o:goblin", "o=goblin"
     assert_search_parse "a:goblin", "a=goblin"
@@ -81,10 +81,10 @@ describe "QueryParser" do
     assert_search_parse "sort:new", "sort=new"
     assert_search_parse "view:images", "view=images"
     assert_search_parse "time:2012", "time=2012"
-    assert_search_parse "other:t:planeswalker", "other=t=planeswalker"
-    assert_search_parse "part:t:planeswalker", "part=t=planeswalker"
-    assert_search_parse "related:t:planeswalker", "related=t=planeswalker"
-    assert_search_parse "alt:t:planeswalker", "alt=t=planeswalker"
+    assert_search_parse "other:t:planeswalker", "other=t:planeswalker"
+    assert_search_parse "part:t:planeswalker", "part=t:planeswalker"
+    assert_search_parse "related:t:planeswalker", "related=t:planeswalker"
+    assert_search_parse "alt:t:planeswalker", "alt=t:planeswalker"
   end
 
   it "limits to : and = equivalence" do

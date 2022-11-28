@@ -19,10 +19,14 @@
 
     %h4 Search by type
     %div All cards including non-Standard cards (planes, vanguard, conspiracies etc.) and un-cards are searched. Tokens are not included.
+    %div You can also use comparison. <code>t:</code> is the same as <code>t>=</code>
     %ul
       = search_help "t:goblin", "search for Goblin cards"
       = search_help 't:"goblin warrior"', "search for Goblin Warrior cards"
       = search_help 't:"legendary land"', "search for Legendary Land cards"
+      = search_help 't=creature', "search for cards that are Creature with no other types, supertypes, or subtypes"
+      = search_help 't="land forest"', "search for cards that are Land Forest with no other types, supertypes, or subtypes"
+      = search_help 't>"land forest"', "search for cards that are Land Forest and have some additional type, supertype, or subtype"
       = search_help "is:permanent", "search for permanent cards (creatures, artifacts, enchantments, lands, and planeswalkers)"
       = search_help "is:spell", "search for spell cards (that is not lands)"
       = search_help "t:plane", "search Plane cards"
