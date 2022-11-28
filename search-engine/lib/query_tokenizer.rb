@@ -83,8 +83,10 @@ class QueryTokenizer
           @warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, ConditionForeign.new(s[1], s[2])]
         end
-      elsif s.scan(/(?:t|type)\s*[:=]\s*(?:"(.*?)"|([’'\-\u2212\p{L}\p{Digit}_\*]+))/i)
+      elsif s.scan(/(?:t|type)\s*:\s*(?:"(.*?)"|([’'\-\u2212\p{L}\p{Digit}_\*]+))/i)
         tokens << [:test, ConditionTypes.new(s[1] || s[2])]
+      elsif s.scan(/(?:t|type)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([’'\-\u2212\p{L}\p{Digit}_\*]+))/i)
+        tokens << [:test, ConditionTypeExpr.new(s[1], s[2] || s[3])]
       elsif s.scan(/(?:ft|flavor)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionFlavor.new(s[1] || s[2])]
       elsif s.scan(/(?:fn)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
