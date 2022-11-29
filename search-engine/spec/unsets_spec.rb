@@ -1,3 +1,6 @@
+# This spec will get worse as they print black-bordered
+# cards in HHO etc.
+
 describe "Unsets" do
   include_context "db", "ugl", "unh", "pcel", "hho", "ust", "und", "unf"
 
@@ -104,39 +107,41 @@ describe "Unsets" do
     # (Old Fogey) is mtgjson bug
     "not:new -e:pcel -(Old Fogey)".should equal_search "(Blast from the Past) or e:ugl"
     "not:silver-bordered -t:contraption -e:unf".should return_cards(
-      "Forest",
-      "Mountain",
-      "Swamp",
-      "Plains",
-      "Island",
       "1996 World Champion",
+      "Chaos Wrap",
+      "Forest",
       "Fraternal Exaltation",
       "Gifts Given",
+      "Island",
+      "Mountain",
       "Phoenix Heart",
+      "Plains",
       "Proposal",
       "Robot Chicken",
       "Shichifukujin Dragon",
       "Splendid Genesis",
       "Steamflogger Boss",
       "Stocking Tiger",
+      "Swamp",
       "Zur the Enchanter",
     )
     "is:black-bordered -e:unf".should return_cards(
-      "Forest",
-      "Mountain",
-      "Swamp",
-      "Plains",
-      "Island",
       "1996 World Champion",
+      "Chaos Wrap",
+      "Forest",
       "Fraternal Exaltation",
       "Gifts Given",
+      "Island",
+      "Mountain",
       "Phoenix Heart",
+      "Plains",
       "Proposal",
       "Robot Chicken",
       "Shichifukujin Dragon",
       "Splendid Genesis",
       "Steamflogger Boss",
       "Stocking Tiger",
+      "Swamp",
     )
     "is:white-bordered".should return_no_cards
   end
@@ -272,6 +277,6 @@ describe "Unsets" do
   end
 
   it "is:acorn" do
-    assert_search_equal "is:acorn", "is:acorn e:unf"
+    assert_search_equal "is:acorn", "is:acorn e:unf,hho"
   end
 end
