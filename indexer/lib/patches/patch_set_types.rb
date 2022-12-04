@@ -1,3 +1,6 @@
+# This whole list is a mess
+# Maybe I should drop it and trust mtgjson, but I actually rely on these set types for a lot of logic
+
 class PatchSetTypes < Patch
   def call
     each_set do |set|
@@ -45,9 +48,11 @@ class PatchSetTypes < Patch
       when "pgtw", /\Apg\d\d\z/
         set_types << "gateway"
       when "fnm", /\Af\d\d\z/, "pdom", "pgrn", "pm19", "prna", "pwar"
-        set_types << "fnm"
+        set_types << "fnm" << "promo"
       when "q06", "q08"
         set_types << "pioneer"
+      when "sld", "plist", "pz2", /\Ap...\z/
+        set_types << "promo"
       when "phed"
         # OK, technically this is Commander deck, but I really don't want to deal with it
         set_types = ["box"]
