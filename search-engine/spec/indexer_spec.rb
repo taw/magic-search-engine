@@ -41,6 +41,7 @@ describe "Indexer hacks" do
   end
 
   it "meld card numbers" do
+    # There's a lot of weird logic for meld cards
     db.search("is:meld").printings.map{|c| [c.set_code, c.name, c.number]}.should match_array([
       ["emn", "Brisela, Voice of Nightmares", "15b"],
       ["emn", "Bruna, the Fading Light", "15a"],
@@ -68,7 +69,25 @@ describe "Indexer hacks" do
       ["bro", "Titania, Gaea Incarnate", "256b"],
       ["bro", "Titania, Voice of Gaea", "193"],
       ["bro", "Urza, Lord Protector", "225"],
-      ["bro", "Urza, Planeswalker", "238b"]
+      ["bro", "Urza, Planeswalker", "238b"],
+      ["pbro", "Argoth, Sanctum of Nature", "256ap"],
+      ["pbro", "Argoth, Sanctum of Nature", "256as"],
+      ["pbro", "Mishra, Claimed by Gix", "216p"],
+      ["pbro", "Mishra, Claimed by Gix", "216s"],
+      ["pbro", "Mishra, Lost to Phyrexia", "163bp"],
+      ["pbro", "Mishra, Lost to Phyrexia", "163bs"],
+      ["pbro", "Phyrexian Dragon Engine", "163ap"],
+      ["pbro", "Phyrexian Dragon Engine", "163as"],
+      ["pbro", "The Mightstone and Weakstone", "238ap"],
+      ["pbro", "The Mightstone and Weakstone", "238as"],
+      ["pbro", "Titania, Gaea Incarnate", "256bp"],
+      ["pbro", "Titania, Gaea Incarnate", "256bs"],
+      ["pbro", "Titania, Voice of Gaea", "193p"],
+      ["pbro", "Titania, Voice of Gaea", "193s"],
+      ["pbro", "Urza, Lord Protector", "225p"],
+      ["pbro", "Urza, Lord Protector", "225s"],
+      ["pbro", "Urza, Planeswalker", "238bp"],
+      ["pbro", "Urza, Planeswalker", "238bs"],
     ])
   end
 
