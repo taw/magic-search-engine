@@ -37,7 +37,8 @@ class CardPrinting
     @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
     @exclude_from_boosters = data["exclude_from_boosters"]
     @print_sheet = data["print_sheet"]
-    @partner = data["partner"]
+    @partner = data["partner"] # overriden by CardDatabase
+    @others = data["others"] # overriden by CardDatabase
     @oversized = data["oversized"]
     @nontournament = data["nontournament"]
     @spotlight = data["spotlight"]

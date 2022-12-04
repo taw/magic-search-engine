@@ -298,7 +298,6 @@ class CardDatabase
   end
 
   def load_from_json!(path)
-    multipart_cards = {}
     data = JSON.parse(path.open.read)
     freeze_strings!(data)
     data["sets"].each do |set_code, set_data|
@@ -315,9 +314,6 @@ class CardDatabase
       next if card_data["layout"] == "token"
       normalized_name = card_name.downcase.normalize_accents
       card = @cards[normalized_name] = Card.new(card_data.reject{|k,_| k == "printings"})
-      if card_data["names"]
-        multipart_cards[card_name] = card_data["names"] - [card_name]
-      end
       card_data["printings"].each do |set_code, printing_data|
         printing = CardPrinting.new(
           card,
@@ -330,8 +326,7 @@ class CardDatabase
       card.first_release_date
       card.last_release_date
     end
-    link_multipart_cards!(multipart_cards)
-    link_partner_cards!
+    resolve_references!
     setup_artists!
     setup_sort_index!
     DeckDatabase.new(self).load!
@@ -339,12 +334,17 @@ class CardDatabase
   end
 
   # Change card number to CardPrinting reference
-  def link_partner_cards!
+  def resolve_references!
     @sets.each do |set_code, set|
       set.printings.each do |card|
         if card.partner
-          partner = set.printings.find{|c| c.number == card.partner} or raise "Bad partner ID"
+          partner = set.printings.find{|c| c.number == card.partner} or raise "Bad partner number #{partner}"
           card.partner = partner
+        end
+        if card.others
+          card.others = card.others.map{|other|
+            set.printings.find{|c| c.number == other} or raise "Bad other number #{other}"
+          }
         end
       end
     end
@@ -361,28 +361,6 @@ class CardDatabase
         @cards_in_precons[set_code] ||= [Set.new, Set.new]
         @cards_in_precons[set_code][foil ? 1 : 0] << name
       end
-  end
-
-  def link_multipart_cards!(multipart_cards)
-    multipart_cards.each do |card_name, other_names|
-      card = @cards[card_name.downcase]
-      other_cards = other_names.map{|name| @cards[name.downcase] }
-      card.printings.each do |printing|
-        printing.others = other_cards.map do |other_card|
-          from_same_set = other_card.printings.select{|other_printing| other_printing.set_code == printing.set_code}
-          if from_same_set.size == 1
-            from_same_set[0]
-          else
-            matching_number = from_same_set.select{|other_printing| other_printing.number.sub(/[ab]\z/, "") == printing.number.sub(/[ab]\z/, "") }
-            if matching_number.size == 1
-              matching_number[0]
-            else
-              raise "Can't link other side - #{card_name}"
-            end
-          end
-        end
-      end
-    end
   end
 
   def setup_artists!
