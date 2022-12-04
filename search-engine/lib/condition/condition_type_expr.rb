@@ -34,6 +34,6 @@ class ConditionTypeExpr < ConditionSimple
   end
 
   def to_s
-    "t#{@op}#{maybe_quote(@types.join(' '))}"
+    "t#{@op}#{maybe_quote(@types.to_a.join(' '))}"
   end
 end
