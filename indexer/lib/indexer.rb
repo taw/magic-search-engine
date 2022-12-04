@@ -158,6 +158,7 @@ class Indexer
       PatchShandalar,
       PatchXmage,
       PatchCommander,
+      PatchMultipart,
 
       # Patch more mtg.wtf bugs
       PatchAeLigature, # is this even needed anymore?
@@ -281,6 +282,7 @@ class Indexer
           "multiverseid",
           "nontournament",
           "number",
+          "others",
           "oversized",
           "paper",
           "partner",
