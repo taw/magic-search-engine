@@ -43,6 +43,12 @@ class FormatVintage < Format
       parl
       past
       pcel
+      ph17
+      ph18
+      ph19
+      ph20
+      ph21
+      phtr
       plist
       pmic
       ppc1

@@ -31,11 +31,11 @@ describe "is:commander" do
   it "is:commander" do
     # Some C14 commanders got reprited
     assert_search_equal_cards "is:commander",
-      "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,c18,bbd,cmr,dmc) OR (t:saga e:htr18) OR (Grand Calcutron) OR (Grist Hunger Tide) OR (Shorikai, Genesis Engine) OR (Tasha, the Witch Queen) OR (Minsc Boo, Timeless Heroes) OR (Elminster t:planeswalker)"
+      "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,c18,bbd,cmr,dmc) OR (t:saga e:htr18) OR (Grand Calcutron) OR (Grist Hunger Tide) OR (Shorikai, Genesis Engine) OR (Tasha, the Witch Queen) OR (Minsc Boo, Timeless Heroes) OR (Elminster t:planeswalker) OR (Byode, Inverse Sun) OR (Ersta, Friend to All)"
   end
 
   it "is:brawler" do
-    assert_search_equal_cards "is:brawler", "(is:primary t:legendary t:creature) OR (is:primary t:legendary t:planeswalker) OR (t:saga e:htr18) OR (Grand Calcutron) OR (Shorikai, Genesis Engine)"
+    assert_search_equal_cards "is:brawler", "(is:primary t:legendary t:creature) OR (is:primary t:legendary t:planeswalker) OR (t:saga e:htr18) OR (Grand Calcutron) OR (Shorikai, Genesis Engine) OR (Byode, Inverse Sun)"
   end
 
   it "Grist" do
