@@ -136,16 +136,18 @@ class Card
     "Pact Boon",
     "Perfect Illumination",
     # SLD Street Fighter
-    "Electric Thunder",
-    "Fierce Punch",
-    "Hadoken",
-    "Hundred Hand Slap",
-    "Iron Muscle",
-    "Lightning Kick",
-    "Rolling Attack",
-    "Shoryuken",
-    "Spinning Piledriver",
-    "Sumo Spirit",
+    # These are printed on actual cards, but not on their SLX equivalents
+    # so Oracle doesn't include any of them
+    # "Electric Thunder",
+    # "Fierce Punch",
+    # "Hadoken",
+    # "Hundred Hand Slap",
+    # "Iron Muscle",
+    # "Lightning Kick",
+    # "Rolling Attack",
+    # "Shoryuken",
+    # "Spinning Piledriver",
+    # "Sumo Spirit",
     # CLB flavor words
     "Aberrant Tinkering",
     "Animate Chains",
