@@ -320,7 +320,8 @@ describe "Scryfall" do
 
     # no old/future frame mythics
     # (well, that's no longer true, tons of old frame reprints)
-    assert_search_equal "is:new r:mythic is:paper -e:tsr,mh2,h1r,sld,plist,p30a,slc,brc,brr", "r:mythic is:paper -e:tsr,mh2,h1r,sld,plist,p30a,slc,brc,brr"
+    # is:paper st:standard tries to ignore such promos
+    assert_search_equal "is:new r:mythic is:paper st:standard", "r:mythic is:paper st:standard"
   end
 
   it "scryfall bug cmc" do
