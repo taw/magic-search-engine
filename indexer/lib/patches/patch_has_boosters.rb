@@ -8,6 +8,7 @@ class PatchHasBoosters < Patch
   def new_sets_with_boosters
     %W[
       bro
+      dmr
     ]
   end
 
