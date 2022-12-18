@@ -647,10 +647,11 @@ class PackFactory
       )
     when "bro-arena"
       build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, brr_retro_artifact: 1})
-    # when "dmr"
-    #   # "Each Draft Booster contains 1 retro frame card of any rarity and 1 retro frame land"
-    #   # This doesn't handle retro frames
-    #   build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
+    when "dmr"
+      # "Each Draft Booster contains 1 retro frame card of any rarity and 1 retro frame land"
+      # This doesn't handle retro frames for nonland cards
+      # For retro basics, there are no other basics anyway, so it works without explicit checks
+      build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this
