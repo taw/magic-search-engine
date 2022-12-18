@@ -14,19 +14,19 @@ class CardSheetFactory
     CardSheet.new(sheets.map(&:first), sheets.map{|s,w| s.elements.size * w})
   end
 
-  def from_query(query, assert_count=nil, foil: false, kind: CardSheet, extra: false)
-    cards = find_cards(query, assert_count, foil: foil, extra: extra)
+  def from_query(query, assert_count=nil, foil: false, kind: CardSheet, baseset: false)
+    cards = find_cards(query, assert_count, foil: foil, baseset: baseset)
     kind.new(cards)
   end
 
-  def find_cards(query, assert_count=nil, foil: false, extra: false)
+  def find_cards(query, assert_count=nil, foil: false, baseset: false)
     base_query = "++ is:booster"
     if foil
       base_query += " is:foil"
     else
       base_query += " is:nonfoil"
     end
-    unless extra
+    if baseset
       base_query += " number<=set"
     end
     cards = @db.search("#{base_query} (#{query})").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
@@ -36,12 +36,14 @@ class CardSheetFactory
     cards
   end
 
-  def rarity(set_code, rarity, foil: false, extra: false, kind: CardSheet)
+  def rarity(set_code, rarity, foil: false, baseset: false, kind: CardSheet)
     set = @db.sets[set_code]
     cards = set.physical_cards(foil).select(&:in_boosters?)
     # raise "#{set.code} #{set.same} has no cards in boosters" if cards.empty?
     cards = cards.select{|c| c.rarity == rarity}
-    unless extra
+    # This is really helpful for modelling showcase cards
+    # and we only implemented them for IKO
+    if baseset
       cards = cards.select{|c| c.number.to_i <= c.set.base_set_size }
     end
     # raise "#{set.code} #{set.same} has no #{rarity} cards in boosters" if cards.empty?
@@ -202,6 +204,10 @@ class CardSheetFactory
     rarity(set_code, "uncommon")
   end
 
+  def uncommon_baseset(set_code)
+    rarity(set_code, "uncommon", baseset: true)
+  end
+
   def rare(set_code)
     rarity(set_code, "rare")
   end
@@ -214,6 +220,13 @@ class CardSheetFactory
     mix_sheets(
       [rarity(set_code, "rare", foil: foil), 2],
       [rarity(set_code, "mythic", foil: foil), 1]
+    )
+  end
+
+  def rare_mythic_baseset(set_code, foil: false)
+    mix_sheets(
+      [rarity(set_code, "rare", foil: foil, baseset: true), 2],
+      [rarity(set_code, "mythic", foil: foil, baseset: true), 1]
     )
   end
 
@@ -364,7 +377,7 @@ class CardSheetFactory
 
   def unhinged_foil_rares
     # Super Secret Tech is 141/140
-    from_query("e:unh r>=rare", 40+1, foil: true, extra: true)
+    from_query("e:unh r>=rare", 40+1, foil: true)
   end
 
   def unhinged_foil
@@ -737,7 +750,7 @@ class CardSheetFactory
     # nonfoil Kaya is not
     mix_sheets(
       [from_query('e:cn2 -t:conspiracy r:rare', 47, foil: foil), 2],
-      [from_query("e:cn2 -t:conspiracy r:mythic #{foilcond}", 12, foil: foil, extra: true), 1],
+      [from_query("e:cn2 -t:conspiracy r:mythic #{foilcond}", 12, foil: foil), 1],
     )
   end
 
@@ -806,7 +819,7 @@ class CardSheetFactory
   end
 
   def bbd_foil_mythic_partner_1
-    from_query("e:bbd r:mythic has:partner (number=255 or number=256)", 2, foil: true, extra: true)
+    from_query("e:bbd r:mythic has:partner (number=255 or number=256)", 2, foil: true)
   end
 
   def bbd_foil_rare_partner_1
@@ -944,6 +957,10 @@ class CardSheetFactory
     from_query("e:#{set_code} r:common -is:gainland", kind: ColorBalancedCardSheet)
   end
 
+  def nongainland_common_baseset(set_code)
+    from_query("e:#{set_code} r:common -is:gainland", baseset: true, kind: ColorBalancedCardSheet)
+  end
+
   def basic_or_common_land(set_code)
     from_query("e:#{set_code} t:land r<=common")
   end
@@ -959,7 +976,7 @@ class CardSheetFactory
   def m21_basic_or_gainland
     # showcase variant which is just as common as any other basic land variation
     mix_sheets(
-      [from_query("e:m21 t:basic", 20, extra: true), 3],
+      [from_query("e:m21 t:basic", 20), 3],
       [from_query("e:m21 is:gainland", 10), 6]
     )
   end
