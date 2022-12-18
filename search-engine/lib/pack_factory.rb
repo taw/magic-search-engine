@@ -329,7 +329,7 @@ class PackFactory
       # U and R sheets have showcases, but not on Arena
       build_pack_with_random_foil(set_code, 1/3r, :iko_foil, :explicit_common, {iko_basic_or_gainland: 1, explicit_common: 10, explicit_uncommon: 3, explicit_rare: 1})
     when "iko-arena"
-      build_pack(set_code, {iko_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
+      build_pack(set_code, {iko_basic_or_gainland: 1, nongainland_common_baseset: 10, uncommon_baseset: 3, rare_mythic_baseset: 1})
     when "m21"
       # gainlands x6, basics x3
       build_pack_with_random_foil(set_code, 1/3r, :foil, :nongainland_common, {m21_basic_or_gainland: 1, nongainland_common: 10, uncommon: 3, rare_mythic: 1})
@@ -647,6 +647,10 @@ class PackFactory
       )
     when "bro-arena"
       build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, brr_retro_artifact: 1})
+    # when "dmr"
+    #   # "Each Draft Booster contains 1 retro frame card of any rarity and 1 retro frame land"
+    #   # This doesn't handle retro frames
+    #   build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this
