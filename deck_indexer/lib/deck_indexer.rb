@@ -226,7 +226,7 @@ class DeckIndexer
 
     foil_res = (card["foil"] || printing_card["foiling"] == "foilonly") ?
       ["foil"] : []
-    
+
     [card["count"], set_code, printing_card["number"]] + foil_res
   end
 
@@ -246,6 +246,8 @@ class DeckIndexer
       set_name: deck["set_name"],
       set_code: deck["set_code"],
       release_date: deck["release_date"],
+      source: deck["source"],
+      display: deck["display"],
       cards: cards,
       sideboard: sideboard,
       commander: commander,
