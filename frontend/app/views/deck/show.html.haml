@@ -4,6 +4,10 @@
     %button.btn.btn-outline-primary
       = download_link_to_deck(@deck, {download: true}) do
         Download
+  - if @display
+    .row
+      .col-12
+        %div= @display
   .row
     .col-12
       %div
