@@ -1,12 +1,13 @@
 class PreconDeck < Deck
-  attr_reader :set, :name, :type, :release_date, :slug
-  def initialize(set, name, type, release_date, cards, sideboard, commander)
+  attr_reader :set, :name, :type, :release_date, :slug, :source, :display
+  def initialize(set, name, type, release_date, cards, sideboard, commander, display)
     super(cards, sideboard, commander)
     @set = set
     @name = name
     @type = type
     @release_date = release_date
     @slug = @name.downcase.gsub("'s", "s").gsub(/[^a-z0-9s]+/, "-")
+    @display = display
   end
 
   def inspect
@@ -33,6 +34,7 @@ class PreconDeck < Deck
     output = []
     output << "// NAME: #{@name} - #{@set.name} #{@type}"
     output << "// URL: http://mtg.wtf/deck/#{set.code}/#{slug}"
+    output << "// DISPLAY: #{@display}" if @display
     output << "// DATE: #{@release_date}" if @release_date
     @commander.each do |count, card|
       output << "COMMANDER: #{count} #{card}"
