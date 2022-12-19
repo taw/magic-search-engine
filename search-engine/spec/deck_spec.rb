@@ -51,6 +51,7 @@ describe Deck do
       ["funny", "Halfdeck"],
       ["draft innovation", "Jumpstart"], # JMP only
       ["memorabilia", "World Championship Decks"], # WCxx
+      ["expansion", "Jumpstart"],
     ]
 
     db.sets.each do |set_code, set|
@@ -293,6 +294,9 @@ describe Deck do
           foils.should match_array(clash_pack_cards)
           next
         end
+
+        # Some have foil basics
+        next if deck.type == "Jumpstart"
 
         foils = deck.physical_cards.select(&:foil)
         # Skip if no foils
