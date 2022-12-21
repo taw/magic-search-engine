@@ -6,8 +6,9 @@ require "pathname"
 require "pathname-glob"
 require_relative "core_ext"
 require_relative "card_sets_data"
-require_relative "uuids_serializer"
 require_relative "index_serializer"
+require_relative "products_serializer"
+require_relative "uuids_serializer"
 
 require_relative "patches/patch"
 Dir["#{__dir__}/patches/*.rb"].each do |path| require_relative path end
@@ -19,7 +20,7 @@ class Indexer
   def initialize(verbose=false)
     @save_path = Pathname("#{__dir__}/../../index/index.json")
     @uuids_path = Pathname("#{__dir__}/../../index/uuids.txt")
-    @products_paths = Pathname("#{__dir__}/../../index/products.txt")
+    @products_path = Pathname("#{__dir__}/../../index/products.txt")
     @verbose = verbose
     @data = CardSetsData.new
   end
@@ -30,6 +31,7 @@ class Indexer
     apply_patches
     @save_path.write(IndexSerializer.new(@sets, @cards).to_s)
     @uuids_path.write(UuidsSerializer.new(@cards).to_s)
+    @products_path.write(ProductsSerializer.new(@products).to_s)
   end
 
   private
@@ -151,6 +153,14 @@ class Indexer
         name = card_data["name"]
         card_data["set"] = set
         (@cards[name] ||= []) << card_data
+      end
+      (set_data["sealedProduct"] || []).each do |product|
+        @products << [
+          set_code.downcase,
+          product["name"],
+          product["releaseDate"],
+          product["uuid"],
+        ]
       end
     end
   end
