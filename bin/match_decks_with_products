@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+
+# Just a hacky script, eventually might be turned into something production ready
+
+require_relative "../search-engine/lib/card_database"
+require "pry"
+
+products = Pathname("#{__dir__}/../index/products.txt").readlines.map{|row| row.
+chomp.split("\t")}.reject{|row| row[1] =~ /(Booster Pack|Booster Box|Booster Box Case|Booster Display Case|Booster Display)\z/}
+
+products_by_set = products.group_by(&:first).to_h.transform_values{|uu| uu.map{|u| u[1..] }}
+
+db = CardDatabase.load
+
+score = 0
+amb = 0
+fails = 0
+
+db.decks.each do |deck|
+  next if deck.type == "Jumpstart"
+
+  set_code = deck.set_code
+  candidate_products = (products_by_set[deck.set_code] || [])
+  candidate_product_names = candidate_products.map(&:first)
+  name = deck.name
+
+  matches = candidate_product_names.select{|n| n =~ /\b#{Regexp.escape(name.tr("'", ""))}\b/i}
+
+  if matches.size == 1
+    score += 1
+    puts "#{set_code} #{name}: OK"
+  elsif matches.size > 1
+    amb += 1
+    puts "#{set_code} #{name}: AMBIGUOUS. #{matches.join(", ")}"
+  else
+    fails += 1
+    puts "#{set_code} #{name}: FAIL. Candidates: #{candidate_product_names.join(", ")}"
+  end
+end
+
+puts "#{db.decks.size} decks, #{score} matches, #{amb} ambiguous, #{fails} fails"
