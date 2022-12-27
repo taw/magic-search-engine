@@ -1698,4 +1698,31 @@ describe PackFactory do
       end
     end
   end
+
+  context "30A" do
+    let(:set_code) { "30a" }
+    let(:basic) { card("r:basic number<=297") }
+    let(:common) { card("r:common number<=297") }
+    let(:uncommon) { card("r:uncommon number<=297") }
+    let(:rare) { card("r:rare number<=297 -is:dual") }
+    let(:dual) { card("r:rare number<=297 is:dual") }
+    let(:retro_basic) { card("r:basic number>297") }
+    let(:retro_common) { card("r:common number>297") }
+    let(:retro_uncommon) { card("r:uncommon number>297") }
+    let(:retro_rare) { card("r:rare number>297 -is:dual") }
+    let(:retro_dual) { card("r:rare number>297 is:dual") }
+
+    it do
+      ev[basic].should eq Rational(2, 15)
+      ev[common].should eq Rational(7, 74)
+      ev[uncommon].should eq Rational(3, 95)
+      ev[rare].should eq Rational(1, 123)
+      ev[dual].should eq Rational(2, 123)
+      ev[retro_basic].should eq Rational(1, 15)
+      ev[retro_common].should eq Rational(4, 3*95 + 4*74) * Rational(7, 10) * Rational(830, 827)
+      ev[retro_uncommon].should eq Rational(3, 3*95 + 4*74) * Rational(7, 10) * Rational(830, 827)
+      ev[retro_rare].should eq Rational(1, 123) * Rational(3, 10) * Rational(820, 827)
+      ev[retro_dual].should eq Rational(2, 123) * Rational(3, 10) * Rational(820, 827)
+    end
+  end
 end

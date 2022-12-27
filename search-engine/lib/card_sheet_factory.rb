@@ -1270,4 +1270,47 @@ class CardSheetFactory
   def bro_mech_basic
     from_query("e:bro r:basic number>=278", 10)
   end
+
+  # 30a is not valid identifier
+  def a30_common
+    from_query("e:30a r:common number<=297", 74)
+  end
+
+  def a30_uncommon
+    from_query("e:30a r:uncommon number<=297", 95)
+  end
+
+  # Each dual land has 2x the normal frequency. This is true for both modern frame and retro frame dual lands.
+  def a30_rare
+    mix_sheets(
+      [from_query("e:30a r:rare is:dual number<=297", 10), 2],
+      [from_query("e:30a r:rare -is:dual number<=297", 103), 1],
+    )
+  end
+
+  def a30_basic
+    from_query("e:30a r:basic number<=297", 15)
+  end
+
+  def a30_retro_basic
+    from_query("e:30a r:basic number>297", 15)
+  end
+
+  # We know two things:
+  # - "approximately three out of every ten packs will contain a rare retro frame card"
+  # - "Each dual land has 2x the normal frequency. This is true for both modern frame and retro frame dual lands."
+  # This is not how normal cards (6% rare) or foils (15% rare) work
+  #
+  # But that's not quite saying they're all equally likely (except duals double), as then we'd have 40% rare.
+  # Flat-ish but not totally flat distribution where C/Dual is 2x, U is 1.5x, R is 1x fits the distribution
+  # with rare ratio on 29.7% and very clean numbers.
+  # Yes this means retro dual is as frequent as retro common, which sounds weird
+  def a30_retro
+    mix_sheets(
+      [from_query("e:30a r:common number>297", 74), 4],
+      [from_query("e:30a r:uncommon number>297", 95), 3],
+      [from_query("e:30a r:rare is:dual number>297", 10), 4],
+      [from_query("e:30a r:rare -is:dual number>297", 103), 2],
+    )
+  end
 end
