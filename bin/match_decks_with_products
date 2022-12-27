@@ -1,41 +1,146 @@
 #!/usr/bin/env ruby
 
-# Just a hacky script, eventually might be turned into something production ready
-
 require_relative "../search-engine/lib/card_database"
 require "pry"
 
-products = Pathname("#{__dir__}/../index/products.txt").readlines.map{|row| row.
-chomp.split("\t")}.reject{|row| row[1] =~ /(Booster Pack|Booster Box|Booster Box Case|Booster Display Case|Booster Display)\z/}
+class Product
+  def initialize(row)
+    @row = row
+  end
 
-products_by_set = products.group_by(&:first).to_h.transform_values{|uu| uu.map{|u| u[1..] }}
+  def set_code
+    @row[0]
+  end
 
-db = CardDatabase.load
+  def name
+    @row[1]
+  end
 
-score = 0
-amb = 0
-fails = 0
+  def uuid
+    @row[3]
+  end
 
-db.decks.each do |deck|
-  next if deck.type == "Jumpstart"
+  def type
+    @type ||= case name
+    when /\bSet\z/, /\bSet of \d+/
+      # Set of decks
+      :set_of_decks
+    when /\bDeck\b/
+      # Deck
+      :deck
+    when /\bJumpstart.*Booster Pack\b/
+      # Boosters but we override this
+      :jumpstart
+    when /\b(Booster Pack|Booster Box|Booster Box Case|Booster Display Case|Booster Display)\b/
+      # Definitely not a deck
+      :ignore
+    else
+      # Could be deck, or set of decks, or something else
+      :unknown
+    end
+  end
 
-  set_code = deck.set_code
-  candidate_products = (products_by_set[deck.set_code] || [])
-  candidate_product_names = candidate_products.map(&:first)
-  name = deck.name
+  def set_of_decks?
+    type == :set_of_decks
+  end
 
-  matches = candidate_product_names.select{|n| n =~ /\b#{Regexp.escape(name.tr("'", ""))}\b/i}
+  def deck?
+    type == :deck
+  end
 
-  if matches.size == 1
-    score += 1
-    puts "#{set_code} #{name}: OK"
-  elsif matches.size > 1
-    amb += 1
-    puts "#{set_code} #{name}: AMBIGUOUS. #{matches.join(", ")}"
-  else
-    fails += 1
-    puts "#{set_code} #{name}: FAIL. Candidates: #{candidate_product_names.join(", ")}"
+  def ignore?
+    type == :ignore
+  end
+
+  def jumpstart?
+    type == :jumpstart
+  end
+
+  def inspect
+    "Product(#{set_code}, #{name})"
   end
 end
 
-puts "#{db.decks.size} decks, #{score} matches, #{amb} ambiguous, #{fails} fails"
+class SetProductMatcher
+  attr_reader :set, :set_code, :decks, :products
+
+  def initialize(set, products)
+    @set = set
+    @set_code = set.code
+    @decks = set.decks
+    @products = products
+  end
+
+  def potential_products
+    @potential_products ||= products.reject(&:ignore?)
+  end
+
+  def no_decks_to_match?
+    decks.empty? and potential_products.select(&:deck?).empty?
+  end
+
+  def call
+    return if no_decks_to_match?
+    puts "Please match for #{set_code}:"
+    puts "- Decks: #{decks.map(&:name).join(", ")}"
+    puts "- Products: #{potential_products.map{|u| [u.name, u.type]}.join(", ")}"
+    match_by_name!
+  end
+
+  def match_by_name!
+    decks.each do |deck|
+      next if deck.type == "Jumpstart"
+
+      candidate_product_names = potential_products.map(&:name)
+      name = deck.name
+
+      matches = candidate_product_names.select{|n| n =~ /\b#{Regexp.escape(name.tr("'", ""))}\b/i}
+
+      if matches.size == 1
+        puts "#{set_code} #{name}: OK"
+      elsif matches.size > 1
+        puts "#{set_code} #{name}: AMBIGUOUS. #{matches.join(", ")}"
+      else
+        puts "#{set_code} #{name}: FAIL. Candidates: #{candidate_product_names.join(", ")}"
+      end
+    end
+  end
+
+  def inspect
+    "#{self.class}(#{set_code})"
+  end
+end
+
+class ProductMatcher
+  attr_reader :db
+
+  def initialize
+    @db = CardDatabase.load
+  end
+
+  def products_path
+    Pathname("#{__dir__}/../index/products.txt")
+  end
+
+  def products
+    @products ||= products_path.readlines.map{|row|
+      Product.new(row.chomp.split("\t"))
+    }
+  end
+
+  def products_by_set
+    @products_by_set ||= products.group_by(&:set_code).to_h
+  end
+
+  def call
+    db.sets.each do |set_code, set|
+      SetProductMatcher.new(set, products_by_set[set_code] || []).call
+    end
+  end
+
+  def inspect
+    "#{self.class}"
+  end
+end
+
+ProductMatcher.new.call
