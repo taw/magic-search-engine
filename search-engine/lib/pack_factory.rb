@@ -652,6 +652,10 @@ class PackFactory
       # This doesn't handle retro frames for nonland cards
       # For retro basics, there are no other basics anyway, so it works without explicit checks
       build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
+    when "30a"
+      # Each pack of 30th Anniversary Edition contains 15 cards, 13 cards in the modern frame—1 rare, 3 uncommons,
+      # 7 commons, and 2 basic lands—plus one basic land in the retro frame, one additional retro frame card, and a token.
+      build_pack(set_code, {a30_common: 7, a30_uncommon: 3, a30_rare: 1, a30_basic: 2, a30_retro_basic: 1, a30_retro: 1})
     else
       # No packs for this set, let caller figure it out
       # Specs make sure right specs hit this
