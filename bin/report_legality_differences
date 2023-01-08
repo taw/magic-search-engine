@@ -27,10 +27,15 @@ class ReportLegalityDifferences
     result = {}
     all_sets.each do |set_code, set_data|
       # Name conflicts
-      next if set_code == "CMB1" or set_code == "CMB2" or set_code == "TBTH"
+      next if %W[CMB1 CMB2 TBTH].include?(set_code)
+      # Cards not legal in any format
+      next if %W[CED CEI 30A OAFC OMIC].include?(set_code)
       set_data["cards"].each do |card|
+        next if card["isOversized"]
         name = card["faceName"] || card["name"]
         legalities = card["legalities"].dup
+        # Various non-legal oversized etc. cards, just ignore them
+        next if legalities == {}
         # It's a stupid fake format not following per-card legality rules
         legalities.delete "oldschool"
         result[name] ||= legalities
