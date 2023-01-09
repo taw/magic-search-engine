@@ -219,7 +219,7 @@ describe "Formats" do
   end
 
   it "premodern" do
-    assert_count_cards "banned:premodern", 32
+    assert_count_cards "banned:premodern", 31
   end
 
   # We don't keep historical legality for Petty Dreadful yet
