@@ -50,4 +50,10 @@ BanList.for_format("premodern") do
     "Yawgmoth's Bargain" => "banned",
     "Frantic Search" => "legal",
   )
+
+  change(
+    "2022-10-05",
+    "https://premodernmagic.com/blog/ban-list-update-2022/",
+    "Show and Tell" => "legal",
+  )
 end

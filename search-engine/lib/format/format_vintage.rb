@@ -59,7 +59,6 @@ class FormatVintage < Format
       ptg
       punh
       pust
-      sunf
       tafr
       tbth
       tclb
@@ -83,6 +82,7 @@ class FormatVintage < Format
       wc99
       wc99
       xana
+      ybro
       ydmu
       ymid
       yneo
