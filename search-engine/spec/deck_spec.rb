@@ -279,6 +279,8 @@ describe Deck do
         foils_rarity.should match_array(["rare"] * 3 + ["mythic"] * 10)
         next
       end
+      # PHED is 50:50 foil nonfoil, I'll just need to trust mtgjson here
+      next if set_code == "phed"
 
       # Some crazy foiling in them
       # Deck indexer doesn't even try, it's just marked on decklist manually
