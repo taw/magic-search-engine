@@ -37,6 +37,7 @@ describe Deck do
       ["expansion", "Planeswalker Deck"],
       ["expansion", "Theme Deck"],
       ["expansion", "Brawl Deck"],
+      ["standard", "Starter Deck"],
       ["starter", "Intro Pack"],
       ["box", "Guild Kit"],
       ["starter", "Starter Deck"],
@@ -129,6 +130,8 @@ describe Deck do
         sets_found.should match_array ["ncc", "snc"]
       when "dmc"
         sets_found.should match_array ["dmu", "dmc"]
+      when "phed"
+        sets_found.should match_array ["phed", "sld"]
       else
         sets_found.should eq [set.code]
       end
@@ -170,6 +173,8 @@ describe Deck do
       next if set.code == "brc"
       # Extra card Fabricate as promo
       next if set.code == "40k"
+      # Contains some SLD cards
+      next if set.code == "phed"
 
       # All names match both ways
       set_card_names = set.physical_card_names
