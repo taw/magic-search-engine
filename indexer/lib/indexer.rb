@@ -158,8 +158,10 @@ class Indexer
         @products << [
           set_code.downcase,
           product["name"],
-          product["releaseDate"],
+          product["category"],
+          product["subtype"],
           product["uuid"],
+          product["releaseDate"],
         ]
       end
     end
