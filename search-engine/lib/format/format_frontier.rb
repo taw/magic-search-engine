@@ -31,6 +31,7 @@ class FormatFrontier < Format
       "snc",
       "dmu",
       "bro",
+      "one",
     ]
   end
 end

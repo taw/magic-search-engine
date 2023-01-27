@@ -34,6 +34,7 @@ class FormatPioneer < Format
       "snc",
       "dmu",
       "bro",
+      "one",
     ]
   end
 end

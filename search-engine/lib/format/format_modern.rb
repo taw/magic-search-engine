@@ -53,6 +53,7 @@ class FormatModern < Format
       "snc",
       "dmu",
       "bro",
+      "one",
     ]
   end
 end
