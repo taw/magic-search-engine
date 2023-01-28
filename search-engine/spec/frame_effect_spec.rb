@@ -11,17 +11,17 @@ describe "frame type and effect queries" do
   let(:frame_types) { db.printings.map(&:frame).uniq }
 
   it "every frame type has corresponding frame: operator" do
-    frame_types.each do |frame|
-      "frame:#{frame}".should return_printings(
-          *printings_matching{|c| c.frame == frame}
-        )
+    frame_types.each do |frame_type|
+      "frame:#{frame_type}".should return_printings(
+        printings_matching{|c| c.frame == frame_type}
+      )
     end
   end
 
   it "every frame effect has corresponding frame: operator" do
-    frame_effects.each do |frame|
-      "frame:#{frame}".should return_printings(
-        *printings_matching{|c| c.frame_effects.include?(frame) }
+    frame_effects.each do |frame_effect|
+      "frame:#{frame_effect}".should return_printings(
+        printings_matching{|c| c.frame_effects.include?(frame_effect) }
       )
     end
   end

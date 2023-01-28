@@ -164,8 +164,7 @@ describe "Full Database Test" do
       "Chandra Ablaze"
     assert_search_results "t:planeswalker lastprint<=2011",
       "Ajani Goldmane",
-      "Chandra Ablaze",
-      "Elspeth Tirel"
+      "Chandra Ablaze"
   end
 
   it "alt a" do
