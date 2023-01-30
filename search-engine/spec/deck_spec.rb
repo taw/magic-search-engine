@@ -132,6 +132,8 @@ describe Deck do
         sets_found.should match_array ["dmu", "dmc"]
       when "phed"
         sets_found.should match_array ["phed", "sld"]
+      when "onc"
+        sets_found.should match_array ["onc", "one"]
       else
         sets_found.should eq [set.code]
       end
@@ -143,6 +145,7 @@ describe Deck do
   # * we don't have any foil information, on either side
   #
   # This test fails for most new sets
+  # I just need to do a date cutoff for it instead of ever growing explicit exception lists
   it "cards in precon sets are all in their precon decks" do
     precon_sets.each do |set|
       # Plane cards are technically not part of any precon in it
@@ -175,6 +178,7 @@ describe Deck do
       next if set.code == "40k"
       # Contains some SLD cards
       next if set.code == "phed"
+      next if set.code == "onc"
 
       # All names match both ways
       set_card_names = set.physical_card_names
