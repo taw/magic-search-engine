@@ -86,6 +86,7 @@ describe "Regexp" do
       "Asmoranomardicadaistinaculdacar",
       "Circle of Protection: Artifacts",
       "Coax from the Blind Eternities",
+      "Elesh Norn, Mother of Machines",
       "Hanweir, the Writhing Township",
       "Ib Halfheart, Goblin Tactician",
       "Jadar, Ghoulcaller of Nephalia",
