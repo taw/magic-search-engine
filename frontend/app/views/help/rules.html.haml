@@ -1,7 +1,7 @@
 = content_for(:disable_turbolinks) do
   true
 %h4 Magic: The Gathering Comprehensive Rules
-%p These rules are effective as of November 18, 2022.
+%p These rules are effective as of February 3, 2023.
 %h3{id: "section-introduction"} Introduction
 %p This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
 %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules. If you have questions, you can get the answers from us at Support.Wizards.com.
@@ -119,6 +119,8 @@
     %a{href: '#section-313'} 313. Schemes
   %li
     %a{href: '#section-314'} 314. Conspiracies
+  %li
+    %a{href: '#section-315'} 315. Battles
 %ul.tos_section
   %li
     %a{href: '#section-4'} 4. Zones
@@ -1647,6 +1649,9 @@
 .rule{id: "section-120-3f"}
   .rule_id 120.3f
   .rule_text Damage dealt by a source with lifelink causes that source’s controller to gain that much life, in addition to the damage’s other results.
+.rule{id: "section-120-3g"}
+  .rule_id 120.3g
+  .rule_text Combat damage dealt to a player by a creature with toxic causes that creature’s controller to give the player a number of poison counters equal to that creature’s total toxic value, in addition to the damage’s other results. See rule <a href="#section-702-164">702.164</a>, “Toxic.”
 .rule{id: "section-120-4"}
   .rule_id 120.4.
   .rule_text Damage is processed in a four-part sequence.
@@ -2062,7 +2067,7 @@
   .rule_text Card Types
 .rule{id: "section-205-2a"}
   .rule_id 205.2a
-  .rule_text The card types are artifact, conspiracy, creature, dungeon, enchantment, instant, land, phenomenon, plane, planeswalker, scheme, sorcery, tribal, and vanguard. See section 3, “Card Types.”
+  .rule_text The card types are artifact, battle, conspiracy, creature, dungeon, enchantment, instant, land, phenomenon, plane, planeswalker, scheme, sorcery, tribal, and vanguard. See section 3, “Card Types.”
 .rule{id: "section-205-2b"}
   .rule_id 205.2b
   .rule_text Some objects have more than one card type (for example, an artifact creature). Such objects satisfy the criteria for any effect that applies to any of their card types.
@@ -2101,7 +2106,7 @@
   .rule_text Enchantments have their own unique set of subtypes; these subtypes are called enchantment types. The enchantment types are Aura (see rule <a href="#section-303-4">303.4</a>), Background, Cartouche, Class (see rule <a href="#section-717">717</a>), Curse, Rune, Saga (see rule <a href="#section-715">715</a>), Shard, and Shrine.
 .rule{id: "section-205-3i"}
   .rule_id 205.3i
-  .rule_text Lands have their own unique set of subtypes; these subtypes are called land types. The land types are Desert, Forest, Gate, Island, Lair, Locus, Mine, Mountain, Plains, Power-Plant, Swamp, Tower, and Urza’s. Of that list, Forest, Island, Mountain, Plains, and Swamp are the basic land types. See rule <a href="#section-305-6">305.6</a>.
+  .rule_text Lands have their own unique set of subtypes; these subtypes are called land types. The land types are Desert, Forest, Gate, Island, Lair, Locus, Mine, Mountain, Plains, Power-Plant, Sphere, Swamp, Tower, and Urza’s. Of that list, Forest, Island, Mountain, Plains, and Swamp are the basic land types. See rule <a href="#section-305-6">305.6</a>.
 .rule{id: "section-205-3j"}
   .rule_id 205.3j
   .rule_text Planeswalkers have their own unique set of subtypes; these subtypes are called planeswalker types. The planeswalker types are Ajani, Aminatou, Angrath, Arlinn, Ashiok, Bahamut, Basri, Bolas, Calix, Chandra, Comet, Dack, Dakkon, Daretti, Davriel, Dihada, Domri, Dovin, Ellywick, Elminster, Elspeth, Estrid, Freyalise, Garruk, Gideon, Grist, Huatli, Jace, Jared, Jaya, Jeska, Kaito, Karn, Kasmina, Kaya, Kiora, Koth, Liliana, Lolth, Lukka, Minsc, Mordenkainen, Nahiri, Narset, Niko, Nissa, Nixilis, Oko, Ral, Rowan, Saheeli, Samut, Sarkhan, Serra, Sivitri, Sorin, Szat, Tamiyo, Tasha, Teferi, Teyo, Tezzeret, Tibalt, Tyvar, Ugin, Urza, Venser, Vivien, Vraska, Will, Windgrace, Wrenn, Xenagos, Yanggu, Yanling, and Zariel.
@@ -2110,7 +2115,7 @@
   .rule_text Instants and sorceries share their lists of subtypes; these subtypes are called spell types. The spell types are Adventure, Arcane, Lesson, and Trap.
 .rule{id: "section-205-3m"}
   .rule_id 205.3m
-  .rule_text Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Alien, Ally, Angel, Antelope, Ape, Archer, Archon, Army, Artificer, Assassin, Assembly-Worker, Astartes, Atog, Aurochs, Avatar, Azra, Badger, Balloon, Barbarian, Bard, Basilisk, Bat, Bear, Beast, Beeble, Beholder, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Caribou, Carrier, Cat, Centaur, Cephalid, Child, Chimera, Citizen, Cleric, Clown, Cockatrice, Construct, Coward, Crab, Crocodile, C’tan, Custodes, Cyclops, Dauthi, Demigod, Demon, Deserter, Devil, Dinosaur, Djinn, Dog, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Employee, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gamer, Gargoyle, Germ, Giant, Gith, Gnoll, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Guest, Hag, Halfling, Hamster, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inkling, Inquisitor, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mouse, Mutant, Myr, Mystic, Naga, Nautilus, Necron, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Performer, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Praetor, Primarch, Prism, Processor, Rabbit, Raccoon, Ranger, Rat, Rebel, Reflection, Rhino, Rigger, Robot, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scion, Scorpion, Scout, Sculpture, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Slith, Sliver, Slug, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Tiefling, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Tyranid, Unicorn, Vampire, Vedalken, Viashino, Volver, Wall, Walrus, Warlock, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
+  .rule_text Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Alien, Ally, Angel, Antelope, Ape, Archer, Archon, Army, Artificer, Assassin, Assembly-Worker, Astartes, Atog, Aurochs, Avatar, Azra, Badger, Balloon, Barbarian, Bard, Basilisk, Bat, Bear, Beast, Beeble, Beholder, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Caribou, Carrier, Cat, Centaur, Cephalid, Child, Chimera, Citizen, Cleric, Clown, Cockatrice, Construct, Coward, Crab, Crocodile, C’tan, Custodes, Cyclops, Dauthi, Demigod, Demon, Deserter, Devil, Dinosaur, Djinn, Dog, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Employee, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gamer, Gargoyle, Germ, Giant, Gith, Gnoll, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Guest, Hag, Halfling, Hamster, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inkling, Inquisitor, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mite, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mouse, Mutant, Myr, Mystic, Naga, Nautilus, Necron, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Performer, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Praetor, Primarch, Prism, Processor, Rabbit, Raccoon, Ranger, Rat, Rebel, Reflection, Rhino, Rigger, Robot, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scion, Scorpion, Scout, Sculpture, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Slith, Sliver, Slug, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Tiefling, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Tyranid, Unicorn, Vampire, Vedalken, Viashino, Volver, Wall, Walrus, Warlock, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
 .rule{id: "section-205-3n"}
   .rule_id 205.3n
   .rule_text Planes have their own unique set of subtypes; these subtypes are called planar types. The planar types are Alara, Arkhos, Azgol, Belenon, Bolas’s Meditation Realm, Dominaria, Equilor, Ergamon, Fabacin, Innistrad, Iquatana, Ir, Kaldheim, Kamigawa, Karsus, Kephalai, Kinshala, Kolbahan, Kyneth, Lorwyn, Luvion, Mercadia, Mirrodin, Moag, Mongseng, Muraganda, New Phyrexia, Phyrexia, Pyrulea, Rabiah, Rath, Ravnica, Regatha, Segovia, Serra’s Realm, Shadowmoor, Shandalar, Ulgrotha, Valla, Vryn, Wildfire, Xerex, and Zendikar.
@@ -2424,7 +2429,7 @@
   .rule_text If an Aura is entering the battlefield under a player’s control by any means other than by resolving as an Aura spell, and the effect putting it onto the battlefield doesn’t specify the object or player the Aura will enchant, that player chooses what it will enchant as the Aura enters the battlefield. The player must choose a legal object or player according to the Aura’s enchant ability and any other applicable effects.
 .rule{id: "section-303-4g"}
   .rule_id 303.4g
-  .rule_text If an Aura is entering the battlefield and there is no legal object or player for it to enchant, the Aura remains in its current zone, unless that zone is the stack. In that case, the Aura is put into its owner’s graveyard instead of entering the battlefield.
+  .rule_text If an Aura is entering the battlefield and there is no legal object or player for it to enchant, the Aura remains in its current zone, unless that zone is the stack. In that case, the Aura is put into its owner’s graveyard instead of entering the battlefield. If the Aura is a token, it isn’t created.
 .rule{id: "section-303-4h"}
   .rule_id 303.4h
   .rule_text If an effect attempts to put a permanent that isn’t an Aura, Equipment, or Fortification onto the battlefield attached to an object or player, it enters the battlefield unattached.
@@ -2750,6 +2755,12 @@
 .rule{id: "section-314-7"}
   .rule_id 314.7.
   .rule_text At any time, you may look at a face-down conspiracy card you control. You can’t look at face-down conspiracy cards controlled by other players.
+.rule{id: "section-315"}
+  .rule_id 315.
+  .rule_text Battles
+.rule{id: "section-315-1"}
+  .rule_id 315.1.
+  .rule_text No cards currently exist with the battle card type.
 .rule{id: "section-4"}
   .rule_id 4.
   .rule_text Zones
@@ -7206,6 +7217,25 @@
 .rule{id: "section-702-162a"}
   .rule_id 702.162a
   .rule_text More Than Meets the Eye represents a static ability that functions in any zone from which the spell may be cast. “More Than Meets the Eye [cost]” means “You may cast this card converted by paying [cost] rather than its mana cost.” Casting a spell using its More Than Meets the Eye ability follows the rules for paying alternative costs (see <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h). See rule <a href="#section-701-50">701.50</a>, “Convert.”
+.rule{id: "section-702-163"}
+  .rule_id 702.163.
+  .rule_text For Mirrodin!
+.rule{id: "section-702-163a"}
+  .rule_id 702.163a
+  .rule_text For Mirrodin! is a triggered ability. “For Mirrodin!” means “When this Equipment enters the battlefield, create a 2/2 red Rebel creature token, then attach this Equipment to it.”
+.rule{id: "section-702-164"}
+  .rule_id 702.164.
+  .rule_text Toxic
+.rule{id: "section-702-164a"}
+  .rule_id 702.164a
+  .rule_text Toxic is a static ability. It is written “toxic N,” where N is a number.
+.rule{id: "section-702-164b"}
+  .rule_id 702.164b
+  .rule_text Some rules and effects refer to a creature’s “total toxic value.” A creature’s total toxic value is the sum of all N values of toxic abilities that creature has.
+  .rule_text Example: If a creature with toxic 2 gains toxic 1 due to another effect, its total toxic value is 3.
+.rule{id: "section-702-164c"}
+  .rule_id 702.164c
+  .rule_text Combat damage dealt to a player by a creature with toxic causes that creature’s controller to give the player a number of poison counters equal to that creature’s total toxic value, in addition to the damage’s other results. See rule <a href="#section-120-3">120.3</a>.
 .rule{id: "section-703"}
   .rule_id 703.
   .rule_text Turn-Based Actions
@@ -9198,6 +9228,9 @@
 .rule{id: "section-903-3d"}
   .rule_id 903.3d
   .rule_text If an effect refers to controlling a commander, it refers to a permanent on the battlefield that is a commander. If an effect refers to casting a commander, it refers to a spell that is a commander. If an effect refers to a commander in a specific zone, it refers to a card in that zone that is a commander.
+.rule{id: "section-903-3e"}
+  .rule_id 903.3e
+  .rule_text If an effect refers to a characteristic of “your commander,” it can find the appropriate player’s commander and see its current characteristics, as modified by continuous effects and other rules, in all zones, including that player’s library and hand.
 .rule{id: "section-903-4"}
   .rule_id 903.4.
   .rule_text The Commander variant uses color identity to determine what cards can be in a deck with a certain commander. The color identity of a card is the color or colors of any mana symbols in that card’s mana cost or rules text, plus any colors defined by its characteristic-defining abilities (see rule <a href="#section-604-3">604.3</a>) or color indicator (see rule <a href="#section-204">204</a>).
@@ -9590,6 +9623,9 @@
 .glossary_entry
   .glossary_term Basic Land Type
   .glossary_definition There are five “basic land types”: Plains, Island, Swamp, Mountain, and Forest. Each one has a mana ability associated with it. See rule <a href="#section-305">305</a>, “Lands.”
+.glossary_entry
+  .glossary_term Battle
+  .glossary_definition A card type referenced in the reminder text of one card. No cards currently exist with the battle card type.
 .glossary_entry
   .glossary_term Battle Cry
   .glossary_definition A keyword ability that makes other attacking creatures better in combat. See rule <a href="#section-702-91">702.91</a>, “Battle Cry.”
@@ -10143,6 +10179,9 @@
   .glossary_term Food Token
   .glossary_definition A Food token is a colorless artifact token with “<span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span></span>, <span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>, Sacrifice this artifact: You gain 3 life.” For more information about predefined tokens, see rule <a href="#section-111-10">111.10</a>.
 .glossary_entry
+  .glossary_term For Mirrodin!
+  .glossary_definition A keyword ability that creates a 2/2 red Rebel creature token and then attaches the Equipment with the ability to that token. See rule <a href="#section-702-163">702.163</a>, “For Mirrodin!”
+.glossary_entry
   .glossary_term Forecast
   .glossary_definition A keyword ability that allows an activated ability to be activated from a player’s hand. See rule <a href="#section-702-57">702.57</a>, “Forecast.”
 .glossary_entry
@@ -10414,7 +10453,7 @@
   .glossary_definition A keyword ability found on some Vehicles that turns them into a creature during your turn. See rule <a href="#section-702-161">702.161</a>, “Living Metal.”
 .glossary_entry
   .glossary_term Living Weapon
-  .glossary_definition A keyword ability that creates a creature token and then attaches the Equipment with the ability to that token. See rule <a href="#section-702-92">702.92</a>, “Living Weapon.”
+  .glossary_definition A keyword ability that creates a 0/0 black Phyrexian Germ creature token and then attaches the Equipment with the ability to that token. See rule <a href="#section-702-92">702.92</a>, “Living Weapon.”
 .glossary_entry
   .glossary_term Local Enchantment (Obsolete)
   .glossary_definition An obsolete term for an Aura. Cards printed with this text have received errata in the Oracle card reference.
@@ -11175,6 +11214,9 @@
   .glossary_term Tournament Rules
   .glossary_definition Additional rules that apply to games played in a sanctioned tournament. See rule <a href="#section-100-6">100.6</a>.
 .glossary_entry
+  .glossary_term Toxic
+  .glossary_definition A keyword ability that causes a player to get poison counters due to combat damage from creatures with the ability. See rule <a href="#section-702-164">702.164</a>, “Toxic.”
+.glossary_entry
   .glossary_term Traditional Magic Card
   .glossary_definition A Magic card that measures approximately 2.5 inches (6.3 centimeters) by 3.5 inches (8.8 centimeters) and is included in players’ decks. See rule <a href="#section-108-2">108.2</a>.
 .glossary_entry
@@ -11361,6 +11403,6 @@
 %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cátinò, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (lead), Lyz Liddell, Gregg Luben, Nat Moes, Samantha Phelan, Matt Tabak, Michael Zhang, and Hans Ziegler Magic Rules Management: Jess Dunks
 %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cátinò, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
 %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-%p These rules are effective as of November 18, 2022.
-%p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unfinity, Dominaria, Ikoria, Kaldheim, Baldur’s Gate, The Brothers’ War, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2022 Wizards. U.S. Pat. No. RE 37,957.
-%p Astartes, C’tan, Custodes, Necron, Primarch, and Tyranid ® &amp; © Games Workshop Limited 2022. All Rights Reserved.
+%p These rules are effective as of February 3, 2023.
+%p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unfinity, Dominaria, Ikoria, Kaldheim, Baldur’s Gate, The Brothers’ War, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2023 Wizards. U.S. Pat. No. RE 37,957.
+%p Astartes, C’tan, Custodes, Necron, Primarch, and Tyranid ® &amp; © Games Workshop Limited 2023. All Rights Reserved.
