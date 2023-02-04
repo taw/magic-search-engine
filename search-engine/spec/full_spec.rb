@@ -326,10 +326,8 @@ describe "Full Database Test" do
     assert_search_equal "is:permanent", "not (t:instant or t:sorcery or t:plane or t:scheme or t:phenomenon or t:conspiracy or t:vanguard)"
   end
 
-  it "promo and special" do
-    # warn "not sure what to do with rarity special (v4 no longer uses it, should we?)"
-    # it's back in v5 now ???
-    assert_search_equal "r:special -e:tsr,plist", "(Super Secret Tech) or (e:vma r:special) or (e:tsb) or (Prismatic Piper) or (Faceless One)"
+  it "r:special" do
+    assert_search_equal "r:special -e:tsr,plist,pewk", "(Super Secret Tech) or (e:vma r:special) or (e:tsb) or (Prismatic Piper) or (Faceless One)"
     assert_count_cards "r:special e:tsr", 121
   end
 
