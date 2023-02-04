@@ -6,7 +6,7 @@ require "open-uri"
 
 page_url = "https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules"
 doc = Nokogiri::HTML(URI.open(page_url).read)
-txt_url = doc.css("a").map{|a| a[:href]}.find{|link| link =~ /(MagicCompRules|Comprehensive Rules).*txt\z/}.gsub(" ", "%20")
+txt_url = doc.css("a").map{|a| a[:href]}.find{|link| link =~ /(MagicComp ?Rules|Comprehensive Rules).*txt\z/}.gsub(" ", "%20")
 raise "Can't find rules text url, please check the site manually" unless txt_url
 rules_txt = URI.open(txt_url).read
 
