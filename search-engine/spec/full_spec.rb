@@ -327,7 +327,7 @@ describe "Full Database Test" do
   end
 
   it "r:special" do
-    assert_search_equal "r:special -e:tsr,plist,pewk", "(Super Secret Tech) or (e:vma r:special) or (e:tsb) or (Prismatic Piper) or (Faceless One)"
+    assert_search_equal "r:special -e:tsr,plist,pewk,ovnt,olgc", "(Super Secret Tech) or (e:vma r:special) or (e:tsb) or (Prismatic Piper) or (Faceless One)"
     assert_count_cards "r:special e:tsr", 121
   end
 
