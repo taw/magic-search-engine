@@ -12,6 +12,7 @@ class PatchBaseSize < Patch
       "bro" => 287,
       "dmr" => 261,
       "one" => 271,
+      "onc" => 28,
     }
 
     sizes.each do |code, size|
