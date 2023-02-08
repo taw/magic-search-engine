@@ -155,14 +155,7 @@ class Indexer
         (@cards[name] ||= []) << card_data
       end
       (set_data["sealedProduct"] || []).each do |product|
-        @products << [
-          set_code.downcase,
-          product["name"],
-          product["category"],
-          product["subtype"],
-          product["uuid"],
-          product["releaseDate"],
-        ]
+        @products << product.except("identifiers", "purchaseUrls").merge("set_code" => set_code.downcase).compact
       end
     end
   end

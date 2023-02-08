@@ -16,4 +16,10 @@ class Hash
     end
     result
   end
+
+  unless method_defined?(:except)
+    def except(*keys)
+      reject { |k, _| keys.include?(k) }
+    end
+  end
 end
