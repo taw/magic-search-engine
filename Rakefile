@@ -57,7 +57,7 @@ task "pics:gatherer" do
 end
 
 desc "Connect links to HQ pics"
-task "link:pics" do
+task "link:pics:hq" do
   Pathname("frontend/public/cards_hq").mkpath
   if ENV["RAILS_ENV"] == "production"
     sources = Dir["/home/rails/magic-card-pics-hq-*/*/"]
@@ -73,6 +73,27 @@ task "link:pics" do
     target_path.make_symlink(source)
   end
 end
+
+desc "Connect links to LQ pics"
+task "link:pics:lq" do
+  Pathname("frontend/public/cards").mkpath
+  if ENV["RAILS_ENV"] == "production"
+    sources = Dir["/home/rails/magic-card-pics-[0-9]/*/"]
+  else
+    sources = Dir["#{ENV['HOME']}/github/magic-card-pics-[0-9]/*/"]
+  end
+  sources.each do |source|
+    source = Pathname(source)
+    set_name = source.basename.to_s
+    target_path = Pathname("frontend/public/cards/#{set_name}")
+    next if target_path.exist?
+    # p [target_path, source]
+    target_path.make_symlink(source)
+  end
+end
+
+desc "Connect links to pics"
+task "link:pics" => ["link:pics:lq", "link:pics:hq"]
 
 desc "Fetch HQ pics"
 task "pics:hq" do
