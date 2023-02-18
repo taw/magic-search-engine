@@ -12,11 +12,11 @@ describe "multiverse ids" do
       main_fronts = cards.map{|c| PhysicalCard.for(c).main_front}.uniq
       if main_fronts.size == 1
         # OK
-      elsif cards[0].name == "Nalathni Dragon"
-        # Known issue, ignore for now
-      elsif cards[0].name == "Spined Wurm"
-        # Known issue, ignore for now - PMEI / S00
-      elsif cards[0].name == "Village Watch"
+      elsif cards.map(&:set_code).to_set == Set["mb1", "cmb1"]
+        # mtgjson bug
+      elsif cards.map(&:set_code).to_set == Set["j22"]
+        # mtgjson bug
+      elsif cards.map(&:set_code).to_set == Set["klr"]
         # mtgjson bug
       else
         cards.size.should eq(1), "#{id} #{cards}"
