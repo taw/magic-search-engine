@@ -9,6 +9,8 @@ describe PackFactory do
   def card(query, **args)
     query_set_code = args[:set_code] || set_code
     query_foil = args[:foil] || foil
+    query += " is:foil" if query_foil
+    query += " is:nonfoil" unless query_foil
     physical_card("e:#{query_set_code} is:booster #{query}", query_foil)
   end
 
@@ -155,7 +157,7 @@ describe PackFactory do
         ev[common].should eq Rational(391,40) * Rational(1,55)
         ev[uncommon].should eq Rational(3,40)
         ev[rare].should eq Rational(1,40)
-        ev[super_secret_tech].should eq 0
+        proc{ super_secret_tech }.should raise_error(/No card matching/)
       end
     end
 
