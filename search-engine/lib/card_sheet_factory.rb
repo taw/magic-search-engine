@@ -1313,4 +1313,8 @@ class CardSheetFactory
       [from_query("e:30a r:rare -is:dual number>297", 103), 2],
     )
   end
+
+  def one_praetor
+    from_query("(e:neo number:59) or (e:dmu number:107) or (e:snc number:129) or (e:khm number:199)", 4)
+  end
 end
