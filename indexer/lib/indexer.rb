@@ -29,7 +29,7 @@ class Indexer
     @save_path.parent.mkpath
     load_database
     apply_patches
-    @save_path.write(IndexSerializer.new(@sets, @cards).to_s)
+    @save_path.write(IndexSerializer.new(@sets, @cards, @products).to_s)
     @uuids_path.write(UuidsSerializer.new(@cards).to_s)
     @products_path.write(ProductsSerializer.new(@products).to_s)
   end

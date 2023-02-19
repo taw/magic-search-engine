@@ -1,7 +1,8 @@
 class IndexSerializer
-  def initialize(sets, cards)
+  def initialize(sets, cards, products)
     @sets = sets
     @cards = cards
+    @products = products.group_by{|x| x["set_code"]}
   end
 
   def to_s
@@ -37,6 +38,12 @@ class IndexSerializer
     end
   end
 
+  def index_product(product)
+    product.slice(
+      "name",
+    )
+  end
+
   def index_set(set)
     set.slice(
       "alternative_block_code",
@@ -57,6 +64,8 @@ class IndexSerializer
       "online_only",
       "release_date",
       "types",
+    ).merge(
+      "products" => (@products[set["code"]] || []).map{|x| index_product(x)}
     ).compact
   end
 
