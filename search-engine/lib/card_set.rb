@@ -3,6 +3,7 @@ class CardSet
   attr_reader :block_name, :block_code, :alternative_block_code
   attr_reader :border, :release_date, :printings, :types
   attr_reader :decks, :booster_variants, :base_set_size
+  attr_reader :products
 
   def initialize(db, data)
     @db = db
@@ -25,6 +26,7 @@ class CardSet
     @funny         = !!data["funny"]
     @decks         = []
     @base_set_size = data["base_set_size"]
+    @products = (data["products"] || []).map{|x| Product.new(self, x)}
   end
 
   def has_individual_card_release_dates?
