@@ -1,0 +1,7 @@
+%h3 Seaed Products
+- @sets.each do |set|
+  %div= "#{set.name} (#{set.code.upcase})"
+  %ul
+    - set.products.each do |product|
+      %li
+        = product.name
