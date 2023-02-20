@@ -37,14 +37,6 @@ class DeckIndexer
       raise "Set #{card["set"]} explicitly specified but no such printing for #{card_name}"
     end
 
-    # Special logic for those
-    # Cards from Clash Packs take priority even over their official set
-    if deck["type"] == "Clash Pack"
-      return printings["cp1"] if set_code == "m15" and printings["cp1"]
-      return printings["cp2"] if set_code == "frf" and printings["cp2"]
-      return printings["cp3"] if set_code == "ori" and printings["cp3"]
-    end
-
     # otherwise it returns GRN and that's bad
     if set_code == "gnt"
       return printings["gnt"] || printings["m19"] || raise("Can't find #{card["name"]} in any possible set")
