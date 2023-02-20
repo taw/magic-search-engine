@@ -23,10 +23,6 @@ class DeckIndexer
 
     # Welcome decks contain some future cards
     set_date = release_date("akh") if set_code == "w17"
-
-    # * means from previous set on some old Wizards listings
-    # We should probably just get rid of it upstream
-    card_name = card_name.sub(/\*\z/, "")
     card_name = card_name.split(" // ")[0]
 
     card_info = @cards[card_name]
