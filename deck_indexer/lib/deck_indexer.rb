@@ -4,6 +4,42 @@ require "pathname"
 require "pry"
 
 class DeckIndexer
+  # We know basics are ambiguous, we don't even care
+  # Basics and guildgates (without special effects), nobody really cares which one you'll get
+  # There are exception like JMP and WC* but they are annotated in data
+  CardsWithAllowedConflicts = [
+    "Plains",
+    "Island",
+    "Swamp",
+    "Mountain",
+    "Forest",
+    "Wastes",
+    "Azorius Guildgate",
+    "Boros Guildgate",
+    "Dimir Guildgate",
+    "Golgari Guildgate",
+    "Gruul Guildgate",
+    "Izzet Guildgate",
+    "Orzhov Guildgate",
+    "Rakdos Guildgate",
+    "Selesnya Guildgate",
+    "Simic Guildgate",
+  ]
+
+  SetSearchList = {
+    # otherwise it returns GRN and that's bad
+    "gnt" => ["gnt", "m19"],
+    "c20" => ["c20", "iko"],
+    "znc" => ["znc", "znr"],
+    "jmp" => ["jmp", "m21"],
+    # Coldsnap had special set for Ice Age reprints
+    "csp" => ["cst", "csp"],
+    # S00 on Gatherer includes all 6ED reprints but mtgjson doesn't
+    "s00" => ["s00", "6ed"],
+    # It seems that Masters Edition 2 precons contained Masters Edition cards too
+    "me2" => ["me2", "me1"],
+  }
+
   def initialize(card_index_json, decks_json, save_path)
     main_index = JSON.parse(Pathname(card_index_json).read)
     @sets = main_index["sets"]
@@ -37,20 +73,8 @@ class DeckIndexer
       raise "Set #{card["set"]} explicitly specified but no such printing for #{card_name}"
     end
 
-    set_search_list = {
-      # otherwise it returns GRN and that's bad
-      "gnt" => ["gnt", "m19"],
-      "c20" => ["c20", "iko"],
-      "znc" => ["znc", "znr"],
-      "jmp" => ["jmp", "m21"],
-      # Coldsnap had special set for Ice Age reprints
-      "csp" => ["cst", "csp"],
-      # S00 on Gatherer includes all 6ED reprints but mtgjson doesn't
-      "s00" => ["s00", "6ed"],
-    }
-
-    if set_search_list[set_code]
-      return set_search_list[set_code].map{|c| printings[c]}.find(&:itself) || raise("Can't find #{card["name"]} in any possible set")
+    if SetSearchList[set_code]
+      return SetSearchList[set_code].map{|c| printings[c]}.find(&:itself) || raise("Can't find #{card["name"]} in any possible set")
     end
 
     # It was printed in set we want
@@ -65,9 +89,6 @@ class DeckIndexer
     # All other printings in the future, so we don't care
     return printings.values[0] if printings.size == 1
     raise "All printings of #{card_name} from the future" if printings.empty?
-
-    # It seems that Masters Edition 2 precons contained Masters Edition cards too
-    return printings["me1"] if set_code == "me2" and printings["me1"]
 
     # Promos/Precons are never the right answer
     printings = printings.reject{|sc, _|
@@ -147,35 +168,9 @@ class DeckIndexer
 
     return printings[0] if printings.size == 1
 
-    # We know basics are ambiguous, we don't even care
-    allowed_conflicts = [
-      "Plains",
-      "Island",
-      "Swamp",
-      "Mountain",
-      "Forest",
-      "Wastes",
-      "Azorius Guildgate",
-      "Boros Guildgate",
-      "Dimir Guildgate",
-      "Golgari Guildgate",
-      "Gruul Guildgate",
-      "Izzet Guildgate",
-      "Orzhov Guildgate",
-      "Rakdos Guildgate",
-      "Selesnya Guildgate",
-      "Simic Guildgate",
-    ]
-
     numbers = printings.map{|_, c| c["number"]}
 
-    # Basics and guildgates (without special effects), nobody really cares
-    # which one you'll get
-    #
-    # JMP and WC need special treatment
-    if allowed_conflicts.include?(card["name"]) and deck["set_code"] !~ /\Awc/i
-      return printings[0]
-    end
+    return printings[0] if CardsWithAllowedConflicts.include?(card["name"])
 
     # If there are variant cards († or ★), choose non-variant version
     # If this needs to be reversed, mark it explicitly in the data
@@ -187,35 +182,20 @@ class DeckIndexer
 
     # Otherwise just get one with lowest number, but print a warning
     # Use same format as magic-preconstructed-decks for easy copypasta
-    candidates = printings.map{|c|
-      "[#{c[0].upcase}:#{c[1]["number"]}]"
-    }.join(" ")
+    candidates = printings.map{|c| "[#{c[0].upcase}:#{c[1]["number"]}]" }.join(" ")
     warn "#{deck["set_code"]} #{deck["name"]}: Cannot resolve #{card["name"]}. Candidates are: #{candidates}"
     printings[0]
   end
 
   def index_card(card, deck)
     printing = resolve_card(card, deck)
-
     set_code = printing[0]
     printing_card = printing[1]
-
-    foil_res = (card["foil"] || printing_card["foiling"] == "foilonly") ?
-      ["foil"] : []
-
+    foil_res = (card["foil"] || printing_card["foiling"] == "foilonly") ? ["foil"] : []
     [card["count"], set_code, printing_card["number"]] + foil_res
   end
 
   def index_deck(deck)
-    cards = deck["cards"].map do |card|
-      index_card(card, deck)
-    end
-    sideboard = deck["sideboard"].map do |card|
-      index_card(card, deck)
-    end
-    commander = deck["commander"].map do |card|
-      index_card(card, deck)
-    end
     {
       name: deck["name"],
       type: deck["type"],
@@ -224,9 +204,9 @@ class DeckIndexer
       release_date: deck["release_date"],
       source: deck["source"],
       display: deck["display"],
-      cards: cards,
-      sideboard: sideboard,
-      commander: commander,
+      cards: deck["cards"].map{|card| index_card(card, deck)},
+      sideboard: deck["sideboard"].map{|card| index_card(card, deck)},
+      commander: deck["commander"].map{|card| index_card(card, deck)},
     }.compact
   end
 
