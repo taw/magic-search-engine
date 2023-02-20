@@ -37,32 +37,20 @@ class DeckIndexer
       raise "Set #{card["set"]} explicitly specified but no such printing for #{card_name}"
     end
 
-    # otherwise it returns GRN and that's bad
-    if set_code == "gnt"
-      return printings["gnt"] || printings["m19"] || raise("Can't find #{card["name"]} in any possible set")
-    end
+    set_search_list = {
+      # otherwise it returns GRN and that's bad
+      "gnt" => ["gnt", "m19"],
+      "c20" => ["c20", "iko"],
+      "znc" => ["znc", "znr"],
+      "jmp" => ["jmp", "m21"],
+      # Coldsnap had special set for Ice Age reprints
+      "csp" => ["cst", "csp"],
+      # S00 on Gatherer includes all 6ED reprints but mtgjson doesn't
+      "s00" => ["s00", "6ed"],
+    }
 
-    if set_code == "c20"
-      return printings["c20"] || printings["iko"] || raise("Can't find #{card["name"]} in any possible set")
-    end
-
-    if set_code == "znc"
-      return printings["znc"] || printings["znr"] || raise("Can't find #{card["name"]} in any possible set")
-    end
-
-    if set_code == "jmp"
-      return printings["jmp"] || printings["m21"] || raise("Can't find #{card["name"]} in any possible set")
-    end
-
-    # Coldsnap had special set for Ice Age reprints
-    if deck["set_code"] == "csp"
-      return printings["cst"] if printings["cst"]
-    end
-
-    # S00 on Gatherer includes all 6ED reprints but mtgjson doesn't
-    if deck["set_code"] == "s00"
-      return printings["s00"] if printings["s00"]
-      return printings["6ed"] if printings["6ed"]
+    if set_search_list[set_code]
+      return set_search_list[set_code].map{|c| printings[c]}.find(&:itself) || raise("Can't find #{card["name"]} in any possible set")
     end
 
     # It was printed in set we want
