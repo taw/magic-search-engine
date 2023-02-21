@@ -9,18 +9,21 @@ require_relative "card_sets_data"
 require_relative "index_serializer"
 require_relative "products_serializer"
 require_relative "uuids_serializer"
+require_relative "decks_serializer"
 
 require_relative "patches/patch"
 Dir["#{__dir__}/patches/*.rb"].each do |path| require_relative path end
 
 class Indexer
   ROOT = Pathname(__dir__).parent.parent + "data"
+  INDEX_ROOT = Pathname(__dir__).parent.parent + "index"
 
   # In verbose mode we validate each patch to make sure it actually does something
   def initialize(verbose=false)
-    @save_path = Pathname("#{__dir__}/../../index/index.json")
-    @uuids_path = Pathname("#{__dir__}/../../index/uuids.txt")
-    @products_path = Pathname("#{__dir__}/../../index/products.txt")
+    @save_path = INDEX_ROOT + "index.json"
+    @uuids_path = INDEX_ROOT + "uuids.txt"
+    @products_path = INDEX_ROOT + "products.txt"
+    @decks_path = INDEX_ROOT + "deck_index.json"
     @verbose = verbose
     @data = CardSetsData.new
   end
@@ -28,6 +31,7 @@ class Indexer
   def call
     @save_path.parent.mkpath
     load_database
+    load_decks
     apply_patches
     @save_path.write(IndexSerializer.new(@sets, @cards, @products).to_s)
     @uuids_path.write(UuidsSerializer.new(@cards).to_s)
@@ -44,7 +48,6 @@ class Indexer
       PatchMtgjsonVersions,
       # Each set needs unique code, by convention all lowercase
       PatchSetCodes,
-      PatchRemoveTokens,
       PatchRemoveEmptySets,
       PatchReleaseDates,
 
@@ -104,10 +107,12 @@ class Indexer
 
       # Not bugs, more like different judgment calls than mtgjson
       PatchUrza,
-      PatchFixPromoPrintDates,
 
       # One more round of normalization, it throws away some information
       PatchNormalizeNames,
+
+      # Deck Indexer
+      # ...
     ]
   end
 
@@ -158,5 +163,9 @@ class Indexer
         @products << product.except("identifiers", "purchaseUrls").merge("set_code" => set_code.downcase).compact
       end
     end
+  end
+
+  def load_decks
+    @decks = JSON.parse((ROOT + "decks.json").read)
   end
 end
