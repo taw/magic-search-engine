@@ -3,7 +3,7 @@ require "json"
 require "pathname"
 require "pry"
 
-class DeckIndexer
+class DecksIndexer
   # We know basics are ambiguous, we don't even care
   # Basics and guildgates (without special effects), nobody really cares which one you'll get
   # There are exception like JMP and WC* but they are annotated in data
@@ -53,17 +53,16 @@ class DeckIndexer
   end
 
   def resolve_set(card, deck)
-    set_code = deck["set_code"]
-    card_name = card["name"]
-    set_date = release_date(set_code)
+    deck_set_code = deck["set_code"]
+    card_name = card["name"].split(" // ")[0]
+    deck_release_date = release_date(deck_set_code)
 
     # Welcome decks contain some future cards
-    set_date = release_date("akh") if set_code == "w17"
-    card_name = card_name.split(" // ")[0]
+    deck_release_date = release_date("akh") if deck_set_code == "w17"
 
     card_info = @cards[card_name]
     if card_info.nil?
-      raise "Card not found #{set_code} #{card_name}"
+      raise "Card not found #{deck_set_code} #{card_name}"
     end
     printings = card_info["printings"].group_by(&:first)
 
@@ -74,17 +73,17 @@ class DeckIndexer
     end
 
     # It was printed in set we want
-    return printings[set_code] if printings[set_code]
+    return printings[deck_set_code] if printings[deck_set_code]
 
-    if SetSearchList[set_code]
-      return SetSearchList[set_code].map{|c| printings[c]}.find(&:itself) || raise("Can't find #{card["name"]} in any possible set")
+    if SetSearchList[deck_set_code]
+      return SetSearchList[deck_set_code].map{|c| printings[c]}.find(&:itself) || raise("Can't find #{card["name"]} in any possible set")
     end
 
     # It was not from our set, but only printed once
     return printings.values[0] if printings.size == 1
 
     # First, filter out all printings from future sets
-    printings = printings.select{|sc, _| release_date(sc) <= set_date }
+    printings = printings.select{|sc, _| release_date(sc) <= deck_release_date }
 
     # All other printings in the future, so we don't care
     return printings.values[0] if printings.size == 1
@@ -100,7 +99,7 @@ class DeckIndexer
     raise "All printings of #{card_name} from the promo/precon cards" if printings.empty?
 
     # If it was printed in earlier sets of same block, ignore everything else
-    block_name = @sets[set_code]["block_name"]
+    block_name = @sets[deck_set_code]["block_name"]
     if block_name
       same_block_printings = printings.select{|sc,_|
         block_name && block_name == @sets[sc]["block_name"]
@@ -111,7 +110,7 @@ class DeckIndexer
 
     # At this point we can guess most recent standard set printing
     most_recent_standard_set, most_recent_standard_printing = printings.select{|sc,_|
-      @sets[sc]["types"].include?("core") or @sets[sc]["types"].include?("expansion")
+      @sets[sc]["types"].include?("standard")
     }.sort_by{|sc, _|
       release_date(sc)
     }.last
@@ -121,14 +120,14 @@ class DeckIndexer
     end
 
     mrsp_date = release_date(most_recent_standard_set)
-    age = (set_date - mrsp_date).to_i
+    age = (deck_release_date - mrsp_date).to_i
     if age < 2 * 365
       # Would be nicer to check if actually same Standard
       # OK
     elsif deck["type"] == "Pioneer Challenger Deck"
       # OK
     else
-      warn "#{age} is too old #{set_code} #{card_name} #{most_recent_standard_set}"
+      warn "#{age} is too old #{deck_set_code} #{card_name} #{most_recent_standard_set}"
     end
     return most_recent_standard_printing
   end
@@ -188,9 +187,7 @@ class DeckIndexer
   end
 
   def index_card(card, deck)
-    printing = resolve_card(card, deck)
-    set_code = printing[0]
-    printing_card = printing[1]
+    set_code, printing_card = resolve_card(card, deck)
     foil_res = (card["foil"] || printing_card["foiling"] == "foilonly") ? ["foil"] : []
     [card["count"], set_code, printing_card["number"]] + foil_res
   end
@@ -220,5 +217,9 @@ class DeckIndexer
       end
     end.compact
     @save_path.write(index.to_json)
+  end
+
+  def inspect
+    self.class.to_s
   end
 end
