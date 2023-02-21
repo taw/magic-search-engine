@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/deck_indexer"
-DeckIndexer.new(
+require_relative "../lib/decks_indexer"
+
+DecksIndexer.new(
   "#{__dir__}/../../index/index.json",
   "#{__dir__}/../../tmp/decks.json",
   "#{__dir__}/../../index/deck_index.json"
