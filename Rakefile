@@ -153,12 +153,20 @@ task "update" do
   Rake::Task["rules:update"].invoke
   Rake::Task["pennydreadful:update"].invoke
   Rake::Task["mtgjson:fetch"].invoke
-  sh "~/github/magic-preconstructed-decks/bin/build_jsons ./data/decks.json"
+  Rake::Task["import:decks"].invoke
   Rake::Task["index"].invoke
   Rake::Task["xmage:update"].invoke
-  Rake::Task["update:decks"].invoke
   Rake::Task["update:sealed"].invoke
-  Rake::Task["xmage:update"].invoke
+  Rake::Task["export:decks"].invoke
+end
+
+desc "Import deck data"
+task "import:decks" do
+  sh "~/github/magic-preconstructed-decks/bin/build_jsons ./data/decks.json"
+end
+
+desc "Export deck data"
+task "export:decks" do
   sh "./bin/export_decks_data_old ~/github/magic-preconstructed-decks-data/decks.json"
   sh "./bin/export_decks_data ~/github/magic-preconstructed-decks-data/decks_v2.json"
 end
