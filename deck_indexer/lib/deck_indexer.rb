@@ -28,16 +28,16 @@ class DeckIndexer
 
   SetSearchList = {
     # otherwise it returns GRN and that's bad
-    "gnt" => ["gnt", "m19"],
-    "c20" => ["c20", "iko"],
-    "znc" => ["znc", "znr"],
-    "jmp" => ["jmp", "m21"],
+    "gnt" => ["m19"],
+    "c20" => ["iko"],
+    "znc" => ["znr"],
+    "jmp" => ["m21"],
     # Coldsnap had special set for Ice Age reprints
-    "csp" => ["cst", "csp"],
+    "csp" => ["cst"],
     # S00 on Gatherer includes all 6ED reprints but mtgjson doesn't
-    "s00" => ["s00", "6ed"],
+    "s00" => ["6ed"],
     # It seems that Masters Edition 2 precons contained Masters Edition cards too
-    "me2" => ["me2", "me1"],
+    "me2" => ["me1"],
   }
 
   def initialize(card_index_json, decks_json, save_path)
@@ -73,12 +73,12 @@ class DeckIndexer
       raise "Set #{card["set"]} explicitly specified but no such printing for #{card_name}"
     end
 
+    # It was printed in set we want
+    return printings[set_code] if printings[set_code]
+
     if SetSearchList[set_code]
       return SetSearchList[set_code].map{|c| printings[c]}.find(&:itself) || raise("Can't find #{card["name"]} in any possible set")
     end
-
-    # It was printed in set we want
-    return printings[set_code] if printings[set_code]
 
     # It was not from our set, but only printed once
     return printings.values[0] if printings.size == 1
