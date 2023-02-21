@@ -49,6 +49,7 @@ end
 desc "Update XMage card lists"
 task "xmage:update" do
   sh "rescue bin/extract_xmage_card_list ~/src/mage"
+  sh "./bin/export_xmage_best_card_list ~/github/mtg/data/xmage_cards.txt"
 end
 
 desc "Fetch Gatherer pics"
@@ -154,13 +155,9 @@ task "update" do
   Rake::Task["mtgjson:fetch"].invoke
   Rake::Task["index"].invoke
   Rake::Task["xmage:update"].invoke
-  sh "~/github/magic-preconstructed-decks/bin/build_jsons ./tmp/decks.json"
-  sh "./deck_indexer/bin/deck_indexer"
-  sh "./bin/export_sealed_data ~/github/magic-sealed-data"
-  sh "./bin/export_decks_data_old ~/github/magic-preconstructed-decks-data/decks.json"
-  sh "./bin/export_decks_data ~/github/magic-preconstructed-decks-data/decks_v2.json"
-  # sh "trash ./tmp/decks.json"
-  # sh "trash ./tmp/AllSets.json"
+  Rake::Task["update:decks"].invoke
+  Rake::Task["update:sealed"].invoke
+  Rake::Task["xmage:update"].invoke
 end
 
 desc "Update sealed only"
@@ -170,12 +167,10 @@ end
 
 desc "Update decklists only"
 task "update:decks" do
-  Pathname("tmp").mkpath
-  sh "~/github/magic-preconstructed-decks/bin/build_jsons ./tmp/decks.json"
+  sh "~/github/magic-preconstructed-decks/bin/build_jsons ./data/decks.json"
   sh "./deck_indexer/bin/deck_indexer"
   sh "./bin/export_decks_data_old ~/github/magic-preconstructed-decks-data/decks.json"
   sh "./bin/export_decks_data ~/github/magic-preconstructed-decks-data/decks_v2.json"
-  sh "./bin/export_xmage_best_card_list ~/github/mtg/data/xmage_cards.txt"
 end
 
 desc "Export decklists as text"
