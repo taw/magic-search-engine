@@ -10,6 +10,7 @@ require_relative "index_serializer"
 require_relative "products_serializer"
 require_relative "uuids_serializer"
 require_relative "decks_serializer"
+require_relative "deck_printing_resolver"
 
 require_relative "patches/patch"
 Dir["#{__dir__}/patches/*.rb"].each do |path| require_relative path end
@@ -36,6 +37,7 @@ class Indexer
     @save_path.write(IndexSerializer.new(@sets, @cards, @products).to_s)
     @uuids_path.write(UuidsSerializer.new(@cards).to_s)
     @products_path.write(ProductsSerializer.new(@products).to_s)
+    @decks_path.write(DecksSerializer.new(@decks).to_s)
   end
 
   private
@@ -112,7 +114,7 @@ class Indexer
       PatchNormalizeNames,
 
       # Deck Indexer
-      # ...
+      PatchDecks,
     ]
   end
 
@@ -121,13 +123,13 @@ class Indexer
       if @verbose
         # This is very slow, and some patches are just here to verify things
         # It could still be useful for debugging
-        before = Marshal.load(Marshal.dump([@cards, @sets]))
-        patch_class.new(@cards, @sets).call
-        if before == [@cards, @sets]
+        before = Marshal.load(Marshal.dump([@cards, @sets, @decks]))
+        patch_class.new(@cards, @sets, @decks).call
+        if before == [@cards, @sets, @decks]
           warn "Patch #{patch_class} seems to be doing nothing"
         end
       else
-        patch_class.new(@cards, @sets).call
+        patch_class.new(@cards, @sets, @decks).call
       end
     end
   end
