@@ -63,7 +63,6 @@ describe "in queries" do
     assert_search_equal %[in:"expansion"], %[alt:st:"expansion"]
     assert_search_equal %[in:"from the vault"], %[alt:st:"from the vault"]
     assert_search_equal %[in:"funny"], %[alt:st:"funny"]
-    assert_search_equal %[in:"gateway"], %[alt:st:"gateway"]
     assert_search_equal %[in:"judge gift"], %[alt:st:"judge gift"]
     assert_search_equal %[in:"masterpiece"], %[alt:st:"masterpiece"]
     assert_search_equal %[in:"masters"], %[alt:st:"masters"]
@@ -78,7 +77,6 @@ describe "in queries" do
     assert_search_equal %[in:"starter"], %[alt:st:"starter"]
     assert_search_equal %[in:"two-headed giant"], %[alt:st:"two-headed giant"]
     assert_search_equal %[in:"unset"], %[alt:st:"unset"]
-    assert_search_equal %[in:"wpn"], %[alt:st:"wpn"]
   end
 
   it "in: set type spelling variants" do
