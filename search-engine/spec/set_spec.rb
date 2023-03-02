@@ -21,7 +21,6 @@ describe "Sets" do
       "fnm",
       "from the vault",
       "funny",
-      "gateway",
       "judge gift",
       "masterpiece",
       "masters",
@@ -43,7 +42,6 @@ describe "Sets" do
       "two-headed giant",
       "un",
       "vanguard",
-      "wpn",
     ].to_set
   end
 
