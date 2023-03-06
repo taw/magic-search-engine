@@ -344,4 +344,11 @@ BanList.for_format("legacy") do
     "https://magic.wizards.com/en/articles/archive/news/january-25-2022-banned-and-restricted-announcement",
     "Ragavan, Nimble Pilferer" => "banned",
   )
+
+  change(
+    "2023-03-06",
+    "https://magic.wizards.com/en/news/announcements/march-6-2023-banned-and-restricted-announcement",
+    "Expressive Iteration" => "banned",
+    "White Plume Adventurer" => "banned",
+  )
 end
