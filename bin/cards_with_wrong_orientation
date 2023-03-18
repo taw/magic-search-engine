@@ -1,0 +1,92 @@
+#!/usr/bin/env ruby
+
+require "pathname-glob"
+# require "rmagick"
+require "fastimage"
+require_relative "../search-engine/lib/card_database"
+
+class CardPrinting
+  def path_lq
+    Pathname("frontend/public/cards/#{set_code}/#{number}.png")
+  end
+
+  def path_hq
+    Pathname("frontend/public/cards_hq/#{set_code}/#{number}.png")
+  end
+end
+
+class CheckCardOrientation
+  def initialize(card, path)
+    @card = card
+    @path = path
+  end
+
+  def aspect_ratio
+    @aspect_ratio ||= begin
+      width, height = FastImage.size(@path)
+      width.to_f / height.to_f
+    end
+  end
+
+  def orientation
+    @orientation ||= begin
+      if aspect_ratio >= 1.2
+        :horizontal
+      elsif aspect_ratio <= 0.8
+        :vertical
+      else
+        :unknown
+      end
+    end
+  end
+
+  def expected_orientation
+    @expected_orientation ||= begin
+      if (@card.types & ["plane", "phenomenon"]).empty?
+        :vertical
+      else
+        :horizontal
+      end
+    end
+  end
+
+  def card_name_and_number
+    "#{@card.set_code}/#{@card.number} #{@card.name}"
+  end
+
+  def rotate
+    system "jpegtran -rotate 90 -copy all #{@path} > #{@path}-out"
+    system "mv #{@path}-out #{@path}"
+  end
+
+  def open
+    system "open", @path.to_s
+  end
+
+  def call
+    if orientation != expected_orientation
+      warn "Bad orientation for #{card_name_and_number} #{@path} expected:#{expected_orientation} actual:#{orientation}"
+      binding.pry
+    end
+  end
+end
+
+class CardsWithWrongOrientation
+  attr_reader :db
+
+  def initialize
+    @db = CardDatabase.load
+  end
+
+  def call
+    db.printings.each do |card|
+      [card.path_hq, card.path_lq].each do |path|
+        next unless path.exist?
+        CheckCardOrientation.new(card, path).call
+      end
+    end
+  end
+end
+
+STDOUT.sync = true
+CardsWithWrongOrientation.new.call
