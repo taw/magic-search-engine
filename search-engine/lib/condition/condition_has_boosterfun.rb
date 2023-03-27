@@ -1,17 +1,21 @@
 class ConditionHasBoosterfun < Condition
+  def initialize()
+    @bfun = ConditionIsBoosterfun.new()
+  end
+
   def search(db)
+    bf_prints = Set[]
+    @bfun.search(db).each do |card_printing|
+	  bf_prints << card_printing
+	end
     results = Set[]
-    db.cards.each do |name, card|
-      showcase_sets = card.printings.select{|c| (c.frame_effects.include?("showcase") and not c.foiling.include?("foilonly")) }.flat_map(&:set_code).to_set
-      borderless_sets = card.printings.select{|c| (c.border.include?("borderless") and not c.foiling.include?("foilonly")) }.flat_map(&:set_code).to_set
-      card.printings.each do |cp|
-        if showcase_sets.include?(cp.set_code)
-          results << cp
-        elsif borderless_sets.include?(cp.set_code)
-          results << cp
-        end
-      end
-    end
+	bf_prints.each do |main_printing|
+	  main_printing.card.printings.each do |sub_print|
+	    if sub_print.set.code == main_printing.set.code
+		  results << sub_print
+		end
+	  end
+	end
     results
   end
 end
