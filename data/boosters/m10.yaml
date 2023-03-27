@@ -1,0 +1,35 @@
+packs:
+- basic: 1
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  rate: 31
+- basic: 1
+  common: 9
+  uncommon: 3
+  rare_mythic: 1
+  foil: 1
+  rate: 9
+- sheets:
+  rare_mythic:
+    - rate: 2
+      query: "r:r"
+    - rate: 1
+      query: "r:m"
+  uncommon:
+    query: "r:u"
+  common:
+    query: "r:c"
+  foil:
+    foil: true
+    any:
+      - chance: 5
+        query: "r:u"
+      - chance: 12
+        query: "r<=c"
+      - chance: 3
+        any:
+        - rate: 2
+          query: "r:r"
+        - rate: 1
+          query: "r:m"
