@@ -21,6 +21,7 @@ class ConditionIsBoosterfun < Condition
 			    results << card_printing
 			  end
 		    else
+			  # Typical booster fun treatments
 			  if card_printing.frame_effects.include?("showcase") or card_printing.border.include?("borderless") or card_printing.frame == ("old")
 		        results << card_printing
 			  end
