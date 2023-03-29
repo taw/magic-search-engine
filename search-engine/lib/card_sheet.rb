@@ -80,4 +80,8 @@ class CardSheet
   def ==(other)
     other.class == self.class and elements == other.elements and weights == other.weights
   end
+
+  def empty?
+    @elements.empty?
+  end
 end
