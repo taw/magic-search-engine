@@ -4,6 +4,41 @@ class PackFactoryYaml
     @sheet_factory = sheet_factory
   end
 
+  # Most common sheets that would be pointless to repeat in every single yaml file
+  # These names are not reserved and can be overriden by individual YAML files
+  def default_sheets
+    @default_sheets ||= YAML.load('
+    rare_mythic:
+      any:
+      - rate: 2
+        query: "r:r"
+      - rate: 1
+        query: "r:m"
+    rare:
+      query: "r:r"
+    uncommon:
+      query: "r:u"
+    common:
+      balanced: true
+      query: "r:c"
+    basic:
+      query: "r:b"
+    foil:
+      foil: true
+      any:
+        - chance: 5
+          query: "r:u"
+        - chance: 12
+          query: "r<=c"
+        - chance: 3
+          any:
+          - rate: 2
+            query: "r:r"
+          - rate: 1
+            query: "r:m"
+    ')
+  end
+
   def build_sheet_from_yaml_data(set_code, name, data)
     data = data.dup
     foil = false
@@ -30,7 +65,7 @@ class PackFactoryYaml
       kind = balanced ? ColorBalancedCardSheet : CardSheet
       @sheet_factory.from_query(data["rawquery"], count, foil: foil, kind: kind)
     when ["any"]
-      subsheets = data["any"]
+      subsheets = data["any"].map(&:dup)
       raise "No balanced support for #{set_code}:any" if balanced
       if subsheets.all?{|s| s["rate"]}
         chances = subsheets.map{|d| d.delete("rate")}
@@ -89,8 +124,11 @@ class PackFactoryYaml
     return nil unless path.exist?
 
     data = YAML.load_file(path)
-    sheets = data.delete("sheets").to_h{|sheet_name, sheet_data|
-      [sheet_name, build_sheet_from_yaml_data(set_code, sheet_name, sheet_data)]
+    sheets = Hash.new{|ht,k|
+      ht[k] = build_sheet_from_yaml_data(set_code, k, default_sheets[k])
+    }
+    (data.delete("sheets") || []).each{|sheet_name, sheet_data|
+      sheets[sheet_name] = build_sheet_from_yaml_data(set_code, sheet_name, sheet_data)
     }
     pack = case data.keys
     when ["pack"]

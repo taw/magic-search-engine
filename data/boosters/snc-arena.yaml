@@ -3,15 +3,3 @@ pack:
   common: 10
   uncommon: 3
   rare_mythic: 1
-sheets:
-  common:
-    balanced: true
-    query: "r:c"
-  uncommon:
-    query: "r:u"
-  rare_mythic:
-    any:
-    - query: "r:r"
-      rate: 2
-    - query: "r:m"
-      rate: 1
