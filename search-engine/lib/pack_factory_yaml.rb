@@ -10,10 +10,10 @@ class PackFactoryYaml
     @default_sheets ||= YAML.load('
     rare_mythic:
       any:
-      - rate: 2
-        query: "r:r"
-      - rate: 1
-        query: "r:m"
+      - query: "r:r"
+        rate: 2
+      - query: "r:m"
+        rate: 1
     rare:
       query: "r:r"
     uncommon:
@@ -26,16 +26,16 @@ class PackFactoryYaml
     foil:
       foil: true
       any:
-        - chance: 5
-          query: "r:u"
-        - chance: 12
-          query: "r<=c"
-        - chance: 3
-          any:
-          - rate: 2
-            query: "r:r"
-          - rate: 1
-            query: "r:m"
+        - query: "r<=c"
+          chance: 12
+        - query: "r:u"
+          chance: 5
+        - any:
+          - query: "r:r"
+            rate: 2
+          - query: "r:m"
+            rate: 1
+          chance: 3
     ')
   end
 
