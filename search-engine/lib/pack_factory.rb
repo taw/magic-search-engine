@@ -112,14 +112,14 @@ class PackFactory
     balanced = false
     coout = nil
 
-    foil = data.delete("foil") if data["foil"]
-    balanced = data.delete("balanced") if data["balanced"]
-    count = data.delete("count") if data["count"]
+    foil = data.delete("foil") if data.has_key?("foil")
+    balanced = data.delete("balanced") if data.has_key?("balanced")
+    count = data.delete("count") if data.has_key?("count")
 
     sheet = case data.keys
     when ["code"]
-      raise "No balanced support for #{set_code}" if balanced
-      raise "No count check support for #{set_code}" if count
+      raise "No balanced support for #{set_code}:code" if balanced
+      raise "No count check support for #{set_code}:code" if count # TODO
       @sheet_factory.explicit_sheet(set_code, data["code"], foil: foil)
     when ["query"]
       kind = balanced ? ColorBalancedCardSheet : CardSheet
@@ -127,10 +127,34 @@ class PackFactory
     when ["rawquery"]
       kind = balanced ? ColorBalancedCardSheet : CardSheet
       @sheet_factory.from_query(data["query"], count, foil: foil, kind: kind)
+    when ["any"]
+      subsheets = data["any"]
+      raise "No balanced support for #{set_code}:any" if balanced
+      if subsheets.all?{|s| s["rate"]}
+        chances = subsheets.map{|d| d.delete("rate")}
+        sheets = subsheets.map{|d|
+          build_sheet_from_yaml_data(set_code, nil, d.merge("foil" => foil))
+        }
+        CardSheet.new(
+          sheets,
+          chances.zip(sheets).map{|c,s| c*s.elements.size}
+        )
+      elsif subsheets.all?{|s| s["chance"]}
+        chances = subsheets.map{|d| d.delete("chance")}
+        sheets = subsheets.map{|d|
+          build_sheet_from_yaml_data(set_code, nil, d.merge("foil" => foil))
+        }
+        CardSheet.new(
+          sheets,
+          chances
+        )
+      else
+        raise "Incorrect subsheet data for #{set_code} any"
+      end
     else
       raise "Unknown sheet type #{data.keys.join(", ")}"
     end
-    sheet.name = sheet_name(set_code, name)
+    sheet.name = sheet_name(set_code, name) if name
     sheet
   end
 
@@ -166,7 +190,11 @@ class PackFactory
 
     pack.set = set
     pack.code = "#{set_code}-#{full_variant}"
-    pack.name = set.name
+    if variant
+      pack.name = set.booster_variants[variant]
+    else
+      pack.name = set.name
+    end
     pack
   end
 
