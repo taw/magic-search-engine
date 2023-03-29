@@ -149,6 +149,8 @@ end
 
 class ExportFormatterExperimental < ExportFormatter
   def serialize_sheet(sheet)
+    raise "Sheet is empty" if sheet.empty?
+
     ev = integerize_evs sheet.probabilities
 
     foil_status = ev.keys.map(&:foil).uniq
