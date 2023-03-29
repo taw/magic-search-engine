@@ -1,0 +1,29 @@
+packs:
+- basic: 1
+  common: 10
+  uncommon: 3
+  rare_mythic_one: 1
+  chance: 31
+- basic: 1
+  common: 9
+  uncommon: 3
+  rare_mythic_one: 1
+  foil: 1
+  chance: 9
+sheets:
+  basic:
+    # special phyrexian basic lands in 1/4 packs
+    any:
+	- chance: 3
+	  query: "number>=262 number<=266"
+	- chance: 1
+	  query: "number>=267 number<=271"
+  rare_mythic_one:
+	- rate: 3
+	  query: "r:m"
+	  boosterfun: true
+	- rate: 1 # bonus prototype praetors
+	  rawquery: "(e:dmu number:435) or (e:neo number:513) or (e:snc number:468) or (e:khm number:406)"
+	- rate: 6
+	  query: "r:r"
+	  boosterfun: true
