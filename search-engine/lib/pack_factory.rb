@@ -281,7 +281,7 @@ class PackFactory
       build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {snc_basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
     when "unf"
       # This is very preliminary
-      build_pack_with_random_foil(set_code, 1/3r, :foil, :common_unbalanced, {snc_basic: 1, common_unbalanced: 9, uncommon: 3, rare_mythic: 1, sunf_sticker: 1})
+      build_pack_with_random_foil(set_code, 1/3r, :foil, :common_unbalanced, {basic: 1, common_unbalanced: 9, uncommon: 3, rare_mythic: 1, sunf_sticker: 1})
     when "mid", "vow"
       WeightedPack.new(
         build_pack_with_random_foil(set_code, 1/3r, :foil, :sfc_common, {basic: 1, sfc_common: 9, dfc_common: 1, sfc_uncommon: 2, dfc_uncommon: 1, sfc_rare_mythic: 1}) => 5,
