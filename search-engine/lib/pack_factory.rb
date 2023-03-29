@@ -130,7 +130,7 @@ class PackFactory
       @sheet_factory.from_query("e:#{set_code} #{data["query"]}", count, foil: foil, kind: kind)
     when ["rawquery"]
       kind = balanced ? ColorBalancedCardSheet : CardSheet
-      @sheet_factory.from_query(data["query"], count, foil: foil, kind: kind)
+      @sheet_factory.from_query(data["rawquery"], count, foil: foil, kind: kind)
     when ["any"]
       subsheets = data["any"]
       raise "No balanced support for #{set_code}:any" if balanced
