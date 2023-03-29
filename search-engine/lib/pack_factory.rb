@@ -106,12 +106,65 @@ class PackFactory
     )
   end
 
+  def build_sheet_from_yaml_data(set_code, data)
+    data = data.dup
+    foil = false
+    balanced = false
+    coout = nil
+
+    foil = data.delete("foil") if data["foil"]
+    balanced = data.delete("balanced") if data["balanced"]
+    count = data.delete("count") if data["count"]
+
+    case data.keys
+    when ["code"]
+      raise "No balanced support for #{set_code}" if balanced
+      raise "No count check support for #{set_code}" if count
+      @sheet_factory.explicit_sheet(set_code, data["code"], foil: foil)
+    when ["query"]
+      kind = balanced ? ColorBalancedCardSheet : CardSheet
+      @sheet_factory.from_query(set_code, count, data["query"], foil: foil, kind: kind)
+    when ["rawquery"]
+      kind = balanced ? ColorBalancedCardSheet : CardSheet
+      raise "No support for this type of query" # TODO, needed
+    else
+      raise "Unknown sheet type #{data.keys.join(", ")}"
+    end
+  end
+
+  # variant is just "yaml" for now
+  def build_pack_from_yaml(set_code, variant)
+    root = Pathname(__dir__) + "../../data/boosters"
+    path = root + "#{set_code}.yaml"
+    return nil unless path.exist?
+    data = YAML.load_file(path)
+    sheets = data.delete("sheets").to_h{|sheet_name, sheet_data|
+      [sheet_name, build_sheet_from_yaml_data(set_code, sheet_data)]
+    }
+    case data.keys
+    when ["pack"]
+      Pack.new(data["pack"].map{|name, weight|
+        sheet = sheets[name] or raise "Can't build sheet #{name} for #{set_code}"
+        [sheet, weight]
+      }.to_h)
+    when ["packs"]
+      raise "No support for this type of pack" # TODO, needed
+    else
+      raise "Unknown pack type #{data.keys.join(", ")}"
+    end
+  end
+
   def for(set_code, variant=nil)
     variant = nil if variant == "default"
     set = @db.resolve_edition(set_code)
     raise "Invalid set code #{set_code}" unless set
     set_code = set.code # Normalize
     booster_code = [set_code, variant].compact.join("-")
+
+    # This is temporary
+    if variant =~ /yaml/
+      return build_pack_from_yaml(set_code, variant)
+    end
 
     # https://mtg.gamepedia.com/Booster_pack
     pack = case booster_code
