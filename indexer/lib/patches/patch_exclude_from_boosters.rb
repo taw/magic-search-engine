@@ -29,21 +29,8 @@ class PatchExcludeFromBoosters < Patch
         card["exclude_from_boosters"] = true
       end
 
-      # WAR are Japanese alt arts are in boosters,
-      # just not in English boosters, so count them out
-      #
-      # Other star cards are foil alt arts and in boosters
-      if card["number"] =~ /★/ and set_code == "war"
-        card["exclude_from_boosters"] = true
-      end
-
       # Mostly misprints and such
       if card["number"] =~ /†/ and (set_code != "arn" and set_code != "shm")
-        card["exclude_from_boosters"] = true
-      end
-
-      # Mostly Chinese non-skeleton versions
-      if card["number"] =~ /s/i and ["por", "usg", "inv", "pcy", "5ed", "6ed", "7ed", "8ed", "9ed"].include?(set_code)
         card["exclude_from_boosters"] = true
       end
     end
@@ -81,7 +68,7 @@ class PatchExcludeFromBoosters < Patch
     when "stx", "gpt"
       number_i > base_size or number =~ /★/
     when "por"
-      number_i > base_size or number =~ /d/
+      number_i > base_size or number =~ /[ds]/
     when "iko"
       # borderless planeswalkers are numbered #276-278
       # showcase cards are numbered #279-313
@@ -103,6 +90,15 @@ class PatchExcludeFromBoosters < Patch
       false
     when "brr"
       number =~ /z/
+    when "usg", "inv", "pcy", "5ed", "6ed", "7ed", "8ed", "9ed"
+      # Mostly Chinese non-skeleton versions
+      number_i > base_size or number =~ /s/i
+    when "war"
+      # WAR are Japanese alt arts are in boosters,
+      # just not in English boosters, so count them out
+      #
+      # Other star cards are foil alt arts and in boosters
+      number_i > base_size or number =~ /★/
     else
       # Default is to exclude everything beyond base size
       if base_size
