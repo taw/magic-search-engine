@@ -1,0 +1,39 @@
+# Has DFCs but no dedicated DFC slot
+packs:
+- basic: 1
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  chance: 31
+- basic: 1
+  common: 9
+  uncommon: 3
+  rare_mythic: 1
+  foil: 1
+  chance: 9
+sheets:
+  rare_mythic:
+    any:
+    - rate: 2
+      query: "r:r"
+    - rate: 1
+      query: "r:m"
+  uncommon:
+    query: "r:u"
+  common:
+    query: "r:c"
+  basic:
+    query: "r:b"
+  foil:
+    foil: true
+    any:
+      - chance: 5
+        query: "r:u"
+      - chance: 12
+        query: "r<=c"
+      - chance: 3
+        any:
+        - rate: 2
+          query: "r:r"
+        - rate: 1
+          query: "r:m"

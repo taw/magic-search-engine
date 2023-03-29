@@ -116,11 +116,15 @@ class PackFactory
     balanced = data.delete("balanced") if data.has_key?("balanced")
     count = data.delete("count") if data.has_key?("count")
 
-    sheet = case data.keys
+    sheet = case data.keys.sort
     when ["code"]
       raise "No balanced support for #{set_code}:code" if balanced
       raise "No count check support for #{set_code}:code" if count # TODO
       @sheet_factory.explicit_sheet(set_code, data["code"], foil: foil)
+    when ["code", "set"]
+      raise "No balanced support for #{set_code}:code" if balanced
+      raise "No count check support for #{set_code}:code" if count # TODO
+      @sheet_factory.explicit_sheet(data["set"], data["code"], foil: foil)
     when ["query"]
       kind = balanced ? ColorBalancedCardSheet : CardSheet
       @sheet_factory.from_query("e:#{set_code} #{data["query"]}", count, foil: foil, kind: kind)
