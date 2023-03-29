@@ -101,6 +101,8 @@ class PatchExcludeFromBoosters < Patch
     when "bbd", "cn2", "unh"
       # have over-set-size cards in boosters
       false
+    when "brr"
+      number =~ /z/
     else
       # Default is to exclude everything beyond base size
       if base_size
