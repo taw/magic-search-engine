@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-require "pathname-glob"
-# require "rmagick"
 require "fastimage"
+require "pathname-glob"
+require "pry"
 require_relative "../search-engine/lib/card_database"
 
 class CardPrinting
