@@ -5,6 +5,7 @@ class PackFactory
     @db = db
     @sheet_factory = CardSheetFactory.new(@db)
     @sheet_cache = {}
+    @pack_factory_yaml = PackFactoryYaml.new(@db, @sheet_factory)
   end
 
   def inspect
@@ -106,109 +107,6 @@ class PackFactory
     )
   end
 
-  def build_sheet_from_yaml_data(set_code, name, data)
-    data = data.dup
-    foil = false
-    balanced = false
-    coout = nil
-
-    foil = data.delete("foil") if data.has_key?("foil")
-    balanced = data.delete("balanced") if data.has_key?("balanced")
-    count = data.delete("count") if data.has_key?("count")
-
-    sheet = case data.keys.sort
-    when ["code"]
-      raise "No balanced support for #{set_code}:code" if balanced
-      raise "No count check support for #{set_code}:code" if count # TODO
-      @sheet_factory.explicit_sheet(set_code, data["code"], foil: foil)
-    when ["code", "set"]
-      raise "No balanced support for #{set_code}:code" if balanced
-      raise "No count check support for #{set_code}:code" if count # TODO
-      @sheet_factory.explicit_sheet(data["set"], data["code"], foil: foil)
-    when ["query"]
-      kind = balanced ? ColorBalancedCardSheet : CardSheet
-      @sheet_factory.from_query("e:#{set_code} #{data["query"]}", count, foil: foil, kind: kind)
-    when ["rawquery"]
-      kind = balanced ? ColorBalancedCardSheet : CardSheet
-      @sheet_factory.from_query(data["rawquery"], count, foil: foil, kind: kind)
-    when ["any"]
-      subsheets = data["any"]
-      raise "No balanced support for #{set_code}:any" if balanced
-      if subsheets.all?{|s| s["rate"]}
-        chances = subsheets.map{|d| d.delete("rate")}
-        sheets = subsheets.map{|d|
-          build_sheet_from_yaml_data(set_code, nil, d.merge("foil" => foil))
-        }
-        CardSheet.new(
-          sheets,
-          chances.zip(sheets).map{|c,s| c*s.elements.size}
-        )
-      elsif subsheets.all?{|s| s["chance"]}
-        chances = subsheets.map{|d| d.delete("chance")}
-        sheets = subsheets.map{|d|
-          build_sheet_from_yaml_data(set_code, nil, d.merge("foil" => foil))
-        }
-        CardSheet.new(
-          sheets,
-          chances
-        )
-      else
-        raise "Incorrect subsheet data for #{set_code} any"
-      end
-    else
-      raise "Unknown sheet type #{data.keys.join(", ")}"
-    end
-    sheet.name = sheet_name(set_code, name) if name
-    sheet
-  end
-
-  def build_pack_from_yaml(set, full_variant)
-    set_code = set.code
-    root = Pathname(__dir__) + "../../data/boosters"
-
-    if full_variant == "yaml"
-      variant = nil
-      path = root + "#{set_code}.yaml"
-    else
-      variant = full_variant.sub("-yaml", "")
-      path = root + "#{set_code}-#{variant}.yaml"
-    end
-
-    return nil unless path.exist?
-
-    data = YAML.load_file(path)
-    sheets = data.delete("sheets").to_h{|sheet_name, sheet_data|
-      [sheet_name, build_sheet_from_yaml_data(set_code, sheet_name, sheet_data)]
-    }
-    pack = case data.keys
-    when ["pack"]
-      Pack.new(data["pack"].map{|name, weight|
-        sheet = sheets[name] or raise "Can't build sheet #{name} for #{set_code}"
-        [sheet, weight]
-      }.to_h)
-    when ["packs"]
-      WeightedPack.new(data["packs"].map{|subpack_data|
-        chance = subpack_data.delete("chance")
-        subpack = Pack.new(subpack_data.map{|name, weight|
-          sheet = sheets[name] or raise "Can't build sheet #{name} for #{set_code}"
-          [sheet, weight]
-        }.to_h)
-        [subpack, chance]
-      }.to_h)
-    else
-      raise "Unknown pack type #{data.keys.join(", ")}"
-    end
-
-    pack.set = set
-    pack.code = "#{set_code}-#{full_variant}"
-    if variant
-      pack.name = set.booster_variants[variant]
-    else
-      pack.name = set.name
-    end
-    pack
-  end
-
   def for(set_code, variant=nil)
     variant = nil if variant == "default"
     set = @db.resolve_edition(set_code)
@@ -218,7 +116,19 @@ class PackFactory
 
     # This is temporary
     if variant =~ /yaml/
-      return build_pack_from_yaml(set, variant)
+      return @pack_factory_yaml.build_pack(set, variant)
+    end
+
+    # This is a hack to make verification easier
+    if ENV["YAML_PACKS"]
+      pack = @pack_factory_yaml.build_pack(set, [variant, "yaml"].compact.join("-"))
+      if pack
+        warn "Override for #{booster_code}"
+        pack.code = booster_code
+        return pack
+      else
+        warn "No override for #{booster_code}"
+      end
     end
 
     # https://mtg.gamepedia.com/Booster_pack
@@ -371,7 +281,7 @@ class PackFactory
       build_pack_with_random_foil(set_code, 1/3r, :foil, :common, {snc_basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
     when "unf"
       # This is very preliminary
-      build_pack_with_random_foil(set_code, 1/3r, :foil, :common_unbalanced, {snc_basic: 1, common_unbalanced: 9, uncommon: 3, rare_mythic: 1, sunf_sticker: 1})
+      build_pack_with_random_foil(set_code, 1/3r, :foil, :common_unbalanced, {basic: 1, common_unbalanced: 9, uncommon: 3, rare_mythic: 1, sunf_sticker: 1})
     when "mid", "vow"
       WeightedPack.new(
         build_pack_with_random_foil(set_code, 1/3r, :foil, :sfc_common, {basic: 1, sfc_common: 9, dfc_common: 1, sfc_uncommon: 2, dfc_uncommon: 1, sfc_rare_mythic: 1}) => 5,
