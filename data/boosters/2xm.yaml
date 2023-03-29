@@ -1,0 +1,19 @@
+pack:
+  common: 8
+  uncommon: 3
+  rare_mythic: 2
+  dedicated_foil_double_masters: 2
+sheets:
+  dedicated_foil_double_masters:
+    foil: true
+    any:
+      - query: "r<=c"
+        chance: 8
+      - query: "r:u"
+        chance: 3
+      - any:
+        - query: "r:r"
+          rate: 2
+        - query: "r:m"
+          rate: 1
+        chance: 2
