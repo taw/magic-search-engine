@@ -134,12 +134,20 @@ class PackFactory
     sheet
   end
 
-  # variant is just "yaml" for now
-  def build_pack_from_yaml(set, variant)
+  def build_pack_from_yaml(set, full_variant)
     set_code = set.code
     root = Pathname(__dir__) + "../../data/boosters"
-    path = root + "#{set_code}.yaml"
+
+    if full_variant == "yaml"
+      variant = nil
+      path = root + "#{set_code}.yaml"
+    else
+      variant = full_variant.sub("-yaml", "")
+      path = root + "#{set_code}-#{variant}.yaml"
+    end
+
     return nil unless path.exist?
+
     data = YAML.load_file(path)
     sheets = data.delete("sheets").to_h{|sheet_name, sheet_data|
       [sheet_name, build_sheet_from_yaml_data(set_code, sheet_name, sheet_data)]
@@ -157,7 +165,7 @@ class PackFactory
     end
 
     pack.set = set
-    pack.code = "#{set_code}-yaml"
+    pack.code = "#{set_code}-#{full_variant}"
     pack.name = set.name
     pack
   end

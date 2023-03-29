@@ -101,4 +101,8 @@ class CardSet
   def physical_cards_in_boosters(foil=false)
     physical_cards(foil).select(&:in_boosters?)
   end
+
+  def inspect
+    "CardSet[#{@code}, #{@name}]"
+  end
 end
