@@ -253,7 +253,7 @@ class PackFactory
       "tpr", "me1", "me2", "me3", "me4",
       # They have DFCs but no separate slot for DFCs
       "ori", "xln", "rix",
-      # CardSheetFactory is aware that mastrepieces go onto foil sheet, wo don't need to do anything
+      # CardSheetFactory is aware that mastrepieces go onto foil sheet, we don't need to do anything
       "mh1"
       build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
     when "con", "wwk", "gtc", "bng"
