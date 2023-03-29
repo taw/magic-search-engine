@@ -183,7 +183,14 @@ class PackFactory
         [sheet, weight]
       }.to_h)
     when ["packs"]
-      raise "No support for this type of pack" # TODO, needed
+      WeightedPack.new(data["packs"].map{|subpack_data|
+        chance = subpack_data.delete("chance")
+        subpack = Pack.new(subpack_data.map{|name, weight|
+          sheet = sheets[name] or raise "Can't build sheet #{name} for #{set_code}"
+          [sheet, weight]
+        }.to_h)
+        [subpack, chance]
+      }.to_h)
     else
       raise "Unknown pack type #{data.keys.join(", ")}"
     end
