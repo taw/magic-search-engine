@@ -157,7 +157,7 @@ class PackFactory
     end
 
     pack.set = set
-    pack.code = set_code
+    pack.code = "#{set_code}-yaml"
     pack.name = set.name
     pack
   end
@@ -184,7 +184,7 @@ class PackFactory
       build_pack(set_code, {basic: 1, common_unbalanced: 6, uncommon: 2, rare: 1})
     when "lea", "leb", "2ed", "3ed"
       build_pack(set_code, {explicit_common: 11, explicit_uncommon: 3, explicit_rare: 1})
-    # 6ed came out after foils started, but didn't have foils
+    # 6ed came out after foils started, but it didn't have foils
     when "4ed", "5ed", "6ed"
       build_pack(set_code, {common: 11, uncommon: 3, rare: 1})
     when "mir", "vis", "wth", "tmp", "sth", "exo", "usg"

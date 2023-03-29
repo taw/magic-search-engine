@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get "deck" => "deck#index"
   get "sealed" => "sealed#index"
   get "pack" => "pack#index"
+  get "pack/yaml" => "pack#yaml"
   get "pack/:id" => "pack#show"
   get "/settings" => "settings#index"
   get "/" => "card#index"
