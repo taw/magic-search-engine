@@ -126,7 +126,7 @@ class PackFactory
       @sheet_factory.from_query("e:#{set_code} #{data["query"]}", count, foil: foil, kind: kind)
     when ["rawquery"]
       kind = balanced ? ColorBalancedCardSheet : CardSheet
-      raise "No support for this type of query" # TODO, needed
+      @sheet_factory.from_query(data["query"], count, foil: foil, kind: kind)
     else
       raise "Unknown sheet type #{data.keys.join(", ")}"
     end
