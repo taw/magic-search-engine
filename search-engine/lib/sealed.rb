@@ -12,7 +12,9 @@ class Sealed
       end
       set_code, variant = set_code.split("-", 2)
       pack = factory.for(set_code, variant)
-      raise "No pack for set #{set_code}" unless pack
+      unless pack
+        raise "No pack for set #{set_code}#{variant && " variant #{variant}"}"
+      end
       @packs << [count, pack]
     end
   end
