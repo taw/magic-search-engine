@@ -106,7 +106,7 @@ class PackFactory
     )
   end
 
-  def build_sheet_from_yaml_data(set_code, data)
+  def build_sheet_from_yaml_data(set_code, name, data)
     data = data.dup
     foil = false
     balanced = false
@@ -116,32 +116,35 @@ class PackFactory
     balanced = data.delete("balanced") if data["balanced"]
     count = data.delete("count") if data["count"]
 
-    case data.keys
+    sheet = case data.keys
     when ["code"]
       raise "No balanced support for #{set_code}" if balanced
       raise "No count check support for #{set_code}" if count
       @sheet_factory.explicit_sheet(set_code, data["code"], foil: foil)
     when ["query"]
       kind = balanced ? ColorBalancedCardSheet : CardSheet
-      @sheet_factory.from_query(set_code, count, data["query"], foil: foil, kind: kind)
+      @sheet_factory.from_query("e:#{set_code} #{data["query"]}", count, foil: foil, kind: kind)
     when ["rawquery"]
       kind = balanced ? ColorBalancedCardSheet : CardSheet
       raise "No support for this type of query" # TODO, needed
     else
       raise "Unknown sheet type #{data.keys.join(", ")}"
     end
+    sheet.name = sheet_name(set_code, name)
+    sheet
   end
 
   # variant is just "yaml" for now
-  def build_pack_from_yaml(set_code, variant)
+  def build_pack_from_yaml(set, variant)
+    set_code = set.code
     root = Pathname(__dir__) + "../../data/boosters"
     path = root + "#{set_code}.yaml"
     return nil unless path.exist?
     data = YAML.load_file(path)
     sheets = data.delete("sheets").to_h{|sheet_name, sheet_data|
-      [sheet_name, build_sheet_from_yaml_data(set_code, sheet_data)]
+      [sheet_name, build_sheet_from_yaml_data(set_code, sheet_name, sheet_data)]
     }
-    case data.keys
+    pack = case data.keys
     when ["pack"]
       Pack.new(data["pack"].map{|name, weight|
         sheet = sheets[name] or raise "Can't build sheet #{name} for #{set_code}"
@@ -152,6 +155,11 @@ class PackFactory
     else
       raise "Unknown pack type #{data.keys.join(", ")}"
     end
+
+    pack.set = set
+    pack.code = set_code
+    pack.name = set.name
+    pack
   end
 
   def for(set_code, variant=nil)
@@ -163,7 +171,7 @@ class PackFactory
 
     # This is temporary
     if variant =~ /yaml/
-      return build_pack_from_yaml(set_code, variant)
+      return build_pack_from_yaml(set, variant)
     end
 
     # https://mtg.gamepedia.com/Booster_pack
