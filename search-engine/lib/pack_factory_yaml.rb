@@ -130,18 +130,35 @@ class PackFactoryYaml
     (data.delete("sheets") || []).each{|sheet_name, sheet_data|
       sheets[sheet_name] = build_sheet_from_yaml_data(set_code, sheet_name, sheet_data)
     }
-    pack = case data.keys
-    when ["pack"]
-      build_pack_from_data(data["pack"], sheets)
-    when ["packs"]
-      WeightedPack.new(data["packs"].map{|subpack_data|
+
+	packs = [{"chance": 1}]
+	data.delete("pack").each do |slot_name, slot_data|
+	  if slot_data.is_a? Integer
+	    packs.map!{|pack| pack.has_key?(slot_name) ? pack[slot_name] += slot_data : pack.store(slot_name, slot_data)}
+	  else
+	    slot_data["count"].times do
+	      newpacks = []
+		  packs.each do |pack|
+		    slot_data["sheets"].each do |sheet_name, sheet_rate|
+		      temp = pack.merge({"chance": pack["chace"] * sheet_rate})
+			  if tpack.has_key?(sheet_name)
+			    temp[sheet_name] += 1
+			  else
+			    temp[sheet_name] = 1
+			  end
+		      newpacks << temp
+		    end
+		  end
+		  packs = newpacks
+		end
+	  end
+	end
+
+    pack = WeightedPack.new(packs.map{|subpack_data|
         chance = subpack_data.delete("chance")
         subpack = build_pack_from_data(subpack_data, sheets)
         [subpack, chance]
       }.to_h)
-    else
-      raise "Unknown pack type #{data.keys.join(", ")}"
-    end
 
     pack.set = set
     pack.code = "#{set_code}-#{full_variant}"

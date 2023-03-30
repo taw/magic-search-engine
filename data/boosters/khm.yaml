@@ -1,16 +1,14 @@
 # no basic
-packs:
-- basictype: 1
-  non_basictype_common: 10
-  uncommon: 3
-  rare_mythic: 1
-  chance: 2
-- basictype: 1
+pack:
+  basictype: 1
   non_basictype_common: 9
   uncommon: 3
   rare_mythic: 1
-  foil: 1
-  chance: 1
+  foil_slot:
+    count: 1
+	sheets:
+      foil: 1
+	  non_basictype_common: 2
 sheets:
   basictype:
     any:
