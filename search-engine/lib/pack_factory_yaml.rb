@@ -73,14 +73,11 @@ class PackFactoryYaml
   end
 
   def merge_pack_parts(part1, part2)
-    chance = (part1["chance"] || 1) * (part2["chance"] || 1)
     result = part1.dup
     part2.each do |k, v|
-      next if k == "chance"
       result[k] ||= 0
       result[k] += v
     end
-    result["chance"] = chance
     result
   end
 
@@ -91,24 +88,41 @@ class PackFactoryYaml
     }.to_h)
   end
 
-  def build_pack_with_alternatives(pack_data, sheets)
-    options = [{"chance" => 1}]
+  def resolve_option_combinations(pack_data)
+    options = [[{}, 1]]
     pack_data.each do |name, count|
       if count.is_a?(Integer)
-        options = options.map{|o| merge_pack_parts(o, {name => count})}
+        options = options.map{|o,c|
+          [merge_pack_parts(o, {name => count}), c]
+        }
       elsif count.is_a?(Array)
-        options = options.flat_map{|o| count.map{|c| merge_pack_parts(o, c)}}
+        merge_options = count.map{|m| [m, m.delete("chance")]}
+        options = options.flat_map{|o1, c1|
+          merge_options.map{|o2, c2|
+            [merge_pack_parts(o1, o2), c1 * c2]
+          }
+        }
       else
         raise "Unknown pack count type #{count.class}"
       end
     end
+    options
+  end
+
+  def build_pack_with_alternatives(pack_data, sheets)
+    if pack_data.all?{|k,v| v.is_a?(Integer)}
+      return build_simple_pack(pack_data, sheets)
+    end
+
+    options = resolve_option_combinations(pack_data)
 
     if options.size == 1
-      build_simple_pack(options[0].except("chance"), sheets)
+      # Not very likely, but technically possible
+      build_simple_pack(options[0][0], sheets)
     else
-      WeightedPack.new(options.map{|subpack_data|
-        chance = subpack_data.delete("chance")
-        [build_simple_pack(subpack_data, sheets), chance]
+      gcd = options.map(&:last).inject(&:gcd)
+      WeightedPack.new(options.map{|subpack_data, chance|
+        [build_simple_pack(subpack_data, sheets), chance / gcd]
       }.to_h)
     end
   end
