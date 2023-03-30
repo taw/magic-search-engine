@@ -20,7 +20,7 @@ class CardSheetFactory
   end
 
   def find_cards(query, assert_count=nil, foil: false, baseset: false)
-    base_query = "++ is:booster"
+    base_query = "++ is:booster is:front"
     if foil
       base_query += " is:foil"
     else
