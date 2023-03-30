@@ -1,0 +1,28 @@
+pack:
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  brr_retro_artifact: 1
+sheets:
+  brr_retro_artifact:
+    any:
+    # Officially 1/6 schematc rate
+    # U/R/M rates guessed to be at 4x/2x/1x multiples
+    - rawquery: "e:brr number<=63 r:uncommon"
+      count: 18
+      rate: 20 # 4*5
+    - rawquery: "e:brr number<=63 r:rare"
+      count: 30
+      rate: 10 # 2*5
+    - rawquery: "e:brr number<=63 r:mythic"
+      count: 15
+      rate: 5 # 1*5
+    - rawquery: "e:brr number>=64 r:uncommon"
+      count: 18
+      rate: 4 # 4*1
+    - rawquery: "e:brr number>=64 r:rare"
+      count: 30
+      rate: 2 # 2*1
+    - rawquery: "e:brr number>=64 r:mythic"
+      count: 15
+      rate: 1 # 1*1

@@ -1,0 +1,54 @@
+# Each pack of 30th Anniversary Edition contains 15 cards, 13 cards in the modern frame—1 rare, 3 uncommons,
+# 7 commons, and 2 basic lands—plus one basic land in the retro frame, one additional retro frame card, and a token.
+pack:
+  a30_common: 7
+  a30_uncommon: 3
+  a30_rare: 1
+  a30_basic: 2
+  a30_retro_basic: 1
+  a30_retro: 1
+sheets:
+  a30_common:
+    query: "r:c number<=297"
+    count: 74
+  a30_uncommon:
+    query: "r:u number<=297"
+    count: 95
+  a30_rare:
+    # Each dual land has 2x the normal frequency. This is true for both modern frame and retro frame dual lands.
+    any:
+    - query: "r:r is:dual number<=297"
+      count: 10
+      rate: 2
+    - query: "r:r -is:dual number<=297"
+      count: 103
+      rate: 1
+  a30_basic:
+    query: "r:b number<=297"
+    count: 15
+  a30_retro_basic:
+    query: "r:b number>297"
+    count: 15
+  a30_retro:
+    # We know two things:
+    # - "approximately three out of every ten packs will contain a rare retro frame card"
+    # - "Each dual land has 2x the normal frequency. This is true for both modern frame and retro frame dual lands."
+    # This is not how normal cards (6% rare) or foils (15% rare) work
+    #
+    # But that's not quite saying they're all equally likely (except duals double), as then we'd have 40% rare.
+    # Flat-ish but not totally flat distribution where C/Dual is 2x, U is 1.5x, R is 1x fits the distribution
+    # with rare ratio on 29.7% and very clean numbers.
+    # Yes this means retro dual is as frequent as retro common, which sounds weird
+    any:
+    - query: "r:c number>297"
+      count: 74
+      rate: 4
+    - query: "r:u number>297"
+      count: 95
+      rate: 3
+    - query: "r:r is:dual number>297"
+      count: 10
+      rate: 4
+    - query: "r:r -is:dual number>297"
+      count: 103
+      rate: 2
