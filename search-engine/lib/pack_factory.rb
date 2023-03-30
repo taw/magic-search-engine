@@ -123,11 +123,10 @@ class PackFactory
     if ENV["YAML_PACKS"]
       pack = @pack_factory_yaml.build_pack(set, [variant, "yaml"].compact.join("-"))
       if pack
-        warn "Override for #{booster_code}"
         pack.code = booster_code
         return pack
       else
-        warn "No override for #{booster_code}"
+        warn "No yaml for #{booster_code}"
       end
     end
 
@@ -400,9 +399,10 @@ class PackFactory
       # 8 commons, 2 uncommons, 1 rare, 3 timeshifted commons, and 1 uncommon or rare timeshifted card.
       build_pack_with_random_foil(set_code, 9/40r, :foil, :pc_common, {pc_common: 8, pc_uncommon: 2, pc_rare: 1, pc_cs_common: 3, pc_cs_uncommon_rare: 1})
     when "vma"
+      # 9/480
       WeightedPack.new(
-        build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, vma_special: 1}) => 9,
-        build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, vma_foil: 1}) => 471,
+        build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, vma_special: 1}) => 3,
+        build_pack(set_code, {common: 10, uncommon: 3, rare_mythic: 1, vma_foil: 1}) => 157,
       )
       # CardSheet.new([power_9, vma_foil], [9, 471])
     when "soi"
