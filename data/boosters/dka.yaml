@@ -33,17 +33,6 @@ sheets:
     - query: "is:dfc r:c"
       count: 4
       rate: 12
-  sfc_common:
-    balanced: true
-    query: "r:c is:sfc"
-  sfc_uncommon:
-    query: "r:u is:sfc"
-  sfc_rare_mythic:
-    any:
-    - query: "r:r is:sfc"
-      rate: 2
-    - query: "r:m is:sfc"
-      rate: 1
   basic:
     # borrowed basic
     rawquery: "e:isd r:b"
