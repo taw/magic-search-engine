@@ -1,15 +1,13 @@
-packs:
-- basic: 1
-  common: 10
-  uncommon: 3
-  rare_mythic_one: 1
-  chance: 31
-- basic: 1
+pack:
+  basic: 1
   common: 9
   uncommon: 3
   rare_mythic_one: 1
-  foil: 1
-  chance: 9
+  foil_slot:
+    count: 1
+    sheets:
+      foil: 9
+      common: 31
 sheets:
   basic:
     # special phyrexian basic lands in 1/4 packs
