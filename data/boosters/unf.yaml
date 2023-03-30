@@ -1,0 +1,21 @@
+# This is very preliminary. Actual UNF packs are a lot more complicated.
+packs:
+- basic: 1
+  common: 9
+  uncommon: 3
+  rare_mythic: 1
+  sunf_sticker: 1
+  chance: 2
+- basic: 1
+  common: 8
+  uncommon: 3
+  rare_mythic: 1
+  sunf_sticker: 1
+  foil: 1
+  chance: 1
+sheets:
+  common:
+    query: "r:c"
+  sunf_sticker:
+    rawquery: "e:sunf t:stickers"
+    count: 48

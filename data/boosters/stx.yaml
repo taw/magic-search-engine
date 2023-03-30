@@ -1,0 +1,50 @@
+packs:
+- sta: 1
+  lesson: 1
+  nonlesson_common: 9
+  uncommon: 3
+  nonlesson_rare_mythic: 1
+  chance: 2
+- sta: 1
+  lesson: 1
+  nonlesson_common: 8
+  uncommon: 3
+  nonlesson_rare_mythic: 1
+  foil: 1
+  chance: 1
+sheets:
+  sta:
+    # Each Draft Booster also has a dedicated slot with an uncommon (67%), rare (26.4%), or mythic rare (6.6%) Mystical Archive card.
+    # https://magic.wizards.com/en/articles/archive/feature/collecting-strixhaven-school-mages-2021-03-25
+    any:
+      - rawquery: "e:sta r:mythic"
+        count: 15
+        rate: 3
+      - rawquery: "e:sta r:rare"
+        count: 30
+        rate: 6
+      - rawquery: "e:sta r:uncommon"
+        count: 18
+        rate: 25
+  lesson:
+    # ratio is guessed, and most likely wrong
+    # uncommons are on uncommon sheet!
+    any:
+      - query: "e:stx t:lesson r:mythic"
+        count: 1
+        rate: 1
+      - query: "e:stx t:lesson r:rare"
+        count: 5
+        rate: 2
+      - query: "e:stx t:lesson r:common"
+        count: 9
+        rate: 11
+  nonlesson_common:
+    balanced: true
+    query: "r:common -t:lesson"
+  nonlesson_rare_mythic:
+    any:
+    - query: "r:rare -t:lesson"
+      rate: 2
+    - query: "r:mythic -t:lesson"
+      rate: 1
