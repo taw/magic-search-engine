@@ -2,7 +2,7 @@
   include_context "db"
 
   it "is_digital" do
-    assert_search_equal "is:digital", "e:me1,me2,me3,me4,vma,tpr,pana,pmoa,td0,td2,ana,pz1,pz2,prm,ha1,ha2,ha3,ha4,ha5,ha6,ea1,ea2,xana,past,psdg,ajmp,akr,anb,oana,klr,j21,yneo,ymid,ysnc,hbg,ydmu,ybro,yone"
+    assert_search_equal "is:digital", "e:me1,me2,me3,me4,vma,tpr,pana,pmoa,td0,td2,ana,pz1,pz2,prm,ha1,ha2,ha3,ha4,ha5,ha6,ea1,ea2,xana,past,psdg,ajmp,akr,anb,oana,klr,j21,yneo,ymid,ysnc,hbg,ydmu,ybro,yone,sir,sis"
   end
 
   it "is:paper" do
