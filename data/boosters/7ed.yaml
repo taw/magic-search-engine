@@ -12,14 +12,14 @@ pack:
   - foil_rare: 1
     chance: 1
   uncommon_maybe_foil:
-  - uncommon: 1
+  - uncommon: 3
     chance: 97 # 100 - 3
-  - foil_uncommon: 1
+  - uncommon: 2
+    foil_uncommon: 1
     chance: 3
   common_maybe_foil:
-  - common: 1
+  - common: 10
     chance: 90 # 100 - 10
-  - foil_common: 1
+  - common: 9
+    foil_common: 1
     chance: 10
-  common: 9
-  uncommon: 2
