@@ -342,9 +342,11 @@ class CardSheetFactory
   end
 
   def explicit_sheet(set_code, print_sheet_code, foil: false)
-    cards = @db.sets[set_code].printings.select{|c| c.in_boosters? and c.print_sheet&.include?(print_sheet_code) }
+    cards = @db.sets[set_code].printings.select{|c|
+      c.in_boosters? and c.print_sheet and c.print_sheet.scan(/[A-Z]+/).include?(print_sheet_code)
+    }
     groups = cards.group_by{|c| c.print_sheet[/#{print_sheet_code}(\d+)/, 1].to_i }
-    subsheets = groups.map{|mult,cards| [CardSheet.new(cards.map{|c| PhysicalCard.for(c, foil) }), mult] }
+    subsheets = groups.map{|mult,cards| [CardSheet.new(cards.map{|c| PhysicalCard.for(c, foil) }.uniq), mult] }
     mix_sheets(*subsheets)
   end
 
