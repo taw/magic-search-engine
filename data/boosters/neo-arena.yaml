@@ -16,10 +16,10 @@ sheets:
     any:
     - query: "r:c is:dfc"
       count: 6
-      rate: 7
+      chance: 7
     - query: "r:u is:dfc"
       count: 8
-      rate: 3
+      chance: 3
   sfc_common:
     balanced: true
     query: "r:c is:sfc -is:gainland"
