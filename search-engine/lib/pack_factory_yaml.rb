@@ -10,10 +10,10 @@ class PackFactoryYaml
     @default_sheets ||= YAML.load('
     rare_mythic:
       any:
-      - rate: 2
-        query: "r:r"
-      - rate: 1
-        query: "r:m"
+      - query: "r:r"
+        rate: 2
+      - query: "r:m"
+        rate: 1
     rare:
       query: "r:r"
     uncommon:
@@ -26,16 +26,16 @@ class PackFactoryYaml
     foil:
       foil: true
       any:
-        - chance: 5
-          query: "r:u"
-        - chance: 12
-          query: "r<=c"
-        - chance: 3
-          any:
-          - rate: 2
-            query: "r:r"
-          - rate: 1
-            query: "r:m"
+        - query: "r<=c"
+          chance: 12
+        - query: "r:u"
+          chance: 5
+        - any:
+          - query: "r:r"
+            rate: 2
+          - query: "r:m"
+            rate: 1
+          chance: 3
     ')
   end
 
@@ -60,7 +60,7 @@ class PackFactoryYaml
       @sheet_factory.explicit_sheet(data["set"], data["code"], foil: foil)
     when ["query"]
       kind = balanced ? ColorBalancedCardSheet : CardSheet
-      @sheet_factory.from_query("e:#{set_code} #{data["query"]}", count, foil: foil, kind: kind)
+      @sheet_factory.from_query("e:#{set_code} (#{data["query"]})", count, foil: foil, kind: kind)
     when ["rawquery"]
       kind = balanced ? ColorBalancedCardSheet : CardSheet
       @sheet_factory.from_query(data["rawquery"], count, foil: foil, kind: kind)
@@ -125,7 +125,7 @@ class PackFactoryYaml
 
     data = YAML.load_file(path)
     sheets = Hash.new{|ht,k|
-      ht[k] = build_sheet_from_yaml_data(set_code, k, default_sheets[k])
+      ht[k] = build_sheet_from_yaml_data(set_code, k, default_sheets[k]) if default_sheets[k]
     }
     (data.delete("sheets") || []).each{|sheet_name, sheet_data|
       sheets[sheet_name] = build_sheet_from_yaml_data(set_code, sheet_name, sheet_data)

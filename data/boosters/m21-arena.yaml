@@ -1,0 +1,18 @@
+pack:
+  nongainland_common: 10
+  uncommon: 3
+  rare_mythic: 1
+  basic_or_gainland: 1
+sheets:
+  nongainland_common:
+    balanced: true
+    query: "r:c  -is:gainland"
+  basic_or_gainland:
+    # showcase variant which is just as common as any other basic land variation
+    any:
+    - query: "t:basic"
+      count: 20
+      rate: 3
+    - query: "is:gainland"
+      count: 10
+      rate: 6

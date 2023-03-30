@@ -253,7 +253,7 @@ class PackFactory
       "tpr", "me1", "me2", "me3", "me4",
       # They have DFCs but no separate slot for DFCs
       "ori", "xln", "rix",
-      # CardSheetFactory is aware that mastrepieces go onto foil sheet, wo don't need to do anything
+      # CardSheetFactory is aware that mastrepieces go onto foil sheet, we don't need to do anything
       "mh1"
       build_pack_with_random_foil(set_code, 9/40r, :foil, :common, {basic: 1, common: 10, uncommon: 3, rare_mythic: 1})
     when "con", "wwk", "gtc", "bng"
@@ -666,7 +666,7 @@ class PackFactory
     when "neo"
       build_pack_with_random_foil(set_code, 1/3r, :foil, :neo_sfc_common, {neo_land: 1, neo_dfc_common_uncommon: 1, neo_sfc_common: 9, sfc_uncommon: 3, rare_mythic: 1})
     when "neo-arena"
-      build_pack(set_code, {neo_land: 1, neo_dfc_common_uncommon: 1, sfc_common: 9, sfc_uncommon: 3, rare_mythic: 1})
+      build_pack(set_code, {neo_land: 1, neo_dfc_common_uncommon: 1, neo_sfc_common: 9, sfc_uncommon: 3, rare_mythic: 1})
     when "bro"
       WeightedPack.new(
         build_pack(set_code, {bro_foil: 1, common: 9, uncommon: 3, rare_mythic: 1, brr_retro_artifact: 1}) => 4,
