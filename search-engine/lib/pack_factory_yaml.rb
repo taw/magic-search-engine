@@ -72,11 +72,45 @@ class PackFactoryYaml
     end
   end
 
-  def build_pack_from_data(pack_data, sheets)
-    Pack.new(pack_data.map{|name, weight|
+  def merge_pack_parts(part1, part2)
+    chance = (part1["chance"] || 1) * (part2["chance"] || 1)
+    result = part1.dup
+    part2.each do |k, v|
+      next if k == "chance"
+      result[k] ||= 0
+      result[k] += v
+    end
+    result["chance"] = chance
+    result
+  end
+
+  def build_simple_pack(pack_data, sheets)
+    Pack.new(pack_data.map{|name, count|
       sheet = sheets[name] or raise "Can't build sheet #{name}"
-      [sheet, weight]
+      [sheet, count]
     }.to_h)
+  end
+
+  def build_pack_with_alternatives(pack_data, sheets)
+    options = [{"chance" => 1}]
+    pack_data.each do |name, count|
+      if count.is_a?(Integer)
+        options = options.map{|o| merge_pack_parts(o, {name => count})}
+      elsif count.is_a?(Array)
+        options = options.flat_map{|o| count.map{|c| merge_pack_parts(o, c)}}
+      else
+        raise "Unknown pack count type #{count.class}"
+      end
+    end
+
+    if options.size == 1
+      build_simple_pack(options[0].except("chance"), sheets)
+    else
+      WeightedPack.new(options.map{|subpack_data|
+        chance = subpack_data.delete("chance")
+        [build_simple_pack(subpack_data, sheets), chance]
+      }.to_h)
+    end
   end
 
   def build_pack(set, full_variant)
@@ -100,11 +134,11 @@ class PackFactoryYaml
     }
     pack = case data.keys
     when ["pack"]
-      build_pack_from_data(data["pack"], sheets)
+      build_pack_with_alternatives(data["pack"], sheets)
     when ["packs"]
       WeightedPack.new(data["packs"].map{|subpack_data|
         chance = subpack_data.delete("chance")
-        subpack = build_pack_from_data(subpack_data, sheets)
+        subpack = build_pack_with_alternatives(subpack_data, sheets)
         [subpack, chance]
       }.to_h)
     else
