@@ -108,7 +108,7 @@ class PackFactoryYaml
 
   def build_pack_from_data(pack_data, sheets)
     Pack.new(pack_data.map{|name, weight|
-      sheet = sheets[name] or raise "Can't build sheet #{name} for #{set_code}"
+      sheet = sheets[name] or raise "Can't build sheet #{name}"
       [sheet, weight]
     }.to_h)
   end
