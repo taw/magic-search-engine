@@ -97,10 +97,12 @@ class PackFactoryYaml
 
   def path_for(set, variant)
     root = Pathname(__dir__) + "../../data/boosters"
+    set_code = set.code
+    set_code += "_" if set_code == "con"
     if variant
-      path = root + "#{set.code}-#{variant}.yaml"
+      root + "#{set_code}-#{variant}.yaml"
     else
-      path = root + "#{set.code}.yaml"
+      root + "#{set_code}.yaml"
     end
   end
 
