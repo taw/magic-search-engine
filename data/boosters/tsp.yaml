@@ -1,0 +1,26 @@
+pack:
+  common_or_foil:
+  - common: 1
+    chance: 31
+  - ts_foil: 1
+    chance: 9
+  common: 9
+  uncommon: 3
+  rare: 1
+  tsts: 1
+sheets:
+  ts_foil:
+    foil: true
+    any:
+    - query: "r:r"
+      chance: 1
+    - query: "r:u"
+      chance: 2
+    - query: "r<=c"
+      chance: 4
+    - rawquery: "e:tsb"
+      count: 121
+      chance: 1
+  tsts:
+    rawquery: "e:tsb"
+    count: 121
