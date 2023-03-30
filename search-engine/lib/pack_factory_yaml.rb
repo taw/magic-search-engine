@@ -133,18 +133,18 @@ class PackFactoryYaml
 
     pack = case data.keys
     when ["pack"]
-      packs = [{"chance": 1}]
+      packs_array = [{"chance": 1}]
       data["pack"].each do |slot_name, slot_data|
         if slot_data.is_a? Integer
-          packs.map!{|pack| pack.has_key?(slot_name) ? pack[slot_name] += slot_data : pack.store(slot_name, slot_data)}
+          packs_array.map!{|pack_type| pack_type.has_key?(slot_name) ? pack_type[slot_name] += slot_data : pack_type.store(slot_name, slot_data)}
         else
           slot_data.delete("count").times do
             newpacks = []
-            packs.each do |pack|
+            packs_array.each do |pack_type|
               case slot_data.keys |sd|
               when ["sheet"]
                 slot_data["sheets"].each do |sheet_name, sheet_rate|
-                temp = pack.merge({"chance": pack["chace"] * sheet_rate})
+                temp = pack_type.merge({"chance": pack_type["chace"] * sheet_rate})
                 if tpack.has_key?(sheet_name)
                   temp[sheet_name] += 1
                 else
@@ -153,11 +153,11 @@ class PackFactoryYaml
                 newpacks << temp
               end
             end
-            packs = newpacks
+            packs_array = newpacks
           end
         end
       end
-      WeightedPack.new(packs.map{|subpack_data|
+      WeightedPack.new(packs_array.map{|subpack_data|
         chance = subpack_data.delete("chance")
         subpack = build_pack_from_data(subpack_data, sheets)
         [subpack, chance]
