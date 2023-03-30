@@ -4,39 +4,8 @@ class PackFactoryYaml
     @sheet_factory = sheet_factory
   end
 
-  # Most common sheets that would be pointless to repeat in every single yaml file
-  # These names are not reserved and can be overriden by individual YAML files
   def default_sheets
-    @default_sheets ||= YAML.load('
-    rare_mythic:
-      any:
-      - query: "r:r"
-        rate: 2
-      - query: "r:m"
-        rate: 1
-    rare:
-      query: "r:r"
-    uncommon:
-      query: "r:u"
-    common:
-      balanced: true
-      query: "r:c"
-    basic:
-      query: "r:b"
-    foil:
-      foil: true
-      any:
-        - query: "r<=c"
-          chance: 12
-        - query: "r:u"
-          chance: 5
-        - any:
-          - query: "r:r"
-            rate: 2
-          - query: "r:m"
-            rate: 1
-          chance: 3
-    ')
+    @default_sheets ||= YAML.load_file(Pathname(__dir__) + "../../data/boosters/common.yaml")
   end
 
   def build_sheet_from_yaml_data(set_code, name, data)
@@ -48,21 +17,18 @@ class PackFactoryYaml
     foil = data.delete("foil") if data.has_key?("foil")
     balanced = data.delete("balanced") if data.has_key?("balanced")
     count = data.delete("count") if data.has_key?("count")
+    kind = balanced ? ColorBalancedCardSheet : CardSheet
 
     sheet = case data.keys.sort
     when ["code"]
       raise "No balanced support for #{set_code}:code" if balanced
-      raise "No count check support for #{set_code}:code" if count # TODO
-      @sheet_factory.explicit_sheet(set_code, data["code"], foil: foil)
+      @sheet_factory.explicit_sheet(set_code, data["code"], foil: foil, count: count)
     when ["code", "set"]
       raise "No balanced support for #{set_code}:code" if balanced
-      raise "No count check support for #{set_code}:code" if count # TODO
-      @sheet_factory.explicit_sheet(data["set"], data["code"], foil: foil)
+      @sheet_factory.explicit_sheet(data["set"], data["code"], foil: foil, count: count)
     when ["query"]
-      kind = balanced ? ColorBalancedCardSheet : CardSheet
       @sheet_factory.from_query("e:#{set_code} (#{data["query"]})", count, foil: foil, kind: kind)
     when ["rawquery"]
-      kind = balanced ? ColorBalancedCardSheet : CardSheet
       @sheet_factory.from_query(data["rawquery"], count, foil: foil, kind: kind)
     when ["any"]
       subsheets = data["any"].map(&:dup)

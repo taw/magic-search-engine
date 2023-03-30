@@ -1,0 +1,30 @@
+# Most common sheets that would be pointless to repeat in every single yaml file
+# These names are not reserved and can be overriden by individual YAML files
+rare_mythic:
+  any:
+  - query: "r:r"
+    rate: 2
+  - query: "r:m"
+    rate: 1
+rare:
+  query: "r:r"
+uncommon:
+  query: "r:u"
+common:
+  balanced: true
+  query: "r:c"
+basic:
+  query: "r:b"
+foil:
+  foil: true
+  any:
+  - query: "r<=c"
+    chance: 12
+  - query: "r:u"
+    chance: 5
+  - any:
+    - query: "r:r"
+      rate: 2
+    - query: "r:m"
+      rate: 1
+    chance: 3
