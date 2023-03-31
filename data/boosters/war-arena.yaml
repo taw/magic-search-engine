@@ -1,0 +1,33 @@
+packs:
+- common: 10
+  nonplaneswalker_uncommon: 3
+  planeswalker_rare_mythic: 1
+  chance: 29
+- common: 10
+  nonplaneswalker_uncommon: 2
+  planeswalker_uncommon: 1
+  nonplaneswalker_rare_mythic: 1
+  chance: 92 # (121-29)
+sheets:
+  planeswalker_uncommon:
+    query: "e:war t:planeswalker r:uncommon"
+    count: 20
+  nonplaneswalker_uncommon:
+    query: "e:war -t:planeswalker r:uncommon"
+    count: 60
+  planeswalker_rare_mythic:
+    any:
+    - query: "e:war t:planeswalker r:rare"
+      count: 13
+      rate: 2
+    - query: "e:war t:planeswalker r:mythic"
+      count: 3
+      rate: 1
+  nonplaneswalker_rare_mythic:
+    any:
+    - query: "e:war -t:planeswalker r:rare"
+      count: 40
+      rate: 2
+    - query: "e:war -t:planeswalker r:mythic"
+      count: 12
+      rate: 1
