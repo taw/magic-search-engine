@@ -645,31 +645,31 @@ class CardSheetFactory
   end
 
   def war_planeswalker_uncommon
-    from_query('e:war t:planeswalker r:uncommon -number:/★/', 20)
+    from_query("e:war t:planeswalker r:uncommon", 20)
   end
 
   def war_nonplaneswalker_uncommon
-    from_query('e:war -t:planeswalker r:uncommon', 60)
+    from_query("e:war -t:planeswalker r:uncommon", 60)
   end
 
   def war_planeswalker_rare_mythic
     mix_sheets(
-      [from_query('e:war t:planeswalker r:rare -number:/★/', 13), 2],
-      [from_query('e:war t:planeswalker r:mythic -number:/★/', 3), 1],
+      [from_query("e:war t:planeswalker r:rare", 13), 2],
+      [from_query("e:war t:planeswalker r:mythic", 3), 1],
     )
   end
 
   def war_nonplaneswalker_rare_mythic
     mix_sheets(
-      [from_query('e:war -t:planeswalker r:rare', 40), 2],
-      [from_query('e:war -t:planeswalker r:mythic', 12), 1],
+      [from_query("e:war -t:planeswalker r:rare", 40), 2],
+      [from_query("e:war -t:planeswalker r:mythic", 12), 1],
     )
   end
 
   def war_foil
-    m = from_query("e:war r:mythic -number:/★/", 15, foil: true)
-    r = from_query("e:war r:rare -number:/★/", 53, foil: true)
-    u = from_query("e:war r:uncommon -number:/★/", 80, foil: true)
+    m = from_query("e:war r:mythic", 15, foil: true)
+    r = from_query("e:war r:rare", 53, foil: true)
+    u = from_query("e:war r:uncommon", 80, foil: true)
     c = common_or_basic("war", foil: true)
     mr = mix_sheets([r, 2], [m, 1])
     CardSheet.new([mr, u, c], [3, 5, 12])
