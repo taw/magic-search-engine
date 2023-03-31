@@ -66,3 +66,11 @@ dfc_rare_mythic:
     rate: 2
   - query: "r:m is:dfc"
     rate: 1
+modaldfc_uncommon:
+  query: "r:u is:modaldfc"
+modaldfc_rare_mythic:
+  any:
+  - query: "r:r is:modaldfc"
+    rate: 2
+  - query: "r:m is:modaldfc"
+    rate: 1
