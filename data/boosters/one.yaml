@@ -1,0 +1,18 @@
+pack:
+  basic: 1
+  common: 9
+  uncommon: 3
+  rare_mythic_or_praetor:
+  - rare_mythic: 1
+    chance: 59
+  - praetor: 1
+    chance: 1
+  common_or_foil:
+  - common: 1
+    chance: 2
+  - foil: 1
+    chance: 1
+sheets:
+  praetor:
+    rawquery: "(e:neo number:59) or (e:dmu number:107) or (e:snc number:129) or (e:khm number:199)"
+    count: 4
