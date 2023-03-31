@@ -5,7 +5,7 @@ class PackFactoryYaml
   end
 
   def default_sheets
-    @default_sheets ||= YAML.load_file(Pathname(__dir__) + "../../data/boosters/common.yaml")
+    @default_sheets ||= @db.booster_data["common"]
   end
 
   def build_sheet_from_yaml_data(set_code, name, data)
@@ -59,17 +59,6 @@ class PackFactoryYaml
     end
     sheet.name = name if name
     sheet
-  end
-
-  def path_for(set, variant)
-    root = Pathname(__dir__) + "../../data/boosters"
-    set_code = set.code
-    set_code += "_" if set_code == "con"
-    if variant
-      root + "#{set_code}-#{variant}.yaml"
-    else
-      root + "#{set_code}.yaml"
-    end
   end
 
   def merge_pack_parts(part1, part2)
@@ -135,11 +124,10 @@ class PackFactoryYaml
     else
       variant = full_variant.sub("-yaml", "")
     end
-    path = path_for(set, variant)
+    data = @db.booster_data["boosters"][[set_code, variant].compact.join("-")]
 
-    return nil unless path.exist?
+    return nil unless data
 
-    data = YAML.load_file(path)
     sheets = Hash.new{|ht,k|
       ht[k] = build_sheet_from_yaml_data(set_code, k, default_sheets[k]) if default_sheets[k]
     }

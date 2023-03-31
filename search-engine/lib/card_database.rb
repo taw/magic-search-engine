@@ -75,6 +75,10 @@ class CardDatabase
     @decks ||= @sets.values.flat_map(&:decks)
   end
 
+  def booster_data
+    @booster_data ||= JSON.parse(Pathname("#{__dir__}/../../index/booster_index.json").read)
+  end
+
   # We also need to include all other cards with same name from same set,
   # as we don't know which Forest etc. is included
   def decks_containing(card_printing)
