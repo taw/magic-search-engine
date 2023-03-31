@@ -1,0 +1,50 @@
+# This works almost like M19/M20, but one of the common lands seems to be on common not on land sheet
+# gainlands x6, basics x4
+# U and R sheets have showcases, but not on Arena
+pack:
+  basic_or_gainland: 1
+  common: 9
+  common_or_foil:
+  - common: 1
+    chance: 2
+  - foil: 1
+    chance: 1
+  uncommon: 3
+  rare: 1
+sheets:
+  common:
+    code: "C"
+  uncommon:
+    code: "U"
+  rare:
+    code: "R"
+  basic_or_gainland:
+    # These also have L2/L3 codes, but these aren't actually used by the code
+    any:
+      - query: "t:basic"
+        count: 15
+        rate: 2
+      - query: "is:gainland"
+        count: 10
+        rate: 3
+  foil:
+    # The whole this is a mess, the only consistent thing is that showcases are 1/3 of each card occurences
+    # rare and uncommon have same ratio as normally
+    # commons/lands are just messed up
+    # L = 60 = 15 x 2 + 10 x 3
+    # C = 303 = 101 x 3
+    # U = 240 = 80 x 3
+    # R = 363 = 121 x 3
+    foil: true
+    any:
+    - any:
+      - query: "r:b or is:gainland"
+        count: 25
+        chance: 25
+      - code: C
+        chance: 101
+      chance: 12
+    - code: U
+      chance: 5
+    - code: R
+      chance: 3
