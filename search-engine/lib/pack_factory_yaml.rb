@@ -83,7 +83,7 @@ class PackFactoryYaml
     sheets = Hash.new{|ht,k|
       ht[k] = build_sheet_from_yaml_data(set_code, k, default_sheets[k]) if default_sheets[k]
     }
-    (data.delete("sheets") || []).each{|sheet_name, sheet_data|
+    data["sheets"].each{|sheet_name, sheet_data|
       sheets[sheet_name] = build_sheet_from_yaml_data(set_code, sheet_name, sheet_data)
     }
     subpacks = data["packs"].map{|subpack_data, chance|
