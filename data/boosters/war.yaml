@@ -27,24 +27,24 @@ pack:
   chance: 92 # (121-29)
 sheets:
   planeswalker_uncommon:
-    query: "e:war t:planeswalker r:uncommon"
+    query: "t:planeswalker r:u"
     count: 20
   nonplaneswalker_uncommon:
-    query: "e:war -t:planeswalker r:uncommon"
+    query: "-t:planeswalker r:u"
     count: 60
   planeswalker_rare_mythic:
     any:
-    - query: "e:war t:planeswalker r:rare"
+    - query: "t:planeswalker r:r"
       count: 13
       rate: 2
-    - query: "e:war t:planeswalker r:mythic"
+    - query: "t:planeswalker r:m"
       count: 3
       rate: 1
   nonplaneswalker_rare_mythic:
     any:
-    - query: "e:war -t:planeswalker r:rare"
+    - query: "-t:planeswalker r:r"
       count: 40
       rate: 2
-    - query: "e:war -t:planeswalker r:mythic"
+    - query: "-t:planeswalker r:m"
       count: 12
       rate: 1
