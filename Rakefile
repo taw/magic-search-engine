@@ -23,6 +23,7 @@ end
 desc "Generate index"
 task "index" do
   sh "rescue ./indexer/bin/indexer"
+  sh "rescue ./booster_indexer/bin/booster_indexer"
 end
 
 desc "Update mtgjson database"
