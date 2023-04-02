@@ -1,0 +1,142 @@
+pack:
+- mid_sfc_common: 3
+  mid_dfc_common: 1
+  mid_sfc_uncommon: 2
+  mid_sfc_rare_mythic: 1
+  vow_sfc_common: 3
+  vow_dfc_common: 1
+  vow_sfc_uncommon: 2
+  vow_sfc_rare_mythic: 1
+  foil: 1
+  chance: 16*16 # C+C
+- mid_sfc_common: 4
+  mid_sfc_uncommon: 1
+  mid_dfc_uncommon: 1
+  mid_sfc_rare_mythic: 1
+  vow_sfc_common: 3
+  vow_dfc_common: 1
+  vow_sfc_uncommon: 2
+  vow_sfc_rare_mythic: 1
+  foil: 1
+  chance: 15*16 # U+C
+- mid_sfc_common: 4
+  mid_sfc_uncommon: 2
+  mid_dfc_rare_mythic: 1
+  vow_sfc_common: 3
+  vow_dfc_common: 1
+  vow_sfc_uncommon: 2
+  vow_sfc_rare_mythic: 1
+  foil: 1
+  chance: 9*16 # R+C
+- mid_sfc_common: 3
+  mid_dfc_common: 1
+  mid_sfc_uncommon: 2
+  mid_sfc_rare_mythic: 1
+  vow_sfc_common: 4
+  vow_sfc_uncommon: 1
+  vow_dfc_uncommon: 1
+  vow_sfc_rare_mythic: 1
+  foil: 1
+  chance: 16*15 # C+U
+- mid_sfc_common: 4
+  mid_sfc_uncommon: 1
+  mid_dfc_uncommon: 1
+  mid_sfc_rare_mythic: 1
+  vow_sfc_common: 4
+  vow_sfc_uncommon: 1
+  vow_dfc_uncommon: 1
+  vow_sfc_rare_mythic: 1
+  foil: 1
+  chance: 15*15 # U+U
+- mid_sfc_common: 4
+  mid_sfc_uncommon: 2
+  mid_dfc_rare_mythic: 1
+  vow_sfc_common: 4
+  vow_sfc_uncommon: 1
+  vow_dfc_uncommon: 1
+  vow_sfc_rare_mythic: 1
+  foil: 1
+  chance: 9*15 # R+U
+- mid_sfc_common: 3
+  mid_dfc_common: 1
+  mid_sfc_uncommon: 2
+  mid_sfc_rare_mythic: 1
+  vow_sfc_common: 4
+  vow_sfc_uncommon: 2
+  vow_dfc_rare_mythic: 1
+  foil: 1
+  chance: 16*9 # C+R
+- mid_sfc_common: 4
+  mid_sfc_uncommon: 1
+  mid_dfc_uncommon: 1
+  mid_sfc_rare_mythic: 1
+  vow_sfc_common: 4
+  vow_sfc_uncommon: 2
+  vow_dfc_rare_mythic: 1
+  foil: 1
+  chance: 15*9 # U+R
+- mid_sfc_common: 4
+  mid_sfc_uncommon: 2
+  mid_dfc_rare_mythic: 1
+  vow_sfc_common: 4
+  vow_sfc_uncommon: 2
+  vow_dfc_rare_mythic: 1
+  foil: 1
+  chance: 9*9 # R+R
+sheets:
+  mid_sfc_common:
+    query: "r:c is:sfc number<=267"
+    count: 90
+  mid_dfc_common:
+    query: "r:c is:dfc number<=267"
+    count: 10
+  mid_sfc_uncommon:
+    query: "r:u is:sfc number<=267"
+    count: 60
+  mid_dfc_uncommon:
+    query: "r:u is:dfc number<=267"
+    count: 23
+  mid_sfc_rare_mythic:
+    any:
+    - query: "r:r is:sfc number<=267"
+      count: 53
+      rate: 2
+    - query: "r:m is:sfc number<=267"
+      count: 15
+      rate: 1
+  mid_dfc_rare_mythic:
+    any:
+    - query: "r:r is:dfc number<=267"
+      count: 11
+      rate: 2
+    - query: "r:m is:dfc number<=267"
+      count: 5
+      rate: 1
+  vow_sfc_common:
+    query: "r:c is:sfc number>267"
+    count: 90
+  vow_dfc_common:
+    query: "r:c is:dfc number>267"
+    count: 10
+  vow_sfc_uncommon:
+    query: "r:u is:sfc number>267"
+    count: 60
+  vow_dfc_uncommon:
+    query: "r:u is:dfc number>267"
+    count: 23
+  vow_sfc_rare_mythic:
+    any:
+    - query: "r:r is:sfc number>267"
+      count: 53
+      rate: 2
+    - query: "r:m is:sfc number>267"
+      count: 15
+      rate: 1
+  vow_dfc_rare_mythic:
+    any:
+    - query: "r:r is:dfc number>267"
+      count: 11
+      rate: 2
+    - query: "r:m is:dfc number>267"
+      count: 5
+      rate: 1

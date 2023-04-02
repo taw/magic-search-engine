@@ -1,0 +1,30 @@
+pack:
+  land: 1
+  dfc_common_uncommon: 1
+  common_or_foil:
+  - sfc_common: 1
+    chance: 2
+  - foil: 1
+    chance: 1
+  sfc_common: 8
+  sfc_uncommon: 3
+  rare_mythic: 1
+sheets:
+  land:
+    query: "r:b or is:gainland"
+    count: 30
+  dfc_common_uncommon:
+    # Guessing the rate. With this rate:
+    # SFC uncommon rarity 3/80
+    # DFC uncommon rarity 3/10 * (1/10) = 3/80
+    # but SFC commons are vastly overrepresented
+    any:
+    - query: "r:c is:dfc"
+      count: 6
+      chance: 7
+    - query: "r:u is:dfc"
+      count: 8
+      chance: 3
+  sfc_common:
+    balanced: true
+    query: "r:c is:sfc -is:gainland"

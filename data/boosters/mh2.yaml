@@ -1,0 +1,35 @@
+pack:
+- common: 10
+  normal_uncommon: 3
+  normal_rare_mythic: 1
+  chance: 2
+  new_to_modern: 1
+- common: 9
+  normal_uncommon: 3
+  normal_rare_mythic: 1
+  foil: 1
+  chance: 1
+  new_to_modern: 1
+sheets:
+  normal_uncommon:
+    query: "number<262 r:u"
+    count: 80
+  normal_rare_mythic:
+    any:
+     - query: "number<262 r:r"
+       count: 60
+       rate: 2
+     - query: "number<262 r:m"
+       count: 20
+       rate: 1
+  new_to_modern:
+    any:
+    - query: "number>=262 r:u"
+      count: 20
+      rate: 5
+    - query: "number>=262 r:r"
+      count: 18
+      rate: 2
+    - query: "number>=262 r:m"
+      count: 4
+      rate: 1

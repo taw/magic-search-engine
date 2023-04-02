@@ -1,0 +1,18 @@
+pack:
+- basic_or_common_land: 1
+  nonland_common: 10
+  uncommon: 3
+  rare_mythic: 1
+  chance: 2
+- basic_or_common_land: 1
+  nonland_common: 9
+  uncommon: 3
+  rare_mythic: 1
+  foil: 1
+  chance: 1
+sheets:
+  nonland_common:
+    balanced: true
+    query: "r:c -t:land"
+  basic_or_common_land:
+    query: "t:land r<=c"

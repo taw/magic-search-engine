@@ -1,0 +1,15 @@
+# "Each Draft Booster contains 1 retro frame card of any rarity and 1 retro frame land"
+# This doesn't handle retro frames for nonland cards
+# For retro basics, there are no other basics anyway, so it works without explicit checks
+pack:
+- basic: 1
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  chance: 2
+- basic: 1
+  common: 9
+  uncommon: 3
+  rare_mythic: 1
+  foil: 1
+  chance: 1

@@ -1,0 +1,21 @@
+pack:
+- basic: 1
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  chance: 2
+- basic: 1
+  common: 9
+  uncommon: 3
+  rare_mythic: 1
+  foil: 1
+  chance: 1
+sheets:
+  basic:
+    any:
+    - query: "r:b number<272"
+      count: 10
+      rate: 2
+    - query:  "r:b number>=272"
+      count: 10
+      rate: 1

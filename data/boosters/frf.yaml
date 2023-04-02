@@ -1,0 +1,25 @@
+pack:
+- land: 1
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  chance: 31
+- land: 1
+  common: 9
+  uncommon: 3
+  rare_mythic: 1
+  foil: 1
+  chance: 9
+sheets:
+  common:
+    balanced: true
+    query: "r:c -is:gainland"
+    count: 60
+  land:
+    any:
+    - rawquery: "e:ktk is:fetchland"
+      count: 5
+      rate: 2 # 1 / 24 chance
+    - query: "is:gainland"
+      count: 10
+      rate: 23 # 23 / 24 chance

@@ -1,0 +1,63 @@
+pack:
+- conspiracy: 1
+  nonconspiracy_common: 9
+  common_or_foil:
+  - nonconspiracy_common: 1
+    chance: 31
+  - nonconspiracy_foil: 1
+    chance: 9
+  nonconspiracy_uncommon: 3
+  nonconspiracy_rare_mythic: 1
+  chance: 66
+- conspiracy_foil: 1
+  nonconspiracy_common: 9
+  common_or_foil:
+  - nonconspiracy_common: 1
+    chance: 31
+  - nonconspiracy_foil: 1
+    chance: 9
+  nonconspiracy_uncommon: 3
+  nonconspiracy_rare_mythic: 1
+  chance: 1
+sheets:
+  nonconspiracy_common:
+    balanced: true
+    query: "-t:conspiracy r:c"
+    count: 85
+  nonconspiracy_uncommon:
+    query: "-t:conspiracy r:u"
+    count: 65
+  conspiracy:
+    any:
+    - query: "t:conspiracy r:c"
+      count: 5
+      rate: 8
+    - query: "t:conspiracy r:u"
+      count: 2
+      rate: 4
+    - query: "t:conspiracy r:r"
+      count: 3
+      rate: 2
+    - query: "t:conspiracy r:m"
+      count: 2
+      rate: 1
+  conspiracy_foil:
+    foil: true
+    use: conspiracy
+  nonconspiracy_foil:
+    foil: true
+    any:
+    - query: "-t:conspiracy r<=c"
+      chance: 12
+    - query: "-t:conspiracy r:u"
+      chance: 5
+    - use: nonconspiracy_rare_mythic
+      chance: 3
+  nonconspiracy_rare_mythic:
+    any:
+    - query: "-t:conspiracy r:r"
+      count: 47
+      rate: 2
+    - query: "-t:conspiracy r:m"
+      count: 12
+      rate: 1

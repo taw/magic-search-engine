@@ -1,0 +1,22 @@
+pack:
+  rare_maybe_foil:
+  - rare: 1
+    chance: 70 - 1
+  - foil_rare: 1
+    chance: 1
+  uncommon_maybe_foil:
+  - uncommon: 3
+    chance: 70 - 3
+  - uncommon: 2
+    foil_uncommon: 1
+    chance: 3
+  common_maybe_foil:
+  - common: 11
+    chance: 70 - 11
+  - common: 10
+    foil_common: 1
+    chance: 11
+sheets:
+  common:
+    balanced: false
+    query: "r:c"

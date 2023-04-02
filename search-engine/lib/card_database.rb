@@ -2,6 +2,7 @@ require "json"
 require "nokogiri"
 require "pathname"
 require "set"
+require "yaml"
 require_relative "artist"
 require_relative "card_printing"
 require_relative "card_set"
@@ -13,6 +14,8 @@ require_relative "color"
 require_relative "deck_database"
 require_relative "deck_parser"
 require_relative "deck"
+require_relative "legacy_card_sheet_factory"
+require_relative "legacy_pack_factory"
 require_relative "pack_factory"
 require_relative "pack"
 require_relative "physical_card"
@@ -73,6 +76,10 @@ class CardDatabase
     @decks ||= @sets.values.flat_map(&:decks)
   end
 
+  def booster_data
+    @booster_data ||= JSON.parse(Pathname("#{__dir__}/../../index/booster_index.json").read)
+  end
+
   # We also need to include all other cards with same name from same set,
   # as we don't know which Forest etc. is included
   def decks_containing(card_printing)
@@ -98,6 +105,10 @@ class CardDatabase
 
   def pack_factory
     @pack_factory ||= PackFactory.new(self)
+  end
+
+  def legacy_pack_factory
+    @legacy_pack_factory ||= LegacyPackFactory.new(self)
   end
 
   # Excluding unsupported ones

@@ -1,0 +1,273 @@
+# I ran the math, and best numbers are totally weird, so some rounded:
+# 1/4 have normal foil (very close to usual packs)
+# 1/10 have partner rare/mythic (exact)
+# 2/10 have partner uncommon (off by 12%)
+# 1/100 has partner foil (who knows really)
+#
+# Those numbers are truly awful
+pack:
+  basic: 1
+  common: 9
+  special_slots:
+  # No partner
+  - common: 1
+    uncommon: 3
+    rare_mythic: 1
+    chance: (7 * 15 - 20) * 11 * 31
+  - foil: 1
+    uncommon: 3
+    rare_mythic: 1
+    chance: (7 * 5) * 11 * 31
+  # Uncommon partner
+  - common: 1
+    uncommon: 1
+    uncommon_partner_1: 2
+    rare_mythic: 1
+    chance: 6 * 11 * 31
+  - foil: 1
+    uncommon: 1
+    uncommon_partner_1: 2
+    rare_mythic: 1
+    chance: 2 * 11 * 31
+  - common: 1
+    uncommon: 1
+    uncommon_partner_2: 2
+    rare_mythic: 1
+    chance: 6 * 11 * 31
+  - foil: 1
+    uncommon: 1
+    uncommon_partner_2: 2
+    rare_mythic: 1
+    chance: 2 * 11 * 31
+  - common: 1
+    uncommon: 1
+    uncommon_partner_3: 2
+    rare_mythic: 1
+    chance: 6 * 11 * 31
+  - foil: 1
+    uncommon: 1
+    uncommon_partner_3: 2
+    rare_mythic: 1
+    chance: 2 * 11 * 31
+  - common: 1
+    uncommon: 1
+    uncommon_partner_4: 2
+    rare_mythic: 1
+    chance: 6 * 11 * 31
+  - foil: 1
+    uncommon: 1
+    uncommon_partner_4: 2
+    rare_mythic: 1
+    chance: 2 * 11 * 31
+  - common: 1
+    uncommon: 1
+    uncommon_partner_5: 2
+    rare_mythic: 1
+    chance: 6 * 11 * 31
+  - foil: 1
+    uncommon: 1
+    uncommon_partner_5: 2
+    rare_mythic: 1
+    chance: 2 * 11 * 31
+  # Rare partner
+  - common: 1
+    uncommon: 2
+    rare_partner_1: 2
+    chance: 1 * 15 * 2 * 31
+  - foil: 1
+    uncommon: 2
+    rare_partner_1: 2
+    chance: 1 *  5 * 2 * 31
+  - common: 1
+    uncommon: 2
+    rare_partner_2: 2
+    chance: 1 * 15 * 2 * 31
+  - foil: 1
+    uncommon: 2
+    rare_partner_2: 2
+    chance: 1 *  5 * 2 * 31
+  - common: 1
+    uncommon: 2
+    rare_partner_3: 2
+    chance: 1 * 15 * 2 * 31
+  - foil: 1
+    uncommon: 2
+    rare_partner_3: 2
+    chance: 1 *  5 * 2 * 31
+  - common: 1
+    uncommon: 2
+    rare_partner_4: 2
+    chance: 1 * 15 * 2 * 31
+  - foil: 1
+    uncommon: 2
+    rare_partner_4: 2
+    chance: 1 *  5 * 2 * 31
+  - common: 1
+    uncommon: 2
+    rare_partner_5: 2
+    chance: 1 * 15 * 2 * 31
+  - foil: 1
+    uncommon: 2
+    rare_partner_5: 2
+    chance: 1 *  5 * 2 * 31
+  # Mythic partner
+  - common: 1
+    uncommon: 2
+    mythic_partner_1: 2
+    chance: 1 * 15 * 1 * 31
+  - foil: 1
+    uncommon: 2
+    mythic_partner_1: 2
+    chance: 1 * 5 * 1 * 31
+  # Foil partner
+  - uncommon: 2
+    foil_mythic_partner_1: 2
+    rare_mythic: 1
+    chance: 1 * 22
+  - uncommon: 2
+    foil_rare_partner_1: 2
+    rare_mythic: 1
+    chance: 2 * 22
+  - uncommon: 2
+    foil_rare_partner_2: 2
+    rare_mythic: 1
+    chance: 2 * 22
+  - uncommon: 2
+    foil_rare_partner_3: 2
+    rare_mythic: 1
+    chance: 2 * 22
+  - uncommon: 2
+    foil_rare_partner_4: 2
+    rare_mythic: 1
+    chance: 2 * 22
+  - uncommon: 2
+    foil_rare_partner_5: 2
+    rare_mythic: 1
+    chance: 2 * 22
+  - uncommon: 2
+    foil_uncommon_partner_1: 2
+    rare_mythic: 1
+    chance: 4 * 22
+  - uncommon: 2
+    foil_uncommon_partner_2: 2
+    rare_mythic: 1
+    chance: 4 * 22
+  - uncommon: 2
+    foil_uncommon_partner_3: 2
+    rare_mythic: 1
+    chance: 4 * 22
+  - uncommon: 2
+    foil_uncommon_partner_4: 2
+    rare_mythic: 1
+    chance: 4 * 22
+  - uncommon: 2
+    foil_uncommon_partner_5: 2
+    rare_mythic: 1
+    chance: 4 * 22
+sheets:
+  uncommon:
+    query: "r:u -has:partner"
+    count: 70
+  mythic_partner_1:
+    query: "r:m has:partner (number=1 or number=2)"
+    count: 2
+  rare_partner_1:
+    query: "r:r has:partner (number=3 or number=4)"
+    count: 2
+  rare_partner_2:
+    query: "r:r has:partner (number=5 or number=6)"
+    count: 2
+  rare_partner_3:
+    query: "r:r has:partner (number=7 or number=8)"
+    count: 2
+  rare_partner_4:
+    query: "r:r has:partner (number=9 or number=10)"
+    count: 2
+  rare_partner_5:
+    query: "r:r has:partner (number=11 or number=12)"
+    count: 2
+  uncommon_partner_1:
+    query: "r:u has:partner (number=13 or number=14)"
+    count: 2
+  uncommon_partner_2:
+    query: "r:u has:partner (number=15 or number=16)"
+    count: 2
+  uncommon_partner_3:
+    query: "r:u has:partner (number=17 or number=18)"
+    count: 2
+  uncommon_partner_4:
+    query: "r:u has:partner (number=19 or number=20)"
+    count: 2
+  uncommon_partner_5:
+    query: "r:u has:partner (number=21 or number=22)"
+    count: 2
+  foil_mythic_partner_1:
+    foil: true
+    query: "r:m has:partner (number=255 or number=256)"
+    count: 2
+  foil_rare_partner_1:
+    foil: true
+    query: "r:r has:partner (number=3 or number=4)"
+    count: 2
+  foil_rare_partner_2:
+    foil: true
+    query: "r:r has:partner (number=5 or number=6)"
+    count: 2
+  foil_rare_partner_3:
+    foil: true
+    query: "r:r has:partner (number=7 or number=8)"
+    count: 2
+  foil_rare_partner_4:
+    foil: true
+    query: "r:r has:partner (number=9 or number=10)"
+    count: 2
+  foil_rare_partner_5:
+    foil: true
+    query: "r:r has:partner (number=11 or number=12)"
+    count: 2
+  foil_uncommon_partner_1:
+    foil: true
+    query: "r:u has:partner (number=13 or number=14)"
+    count: 2
+  foil_uncommon_partner_2:
+    foil: true
+    query: "r:u has:partner (number=15 or number=16)"
+    count: 2
+  foil_uncommon_partner_3:
+    foil: true
+    query: "r:u has:partner (number=17 or number=18)"
+    count: 2
+  foil_uncommon_partner_4:
+    foil: true
+    query: "r:u has:partner (number=19 or number=20)"
+    count: 2
+  foil_uncommon_partner_5:
+    foil: true
+    query: "r:u has:partner (number=21 or number=22)"
+    count: 2
+  rare_mythic:
+    any:
+    - query: "-has:partner r:r"
+      count: 43
+      rate: 2
+    - query: "-has:partner r:m"
+      count: 13
+      rate: 1
+  # These foil rates are pretty much total :poopemoji:
+  foil:
+    foil: true
+    any:
+    - query: "r<=c"
+      count: 101 + 5
+      chance: 12
+    - query: "r:u -has:partner"
+      count: 70
+      chance: 5
+    - any:
+      - query: "-has:partner r:r"
+        count: 43
+        rate: 2
+      - query: "-has:partner r:m"
+        count: 13
+        rate: 1
+      chance: 3

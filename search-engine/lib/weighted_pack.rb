@@ -7,6 +7,10 @@ class WeightedPack < Pack
     if @packs.keys.any?{ |pack| pack.is_a?(WeightedPack) }
       flatten!
     end
+    gcd = @packs.values.reduce(&:gcd)
+    @packs.each do |pack, weight|
+      @packs[pack] = weight / gcd
+    end
     @total_weight = @packs.values.sum
   end
 

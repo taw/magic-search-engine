@@ -1,0 +1,44 @@
+pack:
+  basic_or_shock:
+  - basic_alt: 1
+    chance: 23
+  - shock: 1
+    chance: 1
+  common_or_foil:
+  - common: 7
+    chance: 2
+  - common: 6
+    foil: 1
+    chance: 1
+  uncommon: 3
+  rare_mythic: 1
+  attraction: 2
+  sunf_sticker: 1
+sheets:
+  basic_alt:
+    any:
+    - query: "r:b number<240"
+      count: 5
+      chance: 3
+    - query: "r:b number>=240 number<245"
+      count: 5
+      chance: 1
+  shock:
+    query: "number>=277 number<287"
+    count: 10
+  common:
+    query: "r:c -t:attraction"
+  uncommon:
+    query: "r:u -t:attraction"
+  rare_mythic:
+    any:
+    - query: "r:r -t:attraction -is:promo -t:island -t:plains -t:swamp -t:forest -t:mountain"
+      rate: 2
+    - query: "r:m -t:attraction"
+      rate: 1
+  attraction:
+    query: "t:attraction"
+    count: 135
+  sunf_sticker:
+    rawquery: "e:sunf t:stickers"
+    count: 48

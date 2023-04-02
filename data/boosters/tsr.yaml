@@ -1,0 +1,22 @@
+pack:
+  common_or_foil:
+  - common: 1
+    chance: 2
+  - foil: 1
+    chance: 1
+  common: 9
+  uncommon: 3
+  rare_mythic: 1
+  special: 1
+sheets:
+  foil:
+    foil: true
+    any:
+    - use: rare_mythic
+      chance: 1
+    - query: "r:u"
+      chance: 2
+    - query: "r:c"
+      chance: 4
+    - query: "r:s"
+      chance: 1

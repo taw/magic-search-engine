@@ -1,0 +1,23 @@
+# 1 pack in 4320 is God Pack
+# the rest are proportionally normal packs (9/40 foil chance)
+pack:
+- basic: 1
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  chance: 4319 * 31
+- basic: 1
+  common: 9
+  uncommon: 3
+  rare_mythic: 1
+  foil: 1
+  chance: 4319 * 9
+- theros_gods: 15
+  chance: 1 * 40
+sheets:
+  theros_gods:
+    rawquery: "t:god b:theros"
+    count: 15
+  basic:
+    # borrowed basics
+    rawquery: "e:ths r:b"

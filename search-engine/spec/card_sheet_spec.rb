@@ -1,6 +1,6 @@
 describe CardSheet do
   include_context "db"
-  let(:factory) { CardSheetFactory.new(db) }
+  let(:factory) { LegacyCardSheetFactory.new(db) }
 
   %W[basic common uncommon rare mythic].each do |rarity|
     it "rarity #{rarity}" do

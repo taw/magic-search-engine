@@ -1,0 +1,48 @@
+pack:
+- common: 13
+  nonlegendary_uncommon: 3
+  nonlegendary_rare_mythic: 1
+  legendary: 2
+  dedicated_foil: 1
+  chance: 5
+- common: 12
+  special: 1
+  nonlegendary_uncommon: 3
+  nonlegendary_rare_mythic: 1
+  legendary: 2
+  dedicated_foil: 1
+  chance: 1
+sheets:
+  nonlegendary_uncommon:
+    query: "r:u -t:legendary r:u"
+    count: 80
+  nonlegendary_rare_mythic:
+    any:
+    - query: "-t:legendary r:r"
+      count: 52
+      rate: 2
+    - query: "-t:legendary r:m"
+      count: 17
+      rate: 1
+  legendary:
+    any:
+    # Not sure what's the rate, 4:2:1 is likely incorrect
+    - query: "t:legendary r:u"
+      count: 40
+      rate: 4
+    - query: "t:legendary r:r"
+      count: 25
+      rate: 2
+    - query: "t:legendary r:m"
+      count: 5
+      rate: 1
+  dedicated_foil:
+    foil: true
+    any:
+    - use: rare_mythic
+      chance: 1
+    - query: "r:u"
+      chance: 3
+    - query: "r:c or r:s"
+      count: 141 + 1
+      chance: 13

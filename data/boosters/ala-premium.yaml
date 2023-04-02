@@ -1,0 +1,27 @@
+pack:
+  alara_premium_basic: 1
+  alara_premium_common: 10
+  alara_premium_uncommon: 3
+  alara_premium_rare_mythic: 1
+sheets:
+  alara_premium_basic:
+    foil: true
+    rawquery: "b:ala r:b"
+    count: 20 + 0 + 0
+  alara_premium_common:
+    foil: true
+    rawquery: "b:ala r:c"
+    count: 101 + 60 + 60
+  alara_premium_uncommon:
+    foil: true
+    rawquery: "b:ala r:u"
+    count: 60 + 40 + 40
+  alara_premium_rare_mythic:
+    foil: true
+    any:
+    - rawquery: "b:ala r:r"
+      count: 53+35+35
+      rate: 2
+    - rawquery: "b:ala r:m"
+      count: 15+10+10
+      rate: 1

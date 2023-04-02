@@ -1,0 +1,23 @@
+pack:
+- basic: 1
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  chance: 31
+- basic: 1
+  common: 9
+  uncommon: 3
+  rare_mythic: 1
+  unhinged_foil: 1
+  chance: 9
+sheets:
+  unhinged_foil:
+    foil: true
+    any:
+      - query: "r<=c"
+        chance: 12
+      - query: "r:u"
+        chance: 5
+      - query: "r>=r"
+        count: 40 + 1 # 40 normal rares + 1 super secret tech
+        chance: 3

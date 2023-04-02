@@ -1,0 +1,15 @@
+# Pre-mythic, with new style foils, only foil basics in packs
+pack:
+- common_or_basic: 11
+  uncommon: 3
+  rare: 1
+  chance: 31
+- common_or_basic: 10
+  uncommon: 3
+  rare: 1
+  foil: 1
+  chance: 9
+sheets:
+  common_or_basic:
+    balanced: true
+    query: "r<=c"

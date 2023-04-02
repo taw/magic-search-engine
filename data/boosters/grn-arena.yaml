@@ -1,0 +1,11 @@
+pack:
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  land: 1
+sheets:
+  common:
+    balanced: true
+    query: "r:c not:guildgate"
+  land:
+    query: "is:guildgate"

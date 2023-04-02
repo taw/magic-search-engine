@@ -1,0 +1,19 @@
+pack:
+- land: 1
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  chance: 31
+- land: 1
+  common: 9
+  uncommon: 3
+  rare_mythic: 1
+  foil: 1
+  chance: 9
+sheets:
+  common:
+    balanced: true
+    query: "r:c not:guildgate"
+  land:
+    query: "is:guildgate"
+    count: 10

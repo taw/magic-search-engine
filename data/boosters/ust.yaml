@@ -1,0 +1,94 @@
+# Box opening videos suggest that foil basic goes into basic slot
+# Foil contraptions would do too?
+# Ratios are total guesses
+pack:
+- basic: 1
+  contraption: 2
+  common: 8
+  uncommon: 3
+  rare: 1
+  chance: 27
+- basic: 1
+  contraption: 2
+  foil: 1
+  common: 7
+  uncommon: 3
+  rare: 1
+  chance: 10
+- basic_foil: 1
+  contraption: 2
+  common: 8
+  uncommon: 3
+  rare: 1
+  chance: 1
+- basic: 1
+  contraption: 1
+  contraption_foil: 1
+  common: 8
+  uncommon: 3
+  rare: 1
+  chance: 2
+sheets:
+  common:
+    code: "C"
+  uncommon:
+    code: "U"
+  rare:
+    code: "R"
+  basic:
+    any:
+    - query: "r:b"
+      count: 5
+      rate: 24
+    - query: "border:black"
+      count: 1
+      rate: 1
+  basic_foil:
+    foil: true
+    any:
+    - query: "r:b"
+      count: 5
+      rate: 24
+    - query: "border:black"
+      count: 1
+      rate: 1
+  contraption:
+    # Numbers are totally made up
+    # Maybe some rarity is actually not exact?
+    any:
+    - query: "t:contraption r:c"
+      count: 15
+      rate: 8
+    - query: "t:contraption r:u"
+      count: 15
+      rate: 4
+    - query: "t:contraption r:r"
+      count: 10
+      rate: 2
+    - query: "t:contraption r:m"
+      count: 5
+      rate: 1
+  contraption_foil:
+    foil: true
+    any:
+    - query: "t:contraption r:c"
+      count: 15
+      rate: 8
+    - query: "t:contraption r:u"
+      count: 15
+      rate: 4
+    - query: "t:contraption r:r"
+      count: 10
+      rate: 2
+    - query: "t:contraption r:m"
+      count: 5
+      rate: 1
+  foil:
+    foil: true
+    any:
+    - code: "C"
+      chance: 12
+    - code: "U"
+      chance: 5
+    - code: "R"
+      chance: 3

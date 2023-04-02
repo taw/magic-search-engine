@@ -1,0 +1,20 @@
+# According to tehtmi from Collation Project
+# foil rate in regular sets is close to 12 / 5 / 3
+# but sets with dedicated slots have much worse 10 / 3 / 1 rate
+#
+# This rate guarantees same foil:nonfoil rate for every rarity
+pack:
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  dedicated_foil: 1
+sheets:
+  dedicated_foil:
+    foil: true
+    any:
+      - query: "r<=c"
+        chance: 10
+      - query: "r:u"
+        chance: 3
+      - use: rare_mythic
+        chance: 1

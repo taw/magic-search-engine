@@ -1,0 +1,23 @@
+pack:
+  basic: 1
+  common: 9
+  common_or_foil:
+  - common: 1
+    chance: 31
+  - foil_or_masterpiece_1_in_144: 1
+    chance: 9
+  uncommon: 3
+  rare_mythic: 1
+sheets:
+  foil_or_masterpiece_1_in_144:
+    foil: true
+    any:
+    - use: rare_mythic
+      chance: 3*8
+    - query: "r:u"
+      chance: 5*8
+    - query: "r<=c"
+      chance: 12*8-2
+    - rawquery: "e:exp number<=25"
+      count: 25
+      chance: 5

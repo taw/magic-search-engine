@@ -1,0 +1,62 @@
+# 1:67 cards were foil back then, so assume this is true for conspiracies, all while keeping 9/40 rate same for rest-of-the-pack (even though there's 1 less cards to in rest-of-the-pack)?
+# This cannot possibly be correct, but it's unclear which way it is incorrect
+pack:
+- draft: 1
+  nondraft_common: 9
+  common_or_foil:
+  - nondraft_common: 1
+    chance: 31
+  - nondraft_foil: 1
+    chance: 9
+  nondraft_uncommon: 3
+  nondraft_rare_mythic: 1
+  chance: 66
+- draft_foil: 1
+  nondraft_common: 9
+  common_or_foil:
+  - nondraft_common: 1
+    chance: 31
+  - nondraft_foil: 1
+    chance: 9
+  nondraft_uncommon: 3
+  nondraft_rare_mythic: 1
+  chance: 1
+sheets:
+  nondraft_common:
+    balanced: true
+    query: " -is:draft r:c"
+    count: 80
+  nondraft_uncommon:
+    query: " -is:draft r:u"
+    count: 60
+  nondraft_rare_mythic:
+    any:
+    - query: "-is:draft r:r"
+      count: 35
+      rate: 2
+    - query: "-is:draft r:m"
+      count: 10
+      rate: 1
+  draft:
+    any:
+    - query: "is:draft r:c"
+      count: 9
+      rate: 4
+    - query: "is:draft r:u"
+      count: 8
+      rate: 2
+    - query: "is:draft r:r"
+      count: 8
+      rate: 1
+  draft_foil:
+    foil: true
+    use: draft
+  nondraft_foil:
+    foil: true
+    any:
+    - query: "-is:draft r:c"
+      chance: 12
+    - query: "-is:draft r:u"
+      chance: 5
+    - use: nondraft_rare_mythic
+      chance: 3

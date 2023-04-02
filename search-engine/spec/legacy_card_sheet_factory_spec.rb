@@ -1,7 +1,7 @@
-describe CardSheetFactory do
+describe LegacyCardSheetFactory do
   include_context "db"
-  let(:factory) { CardSheetFactory.new(db) }
-  let(:pack_factory) { PackFactory.new(db) }
+  let(:factory) { LegacyCardSheetFactory.new(db) }
+  let(:pack_factory) { LegacyPackFactory.new(db) }
 
   context "Masterpieces" do
     let(:sheet) { factory.masterpieces_for(set_code) }

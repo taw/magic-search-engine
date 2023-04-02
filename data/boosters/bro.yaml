@@ -1,0 +1,51 @@
+pack:
+  common: 9
+  common_foil_or_basic:
+  - foil: 1
+    chance: 4
+  - common: 1
+    chance: 5
+  - mech_basic: 1
+    chance: 3
+  uncommon: 3
+  rare_mythic: 1
+  brr_retro_artifact: 1
+sheets:
+  brr_retro_artifact:
+    any:
+    # Officially 1/6 schematc rate
+    # U/R/M rates guessed to be at 4x/2x/1x multiples
+    - rawquery: "e:brr number<=63 r:u"
+      count: 18
+      rate: 4*5
+    - rawquery: "e:brr number<=63 r:r"
+      count: 30
+      rate: 2*5
+    - rawquery: "e:brr number<=63 r:m"
+      count: 15
+      rate: 1*5
+    - rawquery: "e:brr number>=64 r:u"
+      count: 18
+      rate: 4*1
+    - rawquery: "e:brr number>=64 r:r"
+      count: 30
+      rate: 2*1
+    - rawquery: "e:brr number>=64 r:m"
+      count: 15
+      rate: 1*1
+  foil:
+    foil: true
+    any:
+    - rawquery: "e:bro,brr r<=c"
+      chance: 12
+    - rawquery: "e:bro,brr r:u"
+      chance: 5
+    - any:
+      - rawquery: "e:bro,brr r:r"
+        rate: 2
+      - rawquery: "e:bro,brr r:m"
+        rate: 1
+      chance: 3
+  mech_basic:
+    query: "r:b number>=278"
+    count: 10

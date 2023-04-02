@@ -1,0 +1,44 @@
+# Assume foil rate (1:4) and rare/mythic dfc rates (1:8) are exclusive as per
+# https://www.lethe.xyz/mtg/collation/soi.html
+# https://www.lethe.xyz/mtg/collation/emn.html
+pack:
+- basic: 1
+  sfc_common: 9
+  sfc_uncommon: 3
+  sfc_rare_mythic: 1
+  dfc_common_uncommon: 1
+  chance: 40-9-5
+- basic: 1
+  sfc_common: 8
+  sfc_uncommon: 3
+  sfc_rare_mythic: 1
+  dfc_common_uncommon: 1
+  foil: 1
+  chance: 9
+- basic: 1
+  sfc_common: 8
+  sfc_uncommon: 3
+  sfc_rare_mythic: 1
+  dfc_common_uncommon: 1
+  dfc_rare_mythic: 1
+  chance: 5
+sheets:
+  # https://www.lethe.xyz/mtg/collation/soi.html
+  dfc_common_uncommon:
+    any:
+    # 10x4xC + 4x20xU = 120 cards on sheet
+    - query: "r:c is:dfc"
+      count: 4
+      rate: 5
+    - query: "r:u is:dfc"
+      count: 20
+      rate: 2
+  dfc_rare_mythic:
+    any:
+    # This rate is so standard it's pretty much guaranteed, even if sheet size (15) is weird
+    - query: "r:r is:dfc"
+      count: 6
+      rate: 2
+    - query: "r:m is:dfc"
+      count: 3
+      rate: 1

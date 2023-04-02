@@ -1,0 +1,25 @@
+# no basic
+pack:
+- basictype: 1
+  non_basictype_common: 10
+  uncommon: 3
+  rare_mythic: 1
+  chance: 2
+- basictype: 1
+  non_basictype_common: 9
+  uncommon: 3
+  rare_mythic: 1
+  foil: 1
+  chance: 1
+sheets:
+  basictype:
+    any:
+    - query: "r:c (t:island or t:mountain or t:swamp or t:forest or t:plains)"
+      count: 10
+      rate: 5
+    - query: "r:b"
+      count: 10
+      rate: 7
+  non_basictype_common:
+    balanced: true
+    query: "r:c -t:island -t:mountain -t:swamp -t:forest -t:plains"

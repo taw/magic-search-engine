@@ -1,0 +1,36 @@
+pack:
+- land: 1
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  chance: 31
+- land: 1
+  common: 9
+  uncommon: 3
+  rare_mythic: 1
+  foil: 1
+  chance: 9
+sheets:
+  rare_mythic:
+    any:
+    - query: "r:r"
+      count: 35
+      rate: 2
+    - query: "r:m -(maze end)"
+      count: 10
+      rate: 1
+  common:
+    balanced: true
+    query: "r:c -t:gate"
+    count: 60
+  land:
+    any:
+    - rawquery: "is:shockland e:rtr,gtc"
+      count: 10
+      rate: 1
+    - query: "maze end"
+      count: 1
+      rate: 2
+    - query: "t:gate"
+      count: 10
+      rate: 23

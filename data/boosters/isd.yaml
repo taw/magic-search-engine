@@ -1,0 +1,35 @@
+pack:
+- dfc: 1
+  basic: 1
+  sfc_common: 9
+  sfc_uncommon: 3
+  sfc_rare_mythic: 1
+  chance: 31
+- dfc: 1
+  basic: 1
+  sfc_common: 8
+  sfc_uncommon: 3
+  sfc_rare_mythic: 1
+  foil: 1
+  chance: 9
+sheets:
+  # https://www.mtgsalvation.com/forums/magic-fundamentals/magic-general/327956-innistrad-block-transforming-card-pack-odds#c4
+  # ISD: 121 card sheet
+  # 1 Mythic printed 1 time = 1 total. 1/121 odds.
+  # 6 Rares printed 2 times = 12 total. 2/121 odds.
+  # 7 Uncommons printed 6 times = 42 total. 6/121 odds.
+  # 6 Commons printed 11 times = 66 total. 11/121 odds.
+  dfc:
+    any:
+    - query: "is:dfc r:m"
+      count: 1
+      rate: 1
+    - query: "is:dfc r:r"
+      count: 6
+      rate: 2
+    - query: "is:dfc r:u"
+      count: 7
+      rate: 6
+    - query: "is:dfc r:c"
+      count: 6
+      rate: 11

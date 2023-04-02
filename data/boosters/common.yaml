@@ -1,0 +1,76 @@
+# Most common sheets that would be pointless to repeat in every single yaml file
+# These names are not reserved and can be overriden by individual YAML files
+rare_mythic:
+  any:
+  - query: "r:r"
+    rate: 2
+  - query: "r:m"
+    rate: 1
+rare:
+  query: "r:r"
+uncommon:
+  query: "r:u"
+common:
+  balanced: true
+  query: "r:c"
+basic:
+  query: "r:b"
+special:
+  query: "r:s"
+foil:
+  foil: true
+  any:
+  - query: "r<=c"
+    chance: 12
+  - query: "r:u"
+    chance: 5
+  - any:
+    - query: "r:r"
+      rate: 2
+    - query: "r:m"
+      rate: 1
+    chance: 3
+foil_basic:
+  foil: true
+  query: "r:b"
+foil_common:
+  foil: true
+  query: "r:c"
+foil_uncommon:
+  foil: true
+  query: "r:U"
+foil_rare:
+  foil: true
+  query: "r:r"
+foil_common_or_basic:
+  foil: true
+  query: "r<=c"
+sfc_common:
+  balanced: true
+  query: "r:c is:sfc"
+sfc_uncommon:
+  query: "r:u is:sfc"
+sfc_rare_mythic:
+  any:
+  - query: "r:r is:sfc"
+    rate: 2
+  - query: "r:m is:sfc"
+    rate: 1
+dfc_common:
+  query: "r:c is:dfc"
+dfc_uncommon:
+  query: "r:u is:dfc"
+dfc_rare_mythic:
+  any:
+  - query: "r:r is:dfc"
+    rate: 2
+  - query: "r:m is:dfc"
+    rate: 1
+modaldfc_uncommon:
+  query: "r:u is:modaldfc"
+modaldfc_rare_mythic:
+  any:
+  - query: "r:r is:modaldfc"
+    rate: 2
+  - query: "r:m is:modaldfc"
+    rate: 1

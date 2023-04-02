@@ -1,0 +1,47 @@
+# Officially stated as 75% legendary uncommon, 25% legendary rare/mythic
+# https://github.com/taw/magic-sealed-data/issues/24
+pack:
+- basic: 1
+  common: 9
+  common_or_foil:
+  - common: 1
+    chance: 2
+  - foil: 1
+    chance: 1
+  nonlegendary_uncommon: 3
+  legendary_rare_mythic: 1
+  chance: 1
+- basic: 1
+  common: 9
+  common_or_foil:
+  - common: 1
+    chance: 2
+  - foil: 1
+    chance: 1
+  nonlegendary_uncommon: 2
+  legendary_uncommon: 1
+  nonlegendary_rare_mythic: 1
+  chance: 3
+sheets:
+  legendary_uncommon:
+    query: 't:"legendary creature" r:u'
+    count: 20
+  nonlegendary_uncommon:
+    query: '-t:"legendary creature" r:u'
+    count: 60
+  legendary_rare_mythic:
+    any:
+    - query: 't:"legendary creature" r:r'
+      count:
+      rate: 2
+    - query: 't:"legendary creature" r:m'
+      count:
+      rate: 1
+  nonlegendary_rare_mythic:
+    any:
+    - query: '-t:"legendary creature" r:r'
+      count:
+      rate: 2
+    - query: '-t:"legendary creature" r:m'
+      count:
+      rate: 1

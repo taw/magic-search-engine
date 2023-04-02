@@ -1,0 +1,50 @@
+# To fully balance it like DOM, probabilities of double walker pack are negative!
+# If we disallow double planeswalker packs (rare pw and uncommon pw in same pack),
+# probabilities turn into almost perfect but not quite so values 1/1936 and 1/5808 deviation
+#
+# We can make this deviation go on rares on uncommons, either way it's too tiny to notice
+pack:
+- basic: 1
+  common: 9
+  common_or_foil:
+  - common: 1
+    chance: 31
+  - foil: 1
+    chance: 9
+  nonplaneswalker_uncommon: 3
+  planeswalker_rare_mythic: 1
+  chance: 29
+- basic: 1
+  common: 9
+  common_or_foil:
+  - common: 1
+    chance: 31
+  - foil: 1
+    chance: 9
+  nonplaneswalker_uncommon: 2
+  planeswalker_uncommon: 1
+  nonplaneswalker_rare_mythic: 1
+  chance: 121-29
+sheets:
+  planeswalker_uncommon:
+    query: "t:planeswalker r:u"
+    count: 20
+  nonplaneswalker_uncommon:
+    query: "-t:planeswalker r:u"
+    count: 60
+  planeswalker_rare_mythic:
+    any:
+    - query: "t:planeswalker r:r"
+      count: 13
+      rate: 2
+    - query: "t:planeswalker r:m"
+      count: 3
+      rate: 1
+  nonplaneswalker_rare_mythic:
+    any:
+    - query: "-t:planeswalker r:r"
+      count: 40
+      rate: 2
+    - query: "-t:planeswalker r:m"
+      count: 12
+      rate: 1

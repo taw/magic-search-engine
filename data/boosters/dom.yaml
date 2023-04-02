@@ -1,0 +1,71 @@
+# there's guaranteed legendary creature, but no separate slots for that
+# If we don't model anything, there's 71% chance of opening a legendary creature, and EV of 1.45
+#
+# Here's a simple model:
+# * all cards of same rarity equally frequent
+# * you'll get legend in every pack
+# * if rares/mythics is not legend, you get exactly 1 legend uncommon
+# * if rares/mythics is legend, you might get 0 or 1 legend uncommon
+# * foil work as in every other set
+#
+# I suspect there's a chance to get 2 or 3 legend uncommons in a pack
+# (9/64 and 1/64 if DOM was a regular set), so we could add more cases
+# and adjus numbers accordingly
+pack:
+- basic: 1
+  common: 9
+  common_or_foil:
+  - common: 1
+    chance: 31
+  - foil: 1
+    chance: 9
+  nonlegendary_uncommon: 3
+  legendary_rare_mythic: 1
+  chance: 36*(144-23)
+- basic: 1
+  common: 9
+  common_or_foil:
+  - common: 1
+    chance: 31
+  - foil: 1
+    chance: 9
+  nonlegendary_uncommon: 2
+  legendary_uncommon: 1
+  legendary_rare_mythic: 1
+  chance: 36*23
+- basic: 1
+  common: 9
+  common_or_foil:
+  - common: 1
+    chance: 31
+  - foil: 1
+    chance: 9
+  nonlegendary_uncommon: 2
+  legendary_uncommon: 1
+  nonlegendary_rare_mythic: 1
+  chance: (121-36)*144
+sheets:
+  # According to maro, these are legendary creatures, not planeswalkers or other legendaries
+  # For DMU it's officially confirmed https://github.com/taw/magic-sealed-data/issues/24
+  legendary_uncommon:
+    query: 't:"legendary creature" r:u'
+    count: 20
+  nonlegendary_uncommon:
+    query: '-t:"legendary creature" r:u'
+    count: 60
+  legendary_rare_mythic:
+    any:
+    - query: 't:"legendary creature" r:r'
+      count: 14
+      rate: 2
+    - query: 't:"legendary creature" r:m'
+      count: 8
+      rate: 1
+  nonlegendary_rare_mythic:
+    any:
+    - query: '-t:"legendary creature" r:r'
+      count: 39
+      rate: 2
+    - query: '-t:"legendary creature" r:m'
+      count: 7
+      rate: 1

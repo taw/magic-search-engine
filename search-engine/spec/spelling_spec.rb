@@ -86,6 +86,7 @@ describe "Spelling" do
       next if name == "Rabble-Rouser"
       next if name == "Wyll, Pact-Bound Duelist"
       next if name == "Su-Chi"
+      next if name == "Wild-Magic Sorcerer" # Simon, Wild Magic Sorcerer
       # Too complex
       next if name == "Death's-Head Buzzard"
       # I don't even

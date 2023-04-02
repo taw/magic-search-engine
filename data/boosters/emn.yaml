@@ -1,0 +1,57 @@
+# Assume foil rate (1:4) and rare/mythic dfc rates (1:8) are exclusive as per
+# https://www.lethe.xyz/mtg/collation/soi.html
+# https://www.lethe.xyz/mtg/collation/emn.html
+# EMN has same assumptions as SOI, except borrowed basics in the set
+pack:
+- basic: 1
+  sfc_common: 9
+  sfc_uncommon: 3
+  sfc_rare_mythic: 1
+  dfc_common_uncommon: 1
+  chance: 40-9-5
+- basic: 1
+  sfc_common: 8
+  sfc_uncommon: 3
+  sfc_rare_mythic: 1
+  dfc_common_uncommon: 1
+  foil: 1
+  chance: 9
+- basic: 1
+  sfc_common: 8
+  sfc_uncommon: 3
+  sfc_rare_mythic: 1
+  dfc_common_uncommon: 1
+  dfc_rare_mythic: 1
+  chance: 5
+sheets:
+  # https://www.lethe.xyz/mtg/collation/emn.html
+  dfc_common_uncommon:
+    any:
+    # 15x4xC + 6x10xU = 120 cards od sheet
+    - query: "r:c (is:dfc or is:meld)"
+      count: 4
+      rate: 5
+    - query: "r:u (is:dfc or is:meld)"
+      count: 10
+      rate: 2
+  dfc_rare_mythic:
+    any:
+    # This rate is so standard it's pretty much guaranteed, even if sheet size (15) is weird
+    - query: "r:r (is:dfc or is:meld)"
+      count: 5
+      rate: 2
+    - query: "r:m (is:dfc or is:meld)"
+      count: 2
+      rate: 1
+  foil:
+    foil: true
+    any:
+    - rawquery: "(e:emn r:c) or (e:soi r:b)"
+      chance: 12
+    - query: "r:u"
+      chance: 5
+    - use: rare_mythic
+      chance: 3
+  basic:
+    # borrowed basics
+    rawquery: "e:soi r:b"

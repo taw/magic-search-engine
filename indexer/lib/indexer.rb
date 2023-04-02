@@ -86,6 +86,7 @@ class Indexer
       PatchMB1,
       PatchShowcase,
       PatchABUR,
+      PatchNewPrintSheets,
       PatchFrame,
       PatchPartner,
       PatchBfm,
