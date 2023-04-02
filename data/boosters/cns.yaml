@@ -50,16 +50,7 @@ sheets:
       rate: 1
   draft_foil:
     foil: true
-    any:
-    - query: "is:draft r:c"
-      count: 9
-      rate: 4
-    - query: "is:draft r:u"
-      count: 8
-      rate: 2
-    - query: "is:draft r:r"
-      count: 8
-      rate: 1
+    use: draft
   nondraft_foil:
     foil: true
     any:
@@ -67,9 +58,5 @@ sheets:
       chance: 12
     - query: "-is:draft r:u"
       chance: 5
-    - any:
-      - query: "-is:draft r:r"
-        rate: 2
-      - query: "-is:draft r:m"
-        rate: 1
+    - use: nondraft_rare_mythic
       chance: 3
