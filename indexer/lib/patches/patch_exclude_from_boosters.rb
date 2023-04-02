@@ -78,6 +78,8 @@ class PatchExcludeFromBoosters < Patch
       # showcase cards are numbered #279-313
       # extended artwork cards are numbered #314-363 - these are just collector boosters
       [276..278, 279..313].any?{|r| r.include?(number_i)}
+    when "unf"
+      (277..286).include?(number_i) # shock lands can appear in draft boosters
     else
       false
     end
