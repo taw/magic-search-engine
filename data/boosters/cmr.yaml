@@ -39,11 +39,7 @@ sheets:
   dedicated_foil:
     foil: true
     any:
-    - any:
-      - query: "r:r"
-        rate: 2
-      - query: "r:m"
-        rate: 1
+    - use: rare_mythic
       chance: 1
     - query: "r:u"
       chance: 3
