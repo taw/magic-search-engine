@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+require_relative "../search-engine/lib/card_database"
+
+class ExportPrintSheets
+  ROOT = Pathname(__dir__).parent
+
+  def initialize
+    @db = CardDatabase.load
+  end
+
+  def sets_with_print_sheets
+    @sets_with_print_sheets ||= @db.sets.values.select{|set| set.printings.any?(&:print_sheet)}
+  end
+
+  def export_print_sheets(set)
+    path = ROOT + "data/print_sheets_new/#{set.code}.txt"
+
+    data = set.printings.select(&:print_sheet).map{|c| [c.name, c.number.to_s, c.print_sheet]}.sort_by{|cn,n,| [cn, n.to_i, n] }
+
+    max_name_size = data.map{|cn,| cn.size}.max
+    max_num_size = data.map{|_,n,| n.size}.max
+
+    path.parent.mkpath
+    path.write(
+      data.map{|row| "%#{-max_name_size}s    %#{max_num_size}s    %s\n" % row}.join
+    )
+  end
+
+  def call
+    sets_with_print_sheets.each do |set|
+      export_print_sheets(set)
+    end
+  end
+end
+
+ExportPrintSheets.new.call
