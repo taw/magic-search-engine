@@ -1,6 +1,6 @@
-describe PackFactory do
+describe LegacyPackFactory do
   include_context "db"
-  let(:factory) { PackFactory.new(db) }
+  let(:factory) { LegacyPackFactory.new(db) }
   let(:variant) { nil }
   let(:foil) { false }
   let(:pack) { factory.for(set_code, variant) }

@@ -4,17 +4,6 @@ class PackController < ApplicationController
     @title = "Packs"
   end
 
-  def yaml
-    @booster_types = $CardDatabase.booster_data["boosters"].map{|name, _|
-      set_code, variant = name.split("-", 2)
-      booster_code = [set_code, variant, "yaml"].compact.join("-")
-      full_variant = [variant, "yaml"].compact.join("-")
-      [booster_code, $CardDatabase.pack_factory.for(set_code, full_variant)] rescue nil
-    }.compact.to_h
-    @title = "Packs (YAML)"
-    render :index
-  end
-
   def show
     set_code, variant = params.require(:id).downcase.split("-", 2)
 

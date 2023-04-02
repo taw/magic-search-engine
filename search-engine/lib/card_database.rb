@@ -14,8 +14,9 @@ require_relative "color"
 require_relative "deck_database"
 require_relative "deck_parser"
 require_relative "deck"
+require_relative "legacy_card_sheet_factory"
+require_relative "legacy_pack_factory"
 require_relative "pack_factory"
-require_relative "pack_factory_yaml"
 require_relative "pack"
 require_relative "physical_card"
 require_relative "precon_deck"
@@ -104,6 +105,10 @@ class CardDatabase
 
   def pack_factory
     @pack_factory ||= PackFactory.new(self)
+  end
+
+  def legacy_pack_factory
+    @legacy_pack_factory ||= LegacyPackFactory.new(self)
   end
 
   # Excluding unsupported ones

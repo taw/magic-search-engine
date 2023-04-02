@@ -156,9 +156,6 @@ class BoosterIndexer
   def call
     load_data
     process_data
-    BOOSTER_INDEX_PATH.write({
-      # "common" => @common,
-      "boosters" => @boosters
-    }.to_json)
+    BOOSTER_INDEX_PATH.write(@boosters.to_json)
   end
 end
