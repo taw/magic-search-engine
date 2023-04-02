@@ -4,9 +4,9 @@ class PackFactoryYaml
     @sheet_factory = sheet_factory
   end
 
-  def default_sheets
-    @default_sheets ||= @db.booster_data["common"]
-  end
+  # def default_sheets
+  #   @default_sheets ||= @db.booster_data["common"]
+  # end
 
   def build_sheet_from_yaml_data(set_code, name, data)
     data = data.dup
@@ -80,12 +80,9 @@ class PackFactoryYaml
 
     return nil unless data
 
-    sheets = Hash.new{|ht,k|
-      ht[k] = build_sheet_from_yaml_data(set_code, k, default_sheets[k]) if default_sheets[k]
-    }
-    (data.delete("sheets") || []).each{|sheet_name, sheet_data|
-      sheets[sheet_name] = build_sheet_from_yaml_data(set_code, sheet_name, sheet_data)
-    }
+    sheets = data["sheets"].map{|sheet_name, sheet_data|
+      build_sheet_from_yaml_data(set_code, sheet_name, sheet_data)
+    }.to_h
     subpacks = data["pack"].map{|subpack_data, chance|
       subpack = build_simple_pack(subpack_data, sheets)
       [subpack, chance]

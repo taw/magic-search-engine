@@ -4,25 +4,15 @@ require "pathname"
 require "pry"
 require "yaml"
 
-class BoosterIndexer
-  ROOT = Pathname(__dir__).parent.parent
-  BOOSTER_DATA_ROOT = ROOT + "data/boosters"
-  BOOSTER_INDEX_PATH = ROOT + "index/booster_index.json"
-
-  def initialize
-    @common = nil
-    @boosters = {}
+class PreprocessBooster
+  def initialize(indexer, name, data)
+    @indexer = indexer
+    @name = name
+    @data = data
   end
 
-  def load_data
-    BOOSTER_DATA_ROOT.glob("*.yaml").each do |path|
-      basename = path.basename(".yaml").to_s.gsub("_", "")
-      if basename == "common"
-        @common = YAML.load_file(path)
-      else
-        @boosters[basename] = YAML.load_file(path)
-      end
-    end
+  def common
+    @indexer.common
   end
 
   def merge_pack_parts(part1, part2)
@@ -55,7 +45,7 @@ class BoosterIndexer
     options
   end
 
-    def eval_math(data)
+  def eval_math(data)
     data.each do |k, v|
       if v.is_a?(Hash)
         eval_math(v)
@@ -67,30 +57,78 @@ class BoosterIndexer
     end
   end
 
-  def expand_pack_options(name, data)
+  def initialize_pack
     packs = []
-    [data.delete("packs"), data.delete("pack")].compact.each do |pack_data|
+    [@data["packs"], @data["pack"]].compact.each do |pack_data|
       if pack_data.is_a?(Hash)
         packs += [pack_data]
       else
         packs += pack_data
       end
     end
-    raise "Booster #{name} has no packs" if packs.empty?
     packs = packs.flat_map{|pack_data| resolve_option_combinations(pack_data)}
+    raise "Booster #{name} has no packs" if packs.empty?
     gcd = packs.map(&:last).reduce(:gcd)
-    data["pack"] = packs.map{|pack_data, chance| [pack_data, chance / gcd]}
+    @pack = packs.map{|pack_data, chance| [pack_data, chance / gcd]}
   end
 
-  def process_booster(name, data)
-    eval_math(data)
-    expand_pack_options(name, data)
-    # ...
+  def find_sheets_in_use
+    @pack.flat_map{|pack, _| pack.keys}.to_set
+  end
+
+  def warn_about_conflicts_with_common_sheets
+    (@data["sheets"] || {}).each do |sheet_name, sheet|
+      if sheet == common[sheet_name]
+        warn "Sheet #{@name}/#{sheet_name} is identical to common sheet with the same name, you can remove it"
+      end
+    end
+  end
+
+  def initialize_sheets
+    @sheets = common.merge(@data["sheets"] || {})
+  end
+
+  def call
+    eval_math(@data)
+    initialize_pack
+    sheets_in_use = find_sheets_in_use
+
+    warn_about_conflicts_with_common_sheets
+    initialize_sheets
+
+    {
+      "pack" => @pack,
+      "sheets" => @sheets.select{|k,v| sheets_in_use.include?(k)},
+    }
+  end
+end
+
+class BoosterIndexer
+  ROOT = Pathname(__dir__).parent.parent
+  BOOSTER_DATA_ROOT = ROOT + "data/boosters"
+  BOOSTER_INDEX_PATH = ROOT + "index/booster_index.json"
+
+  attr_reader :common
+
+  def initialize
+    @common = nil
+    @boosters = {}
+  end
+
+  def load_data
+    BOOSTER_DATA_ROOT.glob("*.yaml").each do |path|
+      basename = path.basename(".yaml").to_s.gsub("_", "")
+      if basename == "common"
+        @common = YAML.load_file(path)
+      else
+        @boosters[basename] = YAML.load_file(path)
+      end
+    end
   end
 
   def process_data
     @boosters.each do |name, data|
-      process_booster(name, data)
+      @boosters[name] = PreprocessBooster.new(self, name, data).call
     end
   end
 
@@ -98,7 +136,7 @@ class BoosterIndexer
     load_data
     process_data
     BOOSTER_INDEX_PATH.write({
-      "common" => @common,
+      # "common" => @common,
       "boosters" => @boosters
     }.to_json)
   end
