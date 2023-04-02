@@ -88,6 +88,26 @@ class PreprocessBooster
     @sheets = common.merge(@data["sheets"] || {})
   end
 
+  def resolve_sheet_references(sheet)
+    if sheet["use"]
+      use = sheet.delete("use")
+      raise "In #{@name} use:#{use} but no such sheet found" unless @sheets[use]
+      sheet.replace @sheets[use].merge(sheet)
+      # Call it again in case there's an use chain
+      resolve_sheet_references(sheet)
+    elsif sheet["any"]
+      sheet["any"].each do |subsheet|
+        resolve_sheet_references(subsheet)
+      end
+    end
+  end
+
+  def resolve_sheets_references
+    @sheets.each do |sheet_name, sheet|
+      resolve_sheet_references(sheet)
+    end
+  end
+
   def call
     eval_math(@data)
     initialize_pack
@@ -95,6 +115,7 @@ class PreprocessBooster
 
     warn_about_conflicts_with_common_sheets
     initialize_sheets
+    resolve_sheets_references
 
     {
       "pack" => @pack,

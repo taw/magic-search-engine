@@ -16,9 +16,5 @@ sheets:
         chance: 10
       - query: "r:u"
         chance: 3
-      - any:
-        - rate: 2
-          query: "r:r"
-        - rate: 1
-          query: "r:m"
+      - use: rare_mythic
         chance: 1
