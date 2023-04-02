@@ -50,11 +50,7 @@ sheets:
       chance: 12
     - query: "r:u"
       chance: 5
-    - any:
-      - query: "r:r"
-        rate: 2
-      - query: "r:m"
-        rate: 1
+    - use: rare_mythic
       chance: 3
   basic:
     # borrowed basics

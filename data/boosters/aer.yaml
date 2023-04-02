@@ -12,11 +12,7 @@ sheets:
   foil_or_masterpiece_1_in_144:
     foil: true
     any:
-    - any:
-      - query: "r:r"
-        rate: 2
-      - query: "r:m"
-        rate: 1
+    - use: rare_mythic
       chance: 3*8
     - query: "r:u"
       chance: 5*8
