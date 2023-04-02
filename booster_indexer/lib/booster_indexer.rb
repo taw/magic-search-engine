@@ -68,12 +68,18 @@ class BoosterIndexer
   end
 
   def expand_pack_options(name, data)
-    packs = data.delete("packs") || []
-    packs << data.delete("pack") if data.key?("pack")
+    packs = []
+    [data.delete("packs"), data.delete("pack")].compact.each do |pack_data|
+      if pack_data.is_a?(Hash)
+        packs += [pack_data]
+      else
+        packs += pack_data
+      end
+    end
     raise "Booster #{name} has no packs" if packs.empty?
     packs = packs.flat_map{|pack_data| resolve_option_combinations(pack_data)}
     gcd = packs.map(&:last).reduce(:gcd)
-    data["packs"] = packs.map{|pack_data, chance| [pack_data, chance / gcd]}
+    data["pack"] = packs.map{|pack_data, chance| [pack_data, chance / gcd]}
   end
 
   def process_booster(name, data)

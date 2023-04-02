@@ -86,7 +86,7 @@ class PackFactoryYaml
     (data.delete("sheets") || []).each{|sheet_name, sheet_data|
       sheets[sheet_name] = build_sheet_from_yaml_data(set_code, sheet_name, sheet_data)
     }
-    subpacks = data["packs"].map{|subpack_data, chance|
+    subpacks = data["pack"].map{|subpack_data, chance|
       subpack = build_simple_pack(subpack_data, sheets)
       [subpack, chance]
     }
