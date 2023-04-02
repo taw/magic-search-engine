@@ -1,3 +1,4 @@
+require "calc"
 require "json"
 require "pathname"
 require "pry"
@@ -54,13 +55,31 @@ class BoosterIndexer
     options
   end
 
-  def process_booster(name, data)
+    def eval_math(data)
+    data.each do |k, v|
+      if v.is_a?(Hash)
+        eval_math(v)
+      elsif v.is_a?(Array)
+        data[k] = v.map{|vv| eval_math(vv)}
+      elsif ["chance", "count", "rate"].include?(k) and v.is_a?(String)
+        data[k] = Calc.evaluate(v)
+      end
+    end
+  end
+
+  def expand_pack_options(name, data)
     packs = data.delete("packs") || []
     packs << data.delete("pack") if data.key?("pack")
     raise "Booster #{name} has no packs" if packs.empty?
     packs = packs.flat_map{|pack_data| resolve_option_combinations(pack_data)}
     gcd = packs.map(&:last).reduce(:gcd)
     data["packs"] = packs.map{|pack_data, chance| [pack_data, chance / gcd]}
+  end
+
+  def process_booster(name, data)
+    eval_math(data)
+    expand_pack_options(name, data)
+    # ...
   end
 
   def process_data

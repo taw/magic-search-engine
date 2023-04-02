@@ -17,11 +17,11 @@ sheets:
         rate: 2
       - query: "r:m"
         rate: 1
-      chance: 24 # 3*8
+      chance: 3*8
     - query: "r:u"
-      chance: 40 # 5*8
+      chance: 5*8
     - query: "r<=c"
-      chance: 94 # 12*8-2
+      chance: 12*8-2
     - rawquery: "e:mps number<=30"
       count: 30
       chance: 5
