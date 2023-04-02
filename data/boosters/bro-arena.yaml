@@ -10,19 +10,19 @@ sheets:
     # U/R/M rates guessed to be at 4x/2x/1x multiples
     - rawquery: "e:brr number<=63 r:u"
       count: 18
-      rate: 20 # 4*5
+      rate: 4*5
     - rawquery: "e:brr number<=63 r:r"
       count: 30
-      rate: 10 # 2*5
+      rate: 2*5
     - rawquery: "e:brr number<=63 r:m"
       count: 15
-      rate: 5 # 1*5
+      rate: 1*5
     - rawquery: "e:brr number>=64 r:u"
       count: 18
-      rate: 4 # 4*1
+      rate: 4*1
     - rawquery: "e:brr number>=64 r:r"
       count: 30
-      rate: 2 # 2*1
+      rate: 2*1
     - rawquery: "e:brr number>=64 r:m"
       count: 15
-      rate: 1 # 1*1
+      rate: 1*1

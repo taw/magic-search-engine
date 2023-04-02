@@ -7,21 +7,21 @@ sheets:
   alara_premium_basic:
     foil: true
     rawquery: "b:ala r:b"
-    count: 20 # 20 + 0 + 0
+    count: 20 + 0 + 0
   alara_premium_common:
     foil: true
     rawquery: "b:ala r:c"
-    count: 221 # 101 + 60 + 60
+    count: 101 + 60 + 60
   alara_premium_uncommon:
     foil: true
     rawquery: "b:ala r:u"
-    count: 140 # 60 + 40 + 40
+    count: 60 + 40 + 40
   alara_premium_rare_mythic:
     foil: true
     any:
     - rawquery: "b:ala r:r"
-      count: 123 # 53+35+35
+      count: 53+35+35
       rate: 2
     - rawquery: "b:ala r:m"
-      count: 35 # 15+10+10
+      count: 15+10+10
       rate: 1
