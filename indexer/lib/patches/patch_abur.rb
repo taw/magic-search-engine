@@ -51,7 +51,6 @@ class PatchABUR < Patch
     Pathname(__dir__).parent.parent.parent + "data"
   end
 
-
   # Most sheets are frow http://www.lethe.xyz/mtg/collation/lea.html
   #
   # The uncommon and rare sheets for Alpha are not known exactly,
