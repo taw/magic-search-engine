@@ -25,34 +25,34 @@ sheets:
   nonlegendary_rare_mythic:
     any:
     # legendary land in this slot???
-    - query: '-t:"legendary creature" -t:"legendary planeswalker" -t:background r:rare'
+    - query: '-t:"legendary creature" -t:"legendary planeswalker" -t:background r:r'
       count: 47
       rate: 2
-    - query: "-t:legendary r:mythic"
+    - query: "-t:legendary r:m"
       count: 17
       rate: 1
   legendary:
     any:
     # no idea about ratios
-    - query: "t:legendary -t:background -t:land r:uncommon"
+    - query: "t:legendary -t:background -t:land r:u"
       count: 30
       rate: 4
-    - query: "t:legendary -t:background -t:land r:rare"
+    - query: "t:legendary -t:background -t:land r:r"
       count: 25
       rate: 2
-    - query: "t:legendary -t:background -t:land r:mythic"
+    - query: "t:legendary -t:background -t:land r:m"
       count: 5
       rate: 1
   background:
     any:
     # no idea about ratios
-    - query: "t:background r:common"
+    - query: "t:background r:c"
       count: 5
       rate: 4
-    - query: "t:background r:uncommon"
+    - query: "t:background r:u"
       count: 15
       rate: 2
-    - query: "t:background r:rare"
+    - query: "t:background r:r"
       count: 5
       rate: 1
   dedicated_foil:

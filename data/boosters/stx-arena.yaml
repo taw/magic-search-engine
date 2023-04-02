@@ -33,10 +33,10 @@ sheets:
         rate: 11
   nonlesson_common:
     balanced: true
-    query: "r:common -t:lesson"
+    query: "-t:lesson r:c"
   nonlesson_rare_mythic:
     any:
-    - query: "r:rare -t:lesson"
+    - query: "-t:lesson r:r"
       rate: 2
-    - query: "r:mythic -t:lesson"
+    - query: "-t:lesson r:m"
       rate: 1
