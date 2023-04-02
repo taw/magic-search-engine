@@ -120,7 +120,6 @@ describe "Full Database Test" do
 
     # This is fairly silly, as it includes prerelease promos etc.
     assert_search_results "e:soi firstprint<soi",
-      "Call the Bloodline", # mtgjson error
       "Catalog",
       "Compelling Deterrence",
       "Dead Weight",
