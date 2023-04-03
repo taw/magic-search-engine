@@ -315,11 +315,13 @@
     %h4 Search by card's collector number
     %div You can search by specific card number, by number range. For some old and promo cards without printed numbers, they have been arbitrarily assiged.
     %div You can also use special number "set" to indicate set's official card count. Most new sets have cards within official number that go into regular boosters like "1/280" to "280/280", and special cards ("281/280" etc.) for buy a box promos, showcase cards, cards for precon decks, Collector boosters exclusives etc.
+    %div In all number comparison, numbers with extra letters are considered bigger than their base number, alphabetically. For exmaple 19 < 19a < 19b < 20
     %ul
       = search_help "number:117", "cards with collector number 117"
       = search_help "number>=105 and number<=110 e:m19", "cards with numbers 105 to 110 inclusive in M19 set"
       = search_help "number<=set e:m19", "M19 cards with numbers within set's printed size (1/280 to 280/280) - these are regular cards that are in M19 draft boosters"
       = search_help "number>set e:m19", "M19 cards with numbers over set's printed size (281/280 to 314/280) - in this case it's buy-a-box promo and precon only cards, but it varies from set to set"
+      = search_help "e:m19 number:10-20,100-200", "M19 cards with numbers 10 to 20, and 100 to 200"
 
     %h4 Search by card nickname
     %div A few common nicknames are supported as queries.
