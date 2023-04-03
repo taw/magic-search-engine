@@ -67,6 +67,7 @@ class PackFactory
   def for(set_code, variant=nil)
     variant = nil if variant == "default"
     set = @db.resolve_edition(set_code)
+    raise "Invalid set code #{set_code}" unless set
     set_code = set.code # Normalize
     booster_code = [set_code, variant].compact.join("-")
     data = @db.booster_data[booster_code]
