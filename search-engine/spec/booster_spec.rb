@@ -21,11 +21,11 @@ describe "is:booster" do
       should_have_boosters = (
         %W[mb1 cmb1 cmb2 cmr dbl clb 30a].include?(set_code) or (
           !(set_types_with_boosters & set.types).empty? and
-          !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana oana fmb1 anb plist slx uplist].include?(set.code)
+          !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana oana fmb1 anb plist slx uplist sis].include?(set.code)
         )
       )
       should_be_in_other_boosters = (
-        %W[tsb exp mps mp2 fmb1 plist sta sunf brr].include?(set.code)
+        %W[tsb exp mps mp2 fmb1 plist sta sunf brr sis].include?(set.code)
       )
       if %W[jmp ajmp].include?(set_code)
         # There are 121 random precon/booster things
@@ -141,7 +141,7 @@ describe "is:booster" do
       when "dmu"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=281"
       when "unf"
-        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=244"
+        assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} (number<=244 or (number>=277 number<=286))"
       when "bro"
         assert_search_equal "e:#{set_code} is:booster", "e:#{set_code} number<=287 (number<268 or number>=278)"
       when "ala"
