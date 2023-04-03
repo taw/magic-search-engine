@@ -3,6 +3,7 @@ class CardPrinting
   attr_reader :watermark, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border
   attr_reader :rarity_code, :print_sheet, :oversized, :frame_effects, :foiling, :spotlight
   attr_reader :textless, :fullart, :buyabox, :flavor_name, :nontournament, :acorn
+  attr_reader :attraction_lights, :promo_types
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
@@ -46,6 +47,8 @@ class CardPrinting
     @textless = data["textless"]
     @buyabox = data["buyabox"]
     @acorn = data["acorn"]
+    @attraction_lights = data["attraction_lights"]
+    @promo_types = data["promo_types"]
 
     @paper = data["paper"]
     @arena = data["arena"]

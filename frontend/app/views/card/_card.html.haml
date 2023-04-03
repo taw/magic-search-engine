@@ -43,6 +43,12 @@
       Life bonus:
     = card.life
 
+- if card.attraction_lights
+  %div
+    %span.infolabel
+      Attraction Lights:
+    = card.attraction_lights.join(", ")
+
 - if card.others.present?
   %div
     %span.infolabel
