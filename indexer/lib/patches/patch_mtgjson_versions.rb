@@ -175,13 +175,20 @@ class PatchMtgjsonVersions < Patch
         end
       end
 
+      if card["promoTypes"]
+        card["promo_types"] = card["promoTypes"]
+      end
+
       if card["promoTypes"]&.include?("buyabox")
-        card["promoTypes"].delete("buyabox")
         card["buyabox"] = true
       end
 
       if card["securityStamp"] == "acorn"
         card["acorn"] = true
+      end
+
+      if card["attractionLights"]
+        card["attraction_lights"] = card["attractionLights"]
       end
 
       # Unicode vs ASCII
