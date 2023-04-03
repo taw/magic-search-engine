@@ -27,6 +27,10 @@ class PatchNewPrintSheets < Patch
       end
 
       unless assignment.empty?
+        warn "Leftover print sheet data for #{set_code}:"
+        assignment.each do |a|
+          warn "#{a}"
+        end
         raise "Leftover print sheet data for #{set_code}"
       end
     end
