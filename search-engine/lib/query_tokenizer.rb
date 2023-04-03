@@ -67,6 +67,9 @@ class QueryTokenizer
           @warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, cond.new(s[2])]
         end
+      elsif s.scan(/number\s*[:=]\s*(?:"(.*?[\,\-].*?)"|([\p{L}\p{Digit}\,\-]*[\,\-][\p{L}\p{Digit}\,\-]*))/)
+        ranges = s[1] || s[2]
+        tokens << [:test, ConditionNumberRange.new(ranges)]
       elsif s.scan(%r[
         (cn|tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|foreign)
         \s*[:=]\s*
