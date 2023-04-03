@@ -53,6 +53,7 @@ describe Deck do
       ["draft innovation", "Jumpstart"], # JMP only
       ["memorabilia", "World Championship Decks"], # WCxx
       ["expansion", "Jumpstart"],
+      ["standard", "Arena Starter Kit"],
     ]
 
     db.sets.each do |set_code, set|
