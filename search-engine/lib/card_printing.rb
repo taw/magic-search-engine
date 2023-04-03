@@ -1,7 +1,7 @@
 class CardPrinting
   attr_reader :card, :set, :date, :release_date
   attr_reader :watermark, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border
-  attr_reader :rarity_code, :print_sheet, :oversized, :frame_effects, :foiling, :spotlight
+  attr_reader :rarity_code, :print_sheet, :oversized, :frame_effects, :foiling, :spotlight, :promo_types
   attr_reader :textless, :fullart, :buyabox, :flavor_name, :nontournament, :acorn
 
   # Performance cache of derived information
@@ -38,6 +38,7 @@ class CardPrinting
     @exclude_from_boosters = data["exclude_from_boosters"]
     @print_sheet = data["print_sheet"]
     @partner = data["partner"] # overriden by CardDatabase
+    @promo_types = data["promoTypes"] || []
     @others = data["others"] # overriden by CardDatabase
     @oversized = data["oversized"]
     @nontournament = data["nontournament"]
