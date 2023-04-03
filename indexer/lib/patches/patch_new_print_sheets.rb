@@ -6,13 +6,22 @@ class PatchNewPrintSheets < Patch
       next unless path.exist?
       lines = path.read.gsub(/\s*#.*/, "").split("\n").grep(/\S/)
 
-      assignment =  lines.map{|line|
-        name, number, sheet = line.split(/ {2,}/, 3); [[name, number], sheet]
-      }.to_h
+      assignment = {}
+      lines.each do |line|
+        parts = line.split(/ {2,}/, 3)
+        if parts.size == 2
+          name, sheet = parts
+          assignment[name] = sheet
+        elsif parts.size == 3
+          name, number, sheet = parts
+          assignment[[name, number]] = sheet
+        else
+          raise "Invalid line: #{line}"
+        end
+      end
 
       cards_by_set[set_code].each do |card|
-        key = [card["name"], card["number"]]
-        sheet = assignment.delete(key)
+        sheet = assignment.delete([card["name"], card["number"]]) || assignment.delete(card["name"])
         next unless sheet
         card["print_sheet"] = sheet
       end
