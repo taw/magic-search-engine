@@ -130,6 +130,7 @@ class IndexSerializer
           "paper",
           "partner",
           "print_sheet",
+          "promoTypes",
           "rarity",
           "release_date",
           "shandalar",
