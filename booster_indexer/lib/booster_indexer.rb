@@ -73,7 +73,7 @@ class PreprocessBooster
   end
 
   def find_sheets_in_use
-    @pack.flat_map{|pack, _| pack.keys}.to_s
+    @pack.flat_map{|pack, _| pack.keys}.to_set
   end
 
   def warn_about_conflicts_with_common_sheets
