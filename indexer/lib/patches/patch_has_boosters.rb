@@ -11,6 +11,7 @@ class PatchHasBoosters < Patch
       sta
       sunf
       tsb
+      slx
     ]
   end
 
