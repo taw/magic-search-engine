@@ -27,17 +27,17 @@ pack:
   chance: 121-29
 sheets:
   planeswalker_uncommon:
-    query: "t:planeswalker r:u"
+    query: "t:planeswalker r:u -promo:jpwalker"
     count: 20
   nonplaneswalker_uncommon:
     query: "-t:planeswalker r:u"
     count: 60
   planeswalker_rare_mythic:
     any:
-    - query: "t:planeswalker r:r"
+    - query: "t:planeswalker r:r -promo:jpwalker"
       count: 13
       rate: 2
-    - query: "t:planeswalker r:m"
+    - query: "t:planeswalker r:m -promo:jpwalker"
       count: 3
       rate: 1
   nonplaneswalker_rare_mythic:
