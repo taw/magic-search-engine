@@ -1,8 +1,3 @@
-# Data flow between this system and mtgjson is bidirectional
-# - index says set has boosters if mtgjson says
-# - mtgjson says so because old index said so
-# - this is just an extra
-
 class PatchHasBoosters < Patch
   def included_in_other_boosters
     %W[
