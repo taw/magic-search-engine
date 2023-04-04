@@ -20,11 +20,13 @@ class PackFactory
     foil = false
     balanced = false
     coout = nil
+    baseset = true
 
     foil = data.delete("foil") if data.has_key?("foil")
     balanced = data.delete("balanced") if data.has_key?("balanced")
     count = data.delete("count") if data.has_key?("count")
     kind = balanced ? ColorBalancedCardSheet : CardSheet
+    baseset = data.delete("baseset") if data.has_key?("baseset")
 
     sheet = case data.keys.sort
     when ["code"]
@@ -34,9 +36,9 @@ class PackFactory
       raise "No balanced support for #{set_code}:code" if balanced
       @sheet_factory.explicit_sheet(data["set"], data["code"], foil: foil, count: count)
     when ["query"]
-      @sheet_factory.from_query("e:#{set_code} (#{data["query"]})", count, foil: foil, kind: kind)
+      @sheet_factory.from_query("e:#{set_code} (#{data["query"]})", count, foil: foil, kind: kind, baseset:baseset)
     when ["rawquery"]
-      @sheet_factory.from_query(data["rawquery"], count, foil: foil, kind: kind)
+      @sheet_factory.from_query(data["rawquery"], count, foil: foil, kind: kind, baseset: baseset)
     when ["any"]
       subsheets = data["any"].map(&:dup)
       raise "No balanced support for #{set_code}:any" if balanced
