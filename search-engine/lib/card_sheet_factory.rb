@@ -14,22 +14,20 @@ class CardSheetFactory
     CardSheet.new(sheets.map(&:first), sheets.map{|s,w| s.elements.size * w})
   end
 
-  def from_query(query, assert_count=nil, foil: false, kind: CardSheet, baseset: true)
-    cards = find_cards(query, assert_count, foil: foil, baseset: baseset)
+  def from_query(query, assert_count=nil, foil: false, kind: CardSheet, filter: true)
+    cards = find_cards(query, assert_count, foil: foil, filter: filter)
     kind.new(cards)
   end
 
   # This method can legitimately return 0 results
   # For example mythic subsheet for foil sheet is very often empty for older sets
-  def find_cards(query, assert_count=nil, foil: false, baseset: true)
+  def find_cards(query, assert_count=nil, foil: false, filter: true)
     base_query = "++ is:front"
+    base_query << " is:booster" if filter
     if foil
       base_query += " is:foil"
     else
       base_query += " is:nonfoil"
-    end
-    if baseset
-      base_query += " is:booster"
     end
     cards = @db.search("#{base_query} (#{query})").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
     if assert_count and assert_count != cards.size

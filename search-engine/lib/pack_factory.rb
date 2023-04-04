@@ -20,13 +20,11 @@ class PackFactory
     foil = false
     balanced = false
     coout = nil
-    baseset = true
 
     foil = data.delete("foil") if data.has_key?("foil")
     balanced = data.delete("balanced") if data.has_key?("balanced")
     count = data.delete("count") if data.has_key?("count")
     kind = balanced ? ColorBalancedCardSheet : CardSheet
-    baseset = data.delete("baseset") if data.has_key?("baseset")
 
     sheet = case data.keys.sort
     when ["code"]
@@ -36,9 +34,9 @@ class PackFactory
       raise "No balanced support for #{set_code}:code" if balanced
       @sheet_factory.explicit_sheet(data["set"], data["code"], foil: foil, count: count)
     when ["query"]
-      @sheet_factory.from_query("e:#{set_code} (#{data["query"]})", count, foil: foil, kind: kind, baseset:baseset)
+      @sheet_factory.from_query("e:#{set_code} (#{data["query"]})", count, foil: foil, kind: kind)
     when ["rawquery"]
-      @sheet_factory.from_query(data["rawquery"], count, foil: foil, kind: kind, baseset: baseset)
+      @sheet_factory.from_query(data["rawquery"], count, foil: foil, kind: kind, filter: false)
     when ["any"]
       subsheets = data["any"].map(&:dup)
       raise "No balanced support for #{set_code}:any" if balanced
@@ -54,18 +52,6 @@ class PackFactory
       else
         raise "Incorrect subsheet data for #{set_code} any"
       end
-    when ["balance_query"]
-      valid_cards = @sheet_factory.from_query("e:#{set_code} (#{data["balance_query"]})", count, foil: foil, kind: kind, baseset:baseset)
-      subsheets = []
-      chances = []
-      valid_cards.cards.map{|card| card.name}.uniq.each do |name|
-        u = Hash.new()
-        u["query"] = data["balance_query"] + " #{name}"
-        subsheets << u
-        chances << 1
-      end
-      sheets = subsheets.map{|d| build_sheet(set_code, nil, d.merge("foil" => foil).merge("baseset" => baseset)) }
-      build_sheet_from_subsheets(sheets, chances)
     else
       raise "Unknown sheet type #{data.keys.join(", ")}"
     end
