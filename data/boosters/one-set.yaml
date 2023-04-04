@@ -154,5 +154,10 @@ sheets:
     - use: mythic
       chance: 1
   the_list:
-    set: plist
-    code: "ONE"
+    any:
+    - set: plist
+      code: "ONE"
+      chance: 5
+    - set: slx
+      code: "ONE"
+      chance: 1
