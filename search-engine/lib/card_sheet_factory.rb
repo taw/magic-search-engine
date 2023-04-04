@@ -29,7 +29,7 @@ class CardSheetFactory
       base_query += " is:nonfoil"
     end
     if baseset
-      base_query += " number<=set"
+      base_query += " is:booster"
     end
     cards = @db.search("#{base_query} (#{query})").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
     if assert_count and assert_count != cards.size
