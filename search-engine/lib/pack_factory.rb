@@ -36,7 +36,7 @@ class PackFactory
     when ["query"]
       @sheet_factory.from_query("e:#{set_code} (#{data["query"]})", count, foil: foil, kind: kind)
     when ["rawquery"]
-      @sheet_factory.from_query(data["rawquery"], count, foil: foil, kind: kind)
+      @sheet_factory.from_query(data["rawquery"], count, foil: foil, kind: kind, filter: false)
     when ["any"]
       subsheets = data["any"].map(&:dup)
       raise "No balanced support for #{set_code}:any" if balanced

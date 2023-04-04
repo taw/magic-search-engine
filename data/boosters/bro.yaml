@@ -15,35 +15,35 @@ sheets:
     any:
     # Officially 1/6 schematc rate
     # U/R/M rates guessed to be at 4x/2x/1x multiples
-    - rawquery: "e:brr number<=63 r:u"
+    - rawquery: "e:brr number<=63 r:u is:booster"
       count: 18
       rate: 4*5
-    - rawquery: "e:brr number<=63 r:r"
+    - rawquery: "e:brr number<=63 r:r is:booster"
       count: 30
       rate: 2*5
-    - rawquery: "e:brr number<=63 r:m"
+    - rawquery: "e:brr number<=63 r:m is:booster"
       count: 15
       rate: 1*5
-    - rawquery: "e:brr number>=64 r:u"
+    - rawquery: "e:brr number>=64 r:u is:booster"
       count: 18
       rate: 4*1
-    - rawquery: "e:brr number>=64 r:r"
+    - rawquery: "e:brr number>=64 r:r is:booster"
       count: 30
       rate: 2*1
-    - rawquery: "e:brr number>=64 r:m"
+    - rawquery: "e:brr number>=64 r:m is:booster"
       count: 15
       rate: 1*1
   foil:
     foil: true
     any:
-    - rawquery: "e:bro,brr r<=c"
+    - rawquery: "e:bro,brr r<=c is:booster"
       chance: 12
-    - rawquery: "e:bro,brr r:u"
+    - rawquery: "e:bro,brr r:u is:booster"
       chance: 5
     - any:
-      - rawquery: "e:bro,brr r:r"
+      - rawquery: "e:bro,brr r:r is:booster"
         rate: 2
-      - rawquery: "e:bro,brr r:m"
+      - rawquery: "e:bro,brr r:m is:booster"
         rate: 1
       chance: 3
   mech_basic:
