@@ -54,6 +54,18 @@ class PackFactory
       else
         raise "Incorrect subsheet data for #{set_code} any"
       end
+    when ["balance_query"]
+      valid_cards = @sheet_factory.from_query("e:#{set_code} (#{data["balance_query"]})", count, foil: foil, kind: kind, baseset:baseset)
+      subsheets = []
+      chances = []
+      valid_cards.cards.map{|card| card.name}.uniq.each do |name|
+        u = Hash.new()
+        u["query"] = data["balance_query"] + " #{name}"
+        subsheets << u
+        chances << 1
+      end
+      sheets = subsheets.map{|d| build_sheet(set_code, nil, d.merge("foil" => foil).merge("baseset" => baseset)) }
+      build_sheet_from_subsheets(sheets, chances)
     else
       raise "Unknown sheet type #{data.keys.join(", ")}"
     end
