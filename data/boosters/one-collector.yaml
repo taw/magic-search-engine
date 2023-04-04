@@ -25,26 +25,20 @@ sheets:
     foil: true
     use: rare_mythic
   extended_r:
-    query: "frame:extendedart number<=403"
-    baseset: false
+    rawquery: "e:one frame:extendedart number:375-403"
   extended_jc:
     any:
-    - query: "frame:extendedart number:409-413"
-      baseset: false
+    - rawquery: "e:one frame:extendedart number:409-413"
       rate: 2
-    - rawquery: "set:onc frame:extendedart r:r"
-      baseset: false
+    - rawquery: "e:onc frame:extendedart r:r"
       rate: 2
-    - rawquery: "set:onc frame:extendedart r:m"
-      baseset: false
+    - rawquery: "e:onc frame:extendedart r:m"
       rate: 1
   showcase_cu:
     any:
-    - query: "r:c promo:boosterfun -is:foilonly -frame:extendedart"
-      baseset: false
+    - rawquery: "e:one r:c promo:boosterfun -is:foilonly -frame:extendedart"
       rate: 2
-    - query: "r:u promo:boosterfun -is:foilonly -frame:extendedart"
-      baseset: false
+    - rawquery: "e:one r:u promo:boosterfun -is:foilonly -frame:extendedart"
       rate: 1
   foil_showcase_cu:
     foil: true
@@ -52,50 +46,56 @@ sheets:
   compleat_foil: # chances are approximate
     foil: true
     any:
-    - query: "r:c promo:stepandcompleat"
-      baseset: false
+    - rawquery: "e:one r:c promo:stepandcompleat"
       chance: 38
-    - query: "r:u promo:stepandcompleat"
-      baseset: false
+    - rawquery: "e:one r:u promo:stepandcompleat"
       chance: 29
-    - query: "r:r promo:stepandcompleat"
-      baseset: false
+    - rawquery: "e:one r:r promo:stepandcompleat"
       chance: 22
-    - query: "r:m promo:stepandcompleat"
-      baseset: false
+    - any:
+      - rawquery: "e:one r:m promo:stepandcompleat (Elesh Norn, Mother of Machines)"
+        rate: 2
+      - rawquery: "e:one r:m promo:stepandcompleat t:planeswalker"
+        rate: 3
+      - rawquery: "e:one r:m promo:stepandcompleat -t:planeswalker -(Elesh Norn, Mother of Machines)"
+        rate: 6
       chance: 11
   showcase_rm: # need to figure out how often praetors appear in this slot
     any:
-    - query: "r:r promo:boosterfun -is:foilonly -frame:extendedart"
-      baseset: false
+    - rawquery: "e:one r:r promo:boosterfun -is:foilonly -frame:extendedart"
+      rate: 12
+    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart (Elesh Norn, Mother of Machines) -number:416"
       rate: 2
-    - query: "r:m promo:boosterfun -is:foilonly -frame:extendedart"
-      baseset: false
-      rate: 1
-    - rawquery: "(e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
-      baseset: false
+      count: 3
+    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart t:planeswalker"
+      rate: 3
+      count: 10
+    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart -t:planeswalker -(Elesh Norn, Mother of Machines)"
+      rate: 6
+      count: 10
+    - rawquery: "(e:one number:416) or (e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
       rate: 1
   foil_showcase_rm:
     foil: true
     any:
-    - query: "r:r promo:boosterfun -is:foilonly -frame:extendedart"
-      baseset: false
+    - rawquery: "e:one r:r promo:boosterfun -is:foilonly -frame:extendedart"
+      rate: 12
+    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart (Elesh Norn, Mother of Machines) -number:416"
       rate: 2
-    - query: "r:m promo:boosterfun -is:foilonly -frame:extendedart"
-      baseset: false
+      count: 3
+    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart t:planeswalker"
+      rate: 3
+      count: 10
+    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart -t:planeswalker -(Elesh Norn, Mother of Machines)"
+      rate: 6
+      count: 10
+    - rawquery: "(e:one number:416) or (e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
       rate: 1
-    - rawquery: "(e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
-      baseset: false
-      rate: 1
-    - query: "frame:extendedart number:409-413"
-      baseset: false
-      rate: 2
-    - rawquery: "set:onc frame:extendedart r:r"
-      baseset: false
-      rate: 2
-    - rawquery: "set:onc frame:extendedart r:m"
-      baseset: false
-      rate: 1
-    - query: "frame:extendedart number<=403"
-      baseset: false
-      rate: 2
+    - rawquery: "e:one frame:extendedart number:409-413"
+      rate: 12
+    - rawquery: "e:onc frame:extendedart r:r"
+      rate: 12
+    - rawquery: "e:onc frame:extendedart r:m"
+      rate: 6
+    - rawquery: "e:one frame:extendedart number:375-403"
+      rate: 12
