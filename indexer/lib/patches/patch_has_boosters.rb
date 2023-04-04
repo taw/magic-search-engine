@@ -38,6 +38,18 @@ class PatchHasBoosters < Patch
       one
     ]
   end
+  
+  def set_boosters
+    %W[
+      one
+    ]
+  end
+  
+  def collector_boosters
+    %W[
+      one
+    ]
+  end
 
   def included_in_other_boosters
     %W[
@@ -104,6 +116,12 @@ class PatchHasBoosters < Patch
         else
           set["booster_variants"] = nil
         end
+      end
+      if set_boosters.include?(set["code"])
+        set["booster_variants"][:"set"] = "#{set["name"]} Set Booster"
+      end
+      if collector_boosters.include?(set["code"])
+        set["booster_variants"][:"collector"] = "#{set["name"]} Collector Booster"
       end
     end
   end
