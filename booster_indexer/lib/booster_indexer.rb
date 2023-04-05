@@ -102,9 +102,24 @@ class PreprocessBooster
     end
   end
 
-  def resolve_sheets_references
+  def process_queries(sheet)
+  end
+
+  def process_sheets
     @sheets.each do |sheet_name, sheet|
       resolve_sheet_references(sheet)
+      process_queries(sheet)
+    end
+  end
+
+  def check_small_balanced_sheets
+    @pack.each do |pack, chance|
+      pack.each do |sheet_name, count|
+        next unless @sheets[sheet_name]["balanced"]
+        if count <= 7
+          warn "Sheet #{@name}/#{sheet_name} is too small to be balanced with only #{count} cards"
+        end
+      end
     end
   end
 
@@ -115,7 +130,8 @@ class PreprocessBooster
 
     warn_about_conflicts_with_common_sheets
     initialize_sheets
-    resolve_sheets_references
+    process_sheets
+    check_small_balanced_sheets
 
     {
       "pack" => @pack,
