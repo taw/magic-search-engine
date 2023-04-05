@@ -53,12 +53,14 @@ sheets:
     - rawquery: "e:one r:r promo:stepandcompleat"
       chance: 22
     - any:
-      - rawquery: "e:one r:m promo:stepandcompleat (Elesh Norn, Mother of Machines)"
+      - rawquery: "e:one r:m promo:stepandcompleat (Elesh Norn, Mother of Machines) -number:417"
         rate: 2
       - rawquery: "e:one r:m promo:stepandcompleat t:planeswalker"
         rate: 3
       - rawquery: "e:one r:m promo:stepandcompleat -t:planeswalker -(Elesh Norn, Mother of Machines)"
         rate: 6
+      - rawquery: "(e:one number:417) or (e:neo number:514) or (e:dmu number:436) or (e:snc number:469) or (e:khm number:407)"
+        rate: 4
       chance: 11
   showcase_rm: # need to figure out how often praetors appear in this slot
     any:
