@@ -4,6 +4,14 @@ require "pathname"
 require "pry"
 require "yaml"
 
+class Hash
+  unless method_defined?(:except)
+    def except(*keys)
+      reject { |k, _| keys.include?(k) }
+    end
+  end
+end
+
 class PreprocessBooster
   def initialize(indexer, name, data)
     @indexer = indexer
