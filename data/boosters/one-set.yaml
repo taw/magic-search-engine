@@ -164,3 +164,44 @@ sheets:
   common:
     balanced: false
     query: "r:c"
+  prototype_praetor:
+    rawquery: "(e:one number:416) or (e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
+  foil:
+    foil: true
+    any:
+    - any:
+      - any:
+        - rawquery: "e:one r:c promo:boosterfun -is:foilonly -frame:extendedart"
+          rate: 1
+          count: 6
+        - query: "r:c alt:(e:one promo:boosterfun -is:foilonly -frame:extendedart)"
+          rate: 2
+          count: 6
+        - query: "r:c -alt:(e:one promo:boosterfun -is:foilonly -frame:extendedart)"
+          rate: 3
+          count: 95
+        chance: 101
+      - use: basic
+        chance: 5
+      chance: 12
+    - any:
+      - rawquery: "e:one r:u promo:boosterfun -is:foilonly -frame:extendedart"
+        rate: 1
+        count: 7
+      - query: "r:u alt:(e:one promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 2
+        count: 7
+      - query: "r:u -alt:(e:one promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 3
+        count: 73
+      chance: 5
+    - any:
+      - any:
+        - use: rare
+          chance: 6
+        - use: mythic
+          chance: 1
+        chance: 59
+      - use: prototype_praetor
+        chance: 1
+      chance: 3
