@@ -10,6 +10,10 @@ class PreprocessBooster
     @name = name
     @set_code = name.split("-").first
     @data = data
+    @filter = "e:#{@set_code} is:booster"
+    if @data["filter"]
+      @filter = "e:#{@set_code} (#{@data["filter"]})"
+    end
   end
 
   def common
@@ -91,31 +95,37 @@ class PreprocessBooster
 
   def process_sheet(sheet)
     if sheet["use"]
-      use = sheet.delete("use")
+      use = sheet["use"]
       raise "In #{@name} use:#{use} but no such sheet found" unless @sheets[use]
-      sheet.replace @sheets[use].merge(sheet)
       # Call it again in case there's an use chain
       # and then to do any other kind of processing
-      process_sheet(sheet)
+      process_sheet(@sheets[use].merge(sheet.except("use")))
     elsif sheet["any"]
-      sheet["any"].each do |subsheet|
-        process_sheet(subsheet)
-      end
+      sheet.merge(
+        "any" => sheet["any"].map{|subsheet| process_sheet(subsheet)}
+      )
     elsif sheet["code"]
-      unless sheet["code"].include?("/")
-        set = sheet.delete("set") || @set_code
-        code = sheet.delete("code")
-        sheet["code"] = "#{set}/#{code}"
+      if sheet["code"].include?("/")
+        sheet
+      else
+        set = sheet["set"] || @set_code
+        code = sheet["code"]
+        sheet.except("code", "set").merge("code" => "#{set}/#{code}")
       end
     elsif sheet["rawquery"]
-      # ...
+      query = sheet["rawquery"]
+      sheet.except("rawquery").merge("query" => query)
     elsif sheet["query"]
-      # ...
+      query = sheet["query"]
+      # filter already in and-form, doesn't need extra parentheses
+      sheet.merge("query" => "#{@filter} (#{query})")
+    else
+      raise "Unknown sheet type #{sheet.keys.join(", ")}"
     end
   end
 
   def process_sheets
-    @sheets.each do |sheet_name, sheet|
+    @sheets = @sheets.transform_values do |sheet|
       process_sheet(sheet)
     end
   end
