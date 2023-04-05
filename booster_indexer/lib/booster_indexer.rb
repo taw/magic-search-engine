@@ -8,6 +8,7 @@ class PreprocessBooster
   def initialize(indexer, name, data)
     @indexer = indexer
     @name = name
+    @set_code = name.split("-").first
     @data = data
   end
 
@@ -88,27 +89,34 @@ class PreprocessBooster
     @sheets = common.merge(@data["sheets"] || {})
   end
 
-  def resolve_sheet_references(sheet)
+  def process_sheet(sheet)
     if sheet["use"]
       use = sheet.delete("use")
       raise "In #{@name} use:#{use} but no such sheet found" unless @sheets[use]
       sheet.replace @sheets[use].merge(sheet)
       # Call it again in case there's an use chain
-      resolve_sheet_references(sheet)
+      # and then to do any other kind of processing
+      process_sheet(sheet)
     elsif sheet["any"]
       sheet["any"].each do |subsheet|
-        resolve_sheet_references(subsheet)
+        process_sheet(subsheet)
       end
+    elsif sheet["code"]
+      unless sheet["code"].include?("/")
+        set = sheet.delete("set") || @set_code
+        code = sheet.delete("code")
+        sheet["code"] = "#{set}/#{code}"
+      end
+    elsif sheet["rawquery"]
+      # ...
+    elsif sheet["query"]
+      # ...
     end
-  end
-
-  def process_queries(sheet)
   end
 
   def process_sheets
     @sheets.each do |sheet_name, sheet|
-      resolve_sheet_references(sheet)
-      process_queries(sheet)
+      process_sheet(sheet)
     end
   end
 
