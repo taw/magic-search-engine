@@ -1,0 +1,78 @@
+# data from https://magic.wizards.com/en/news/making-magic/project-booster-fun-2019-07-20
+# and https://www.lethe.xyz/mtg/collation/eld.html
+pack:
+  foil_basic: 2
+  common_or_uncommon:
+  # assuming this is a similar rate as set boosters from https://mtg.fandom.com/wiki/Set_Booster
+  - foil_common_basic: 6
+    foil_uncommon: 2
+    chance: 350
+  - foil_common_basic: 5
+    foil_uncommon: 3
+    chance: 400
+  - foil_common_basic: 4
+    foil_uncommon: 4
+    chance: 125
+  - foil_common_basic: 3
+    foil_uncommon: 5
+    chance: 70
+  - foil_common_basic: 2
+    foil_uncommon: 6
+    chance: 35
+  - foil_common_basic: 1
+    foil_uncommon: 7
+    chance: 20
+  showcase: 1
+  ancillary: 1
+  rm_extended: 1
+  foil_rm: 1
+sheets:
+  foil_common_basic:
+    any:
+    - use: foil_common
+      rate: 1
+    - rawquery: "e:thb t:basic number:278-287"
+      rate: 1
+  showcase:
+    # assume that this uses 2x rates 
+    any:
+    - query: "r:u t:saga"
+      rate: 4
+    - rawquery: "e:thb r:u promo:boosterfun -is:foilonly -frame:extendedart"
+      rate: 4
+    - query: "r:r t:saga"
+      rate: 2
+    - rawquery: "e:thb r:m promo:boosterfun -is:foilonly -frame:extendedart"
+      rate: 1
+    - query: "r:m t:saga"
+      rate: 1
+  ancillary:
+    # assume that this is the same rate as set booster wildcards
+    any:
+    - rawquery: "e:thb r:c -promo:boosterfun number:269-297"
+      chance: 700
+    - rawquery: "e:thb r:u -promo:boosterfun number:269-297"
+      chance: 175
+    - any:
+      - rawquery: "e:thb r:r -promo:boosterfun number:269-297"
+        rate: 2
+      - rawquery: "e:thb r:m -promo:boosterfun number:269-297"
+        rate: 1
+      chance: 125
+  rm_extended:
+    any:
+    - rawquery: "e:thb r:r frame:extendedart"
+      rate: 2
+    - rawquery: "e:thb r:m frame:extendedart"
+      rate: 1
+  foil_rm:
+    foil: true
+    any:
+    - rawquery: "e:thb r:r frame:extendedart"
+      rate: 2
+    - query: "r:r"
+      rate: 2
+    - rawquery: "e:thb r:m frame:extendedart"
+      rate: 1
+    - query: "r:m"
+      rate: 1
