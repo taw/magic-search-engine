@@ -67,11 +67,11 @@ sheets:
   foil_rm:
     foil: true
     any:
-    - rawquery: "e:thb r:r frame:extendedart"
+    - rawquery: "e:thb r:r promo:boosterfun"
       rate: 2
     - query: "r:r"
-      rate: 2
-    - rawquery: "e:thb r:m frame:extendedart"
+      rate: 4
+    - rawquery: "e:thb r:m promo:boosterfun"
       rate: 1
     - query: "r:m"
-      rate: 1
+      rate: 2
