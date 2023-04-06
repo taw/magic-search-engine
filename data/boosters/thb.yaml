@@ -1,12 +1,50 @@
+# Data from https://www.lethe.xyz/mtg/collation/thb.html
 pack:
 - basic: 1
-  common: 10
+  common_or_foil:
+  - common: 10
+    chance: 2
+  - common: 9
+    foil: 1
+    chance: 1
   uncommon: 3
   rare_mythic: 1
-  chance: 2
-- basic: 1
-  common: 9
-  uncommon: 3
-  rare_mythic: 1
-  foil: 1
-  chance: 1
+sheets:
+  uncommon:
+    # Showcase treatments 1/3 for relevant cards
+    any:
+    - rawquery: "e:thb r:u promo:boosterfun -is:foilonly -frame:extendedart"
+      rate: 1
+      count: 5
+    - query: "r:u alt:(e:thb promo:boosterfun -is:foilonly -frame:extendedart)"
+      rate: 2
+      count: 5
+    - query: "r:u -alt:(e:thb promo:boosterfun -is:foilonly -frame:extendedart)"
+      rate: 3
+      count: 75
+  rare_mythic:
+  # assuming this works the same as uncommons, no proof
+    any:
+    - query: "r:r"
+      chance: 6
+    - any:
+      - rawquery: "e:thb r:m promo:boosterfun -is:foilonly -frame:extendedart"
+        rate: 1
+      - query: "r:m alt:(e:thb promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 2
+      - query: "r:m -alt:(e:thb promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 3
+      chance: 1
+  foil:
+    foil: true
+    any:
+    - any:
+      - use: common
+        chance: 101
+      - use: basic
+        chance: 5
+      chance: 12
+    - use: uncommon
+      chance: 5
+    - use: rare_mythic
+      chance: 3
