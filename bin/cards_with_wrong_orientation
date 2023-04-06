@@ -42,7 +42,7 @@ class CheckCardOrientation
 
   def expected_orientation
     @expected_orientation ||= begin
-      if (@card.types & ["plane", "phenomenon"]).empty?
+      if (@card.types & ["plane", "phenomenon", "battle"]).empty?
         :vertical
       else
         :horizontal
@@ -65,8 +65,8 @@ class CheckCardOrientation
 
   def call
     if orientation != expected_orientation
-      warn "Bad orientation for #{card_name_and_number} #{@path} expected:#{expected_orientation} actual:#{orientation}"
-      binding.pry
+      warn "Bad orientation for #{card_name_and_number} (#{@card.typeline}) #{@path} expected:#{expected_orientation} actual:#{orientation}"
+      # binding.pry
     end
   end
 end
