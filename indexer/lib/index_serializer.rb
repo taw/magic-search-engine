@@ -79,6 +79,7 @@ class IndexSerializer
         "cmc",
         "colors",
         "commander",
+        "defense",
         "display_power",
         "display_toughness",
         "foreign_names",
