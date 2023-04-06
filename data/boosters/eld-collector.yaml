@@ -1,0 +1,65 @@
+# data from https://magic.wizards.com/en/news/making-magic/project-booster-fun-2019-07-20
+# and https://www.lethe.xyz/mtg/collation/eld.html
+pack:
+  common_or_uncommon:
+  # assuming this is a similar rate as set boosters from https://mtg.fandom.com/wiki/Set_Booster
+  - foil_common: 7
+    foil_uncommon: 2
+    chance: 350
+  - foil_common: 6
+    foil_uncommon: 3
+    chance: 400
+  - foil_common: 5
+    foil_uncommon: 4
+    chance: 125
+  - foil_common: 4
+    foil_uncommon: 5
+    chance: 70
+  - foil_common: 3
+    foil_uncommon: 6
+    chance: 35
+  - foil_common: 2
+    foil_uncommon: 7
+    chance: 20
+  showcase: 3
+  ancillary: 1
+  rm_extended: 1
+  foil_rm: 1
+sheets:
+  showcase:
+    # assume that this is the same rate as set booster wildcards
+    any:
+    - rawquery: "e:eld r:c promo:boosterfun -is:foilonly -frame:extendedart"
+      chance: 700
+    - rawquery: "e:eld r:u promo:boosterfun -is:foilonly -frame:extendedart"
+      chance: 175
+    - any:
+      - rawquery: "e:eld r:r promo:boosterfun -is:foilonly -frame:extendedart"
+        count: 5
+        rate: 2
+      - rawquery: "e:eld r:m promo:boosterfun -is:foilonly -frame:extendedart"
+        count: 5
+        rate: 1
+      chance: 125
+  ancillary:
+    # assume that this is the same rate as set booster wildcards
+    any:
+    - rawquery: "e:eld r:c -promo:boosterfun number>=304"
+      chance: 700
+    - rawquery: "e:eld r:u -promo:boosterfun number>=304"
+      chance: 175
+    - any:
+      - rawquery: "e:eld r:r -promo:boosterfun number>=304"
+        rate: 2
+      - rawquery: "e:eld r:m -promo:boosterfun number>=304"
+        rate: 1
+      chance: 125
+  rm_extended:
+    any:
+    - rawquery: "e:eld r:r frame:extendedart"
+      rate: 2
+    - rawquery: "e:eld r:m frame:extendedart"
+      rate: 1
+  foil_rm:
+    foil: true
+    use: rare_mythic

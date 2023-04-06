@@ -35,6 +35,7 @@ class FormatPioneer < Format
       "dmu",
       "bro",
       "one",
+      "mom",
     ]
   end
 end

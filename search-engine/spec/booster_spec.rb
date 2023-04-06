@@ -25,7 +25,7 @@ describe "is:booster" do
         )
       )
       should_be_in_other_boosters = (
-        %W[tsb exp mps mp2 fmb1 plist sta sunf brr sis].include?(set.code)
+        %W[tsb exp mps mp2 fmb1 plist sta sunf brr sis slx].include?(set.code)
       )
       if %W[jmp ajmp].include?(set_code)
         # There are 121 random precon/booster things
