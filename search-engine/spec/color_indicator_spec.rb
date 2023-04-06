@@ -22,6 +22,7 @@ describe "Color Indicator Test" do
       "Arlinn, Embraced by the Moon",
       "Arlinn, the Moon's Fury",
       "Blaster, Morale Booster",
+      "Etali, Primal Sickness",
       "Lord of the Ulvenwald",
       "Ravager of the Fells",
       "Savage Packmate",
