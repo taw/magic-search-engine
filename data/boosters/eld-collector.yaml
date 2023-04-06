@@ -1,8 +1,15 @@
 # data from https://magic.wizards.com/en/news/making-magic/project-booster-fun-2019-07-20
 # and https://www.lethe.xyz/mtg/collation/eld.html
+# Assumptions:
+# No data for distribution of commons/uncommons
+# - assumed to follow distribution of Set boosters in https://mtg.fandom.com/wiki/Set_Booster
+# - with one extra guaranteed common and one guaranteed uncommon
+# No data for relative showcase rarity for showcase slot
+# - Showcase treatments roughly follow standard distribution, so used the wildcard rates
+# No data for relative rarity of ancillary cards
+# - Cards are not nicely distributed, so used bonus sheet 8/4/2/1 rates
 pack:
   common_or_uncommon:
-  # assuming this is a similar rate as set boosters from https://mtg.fandom.com/wiki/Set_Booster
   - foil_common: 7
     foil_uncommon: 2
     chance: 350
@@ -42,18 +49,16 @@ sheets:
         rate: 1
       chance: 125
   ancillary:
-    # assume that this is the same rate as set booster wildcards
+    # C/U/R/M rates guessed to be at 8x/4x/2x/1x multiples
     any:
-    - rawquery: "e:eld r:c -promo:boosterfun number>=304"
-      chance: 700
-    - rawquery: "e:eld r:u -promo:boosterfun number>=304"
-      chance: 175
-    - any:
-      - rawquery: "e:eld r:r -promo:boosterfun number>=304"
-        rate: 2
-      - rawquery: "e:eld r:m -promo:boosterfun number>=304"
-        rate: 1
-      chance: 125
+    - rawquery: "e:eld r:c -promo:boosterfun number>=304 -frame:inverted"
+      rate: 8
+    - rawquery: "e:eld r:u -promo:boosterfun number>=304 -frame:inverted"
+      rate: 4
+    - rawquery: "e:eld r:r -promo:boosterfun number>=304 -frame:inverted"
+      rate: 2
+    - rawquery: "e:eld r:m -promo:boosterfun number>=304 -frame:inverted"
+      rate: 1
   rm_extended:
     any:
     - rawquery: "e:eld r:r frame:extendedart"
@@ -62,4 +67,16 @@ sheets:
       rate: 1
   foil_rm:
     foil: true
-    use: rare_mythic
+    any:
+    - query: "r:r"
+      rate: 4
+    - rawquery: "e:eld r:r promo:boosterfun"
+      rate: 2
+    - query: "r:m"
+      rate: 2
+    - rawquery: "e:eld r:m promo:boosterfun"
+      rate: 1
+    - rawquery: "e:eld r:r -promo:boosterfun number>=304 -frame:inverted"
+      rate: 4
+    - rawquery: "e:eld r:m -promo:boosterfun number>=304 -frame:inverted"
+      rate: 2
