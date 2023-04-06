@@ -123,7 +123,7 @@ class CardPrinting
     primary? secondary? front? back? partner? allowed_in_any_number?
     commander? brawler? custom? keywords
     count_sets count_prints count_papersets count_paperprints name_slug
-    fulltext fulltext_normalized
+    fulltext fulltext_normalized defense
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
   end
