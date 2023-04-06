@@ -28,13 +28,14 @@ pack:
   foil_rm: 1
 sheets:
   foil_common_basic:
+    foil: true
     any:
     - use: foil_common
       rate: 1
     - rawquery: "e:thb t:basic number:278-287"
       rate: 1
   showcase:
-    # assume that this uses 2x rates 
+    # U/R/M rates guessed to be at 4x/2x/1x multiples
     any:
     - query: "r:u t:saga"
       rate: 4
@@ -47,18 +48,16 @@ sheets:
     - query: "r:m t:saga"
       rate: 1
   ancillary:
-    # assume that this is the same rate as set booster wildcards
+    # C/U/R/M rates guessed to be at 8x/4x/2x/1x multiples
     any:
     - rawquery: "e:thb r:c -promo:boosterfun number:269-297"
-      chance: 700
+      rate: 8
     - rawquery: "e:thb r:u -promo:boosterfun number:269-297"
-      chance: 175
-    - any:
-      - rawquery: "e:thb r:r -promo:boosterfun number:269-297"
-        rate: 2
-      - rawquery: "e:thb r:m -promo:boosterfun number:269-297"
-        rate: 1
-      chance: 125
+      rate: 4
+    - rawquery: "e:thb r:r -promo:boosterfun number:269-297"
+      rate: 2
+    - rawquery: "e:thb r:m -promo:boosterfun number:269-297"
+      rate: 1
   rm_extended:
     any:
     - rawquery: "e:thb r:r frame:extendedart"
