@@ -1,4 +1,7 @@
 # Source: https://magic.wizards.com/en/news/feature/collecting-phyrexia-all-will-be-one
+# Assumptions:
+# Prototype praetor rate in showcase slot unknown
+# - Assumed to be same rarity as other mythic showcase cards
 pack:
   foil_basic: 1
   foil_common: 4
@@ -76,7 +79,7 @@ sheets:
       rate: 6
       count: 10
     - rawquery: "(e:one number:416) or (e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
-      rate: 1
+      rate: 6
   foil_showcase_rm:
     foil: true
     any:
@@ -92,7 +95,7 @@ sheets:
       rate: 6
       count: 10
     - rawquery: "(e:one number:416) or (e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
-      rate: 1
+      rate: 6
     - rawquery: "e:one frame:extendedart number:409-413"
       rate: 12
     - rawquery: "e:onc frame:extendedart r:r"
