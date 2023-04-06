@@ -54,6 +54,7 @@ class FormatModern < Format
       "dmu",
       "bro",
       "one",
+      "mom",
     ]
   end
 end

@@ -8,7 +8,7 @@ describe "Formats" do
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
       %[
-        e:mid,vow,neo,snc,dmu,bro,one
+        e:mid,vow,neo,snc,dmu,bro,one,mom
         -(The Meathook Massacre)
       ]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
