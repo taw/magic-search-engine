@@ -2,10 +2,10 @@ pack:
   basic: 1
   common: 9
   uncommon: 3
-  rare_mythic_or_praetor:
+  rare_mythic_slot:
   - rare_mythic: 1
     chance: 59
-  - praetor: 1
+  - prototype_praetor: 1
     chance: 1
   common_or_foil:
   - common: 1
@@ -94,13 +94,15 @@ sheets:
     - use: uncommon
       chance: 5
     - any:
-      - use: rare
-        chance: 60 * 6
-      - use: mythic
-        chance: 53
-      - use: praetor
-        chance: 7
+      - any:
+        - use: rare
+          chance: 6
+        - use: mythic
+          chance: 1
+        chance: 59
+      - use: prototype_praetor
+        chance: 1
       chance: 3
-  praetor:
-    rawquery: "(e:one number 416) or (e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
-    count: 4
+  prototype_praetor:
+    rawquery: "(e:one number:416) or (e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
+    count: 5
