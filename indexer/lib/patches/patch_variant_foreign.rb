@@ -12,7 +12,8 @@ class PatchVariantForeign < Patch
     case card["set_code"]
     when "usg", "inv", "pcy", "5ed", "6ed", "7ed", "8ed", "9ed", "por"
       # Chinese non-skeleton versions
-      number =~ /s/i
+      # Regexp should match "289sb" but not "S1"
+      number =~ /.s/i
     when "war"
       # WAR are Japanese alt arts are in boosters,
       # just not in English boosters, so count them out

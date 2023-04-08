@@ -14,7 +14,7 @@ class PatchExcludeFromBoosters < Patch
       # No point writing rules for these, even if they have some kind of base set size
       next unless set["has_boosters"] or set["in_other_boosters"]
 
-      if base_size and number_i > base_size
+      if base_size and (number_i > base_size or number_i < 1)
         unless include_beyond_base_size(set_code, card["number"])
           card["exclude_from_boosters"] = true
         end
