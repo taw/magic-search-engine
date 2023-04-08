@@ -7,6 +7,6 @@ describe "Variant spec" do
   end
 
   it "variant:foreign" do
-    assert_search_equal "variant:foreign", "((e:por or st:standard) number:/s/) or (e:war number:/★/)"
+    assert_search_equal "variant:foreign", "((e:por or st:standard) number:/.s/) or (e:war number:/★/)"
   end
 end
