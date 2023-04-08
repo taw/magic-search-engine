@@ -1,19 +1,72 @@
+# Data from https://www.lethe.xyz/mtg/collation/m21.html
 pack:
-- nongainland_common: 10
+  common_or_foil_or_borderless:
+  - nongainland_common: 10
+    chance: 2
+  - nongainland_common: 9
+    foil: 1
+    chance: 1
   uncommon: 3
   rare_mythic: 1
   basic_or_gainland: 1
-  chance: 2
-- nongainland_common: 9
-  uncommon: 3
-  rare_mythic: 1
-  basic_or_gainland: 1
-  foil: 1
-  chance: 1
 sheets:
   nongainland_common:
-    balanced: true
-    query: "r:c  -is:gainland"
+    #balanced: true
+    any:
+    - rawquery: "e:m21 r:c promo:boosterfun"
+      rate: 1
+    - query: "r:c -is:gainland alt:(e:m21 promo:boosterfun)"
+      rate: 2
+    - query: "r:c -is:gainland -alt:(e:m21 promo:boosterfun)"
+      rate: 3
+  uncommon:
+    any:
+    - rawquery: "e:m21 r:u frame:showcase"
+      rate: 1
+    - query: "r:u alt:(e:m21 frame:showcase)"
+      rate: 2
+    - query: "r:u -alt:(e:m21 frame:showcase)"
+      rate: 3
+  rare_mythic:
+    any:
+    - any:
+      - query: "r:r"
+        rate: 2
+      - query: "r:m -(Teferi, Master of Time)"
+        rate: 1
+      chance: 17
+    - any:
+      - rawquery: "r:r e:m21 frame:showcase -is:foilonly"
+        rate: 2
+      - query: "r:r -alt:(e:m21 frame:showcase -is:foilonly)"
+        rate: 2
+      - rawquery: "r:m e:m21 frame:showcase -(Teferi, Master of Time)"
+        rate: 1
+      - query: "r:m -t:planeswalker"
+        rate: 1
+      chance: 3
+    - any:
+      - rawquery: "r:r e:m21 frame:showcase -is:foilonly"
+        rate: 2
+      - query: "r:r -alt:(e:m21 frame:showcase -is:foilonly)"
+        rate: 2
+      - rawquery: "r:m e:m21 frame:showcase -(Teferi, Master of Time)"
+        rate: 1
+      - rawquery: "r:m e:m21 is:borderless t:planeswalker -(Teferi, Master of Time)"
+        rate: 1
+      - query: "r:m -t:planeswalker"
+        rate: 1
+      chance: 3
+    - any:
+      - rawquery: "r:r e:m21 frame:showcase -is:foilonly"
+        rate: 2
+      - query: "r:r -alt:(e:m21 frame:showcase -is:foilonly)"
+        rate: 2
+      - rawquery: "e:m21 Teferi, Master of Time ++"
+        rate: 1
+      - query: "r:m -t:planeswalker"
+        rate: 1
+      chance: 3
   basic_or_gainland:
     # showcase variant which is just as common as any other basic land variation
     any:
