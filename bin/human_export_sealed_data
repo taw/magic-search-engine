@@ -1,0 +1,83 @@
+#!/usr/bin/env ruby
+
+# This export format is for debugging only
+
+require_relative "../search-engine/lib/card_database"
+require "memoist"
+
+class HumanExportSealedData
+  include Memoist
+  attr_reader :db, :uuids
+
+  def initialize(output_folder)
+    @db = CardDatabase.load
+    @output_folder = Pathname(output_folder)
+  end
+
+  def flatten_pack(pack)
+    result = if pack.is_a?(WeightedPack)
+      pack
+    else
+      WeightedPack.new(pack => 1)
+    end
+    result.set = pack.set
+    result.code = pack.code
+    result.name = pack.name
+    result
+  end
+
+  def extract_sheets(pack)
+    pack.packs.keys.map(&:sheets).flat_map(&:keys)
+  end
+
+  def integerize_evs(ev)
+    # Normalize rationals to weights
+    lcm = ev.values.map(&:denominator).inject(&:lcm)
+    ev.map{|k,v|
+      vv = v * lcm
+      raise unless vv.to_i == vv
+      [k, vv.to_i]
+    }.to_h
+  end
+
+  def write_sheet(file, sheet)
+    ev = integerize_evs(sheet.probabilities).sort_by{|c,w| [c.set, c.number.to_i, c.number, c.foil ? 0 : 1] }
+
+    ev.each do |c, w|
+      file.puts "  - [#{c.set_code}/#{c.number}#{'/foil' if c.foil}] #{c.name} - #{w}"
+    end
+  end
+
+  def write_booster(path, booster, sheets)
+    path.open("w") do |file|
+      file.puts "name: #{booster.name}"
+      file.puts "code: #{booster.code}"
+      file.puts "packs:"
+      booster.packs.each do |subpack, weight|
+        file.puts "- chance: #{weight}"
+        subpack.sheets.each do |s, c|
+          file.puts "  #{s.name}: #{c}"
+        end
+      end
+      file.puts "sheets:"
+      sheets.each do |sheet|
+        file.puts "  #{sheet.name}:"
+        write_sheet(file, sheet)
+      end
+    end
+  end
+
+  def call
+    @db.supported_booster_types.each do |booster_code, booster|
+      booster = flatten_pack(booster)
+      sheets = extract_sheets(booster)
+      path = @output_folder.join("#{booster.code}.txt")
+
+      path.parent.mkpath
+      write_booster(path, booster, sheets)
+    end
+  end
+end
+
+output_folder = ARGV[0] || "tmp/sealed"
+HumanExportSealedData.new(output_folder).call
