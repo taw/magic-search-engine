@@ -22,4 +22,10 @@ describe "number: queries" do
       "When", # 75c
       "Where" # 75d
   end
+
+  it "ranges with set" do
+    assert_search_equal "e:m20 number=100-set", "e:m20 (number>=100 number<=set)"
+    assert_search_equal "e:m20 number=set-set", "e:m20 number=set"
+    assert_search_equal "e:m20 number=set-300", "e:m20 (number>=set number<=300)"
+  end
 end
