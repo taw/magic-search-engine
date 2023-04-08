@@ -76,6 +76,8 @@ class Indexer
       PatchBlocks,
       PatchHasBoosters,
       PatchSecondary,
+      PatchVariantMisprint,
+      PatchVariantForeign,
       PatchExcludeFromBoosters,
       PatchFoiling,
       PatchSetTypes,
