@@ -138,6 +138,8 @@ class IndexSerializer
           "shandalar",
           "spotlight",
           "textless",
+          "variant_foreign",
+          "variant_misprint",
           "watermark",
           "xmage",
         ).compact,
