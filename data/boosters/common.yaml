@@ -104,3 +104,15 @@ uncommon_with_showcase:
     rate: 2
   - use: uncommon_has_no_showcase
     rate: 3
+rare_showcase:
+  rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart"
+rare_has_showcase:
+  query: "r:r alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+rare_has_no_showcase:
+  query: "r:r -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+mythic_showcase:
+  rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart"
+mythic_has_showcase:
+  query: "r:m alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+mythic_has_no_showcase:
+  query: "r:m -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"

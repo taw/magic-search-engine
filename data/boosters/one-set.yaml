@@ -57,44 +57,44 @@ sheets:
       count: 5
   showcase_cu:
     any:
-    - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart"
+    - use: common_showcase
       rate: 2
-    - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart"
+    - use: uncommon_showcase
       rate: 1
   wildcard:
     any:
     - any: # Common
-      - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart"
+      - use: common_showcase
         rate: 1
         count: 6
-      - query: "r:c alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+      - use: common_has_showcase
         rate: 2
         count: 6
-      - query: "r:c -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+      - use: common_has_no_showcase
         rate: 3
         count: 95
       chance: 700
     - any: # Uncommon
-      - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart"
+      - use: uncommon_showcase
         rate: 1
         count: 7
-      - query: "r:u alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+      - use: uncommon_has_showcase
         rate: 2
         count: 7
-      - query: "r:u -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+      - use: uncommon_has_no_showcase
         rate: 3
         count: 73
       chance: 175
     - any: # Rare Mythic Praetor
       - any:
         - any: # Rare with commander and jumpstart options
-          - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart"
+          - use: rare_showcase
             rate: 1
             count: 31
-          - query: "r:r alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+          - use: rare_has_showcase
             rate: 2
             count: 31
-          - query: "r:r -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+          - use: rare_has_no_showcase
             rate: 3
             count: 29
           - rawquery: "e:onc r:r number<=set"
@@ -114,10 +114,10 @@ sheets:
           - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -t:planeswalker -(Elesh Norn, Mother of Machines)"
             rate: 6
             count: 10
-          - query: "r:m alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+          - use: mythic_has_showcase
             rate: 12
             count: 16
-          - query: "r:m -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+          - use: mythic_has_no_showcase
             rate: 18
             count: 4
           - rawquery: "e:onc r:m number<=set"
@@ -131,13 +131,13 @@ sheets:
   rare:
     # Showcase treatments 1/3 for relevant cards
     any:
-    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart"
+    - use: rare_showcase
       rate: 1
       count: 31
-    - query: "r:r alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+    - use: rare_has_showcase
       rate: 2
       count: 31
-    - query: "r:r -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+    - use: rare_has_no_showcase
       rate: 3
       count: 29
   mythic:
@@ -152,10 +152,10 @@ sheets:
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -t:planeswalker -(Elesh Norn, Mother of Machines)"
       rate: 6
       count: 10
-    - query: "r:m alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+    - use: mythic_has_showcase
       rate: 12
       count: 16
-    - query: "r:m -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+    - use: mythic_has_no_showcase
       rate: 18
       count: 4
   main_rm:
@@ -182,13 +182,13 @@ sheets:
     any:
     - any:
       - any:
-        - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart"
+        - use: common_showcase
           rate: 1
           count: 6
-        - query: "r:c alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+        - use: common_has_showcase
           rate: 2
           count: 6
-        - query: "r:c -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+        - use: common_has_no_showcase
           rate: 3
           count: 95
         chance: 101
@@ -196,13 +196,13 @@ sheets:
         chance: 5
       chance: 12
     - any:
-      - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart"
+      - use: uncommon_showcase
         rate: 1
         count: 7
-      - query: "r:u alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+      - use: uncommon_has_showcase
         rate: 2
         count: 7
-      - query: "r:u -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+      - use: uncommon_has_no_showcase
         rate: 3
         count: 73
       chance: 5
