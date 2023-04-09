@@ -1,3 +1,8 @@
+# Boosters contain full art Wastes (numbers without a)
+# Non-fullart basics (numbers with a) are from precon decks only
+#
+# Other basics come from BFZ, full art only (numbers without a)
+filter: "-number:/a/ -variant:misprint"
 pack:
   basic: 1
   common: 9
@@ -16,11 +21,12 @@ sheets:
       chance: 3*8
     - query: "r:u"
       chance: 5*8
-    - rawquery: "(e:ogw r:c) or (e:bfz r:b)"
+    - rawquery: "(e:ogw r:c) or (e:bfz r:b -number:/a/)"
       chance: 12*8-2
     - rawquery: "e:exp number>=26"
       count: 20
       chance: 5
   basic:
-    # borrowed basics
-    rawquery: "e:bfz r:b is:booster"
+    # borrowed basics, full art only
+    rawquery: "e:bfz r:b -number:/a/"
+    count: 25
