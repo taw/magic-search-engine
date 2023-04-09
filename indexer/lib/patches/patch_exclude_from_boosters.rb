@@ -14,10 +14,14 @@ class PatchExcludeFromBoosters < Patch
       # No point writing rules for these, even if they have some kind of base set size
       next unless set["has_boosters"] or set["in_other_boosters"]
 
-      if base_size and number_i > base_size
+      if base_size and (number_i > base_size or number_i < 1)
         unless include_beyond_base_size(set_code, card["number"])
           card["exclude_from_boosters"] = true
         end
+      end
+
+      if card["variant_foreign"] or card["variant_misprint"]
+        card["exclude_from_boosters"] = true
       end
 
       if exclude_from_boosters(set_code, card["number"])
@@ -35,11 +39,6 @@ class PatchExcludeFromBoosters < Patch
       if %W[bfz ogw].include?(set_code) and
         card["supertypes"] == ["Basic"] and
         card["number"] =~ /a/
-        card["exclude_from_boosters"] = true
-      end
-
-      # Mostly misprints and such
-      if card["number"] =~ /†/ and (set_code != "arn" and set_code != "shm")
         card["exclude_from_boosters"] = true
       end
     end
@@ -72,7 +71,7 @@ class PatchExcludeFromBoosters < Patch
       # retro basics included
       (402..411).include?(number_i)
     when "mb1"
-      number_i < 1695 # and number !~ /†/
+      number_i < 1695
     when "iko"
       # borderless planeswalkers are numbered #276-278
       # showcase cards are numbered #279-313
@@ -90,14 +89,6 @@ class PatchExcludeFromBoosters < Patch
     set = set_by_code(set_code)
 
     case set_code
-    when "afr", "stx", "gpt"
-      number =~ /★/
-    when "war"
-      # WAR are Japanese alt arts are in boosters,
-      # just not in English boosters, so count them out
-      #
-      # Other star cards are foil alt arts and in boosters
-      number =~ /★/
     when "sta"
       # incorrect in mtgjson
       number_i > 63 or number =~ /e/
@@ -106,15 +97,13 @@ class PatchExcludeFromBoosters < Patch
       # normal boosters are in printed range, but not actually in boosters
       (268..277).include?(number_i)
     when "por"
-      number =~ /[ds]/
+      # it also has S variants
+      number =~ /d/
     when "zen"
       # non-fullart basics are excluded
       number =~ /a/
     when "brr"
       number =~ /z/
-    when "usg", "inv", "pcy", "5ed", "6ed", "7ed", "8ed", "9ed"
-      # Mostly Chinese non-skeleton versions
-      number =~ /s/i
     else
       # Default is to exclude everything beyond base size
       false

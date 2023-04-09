@@ -11,7 +11,19 @@ class ConditionNumberRange < ConditionSimple
     card_number_s = card.number.downcase
     card_number_i = card.number.to_i
     key = [card_number_i, card_number_s]
-    @ranges.any?{|a, b| (key <=> a) >= 0 && (key <=> b) <= 0}
+    @ranges.any? do |a, b|
+      if a[1] == "set"
+        acond = (card_number_i >= card.set.base_set_size)
+      else
+        acond = (key <=> a) >= 0
+      end
+      if b[1] == "set"
+        bcond = (card_number_i <= card.set.base_set_size)
+      else
+        bcond = (key <=> b) <= 0
+      end
+      acond && bcond
+    end
   end
 
   def to_s

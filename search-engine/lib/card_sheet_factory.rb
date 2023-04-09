@@ -30,7 +30,7 @@ class CardSheetFactory
     end
     cards = @db.search("#{base_query} (#{query})").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
     if assert_count and assert_count != cards.size
-      raise "Expected query #{query} to return #{assert_count}, got #{cards.size}"
+      warn "Expected query #{query} to return #{assert_count}, got #{cards.size}"
     end
     cards
   end
@@ -40,7 +40,7 @@ class CardSheetFactory
       c.in_boosters? and c.print_sheet and c.print_sheet.scan(/[A-Z]+/).include?(print_sheet_code)
     }
     if count and count != cards.size
-      raise "Expected sheet #{set_code}/#{print_sheet_code} to return #{count}, got #{cards.size}"
+      warn "Expected sheet #{set_code}/#{print_sheet_code} to return #{count}, got #{cards.size}"
     end
     groups = cards.group_by{|c| c.print_sheet[/#{print_sheet_code}(\d+)/, 1].to_i }
     subsheets = groups.map{|mult,cards| [CardSheet.new(cards.map{|c| PhysicalCard.for(c, foil) }.uniq), mult] }

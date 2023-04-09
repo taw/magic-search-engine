@@ -133,6 +133,10 @@ class QueryTokenizer
         blocks = [s[1] || s[2]]
         blocks << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionBlock.new(*blocks)]
+      elsif s.scan(/(?:booster)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_\-\*]+))/i)
+        booster = [s[1] || s[2]]
+        booster << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+        tokens << [:test, ConditionBooster.new(*booster)]
       elsif s.scan(/st\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionSetType.new(s[1] || s[2])]
       elsif s.scan(/(c|ci|id|ind|color|identity|indicator)\s*(>=|>|<=|<|=|!|:)\s*(?:"(.*?)"|([\p{L}\p{Digit}_\*]+))/i)
@@ -347,6 +351,10 @@ class QueryTokenizer
         kind = s[1].downcase
         kind = "borderless" if kind == "none"
         tokens << [:test, ConditionBorder.new(kind)]
+      elsif s.scan(/variant\s*[:=]\s*(misprint|foreign)\b/)
+        cond = s[1].capitalize
+        klass = Kernel.const_get("ConditionVariant#{cond}")
+        tokens << [:test, klass.new]
       elsif s.scan(/sheet\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_\/]+))/i)
         code = s[1] || s[2]
         tokens << [:test, ConditionSheet.new(code)]

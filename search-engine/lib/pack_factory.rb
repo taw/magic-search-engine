@@ -8,6 +8,7 @@ class PackFactory
     # Filter out the empty subsheets
     # Example: foil sheet has 2xR + 1xM mix, but some sets don't have mythics
     subsheets, chances = subsheets.zip(chances).select{|s,c| c != 0}.transpose
+    raise "No subsheets present" unless subsheets
     if subsheets.size == 1
       subsheets[0]
     else

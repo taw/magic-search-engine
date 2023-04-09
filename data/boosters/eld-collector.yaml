@@ -31,20 +31,20 @@ pack:
   showcase: 3
   ancillary: 1
   rm_extended: 1
-  foil_rm: 1
+  foil_rare_mythic: 1
 sheets:
   showcase:
     # assume that this is the same rate as set booster wildcards
     any:
-    - rawquery: "e:eld r:c promo:boosterfun -is:foilonly -frame:extendedart"
+    - use: common_showcase
       chance: 700
-    - rawquery: "e:eld r:u promo:boosterfun -is:foilonly -frame:extendedart"
+    - use: uncommon_showcase
       chance: 175
     - any:
-      - rawquery: "e:eld r:r promo:boosterfun -is:foilonly -frame:extendedart"
+      - use: rare_showcase
         count: 5
         rate: 2
-      - rawquery: "e:eld r:m promo:boosterfun -is:foilonly -frame:extendedart"
+      - use: mythic_showcase
         count: 5
         rate: 1
       chance: 125
@@ -65,7 +65,7 @@ sheets:
       rate: 2
     - rawquery: "e:eld r:m frame:extendedart"
       rate: 1
-  foil_rm:
+  foil_rare_mythic:
     foil: true
     any:
     - query: "r:r"
