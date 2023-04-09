@@ -80,22 +80,9 @@ describe "Regexp" do
   end
 
   it "regexp name text" do
-    assert_search_results "f:modern n:/.{30}/",
-      "Asmoranomardicadaistinaculdacar",
-      "Circle of Protection: Artifacts",
-      "Coax from the Blind Eternities",
-      "Elesh Norn, Mother of Machines",
-      "Hanweir, the Writhing Township",
-      "Ib Halfheart, Goblin Tactician",
-      "Jadar, Ghoulcaller of Nephalia",
-      "Kroxa, Titan of Death's Hunger",
-      "Liberator, Urza's Battlethopter",
-      "Minamo, School at Water's Edge",
-      "Okina, Temple to the Grandfathers",
-      "Oviya Pashiri, Sage Lifecrafter",
-      "Sokenzan, Crucible of Defiance",
-      "Sunhome, Fortress of the Legion",
-      "Tezzeret, Master of the Bridge"
+    assert_search_results "f:modern n:/.{32}/",
+      "Aetherwing, Golden-Scale Flagship",
+      "Okina, Temple to the Grandfathers"
   end
 
   it "regexp rulings text" do

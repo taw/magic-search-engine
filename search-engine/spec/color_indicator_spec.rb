@@ -24,9 +24,11 @@ describe "Color Indicator Test" do
       "Blaster, Morale Booster",
       "Etali, Primal Sickness",
       "Lord of the Ulvenwald",
+      "Plated Kilnbeast",
       "Ravager of the Fells",
       "Savage Packmate",
       "Tovolar, the Midnight Scourge",
+      "Truga Cliffcharger",
       "Ulrich, Uncontested Alpha"
     assert_search_equal "ind:gr", "ind:rg"
     assert_search_equal "ind:grrgr", "ind:rg"
