@@ -1,5 +1,8 @@
 # Data from https://www.lethe.xyz/mtg/collation/m21.html
 # Showcase basics in boosters
+# Assumptions:
+# Nonfoil borderless reprints appear in 1/30 packs
+# Borderless reprint foils are printed at similar rate to rare and mythic foil showcase variants
 filter: "number:1-set,309-313"
 pack:
   common_or_foil_or_borderless:
@@ -11,7 +14,7 @@ pack:
   - nongainland_common: 9
     borderless_reprint: 1
     chance: 1
-  uncommon: 3
+  uncommon_with_showcase: 3
   rare_mythic: 1
   basic_or_gainland: 1
 sheets:
@@ -24,23 +27,16 @@ sheets:
       rate: 2
     - query: "r:c -is:gainland -alt:(e:m21 promo:boosterfun)"
       rate: 3
-  uncommon:
-    any:
-    - rawquery: "e:m21 r:u frame:showcase"
-      rate: 1
-    - query: "r:u alt:(e:m21 frame:showcase)"
-      rate: 2
-    - query: "r:u -alt:(e:m21 frame:showcase)"
-      rate: 3
   rare_mythic:
+    # Teferi makes all of this weird so we can't use common sheets
     any:
-    - any:
+    - any: # Sheet 1: All normal printings except teferi
       - query: "r:r"
         rate: 2
       - query: "r:m -(Teferi, Master of Time)"
         rate: 1
       chance: 17
-    - any:
+    - any: # Sheet 2: Showcase cards
       - rawquery: "r:r e:m21 frame:showcase -is:foilonly"
         rate: 2
       - query: "r:r -alt:(e:m21 frame:showcase -is:foilonly)"
@@ -50,7 +46,7 @@ sheets:
       - query: "r:m -t:planeswalker"
         rate: 1
       chance: 3
-    - any:
+    - any: # Sheet 3: Showcase c-r, both borderless and showcase planeswalkers
       - rawquery: "r:r e:m21 frame:showcase -is:foilonly"
         rate: 2
       - query: "r:r -alt:(e:m21 frame:showcase -is:foilonly)"
@@ -62,7 +58,7 @@ sheets:
       - query: "r:m -t:planeswalker"
         rate: 1
       chance: 3
-    - any:
+    - any: # Sheet 4: no planeswalkers except all versions of teferi
       - rawquery: "r:r e:m21 frame:showcase -is:foilonly"
         rate: 2
       - query: "r:r -alt:(e:m21 frame:showcase -is:foilonly)"
@@ -92,7 +88,7 @@ sheets:
       - query: "is: gainland"
         chance: 10
       chance: 12
-    - use: uncommon
+    - use: uncommon_with_showcase
       chance: 5
     - any:
       - use: rare_mythic
