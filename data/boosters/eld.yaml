@@ -33,9 +33,9 @@ sheets:
       count: 71
   rm_showcase:
     any:
-    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart"
+    - use: rare_showcase
       rate: 2
-    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart"
+    - use: mythic_showcase
       rate: 1
   foil:
     foil: true
