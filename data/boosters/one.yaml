@@ -25,55 +25,55 @@ sheets:
   common:
     # Showcase treatments 1/3 for relevant cards
     any:
-    - rawquery: "e:one r:c promo:boosterfun -is:foilonly -frame:extendedart"
+    - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart"
       rate: 1
       count: 6
-    - query: "r:c alt:(e:one promo:boosterfun -is:foilonly -frame:extendedart)"
+    - query: "r:c alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 2
       count: 6
-    - query: "r:c -alt:(e:one promo:boosterfun -is:foilonly -frame:extendedart)"
+    - query: "r:c -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 3
       count: 95
   uncommon:
     # Showcase treatments 1/3 for relevant cards
     any:
-    - rawquery: "e:one r:u promo:boosterfun -is:foilonly -frame:extendedart"
+    - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart"
       rate: 1
       count: 7
-    - query: "r:u alt:(e:one promo:boosterfun -is:foilonly -frame:extendedart)"
+    - query: "r:u alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 2
       count: 7
-    - query: "r:u -alt:(e:one promo:boosterfun -is:foilonly -frame:extendedart)"
+    - query: "r:u -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 3
       count: 73
   rare:
     # Showcase treatments 1/3 for relevant cards
     any:
-    - rawquery: "e:one r:r promo:boosterfun -is:foilonly -frame:extendedart"
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart"
       rate: 1
       count: 31
-    - query: "r:r alt:(e:one promo:boosterfun -is:foilonly -frame:extendedart)"
+    - query: "r:r alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 2
       count: 31
-    - query: "r:r -alt:(e:one promo:boosterfun -is:foilonly -frame:extendedart)"
+    - query: "r:r -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 3
       count: 29
   mythic:
     # Showcase treatments 1/3 for relevant cards
     any:
-    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart (Elesh Norn, Mother of Machines) -number:416"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart (Elesh Norn, Mother of Machines) -number:416"
       rate: 2
       count: 3
-    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart t:planeswalker"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart t:planeswalker"
       rate: 3
       count: 10
-    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart -t:planeswalker -(Elesh Norn, Mother of Machines)"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -t:planeswalker -(Elesh Norn, Mother of Machines)"
       rate: 6
       count: 10
-    - query: "r:m alt:(e:one promo:boosterfun -is:foilonly -frame:extendedart)"
+    - query: "r:m alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 12
       count: 16
-    - query: "r:m -alt:(e:one promo:boosterfun -is:foilonly -frame:extendedart)"
+    - query: "r:m -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 18
       count: 4
   rare_mythic:
@@ -104,5 +104,5 @@ sheets:
         chance: 1
       chance: 3
   prototype_praetor:
-    rawquery: "(e:one number:416) or (e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
+    rawquery: "(e:{set} number:416) or (e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
     count: 5
