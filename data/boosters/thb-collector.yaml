@@ -7,7 +7,7 @@
 # - Cards are not nicely distributed, so used bonus sheet 8/4/2/1 rates
 # No data for relative rarity of ancillary cards
 # - Cards are not nicely distributed, so used bonus sheet 8/4/2/1 rates
-# Distribution of showcase cards in foil_rm unknown
+# Distribution of showcase cards in foil_rare_mythic unknown
 # - Assume standard 2:1 rate
 pack:
   foil_basic: 2
@@ -33,7 +33,7 @@ pack:
   showcase: 1
   ancillary: 1
   rm_extended: 1
-  foil_rm: 1
+  foil_rare_mythic: 1
 sheets:
   foil_common_basic:
     foil: true
@@ -72,7 +72,7 @@ sheets:
       rate: 2
     - rawquery: "e:thb r:m frame:extendedart"
       rate: 1
-  foil_rm:
+  foil_rare_mythic:
     foil: true
     any:
     - rawquery: "e:thb r:r promo:boosterfun"

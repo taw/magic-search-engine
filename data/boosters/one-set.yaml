@@ -20,7 +20,7 @@ pack:
   showcase_common_uncommon: 1
   wildcard: 2
   rare_mythic_praetor:
-  - main_rm: 1
+  - main_rare_mythic: 1
     chance: 59
   - prototype_praetor: 1
     chance: 1
@@ -142,7 +142,7 @@ sheets:
     - use: mythic_has_no_showcase
       rate: 18
       count: 4
-  main_rm:
+  main_rare_mythic:
     any:
     - use: rare
       chance: 6
@@ -165,30 +165,14 @@ sheets:
     foil: true
     any:
     - any:
-      - any:
-        - use: common_showcase
-          rate: 1
-          count: 6
-        - use: common_has_showcase
-          rate: 2
-          count: 6
-        - use: common_has_no_showcase
-          rate: 3
-          count: 95
+      - use: common_with_showcase
+        count: 95 + 6 + 6
         chance: 101
       - use: basic
         chance: 5
       chance: 12
-    - any:
-      - use: uncommon_showcase
-        rate: 1
-        count: 7
-      - use: uncommon_has_showcase
-        rate: 2
-        count: 7
-      - use: uncommon_has_no_showcase
-        rate: 3
-        count: 73
+    - use: uncommon_with_showcase
+      count: 73 + 7 + 7
       chance: 5
     - any:
       - any:
