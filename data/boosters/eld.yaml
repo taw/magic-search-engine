@@ -17,34 +17,25 @@ pack:
     chance: 1
 sheets:
   common:
-    # Showcase treatments 1/3 for relevant cards
-    any:
-    - rawquery: "e:eld r:c promo:boosterfun -is:foilonly -frame:extendedart"
-      rate: 1
-      count: 14
-    - query: "r:c alt:(e:eld promo:boosterfun -is:foilonly -frame:extendedart)"
-      rate: 2
-      count: 14
-    - query: "r:c -alt:(e:eld promo:boosterfun -is:foilonly -frame:extendedart)"
-      rate: 3
-      count: 87
+    use: common_with_showcase
+    count: 14 + 14 + 87
   uncommon:
     # Showcase treatments 1/3 for relevant cards
     any:
-    - rawquery: "e:eld r:u promo:boosterfun -is:foilonly -frame:extendedart"
+    - use: uncommon_showcase
       rate: 1
       count: 9
-    - query: "r:u alt:(e:eld promo:boosterfun -is:foilonly -frame:extendedart)"
+    - use: uncommon_has_showcase
       rate: 2
       count: 9
-    - query: "r:u -alt:(e:eld promo:boosterfun -is:foilonly -frame:extendedart)"
+    - use: uncommon_has_no_showcase
       rate: 3
       count: 71
   rm_showcase:
     any:
-    - rawquery: "e:eld r:r promo:boosterfun -is:foilonly -frame:extendedart"
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart"
       rate: 2
-    - rawquery: "e:eld r:m promo:boosterfun -is:foilonly -frame:extendedart"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart"
       rate: 1
   foil:
     foil: true
