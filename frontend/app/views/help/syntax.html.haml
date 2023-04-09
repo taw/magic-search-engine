@@ -309,10 +309,19 @@
       = search_help "is:foilboth", "has both foil and nonfoil versions"
       = search_help "is:buyabox", "is Buy A Box promo"
       = search_help "has:showcase", "card has a showcase version in its set"
-      = search_help "sheet:hml/U", "cards which appear in set Homelands on print sheet U, in any number"
-      = search_help "sheet:hml/U3", "cards which appear in set Homelands on print sheet U, exactly 3 times"
       = search_help "variant:misprint", "cards that are rare misprinted variants of other cards in the same set (not applied if every card was misprinted)"
       = search_help "variant:foreign", "cards that are foreign version with art different from English version (other kinds of foreign cards are not in the database; this condition excludes promo cards)"
+
+    %h4 Search by booster contents
+    %div You can search all cards present in specific booster, or in specific print sheet.
+    %div Draft and Arena booster data is fairly complete, but data on nonstandard booster types such as Set and Collector boosters are very limited.
+    %ul
+      = search_help "booster:nph", "cards in draft booster for New Phyrexia"
+      = search_help "booster:war-arena", "cards in Arena booster for War of the Spark"
+      = search_help "booster:one-*", "card in any supported booster for set Phyrexia: All Will Be One"
+      = search_help "booster:*", "card in any supported booster for any set"
+      = search_help "sheet:hml/U", "cards which appear in set Homelands on print sheet U, in any number"
+      = search_help "sheet:hml/U3", "cards which appear in set Homelands on print sheet U, exactly 3 times"
 
     %h4 Search by card's collector number
     %div You can search by specific card number, by number range. For some old and promo cards without printed numbers, they have been arbitrarily assiged.
