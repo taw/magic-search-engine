@@ -121,10 +121,10 @@ class PreprocessBooster
         sheet.except("code", "set").merge("code" => "#{set}/#{code}")
       end
     elsif sheet["rawquery"]
-      query = sheet["rawquery"]
+      query = sheet["rawquery"].gsub("{set}", @set_code)
       sheet.except("rawquery").merge("query" => query)
     elsif sheet["query"]
-      query = sheet["query"]
+      query = sheet["query"].gsub("{set}", @set_code)
       # filter already in and-form, doesn't need extra parentheses
       sheet.merge("query" => "#{@filter} (#{query})")
     else
