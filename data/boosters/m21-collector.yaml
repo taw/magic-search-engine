@@ -3,6 +3,7 @@
 # No idea how Teferi is collated with these showcase cards
 # Assume foil extended art cards appear at 1/3 rate of standard rare/mythic foils
 # For now CULTIVATE showcase behaves like a rare, but this might be wrong
+# Assume showcase cards follow 8/4/2/1 rarity
 pack:
   foil_all_showcase: 1
   foil_common_uncommon_showcase: 1
@@ -43,7 +44,7 @@ sheets:
       rate: 2
     - query: "r:m"
       rate: 3
-    - rawquery: "e:m21 r:m frame:extendedart"
+    - rawquery: "e:m21 r:m frame:extendedart -(Rin and Seri, Inseparable)"
       rate: 1
   extended_art:
     any:
