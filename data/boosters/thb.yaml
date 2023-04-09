@@ -11,29 +11,14 @@ pack:
   rare_mythic: 1
 sheets:
   uncommon:
-    # Showcase treatments 1/3 for relevant cards
-    any:
-    - use: uncommon_showcase
-      rate: 1
-      count: 5
-    - use: uncommon_has_showcase
-      rate: 2
-      count: 5
-    - use: uncommon_has_no_showcase
-      rate: 3
-      count: 75
+    use: uncommon_with_showcase
+    count: 75 + 5 + 5
   rare_mythic:
   # assuming this works the same as uncommons, no proof
     any:
     - query: "r:r"
       chance: 6
-    - any:
-      - use: mythic_showcase
-        rate: 1
-      - use: mythic_has_showcase
-        rate: 2
-      - use: mythic_has_no_showcase
-        rate: 3
+    - use: mythic_with_showcase
       chance: 1
   foil:
     foil: true

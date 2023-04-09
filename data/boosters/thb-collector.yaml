@@ -47,11 +47,11 @@ sheets:
     any:
     - query: "r:u t:saga"
       rate: 4
-    - rawquery: "e:thb r:u promo:boosterfun -is:foilonly -frame:extendedart"
+    - use: uncommon_showcase
       rate: 4
     - query: "r:r t:saga"
       rate: 2
-    - rawquery: "e:thb r:m promo:boosterfun -is:foilonly -frame:extendedart"
+    - use: mythic_showcase
       rate: 1
     - query: "r:m t:saga"
       rate: 1
