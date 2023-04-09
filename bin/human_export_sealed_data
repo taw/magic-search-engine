@@ -27,7 +27,7 @@ class HumanExportSealedData
   end
 
   def extract_sheets(pack)
-    pack.packs.keys.map(&:sheets).flat_map(&:keys)
+    pack.packs.keys.map(&:sheets).flat_map(&:keys).uniq
   end
 
   def integerize_evs(ev)
