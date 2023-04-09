@@ -60,13 +60,9 @@ class HumanExportSealedData
         end
       end
       file.puts "sheets:"
-      sdone = []
       sheets.each do |sheet|
-        if not sdone.include?(sheet.name)
-          file.puts "  #{sheet.name}:"
-          write_sheet(file, sheet)
-          sdone << sheet.name
-        end
+        file.puts "  #{sheet.name}:"
+        write_sheet(file, sheet)
       end
     end
   end
