@@ -17,7 +17,7 @@ pack:
     chance: 1
   common: 3
   uncommon: 3
-  showcase_cu: 1
+  showcase_common_uncommon: 1
   wildcard: 2
   rare_mythic_praetor:
   - main_rm: 1
@@ -55,7 +55,7 @@ sheets:
     - query: "t:basic number:267-271"
       rate: 1
       count: 5
-  showcase_cu:
+  showcase_common_uncommon:
     any:
     - use: common_showcase
       rate: 2
@@ -63,27 +63,11 @@ sheets:
       rate: 1
   wildcard:
     any:
-    - any: # Common
-      - use: common_showcase
-        rate: 1
-        count: 6
-      - use: common_has_showcase
-        rate: 2
-        count: 6
-      - use: common_has_no_showcase
-        rate: 3
-        count: 95
+    - use: common_with_showcase # Common
+      count: 95 + 6 + 6
       chance: 700
-    - any: # Uncommon
-      - use: uncommon_showcase
-        rate: 1
-        count: 7
-      - use: uncommon_has_showcase
-        rate: 2
-        count: 7
-      - use: uncommon_has_no_showcase
-        rate: 3
-        count: 73
+    - use: uncommon_with_showcase # Uncommon
+      count: 73 + 7 + 7
       chance: 175
     - any: # Rare Mythic Praetor
       - any:

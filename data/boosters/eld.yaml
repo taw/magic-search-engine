@@ -13,30 +13,15 @@ pack:
   # Showcase rare and mythic are a separate sheet run, included at ~1/27 rate
   - rare_mythic: 1
     chance: 26
-  - rm_showcase: 1
+  - rare_mythic_showcase: 1
     chance: 1
 sheets:
   common:
     use: common_with_showcase
     count: 14 + 14 + 87
   uncommon:
-    # Showcase treatments 1/3 for relevant cards
-    any:
-    - use: uncommon_showcase
-      rate: 1
-      count: 9
-    - use: uncommon_has_showcase
-      rate: 2
-      count: 9
-    - use: uncommon_has_no_showcase
-      rate: 3
-      count: 71
-  rm_showcase:
-    any:
-    - use: rare_showcase
-      rate: 2
-    - use: mythic_showcase
-      rate: 1
+    use: uncommon_with_showcase
+    count: 71 + 9 + 9
   foil:
     foil: true
     any:
@@ -51,6 +36,6 @@ sheets:
     - any:
       - use: rare_mythic
         chance: 26
-      - use: rm_showcase
+      - use: rare_mythic_showcase
         chance: 1
       chance: 3
