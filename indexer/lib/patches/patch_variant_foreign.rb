@@ -9,6 +9,7 @@ class PatchVariantForeign < Patch
 
   def is_variant_foreign?(card)
     number = card["number"]
+    number_i = number.to_i
     case card["set_code"]
     when "usg", "inv", "pcy", "5ed", "6ed", "7ed", "8ed", "9ed", "por"
       # Chinese non-skeleton versions
@@ -20,6 +21,12 @@ class PatchVariantForeign < Patch
       #
       # Other star cards are foil alt arts and in boosters
       number =~ /★/
+    when "iko"
+      # Numbers already outside range, so booster code doesn't need it, but it logically makes sense to tag it:
+      number_i >= 385 and number_i <= 387
+    when "sta"
+      # Numbers already outside range, so booster code doesn't need it, but it logically makes sense to tag it:
+      number_i >= 64 and number_i <= 126
     end
   end
 end
