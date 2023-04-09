@@ -2,9 +2,12 @@
 pack:
   common_or_foil_or_borderless:
   - nongainland_common: 10
-    chance: 2
+    chance: 20
   - nongainland_common: 9
     foil: 1
+    chance: 9
+  - nongainland_common: 9
+    borderless_reprint: 1
     chance: 1
   uncommon: 3
   rare_mythic: 1
@@ -68,7 +71,7 @@ sheets:
         rate: 1
       chance: 3
   basic_or_gainland:
-    # showcase variant which is just as common as any other basic land variation
+    # showcase variant is just as common as any other basic land variation
     any:
     - query: "t:basic"
       count: 20
@@ -76,3 +79,29 @@ sheets:
     - query: "is:gainland"
       count: 10
       rate: 6
+  foil:
+    foil: true
+    any:
+    - any:
+      - use: nongainland_common
+        chance: 101
+      - query: "t:basic"
+        chance: 20
+      - query: "is: gainland"
+        chance: 10
+      chance: 12
+    - use: uncommon
+      chance: 5
+    - any:
+      - use: rare_mythic
+        chance: 363
+      - use: borderless_reprint
+        chance: 10
+      chance: 3
+  borderless_reprint:
+    # special reprint borderless cards can appear instead of foils
+    any:
+    - rawquery: "r:r e:m21 is:borderless -t:planeswalker"
+      rate: 2
+    - rawquery: "r:m e:m21 is:borderless -t:planeswalker"
+      rate: 1
