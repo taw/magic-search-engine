@@ -78,9 +78,9 @@ modaldfc_rare_mythic:
 common_showcase:
   rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart"
 common_has_showcase:
-  query: "r:c alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+  query: "r:c alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart)"
 common_has_no_showcase:
-  query: "r:c -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+  query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart)"
 common_with_showcase:
   # Showcase treatments 1/3 for relevant cards
   any:
@@ -94,9 +94,9 @@ common_with_showcase:
 uncommon_showcase:
   rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart"
 uncommon_has_showcase:
-  query: "r:u alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+  query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart)"
 uncommon_has_no_showcase:
-  query: "r:u -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+  query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart)"
 uncommon_with_showcase:
   # Showcase treatments 1/3 for relevant cards
   any:
@@ -110,9 +110,9 @@ uncommon_with_showcase:
 rare_showcase:
   rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart"
 rare_has_showcase:
-  query: "r:r alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+  query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
 rare_has_no_showcase:
-  query: "r:r -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+  query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
 rare_with_showcase:
   # Showcase treatments 1/3 for relevant cards
   any:
@@ -126,9 +126,9 @@ rare_with_showcase:
 mythic_showcase:
   rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart"
 mythic_has_showcase:
-  query: "r:m alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+  query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
 mythic_has_no_showcase:
-  query: "r:m -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+  query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
 mythic_with_showcase:
   # Showcase treatments 1/3 for relevant cards
   any:
