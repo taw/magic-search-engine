@@ -20,7 +20,7 @@ class PreprocessBooster
     @data = data
     @filter = "e:#{@set_code} is:booster"
     if @data["filter"]
-      @filter = "e:#{@set_code} (#{@data["filter"]})"
+      @filter = "e:#{@set_code} (#{@data["filter"]})".gsub("()", "")
     end
   end
 
