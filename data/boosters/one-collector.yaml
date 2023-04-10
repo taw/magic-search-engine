@@ -7,10 +7,10 @@ pack:
   foil_common: 4
   foil_uncommon: 2
   foil_rare_mythic: 1
-  extended_r: 1
+  extended_rm: 1
   extended_jc: 1
-  showcase_common_uncommon: 1
-  foil_showcase_common_uncommon: 1
+  common_uncommon_showcase: 1
+  foil_common_uncommon_showcase: 1
   compleat_foil: 1
   showcase_rare_mythic: 1
   foil_showcase_rare_mythic: 1
@@ -27,8 +27,9 @@ sheets:
   foil_rare_mythic:
     foil: true
     use: rare_mythic
-  extended_r:
-    rawquery: "e:one frame:extendedart number:375-403"
+  extended_rm:
+    filter: "e:one frame:extendedart number:375-403"
+    use: rare_mythic
   extended_jc:
     any:
     - rawquery: "e:one frame:extendedart number:409-413"
@@ -37,15 +38,6 @@ sheets:
       rate: 2
     - rawquery: "e:onc frame:extendedart r:m"
       rate: 1
-  showcase_common_uncommon:
-    any:
-    - use: common_showcase
-      rate: 2
-    - use: uncommon_showcase
-      rate: 1
-  foil_showcase_common_uncommon:
-    foil: true
-    use: showcase_common_uncommon
   compleat_foil: # chances are approximate
     foil: true
     any:
