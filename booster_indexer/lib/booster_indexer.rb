@@ -101,16 +101,20 @@ class PreprocessBooster
     @sheets = common.merge(@data["sheets"] || {})
   end
 
-  def process_sheet(sheet)
+  def process_sheet(sheet, filter)
+    if sheet["filter"]
+      filter = sheet["filter"]
+      sheet = sheet.except("filter")
+    end
     if sheet["use"]
       use = sheet["use"]
       raise "In #{@name} use:#{use} but no such sheet found" unless @sheets[use]
       # Call it again in case there's an use chain
       # and then to do any other kind of processing
-      process_sheet(@sheets[use].merge(sheet.except("use")))
+      process_sheet(@sheets[use].merge(sheet.except("use")), filter)
     elsif sheet["any"]
       sheet.merge(
-        "any" => sheet["any"].map{|subsheet| process_sheet(subsheet)}
+        "any" => sheet["any"].map{|subsheet| process_sheet(subsheet, filter)}
       )
     elsif sheet["code"]
       if sheet["code"].include?("/")
@@ -126,7 +130,7 @@ class PreprocessBooster
     elsif sheet["query"]
       query = sheet["query"]
       # filter already in and-form, doesn't need extra parentheses
-      sheet.merge("query" => "(#{@filter}) (#{query})".gsub("{set}", @set_code).gsub("()", ""))
+      sheet.merge("query" => "(#{filter}) (#{query})".gsub("{set}", @set_code).gsub("()", ""))
     else
       raise "Unknown sheet type #{sheet.keys.join(", ")}"
     end
@@ -134,7 +138,7 @@ class PreprocessBooster
 
   def process_sheets
     @sheets = @sheets.transform_values do |sheet|
-      process_sheet(sheet)
+      process_sheet(sheet, @filter)
     end
   end
 
