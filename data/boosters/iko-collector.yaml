@@ -1,0 +1,93 @@
+# Data from https://magic.wizards.com/en/news/card-preview/collecting-ikoria-2020-04-02
+# Assumptions:
+# Commander cards follow 8/4/2/1 rate
+# Extended art cards follow 8/4/2/1 rate
+# Extended art foils are 50% rarer than non-extended art cards in the foil slot
+# Godzilla foils appear in 1/3 boosters, similar to draft foil rates
+pack:
+  foil_common: 4
+  foil_uncommon: 2
+  foil_basic: 1
+  commander: 1
+  extended_art: 1
+  rare_mythic_foil: 1
+  common_uncommon_showcase: 2
+  rare_mythic_showcase: 1
+  godzilla_slot:
+  - godzilla: 1
+    chance: 2
+  - godzilla_foil: 1
+    chance: 1
+  foil_showcase_any: 1
+sheets:
+  commander:
+    any:
+    - rawquery: "e:c20 number:1-71 r:c"
+      rate: 8
+    - rawquery: "e:c20 number:1-71 r:u"
+      rate: 4
+    - rawquery: "e:c20 number:1-71 r:r"
+      rate: 2
+    - rawquery: "e:c20 number:1-71 r:m"
+      rate: 1
+  extended_art:
+    any:
+    - rawquery: "e:iko frame:extendedart r:r"
+      rate: 2
+    - rawquery: "e:iko frame:extendedart r:m"
+      rate: 1
+  rare_mythic_foil:
+    foil: true
+    any:
+    - rawquery: "e:iko r:r frame:extendedart"
+      rate: 2
+    - query: "r:r"
+      rate: 4
+    - rawquery: "e:iko r:m frame:extendedart"
+      rate: 1
+    - query: "r:m"
+      rate: 2
+  common_uncommon_showcase:
+    any:
+    - rawquery: "e:iko r:c promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+      rate: 2
+    - rawquery: "e:iko r:u promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+      rate: 1
+  rare_mythic_showcase:
+    any:
+    - rawquery: "e:iko r:r promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+      rate: 2
+    - rawquery: "e:iko r:m promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+      rate: 1
+  godzilla:
+    any:
+    - rawquery: "e:iko r:c promo:godzillaseries -variant:foreign"
+      rate: 8
+    - rawquery: "e:iko r:u promo:godzillaseries -variant:foreign -number:373a"
+      rate: 4
+    - rawquery: "e:iko r:r promo:godzillaseries -variant:foreign"
+      rate: 2
+    - rawquery: "e:iko r:m promo:godzillaseries -variant:foreign"
+      rate: 1
+  godzilla_foil:
+    foil: true
+    any:
+    - rawquery: "e:iko r:c promo:godzillaseries -variant:foreign"
+      rate: 8
+    - rawquery: "e:iko r:u promo:godzillaseries -variant:foreign -number:373a"
+      rate: 4
+    - rawquery: "e:iko r:r promo:godzillaseries -variant:foreign"
+      rate: 2
+    - rawquery: "e:iko r:m promo:godzillaseries -variant:foreign -Zilortha"
+      rate: 1
+  foil_showcase_any:
+    foil: true
+    any:
+    - rawquery: "e:iko r:c promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+      rate: 8
+    - rawquery: "e:iko r:u promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+      rate: 4
+    - rawquery: "e:iko r:r promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+      rate: 2
+    - rawquery: "e:iko r:m promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+      rate: 1

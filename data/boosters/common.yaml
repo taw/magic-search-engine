@@ -145,3 +145,19 @@ rare_mythic_showcase:
     rate: 2
   - use: mythic_showcase
     rate: 1
+common_uncommon_showcase:
+  any:
+  - use: common_showcase
+    rate: 2
+  - use: uncommon_showcase
+    rate: 1
+any_showcase:
+  any:
+  - use: common_showcase
+    rate: 8
+  - use: uncommon_showcase
+    rate: 4
+  - use: rare_showcase
+    rate: 2
+  - use: mythic_showcase
+    rate: 1

@@ -16,14 +16,15 @@ sheets:
   sta:
     # Each Draft Booster also has a dedicated slot with an uncommon (67%), rare (26.4%), or mythic rare (6.6%) Mystical Archive card.
     # https://magic.wizards.com/en/articles/archive/feature/collecting-strixhaven-school-mages-2021-03-25
+    filter: "e:sta is:baseset"
     any:
-      - rawquery: "e:sta r:m -variant:foreign"
+      - query: "r:m"
         count: 15
         rate: 3
-      - rawquery: "e:sta r:r -variant:foreign"
+      - query: "r:r"
         count: 30
         rate: 6
-      - rawquery: "e:sta r:u -variant:foreign"
+      - query: "r:u"
         count: 18
         rate: 25
   lesson:
