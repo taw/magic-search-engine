@@ -47,4 +47,12 @@ describe "Card layouts" do
     assert_search_equal "layout:plane", "layout:planar"
     assert_search_equal "layout:phenomenon", "layout:planar"
   end
+
+  it "is:vertical" do
+    assert_search_equal "is:vertical", "not:horizontal"
+  end
+
+  it "is:horizontal" do
+    assert_search_equal "is:horizontal", "t:battle or t:plane or t:phenomenon"
+  end
 end
