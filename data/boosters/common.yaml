@@ -181,3 +181,76 @@ base_1248_by_rarity:
     rate: 2
   - query: "r:m"
     rate: 1
+
+sfc_common_with_showcase:
+  # Showcase treatments 1/3 for relevant cards
+  any:
+  - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart is:sfc"
+    rate: 1
+  - query: "r:c alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+    rate: 2
+  - query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+    rate: 3
+sfc_uncommon_with_showcase:
+  # Showcase treatments 1/3 for relevant cards
+  any:
+  - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:sfc"
+    rate: 1
+  - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+    rate: 2
+  - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+    rate: 3
+sfc_rare_with_showcase:
+  # Showcase treatments 1/3 for relevant cards
+  any:
+  - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:sfc"
+    rate: 1
+  - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+    rate: 2
+  - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+    rate: 3
+sfc_mythic_with_showcase:
+  # Showcase treatments 1/3 for relevant cards
+  any:
+  - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:sfc"
+    rate: 1
+  - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+    rate: 2
+  - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+    rate: 3
+dfc_common_with_showcase:
+  # Showcase treatments 1/3 for relevant cards
+  any:
+  - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart is:dfc"
+    rate: 1
+  - query: "r:c alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+    rate: 2
+  - query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+    rate: 3
+dfc_uncommon_with_showcase:
+  # Showcase treatments 1/3 for relevant cards
+  any:
+  - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:dfc"
+    rate: 1
+  - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+    rate: 2
+  - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+    rate: 3
+dfc_rare_with_showcase:
+  # Showcase treatments 1/3 for relevant cards
+  any:
+  - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:dfc"
+    rate: 1
+  - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+    rate: 2
+  - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+    rate: 3
+dfc_mythic_with_showcase:
+  # Showcase treatments 1/3 for relevant cards
+  any:
+  - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:dfc"
+    rate: 1
+  - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+    rate: 2
+  - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+    rate: 3
