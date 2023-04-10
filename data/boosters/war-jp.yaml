@@ -5,6 +5,7 @@
 # We can make this deviation go on rares on uncommons, either way it's too tiny to notice
 # Japanese planeswalkers appear at same rate as regular planeswalkers
 # per https://magic.wizards.com/en/news/announcements/japanese-alternate-art-planeswalkers-2019-04-22
+filter: "e:war number:1-264"
 pack:
 - basic: 1
   common: 9
@@ -31,10 +32,7 @@ sheets:
   planeswalker_uncommon:
     any:
     - query: "t:planeswalker r:u"
-      count: 20
-      rate: 1
-    - rawquery: "e:war t:planeswalker r:u variant:foreign"
-      count: 20
+      count: 40
       rate: 1
   nonplaneswalker_uncommon:
     query: "-t:planeswalker r:u"
@@ -42,16 +40,10 @@ sheets:
   planeswalker_rare_mythic:
     any:
     - query: "t:planeswalker r:r"
-      count: 13
-      rate: 2
-    - rawquery: "e:war t:planeswalker r:r variant:foreign"
-      count: 13
+      count: 26
       rate: 2
     - query: "t:planeswalker r:m"
-      count: 3
-      rate: 1
-    - rawquery: "e:war t:planeswalker r:m variant:foreign"
-      count: 3
+      count: 6
       rate: 1
   nonplaneswalker_rare_mythic:
     any:
@@ -61,16 +53,3 @@ sheets:
     - query: "-t:planeswalker r:m"
       count: 12
       rate: 1
-  foil:
-    foil: true
-    any:
-    - rawquery: "e:war r<=c number:1-264"
-      chance: 12
-    - rawquery: "e:war r:u number:1-264"
-      chance: 5
-    - any:
-      - query: "e:war r:r number:1-264"
-        rate: 2
-      - query: "e:war r:m number:1-264"
-        rate: 1
-      chance: 3
