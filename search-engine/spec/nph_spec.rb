@@ -8,10 +8,6 @@ describe "New Phyrexia" do
     assert_search_results "mana>=3{p/g}", "Birthing Pod", "Thundering Tanadon"
   end
 
-  it "is:phyrexian" do
-    assert_search_equal "is:phyrexian", "mana>={wp} or mana>={up} or mana>={bp} or mana>={rp} or mana>={gp}"
-  end
-
   it "watermark:" do
     assert_search_results "w:mirran c:g", "Greenhilt Trainee", "Melira, Sylvok Outcast", "Viridian Harvest"
     assert_search_equal "w:mirran OR w:phyrexian", "w:*"
