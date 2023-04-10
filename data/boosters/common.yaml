@@ -151,6 +151,9 @@ common_uncommon_showcase:
     rate: 2
   - use: uncommon_showcase
     rate: 1
+foil_common_uncommon_showcase:
+  foil: true
+  use: common_uncommon_showcase
 any_showcase:
   any:
   - use: common_showcase
@@ -161,3 +164,13 @@ any_showcase:
     rate: 2
   - use: mythic_showcase
     rate: 1
+
+base_1248_by_rarity:
+  any:
+  - query: "r:c"
+    rate: 8
+  - query: "r:u"
+    rate: 4
+  - query: "r:r"
+    rate: 2
+  - query: "r:m"
