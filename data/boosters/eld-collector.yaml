@@ -5,7 +5,7 @@
 # - assumed to follow distribution of Set boosters in https://mtg.fandom.com/wiki/Set_Booster
 # - with one extra guaranteed common and one guaranteed uncommon
 # No data for relative showcase rarity for showcase slot
-# - Showcase treatments roughly follow standard distribution, so used the wildcard rates
+# - Showcase treatments tend to use 8/4/2/1 rarity
 # No data for relative rarity of ancillary cards
 # - Cards are not nicely distributed, so used bonus sheet 8/4/2/1 rates
 pack:
@@ -28,43 +28,18 @@ pack:
   - foil_common: 2
     foil_uncommon: 7
     chance: 20
-  showcase: 3
+  any_showcase: 3
   ancillary: 1
   rm_extended: 1
   foil_rare_mythic: 1
 sheets:
-  showcase:
-    # assume that this is the same rate as set booster wildcards
-    any:
-    - use: common_showcase
-      chance: 700
-    - use: uncommon_showcase
-      chance: 175
-    - any:
-      - use: rare_showcase
-        count: 5
-        rate: 2
-      - use: mythic_showcase
-        count: 5
-        rate: 1
-      chance: 125
   ancillary:
     # C/U/R/M rates guessed to be at 8x/4x/2x/1x multiples
-    any:
-    - rawquery: "e:eld r:c -promo:boosterfun number>=304 -frame:inverted"
-      rate: 8
-    - rawquery: "e:eld r:u -promo:boosterfun number>=304 -frame:inverted"
-      rate: 4
-    - rawquery: "e:eld r:r -promo:boosterfun number>=304 -frame:inverted"
-      rate: 2
-    - rawquery: "e:eld r:m -promo:boosterfun number>=304 -frame:inverted"
-      rate: 1
+    filter: "e:eld -promo:boosterfun number>=304 -frame:inverted"
+    use: base_1248_by_rarity
   rm_extended:
-    any:
-    - rawquery: "e:eld r:r frame:extendedart"
-      rate: 2
-    - rawquery: "e:eld r:m frame:extendedart"
-      rate: 1
+    filter: "e:eld frame:extendedart"
+    use: rare_mythic
   foil_rare_mythic:
     foil: true
     any:

@@ -1,7 +1,7 @@
 # M21 collector booster
 # Data from https://magic.wizards.com/en/news/card-preview/collecting-core-set-2021-2020-06-05
 # No idea how Teferi is collated with these showcase cards
-# Assume foil extended art cards appear at 1/3 rate of standard rare/mythic foils
+# Assume foil extended art cards appear at 1/2 rate of standard rare/mythic foils
 # For now CULTIVATE showcase behaves like a rare, but this might be wrong
 # Assume showcase cards follow 8/4/2/1 rarity
 pack:
@@ -15,37 +15,23 @@ pack:
   foil_uncommon: 2
   foil_common_or_basic: 4
 sheets:
-  foil_common_uncommon_showcase:
-    foil: true
-    use: common_uncommon_showcase
   foil_all_showcase:
     foil: true
-    any:
-    - use: common_showcase
-      rate: 8
-    - use: uncommon_showcase
-      rate: 4
-    - use: rare_showcase
-      rate: 2
-    - use: mythic_showcase
-      rate: 1
+    use: any_showcase
   foil_rare_mythic:
     foil: true
     any:
-    - use: rare
-      rate: 6
+    - query: "r:r"
+      rate: 4
     - rawquery: "e:m21 r:r frame:extendedart"
       rate: 2
     - query: "r:m"
-      rate: 3
+      rate: 2
     - rawquery: "e:m21 r:m frame:extendedart -(Rin and Seri, Inseparable)"
       rate: 1
   extended_art:
-    any:
-    - rawquery: "e:m21 r:r frame:extendedart"
-      rate: 2
-    - rawquery: "e:m21 r:m frame:extendedart"
-      rate: 1
+    filter: "e:m21 frame:extendedart"
+    use: rare_mythic
   foil_showcase_basic:
     foil: true
     rawquery: "e:m21 frame:showcase t:basic"
