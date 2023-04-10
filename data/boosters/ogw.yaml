@@ -2,7 +2,7 @@
 # Non-fullart basics (numbers with a) are from precon decks only
 #
 # Other basics come from BFZ, full art only (numbers without a)
-filter: "-number:/a/ -variant:misprint"
+filter: "e:{set} -number:/a/ -variant:misprint"
 pack:
   basic: 1
   common: 9

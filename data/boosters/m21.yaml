@@ -3,7 +3,7 @@
 # Assumptions:
 # Nonfoil borderless reprints appear in 1/30 packs
 # Borderless reprint foils are printed at similar rate to rare and mythic foil showcase variants
-filter: "number:1-set,309-313"
+filter: "e:{set} number:1-set,309-313"
 pack:
   common_or_foil_or_borderless:
   - nongainland_common: 10

@@ -20,7 +20,7 @@ class PreprocessBooster
     @data = data
     @filter = "e:#{@set_code} is:baseset"
     if @data["filter"]
-      @filter = "e:#{@set_code} (#{@data["filter"]})".gsub("()", "")
+      @filter = @data["filter"]
     end
   end
 
@@ -121,12 +121,12 @@ class PreprocessBooster
         sheet.except("code", "set").merge("code" => "#{set}/#{code}")
       end
     elsif sheet["rawquery"]
-      query = sheet["rawquery"].gsub("{set}", @set_code)
-      sheet.except("rawquery").merge("query" => query)
+      query = sheet["rawquery"]
+      sheet.except("rawquery").merge("query" => query.gsub("{set}", @set_code))
     elsif sheet["query"]
-      query = sheet["query"].gsub("{set}", @set_code)
+      query = sheet["query"]
       # filter already in and-form, doesn't need extra parentheses
-      sheet.merge("query" => "#{@filter} (#{query})")
+      sheet.merge("query" => "(#{@filter}) (#{query})".gsub("{set}", @set_code).gsub("()", ""))
     else
       raise "Unknown sheet type #{sheet.keys.join(", ")}"
     end
