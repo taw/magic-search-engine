@@ -6,8 +6,8 @@ pack:
   - foil: 1
     chance: 1
   common_with_showcase: 9
-  sfc_uncommon: 3
-  modaldfc_rare_mythic: 1
+  sfc_uncommon_with_showcase: 3
+  dfc_rare_mythic_with_showcase: 1
   chance: 27
 - basic: 1
   common_or_foil:
@@ -16,60 +16,20 @@ pack:
   - foil: 1
     chance: 1
   common_with_showcase: 9
-  modaldfc_uncommon: 1
-  sfc_uncommon: 2
-  sfc_rare_mythic: 1
+  dfc_uncommon_with_showcase: 1
+  sfc_uncommon_with_showcase: 2
+  sfc_rare_mythic_with_showcase: 1
   chance: 121
 sheets:
-  sfc_uncommon:
+  sfc_rare_mythic_with_showcase:
     any:
-    - rawquery: "e:znr r:u promo:boosterfun -is:foilonly -frame:extendedart is:sfc"
-      rate: 1
-    - query: "r:u alt:(e:znr r:u promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
-      rate: 2
-    - query: "r:u -alt:(e:znr r:u promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
-      rate: 3
-  sfc_rare_mythic:
-    any:
-    - any:
-      - rawquery: "e:znr r:r promo:boosterfun -is:foilonly -frame:extendedart is:sfc"
-        rate: 1
-      - query: "r:r alt:(e:znr r:r promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
-        rate: 2
-      - query: "r:r -alt:(e:znr r:r promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
-        rate: 3
+    - use: sfc_rare_with_showcase
       chance: 106
-    - any:
-      - rawquery: "e:znr r:m promo:boosterfun -is:foilonly -frame:extendedart is:sfc"
-        rate: 1
-      - query: "r:m alt:(e:znr r:m promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
-        rate: 2
-      - query: "r:m -alt:(e:znr r:m promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
-        rate: 3
+    - use: sfc_mythic_with_showcase
       chance: 15
-  modaldfc_uncommon:
+  dfc_rare_mythic_with_showcase:
     any:
-    - rawquery: "e:znr r:u promo:boosterfun -is:foilonly -frame:extendedart is:modaldfc"
-      rate: 1
-    - query: "r:u alt:(e:znr r:u promo:boosterfun -is:foilonly -frame:extendedart) is:modaldfc"
-      rate: 2
-    - query: "r:u -alt:(e:znr r:u promo:boosterfun -is:foilonly -frame:extendedart) is:modaldfc"
-      rate: 3
-  modaldfc_rare_mythic:
-    any:
-    - any:
-      - rawquery: "e:znr r:r promo:boosterfun -is:foilonly -frame:extendedart is:modaldfc is:paper"
-        rate: 1
-      - query: "r:r alt:(e:znr r:r promo:boosterfun -is:foilonly -frame:extendedart) is:modaldfc"
-        rate: 2
-      - query: "r:r -alt:(e:znr r:r promo:boosterfun -is:foilonly -frame:extendedart) is:modaldfc"
-        rate: 3
+    - use: dfc_rare_with_showcase
       chance: 22
-    - any:
-      - rawquery: "e:znr r:m promo:boosterfun -is:foilonly -frame:extendedart is:modaldfc"
-        rate: 1
-      - query: "r:m alt:(e:znr r:m promo:boosterfun -is:foilonly -frame:extendedart) is:modaldfc"
-        rate: 2
-      - query: "r:m -alt:(e:znr r:m promo:boosterfun -is:foilonly -frame:extendedart) is:modaldfc"
-        rate: 3
+    - use: dfc_mythic_with_showcase
       chance: 5
