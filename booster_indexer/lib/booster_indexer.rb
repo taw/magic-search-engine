@@ -18,7 +18,7 @@ class PreprocessBooster
     @name = name
     @set_code = name.split("-").first
     @data = data
-    @filter = "e:#{@set_code} number:1-set -variant:foreign -variant:misprint"
+    @filter = "e:#{@set_code} is:baseset"
     if @data["filter"]
       @filter = "e:#{@set_code} (#{@data["filter"]})".gsub("()", "")
     end
