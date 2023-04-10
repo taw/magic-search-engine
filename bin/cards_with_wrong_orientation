@@ -63,16 +63,22 @@ class CheckCardOrientation
     system "open", @path.to_s
   end
 
+  def print_warning
+    warn "Bad orientation for #{card_name_and_number} (#{@card.typeline}) #{@path} expected:#{expected_orientation} actual:#{orientation}"
+  end
+
   def call(fix)
     return if orientation == expected_orientation
     if fix
-      if orientation == :horizontal and expected_orientation == :vertical
+      if orientation == :vertical and expected_orientation == :horizontal
         warn "Fixing #{card_name_and_number} (#{@card.typeline}) #{@path} by rotating it 90 degrees"
         rotate
         open
+      else
+        print_warning
       end
     else
-      warn "Bad orientation for #{card_name_and_number} (#{@card.typeline}) #{@path} expected:#{expected_orientation} actual:#{orientation}"
+      print_warning
       # binding.pry
     end
   end
@@ -84,7 +90,7 @@ class CardsWithWrongOrientation
   def initialize(*args)
     if args == []
       @fix = false
-    elsif args == "--fix"
+    elsif args == ["--fix"]
       @fix = true
     else
       STDERR.puts "Usage: #{$0} [--fix]"
