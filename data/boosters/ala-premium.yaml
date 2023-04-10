@@ -1,3 +1,4 @@
+filter: "b:ala"
 pack:
   alara_premium_basic: 1
   alara_premium_common: 10
@@ -6,22 +7,22 @@ pack:
 sheets:
   alara_premium_basic:
     foil: true
-    rawquery: "b:ala r:b"
+    query: "r:b"
     count: 20 + 0 + 0
   alara_premium_common:
     foil: true
-    rawquery: "b:ala r:c"
+    query: "r:c"
     count: 101 + 60 + 60
   alara_premium_uncommon:
     foil: true
-    rawquery: "b:ala r:u"
+    query: "r:u"
     count: 60 + 40 + 40
   alara_premium_rare_mythic:
     foil: true
     any:
-    - rawquery: "b:ala r:r"
+    - query: "r:r"
       count: 53+35+35
       rate: 2
-    - rawquery: "b:ala r:m"
+    - query: "r:m"
       count: 15+10+10
       rate: 1
