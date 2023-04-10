@@ -63,8 +63,15 @@ class CheckCardOrientation
     system "open", @path.to_s
   end
 
-  def call
-    if orientation != expected_orientation
+  def call(fix)
+    return if orientation == expected_orientation
+    if fix
+      if orientation == :horizontal and expected_orientation == :vertical
+        warn "Fixing #{card_name_and_number} (#{@card.typeline}) #{@path} by rotating it 90 degrees"
+        rotate
+        open
+      end
+    else
       warn "Bad orientation for #{card_name_and_number} (#{@card.typeline}) #{@path} expected:#{expected_orientation} actual:#{orientation}"
       # binding.pry
     end
@@ -74,7 +81,15 @@ end
 class CardsWithWrongOrientation
   attr_reader :db
 
-  def initialize
+  def initialize(*args)
+    if args == []
+      @fix = false
+    elsif args == "--fix"
+      @fix = true
+    else
+      STDERR.puts "Usage: #{$0} [--fix]"
+      exit 1
+    end
     @db = CardDatabase.load
   end
 
@@ -82,11 +97,11 @@ class CardsWithWrongOrientation
     db.printings.each do |card|
       [card.path_hq, card.path_lq].each do |path|
         next unless path.exist?
-        CheckCardOrientation.new(card, path).call
+        CheckCardOrientation.new(card, path).call(@fix)
       end
     end
   end
 end
 
 STDOUT.sync = true
-CardsWithWrongOrientation.new.call
+CardsWithWrongOrientation.new(*ARGV).call
