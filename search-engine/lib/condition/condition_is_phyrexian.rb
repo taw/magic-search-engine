@@ -1,8 +1,7 @@
 class ConditionIsPhyrexian < ConditionSimple
   def match?(card)
-    mana_hash = card.mana_hash or return false
-    # These are weirdly alphabetized internally
-    !(mana_hash.keys & ["pw", "pu", "bp", "pr", "gp"]).empty?
+    mana_cost = card.mana_cost or return false
+    mana_cost.include?("p")
   end
 
   def to_s
