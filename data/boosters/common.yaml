@@ -6,6 +6,12 @@ rare_mythic:
     rate: 2
   - query: "r:m"
     rate: 1
+common_uncommon:
+  any:
+  - query: "r:c"
+    rate: 2
+  - query: "r:u"
+    rate: 1
 rare:
   query: "r:r"
 uncommon:
@@ -174,3 +180,4 @@ base_1248_by_rarity:
   - query: "r:r"
     rate: 2
   - query: "r:m"
+    rate: 1
