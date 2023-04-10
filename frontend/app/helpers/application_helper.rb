@@ -211,6 +211,7 @@ module ApplicationHelper
       "½", "1000000", "100", "∞",
       "chaos", "pw",
       "hw", "hr",
+      "wup", "wbp", "rwp", "gwp", "ubp", "urp", "gup", "brp", "bgp", "rgp",
     ]
   end
 
