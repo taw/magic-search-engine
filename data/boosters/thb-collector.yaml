@@ -12,22 +12,22 @@
 pack:
   foil_basic: 2
   common_or_uncommon:
-  - foil_common_basic: 6
+  - foil_common_or_basic: 6
     foil_uncommon: 2
     chance: 350
-  - foil_common_basic: 5
+  - foil_common_or_basic: 5
     foil_uncommon: 3
     chance: 400
-  - foil_common_basic: 4
+  - foil_common_or_basic: 4
     foil_uncommon: 4
     chance: 125
-  - foil_common_basic: 3
+  - foil_common_or_basic: 3
     foil_uncommon: 5
     chance: 70
-  - foil_common_basic: 2
+  - foil_common_or_basic: 2
     foil_uncommon: 6
     chance: 35
-  - foil_common_basic: 1
+  - foil_common_or_basic: 1
     foil_uncommon: 7
     chance: 20
   showcase: 1
@@ -35,13 +35,6 @@ pack:
   rm_extended: 1
   foil_rare_mythic: 1
 sheets:
-  foil_common_basic:
-    foil: true
-    any:
-    - use: foil_common
-      rate: 1
-    - rawquery: "e:thb t:basic number:278-287"
-      rate: 1
   showcase:
     # U/R/M rates guessed to be at 4x/2x/1x multiples
     any:
@@ -57,21 +50,11 @@ sheets:
       rate: 1
   ancillary:
     # C/U/R/M rates guessed to be at 8x/4x/2x/1x multiples
-    any:
-    - rawquery: "e:thb r:c -promo:boosterfun number:269-297"
-      rate: 8
-    - rawquery: "e:thb r:u -promo:boosterfun number:269-297"
-      rate: 4
-    - rawquery: "e:thb r:r -promo:boosterfun number:269-297"
-      rate: 2
-    - rawquery: "e:thb r:m -promo:boosterfun number:269-297"
-      rate: 1
+    filter: "e:thb -promo:boosterfun number:269-297"
+    use: base_1248_by_rarity
   rm_extended:
-    any:
-    - rawquery: "e:thb r:r frame:extendedart"
-      rate: 2
-    - rawquery: "e:thb r:m frame:extendedart"
-      rate: 1
+    filter: "e:thb frame:extendedart"
+    use: rare_mythic
   foil_rare_mythic:
     foil: true
     any:

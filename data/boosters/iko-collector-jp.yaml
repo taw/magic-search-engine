@@ -21,21 +21,11 @@ pack:
   foil_showcase_any: 1
 sheets:
   commander:
-    any:
-    - rawquery: "e:c20 number:1-71 r:c"
-      rate: 8
-    - rawquery: "e:c20 number:1-71 r:u"
-      rate: 4
-    - rawquery: "e:c20 number:1-71 r:r"
-      rate: 2
-    - rawquery: "e:c20 number:1-71 r:m"
-      rate: 1
+    filter: "e:c20 number:1-71"
+    use: base_1248_by_rarity
   extended_art:
-    any:
-    - rawquery: "e:iko frame:extendedart r:r"
-      rate: 2
-    - rawquery: "e:iko frame:extendedart r:m"
-      rate: 1
+    filter: "e:iko frame:extendedart"
+    use: rare_mythic
   rare_mythic_foil:
     foil: true
     any:
@@ -48,46 +38,19 @@ sheets:
     - query: "r:m"
       rate: 2
   common_uncommon_showcase:
-    any:
-    - rawquery: "e:iko r:c promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
-      rate: 2
-    - rawquery: "e:iko r:u promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
-      rate: 1
+    filter: "e:iko promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+    use: common_uncommon
   rare_mythic_showcase:
-    any:
-    - rawquery: "e:iko r:r promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
-      rate: 2
-    - rawquery: "e:iko r:m promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
-      rate: 1
+    filter: "e:iko promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+    use: rare_mythic
   godzilla:
-    any:
-    - rawquery: "e:iko r:c promo:godzillaseries"
-      rate: 8
-    - rawquery: "e:iko r:u promo:godzillaseries"
-      rate: 4
-    - rawquery: "e:iko r:r promo:godzillaseries"
-      rate: 2
-    - rawquery: "e:iko r:m promo:godzillaseries"
-      rate: 1
+    filter: "e:iko promo:godzillaseries"
+    use: base_1248_by_rarity
   godzilla_foil:
     foil: true
-    any:
-    - rawquery: "e:iko r:c promo:godzillaseries"
-      rate: 8
-    - rawquery: "e:iko r:u promo:godzillaseries"
-      rate: 4
-    - rawquery: "e:iko r:r promo:godzillaseries"
-      rate: 2
-    - rawquery: "e:iko r:m promo:godzillaseries -Zilortha"
-      rate: 1
+    filter: "e:iko promo:godzillaseries -Zilortha"
+    use: base_1248_by_rarity
   foil_showcase_any:
     foil: true
-    any:
-    - rawquery: "e:iko r:c promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
-      rate: 8
-    - rawquery: "e:iko r:u promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
-      rate: 4
-    - rawquery: "e:iko r:r promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
-      rate: 2
-    - rawquery: "e:iko r:m promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
-      rate: 1
+    filter: "e:iko promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+    use: base_1248_by_rarity
