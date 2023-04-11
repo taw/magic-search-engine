@@ -35,17 +35,19 @@ sheets:
       count: 15
       rate: 1*1
   foil:
+    # This is not complete
+    # Do they get BRR 64+? Do BRO include non-mech basics?
+    filter: "(e:bro is:baseset -number:268-277) or (e:brr -number:/z/)"
     foil: true
     any:
-    # Do they get BRR 64+? this is not complete
-    - rawquery: "e:bro,brr r<=c is:booster"
+    - query: "r<=c"
       chance: 12
-    - rawquery: "e:bro,brr r:u is:booster"
+    - query: "r:u"
       chance: 5
     - any:
-      - rawquery: "e:bro,brr r:r is:booster"
+      - query: "r:r"
         rate: 2
-      - rawquery: "e:bro,brr r:m is:booster"
+      - query: "r:m"
         rate: 1
       chance: 3
   mech_basic:
