@@ -37,8 +37,9 @@ class PatchHasBoosters < Patch
       next if booster_files.empty?
 
       set["has_boosters"] = true
-      set["booster_variants"] = {}
 
+      # This is only used by the old system and will be phased out
+      set["booster_variants"] = {}
       booster_files.each do |booster_code|
         variant = booster_code.split("-", 2)[1] || "default"
 
