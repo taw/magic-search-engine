@@ -1,0 +1,83 @@
+# data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine\
+# Don't know yet if you can pull 2 battles in 1 pack. Will need to adjust as more data is available
+# Don't know relative rarities of U/R/M cards in wildcard slot. Assuming 8/4/2/1 rates for now
+# Don't know relative rarities of battles. Assuming 8/4/2/1 rates for now
+# DOn't know relative rarities of MUL cards. Assuming 4/2/1 rates for now
+pack:
+  common_or_foil:
+  - sfc_common_with_showcase: 8
+    chance: 2
+  - sfc_common_with_showcase: 7
+    foil_with_showcase_and_mul: 1
+    chance: 1
+  sfc_uncommon_with_showcase: 2
+  dfc_wildcard: 1
+  sfc_wildcard: 1
+  battle: 1
+  multiverse_legend: 1
+sheets:
+  dfc_wildcard:
+    any:
+    - use: dfc_common_with_showcase
+      chance: 8 * 5
+    - use: dfc_uncommon_with_showcase
+      chance: 4 * 30
+    - use: dfc_rare_with_showcase
+      chance: 2 * 16
+    - use: dfc_mythic_with_showcase
+      chance: 1 * 10
+  sfc_wildcard:
+    any:
+    - use: sfc_uncommon_with_showcase
+      chance: 4 * 50
+    - use: sfc_rare_with_showcase
+      chance: 2 * 44
+    - use: sfc_mythic_with_showcase
+      chance: 1 * 10
+  battle:
+    filter: "e:mom t:battle"
+    use: base_1248_by_rarity
+  multiverse_legend:
+    filter: "e:mul -is:foilonly"
+    use: base_1248_by_rarity
+  foil_with_showcase_and_mul:
+    foil: true
+    any:
+    - any:
+      - use: common_showcase
+        rate: 1
+      - use: common_has_showcase
+        rate: 2
+      - use: common_has_no_showcase
+        rate: 3
+      - use: basic
+        rate: 3
+      chance: 12
+    - any:
+      - use: uncommon_showcase
+        rate: 1
+      - use: uncommon_has_showcase
+        rate: 2
+      - use: uncommon_has_no_showcase
+        rate: 3
+      - rawquery: "e:mul -is:foilonly r:u"
+        rate: 3
+      chance: 5
+    - any:
+      - use: rare_showcase
+        rate: 2
+      - use: rare_has_showcase
+        rate: 4
+      - use: rare_has_no_showcase
+        rate: 6
+      - rawquery: "e:mul -is:foilonly r:r"
+        rate: 6
+      - use: mythic_showcase
+        rate: 1
+      - use: mythic_has_showcase
+        rate: 2
+      - use: mythic_has_no_showcase
+        rate: 3
+      - rawquery: "e:mul -is:foilonly r:m"
+        rate: 3
+      chance: 3
