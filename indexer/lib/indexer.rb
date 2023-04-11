@@ -86,7 +86,6 @@ class Indexer
       PatchColorshifted,
       PatchPrintSheets,
       PatchMB1,
-      PatchShowcase,
       PatchABUR,
       PatchNewPrintSheets,
       PatchFrame,
