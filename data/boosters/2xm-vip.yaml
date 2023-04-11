@@ -1,0 +1,60 @@
+# data from https://magic.wizards.com/en/news/feature/introducing-double-masters-vip-edition-2020-07-17
+name: "Double Masters VIP Edition"
+pack:
+  foil_rare_mythic_borderless: 2
+  foil_rare_mythic: 2
+  foil_uncommon: 8
+  foil_common: 9
+  foil_plains_1: 1
+  foil_plains_2: 1
+  foil_island_1: 1
+  foil_island_2: 1
+  foil_swamp_1: 1
+  foil_swamp_2: 1
+  foil_mountain_1: 1
+  foil_mountain_2: 1
+  foil_forest_1: 1
+  foil_forest_2: 1
+  foil_basic: 2
+sheets:
+  foil_rare_mythic_borderless:
+    foil: true
+    filter: "e:2xm is:borderless"
+    use: rare_mythic
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  foil_plains_1:
+    foil: true
+    rawquery: "e:2xm number:373"
+  foil_plains_2:
+    foil: true
+    rawquery: "e:2xm number:374"
+  foil_island_1:
+    foil: true
+    rawquery: "e:2xm number:375"
+  foil_island_2:
+    foil: true
+    rawquery: "e:2xm number:376"
+  foil_swamp_1:
+    foil: true
+    rawquery: "e:2xm number:377"
+  foil_swamp_2:
+    foil: true
+    rawquery: "e:2xm number:378"
+  foil_mountain_1:
+    foil: true
+    rawquery: "e:2xm number:379"
+  foil_mountain_2:
+    foil: true
+    rawquery: "e:2xm number:380"
+  foil_forest_1:
+    foil: true
+    rawquery: "e:2xm number:381"
+  foil_forest_2:
+    foil: true
+    rawquery: "e:2xm number:382"
+  foil_basic:
+    foil: true
+    rawquery: "e:2xm t:basic"
+  
