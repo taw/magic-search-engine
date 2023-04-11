@@ -135,6 +135,8 @@ describe Deck do
         sets_found.should match_array ["phed", "sld"]
       when "onc"
         sets_found.should match_array ["onc", "one"]
+      when "moc"
+        sets_found.should match_array ["moc", "mom"]
       else
         sets_found.should eq [set.code]
       end
@@ -145,41 +147,15 @@ describe Deck do
   # * we don't have any alt art information on decklist side (mostly for basic lands)
   # * we don't have any foil information, on either side
   #
-  # This test fails for most new sets
-  # I just need to do a date cutoff for it instead of ever growing explicit exception lists
+  # This test fails for most new Commander sets, so just using date cutoff
   it "cards in precon sets are all in their precon decks" do
     precon_sets.each do |set|
       # Plane cards are technically not part of any precon in it
       next if set.code == "pca"
       # Contains some Amonkhet cards
       next if set.code == "e01"
-      # Contains some Ikoria cards
-      next if set.code == "c20"
-      # Contains some ZNR cards
-      next if set.code == "znc"
-      # Contains some KHM cards
-      next if set.code == "khc"
-      # Contains some STX cards
-      next if set.code == "c21"
-      # Contains some AFR cards
-      next if set.code == "afc"
-      # Contains some DMU cards
-      next if set.code == "dmc"
-      # Contains some MID cards
-      # also cards 31-38 are not in precons,
-      # so this set should maybe check that?
-      next if set.code == "mic"
-      # Eight additional cards with the VOC code (#31/38 to #38/38) can only be found in the Set and Collector Boosters. They aren't found in the Innistrad: Crimson Vow Commander decks.
-      next if set.code == "voc"
-      next if set.code == "nec"
-      next if set.code == "ncc"
-      next if set.code == "clb"
-      next if set.code == "brc"
-      # Extra card Fabricate as promo
-      next if set.code == "40k"
-      # Contains some SLD cards
-      next if set.code == "phed"
-      next if set.code == "onc"
+      # Basically all new Commander decks contain cards from main set
+      next if set.types.include?("commander") and set.release_date >= Date.parse("2020-04-17")
 
       # All names match both ways
       set_card_names = set.physical_card_names
@@ -200,6 +176,7 @@ describe Deck do
         unless set_card_names.to_set == deck_card_names.to_set
           warn "For precon set #{set.code}, cards do not match decklists (...and they won't for most new sets)"
         end
+        binding.pry unless set_card_names.sort == deck_card_names.sort
         set_card_names.should match_array deck_card_names
       end
     end

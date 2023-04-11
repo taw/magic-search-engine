@@ -1,7 +1,7 @@
 describe LegacyCardSheetFactory do
   include_context "db"
   let(:factory) { LegacyCardSheetFactory.new(db) }
-  let(:pack_factory) { LegacyPackFactory.new(db) }
+  let(:pack_factory) { PackFactory.new(db) } # This is not connected to where it used to, specs should move to the other file
 
   context "Masterpieces" do
     let(:sheet) { factory.masterpieces_for(set_code) }
