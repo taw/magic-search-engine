@@ -1,6 +1,6 @@
 # data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine
 # No info on what other cards are in rare_mythic slot. Assuming it's only core set non-showcase cards
-# 
+# Going by previous premium foil rates, etched foils appear roughly 2/box or 1/15 packs
 pack:
   sfc_common: 2
   sfc_uncommon: 2
@@ -8,12 +8,16 @@ pack:
   uncommon_battle: 1
   wildcard: 2
   multiverse_legend: 1
-  rare_mythic: 1
-  finale_slot:
-  - foil_or_etched: 1
+  finale_1:
+  - rare_mythic: 1
     chance: 3
-  - foil_or_etched: 1
+  - rare_mythic: 1
     the_list: 1
+    chance: 1
+  finale_2:
+  - foil_with_showcase: 1
+    chance: 14
+  - foil_etched: 1
     chance: 1
 sheets:
   sfc_common:
@@ -58,6 +62,7 @@ sheets:
   the_list:
     set: plist
     code: "MOM"
-  foil_or_etched:
+  foil_etched:
     foil: true
-    use: foil_with_showcase
+    filter: "e:mul frame:inverted" #Need to change this to be frame:etched when Scryfall gets fixed
+    use: base_1248_by_rarity
