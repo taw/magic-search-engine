@@ -51,7 +51,6 @@ class IndexSerializer
       "base_set_size",
       "block_code",
       "block_name",
-      "booster_variants",
       "border",
       "code",
       "custom",
