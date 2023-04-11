@@ -67,6 +67,8 @@ class PatchHasBoosters < Patch
            "#{set_name} Arena Booster: Abominable All Stars"
         when "ala-premium"
            "Alara Premium Foil Booster"
+        when "2xm-vip"
+           "Double Masters VIP Edition"
         else
           warn "Unknown booster type: #{booster_code}"
           "#{set_name} #{variant.capitalize} Booster"
