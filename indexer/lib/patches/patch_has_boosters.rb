@@ -37,42 +37,6 @@ class PatchHasBoosters < Patch
       next if booster_files.empty?
 
       set["has_boosters"] = true
-
-      # This is only used by the old system and will be phased out
-      set["booster_variants"] = {}
-      booster_files.each do |booster_code|
-        variant = booster_code.split("-", 2)[1] || "default"
-
-        set["booster_variants"][variant] = case booster_code
-        when set_code
-          nil
-        when "#{set_code}-arena"
-          "#{set_name} Arena Booster"
-        when "#{set_code}-set"
-          "#{set_name} Set Booster"
-        when "#{set_code}-collector"
-          "#{set_name} Collector Booster"
-        when "#{set_code}-jp"
-          "#{set_name} Japanese Draft Booster"
-        when "#{set_code}-set-jp"
-          "#{set_name} Japanese Set Booster"
-        when "#{set_code}-collector-jp"
-          "#{set_name} Japanese Collector Booster"
-        when "sir-arena-1"
-           "#{set_name} Arena Booster: Creature Type Terror"
-        when "sir-arena-2"
-           "#{set_name} Arena Booster: Fatal Flashback"
-        when "sir-arena-3"
-           "#{set_name} Arena Booster: Morbid And Macabre"
-        when "sir-arena-4"
-           "#{set_name} Arena Booster: Abominable All Stars"
-        when "ala-premium"
-           "Alara Premium Foil Booster"
-        else
-          warn "Unknown booster type: #{booster_code}"
-          "#{set_name} #{variant.capitalize} Booster"
-        end
-      end
     end
   end
 end
