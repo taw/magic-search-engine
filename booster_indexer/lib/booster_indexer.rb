@@ -3,6 +3,7 @@ require "json"
 require "pathname"
 require "pry"
 require "yaml"
+require "set"
 
 class Hash
   unless method_defined?(:except)
