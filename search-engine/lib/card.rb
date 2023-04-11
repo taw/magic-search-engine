@@ -59,6 +59,7 @@ class Card
     "Underdog",
     "Undergrowth",
     "Will of the council",
+    "Will of the Planeswalkers",
     # AFR flavor words
     "Acid Breath",
     "Animate Walking Statue",
