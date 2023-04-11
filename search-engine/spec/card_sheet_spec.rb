@@ -1,29 +1,33 @@
 describe CardSheet do
   include_context "db"
-  let(:factory) { LegacyCardSheetFactory.new(db) }
+  let(:factory) { CardSheetFactory.new(db) }
+  # Somewhat roundabout way of getting some representative card sheets
+  let(:m10_booster) { db.supported_booster_types["m10"] }
+  let(:m10_foil_booster) { m10_booster.packs.to_a.find{|k,v| v == 9}[0] }
+  let(:m10_sheets) { m10_foil_booster.sheets.map{|k,| [k.name, k] }.to_h }
 
-  %W[basic common uncommon rare mythic].each do |rarity|
+  %W[basic common uncommon].each do |rarity|
     it "rarity #{rarity}" do
       expected = db.search("e:m10 r:#{rarity}").printings
-      actual = factory.rarity("m10", rarity).elements.map(&:main_front)
-      expected.should match_array(actual)
-    end
-
-    it "cards" do
-      sheet = factory.rare_mythic("m10")
-      sheet.cards.size.should eq(15+53)
-      expected = db.search("e:m10 r>=rare").printings
-      actual = sheet.cards.map(&:main_front)
+      actual = m10_sheets[rarity].elements.map(&:main_front)
       expected.should match_array(actual)
     end
   end
 
+  it "cards" do
+    sheet = m10_sheets["rare_mythic"]
+    sheet.cards.size.should eq(15+53)
+    expected = db.search("e:m10 r>=rare").printings
+    actual = sheet.cards.map(&:main_front)
+    expected.should match_array(actual)
+  end
+
   context "#probabilities" do
     context "typical set" do
-      let(:rare_mythic_sheet) { factory.rare_mythic("m10") }
-      let(:uncommon_sheet) { factory.rarity("m10", "uncommon") }
-      let(:common_sheet) { factory.rarity("m10", "common") }
-      let(:basic_sheet) { factory.rarity("m10", "basic") }
+      let(:rare_mythic_sheet) { m10_sheets["rare_mythic"] }
+      let(:uncommon_sheet) { m10_sheets["uncommon"] }
+      let(:common_sheet) { m10_sheets["common"] }
+      let(:basic_sheet) { m10_sheets["basic"] }
       let(:mythic_card) { physical_card("e:m10 baneslayer angel") }
       let(:rare_card) { physical_card("e:m10 birds of paradise") }
       let(:uncommon_card) { physical_card("e:m10 acidic slime") }
@@ -40,7 +44,7 @@ describe CardSheet do
     end
 
     context "typical set - foil sheet" do
-      let(:foil_sheet) { factory.foil("m10") }
+      let(:foil_sheet) { m10_sheets["foil"] }
       let(:mythic_card) { physical_card("e:m10 baneslayer angel", true) }
       let(:rare_card) { physical_card("e:m10 birds of paradise", true) }
       let(:uncommon_card) { physical_card("e:m10 acidic slime", true) }
