@@ -17,6 +17,7 @@ sheets:
     query: "r:u -t:legendary r:u"
     count: 80
   nonlegendary_rare_mythic:
+    # 2*52 + 17 = 121 so the total is same as in usual 2*53 + 15 = 121 sets
     any:
     - query: "-t:legendary r:r"
       count: 52

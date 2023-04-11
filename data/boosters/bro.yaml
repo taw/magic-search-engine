@@ -1,6 +1,8 @@
 pack:
   common: 9
   common_foil_or_basic:
+  # Mech basic officially 1/4 rate
+  # Regular nonfoil basics are not in the packs
   - foil: 1
     chance: 4
   - common: 1
@@ -35,7 +37,9 @@ sheets:
       count: 15
       rate: 1*1
   foil:
-    # This is not complete
+    # Just treat BRO+BRR as one set for foiling purposes
+    # This is likely to be inaccurate, but we never get accurate foil rate information anyway
+    #
     # Do they get BRR 64+? Do BRO include non-mech basics?
     filter: "(e:bro is:baseset -number:268-277) or (e:brr -number:/z/)"
     foil: true

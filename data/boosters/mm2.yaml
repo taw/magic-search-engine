@@ -8,13 +8,3 @@ pack:
   uncommon: 3
   rare_mythic: 1
   dedicated_foil: 1
-sheets:
-  dedicated_foil:
-    foil: true
-    any:
-      - query: "r<=c"
-        chance: 10
-      - query: "r:u"
-        chance: 3
-      - use: rare_mythic
-        chance: 1

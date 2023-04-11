@@ -23,6 +23,9 @@ basic:
   query: "r:b"
 special:
   query: "r:s"
+# We don't have anywhere near reliable information
+# These numbers could be totally wrong. I base them on a million guesses by various internet commenters.
+# Maro says basic foils and common foils are equally likely [https://twitter.com/maro254/status/938830320094216192]
 foil:
   foil: true
   any:
@@ -283,3 +286,17 @@ dfc_mythic_with_showcase:
     rate: 2
   - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
     rate: 3
+# According to tehtmi from Collation Project
+# foil rate in regular sets is close to 12 / 5 / 3
+# but sets with dedicated slots have much worse 10 / 3 / 1 rate
+#
+# This rate guarantees same foil:nonfoil rate for every rarity
+dedicated_foil:
+  foil: true
+  any:
+    - query: "r<=c"
+      chance: 10
+    - query: "r:u"
+      chance: 3
+    - use: rare_mythic
+      chance: 1

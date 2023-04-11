@@ -1,32 +1,32 @@
 # 8 commons, 2 uncommons, 1 rare, 3 timeshifted commons, and 1 uncommon or rare timeshifted card.
 pack:
-- pc_common: 8
-  pc_uncommon: 2
-  pc_rare: 1
-  pc_cs_common: 3
-  pc_cs_uncommon_rare: 1
+- common: 8
+  uncommon: 2
+  rare: 1
+  color_shifted_common: 3
+  color_shifted_uncommon_rare: 1
   chance: 31
-- pc_common: 7
-  pc_uncommon: 2
-  pc_rare: 1
-  pc_cs_common: 3
-  pc_cs_uncommon_rare: 1
+- common: 7
+  uncommon: 2
+  rare: 1
+  color_shifted_common: 3
+  color_shifted_uncommon_rare: 1
   foil: 1
   chance: 9
 sheets:
-  pc_common:
+  common:
     query: "r:c -is:colorshifted"
     count: 40
-  pc_uncommon:
+  uncommon:
     query: "r:u -is:colorshifted"
     count: 40
-  pc_rare:
+  rare:
     query: "r:r -is:colorshifted"
     count: 40
-  pc_cs_common:
+  color_shifted_common:
     query: "r:c is:colorshifted"
     count: 20
-  pc_cs_uncommon_rare:
+  color_shifted_uncommon_rare:
     # Wiki says:
     # "a timeshifted uncommon being three times more likely than a rare
     # due to the relative numbers of each in the set"
