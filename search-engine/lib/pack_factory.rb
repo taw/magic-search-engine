@@ -88,11 +88,7 @@ class PackFactory
 
     pack.set = set
     pack.code = booster_code
-    if variant
-      pack.name = set.booster_variants[variant]
-    else
-      pack.name = set.name
-    end
+    pack.name = data["name"]&.gsub("{set_name}", set.name) || booster_code
     pack
   end
 end
