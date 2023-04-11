@@ -1,0 +1,22 @@
+# data from https://magic.wizards.com/en/news/feature/collecting-zendikar-rising-2020-09-01
+pack:
+  foil_basic: 1
+  foil_common: 5
+  foil_uncommon: 2
+  common_uncommon_showcase: 2
+  foil_common_uncommon_showcase: 1
+  extended_rare_mythic: 1
+  rare_mythic_showcase: 1
+  foil_rare_mythic: 1
+  foil_rare_mythic_showcase: 1
+sheets:
+  extended_rare_mythic:
+    filter: "e:znr frame:extendedart"
+    use: rare_mythic
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  foil_rare_mythic_showcase:
+    foil: true
+    filter: "e:znr promo:boosterfun -is:foilonly is:paper"
+    use: rare_mythic
