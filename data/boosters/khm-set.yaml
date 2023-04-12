@@ -1,0 +1,91 @@
+# data from https://wpn.wizards.com/en/news/inside-each-kaldheim-product
+pack:
+  land_slot:
+  - basic: 1
+    chance: 17
+  - foil_basic: 1
+    chance: 3
+  commons_and_uncommons:
+  - common: 5
+    uncommon: 1
+    chance: 350
+  - common: 4
+    uncommon: 2
+    chance: 400
+  - common: 3
+    uncommon: 3
+    chance: 125
+  - common: 2
+    uncommon: 4
+    chance: 70
+  - common: 1
+    uncommon: 5
+    chance: 35
+  - uncommon: 6
+    chance: 2
+  snow_showcase_theme: 1
+  wildcard: 1
+  rare_mythic: 1
+  foil_slot:
+  - foil_with_showcase: 1
+    chance: 3
+  - foil_with_showcase: 1
+    the_list: 1
+    chance: 1
+sheets:
+  common:
+    query: "r:c"
+  snow_showcase_theme: # Assuming standard 1/2/4/8 distribution for this slot
+    any:
+    - query: "r:c t:snow"
+      rate: 8
+    - query: "r:u t:snow"
+      rate: 4
+    - use: uncommon_showcase
+      rate: 4
+    - rawquery: "e:khm r:r number:374-393"
+      rate: 2
+  rare_mythic_with_showcase:
+    any:
+    - use: rare_with_showcase
+      chance: 2 * 64
+    - any:
+      - rawquery: "e:khm promo:boosterfun (Vorinclex or Valki) number:1-400"
+        count: 4
+        rate: 1
+      - rawquery: "e:khm r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Vorinclex or Valki)"
+        count: 14
+        rate: 2
+      - use: mythic_has_showcase
+        rate: 4
+      - use: mythic_has_no_showcase
+        rate: 6
+      chance: 20
+  wildcard:
+    any:
+    - use: common_with_showcase
+      chance: 700
+    - use: uncommon_with_showcase
+      chance: 175
+    - use: rare_mythic_with_showcase
+      chance: 125
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - use: common_showcase
+        rate: 1
+      - use: common_has_showcase
+        rate: 2
+      - use: common_has_no_showcase
+        rate: 3
+      - use: basic
+        rate: 3
+      chance: 12
+    - use: uncommon_with_showcase
+      chance: 5
+    - use: rare_mythic_with_showcase
+      chance: 3
+  the_list:
+    set: plist
+    code: "KHM"
