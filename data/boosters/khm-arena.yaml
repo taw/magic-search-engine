@@ -7,7 +7,7 @@ pack:
 sheets:
   basictype:
     any:
-    - query: "r:c (t:island or t:mountain or t:swamp or t:forest or t:plains)"
+    - query: "r:c is:basictype"
       count: 10
       rate: 5
     - query: "r:b"
@@ -15,4 +15,4 @@ sheets:
       rate: 7
   non_basictype_common:
     balanced: true
-    query: "r:c -t:island -t:mountain -t:swamp -t:forest -t:plains"
+    query: "r:c -is:basictype"
