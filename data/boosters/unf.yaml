@@ -34,7 +34,7 @@ sheets:
     query: "r:u -t:attraction"
   rare_mythic:
     any:
-    - query: "r:r -t:attraction -is:promo -t:island -t:plains -t:swamp -t:forest -t:mountain"
+    - query: "r:r -t:attraction -is:promo -is:basictype"
       rate: 2
     - query: "r:m -t:attraction"
       rate: 1
