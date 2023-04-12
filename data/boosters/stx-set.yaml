@@ -1,0 +1,115 @@
+# data from https://wpn.wizards.com/en/news/whats-inside-each-strixhaven-product
+pack:
+  land_slot:
+  - basic: 1
+    chance: 17
+  - foil_basic: 1
+    chance: 3
+  commons_and_uncommons:
+  - common: 5
+    uncommon: 1
+    chance: 350
+  - common: 4
+    uncommon: 2
+    chance: 400
+  - common: 3
+    uncommon: 3
+    chance: 125
+  - common: 2
+    uncommon: 4
+    chance: 70
+  - common: 1
+    uncommon: 5
+    chance: 35
+  - uncommon: 6
+    chance: 2
+  wildcard: 1
+  rare_mythic: 1
+  foil_with_showcase: 1
+  lesson: 1
+  finale:
+  - sta: 1
+    chance: 3
+  - sta: 1
+    the_list: 1
+    chance: 1
+sheets:
+  basic:
+    rawquery: "e:stx t:basic"
+  foil_basic:
+    foil: true
+    use: basic
+  common:
+    query: "r:c -t:lesson"
+  uncommon:
+    query: "r:u -t:lesson"
+  wildcard:
+    any:
+    - use: common
+      chance: 700
+    - any:
+      - use: uncommon
+        rate: 1
+      - rawquery: "e:sta r:u is:baseset"
+        rate: 1
+      chance: 175
+    - any:
+      - use: rare
+        rate: 6
+      - rawquery: "e:sta r:r is:baseset"
+        rate: 6
+      - use: mythic_showcase
+        rate: 1
+      - use: mythic_has_showcase
+        rate: 2
+      - use: mythic_has_no_showcase
+        rate: 3
+      - rawquery: "e:sta r:m is:baseset"
+        rate: 3
+      chance: 125
+  foil_with_showcase:
+    foil: true
+    any:
+    - use: foil_common_or_basic
+      chance: 12
+    - any:
+      - use: uncommon
+        rate: 1
+      - rawquery: "e:sta r:u is:baseset"
+        rate: 1
+      chance: 5
+    - any:
+      - use: rare
+        rate: 12
+      - rawquery: "e:sta r:r is:baseset"
+        rate: 12
+      - use: mythic_showcase
+        rate: 2
+      - use: mythic_has_showcase
+        rate: 4
+      - use: mythic_has_no_showcase
+        rate: 6
+      - rawquery: "e:sta r:m is:baseset"
+        rate: 6
+      chance: 3
+  sta:
+    # Each Draft Booster also has a dedicated slot with an uncommon (67%), rare (26.4%), or mythic rare (6.6%) Mystical Archive card.
+    # https://magic.wizards.com/en/articles/archive/feature/collecting-strixhaven-school-mages-2021-03-25
+    filter: "e:sta is:baseset"
+    any:
+      - query: "r:m"
+        count: 15
+        rate: 3
+      - query: "r:r"
+        count: 30
+        rate: 6
+      - query: "r:u"
+        count: 18
+        rate: 25
+  the_list:
+    set: plist
+    code: "STX"
+  lesson:
+    # ratio is guessed, using 1/2/4/8 ratio for now
+    filter: "e:stx t:lesson is:baseset"
+    use: base_1248_by_rarity
