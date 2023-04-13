@@ -1,0 +1,52 @@
+# data from https://magic.wizards.com/en/news/feature/adventures-forgotten-realms-product-overview-2021-06-29
+pack:
+  land_slot:
+  - basic: 1
+    chance: 17
+  - foil_basic: 1
+    chance: 3
+  commons_and_uncommons:
+  - common: 5
+    uncommon: 1
+    chance: 350
+  - common: 4
+    uncommon: 2
+    chance: 400
+  - common: 3
+    uncommon: 3
+    chance: 125
+  - common: 2
+    uncommon: 4
+    chance: 70
+  - common: 1
+    uncommon: 5
+    chance: 35
+  - uncommon: 6
+    chance: 2
+  common_uncommon_showcase: 1
+  wildcard: 2
+  rare_mythic: 1
+  extra:
+  - foil_with_showcase: 1
+    chance: 3
+  - foil_with_showcase: 1
+    the_list: 1
+    chance: 1
+sheets:
+  common:
+    query: "r:c"
+  wildcard:
+    any:
+    - use: common_with_showcase
+      chance: 700
+    - use: uncommon_with_showcase
+      chance: 175
+    - any:
+      - use: rare_with_showcase
+        chance: 60*2
+      - use: mythic_with_showcase
+        chance: 20
+      chance: 125
+  the_list:
+    set: plist
+    code: "AFR"
