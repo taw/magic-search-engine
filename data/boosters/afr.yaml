@@ -1,12 +1,17 @@
 pack:
-- basic: 1
-  common: 10
-  uncommon: 3
-  rare_mythic: 1
-  chance: 2
-- basic: 1
-  common: 9
-  uncommon: 3
-  rare_mythic: 1
-  foil: 1
-  chance: 1
+  basic: 1
+  foil_chance:
+  - common_with_showcase: 10
+    chance: 2
+  - common_with_showcase: 9
+    foil_with_showcase: 1
+    chance: 1
+  uncommon_with_showcase: 3
+  rare_mythic_with_showcase: 1
+sheets:
+  rare_mythic_with_showcase:
+    any:
+    - use: rare_with_showcase
+      chance: 60 * 2
+    - use: mythic_with_showcase
+      chance: 20
