@@ -1,0 +1,26 @@
+# data from https://magic.wizards.com/en/news/feature/adventures-forgotten-realms-product-overview-2021-06-29
+pack:
+  foil_basic: 1
+  foil_common: 4
+  foil_uncommon: 2
+  foil_rare_mythic: 1
+  extended_core_rare_mythic: 1
+  extended_commander_rare_mythic: 1
+  common_uncommon_showcase: 2
+  rare_mythic_showcase: 1
+  foil_common_uncommon_showcase: 1
+  foil_rare_mythic_alt_art: 1
+sheets:
+  extended_core_rare_mythic:
+    filter: "e:afr frame:extendedart"
+    use: rare_mythic
+  extended_commander_rare_mythic:
+    filter: "e:afc frame:extendedart"
+    use: rare_mythic
+  foil_rare_mythic_alt_art:
+    foil: true
+    filter: "e:afr promo:boosterfun"
+    use: rare_mythic
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
