@@ -1,0 +1,131 @@
+# data from https://magic.wizards.com/en/news/feature/collecting-modern-horizons-2-2021-05-21
+pack:
+  land_slot:
+  - basic: 1
+    chance: 17
+  - foil_basic: 1
+    chance: 3
+  commons_and_uncommons:
+  - common: 5
+    uncommon: 1
+    chance: 350
+  - common: 4
+    uncommon: 2
+    chance: 400
+  - common: 3
+    uncommon: 3
+    chance: 125
+  - common: 2
+    uncommon: 4
+    chance: 70
+  - common: 1
+    uncommon: 5
+    chance: 35
+  - uncommon: 6
+    chance: 2
+  wildcard: 1
+  rare_mythic_with_showcase: 1
+  reprint_to_modern: 1
+  common_uncommon_showcase: 1
+  finale:
+  - foil_with_showcase: 1
+    chance: 3
+  - foil_with_showcase: 1
+    the_list: 1
+    chance: 1
+sheets:
+  basic:
+    rawquery: "e:mh2 t:basic"
+  foil_basic:
+    foil: true
+    use: basic
+  common:
+    query: "r:c"
+  wildcard: # 30% chance for rare/mythic is known, but ratio of common/uncommon is guessed.
+    any:
+    - use: common
+      chance: 4
+    - use: uncommon
+      chance: 3
+    - any:
+      - use: rare_showcase
+        rate: 2
+      - use: rare_has_showcase
+        rate: 4
+      - use: rare_has_no_showcase
+        rate: 6
+      - use: mythic_showcase
+        rate: 1
+      - use: mythic_has_showcase
+        rate: 2
+      - use: mythic_has_no_showcase
+        rate: 3
+      chance: 3
+  rare_mythic_with_showcase:
+    any:
+    - use: rare_with_showcase
+      chance: 78
+    - use: mythic_with_showcase
+      chance: 24
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - use: common_showcase
+        rate: 1
+      - use: common_has_showcase
+        rate: 2
+      - use: common_has_no_showcase
+        rate: 3
+      - use: basic
+        rate: 3
+      chance: 12
+    - any:
+      - rawquery: "e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        rate: 5
+      - query: "r:u alt:(e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 10
+      - query: "r:u alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 13
+      - query: "r:u -alt:(e:mh2 promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 15
+      chance: 5
+    - any:
+      - use: rare_showcase
+        rate: 2
+      - use: rare_has_showcase
+        rate: 4
+      - use: rare_has_no_showcase
+        rate: 6
+      - use: mythic_showcase
+        rate: 1
+      - use: mythic_has_showcase
+        rate: 2
+      - use: mythic_has_no_showcase
+        rate: 3
+      chance: 3
+  reprint_to_modern: 
+    any:
+    - rawquery: "e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper is:reprint"
+      rate: 5
+    - query: "r:u alt:(e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      rate: 10
+    - query: "r:u alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      rate: 13
+    - query: "r:u -alt:(e:mh2 promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      rate: 15
+    - rawquery: "e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper (is:reprint -is:fetchland)"
+      rate: 2
+    - query: "r:r alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart) (is:reprint -is:fetchland)"
+      rate: 4
+    - query: "r:r -alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      rate: 6
+    - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper is:reprint"
+      rate: 1
+    - query: "r:m alt:(e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      rate: 2
+    - query: "r:m -alt:(e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      rate: 3
+  the_list:
+    set: plist
+    code: "MHTWO"

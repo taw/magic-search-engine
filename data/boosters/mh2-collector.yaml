@@ -1,0 +1,41 @@
+# data from https://magic.wizards.com/en/news/feature/collecting-modern-horizons-2-2021-05-21
+pack:
+  foil_common: 4
+  foil_uncommon: 2
+  sketch_common_uncommon: 1
+  extended_art_rare: 1
+  foil_boosterfun_common_uncommon: 2
+  boosterfun_rare_mythic: 1
+  foil_boosterfun_rare_mythic: 1
+  etched_basic: 1
+  etched_common_uncommon: 1
+  etched_rare_mythic: 1
+sheets:
+  sketch_common_uncommon:
+    filter: "e:mh2 frame:showcase"
+    use: common_uncommon
+  extended_art_rare:
+    rawquery: "e:mh2 frame:extendedart"
+  foil_boosterfun_common_uncommon:
+    foil: true
+    filter: "(e:mh2 or e:h1r) promo:boosterfun"
+    use: common_uncommon
+  boosterfun_rare_mythic:
+    filter: "e:mh2 (frame:showcase or is:borderless)"
+    use: rare_mythic
+  foil_boosterfun_rare_mythic:
+    foil: true
+    filter: "(e:mh2 or e:h1r) promo:boosterfun"
+    use: rare_mythic
+  etched_basic:
+    foil: true
+    rawquery: "e:mh2 t:basic"
+    count: 10
+  etched_common_uncommon:
+    foil: true
+    set: mh2
+    code: "CU"
+  etched_rare_mythic:
+    foil: true
+    set: mh2
+    code: "RM"
