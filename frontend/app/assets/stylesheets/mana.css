@@ -1,10 +1,23 @@
-/* Based on https://github.com/andrewgioia/Mana */
-/**
- * Global */
- @font-face {
+/*
+  Based on https://github.com/andrewgioia/Mana
+  with the following changes:
+  * renamed .ms -> .mana
+  * renamed tap -> t
+  * renamed untap -> q
+  * added loyalty-n
+*/
+
+@font-face {
   font-family: "Mana";
   src: url("../fonts/mana.eot?v=1.15.5");
   src: url("../fonts/mana.eot?#iefix&v=1.15.5") format("embedded-opentype"), url("../fonts/mana.woff?v=1.15.5") format("woff"), url("../fonts/mana.ttf?v=1.15.5") format("truetype"), url("../fonts/mana.svg?v=1.15.5#mana") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "MPlantin";
+  src: url("../fonts/mplantin.eot?v=1.15.5");
+  src: url("../fonts/mplantin.eot?#iefix&v=1.15.5") format("embedded-opentype"), url("../fonts/mplantin.woff?v=1.15.5") format("woff"), url("../fonts/mplantin.ttf?v=1.15.5") format("truetype"), url("../fonts/mplantin.svg?v=1.15.5#mplantin") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -21,8 +34,767 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/**
- * Mana cost styles */
+
+.mana-w::before {
+  content: "\e600";
+}
+.mana-w-original::before {
+  content: "\e997";
+}
+.mana-w-list::before {
+  content: "\e998";
+}
+.mana-u::before {
+  content: "\e601";
+}
+.mana-b::before {
+  content: "\e602";
+}
+.mana-r::before {
+  content: "\e603";
+}
+.mana-g::before {
+  content: "\e604";
+}
+.mana-0::before {
+  content: "\e605";
+}
+.mana-1::before {
+  content: "\e606";
+}
+.mana-2::before {
+  content: "\e607";
+}
+.mana-3::before {
+  content: "\e608";
+}
+.mana-4::before {
+  content: "\e609";
+}
+.mana-5::before {
+  content: "\e60a";
+}
+.mana-6::before {
+  content: "\e60b";
+}
+.mana-7::before {
+  content: "\e60c";
+}
+.mana-8::before {
+  content: "\e60d";
+}
+.mana-9::before {
+  content: "\e60e";
+}
+.mana-10::before {
+  content: "\e60f";
+}
+.mana-11::before {
+  content: "\e610";
+}
+.mana-12::before {
+  content: "\e611";
+}
+.mana-13::before {
+  content: "\e612";
+}
+.mana-14::before {
+  content: "\e613";
+}
+.mana-15::before {
+  content: "\e614";
+}
+.mana-16::before {
+  content: "\e62a";
+}
+.mana-17::before {
+  content: "\e62b";
+}
+.mana-18::before {
+  content: "\e62c";
+}
+.mana-19::before {
+  content: "\e62d";
+}
+.mana-20::before {
+  content: "\e62e";
+}
+.mana-x::before {
+  content: "\e615";
+}
+.mana-y::before {
+  content: "\e616";
+}
+.mana-z::before {
+  content: "\e617";
+}
+.mana-p::before {
+  content: "\e618";
+}
+.mana-s::before {
+  content: "\e619";
+}
+.mana-s-mtga::before {
+  content: "\e996";
+}
+.mana-c::before {
+  content: "\e904";
+}
+.mana-e::before, .mana-energy::before {
+  content: "\e907";
+}
+.mana-acorn::before {
+  content: "\e929";
+}
+.mana-ticket::before, .mana-tk::before {
+  content: "\e9c4";
+}
+.mana-1-2::before {
+  content: "\e902";
+}
+.mana-infinity::before {
+  content: "\e903";
+}
+.mana-t::before {
+  content: "\e61a";
+}
+.mana-q::before {
+  content: "\e61b";
+}
+.mana-t-alt::before {
+  content: "\e61c";
+}
+.mana-chaos::before {
+  content: "\e61d";
+}
+.mana-artifact::before {
+  content: "\e61e";
+}
+.mana-commander::before {
+  content: "\e9c6";
+}
+.mana-conspiracy::before {
+  content: "\e972";
+}
+.mana-creature::before {
+  content: "\e61f";
+}
+.mana-enchantment::before {
+  content: "\e620";
+}
+.mana-dungeon::before {
+  content: "\e995";
+}
+.mana-instant::before {
+  content: "\e621";
+}
+.mana-land::before {
+  content: "\e622";
+}
+.mana-phenomenon::before {
+  content: "\e96e";
+}
+.mana-plane::before {
+  content: "\e96f";
+}
+.mana-planeswalker::before {
+  content: "\e623";
+}
+.mana-rarity::before {
+  content: "\e96c";
+}
+.mana-saga::before {
+  content: "\e92a";
+}
+.mana-scheme::before {
+  content: "\e970";
+}
+.mana-sorcery::before {
+  content: "\e624";
+}
+.mana-token::before {
+  content: "\e96d";
+}
+.mana-tribal::before, .mana-multiple::before {
+  content: "\e925";
+}
+.mana-vanguard::before {
+  content: "\e971";
+}
+.mana-multicolor::before {
+  content: "\e985";
+}
+.mana-hand::before {
+  content: "\e9ca";
+}
+.mana-library::before {
+  content: "\e9cb";
+}
+.mana-graveyard::before {
+  content: "\e9cc";
+}
+.mana-exile::before {
+  content: "\e9cd";
+}
+.mana-wu::before, .mana-wb::before, .mana-rw::after, .mana-gw::after, .mana-2w::after {
+  content: "\e600";
+}
+.mana-ub::before, .mana-ur::before, .mana-wu::after, .mana-gu::after, .mana-2u::after {
+  content: "\e601";
+}
+.mana-br::before, .mana-bg::before, .mana-wb::after, .mana-ub::after, .mana-2b::after {
+  content: "\e602";
+}
+.mana-rw::before, .mana-rg::before, .mana-ur::after, .mana-br::after, .mana-2r::after {
+  content: "\e603";
+}
+.mana-gw::before, .mana-gu::before, .mana-bg::after, .mana-rg::after, .mana-2g::after {
+  content: "\e604";
+}
+.mana-2w::before, .mana-2u::before, .mana-2b::before, .mana-2r::before, .mana-2g::before {
+  content: "\e607";
+}
+.mana-wp::before, .mana-up::before, .mana-bp::before, .mana-rp::before, .mana-gp::before, .mana-wup::before, .mana-wup::after, .mana-wbp::before, .mana-wbp::after, .mana-ubp::before, .mana-ubp::after, .mana-urp::before, .mana-urp::after, .mana-brp::before, .mana-brp::after, .mana-bgp::before, .mana-bgp::after, .mana-rwp::before, .mana-rwp::after, .mana-rgp::before, .mana-rgp::after, .mana-gwp::before, .mana-gwp::after, .mana-gup::before, .mana-gup::after {
+  content: "\e618";
+}
+.mana-100::before {
+  content: "\e900";
+}
+.mana-1000000::before {
+  content: "\e901";
+}
+.mana-loyalty-up::before {
+  content: "\e627";
+}
+.mana-loyalty-down::before {
+  content: "\e625";
+}
+.mana-loyalty-zero::before {
+  content: "\e626";
+}
+.mana-loyalty-start::before {
+  content: "\e628";
+}
+.mana-level::before {
+  content: "\e9c7";
+}
+.mana-level::after {
+  content: "\e9c8";
+}
+.mana-dfc-day::before {
+  content: "\e906";
+}
+.mana-dfc-emrakul::before {
+  content: "\e90a";
+}
+.mana-dfc-enchantment::before {
+  content: "\e920";
+}
+.mana-dfc-ignite::before {
+  content: "\e908";
+}
+.mana-dfc-land::before {
+  content: "\e9c5";
+}
+.mana-dfc-lesson::before {
+  content: "\e98f";
+}
+.mana-dfc-modal-back::before {
+  content: "\e984";
+}
+.mana-dfc-modal-face::before {
+  content: "\e983";
+}
+.mana-dfc-moon::before {
+  content: "\e90b";
+}
+.mana-dfc-night::before {
+  content: "\e905";
+}
+.mana-dfc-saga::before {
+  content: "\e9cf";
+}
+.mana-dfc-saga-creature::before {
+  content: "\e9d0";
+}
+.mana-dfc-spark::before {
+  content: "\e909";
+}
+.mana-flashback::before {
+  content: "\e629";
+}
+.mana-power::before {
+  content: "\e921";
+}
+.mana-toughness::before {
+  content: "\e922";
+}
+.mana-artist-brush::before {
+  content: "\e923";
+}
+.mana-artist-nib::before {
+  content: "\e924";
+}
+.mana-guild-azorius::before {
+  content: "\e90c";
+}
+.mana-guild-boros::before {
+  content: "\e90d";
+}
+.mana-guild-dimir::before {
+  content: "\e90e";
+}
+.mana-guild-golgari::before {
+  content: "\e90f";
+}
+.mana-guild-gruul::before {
+  content: "\e910";
+}
+.mana-guild-izzet::before {
+  content: "\e911";
+}
+.mana-guild-orzhov::before {
+  content: "\e912";
+}
+.mana-guild-rakdos::before {
+  content: "\e913";
+}
+.mana-guild-selesnya::before {
+  content: "\e914";
+}
+.mana-guild-simic::before {
+  content: "\e915";
+}
+.mana-clan-abzan::before {
+  content: "\e916";
+}
+.mana-clan-jeskai::before {
+  content: "\e917";
+}
+.mana-clan-mardu::before {
+  content: "\e918";
+}
+.mana-clan-sultai::before {
+  content: "\e919";
+}
+.mana-clan-temur::before {
+  content: "\e91a";
+}
+.mana-clan-atarka::before {
+  content: "\e91b";
+}
+.mana-clan-dromoka::before {
+  content: "\e91c";
+}
+.mana-clan-kolaghan::before {
+  content: "\e91d";
+}
+.mana-clan-ojutai::before {
+  content: "\e91e";
+}
+.mana-clan-silumgar::before {
+  content: "\e91f";
+}
+.mana-polis-setessa::before {
+  content: "\e926";
+}
+.mana-polis-akros::before {
+  content: "\e927";
+}
+.mana-polis-meletis::before {
+  content: "\e928";
+}
+.mana-school-lorehold::before {
+  content: "\e99a";
+}
+.mana-school-prismari::before {
+  content: "\e99c";
+}
+.mana-school-quandrix::before {
+  content: "\e99e";
+}
+.mana-school-silverquill::before {
+  content: "\e9a0";
+}
+.mana-school-witherbloom::before {
+  content: "\e9a2";
+}
+.mana-counter-arrow::before {
+  content: "\e92b";
+}
+.mana-counter-brick::before {
+  content: "\e92c";
+}
+.mana-counter-charge::before {
+  content: "\e92d";
+}
+.mana-counter-devotion::before {
+  content: "\e92e";
+}
+.mana-counter-doom::before {
+  content: "\e92f";
+}
+.mana-counter-echo::before {
+  content: "\e930";
+}
+.mana-counter-flame::before {
+  content: "\e931";
+}
+.mana-counter-flood::before {
+  content: "\e932";
+}
+.mana-counter-fungus::before {
+  content: "\e933";
+}
+.mana-counter-gold::before {
+  content: "\e934";
+}
+.mana-counter-ki::before {
+  content: "\e935";
+}
+.mana-counter-lore::before {
+  content: "\e936";
+}
+.mana-counter-loyalty::before {
+  content: "\e937";
+}
+.mana-counter-mining::before {
+  content: "\e938";
+}
+.mana-counter-minus::before {
+  content: "\e939";
+}
+.mana-counter-minus-uneven::before {
+  content: "\e943";
+}
+.mana-counter-muster::before {
+  content: "\e93a";
+}
+.mana-counter-paw::before {
+  content: "\e93b";
+}
+.mana-counter-pin::before {
+  content: "\e93c";
+}
+.mana-counter-plus::before {
+  content: "\e93d";
+}
+.mana-counter-plus-uneven::before {
+  content: "\e944";
+}
+.mana-counter-scream::before {
+  content: "\e93e";
+}
+.mana-counter-skeleton::before {
+  content: "\e93f";
+}
+.mana-counter-skull::before {
+  content: "\e940";
+}
+.mana-counter-slime::before {
+  content: "\e941";
+}
+.mana-counter-time::before {
+  content: "\e942";
+}
+.mana-counter-verse::before {
+  content: "\e945";
+}
+.mana-counter-vortex::before {
+  content: "\e946";
+}
+.mana-counter-shield::before {
+  content: "\e9c3";
+}
+.mana-counter-stun::before {
+  content: "\e9c2";
+}
+.mana-ability-activated::before, .mana-ability-crew::before, .mana-ability-cycling::before {
+  content: "\e947";
+}
+.mana-ability-adamant::before {
+  content: "\e974";
+}
+.mana-ability-adapt::before {
+  content: "\e975";
+}
+.mana-ability-addendum::before {
+  content: "\e976";
+}
+.mana-ability-adventure::before {
+  content: "\e948";
+}
+.mana-ability-afflict::before {
+  content: "\e977";
+}
+.mana-ability-afterlife::before {
+  content: "\e978";
+}
+.mana-ability-aftermath::before {
+  content: "\e979";
+}
+.mana-ability-alliance::before {
+  content: "\e9b5";
+}
+.mana-ability-amass::before {
+  content: "\e97a";
+}
+.mana-ability-ascend::before {
+  content: "\e94a";
+}
+.mana-ability-blitz::before {
+  content: "\e9b4";
+}
+.mana-ability-boast::before {
+  content: "\e991";
+}
+.mana-ability-casualty::before {
+  content: "\e9b7";
+}
+.mana-ability-changeling::before {
+  content: "\e9a6";
+}
+.mana-ability-channel::before {
+  content: "\e9b1";
+}
+.mana-ability-cleave::before {
+  content: "\e9ad";
+}
+.mana-ability-combat-condition::before {
+  content: "\e9ce";
+}
+.mana-ability-companion::before {
+  content: "\e97b";
+}
+.mana-ability-constellation::before {
+  content: "\e97c";
+}
+.mana-ability-convoke::before {
+  content: "\e949";
+}
+.mana-ability-corrupted::before {
+  content: "\e9c0";
+}
+.mana-ability-coven::before {
+  content: "\e9aa";
+}
+.mana-ability-d20::before {
+  content: "\e999";
+}
+.mana-ability-day-night::before {
+  content: "\e9a8";
+}
+.mana-ability-daybound-nightbound::before {
+  content: "\e9a9";
+}
+.mana-ability-deathtouch::before {
+  content: "\e94b";
+}
+.mana-ability-decayed::before {
+  content: "\e9ac";
+}
+.mana-ability-defender::before {
+  content: "\e94c";
+}
+.mana-ability-devotion::before {
+  content: "\e97d";
+}
+.mana-ability-disturb::before {
+  content: "\e9ae";
+}
+.mana-ability-domain::before {
+  content: "\e9a7";
+}
+.mana-ability-double-strike::before {
+  content: "\e94d";
+}
+.mana-ability-dungeon::before {
+  content: "\e995";
+}
+.mana-ability-embalm::before {
+  content: "\e97e";
+}
+.mana-ability-enlist::before {
+  content: "\e9ba";
+}
+.mana-ability-enrage::before {
+  content: "\e94e";
+}
+.mana-ability-escape::before {
+  content: "\e969";
+}
+.mana-ability-eternalize::before {
+  content: "\e97f";
+}
+.mana-ability-exploit::before {
+  content: "\e9af";
+}
+.mana-ability-explore::before {
+  content: "\e94f";
+}
+.mana-ability-fabricate::before {
+  content: "\e9a5";
+}
+.mana-ability-first-strike::before {
+  content: "\e950";
+}
+.mana-ability-flash::before {
+  content: "\e951";
+}
+.mana-ability-flying::before {
+  content: "\e952";
+}
+.mana-ability-for-mirrodin::before {
+  content: "\e9c1";
+}
+.mana-ability-foretell::before {
+  content: "\e990";
+}
+.mana-ability-goad::before {
+  content: "\e9c9";
+}
+.mana-ability-haste::before {
+  content: "\e953";
+}
+.mana-ability-hexproof::before {
+  content: "\e954";
+}
+.mana-ability-hexproof-black::before {
+  content: "\e955";
+}
+.mana-ability-hexproof-blue::before {
+  content: "\e956";
+}
+.mana-ability-hexproof-green::before {
+  content: "\e957";
+}
+.mana-ability-hexproof-red::before {
+  content: "\e958";
+}
+.mana-ability-hexproof-white::before {
+  content: "\e959";
+}
+.mana-ability-hideaway::before {
+  content: "\e9b8";
+}
+.mana-ability-indestructible::before {
+  content: "\e95a";
+}
+.mana-ability-investigate::before {
+  content: "\e9ab";
+}
+.mana-ability-jumpstart::before {
+  content: "\e95b";
+}
+.mana-ability-kicker::before {
+  content: "\e989";
+}
+.mana-ability-landfall::before {
+  content: "\e988";
+}
+.mana-ability-learn::before {
+  content: "\e994";
+}
+.mana-ability-lifelink::before {
+  content: "\e95c";
+}
+.mana-ability-magecraft::before {
+  content: "\e993";
+}
+.mana-ability-meld::before {
+  content: "\e9bd";
+}
+.mana-ability-menace::before {
+  content: "\e95d";
+}
+.mana-ability-mentor::before {
+  content: "\e95e";
+}
+.mana-ability-mutate::before {
+  content: "\e980";
+}
+.mana-ability-ninjutsu::before {
+  content: "\e9b2";
+}
+.mana-ability-obscura::before {
+  content: "\e9b6";
+}
+.mana-ability-party::before {
+  content: "\e987";
+}
+.mana-ability-phyrexian::before {
+  content: "\e618";
+}
+.mana-ability-proliferate::before {
+  content: "\e981";
+}
+.mana-ability-prototype::before {
+  content: "\e9be";
+}
+.mana-ability-prowess::before {
+  content: "\e982";
+}
+.mana-ability-raid::before {
+  content: "\e95f";
+}
+.mana-ability-reach::before {
+  content: "\e960";
+}
+.mana-ability-read-ahead::before {
+  content: "\e9b9";
+}
+.mana-ability-reconfigure::before {
+  content: "\e9b3";
+}
+.mana-ability-revolt::before {
+  content: "\e961";
+}
+.mana-ability-riot::before {
+  content: "\e973";
+}
+.mana-ability-specialize::before {
+  content: "\e9bb";
+}
+.mana-ability-spectacle::before {
+  content: "\e96b";
+}
+.mana-ability-static::before, .mana-ability-enchant::before, .mana-ability-improvise::before {
+  content: "\e962";
+}
+.mana-ability-summoning-sickness::before {
+  content: "\e96a";
+}
+.mana-ability-surveil::before {
+  content: "\e963";
+}
+.mana-ability-toxic::before {
+  content: "\e9bf";
+}
+.mana-ability-training::before {
+  content: "\e9b0";
+}
+.mana-ability-trample::before {
+  content: "\e964";
+}
+.mana-ability-transform::before {
+  content: "\e965";
+}
+.mana-ability-triggered::before {
+  content: "\e966";
+}
+.mana-ability-undergrowth::before {
+  content: "\e967";
+}
+.mana-ability-unearth::before {
+  content: "\e9bc";
+}
+.mana-ability-vigilance::before {
+  content: "\e968";
+}
+.mana-ability-ward::before {
+  content: "\e992";
+}
+
 .mana-cost {
   background-color: #beb9b2;
   border-radius: 1em;
@@ -33,25 +805,37 @@
   line-height: 1.35em;
   text-align: center;
 }
-.mana-cost.mana-w,
-.mana-cost.mana-wp {
-  background-color: #F0F2C0;
+.mana-cost.mana-w, .mana-cost.mana-wp {
+  background-color: #f0f2c0;
 }
-.mana-cost.mana-u,
-.mana-cost.mana-up {
-  background-color: #B5CDE3;
+.mana-cost.mana-u, .mana-cost.mana-up {
+  background-color: #b5cde3;
 }
-.mana-cost.mana-b,
-.mana-cost.mana-bp {
-  background-color: #ACA29A;
+.mana-cost.mana-b, .mana-cost.mana-bp {
+  background-color: #aca29a;
 }
-.mana-cost.mana-r,
-.mana-cost.mana-rp {
-  background-color: #DB8664;
+.mana-cost.mana-r, .mana-cost.mana-rp {
+  background-color: #db8664;
 }
-.mana-cost.mana-g,
-.mana-cost.mana-gp {
-  background-color: #93B483;
+.mana-cost.mana-g, .mana-cost.mana-gp {
+  background-color: #93b483;
+}
+.mana-cost.mana-wu, .mana-cost.mana-wb, .mana-cost.mana-ub, .mana-cost.mana-ur, .mana-cost.mana-br, .mana-cost.mana-bg, .mana-cost.mana-rw, .mana-cost.mana-rg, .mana-cost.mana-gw, .mana-cost.mana-gu, .mana-cost.mana-2w, .mana-cost.mana-2u, .mana-cost.mana-2b, .mana-cost.mana-2r, .mana-cost.mana-2g, .mana-cost.mana-wup, .mana-cost.mana-wbp, .mana-cost.mana-ubp, .mana-cost.mana-urp, .mana-cost.mana-brp, .mana-cost.mana-bgp, .mana-cost.mana-rwp, .mana-cost.mana-rgp, .mana-cost.mana-gwp, .mana-cost.mana-gup {
+  position: relative;
+  width: 1.3em;
+  height: 1.3em;
+}
+.mana-cost.mana-wu::before, .mana-cost.mana-wu::after, .mana-cost.mana-wb::before, .mana-cost.mana-wb::after, .mana-cost.mana-ub::before, .mana-cost.mana-ub::after, .mana-cost.mana-ur::before, .mana-cost.mana-ur::after, .mana-cost.mana-br::before, .mana-cost.mana-br::after, .mana-cost.mana-bg::before, .mana-cost.mana-bg::after, .mana-cost.mana-rw::before, .mana-cost.mana-rw::after, .mana-cost.mana-rg::before, .mana-cost.mana-rg::after, .mana-cost.mana-gw::before, .mana-cost.mana-gw::after, .mana-cost.mana-gu::before, .mana-cost.mana-gu::after, .mana-cost.mana-2w::before, .mana-cost.mana-2w::after, .mana-cost.mana-2u::before, .mana-cost.mana-2u::after, .mana-cost.mana-2b::before, .mana-cost.mana-2b::after, .mana-cost.mana-2r::before, .mana-cost.mana-2r::after, .mana-cost.mana-2g::before, .mana-cost.mana-2g::after, .mana-cost.mana-wup::before, .mana-cost.mana-wup::after, .mana-cost.mana-wbp::before, .mana-cost.mana-wbp::after, .mana-cost.mana-ubp::before, .mana-cost.mana-ubp::after, .mana-cost.mana-urp::before, .mana-cost.mana-urp::after, .mana-cost.mana-brp::before, .mana-cost.mana-brp::after, .mana-cost.mana-bgp::before, .mana-cost.mana-bgp::after, .mana-cost.mana-rwp::before, .mana-cost.mana-rwp::after, .mana-cost.mana-rgp::before, .mana-cost.mana-rgp::after, .mana-cost.mana-gwp::before, .mana-cost.mana-gwp::after, .mana-cost.mana-gup::before, .mana-cost.mana-gup::after {
+  font-size: 0.55em !important;
+  position: absolute;
+}
+.mana-cost.mana-wu::before, .mana-cost.mana-wb::before, .mana-cost.mana-ub::before, .mana-cost.mana-ur::before, .mana-cost.mana-br::before, .mana-cost.mana-bg::before, .mana-cost.mana-rw::before, .mana-cost.mana-rg::before, .mana-cost.mana-gw::before, .mana-cost.mana-gu::before, .mana-cost.mana-2w::before, .mana-cost.mana-2u::before, .mana-cost.mana-2b::before, .mana-cost.mana-2r::before, .mana-cost.mana-2g::before, .mana-cost.mana-wup::before, .mana-cost.mana-wbp::before, .mana-cost.mana-ubp::before, .mana-cost.mana-urp::before, .mana-cost.mana-brp::before, .mana-cost.mana-bgp::before, .mana-cost.mana-rwp::before, .mana-cost.mana-rgp::before, .mana-cost.mana-gwp::before, .mana-cost.mana-gup::before {
+  top: -0.38em;
+  left: 0.28em;
+}
+.mana-cost.mana-wu::after, .mana-cost.mana-wb::after, .mana-cost.mana-ub::after, .mana-cost.mana-ur::after, .mana-cost.mana-br::after, .mana-cost.mana-bg::after, .mana-cost.mana-rw::after, .mana-cost.mana-rg::after, .mana-cost.mana-gw::after, .mana-cost.mana-gu::after, .mana-cost.mana-2w::after, .mana-cost.mana-2u::after, .mana-cost.mana-2b::after, .mana-cost.mana-2r::after, .mana-cost.mana-2g::after, .mana-cost.mana-wup::after, .mana-cost.mana-wbp::after, .mana-cost.mana-ubp::after, .mana-cost.mana-urp::after, .mana-cost.mana-brp::after, .mana-cost.mana-bgp::after, .mana-cost.mana-rwp::after, .mana-cost.mana-rgp::after, .mana-cost.mana-gwp::after, .mana-cost.mana-gup::after {
+  top: 0.5em;
+  left: 1em;
 }
 .mana-cost.mana-wu, .mana-cost.mana-wup {
   background: #edf2b0;
@@ -61,7 +845,7 @@
   background: -o-linear-gradient(-45deg, #edf2b0 0%, #edf2b0 50%, #a6c1dd 50%, #a6c1dd 100%);
   background: -ms-linear-gradient(-45deg, #edf2b0 0%, #edf2b0 50%, #a6c1dd 50%, #a6c1dd 100%);
   background: linear-gradient(135deg, #edf2b0 0%, #edf2b0 50%, #a6c1dd 50%, #a6c1dd 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#edf2b0', endColorstr='#a6c1dd', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#edf2b0", endColorstr="#a6c1dd",GradientType=1 );
 }
 .mana-cost.mana-wb, .mana-cost.mana-wbp {
   background: #edf2b0;
@@ -71,7 +855,7 @@
   background: -o-linear-gradient(-45deg, #edf2b0 0%, #edf2b0 50%, #9c9188 50%, #9c9188 100%);
   background: -ms-linear-gradient(-45deg, #edf2b0 0%, #edf2b0 50%, #9c9188 50%, #9c9188 100%);
   background: linear-gradient(135deg, #edf2b0 0%, #edf2b0 50%, #9c9188 50%, #9c9188 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#edf2b0', endColorstr='#9c9188', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#edf2b0", endColorstr="#9c9188",GradientType=1 );
 }
 .mana-cost.mana-ub, .mana-cost.mana-ubp {
   background: #a6c1dd;
@@ -81,7 +865,7 @@
   background: -o-linear-gradient(-45deg, #a6c1dd 0%, #a6c1dd 50%, #9c9188 50%, #9c9188 100%);
   background: -ms-linear-gradient(-45deg, #a6c1dd 0%, #a6c1dd 50%, #9c9188 50%, #9c9188 100%);
   background: linear-gradient(135deg, #a6c1dd 0%, #a6c1dd 50%, #9c9188 50%, #9c9188 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6c1dd', endColorstr='#9c9188', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#a6c1dd", endColorstr="#9c9188",GradientType=1 );
 }
 .mana-cost.mana-ur, .mana-cost.mana-urp {
   background: #a6c1dd;
@@ -91,7 +875,7 @@
   background: -o-linear-gradient(-45deg, #a6c1dd 0%, #a6c1dd 50%, #db8664 50%, #db8664 100%);
   background: -ms-linear-gradient(-45deg, #a6c1dd 0%, #a6c1dd 50%, #db8664 50%, #db8664 100%);
   background: linear-gradient(135deg, #a6c1dd 0%, #a6c1dd 50%, #db8664 50%, #db8664 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6c1dd', endColorstr='#db8664', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#a6c1dd", endColorstr="#db8664",GradientType=1 );
 }
 .mana-cost.mana-br, .mana-cost.mana-brp {
   background: #aca29a;
@@ -101,7 +885,7 @@
   background: -o-linear-gradient(-45deg, #aca29a 0%, #aca29a 50%, #db8664 50%, #db8664 100%);
   background: -ms-linear-gradient(-45deg, #aca29a 0%, #aca29a 50%, #db8664 50%, #db8664 100%);
   background: linear-gradient(135deg, #aca29a 0%, #aca29a 50%, #db8664 50%, #db8664 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aca29a', endColorstr='#db8664', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#aca29a", endColorstr="#db8664",GradientType=1 );
 }
 .mana-cost.mana-bg, .mana-cost.mana-bgp {
   background: #aca29a;
@@ -111,7 +895,7 @@
   background: -o-linear-gradient(-45deg, #aca29a 0%, #aca29a 50%, #93b483 50%, #93b483 100%);
   background: -ms-linear-gradient(-45deg, #aca29a 0%, #aca29a 50%, #93b483 50%, #93b483 100%);
   background: linear-gradient(135deg, #aca29a 0%, #aca29a 50%, #93b483 50%, #93b483 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aca29a', endColorstr='#93b483', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#aca29a", endColorstr="#93b483",GradientType=1 );
 }
 .mana-cost.mana-rw, .mana-cost.mana-rwp {
   background: #db8664;
@@ -121,7 +905,7 @@
   background: -o-linear-gradient(-45deg, #db8664 0%, #db8664 50%, #edf2b0 50%, #edf2b0 100%);
   background: -ms-linear-gradient(-45deg, #db8664 0%, #db8664 50%, #edf2b0 50%, #edf2b0 100%);
   background: linear-gradient(135deg, #db8664 0%, #db8664 50%, #edf2b0 50%, #edf2b0 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#db8664', endColorstr='#edf2b0', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#db8664", endColorstr="#edf2b0",GradientType=1 );
 }
 .mana-cost.mana-rg, .mana-cost.mana-rgp {
   background: #db8664;
@@ -131,7 +915,7 @@
   background: -o-linear-gradient(-45deg, #db8664 0%, #db8664 50%, #93b483 50%, #93b483 100%);
   background: -ms-linear-gradient(-45deg, #db8664 0%, #db8664 50%, #93b483 50%, #93b483 100%);
   background: linear-gradient(135deg, #db8664 0%, #db8664 50%, #93b483 50%, #93b483 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#db8664', endColorstr='#93b483', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#db8664", endColorstr="#93b483",GradientType=1 );
 }
 .mana-cost.mana-gw, .mana-cost.mana-gwp {
   background: #93b483;
@@ -141,7 +925,7 @@
   background: -o-linear-gradient(-45deg, #93b483 0%, #93b483 50%, #edf2b0 50%, #edf2b0 100%);
   background: -ms-linear-gradient(-45deg, #93b483 0%, #93b483 50%, #edf2b0 50%, #edf2b0 100%);
   background: linear-gradient(135deg, #93b483 0%, #93b483 50%, #edf2b0 50%, #edf2b0 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#93b483', endColorstr='#edf2b0', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#93b483", endColorstr="#edf2b0",GradientType=1 );
 }
 .mana-cost.mana-gu, .mana-cost.mana-gup {
   background: #93b483;
@@ -151,7 +935,7 @@
   background: -o-linear-gradient(-45deg, #93b483 0%, #93b483 50%, #b5cde3 50%, #b5cde3 100%);
   background: -ms-linear-gradient(-45deg, #93b483 0%, #93b483 50%, #b5cde3 50%, #b5cde3 100%);
   background: linear-gradient(135deg, #93b483 0%, #93b483 50%, #b5cde3 50%, #b5cde3 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#93b483', endColorstr='#b5cde3', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#93b483", endColorstr="#b5cde3",GradientType=1 );
 }
 .mana-cost.mana-2w {
   background: #beb9b2;
@@ -161,7 +945,7 @@
   background: -o-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #edf2b0 50%, #edf2b0 100%);
   background: -ms-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #edf2b0 50%, #edf2b0 100%);
   background: linear-gradient(135deg, #beb9b2 0%, #beb9b2 50%, #edf2b0 50%, #edf2b0 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#beb9b2', endColorstr='#edf2b0', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#beb9b2", endColorstr="#edf2b0",GradientType=1 );
 }
 .mana-cost.mana-2u {
   background: #beb9b2;
@@ -171,7 +955,7 @@
   background: -o-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #b5cde3 50%, #b5cde3 100%);
   background: -ms-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #b5cde3 50%, #b5cde3 100%);
   background: linear-gradient(135deg, #beb9b2 0%, #beb9b2 50%, #b5cde3 50%, #b5cde3 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#beb9b2', endColorstr='#b5cde3', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#beb9b2", endColorstr="#b5cde3",GradientType=1 );
 }
 .mana-cost.mana-2b {
   background: #beb9b2;
@@ -181,7 +965,7 @@
   background: -o-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #9c9188 50%, #9c9188 100%);
   background: -ms-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #9c9188 50%, #9c9188 100%);
   background: linear-gradient(135deg, #beb9b2 0%, #beb9b2 50%, #9c9188 50%, #9c9188 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#beb9b2', endColorstr='#9c9188', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#beb9b2", endColorstr="#9c9188",GradientType=1 );
 }
 .mana-cost.mana-2r {
   background: #beb9b2;
@@ -191,7 +975,7 @@
   background: -o-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #db8664 50%, #db8664 100%);
   background: -ms-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #db8664 50%, #db8664 100%);
   background: linear-gradient(135deg, #beb9b2 0%, #beb9b2 50%, #db8664 50%, #db8664 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#beb9b2', endColorstr='#db8664', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#beb9b2", endColorstr="#db8664",GradientType=1 );
 }
 .mana-cost.mana-2g {
   background: #beb9b2;
@@ -201,28 +985,23 @@
   background: -o-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #93b483 50%, #93b483 100%);
   background: -ms-linear-gradient(-45deg, #beb9b2 0%, #beb9b2 50%, #93b483 50%, #93b483 100%);
   background: linear-gradient(135deg, #beb9b2 0%, #beb9b2 50%, #93b483 50%, #93b483 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#beb9b2', endColorstr='#93b483', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#beb9b2", endColorstr="#93b483",GradientType=1 );
 }
-.mana-cost.mana-p:before,
-.mana-cost.mana-wp:before,
-.mana-cost.mana-up:before,
-.mana-cost.mana-bp:before,
-.mana-cost.mana-rp:before,
-.mana-cost.mana-gp:before {
+.mana-cost.mana-p::before, .mana-cost.mana-wp::before, .mana-cost.mana-up::before, .mana-cost.mana-bp::before, .mana-cost.mana-rp::before, .mana-cost.mana-gp::before, .mana-cost.mana-wup::before, .mana-cost.mana-wbp::before, .mana-cost.mana-ubp::before, .mana-cost.mana-urp::before, .mana-cost.mana-brp::before, .mana-cost.mana-bgp::before, .mana-cost.mana-rwp::before, .mana-cost.mana-rgp::before, .mana-cost.mana-gwp::before, .mana-cost.mana-gup::before {
   display: inline-block;
   -moz-transform: scale(1.2, 1.2);
   -webkit-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
 }
-.mana-cost.mana-tap-alt:before {
+.mana-cost.mana-t-alt::before {
   display: inline-block;
   -moz-transform: scale(1.2, 1.2);
   -webkit-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
-  padding-left: .06em;
-  padding-bottom: 0.10em;
+  padding-left: 0.06em;
+  padding-bottom: 0.1em;
 }
-.mana-cost.mana-s:before {
+.mana-cost.mana-s::before {
   color: #fff;
   -webkit-text-stroke: 2px #fff;
   font-size: 0.85em;
@@ -230,12 +1009,15 @@
   position: relative;
   display: inline-block;
 }
-.mana-cost.mana-s:after {
+.mana-cost.mana-s::after {
   content: "\e619";
   position: absolute;
   color: #333;
   margin-left: -0.9em;
   font-size: 1.1em;
+}
+.mana-cost.mana-s-mtga::before {
+  color: #fff;
 }
 .mana-cost.mana-q {
   background-color: #111;
@@ -247,425 +1029,592 @@
 .mana-cost.mana-shadow.mana-q {
   box-shadow: -0.06em 0.07em 0 #fff, 0 0.06em 0 #fff;
 }
-/**
- * Split costs */
-.mana-2b,.mana-2g,.mana-2r,.mana-2u,.mana-2w,.mana-bg,.mana-br,.mana-gu,.mana-gw,.mana-rg,.mana-rw,.mana-ub,.mana-ur,.mana-wb,.mana-wu,
-.mana-wup,.mana-wbp,.mana-ubp,.mana-urp,.mana-brp,.mana-bgp,.mana-rwp,.mana-rgp,.mana-gwp,.mana-gup
-{
+
+.mana-split {
   position: relative;
   width: 1.3em;
   height: 1.3em;
 }
-.mana-2b:before,.mana-2g:before,.mana-2r:before,.mana-2u:before,.mana-2w:before,.mana-bg:before,.mana-br:before,.mana-gu:before,.mana-gw:before,.mana-rg:before,.mana-rw:before,.mana-ub:before,.mana-ur:before,.mana-wb:before,.mana-wu:before,
-.mana-wup::before,.mana-wbp::before,.mana-ubp::before,.mana-urp::before,.mana-brp::before,.mana-bgp::before,.mana-rwp::before,.mana-rgp::before,.mana-gwp::before,.mana-gup::before
- {
+
+.mana-split::before,
+.mana-split::after {
   font-size: 0.55em !important;
   position: absolute;
+}
+
+.mana-split::before {
   top: -0.38em;
   left: 0.28em;
 }
-.mana-2b:after,.mana-2g:after,.mana-2r:after,.mana-2u:after,.mana-2w:after,.mana-bg:after,.mana-br:after,.mana-gu:after,.mana-gw:after,.mana-rg:after,.mana-rw:after,.mana-ub:after,.mana-ur:after,.mana-wb:after,.mana-wu:after,
-.mana-wup::after,.mana-wbp::after,.mana-ubp::after,.mana-urp::after,.mana-brp::after,.mana-bgp::after,.mana-rwp::after,.mana-rgp::after,.mana-gwp::after,.mana-gup::after
-{
-  font-size: 0.55em !important;
-  position: absolute;
+
+.mana-split::after {
   top: 0.5em;
-  left: 1.0em;
+  left: 1em;
 }
-/**
- * Half costs */
-.mana-half {
-  width: .675em;
+
+span.mana-half {
+  width: 0.675em;
   overflow: hidden;
   display: inline-block;
-  margin-left: .675em;
+  margin-left: 0.675em;
 }
-.mana-half > .mana-cost {
+span.mana-half > .mana-cost {
   margin-left: -0.675em;
 }
-/**
- * Un-set costs */
+
+.mana-half {
+  width: 0.675em;
+  margin-left: 0.675em;
+  overflow: hidden;
+  border-radius: 0 1em 1em 0;
+}
+.mana-half::before {
+  margin-left: -0.65em;
+}
+
 .mana-100 {
   width: 2.4em;
 }
+
 .mana-1000000 {
   width: 5.4em;
 }
+
 /**
- * Planeswalker symbols */
-.mana-loyalty-up,
-.mana-loyalty-down,
-.mana-loyalty-zero,
-.mana-loyalty-start {
+ * planeswalker and other loyalty symbols */
+.mana-loyalty-up, .mana-loyalty-down, .mana-loyalty-zero, .mana-loyalty-start {
   color: #111;
   font-size: 1.5em;
   position: relative;
   text-align: center;
-  font-weight: bold; /* visibility fix */
 }
 .mana-loyalty-start {
-  font-size: 2.0em;
+  font-size: 2em;
 }
-.mana-loyalty:after {
-  content: attr(data-loyalty);
+.mana-loyalty-zero::after {
+  line-height: 2.1em !important;
+}
+.mana-loyalty-0::after, .mana-loyalty-1::after, .mana-loyalty-2::after, .mana-loyalty-3::after, .mana-loyalty-4::after, .mana-loyalty-5::after, .mana-loyalty-6::after, .mana-loyalty-7::after, .mana-loyalty-8::after, .mana-loyalty-9::after, .mana-loyalty-10::after, .mana-loyalty-11::after, .mana-loyalty-12::after, .mana-loyalty-13::after, .mana-loyalty-14::after, .mana-loyalty-15::after, .mana-loyalty-16::after, .mana-loyalty-17::after, .mana-loyalty-18::after, .mana-loyalty-19::after, .mana-loyalty-20::after, .mana-loyalty-25::after, .mana-loyalty-x::after, .mana-loyalty-n::after {
   color: #fff;
   display: inline-block;
   font-size: 0.5em;
-  font-family: 'MPlantin, Garamond, Palatino, ' Times New Roman ', Times, serif';
+  font-family: "MPlantin, Garamond, Palatino, 'Times New Roman', Times, serif";
   position: absolute;
   left: 0;
-  line-height: 1.75em;
+  line-height: 2.25em;
   width: 100%;
   text-align: center;
-  -webkit-padding-before: 0.15em;
 }
-.mana-loyalty-down:after {
-  line-height: 1.6em;
+.mana-loyalty-0::after {
+  content: "0";
 }
-/**
- * Double faced cards */
+.mana-loyalty-up.mana-loyalty-1::after {
+  content: "+1";
+}
+.mana-loyalty-up.mana-loyalty-2::after {
+  content: "+2";
+}
+.mana-loyalty-up.mana-loyalty-3::after {
+  content: "+3";
+}
+.mana-loyalty-up.mana-loyalty-4::after {
+  content: "+4";
+}
+.mana-loyalty-up.mana-loyalty-5::after {
+  content: "+5";
+}
+.mana-loyalty-up.mana-loyalty-6::after {
+  content: "+6";
+}
+.mana-loyalty-up.mana-loyalty-7::after {
+  content: "+7";
+}
+.mana-loyalty-up.mana-loyalty-8::after {
+  content: "+8";
+}
+.mana-loyalty-up.mana-loyalty-9::after {
+  content: "+9";
+}
+.mana-loyalty-up.mana-loyalty-10::after {
+  content: "+10";
+}
+.mana-loyalty-up.mana-loyalty-11::after {
+  content: "+10";
+}
+.mana-loyalty-up.mana-loyalty-12::after {
+  content: "+12";
+}
+.mana-loyalty-up.mana-loyalty-13::after {
+  content: "+13";
+}
+.mana-loyalty-up.mana-loyalty-14::after {
+  content: "+14";
+}
+.mana-loyalty-up.mana-loyalty-15::after {
+  content: "+15";
+}
+.mana-loyalty-up.mana-loyalty-16::after {
+  content: "+16";
+}
+.mana-loyalty-up.mana-loyalty-17::after {
+  content: "+17";
+}
+.mana-loyalty-up.mana-loyalty-18::after {
+  content: "+18";
+}
+.mana-loyalty-up.mana-loyalty-19::after {
+  content: "+19";
+}
+.mana-loyalty-up.mana-loyalty-20::after {
+  content: "+20";
+}
+.mana-loyalty-up.mana-loyalty-25::after {
+  content: "+25";
+}
+.mana-loyalty-up.mana-loyalty-x::after {
+  content: "+X";
+}
+.mana-loyalty-up.mana-loyalty-n::after {
+  content: "+N";
+}
+.mana-loyalty-start.mana-loyalty-1::after {
+  content: "1";
+}
+.mana-loyalty-start.mana-loyalty-2::after {
+  content: "2";
+}
+.mana-loyalty-start.mana-loyalty-3::after {
+  content: "3";
+}
+.mana-loyalty-start.mana-loyalty-4::after {
+  content: "4";
+}
+.mana-loyalty-start.mana-loyalty-5::after {
+  content: "5";
+}
+.mana-loyalty-start.mana-loyalty-6::after {
+  content: "6";
+}
+.mana-loyalty-start.mana-loyalty-7::after {
+  content: "7";
+}
+.mana-loyalty-start.mana-loyalty-8::after {
+  content: "8";
+}
+.mana-loyalty-start.mana-loyalty-9::after {
+  content: "9";
+}
+.mana-loyalty-start.mana-loyalty-10::after {
+  content: "10";
+}
+.mana-loyalty-start.mana-loyalty-11::after {
+  content: "11";
+}
+.mana-loyalty-start.mana-loyalty-12::after {
+  content: "12";
+}
+.mana-loyalty-start.mana-loyalty-13::after {
+  content: "13";
+}
+.mana-loyalty-start.mana-loyalty-14::after {
+  content: "14";
+}
+.mana-loyalty-start.mana-loyalty-15::after {
+  content: "15";
+}
+.mana-loyalty-start.mana-loyalty-16::after {
+  content: "16";
+}
+.mana-loyalty-start.mana-loyalty-17::after {
+  content: "17";
+}
+.mana-loyalty-start.mana-loyalty-18::after {
+  content: "18";
+}
+.mana-loyalty-start.mana-loyalty-19::after {
+  content: "19";
+}
+.mana-loyalty-start.mana-loyalty-20::after {
+  content: "20";
+}
+.mana-loyalty-start.mana-loyalty-25::after {
+  content: "25";
+}
+.mana-loyalty-start.mana-loyalty-x::after {
+  content: "X";
+}
+.mana-loyalty-start.mana-loyalty-n::after {
+  content: "N";
+}
+.mana-loyalty-down::after {
+  line-height: 2em;
+}
+.mana-loyalty-down.mana-loyalty-1::after {
+  content: "-1";
+}
+.mana-loyalty-down.mana-loyalty-2::after {
+  content: "-2";
+}
+.mana-loyalty-down.mana-loyalty-3::after {
+  content: "-3";
+}
+.mana-loyalty-down.mana-loyalty-4::after {
+  content: "-4";
+}
+.mana-loyalty-down.mana-loyalty-5::after {
+  content: "-5";
+}
+.mana-loyalty-down.mana-loyalty-6::after {
+  content: "-6";
+}
+.mana-loyalty-down.mana-loyalty-7::after {
+  content: "-7";
+}
+.mana-loyalty-down.mana-loyalty-8::after {
+  content: "-8";
+}
+.mana-loyalty-down.mana-loyalty-9::after {
+  content: "-9";
+}
+.mana-loyalty-down.mana-loyalty-10::after {
+  content: "-10";
+}
+.mana-loyalty-down.mana-loyalty-11::after {
+  content: "-11";
+}
+.mana-loyalty-down.mana-loyalty-12::after {
+  content: "-12";
+}
+.mana-loyalty-down.mana-loyalty-13::after {
+  content: "-13";
+}
+.mana-loyalty-down.mana-loyalty-14::after {
+  content: "-14";
+}
+.mana-loyalty-down.mana-loyalty-15::after {
+  content: "-15";
+}
+.mana-loyalty-down.mana-loyalty-16::after {
+  content: "-16";
+}
+.mana-loyalty-down.mana-loyalty-17::after {
+  content: "-17";
+}
+.mana-loyalty-down.mana-loyalty-18::after {
+  content: "-18";
+}
+.mana-loyalty-down.mana-loyalty-19::after {
+  content: "-19";
+}
+.mana-loyalty-down.mana-loyalty-20::after {
+  content: "-20";
+}
+.mana-loyalty-down.mana-loyalty-25::after {
+  content: "-25";
+}
+.mana-loyalty-down.mana-loyalty-x::after {
+  content: "-X";
+}
+.mana-loyalty-down.mana-loyalty-n::after {
+  content: "-N";
+}
+.mana-loyalty-outline::before {
+  color: transparent;
+  -webkit-text-stroke: 0.03em #111;
+}
+.mana-loyalty-outline::after {
+  color: #111;
+}
+.mana-loyalty-outline.mana-loyalty-start {
+  font-size: 1.6em;
+}
+
+.mana-saga {
+  color: #111;
+}
+.mana-saga-1::after, .mana-saga-2::after, .mana-saga-3::after, .mana-saga-4::after, .mana-saga-5::after {
+  color: #fff;
+  display: inline-block;
+  font-size: 0.6em;
+  font-family: "MPlantin, Garamond, Palatino, 'Times New Roman', Times, serif";
+  position: absolute;
+  left: 0;
+  line-height: 2em;
+  width: 100%;
+  text-align: center;
+}
+.mana-saga-1::after {
+  content: "I";
+}
+.mana-saga-2::after {
+  content: "II";
+}
+.mana-saga-3::after {
+  content: "III";
+}
+.mana-saga-4::after {
+  content: "IV";
+}
+.mana-saga-5::after {
+  content: "V";
+}
+
+.mana-level > span {
+  font-size: 0.33em;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #000;
+  font-family: "MPlantin, Garamond, Palatino, 'Times New Roman', Times, serif";
+  width: 76%;
+  text-align: center;
+  line-height: 3.8;
+}
+.mana-level::after {
+  color: rgba(0, 0, 0, 0.25);
+  display: block;
+  font-size: 1em;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .mana-dfc {
   color: #111;
-  border: .05em solid #111;
+  border: 0.05em solid #111;
   border-radius: 2em;
   padding: 0.025em;
 }
-/*
- * Larger sizes */
+
 .mana-2x {
   font-size: 1.75em;
 }
+
 .mana-3x {
   font-size: 2.25em;
 }
+
 .mana-4x {
-  font-size: 3.0em;
+  font-size: 3em;
 }
+
 .mana-5x {
   font-size: 3.75em;
 }
+
 .mana-6x {
   font-size: 4.5em;
 }
-/**
- * Mana */
-.mana-w:before {
-  content: "\e600";
+
+/*
+ * Fixed width */
+.mana-fw {
+  width: 1em;
+  text-align: center;
 }
-.mana-u:before {
-  content: "\e601";
+
+.mana-duo {
+  color: #fff;
 }
-.mana-b:before {
-  content: "\e602";
+.mana-duo::after {
+  color: #000;
+  content: "";
+  display: block;
+  font-size: 1em;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
-.mana-r:before {
-  content: "\e603";
+.mana-duo.mana-multicolor::after {
+  content: "\e986";
 }
-.mana-g:before {
-  content: "\e604";
+.mana-duo.mana-school-lorehold::after {
+  content: "\e99b";
 }
-.mana-0:before {
-  content: "\e605";
+.mana-duo.mana-school-prismari::after {
+  content: "\e99d";
 }
-.mana-1:before {
-  content: "\e606";
+.mana-duo.mana-school-quandrix::after {
+  content: "\e99f";
 }
-.mana-2:before {
-  content: "\e607";
+.mana-duo.mana-school-silverquill::after {
+  content: "\e9a1";
 }
-.mana-3:before {
-  content: "\e608";
+.mana-duo.mana-school-witherbloom::before {
+  content: "\e9a3";
 }
-.mana-4:before {
-  content: "\e609";
+.mana-duo.mana-school-witherbloom::after {
+  content: "\e9a4";
 }
-.mana-5:before {
-  content: "\e60a";
+.mana-duo-color::before {
+  color: #010101;
 }
-.mana-6:before {
-  content: "\e60b";
+.mana-duo-color.mana-multicolor::after {
+  color: #cca753;
 }
-.mana-7:before {
-  content: "\e60c";
+.mana-duo-color.mana-multicolor.mana-grad::after {
+  background: linear-gradient(45deg, #cca54f 0%, #e0d3bb 50%, #cca54f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.mana-8:before {
-  content: "\e60d";
+.mana-duo-color.mana-school-lorehold::before {
+  color: #a03731;
 }
-.mana-9:before {
-  content: "\e60e";
+.mana-duo-color.mana-school-lorehold::after {
+  color: #e4e8c7;
 }
-.mana-10:before {
-  content: "\e60f";
+.mana-duo-color.mana-school-prismari::before {
+  color: #a23431;
 }
-.mana-11:before {
-  content: "\e610";
+.mana-duo-color.mana-school-prismari::after {
+  color: #322f5c;
 }
-.mana-12:before {
-  content: "\e611";
+.mana-duo-color.mana-school-quandrix::before {
+  color: #352e5f;
 }
-.mana-13:before {
-  content: "\e612";
+.mana-duo-color.mana-school-quandrix::after {
+  color: #519e52;
 }
-.mana-14:before {
-  content: "\e613";
+.mana-duo-color.mana-school-silverquill::before {
+  color: #181616;
 }
-.mana-15:before {
-  content: "\e614";
+.mana-duo-color.mana-school-silverquill::after {
+  color: #e5e9ca;
 }
-.mana-16:before {
-  content: "\e62a";
+.mana-duo-color.mana-school-witherbloom::before {
+  color: #2f312d;
 }
-.mana-17:before {
-  content: "\e62b";
+.mana-duo-color.mana-school-witherbloom::after {
+  color: #4f9b4f;
 }
-.mana-18:before {
-  content: "\e62c";
+
+.mana-ci {
+  border-radius: 100%;
+  box-shadow: inset 0 0 1px #fff;
+  line-height: 0.95em;
+  width: 1em;
+  height: 1em;
 }
-.mana-19:before {
-  content: "\e62d";
+.mana-ci::before {
+  color: #010101;
 }
-.mana-20:before {
-  content: "\e62e";
+.mana-ci-1::before {
+  content: "\e98a";
 }
-.mana-x:before {
-  content: "\e615";
+.mana-ci-2::before {
+  content: "\e98b";
 }
-.mana-y:before {
-  content: "\e616";
+.mana-ci-3::before {
+  content: "\e98c";
 }
-.mana-z:before {
-  content: "\e617";
+.mana-ci-4::before {
+  content: "\e98d";
 }
-.mana-p::before,
-.mana-wp::before,
-.mana-up::before,
-.mana-bp::before,
-.mana-rp::before,
-.mana-gp::before,
-.mana-wup::before,
-.mana-wup::after,
-.mana-wbp::before,
-.mana-wbp::after,
-.mana-ubp::before,
-.mana-ubp::after,
-.mana-urp::before,
-.mana-urp::after,
-.mana-brp::before,
-.mana-brp::after,
-.mana-bgp::before,
-.mana-bgp::after,
-.mana-rwp::before,
-.mana-rwp::after,
-.mana-rgp::before,
-.mana-rgp::after,
-.mana-gwp::before,
-.mana-gwp::after,
-.mana-gup::before,
-.mana-gup::after
-{
-  content: "\e618";
-}
-.mana-s:before {
-  content: "\e619";
-}
-.mana-c:before {
-  content: "\e904";
-}
-.mana-e:before,
-.mana-energy:before {
-  content: "\e907";
-}
-/**
- * Tap/roll symbols */
-.mana-t:before {
-  content: "\e61a";
-}
-.mana-q:before {
-  content: "\e61b";
-}
-.mana-tap-alt:before {
-  content: "\e61c";
-}
-.mana-chaos:before {
-  content: "\e61d";
-}
-.mana-½:before {
-  content: "\e902";
-}
-.mana-∞:before {
-  content: "\e903";
-}
-/**
- * Card types */
-.mana-artifact:before {
-  content: "\e61e";
-}
-.mana-creature:before {
-  content: "\e61f";
-}
-.mana-enchantment:before {
-  content: "\e620";
-}
-.mana-instant:before {
-  content: "\e621";
-}
-.mana-land:before {
-  content: "\e622";
-}
-.mana-pw:before {
-  content: "\e623";
-}
-.mana-sorcery:before {
-  content: "\e624";
-}
-/**
- * Split symbols */
-.mana-wu:before,
-.mana-wb:before,
-.mana-rw:after,
-.mana-gw:after,
-.mana-2w:after {
-  content: "\e600";
-}
-.mana-ub:before,
-.mana-ur:before,
-.mana-wu:after,
-.mana-gu:after,
-.mana-2u:after {
-  content: "\e601";
-}
-.mana-br:before,
-.mana-bg:before,
-.mana-wb:after,
-.mana-ub:after,
-.mana-2b:after {
-  content: "\e602";
-}
-.mana-rw:before,
-.mana-rg:before,
-.mana-ur:after,
-.mana-br:after,
-.mana-2r:after {
-  content: "\e603";
-}
-.mana-gw:before,
-.mana-gu:before,
-.mana-bg:after,
-.mana-rg:after,
-.mana-2g:after {
-  content: "\e604";
-}
-.mana-2w:before,
-.mana-2u:before,
-.mana-2b:before,
-.mana-2r:before,
-.mana-2g:before {
-  content: "\e607";
-}
-/**
- * Un-set symbols */
-.mana-100:before {
-  content: "\e900";
+.mana-ci-5::before {
+  content: "\e98e";
 }
-.mana-1000000:before {
-  content: "\e901";
+.mana-ci-w {
+  background: #fff;
 }
-/**
- * Planeswalker symbols */
-.mana-loyalty-up:before {
-  content: "\e627";
+.mana-ci-u {
+  background: #3b6ba0;
 }
-.mana-loyalty-down:before {
-  content: "\e625";
+.mana-ci-b {
+  background: #383431;
 }
-.mana-loyalty-zero:before {
-  content: "\e626";
+.mana-ci-r {
+  background: #c6553e;
 }
-.mana-loyalty-start:before {
-  content: "\e628";
+.mana-ci-g {
+  background: #3d684b;
 }
-/**
- * Other */
-.mana-flashback:before {
-  content: "\e629";
+.mana-ci-wu, .mana-ci-uw, .mana-ci-azorius {
+  background: conic-gradient(#fff 45deg, #3b6ba0 45deg 225deg, #fff 225deg);
 }
-.mana-dfc-night:before {
-  content: "\e905";
+.mana-ci-wb, .mana-ci-bw, .mana-ci-orzhov {
+  background: conic-gradient(#fff 45deg, #383431 45deg 225deg, #fff 225deg);
 }
-.mana-dfc-day:before {
-  content: "\e906";
+.mana-ci-ub, .mana-ci-bu, .mana-ci-dimir {
+  background: conic-gradient(#3b6ba0 45deg, #383431 45deg 225deg, #3b6ba0 225deg);
 }
-.mana-dfc-ignite:before {
-  content: "\e908";
+.mana-ci-ur, .mana-ci-ru, .mana-ci-izzet {
+  background: conic-gradient(#3b6ba0 45deg, #c6553e 45deg 225deg, #3b6ba0 225deg);
 }
-.mana-dfc-spark:before {
-  content: "\e909";
+.mana-ci-bg, .mana-ci-gb, .mana-ci-golgari, .mana-ci-rock {
+  background: conic-gradient(#383431 45deg, #3d684b 45deg 225deg, #383431 225deg);
 }
-.mana-dfc-emrakul:before {
-  content: "\e90a";
+.mana-ci-br, .mana-ci-rb, .mana-ci-rakdos {
+  background: conic-gradient(#383431 45deg, #c6553e 45deg 225deg, #383431 225deg);
 }
-.mana-dfc-moon:before {
-  content: "\e90b";
+.mana-ci-rw, .mana-ci-wr, .mana-ci-boros {
+  background: conic-gradient(#c6553e 45deg, #fff 45deg 225deg, #c6553e 225deg);
 }
-/**
- * Guilds and Clans */
-.mana-guild-azorius:before {
-  content: "\e90c";
+.mana-ci-rg, .mana-ci-gr, .mana-ci-gruul {
+  background: conic-gradient(#c6553e 45deg, #3d684b 45deg 225deg, #c6553e 225deg);
 }
-.mana-guild-boros:before {
-  content: "\e90d";
+.mana-ci-gu, .mana-ci-ug, .mana-ci-simic {
+  background: conic-gradient(#3d684b 45deg, #3b6ba0 45deg 225deg, #3d684b 225deg);
 }
-.mana-guild-dimir:before {
-  content: "\e90e";
+.mana-ci-gw, .mana-ci-wg, .mana-ci-selesnya {
+  background: conic-gradient(#3d684b 45deg, #fff 45deg 225deg, #3d684b 225deg);
 }
-.mana-guild-golgari:before {
-  content: "\e90f";
+.mana-ci-wug, .mana-ci-wgu, .mana-ci-ugw, .mana-ci-uwg, .mana-ci-gwu, .mana-ci-guw, .mana-ci-bant {
+  background: conic-gradient(#3b6ba0 60deg, #3d684b 60deg 180deg, #fff 180deg 300deg, #3b6ba0 300deg);
 }
-.mana-guild-gruul:before {
-  content: "\e910";
+.mana-ci-ubw, .mana-ci-uwb, .mana-ci-buw, .mana-ci-bwu, .mana-ci-wub, .mana-ci-wbu, .mana-ci-esper {
+  background: conic-gradient(#383431 60deg, #fff 60deg 180deg, #3b6ba0 180deg 300deg, #383431 300deg);
 }
-.mana-guild-izzet:before {
-  content: "\e911";
+.mana-ci-bru, .mana-ci-bur, .mana-ci-rbu, .mana-ci-rub, .mana-ci-ubr, .mana-ci-urb, .mana-ci-grixis {
+  background: conic-gradient(#c6553e 60deg, #3b6ba0 60deg 180deg, #383431 180deg 300deg, #c6553e 300deg);
 }
-.mana-guild-orzhov:before {
-  content: "\e912";
+.mana-ci-rgb, .mana-ci-rbg, .mana-ci-grb, .mana-ci-gbr, .mana-ci-brg, .mana-ci-bgr, .mana-ci-jund {
+  background: conic-gradient(#3d684b 60deg, #383431 60deg 180deg, #c6553e 180deg 300deg, #3d684b 300deg);
 }
-.mana-guild-rakdos:before {
-  content: "\e913";
+.mana-ci-gwr, .mana-ci-grw, .mana-ci-wgr, .mana-ci-wrg, .mana-ci-rgw, .mana-ci-rwg, .mana-ci-naya {
+  background: conic-gradient(#fff 60deg, #c6553e 60deg 180deg, #3d684b 180deg 300deg, #fff 300deg);
 }
-.mana-guild-selesnya:before {
-  content: "\e914";
+.mana-ci-wbg, .mana-ci-wgb, .mana-ci-bwg, .mana-ci-bgw, .mana-ci-gwb, .mana-ci-gbw, .mana-ci-abzan, .mana-ci-junk, .mana-ci-necra {
+  background: conic-gradient(#383431 60deg, #3d684b 60deg 180deg, #fff 180deg 300deg, #383431 300deg);
 }
-.mana-guild-simic:before {
-  content: "\e915";
+.mana-ci-urw, .mana-ci-uwr, .mana-ci-ruw, .mana-ci-rwu, .mana-ci-wur, .mana-ci-wru, .mana-ci-jeskai, .mana-ci-raka {
+  background: conic-gradient(#c6553e 60deg, #fff 60deg 180deg, #3b6ba0 180deg 300deg, #c6553e 300deg);
 }
-.mana-clan-abzan:before {
-  content: "\e916";
+.mana-ci-bgu, .mana-ci-bug, .mana-ci-gbu, .mana-ci-gub, .mana-ci-ubg, .mana-ci-ugb, .mana-ci-sultai, .mana-ci-bug, .mana-ci-ana {
+  background: conic-gradient(#3d684b 60deg, #3b6ba0 60deg 180deg, #383431 180deg 300deg, #3d684b 300deg);
 }
-.mana-clan-jeskai:before {
-  content: "\e917";
+.mana-ci-rwb, .mana-ci-rbw, .mana-ci-wrb, .mana-ci-wbr, .mana-ci-brw, .mana-ci-bwr, .mana-ci-mardu, .mana-ci-dega {
+  background: conic-gradient(#fff 60deg, #383431 60deg 180deg, #c6553e 180deg 300deg, #fff 300deg);
 }
-.mana-clan-mardu:before {
-  content: "\e918";
+.mana-ci-gur, .mana-ci-gru, .mana-ci-ugr, .mana-ci-urg, .mana-ci-rgu, .mana-ci-rug, .mana-ci-temur, .mana-ci-ceta {
+  background: conic-gradient(#3b6ba0 60deg, #c6553e 60deg 180deg, #3d684b 180deg 300deg, #3b6ba0 300deg);
 }
-.mana-clan-sultai:before {
-  content: "\e919";
+.mana-ci-ubrg, .mana-ci-ubgr, .mana-ci-ugbr, .mana-ci-ugrb, .mana-ci-urbg, .mana-ci-urgb, .mana-ci-bgru, .mana-ci-bgur, .mana-ci-brgu, .mana-ci-brug, .mana-ci-bugr, .mana-ci-burg, .mana-ci-gbru, .mana-ci-gbur, .mana-ci-grbu, .mana-ci-grub, .mana-ci-gubr, .mana-ci-gurb, .mana-ci-rbgu, .mana-ci-rbug, .mana-ci-rgbu, .mana-ci-rgub, .mana-ci-rubg, .mana-ci-rugb, .mana-ci-glint {
+  background: conic-gradient(#3b6ba0 45deg, #383431 45deg 135deg, #c6553e 135deg 225deg, #3d684b 225deg 315deg, #3b6ba0 315deg);
 }
-.mana-clan-temur:before {
-  content: "\e91a";
+.mana-ci-brgw, .mana-ci-bgrw, .mana-ci-bgwr, .mana-ci-brwg, .mana-ci-bwgr, .mana-ci-bwrg, .mana-ci-gbrw, .mana-ci-gbwr, .mana-ci-grbw, .mana-ci-grwb, .mana-ci-gwbr, .mana-ci-gwrb, .mana-ci-rbgw, .mana-ci-rbwg, .mana-ci-rgbw, .mana-ci-rgwb, .mana-ci-rwbg, .mana-ci-rwgb, .mana-ci-wbgr, .mana-ci-wbrg, .mana-ci-wgbr, .mana-ci-wgrb, .mana-ci-wrbg, .mana-ci-wrgb, .mana-ci-dune {
+  background: conic-gradient(#383431 45deg, #c6553e 45deg 135deg, #3d684b 135deg 225deg, #fff 225deg 315deg, #383431 315deg);
 }
-.mana-clan-atarka:before {
-  content: "\e91b";
+.mana-ci-rgwu, .mana-ci-gruw, .mana-ci-grwu, .mana-ci-gurw, .mana-ci-guwr, .mana-ci-gwru, .mana-ci-gwur, .mana-ci-rguw, .mana-ci-rugw, .mana-ci-ruwg, .mana-ci-rwgu, .mana-ci-rwug, .mana-ci-ugrw, .mana-ci-ugwr, .mana-ci-urgw, .mana-ci-urwg, .mana-ci-uwgr, .mana-ci-uwrg, .mana-ci-wgru, .mana-ci-wgur, .mana-ci-wrgu, .mana-ci-wrug, .mana-ci-wugr, .mana-ci-wurg, .mana-ci-ink {
+  background: conic-gradient(#c6553e 45deg, #3d684b 45deg 135deg, #fff 135deg 225deg, #3b6ba0 225deg 315deg, #c6553e 315deg);
 }
-.mana-clan-dromoka:before {
-  content: "\e91c";
+.mana-ci-gwub, .mana-ci-bguw, .mana-ci-bgwu, .mana-ci-bugw, .mana-ci-buwg, .mana-ci-bwgu, .mana-ci-bwug, .mana-ci-gbuw, .mana-ci-gbwu, .mana-ci-gubw, .mana-ci-guwb, .mana-ci-gwbu, .mana-ci-ubgw, .mana-ci-ubwg, .mana-ci-ugbw, .mana-ci-ugwb, .mana-ci-uwbg, .mana-ci-uwgb, .mana-ci-wbgu, .mana-ci-wbug, .mana-ci-wgbu, .mana-ci-wgub, .mana-ci-wubg, .mana-ci-wugb, .mana-ci-witch {
+  background: conic-gradient(#3d684b 45deg, #fff 45deg 135deg, #3b6ba0 135deg 225deg, #383431 225deg 315deg, #3d684b 315deg);
 }
-.mana-clan-kolaghan:before {
-  content: "\e91d";
+.mana-ci-wubr, .mana-ci-bruw, .mana-ci-brwu, .mana-ci-burw, .mana-ci-buwr, .mana-ci-bwru, .mana-ci-bwur, .mana-ci-rbuw, .mana-ci-rbwu, .mana-ci-rubw, .mana-ci-ruwb, .mana-ci-rwbu, .mana-ci-rwub, .mana-ci-ubrw, .mana-ci-ubwr, .mana-ci-urbw, .mana-ci-urwb, .mana-ci-uwbr, .mana-ci-uwrb, .mana-ci-wbru, .mana-ci-wbur, .mana-ci-wrbu, .mana-ci-wrub, .mana-ci-wurb, .mana-ci-yore {
+  background: conic-gradient(#fff 45deg, #3b6ba0 45deg 135deg, #383431 135deg 225deg, #c6553e 225deg 315deg, #fff 315deg);
 }
-.mana-clan-ojutai:before {
-  content: "\e91e";
+.mana-ci-wubrg, .mana-ci-rugbw, .mana-ci-rugwb, .mana-ci-ruwbg, .mana-ci-ruwgb, .mana-ci-rwbgu, .mana-ci-rwbug, .mana-ci-rwgbu, .mana-ci-rwgub, .mana-ci-rwubg, .mana-ci-rwugb, .mana-ci-ubgrw, .mana-ci-ubgwr, .mana-ci-ubrgw, .mana-ci-ubrwg, .mana-ci-ubwgr, .mana-ci-ubwrg, .mana-ci-ugbrw, .mana-ci-ugbwr, .mana-ci-ugrbw, .mana-ci-ugrwb, .mana-ci-ugwbr, .mana-ci-ugwrb, .mana-ci-urbgw, .mana-ci-urbwg, .mana-ci-urgbw, .mana-ci-urgwb, .mana-ci-urwbg, .mana-ci-urwgb, .mana-ci-uwbgr, .mana-ci-uwbrg, .mana-ci-uwgbr, .mana-ci-uwgrb, .mana-ci-uwrbg, .mana-ci-uwrgb, .mana-ci-wbgru, .mana-ci-wbgur, .mana-ci-wbrgu, .mana-ci-wbrug, .mana-ci-wbugr, .mana-ci-wburg, .mana-ci-wgbru, .mana-ci-wgbur, .mana-ci-wgrbu, .mana-ci-wgrub, .mana-ci-wgubr, .mana-ci-wgurb, .mana-ci-wrbgu, .mana-ci-wrbug, .mana-ci-wrgbu, .mana-ci-wrgub, .mana-ci-wrubg, .mana-ci-wrugb, .mana-ci-wubgr, .mana-ci-wugbr, .mana-ci-wugrb, .mana-ci-wurbg, .mana-ci-wurgb, .mana-ci-bgruw, .mana-ci-bgrwu, .mana-ci-bgurw, .mana-ci-bguwr, .mana-ci-bgwru, .mana-ci-bgwur, .mana-ci-brguw, .mana-ci-brgwu, .mana-ci-brugw, .mana-ci-bruwg, .mana-ci-brwgu, .mana-ci-brwug, .mana-ci-bugrw, .mana-ci-bugwr, .mana-ci-burgw, .mana-ci-burwg, .mana-ci-buwgr, .mana-ci-buwrg, .mana-ci-bwgru, .mana-ci-bwgur, .mana-ci-bwrgu, .mana-ci-bwrug, .mana-ci-bwugr, .mana-ci-bwurg, .mana-ci-gbruw, .mana-ci-gbrwu, .mana-ci-gburw, .mana-ci-gbuwr, .mana-ci-gbwru, .mana-ci-gbwur, .mana-ci-grbuw, .mana-ci-grbwu, .mana-ci-grubw, .mana-ci-gruwb, .mana-ci-grwbu, .mana-ci-grwub, .mana-ci-gubrw, .mana-ci-gubwr, .mana-ci-gurbw, .mana-ci-gurwb, .mana-ci-guwbr, .mana-ci-guwrb, .mana-ci-gwbru, .mana-ci-gwbur, .mana-ci-gwrbu, .mana-ci-gwrub, .mana-ci-gwubr, .mana-ci-gwurb, .mana-ci-rbguw, .mana-ci-rbgwu, .mana-ci-rbugw, .mana-ci-rbuwg, .mana-ci-rbwgu, .mana-ci-rbwug, .mana-ci-rgbuw, .mana-ci-rgbwu, .mana-ci-rgubw, .mana-ci-rguwb, .mana-ci-rgwbu, .mana-ci-rgwub, .mana-ci-rubgw, .mana-ci-rubwg, .mana-ci-5 {
+  background: conic-gradient(#fff 36deg, #3b6ba0 36deg 108deg, #383431 108deg 180deg, #c6553e 180deg 252deg, #3d684b 252deg 324deg, #fff 324deg);
 }
-.mana-clan-silumgar:before {
-  content: "\e91f";
+
+.mana-mechanic {
+  background: linear-gradient(0deg, #c8913b 0%, #ecc65a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
+/*# sourceMappingURL=mana.css.map */

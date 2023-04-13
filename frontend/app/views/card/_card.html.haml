@@ -27,7 +27,7 @@
   %div
     %span.infolabel
       Loyalty:
-    %i.mana.mana-loyalty.mana-loyalty-start{"data-loyalty" => "#{card.loyalty}"}
+    %i{"class" => "mana mana-loyalty mana-loyalty-start mana-loyalty-#{card.loyalty}"}
     .sr-only
       = card.loyalty
 
