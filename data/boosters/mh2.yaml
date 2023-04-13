@@ -55,40 +55,40 @@ sheets:
       rate: 2
     - query: "r:m -alt:(e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
       rate: 3
-foil_with_showcase:
-  foil: true
-  any:
-  - any:
-    - use: common_showcase
-      rate: 1
-    - use: common_has_showcase
-      rate: 2
-    - use: common_has_no_showcase
-      rate: 3
-    - use: basic
-      rate: 3
-    chance: 12
-  - any:
-    - rawquery: "e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper"
-      rate: 5
-    - query: "r:u alt:(e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart)"
-      rate: 10
-    - query: "r:u alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart)"
-      rate: 13
-    - query: "r:u -alt:(e:mh2 promo:boosterfun -is:foilonly -frame:extendedart)"
-      rate: 15
-    chance: 5
-  - any:
-    - use: rare_showcase
-      rate: 2
-    - use: rare_has_showcase
-      rate: 4
-    - use: rare_has_no_showcase
-      rate: 6
-    - use: mythic_showcase
-      rate: 1
-    - use: mythic_has_showcase
-      rate: 2
-    - use: mythic_has_no_showcase
-      rate: 3
-    chance: 3
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - use: common_showcase
+        rate: 1
+      - use: common_has_showcase
+        rate: 2
+      - use: common_has_no_showcase
+        rate: 3
+      - use: basic
+        rate: 3
+      chance: 12
+    - any:
+      - rawquery: "e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        rate: 5
+      - query: "r:u alt:(e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 10
+      - query: "r:u alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 13
+      - query: "r:u -alt:(e:mh2 promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 15
+      chance: 5
+    - any:
+      - use: rare_showcase
+        rate: 2
+      - use: rare_has_showcase
+        rate: 4
+      - use: rare_has_no_showcase
+        rate: 6
+      - use: mythic_showcase
+        rate: 1
+      - use: mythic_has_showcase
+        rate: 2
+      - use: mythic_has_no_showcase
+        rate: 3
+      chance: 3

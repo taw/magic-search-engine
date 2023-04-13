@@ -21,7 +21,7 @@ sheets:
     filter: "(e:mh2 or e:h1r) promo:boosterfun"
     use: common_uncommon
   boosterfun_rare_mythic:
-    filter: "e:mh2 (frame:showcase or frame:extendedart)"
+    filter: "e:mh2 (frame:showcase or is:borderless)"
     use: rare_mythic
   foil_boosterfun_rare_mythic:
     foil: true
