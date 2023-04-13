@@ -55,8 +55,8 @@ class CheckCardOrientation
   end
 
   def rotate
-    system "jpegtran -rotate 90 -copy all #{@path} > #{@path}-out"
-    system "mv #{@path}-out #{@path}"
+    system "jpegtran -rotate 90 -copy all #{@path} > #{@path}-out" or raise "Failed to rotate #{@path}"
+    FileUtils.mv("#{@path}-out", "#{@path}")
   end
 
   def open

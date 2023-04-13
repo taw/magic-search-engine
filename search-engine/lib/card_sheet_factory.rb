@@ -37,7 +37,7 @@ class CardSheetFactory
 
   def explicit_sheet(set_code, print_sheet_code, foil: false, count: nil)
     cards = @db.sets[set_code].printings.select{|c|
-      c.in_boosters? and c.print_sheet and c.print_sheet.scan(/[A-Z]+/).include?(print_sheet_code)
+      c.print_sheet and c.print_sheet.scan(/[A-Z]+/).include?(print_sheet_code)
     }
     if count and count != cards.size
       warn "Expected sheet #{set_code}/#{print_sheet_code} to return #{count}, got #{cards.size}"
