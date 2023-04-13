@@ -1,35 +1,94 @@
 pack:
-- common: 10
-  normal_uncommon: 3
-  normal_rare_mythic: 1
+- common_with_showcase: 10
+  new_uncommon: 3
+  new_rare_mythic: 1
   chance: 2
-  new_to_modern: 1
-- common: 9
-  normal_uncommon: 3
-  normal_rare_mythic: 1
-  foil: 1
+  reprint_to_modern: 1
+- common_with_showcase: 9
+  new_uncommon: 3
+  new_rare_mythic: 1
+  foil_with_showcase: 1
   chance: 1
-  new_to_modern: 1
+  reprint_to_modern: 1
 sheets:
-  normal_uncommon:
-    query: "number<262 r:u"
-    count: 80
-  normal_rare_mythic:
+  new_uncommon:
     any:
-     - query: "number<262 r:r"
-       count: 60
-       rate: 2
-     - query: "number<262 r:m"
-       count: 20
-       rate: 1
-  new_to_modern:
-    any:
-    - query: "number>=262 r:u"
-      count: 20
-      rate: 5
-    - query: "number>=262 r:r"
-      count: 18
-      rate: 2
-    - query: "number>=262 r:m"
-      count: 4
+    - rawquery: "e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper -is:reprint"
       rate: 1
+    - query: "r:u alt:(e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart) -is:reprint"
+      rate: 2
+    - query: "r:u -alt:(e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart) -is:reprint"
+      rate: 3
+  new_rare_mythic:
+    any:
+    - rawquery: "e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper (-is:reprint or is:fetchland)"
+      rate: 2
+    - query: "r:r alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart) (-is:reprint or is:fetchland)"
+      rate: 4
+    - query: "r:r -alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart) -is:reprint"
+      rate: 6
+    - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -is:reprint"
+      rate: 1
+    - query: "r:m alt:(e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart) -is:reprint"
+      rate: 2
+    - query: "r:m -alt:(e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart) -is:reprint"
+      rate: 3
+  reprint_to_modern: 
+    any:
+    - rawquery: "e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper is:reprint"
+      rate: 5
+    - query: "r:u alt:(e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      rate: 10
+    - query: "r:u alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      rate: 13
+    - query: "r:u -alt:(e:mh2 promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      rate: 15
+    - rawquery: "e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper (is:reprint -is:fetchland)"
+      rate: 2
+    - query: "r:r alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart) (is:reprint -is:fetchland)"
+      rate: 4
+    - query: "r:r -alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      rate: 6
+    - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper is:reprint"
+      rate: 1
+    - query: "r:m alt:(e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      rate: 2
+    - query: "r:m -alt:(e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      rate: 3
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - use: common_showcase
+        rate: 1
+      - use: common_has_showcase
+        rate: 2
+      - use: common_has_no_showcase
+        rate: 3
+      - use: basic
+        rate: 3
+      chance: 12
+    - any:
+      - rawquery: "e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        rate: 5
+      - query: "r:u alt:(e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 10
+      - query: "r:u alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 13
+      - query: "r:u -alt:(e:mh2 promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 15
+      chance: 5
+    - any:
+      - use: rare_showcase
+        rate: 2
+      - use: rare_has_showcase
+        rate: 4
+      - use: rare_has_no_showcase
+        rate: 6
+      - use: mythic_showcase
+        rate: 1
+      - use: mythic_has_showcase
+        rate: 2
+      - use: mythic_has_no_showcase
+        rate: 3
+      chance: 3
