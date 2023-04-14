@@ -48,6 +48,10 @@ describe "is:booster" do
 
   it "card is in boosters" do
     db.sets.each do |set_code, set|
+      # is:booster is not going to be maintained going forward
+      # it will be replaced by something else eventually
+      next if set.release_date >= Date.parse("2023-04-21") # MOM
+
       # Exclude planesawlker deck cards
       case set_code
       when "m15"
