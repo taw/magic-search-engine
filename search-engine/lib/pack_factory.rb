@@ -4,11 +4,15 @@ class PackFactory
     @sheet_factory = CardSheetFactory.new(@db)
   end
 
+  def raise_sheet_error(message)
+    raise "Error building #{@sheet_full_name}: #{message}"
+  end
+
   def build_sheet_from_subsheets(subsheets, chances)
     # Filter out the empty subsheets
     # Example: foil sheet has 2xR + 1xM mix, but some sets don't have mythics
     subsheets, chances = subsheets.zip(chances).select{|s,c| c != 0}.transpose
-    raise "No subsheets present" unless subsheets
+    raise_sheet_error "No subsheets present" unless subsheets
     if subsheets.size == 1
       subsheets[0]
     else
@@ -16,7 +20,7 @@ class PackFactory
     end
   end
 
-  def build_sheet(set_code, name, data)
+  def build_sheet(data)
     data = data.dup
     foil = false
     balanced = false
@@ -27,33 +31,40 @@ class PackFactory
     count = data.delete("count") if data.has_key?("count")
     kind = balanced ? ColorBalancedCardSheet : CardSheet
 
-    sheet = case data.keys
+    case data.keys
     when ["code"]
-      raise "No balanced support for #{set_code}:code" if balanced
+      raise_sheet_error "No balanced support for code" if balanced
       parts = data["code"].split("/", 2)
       @sheet_factory.explicit_sheet(parts[0], parts[1], foil: foil, count: count)
     when ["query"]
       @sheet_factory.from_query(data["query"], count, foil: foil, kind: kind)
     when ["any"]
       subsheets = data["any"].map(&:dup)
-      raise "No balanced support for #{set_code}:any" if balanced
+      raise_sheet_error "No balanced support for any" if balanced
       if subsheets.all?{|s| s["rate"]}
         rates = subsheets.map{|d| d.delete("rate")}
-        sheets = subsheets.map{|d| build_sheet(set_code, nil, d.merge("foil" => foil)) }
+        sheets = subsheets.map{|d| build_sheet(d.merge("foil" => foil)) }
         chances = rates.zip(sheets).map{|r,s| r*s.elements.size}
         build_sheet_from_subsheets(sheets, chances)
       elsif subsheets.all?{|s| s["chance"]}
         chances = subsheets.map{|d| d.delete("chance")}
-        sheets = subsheets.map{|d| build_sheet(set_code, nil, d.merge("foil" => foil)) }
+        sheets = subsheets.map{|d| build_sheet(d.merge("foil" => foil)) }
         build_sheet_from_subsheets(sheets, chances)
       else
-        raise "Incorrect subsheet data for #{set_code} any"
+        raise_sheet_error "Incorrect subsheet data for any"
       end
     else
-      raise "Unknown sheet type #{data.keys.join(", ")}"
+      raise_sheet_error "Unknown sheet type #{data.keys.join(", ")}"
     end
-    sheet.name = name if name
+  end
+
+  def build_top_level_sheet(set_code, sheet_name, data)
+    @sheet_full_name = "#{set_code}/#{sheet_name}"
+    sheet = build_sheet(data)
+    sheet.name = sheet_name
     sheet
+  ensure
+    @sheet_full_name = nil
   end
 
   def build_simple_pack(pack_data, sheets)
@@ -74,7 +85,7 @@ class PackFactory
     return nil unless data
 
     sheets = data["sheets"].map{|sheet_name, sheet_data|
-      [sheet_name, build_sheet(set_code, sheet_name, sheet_data)]
+      [sheet_name, build_top_level_sheet(set_code, sheet_name, sheet_data)]
     }.to_h
     subpacks = data["pack"].map{|subpack_data, chance|
       subpack = build_simple_pack(subpack_data, sheets)
