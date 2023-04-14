@@ -136,6 +136,11 @@ class PatchMtgjsonVersions < Patch
         card["oversized"] = true
       end
 
+      # mtgjson bug
+      if card["set"]["official_code"] == "MOC" and (card["types"].include?("Plane") or card["types"].include?("Phenomenon"))
+        card["oversized"] = true
+      end
+
       # Moved in v5
       card["arena"] = true if card.delete("isArena") or card["availability"]&.delete("arena")
       card["paper"] = true if card.delete("isPaper") or card["availability"]&.delete("paper")
