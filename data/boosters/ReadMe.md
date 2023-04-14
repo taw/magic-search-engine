@@ -319,3 +319,20 @@ An example from [znr-set.yaml](znr-set.yaml) to define The List cards:
     set: plist
     code: "ZNR"
 ```
+
+## Troubleshooting and Debugging
+
+Once you've built a YAML file, the indexing tools need to be executed to properly incorporate that new booster into the program. 
+
+In order to load the booster into the `booster_index`, you should run
+
+`> ruby ./booster_indexer/bin/booster_indexer` 
+
+*If you are adding a new booster or modifying a set code* you will need to execute
+
+`> ruby ./indexer/bin/indexer`
+
+to load the new booster into the main index. Once you have properly indexed the booster information, you can access it in multiple ways:
+
+- Use `> ruby ./bin/human_export_sealed_data {temp folder}` to build all current boosters into the location specified by `{temp folder}`. Typically the folder `tmp/sealed` is used but ultimately that is up to you.
+- To view the booster visually in the Rails frontend, use the instructions in the top level ReadMe to build and load the frontend. Then you can navigate to `http://localhost:3000/pack/{pack-code}` to view the results in HTML.
