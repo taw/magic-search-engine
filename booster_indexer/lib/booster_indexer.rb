@@ -3,6 +3,7 @@ require "json"
 require "pathname"
 require "pry"
 require "yaml"
+require "set"
 
 class Hash
   unless method_defined?(:except)
@@ -147,6 +148,9 @@ class PreprocessBooster
   def check_small_balanced_sheets
     @pack.each do |pack, chance|
       pack.each do |sheet_name, count|
+        if @sheets[sheet_name].nil?
+          raise "Missing sheet #{@name}/#{sheet_name}"
+        end
         next unless @sheets[sheet_name]["balanced"]
         if count <= 7
           warn "Sheet #{@name}/#{sheet_name} is too small to be balanced with only #{count} cards"

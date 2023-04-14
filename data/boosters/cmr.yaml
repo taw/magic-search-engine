@@ -1,22 +1,24 @@
 pack:
-- common: 13
+  common: 12
+  piper_slot:
+  - common: 1
+    chance: 5
+  - special: 1
+    chance: 1
   nonlegendary_uncommon: 3
   nonlegendary_rare_mythic: 1
   legendary: 2
-  dedicated_foil: 1
-  chance: 5
-- common: 12
-  special: 1
-  nonlegendary_uncommon: 3
-  nonlegendary_rare_mythic: 1
-  legendary: 2
-  dedicated_foil: 1
-  chance: 1
+  foil_slot: # Etched foil rate appears to be 1/15 boosters
+  - dedicated_foil: 1
+    chance: 14
+  - etched_foil: 1
+    chance: 1
 sheets:
   nonlegendary_uncommon:
     query: "r:u -t:legendary r:u"
     count: 80
   nonlegendary_rare_mythic:
+    # 2*52 + 17 = 121 so the total is same as in usual 2*53 + 15 = 121 sets
     any:
     - query: "-t:legendary r:r"
       count: 52
@@ -46,3 +48,7 @@ sheets:
     - query: "r:c or r:s"
       count: 141 + 1
       chance: 13
+  etched_foil:
+    foil: true
+    filter: "e:cmr frame:etched"
+    use: base_1248_by_rarity

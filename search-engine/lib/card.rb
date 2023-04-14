@@ -477,12 +477,17 @@ class Card
     @first_release_date ||= @printings.map(&:release_date).compact.min
   end
 
+  # If a card has non-promo printing, pick oldest, ignore promos
+  # If a card has only promo printings, pick oldest
+  # This deals with prerelease promos and similar
+  #
+  # Promos released at same time or earlier than the first release date
+  # are not considered reprints
   def first_regular_release_date
-    @first_regular_release_date ||= @printings
-      .select{|cp| cp.set_code != "ppre"}
-      .map(&:release_date)
-      .compact
-      .min
+    @first_regular_release_date ||= begin
+      promo_printings, regular_printings = printings.partition{|cp| cp.set.types.include?("promo")}
+      regular_printings.map(&:release_date).min || promo_printings.map(&:release_date).min
+    end
   end
 
   def last_release_date

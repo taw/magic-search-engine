@@ -1,0 +1,40 @@
+# data from https://magic.wizards.com/en/news/feature/collecting-commander-legends-2020-10-26
+pack:
+  foil_common: 5
+  foil_uncommon: 2
+  foil_legends: 2
+  foil_rare_mythic_nonlegendary: 1
+  extended_art_common_uncommon: 1
+  extended_art_rare_mythic: 1
+  etched_uncommon: 1
+  etched_reprint: 1
+  etched_rare_mythic: 1
+sheets:
+  foil_uncommon:
+    foil: true
+    query: "r:u -t:legendary"
+  foil_legends:
+    foil: true
+    filter: "e:cmr t:legendary number<=set"
+    use: base_1248_by_rarity
+  foil_rare_mythic_nonlegendary:
+    foil: true
+    filter: "e:cmr number<=set -t:legendary"
+    use: rare_mythic
+  extended_art_common_uncommon:
+    filter: "e:cmr frame:extendedart"
+    use: common_uncommon
+  extended_art_rare_mythic:
+    filter: "e:cmr frame:extendedart"
+    use: rare_mythic
+  etched_uncommon:
+    foil: true
+    rawquery: "e:cmr frame:etched (r:u or r:s) -is:reprint"
+  etched_reprint:
+    foil: true
+    filter: "e:cmr frame:etched is:reprint"
+    use: rare_mythic
+  etched_rare_mythic:
+    foil: true
+    filter: "e:cmr frame:etched -is:reprint"
+    use: rare_mythic

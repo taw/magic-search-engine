@@ -1,0 +1,42 @@
+# data from https://magic.wizards.com/en/news/feature/collecting-kaldheim-2021-01-07
+# Rarity unknown in wildcard slot, using 2/1 baseline rarities
+pack:
+  foil_basic: 1
+  foil_common: 5
+  foil_uncommon: 2
+  uncommon_showcase: 1
+  foil_common_uncommon_showcase: 1
+  foil_rare_mythic: 1
+  saga_theme_commander: 1
+  extended_art: 1
+  rare_mythic_showcase: 1
+  foil_alt_frame_rare_mythic: 1
+sheets:
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  saga_theme_commander:
+    filter: "(e:khm t:saga) or (e:khm number:374-393) or (e:khc number<=set)"
+    use: rare_mythic
+  extended_art:
+    filter: "e:khm frame:extendedart"
+    use: rare_mythic
+  foil_alt_frame_rare_mythic:
+    foil: true
+    any:
+    - rawquery: "e:khm promo:boosterfun r:r"
+      rate: 4
+    - rawquery: "e:khm promo:boosterfun r:m -(Vorinclex or Valki)"
+      rate: 2
+    - rawquery: "e:khm promo:boosterfun r:m (Vorinclex or Valki) number<=400"
+      rate: 1
+  rare_mythic_showcase:
+    any:
+    - use: rare_showcase
+      rate: 4
+    - rawquery: "e:khm promo:boosterfun (Vorinclex or Valki) number:1-400"
+      count: 4
+      rate: 1
+    - rawquery: "e:khm r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Vorinclex or Valki)"
+      count: 14
+      rate: 2

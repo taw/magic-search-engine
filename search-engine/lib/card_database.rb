@@ -14,7 +14,6 @@ require_relative "color"
 require_relative "deck_database"
 require_relative "deck_parser"
 require_relative "deck"
-require_relative "legacy_card_sheet_factory"
 require_relative "pack_factory"
 require_relative "pack"
 require_relative "physical_card"
@@ -115,13 +114,13 @@ class CardDatabase
   def supported_booster_types
     unless @supported_booster_types
       @supported_booster_types = {}
-      @sets.values.reverse.each do |set|
-        set.booster_variants.each do |variant_code, variant_name|
-          booster = pack_factory.for(set.code, variant_code)
-          @supported_booster_types[booster.code] = booster if booster
-        end
+      booster_data.each_key do |booster_code|
+        set_code, variant = booster_code.split("-", 2)
+        booster = pack_factory.for(set_code, variant)
+        @supported_booster_types[booster.code] = booster if booster
       end
     end
+    @supported_booster_types = @supported_booster_types.sort_by{|c,b| [-b.set.release_date.jd, c]}.to_h
     @supported_booster_types
   end
 

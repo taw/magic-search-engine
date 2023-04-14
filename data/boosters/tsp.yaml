@@ -2,14 +2,17 @@ pack:
   common_or_foil:
   - common: 1
     chance: 31
-  - ts_foil: 1
+  - foil: 1
     chance: 9
   common: 9
   uncommon: 3
   rare: 1
   tsts: 1
 sheets:
-  ts_foil:
+  # Can't find any information.
+  # So just making up something: basic foils are in packs (even though basics aren't),
+  # and tsts replaces 1/4 of foil commons
+  foil:
     foil: true
     any:
     - query: "r:r"

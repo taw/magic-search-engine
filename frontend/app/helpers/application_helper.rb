@@ -87,6 +87,7 @@ module ApplicationHelper
 
   def replace_planeswalker_symbol(symbol)
     symbol = symbol.upcase
+    csymbol = symbol.downcase.sub(/[-\+\u2212]/, "")
     usymbol = symbol.sub("-", "\u2013").sub("\u2212", "\u2013")
     if usymbol[0] == "+"
       dir = "up"
@@ -95,7 +96,7 @@ module ApplicationHelper
     else
       dir = "zero"
     end
-    %[<i class="mana mana-loyalty mana-loyalty-#{dir}" data-loyalty="#{usymbol}"></i>] +
+    %[<i class="mana mana-loyalty mana-loyalty-#{dir} mana-loyalty-#{csymbol}"></i>] +
     %[<span class="sr-only">[#{usymbol}]</span>]
   end
 
@@ -212,6 +213,7 @@ module ApplicationHelper
       "chaos", "pw",
       "hw", "hr",
       "wup", "wbp", "rwp", "gwp", "ubp", "urp", "gup", "brp", "bgp", "rgp",
+      "tk",
     ]
   end
 

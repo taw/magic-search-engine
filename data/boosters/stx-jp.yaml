@@ -1,0 +1,86 @@
+# data from https://wpn.wizards.com/en/news/whats-inside-each-strixhaven-product
+pack:
+- sta: 1
+  lesson: 1
+  nonlesson_common: 9
+  uncommon: 3
+  nonlesson_rare_mythic: 1
+  chance: 2
+- sta: 1
+  lesson: 1
+  nonlesson_common: 8
+  uncommon: 3
+  nonlesson_rare_mythic: 1
+  foil_with_showcase: 1
+  chance: 1
+sheets:
+  sta:
+    # Each Draft Booster also has a dedicated slot with an uncommon (67%), rare (26.4%), or mythic rare (6.6%) Mystical Archive card.
+    # https://magic.wizards.com/en/articles/archive/feature/collecting-strixhaven-school-mages-2021-03-25
+    filter: "e:sta"
+    any:
+      - query: "r:m"
+        count: 30
+        rate: 3
+      - query: "r:r"
+        count: 60
+        rate: 6
+      - query: "r:u"
+        count: 36
+        rate: 25
+  lesson:
+    # ratio is guessed, based on https://www.lethe.xyz/mtg/collation/stx.html
+    any:
+    - any:
+      - query: "t:lesson r:m"
+        count: 1
+        rate: 1
+      - query: "t:lesson r:r"
+        count: 5
+        rate: 2
+      chance: 11
+    - query: "t:lesson r:c"
+      count: 9
+      chance: 137
+  nonlesson_common:
+    balanced: true
+    query: "-t:lesson r:c"
+  nonlesson_rare_mythic:
+    any:
+    - query: "-t:lesson r:r"
+      count: 64
+      rate: 6
+    - use: mythic_showcase
+      count: 9
+      rate: 1
+    - use: mythic_has_showcase
+      count: 9
+      rate: 2
+    - query: "r:m -alt:(e:stx r:m promo:boosterfun -is:foilonly -frame:extendedart) -t:lesson"
+      count: 11
+      rate: 3
+  foil_with_showcase:
+    foil: true
+    any:
+    - use: foil_common_or_basic
+      chance: 12
+    - any:
+      - use: uncommon
+        rate: 2
+      - rawquery: "e:sta r:u"
+        rate: 1
+      chance: 5
+    - any:
+      - use: rare
+        rate: 12
+      - rawquery: "e:sta r:r"
+        rate: 6
+      - use: mythic_showcase
+        rate: 2
+      - use: mythic_has_showcase
+        rate: 4
+      - use: mythic_has_no_showcase
+        rate: 6
+      - rawquery: "e:sta r:m"
+        rate: 3
+      chance: 3

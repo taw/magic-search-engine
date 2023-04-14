@@ -36,6 +36,7 @@
       = search_help "is:historic", "search for historic cards (legendary, artifact, and/or Saga)"
       = search_help "is:modal", "search modal cards"
       = search_help "is:vanilla", "search vanilla cards"
+      = search_help "is:basictype", "search for cards with Plains, Island, Swamp, Mountain, or Forest types (both basic and nonbasic)"
 
     %h4 Search by Oracle text
     %div Reminder text is not included in Oracle search with <code>o:</code>, but is with <code>fo:</code>
@@ -282,7 +283,7 @@
       = search_help "is:acorn", "cards with acorn mark"
       = search_help "is:funny", "cards from funny sets (including acorn-marked cards from mixed sets)"
       = search_help "is:promo", "promotional cards"
-      = search_help "promo:fnm", "is promo type <code>fnm</code>. Other values are <code>alchemy</code>, <code>ampersand</code>, <code>arenaleague</code>, <code>boosterfun</code>, <code>boxtopper</code>, <code>brawldeck</code>, <code>bringafriend</code>, <code>bundle</code>, <code>buyabox</code>, <code>commanderparty</code>, <code>concept</code>, <code>convention</code>, <code>datestamped</code>, <code>draculaseries</code>, <code>draftweekend</code>, <code>duels</code>, <code>event</code>, <code>galaxyfoil</code>, <code>gameday</code>, <code>giftbox</code>, <code>gilded</code>, <code>glossy</code>, <code>godzillaseries</code>, <code>instore</code>, <code>intropack</code>, <code>jpwalker</code>, <code>judgegift</code>, <code>league</code>, <code>mediainsert</code>, <code>neonink</code>, <code>oilslick</code>, <code>openhouse</code>, <code>planeswalkerstamped</code>, <code>playerrewards</code>, <code>playpromo</code>, <code>premiereshop</code>, <code>prerelease</code>, <code>promopack</code>, <code>rebalanced</code>, <code>release</code>, <code>schinesealtart</code>, <code>setextension</code>, <code>setpromo</code>, <code>stamped</code>, <code>stepandcompleat</code>, <code>surgefoil</code>, <code>textured</code>, <code>themepack</code>, <code>thick</code>, <code>tourney</code>, <code>wizardsplaynetwork</code>"
+      = search_help "promo:fnm", "is promo type <code>fnm</code>. Other values are <code>alchemy</code>, <code>ampersand</code>, <code>arenaleague</code>, <code>boosterfun</code>, <code>boxtopper</code>, <code>brawldeck</code>, <code>bringafriend</code>, <code>bundle</code>, <code>buyabox</code>, <code>commanderparty</code>, <code>concept</code>, <code>convention</code>, <code>datestamped</code>, <code>draculaseries</code>, <code>draftweekend</code>, <code>duels</code>, <code>event</code>, <code>galaxyfoil</code>, <code>gameday</code>, <code>giftbox</code>, <code>gilded</code>, <code>glossy</code>, <code>godzillaseries</code>, <code>instore</code>, <code>intropack</code>, <code>jpwalker</code>, <code>judgegift</code>, <code>league</code>, <code>mediainsert</code>, <code>neonink</code>, <code>oilslick</code>, <code>openhouse</code>, <code>planeswalkerstamped</code>, <code>playerrewards</code>, <code>playpromo</code>, <code>premiereshop</code>, <code>prerelease</code>, <code>promopack</code>, <code>rebalanced</code>, <code>release</code>, <code>schinesealtart</code>, <code>setextension</code>, <code>setpromo</code>, <code>stamped</code>, <code>stepandcompleat</code>, <code>surgefoil</code>, <code>textured</code>, <code>themepack</code>, <code>thick</code>, <code>tourney</code>, <code>wizardsplaynetwork</code>, <code>serialized</code>, <code>halofoil</code>"
       = search_help "is:meld", "meld cards"
       = search_help "is:primary", "regular cards and directly playable parts of double-faced/meld/flip/aftermath cards"
       = search_help "is:secondary", "parts of double-faced/meld/flip/aftermath card that's not directly playable"
@@ -291,7 +292,7 @@
       = search_help "is:digital", "MTGO/Arena only"
       = search_help "is:oversized", "oversized cards"
       = search_help "is:tournament", "tournament printings (normal back, not oversized, not gold-bordered)"
-      = search_help "not:reprint", "first printings of cards"
+      = search_help "not:reprint", "first printings of cards (for cases like prerelease promos released one week before the set, neither regular nor promo card is considered a reprint)"
       = search_help "is:reprint", "reprints of cards"
       = search_help "is:unique", "cards which were never reprinted"
       = search_help "is:booster", "cards which appear in randomized boosters"
