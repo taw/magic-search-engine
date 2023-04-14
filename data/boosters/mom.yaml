@@ -1,0 +1,20 @@
+# This is extremely early draft
+# https://github.com/taw/magic-sealed-data/issues/34
+pack:
+- basic: 1
+  common: 9
+  uncommon: 3
+  rare_mythic: 1
+  chance: 2
+  mul: 1
+- basic: 1
+  common: 8
+  uncommon: 3
+  rare_mythic: 1
+  foil: 1
+  chance: 1
+  mul: 1
+sheets:
+  # totally made up rates
+  mul:
+    use: base_1248_by_rarity
