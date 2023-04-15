@@ -153,7 +153,7 @@ class IndexSerializer
 
     # Output in canonical form, to minimize diffs between mtgjson updates
     result["printings"] = printing_data.sort_by{|sc,d|
-      [set_order.fetch(sc), d["number"], d["multiverseid"]]
+      [set_order.fetch(sc), d["number"], d["multiverseid"] || 0]
     }
     result
   end
