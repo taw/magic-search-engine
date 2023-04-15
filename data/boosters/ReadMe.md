@@ -328,7 +328,7 @@ In order to load the booster into the `booster_index`, you should run
 
 `> ruby ./booster_indexer/bin/booster_indexer` 
 
-*If you are adding a new booster or modifying a set code* you will need to execute
+*If you are modifying a set code* you will need to execute
 
 `> ruby ./indexer/bin/indexer`
 
