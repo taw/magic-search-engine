@@ -64,5 +64,5 @@ sheets:
     code: "MOM"
   foil_etched:
     foil: true
-    filter: "e:mul frame:inverted" #Need to change this to be frame:etched when Scryfall gets fixed
+    filter: "e:mul number:66-130" # Change to frame:etched when json is fixed
     use: base_1248_by_rarity

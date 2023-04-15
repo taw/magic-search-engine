@@ -4,6 +4,7 @@
 # Don't know relative rarities of battles. Assuming 8/4/2/1 rates for now
 # DOn't know relative rarities of MUL cards. Assuming 4/2/1 rates for now
 pack:
+  basic_or_gainland: 1
   common_or_foil:
   - sfc_common_with_showcase: 8
     chance: 2
@@ -16,16 +17,40 @@ pack:
   battle: 1
   multiverse_legend: 1
 sheets:
+  basic_or_gainland:
+    any:
+    - query: "is:gainland"
+      chance: 1
+    - use: basic
+      chance: 1
   dfc_wildcard:
     any:
     - use: dfc_common_with_showcase
       chance: 8 * 5
-    - use: dfc_uncommon_with_showcase
-      chance: 4 * 30
-    - use: dfc_rare_with_showcase
-      chance: 2 * 16
-    - use: dfc_mythic_with_showcase
-      chance: 1 * 10
+    - any:
+      - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper"
+        rate: 1
+      - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+        rate: 2
+      - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) is:dfc -t:battle"
+        rate: 3
+      chance: 4 * 10
+    - any:
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper"
+        rate: 1
+      - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+        rate: 2
+      - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:dfc -t:battle"
+        rate: 3
+      chance: 2 * 5
+      any:
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper"
+        rate: 1
+      - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+        rate: 2
+      - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc -t:battle"
+        rate: 3
+      chance: 1 * 5
   sfc_wildcard:
     any:
     - use: sfc_uncommon_with_showcase
@@ -60,7 +85,7 @@ sheets:
         rate: 2
       - use: uncommon_has_no_showcase
         rate: 3
-      - rawquery: "e:mul -is:foilonly r:u"
+      - rawquery: "e:mul number:1-65 r:u" # Can we change the set size to make number<=set work?
         rate: 3
       chance: 5
     - any:
@@ -70,7 +95,7 @@ sheets:
         rate: 4
       - use: rare_has_no_showcase
         rate: 6
-      - rawquery: "e:mul -is:foilonly r:r"
+      - rawquery: "e:mul number:1-65 r:r"
         rate: 6
       - use: mythic_showcase
         rate: 1
@@ -78,6 +103,6 @@ sheets:
         rate: 2
       - use: mythic_has_no_showcase
         rate: 3
-      - rawquery: "e:mul -is:foilonly r:m"
+      - rawquery: "e:mul number:1-65 r:m"
         rate: 3
       chance: 3
