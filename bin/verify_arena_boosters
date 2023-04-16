@@ -27,12 +27,15 @@ class VerifyArenaBoosters
 
   def find_nonfoil_variant(booster)
     return booster if booster_without_foils?(booster)
-    variants_with_no_foils = booster.packs.keys.select{|b| !booster_has_foils?(b)}
-    if variants_with_no_foils.size == 1
-      return variants_with_no_foils[0]
+    variants_without_foils = booster.packs.select{|b,k| booster_without_foils?(b)}
+    if variants_without_foils.size == 1
+      return variants_without_foils.keys[0]
+    elsif variants_without_foils.size > 1
+      WeightedPack.new(variants_without_foils)
+    else
+      warn "#{booster.code} has #{variants_without_foils.size} variants with no foils, cannot pick one"
+      nil
     end
-    warn "#{booster.code} has #{variants_with_no_foils.size} variants with no foils, cannot pick unique one"
-    nil
   end
 
   # Merge cards with same name
