@@ -1,0 +1,51 @@
+# Data from https://web.archive.org/web/20211020171442/https://magic.wizards.com/en/articles/archive/feature/collecting-innistrad-midnight-hunt-2021-09-02
+# thank you wayback machine!
+pack:
+  basic_slot:
+  - basic: 1
+    chance: 17
+  - foil_basic: 1
+    chance: 3
+  sfc_common: 3
+  sfc_uncommon: 2
+  equinox_common_uncommon: 2
+  wildcard: 2
+  rare_mythic: 1
+  finale:
+  - foil_with_showcase: 1
+    chance: 3
+  - foil_with_showcase: 1
+    the_list: 1
+    chance: 1
+sheets:
+  sfc_common:
+    query: "r:c is:sfc"
+  equinox_common_uncommon:
+    any:
+    - use: common_showcase
+      rate: 2
+    - use: uncommon_showcase
+      rate: 1
+    - use: dfc_common
+      rate: 2
+    - use: dfc_uncommon
+      rate: 1
+  wildcard:
+    any:
+    - use: common
+      chance: 700
+    - use: uncommon
+      chance: 175
+    - any:
+      - use: rare_with_showcase
+        chance: 64*2
+      - use: mythic_with_showcase
+        chance: 20
+      - rawquery: "e:mic number<=38 r:r"
+        chance: 32*2
+      - rawquery: "e:mic number<=38 r:m"
+        chance: 6
+      chance: 125
+  the_list:
+    set: plist
+    code: "MID"
