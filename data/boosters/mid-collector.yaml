@@ -1,0 +1,28 @@
+# Data from https://web.archive.org/web/20211020171442/https://magic.wizards.com/en/articles/archive/feature/collecting-innistrad-midnight-hunt-2021-09-02
+# thank you wayback machine!
+pack:
+  foil_basic: 1
+  foil_common: 4
+  foil_uncommon: 2
+  foil_rare_mythic: 1
+  extended_rare_mythic: 1
+  extended_commander: 1
+  common_uncommon_showcase: 2
+  foil_common_uncommon_showcase: 1
+  rare_mythic_showcase: 1
+  foil_alt_art_rare_mythic: 1
+sheets:
+  foil_rare_mythic:
+    foil: true 
+    use: rare_mythic
+  extended_rare_mythic:
+    filter: "e:mid frame:extendedart"
+    use: rare_mythic
+  extended_commander:
+    filter: "e:mic frame:extendedart"
+    use: rare_mythic
+  foil_alt_art_rare_mythic:
+    foil: true
+    filter: "e:mid promo:boosterfun"
+    use: rare_mythic
+  
