@@ -33,7 +33,7 @@ class VerifyArenaBoosters
     elsif variants_without_foils.size > 1
       WeightedPack.new(variants_without_foils)
     else
-      warn "#{booster.code} has #{variants_without_foils.size} variants with no foils, cannot pick one"
+      puts "#{booster.code} has #{variants_without_foils.size} variants with no foils, cannot pick one"
       nil
     end
   end
@@ -51,13 +51,32 @@ class VerifyArenaBoosters
     result
   end
 
+  def report_detailed_differences(arena_ev, draft_ev)
+    if draft_ev.keys.to_set != arena_ev.keys.to_set
+      puts "  cards names differ"
+      return
+    else
+      puts "  cards names are same, but rates differ"
+    end
+
+    card_names = arena_ev.keys
+    card_names.each do |name|
+      a = arena_ev[name]
+      d = draft_ev[name]
+      next if a == d
+      apct = "%.2f%%" % (a * 100)
+      dpct = "%.2f%%" % (d * 100)
+      puts "  #{name}: #{a} (#{apct}) vs #{d} (#{dpct})"
+    end
+  end
+
   def call
     boosters_to_verify.each do |code|
       arena_booster = @db.supported_booster_types[code]
       draft_booster = @db.supported_booster_types[arena_booster.set_code]
       draft_nonfoil_booster = find_nonfoil_variant(draft_booster)
 
-      warn "#{code} has foils" if booster_has_foils?(arena_booster)
+      puts "#{code} has foils" if booster_has_foils?(arena_booster)
 
       next unless draft_nonfoil_booster
 
@@ -65,9 +84,10 @@ class VerifyArenaBoosters
       draft_ev = expected_values_by_name(draft_nonfoil_booster)
 
       if arena_ev == draft_ev
-        warn "#{code} OK"
+        puts "#{code} OK"
       else
-        warn "#{code} EV mismatch"
+        puts "#{code} EV mismatch"
+        report_detailed_differences(arena_ev, draft_ev)
       end
     end
   end
