@@ -1,24 +1,37 @@
 pack:
 - basic: 1
   common_or_foil:
-  - sfc_common: 1
+  - sfc_common_with_showcase: 1
     chance: 2
-  - foil: 1
+  - foil_with_showcase: 1
     chance: 1
-  sfc_common: 8
-  dfc_common: 1
-  sfc_uncommon: 2
-  dfc_uncommon: 1
-  sfc_rare_mythic: 1
+  sfc_common_with_showcase: 8
+  dfc_common_with_showcase: 1
+  sfc_uncommon_with_showcase: 2
+  dfc_uncommon_with_showcase: 1
+  sfc_rare_mythic_with_showcase: 1
   chance: 5
 - basic: 1
   common_or_foil:
-  - sfc_common: 1
+  - sfc_common_with_showcase: 1
     chance: 2
-  - foil: 1
+  - foil_with_showcase: 1
     chance: 1
-  sfc_common: 8
-  dfc_common: 1
-  sfc_uncommon: 3
-  dfc_rare_mythic: 1
+  sfc_common_with_showcase: 8
+  dfc_common_with_showcase: 1
+  sfc_uncommon_with_showcase: 3
+  dfc_rare_mythic_with_showcase: 1
   chance: 1
+sheets:
+  sfc_rare_mythic_with_showcase:
+    any:
+    - use: sfc_rare_with_showcase
+      chance: 53 * 2
+    - use: sfc_mythic_with_showcase
+      chance: 15
+  dfc_rare_mythic_with_showcase:
+    any:
+    - use: dfc_rare_with_showcase
+      chance: 11 * 2
+    - use: dfc_mythic_with_showcase
+      chance: 5
