@@ -328,11 +328,11 @@ In order to load the booster into the `booster_index`, you should run
 
 `> ruby ./booster_indexer/bin/booster_indexer` 
 
-*If you are modifying a set code* you will need to execute
+*If you are modifying a set code* you will need to execute the following to load the new set sheet information into the main index:
 
 `> ruby ./indexer/bin/indexer`
 
-to load the new booster into the main index. Once you have properly indexed the booster information, you can access it in multiple ways:
+Once you have properly indexed the booster information, you can access it in multiple ways:
 
 - Use `> ruby ./bin/human_export_sealed_data {temp folder}` to build all current boosters into the location specified by `{temp folder}`. Typically the folder `tmp/sealed` is used but ultimately that is up to you.
 - To view the booster visually in the Rails frontend, use the instructions in the top level ReadMe to build and load the frontend. Then you can navigate to `http://localhost:3000/pack/{pack-code}` to view the results in HTML.
