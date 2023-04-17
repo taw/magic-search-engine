@@ -62,10 +62,23 @@ sheets:
   extended_or_borderless_rare_mythic:
     filter: "e:neo (frame:extendedart or is:borderless)"
     use: rare_mythic
+  rare_mythic_showcase:
+    any:
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+      rate: 4
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor)"
+      rate: 2
+    - rawquery: "e:{set} promo:boosterfun (Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor) number<=416"
+      rate: 1
   foil_rare_mythic_showcase:
     foil: true
-    filter: "e:neo promo:boosterfun -frame:etched"
-    use: rare_mythic
+    any:
+    - rawquery: "e:{set} r:r promo:boosterfun -frame:etched -promo:neonink is:paper"
+      rate: 6
+    - rawquery: "e:{set} r:m promo:boosterfun -frame:etched is:paper number<=505 -Jin-Gitaxias"
+      rate: 3
+    - rawquery: "e:{set} r:m promo:boosterfun -frame:etched is:paper number<=505 Jin-Gitaxias"
+      rate: 2
   etched_rare_mythic:
     foil: true
     filter: "e:neo frame:etched"

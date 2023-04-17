@@ -61,15 +61,54 @@ sheets:
   mythic_with_showcase:
     # Showcase treatments 1/4 for relevant cards
     any:
-    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+    - rawquery: "e:{set} promo:boosterfun (Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor) number<=416"
       rate: 1
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor)"
+      rate: 2
     - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
-      rate: 3
+      rate: 6
     - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
-      rate: 4
+      rate: 8
   rare_mythic_with_showcase:
     any:
     - use: rare_with_showcase
       chance: 59*2
     - use: mythic_with_showcase
       chance: 18
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - use: common_showcase
+        rate: 1
+      - use: common_has_showcase
+        rate: 3
+      - use: common_has_no_showcase
+        rate: 4
+      - use: basic
+        rate: 4
+      chance: 12
+    - any:
+      - use: uncommon_showcase
+        rate: 1
+      - use: uncommon_has_showcase
+        rate: 3
+      - use: uncommon_has_no_showcase
+        rate: 4
+      chance: 5
+    - any:
+      - use: rare_showcase
+        rate: 4
+      - use: rare_has_showcase
+        rate: 12
+      - use: rare_has_no_showcase
+        rate: 16
+      - rawquery: "e:{set} promo:boosterfun (Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor) number<=416"
+        rate: 1
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor)"
+        rate: 2
+      - use: mythic_has_showcase
+        rate: 6
+      - use: mythic_has_no_showcase
+        rate: 8
+      chance: 3
