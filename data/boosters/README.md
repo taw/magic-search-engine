@@ -88,7 +88,7 @@ The `chance` parameter correlates to the relative rarity of each version. So for
 
 Sheets and subsheets can always include a `count` variable to assist in troubleshooting. This will warn the user if the number of cards returned by a query does not match the expected `count` value.
 
-Parent sheets can also include a `foil` boolean to indicate if the sheet is foil. You cannot mix foil/non-foil cards in the same sheet. To achieve this, use a [Variable slot](variable_slots_link)
+Parent sheets can also include a `foil` boolean to indicate if the sheet is foil. You cannot mix foil/non-foil cards in the same sheet. To achieve this, use a [Variable slot](#variable-slots)
 
 #### Common sheets
 
