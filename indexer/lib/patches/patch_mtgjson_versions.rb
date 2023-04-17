@@ -191,6 +191,8 @@ class PatchMtgjsonVersions < Patch
         card["acorn"] = true
       end
 
+      card["stamp"] = card.delete("securityStamp")
+
       if card["attractionLights"]
         card["attraction_lights"] = card["attractionLights"]
       end

@@ -136,6 +136,7 @@ class IndexSerializer
           "shandalar",
           "signature",
           "spotlight",
+          "stamp",
           "subsets",
           "textless",
           "timeshifted",
