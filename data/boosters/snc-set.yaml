@@ -1,0 +1,112 @@
+# Data from https://magic.wizards.com/en/news/feature/streets-of-new-capenna-product-overview-2022-04-07
+# Assumptions
+# foil basic rate changed to ~21% - translating this as 3/14 packs
+# Gilded foil rate assumed to be ~2/box or 1/15 packs
+pack:
+  land_slot:
+  - basic: 1
+    chance: 11
+  - foil_basic: 1
+    chance: 3
+  common: 3
+  uncommon: 3
+  common_uncommon_showcase: 1
+  wildcard: 2
+  list-slot:
+  - rare_mythic: 1
+    chance: 3
+  - rare_mythic: 1
+    the_list: 1
+    chance: 1
+  foil_slot:
+  - foil_with_showcase: 1
+    chance: 14
+  - gilded_foil: 1
+    chance: 1
+sheets:
+  common:
+    query: "r:c"
+  basic:
+    any:
+    - query: "r:b number<272"
+      count: 10
+      rate: 2
+    - query:  "r:b number>=272"
+      count: 10
+      rate: 1
+  foil_basic:
+    foil: true
+    use: basic
+  wildcard:
+    any:
+    - use: common
+      chance: 700
+    - use: uncommon
+      chance: 175
+    - any:
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper is:triome"
+        rate: 2
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -is:triome"
+        rate: 4
+      - use: rare_has_showcase
+        rate: 8
+      - use: rare_has_no_showcase
+        rate: 12
+      - rawquery: "e:snc number<=93 r:r"
+        rate: 12
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (t:planeswalker or Urabrask) number<=360"
+        rate: 1
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -t:planeswalker -Urabrask"
+        rate: 2
+      - use: mythic_has_showcase
+        rate: 4
+      - use: mythic_has_no_showcase
+        rate: 6
+      - rawquery: "e:snc number<=93 r:m"
+        rate: 6
+      chance: 125
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - use: common_showcase
+        rate: 1
+      - use: common_has_showcase
+        rate: 2
+      - use: common_has_no_showcase
+        rate: 3
+      - query: "r:b"
+        rate: 3
+      chance: 12
+    - use: uncommon_with_showcase
+      chance: 5
+    - any:
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper is:triome"
+        rate: 2
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -is:triome"
+        rate: 4
+      - use: rare_has_showcase
+        rate: 8
+      - use: rare_has_no_showcase
+        rate: 12
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (t:planeswalker or Urabrask) number<=360"
+        rate: 1
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -t:planeswalker -Urabrask"
+        rate: 2
+      - use: mythic_has_showcase
+        rate: 4
+      - use: mythic_has_no_showcase
+        rate: 6
+      chance: 3
+  gilded_foil:
+    foil: true
+    filter: "e:snc promo:gilded"
+    use: base_1248_by_rarity
+  the_list:
+    any:
+    - set: plist
+      code: "SNC"
+      chance: 1
+    - set: slx
+      code: "SNC"
+      chance: 1
