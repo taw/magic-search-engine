@@ -1,0 +1,94 @@
+# Data from https://magic.wizards.com/en/news/feature/kamigawa-neon-dynasty-product-overview-2022-01-27
+# Assumptions:
+# Foil etched, traditional foil, and neon ink cards appear at same rate, with rares twice as common as mythics
+pack:
+  foil_fullart_land: 1
+  foil_sfc_common: 2
+  foil_sfc_uncommon: 2
+  foil_dfc_common_uncommon: 1
+  samurai_common_uncommon: 1
+  foil_samurai_common_uncommon: 1
+  ninja_common_uncommon: 1
+  foil_ninja_common_uncommon: 1
+  foil_rare_mythic: 1
+  extended_commander: 1
+  extended_or_borderless_rare_mythic: 1
+  rare_mythic_showcase: 1
+  finale:
+  - foil_rare_mythic_showcase: 1
+    chance: (122*2) + 37
+  - etched_rare_mythic: 1
+    chance: (3*2) + 9
+  - neon_ink: 1
+    chance: 2
+sheets:
+  foil_fullart_land:
+    foil: true
+    query: "r:b is:fullart"
+  foil_sfc_common:
+    foil: true
+    balanced: false
+    use: sfc_common
+  foil_sfc_uncommon:
+    foil: true
+    use: sfc_uncommon
+  foil_dfc_common_uncommon:
+    foil: true
+    any:
+    - query: "r:c is:dfc"
+      count: 6
+      rate: 10
+    - query: "r:u is:dfc"
+      count: 8
+      rate: 7
+  samurai_common_uncommon:
+    filter: "e:neo t:samurai promo:boosterfun"
+    use: common_uncommon
+  foil_samurai_common_uncommon:
+    foil: true
+    use: samurai_common_uncommon
+  ninja_common_uncommon:
+    filter: "e:neo t:ninja promo:boosterfun"
+    use: common_uncommon
+  foil_ninja_common_uncommon:
+    foil: true
+    use: ninja_common_uncommon
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  extended_commander:
+    filter: "e:nec frame:extendedart"
+    use: rare_mythic
+  extended_or_borderless_rare_mythic:
+    filter: "e:neo (frame:extendedart or is:borderless)"
+    use: rare_mythic
+  rare_mythic_showcase:
+    any:
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+      rate: 4
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor)"
+      rate: 2
+    - rawquery: "e:{set} promo:boosterfun (Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor) number<=416"
+      rate: 1
+  foil_rare_mythic_showcase:
+    foil: true
+    any:
+    - rawquery: "e:{set} r:r promo:boosterfun -frame:etched -promo:neonink is:paper"
+      rate: 6
+    - rawquery: "e:{set} r:m promo:boosterfun -frame:etched is:paper number<=505 -Jin-Gitaxias"
+      rate: 3
+    - rawquery: "e:{set} r:m promo:boosterfun -frame:etched is:paper number<=505 Jin-Gitaxias"
+      rate: 2
+  etched_rare_mythic:
+    foil: true
+    filter: "e:neo frame:etched"
+    use: rare_mythic
+  neon_ink:
+    foil: true
+    any:
+    - rawquery: "e:neo number:429"
+      rate: 1
+    - rawquery: "e:neo number:430"
+      rate: 4
+    - rawquery: "e:neo number:431"
+      rate: 8
