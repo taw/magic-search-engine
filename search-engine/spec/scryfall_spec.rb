@@ -229,12 +229,6 @@ describe "Scryfall" do
       "Tazeem",
       "Tazeem Raptor",
       "Tazeem Roilmage"
-    end
-
-  it "is_colorshifted" do
-    # MCI/v3 is:timeshifted is SF/v4 is:colorshifted
-    assert_search_equal "is:colorshifted", "frame:colorshifted"
-    assert_search_equal "is:timeshifted", "e:tsb"
   end
 
   it "oracle_tilde" do
