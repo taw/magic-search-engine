@@ -53,7 +53,7 @@ class ConditionExpr < ConditionSimple
       eval_card_value(card.count_paperprints)
     when "year"
       [:number, card.year]
-    when "defense"
+    when "defense", "defence"
       eval_card_value(card.defense)
     when "life"
       eval_card_value(card.life)

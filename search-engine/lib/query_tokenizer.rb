@@ -188,7 +188,7 @@ class QueryTokenizer
         rescue
           @warnings << "unknown rarity: #{rarity}"
         end
-      elsif s.scan(/(pow|power|loy|loyalty|tou|toughness|cmc|mv|year|sets|papersets|prints|paperprints|defense|hand|life)\s*(>=|>|<=|<|=|:)\s*(pow\b|power\b|tou\b|toughness\b|cmc\b|mv\b|loy\b|loyalty\b|year\b|defense\b|hand\b|life\b|[²\d\.\-\*\+½x∞\?]+|"[²\d\.\-\*\+½x∞\?]+")/i)
+      elsif s.scan(/(pow|power|loy|loyalty|tou|toughness|cmc|mv|year|sets|papersets|prints|paperprints|defen[cs]e|hand|life)\s*(>=|>|<=|<|=|:)\s*(pow\b|power\b|tou\b|toughness\b|cmc\b|mv\b|loy\b|loyalty\b|year\b|defen[cs]e\b|hand\b|life\b|[²\d\.\-\*\+½x∞\?]+|"[²\d\.\-\*\+½x∞\?]+")/i)
         aliases = {"power" => "pow", "loyalty" => "loy", "toughness" => "tou"}
         a = s[1].downcase
         a = aliases[a] || a
