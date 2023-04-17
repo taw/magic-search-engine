@@ -63,16 +63,20 @@ sheets:
     - use: uncommon_with_showcase
       chance: 5
     - any:
-      - use: rare_showcase
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper is:triome"
         rate: 2
-      - use: rare_has_showcase
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -is:triome"
         rate: 4
+      - use: rare_has_showcase
+        rate: 8
       - use: rare_has_no_showcase
-        rate: 6
-      - use: mythic_showcase
+        rate: 12
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (t:planeswalker or Urabrask) number<=360"
         rate: 1
-      - use: mythic_has_showcase
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -t:planeswalker -Urabrask"
         rate: 2
+      - use: mythic_has_showcase
+        rate: 4
       - use: mythic_has_no_showcase
-        rate: 3
+        rate: 6
       chance: 3
