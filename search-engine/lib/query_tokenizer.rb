@@ -125,6 +125,8 @@ class QueryTokenizer
         tokens << [:test, ConditionNumber.new(s[2] || s[3], s[1])]
       elsif s.scan(/(?:w|wm|watermark)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
         tokens << [:test, ConditionWatermark.new(s[1] || s[2])]
+      elsif s.scan(/(?:sig|signature)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
+        tokens << [:test, ConditionSignature.new(s[1] || s[2])]
       elsif s.scan(/(?:lore)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
         tokens << [:test, ConditionLore.new(s[1] || s[2])]
       elsif s.scan(/deck\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_\-]+))/i)
@@ -219,7 +221,7 @@ class QueryTokenizer
         cond = "Spotlight" if cond == "Story"
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/has:(partner|watermark|indicator|showcase)\b/)
+      elsif s.scan(/has:(partner|watermark|indicator|showcase|signature)\b/)
         cond = s[1].capitalize
         klass = Kernel.const_get("ConditionHas#{cond}")
         tokens << [:test, klass.new]
