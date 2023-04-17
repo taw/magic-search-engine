@@ -4,7 +4,11 @@ class ConditionPromoType < ConditionSimple
   end
 
   def match?(card)
-    card.promo_types&.include?(@promo_type)
+    if @promo_type == "*"
+      card.promo_types and !card.promo_types.empty?
+    else
+      card.promo_types&.include?(@promo_type)
+    end
   end
 
   def to_s
