@@ -61,3 +61,38 @@ sheets:
   the_list:
     set: plist
     code: "VOW"
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+        rate: 1
+      - query: "r:c alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 2
+      - query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 3
+      - use: basic
+        rate: 3
+      chance: 12
+    - any:
+      - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+        rate: 1
+      - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 2
+      - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 3
+      chance: 5
+    - any:
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+        rate: 2
+      - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 4
+      - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 6
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+        rate: 1
+      - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 2
+      - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 3
+      chance: 3
