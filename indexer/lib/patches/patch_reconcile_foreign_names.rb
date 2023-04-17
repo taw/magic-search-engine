@@ -56,11 +56,12 @@ class PatchReconcileForeignNames < Patch
           end
           next
         end
-        unless e["name"]
+        name = e["faceName"] || e["name"]
+        unless name
           warn "Foreign data entry without name"
           next
         end
-        foreign_name = e["name"].gsub("&nbsp;", " ").gsub("\u00a0", " ").sub(/ —\z/, "").gsub("\ufeff", "")
+        foreign_name = name.gsub("&nbsp;", " ").gsub("\u00a0", " ").sub(/ —\z/, "").gsub("\ufeff", "")
         next if foreign_name == ""
         raw_data[language_code] ||= {}
         raw_data[language_code][foreign_name] ||= []
