@@ -16,6 +16,9 @@
       - if card.reserved
         %li.infolabel
           = "#{card.name} is on the Reserved List."
+      - if card.spotlight
+        %li.infolabel
+          Story Spotlight
       - if card.watermark
         %li.infolabel
           = "Watermark: #{card.watermark}"
