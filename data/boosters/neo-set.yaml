@@ -1,0 +1,69 @@
+# Data from https://magic.wizards.com/en/news/feature/kamigawa-neon-dynasty-product-overview-2022-01-27
+pack:
+  land_slot:
+  - foil_basic: 1
+    chance: 3
+  - basic_or_gainland: 1
+    chance: 17
+  sfc_common: 3
+  sfc_uncommon: 2
+  dfc_common_uncommon: 1
+  common_uncommon_showcase: 1
+  wildcard: 2
+  rare_mythic: 1
+  finale:
+  - foil_with_showcase: 1
+    chance: 3
+  - foil_with_showcase: 1
+    the_list: 1
+    chance: 1
+sheets:
+  sfc_common:
+    query: "r:c is:sfc"
+  basic_or_gainland:
+    any:
+    - query: "r:b is:fullart"
+      chance: 7
+    - query: "is:gainland"
+      chance: 7
+    - query: "r:b -is:fullart"
+      chance: 3
+  dfc_common_uncommon:
+    any:
+    - query: "r:c is:dfc"
+      count: 6
+      rate: 10
+    - query: "r:u is:dfc"
+      count: 8
+      rate: 7
+  wildcard:
+    any:
+    - any:
+      - use: common
+        rate: 1
+      - query: "r:b is:fullart"
+        rate: 1
+      chance: 700
+    - use: uncommon
+      chance: 175
+    - any:
+      - use: rare_showcase
+        rate: 2
+      - use: rare_has_showcase
+        rate: 6
+      - use: rare_has_no_showcase
+        rate: 8
+      - rawquery: "e:nec number<=38 r:r"
+        rate: 8
+      - use: mythic_showcase
+        rate: 1
+      - use: mythic_has_showcase
+        rate: 3
+      - use: mythic_has_no_showcase
+        rate: 4
+      - rawquery: "e:nec number<=38 r:m"
+        rate: 4
+      chance: 125
+  the_list:
+    set: plist
+    code: "NEO"
