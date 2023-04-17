@@ -108,7 +108,6 @@ class IndexSerializer
       printing_data << [
         printing["set_code"],
         printing.slice(
-          "acorn",
           "arena",
           "artist",
           "attraction_lights",
