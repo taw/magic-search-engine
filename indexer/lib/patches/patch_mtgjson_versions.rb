@@ -145,6 +145,8 @@ class PatchMtgjsonVersions < Patch
       card["arena"] = true if card.delete("isArena") or card["availability"]&.delete("arena")
       card["paper"] = true if card.delete("isPaper") or card["availability"]&.delete("paper")
       card["mtgo"] = true if card.delete("isMtgo") or card["availability"]&.delete("mtgo")
+      # shandalar data is incorrect in mtgjson, so we do not want it, we do our own calculations
+      # dreamcast data is incorrect in mtgjson, there's no replacement on our side
 
       # This logic changed at some point, I like old logic better
       if card["oversized"] or %W[CEI CED 30A].include?(card["set"]["official_code"]) or card["border"] == "gold"
