@@ -19,6 +19,9 @@
       - if card.watermark
         %li.infolabel
           = "Watermark: #{card.watermark}"
+      - if card.signature
+        %li.infolabel
+          = "Signature: #{card.signature}"
       %li.infolabel
         = "Rarity: #{card.ui_rarity}"
       %li.infolabel
