@@ -19,6 +19,9 @@
       - if card.spotlight
         %li.infolabel
           Story Spotlight
+      - if card.oversized
+        %li.infolabel
+          Oversized card
       - if card.watermark
         %li.infolabel
           = "Watermark: #{card.watermark}"
