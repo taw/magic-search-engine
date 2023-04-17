@@ -31,6 +31,9 @@
       - if card.promo_types
         %li.infolabel
           = "Promo: #{card.promo_types.sort.join(", ")}"
+      - if card.stamp
+        %li.infolabel
+          = "Stamp: #{card.stamp}"
       %li.infolabel
         = "Rarity: #{card.ui_rarity}"
       %li.infolabel

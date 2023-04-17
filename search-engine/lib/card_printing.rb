@@ -4,6 +4,7 @@ class CardPrinting
   attr_reader :rarity_code, :print_sheet, :oversized, :frame_effects, :foiling, :spotlight
   attr_reader :textless, :fullart, :buyabox, :flavor_name, :nontournament, :acorn
   attr_reader :attraction_lights, :promo_types, :variant_misprint, :variant_foreign, :signature, :subsets, :timeshifted
+  attr_reader :stamp
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
@@ -36,11 +37,11 @@ class CardPrinting
     @frame_effects = data["frame_effects"] || []
     rarity = data["rarity"]
     @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
-    @exclude_from_boosters = data["exclude_from_boosters"]
     @acorn = data["acorn"]
     @arena = data["arena"]
     @attraction_lights = data["attraction_lights"]
     @buyabox = data["buyabox"]
+    @exclude_from_boosters = data["exclude_from_boosters"]
     @fullart = data["fullart"]
     @mtgo = data["mtgo"]
     @nontournament = data["nontournament"]
@@ -53,12 +54,13 @@ class CardPrinting
     @shandalar = data["shandalar"]
     @signature = data["signature"]
     @spotlight = data["spotlight"]
+    @stamp = data["stamp"]
+    @subsets = data["subsets"]
     @textless = data["textless"]
+    @timeshifted = data["timeshifted"]
     @variant_foreign = data["variant_foreign"]
     @variant_misprint = data["variant_misprint"]
     @xmage = data["xmage"]
-    @subsets = data["subsets"]
-    @timeshifted = data["timeshifted"]
 
     # Performance cache
     @stemmed_name = @card.stemmed_name
