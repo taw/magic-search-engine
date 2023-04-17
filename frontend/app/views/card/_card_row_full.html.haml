@@ -28,6 +28,9 @@
       - if card.subsets
         %li.infolabel
           = "Subsets: #{card.subsets.join(", ")}"
+      - if card.promo_types
+        %li.infolabel
+          = "Promo: #{card.promo_types.sort.join(", ")}"
       %li.infolabel
         = "Rarity: #{card.ui_rarity}"
       %li.infolabel
