@@ -82,7 +82,6 @@ class IndexSerializer
         "display_power",
         "display_toughness",
         "foreign_names",
-        "frameVersion",
         "funny",
         "hand", # vanguard
         "hide_mana_cost",
