@@ -79,7 +79,7 @@ describe "Time Spiral block" do
   end
 
   it "is:timeshifted" do
-    assert_count_printings "is:timeshifted", 122
+    assert_count_printings "is:timeshifted", 122 + 81 # TSTS + FUT
   end
 
   it "manaless suspend cards" do
@@ -118,5 +118,11 @@ describe "Time Spiral block" do
   it "oracle unicode" do
     assert_search_results %[ft:"Lim-Dûl"], "Drudge Reavers"
     assert_search_results %[ft:"Lim-Dul"], "Drudge Reavers"
+  end
+
+  # MCI/v3 is:timeshifted is SF/v4+ is:colorshifted
+  # we now use new mtgjson definition
+  it "is:colorshifted" do
+    assert_search_equal "is:colorshifted", "frame:colorshifted"
   end
 end
