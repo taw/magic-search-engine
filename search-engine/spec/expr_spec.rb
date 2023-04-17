@@ -46,6 +46,7 @@ describe "Expressions Test" do
     assert_search_results "defense<4 e:mom",
       "Invasion of Gobakhan",
       "Invasion of Zendikar"
+    assert_search_equal "defense=7", "defence=7"
   end
 
   it "hand" do
