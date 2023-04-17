@@ -1,30 +1,114 @@
+# Saga rates from https://www.lethe.xyz/mtg/collation/neo.html
+# Showcase rate changed to 1/4 instead of 1/3
 pack:
   land: 1
   dfc_common_uncommon: 1
   common_or_foil:
-  - sfc_common: 1
+  - sfc_common_with_showcase: 1
     chance: 2
-  - foil: 1
+  - foil_with_showcase: 1
     chance: 1
-  sfc_common: 8
-  sfc_uncommon: 3
-  rare_mythic: 1
+  sfc_common_with_showcase: 8
+  sfc_uncommon_with_showcase: 3
+  rare_mythic_with_showcase: 1
 sheets:
   land:
-    query: "r:b or is:gainland"
-    count: 30
+    any:
+    - query: "is:gainland"
+      rate: 6
+      count: 10
+    - query: "r:b is:fullart"
+      rate: 4
+      count: 10
+    - query: "r:b -is:fullart"
+      rate: 2
+      count: 10
   dfc_common_uncommon:
-    # Guessing the rate. With this rate:
-    # SFC uncommon rarity 3/80
-    # DFC uncommon rarity 3/10 * (1/10) = 3/80
-    # but SFC commons are vastly overrepresented
     any:
     - query: "r:c is:dfc"
       count: 6
-      chance: 7
+      rate: 10
     - query: "r:u is:dfc"
       count: 8
+      rate: 7
+  sfc_common_with_showcase:
+    # Showcase treatments 1/4 for relevant cards
+    any:
+    - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper"
+      rate: 1
+    - query: "r:c alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+      rate: 3
+    - query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart) is:sfc -is:gainland"
+      rate: 4
+  sfc_uncommon_with_showcase:
+    # Showcase treatments 1/4 for relevant cards
+    any:
+    - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper"
+      rate: 1
+    - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+      rate: 3
+    - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+      rate: 4
+  rare_with_showcase:
+    # Showcase treatments 1/4 for relevant cards
+    any:
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+      rate: 1
+    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+      rate: 3
+    - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+      rate: 4
+  mythic_with_showcase:
+    # Showcase treatments 1/4 for relevant cards
+    any:
+    - rawquery: "e:{set} promo:boosterfun (Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor) number<=416"
+      rate: 1
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor)"
+      rate: 2
+    - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+      rate: 6
+    - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+      rate: 8
+  rare_mythic_with_showcase:
+    any:
+    - use: rare_with_showcase
+      chance: 59*2
+    - use: mythic_with_showcase
+      chance: 18
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - use: common_showcase
+        rate: 1
+      - use: common_has_showcase
+        rate: 3
+      - use: common_has_no_showcase
+        rate: 4
+      - use: basic
+        rate: 4
+      chance: 12
+    - any:
+      - use: uncommon_showcase
+        rate: 1
+      - use: uncommon_has_showcase
+        rate: 3
+      - use: uncommon_has_no_showcase
+        rate: 4
+      chance: 5
+    - any:
+      - use: rare_showcase
+        rate: 4
+      - use: rare_has_showcase
+        rate: 12
+      - use: rare_has_no_showcase
+        rate: 16
+      - rawquery: "e:{set} promo:boosterfun (Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor) number<=416"
+        rate: 1
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor)"
+        rate: 2
+      - use: mythic_has_showcase
+        rate: 6
+      - use: mythic_has_no_showcase
+        rate: 8
       chance: 3
-  sfc_common:
-    balanced: true
-    query: "r:c is:sfc -is:gainland"
