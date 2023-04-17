@@ -38,7 +38,7 @@ sheets:
       rate: 1
     - query: "r:c alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
       rate: 3
-    - query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+    - query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart) is:sfc -is:gainland"
       rate: 4
   sfc_uncommon_with_showcase:
     # Showcase treatments 1/4 for relevant cards
