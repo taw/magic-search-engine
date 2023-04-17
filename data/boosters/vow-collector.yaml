@@ -1,0 +1,52 @@
+# Data from https://magic.wizards.com/en/news/feature/innistrad-crimson-vow-product-overview-2021-10-28
+# and https://magic.wizards.com/en/news/feature/collecting-innistrad-crimson-vow-2021-10-28
+# Assumptions
+# Rate of foil dracula uncommons unknown, assuming 1/6 or 2/box
+pack:
+  foil_basic: 1
+  foil_common: 4
+  foil_uncommon: 2
+  foil_rare_mythic: 1
+  cu_showcase_slots:
+  - common_uncommon_showcase: 2
+    chance: 5
+  - common_uncommon_showcase: 1
+    foil_uncommon_dracula: 1
+    chance: 1
+  extended_rare_mythic: 1
+  extended_commander: 1
+  showcase_rm:
+  - uncommon_dracula: 1
+    rare_mythic_showcase: 1
+    chance: 1
+  - common_uncommon_showcase: 1
+    rare_mythic_dracula: 1
+    chance: 1
+  foil_rare_mythic_showcase: 1
+sheets:
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  common_uncommon_showcase:
+    filter: "e:vow promo:boosterfun -promo:draculaseries"
+    use: common_uncommon
+  extended_rare_mythic:
+    filter: "e:vow frame:extendedart"
+    use: rare_mythic
+  extended_commander:
+    filter: "e:voc frame:extendedart"
+    use: rare_mythic
+  uncommon_dracula:
+    rawquery: "e:vow r:u promo:draculaseries"
+  foil_uncommon_dracula:
+    foil: true
+    use: uncommon_dracula
+  rare_mythic_showcase:
+    filter: "e:vow promo:boosterfun -promo:draculaseries -frame:extendedart"
+    use: rare_mythic
+  rare_mythic_dracula:
+    filter: "e:vow promo:draculaseries"
+    use: rare_mythic
+  foil_rare_mythic_showcase:
+    filter: "e:vow promo:boosterfun"
+    use: rare_mythic
