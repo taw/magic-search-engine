@@ -1,24 +1,136 @@
 pack:
 - basic: 1
   common_or_foil:
-  - sfc_common: 1
+  - sfc_common_with_showcase: 1
     chance: 2
-  - foil: 1
+  - foil_with_showcase: 1
     chance: 1
-  sfc_common: 8
-  dfc_common: 1
-  sfc_uncommon: 2
-  dfc_uncommon: 1
-  sfc_rare_mythic: 1
+  sfc_common_with_showcase: 8
+  dfc_common_with_showcase: 1
+  sfc_uncommon_with_showcase: 2
+  dfc_uncommon_with_showcase: 1
+  sfc_rare_mythic_with_showcase: 1
   chance: 5
 - basic: 1
   common_or_foil:
-  - sfc_common: 1
+  - sfc_common_with_showcase: 1
     chance: 2
-  - foil: 1
+  - foil_with_showcase: 1
     chance: 1
-  sfc_common: 8
-  dfc_common: 1
-  sfc_uncommon: 3
-  dfc_rare_mythic: 1
+  sfc_common_with_showcase: 8
+  dfc_common_with_showcase: 1
+  sfc_uncommon_with_showcase: 3
+  dfc_rare_mythic_with_showcase: 1
   chance: 1
+sheets:
+  sfc_common_with_showcase:
+    # Showcase treatments 1/3 for relevant cards
+    any:
+    - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper -promo:draculaseries"
+      rate: 1
+    - query: "r:c alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:sfc"
+      rate: 2
+    - query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:sfc"
+      rate: 3
+  sfc_uncommon_with_showcase:
+    # Showcase treatments 1/3 for relevant cards
+    any:
+    - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper -promo:draculaseries"
+      rate: 1
+    - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:sfc"
+      rate: 2
+    - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:sfc"
+      rate: 3
+  sfc_rare_with_showcase:
+    # Showcase treatments 1/3 for relevant cards
+    any:
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper -promo:draculaseries"
+      rate: 1
+    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:sfc"
+      rate: 2
+    - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:sfc"
+      rate: 3
+  sfc_mythic_with_showcase:
+    # Showcase treatments 1/3 for relevant cards
+    any:
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper -promo:draculaseries"
+      rate: 1
+    - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:sfc"
+      rate: 2
+    - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:sfc"
+      rate: 3
+  dfc_common_with_showcase:
+    # Showcase treatments 1/3 for relevant cards
+    any:
+    - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper -promo:draculaseries"
+      rate: 1
+    - query: "r:c alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:dfc"
+      rate: 2
+    - query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:dfc"
+      rate: 3
+  dfc_uncommon_with_showcase:
+    # Showcase treatments 1/3 for relevant cards
+    any:
+    - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper -promo:draculaseries"
+      rate: 1
+    - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:dfc"
+      rate: 2
+    - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:dfc"
+      rate: 3
+  dfc_rare_with_showcase:
+    # Showcase treatments 1/3 for relevant cards
+    any:
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper -promo:draculaseries"
+      rate: 1
+    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:dfc"
+      rate: 2
+    - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:dfc"
+      rate: 3
+  dfc_mythic_with_showcase:
+    # Showcase treatments 1/3 for relevant cards
+    any:
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper -promo:draculaseries"
+      rate: 1
+    - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:dfc"
+      rate: 2
+    - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:dfc"
+      rate: 3
+  sfc_rare_mythic_with_showcase:
+    any:
+    - use: sfc_rare_with_showcase
+      chance: 53*2
+    - use: sfc_mythic_with_showcase
+      chance: 15
+  dfc_rare_mythic_with_showcase:
+    any:
+    - use: dfc_rare_with_showcase
+      chance: 11*2
+    - use: dfc_mythic_with_showcase
+      chance: 5
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - use: sfc_common_with_showcase
+        chance: 90
+      - use: dfc_common_with_showcase
+        chance: 10
+      - use: basic
+        chance: 10
+      chance: 12
+    - any:
+      - use: sfc_uncommon_with_showcase
+        chance: 60
+      - use: dfc_uncommon_with_showcase
+        chance: 23
+      chance: 5
+    - any:
+      - use: sfc_rare_with_showcase
+        chance: 53*2
+      - use: dfc_rare_with_showcase
+        chance: 11*2
+      - use: sfc_mythic_with_showcase
+        chance: 15
+      - use: dfc_mythic_with_showcase
+        chance: 5
+      chance: 3

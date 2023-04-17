@@ -1,0 +1,98 @@
+# Data from https://magic.wizards.com/en/news/feature/innistrad-crimson-vow-product-overview-2021-10-28
+# Assume that showcase and dfc cards in common/uncommon slot are equally likely
+pack:
+  basic_slot:
+  - basic: 1
+    chance: 17
+  - foil_basic: 1
+    chance: 3
+  sfc_common: 3
+  sfc_uncommon: 2
+  showcase_common_uncommon: 2
+  wildcard: 2
+  rare_mythic: 1
+  finale:
+  - foil_with_showcase: 1
+    chance: 3
+  - foil_with_showcase: 1
+    the_list: 1
+    chance: 1
+sheets:
+  sfc_common:
+    query: "r:c is:sfc"
+  showcase_common_uncommon:
+    any:
+    - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+      rate: 2
+    - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+      rate: 1
+    - use: dfc_common
+      rate: 2
+    - use: dfc_uncommon
+      rate: 1
+  wildcard:
+    any:
+    - use: common
+      chance: 700
+    - use: uncommon
+      chance: 175
+    - any:
+      - any:
+        - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+          rate: 1
+        - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+          rate: 2
+        - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+          rate: 3
+        chance: 64*2
+      - any:
+        - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+          rate: 1
+        - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+          rate: 2
+        - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+          rate: 3
+        chance: 20
+      - rawquery: "e:voc number<=38 r:r"
+        chance: 32*2
+      - rawquery: "e:voc number<=38 r:m"
+        chance: 6
+      chance: 125
+  the_list:
+    set: plist
+    code: "VOW"
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+        rate: 1
+      - query: "r:c alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 2
+      - query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 3
+      - use: basic
+        rate: 3
+      chance: 12
+    - any:
+      - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+        rate: 1
+      - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 2
+      - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 3
+      chance: 5
+    - any:
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+        rate: 2
+      - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 4
+      - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 6
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+        rate: 1
+      - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 2
+      - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        rate: 3
+      chance: 3
