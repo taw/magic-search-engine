@@ -135,6 +135,7 @@ class IndexSerializer
           "rarity",
           "release_date",
           "shandalar",
+          "signature",
           "spotlight",
           "textless",
           "variant_foreign",
