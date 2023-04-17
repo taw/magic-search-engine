@@ -101,10 +101,6 @@ class PatchMtgjsonVersions < Patch
       card.delete("manaCost") if card["manaCost"] == ""
       card.delete("names") if card["names"] == []
 
-      if card["frameVersion"] == "future"
-        card["timeshifted"] = true
-      end
-
       if card["flavorText"]
         card["flavor"] = card.delete("flavorText")
       end
@@ -128,6 +124,7 @@ class PatchMtgjsonVersions < Patch
       card["spotlight"] = card.delete("isStorySpotlight")
       card["fullart"] = card.delete("isFullArt")
       card["textless"] = card.delete("isTextless")
+      card["timeshifted"] = card.delete("isTimeshifted")
 
       # OC21/OAFC are technically "display cards" not oversized
       # https://github.com/mtgjson/mtgjson/issues/815

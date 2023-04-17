@@ -138,6 +138,7 @@ class IndexSerializer
           "spotlight",
           "subsets",
           "textless",
+          "timeshifted",
           "variant_foreign",
           "variant_misprint",
           "watermark",
