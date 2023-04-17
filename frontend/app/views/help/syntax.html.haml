@@ -166,7 +166,7 @@
       = search_help "cast:sb", "cards you can cast if your deck contains just Snow Swamps"
       = search_help "cast:cu", "cards you can cast if your deck contains just Wastes and Islands"
 
-    %h4 Search by power, toughness, and loyalty
+    %h4 Search by power, toughness, loyalty, and similar attributes
     %ul
       = search_help "pow=4", "creature cards with power 4"
       = search_help "tou>=5", "creature cards with toughness 5 or more"
@@ -176,6 +176,12 @@
       = search_help "pow=1+*", "creature cards with power equal 1+*"
       = search_help "tou=7-*", "creature cards with toughness equal 7-*"
       = search_help "pow>=*", "creature cards with power equal *, 1+*, or 2+*"
+      = search_help "defense=7", "Battle cards with defense 7"
+      = search_help "hand=-2", "Vanguard cards with hand size bonus -2"
+      = search_help "hand=+1", "Vanguard cards with hand size bonus +1"
+      = search_help "life=-2", "Vanguard cards with life bonus -8"
+      = search_help "life=0", "Vanguard cards with life bonus +0"
+      = search_help "life>=+5", "Vanguard cards with life bonus +5 or higher"
 
     %h4 Boolean expressions
     %ul
