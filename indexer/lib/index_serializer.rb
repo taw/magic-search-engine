@@ -136,6 +136,7 @@ class IndexSerializer
           "shandalar",
           "signature",
           "spotlight",
+          "subsets",
           "textless",
           "variant_foreign",
           "variant_misprint",

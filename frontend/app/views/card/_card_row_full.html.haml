@@ -22,6 +22,9 @@
       - if card.signature
         %li.infolabel
           = "Signature: #{card.signature}"
+      - if card.subsets
+        %li.infolabel
+          = "Subsets: #{card.subsets.join(", ")}"
       %li.infolabel
         = "Rarity: #{card.ui_rarity}"
       %li.infolabel
