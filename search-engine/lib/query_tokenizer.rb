@@ -207,7 +207,7 @@ class QueryTokenizer
         tokens << [:test, ConditionMana.new(op, mana)]
       elsif s.scan(/(?:cast)\s*(?:=|:)\s*((?:[\dwubrgxyzchmnos]|\{.*?\})*)/i)
         tokens << [:test, ConditionCast.new(s[1])]
-      elsif s.scan(/(is|not)\s*[:=]\s*(vanilla|spell|permanent|funny|timeshifted|colorshifted|reserved|multipart|promo|primary|secondary|front|back|commander|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|creatureland|scryland|battleland|guildgate|karoo|painland|triland|canopyland|shadowland|storageland|tangoland|canland|phyrexian|hybrid|augment|unique|booster|draft|historic|holofoil|foilonly|nonfoilonly|foil|nonfoil|foilboth|brawler|keywordsoup|partner|oversized|tournament|spotlight|story|modal|textless|fullart|full|ante|custom|mainfront|buyabox|tricycleland|triome|racist|masterpiece|cycleland|bikeland|bicycleland|acorn|horizontal|vertical|baseset|basictype)\b/i)
+      elsif s.scan(/(is|not)\s*[:=]\s*(vanilla|spell|permanent|funny|timeshifted|colorshifted|reserved|multipart|promo|primary|secondary|front|back|commander|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|creatureland|scryland|battleland|guildgate|karoo|painland|triland|canopyland|shadowland|storageland|tangoland|canland|phyrexian|hybrid|augment|unique|booster|draft|historic|holofoil|foilonly|nonfoilonly|foil|nonfoil|foilboth|brawler|keywordsoup|partner|oversized|tournament|spotlight|story|modal|textless|fullart|full|ante|custom|mainfront|buyabox|tricycleland|triome|racist|masterpiece|cycleland|bikeland|bicycleland|horizontal|vertical|baseset|basictype)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         cond = s[2].capitalize
         cond = "Bounceland" if cond == "Karoo"
@@ -232,7 +232,7 @@ class QueryTokenizer
         kind = "double-faced" if kind == "dfc"
         kind = "modaldfc" if kind == "modal-dfc"
         kind = "modaldfc" if kind == "mdfc"
-        # mtgjson v3 vs v4 differences
+        # mtgjson v3 vs v4+ differences
         kind = "planar" if kind == "plane"
         kind = "planar" if kind == "phenomenon"
         tokens << [:test, ConditionLayout.new(kind)]
@@ -247,6 +247,18 @@ class QueryTokenizer
         layout = (s[1]||s[2]).downcase
         layouts = %W[normal leveler vanguard dfc double-faced mdfc modal-dfc modaldfc transform token split flip plane scheme phenomenon meld aftermath adventure saga planar augment host class dungeon]
         @warnings << "Unknown layout: #{layout}. Known layout types are: #{layouts.join(", ")}."
+      elsif s.scan(/stamp\s*[:=]\s*(?:"(.*?)"|([\.\*\p{L}\p{Digit}_]+))/i)
+        kind = (s[1]||s[2]).downcase
+        stamps = %W[acorn oval triangle arena circle heart *]
+        if stamps.include?(kind)
+          tokens << [:test, ConditionStamp.new(kind)]
+        else
+          @warnings << "Unknown stamp: #{stamp}. Known stamp types are: #{stamps.join(", ")}."
+        end
+      elsif s.scan(/(is|not)\s*[:=]\s*(acorn|oval|triangle|circle|heart)/)
+        tokens << [:not] if s[1].downcase == "not"
+        kind = s[2].downcase
+        tokens << [:test, ConditionStamp.new(kind)]
       elsif s.scan(/(is|not|game)\s*[:=]\s*(paper|arena|mtgo|shandalar|xmage)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         cond = s[2].capitalize
