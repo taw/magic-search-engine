@@ -1,0 +1,29 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-double-masters-2022-and-product-overview
+# Assume that textured foils appear at same rate as other cards in slot
+pack:
+  foil_common: 5
+  foil_uncommon: 2
+  common_uncommon_showcase: 2
+  foil_common_uncommon_showcase: 2
+  foil_rare_mythic: 1
+  rare_mythic_showcase: 1
+  etched_rare_mythic: 1
+  final_slot:
+  - foil_rare_mythic_showcase: 1
+    chance: 80
+  - textured_rare_mythic_showcase: 1
+    chance: 5
+sheets:
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  etched_rare_mythic:
+    filter: "e:2x2 number:413-572"
+    foil: true
+    use: rare_mythic
+  foil_rare_mythic_showcase:
+    foil: true
+    use: rare_mythic_showcase
+  textured_rare_mythic_showcase:
+    foil: true
+    rawquery: "e:2x2 number:573-577"
