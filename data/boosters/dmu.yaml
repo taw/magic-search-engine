@@ -6,7 +6,7 @@ pack:
   common_or_foil:
   - common: 1
     chance: 2
-  - foil: 1
+  - foil_with_showcase: 1
     chance: 1
   nonlegendary_uncommon: 3
   legendary_rare_mythic: 1
@@ -24,7 +24,11 @@ pack:
   chance: 3
 sheets:
   legendary_uncommon:
-    query: 't:"legendary creature" r:u'
+    any:
+    - query: 't:"legendary creature" r:u'
+      rate: 2
+    - use: uncommon_showcase
+      rate: 1
     count: 20
   nonlegendary_uncommon:
     query: '-t:"legendary creature" r:u'
@@ -32,10 +36,14 @@ sheets:
   legendary_rare_mythic:
     any:
     - query: 't:"legendary creature" r:r'
-      count:
-      rate: 2
+      rate: 8
+    - rawquery: 'e:{set} r:r t:"legendary creature" promo:boosterfun -is:foilonly -frame:extendedart is:paper'
+      rate: 4
     - query: 't:"legendary creature" r:m'
-      count:
+      rate: 4
+    - rawquery: 'e:{set} r:m t:"legendary creature" promo:boosterfun -is:foilonly -frame:extendedart is:paper -Sheoldred'
+      rate: 2
+    - rawquery: 'e:{set} Sheoldred, the Apocalypse promo:boosterfun number<=427'
       rate: 1
   nonlegendary_rare_mythic:
     any:
