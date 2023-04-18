@@ -1,20 +1,26 @@
-# data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine\
-# Don't know yet if you can pull 2 battles in 1 pack. Will need to adjust as more data is available
-# Don't know relative rarities of U/R/M cards in wildcard slot. Assuming 8/4/2/1 rates for now
-# Don't know relative rarities of battles. Assuming 8/4/2/1 rates for now
-# DOn't know relative rarities of MUL cards. Assuming 4/2/1 rates for now
+# Data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine
 pack:
   basic_or_gainland: 1
   common_or_foil:
-  - sfc_common_with_showcase: 8
+  - sfc_common: 8
     chance: 2
-  - sfc_common_with_showcase: 7
+  - sfc_common: 7
     foil_with_showcase_and_mul: 1
     chance: 1
-  sfc_uncommon_with_showcase: 2
-  dfc_wildcard: 1
-  sfc_wildcard: 1
-  battle: 1
+  sfc_uncommon: 2
+  possible_rare_slot:
+  - dfc_common_uncommon: 1
+    uncommon_battle: 1
+    sfc_rare_mythic: 1
+    chance: 44*2 + 10
+  - sfc_uncommon: 1
+    dfc_common_uncommon: 1
+    rare_mythic_battle: 1
+    chance: 11*2 + 5
+  - sfc_uncommon: 1
+    uncommon_battle: 1
+    dfc_rare_mythic: 1
+    chance: 5*2 + 5
   multiverse_legend: 1
 sheets:
   basic_or_gainland:
@@ -23,7 +29,10 @@ sheets:
       chance: 1
     - use: basic
       chance: 1
-  dfc_wildcard:
+  sfc_common:
+    balanced: true
+    query: "r:c is:sfc -is:gainland"
+  dfc_common_uncommon:
     any:
     - use: dfc_common_with_showcase
       chance: 8 * 5
@@ -35,6 +44,8 @@ sheets:
       - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) is:dfc -t:battle"
         rate: 3
       chance: 4 * 10
+  dfc_rare_mythic:
+    any:
     - any:
       - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper"
         rate: 1
@@ -43,7 +54,7 @@ sheets:
       - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:dfc -t:battle"
         rate: 3
       chance: 2 * 5
-      any:
+    - any:
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper"
         rate: 1
       - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
@@ -51,17 +62,17 @@ sheets:
       - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc -t:battle"
         rate: 3
       chance: 1 * 5
-  sfc_wildcard:
+  sfc_rare_mythic:
     any:
-    - use: sfc_uncommon_with_showcase
-      chance: 4 * 50
     - use: sfc_rare_with_showcase
       chance: 2 * 44
     - use: sfc_mythic_with_showcase
       chance: 1 * 10
-  battle:
+  uncommon_battle:
+    query: "r:u t:battle"
+  rare_mythic_battle:
     filter: "e:mom t:battle"
-    use: base_1248_by_rarity
+    use: rare_mythic
   multiverse_legend:
     filter: "e:mul -is:foilonly"
     use: base_1248_by_rarity
