@@ -1,0 +1,111 @@
+# Data from https://magic.wizards.com/en/news/feature/commander-legends-battle-for-baldurs-gate-product-overview
+pack:
+  land_slot:
+  - basic: 1
+    chance: 4
+  - foil_basic: 1
+    chance: 1
+  common: 3
+  uncommon: 3
+  common_uncommon_showcase: 1
+  wildcard: 2
+  background: 1
+  legendary_with_showcase: 1
+  rare_mythic: 1
+  foil_with_showcase: 1
+  foil_etched_legend: 1
+sheets:
+  basic:
+    rawquery: "e:clb t:basic"
+  foil_basic:
+    foil: true
+    use: basic
+  common:
+    query: "r:c"
+  background:
+    filter: "t:background"
+    use: base_1248_by_rarity
+  legendary_with_showcase:
+    any:
+    # no idea about ratios
+    - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
+      rate: 4
+    - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+      rate: 8
+    - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+      rate: 12
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
+      rate: 2
+    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+      rate: 4
+    - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background -t:land"
+      rate: 6
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
+      rate: 1
+    - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+      rate: 2
+    - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+      rate: 3
+  wildcard:
+    any:
+    - use: common
+      chance: 700
+    - use: uncommon
+      chance: 175
+    - any:
+      - rawquery: rare_showcase
+        rate: 4
+      - use: rare_has_showcase
+        rate: 8
+      - use: rare_has_no_showcase
+        rate: 12
+      - rawquery: "e:clb number:646-685 r:r"
+        rate: 12
+      - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper t:"elder dragon"'
+        rate: 1
+      - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -t:"elder dragon"'
+        rate: 2
+      - use: mythic_has_showcase
+        rate: 4
+      - use: mythic_has_no_showcase
+        rate: 6
+      - rawquery: "e:clb number:646-685 r:m"
+        rate: 6
+      chance: 125
+  foil_etched_legend:
+    foil: true
+    filter: "e:clb number:471-552" # Change this to frame:etched when MTGJson is updated
+    use: base_1248_by_rarity
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - use: common_showcase
+        rate: 1
+      - use: common_has_showcase
+        rate: 2
+      - use: common_has_no_showcase
+        rate: 3
+      - use: basic
+        rate: 3
+      - use: special
+        rate: 3
+      chance: 12
+    - use: uncommon_with_showcase
+      chance: 5
+    - any:
+      - use: rare_showcase
+        rate: 4
+      - use: rare_has_showcase
+        rate: 8
+      - use: rare_has_no_showcase
+        rate: 12
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart t:dragon is:paper"
+        rate: 1
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -t:dragon is:paper"
+        rate: 2
+      - use: mythic_has_showcase
+        rate: 4
+      - use: mythic_has_no_showcase
+        rate: 6
+      chance: 3
