@@ -1,0 +1,89 @@
+# Data from https://magic.wizards.com/en/news/feature/dominaria-united-product-overview-2022-08-18
+# Foil basic rate changed to ~21% - translating this as 3/14 packs
+pack:
+  basic_slot:
+  - basic: 1
+    chance: 11
+  - foil_basic: 1
+    chance: 3
+  common: 3
+  uncommon: 3
+  uncommon_showcase: 1
+  wildcard: 2
+  rare_mythic: 1
+  finale:
+  - foil_with_showcase: 1
+    chance: 3
+  - foil_with_showcase: 1
+    the_list: 1
+    chance: 1
+sheets:
+  common:
+    query: "r:c"
+  wildcard:
+    any:
+    - use: common
+      chance: 700
+    - use: uncommon
+      chance: 175
+    - any:
+      - use: rare_showcase
+        rate: 8
+      - use: rare_has_showcase
+        rate: 16
+      - use: rare_has_no_showcase
+        rate: 24
+      - rawquery: "e:dmu number:282-286"
+        rate: 24
+      - rawquery: "e:dmc number:1-28 r:r"
+        rate: 24
+      - rawquery: "e:dmu Ajani, Sleeper Agent -is:foilonly -frame:extendedart is:paper promo:boosterfun"
+        rate: 1
+      - rawquery: "e:dmu Sheoldred, the Apocalypse -is:foilonly -frame:extendedart is:paper promo:boosterfun number<=427"
+        rate: 2
+      - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Ajani, Sleeper Agent or Sheoldred, the Apocalypse)'
+        rate: 4 
+      - use: mythic_has_showcase
+        rate: 8
+      - use: mythic_has_no_showcase
+        rate: 12
+      - rawquery: "e:dmc number:1-28 r:m"
+        rate: 12
+      chance: 125
+  the_list:
+    any:
+    - set: plist
+      code: "DMU"
+      rate: 1
+    - set: slx
+      code: "DMU"
+      rate: 1
+  foil_with_showcase:
+    foil: true
+    any:
+    - any: 
+      - use: common
+        rate: 1
+      - use: basic
+        rate: 1
+      chance: 12
+    - use: uncommon_with_showcase
+      chance: 5
+    - any:
+      - use: rare_showcase
+        rate: 8
+      - use: rare_has_showcase
+        rate: 16
+      - use: rare_has_no_showcase
+        rate: 24
+      - rawquery: "e:dmu Ajani, Sleeper Agent -is:foilonly -frame:extendedart is:paper promo:boosterfun"
+        rate: 1
+      - rawquery: "e:dmu Sheoldred, the Apocalypse -is:foilonly -frame:extendedart is:paper promo:boosterfun number<=427"
+        rate: 2
+      - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Ajani, Sleeper Agent or Sheoldred, the Apocalypse)'
+        rate: 4 
+      - use: mythic_has_showcase
+        rate: 8
+      - use: mythic_has_no_showcase
+        rate: 12
+      chance: 3
