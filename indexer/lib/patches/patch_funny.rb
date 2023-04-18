@@ -7,7 +7,7 @@ class PatchFunny < Patch
       funny = printings.all?{|card|
         funny_sets.include?(card["set_code"]) or
         errata_sets.include?(card["set_code"]) or
-        card["acorn"]
+        card["stamp"] == "acorn"
       }
 
       if funny

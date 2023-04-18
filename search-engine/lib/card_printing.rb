@@ -3,7 +3,8 @@ class CardPrinting
   attr_reader :watermark, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border
   attr_reader :rarity_code, :print_sheet, :oversized, :frame_effects, :foiling, :spotlight
   attr_reader :textless, :fullart, :buyabox, :flavor_name, :nontournament, :acorn
-  attr_reader :attraction_lights, :promo_types, :variant_misprint, :variant_foreign
+  attr_reader :attraction_lights, :promo_types, :variant_misprint, :variant_foreign, :signature, :subsets, :timeshifted
+  attr_reader :stamp
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
@@ -36,26 +37,29 @@ class CardPrinting
     @frame_effects = data["frame_effects"] || []
     rarity = data["rarity"]
     @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
+    @acorn = data["acorn"]
+    @arena = data["arena"]
+    @attraction_lights = data["attraction_lights"]
+    @buyabox = data["buyabox"]
     @exclude_from_boosters = data["exclude_from_boosters"]
-    @print_sheet = data["print_sheet"]
-    @partner = data["partner"] # overriden by CardDatabase
+    @fullart = data["fullart"]
+    @mtgo = data["mtgo"]
+    @nontournament = data["nontournament"]
     @others = data["others"] # overriden by CardDatabase
     @oversized = data["oversized"]
-    @nontournament = data["nontournament"]
-    @spotlight = data["spotlight"]
-    @fullart = data["fullart"]
-    @textless = data["textless"]
-    @buyabox = data["buyabox"]
-    @acorn = data["acorn"]
-    @attraction_lights = data["attraction_lights"]
+    @paper = data["paper"]
+    @partner = data["partner"] # overriden by CardDatabase
+    @print_sheet = data["print_sheet"]
     @promo_types = data["promo_types"]
+    @shandalar = data["shandalar"]
+    @signature = data["signature"]
+    @spotlight = data["spotlight"]
+    @stamp = data["stamp"]
+    @subsets = data["subsets"]
+    @textless = data["textless"]
+    @timeshifted = data["timeshifted"]
     @variant_foreign = data["variant_foreign"]
     @variant_misprint = data["variant_misprint"]
-
-    @paper = data["paper"]
-    @arena = data["arena"]
-    @mtgo = data["mtgo"]
-    @shandalar = data["shandalar"]
     @xmage = data["xmage"]
 
     # Performance cache

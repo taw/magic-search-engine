@@ -1,0 +1,96 @@
+#!/usr/bin/env ruby
+
+require_relative "../search-engine/lib/card_database"
+require "memoist"
+
+class VerifyArenaBoosters
+  attr_reader :db
+
+  def initialize
+    @db = CardDatabase.load
+  end
+
+  def boosters_to_verify
+    @boosters_to_verify ||= begin
+      arena_boosters = @db.supported_booster_types.keys.grep(/-arena\z/)
+      arena_boosters.select{|k| @db.supported_booster_types[k.split("-", 2)[0]]}
+    end
+  end
+
+  def booster_has_foils?(booster)
+    !booster.expected_values.keys.select(&:foil).empty?
+  end
+
+  def booster_without_foils?(booster)
+    !booster_has_foils?(booster)
+  end
+
+  def find_nonfoil_variant(booster)
+    return booster if booster_without_foils?(booster)
+    variants_without_foils = booster.packs.select{|b,k| booster_without_foils?(b)}
+    if variants_without_foils.size == 1
+      return variants_without_foils.keys[0]
+    elsif variants_without_foils.size > 1
+      WeightedPack.new(variants_without_foils)
+    else
+      puts "#{booster.code} has #{variants_without_foils.size} variants with no foils, cannot pick one"
+      nil
+    end
+  end
+
+  # Merge cards with same name
+  # Skip basics
+  def expected_values_by_name(booster)
+    result = {}
+    booster.expected_values.each do |card, ev|
+      name = card.name
+      next if ["Forest", "Island", "Mountain", "Plains", "Swamp"].include?(name)
+      result[name] ||= 0
+      result[name] += ev
+    end
+    result
+  end
+
+  def report_detailed_differences(arena_ev, draft_ev)
+    if draft_ev.keys.to_set != arena_ev.keys.to_set
+      puts "  cards names differ"
+      return
+    else
+      puts "  cards names are same, but rates differ"
+    end
+
+    card_names = arena_ev.keys
+    card_names.each do |name|
+      a = arena_ev[name]
+      d = draft_ev[name]
+      next if a == d
+      apct = "%.2f%%" % (a * 100)
+      dpct = "%.2f%%" % (d * 100)
+      puts "  #{name}: #{a} (#{apct}) vs #{d} (#{dpct})"
+    end
+  end
+
+  def call
+    boosters_to_verify.each do |code|
+      arena_booster = @db.supported_booster_types[code]
+      draft_booster = @db.supported_booster_types[arena_booster.set_code]
+      draft_nonfoil_booster = find_nonfoil_variant(draft_booster)
+
+      puts "#{code} has foils" if booster_has_foils?(arena_booster)
+
+      next unless draft_nonfoil_booster
+
+      arena_ev = expected_values_by_name(arena_booster)
+      draft_ev = expected_values_by_name(draft_nonfoil_booster)
+
+      if arena_ev == draft_ev
+        puts "#{code} OK"
+      else
+        puts "#{code} EV mismatch"
+        report_detailed_differences(arena_ev, draft_ev)
+      end
+    end
+  end
+end
+
+VerifyArenaBoosters.new.call

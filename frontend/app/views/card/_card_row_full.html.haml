@@ -16,9 +16,27 @@
       - if card.reserved
         %li.infolabel
           = "#{card.name} is on the Reserved List."
+      - if card.spotlight
+        %li.infolabel
+          Story Spotlight
+      - if card.oversized
+        %li.infolabel
+          Oversized card
       - if card.watermark
         %li.infolabel
           = "Watermark: #{card.watermark}"
+      - if card.signature
+        %li.infolabel
+          = "Signature: #{card.signature}"
+      - if card.subsets
+        %li.infolabel
+          = "Subsets: #{card.subsets.join(", ")}"
+      - if card.promo_types
+        %li.infolabel
+          = "Promo: #{card.promo_types.sort.join(", ")}"
+      - if card.stamp
+        %li.infolabel
+          = "Stamp: #{card.stamp}"
       %li.infolabel
         = "Rarity: #{card.ui_rarity}"
       %li.infolabel

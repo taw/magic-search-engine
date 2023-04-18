@@ -166,7 +166,7 @@
       = search_help "cast:sb", "cards you can cast if your deck contains just Snow Swamps"
       = search_help "cast:cu", "cards you can cast if your deck contains just Wastes and Islands"
 
-    %h4 Search by power, toughness, and loyalty
+    %h4 Search by power, toughness, loyalty, and similar attributes
     %ul
       = search_help "pow=4", "creature cards with power 4"
       = search_help "tou>=5", "creature cards with toughness 5 or more"
@@ -176,6 +176,12 @@
       = search_help "pow=1+*", "creature cards with power equal 1+*"
       = search_help "tou=7-*", "creature cards with toughness equal 7-*"
       = search_help "pow>=*", "creature cards with power equal *, 1+*, or 2+*"
+      = search_help "defense=7", "Battle cards with defense 7"
+      = search_help "hand=-2", "Vanguard cards with hand size bonus -2"
+      = search_help "hand=+1", "Vanguard cards with hand size bonus +1"
+      = search_help "life=-2", "Vanguard cards with life bonus -8"
+      = search_help "life=0", "Vanguard cards with life bonus +0"
+      = search_help "life>=+5", "Vanguard cards with life bonus +5 or higher"
 
     %h4 Boolean expressions
     %ul
@@ -251,13 +257,19 @@
       = search_help "st:deck", "All sets consisting of pre-built decks"
       = search_help "st:standard", "Standard sets (core and expansions)"
 
-    %h4 Search by watermark
+    %h4 Search by watermark or signature
+    %div Some cards have watermark or a signature in text box. You can query them with <code>watermark:</code> or <code>siganture:</code> queries.
     %ul
       = search_help "w:izzet", "cards with Izzet watermark (Return to Ravnica block)"
-      = search_help "w:phyrexian", "cards with Phyrexian watermark (Scars of Mirrodin block)"
+      = search_help "watermark:phyrexian", "cards with Phyrexian watermark (Scars of Mirrodin block)"
       = search_help "w:*", "cards with any watermark"
       = search_help "has:watermark", "cards with any watermark"
       = search_help "-w:*", "cards with no watermark"
+      = search_help "sig:Nuijten", "cards with Julien Nuijten's signature"
+      = search_help "signature:Šlemr", "cards with Jakub Šlemr's signature (works with or without accented characters)"
+      = search_help "sig:*", "cards with any signature"
+      = search_help "has:signature", "cards with any signature"
+      = search_help "-sig:*", "cards with no signature"
 
     %h4 Search by card frame features
     %div For each of these you can use not: as opposite of is:. Data might occasionally be inaccurate for some promo printings.
@@ -280,10 +292,12 @@
       = search_help "is:flip", "flip cards (Kamigawa)"
       = search_help "is:dfc", "double-faced cards"
       = search_help "is:multipart", "multi-part cards (split, flip, or dfc)"
-      = search_help "is:acorn", "cards with acorn mark"
+      = search_help "stamp:acorn", "cards with acorn security stamp. Other values are <code>oval</code>, <code>triangle</code>, <code>arena</code>, <code>circle</code>, <code>heart</code>"
+      = search_help "stamp:*", "cards with any security stamp"
       = search_help "is:funny", "cards from funny sets (including acorn-marked cards from mixed sets)"
       = search_help "is:promo", "promotional cards"
       = search_help "promo:fnm", "is promo type <code>fnm</code>. Other values are <code>alchemy</code>, <code>ampersand</code>, <code>arenaleague</code>, <code>boosterfun</code>, <code>boxtopper</code>, <code>brawldeck</code>, <code>bringafriend</code>, <code>bundle</code>, <code>buyabox</code>, <code>commanderparty</code>, <code>concept</code>, <code>convention</code>, <code>datestamped</code>, <code>doublerainbow</code>, <code>draculaseries</code>, <code>draftweekend</code>, <code>duels</code>, <code>event</code>, <code>galaxyfoil</code>, <code>gameday</code>, <code>giftbox</code>, <code>gilded</code>, <code>glossy</code>, <code>godzillaseries</code>, <code>halofoil</code>, <code>instore</code>, <code>intropack</code>, <code>jpwalker</code>, <code>judgegift</code>, <code>league</code>, <code>mediainsert</code>, <code>neonink</code>, <code>oilslick</code>, <code>openhouse</code>, <code>planeswalkerstamped</code>, <code>playerrewards</code>, <code>playpromo</code>, <code>premiereshop</code>, <code>prerelease</code>, <code>promopack</code>, <code>rebalanced</code>, <code>release</code>, <code>schinesealtart</code>, <code>serialized</code>, <code>setextension</code>, <code>setpromo</code>, <code>stamped</code>, <code>stepandcompleat</code>, <code>surgefoil</code>, <code>textured</code>, <code>themepack</code>, <code>thick</code>, <code>tourney</code>, <code>wizardsplaynetwork</code>"
+      = search_help "promo:*", "has any promo type (this uses different system than is:promo, so there is some non-overlap)"
       = search_help "is:meld", "meld cards"
       = search_help "is:primary", "regular cards and directly playable parts of double-faced/meld/flip/aftermath cards"
       = search_help "is:secondary", "parts of double-faced/meld/flip/aftermath card that's not directly playable"

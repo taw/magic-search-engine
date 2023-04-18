@@ -82,7 +82,6 @@ class IndexSerializer
         "display_power",
         "display_toughness",
         "foreign_names",
-        "frameVersion",
         "funny",
         "hand", # vanguard
         "hide_mana_cost",
@@ -109,7 +108,6 @@ class IndexSerializer
       printing_data << [
         printing["set_code"],
         printing.slice(
-          "acorn",
           "arena",
           "artist",
           "attraction_lights",
@@ -135,8 +133,12 @@ class IndexSerializer
           "rarity",
           "release_date",
           "shandalar",
+          "signature",
           "spotlight",
+          "stamp",
+          "subsets",
           "textless",
+          "timeshifted",
           "variant_foreign",
           "variant_misprint",
           "watermark",

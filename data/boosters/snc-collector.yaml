@@ -1,0 +1,69 @@
+# Data from https://magic.wizards.com/en/news/feature/streets-of-new-capenna-product-overview-2022-04-07
+# Assumptions:
+# Gilded and etched foils appear at same rate as traditional foils in the slots they can appear in.
+pack:
+  foil_fullart_basic: 1
+  foil_common: 4
+  foil_uncommon: 2
+  common_uncommon_showcase: 2
+  foil_rare_mythic: 1
+  extended_rare_mythic: 1
+  extended_commander: 1
+  rare_mythic_showcase: 1
+  foil_showcase_cu_slot:
+  - foil_common_uncommon_showcase: 1
+    chance: 35
+  - gilded_common_uncommon_showcase: 1
+    chance: 25
+  foil_showcase_rm_slot:
+  - foil_rare_mythic_showcase: 1
+    chance: 280
+  - etched_rare_mythic_showcase: 1
+    chance: 13
+  - gilded_rare_mythic_showcase: 1
+    chance: 45
+sheets:
+  foil_fullart_basic:
+    foil: true
+    query: "r:b is:fullart"
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  extended_rare_mythic:
+    filter: "e:snc frame:extendedart"
+    use: rare_mythic
+  extended_commander:
+    filter: "e:ncc frame:extendedart"
+    use: rare_mythic
+  rare_mythic_showcase:
+    any:
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper is:triome"
+      rate: 2
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -is:triome"
+      rate: 4
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (t:planeswalker or Urabrask) number<=360"
+      rate: 1
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -t:planeswalker -Urabrask"
+      rate: 2
+  gilded_common_uncommon_showcase:
+    foil: true
+    filter: "e:snc promo:gilded"
+    use: common_uncommon
+  gilded_rare_mythic_showcase:
+    foil: true
+    filter: "e:snc promo:gilded"
+    use: rare_mythic
+  etched_rare_mythic_showcase:
+    foil: true
+    filter: "e:snc frame:etched"
+    use: rare_mythic
+  foil_rare_mythic_showcase:
+    any:
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly is:paper is:triome"
+      rate: 2
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly is:paper -is:triome"
+      rate: 4
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly is:paper (t:planeswalker or Urabrask) number<=360"
+      rate: 1
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly is:paper -t:planeswalker -Urabrask"
+      rate: 2

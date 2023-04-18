@@ -101,10 +101,6 @@ class PatchMtgjsonVersions < Patch
       card.delete("manaCost") if card["manaCost"] == ""
       card.delete("names") if card["names"] == []
 
-      if card["frameVersion"] == "future"
-        card["timeshifted"] = true
-      end
-
       if card["flavorText"]
         card["flavor"] = card.delete("flavorText")
       end
@@ -128,6 +124,7 @@ class PatchMtgjsonVersions < Patch
       card["spotlight"] = card.delete("isStorySpotlight")
       card["fullart"] = card.delete("isFullArt")
       card["textless"] = card.delete("isTextless")
+      card["timeshifted"] = card.delete("isTimeshifted")
 
       # OC21/OAFC are technically "display cards" not oversized
       # https://github.com/mtgjson/mtgjson/issues/815
@@ -145,6 +142,8 @@ class PatchMtgjsonVersions < Patch
       card["arena"] = true if card.delete("isArena") or card["availability"]&.delete("arena")
       card["paper"] = true if card.delete("isPaper") or card["availability"]&.delete("paper")
       card["mtgo"] = true if card.delete("isMtgo") or card["availability"]&.delete("mtgo")
+      # shandalar data is incorrect in mtgjson, so we do not want it, we do our own calculations
+      # dreamcast data is incorrect in mtgjson, there's no replacement on our side
 
       # This logic changed at some point, I like old logic better
       if card["oversized"] or %W[CEI CED 30A].include?(card["set"]["official_code"]) or card["border"] == "gold"
@@ -188,9 +187,7 @@ class PatchMtgjsonVersions < Patch
         card["buyabox"] = true
       end
 
-      if card["securityStamp"] == "acorn"
-        card["acorn"] = true
-      end
+      card["stamp"] = card.delete("securityStamp")
 
       if card["attractionLights"]
         card["attraction_lights"] = card["attractionLights"]

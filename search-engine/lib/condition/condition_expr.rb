@@ -53,6 +53,12 @@ class ConditionExpr < ConditionSimple
       eval_card_value(card.count_paperprints)
     when "year"
       [:number, card.year]
+    when "defense", "defence"
+      eval_card_value(card.defense)
+    when "life"
+      eval_card_value(card.life)
+    when "hand"
+      eval_card_value(card.hand)
     else
       eval_card_value(expr)
     end
@@ -62,9 +68,9 @@ class ConditionExpr < ConditionSimple
     return [nil, nil] unless expr
     return [:number, expr] unless expr.is_a?(String)
     case expr
-    when /\A-?\d+\z/
+    when /\A[\-\+]?\d+\z/
       [:number, expr.to_i]
-    when /\A-?\d*\.\d+\z/
+    when /\A[\-\+]?\d*\.\d+\z/
       [:number, expr.to_f]
     when /\A(-?\d*)½\z/
       # Negative half numbers never happen or real cards, but for sake of completeness

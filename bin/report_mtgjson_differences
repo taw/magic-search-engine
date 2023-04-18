@@ -44,32 +44,41 @@ class ReportMtgjsonDifferences
       puts "#{code} - name - #{db_set.name.inspect} vs #{mtgjson_set["name"].inspect}"
     end
 
+    mtgjson_cards = mtgjson_set["cards"]
+    # ignore Alchemy completely
+    mtgjson_cards = mtgjson_cards.reject{|c| (c["faceName"] || c["name"]) =~ /\AA-/}
     db_names = db_set.printings.map(&:name).to_set
 
-    mtgjson_names = mtgjson_set["cards"].map{|x| x["faceName"] || x["name"] }.to_set
+    mtgjson_names = mtgjson_cards.map{|c| c["faceName"] || c["name"] }.to_set
     if db_names != mtgjson_names
       if db_names.size == mtgjson_names.size
         puts "#{code} - card names (count same) - #{db_names.size} vs #{mtgjson_names.size}"
       else
         puts "#{code} - card names - #{db_names.size} vs #{mtgjson_names.size}"
       end
+      (db_names - mtgjson_names).each do |n|
+        puts "  db: #{n}"
+      end
+      (mtgjson_names - db_names).each do |n|
+        puts "  mj: #{n}"
+      end
       return
     end
 
     db_count = db_set.printings.size
-    mtgjson_count = mtgjson_set["cards"].size
+    mtgjson_count = mtgjson_cards.size
     if db_count != mtgjson_count
       puts "#{code} - printing count - #{db_count} vs #{mtgjson_count}"
       return
     end
 
     db_numbers = db_set.printings.map{|c| [c.number, c.name] }.to_set
-    mtgjson_numbers = mtgjson_set["cards"].map{|c| [c["number"], c["faceName"] || c["name"]] }.to_set
+    mtgjson_numbers = mtgjson_cards.map{|c| [c["number"], c["faceName"] || c["name"]] }.to_set
 
     # Most common problem is mtgjson having non-unique numbers for multipart cards
     if db_numbers != mtgjson_numbers
       db_numbers_i = db_set.printings.map{|c| [c.number.to_i, c.name] }.to_set
-      mtgjson_numbers_i = mtgjson_set["cards"].map{|c| [c["number"].to_i, c["faceName"] || c["name"]] }.to_set
+      mtgjson_numbers_i = mtgjson_cards.map{|c| [c["number"].to_i, c["faceName"] || c["name"]] }.to_set
 
       if db_numbers_i == mtgjson_numbers_i
         # Suffix issues _generally_ get autocorrected by indexer

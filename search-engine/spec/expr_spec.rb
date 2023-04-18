@@ -38,4 +38,30 @@ describe "Expressions Test" do
     assert_search_include "sets=#{card.printings.map(&:set).uniq.size}", "Giant Spider"
     assert_search_include "papersets=#{card.printings.select(&:paper?).map(&:set).uniq.size}", "Giant Spider"
   end
+
+  it "defense" do
+    assert_search_results "defense=7 e:mom",
+      "Invasion of Alara",
+      "Invasion of Arcavios"
+    assert_search_results "defense<4 e:mom",
+      "Invasion of Gobakhan",
+      "Invasion of Zendikar"
+    assert_search_equal "defense=7", "defence=7"
+  end
+
+  it "hand" do
+    assert_search_results "hand=-3",
+      "Multani"
+    assert_search_equal "hand=+1", "hand=1"
+  end
+
+  it "life" do
+    assert_search_results "life<-6",
+      "Ashnod",
+      "Takara",
+      "Maro Avatar" # Magic Online Avatars
+    assert_search_equal "life=+1", "life=1"
+    assert_search_equal "life=+0", "life=0"
+    assert_search_equal "life=-0", "life=0"
+  end
 end
