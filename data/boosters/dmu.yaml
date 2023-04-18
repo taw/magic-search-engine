@@ -6,7 +6,7 @@ pack:
   common_or_foil:
   - common: 1
     chance: 2
-  - foil: 1
+  - foil_with_showcase: 1
     chance: 1
   nonlegendary_uncommon: 3
   legendary_rare_mythic: 1
@@ -16,7 +16,7 @@ pack:
   common_or_foil:
   - common: 1
     chance: 2
-  - foil: 1
+  - foil_with_showcase: 1
     chance: 1
   nonlegendary_uncommon: 2
   legendary_uncommon: 1
@@ -24,7 +24,11 @@ pack:
   chance: 3
 sheets:
   legendary_uncommon:
-    query: 't:"legendary creature" r:u'
+    any:
+    - query: 't:"legendary creature" r:u'
+      rate: 2
+    - use: uncommon_showcase
+      rate: 1
     count: 20
   nonlegendary_uncommon:
     query: '-t:"legendary creature" r:u'
@@ -32,16 +36,57 @@ sheets:
   legendary_rare_mythic:
     any:
     - query: 't:"legendary creature" r:r'
-      count:
-      rate: 2
+      rate: 8
+    - rawquery: 'e:{set} r:r t:"legendary creature" promo:boosterfun -is:foilonly -frame:extendedart is:paper'
+      rate: 4
     - query: 't:"legendary creature" r:m'
-      count:
+      rate: 4
+    - rawquery: 'e:{set} r:m t:"legendary creature" promo:boosterfun -is:foilonly -frame:extendedart is:paper -Sheoldred'
+      rate: 2
+    - rawquery: 'e:{set} Sheoldred, the Apocalypse promo:boosterfun number<=427'
       rate: 1
   nonlegendary_rare_mythic:
     any:
-    - query: '-t:"legendary creature" r:r'
-      count:
-      rate: 2
-    - query: '-t:"legendary creature" r:m'
-      count:
+    - rawquery: 'e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -t:"legendary creature"'
+      rate: 8
+    - query: 'r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:"legendary creature"'
+      rate: 16
+    - query: 'r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:"legendary creature"'
+      rate: 24
+    - rawquery: "e:dmu Ajani, Sleeper Agent -is:foilonly -frame:extendedart is:paper promo:boosterfun"
       rate: 1
+    - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -t:"legendary creature" -(Ajani, Sleeper Agent)'
+      rate: 4
+    - query: 'r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) -t:"legendary creature"'
+      rate: 8
+    - query: 'r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) -t:"legendary creature"'
+      rate: 12
+  foil_with_showcase:
+    foil: true
+    any:
+    - any: 
+      - use: common
+        rate: 1
+      - use: basic
+        rate: 1
+      chance: 12
+    - use: uncommon_with_showcase
+      chance: 5
+    - any:
+      - use: rare_showcase
+        rate: 8
+      - use: rare_has_showcase
+        rate: 16
+      - use: rare_has_no_showcase
+        rate: 24
+      - rawquery: "e:dmu Ajani, Sleeper Agent -is:foilonly -frame:extendedart is:paper promo:boosterfun"
+        rate: 1
+      - rawquery: "e:dmu Sheoldred, the Apocalypse -is:foilonly -frame:extendedart is:paper promo:boosterfun number<=427"
+        rate: 2
+      - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Ajani, Sleeper Agent or Sheoldred, the Apocalypse)'
+        rate: 4 
+      - use: mythic_has_showcase
+        rate: 8
+      - use: mythic_has_no_showcase
+        rate: 12
+      chance: 3
