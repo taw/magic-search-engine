@@ -1,6 +1,6 @@
 # data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine
 # No info on what other cards are in rare_mythic slot. Assuming it's only core set non-showcase cards
-# Going by previous premium foil rates, etched foils appear roughly 2/box or 1/15 packs
+# Etched foil rate reported as 4%, or 1/25 packs
 pack:
   sfc_common: 2
   sfc_uncommon: 2
@@ -16,7 +16,7 @@ pack:
     chance: 1
   finale_2:
   - foil_with_showcase: 1
-    chance: 14
+    chance: 24
   - foil_etched: 1
     chance: 1
 sheets:
@@ -35,10 +35,10 @@ sheets:
     use: base_1248_by_rarity
   wildcard:
     any:
-    - use: common_with_showcase
+    - use: common
       chance: 700
     - any:
-      - use: uncommon_with_showcase
+      - use: uncommon
         chance: 80
       - rawquery: "e:mul r:u -is:foilonly"
         chance: 20
