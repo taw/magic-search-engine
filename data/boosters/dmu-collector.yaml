@@ -1,0 +1,74 @@
+# Data from https://magic.wizards.com/en/news/feature/dominaria-united-product-overview-2022-08-18
+# Lost Legends rate set at 3%, exact rate is unknown
+# Assume that etched cards appear at same rate as nonfoil cards:
+# uncommon foil etched count: 5
+# retold uncommon count: 5
+# rare mythic foil etched count: 2*10 + 7 = 47
+# showcase rare mythic count: (2*10 + 5) + 2*20 + 16 = 81
+pack:
+  foil_fullart_land: 1
+  lost_legends_slot:
+  - foil_common: 4
+    chance: 97
+  - foil_common: 3
+    lost_legends: 1
+    chance: 3
+  foil_uncommon: 2
+  foil_rare_mythic: 1
+  extended_rare_mythic: 1
+  foil_uncommon_showcase: 1
+  foil_alt_border_rare_mythic: 1
+  etched_cards:
+  - retold_uncommon: 1
+    showcase_rare_mythic: 2
+    chance: 5 + 2*81
+  - etched_retold_uncommon: 1
+    showcase_rare_mythic: 2
+    chance: 5 + 2*81
+  - retold_uncommon: 1
+    etched_retold_rare_mythic: 1
+    showcase_rare_mythic: 1
+    chance: 5 + 81 + 47
+  - etched_retold_uncommon: 1
+    etched_retold_rare_mythic: 1
+    showcase_rare_mythic: 1
+    chance: 5 + 81 + 47
+  - retold_uncommon: 1
+    etched_retold_rare_mythic: 2
+    chance: 5 + 2*47
+  textured_foil: 1
+sheets:
+  foil_fullart_land:
+    foil: true
+    query: "r:b is:fullart"
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  foil_uncommon_showcase:
+    foil: true
+    use: uncommon_showcase
+  extended_rare_mythic:
+    filter: "(e:dmu or e:dmc) frame:extendedart"
+    use: rare_mythic
+  lost_legends:
+    set: leg
+    code: "LL"
+  foil_alt_border_rare_mythic:
+    filter: "e:dmu promo:boosterfun"
+    use: rare_mythic
+  retold_uncommon:
+    rawquery: "e:dmc number:29-48 r:u"
+  etched_retold_uncommon:
+    foil: true
+    rawquery: "e:dmc number:49-70 r:u"
+  etched_retold_rare_mythic:
+    foil: true
+    filter: "e:dmc number:49-70"
+    use: rare_mythic
+  showcase_rare_mythic:
+    filter: "(e:dmu promo:boosterfun) or (e:dmc number:49-70)"
+    use: rare_mythic
+  textured_foil:
+    foil: true
+    filter: "e:dmu promo:textured"
+    use: base_1248_by_rarity
