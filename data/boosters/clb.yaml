@@ -1,67 +1,121 @@
+# Data from https://magic.wizards.com/en/news/feature/commander-legends-battle-for-baldurs-gate-product-overview
 # There's almost no documentation, so this is based on a few pack opening videos and analogy to CMR
 pack:
-- nonlegendary_common: 13
-  nonlegendary_uncommon: 3
-  nonlegendary_rare_mythic: 1
-  legendary: 1
+- nonlegendary_common_with_showcase: 13
+  nonlegendary_uncommon_with_showcase: 3
+  nonlegendary_rare_mythic_with_showcase: 1
+  legendary_with_showcase: 1
   background: 1
   dedicated_foil: 1
   chance: 5
-- nonlegendary_common: 12
+- nonlegendary_common_with_showcase: 12
   special: 1
-  nonlegendary_uncommon: 3
-  nonlegendary_rare_mythic: 1
-  legendary: 1
+  nonlegendary_uncommon_with_showcase: 3
+  nonlegendary_rare_mythic_with_showcase: 1
+  legendary_with_showcase: 1
   background: 1
   dedicated_foil: 1
   chance: 1
 sheets:
-  nonlegendary_common:
-    query: "r:c -t:legendary"
-    count: 136
-  nonlegendary_uncommon:
-    query: "r:u -t:legendary"
-    count: 75
-  nonlegendary_rare_mythic:
+  nonlegendary_common_with_showcase:
+    # Showcase treatments 1/3 for relevant cards
+    any:
+    - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart -t:legendary is:paper"
+      rate: 1
+    - query: "r:c alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart) -t:legendary"
+      rate: 2
+    - query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart) -t:legendary"
+      rate: 3
+  nonlegendary_uncommon_with_showcase:
+    # Showcase treatments 1/3 for relevant cards
+    any:
+    - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart -t:legendary is:paper"
+      rate: 1
+    - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) -t:legendary"
+      rate: 2
+    - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) -t:legendary"
+      rate: 3
+  nonlegendary_rare_with_showcase:
+    # Showcase treatments 1/3 for relevant cards
+    any:
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -t:legendary is:paper"
+      rate: 1
+    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:legendary"
+      rate: 2
+    - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) (-t:legendary or Baldur's Gate)"
+      rate: 3
+  nonlegendary_mythic_with_showcase:
+    # Showcase treatments 1/3 for relevant cards
+    any:
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -t:legendary t:dragon is:paper"
+      rate: 1
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -t:legendary -t:dragon is:paper"
+      rate: 2
+    - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) -t:legendary"
+      rate: 4
+    - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) -t:legendary"
+      rate: 6
+  nonlegendary_rare_mythic_with_showcase:
     any:
     # legendary land in this slot???
-    - query: '-t:"legendary creature" -t:"legendary planeswalker" -t:background r:r'
-      count: 47
-      rate: 2
-    - query: "-t:legendary r:m"
-      count: 17
-      rate: 1
-  legendary:
+    - use: nonlegendary_rare_with_showcase
+      chance: 47 * 2
+    - use: nonlegendary_mythic_with_showcase
+      chance: 17
+  legendary_with_showcase:
     any:
     # no idea about ratios
-    - query: "t:legendary -t:background -t:land r:u"
-      count: 30
+    - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
       rate: 4
-    - query: "t:legendary -t:background -t:land r:r"
-      count: 25
+    - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+      rate: 8
+    - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+      rate: 12
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
       rate: 2
-    - query: "t:legendary -t:background -t:land r:m"
-      count: 5
+    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+      rate: 4
+    - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background -t:land"
+      rate: 6
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
       rate: 1
+    - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+      rate: 2
+    - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+      rate: 3
   background:
-    any:
-    # no idea about ratios
-    - query: "t:background r:c"
-      count: 5
-      rate: 4
-    - query: "t:background r:u"
-      count: 15
-      rate: 2
-    - query: "t:background r:r"
-      count: 5
-      rate: 1
+    filter: "t:background"
+    use: base_1248_by_rarity
   dedicated_foil:
     foil: true
     any:
-    - use: rare_mythic
-      chance: 1
-    - query: "r:u"
-      chance: 3
-    - query: "r:c or r:s"
-      count: 140 + 1
+    - any:
+      - use: common_showcase
+        rate: 1
+      - use: common_has_showcase
+        rate: 2
+      - use: common_has_no_showcase
+        rate: 3
+      - use: basic
+        rate: 3
+      - use: special
+        rate: 3
       chance: 13
+    - use: uncommon_with_showcase
+      chance: 3
+    - any:
+      - use: rare_showcase
+        rate: 4
+      - use: rare_has_showcase
+        rate: 8
+      - use: rare_has_no_showcase
+        rate: 12
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart t:dragon is:paper"
+        rate: 1
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -t:dragon is:paper"
+        rate: 2
+      - use: mythic_has_showcase
+        rate: 4
+      - use: mythic_has_no_showcase
+        rate: 6
+      chance: 1
