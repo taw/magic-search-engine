@@ -1,0 +1,68 @@
+# data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine
+# No info on what other cards are in rare_mythic slot. Assuming it's only core set non-showcase cards
+# Etched foil rate reported as 4%, or 1/25 packs
+pack:
+  sfc_common: 2
+  sfc_uncommon: 2
+  dfc_common_uncommon: 1
+  uncommon_battle: 1
+  wildcard: 2
+  multiverse_legend: 1
+  finale_1:
+  - rare_mythic: 1
+    chance: 3
+  - rare_mythic: 1
+    the_list: 1
+    chance: 1
+  finale_2:
+  - foil_with_showcase: 1
+    chance: 24
+  - foil_etched: 1
+    chance: 1
+sheets:
+  sfc_common:
+    query: "r:c is:sfc"
+  dfc_common_uncommon:
+    any:
+    - use: dfc_common
+      rate: 2
+    - use: dfc_uncommon
+      rate: 1
+  uncommon_battle:
+    query: "r:u t:battle"
+  multiverse_legend:
+    filter: "e:mul -is:foilonly"
+    use: base_1248_by_rarity
+  wildcard:
+    any:
+    - use: common
+      chance: 700
+    - any:
+      - use: uncommon
+        chance: 80
+      - rawquery: "e:mul r:u -is:foilonly"
+        chance: 20
+      chance: 175
+    - any:
+      - use: rare_with_showcase
+        chance: 2 * 60
+      - rawquery: "e:mom r:r -in:booster"
+        chance: 2 * 5
+      - rawquery: "e:moc r:r number:1-46"
+        chance: 2 * 36
+      - rawquery: "e:mul r:r -is:foilonly"
+        chance: 2 * 30
+      - use: mythic_with_showcase
+        chance: 20
+      - rawquery: "e:moc r:m number:1-46"
+        chance: 10
+      - rawquery: "e:mul r:m -is:foilonly"
+        chance: 15
+      chance: 125
+  the_list:
+    set: plist
+    code: "MOM"
+  foil_etched:
+    foil: true
+    filter: "e:mul number:66-130" # Change to frame:etched when json is fixed
+    use: base_1248_by_rarity

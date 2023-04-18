@@ -1,0 +1,88 @@
+# data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine
+# Serialized card rate assumed to be .5%
+pack:
+  foil_fullart_basic: 1
+  foil_common: 5
+  foil_uncommon: 2
+  foil_mul_uncommon: 1
+  foil_rare_mythic: 1
+  extended_art_commander_jumpstart: 1
+  showcase_wild: 1
+  special_foil_mul_uncommon:
+  - uncommon_mul_etched: 1
+    chance: 750
+  - uncommon_mul_halo: 1
+    chance: 245
+  - uncommon_mul_serialized: 1
+    chance: 5
+  foil_alt_border_rare_mythic:
+  - foil_showcase: 1
+    chance: 995
+  - double_foil_praetor_serialized: 1
+    chance: 5
+  special_foil_mul_rare_mythic:
+  - rare_mythic_mul_traditional: 1
+    chance: 750
+  - rare_mythic_mul_etched: 1
+    chance: 145
+  - rare_mythic_mul_halo: 1
+    chance: 100
+  - rare_mythic_mul_serialized: 1
+    chance: 5
+sheets:
+  foil_fullart_basic:
+    foil: true
+    query: "r:basic is:fullart"
+  foil_mul_uncommon:
+    foil: true
+    rawquery: "e:mul r:u -is:foilonly"
+  foil_rare_mythic:
+    foil: true
+    any:
+    - query: "r:r"
+      rate: 2
+    - query: "r:m"
+      rate: 1
+    - rawquery: "e:moc r:r number:72-79"
+      rate: 2
+    - rawquery: "e:moc r:m number:72-79"
+      rate: 1
+  extended_art_commander_jumpstart:
+    filter: "((e:mom and number:376-380) or e:moc) frame:extendedart -promo:buyabox"
+    use: rare_mythic
+  showcase_wild:
+    filter: "e:mom promo:boosterfun -number:376-380"
+    use: rare_mythic
+  uncommon_mul_etched: 
+    foil: true
+    rawquery: "e:mul r:u number:66-130" # Change to frame:etched when json is fixed
+  uncommon_mul_halo:
+    foil: true
+    rawquery: "e:mul r:u promo:halofoil -is:serialized"
+  uncommon_mul_serialized:
+    foil: true
+    rawquery: "e:mul r:u promo:halofoil" # Change this to serialized when json is fixed
+  foil_showcase:
+    foil: true
+    filter: "(e:mom or e:moc) promo:boosterfun"
+    use: rare_mythic
+  double_foil_praetor_serialized:
+    foil: true
+    rawquery: "e:mom is:serialized t:praetor"
+  rare_mythic_mul_traditional:
+    foil: true
+    filter: "e:mul number:1-65"
+    use: rare_mythic
+  rare_mythic_mul_etched:
+    foil: true
+    filter: "e:mul number:66-130" # Change to frame:etched when json is fixed
+    use: rare_mythic
+  rare_mythic_mul_halo:
+    foil: true
+    filter: "e:mul promo:halofoil -is:serialized"
+    use: rare_mythic
+  rare_mythic_mul_serialized:
+    foil: true
+    filter: "e:mul promo:halofoil" # Change this to serialized when json is fixed
+    use: rare_mythic
+    
