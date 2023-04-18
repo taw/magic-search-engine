@@ -23,7 +23,11 @@ class PatchNewPrintSheets < Patch
       cards_by_set[set_code].each do |card|
         sheet = assignment.delete([card["name"], card["number"]]) || assignment.delete(card["name"])
         next unless sheet
-        card["print_sheet"] = sheet
+        if card.key?("print_sheet")
+          card["print_sheet"] = card["print_sheet"] + " " + sheet
+        else
+          card["print_sheet"] = sheet
+        end
       end
 
       unless assignment.empty?
