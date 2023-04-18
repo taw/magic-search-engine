@@ -1,19 +1,24 @@
 pack:
-  common: 8
-  uncommon: 3
-  rare_mythic: 2
+  cryptic_spires: 1
+  common_with_showcase: 8
+  uncommon_with_showcase: 3
+  rare_mythic_with_showcase: 2
   dedicated_foil_double_masters: 2
 sheets:
+  cryptic_spires:
+    rawquery: "e:2x2 number:332"
+  rare_mythic_with_showcase:
+    any:
+    - use: rare_with_showcase
+      chance: 120 * 2
+    - use: mythic_with_showcase
+      chance: 40
   dedicated_foil_double_masters:
     foil: true
     any:
-      - query: "r<=c"
-        chance: 8
-      - query: "r:u"
-        chance: 3
-      - any:
-        - query: "r:r"
-          rate: 2
-        - query: "r:m"
-          rate: 1
-        chance: 2
+    - use: common_with_showcase
+      chance: 8
+    - use: uncommon_with_showcase
+      chance: 3
+    - use: rare_mythic_with_showcase
+      chance: 2
