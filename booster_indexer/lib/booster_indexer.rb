@@ -152,8 +152,13 @@ class PreprocessBooster
           raise "Missing sheet #{@name}/#{sheet_name}"
         end
         next unless @sheets[sheet_name]["balanced"]
-        if count <= 7
-          warn "Sheet #{@name}/#{sheet_name} is too small to be balanced with only #{count} cards"
+        # exact number depends on number of non-mono-color-identity cards
+        # <4 is literally impossible
+        # 5 is pretty much not doable, you literally need to split it into 5 subsheets, which is technically true if all colors' counts are identical
+        # 6-7 is warning zone, doability depends on number of cards with CI!=1
+        # 8+ should be fine
+        if count <= 6
+          warn "Sheet #{@code}/#{sheet_name} is too small to be balanced with only #{count} cards"
         end
       end
     end
