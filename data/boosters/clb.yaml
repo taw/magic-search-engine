@@ -84,17 +84,8 @@ sheets:
     - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
       rate: 3
   background:
-    any:
-    # no idea about ratios
-    - query: "t:background r:c"
-      count: 5
-      rate: 4
-    - query: "t:background r:u"
-      count: 15
-      rate: 2
-    - query: "t:background r:r"
-      count: 5
-      rate: 1
+    filter: "t:background"
+    use: base_1248_by_rarity
   dedicated_foil:
     foil: true
     any:
