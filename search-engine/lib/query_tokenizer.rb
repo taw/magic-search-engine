@@ -350,6 +350,10 @@ class QueryTokenizer
       elsif s.scan(/(is|frame|not)\s*[:=]\s*(old|new|future|modern|m15)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrame.new(s[2].downcase)]
+      elsif s.scan(/light\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
+        light = (s[1]||s[2])
+        @warnings << "Attraction light only take values from 1 to 6" unless (1..6).include?(light)
+        tokens << [:test, ConditionLight.new(light)]
       elsif s.scan(/frame\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)
         frame = (s[1]||s[2]).downcase
         frame_types = %W[old new future modern m15]

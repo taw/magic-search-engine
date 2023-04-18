@@ -279,4 +279,11 @@ describe "Unsets" do
   it "is:acorn" do
     assert_search_equal "is:acorn", "is:acorn e:unf,hho"
   end
+
+  it "light:" do
+    assert_search_results "t:attraction r:r light:2 light:5",
+      "Storybook Ride" # 2,5,6 and 3,4,6
+    assert_search_equal "light:3", 'LIGHT:"3"'
+    assert_search_equal "light:*", "t:attraction"
+  end
 end
