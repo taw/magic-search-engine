@@ -28,6 +28,9 @@ describe PackFactory do
       if %W[akr klr].include?(set_code)
         factory.for(set_code).should eq(nil), "#{set_pp} should not have regular packs"
         factory.for(set_code, "arena").should_not eq(nil), "#{set_pp} should have Arena packs"
+      elsif set_code == "sir"
+        factory.for(set_code).should eq(nil), "#{set_pp} should not have regular packs"
+        factory.for(set_code, "arena-1").should_not eq(nil), "#{set_pp} should have Arena packs"
       elsif set.has_boosters?
         pack = factory.for(set_code)
         if pack
