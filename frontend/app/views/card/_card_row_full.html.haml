@@ -1,50 +1,56 @@
 .row.card_row
   .col-5.card_picture_cell
-    = render 'card/picture', card: card
+    = render "card/picture", card: card
   .offset-1.col-6.cardinfo
-    = render 'card', card: card
+    = render "card", card: card
 
 .row.card_row
   .col-6.cardinfo
     %h5 Details
     %ul
       %li.infolabel
-        %span
-          Artist:
+        Artist:
         = link_to_artist(card.artist) do
           = card.artist.name
-      - if card.reserved
-        %li.infolabel
-          = "#{card.name} is on the Reserved List."
-      - if card.spotlight
-        %li.infolabel
-          Story Spotlight
+      %li.infolabel
+        = "Collector Number: #{card.number}"
       - if card.oversized
         %li.infolabel
           Oversized card
-      - if card.watermark
+      - if card.frame_effects.present?
         %li.infolabel
-          = "Watermark: #{card.watermark}"
-      - if card.signature
-        %li.infolabel
-          = "Signature: #{card.signature}"
-      - if card.subsets
-        %li.infolabel
-          = "Subsets: #{card.subsets.join(", ")}"
+          = "Frame Effects: #{card.frame_effects.join(", ")}"
       - if card.promo_types
         %li.infolabel
           = "Promo: #{card.promo_types.sort.join(", ")}"
+      %li.infolabel
+        = "Rarity: #{card.ui_rarity}"
+      - if card.reserved
+        %li.infolabel
+          = "#{card.name} is on the Reserved List."
+      %li.infolabel
+        = "Released: #{card.release_date}"
+      %li.infolabel
+        Set:
+        = link_to_set(card.set) do
+          = card.set.name
+      - if card.signature
+        %li.infolabel
+          = "Signature: #{card.signature}"
+      - if card.spotlight
+        %li.infolabel
+          Story Spotlight
       - if card.stamp
         %li.infolabel
           = "Stamp: #{card.stamp}"
-      %li.infolabel
-        = "Rarity: #{card.ui_rarity}"
-      %li.infolabel
-        = "Collector Number: #{card.number}"
-      %li.infolabel
-        = "Released: #{card.release_date}"
+      - if card.subsets
+        %li.infolabel
+          = "Subsets: #{card.subsets.join(", ")}"
+      - if card.watermark
+        %li.infolabel
+          = "Watermark: #{card.watermark}"
 
-    = render 'legality', card: card
+    = render "legality", card: card
 
     - if card.rulings.present?
       %h5 Rulings
@@ -62,7 +68,7 @@
             %a{href: card.gatherer_link}
               Gatherer
   .col-6
-    = render 'printings_full', card: card, printings: printings_view_full(card, printings)
+    = render "printings_full", card: card, printings: printings_view_full(card, printings)
 
     - if card.foreign_names
       %h5 Foreign names
