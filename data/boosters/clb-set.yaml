@@ -13,7 +13,12 @@ pack:
   legendary_with_showcase: 1
   rare_mythic: 1
   foil_with_showcase: 1
-  foil_etched_legend: 1
+  finale:
+  - foil_etched_legend: 1
+    chance: 3
+  - foil_etched_legend: 1
+    the_list: 1
+    chance: 1
 sheets:
   basic:
     rawquery: "e:clb t:basic"
@@ -109,3 +114,6 @@ sheets:
       - use: mythic_has_no_showcase
         rate: 6
       chance: 3
+  the_list:
+    set: plist
+    code: "CLB"
