@@ -7,8 +7,8 @@ pack:
   foil_common: 4
   foil_uncommon: 2
   foil_rare_mythic: 1
-  extended_rm: 1
-  extended_jc: 1
+  extended_rare_mythic: 1
+  extended_commander_jumpstart: 1
   common_uncommon_showcase: 1
   foil_common_uncommon_showcase: 1
   compleat_foil: 1
@@ -27,10 +27,10 @@ sheets:
   foil_rare_mythic:
     foil: true
     use: rare_mythic
-  extended_rm:
+  extended_rare_mythic:
     filter: "e:one frame:extendedart number:375-403"
     use: rare_mythic
-  extended_jc:
+  extended_commander_jumpstart:
     any:
     - rawquery: "e:one frame:extendedart number:409-413"
       rate: 2
@@ -48,13 +48,13 @@ sheets:
     - rawquery: "e:one r:r promo:stepandcompleat"
       chance: 22
     - any:
-      - rawquery: "e:one r:m promo:stepandcompleat (Elesh Norn, Mother of Machines) -number:417"
+      - rawquery: "e:one r:m promo:stepandcompleat (Elesh Norn, Mother of Machines) -number:421"
         rate: 2
       - rawquery: "e:one r:m promo:stepandcompleat t:planeswalker"
         rate: 3
       - rawquery: "e:one r:m promo:stepandcompleat -t:planeswalker -(Elesh Norn, Mother of Machines)"
         rate: 6
-      - rawquery: "(e:one number:417) or (e:neo number:514) or (e:dmu number:436) or (e:snc number:469) or (e:khm number:407)"
+      - rawquery: "(e:one number:421) or (e:neo number:514) or (e:dmu number:436) or (e:snc number:469) or (e:khm number:407)"
         rate: 4
       chance: 11
   showcase_rare_mythic: # need to figure out how often praetors appear in this slot
