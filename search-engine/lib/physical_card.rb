@@ -27,6 +27,7 @@ class PhysicalCard
       "PhysicalCard[",
       name,
       @back != [] ? "; #{back_name}}" : "",
+      "; #{set_code}/#{number}",
       foil ? "; foil" : "",
       "]",
     ].join

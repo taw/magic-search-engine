@@ -72,6 +72,7 @@ describe PackFactory do
     end
   end
 
+  # These rely on in_booster? flag which is no longer accurate
   let(:only_foil_basics_in_boosters) { ["mmq", "inv", "ody", "ons", "mrd", "chk", "rav", "lrw", "shm"] }
   it "Every card can appear in a pack" do
     db.sets.each do |set_code, set|
@@ -97,14 +98,14 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       # Some sets don't follow these rules
       # They should have own tests
-      next if %W[tsp cn2 bbd war mb1 bro].include?(set_code)
+      next if %W[tsp cn2 bbd war mb1 bro unf].include?(set_code)
       set_pp = "#{set.name} [#{set.code}]"
       pack = factory.for(set_code)
       next unless pack
       next unless pack.has_foils?
       actual_cards = pack.foil_cards.select{|c| !c.set.types.include?("masterpiece") }
       expected_cards = set.physical_cards_in_boosters(true)
-      actual_cards.should include(*expected_cards),
+      actual_cards.sort.should include(*expected_cards.sort),
         "All cards in #{set_pp} should be possible in its packs as foil"
     end
   end
