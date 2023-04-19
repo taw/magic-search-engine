@@ -51,6 +51,15 @@ module ApplicationHelper
     link_to(controller: "card", action: "index", q: search, &blk)
   end
 
+  def link_to_subset(set_code, subset, &blk)
+    query = %Q[e:#{set_code} subset:"#{subset}"]
+    link_to(
+      controller: "card",
+      action: "index",
+      q: query,
+      &blk)
+  end
+
   def format_mana_symbols_in_text(text)
     text
       .gsub(/(?:\{.*?\})+/) do

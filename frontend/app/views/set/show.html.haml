@@ -35,7 +35,8 @@
         %ul
           - @set.subsets.each do |subset|
             %li
-              = subset
+              = link_to_subset(@set.code, subset) do
+                = subset
 
 - @cards.each do |card|
   .row.card_row
