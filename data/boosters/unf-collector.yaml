@@ -1,0 +1,94 @@
+# Data from https://magic.wizards.com/en/news/feature/almost-everything-know-about-unfinity-boosters-2022-09-20
+pack:
+  shockland_chance:
+  - foil_basic: 1
+    galaxy_basic: 1
+    chance: 46
+  - foil_shock: 1
+    galaxy_basic: 1
+    chance: 1
+  - foil_basic: 1
+    galaxy_shock: 1
+    chance: 1
+  foil_common: 4
+  foil_uncommon: 2
+  foil_attraction: 1
+  foil_rare_mythic: 1
+  galaxy_common_uncommon: 1
+  galaxy_rare_mythic: 1
+  showcase_uncommon_foiling:
+  - foil_uncommon_showcase: 1
+    chance: 1
+  - galaxy_uncommon_showcase: 1
+    chance: 1
+  foil_un-list: 1
+  showcase_rare_mythic_foiling:
+  - foil_rare_mythic_showcase: 1
+    chance: 1
+  - galaxy_rare_mythic_showcase: 1
+    chance: 1
+sheets:
+  foil_basic:
+    foil: true
+    any:
+    - query: "r:b number<240"
+      count: 5
+      chance: 3
+    - query: "r:b number>=240 number<245"
+      count: 5
+      chance: 1
+  galaxy_basic:
+    foil: true
+    any: 
+    - rawquery: "e:unf r:b number:486-490"
+      chance: 3
+    - rawquery: "e:unf r:b number:491-495"
+      chance: 1
+  foil_shock:
+    foil: true
+    rawquery: "e:unf number:277-286"
+  galaxy_shock:
+    foil: true
+    rawquery: "e:unf number:528-537"
+  foil_common:
+    foil: true
+    query: "r:c -t:attraction"
+  foil_uncommon:
+    foil: true
+    query: "r:u -t:attraction"
+  foil_attraction:
+    foil: true
+    query: "t:attraction"
+  foil_rare_mythic:
+    foil: true
+    any:
+    - query: "r:r -t:attraction -is:promo -is:basictype"
+      rate: 2
+    - query: "r:m -t:attraction"
+      rate: 1
+    count: 135
+  foil_un-list:
+    foil: true
+    rawquery: "e:uplist"
+  galaxy_common_uncommon:
+    foil: true
+    filter: "e:unf number:287-485"
+    use: common_uncommon
+  galaxy_rare_mythic:
+    foil: true
+    filter: "e:unf number:287-485"
+    use: rare_mythic
+  foil_uncommon_showcase:
+    foil: true
+    rawquery: "e:unf number:245-276 r:u"
+  foil_rare_mythic_showcase:
+    foil: true
+    filter: "e:unf number:245-276"
+    use: rare_mythic
+  galaxy_uncommon_showcase:
+    foil: true
+    rawquery: "e:unf number:496-527 r:u"
+  galaxy_rare_mythic_showcase:
+    foil: true
+    filter: "e:unf number:496-527"
+    use: rare_mythic
