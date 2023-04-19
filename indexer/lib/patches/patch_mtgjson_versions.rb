@@ -120,14 +120,17 @@ class PatchMtgjsonVersions < Patch
         card["frame_effects"].delete("textless")
       end
 
-      card["oversized"] = card.delete("isOversized")
-      card["spotlight"] = card.delete("isStorySpotlight")
-      card["fullart"] = card.delete("isFullArt")
-      card["textless"] = card.delete("isTextless")
-      card["timeshifted"] = card.delete("isTimeshifted")
       # This is not quite set-based as there are Arena-specific fixed art cards
       # We used to have set-based logic, but it has no way of finding cards like znr/288†b
       card["digital"] = card.delete("isOnlineOnly")
+      card["fullart"] = card.delete("isFullArt")
+      card["oversized"] = card.delete("isOversized")
+      # not sure what to do with it, isPromo flag, promoTypes, and our is:promo logic are all very different
+      # so for now this is not used
+      card["promo"] = card.delete("isPromo")
+      card["spotlight"] = card.delete("isStorySpotlight")
+      card["textless"] = card.delete("isTextless")
+      card["timeshifted"] = card.delete("isTimeshifted")
 
       # OC21/OAFC are technically "display cards" not oversized
       # https://github.com/mtgjson/mtgjson/issues/815

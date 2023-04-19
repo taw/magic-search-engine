@@ -51,10 +51,12 @@ class PatchSetTypes < Patch
         set_types << "fnm" << "promo"
       when "q06", "q08"
         set_types << "pioneer"
-      when "phed", "scd"
+      when "scd"
+        set_types = ["box", "commander"]
+      when "phed"
         # OK, technically this is Commander deck, but I really don't want to deal with it
         set_types = ["box", "promo", "commander"]
-      when "sld", "slx", "plist", "pz2", /\Ap...\z/
+      when "sld", "pz2", /\Ap...\z/
         set_types << "promo"
       end
 
