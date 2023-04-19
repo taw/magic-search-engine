@@ -121,6 +121,7 @@ class IndexSerializer
           "frame_effects",
           "frame",
           "fullart",
+          "language",
           "mtgo",
           "multiverseid",
           "nontournament",

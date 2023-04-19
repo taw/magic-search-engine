@@ -234,6 +234,8 @@ class PatchMtgjsonVersions < Patch
       if card["text"] =~ /^Escape—/
         card["text"] = card["text"].gsub(/^Escape—/, "Escape — ")
       end
+
+      card.delete("language") if card["language"] == "English"
     end
   end
 
