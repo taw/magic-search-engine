@@ -17,6 +17,7 @@ class SetController < ApplicationController
 
     page = [1, params[:page].to_i].max
     @cards = @cards.paginate(page: page, per_page: 25)
+    @first_page = (page == 1)
   end
 
   def verify_scans
