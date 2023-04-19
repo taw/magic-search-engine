@@ -183,4 +183,12 @@ class CardPrinting
   def physical_card
     PhysicalCard.for(self)
   end
+
+  def foilonly?
+    foiling == "foilonly"
+  end
+
+  def nonfoilonly?
+    foiling == "nonfoil"
+  end
 end
