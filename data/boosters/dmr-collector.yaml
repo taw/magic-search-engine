@@ -1,0 +1,27 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-dominaria-remastered-and-product-overview
+pack:
+  foil_basic: 1
+  foil_common: 5
+  foil_uncommon: 2
+  foil_rare_mythic: 1
+  common_uncommon_showcase: 2
+  foil_common_uncommon_showcase: 1
+  rare_mythic_retro: 1
+  rare_mythic_borderless: 1
+  foil_rare_mythic_showcase: 1
+sheets:
+  foil_basic:
+    foil: true
+    rawquery: "e:{set} r:b"
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  rare_mythic_retro:
+    filter: "e:{set} frame:old"
+    use: rare_mythic
+  rare_mythic_borderless:
+    filter: "e:{set} is:borderless"
+    use: rare_mythic
+  foil_rare_mythic_showcase:
+    foil: true
+    use: rare_mythic_showcase

@@ -1,18 +1,55 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-dominaria-remastered-and-product-overview
 # "Each Draft Booster contains 1 retro frame card of any rarity and 1 retro frame land"
 # This doesn't handle retro frames for nonland cards
 # For retro basics, there are no other basics anyway, so it works without explicit checks
 #
 # Retro basics at 402-411 are included
+#
+# https://www.lethe.xyz/mtg/collation/dmr.html claims that borderless uncommons can appear
+# in the slot that the product overview claims can only be common. Going with this version.
 filter: "e:{set} number:1-set,402-411"
 pack:
 - basic: 1
-  common: 10
-  uncommon: 3
-  rare_mythic: 1
-  chance: 2
-- basic: 1
-  common: 9
-  uncommon: 3
-  rare_mythic: 1
-  foil: 1
-  chance: 1
+  foil_slot:
+  - common: 9
+    chance: 2
+  - common: 8
+    foil: 1
+    chance: 1
+  borderless_common:
+  - uncommon: 3
+    chance: 15
+  - uncommon: 2
+    common_uncommon_borderless: 1
+    chance: 1
+  retro:
+  - common_uncommon_retro: 1
+    rare_mythic_with_showcase: 1
+    chance: 1
+  - common: 1
+    rare_mythic_retro: 1
+    chance: 1
+sheets:
+  common_uncommon_borderless:
+    filter: "e:{set} is:borderless"
+    use: common_uncommon
+  common_uncommon_retro:
+    filter: "e:{set} frame:old"
+    use: common_uncommon
+  rare_mythic_with_showcase:
+    any:
+    - rawquery: "e:{set} r:r is:borderless"
+      rate: 2
+    - query: "r:r alt:(e:{set} r:r is:borderless)"
+      rate: 4
+    - query: "r:r -alt:(e:{set} r:r is:borderless)"
+      rate: 6
+    - rawquery: "e:{set} r:m is:borderless"
+      rate: 1
+    - query: "r:m alt:(e:{set} r:m is:borderless)"
+      rate: 2
+    - query: "r:m -alt:(e:{set} r:m is:borderless)"
+      rate: 3
+  rare_mythic_retro:
+    filter: "e:{set} frame:old"
+    use: rare_mythic
