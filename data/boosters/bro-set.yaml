@@ -1,7 +1,7 @@
 # Data from https://magic.wizards.com/en/news/feature/whats-inside-the-brothers-war-boosters
 # Assumptions
 # Official rate for mech lands is 27%, but this fraction is cleaner and comes to 28%
-# Rarity of shattered glass transformers cards assumed to be 1/3
+# Assume you can't get shattered glass BOT cards
 pack:
   basic_slot:
   - basic: 1
@@ -79,6 +79,8 @@ sheets:
         rate: 2
       - rawquery: "e:brc r:r number<=28"
         rate: 12
+      - rawquery: "e:{set} number:288-292"
+        rate: 12
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper"
         rate: 2
       - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
@@ -92,9 +94,7 @@ sheets:
       - rawquery: "e:brc r:m number<=28"
         rate: 6
       - rawquery: "e:bot number<=15"
-        rate: 4
-      - rawquery: "e:bot number>=16"
-        rate: 2
+        rate: 6
       chance: 125
   brr_retro_artifact:
     filter: "e:brr -number:/z/"
