@@ -89,4 +89,10 @@ describe "Any queries" do
     assert_search_equal "in:cn", "cn: *"
     assert_search_equal "in:tw", "tw: *"
   end
+
+  it "is:foreign" do
+    assert_search_equal "e:6ed is:foreign", "e:6ed number:/s/"
+    assert_search_equal "e:sta is:foreign", "e:sta number>=64"
+    assert_search_equal "e:dmu is:foreign", "e:dmu number:369-370"
+  end
 end
