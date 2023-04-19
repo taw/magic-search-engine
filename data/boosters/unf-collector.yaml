@@ -50,3 +50,45 @@ sheets:
   galaxy_shock:
     foil: true
     rawquery: "e:unf number:528-537"
+  foil_common:
+    foil: true
+    query: "r:c -t:attraction"
+  foil_uncommon:
+    foil: true
+    query: "r:u -t:attraction"
+  foil_attraction:
+    foil: true
+    query: "t:attraction"
+  foil_rare_mythic:
+    foil: true
+    any:
+    - query: "r:r -t:attraction -is:promo -is:basictype"
+      rate: 2
+    - query: "r:m -t:attraction"
+      rate: 1
+    count: 135
+  foil_un-list:
+    foil: true
+    rawquery: "e:uplist"
+  galaxy_common_uncommon:
+    foil: true
+    filter: "e:unf number:287-485"
+    use: common_uncommon
+  galaxy_rare_mythic:
+    foil: true
+    filter: "e:unf number:287-485"
+    use: rare_mythic
+  foil_uncommon_showcase:
+    foil: true
+    rawquery: "e:unf number:245-276 r:u"
+  foil_rare_mythic_showcase:
+    foil: true
+    filter: "e:unf number:245-276"
+    use: rare_mythic
+  galaxy_uncommon_showcase:
+    foil: true
+    rawquery: "e:unf number:496-527 r:u"
+  galaxy_rare_mythic_showcase:
+    foil: true
+    filter: "e:unf number:496-527"
+    use: rare_mythic
