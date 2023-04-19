@@ -62,6 +62,7 @@ class IndexSerializer
       "name",
       "online_only",
       "release_date",
+      "subsets",
       "types",
     ).merge(
       "products" => (@products[set["code"]] || []).map{|x| index_product(x)}
