@@ -27,6 +27,9 @@
       - if card.frame_effects.present?
         %li.infolabel
           = "Frame Effects: #{card.frame_effects.join(", ")}"
+      - if card.language
+        %li.infolabel
+          = "Language: #{card.language}"
       - if card.promo_types
         %li.infolabel
           = "Promo: #{card.promo_types.sort.join(", ")}"
