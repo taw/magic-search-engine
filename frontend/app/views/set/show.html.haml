@@ -3,31 +3,39 @@
     %h3= @set.name
 
 .row.results_summary
-  .col-12
-    #{@set.name} contains #{pluralize(@cards.total_entries, "card")}.
-  - if @set.block_name
+  - if @first_page
     .col-12
-      It is part of #{@set.block_name} block.
-  - if @set.online_only?
-    .col-12
-      Is it an online only set.
-  - if @set.release_date
-    .col-12
-      = "Released: #{@set.release_date}"
-  - if @set.has_individual_card_release_dates?
-    .col-12
-      = "Individual cards released between #{@set.individual_card_release_dates.join(" and ")}."
-  - if @set.base_set_size
-    .col-12
-      Base set size: #{@set.base_set_size} cards.
-  - unless @set.decks.empty?
-    .col-12
-      %div Preconstructed decks:
-      %ul
-        - @set.decks.each do |deck|
-          %li
-            = link_to_deck(deck) do
-              = "#{deck.name} (#{deck.type})"
+      #{@set.name} contains #{pluralize(@cards.total_entries, "card")}.
+    - if @set.block_name
+      .col-12
+        It is part of #{@set.block_name} block.
+    - if @set.online_only?
+      .col-12
+        Is it an online only set.
+    - if @set.release_date
+      .col-12
+        = "Released: #{@set.release_date}"
+    - if @set.has_individual_card_release_dates?
+      .col-12
+        = "Individual cards released between #{@set.individual_card_release_dates.join(" and ")}."
+    - if @set.base_set_size
+      .col-12
+        Base set size: #{@set.base_set_size} cards.
+    - if @set.decks.present?
+      .col-12
+        %div Preconstructed decks:
+        %ul
+          - @set.decks.each do |deck|
+            %li
+              = link_to_deck(deck) do
+                = "#{deck.name} (#{deck.type})"
+    - if @set.subsets.present?
+      .col-12
+        %div Subsets:
+        %ul
+          - @set.subsets.each do |subset|
+            %li
+              = subset
 
 - @cards.each do |card|
   .row.card_row
