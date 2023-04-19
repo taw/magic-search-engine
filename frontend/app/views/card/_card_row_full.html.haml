@@ -17,6 +17,13 @@
       - if card.oversized
         %li.infolabel
           Oversized card
+      %li.infolabel
+        - if card.foilonly?
+          Available only as foil
+        - elsif card.nonfoilonly?
+          Available only as nonfoil
+        - else
+          Available foil and nonfoil
       - if card.frame_effects.present?
         %li.infolabel
           = "Frame Effects: #{card.frame_effects.join(", ")}"
