@@ -1,0 +1,85 @@
+# Data from https://magic.wizards.com/en/news/feature/whats-inside-the-brothers-war-boosters
+# Serialized card rate assumed to be 0.5%
+pack:
+  foil_fullart_basic: 1
+  foil_common: 2
+  foil_uncommon: 4
+  foil_rare_mythic: 1
+  extended_rare_mythic: 1
+  extended_commander_jumpstart: 1
+  nonfoil_brr:
+  - brr_retro_artifact_uncommon: 1
+    brr_schematic_rare_mythic: 1
+    chance: 1
+  - brr_schematic_uncommon: 1
+    brr_retro_artifact_rare_mythic: 1
+    chance: 1
+  foil_brr_retro_artifact_schematic_uncommon: 1
+  transformers_slot:
+  - transformers: 1
+    chance: 11
+  - foil_transformers: 1
+    chance: 3
+  finale_slot:
+  - foil_alt_art: 1
+    chance: 995
+  - double_rainbow_serialized: 1
+    chance: 5
+sheets:
+  foil_fullart_basic:
+    foil: true
+    query: "r:b is:fullart"
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  extended_rare_mythic:
+    filter: "e:bro number:301-372"
+    use: rare_mythic
+  extended_commander_jumpstart:
+    filter: "(e:bro number:373-377) or (e:brc frame:extendedart)"
+    use: rare_mythic
+  brr_retro_artifact_uncommon:
+    rawquery: "e:brr number<=63 r:u -number:/z/"
+  brr_schematic_uncommon:
+    rawquery: "e:brr number>=64 r:u -number:/z/"
+  brr_retro_artifact_rare_mythic:
+    filter: "e:brr number<=63 -number:/z/"
+    use: rare_mythic
+  brr_schematic_rare_mythic:
+    filter: "e:brr number>=64 -number:/z/"
+    use: rare_mythic
+  foil_brr_retro_artifact_schematic_uncommon:
+    foil: true
+    any:
+    - use: brr_retro_artifact_uncommon
+      chance: 5
+    - use: brr_schematic_uncommon
+      chance: 1
+  transformers:
+    any:
+    - rawquery: "e:bot number<=15"
+      rate: 7
+    - rawquery: "e:bot number>=16"
+      rate: 1
+  foil_transformers:
+    foil: true
+    use: transformers
+  foil_alt_art:
+    foil: true
+    any:
+    - rawquery: "(e:bro or e:brc) promo:boosterfun r:r -(Angel of the Ruins)" # Angel is improperly flagged as boosterfun
+      rate: 12
+    - rawquery: "e:brr number<=63 r:r -number:/z/"
+      rate: 10
+    - rawquery: "e:brr number>=64 r:r -number:/z/"
+      rate: 2
+    - rawquery: "(e:bro or e:brc) promo:boosterfun r:m"
+      rate: 6
+    - rawquery: "e:brr number<=63 r:m -number:/z/"
+      rate: 5
+    - rawquery: "e:brr number>=64 r:m -number:/z/"
+      rate: 1
+  double_rainbow_serialized:
+    foil: true
+    filter: "e:brr number:/z/"
+    use: base_1248_by_rarity

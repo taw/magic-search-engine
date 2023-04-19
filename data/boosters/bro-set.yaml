@@ -1,0 +1,117 @@
+# Data from https://magic.wizards.com/en/news/feature/whats-inside-the-brothers-war-boosters
+# Assumptions
+# Official rate for mech lands is 27%, but this fraction is cleaner and comes to 28%
+# Assume you can't get shattered glass BOT cards
+pack:
+  basic_slot:
+  - basic: 1
+    chance: 4
+  - foil_basic: 1
+    chance: 1
+  common: 3
+  uncommon: 3
+  wildcard: 2
+  rare_mythic: 1
+  brr_retro_artifact: 1
+  finale:
+  - foil_with_showcase: 1
+    chance: 3
+  - foil_with_showcase: 1
+    the_list: 1
+    chance: 1
+sheets:
+  common:
+    query: "r:c"
+  foil_with_showcase:
+    # Copied from base set
+    filter: "(e:bro is:baseset -number:268-277) or (e:brr -number:/z/)"
+    foil: true
+    any:
+    - query: "r<=c"
+      chance: 12
+    - query: "r:u"
+      chance: 5
+    - any:
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        rate: 2
+      - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 4
+      - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 6
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        rate: 1
+      - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 2
+      - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 3
+      chance: 3
+  basic:
+    any:
+    - rawquery: "e:bro number:268-277"
+      rate: 5
+    - rawquery: "e:bro number:278-287"
+      rate: 2
+  foil_basic:
+    foil: true
+    use: basic
+  wildcard:
+    any:
+    - use: common
+      chance: 700
+    - any:
+      - query: "r:u"
+        rate: 6
+      - rawquery: "e:brr r:u number<=63"
+        rate: 5
+      - rawquery: "e:brr r:u number>=64"
+        rate: 1
+      chance: 175
+    - any:
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        rate: 4
+      - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 8
+      - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 12
+      - rawquery: "e:brr r:r number<=63"
+        rate: 10
+      - rawquery: "e:brr r:r number>=64"
+        rate: 2
+      - rawquery: "e:brc r:r number<=28"
+        rate: 12
+      - rawquery: "e:{set} number:288-292"
+        rate: 12
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        rate: 2
+      - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 4
+      - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 6
+      - rawquery: "e:brr r:m number<=63"
+        rate: 5
+      - rawquery: "e:brr r:m number>=64"
+        rate: 1
+      - rawquery: "e:brc r:m number<=28"
+        rate: 6
+      - rawquery: "e:bot number<=15"
+        rate: 6
+      chance: 125
+  brr_retro_artifact:
+    filter: "e:brr -number:/z/"
+    any:
+    # Officially 1/6 schematc rate
+    # U/R/M rates guessed to be at 4x/2x/1x multiples
+    - filter: "e:brr -number:/z/ number<=63"
+      use: base_1248_by_rarity
+      chance: 5
+    - filter: "e:brr -number:/z/ number>=64"
+      use: base_1248_by_rarity
+      chance: 1
+  the_list:
+    any:
+    - set: plist
+      code: "BRO"
+      rate: 1
+    - set: slx
+      code: "BRO"
+      rate: 1
