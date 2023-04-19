@@ -1,6 +1,6 @@
-class ConditionIsDigital < Condition
-  def search(db)
-    merge_into_set db.sets.values.select(&:online_only?).map(&:printings)
+class ConditionIsDigital < ConditionSimple
+  def match?(card)
+    card.digital
   end
 
   def to_s

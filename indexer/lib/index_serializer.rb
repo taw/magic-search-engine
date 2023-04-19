@@ -113,6 +113,7 @@ class IndexSerializer
           "artist",
           "attraction_lights",
           "border",
+          "digital",
           "exclude_from_boosters",
           "flavor_name",
           "flavor",

@@ -125,6 +125,9 @@ class PatchMtgjsonVersions < Patch
       card["fullart"] = card.delete("isFullArt")
       card["textless"] = card.delete("isTextless")
       card["timeshifted"] = card.delete("isTimeshifted")
+      # This is not quite set-based as there are Arena-specific fixed art cards
+      # We used to have set-based logic, but it has no way of finding cards like znr/288†b
+      card["digital"] = card.delete("isOnlineOnly")
 
       # OC21/OAFC are technically "display cards" not oversized
       # https://github.com/mtgjson/mtgjson/issues/815

@@ -4,7 +4,7 @@ class CardPrinting
   attr_reader :rarity_code, :print_sheet, :oversized, :frame_effects, :foiling, :spotlight
   attr_reader :textless, :fullart, :buyabox, :flavor_name, :nontournament, :acorn
   attr_reader :attraction_lights, :promo_types, :variant_misprint, :variant_foreign, :signature, :subsets, :timeshifted
-  attr_reader :stamp
+  attr_reader :stamp, :digital
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
@@ -41,6 +41,7 @@ class CardPrinting
     @arena = data["arena"]
     @attraction_lights = data["attraction_lights"]
     @buyabox = data["buyabox"]
+    @digital = data["digital"]
     @exclude_from_boosters = data["exclude_from_boosters"]
     @fullart = data["fullart"]
     @mtgo = data["mtgo"]
