@@ -173,18 +173,8 @@ class PatchMtgjsonVersions < Patch
         end
       end
 
-      if card.has_key?("isBuyABox")
-        if card.delete("isBuyABox")
-          card["buyabox"] = true
-        end
-      end
-
       if card["promoTypes"]
         card["promo_types"] = card["promoTypes"]
-      end
-
-      if card["promoTypes"]&.include?("buyabox")
-        card["buyabox"] = true
       end
 
       card["stamp"] = card.delete("securityStamp")
