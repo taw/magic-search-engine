@@ -51,11 +51,14 @@
       = search_help 'o:"[-x]"', 'Planeswalker cards with ability that costs "[-x]"'
 
     %h4 Search by edition
+    %div You can search by set with <code>e:</code>, using either its code or its name.
+    %div Secret Lair Drop also has "subsets" which you can search with <code>subset:</code>
     %ul
       = search_help "e:bfz", %[cards from "Battle for Zendikar" set]
       = search_help %[e:"scars of mirrodin"], %[cards from "Scars of Mirrodin" set]
       = search_help %[e:ascension], %[cards from all sets including "ascension" in name (only if there's no exact match)]
       = search_help "e:isd,dka", %[cards from "Innistrad" and "Dark Ascension" sets]
+      = search_help %[subset:"Happy Little Gathering"], %[Secret Lair Drop cards from "Happy Little Gathering" subset]
 
     %h4 Search by block
     %ul
