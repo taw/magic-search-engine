@@ -49,23 +49,33 @@ sheets:
       chance: 3
     - any:
       - use: rare_showcase
-        rate: 2
-      - use: rare_has_showcase
         rate: 4
+      - use: rare_has_showcase
+        rate: 8
       - use: rare_has_no_showcase
-        rate: 6
-      - use: mythic_showcase
+        rate: 12
+      - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
         rate: 1
-      - use: mythic_has_showcase
+      - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
         rate: 2
+      - use: mythic_has_showcase
+        rate: 4
       - use: mythic_has_no_showcase
-        rate: 3
+        rate: 6
       chance: 3
   rare_mythic_with_showcase:
     any:
     - use: rare_with_showcase
       chance: 78
-    - use: mythic_with_showcase
+    - any:
+      - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
+        rate: 1
+      - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
+        rate: 2
+      - use: mythic_has_showcase
+        rate: 4
+      - use: mythic_has_no_showcase
+        rate: 6
       chance: 24
   foil_with_showcase:
     foil: true
@@ -92,17 +102,19 @@ sheets:
       chance: 5
     - any:
       - use: rare_showcase
-        rate: 2
-      - use: rare_has_showcase
         rate: 4
+      - use: rare_has_showcase
+        rate: 8
       - use: rare_has_no_showcase
-        rate: 6
-      - use: mythic_showcase
+        rate: 12
+      - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
         rate: 1
-      - use: mythic_has_showcase
+      - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
         rate: 2
+      - use: mythic_has_showcase
+        rate: 4
       - use: mythic_has_no_showcase
-        rate: 3
+        rate: 6
       chance: 3
   reprint_to_modern: 
     any:
