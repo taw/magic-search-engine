@@ -57,11 +57,9 @@ sheets:
       count: 5
   wildcard:
     any:
-    - use: common_with_showcase # Common
-      count: 95 + 6 + 6
+    - use: common
       chance: 700
-    - use: uncommon_with_showcase # Uncommon
-      count: 73 + 7 + 7
+    - use: uncommon
       chance: 175
     - any: # Rare Mythic Praetor
       - any:
