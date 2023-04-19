@@ -11,7 +11,7 @@ pack:
   - mech_basic: 1
     chance: 3
   uncommon: 3
-  rare_mythic: 1
+  rare_mythic_with_showcase: 1
   brr_retro_artifact: 1
 sheets:
   brr_retro_artifact:
@@ -38,11 +38,25 @@ sheets:
     - query: "r:u"
       chance: 5
     - any:
-      - query: "r:r"
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper"
         rate: 2
-      - query: "r:m"
+      - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 4
+      - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 6
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper"
         rate: 1
+      - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 2
+      - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 3
       chance: 3
   mech_basic:
     query: "r:b number>=278"
     count: 10
+  rare_mythic_with_showcase:
+    any:
+    - use: rare_with_showcase
+      chance: 63*2
+    - use: mythic_with_showcase
+      chance: 23
