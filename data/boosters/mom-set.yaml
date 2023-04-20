@@ -46,7 +46,7 @@ sheets:
     - any:
       - use: rare_with_showcase
         chance: 2 * 60
-      - rawquery: "e:mom r:r -in:booster"
+      - rawquery: "e:mom r:r -alt:(is:baseset)"
         chance: 2 * 5
       - rawquery: "e:moc r:r number:1-46"
         chance: 2 * 36
