@@ -256,7 +256,6 @@ class CardDatabase
   end
 
   def suggest_spelling(word)
-    p [:respell, word, spelling_suggestions.suggest(word)]
     spelling_suggestions.suggest(word)
   end
 
