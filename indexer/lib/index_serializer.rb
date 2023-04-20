@@ -56,7 +56,6 @@ class IndexSerializer
       "custom",
       "foiling",
       "funny",
-      "gatherer_code",
       "has_boosters",
       "in_other_boosters",
       "name",

@@ -6,7 +6,6 @@ class PatchSetCodes < Patch
     # Forced lower case for all codes
     each_set do |set|
       set["mci_code"] = set["mci_code"]&.downcase
-      set["gatherer_code"] = set["gatherer_code"]&.downcase
       set["official_code"] = set["official_code"]&.downcase
     end
 
@@ -30,11 +29,8 @@ class PatchSetCodes < Patch
 
       # Delete if redundant
       set.delete("alternative_code") if set["alternative_code"] == set["code"]
-      set.delete("gatherer_code") if set["gatherer_code"] == set["code"]
-      set.delete("gatherer_code") if set["gatherer_code"] == set["alternative_code"]
 
       # Delete ones conflicting with official or alternative codes for different sets
-      set.delete("gatherer_code") if %W[al st le mi].include?(set["gatherer_code"])
       set.delete("official_code")
     end
 

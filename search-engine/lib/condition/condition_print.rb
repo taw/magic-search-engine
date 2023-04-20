@@ -43,7 +43,7 @@ class ConditionPrint < Condition
     return [@date, 3] if @date.is_a?(Date)
 
     set = db.sets.values.find{|set|
-      set.code.downcase == @date.downcase or set.alternative_code&.downcase == @date.downcase or set.gatherer_code&.downcase == @date.downcase
+      set.code.downcase == @date.downcase or set.alternative_code&.downcase == @date.downcase
     }
     return [set.release_date, 3] if set and set.release_date
 
