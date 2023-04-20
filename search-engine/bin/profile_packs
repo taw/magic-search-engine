@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/card_database"
+require "benchmark"
+require "ruby-prof"
+
+@db = CardDatabase.load
+
+profile = RubyProf::Profile.new
+
+profile.start
+if ARGV.empty?
+  @db.supported_booster_types
+else
+  @db.pack_factory.for(*ARGV)
+end
+result = profile.stop
+# print a flat profile to text
+printer = RubyProf::FlatPrinter.new(result)
+printer.print(STDOUT, sort_method: :total_time)
+
+puts ""
+
+printer = RubyProf::GraphPrinter.new(result)
+printer.print(STDOUT, sort_method: :total_time)
