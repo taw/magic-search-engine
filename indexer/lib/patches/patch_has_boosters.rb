@@ -25,7 +25,6 @@ class PatchHasBoosters < Patch
 
   def call
     each_set do |set|
-      # mtgjson data, might be stale, so we need to override it
       set["has_boosters"] = false
 
       set_code = set["code"]
