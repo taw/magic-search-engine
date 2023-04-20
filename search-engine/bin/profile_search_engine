@@ -8,13 +8,15 @@ require "ruby-prof"
 
 queries = ARGF.readlines.map(&:chomp)
 
-RubyProf.start
+profile = RubyProf::Profile.new
+
+profile.start
 queries.each do |query|
   results = @db.search(query)
   warnings = results.warnings
   cards = results.card_groups
 end
-result = RubyProf.stop
+result = profile.stop
 # print a flat profile to text
 printer = RubyProf::FlatPrinter.new(result)
 printer.print(STDOUT, sort_method: :total_time)
