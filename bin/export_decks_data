@@ -36,11 +36,53 @@ class ExportDecksData
   end
 
   def call(output_path)
+    code_map = {'Intro Pack'=> "intr", 
+      'Advanced Pack'=> "advp",
+      'Archenemy Deck'=> "arch",
+      'Jumpstart'=> "jmp",
+      'Starter Deck'=> "std",
+      'Pioneer Challenger Deck'=> "pio",
+      'Clash Pack'=> "clsh",
+      'Guild Kit'=> "gkt",
+      'Event Deck'=> "evn",
+      'Premium Deck'=> "prm",
+      'Basic Deck'=> "bas",
+      'Advanced Deck'=> "advd",
+      'Planeswalker Deck'=> "plw",
+      'Welcome Deck'=> "wel",
+      'Spellslinger Starter Kit'=> "sstk",
+      'Challenger Deck'=> "chl",
+      'Arena Starter Kit'=> "astk",
+      'MTGO Theme Deck'=> "motd",
+      'Game Night Deck'=> "gnd",
+      'Duel Deck'=> "dd",
+      'Brawl Deck'=> "brwl",
+      'Duel Of The Planeswalkers Deck'=> "dotp",
+      'Planechase Deck'=> "plch",
+      'Halfdeck'=> "hdk",
+      'Commander Deck'=> "cmr",
+      'Theme Deck'=> "thm",
+      'World Championship Decks'=> "wch"
+    }
+    codes = Set[]
     exported_data = []
     @db.decks.each do |deck|
+      code = deck.set_code + "-"
+      if code_map.key?(deck.type)
+        code << code_map[deck.type] << "-"
+      end
+      code << deck.name.downcase.gsub(/[^a-z]/, '')[0...5]
+      code2 = code
+      n = 2
+      while codes.include?(code2)
+        code2 = code + "-" + n.to_s
+        n += 1
+      end
+      codes << code2
       exported_data << {
         name: deck.name,
         type: deck.type,
+        code: code2,
         set_code: deck.set_code,
         set_name: deck.set_name,
         release_date: deck.release_date,
