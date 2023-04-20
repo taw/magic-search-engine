@@ -13,8 +13,7 @@ end
 syntax_help_path = "#{__dir__}/../../frontend/app/views/help/syntax.html.haml"
 syntax_help = Pathname(syntax_help_path).read
 
-engine = Haml::Engine.new(syntax_help)
-engine.to_html
+eval Haml::Engine.new.call(syntax_help)
 
 parsed = $queries.map{|q| QueryParser.new.parse(q) }
 all_condition_classes = ObjectSpace.each_object(Class).select{|c| c <= Condition }
