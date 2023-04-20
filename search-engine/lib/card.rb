@@ -423,6 +423,7 @@ class Card
     calculate_mana_hash
     calculate_color_indicator
     calculate_reminder_text
+    @front = (!@secondary or @layout == "aftermath" or @layout == "flip" or @layout == "adventure")
   end
 
   def partner?
@@ -430,7 +431,7 @@ class Card
   end
 
   def front?
-    !@secondary or @layout == "aftermath" or @layout == "flip" or @layout == "adventure"
+    @front
   end
 
   def back?
