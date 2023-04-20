@@ -158,7 +158,12 @@ class CardDatabase
   # * name substring match
   def resolve_editions(edition)
     edition = edition.downcase
-    matching_primary_code = Set[]
+
+    # Just don't bother with anything fancy if "e:foo" exists as a code
+    if @sets[edition]
+      return Set[@sets[edition]]
+    end
+
     matching_alternative_code = Set[]
     matching_gatherer_code = Set[]
     matching_name = Set[]
@@ -168,8 +173,8 @@ class CardDatabase
     normalized_edition_alt = normalize_set_name_alt(edition)
 
     @sets.each do |set_code, set|
-      normalized_set_name     = normalize_set_name(set.name)
-      normalized_set_name_alt = normalize_set_name_alt(set.name)
+      normalized_set_name     = set.normalized_name
+      normalized_set_name_alt = set.normalized_name_alt
       matching_primary_code     << set if set_code == edition
       matching_alternative_code << set if set.alternative_code&.downcase == edition
       matching_gatherer_code << set if set.gatherer_code&.downcase == edition
@@ -178,7 +183,6 @@ class CardDatabase
     end
 
     [
-      matching_primary_code,
       matching_alternative_code,
       matching_gatherer_code,
       matching_name,
