@@ -1,3 +1,5 @@
+# This is basically MCI leftover
+# You should use c=, c>=, c<= etc.
 class ConditionColors < ConditionSimple
   def initialize(colors)
     @colors_query = colors.downcase.chars
