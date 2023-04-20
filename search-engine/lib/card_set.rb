@@ -1,5 +1,5 @@
 class CardSet
-  attr_reader :name, :code, :alternative_code, :gatherer_code
+  attr_reader :name, :code, :alternative_code
   attr_reader :block_name, :block_code, :alternative_block_code
   attr_reader :border, :release_date, :printings, :types
   attr_reader :decks, :base_set_size
@@ -11,7 +11,6 @@ class CardSet
     @name          = data["name"]
     @code          = data["code"]
     @alternative_code = data["alternative_code"]
-    @gatherer_code = data["gatherer_code"]
     @block_name    = data["block_name"]
     @block_code    = data["block_code"]&.downcase
     @alternative_block_code = data["alternative_block_code"]&.downcase

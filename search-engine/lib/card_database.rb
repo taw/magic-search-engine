@@ -153,7 +153,6 @@ class CardDatabase
   # Priority:
   # * exact code (official)
   # * exact alternative code (mci)
-  # * exact gatherer code
   # * name exact match
   # * name substring match
   def resolve_editions(edition)
@@ -165,7 +164,6 @@ class CardDatabase
     end
 
     matching_alternative_code = Set[]
-    matching_gatherer_code = Set[]
     matching_name = Set[]
     matching_name_part = Set[]
 
@@ -177,14 +175,12 @@ class CardDatabase
       normalized_set_name_alt = set.normalized_name_alt
       matching_primary_code     << set if set_code == edition
       matching_alternative_code << set if set.alternative_code&.downcase == edition
-      matching_gatherer_code << set if set.gatherer_code&.downcase == edition
       matching_name          << set if normalized_set_name == normalized_edition or normalized_set_name_alt == normalized_edition_alt
       matching_name_part     << set if normalized_set_name.include?(normalized_edition) or normalized_set_name_alt.include?(normalized_edition_alt)
     end
 
     [
       matching_alternative_code,
-      matching_gatherer_code,
       matching_name,
       matching_name_part,
     ].find{|s| s.size > 0} || Set[]
