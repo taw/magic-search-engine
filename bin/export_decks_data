@@ -67,22 +67,22 @@ class ExportDecksData
     codes = Set[]
     exported_data = []
     @db.decks.each do |deck|
-      code = deck.set_code + "-"
+      code_base = deck.set_code + "-"
       if code_map.key?(deck.type)
-        code << code_map[deck.type] << "-"
+        code_base << code_map[deck.type] << "-"
       end
-      code << deck.name.downcase.gsub(/[^a-z]/, '')[0...5]
-      code2 = code
+      code_base << deck.name.downcase.gsub(/[^a-z]/, '')[0...5]
+      code = code_base.dup
       n = 2
-      while codes.include?(code2)
-        code2 = code + "-" + n.to_s
+      while codes.include?(code)
+        code = code_base + "-" + n.to_s
         n += 1
       end
-      codes << code2
+      codes << code
       exported_data << {
         name: deck.name,
         type: deck.type,
-        code: code2,
+        code: code,
         set_code: deck.set_code,
         set_name: deck.set_name,
         release_date: deck.release_date,
