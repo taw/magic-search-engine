@@ -40,6 +40,7 @@ class HumanExportSealedData
     }.to_h
   end
 
+  # TODO: also write flags (balanced / duplicates)
   def write_sheet(file, sheet)
     ev = integerize_evs(sheet.probabilities).sort_by{|c,w| [c.set, c.number.to_i, c.number, c.foil ? 0 : 1] }
 
