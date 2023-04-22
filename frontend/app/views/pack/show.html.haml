@@ -32,6 +32,8 @@
   %h4
     - if sheet.class == ColorBalancedCardSheet
       Sheet #{sheet.name} (color balanced)
+    - elsif sheet.class == CardSheetWithDuplicates
+      Sheet #{sheet.name} (duplicates allowed)
     - else
       Sheet #{sheet.name}
   - groups = sheet.probabilities.group_by(&:last).transform_values{|x| x.map(&:first).sort}.sort.reverse
