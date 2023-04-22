@@ -80,6 +80,7 @@ class ExportFormatterBasic < ExportFormatter
     end.sort.to_h
 
     {
+      allow_duplicates: sheet.is_a?(CardSheetWithDuplicates) ? true : nil,
       balance_colors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
       total_weight: cards.values.sum,
       cards: cards,
@@ -121,6 +122,7 @@ class ExportFormatterExtended < ExportFormatter
     end.sort_by{|x| [x[:set], x[:number].to_i, x[:number], x[:foil] ? 0 : 1] }
 
     {
+      allow_duplicates: sheet.is_a?(CardSheetWithDuplicates) ? true : nil,
       balance_colors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
       total_weight: cards.map{|x| x[:weight]}.sum,
       cards: cards,
@@ -170,6 +172,7 @@ class ExportFormatterExperimental < ExportFormatter
     cards = cards.to_h
 
     {
+      allowDuplicates: sheet.is_a?(CardSheetWithDuplicates) ? true : nil,
       balanceColors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
       cards: cards,
       foil: foil_status[0],
