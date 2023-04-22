@@ -28,12 +28,23 @@ class PackFactory
 
     foil = data.delete("foil") if data.has_key?("foil")
     balanced = data.delete("balanced") if data.has_key?("balanced")
+    duplicates = data.delete("duplicates") if data.has_key?("duplicates")
     count = data.delete("count") if data.has_key?("count")
-    kind = balanced ? ColorBalancedCardSheet : CardSheet
+
+    if balanced and duplicates
+      raise_sheet_error "Balanced and duplicates are mutually exclusive"
+    elsif balanced
+      kind = ColorBalancedCardSheet
+    elsif duplicates
+      kind = CardSheetWithDuplicates
+    else
+      kind = CardSheet
+    end
 
     case data.keys
     when ["code"]
       raise_sheet_error "No balanced support for code" if balanced
+      raise_sheet_error "No duplicates support for code" if duplicates
       parts = data["code"].split("/", 2)
       @sheet_factory.explicit_sheet(parts[0], parts[1], foil: foil, count: count)
     when ["query"]
@@ -41,6 +52,7 @@ class PackFactory
     when ["any"]
       subsheets = data["any"].map(&:dup)
       raise_sheet_error "No balanced support for any" if balanced
+      raise_sheet_error "No duplicates support for any" if balanced
       if subsheets.all?{|s| s["rate"]}
         rates = subsheets.map{|d| d.delete("rate")}
         sheets = subsheets.map{|d| build_sheet(d.merge("foil" => foil)) }
