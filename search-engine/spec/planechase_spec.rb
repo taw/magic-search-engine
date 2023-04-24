@@ -8,8 +8,9 @@ describe "Planechase" do
   end
 
   it "chaos symbol" do
-    # Maybe should be something else than CHAOS ?
-    assert_search_results %[t:plane o:"whenever you roll {CHAOS}, untap all creatures you control"], "Llanowar"
+    # A lot of cards had "Whenever you roll {CHAOS}", but it got changed do "Whenever chaos ensues"
+    # So very few cards use {CHAOS} symbol in updated Oracle text
+    assert_search_results %[t:plane o:{CHAOS}], "Pools of Becoming"
   end
 
   it "phenomenon" do
