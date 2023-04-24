@@ -15,6 +15,12 @@ class CardPrinting
   end
 end
 
+class Pathname
+  def sha1
+    Digest::SHA1.hexdigest(read)
+  end
+end
+
 class CheckCardOrientation
   def initialize(card, path)
     @card = card
@@ -54,8 +60,8 @@ class CheckCardOrientation
     "#{@card.set_code}/#{@card.number} #{@card.name}"
   end
 
-  def rotate
-    system "jpegtran -rotate 90 -copy all #{@path} > #{@path}-out" or raise "Failed to rotate #{@path}"
+  def rotate(deg=90)
+    system "jpegtran -rotate #{deg} -copy all #{@path} > #{@path}-out" or raise "Failed to rotate #{@path}"
     FileUtils.mv("#{@path}-out", "#{@path}")
   end
 
@@ -68,7 +74,28 @@ class CheckCardOrientation
   end
 
   def call(fix)
+    # Stupid 180 degree rotated version for a gimmick
+    if @card.flavor_name == "Mind Flayer, the Shadow"
+      case @path.sha1
+      when "c0edb34c4aa1ff0b2b56108b60cb3d1a3cd896b2"
+        # known bad
+        if fix
+          warn "Fixing #{card_name_and_number} #{@path} by rotating it 180 degrees"
+          rotate(180)
+        else
+          warn "Upside down #{card_name_and_number} #{@path}"
+        end
+      when "34985f1d4c9f484a08cefb17b06f00df24cac106"
+        # known good, we're done
+      else
+        puts "Unknown hash #{@path.sha1}, please verify"
+        open
+        binding.pry
+      end
+    end
+
     return if orientation == expected_orientation
+
     if fix
       if orientation == :vertical and expected_orientation == :horizontal
         warn "Fixing #{card_name_and_number} (#{@card.typeline}) #{@path} by rotating it 90 degrees"
