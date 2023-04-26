@@ -1,0 +1,48 @@
+# data collected from youtube, e.g. https://www.youtube.com/watch?v=sUTpE4cZEM4&ab_channel=TolarianCommunityCollege
+name: "{set_name} Theme Booster Blue"
+filter: "e:{set} id<=u (number<=set or promo:themepack)"
+pack:
+  uncommon: 9
+  common: 21
+  variable:
+  - common: 3
+    chance: 1
+  - common: 2
+    uncommon: 1
+    chance: 1
+  - common: 1
+    uncommon: 2
+    chance: 1
+  - uncommon: 3
+    chance: 1
+  rare_slots:
+  - rare_mythic: 1
+    uncommon: 1
+    chance: 9
+  - rare_mythic: 2
+    chance: 1
+sheets:
+  common:
+    duplicates: true
+    any:
+    - query: "r:c"
+      rate: 1
+    - query: "r:c -id:c"
+      rate: 3
+  uncommon:
+    duplicates: true
+    any:
+    - query: "r:u"
+      rate: 1
+    - query: "r:u -id:c"
+      rate: 3
+  rare_mythic:
+    any:
+    - query: "r:r"
+      rate: 2
+    - query: "r:r -id:c"
+      rate: 6
+    - query: "r:m"
+      rate: 1
+    - query: "r:m -id:c"
+      rate: 3
