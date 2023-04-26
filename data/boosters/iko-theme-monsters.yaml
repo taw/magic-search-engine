@@ -1,0 +1,51 @@
+# data collected from youtube, e.g. https://www.youtube.com/watch?v=Vvl8g2vXdHU&ab_channel=MTGUnpacked
+# As far as I can tell, this booster only doesn't include human creatures and artifacts
+# It is very likely that some instants, sorceries, and enchantments are excluded, but
+# there is no information on what those cards are.
+name: "{set_name} Theme Booster Monsters"
+filter: "e:{set} (number<=set or promo:themepack) -t:artifact -t:human"
+pack:
+  uncommon: 9
+  common: 21
+  variable:
+  - common: 3
+    chance: 1
+  - common: 2
+    uncommon: 1
+    chance: 1
+  - common: 1
+    uncommon: 2
+    chance: 1
+  - uncommon: 3
+    chance: 1
+  rare_slots:
+  - rare_mythic: 1
+    uncommon: 1
+    chance: 9
+  - rare_mythic: 2
+    chance: 1
+sheets:
+  common:
+    duplicates: true
+    any:
+    - query: "r:c"
+      rate: 1
+    - query: "r:c -id:c"
+      rate: 3
+  uncommon:
+    duplicates: true
+    any:
+    - query: "r:u"
+      rate: 1
+    - query: "r:u -id:c"
+      rate: 3
+  rare_mythic:
+    any:
+    - query: "r:r"
+      rate: 2
+    - query: "r:r -id:c"
+      rate: 6
+    - query: "r:m"
+      rate: 1
+    - query: "r:m -id:c"
+      rate: 3
