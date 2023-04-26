@@ -52,7 +52,7 @@ class PackFactory
     when ["any"]
       subsheets = data["any"].map(&:dup)
       raise_sheet_error "No balanced support for any" if balanced
-      raise_sheet_error "No duplicates support for any" if balanced
+      raise_sheet_error "No duplicates support for any" if duplicates
       if subsheets.all?{|s| s["rate"]}
         rates = subsheets.map{|d| d.delete("rate")}
         sheets = subsheets.map{|d| build_sheet(d.merge("foil" => foil)) }
