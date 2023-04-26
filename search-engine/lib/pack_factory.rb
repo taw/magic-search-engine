@@ -8,7 +8,7 @@ class PackFactory
     raise "Error building #{@sheet_full_name}: #{message}"
   end
 
-  def build_sheet_from_subsheets(subsheets, chances)
+  def build_sheet_from_subsheets(subsheets, chances, kind: CardSheet)
     # Filter out the empty subsheets
     # Example: foil sheet has 2xR + 1xM mix, but some sets don't have mythics
     subsheets, chances = subsheets.zip(chances).select{|s,c| c != 0}.transpose
@@ -16,7 +16,7 @@ class PackFactory
     if subsheets.size == 1
       subsheets[0]
     else
-      CardSheet.new(subsheets, chances)
+      kind.new(subsheets, chances)
     end
   end
 
@@ -52,16 +52,15 @@ class PackFactory
     when ["any"]
       subsheets = data["any"].map(&:dup)
       raise_sheet_error "No balanced support for any" if balanced
-      raise_sheet_error "No duplicates support for any" if duplicates
       if subsheets.all?{|s| s["rate"]}
         rates = subsheets.map{|d| d.delete("rate")}
         sheets = subsheets.map{|d| build_sheet(d.merge("foil" => foil)) }
         chances = rates.zip(sheets).map{|r,s| r*s.elements.size}
-        build_sheet_from_subsheets(sheets, chances)
+        build_sheet_from_subsheets(sheets, chances, kind: kind)
       elsif subsheets.all?{|s| s["chance"]}
         chances = subsheets.map{|d| d.delete("chance")}
         sheets = subsheets.map{|d| build_sheet(d.merge("foil" => foil)) }
-        build_sheet_from_subsheets(sheets, chances)
+        build_sheet_from_subsheets(sheets, chances, kind: kind)
       else
         raise_sheet_error "Incorrect subsheet data for any"
       end
