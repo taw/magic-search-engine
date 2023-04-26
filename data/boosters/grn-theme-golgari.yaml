@@ -15,7 +15,7 @@ pack:
     chance: 1
   - uncommon: 3
     chance: 1
-  rare_mythic_filtered: 1
+  rare_mythic: 1
 sheets:
   common:
     duplicates: true
@@ -31,11 +31,13 @@ sheets:
       rate: 1
     - query: "r:u -id:c"
       rate: 3
-  rare_mythic_filtered:
+  rare_mythic:
     any:
-    - filter: "e:{set} id<=Golgari -id=c (number<=set or promo:themepack)"
-      use: rare_mythic
-      chance: 4
-    - filter: "e:{set} id=c (number<=set or promo:themepack)"
-      use: rare_mythic
-      chance: 1
+    - query: "r:r"
+      rate: 2
+    - query: "r:r -id:c"
+      rate: 6
+    - query: "r:m"
+      rate: 1
+    - query: "r:m -id:c"
+      rate: 3
