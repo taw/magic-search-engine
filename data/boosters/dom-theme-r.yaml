@@ -2,15 +2,18 @@
 name: "{set_name} Theme Booster Red"
 filter: "e:{set} id<=r (number<=set or promo:themepack)"
 pack:
-  uncommon: 11
+  uncommon: 10
   common: 21
   variable:
-  - common: 2
+  - common: 3
     chance: 1
-  - common: 1
+  - common: 2
     uncommon: 1
     chance: 1
-  - uncommon: 2
+  - common: 1
+    uncommon: 2
+    chance: 1
+  - uncommon: 3
     chance: 1
   rare_mythic_filtered: 1
 sheets:

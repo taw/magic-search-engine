@@ -1,6 +1,6 @@
-# data collected from youtube, e.g. https://www.youtube.com/watch?v=sUTpE4cZEM4&ab_channel=TolarianCommunityCollege
-name: "{set_name} Theme Booster Black"
-filter: "e:{set} id<=b (number<=set or promo:themepack)"
+# Data from youtube, e.g. https://www.youtube.com/watch?v=gnq3xpi0qWs&ab_channel=BadBoyGaming
+name: "{set_name} Theme Booster Golgari"
+filter: "e:{set} id<=Golgari (number<=set or promo:themepack) (w:Golgari or -w:*)"
 pack:
   uncommon: 10
   common: 21
@@ -33,7 +33,7 @@ sheets:
       rate: 3
   rare_mythic_filtered:
     any:
-    - filter: "e:{set} id=b (number<=set or promo:themepack)"
+    - filter: "e:{set} id<=Golgari -id=c (number<=set or promo:themepack)"
       use: rare_mythic
       chance: 4
     - filter: "e:{set} id=c (number<=set or promo:themepack)"
