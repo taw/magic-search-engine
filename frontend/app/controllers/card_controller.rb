@@ -61,7 +61,10 @@ class CardController < ApplicationController
     @title = @search
     query = Query.new(@search, params[:random_seed])
     @seed = query.seed
-    results = $CardDatabase.search(query)
+    # There are probably valid queries that can trigger this, especially on a small busy server
+    Timeout.timeout(5) do
+      results = $CardDatabase.search(query)
+    end
     @warnings = results.warnings
     @cards = results.card_groups.map do |printings|
       choose_best_printing(printings)

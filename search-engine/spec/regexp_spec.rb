@@ -29,10 +29,11 @@ describe "Regexp" do
     end
   end
 
-  it "handles timeouts" do
-    # It's quite hard to construct pathological regexp by accident
-    proc{ search('o:/([^e]?){50}[^e]{50}/') }.should raise_error(Timeout::Error)
-  end
+  # This is handled by the frontend now
+  # it "handles timeouts" do
+  #   # It's quite hard to construct pathological regexp by accident
+  #   proc{ search('o:/([^e]?){50}[^e]{50}/') }.should raise_error(Timeout::Error)
+  # end
 
   it "regexp oracle text" do
     assert_search_results 'o:/\d{3,}/',

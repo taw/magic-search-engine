@@ -35,20 +35,13 @@ class Query
     if @cond
       @cond.metadata! :logger, logger
       @cond.metadata! :fuzzy, nil
-      # Timeout check to prevent user-provided regexps from being exponentially slow
-      # Timeout is very generous, as server is tiny and could be overloaded
-      # and we're really only protecting against deliberate timeouts
-      results = nil
-      Timeout.timeout(2) do
-        results = @cond.search(db)
-      end
+      # We need to timeout to prevent DOS attacks, but unfortunately this could trigger
+      # in a lot of cases we don't want it to, like lazy loading booster data
+      # So there should be timeout in the frontend instead
+      results = @cond.search(db)
       if results.empty?
-        # This is fairly rare, and should not be triggered by automated mass querying (like booster initialization or specs)
-        # so it's not too bad if it's slow
-        Timeout.timeout(5) do
-          @cond.metadata! :fuzzy, db
-          results = @cond.search(db)
-        end
+        @cond.metadata! :fuzzy, db
+        results = @cond.search(db)
       end
     else
       results = db.printings
