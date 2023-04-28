@@ -120,8 +120,8 @@ class CardDatabase
         booster = pack_factory.for(set_code, variant)
         @supported_booster_types[booster.code] = booster if booster
       end
+      @supported_booster_types = @supported_booster_types.sort_by{|c,b| [-b.set.release_date.jd, c]}.to_h
     end
-    @supported_booster_types = @supported_booster_types.sort_by{|c,b| [-b.set.release_date.jd, c]}.to_h
     @supported_booster_types
   end
 
