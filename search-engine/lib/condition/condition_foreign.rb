@@ -21,19 +21,25 @@ class ConditionForeign < ConditionSimple
   end
 
   def match?(card)
-    card.foreign_names_normalized.each do |lang, data|
-      next unless @lang_match_all or lang == @lang
-      # I don't think we can have empty here, it would be missing,
-      # but check just in case
-      if @query_any
-        return true unless data.empty?
+    if @query_any
+      if @lang_match_all
+        !card.foreign_names_normalized.empty?
       else
-        data.each do |n|
-          return true if n =~ @query_regexp
+        card.foreign_names_normalized[@lang]
+      end
+    else
+      if @lang_match_all
+        card.foreign_names_normalized.any? do |lang, data|
+          data.any? do |n|
+            n =~ @query_regexp
+          end
+        end
+      else
+        card.foreign_names_normalized[@lang]&.any? do |n|
+          n =~ @query_regexp
         end
       end
     end
-    false
   end
 
   def to_s

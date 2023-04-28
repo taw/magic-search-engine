@@ -153,7 +153,7 @@ class CardPrinting
   end
 
   def age
-    [0, (release_date - first_regular_release_date).to_i].max
+    @age ||= [0, (release_date - first_regular_release_date).to_i].max
   end
 
   def inspect
