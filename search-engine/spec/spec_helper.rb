@@ -199,6 +199,7 @@ shared_context "db" do |*sets|
   def load_database(*sets)
     $card_database ||= {}
     $card_database[[]]   ||= CardDatabase.load
+    $card_database[[]].supported_booster_types # preload to avoid timeouts in specs
     $card_database[sets] ||= $card_database[[]].subset(sets)
   end
 
