@@ -26,7 +26,7 @@ sheets:
     any:
     - use: dfc_common
       rate: 2
-    - use: dfc_uncommon
+    - query: "r:u is:dfc -t:battle"
       rate: 1
   uncommon_battle:
     query: "r:u t:battle"
