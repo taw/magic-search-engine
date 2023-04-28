@@ -8,12 +8,12 @@ class ConditionColorExpr < ConditionSimple
 
   def match?(card)
     if @a == "c"
-      a = card.colors.chars.to_set
+      a = card.colors_set
     elsif @a == "ind"
       a = card.color_indicator_set
       return false unless a
     else
-      a = card.color_identity.chars.to_set
+      a = card.color_identity_set
     end
 
     @bset.include?(a)
