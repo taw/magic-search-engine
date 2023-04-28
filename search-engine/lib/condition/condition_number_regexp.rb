@@ -1,6 +1,6 @@
 class ConditionNumberRegexp < ConditionRegexp
   def match?(card)
-    card.number.to_s =~ @regexp
+    card.number =~ @regexp
   end
 
   def to_s
