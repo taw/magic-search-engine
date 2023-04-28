@@ -37,7 +37,7 @@ class Query
       @cond.metadata! :fuzzy, nil
       # Timeout check to prevent user-provided regexps from being exponentially slow
       results = nil
-      Timeout.timeout(2) do
+      Timeout.timeout(5) do
         results = @cond.search(db)
         if results.empty?
           @cond.metadata! :fuzzy, db
