@@ -37,6 +37,10 @@ class WeightedPack < Pack
     result
   end
 
+  def cards
+    @packs.keys.flat_map(&:cards).uniq
+  end
+
   private
 
   def flatten!

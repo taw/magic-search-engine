@@ -24,7 +24,8 @@ class Pack
     @set&.code
   end
 
-  ## Testing support
+  # Testing support
+  # Also used by booster: queries
 
   attr_reader :sheets
 
@@ -40,7 +41,7 @@ class Pack
   end
 
   def cards
-    expected_values.keys
+    @sheets.keys.flat_map(&:cards).uniq
   end
 
   def foil_cards
