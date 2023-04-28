@@ -406,6 +406,7 @@ class Card
     @brawler = data["brawler"]
     if data["foreign_names"]
       @foreign_names = data["foreign_names"].map{|k,v| [k.to_sym,v]}.to_h
+      raise "Foreign data with empty value for #{name}" if @foreign_names.any?{|k,v| v.empty?}
     else
       @foreign_names = {}
     end
