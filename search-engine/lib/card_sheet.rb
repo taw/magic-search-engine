@@ -46,7 +46,8 @@ class CardSheet
     result.to_a
   end
 
-  ### Testing support
+  # Testing support
+  # Also used by booster: queries
 
   def cards
     @elements.flat_map do |element|
