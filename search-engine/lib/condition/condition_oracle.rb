@@ -2,11 +2,16 @@ class ConditionOracle < ConditionSimple
   def initialize(text)
     @text = text
     @has_cardname = !!(@text =~ /~/)
+    if @has_cardname
+      @regexp_prefilter = Regexp.new(Regexp.escape(text).gsub("~", ".*"), Regexp::IGNORECASE)
+    end
     @regexp = build_regexp(normalize_mana(normalize_text(@text)))
   end
 
   def match?(card)
     if @has_cardname
+      # This speeds it up a lot
+      return false unless card.text_normalized =~ @regexp_prefilter
       card.text_normalized =~ build_regexp(normalize_text(@text.gsub("~", card.name)))
     else
       card.text_normalized =~ @regexp
