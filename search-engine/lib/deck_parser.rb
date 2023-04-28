@@ -109,7 +109,7 @@ class DeckParser
       printings_with_number = printings.select{|c| c.number.downcase == number.downcase }
       if printings_with_number.empty?
         # Deal with 123a / 123b split cards etc.
-        printings_with_number = printings.select{|c| c.number.to_i == number.to_i }
+        printings_with_number = printings.select{|c| c.number_i == number.to_i }
       end
       printings = printings_with_number unless printings_with_number.empty?
     end

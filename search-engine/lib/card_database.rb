@@ -402,7 +402,7 @@ class CardDatabase
         c.set.regular? ? 0 : 1,
         -c.release_date_i,
         c.set.name,
-        c.number.to_i,
+        c.number_i,
         c.number,
       ]
     }.each_with_index do |c, i|

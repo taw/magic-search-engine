@@ -9,7 +9,7 @@ class ConditionNumberRange < ConditionSimple
 
   def match?(card)
     card_number_s = card.number.downcase
-    card_number_i = card.number.to_i
+    card_number_i = card.number_i
     key = [card_number_i, card_number_s]
     @ranges.any? do |a, b|
       if a[1] == "set"

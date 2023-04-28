@@ -8,7 +8,7 @@ class CardPrinting
 
   # Performance cache of derived information
   attr_reader :stemmed_name, :set_code
-  attr_reader :release_date_i
+  attr_reader :release_date_i, :number_i
 
   # Set by CardDatabase initialization
   attr_accessor :others, :artist, :default_sort_index, :partner
@@ -21,6 +21,7 @@ class CardPrinting
     @release_date_i = @release_date.to_i_sort
     @watermark = data["watermark"]
     @number = data["number"]
+    @number_i = @number.to_i
     @multiverseid = data["multiverseid"]
     if data["artist"]
       @artist_name = data["artist"].normalize_accents # TODO: move to indexer
@@ -148,7 +149,7 @@ class CardPrinting
   include Comparable
 
   def <=>(other)
-    [name, set, number.to_i, number] <=> [other.name, other.set, other.number.to_i, other.number]
+    [name, set, number_i, number] <=> [other.name, other.set, other.number_i, other.number]
   end
 
   def age
