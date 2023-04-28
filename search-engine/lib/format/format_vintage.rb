@@ -4,90 +4,34 @@ class FormatVintage < Format
   end
 
   def build_excluded_sets
-    # Sets not in Vintage at all (except for basic lands):
-    # * Celebration
-    # * Unglued
-    # * Unhinged
-    # * Happy Holidays
+    # Most exclusions are covered by is:funny
     #
-    # Promos which mix legal and uncards, so need to be excluded:
-    # * Arena League
-    # * Release Events
+    # This only needs to list ones that are not, like:
+    # * sets which exist only on Arena
+    # * sets which exist only in other digital games (Shandalar or Sega)
+    # * token Dungeon sets (this is somewhat questionable if they should be included or not)
     #
-    # Excluded due to mix of bad timestamps (which confuses tests and time travel):
-    # * Resale Promos
-    #
-    # Sets which exist only on Arena
+    # This could be done programatically instead
 
     excluded_sets = Set[*%w[
       ana
       anb
-      cmb1
-      cmb2
-      h17
       hbg
-      hho
-      htr
-      htr16
-      htr17
-      htr18
-      htr19
-      htr20
-      j17
       j21
-      o90p
       oana
-      olep
-      p30a
-      pal04
-      parl
       past
-      pcel
-      ph17
-      ph18
-      ph19
-      ph20
-      ph21
-      phtr
-      plist
       pmic
-      ppc1
-      prel
-      pres
       prm
       psdg
-      ptg
-      punh
-      pust
       tafr
-      tbth
       tclb
-      tdag
-      tfth
-      thp1
-      thp2
-      thp3
-      ugl
-      und
-      unh
-      uplist
-      ust
-      wc00
-      wc01
-      wc02
-      wc03
-      wc04
-      wc97
-      wc98
-      wc99
-      wc99
       xana
       ybro
       ydmu
       ymid
       yneo
-      ysnc
       yone
+      ysnc
     ]]
 
     # Portal / Starter sets used to not be tournament legal
