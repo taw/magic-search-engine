@@ -61,7 +61,7 @@ sheets:
     rawquery: "e:mul r:u promo:halofoil -is:serialized"
   uncommon_mul_serialized:
     foil: true
-    rawquery: "e:mul r:u is:serialized" # Change this to serialized when json is fixed
+    rawquery: "e:mul r:u is:serialized"
   foil_showcase:
     foil: true
     filter: "(e:mom or e:moc) promo:boosterfun -is:foilonly"
@@ -83,5 +83,5 @@ sheets:
     use: rare_mythic
   rare_mythic_mul_serialized:
     foil: true
-    filter: "e:mul is:serialized" # Change this to serialized when json is fixed
+    filter: "e:mul is:serialized"
     use: rare_mythic
