@@ -1,16 +1,9 @@
 require "timeout"
 
-# This would be ConditionSimple, except user-provided regular expressions
-# can very easily be exponentially slow
-class ConditionRegexp < Condition
+# This needs timeout check, as it can be exponentially slow
+class ConditionRegexp < ConditionSimple
   def initialize(regexp)
     @regexp = regexp
-  end
-
-  def search(db)
-    Timeout.timeout(2) do
-      db.printings.select{|card| match?(card)}.to_set
-    end
   end
 
   def match?(card)

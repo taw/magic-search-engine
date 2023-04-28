@@ -35,10 +35,14 @@ class Query
     if @cond
       @cond.metadata! :logger, logger
       @cond.metadata! :fuzzy, nil
-      results = @cond.search(db)
-      if results.empty?
-        @cond.metadata! :fuzzy, db
+      # Timeout check to prevent user-provided regexps from being exponentially slow
+      results = nil
+      Timeout.timeout(2) do
         results = @cond.search(db)
+        if results.empty?
+          @cond.metadata! :fuzzy, db
+          results = @cond.search(db)
+        end
       end
     else
       results = db.printings
