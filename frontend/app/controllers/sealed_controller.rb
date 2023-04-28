@@ -30,7 +30,7 @@ class SealedController < ApplicationController
           -c.main_front.rarity_code,
           c.name,
           c.set_code,
-          c.number.to_i,
+          c.number_i,
           c.number,
           c.foil ? 0 : 1,
         ]
