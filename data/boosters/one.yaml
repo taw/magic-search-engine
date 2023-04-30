@@ -1,14 +1,14 @@
 pack:
   basic: 1
-  common: 9
-  uncommon: 3
+  common_with_showcase: 9
+  uncommon_with_showcase: 3
   rare_mythic_slot:
-  - rare_mythic: 1
+  - rare_mythic_with_showcase: 1
     chance: 59
   - prototype_praetor: 1
     chance: 1
   common_or_foil:
-  - common: 1
+  - common_with_showcase: 1
     chance: 2
   - foil: 1
     chance: 1
@@ -22,16 +22,7 @@ sheets:
     - query: "t:basic number:267-271"
       rate: 1
       count: 5
-  common:
-    use: common_with_showcase
-    count: 95 + 6 + 6
-  uncommon:
-    use: uncommon_with_showcase
-    count: 73 + 7 + 7
-  rare:
-    use: rare_with_showcase
-    count: 29 + 31 + 31
-  mythic:
+  mythic_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart (Elesh Norn, Mother of Machines) -number:416"
@@ -49,32 +40,35 @@ sheets:
     - use: mythic_has_no_showcase
       rate: 18
       count: 4
-  rare_mythic:
+  rare_mythic_with_showcase:
     any:
-    - use: rare
+    - use: rare_with_showcase
+      count: 91
       chance: 6
-    - use: mythic
+    - use: mythic_with_showcase
       chance: 1
+      count: 43
   foil:
     foil: true
     any:
     - any:
-      - use: common
+      - use: common_with_showcase
         chance: 101
-      - use: basic
-        chance: 5
+        count: 107
+      - query: "t:basic"
+        count: 10
+        chance: 10
       chance: 12
-    - use: uncommon
+    - use: uncommon_with_showcase
+      count: 87
       chance: 5
     - any:
-      - any:
-        - use: rare
-          chance: 6
-        - use: mythic
-          chance: 1
+      - use: rare_mythic_with_showcase
+        count: 134
         chance: 59
       - use: prototype_praetor
         chance: 1
+        count: 5
       chance: 3
   prototype_praetor:
     rawquery: "(e:one number:416) or (e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"

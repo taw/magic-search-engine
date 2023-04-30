@@ -22,47 +22,64 @@ pack:
 sheets:
   sfc_common:
     query: "r:c is:sfc"
+    count: 111
   dfc_common_uncommon:
     any:
     - use: dfc_common
+      count: 5
       rate: 2
     - query: "r:u is:dfc -t:battle"
+      count: 10
       rate: 1
   uncommon_battle:
     query: "r:u t:battle"
+    count: 20
   multiverse_legend:
     filter: "e:mul -is:foilonly"
     use: base_1248_by_rarity
+    count: 65
   wildcard:
     any:
     - use: common
       chance: 700
+      count: 116
     - any:
       - use: uncommon
         chance: 80
+        count: 80
       - rawquery: "e:mul r:u -is:foilonly"
         chance: 20
+        count: 20
       chance: 175
     - any:
       - use: rare_with_showcase
+        count: 78
         chance: 2 * 60
-      - rawquery: "e:mom r:r -alt:(is:baseset)"
+      - rawquery: "e:mom r:r number:323-337"
         chance: 2 * 5
+        count: 5
       - rawquery: "e:moc r:r number:1-46"
         chance: 2 * 36
+        count: 36
       - rawquery: "e:mul r:r -is:foilonly"
         chance: 2 * 30
+        count: 30
       - use: mythic_with_showcase
+        count: 33
         chance: 20
       - rawquery: "e:moc r:m number:1-46"
         chance: 10
+        count: 10
       - rawquery: "e:mul r:m -is:foilonly"
         chance: 15
+        count: 15
       chance: 125
   the_list:
     set: plist
+    count: 300
     code: "MOM"
   foil_etched:
     foil: true
     filter: "e:mul number:66-130" # Change to frame:etched when json is fixed
     use: base_1248_by_rarity
+    count: 65

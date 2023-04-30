@@ -27,40 +27,53 @@ sheets:
   foil_rare_mythic:
     foil: true
     use: rare_mythic
+    count: 80
   extended_rare_mythic:
     filter: "e:one frame:extendedart number:375-403"
     use: rare_mythic
+    count: 29
   extended_commander_jumpstart:
     any:
     - rawquery: "e:one frame:extendedart number:409-413"
       rate: 2
+      count: 5
     - rawquery: "e:onc frame:extendedart r:r"
       rate: 2
+      count: 23
     - rawquery: "e:onc frame:extendedart r:m"
       rate: 1
+      count: 5
   compleat_foil: # chances are approximate
     foil: true
     any:
     - rawquery: "e:one r:c promo:stepandcompleat"
       chance: 38
+      count: 5
     - rawquery: "e:one r:u promo:stepandcompleat"
       chance: 29
+      count: 8
     - rawquery: "e:one r:r promo:stepandcompleat"
       chance: 22
+      count: 26
     - any:
       - rawquery: "e:one r:m promo:stepandcompleat (Elesh Norn, Mother of Machines) -number:421"
         rate: 2
+        count: 3
       - rawquery: "e:one r:m promo:stepandcompleat t:planeswalker"
         rate: 3
+        count: 10
       - rawquery: "e:one r:m promo:stepandcompleat -t:planeswalker -(Elesh Norn, Mother of Machines)"
         rate: 6
+        count: 10
       - rawquery: "(e:one number:421) or (e:neo number:514) or (e:dmu number:436) or (e:snc number:469) or (e:khm number:407)"
         rate: 4
+        count: 5
       chance: 11
   showcase_rare_mythic: # need to figure out how often praetors appear in this slot
     any:
     - use: rare_showcase
       rate: 12
+      count: 31
     - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart (Elesh Norn, Mother of Machines) -number:416"
       rate: 2
       count: 3
@@ -72,11 +85,13 @@ sheets:
       count: 10
     - rawquery: "(e:one number:416) or (e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
       rate: 6
+      count: 5
   foil_showcase_rare_mythic:
     foil: true
     any:
     - use: rare_showcase
       rate: 12
+      count: 31
     - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart (Elesh Norn, Mother of Machines) -number:416"
       rate: 2
       count: 3
@@ -88,11 +103,16 @@ sheets:
       count: 10
     - rawquery: "(e:one number:416) or (e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
       rate: 6
+      count: 5
     - rawquery: "e:one frame:extendedart number:409-413"
       rate: 12
+      count: 5
     - rawquery: "e:onc frame:extendedart r:r"
       rate: 12
+      count: 7
     - rawquery: "e:onc frame:extendedart r:m"
       rate: 6
+      count: 5
     - rawquery: "e:one frame:extendedart number:375-403"
       rate: 12
+      count: 29
