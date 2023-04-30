@@ -87,6 +87,10 @@ class PhysicalCard
     main_front.number
   end
 
+  def number_i
+    main_front.number_i
+  end
+
   def parts
     [*@front, *@back]
   end
