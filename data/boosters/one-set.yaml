@@ -5,11 +5,6 @@
 # Relative rarity of universes within cards only approximately known
 # - use 1:5 rarity as baseline
 pack:
-  #arttypes:
-  #- art: 1
-  #  chance: 19
-  #- signed_art: 1
-  #  chance: 1
   basictypes:
   - basic: 1
     chance: 4
@@ -126,14 +121,17 @@ sheets:
     - set: plist
       code: "ONE"
       chance: 5
+      count: 179
     - set: slx
       code: "ONE"
       chance: 1
+      count: 8
   common:
     balanced: false
     query: "r:c"
   prototype_praetor:
     rawquery: "(e:{set} number:416) or (e:neo number:513) or (e:dmu number:435) or (e:snc number:468) or (e:khm number:406)"
+    count: 5
   foil:
     foil: true
     any:

@@ -33,55 +33,72 @@ sheets:
   foil_fullart_basic:
     foil: true
     query: "r:basic is:fullart"
+    count: 10
   foil_mul_uncommon:
     foil: true
     rawquery: "e:mul r:u -is:foilonly"
+    count: 20
   foil_rare_mythic:
     foil: true
     any:
     - query: "r:r"
+      count: 60
       rate: 2
     - query: "r:m"
+      count: 20
       rate: 1
     - rawquery: "e:moc r:r number:72-79"
+      count: 6
       rate: 2
     - rawquery: "e:moc r:m number:72-79"
       rate: 1
+      count: 2
   extended_art_commander_jumpstart:
     filter: "((e:mom and number:376-380) or e:moc) frame:extendedart -promo:buyabox"
     use: rare_mythic
+    count: 59
   showcase_wild:
     filter: "e:mom promo:boosterfun -number:376-380"
     use: rare_mythic
+    count: 80
   uncommon_mul_etched: 
     foil: true
     rawquery: "e:mul r:u number:66-130" # Change to frame:etched when json is fixed
+    count: 20
   uncommon_mul_halo:
     foil: true
     rawquery: "e:mul r:u promo:halofoil -is:serialized"
+    count: 20
   uncommon_mul_serialized:
     foil: true
     rawquery: "e:mul r:u is:serialized"
+    count: 20
   foil_showcase:
     foil: true
     filter: "(e:mom or e:moc) promo:boosterfun -is:foilonly"
     use: rare_mythic
+    count: 80+59
   double_foil_praetor_serialized:
     foil: true
     rawquery: "e:mom is:serialized t:praetor"
+    count: 5
   rare_mythic_mul_traditional:
     foil: true
     filter: "e:mul number:1-65"
+    count: 45
     use: rare_mythic
   rare_mythic_mul_etched:
     foil: true
     filter: "e:mul number:66-130" # Change to frame:etched when json is fixed
     use: rare_mythic
+    count: 45
   rare_mythic_mul_halo:
     foil: true
     filter: "e:mul promo:halofoil -is:serialized"
+    count: 45
     use: rare_mythic
   rare_mythic_mul_serialized:
     foil: true
     filter: "e:mul is:serialized"
+    count: 45
     use: rare_mythic

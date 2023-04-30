@@ -27,23 +27,22 @@ sheets:
     any:
     - query: "is:gainland"
       chance: 1
+      count: 10
     - use: basic
       chance: 1
+      count: 15
   sfc_common:
     balanced: true
     query: "r:c is:sfc -is:gainland"
+    count: 101
   dfc_common_uncommon:
     any:
-    - use: dfc_common_with_showcase
-      chance: 8 * 5
-    - any:
-      - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper"
-        rate: 1
-      - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
-        rate: 2
-      - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) is:dfc -t:battle"
-        rate: 3
-      chance: 4 * 10
+    - use: dfc_common
+      rate: 2
+      count: 5
+    - query: "r:u is:dfc -t:battle"
+      rate: 1
+      count: 10
   dfc_rare_mythic:
     any:
     - any:
@@ -54,6 +53,7 @@ sheets:
       - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:dfc -t:battle"
         rate: 3
       chance: 2 * 5
+      count: 10
     - any:
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper"
         rate: 1
@@ -62,58 +62,68 @@ sheets:
       - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc -t:battle"
         rate: 3
       chance: 1 * 5
+      count: 10
   sfc_rare_mythic:
     any:
     - use: sfc_rare_with_showcase
       chance: 2 * 44
+      count: 57
     - use: sfc_mythic_with_showcase
       chance: 1 * 10
+      count: 18
   uncommon_battle:
     query: "r:u t:battle"
+    count: 20
   rare_mythic_battle:
     filter: "e:mom t:battle"
     use: rare_mythic
+    count: 16
   multiverse_legend:
     filter: "e:mul -is:foilonly"
     use: base_1248_by_rarity
+    count: 65
   foil_with_showcase_and_mul:
     foil: true
     any:
     - any:
-      - use: common_showcase
+      - use: common
         rate: 1
-      - use: common_has_showcase
-        rate: 2
-      - use: common_has_no_showcase
-        rate: 3
+        count: 116
       - use: basic
-        rate: 3
+        rate: 1
+        count: 15
       chance: 12
     - any:
-      - use: uncommon_showcase
+      - use: uncommon
         rate: 1
-      - use: uncommon_has_showcase
-        rate: 2
-      - use: uncommon_has_no_showcase
-        rate: 3
+        count: 80
       - rawquery: "e:mul number:1-65 r:u" # Can we change the set size to make number<=set work?
-        rate: 3
+        rate: 1
+        count: 20
       chance: 5
     - any:
       - use: rare_showcase
         rate: 2
+        count: 18
       - use: rare_has_showcase
         rate: 4
+        count: 18
       - use: rare_has_no_showcase
         rate: 6
+        count: 60-18
       - rawquery: "e:mul number:1-65 r:r"
         rate: 6
+        count: 30
       - use: mythic_showcase
         rate: 1
+        count: 13
       - use: mythic_has_showcase
         rate: 2
+        count: 13
       - use: mythic_has_no_showcase
         rate: 3
+        count: 20-13
       - rawquery: "e:mul number:1-65 r:m"
         rate: 3
+        count: 15
       chance: 3
