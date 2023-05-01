@@ -2,6 +2,9 @@ require "strscan"
 
 class QueryTokenizer
   def tokenize(str)
+    # Undo Unicode substitutions phones and such make
+    str = str.tr('“”', '""')
+
     tokens = []
     @warnings = []
     s = StringScanner.new(str)

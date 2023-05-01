@@ -249,6 +249,10 @@ describe "QueryParser" do
     proc { Query.new("c:g ++ //") }.should raise_error(/Unknown token type/)
   end
 
+  it "accepts alternative quotation marks" do
+    assert_search_parse %Q[subset:"monster movie marathon"], %Q[subset:“monster movie marathon”]
+  end
+
   it "query_to_s" do
     query_examples = (Pathname(__dir__) + "query_examples.txt").readlines.map(&:chomp)
 
