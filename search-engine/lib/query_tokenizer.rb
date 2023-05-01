@@ -225,7 +225,7 @@ class QueryTokenizer
         cond = "Spotlight" if cond == "Story"
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/has:(partner|watermark|indicator|showcase|signature)\b/)
+      elsif s.scan(/has:(partner|watermark|indicator|showcase|signature|flavor)\b/)
         cond = s[1].capitalize
         klass = Kernel.const_get("ConditionHas#{cond}")
         tokens << [:test, klass.new]
