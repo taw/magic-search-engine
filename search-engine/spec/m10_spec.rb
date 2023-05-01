@@ -140,6 +140,7 @@ describe "Magic 2010" do
     assert_search_results 'ft:"only to"', "Acolyte of Xathrid"
     assert_search_equal "ft:to", "ft:/\\bto\\b/"
     assert_search_differ "ft:to", "ft:/to/"
+    assert_search_equal "ft:/./", "has:flavor"
   end
 
   it "artist" do
@@ -159,7 +160,7 @@ describe "Magic 2010" do
   end
 
   it "legal" do
-    assert_search_exclude "legal:modern", "ponder"
+    assert_search_exclude "legal:modern", "Ponder"
     assert_search_include "legal:legacy", "Ponder"
     assert_search_exclude "legal:vintage", "Ponder"
   end
