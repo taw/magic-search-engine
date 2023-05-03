@@ -51,7 +51,7 @@ class PackFactory
       @sheet_factory.from_query(data["query"], count, foil: foil, kind: kind)
     when ["any"]
       subsheets = data["any"].map(&:dup)
-      raise_sheet_error "No balanced support for any" if balanced
+      #raise_sheet_error "No balanced support for any" if balanced
       if subsheets.all?{|s| s["rate"]}
         rates = subsheets.map{|d| d.delete("rate")}
         sheets = subsheets.map{|d| build_sheet(d.merge("foil" => foil)) }

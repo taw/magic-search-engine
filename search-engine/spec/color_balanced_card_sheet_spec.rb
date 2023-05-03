@@ -7,19 +7,20 @@ describe ColorBalancedCardSheet do
   let(:mm2_commons) { factory.from_query("e:mm2 r:common", kind: ColorBalancedCardSheet) }
 
   it "separates cards by color identity" do
-    nph_commons.w.size.should eq 11
-    nph_commons.u.size.should eq 11
-    nph_commons.b.size.should eq 11
-    nph_commons.r.size.should eq 11
-    nph_commons.g.size.should eq 11
-    nph_commons.c.size.should eq 5
-    nph_commons.elements.size.should eq 60
+    nph_commons.elements[0].cards.size.should eq 11
+    nph_commons.elements[1].cards.size.should eq 11
+    nph_commons.elements[2].cards.size.should eq 11
+    nph_commons.elements[3].cards.size.should eq 11
+    nph_commons.elements[4].cards.size.should eq 11
+    nph_commons.elements[5].cards.size.should eq 5
+    nph_commons.elements.size.should eq 6
+    nph_commons.cards.size.should eq 60
   end
 
   describe "weights_for" do
-    it "returns nil if can't be done" do
-      nph_commons.weights_for(5).should be nil
-      jud_commons.weights_for(10).should be nil
+    it "raises error if can't be done" do
+      expect {nph_commons.random_cards_without_duplicates(5)}.to raise_error("Set nph can't color balance size 5")
+      expect {jud_commons.random_cards_without_duplicates(10)}.to raise_error("Can't color balance 10 for jud")
     end
 
     it "probabilities should add up to 1 and be non-negative" do
