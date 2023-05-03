@@ -388,7 +388,8 @@ describe "Card nicknames" do
       "Rayami, First of the Fallen",
       "Selective Adaptation",
       "Soulflayer",
-      "Thunderous Orator"
+      "Thunderous Orator",
+      "Urborg Scavengers"
     assert_search_results "is:keywordsoup",
       *cards_matching{|c|
         c.name != "Urza, Academy Headmaster" and
