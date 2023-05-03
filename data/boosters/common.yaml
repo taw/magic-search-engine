@@ -91,6 +91,7 @@ common_has_showcase:
 common_has_no_showcase:
   query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart)"
 common_with_showcase:
+  balanced: true
   # Showcase treatments 1/3 for relevant cards
   any:
   - use: common_showcase
@@ -215,6 +216,7 @@ base_1248_by_rarity:
     rate: 1
 
 sfc_common_with_showcase:
+  balanced: true
   # Showcase treatments 1/3 for relevant cards
   any:
   - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper"
