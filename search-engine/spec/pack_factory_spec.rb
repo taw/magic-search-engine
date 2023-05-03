@@ -787,7 +787,7 @@ describe PackFactory do
 
     context "Legends" do
       let(:set_code) { "leg" }
-      let(:booster_contents) { {"C"=>12, "U"=>3, "R"=>1} }
+      let(:booster_contents) { {"C"=>11, "U"=>3, "R"=>1} }
       let(:sheet_size) { {"C"=>121, "U"=>121, "R"=>121} }
       it do
         ev.should eq(expected_ev)
