@@ -9,7 +9,7 @@ describe CardSheet do
   %W[basic common uncommon].each do |rarity|
     it "rarity #{rarity}" do
       expected = db.search("e:m10 r:#{rarity}").printings
-      actual = m10_sheets[rarity].elements.map(&:main_front)
+      actual = m10_sheets[rarity].cards.map(&:main_front)
       expected.should match_array(actual)
     end
   end
