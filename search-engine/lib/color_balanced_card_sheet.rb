@@ -5,95 +5,100 @@ class ColorBalancedCardSheet < CardSheet
   attr_reader :w, :u, :b, :r, :g, :c
   attr_reader :elements
 
-  def initialize(elements)
-    unless elements.all?{|e| e.is_a?(PhysicalCard)}
-      raise "Color balancing only works on cards for now"
-    end
+  def initialize(elements, weights=nil)
     super
-    @w = []
-    @u = []
-    @b = []
-    @r = []
-    @g = []
-    @c = []
-    @elements.each do |card|
+    wc = []
+    ww = []
+    uc = []
+    uw = []
+    bc = []
+    bw = []
+    rc = []
+    rw = []
+    gc = []
+    gw = []
+    cc = []
+    cw = []
+    self.probabilities.each do |card, weight|
       # Don't count land cards for the color
       ci = card.color_identity
       ci = "" if card.main_front.types.include?("land")
       case ci
       when "w"
-        @w << card
+        wc << card
+        ww << (weight * @total_weight).to_i
       when "u"
-        @u << card
+        uc << card
+        uw << (weight * @total_weight).to_i
       when "b"
-        @b << card
+        bc << card
+        bw << (weight * @total_weight).to_i
       when "r"
-        @r << card
+        rc << card
+        rw << (weight * @total_weight).to_i
       when "g"
-        @g << card
+        gc << card
+        gw << (weight * @total_weight).to_i
       else
-        @c << card
+        cc << card
+        cw << (weight * @total_weight).to_i
       end
     end
+    w = CardSheet.new(wc, ww)
+    u = CardSheet.new(uc, uw)
+    b = CardSheet.new(bc, bw)
+    r = CardSheet.new(rc, rw)
+    g = CardSheet.new(gc, gw)
+    c = CardSheet.new(cc, cw)
+    @elements = [w, u, b, r, g, c]
+    @weights = @elements.map {|sheet| sheet.total_weight}
+    @total_weight = @weights.sum
   end
-
-  def weights_for(count)
-    n = @elements.size
-    den = (count - 5) * n
-    num_w = @w.size * count - n
-    num_u = @u.size * count - n
-    num_b = @b.size * count - n
-    num_r = @r.size * count - n
-    num_g = @g.size * count - n
-    num_c = @c.size * count
-    nums = [num_w, num_u, num_b, num_r, num_g, num_c]
-    if nums.any?{|n| n < 0}
-      nil
-    else
-      [den, num_w, num_u, num_b, num_r, num_g, num_c]
+  
+  def random_card_custom_weight(weights, den)
+    random_number = rand(den)
+    result = weights.each_with_index do |w, i|
+      random_number -= w
+      break @elements[i].random_card if random_number <= 0
     end
-  end
-
-  def random_card_by_weights(den, nums, subsheets)
-    i = rand(den)
-    5.times do |j|
-      i -= nums[j]
-      return subsheets[j].shift if i < 0
-    end
-    subsheets.last.shift
+    return result
   end
 
   def random_cards_without_duplicates(count)
+    if count <= 5
+      raise "Set #{@elements[0].set_code} can't color balance size #{count}"
+    end
     seen_names = Set[]
     # Reshuffle all subsheets
-    w = @w.shuffle
-    u = @u.shuffle
-    b = @b.shuffle
-    r = @r.shuffle
-    g = @g.shuffle
-    c = @c.shuffle
-
-    weights = weights_for(count)
-    if weights.nil?
-      raise "Can't color balance #{count} for #{@elements[0].set_code}"
-    end
-    return super if weights.nil?
-    den, *nums = weights
-    subsheets = [w, u, b, r, g, c]
 
     result = Set[]
     # Do guaranteed slots, so it never triggers duplicate issues
-    [w, u, b, r, g].each do |subsheet|
-      card = subsheet.shift
-      result << card
-      seen_names << card.name
+    elements.each_with_index do |subsheet, index|
+      if index != 5
+        card = subsheet.random_card
+        result << card
+        seen_names << card.name
+      end
+    end
+    
+    denominator = @total_weight * (count-5)
+    temp_weights = @weights.each_with_index.map do |value, index|
+      ev = value * count
+      if index != 5
+        ev - @total_weight
+      else
+        ev
+      end
+    end
+    if temp_weights.any? {|ev| ev < 0}
+      raise "Can't color balance #{count} for #{@elements[0].set_code}"
     end
     # Mixed slots
     (count-5).times do
       # This can return nil if subsheet is tiny
       # but probability indicates we should return another card from it
       # Whenever this happens, a tiny bias is introduced
-      card = random_card_by_weights(den, nums, subsheets)
+      card = random_card_custom_weight(temp_weights, denominator)
       redo if card.nil?
       name = card.name
       redo if seen_names.include?(name)
