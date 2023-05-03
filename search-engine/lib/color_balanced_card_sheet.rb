@@ -63,6 +63,19 @@ class ColorBalancedCardSheet < CardSheet
     end
     return result
   end
+  
+  def weights_for(count)
+    denominator = @total_weight * (count-5)
+    temp_weights = @weights.each_with_index.map do |value, index|
+      ev = value * count
+      if index != 5
+        ev - @total_weight
+      else
+        ev
+      end
+    end
+    return temp_weights.insert(0, denominator)
+  end
 
   def random_cards_without_duplicates(count)
     if count <= 5
@@ -81,15 +94,9 @@ class ColorBalancedCardSheet < CardSheet
       end
     end
     
-    denominator = @total_weight * (count-5)
-    temp_weights = @weights.each_with_index.map do |value, index|
-      ev = value * count
-      if index != 5
-        ev - @total_weight
-      else
-        ev
-      end
-    end
+    temp_weights = weights_for(count)
+    denominator = temp_weights.shift
+    
     if temp_weights.any? {|ev| ev < 0}
       raise "Can't color balance #{count} for #{@elements[0].set_code}"
     end
