@@ -36,6 +36,7 @@ class FormatPioneer < Format
       "bro",
       "one",
       "mom",
+      "mat",
     ]
   end
 end

@@ -33,6 +33,7 @@ class FormatFrontier < Format
       "bro",
       "one",
       "mom",
+      "mat",
     ]
   end
 end
