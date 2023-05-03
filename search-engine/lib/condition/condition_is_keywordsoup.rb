@@ -21,6 +21,7 @@ class ConditionIsKeywordsoup < ConditionNickname
       "selective adaptation",
       "soulflayer",
       "thunderous orator",
+      "urborg scavengers",
     ]
   end
 

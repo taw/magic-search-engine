@@ -31,8 +31,9 @@ describe "Spelling" do
       "Kolaghan Monument",
       "Kolaghan Skirmisher",
       "Kolaghan Stormsinger",
-      "Kolaghan's Command",
+      "Kolaghan Warmonger",
       "Kolaghan, the Storm's Fury",
+      "Kolaghan's Command",
     )
     "pyrokynesis".should return_cards(
       "Pyrokinesis",

@@ -201,6 +201,7 @@ describe "CLI Frontend" do
         Kolaghan Monument
         Kolaghan Skirmisher
         Kolaghan Stormsinger
+        Kolaghan Warmonger
         Kolaghan's Command
         Kolaghan, the Storm's Fury
         EOF
