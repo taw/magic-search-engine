@@ -1,0 +1,20 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine-the-aftermath
+# We don't know if normal slots can be boosterfun yet
+name: "{set_name} Epilogue Booster"
+pack:
+  uncommon: 2
+  rare_mythic: 1
+  foil: 1
+  bf_slot:
+  - booster_fun: 1
+    chance: 5
+  - booster_fun_foil: 1
+    chance: 1
+sheets:
+  booster_fun:
+    filter: "e:{set} promo:boosterfun -is:foilonly -frame:extendedart"
+    use: base_1248_by_rarity
+    count: 50
+  booster_fun_foil:
+    foil: true
+    use: booster_fun

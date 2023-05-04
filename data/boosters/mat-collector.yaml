@@ -1,0 +1,60 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine-the-aftermath
+pack:
+  halo_slot:
+  - foil_showcase_uncommon: 1
+    foil_showcase_rare_mythic: 1
+    chance: 10
+  - foil_showcase_uncommon: 1
+    halo_showcase_rare_mythic: 1
+    chance: 1
+  - halo_showcase_uncommon: 1
+    foil_showcase_rare_mythic: 1
+    chance: 1
+  etched_uncommon: 1
+  foil_rare_mythic: 1
+  extended_slot:
+  - extended_rare_mythic: 1
+    chance: 2
+  - foil_extended_rare_mythic: 1
+    chance: 1
+  etched_rare_mythic: 1
+sheets:
+  foil_showcase_uncommon:
+    foil: true
+    rawquery: "e:{set} r:u promo:boosterfun -frame:extendedart -is:foilonly"
+    count: 15
+  etched_uncommon:
+    foil: true
+    rawquery: "e:{set} r:u number:101-150" # Change to frame:etched when json data updated
+    count: 15
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+    count: 35
+  extended_rare_mythic:
+    filter: "e:{set} frame:extended"
+    use: rare_mythic
+    count: 35
+  foil_extended_rare_mythic:
+    foil: true
+    use: extended_rare_mythic
+    count: 35
+  etched_rare_mythic:
+    foil: true
+    filter: "e:{set} number:101-150" # Change to frame:etched when json data updated
+    use: rare_mythic
+    count: 35
+  foil_showcase_rare_mythic:
+    foil: true
+    filter: "e:{set} promo:boosterfun -frame:extendedart -is:foilonly"
+    use: rare_mythic
+    count: 35
+  halo_showcase_rare_mythic:
+    foil: true
+    filter: "e:{set} promo:halofoil"
+    use: rare_mythic
+    count: 29
+  halo_showcase_uncommon:
+    foil: true
+    rawquery: "e:{set} promo:halofoil r:u"
+    count: 14
