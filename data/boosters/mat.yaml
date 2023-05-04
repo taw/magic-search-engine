@@ -18,3 +18,15 @@ sheets:
   booster_fun_foil:
     foil: true
     use: booster_fun
+  foil:
+    # "For approximately 1 in 6 boosters, this is a rare or mythic rare."
+    foil: true
+    any:
+    - query: "r:u"
+      chance: 5
+    - any:
+      - query: "r:r"
+        rate: 2
+      - query: "r:m"
+        rate: 1
+      chance: 1
