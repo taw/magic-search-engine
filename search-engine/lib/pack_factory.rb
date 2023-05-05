@@ -54,7 +54,7 @@ class PackFactory
       #raise_sheet_error "No balanced support for any" if balanced
       if subsheets.all?{|s| s["rate"]}
         rates = subsheets.map{|d| d.delete("rate")}
-        sheets = subsheets.map{|d| build_sheet(d.merge("foil" => foil)) }
+        sheets = subsheets.map{|d| build_sheet(d.merge("foil" => foil, "balanced" => false)) }
         chances = rates.zip(sheets).map{|r,s| r*s.elements.size}
         build_sheet_from_subsheets(sheets, chances, kind: kind)
       elsif subsheets.all?{|s| s["chance"]}
