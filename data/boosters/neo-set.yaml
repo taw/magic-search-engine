@@ -39,7 +39,7 @@ sheets:
   wildcard:
     any:
     - any:
-      - use: common
+      - query: "r:c"
         rate: 1
       - query: "r:b is:fullart"
         rate: 1
