@@ -1,13 +1,79 @@
-# This is extremely early draft
-# https://github.com/taw/magic-sealed-data/issues/34
+# Data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine
 pack:
-- common: 9
-  uncommon: 3
-  rare_mythic: 1
-  chance: 2
-  mul: 1
+  basic_or_gainland: 1
+  sfc_common: 8
+  sfc_uncommon: 2
+  possible_rare_slot:
+  - dfc_common_uncommon: 1
+    uncommon_battle: 1
+    sfc_rare_mythic: 1
+    chance: 44*2 + 10
+  - sfc_uncommon: 1
+    dfc_common_uncommon: 1
+    rare_mythic_battle: 1
+    chance: 11*2 + 5
+  - sfc_uncommon: 1
+    uncommon_battle: 1
+    dfc_rare_mythic: 1
+    chance: 5*2 + 5
+  multiverse_legend: 1
 sheets:
-  # totally made up rates
-  mul:
-    filter: "e:mul number<=set"
+  basic_or_gainland:
+    any:
+    - query: "is:gainland"
+      chance: 1
+      count: 10
+    - use: basic
+      chance: 1
+      count: 15
+  sfc_common:
+    balanced: true
+    query: "r:c is:sfc -is:gainland"
+    count: 101
+  dfc_common_uncommon:
+    any:
+    - use: dfc_common
+      rate: 2
+      count: 5
+    - query: "r:u is:dfc -t:battle"
+      rate: 1
+      count: 10
+  dfc_rare_mythic:
+    any:
+    - any:
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper"
+        rate: 1
+      - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+        rate: 2
+      - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:dfc -t:battle"
+        rate: 3
+      chance: 2 * 5
+      count: 10
+    - any:
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper"
+        rate: 1
+      - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+        rate: 2
+      - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc -t:battle"
+        rate: 3
+      chance: 1 * 5
+      count: 10
+  sfc_rare_mythic:
+    any:
+    - use: sfc_rare_with_showcase
+      chance: 2 * 44
+      count: 57
+    - use: sfc_mythic_with_showcase
+      chance: 1 * 10
+      count: 18
+  uncommon_battle:
+    query: "r:u t:battle"
+    count: 20
+  rare_mythic_battle:
+    filter: "e:mom t:battle"
+    use: rare_mythic
+    count: 16
+  multiverse_legend:
+    filter: "e:mul -is:foilonly"
     use: base_1248_by_rarity
+    count: 65
