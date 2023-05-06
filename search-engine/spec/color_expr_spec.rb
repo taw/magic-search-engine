@@ -60,6 +60,7 @@ describe "Color Expr Test" do
       "Paragon of the Amesha",
       "Sisay, Weatherlight Captain",
       "Tazri, Beacon of Unity",
+      "Tazri, Stalwart Survivor",
       "Who"
   end
 
