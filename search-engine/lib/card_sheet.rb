@@ -6,6 +6,11 @@ class CardSheet
   def initialize(elements, weights=nil)
     @elements = elements
     @weights = weights
+    # Performance optimization. This is useful for subsheets of ColorBalancedCardsheet
+    # which would otherwise have [1,1,1,...] as weights and force slower algorithm
+    if @weights and @weights.uniq.size == 1
+      @weights = nil
+    end
     if @weights
       @total_weight = @weights.sum
     else
