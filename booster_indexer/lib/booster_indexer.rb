@@ -127,6 +127,8 @@ class PreprocessBooster
         code = sheet["code"]
         sheet.except("code", "set").merge("code" => "#{set}/#{code}")
       end
+    elsif sheet["deck"]
+      sheet
     elsif sheet["rawquery"]
       query = sheet["rawquery"]
       sheet.except("rawquery").merge("query" => query.gsub("{set}", @set_code))

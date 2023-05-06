@@ -1,0 +1,93 @@
+#!/usr/bin/env ruby
+
+require_relative "../search-engine/lib/card_database"
+require "yaml"
+
+class GenerateBoosterForSet
+  attr_reader :set, :decks
+
+  def initialize(set, decks)
+    @set = set
+    @decks = decks
+  end
+
+  def name
+    "#{set.name} Jumpstart Booster"
+  end
+
+  def code
+    "#{set.code}-jumpstart"
+  end
+
+  def path
+    Pathname(__dir__).parent + "data/boosters/#{code}.yaml"
+  end
+
+  def pack_data
+    pack = []
+    sheets = {}
+    decks.each_with_index do |deck, i|
+      deck_code = "#{set.code}/#{deck.name}"
+
+      nonfoil_cards = deck.cards.select{|k,v| !v.foil}
+      nonfoil_count = nonfoil_cards.map(&:first).sum
+      nonfoil_sheet_name = "precon_#{i+1}"
+
+      foil_cards = deck.cards.select{|k,v| v.foil}
+      foil_count = foil_cards.map(&:first).sum
+      foil_sheet_name = "precon_#{i+1}_foils"
+
+      variant = {}
+      variant[nonfoil_sheet_name] = nonfoil_count
+      sheets[nonfoil_sheet_name] = {
+        "deck" => deck_code,
+        "count" => nonfoil_count,
+      }
+
+      if foil_count > 0
+        variant[foil_sheet_name] = foil_count
+        sheets[foil_sheet_name] = {
+          "deck" => deck_code,
+          "count" => foil_count,
+          "foil" => true,
+        }
+      end
+
+      pack << variant
+    end
+
+    {
+      "name" => name,
+      "pack" => pack,
+      "sheets" => sheets,
+    }
+  end
+
+  def call
+    path.write pack_data.to_yaml
+  end
+end
+
+class GenerateJumpstartPreconBoosters
+  attr_reader :db
+
+  def initialize
+    @db = CardDatabase.load
+  end
+
+  def sets
+    db.sets.values
+  end
+
+  def sets_with_jumpstart
+    sets.to_h{|s| [s, s.decks.select{|d| d.type == "Jumpstart"}]}.select{|k,v| !v.empty?}
+  end
+
+  def call
+    sets_with_jumpstart.each do |set, decks|
+      GenerateBoosterForSet.new(set, decks).call
+    end
+  end
+end
+
+GenerateJumpstartPreconBoosters.new.call
