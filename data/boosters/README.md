@@ -172,6 +172,8 @@ Example from [afr.yaml](afr.yaml) to define the rare/mythic slot with showcase c
       chance: 20
 ```
 
+It's best practice to avoid mixing `use` and `any-rate` because it can behave unintuitively. Better practice is to use either `query\rawquery` instead of `use`, or `any-chance` instead of `any-rate` when possible.
+
 #### Filter
 
 Filters can be applied to `query` and `use` subsheets to adjust their context.
