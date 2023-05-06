@@ -20,18 +20,20 @@ sheets:
         count: 18
         rate: 25
   lesson:
-    # ratio is guessed, and most likely wrong
+    # ratio is based on https://www.lethe.xyz/mtg/collation/stx.html
     # uncommons are on uncommon sheet!
     any:
-      - query: "t:lesson r:m"
-        count: 1
-        rate: 1
-      - query: "t:lesson r:r"
-        count: 5
-        rate: 2
+      - any:
+        - query: "t:lesson r:m"
+          count: 1
+          rate: 1
+        - query: "t:lesson r:r"
+          count: 5
+          rate: 2
+        chance: 11
       - query: "t:lesson r:c"
         count: 9
-        rate: 11
+        chance: 137
   nonlesson_common:
     balanced: true
     query: "-t:lesson r:c"

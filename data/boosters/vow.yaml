@@ -53,12 +53,14 @@ sheets:
   sfc_mythic_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
-    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper -promo:draculaseries"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper -promo:draculaseries t:sorin"
       rate: 1
-    - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:sfc"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper -promo:draculaseries -t:sorin"
       rate: 2
+    - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:sfc"
+      rate: 4
     - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:sfc"
-      rate: 3
+      rate: 6
   dfc_common_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
@@ -80,12 +82,14 @@ sheets:
   dfc_rare_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
-    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper -promo:draculaseries"
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper -promo:draculaseries (Runo Stromkirk)"
       rate: 1
-    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:dfc"
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper -promo:draculaseries -(Runo Stromkirk)"
       rate: 2
+    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:dfc"
+      rate: 4
     - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries) is:dfc"
-      rate: 3
+      rate: 6
   dfc_mythic_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
