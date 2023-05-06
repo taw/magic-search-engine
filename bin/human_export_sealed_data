@@ -40,7 +40,19 @@ class HumanExportSealedData
 
   # TODO: also write flags (balanced / duplicates)
   def write_sheet(file, sheet)
-    ev = integerize_evs(sheet.probabilities).sort_by{|c,w| [c.set, c.number.to_i, c.number, c.foil ? 0 : 1] }
+    duplicates = sheet.is_a?(CardSheetWithDuplicates)
+    balanced = sheet.is_a?(ColorBalancedCardSheet)
+    fixed = sheet.is_a?(FixedCardSheet)
+
+    if fixed
+      ev = sheet.elements.zip(sheet.weights).sort_by{|c,w| [c.set, c.number.to_i, c.number, c.foil ? 0 : 1] }
+    else
+      ev = integerize_evs(sheet.probabilities).sort_by{|c,w| [c.set, c.number.to_i, c.number, c.foil ? 0 : 1] }
+    end
+
+    file.puts "  - balanced: true" if balanced
+    file.puts "  - duplicates: true" if duplicates
+    file.puts "  - fixed: true" if fixed
 
     ev.each do |c, w|
       file.puts "  - [#{c.set_code}/#{c.number}#{'/foil' if c.foil}] #{c.name} - #{w}"

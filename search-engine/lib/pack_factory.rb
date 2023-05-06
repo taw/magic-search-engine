@@ -20,6 +20,22 @@ class PackFactory
     end
   end
 
+  def build_sheet_from_deck(deck_code, foil: false, count: nil)
+    set_code, deck_name = deck_code.split("/", 2)
+    set = @db.sets[set_code]
+    raise_sheet_error "Cannot resolve deck #{deck_code}, no set #{set_code} found" unless set
+    deck = set.decks.find{|d| d.name == deck_name}
+    raise_sheet_error "Cannot resolve deck #{deck_code}, no deck with such name found for #{set_code}" unless deck
+    deck_cards = deck.all_cards.select{|k,v| v.foil == foil}
+    if count
+      actual_count = deck_cards.map(&:first).sum
+      unless actual_count == count
+        warn "Expected deck #{deck_code} to return #{count} with foil: #{foil}, got #{actual_count}"
+      end
+    end
+    FixedCardSheet.new(deck_cards.map(&:last), deck_cards.map(&:first))
+  end
+
   def build_sheet(data)
     data = data.dup
     foil = false
@@ -64,6 +80,10 @@ class PackFactory
       else
         raise_sheet_error "Incorrect subsheet data for any"
       end
+    when ["deck"]
+      raise_sheet_error "No balanced support for code" if balanced
+      raise_sheet_error "No duplicates support for code" if duplicates
+      build_sheet_from_deck(data["deck"], foil: foil, count: count)
     else
       raise_sheet_error "Unknown sheet type #{data.keys.join(", ")}"
     end
