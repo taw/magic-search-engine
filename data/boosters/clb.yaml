@@ -19,6 +19,7 @@ pack:
 sheets:
   nonlegendary_common_with_showcase:
     # Showcase treatments 1/3 for relevant cards
+    balanced: true
     any:
     - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart -t:legendary is:paper"
       rate: 1
