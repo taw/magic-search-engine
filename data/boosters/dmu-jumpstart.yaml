@@ -2,24 +2,34 @@ name: "Dominaria United Jumpstart Booster"
 packs:
 - precon_1: 17
   precon_1_foils: 2
+  rare_mythic_blue: 1
 - precon_2: 17
   precon_2_foils: 2
+  rare_mythic_green: 1
 - precon_3: 17
   precon_3_foils: 2
+  rare_mythic_white: 1
 - precon_4: 17
   precon_4_foils: 2
+  rare_mythic_white: 1
 - precon_5: 17
   precon_5_foils: 2
+  rare_mythic_green: 1
 - precon_6: 17
   precon_6_foils: 2
+  rare_mythic_blue: 1
 - precon_7: 17
   precon_7_foils: 2
+  rare_mythic_red: 1
 - precon_8: 17
   precon_8_foils: 2
+  rare_mythic_red: 1
 - precon_9: 17
   precon_9_foils: 2
+  rare_mythic_black: 1
 - precon_10: 17
   precon_10_foils: 2
+  rare_mythic_black: 1
 sheets:
   precon_1:
     deck: "dmu/Arcane Mischief"
@@ -91,3 +101,18 @@ sheets:
     deck: "dmu/Totally Ruthless"
     count: 2
     foil: true
+  rare_mythic_white:
+    filter: "e:{set} number<=set id=w"
+    use: rare_mythic
+  rare_mythic_blue:
+    filter: "e:{set} number<=set id=u"
+    use: rare_mythic
+  rare_mythic_black:
+    filter: "e:{set} number<=set id=b"
+    use: rare_mythic
+  rare_mythic_red:
+    filter: "e:{set} number<=set id=r"
+    use: rare_mythic
+  rare_mythic_green:
+    filter: "e:{set} number<=set id=w"
+    use: rare_mythic
