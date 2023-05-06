@@ -3,10 +3,8 @@
 # This export format is for debugging only
 
 require_relative "../search-engine/lib/card_database"
-require "memoist"
 
 class HumanExportSealedData
-  include Memoist
   attr_reader :db, :uuids
 
   def initialize(output_folder)
