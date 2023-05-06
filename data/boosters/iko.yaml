@@ -14,8 +14,9 @@ pack:
   uncommon_with_showcase: 3
   rare_mythic_with_showcase: 1
 sheets:
-  common_with_showcase:
   # Showcase treatments 1/3 for relevant cards
+  common_with_showcase:
+    balanced: true
     any:
     - rawquery: "e:iko r:c promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
       rate: 1
