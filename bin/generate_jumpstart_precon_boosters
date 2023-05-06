@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require_relative "../search-engine/lib/card_database"
-require "yaml"
 
 class GenerateBoosterForSet
   attr_reader :set, :decks
@@ -24,8 +23,13 @@ class GenerateBoosterForSet
   end
 
   def pack_data
-    pack = []
-    sheets = {}
+    pack = [
+      "name: #{name.inspect}",
+      "packs:",
+    ]
+    sheets = [
+      "sheets:",
+    ]
     decks.each_with_index do |deck, i|
       deck_code = "#{set.code}/#{deck.name}"
 
@@ -37,34 +41,25 @@ class GenerateBoosterForSet
       foil_count = foil_cards.map(&:first).sum
       foil_sheet_name = "precon_#{i+1}_foils"
 
-      variant = {}
-      variant[nonfoil_sheet_name] = nonfoil_count
-      sheets[nonfoil_sheet_name] = {
-        "deck" => deck_code,
-        "count" => nonfoil_count,
-      }
+      pack << "- #{nonfoil_sheet_name}: #{nonfoil_count}"
+      sheets << "  #{nonfoil_sheet_name}:"
+      sheets << "    deck: #{deck_code.inspect}"
+      sheets << "    count: #{nonfoil_count}"
 
       if foil_count > 0
-        variant[foil_sheet_name] = foil_count
-        sheets[foil_sheet_name] = {
-          "deck" => deck_code,
-          "count" => foil_count,
-          "foil" => true,
-        }
+        pack << "  #{foil_sheet_name}: #{foil_count}"
+        sheets << "  #{foil_sheet_name}:"
+        sheets << "    deck: #{deck_code.inspect}"
+        sheets << "    count: #{foil_count}"
+        sheets << "    foil: true"
       end
-
-      pack << variant
     end
 
-    {
-      "name" => name,
-      "pack" => pack,
-      "sheets" => sheets,
-    }
+    (pack + sheets).join("\n") + "\n"
   end
 
   def call
-    path.write pack_data.to_yaml
+    path.write pack_data
   end
 end
 
