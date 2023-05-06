@@ -51,4 +51,8 @@ class PreconDeck < Deck
     end
     output.join("\n") + "\n"
   end
+
+  def all_cards
+    @cards + @sideboard + @commander
+  end
 end

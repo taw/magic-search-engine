@@ -33,11 +33,11 @@ class GenerateBoosterForSet
     decks.each_with_index do |deck, i|
       deck_code = "#{set.code}/#{deck.name}"
 
-      nonfoil_cards = deck.cards.select{|k,v| !v.foil}
+      nonfoil_cards = deck.all_cards.select{|k,v| !v.foil}
       nonfoil_count = nonfoil_cards.map(&:first).sum
       nonfoil_sheet_name = "precon_#{i+1}"
 
-      foil_cards = deck.cards.select{|k,v| v.foil}
+      foil_cards = deck.all_cards.select{|k,v| v.foil}
       foil_count = foil_cards.map(&:first).sum
       foil_sheet_name = "precon_#{i+1}_foils"
 

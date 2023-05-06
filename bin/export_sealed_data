@@ -82,6 +82,7 @@ class ExportFormatterBasic < ExportFormatter
     {
       allow_duplicates: sheet.is_a?(CardSheetWithDuplicates) ? true : nil,
       balance_colors: sheet.is_a?(ColorBalancedCardSheet) ? true : nil,
+      fixed: sheet.is_a?(FixedCardSheet) ? true : nil,
       total_weight: cards.values.sum,
       cards: cards,
     }.compact
