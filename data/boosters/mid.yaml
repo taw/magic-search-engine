@@ -33,5 +33,13 @@ sheets:
     any:
     - use: dfc_rare_with_showcase
       chance: 11 * 2
-    - use: dfc_mythic_with_showcase
+    - any:
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper t:planeswalker"
+        rate: 1
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper -t:planeswalker"
+        rate: 2
+      - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+        rate: 4
+      - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+        rate: 6
       chance: 5

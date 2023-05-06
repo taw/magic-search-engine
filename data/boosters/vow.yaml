@@ -99,11 +99,27 @@ sheets:
     any:
     - use: sfc_rare_with_showcase
       chance: 53*2
-    - use: sfc_mythic_with_showcase
+    - any:
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper t:Sorin"
+        rate: 1
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper -t:Sorin"
+        rate: 2
+      - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+        rate: 4
+      - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+        rate: 6
       chance: 15
   dfc_rare_mythic_with_showcase:
     any:
-    - use: dfc_rare_with_showcase
+    - any:
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper Stromkirk"
+        rate: 1
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper -Stromkirk"
+        rate: 2
+      - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+        rate: 4
+      - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+        rate: 6
       chance: 11*2
     - use: dfc_mythic_with_showcase
       chance: 5
