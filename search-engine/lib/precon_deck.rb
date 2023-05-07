@@ -6,7 +6,7 @@ class PreconDeck < Deck
     @name = name
     @type = type
     @release_date = release_date
-    @slug = @name.downcase.gsub("'s", "s").gsub(/[^a-z0-9s]+/, "-")
+    @slug = @name.downcase.gsub("'s", "s").gsub(/[^a-z0-9s]+/, "-").chomp("-")
     @display = display
   end
 
