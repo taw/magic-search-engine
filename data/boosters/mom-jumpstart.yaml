@@ -1,103 +1,103 @@
 name: "March of the Machine Jumpstart Booster"
 packs:
-- precon_1: 17
-  precon_1_foils: 2
+- brood_1: 17
+  brood_1_foils: 2
   rare_mythic_white: 1
-- precon_2: 17
-  precon_2_foils: 2
+- brood_2: 17
+  brood_2_foils: 2
   rare_mythic_white: 1
-- precon_3: 17
-  precon_3_foils: 2
+- buff_1: 17
+  buff_1_foils: 2
   rare_mythic_green: 1
-- precon_4: 17
-  precon_4_foils: 2
+- buff_2: 17
+  buff_2_foils: 2
   rare_mythic_green: 1
-- precon_5: 17
-  precon_5_foils: 2
+- expendable_1: 17
+  expendable_1_foils: 2
   rare_mythic_black: 1
-- precon_6: 17
-  precon_6_foils: 2
+- expendable_2: 17
+  expendable_2_foils: 2
   rare_mythic_black: 1
-- precon_7: 17
-  precon_7_foils: 2
+- overachiever_1: 17
+  overachiever_1_foils: 2
   rare_mythic_blue: 1
-- precon_8: 17
-  precon_8_foils: 2
+- overachiever_2: 17
+  overachiever_2_foils: 2
   rare_mythic_blue: 1
-- precon_9: 17
-  precon_9_foils: 2
+- reinforcement_1: 17
+  reinforcement_1_foils: 2
   rare_mythic_red: 1
-- precon_10: 17
-  precon_10_foils: 2
+- reinforcement_2: 17
+  reinforcement_2_foils: 2
   rare_mythic_red: 1
 sheets:
-  precon_1:
+  brood_1:
     deck: "mom/Brood 1"
     count: 17
-  precon_1_foils:
+  brood_1_foils:
     deck: "mom/Brood 1"
     count: 2
     foil: true
-  precon_2:
+  brood_2:
     deck: "mom/Brood 2"
     count: 17
-  precon_2_foils:
+  brood_2_foils:
     deck: "mom/Brood 2"
     count: 2
     foil: true
-  precon_3:
+  buff_1:
     deck: "mom/Buff 1"
     count: 17
-  precon_3_foils:
+  buff_1_foils:
     deck: "mom/Buff 1"
     count: 2
     foil: true
-  precon_4:
+  buff_2:
     deck: "mom/Buff 2"
     count: 17
-  precon_4_foils:
+  buff_2_foils:
     deck: "mom/Buff 2"
     count: 2
     foil: true
-  precon_5:
+  expendable_1:
     deck: "mom/Expendable 1"
     count: 17
-  precon_5_foils:
+  expendable_1_foils:
     deck: "mom/Expendable 1"
     count: 2
     foil: true
-  precon_6:
+  expendable_2:
     deck: "mom/Expendable 2"
     count: 17
-  precon_6_foils:
+  expendable_2_foils:
     deck: "mom/Expendable 2"
     count: 2
     foil: true
-  precon_7:
+  overachiever_1:
     deck: "mom/Overachiever 1"
     count: 17
-  precon_7_foils:
+  overachiever_1_foils:
     deck: "mom/Overachiever 1"
     count: 2
     foil: true
-  precon_8:
+  overachiever_2:
     deck: "mom/Overachiever 2"
     count: 17
-  precon_8_foils:
+  overachiever_2_foils:
     deck: "mom/Overachiever 2"
     count: 2
     foil: true
-  precon_9:
+  reinforcement_1:
     deck: "mom/Reinforcement 1"
     count: 17
-  precon_9_foils:
+  reinforcement_1_foils:
     deck: "mom/Reinforcement 1"
     count: 2
     foil: true
-  precon_10:
+  reinforcement_2:
     deck: "mom/Reinforcement 2"
     count: 17
-  precon_10_foils:
+  reinforcement_2_foils:
     deck: "mom/Reinforcement 2"
     count: 2
     foil: true
@@ -114,5 +114,5 @@ sheets:
     filter: "e:{set} number<=set id=r"
     use: rare_mythic
   rare_mythic_green:
-    filter: "e:{set} number<=set id=w"
+    filter: "e:{set} number<=set id=g"
     use: rare_mythic
