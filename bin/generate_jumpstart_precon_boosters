@@ -35,11 +35,11 @@ class GenerateBoosterForSet
 
       nonfoil_cards = deck.all_cards.select{|k,v| !v.foil}
       nonfoil_count = nonfoil_cards.map(&:first).sum
-      nonfoil_sheet_name = "precon_#{i+1}"
+      nonfoil_sheet_name = deck.slug.chomp("-").tr("-", "_")
 
       foil_cards = deck.all_cards.select{|k,v| v.foil}
       foil_count = foil_cards.map(&:first).sum
-      foil_sheet_name = "precon_#{i+1}_foils"
+      foil_sheet_name = nonfoil_sheet_name + "_foils"
 
       pack << "- #{nonfoil_sheet_name}: #{nonfoil_count}"
       sheets << "  #{nonfoil_sheet_name}:"
