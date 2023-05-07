@@ -34,14 +34,27 @@
       Sheet #{sheet.name} (color balanced)
     - elsif sheet.class == CardSheetWithDuplicates
       Sheet #{sheet.name} (duplicates allowed)
+    - elsif sheet.class == FixedCardSheet
+      Sheet #{sheet.name} (fixed content without randomization)
     - else
       Sheet #{sheet.name}
-  - groups = sheet.probabilities.group_by(&:last).transform_values{|x| x.map(&:first).sort}.sort.reverse
-  - groups.each do |weight, cards|
-    %div
-      At rate #{weight} (#{(100.0*weight).round(2)}%)
-    .row.multicard_row
-      - cards.each_with_index do |card, i|
-        .col-3.col-sm-2.card_picture_cell
-          = link_to_card(card) do
-            = render 'card/picture', card: card
+  - if sheet.class == FixedCardSheet
+    - groups = sheet.elements.zip(sheet.weights).group_by(&:last).transform_values{|x| x.map(&:first).sort}.sort.reverse
+    - groups.each do |count, cards|
+      %div
+        At count #{count}x
+      .row.multicard_row
+        - cards.each_with_index do |card, i|
+          .col-3.col-sm-2.card_picture_cell
+            = link_to_card(card) do
+              = render 'card/picture', card: card
+  - else
+    - groups = sheet.probabilities.group_by(&:last).transform_values{|x| x.map(&:first).sort}.sort.reverse
+    - groups.each do |weight, cards|
+      %div
+        At rate #{weight} (#{(100.0*weight).round(2)}%)
+      .row.multicard_row
+        - cards.each_with_index do |card, i|
+          .col-3.col-sm-2.card_picture_cell
+            = link_to_card(card) do
+              = render 'card/picture', card: card
