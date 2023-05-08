@@ -1,0 +1,70 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/card_database"
+require_relative "../lib/sealed"
+
+class OpenPacksJSON
+  attr_reader :db
+
+  def initialize
+    @db = CardDatabase.load
+    load_uuids
+  end
+
+  def sealed
+    @sealed ||= Sealed.new(db, *ARGV)
+  end
+
+  def uuids_path
+    Pathname("#{__dir__}/../../index/uuids.txt")
+  end
+
+  def load_uuids
+    @uuids = {}
+    uuids_path.each_line do |line|
+      s, n, u, _ = line.chomp.split("\t")
+      @uuids[s] ||= {}
+      raise if @uuids[s][n]
+      @uuids[s][n] = u
+    end
+  end
+
+  def uuid_for(set_code, number)
+    @uuids.fetch(set_code).fetch(number)
+  end
+
+  def open_some_packs
+    cards = sealed.call
+
+    data = cards.tally.map{|card, count|
+      {
+        name: card.name,
+        set: card.set_code,
+        count: count,
+        number: card.number,
+        uuid: uuid_for(card.set_code,
+        card.number),
+        foil: card.foil,
+      }
+    }.sort_by{|c|
+      [c[:name], c[:set], c[:number]]
+    }
+    puts JSON.pretty_generate(data)
+  end
+
+  def call
+    open_some_packs
+  end
+end
+
+if ARGV.empty?
+  STDERR.puts "Usage: #{$0} [COUNTxCODE] [COUNTxCODE] ..."
+  STDERR.puts "Examples:"
+  STDERR.puts "  #{$0} m10"
+  STDERR.puts "  #{$0} 6xm10"
+  STDERR.puts "  #{$0} 10xiko-set"
+  STDERR.puts "  #{$0} 2xsom 2xmbs 2xnph"
+  exit 1
+end
+
+OpenPacksJSON.new.call
