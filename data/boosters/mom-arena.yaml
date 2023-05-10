@@ -39,33 +39,13 @@ sheets:
       rate: 1
       count: 10
   dfc_rare_mythic:
-    any:
-    - any:
-      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper"
-        rate: 1
-      - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
-        rate: 2
-      - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) is:dfc -t:battle"
-        rate: 3
-      chance: 2 * 5
-      count: 10
-    - any:
-      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper"
-        rate: 1
-      - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
-        rate: 2
-      - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc -t:battle"
-        rate: 3
-      chance: 1 * 5
-      count: 10
+    filter: "e:{set} is:dfc -t:battle"
+    use: rare_mythic
+    count: 10
   sfc_rare_mythic:
-    any:
-    - use: sfc_rare_with_showcase
-      chance: 2 * 44
-      count: 57
-    - use: sfc_mythic_with_showcase
-      chance: 1 * 10
-      count: 18
+    filter: "e:{set} is:sfc"
+    use: rare_mythic
+    count: 54
   uncommon_battle:
     query: "r:u t:battle"
     count: 20
