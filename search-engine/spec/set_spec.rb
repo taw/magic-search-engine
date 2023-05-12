@@ -22,6 +22,7 @@ describe "Sets" do
       "from the vault",
       "funny",
       "judge gift",
+      "jumpstart",
       "masterpiece",
       "masters",
       "memorabilia",
