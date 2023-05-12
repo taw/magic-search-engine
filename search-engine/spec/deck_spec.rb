@@ -51,7 +51,8 @@ describe Deck do
       ["core", "Spellslinger Starter Kit"],
       ["funny", "Halfdeck"],
       ["draft innovation", "Jumpstart"], # JMP only
-      ["memorabilia", "World Championship Decks"], # WCxx
+      ["memorabilia", "World Championship Deck"], # WCxx
+      ["memorabilia", "Pro Tour Deck"], # PTC
       ["expansion", "Jumpstart"],
       ["standard", "Arena Starter Kit"],
       # Non-decks, this needs to be sorted out at some point
