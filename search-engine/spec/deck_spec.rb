@@ -54,6 +54,8 @@ describe Deck do
       ["memorabilia", "World Championship Decks"], # WCxx
       ["expansion", "Jumpstart"],
       ["standard", "Arena Starter Kit"],
+      # Non-decks, this needs to be sorted out at some point
+      ["box", "Box"],
     ]
 
     db.sets.each do |set_code, set|

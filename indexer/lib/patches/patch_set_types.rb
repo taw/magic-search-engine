@@ -1,5 +1,6 @@
 # This whole list is a mess
-# Maybe I should drop it and trust mtgjson, but I actually rely on these set types for a lot of logic
+# Maybe I should drop it and trust mtgjson,
+# but I actually rely on these set types for a lot of logic
 
 class PatchSetTypes < Patch
   def call
@@ -13,6 +14,8 @@ class PatchSetTypes < Patch
       end
 
       case set_code
+      when "jmp", "j21", "j22", "ajmp"
+        set_types << "jumpstart"
       when "bbd"
         set_types << "two-headed giant" << "multiplayer"
       when "mh1", "mh2"

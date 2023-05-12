@@ -6,6 +6,7 @@ describe "is:booster" do
       "conspiracy",
       "core",
       "expansion",
+      "jumpstart",
       "masters",
       "modern",
       "reprint",
@@ -27,11 +28,8 @@ describe "is:booster" do
       should_be_in_other_boosters = (
         %W[tsb exp mps mp2 fmb1 plist sta sunf brr sis slx].include?(set.code)
       )
-      if %W[jmp ajmp].include?(set_code)
-        # There are 121 random precon/booster things
-        # These could be modelled as 121 boosters, for total of 2420 one-card sheets
-        # Or as 121 precons
-        # It's not perfect match either way, but I went with 121 precons
+      if %W[j21 ajmp].include?(set_code)
+        # Arena extras
         set.should_not have_boosters, "#{set_pp} should not have boosters"
       elsif should_have_boosters
         set.should have_boosters, "#{set_pp} should have boosters"
@@ -51,6 +49,8 @@ describe "is:booster" do
       # is:booster is not going to be maintained going forward
       # it will be replaced by something else eventually
       next if set.release_date >= Date.parse("2023-04-21") # MOM
+      next if set.code == "jmp"
+      next if set.code == "j22"
 
       # Exclude planesawlker deck cards
       case set_code
