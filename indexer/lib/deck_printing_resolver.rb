@@ -50,6 +50,14 @@ class DeckPrintingResolver
     @deck_set_code ||= @deck["set_code"]
   end
 
+  def deck_name
+    @deck["name"]
+  end
+
+  def card_name
+    @card["name"]
+  end
+
   def set_search_list
     SetSearchList[deck_set_code]
   end
@@ -189,7 +197,7 @@ class DeckPrintingResolver
 
     numbers = printings.map{|c| c["number"]}
 
-    return printings[0] if CardsWithAllowedConflicts.include?(card_name)
+    return printings[0] if CardsWithAllowedConflicts.include?(card_name) and deck_set_code != "ptc"
 
     # If there are variant cards († or ★), choose non-variant version
     # If this needs to be reversed, mark it explicitly in the data
@@ -202,8 +210,10 @@ class DeckPrintingResolver
 
     # Otherwise just get one with lowest number, but print a warning
     # Use same format as magic-preconstructed-decks for easy copypasta
-    candidates = printings.map{|c| "[#{c["set_code"].upcase}:#{c["number"]}]" }.join(" ")
-    warn "#{deck_set_code} #{@deck["name"]}: Cannot resolve #{@card["name"]}. Candidates are: #{candidates}"
+    candidates = printings.map{|c| "[#{c["set_code"].upcase}:#{c["number"]}]" }
+    candidates.each do |candidate|
+      puts "bin/resolve_card #{deck_set_code.inspect} #{deck_name.inspect} #{card_name.inspect} #{candidate.inspect}"
+    end
     printings[0]
   end
 
