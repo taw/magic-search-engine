@@ -1,0 +1,65 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine
+filter: "e:mom number<=set"
+pack:
+  basic_or_gainland: 1
+  sfc_common: 7
+  sfc_uncommon: 2
+  possible_rare_slot:
+  - dfc_common_uncommon: 1
+    uncommon_battle: 1
+    sfc_rare_mythic: 1
+    chance: 44*2 + 10
+  - sfc_uncommon: 1
+    dfc_common_uncommon: 1
+    rare_mythic_battle: 1
+    chance: 11*2 + 5
+  - sfc_uncommon: 1
+    uncommon_battle: 1
+    dfc_rare_mythic: 1
+    chance: 5*2 + 5
+  multiverse_legend: 1
+  aftermath_card: 1
+sheets:
+  basic_or_gainland:
+    any:
+    - query: "is:gainland"
+      chance: 1
+      count: 10
+    - use: basic
+      chance: 1
+      count: 15
+  sfc_common:
+    balanced: true
+    query: "r:c is:sfc -is:gainland"
+    count: 101
+  dfc_common_uncommon:
+    any:
+    - use: dfc_common
+      rate: 2
+      count: 5
+    - query: "r:u is:dfc -t:battle"
+      rate: 1
+      count: 10
+  dfc_rare_mythic:
+    filter: "e:mom is:dfc -t:battle"
+    use: rare_mythic
+    count: 10
+  sfc_rare_mythic:
+    filter: "e:mom is:sfc"
+    use: rare_mythic
+    count: 54
+  uncommon_battle:
+    query: "r:u t:battle"
+    count: 20
+  rare_mythic_battle:
+    filter: "e:mom t:battle"
+    use: rare_mythic
+    count: 16
+  multiverse_legend:
+    filter: "e:mul -is:foilonly"
+    use: base_1248_by_rarity
+    count: 65
+  aftermath_card:
+    filter: "e:mat number<=50"
+    use: base_1248_by_rarity
+    count: 50
