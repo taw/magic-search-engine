@@ -1,7 +1,8 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine
+filter: "e:mom number<=set"
 pack:
   basic_or_gainland: 1
-  sfc_common: 8
+  sfc_common: 7
   sfc_uncommon: 2
   possible_rare_slot:
   - dfc_common_uncommon: 1
@@ -17,6 +18,7 @@ pack:
     dfc_rare_mythic: 1
     chance: 5*2 + 5
   multiverse_legend: 1
+  aftermath_card: 1
 sheets:
   basic_or_gainland:
     any:
@@ -39,11 +41,11 @@ sheets:
       rate: 1
       count: 10
   dfc_rare_mythic:
-    filter: "e:{set} is:dfc -t:battle"
+    filter: "e:mom is:dfc -t:battle"
     use: rare_mythic
     count: 10
   sfc_rare_mythic:
-    filter: "e:{set} is:sfc"
+    filter: "e:mom is:sfc"
     use: rare_mythic
     count: 54
   uncommon_battle:
@@ -57,3 +59,7 @@ sheets:
     filter: "e:mul -is:foilonly"
     use: base_1248_by_rarity
     count: 65
+  aftermath_card:
+    filter: "e:mat number<=50"
+    use: base_1248_by_rarity
+    count: 50
