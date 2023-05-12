@@ -17,11 +17,15 @@ class OpenPacks
   def option_parser
     @option_parser ||= Optimist::Parser.new do
       banner <<~EOS
-        Open packs.
+        Open packs. You can also add predefined cards to the results.
 
         Usage:
-          #{$0} 6xM19
-          #{$0} NPH MBS SOM
+          #{$0} m10
+          #{$0} 6xm10
+          #{$0} 36xmh1 mh1/255
+          #{$0} 36xm19 m19/306/foil
+          #{$0} 10xiko-set
+          #{$0} 2xsom 2xmbs 2xnph
 
         Options:
         EOS
