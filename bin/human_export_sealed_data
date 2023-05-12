@@ -38,7 +38,6 @@ class HumanExportSealedData
     }.to_h
   end
 
-  # TODO: also write flags (balanced / duplicates)
   def write_sheet(file, sheet)
     duplicates = sheet.is_a?(CardSheetWithDuplicates)
     balanced = sheet.is_a?(ColorBalancedCardSheet)
