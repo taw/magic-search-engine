@@ -39,16 +39,20 @@ sheets:
     use: rare_mythic
   etched_sta_uncommon:
     foil: true
-    rawquery: "e:sta r:u is:baseset"
+    rawquery: "e:sta r:u -variant:foreign is:etched"
+    count: 18
   etched_sta_rare_mythic:
     foil: true
-    filter: "e:sta is:baseset"
+    filter: "e:sta is:etched -variant:foreign"
     use: rare_mythic
+    count: 45
   etched_jp_sta_uncommon:
     foil: true
-    rawquery: "e:sta r:u variant:foreign"
+    rawquery: "e:sta r:u variant:foreign is:etched"
+    count: 18
   etched_jp_sta_rare_mythic:
     foil: true
-    filter: "e:sta variant:foreign"
+    filter: "e:sta variant:foreign is:etched"
     use: rare_mythic
+    count: 45
   

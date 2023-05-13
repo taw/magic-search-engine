@@ -81,8 +81,9 @@ sheets:
       rate: 2
   etched_rare_mythic:
     foil: true
-    filter: "e:neo frame:etched"
+    filter: "e:neo is:etched"
     use: rare_mythic
+    count: 12
   neon_ink:
     foil: true
     any:

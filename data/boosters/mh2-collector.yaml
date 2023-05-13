@@ -29,13 +29,15 @@ sheets:
     use: rare_mythic
   etched_basic:
     foil: true
-    rawquery: "e:mh2 t:basic"
+    rawquery: "e:mh2 t:basic is:etched"
     count: 10
   etched_common_uncommon:
     foil: true
-    set: mh2
-    code: "CU"
+    filter: "e:mh2 is:etched"
+    use: common_uncommon
+    count: 13+29
   etched_rare_mythic:
     foil: true
-    set: mh2
-    code: "RM"
+    filter: "e:mh2 is:etched"
+    use: rare_mythic
+    count: 48+10
