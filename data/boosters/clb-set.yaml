@@ -22,14 +22,18 @@ pack:
 sheets:
   basic:
     rawquery: "e:clb t:basic"
+    count: 20
   foil_basic:
     foil: true
     use: basic
+    count: 20
   common:
     query: "r:c"
+    count: 141
   background:
-    filter: "t:background"
+    filter: "e:clb t:background number<=set"
     use: base_1248_by_rarity
+    count: 26
   legendary_with_showcase:
     any:
     # no idea about ratios
@@ -79,7 +83,7 @@ sheets:
       chance: 125
   foil_etched_legend:
     foil: true
-    filter: "e:clb number:471-552" # Change this to frame:etched when MTGJson is updated
+    filter: "e:clb is:etched number<=552"
     use: base_1248_by_rarity
   foil_with_showcase:
     foil: true

@@ -80,6 +80,6 @@ sheets:
     code: "MOM"
   foil_etched:
     foil: true
-    filter: "e:mul number:66-130" # Change to frame:etched when json is fixed
+    filter: "e:mul is:etched"
     use: base_1248_by_rarity
     count: 65

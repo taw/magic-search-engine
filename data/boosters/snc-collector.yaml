@@ -49,14 +49,17 @@ sheets:
     foil: true
     filter: "e:snc promo:gilded"
     use: common_uncommon
+    count: 20
   gilded_rare_mythic_showcase:
     foil: true
     filter: "e:snc promo:gilded"
     use: rare_mythic
+    count: 25
   etched_rare_mythic_showcase:
     foil: true
-    filter: "e:snc frame:etched"
+    filter: "e:snc is:etched"
     use: rare_mythic
+    count: 9
   foil_rare_mythic_showcase:
     any:
     - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly is:paper is:triome"

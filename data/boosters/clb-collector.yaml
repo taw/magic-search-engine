@@ -16,28 +16,36 @@ sheets:
   foil_basic:
     foil: true
     rawquery: "e:clb t:basic"
+    count: 20
   foil_common_uncommon_legendary:
     foil: true
-    filter: "e:clb t:legendary number:1-361"
+    filter: "e:clb t:legendary number<=set"
     use: common_uncommon
+    count: 50
   extended_commander:
     filter: "e:clb number:607-645"
     use: rare_mythic
+    count: 39
   extended_rare_mythic:
     filter: "e:clb number:553-606"
     use: rare_mythic
+    count: 93-39
   etched_common_uncommon:
     foil: true
-    filter: "e:clb number:471-552"
+    filter: "e:clb is:etched"
     use: common_uncommon
+    count: 50
   etched_rare_mythic:
     foil: true
-    filter: "e:clb number:471-552"
+    filter: "e:clb is:etched"
     use: rare_mythic
+    count: 32
   foil_showcase_rare_mythic:
     foil: true
     filter: "e:clb promo:boosterfun -is:foilonly"
     use: rare_mythic
+    count: 44
   foil_rare_mythic:
     foil: true
     use: rare_mythic
+    count: 22

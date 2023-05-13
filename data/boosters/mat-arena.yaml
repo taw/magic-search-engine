@@ -30,7 +30,7 @@ sheets:
       count: 15
   sfc_common:
     balanced: true
-    query: "r:c is:sfc -is:gainland"
+    query: "r:c is:sfc -is:gainland number<=set"
     count: 101
   dfc_common_uncommon:
     any:
@@ -41,11 +41,11 @@ sheets:
       rate: 1
       count: 10
   dfc_rare_mythic:
-    filter: "e:mom is:dfc -t:battle"
+    filter: "e:mom is:dfc -t:battle number<=set"
     use: rare_mythic
     count: 10
   sfc_rare_mythic:
-    filter: "e:mom is:sfc"
+    filter: "e:mom is:sfc number<=set"
     use: rare_mythic
     count: 54
   uncommon_battle:

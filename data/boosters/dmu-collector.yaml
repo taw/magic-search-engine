@@ -41,34 +41,45 @@ sheets:
   foil_fullart_land:
     foil: true
     query: "r:b is:fullart"
+    count: 5
   foil_rare_mythic:
     foil: true
     use: rare_mythic
+    count: 80
   foil_uncommon_showcase:
     foil: true
     use: uncommon_showcase
+    count: 20
   extended_rare_mythic:
     filter: "(e:dmu or e:dmc) frame:extendedart"
     use: rare_mythic
+    count: 71
   lost_legends:
     set: leg
     code: "LL"
   foil_alt_border_rare_mythic:
-    filter: "e:dmu promo:boosterfun"
+    foil: true
+    filter: "e:dmu promo:boosterfun -is:foilonly"
     use: rare_mythic
+    count: 76
   retold_uncommon:
     rawquery: "e:dmc number:29-48 r:u"
+    count: 5
   etched_retold_uncommon:
     foil: true
-    rawquery: "e:dmc number:49-70 r:u"
+    rawquery: "e:dmc is:etched r:u"
+    count: 5
   etched_retold_rare_mythic:
     foil: true
-    filter: "e:dmc number:49-70"
+    filter: "e:dmc is:etched alt:(number:29-48)"
     use: rare_mythic
+    count: 15
   showcase_rare_mythic:
-    filter: "(e:dmu promo:boosterfun) or (e:dmc number:49-70)"
+    filter: "(e:dmu promo:boosterfun -is:foilonly -frame:extendedart) or (e:dmc number:29-48)"
     use: rare_mythic
+    count: 46
   textured_foil:
     foil: true
     filter: "e:dmu promo:textured"
     use: base_1248_by_rarity
+    count: 41

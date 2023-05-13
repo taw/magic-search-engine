@@ -63,7 +63,7 @@ sheets:
     count: 80
   uncommon_mul_etched: 
     foil: true
-    rawquery: "e:mul r:u number:66-130" # Change to frame:etched when json is fixed
+    rawquery: "e:mul r:u is:etched"
     count: 20
   uncommon_mul_halo:
     foil: true
@@ -89,7 +89,7 @@ sheets:
     use: rare_mythic
   rare_mythic_mul_etched:
     foil: true
-    filter: "e:mul number:66-130" # Change to frame:etched when json is fixed
+    filter: "e:mul is:etched"
     use: rare_mythic
     count: 45
   rare_mythic_mul_halo:
