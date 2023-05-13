@@ -17,13 +17,17 @@ sheets:
   foil_rare_mythic:
     foil: true
     use: rare_mythic
+    count: 160
   etched_rare_mythic:
-    filter: "e:2x2 number:413-572"
+    filter: "e:2x2 is:etched"
     foil: true
     use: rare_mythic
+    count: 160
   foil_rare_mythic_showcase:
     foil: true
     use: rare_mythic_showcase
+    count: 50
   textured_rare_mythic_showcase:
     foil: true
-    rawquery: "e:2x2 number:573-577"
+    rawquery: "e:2x2 promo:textured"
+    count: 5

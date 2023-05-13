@@ -29,12 +29,12 @@ sheets:
     use: rare_mythic
   etched_uncommon:
     foil: true
-    rawquery: "e:cmr frame:etched (r:u or r:s) -is:reprint"
+    rawquery: "e:cmr is:etched (r:u or r:s) -is:reprint"
   etched_reprint:
     foil: true
-    filter: "e:cmr frame:etched is:reprint"
+    filter: "e:cmr is:etched is:reprint"
     use: rare_mythic
   etched_rare_mythic:
     foil: true
-    filter: "e:cmr frame:etched -is:reprint"
+    filter: "e:cmr is:etched -is:reprint"
     use: rare_mythic

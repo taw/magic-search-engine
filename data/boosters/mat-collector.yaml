@@ -25,7 +25,7 @@ sheets:
     count: 15
   etched_uncommon:
     foil: true
-    rawquery: "e:{set} r:u number:101-150" # Change to frame:etched when json data updated
+    rawquery: "e:{set} r:u is:etched"
     count: 15
   foil_rare_mythic:
     foil: true
@@ -41,7 +41,7 @@ sheets:
     count: 35
   etched_rare_mythic:
     foil: true
-    filter: "e:{set} number:101-150" # Change to frame:etched when json data updated
+    filter: "e:{set} is:etched"
     use: rare_mythic
     count: 35
   foil_showcase_rare_mythic:
