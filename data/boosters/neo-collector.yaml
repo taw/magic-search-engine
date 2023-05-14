@@ -60,7 +60,7 @@ sheets:
     filter: "e:nec frame:extendedart"
     use: rare_mythic
   extended_or_borderless_rare_mythic:
-    filter: "e:neo (frame:extendedart or is:borderless)"
+    filter: "e:neo (frame:extendedart or is:borderless) number<=505"
     use: rare_mythic
   rare_mythic_showcase:
     any:
@@ -73,11 +73,11 @@ sheets:
   foil_rare_mythic_showcase:
     foil: true
     any:
-    - rawquery: "e:{set} r:r promo:boosterfun -frame:etched -promo:neonink is:paper"
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -promo:neonink is:paper"
       rate: 6
-    - rawquery: "e:{set} r:m promo:boosterfun -frame:etched is:paper number<=505 -Jin-Gitaxias"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly is:paper number<=505 -Jin-Gitaxias"
       rate: 3
-    - rawquery: "e:{set} r:m promo:boosterfun -frame:etched is:paper number<=505 Jin-Gitaxias"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly is:paper number<=505 Jin-Gitaxias"
       rate: 2
   etched_rare_mythic:
     foil: true
