@@ -25,9 +25,9 @@ sheets:
     - query: "is:gainland"
       chance: 1
       count: 10
-    - use: basic
+    - query: "t:basic -is:fullart"
       chance: 1
-      count: 15
+      count: 5
   sfc_common:
     balanced: true
     query: "r:c is:sfc -is:gainland number<=set"
