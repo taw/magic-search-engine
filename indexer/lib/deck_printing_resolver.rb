@@ -167,6 +167,11 @@ class DeckPrintingResolver
     if card_number
       specified_card = printings.find{|c| c["number"].downcase == card_number}
       return specified_card if specified_card
+      specified_card_a = printings.find{|c| c["number"].downcase == card_number + "a"}
+      if specified_card_a
+        warn "Number #{card_number} requested for #{card_name}, no such card found, but works when corrected to #{card_number}a"
+        return specified_card_a
+      end
       raise "Number #{card_number} requested for #{card_name} but no such card found"
     end
 
