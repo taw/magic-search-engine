@@ -63,11 +63,16 @@ class DeckPrintingResolver
   end
 
   def deck_release_date
-    @deck_release_date ||= if deck_set_code == "w17"
-      # Welcome decks contain some future cards
-      release_date("akh")
-    else
-      release_date(deck_set_code)
+    @deck_release_date ||= begin
+      if deck_set_code == "w17"
+        # Welcome decks contain some future cards
+        release_date("akh")
+      elsif @deck["release_date"]
+        # Necessary for SLD, otherwise it doesn't make a difference vs set release date
+        Date.parse(@deck["release_date"])
+      else
+        release_date(deck_set_code)
+      end
     end
   end
 
@@ -117,7 +122,7 @@ class DeckPrintingResolver
     # First, filter out all printings from future sets
     printings = printings.select{|sc, _| release_date(sc) <= deck_release_date }
 
-    # # All other printings in the future, so we don't care
+    # All other printings in the future, so we don't care
     return printings.values[0] if printings.size == 1
     raise "All printings of #{card_name} from the future" if printings.empty?
 
