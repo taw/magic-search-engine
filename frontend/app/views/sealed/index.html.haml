@@ -4,8 +4,18 @@
     %div.pack_selection
       %input{type: "number", name: "count[]", value: count, min: 0}
       = select_tag "set[]", options_for_select(@booster_types.map{|code, booster| [booster.name, code]}, set_code)
+  .row
+    .col-12
+      %label{for: "fixed"} Optional fixed cards
+      %div
+        %textarea.fixed{id: "fixed", name: "fixed", rows: 3, placeholder: "1x mh1:255\n1x m19:306:foil"}= @fixed
   %button{type: "submit", class: "btn btn-outline-primary"}
     Open packs
+- if @warnings.present?
+  .row
+    .col-12.warnings
+      - @warnings.each do |warning|
+        .warning= warning
 - if @cards.present?
   = form_tag("/deck/visualize", method: :post, enforce_utf8: false) do
     %input{type: "hidden", name: "deck", value: @deck}
