@@ -107,10 +107,6 @@ class CardDatabase
     @pack_factory ||= PackFactory.new(self)
   end
 
-  def legacy_pack_factory
-    @legacy_pack_factory ||= LegacyPackFactory.new(self)
-  end
-
   # Excluding unsupported ones
   # It's a very slow method, so memoize, but better just make it fast
   def supported_booster_types
@@ -122,8 +118,20 @@ class CardDatabase
         @supported_booster_types[booster.code] = booster if booster
       end
       @supported_booster_types = @supported_booster_types.sort_by{|c,b| [-b.set.release_date.jd, c]}.to_h
+      initialize_booster_flag
     end
     @supported_booster_types
+  end
+
+  # CardPrinting.in_boosters is only available from this point
+  def initialize_booster_flag
+    @supported_booster_types.each_value do |booster|
+      booster.cards.each do |physical_card|
+        physical_card.parts.each do |card_printing|
+          card_printing.in_boosters = true
+        end
+      end
+    end
   end
 
   # Exclude Arena boosters

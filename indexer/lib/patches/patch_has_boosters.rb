@@ -1,4 +1,5 @@
 class PatchHasBoosters < Patch
+  # Maybe there's a way to do this automatically?
   def included_in_other_boosters
     %W[
       brr
@@ -8,10 +9,10 @@ class PatchHasBoosters < Patch
       mps
       plist
       sis
+      slx
       sta
       sunf
       tsb
-      slx
     ]
   end
 
