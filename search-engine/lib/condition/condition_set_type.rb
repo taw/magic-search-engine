@@ -17,7 +17,7 @@ class ConditionSetType < Condition
   }
 
   def initialize(set_type)
-    set_type = normalize_name(set_type).gsub("_", " ")
+    set_type = normalize_name(set_type).tr("_", " ")
     @set_type = TypeAliases[set_type] || set_type
   end
 

@@ -21,7 +21,7 @@ class PatchHasBoosters < Patch
   end
 
   def booster_files_for(set_code)
-    (Indexer::ROOT + "boosters").glob("#{set_code}*.yaml").map{|s| s.basename(".yaml").to_s.gsub("_", "")}
+    (Indexer::ROOT + "boosters").glob("#{set_code}*.yaml").map{|s| s.basename(".yaml").to_s.delete("_")}
   end
 
   def call

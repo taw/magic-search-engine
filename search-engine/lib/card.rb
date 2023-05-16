@@ -518,7 +518,7 @@ class Card
   end
 
   def count_paperprints
-    @count_paperprints ||= printings.select(&:paper?).size
+    @count_paperprints ||= printings.count(&:paper?)
   end
 
   def count_sets

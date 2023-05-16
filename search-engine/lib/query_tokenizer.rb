@@ -415,7 +415,7 @@ class QueryTokenizer
         tokens << [:test, ConditionTypes.new("*")]
       elsif s.scan(/([^-!<>=:"\s&\/()][^<>=:"\s&\/()]*)(?=$|[\s&\/()])/i)
         # Veil-Cursed and similar silliness
-        tokens << [:test, ConditionWord.new(s[1].gsub("-", " "))]
+        tokens << [:test, ConditionWord.new(s[1].tr("-", " "))]
       else
         # layout:fail, protection: etc.
         s.scan(/(\S+)/i)

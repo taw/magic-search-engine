@@ -34,7 +34,7 @@ describe "Expressions Test" do
   it "prints and sets expressions" do
     card = db.cards["giant spider"]
     assert_search_include "prints=#{card.printings.size}", "Giant Spider"
-    assert_search_include "paperprints=#{card.printings.select(&:paper?).size}", "Giant Spider"
+    assert_search_include "paperprints=#{card.printings.count(&:paper?)}", "Giant Spider"
     assert_search_include "sets=#{card.printings.map(&:set).uniq.size}", "Giant Spider"
     assert_search_include "papersets=#{card.printings.select(&:paper?).map(&:set).uniq.size}", "Giant Spider"
   end

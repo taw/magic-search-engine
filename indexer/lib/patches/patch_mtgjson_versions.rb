@@ -209,7 +209,7 @@ class PatchMtgjsonVersions < Patch
 
       # mtgjson started using * to indicate italics? annoying
       if card["flavor"]
-        card["flavor"] = card["flavor"].gsub("*", "")
+        card["flavor"] = card["flavor"].delete("*")
       end
 
       if card["flavorName"]

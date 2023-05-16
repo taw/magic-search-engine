@@ -193,7 +193,7 @@ module ApplicationHelper
   def format_mana_symbols(syms)
     syms.gsub(/\{(.*?)\}/) do
       sym = $&.upcase
-      mana = $1.gsub("/", "").downcase
+      mana = $1.delete("/").downcase
       if good_mana_symbols.include?(mana)
         if mana[0] == "h"
           %[<span class="mana mana-half"><span class="mana mana-cost mana-#{mana[1..-1]}"><span class="sr-only">#{sym}</span></span></span>]

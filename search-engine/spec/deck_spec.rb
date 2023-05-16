@@ -283,7 +283,7 @@ describe Deck do
       set.decks.each do |deck|
         if deck.type == "Clash Pack"
           foils = deck.physical_cards.select(&:foil)
-          clash_pack_cards = deck.physical_cards.select{|c| c.set_code =~ /\Acp/ }
+          clash_pack_cards = deck.physical_cards.select{|c| c.set_code.start_with?('cp') }
           foils.should match_array(clash_pack_cards)
           next
         end

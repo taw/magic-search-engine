@@ -221,7 +221,7 @@ class BoosterIndexer
 
   def load_data
     BOOSTER_DATA_ROOT.glob("*.yaml").each do |path|
-      basename = path.basename(".yaml").to_s.gsub("_", "")
+      basename = path.basename(".yaml").to_s.delete("_")
       if basename == "common"
         @common = YAML.load_file(path)
       else

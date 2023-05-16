@@ -1,6 +1,6 @@
 class ConditionWord < ConditionSimple
   def initialize(word)
-    @word = normalize_name(word).tr("-", " ").sub(/,\z/, "")
+    @word = normalize_name(word).tr("-", " ").delete_suffix(',')
     @stem_word = @word.gsub(/s\b/, "")
     @suggestions = []
   end
