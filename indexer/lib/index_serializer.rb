@@ -114,7 +114,7 @@ class IndexSerializer
           "border",
           "digital",
           "etched",
-          "exclude_from_boosters",
+          "exclude_from_boosters", # needs to go
           "flavor_name",
           "flavor",
           "foiling",
