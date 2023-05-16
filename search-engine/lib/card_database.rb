@@ -214,7 +214,7 @@ class CardDatabase
       .downcase
       .strip
       .gsub("'s", "")
-      .gsub(",", "")
+      .delete(",")
       .normalize_accents
 
     return possible_decks if deck_query == "*"
@@ -225,14 +225,14 @@ class CardDatabase
     return decks unless decks.empty?
 
     decks = possible_decks.select do |deck|
-      deck.name.downcase.gsub("'s", "").gsub(",", "").normalize_accents == deck_query
+      deck.name.downcase.gsub("'s", "").delete(",").normalize_accents == deck_query
     end
     return decks unless decks.empty?
 
     normalized_query_words = deck_query.split
 
     possible_decks.select do |deck|
-      normalized_words = deck.name.downcase.gsub("'s", "").gsub(",", "").normalize_accents.split
+      normalized_words = deck.name.downcase.gsub("'s", "").delete(",").normalize_accents.split
       normalized_query_words.all?{|qw| normalized_words.include?(qw)}
     end
   end

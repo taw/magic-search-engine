@@ -5,7 +5,7 @@ describe "Formats - Block Constructed" do
   describe "Block legal sets" do
     let(:start_date) { db.sets["ice"].release_date }
     let(:end_date) { db.sets["rix"].release_date }
-    let(:block_formats) { Format.formats_index.select{|k,v| k =~ /block\z/}.values.uniq }
+    let(:block_formats) { Format.formats_index.select{|k,v| k.end_with?('block')}.values.uniq }
     let(:expansion_sets) { db.sets.values.select{|s| s.types.include?("expansion") } }
     let(:expected) { expansion_sets.select{|s| s.release_date >= start_date and s.release_date <= end_date and s.code != "hml" }.map(&:code).to_set }
     let(:actual) { block_formats.map{|f| f.new.included_sets.to_a }.flatten.to_set }
