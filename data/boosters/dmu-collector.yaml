@@ -51,7 +51,7 @@ sheets:
     use: uncommon_showcase
     count: 20
   extended_rare_mythic:
-    filter: "(e:dmu or e:dmc) frame:extendedart"
+    filter: "(e:dmu or e:dmc) frame:extendedart -promo:buyabox"
     use: rare_mythic
     count: 71
   lost_legends:
@@ -59,7 +59,7 @@ sheets:
     code: "LL"
   foil_alt_border_rare_mythic:
     foil: true
-    filter: "e:dmu promo:boosterfun -is:foilonly"
+    filter: "e:dmu promo:boosterfun -is:foilonly number<=430"
     use: rare_mythic
     count: 76
   retold_uncommon:
@@ -75,7 +75,7 @@ sheets:
     use: rare_mythic
     count: 15
   showcase_rare_mythic:
-    filter: "(e:dmu promo:boosterfun -is:foilonly -frame:extendedart) or (e:dmc number:29-48)"
+    filter: "(e:dmu promo:boosterfun -is:foilonly -frame:extendedart number<=430) or (e:dmc number:29-48)"
     use: rare_mythic
     count: 46
   textured_foil:
