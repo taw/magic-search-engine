@@ -19,7 +19,7 @@ sheets:
     filter: "(e:khm t:saga) or (e:khm number:374-393) or (e:khc number<=16)"
     use: rare_mythic
   extended_art:
-    filter: "e:khm frame:extendedart"
+    filter: "e:khm frame:extendedart -promo:buyabox"
     use: rare_mythic
   foil_alt_frame_rare_mythic:
     foil: true

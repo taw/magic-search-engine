@@ -51,7 +51,7 @@ sheets:
     use: uncommon_showcase
     count: 20
   extended_rare_mythic:
-    filter: "(e:dmu or e:dmc) frame:extendedart"
+    filter: "(e:dmu or e:dmc) frame:extendedart -promo:buyabox"
     use: rare_mythic
     count: 71
   lost_legends:
