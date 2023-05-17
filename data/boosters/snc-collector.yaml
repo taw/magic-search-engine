@@ -61,6 +61,7 @@ sheets:
     use: rare_mythic
     count: 9
   foil_rare_mythic_showcase:
+    foil: true
     any:
     - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly is:paper is:triome"
       rate: 2
