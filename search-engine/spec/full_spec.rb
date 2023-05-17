@@ -389,8 +389,10 @@ describe "Full Database Test" do
   end
 
   it "is:buyabox" do
-    assert_search_include "is:buyabox", "Nexus of Fate"
-    assert_search_results "is:buyabox is:booster"
+    assert_search_include "is:buyabox", "Nexus of Fate", "Flusterstorm"
+    # They started putting nonfoil buyabox cards in Collector Boosters,
+    # they even still say "buy a box" on the card
+    # assert_search_results "is:buyabox is:booster"
   end
 
   # Some are not amazing

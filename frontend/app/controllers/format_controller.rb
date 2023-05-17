@@ -7,7 +7,7 @@ class FormatController < ApplicationController
   end
 
   def show
-    @format = Format[params[:id].gsub("-", " ")].new
+    @format = Format[params[:id].tr("-", " ")].new
     if @format.format_pretty_name == "Unknown"
       render_404
       return

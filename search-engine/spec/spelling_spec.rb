@@ -103,8 +103,8 @@ describe "Spelling" do
       next if name == "Death-Greeter's Champion"
 
       name.should return_cards(name)
-      name.gsub("-", "").should return_cards(name)
-      name.gsub("-", " ").should include_cards(name)
+      name.delete("-").should return_cards(name)
+      name.tr("-", " ").should include_cards(name)
     end
   end
 

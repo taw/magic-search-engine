@@ -55,7 +55,7 @@ describe PackFactory do
       s.types.include?("core") or s.types.include?("expansion")
     }.to_set }
     let(:expected_official) {
-      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2 dbl clb 2x2 unf dmr]
+      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2 dbl clb 2x2 unf dmr sir]
     }
     let(:expected_mtgjson_variant) {
       ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "mb1", "ons", "gpt", "ala", "jmp", "j22"]
@@ -68,48 +68,10 @@ describe PackFactory do
     }
     let(:sets_with_boosters) { db.sets.values.select(&:has_boosters?) }
     let(:sets_with_nonbooster_cards) {
-      sets_with_boosters.select{|set| set.printings.any?(&:exclude_from_boosters?) }.map(&:code)
+      sets_with_boosters.select{|set| set.printings.any?{|x| !x.in_boosters?} }.map(&:code)
     }
     it do
       sets_with_nonbooster_cards.should match_array expected
-    end
-  end
-
-  # These rely on in_booster? flag which is no longer accurate
-  let(:only_foil_basics_in_boosters) { ["mmq", "inv", "ody", "ons", "mrd", "chk", "rav", "lrw", "shm"] }
-  it "Every card can appear in a pack" do
-    db.sets.each do |set_code, set|
-      # Some sets don't follow these rules
-      # They should have own tests
-      next if %W[dgm unh jou frf tsp cn2 bbd war arn cmb1 cmb2 stx unf].include?(set_code)
-      set_pp = "#{set.name} [#{set.code}]"
-      pack = factory.for(set_code)
-      next unless pack
-      if only_foil_basics_in_boosters.include?(set_code)
-        basics, rest = set.physical_cards_in_boosters.partition{|c| c.main_front.types.include?("basic") }
-        basics.should_not be_empty
-        pack.nonfoil_cards.should match_array(rest),
-          "All cards in #{set_pp} should be possible in its packs as nonfoil except basics"
-      else
-        pack.nonfoil_cards.should include(*set.physical_cards_in_boosters),
-          "All cards in #{set_pp} should be possible in its packs as nonfoil"
-      end
-    end
-  end
-
-  it "Every set with foils has all cards available as foils" do
-    db.sets.each do |set_code, set|
-      # Some sets don't follow these rules
-      # They should have own tests
-      next if %W[tsp cn2 bbd war mb1 bro unf].include?(set_code)
-      set_pp = "#{set.name} [#{set.code}]"
-      pack = factory.for(set_code)
-      next unless pack
-      next unless pack.has_foils?
-      actual_cards = pack.foil_cards.select{|c| !c.set.types.include?("masterpiece") }
-      expected_cards = set.physical_cards_in_boosters(true)
-      actual_cards.sort.should include(*expected_cards.sort),
-        "All cards in #{set_pp} should be possible in its packs as foil"
     end
   end
 

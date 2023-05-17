@@ -3,6 +3,10 @@ class SealedController < ApplicationController
   def index
     counts = params[:count].to_a.map(&:to_i)
     set_codes = params[:set].to_a
+    @fixed = params[:fixed]
+    @warnings = []
+
+    parse_fixed
 
     @packs_to_open = set_codes.zip(counts)
     packs_requested = !@packs_to_open.empty?
@@ -16,7 +20,7 @@ class SealedController < ApplicationController
     @packs_to_open << [most_recent_booster_type, 0] while @packs_to_open.size < 3
 
     if packs_requested
-      @cards = []
+      @cards = @fixed_cards.dup
       factory = PackFactory.new($CardDatabase)
       @packs_to_open.each do |set_code, count|
         next unless set_code and count and count > 0
@@ -42,5 +46,37 @@ class SealedController < ApplicationController
     end
 
     @title = "Sealed"
+  end
+
+  # This is very hacky
+  private def parse_fixed
+    @fixed_cards = []
+    (params[:fixed] || "").lines.grep(/\S/).map(&:strip).each do |line|
+      case line
+      when /\A(\d+)\s*x?\s*(.*[:\/].*)/i
+        count = $1.to_i
+        set_code, card_number, foil = $2.downcase.split(/\s*[:\/]\s*/, 3)
+      when /\A(.*[:\/].*)/i
+        count = 1
+        set_code, card_number, foil = line.downcase.split(/\s*[:\/]\s*/, 3)
+      else
+        @warnings << "Invalid line: #{line}"
+        next
+      end
+      set = $CardDatabase.sets[set_code]
+      unless set
+        @warnings << "Cannot find set with code: #{set_code} for line: #{line}"
+        next
+      end
+      card = set.printings.find{|c| c.number.downcase == card_number }
+      unless card
+        @warnings << "Cannot find card set with number #{card_number} in set #{set_code} for line: #{line}"
+        next
+      end
+      physical_card = PhysicalCard.for(card, foil == "foil")
+      count.times do
+        @fixed_cards.push(physical_card)
+      end
+    end
   end
 end

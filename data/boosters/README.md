@@ -211,6 +211,12 @@ An example from [znr-set.yaml](znr-set.yaml) to define The List cards:
     code: "ZNR"
 ```
 
+#### Queries to avoid
+
+Do not use `is:booster` or `booster:` in your queries, as they're calculated from booster data, so it will not be present yet during booster calculations.
+
+All other queries are fine to use.
+
 ## Troubleshooting and Debugging
 
 Once you've built a YAML file, the indexing tools need to be executed to properly incorporate that new booster into the program.

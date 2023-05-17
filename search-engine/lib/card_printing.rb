@@ -11,7 +11,7 @@ class CardPrinting
   attr_reader :release_date_i, :number_i
 
   # Set by CardDatabase initialization
-  attr_accessor :others, :artist, :default_sort_index, :partner
+  attr_accessor :others, :artist, :default_sort_index, :partner, :in_boosters
 
   def initialize(card, set, data)
     @card = card
@@ -69,6 +69,9 @@ class CardPrinting
     # Performance cache
     @stemmed_name = @card.stemmed_name
     @set_code = @set.code
+
+    # Initialized after boosters are loaded
+    @in_boosters = false
   end
 
   def arena?
@@ -92,11 +95,7 @@ class CardPrinting
   end
 
   def in_boosters?
-    (@set.has_boosters? or @set.in_other_boosters?) and !@exclude_from_boosters
-  end
-
-  def exclude_from_boosters?
-    !!@exclude_from_boosters
+    @in_boosters
   end
 
   def rarity

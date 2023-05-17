@@ -61,7 +61,7 @@ class PatchReconcileForeignNames < Patch
           warn "Foreign data entry without name"
           next
         end
-        foreign_name = name.gsub("&nbsp;", " ").gsub("\u00a0", " ").sub(/ —\z/, "").gsub("\ufeff", "")
+        foreign_name = name.gsub("&nbsp;", " ").tr("\u00a0", " ").sub(/ —\z/, "").delete("\ufeff")
         next if foreign_name == ""
         raw_data[language_code] ||= {}
         raw_data[language_code][foreign_name] ||= []

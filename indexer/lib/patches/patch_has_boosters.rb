@@ -1,4 +1,5 @@
 class PatchHasBoosters < Patch
+  # Maybe there's a way to do this automatically?
   def included_in_other_boosters
     %W[
       brr
@@ -8,10 +9,10 @@ class PatchHasBoosters < Patch
       mps
       plist
       sis
+      slx
       sta
       sunf
       tsb
-      slx
     ]
   end
 
@@ -20,7 +21,7 @@ class PatchHasBoosters < Patch
   end
 
   def booster_files_for(set_code)
-    (Indexer::ROOT + "boosters").glob("#{set_code}*.yaml").map{|s| s.basename(".yaml").to_s.gsub("_", "")}
+    (Indexer::ROOT + "boosters").glob("#{set_code}*.yaml").map{|s| s.basename(".yaml").to_s.delete("_")}
   end
 
   def call
