@@ -49,8 +49,8 @@ class PackFactory
     count = data.delete("count") if data.has_key?("count")
     fixed = data.delete("fixed") if data.has_key?("fixed")
 
-    if balanced and duplicates
-      raise_sheet_error "Balanced and duplicates are mutually exclusive"
+    if [balanced, duplicates, fixed].count(&:itself) > 1
+      raise_sheet_error "Sheet types are mutually exclusive"
     elsif balanced
       kind = ColorBalancedCardSheet
     elsif duplicates
