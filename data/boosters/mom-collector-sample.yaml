@@ -1,0 +1,20 @@
+# data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine
+# Assume that foil rate is 1/3 to match traditional draft boosters
+name: "March of the Machine Collector Booster Sample Pack"
+pack:
+  showcase_rare_mythic:
+  - nonfoil_rare_mythic: 1
+    chance: 2
+  - foil_rare_mythic: 1
+    chance: 1
+  foil_uncommon_mul: 1
+sheets:
+  nonfoil_rare_mythic:
+    filter: "(e:mul number<=50) or (e:mom promo:boosterfun -is:foilonly) or (e:moc promo:boosterfun -promo:prerelease)"
+    use: rare_mythic
+  foil_rare_mythic:
+    foil: true
+    use: nonfoil_rare_mythic
+  foil_uncommon_mul:
+    rawquery: "e:mul r:u number<=50"
+    foil: true

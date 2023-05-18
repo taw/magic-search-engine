@@ -3,7 +3,11 @@ class FixedCardSheet < CardSheet
   # weight [1] and [2] are completely different
   def initialize(elements, weights=nil)
     @elements = elements
-    @weights = weights
+    if weights.nil?
+      @weights = @elements.map { |card| 1 }
+    else
+      @weights = weights
+    end
     @total_weight = @weights.sum
   end
 

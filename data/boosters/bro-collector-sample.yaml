@@ -1,0 +1,24 @@
+# Data from https://magic.wizards.com/en/news/feature/whats-inside-the-brothers-war-boosters
+# Assume foil rate is 1/3 to match draft boosters
+name: "The Brothers' War Collector Booster Sample Pack"
+pack:
+  showcase_rare_mythic:
+  - nonfoil_rare_mythic: 1
+    chance: 2
+  - foil_rare_mythic: 1
+    chance: 1
+  foil_uncommon_retro_artifact: 1
+sheets:
+  nonfoil_rare_mythic:
+    filter: "(e:bro promo:boosterfun) or (e:brc promo:boosterfun) or (e:brr -number:/z/ number<=63)"
+    use: rare_mythic
+  foil_rare_mythic:
+    foil: true
+    use: nonfoil_rare_mythic
+  foil_uncommon_retro_artifact:
+    foil: true
+    any:
+    - rawquery: "e:brr number<=63 -number:/z/ r:u"
+      rate: 5
+    - rawquery: "e:brr number>63 -number:/z/ r:u"
+      rate: 1

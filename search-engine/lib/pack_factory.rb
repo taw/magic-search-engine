@@ -41,11 +41,13 @@ class PackFactory
     foil = false
     balanced = false
     coout = nil
+    fixed = false
 
     foil = data.delete("foil") if data.has_key?("foil")
     balanced = data.delete("balanced") if data.has_key?("balanced")
     duplicates = data.delete("duplicates") if data.has_key?("duplicates")
     count = data.delete("count") if data.has_key?("count")
+    fixed = data.delete("fixed") if data.has_key?("fixed")
 
     if balanced and duplicates
       raise_sheet_error "Balanced and duplicates are mutually exclusive"
@@ -53,6 +55,8 @@ class PackFactory
       kind = ColorBalancedCardSheet
     elsif duplicates
       kind = CardSheetWithDuplicates
+    elsif fixed
+      kind = FixedCardSheet
     else
       kind = CardSheet
     end
