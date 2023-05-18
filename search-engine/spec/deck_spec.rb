@@ -276,6 +276,8 @@ describe Deck do
       next if set_code == "phed"
       # PCTB is weird as well
       next if set_code == "pctb"
+      # Not decks, just boxesd products
+      next if set_code == "sld"
 
       # Some crazy foiling in them
       # Deck indexer doesn't even try, it's just marked on decklist manually
