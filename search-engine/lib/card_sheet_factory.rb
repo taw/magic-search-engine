@@ -28,9 +28,10 @@ class CardSheetFactory
     else
       base_query += " is:nonfoil"
     end
-    cards = @db.search("#{base_query} (#{query})").printings.map{|c| PhysicalCard.for(c, foil)}.uniq
+    full_query = "#{base_query} (#{query})"
+    cards = @db.search(full_query).printings.map{|c| PhysicalCard.for(c, foil)}.uniq
     if assert_count and assert_count != cards.size
-      warn "Expected query #{query} to return #{assert_count}, got #{cards.size}"
+      warn "Expected query #{full_query} to return #{assert_count}, got #{cards.size}"
     end
     cards
   end
