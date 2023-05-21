@@ -10,7 +10,7 @@ pack:
   foil_common_uncommon_showcase: 1
 sheets:
   nonfoil_rare_mythic_showcase:
-    filter: "(e:one promo:boosterfun -is:foilonly) or (e:onc promo:boosterfun) or promo:concept"
+    filter: "(e:one promo:boosterfun -is:foilonly) or (e:onc promo:boosterfun) or (promo:concept -promo:stepandcompleat)"
     use: rare_mythic
   foil_rare_mythic_showcase:
     foil: true
