@@ -1,0 +1,22 @@
+# Data from https://wpn.wizards.com/en/products/march-of-the-machine
+pack:
+  bonus_mythic:
+  - promo_teamup: 1
+    chance: 9
+  - promo_teamup_foil: 1
+    chance: 2
+  prerelease_promo: 1
+sheets:
+  promo_teamup:
+    any:
+    - rawquery: "e:moc promo:prerelease -frame:showcase"
+      chance: 2
+    - rawquery: "e:moc promo:prerelease frame:showcase"
+      chance: 1
+  promo_teamup_foil:
+    foil: true
+    use: promo_teamup
+  prerelease_promo:
+    filter: "e:pmom promo:prerelease"
+    use: rare_mythic
+    foil: true
