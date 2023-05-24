@@ -58,6 +58,8 @@ describe Deck do
       # Non-decks, this needs to be sorted out at some point
       ["box", "Box"],
       ["box", "Secret Lair Drop"],
+      ["core", "Welcome Booster"],
+      ["expansion", "Welcome Booster"],
     ]
 
     db.sets.each do |set_code, set|
@@ -276,7 +278,7 @@ describe Deck do
       next if set_code == "phed"
       # PCTB is weird as well
       next if set_code == "pctb"
-      # Not decks, just boxesd products
+      # Not decks, just boxed products
       next if set_code == "sld"
 
       # Some crazy foiling in them
@@ -296,6 +298,8 @@ describe Deck do
 
         # Some have foil basics
         next if deck.type == "Jumpstart"
+        # Box not deck
+        next if deck.type == "Welcome Booster"
 
         foils = deck.physical_cards.select(&:foil)
         # Skip if no foils
