@@ -19,12 +19,12 @@ module ApplicationHelper
     )
   end
 
+  def link_to_query(query, &blk)
+    link_to(controller: "card", action: "index", q: query, &blk)
+  end
+
   def link_to_card_name(card_name, &blk)
-    link_to(
-      controller: "card",
-      action: "index",
-      q: "!#{card_name}",
-      &blk)
+    link_to(controller: "card", action: "index",  q: "!#{card_name}", &blk)
   end
 
   def link_to_set(set, &blk)
@@ -268,5 +268,9 @@ module ApplicationHelper
 
   def preview_id(card)
     [card.set_code, card.number, card.foil ? "foil" : nil].compact.join("-")
+  end
+
+  def format_display(text)
+    text.gsub(/(\[(.*?):(.*?)\])/) { link_to_query("e:#{$2} number:#{$3} ++") { $1 } }.html_safe
   end
 end
