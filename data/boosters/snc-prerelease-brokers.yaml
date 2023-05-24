@@ -1,0 +1,22 @@
+# Data from https://magic.gg/news/streets-of-new-capenna-prerelease-primer
+name: "Streets of New Capenna Seeded Prerelease Pack Brokers"
+filter: "e:{set} id<=bant (w:Brokers or -w:*) number<=set"
+pack:
+  intro_set: 2
+  land: 1
+  common: 8
+  uncommon: 3
+  rare_mythic: 1
+  prerelease_promo: 1
+sheets:
+  intro_set:
+    fixed: true
+    query: "(t:land id:0) or (r:c c:3)"
+  land:
+    query: "t:land id:2"
+  common:
+    query: "r:c -t:land -(r:c c:3)"
+  prerelease_promo:
+    filter: "e:psnc promo:prerelease"
+    use: rare_mythic
+    foil: true

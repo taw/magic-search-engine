@@ -1,4 +1,4 @@
-# Data from https://magic.wizards.com/en/news/feature/dominaria-united-product-overview-2022-08-18
+# Data from https://magic.wizards.com/en/news/feature/streets-of-new-capenna-product-overview-2022-04-07
 # Assume foil rate is 1/3 to match draft boosters
 pack:
   showcase_rare_mythic:
@@ -9,11 +9,12 @@ pack:
   foil_uncommon_showcase: 1
 sheets:
   nonfoil_rare_mythic:
-    filter: "(e:dmu promo:boosterfun -is:foilonly -promo:concept) or (e:dmc promo:boosterfun -is:foilonly)"
+    filter: "(e:snc promo:boosterfun -is:foilonly -promo:concept) or (e:ncc promo:boosterfun -is:foilonly)"
     use: rare_mythic
   foil_rare_mythic:
     foil: true
     use: nonfoil_rare_mythic
   foil_uncommon_showcase:
-    rawquery: "e:dmu frame:showcase r:u"
+    filter: "e:snc frame:showcase -is:foilonly"
     foil: true
+    use: common_uncommon
