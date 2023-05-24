@@ -1,6 +1,5 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-phyrexia-all-will-be-one
 # Assume that foil rate is 1/3 to match draft booster rate
-name: "Phyrexia All Will Be One Collector Booster Sample Pack"
 pack:
   showcase_rare_mythic:
   - nonfoil_rare_mythic_showcase: 1
@@ -10,7 +9,7 @@ pack:
   foil_common_uncommon_showcase: 1
 sheets:
   nonfoil_rare_mythic_showcase:
-    filter: "(e:one promo:boosterfun -is:foilonly) or (e:onc promo:boosterfun) or promo:concept"
+    filter: "(e:one promo:boosterfun -is:foilonly) or (e:onc promo:boosterfun) or (promo:concept -promo:stepandcompleat)"
     use: rare_mythic
   foil_rare_mythic_showcase:
     foil: true
