@@ -21,6 +21,7 @@ BanList.for_format("mtgo commander") do
     "Edric, Spymaster of Trest" => "banned",
     "Entomb" => "banned",
     "Erayo, Soratami Ascendant" => "banned",
+    "Erayo's Essence" => "banned",
     "Falling Star" => "banned",
     "Fastbond" => "banned",
     "Food Chain" => "banned",
