@@ -848,6 +848,7 @@ describe "Banlist" do
       "Derevi, Empyrial Tactician",
       "Edric, Spymaster of Trest",
       "Erayo, Soratami Ascendant",
+      "Erayo's Essence",
       "Griselbrand",
       "Rofellos, Llanowar Emissary",
       "Yisan, the Wanderer Bard",

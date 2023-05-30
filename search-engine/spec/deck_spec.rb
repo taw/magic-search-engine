@@ -55,6 +55,9 @@ describe Deck do
       ["memorabilia", "Pro Tour Deck"], # PTC
       ["expansion", "Jumpstart"],
       ["standard", "Arena Starter Kit"],
+      ["standard", "Arena Starter Deck"],
+      ["standard", "Arena Promotional Deck"],
+      ["starter", "Arena Starter Deck"],
       # Non-decks, this needs to be sorted out at some point
       ["box", "Box"],
       ["box", "Secret Lair Drop"],
