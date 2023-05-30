@@ -187,4 +187,15 @@ BanList.for_format("standard") do
     "https://magic.wizards.com/en/articles/archive/news/october-10-2022-banned-and-restricted-announcement",
     "The Meathook Massacre" => "banned",
   )
+
+  change(
+    "2023-05-29",
+    "https://magic.wizards.com/en/news/announcements/may-29-2023-banned-and-restricted-announcement",
+    # we need to list front and back due to silly issues like partially-legal meld cards
+    # (Penny Dreadful had some)
+    "Fable of the Mirror-Breaker" => "banned",
+    "Reflection of Kiki-Jiki" => "banned",
+    "Invoke Despair" => "banned",
+    "Reckoner Bankbuster" => "banned",
+  )
 end

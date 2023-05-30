@@ -10,6 +10,10 @@ describe "Formats" do
       %[
         e:mid,vow,neo,snc,dmu,bro,one,mom,mat
         -(The Meathook Massacre)
+        -(Invoke Despair)
+        -(Fable of the Mirror-Breaker)
+        -(Reflection of Kiki-Jiki)
+        -(Reckoner Bankbuster)
       ]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
