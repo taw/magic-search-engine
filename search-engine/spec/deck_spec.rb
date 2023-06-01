@@ -60,9 +60,10 @@ describe Deck do
       ["starter", "Arena Starter Deck"],
       # Non-decks, this needs to be sorted out at some point
       ["box", "Box"],
-      ["box", "Secret Lair Drop"],
+      ["sld", "Secret Lair Drop"],
       ["core", "Welcome Booster"],
       ["expansion", "Welcome Booster"],
+      ["commander", "Box Set"],
     ]
 
     db.sets.each do |set_code, set|
