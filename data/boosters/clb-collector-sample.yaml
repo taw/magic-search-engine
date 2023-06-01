@@ -1,0 +1,20 @@
+# Data from https://magic.wizards.com/en/news/feature/commander-legends-battle-for-baldurs-gate-product-overview
+name: "Commander Legends Battle for Baldurs Gate Collector Booster Sample Pack"
+pack:
+  rare_mythic:
+  - showcase_rare_mythic: 1
+    chance: 4
+  - foil_showcase_rare_mythic: 1
+    chance: 1
+  foil_showcase_common_uncommon: 1
+sheets:
+  showcase_rare_mythic:
+    filter: "e:clb promo:boosterfun -is:foilonly"
+    use: rare_mythic
+  foil_showcase_rare_mythic:
+    foil: true
+    filter: "e:clb promo:boosterfun -is:foilonly"
+    use: rare_mythic
+  foil_showcase_common_uncommon:
+    filter: "e:clb promo:boosterfun -is:foilonly"
+    use: common_uncommon
