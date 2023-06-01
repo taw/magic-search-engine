@@ -35,6 +35,7 @@ describe "Sets" do
       "premiere shop",
       "premium deck",
       "promo",
+      "sld",
       "spellbook",
       "standard",
       "starter",
