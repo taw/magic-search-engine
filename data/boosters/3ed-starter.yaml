@@ -1,16 +1,15 @@
 # Data from https://www.trollandtoad.com/magic-the-gathering/magic-the-gathering-sealed-product/revised-starter-deck-mtg-/87558#:~:text=Revised%20contains%20306%20new%20cards,%2C%20Tundra%2C%20and%20Tropical%20Island.
 name: "Revised Starter Deck"
 pack:
-  common: 45
-  uncommon: 13
+  common_with_duplicates: 45
+  uncommon_with_duplicates: 13
   rare: 2
 sheets:
-  common:
+  common_with_duplicates:
     duplicates: true
     code: "C"
-  uncommon:
+  uncommon_with_duplicates:
     duplicates: true
     code: "U"
   rare:
-    duplicates: true
     code: "R"
