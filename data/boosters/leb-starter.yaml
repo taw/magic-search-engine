@@ -1,13 +1,15 @@
 # Need to assume that LEB/LEA use the same distribution as 2ed
 name: "{set_name} Starter Deck"
 pack:
-  common: 45
-  uncommon: 13
+  common_with_duplicates: 45
+  uncommon_with_duplicates: 13
   rare: 2
 sheets:
-  common:
+  common_with_duplicates:
+    duplicates: true
     code: "C"
-  uncommon:
+  uncommon_with_duplicates:
+    duplicates: true
     code: "U"
   rare:
     code: "R"
