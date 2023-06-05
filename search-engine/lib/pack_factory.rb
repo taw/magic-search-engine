@@ -64,9 +64,8 @@ class PackFactory
     case data.keys
     when ["code"]
       raise_sheet_error "No balanced support for code" if balanced
-      raise_sheet_error "No duplicates support for code" if duplicates
       parts = data["code"].split("/", 2)
-      @sheet_factory.explicit_sheet(parts[0], parts[1], foil: foil, count: count)
+      @sheet_factory.explicit_sheet(parts[0], parts[1], foil: foil, count: count, kind: kind)
     when ["query"]
       @sheet_factory.from_query(data["query"], count, foil: foil, kind: kind)
     when ["any"]
