@@ -1,11 +1,17 @@
 # Data from https://mtg.fandom.com/wiki/Fourth_Edition
 name: "Fourth Edition Starter Deck"
 pack:
-  common: 26
-  uncommon: 9
+  common_with_duplicates: 26
+  uncommon_with_duplicates: 9
   rare: 3
   basic: 22
 sheets:
   basic:
     duplicates: true
     query: "r:b"
+  common_with_duplicates:
+    query: "r:c"
+    duplicates: true
+  uncommon_with_duplicates:
+    query: "r:u"
+    duplicates: true

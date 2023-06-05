@@ -1,17 +1,18 @@
-# Data from https://www.trollandtoad.com/magic-the-gathering/magic-the-gathering-sealed-product/6th-edition-sixth-edition-tournament-pack-mtg-/94542
-name: "Sixth Edition Tournament Deck"
+# Data from https://mtg.fandom.com/wiki/Tournament_pack
+name: "{set_name} Tournament Pack"
 pack:
+  basics: 30
   common_with_duplicates: 32
   uncommon_with_duplicates: 10
   rare: 3
-  basic: 30
 sheets:
-  basic:
-    duplicates: true
+  basics:
     query: "r:b"
+    duplicates: true
   common_with_duplicates:
     query: "r:c"
     duplicates: true
   uncommon_with_duplicates:
     query: "r:u"
     duplicates: true
+  
