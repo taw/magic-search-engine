@@ -42,6 +42,7 @@ describe "Regexp" do
       "Ajani, Mentor of Heroes",
       "As Luck Would Have It",
       "Battle of Wits",
+      "Bilbo, Birthday Celebrant",
       "Celebr-8000",
       "Helix Pinnacle",
       "Mox Lotus",
