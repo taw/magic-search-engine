@@ -1,6 +1,7 @@
 describe Deck do
   include_context "db"
 
+  # This is getting out of hand, and nseeds some cleanup
   it "each set has correct decks" do
     allowed_combinations = [
       # Completely unique types
@@ -29,6 +30,7 @@ describe Deck do
       ["core", "Planeswalker Deck"],
       ["core", "Welcome Deck"],
       ["expansion", "Advanced Deck"],
+      ["core", "Advanced Pack"],
       ["expansion", "Basic Deck"],
       ["expansion", "Clash Pack"],
       ["expansion", "Event Deck"],
@@ -50,6 +52,7 @@ describe Deck do
       ["box", "Commander Deck"], # MTGO
       ["core", "Spellslinger Starter Kit"],
       ["funny", "Halfdeck"],
+      ["standard", "Halfdeck"],
       ["draft innovation", "Jumpstart"], # JMP only
       ["memorabilia", "World Championship Deck"], # WCxx
       ["memorabilia", "Pro Tour Deck"], # PTC
@@ -64,6 +67,8 @@ describe Deck do
       ["core", "Welcome Booster"],
       ["expansion", "Welcome Booster"],
       ["commander", "Box Set"],
+      ["standard", "Box Set"],
+      ["fixed", "Box Set"],
     ]
 
     db.sets.each do |set_code, set|
