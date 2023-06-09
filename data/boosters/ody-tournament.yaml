@@ -1,0 +1,17 @@
+# Data from https://mtg.fandom.com/wiki/Tournament_pack
+name: "{set_name} Tournament Pack"
+pack:
+  basics: 30
+  common_with_duplicates: 32
+  uncommon_with_duplicates: 10
+  rare: 3
+sheets:
+  basics:
+    query: "r:b"
+    duplicates: true
+  common_with_duplicates:
+    query: "r:c"
+    duplicates: true
+  uncommon_with_duplicates:
+    query: "r:u"
+    duplicates: true
