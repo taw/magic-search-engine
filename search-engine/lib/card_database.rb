@@ -38,7 +38,7 @@ end
 
 class String
   def normalize_accents
-    result = gsub("Æ", "Ae").gsub("æ", "ae").tr("ĆćÄàáâäãèéêíõöúûüǵŠšñ’\u2212", "CcAaaaaaeeeioouuugSsn'-")
+    result = gsub("Æ", "Ae").gsub("æ", "ae").tr("ĆćÄÉÑÓàáâäãèéêíõöóúûüǵŠšñ’\u2212", "CcAENOaaaaaeeeiooouuugSsn'-")
     result = self if result == self # Memory saving trick
     -result
   end
