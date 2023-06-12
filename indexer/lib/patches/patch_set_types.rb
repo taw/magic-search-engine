@@ -18,7 +18,7 @@ class PatchSetTypes < Patch
         set_types << "jumpstart"
       when "bbd"
         set_types << "two-headed giant" << "multiplayer"
-      when "mh1", "mh2"
+      when "mh1", "mh2", "ltr"
         set_types << "modern"
       when "cns", "cn2"
         set_types << "conspiracy" << "multiplayer"
