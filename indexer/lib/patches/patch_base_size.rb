@@ -13,6 +13,7 @@ class PatchBaseSize < Patch
       "dmr" => 261,
       "one" => 271,
       "onc" => 28,
+      "ltr" => 281, # not printed, "Set size	281 + 170"
     }
 
     sizes.each do |code, size|
