@@ -1,0 +1,147 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-the-lord-of-the-rings-tales-of-middle-earth
+pack:
+  foil_common: 3
+  the_rings:
+  - foil_common: 1
+    chance: 2366779 # This number is based on a 7.5% chance to pull any sol ring
+  - nonfoil_sol_ring: 1
+    chance: 190000
+  - serialized_sol_ring: 1
+    chance: 1900
+  - the_one_ring: 1
+    chance: 1
+  foil_uncommon: 2
+  foil_basic: 1
+  foil_rare_mythic: 1
+  extended_core_rare_mythic: 1
+  extended_jump_starter_rare_mythic: 1
+  uncommon_showcase: 1
+  rare_mythic_showcase: 1
+  borderless_scene: 1
+  foil_uncommon_showcase: 1
+  finale:
+  - foil_rare_mythic_showcase: 1
+    chance: 992
+  - surge_relic: 1
+    chance: 8
+sheets:
+  foil_uncommon:
+    foil: true
+    query: "r:u -Nazgul"
+  foil_basic:
+    foil: true
+    query: "r:b is:fullart"
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  extended_core_rare_mythic:
+    filter: "e:{set} frame:extendedart alt:(e:{set} number<=set)"
+    use: rare_mythic
+  extended_jump_starter_rare_mythic:
+    filter: "frame:extendedart ((e:{set} -alt:(e:{set} number<=set)) or (e:ltc))"
+    use: rare_mythic
+  uncommon_showcase:
+    any:
+    - rawquery: "e:{set} r:u frame:showcase -(Denethor, Ruling Steward)"
+      chance: 91
+    - rawquery: "e:{set} Nazgul"
+      chance: 9
+  rare_mythic_showcase:
+    any:
+    - rawquery: "e:{set} r:r promo:boosterfun frame:showcase alt:(is:borderless -frame:showcase) -is:foilonly"
+      rate: 2
+    - rawquery: "e:{set} r:r promo:boosterfun frame:showcase -alt:(is:borderless -frame:showcase)"
+      rate: 4
+    - rawquery: "e:{set} r:m promo:boosterfun frame:showcase alt:(is:borderless -frame:showcase) -is:foilonly"
+      rate: 1
+    - rawquery: "e:{set} r:m promo:boosterfun frame:showcase -alt:(is:borderless -frame:showcase)"
+      rate: 2
+    - rawquery: "e:{set} r:r number:340-345 alt:number:399-451"
+      rate: 2
+    - rawquery: "e:{set} r:r number:340-345 -alt:number:399-451"
+      rate: 4
+    - rawquery: "e:{set} r:m number:340-345"
+      rate: 2
+    - rawquery: "e:ltc number:348-377"
+      rate: 2
+  borderless_scene:
+    filter: "e:{set} number:399-451"
+    any:
+    - query: "r:c -alt:frame:showcase"
+      rate: 16
+    - query: "r:u -alt:frame:showcase"
+      rate: 8
+    - query: "r:r -alt:(frame:showcase or t:land)"
+      rate: 4
+    - query: "r:m -alt:frame:showcase"
+      rate: 2
+    - query: "r:c alt:frame:showcase"
+      rate: 8
+    - query: "r:u alt:frame:showcase"
+      rate: 4
+    - query: "r:r alt:(frame:showcase or t:land)"
+      rate: 2
+    - query: "r:m alt:frame:showcase"
+      rate: 1
+  foil_uncommon_showcase:
+    foil: true
+    any:
+    - rawquery: "e:{set} r:u frame:showcase -(Denethor, Ruling Steward)"
+      chance: 233
+    - rawquery: "e:{set} r:c number:399-451"
+      chance: 418
+    - rawquery: "e:{set} r:u number:399-451"
+      chance: 326
+    - rawquery: "e:{set} Nazgul"
+      chance: 23
+  nonfoil_sol_ring:
+    any:
+    - rawquery: "e:ltc number:410"
+      chance: 9
+    - rawquery: "e:ltc number:409"
+      chance: 7
+    - rawquery: "e:ltc number:408"
+      chance: 3
+  serialized_sol_ring: # This currently doesn't work so just using the nonfoil sol rings
+    #foil: true
+    any:
+    - rawquery: "e:ltc number:410"
+      chance: 9
+    - rawquery: "e:ltc number:409"
+      chance: 7
+    - rawquery: "e:ltc number:408"
+      chance: 3
+  the_one_ring:
+    foil: true
+    rawquery: "e:{set} number:0"
+  foil_rare_mythic_showcase:
+    foil: true
+    any:
+    - rawquery: "e:{set} r:r frame:showcase promo:boosterfun alt:(e:{set} number:399-451)"
+      rate: 2
+    - rawquery: "e:{set} r:m frame:showcase promo:boosterfun alt:(e:{set} number:399-451)"
+      rate: 1
+    - rawquery: "e:{set} r:r frame:showcase promo:boosterfun -alt:(e:{set} number:399-451)"
+      rate: 4
+    - rawquery: "e:{set} r:m frame:showcase promo:boosterfun -alt:(e:{set} number:399-451)"
+      rate: 2
+    - rawquery: "e:{set} r:r number:399-451 alt:(frame:showcase or t:land)"
+      rate: 2
+    - rawquery: "e:{set} r:m number:399-451 alt:(frame:showcase)"
+      rate: 1
+    - rawquery: "e:{set} r:r number:399-451 -alt:(frame:showcase or t:land)"
+      rate: 4
+    - rawquery: "e:{set} r:m number:399-451 -alt:(frame:showcase)"
+      rate: 2
+    - rawquery: "e:{set} r:r number:340-345 alt:number:399-451"
+      rate: 2
+    - rawquery: "e:{set} r:r number:340-345 -alt:number:399-451"
+      rate: 4
+    - rawquery: "e:{set} r:m number:340-345"
+      rate: 2
+    - rawquery: "e:ltc r:m frame:extendedart -number:378-407"
+      rate: 2
+  surge_relic:
+    foil: true
+    rawquery: "e:ltc number:378-407"
+    
