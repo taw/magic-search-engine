@@ -1,0 +1,68 @@
+name: "The Lord of the Rings: Tales of Middle-earth Jumpstart Booster"
+packs:
+- courageous_1: 19
+  white_rare: 1
+- courageous_2: 19
+  white_rare: 1
+- journey_1: 19
+  green_rare: 1
+- journey_2: 19
+  green_rare: 1
+- marauders_1: 19
+  red_rare: 1
+- marauders_2: 19
+  red_rare: 1
+- mordor_1: 19
+  black_rare: 1
+- mordor_2: 19
+  black_rare: 1
+- tricksy_1: 19
+  blue_rare: 1
+- tricksy_2: 19
+  blue_rare: 1
+sheets:
+  courageous_1:
+    deck: "ltr/Courageous 1"
+    count: 19
+  courageous_2:
+    deck: "ltr/Courageous 2"
+    count: 19
+  journey_1:
+    deck: "ltr/Journey 1"
+    count: 19
+  journey_2:
+    deck: "ltr/Journey 2"
+    count: 19
+  marauders_1:
+    deck: "ltr/Marauders 1"
+    count: 19
+  marauders_2:
+    deck: "ltr/Marauders 2"
+    count: 19
+  mordor_1:
+    deck: "ltr/Mordor 1"
+    count: 19
+  mordor_2:
+    deck: "ltr/Mordor 2"
+    count: 19
+  tricksy_1:
+    deck: "ltr/Tricksy 1"
+    count: 19
+  tricksy_2:
+    deck: "ltr/Tricksy 2"
+    count: 19
+  white_rare:
+    filter: "e:{set} number<=set id<=w"
+    use: rare_mythic
+  blue_rare:
+    filter: "e:{set} number<=set id<=u"
+    use: rare_mythic
+  black_rare:
+    filter: "e:{set} number<=set id<=b"
+    use: rare_mythic
+  red_rare:
+    filter: "e:{set} number<=set id<=r"
+    use: rare_mythic
+  green_rare:
+    filter: "e:{set} number<=set id<=g"
+    use: rare_mythic
