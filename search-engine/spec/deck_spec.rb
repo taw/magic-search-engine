@@ -59,6 +59,7 @@ describe Deck do
       ["expansion", "Jumpstart"],
       ["standard", "Arena Starter Kit"],
       ["standard", "Arena Starter Deck"],
+      ["modern", "Arena Starter Kit"], # LTR
       ["standard", "Arena Promotional Deck"],
       ["starter", "Arena Starter Deck"],
       # Non-decks, this needs to be sorted out at some point
@@ -154,6 +155,8 @@ describe Deck do
         sets_found.should match_array ["moc", "mom"]
       when "pctb"
         sets_found.should match_array ["pctb", "sld"]
+      when "ltc"
+        sets_found.should match_array ["ltc", "ltr"]
       else
         sets_found.should eq [set.code]
       end

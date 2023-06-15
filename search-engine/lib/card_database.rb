@@ -37,8 +37,18 @@ module Enumerable
 end
 
 class String
+  # This is a much longer list than just what's on cards as:
+  # * it's also artist names
+  # * everything is both upper and lower case,
+  #   even if only one case is actually in print
   def normalize_accents
-    result = gsub("Æ", "Ae").gsub("æ", "ae").tr("ĆćÄàáâäãèéêíõöúûüǵŠšñ’\u2212", "CcAaaaaaeeeioouuugSsn'-")
+    result = gsub("Æ", "Ae")
+      .gsub("æ", "ae")
+      .gsub("Œ", "Oe")
+      .gsub("œ", "oe")
+      .tr(
+        "ÀÁÂÄàáâäãĆČćčÈËÊÉèéêëǵÍÏĪíïīŁłÑñńÓÖØõöóøÛÜÚúûüŠšŻż’\u2212",
+        "AAAAaaaaaCCccEEEEeeeegIIIiiiLlNnnOOOooooUUUuuuSsZz'-")
     result = self if result == self # Memory saving trick
     -result
   end
