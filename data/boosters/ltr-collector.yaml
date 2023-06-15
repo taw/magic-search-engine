@@ -56,11 +56,11 @@ sheets:
       rate: 1
     - rawquery: "e:{set} r:m promo:boosterfun frame:showcase -alt:(is:borderless -frame:showcase)"
       rate: 2
-    - rawquery: "e:{set} number:341"
+    - rawquery: "e:{set} r:r number:340-345 alt:number:399-451"
       rate: 2
-    - rawquery: "e:{set} r:r number:341-345"
+    - rawquery: "e:{set} r:r number:340-345 -alt:number:399-451"
       rate: 4
-    - rawquery: "e:{set} r:m number:341-345"
+    - rawquery: "e:{set} r:m number:340-345"
       rate: 2
     - rawquery: "e:ltc number:348-377"
       rate: 2
@@ -71,7 +71,7 @@ sheets:
       rate: 16
     - query: "r:u -alt:frame:showcase"
       rate: 8
-    - query: "r:r -alt:(frame:showcase or (Barad Dur))"
+    - query: "r:r -alt:(frame:showcase or t:land)"
       rate: 4
     - query: "r:m -alt:frame:showcase"
       rate: 2
@@ -79,7 +79,7 @@ sheets:
       rate: 8
     - query: "r:u alt:frame:showcase"
       rate: 4
-    - query: "r:r alt:(frame:showcase or (Barad Dur))"
+    - query: "r:r alt:(frame:showcase or t:land)"
       rate: 2
     - query: "r:m alt:frame:showcase"
       rate: 1
@@ -125,21 +125,21 @@ sheets:
       rate: 4
     - rawquery: "e:{set} r:m frame:showcase promo:boosterfun -alt:(e:{set} number:399-451)"
       rate: 2
-    - rawquery: "e:{set} r:r number:399-451 alt:(frame:showcase or (Barad-Dur))"
+    - rawquery: "e:{set} r:r number:399-451 alt:(frame:showcase or t:land)"
       rate: 2
     - rawquery: "e:{set} r:m number:399-451 alt:(frame:showcase)"
       rate: 1
-    - rawquery: "e:{set} r:r number:399-451 -alt:(frame:showcase or (Barad-Dur))"
+    - rawquery: "e:{set} r:r number:399-451 -alt:(frame:showcase or t:land)"
       rate: 4
     - rawquery: "e:{set} r:m number:399-451 -alt:(frame:showcase)"
       rate: 2
-    - rawquery: "e:{set} number:341"
+    - rawquery: "e:{set} r:r number:340-345 alt:number:399-451"
       rate: 2
-    - rawquery: "e:{set} r:r number:341-345"
+    - rawquery: "e:{set} r:r number:340-345 -alt:number:399-451"
       rate: 4
-    - rawquery: "e:{set} r:m number:341-345"
+    - rawquery: "e:{set} r:m number:340-345"
       rate: 2
-    - rawquery: "e:ltc r:m frame:extendedart"
+    - rawquery: "e:ltc r:m frame:extendedart -number:378-407"
       rate: 2
   surge_relic:
     foil: true

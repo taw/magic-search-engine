@@ -1,13 +1,58 @@
 # https://magic.wizards.com/en/news/feature/collecting-the-lord-of-the-rings-tales-of-middle-earth
 pack:
 - basic: 1
-  common: 10
-  uncommon: 3
-  rare_mythic: 1
+  common_with_showcase: 10
+  uncommon_with_showcase: 3
+  rare_mythic_with_showcase: 1
   chance: 2
 - basic: 1
-  common: 9
-  uncommon: 3
-  rare_mythic: 1
-  foil: 1
+  common_with_showcase: 9
+  uncommon_with_showcase: 3
+  rare_mythic_with_showcase: 1
+  foil_with_showcase: 1
   chance: 1
+sheets:
+  with_showcase:
+    any:
+    - query: "promo:boosterfun alt:(number:302-331 or number:340-345) alt:number:399-451"
+      rate: 1
+    - query: "(number:302-331 or number:340-345) -alt:number:399-451"
+      rate: 2
+    - query: "-alt:(number:302-331 or number:340-345) number:399-451"
+      rate: 2
+    - query: "number<=set alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+      rate: 4
+    - query: "number<=set -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+      rate: 6
+  common_with_showcase:
+    filter: "e:{set} r:c"
+    use: with_showcase
+  rare_with_showcase:
+    filter: "e:{set} r:r"
+    use: with_showcase
+  uncommon_with_showcase:
+    filter: "e:{set} r:u -Nazgul"
+    any:
+    - use: with_showcase
+      chance: 79
+    - rawquery: "e:{set} Nazgul"
+      chance: 1
+  mythic_with_showcase:
+    filter: "e:{set} r:m"
+    use: with_showcase
+  rare_mythic_with_showcase:
+    any:
+    - use: rare_with_showcase
+      chance: 120
+    - use: mythic_with_showcase
+      chance: 20
+  foil_with_showcase:
+    foil: true
+    any:
+    - filter: "e:{set} (r:c or r:b)"
+      use: with_showcase
+      chance: 12
+    - use: uncommon_with_showcase
+      chance: 5
+    - use: rare_mythic_with_showcase
+      chance: 3
