@@ -1,0 +1,19 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-the-lord-of-the-rings-tales-of-middle-earth
+pack:
+  showcase_rare_mythic:
+  - nonfoil_rare_mythic: 1
+    chance: 2
+  - foil_rare_mythic: 1
+    chance: 1
+  foil_uncommon_showcase: 1
+sheets:
+  nonfoil_rare_mythic:
+    filter: "(e:ltr promo:boosterfun -is:foilonly) or (e:ltc promo:boosterfun -is:foilonly)"
+    use: rare_mythic
+  foil_rare_mythic:
+    foil: true
+    use: nonfoil_rare_mythic
+  foil_uncommon_showcase:
+    filter: "e:{set} promo:boosterfun -is:foilonly"
+    foil: true
+    use: common_uncommon
