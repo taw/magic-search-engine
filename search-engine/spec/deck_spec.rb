@@ -46,6 +46,7 @@ describe Deck do
       ["starter", "Theme Deck"],
       ["starter", "Welcome Deck"],
       ["starter", "Advanced Pack"],
+      ["starter", "Welcome Booster"],
       ["expansion", "Challenger Deck"],
       ["core", "Challenger Deck"],
       ["box", "MTGO Theme Deck"], # MTGO
@@ -62,6 +63,8 @@ describe Deck do
       ["modern", "Arena Starter Kit"], # LTR
       ["standard", "Arena Promotional Deck"],
       ["starter", "Arena Starter Deck"],
+      ["modern", "Arena Starter Deck"], # LTR
+      ["standard", "Deck Builder's Toolkit"],
       # Non-decks, this needs to be sorted out at some point
       ["box", "Box"],
       ["sld", "Secret Lair Drop"],
