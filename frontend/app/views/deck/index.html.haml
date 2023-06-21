@@ -2,7 +2,7 @@
 - @sets.each do |set|
   %div= "#{set.name} (#{set.code.upcase})"
   %ul
-    - set.decks.each do |deck|
+    - set.decks.sort_by{|deck| [deck.type, deck.name]}.each do |deck|
       %li
         = link_to_deck(deck) do
           = "#{deck.name}"
