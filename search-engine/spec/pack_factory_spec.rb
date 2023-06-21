@@ -34,6 +34,9 @@ describe PackFactory do
       elsif set_code == "jmp" or set_code == "j22"
         factory.for(set_code).should eq(nil), "#{set_pp} should not have regular packs"
         factory.for(set_code, "jumpstart").should_not eq(nil), "#{set_pp} should have Jumpstart packs"
+      elsif set_code == "zne"
+        factory.for(set_code).should eq(nil), "#{set_pp} should not have regular packs"
+        factory.for(set_code, "box-topper").should_not eq(nil), "#{set_pp} should have box topper packs"
       elsif set.has_boosters?
         pack = factory.for(set_code)
         if pack
@@ -55,7 +58,7 @@ describe PackFactory do
       s.types.include?("core") or s.types.include?("expansion")
     }.to_set }
     let(:expected_official) {
-      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2 dbl clb 2x2 unf dmr sir]
+      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2 dbl clb 2x2 unf dmr sir ltr]
     }
     let(:expected_mtgjson_variant) {
       ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "mb1", "ons", "gpt", "ala", "jmp", "j22"]
