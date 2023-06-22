@@ -42,8 +42,8 @@ describe "Card layouts" do
     assert_search_equal "layout:mdfc", "layout:modaldfc"
     assert_search_equal "layout:mdfc", "layout:modal-dfc"
 
-    # No longer true since they got merged in v4,
-    # we keep aliases but they're not exact
+    # mtgjson used to have separate layouts, but merged them
+    # just an alias check
     assert_search_equal "layout:plane", "layout:planar"
     assert_search_equal "layout:phenomenon", "layout:planar"
   end

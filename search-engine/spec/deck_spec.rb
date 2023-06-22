@@ -59,8 +59,9 @@ describe Deck do
       ["memorabilia", "Pro Tour Deck"], # PTC
       ["expansion", "Jumpstart"],
       ["standard", "Arena Starter Kit"],
+      ["standard", "Starter Kit"],
       ["standard", "Arena Starter Deck"],
-      ["modern", "Arena Starter Kit"], # LTR
+      ["modern", "Starter Kit"], # LTR
       ["standard", "Arena Promotional Deck"],
       ["starter", "Arena Starter Deck"],
       ["modern", "Arena Starter Deck"], # LTR
