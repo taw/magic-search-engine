@@ -25,6 +25,49 @@ class PatchPartner < Patch
     end
   end
 
+  def partner_numbers
+    @partner_numbers ||= begin
+      special_pairs = {
+        "bbd" => [
+          ["1", "2"],
+          ["255", "256"],
+        ],
+        "voc" => [
+          ["19", "25"],
+          ["57", "63"],
+          ["8", "16"],
+          ["46", "54"],
+        ],
+        "sld" => [
+          ["379a", "380a"],
+          ["379b", "380b"],
+          ["379★a", "380★a"],
+          ["379★b", "380★b"],
+        ],
+        "ltc" => [
+          # This is a special 3 Frodo 2 Sam situation
+          # Frodo / Sam
+          ["2", "7"],
+          # ["82", "90"],
+          ["87", "90"],
+          # Merry / Pippin
+          ["61", "65"],
+          ["143", "146"],
+        ]
+      }
+      partner_numbers = {}
+      special_pairs.each do |set_code, pairs|
+        partner_numbers[set_code] = {}
+        pairs.each do |a, b|
+          partner_numbers[set_code][a] = b
+          partner_numbers[set_code][b] = a
+        end
+      end
+      partner_numbers["ltc"]["82"] = "90"
+      partner_numbers
+    end
+  end
+
   # This needs to be one they share booster with
   # For now it's 1-to-1, it's possible someday it will be more complex system
   def find_partner_card_for(card, partner_name)
@@ -34,40 +77,11 @@ class PatchPartner < Patch
     potential_partners = @cards[partner_name].select{|c| c["set_code"] == set_code }
     return potential_partners[0]["number"] if potential_partners.size == 1
 
-    special_pairs = {
-      "bbd" => [
-        ["1", "2"],
-        ["255", "256"],
-      ],
-      "voc" => [
-        ["19", "25"],
-        ["57", "63"],
-        ["8", "16"],
-        ["46", "54"],
-      ],
-      "sld" => [
-        ["379a", "380a"],
-        ["379b", "380b"],
-        ["379★a", "380★a"],
-        ["379★b", "380★b"],
-      ],
-      "ltc" => [
-        # Frodo / Sam
-        ["2", "7"],
-        # ["82", "???"],
-        ["87", "90"],
-        # Merry / Pippin
-        ["61", "65"],
-        ["143", "146"],
-      ]
-    }
-
-    if special_pairs[set_code]
-      partner_numbers = special_pairs[set_code].flat_map{|a,b| [[a,b],[b,a]]}.to_h
+    if partner_numbers[set_code]
       # Will / Rowan have two versions
       # VOC has two versions of each partner card too
-      if partner_numbers[number]
-        found_partner = potential_partners.find{|c| c["number"] == partner_numbers[number] }
+      if partner_numbers[set_code][number]
+        found_partner = potential_partners.find{|c| c["number"] == partner_numbers[set_code][number] }
         if found_partner
           return found_partner["number"]
         else
