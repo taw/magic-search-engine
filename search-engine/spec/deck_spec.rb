@@ -74,6 +74,7 @@ describe Deck do
       ["commander", "Box Set"],
       ["standard", "Box Set"],
       ["fixed", "Box Set"],
+      ["planechase", "Box Set"],
     ]
 
     db.sets.each do |set_code, set|
