@@ -52,7 +52,7 @@ class PatchSetTypes < Patch
         set_types << "gateway"
       when "fnm", /\Af\d\d\z/, "pdom", "pgrn", "pm19", "prna", "pwar"
         set_types << "fnm" << "promo"
-      when /\Aq\d\d/
+      when "q06", "q08"
         set_types << "pioneer"
       when "scd"
         set_types = ["box", "commander"]
