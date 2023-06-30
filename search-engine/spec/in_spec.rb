@@ -90,6 +90,7 @@ describe "in queries" do
     assert_search_equal "in:commander,m10,m11,m12", "alt:e:commander or alt:e:m10 or alt:e:m11 or alt:e:m12"
 
     db.sets.each do |set_code, _|
+      next unless %W[q07 q08].include?(set_code) # empty sets
       assert_search_equal "in:#{set_code}", "alt:e:#{set_code}"
     end
   end

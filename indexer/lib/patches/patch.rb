@@ -20,7 +20,7 @@ class Patch
   end
 
   def cards_by_set
-    @cards_by_set ||= @cards.values.flatten.group_by{|c| c["set_code"]}
+    @cards_by_set ||= @cards.values.flatten.group_by{|c| c["set_code"]}.tap{ |h| h.default = [] }
   end
 
   def rename(from, to)
