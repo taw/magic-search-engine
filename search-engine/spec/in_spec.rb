@@ -89,8 +89,9 @@ describe "in queries" do
     assert_search_equal "in:zendikar in:commander", "alt:e:zendikar alt:st:commander"
     assert_search_equal "in:commander,m10,m11,m12", "alt:e:commander or alt:e:m10 or alt:e:m11 or alt:e:m12"
 
-    db.sets.each do |set_code, _|
-      next unless %W[q07 q08].include?(set_code) # empty sets
+    db.sets.each do |set_code, set|
+      # Skip sets with no cards just precons like Q07 and Q08
+      next if set.printings.empty?
       assert_search_equal "in:#{set_code}", "alt:e:#{set_code}"
     end
   end
