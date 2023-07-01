@@ -57,4 +57,4 @@ Whenever banned and restricted list is announced:
 * for official formats, wizards.com
 * Commander: http://mtgcommander.net/index.php/rules
 * MTGO Commander: https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/banned-restricted/magic-online-commander
-* Duel Commander: https://www.facebook.com/notes/mtg-duel-commander/duel-commander-current-lists/1698432663740967
+* Duel Commander: https://www.mtgdc.info/banned-restricted

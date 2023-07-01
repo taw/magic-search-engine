@@ -296,4 +296,19 @@ BanList.for_format("duel commander") do
     "https://www.mtgdc.info/announcements/2022/september-2022-rules-bannedrestricted-update",
     "Yoshimaru, Ever Faithful" => "legal",
   )
+
+  change(
+    "2023-03-27",
+    "https://www.mtgdc.info/announcements/2023/march-2023-rules-bannedrestricted-update",
+    "Trazyn the Infinite" => "banned",
+  )
+
+  change(
+    "2023-05-29",
+    "https://www.mtgdc.info/announcements/2023/may-2023-rules-bannedrestricted-update",
+    "Dihada, Binder of Wills" => "restricted",
+    "Comet, Stellar Pup" => "banned",
+    "Hogaak, Arisen Necropolis" => "banned",
+    "Mox Amber" => "banned",
+  )
 end
