@@ -14,7 +14,7 @@ class PatchXmage < Patch
   end
 
   def strip_accents(str)
-    str.tr("àáââéíöûûú", "aaaaeiouuu")
+    str.tr("äàáââééíöóûûúÉ", "aaaaaeeioouuuE")
   end
 
   def card_names(card)
