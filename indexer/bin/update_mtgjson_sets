@@ -53,6 +53,14 @@ class SingleSetUpdater
     current_data["cards"].map{|c| [c["faceName"] || c["name"], c["number"]] }.sort
   end
 
+  memoize def current_base_set_size
+    current_data["baseSetSize"]
+  end
+
+  memoize def incoming_base_set_size
+    incoming_data["baseSetSize"]
+  end
+
   def bad_foregin_only_sets
     %W[FBB 4BB REN RIN PSAL PS11 BCHR]
   end
@@ -84,6 +92,7 @@ class SingleSetUpdater
     issues = []
     issues << :name if incoming_name != current_name
     issues << :code if incoming_code != current_code
+    issues << :base_set_size if incoming_base_set_size != current_base_set_size
     if incoming_cards != current_cards
       if current_cards.map(&:first) != incoming_cards.map(&:first)
         issues << :card_names
@@ -122,6 +131,10 @@ class SingleSetUpdater
     # Print all issues
     if incoming_name != current_name
       puts "  NAME: #{current_name} -> #{incoming_name}"
+    end
+
+    if incoming_base_set_size != current_base_set_size
+      puts "  BASE SET SIZE: #{current_base_set_size} -> #{incoming_base_set_size}"
     end
 
     if incoming_name != current_name
