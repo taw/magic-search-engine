@@ -243,6 +243,17 @@ class PatchMtgjsonVersions < Patch
       if card["finishes"].include?("etched")
         card["etched"] = true
       end
+
+      # https://github.com/mtgjson/mtgjson/issues/1094
+      if card["subtypes"]&.include?("Saga") and card["layout"] == "normal"
+        card["layout"] = "saga"
+      end
+
+      # https://github.com/mtgjson/mtgjson/issues/1094
+      if card["frame_effects"]&.include?("borderless")
+        card["border"] = "borderless"
+        card["frame_effects"].delete("borderless")
+      end
     end
   end
 
