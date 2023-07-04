@@ -229,7 +229,15 @@ class DeckPrintingResolver
 
   def call
     printing_card = resolve_card
-    foil_res = (@card["foil"] || printing_card["foiling"] == "foilonly") ? ["foil"] : []
+    if @card["foil"]
+      foil_res = ["foil"]
+    elsif printing_card["foiling"] == "foilonly"
+      # These should be fixed in decklists
+      warn "#{@deck["set_code"]} #{@deck["name"]}: Card #{printing_card["name"]} [#{printing_card["set"]["code"]}:#{printing_card["number"]}]) automatically corrected to foil, as it is available as foil only"
+      foil_res = ["foil"]
+    else
+      foil_res = []
+    end
     [@card["count"], printing_card["set_code"], printing_card["number"]] + foil_res
   end
 
