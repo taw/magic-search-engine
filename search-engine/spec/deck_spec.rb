@@ -66,6 +66,7 @@ describe Deck do
       ["starter", "Arena Starter Deck"],
       ["modern", "Arena Starter Deck"], # LTR
       ["standard", "Deck Builder's Toolkit"],
+      ["box", "Challenger Deck"], # Q07
       # Non-decks, this needs to be sorted out at some point
       ["box", "Box"],
       ["sld", "Secret Lair Drop"],
@@ -162,6 +163,8 @@ describe Deck do
         sets_found.should match_array ["pctb", "sld"]
       when "ltc"
         sets_found.should match_array ["ltc", "ltr"]
+      when "pca"
+        sets_found.should match_array ["pca", "opca"]
       else
         sets_found.should eq [set.code]
       end
