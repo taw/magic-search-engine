@@ -32,6 +32,11 @@ class SplitMtgjson
         set_code = set["code"]
       end
 
+      # We provide this data, so we don't need to duplicate it
+      # well, sealedProductUuids is there, but that could be separately done somehow
+      set.delete "booster"
+      set.delete "decks"
+
       set["cards"].each do |card|
         # Delete this, as it changes a ton and messes up git history
         card.delete "printings"
