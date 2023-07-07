@@ -361,7 +361,7 @@ describe Deck do
   end
 
   describe "#cards_in_all_zones adds up mainboard and sideboard" do
-    let(:deck) { db.sets["grn"].deck_named("United Assault") }
+    let(:deck) { db.sets["q02"].deck_named("United Assault") }
     let(:main) { deck.cards }
     let(:side) { deck.sideboard }
     let(:commander) { deck.commander }
@@ -402,7 +402,7 @@ describe Deck do
 
   # Including physical card full name here might be questionable API
   describe "#card_counts" do
-    let(:united_assault) { db.sets["grn"].deck_named("United Assault") }
+    let(:united_assault) { db.sets["q02"].deck_named("United Assault") }
     let(:spiritbane) { db.sets["chk"].deck_named("Spiritbane") }
     let(:spiritcraft) { db.sets["bok"].deck_named("Spiritcraft") }
     let(:open_hostility) { db.sets["c16"].deck_named("Open Hostility") }
