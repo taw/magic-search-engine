@@ -35,10 +35,10 @@ sheets:
     foil: true
     use: rare_mythic
   extended_core_rare_mythic:
-    filter: "e:{set} frame:extendedart alt:(e:{set} number<=set)"
+    filter: "e:{set} frame:extendedart alt:(e:{set} number<=set) number<=397"
     use: rare_mythic
   extended_jump_starter_rare_mythic:
-    filter: "frame:extendedart ((e:{set} -alt:(e:{set} number<=set)) or (e:ltc))"
+    filter: "frame:extendedart ((e:{set} -alt:(e:{set} number<=set)) or (e:ltc)) number<=397"
     use: rare_mythic
   uncommon_showcase:
     any:
@@ -103,7 +103,7 @@ sheets:
     - rawquery: "e:ltc number:408"
       chance: 3
   serialized_sol_ring: # This currently doesn't work so just using the nonfoil sol rings
-    #foil: true
+    foil: true
     any:
     - rawquery: "e:ltc number:410"
       chance: 9
