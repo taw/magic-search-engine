@@ -1,4 +1,31 @@
 class ConditionDeck < Condition
+  # This list should match CardsWithAllowedConflicts in DeckPrintingResolver
+  # For these we don't have exact printing information, so any printing from
+  # the same set will be considered matching
+  #
+  # There's two algorithms:
+  # * for cards with allowed conflicts, we only know from which set they are, not exact printing
+  # * for all other cards, we know exact printing
+
+  CardsWithAllowedConflicts = [
+    "Plains",
+    "Island",
+    "Swamp",
+    "Mountain",
+    "Forest",
+    "Wastes",
+    "Azorius Guildgate",
+    "Boros Guildgate",
+    "Dimir Guildgate",
+    "Golgari Guildgate",
+    "Gruul Guildgate",
+    "Izzet Guildgate",
+    "Orzhov Guildgate",
+    "Rakdos Guildgate",
+    "Selesnya Guildgate",
+    "Simic Guildgate",
+  ].to_set
+
   def initialize(deck_name)
     @deck_name = deck_name
   end
@@ -12,23 +39,25 @@ class ConditionDeck < Condition
       warning %[Multiple decks matching "#{@deck_name}": #{deck_names.join(", ")}]
     end
 
-    # FIXME:
-    # This is true only for non-special basics (plus Wastes and guildgates).
-    # Everything else should have exact resolution.
-    #
-    # We don't have printing resolution within same set
-    # so we need extra step, so all C17 Forests get included, not just some
+    # For exact matching
+    results = Set[]
+    # For inexact matching
     matching_card_names = {}
+
     decks.each do |deck|
       [*deck.cards, *deck.sideboard, *deck.commander].each do |count, card|
         card.parts.each do |cp|
-          matching_card_names[cp.set_code] ||= Set.new
-          matching_card_names[cp.set_code] << cp.name
+          if CardsWithAllowedConflicts.include?(cp.name)
+            matching_card_names[cp.set_code] ||= Set.new
+            matching_card_names[cp.set_code] << cp.name
+          else
+            results << cp
+          end
         end
       end
     end
 
-    results = Set[]
+    # Expand inexact matches
     matching_card_names.each do |set_code, matching_names|
       set = db.sets[set_code]
       set.printings.each do |card_printing|
