@@ -99,8 +99,12 @@ class CardDatabase
       next unless deck.all_set_codes.include?(set_code)
       [*deck.cards, *deck.sideboard, *deck.commander].any? do |_, physical_card|
         physical_card.parts.any? do |physical_card_part|
-          physical_card_part.set_code == card_printing.set_code and
-          physical_card_part.name == card_printing.name
+          if ConditionDeck::CardsWithAllowedConflicts.include?(physical_card.name)
+            physical_card_part.set_code == card_printing.set_code and
+            physical_card_part.name == card_printing.name
+          else
+            physical_card_part == card_printing
+          end
         end
       end
     end
