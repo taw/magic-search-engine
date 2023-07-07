@@ -19,7 +19,7 @@ class DeckPrintingResolver
     "Rakdos Guildgate",
     "Selesnya Guildgate",
     "Simic Guildgate",
-  ]
+  ].to_set
 
   SetSearchList = {
     # otherwise it returns GRN and that's bad
