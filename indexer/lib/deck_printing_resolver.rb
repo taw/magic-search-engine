@@ -33,6 +33,8 @@ class DeckPrintingResolver
     "s00" => ["6ed"],
     # It seems that Masters Edition 2 precons contained Masters Edition cards too
     "me2" => ["me1"],
+    # Shandalar doesn't really have meaningful printings
+    "past" => ["drk", "leg", "atq", "arn", "3ed", "2ed", "leb", "lea"],
   }
 
   def initialize(cards, sets, deck, card)
