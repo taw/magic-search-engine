@@ -67,6 +67,7 @@ describe Deck do
       ["modern", "Arena Starter Deck"], # LTR
       ["standard", "Deck Builder's Toolkit"],
       ["box", "Challenger Deck"], # Q07
+      ["shandalar", "Shandalar Enemy Deck"], # assigned to PAST, as there's no Shandalar set
       # Non-decks, this needs to be sorted out at some point
       ["box", "Box"],
       ["sld", "Secret Lair Drop"],
