@@ -130,7 +130,7 @@ class CardPrinting
     related first_regular_release_date reminder_text augment
     display_power display_toughness display_mana_cost
     primary? secondary? front? back? partner? allowed_in_any_number?
-    commander? brawler? custom? keywords
+    commander? brawler? custom? keywords decklimit
     count_sets count_prints count_papersets count_paperprints name_slug
     fulltext fulltext_normalized defense colors_set color_identity_set
   ].each do |m|
