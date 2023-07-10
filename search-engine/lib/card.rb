@@ -361,7 +361,7 @@ class Card
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :color_indicator_set, :related
   attr_reader :reminder_text, :augment, :display_power, :display_toughness, :display_mana_cost, :keywords
   attr_reader :commander, :brawler, :fulltext, :fulltext_normalized, :defense
-  attr_reader :colors_set, :color_identity_set
+  attr_reader :colors_set, :color_identity_set, :decklimit
 
   def initialize(data)
     @printings = []
@@ -398,6 +398,7 @@ class Card
     else
       @extra = false
     end
+    @decklimit = data["decklimit"]
     @hand = data["hand"]
     @life = data["life"]
     @rulings = data["rulings"]

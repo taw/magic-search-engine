@@ -1,4 +1,4 @@
-describe "DissentionTest" do
+describe "Dungeons" do
   include_context "db", "afr", "tafr"
 
   it "t:dungeon" do

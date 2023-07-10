@@ -59,6 +59,8 @@ class ConditionExpr < ConditionSimple
       eval_card_value(card.life)
     when "hand"
       eval_card_value(card.hand)
+    when "decklimit"
+      eval_card_value(card.decklimit || 4)
     else
       eval_card_value(expr)
     end
@@ -91,7 +93,7 @@ class ConditionExpr < ConditionSimple
       [:x, 0]
     when /\A\?\z/i
       [:question_mark, 0]
-    when /\A∞\z/
+    when /\A∞\z/, "any"
       [:number, Float::INFINITY]
     when "1d4+1"
       [:"1d4", 1]
