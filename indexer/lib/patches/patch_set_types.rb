@@ -61,6 +61,8 @@ class PatchSetTypes < Patch
         set_types = ["box", "promo", "commander"]
       when "sld", "slc"
         set_types << "promo" << "sld"
+      when "past"
+        set_types << "shandalar"
       when "pz2", /\Ap...\z/
         set_types << "promo"
       end
