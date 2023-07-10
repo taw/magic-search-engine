@@ -78,6 +78,7 @@ class IndexSerializer
         "cmc",
         "colors",
         "commander",
+        "decklimit",
         "defense",
         "display_power",
         "display_toughness",

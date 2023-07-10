@@ -97,6 +97,7 @@ class Indexer
       PatchCommander,
       PatchMultipart,
       PatchSubsets,
+      PatchDeckLimit,
 
       # Patch more mtg.wtf bugs
       PatchAeLigature, # is this even needed anymore?
