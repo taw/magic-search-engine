@@ -1,0 +1,17 @@
+# Data from https://www.cardkingdom.com/catalog/search?search=header&filter%5Bname%5D=Invasion+Tournament+Pack
+name: "{set_name} Tournament Deck"
+pack:
+  common_with_duplicates: 32
+  uncommon_with_duplicates: 10
+  rare: 3
+  basic: 30
+sheets:
+  basic:
+    duplicates: true
+    query: "r:b"
+  common_with_duplicates:
+    query: "r:c"
+    duplicates: true
+  uncommon_with_duplicates:
+    query: "r:u"
+    duplicates: true
