@@ -35,8 +35,9 @@ describe "Sets" do
       "premiere shop",
       "premium deck",
       "promo",
+      "shandalar",
       "sld",
-      "spellbook",
+      "spellbook"
       "standard",
       "starter",
       "token",
