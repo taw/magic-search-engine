@@ -360,6 +360,7 @@ shared_context "db" do |*sets|
       db.sets[set_code].printings.each do |card_printing|
         next if %W[vanguard planar scheme token].include?(card_printing.layout)
         next if card_printing.types == ["conspiracy"]
+        next if card_printing.alchemy
         expected_legality[card_printing.name] = "legal"
       end
     end
