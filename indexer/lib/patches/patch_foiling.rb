@@ -33,6 +33,8 @@ class PatchFoiling < Patch
 
     # And now fix foiling errors in mtgjson
     each_printing do |card|
+      next if card["alchemy"]
+
       case card["set_code"]
       when "usg", "por", "mb1", "atq"
         fix_to card, "nonfoil"

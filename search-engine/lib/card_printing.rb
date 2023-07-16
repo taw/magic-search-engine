@@ -132,7 +132,7 @@ class CardPrinting
     primary? secondary? front? back? partner? allowed_in_any_number?
     commander? brawler? custom? keywords decklimit
     count_sets count_prints count_papersets count_paperprints name_slug
-    fulltext fulltext_normalized defense colors_set color_identity_set
+    fulltext fulltext_normalized defense colors_set color_identity_set alchemy
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
   end
