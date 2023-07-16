@@ -68,7 +68,15 @@ class PatchMtgjsonVersions < Patch
       card["isRebalanced"]
     end
 
-     each_printing do |card|
+    # Prepare Alchemy cards - this needs a bunch of fixes before it can be enabled
+    each_printing do |card|
+      next unless card["isRebalanced"]
+      card["alchemy"] = true
+      card["name"] = alchemy_name_fix(card["name"])
+      card["faceName"] = alchemy_name_fix(card["faceName"])
+    end
+
+    each_printing do |card|
       if card["faceName"] and card["name"].include?("//")
         card["names"] = card["name"].split(" // ")
         card["name"] = card.delete("faceName")
@@ -259,5 +267,16 @@ class PatchMtgjsonVersions < Patch
 
   def cleanup_unicode_punctuation(text)
     text.tr(%[‘’“”], %[''""])
+  end
+
+  def alchemy_name_fix(name)
+    return unless name
+    name.split(" // ").map{|s|
+      if s =~ /\AA-(.*)/
+        "#{$1} (Alchemy)"
+      else
+        s
+      end
+    }.join(" // ")
   end
 end
