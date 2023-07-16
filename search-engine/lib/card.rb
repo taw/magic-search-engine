@@ -361,7 +361,7 @@ class Card
   attr_reader :mana_hash, :typeline, :funny, :color_indicator, :color_indicator_set, :related
   attr_reader :reminder_text, :augment, :display_power, :display_toughness, :display_mana_cost, :keywords
   attr_reader :commander, :brawler, :fulltext, :fulltext_normalized, :defense
-  attr_reader :colors_set, :color_identity_set, :decklimit
+  attr_reader :colors_set, :color_identity_set, :decklimit, :alchemy
 
   def initialize(data)
     @printings = []
@@ -393,7 +393,8 @@ class Card
     @display_power = data["display_power"] ? data["display_power"] : @power
     @display_toughness = data["display_toughness"] ? data["display_toughness"] : @toughness
     @display_mana_cost = data["hide_mana_cost"] ? nil : @mana_cost
-    if ["vanguard", "planar", "scheme"].include?(@layout) or @types.include?("conspiracy")
+    @alchemy = data["alchemy"]
+    if ["vanguard", "planar", "scheme"].include?(@layout) or @types.include?("conspiracy") or @alchemy
       @extra = true
     else
       @extra = false

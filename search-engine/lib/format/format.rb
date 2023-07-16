@@ -42,6 +42,7 @@ class Format
 
   def in_format?(card)
     return false if card.funny
+    return false if card.alchemy
     card.printings.each do |printing|
       next if @time and printing.release_date > @time
       if @included_sets
