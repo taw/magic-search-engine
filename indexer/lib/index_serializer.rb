@@ -73,6 +73,7 @@ class IndexSerializer
     printing_data = []
     card.each do |printing|
       common_card_data << printing.slice(
+        "alchemy",
         "brawler",
         "ci",
         "cmc",

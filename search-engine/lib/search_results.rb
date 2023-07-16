@@ -26,4 +26,8 @@ class SearchResults
       @printings.group_by(&:name).values
     end
   end
+
+  def size
+    @printings.size
+  end
 end

@@ -4,6 +4,8 @@
 class PatchFoiling < Patch
   def call
     each_printing do |card|
+      next if card["alchemy"]
+
       # Someone should investigate if this is true
       # This also applies to PSOI
       if card["name"] == "Tamiyo's Journal" and card["set_code"] == "soi"
