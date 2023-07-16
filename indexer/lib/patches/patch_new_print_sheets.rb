@@ -31,7 +31,7 @@ class PatchNewPrintSheets < Patch
       end
 
       unless assignment.empty?
-        raise "Leftover print sheet data for #{set_code}"
+        raise "Leftover print sheet data for #{set_code}: #{assignment.inspect}"
       end
     end
   end
