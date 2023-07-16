@@ -4,8 +4,6 @@
 class PatchFoiling < Patch
   def call
     each_printing do |card|
-      next if card["alchemy"]
-
       # Someone should investigate if this is true
       # This also applies to PSOI
       if card["name"] == "Tamiyo's Journal" and card["set_code"] == "soi"
@@ -35,6 +33,8 @@ class PatchFoiling < Patch
 
     # And now fix foiling errors in mtgjson
     each_printing do |card|
+      next if card["alchemy"]
+
       case card["set_code"]
       when "usg", "por", "mb1", "atq"
         fix_to card, "nonfoil"

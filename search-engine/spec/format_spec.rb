@@ -14,6 +14,7 @@ describe "Formats" do
         -(Fable of the Mirror-Breaker)
         -(Reflection of Kiki-Jiki)
         -(Reckoner Bankbuster)
+        -is:alchemy
       ]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'

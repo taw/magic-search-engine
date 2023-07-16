@@ -37,7 +37,7 @@ describe "Sets" do
       "promo",
       "shandalar",
       "sld",
-      "spellbook"
+      "spellbook",
       "standard",
       "starter",
       "token",
