@@ -186,6 +186,8 @@ class PreprocessBooster
       "{set_name} Japanese Collector Booster"
     when "prerelease"
       "{set_name} Prerelease Promo Pack"
+    when "six"
+      "{set_name} Six-card Booster Pack"
     else
       warn "Unknown booster type: #{@code}"
       "{set_name} #{@variant.capitalize} Booster"
