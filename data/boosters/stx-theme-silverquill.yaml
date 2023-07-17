@@ -1,6 +1,6 @@
 # Data from youtube, e.g. https://www.youtube.com/watch?v=gnq3xpi0qWs&ab_channel=BadBoyGaming
 name: "{set_name} Theme Booster Silverquill"
-filter: "e:{set} id<=orzhov (number<=set or promo:themepack) (w:Silverquill or -w:*)"
+filter: "e:{set} id<=orzhov (is:baseset or promo:themepack) (w:Silverquill or -w:*)"
 pack:
   uncommon: 10
   common: 21

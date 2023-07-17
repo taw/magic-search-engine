@@ -1,6 +1,6 @@
 # data collected from youtube, e.g. https://www.youtube.com/watch?v=sUTpE4cZEM4&ab_channel=TolarianCommunityCollege
 name: "{set_name} Theme Booster Werewolves"
-filter: "e:{set} (number<=set or promo:themepack) (o:wolf or o:werewolf or t:wolf or t:werewolf or (id<=gruul (t:instant or t:sorcery or t:artifact)))"
+filter: "e:{set} (is:baseset or promo:themepack) (o:wolf or o:werewolf or t:wolf or t:werewolf or (id<=gruul (t:instant or t:sorcery or t:artifact)))"
 pack:
   uncommon: 9
   common: 21

@@ -15,13 +15,13 @@ sheets:
       rate: 3
   nongainland_common_baseset:
     balanced: true
-    query: "r:c -is:gainland number<=set"
+    query: "r:c -is:gainland is:baseset"
   uncommon_baseset:
-    query: "r:u number<=set"
+    query: "r:u is:baseset"
   rare_mythic_baseset:
     any:
-    - query: "r:r number<=set"
+    - query: "r:r is:baseset"
       rate: 2
-    - query: "r:m number<=set"
+    - query: "r:m is:baseset"
       rate: 1
 

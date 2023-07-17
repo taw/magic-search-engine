@@ -1,6 +1,6 @@
 # Data from youtube, e.g. https://www.youtube.com/watch?v=gnq3xpi0qWs&ab_channel=BadBoyGaming
 name: "{set_name} Theme Booster Witherbloom"
-filter: "e:{set} id<=golgari (number<=set or promo:themepack) (w:Witherbloom or -w:*)"
+filter: "e:{set} id<=golgari (is:baseset or promo:themepack) (w:Witherbloom or -w:*)"
 pack:
   uncommon: 10
   common: 21

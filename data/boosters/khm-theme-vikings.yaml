@@ -1,7 +1,7 @@
 # data collected from youtube, e.g. https://www.youtube.com/watch?v=OYpuh-GB4DU&ab_channel=MTGUnpacked
 # This theme booster includes instants, sorceries, and auras, not sure which are excluded
 name: "{set_name} Theme Booster Vikings"
-filter: "e:{set} (number<=set or promo:themepack) (t:berserker or t:cleric or t:rogue or t:knight or t:warrior or t:instant or t:sorcery or t:aura)"
+filter: "e:{set} (is:baseset or promo:themepack) (t:berserker or t:cleric or t:rogue or t:knight or t:warrior or t:instant or t:sorcery or t:aura)"
 pack:
   uncommon: 9
   common: 21

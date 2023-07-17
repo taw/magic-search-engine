@@ -1,6 +1,6 @@
 # data collected from youtube, e.g. https://www.youtube.com/watch?v=Bl5qBAYBpiY&ab_channel=TOTALmtg
 name: "{set_name} Theme Booster Blue"
-filter: "e:{set} (id<=u or (mana>h id>=u)) (number<=set or promo:themepack) -variant:foreign"
+filter: "e:{set} (id<=u or (mana>h id>=u)) (is:baseset or promo:themepack) -variant:foreign"
 pack:
   uncommon: 10
   common: 21

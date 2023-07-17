@@ -1,7 +1,7 @@
 # data collected from youtube, e.g. https://www.youtube.com/watch?v=7Uw5pk_Skbo&ab_channel=MTGUnpacked
 # All "venture" cards are included, but some instants, sorceries and lands/artifacts are also included
 name: "{set_name} Theme Booster Dungeon Theme"
-filter: "e:{set} (number<=set or promo:themepack) (o:dungeon or id:c)"
+filter: "e:{set} (is:baseset or promo:themepack) (o:dungeon or id:c)"
 pack:
   uncommon: 9
   common: 21

@@ -1,6 +1,6 @@
 # data collected from youtube, e.g. https://www.youtube.com/watch?v=sXKXVSURAuE&ab_channel=MTGUnpacked
 name: "{set_name} Theme Booster Party"
-filter: "e:{set} (number<=set or promo:themepack) (o:warrior or t:warrior or o:cleric or t:cleric or o:rogue or t:rogue or o:wizard or t:wizard or o:party)"
+filter: "e:{set} (is:baseset or promo:themepack) (o:warrior or t:warrior or o:cleric or t:cleric or o:rogue or t:rogue or o:wizard or t:wizard or o:party)"
 pack:
   uncommon: 9
   common: 21

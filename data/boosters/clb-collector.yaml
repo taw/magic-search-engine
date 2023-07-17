@@ -1,5 +1,5 @@
 # Data from https://magic.wizards.com/en/news/feature/commander-legends-battle-for-baldurs-gate-product-overview
-pack: 
+pack:
   foil_basic: 1
   foil_common: 3
   foil_uncommon: 2
@@ -19,7 +19,7 @@ sheets:
     count: 20
   foil_common_uncommon_legendary:
     foil: true
-    filter: "e:clb t:legendary number<=set"
+    filter: "e:clb t:legendary is:baseset"
     use: common_uncommon
     count: 50
   extended_commander:

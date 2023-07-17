@@ -61,7 +61,7 @@ sheets:
         - any: # Rare with commander and jumpstart options
           - use: rare_with_showcase
             chance: 60
-          - rawquery: "e:onc r:r number<=set"
+          - rawquery: "e:onc r:r is:baseset"
             chance: 22
             count: 22
           - rawquery: "e:{set} r:r number:404-408"
@@ -84,7 +84,7 @@ sheets:
           - use: mythic_has_no_showcase
             rate: 18
             count: 4
-          - rawquery: "e:onc r:m number<=set"
+          - rawquery: "e:onc r:m is:baseset"
             rate: 18
             count: 6
           chance: 1

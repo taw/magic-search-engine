@@ -3,7 +3,7 @@
 # It is very likely that some instants, sorceries, and enchantments are excluded, but
 # there is no information on what those cards are.
 name: "{set_name} Theme Booster Monsters"
-filter: "e:{set} (number<=set or promo:themepack) -t:artifact -t:human"
+filter: "e:{set} (is:baseset or promo:themepack) -t:artifact -t:human"
 pack:
   uncommon: 9
   common: 21

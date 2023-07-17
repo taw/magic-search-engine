@@ -35,10 +35,10 @@ sheets:
     foil: true
     use: rare_mythic
   extended_core_rare_mythic:
-    filter: "e:{set} frame:extendedart alt:(e:{set} number<=set) number<=397"
+    filter: "e:{set} frame:extendedart alt:(e:{set} is:baseset) number<=397"
     use: rare_mythic
   extended_jump_starter_rare_mythic:
-    filter: "frame:extendedart ((e:{set} -alt:(e:{set} number<=set)) or (e:ltc)) number<=397"
+    filter: "frame:extendedart ((e:{set} -alt:(e:{set} is:baseset)) or (e:ltc)) number<=397"
     use: rare_mythic
   uncommon_showcase:
     any:
@@ -144,4 +144,3 @@ sheets:
   surge_relic:
     foil: true
     rawquery: "e:ltc number:378-407"
-    

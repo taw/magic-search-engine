@@ -1,5 +1,5 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-march-of-the-machine
-filter: "e:mom number<=set"
+filter: "e:mom is:baseset"
 pack:
   basic_or_gainland: 1
   sfc_common: 7
@@ -30,7 +30,7 @@ sheets:
       count: 5
   sfc_common:
     balanced: true
-    query: "r:c is:sfc -is:gainland number<=set"
+    query: "r:c is:sfc -is:gainland is:baseset"
     count: 101
   dfc_common_uncommon:
     any:
@@ -41,11 +41,11 @@ sheets:
       rate: 1
       count: 10
   dfc_rare_mythic:
-    filter: "e:mom is:dfc -t:battle number<=set"
+    filter: "e:mom is:dfc -t:battle is:baseset"
     use: rare_mythic
     count: 10
   sfc_rare_mythic:
-    filter: "e:mom is:sfc number<=set"
+    filter: "e:mom is:sfc is:baseset"
     use: rare_mythic
     count: 54
   uncommon_battle:

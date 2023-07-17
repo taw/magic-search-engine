@@ -1,6 +1,6 @@
 # Data from youtube, e.g. https://www.youtube.com/watch?v=gnq3xpi0qWs&ab_channel=BadBoyGaming
 name: "{set_name} Theme Booster Obscura"
-filter: "e:{set} id<=esper (number<=set or promo:themepack) (w:Obscura or -w:*)"
+filter: "e:{set} id<=esper (is:baseset or promo:themepack) (w:Obscura or -w:*)"
 pack:
   uncommon: 10
   common: 21

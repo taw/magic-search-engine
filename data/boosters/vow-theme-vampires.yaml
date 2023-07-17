@@ -1,6 +1,6 @@
 # data collected from youtube, e.g. https://www.youtube.com/watch?v=sUTpE4cZEM4&ab_channel=TolarianCommunityCollege
 name: "{set_name} Theme Booster Vampires"
-filter: "e:{set} (number<=set or promo:themepack) (o:vampire -Katilda or t:vampire or (id<=rakdos (t:instant or t:sorcery or t:artifact)))"
+filter: "e:{set} (is:baseset or promo:themepack) (o:vampire -Katilda or t:vampire or (id<=rakdos (t:instant or t:sorcery or t:artifact)))"
 pack:
   uncommon: 9
   common: 21
