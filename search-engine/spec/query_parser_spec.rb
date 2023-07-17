@@ -241,6 +241,10 @@ describe "QueryParser" do
     assert_search_parse "w:abzan", "watermark:abzan"
   end
 
+  it "star" do
+    assert_search_parse "deck:*", 'deck:"*"'
+  end
+
   it "++" do
     assert_search_parse "++ pow=3 tou=2 c:g", "pow=3 tou=2 c:g ++"
     assert_search_parse "++ pow=3 tou=2 c:g", "pow=3 ++ tou=2 c:g"
