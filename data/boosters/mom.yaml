@@ -97,7 +97,7 @@ sheets:
       - use: uncommon
         rate: 1
         count: 80
-      - rawquery: "e:mul number:1-65 r:u" # Can we change the set size to make number<=set work?
+      - rawquery: "e:mul number:1-65 r:u" # Can we change the set size to make is:baseset work?
         rate: 1
         count: 20
       chance: 5

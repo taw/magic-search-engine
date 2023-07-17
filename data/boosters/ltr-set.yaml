@@ -27,9 +27,9 @@ sheets:
       rate: 2
     - query: "-alt:(number:302-331 or number:340-345) number:399-451"
       rate: 2
-    - query: "number<=set alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+    - query: "is:baseset alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 4
-    - query: "number<=set -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
+    - query: "is:baseset -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 6
   common_with_showcase:
     filter: "e:{set} r:c"

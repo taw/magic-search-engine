@@ -1,6 +1,6 @@
 # Data from youtube, e.g. https://www.youtube.com/watch?v=gnq3xpi0qWs&ab_channel=BadBoyGaming
 name: "{set_name} Theme Booster Maestros"
-filter: "e:{set} id<=grixis (number<=set or promo:themepack) (w:Maestros or -w:*)"
+filter: "e:{set} id<=grixis (is:baseset or promo:themepack) (w:Maestros or -w:*)"
 pack:
   uncommon: 10
   common: 21

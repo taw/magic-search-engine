@@ -102,17 +102,17 @@ sheets:
     count: 2
     foil: true
   rare_mythic_white:
-    filter: "e:{set} number<=set id=w"
+    filter: "e:{set} is:baseset id=w"
     use: rare_mythic
   rare_mythic_blue:
-    filter: "e:{set} number<=set id=u"
+    filter: "e:{set} is:baseset id=u"
     use: rare_mythic
   rare_mythic_black:
-    filter: "e:{set} number<=set id=b"
+    filter: "e:{set} is:baseset id=b"
     use: rare_mythic
   rare_mythic_red:
-    filter: "e:{set} number<=set id=r"
+    filter: "e:{set} is:baseset id=r"
     use: rare_mythic
   rare_mythic_green:
-    filter: "e:{set} number<=set id=g"
+    filter: "e:{set} is:baseset id=g"
     use: rare_mythic

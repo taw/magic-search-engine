@@ -31,7 +31,7 @@ sheets:
     query: "r:c"
     count: 141
   background:
-    filter: "e:clb t:background number<=set"
+    filter: "e:clb t:background is:baseset"
     use: base_1248_by_rarity
     count: 26
   legendary_with_showcase:

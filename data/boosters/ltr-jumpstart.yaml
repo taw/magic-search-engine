@@ -52,17 +52,17 @@ sheets:
     deck: "ltr/Tricksy 2"
     count: 19
   white_rare:
-    filter: "e:{set} number<=set id<=w"
+    filter: "e:{set} is:baseset id<=w"
     use: rare_mythic
   blue_rare:
-    filter: "e:{set} number<=set id<=u"
+    filter: "e:{set} is:baseset id<=u"
     use: rare_mythic
   black_rare:
-    filter: "e:{set} number<=set id<=b"
+    filter: "e:{set} is:baseset id<=b"
     use: rare_mythic
   red_rare:
-    filter: "e:{set} number<=set id<=r"
+    filter: "e:{set} is:baseset id<=r"
     use: rare_mythic
   green_rare:
-    filter: "e:{set} number<=set id<=g"
+    filter: "e:{set} is:baseset id<=g"
     use: rare_mythic

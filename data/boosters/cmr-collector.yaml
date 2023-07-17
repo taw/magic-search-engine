@@ -15,11 +15,11 @@ sheets:
     query: "r:u -t:legendary"
   foil_legends:
     foil: true
-    filter: "e:cmr t:legendary number<=set"
+    filter: "e:cmr t:legendary is:baseset"
     use: base_1248_by_rarity
   foil_rare_mythic_nonlegendary:
     foil: true
-    filter: "e:cmr number<=set -t:legendary"
+    filter: "e:cmr is:baseset -t:legendary"
     use: rare_mythic
   extended_art_common_uncommon:
     filter: "e:cmr frame:extendedart"

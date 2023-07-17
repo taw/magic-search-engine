@@ -1,6 +1,6 @@
 # Data from https://magic.gg/news/streets-of-new-capenna-prerelease-primer
 name: "{set_name} Seeded Prerelease Pack Brokers"
-filter: "e:{set} id<=bant (w:Brokers or -w:*) number<=set"
+filter: "e:{set} id<=bant (w:Brokers or -w:*) is:baseset"
 pack:
   intro_set: 2
   land: 1

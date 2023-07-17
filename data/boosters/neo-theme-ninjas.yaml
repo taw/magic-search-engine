@@ -1,6 +1,6 @@
 # data collected from youtube, e.g. https://www.youtube.com/watch?v=OCLAtD8F3rU&ab_channel=MTGUnpacked
 name: "{set_name} Theme Booster Ninjas"
-filter: "e:{set} (number<=set or promo:themepack) (o:ninja or t:ninja or (id<=dimir (t:instant or t:sorcery or t:artifact)))"
+filter: "e:{set} (is:baseset or promo:themepack) (o:ninja or t:ninja or (id<=dimir (t:instant or t:sorcery or t:artifact)))"
 pack:
   uncommon: 9
   common: 21

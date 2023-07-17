@@ -1,6 +1,6 @@
 # data collected from youtube, e.g. https://www.youtube.com/watch?v=sUTpE4cZEM4&ab_channel=TolarianCommunityCollege
 name: "{set_name} Theme Booster Blue"
-filter: "e:{set} id<=u (number<=set or promo:themepack)"
+filter: "e:{set} id<=u (is:baseset or promo:themepack)"
 pack:
   uncommon: 9
   common: 21
