@@ -64,9 +64,9 @@ class PatchMtgjsonVersions < Patch
 
   def call
     # Delete all Alchemy cards
-    delete_printing_if do |card|
-      card["isRebalanced"]
-    end
+    # delete_printing_if do |card|
+    #   card["isRebalanced"]
+    # end
 
     # Prepare Alchemy cards - this needs a bunch of fixes before it can be enabled
     each_printing do |card|

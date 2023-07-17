@@ -107,6 +107,12 @@ describe "CLI Frontend" do
         Flying, trample
         4/4
 
+        Emerald Dragon (Alchemy) {4}{g}{g}
+        [hbg]
+        Creature - Dragon
+        Flying, ward {2}
+        4/4
+
         Green Dragon {4}{g}{g}
         [afr afr prm]
         Creature - Dragon
