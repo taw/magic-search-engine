@@ -42,6 +42,7 @@ class ExportFormatter
 
   def serialize_sheets(sheets)
     sheets.map{|sheet|
+      raise "Sheet #{sheet.name} of #{@booster.name} is empty" if sheet.empty?
       [sheet.name, serialize_sheet(sheet)]
     }.to_h
   end
@@ -72,6 +73,10 @@ class ExportFormatter
   def call(path)
     path.write JSON.pretty_generate(data)
   end
+
+  def inspect
+    self.class.to_s
+  end
 end
 
 class ExportFormatterBasic < ExportFormatter
@@ -100,7 +105,8 @@ class ExportFormatterBasic < ExportFormatter
   def data
     result = []
     @db.supported_booster_types.each do |booster_code, booster|
-      booster = flatten_pack(booster)
+      # save @booster for better error messages
+      @booster = booster = flatten_pack(booster)
       sheets = extract_sheets(booster)
       result << {
         name: booster.name,

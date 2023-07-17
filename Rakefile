@@ -179,7 +179,7 @@ end
 
 desc "Update sealed only"
 task "update:sealed" do
-  sh "./bin/export_sealed_data ~/github/magic-sealed-data"
+  sh "rescue ./bin/export_sealed_data ~/github/magic-sealed-data"
 end
 
 desc "Export decklists as text"
