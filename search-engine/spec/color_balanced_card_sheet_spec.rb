@@ -1,5 +1,6 @@
 describe ColorBalancedCardSheet do
   include_context "db"
+
   let(:factory) { CardSheetFactory.new(db) }
   let(:nph_commons) { factory.from_query("e:nph r:common", kind: ColorBalancedCardSheet).tap{|s| s.name="common"} }
   let(:jud_commons) { factory.from_query("e:jud r:common", kind: ColorBalancedCardSheet).tap{|s| s.name="common"} }

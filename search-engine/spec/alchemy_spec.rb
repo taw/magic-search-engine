@@ -7,7 +7,7 @@ describe "Alchemy" do
   end
 
   it "no Alchemy cards in any boosters" do
-    assert_search_results "is:alchemy is:baseset"
+    assert_search_results "is:alchemy booster:*"
   end
 
   it "no Alchemy cards in any precons" do
