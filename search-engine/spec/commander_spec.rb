@@ -30,8 +30,9 @@ describe "is:commander" do
 
   it "is:commander" do
     # Some C14 commanders got reprited
+    # Why "Minsc Boo, Timeless Heroes (Alchemy)" doesnt't have "Minsc & Boo, Timeless Heroes can be your commander."? No idea
     assert_search_equal_cards "is:commander",
-      "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,c18,bbd,cmr,dmc) OR (t:saga e:htr18) OR (Grand Calcutron) OR (Grist Hunger Tide) OR (Shorikai, Genesis Engine) OR (Tasha, the Witch Queen) OR (Minsc Boo, Timeless Heroes) OR (Elminster t:planeswalker) OR (Byode, Inverse Sun) OR (Ersta, Friend to All) OR (The Legend of Arena)"
+      "(is:primary t:legendary t:creature) OR (t:planeswalker e:c14,c18,bbd,cmr,dmc) OR (t:saga e:htr18) OR (Grand Calcutron) OR (Grist Hunger Tide) OR (Shorikai, Genesis Engine) OR (Tasha, the Witch Queen) OR (Minsc Boo, Timeless Heroes -is:alchemy) OR (Elminster t:planeswalker) OR (Byode, Inverse Sun) OR (Ersta, Friend to All) OR (The Legend of Arena)"
   end
 
   it "is:brawler" do
