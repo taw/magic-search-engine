@@ -16,7 +16,7 @@ sheets:
     foil: true
     use: rare_mythic
   saga_theme_commander:
-    filter: "(e:khm t:saga) or (e:khm number:374-393) or (e:khc number<=16)"
+    filter: "(e:khm t:saga is:baseset) or (e:khm number:374-393) or (e:khc number:1-16)"
     use: rare_mythic
   extended_art:
     filter: "e:khm frame:extendedart -promo:buyabox"
