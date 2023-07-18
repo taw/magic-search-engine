@@ -34,7 +34,7 @@ class ConditionDeck < Condition
     decks = db.resolve_deck_name(@deck_name)
     if decks.empty?
       warning %[No deck matching "#{@deck_name}"]
-    elsif decks.size > 1
+    elsif decks.size > 1 and decks.size < db.decks.size
       deck_names = decks.map{|deck| "#{deck.name} (#{deck.set_name})"}
       warning %[Multiple decks matching "#{@deck_name}": #{deck_names.join(", ")}]
     end
