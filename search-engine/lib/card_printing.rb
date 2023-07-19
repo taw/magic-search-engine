@@ -1,14 +1,44 @@
 class CardPrinting
-  attr_reader :card, :set, :date, :release_date
-  attr_reader :watermark, :artist_name, :multiverseid, :number, :frame, :flavor, :flavor_normalized, :border
-  attr_reader :rarity_code, :print_sheet, :oversized, :frame_effects, :foiling, :spotlight
-  attr_reader :textless, :fullart, :buyabox, :flavor_name, :nontournament, :acorn
-  attr_reader :attraction_lights, :promo_types, :variant_misprint, :variant_foreign, :signature, :subsets, :timeshifted
-  attr_reader :stamp, :digital, :language, :etched
+  attr_reader(
+    :acorn,
+    :artist_name,
+    :attraction_lights,
+    :border,
+    :buyabox,
+    :card,
+    :date,
+    :digital,
+    :etched,
+    :flavor_name,
+    :flavor_normalized,
+    :flavor,
+    :foiling,
+    :frame_effects,
+    :frame,
+    :fullart,
+    :language,
+    :multiverseid,
+    :nontournament,
+    :number,
+    :oversized,
+    :print_sheet,
+    :promo_types,
+    :rarity_code,
+    :release_date,
+    :set,
+    :signature,
+    :spotlight,
+    :stamp,
+    :subsets,
+    :textless,
+    :timeshifted,
+    :variant_foreign,
+    :variant_misprint,
+    :watermark,
+  )
 
   # Performance cache of derived information
-  attr_reader :stemmed_name, :set_code
-  attr_reader :release_date_i, :number_i
+  attr_reader :stemmed_name, :set_code, :release_date_i, :number_i
 
   # Set by CardDatabase initialization
   attr_accessor :others, :artist, :default_sort_index, :partner, :in_boosters
@@ -123,16 +153,66 @@ class CardPrinting
   %W[block_code block_name online_only?].each do |m|
     eval("def #{m}; @set.#{m}; end")
   end
-  %W[name names layout colors mana_cost reserved types cmc text text_normalized power
-    toughness loyalty extra color_identity has_multiple_parts? typeline
-    first_release_date last_release_date printings life hand rulings
-    foreign_names foreign_names_normalized mana_hash funny color_indicator color_indicator_set
-    related first_regular_release_date reminder_text augment
-    display_power display_toughness display_mana_cost
-    primary? secondary? front? back? partner? allowed_in_any_number?
-    commander? brawler? custom? keywords decklimit
-    count_sets count_prints count_papersets count_paperprints name_slug
-    fulltext fulltext_normalized defense colors_set color_identity_set alchemy
+  %W[
+    alchemy
+    allowed_in_any_number?
+    augment
+    back?
+    brawler?
+    cmc
+    color_identity
+    color_identity_set
+    color_indicator
+    color_indicator_set
+    colors
+    colors_set
+    commander?
+    count_paperprints
+    count_papersets
+    count_prints
+    count_sets
+    custom?
+    decklimit
+    defense
+    display_mana_cost
+    display_power
+    display_toughness
+    extra
+    first_regular_release_date
+    first_release_date
+    foreign_names
+    foreign_names_normalized
+    front?
+    fulltext
+    fulltext_normalized
+    funny
+    hand
+    has_alchemy
+    has_multiple_parts?
+    keywords
+    last_release_date
+    layout
+    life
+    loyalty
+    mana_cost
+    mana_hash
+    name
+    name_slug
+    names
+    partner?
+    power
+    primary?
+    printings
+    related
+    reminder_text
+    reserved
+    rulings
+    secondary?
+    text
+    text_normalized
+    toughness
+    typeline
+    types
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
   end
