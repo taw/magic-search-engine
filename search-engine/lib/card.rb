@@ -355,13 +355,51 @@ class Card
   attr_reader :data, :printings
   attr_writer :printings # For db subset
 
-  attr_reader :name, :names, :layout, :colors, :mana_cost, :reserved, :types
-  attr_reader :color_identity, :cmc, :text, :text_normalized, :power, :toughness, :loyalty, :extra
-  attr_reader :hand, :life, :rulings, :foreign_names, :foreign_names_normalized, :stemmed_name
-  attr_reader :mana_hash, :typeline, :funny, :color_indicator, :color_indicator_set, :related
-  attr_reader :reminder_text, :augment, :display_power, :display_toughness, :display_mana_cost, :keywords
-  attr_reader :commander, :brawler, :fulltext, :fulltext_normalized, :defense
-  attr_reader :colors_set, :color_identity_set, :decklimit, :alchemy
+  attr_reader(
+    :alchemy,
+    :augment,
+    :brawler,
+    :cmc,
+    :color_identity_set,
+    :color_identity,
+    :color_indicator_set,
+    :color_indicator,
+    :colors_set,
+    :colors,
+    :commander,
+    :decklimit,
+    :defense,
+    :display_mana_cost,
+    :display_power,
+    :display_toughness,
+    :extra,
+    :foreign_names_normalized,
+    :foreign_names,
+    :fulltext_normalized,
+    :fulltext,
+    :funny,
+    :hand,
+    :has_alchemy,
+    :keywords,
+    :layout,
+    :life,
+    :loyalty,
+    :mana_cost,
+    :mana_hash,
+    :name,
+    :names,
+    :power,
+    :related,
+    :reminder_text,
+    :reserved,
+    :rulings,
+    :stemmed_name,
+    :text_normalized,
+    :text,
+    :toughness,
+    :typeline,
+    :types,
+  )
 
   def initialize(data)
     @printings = []
@@ -394,6 +432,7 @@ class Card
     @display_toughness = data["display_toughness"] ? data["display_toughness"] : @toughness
     @display_mana_cost = data["hide_mana_cost"] ? nil : @mana_cost
     @alchemy = data["alchemy"]
+    @has_alchemy = data["has_alchemy"]
     if ["vanguard", "planar", "scheme"].include?(@layout) or @types.include?("conspiracy") or @alchemy
       @extra = true
     else

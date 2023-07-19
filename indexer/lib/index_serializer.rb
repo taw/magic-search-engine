@@ -86,6 +86,7 @@ class IndexSerializer
         "foreign_names",
         "funny",
         "hand", # vanguard
+        "has_alchemy",
         "hide_mana_cost",
         "is_partner",
         "keywords",
