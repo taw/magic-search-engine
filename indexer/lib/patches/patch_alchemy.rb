@@ -11,5 +11,11 @@ class PatchAlchemy < Patch
       next unless has_alchemy.include?(card["name"])
       card["has_alchemy"] = true
     end
+
+    each_printing do |card|
+      next unless card["alchemy"]
+      next unless card["text"] =~ /A-/
+      card["text"] = card["text"].gsub("A-", "")
+    end
   end
 end
