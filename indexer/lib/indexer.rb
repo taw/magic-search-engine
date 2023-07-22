@@ -76,6 +76,7 @@ class Indexer
       PatchBaseSize,
 
       # Calculate extra fields
+      PatchAlchemy,
       PatchBlocks,
       PatchHasBoosters,
       PatchSecondary,

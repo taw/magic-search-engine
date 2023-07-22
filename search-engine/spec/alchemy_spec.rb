@@ -13,4 +13,8 @@ describe "Alchemy" do
   it "no Alchemy cards in any precons" do
     assert_search_results "is:alchemy deck:*"
   end
+
+  it "has:alchemy and is:alchemy returns same number of cards" do
+    search_names("has:alchemy").size.should == search_names("is:alchemy").size
+  end
 end

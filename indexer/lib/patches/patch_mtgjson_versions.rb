@@ -63,14 +63,10 @@ class PatchMtgjsonVersions < Patch
   end
 
   def call
-    # Delete all Alchemy cards
-    # delete_printing_if do |card|
-    #   card["isRebalanced"]
-    # end
-
-    # Prepare Alchemy cards - this needs a bunch of fixes before it can be enabled
+    # Fix Alchemy cards names into something search engine can work with
+    # mtgjson "A-Akki Ronin" turns into "Akki Ronin (Alchemy)"
     each_printing do |card|
-      next unless card["isRebalanced"]
+      next unless card.delete("isRebalanced")
       card["alchemy"] = true
       card["name"] = alchemy_name_fix(card["name"])
       card["faceName"] = alchemy_name_fix(card["faceName"])
