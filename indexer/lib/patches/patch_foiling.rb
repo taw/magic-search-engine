@@ -21,7 +21,7 @@ class PatchFoiling < Patch
       when [false, true]
         card["foiling"] = "foilonly"
       else
-        if card["finishes"].include?("etched")
+        if card["finishes"]&.include?("etched")
           card["foiling"] = "foilonly"
         else
           warn "Bad foiling information for #{card["name"]} in #{card["set_code"]}"

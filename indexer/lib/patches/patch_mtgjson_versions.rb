@@ -244,7 +244,7 @@ class PatchMtgjsonVersions < Patch
 
       card.delete("language") if card["language"] == "English"
 
-      if card["finishes"].include?("etched")
+      if card["finishes"]&.include?("etched")
         card["etched"] = true
       end
 
