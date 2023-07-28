@@ -36,6 +36,8 @@ class PatchSetTypes < Patch
         set_types << "masters"
       when "ocmd", /\Aoc\d\d\z/, "cmr", "clb"
         set_types << "commander" << "multiplayer"
+      when "cmm"
+        set_types << "commander"
       when "pwpn", /\Apwp\d+\z/
         set_types << "wpn"
       when "parl", /\Apal\d+\z/
