@@ -176,7 +176,7 @@ describe "Any queries" do
     end
 
     it "digital" do
-      assert_search_equal "any:digital", "is:digital or foreign:digital"
+      assert_search_equal "any:digital", "is:digital or foreign:digital or ft:digital"
     end
 
     it "funny" do

@@ -58,7 +58,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Jace Beleren {1}{u}{u}
-        [lrw dd2 dd2 pbook m10 m11 prm jvc ss1]
+        [lrw dd2 dd2 pbook m10 m11 prm jvc ss1 cmm]
         Legendary Planeswalker - Jace
         [+2]: Each player draws a card.
         [−1]: Target player draws a card.
