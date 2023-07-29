@@ -1,0 +1,16 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-commander-masters
+pack:
+  foil_common_uncommon_showcase: 1
+  raremythic:
+  - rare_mythic_showcase: 1
+    chance: 1
+  - foil_rare_mythic_showcase: 1
+    chance: 1
+sheets:
+  rare_mythic_showcase:
+    filter: "e:cmm promo:boosterfun -is:foilonly"
+    use: rare_mythic
+  foil_rare_mythic_showcase:
+    foil: true
+    filter: "e:cmm promo:boosterfun -is:foilonly"
+    use: rare_mythic
