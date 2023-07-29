@@ -4,10 +4,10 @@ pack:
   party_scene_promo: 1
 sheets:
   prerelease_promo:
-    filter: "e:pltr"
+    filter: "e:pltr number<=260"
     foil: true
     use: rare_mythic
   party_scene_promo:
     foil: true
-    filter: "e:{set} number:399-404"
+    filter: "e:pltr number:399-404"
     use: base_1248_by_rarity
