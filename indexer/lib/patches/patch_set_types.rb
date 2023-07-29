@@ -36,6 +36,8 @@ class PatchSetTypes < Patch
         set_types << "masters"
       when "ocmd", /\Aoc\d\d\z/, "cmr", "clb"
         set_types << "commander" << "multiplayer"
+      when "cmm"
+        set_types << "commander"
       when "pwpn", /\Apwp\d+\z/
         set_types << "wpn"
       when "parl", /\Apal\d+\z/
@@ -68,7 +70,7 @@ class PatchSetTypes < Patch
       end
 
       # Some of these are not actually funny sets, just promo sets mixing funny and regular cards (like plist)
-      funny_sets = %W[unh ugl pcel hho parl prel ust pust ppc1 htr htr16 htr17 htr18 htr19 htr20 pal04 h17 j17 tbth tdag tfth thp1 thp2 thp3 ptg cmb1 cmb2 htr18 und punh plist o90p olep p30a uplist phtr ph17 ph18 ph19 ph20 ph21]
+      funny_sets = %W[unh ugl pcel hho parl prel ust pust ppc1 htr htr16 htr17 htr18 htr19 htr20 pal04 h17 j17 tbth tdag tfth thp1 thp2 thp3 ptg cmb1 cmb2 htr18 und punh plist o90p olep p30a uplist phtr ph17 ph18 ph19 ph20 ph21 p30m]
       if funny_sets.include?(set_code)
         set_types << "funny"
         set["funny"] = true
