@@ -1,0 +1,73 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-commander-masters
+pack:
+  land:
+  - basic: 1
+    chance: 4
+  - foil_basic: 1
+    chance: 1
+  common: 4
+  common_uncommon_showcase: 1
+  nonlegendary_uncommon: 2
+  legendary_uncommon: 1
+  variable_slot:
+  - legendary_uncommon: 1
+    chance: 1
+  - nonlegendary_rare_mythic: 1
+    chance: 1
+  wildcard: 2
+  legendary_rare_mythic: 1
+  nonlegendary_rare_mythic: 1
+  finale:
+  - foil: 1
+    chance: 3
+  - foil: 1
+    #the_list: 1
+    chance: 1
+sheets:
+  common:
+    query: "r:c"
+  nonlegendary_uncommon:
+    rawquery: "e:cmm r:u -t:legendary is:baseset"
+  legendary_uncommon:
+    rawquery: "e:cmm r:u t:legendary is:baseset"
+  nonlegendary_rare_mythic:
+    filter: "e:cmm -t:legendary is:baseset"
+    use: rare_mythic
+  legendary_rare_mythic:
+    filter: "e:cmm t:legendary is:baseset"
+    use: rare_mythic
+  wildcard:
+    any:
+    - use: common_with_showcase
+      chance: 700
+    - use: uncommon_with_showcase
+      chance: 175
+    - any:
+      - use: rare_with_showcase
+        chance: 270
+      - use: mythic_with_showcase
+        chance: 35
+      chance: 125
+  foil:
+    foil: true
+    any:
+    - any:
+      - use: common_with_showcase
+        chance: 130
+      - query: "r:b"
+        chance: 15
+      - use: special
+        chance: 1
+      chance: 12
+    - use: uncommon_with_showcase
+      chance: 5
+    - any:
+      - use: rare_with_showcase
+        rate: 2
+      - use: mythic_with_showcase
+        rate: 1
+      chance: 3
+  #the_list:
+  #  set: plist
+  #  code: "CMM"
+  

@@ -1,0 +1,82 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-commander-masters
+pack:
+  common_with_showcase: 10
+  piper:
+  - common_with_showcase: 1
+    chance: 5
+  - special: 1
+    chance: 1
+  nonlegendary_uncommon: 3
+  legendary_uncommon: 2
+  legendary_rare_mythic: 1
+  nonlegendary_rare_mythic: 1
+  wildcard:
+  - nonlegendary_uncommon: 1
+    chance: 2
+  - nonlegendary_rare_mythic: 1
+    chance: 1
+  foil: 1
+sheets:
+  nonlegendary_uncommon:
+    any:
+    - rawquery: "e:cmm r:u -t:legendary is:baseset -alt:(e:cmm promo:boosterfun)"
+      rate: 3
+    - rawquery: "e:cmm r:u -t:legendary is:baseset alt:(e:cmm promo:boosterfun)"
+      rate: 2
+    - rawquery: "e:cmm r:u -t:legendary promo:boosterfun"
+      rate: 1
+  legendary_uncommon:
+    any:
+    - rawquery: "e:cmm r:u t:legendary is:baseset -alt:(e:cmm promo:boosterfun)"
+      rate: 3
+    - rawquery: "e:cmm r:u t:legendary is:baseset alt:(e:cmm promo:boosterfun)"
+      rate: 2
+    - rawquery: "e:cmm r:u t:legendary promo:boosterfun"
+      rate: 1
+  nonlegendary_rare_mythic:
+    any:
+    - rawquery: "e:cmm r:r -t:legendary is:baseset -alt:(e:cmm promo:boosterfun -is:foilonly)"
+      rate: 6
+    - rawquery: "e:cmm r:r -t:legendary is:baseset alt:(e:cmm promo:boosterfun -is:foilonly)"
+      rate: 4
+    - rawquery: "e:cmm r:r -t:legendary promo:boosterfun -is:foilonly alt:is:baseset"
+      rate: 2
+    - rawquery: "e:cmm r:m -t:legendary is:baseset -alt:(e:cmm promo:boosterfun -is:foilonly)"
+      rate: 3
+    - rawquery: "e:cmm r:m -t:legendary is:baseset alt:(e:cmm promo:boosterfun -is:foilonly)"
+      rate: 2
+    - rawquery: "e:cmm r:m -t:legendary promo:boosterfun -is:foilonly alt:is:baseset"
+      rate: 1
+  legendary_rare_mythic:
+    any:
+    - rawquery: "e:cmm r:r t:legendary is:baseset -alt:(e:cmm promo:boosterfun -is:foilonly)"
+      rate: 6
+    - rawquery: "e:cmm r:r t:legendary is:baseset alt:(e:cmm promo:boosterfun -is:foilonly)"
+      rate: 4
+    - rawquery: "e:cmm r:r t:legendary promo:boosterfun -is:foilonly alt:is:baseset"
+      rate: 2
+    - rawquery: "e:cmm r:m t:legendary is:baseset -alt:(e:cmm promo:boosterfun -is:foilonly)"
+      rate: 3
+    - rawquery: "e:cmm r:m t:legendary is:baseset alt:(e:cmm promo:boosterfun -is:foilonly)"
+      rate: 2
+    - rawquery: "e:cmm r:m t:legendary promo:boosterfun -is:foilonly alt:is:baseset"
+      rate: 1
+  foil:
+    foil: true
+    any:
+    - any:
+      - use: common_with_showcase
+        chance: 130
+      - query: "r:b"
+        chance: 15
+      - use: special
+        chance: 1
+      chance: 12
+    - use: uncommon_with_showcase
+      chance: 5
+    - any:
+      - use: rare_with_showcase
+        rate: 2
+      - use: mythic_with_showcase
+        rate: 1
+      chance: 3

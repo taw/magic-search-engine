@@ -1,0 +1,42 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-commander-masters
+pack:
+  foil_common: 4
+  foil_uncommon: 2
+  foil_basic: 1
+  common_uncommon_showcase: 2
+  foil_common_uncommon_showcase: 1
+  foil_rare_mythic: 1
+  rare_mythic_showcase: 1
+  extended:
+  - extended_commander: 1
+    chance: 4
+  - foil_extended_commander: 1
+    chance: 1
+  etched_rare_mythic: 1
+  foiling:
+  - foil_rare_mythic_showcase: 1
+    chance: 96
+  - textured_rare_mythic: 1
+    chance: 4
+sheets:
+  extended_commander:
+    filter: "e:cmm frame:extendedart"
+    use: rare_mythic
+  foil_extended_commander:
+    foil: true
+    filter: "e:cmm frame:extendedart"
+    use: rare_mythic
+  etched_rare_mythic:
+    foil: true
+    filter: "e:cmm is:etched" # number:452-621
+    use: rare_mythic
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  foil_rare_mythic_showcase:
+    foil: true
+    use: rare_mythic_showcase
+  textured_rare_mythic:
+    foil: true
+    filter: "e:cmm promo:textured"
+    use: rare_mythic
