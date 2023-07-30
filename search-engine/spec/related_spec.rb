@@ -18,6 +18,22 @@ describe "Spelling" do
       "Domesticated Mammoth"
   end
 
+  it "Alchemy" do
+    assert_search_results "related:Acererak",
+      "Acererak the Archlich",
+      "Acererak the Archlich (Alchemy)"
+  end
+
+  it "specialize" do
+    assert_search_results "related:Alora",
+      "Alora, Cheerful Assassin",
+      "Alora, Cheerful Mastermind",
+      "Alora, Cheerful Scout",
+      "Alora, Cheerful Swashbuckler",
+      "Alora, Cheerful Thief",
+      "Alora, Rogue Companion"
+  end
+
   it "*" do
     assert_search_equal "related:t:*", "related:*"
   end
