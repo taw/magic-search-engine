@@ -56,4 +56,10 @@ BanList.for_format("premodern") do
     "https://premodernmagic.com/blog/ban-list-update-2022/",
     "Show and Tell" => "legal",
   )
+
+  change(
+    "2023-07-15",
+    "https://premodernmagic.com/blog/ban-list-update-2023/",
+    "Land Tax" => "banned",
+  )
 end
