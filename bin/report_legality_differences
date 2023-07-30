@@ -23,7 +23,7 @@ class ReportLegalityDifferences
 
   # This method mostly just verifies and filters out data
   # It's not in very convenient format
-  memoize def mtgjson_legalities_data_before_alchemy
+  memoize def mtgjson_legalities_data
     result = {}
     all_sets.each do |set_code, set_data|
       # Name conflicts
@@ -33,6 +33,7 @@ class ReportLegalityDifferences
       set_data["cards"].each do |card|
         next if card["isOversized"]
         name = card["faceName"] || card["name"]
+        name = alchemy_name_fix(name)
         legalities = card["legalities"].dup
         # Various non-legal oversized etc. cards, just ignore them
         next if legalities == {}
@@ -46,19 +47,6 @@ class ReportLegalityDifferences
       end
     end
     result
-  end
-
-  memoize def mtgjson_legalities_data
-    alchemy, normal = mtgjson_legalities_data_before_alchemy.partition{|k,v| k =~ /\AA-/}.map(&:to_h)
-
-    alchemy.each do |k, v|
-      base_name = k.sub(/A-/, "")
-      if v["historic"] == "Legal" and normal[base_name]["historic"] == nil
-        normal[base_name]["historic"] = "Legal"
-      end
-    end
-
-    normal
   end
 
   memoize def mtgjson_formats
@@ -106,6 +94,17 @@ class ReportLegalityDifferences
       puts "* #{name} - mtgjson:#{a || 'not it format'} - db:#{b || 'not in format'}"
     end
     puts ""
+  end
+
+  def alchemy_name_fix(name)
+    return unless name
+    name.split(" // ").map{|s|
+      if s =~ /\AA-(.*)/
+        "#{$1} (Alchemy)"
+      else
+        s
+      end
+    }.join(" // ")
   end
 
   def call

@@ -203,6 +203,7 @@ class Format
         "mtgoedh"                    => FormatMTGOCommander,
         "historic"                   => FormatHistoric,
         "premodern"                  => FormatPremodern,
+        "alchemy"                    => FormatAlchemy,
       }
     end
 
