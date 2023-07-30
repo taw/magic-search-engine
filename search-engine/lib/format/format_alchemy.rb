@@ -4,11 +4,22 @@ class FormatAlchemy < FormatStandard
   end
 
   # Format announced 2021-12-02, so no previous rotations
-  # There shoulrd be 8 Y* sets right now
+  # Rotation in 2023 cancelled
+  # ANB always legal
+  # Non-Standard-legal LTR is Arena-legal
+  # https://mtg.fandom.com/wiki/Alchemy
   def rotation_schedule
     {
-      "2022-09-09" => ["mid", "ymid", "vow", "neo", "yneo", "snc", "ysnc", "hbg", "dmu", "ydmu", "bro", "ybro", "one", "yone", "mom", "mat"],
-      "2021-12-02" => ["znr", "khm", "stx", "afr", "mid", "ymid", "vow", "neo", "yneo", "snc", "ysnc", "hbg"],
+      "2022-09-09" => [
+        "anb",
+        "mid", "ymid", "vow", "neo", "yneo", "snc", "ysnc", "hbg",
+        "dmu", "ydmu", "bro", "ybro", "one", "yone", "mom", "mat", "ltr",
+      ],
+      "2021-12-02" => [
+        "anb",
+        "znr", "khm", "stx", "afr",
+        "mid", "ymid", "vow", "neo", "yneo", "snc", "ysnc", "hbg",
+      ],
     }
   end
 
