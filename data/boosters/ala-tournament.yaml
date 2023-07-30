@@ -1,0 +1,17 @@
+# Data from https://www.cardkingdom.com/mtg/shards-of-alara/shards-of-alara-tournament-pack
+name: "{set_name} Tournament Deck"
+pack:
+  basic: 29
+  common: 33
+  uncommon: 10
+  rare: 3
+sheets:
+  uncommon:
+    duplicates: true
+    query: "r:u"
+  common:
+    duplicates: true
+    query: "r:c"
+  basic:
+    duplicates: true
+    query: "r:b"
