@@ -12,6 +12,8 @@ class FormatVintage < Format
     # * token Dungeon sets (this is somewhat questionable if they should be included or not)
     #
     # This could be done programatically instead
+    #
+    # Pauper fomat needs it for defining what counts as a "common"
 
     excluded_sets = Set[*%w[
       ana
@@ -23,6 +25,8 @@ class FormatVintage < Format
       pmic
       prm
       psdg
+      sir
+      sis
       tafr
       tclb
       xana
