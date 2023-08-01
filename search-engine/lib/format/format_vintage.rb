@@ -16,6 +16,7 @@ class FormatVintage < Format
     # Pauper fomat needs it for defining what counts as a "common"
 
     excluded_sets = Set[*%w[
+      30a
       ana
       anb
       hbg
