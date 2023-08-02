@@ -88,6 +88,7 @@ class IndexSerializer
         "hand", # vanguard
         "has_alchemy",
         "hide_mana_cost",
+        "in_spellbook",
         "is_partner",
         "keywords",
         "layout",

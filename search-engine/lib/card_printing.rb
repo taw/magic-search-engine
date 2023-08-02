@@ -189,6 +189,7 @@ class CardPrinting
     hand
     has_alchemy
     has_multiple_parts?
+    in_spellbook
     keywords
     last_release_date
     layout
