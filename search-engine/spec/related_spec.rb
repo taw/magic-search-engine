@@ -73,11 +73,13 @@ describe "Spelling" do
   end
 
   it "is:spellbook" do
-    # TODO
+    assert_search_include "is:spellbook",
+      "Black Lotus"
   end
 
   it "has:spellbook" do
-    # TODO
+    assert_search_include "has:spellbook",
+      "Oyaminartok, Polar Werebear"
   end
 
   it "is:specialized" do

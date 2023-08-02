@@ -70,7 +70,6 @@
     %h4 Search by color
     %div
       Color expressions are supported, with either list of colors, number of colors, or common aliases
-
     %ul
       = search_help "c=w", "cards which are exactly white"
       = search_help "c=gr", "cards which are exactly green and red"
@@ -98,7 +97,6 @@
       You can search by color identity same way you can search by color.
       If you want to find cards legal in your Commander deck, you usually want <code>ci<=temur</code> style query.
       If you want a Commander of specific identity, you usually want <code>ci=temur</code> style query.
-
     %ul
       = search_help "ci=w", "cards whose identity is exactly white"
       = search_help "ci=gr", "cards whose identity is exactly green and red"
@@ -283,8 +281,8 @@
       = search_help "has:signature", "cards with any signature"
       = search_help "-sig:*", "cards with no signature"
 
-    %h4 Search by card frame features
-    %div For each of these you can use not: as opposite of is:. Data might occasionally be inaccurate for some promo printings.
+    %h4 Search by card features
+    %div For each of these you can use not: as opposite of is:
     %ul
       = search_help "border:black", "cards with black borders"
       = search_help "not:black-bordered", "cards with borders other than black"
@@ -341,8 +339,10 @@
       = search_help "is:etched", "is etched foil card"
       = search_help "is:hero", "is Hero's Path card"
       = search_help "is:maindeck", "is the type of card that could go into a main deck (so not Attraction, Conspiracy, Contraption, Dungeon, Hero's Path, Phenomenon, Plane, Scheme, Stickers, Vanguard) - uncards are included"
-      = search_help "is:specialized", "card is a specialized version of another card (Arena digital only cards)"
       = search_help "has:specialized", "card can be specialized into another card (Arena digital only cards)"
+      = search_help "is:specialized", "card is a specialized version of another card (Arena digital only cards)"
+      = search_help "has:spellbook", "card has an associated spellbook (Arena digital only cards)"
+      = search_help "is:spellbook", "card is in a spellbook (for one of Arena digital only cards)"
 
     %h4 Search by booster contents
     %div You can search all cards present in specific booster, or in specific print sheet.

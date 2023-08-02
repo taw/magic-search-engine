@@ -1,3 +1,5 @@
+# Inclruding Specialized / Spellbooks here is arguably redundant with their special fields
+
 class PatchLinkRelated < Patch
   ExtraRelations = {
     "Garth One-Eye" => [
