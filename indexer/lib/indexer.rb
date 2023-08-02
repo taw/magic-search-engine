@@ -85,7 +85,8 @@ class Indexer
       PatchFoiling,
       PatchSetTypes,
       PatchFunny,
-      PatchSpellbook,
+      PatchSpellbook, # before LinkRelated
+      PatchSpecialize, # before LinkRelated
       PatchLinkRelated,
       PatchColorshifted,
       PatchPrintSheets,
@@ -95,7 +96,7 @@ class Indexer
       PatchFrame,
       PatchPartner,
       PatchBfm,
-      PatchUnfinity, # before UST
+      PatchUnfinity, # before Unstable
       PatchUnstable,
       PatchShandalar,
       PatchXmage,

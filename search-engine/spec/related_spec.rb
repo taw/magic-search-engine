@@ -43,17 +43,16 @@ describe "Spelling" do
       "Gate to Tumbledown",
       "Gate to Manorborn"
 
-    # https://github.com/mtgjson/mtgjson/issues/1100
-    # assert_search_results %Q[related:"The Hourglass Coven"],
-    #   "Hag of Syphoned Breath",
-    #   "Hag of Dark Duress",
-    #   "Hag of Ceaseless Torment",
-    #   "Hag of Inner Weakness",
-    #   "Hag of Death's Legion",
-    #   "Hag of Scoured Thoughts",
-    #   "Hag of Twisted Visions",
-    #   "Hag of Mage's Doom",
-    #   "Hag of Noxious Nightmares"
+    assert_search_results %Q[related:"The Hourglass Coven"],
+      "Hag of Syphoned Breath",
+      "Hag of Dark Duress",
+      "Hag of Ceaseless Torment",
+      "Hag of Inner Weakness",
+      "Hag of Death's Legion",
+      "Hag of Scoured Thoughts",
+      "Hag of Twisted Visions",
+      "Hag of Mage's Doom",
+      "Hag of Noxious Nightmares"
 
     assert_search_results %Q[related:"Oyaminartok, Polar Werebear"],
       "Mystic Skyfish",

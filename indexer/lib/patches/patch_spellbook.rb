@@ -21,7 +21,7 @@ class PatchSpellbook < Patch
         spellbook = the_hourglass_coven_spellbook
       end
       next unless spellbook
-      spellbook = spellbook.flat_map{|n| n.split(" // ") }
+      spellbook = spellbook.flat_map{|n| n.split(" // ") }.sort
       printing["spellbook"] = spellbook
     end
   end
