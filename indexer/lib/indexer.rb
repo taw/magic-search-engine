@@ -85,6 +85,7 @@ class Indexer
       PatchFoiling,
       PatchSetTypes,
       PatchFunny,
+      PatchSpellbook,
       PatchLinkRelated,
       PatchColorshifted,
       PatchPrintSheets,
