@@ -208,6 +208,9 @@ class CardPrinting
     reserved
     rulings
     secondary?
+    specialized
+    specializes
+    spellbook
     text
     text_normalized
     toughness

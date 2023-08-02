@@ -293,145 +293,6 @@ class PatchLinkRelated < Patch
     ],
   }
 
-  # HBG Specialize, cross link them
-  # (arguably we could also link to just front one)
-  SpecializeGroups = [
-    [
-      "Alora, Cheerful Assassin",
-      "Alora, Cheerful Mastermind",
-      "Alora, Cheerful Scout",
-      "Alora, Cheerful Swashbuckler",
-      "Alora, Cheerful Thief",
-      "Alora, Rogue Companion",
-    ], [
-      "Ambergris, Agent of Balance",
-      "Ambergris, Agent of Destruction",
-      "Ambergris, Agent of Law",
-      "Ambergris, Agent of Progress",
-      "Ambergris, Agent of Tyranny",
-      "Ambergris, Citadel Agent",
-    ], [
-      "Gale, Abyssal Conduit",
-      "Gale, Conduit of the Arcane",
-      "Gale, Holy Conduit",
-      "Gale, Primeval Conduit",
-      "Gale, Storm Conduit",
-      "Gale, Temporal Conduit",
-    ], [
-      "Gut, Bestial Fanatic",
-      "Gut, Brutal Fanatic",
-      "Gut, Devious Fanatic",
-      "Gut, Fanatical Priestess",
-      "Gut, Furious Fanatic",
-      "Gut, Zealous Fanatic",
-    ], [
-      "Imoen, Chaotic Trickster",
-      "Imoen, Honorable Trickster",
-      "Imoen, Occult Trickster",
-      "Imoen, Trickster Friend",
-      "Imoen, Wily Trickster",
-      "Imoen, Wise Trickster",
-    ], [
-      "Jaheira, Harper Emissary",
-      "Jaheira, Heroic Harper",
-      "Jaheira, Insightful Harper",
-      "Jaheira, Merciful Harper",
-      "Jaheira, Ruthless Harper",
-      "Jaheira, Stirring Harper",
-    ], [
-      "Karlach, Raging Tiefling",
-      "Karlach, Tiefling Berserker",
-      "Karlach, Tiefling Guardian",
-      "Karlach, Tiefling Punisher",
-      "Karlach, Tiefling Spellrager",
-      "Karlach, Tiefling Zealot",
-    ], [
-      "Klement, Death Acolyte",
-      "Klement, Knowledge Acolyte",
-      "Klement, Life Acolyte",
-      "Klement, Nature Acolyte",
-      "Klement, Novice Acolyte",
-      "Klement, Tempest Acolyte",
-    ], [
-      "Lae'zel, Blessed Warrior",
-      "Lae'zel, Callous Warrior",
-      "Lae'zel, Githyanki Warrior",
-      "Lae'zel, Illithid Thrall",
-      "Lae'zel, Primal Warrior",
-      "Lae'zel, Wrathful Warrior",
-    ], [
-      "Lukamina, Bear Form",
-      "Lukamina, Crocodile Form",
-      "Lukamina, Hawk Form",
-      "Lukamina, Moon Druid",
-      "Lukamina, Scorpion Form",
-      "Lukamina, Wolf Form",
-    ], [
-      "Lulu, Curious Hollyphant",
-      "Lulu, Forgetful Hollyphant",
-      "Lulu, Helpful Hollyphant",
-      "Lulu, Inspiring Hollyphant",
-      "Lulu, Vengeful Hollyphant",
-      "Lulu, Wild Hollyphant",
-    ], [
-      "Rasaad, Dragon Monk",
-      "Rasaad, Monk of Selûne",
-      "Rasaad, Radiant Monk",
-      "Rasaad, Shadow Monk",
-      "Rasaad, Sylvan Monk",
-      "Rasaad, Warrior Monk",
-    ], [
-      "Sarevok the Usurper",
-      "Sarevok, Deadly Usurper",
-      "Sarevok, Deceitful Usurper",
-      "Sarevok, Divine Usurper",
-      "Sarevok, Ferocious Usurper",
-      "Sarevok, Mighty Usurper",
-    ], [
-      "Shadowheart, Cleric of Graves",
-      "Shadowheart, Cleric of Order",
-      "Shadowheart, Cleric of Trickery",
-      "Shadowheart, Cleric of Twilight",
-      "Shadowheart, Cleric of War",
-      "Shadowheart, Sharran Cleric",
-    ], [
-      "Skanos, Black Dragon Vassal",
-      "Skanos, Blue Dragon Vassal",
-      "Skanos, Dragon Vassal",
-      "Skanos, Green Dragon Vassal",
-      "Skanos, Red Dragon Vassal",
-      "Skanos, White Dragon Vassal",
-    ], [
-      "Vhal, Eager Scholar",
-      "Vhal, Scholar of Creation",
-      "Vhal, Scholar of Elements",
-      "Vhal, Scholar of Mortality",
-      "Vhal, Scholar of Prophecy",
-      "Vhal, Scholar of Tactics",
-    ], [
-      "Viconia, Disciple of Arcana",
-      "Viconia, Disciple of Blood",
-      "Viconia, Disciple of Rebirth",
-      "Viconia, Disciple of Strength",
-      "Viconia, Disciple of Violence",
-      "Viconia, Nightsinger's Disciple",
-    ], [
-      "Wilson, Ardent Bear",
-      "Wilson, Bear Comrade",
-      "Wilson, Fearsome Bear",
-      "Wilson, Majestic Bear",
-      "Wilson, Subtle Bear",
-      "Wilson, Urbane Bear",
-    ], [
-      "Wyll of the Blade Pact",
-      "Wyll of the Celestial Pact",
-      "Wyll of the Elder Pact",
-      "Wyll of the Fey Pact",
-      "Wyll of the Fiend Pact",
-      "Wyll, Pact-Bound Duelist",
-    ]
-  ]
-
   def call
     # The index has tokens as cards, CardDatabase filters them out
     # We should probably move them out of the way before that
@@ -462,7 +323,8 @@ class PatchLinkRelated < Patch
       end
     end
 
-    SpecializeGroups.each do |group|
+    # I'm not loving this, but it's the simpler way
+    PatchSpecialize::SpecializeGroups.each do |group|
       group.each do |name1|
         group.each do |name2|
           next if name1 == name2
