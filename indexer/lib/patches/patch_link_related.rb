@@ -482,11 +482,12 @@ class PatchLinkRelated < Patch
 
     each_printing do |printing|
       name = printing["name"]
-      spellbook = printing.dig("relatedCards", "spellbook")
+      spellbook = printing["spellbook"]
+
       if spellbook
         # Temporary debugging as spellbooks in mtgjson have issues
-        puts "Spellbook for: #{name}: #{spellbook.inspect}"
-        spellbook.flat_map{|n| n.split(" // ") }.each do |other|
+        # puts "Spellbook for: #{name}: #{spellbook.inspect}"
+        spellbook.each do |other|
           links[name] << other
           links[other] << name
         end
