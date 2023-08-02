@@ -72,6 +72,28 @@ describe "Spelling" do
       "Pursued Whale"
   end
 
+  it "is:spellbook" do
+    # TODO
+  end
+
+  it "has:spellbook" do
+    # TODO
+  end
+
+  it "is:specialized" do
+    assert_search_results "is:specialized Alora",
+      "Alora, Cheerful Assassin",
+      "Alora, Cheerful Mastermind",
+      "Alora, Cheerful Scout",
+      "Alora, Cheerful Swashbuckler",
+      "Alora, Cheerful Thief"
+  end
+
+  it "has:specialized" do
+    assert_search_results "has:specialized Alora",
+      "Alora, Rogue Companion"
+  end
+
   it "*" do
     assert_search_equal "related:t:*", "related:*"
   end
