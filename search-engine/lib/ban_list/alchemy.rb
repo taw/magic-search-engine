@@ -1,7 +1,7 @@
 # "restricted" status is used for conjured/specialized cards, which is technically not a B&R issue
 
 BanList.for_format("alchemy") do
-  # HBG
+  # HBG conjured/specialized
   change(
     "2022-07-07",
     nil,
