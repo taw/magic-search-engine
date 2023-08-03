@@ -97,6 +97,16 @@ BanList.for_format("historic") do
     "Brainstorm" => "banned",
   )
 
+  # J21 conjured
+  change(
+    "2021-08-26",
+    nil,
+    "Tropical Island" => "restricted",
+    "Regal Force" => "restricted",
+    "Stormfront Pegasus" => "restricted",
+    "Kraken Hatchling" => "restricted",
+  )
+
   change(
     "2021-10-13",
     "https://magic.wizards.com/en/articles/archive/news/october-13-2021-banned-and-restricted-announcement",
@@ -111,7 +121,7 @@ BanList.for_format("historic") do
     "Teferi, Time Raveler" => "legal", # rebalanced version
   )
 
-  # HBG
+  # HBG conjured/specialized
   change(
     "2022-07-07",
     nil,
