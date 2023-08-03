@@ -221,6 +221,26 @@ BanList.for_format("historic") do
     "Hag of Scoured Thoughts" => "restricted",
     "Hag of Syphoned Breath" => "restricted",
     "Hag of Twisted Visions" => "restricted",
+    # Now this is fun, HBG cards 900+ are conjure only, but some of these have other historic legal printings
+    # It would be better to move these to a separete set
+    # "Archipelagore" => "restricted", # also in IKO
+    # "Junk Winder" => "restricted", # also in J21
+    # "Moat Piranhas" => "restricted", # also in M20
+    # "Mystic Skyfish" => "restricted", # also in M21
+    # "Nadir Kraken" => "restricted", # also in THB
+    # "Nezahal, Primal Tide" => "restricted", # also in RIX
+    # "Pouncing Shoreshark" => "restricted", # also in IKO
+    # "Pursued Whale" => "restricted", # also in M21
+    # "Riptide Turtle" => "restricted", # also in THB
+    # "Ruin Crab" => "restricted", # also in ZNR
+    # "Sea-Dasher Octopus" => "restricted", # also in IKO
+    # "Sigiled Starfish" => "restricted", # also in JMP
+    # "Spined Megalodon" => "restricted", # also in M21
+    # "Stinging Lionfish" => "restricted", # also in THB
+    # "Voracious Greatshark" => "restricted", # also in IKO
+    "Lightning Bolt" => "restricted", # well, it was pre-banned, but now it's conjurable, so this is fine
+    # "Naturalize" => "restricted", # also in M19
+    # "Plummet" => "restricted", # also in M20
   )
 
   # YDMU
