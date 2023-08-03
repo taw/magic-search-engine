@@ -111,9 +111,29 @@ BanList.for_format("alchemy") do
     "Hag of Scoured Thoughts" => "restricted",
     "Hag of Syphoned Breath" => "restricted",
     "Hag of Twisted Visions" => "restricted",
+    # Now this is fun, HBG cards 900+ are conjure only, but some of these have other historic legal printings
+    # It would be better to move these to a separete set
+    "Archipelagore" => "restricted",
+    "Junk Winder" => "restricted",
+    "Moat Piranhas" => "restricted",
+    "Mystic Skyfish" => "restricted",
+    "Nadir Kraken" => "restricted",
+    "Nezahal, Primal Tide" => "restricted",
+    "Pouncing Shoreshark" => "restricted",
+    "Pursued Whale" => "restricted",
+    "Riptide Turtle" => "restricted",
+    "Ruin Crab" => "restricted",
+    "Sea-Dasher Octopus" => "restricted",
+    "Sigiled Starfish" => "restricted",
+    "Spined Megalodon" => "restricted",
+    "Stinging Lionfish" => "restricted",
+    "Voracious Greatshark" => "restricted",
+    "Lightning Bolt" => "restricted",
+    "Naturalize" => "restricted",
+    # "Plummet" => "restricted", # also in MID (rotates with HBG)
   )
 
-  # YDMU
+  # YDMU - it would be better to move these to a separete set
   change(
     "2022-10-05",
     nil,
