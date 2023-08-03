@@ -85,7 +85,10 @@ class ReportLegalityDifferences
       end
       # This is technically not a B&R issue
       if a == nil and b == "restricted" and ["alchemy", "historic"].include?(format.format_name)
-        a = "restricted"
+        b = nil
+      end
+      if a == "banned" and b == "restricted" and ["alchemy", "historic"].include?(format.format_name)
+        b = "banned"
       end
       statuses << [name, a, b]
     end
