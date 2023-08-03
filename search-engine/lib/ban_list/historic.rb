@@ -275,4 +275,11 @@ BanList.for_format("historic") do
     "https://twitter.com/MTG_Arena/status/1586775900842074126",
     "Mishra's Bauble" => "banned",
   )
+
+  # MUL preemptively banned
+  change(
+    "2023-04-21",
+    nil,
+    "Ragavan, Nimble Pilferer" => "banned",
+  )
 end
