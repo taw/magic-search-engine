@@ -55,6 +55,18 @@ class Format
     false
   end
 
+  def cards_probably_in_format(db)
+    if @included_sets
+      @included_sets.flat_map do |set_code|
+        # This will only be nil in subset of db, so really only in tests
+        set = db.sets[set_code]
+        set ? set.printings.map(&:card) : []
+      end.to_set
+    else
+      db.cards.values
+    end
+  end
+
   def deck_issues(deck)
     [
       *deck_size_issues(deck),

@@ -268,4 +268,11 @@ BanList.for_format("historic") do
     "Mox Ruby" => "restricted",
     "Mox Sapphire" => "restricted",
   )
+
+  # BRR preemptively banned
+  change(
+    "2022-11-18",
+    "https://twitter.com/MTG_Arena/status/1586775900842074126",
+    "Mishra's Bauble" => "banned",
+  )
 end
