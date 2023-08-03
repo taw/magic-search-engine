@@ -311,4 +311,14 @@ BanList.for_format("duel commander") do
     "Hogaak, Arisen Necropolis" => "banned",
     "Mox Amber" => "banned",
   )
+
+  change(
+    "2023-07-31",
+    "https://www.mtgdc.info/announcements/2023/july-2023-rules-bannedrestricted-update",
+    "Deadly Rollick" => "banned",
+    "Flawless Maneuver" => "banned",
+    "The One Ring" => "banned",
+    "Eidolon of the Great Revel" => "legal",
+    "High Tide" => "legal",
+  )
 end

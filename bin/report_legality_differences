@@ -83,6 +83,10 @@ class ReportLegalityDifferences
           a = nil
         end
       end
+      # This is technically not a B&R issue
+      if a == nil and b == "restricted" and ["alchemy", "historic"].include?(format.format_name)
+        a = "restricted"
+      end
       statuses << [name, a, b]
     end
     differences = statuses.select{|_,a,b| a != b}
