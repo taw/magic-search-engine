@@ -209,7 +209,7 @@ describe "Formats" do
   # We don't have all historical legality for Duel Commander yet,
   # maybe add it at some later point
   it "duel commander" do
-    assert_count_cards 'banned:"duel commander"', 93
+    assert_count_cards 'banned:"duel commander"', 94
     assert_count_cards 'restricted:"duel commander"', 29
   end
 
@@ -220,7 +220,11 @@ describe "Formats" do
 
   it "historic" do
     # including STA pre-banned
-    assert_count_cards "banned:historic", 23
+    # this is extra fun as some conjurable cards will be not banned
+    assert_count_cards "banned:historic", 19
+    assert_legality "historic", Date.parse("2023-08-01"), "Alora, Cheerful Assassin", "restricted"
+    assert_legality "historic", Date.parse("2023-08-01"), "Black Lotus", "restricted"
+    assert_legality "historic", Date.parse("2023-08-01"), "Lightning Bolt", "restricted"
   end
 
   it "premodern" do
@@ -280,7 +284,7 @@ describe "Formats" do
   end
 
   it "restricted:*" do
-    assert_search_equal "restricted:*", "restricted:vintage or restricted:duel or restricted:unsets"
+    assert_search_equal "restricted:*", "restricted:vintage or restricted:duel or restricted:unsets or restricted:historic or restricted:alchemy"
   end
 
   it "legal:*" do
