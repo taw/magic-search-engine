@@ -10,5 +10,15 @@
   - else
     - card.legality_information.to_h.sort.each do |format_name, status|
       %li
-        %i{class: "legality-#{status}"}= status
+        - # Should this be in the engine?
+        - display_status = status
+        - if status == "restricted"
+          - if format_name == "Commander" or format_name == "Brawl" or format_name == "Duel Commander"
+            - display_status = "banned as commander"
+          - elsif format_name == "Alchemy" or format_name == "Historic"
+            - if card.specialized
+              - display_status = "specialized"
+            - else
+              - display_status = "conjurable"
+        %i{class: "legality-#{status}"}= display_status
         = link_to format_name, controller: "format", action: "show", id: format_name.parameterize
