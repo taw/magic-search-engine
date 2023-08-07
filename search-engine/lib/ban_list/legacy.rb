@@ -351,4 +351,10 @@ BanList.for_format("legacy") do
     "Expressive Iteration" => "banned",
     "White Plume Adventurer" => "banned",
   )
+
+  change(
+    "2023-08-07",
+    "https://magic.wizards.com/en/news/announcements/august-7-2023-banned-and-restricted-announcement",
+    "Mind's Desire" => "legal",
+  )
 end
