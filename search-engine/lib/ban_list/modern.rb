@@ -168,4 +168,10 @@ BanList.for_format("modern") do
     "https://magic.wizards.com/en/articles/archive/news/october-10-2022-banned-and-restricted-announcement",
     "Yorion, Sky Nomad" => "banned",
   )
+
+  change(
+    "2023-08-07",
+    "https://magic.wizards.com/en/news/announcements/august-7-2023-banned-and-restricted-announcement",
+    "Preordain" => "legal",
+  )
 end

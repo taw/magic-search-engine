@@ -34,6 +34,11 @@ describe "Formats" do
       ]],
     ])
     FormatModern.new.ban_events.should eq([
+      [Date.parse("2023-08-07"),
+        "https://magic.wizards.com/en/news/announcements/august-7-2023-banned-and-restricted-announcement",
+        [
+          {:name=>"Preordain", :new=>"legal", :old=>"banned"},
+      ]],
       [Date.parse("2022-10-10"),
         "https://magic.wizards.com/en/articles/archive/news/october-10-2022-banned-and-restricted-announcement",
       [
@@ -221,7 +226,7 @@ describe "Formats" do
   it "historic" do
     # including STA pre-banned
     # this is extra fun as some conjurable cards will be not banned
-    assert_count_cards "banned:historic", 20
+    assert_count_cards "banned:historic", 21
     assert_legality "historic", Date.parse("2023-08-01"), "Alora, Cheerful Assassin", "restricted"
     assert_legality "historic", Date.parse("2023-08-01"), "Black Lotus", "restricted"
     assert_legality "historic", Date.parse("2023-08-01"), "Lightning Bolt", "restricted"
