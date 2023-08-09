@@ -24,6 +24,8 @@ class DeckDatabase
         set,
         deck["name"],
         deck["type"],
+        deck["category"],
+        deck["format"],
         date,
         cards,
         sideboard,
