@@ -30,6 +30,7 @@ describe Deck do
       ["core", "Planeswalker Deck"],
       ["standard", "Welcome Deck"],
       ["expansion", "Advanced Deck"],
+      ["expansion", "Enhanced Deck"],
       ["core", "Advanced Pack"],
       ["expansion", "Basic Deck"],
       ["expansion", "Clash Pack"],
