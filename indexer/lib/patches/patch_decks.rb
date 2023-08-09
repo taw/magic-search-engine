@@ -11,7 +11,7 @@ class PatchDecks < Patch
       deck["commander"] = deck["commander"].map{|card| resolve_printing(deck, card) }.compact
       unless deck["release_date"]
         warn "No release date for #{deck["set_code"]} #{deck["name"]}, defaulting to set release date"
-        @sets.find{|s| s["code"] == deck["set_code"]}["release_date"]
+        deck["release_date"] = @sets.find{|s| s["code"] == deck["set_code"]}["release_date"]
       end
     end
   end
