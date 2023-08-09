@@ -34,6 +34,8 @@ class PatchSetTypes < Patch
         set_types << "un"
       when "tpr"
         set_types << "masters"
+      when "md1"
+        set_types << "modern"
       when "ocmd", /\Aoc\d\d\z/, "cmr", "clb", "cmm"
         set_types << "commander" << "multiplayer"
       when "pwpn", /\Apwp\d+\z/

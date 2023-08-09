@@ -53,6 +53,7 @@ describe Deck do
       ["box", "MTGO Theme Deck"], # MTGO
       ["box", "Commander Deck"], # MTGO
       ["core", "Spellslinger Starter Kit"],
+      ["modern", "Modern Event Deck"],
       ["funny", "Halfdeck"],
       ["standard", "Halfdeck"],
       ["draft innovation", "Jumpstart"], # JMP only
