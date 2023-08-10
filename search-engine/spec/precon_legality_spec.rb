@@ -15,30 +15,36 @@ describe Deck do
         when "commander", "modern", "standard", "brawl", "pioneer", "standard", "casual standard"
           verify_deck_is_legal(deck)
         else
-          # what is this even?
-          report_deck_legality(deck)
+          warn "Unrecognized format #{deck.format}"
         end
       end
     end
-
-    # binding.pry
   end
 
   def verify_deck_is_casual(deck)
-    return unless format_check(deck)
-    p [deck.set_code, deck.name, deck.number_of_total_cards, deck.type, deck.category, deck.format, "UNEXPECTED STD"]
+    format_check(deck).should(eq(false), "#{deck.set_code} #{deck.name} should be casual")
   end
 
   def verify_deck_is_legal(deck)
-    return if format_check(deck)
-    p [deck.set_code, deck.name, deck.number_of_total_cards, deck.type, deck.category, deck.format, "FAIL"]
-    illegal_cards(deck).each do |card|
-      puts "* #{card}"
-    end
-  end
+    known_illegal_decks = [
+      ["uds", "Enchanter - Enhanced Deck"],
+      ["uds", "Fiendish Nature - Enhanced Deck"],
+      ["q07", "Mono White Aggro"],
+      ["q08", "Izzet Phoenix"],
+    ]
 
-  def report_deck_legality(deck)
-    p [deck.set_code, deck.name, deck.number_of_total_cards, deck.type, deck.category, deck.format, format_check(deck) ? "STD" : "NOT STD"]
+    check = format_check(deck)
+
+    if known_illegal_decks.include?([deck.set_code, deck.name])
+      check.should(eq(false), "#{deck.set_code} #{deck.name} should be #{deck.format} illegal (as known exception)")
+    else
+      check.should(eq(true), "#{deck.set_code} #{deck.name} should be #{deck.format} legal")
+      unless check
+        illegal_cards(deck).each do |card|
+          puts "* #{card}"
+        end
+      end
+    end
   end
 
   def format_check(deck)

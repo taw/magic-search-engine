@@ -25,6 +25,8 @@ class DeckController < ApplicationController
     @set_name = @set.name
     @release_date = @deck.release_date
     @display = @deck.display
+    @format = @deck.format
+    @category = @deck.category
 
     @cards = @deck.cards.sort_by{|_,c| [c.name, c.set_code, c.number] }
     @sideboard = @deck.sideboard.sort_by{|_,c| [c.name, c.set_code, c.number] }
