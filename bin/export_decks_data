@@ -41,6 +41,8 @@ class ExportDecksData
       exported_data << {
         name: deck.name,
         type: deck.type,
+        category: deck.category,
+        format: deck.format,
         set_code: deck.set_code,
         set_name: deck.set_name,
         release_date: deck.release_date,
