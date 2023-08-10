@@ -22,7 +22,7 @@ describe "is:booster" do
       should_have_boosters = (
         %W[mb1 cmb1 cmb2 cmr dbl clb 30a zne].include?(set_code) or (
           !(set_types_with_boosters & set.types).empty? and
-          !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana oana fmb1 anb plist slx uplist sis].include?(set.code)
+          !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana oana fmb1 anb plist slx uplist sis md1].include?(set.code)
         )
       )
       should_be_in_other_boosters = (

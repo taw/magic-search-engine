@@ -61,10 +61,11 @@ describe "Any queries" do
     assert_search_equal %[foreign:"刻拉诺斯的电击"], %[cs:"刻拉诺斯的电击"]
   end
 
+  # This test is a bit fragile to reprints
   it "wildcard" do
     # Searching cards, as languages are not attached to printings
     # this data is not always reliable in mtgjson and often lags set releases
-    assert_search_equal_cards "t:planeswalker it:* -pt:*", "t:planeswalker in:c14 -in:c21"
+    assert_search_equal_cards "t:planeswalker fr:* -sp:*", "t:planeswalker e:cmm -alt:-e:cmm"
   end
 
   it "only matches full words (except CJK and German)" do
