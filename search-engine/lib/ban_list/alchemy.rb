@@ -148,4 +148,10 @@ BanList.for_format("alchemy") do
     "Mox Ruby" => "restricted",
     "Mox Sapphire" => "restricted",
   )
+
+  change(
+    "2023-07-18",
+    "https://magic.wizards.com/en/news/mtg-arena/alchemy-rebalancing-for-july-18-2023",
+    "Fable of the Mirror-Breaker" => "banned",
+  )
 end
