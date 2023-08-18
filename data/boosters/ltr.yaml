@@ -14,7 +14,7 @@ pack:
 sheets:
   with_showcase:
     any:
-    - query: "promo:boosterfun alt:(number:302-331 or number:340-345) alt:number:399-451"
+    - query: "promo:boosterfun alt:(number:302-331 or number:340-345) alt:number:399-451 -number:299-300 -number>451"
       rate: 1
     - query: "(number:302-331 or number:340-345) -alt:number:399-451"
       rate: 2
@@ -31,11 +31,11 @@ sheets:
     filter: "e:{set} r:r"
     use: with_showcase
   uncommon_with_showcase:
-    filter: "e:{set} r:u -Nazgul"
+    filter: "e:{set} r:u -Nazgul -number>451"
     any:
     - use: with_showcase
       chance: 79
-    - rawquery: "e:{set} Nazgul"
+    - rawquery: "e:{set} Nazgul -number>451"
       chance: 1
   mythic_with_showcase:
     filter: "e:{set} r:m"
@@ -49,7 +49,7 @@ sheets:
   foil_with_showcase:
     foil: true
     any:
-    - filter: "e:{set} (r:c or r:b)"
+    - filter: "e:{set} (r:c or r:b) -number>451"
       use: with_showcase
       chance: 12
     - use: uncommon_with_showcase
