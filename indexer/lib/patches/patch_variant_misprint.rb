@@ -13,6 +13,9 @@ class PatchVariantMisprint < Patch
       false
     when "gpt", "stx"
       number =~ /★/
+    when "inv"
+      # This is some promo, should be in PINV not INV
+      number =~ /★/
     else
       number =~ /†/
     end
