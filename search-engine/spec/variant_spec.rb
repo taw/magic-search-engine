@@ -3,7 +3,8 @@ describe "Variant spec" do
   include_context "db"
 
   it "variant:misprint" do
-    assert_search_equal "variant:misprint", "(number:/†/ -e:arn) or (e:gpt,stx number:/★/)"
+    # inv is really a misplaced promo due to bad mtgjson data
+    assert_search_equal "variant:misprint", "(number:/†/ -e:arn) or (e:gpt,stx,inv number:/★/)"
   end
 
   it "variant:foreign" do
