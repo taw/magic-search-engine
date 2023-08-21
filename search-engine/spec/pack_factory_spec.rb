@@ -61,7 +61,7 @@ describe PackFactory do
       regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2 dbl clb 2x2 unf dmr sir ltr cmm]
     }
     let(:expected_mtgjson_variant) {
-      ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "mb1", "ons", "gpt", "ala", "jmp", "j22"]
+      ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "10e", "mb1", "gpt", "ala", "jmp", "j22"]
     }
     let(:expected_basics_not_in_boosters) {
       ["ice", "mir", "tmp", "usg", "4ed", "5ed", "6ed", "zen"]
