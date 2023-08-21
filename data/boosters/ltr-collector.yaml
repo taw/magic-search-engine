@@ -42,19 +42,19 @@ sheets:
     use: rare_mythic
   uncommon_showcase:
     any:
-    - rawquery: "e:{set} r:u frame:showcase -(Denethor, Ruling Steward)"
+    - rawquery: "e:{set} r:u frame:showcase -number>451"
       chance: 91
     - rawquery: "e:{set} Nazgul"
       chance: 9
   rare_mythic_showcase:
     any:
-    - rawquery: "e:{set} r:r promo:boosterfun frame:showcase alt:(is:borderless -frame:showcase) -is:foilonly"
+    - rawquery: "e:{set} r:r promo:boosterfun frame:showcase alt:(is:borderless -frame:showcase) -is:foilonly -number:299-300 -number>451"
       rate: 2
-    - rawquery: "e:{set} r:r promo:boosterfun frame:showcase -alt:(is:borderless -frame:showcase)"
+    - rawquery: "e:{set} r:r promo:boosterfun frame:showcase -alt:(is:borderless -frame:showcase) -number:299-300 -number>451"
       rate: 4
-    - rawquery: "e:{set} r:m promo:boosterfun frame:showcase alt:(is:borderless -frame:showcase) -is:foilonly"
+    - rawquery: "e:{set} r:m promo:boosterfun frame:showcase alt:(is:borderless -frame:showcase) -is:foilonly -number:299-300 -number>451"
       rate: 1
-    - rawquery: "e:{set} r:m promo:boosterfun frame:showcase -alt:(is:borderless -frame:showcase)"
+    - rawquery: "e:{set} r:m promo:boosterfun frame:showcase -alt:(is:borderless -frame:showcase) -number:299-300 -number>451"
       rate: 2
     - rawquery: "e:{set} r:r number:340-345 alt:number:399-451"
       rate: 2
@@ -86,7 +86,7 @@ sheets:
   foil_uncommon_showcase:
     foil: true
     any:
-    - rawquery: "e:{set} r:u frame:showcase -(Denethor, Ruling Steward)"
+    - rawquery: "e:{set} r:u frame:showcase -number>451"
       chance: 233
     - rawquery: "e:{set} r:c number:399-451"
       chance: 418
@@ -117,13 +117,13 @@ sheets:
   foil_rare_mythic_showcase:
     foil: true
     any:
-    - rawquery: "e:{set} r:r frame:showcase promo:boosterfun alt:(e:{set} number:399-451)"
+    - rawquery: "e:{set} r:r frame:showcase promo:boosterfun alt:(e:{set} number:399-451) -number:299-300 -number>451"
       rate: 2
-    - rawquery: "e:{set} r:m frame:showcase promo:boosterfun alt:(e:{set} number:399-451)"
+    - rawquery: "e:{set} r:m frame:showcase promo:boosterfun alt:(e:{set} number:399-451) -number:299-300 -number>451"
       rate: 1
-    - rawquery: "e:{set} r:r frame:showcase promo:boosterfun -alt:(e:{set} number:399-451)"
+    - rawquery: "e:{set} r:r frame:showcase promo:boosterfun -alt:(e:{set} number:399-451) -number:299-300 -number>451"
       rate: 4
-    - rawquery: "e:{set} r:m frame:showcase promo:boosterfun -alt:(e:{set} number:399-451)"
+    - rawquery: "e:{set} r:m frame:showcase promo:boosterfun -alt:(e:{set} number:399-451) -number:299-300 -number>451"
       rate: 2
     - rawquery: "e:{set} r:r number:399-451 alt:(frame:showcase or t:land)"
       rate: 2
@@ -139,7 +139,7 @@ sheets:
       rate: 4
     - rawquery: "e:{set} r:m number:340-345"
       rate: 2
-    - rawquery: "e:ltc r:m frame:extendedart -number:378-407"
+    - rawquery: "e:ltc r:m frame:extendedart -number:378-407 -number>451"
       rate: 2
   surge_relic:
     foil: true
