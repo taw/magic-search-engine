@@ -11,7 +11,7 @@ class PatchVariantForeign < Patch
     number = card["number"]
     number_i = number.to_i
     case card["set_code"]
-    when "usg", "inv", "pcy", "5ed", "6ed", "7ed", "8ed", "9ed", "por"
+    when "usg", "inv", "pcy", "5ed", "6ed", "7ed", "8ed", "9ed", "10e", "por"
       # Chinese non-skeleton versions
       # Regexp should match "289sb" but not "S1"
       number =~ /.s/i
