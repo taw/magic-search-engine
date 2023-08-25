@@ -181,6 +181,7 @@ class ExportFormatterExperimental < ExportFormatter
     end
 
     foil_status = ev.keys.map(&:foil).uniq
+    raise "Sheet must not be empty" if foil_status.empty?
     raise "Sheet must be all-foil or all-nonfoil" unless foil_status == [true] or foil_status == [false]
 
     cards = ev.map do |e, w|
