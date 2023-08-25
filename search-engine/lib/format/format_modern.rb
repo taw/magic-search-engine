@@ -57,6 +57,7 @@ class FormatModern < Format
       "mom",
       "mat",
       "ltr",
+      "woe",
     ]
   end
 end

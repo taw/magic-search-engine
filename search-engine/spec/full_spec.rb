@@ -69,7 +69,9 @@ describe "Full Database Test" do
       "Shepherd of the Flock", "Usher to Safety",
       "Smitten Swordmaster", "Curry Favor",
       "Smelt (CMB1)", "Herd", "Saw",
-      "Ghost Lantern", "Bind Spirit"
+      "Ghost Lantern", "Bind Spirit",
+      "Callous Sell-Sword", "Burn Together",
+      "Pollen-Shield Hare", "Hare Raising"
     # Semantics of that changed
     # it used to match a lot of double-faced cards
     # then it all disappeared as DFCs share cmc
@@ -215,6 +217,7 @@ describe "Full Database Test" do
       "Kird Ape",
       "Lotus Petal",
       "Ornithopter",
+      "Rhystic Study",
       "Sol Ring",
       "Spell Pierce"
   end

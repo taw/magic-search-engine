@@ -8,7 +8,7 @@ describe "Formats" do
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
       %[
-        e:mid,vow,neo,snc,dmu,bro,one,mom,mat
+        e:mid,vow,neo,snc,dmu,bro,one,mom,mat,woe
         -(The Meathook Massacre)
         -(Invoke Despair)
         -(Fable of the Mirror-Breaker)
