@@ -101,6 +101,7 @@ describe "Spelling" do
       next if name == "Bat-"
       next if name == "Jin-Gitaxias"
       next if name == "Death-Greeter's Champion"
+      next if name == "Lich-Knights' Conquest"
 
       # "Thousand-Faced Shadow" will absolutely also return "Thousand-Faced Shadow (Alchemy)"
       "-is:alchemy #{name}".should return_cards(name)

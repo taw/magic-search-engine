@@ -27,8 +27,9 @@ class FormatStandard < Format
     # says Coldsnap rotates out with Time Spiral block
 
     {
+      # Standard changed so sets last 3 years so 2023 rotation skipped
+      "2022-09-09" => ["mid", "vow", "neo", "snc", "dmu", "bro", "one", "mom", "mat", "woe"],
       # 4 blocks system, 1 rotation/year
-      "2022-09-09" => ["mid", "vow", "neo", "snc", "dmu", "bro", "one", "mom", "mat"],
       "2021-09-18" => ["znr", "khm", "stx", "afr", "mid", "vow", "neo", "snc"],
       "2020-09-25" => ["eld", "thb", "iko", "m21", "znr", "khm", "stx", "afr"],
       "2019-10-04" => ["grn", "rna", "war", "m20", "eld", "thb", "iko", "m21"],

@@ -12,6 +12,7 @@ class Card
     "Alliance",
     "Battalion",
     "Bloodrush",
+    "Celebration",
     "Channel",
     "Chroma",
     "Cohort",
