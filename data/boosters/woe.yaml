@@ -1,0 +1,35 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-wilds-of-eldraine
+pack:
+  basic: 1
+  common_foil:
+  - common: 9
+    chance: 2
+  - common: 8
+    foil_with_showcase: 1
+    chance: 1
+  uncommon: 3
+  enchanting_tales: 1
+  rare_mythic_with_showcase: 1
+sheets:
+  enchanting_tales:
+    any:
+    - rawquery: "e:wot r:u number<64"
+      rate: 12
+    - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
+      rate: 6
+    - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
+      rate: 4
+    - rawquery: "e:wot r:r number:64-83"
+      rate: 2
+    - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
+      rate: 3
+    - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
+      rate: 2
+    - rawquery: "e:wot r:m number:64-83"
+      rate: 1
+  rare_mythic_with_showcase:
+    any:
+    - use: rare_with_showcase
+      chance: 6
+    - use: mythic_with_showcase
+      chance: 1

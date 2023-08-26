@@ -1,0 +1,90 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-wilds-of-eldraine
+pack:
+  land_slot:
+  - basic: 1
+    chance: 4
+  - foil_basic: 1
+    chance: 1
+  common: 3
+  uncommon: 3
+  wildcard: 2
+  enchanting_tales: 1
+  rare_mythic: 1
+  finale:
+  - foil_with_showcase: 1
+    chance: 3
+  - foil_with_showcase: 1
+    the_list: 1
+    chance: 1
+sheets:
+  common:
+    query: "r:c"
+  wildcard:
+    any:
+    - use: common
+      chance: 700
+    - any:
+      - use: uncommon
+        rate: 1
+      - rawquery: "e:wot r:u -is:foilonly"
+        rate: 1
+      - rawquery: "e:woe r:u number:308-322"
+        rate: 1
+      chance: 175
+    - any:
+      - use: rare_with_showcase
+        chance: 2 * 60
+      - rawquery: "e:woe r:r number:308-322"
+        chance: 2 * 5
+        count: 5
+      - rawquery: "e:woc r:r number:1-28"
+        chance: 2 * 22
+        count: 22
+      - any:
+        - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
+          rate: 6
+        - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
+          rate: 4
+        - rawquery: "e:wot r:r number:64-83"
+          rate: 2
+        chance: 2 * 30
+      - use: mythic_with_showcase
+        chance: 20
+      - rawquery: "e:woc r:m number:1-28"
+        chance: 6
+        count: 6
+      - any:
+        - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
+          rate: 3
+        - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
+          rate: 2
+        - rawquery: "e:wot r:m number:64-83"
+          rate: 1
+        chance: 15
+      chance: 125
+  enchanting_tales:
+    any:
+    - rawquery: "e:wot r:u number<64"
+      rate: 12
+    - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
+      rate: 6
+    - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
+      rate: 4
+    - rawquery: "e:wot r:r number:64-83"
+      rate: 2
+    - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
+      rate: 3
+    - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
+      rate: 2
+    - rawquery: "e:wot r:m number:64-83"
+      rate: 1
+  the_list:
+    set: plist
+    count: 300
+    code: "CMM" # PLISt still not updated even for CMM, don't want to make even more changes
+  rare_mythic:
+    any:
+    - use: rare
+      rate: 2
+    - use: mythic
+      rate: 1
