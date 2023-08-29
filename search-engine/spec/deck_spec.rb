@@ -81,6 +81,7 @@ describe Deck do
       ["planechase", "Box Set"],
       ["promo", "Box Set"],
       ["funny", "Box Set"],
+      ["memorabilia", "Box Set"],
     ]
 
     db.sets.each do |set_code, set|
@@ -170,6 +171,8 @@ describe Deck do
         sets_found.should match_array ["ltc", "ltr"]
       when "pca"
         sets_found.should match_array ["pca", "opca"]
+      when "woc"
+        sets_found.should match_array ["woc", "woe"]
       else
         sets_found.should eq [set.code]
       end
