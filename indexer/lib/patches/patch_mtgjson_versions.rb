@@ -259,6 +259,11 @@ class PatchMtgjsonVersions < Patch
         card["frame_effects"].delete("borderless")
       end
     end
+
+    # https://github.com/mtgjson/mtgjson/issues/1110
+    delete_printing_if do |printing|
+      printing["setCode"] == "SLD" and (printing["number"] == "1387" or printing["number"] == "1388")
+    end
   end
 
   def cleanup_unicode_punctuation(text)

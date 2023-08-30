@@ -52,10 +52,9 @@ describe "Regexp" do
   end
 
   it "regexp flavor text" do
-    assert_search_results 'ft:/\d{4,}/ -e:olgc,ovnt,pewk',
+    assert_search_results 'ft:/\d{4,}/ -e:olgc,ovnt,pewk,sld',
       "Aardwolf's Advantage",
       "Automatic Librarian",
-      "Collector Ouphe",
       "Fervent Champion",
       "Gilded Lotus",
       "Goblin Secret Agent",

@@ -164,7 +164,6 @@ describe "Full Database Test" do
     assert_search_results "t:planeswalker lastprint<=roe",
       "Chandra Ablaze"
     assert_search_results "t:planeswalker lastprint<=2011",
-      "Ajani Goldmane",
       "Chandra Ablaze"
   end
 
