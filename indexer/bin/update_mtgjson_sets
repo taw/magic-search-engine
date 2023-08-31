@@ -141,11 +141,11 @@ class SingleSetUpdater
       puts "  CODE: #{current_code} -> #{incoming_code}"
     end
 
-    (current_cards - incoming_cards).each do |card, num|
+    (current_cards - incoming_cards).sort.each do |card, num|
       puts "  CARD DEL: #{num} #{card}"
     end
 
-    (incoming_cards - current_cards).each do |card, num|
+    (incoming_cards - current_cards).sort.each do |card, num|
       puts "  CARD ADD: #{num} #{card}"
     end
   end

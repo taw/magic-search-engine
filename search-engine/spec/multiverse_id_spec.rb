@@ -14,17 +14,9 @@ describe "multiverse ids" do
         # OK
       elsif cards.map(&:set_code).to_set == Set["mb1", "cmb1"]
         # mtgjson bug
-      elsif cards.map(&:set_code).to_set == Set["j22"]
+      elsif cards.map(&:set_code).to_set == Set["woe"]
         # mtgjson bug
-      elsif cards.map(&:set_code).to_set == Set["klr"]
-        # mtgjson bug
-      elsif cards.map(&:set_code).to_set == Set["moc"]
-        # mtgjson bug
-      elsif cards.map(&:set_code).to_set == Set["mom"]
-        # mtgjson bug
-      elsif cards.map(&:set_code).to_set == Set["mat"]
-        # mtgjson bug
-      elsif cards.map(&:set_code).to_set == Set["cmm"]
+      elsif cards.map(&:set_code).to_set == Set["woc"]
         # mtgjson bug
       else
         cards.size.should eq(1), "#{id} #{cards}"
