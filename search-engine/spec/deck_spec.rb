@@ -310,6 +310,8 @@ describe Deck do
       next if set_code == "pctb"
       # Not decks, just boxed products
       next if set_code == "sld"
+      # Crazy foiling
+      next if set_code == "pagl"
 
       # Some crazy foiling in them
       # Deck indexer doesn't even try, it's just marked on decklist manually
