@@ -21,7 +21,7 @@ pack:
   - foil: 1
     chance: 3
   - foil: 1
-    #the_list: 1
+    the_list: 1
     chance: 1
 sheets:
   common:
@@ -67,7 +67,6 @@ sheets:
       - use: mythic_with_showcase
         rate: 1
       chance: 3
-  #the_list:
-  #  set: plist
-  #  code: "CMM"
-  
+  the_list:
+    set: plist
+    code: "CMM"

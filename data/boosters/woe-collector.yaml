@@ -17,7 +17,7 @@ pack:
 sheets:
   foil_full_art_land:
     foil: true
-    query: "r:b is:fullart"
+    query: "r:b number:262-266"
   enchanting_tales_uncommon:
     rawquery: "e:wot r:u number<=63"
   foil_enchanting_tales_uncommon:
@@ -51,26 +51,36 @@ sheets:
     foil: true
     any:
     - use: rare_showcase
-      rate: 6
+      rate: 12
     - rawquery: "(e:woe or e:woc) r:r frame:extendedart"
-      rate: 6
+      rate: 12
     - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
-      rate: 6
+      rate: 12
     - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
-      rate: 4
+      rate: 8
     - rawquery: "e:wot r:r number:64-83"
-      rate: 2
+      rate: 4
     - rawquery: "e:wot r:r number:84-103"
-      rate: 2
-    - use: mythic_showcase
+      rate: 4
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Kellan)"
       rate: 3
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
+      rate: 6
     - rawquery: "(e:woe or e:woc) r:m frame:extendedart"
-      rate: 3
+      rate: 6
     - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
-      rate: 3
+      rate: 6
     - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
-      rate: 2
+      rate: 4
     - rawquery: "e:wot r:m number:64-83"
-      rate: 1
+      rate: 2
     - rawquery: "e:wot r:m number:84-103"
+      rate: 2
+  rare_mythic_showcase:
+    any:
+    - use: rare_showcase
+      rate: 4
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Kellan)"
       rate: 1
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
+      rate: 2
