@@ -23,6 +23,6 @@ class ConditionNot < Condition
   end
 
   def to_s
-    "(not #{@cond})"
+    "-(#{@cond})"
   end
 end

@@ -190,13 +190,13 @@
       = search_help "decklimit=any", "Cards you can have any number of in your deck"
 
     %h4 Boolean expressions
+    %div You can use multiple conditions in the search. The result will match all conditions, so AND is implied. If you need to do a more complicated search, you can also use parentheses, OR, and - prefix.
     %ul
       = search_help "t:goblin AND mv=2", "cards which are Goblins and have mana value 2"
-      = search_help "t:goblin AND mv=2", "cards which are Goblins and have mana value 2 (AND is optional)"
+      = search_help "t:goblin mv=2", "cards which are Goblins and have mana value 2 (AND is implied)"
       = search_help "t:goblin OR mv=2", "cards which are Goblins or have mana value 2"
       = search_help "c=u (t:goblin OR t:elf)", "cards which are blue Goblins or blue Elves"
       = search_help "t:goblin -mv=2", "cards which are Goblins but do not have mana value 2"
-      = search_help "t:goblin not mv=2", "cards which are Goblins but do not have mana value 2"
 
     %h4 Search by rarity
     %div Search engine recognizes 6 rarities - basic, common, uncommon, rare, mythic, and special.
@@ -576,7 +576,7 @@
       = search_help %[time:"1 march 2009" banned:commander], "Commander banned cards as of 1 March 2009"
       = search_help "time:m10 t:planeswalker", "All Planeswalker cards in existence as of printing of Magic 2010 set"
       = search_help "time:2010 restricted:commander", %[Cards restricted in Commander as of beginning of 2010 (in Commander context "restricted" means historical contept of "banned as general"]
-      = search_help "(time:OGW f:Standard) not (time:SOI f:Standard)", "Cards in Oath of Gatewatch Standard which are not in Shadows Over Innistrad Standard"
+      = search_help "(time:OGW f:Standard) -(time:SOI f:Standard)", "Cards in Oath of Gatewatch Standard which are not in Shadows Over Innistrad Standard"
 
     %h4 Sort results
     %div Use sort: operator to order results in a different way. By default alphabetical sorting is used.

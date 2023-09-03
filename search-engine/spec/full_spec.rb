@@ -325,7 +325,7 @@ describe "Full Database Test" do
   end
 
   it "is:permanent" do
-    assert_search_equal "is:permanent", "not (t:instant or t:sorcery or t:plane or t:scheme or t:phenomenon or t:conspiracy or t:vanguard)"
+    assert_search_equal "is:permanent", "-(t:instant or t:sorcery or t:plane or t:scheme or t:phenomenon or t:conspiracy or t:vanguard)"
   end
 
   it "r:special" do

@@ -117,4 +117,13 @@ describe "Spelling" do
     "Minsc & Boo".should include_cards("Minsc & Boo, Timeless Heroes")
     "Minsc and Boo".should include_cards("Minsc & Boo, Timeless Heroes")
   end
+
+  it "no special handling of not" do
+    "Erase (Not the Urza's Legacy One)".should include_cards("Erase (Not the Urza's Legacy One)")
+    "Not Dead After All".should include_cards("Not Dead After All")
+    "Not Forgotten".should include_cards("Not Forgotten")
+    "Not of This World".should include_cards("Not of This World")
+    "Waste Not".should include_cards("Waste Not")
+    "Your Will Is Not Your Own".should include_cards("Your Will Is Not Your Own")
+  end
 end

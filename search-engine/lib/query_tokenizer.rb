@@ -410,8 +410,8 @@ class QueryTokenizer
         tokens << [:related]
       elsif s.scan(/alt\s*[:=]\s*/i)
         tokens << [:alt]
-      elsif s.scan(/not\b/i)
-        tokens << [:not]
+      # elsif s.scan(/not\b/i)
+      #   tokens << [:not]
       elsif s.scan(/\*/i)
         # A quick hack, maybe add ConditionAll ?
         tokens << [:test, ConditionTypes.new("*")]
