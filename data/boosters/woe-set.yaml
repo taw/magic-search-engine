@@ -48,7 +48,15 @@ sheets:
         - rawquery: "e:wot r:r number:64-83"
           rate: 2
         chance: 2 * 30
-      - use: mythic_with_showcase
+      - any:
+        - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Kellan)"
+          rate: 1
+        - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
+          rate: 2
+        - use: mythic_has_showcase
+          rate: 4
+        - use: mythic_has_no_showcase
+          rate: 6
         chance: 20
       - rawquery: "e:woc r:m number:1-28"
         chance: 6
@@ -82,9 +90,3 @@ sheets:
     set: plist
     count: 300
     code: "CMM" # PLISt still not updated even for CMM, don't want to make even more changes
-  rare_mythic:
-    any:
-    - use: rare
-      rate: 2
-    - use: mythic
-      rate: 1
