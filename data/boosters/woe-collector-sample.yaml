@@ -1,0 +1,68 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-wilds-of-eldraine
+pack:
+  rm_slot:
+  - alt_frame: 1
+    chance: 1
+  - alt_frame_foil: 1
+    chance: 1
+  foil_enchanting_tales_uncommon: 1
+sheets:
+  foil_enchanting_tales_uncommon:
+    foil: true
+    rawquery: "e:wot r:u number<=63"
+  alt_frame_foil:
+    any:
+    - use: rare_showcase
+      rate: 12
+    - rawquery: "(e:woe or e:woc) r:r frame:extendedart"
+      rate: 12
+    - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
+      rate: 12
+    - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
+      rate: 8
+    - rawquery: "e:wot r:r number:64-83"
+      rate: 4
+    - rawquery: "e:wot r:r number:84-103"
+      rate: 4
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Kellan)"
+      rate: 3
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
+      rate: 6
+    - rawquery: "(e:woe or e:woc) r:m frame:extendedart"
+      rate: 6
+    - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
+      rate: 6
+    - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
+      rate: 4
+    - rawquery: "e:wot r:m number:64-83"
+      rate: 2
+    - rawquery: "e:wot r:m number:84-103"
+      rate: 2
+  alt_frame:
+    any:
+    - use: rare_showcase
+      rate: 12
+    - rawquery: "(e:woe or e:woc) r:r frame:extendedart"
+      rate: 12
+    - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
+      rate: 12
+    - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
+      rate: 8
+    - rawquery: "e:wot r:r number:64-83"
+      rate: 4
+    - rawquery: "e:wot r:r number:84-103"
+      rate: 4
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Kellan)"
+      rate: 3
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
+      rate: 6
+    - rawquery: "(e:woe or e:woc) r:m frame:extendedart"
+      rate: 6
+    - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
+      rate: 6
+    - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
+      rate: 4
+    - rawquery: "e:wot r:m number:64-83"
+      rate: 2
+    - rawquery: "e:wot r:m number:84-103"
+      rate: 2
