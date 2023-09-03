@@ -52,7 +52,7 @@ describe "is:booster" do
 
     let(:standard_arena_sets) do
       db.sets.values.select{|s|
-        s.types.include?("standard") and
+        (s.types.include?("standard") or s.code == "ltr") and
         s.types.include?("booster") and
         s.printings.any?(&:arena?) and
         s.code != "ogw"
