@@ -22,6 +22,7 @@ class PatchMultipart < Patch
     return matches_by_number[0] if matches_by_number.size == 1
 
     # And then there's meld cards in PBRO with a lot of meld cards
+    # This isn't a good format as everything is listed twice, but it's only a few cards
     special = {
       "pbro" => {
         # Mishra
@@ -46,6 +47,15 @@ class PatchMultipart < Patch
         ["Titania, Gaea Incarnate", "256bp"] => {"Titania, Voice of Gaea" => "193p", "Argoth, Sanctum of Nature" => "256ap"},
         ["Titania, Gaea Incarnate", "256bs"] => {"Titania, Voice of Gaea" => "193s", "Argoth, Sanctum of Nature" => "256as"},
       },
+      "sld" => {
+        # Brisela
+        ["Gisela, the Broken Blade", "1335"] => {"Brisela, Voice of Nightmares" => "1336b"},
+        ["Bruna, the Fading Light", "1336"] => {"Brisela, Voice of Nightmares" => "1336b"},
+        ["Brisela, Voice of Nightmares", "1336b"] => {"Gisela, the Broken Blade" => "1335", "Bruna, the Fading Light" => "1336"},
+        ["Gisela, the Broken Blade", "1387"] => {"Brisela, Voice of Nightmares" => "1388b"},
+        ["Bruna, the Fading Light", "1388"] => {"Brisela, Voice of Nightmares" => "1388b"},
+        ["Brisela, Voice of Nightmares", "1388b"] => {"Gisela, the Broken Blade" => "1387", "Bruna, the Fading Light" => "1388"},
+      }
     }
     other_number = special.dig(set_code, [card_name, number], other_name)
     if other_number
