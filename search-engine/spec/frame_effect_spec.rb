@@ -85,7 +85,7 @@ describe "frame type and effect queries" do
   end
 
   it "is:textless" do
-    assert_include_search "is:fullart", "e:p10"
+    assert_include_search "is:fullart", "e:p10 -is:oversized"
   end
 
   it "frame:lesson" do
