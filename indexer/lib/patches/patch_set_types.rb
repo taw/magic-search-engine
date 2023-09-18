@@ -61,7 +61,7 @@ class PatchSetTypes < Patch
       when "phed"
         # OK, technically this is Commander deck, but I really don't want to deal with it
         set_types = ["box", "promo", "commander"]
-      when "sld", "slc"
+      when "sld", "slc", "slu"
         set_types << "promo" << "sld"
       when "past"
         set_types << "shandalar"
