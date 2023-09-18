@@ -12,7 +12,7 @@ RSpec.describe SetController, type: :controller do
   end
 
   it "actual set" do
-    get "show", params: { id: "nph" }
+    get "show", params: {id: "nph"}
     assert_response 200
     assert_select %[.results_summary:contains("New Phyrexia contains 175 cards.")]
     assert_select %[.results_summary:contains("It is part of Scars of Mirrodin block.")]
@@ -22,19 +22,19 @@ RSpec.describe SetController, type: :controller do
   end
 
   it "release dates" do
-    get "show", params: { id: "prna" }
+    get "show", params: {id: "prna"}
     assert_response 200
     expect(css_select(".results_summary").text).to match(/Released: 2019-01-25/)
     expect(css_select(".results_summary").text).to match(/Individual cards released between 2019-01-25 and 2020-09-25/)
   end
 
   it "fake set" do
-    get "show", params: { id: "lolwtf" }
+    get "show", params: {id: "lolwtf"}
     assert_response 404
   end
 
   it "verify scans" do
-    get "show", params: { id: "akh" }
+    get "show", params: {id: "akh"}
     assert_response 200
     assert_equal "Amonkhet - #{APP_NAME}", html_document.title
   end

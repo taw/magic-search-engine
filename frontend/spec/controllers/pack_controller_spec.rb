@@ -12,7 +12,7 @@ RSpec.describe PackController, type: :controller do
   end
 
   it "actual pack" do
-    get "show", params: { id: "m14" }
+    get "show", params: {id: "m14"}
     assert_response 200
     # assert_select %[.results_summary:contains("New Phyrexia contains 175 cards.")]
     # assert_select %[.results_summary:contains("It is part of Scars of Mirrodin block.")]
@@ -22,12 +22,12 @@ RSpec.describe PackController, type: :controller do
   end
 
   it "set without packs" do
-    get "show", params: { id: "c15" }
+    get "show", params: {id: "c15"}
     assert_response 404
   end
 
   it "fake pack" do
-    get "show", params: { id: "lolwtf" }
+    get "show", params: {id: "lolwtf"}
     assert_response 404
   end
 end
