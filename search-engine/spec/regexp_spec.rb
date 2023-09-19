@@ -36,8 +36,8 @@ describe "Regexp" do
   # end
 
   it "regexp oracle text" do
-    assert_search_results 'o:/\d{3,}/',
-      "1996 World Champion",
+    # This gets updated too much from SLD etc.
+    assert_search_results 'o:/\d{3,}/ -is:promo',
       "A Good Thing",
       "Ajani, Mentor of Heroes",
       "As Luck Would Have It",
