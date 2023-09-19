@@ -201,24 +201,17 @@ describe "Full Database Test" do
     assert_search_results "r:common -is:digital -e:sld alt:(r:mythic -is:digital -e:sld)",
       "Bojuka Bog",
       "Cabal Ritual",
-      "Capsize",
-      "Chain Lightning",
-      "Counterspell",
       "Dark Ritual",
-      "Daze",
       "Delver of Secrets",
       "Desert",
-      "Diabolic Edict",
       "Fyndhorn Elves",
       "Hymn to Tourach",
       "Impulse",
       "Insectile Aberration",
       "Kird Ape",
       "Lotus Petal",
-      "Ornithopter",
       "Rhystic Study",
-      "Sol Ring",
-      "Spell Pierce"
+      "Sol Ring"
   end
 
   it "is:funny" do
@@ -329,7 +322,7 @@ describe "Full Database Test" do
   end
 
   it "r:special" do
-    assert_search_equal "r:special -e:tsr,plist,pewk,ovnt,olgc", "(Super Secret Tech) or (e:vma r:special) or (e:tsb) or (Prismatic Piper) or (Faceless One)"
+    assert_search_equal "r:special -e:tsr,plist,pewk,ovnt,olgc", "(Super Secret Tech) or (e:vma r:special) or (e:tsb) or (Prismatic Piper) or (Faceless One) or e:mps,mp2"
     assert_count_cards "r:special e:tsr", 121
   end
 
