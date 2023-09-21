@@ -36,15 +36,15 @@ sheets:
   enchanting_tales_rare_mythic:
     any:
     - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
-      rate: 6
+      rate: 8
     - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
-      rate: 4
+      rate: 6
     - rawquery: "e:wot r:r number:64-83"
       rate: 2
     - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
-      rate: 3
+      rate: 4
     - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
-      rate: 2
+      rate: 3
     - rawquery: "e:wot r:m number:64-83"
       rate: 1
   alt_frame_foil:

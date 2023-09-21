@@ -14,17 +14,17 @@ sheets:
   enchanting_tales:
     any:
     - rawquery: "e:wot r:u number<64"
-      rate: 12
+      rate: 16
     - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
-      rate: 6
+      rate: 8
     - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
-      rate: 4
+      rate: 6
     - rawquery: "e:wot r:r number:64-83"
       rate: 2
     - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
-      rate: 3
+      rate: 4
     - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
-      rate: 2
+      rate: 3
     - rawquery: "e:wot r:m number:64-83"
       rate: 1
   mythic_with_showcase:
@@ -57,21 +57,41 @@ sheets:
       - use: basic
         rate: 3
       chance: 12
-    - use: uncommon_with_showcase
+    - any:
+      - use: uncommon_showcase
+        rate: 1
+      - use: uncommon_has_showcase
+        rate: 2
+      - use: uncommon_has_no_showcase
+        rate: 3
+      - use: "e:wot r:u number<64"
+        rate: 3
       chance: 5
     - any:
       - use: rare_showcase
-        rate: 4
-      - use: rare_has_showcase
         rate: 8
+      - use: rare_has_showcase
+        rate: 16
       - use: rare_has_no_showcase
-        rate: 12
-      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Kellan)"
-        rate: 1
-      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
-        rate: 2
-      - use: mythic_has_showcase
-        rate: 4
-      - use: mythic_has_no_showcase
+        rate: 24
+      - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
+        rate: 24
+      - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
+        rate: 18
+      - rawquery: "e:wot r:r number:64-83"
         rate: 6
+      - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
+        rate: 12
+      - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
+        rate: 9
+      - rawquery: "e:wot r:m number:64-83"
+        rate: 3
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Kellan)"
+        rate: 2
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
+        rate: 4
+      - use: mythic_has_showcase
+        rate: 8
+      - use: mythic_has_no_showcase
+        rate: 12
       chance: 3
