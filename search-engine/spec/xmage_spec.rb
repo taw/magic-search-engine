@@ -12,6 +12,9 @@ describe "XMage" do
       "Mind Bend",
       "Spectral Shift",
       "Swirl the Mists",
-      "Trait Doctoring"
+      "Trait Doctoring",
+      # new card added to LTR after release
+      "Minas Tirith Garrison",
+      "Riders of the Mark"
   end
 end
