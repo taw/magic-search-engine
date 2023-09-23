@@ -1,0 +1,13 @@
+# Data from https://magic.wizards.com/en/news/feature/zendikar-rising-prerelease-primer-2020-09-15
+pack:
+  prerelease_promo: 1
+  prerelease_pw: 1
+sheets:
+  prerelease_promo:
+    filter: "e:p{set} promo:prerelease -t:planeswalker"
+    use: rare_mythic
+    foil: true
+  prerelease_pw:
+    filter: "e:p{set} promo:prerelease t:planeswalker"
+    use: base_1248_by_rarity
+    foil: true
