@@ -121,7 +121,6 @@ class IndexSerializer
           "border",
           "digital",
           "etched",
-          "exclude_from_boosters", # needs to go
           "flavor_name",
           "flavor",
           "foiling",
@@ -148,6 +147,7 @@ class IndexSerializer
           "subsets",
           "textless",
           "timeshifted",
+          "token", # there could be token and card with the same name?
           "variant_foreign",
           "variant_misprint",
           "watermark",

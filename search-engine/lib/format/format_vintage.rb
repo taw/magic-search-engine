@@ -30,6 +30,7 @@ class FormatVintage < Format
       sis
       tafr
       tclb
+      tltr
       xana
       ybro
       ydmu

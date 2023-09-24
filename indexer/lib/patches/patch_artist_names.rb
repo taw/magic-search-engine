@@ -12,7 +12,10 @@ class PatchArtistNames < Patch
       ["Tomb of Annihilation", "tafr", "22"],
       ["Dungeon of the Mad Mage", "tafr", "20"],
       ["Lost Mine of Phandelver", "tafr", "21"],
-      ["Undercity", "tclb", "20"],
+      ["The Initiative", "tclb", "20a"],
+      ["Undercity", "tclb", "20b"],
+      ["The Ring", "tltr", "H13a"],
+      ["The Ring Tempts You", "tltr", "H13b"],
     ]
   end
 
