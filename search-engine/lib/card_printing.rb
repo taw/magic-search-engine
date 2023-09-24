@@ -31,6 +31,7 @@ class CardPrinting
     :stamp,
     :subsets,
     :textless,
+    :token,
     :timeshifted,
     :variant_foreign,
     :variant_misprint,
@@ -74,7 +75,6 @@ class CardPrinting
     @buyabox = data["buyabox"]
     @digital = data["digital"]
     @etched = data["etched"]
-    @exclude_from_boosters = data["exclude_from_boosters"]
     @fullart = data["fullart"]
     @language = data["language"]
     @mtgo = data["mtgo"]
@@ -92,6 +92,7 @@ class CardPrinting
     @subsets = data["subsets"]
     @textless = data["textless"]
     @timeshifted = data["timeshifted"]
+    @token = data["token"]
     @variant_foreign = data["variant_foreign"]
     @variant_misprint = data["variant_misprint"]
     @xmage = data["xmage"]
