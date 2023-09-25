@@ -10,7 +10,7 @@ class PatchTokens < Patch
 
   def add_tafr
     afr = @sets.find{|s| s["official_code"] == "AFR" }
-    dungeons = afr["tokens"].select{|t| t["type"] == "Dungeon"}
+    dungeons = afr["tokens"].select{|t| t["types"].include?("Dungeon") }
 
     tafr = {
       "official_code" => "TAFR", # nothing official about it
@@ -33,8 +33,8 @@ class PatchTokens < Patch
 
   def add_tclb
     clb = @sets.find{|s| s["official_code"] == "CLB" }
-    dungeons = clb["tokens"].select{|t| t["type"] =~ /Dungeon/}
-    initiative = clb["tokens"].select{|t| t["name"] =~ /The Initiative/ and t["type"] !~ /Dungeon/}
+    dungeons = clb["tokens"].select{|t| t["types"].include?("Dungeon")}
+    initiative = clb["tokens"].select{|t| t["name"] =~ /The Initiative/ and !t["types"].include?("Dungeon")}
 
     tclb = {
       "official_code" => "TCLB", # nothing official about it
@@ -65,7 +65,6 @@ class PatchTokens < Patch
       token["name"] = token.delete("faceName")
       token["number"] += "a"
       token["token"] = true
-      token["type"] = ""
       token["types"] = []
       token.delete("artist")
       add_token token
@@ -90,7 +89,6 @@ class PatchTokens < Patch
       token["layout"] = "token" # not really
       token["availability"].delete("paper")
       token["name"] = token.delete("faceName")
-      token["type"] = ""
       token["types"] = []
       if token["name"] == "The Ring"
         token["number"] += "a"

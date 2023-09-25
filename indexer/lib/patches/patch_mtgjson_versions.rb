@@ -124,6 +124,11 @@ class PatchMtgjsonVersions < Patch
         card["frame_effects"].delete("textless")
       end
 
+      # It's randomly added to Mount Doom, likely as a mistake
+      if card["frame_effects"]
+        card["frame_effects"].delete("boosterfun")
+      end
+
       # This is not quite set-based as there are Arena-specific fixed art cards
       # We used to have set-based logic, but it has no way of finding cards like znr/288†b
       card["digital"] = card.delete("isOnlineOnly")
@@ -247,6 +252,15 @@ class PatchMtgjsonVersions < Patch
       if card["finishes"]&.include?("etched")
         card["etched"] = true
       end
+
+      if card["name"] == "Aragorn, Hornburg Hero"
+        # It's incorrectly parsed
+        card["types"]  = ["Creature"]
+        card["subtypes"] = ["Human", "Soldier"]
+      end
+
+      # redundant with other fields, just predelete
+      card.delete("type")
     end
   end
 
