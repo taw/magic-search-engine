@@ -10,49 +10,30 @@ class PatchTokens < Patch
 
   def add_tafr
     afr = @sets.find{|s| s["official_code"] == "AFR" }
+    tafr = add_tokens_set(afr)
     dungeons = afr["tokens"].select{|t| t["types"].include?("Dungeon") }
 
-    tafr = {
-      "official_code" => "TAFR", # nothing official about it
-      "name" => "Adventures in the Forgotten Realms Tokens",
-      "type" => "token",
-      "meta" => afr["meta"],
-      "releaseDate" => afr["releaseDate"],
-    }
-
-    @sets << tafr
     dungeons.each do |token|
       token["set"] = tafr
       token["rarity"] = "common"
       token["layout"] = "dungeon"
-      token["availability"].delete("paper")
-      token["token"] = true
       add_token token
     end
   end
 
   def add_tclb
     clb = @sets.find{|s| s["official_code"] == "CLB" }
+    tclb = add_tokens_set(clb)
     dungeons = clb["tokens"].select{|t| t["types"].include?("Dungeon")}
     initiative = clb["tokens"].select{|t| t["name"] =~ /The Initiative/ and !t["types"].include?("Dungeon")}
 
-    tclb = {
-      "official_code" => "TCLB", # nothing official about it
-      "name" => "Commander Legends: Battle for Baldur's Gate Tokens",
-      "type" => "token",
-      "meta" => clb["meta"],
-      "releaseDate" => clb["releaseDate"],
-    }
-    @sets << tclb
     # We need to un-DFC it
     dungeons.each do |token|
       token["set"] = tclb
       token["rarity"] = "common"
       token["layout"] = "dungeon"
-      token["availability"].delete("paper")
       token["name"] = token.delete("faceName")
       token["number"] += "b"
-      token["token"] = true
       token.delete("artist")
       add_token token
     end
@@ -61,10 +42,8 @@ class PatchTokens < Patch
       token["set"] = tclb
       token["rarity"] = "common"
       token["layout"] = "token" # not really
-      token["availability"].delete("paper")
       token["name"] = token.delete("faceName")
       token["number"] += "a"
-      token["token"] = true
       token["types"] = []
       token.delete("artist")
       add_token token
@@ -73,21 +52,13 @@ class PatchTokens < Patch
 
   def add_tltr
     ltr = @sets.find{|s| s["official_code"] == "LTR" }
+    tltr = add_tokens_set(ltr)
     ring = ltr["tokens"].select{|t| t["name"] =~ /Ring/}
-    tltr = {
-      "official_code" => "TLTR", # nothing official about it
-      "name" => "The Lord of the Rings: Tales of Middle-earth Tokens",
-      "type" => "token",
-      "meta" => ltr["meta"],
-      "releaseDate" => ltr["releaseDate"],
-    }
-    @sets << tltr
 
     ring.each do |token|
       token["set"] = tltr
       token["rarity"] = "common"
       token["layout"] = "token" # not really
-      token["availability"].delete("paper")
       token["name"] = token.delete("faceName")
       token["types"] = []
       if token["name"] == "The Ring"
@@ -95,13 +66,28 @@ class PatchTokens < Patch
       else
         token["number"] += "b"
       end
-      token["token"] = true
       token.delete("artist")
       add_token token
     end
   end
 
   def add_token(token)
+    token["availability"].delete("paper")
+    token["token"] = true
     (@cards[token["name"]] ||= []) << token
+  end
+
+  def add_tokens_set(base_set)
+    code = "T" + base_set["official_code"]
+    name = "#{base_set["name"]} Tokens"
+    token_set = {
+      "official_code" => code, # nothing official about it
+      "name" => name,
+      "type" => "token",
+      "meta" => base_set["meta"],
+      "releaseDate" => base_set["releaseDate"],
+    }
+    @sets << token_set
+    token_set
   end
 end
