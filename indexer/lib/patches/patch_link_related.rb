@@ -1,6 +1,8 @@
 # Inclruding Specialized / Spellbooks here is arguably redundant with their special fields
 
 class PatchLinkRelated < Patch
+  attr_reader :links
+
   ExtraRelations = {
     "Garth One-Eye" => [
       "Disenchant",
@@ -293,7 +295,16 @@ class PatchLinkRelated < Patch
       "Winter Sky",
       "Wizards' School",
     ],
+    # Special tokens
+    "Undercity" => ["The Initiative"],
+    "The Ring" => ["The Ring Tempts You"],
   }
+
+  def add_link(name1, name2)
+    return if name1 == name2
+    links[name1] << name2
+    links[name2] << name1
+  end
 
   def call
     # The index has tokens as cards, CardDatabase filters them out
@@ -307,21 +318,19 @@ class PatchLinkRelated < Patch
     rx = /\b(?:named|Partner with|token copy of) (#{any_card})(?:(?:,|,? and|,? or) (#{any_card}))?(?:(?:,|,? and|,? or) (#{any_card}))?/
 
     # Extract links
-    links = Hash.new{|ht,k| ht[k] = Set[]}
+    @links = Hash.new{|ht,k| ht[k] = Set[]}
     each_printing do |printing|
       name = printing["name"]
       matching_cards = (printing["text"]||"").scan(rx).flatten.uniq - [name, nil]
       next if matching_cards.empty?
       matching_cards.each do |other|
-        links[name] << other
-        links[other] << name
+        add_link name, other
       end
     end
 
     ExtraRelations.each do |name, others|
       others.each do |other|
-        links[name] << other
-        links[other] << name
+        add_link name, other
       end
     end
 
@@ -329,9 +338,7 @@ class PatchLinkRelated < Patch
     PatchSpecialize::SpecializeGroups.each do |group|
       group.each do |name1|
         group.each do |name2|
-          next if name1 == name2
-          links[name1] << name2
-          links[name2] << name1
+          add_link name1, name2
         end
       end
     end
@@ -340,8 +347,7 @@ class PatchLinkRelated < Patch
       name = printing["name"]
       next unless name.end_with?(" (Alchemy)")
       base_name = name.sub(" (Alchemy)", "")
-      links[name] << base_name
-      links[base_name] << name
+      add_link name, base_name
     end
 
     each_printing do |printing|
@@ -352,10 +358,31 @@ class PatchLinkRelated < Patch
         # Temporary debugging as spellbooks in mtgjson have issues
         # puts "Spellbook for: #{name}: #{spellbook.inspect}"
         spellbook.each do |other|
-          links[name] << other
-          links[other] << name
+          add_link name, other
         end
       end
+    end
+
+    # Special Tokens
+    each_printing do |printing|
+      name = printing["name"]
+      text = printing["text"]
+
+      # The Ring
+      if text =~ /ring-bearer|ring tempts you/i
+        add_link "The Ring", name
+        add_link "The Ring Tempts You", name
+      end
+
+      # Initiative
+      if text =~ /have the initiative|take the initiative/i
+        add_link "The Initiative", name
+        add_link "Undercity", name
+      end
+
+      # Dungeon - TODO
+
+      # Monarch - TODO
     end
 
     # Apply links
