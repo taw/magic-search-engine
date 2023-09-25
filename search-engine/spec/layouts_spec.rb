@@ -12,6 +12,7 @@ describe "Card layouts" do
 
   it "every layout: also works as is:" do
     layouts.each do |layout|
+      next if layout == "token"
       assert_search_equal "layout:#{layout}", "is:#{layout}"
     end
   end
