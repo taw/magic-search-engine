@@ -1,19 +1,13 @@
 class PatchBaseSize < Patch
   def call
-    # https://github.com/mtgjson/mtgjson/issues/765
-    # https://github.com/mtgjson/mtgjson/issues/855
     sizes = {
       "jmp" => 78,
       "tsr" => 410, # 289, # THIS IS INCORRECT, need fixes downstream in sealed code
       "dbl" => 534,
       "2x2" => 331,
-      "dmu" => 281,
       "brr" => 126, # nothing printed due to old frame
       "bro" => 287,
-      "dmr" => 261,
-      "one" => 271,
-      "onc" => 28,
-      "ltr" => 281, # not printed, "Set size	281 + 170"
+      "ltr" => 281, # not printed, "Set size281 + 170"
     }
 
     sizes.each do |code, size|
