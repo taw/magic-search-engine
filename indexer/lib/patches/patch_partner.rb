@@ -45,14 +45,16 @@ class PatchPartner < Patch
           ["379★b", "380★b"],
         ],
         "ltc" => [
-          # This is a special 3 Frodo 2 Sam situation
+          # This is a special 4 Frodo 3 Sam situation
           # Frodo / Sam
           ["2", "7"],
           # ["82", "90"],
           ["87", "90"],
+          ["461", "476"],
           # Merry / Pippin
           ["61", "65"],
           ["143", "146"],
+          ["468", "472"],
         ]
       }
       partner_numbers = {}
