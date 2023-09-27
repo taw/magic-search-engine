@@ -2,6 +2,10 @@ class PatchUrza < Patch
   # Last updated 2018-07-10
   # This list was updated before (for new template wording only, not functional changes)
   # and could be updated again in the future
+  #
+  # There used to be website with interactive code for it as askurza.com but it got replaced by
+  # downloadable pdf https://media.wizards.com/2018/downloads/Urza-bilities_DARupdate.pdf
+  # Contents look the same, but it's difficult to extract from PDF, so this is from the old site.
   Abilities = [
     [
       "Until end of turn, up to one target creature gets +1/+1 and gains first strike, vigilance, and lifelink.",
