@@ -118,6 +118,7 @@ describe "Spelling" do
   end
 
   # As defined by CR
+  # But don't list card as its own relation
   it "Apocalypse Chime" do
     assert_search_results %Q[related:"Aysen Crusader"], "Apocalypse Chime"
     assert_search_results %Q[related:"Apocalypse Chime"],
@@ -135,7 +136,6 @@ describe "Spelling" do
       "An-Havva Inn",
       "An-Havva Township",
       "An-Zerrin Ruins",
-      "Apocalypse Chime",
       "Autumn Willow",
       "Aysen Abbey",
       "Aysen Bureaucrats",
@@ -253,7 +253,6 @@ describe "Spelling" do
       "Bottle of Suleiman",
       "Brass Man",
       "Camel",
-      "City in a Bottle",
       "City of Brass",
       "Cuombajj Witches",
       "Cyclone",
@@ -357,7 +356,6 @@ describe "Spelling" do
       "Gaea's Avenger",
       "Gate to Phyrexia",
       "Goblin Artisans",
-      "Golgothian Sylex",
       "Grapeshot Catapult",
       "Haunting Wind",
       "Hurkyl's Recall",
