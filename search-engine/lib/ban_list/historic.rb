@@ -282,4 +282,15 @@ BanList.for_format("historic") do
     nil,
     "Ragavan, Nimble Pilferer" => "banned",
   )
+
+  change(
+    "2023-08-15",
+    "https://twitter.com/MTG_Arena/status/1691515167111000064",
+    "Blood Moon" => "banned",
+    "Intruder Alarm" => "banned",
+    "Land Tax" => "banned",
+    "Necropotence" => "banned",
+    "Sneak Attack" => "banned",
+    "Spreading Seas" => "banned",
+  )
 end
