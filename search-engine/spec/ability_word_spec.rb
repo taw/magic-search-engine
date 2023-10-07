@@ -24,6 +24,8 @@ describe "Ability Word Regexp" do
       "II",
       "III",
       "IV",
+      # "V", # somehow skipped?
+      "VI",
       "Prize",
       "Ransom", # playtest cards
       "Target opponent chooses one",
