@@ -100,7 +100,7 @@ class CheckCardOrientation
       if orientation == :vertical and expected_orientation == :horizontal
         warn "Fixing #{card_name_and_number} (#{@card.typeline}) #{@path} by rotating it 90 degrees"
         rotate
-        open
+        # open
       else
         print_warning
       end
