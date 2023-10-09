@@ -302,6 +302,8 @@ class PatchLinkRelated < Patch
 
   def add_link(name1, name2)
     return if name1 == name2
+    return unless @cards[name1]
+    return unless @cards[name2]
     links[name1] << name2
     links[name2] << name1
   end
@@ -310,6 +312,9 @@ class PatchLinkRelated < Patch
     # The index has tokens as cards, CardDatabase filters them out
     # We should probably move them out of the way before that
     all_card_names = @cards.values.flatten.select{|c| c["layout"] != "token"}.map{|c| c["name"]}.uniq
+    # Some token names to prevent fake matches
+    # like Smoke Spirits' Aid -> Smoke
+    all_card_names += ["Smoke Blessing"]
 
     # Get longest match so
     # "Take Inventory" doesn't mistakenly seem to refer to "Take" etc.
