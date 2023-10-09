@@ -56,6 +56,7 @@ describe "Regexp" do
       "Aardwolf's Advantage",
       "Automatic Librarian",
       "Fervent Champion",
+      "Frostboil Snarl",
       "Gilded Lotus",
       "Goblin Secret Agent",
       "Gore Vassal",
