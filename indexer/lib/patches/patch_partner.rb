@@ -55,7 +55,10 @@ class PatchPartner < Patch
           ["61", "65"],
           ["143", "146"],
           ["468", "472"],
-        ]
+        ],
+        "who" => [
+
+        ],
       }
       partner_numbers = {}
       special_pairs.each do |set_code, pairs|
