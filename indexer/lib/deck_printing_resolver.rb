@@ -205,6 +205,10 @@ class DeckPrintingResolver
     printings_with_borders = printings.select{|c| c["border"] != "borderless" }
     printings = printings_with_borders unless printings_with_borders.empty?
 
+    # And again to surgefoil
+    printings_without_surgefoil = printings.select{|c| !c["promo_types"]&.include?("surgefoil") }
+    printings = printings_without_surgefoil unless printings_without_surgefoil.empty?
+
     return printings[0] if printings.size == 1
 
     numbers = printings.map{|c| c["number"]}
