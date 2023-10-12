@@ -7,7 +7,7 @@ class PatchDecks < Patch
   def resolve_printings
     @decks.each do |deck|
       deck["cards"] = deck["cards"].map{|card| resolve_printing(deck, card) }.compact
-      deck["sideboard"] = deck["sideboard"].map{|card| resolve_printing(deck, card) }.compact
+      deck["sideboard"] = (deck["sideboard"] + deck["bonus"]).map{|card| resolve_printing(deck, card) }.compact
       deck["commander"] = deck["commander"].map{|card| resolve_printing(deck, card) }.compact
       unless deck["release_date"]
         warn "No release date for #{deck["set_code"]} #{deck["name"]}, defaulting to set release date"
