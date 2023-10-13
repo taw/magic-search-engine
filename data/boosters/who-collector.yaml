@@ -1,0 +1,146 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-magic-the-gathering-doctor-who
+pack:
+  land:
+  - foil_basic: 1
+    chance: 2
+  - surge_basic: 1
+    chance: 1
+  doctor:
+  - foil_doctor: 1
+    chance: 9
+  - surge_doctor: 1
+    chance: 1
+  blast:
+  - foil_blast_past: 1
+    chance: 9
+  - surge_blast_past: 1
+    chance: 1
+  timey:
+  - foil_timey_wimey: 1
+    chance: 9
+  - surge_timey_wimey: 1
+    chance: 1
+  paradox:
+  - foil_paradox: 1
+    chance: 9
+  - surge_paradox: 1
+    chance: 1
+  master:
+  - foil_master_evil: 1
+    chance: 9
+  - surge_master_evil: 1
+    chance: 1
+  extended_new: 1
+  foil_extended_new: 1
+  extended_reprint: 1
+  foil_extended_reprint: 1
+  surge_extended_new: 1
+  surge_extended_reprint: 1
+  surge_wildcard: 1
+  tardis: 1
+  finale:
+  - foil_tardis: 1
+    chance: 89
+  - surge_tardis: 1
+    chance: 10
+  - serialized: 1
+    chance: 1
+sheets:
+  foil_basic:
+    foil: true
+    rawquery: "e:who t:basic -promo:surgefoil"
+    count: 10
+  surge_basic:
+    foil: true
+    rawquery: "e:who t:basic promo:surgefoil"
+    count: 10
+  foil_doctor:
+    foil: true
+    filter: "e:who t:doctor -promo:surgefoil -frame:showcase -frame:extendedart -promo:thick"
+    use: rare_mythic
+    count: 15
+  surge_doctor:
+    foil: true
+    filter: "e:who t:doctor promo:surgefoil -frame:showcase -frame:extendedart"
+    use: rare_mythic
+    count: 15
+  foil_blast_past:
+    foil: true
+    filter: "e:who deck:\"Blast from the Past\" -t:plane -t:phenomenon -t:basic -promo:thick"
+    use: base_1248_by_rarity
+    count: 93
+  surge_blast_past:
+    foil: true
+    filter: "e:who alt:deck:\"Blast from the Past\" promo:surgefoil -t:plane -t:phenomenon -t:basic -frame:extendedart -frame:showcase -number:855-857 -number:790-791"
+    use: base_1248_by_rarity
+    count: 93
+  foil_timey_wimey:
+    foil: true
+    filter: "e:who deck:\"Timey-Wimey\" -t:plane -t:phenomenon -t:basic -promo:thick"
+    use: base_1248_by_rarity
+    count: 91
+  surge_timey_wimey:
+    foil: true
+    filter: "e:who alt:deck:\"Timey-Wimey\" promo:surgefoil -t:plane -t:phenomenon -t:basic -frame:extendedart -frame:showcase -number:854 -number:856-857 -number:789 -number:791"
+    use: base_1248_by_rarity
+    count: 91
+  foil_paradox:
+    foil: true
+    filter: "e:who deck:\"Paradox Power\" -t:plane -t:phenomenon -t:basic -promo:thick"
+    use: base_1248_by_rarity
+    count: 89
+  surge_paradox:
+    foil: true
+    filter: "e:who alt:deck:\"Paradox Power\" promo:surgefoil -t:plane -t:phenomenon -t:basic -frame:extendedart -frame:showcase -number:857 -number:854-855 -number:789-790"
+    use: base_1248_by_rarity
+    count: 89
+  foil_master_evil:
+    foil: true
+    filter: "e:who deck:\"Masters of Evil\" -t:plane -t:phenomenon -t:basic -promo:thick"
+    use: base_1248_by_rarity
+    count: 94
+  surge_master_evil:
+    foil: true
+    filter: "e:who alt:deck:\"Masters of Evil\" promo:surgefoil -t:plane -t:phenomenon -t:basic -frame:extendedart -frame:showcase -number:854-856"
+    use: base_1248_by_rarity
+    count: 94
+  extended_new:
+    filter: "e:who -is:reprint frame:extendedart -promo:surgefoil"
+    use: base_1248_by_rarity
+  foil_extended_new:
+    foil: true
+    filter: "e:who -is:reprint frame:extendedart -promo:surgefoil"
+    use: base_1248_by_rarity
+  surge_extended_new:
+    foil: true
+    filter: "e:who -is:reprint frame:extendedart promo:surgefoil"
+    use: base_1248_by_rarity
+  extended_reprint:
+    filter: "e:who is:reprint frame:extendedart -promo:surgefoil"
+    use: base_1248_by_rarity
+  foil_extended_reprint:
+    foil: true
+    filter: "e:who is:reprint frame:extendedart -promo:surgefoil"
+    use: base_1248_by_rarity
+  surge_extended_reprint:
+    foil: true
+    filter: "e:who is:reprint frame:extendedart promo:surgefoil"
+    use: base_1248_by_rarity
+  surge_wildcard:
+    foil: true
+    filter: "e:who promo:surgefoil -frame:showcase -frame:extendedart -r:basic"
+    use: base_1248_by_rarity
+  tardis:
+    filter: "e:who frame:showcase -promo:surgefoil -number:/z/"
+    use: base_1248_by_rarity
+  foil_tardis:
+    foil: true
+    filter: "e:who frame:showcase -promo:surgefoil -number:/z/"
+    use: base_1248_by_rarity
+  surge_tardis:
+    foil: true
+    filter: "e:who frame:showcase promo:surgefoil -number:/z/"
+    use: base_1248_by_rarity
+  serialized:
+    foil: true
+    rawquery: "e:who number:/z/"
