@@ -253,7 +253,14 @@ class CardPrinting
     inspect
   end
 
+  # There are 3 scenarios:
+  # * both have "Partner"
+  # * both have "Partner with" and they point at each other
+  # * one is The Doctor, and the other has "Doctor's Companion"
   def valid_partner_for?(other)
+    return true if the_doctor? and other.doctors_companion?
+    return true if other.the_doctor? and self.doctors_companion?
+
     return unless partner? and other.partner?
     if partner
       return false unless partner.name == other.name
@@ -262,6 +269,15 @@ class CardPrinting
       return false unless name == other.partner.name
     end
     true
+  end
+
+  # For sake of Doctor's companion
+  def the_doctor?
+    types.to_set == Set["creature", "time-lord", "doctor", "legendary"]
+  end
+
+  def doctors_companion?
+    text.include?("Doctor's companion")
   end
 
   def main_front

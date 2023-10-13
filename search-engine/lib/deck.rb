@@ -70,6 +70,7 @@ class Deck
       return false unless @commander.size == 2 # 2x same card is not valid
       a = @commander[0][1]
       b = @commander[1][1]
+      binding.pry unless a.commander? and b.commander? and a.valid_partner_for?(b)
       a.commander? and b.commander? and a.valid_partner_for?(b)
     else
       false
