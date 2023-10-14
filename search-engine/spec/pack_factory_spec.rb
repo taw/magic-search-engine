@@ -58,7 +58,7 @@ describe PackFactory do
       s.types.include?("core") or s.types.include?("expansion")
     }.to_set }
     let(:expected_official) {
-      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2 dbl clb 2x2 unf dmr sir ltr cmm]
+      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2 dbl clb 2x2 unf dmr sir ltr cmm who]
     }
     let(:expected_mtgjson_variant) {
       ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "10e", "mb1", "gpt", "ala", "jmp", "j22"]
@@ -781,9 +781,9 @@ describe PackFactory do
     let(:fmb1_physical_cards) { fmb1_cards.map{|c| PhysicalCard.for(c, true)}.uniq }
     let(:cmb1_physical_cards) { cmb1_cards.map{|c| PhysicalCard.for(c)}.uniq }
 
-
     context "MB1" do
       let(:set_code) { "mb1" }
+      let(:variant) { nil }
       let(:expected_cards) { mb1_physical_cards + fmb1_physical_cards }
       let(:expected_ev) { expected_cards.map{|c| [c, Rational(1,121)] }.to_h }
 
@@ -793,7 +793,8 @@ describe PackFactory do
     end
 
     context "CMB1" do
-      let(:set_code) { "cmb1" }
+      let(:set_code) { "mb1" }
+      let(:variant) { "convention" }
       let(:expected_cards) { mb1_physical_cards + cmb1_physical_cards }
       let(:expected_ev) { expected_cards.map{|c| [c, Rational(1,121)] }.to_h }
 
