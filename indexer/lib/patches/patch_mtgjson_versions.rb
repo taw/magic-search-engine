@@ -253,6 +253,12 @@ class PatchMtgjsonVersions < Patch
         card["etched"] = true
       end
 
+      # First https://github.com/mtgjson/mtgjson/issues/1094 but it keeps coming back
+      # so a permanent fix here
+      if card["subtypes"]&.include?("Saga") and card["layout"] == "normal"
+        card["layout"] = "saga"
+      end
+
       if card["name"] == "Aragorn, Hornburg Hero"
         # It's incorrectly parsed
         card["types"]  = ["Creature"]

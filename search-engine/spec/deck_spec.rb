@@ -15,6 +15,7 @@ describe Deck do
       ["box", "Event Deck"],
       ["box", "Intro Pack"],
       ["box", "Theme Deck"],
+      ["box", "Box Set"],
       ["masters", "MTGO Theme Deck"],
       ["global series", "Planeswalker Deck"], # v3
       ["duel deck", "Planeswalker Deck"], # v4
@@ -344,6 +345,9 @@ describe Deck do
         if set_code == "c16"
           # Doesn't follow normal rules
           foils_rarity.should match_array(["rare", "mythic", "mythic", "mythic"])
+        elsif set_code == "who"
+          # including with display commander
+          foils_rarity.should match_array(["rare", "mythic", "mythic"])
         else
           expected_rarity = [max_rarity] * foils_rarity.size
           foils_rarity.should(

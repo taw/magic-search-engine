@@ -67,6 +67,8 @@ class PatchSetTypes < Patch
         set_types << "shandalar"
       when "pz2", /\Ap...\z/
         set_types << "promo"
+      when /\Ass\d/
+        set_types << "spellbook" << "box"
       end
 
       # Some of these are not actually funny sets, just promo sets mixing funny and regular cards (like plist)

@@ -94,6 +94,7 @@ describe "Spelling" do
       next if name == "Death's-Head Buzzard"
       # I don't even
       next if name == "Guan Yu's 1,000-Li March"
+      next if name == "K-9, Mark I"
       # Ignore Unstable augments
       next if name == "Monkey-"
       next if name == "Rhino-"
