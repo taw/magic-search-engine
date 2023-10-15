@@ -19,9 +19,13 @@ describe "Spelling" do
   end
 
   it "Alchemy" do
+    # This test somehow also covers dungeons
     assert_search_results "related:Acererak",
       "Acererak the Archlich",
-      "Acererak the Archlich (Alchemy)"
+      "Acererak the Archlich (Alchemy)",
+      "Dungeon of the Mad Mage",
+      "Lost Mine of Phandelver",
+      "Tomb of Annihilation"
   end
 
   it "specialize" do
