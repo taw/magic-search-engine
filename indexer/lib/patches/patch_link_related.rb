@@ -400,6 +400,8 @@ class PatchLinkRelated < Patch
         add_link "Tomb of Annihilation", name
       end
 
+      # Acererak (and its Alchemy version) also use "completed Tomb of Annihilation", but they already match the above
+
       # Monarch - TODO
     end
 
