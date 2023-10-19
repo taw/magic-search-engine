@@ -259,6 +259,13 @@ class PatchMtgjsonVersions < Patch
         card["layout"] = "saga"
       end
 
+      # First https://github.com/mtgjson/mtgjson/issues/1094 but it keeps coming back
+      # so a permanent fix here
+      if card["frame_effects"]&.include?("borderless")
+        card["border"] = "borderless"
+        card["frame_effects"].delete("borderless")
+      end
+
       if card["name"] == "Aragorn, Hornburg Hero"
         # It's incorrectly parsed
         card["types"]  = ["Creature"]
