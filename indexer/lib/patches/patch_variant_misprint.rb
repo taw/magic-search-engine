@@ -16,6 +16,9 @@ class PatchVariantMisprint < Patch
     when "inv"
       # This is some promo, should be in PINV not INV
       number =~ /★/
+    when "dom"
+      # Arena version not misprint, but I don't want a separate flag for a single card
+      number =~ /y/
     else
       number =~ /†/
     end
