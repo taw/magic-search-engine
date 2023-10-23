@@ -6,9 +6,28 @@ class PatchDecks < Patch
 
   def resolve_printings
     @decks.each do |deck|
-      deck["cards"] = deck["cards"].map{|card| resolve_printing(deck, card) }.compact
-      deck["sideboard"] = (deck["sideboard"] + deck["bonus"]).map{|card| resolve_printing(deck, card) }.compact
-      deck["commander"] = deck["commander"].map{|card| resolve_printing(deck, card) }.compact
+      # Map new section system back into the old for now
+      sections = deck["cards"]
+      deck["cards"] = []
+      deck["sideboard"] = []
+      deck["commander"] = []
+
+      sections.each do |section_name, cards|
+        cards = cards.map{|card| resolve_printing(deck, card) }.compact
+
+        case section_name
+        when "Main Deck"
+          deck["cards"] += cards
+        when "Commander"
+          deck["commander"] += cards
+        when "Sideboard", "Planar Deck", "Display Commander"
+          # If identical card appears in multiple section, this merging isn't great, but I don't think this ever happens
+          deck["sideboard"] += cards
+        else
+          raise "Unknown section name #{section_name}"
+        end
+      end
+
       unless deck["release_date"]
         warn "No release date for #{deck["set_code"]} #{deck["name"]}, defaulting to set release date"
         deck["release_date"] = @sets.find{|s| s["code"] == deck["set_code"]}["release_date"]
