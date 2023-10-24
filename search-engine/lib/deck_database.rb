@@ -14,9 +14,7 @@ class DeckDatabase
     JSON.parse(path.read).each do |deck|
       set_code = deck["set_code"]
       set = @db.sets[set_code] or raise "Set not found #{set_code}"
-      cards = deck["cards"].map{|c| resolve_card(*c) }
-      sideboard = deck["sideboard"].map{|c| resolve_card(*c) }
-      commander = deck["commander"].map{|c| resolve_card(*c) }
+      sections = deck["cards"].to_h{|sn, sc| [sn, sc.map{|c| resolve_card(*c)}] }
       date = deck["release_date"]
       display = deck["display"]
       date = date ? Date.parse(date) : nil
@@ -27,9 +25,7 @@ class DeckDatabase
         deck["category"],
         deck["format"],
         date,
-        cards,
-        sideboard,
-        commander,
+        sections,
         display,
       )
       set.decks << deck
