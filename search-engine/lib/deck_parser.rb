@@ -61,7 +61,11 @@ class DeckParser
   end
 
   def deck
-    Deck.new(@main_cards, @sideboard_cards, @commander_cards)
+    Deck.new({
+      "Main Deck" => @main_cards,
+      "Sideboard" => @sideboard_cards,
+      "Commander" => @commander_cards,
+    })
   end
 
   private

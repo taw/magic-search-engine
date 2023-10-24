@@ -4,7 +4,8 @@ describe "Variant spec" do
 
   it "variant:misprint" do
     # inv is really a misplaced promo due to bad mtgjson data
-    assert_search_equal "variant:misprint", "(number:/†/ -e:arn) or (e:gpt,stx,inv number:/★/)"
+    # dom is really Arena replacement card
+    assert_search_equal "variant:misprint", "(number:/†/ -e:arn) or (e:gpt,stx,inv number:/★/) or (e:dom number:/y/)"
   end
 
   it "variant:foreign" do

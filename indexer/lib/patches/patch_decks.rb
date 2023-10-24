@@ -8,23 +8,22 @@ class PatchDecks < Patch
     @decks.each do |deck|
       # Map new section system back into the old for now
       sections = deck["cards"]
-      deck["cards"] = []
+      deck["cards"] = {}
       deck["sideboard"] = []
       deck["commander"] = []
 
-      sections.each do |section_name, cards|
-        cards = cards.map{|card| resolve_printing(deck, card) }.compact
+      sections.each do |section_name, section_cards|
+        section_cards = section_cards.map{|card| resolve_printing(deck, card) }.compact
 
         case section_name
-        when "Main Deck"
-          deck["cards"] += cards
-        when "Commander"
-          deck["commander"] += cards
-        when "Sideboard", "Planar Deck", "Display Commander"
-          # If identical card appears in multiple section, this merging isn't great, but I don't think this ever happens
-          deck["sideboard"] += cards
+        when "Main Deck", "Commander", "Sideboard", "Planar Deck", "Display Commander"
+          deck["cards"][section_name] ||= []
+          deck["cards"][section_name] += section_cards
         else
-          raise "Unknown section name #{section_name}"
+          # If identical card appears in multiple section, this merging isn't great, but I don't think this ever happens
+          warn "Unknown section name #{section_name}"
+          deck["cards"]["Sideboard"] ||= []
+          deck["cards"]["Sideboard"] += section_cards
         end
       end
 
