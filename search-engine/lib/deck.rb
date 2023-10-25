@@ -34,20 +34,25 @@ class Deck
     result.map{|card,(name,number)| [card, name, number] }
   end
 
+  def number_of_cards(section)
+    return 0 unless @sections[section]
+    @sections[section].sum(&:first)
+  end
+
   def number_of_mainboard_cards
-    @cards.sum(&:first)
+    number_of_cards("Main Deck")
   end
 
   def number_of_sideboard_cards
-    @sideboard.sum(&:first)
+    number_of_cards("Sideboard")
   end
 
   def number_of_commander_cards
-    @commander.sum(&:first)
+    number_of_cards("Main Commander")
   end
 
   def number_of_total_cards
-    number_of_mainboard_cards + number_of_sideboard_cards + number_of_commander_cards
+    @sections.values.map{|cs| cs.sum(&:first)}.sum
   end
 
   def physical_cards
@@ -95,5 +100,13 @@ class Deck
   def color_identity
     return nil unless number_of_commander_cards.between?(1, 2)
     @commander.map{|n,c| c.color_identity}.inject{|c1, c2| (c1.chars | c2.chars).sort.join }
+  end
+
+  def all_set_codes
+    @sections.values.flat_map{|sc| sc.map{|_,card| card.set_code}}.to_set
+  end
+
+  def all_cards
+    @sections.values.flatten(1)
   end
 end
