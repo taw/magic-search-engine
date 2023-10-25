@@ -21,10 +21,6 @@ class PreconDeck < Deck
     inspect
   end
 
-  def all_set_codes
-    @all_set_codes ||= [*@cards, *@sideboard, *@commander].map{|_,card| card.set_code}.to_set
-  end
-
   def set_code
     @set.code
   end
@@ -53,9 +49,5 @@ class PreconDeck < Deck
       end
     end
     output.join("\n") + "\n"
-  end
-
-  def all_cards
-    @cards + @sideboard + @commander
   end
 end
