@@ -29,8 +29,10 @@ class DeckController < ApplicationController
     @category = @deck.category
 
     @cards = @deck.cards.sort_by{|_,c| [c.name, c.set_code, c.number] }
-    @sideboard = @deck.sideboard.sort_by{|_,c| [c.name, c.set_code, c.number] }
+    @sideboard = @deck.section("Sideboard").sort_by{|_,c| [c.name, c.set_code, c.number] }
     @commander = @deck.commander.sort_by{|_,c| [c.name, c.set_code, c.number] }
+    @display_commander = @deck.section("Display Commander").sort_by{|_,c| [c.name, c.set_code, c.number] }
+    @planar_deck = @deck.section("Planar Deck").sort_by{|_,c| [c.name, c.set_code, c.number] }
 
     @card_previews = @deck.physical_cards
 
@@ -135,6 +137,12 @@ class DeckController < ApplicationController
     end
     unless @commander.empty?
       @card_groups[[0, "Commander"]] = @commander
+    end
+    unless @planar_deck.empty?
+      @card_groups[[10, "Planar Deck"]] = @planar_deck
+    end
+    unless @display_commander.empty?
+      @card_groups[[11, "Display Commander"]] = @display_commander
     end
     @card_groups = @card_groups.sort
   end

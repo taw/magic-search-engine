@@ -34,6 +34,10 @@ class Deck
     result.map{|card,(name,number)| [card, name, number] }
   end
 
+  def section(name)
+    @sections[name] || []
+  end
+
   def number_of_cards(section)
     return 0 unless @sections[section]
     @sections[section].sum(&:first)
@@ -48,7 +52,7 @@ class Deck
   end
 
   def number_of_commander_cards
-    number_of_cards("Main Commander")
+    number_of_cards("Commander")
   end
 
   def number_of_total_cards
@@ -56,11 +60,7 @@ class Deck
   end
 
   def physical_cards
-    [
-      *@cards.map(&:last),
-      *@sideboard.map(&:last),
-      *@commander.map(&:last),
-  ].uniq
+    @sections.values.flat_map{|sc| sc.map(&:last)}.uniq
   end
 
   def physical_card_names
