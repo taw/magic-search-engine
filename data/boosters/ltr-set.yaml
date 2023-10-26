@@ -44,6 +44,20 @@ sheets:
       chance: 79
     - rawquery: "e:{set} Nazgul -number>451"
       chance: 1
+  common_uncommon_showcase:
+    any:
+    - rawquery: "e:{set} r:c -alt:(number:302-331 or number:340-345) number:399-451"
+      rate: 4
+    - rawquery: "e:{set} r:c (number:302-331 or number:340-345) -alt:number:399-451"
+      rate: 4
+    - rawquery: "e:{set} r:c promo:boosterfun alt:(number:302-331 or number:340-345) alt:number:399-451 -number:299-300 -number>451"
+      rate: 2
+    - rawquery: "e:{set} r:u -alt:(number:302-331 or number:340-345) number:399-451"
+      rate: 2
+    - rawquery: "e:{set} r:u (number:302-331 or number:340-345) -alt:number:399-451"
+      rate: 2
+    - rawquery: "e:{set} r:u promo:boosterfun alt:(number:302-331 or number:340-345) alt:number:399-451 -number:299-300 -number>451"
+      rate: 1
   mythic_with_showcase:
     filter: "e:{set} r:m -number>451"
     use: with_showcase

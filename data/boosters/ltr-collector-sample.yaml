@@ -11,8 +11,9 @@ sheets:
     filter: "(e:ltr promo:boosterfun -is:foilonly) or (e:ltc promo:boosterfun -is:foilonly) -number>451"
     use: rare_mythic
   foil_rare_mythic:
+    filter: "(e:ltr promo:boosterfun -is:foilonly) or (e:ltc promo:boosterfun -is:foilonly) -number>451"
     foil: true
-    use: nonfoil_rare_mythic
+    use: rare_mythic
   foil_uncommon_showcase:
     filter: "e:{set} promo:boosterfun -is:foilonly -number>451"
     foil: true
