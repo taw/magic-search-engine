@@ -28,6 +28,7 @@ class Card
     "Everypony's Invited",
     "Family Gathering",
     "Fateful hour",
+    "Fathomless descent",
     "Ferocious",
     "Formidable",
     "Gotcha",

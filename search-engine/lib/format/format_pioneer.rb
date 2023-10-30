@@ -38,6 +38,7 @@ class FormatPioneer < Format
       "mom",
       "mat",
       "woe",
+      "lci",
     ]
   end
 end

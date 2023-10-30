@@ -36,6 +36,7 @@ describe "Color Indicator Test" do
       "Nicol Bolas, the Arisen"
     assert_search_results "ind:wrg",
       "Grimlock, Ferocious King",
+      "Roar of the Fifth People",
       "Ultra Magnus, Armored Carrier"
     assert_search_equal "ind:ubr", "ind:bur"
     assert_search_equal "ind:wrg", "ind:gwr"
@@ -54,7 +55,7 @@ describe "Color Indicator Test" do
   it "number" do
     assert_search_results "ind=5"
     assert_search_results "ind:wubrg"
-    assert_search_equal "ind<3 -e:bot", "ind:* -t:bolas -grimlock -e:bot"
+    assert_search_equal "ind<3 -e:bot", "ind:* -t:bolas -grimlock -e:bot -(roar fifth people)"
     assert_search_equal "ind<4", "ind:*"
     assert_search_results "ind<1"
   end

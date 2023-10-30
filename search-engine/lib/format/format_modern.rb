@@ -58,6 +58,7 @@ class FormatModern < Format
       "mat",
       "ltr",
       "woe",
+      "lci",
     ]
   end
 end
