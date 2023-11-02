@@ -16,7 +16,7 @@ class PatchDecks < Patch
         section_cards = section_cards.map{|card| resolve_printing(deck, card) }.compact
 
         case section_name
-        when "Main Deck", "Commander", "Sideboard", "Planar Deck", "Display Commander"
+        when "Main Deck", "Commander", "Sideboard", "Planar Deck", "Display Commander", "Scheme Deck"
           deck["cards"][section_name] ||= []
           deck["cards"][section_name] += section_cards
         else
