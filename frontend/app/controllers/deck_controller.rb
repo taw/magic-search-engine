@@ -28,11 +28,12 @@ class DeckController < ApplicationController
     @format = @deck.format
     @category = @deck.category
 
-    @cards = @deck.cards.sort_by{|_,c| [c.name, c.set_code, c.number] }
-    @sideboard = @deck.section("Sideboard").sort_by{|_,c| [c.name, c.set_code, c.number] }
-    @commander = @deck.commander.sort_by{|_,c| [c.name, c.set_code, c.number] }
-    @display_commander = @deck.section("Display Commander").sort_by{|_,c| [c.name, c.set_code, c.number] }
-    @planar_deck = @deck.section("Planar Deck").sort_by{|_,c| [c.name, c.set_code, c.number] }
+    @cards = sort_section(@deck.cards)
+    @sideboard = sort_section(@deck.section("Sideboard"))
+    @commander = sort_section(@deck.commander)
+    @display_commander = sort_section(@deck.section("Display Commander"))
+    @planar_deck = sort_section(@deck.section("Planar Deck"))
+    @scheme_deck = sort_section(@deck.section("Scheme Deck"))
 
     @card_previews = @deck.physical_cards
 
@@ -84,6 +85,10 @@ class DeckController < ApplicationController
 
   private
 
+  def sort_section(section)
+    section.sort_by{|_,c| [c.name, c.set_code, c.number] }
+  end
+
   def choose_default_preview_card
     # Choose best card to preview
     if @commander.size.between?(1,2)
@@ -133,16 +138,19 @@ class DeckController < ApplicationController
       end
     end
     unless @sideboard.empty?
-      @card_groups[[9, "Sideboard"]] = @sideboard
+      @card_groups[[10, "Sideboard"]] = @sideboard
     end
     unless @commander.empty?
       @card_groups[[0, "Commander"]] = @commander
     end
     unless @planar_deck.empty?
-      @card_groups[[10, "Planar Deck"]] = @planar_deck
+      @card_groups[[11, "Planar Deck"]] = @planar_deck
+    end
+    unless @scheme_deck.empty?
+      @card_groups[[12, "Scheme Deck"]] = @scheme_deck
     end
     unless @display_commander.empty?
-      @card_groups[[11, "Display Commander"]] = @display_commander
+      @card_groups[[13, "Display Commander"]] = @display_commander
     end
     @card_groups = @card_groups.sort
   end
