@@ -4,7 +4,7 @@ class Deck
   def initialize(sections)
     @sections = sections
     @cards = sections["Main Deck"]
-    @sideboard = (sections["Sideboard"] || []) + (sections["Planar Deck"] || []) + (sections["Display Commander"] || [])
+    @sideboard = (sections["Sideboard"] || []) + (sections["Planar Deck"] || []) + (sections["Display Commander"] || []) + (sections["Scheme Deck"] || [])
     @commander = sections["Commander"] || []
   end
 
