@@ -1,0 +1,25 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-the-lost-caverns-of-ixalan
+pack:
+  basic: 1
+  foil_chance:
+  - sfc_common_with_showcase: 9
+    chance: 2
+  - sfc_common_with_showcase: 8
+    foil_with_showcase: 1
+    chance: 1
+  dfc_common_uncommon: 1
+  sfc_uncommon_with_showcase: 3
+  rare_mythic_with_showcase: 1
+sheets: 
+  dfc_common_uncommon:
+    any:
+    - use: dfc_common_with_showcase
+      chance: 10
+    - use: dfc_uncommon_with_showcase
+      chance: 12
+  rare_mythic_with_showcase:
+    any:
+    - use: rare_with_showcase
+      chance: 124
+    - use: mythic_with_showcase
+      chance: 22
