@@ -47,6 +47,7 @@ describe "Regexp" do
       "Helix Pinnacle",
       "Mox Lotus",
       "Rules Lawyer",
+      "The Millennium Calendar",
       "Urza, Academy Headmaster",
       "Vexing Puzzlebox"
   end

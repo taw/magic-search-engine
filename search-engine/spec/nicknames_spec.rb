@@ -186,6 +186,7 @@ describe "Card nicknames" do
     assert_search_results "is:manland",
       "Blinkmoth Nexus",
       "Cave of the Frost Dragon",
+      "Cavernous Maw",
       "Celestial Colonnade",
       "Creeping Tar Pit",
       "Den of the Bugbear",
@@ -211,10 +212,15 @@ describe "Card nicknames" do
       "Nantuko Monastery",
       "Needle Spires",
       "Raging Ravine",
+      "Restless Anchorage",
       "Restless Bivouac",
       "Restless Cottage",
       "Restless Fortress",
+      "Restless Prairie",
+      "Restless Reef",
+      "Restless Ridgeline",
       "Restless Spire",
+      "Restless Vents",
       "Restless Vinestalk",
       "Shambling Vent",
       "Spawning Pool",
@@ -385,6 +391,7 @@ describe "Card nicknames" do
       "Death-Mask Duplicant",
       "Eater of Virtue",
       "Greater Morphling",
+      "Indominus Rex, Alpha",
       "Kathril, Aspect Warper",
       "Majestic Myriarch",
       "Odric, Blood-Cursed",
@@ -394,7 +401,8 @@ describe "Card nicknames" do
       "Selective Adaptation",
       "Soulflayer",
       "Thunderous Orator",
-      "Urborg Scavengers"
+      "Urborg Scavengers",
+      "Wretched Bonemass"
     assert_search_results "is:keywordsoup",
       *cards_matching{|c|
         c.name != "Urza, Academy Headmaster" and

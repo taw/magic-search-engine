@@ -12,6 +12,7 @@ class ConditionIsKeywordsoup < ConditionNickname
       "death-mask duplicant",
       "eater of virtue",
       "greater morphling",
+      "indominus rex, alpha",
       "kathril, aspect warper",
       "majestic myriarch",
       "odric, blood-cursed",
@@ -22,6 +23,7 @@ class ConditionIsKeywordsoup < ConditionNickname
       "soulflayer",
       "thunderous orator",
       "urborg scavengers",
+      "wretched bonemass",
     ]
   end
 
