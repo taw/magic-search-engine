@@ -71,7 +71,8 @@ describe "Full Database Test" do
       "Smelt (CMB1)", "Herd", "Saw",
       "Ghost Lantern", "Bind Spirit",
       "Callous Sell-Sword", "Burn Together",
-      "Pollen-Shield Hare", "Hare Raising"
+      "Pollen-Shield Hare", "Hare Raising",
+      "Kellan, Daring Traveler", "Journey On"
     # Semantics of that changed
     # it used to match a lot of double-faced cards
     # then it all disappeared as DFCs share cmc
@@ -218,6 +219,7 @@ describe "Full Database Test" do
     assert_search_results "abyss is:funny", "Zzzyxas's Abyss"
     assert_search_results "abyss not:funny",
       "Abyssal Gatekeeper",
+      "Abyssal Gorestalker",
       "Abyssal Horror",
       "Abyssal Hunter",
       "Abyssal Nightstalker",
@@ -264,7 +266,7 @@ describe "Full Database Test" do
     assert_search_equal "mana=mno", "mana={m}{n}{o}"
     assert_search_equal "mana=mmn", "mana=mnn"
     assert_search_equal "mana=mmn", "mana>=mnn mana <=mmn"
-    assert_count_cards "mana>=mh -is:alchemy", 25
+    assert_count_cards "mana>=mh -is:alchemy", 27
     assert_search_results "mana=mh",
       "Bant Sureblade",
       "Crystallization",
