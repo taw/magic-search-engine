@@ -1,0 +1,94 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-the-lost-caverns-of-ixalan
+pack:
+  foil_fullart_land: 1
+  foil_common: 4
+  foil_uncommon: 3
+  foil_common_uncommon_showcase: 1
+  foil_rare_mythic: 1
+  extended_main_rare_mythic: 1
+  commander_extended:
+  - extended_commander_rare_mythic: 1
+    chance: 7
+  - foil_extended_commander_rare_mythic: 1
+    chance: 1
+  showcase_rare_mythic: 1
+  jurrasic_world_slot:
+  - jurrasic_world: 1
+    chance: 799
+  - foil_jurrasic_world: 1
+    chance: 196
+  - emblem_jurrasic_world: 1
+    chance: 5
+  finale:
+  - foil_showcase_rare_mythic: 1
+    chance: 993
+  - neon_ink: 1
+    chance: 7
+sheets:
+  foil_fullart_land:
+    query: "t:basic is:fullart"
+    foil: true
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  extended_main_rare_mythic:
+    filter: "e:lci frame:extendedart"
+    use: rare_mythic
+  extended_commander_rare_mythic:
+    filter: "e:lcc frame:extendedart"
+    use: rare_mythic
+  foil_extended_commander_rare_mythic:
+    foil: true
+    filter: "e:lcc frame:extendedart"
+    use: rare_mythic
+  showcase_rare_mythic:
+    filter: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink"
+    use: rare_mythic
+  jurrasic_world:
+    any:
+    - rawquery: "e:rex -t:basic -promo:embossed"
+      rate: 1
+    - rawquery: "e:rex t:basic -promo:embossed"
+      rate: 4
+  foil_jurrasic_world:
+    foil: true
+    any:
+    - rawquery: "e:rex -t:basic -promo:embossed"
+      rate: 1
+    - rawquery: "e:rex t:basic -promo:embossed"
+      rate: 4
+  emblem_jurrasic_world:
+    foil: true
+    rawquery: "e:rex promo:embossed"
+  foil_showcase_rare_mythic:
+    foil: true
+    any:
+    - rawquery: "e:lci promo:boosterfun r:r"
+      rate: 2
+    - rawquery: "e:lci promo:boosterfun r:m -promo:neonink"
+      rate: 1
+    - set: spg
+      code: "LCICOLR"
+      rate: 2
+    - set: spg
+      code: "LCICOLM"
+      rate: 1
+  neon_ink:
+    foil: true
+    any:
+    - set: spg
+      code: "LCINEON"
+      chance: 1
+    - any:
+      - rawquery: "e:lci number:410a"
+        rate: 1
+      - rawquery: "e:lci number:410e"
+        rate: 2
+      - rawquery: "e:lci number:410d"
+        rate: 4
+      - rawquery: "e:lci number:410c"
+        rate: 8
+      - rawquery: "e:lci number:410f"
+        rate: 16
+      chance: 1
+    
