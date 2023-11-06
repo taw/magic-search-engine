@@ -116,6 +116,8 @@ describe Deck do
   it "precon decks have dates matching set release dates" do
     precon_sets.each do |set|
       set.decks.each do |deck|
+        # New weird product, so far the only such case
+        next if deck.type == "Box Set" and set.code == "ltc"
         deck.release_date.should eq(set.release_date), "#{deck.name} for #{set.name}"
       end
     end
@@ -352,13 +354,16 @@ describe Deck do
         # Box not deck
         next if deck.type == "Welcome Booster"
 
-        foils = deck.physical_cards.select(&:foil)
+        # Exclude oversized cards from consideration
+        deck_cards = deck.physical_cards.reject(&:oversized)
+
+        foils = deck_cards.select(&:foil)
         # Skip if no foils
         next if foils.empty?
         # Skip if all foils
-        next if deck.physical_cards.all?(&:foil)
+        next if deck_cards.all?(&:foil)
 
-        max_rarity = deck.physical_cards.map(&:main_front).max_by(&:rarity_code).rarity
+        max_rarity = deck_cards.map(&:main_front).max_by(&:rarity_code).rarity
         foils_rarity = foils.map(&:main_front).map(&:rarity)
         if set_code == "c16"
           # Doesn't follow normal rules

@@ -83,6 +83,10 @@ class PhysicalCard
     main_front.rarity
   end
 
+  def oversized
+    main_front.oversized
+  end
+
   def number
     main_front.number
   end
