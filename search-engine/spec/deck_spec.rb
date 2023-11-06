@@ -176,6 +176,8 @@ describe Deck do
         sets_found.should match_array ["woc", "woe"]
       when "pagl"
         sets_found.should match_array ["sld", "pagl"]
+      when "lcc"
+        sets_found.should match_array ["lcc", "lci"]
       else
         sets_found.should eq [set.code]
       end
