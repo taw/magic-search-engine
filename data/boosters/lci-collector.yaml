@@ -42,8 +42,13 @@ sheets:
     filter: "e:lcc frame:extendedart"
     use: rare_mythic
   showcase_rare_mythic:
-    filter: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink"
-    use: rare_mythic
+    any:
+    - rawquery: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:r"
+      rate: 4
+    - rawquery: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:m -(Quintorius Kand)" 
+      rate: 2
+    - rawquery: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:m (Quintorius Kand)" 
+      rate: 1
   jurrasic_world:
     any:
     - rawquery: "e:rex -t:basic -promo:embossed"
@@ -64,15 +69,17 @@ sheets:
     foil: true
     any:
     - rawquery: "e:lci promo:boosterfun r:r"
+      rate: 4
+    - rawquery: "e:lci promo:boosterfun r:m -promo:neonink -(Quintorius Kand)"
       rate: 2
-    - rawquery: "e:lci promo:boosterfun r:m -promo:neonink"
+    - rawquery: "e:lci promo:boosterfun r:m -promo:neonink (Quintorius Kand)"
       rate: 1
     - set: spg
       code: "LCICOLR"
-      rate: 2
+      rate: 4
     - set: spg
       code: "LCICOLM"
-      rate: 1
+      rate: 2
   neon_ink:
     foil: true
     any:

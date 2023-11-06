@@ -17,6 +17,16 @@ sheets:
       chance: 10
     - use: dfc_uncommon_with_showcase
       chance: 12
+  mythic_with_showcase:
+    any:
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Quintorius Kand)"
+      rate: 1
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Quintorius Kand)"
+      rate: 2
+    - use: mythic_has_showcase
+      rate: 4
+    - use: mythic_has_no_showcase
+      rate: 6
   rare_mythic_with_showcase:
     any:
     - use: rare_with_showcase
