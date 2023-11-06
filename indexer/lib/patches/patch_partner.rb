@@ -68,6 +68,11 @@ class PatchPartner < Patch
           ["741", "747"],
           ["1011", "1016"],
         ],
+        "rex" => [
+          # Blue, Loyal Raptor // Owen Grady, Raptor Trainer
+          ["8", "16"],
+          ["33", "41"],
+        ],
       }
       partner_numbers = {}
       special_pairs.each do |set_code, pairs|
