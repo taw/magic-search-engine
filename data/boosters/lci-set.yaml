@@ -1,0 +1,78 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-the-lost-caverns-of-ixalan
+# THE LIST IS INCORRECT - has not been updated with new LCI cards
+# SPG rate is entirely a guess
+pack:
+  land_slot:
+  - cave_fullart_land: 1
+    chance: 8
+  - foil_cave_fullart_land: 1
+    chance: 2
+  common: 3
+  uncommon: 3
+  showcase_dfc_common_uncommon: 1
+  wildcard: 2
+  rare_mythic: 1 
+  finale:
+  - foil_with_showcase: 1
+    chance: 3
+  - foil_with_showcase: 1
+    the_list: 1
+    chance: 1
+sheets:
+  common:
+    query: "r:c"
+  cave_fullart_land:
+    any:
+    - query: "t:cave r:c"
+      chance: 7
+    - query: "is:fullart t:basic"
+      chance: 3
+  foil_cave_fullart_land:
+    foil: true
+    any:
+    - query: "t:cave r:c"
+      chance: 7
+    - query: "is:fullart t:basic"
+      chance: 3
+  showcase_dfc_common_uncommon:
+    any:
+    - use: common_showcase
+      rate: 2
+    - use: uncommon_showcase
+      rate: 1
+    - use: dfc_common
+      rate: 2
+    - use: dfc_uncommon
+      rate: 1
+  wildcard:
+    any:
+    - use: common_with_showcase
+      chance: 700
+    - use: uncommon_with_showcase
+      chance: 175
+    - any:
+      - use: rare_with_showcase
+        chance: 64*2
+      - use: mythic_with_showcase
+        chance: 22
+      - rawquery: "e:rex -t:basic -promo:embossed"
+        chance: 21*2
+      - rawquery: "e:lcc (number:1-16a or number:69-100) r:r is:front"
+        chance: 39*2
+      - chance: 10
+        any:
+        - rawquery: "e:lcc (number:5-16a or number:69-100) r:m is:front"
+          rate: 3
+        - rawquery: "e:lcc number:1-4"
+          rate: 2
+        - rawquery: "e:lcc number:17-20"
+          rate: 1
+      chance: 125
+  the_list:
+    any:
+    - set: plist
+      code: "WOE"
+      chance: 282
+    - set: spg
+      code: "LCI"
+      chance: 18
