@@ -68,16 +68,16 @@ sheets:
     - rawquery: "e:lci promo:boosterfun r:m -promo:neonink"
       rate: 1
     - set: spg
-      code: "LCI_COLR"
+      code: "LCICOLR"
       rate: 2
     - set: spg
-      code: "LCI_COLM"
+      code: "LCICOLM"
       rate: 1
   neon_ink:
     foil: true
     any:
     - set: spg
-      code: "LCI_NEON"
+      code: "LCINEON"
       chance: 1
     - any:
       - rawquery: "e:lci number:410a"
