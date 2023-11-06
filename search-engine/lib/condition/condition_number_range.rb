@@ -3,7 +3,7 @@ class ConditionNumberRange < ConditionSimple
     @ranges = ranges.downcase.split(",").map{|range|
       a, b = range.split("-", 2)
       b ||= a
-      [[a.to_i, a.to_s], [b.to_i, b.to_s]]
+      [[a.to_i, a.to_s], [b.to_i, b =~ /\D/ ? b.to_s : "#{b}zzz"]]
     }
   end
 
