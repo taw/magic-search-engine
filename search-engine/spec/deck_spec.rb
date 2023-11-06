@@ -141,13 +141,13 @@ describe Deck do
       when "pc2"
         sets_found.should match_array ["pc2", "opc2"]
       when "c20"
-        sets_found.should match_array ["c20", "iko"]
+        sets_found.should match_array ["c20", "iko", "oc20"]
       when "znc"
         sets_found.should match_array ["znr", "znc"]
       when "khc"
         sets_found.should match_array ["khm", "khc"]
       when "c21"
-        sets_found.should match_array ["c21", "stx"]
+        sets_found.should match_array ["c21", "stx", "oc21"]
       when "afc"
         sets_found.should match_array ["afc", "afr"]
       when "mic"
@@ -178,6 +178,22 @@ describe Deck do
         sets_found.should match_array ["sld", "pagl"]
       when "lcc"
         sets_found.should match_array ["lcc", "lci"]
+      when "cmd"
+        sets_found.should match_array ["cmd", "ocmd"]
+      when "c13"
+        sets_found.should match_array ["c13", "oc13"]
+      when "c14"
+        sets_found.should match_array ["c14", "oc14"]
+      when "c15"
+        sets_found.should match_array ["c15", "oc15"]
+      when "c16"
+        sets_found.should match_array ["c16", "oc16"]
+      when "c17"
+        sets_found.should match_array ["c17", "oc17"]
+      when "c18"
+        sets_found.should match_array ["c18", "oc18"]
+      when "c19"
+        sets_found.should match_array ["c19", "oc19"]
       else
         sets_found.should eq [set.code]
       end
