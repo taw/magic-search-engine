@@ -21,6 +21,20 @@ describe "number: queries" do
       "What", # 75b
       "When", # 75c
       "Where" # 75d
+    assert_search_results "e:und number:74-75",
+      "Wild Crocodile", # 74,
+      "Who",   # 75a
+      "What",  # 75b
+      "When",  # 75c
+      "Where", # 75d
+      "Why"    # 75e
+    assert_search_results "e:und number:75-76",
+      "Who",   # 75a
+      "What",  # 75b
+      "When",  # 75c
+      "Where", # 75d
+      "Why",   # 75e
+      "Bronze Calendar" # 76
   end
 
   it "ranges with set" do
