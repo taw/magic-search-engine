@@ -1,0 +1,20 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-the-lost-caverns-of-ixalan
+pack:
+  foil_common_uncommon_showcase: 1
+  rm:
+  - rare_mythic_showcase: 1
+    chance: 2
+  - foil_rare_mythic_showcase: 1
+    chance: 1
+sheets:
+  rare_mythic_showcase:
+    any:
+    - use: rare_showcase
+      rate: 4
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Quintorius Kand)"
+      rate: 2
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Quintorius Kand)"
+      rate: 1
+  foil_rare_mythic_showcase:
+    foil: true
+    use: rare_mythic_showcase

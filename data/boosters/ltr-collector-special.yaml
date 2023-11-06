@@ -81,7 +81,7 @@ sheets:
   surge_booster_fun_rm:
     foil: true
     any:
-    - rawquery: "e:ltc number:378-407"
+    - rawquery: "e:ltc number:378-407 -number:/z/"
       rate: 1
       count: 30
     - rawquery: "e:ltr number:794-823 r:r"
@@ -112,7 +112,7 @@ sheets:
       rate: 1
     - rawquery: "e:ltr number:731-750"
       rate: 1
-  hildebrant_poster_rm:
+  foil_hildebrant_poster_rm:
     foil: true
     any:
     - rawquery: "e:ltc number:515-534 r:r"
@@ -123,5 +123,5 @@ sheets:
       rate: 1
   serialized_poster: 
     foil: true
-    rawquery: "e:ltr number:731-750"
+    rawquery: "e:ltr alt(number:731-750) number:/z/"
     
