@@ -1,0 +1,20 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-the-lost-caverns-of-ixalan
+pack:
+  cave_basic_land: 1
+  sfc_common: 9
+  dfc_common_uncommon: 1
+  sfc_uncommon: 3
+  rare_mythic: 1
+sheets: 
+  cave_basic_land:
+    any:
+    - query: "t:cave r:c"
+      chance: 7
+    - rawquery: "e:lci number:393-402"
+      chance: 3
+  dfc_common_uncommon:
+    any:
+    - use: dfc_common
+      chance: 10
+    - use: dfc_uncommon
+      chance: 12

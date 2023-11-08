@@ -1,6 +1,6 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-the-lost-caverns-of-ixalan
 pack:
-  basic: 1
+  cave_fullart_land: 1
   foil_chance:
   - sfc_common_with_showcase: 9
     chance: 2
@@ -11,6 +11,12 @@ pack:
   sfc_uncommon_with_showcase: 3
   rare_mythic_with_showcase: 1
 sheets: 
+  cave_fullart_land:
+    any:
+    - query: "t:cave r:c"
+      chance: 7
+    - query: "is:fullart t:basic"
+      chance: 3
   dfc_common_uncommon:
     any:
     - use: dfc_common_with_showcase
