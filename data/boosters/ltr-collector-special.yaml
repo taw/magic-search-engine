@@ -98,7 +98,11 @@ sheets:
       count: 4
   serialized_topper:
     foil: true
-    rawquery: "e:ltc number:/z/ -(Sol Ring)"
+    any:
+    - rawquery: "e:ltc number:/z/ -(Sol Ring)"
+      rate: 1
+    - rawquery: "e:ltc number:378-407 -number:/z/ -alt:(e:ltc number:/z/)"
+      rate: 1
   hildebrant_u:
     rawquery: "e:ltc number:515-534 r:u"
   silver_hildebrant_u:
@@ -123,4 +127,8 @@ sheets:
       rate: 1
   serialized_poster: 
     foil: true
-    rawquery: "e:ltr alt:(number:731-750) number:/z/"
+    any:
+    - rawquery: "e:ltr alt:(e:ltr number:731-750) number:/z/"
+      rate: 1
+    - rawquery: "e:ltr number:731-750 -alt:(e:ltr number:/z/)"
+      rate: 1
