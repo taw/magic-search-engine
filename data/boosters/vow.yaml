@@ -24,6 +24,7 @@ pack:
   chance: 1
 sheets:
   sfc_common_with_showcase:
+    balanced: true
     # Showcase treatments 1/3 for relevant cards
     any:
     - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper -promo:draculaseries"
