@@ -2,15 +2,18 @@
 pack:
   cave_fullart_land: 1
   foil_chance:
-  - sfc_common_with_showcase: 9
+  - sfc_common: 9
     chance: 2
-  - sfc_common_with_showcase: 8
+  - sfc_common: 8
     foil_with_showcase: 1
     chance: 1
   dfc_common_uncommon: 1
   sfc_uncommon_with_showcase: 3
   rare_mythic_with_showcase: 1
 sheets: 
+  sfc_common_with_showcase:
+    balanced: true
+    query: "r:c is:sfc -t:cave"
   cave_fullart_land:
     any:
     - query: "t:cave r:c"
