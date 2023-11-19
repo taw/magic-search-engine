@@ -1,0 +1,15 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-magic-the-gathering-doctor-who
+pack:
+- alternate_frame: 2
+  chance: 2
+- alternate_frame: 1
+  alternate_frame_foil: 1
+  chance: 1
+sheets:
+  alternate_frame:
+    filter: "e:who promo:boosterfun -is:foilonly"
+    use: base_1248_by_rarity
+  alternate_frame_foil:
+    foil: true
+    filter: "e:who promo:boosterfun -is:foilonly"
+    use: base_1248_by_rarity
