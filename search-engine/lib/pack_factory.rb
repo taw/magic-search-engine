@@ -14,6 +14,9 @@ class PackFactory
     subsheets, chances = subsheets.zip(chances).select{|s,c| c != 0}.transpose
     raise_sheet_error "No subsheets present" unless subsheets
     if subsheets.size == 1
+      if kind != subsheets[0].class
+        warn "#{@sheet_full_name}: Sheet has only one subsheet and it has wrong kind, expected #{kind}, got #{subsheets[0].class}"
+      end
       subsheets[0]
     else
       kind.new(subsheets, chances)
