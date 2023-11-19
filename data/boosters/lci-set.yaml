@@ -36,8 +36,6 @@ sheets:
       chance: 3
   showcase_dfc_common_uncommon:
     any:
-    - use: common_showcase
-      rate: 2
     - use: uncommon_showcase
       rate: 1
     - use: dfc_common
@@ -56,7 +54,7 @@ sheets:
       rate: 6
   wildcard:
     any:
-    - use: common_with_showcase
+    - use: common
       chance: 700
     - use: uncommon_with_showcase
       chance: 175
