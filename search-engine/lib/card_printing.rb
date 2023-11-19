@@ -29,10 +29,11 @@ class CardPrinting
     :signature,
     :spotlight,
     :stamp,
+    :stemmed_flavor_name,
     :subsets,
     :textless,
-    :token,
     :timeshifted,
+    :token,
     :variant_foreign,
     :variant_misprint,
     :watermark,
@@ -63,6 +64,9 @@ class CardPrinting
     @flavor = data["flavor"] || -""
     @flavor_name = data["flavor_name"]
     @flavor_normalized = @flavor.normalize_accents
+    if @flavor_name
+      @stemmed_flavor_name = -@flavor_name.downcase.normalize_accents.gsub(/s\b/, "").tr("-", " ")
+    end
     @foiling = data["foiling"]
     @border = data["border"] || @set.border
     @frame = data["frame"]

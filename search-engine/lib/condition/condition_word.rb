@@ -14,6 +14,9 @@ class ConditionWord < ConditionSimple
         return true
       end
     end
+    if card.stemmed_flavor_name
+      return true if card.stemmed_flavor_name.include?(@stem_word)
+    end
     false
   end
 
