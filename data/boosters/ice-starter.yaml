@@ -1,0 +1,16 @@
+name: "{set_name} Starter Deck"
+pack:
+  basic_with_duplicates: 22
+  common_with_duplicates: 26
+  uncommon_with_duplicates: 9
+  rare: 3
+sheets:
+  basic_with_duplicates:
+    duplicates: true
+    use: basic
+  common_with_duplicates:
+    duplicates: true
+    use: common
+  uncommon_with_duplicates:
+    duplicates: true
+    use: uncommon
