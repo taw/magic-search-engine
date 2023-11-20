@@ -11,7 +11,7 @@ sheets:
     use: basic
   common_with_duplicates:
     duplicates: true
-    use: common
+    query: "r:c"
   uncommon_with_duplicates:
     duplicates: true
     use: uncommon
