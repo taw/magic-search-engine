@@ -64,7 +64,8 @@ describe PackFactory do
       ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "10e", "mb1", "gpt", "ala", "jmp", "j22"]
     }
     let(:expected_basics_not_in_boosters) {
-      ["ice", "mir", "tmp", "usg", "4ed", "5ed", "6ed", "zen"]
+      # ice belongs here for normal boosters, but randomized Starter Deck has basics
+      [ "mir", "tmp", "usg", "4ed", "5ed", "6ed", "zen"]
     }
     let(:expected) {
       expected_official | expected_mtgjson_variant | expected_basics_not_in_boosters
