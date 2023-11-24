@@ -1,0 +1,17 @@
+# Data from https://mtg.fandom.com/wiki/Tournament_pack
+name: "{set_name} Starter Deck"
+pack:
+  basics: 22
+  common_with_duplicates: 25
+  uncommon_with_duplicates: 10
+  rare: 3
+sheets:
+  basics:
+    query: "r:b"
+    duplicates: true
+  common_with_duplicates:
+    query: "r:c"
+    duplicates: true
+  uncommon_with_duplicates:
+    query: "r:u"
+    duplicates: true
