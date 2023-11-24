@@ -1,0 +1,17 @@
+# Pre-mythic, with new style foils, only foil basics in packs
+name: "{set_name} Tournament Deck"
+pack:
+  basic_with_duplicates: 30
+  common_with_duplicates: 32
+  uncommon_with_duplicates: 10
+  rare: 3
+sheets:
+  basic_with_duplicates:
+    duplicates: true
+    use: basic
+  common_with_duplicates:
+    duplicates: true
+    query: "r:c"
+  uncommon_with_duplicates:
+    duplicates: true
+    use: uncommon

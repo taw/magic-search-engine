@@ -20,7 +20,7 @@ pack:
     chance: 1
 sheets:
   common:
-    query: "r:c"
+    query: "r:c -t:cave"
   cave_fullart_land:
     any:
     - query: "t:cave r:c"
