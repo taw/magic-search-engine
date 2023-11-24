@@ -137,19 +137,19 @@ class DeckController < ApplicationController
         end
       end
     end
-    unless @sideboard.empty?
+    unless @sideboard.blank?
       @card_groups[[10, "Sideboard"]] = @sideboard
     end
-    unless @commander.empty?
+    unless @commander.blank?
       @card_groups[[0, "Commander"]] = @commander
     end
-    unless @planar_deck.empty?
+    unless @planar_deck.blank?
       @card_groups[[11, "Planar Deck"]] = @planar_deck
     end
-    unless @scheme_deck.empty?
+    unless @scheme_deck.blank?
       @card_groups[[12, "Scheme Deck"]] = @scheme_deck
     end
-    unless @display_commander.empty?
+    unless @display_commander.blank?
       @card_groups[[13, "Display Commander"]] = @display_commander
     end
     @card_groups = @card_groups.sort
