@@ -3,7 +3,7 @@ class ConditionNumberRange < ConditionSimple
     @ranges = ranges.downcase.split(",").map{|range|
       a, b = range.split("-", 2)
       b ||= a
-      [[a.to_i, a.to_s], [b.to_i, b =~ /\D/ ? b.to_s : "#{b}zzz"]]
+      [[a.to_i, a], [b.to_i, b =~ /\D/ ? b : "#{b}zzz"], a == "set", b == "set"]
     }
   end
 
@@ -11,16 +11,15 @@ class ConditionNumberRange < ConditionSimple
     card_number_s = card.number.downcase
     card_number_i = card.number_i
     key = [card_number_i, card_number_s]
-    @ranges.any? do |a, b|
-      if a[1] == "set"
+    @ranges.any? do |a, b, aset, bset|
+      if aset
         base_set_size = card.set.base_set_size
-        acond = base_set_size && (card_number_i >= base_set_size)
+        next unless base_set_size && (card_number_i >= base_set_size)
       else
-        acond = (key <=> a) >= 0
+        next unless (key <=> a) >= 0
       end
-      next unless acond
 
-      if b[1] == "set"
+      if bset
         base_set_size = card.set.base_set_size
         base_set_size && (card_number_i <= card.set.base_set_size)
       else
