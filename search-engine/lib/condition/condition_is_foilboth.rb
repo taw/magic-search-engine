@@ -1,6 +1,6 @@
 class ConditionIsFoilboth < ConditionSimple
   def match?(card)
-    card.foiling == "both"
+    card.foiling == :both
   end
 
   def to_s
