@@ -67,7 +67,8 @@ class CardPrinting
     if @flavor_name
       @stemmed_flavor_name = -@flavor_name.downcase.normalize_accents.gsub(/s\b/, "").tr("-", " ")
     end
-    @foiling = data["foiling"]
+    raise "Bad foiling #{data["foiling"]} for #{self}" unless ["foilonly", "nonfoil", "both"].include?(data["foiling"])
+    @foiling = data["foiling"].to_sym
     @border = data["border"] || @set.border
     @frame = data["frame"]
     @frame_effects = data["frame_effects"] || []

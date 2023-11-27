@@ -1,6 +1,6 @@
 class ConditionInNonfoil < ConditionIn
   def match?(card)
-    ["nonfoil", "both"].include?(card.foiling)
+    card.foiling != :foilonly
   end
 
   def to_s

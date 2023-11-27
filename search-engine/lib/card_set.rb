@@ -87,9 +87,9 @@ class CardSet
     @printings
       .select do |card|
         if foil
-          card.foiling != "nonfoil"
+          card.foiling != :nonfoil
         else
-          card.foiling != "foilonly"
+          card.foiling != :foilonly
         end
       end
       .map do |card|
