@@ -1,14 +1,22 @@
 class ConditionNumberRange < ConditionSimple
   def initialize(ranges)
-    @ranges = ranges.downcase.split(",").map{|range|
-      a, b = range.split("-", 2)
-      b ||= a
-      [a.to_i, a, b.to_i, b =~ /\D/ ? b : "#{b}zzz", a == "set", b == "set"]
-    }
+    if ranges =~ /\A(\d+)-(\d+)\z/
+      @range = ($1.to_i..$2.to_i)
+    else
+      @ranges = ranges.downcase.split(",").map{|range|
+        a, b = range.split("-", 2)
+        b ||= a
+        [a.to_i, a, b.to_i, b =~ /\D/ ? b : "#{b}zzz", a == "set", b == "set"]
+      }
+    end
   end
 
   def match?(card)
     card_number_i = card.number_i
+
+    if @range
+      return @range.cover?(card_number_i)
+    end
 
     @ranges.each do |ai, as, bi, bs, aset, bset|
       if aset
@@ -38,12 +46,16 @@ class ConditionNumberRange < ConditionSimple
   end
 
   def to_s
-    "number:#{@ranges.map{|ai, as, bi, bs, aset, bset|
-      if as == bs
-        as
-      else
-        "#{as}-#{bs}"
-      end
-    }.join(",")}"
+    if @range
+      "number:#{@range.begin}-#{@range.end}"
+    else
+      "number:#{@ranges.map{|ai, as, bi, bs, aset, bset|
+        if as == bs
+          as
+        else
+          "#{as}-#{bs}"
+        end
+      }.join(",")}"
+    end
   end
 end
