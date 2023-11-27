@@ -40,9 +40,9 @@ sheets:
       rate: 3
   rare_mythic_with_showcase:
     any:
-    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -t:attraction -t:background is:paper"
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -t:attraction -t:background is:paper -t:land"
       rate: 2
-    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background"
+    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background -t:land"
       rate: 4
     - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background -t:land"
       rate: 6
