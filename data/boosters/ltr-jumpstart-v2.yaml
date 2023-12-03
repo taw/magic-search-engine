@@ -1,0 +1,68 @@
+name: "{set_name} Jumpstart Booster Volume 2"
+packs:
+- mortals_1: 19
+  white_rare: 1
+- mortals_2: 19
+  white_rare: 1
+- elven_1: 19
+  green_rare: 1
+- elven_2: 19
+  green_rare: 1
+- riders_1: 19
+  red_rare: 1
+- riders_2: 19
+  red_rare: 1
+- orcish_1: 19
+  black_rare: 1
+- orcish_2: 19
+  black_rare: 1
+- cunning_1: 19
+  blue_rare: 1
+- cunning_2: 19
+  blue_rare: 1
+sheets:
+  mortals_1:
+    deck: "ltr/Mortals 1"
+    count: 19
+  mortals_2:
+    deck: "ltr/Mortals 2"
+    count: 19
+  elven_1:
+    deck: "ltr/Elven 1"
+    count: 19
+  elven_2:
+    deck: "ltr/Elven 2"
+    count: 19
+  riders_1:
+    deck: "ltr/Riders 1"
+    count: 19
+  riders_2:
+    deck: "ltr/Riders 2"
+    count: 19
+  orcish_1:
+    deck: "ltr/Orcish 1"
+    count: 19
+  orcish_2:
+    deck: "ltr/Orcish 2"
+    count: 19
+  cunning_1:
+    deck: "ltr/Cunning 1"
+    count: 19
+  cunning_2:
+    deck: "ltr/Cunning 2"
+    count: 19
+  white_rare:
+    filter: "e:{set} is:baseset id<=w"
+    use: rare_mythic
+  blue_rare:
+    filter: "e:{set} is:baseset id<=u"
+    use: rare_mythic
+  black_rare:
+    filter: "e:{set} is:baseset id<=b"
+    use: rare_mythic
+  red_rare:
+    filter: "e:{set} is:baseset id<=r"
+    use: rare_mythic
+  green_rare:
+    filter: "e:{set} is:baseset id<=g"
+    use: rare_mythic
