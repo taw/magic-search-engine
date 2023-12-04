@@ -122,4 +122,10 @@ BanList.for_format("pauper") do
     "Underdark Explorer" => "banned",
     "Vicious Battlerager" => "banned",
   )
+
+  change(
+    "2023-12-04",
+    "https://magic.wizards.com/en/news/announcements/december-4-2023-banned-and-restricted-announcement",
+    "Monastery Swiftspear" => "banned",
+  )
 end
