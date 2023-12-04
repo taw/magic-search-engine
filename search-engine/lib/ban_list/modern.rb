@@ -174,4 +174,11 @@ BanList.for_format("modern") do
     "https://magic.wizards.com/en/news/announcements/august-7-2023-banned-and-restricted-announcement",
     "Preordain" => "legal",
   )
+
+  change(
+    "2023-12-04",
+    "https://magic.wizards.com/en/news/announcements/december-4-2023-banned-and-restricted-announcement",
+    "Fury" => "banned",
+    "Up the Beanstalk" => "banned",
+  )
 end

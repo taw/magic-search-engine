@@ -34,6 +34,12 @@ describe "Formats" do
       ]],
     ])
     FormatModern.new.ban_events.should eq([
+      [Date.parse("2023-12-04"),
+        "https://magic.wizards.com/en/news/announcements/december-4-2023-banned-and-restricted-announcement",
+        [
+          {:name=>"Fury", :new=>"banned", :old=>"legal"},
+          {:name=>"Up the Beanstalk", :new=>"banned", :old=>"legal"},
+      ]],
       [Date.parse("2023-08-07"),
         "https://magic.wizards.com/en/news/announcements/august-7-2023-banned-and-restricted-announcement",
         [
