@@ -241,7 +241,7 @@ describe "Any queries" do
 
     it "draft" do
       # 4 cards with draft in name
-      assert_search_equal "any:draft", "is:draft or draft or (o:draft e:ymid,yneo,ysnc,hbg,ydmu,ybro,yone)"
+      assert_search_equal "any:draft", "is:draft or draft or (o:draft e:ymid,yneo,ysnc,hbg,ydmu,ybro,yone,ylci)"
     end
   end
 end

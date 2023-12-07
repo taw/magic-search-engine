@@ -3,9 +3,10 @@ describe "Spelling" do
 
   it do
     assert_search_results "related:cmc=9",
-      "Sift Through Sands", # The Unspeakable
-      "Urborg Panther",     # Spirit of the Night
-      "Golgothian Sylex"    # Colossus of Sardia
+      "Golgothian Sylex",      # Colossus of Sardia
+      "Scalespeaker Shepherd", # Alchemy version
+      "Sift Through Sands",    # The Unspeakable
+      "Urborg Panther"         # Spirit of the Night
   end
 
   it "Battleborn partner" do
