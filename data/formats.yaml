@@ -1,0 +1,28 @@
+nph:
+  sealed:
+  - 2x nph
+  - 2x mbs
+  - 2x som
+  # prerelease was just regular sealed
+  draft:
+  - nph
+  - mbs
+  - som
+mbs:
+  sealed:
+  - 3x mbs
+  - 3x som
+  # "For Prereleases only, Mirrodin Besieged will come in very special packs. These packs will only contain cards from a single faction. When you register for an event, you will be very clearly showing your allegiance, and that will affect what cards you will open, and even the Prerelease card that you receive."
+  # TODO - prerelease format?
+  draft:
+  - mbs
+  - som
+  - som
+som:
+  sealed:
+  - 6x som
+  # prerelease was just regular sealed, Promotional Wurmcoil Engine was not playable
+  draft:
+  - som
+  - som
+  - som
