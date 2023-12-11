@@ -294,10 +294,10 @@ class CardPrinting
   end
 
   def foilonly?
-    foiling == "foilonly"
+    foiling == :foilonly
   end
 
   def nonfoilonly?
-    foiling == "nonfoil"
+    foiling == :nonfoil
   end
 end
