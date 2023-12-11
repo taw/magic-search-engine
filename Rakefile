@@ -205,14 +205,3 @@ desc "Run pry with database loaded"
 task "pry" do
   sh "./search-engine/bin/pry_cards"
 end
-
-desc "Run all tests"
-task "test" do
-  Dir.chdir("search-engine") do
-    sh "rspec"
-  end
-
-  Dir.chdir("frontend") do
-    sh "rspec"
-  end
-end
