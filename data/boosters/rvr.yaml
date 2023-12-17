@@ -1,0 +1,72 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-ravnica-remastered
+pack:
+  mana_slot: 1
+  retro:
+  - retro_common_uncommon: 1
+    rare_mythic_with_showcase: 1
+    chance: 9
+  - common: 1
+    retro_rare_mythic: 1
+    chance: 1
+  common: 8
+  foil:
+  - common: 1
+    chance: 2
+  - foil_with_showcase: 1
+    chance: 1
+  uncommon: 3
+sheets:
+  common:
+    balanced: true
+    query: "r:c -t:gate"
+  uncommon:
+    query: "r:u -signet"
+  mana_slot:
+    any:
+    - chance: 58
+      query: "t:gate"
+    - chance: 33
+      query: "signet"
+    - chance: 9
+      query: "(is:shockland or Chromatic Lantern)"
+  retro_common_uncommon:
+    filter: "e:{set} number:302-415"
+    use: common_uncommon
+  retro_rare_mythic:
+    filter: "e:{set} number:302-415"
+    use: rare_mythic
+  rare_mythic_with_showcase:
+    any:
+    - rawquery: "e:{set} r:r is:borderless -is:foilonly -frame:extendedart is:paper -(is:shockland or Chromatic Lantern)"
+      rate: 2
+    - query: "r:r alt:(e:{set} r:r is:borderless -is:foilonly -frame:extendedart) -(is:shockland or Chromatic Lantern)"
+      rate: 4
+    - query: "r:r -alt:(e:{set} r:r is:borderless -is:foilonly -frame:extendedart) -(is:shockland or Chromatic Lantern)"
+      rate: 6
+    - rawquery: "e:{set} r:m is:borderless -is:foilonly -frame:extendedart is:paper"
+      rate: 1
+    - query: "r:m alt:(e:{set} r:m is:borderless -is:foilonly -frame:extendedart)"
+      rate: 2
+    - query: "r:m -alt:(e:{set} r:m is:borderless -is:foilonly -frame:extendedart)"
+      rate: 3
+  foil_with_showcase:
+    foil: true
+    any:
+    - query: "r:c"
+      chance: 12
+    - query: "r:u"
+      chance: 5
+    - any:
+      - rawquery: "e:{set} r:r is:borderless -is:foilonly -frame:extendedart is:paper -is:shockland"
+        rate: 2
+      - query: "r:r alt:(e:{set} r:r is:borderless -is:foilonly -frame:extendedart) -is:shockland"
+        rate: 4
+      - query: "r:r -alt:(e:{set} r:r is:borderless -is:foilonly -frame:extendedart -is:shockland)"
+        rate: 6
+      - rawquery: "e:{set} r:m is:borderless -is:foilonly -frame:extendedart is:paper"
+        rate: 1
+      - query: "r:r alt:(e:{set} r:m is:borderless -is:foilonly -frame:extendedart)"
+        rate: 2
+      - query: "r:r -alt:(e:{set} r:m is:borderless -is:foilonly -frame:extendedart)"
+        rate: 3
+      chance: 3

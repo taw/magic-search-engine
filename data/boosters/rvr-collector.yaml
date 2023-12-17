@@ -1,0 +1,61 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-ravnica-remastered
+pack:
+  foil_common: 4
+  foil_uncommon: 3
+  foil_artifact_land: 1
+  retro_common_uncommon: 2
+  foil_retro_common_uncommon: 1
+  foil_rare_mythic: 1
+  retro_rare_mythic: 1
+  borderless_rare_mythic: 1
+  finale:
+  - foil_showcase_rare_mythic: 1
+    chance: 99
+  - serialized: 1
+    chance: 1
+sheets:
+  foil_common:
+    foil: true
+    query: "r:c -t:gate"
+  foil_uncommon:
+    foil: true
+    query: "r:u -signet"
+  foil_artifact_land:
+    foil: true
+    any:
+    - chance: 58
+      query: "t:gate"
+    - chance: 33
+      query: "signet"
+    - chance: 9
+      query: "(is:shockland or Chromatic Lantern)"
+  retro_common_uncommon:
+    filter: "e:{set} (number:302-415 or number:446-466)"
+    use: common_uncommon
+  foil_retro_common_uncommon:
+    foil: true
+    filter: "e:{set} (number:302-415 or number:446-466) -is:foilonly"
+    use: common_uncommon
+  retro_rare_mythic:
+    filter: "e:{set} (number:302-415 or number:446-467)"
+    use: rare_mythic
+  foil_rare_mythic:
+    foil: true
+    any:
+    - query: "r:r -(is:shockland or Chromatic Lantern)"
+      rate: 2
+    - query: "r:m"
+      rate: 1
+  borderless_rare_mythic:
+    filter: "e:{set} is:borderless -is:foilonly"
+    use: rare_mythic
+  foil_showcase_rare_mythic:
+    filter: "e:{set} number:302-466 -is:foilonly"
+    use: rare_mythic
+  serialized: 
+    foil: true
+    any:
+    - rawquery: "e:rvr frame:old number:/z/ -number:467z"
+      rate: 1
+    - rawquery: "e:rvr r>=r frame:old -alt:(e:rvr number:/z/) -number:467"
+      rate: 1
