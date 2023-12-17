@@ -37,11 +37,11 @@ sheets:
     use: rare_mythic
   rare_mythic_with_showcase:
     any:
-    - rawquery: "e:{set} r:r is:borderless -is:foilonly -frame:extendedart is:paper -is:shockland"
+    - rawquery: "e:{set} r:r is:borderless -is:foilonly -frame:extendedart is:paper -(is:shockland or Chromatic Lantern)"
       rate: 2
-    - query: "r:r alt:(e:{set} r:r is:borderless -is:foilonly -frame:extendedart) -is:shockland"
+    - query: "r:r alt:(e:{set} r:r is:borderless -is:foilonly -frame:extendedart) -(is:shockland or Chromatic Lantern)"
       rate: 4
-    - query: "r:r -alt:(e:{set} r:r is:borderless -is:foilonly -frame:extendedart) -is:shockland"
+    - query: "r:r -alt:(e:{set} r:r is:borderless -is:foilonly -frame:extendedart) -(is:shockland or Chromatic Lantern)"
       rate: 6
     - rawquery: "e:{set} r:m is:borderless -is:foilonly -frame:extendedart is:paper"
       rate: 1

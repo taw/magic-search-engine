@@ -42,7 +42,7 @@ sheets:
   foil_rare_mythic:
     foil: true
     any:
-    - query: "r:r - is:shockland"
+    - query: "r:r -(is:shockland or Chromatic Lantern)"
       rate: 2
     - query: "r:m"
       rate: 1
