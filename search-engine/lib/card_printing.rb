@@ -73,7 +73,7 @@ class CardPrinting
     @frame = data["frame"]
     @frame_effects = data["frame_effects"] || []
     rarity = data["rarity"]
-    @rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
+    @rarity_code = data["rarity"]
     @acorn = data["acorn"]
     @arena = data["arena"]
     @attraction_lights = data["attraction_lights"]
