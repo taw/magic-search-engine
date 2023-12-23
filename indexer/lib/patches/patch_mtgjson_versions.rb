@@ -97,12 +97,13 @@ class PatchMtgjsonVersions < Patch
       # That got renamed a few times as DFCs are now of 3 types (transform, meld, mdfc)
       card["layout"] = "transform" if card["layout"] == "double-faced"
 
+      card["mana"] = card.delete("manaCost")&.downcase
+
       # v4 uses []/"" while v3 just dropped such fields
       card.delete("supertypes") if card["supertypes"] == []
       card.delete("subtypes") if card["subtypes"] == []
       card.delete("rulings") if card["rulings"] == []
       card.delete("text") if card["text"] == ""
-      card.delete("manaCost") if card["manaCost"] == ""
       card.delete("names") if card["names"] == []
 
       if card["flavorText"]

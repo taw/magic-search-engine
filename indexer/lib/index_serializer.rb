@@ -94,7 +94,7 @@ class IndexSerializer
         "layout",
         "life", # vanguard
         "loyalty",
-        "manaCost",
+        "mana",
         "name",
         "names",
         "power",

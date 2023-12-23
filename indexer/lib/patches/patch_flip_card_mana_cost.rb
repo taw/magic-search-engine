@@ -7,7 +7,7 @@ class PatchFlipCardManaCost < Patch
 
     each_printing do |card|
       if card["layout"] == "flip" and !card["secondary"]
-        mana_costs[card["name"]] = card["manaCost"]
+        mana_costs[card["name"]] = card["mana"]
       end
     end
 
@@ -16,7 +16,7 @@ class PatchFlipCardManaCost < Patch
         other_side_name = card["names"][0]
         raise if other_side_name == card["name"]
         card["hide_mana_cost"] = true
-        card["manaCost"] = mana_costs[other_side_name]
+        card["mana"] = mana_costs[other_side_name]
       end
     end
   end
