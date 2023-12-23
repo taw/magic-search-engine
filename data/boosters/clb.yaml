@@ -85,7 +85,7 @@ sheets:
     - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
       rate: 3
   background:
-    filter: "t:background"
+    filter: "e:clb t:background"
     use: base_1248_by_rarity
   dedicated_foil:
     foil: true

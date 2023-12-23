@@ -112,6 +112,9 @@ class IndexSerializer
         "types",
       ).compact
 
+      rarity = printing["rarity"]
+      rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
+
       printing_data << [
         printing["set_code"],
         printing.slice(
@@ -138,7 +141,6 @@ class IndexSerializer
           "partner",
           "print_sheet",
           "promo_types",
-          "rarity",
           "release_date",
           "shandalar",
           "signature",
@@ -152,7 +154,7 @@ class IndexSerializer
           "variant_misprint",
           "watermark",
           "xmage",
-        ).compact,
+        ).compact.merge("rarity" => rarity_code),
       ]
     end
 
