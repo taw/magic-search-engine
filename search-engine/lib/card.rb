@@ -468,7 +468,7 @@ class Card
     @text = -@text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
     @text_normalized = -@text.normalize_accents
     @augment = !!(@text =~ /augment \{/i)
-    @mana_cost = data["manaCost"]
+    @mana_cost = data["mana"]
     @reserved = data["reserved"] || false
     @types = ["types", "subtypes", "supertypes"]
       .flat_map{|t| data[t] || []}

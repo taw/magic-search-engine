@@ -4,7 +4,7 @@ class PatchReconcileOnSetPriority < Patch
   def fields_to_reconcile
     [
       "name",
-      "manaCost",
+      "mana",
       "text",
       "types",
       "subtypes",
