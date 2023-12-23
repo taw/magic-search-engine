@@ -73,7 +73,7 @@ class PatchSetTypes < Patch
 
       # Some of these are not actually funny sets, just promo sets mixing funny and regular cards (like plist)
       # sch is here only due to spoiled Moonshaker Cavalry with incorrect date, remove it past WOE (or in 2024)
-      funny_sets = %W[unh ugl pcel hho parl prel ust pust ppc1 htr htr16 htr17 htr18 htr19 htr20 pal04 h17 j17 tbth tdag tfth thp1 thp2 thp3 ptg cmb1 cmb2 htr18 und punh plist o90p olep p30a uplist phtr ph17 ph18 ph19 ph20 ph21 p30m sch]
+      funny_sets = %W[unh ugl pcel hho parl prel ust pust ppc1 htr htr16 htr17 htr18 htr19 htr20 pal04 h17 j17 tbth tdag tfth thp1 thp2 thp3 ptg cmb1 cmb2 htr18 und punh plist o90p olep p30a uplist phtr ph17 ph18 ph19 ph20 ph21 ph22 p30m sch]
       if funny_sets.include?(set_code)
         set_types << "funny"
         set["funny"] = true
