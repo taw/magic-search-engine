@@ -452,55 +452,55 @@ class Card
 
   def initialize(data)
     @printings = []
-    @name = data["name"]
+    @name = data["n"]
     @stemmed_name = -@name.downcase.normalize_accents.gsub(/s\b/, "").tr("-", " ")
-    @names = data["names"]
-    @layout = data["layout"]
-    @colors = data["colors"] || ""
+    @names = data["ns"]
+    @layout = data["l"]
+    @colors = data["c"] || ""
     @colors_set = @colors.chars.to_set
     @color_identity = data["ci"]
     @color_identity_set = @color_identity.chars.to_set
-    @funny = data["funny"]
-    @fulltext = -(data["text"] || "")
+    @funny = data["fu"]
+    @fulltext = -(data["o"] || "")
     @fulltext_normalized = -@fulltext.normalize_accents
     @text = @fulltext
     @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless @funny or @layout == "dungeon"
     @text = -@text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
     @text_normalized = -@text.normalize_accents
     @augment = !!(@text =~ /augment \{/i)
-    @mana_cost = data["mana"]
-    @reserved = data["reserved"] || false
-    @types = ["types", "subtypes", "supertypes"]
+    @mana_cost = data["m"]
+    @reserved = data["rs"] || false
+    @types = ["t", "tb", "tp"]
       .flat_map{|t| data[t] || []}
       .map{|t| -t.downcase.tr("’\u2212", "'-").gsub("'s", "").tr(" ", "-")}
-    @cmc = data["cmc"] || 0
-    @power = data["power"] ? smart_convert_powtou(data["power"]) : nil
-    @toughness = data["toughness"] ? smart_convert_powtou(data["toughness"]) : nil
-    @loyalty = data["loyalty"] ? smart_convert_powtou(data["loyalty"]) : nil
-    @display_power = data["display_power"] ? data["display_power"] : @power
-    @display_toughness = data["display_toughness"] ? data["display_toughness"] : @toughness
-    @display_mana_cost = data["hide_mana_cost"] ? nil : @mana_cost
-    @alchemy = data["alchemy"]
-    @has_alchemy = data["has_alchemy"]
+    @cmc = data["v"] || 0
+    @power = data["pw"] ? smart_convert_powtou(data["pw"]) : nil
+    @toughness = data["to"] ? smart_convert_powtou(data["to"]) : nil
+    @loyalty = data["ly"] ? smart_convert_powtou(data["ly"]) : nil
+    @display_power = data["dp"] ? data["dp"] : @power
+    @display_toughness = data["dt"] ? data["dt"] : @toughness
+    @display_mana_cost = data["hm"] ? nil : @mana_cost
+    @alchemy = data["al"]
+    @has_alchemy = data["ha"]
     if ["vanguard", "planar", "scheme"].include?(@layout) or @types.include?("conspiracy") or @alchemy
       @extra = true
     else
       @extra = false
     end
-    @decklimit = data["decklimit"]
-    @hand = data["hand"]
-    @life = data["life"]
-    @rulings = data["rulings"]
-    @secondary = data["secondary"]
-    @partner = data["is_partner"]
-    @commander = data["commander"]
-    @brawler = data["brawler"]
-    @specialized = data["specialized"]
-    @specializes = data["specializes"]
-    @spellbook = data["spellbook"]
-    @in_spellbook = data["in_spellbook"]
-    if data["foreign_names"]
-      @foreign_names = data["foreign_names"].map{|k,v| [k.to_sym,v]}.to_h
+    @decklimit = data["dl"]
+    @hand = data["hd"]
+    @life = data["lf"]
+    @rulings = data["r"]
+    @secondary = data["s"]
+    @partner = data["ip"]
+    @commander = data["cm"]
+    @brawler = data["br"]
+    @specialized = data["sd"]
+    @specializes = data["ss"]
+    @spellbook = data["sb"]
+    @in_spellbook = data["is"]
+    if data["f"]
+      @foreign_names = data["f"].map{|k,v| [k.to_sym,v]}.to_h
       raise "Foreign data with empty value for #{name}" if @foreign_names.any?{|k,v| v.empty?}
     else
       @foreign_names = {}
@@ -509,16 +509,16 @@ class Card
     @foreign_names.each do |lang, names|
       @foreign_names_normalized[lang] = names.map{|n| hard_normalize(n)}
     end
-    @related = data["related"]
-    @typeline = [data["supertypes"], data["types"]].compact.flatten.join(" ")
-    if data["subtypes"]
-      @typeline += " - #{data["subtypes"].join(" ")}"
+    @related = data["rl"]
+    @typeline = [data["tp"], data["t"]].compact.flatten.join(" ")
+    if data["tb"]
+      @typeline += " - #{data["tb"].join(" ")}"
     end
     @typeline = -@typeline
-    if data["keywords"]
-      @keywords = data["keywords"].map{|k| -k}
+    if data["k"]
+      @keywords = data["k"].map{|k| -k}
     end
-    @defense = data["defense"]
+    @defense = data["df"]
     calculate_mana_hash
     calculate_color_indicator
     calculate_reminder_text

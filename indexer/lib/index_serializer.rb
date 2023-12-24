@@ -72,101 +72,102 @@ class IndexSerializer
     common_card_data = []
     printing_data = []
     card.each do |printing|
-      common_card_data << printing.slice(
-        "alchemy",
-        "brawler",
-        "ci",
-        "cmc",
-        "colors",
-        "commander",
-        "decklimit",
-        "defense",
-        "display_power",
-        "display_toughness",
-        "foreign_names",
-        "funny",
-        "hand", # vanguard
-        "has_alchemy",
-        "hide_mana_cost",
-        "in_spellbook",
-        "is_partner",
-        "keywords",
-        "layout",
-        "life", # vanguard
-        "loyalty",
-        "mana",
-        "name",
-        "names",
-        "power",
-        "related",
-        "reserved",
-        "rulings",
-        "secondary",
-        "specialized",
-        "specializes",
-        "spellbook",
-        "subtypes",
-        "supertypes",
-        "text",
-        "toughness",
-        "types",
-      ).compact
+      common_card_data << {
+        "al" => printing["alchemy"],
+        "br" => printing["brawler"],
+        "c" => printing["colors"],
+        "ci" => printing["ci"],
+        "cm" => printing["commander"],
+        "df" => printing["defense"],
+        "dl" => printing["decklimit"],
+        "dp" => printing["display_power"],
+        "dt" => printing["display_toughness"],
+        "f" => printing["foreign_names"],
+        "fu" => printing["funny"],
+        "ha" => printing["has_alchemy"],
+        "hd" => printing["hand"], # vanguard
+        "hm" => printing["hide_mana_cost"],
+        "ip" => printing["is_partner"],
+        "is" => printing["in_spellbook"],
+        "k" => printing["keywords"],
+        "l" => printing["layout"],
+        "lf" => printing["life"], # vanguard
+        "ly" => printing["loyalty"],
+        "m" => printing["mana"],
+        "n" => printing["name"],
+        "ns" => printing["names"],
+        "o" => printing["text"],
+        "pw" => printing["power"],
+        "r" => printing["rulings"],
+        "rl" => printing["related"],
+        "rs" => printing["reserved"],
+        "s" => printing["secondary"],
+        "sb" => printing["spellbook"],
+        "sd" => printing["specialized"],
+        "ss" => printing["specializes"],
+        "t" => printing["types"],
+        "tb" => printing["subtypes"],
+        "to" => printing["toughness"],
+        "tp" => printing["supertypes"],
+        "v" => printing["cmc"],
+      }.compact
 
       rarity = printing["rarity"]
       rarity_code = %W[basic common uncommon rare mythic special].index(rarity) or raise "Unknown rarity #{rarity}"
 
       printing_data << [
         printing["set_code"],
-        printing.slice(
-          "arena",
-          "artist",
-          "attraction_lights",
-          "border",
-          "digital",
-          "etched",
-          "flavor_name",
-          "flavor",
-          "foiling",
-          "frame_effects",
-          "frame",
-          "fullart",
-          "language",
-          "mtgo",
-          "multiverseid",
-          "nontournament",
-          "number",
-          "others",
-          "oversized",
-          "paper",
-          "partner",
-          "print_sheet",
-          "promo_types",
-          "release_date",
-          "shandalar",
-          "signature",
-          "spotlight",
-          "stamp",
-          "subsets",
-          "textless",
-          "timeshifted",
-          "token", # there could be token and card with the same name?
-          "variant_foreign",
-          "variant_misprint",
-          "watermark",
-          "xmage",
-        ).compact.merge("rarity" => rarity_code),
+        {
+          "a" => printing["artist"],
+          "al" => printing["attraction_lights"],
+          "ar" => printing["arena"],
+          "b" => printing["border"],
+          "d" => printing["release_date"],
+          "e" => printing["etched"],
+          "f" => printing["frame"],
+          "fa" => printing["fullart"],
+          "fe" => printing["frame_effects"],
+          "fl" => printing["flavor"],
+          "fn" => printing["flavor_name"],
+          "fo" => printing["foiling"],
+          "g" => printing["digital"],
+          "l" => printing["language"],
+          "m" => printing["mtgo"],
+          "mv" => printing["multiverseid"],
+          "n" => printing["number"],
+          "nt" => printing["nontournament"],
+          "o" => printing["others"],
+          "os" => printing["oversized"],
+          "p" => printing["paper"],
+          "pr" => printing["partner"],
+          "ps" => printing["print_sheet"],
+          "pt" => printing["promo_types"],
+          "r" => rarity_code,
+          "sg" => printing["signature"],
+          "sh" => printing["shandalar"],
+          "sp" => printing["spotlight"],
+          "ss" => printing["subsets"],
+          "st" => printing["stamp"],
+          "t" => printing["token"], # there could be token and card with the same name?
+          "tl" => printing["textless"],
+          "ts" => printing["timeshifted"],
+          "vf" => printing["variant_foreign"],
+          "vm" => printing["variant_misprint"],
+          "w" => printing["watermark"],
+          "x" => printing["xmage"],
+        }.compact
       ]
     end
 
     result = common_card_data[0]
-    name = result["name"]
+    name = result["n"]
     # Make sure it's reconciled at this point
     # This should be hard error once we're done
     report_if_inconsistent(name, common_card_data, card)
 
     # Output in canonical form, to minimize diffs between mtgjson updates
-    result["printings"] = printing_data.sort_by{|sc,d|
-      [set_order.fetch(sc), d["number"], d["multiverseid"] || 0]
+    result["*"] = printing_data.sort_by{|sc,d|
+      [set_order.fetch(sc), d["n"], d["mv"] || 0]
     }
     result
   end

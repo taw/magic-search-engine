@@ -1,10 +1,8 @@
 class CardPrinting
   attr_reader(
-    :acorn,
     :artist_name,
     :attraction_lights,
     :border,
-    :buyabox,
     :card,
     :date,
     :digital,
@@ -49,58 +47,55 @@ class CardPrinting
     @card = card
     @set = set
     @others = nil
-    @release_date = data["release_date"] ? Date.parse(data["release_date"]) : @set.release_date
+    @release_date = data["d"] ? Date.parse(data["d"]) : @set.release_date
     @release_date_i = @release_date.to_i_sort
-    @watermark = data["watermark"]
-    @number = data["number"]
+    @watermark = data["w"]
+    @number = data["n"]
     @number_i = @number.to_i
-    @multiverseid = data["multiverseid"]
-    if data["artist"]
-      @artist_name = data["artist"].normalize_accents # TODO: move to indexer
+    @multiverseid = data["mv"]
+    if data["a"]
+      @artist_name = data["a"].normalize_accents # TODO: move to indexer
     else
       warn "Card #{card.name} in #{set.code} lacks artist"
       @artist_name = "Unknown"
     end
-    @flavor = data["flavor"] || -""
-    @flavor_name = data["flavor_name"]
+    @flavor = data["fl"] || -""
+    @flavor_name = data["fn"]
     @flavor_normalized = @flavor.normalize_accents
     if @flavor_name
       @stemmed_flavor_name = -@flavor_name.downcase.normalize_accents.gsub(/s\b/, "").tr("-", " ")
     end
-    raise "Bad foiling #{data["foiling"]} for #{self}" unless ["foilonly", "nonfoil", "both"].include?(data["foiling"])
-    @foiling = data["foiling"].to_sym
-    @border = data["border"] || @set.border
-    @frame = data["frame"]
-    @frame_effects = data["frame_effects"] || []
-    rarity = data["rarity"]
-    @rarity_code = data["rarity"]
-    @acorn = data["acorn"]
-    @arena = data["arena"]
-    @attraction_lights = data["attraction_lights"]
-    @buyabox = data["buyabox"]
-    @digital = data["digital"]
-    @etched = data["etched"]
-    @fullart = data["fullart"]
-    @language = data["language"]
-    @mtgo = data["mtgo"]
-    @nontournament = data["nontournament"]
-    @others = data["others"] # overriden by CardDatabase
-    @oversized = data["oversized"]
-    @paper = data["paper"]
-    @partner = data["partner"] # overriden by CardDatabase
-    @print_sheet = data["print_sheet"]
-    @promo_types = data["promo_types"]
-    @shandalar = data["shandalar"]
-    @signature = data["signature"]
-    @spotlight = data["spotlight"]
-    @stamp = data["stamp"]
-    @subsets = data["subsets"]
-    @textless = data["textless"]
-    @timeshifted = data["timeshifted"]
-    @token = data["token"]
-    @variant_foreign = data["variant_foreign"]
-    @variant_misprint = data["variant_misprint"]
-    @xmage = data["xmage"]
+    raise "Bad foiling #{data["fo"]} for #{self}" unless ["foilonly", "nonfoil", "both"].include?(data["fo"])
+    @foiling = data["fo"].to_sym
+    @border = data["b"] || @set.border
+    @frame = data["f"]
+    @frame_effects = data["fe"] || []
+    @rarity_code = data["r"]
+    @arena = data["ar"]
+    @attraction_lights = data["al"]
+    @digital = data["g"]
+    @etched = data["e"]
+    @fullart = data["fa"]
+    @language = data["l"]
+    @mtgo = data["m"]
+    @nontournament = data["nt"]
+    @others = data["o"] # overriden by CardDatabase
+    @oversized = data["os"]
+    @paper = data["p"]
+    @partner = data["pr"] # overriden by CardDatabase
+    @print_sheet = data["ps"]
+    @promo_types = data["pt"]
+    @shandalar = data["sh"]
+    @signature = data["sg"]
+    @spotlight = data["sp"]
+    @stamp = data["st"]
+    @subsets = data["ss"]
+    @textless = data["tl"]
+    @timeshifted = data["ts"]
+    @token = data["t"]
+    @variant_foreign = data["vf"]
+    @variant_misprint = data["vm"]
+    @xmage = data["x"]
 
     # Performance cache
     @stemmed_name = @card.stemmed_name
