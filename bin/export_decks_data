@@ -47,8 +47,11 @@ class ExportDecksData
         set_name: deck.set_name,
         release_date: deck.release_date,
         cards: deck.cards.map{|n,c| export_card(n, c) },
-        sideboard: deck.sideboard.map{|n,c| export_card(n, c) },
+        sideboard: deck.section("Sideboard").map{|n,c| export_card(n, c) },
         commander: deck.commander.map{|n,c| export_card(n, c) },
+        displayCommander: deck.section("Display Commander").map{|n,c| export_card(n, c) },
+        planarDeck: deck.section("Planar Deck").map{|n,c| export_card(n, c) },
+        schemeDeck: deck.section("Scheme Deck").map{|n,c| export_card(n, c) },
       }
     end
     open(output_path, "w") do |fh|
