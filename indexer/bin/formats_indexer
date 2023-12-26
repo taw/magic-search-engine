@@ -1,0 +1,77 @@
+#!/usr/bin/env ruby
+
+require "json"
+require "yaml"
+require "pry"
+
+class FormatsIndexer
+  def input_path
+    Pathname(__dir__) + "../../data/formats.yaml"
+  end
+
+  def output_path
+    Pathname(__dir__) + "../../index/formats.json"
+  end
+
+  def data
+    @data ||= YAML.load_file(input_path)
+  end
+
+  def index_draft(set_code, format, format_data)
+    {
+      format_name: format,
+      format_type: "draft",
+      booster_order: format_data,
+    }
+  end
+
+  def index_sealed(set_code, format, format_data)
+    boosters = Hash.new{|ht,k| ht[k] = 0}
+    format_data.each do |line|
+      if line =~ /\A(\d+)x\s+(\S+)\z/
+        boosters[$2] += $1.to_i
+      elsif line =~ /\A(\S+)\z/
+        boosters[$1] += 1
+      else
+        raise "Unknown line #{line}"
+      end
+    end
+    {
+      format_name: format,
+      format_type: "sealed",
+      boosters: boosters, # this is Hash
+      playable_promo_cards: [],
+      unplayable_promo_cards: [],
+    }
+  end
+
+  def index_format(set_code, format, format_data)
+    case format
+    when "draft"
+      index_draft(set_code, format, format_data)
+    when "sealed", "prerelease"
+      index_sealed(set_code, format, format_data)
+    else
+      raise "Unknown format #{format}"
+    end
+  end
+
+  def index_set(set_code, set_data)
+    # no processing yet
+    if set_data["use"]
+      raise "TODO: support use"
+    end
+    set_data.to_h{|format, format_data|
+      [format, index_format(set_code, format, format_data)]
+    }
+  end
+
+  def call
+    export_data = data.to_h do |set_code, set_data|
+      [set_code, index_set(set_code, set_data)]
+    end
+    output_path.write(export_data.to_json)
+  end
+end
+
+FormatsIndexer.new.call
