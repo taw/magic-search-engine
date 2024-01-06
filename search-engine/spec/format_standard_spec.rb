@@ -6,11 +6,12 @@ describe "Formats - Standard" do
   }.to_set }
 
   describe "Standard legal sets" do
-    let(:start_date) { db.sets["mir"].release_date }
-    let(:expected) { regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set }
-    let(:actual) { FormatStandard.new.rotation_schedule.values.flatten.to_set }
+    # Early Standard was not regular so we need to tweak expectations a bit
+    let(:start_date) { db.sets["drk"].release_date }
+    let(:expected) { regular_sets.select{|set| set.release_date >= start_date}.map(&:code) + ["3ed", "chr"] }
+    let(:actual) { FormatStandard.new.rotation_schedule.values.flatten.uniq }
     it do
-      expected.should eq actual
+      expected.should match_array(actual)
     end
   end
 

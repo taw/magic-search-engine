@@ -66,6 +66,20 @@ class FormatStandard < Format
       "1999-04-21" => ["tmp", "sth", "exo", "usg", "ulg", "6ed", "uds"], # 6ed
       "1998-10-12" => ["5ed", "tmp", "sth", "exo", "usg", "ulg"], # usg
       "1997-10-14" => ["mir", "vis", "5ed", "wth", "tmp", "sth", "exo"], # tmp
+      # Legality rules before this point changed regularly
+      # and did not follow established rotation schedule
+      # basing it on https://mtg.fandom.com/wiki/Standard/Timeline
+      "1997-07-01" => ["ice", "hml", "all", "mir", "vis", "5ed", "wth"],
+      "1997-04-23" => ["5ed", "chr", "all", "mir", "vis"],
+      "1997-03-05" => ["4ed", "chr", "all", "mir", "vis"],
+      "1997-01-01" => ["4ed", "chr", "hml", "all", "mir"],
+      "1996-10-01" => ["4ed", "chr", "fem", "ice", "hml", "all", "mir"],
+      "1996-06-01" => ["4ed", "chr", "fem", "ice", "hml", "all"],
+      "1995-10-01" => ["4ed", "chr", "fem", "ice", "hml"],
+      "1995-08-01" => ["4ed", "chr", "fem", "ice"],
+      "1995-06-01" => ["4ed", "fem", "ice"],
+      "1995-04-19" => ["4ed", "drk", "fem"],
+      "1995-01-10" => ["3ed", "drk", "fem"], # standard officially announced, no standard before
     }
   end
 end
