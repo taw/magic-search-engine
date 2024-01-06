@@ -39,7 +39,7 @@ sheets:
       chance: 1
   galaxy_basic:
     foil: true
-    any: 
+    any:
     - rawquery: "e:unf r:b number:486-490"
       chance: 3
     - rawquery: "e:unf r:b number:491-495"
@@ -52,7 +52,7 @@ sheets:
     rawquery: "e:unf number:528-537"
   foil_common:
     foil: true
-    query: "r:c -t:attraction"
+    query: "r:c -t:attraction is:paper"
   foil_uncommon:
     foil: true
     query: "r:u -t:attraction"

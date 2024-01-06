@@ -95,6 +95,18 @@ class PhysicalCard
     main_front.number_i
   end
 
+  def arena?
+    main_front.arena?
+  end
+
+  def paper?
+    main_front.paper?
+  end
+
+  def mtgo?
+    main_front.mtgo?
+  end
+
   def parts
     [*@front, *@back]
   end

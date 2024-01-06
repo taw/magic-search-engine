@@ -1,5 +1,5 @@
 # shocklands can appear in draft boosters
-filter: "e:{set} number:1-set,277-286"
+filter: "e:{set} number:1-set,277-286 -number:/m/"
 pack:
   basic_or_shock:
   - basic_alt: 1
@@ -29,7 +29,7 @@ sheets:
     query: "number>=277 number<287"
     count: 10
   common:
-    query: "r:c -t:attraction"
+    query: "r:c -t:attraction is:paper"
   uncommon_with_showcase:
     any:
     - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart -t:attraction is:paper"
