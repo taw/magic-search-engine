@@ -67,6 +67,7 @@ class Deck
     physical_cards.map(&:name).uniq
   end
 
+  # Wizard from Beyond not implemented
   def valid_commander?
     case number_of_commander_cards
     when 1
