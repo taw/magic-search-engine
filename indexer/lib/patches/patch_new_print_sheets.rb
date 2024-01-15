@@ -11,9 +11,11 @@ class PatchNewPrintSheets < Patch
         parts = line.split(/ {2,}/, 3)
         if parts.size == 2
           name, sheet = parts
+          name = name.split("//").first.strip # Just take the first part
           assignment[name] = sheet
         elsif parts.size == 3
           name, number, sheet = parts
+          name = name.split("//").first.strip # Just take the first part
           assignment[[name, number]] = sheet
         else
           raise "Invalid line: #{line}"
