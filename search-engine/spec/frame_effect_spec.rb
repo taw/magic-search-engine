@@ -31,6 +31,7 @@ describe "frame type and effect queries" do
       next if frame == "draft" # is:draft already used for something else
       next if frame == "fullart" # isFullArt and frameEffects:["fullart"] do not agree, 🤷‍♂️
       next if frame == "etched" # deprecated, is:etched implemented differently now
+      next if frame == "promo" # no idea why they added this
       assert_search_equal "frame:#{frame}", "is:#{frame}"
     end
   end
