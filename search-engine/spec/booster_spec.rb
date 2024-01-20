@@ -55,7 +55,8 @@ describe "is:booster" do
         (s.types.include?("standard") or s.code == "ltr") and
         s.types.include?("booster") and
         s.printings.any?(&:arena?) and
-        s.code != "ogw"
+        s.code != "ogw" and
+        !%w[dgm ori kld].include?(s.code) # from remaster only
       }.map(&:code).to_set
     end
 
