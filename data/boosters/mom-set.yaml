@@ -35,7 +35,7 @@ sheets:
     query: "r:u t:battle"
     count: 20
   multiverse_legend:
-    filter: "e:mul -is:foilonly"
+    filter: "e:mul -is:foilonly is:paper"
     use: base_1248_by_rarity
     count: 65
   wildcard:
@@ -47,7 +47,7 @@ sheets:
       - use: uncommon
         chance: 80
         count: 80
-      - rawquery: "e:mul r:u -is:foilonly"
+      - rawquery: "e:mul r:u -is:foilonly is:paper"
         chance: 20
         count: 20
       chance: 175
@@ -55,22 +55,22 @@ sheets:
       - use: rare_with_showcase
         count: 78
         chance: 2 * 60
-      - rawquery: "e:mom r:r number:323-337"
+      - rawquery: "e:mom r:r number:323-337 is:paper"
         chance: 2 * 5
         count: 5
-      - rawquery: "e:moc r:r number:1-46"
+      - rawquery: "e:moc r:r number:1-46 is:paper"
         chance: 2 * 36
         count: 36
-      - rawquery: "e:mul r:r -is:foilonly"
+      - rawquery: "e:mul r:r -is:foilonly is:paper"
         chance: 2 * 30
         count: 30
       - use: mythic_with_showcase
         count: 33
         chance: 20
-      - rawquery: "e:moc r:m number:1-46"
+      - rawquery: "e:moc r:m number:1-46 is:paper"
         chance: 10
         count: 10
-      - rawquery: "e:mul r:m -is:foilonly"
+      - rawquery: "e:mul r:m -is:foilonly is:paper"
         chance: 15
         count: 15
       chance: 125

@@ -75,11 +75,11 @@ sheets:
     query: "r:u t:battle"
     count: 20
   rare_mythic_battle:
-    filter: "e:mom t:battle"
+    filter: "e:mom t:battle is:paper"
     use: rare_mythic
     count: 16
   multiverse_legend:
-    filter: "e:mul -is:foilonly"
+    filter: "e:mul -is:foilonly is:paper"
     use: base_1248_by_rarity
     count: 65
   foil_with_showcase_and_mul:
@@ -97,7 +97,7 @@ sheets:
       - use: uncommon
         rate: 1
         count: 80
-      - rawquery: "e:mul number:1-65 r:u" # Can we change the set size to make is:baseset work?
+      - rawquery: "e:mul number:1-65 r:u is:paper" # Can we change the set size to make is:baseset work?
         rate: 1
         count: 20
       chance: 5
@@ -111,7 +111,7 @@ sheets:
       - use: rare_has_no_showcase
         rate: 6
         count: 60-18
-      - rawquery: "e:mul number:1-65 r:r"
+      - rawquery: "e:mul number:1-65 r:r is:paper"
         rate: 6
         count: 30
       - use: mythic_showcase
@@ -123,7 +123,7 @@ sheets:
       - use: mythic_has_no_showcase
         rate: 3
         count: 20-13
-      - rawquery: "e:mul number:1-65 r:m"
+      - rawquery: "e:mul number:1-65 r:m is:paper"
         rate: 3
         count: 15
       chance: 3
