@@ -6,6 +6,8 @@ class PatchPlaytestCards < Patch
       "Liberate",
       "Start",
       "Smelt",
+      "Red Herring",
+      "Pick Your Poison",
     ].map{|n| [n, "#{n} (CMB1)"]}
     .to_h
     name_map.default_proc = proc{|ht, x| x}
