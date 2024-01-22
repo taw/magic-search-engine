@@ -59,6 +59,7 @@ class FormatModern < Format
       "ltr",
       "woe",
       "lci",
+      "mkm",
     ]
   end
 end
