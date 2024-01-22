@@ -19,15 +19,18 @@ describe "CLI Frontend" do
         Breeding Pool
         Canopy Vista
         Cinder Glade
+        Commercial District
         Dryad Arbor
         Forest
         Gate to Manorborn
         Gingerbread Cabin
         Haunted Mire
+        Hedge Maze
         Highland Forest
         Indatha Triome
         Jetmir's Garden
         Ketria Triome
+        Lush Portico
         Murmuring Bosk
         Overgrown Tomb
         Radiant Grove
@@ -43,6 +46,7 @@ describe "CLI Frontend" do
         Tangled Islet
         Temple Garden
         Tropical Island
+        Underground Mortuary
         Wooded Ridgeline
         Woodland Chasm
         Zagoth Triome

@@ -39,6 +39,7 @@ class FormatPioneer < Format
       "mat",
       "woe",
       "lci",
+      "mkm",
     ]
   end
 end

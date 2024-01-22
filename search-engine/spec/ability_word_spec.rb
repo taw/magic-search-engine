@@ -28,7 +28,9 @@ describe "Ability Word Regexp" do
       "VI",
       "Prize",
       "Ransom", # playtest cards
+      "Solved",
       "Target opponent chooses one",
+      "To solve",
       "Visit",
     ]
 
