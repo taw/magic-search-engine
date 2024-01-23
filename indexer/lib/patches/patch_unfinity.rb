@@ -31,10 +31,16 @@ class PatchUnfinity < Patch
       "Everythingamajig" => {
         ["uplist", "55"] => "a",
         ["uplist", "56"] => "f",
+        # just assuming it's same as uplist, needs to verify
+        ["ulst", "55"] => "a",
+        ["ulst", "56"] => "f",
       },
       "Ineffable Blessing" => {
         ["uplist", "37"] => "c",
         ["uplist", "38"] => "a",
+        # just assuming it's same as uplist, needs to verify
+        ["ulst", "37"] => "c",
+        ["ulst", "38"] => "a",
       },
     }
   end
