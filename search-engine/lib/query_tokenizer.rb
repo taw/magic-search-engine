@@ -234,7 +234,7 @@ class QueryTokenizer
         cond = "Alchemy" if cond == "Rebalanced"
         klass = Kernel.const_get("ConditionHas#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|modal-dfc|modaldfc|mdfc|transform|split|flip|plane|scheme|phenomenon|meld|aftermath|adventure|saga|planar|augment|host|class|dungeon|prototype|mutate|token)\b/i)
+      elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|modal-dfc|modaldfc|mdfc|transform|split|flip|plane|scheme|phenomenon|meld|aftermath|adventure|saga|planar|augment|host|class|dungeon|prototype|mutate|token|case)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         kind = s[2].downcase
         kind = "transform" if kind == "double-faced"
