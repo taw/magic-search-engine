@@ -266,13 +266,14 @@ describe "Full Database Test" do
     assert_search_equal "mana=mno", "mana={m}{n}{o}"
     assert_search_equal "mana=mmn", "mana=mnn"
     assert_search_equal "mana=mmn", "mana>=mnn mana <=mmn"
-    assert_count_cards "mana>=mh -is:alchemy", 28
+    assert_count_cards "mana>=mh -is:alchemy", 30
     assert_search_results "mana=mh",
       "Bant Sureblade",
       "Crystallization",
       "Esper Stormblade",
       "Grixis Grimblade",
       "Jund Hackblade",
+      "Kaust, Eyes of the Glade",
       "Naya Hushblade",
       "Sangrite Backlash",
       "Thopter Foundry",
@@ -324,7 +325,7 @@ describe "Full Database Test" do
   end
 
   it "r:special" do
-    assert_search_equal "r:special -e:tsr,plist,pewk,ovnt,olgc", "(Super Secret Tech) or (e:vma r:special) or (e:tsb) or (Prismatic Piper) or (Faceless One) or e:mps,mp2"
+    assert_search_equal "r:special -e:tsr,plist,plst,pewk,ovnt,olgc", "(Super Secret Tech) or (e:vma r:special) or (e:tsb) or (Prismatic Piper) or (Faceless One) or e:mps,mp2"
     assert_count_cards "r:special e:tsr", 121
   end
 
