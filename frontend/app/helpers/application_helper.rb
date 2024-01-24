@@ -95,6 +95,9 @@ module ApplicationHelper
   end
 
   def replace_planeswalker_symbol(symbol)
+    # Pick Your Poison (CMB1), there are no icons for that
+    # and paper card literally has "[1]" etc. in it
+    return "[#{symbol}]" if symbol =~ /\A[1-9]+\z/
     symbol = symbol.upcase
     csymbol = symbol.downcase.sub(/[-\+\u2212]/, "")
     usymbol = symbol.sub("-", "\u2013").sub("\u2212", "\u2013")
