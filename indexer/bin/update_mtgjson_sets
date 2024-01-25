@@ -128,6 +128,13 @@ class SingleSetUpdater
 
   def command_conflict
     puts "#{name} - conflicting update [UPDATE]"
+
+    # Inserted here for plist migration time
+    if name == "MB1"
+      puts "  (too many conflicts)"
+      return
+    end
+
     # Print all issues
     if incoming_name != current_name
       puts "  NAME: #{current_name} -> #{incoming_name}"
