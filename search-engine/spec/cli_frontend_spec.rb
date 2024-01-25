@@ -19,15 +19,18 @@ describe "CLI Frontend" do
         Breeding Pool
         Canopy Vista
         Cinder Glade
+        Commercial District
         Dryad Arbor
         Forest
         Gate to Manorborn
         Gingerbread Cabin
         Haunted Mire
+        Hedge Maze
         Highland Forest
         Indatha Triome
         Jetmir's Garden
         Ketria Triome
+        Lush Portico
         Murmuring Bosk
         Overgrown Tomb
         Radiant Grove
@@ -43,6 +46,7 @@ describe "CLI Frontend" do
         Tangled Islet
         Temple Garden
         Tropical Island
+        Underground Mortuary
         Wooded Ridgeline
         Woodland Chasm
         Zagoth Triome
@@ -95,7 +99,7 @@ describe "CLI Frontend" do
         4/4
 
         Destructor Dragon {4}{g}{g}
-        [frf mb1]
+        [frf mb1 plst]
         Creature - Dragon
         Flying
         When Destructor Dragon dies, destroy target noncreature permanent.
@@ -186,7 +190,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Bloodbraid Elf {2}{r}{g}
-        [-arb +f10 +pc2 +prm -ema -c16 +pca +mb1 -tsr -clb -2x2 -2x2 -prm -slc -ha7]
+        [-arb +f10 +pc2 +prm -ema -c16 +pca +mb1 +plst -tsr -clb -2x2 -2x2 -prm -slc -ha7]
         Creature - Elf Berserker
         Haste
         Cascade

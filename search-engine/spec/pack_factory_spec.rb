@@ -37,6 +37,9 @@ describe PackFactory do
       elsif set_code == "zne"
         factory.for(set_code).should eq(nil), "#{set_pp} should not have regular packs"
         factory.for(set_code, "box-topper").should_not eq(nil), "#{set_pp} should have box topper packs"
+      elsif set_code == "who"
+        factory.for(set_code).should eq(nil), "#{set_pp} should not have regular packs"
+        factory.for(set_code, "collector").should_not eq(nil), "#{set_pp} should have collector packs"
       elsif set.has_boosters?
         pack = factory.for(set_code)
         if pack

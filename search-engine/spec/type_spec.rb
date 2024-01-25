@@ -36,6 +36,7 @@ describe "Type expr" do
       "Wastes"
     assert_search_results 't<"basic land forest mountain" t>land',
       "Cinder Glade",
+      "Commercial District",
       "Dwarven Mine",
       "Forest",
       "Gingerbread Cabin",

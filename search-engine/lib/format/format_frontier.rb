@@ -36,6 +36,7 @@ class FormatFrontier < Format
       "mat",
       "woe",
       "lci",
+      "mkm",
     ]
   end
 end

@@ -50,6 +50,7 @@ describe "Deck legality" do
       "Rat Colony",
       "Relentless Rats",
       "Shadowborn Apostle",
+      "Slime Against Humanity",
       "Snow-Covered Forest",
       "Snow-Covered Island",
       "Snow-Covered Mountain",

@@ -26,6 +26,7 @@ describe "DissentionTest" do
       "Persistent Petitioners",
       "Rat Colony",
       "Relentless Rats",
-      "Shadowborn Apostle"
+      "Shadowborn Apostle",
+      "Slime Against Humanity"
   end
 end
