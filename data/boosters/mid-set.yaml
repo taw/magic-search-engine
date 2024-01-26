@@ -47,5 +47,9 @@ sheets:
         chance: 6
       chance: 125
   the_list:
-    set: plist
-    code: "MID"
+    any:
+    - set: plst
+      code: "MID"
+      rate: 1
+    - query: "e:cmb1 ((Kaya, Ghost Haunter) or (Puresteel Angel))"
+      rate: 1
