@@ -59,8 +59,12 @@ sheets:
         chance: 6
       chance: 125
   the_list:
-    set: plist
-    code: "VOW"
+    any:
+    - set: plst
+      code: "VOW"
+      rate: 1
+    - query: "e:cmb1 ((Kaya, Ghost Haunter) or (Puresteel Angel))"
+      rate: 1
   foil_with_showcase:
     foil: true
     any:

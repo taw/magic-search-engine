@@ -104,9 +104,14 @@ sheets:
     use: base_1248_by_rarity
   the_list:
     any:
-    - set: plist
+    - set: plst
       code: "SNC"
-      chance: 1
+      rate: 9
+      count: 57
     - set: slx
       code: "SNC"
-      chance: 1
+      rate: 58
+      count: 9
+    - rawquery: "e:ala n:250"
+      rate: 9
+      count: 1
