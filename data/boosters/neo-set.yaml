@@ -67,8 +67,12 @@ sheets:
         rate: 8
       chance: 125
   the_list:
-    set: plist
-    code: "NEO"
+    any:
+    - set: plst
+      code: "NEO"
+      rate: 1
+    - query: "e:cmb1 ((Kaya, Ghost Haunter) or (Puresteel Angel))"
+      rate: 1
   foil_with_showcase:
     foil: true
     any:

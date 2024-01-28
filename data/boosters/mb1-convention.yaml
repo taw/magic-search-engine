@@ -17,32 +17,46 @@ pack:
   playtest: 1
 sheets:
   white_a:
-    code: "mb1/WA"
+    set: plst
+    code: "WHITEA"
   white_b:
-    code: "mb1/WB"
+    set: plst
+    code: "WHITEB"
   blue_a:
-    code: "mb1/UA"
+    set: plst
+    code: "BLUEA"
   blue_b:
-    code: "mb1/UB"
+    set: plst
+    code: "BLUEB"
   black_a:
-    code: "mb1/BA"
+    set: plst
+    code: "BLACKA"
   black_b:
-    code: "mb1/BB"
+    set: plst
+    code: "BLACKB"
   red_a:
-    code: "mb1/RA"
+    set: plst
+    code: "REDA"
   red_b:
-    code: "mb1/RB"
+    set: plst
+    code: "REDB"
   green_a:
-    code: "mb1/GA"
+    set: plst
+    code: "GREENA"
   green_b:
-    code: "mb1/GB"
+    set: plst
+    code: "GREENB"
   multicolor:
-    code: "mb1/MC"
+    set: plst
+    code: "MULTICOLOR"
   colorless:
-    code: "mb1/CL"
+    set: plst
+    code: "COLORLESS"
   old_frame:
-    code: "mb1/OF"
+    set: plst
+    code: "OLDFRAME"
   rare:
-    code: "mb1/R"
+    set: plst
+    code: "RARE"
   playtest:
     rawquery: "e:cmb1"
