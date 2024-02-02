@@ -162,22 +162,18 @@ describe Deck do
         sets_found.should match_array ["ncc", "snc"]
       when "dmc"
         sets_found.should match_array ["dmu", "dmc"]
-      when "phed"
-        sets_found.should match_array ["phed", "sld"]
+      when "mkc"
+        sets_found.should match_array ["mkc", "mkm"]
       when "onc"
         sets_found.should match_array ["onc", "one"]
       when "moc"
         sets_found.should match_array ["moc", "mom"]
-      when "pctb"
-        sets_found.should match_array ["pctb", "sld"]
       when "ltc"
         sets_found.should match_array ["ltc", "ltr"]
       when "pca"
         sets_found.should match_array ["pca", "opca"]
       when "woc"
         sets_found.should match_array ["woc", "woe"]
-      when "pagl"
-        sets_found.should match_array ["sld", "pagl"]
       when "lcc"
         sets_found.should match_array ["lcc", "lci"]
       when "cmd"
