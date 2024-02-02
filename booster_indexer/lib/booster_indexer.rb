@@ -188,6 +188,10 @@ class PreprocessBooster
       "{set_name} Prerelease Promo Pack"
     when "six"
       "{set_name} Six-card Booster Pack"
+    when "play"
+      "{set_name} Play Booster"
+    when "draft"
+      "{set_name} Draft Booster"
     else
       warn "Unknown booster type: #{@code}"
       "{set_name} #{@variant.capitalize} Booster"
