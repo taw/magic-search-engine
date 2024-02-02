@@ -65,7 +65,8 @@ describe "Regexp" do
       "Mise",
       "Nalathni Dragon",
       "Remodel",
-      "Spinnerette, Arachnobat"
+      "Spinnerette, Arachnobat",
+      "Suppressor Skyguard"
 
     assert_search_equal 'ft:/ajani/', 'FT:/ajani/'
     assert_search_equal 'ft:/ajani/', 'FT:/AJANI/'
