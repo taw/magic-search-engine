@@ -1,0 +1,62 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-the-lost-caverns-of-ixalan
+pack:
+  basic_slot:
+  - basic: 1
+    chance: 4
+  - foil_basic: 1
+    chance: 1
+  list_slot:
+  - common_with_showcase: 7
+    chance: 7
+  - common_with_showcase: 6
+    the_list: 1
+    chance: 1
+  uncommon_with_showcase: 3
+  rare_mythic_with_showcase: 1
+  wildcard: 1
+  foil: 1
+sheets: 
+  rare_mythic_with_showcase:
+    any:
+    - any:
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly (Aurelia or Lazav or Niv-Mizzet or Teysa) -number:/z/"
+        rate: 1
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -(r:r t:land) -(Aurelia or Lazav or Niv-Mizzet or Teysa)"
+        rate: 2
+      - query: "r:r -(r:r t:land) alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -(r:r t:land))"
+        rate: 4
+      - query: "r:r -(r:r t:land) -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -(r:r t:land))"
+        rate: 6
+      chance: 120
+    - any:
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly (Vannifar or Rakdos or Trostani) -number:/z/"
+        rate: 1
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Vannifar or Rakdos or Trostani)"
+        rate: 2
+      - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper)"
+        rate: 4
+      - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper)"
+        rate: 6
+      chance: 20
+  wildcard:
+    any:
+    - chance: 1
+      any:
+      - rawquery: "e:{set} r:r t:land -promo:boosterfun"
+        chance: 7
+      - rawquery: "e:{set} r:r t:land promo:boosterfun"
+        chance: 1
+    - chance: 5
+      any:
+      - chance: 12
+        use: common_with_showcase
+      - chance: 5
+        use: uncommon_with_showcase
+      - chance: 3
+        use: rare_mythic_with_showcase
+  foil:
+    foil: true
+    use: wildcard
+  the_list:
+    set: plst
+    code: "MKM"
