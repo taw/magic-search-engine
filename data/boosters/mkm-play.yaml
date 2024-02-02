@@ -58,5 +58,10 @@ sheets:
     foil: true
     use: wildcard
   the_list:
-    set: plst
-    code: "MKM"
+    any:
+    - set: plst
+      code: "MKM"
+      rate: 1
+    - set: spg
+      code: "MKM"
+      rate: 1
