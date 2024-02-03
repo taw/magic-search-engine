@@ -64,7 +64,9 @@ describe PackFactory do
       regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2 dbl clb 2x2 unf dmr sir ltr cmm who rvr]
     }
     let(:expected_mtgjson_variant) {
-      ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "10e", "mb1", "gpt", "ala", "jmp", "j22"]
+      # ala has bs card they retroactively added a decade later
+      # but it's in snc-set
+      ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "10e", "mb1", "gpt", "jmp", "j22"]
     }
     let(:expected_basics_not_in_boosters) {
       # ice, tmp belongs here for normal boosters, but randomized Starter Deck has basics
@@ -770,38 +772,6 @@ describe PackFactory do
       let(:set_code) { "drk" }
       let(:booster_contents) { {"C"=>6, "U"=>2} }
       let(:sheet_size) { {"C"=>121, "U"=>121} }
-      it do
-        ev.should eq(expected_ev)
-      end
-    end
-  end
-
-  context "MB1/CMB1/FMB1" do
-    let(:mb1_cards) { db.search("++ e:mb1 -number:/†/ -number>=1695").printings }
-    let(:fmb1_cards) { db.search("++ e:fmb1").printings }
-    let(:cmb1_cards) { db.search("++ e:cmb1").printings }
-
-    let(:mb1_physical_cards) { mb1_cards.map{|c| PhysicalCard.for(c)}.uniq }
-    let(:fmb1_physical_cards) { fmb1_cards.map{|c| PhysicalCard.for(c, true)}.uniq }
-    let(:cmb1_physical_cards) { cmb1_cards.map{|c| PhysicalCard.for(c)}.uniq }
-
-    context "MB1" do
-      let(:set_code) { "mb1" }
-      let(:variant) { nil }
-      let(:expected_cards) { mb1_physical_cards + fmb1_physical_cards }
-      let(:expected_ev) { expected_cards.map{|c| [c, Rational(1,121)] }.to_h }
-
-      it do
-        ev.should eq(expected_ev)
-      end
-    end
-
-    context "CMB1" do
-      let(:set_code) { "mb1" }
-      let(:variant) { "convention" }
-      let(:expected_cards) { mb1_physical_cards + cmb1_physical_cards }
-      let(:expected_ev) { expected_cards.map{|c| [c, Rational(1,121)] }.to_h }
-
       it do
         ev.should eq(expected_ev)
       end

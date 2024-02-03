@@ -207,7 +207,7 @@ An example from [znr-set.yaml](znr-set.yaml) to define The List cards:
 
 ```yaml
   the_list:
-    set: plist
+    set: plst
     code: "ZNR"
 ```
 

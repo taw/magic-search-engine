@@ -7,7 +7,7 @@ class PatchHasBoosters < Patch
       fmb1
       mp2
       mps
-      plist
+      plst
       sis
       slx
       sta
