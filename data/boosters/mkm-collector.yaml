@@ -1,0 +1,50 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-murders-at-karlov-manor
+pack:
+  foil_fullart_basic: 1
+  foil_common: 4
+  foil_uncommon: 3
+  common_uncommon_showcase: 1
+  foil_common_uncommon_showcase: 1
+  foil_rare_mythic: 1
+  extended_main_rare_mythic: 1
+  ecs:
+  - extended_commander_rare_mythic: 1
+    chance: 915
+  - foil_extended_commander_rare_mythic: 1
+    chance: 85
+  rare_mythic_showcase: 1
+  foil_rare_mythic_showcase: 1
+sheets:
+  foil_fullart_basic:
+    foil: true
+    rawquery: "e:{set} t:basic is:fullart"
+  foil_rare_mythic:
+    foil: true
+    any:
+    - use: rare
+      rate: 2
+    - use: mythic
+      rate: 1
+  extended_main_rare_mythic:
+    filter: "e:{set} frame:extendedart"
+    use: rare_mythic
+  extended_commander_rare_mythic:
+    filter: "e:mkc frame:extendedart"
+    use: rare_mythic
+  foil_extended_commander_rare_mythic:
+    foil: true
+    rawquery: "e:mkc frame:extendedart r:m"
+  foil_rare_mythic_showcase:
+    foil: true
+    any: 
+    - rawquery: "e:mkm ((number:317-323 -alt:(is:serialized)) or is:serialized)"
+      chance: 1
+    - chance: 99
+      any:
+      - set: spg
+        code: "MKM"
+        rate: 1
+      - rawquery: "e:mkm promo:boosterfun r:m -is:serialized"
+        rate: 1
+      - rawquery: "e:mkm promo:boosterfun r:r -is:serialized"
+        rate: 2
