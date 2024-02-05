@@ -99,7 +99,7 @@ describe "CLI Frontend" do
         4/4
 
         Destructor Dragon {4}{g}{g}
-        [frf mb1 plst]
+        [frf plst]
         Creature - Dragon
         Flying
         When Destructor Dragon dies, destroy target noncreature permanent.
@@ -190,7 +190,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Bloodbraid Elf {2}{r}{g}
-        [-arb +f10 +pc2 +prm -ema -c16 +pca +mb1 +plst -tsr -clb -2x2 -2x2 -prm -slc -ha7]
+        [-arb +f10 +pc2 +prm -ema -c16 +pca +plst -tsr -clb -2x2 -2x2 -prm -slc -ha7]
         Creature - Elf Berserker
         Haste
         Cascade

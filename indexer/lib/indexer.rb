@@ -53,6 +53,7 @@ class Indexer
       PatchMtgjsonVersions,
       # Each set needs unique code, by convention all lowercase
       PatchSetCodes,
+      PatchMB1,
       PatchRemoveEmptySets,
       PatchReleaseDates,
 
@@ -89,7 +90,6 @@ class Indexer
       PatchLinkRelated,
       PatchColorshifted,
       PatchPrintSheets,
-      PatchMB1,
       PatchABUR,
       PatchNewPrintSheets,
       PatchFrame,
