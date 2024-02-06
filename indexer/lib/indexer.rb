@@ -92,6 +92,7 @@ class Indexer
       PatchPrintSheets,
       PatchABUR,
       PatchNewPrintSheets,
+      PatchMultiPrintSheets,
       PatchFrame,
       PatchPartner,
       PatchBfm,
