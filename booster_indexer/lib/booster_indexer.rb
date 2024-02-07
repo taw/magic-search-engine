@@ -190,6 +190,8 @@ class PreprocessBooster
       "{set_name} Six-card Booster Pack"
     when "play"
       "{set_name} Play Booster"
+    when "play-arena"
+      "{set_name} Arena Play Booster"
     when "draft"
       "{set_name} Draft Booster"
     else
