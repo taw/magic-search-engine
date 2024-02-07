@@ -84,7 +84,11 @@ sheets:
           rate: 6
         chance: 20
   the_list:
-    rawquery: "sheet:MKMARENA"
+    any:
+    - rawquery: "sheet:MKM_ARENA_CU"
+      rate: 2
+    - rawquery: "sheet:MKM_ARENA_RM"
+      rate: 1
   common_with_showcase:
     balanced: false
     # Showcase treatments 1/3 for relevant cards
