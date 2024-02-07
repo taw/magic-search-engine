@@ -48,11 +48,11 @@ sheets:
         chance: 1
     - chance: 5
       any:
-      - chance: 12
+      - chance: 700
         use: common_with_showcase
-      - chance: 5
+      - chance: 175
         use: uncommon_with_showcase
-      - chance: 3
+      - chance: 125
         use: rare_mythic_with_showcase
   foil:
     foil: true
@@ -87,10 +87,10 @@ sheets:
     any:
     - set: plst
       code: "MKM"
-      rate: 1
+      chance: 7
     - set: spg
       code: "MKM"
-      rate: 1
+      chance: 1
   common_with_showcase:
     balanced: false
     # Showcase treatments 1/3 for relevant cards
