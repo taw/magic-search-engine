@@ -66,7 +66,7 @@ describe PackFactory do
     let(:expected_mtgjson_variant) {
       # ala has bs card they retroactively added a decade later
       # but it's in snc-set
-      ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "10e", "mb1", "gpt", "jmp", "j22"]
+      ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "10e", "gpt", "jmp", "j22"]
     }
     let(:expected_basics_not_in_boosters) {
       # ice, tmp belongs here for normal boosters, but randomized Starter Deck has basics
