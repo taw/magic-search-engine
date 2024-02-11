@@ -23,9 +23,9 @@ sheets:
     use: common_uncommon
     count: 50
   extended_commander:
-    filter: "e:clb number:607-645"
+    filter: "e:clb number:607-645 -alt:(e:clb number:646-657)"
     use: rare_mythic
-    count: 39
+    count: 26
   extended_rare_mythic:
     filter: "e:clb number:553-606"
     use: rare_mythic
