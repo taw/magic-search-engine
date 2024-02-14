@@ -52,7 +52,7 @@ class CardController < ApplicationController
       logger.info "PAGINATED #{params.inspect} BY USERAGENT: #{request.headers['HTTP_USER_AGENT']}"
     end
 
-    if request.headers['HTTP_USER_AGENT'] =~ /MJ12bot|PetalBot/ and params[:page]
+    if request.headers['HTTP_USER_AGENT'] =~ /MJ12bot|PetalBot|Bytespider/ and params[:page]
       render_403
       return
     end
