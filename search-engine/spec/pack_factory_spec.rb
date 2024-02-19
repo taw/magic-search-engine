@@ -9,7 +9,7 @@ describe PackFactory do
   let(:factory) { PackFactory.new(db) }
   let(:variant) { nil }
   let(:foil) { false }
-  let(:pack) { factory.for(set_code, variant) }
+  let(:pack) { db.supported_booster_types[[set_code, variant].compact.join("-")] }
   let(:ev) { pack.expected_values }
 
   def card(query, **args)
@@ -26,22 +26,22 @@ describe PackFactory do
       set_pp = "#{set.name} [#{set.code}]"
       # Indexer responsibility to set this flag
       if %W[akr klr].include?(set_code)
-        factory.for(set_code).should eq(nil), "#{set_pp} should not have regular packs"
-        factory.for(set_code, "arena").should_not eq(nil), "#{set_pp} should have Arena packs"
+        db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
+        db.supported_booster_types["#{set_code}-arena"].should_not eq(nil), "#{set_pp} should have Arena packs"
       elsif set_code == "sir"
-        factory.for(set_code).should eq(nil), "#{set_pp} should not have regular packs"
-        factory.for(set_code, "arena-1").should_not eq(nil), "#{set_pp} should have Arena packs"
+        db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
+        db.supported_booster_types["#{set_code}-arena-1"].should_not eq(nil), "#{set_pp} should have Arena packs"
       elsif set_code == "jmp" or set_code == "j22"
-        factory.for(set_code).should eq(nil), "#{set_pp} should not have regular packs"
-        factory.for(set_code, "jumpstart").should_not eq(nil), "#{set_pp} should have Jumpstart packs"
+        db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
+        db.supported_booster_types["#{set_code}-jumpstart"].should_not eq(nil), "#{set_pp} should have Jumpstart packs"
       elsif set_code == "zne"
-        factory.for(set_code).should eq(nil), "#{set_pp} should not have regular packs"
-        factory.for(set_code, "box-topper").should_not eq(nil), "#{set_pp} should have box topper packs"
+        db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
+        db.supported_booster_types["#{set_code}-box-topper"].should_not eq(nil), "#{set_pp} should have box topper packs"
       elsif set_code == "who"
-        factory.for(set_code).should eq(nil), "#{set_pp} should not have regular packs"
-        factory.for(set_code, "collector").should_not eq(nil), "#{set_pp} should have collector packs"
+        db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
+        db.supported_booster_types["#{set_code}-collector"].should_not eq(nil), "#{set_pp} should have collector packs"
       elsif set.has_boosters?
-        pack = factory.for(set_code)
+        pack = db.supported_booster_types[set_code]
         if pack
           pack.should be_a(Pack), "#{set_pp} should have packs"
         else

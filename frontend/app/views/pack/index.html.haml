@@ -3,7 +3,9 @@
     %h3 Magic Boosters
     %ul
       - @booster_types.each do |code, pack|
-        %li
-          = link_to_pack(pack) do
-            = pack.name
-          = "(#{code.upcase})"
+        - # Exclude aliases
+        - if code == pack.code
+          %li
+            = link_to_pack(pack) do
+              = pack.name
+            = "(#{code.upcase})"

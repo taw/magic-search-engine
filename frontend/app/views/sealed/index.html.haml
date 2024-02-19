@@ -3,7 +3,7 @@
   - @packs_to_open.each do |set_code, count|
     %div.pack_selection
       %input{type: "number", name: "count[]", value: count, min: 0}
-      = select_tag "set[]", options_for_select(@booster_types.map{|code, booster| [booster.name, code]}, set_code)
+      = select_tag "set[]", options_for_select(@booster_types.select{|code, booster| code == booster.code}.map{|code, booster| [booster.name, code]}, set_code)
   .row
     .col-12
       %label{for: "fixed"} Optional fixed cards

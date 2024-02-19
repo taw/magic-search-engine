@@ -18,6 +18,8 @@ describe "multiverse ids" do
         # mtgjson bug
       elsif cards.map(&:set_code).to_set == Set["woc"]
         # mtgjson bug
+      elsif cards.map(&:set_code).to_set == Set["tclb"]
+        # it's a token anyway
       else
         cards.size.should eq(1), "#{id} #{cards}"
       end
