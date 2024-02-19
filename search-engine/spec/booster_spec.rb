@@ -68,17 +68,20 @@ describe "is:booster" do
       db.sets.each do |set_code, set|
         if remaster_arena_sets.include?(set_code)
           pack_factory.for(set_code, "arena").should_not(be_nil, "#{set_code} should have Arena boosters")
-          pack_factory.for(set_code, nil).should(be_nil, "#{set_code} should not have regular boosters")
+          pack_factory.for(set_code, "draft").should(be_nil, "#{set_code} should not have draft boosters")
         elsif standard_arena_sets.include?(set_code)
           # MKM
           if set.release_date >=  Date.parse("2024-02-09")
             # not sure if these should be xxx-play-arena or just xxx-arena
             pack_factory.for(set_code, "play-arena").should_not(be_nil, "#{set_code} should have Arena Play boosters")
             pack_factory.for(set_code, "play").should_not(be_nil, "#{set_code} should have regular boosters")
-            pack_factory.for(set_code, nil).should(be_nil, "#{set_code} should not have regular boosters")
+            pack_factory.for(set_code, "draft").should(be_nil, "#{set_code} should not have draft boosters")
+          elsif set_code == "mat"
+            pack_factory.for(set_code, "arena").should_not(be_nil, "#{set_code} should have Arena boosters")
+            pack_factory.for(set_code, nil).should_not(be_nil, "#{set_code} should have default boosters")
           else
             pack_factory.for(set_code, "arena").should_not(be_nil, "#{set_code} should have Arena boosters")
-            pack_factory.for(set_code, nil).should_not(be_nil, "#{set_code} should have regular boosters")
+            pack_factory.for(set_code, "draft").should_not(be_nil, "#{set_code} should have draft boosters")
           end
         else
           pack_factory.for(set_code, "arena").should(be_nil, "#{set_code} should not have Arena boosters")

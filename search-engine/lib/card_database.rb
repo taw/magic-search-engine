@@ -131,7 +131,16 @@ class CardDatabase
         booster = pack_factory.for(set_code, variant)
         @supported_booster_types[booster.code] = booster if booster
       end
+
+      # Aliases
+      @supported_booster_types.values.map(&:set_code).uniq.each do |set_code|
+        next if @supported_booster_types[set_code]
+        pack = @supported_booster_types["#{set_code}-draft"] || @supported_booster_types["#{set_code}-play"]
+        @supported_booster_types[set_code] = pack if pack
+      end
+
       @supported_booster_types = @supported_booster_types.sort_by{|c,b| [-b.set.release_date.jd, c]}.to_h
+
       initialize_booster_flag
     end
     @supported_booster_types
@@ -149,11 +158,9 @@ class CardDatabase
   end
 
   # Exclude Arena boosters
+  # It will generally be XXX-play now
   def most_recent_booster_type
-    @most_recent_booster_type ||= supported_booster_types
-      .reject{|k,v| k.include?("-")}
-      .first
-      .first
+    @most_recent_booster_type ||= supported_booster_types[supported_booster_types.reject{|k,v| k.include?("-")}.first.first].code
   end
 
   def resolve_time(time)

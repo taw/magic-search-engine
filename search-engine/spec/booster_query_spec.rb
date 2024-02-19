@@ -25,4 +25,9 @@ describe "booster:" do
   it "supports multiple codes" do
     assert_search_equal "booster:m10,m11,m12", "booster:m10 or booster:m11 or booster:m12"
   end
+
+  it "default type" do
+    assert_search_equal "booster:m10", "booster:m10-draft"
+    assert_search_equal "booster:mkm", "booster:mkm-play"
+  end
 end

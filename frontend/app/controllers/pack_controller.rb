@@ -12,8 +12,7 @@ class PackController < ApplicationController
       return
     end
 
-    factory = PackFactory.new($CardDatabase)
-    @pack = factory.for(set_code, variant)
+    @pack = $CardDatabase.supported_booster_types[[set_code, variant].compact.join("-")]
 
     unless @pack
       render_404
