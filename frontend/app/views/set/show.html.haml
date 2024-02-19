@@ -29,6 +29,14 @@
             %li
               = link_to_deck(deck) do
                 = "#{deck.name} (#{deck.type})"
+    - if @boosters.present?
+      .col-12
+        %div Boosters:
+        - @boosters.each do |code, pack|
+          %li
+            = link_to_pack(pack) do
+              = pack.name
+            = "(#{code.upcase})"
     - if @set.subsets.present?
       .col-12
         %div Subsets:
