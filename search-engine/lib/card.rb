@@ -394,6 +394,10 @@ class Card
     "Ultimate Sacrifice",
     "Water Always Wins",
     "Woman Who Walked the Earth",
+    # PIP
+    "Crash Landing",
+    "Decimate",
+    "Wild Card",
   ].sort
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 
