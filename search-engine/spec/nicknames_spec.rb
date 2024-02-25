@@ -175,6 +175,7 @@ describe "Card nicknames" do
       "Sunken Ruins",
       "Sunscorched Divide",
       "Twilight Mire",
+      "Viridescent Bog",
       "Wooded Bastion"
     assert_search_results "is:filterland",
       *cards_matching{|c|
