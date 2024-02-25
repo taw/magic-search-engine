@@ -21,6 +21,7 @@ class ConditionIsFilterland < ConditionNickname
       "sunken ruins",
       "sunscorched divide",
       "twilight mire",
+      "viridescent bog",
       "wooded bastion",
     ]
   end
