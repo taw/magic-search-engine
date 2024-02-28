@@ -73,6 +73,8 @@ class PatchSetTypes < Patch
         set_types << "promo"
       when /\Ass\d/
         set_types << "spellbook" << "box"
+      when "clu"
+        set_types << "box" << "booster"
       end
 
       # Some of these are not actually funny sets, just promo sets mixing funny and regular cards (like plst)
