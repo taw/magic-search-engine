@@ -153,7 +153,7 @@ describe "Any queries" do
       assert_search_equal "any:canopyland", "is:canopyland"
       assert_search_equal "any:checkland", "is:checkland"
       assert_search_equal "any:creatureland", "is:creatureland"
-      assert_search_equal "any:dual", "is:dual or (dual) or ft:dual"
+      assert_search_equal "any:dual -is:rebalanced", "(is:dual or (dual) or ft:dual) -is:rebalanced"
       assert_search_equal "any:fastland", "is:fastland"
       assert_search_equal "any:fetchland", "is:fetchland"
       assert_search_equal "any:filterland", "is:filterland"
@@ -241,7 +241,7 @@ describe "Any queries" do
 
     it "draft" do
       # 4 cards with draft in name
-      assert_search_equal "any:draft", "is:draft or draft or (o:draft e:ymid,yneo,ysnc,hbg,ydmu,ybro,yone,ylci)"
+      assert_search_equal "any:draft", "is:draft or draft or (o:draft e:ymid,yneo,ysnc,hbg,ydmu,ybro,yone,ylci,ymkm)"
     end
   end
 end

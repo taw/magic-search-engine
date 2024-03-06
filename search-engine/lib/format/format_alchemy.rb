@@ -8,12 +8,14 @@ class FormatAlchemy < FormatStandard
   # ANB always legal
   # Non-Standard-legal LTR is Arena-legal
   # https://mtg.fandom.com/wiki/Alchemy
+  #
+  # I really should automate this
   def rotation_schedule
     {
       "2022-09-09" => [
         "anb",
         "mid", "ymid", "vow", "neo", "yneo", "snc", "ysnc", "hbg",
-        "dmu", "ydmu", "bro", "ybro", "one", "yone", "mom", "mat", "ltr", "ywoe",
+        "dmu", "ydmu", "bro", "ybro", "one", "yone", "mom", "mat", "ltr", "ywoe", "xln", "mkm", "ymkm"
       ],
       "2021-12-02" => [
         "anb",
