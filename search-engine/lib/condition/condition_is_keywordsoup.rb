@@ -21,6 +21,7 @@ class ConditionIsKeywordsoup < ConditionNickname
       "rayami, first of the fallen",
       "selective adaptation",
       "soulflayer",
+      "sproutwatch dryad",
       "thunderous orator",
       "urborg scavengers",
       "wretched bonemass",
