@@ -405,6 +405,7 @@ describe "Card nicknames" do
       "Rayami, First of the Fallen",
       "Selective Adaptation",
       "Soulflayer",
+      "Sproutwatch Dryad",
       "Thunderous Orator",
       "Urborg Scavengers",
       "Wretched Bonemass"
