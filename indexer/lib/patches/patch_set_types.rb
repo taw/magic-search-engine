@@ -7,6 +7,9 @@ class PatchSetTypes < Patch
     each_set do |set|
       set_code = set["code"]
       main_set_type = set.delete("type").tr("_", " ")
+
+      main_set_type = "alchemy" if set_code == "ymkm" # mtgjson bug
+
       set_types = [main_set_type]
 
       if set["custom"]
