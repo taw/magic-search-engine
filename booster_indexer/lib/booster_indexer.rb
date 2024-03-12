@@ -172,6 +172,8 @@ class PreprocessBooster
       "{set_name}"
     when "arena"
       "{set_name} Arena Booster"
+    when "mtgo"
+      "{set_name} Magic Online Booster"
     when "set"
       "{set_name} Set Booster"
     when "collector"

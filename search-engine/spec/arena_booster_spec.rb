@@ -1,10 +1,10 @@
 describe "Arena and MTGO Boosters" do
   include_context "db"
 
-  let(:boosters) { db.supported_booster_types.values }
+  let(:boosters) { db.supported_booster_types.select{|k,v| k == v.code}. values }
   # What about remastered sets?
   let(:arena_boosters) { boosters.select{|b| b.code =~ /arena/} }
-  let(:mtgo_boosters) { boosters.select{|b| b.code =~ /\A(tpr|me1|me2|me3|me4|vma)\z/ } }
+  let(:mtgo_boosters) { boosters.select{|b| b.code =~ /\A(tpr|me1|me2|me3|me4|vma)-mtgo\z/ } }
   let(:non_legal_boosters) { boosters.select{|b| b.code == "30a" }}
   let(:non_digital_boosters) { boosters - arena_boosters - mtgo_boosters - non_legal_boosters }
 
