@@ -1,7 +1,7 @@
 describe "Arena and MTGO Boosters" do
   include_context "db"
 
-  let(:boosters) { db.supported_booster_types.select{|k,v| k == v.code}. values }
+  let(:boosters) { db.unique_supported_booster_types.values }
   # What about remastered sets?
   let(:arena_boosters) { boosters.select{|b| b.code =~ /arena/} }
   let(:mtgo_boosters) { boosters.select{|b| b.code =~ /\A(tpr|me1|me2|me3|me4|vma)-mtgo\z/ } }

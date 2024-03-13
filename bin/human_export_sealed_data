@@ -78,7 +78,7 @@ class HumanExportSealedData
   end
 
   def call
-    @db.supported_booster_types.each do |booster_code, booster|
+    @db.unique_supported_booster_types.each do |booster_code, booster|
       booster = flatten_pack(booster)
       sheets = extract_sheets(booster)
       path = @output_folder.join("#{booster.code}.txt")

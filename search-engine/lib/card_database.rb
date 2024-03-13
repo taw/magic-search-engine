@@ -135,7 +135,7 @@ class CardDatabase
       # Aliases
       @supported_booster_types.values.map(&:set_code).uniq.each do |set_code|
         next if @supported_booster_types[set_code]
-        pack = @supported_booster_types["#{set_code}-draft"] || @supported_booster_types["#{set_code}-play"]
+        pack = @supported_booster_types["#{set_code}-draft"] || @supported_booster_types["#{set_code}-play"] || @supported_booster_types["#{set_code}-mtgo"]
         @supported_booster_types[set_code] = pack if pack
       end
 
@@ -144,6 +144,11 @@ class CardDatabase
       initialize_booster_flag
     end
     @supported_booster_types
+  end
+
+  # Whetever we list supported booster types, skip aliases
+  def unique_supported_booster_types
+    @unique_supported_booster_types ||= supported_booster_types.select{|code, booster| code == booster.code}
   end
 
   # CardPrinting.in_boosters is only available from this point

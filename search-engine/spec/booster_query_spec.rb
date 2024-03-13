@@ -29,5 +29,6 @@ describe "booster:" do
   it "default type" do
     assert_search_equal "booster:m10", "booster:m10-draft"
     assert_search_equal "booster:mkm", "booster:mkm-play"
+    assert_search_equal "booster:vma", "booster:vma-mtgo"
   end
 end
