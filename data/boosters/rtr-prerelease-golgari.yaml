@@ -1,0 +1,13 @@
+name: "Return to Ravnica Prerelease Pack Golgari"
+filter: "e:{set} id<=golgari (w:golgari or -w:*)"
+pack:
+  common: 11
+  uncommon: 3
+  rare_mythic: 1
+sheets:
+  rare_mythic:
+    any:
+    - use: rare
+      rate: 2
+    - query: "Jarad Golgari Lich Lord"
+      rate: 1
