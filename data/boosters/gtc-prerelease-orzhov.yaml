@@ -1,0 +1,13 @@
+name: "Gatecrash Prerelease Pack Orzhov"
+filter: "e:{set} id<=orzhov (w:orzhov or -w:*)"
+pack:
+  common: 11
+  uncommon: 3
+  rare_mythic: 1
+sheets:
+  rare_mythic:
+    any:
+    - use: rare
+      rate: 2
+    - query: "Obzedat, Ghost Council"
+      rate: 1
