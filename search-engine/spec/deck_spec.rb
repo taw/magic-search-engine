@@ -83,6 +83,7 @@ describe Deck do
       ["promo", "Box Set"],
       ["funny", "Box Set"],
       ["memorabilia", "Box Set"],
+      ["sdcc", "San Diego Comic Con Promos"],
     ]
 
     db.sets.each do |set_code, set|

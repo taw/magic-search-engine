@@ -72,6 +72,8 @@ class PatchSetTypes < Patch
         set_types << "promo" << "sld"
       when "past"
         set_types << "shandalar"
+      when /\Aps\d\d\z/, "psdc"
+        set_types << "promo" << "box" << "sdcc"
       when "pz2", /\Ap...\z/
         set_types << "promo"
       when /\Ass\d/
