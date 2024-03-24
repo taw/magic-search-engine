@@ -404,7 +404,6 @@ class Card
     "For Auld Lang Syne",
     "Hunters for Hire",
     "One for My Baby",
-    "Squad",
     "Wild Card",
   ].sort
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
