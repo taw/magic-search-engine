@@ -1,0 +1,115 @@
+pack:
+  land:
+  - foil_basic: 1
+    chance: 2
+  - surge_basic: 1
+    chance: 1
+  standard_rm:
+  - foil_rare_mythic: 1
+    chance: 9
+  - surge_rare_mythic: 1
+    chance: 1
+  hail_caesar:
+  - foil_hail_caesar: 1
+    chance: 9
+  - surge_hail_caesar: 1
+    chance: 1
+  scrappy_survivors:
+  - foil_scrappy_survivors: 1
+    chance: 9
+  - surge_scrappy_survivors: 1
+    chance: 1
+  science:
+  - foil_science: 1
+    chance: 9
+  - surge_science: 1
+    chance: 1
+  mutant_menace:
+  - foil_mutant_menace: 1
+    chance: 9
+  - surge_mutant_menace: 1
+    chance: 1
+  extended_reprint: 1
+  extended_new: 1
+  foil_extended_reprint: 1
+  foil_extended_new: 1
+  surge_extended_reprint: 1
+  surge_extended_new: 1
+  surge_wildcard: 1
+  showcase: 1
+  finale:
+  - foil_showcase: 1
+    chance: 895
+  - surge_showcase: 1
+    chance: 100
+  - serialized: 1
+    chance: 5
+sheets:
+  foil_basic:
+    foil: true
+    rawquery: "e:pip t:basic -promo:surgefoil"
+  surge_basic:
+    foil: true
+    rawquery: "e:pip t:basic promo:surgefoil"
+  foil_rare_mythic:
+    filter: "e:pip number<=316"
+    use: rare_mythic
+    foil: true
+  surge_rare_mythic:
+    filter: "e:pip number:529-854"
+    use: rare_mythic
+    foil: true
+  foil_hail_caesar:
+    rawquery: "e:pip deck:\"Hail Caesar\" number<=316"
+    foil: true
+  surge_hail_caesar:
+    rawquery: "e:pip alt:(deck:\"Hail Caesar\") number:529-854"
+    foil: true
+  foil_scrappy_survivors:
+    rawquery: "e:pip deck:\"Scrappy Survivors\" number<=316"
+    foil: true
+  surge_scrappy_survivors:
+    rawquery: "e:pip alt:(deck:\"Scrappy Survivors\") number:529-854"
+    foil: true
+  foil_science:
+    rawquery: "e:pip deck:\"Science!\" number<=316"
+    foil: true
+  surge_science:
+    rawquery: "e:pip alt:(deck:\"Science!\") number:529-854"
+    foil: true
+  foil_mutant_menace:
+    rawquery: "e:pip deck:\"Mutant Menace\" number<=316"
+    foil: true
+  surge_mutant_menace:
+    rawquery: "e:pip alt:(deck:\"Mutant Menace\") number:529-854"
+    foil: true
+  extended_reprint:
+    rawquery: "e:pip number:447-528"
+  extended_new:
+    rawquery: "e:pip number:362-446"
+  foil_extended_reprint:
+    rawquery: "e:pip number:447-528"
+    foil: true
+  foil_extended_new:
+    rawquery: "e:pip number:362-446"
+    foil: true
+  surge_extended_reprint:
+    rawquery: "e:pip number:975-1056"
+    foil: true
+  surge_extended_new:
+    rawquery: "e:pip number:890-974"
+    foil: true
+  surge_wildcard:
+    rawquery: "e:pip (number:529-854 or number:890-975) -t:basic"
+    foil: true
+  showcase:
+    rawquery: "e:pip number:327-361"
+  foil_showcase:
+    rawquery: "e:pip number:327-361"
+    foil: true
+  surge_showcase:
+    rawquery: "e:pip number:855-889"
+    foil: true
+  serialized:
+    rawquery: "e:pip number:1057-1063"
+    foil: true
