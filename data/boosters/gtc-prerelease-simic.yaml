@@ -1,0 +1,13 @@
+name: "Gatecrash Prerelease Pack Simic"
+filter: "e:{set} id<=simic (w:simic or -w:*)"
+pack:
+  common: 11
+  uncommon: 3
+  rare_mythic: 1
+sheets:
+  rare_mythic:
+    any:
+    - use: rare
+      rate: 2
+    - query: "Prime Speaker Zegana"
+      rate: 1

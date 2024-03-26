@@ -1,0 +1,13 @@
+name: "Gatecrash Prerelease Pack Gruul"
+filter: "e:{set} id<=gruul (w:gruul or -w:*)"
+pack:
+  common: 11
+  uncommon: 3
+  rare_mythic: 1
+sheets:
+  rare_mythic:
+    any:
+    - use: rare
+      rate: 2
+    - query: "Borborygmos Enraged"
+      rate: 1

@@ -1,0 +1,13 @@
+name: "Return to Ravnica Prerelease Pack Azorius"
+filter: "e:{set} id<=azorius (w:Azorius or -w:*)"
+pack:
+  common: 11
+  uncommon: 3
+  rare_mythic: 1
+sheets:
+  rare_mythic:
+    any:
+    - use: rare
+      rate: 2
+    - query: "Isperia, Supreme Judge"
+      rate: 1
