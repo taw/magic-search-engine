@@ -35,6 +35,7 @@ describe "Sets" do
       "premiere shop",
       "premium deck",
       "promo",
+      "sdcc",
       "shandalar",
       "sld",
       "spellbook",
