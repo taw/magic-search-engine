@@ -224,6 +224,7 @@ class ExportFormatterExperimental < ExportFormatter
     result = {}
     @db.unique_supported_booster_types.each do |booster_code, booster|
       next unless booster_code == booster.code
+      next if booster_code == "slc" # can't mix foil and nonfoil in this format
       set_code = booster.set_code.upcase
       booster_type = booster.code.split("-", 2)[1] || "default"
       booster = flatten_pack(booster)
