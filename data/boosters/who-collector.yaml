@@ -1,35 +1,11 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-magic-the-gathering-doctor-who
 pack:
-  land:
-  - foil_basic: 1
-    chance: 2
-  - surge_basic: 1
-    chance: 1
-  doctor:
-  - foil_doctor: 1
-    chance: 9
-  - surge_doctor: 1
-    chance: 1
-  blast:
-  - foil_blast_past: 1
-    chance: 9
-  - surge_blast_past: 1
-    chance: 1
-  timey:
-  - foil_timey_wimey: 1
-    chance: 9
-  - surge_timey_wimey: 1
-    chance: 1
-  paradox:
-  - foil_paradox: 1
-    chance: 9
-  - surge_paradox: 1
-    chance: 1
-  master:
-  - foil_master_evil: 1
-    chance: 9
-  - surge_master_evil: 1
-    chance: 1
+  land: 1
+  doctor: 1
+  blast: 1
+  timey: 1
+  paradox: 1
+  master: 1
   extended_new: 1
   foil_extended_new: 1
   extended_reprint: 1
@@ -38,13 +14,7 @@ pack:
   surge_extended_reprint: 1
   surge_wildcard: 1
   tardis: 1
-  finale:
-  - foil_tardis: 1
-    chance: 89
-  - surge_tardis: 1
-    chance: 10
-  - serialized: 1
-    chance: 1
+  finale: 1
 sheets:
   foil_basic:
     foil: true
@@ -144,3 +114,54 @@ sheets:
   serialized:
     foil: true
     rawquery: "e:who number:/z/"
+  land:
+    foil: true
+    any:
+    - use: foil_basic
+      chance: 2
+    - use: surge_basic
+      chance: 1
+  doctor:
+    foil: true
+    any:
+    - use: foil_doctor
+      chance: 9
+    - use: surge_doctor
+      chance: 1
+  blast:
+    foil: true
+    any:
+    - use: foil_blast_past
+      chance: 9
+    - use: surge_blast_past
+      chance: 1
+  timey:
+    foil: true
+    any:
+    - use: foil_timey_wimey
+      chance: 9
+    - use: surge_timey_wimey
+      chance: 1
+  paradox:
+    foil: true
+    any:
+    - use: foil_paradox
+      chance: 9
+    - use: surge_paradox
+      chance: 1
+  master:
+    foil: true
+    any:
+    - use: foil_master_evil
+      chance: 9
+    - use: surge_master_evil
+      chance: 1
+  finale:
+    foil: true
+    any:
+    - use: foil_tardis
+      chance: 89
+    - use: surge_tardis
+      chance: 10
+    - use: serialized
+      chance: 1
