@@ -1,34 +1,10 @@
 pack:
-  land:
-  - foil_basic: 1
-    chance: 2
-  - surge_basic: 1
-    chance: 1
-  standard_rm:
-  - foil_rare_mythic: 1
-    chance: 9
-  - surge_rare_mythic: 1
-    chance: 1
-  hail_caesar:
-  - foil_hail_caesar: 1
-    chance: 9
-  - surge_hail_caesar: 1
-    chance: 1
-  scrappy_survivors:
-  - foil_scrappy_survivors: 1
-    chance: 9
-  - surge_scrappy_survivors: 1
-    chance: 1
-  science:
-  - foil_science: 1
-    chance: 9
-  - surge_science: 1
-    chance: 1
-  mutant_menace:
-  - foil_mutant_menace: 1
-    chance: 9
-  - surge_mutant_menace: 1
-    chance: 1
+  land: 1
+  standard_rm: 1
+  hail_caesar: 1
+  scrappy_survivors: 1
+  science: 1
+  mutant_menace: 1
   extended_reprint: 1
   extended_new: 1
   foil_extended_reprint: 1
@@ -37,13 +13,7 @@ pack:
   surge_extended_new: 1
   surge_wildcard: 1
   showcase: 1
-  finale:
-  - foil_showcase: 1
-    chance: 895
-  - surge_showcase: 1
-    chance: 100
-  - serialized: 1
-    chance: 5
+  finale: 1
 sheets:
   foil_basic:
     foil: true
@@ -60,10 +30,10 @@ sheets:
     use: rare_mythic
     foil: true
   foil_hail_caesar:
-    rawquery: "e:pip deck:\"Hail Caesar\" number<=316"
+    rawquery: "e:pip deck:\"Hail, Caesar\" number<=316"
     foil: true
   surge_hail_caesar:
-    rawquery: "e:pip alt:(deck:\"Hail Caesar\") number:529-854"
+    rawquery: "e:pip alt:(deck:\"Hail, Caesar\") number:529-854"
     foil: true
   foil_scrappy_survivors:
     rawquery: "e:pip deck:\"Scrappy Survivors\" number<=316"
@@ -113,3 +83,54 @@ sheets:
   serialized:
     rawquery: "e:pip number:1057-1063"
     foil: true
+  land:
+    foil: true
+    any:
+    - use: foil_basic
+      chance: 2
+    - use: surge_basic
+      chance: 1
+  standard_rm:
+    foil: true
+    any:
+    - use: foil_rare_mythic
+      chance: 9
+    - use: surge_rare_mythic
+      chance: 1
+  hail_caesar:
+    foil: true
+    any:
+    - use: foil_hail_caesar
+      chance: 9
+    - use: surge_hail_caesar
+      chance: 1
+  scrappy_survivors:
+    foil: true
+    any:
+    - use: foil_scrappy_survivors
+      chance: 9
+    - use: surge_scrappy_survivors
+      chance: 1
+  science:
+    foil: true
+    any:
+    - use: foil_science
+      chance: 9
+    - use: surge_science
+      chance: 1
+  mutant_menace:
+    foil: true
+    any: 
+    - use: foil_mutant_menace
+      chance: 9
+    - use: surge_mutant_menace
+      chance: 1
+  finale:
+    foil: true
+    any:
+    - use: foil_showcase
+      chance: 895
+    - use: surge_showcase
+      chance: 100
+    - use: serialized
+      chance: 5
