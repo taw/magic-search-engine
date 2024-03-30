@@ -55,6 +55,8 @@ class ColorBalancedCardSheet < CardSheet
     @color_subsheets = [w, u, b, r, g, c]
     @subsheet_weights = [ww, uw, bw, rw, gw, cw].map(&:sum)
     @subsheet_total_weight = @subsheet_weights.sum
+    # Empty colorles is fine
+    raise "#{set_code}/#{name} some colors don't have any cards, this sheet cannot be constructed" if [w, u, b, r, g].any?{|cs| cs.elements.empty?}
   end
 
   def random_cards_without_duplicates(count)
@@ -84,10 +86,10 @@ class ColorBalancedCardSheet < CardSheet
       # Whenever this happens, a tiny bias is introduced
       card = random_card_with_adjusted_weights(temp_weights, denominator)
       redo if card.nil?
-      name = card.name
-      redo if seen_names.include?(name)
+      card_name = card.name
+      redo if seen_names.include?(card_name)
       result << card
-      seen_names << name
+      seen_names << card_name
     end
 
     result
