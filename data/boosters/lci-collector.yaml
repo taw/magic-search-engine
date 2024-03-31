@@ -51,16 +51,16 @@ sheets:
       rate: 1
   jurrasic_world:
     any:
-    - rawquery: "e:rex -t:basic -promo:embossed"
+    - rawquery: "e:rex -t:basic -promo:embossed is:front"
       rate: 1
-    - rawquery: "e:rex t:basic -promo:embossed"
+    - rawquery: "e:rex t:basic -promo:embossed is:front"
       rate: 4
   foil_jurrasic_world:
     foil: true
     any:
-    - rawquery: "e:rex -t:basic -promo:embossed"
+    - rawquery: "e:rex -t:basic -promo:embossed is:front"
       rate: 1
-    - rawquery: "e:rex t:basic -promo:embossed"
+    - rawquery: "e:rex t:basic -promo:embossed is:front"
       rate: 4
   emblem_jurrasic_world:
     foil: true
