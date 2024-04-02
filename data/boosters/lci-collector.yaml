@@ -45,22 +45,22 @@ sheets:
     any:
     - rawquery: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:r"
       rate: 4
-    - rawquery: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:m -(Quintorius Kand)" 
+    - rawquery: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:m -(Quintorius Kand)"
       rate: 2
-    - rawquery: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:m (Quintorius Kand)" 
+    - rawquery: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:m (Quintorius Kand)"
       rate: 1
   jurrasic_world:
     any:
-    - rawquery: "e:rex -t:basic -promo:embossed"
+    - rawquery: "e:rex -t:basic -promo:embossed -is:reversibleback"
       rate: 1
-    - rawquery: "e:rex t:basic -promo:embossed"
+    - rawquery: "e:rex t:basic -promo:embossed -is:reversibleback"
       rate: 4
   foil_jurrasic_world:
     foil: true
     any:
-    - rawquery: "e:rex -t:basic -promo:embossed"
+    - rawquery: "e:rex -t:basic -promo:embossed -is:reversibleback"
       rate: 1
-    - rawquery: "e:rex t:basic -promo:embossed"
+    - rawquery: "e:rex t:basic -promo:embossed -is:reversibleback"
       rate: 4
   emblem_jurrasic_world:
     foil: true
@@ -98,4 +98,3 @@ sheets:
       - rawquery: "e:lci number:410f"
         rate: 16
       chance: 1
-    
