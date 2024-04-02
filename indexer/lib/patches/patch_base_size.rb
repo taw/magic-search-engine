@@ -14,7 +14,7 @@ class PatchBaseSize < Patch
       if set_by_code(code)["base_set_size"] == size
         warn "Base set size for #{code} already correct #{size}"
       else
-        warn "Pathing base set size for #{code} from #{set_by_code(code)["base_set_size"]} to #{size}"
+        warn "Patching base set size for #{code} from #{set_by_code(code)["base_set_size"]} to #{size}"
       end
       set_by_code(code)["base_set_size"] = size
     end
