@@ -40,6 +40,7 @@ class FormatPioneer < Format
       "woe",
       "lci",
       "mkm",
+      "otj",
     ]
   end
 end

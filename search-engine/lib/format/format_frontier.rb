@@ -37,6 +37,7 @@ class FormatFrontier < Format
       "woe",
       "lci",
       "mkm",
+      "otj",
     ]
   end
 end

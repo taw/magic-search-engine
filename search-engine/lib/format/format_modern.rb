@@ -60,6 +60,7 @@ class FormatModern < Format
       "woe",
       "lci",
       "mkm",
+      "otj",
     ]
   end
 end
