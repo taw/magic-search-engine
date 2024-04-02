@@ -15,7 +15,7 @@ class FormatAlchemy < FormatStandard
       "2022-09-09" => [
         "anb",
         "mid", "ymid", "vow", "neo", "yneo", "snc", "ysnc", "hbg",
-        "dmu", "ydmu", "bro", "ybro", "one", "yone", "mom", "mat", "ltr", "woe", "ywoe", "lci", "ylci", "mkm", "ymkm",
+        "dmu", "ydmu", "bro", "ybro", "one", "yone", "mom", "mat", "ltr", "woe", "ywoe", "lci", "ylci", "mkm", "ymkm", "otj",
       ],
       "2021-12-02" => [
         "anb",
