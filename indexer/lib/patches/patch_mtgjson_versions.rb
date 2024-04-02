@@ -59,6 +59,15 @@ class PatchMtgjsonVersions < Patch
       counter.succ!
     end
     @seen[[set_code, base_number, counter]] = true
+    card["promoTypes"] ||= []
+    case counter
+    when "a"
+      card["promoTypes"] << "reversiblefront"
+    when "b"
+      card["promoTypes"] << "reversibleback"
+    else
+      warn "More than two parts of same reversible card #{set_code} #{base_number}"
+    end
     card["number"] = "#{base_number}#{counter}"
   end
 
