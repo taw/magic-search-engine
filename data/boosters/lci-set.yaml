@@ -11,7 +11,7 @@ pack:
   uncommon: 3
   showcase_dfc_common_uncommon: 1
   wildcard: 2
-  rare_mythic: 1 
+  rare_mythic: 1
   finale:
   - foil_with_showcase: 1
     chance: 3
@@ -63,7 +63,7 @@ sheets:
         chance: 64*2
       - use: mythic_with_showcase
         chance: 22
-      - rawquery: "e:rex -t:basic -promo:embossed"
+      - rawquery: "e:rex -t:basic -promo:embossed -is:reversibleback"
         chance: 21*2
       - rawquery: "e:lcc (number:1-16a or number:69-100) r:r is:front"
         chance: 39*2
