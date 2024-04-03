@@ -1,6 +1,6 @@
-name: "{set_name} Bundle Promo Card"
+name: "{set_name} Gift Bundle Promo Card"
 pack:
   bundle_promo: 1
 sheets:
   bundle_promo:
-    rawquery: "e:rex -t:basic is:foil -is:embossed"
+    rawquery: "e:rex -t:basic is:foil -is:embossed -is:reversibleback"
