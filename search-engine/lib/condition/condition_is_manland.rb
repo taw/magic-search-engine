@@ -2,6 +2,7 @@ class ConditionIsManland < ConditionNickname
   def names
     [
       "blinkmoth nexus",
+      "cactus preserve",
       "cave of the frost dragon",
       "cavernous maw",
       "celestial colonnade",

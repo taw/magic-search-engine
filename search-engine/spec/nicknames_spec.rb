@@ -190,6 +190,7 @@ describe "Card nicknames" do
   it "is:manland" do
     assert_search_results "is:manland",
       "Blinkmoth Nexus",
+      "Cactus Preserve",
       "Cave of the Frost Dragon",
       "Cavernous Maw",
       "Celestial Colonnade",
