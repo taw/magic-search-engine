@@ -41,6 +41,7 @@ class FormatPioneer < Format
       "lci",
       "mkm",
       "otj",
+      "big",
     ]
   end
 end
