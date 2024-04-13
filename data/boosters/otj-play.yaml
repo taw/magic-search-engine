@@ -6,12 +6,12 @@ pack:
   - foil_land: 1
     chance: 1
   list_slot:
-  - common_with_showcase: 6
+  - common: 6
     chance: 4
-  - common_with_showcase: 5
+  - common: 5
     the_list: 1
     chance: 1
-  uncommon_with_showcase: 3
+  uncommon: 3
   rare_mythic_with_showcase: 1
   breaking_news: 1
   wildcard: 1
@@ -46,18 +46,18 @@ sheets:
   wildcard:
     any:
     - chance: 700
-      use: common_with_showcase
+      use: common
     - chance: 175
-      use: uncommon_with_showcase
+      use: uncommon
     - chance: 125
       use: rare_mythic_with_showcase
   foil:
     foil: true
     any:
     - chance: 12
-      use: common_with_showcase
+      use: common
     - chance: 5
-      use: uncommon_with_showcase
+      use: uncommon
     - chance: 3
       use: rare_mythic_with_showcase
   the_list:
@@ -67,16 +67,8 @@ sheets:
     - set: spg
       code: "OTJ"
       rate: 1
-  common_with_showcase:
-    balanced: false
-    # Showcase treatments 1/3 for relevant cards
-    any:
-    - use: common_showcase
-      rate: 1
-    - use: common_has_showcase
-      rate: 2
-    - use: common_has_no_showcase
-      rate: 3
+  common:
+    query: "r:c -(number:251-264 -(Mirage Mesa) -(Conduit Pylons))"
   breaking_news:
     filter: "e:otp number<=65"
     use: base_1248_by_rarity
