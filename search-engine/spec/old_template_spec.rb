@@ -16,8 +16,9 @@ describe "Old templates" do
   # Firesong and Sunspeaker (legitimate)
   # Sarah's Wings (CMB1)
   # Tornellan Protector (Sega Dreamcast Cards)
+  # Ertha Jo, Frontier Mentor
   it do
-    assert_count_cards %[o:"creature or player"], 6
+    assert_count_cards %[o:"creature or player"], 7
   end
 
   it do
