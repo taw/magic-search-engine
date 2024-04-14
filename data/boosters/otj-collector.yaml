@@ -49,52 +49,52 @@ sheets:
     use: rare_mythic
   finale:
     foil: true
-    any: #1049
-    # otj extended art : val 111 444
+    any: 
+    # otj extended art : val 111
     - rawquery: "e:otj number:307-367 r:r"
       rate: 12
       count: 50
     - rawquery: "e:otj number:307-367 r:m"
       rate: 6
       count: 11
-    # base otp : val 76 304
+    # base otp : val 75
     - rawquery: "e:otp number<=65 r:r"
       rate: 12
       count: 30
     - rawquery: "e:otp number<=65 r:m"
       rate: 6
-      count: 16
-    # wanted poster : val 18 72
+      count: 15
+    # wanted poster : val 18
     - rawquery: "e:otj number:287-299 r:r"
       rate: 12
       count: 5
     - rawquery: "e:otj number:287-299 r:m"
       rate: 6
       count: 8
-    # big extended : val 30 60
+    # big extended : val 30
     - rawquery: "e:big number:66-95"
       rate: 3
       count: 30
-    # big vault : val 30 60
+    # big vault : val 30
     - rawquery: "e:big number:31-60"
       rate: 3
       count: 30
-    # borderless : val 12 48
+    # borderless : val 12
     - rawquery: "e:otj number:300-306 r:r"
       rate: 12
       count: 5
     - rawquery: "e:otj number:300-306 r:m"
       rate: 6
       count: 2
-    # spg : val 10 40
+    # spg : val 10
     - set: spg
       code: "OTJ"
       rate: 6
       count: 10
-    # textured foil otp : val 16
+    # textured foil otp : val 15
     - rawquery: "e:otp number:66-80"
       rate: 1
-      count: 16
+      count: 15
     # raised foil : val 5
     - rawquery: "e:big number:61-65"
       rate: 1
