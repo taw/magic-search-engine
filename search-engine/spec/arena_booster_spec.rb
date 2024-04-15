@@ -26,4 +26,8 @@ describe "Arena and MTGO Boosters" do
       booster.cards.all?(&:paper?).should(eq(true), "All cards for #{booster.code} #{booster.name} should be paper cards")
     end
   end
+
+  it "No reversibleback cards are in boosters" do
+    assert_search_results "is:booster is:reversibleback"
+  end
 end
