@@ -7,7 +7,7 @@ describe "frame type and effect queries" do
     db.printings.select(&block)
   end
 
-  let(:frame_effects) { db.printings.flat_map(&:frame_effects).uniq }
+  let(:frame_effects) { db.frame_effects }
   let(:frame_types) { db.printings.map(&:frame).uniq }
 
   it "every frame type has corresponding frame: operator" do
