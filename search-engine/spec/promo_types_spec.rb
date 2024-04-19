@@ -5,7 +5,7 @@ describe "promo types queries" do
     db.printings.select(&block)
   end
 
-  let(:promo_types) { db.printings.flat_map(&:promo_types).uniq.compact }
+  let(:promo_types) { db.promo_types }
 
   it "every promo type has corresponding promo: operator" do
     promo_types.each do |promo_type|

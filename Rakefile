@@ -50,6 +50,11 @@ end
 desc "Update XMage card lists"
 task "xmage:update" do
   sh "rescue bin/extract_xmage_card_list ~/src/mage"
+end
+
+desc "Export XMage card lists"
+task "xmage:export" do
+  # I don't really use this, and it has a lot of churn
   sh "./bin/export_xmage_best_card_list ~/github/mtg/data/xmage_cards.txt"
 end
 

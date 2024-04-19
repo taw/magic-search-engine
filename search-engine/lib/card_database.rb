@@ -151,6 +151,14 @@ class CardDatabase
     @unique_supported_booster_types ||= supported_booster_types.select{|code, booster| code == booster.code}
   end
 
+  def promo_types
+    @promo_types ||= printings.flat_map(&:promo_types).uniq.compact.to_set
+  end
+
+  def frame_effects
+    @frame_effects ||= printings.flat_map(&:frame_effects).uniq.compact.to_set
+  end
+
   # CardPrinting.in_boosters is only available from this point
   def initialize_booster_flag
     @supported_booster_types.each_value do |booster|
