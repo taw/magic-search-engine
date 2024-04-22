@@ -1,0 +1,19 @@
+pack:
+  foiling:
+  - showcase_any: 1
+    chance: 1
+  - foil_showcase_any: 1
+    chance: 1
+  showcase_rm: 1
+sheets:
+  showcase_any:
+    any:
+    - rawquery: "e:pip number:362-528"
+      rate: 2
+    - rawquery: "e:pip number:327-361"
+      rate: 1
+  foil_showcase_any:
+    foil: true
+    use: showcase_any
+  showcase_rm:
+    rawquery: "e:pip number:362-528"
