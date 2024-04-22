@@ -1,0 +1,25 @@
+# data from https://magic.wizards.com/en/news/feature/collecting-outlaws-of-thunder-junction
+pack:
+  foil_uncommon_breakingnews: 1
+  finale:
+  - rare_mythic_showcase: 1
+    chance: 2
+  - foil_rare_mythic_showcase: 1
+    chance: 1
+sheets:
+  foil_uncommon_breakingnews:
+    rawquery: "e:otp r:u number<=65"
+    foil: true
+  rare_mythic_showcase:
+    any:
+    - rawquery: "e:otp r:r number<=65"
+      rate: 2
+    - rawquery: "e:otp r:m number<=65"
+      rate: 1
+    - rawquery: "e:otj r:r number:287-367"
+      rate: 2
+    - rawquery: "e:otj r:m number:287-367"
+      rate: 1
+  foil_rare_mythic_showcase:
+    foil: true
+    use: rare_mythic_showcase
