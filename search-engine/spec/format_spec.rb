@@ -225,6 +225,7 @@ describe "Formats" do
   end
 
   # Used to be Lurrus
+  # And now it's all the sticker and attraction cards, and I don't even know if the format is still used or not really
   it "mtgo commander" do
     assert_count_cards 'banned:vintage legal:"mtgo commander"', 0
   end
