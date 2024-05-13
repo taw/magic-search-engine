@@ -128,4 +128,10 @@ BanList.for_format("pauper") do
     "https://magic.wizards.com/en/news/announcements/december-4-2023-banned-and-restricted-announcement",
     "Monastery Swiftspear" => "banned",
   )
+
+  change(
+    "2024-05-13",
+    "https://magic.wizards.com/en/news/announcements/may-13-2024-banned-and-restricted-announcement",
+    "All That Glitters" => "banned",
+  )
 end
