@@ -73,7 +73,7 @@ describe "Unsets" do
   it "border:none" do
     assert_search_equal "border:none -(e:unf t:land) -(e:unf Comet) -(e:unf Beleren)",
       "(e:ust (t:basic or t:contraption)) or
-      (e:pcel Zur)"
+      (e:pcel Zur) or (e:pcel Deb Thomas)"
     assert_search_equal "border:none", "is:borderless"
     assert_search_equal "not:borderless", "-is:borderless"
     # Can't have multiple borders
@@ -109,6 +109,7 @@ describe "Unsets" do
     "not:silver-bordered -t:contraption -e:unf".should return_cards(
       "1996 World Champion",
       "Chaos Wrap",
+      "Deb Thomas",
       "Forest",
       "Fraternal Exaltation",
       "Gifts Given",
@@ -153,10 +154,10 @@ describe "Unsets" do
   end
 
   it "unf funny" do
-    assert_search_equal "e:unf f:vintage", "e:unf -is:acorn"
-    assert_search_equal "e:unf f:legacy", "e:unf -is:acorn"
+    assert_search_equal "e:unf f:vintage", "e:unf -is:acorn -is:stickers -is:attraction"
+    assert_search_equal "e:unf f:legacy", "e:unf -is:acorn -is:stickers -is:attraction"
+    assert_search_equal "e:unf f:pauper", "e:unf -is:acorn -is:stickers -is:attraction (r:common or r:basic)"
     assert_search_equal "e:unf f:commander", "e:unf -is:acorn"
-    assert_search_equal "e:unf f:pauper", "e:unf -is:acorn (r:common or r:basic)"
   end
 
   it "edition shortcut syntax" do
