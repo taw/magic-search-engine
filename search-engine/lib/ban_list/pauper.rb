@@ -153,6 +153,7 @@ BanList.for_format("pauper") do
     "Finishing Move" => "banned",
     "Glitterflitter" => "banned",
     "_____ Goblin" => "banned",
+    '"Name Sticker" Goblin' => "banned", # not explicitly, it's just MTGO variant
     # "Last Voyage of the _____" => "banned",
     # "Lineprancers" => "banned",
     # "Make a _____ Splash" => "banned",
