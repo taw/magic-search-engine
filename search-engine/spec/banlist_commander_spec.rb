@@ -14,7 +14,7 @@ describe "Banlist" do
     )
   end
 
-  # for a while except Lurrus
+  # this used to be the case but isn't anymore
   it "vintage banned means commander banned" do
     BanList.all_change_dates.each do |date|
       vintage_banlist  = BanList["vintage"].full_ban_list(date)
@@ -26,9 +26,13 @@ describe "Banlist" do
       vintage_only_banned = vintage_banned - commander_banned
 
       if date >= Date.parse("2020-05-18") and date < Date.parse("2021-02-15")
+        # for a while the exception was Lurrus
         vintage_only_banned.should eq(["Lurrus of the Dream-Den"])
-      else
+      elsif date < Date.parse("2024-05-13")
         vintage_only_banned.should eq([])
+      else
+        # Stickers and Attractions
+        # vintage_only_banned.should eq([*sticker_cards, *attraction_cards])
       end
     end
   end
