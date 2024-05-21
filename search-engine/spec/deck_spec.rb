@@ -312,6 +312,7 @@ describe Deck do
     db.decks_containing(som_arc_trail).map{|deck| [deck.set_name, deck.name, deck.type] }.should eq([
       ["Scars of Mirrodin", "Relic Breaker", "Intro Pack"],
       ["Mirrodin Besieged", "Mirromancy", "Intro Pack"],
+      ["Magic 2012", "Red Deck A", "Sample Deck"],
       ["Dark Ascension", "Gleeful Flames", "Event Deck"],
       ["Magic 2013", "Sweet Revenge", "Event Deck"],
     ])
