@@ -62,6 +62,8 @@ class FormatModern < Format
       "mkm",
       "otj",
       "big",
+      "h2r",
+      "mh3",
     ]
   end
 end

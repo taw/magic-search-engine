@@ -25,8 +25,11 @@ class PatchSetTypes < Patch
         set_types << "jumpstart"
       when "bbd"
         set_types << "two-headed giant" << "multiplayer"
-      when "mh1", "mh2", "ltr"
+      when "mh1", "mh2", "mh3", "ltr"
         set_types << "modern"
+      when "h2r"
+        # mtgjson bug: it has it as expansion
+        set_types = ["promo", "modern"]
       when "cns", "cn2"
         set_types << "conspiracy" << "multiplayer"
       when "cp1", "cp2", "cp3"
