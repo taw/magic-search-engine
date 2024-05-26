@@ -56,6 +56,7 @@ describe "Deck legality" do
       "Snow-Covered Mountain",
       "Snow-Covered Plains",
       "Snow-Covered Swamp",
+      "Snow-Covered Wastes",
       "Swamp",
       "Wastes",
     ])

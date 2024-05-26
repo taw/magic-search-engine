@@ -15,7 +15,7 @@ class ConditionCast < ConditionSimple
         # always OK
       when /p/
         # always OK, you can just pay life
-      when /\A[wubrg][wubrg]\z/
+      when /\A[wubrgc][wubrgc]\z/
         return false unless @query_mana.include?(m[0]) or @query_mana.include?(m[1])
       else
         raise "Unknown mana type: #{m}"

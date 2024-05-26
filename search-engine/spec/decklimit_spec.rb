@@ -18,6 +18,7 @@ describe "DissentionTest" do
       "Snow-Covered Mountain",
       "Snow-Covered Plains",
       "Snow-Covered Swamp",
+      "Snow-Covered Wastes",
       # fancy basics
       "Barry's Land",
       "Wastes",

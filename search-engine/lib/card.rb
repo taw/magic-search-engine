@@ -673,6 +673,8 @@ class Card
         @mana_hash[normalize_mana_symbol(m)] += 1
       when /\A([wubrg])\/([wubrg])\/p\z/
         @mana_hash[normalize_mana_symbol(m)] += 1
+      when /\Ac\/([wubrg])\z/
+        @mana_hash[normalize_mana_symbol(m)] += 1
       else
         raise "Unrecognized mana type: #{m}"
       end

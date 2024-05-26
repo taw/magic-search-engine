@@ -26,7 +26,7 @@ describe "cast: spec" do
 
   it "count colorless separately" do
     assert_search_results "mana>={c} cast:wubrg"
-    assert_search_equal "mana>={c} c=0 cast:c", "mana>={c} c=0"
+    assert_search_equal "mana>={c} c=0 cast:c", "mana>={c} c=0 or (Thief of Existence)"
   end
 
   it "treats Phyrexian as colorless" do
