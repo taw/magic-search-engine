@@ -26,7 +26,9 @@ describe "cast: spec" do
 
   it "count colorless separately" do
     assert_search_results "mana>={c} cast:wubrg"
-    assert_search_equal "mana>={c} c=0 cast:c", "mana>={c} c=0 or (Thief of Existence)"
+    # devoid MH3 cards with wild costs like 1GC mess this up
+    # so we use ci=0 not c=0 to exclude them
+    assert_search_equal "mana>={c} ci=0 cast:c", "mana>={c} ci=0"
   end
 
   it "treats Phyrexian as colorless" do
