@@ -29,6 +29,7 @@ class PatchSetTypes < Patch
         set_types << "modern"
       when "h2r"
         # mtgjson bug: it has it as expansion
+        main_set_type = "modern"
         set_types = ["promo", "modern"]
       when "cns", "cn2"
         set_types << "conspiracy" << "multiplayer"

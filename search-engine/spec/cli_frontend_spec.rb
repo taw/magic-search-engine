@@ -226,6 +226,7 @@ describe "CLI Frontend" do
         Ral Zarek
         Ral, Caller of Storms
         Ral, Izzet Viceroy
+        Ral, Leyline Prodigy
         Ral, Storm Conduit
         EOF
       error: <<-EOF

@@ -82,6 +82,8 @@ describe "Full Database Test" do
       "Agadeem's Awakening",
       "Blackbloom Bog",
       "Blackbloom Rogue",
+      "Boggart Bog",
+      "Boggart Trawler",
       "Pelakka Caverns",
       "Pelakka Predation"
   end
@@ -93,7 +95,8 @@ describe "Full Database Test" do
       "Snow-Covered Island",
       "Snow-Covered Plains",
       "Wastes",
-      "Barry's Land"
+      "Barry's Land",
+      "Snow-Covered Wastes"
   end
 
   it "year" do
