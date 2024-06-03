@@ -255,47 +255,173 @@ describe Deck do
     end
   end
 
-  let(:deck_export) do
-    <<~EOF
-    // NAME: Wrath of the Mortals - Journey into Nyx Event Deck
-    // URL: http://mtg.wtf/deck/jou/wrath-of-the-mortals
-    // DATE: 2014-05-23
-    1 Battlefield Thaumaturge
-    3 Young Pyromancer
-    3 Guttersnipe
-    1 Chandra's Phoenix
-    4 Spellheart Chimera
-    1 Ogre Battledriver
-    1 Oracle of Bones
-    1 Aetherling
-    1 Harness by Force
-    1 Mizzium Mortars
-    2 Flames of the Firebrand
-    2 Divination
-    1 Anger of the Gods
-    4 Lightning Strike
-    3 Magma Jet
-    2 Searing Blood
-    1 Steam Augury
-    1 Fated Conflagration
-    2 Turn // Burn
-    4 Izzet Guildgate
-    12 Mountain
-    9 Island
+  describe "#to_text" do
+    let(:deck_export_wrath_of_mortals) do
+      <<~EOF
+      // NAME: Wrath of the Mortals - Journey into Nyx Event Deck
+      // URL: http://mtg.wtf/deck/jou/wrath-of-the-mortals
+      // DATE: 2014-05-23
+      1 Battlefield Thaumaturge
+      3 Young Pyromancer
+      3 Guttersnipe
+      1 Chandra's Phoenix
+      4 Spellheart Chimera
+      1 Ogre Battledriver
+      1 Oracle of Bones
+      1 Aetherling
+      1 Harness by Force
+      1 Mizzium Mortars
+      2 Flames of the Firebrand
+      2 Divination
+      1 Anger of the Gods
+      4 Lightning Strike
+      3 Magma Jet
+      2 Searing Blood
+      1 Steam Augury
+      1 Fated Conflagration
+      2 Turn // Burn
+      4 Izzet Guildgate
+      12 Mountain
+      9 Island
 
-    Sideboard
-    2 Flames of the Firebrand
-    2 Elixir of Immortality
-    2 Dispel
-    3 Essence Scatter
-    3 Negate
-    3 Izzet Staticaster
-    EOF
-  end
+      Sideboard
+      2 Flames of the Firebrand
+      2 Elixir of Immortality
+      2 Dispel
+      3 Essence Scatter
+      3 Negate
+      3 Izzet Staticaster
+      EOF
+    end
 
-  it "#to_text" do
-    deck = db.sets["jou"].deck_named("Wrath of the Mortals")
-    deck.to_text.should eq(deck_export)
+    let(:deck_export_blast_from_the_past) do
+      <<~EOF
+      // NAME: Blast from the Past - Doctor Who Commander Deck
+      // URL: http://mtg.wtf/deck/who/blast-from-the-past
+      // DATE: 2023-10-13
+      COMMANDER: 1 The Fourth Doctor
+      COMMANDER: 1 Sarah Jane Smith
+      1 Romana II
+      1 Jo Grant
+      1 Tegan Jovanka
+      1 Barbara Wright
+      1 Ian Chesterton
+      1 Peri Brown
+      1 Crisis of Conscience
+      1 The Caves of Androzani
+      1 The War Games
+      1 Trial of a Time Lord
+      1 The Night of the Doctor
+      1 Traverse Eternity
+      1 K-9, Mark I
+      1 Adric, Mathematical Genius
+      1 Nyssa of Traken
+      1 Reverse the Polarity
+      1 Five Hundred Year Diary
+      1 An Unearthly Child
+      1 Leela, Sevateem Warrior
+      1 Ace, Fearless Rebel
+      1 Susan Foreman
+      1 The Five Doctors
+      1 Jamie McCrimmon
+      1 The Sea Devils
+      1 City of Death
+      1 Gallifrey Stands
+      1 Alistair, the Brigadier
+      1 The First Doctor
+      1 The Second Doctor
+      1 The Third Doctor
+      1 The Fifth Doctor
+      1 The Sixth Doctor
+      1 The Seventh Doctor
+      1 The Eighth Doctor
+      1 Vrestin, Menoptra Leader
+      1 Sergeant John Benton
+      1 The Curse of Fenric
+      1 Duggan, Private Detective
+      1 Bessie, the Doctor's Roadster
+      1 Ace's Baseball Bat
+      1 Gallifrey Council Chamber
+      1 Day of Destiny
+      1 Heroic Intervention
+      1 Time Wipe
+      1 Heroes' Podium
+      1 Trenzalore Clocktower
+      1 Twice Upon a Time // Unlikely Meeting
+      1 Port Town
+      1 Exotic Orchard
+      1 Temple of Enlightenment
+      1 Fortified Village
+      1 Prairie Stream
+      1 Canopy Vista
+      1 Sungrass Prairie
+      1 Temple of Plenty
+      1 Irrigated Farmland
+      1 Temple of Mystery
+      1 Vineglimmer Snarl
+      1 Scattered Groves
+      1 Celestial Colonnade
+      1 Deserted Beach
+      1 Glacial Fortress
+      1 Horizon Canopy
+      1 Overgrown Farmland
+      1 Waterlogged Grove
+      1 Dreamroot Cascade
+      1 Skycloud Expanse
+      1 Banish to Another Universe
+      1 Time Lord Regeneration
+      1 Displaced Dinosaurs
+      1 Sonic Screwdriver
+      1 TARDIS
+      1 Swords to Plowshares
+      1 Path to Exile
+      1 Return to Dust
+      1 Explore
+      1 Three Visits
+      1 Arcane Signet
+      1 Sol Ring
+      1 Talisman of Unity
+      1 Hero's Blade
+      1 Talisman of Progress
+      1 Thought Vessel
+      1 Mind Stone
+      1 Thriving Isle
+      1 Thriving Grove
+      1 Thriving Heath
+      1 Ash Barrens
+      1 Seaside Citadel
+      1 Command Tower
+      1 Path of Ancestry
+      2 Plains
+      2 Island
+      3 Forest
+
+      Planar Deck
+      1 The Pyramid of Mars
+      1 Caught in a Parallel Universe
+      1 Gardens of Tranquil Repose
+      1 Spectrox Mines
+      1 Coal Hill School
+      1 UNIT Headquarters
+      1 The Cheetah Planet
+      1 Antarctic Research Base
+      1 The Cave of Skulls
+      1 TARDIS Bay
+
+      Display Commander
+      1 The Fourth Doctor
+      EOF
+    end
+
+    it "works for normal decks" do
+      deck = db.sets["jou"].deck_named("Wrath of the Mortals")
+      deck.to_text.should eq(deck_export_wrath_of_mortals)
+    end
+
+    it "handles extra sections" do
+      deck = db.sets["who"].deck_named("Blast from the Past")
+      deck.to_text.should eq(deck_export_blast_from_the_past)
+    end
   end
 
   it "CardDatabase#decks_containing" do

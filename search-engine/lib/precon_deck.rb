@@ -41,11 +41,13 @@ class PreconDeck < Deck
     @cards.each do |count, card|
       output << "#{count} #{card}"
     end
-    unless @sideboard.empty?
-      output << ""
-      output << "Sideboard"
-      @sideboard.each do |count, card|
-        output << "#{count} #{card}"
+    ["Sideboard", "Planar Deck", "Display Commander", "Scheme Deck"].each do |section_name|
+      unless section(section_name).empty?
+        output << ""
+        output << section_name
+        section(section_name).each do |count, card|
+          output << "#{count} #{card}"
+        end
       end
     end
     output.join("\n") + "\n"
