@@ -15,6 +15,14 @@ class DeckController < ApplicationController
     render plain: @deck.to_text
   end
 
+  def download_with_printings
+    @set = $CardDatabase.sets[params[:set]] or return render_404
+    @deck = @set.decks.find{|d| d.slug == params[:id]} or return render_404
+
+    headers["Content-Disposition"] = %Q[attachment; filename="#{@deck.name}.txt"]
+    render plain: @deck.to_text_with_printings
+  end
+
   def show
     @set = $CardDatabase.sets[params[:set]] or return render_404
     @deck = @set.decks.find{|d| d.slug == params[:id]} or return render_404

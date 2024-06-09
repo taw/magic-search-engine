@@ -43,6 +43,10 @@ module ApplicationHelper
     link_to({controller: "deck", action: "download", set: deck.set_code, id: deck.slug}, *html_options, &blk)
   end
 
+  def download_with_printings_link_to_deck(deck, *html_options, &blk)
+    link_to({controller: "deck", action: "download_with_printings", set: deck.set_code, id: deck.slug}, *html_options, &blk)
+  end
+
   def link_to_artist(artist, &blk)
     link_to(controller: "artist", action: "show", id: artist.slug, &blk)
   end
