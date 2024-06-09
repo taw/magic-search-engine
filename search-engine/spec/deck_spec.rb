@@ -198,6 +198,8 @@ describe Deck do
         sets_found.should match_array ["c19", "oc19"]
       when "otc"
         sets_found.should match_array ["otc", "otj"]
+      when "m3c"
+        sets_found.should match_array ["m3c", "mh3"]
       else
         sets_found.should eq [set.code]
       end
