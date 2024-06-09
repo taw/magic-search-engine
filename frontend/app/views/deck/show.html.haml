@@ -4,6 +4,9 @@
     %button.btn.btn-outline-primary
       = download_link_to_deck(@deck, {download: true}) do
         Download
+    %button.btn.btn-outline-primary
+      = download_with_printings_link_to_deck(@deck, {download: true}) do
+        Download (with printings)
   - if @display
     .row
       .col-12
