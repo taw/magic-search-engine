@@ -276,10 +276,9 @@ class PatchMtgjsonVersions < Patch
         card["frame_effects"].delete("borderless")
       end
 
-      if card["name"] == "Aragorn, Hornburg Hero"
-        # It's incorrectly parsed
-        card["types"]  = ["Creature"]
-        card["subtypes"] = ["Human", "Soldier"]
+      # Some cmb1/cmb2 cards not updated yet
+      if card["types"].include?("Tribal")
+        card["types"] = card["types"].map{|t| t == "Tribal" ? "Kindred" : t}
       end
 
       # redundant with other fields, just predelete
