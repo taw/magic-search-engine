@@ -1,7 +1,7 @@
 = content_for(:disable_turbolinks) do
   true
 %h4 Magic: The Gathering Comprehensive Rules
-%p These rules are effective as of April 12, 2024.
+%p These rules are effective as of June 7, 2024.
 %h3{id: "section-introduction"} Introduction
 %p This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
 %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules.
@@ -108,7 +108,7 @@
   %li
     %a{href: '#section-307'} 307. Sorceries
   %li
-    %a{href: '#section-308'} 308. Tribals
+    %a{href: '#section-308'} 308. Kindreds
   %li
     %a{href: '#section-309'} 309. Dungeons
   %li
@@ -984,7 +984,7 @@
   .rule_text A nontoken permanent’s characteristics are the same as those printed on its card, as modified by any continuous effects. See rule <a href="#section-613">613</a>, “Interaction of Continuous Effects.”
 .rule{id: "section-110-4"}
   .rule_id 110.4.
-  .rule_text There are six permanent types: artifact, battle, creature, enchantment, land, and planeswalker. Instant and sorcery cards can’t enter the battlefield and thus can’t be permanents. Some tribal cards can enter the battlefield and some can’t, depending on their other card types. See section 3, “Card Types.”
+  .rule_text There are six permanent types: artifact, battle, creature, enchantment, land, and planeswalker. Instant and sorcery cards can’t enter the battlefield and thus can’t be permanents. Some kindred cards can enter the battlefield and some can’t, depending on their other card types. See section 3, “Card Types.”
 .rule{id: "section-110-4a"}
   .rule_id 110.4a
   .rule_text The term “permanent card” is used to refer to a card that could be put onto the battlefield. Specifically, it means an artifact, battle, creature, enchantment, land, or planeswalker card.
@@ -1103,10 +1103,14 @@
   .rule_text A Junk token is a colorless Junk artifact token with “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>, Sacrifice this artifact: Exile the top card of your library. You may play that card this turn. Activate only as a sorcery.”
 .rule{id: "section-111-11"}
   .rule_id 111.11.
-  .rule_text If an effect instructs a player to create a token that is a copy of a nonexistent object, no token is created (see rule <a href="#section-707">707</a>, “Copying Objects”). This does not apply to an effect that would use the last known information of an object.
-  .rule_text Example: Mimic Vat has a triggered ability whose effect gives you the option to exile a card and an activated ability that says “Create a token that’s a copy of a card exiled with Mimic Vat. It gains haste. Exile it at the beginning of the next end step.” If no card has been exiled with Mimic Vat’s triggered ability, no token is created.
+  .rule_text If an effect instructs a player to create a token by name, doesn’t define any other characteristics for that token, and the name is not one of the types in the list of predefined tokens above, that player uses the card with that name in the Oracle card reference to determine the characteristics of that token.
+  .rule_text Example: Disa the Restless has the ability “Whenever one or more creatures you control deal combat damage to a player, create a Tarmogoyf token.” As that ability resolves, its controller creates a token with the same characteristics as the card named Tarmogoyf, as determined by the Oracle card reference.
 .rule{id: "section-111-12"}
   .rule_id 111.12.
+  .rule_text If an effect instructs a player to create a token that is a copy of a nonexistent object, no token is created (see rule <a href="#section-707">707</a>, “Copying Objects”). This does not apply to an effect that would use the last known information of an object.
+  .rule_text Example: Mimic Vat has a triggered ability whose effect gives you the option to exile a card and an activated ability that says “Create a token that’s a copy of a card exiled with Mimic Vat. It gains haste. Exile it at the beginning of the next end step.” If no card has been exiled with Mimic Vat’s triggered ability, no token is created.
+.rule{id: "section-111-13"}
+  .rule_id 111.13.
   .rule_text A copy of a permanent spell becomes a token as it resolves. The token has the characteristics of the spell that became that token. The token is not “created” for the purposes of any replacement effects or triggered abilities that refer to creating a token.
 .rule{id: "section-112"}
   .rule_id 112.
@@ -1796,7 +1800,7 @@
   .rule_text A +X/+Y counter on a creature or on a creature card in a zone other than the battlefield, where X and Y are numbers, adds X to that object’s power and Y to that object’s toughness. Similarly, -X/-Y counters subtract from power and toughness. See rule <a href="#section-613-4c">613.4c</a>.
 .rule{id: "section-122-1b"}
   .rule_id 122.1b
-  .rule_text A keyword counter on a permanent or on a card in a zone other than the battlefield causes that object to gain that keyword. The keywords that a keyword counter can be are flying, first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, reach, shadow, trample, and vigilance, as well as any variants of those keywords. See rule <a href="#section-613-1f">613.1f</a>.
+  .rule_text A keyword counter on a permanent or on a card in a zone other than the battlefield causes that object to gain that keyword. The keywords that a keyword counter can be are flying, first strike, double strike, deathtouch, exalted, haste, hexproof, indestructible, lifelink, menace, reach, shadow, trample, and vigilance, as well as any variants of those keywords. See rule <a href="#section-613-1f">613.1f</a>.
 .rule{id: "section-122-1c"}
   .rule_id 122.1c
   .rule_text One or more shield counters on a permanent create a single replacement effect and a single prevention effect that protect the permanent. These effects are “If this permanent would be destroyed as the result of an effect, instead remove a shield counter from it” and “If damage would be dealt to this permanent, prevent that damage and remove a shield counter from it.” See rule <a href="#section-614">614</a>, “Replacement Effects,” and rule <a href="#section-615">615</a>, “Prevention Effects.”
@@ -2119,7 +2123,7 @@
   .rule_text Card Types
 .rule{id: "section-205-2a"}
   .rule_id 205.2a
-  .rule_text The card types are artifact, battle, conspiracy, creature, dungeon, enchantment, instant, land, phenomenon, plane, planeswalker, scheme, sorcery, tribal, and vanguard. See section 3, “Card Types.”
+  .rule_text The card types are artifact, battle, conspiracy, creature, dungeon, enchantment, instant, kindred, land, phenomenon, plane, planeswalker, scheme, sorcery, and vanguard. See section 3, “Card Types.”
 .rule{id: "section-205-2b"}
   .rule_id 205.2b
   .rule_text Some objects have more than one card type (for example, an artifact creature). Such objects satisfy the criteria for any effect that applies to any of their card types.
@@ -2167,7 +2171,7 @@
   .rule_text Instants and sorceries share their lists of subtypes; these subtypes are called spell types. The spell types are Adventure, Arcane, Lesson, and Trap.
 .rule{id: "section-205-3m"}
   .rule_id 205.3m
-  .rule_text Creatures and tribals share their lists of subtypes; these subtypes are called creature types. The creature types are Advisor, Aetherborn, Alien, Ally, Angel, Antelope, Ape, Archer, Archon, Armadillo, Army, Artificer, Assassin, Assembly-Worker, Astartes, Atog, Aurochs, Avatar, Azra, Badger, Balloon, Barbarian, Bard, Basilisk, Bat, Bear, Beast, Beaver, Beeble, Beholder, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Capybara, Caribou, Carrier, Cat, Centaur, Cephalid, Child, Chimera, Citizen, Cleric, Clown, Cockatrice, Construct, Coward, Coyote, Crab, Crocodile, C’tan, Custodes, Cyberman, Cyclops, Dalek, Dauthi, Demigod, Demon, Deserter, Detective, Devil, Dinosaur, Djinn, Doctor, Dog, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Employee, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gamer, Gargoyle, Germ, Giant, Gith, Gnoll, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Guest, Hag, Halfling, Hamster, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inkling, Inquisitor, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Llama, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mite, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mount, Mouse, Mutant, Myr, Mystic, Naga, Nautilus, Necron, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Performer, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Porcupine, Possum, Praetor, Primarch, Prism, Processor, Rabbit, Raccoon, Ranger, Rat, Rebel, Reflection, Rhino, Rigger, Robot, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scientist, Scion, Scorpion, Scout, Sculpture, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Slith, Sliver, Sloth, Slug, Snail, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Synth, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Tiefling, Time Lord, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Tyranid, Unicorn, Vampire, Varmint, Vedalken, Viashino, Volver, Wall, Walrus, Warlock, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
+  .rule_text Creatures and kindreds share their lists of subtypes; these subtypes are called creature types. One creature type is two words long: Time Lord. All other creature types are one word long: Advisor, Aetherborn, Alien, Ally, Angel, Antelope, Ape, Archer, Archon, Armadillo, Army, Artificer, Assassin, Assembly-Worker, Astartes, Atog, Aurochs, Avatar, Azra, Badger, Balloon, Barbarian, Bard, Basilisk, Bat, Bear, Beast, Beaver, Beeble, Beholder, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Capybara, Caribou, Carrier, Cat, Centaur, Child, Chimera, Citizen, Cleric, Clown, Cockatrice, Construct, Coward, Coyote, Crab, Crocodile, C’tan, Custodes, Cyberman, Cyclops, Dalek, Dauthi, Demigod, Demon, Deserter, Detective, Devil, Dinosaur, Djinn, Doctor, Dog, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Employee, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gamer, Gargoyle, Germ, Giant, Gith, Gnoll, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Guest, Hag, Halfling, Hamster, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inkling, Inquisitor, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Llama, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mite, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mount, Mouse, Mutant, Myr, Mystic, Nautilus, Necron, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Performer, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Porcupine, Possum, Praetor, Primarch, Prism, Processor, Rabbit, Raccoon, Ranger, Rat, Rebel, Reflection, Rhino, Rigger, Robot, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scientist, Scion, Scorpion, Scout, Sculpture, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Slith, Sliver, Sloth, Slug, Snail, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Synth, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Tiefling, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Tyranid, Unicorn, Vampire, Varmint, Vedalken, Volver, Wall, Walrus, Warlock, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
 .rule{id: "section-205-3n"}
   .rule_id 205.3n
   .rule_text Planes have their own unique set of subtypes; these subtypes are called planar types. The planar types are The Abyss, Alara, Alfava Metraxis, Amonkhet, Androzani Minor, Antausia, Apalapucia, Arcavios, Arkhos, Azgol, Belenon, Bolas’s Meditation Realm, Capenna, Cridhe, The Dalek Asylum, Darillium, Dominaria, Earth, Echoir, Eldraine, Equilor, Ergamon, Fabacin, Fiora, Gallifrey, Gargantikar, Gobakhan, Horsehead Nebula, Ikoria, Innistrad, Iquatana, Ir, Ixalan, Kaladesh, Kaldheim, Kamigawa, Kandoka, Karsus, Kephalai, Kinshala, Kolbahan, Kylem, Kyneth, The Library, Lorwyn, Luvion, Mars, Mercadia, Mirrodin, Moag, Mongseng, Moon, Muraganda, Necros, New Earth, New Phyrexia, Outside Mutter’s Spiral, Phyrexia, Pyrulea, Rabiah, Rath, Ravnica, Regatha, Segovia, Serra’s Realm, Shadowmoor, Shandalar, Shenmeng, Skaro, Spacecraft, Tarkir, Theros, Time, Trenzalore, Ulgrotha, Unknown Planet, Valla, Vryn, Wildfire, Xerex, Zendikar, and Zhalfir.
@@ -2363,7 +2367,7 @@
   .rule_text General
 .rule{id: "section-300-1"}
   .rule_id 300.1.
-  .rule_text The card types are artifact, battle, conspiracy, creature, dungeon, enchantment, instant, land, phenomenon, plane, planeswalker, scheme, sorcery, tribal, and vanguard.
+  .rule_text The card types are artifact, battle, conspiracy, creature, dungeon, enchantment, instant, kindred, land, phenomenon, plane, planeswalker, scheme, sorcery, and vanguard.
 .rule{id: "section-300-2"}
   .rule_id 300.2.
   .rule_text Some objects have more than one card type (for example, an artifact creature). Such objects combine the aspects of each of those card types, and are subject to spells and abilities that affect either or all of those card types.
@@ -2372,7 +2376,7 @@
   .rule_text An object that’s both a land and another card type (for example, an artifact land) can only be played as a land. It can’t be cast as a spell.
 .rule{id: "section-300-2b"}
   .rule_id 300.2b
-  .rule_text Each tribal card has another card type. Casting and resolving a tribal card follow the rules for casting and resolving a card of the other card type.
+  .rule_text Each kindred card has another card type. Casting and resolving a kindred card follow the rules for casting and resolving a card of the other card type.
 .rule{id: "section-301"}
   .rule_id 301.
   .rule_text Artifacts
@@ -2432,7 +2436,7 @@
   .rule_text When a creature spell resolves, its controller puts it onto the battlefield under their control.
 .rule{id: "section-302-3"}
   .rule_id 302.3.
-  .rule_text Creature subtypes are always a single word and are listed after a long dash: “Creature — Human Soldier,” “Artifact Creature — Golem,” and so on. Creature subtypes are also called creature types. Creatures may have multiple subtypes. See rule <a href="#section-205-3m">205.3m</a> for the complete list of creature types.
+  .rule_text Creature subtypes are usually a single word long and are listed after a long dash: “Creature — Human Soldier,” “Artifact Creature — Golem,” and so on. Creature subtypes are also called creature types. Creatures may have multiple subtypes. See rule <a href="#section-205-3m">205.3m</a> for the complete list of creature types.
   .rule_text Example: “Creature — Goblin Wizard” means the card is a creature with the subtypes Goblin and Wizard.
 .rule{id: "section-302-4"}
   .rule_id 302.4.
@@ -2638,13 +2642,16 @@
   .rule_text Similarly, if an effect checks to see if a spell was cast “any time a sorcery couldn’t have been cast,” it’s checking only whether the spell’s controller cast it without having priority, during a phase other than their main phase, or while another object was on the stack.
 .rule{id: "section-308"}
   .rule_id 308.
-  .rule_text Tribals
+  .rule_text Kindreds
 .rule{id: "section-308-1"}
   .rule_id 308.1.
-  .rule_text Each tribal card has another card type. Casting and resolving a tribal card follows the rules for casting and resolving a card of the other card type.
+  .rule_text Each kindred card has another card type. Casting and resolving a kindred card follows the rules for casting and resolving a card of the other card type.
 .rule{id: "section-308-2"}
   .rule_id 308.2.
-  .rule_text Tribal subtypes are always a single word and are listed after a long dash: “Tribal Enchantment — Merfolk.” The set of tribal subtypes is the same as the set of creature subtypes; these subtypes are called creature types. Tribals may have multiple subtypes. See rule <a href="#section-205-3m">205.3m</a> for the complete list of creature types.
+  .rule_text Kindred subtypes are usually a single word long and are listed after a long dash: “Kindred Enchantment — Merfolk.” The set of kindred subtypes is the same as the set of creature subtypes; these subtypes are called creature types. Kindreds may have multiple subtypes. See rule <a href="#section-205-3m">205.3m</a> for the complete list of creature types.
+.rule{id: "section-308-3"}
+  .rule_id 308.3.
+  .rule_text Some older kindred cards were printed with the “tribal” card type. Cards printed with that type have received errata in the Oracle card reference.
 .rule{id: "section-309"}
   .rule_id 309.
   .rule_text Dungeons
@@ -3783,7 +3790,7 @@
   .rule_text To activate an ability is to put it onto the stack and pay its costs, so that it will eventually resolve and have its effect. Only an object’s controller (or its owner, if it doesn’t have a controller) can activate its activated ability unless the object specifically says otherwise. Activating an ability follows the steps listed below, in order. If, at any point during the activation of an ability, a player is unable to comply with any of those steps, the activation is illegal; the game returns to the moment before that ability started to be activated (see rule <a href="#section-730">730</a>, “Handling Illegal Actions”). Announcements and payments can’t be altered after they’ve been made.
 .rule{id: "section-602-2a"}
   .rule_id 602.2a
-  .rule_text The player announces that they are activating the ability. If an activated ability is being activated from a hidden zone, the card that has that ability is revealed. That ability is created on the stack as an object that’s not a card. It becomes the topmost object on the stack. It has the text of the ability that created it, and no other characteristics. Its controller is the player who activated the ability. The ability remains on the stack until it’s countered, it resolves, or an effect moves it elsewhere.
+  .rule_text The player announces that they are activating the ability. If an activated ability is being activated from a hidden zone, the card that has that ability is revealed (see rule <a href="#section-701-16a">701.16a</a>). That ability is created on the stack as an object that’s not a card. It becomes the topmost object on the stack. It has the text of the ability that created it, and no other characteristics. Its controller is the player who activated the ability. The ability remains on the stack until it’s countered, it resolves, or an effect moves it elsewhere.
 .rule{id: "section-602-2b"}
   .rule_id 602.2b
   .rule_text The remainder of the process for activating an ability is identical to the process for casting a spell listed in rules <a href="#section-601-2b">601.2b</a>–i. Those rules apply to activating an ability just as they apply to casting a spell. An activated ability’s analog to a spell’s mana cost (as referenced in rule <a href="#section-601-2f">601.2f</a>) is its activation cost.
@@ -5041,7 +5048,7 @@
   .rule_text Reveal
 .rule{id: "section-701-16a"}
   .rule_id 701.16a
-  .rule_text To reveal a card, show that card to all players for a brief time. If an effect causes a card to be revealed, it remains revealed for as long as necessary to complete the parts of the effect that card is relevant to. If the cost to cast a spell or activate an ability includes revealing a card, the card remains revealed from the time the spell or ability is announced until the time it leaves the stack. If revealing a card causes a triggered ability to trigger, the card remains revealed until that triggered ability leaves the stack. If that ability isn’t put onto the stack the next time a player would receive priority, the card ceases to be revealed.
+  .rule_text To reveal a card, show that card to all players for a brief time. If an effect causes a card to be revealed, it remains revealed for as long as necessary to complete the parts of the effect that card is relevant to. If the cost to cast a spell or activate an ability includes revealing a card, or if a card is revealed because an ability is activated from a hidden zone (see rule <a href="#section-602-2a">602.2a</a>), the card remains revealed from the time the spell or ability is announced until the time it leaves the stack. If revealing a card causes a triggered ability to trigger, the card remains revealed until that triggered ability leaves the stack. If that ability isn’t put onto the stack the next time a player would receive priority, the card ceases to be revealed.
 .rule{id: "section-701-16b"}
   .rule_id 701.16b
   .rule_text Revealing a card doesn’t cause it to leave the zone it’s in.
@@ -5788,9 +5795,12 @@
   .rule_text Any effect that causes an object to lose hexproof will cause an object to lose all “hexproof from [quality]” abilities. Any effect that allows a player to choose a creature with hexproof as a target as though it didn’t have hexproof will allow a player to choose a creature with a “hexproof from [quality]” ability. Any effect that looks for a card with hexproof will find a card with a “hexproof from [quality]” ability.
 .rule{id: "section-702-11f"}
   .rule_id 702.11f
-  .rule_text “Hexproof from [quality A] and from [quality B]” is shorthand for “hexproof from [quality A]” and “hexproof from [quality B]”; it behaves as two separate hexproof abilities. If an effect causes an object with such an ability to lose hexproof from [quality A], for example, that object would still have hexproof from [quality B].
+  .rule_text “Hexproof from [quality A] and from [quality B]” is shorthand for “hexproof from [quality A]” and “hexproof from [quality B]”; it behaves as two separate hexproof abilities.
 .rule{id: "section-702-11g"}
   .rule_id 702.11g
+  .rule_text “Hexproof from each [characteristic]” is shorthand for “hexproof from [quality A],” “hexproof from [quality B],” and so on for each possible quality the listed characteristic could have; it behaves as multiple separate hexproof abilities.
+.rule{id: "section-702-11h"}
+  .rule_id 702.11h
   .rule_text Multiple instances of the same hexproof ability on the same permanent or player are redundant.
 .rule{id: "section-702-12"}
   .rule_id 702.12.
@@ -5880,10 +5890,10 @@
   .rule_text Attacking creatures with protection can’t be blocked by creatures that have the stated quality.
 .rule{id: "section-702-16g"}
   .rule_id 702.16g
-  .rule_text “Protection from [quality A] and from [quality B]” is shorthand for “protection from [quality A]” and “protection from [quality B]”; it behaves as two separate protection abilities. If an effect causes an object with such an ability to lose protection from [quality A], for example, that object would still have protection from [quality B].
+  .rule_text “Protection from [quality A] and from [quality B]” is shorthand for “protection from [quality A]” and “protection from [quality B]”; it behaves as two separate protection abilities.
 .rule{id: "section-702-16h"}
   .rule_id 702.16h
-  .rule_text “Protection from all [characteristic]” is shorthand for “protection from [quality A],” “protection from [quality B],” and so on for each possible quality the listed characteristic could have; it behaves as multiple separate protection abilities. If an effect causes an object with such an ability to lose protection from [quality A], for example, that object would still have protection from [quality B], [quality C], and so on.
+  .rule_text “Protection from each [characteristic]” is shorthand for “protection from [quality A],” “protection from [quality B],” and so on for each possible quality the listed characteristic could have; it behaves as multiple separate protection abilities.
 .rule{id: "section-702-16i"}
   .rule_id 702.16i
   .rule_text “Protection from each [set of characteristics, qualities, or players]” is shorthand for “protection from [A],” “protection from [B],” and so on for each characteristic, quality, or player in the set. It behaves as multiple separate protection abilities.
@@ -6684,7 +6694,7 @@
   .rule_text Retrace
 .rule{id: "section-702-81a"}
   .rule_id 702.81a
-  .rule_text Retrace appears on some instants and sorceries. It represents a static ability that functions while the card with retrace is in a player’s graveyard. “Retrace” means “You may cast this card from your graveyard by discarding a land card as an additional cost to cast it.” Casting a spell using its retrace ability follows the rules for paying additional costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
+  .rule_text Retrace is a static ability that functions while the card with retrace is in a player’s graveyard. “Retrace” means “You may cast this card from your graveyard by discarding a land card as an additional cost to cast it.” Casting a spell using its retrace ability follows the rules for paying additional costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
 .rule{id: "section-702-82"}
   .rule_id 702.82.
   .rule_text Devour
@@ -6759,10 +6769,13 @@
   .rule_text Multiple instances of rebound on the same spell are redundant.
 .rule{id: "section-702-89"}
   .rule_id 702.89.
-  .rule_text Totem Armor
+  .rule_text Umbra Armor
 .rule{id: "section-702-89a"}
   .rule_id 702.89a
-  .rule_text Totem armor is a static ability that appears on some Auras. “Totem armor” means “If enchanted permanent would be destroyed, instead remove all damage marked on it and destroy this Aura.”
+  .rule_text Umbra armor is a static ability that appears on some Auras. “Umbra armor” means “If enchanted permanent would be destroyed, instead remove all damage marked on it and destroy this Aura.”
+.rule{id: "section-702-89b"}
+  .rule_id 702.89b
+  .rule_text Some older cards were printed with the ability “totem armor” or referenced that ability. The text of these cards has been updated in the Oracle card reference to refer to umbra armor instead.
 .rule{id: "section-702-90"}
   .rule_id 702.90.
   .rule_text Infect
@@ -7085,7 +7098,10 @@
   .rule_text Emerge represents two static abilities that function while the spell with emerge is on the stack. “Emerge [cost]” means “You may cast this spell by paying [cost] and sacrificing a creature rather than paying its mana cost” and “If you chose to pay this spell’s emerge cost, its total cost is reduced by an amount of generic mana equal to the sacrificed creature’s mana value.” Casting a spell using its emerge ability follows the rules for paying alternative costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
 .rule{id: "section-702-119b"}
   .rule_id 702.119b
-  .rule_text You choose which creature to sacrifice as you choose to pay a spell’s emerge cost (see rule <a href="#section-601-2b">601.2b</a>), and you sacrifice that creature as you pay the total cost (see rule <a href="#section-601-2h">601.2h</a>).
+  .rule_text Emerge from [quality] is a variant of emerge. “Emerge from [quality] [cost]” means “You may cast this spell by paying [cost] and sacrificing a [quality] permanent rather than paying its mana cost” and “If you pay this spell’s emerge cost, its total cost is reduced by an amount of generic mana equal to the sacrificed permanent’s mana value.”
+.rule{id: "section-702-119c"}
+  .rule_id 702.119c
+  .rule_text You choose which permanent to sacrifice as you choose to pay a spell’s emerge cost (see rule <a href="#section-601-2b">601.2b</a>), and you sacrifice that permanent as you pay the total cost (see rule <a href="#section-601-2h">601.2h</a>).
 .rule{id: "section-702-120"}
   .rule_id 702.120.
   .rule_text Escalate
@@ -7433,7 +7449,7 @@
   .rule_text If a creature has multiple instances of training, each triggers separately.
 .rule{id: "section-702-149c"}
   .rule_id 702.149c
-  .rule_text Some creatures with training have abilities that trigger when they train. “When this creature trains” means “When a resolving training ability puts a +1/+1 counter on this creature.”
+  .rule_text Some creatures with training have abilities that trigger when they train. “When this creature trains” means “When a resolving training ability puts one or more +1/+1 counters on this creature.”
 .rule{id: "section-702-150"}
   .rule_id 702.150.
   .rule_text Compleated
@@ -10384,7 +10400,7 @@
   .glossary_definition A card type. A creature is a permanent. See rule <a href="#section-302">302</a>, “Creatures.”
 .glossary_entry
   .glossary_term Creature Type
-  .glossary_definition A subtype that’s correlated to the creature card type and the tribal card type. See rule <a href="#section-302">302</a>, “Creatures,” and rule <a href="#section-308">308</a>, “Tribals.” See rule <a href="#section-205-3m">205.3m</a> for the list of creature types.
+  .glossary_definition A subtype that’s correlated to the creature card type and the kindred card type. See rule <a href="#section-302">302</a>, “Creatures,” and rule <a href="#section-308">308</a>, “Kindreds.” See rule <a href="#section-205-3m">205.3m</a> for the list of creature types.
 .glossary_entry
   .glossary_term Crew
   .glossary_definition A keyword ability that lets you tap creatures to turn a Vehicle into an artifact creature. See rule <a href="#section-301">301</a>, “Artifacts,” and rule <a href="#section-702-122">702.122</a>, “Crew.”
@@ -10928,6 +10944,9 @@
 .glossary_entry
   .glossary_term Kicker, Kicked
   .glossary_definition Kicker is a keyword ability that represents an optional additional cost. A spell has been kicked if its controller declared the intention to pay any or all of its kicker costs. See rule <a href="#section-702-33">702.33</a>, “Kicker.”
+.glossary_entry
+  .glossary_term Kindred
+  .glossary_definition A card type. Whether or not a kindred is a permanent depends on its other card type. See rule <a href="#section-308">308</a>, “Kindreds.”
 .glossary_entry
   .glossary_term Land
   .glossary_definition A card type. A land is a permanent. See rule <a href="#section-305">305</a>, “Lands.”
@@ -11796,8 +11815,8 @@
   .glossary_term Total Cost
   .glossary_definition What a player actually has to pay, in practical terms, to cast a spell or activated ability: the mana cost, activation cost, or alternative cost, plus all cost increases (including additional costs) and minus all cost reductions. See rule <a href="#section-601-2f">601.2f</a>.
 .glossary_entry
-  .glossary_term Totem Armor
-  .glossary_definition A keyword ability that allows an Aura to protect the permanent it’s enchanting. See rule <a href="#section-702-89">702.89</a>, “Totem Armor.”
+  .glossary_term Totem Armor (Obsolete)
+  .glossary_definition An obsolete keyword ability that has been renamed. See rule <a href="#section-702-89">702.89</a>, “Umbra Armor.”
 .glossary_entry
   .glossary_term Toughness
   .glossary_definition 1. Part of a card that only creature cards have. A creature card’s toughness is printed after the slash in its lower right corner. See rule <a href="#section-208">208</a>, “Power/Toughness.” 2. A characteristic that only creatures have. See rule <a href="#section-302-4">302.4</a>.
@@ -11838,8 +11857,8 @@
   .glossary_term Treasure Token
   .glossary_definition A Treasure token is a colorless artifact token with “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>, Sacrifice this artifact: Add one mana of any color.” For more information about predefined tokens, see rule <a href="#section-111-10">111.10</a>.
 .glossary_entry
-  .glossary_term Tribal
-  .glossary_definition A card type. Whether or not a tribal is a permanent depends on its other card type. See rule <a href="#section-308">308</a>, “Tribals.”
+  .glossary_term Tribal (Obsolete)
+  .glossary_definition An obsolete card type that has been renamed. See rule <a href="#section-308">308</a>, “Kindreds.”
 .glossary_entry
   .glossary_term Tribute
   .glossary_definition A keyword ability that allows an opponent to choose between a creature entering the battlefield with +1/+1 counters or an additional ability. See rule <a href="#section-702-104">702.104</a>, “Tribute.”
@@ -11879,6 +11898,9 @@
 .glossary_entry
   .glossary_term Typecycling
   .glossary_definition A variant of the cycling ability. See rule <a href="#section-702-29">702.29</a>, “Cycling.”
+.glossary_entry
+  .glossary_term Umbra Armor
+  .glossary_definition A keyword ability that allows an Aura to protect the permanent it’s enchanting. See rule <a href="#section-702-89">702.89</a>, “Umbra Armor.”
 .glossary_entry
   .glossary_term Unattach
   .glossary_definition To move an Equipment away from the creature it’s attached to so that the Equipment is on the battlefield but is not equipping anything. See rule <a href="#section-701-3d">701.3d</a>.
@@ -11994,10 +12016,10 @@
   .glossary_term Zone-Change Triggers
   .glossary_definition Trigger events that involve objects changing zones. See rule <a href="#section-603-6">603.6</a>.
 %h3{id: "section-credits"} Credits
-%p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cátinò, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (principal), Matt Tabak (principal), Gregg Luben, Nat Moes, Samantha Phelan, Michael Zhang, and Hans Ziegler Magic Rules Management: Jess Dunks, Eric Levine, and Eliana Rabinowitz
+%p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cátinò, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (principal), Matt Tabak (principal), Nat Moes, Samantha Phelan, Michael Zhang, and Hans Ziegler Magic Rules Management: Jess Dunks, Eric Levine, and Eliana Rabinowitz
 %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cátinò, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
 %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-%p These rules are effective as of April 12, 2024.
+%p These rules are effective as of June 7, 2024.
 %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unfinity, Dominaria, Ikoria, Kaldheim, Baldur’s Gate, The Brothers’ War, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2024 Wizards. U.S. Pat. No. RE 37,957.
 %p Astartes, C’tan, Custodes, Necron, Primarch, and Tyranid ® &amp; © Games Workshop Limited 2022. All Rights Reserved.
 %p © 2023 Middle-earth Enterprises. Tales of Middle-earth and The Lord of the Rings and the names of the characters, events, items and places therein, are trademarks of Middle-earth Enterprises, LLC used under license by Wizards of the Coast LLC. All rights reserved.
