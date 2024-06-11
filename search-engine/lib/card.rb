@@ -405,6 +405,25 @@ class Card
     "Hunters for Hire",
     "One for My Baby",
     "Wild Card",
+    # Baldur's Gate Wilderness Dungeon Rooms
+    "Ansur's Sanctum",
+    "Auntie's Teahouse",
+    "Balthazar's Lab",
+    "Circus of the Last Days",
+    # "Crash Landing", # also in PIP
+    "Defiled Temple",
+    "Ebonlake Grotto",
+    "Emerald Grove",
+    "Gauntlet of Shar",
+    "Goblin Camp",
+    "Grymforge",
+    "Last Light Inn",
+    "Moonrise Towers",
+    "Mountain Pass",
+    "Reithwin Tollhouse",
+    "Steel Watch Foundry",
+    "Temple of Bhaal",
+    "Undercity Ruins",
   ].sort
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 

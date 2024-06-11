@@ -24,7 +24,8 @@ class PatchTokens < Patch
   def add_tclb
     clb = @sets.find{|s| s["official_code"] == "CLB" }
     tclb = add_tokens_set(clb)
-    dungeons = clb["tokens"].select{|t| t["types"].include?("Dungeon")}
+    bgw = clb["tokens"].select{|t| t["types"].include?("Dungeon") and t["name"] == "Baldur's Gate Wilderness"}
+    dungeons = clb["tokens"].select{|t| t["types"].include?("Dungeon") and t["name"] != "Baldur's Gate Wilderness"}
     initiative = clb["tokens"].select{|t| t["name"] =~ /The Initiative/ and !t["types"].include?("Dungeon")}
 
     # We need to un-DFC it
@@ -35,6 +36,13 @@ class PatchTokens < Patch
       token["name"] = token.delete("faceName")
       token["number"] += "b"
       token.delete("artist")
+      add_token token
+    end
+
+    bgw.each do |token|
+      token["set"] = tclb
+      token["rarity"] = "common"
+      token["layout"] = "dungeon"
       add_token token
     end
 
