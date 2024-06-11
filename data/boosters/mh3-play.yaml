@@ -1,3 +1,4 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-modern-horizons-3
 pack:
 - land_slot:
   - land: 1
@@ -21,7 +22,7 @@ sheets:
   common:
     query: "r:c"
   land:
-    rawquery: "e:mh3 number:304-319"
+    rawquery: "e:mh3 number:304-319 -number:309"
   foil_land:
     foil: true
     rawquery: "e:mh3 number:304-319"
