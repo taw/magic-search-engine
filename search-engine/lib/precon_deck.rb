@@ -29,10 +29,14 @@ class PreconDeck < Deck
     @set.name
   end
 
+  def canonical_url
+    "http://mtg.wtf/deck/#{set.code}/#{slug}"
+  end
+
   def to_text
     output = []
     output << "// NAME: #{@name} - #{@set.name} #{@type}"
-    output << "// URL: http://mtg.wtf/deck/#{set.code}/#{slug}"
+    output << "// URL: #{canonical_url}"
     output << "// DISPLAY: #{@display}" if @display
     output << "// DATE: #{@release_date}" if @release_date
     @commander.each do |count, card|
@@ -47,6 +51,38 @@ class PreconDeck < Deck
         output << section_name
         section(section_name).each do |count, card|
           output << "#{count} #{card}"
+        end
+      end
+    end
+    output.join("\n") + "\n"
+  end
+
+  def card_details(card)
+    [
+      "#{card}",
+      " [#{card.set_code.upcase}:#{card.number}]",
+      card.foil ? " [foil]" : "",
+    ].join
+  end
+
+  def to_text_with_printings
+    output = []
+    output << "// NAME: #{@name} - #{@set.name} #{@type}"
+    output << "// URL: #{canonical_url}"
+    output << "// DISPLAY: #{@display}" if @display
+    output << "// DATE: #{@release_date}" if @release_date
+    @commander.each do |count, card|
+      output << "COMMANDER: #{count} #{card_details(card)}"
+    end
+    @cards.each do |count, card|
+      output << "#{count} #{card_details(card)}"
+    end
+    ["Sideboard", "Planar Deck", "Display Commander", "Scheme Deck"].each do |section_name|
+      unless section(section_name).empty?
+        output << ""
+        output << section_name
+        section(section_name).each do |count, card|
+          output << "#{count} #{card_details(card)}"
         end
       end
     end
