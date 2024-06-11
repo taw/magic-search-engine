@@ -1,0 +1,187 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-modern-horizons-3
+pack:
+- land_slot:
+  - land: 1
+    chance: 3
+  - foil_land: 1
+    chance: 2
+  - common: 1
+    chance: 5
+  spg_slot:
+  - common: 1
+    chance: 9
+  - special_guest: 1
+    chance: 1
+  common: 5
+  new_uncommon: 3
+  new_rare_mythic: 1
+  reprint: 1
+  wildcard: 1
+  foil_with_showcase: 1
+sheets:
+  common:
+    query: "r:c"
+  land:
+    rawquery: "e:mh3 number:304-319 -number:309"
+  foil_land:
+    foil: true
+    rawquery: "e:mh3 number:304-319"
+  new_uncommon:
+    query: "r:u -is:reprint -(Snow-Covered Wastes)"
+  new_rare_mythic:
+    any:
+    - rawquery: "e:mh3 (number:320-446a) r:r -is:reprint alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+      count: 36
+      rate: 2
+    - rawquery: "e:mh3 r:r -is:reprint (((e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+      count: 18
+      rate: 4
+    - query: "r:r alt:(number:320-446a) -is:reprint -is:foilonly"
+      count: 36
+      rate: 8
+    - query: "r:r -alt:(number:320-446a) -is:reprint -is:foilonly"
+      count: 19
+      rate: 12
+    - rawquery: "e:mh3 (number:320-446a) r:m -is:reprint alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+      count: 12
+      rate: 1
+    - rawquery: "e:mh3 r:m -is:reprint (((e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+      count: 13
+      rate: 2
+    - query: "r:m alt:(e:mh3 number:320-446a) -is:reprint -is:foilonly"
+      count: 19
+      rate: 4
+    - query: "r:m -alt:(e:mh3 number:320-446a) -is:reprint -is:foilonly"
+      count: 1
+      rate: 6
+  reprint: 
+    any:
+    - chance: 750
+      any:
+      - rate: 1
+        rawquery: "e:mh3 r:u number:384-441 is:reprint"
+      - rate: 2
+        query: "r:u alt:(e:mh3 number:384-441) is:reprint"
+      - rate: 3
+        query: "r:u is:reprint -alt:(e:mh3 number:384-441)"
+    - chance: 213
+      any:
+      - rawquery: "e:mh3 (number:320-446a) r:r is:reprint alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+        count: 10
+        rate: 1
+      - rawquery: "e:mh3 r:r is:reprint (((e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+        count: 10
+        rate: 2
+      - query: "r:r alt:(e:mh3 number:320-446a) is:reprint -is:foilonly"
+        count: 15
+        rate: 4
+      - query: "r:r -alt:(e:mh3 number:320-446a) is:reprint -is:foilonly"
+        count: 8
+        rate: 6
+    - chance: 23
+      any:
+      - rawquery: "e:mh3 (number:320-446a) r:m is:reprint alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+        count: 2
+        rate: 1
+      - rawquery: "e:mh3 r:m is:reprint (((e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+        count: 3
+        rate: 2
+      - query: "r:m alt:(e:mh3 number:320-446a) is:reprint -is:foilonly"
+        count: 4
+        rate: 4
+  wildcard:
+    any:
+    - any:
+      - query: "r:c -alt:(number:384-441) -is:reprint"
+        rate: 3
+      - query: "r:c alt:(number:384-441) -is:reprint"
+        rate: 2
+      - rawquery: "e:mh3 r:c (number:384-441)"
+        rate: 1
+      - rawquery: "e:mh3 number:309"
+        rate: 3
+      chance: 700
+    - any:
+      - query: "r:u -alt:(number:384-441) -is:reprint"
+        rate: 3
+      - query: "r:u alt:(number:384-441) -is:reprint"
+        rate: 2
+      - rawquery: "e:mh3 r:u (number:384-441)"
+        rate: 1
+      chance: 175
+    - any:
+      - rawquery: "e:mh3 (number:320-446a) r:r -is:reprint alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+        count: 36
+        rate: 2
+      - rawquery: "e:mh3 r:r -is:reprint (((e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+        count: 18
+        rate: 4
+      - query: "r:r alt:(number:320-446a) -is:reprint -is:foilonly"
+        count: 36
+        rate: 8
+      - query: "r:r -alt:(number:320-446a) -is:reprint -is:foilonly"
+        count: 19
+        rate: 12
+      - rawquery: "e:mh3 (number:320-446a) r:m -is:reprint alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+        count: 12
+        rate: 1
+      - rawquery: "e:mh3 r:m -is:reprint (((e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+        count: 13
+        rate: 2
+      - rawquery: "e:m3c number:9-16"
+        rate: 2
+      - query: "r:m alt:(e:mh3 number:320-446a) -is:reprint -is:foilonly"
+        count: 19
+        rate: 4
+      - rawquery: "e:m3c number:1-8"
+        rate: 4
+      - query: "r:m -alt:(e:mh3 number:320-446a) -is:reprint -is:foilonly"
+        count: 1
+        rate: 6
+      chance: 125
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - query: "r:c -alt:(number:384-441)"
+        rate: 3
+      - query: "r:c alt:(number:384-441)"
+        rate: 2
+      - rawquery: "e:mh3 r:c (number:384-441)"
+        rate: 1
+      - rawquery: "e:mh3 number:309"
+        rate: 3
+      chance: 700
+    - any:
+      - query: "r:u -alt:(number:384-441)"
+        rate: 3
+      - query: "r:u alt:(number:384-441)"
+        rate: 2
+      - rawquery: "e:mh3 r:u (number:384-441)"
+        rate: 1
+      chance: 175
+    - any:
+      - rawquery: "e:mh3 (number:320-446a) r:r alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+        rate: 2
+      - rawquery: "e:mh3 r:r (((e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+        rate: 4
+      - query: "r:r alt:(number:320-446a) -is:foilonly"
+        rate: 8
+      - query: "r:r -alt:(number:320-446a) -is:foilonly"
+        rate: 12
+      - rawquery: "e:mh3 (number:320-446a) r:m alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+        rate: 1
+      - rawquery: "e:mh3 r:m (((e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+        rate: 2
+      - rawquery: "e:m3c number:9-16"
+        rate: 2
+      - query: "r:m alt:(e:mh3 number:320-446a) -is:foilonly"
+        rate: 4
+      - rawquery: "e:m3c number:1-8"
+        rate: 4
+      - query: "r:m -alt:(e:mh3 number:320-446a) -is:foilonly"
+        rate: 6
+      chance: 125
+  special_guest:
+    set: spg
+    code: "MHTHREE"
