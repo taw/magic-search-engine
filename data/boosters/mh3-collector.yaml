@@ -1,0 +1,123 @@
+# data from https://magic.wizards.com/en/news/feature/collecting-modern-horizons-3
+pack:
+- foil_common: 4
+  foil_uncommon: 3
+  eldrazi_land: 1
+  retro_cu: 1
+  foil_retro_cu: 1
+  foil_rare_mythic: 1
+  showcase_commander_slot:
+  - showcase_commander: 1
+    chance: 238
+  - showcase_commander_foil: 1
+    chance: 23
+  showcase_rm: 2
+  foil_showcase_rm: 1
+sheets:
+  eldrazi_land:
+    rawquery: "e:mh3 number:304-308"
+  retro_cu:
+    any:
+    - rawquery: "e:mh3 r:u number:384-441"
+      rate: 1
+    - rawquery: "e:mh3 r:c number:384-441"
+      rate: 2
+    - rawquery: "e:mh3 number:309"
+      rate: 1
+    - rawquery: "e:h2r r:u"
+      rate: 1
+    - rawquery: "e:h2r r:c"
+      rate: 2
+  foil_retro_cu:
+    foil: true
+    use: retro_cu
+  foil_rare_mythic:
+    foil: true
+    any:
+    - query: "r:r"
+      rate: 2
+      count: 60 + 18
+    - query: "r:m"
+      rate: 1
+      count: 15 + 5 + 4
+  showcase_commander:
+    any:
+    - rawquery: "e:m3c number:9-16"
+      rate: 1
+      count: 8
+      # nonfoil borderless mythic 6.1% 8
+    - rawquery: "e:m3c number:25-31"
+      rate: 1
+      count: 7
+      # nonfoil extended mythic 5.3% 7
+    - rawquery: "e:m3c r:r (frame:extendedart or number<152 deck:'eldrazi incursion')"
+      rate: 2
+      count: 52
+      # nonfoil extended rare 78.9% 52
+  showcase_commander_foil:
+    foil: true
+    rawquery: "e:m3c number:9-31"
+    count: 23
+    # foil etched 3.3% 8
+    # foil borderless 3.5% 8
+    # foil extended 3% 7
+  showcase_rm:
+    any:
+    - # two versions mythic
+      rawquery: "e:mh3 number:320-467 r:m alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:384-441))) -is:foilonly"
+      rate: 3
+    - # one version mythic
+      rawquery: "e:mh3 r:m (((e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) (e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) (e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) (e:mh3 number:447-467))) -is:foilonly"
+      rate: 6
+    - # three versions rare
+      rawquery: "e:mh3 number:320-467 r:r alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380) alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467))) -is:foilonly"
+      rate: 4
+    - # two versions rare
+      rawquery: "e:mh3 number:320-467 r:r alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467))) -is:foilonly"
+      rate: 6
+    - # one version rare
+      rawquery: "e:mh3 r:r (((e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) (e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) (e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) (e:mh3 number:447-467))) -is:foilonly"
+      rate: 12
+    - rawquery: "e:h2r r:m"
+      rate: 6
+    - rawquery: "e:h2r r:r"
+      rate: 12
+  foil_showcase_rm:
+    foil: true
+    any:
+    - chance: 999
+      any:
+      - # two versions mythic
+        rawquery: "e:mh3 number:320-467 r:m alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:384-441))) -is:foilonly"
+        rate: 3
+      - # one version mythic
+        rawquery: "e:mh3 r:m (((e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) (e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) (e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) (e:mh3 number:447-467))) -is:foilonly"
+        rate: 6
+      - # three versions rare
+        rawquery: "e:mh3 number:320-467 r:r alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380) alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467))) -is:foilonly"
+        rate: 4
+      - # two versions rare
+        rawquery: "e:mh3 number:320-467 r:r alt:((alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467))) -is:foilonly"
+        rate: 6
+      - # one version rare
+        rawquery: "e:mh3 r:r (((e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) (e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) (e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361 or e:mh3 number:381-383 or e:mh3 number:442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) (e:mh3 number:447-467))) -is:foilonly"
+        rate: 12
+      - rawquery: "e:h2r r:m"
+        rate: 6
+      - rawquery: "e:h2r r:r"
+        rate: 12
+      - rawquery: "e:mh3 is:etched r:r"
+        rate: 6
+      - rawquery: "e:mh3 is:etched r:m"
+        rate: 3
+      - set: spg
+        code: "MHTHREE"
+        rate: 3
+      - set: spg
+        code: "MHTHREECOLLECTOR"
+        rate: 3
+      - rawquery: "e:mh3 number:468-472"
+        rate: 3
+    - chance: 1
+      rawquery: "e:mh3 number:381-383 number:/z/"
+      count: 3
