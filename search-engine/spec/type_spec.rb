@@ -50,4 +50,8 @@ describe "Type expr" do
       "Wastes",
       "Wooded Ridgeline"
   end
+
+  it "Kindred and Tribal" do
+    assert_search_equal "t:tribal", "t:kindred"
+  end
 end

@@ -12,6 +12,7 @@ class ConditionTypes < ConditionSimple
       .gsub("new phyrexia", "new-phyrexia")
       .gsub("serra realm", "serra-realm")
       .gsub("bolas meditation realm", "bolas-meditation-realm")
+      .gsub("tribal", "kindred")
     @types = types.split.uniq.sort
     if @types.include?("*")
       @match_all = true
