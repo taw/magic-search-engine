@@ -3,6 +3,7 @@ describe "Tokens" do
 
   it "is:token" do
     assert_search_results "is:token",
+      "Baldur's Gate Wilderness",
       "Dungeon of the Mad Mage",
       "Lost Mine of Phandelver",
       "The Initiative",
