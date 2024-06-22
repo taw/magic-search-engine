@@ -28,6 +28,7 @@ describe "DissentionTest" do
       "Rat Colony",
       "Relentless Rats",
       "Shadowborn Apostle",
-      "Slime Against Humanity"
+      "Slime Against Humanity",
+      "Templar Knight"
   end
 end

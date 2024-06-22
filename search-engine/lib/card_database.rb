@@ -47,8 +47,8 @@ class String
       .gsub("Œ", "Oe")
       .gsub("œ", "oe")
       .tr(
-        "ÀÁÂÄẤàáâäãấĆČćčÈËÊÉèéêëǵÍÏĪíïīŁłÑñńÓÖØõöóøÛÜÚúûüŠšŻż’\u2212",
-        "AAAAAaaaaaaCCccEEEEeeeegIIIiiiLlNnnOOOooooUUUuuuSsZz'-")
+        "ÀÁÂÄẤàáâäãấĆČćčÈËÊÉèéêëǵÍÏĪíïīŁłÑñńÓÖØõöóøÛÜÚúûüŠšÝýŻż’\u2212",
+        "AAAAAaaaaaaCCccEEEEeeeegIIIiiiLlNnnOOOooooUUUuuuSsYyZz'-")
     result = self if result == self # Memory saving trick
     -result
   end
