@@ -424,6 +424,15 @@ class Card
     "Steel Watch Foundry",
     "Temple of Bhaal",
     "Undercity Ruins",
+    # ACR
+    "Allies",
+    "Betrayal",
+    "Leap Strike",
+    "Leap of Faith",
+    "Rope Dart",
+    "Sage Project",
+    "Sokratic Dialogue",
+    "Those Who Came Before",
   ].sort
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 
