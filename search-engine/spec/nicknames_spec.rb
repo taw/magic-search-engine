@@ -390,6 +390,7 @@ describe "Card nicknames" do
     assert_search_results "is:keywordsoup",
       "Akroma, Vision of Ixidor",
       "Animus of Predation",
+      "Bleeding Effect",
       "Cairn Wanderer",
       "Concerted Effort",
       "Crystalline Giant",

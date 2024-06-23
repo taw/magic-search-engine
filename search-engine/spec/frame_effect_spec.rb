@@ -37,7 +37,7 @@ describe "frame type and effect queries" do
   end
 
   it "frame:colorshifted" do
-    assert_search_equal "frame:colorshifted", "e:plc,plst frame:colorshifted"
+    assert_search_equal "frame:colorshifted", "e:plc,plst,td0,pplc,prm frame:colorshifted"
   end
 
   it "frame:compasslanddfc" do

@@ -5,6 +5,7 @@ class ConditionIsKeywordsoup < ConditionNickname
     [
       "akroma, vision of ixidor",
       "animus of predation",
+      "bleeding effect",
       "cairn wanderer",
       "concerted effort",
       "crystalline giant",

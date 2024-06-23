@@ -58,6 +58,7 @@ describe "Deck legality" do
       "Snow-Covered Swamp",
       "Snow-Covered Wastes",
       "Swamp",
+      "Templar Knight",
       "Wastes",
     ])
   end
