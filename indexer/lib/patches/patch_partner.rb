@@ -73,6 +73,12 @@ class PatchPartner < Patch
           ["8", "16"],
           ["33", "41"],
         ],
+        "acr" => [
+          # Jacob Frye / Evie Frye
+          ["19", "27"],
+          ["129", "132"],
+          ["192", "207"],
+        ],
       }
       partner_numbers = {}
       special_pairs.each do |set_code, pairs|
