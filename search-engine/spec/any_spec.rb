@@ -200,7 +200,7 @@ describe "Any queries" do
     end
 
     it "front" do
-      assert_search_equal "any:front", "is:front or ft:front"
+      assert_search_equal "any:front", "is:front or ft:front or foreign:front"
     end
 
     it "back" do
