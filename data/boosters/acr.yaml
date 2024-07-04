@@ -1,0 +1,44 @@
+# data from https://magic.wizards.com/en/news/feature/collecting-assassins-creed
+name: "{set_name} Beyond Booster"
+pack:
+  uncommon: 3
+  land_or_scene:
+  - basic: 1
+    chance: 29
+  - scene: 1
+    chance: 1
+  rare_mythic: 1
+  foil: 1
+  bf_slot:
+  - booster_fun: 1
+    chance: 5
+  - booster_fun_foil: 1
+    chance: 1
+sheets:
+  scene:
+    filter: "e:{set} number:111-116"
+    use: rare_mythic
+  booster_fun:
+    any:
+    - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -is:extendedart"
+      chance: 5
+    - any: 
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -is:extendedart -number:/z/ -number:111-116"
+        rate: 2
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -is:extendedart -number:/z/ -number:111-116"
+        rate: 1
+  booster_fun_foil:
+    foil: true
+    use: booster_fun
+  foil:
+    # "For approximately 1 in 6 boosters, this is a rare or mythic rare."
+    foil: true
+    any:
+    - query: "r:u"
+      chance: 5
+    - any:
+      - query: "r:r"
+        rate: 2
+      - query: "r:m"
+        rate: 1
+      chance: 1
