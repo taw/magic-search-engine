@@ -22,11 +22,12 @@ sheets:
     any:
     - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -is:extendedart"
       chance: 5
-    - any: 
+    - any:
       - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -is:extendedart -number:/z/ -number:111-116"
         rate: 2
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -is:extendedart -number:/z/ -number:111-116"
         rate: 1
+      chance: 1
   booster_fun_foil:
     foil: true
     use: booster_fun
