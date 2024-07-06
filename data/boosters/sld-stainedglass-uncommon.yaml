@@ -3,4 +3,5 @@ pack:
   stainedglass_uncommon: 1
 sheets:
   stainedglass_uncommon:
-    filter: "e:sld number>=501 number<=536 rarity=u"
+    rawquery: "e:sld number>=501 number<=536 rarity=u"
+    foil: true
