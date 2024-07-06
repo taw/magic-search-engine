@@ -3,4 +3,5 @@ pack:
   stainedglass_green: 1
 sheets:
   stainedglass_green:
-    filter: "e:sld number>=501 number<=536 color>=green"
+    rawquery: "e:sld number>=501 number<=536 color>=green"
+    foil: true
