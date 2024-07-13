@@ -225,6 +225,7 @@ describe "CLI Frontend" do
       output: <<-EOF,
         Ral Zarek
         Ral, Caller of Storms
+        Ral, Crackling Wit
         Ral, Izzet Viceroy
         Ral, Leyline Prodigy
         Ral, Storm Conduit
