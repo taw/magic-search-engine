@@ -55,18 +55,30 @@ describe "is:booster" do
         (s.types.include?("standard") or s.code == "ltr") and
         s.types.include?("booster") and
         s.printings.any?(&:arena?) and
-        s.code != "ogw" and
-        !%w[dgm ori kld jou soi].include?(s.code) # from remaster only
+        (
+          # older ones keep getting into remasters and I don't want to maintain a list here, so date cutoff
+          # except KTK was imported in whole, without remaster
+          s.release_date >= Date.parse("2017-09-29") or
+          s.code == "ktk"
+        )
       }.map(&:code).to_set
     end
 
+    # tpr is MTGO remaster
+    # rvr is non-Arena remaster
     let(:remaster_arena_sets) do
-      %W[akr klr].to_set
+      %W[akr klr sir].to_set
     end
 
     it do
       db.sets.each do |set_code, set|
-        if remaster_arena_sets.include?(set_code)
+        if set_code == "sir"
+          pack_factory.for(set_code, "arena-1").should_not(be_nil, "#{set_code} should have Arena boosters")
+          pack_factory.for(set_code, "arena-2").should_not(be_nil, "#{set_code} should have Arena boosters")
+          pack_factory.for(set_code, "arena-3").should_not(be_nil, "#{set_code} should have Arena boosters")
+          pack_factory.for(set_code, "arena-4").should_not(be_nil, "#{set_code} should have Arena boosters")
+          pack_factory.for(set_code, nil).should(be_nil, "#{set_code} should not have default boosters")
+        elsif remaster_arena_sets.include?(set_code)
           pack_factory.for(set_code, "arena").should_not(be_nil, "#{set_code} should have Arena boosters")
           pack_factory.for(set_code, "draft").should(be_nil, "#{set_code} should not have draft boosters")
         elsif standard_arena_sets.include?(set_code)

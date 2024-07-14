@@ -25,7 +25,7 @@ class PatchSetTypes < Patch
         set_types << "jumpstart"
       when "bbd"
         set_types << "two-headed giant" << "multiplayer"
-      when "mh1", "mh2", "mh3", "ltr"
+      when /\Amh\d\z/, "ltr", "acr"
         set_types << "modern"
       when "h2r"
         # mtgjson bug: it has it as expansion
