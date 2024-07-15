@@ -109,6 +109,7 @@ class Card
     "Teleport",
     "Tie Up",
     "Tragic Backstory",
+    "Valiant",
     "Whirlwind",
     "Whispers of the Grave",
     "Wild Magic Surge",

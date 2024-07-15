@@ -71,6 +71,7 @@ describe Deck do
       ["standard", "Deck Builder's Toolkit"],
       ["box", "Challenger Deck"], # Q07
       ["core", "Sample Deck"],
+      ["standard", "Historic Brawl Precon Deck"],
       ["shandalar", "Shandalar Enemy Deck"], # assigned to PAST, as there's no Shandalar set
       # Non-decks, this needs to be sorted out at some point
       ["box", "Box"],
