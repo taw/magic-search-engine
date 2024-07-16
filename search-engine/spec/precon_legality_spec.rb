@@ -9,8 +9,8 @@ describe Deck do
       decks.each do |deck|
         case format
         when "jumpstart", "shandalar", "planechase", "archenemy", "planechase commander", "arena"
-          # no risk of accidentally tagging them wrnog
-        when "casual"
+          # no risk of accidentally tagging them wrong
+        when "casual", "historic brawl"
           verify_deck_is_casual(deck)
         when "commander", "modern", "standard", "brawl", "pioneer", "standard", "casual standard"
           verify_deck_is_legal(deck)
