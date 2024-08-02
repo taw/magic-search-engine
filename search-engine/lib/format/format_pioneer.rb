@@ -42,6 +42,7 @@ class FormatPioneer < Format
       "mkm",
       "otj",
       "big",
+      "blb",
     ]
   end
 end

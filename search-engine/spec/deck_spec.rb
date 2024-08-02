@@ -201,6 +201,8 @@ describe Deck do
         sets_found.should match_array ["otc", "otj"]
       when "m3c"
         sets_found.should match_array ["m3c", "mh3"]
+      when "blc"
+        sets_found.should match_array ["blb", "blc"]
       else
         sets_found.should eq [set.code]
       end
@@ -347,11 +349,12 @@ describe Deck do
 
   it "Commander decks have valid commander" do
     db.decks.each do |deck|
-      if deck.type == "Commander Deck"
+      case deck.type
+      when "Commander Deck"
         deck.should be_valid_commander
         # Brawler is superset of commander, so even though none of theme are Brawl decks, give it a go
         deck.should be_valid_brawler
-      elsif deck.type == "Brawl Deck"
+      when "Brawl Deck", "Historic Brawl Precon Deck"
         # Not guaranteed but true so far
         deck.should be_valid_commander
         deck.should be_valid_brawler

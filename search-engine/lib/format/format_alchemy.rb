@@ -12,6 +12,11 @@ class FormatAlchemy < FormatStandard
   # I really should automate this
   def rotation_schedule
     {
+      "2024-08-02" => [
+        "anb",
+        "dmu", "ydmu", "bro", "ybro", "one", "yone", "mom", "mat", "ltr", "woe", "ywoe", "lci", "ylci", "mkm", "ymkm", "otj", "big", "yotj",
+        "blb",
+      ],
       "2022-09-09" => [
         "anb",
         "mid", "ymid", "vow", "neo", "yneo", "snc", "ysnc", "hbg",

@@ -233,7 +233,7 @@ describe "Scryfall" do
 
   it "oracle_tilde" do
     # identical results, except for spoilers
-    assert_search_include 'o:"~ enters the battlefield tapped"',
+    assert_search_include 'o:"~ enters tapped"',
       "Deadlock Trap",
       "Port Town",
       "Izzet Boilerworks"
