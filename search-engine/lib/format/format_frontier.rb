@@ -39,6 +39,7 @@ class FormatFrontier < Format
       "mkm",
       "otj",
       "big",
+      "blb",
     ]
   end
 end

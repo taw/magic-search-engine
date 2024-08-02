@@ -79,7 +79,7 @@ describe "CLI Frontend" do
         [ktk pktk cp3 prm ea1 slc]
         Creature - Rhino
         Trample
-        When Siege Rhino enters the battlefield, each opponent loses 3 life and you gain 3 life.
+        When Siege Rhino enters, each opponent loses 3 life and you gain 3 life.
         4/5
         EOF
       error: ""
@@ -121,7 +121,7 @@ describe "CLI Frontend" do
         [afr afr prm]
         Creature - Dragon
         Flying
-        Poison Breath — When Green Dragon enters the battlefield, until end of turn, whenever a creature an opponent controls is dealt damage, destroy it.
+        Poison Breath — When Green Dragon enters, until end of turn, whenever a creature an opponent controls is dealt damage, destroy it.
         4/4
 
         Skanos, Green Dragon Vassal {4}{g}{g}
@@ -178,7 +178,7 @@ describe "CLI Frontend" do
         [gpt rtr exp grn pgrn prm sld unf unf rvr rvr rvr rvr clu]
         Land - Island Mountain
         ({T}: Add {U} or {R}.)
-        As Steam Vents enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.
+        As Steam Vents enters, you may pay 2 life. If you don't, it enters tapped.
         EOF
       error: ""
     )

@@ -213,6 +213,7 @@ describe "Full Database Test" do
       "Impulse",
       "Insectile Aberration",
       "Kird Ape",
+      "Lightning Bolt",
       "Lotus Petal",
       "Rhystic Study",
       "Sol Ring"
