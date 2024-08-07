@@ -1,7 +1,7 @@
 = content_for(:disable_turbolinks) do
   true
 %h4 Magic: The Gathering Comprehensive Rules
-%p These rules are effective as of June 7, 2024.
+%p These rules are effective as of July 30, 2024.
 %h3{id: "section-introduction"} Introduction
 %p This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
 %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules.
@@ -816,7 +816,7 @@
   .rule_text Example: <span class="manacost"><span class="mana mana-cost mana-wp"><span class="sr-only">{W/P}</span></span><span class="mana mana-cost mana-wp"><span class="sr-only">{W/P}</span></span></span> can be paid by spending <span class="manacost"><span class="mana mana-cost mana-w"><span class="sr-only">{W}</span></span><span class="mana mana-cost mana-w"><span class="sr-only">{W}</span></span></span>, by spending <span class="manacost"><span class="mana mana-cost mana-w"><span class="sr-only">{W}</span></span></span> and paying 2 life, or by paying 4 life.
 .rule{id: "section-107-4g"}
   .rule_id 107.4g
-  .rule_text In rules text, the Phyrexian symbol <span class="manacost"><span class="mana mana-p"><span class="sr-only">{P}</span></span></span> with no colored background means any of the fifteen Phyrexian mana symbols.
+  .rule_text In rules text, the Phyrexian symbol <span class="manacost">{H}</span> with no colored background means any of the fifteen Phyrexian mana symbols.
 .rule{id: "section-107-4h"}
   .rule_id 107.4h
   .rule_text When used in a cost, the snow mana symbol <span class="manacost"><span class="mana mana-cost mana-s"><span class="sr-only">{S}</span></span></span> represents a cost that can be paid with one mana of any type produced by a snow source (see rule <a href="#section-106-3">106.3</a>). Effects that reduce the amount of generic mana you pay don’t affect <span class="manacost"><span class="mana mana-cost mana-s"><span class="sr-only">{S}</span></span></span> costs. The <span class="manacost"><span class="mana mana-cost mana-s"><span class="sr-only">{S}</span></span></span> symbol can also be used to refer to mana of any type produced by a snow source spent to pay a cost. Snow is neither a color nor a type of mana.
@@ -877,6 +877,9 @@
 .rule{id: "section-107-17a"}
   .rule_id 107.17a
   .rule_text A ticket symbol with a number inside it represents a ticket cost. To pay that cost, a player removes that many ticket counters from themselves.
+.rule{id: "section-107-18"}
+  .rule_id 107.18.
+  .rule_text The pawprint symbol is <span class="manacost"><span class="mana mana-p"><span class="sr-only">{P}</span></span></span>. This symbol is used to indicate the modes on some modal spells, and does not represent a cost, mana, counters, or any type of persistent resource. See rule <a href="#section-700-2i">700.2i</a>.
 .rule{id: "section-108"}
   .rule_id 108.
   .rule_text Cards
@@ -1027,7 +1030,7 @@
   .rule_id 111.4.
   .rule_text A spell or ability that creates a token sets both its name and its subtype(s). If the spell or ability doesn’t specify the name of the token, its name is the same as its subtype(s) plus the word “Token.” Once a token is on the battlefield, changing its name doesn’t change its subtype(s), and vice versa.
   .rule_text Example: Dwarven Reinforcements is a sorcery that says, in part, “Create two 2/1 red Dwarf Berserker creature tokens.” The tokens created as it resolves are each named Dwarf Berserker Token and each have the creature types Dwarf and Berserker.
-  .rule_text Example: Minsc, Beloved Ranger says, in part, “When Minsc, Beloved Ranger enters the battlefield, create Boo, a legendary 1/1 red Hamster creature token with trample and haste.” That token’s subtype is Hamster, but because Minsc specifies that the token’s name is Boo, neither “Hamster” nor “Token” are part of its name.
+  .rule_text Example: Minsc, Beloved Ranger says, in part, “When Minsc, Beloved Ranger enters, create Boo, a legendary 1/1 red Hamster creature token with trample and haste.” That token’s subtype is Hamster, but because Minsc specifies that the token’s name is Boo, neither “Hamster” nor “Token” are part of its name.
   .rule_text Example: Spitting Image is a sorcery that says, in part, “Create a token that’s a copy of target creature.” All of that token’s characteristics will match the copiable characteristics of the creature targeted by that spell. If Spitting Image targets Doomed Dissenter, a Human creature, the name of the token the spell creates will be Doomed Dissenter, not Human Token or Doomed Dissenter Token.
 .rule{id: "section-111-5"}
   .rule_id 111.5.
@@ -1225,7 +1228,7 @@
 .rule{id: "section-113-6k"}
   .rule_id 113.6k
   .rule_text A trigger condition that can’t trigger from the battlefield functions in all zones it can trigger from. Other trigger conditions of the same triggered ability may function in different zones.
-  .rule_text Example: Absolver Thrull has the ability “When Absolver Thrull enters the battlefield or the creature it haunts dies, destroy target enchantment.” The first trigger condition functions from the battlefield and the second trigger condition functions from the exile zone. (See rule <a href="#section-702-55">702.55</a>, “Haunt.”)
+  .rule_text Example: Absolver Thrull has the ability “When Absolver Thrull enters or the creature it haunts dies, destroy target enchantment.” The first trigger condition functions from the battlefield and the second trigger condition functions from the exile zone. (See rule <a href="#section-702-55">702.55</a>, “Haunt.”)
 .rule{id: "section-113-6m"}
   .rule_id 113.6m
   .rule_text An ability whose cost or effect specifies that it moves the object it’s on out of a particular zone functions only in that zone, unless its trigger condition or a previous part of its cost or effect specifies that the object is put into that zone or, if the object is an Aura, that the object it enchants leaves the battlefield. The same is true if the effect of that ability creates a delayed triggered ability whose effect moves the object out of a particular zone.
@@ -1578,7 +1581,7 @@
   .rule_id 118.12.
   .rule_text Some spells, activated abilities, and triggered abilities read, “[Do something]. If [a player] [does, doesn’t, or can’t], [effect].” Or “[A player] may [do something]. If [that player] [does, doesn’t, or can’t], [effect].” The action [do something] is a cost, paid when the spell or ability resolves. The “If [a player] [does, doesn’t, or can’t]” clause checks whether the player chose to pay an optional cost or started to pay a mandatory cost, regardless of what events actually occurred.
   .rule_text Example: You control Standstill, an enchantment that says “When a player casts a spell, sacrifice Standstill. If you do, each of that player’s opponents draws three cards.” A spell is cast, causing Standstill’s ability to trigger. Then an ability is activated that exiles Standstill. When Standstill’s ability resolves, you’re unable to pay the “sacrifice Standstill” cost. No player will draw cards.
-  .rule_text Example: Your opponent has cast Gather Specimens, a spell that says “If a creature would enter the battlefield under an opponent’s control this turn, it enters the battlefield under your control instead.” You control a face-down Dermoplasm, a creature with morph that says “When Dermoplasm is turned face up, you may put a creature card with morph from your hand onto the battlefield face up. If you do, return Dermoplasm to its owner’s hand.” You turn Dermoplasm face up, and you choose to put a creature card with morph from your hand onto the battlefield. Due to Gather Specimens, it enters the battlefield under your opponent’s control instead of yours. However, since you chose to pay the cost, Dermoplasm is still returned to its owner’s hand.
+  .rule_text Example: Your opponent has cast Gather Specimens, a spell that says “If a creature would enter the battlefield under an opponent’s control this turn, it enters under your control instead.” You control a face-down Dermoplasm, a creature with morph that says “When Dermoplasm is turned face up, you may put a creature card with morph from your hand onto the battlefield face up. If you do, return Dermoplasm to its owner’s hand.” You turn Dermoplasm face up, and you choose to put a creature card with morph from your hand onto the battlefield. Due to Gather Specimens, it enters the battlefield under your opponent’s control instead of yours. However, since you chose to pay the cost, Dermoplasm is still returned to its owner’s hand.
 .rule{id: "section-118-12a"}
   .rule_id 118.12a
   .rule_text Some spells, activated abilities, and triggered abilities read, “[Do something] unless [a player does something else].” This means the same thing as “[A player may do something else]. If [that player doesn’t], [do something].”
@@ -1939,7 +1942,7 @@
   .rule_text General
 .rule{id: "section-200-1"}
   .rule_id 200.1.
-  .rule_text The parts of a card are name, mana cost, illustration, color indicator, type line, expansion symbol, text box, power and toughness, loyalty, hand modifier, life modifier, illustration credit, legal text, and collector number. Some cards may have more than one of any or all of these parts.
+  .rule_text The parts of a card are name, mana cost, illustration, color indicator, type line, expansion symbol, text box, power and toughness, loyalty, defense, hand modifier, life modifier, illustration credit, legal text, and collector number. Some cards may have more than one of any or all of these parts.
 .rule{id: "section-200-2"}
   .rule_id 200.2.
   .rule_text Some parts of a card are also characteristics of the object that has them. See rule <a href="#section-109-3">109.3</a>.
@@ -2115,7 +2118,7 @@
   .rule_text Some effects set an object’s card type. In most such cases, the new card type(s) replaces any existing card types. However, an object with either the instant or sorcery card type retains that type. Counters, stickers, effects, and damage marked on the object remain with it, even if they are meaningless to the new card type. Similarly, when an effect sets one or more of an object’s subtypes, the new subtype(s) replaces any existing subtypes from the appropriate set (creature types, land types, artifact types, enchantment types, planeswalker types, or spell types). If an object’s card type is removed, the subtypes correlated with that card type will remain if they are also the subtypes of a card type the object currently has; otherwise, they are also removed for the entire time the object’s card type is removed. Removing an object’s subtype doesn’t affect its card types at all.
 .rule{id: "section-205-1b"}
   .rule_id 205.1b
-  .rule_text Some effects change an object’s card type, supertype, or subtype but specify that the object retains a prior card type, supertype, or subtype. In such cases, all the object’s prior card types, supertypes, and subtypes are retained. This rule applies to effects that use the phrase “in addition to its types” or that state that something is “still a [type, supertype, or subtype].” Some effects state that an object becomes an “artifact creature”; these effects also allow the object to retain all of its prior card types and subtypes. Some effects state that an object becomes a “[creature type or types] artifact creature”; these effects also allow the object to retain all of its prior card types and subtypes other than creature types, but replace any existing creature types.
+  .rule_text Some effects change an object’s card type, supertype, or subtype but specify that the object retains a prior card type, supertype, or subtype. In such cases, all the object’s prior card types, supertypes, and subtypes are retained. This rule applies to effects that use phrases such as “in addition to its other types” or that state that something is “still a [type, supertype, or subtype].” Some effects state that an object becomes an “artifact creature”; these effects also allow the object to retain all of its prior card types and subtypes. Some effects state that an object becomes a “[creature type or types] artifact creature”; these effects also allow the object to retain all of its prior card types and subtypes other than creature types, but replace any existing creature types.
   .rule_text Example: An ability reads, “All lands are 1/1 creatures that are still lands.” The affected lands now have two card types: creature and land. If there were any lands that were also artifacts before the ability’s effect applied to them, those lands would become “artifact land creatures,” not just “creatures,” or “land creatures.” The effect allows them to retain both the artifact and land card types. In addition, each land affected by the ability retains any land types and supertypes it had before the ability took effect.
   .rule_text Example: An ability reads, “All artifacts are 1/1 artifact creatures.” If a permanent is both an artifact and an enchantment, it will become an artifact enchantment creature.
 .rule{id: "section-205-2"}
@@ -2171,7 +2174,7 @@
   .rule_text Instants and sorceries share their lists of subtypes; these subtypes are called spell types. The spell types are Adventure, Arcane, Lesson, and Trap.
 .rule{id: "section-205-3m"}
   .rule_id 205.3m
-  .rule_text Creatures and kindreds share their lists of subtypes; these subtypes are called creature types. One creature type is two words long: Time Lord. All other creature types are one word long: Advisor, Aetherborn, Alien, Ally, Angel, Antelope, Ape, Archer, Archon, Armadillo, Army, Artificer, Assassin, Assembly-Worker, Astartes, Atog, Aurochs, Avatar, Azra, Badger, Balloon, Barbarian, Bard, Basilisk, Bat, Bear, Beast, Beaver, Beeble, Beholder, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Capybara, Caribou, Carrier, Cat, Centaur, Child, Chimera, Citizen, Cleric, Clown, Cockatrice, Construct, Coward, Coyote, Crab, Crocodile, C’tan, Custodes, Cyberman, Cyclops, Dalek, Dauthi, Demigod, Demon, Deserter, Detective, Devil, Dinosaur, Djinn, Doctor, Dog, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Employee, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gamer, Gargoyle, Germ, Giant, Gith, Gnoll, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Guest, Hag, Halfling, Hamster, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inkling, Inquisitor, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Llama, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mite, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mount, Mouse, Mutant, Myr, Mystic, Nautilus, Necron, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Performer, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Porcupine, Possum, Praetor, Primarch, Prism, Processor, Rabbit, Raccoon, Ranger, Rat, Rebel, Reflection, Rhino, Rigger, Robot, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scientist, Scion, Scorpion, Scout, Sculpture, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Slith, Sliver, Sloth, Slug, Snail, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Synth, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Tiefling, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Tyranid, Unicorn, Vampire, Varmint, Vedalken, Volver, Wall, Walrus, Warlock, Warrior, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
+  .rule_text Creatures and kindreds share their lists of subtypes; these subtypes are called creature types. One creature type is two words long: Time Lord. All other creature types are one word long: Advisor, Aetherborn, Alien, Ally, Angel, Antelope, Ape, Archer, Archon, Armadillo, Army, Artificer, Assassin, Assembly-Worker, Astartes, Atog, Aurochs, Avatar, Azra, Badger, Balloon, Barbarian, Bard, Basilisk, Bat, Bear, Beast, Beaver, Beeble, Beholder, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Capybara, Caribou, Carrier, Cat, Centaur, Child, Chimera, Citizen, Cleric, Clown, Cockatrice, Construct, Coward, Coyote, Crab, Crocodile, C’tan, Custodes, Cyberman, Cyclops, Dalek, Dauthi, Demigod, Demon, Deserter, Detective, Devil, Dinosaur, Djinn, Doctor, Dog, Dragon, Drake, Dreadnought, Drone, Druid, Dryad, Dwarf, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Employee, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gamer, Gargoyle, Germ, Giant, Gith, Gnoll, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Guest, Hag, Halfling, Hamster, Harpy, Hellion, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inkling, Inquisitor, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Llama, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mite, Mole, Monger, Mongoose, Monk, Monkey, Moonfolk, Mount, Mouse, Mutant, Myr, Mystic, Nautilus, Necron, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Performer, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Porcupine, Possum, Praetor, Primarch, Prism, Processor, Rabbit, Raccoon, Ranger, Rat, Rebel, Reflection, Rhino, Rigger, Robot, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scientist, Scion, Scorpion, Scout, Sculpture, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Skunk, Slith, Sliver, Sloth, Slug, Snail, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Synth, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Tiefling, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Tyranid, Unicorn, Vampire, Varmint, Vedalken, Volver, Wall, Walrus, Warlock, Warrior, Weasel, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
 .rule{id: "section-205-3n"}
   .rule_id 205.3n
   .rule_text Planes have their own unique set of subtypes; these subtypes are called planar types. The planar types are The Abyss, Alara, Alfava Metraxis, Amonkhet, Androzani Minor, Antausia, Apalapucia, Arcavios, Arkhos, Azgol, Belenon, Bolas’s Meditation Realm, Capenna, Cridhe, The Dalek Asylum, Darillium, Dominaria, Earth, Echoir, Eldraine, Equilor, Ergamon, Fabacin, Fiora, Gallifrey, Gargantikar, Gobakhan, Horsehead Nebula, Ikoria, Innistrad, Iquatana, Ir, Ixalan, Kaladesh, Kaldheim, Kamigawa, Kandoka, Karsus, Kephalai, Kinshala, Kolbahan, Kylem, Kyneth, The Library, Lorwyn, Luvion, Mars, Mercadia, Mirrodin, Moag, Mongseng, Moon, Muraganda, Necros, New Earth, New Phyrexia, Outside Mutter’s Spiral, Phyrexia, Pyrulea, Rabiah, Rath, Ravnica, Regatha, Segovia, Serra’s Realm, Shadowmoor, Shandalar, Shenmeng, Skaro, Spacecraft, Tarkir, Theros, Time, Trenzalore, Ulgrotha, Unknown Planet, Valla, Vryn, Wildfire, Xerex, Zendikar, and Zhalfir.
@@ -2257,7 +2260,7 @@
   .rule_text Flavor text is italicized text that, like the illustration, adds artistic appeal to the game. It usually appears below the rules text.
 .rule{id: "section-207-2c"}
   .rule_id 207.2c
-  .rule_text An ability word appears in italics at the beginning of some abilities. Ability words are similar to keywords in that they tie together cards that have similar functionality, but they have no special rules meaning and no individual entries in the Comprehensive Rules. The ability words are adamant, addendum, alliance, battalion, bloodrush, celebration, channel, chroma, cohort, constellation, converge, council’s dilemma, coven, delirium, descend 4, descend 8, domain, eminence, enrage, fateful hour, fathomless descent, ferocious, formidable, grandeur, hellbent, heroic, imprint, inspired, join forces, kinship, landfall, lieutenant, magecraft, metalcraft, morbid, pack tactics, paradox, parley, radiance, raid, rally, revolt, secret council, spell mastery, strive, sweep, tempting offer, threshold, undergrowth, and will of the council.
+  .rule_text An ability word appears in italics at the beginning of some abilities. Ability words are similar to keywords in that they tie together cards that have similar functionality, but they have no special rules meaning and no individual entries in the Comprehensive Rules. The ability words are adamant, addendum, alliance, battalion, bloodrush, celebration, channel, chroma, cohort, constellation, converge, council’s dilemma, coven, delirium, descend 4, descend 8, domain, eminence, enrage, fateful hour, fathomless descent, ferocious, formidable, grandeur, hellbent, heroic, imprint, inspired, join forces, kinship, landfall, lieutenant, magecraft, metalcraft, morbid, pack tactics, paradox, parley, radiance, raid, rally, revolt, secret council, spell mastery, strive, sweep, tempting offer, threshold, undergrowth, valiant, and will of the council.
 .rule{id: "section-207-2d"}
   .rule_id 207.2d
   .rule_text Similar to ability words, flavor words appear in italics at the beginning of some abilities. Flavor words provide a flavorful description of abilities, but they have no special rules meaning and are not listed in the Comprehensive Rules. While an ability word ties together several abilities with similar functionality, each flavor word is tailored to the specific ability it appears with.
@@ -2282,10 +2285,10 @@
 .rule{id: "section-208-2a"}
   .rule_id 208.2a
   .rule_text The card may have a characteristic-defining ability that sets its power and/or toughness according to some stated condition. (See rule <a href="#section-604-3">604.3</a>.) Such an ability is worded “[This creature’s] [power or toughness] is equal to . . .” or “[This creature’s] power and toughness are each equal to . . .” This ability functions everywhere, even outside the game. If the ability needs to use a number that can’t be determined, including inside a calculation, use 0 instead of that number.
-  .rule_text Example: Lost Order of Jarkeld has power and toughness each equal to 1+*. It has the abilities “As Lost Order of Jarkeld enters the battlefield, choose an opponent” and “Lost Order of Jarkeld’s power and toughness are each equal to 1 plus the number of creatures the chosen player controls.” While Lost Order of Jarkeld isn’t on the battlefield, there won’t be a chosen player. Its power and toughness will each be equal to 1 plus 0, so it’s 1/1.
+  .rule_text Example: Lost Order of Jarkeld has power and toughness each equal to 1+*. It has the abilities “As Lost Order of Jarkeld enters, choose an opponent” and “Lost Order of Jarkeld’s power and toughness are each equal to 1 plus the number of creatures the chosen player controls.” While Lost Order of Jarkeld isn’t on the battlefield, there won’t be a chosen player. Its power and toughness will each be equal to 1 plus 0, so it’s 1/1.
 .rule{id: "section-208-2b"}
   .rule_id 208.2b
-  .rule_text The card may have a static ability that creates a replacement effect that sets the creature’s power and toughness to one of a number of specific values as it enters the battlefield or is turned face up. (See rule <a href="#section-614">614</a>, “Replacement Effects.”) Such an ability is worded “As [this creature] enters the battlefield . . . ,” “As [this creature] is turned face up . . . ,” or “[This creature] enters the battlefield as . . .” and lists two or more specific power and toughness values (and may also list additional characteristics). The characteristics chosen or determined with these effects affect the creature’s copiable values. (See rule <a href="#section-707-2">707.2</a>.) While the card isn’t on the battlefield, its power and toughness are each considered to be 0.
+  .rule_text The card may have a static ability that creates a replacement effect that sets the creature’s power and toughness to one of a number of specific values as it enters the battlefield or is turned face up. (See rule <a href="#section-614">614</a>, “Replacement Effects.”) Such an ability is worded “As [this creature] enters . . . ,” “As [this creature] is turned face up . . . ,” or “[This creature] enters as . . .” and lists two or more specific power and toughness values (and may also list additional characteristics). The characteristics chosen or determined with these effects affect the creature’s copiable values. (See rule <a href="#section-707-2">707.2</a>.) While the card isn’t on the battlefield, its power and toughness are each considered to be 0.
 .rule{id: "section-208-3"}
   .rule_id 208.3.
   .rule_text A noncreature permanent has no power or toughness, even if it’s a card with a power and toughness printed on it (such as a Vehicle). A noncreature object not on the battlefield has power or toughness only if it has a power and toughness printed on it.
@@ -2600,7 +2603,7 @@
   .rule_text The loyalty of a planeswalker card not on the battlefield is equal to the number printed in its lower right corner.
 .rule{id: "section-306-5b"}
   .rule_id 306.5b
-  .rule_text A planeswalker has the intrinsic ability “This permanent enters the battlefield with a number of loyalty counters on it equal to its printed loyalty number.” This ability creates a replacement effect (see rule <a href="#section-614-1c">614.1c</a>).
+  .rule_text A planeswalker has the intrinsic ability “This permanent enters with a number of loyalty counters on it equal to its printed loyalty number.” This ability creates a replacement effect (see rule <a href="#section-614-1c">614.1c</a>).
 .rule{id: "section-306-5c"}
   .rule_id 306.5c
   .rule_text The loyalty of a planeswalker on the battlefield is equal to the number of loyalty counters on it.
@@ -2723,7 +2726,7 @@
   .rule_text The defense of a battle card not on the battlefield is equal to the number printed in its lower right corner.
 .rule{id: "section-310-4b"}
   .rule_id 310.4b
-  .rule_text A battle has the intrinsic ability “This permanent enters the battlefield with a number of defense counters on it equal to its printed defense number.” This ability creates a replacement effect (see rule <a href="#section-614-1c">614.1c</a>).
+  .rule_text A battle has the intrinsic ability “This permanent enters with a number of defense counters on it equal to its printed defense number.” This ability creates a replacement effect (see rule <a href="#section-614-1c">614.1c</a>).
 .rule{id: "section-310-4c"}
   .rule_id 310.4c
   .rule_text The defense of a battle on the battlefield is equal to the number of defense counters on it.
@@ -3265,6 +3268,9 @@
 .rule{id: "section-505-1a"}
   .rule_id 505.1a
   .rule_text Only the first main phase of the turn is a precombat main phase. All other main phases are postcombat main phases. This includes the second main phase of a turn in which the combat phase has been skipped. It is also true of a turn in which an effect has caused an additional combat phase and an additional main phase to be created.
+.rule{id: "section-505-1b"}
+  .rule_id 505.1b
+  .rule_text In card text, phrases such as “first main phase,” “second main phase,” and so on count the number of main phases that have occurred only in the current turn unless that text specifies otherwise.
 .rule{id: "section-505-2"}
   .rule_id 505.2.
   .rule_text The main phase has no steps, so a main phase ends when all players pass in succession while the stack is empty. (See rule <a href="#section-500-2">500.2</a>.)
@@ -3785,6 +3791,9 @@
 .rule{id: "section-602-1d"}
   .rule_id 602.1d
   .rule_text Previously, the action of using an activated ability was referred to on cards as “playing” that ability. Cards that were printed with that text have received errata in the Oracle card reference so they now refer to “activating” that ability.
+.rule{id: "section-602-1e"}
+  .rule_id 602.1e
+  .rule_text If a spell or ability that refers to the “activation cost” of an ability modifies how a player may pay that cost, that modification applies to the total cost of that ability, even if that cost is increased and/or decreased by other effects. See rules <a href="#section-602-2b">602.2b</a> and <a href="#section-601-2f">601.2f</a>.
 .rule{id: "section-602-2"}
   .rule_id 602.2.
   .rule_text To activate an ability is to put it onto the stack and pay its costs, so that it will eventually resolve and have its effect. Only an object’s controller (or its owner, if it doesn’t have a controller) can activate its activated ability unless the object specifically says otherwise. Activating an ability follows the steps listed below, in order. If, at any point during the activation of an ability, a player is unable to comply with any of those steps, the activation is illegal; the game returns to the moment before that ability started to be activated (see rule <a href="#section-730">730</a>, “Handling Illegal Actions”). Announcements and payments can’t be altered after they’ve been made.
@@ -3893,7 +3902,7 @@
   .rule_text Trigger events that involve objects changing zones are called “zone-change triggers.” Many abilities with zone-change triggers attempt to do something to that object after it changes zones. During resolution, these abilities look for the object in the zone that it moved to. If the object is unable to be found in the zone it went to, the part of the ability attempting to do something to the object will fail to do anything. The ability could be unable to find the object because the object never entered the specified zone, because it left the zone before the ability resolved, or because it is in a zone that is hidden from a player, such as a library or an opponent’s hand. (This rule applies even if the object leaves the zone and returns again before the ability resolves.) The most common zone-change triggers are enters-the-battlefield triggers and leaves-the-battlefield triggers.
 .rule{id: "section-603-6a"}
   .rule_id 603.6a
-  .rule_text Enters-the-battlefield abilities trigger when a permanent enters the battlefield. These are written, “When [this object] enters the battlefield, . . . “ or “Whenever a [type] enters the battlefield, . . .” Each time an event puts one or more permanents onto the battlefield, all permanents on the battlefield (including the newcomers) are checked for any enters-the-battlefield triggers that match the event.
+  .rule_text Enters-the-battlefield abilities trigger when a permanent enters the battlefield. These are written, “When [this object] enters, . . . “ or “Whenever a [type] enters, . . .” Each time an event puts one or more permanents onto the battlefield, all permanents on the battlefield (including the newcomers) are checked for any enters-the-battlefield triggers that match the event.
 .rule{id: "section-603-6b"}
   .rule_id 603.6b
   .rule_text Continuous effects that modify characteristics of a permanent do so the moment the permanent is on the battlefield (and not before then). The permanent is never on the battlefield with its unmodified characteristics. Continuous effects don’t apply before the permanent is on the battlefield, however (see rule <a href="#section-603-6d">603.6d</a>).
@@ -3903,7 +3912,7 @@
   .rule_text Leaves-the-battlefield abilities trigger when a permanent moves from the battlefield to another zone, or when a phased-in permanent leaves the game because its owner leaves the game. These are written as, but aren’t limited to, “When [this object] leaves the battlefield, . . .” or “Whenever [something] is put into a graveyard from the battlefield, . . . .” (See also rule <a href="#section-603-10">603.10</a>.) An ability that attempts to do something to the card that left the battlefield checks for it only in the first zone that it went to. An ability that triggers when a card is put into a certain zone “from anywhere” is never treated as a leaves-the-battlefield ability, even if an object is put into that zone from the battlefield.
 .rule{id: "section-603-6d"}
   .rule_id 603.6d
-  .rule_text Some permanents have text that reads “[This permanent] enters the battlefield with . . . ,” “As [this permanent] enters the battlefield . . . ,” “[This permanent] enters the battlefield as . . . ,” or “[This permanent] enters the battlefield tapped.” Such text is a static ability—not a triggered ability—whose effect occurs as part of the event that puts the permanent onto the battlefield.
+  .rule_text Some permanents have text that reads “[This permanent] enters with . . . ,” “As [this permanent] enters . . . ,” “[This permanent] enters as . . . ,” or “[This permanent] enters tapped.” Such text is a static ability—not a triggered ability—whose effect occurs as part of the event that puts the permanent onto the battlefield.
 .rule{id: "section-603-6e"}
   .rule_id 603.6e
   .rule_text Some Auras have triggered abilities that trigger on the enchanted permanent leaving the battlefield. These triggered abilities can find the new object that permanent card became in the zone it moved to; they can also find the new object the Aura card became in its owner’s graveyard after state-based actions have been checked. See rule <a href="#section-400-7">400.7</a>.
@@ -3976,7 +3985,7 @@
 .rule{id: "section-603-12"}
   .rule_id 603.12.
   .rule_text A resolving spell or ability may allow or instruct a player to take an action and create a triggered ability that triggers “when [a player] [does or doesn’t]” take that action or “when [something happens] this way.” These reflexive triggered abilities follow the rules for delayed triggered abilities (see rule <a href="#section-603-7">603.7</a>), except that they’re checked immediately after being created and trigger based on whether the trigger event or events occurred earlier during the resolution of the spell or ability that created them.
-  .rule_text Example: Heart-Piercer Manticore has an ability that reads “When Heart-Piercer Manticore enters the battlefield, you may sacrifice another creature. When you do, Heart-Piercer Manticore deals damage equal to that creature’s power to any target.” The reflexive triggered ability triggers only when you sacrifice another creature due to the original triggered ability, and not if you sacrifice a creature for any other reason.
+  .rule_text Example: Heart-Piercer Manticore has an ability that reads “When Heart-Piercer Manticore enters, you may sacrifice another creature. When you do, Heart-Piercer Manticore deals damage equal to that creature’s power to any target.” The reflexive triggered ability triggers only when you sacrifice another creature due to the original triggered ability, and not if you sacrifice a creature for any other reason.
 .rule{id: "section-603-12a"}
   .rule_id 603.12a
   .rule_text Normally, if the trigger event or events occur multiple times during the resolution of the spell or ability that created it, the reflexive triggered ability will trigger once for each of those times. However, if a resolving spell or ability includes a choice to pay a cost “any number of times” and creates a triggered ability that triggers “when [a player] pays [that cost] one or more times,” paying that cost one or more times causes the reflexive triggered ability to trigger only once.
@@ -4114,7 +4123,7 @@
   .rule_text If an object has an ability printed on it that causes a player to choose from between two or more words that otherwise have no rules meaning and an ability printed on it that refers to a choice involving one or more of those words, those abilities are linked. The second can refer only to a choice made as a result of the first ability.
 .rule{id: "section-607-2g"}
   .rule_id 607.2g
-  .rule_text If an object has an ability printed on it that causes a player to pay a cost as it enters the battlefield and an ability printed on it that refers to the cost paid “as [this object] entered the battlefield,” these abilities are linked. The second ability refers only to a cost paid as a result of the first ability.
+  .rule_text If an object has an ability printed on it that causes a player to pay a cost as it enters the battlefield and an ability printed on it that refers to the cost paid “as [this object] entered,” these abilities are linked. The second ability refers only to a cost paid as a result of the first ability.
 .rule{id: "section-607-2h"}
   .rule_id 607.2h
   .rule_text If an object has both a static ability and one or more triggered abilities printed on it in the same paragraph, each of those triggered abilities is linked to the static ability. Each triggered ability refers only to actions taken as a result of the static ability. See rule <a href="#section-603-11">603.11</a>.
@@ -4146,7 +4155,7 @@
 .rule{id: "section-607-4"}
   .rule_id 607.4.
   .rule_text An ability may be part of more than one pair of linked abilities.
-  .rule_text Example: Paradise Plume has the following three abilities: “As Paradise Plume enters the battlefield, choose a color,” “Whenever a player casts a spell of the chosen color, you may gain 1 life,” and “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add one mana of the chosen color.” The first and second abilities are linked. The first and third abilities are linked.
+  .rule_text Example: Paradise Plume has the following three abilities: “As Paradise Plume enters, choose a color,” “Whenever a player casts a spell of the chosen color, you may gain 1 life,” and “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add one mana of the chosen color.” The first and second abilities are linked. The first and third abilities are linked.
 .rule{id: "section-607-5"}
   .rule_id 607.5.
   .rule_text If an object acquires a pair of linked abilities as part of the same effect, the abilities will be similarly linked to one another on that object even though they weren’t printed on that object. They can’t be linked to any other ability, regardless of what other abilities the object may currently have or may have had in the past.
@@ -4154,7 +4163,7 @@
 .rule{id: "section-607-5a"}
   .rule_id 607.5a
   .rule_text If an object gains an ability that refers to a choice, but either (a) doesn’t copy that ability’s linked ability or (b) does copy the linked ability but no choice is made for it, then the choice is considered to be “undefined.” If an ability refers to an undefined choice, that part of the ability won’t do anything.
-  .rule_text Example: Voice of All enters the battlefield and Unstable Shapeshifter copies it. Voice of All reads, in part, “As Voice of All enters the battlefield, choose a color.” and “Voice of All has protection from the chosen color.” Unstable Shapeshifter never had a chance for a color to be chosen for it, because it didn’t enter the battlefield as Voice of All so it doesn’t gain a protection ability.
+  .rule_text Example: Voice of All enters the battlefield and Unstable Shapeshifter copies it. Voice of All reads, in part, “As Voice of All enters, choose a color.” and “Voice of All has protection from the chosen color.” Unstable Shapeshifter never had a chance for a color to be chosen for it, because it didn’t enter the battlefield as Voice of All so it doesn’t gain a protection ability.
   .rule_text Example: A Vesuvan Doppelganger enters the battlefield as a copy of Voice of All, and the Doppelganger’s controller chooses blue. Later, the Doppelganger copies Quirion Elves, which has the ability, “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add one mana of the chosen color.” Even though a color was chosen for the Doppelganger, it wasn’t chosen for the ability linked to the mana ability copied from the Elves. If that mana ability of the Doppelganger is activated, it will not produce mana.
 .rule{id: "section-608"}
   .rule_id 608.
@@ -4164,7 +4173,7 @@
   .rule_text Each time all players pass in succession, the spell or ability on top of the stack resolves. (See rule <a href="#section-609">609</a>, “Effects.”)
 .rule{id: "section-608-2"}
   .rule_id 608.2.
-  .rule_text If the object that’s resolving is an instant spell, a sorcery spell, or an ability, its resolution may involve several steps. The steps described in rules <a href="#section-608-2a">608.2a</a> and <a href="#section-608-2b">608.2b</a> are followed first. The steps described in rules <a href="#section-608-2c">608.2c</a>–k are then followed as appropriate, in no specific order. The steps described in rule <a href="#section-608-2m">608.2m</a> and <a href="#section-608-2n">608.2n</a> are followed last.
+  .rule_text If the object that’s resolving is an instant spell, a sorcery spell, or an ability, its resolution may involve several steps. The steps described in rules <a href="#section-608-2a">608.2a</a> and <a href="#section-608-2b">608.2b</a> are followed first. The steps described in rules <a href="#section-608-2c">608.2c</a>–m are then followed as appropriate, in no specific order. The steps described in rule <a href="#section-608-2n">608.2n</a> and <a href="#section-608-2p">608.2p</a> are followed last.
 .rule{id: "section-608-2a"}
   .rule_id 608.2a
   .rule_text If a triggered ability has an intervening “if” clause, it checks whether the clause’s condition is true. If it isn’t, the ability is removed from the stack and does nothing. Otherwise, it continues to resolve. See rule <a href="#section-603-4">603.4</a>.
@@ -4196,21 +4205,25 @@
   .rule_text If an effect requires information from the game (such as the number of creatures on the battlefield), the answer is determined only once, when the effect is applied. If the effect requires information from a specific object, including the source of the ability itself, the effect uses the current information of that object if it’s in the public zone it was expected to be in; if it’s no longer in that zone, or if the effect has moved it from a public zone to a hidden zone, the effect uses the object’s last known information. See rule <a href="#section-113-7a">113.7a</a>. If an ability states that an object does something, it’s the object as it exists—or as it most recently existed—that does it, not the ability.
 .rule{id: "section-608-2i"}
   .rule_id 608.2i
-  .rule_text If an effect refers to certain characteristics, it checks only for the value of the specified characteristics, regardless of any related ones an object may also have.
-  .rule_text Example: An effect that reads “Destroy all black creatures” destroys a white-and-black creature, but one that reads “Destroy all nonblack creatures” doesn’t.
+  .rule_text Some effects look back in time and require information about previous game states and actions rather than considering the current game state. If such an effect requires information from the game about an object or group of objects, and that effect is not taking any actions on those objects, they don’t need to be currently in the zone they were in at the time of that previous game state or action, nor do they need to currently meet the criteria described in the action, as long as they did so at the specified time. This is an exception to <a href="#section-608-2h">608.2h</a>.
+  .rule_text Example: A player attacks with Bear Cub. Later in the turn, an effect causes Bear Cub to become a noncreature permanent. The same player then casts Search Party Captain, a spell that says in part “This spell costs <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span></span> less to cast for each creature you attacked with this turn.” That spell costs <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span></span> less because the player attacked with a creature, even though the Bear Cub they attacked with is no longer a creature.
 .rule{id: "section-608-2j"}
   .rule_id 608.2j
-  .rule_text If an ability’s effect refers to a specific untargeted object that has been previously referred to by that ability’s cost or trigger condition, it still affects that object even if the object has changed characteristics.
-  .rule_text Example: Wall of Tears says “Whenever Wall of Tears blocks a creature, return that creature to its owner’s hand at end of combat.” If Wall of Tears blocks a creature, then that creature ceases to be a creature before the triggered ability resolves, the permanent will still be returned to its owner’s hand.
+  .rule_text If an effect refers to certain characteristics, it checks only for the value of the specified characteristics, regardless of any related ones an object may also have.
+  .rule_text Example: An effect that reads “Destroy all black creatures” destroys a white-and-black creature, but one that reads “Destroy all nonblack creatures” doesn’t.
 .rule{id: "section-608-2k"}
   .rule_id 608.2k
-  .rule_text If an instant spell, sorcery spell, or ability that can legally resolve leaves the stack once it starts to resolve, it will continue to resolve fully.
+  .rule_text If an ability’s effect refers to a specific untargeted object that has been previously referred to by that ability’s cost or trigger condition, it still affects that object even if the object has changed characteristics.
+  .rule_text Example: Wall of Tears says “Whenever Wall of Tears blocks a creature, return that creature to its owner’s hand at end of combat.” If Wall of Tears blocks a creature, then that creature ceases to be a creature before the triggered ability resolves, the permanent will still be returned to its owner’s hand.
 .rule{id: "section-608-2m"}
   .rule_id 608.2m
-  .rule_text As the final part of an instant or sorcery spell’s resolution, the spell is put into its owner’s graveyard. As the final part of an ability’s resolution, the ability is removed from the stack and ceases to exist.
+  .rule_text If an instant spell, sorcery spell, or ability that can legally resolve leaves the stack once it starts to resolve, it will continue to resolve fully.
 .rule{id: "section-608-2n"}
   .rule_id 608.2n
-  .rule_text Once all possible steps described in <a href="#section-608-2c">608.2c</a>–m are completed, any abilities that trigger when that spell or ability resolves trigger.
+  .rule_text As the final part of an instant or sorcery spell’s resolution, the spell is put into its owner’s graveyard. As the final part of an ability’s resolution, the ability is removed from the stack and ceases to exist.
+.rule{id: "section-608-2p"}
+  .rule_id 608.2p
+  .rule_text Once all possible steps described in <a href="#section-608-2c">608.2c</a>–n are completed, any abilities that trigger when that spell or ability resolves trigger.
 .rule{id: "section-608-3"}
   .rule_id 608.3.
   .rule_text If the object that’s resolving is a permanent spell, its resolution may involve several steps. The instructions in rules <a href="#section-608-3a">608.3a</a> and b are always performed first. Then one of the steps in rule <a href="#section-608-3c">608.3c</a>–e is performed, if appropriate.
@@ -4229,7 +4242,7 @@
 .rule{id: "section-608-3e"}
   .rule_id 608.3e
   .rule_text If a permanent spell resolves but its controller can’t put it onto the battlefield, that player puts it into its owner’s graveyard.
-  .rule_text Example: Worms of the Earth has the ability “Lands can’t enter the battlefield.” Clone says “You may have Clone enter the battlefield as a copy of any creature on the battlefield.” If a player casts Clone and chooses to copy Dryad Arbor (a land creature) while Worms of the Earth is on the battlefield, Clone can’t enter the battlefield from the stack. It’s put into its owner’s graveyard.
+  .rule_text Example: Worms of the Earth has the ability “Lands can’t enter the battlefield.” Clone says “You may have Clone enter as a copy of any creature on the battlefield.” If a player casts Clone and chooses to copy Dryad Arbor (a land creature) while Worms of the Earth is on the battlefield, Clone can’t enter the battlefield from the stack. It’s put into its owner’s graveyard.
 .rule{id: "section-608-3f"}
   .rule_id 608.3f
   .rule_text If the object that’s resolving is a copy of a permanent spell, it will become a token permanent as it is put onto the battlefield in any of the steps above. A token put onto the battlefield this way is no longer a copy of a spell and is not “created” for the purposes of any rules or effects that refer to creating a token.
@@ -4278,10 +4291,6 @@
 .rule{id: "section-609-7c"}
   .rule_id 609.7c
   .rule_text Some effects from static abilities prevent or replace damage from sources with certain properties. For these effects, the prevention or replacement applies to sources that are permanents with that property and to any sources that aren’t on the battlefield that have that property.
-.rule{id: "section-609-8"}
-  .rule_id 609.8.
-  .rule_text Some effects look back in time and consider previous game states and actions rather than considering the current game state. If such an effect refers to an object or group of objects, those objects don’t need to be currently in the zone they were in at the time of the action, nor do they need to currently meet the criteria described in the action, as long as they did so at the specified time.
-  .rule_text Example: A player attacks with Bear Cub. Later in the turn, an effect causes Bear Cub to become a noncreature permanent. The same player then casts Search Party Captain, a spell that says in part “This spell costs <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span></span> less to cast for each creature you attacked with this turn.” That spell costs <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span></span> less because the player attacked with a creature, even though the Bear Cub they attacked with is no longer a creature.
 .rule{id: "section-610"}
   .rule_id 610.
   .rule_text One-Shot Effects
@@ -4337,7 +4346,7 @@
 .rule{id: "section-611-2b"}
   .rule_id 611.2b
   .rule_text Some continuous effects generated by the resolution of a spell or ability have durations worded “for as long as . . . .” If the “for as long as” duration never starts, or it ends before the moment the effect would first be applied, the effect does nothing. It doesn’t start and immediately stop again, and it doesn’t last forever.
-  .rule_text Example: Master Thief has the ability “When Master Thief enters the battlefield, gain control of target artifact for as long as you control Master Thief.” If you lose control of Master Thief before the ability resolves, it does nothing, because its duration—as long as you control Master Thief—was over before the effect began.
+  .rule_text Example: Master Thief has the ability “When Master Thief enters, gain control of target artifact for as long as you control Master Thief.” If you lose control of Master Thief before the ability resolves, it does nothing, because its duration—as long as you control Master Thief—was over before the effect began.
 .rule{id: "section-611-2c"}
   .rule_id 611.2c
   .rule_text If a continuous effect generated by the resolution of a spell or ability modifies the characteristics or changes the controller of any objects, the set of objects it affects is determined when that continuous effect begins. After that point, the set won’t change. (Note that this works differently than a continuous effect from a static ability.) A continuous effect generated by the resolution of a spell or ability that doesn’t modify the characteristics or change the controller of any objects modifies the rules of the game, so it can affect objects that weren’t affected when that continuous effect began. If a single continuous effect has parts that modify the characteristics or changes the controller of any objects and other parts that don’t, the set of objects each part applies to is determined independently.
@@ -4438,7 +4447,7 @@
   .rule_text Within layer 1, apply effects in a series of sublayers in the order described below. Within each sublayer, apply effects in timestamp order (see rule <a href="#section-613-7">613.7</a>). Note that dependency may alter the order in which effects are applied within a sublayer. (See rule <a href="#section-613-8">613.8</a>.)
 .rule{id: "section-613-2a"}
   .rule_id 613.2a
-  .rule_text Layer 1a: Copiable effects are applied. This includes copy effects (see rule <a href="#section-707">707</a>, “Copying Objects”) and changes to an object’s characteristics determined by merging an object with a permanent (see rule <a href="#section-727">727</a>, “Merging with Permanents”). “As . . . enters the battlefield” and “as . . . is turned face up” abilities generate copiable effects if they set power and toughness, even if they also define other characteristics.
+  .rule_text Layer 1a: Copiable effects are applied. This includes copy effects (see rule <a href="#section-707">707</a>, “Copying Objects”) and changes to an object’s characteristics determined by merging an object with a permanent (see rule <a href="#section-727">727</a>, “Merging with Permanents”). “As . . . enters” and “as . . . is turned face up” abilities generate copiable effects if they set power and toughness, even if they also define other characteristics.
 .rule{id: "section-613-2b"}
   .rule_id 613.2b
   .rule_text Layer 1b: Face-down spells and permanents have their characteristics modified as defined in rule <a href="#section-708-2">708.2</a>.
@@ -4555,10 +4564,10 @@
   .rule_text Effects that use the word “skip” are replacement effects. These replacement effects use the word “skip” to indicate what events, steps, phases, or turns will be replaced with nothing.
 .rule{id: "section-614-1c"}
   .rule_id 614.1c
-  .rule_text Effects that read “[This permanent] enters the battlefield with . . . ,” “As [this permanent] enters the battlefield . . . ,” or “[This permanent] enters the battlefield as . . . “ are replacement effects.
+  .rule_text Effects that read “[This permanent] enters with . . . ,” “As [this permanent] enters . . . ,” or “[This permanent] enters as . . . “ are replacement effects.
 .rule{id: "section-614-1d"}
   .rule_id 614.1d
-  .rule_text Continuous effects that read “[This permanent] enters the battlefield . . .” or “[Objects] enter the battlefield . . .” are replacement effects.
+  .rule_text Continuous effects that read “[This permanent] enters . . .” or “[Objects] enter [the battlefield] . . .” are replacement effects.
 .rule{id: "section-614-1e"}
   .rule_id 614.1e
   .rule_text Effects that read “As [this permanent] is turned face up . . . ,” are replacement effects.
@@ -4612,9 +4621,9 @@
 .rule{id: "section-614-12"}
   .rule_id 614.12.
   .rule_text Some replacement effects modify how a permanent enters the battlefield. (See rules <a href="#section-614-1c">614.1c</a>–d.) Such effects may come from the permanent itself if they affect only that permanent (as opposed to a general subset of permanents that includes it). They may also come from other sources. To determine which replacement effects apply and how they apply, check the characteristics of the permanent as it would exist on the battlefield, taking into account replacement effects that have already modified how it enters the battlefield (see rule <a href="#section-616-1">616.1</a>), continuous effects from the permanent’s own static abilities that would apply to it once it’s on the battlefield, and continuous effects that already exist and would apply to the permanent.
-  .rule_text Example: Voice of All says “As Voice of All enters the battlefield, choose a color” and “Voice of All has protection from the chosen color.” An effect creates a token that’s a copy of Voice of All. As that token is created, the token’s controller chooses a color for it.
-  .rule_text Example: Yixlid Jailer says “Cards in graveyards lose all abilities.” Scarwood Treefolk says “Scarwood Treefolk enters the battlefield tapped.” A Scarwood Treefolk that’s put onto the battlefield from a graveyard enters the battlefield tapped.
-  .rule_text Example: Orb of Dreams is an artifact that says “Permanents enter the battlefield tapped.” It won’t affect itself, so Orb of Dreams enters the battlefield untapped.
+  .rule_text Example: Voice of All says “As Voice of All enters, choose a color” and “Voice of All has protection from the chosen color.” An effect creates a token that’s a copy of Voice of All. As that token is created, the token’s controller chooses a color for it.
+  .rule_text Example: Yixlid Jailer says “Cards in graveyards lose all abilities.” Scarwood Treefolk says “Scarwood Treefolk enters tapped.” A Scarwood Treefolk that’s put onto the battlefield from a graveyard enters the battlefield tapped.
+  .rule_text Example: Orb of Dreams is an artifact that says “Permanents enter tapped.” It won’t affect itself, so Orb of Dreams enters the battlefield untapped.
 .rule{id: "section-614-12a"}
   .rule_id 614.12a
   .rule_text If a replacement effect that modifies how a permanent enters the battlefield requires a choice, that choice is made before the permanent enters the battlefield.
@@ -4627,7 +4636,7 @@
 .rule{id: "section-614-13a"}
   .rule_id 614.13a
   .rule_text While applying an effect that modifies how a permanent enters the battlefield, you may have to choose a number of objects that will also change zones. You can’t choose the object that will become that permanent or any other object entering the battlefield at the same time as that object.
-  .rule_text Example: Sutured Ghoul says, in part, “As Sutured Ghoul enters the battlefield, exile any number of creature cards from your graveyard.” If Sutured Ghoul and Runeclaw Bear enter the battlefield from your graveyard at the same time, you can’t choose to exile either of them when applying Sutured Ghoul’s replacement effect.
+  .rule_text Example: Sutured Ghoul says, in part, “As Sutured Ghoul enters, exile any number of creature cards from your graveyard.” If Sutured Ghoul and Runeclaw Bear enter the battlefield from your graveyard at the same time, you can’t choose to exile either of them when applying Sutured Ghoul’s replacement effect.
 .rule{id: "section-614-13b"}
   .rule_id 614.13b
   .rule_text The same object can’t be chosen to change zones more than once when applying replacement effects that modify how a single permanent enters the battlefield.
@@ -4635,7 +4644,7 @@
 .rule{id: "section-614-13c"}
   .rule_id 614.13c
   .rule_text While applying a replacement effect that modifies how a permanent enters the battlefield, another replacement effect may cause a player to mill cards or exile cards from the top of a library. In that case, any card that is entering the battlefield from that library won’t be included in that effect, even though those cards are in the library as the effect is applied.
-  .rule_text Example: Ashiok, Wicked Manipulator has an ability that reads “If you would pay life while your library has at least that many cards in it, exile that many cards from the top of your library instead.” Breeding Pool is a land that reads, in part, “As Breeding Pool enters the battlefield, you may pay 2 life.” If an effect allows a player to play Breeding Pool from the top of their library while they control Ashiok, and they choose to pay life as Breeding Pool enters, Ashiok’s replacement effect will ignore Breeding Pool, because it is entering the battlefield, and the next two cards will be exiled.
+  .rule_text Example: Ashiok, Wicked Manipulator has an ability that reads “If you would pay life while your library has at least that many cards in it, exile that many cards from the top of your library instead.” Breeding Pool is a land that reads, in part, “As Breeding Pool enters, you may pay 2 life.” If an effect allows a player to play Breeding Pool from the top of their library while they control Ashiok, and they choose to pay life as Breeding Pool enters, Ashiok’s replacement effect will ignore Breeding Pool, because it is entering the battlefield, and the next two cards will be exiled.
 .rule{id: "section-614-14"}
   .rule_id 614.14.
   .rule_text An object may have one ability printed on it that generates a replacement effect which causes one or more cards to be exiled, and another ability that refers either to “the exiled cards” or to cards “exiled with [this object].” These abilities are linked: the second refers only to cards in the exile zone that were put there as a direct result of the replacement event caused by the first. If another object gains a pair of linked abilities, the abilities will be similarly linked on that object. They can’t be linked to any other ability, regardless of what other abilities the object may currently have or may have had in the past. See rule <a href="#section-607">607</a>, “Linked Abilities.”
@@ -4736,11 +4745,11 @@
   .rule_id 616.1f
   .rule_text Once the chosen effect has been applied, this process is repeated (taking into account only replacement or prevention effects that would now be applicable) until there are no more left to apply.
   .rule_text Example: Two permanents are on the battlefield. One is an enchantment that reads “If a card would be put into a graveyard from anywhere, instead exile it,” and the other is a creature that reads “If [this creature] would die, instead shuffle it into its owner’s library.” If the creature is destroyed, its controller decides which replacement to apply first; the other does nothing.
-  .rule_text Example: Essence of the Wild reads “Creatures you control enter the battlefield as a copy of Essence of the Wild.” A player who controls Essence of the Wild casts Rusted Sentinel, which normally enters the battlefield tapped. As it enters the battlefield, the copy effect from Essence of the Wild is applied first. As a result, it no longer has the ability that causes it to enter the battlefield tapped. Rusted Sentinel will enter the battlefield as an untapped copy of Essence of the Wild.
+  .rule_text Example: Essence of the Wild reads “Creatures you control enter as a copy of Essence of the Wild.” A player who controls Essence of the Wild casts Rusted Sentinel, which normally enters the battlefield tapped. As it enters the battlefield, the copy effect from Essence of the Wild is applied first. As a result, it no longer has the ability that causes it to enter the battlefield tapped. Rusted Sentinel will enter the battlefield as an untapped copy of Essence of the Wild.
 .rule{id: "section-616-1g"}
   .rule_id 616.1g
   .rule_text While following the steps in <a href="#section-616-1a">616.1a</a>–f, one replacement or prevention effect may apply to an event, and another may apply to an event contained within the first event. In this case, the second effect can’t be chosen until after the first effect has been chosen.
-  .rule_text Example: A player is instructed to create a token that’s a copy of Voice of All, which has the ability “As Voice of All enters the battlefield, choose a color.” Doubling Season has an ability that reads “If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.” Because entering the battlefield is an event contained within the event of creating a token, the effect of Doubling Season must be applied first, and then the effects of the two Voice of All tokens may be applied in either order.
+  .rule_text Example: A player is instructed to create a token that’s a copy of Voice of All, which has the ability “As Voice of All enters, choose a color.” Doubling Season has an ability that reads “If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.” Because entering the battlefield is an event contained within the event of creating a token, the effect of Doubling Season must be applied first, and then the effects of the two Voice of All tokens may be applied in either order.
 .rule{id: "section-616-2"}
   .rule_id 616.2.
   .rule_text A replacement or prevention effect can become applicable to an event as the result of another replacement or prevention effect that modifies the event.
@@ -4782,6 +4791,9 @@
 .rule{id: "section-700-2h"}
   .rule_id 700.2h
   .rule_text Some modal spells use plus signs (+) rather than bullet points, with each plus sign followed by a cost. This indicates that each mode has an additional cost that must be paid as the spell is cast if that mode is chosen. If more than one such mode is chosen, all additional costs must be paid to cast that spell. Paying these costs follows the rules for paying additional costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
+.rule{id: "section-700-2i"}
+  .rule_id 700.2i
+  .rule_text Some modal spells have one or more pawprint symbols (<span class="manacost"><span class="mana mana-p"><span class="sr-only">{P}</span></span></span>) rather than bullet points, as well as an instruction to choose up to a specified number of <span class="manacost"><span class="mana mana-p"><span class="sr-only">{P}</span></span></span> “worth of modes.” While casting such a spell, its controller can choose any number of modes such that the total number of pawprint symbols listed for the chosen modes is not greater than the specified number.
 .rule{id: "section-700-3"}
   .rule_id 700.3.
   .rule_text Some effects cause objects to be temporarily grouped into piles.
@@ -4848,6 +4860,13 @@
 .rule{id: "section-700-13"}
   .rule_id 700.13.
   .rule_text Some cards refer to committing a crime. A player commits a crime as that player casts a spell, activates an ability, or puts a triggered ability on the stack and that spell or ability targets at least one opponent; at least one permanent, spell, or ability an opponent controls; and/or at least one card in an opponent’s graveyard.
+.rule{id: "section-700-14"}
+  .rule_id 700.14.
+  .rule_text Some abilities trigger “Whenever you expend N.” A player expends N if they pay a cost to cast a spell and the amount of mana that player spent this turn to cast spells prior to paying that cost was less than N and became at least N after paying that cost.
+  .rule_text Example: A player casts Bark-Knuckle Boxer, which costs <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span><span class="mana mana-cost mana-g"><span class="sr-only">{G}</span></span></span> and reads “Whenever you expend 4, Bark-Knuckle Boxer gains indestructible until end of turn.” After it resolves, that play casts Divination, a spell that costs <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span></span>. Prior to paying the cost to cast Divination, that player has spent two mana to cast spells this turn. After paying the cost, they have spent five mana to cast spells this turn. Since they have now spent at least four mana to cast spells this turn, Bark-Knuckle Boxer’s ability triggers.
+.rule{id: "section-700-15"}
+  .rule_id 700.15.
+  .rule_text The term enter[s] is short for “enter[s] the battlefield.”
 .rule{id: "section-701"}
   .rule_id 701.
   .rule_text Keyword Actions
@@ -5132,7 +5151,7 @@
 .rule{id: "section-701-20d"}
   .rule_id 701.20d
   .rule_text If an effect would cause a player to shuffle a set of objects into a library, that library is shuffled even if there are no objects in that set.
-  .rule_text Example: Loaming Shaman says “When Loaming Shaman enters the battlefield, target player shuffles any number of target cards from their graveyard into their library.” It enters the battlefield, its ability triggers, and no cards are targeted. When the ability resolves, the targeted player will still have to shuffle their library.
+  .rule_text Example: Loaming Shaman says “When Loaming Shaman enters, target player shuffles any number of target cards from their graveyard into their library.” It enters the battlefield, its ability triggers, and no cards are targeted. When the ability resolves, the targeted player will still have to shuffle their library.
 .rule{id: "section-701-20e"}
   .rule_id 701.20e
   .rule_text If an effect causes a player to shuffle a library containing zero or one cards, abilities that trigger when a library is shuffled will still trigger.
@@ -5618,6 +5637,12 @@
 .rule{id: "section-701-58d"}
   .rule_id 701.58d
   .rule_text A suspected permanent can’t become suspected again.
+.rule{id: "section-701-59"}
+  .rule_id 701.59.
+  .rule_text Forage
+.rule{id: "section-701-59a"}
+  .rule_id 701.59a
+  .rule_text To forage means “Exile three cards from your graveyard or sacrifice a Food.”
 .rule{id: "section-702"}
   .rule_id 702.
   .rule_text Keyword Abilities
@@ -6166,7 +6191,7 @@
   .rule_text Fading
 .rule{id: "section-702-32a"}
   .rule_id 702.32a
-  .rule_text Fading is a keyword that represents two abilities. “Fading N” means “This permanent enters the battlefield with N fade counters on it” and “At the beginning of your upkeep, remove a fade counter from this permanent. If you can’t, sacrifice the permanent.”
+  .rule_text Fading is a keyword that represents two abilities. “Fading N” means “This permanent enters with N fade counters on it” and “At the beginning of your upkeep, remove a fade counter from this permanent. If you can’t, sacrifice the permanent.”
 .rule{id: "section-702-33"}
   .rule_id 702.33.
   .rule_text Kicker
@@ -6253,7 +6278,7 @@
   .rule_text Amplify
 .rule{id: "section-702-38a"}
   .rule_id 702.38a
-  .rule_text Amplify is a static ability. “Amplify N” means “As this object enters the battlefield, reveal any number of cards from your hand that share a creature type with it. This permanent enters the battlefield with N +1/+1 counters on it for each card revealed this way. You can’t reveal this card or any other cards that are entering the battlefield at the same time as this card.”
+  .rule_text Amplify is a static ability. “Amplify N” means “As this object enters, reveal any number of cards from your hand that share a creature type with it. This permanent enters with N +1/+1 counters on it for each card revealed this way. You can’t reveal this card or any other cards that are entering the battlefield at the same time as this card.”
 .rule{id: "section-702-38b"}
   .rule_id 702.38b
   .rule_text If a creature has multiple instances of amplify, each one works separately.
@@ -6298,7 +6323,7 @@
   .rule_text Modular
 .rule{id: "section-702-43a"}
   .rule_id 702.43a
-  .rule_text Modular represents both a static ability and a triggered ability. “Modular N” means “This permanent enters the battlefield with N +1/+1 counters on it” and “When this permanent is put into a graveyard from the battlefield, you may put a +1/+1 counter on target artifact creature for each +1/+1 counter on this permanent.”
+  .rule_text Modular represents both a static ability and a triggered ability. “Modular N” means “This permanent enters with N +1/+1 counters on it” and “When this permanent is put into a graveyard from the battlefield, you may put a +1/+1 counter on target artifact creature for each +1/+1 counter on this permanent.”
 .rule{id: "section-702-43b"}
   .rule_id 702.43b
   .rule_text If a creature has multiple instances of modular, each one works separately.
@@ -6307,14 +6332,14 @@
   .rule_text Sunburst
 .rule{id: "section-702-44a"}
   .rule_id 702.44a
-  .rule_text Sunburst is a static ability that functions as an object is entering the battlefield. “Sunburst” means “If this object is entering the battlefield as a creature, ignoring any type-changing effects that would affect it, it enters the battlefield with a +1/+1 counter on it for each color of mana spent to cast it. Otherwise, it enters the battlefield with a charge counter on it for each color of mana spent to cast it.”
+  .rule_text Sunburst is a static ability that functions as an object is entering the battlefield. “Sunburst” means “If this object is entering as a creature, ignoring any type-changing effects that would affect it, it enters with a +1/+1 counter on it for each color of mana spent to cast it. Otherwise, it enters with a charge counter on it for each color of mana spent to cast it.”
 .rule{id: "section-702-44b"}
   .rule_id 702.44b
   .rule_text Sunburst adds counters only if the object with sunburst is entering the battlefield from the stack as a resolving spell and only if one or more colored mana was spent on its costs, including additional or alternative costs.
 .rule{id: "section-702-44c"}
   .rule_id 702.44c
   .rule_text Sunburst can also be used to set a variable number for another ability. If the keyword is used in this way, it doesn’t matter whether the ability is on a creature spell or on a noncreature spell.
-  .rule_text Example: The ability “Modular—Sunburst” means “This permanent enters the battlefield with a +1/+1 counter on it for each color of mana spent to cast it” and “When this permanent is put into a graveyard from the battlefield, you may put a +1/+1 counter on target artifact creature for each +1/+1 counter on this permanent.”
+  .rule_text Example: The ability “Modular—Sunburst” means “This permanent enters with a +1/+1 counter on it for each color of mana spent to cast it” and “When this permanent is put into a graveyard from the battlefield, you may put a +1/+1 counter on target artifact creature for each +1/+1 counter on this permanent.”
 .rule{id: "section-702-44d"}
   .rule_id 702.44d
   .rule_text If an object has multiple instances of sunburst, each one works separately.
@@ -6431,10 +6456,10 @@
   .rule_text Bloodthirst
 .rule{id: "section-702-54a"}
   .rule_id 702.54a
-  .rule_text Bloodthirst is a static ability. “Bloodthirst N” means “If an opponent was dealt damage this turn, this permanent enters the battlefield with N +1/+1 counters on it.”
+  .rule_text Bloodthirst is a static ability. “Bloodthirst N” means “If an opponent was dealt damage this turn, this permanent enters with N +1/+1 counters on it.”
 .rule{id: "section-702-54b"}
   .rule_id 702.54b
-  .rule_text “Bloodthirst X” is a special form of bloodthirst. “Bloodthirst X” means “This permanent enters the battlefield with X +1/+1 counters on it, where X is the total damage your opponents have been dealt this turn.”
+  .rule_text “Bloodthirst X” is a special form of bloodthirst. “Bloodthirst X” means “This permanent enters with X +1/+1 counters on it, where X is the total damage your opponents have been dealt this turn.”
 .rule{id: "section-702-54c"}
   .rule_id 702.54c
   .rule_text If an object has multiple instances of bloodthirst, each applies separately.
@@ -6473,7 +6498,7 @@
   .rule_text Graft
 .rule{id: "section-702-58a"}
   .rule_id 702.58a
-  .rule_text Graft represents both a static ability and a triggered ability. “Graft N” means “This permanent enters the battlefield with N +1/+1 counters on it” and “Whenever another creature enters the battlefield, if this permanent has a +1/+1 counter on it, you may move a +1/+1 counter from this permanent onto that creature.”
+  .rule_text Graft represents both a static ability and a triggered ability. “Graft N” means “This permanent enters with N +1/+1 counters on it” and “Whenever another creature enters, if this permanent has a +1/+1 counter on it, you may move a +1/+1 counter from this permanent onto that creature.”
 .rule{id: "section-702-58b"}
   .rule_id 702.58b
   .rule_text If a permanent has multiple instances of graft, each one works separately.
@@ -6524,7 +6549,7 @@
   .rule_text Vanishing
 .rule{id: "section-702-63a"}
   .rule_id 702.63a
-  .rule_text Vanishing is a keyword that represents three abilities. “Vanishing N” means “This permanent enters the battlefield with N time counters on it,” “At the beginning of your upkeep, if this permanent has a time counter on it, remove a time counter from it,” and “When the last time counter is removed from this permanent, sacrifice it.”
+  .rule_text Vanishing is a keyword that represents three abilities. “Vanishing N” means “This permanent enters with N time counters on it,” “At the beginning of your upkeep, if this permanent has a time counter on it, remove a time counter from it,” and “When the last time counter is removed from this permanent, sacrifice it.”
 .rule{id: "section-702-63b"}
   .rule_id 702.63b
   .rule_text Vanishing without a number means “At the beginning of your upkeep, if this permanent has a time counter on it, remove a time counter from it” and “When the last time counter is removed from this permanent, sacrifice it.”
@@ -6616,7 +6641,7 @@
   .rule_text Champion
 .rule{id: "section-702-72a"}
   .rule_id 702.72a
-  .rule_text Champion represents two triggered abilities. “Champion an [object]” means “When this permanent enters the battlefield, sacrifice it unless you exile another [object] you control” and “When this permanent leaves the battlefield, return the exiled card to the battlefield under its owner’s control.”
+  .rule_text Champion represents two triggered abilities. “Champion an [object]” means “When this permanent enters, sacrifice it unless you exile another [object] you control” and “When this permanent leaves the battlefield, return the exiled card to the battlefield under its owner’s control.”
 .rule{id: "section-702-72b"}
   .rule_id 702.72b
   .rule_text The two abilities represented by champion are linked. See rule <a href="#section-607">607</a>, “Linked Abilities.”
@@ -6634,16 +6659,16 @@
   .rule_text Evoke
 .rule{id: "section-702-74a"}
   .rule_id 702.74a
-  .rule_text Evoke represents two abilities: a static ability that functions in any zone from which the card with evoke can be cast and a triggered ability that functions on the battlefield. “Evoke [cost]” means “You may cast this card by paying [cost] rather than paying its mana cost” and “When this permanent enters the battlefield, if its evoke cost was paid, its controller sacrifices it.” Casting a spell for its evoke cost follows the rules for paying alternative costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
+  .rule_text Evoke represents two abilities: a static ability that functions in any zone from which the card with evoke can be cast and a triggered ability that functions on the battlefield. “Evoke [cost]” means “You may cast this card by paying [cost] rather than paying its mana cost” and “When this permanent enters, if its evoke cost was paid, its controller sacrifices it.” Casting a spell for its evoke cost follows the rules for paying alternative costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
 .rule{id: "section-702-75"}
   .rule_id 702.75.
   .rule_text Hideaway
 .rule{id: "section-702-75a"}
   .rule_id 702.75a
-  .rule_text Hideaway is a triggered ability. “Hideaway N” means “When this permanent enters the battlefield, look at the top N cards of your library. Exile one of them face down and put the rest on the bottom of your library in a random order. The exiled card gains ‘The player who controls the permanent that exiled this card may look at this card in the exile zone.’”
+  .rule_text Hideaway is a triggered ability. “Hideaway N” means “When this permanent enters, look at the top N cards of your library. Exile one of them face down and put the rest on the bottom of your library in a random order. The exiled card gains ‘The player who controls the permanent that exiled this card may look at this card in the exile zone.’”
 .rule{id: "section-702-75b"}
   .rule_id 702.75b
-  .rule_text Previously, the rules for the hideaway ability caused the permanent to enter the battlefield tapped, and the number of cards the player looked at was fixed at four. Cards printed before this rules change had the printed text “Hideaway” with no numeral after the word. Those older cards have received errata in the Oracle card reference to have “Hideaway 4” and the additional ability “[This permanent] enters the battlefield tapped.”
+  .rule_text Previously, the rules for the hideaway ability caused the permanent to enter the battlefield tapped, and the number of cards the player looked at was fixed at four. Cards printed before this rules change had the printed text “Hideaway” with no numeral after the word. Those older cards have received errata in the Oracle card reference to have “Hideaway 4” and the additional ability “[This permanent] enters tapped.”
 .rule{id: "section-702-76"}
   .rule_id 702.76.
   .rule_text Prowl
@@ -6700,13 +6725,13 @@
   .rule_text Devour
 .rule{id: "section-702-82a"}
   .rule_id 702.82a
-  .rule_text Devour is a static ability. “Devour N” means “As this object enters the battlefield, you may sacrifice any number of creatures. This permanent enters the battlefield with N +1/+1 counters on it for each creature sacrificed this way.”
+  .rule_text Devour is a static ability. “Devour N” means “As this object enters, you may sacrifice any number of creatures. This permanent enters with N +1/+1 counters on it for each creature sacrificed this way.”
 .rule{id: "section-702-82b"}
   .rule_id 702.82b
   .rule_text Some objects have abilities that refer to the number of creatures the permanent devoured. “It devoured” means “sacrificed as a result of its devour ability as it entered the battlefield.”
 .rule{id: "section-702-82c"}
   .rule_id 702.82c
-  .rule_text Devour [quality] is a variant of devour. “Devour [quality] N” means “As this object enters the battlefield, you may sacrifice any number of [quality] permanents. This permanent enters the battlefield with N +1/+1 counters on it for each permanent sacrificed this way.”
+  .rule_text Devour [quality] is a variant of devour. “Devour [quality] N” means “As this object enters, you may sacrifice any number of [quality] permanents. This permanent enters with N +1/+1 counters on it for each permanent sacrificed this way.”
 .rule{id: "section-702-83"}
   .rule_id 702.83.
   .rule_text Exalted
@@ -6811,7 +6836,7 @@
   .rule_text Living Weapon
 .rule{id: "section-702-92a"}
   .rule_id 702.92a
-  .rule_text Living weapon is a triggered ability. “Living weapon” means “When this Equipment enters the battlefield, create a 0/0 black Phyrexian Germ creature token, then attach this Equipment to it.”
+  .rule_text Living weapon is a triggered ability. “Living weapon” means “When this Equipment enters, create a 0/0 black Phyrexian Germ creature token, then attach this Equipment to it.”
 .rule{id: "section-702-93"}
   .rule_id 702.93.
   .rule_text Undying
@@ -6832,7 +6857,7 @@
   .rule_text Soulbond
 .rule{id: "section-702-95a"}
   .rule_id 702.95a
-  .rule_text Soulbond is a keyword that represents two triggered abilities. “Soulbond” means “When this creature enters the battlefield, if you control both this creature and another creature and both are unpaired, you may pair this creature with another unpaired creature you control for as long as both remain creatures on the battlefield under your control” and “Whenever another creature enters the battlefield under your control, if you control both that creature and this one and both are unpaired, you may pair that creature with this creature for as long as both remain creatures on the battlefield under your control.”
+  .rule_text Soulbond is a keyword that represents two triggered abilities. “Soulbond” means “When this creature enters, if you control both this creature and another creature and both are unpaired, you may pair this creature with another unpaired creature you control for as long as both remain creatures on the battlefield under your control” and “Whenever another creature you control enters, if you control both that creature and this one and both are unpaired, you may pair that creature with this creature for as long as both remain creatures on the battlefield under your control.”
 .rule{id: "section-702-95b"}
   .rule_id 702.95b
   .rule_text A creature becomes “paired” with another as the result of a soulbond ability. Abilities may refer to a paired creature, the creature another creature is paired with, or whether a creature is paired. An “unpaired” creature is one that is not paired.
@@ -6868,7 +6893,7 @@
   .rule_text Unleash
 .rule{id: "section-702-98a"}
   .rule_id 702.98a
-  .rule_text Unleash is a keyword that represents two static abilities. “Unleash” means “You may have this permanent enter the battlefield with an additional +1/+1 counter on it” and “This permanent can’t block as long as it has a +1/+1 counter on it.”
+  .rule_text Unleash is a keyword that represents two static abilities. “Unleash” means “You may have this permanent enter with an additional +1/+1 counter on it” and “This permanent can’t block as long as it has a +1/+1 counter on it.”
 .rule{id: "section-702-99"}
   .rule_id 702.99.
   .rule_text Cipher
@@ -6886,7 +6911,7 @@
   .rule_text Evolve
 .rule{id: "section-702-100a"}
   .rule_id 702.100a
-  .rule_text Evolve is a triggered ability. “Evolve” means “Whenever a creature enters the battlefield under your control, if that creature’s power is greater than this creature’s power and/or that creature’s toughness is greater than this creature’s toughness, put a +1/+1 counter on this creature.”
+  .rule_text Evolve is a triggered ability. “Evolve” means “Whenever a creature you control enters, if that creature’s power is greater than this creature’s power and/or that creature’s toughness is greater than this creature’s toughness, put a +1/+1 counter on this creature.”
 .rule{id: "section-702-100b"}
   .rule_id 702.100b
   .rule_text A creature “evolves” when one or more +1/+1 counters are put on it as a result of its evolve ability resolving.
@@ -6951,7 +6976,7 @@
   .rule_text Tribute
 .rule{id: "section-702-104a"}
   .rule_id 702.104a
-  .rule_text Tribute is a static ability that functions as the creature with tribute is entering the battlefield. “Tribute N” means “As this creature enters the battlefield, choose an opponent. That player may put an additional N +1/+1 counters on it as it enters the battlefield.”
+  .rule_text Tribute is a static ability that functions as the creature with tribute is entering the battlefield. “Tribute N” means “As this creature enters, choose an opponent. That player may put an additional N +1/+1 counters on it as it enters.”
 .rule{id: "section-702-104b"}
   .rule_id 702.104b
   .rule_text Objects with tribute have triggered abilities that check “if tribute wasn’t paid.” This condition is true if the opponent chosen as a result of the tribute ability didn’t have the creature enter the battlefield with +1/+1 counters as specified by the creature’s tribute ability.
@@ -7011,7 +7036,7 @@
   .rule_text Exploit
 .rule{id: "section-702-110a"}
   .rule_id 702.110a
-  .rule_text Exploit is a triggered ability. “Exploit” means “When this creature enters the battlefield, you may sacrifice a creature.”
+  .rule_text Exploit is a triggered ability. “Exploit” means “When this creature enters, you may sacrifice a creature.”
 .rule{id: "section-702-110b"}
   .rule_id 702.110b
   .rule_text A creature with exploit “exploits a creature” when the controller of the exploit ability sacrifices a creature as that ability resolves.
@@ -7137,7 +7162,7 @@
   .rule_text Fabricate
 .rule{id: "section-702-123a"}
   .rule_id 702.123a
-  .rule_text Fabricate is a triggered ability. “Fabricate N” means “When this permanent enters the battlefield, you may put N +1/+1 counters on it. If you don’t, create N 1/1 colorless Servo artifact creature tokens.”
+  .rule_text Fabricate is a triggered ability. “Fabricate N” means “When this permanent enters, you may put N +1/+1 counters on it. If you don’t, create N 1/1 colorless Servo artifact creature tokens.”
 .rule{id: "section-702-123b"}
   .rule_id 702.123b
   .rule_text If a permanent has multiple instances of fabricate, each triggers separately.
@@ -7170,7 +7195,7 @@
   .rule_text “Partner” means “You may designate two legendary creature cards as your commander rather than one if each of them has partner.”
 .rule{id: "section-702-124i"}
   .rule_id 702.124i
-  .rule_text “Partner with [name]” represents two abilities. It means “You may designate two legendary creature cards as your commander rather than one if each has a ‘partner with [name]’ ability with the other’s name” and “When this permanent enters the battlefield, target player may search their library for a card named [name], reveal it, put it into their hand, then shuffle.”
+  .rule_text “Partner with [name]” represents two abilities. It means “You may designate two legendary creature cards as your commander rather than one if each has a ‘partner with [name]’ ability with the other’s name” and “When this permanent enters, target player may search their library for a card named [name], reveal it, put it into their hand, then shuffle.”
 .rule{id: "section-702-124j"}
   .rule_id 702.124j
   .rule_text “Friends forever” means “You may designate two legendary creature cards as your commander rather than one if each of them has friends forever.”
@@ -7290,7 +7315,7 @@
   .rule_text Riot
 .rule{id: "section-702-136a"}
   .rule_id 702.136a
-  .rule_text Riot is a static ability. “Riot” means “You may have this permanent enter the battlefield with an additional +1/+1 counter on it. If you don’t, it gains haste.”
+  .rule_text Riot is a static ability. “Riot” means “You may have this permanent enter with an additional +1/+1 counter on it. If you don’t, it gains haste.”
 .rule{id: "section-702-136b"}
   .rule_id 702.136b
   .rule_text If a permanent has multiple instances of riot, each works separately.
@@ -7311,7 +7336,7 @@
   .rule_text A spell or permanent “escaped” if that spell or the spell that became that permanent as it resolved was cast from a graveyard with an escape ability.
 .rule{id: "section-702-138c"}
   .rule_id 702.138c
-  .rule_text An ability that reads “[This permanent] escapes with [one or more of a kind of counter]” means “If this permanent escaped, it enters the battlefield with [those counters]” That ability may have a triggered ability linked to it that triggers “When it enters the battlefield this way.” (See rule <a href="#section-603-11">603.11</a>.) Such a triggered ability triggers when that permanent enters the battlefield after its replacement effect was applied, even if that replacement effect had no effect.
+  .rule_text An ability that reads “[This permanent] escapes with [one or more of a kind of counter]” means “If this permanent escaped, it enters with [those counters]” That ability may have a triggered ability linked to it that triggers “When it enters this way.” (See rule <a href="#section-603-11">603.11</a>.) Such a triggered ability triggers when that permanent enters the battlefield after its replacement effect was applied, even if that replacement effect had no effect.
 .rule{id: "section-702-138d"}
   .rule_id 702.138d
   .rule_text An ability that reads “[This permanent] escapes with [ability]” means “If this permanent escaped, it has [ability].”
@@ -7398,7 +7423,7 @@
   .rule_text Daybound and nightbound are found on opposite faces of some transforming double-faced cards (see rule <a href="#section-712">712</a>, “Double-Faced Cards”).
 .rule{id: "section-702-145b"}
   .rule_id 702.145b
-  .rule_text Daybound is found on the front faces of some transforming double-faced cards and represents three static abilities. “Daybound” means “If it is night and this permanent is represented by a transforming double-faced card, it enters the battlefield transformed,” “As it becomes night, if this permanent is front face up, transform it,” and “This permanent can’t transform except due to its daybound ability.” See rule <a href="#section-727">727</a>, “Day and Night.”
+  .rule_text Daybound is found on the front faces of some transforming double-faced cards and represents three static abilities. “Daybound” means “If it is night and this permanent is represented by a transforming double-faced card, it enters transformed,” “As it becomes night, if this permanent is front face up, transform it,” and “This permanent can’t transform except due to its daybound ability.” See rule <a href="#section-727">727</a>, “Day and Night.”
 .rule{id: "section-702-145c"}
   .rule_id 702.145c
   .rule_text Any time a player controls a permanent that is front face up with daybound and it’s night, that player transforms that permanent. This happens immediately and isn’t a state-based action.
@@ -7455,7 +7480,7 @@
   .rule_text Compleated
 .rule{id: "section-702-150a"}
   .rule_id 702.150a
-  .rule_text Compleated is a static ability found on some planeswalker cards. Compleated means “If this permanent would enter the battlefield with one or more loyalty counters on it and the player who cast it chose to pay life for any part of its cost represented by Phyrexian mana symbols, it instead enters the battlefield with that many loyalty counters minus two for each of those mana symbols.”
+  .rule_text Compleated is a static ability found on some planeswalker cards. Compleated means “If this permanent would enter with one or more loyalty counters on it and the player who cast it chose to pay life for any part of its cost represented by Phyrexian mana symbols, it instead enters the battlefield with that many loyalty counters minus two for each of those mana symbols.”
 .rule{id: "section-702-151"}
   .rule_id 702.151.
   .rule_text Reconfigure
@@ -7515,13 +7540,13 @@
   .rule_text Ravenous
 .rule{id: "section-702-156a"}
   .rule_id 702.156a
-  .rule_text Ravenous is a keyword found on some creature cards with <span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span> in their mana cost. Ravenous represents both a replacement effect and a triggered ability. “Ravenous” means “This permanent enters the battlefield with X +1/+1 counters on it” and “When this permanent enters the battlefield, if X is 5 or more, draw a card.” See rule <a href="#section-107-3m">107.3m</a>.
+  .rule_text Ravenous is a keyword found on some creature cards with <span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span> in their mana cost. Ravenous represents both a replacement effect and a triggered ability. “Ravenous” means “This permanent enters with X +1/+1 counters on it” and “When this permanent enters, if X is 5 or more, draw a card.” See rule <a href="#section-107-3m">107.3m</a>.
 .rule{id: "section-702-157"}
   .rule_id 702.157.
   .rule_text Squad
 .rule{id: "section-702-157a"}
   .rule_id 702.157a
-  .rule_text Squad is a keyword that represents two linked abilities. The first is a static ability that functions while the creature spell with squad is on the stack. The second is a triggered ability that functions when the creature with squad enters the battlefield. “Squad [cost]” means “As an additional cost to cast this spell, you may pay [cost] any number of times” and “When this creature enters the battlefield, if its squad cost was paid, create a token that’s a copy of it for each time its squad cost was paid.” Paying a spell’s squad cost follows the rules for paying additional costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
+  .rule_text Squad is a keyword that represents two linked abilities. The first is a static ability that functions while the creature spell with squad is on the stack. The second is a triggered ability that functions when the creature with squad enters the battlefield. “Squad [cost]” means “As an additional cost to cast this spell, you may pay [cost] any number of times” and “When this creature enters, if its squad cost was paid, create a token that’s a copy of it for each time its squad cost was paid.” Paying a spell’s squad cost follows the rules for paying additional costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
 .rule{id: "section-702-157b"}
   .rule_id 702.157b
   .rule_text If a spell has multiple instances of squad, each is paid separately. If a permanent has multiple instances of squad, each triggers based on the payments made for that squad ability as it was cast, not based on payments for any other instance of squad.
@@ -7575,7 +7600,7 @@
   .rule_text For Mirrodin!
 .rule{id: "section-702-163a"}
   .rule_id 702.163a
-  .rule_text For Mirrodin! is a triggered ability. “For Mirrodin!” means “When this Equipment enters the battlefield, create a 2/2 red Rebel creature token, then attach this Equipment to it.”
+  .rule_text For Mirrodin! is a triggered ability. “For Mirrodin!” means “When this Equipment enters, create a 2/2 red Rebel creature token, then attach this Equipment to it.”
 .rule{id: "section-702-164"}
   .rule_id 702.164.
   .rule_text Toxic
@@ -7594,7 +7619,7 @@
   .rule_text Backup
 .rule{id: "section-702-165a"}
   .rule_id 702.165a
-  .rule_text Backup is a triggered ability. “Backup N” means “When this creature enters the battlefield, put N +1/+1 counters on target creature. If that’s another creature, it also gains the non-backup abilities of this creature printed below this one until end of turn.” Cards with backup have one or more abilities printed after the backup ability. (Some cards with backup also have abilities printed before the backup ability.)
+  .rule_text Backup is a triggered ability. “Backup N” means “When this creature enters, put N +1/+1 counters on target creature. If that’s another creature, it also gains the non-backup abilities of this creature printed below this one until end of turn.” Cards with backup have one or more abilities printed after the backup ability. (Some cards with backup also have abilities printed before the backup ability.)
 .rule{id: "section-702-165b"}
   .rule_id 702.165b
   .rule_text If a permanent enters the battlefield as a copy of a permanent with a backup ability or a token is created that is a copy of that permanent, the order of abilities printed on it is maintained.
@@ -7709,6 +7734,60 @@
 .rule{id: "section-702-172b"}
   .rule_id 702.172b
   .rule_text Cards with the spree ability have a plus sign icon in the upper right corner of the card. This symbol is a visual reminder that this card requires an additional cost to be cast. This icon has no rules meaning.
+.rule{id: "section-702-173"}
+  .rule_id 702.173.
+  .rule_text Freerunning
+.rule{id: "section-702-173a"}
+  .rule_id 702.173a
+  .rule_text Freerunning is a static ability that functions on the stack. “Freerunning [cost]” means “You may pay [cost] rather than pay this spell’s mana cost if a player was dealt combat damage this turn by a creature that, at the time it dealt that damage, was an Assassin creature or a commander under your control.” Casting a spell for its freerunning cost follows the rules for paying alternative costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
+.rule{id: "section-702-174"}
+  .rule_id 702.174.
+  .rule_text Gift
+.rule{id: "section-702-174a"}
+  .rule_id 702.174a
+  .rule_text Gift is a keyword that represents two abilities. It is written “Gift a [something].” The first ability is a static ability that functions while the card with gift is on the stack, and the second is either a static ability that functions while the card with gift is on the stack or a triggered ability that functions while the card with gift is on the battlefield. The first ability is always “As an additional cost to cast this spell, you may choose an opponent.” Paying a spell’s gift cost follows the rules for paying additional costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h. The second ability depends on the [something] listed as well as whether the object with the ability is a permanent or an instant or sorcery spell.
+.rule{id: "section-702-174b"}
+  .rule_id 702.174b
+  .rule_text On a permanent, the second ability represented by gift is “When this permanent enters, if its gift cost was paid, [effect].” On an instant or sorcery spell, the second ability represented by gift is “If this spell’s gift cost was paid, [effect].” The specific effect is defined by the [something] listed.
+.rule{id: "section-702-174c"}
+  .rule_id 702.174c
+  .rule_text Some effects trigger whenever a player gives a gift. Such an ability triggers whenever an instant or sorcery spell that player controls whose gift cost was paid resolves. It also triggers whenever the gift triggered ability of a permanent that player controls resolves.
+.rule{id: "section-702-174d"}
+  .rule_id 702.174d
+  .rule_text “Gift a Food” means the effect is “The chosen player creates a Food token.”
+.rule{id: "section-702-174e"}
+  .rule_id 702.174e
+  .rule_text “Gift a card” means the effect is “The chosen player draws a card.”
+.rule{id: "section-702-174f"}
+  .rule_id 702.174f
+  .rule_text “Gift a tapped Fish” means the effect is “The chosen player creates a tapped 1/1 blue Fish creature token.”
+.rule{id: "section-702-174g"}
+  .rule_id 702.174g
+  .rule_text “Gift an extra turn” means the effect is “The chosen player takes an extra turn after this one.”
+.rule{id: "section-702-174h"}
+  .rule_id 702.174h
+  .rule_text “Gift a Treasure” means the effect is “The chosen player creates a Treasure token.”
+.rule{id: "section-702-174i"}
+  .rule_id 702.174i
+  .rule_text “Gift an Octopus” means the effect is “The chosen player creates an 8/8 blue Octopus creature token.”
+.rule{id: "section-702-174j"}
+  .rule_id 702.174j
+  .rule_text For instant and sorcery spells, the effect of a gift ability always happens before any other spell abilities of the card. If the spell is countered or otherwise leaves the stack before resolving, the gift effect doesn’t happen.
+.rule{id: "section-702-174k"}
+  .rule_id 702.174k
+  .rule_text If a spell’s controller declares the intention to pay a spell’s gift cost, that spell’s gift was promised.
+.rule{id: "section-702-174m"}
+  .rule_id 702.174m
+  .rule_text If part of a spell’s ability has its effect only if its gift was promised, and that part of the ability includes any targets, the spell’s controller chooses those targets only if the gift was promised.
+.rule{id: "section-702-175"}
+  .rule_id 702.175.
+  .rule_text Offspring
+.rule{id: "section-702-175a"}
+  .rule_id 702.175a
+  .rule_text Offspring represents two abilities. “Offspring [cost]” means “You may pay an additional [cost] as you cast this spell” and “When this permanent enters, if its offspring cost was paid, create a token that’s a copy of it, except it’s 1/1.”
+.rule{id: "section-702-175b"}
+  .rule_id 702.175b
+  .rule_text If a spell has multiple instances of offspring, each is paid separately and triggers based on the payments made for it, not any other instances of offspring.
 .rule{id: "section-703"}
   .rule_id 703.
   .rule_text Turn-Based Actions
@@ -7972,8 +8051,8 @@
   .rule_text Some objects become or turn another object into a “copy” of a spell, permanent, or card. Some effects create a token that’s a copy of another object. (Certain older cards were printed with the phrase “search for a copy.” This section doesn’t cover those cards, which have received new text in the Oracle card reference.)
 .rule{id: "section-707-2"}
   .rule_id 707.2.
-  .rule_text When copying an object, the copy acquires the copiable values of the original object’s characteristics and, for an object on the stack, choices made when casting or activating it (mode, targets, the value of X, whether it was kicked, how it will affect multiple targets, and so on). The copiable values are the values derived from the text printed on the object (that text being name, mana cost, color indicator, card type, subtype, supertype, rules text, power, toughness, and/or loyalty), as modified by other copy effects, by its face-down status, and by “as . . . enters the battlefield” and “as . . . is turned face up” abilities that set power and toughness (and may also set additional characteristics). Other effects (including type-changing and text-changing effects), status, counters, and stickers are not copied.
-  .rule_text Example: Chimeric Staff is an artifact that reads, “<span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span>: Chimeric Staff becomes an X/X artifact creature until end of turn.” Clone is a creature that reads, “You may have Clone enter the battlefield as a copy of any creature on the battlefield.” After a Staff has become a 5/5 artifact creature, a Clone enters the battlefield as a copy of it. The Clone is an artifact, not a 5/5 artifact creature. (The copy has the Staff’s ability, however, and will become a creature if that ability is activated.)
+  .rule_text When copying an object, the copy acquires the copiable values of the original object’s characteristics and, for an object on the stack, choices made when casting or activating it (mode, targets, the value of X, whether it was kicked, how it will affect multiple targets, and so on). The copiable values are the values derived from the text printed on the object (that text being name, mana cost, color indicator, card type, subtype, supertype, rules text, power, toughness, and/or loyalty), as modified by other copy effects, by its face-down status, and by “as . . . enters” and “as . . . is turned face up” abilities that set power and toughness (and may also set additional characteristics). Other effects (including type-changing and text-changing effects), status, counters, and stickers are not copied.
+  .rule_text Example: Chimeric Staff is an artifact that reads, “<span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span>: Chimeric Staff becomes an X/X artifact creature until end of turn.” Clone is a creature that reads, “You may have Clone enter as a copy of any creature on the battlefield.” After a Staff has become a 5/5 artifact creature, a Clone enters the battlefield as a copy of it. The Clone is an artifact, not a 5/5 artifact creature. (The copy has the Staff’s ability, however, and will become a creature if that ability is activated.)
   .rule_text Example: Clone enters the battlefield as a copy of a face-down Grinning Demon (a creature with morph <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span></span>). The Clone is a colorless 2/2 creature with no name, no types, no abilities, and no mana cost. It will still be face up. Its controller can’t pay <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span><span class="mana mana-cost mana-b"><span class="sr-only">{B}</span></span></span> to turn it face up.
 .rule{id: "section-707-2a"}
   .rule_id 707.2a
@@ -7987,23 +8066,23 @@
 .rule{id: "section-707-3"}
   .rule_id 707.3.
   .rule_text The copy’s copiable values become the copied information, as modified by the copy’s status (see rule <a href="#section-110-5">110.5</a>). Objects that copy the object will use the new copiable values.
-  .rule_text Example: Vesuvan Doppelganger reads, “You may have Vesuvan Doppelganger enter the battlefield as a copy of any creature on the battlefield, except it doesn’t copy that creature’s color and it has ‘At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.’” A Vesuvan Doppelganger enters the battlefield as a copy of Runeclaw Bear (a 2/2 green Bear creature with no abilities). Then a Clone enters the battlefield as a copy of the Doppelganger. The Clone is a 2/2 blue Bear named Runeclaw Bear that has the Doppelganger’s upkeep-triggered ability.
+  .rule_text Example: Vesuvan Doppelganger reads, “You may have Vesuvan Doppelganger enter as a copy of any creature on the battlefield, except it doesn’t copy that creature’s color and it has ‘At the beginning of your upkeep, you may have this creature become a copy of target creature, except it doesn’t copy that creature’s color and it has this ability.’” A Vesuvan Doppelganger enters the battlefield as a copy of Runeclaw Bear (a 2/2 green Bear creature with no abilities). Then a Clone enters the battlefield as a copy of the Doppelganger. The Clone is a 2/2 blue Bear named Runeclaw Bear that has the Doppelganger’s upkeep-triggered ability.
   .rule_text Example: Tomoya the Revealer (a flipped flip card) becomes a copy of Nezumi Shortfang (an unflipped flip card). Tomoya’s characteristics become the characteristics of Stabwhisker the Odious, which is the flipped version of Nezumi Shortfang.
   .rule_text Example: A face-down Grinning Demon (a creature with morph) becomes a copy of a face-up Branchsnap Lorian (a 4/1 green creature with trample and morph <span class="manacost"><span class="mana mana-cost mana-g"><span class="sr-only">{G}</span></span></span>). The Demon’s characteristics become the characteristics of Branchsnap Lorian. However, since the creature is face down, it remains a 2/2 colorless creature with no name, types, or abilities, and no mana cost. It can be turned face up for <span class="manacost"><span class="mana mana-cost mana-g"><span class="sr-only">{G}</span></span></span>. If it’s turned face up, it will have the characteristics of Branchsnap Lorian.
   .rule_text Example: A face-down Grinning Demon (a creature with morph) becomes a copy of Wandering Ones (a 1/1 blue Spirit creature that doesn’t have morph). It will be a face-down Wandering Ones. It remains a 2/2 colorless creature with no name, types, or abilities, and no mana cost. Its controller can’t turn it face up as a special action. If an effect turns it face up, it will have the characteristics of Wandering Ones.
 .rule{id: "section-707-4"}
   .rule_id 707.4.
   .rule_text Some effects cause a permanent that’s copying a permanent to copy a different object while remaining on the battlefield. The change doesn’t trigger enters-the-battlefield or leaves-the-battlefield abilities. This also doesn’t change any noncopy effects presently affecting the permanent.
-  .rule_text Example: Unstable Shapeshifter reads, “Whenever a creature enters the battlefield, Unstable Shapeshifter becomes a copy of that creature and gains this ability.” It’s affected by Giant Growth, which reads “Target creature gets +3/+3 until end of turn.” If a creature enters the battlefield later this turn, Unstable Shapeshifter will become a copy of that creature, but it will still get +3/+3 from the Giant Growth.
+  .rule_text Example: Unstable Shapeshifter reads, “Whenever a creature enters, Unstable Shapeshifter becomes a copy of that creature and gains this ability.” It’s affected by Giant Growth, which reads “Target creature gets +3/+3 until end of turn.” If a creature enters the battlefield later this turn, Unstable Shapeshifter will become a copy of that creature, but it will still get +3/+3 from the Giant Growth.
 .rule{id: "section-707-5"}
   .rule_id 707.5.
-  .rule_text An object that enters the battlefield “as a copy” or “that’s a copy” of another object becomes a copy as it enters the battlefield. It doesn’t enter the battlefield, and then become a copy of that permanent. If the text that’s being copied includes any abilities that replace the enters-the-battlefield event (such as “enters the battlefield with” or “as [this] enters the battlefield” abilities), those abilities will take effect. Also, any enters-the-battlefield triggered abilities of the copy will have a chance to trigger.
-  .rule_text Example: Skyshroud Behemoth reads, “Fading 2 (This creature enters the battlefield with two fade counters on it. At the beginning of your upkeep, remove a fade counter from it. If you can’t, sacrifice it.)” and “Skyshroud Behemoth enters the battlefield tapped.” A Clone that enters the battlefield as a copy of a Skyshroud Behemoth will also enter the battlefield tapped with two fade counters on it.
-  .rule_text Example: Wall of Omens reads, “When Wall of Omens enters the battlefield, draw a card.” A Clone enters the battlefield as a copy of Wall of Omens. The Clone has the Wall’s enters-the-battlefield triggered ability, so the Clone’s controller draws a card.
+  .rule_text An object that enters the battlefield “as a copy” or “that’s a copy” of another object becomes a copy as it enters the battlefield. It doesn’t enter the battlefield, and then become a copy of that permanent. If the text that’s being copied includes any abilities that replace the enters-the-battlefield event (such as “enters with” or “as [this] enters” abilities), those abilities will take effect. Also, any enters-the-battlefield triggered abilities of the copy will have a chance to trigger.
+  .rule_text Example: Skyshroud Behemoth reads, “Fading 2 (This creature enters with two fade counters on it. At the beginning of your upkeep, remove a fade counter from it. If you can’t, sacrifice it.)” and “Skyshroud Behemoth enters tapped.” A Clone that enters the battlefield as a copy of a Skyshroud Behemoth will also enter the battlefield tapped with two fade counters on it.
+  .rule_text Example: Wall of Omens reads, “When Wall of Omens enters, draw a card.” A Clone enters the battlefield as a copy of Wall of Omens. The Clone has the Wall’s enters-the-battlefield triggered ability, so the Clone’s controller draws a card.
 .rule{id: "section-707-6"}
   .rule_id 707.6.
   .rule_text When copying a permanent, any choices that have been made for that permanent aren’t copied. Instead, if an object enters the battlefield as a copy of another permanent, the object’s controller will get to make any “as [this] enters the battlefield” choices for it.
-  .rule_text Example: A Clone enters the battlefield as a copy of Adaptive Automaton. Adaptive Automaton reads, in part, “As Adaptive Automaton enters the battlefield, choose a creature type.” The Clone won’t copy the creature type choice of the Automaton; rather, the controller of the Clone will get to make a new choice.
+  .rule_text Example: A Clone enters the battlefield as a copy of Adaptive Automaton. Adaptive Automaton reads, in part, “As Adaptive Automaton enters, choose a creature type.” The Clone won’t copy the creature type choice of the Automaton; rather, the controller of the Clone will get to make a new choice.
 .rule{id: "section-707-7"}
   .rule_id 707.7.
   .rule_text If a pair of linked abilities are copied, those abilities will be similarly linked to one another on the object that copied them. One ability refers only to actions that were taken or objects that were affected by the other. They can’t be linked to any other ability, regardless of what other abilities the copy may currently have or may have had in the past. See rule <a href="#section-607">607</a>, “Linked Abilities.”
@@ -8021,27 +8100,27 @@
 .rule{id: "section-707-9a"}
   .rule_id 707.9a
   .rule_text Some copy effects cause the copy to gain an ability as part of the copying process. This ability becomes part of the copiable values for the copy, along with any other abilities that were copied.
-  .rule_text Example: Quirion Elves enters the battlefield and an Unstable Shapeshifter copies it. The copiable values of the Shapeshifter now match those of the Elves, except that the Shapeshifter also has the ability “Whenever a creature enters the battlefield, Unstable Shapeshifter becomes a copy of that creature, except it has this ability.” Then a Clone enters the battlefield as a copy of the Unstable Shapeshifter. The Clone copies the new copiable values of the Shapeshifter, including the ability that the Shapeshifter gave itself when it copied the Elves.
+  .rule_text Example: Quirion Elves enters the battlefield and an Unstable Shapeshifter copies it. The copiable values of the Shapeshifter now match those of the Elves, except that the Shapeshifter also has the ability “Whenever a creature enters, Unstable Shapeshifter becomes a copy of that creature, except it has this ability.” Then a Clone enters the battlefield as a copy of the Unstable Shapeshifter. The Clone copies the new copiable values of the Shapeshifter, including the ability that the Shapeshifter gave itself when it copied the Elves.
 .rule{id: "section-707-9b"}
   .rule_id 707.9b
   .rule_text Some copy effects modify a characteristic as part of the copying process. The final set of values for that characteristic becomes part of the copiable values of the copy.
-  .rule_text Example: Copy Artifact is an enchantment that reads, “You may have Copy Artifact enter the battlefield as a copy of any artifact on the battlefield, except it’s an enchantment in addition to its other types.” It enters the battlefield as a copy of Juggernaut. The copiable values of the Copy Artifact now match those of Juggernaut with one modification: its types are now artifact, creature, and enchantment.
+  .rule_text Example: Copy Artifact is an enchantment that reads, “You may have Copy Artifact enter as a copy of any artifact on the battlefield, except it’s an enchantment in addition to its other types.” It enters the battlefield as a copy of Juggernaut. The copiable values of the Copy Artifact now match those of Juggernaut with one modification: its types are now artifact, creature, and enchantment.
 .rule{id: "section-707-9c"}
   .rule_id 707.9c
   .rule_text Some copy effects specifically state that they don’t copy certain characteristics and the affected objects instead retain their original values. Copy effects may also simply state that certain characteristics are not copied.
 .rule{id: "section-707-9d"}
   .rule_id 707.9d
   .rule_text When applying a copy effect that doesn’t copy a certain characteristic, retains one or more original values for a certain characteristic, or provides a specific set of values for a certain characteristic, any characteristic-defining ability (see rule <a href="#section-604-3">604.3</a>) of the object being copied that defines that characteristic is not copied. If that characteristic is color, any color indicator (see rule <a href="#section-204">204</a>) of that object is also not copied. This rule does not apply to copy effects with exceptions that state the object is a certain card type, supertype, and/or subtype “in addition to its other types.” In those cases, any characteristic-defining ability that defines card type, supertype, and/or subtype is copied.
-  .rule_text Example: Quicksilver Gargantuan is a creature that reads, “You may have Quicksilver Gargantuan enter the battlefield as a copy of any creature on the battlefield, except it’s 7/7.” Quicksilver Gargantuan enters the battlefield as a copy of Tarmogoyf, which has a characteristic-defining ability that defines its power and toughness. Quicksilver Gargantuan does not have that ability. It will be 7/7.
-  .rule_text Example: Glasspool Mimic is a creature that reads “You may have Glasspool Mimic enter the battlefield as a copy of a creature you control, except it’s a Shapeshifter Rogue in addition to its other types.” Glasspool Mimic enters the battlefield as a copy of a creature with changeling. Glasspool Mimic will have changeling and will have all creature types.
+  .rule_text Example: Quicksilver Gargantuan is a creature that reads, “You may have Quicksilver Gargantuan enter as a copy of any creature on the battlefield, except it’s 7/7.” Quicksilver Gargantuan enters the battlefield as a copy of Tarmogoyf, which has a characteristic-defining ability that defines its power and toughness. Quicksilver Gargantuan does not have that ability. It will be 7/7.
+  .rule_text Example: Glasspool Mimic is a creature that reads “You may have Glasspool Mimic enter as a copy of a creature you control, except it’s a Shapeshifter Rogue in addition to its other types.” Glasspool Mimic enters as a copy of a creature with changeling. Glasspool Mimic will have changeling and will have all creature types.
 .rule{id: "section-707-9e"}
   .rule_id 707.9e
   .rule_text Some replacement effects that generate copy effects include an exception that’s an additional effect rather than a modification of the affected object’s characteristics. If another copy effect is applied to that object after applying the copy effect with that exception, the exception’s effect doesn’t happen.
-  .rule_text Example: Altered Ego reads, “You may have Altered Ego enter the battlefield as a copy of any creature on the battlefield, except it enters with X additional +1/+1 counters on it.” You choose for it to enter the battlefield as a copy of Clone, which reads “You may have Clone enter the battlefield as a copy of any creature on the battlefield,” for which no creature was chosen as it entered the battlefield. If you then choose a creature to copy as you apply the replacement effect Altered Ego gains by copying Clone, Altered Ego’s replacement effect won’t cause it to enter the battlefield with any +1/+1 counters on it.
+  .rule_text Example: Altered Ego reads, “You may have Altered Ego enter as a copy of any creature on the battlefield, except it enters with X additional +1/+1 counters on it.” You choose for it to enter the battlefield as a copy of Clone, which reads “You may have Clone enter as a copy of any creature on the battlefield,” for which no creature was chosen as it entered the battlefield. If you then choose a creature to copy as you apply the replacement effect Altered Ego gains by copying Clone, Altered Ego’s replacement effect won’t cause it to enter the battlefield with any +1/+1 counters on it.
 .rule{id: "section-707-9f"}
   .rule_id 707.9f
   .rule_text Some exceptions to the copying process apply only if the copy is or has certain characteristics. To determine whether such an exception applies, consider what the resulting permanent’s characteristics would be if the copy effect were applied without that exception, taking into account any other exceptions that effect includes.
-  .rule_text Example: Moritte of the Frost says, in part, “You may have Moritte of the Frost enter the battlefield as a copy of a permanent you control, except it’s legendary and snow in addition to its other types and, if it’s a creature, it enters with two additional +1/+1 counters on it and it has changeling.” Moritte of the Frost copies a land that has become a creature until end of turn. It would enter as a noncreature permanent, so it won’t enter with two additional +1+1 counters on it and it won’t have changeling, even if it becomes a creature later in the turn.
+  .rule_text Example: Moritte of the Frost says, in part, “You may have Moritte of the Frost enter as a copy of a permanent you control, except it’s legendary and snow in addition to its other types and, if it’s a creature, it enters with two additional +1/+1 counters on it and it has changeling.” Moritte of the Frost copies a land that has become a creature until end of turn. It would enter as a noncreature permanent, so it won’t enter with two additional +1+1 counters on it and it won’t have changeling, even if it becomes a creature later in the turn.
 .rule{id: "section-707-9g"}
   .rule_id 707.9g
   .rule_text Some replacement effects that generate copy effects are linked to triggered abilities written in the same paragraph. (See rule <a href="#section-603-11">603.11</a>.) If another copy effect is applied to that object after applying the copy effect with the linked triggered ability, the ability doesn’t trigger.
@@ -8391,7 +8470,7 @@
 .rule{id: "section-712-21b"}
   .rule_id 712.21b
   .rule_text If a player exiles a melded permanent, that player determines the relative timestamp order of the two cards at that time. This is an exception to the procedure described in rule <a href="#section-613-7m">613.7m</a>.
-  .rule_text Example: Duplicant is a card with the abilities “When Duplicant enters the battlefield, you may exile target nontoken creature” and “As long as a card exiled with Duplicant is a creature card, Duplicant has the power, toughness, and creature types of the last creature card exiled with Duplicant. It’s still a Shapeshifter.” As Duplicant’s first ability exiles Chittering Host, a melded permanent, Duplicant’s controller chooses whether the last creature card exiled is Midnight Scavengers or Graf Rats.
+  .rule_text Example: Duplicant is a card with the abilities “When Duplicant enters, you may exile target nontoken creature” and “As long as a card exiled with Duplicant is a creature card, Duplicant has the power, toughness, and creature types of the last creature card exiled with Duplicant. It’s still a Shapeshifter.” As Duplicant’s first ability exiles Chittering Host, a melded permanent, Duplicant’s controller chooses whether the last creature card exiled is Midnight Scavengers or Graf Rats.
 .rule{id: "section-712-21c"}
   .rule_id 712.21c
   .rule_text If an effect can find the new object that a melded permanent becomes as it leaves the battlefield, it finds both cards. (See rule <a href="#section-400-7">400.7</a>.) If that effect causes actions to be taken upon those cards, the same actions are taken upon each of them.
@@ -8940,7 +9019,7 @@
 .rule{id: "section-729-2a"}
   .rule_id 729.2a
   .rule_text At any point in the game, the player with priority may suggest a shortcut by describing a sequence of game choices, for all players, that may be legally taken based on the current game state and the predictable results of the sequence of choices. This sequence may be a non-repetitive series of choices, a loop that repeats a specified number of times, multiple loops, or nested loops, and may even cross multiple turns. It can’t include conditional actions, where the outcome of a game event determines the next action a player takes. The ending point of this sequence must be a place where a player has priority, though it need not be the player proposing the shortcut.
-  .rule_text Example: A player controls a creature enchanted by Presence of Gond, which grants the creature the ability “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Create a 1/1 green Elf Warrior creature token,” and another player controls Intruder Alarm, which reads, in part, “Whenever a creature enters the battlefield, untap all creatures.” When the player has priority, they may suggest “I’ll create a million tokens,” indicating the sequence of activating the creature’s ability, all players passing priority, letting the creature’s ability resolve and create a token (which causes Intruder Alarm’s ability to trigger), Intruder Alarm’s controller putting that triggered ability on the stack, all players passing priority, Intruder Alarm’s triggered ability resolving, all players passing priority until the player proposing the shortcut has priority, and repeating that sequence <a href="#section-999">999</a>,<a href="#section-999">999</a> more times, ending just after the last token-creating ability resolves.
+  .rule_text Example: A player controls a creature enchanted by Presence of Gond, which grants the creature the ability “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Create a 1/1 green Elf Warrior creature token,” and another player controls Intruder Alarm, which reads, in part, “Whenever a creature enters, untap all creatures.” When the player has priority, they may suggest “I’ll create a million tokens,” indicating the sequence of activating the creature’s ability, all players passing priority, letting the creature’s ability resolve and create a token (which causes Intruder Alarm’s ability to trigger), Intruder Alarm’s controller putting that triggered ability on the stack, all players passing priority, Intruder Alarm’s triggered ability resolving, all players passing priority until the player proposing the shortcut has priority, and repeating that sequence <a href="#section-999">999</a>,<a href="#section-999">999</a> more times, ending just after the last token-creating ability resolves.
 .rule{id: "section-729-2b"}
   .rule_id 729.2b
   .rule_text Each other player, in turn order starting after the player who suggested the shortcut, may either accept the proposed sequence, or shorten it by naming a place where they will make a game choice that’s different than what’s been proposed. (The player doesn’t need to specify at this time what the new choice will be.) This place becomes the new ending point of the proposed sequence.
@@ -8995,7 +9074,7 @@
   .rule_text Example: Alex casts Mind Control, an Aura that reads, “You control enchanted creature,” on Bianca’s Assault Griffin. If Alex leaves the game, so does Mind Control, and Assault Griffin reverts to Bianca’s control. If, instead, Bianca leaves the game, so does Assault Griffin, and Mind Control is put into Alex’s graveyard.
   .rule_text Example: Alex casts Act of Treason, which reads, in part, “Gain control of target creature until end of turn,” targeting Bianca’s Runeclaw Bears. If Alex leaves the game, Act of Treason’s change-of-control effect ends and Runeclaw Bears reverts to Bianca’s control.
   .rule_text Example: Alex casts Bribery, which reads, “Search target opponent’s library for a creature card and put that card onto the battlefield under your control. Then that player shuffles their library,” targeting Bianca. Alex puts Serra Angel onto the battlefield from Bianca’s library. If Bianca leaves the game, Serra Angel also leaves the game. If, instead, Alex leaves the game, Serra Angel is exiled.
-  .rule_text Example: Alex controls Genesis Chamber, which reads, “Whenever a nontoken creature enters the battlefield, if Genesis Chamber is untapped, that creature’s controller creates a 1/1 colorless Myr artifact creature token.” If Alex leaves the game, all such Myr tokens that entered the battlefield under Alex’s control leave the game, and all such Myr tokens that entered the battlefield under any other player’s control remain in the game.
+  .rule_text Example: Alex controls Genesis Chamber, which reads, “Whenever a nontoken creature enters, if Genesis Chamber is untapped, that creature’s controller creates a 1/1 colorless Myr artifact creature token.” If Alex leaves the game, all such Myr tokens that entered the battlefield under Alex’s control leave the game, and all such Myr tokens that entered the battlefield under any other player’s control remain in the game.
 .rule{id: "section-800-4b"}
   .rule_id 800.4b
   .rule_text If an object would change to the control of a player who has left the game, it doesn’t. If a token would be created under the control of a player who has left the game, no token is created. If an object would be put onto the battlefield or onto the stack under the control of a player who has left the game, that object remains in its current zone. If a player would be controlled by a player who has left the game, they aren’t.
@@ -10609,8 +10688,11 @@
   .glossary_term Enlist
   .glossary_definition A keyword ability that allows a creature that could have attacked to support another creature. See rule <a href="#section-702-154">702.154</a>, “Enlist.”
 .glossary_entry
+  .glossary_term Enter
+  .glossary_definition In rules text, to enter the battlefield. See “Enters the Battlefield.”
+.glossary_entry
   .glossary_term Enters the Battlefield
-  .glossary_definition A nontoken permanent “enters the battlefield” when it’s moved onto the battlefield from another zone. A token “enters the battlefield” when it’s created. See rules <a href="#section-403-3">403.3</a>, <a href="#section-603-6a">603.6a</a>, <a href="#section-603-6d">603.6d</a>, and <a href="#section-614-12">614.12</a>.
+  .glossary_definition A nontoken permanent enters the battlefield when it’s moved onto the battlefield from another zone. A token enters the battlefield as it’s created. See rules <a href="#section-403-3">403.3</a>, <a href="#section-603-6a">603.6a</a>, <a href="#section-603-6d">603.6d</a>, and <a href="#section-614-12">614.12</a>. This phrase has been shortened to simply “enters” in rules text on cards in most contexts.
 .glossary_entry
   .glossary_term Entwine
   .glossary_definition A keyword ability that lets a player choose all modes for a spell rather than just the number specified. See rule <a href="#section-702-42">702.42</a>, “Entwine.”
@@ -10662,6 +10744,9 @@
 .glossary_entry
   .glossary_term Expansion Symbol
   .glossary_definition A card’s expansion symbol is a small icon normally printed below the right edge of the illustration that has no effect on game play. See rule <a href="#section-206">206</a>, “Expansion Symbol.”
+.glossary_entry
+  .glossary_term Expend
+  .glossary_definition A word found on some abilities that care how much mana a player has spent to cast spells this turn. See rule <a href="#section-700-14">700.14</a>.
 .glossary_entry
   .glossary_term Exploit
   .glossary_definition A keyword ability that lets you sacrifice a creature for a benefit. See rule <a href="#section-702-110">702.110</a>, “Exploit.”
@@ -10738,6 +10823,9 @@
   .glossary_term For Mirrodin!
   .glossary_definition A keyword ability that creates a 2/2 red Rebel creature token and then attaches the Equipment with the ability to that token. See rule <a href="#section-702-163">702.163</a>, “For Mirrodin!”
 .glossary_entry
+  .glossary_term Forage
+  .glossary_definition To pay a cost of exiling three cards from your graveyard or sacrificing a Food. See rule <a href="#section-701-59">701.59</a>, “Forage.”
+.glossary_entry
   .glossary_term Forecast
   .glossary_definition A keyword ability that allows an activated ability to be activated from a player’s hand. See rule <a href="#section-702-57">702.57</a>, “Forecast.”
 .glossary_entry
@@ -10768,6 +10856,9 @@
   .glossary_term Free-for-All
   .glossary_definition A multiplayer variant in which a group of players compete as individuals against each other. See rule <a href="#section-806">806</a>, “Free-for-All Variant.”
 .glossary_entry
+  .glossary_term Freerunning
+  .glossary_definition A keyword ability that allows certain spells to be cast for an alternative cost. See rule <a href="#section-702-173">702.173</a>, “Freerunning.”
+.glossary_entry
   .glossary_term Friends Forever
   .glossary_definition A variant of the partner ability that lets two legendary creature cardss be your commander in the Commander variant rather than one if both have the “friends forever” ability. See rule <a href="#section-702-124">702.124</a>, “Partner,” and rule <a href="#section-903">903</a>, “Commander.”
 .glossary_entry
@@ -10785,6 +10876,9 @@
 .glossary_entry
   .glossary_term Generic Mana
   .glossary_definition Mana in a cost represented by numerical symbols (such as <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span></span>) or variable symbols (such as <span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span>) that can be paid with mana of any type. See rule <a href="#section-107-4">107.4</a>.
+.glossary_entry
+  .glossary_term Gift
+  .glossary_definition A keyword ability that allows a spell’s caster to choose an opponent as to receive a benefit as the spell resolves or when the permanent with the ability enters. See rule <a href="#section-702-174">702.174</a>, “Gift.”
 .glossary_entry
   .glossary_term Global Enchantment (Obsolete)
   .glossary_definition An obsolete term for a non-Aura enchantment. Cards printed with this text have received errata in the Oracle card reference.
@@ -11209,6 +11303,9 @@
   .glossary_term Offering
   .glossary_definition A keyword ability that modifies when you can cast a spell and how much mana you need to spend to do it. See rule <a href="#section-702-48">702.48</a>, “Offering.”
 .glossary_entry
+  .glossary_term Offspring
+  .glossary_definition A keyword ability that allows you to pay an additional cost as you cast a creature spell to create a 1/1 token that’s a copy of that permanent when it enters the battlefield. See rule <a href="#section-702-175">702.175</a>, “Offspring.”
+.glossary_entry
   .glossary_term One-Shot Effect
   .glossary_definition An effect that does something just once and doesn’t have a duration. See rule <a href="#section-610">610</a>, “One-Shot Effects.” See also Continuous Effects.
 .glossary_entry
@@ -11256,6 +11353,9 @@
 .glossary_entry
   .glossary_term Pass in Succession
   .glossary_definition All players “pass in succession” if each player in the game (starting with any one of them) opts not to take an action upon receiving priority. See rule <a href="#section-117">117</a>, “Timing and Priority.”
+.glossary_entry
+  .glossary_term Pawprint Symbol
+  .glossary_definition A symbol shaped like a pawprint that is used to indicate the modes on some modal spells. See rule <a href="#section-700-2i">700.2i</a>.
 .glossary_entry
   .glossary_term Pay
   .glossary_definition To perform the actions required by a cost. This often means, but is not restricted to, spending resources such as mana or life. See rule <a href="#section-118">118</a>, “Costs.”
@@ -12019,8 +12119,8 @@
 %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cátinò, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (principal), Matt Tabak (principal), Nat Moes, Samantha Phelan, Michael Zhang, and Hans Ziegler Magic Rules Management: Jess Dunks, Eric Levine, and Eliana Rabinowitz
 %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cátinò, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
 %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-%p These rules are effective as of June 7, 2024.
+%p These rules are effective as of July 30, 2024.
 %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unfinity, Dominaria, Ikoria, Kaldheim, Baldur’s Gate, The Brothers’ War, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2024 Wizards. U.S. Pat. No. RE 37,957.
 %p Astartes, C’tan, Custodes, Necron, Primarch, and Tyranid ® &amp; © Games Workshop Limited 2022. All Rights Reserved.
 %p © 2023 Middle-earth Enterprises. Tales of Middle-earth and The Lord of the Rings and the names of the characters, events, items and places therein, are trademarks of Middle-earth Enterprises, LLC used under license by Wizards of the Coast LLC. All rights reserved.
-%p BBC, DOCTOR WHO, TARDIS, DALEK, CYBERMAN and K-9 (word marks and devices) are trade marks of the British Broadcasting Corporation and are used under licence. BBC logo © BBC 1996. 
+%p BBC, DOCTOR WHO, TARDIS, DALEK, CYBERMAN and K-9 (word marks and devices) are trade marks of the British Broadcasting Corporation and are used under licence. BBC logo © BBC 1996.
