@@ -1,0 +1,104 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-bloomburrow
+pack:
+  foil_common: 5
+  foil_uncommon: 4
+  foil_land: 1
+  foil_rare_mythic: 1
+  commander:
+  - commander_card: 1
+    chance: 138
+  - foil_commander: 1
+    chance: 4
+  showcase_rare_mythic: 2
+  foil_showcase_rare_mythic: 1
+sheets:
+  foil_land:
+    foil: true
+    any:
+    - query: "number:262 or number:266 or number:270 or number:274 or number:278"
+      chance: 4
+    - query: "number:263 or number:267 or number:271 or number:275 or number:279"
+      chance: 3
+    - query: "number:264 or number:268 or number:272 or number:276 or number:280"
+      chance: 2
+    - query: "number:265 or number:269 or number:273 or number:277 or number:281"
+      chance: 1
+  foil_rare_mythic:
+    foil: true
+    any:
+    - use: rare
+      rate: 2
+    - use: mythic
+      rate: 1
+  commander_card:
+    any:
+    - rawquery: "e:blc r:m (number<=4 or number:41-72 or number:97-100)"
+      rate: 1
+      count: 11
+    - rawquery: "e:blc r:r (number<=4 or number:41-72 or number:97-100)"
+      rate: 2
+      count: 29
+  foil_commander:
+    foil: true
+    rawquery: "e:blc number:41-44"
+  showcase_rare_mythic:
+    any:
+    - rawquery: "e:blc r:r number:73-92"
+      rate: 4
+      count: 12
+    - rawquery: "e:blc r:m number:73-92"
+      rate: 2
+      count: 8
+    - rawquery: "e:blb r:r (number:282-342 or number:356-368) -(three tree city)"
+      rate: 4
+      count: 13+35+1
+    - rawquery: "e:blb number:337-340"
+      rate: 1
+      count: 4
+    - rawquery: "e:blb r:m (number:282-342 or number:356-368) -lumra"
+      rate: 2
+      count: 5+6+7+1
+    - rawquery: "e:blb (number:282-342 or number:356-368) Lumra"
+      rate: 1
+      count: 2
+  foil_showcase_rare_mythic:
+    foil: true
+    any:
+    - any:
+      - rawquery: "e:blc r:r number:73-92"
+        rate: 4
+        count: 12
+      - rawquery: "e:blc r:m number:73-92"
+        rate: 2
+        count: 8
+      - rawquery: "e:blb r:r (number:282-342 or number:356-368) -(three tree city)"
+        rate: 4
+        count: 13+35+1
+      - rawquery: "e:blb number:337-340"
+        rate: 1
+        count: 4
+      - rawquery: "e:blb r:m (number:282-342 or number:356-368) -lumra"
+        rate: 2
+        count: 5+6+7+1
+      - rawquery: "e:blb (number:282-342 or number:356-368) Lumra"
+        rate: 1
+        count: 2
+      - set: spg
+        code: "BLB"
+        rate: 1
+        count: 10
+      chance: 314
+    - any:
+      - rawquery: "e:blb number:343-355 r:r"
+        rate: 2
+        count: 11
+      - rawquery: "e:blb number:343-355 r:m"
+        rate: 1
+        count: 2
+      - rawquery: "e:blc r:r (number:93-96 or number:101-104)"
+        rate: 2
+        count: 1
+      - rawquery: "e:blc r:m (number:93-96 or number:101-104)"
+        rate: 1
+        count: 7
+      chance: 12
