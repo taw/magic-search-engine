@@ -11,6 +11,9 @@ class PatchPartner < Patch
         card["is_partner"] = true
       elsif text.include?("Legendary Partner (You can have two commanders") or text.include?("Legendary partner (You can have two commanders")
         card["is_partner"] = true
+      elsif text =~ /\bPartner with itself/
+        card["is_partner"] = true
+        # Setting card["partner"] is probably meaningless on this
       elsif text =~ /\bPartner with ([^\n\(]*)/
         card["is_partner"] = true
         partner_name = $1.strip
@@ -19,6 +22,8 @@ class PatchPartner < Patch
       elsif text =~ /Partner\s*\z/
         # CMR, some have no remainder text
         card["is_partner"] = true
+      elsif text =~ /Flying, protection, and partner are all keywords/
+        # reminder text in funny set, ignore
       elsif text =~ /\bpartner\b/i
         raise "Unknown partner text"
       end
