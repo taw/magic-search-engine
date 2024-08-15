@@ -689,14 +689,14 @@ class Card
       case m
       when /\A\d+\z/
         @mana_hash["?"] += m.to_i
-      when /\A[wubrgxyzcs]\z/
+      when /\A[wubrgxyzcsdl]\z/
         # x is basically a color for this kind of queries
         @mana_hash[m] += 1
       when /\Ah([wubrg])\z/
         @mana_hash[$1] += 0.5
       when /\A([wubrg])\/([wubrg])\z/
         @mana_hash[normalize_mana_symbol(m)] += 1
-      when /\A([wubrg])\/p\z/
+      when /\A([wubrgc])\/p\z/
         @mana_hash[normalize_mana_symbol(m)] += 1
       when /\A2\/([wubrg])\z/
         @mana_hash[normalize_mana_symbol(m)] += 1
@@ -751,7 +751,7 @@ class Card
   def calculate_color_indicator
     colors_inferred_from_mana_cost = (@mana_hash || {}).keys
       .flat_map do |x|
-        next [] if x =~ /[?xyzcs]/
+        next [] if x =~ /[?xyzcsdl]/
         x = x.sub(/[p2]/, "")
         if x =~ /\A[wubrg]+\z/
           x.chars
