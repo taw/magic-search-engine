@@ -1,0 +1,71 @@
+# data from https://magic.wizards.com/en/news/feature/collecting-assassins-creed
+pack:
+  foil_uncommon: 3
+  foil_showcase_uncommon: 1
+  etched_uncommon: 1
+  mid_slot:
+  - foil_basic: 1
+    chance: 864
+  - borderless_scene: 1
+    chance: 136
+  foil_rare_mythic: 1
+  nonfoil_extended: 1
+  foil_showcase_rare_mythic: 1
+  etched_rare_mythic: 1
+sheets:
+  foil_showcase_uncommon:
+    foil: true
+    rawquery: "e:{set} frame:showcase r:u"
+  etched_uncommon:
+    foil: true
+    rawquery: "e:{set} is:etched r:u"
+  foil_basic:
+    foil: true
+    rawquery: "e:{set} is:fullart"
+  borderless_scene:
+    foil: true
+    any:
+    - rawquery: "e:{set} number:111-116 r:r"
+      rate: 2
+    - rawquery: "e:{set} number:111-116 r:m"
+      rate: 1
+  foil_rare_mythic:
+    foil: true
+    any:
+    - use: rare
+      rate: 2
+    - use: mythic
+      rate: 1
+  nonfoil_extended:
+    any:
+    - rawquery: "e:{set} frame:extendedart r:r"
+      rate: 2
+    - rawquery: "e:{set} frame:extendedart r:m"
+      rate: 1
+  foil_showcase_rare_mythic:
+    foil: true
+    any:
+    - any:
+      - rawquery: "e:{set} r:r (-is:foilonly -number:/z/) (frame:showcase or is:borderless)"
+        rate: 4
+        count: 16
+      - rawquery: "e:{set} r:m (-is:foilonly -number:/z/) (frame:showcase or is:borderless)"
+        rate: 2
+        count: 13
+      - rawquery: "e:{set} r:r frame:extendedart"
+        rate: 4
+        count: 16
+      - rawquery: "e:{set} r:m frame:extendedart"
+        rate: 2
+        count: 1
+      - rawquery: "e:{set} number:267-271"
+        rate: 1
+        count: 5
+      chance: 9983
+    - rawquery: "e:{set} is:serialized"
+      count: 4
+      chance: 17
+  etched_rare_mythic:
+    filter: "e:{set} is:etched"
+    use: rare_mythic
+    foil: true
