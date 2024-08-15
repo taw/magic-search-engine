@@ -102,17 +102,42 @@ sheets:
     count: 2
     foil: true
   rare_mythic_white:
-    filter: "e:{set} is:baseset id=w"
-    use: rare_mythic
+    any:
+    - rawquery: "e:{set} is:baseset id=w -is:dfc r:r"
+      rate: 4
+    - rawquery: "e:{set} is:baseset id=w -is:dfc r:m"
+      rate: 2
+    - rawquery: "e:{set} is:baseset id=c r>=r -is:dfc"
+      rate: 1
   rare_mythic_blue:
-    filter: "e:{set} is:baseset id=u"
-    use: rare_mythic
+    any:
+    - rawquery: "e:{set} is:baseset id=u -is:dfc r:r"
+      rate: 4
+    - rawquery: "e:{set} is:baseset id=u -is:dfc r:m"
+      rate: 2
+    - rawquery: "e:{set} is:baseset id=c r>=r -is:dfc"
+      rate: 1
   rare_mythic_black:
-    filter: "e:{set} is:baseset id=b"
-    use: rare_mythic
+    any:
+    - rawquery: "e:{set} is:baseset id=b -is:dfc r:r"
+      rate: 4
+    - rawquery: "e:{set} is:baseset id=b -is:dfc r:m"
+      rate: 2
+    - rawquery: "e:{set} is:baseset id=c r>=r -is:dfc"
+      rate: 1
   rare_mythic_red:
-    filter: "e:{set} is:baseset id=r"
-    use: rare_mythic
+    any:
+    - rawquery: "e:{set} is:baseset id=r -is:dfc r:r"
+      rate: 4
+    - rawquery: "e:{set} is:baseset id=r -is:dfc r:m"
+      rate: 2
+    - rawquery: "e:{set} is:baseset id=c r>=r -is:dfc"
+      rate: 1
   rare_mythic_green:
-    filter: "e:{set} is:baseset id=g"
-    use: rare_mythic
+    any:
+    - rawquery: "e:{set} is:baseset id=g -is:dfc r:r"
+      rate: 4
+    - rawquery: "e:{set} is:baseset id=g -is:dfc r:m"
+      rate: 2
+    - rawquery: "e:{set} is:baseset id=c r>=r -is:dfc"
+      rate: 1
