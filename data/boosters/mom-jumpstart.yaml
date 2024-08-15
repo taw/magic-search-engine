@@ -104,30 +104,40 @@ sheets:
   rare_mythic_white:
     any:
     - rawquery: "e:{set} is:baseset id=w -is:dfc r:r"
+      rate: 4
+    - rawquery: "e:{set} is:baseset id=w -is:dfc r:m"
       rate: 2
-    - rawquery: 'e:{set} is:baseset id:w -is:dfc (r:m or "Realmbreaker, the Invasion Tree")'
+    - rawquery: "e:{set} is:baseset id=c r>=r -is:dfc"
       rate: 1
   rare_mythic_blue:
     any:
     - rawquery: "e:{set} is:baseset id=u -is:dfc r:r"
+      rate: 4
+    - rawquery: "e:{set} is:baseset id=u -is:dfc r:m"
       rate: 2
-    - rawquery: 'e:{set} is:baseset id:u -is:dfc (r:m or "Realmbreaker, the Invasion Tree")'
+    - rawquery: "e:{set} is:baseset id=c r>=r -is:dfc"
       rate: 1
   rare_mythic_black:
     any:
     - rawquery: "e:{set} is:baseset id=b -is:dfc r:r"
+      rate: 4
+    - rawquery: "e:{set} is:baseset id=b -is:dfc r:m"
       rate: 2
-    - rawquery: 'e:{set} is:baseset id:b -is:dfc (r:m or "Realmbreaker, the Invasion Tree")'
+    - rawquery: "e:{set} is:baseset id=c r>=r -is:dfc"
       rate: 1
   rare_mythic_red:
     any:
     - rawquery: "e:{set} is:baseset id=r -is:dfc r:r"
+      rate: 4
+    - rawquery: "e:{set} is:baseset id=r -is:dfc r:m"
       rate: 2
-    - rawquery: 'e:{set} is:baseset id:r -is:dfc (r:m or "Realmbreaker, the Invasion Tree")'
+    - rawquery: "e:{set} is:baseset id=c r>=r -is:dfc"
       rate: 1
   rare_mythic_green:
     any:
     - rawquery: "e:{set} is:baseset id=g -is:dfc r:r"
+      rate: 4
+    - rawquery: "e:{set} is:baseset id=g -is:dfc r:m"
       rate: 2
-    - rawquery: 'e:{set} is:baseset id:g -is:dfc (r:m or "Realmbreaker, the Invasion Tree")'
+    - rawquery: "e:{set} is:baseset id=c r>=r -is:dfc"
       rate: 1
