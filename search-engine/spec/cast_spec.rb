@@ -12,9 +12,10 @@ describe "cast: spec" do
     assert_search_equal "cast:7", "cast:1"
   end
 
-  it "lands cannot be cast" do
-    assert_search_equal "cast:wubrg", "cast:wubrg -t:land"
-    assert_search_results "cast:wubrg t:land"
+  it "lands cannot be cast" do # except mb2
+    assert_search_equal "cast:wubrg", "cast:wubrg -(t:land -(Glade of the Pump Spells))"
+    assert_search_results "cast:wubrg t:land",
+      "Glade of the Pump Spells"
   end
 
   it "count snow separately" do

@@ -46,7 +46,9 @@ describe "Regexp" do
       "Celebr-8000",
       "Helix Pinnacle",
       "Mox Lotus",
+      "Pyromancy 101",
       "Rules Lawyer",
+      "TL;DR",
       "The Millennium Calendar",
       "Urza, Academy Headmaster",
       "Vexing Puzzlebox"
@@ -94,6 +96,7 @@ describe "Regexp" do
   it "regexp rulings text" do
     assert_search_results "rulings:fly",
       "Devil K. Nevil",
+      "Druid of Purification",
       "Wings of Hubris",
       "Sarah's Wings"
     assert_search_equal "rulings:flying", 'rulings:/\bflying\b/'
