@@ -10,6 +10,7 @@ describe "Color Indicator Test" do
     assert_search_results "ind:r t:creature cmc=0",
       "Crimson Kobolds",
       "Crookshank Kobolds",
+      "Gobland",
       "Kobolds of Kher Keep",
       "Half-Orc, Half-",
       "Rograkh, Son of Rohgahh"

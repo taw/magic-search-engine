@@ -21,6 +21,7 @@ describe "DissentionTest" do
       "Snow-Covered Wastes",
       # fancy basics
       "Barry's Land",
+      "Omnipresent Impostor",
       "Wastes",
       # by card text
       "Dragon's Approach",

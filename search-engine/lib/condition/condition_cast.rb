@@ -9,7 +9,7 @@ class ConditionCast < ConditionSimple
       case m
       when "w", "u", "b", "r", "g", "s", "c"
         return false unless @query_mana.include?(m)
-      when "?", "x", "y", "z"
+      when "?", "x", "y", "z", "l", "d"
         # always OK
       when "2w", "2u", "2b", "2r", "2g"
         # always OK

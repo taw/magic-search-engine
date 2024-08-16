@@ -434,6 +434,10 @@ class Card
     "Sage Project",
     "Sokratic Dialogue",
     "Those Who Came Before",
+    # MB2
+    "Reward",
+    "Scryfall",
+    "Trade Routes",
   ].sort
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 
