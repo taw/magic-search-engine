@@ -13,7 +13,7 @@ class PatchPartner < Patch
         card["is_partner"] = true
       elsif text =~ /\bPartner with itself/
         card["is_partner"] = true
-        # Setting card["partner"] is probably meaningless on this
+        card["partner"] = card["number"]
       elsif text =~ /\bPartner with ([^\n\(]*)/
         card["is_partner"] = true
         partner_name = $1.strip
