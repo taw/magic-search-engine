@@ -32,6 +32,7 @@ class FormatVintage < Format
       tclb
       tltr
       xana
+      yblb
       ybro
       ydmu
       ymid
