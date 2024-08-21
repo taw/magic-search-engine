@@ -4,7 +4,7 @@ describe "Any queries" do
 
   context "card name" do
     it do
-      assert_search_results %[any:"Abrupt Decay"], "Abrupt Decay"
+      assert_search_results %[any:"Abrupt Decay"], "Abrupt Decay", "Jund 'Em Out"
     end
     it "is case insensitive" do
       assert_search_equal %[any:"ABRUPT decay"], %[any:"Abrupt Decay"]
@@ -134,7 +134,7 @@ describe "Any queries" do
   # TODO: maybe do weird ones like Tarmogoyf's */1+* too
   context "p/t" do
     it do
-      assert_search_equal %[any:"2/4" any:spider], "pow=2 tou=4 t:spider"
+      assert_search_equal %[any:"2/4" any:spider], "pow=2 tou=4 (t:spider OR o:spider)"
       assert_search_equal %[any:"-1/3"], "pow=-1 tou=3"
       # This is very problematic as -1/-1 is very common in Oracle text
       assert_search_equal %[any:"-1/-1"], %[(pow=-1 tou=-1) or o:"-1/-1"]
@@ -200,7 +200,7 @@ describe "Any queries" do
     end
 
     it "front" do
-      assert_search_equal "any:front", "is:front or ft:front or foreign:front"
+      assert_search_equal "any:front", "is:front or ft:front or foreign:front or o:front"
     end
 
     it "back" do

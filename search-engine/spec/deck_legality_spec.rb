@@ -45,6 +45,7 @@ describe "Deck legality" do
       "Forest",
       "Island",
       "Mountain",
+      "Omnipresent Impostor",
       "Persistent Petitioners",
       "Plains",
       "Rat Colony",
