@@ -181,4 +181,11 @@ BanList.for_format("modern") do
     "Fury" => "banned",
     "Up the Beanstalk" => "banned",
   )
+
+  change(
+    "2024-08-26",
+    "https://magic.wizards.com/en/news/announcements/august-26-2024-banned-and-restricted-announcement",
+    "Nadu, Winged Wisdom" => "banned",
+    "Grief" => "banned",
+  )
 end

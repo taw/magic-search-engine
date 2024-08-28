@@ -82,4 +82,11 @@ BanList.for_format("pioneer") do
     "Geological Appraiser" => "banned",
     "Smuggler's Copter" => "unbanned",
   )
+
+  change(
+    "2024-08-26",
+    "https://magic.wizards.com/en/news/announcements/august-26-2024-banned-and-restricted-announcement",
+    "Amalia Benavides Aguirre" => "banned",
+    "Sorin, Imperious Bloodlord" => "banned",
+  )
 end
