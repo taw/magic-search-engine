@@ -525,4 +525,11 @@ BanList.for_format("vintage") do
     "Yawgmoth Merfolk Soul" => "banned",
     "Zombie Cheese Magician" => "banned",
   )
+
+  change(
+    "2024-08-26",
+    "https://magic.wizards.com/en/news/announcements/august-26-2024-banned-and-restricted-announcement",
+    "Urza's Saga" => "restricted",
+    "Vexing Bauble" => "restricted",
+  )
 end
