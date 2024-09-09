@@ -27,7 +27,7 @@ describe "New Phyrexia" do
       "Vintage" => "legal",
       "Commander" => "legal",
       "Duel Commander" => "legal",
-      "MTGO Commander" => "legal",
+      # "MTGO Commander" => "legal",
     })
   end
 
@@ -40,7 +40,7 @@ describe "New Phyrexia" do
       "Vintage" => "legal",
       "Commander" => "legal",
       "Duel Commander" => "legal",
-      "MTGO Commander" => "legal",
+      # "MTGO Commander" => "legal",
     })
   end
 

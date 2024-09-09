@@ -66,6 +66,7 @@ class FormatModern < Format
       "mh3",
       "acr",
       "blb",
+      "dsk",
     ]
   end
 end

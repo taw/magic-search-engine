@@ -33,7 +33,8 @@ describe "Indexer hacks" do
 
   it "is:funny" do
     # Moonshaker Cavalry is temporarily here as a spoiler card with incorrect data, it will be removed after WOE is released
-    assert_search_equal_cards "is:funny -(Moonshaker Cavalry)", "e:unh,ugl,uqc,hho,ust,pust,ppc1,h17,tbth,tdag,tfth,thp1,thp2,thp3,ptg,cmb1,cmb2,und,punh,ulst,unf,phtr,ph17,ph18,ph19,ph20,ph21,ph22 -(t:basic -Barry) -(Steamflogger Boss) -(Hall of Triumph) -(Zur the Enchanter) -is:shockland -(e:unf -is:acorn)"
+    # mb2 is complicated
+    assert_search_equal_cards "is:funny", "e:unh,ugl,uqc,hho,ust,pust,ppc1,h17,tbth,tdag,tfth,thp1,thp2,thp3,ptg,cmb1,cmb2,und,punh,ulst,unf,phtr,ph17,ph18,ph19,ph20,ph21,ph22 -(t:basic -Barry) -(Steamflogger Boss) -(Hall of Triumph) -(Zur the Enchanter) -is:shockland -(e:unf -is:acorn)"
   end
 
   it "Nissa's X loyallty" do

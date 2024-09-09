@@ -40,6 +40,7 @@ class FormatFrontier < Format
       "otj",
       "big",
       "blb",
+      "dsk",
     ]
   end
 end
