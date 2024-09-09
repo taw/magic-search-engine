@@ -8,7 +8,7 @@ describe "Formats" do
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
       %[
-        e:dmu,bro,one,mom,mat,woe,lci,mkm,otj,big,blb
+        e:dmu,bro,one,mom,mat,woe,lci,mkm,otj,big,blb,dsk
         -(The Meathook Massacre)
         -(Invoke Despair)
         -(Fable of the Mirror-Breaker)
@@ -34,9 +34,15 @@ describe "Formats" do
       ]],
     ])
     FormatModern.new.ban_events.should eq([
+      [Date.parse("2024-08-26"),
+       "https://magic.wizards.com/en/news/announcements/august-26-2024-banned-and-restricted-announcement",
+      [
+        {:name=>"Nadu, Winged Wisdom", :new=>"banned", :old=>"legal"},
+        {:name=>"Grief", :new=>"banned", :old=>"legal"}
+      ]],
       [Date.parse("2023-12-04"),
         "https://magic.wizards.com/en/news/announcements/december-4-2023-banned-and-restricted-announcement",
-        [
+      [
           {:name=>"Fury", :new=>"banned", :old=>"legal"},
           {:name=>"Up the Beanstalk", :new=>"banned", :old=>"legal"},
       ]],
@@ -226,9 +232,9 @@ describe "Formats" do
 
   # Used to be Lurrus
   # And now it's all the sticker and attraction cards, and I don't even know if the format is still used or not really
-  it "mtgo commander" do
-    assert_count_cards 'banned:vintage legal:"mtgo commander"', 0
-  end
+  # it "mtgo commander" do
+  #   assert_count_cards 'banned:vintage legal:"mtgo commander"', 0
+  # end
 
   it "historic" do
     # including STA pre-banned

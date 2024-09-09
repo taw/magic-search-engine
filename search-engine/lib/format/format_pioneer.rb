@@ -43,6 +43,7 @@ class FormatPioneer < Format
       "otj",
       "big",
       "blb",
+      "dsk",
     ]
   end
 end

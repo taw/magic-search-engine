@@ -198,7 +198,8 @@ class Format
         "standard"                   => FormatStandard,
         "brawl"                      => FormatBrawl,
         "modern"                     => FormatModern,
-        "frontier"                   => FormatFrontier,
+        # I think the format is just dead
+        # "frontier"                   => FormatFrontier,
         "pioneer"                    => FormatPioneer,
         "legacy"                     => FormatLegacy,
         "vintage"                    => FormatVintage,
@@ -211,8 +212,10 @@ class Format
         "duelcommander"              => FormatDuelCommander,
         "dueledh"                    => FormatDuelCommander,
         "duel"                       => FormatDuelCommander,
-        "mtgocommander"              => FormatMTGOCommander,
-        "mtgoedh"                    => FormatMTGOCommander,
+        # Disabled as I don't even know where the banlist for it is and if it's still a real format
+        # This could be reverted
+        # "mtgocommander"              => FormatMTGOCommander,
+        # "mtgoedh"                    => FormatMTGOCommander,
         "historic"                   => FormatHistoric,
         "premodern"                  => FormatPremodern,
         "alchemy"                    => FormatAlchemy,
