@@ -5,32 +5,42 @@ class PatchDecks < Patch
   end
 
   def resolve_printings
-    @decks.each do |deck|
-      # Map new section system back into the old for now
-      sections = deck["cards"]
-      deck["cards"] = {}
-      deck["sideboard"] = []
-      deck["commander"] = []
-
-      sections.each do |section_name, section_cards|
-        section_cards = section_cards.map{|card| resolve_printing(deck, card) }.compact
-
-        case section_name
-        when "Main Deck", "Commander", "Sideboard", "Planar Deck", "Display Commander", "Scheme Deck"
-          deck["cards"][section_name] ||= []
-          deck["cards"][section_name] += section_cards
-        else
-          # If identical card appears in multiple section, this merging isn't great, but I don't think this ever happens
-          warn "Unknown section name #{section_name}"
-          deck["cards"]["Sideboard"] ||= []
-          deck["cards"]["Sideboard"] += section_cards
-        end
+    @decks.delete_if do |deck|
+      begin
+        resolve_printings_for_deck(deck)
+        false
+      rescue
+        warn "Skipping deck #{deck['set_name']} - #{deck['name']} due to error: #{$!}"
+        true
       end
+    end
+  end
 
-      unless deck["release_date"]
-        warn "No release date for #{deck["set_code"]} #{deck["name"]}, defaulting to set release date"
-        deck["release_date"] = @sets.find{|s| s["code"] == deck["set_code"]}["release_date"]
+  def resolve_printings_for_deck(deck)
+    # Map new section system back into the old for now
+    sections = deck["cards"]
+    deck["cards"] = {}
+    deck["sideboard"] = []
+    deck["commander"] = []
+
+    sections.each do |section_name, section_cards|
+      section_cards = section_cards.map{|card| resolve_printing(deck, card) }.compact
+
+      case section_name
+      when "Main Deck", "Commander", "Sideboard", "Planar Deck", "Display Commander", "Scheme Deck"
+        deck["cards"][section_name] ||= []
+        deck["cards"][section_name] += section_cards
+      else
+        # If identical card appears in multiple section, this merging isn't great, but I don't think this ever happens
+        warn "Unknown section name #{section_name}"
+        deck["cards"]["Sideboard"] ||= []
+        deck["cards"]["Sideboard"] += section_cards
       end
+    end
+
+    unless deck["release_date"]
+      warn "No release date for #{deck["set_code"]} #{deck["name"]}, defaulting to set release date"
+      deck["release_date"] = @sets.find{|s| s["code"] == deck["set_code"]}["release_date"]
     end
   end
 
