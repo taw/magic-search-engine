@@ -179,7 +179,8 @@ class DeckPrintingResolver
         warn "Number #{card_number} requested for #{card_name}, no such card found, but works when corrected to #{card_number}a"
         return specified_card_a
       end
-      raise "Number #{card_number} requested for #{card_name} but no such card found"
+      available_numbers = printings.map{|c| c["number"]}
+      raise "Number #{card_number} requested for #{card_name} but no such card found. Available numbers: #{available_numbers.join(', ')}"
     end
 
     return printings[0] if printings.size == 1
