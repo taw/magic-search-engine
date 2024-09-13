@@ -68,7 +68,7 @@ describe "Full Database Test" do
       "Rimrock Knight", "Boulder Rush",
       "Shepherd of the Flock", "Usher to Safety",
       "Smitten Swordmaster", "Curry Favor",
-      "Smelt (CMB1)", "Herd", "Saw",
+      "Smelt (CMB1)", "Herd", "Saw (CMB1)",
       "Ghost Lantern", "Bind Spirit",
       "Callous Sell-Sword", "Burn Together",
       "Pollen-Shield Hare", "Hare Raising",
@@ -247,6 +247,7 @@ describe "Full Database Test" do
     assert_search_results "mana>mmmmm",
       "B.F.M. (Big Furry Monster)",
       "B.F.M. (Big Furry Monster, Right Side)",
+      "Doomsday Excruciator",
       "Khalni Hydra",
       "Primalcrux"
     assert_count_cards "e:ktk (charm OR ascendancy) mana=mno", 10
