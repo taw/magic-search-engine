@@ -1,0 +1,11 @@
+# data collected from youtube, e.g. https://www.youtube.com/watch?v=cogUSj05Plw&ab_channel=HeroesandLegendsMTG
+name: "{set_name} Seeded Prerelease Booster Dromoka"
+filter: "e:{set} id<=gw is:baseset (w:dromoka or -w:*) -(c:c -w:*)"
+pack:
+  common: 11
+  uncommon: 4
+  promo: 1
+sheets:
+  promo:
+    filter: "e:pdtk (w:dromoka or (id<=gw and -w:*)) promo:prerelease"
+    use: rare_mythic
