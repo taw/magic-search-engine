@@ -6,6 +6,11 @@ pack:
   uncommon: 4
   promo: 1
 sheets:
+  common:
+    query: "r:c"
   promo:
-    filter: "e:pdtk (w:ojutai or (id<=wu and -w:*)) promo:prerelease"
-    use: rare_mythic
+    any:
+    - rawquery: "e:pdtk r:m (w:ojutai or (id<=wu and -w:*)) promo:prerelease"
+      rate: 1
+    - rawquery: "e:pdtk r:r (w:ojutai or (id<=wu and -w:*)) promo:prerelease"
+      rate: 2
