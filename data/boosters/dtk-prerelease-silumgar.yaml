@@ -1,0 +1,17 @@
+# data collected from youtube, e.g. https://www.youtube.com/watch?v=cogUSj05Plw&ab_channel=HeroesandLegendsMTG
+name: "{set_name} Seeded Prerelease Booster Silumgar"
+filter: "e:{set} id<=ub is:baseset (w:silumgar or -w:*) -(c:c -w:*)"
+pack:
+  common: 11
+  uncommon: 4
+  promo: 1
+sheets:
+  common:
+    query: "r:c"
+  promo:
+    foil: true
+    any:
+    - rawquery: "e:pdtk r:m (w:silumgar or (id<=ub and -w:*)) promo:prerelease"
+      rate: 1
+    - rawquery: "e:pdtk r:r (w:silumgar or (id<=ub and -w:*)) promo:prerelease"
+      rate: 2
