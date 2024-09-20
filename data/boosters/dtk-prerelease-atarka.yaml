@@ -9,6 +9,7 @@ sheets:
   common:
     query: "r:c"
   promo:
+    foil: true
     any:
     - rawquery: "e:pdtk r:m (w:atarka or (id<=rg and -w:*)) promo:prerelease"
       rate: 1
