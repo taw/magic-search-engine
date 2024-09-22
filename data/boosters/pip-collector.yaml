@@ -70,7 +70,7 @@ sheets:
     rawquery: "e:pip number:890-974"
     foil: true
   surge_wildcard:
-    rawquery: "e:pip (number:529-854 or number:890-975) -t:basic"
+    rawquery: "e:pip number:529-854,890-975 -t:basic"
     foil: true
   showcase:
     rawquery: "e:pip number:327-361"
@@ -120,7 +120,7 @@ sheets:
       chance: 1
   mutant_menace:
     foil: true
-    any: 
+    any:
     - use: foil_mutant_menace
       chance: 9
     - use: surge_mutant_menace
