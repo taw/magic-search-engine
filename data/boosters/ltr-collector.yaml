@@ -56,9 +56,9 @@ sheets:
       rate: 1
     - rawquery: "e:{set} r:m promo:boosterfun frame:showcase -alt:(is:borderless -frame:showcase) -number:299-300 -number>451"
       rate: 2
-    - rawquery: "e:{set} r:r number:340-345 alt:number:399-451"
+    - rawquery: "e:{set} r:r number:340-345 alt:(e:{set} number:399-451)"
       rate: 2
-    - rawquery: "e:{set} r:r number:340-345 -alt:number:399-451"
+    - rawquery: "e:{set} r:r number:340-345 -alt:(e:{set} number:399-451)"
       rate: 4
     - rawquery: "e:{set} r:m number:340-345"
       rate: 2
@@ -133,9 +133,9 @@ sheets:
       rate: 4
     - rawquery: "e:{set} r:m number:399-451 -alt:(frame:showcase)"
       rate: 2
-    - rawquery: "e:{set} r:r number:340-345 alt:number:399-451"
+    - rawquery: "e:{set} r:r number:340-345 alt:(e:{set} number:399-451)"
       rate: 2
-    - rawquery: "e:{set} r:r number:340-345 -alt:number:399-451"
+    - rawquery: "e:{set} r:r number:340-345 -alt:(e:{set} number:399-451)"
       rate: 4
     - rawquery: "e:{set} r:m number:340-345"
       rate: 2
