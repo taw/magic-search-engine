@@ -128,6 +128,7 @@ class CardsWithWrongOrientation
 
   def call
     db.printings.each do |card|
+      next if card.set_code == "da1" # these are playtest cards without fancy orientations
       [card.path_hq, card.path_lq].each do |path|
         next unless path.exist?
         CheckCardOrientation.new(card, path).call(@fix)

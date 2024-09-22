@@ -17,6 +17,7 @@ class PatchArtistNames < Patch
       ["The Ring", "tltr", "H13a"],
       ["The Ring Tempts You", "tltr", "H13b"],
       ["Baldur's Gate Wilderness", "tclb", "0"],
+      ["Whiteout", "mb2", "77"],
     ]
   end
 
