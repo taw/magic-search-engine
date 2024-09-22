@@ -104,6 +104,22 @@ class PreprocessBooster
     @sheets = common.merge(@data["sheets"] || {})
   end
 
+  def initialize_queries
+    @substitutions = {
+      "{set}" => @set_code,
+    }
+    if @data["queries"]
+      @data["queries"].each do |k, v|
+        @substitutions["{#{k}}"] = "(#{v})"
+      end
+    end
+    @substitutions_rx = Regexp.union(@substitutions.keys)
+    # If it's all deeply recursive, it needs to be in order
+    @substitutions.transform_values! do |v|
+      v = v.gsub(@substitutions_rx){ @substitutions[$&] }
+    end
+  end
+
   def process_sheet(sheet, filter)
     if sheet["filter"]
       filter = sheet["filter"]
@@ -131,11 +147,11 @@ class PreprocessBooster
       sheet
     elsif sheet["rawquery"]
       query = sheet["rawquery"]
-      sheet.except("rawquery").merge("query" => query.gsub("{set}", @set_code))
+      sheet.except("rawquery").merge("query" => query.gsub(@substitutions_rx){ @substitutions[$&] })
     elsif sheet["query"]
       query = sheet["query"]
       # filter already in and-form, doesn't need extra parentheses
-      sheet.merge("query" => "(#{filter}) (#{query})".gsub("{set}", @set_code).gsub("()", ""))
+      sheet.merge("query" => "(#{filter}) (#{query})".gsub(@substitutions_rx){ @substitutions[$&] }.gsub("()", ""))
     else
       raise "Unknown sheet type #{sheet.keys.join(", ")}"
     end
@@ -206,6 +222,7 @@ class PreprocessBooster
     initialize_name
     eval_math(@data)
     initialize_pack
+    initialize_queries
     sheets_in_use = find_sheets_in_use
 
     warn_about_conflicts_with_common_sheets

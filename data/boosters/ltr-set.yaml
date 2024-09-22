@@ -21,11 +21,11 @@ sheets:
     query: "r:c -number>451"
   with_showcase:
     any:
-    - query: "promo:boosterfun alt:(number:302-331 or number:340-345) alt:number:399-451 -number:299-300 -number>451"
+    - query: "promo:boosterfun alt:(number:302-331,340-345) alt:(e:{set} number:399-451) -number:299-300 -number>451"
       rate: 1
-    - query: "(number:302-331 or number:340-345) -alt:number:399-451"
+    - query: "(number:302-331,340-345) -alt:(e:{set} number:399-451)"
       rate: 2
-    - query: "-alt:(number:302-331 or number:340-345) number:399-451"
+    - query: "-alt:(e:{set} number:302-331,340-345) number:399-451"
       rate: 2
     - query: "is:baseset alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 4
@@ -46,17 +46,17 @@ sheets:
       chance: 1
   common_uncommon_showcase:
     any:
-    - rawquery: "e:{set} r:c -alt:(number:302-331 or number:340-345) number:399-451"
+    - rawquery: "e:{set} r:c -alt:(number:302-331,340-345) number:399-451"
       rate: 4
-    - rawquery: "e:{set} r:c (number:302-331 or number:340-345) -alt:number:399-451"
+    - rawquery: "e:{set} r:c number:302-331,340-345 -alt:(e:{set} number:399-451)"
       rate: 4
-    - rawquery: "e:{set} r:c promo:boosterfun alt:(number:302-331 or number:340-345) alt:number:399-451 -number:299-300 -number>451"
+    - rawquery: "e:{set} r:c promo:boosterfun alt:(number:302-331,340-345) alt:(e:{set} number:399-451) -number:299-300 -number>451"
       rate: 2
-    - rawquery: "e:{set} r:u -alt:(number:302-331 or number:340-345) number:399-451"
+    - rawquery: "e:{set} r:u -alt:(number:302-331,340-345) number:399-451"
       rate: 2
-    - rawquery: "e:{set} r:u (number:302-331 or number:340-345) -alt:number:399-451"
+    - rawquery: "e:{set} r:u number:302-331,340-345 -alt:(e:{set} number:399-451)"
       rate: 2
-    - rawquery: "e:{set} r:u promo:boosterfun alt:(number:302-331 or number:340-345) alt:number:399-451 -number:299-300 -number>451"
+    - rawquery: "e:{set} r:u promo:boosterfun alt:(number:302-331,340-345) alt:(e:{set} number:399-451) -number:299-300 -number>451"
       rate: 1
   mythic_with_showcase:
     filter: "e:{set} r:m -number>451"

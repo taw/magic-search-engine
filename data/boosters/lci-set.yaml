@@ -65,11 +65,11 @@ sheets:
         chance: 22
       - rawquery: "e:rex -t:basic -promo:embossed -is:reversibleback"
         chance: 21*2
-      - rawquery: "e:lcc (number:1-16a or number:69-100) r:r is:front"
+      - rawquery: "e:lcc number:1-16a,69-100 r:r is:front"
         chance: 39*2
       - chance: 10
         any:
-        - rawquery: "e:lcc (number:5-16a or number:69-100) r:m is:front"
+        - rawquery: "e:lcc number:5-16a,69-100 r:m is:front"
           rate: 3
         - rawquery: "e:lcc number:1-4"
           rate: 2
