@@ -14,15 +14,17 @@ class PatchPartner < Patch
       elsif text =~ /\bPartner with itself/
         card["is_partner"] = true
         card["partner"] = card["number"]
+      elsif text =~ /\bPartner with Knight/
+        card["is_partner"] = true
       elsif text =~ /\bPartner with ([^\n\(]*)/
         card["is_partner"] = true
         partner_name = $1.strip
         # partners[card] = partner_name
         card["partner"] = find_partner_card_for(card, partner_name)
-      elsif text =~ /Partner\s*\z/
+      elsif text =~ /Partner\s*\z/ or text =~ /as though they each had partner/
         # CMR, some have no remainder text
         card["is_partner"] = true
-      elsif text =~ /Flying, protection, and partner are all keywords/
+      elsif text =~ /Flying, protection, and partner are all keywords|In Limited, it can partner like other monocolored legends/
         # reminder text in funny set, ignore
       elsif text =~ /\bpartner\b/i
         raise "Unknown partner text"
