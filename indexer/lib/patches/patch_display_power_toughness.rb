@@ -39,6 +39,8 @@ class PatchDisplayPowerToughness < Patch
       "*²"
     when /\*/, "∞", "?"
       value
+    when "{Defense:4}"
+      "4"
     else
       raise "Not sure what to do with #{value.inspect}"
     end
