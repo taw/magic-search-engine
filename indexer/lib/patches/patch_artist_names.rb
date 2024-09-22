@@ -16,6 +16,7 @@ class PatchArtistNames < Patch
       ["Undercity", "tclb", "20b"],
       ["The Ring", "tltr", "H13a"],
       ["The Ring Tempts You", "tltr", "H13b"],
+      ["Baldur's Gate Wilderness", "tclb", "0"],
     ]
   end
 
@@ -23,7 +24,7 @@ class PatchArtistNames < Patch
     # Prevent slug conflicts
     each_printing do |card|
       unless card["artist"]
-        unless valid_no_art.include?([card["name"], card["set_code"], card["number"]])
+        unless card["set_code"] == "da1" or valid_no_art.include?([card["name"], card["set_code"], card["number"]])
           warn "No artist for #{card["name"]} #{card["set_code"]} #{card["number"]}"
         end
         card["artist"] = "unknown"
