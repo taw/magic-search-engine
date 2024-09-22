@@ -20,13 +20,13 @@ sheets:
     query: "r:c"
   land:
     any:
-    - query: "number:262 or number:266 or number:270 or number:274 or number:278"
+    - query: "number:262,266,270,274,278"
       chance: 4
-    - query: "number:263 or number:267 or number:271 or number:275 or number:279"
+    - query: "number:263,267,271,275,279"
       chance: 3
-    - query: "number:264 or number:268 or number:272 or number:276 or number:280"
+    - query: "number:264,268,272,276,280"
       chance: 2
-    - query: "number:265 or number:269 or number:273 or number:277 or number:281"
+    - query: "number:265,269,273,277,281"
       chance: 1
   foil_land:
     foil: true

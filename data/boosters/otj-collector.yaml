@@ -36,20 +36,20 @@ sheets:
     - rawquery: "e:big number<=30"
       rate: 1
   showcase_rare_mythic:
-    filter: "(e:otj number:278-367) or (e:big (number:31-60 or number:66-95))"
+    filter: "(e:otj number:278-367) or (e:big number:31-60,66-95)"
     use: rare_mythic
   foil_commander:
     foil: true
     rawquery: "e:otc number:41-44"
   commander:
-    filter: "e:otc (number:1-4 or number:41-76)"
+    filter: "e:otc number:1-4,41-76"
     use: rare_mythic
   otp_rare_mythic:
     filter: "e:otp number<=65"
     use: rare_mythic
   finale:
     foil: true
-    any: 
+    any:
     # otj extended art : val 111
     - rawquery: "e:otj number:307-367 r:r"
       rate: 12
