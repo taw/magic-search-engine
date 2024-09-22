@@ -11,6 +11,6 @@ describe "partner queries" do
   end
 
   it "has:partner" do
-    assert_search_equal "has:partner -e:prm", %[o:"partner with" -e:prm]
+    assert_search_equal "has:partner -e:prm", %[o:"partner with" -e:prm -(Knight of Land Drops)]
   end
 end
