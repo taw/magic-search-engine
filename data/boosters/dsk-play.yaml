@@ -15,22 +15,29 @@ pack:
   rare_mythic_with_showcase: 1
   wildcard: 1
   foil: 1
+queries:
+  lurking_evil: "e:{set} number:287-301"
+  showcase: "e:{set} number:302-327"
+  borderless: "e:{set} number:328-350"
+  double_exposure: "e:{set} number:351-367"
+  any_boosterfun: "{lurking_evil} or {showcase} or {borderless} or {double_exposure}"
+  two_instances: "{any_boosterfun} ((alt:{lurking_evil} alt:{showcase}) or (alt:{lurking_evil} alt:{borderless}) or (alt:{lurking_evil} alt:{double_exposure}) or (alt:{showcase} alt:{borderless}) or (alt:{showcase} alt:{double_exposure}) or (alt:{borderless} alt:{double_exposure}))"
 sheets:
   common:
     any:
-    - query: "r:c -alt:(e:dsk number:287-301) -(t:land -terramorphic)"
+    - query: "r:c -alt:{lurking_evil} -(t:land -terramorphic)"
       rate: 4
-    - query: "r:c alt:(e:dsk number:287-301)"
+    - query: "r:c alt:{lurking_evil}"
       rate: 3
-    - rawquery: "e:dsk number:287-301 r:c"
+    - rawquery: "r:c {lurking_evil}"
       rate: 1
   uncommon:
     any:
-    - query: "r:u -alt:(e:dsk number:287-327)"
+    - query: "r:u -alt:({lurking_evil} or {showcase})"
       rate: 4
-    - query: "r:u alt:(e:dsk number:287-327)"
+    - query: "r:u alt:({lurking_evil} or {showcase})"
       rate: 3
-    - rawquery: "e:dsk number:287-327 r:u"
+    - rawquery: "r:u ({lurking_evil} or {showcase})"
       rate: 1
   land:
     any:
@@ -44,25 +51,25 @@ sheets:
   mythic_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
-    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Lumra)"
+    - rawquery: "r:m {two_instances}"
       rate: 1
-    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Lumra)"
+    - rawquery: "r:m {any_boosterfun} -alt:{two_instances}"
       rate: 2
-    - use: mythic_has_showcase
-      rate: 4
-    - use: mythic_has_no_showcase
+    - query: "r:m alt:{any_boosterfun}"
       rate: 6
+    - query: "r:m -alt:{any_boosterfun}"
+      rate: 8
   rare_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
-    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper (Three Tree City)"
+    - rawquery: "r:r {two_instances}"
       rate: 1
-    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Three Tree City)"
-      rate: 4
-    - use: rare_has_showcase
+    - rawquery: "r:r {any_boosterfun} -alt:{two_instances}"
+      rate: 2
+    - query: "r:r alt:{any_boosterfun}"
+      rate: 6
+    - query: "r:r -alt:{any_boosterfun}"
       rate: 8
-    - use: rare_has_no_showcase
-      rate: 12
   rare_mythic_with_showcase:
     any:
     - use: rare_with_showcase
