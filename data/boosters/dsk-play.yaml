@@ -24,6 +24,7 @@ queries:
   two_instances: "{any_boosterfun} ((alt:{lurking_evil} alt:{showcase}) or (alt:{lurking_evil} alt:{borderless}) or (alt:{lurking_evil} alt:{double_exposure}) or (alt:{showcase} alt:{borderless}) or (alt:{showcase} alt:{double_exposure}) or (alt:{borderless} alt:{double_exposure}))"
 sheets:
   common:
+    # Showcase treatments 1/4 for relevant cards
     any:
     - query: "r:c -alt:{lurking_evil} -(t:land -terramorphic)"
       rate: 4
@@ -32,6 +33,7 @@ sheets:
     - rawquery: "r:c {lurking_evil}"
       rate: 1
   uncommon:
+    # Showcase treatments 1/4 for relevant cards
     any:
     - query: "r:u -alt:({lurking_evil} or {showcase})"
       rate: 4
@@ -49,7 +51,7 @@ sheets:
     foil: true
     use: land
   mythic_with_showcase:
-    # Showcase treatments 1/3 for relevant cards
+    # Showcase treatments 1/4 for relevant cards
     any:
     - rawquery: "r:m {two_instances}"
       rate: 1
@@ -60,7 +62,7 @@ sheets:
     - query: "r:m -alt:{any_boosterfun}"
       rate: 8
   rare_with_showcase:
-    # Showcase treatments 1/3 for relevant cards
+    # Showcase treatments 1/4 for relevant cards
     any:
     - rawquery: "r:r {two_instances}"
       rate: 1
