@@ -332,4 +332,13 @@ BanList.for_format("commander") do
     "Worldfire" => "legal",
     "Golos, Tireless Pilgrim" => "banned",
   )
+
+  change(
+    "2024-09-23",
+    "https://magic.wizards.com/en/news/announcements/commander-banned-and-restricted-announcement-september-23-2024",
+    "Dockside Extortionist" => "banned",
+    "Jeweled Lotus" => "banned",
+    "Mana Crypt" => "banned",
+    "Nadu, Winged Wisdom" => "banned",
+  )
 end
