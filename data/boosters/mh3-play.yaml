@@ -75,7 +75,7 @@ sheets:
       - rawquery: "r:r is:reprint -is:foilonly {two_instances}"
         count: 10
         rate: 1
-      - awquery: "r:r is:reprint -is:foilonly {any_showcase} -{two_instances}"
+      - rawquery: "r:r is:reprint -is:foilonly {any_showcase} -{two_instances}"
         count: 10
         rate: 2
       - query: "r:r is:reprint -is:foilonly alt:{any_showcase}"
@@ -89,7 +89,7 @@ sheets:
       - rawquery: "r:m is:reprint -is:foilonly {two_instances}"
         count: 2
         rate: 1
-      - awquery: "r:m is:reprint -is:foilonly {any_showcase} -{two_instances}"
+      - rawquery: "r:m is:reprint -is:foilonly {any_showcase} -{two_instances}"
         count: 3
         rate: 2
       - query: "r:m is:reprint -is:foilonly alt:{any_showcase}"
