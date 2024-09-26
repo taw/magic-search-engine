@@ -8,6 +8,7 @@ class PatchBaseSize < Patch
       "brr" => 126, # nothing printed due to old frame
       "bro" => 287,
       "ltr" => 281, # not printed, "Set size281 + 170"
+      "dsk" => 286,
     }
 
     sizes.each do |code, size|

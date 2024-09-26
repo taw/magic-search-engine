@@ -1,0 +1,93 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-duskmourn
+pack:
+  foil_common: 5
+  foil_uncommon: 4
+  foil_basic: 1
+  foil_rare_mythic: 1
+  commander:
+  - showcase_commander: 1
+    chance: 16 + 108
+  - foil_showcase_commander: 1
+    chance: 8
+  booster_fun: 2
+  foil_booster_fun: 1
+queries:
+  lurking_evil: "e:{set} number:287-301"
+  showcase: "e:{set} number:302-327"
+  borderless: "e:{set} number:328-350"
+  double_exposure: "e:{set} number:351-367"
+  extended_art: "e:{set} frame:extendedart"
+  any_boosterfun: "{extended_art} or {showcase} or {borderless} or {double_exposure}"
+  two_instances: "{any_boosterfun} ((alt:{extended_art} alt:{showcase}) or (alt:{extended_art} alt:{borderless}) or (alt:{extended_art} alt:{double_exposure}) or (alt:{showcase} alt:{borderless}) or (alt:{showcase} alt:{double_exposure}) or (alt:{borderless} alt:{double_exposure}))"
+sheets:
+  foil_common:
+    # Showcase treatments 1/4 for relevant cards
+    foil: true
+    any:
+    - query: "r:c -alt:{lurking_evil} -(t:land -terramorphic)"
+      rate: 4
+    - query: "r:c alt:{lurking_evil}"
+      rate: 3
+    - rawquery: "r:c {lurking_evil}"
+      rate: 1
+  foil_uncommon:
+    # Showcase treatments 1/4 for relevant cards
+    foil: true
+    any:
+    - query: "r:u -alt:({lurking_evil} or {showcase})"
+      rate: 4
+    - query: "r:u alt:({lurking_evil} or {showcase})"
+      rate: 3
+    - rawquery: "r:u ({lurking_evil} or {showcase})"
+      rate: 1
+  foil_basic:
+    foil: true
+    query: "t:basic is:fullart"
+  foil_rare_mythic:
+    foil: true
+    any:
+    - rawquery: "r:r {lurking_evil}"
+      rate: 2
+    - query: "r:r alt:{lurking_evil}"
+      rate: 6
+    - query: "r:r -alt:{lurking_evil}"
+      rate: 8
+    - rawquery: "r:m {lurking_evil}"
+      rate: 1
+    - query: "r:m alt:{lurking_evil}"
+      rate: 3
+    - query: "r:m -alt:{lurking_evil}"
+      rate: 4
+  showcase_commander:
+    any:
+    - rawquery: "e:dsc number<=8"
+      rate: 1
+    - rawquery: "e:dsc frame:extendedart"
+      rate: 2
+  foil_showcase_commander:
+    foil: true
+    rawquery: "e:dsc number<=8"
+  booster_fun:
+    any:
+    - rawquery: "r:m {two_instances}"
+      rate: 1
+    - rawquery: "r:m {any_boosterfun} -alt:{two_instances}"
+      rate: 2
+    - rawquery: "r:r {two_instances}"
+      rate: 2
+    - rawquery: "r:r {any_boosterfun} -alt:{two_instances}"
+      rate: 4
+  foil_booster_fun:
+    foil: true
+    any:
+    - use: booster_fun
+      chance: 859
+    - rawquery: "e:{set} number:386-395"
+      chance: 90
+    - rawquery: "e:{set} number:396-405"
+      chance: 10
+    - rawquery: "e:{set} number:406-410"
+      chance: 10
+    - set: spg
+      code: "DSK"
+      chance: 31
