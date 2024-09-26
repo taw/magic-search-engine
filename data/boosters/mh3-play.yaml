@@ -18,6 +18,12 @@ pack:
   reprint: 1
   wildcard: 1
   foil_with_showcase: 1
+queries:
+  borderless: "e:{set} number:320-361,442-446"
+  profile: "e:{set} number:362-383 -number:/z/"
+  old_border: "e:{set} number:384-441"
+  any_showcase: "{borderless} or {profile} or {old_border}"
+  two_instances: "{any_showcase} ((alt:{borderless} alt:{profile}) or (alt:{borderless} alt:{old_border}) or (alt:{profile} alt:{old_border}))"
 sheets:
   common:
     query: "r:c"
@@ -30,28 +36,28 @@ sheets:
     query: "r:u -is:reprint -(Snow-Covered Wastes)"
   new_rare_mythic:
     any:
-    - rawquery: "e:mh3 number:320-446a r:r -is:reprint alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+    - rawquery: "r:r -is:reprint -is:foilonly {two_instances}"
       count: 36
       rate: 2
-    - rawquery: "e:mh3 r:r -is:reprint (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+    - rawquery: "r:r -is:reprint -is:foilonly {any_showcase} -{two_instances}"
       count: 18
       rate: 4
-    - query: "r:r alt:number:320-446a -is:reprint -is:foilonly"
+    - query: "r:r -is:reprint -is:foilonly alt:{any_showcase}"
       count: 36
       rate: 8
-    - query: "r:r -alt:number:320-446a -is:reprint -is:foilonly"
+    - query: "r:r -is:reprint -is:foilonly -alt:{any_showcase}"
       count: 19
       rate: 12
-    - rawquery: "e:mh3 number:320-446a r:m -is:reprint alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+    - rawquery: "r:m -is:reprint -is:foilonly {two_instances}"
       count: 12
       rate: 1
-    - rawquery: "e:mh3 r:m -is:reprint (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+    - rawquery: "r:m -is:reprint -is:foilonly {any_showcase} -{two_instances}"
       count: 13
       rate: 2
-    - query: "r:m alt:(e:mh3 number:320-446a) -is:reprint -is:foilonly"
+    - query: "r:m -is:reprint -is:foilonly alt:{any_showcase}"
       count: 19
       rate: 4
-    - query: "r:m -alt:(e:mh3 number:320-446a) -is:reprint -is:foilonly"
+    - query: "r:m -is:reprint -is:foilonly -alt:{any_showcase}"
       count: 1
       rate: 6
   reprint:
@@ -66,27 +72,27 @@ sheets:
         query: "r:u is:reprint -alt:(e:mh3 number:384-441)"
     - chance: 213
       any:
-      - rawquery: "e:mh3 number:320-446a r:r is:reprint alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+      - rawquery: "r:r is:reprint -is:foilonly {two_instances}"
         count: 10
         rate: 1
-      - rawquery: "e:mh3 r:r is:reprint (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+      - rawquery: "r:r is:reprint -is:foilonly {any_showcase} -{two_instances}"
         count: 10
         rate: 2
-      - query: "r:r alt:(e:mh3 number:320-446a) is:reprint -is:foilonly"
+      - query: "r:r is:reprint -is:foilonly alt:{any_showcase}"
         count: 15
         rate: 4
-      - query: "r:r -alt:(e:mh3 number:320-446a) is:reprint -is:foilonly"
+      - query: "r:r is:reprint -is:foilonly -alt:{any_showcase}"
         count: 8
         rate: 6
     - chance: 23
       any:
-      - rawquery: "e:mh3 number:320-446a r:m is:reprint alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+      - rawquery: "r:m is:reprint -is:foilonly {two_instances}"
         count: 2
         rate: 1
-      - rawquery: "e:mh3 r:m is:reprint (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+      - rawquery: "r:m is:reprint -is:foilonly {any_showcase} -{two_instances}"
         count: 3
         rate: 2
-      - query: "r:m alt:(e:mh3 number:320-446a) is:reprint -is:foilonly"
+      - query: "r:m is:reprint -is:foilonly alt:{any_showcase}"
         count: 4
         rate: 4
   wildcard:
@@ -110,32 +116,32 @@ sheets:
         rate: 1
       chance: 175
     - any:
-      - rawquery: "e:mh3 number:320-446a r:r -is:reprint alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+      - rawquery: "r:r -is:reprint -is:foilonly {two_instances}"
         count: 36
         rate: 2
-      - rawquery: "e:mh3 r:r -is:reprint (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+      - rawquery: "r:r -is:reprint -is:foilonly {any_showcase} -{two_instances}"
         count: 18
         rate: 4
-      - query: "r:r alt:number:320-446a -is:reprint -is:foilonly"
+      - query: "r:r -is:reprint -is:foilonly alt:{any_showcase}"
         count: 36
         rate: 8
-      - query: "r:r -alt:number:320-446a -is:reprint -is:foilonly"
+      - query: "r:r -is:reprint -is:foilonly -alt:{any_showcase}"
         count: 19
         rate: 12
-      - rawquery: "e:mh3 number:320-446a r:m -is:reprint alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+      - rawquery: "r:m -is:reprint -is:foilonly {two_instances}"
         count: 12
         rate: 1
-      - rawquery: "e:mh3 r:m -is:reprint (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+      - rawquery: "r:m -is:reprint -is:foilonly {any_showcase} -{two_instances}"
         count: 13
         rate: 2
       - rawquery: "e:m3c number:9-16"
         rate: 2
-      - query: "r:m alt:(e:mh3 number:320-446a) -is:reprint -is:foilonly"
+      - query: "r:m -is:reprint -is:foilonly alt:{any_showcase}"
         count: 19
         rate: 4
       - rawquery: "e:m3c number:1-8"
         rate: 4
-      - query: "r:m -alt:(e:mh3 number:320-446a) -is:reprint -is:foilonly"
+      - query: "r:m -is:reprint -is:foilonly -alt:{any_showcase}"
         count: 1
         rate: 6
       chance: 125
@@ -161,25 +167,25 @@ sheets:
         rate: 1
       chance: 175
     - any:
-      - rawquery: "e:mh3 number:320-446a r:r alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+      - rawquery: "r:r -is:foilonly {two_instances}"
         rate: 2
-      - rawquery: "e:mh3 r:r (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+      - rawquery: "r:r -is:foilonly {any_showcase} -{two_instances}"
         rate: 4
-      - query: "r:r alt:number:320-446a -is:foilonly"
+      - query: "r:r -is:foilonly alt:{any_showcase}"
         rate: 8
-      - query: "r:r -alt:number:320-446a -is:foilonly"
+      - query: "r:r -is:foilonly -alt:{any_showcase}"
         rate: 12
-      - rawquery: "e:mh3 number:320-446a r:m alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441))) -is:foilonly"
+      - rawquery: "r:m -is:foilonly {two_instances}"
         rate: 1
-      - rawquery: "e:mh3 r:m (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:362-380) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:384-441)) or ((e:mh3 number:384-441) -alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380)) -is:foilonly"
+      - rawquery: "r:m -is:foilonly {any_showcase} -{two_instances}"
         rate: 2
       - rawquery: "e:m3c number:9-16"
         rate: 2
-      - query: "r:m alt:(e:mh3 number:320-446a) -is:foilonly"
+      - query: "r:m -is:foilonly alt:{any_showcase}"
         rate: 4
       - rawquery: "e:m3c number:1-8"
         rate: 4
-      - query: "r:m -alt:(e:mh3 number:320-446a) -is:foilonly"
+      - query: "r:m -is:foilonly -alt:{any_showcase}"
         rate: 6
       chance: 125
   special_guest:
