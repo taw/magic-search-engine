@@ -2,7 +2,6 @@ class PatchBaseSize < Patch
   def call
     sizes = {
       "jmp" => 78,
-      "tsr" => 410, # 289, # THIS IS INCORRECT, need fixes downstream in sealed code
       "dbl" => 534,
       "2x2" => 331,
       "brr" => 126, # nothing printed due to old frame
