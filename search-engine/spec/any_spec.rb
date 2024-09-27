@@ -4,7 +4,7 @@ describe "Any queries" do
 
   context "card name" do
     it do
-      assert_search_results %[any:"Abrupt Decay"], "Abrupt Decay", "Jund 'Em Out"
+      assert_search_results %[any:"Abrupt Decay"], "Abrupt Decay", "Jund 'Em Out", "The Duke of Midrange"
     end
     it "is case insensitive" do
       assert_search_equal %[any:"ABRUPT decay"], %[any:"Abrupt Decay"]
@@ -158,7 +158,7 @@ describe "Any queries" do
       assert_search_equal "any:fetchland", "is:fetchland"
       assert_search_equal "any:filterland", "is:filterland"
       assert_search_equal "any:gainland", "is:gainland"
-      assert_search_equal "any:guildgate", "is:guildgate or ft:guildgate"
+      assert_search_equal "any:guildgate", "is:guildgate or ft:guildgate or o:guildgate"
       assert_search_equal "any:karoo", "is:karoo or (Karoo Meerkat)"
       assert_search_equal "any:keywordsoup", "is:keywordsoup"
       assert_search_equal "any:manland", "is:manland"
@@ -208,7 +208,7 @@ describe "Any queries" do
     end
 
     it "booster" do
-      assert_search_equal "any:booster", "is:booster or o:booster or (Blaster Morale Booster)"
+      assert_search_equal "any:booster", "is:booster or o:booster or (Blaster Morale Booster) or (Royal Booster)"
     end
 
     it "promo" do

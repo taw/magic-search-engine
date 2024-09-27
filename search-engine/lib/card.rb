@@ -440,6 +440,20 @@ class Card
     "Reward",
     "Scryfall",
     "Trade Routes",
+    # DA1
+    "Corrupted Metalcraft",
+    "Cosplay",
+    "Megasunburst",
+    "Mirran Victory",
+    "Mono Eminence",
+    "Mono eminence",
+    "Oil Sunburst",
+    "Old Companion",
+    "Phyrexian Victory",
+    "Rule Zero",
+    "Rulebreaker",
+    "Science",
+    "Ward",
   ].sort
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 
