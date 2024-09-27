@@ -15,6 +15,7 @@ describe "Color Indicator Test" do
       "Half-Orc, Half-",
       "Rograkh, Son of Rohgahh"
     assert_search_results "ind:r t:instant",
+      "Nevermind",
       "Pact of the Titan"
     assert_search_results "ind:w t:sorcery",
       "Restore Balance",
