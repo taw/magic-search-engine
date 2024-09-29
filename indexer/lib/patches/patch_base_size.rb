@@ -1,13 +1,8 @@
+# Currently all mtgjson base set sizes are correct,
+# but this often needs to be done during spoiler season
 class PatchBaseSize < Patch
   def call
     sizes = {
-      "jmp" => 78,
-      "dbl" => 534,
-      "2x2" => 331,
-      "brr" => 126, # nothing printed due to old frame
-      "bro" => 287,
-      "ltr" => 281, # not printed, "Set size281 + 170"
-      "dsk" => 286,
     }
 
     sizes.each do |code, size|
