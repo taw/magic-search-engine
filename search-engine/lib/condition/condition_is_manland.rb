@@ -47,6 +47,7 @@ class ConditionIsManland < ConditionNickname
       "svogthos, the restless tomb",
       "the magical city, new",
       "treetop village",
+      "urza's hot dog stand",
       "wandering fumarole",
     ]
   end

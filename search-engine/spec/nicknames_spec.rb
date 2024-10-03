@@ -235,6 +235,7 @@ describe "Card nicknames" do
       "Svogthos, the Restless Tomb",
       "The Magical City, New",
       "Treetop Village",
+      "Urza's Hot Dog Stand",
       "Wandering Fumarole"
     assert_search_equal "is:manland", "t:land o:becomes o:creature -(Tyrite Sanctum) -(Sorrow's Path) -(Mech Hangar)"
     assert_search_equal "is:manland", "is:creatureland"
