@@ -1,0 +1,40 @@
+name: "Mystery Booster 2 Pack"
+pack:
+  white: 2
+  blue: 2
+  black: 2
+  red: 2
+  green: 2
+  landmulticolorless: 1
+  rare_mythic: 1
+  future_sight: 1
+  white_border: 1
+  playtest: 1
+sheets:
+  white:
+    set: plst
+    code: "MBTWWHITE"
+  blue:
+    set: plst
+    code: "MBTWBLUE"
+  black:
+    set: plst
+    code: "MBTWBLACK"
+  red:
+    set: plst
+    code: "MBTWRED"
+  green:
+    set: plst
+    code: "MBTWGREEN"
+  landmulticolorless:
+    set: plst
+    code: "MBTWLMC"
+  rare_mythic:
+    set: plst
+    code: "MBTWRM"
+  future_sight:
+    rawquery: "e:mb2 frame:future"
+  white_border:
+    rawquery: "e:mb2 border:white"
+  playtest:
+    rawquery: "e:mb2 is:funny"
