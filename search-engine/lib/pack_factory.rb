@@ -8,7 +8,7 @@ class PackFactory
     raise "Error building #{@sheet_full_name}: #{message}"
   end
 
-  def build_sheet_from_subsheets(subsheets, chances, kind: CardSheet)
+  def build_sheet_from_subsheets(subsheets, chances, kind: CardSheet, count: nil)
     # Filter out the empty subsheets
     # Example: foil sheet has 2xR + 1xM mix, but some sets don't have mythics
     subsheets, chances = subsheets.zip(chances).select{|s,c| c != 0}.transpose
@@ -17,10 +17,14 @@ class PackFactory
       if kind != subsheets[0].class
         warn "#{@sheet_full_name}: Sheet has only one subsheet and it has wrong kind, expected #{kind}, got #{subsheets[0].class}"
       end
-      subsheets[0]
+      result = subsheets[0]
     else
-      kind.new(subsheets, chances)
+      result = kind.new(subsheets, chances)
     end
+    if count and count != result.count
+      warn "#{@sheet_full_name}: Expected sheet to have #{count} cards, got #{result.count}"
+    end
+    result
   end
 
   def build_sheet_from_deck(deck_code, foil: false, count: nil)
@@ -77,11 +81,11 @@ class PackFactory
         rates = subsheets.map{|d| d.delete("rate")}
         sheets = subsheets.map{|d| build_sheet({"foil" => foil}.merge(d)) }
         chances = rates.zip(sheets).map{|r,s| r*s.elements.size}
-        build_sheet_from_subsheets(sheets, chances, kind: kind)
+        build_sheet_from_subsheets(sheets, chances, kind: kind, count: count)
       elsif subsheets.all?{|s| s["chance"]}
         chances = subsheets.map{|d| d.delete("chance")}
         sheets = subsheets.map{|d| build_sheet({"foil" => foil}.merge(d)) }
-        build_sheet_from_subsheets(sheets, chances, kind: kind)
+        build_sheet_from_subsheets(sheets, chances, kind: kind, count: count)
       else
         raise_sheet_error "Incorrect subsheet data for any"
       end
