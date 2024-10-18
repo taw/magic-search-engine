@@ -1,6 +1,6 @@
 # CardSheet is collection of CardSheet and PhysicalCard elements
 class CardSheet
-  attr_reader :elements, :weights, :total_weight
+  attr_reader :elements, :weights, :total_weight, :count
   attr_accessor :name
 
   def initialize(elements, weights=nil)
@@ -16,6 +16,7 @@ class CardSheet
     else
       @total_weight = @elements.size
     end
+    @count = @elements.map{ |e| e.is_a?(CardSheet) ? e.count : 1 }.sum
   end
 
   def random_card
