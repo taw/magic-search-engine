@@ -51,5 +51,9 @@ sheets:
   etched_foil:
     foil: true
     filter: "e:cmr is:etched"
-    use: base_1248_by_rarity
+    any:
+    - use: base_1248_by_rarity
+      chance: 245
+    - rawquery: "e:cmr number:546"
+      chance: 1
     count: 101

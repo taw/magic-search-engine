@@ -102,13 +102,13 @@ sheets:
     count: 2
     foil: true
   rare_mythic_white:
-    filter: "e:{set} is:baseset id=w"
+    filter: "e:{set} is:baseset (id=w or (Karn Living Legacy))"
     use: rare_mythic
   rare_mythic_blue:
     filter: "e:{set} is:baseset id=u"
     use: rare_mythic
   rare_mythic_black:
-    filter: "e:{set} is:baseset id=b"
+    filter: "e:{set} is:baseset (id=b or (weatherlight compleated)) -liliana"
     use: rare_mythic
   rare_mythic_red:
     filter: "e:{set} is:baseset id=r"
