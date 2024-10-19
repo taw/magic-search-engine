@@ -25,7 +25,7 @@ sheets:
   extended_commander:
     filter: "e:clb number:607-645 -alt:(e:clb number:646-657)"
     use: rare_mythic
-    count: 26
+    count: 27
   extended_rare_mythic:
     filter: "e:clb number:553-606"
     use: rare_mythic
@@ -39,13 +39,11 @@ sheets:
     foil: true
     filter: "e:clb is:etched"
     use: rare_mythic
-    count: 32
+    count: 36
   foil_showcase_rare_mythic:
     foil: true
     filter: "e:clb promo:boosterfun -is:foilonly"
     use: rare_mythic
-    count: 44
   foil_rare_mythic:
     foil: true
     use: rare_mythic
-    count: 22

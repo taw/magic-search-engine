@@ -17,46 +17,55 @@ sheets:
   foil_common:
     foil: true
     query: "r:c -t:gate"
+    count: 100
   foil_uncommon:
     foil: true
     query: "r:u -signet"
+    count: 80
   foil_artifact_land:
     foil: true
     any:
     - chance: 58
       query: "t:gate"
+      count: 10
     - chance: 33
       query: "signet"
+      count: 10
     - chance: 9
       query: "(is:shockland or Chromatic Lantern)"
+      count: 11
   retro_common_uncommon:
     filter: "e:{set} number:302-415,446-466"
     use: common_uncommon
+    count: 24+1+26+10
   foil_retro_common_uncommon:
     foil: true
     filter: "e:{set} number:302-415,446-466 -is:foilonly"
     use: common_uncommon
+    count: 24+1+26+10
   retro_rare_mythic:
     filter: "e:{set} number:302-415,446-467"
     use: rare_mythic
+    count: 51+7+13+3
   foil_rare_mythic:
     foil: true
     any:
     - query: "r:r -(is:shockland or Chromatic Lantern)"
       rate: 2
+      count: 60
     - query: "r:m"
       rate: 1
+      count: 20
   borderless_rare_mythic:
     filter: "e:{set} is:borderless -is:foilonly"
     use: rare_mythic
+    count: 40
   foil_showcase_rare_mythic:
     foil: true
-    filter: "e:{set} number:302-466 -is:foilonly"
+    filter: "e:{set} number:292-466 -is:foilonly"
     use: rare_mythic
+    count: 51+13+7+3+17+2+11+10
   serialized:
     foil: true
-    any:
-    - rawquery: "e:rvr frame:old number:/z/ -number:467z"
-      rate: 1
-    - rawquery: "e:rvr r>=r frame:old -alt:(e:rvr number:/z/) -number:467"
-      rate: 1
+    rawquery: "e:rvr frame:old number:/z/ -number:467z"
+    count: 64

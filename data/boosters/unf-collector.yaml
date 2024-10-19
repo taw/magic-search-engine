@@ -62,11 +62,12 @@ sheets:
   foil_rare_mythic:
     foil: true
     any:
-    - query: "r:r -t:attraction -is:promo -is:basictype"
+    - query: "r:r -t:attraction -(water gun balloon game) -is:basictype"
       rate: 2
+      count: 41
     - query: "r:m -t:attraction"
       rate: 1
-    count: 135
+      count: 18
   foil_un-list:
     foil: true
     rawquery: "e:ulst"

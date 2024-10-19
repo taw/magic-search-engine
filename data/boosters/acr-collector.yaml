@@ -49,10 +49,10 @@ sheets:
       - rawquery: "e:{set} r:r (-is:foilonly -number:/z/) (frame:showcase or is:borderless)"
         rate: 4
         count: 16
-      - rawquery: "e:{set} r:m (-is:foilonly -number:/z/) (frame:showcase or is:borderless)"
+      - rawquery: "e:{set} r:m (-is:foilonly -number:/z/) (frame:showcase or is:borderless) -number:113"
         rate: 2
         count: 13
-      - rawquery: "e:{set} r:r frame:extendedart"
+      - rawquery: "e:{set} r:r frame:extendedart -number:307"
         rate: 4
         count: 16
       - rawquery: "e:{set} r:m frame:extendedart"

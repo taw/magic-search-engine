@@ -39,11 +39,11 @@ sheets:
       rate: 1
       count: 10
   dfc_rare_mythic:
-    filter: "e:{set} is:dfc -t:battle"
+    filter: "e:{set} is:dfc -t:battle is:baseset"
     use: rare_mythic
     count: 10
   sfc_rare_mythic:
-    filter: "e:{set} is:sfc"
+    filter: "e:{set} is:sfc is:baseset"
     use: rare_mythic
     count: 54
   uncommon_battle:

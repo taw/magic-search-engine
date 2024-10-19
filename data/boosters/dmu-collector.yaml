@@ -61,7 +61,7 @@ sheets:
     foil: true
     filter: "e:dmu promo:boosterfun -is:foilonly number<=430"
     use: rare_mythic
-    count: 76
+    count: 80
   retold_uncommon:
     rawquery: "e:dmc number:29-48 r:u"
     count: 5
@@ -77,7 +77,7 @@ sheets:
   showcase_rare_mythic:
     filter: "(e:dmu promo:boosterfun -is:foilonly -frame:extendedart number<=430) or (e:dmc number:29-48)"
     use: rare_mythic
-    count: 46
+    count: 50
   textured_foil:
     foil: true
     filter: "e:dmu promo:textured"
