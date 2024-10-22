@@ -61,6 +61,7 @@ describe "Color Expr Test" do
       "Sisay, Weatherlight Captain",
       "Tazri, Beacon of Unity",
       "Tazri, Stalwart Survivor",
+      "You, Magic Playtester",
       "Who"
   end
 

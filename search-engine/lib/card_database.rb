@@ -41,14 +41,15 @@ class String
   # * it's also artist names
   # * everything is both upper and lower case,
   #   even if only one case is actually in print
+  #   (except Turkish ı)
   def normalize_accents
     result = gsub("Æ", "Ae")
       .gsub("æ", "ae")
       .gsub("Œ", "Oe")
       .gsub("œ", "oe")
       .tr(
-        "ÀÁÂÄẤÃàáâäãấãĆČÇćčçÈËÊÉèéêëēǵÍÏĪÎíïīîŁłÑñńÓÖØõöóøÛÜÚúûüŠšÝýŻż’\u2212",
-        "AAAAAAaaaaaaaCCCcccEEEEeeeeegIIIIiiiiLlNnnOOOooooUUUuuuSsYyZz'-")
+        "ÀÁÂÄẤÃàáâäãấãĆČÇćčçÈËÊÉèéêëēǵÍÏĪÎíïīîıŁłÑñńÓÖØõöóøÛÜÚúûüŠšÝýŻż’\u2212",
+        "AAAAAAaaaaaaaCCCcccEEEEeeeeegIIIIiiiiiLlNnnOOOooooUUUuuuSsYyZz'-")
     result = self if result == self # Memory saving trick
     -result
   end

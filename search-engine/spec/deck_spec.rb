@@ -203,6 +203,8 @@ describe Deck do
         sets_found.should match_array ["m3c", "mh3"]
       when "blc"
         sets_found.should match_array ["blb", "blc"]
+      when "dsc"
+        sets_found.should match_array ["dsk", "dsc"]
       else
         sets_found.should eq [set.code]
       end
