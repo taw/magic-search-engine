@@ -13,7 +13,6 @@ class ConditionDeck < Condition
     "Swamp",
     "Mountain",
     "Forest",
-    "Wastes",
     "Azorius Guildgate",
     "Boros Guildgate",
     "Dimir Guildgate",

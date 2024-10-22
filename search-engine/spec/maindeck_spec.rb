@@ -3,8 +3,9 @@ describe "is:maindeck" do
 
   # Neither t:hero nor w:herospath quite match it
   # due to Fraction Jackson and Hall of Triumph respectively
+  # and now also due to SLD Marvel heroes
   it "is:hero" do
-    assert_search_equal "is:hero", "t:hero -(Fraction Jackson)"
+    assert_search_equal "is:hero", "t:hero -(Fraction Jackson) -e:sld"
     assert_search_equal "is:hero", "w:herospath -(Hall of Triumph)"
     assert_search_equal "is:hero", "e:thp1,thp2,thp3"
   end
