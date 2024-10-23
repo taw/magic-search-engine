@@ -8,9 +8,9 @@ describe "Planechase" do
   end
 
   it "chaos symbol" do
-    # A lot of cards had "Whenever you roll {CHAOS}", but it got changed do "Whenever chaos ensues"
-    # So very few cards use {CHAOS} symbol in updated Oracle text
-    assert_search_results %[t:plane o:{CHAOS}], "Pools of Becoming"
+    # A lot of cards had "Whenever you roll {CHAOS}", but it got changed do "Whenever chaos ensues" so all of this is gone
+    # The only use of {CHAOS} is by Chaotic Aether which uses it in different context
+    assert_search_results %[o:{CHAOS}], "Chaotic Aether"
   end
 
   it "phenomenon" do
