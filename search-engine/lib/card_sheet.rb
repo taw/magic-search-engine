@@ -65,6 +65,16 @@ class CardSheet
     end.uniq
   end
 
+  def source_set_codes
+    @elements.flat_map do |element|
+      if element.is_a?(CardSheet)
+        element.source_set_codes
+      else
+        [element.set_code]
+      end
+    end.uniq
+  end
+
   def probabilities
     result = Hash.new(Rational(0,1))
     @elements.each_with_index do |element, i|

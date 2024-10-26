@@ -41,6 +41,10 @@ class WeightedPack < Pack
     @packs.keys.flat_map(&:cards).uniq
   end
 
+  def source_set_codes
+    @packs.keys.flat_map(&:source_set_codes).uniq.sort
+  end
+
   private
 
   def flatten!

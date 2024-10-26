@@ -117,6 +117,7 @@ class ExportFormatterBasic < ExportFormatter
           serialize_subpack(subpack, weight, sheets)
         },
         sheets: serialize_sheets(sheets),
+        source_set_codes: booster.source_set_codes,
       }
     end
     result
@@ -165,6 +166,7 @@ class ExportFormatterExtended < ExportFormatter
           serialize_subpack(subpack, weight, sheets)
         },
         sheets: serialize_sheets(sheets),
+        source_set_codes: booster.source_set_codes,
       }
     end
     result
@@ -240,6 +242,7 @@ class ExportFormatterExperimental < ExportFormatter
         },
         boostersTotalWeight: total_weight,
         sheets: serialized_sheets,
+        sourceSetCodes: booster.source_set_codes.map(&:upcase),
       }.compact
     end
     result

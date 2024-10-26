@@ -24,6 +24,10 @@ class Pack
     @set&.code
   end
 
+  def source_set_codes
+    @sheets.keys.flat_map(&:source_set_codes).uniq.sort
+  end
+
   # Testing support
   # Also used by booster: queries
 
