@@ -34,7 +34,10 @@
               = count
               %span.previewable_card_name{"data-preview-link": preview_id(card)}
                 = link_to_card(card.main_front) do
-                  = card.name
+                  - if card.flavor_name
+                    = "#{card.flavor_name} (#{card.name})"
+                  - else
+                    = card.name
                   = card.front.map{|cp| format_oracle_text(cp.display_mana_cost)}.join("/").html_safe
       - if @tokens.present?
         .card_group
