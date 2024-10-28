@@ -1,7 +1,7 @@
 class PreconDeck < Deck
   attr_reader :set, :name, :type, :category, :format, :release_date, :slug, :source, :display, :normalized_name
-  def initialize(set, name, type, category, format, release_date, sections, display)
-    super(sections)
+  def initialize(set, name, type, category, format, release_date, sections, display, tokens)
+    super(sections, tokens)
     @set = set
     @name = name
     @type = type

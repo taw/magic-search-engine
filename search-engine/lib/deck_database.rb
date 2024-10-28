@@ -27,6 +27,7 @@ class DeckDatabase
         date,
         sections,
         display,
+        deck["tokens"],
       )
       set.decks << deck
     end

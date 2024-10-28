@@ -1,11 +1,12 @@
 class Deck
-  attr_reader :cards, :sideboard, :commander
+  attr_reader :cards, :sideboard, :commander, :tokens
 
-  def initialize(sections)
+  def initialize(sections, tokens=[])
     @sections = sections
     @cards = sections["Main Deck"]
     @sideboard = (sections["Sideboard"] || []) + (sections["Planar Deck"] || []) + (sections["Display Commander"] || []) + (sections["Scheme Deck"] || [])
     @commander = sections["Commander"] || []
+    @tokens = tokens
   end
 
   def cards_in_all_zones

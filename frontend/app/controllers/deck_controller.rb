@@ -35,6 +35,7 @@ class DeckController < ApplicationController
     @display = @deck.display
     @format = @deck.format
     @category = @deck.category
+    @tokens = @deck.tokens
 
     @cards = sort_section(@deck.cards)
     @sideboard = sort_section(@deck.section("Sideboard"))

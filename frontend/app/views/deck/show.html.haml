@@ -28,7 +28,7 @@
     .col-8.two-columns
       - @card_groups.each do |(i, group), cards|
         .card_group
-          %h6= "#{group} (#{cards.map{|c| c[0]}.inject(0, &:+)})"
+          %h6= "#{group} (#{cards.map{|c| c[0]}.sum})"
           - cards.each do |count, card|
             .card_entry
               = count
@@ -36,6 +36,22 @@
                 = link_to_card(card.main_front) do
                   = card.name
                   = card.front.map{|cp| format_oracle_text(cp.display_mana_cost)}.join("/").html_safe
+      - if @tokens.present?
+        .card_group
+          %h6= "Tokens (#{@tokens.map{|c| c[0]}.sum})"
+          - @tokens.each do |count, name, set, number, foil|
+            .card_entry
+              = count
+              = name
+              - if set and number
+                = "[#{set}:#{number}]"
+              - elsif set
+                = "[#{set}]"
+              - elsif number # not really supposed to be used
+                = "[#{number}]"
+              - if foil
+                = "[foil]"
+
     .col-4.picture_preview_column
       .picture_preview_box
         - @card_previews.each_with_index do |preview_card, i|

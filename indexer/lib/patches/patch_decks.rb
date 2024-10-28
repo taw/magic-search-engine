@@ -17,13 +17,13 @@ class PatchDecks < Patch
   end
 
   def resolve_printings_for_deck(deck)
-    # Map new section system back into the old for now
     sections = deck["cards"]
     deck["cards"] = {}
-    deck["sideboard"] = []
-    deck["commander"] = []
+    deck["tokens"] = []
 
     sections.each do |section_name, section_cards|
+      deck["tokens"].push *section_cards.select{|card| card["token"]}.map{|token| format_token(token)}
+      section_cards = section_cards.reject{|card| card["token"]}
       section_cards = section_cards.map{|card| resolve_printing(deck, card) }.compact
 
       case section_name
@@ -45,8 +45,11 @@ class PatchDecks < Patch
   end
 
   def resolve_printing(deck, card)
-    return nil if card["token"]
     DeckPrintingResolver.new(@cards, @sets, deck, card).call
+  end
+
+  def format_token(token)
+    [token["count"], token["name"], token["set"], token["number"], !!token["foil"]]
   end
 
   def call
