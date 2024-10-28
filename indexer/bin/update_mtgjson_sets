@@ -62,7 +62,7 @@ class SingleSetUpdater
   end
 
   def bad_foregin_only_sets
-    %W[FBB 4BB REN RIN PSAL PS11 BCHR]
+    %W[FBB 4BB REN RIN BCHR]
   end
 
   def call
@@ -79,7 +79,7 @@ class SingleSetUpdater
     elsif incoming_data["isForeignOnly"] and bad_foregin_only_sets.include?(incoming_code)
       # We're actually OK with foreign promo sets
       command_drop
-    elsif %W[SUM PSAL FJMP BCHR].include?(incoming_code)
+    elsif %W[SUM FJMP BCHR].include?(incoming_code)
       # Just ignore it
       command_drop
     else
