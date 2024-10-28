@@ -10,6 +10,12 @@ class PhysicalCard
     @front.map(&:name).join(" // ")
   end
 
+  def flavor_name
+    if @front[0].flavor_name
+      @front.map(&:flavor_name).join(" // ")
+    end
+  end
+
   def name_slug
     main_front.name_slug
   end
