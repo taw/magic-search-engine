@@ -1,0 +1,77 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-foundations
+pack:
+  land_slot:
+  - land: 1
+    chance: 4
+  - foil_land: 1
+    chance: 1
+  list_slot:
+  - common: 7
+    chance: 63
+  - common: 6
+    special_guest: 1
+    chance: 1
+  uncommon: 3
+  rare_mythic_with_showcase: 1
+  wildcard: 1
+  foil: 1
+queries:
+  borderless: "e:{set} number:292-361"
+sheets:
+  showcase:
+    # Showcase treatments 1/8 for relevant cards
+    any:
+    - query: "{borderless}"
+      rate: 1
+    - query: "alt:{borderless}"
+      rate: 7
+    - query: "is:baseset -alt:{borderless}"
+  land:
+    any:
+    - query: "r:c t:land -uncharted"
+      chance: 1
+    - query: "t:basic"
+      chance: 1
+  common:
+    query: "r:c -(e:{set} t:land -uncharted)"
+  foil_land:
+    foil: true
+    use: land
+  common_with_showcase:
+    filter: "e:{set} r:c"
+    use: showcase
+  uncommon_with_showcase:
+    filter: "e:{set} r:u"
+    use: showcase
+  rare_with_showcase:
+    filter: "e:{set} r:r"
+    use: showcase
+  mythic_with_showcase:
+    filter: "e:{set} r:m"
+    use: showcase
+  rare_mythic_with_showcase:
+    any:
+    - use: rare_with_showcase
+      chance: 6
+    - use: mythic_with_showcase
+      chance: 1
+  wildcard:
+    any:
+    - chance: 167 + 18
+      use: common_with_showcase
+    - chance: 583 + 24
+      use: uncommon_with_showcase
+    - chance: 163+26+16+3
+      use: rare_mythic_with_showcase
+  foil:
+    foil: true
+    any:
+    - chance: 12
+      use: common
+    - chance: 5
+      use: uncommon
+    - chance: 3
+      use: rare_mythic_with_showcase
+  special_guest:
+    set: spg
+    code: "FDN"
