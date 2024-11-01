@@ -7,10 +7,10 @@ pack:
     chance: 1
   list_slot:
   - common: 7
-    chance: 63
+    chance: 197
   - common: 6
     special_guest: 1
-    chance: 1
+    chance: 3
   uncommon: 3
   rare_mythic_with_showcase: 1
   wildcard: 1
@@ -30,10 +30,16 @@ sheets:
     any:
     - query: "r:c t:land -uncharted"
       chance: 1
+      count: 10
     - query: "t:basic"
       chance: 1
+      count: 20
   common:
     query: "r:c -(e:{set} t:land -uncharted)"
+    count: 80
+  uncommon:
+    query: "r:u"
+    count: 100
   foil_land:
     foil: true
     use: land
@@ -67,9 +73,9 @@ sheets:
     foil: true
     any:
     - chance: 12
-      use: common
+      use: common_with_showcase
     - chance: 5
-      use: uncommon
+      use: uncommon_with_showcase
     - chance: 3
       use: rare_mythic_with_showcase
   special_guest:
