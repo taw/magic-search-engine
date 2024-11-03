@@ -41,6 +41,7 @@ class ConditionIsManland < ConditionNickname
       "restless vents",
       "restless vinestalk",
       "shambling vent",
+      "soulstone sanctuary",
       "spawning pool",
       "stalking stones",
       "stirring wildwood",

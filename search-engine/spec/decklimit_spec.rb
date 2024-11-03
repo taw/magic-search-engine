@@ -25,6 +25,7 @@ describe "DissentionTest" do
       "Wastes",
       # by card text
       "Dragon's Approach",
+      "Hare Apparent",
       "Persistent Petitioners",
       "Rat Colony",
       "Relentless Rats",

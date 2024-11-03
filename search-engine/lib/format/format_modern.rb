@@ -67,6 +67,7 @@ class FormatModern < Format
       "acr",
       "blb",
       "dsk",
+      "fdn",
     ]
   end
 end
