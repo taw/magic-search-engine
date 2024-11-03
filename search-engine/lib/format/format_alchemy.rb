@@ -17,6 +17,7 @@ class FormatAlchemy < FormatStandard
         "dmu", "ydmu", "bro", "ybro", "one", "yone", "mom", "mat", "ltr", "woe", "ywoe", "lci", "ylci", "mkm", "ymkm", "otj", "big", "yotj",
         "blb", "yblb",
         "dsk", "ydsk",
+        "fdn", # will likely have unusual rotation matching Standard
       ],
       "2022-09-09" => [
         "anb",

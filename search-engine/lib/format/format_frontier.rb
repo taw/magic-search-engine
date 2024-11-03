@@ -41,6 +41,7 @@ class FormatFrontier < Format
       "big",
       "blb",
       "dsk",
+      "fdn",
     ]
   end
 end

@@ -8,7 +8,7 @@ describe "Formats" do
     assert_search_results "f:extended" # Does not exist according to mtgjson
     assert_search_equal_cards "f:standard",
       %[
-        e:dmu,bro,one,mom,mat,woe,lci,mkm,otj,big,blb,dsk
+        e:dmu,bro,one,mom,mat,woe,lci,mkm,otj,big,blb,dsk,fdn
         -(The Meathook Massacre)
         -(Invoke Despair)
         -(Fable of the Mirror-Breaker)
@@ -353,6 +353,4 @@ describe "Formats" do
       alchemy_set_codes.include?(alchemy_code).should(be_truthy, "Alchemy should include #{alchemy_code} since Standard includes #{code}")
     end
   end
-
-  ## TODO - Extended, and various weirdo formats
 end
