@@ -38,9 +38,10 @@ class DeckPrintingResolver
     "past" => ["drk", "leg", "atq", "arn", "3ed", "2ed", "leb", "lea"],
   }
 
-  def initialize(cards, sets, deck, card)
+  def initialize(cards, sets, flavor_name_map, deck, card)
     @cards = cards
     @sets = sets.to_h{|s| [s["code"], s]}
+    @flavor_name_map = flavor_name_map
     @deck = deck
     @card = card
   end
@@ -98,7 +99,7 @@ class DeckPrintingResolver
   end
 
   def card_info
-    @card_info ||= @cards[card_name]
+    @card_info ||= @cards[card_name] || @cards[@flavor_name_map[card_name]]
   end
 
   def resolve_set

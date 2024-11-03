@@ -45,7 +45,7 @@ class PatchDecks < Patch
   end
 
   def resolve_printing(deck, card)
-    DeckPrintingResolver.new(@cards, @sets, deck, card).call
+    DeckPrintingResolver.new(@cards, @sets, @flavor_name_map, deck, card).call
   end
 
   def format_token(token)
@@ -53,7 +53,23 @@ class PatchDecks < Patch
   end
 
   def call
+    @flavor_name_map = flavor_name_map
     remove_decks_for_unknown_sets
     resolve_printings
+  end
+
+  def flavor_name_map
+    map = {}
+    @cards.each do |card_name, cards|
+      cards.each do |card|
+        flavor_name = card["flavor_name"] or next
+        next if flavor_name.include?("//")
+        if map[flavor_name] and map[flavor_name] != card_name
+          raise "Duplicate flavor name #{flavor_name} for cards #{map[flavor_name]} and #{card_name}"
+        end
+        map[flavor_name] = card_name
+      end
+    end
+    map
   end
 end
