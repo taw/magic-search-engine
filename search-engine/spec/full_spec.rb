@@ -204,18 +204,18 @@ describe "Full Database Test" do
 
   it "alt rarity" do
     assert_search_include "r:common alt:r:uncommon", "Doom Blade"
-    assert_search_results "r:common -is:digital -e:sld,spg alt:(r:mythic -is:digital -e:sld,spg)",
+    assert_search_results "r:common -is:digital -e:sld,spg,fdn alt:(r:mythic -is:digital -e:sld,spg,fdn)",
       "Bojuka Bog",
       "Cabal Ritual",
       "Dark Ritual",
       "Delver of Secrets",
       "Desert",
+      "Exhume",
       "Fyndhorn Elves",
       "Hymn to Tourach",
       "Impulse",
       "Insectile Aberration",
       "Kird Ape",
-      "Lightning Bolt",
       "Lotus Petal",
       "Rhystic Study",
       "Sol Ring"
