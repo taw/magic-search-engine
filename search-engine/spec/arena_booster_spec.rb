@@ -5,7 +5,7 @@ describe "Arena and MTGO Boosters" do
   # What about remastered sets?
   let(:arena_boosters) { boosters.select{|b| b.code =~ /arena/} }
   let(:mtgo_boosters) { boosters.select{|b| b.code =~ /\A(tpr|me1|me2|me3|me4|vma)-mtgo\z/ } }
-  let(:non_legal_boosters) { boosters.select{|b| b.code == "30a" }}
+  let(:non_legal_boosters) { boosters.select{|b| b.code == "30a-draft" }}
   let(:non_digital_boosters) { boosters - arena_boosters - mtgo_boosters - non_legal_boosters }
 
   it "Arena boosters contain only Arena cards" do
