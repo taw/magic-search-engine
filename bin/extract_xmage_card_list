@@ -10,7 +10,10 @@ CARDS_NAME_FIXES = {
   "Garbage Elemental" => "Garbage Elemental (a) // Garbage Elemental (c) // Garbage Elemental (d) // Garbage Elemental (f)",
   "Very Cryptic Command" => "Very Cryptic Command (b) // Very Cryptic Command (c) // Very Cryptic Command (d) // Very Cryptic Command (e)",
   "Everythingamajig" => "Everythingamajig (a) // Everythingamajig (b) // Everythingamajig (c) // Everythingamajig (d) // Everythingamajig (e) // Everythingamajig (f)",
-  "Tura Kennerud, Skyknight" => "Tura Kennerüd, Skyknight"
+  # shouldn't indexer handle these?
+  "Tura Kennerud, Skyknight" => "Tura Kennerüd, Skyknight",
+  "Arna Kennerud, Skycaptain" => "Arna Kennerüd, Skycaptain",
+  "Clavileno, First of the Blessed" => "Clavileño, First of the Blessed",
 }
 
 class ExtractXmageCardList
