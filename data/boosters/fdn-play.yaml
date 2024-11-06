@@ -18,24 +18,16 @@ pack:
 queries:
   borderless: "e:{set} number:292-361"
 sheets:
-  showcase:
-    # Showcase treatments 1/8 for relevant cards
-    any:
-    - query: "{borderless}"
-      rate: 1
-    - query: "alt:{borderless}"
-      rate: 7
-    - query: "is:baseset -alt:{borderless}"
   land:
     any:
-    - query: "r:c t:land -uncharted"
+    - query: "r:c t:land -uncharted -evolving"
       chance: 1
       count: 10
     - query: "t:basic"
       chance: 1
       count: 20
   common:
-    query: "r:c -(e:{set} t:land -uncharted)"
+    query: "r:c -(e:{set} t:land -uncharted -evolving)"
     count: 80
   uncommon:
     query: "r:u"
@@ -44,17 +36,37 @@ sheets:
     foil: true
     use: land
   common_with_showcase:
-    filter: "e:{set} r:c"
-    use: showcase
+    any:
+    - rawquery: "e:{set} r:c {borderless}"
+      rate: 1
+    - rawquery: "e:{set} r:c alt:{borderless}"
+      rate: 7
+    - query: "r:c -alt:{borderless}"
+      rate: 8
   uncommon_with_showcase:
-    filter: "e:{set} r:u"
-    use: showcase
+    any:
+    - rawquery: "e:{set} r:u {borderless}"
+      rate: 1
+    - rawquery: "e:{set} r:u alt:{borderless}"
+      rate: 7
+    - query: "r:u -alt:{borderless}"
+      rate: 8
   rare_with_showcase:
-    filter: "e:{set} r:r"
-    use: showcase
+    any:
+    - rawquery: "e:{set} r:r {borderless}"
+      rate: 1
+    - rawquery: "e:{set} r:r alt:{borderless}"
+      rate: 7
+    - query: "r:r -alt:{borderless}"
+      rate: 8
   mythic_with_showcase:
-    filter: "e:{set} r:m"
-    use: showcase
+    any:
+    - rawquery: "e:{set} r:m {borderless}"
+      rate: 1
+    - rawquery: "e:{set} r:m alt:{borderless}"
+      rate: 7
+    - query: "r:m -alt:{borderless}"
+      rate: 8
   rare_mythic_with_showcase:
     any:
     - use: rare_with_showcase
