@@ -39,33 +39,33 @@ sheets:
     any:
     - rawquery: "e:{set} r:c {borderless}"
       rate: 1
-    - rawquery: "e:{set} r:c alt:{borderless}"
+    - query: "r:c alt:{borderless} number<=291"
       rate: 7
-    - query: "r:c -alt:{borderless}"
+    - query: "r:c -alt:{borderless} number<=291"
       rate: 8
   uncommon_with_showcase:
     any:
     - rawquery: "e:{set} r:u {borderless}"
       rate: 1
-    - rawquery: "e:{set} r:u alt:{borderless}"
+    - query: "r:u alt:{borderless} number<=291"
       rate: 7
-    - query: "r:u -alt:{borderless}"
+    - query: "r:u -alt:{borderless} number<=291"
       rate: 8
   rare_with_showcase:
     any:
     - rawquery: "e:{set} r:r {borderless}"
       rate: 1
-    - rawquery: "e:{set} r:r alt:{borderless}"
+    - query: "r:r alt:{borderless} number<=291"
       rate: 7
-    - query: "r:r -alt:{borderless}"
+    - query: "r:r -alt:{borderless} number<=291"
       rate: 8
   mythic_with_showcase:
     any:
     - rawquery: "e:{set} r:m {borderless}"
       rate: 1
-    - rawquery: "e:{set} r:m alt:{borderless}"
+    - query: "r:m alt:{borderless} number<=291"
       rate: 7
-    - query: "r:m -alt:{borderless}"
+    - query: "r:m -alt:{borderless} number<=291"
       rate: 8
   rare_mythic_with_showcase:
     any:
