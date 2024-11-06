@@ -43,6 +43,7 @@ describe "Deck legality" do
       "Barry's Land", # CMB1
       "Dragon's Approach",
       "Forest",
+      "Hare Apparent",
       "Island",
       "Mountain",
       "Omnipresent Impostor",

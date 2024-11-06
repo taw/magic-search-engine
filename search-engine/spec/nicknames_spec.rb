@@ -229,6 +229,7 @@ describe "Card nicknames" do
       "Restless Vents",
       "Restless Vinestalk",
       "Shambling Vent",
+      "Soulstone Sanctuary",
       "Spawning Pool",
       "Stalking Stones",
       "Stirring Wildwood",

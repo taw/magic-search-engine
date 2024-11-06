@@ -10,8 +10,8 @@ describe "Alchemy" do
     assert_search_results "is:alchemy booster:*"
   end
 
-  it "no Alchemy cards in any precons" do
-    assert_search_results "is:alchemy deck:*"
+  it "no Alchemy cards in any precons (except Arena precons)" do
+    assert_search_results 'is:alchemy deck:* -deck:"Collateral Damage" -deck:"Lightly Armored" -deck:"Braaains" -deck:"Ancient Discovery"'
   end
 
   it "has:alchemy and is:alchemy returns same number of cards" do

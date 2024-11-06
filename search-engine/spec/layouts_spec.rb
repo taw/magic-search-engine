@@ -31,7 +31,8 @@ describe "Card layouts" do
     assert_search_equal "layout:planar", "t:plane or t:phenomenon"
     assert_search_equal "layout:flip", '// o:"flip it" or o:"flip ~" or o:flipped or o:"Fire Penguin"'
     assert_search_equal "layout:vanguard", "t:vanguard"
-    assert_search_equal "layout:split", "((t:instant or t:sorcery) // (t:instant or t:sorcery)) -(// o:aftermath) -(// t:adventure)"
+    # It would probably make more sense to do layout:room as a separate thing
+    assert_search_equal "layout:split", "(((t:instant or t:sorcery) // (t:instant or t:sorcery)) -(// o:aftermath) -(// t:adventure)) or (t:room // t:room)"
     assert_search_equal "layout:aftermath", "// o:aftermath"
     assert_search_equal "layout:leveler", 'o:/level up \{/'
     assert_search_equal "layout:meld", "// (// o:meld)"

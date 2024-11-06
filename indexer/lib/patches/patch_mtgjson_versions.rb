@@ -232,7 +232,7 @@ class PatchMtgjsonVersions < Patch
       end
 
       if card["flavorName"]
-        card["flavor_name"] = card.delete("flavorName")
+        card["flavor_name"] = card.delete("faceFlavorName") || card.delete("flavorName")
       end
 
       if card["rulings"]

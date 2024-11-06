@@ -123,7 +123,6 @@ describe "Unsets" do
       "Shichifukujin Dragon",
       "Splendid Genesis",
       "Steamflogger Boss",
-      "Stocking Tiger",
       "Swamp",
       "Zur the Enchanter",
     )
@@ -143,7 +142,6 @@ describe "Unsets" do
       "Shichifukujin Dragon",
       "Splendid Genesis",
       "Steamflogger Boss",
-      "Stocking Tiger",
       "Swamp",
     )
     "is:white-bordered".should return_no_cards
