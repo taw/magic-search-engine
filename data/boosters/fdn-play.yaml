@@ -1,0 +1,95 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-foundations
+pack:
+  land_slot:
+  - land: 1
+    chance: 4
+  - foil_land: 1
+    chance: 1
+  list_slot:
+  - common: 7
+    chance: 197
+  - common: 6
+    special_guest: 1
+    chance: 3
+  uncommon: 3
+  rare_mythic_with_showcase: 1
+  wildcard: 1
+  foil: 1
+queries:
+  borderless: "e:{set} number:292-361"
+sheets:
+  land:
+    any:
+    - query: "r:c t:land -uncharted -evolving"
+      chance: 1
+      count: 10
+    - query: "t:basic"
+      chance: 1
+      count: 20
+  common:
+    query: "r:c -(e:{set} t:land -uncharted -evolving)"
+    count: 80
+  uncommon:
+    query: "r:u"
+    count: 100
+  foil_land:
+    foil: true
+    use: land
+  common_with_showcase:
+    any:
+    - rawquery: "e:{set} r:c {borderless}"
+      rate: 1
+    - query: "r:c alt:{borderless} number<=291"
+      rate: 7
+    - query: "r:c -alt:{borderless} number<=291"
+      rate: 8
+  uncommon_with_showcase:
+    any:
+    - rawquery: "e:{set} r:u {borderless}"
+      rate: 1
+    - query: "r:u alt:{borderless} number<=291"
+      rate: 7
+    - query: "r:u -alt:{borderless} number<=291"
+      rate: 8
+  rare_with_showcase:
+    any:
+    - rawquery: "e:{set} r:r {borderless}"
+      rate: 1
+    - query: "r:r alt:{borderless} number<=291"
+      rate: 7
+    - query: "r:r -alt:{borderless} number<=291"
+      rate: 8
+  mythic_with_showcase:
+    any:
+    - rawquery: "e:{set} r:m {borderless}"
+      rate: 1
+    - query: "r:m alt:{borderless} number<=291"
+      rate: 7
+    - query: "r:m -alt:{borderless} number<=291"
+      rate: 8
+  rare_mythic_with_showcase:
+    any:
+    - use: rare_with_showcase
+      chance: 6
+    - use: mythic_with_showcase
+      chance: 1
+  wildcard:
+    any:
+    - chance: 167 + 18
+      use: common_with_showcase
+    - chance: 583 + 24
+      use: uncommon_with_showcase
+    - chance: 163+26+16+3
+      use: rare_mythic_with_showcase
+  foil:
+    foil: true
+    any:
+    - chance: 12
+      use: common_with_showcase
+    - chance: 5
+      use: uncommon_with_showcase
+    - chance: 3
+      use: rare_mythic_with_showcase
+  special_guest:
+    set: spg
+    code: "FDN"
