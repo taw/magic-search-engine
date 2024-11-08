@@ -14,6 +14,7 @@ class PatchHasBoosters < Patch
       sunf
       tsb
       h2r
+      big
     ]
   end
 

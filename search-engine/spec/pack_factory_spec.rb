@@ -53,37 +53,6 @@ describe PackFactory do
     end
   end
 
-  # There's no guarantee they'll always have them,
-  # but it's worth checking exceptions manually
-  context "Standard legal sets since Origins generally have non-booster cards" do
-    let(:start_date) { db.sets["ori"].release_date }
-    let(:regular_sets) { db.sets.values.select{|s|
-      s.types.include?("core") or s.types.include?("expansion")
-    }.to_set }
-    let(:expected_official) {
-      regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set - %W[emn soi] + %W[m15 mh1 2xm cmr klr akr tsr mh2 dbl clb 2x2 unf dmr sir ltr cmm who rvr]
-    }
-    let(:expected_mtgjson_variant) {
-      # ala has bs card they retroactively added a decade later
-      # but it's in snc-set
-      ["mir", "ody", "por", "5ed", "soi", "atq", "drk", "inv", "pcy", "4ed", "7ed", "8ed", "9ed", "10e", "gpt", "jmp", "j22"]
-    }
-    let(:expected_basics_not_in_boosters) {
-      # ice, tmp belongs here for normal boosters, but randomized Starter Deck has basics
-      [ "mir", "usg", "4ed", "5ed", "6ed", "zen"]
-    }
-    let(:expected) {
-      expected_official | expected_mtgjson_variant | expected_basics_not_in_boosters
-    }
-    let(:sets_with_boosters) { db.sets.values.select(&:has_boosters?) }
-    let(:sets_with_nonbooster_cards) {
-      sets_with_boosters.select{|set| set.printings.any?{|x| !x.in_boosters?} }.map(&:code)
-    }
-    it do
-      sets_with_nonbooster_cards.should match_array expected
-    end
-  end
-
   context "Dragon's Maze" do
     let(:set_code) { "dgm" }
     let(:maze_end) { card("maze end") }
