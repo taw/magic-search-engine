@@ -24,7 +24,7 @@
   it "is:arena" do
     assert_search_equal "is:arena", "game:arena"
     assert_search_equal "e:m19 is:arena", "e:m19"
-    assert_search_results "e:isd is:arena"
+    assert_search_results "e:isd is:arena", "Gnaw to the Bone" # MKM_ARENA_CU on Arena List
   end
 
   it "is:shandalar" do
