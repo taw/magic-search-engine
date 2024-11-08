@@ -24,11 +24,11 @@ describe "is:booster" do
       should_have_boosters = (
         %W[mb1 cmr dbl clb 30a zne who sld clu pip slc].include?(set_code) or (
           !(set_types_with_boosters & set.types).empty? and
-          !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana oana fmb1 anb plst slx ulst sis md1].include?(set.code)
+          !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana oana fmb1 anb plst slx ulst sis md1 big h2r].include?(set.code)
         )
       )
       should_be_in_other_boosters = (
-        %W[tsb exp mps mp2 fmb1 plst sta sunf brr sis slx h2r].include?(set.code)
+        %W[tsb exp mps mp2 fmb1 plst sta sunf brr sis slx h2r big].include?(set.code)
       )
       if %W[j21 ajmp].include?(set_code)
         # Arena extras
@@ -62,7 +62,8 @@ describe "is:booster" do
           # except KTK was imported in whole, without remaster
           s.release_date >= Date.parse("2017-09-29") or
           s.code == "ktk"
-        )
+        ) and
+        !%W[big].include?(s.code)
       }.map(&:code).to_set
     end
 
