@@ -98,7 +98,7 @@ class IndexSerializer
         "ns" => printing["names"],
         "o" => printing["text"],
         "pw" => printing["power"],
-        "r" => printing["rulings"],
+        "r" => printing["rulings"]&.map{|r| [r["date"], r["text"]]},
         "rl" => printing["related"],
         "rs" => printing["reserved"],
         "s" => printing["secondary"],

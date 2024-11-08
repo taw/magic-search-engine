@@ -21,7 +21,8 @@ class PatchSetTypes < Patch
       end
 
       case set_code
-      when "jmp", "j21", "j22", "ajmp"
+      # early jXX are Judge Gift cards, late jXX are Jumpstarts, so no regexp here
+      when "jmp", "j21", "j22", "ajmp", "j25"
         set_types << "jumpstart"
       when "bbd"
         set_types << "two-headed giant" << "multiplayer"

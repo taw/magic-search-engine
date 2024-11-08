@@ -1,3 +1,5 @@
+# This test is quite bad now because we have a lot of "boosters" for various randomized promo things
+# like box toppers that don't follow traditional rules at all
 describe "is:booster" do
   include_context "db"
 
@@ -20,13 +22,13 @@ describe "is:booster" do
     db.sets.each do |set_code, set|
       set_pp = "#{set.name} [#{set.code}]"
       should_have_boosters = (
-        %W[mb1 cmr dbl clb 30a zne who].include?(set_code) or (
+        %W[mb1 cmr dbl clb 30a zne who sld clu pip slc].include?(set_code) or (
           !(set_types_with_boosters & set.types).empty? and
           !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana oana fmb1 anb plst slx ulst sis md1].include?(set.code)
         )
       )
       should_be_in_other_boosters = (
-        %W[tsb exp mps mp2 fmb1 plst sta sunf brr sis slx].include?(set.code)
+        %W[tsb exp mps mp2 fmb1 plst sta sunf brr sis slx h2r].include?(set.code)
       )
       if %W[j21 ajmp].include?(set_code)
         # Arena extras

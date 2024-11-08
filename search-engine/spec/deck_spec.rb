@@ -73,6 +73,7 @@ describe Deck do
       ["core", "Sample Deck"],
       ["standard", "Historic Brawl Precon Deck"],
       ["shandalar", "Shandalar Enemy Deck"], # assigned to PAST, as there's no Shandalar set
+      ["core", "Jumpstart"], # FDN
       # Non-decks, this needs to be sorted out at some point
       ["box", "Box"],
       ["sld", "Secret Lair Drop"],
@@ -300,6 +301,8 @@ describe Deck do
       next if set_code == "sld"
       # Crazy foiling
       next if set_code == "pagl"
+      # It's a weird box
+      next if set_code == "fdn"
 
       # Some crazy foiling in them
       # Deck indexer doesn't even try, it's just marked on decklist manually

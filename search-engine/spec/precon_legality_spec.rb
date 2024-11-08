@@ -8,7 +8,7 @@ describe Deck do
     decks_to_check.group_by(&:format).each do |format, decks|
       decks.each do |deck|
         case format
-        when "jumpstart", "shandalar", "planechase", "archenemy", "planechase commander", "arena"
+        when "jumpstart", "shandalar", "planechase", "archenemy", "planechase commander", "arena", "archenemy commander"
           # no risk of accidentally tagging them wrong
         when "casual", "historic brawl"
           verify_deck_is_casual(deck)
