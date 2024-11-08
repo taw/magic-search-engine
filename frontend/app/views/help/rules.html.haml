@@ -1,7 +1,7 @@
 = content_for(:disable_turbolinks) do
   true
 %h4 Magic: The Gathering Comprehensive Rules
-%p These rules are effective as of September 20, 2024.
+%p These rules are effective as of November 8, 2024.
 %h3{id: "section-introduction"} Introduction
 %p This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
 %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules.
@@ -1503,7 +1503,6 @@
 .rule{id: "section-118-3c"}
   .rule_id 118.3c
   .rule_text Activating mana abilities is not mandatory, even if paying a cost is.
-  .rule_text Example: A player controls Lodestone Golem, which says “Nonartifact spells cost <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span></span> more to cast.” Another player removes the last time counter from a suspended sorcery card. That player must cast that spell if able, but doing so costs <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span></span>. The player is forced to pay that cost if enough mana is in their mana pool, but the player isn’t forced to activate a mana ability to produce that mana. If they don’t, the card simply remains exiled.
 .rule{id: "section-118-4"}
   .rule_id 118.4.
   .rule_text Some costs include an <span class="manacost"><span class="mana mana-cost mana-x"><span class="sr-only">{X}</span></span></span> or an X. See rule <a href="#section-107-3">107.3</a>.
@@ -3321,7 +3320,7 @@
   .rule_text If an effect would put a creature onto the battlefield attacking under the control of any player except an attacking player, that creature does enter the battlefield, but it’s never considered to be an attacking creature.
 .rule{id: "section-506-3c"}
   .rule_id 506.3c
-  .rule_text If an effect would put a creature onto the battlefield attacking either a player not in the game or a permanent that’s no longer on the battlefield or isn’t either a planeswalker or a battle, that creature does enter the battlefield, but it’s never considered to be an attacking creature.
+  .rule_text If an effect would put a creature onto the battlefield attacking either a player not in the game or a permanent that’s no longer on the battlefield or isn’t either a planeswalker or a battle, that creature does enter the battlefield, but it’s never considered to be an attacking creature. See rule <a href="#section-508-4a">508.4a</a>.
 .rule{id: "section-506-3d"}
   .rule_id 506.3d
   .rule_text If an effect would put a creature onto the battlefield blocking but the creature it would block isn’t attacking the entering creature’s controller, a planeswalker that player controls, or a battle that player protects, that creature does enter the battlefield, but it’s never considered to be a blocking creature.
@@ -3462,16 +3461,16 @@
   .rule_text An ability that reads “Whenever [a player] attacks [another player], . . .” triggers if one or more creatures the first player controls are declared as attackers attacking the second player. It won’t trigger if a creature is put onto the battlefield attacking or if a creature attacks a planeswalker or a battle.
 .rule{id: "section-508-3f"}
   .rule_id 508.3f
-  .rule_text An ability that reads “Whenever [a creature] attacks and isn’t blocked, . . .” triggers during the declare blockers step, not the declare attackers step. See rule <a href="#section-509-5g">509.5g</a>.
+  .rule_text An ability that reads “Whenever [a creature] attacks and isn’t blocked, . . .” triggers during the declare blockers step, not the declare attackers step. See rule <a href="#section-509-3g">509.3g</a>.
 .rule{id: "section-508-4"}
   .rule_id 508.4.
   .rule_text If a creature is put onto the battlefield attacking, its controller chooses which defending player, planeswalker a defending player controls, or battle a defending player protects it’s attacking as it enters the battlefield (unless the effect that put it onto the battlefield specifies what it’s attacking). Similarly, if an effect states that a creature is attacking, its controller chooses which defending player, planeswalker a defending player controls, or battle a defending player protects it’s attacking (unless the effect has already specified). Such creatures are “attacking” but, for the purposes of trigger events and effects, they never “attacked.”
 .rule{id: "section-508-4a"}
   .rule_id 508.4a
-  .rule_text If the effect that puts a creature onto the battlefield attacking specifies it’s attacking a certain player, and that player is no longer in the game when the effect resolves, the creature is put onto the battlefield but is never considered an attacking creature. The same is true if the effect specifies a creature is put onto the battlefield attacking a planeswalker or battle and that permanent is no longer on the battlefield or is no longer a planeswalker or battle when the effect resolves.
+  .rule_text If the effect that puts a creature onto the battlefield attacking specifies it’s attacking a certain player, and that player is no longer in the game when the effect resolves, the creature is put onto the battlefield but is never considered an attacking creature. The same is true if the effect specifies a creature is put onto the battlefield attacking a planeswalker or battle and, when the effect resolves, that permanent is no longer on the battlefield, is no longer a planeswalker or battle, is a planeswalker that is no longer controlled by a defending player, or is a battle that is no longer protected by a defending player.
 .rule{id: "section-508-4b"}
   .rule_id 508.4b
-  .rule_text If the effect that states a creature is attacking specifies it’s attacking a certain player, and that player is no longer in the game when the effect resolves, the creature doesn’t become an attacking creature. The same is true if the effect specifies a creature is attacking a planeswalker or battle and that permanent is no longer on the battlefield or is no longer a planeswalker or battle when the effect resolves.
+  .rule_text If the effect that states a creature is attacking specifies it’s attacking a certain player, and that player is no longer in the game when the effect resolves, the creature doesn’t become an attacking creature. The same is true if the effect specifies a creature is attacking a planeswalker or battle and, when the effect resolves, that permanent is no longer on the battlefield, is no longer a planeswalker or battle, is a planeswalker that is no longer controlled by a defending player, or is a battle that is no longer protected by a defending player.
 .rule{id: "section-508-4c"}
   .rule_id 508.4c
   .rule_text A creature that’s put onto the battlefield attacking or that is stated to be attacking isn’t affected by requirements or restrictions that apply to the declaration of attackers.
@@ -3540,63 +3539,46 @@
   .rule_text An attacking creature with one or more creatures declared as blockers for it becomes a blocked creature; one with no creatures declared as blockers for it becomes an unblocked creature. This remains unchanged until the creature is removed from combat, an effect says that it becomes blocked or unblocked, or the combat phase ends, whichever comes first. A creature remains blocked even if all the creatures blocking it are removed from combat.
 .rule{id: "section-509-1i"}
   .rule_id 509.1i
-  .rule_text Any abilities that trigger on blockers being declared trigger. See rule <a href="#section-509-4">509.4</a> for more information.
+  .rule_text Any abilities that trigger on blockers being declared trigger. See rule <a href="#section-509-2a">509.2a</a> for more information.
 .rule{id: "section-509-2"}
   .rule_id 509.2.
-  .rule_text Second, for each attacking creature that’s become blocked, the active player announces that creature’s damage assignment order, which consists of the creatures blocking it in an order of that player’s choice. (During the combat damage step, an attacking creature can’t assign combat damage to a creature that’s blocking it unless each creature ahead of that blocking creature in its order is assigned lethal damage.) This turn-based action doesn’t use the stack.
-  .rule_text Example: Vastwood Gorger is blocked by Llanowar Elves, Runeclaw Bear, and Serra Angel. Vastwood Gorger’s controller announces the Vastwood Gorger’s damage assignment order as Serra Angel, then Llanowar Elves, then Runeclaw Bear.
+  .rule_text Second, the active player gets priority. (See rule <a href="#section-117">117</a>, “Timing and Priority.”)
 .rule{id: "section-509-2a"}
   .rule_id 509.2a
-  .rule_text During the declare blockers step, if a blocking creature is removed from combat or a spell or ability causes it to stop blocking an attacking creature, the blocking creature is removed from all relevant damage assignment orders. The relative order among the remaining blocking creatures is unchanged.
+  .rule_text Any abilities that triggered on blockers being declared or that triggered during the process described in rule <a href="#section-509-1">509.1</a> are put onto the stack before the active player gets priority; the order in which they triggered doesn’t matter. (See rule <a href="#section-603">603</a>, “Handling Triggered Abilities.”)
 .rule{id: "section-509-3"}
   .rule_id 509.3.
-  .rule_text Third, for each blocking creature, the defending player announces that creature’s damage assignment order, which consists of the creatures it’s blocking in an order of that player’s choice. (During the combat damage step, a blocking creature can’t assign combat damage to a creature it’s blocking unless each creature ahead of that blocked creature in its order is assigned lethal damage.) This turn-based action doesn’t use the stack.
+  .rule_text Triggered abilities that trigger on blockers being declared may have different trigger conditions.
 .rule{id: "section-509-3a"}
   .rule_id 509.3a
-  .rule_text During the declare blockers step, if an attacking creature is removed from combat or a spell or ability causes it to stop being blocked by a blocking creature, the attacking creature is removed from all relevant damage assignment orders. The relative order among the remaining attacking creatures is unchanged.
-.rule{id: "section-509-4"}
-  .rule_id 509.4.
-  .rule_text Fourth, the active player gets priority. (See rule <a href="#section-117">117</a>, “Timing and Priority.”)
-.rule{id: "section-509-4a"}
-  .rule_id 509.4a
-  .rule_text Any abilities that triggered on blockers being declared or that triggered during the process described in rules <a href="#section-509-1">509.1</a>–3 are put onto the stack before the active player gets priority; the order in which they triggered doesn’t matter. (See rule <a href="#section-603">603</a>, “Handling Triggered Abilities.”)
-.rule{id: "section-509-5"}
-  .rule_id 509.5.
-  .rule_text Triggered abilities that trigger on blockers being declared may have different trigger conditions.
-.rule{id: "section-509-5a"}
-  .rule_id 509.5a
   .rule_text An ability that reads “Whenever [a creature] blocks, . . .” generally triggers only once each combat for that creature, even if it blocks multiple creatures. It triggers if the creature is declared as a blocker. It will also trigger if that creature becomes a blocker as the result of an effect, but only if it wasn’t a blocking creature at that time. (See rule <a href="#section-509-1g">509.1g</a>.) It won’t trigger if the creature is put onto the battlefield blocking.
-.rule{id: "section-509-5b"}
-  .rule_id 509.5b
+.rule{id: "section-509-3b"}
+  .rule_id 509.3b
   .rule_text An ability that reads “Whenever [a creature] blocks a creature, . . .” triggers once for each attacking creature the creature with the ability blocks. It triggers if the creature is declared as a blocker. It will also trigger if an effect causes that creature to block an attacking creature, but only if it wasn’t already blocking that attacking creature at that time. It won’t trigger if the creature is put onto the battlefield blocking.
-.rule{id: "section-509-5c"}
-  .rule_id 509.5c
+.rule{id: "section-509-3c"}
+  .rule_id 509.3c
   .rule_text An ability that reads “Whenever [a creature] becomes blocked, . . .” generally triggers only once each combat for that creature, even if it’s blocked by multiple creatures. It will trigger if that creature becomes blocked by at least one creature declared as a blocker. It will also trigger if that creature becomes blocked by an effect or by a creature that’s put onto the battlefield as a blocker, but only if the attacking creature was an unblocked creature at that time. (See rule <a href="#section-509-1h">509.1h</a>.)
-.rule{id: "section-509-5d"}
-  .rule_id 509.5d
+.rule{id: "section-509-3d"}
+  .rule_id 509.3d
   .rule_text An ability that reads “Whenever [a creature] becomes blocked by a creature, . . .” triggers once for each creature that blocks the specified creature. It triggers if a creature is declared as a blocker for the attacking creature. It will also trigger if an effect causes a creature to block the attacking creature, but only if it wasn’t already blocking that attacking creature at that time. In addition, it will trigger if a creature is put onto the battlefield blocking that creature. It won’t trigger if the creature becomes blocked by an effect rather than a creature.
-.rule{id: "section-509-5e"}
-  .rule_id 509.5e
+.rule{id: "section-509-3e"}
+  .rule_id 509.3e
   .rule_text If an ability triggers when a creature blocks or becomes blocked by a particular number of creatures, the ability triggers if the creature blocks or is blocked by that many creatures when blockers are declared. Effects that add or remove blockers can also cause such abilities to trigger. This applies to abilities that trigger on a creature blocking or being blocked by at least a certain number of creatures as well.
-.rule{id: "section-509-5f"}
-  .rule_id 509.5f
+.rule{id: "section-509-3f"}
+  .rule_id 509.3f
   .rule_text If an ability triggers when a creature with certain characteristics blocks, it will trigger only if the creature has those characteristics at the point blockers are declared, or at the point an effect causes it to block. If an ability triggers when a creature with certain characteristics becomes blocked, it will trigger only if the creature has those characteristics at the point it becomes a blocked creature. If an ability triggers when a creature becomes blocked by a creature with certain characteristics, it will trigger only if the latter creature has those characteristics at the point it becomes a blocking creature. None of those abilities will trigger if the relevant creature’s characteristics change to match the ability’s trigger condition later on.
   .rule_text Example: A creature has the ability “Whenever this creature becomes blocked by a white creature, destroy that creature at end of combat.” If the creature becomes blocked by a black creature that is later turned white, the ability will not trigger.
-.rule{id: "section-509-5g"}
-  .rule_id 509.5g
+.rule{id: "section-509-3g"}
+  .rule_id 509.3g
   .rule_text An ability that reads “Whenever [a creature] attacks and isn’t blocked, . . .” triggers if no creatures are declared as blockers for that creature. It will trigger even if the creature was never declared as an attacker (for example, if it entered the battlefield attacking). It won’t trigger if the attacking creature is blocked and then all its blockers are removed from combat.
-.rule{id: "section-509-6"}
-  .rule_id 509.6.
-  .rule_text If a spell or ability causes a creature on the battlefield to block an attacking creature, the active player announces the blocking creature’s placement in the attacking creature’s damage assignment order. The relative order among the remaining blocking creatures is unchanged. Then the defending player announces the attacking creature’s placement in the blocking creature’s damage assignment order. The relative order among the remaining attacking creatures is unchanged. This is done as part of the blocking effect.
-.rule{id: "section-509-7"}
-  .rule_id 509.7.
-  .rule_text If a creature is put onto the battlefield blocking, its controller chooses which attacking creature it’s blocking as it enters the battlefield (unless the effect that put it onto the battlefield specifies what it’s blocking), then the active player announces the new creature’s placement in the blocked creature’s damage assignment order. The relative order among the remaining blocking creatures is unchanged. A creature put onto the battlefield this way is “blocking” but, for the purposes of trigger events and effects, it never “blocked.”
-  .rule_text Example: Giant Spider is blocked by Canyon Minotaur. The defending player casts Flash Foliage, which creates a Saproling creature token blocking the Giant Spider. Giant Spider’s controller announces the Giant Spider’s damage assignment order as the Saproling token, then Canyon Minotaur.
-.rule{id: "section-509-7a"}
-  .rule_id 509.7a
+.rule{id: "section-509-4"}
+  .rule_id 509.4.
+  .rule_text If a creature is put onto the battlefield blocking, its controller chooses which attacking creature it’s blocking as it enters the battlefield (unless the effect that put it onto the battlefield specifies what it’s blocking). A creature put onto the battlefield this way is “blocking” but, for the purposes of trigger events and effects, it never “blocked.”
+.rule{id: "section-509-4a"}
+  .rule_id 509.4a
   .rule_text If the effect that puts a creature onto the battlefield blocking specifies it’s blocking a certain creature and that creature is no longer attacking, the creature is put onto the battlefield but is never considered a blocking creature. The same is true if the controller of the creature that’s put onto the battlefield blocking isn’t a defending player for the specified attacking creature.
-.rule{id: "section-509-7b"}
-  .rule_id 509.7b
+.rule{id: "section-509-4b"}
+  .rule_id 509.4b
   .rule_text A creature that’s put onto the battlefield blocking isn’t affected by requirements or restrictions that apply to the declaration of blockers.
 .rule{id: "section-510"}
   .rule_id 510.
@@ -3612,21 +3594,17 @@
   .rule_text An unblocked creature assigns its combat damage to the player, planeswalker, or battle it’s attacking. If it isn’t currently attacking anything (if, for example, it was attacking a planeswalker that has left the battlefield), it assigns no combat damage.
 .rule{id: "section-510-1c"}
   .rule_id 510.1c
-  .rule_text A blocked creature assigns its combat damage to the creatures blocking it. If no creatures are currently blocking it (if, for example, they were destroyed or removed from combat), it assigns no combat damage. If exactly one creature is blocking it, it assigns all its combat damage to that creature. If two or more creatures are blocking it, it assigns its combat damage to those creatures according to the damage assignment order announced for it. This may allow the blocked creature to divide its combat damage. However, it can’t assign combat damage to a creature that’s blocking it unless, when combat damage assignments are complete, each creature that precedes that blocking creature in its order is assigned lethal damage. When checking for assigned lethal damage, take into account damage already marked on the creature and damage from other creatures that’s being assigned during the same combat damage step, but not any abilities or effects that might change the amount of damage that’s actually dealt. An amount of damage that’s greater than a creature’s lethal damage may be assigned to it.
-  .rule_text Example: The damage assignment order of an attacking Vastwood Gorger (a 5/6 creature) is Pride Guardian (a 0/3 creature) then Llanowar Elves (a 1/1 creature). Vastwood Gorger can assign 3 damage to the Guardian and 2 damage to the Elves, 4 damage to the Guardian and 1 damage to the Elves, or 5 damage to the Guardian.
-  .rule_text Example: The damage assignment order of an attacking Vastwood Gorger (a 5/6 creature) is Pride Guardian (a 0/3 creature) then Llanowar Elves (a 1/1 creature). During the declare blockers step, the defending player casts Giant Growth targeting Pride Guardian, which gives it +3/+3 until end of turn. Vastwood Gorger must assign its 5 damage to the Guardian.
-  .rule_text Example: The damage assignment order of an attacking Vastwood Gorger (a 5/6 creature) is Pride Guardian (a 0/3 creature) then Llanowar Elves (a 1/1 creature). During the declare blockers step, the defending player casts Mending Hands targeting Pride Guardian, which prevents the next 4 damage that would be dealt to it. Vastwood Gorger can assign 3 damage to the Guardian and 2 damage to the Elves, 4 damage to the Guardian and 1 damage to the Elves, or 5 damage to the Guardian.
-  .rule_text Example: The damage assignment order of an attacking Enormous Baloth (a 7/7 creature) is Trained Armodon (a 3/3 creature) that already has 2 damage marked on it, then Foriysian Brigade (a 2/4 creature that can block an additional creature), then Silverback Ape (a 5/5 creature). The damage assignment order of an attacking Durkwood Boars (a 4/4 creature) is the same Foriysian Brigade, then Goblin Piker (a 2/1 creature). Among other possibilities, the active player may have the Baloth assign 1 damage to the Armodon, 1 damage to the Brigade, and 5 damage to the Ape, and have the Boars assign 3 damage to the Brigade and 1 damage to the Piker.
+  .rule_text A blocked creature assigns its combat damage to the creatures blocking it. If no creatures are currently blocking it (if, for example, they were destroyed or removed from combat), it assigns no combat damage. If exactly one creature is blocking it, it assigns all its combat damage to that creature. If two or more creatures are blocking it, it assigns its combat damage to those creatures divided as its controller chooses among them.
+  .rule_text Example: An attacking Elvish Regrower (a 4/3 creature) is blocked by Vampire Spawn (a 2/3 creature) and Helpful Hunter (a 1/1 creature). Elvish Regrower’s controller can assign all 4 damage to the Hunter, 1 damage to the Spawn and 3 damage to the Hunter, 2 damage to each creature, 3 damage to the Spawn and 1 damage to the Hunter, or all 4 damage to the Spawn.
 .rule{id: "section-510-1d"}
   .rule_id 510.1d
-  .rule_text A blocking creature assigns combat damage to the creatures it’s blocking. If it isn’t currently blocking any creatures (if, for example, they were destroyed or removed from combat), it assigns no combat damage. If it’s blocking exactly one creature, it assigns all its combat damage to that creature. If it’s blocking two or more creatures, it assigns its combat damage to those creatures according to the damage assignment order announced for it. This may allow the blocking creature to divide its combat damage. However, it can’t assign combat damage to a creature that it’s blocking unless, when combat damage assignments are complete, each creature that precedes that blocked creature is assigned lethal damage. When checking for assigned lethal damage, take into account damage already marked on the creature and damage from other creatures that’s being assigned during the same combat damage step, but not any abilities or effects that might change the amount of damage that’s actually dealt. An amount of damage that’s greater than a creature’s lethal damage may be assigned to it.
+  .rule_text A blocking creature assigns combat damage to the creatures it’s blocking. If it isn’t currently blocking any creatures (if, for example, they were destroyed or removed from combat), it assigns no combat damage. If it’s blocking exactly one creature, it assigns all its combat damage to that creature. If it’s blocking two or more creatures, it assigns its combat damage divided as its controller chooses among them.
 .rule{id: "section-510-1e"}
   .rule_id 510.1e
   .rule_text Once a player has assigned combat damage from each attacking or blocking creature they control, the total damage assignment (not solely the damage assignment of any individual attacking or blocking creature) is checked to see if it complies with the above rules. If it doesn’t, the combat damage assignment is illegal; the game returns to the moment before that player began to assign combat damage. (See rule <a href="#section-730">730</a>, “Handling Illegal Actions.”)
 .rule{id: "section-510-2"}
   .rule_id 510.2.
   .rule_text Second, all combat damage that’s been assigned is dealt simultaneously. This turn-based action doesn’t use the stack. No player has the chance to cast spells or activate abilities between the time combat damage is assigned and the time it’s dealt.
-  .rule_text Example: Squadron Hawk (a 1/1 creature with flying) and Goblin Piker (a 2/1 creature) are attacking. Mogg Fanatic (a 1/1 creature with the ability “Sacrifice Mogg Fanatic: Mogg Fanatic deals 1 damage to any target.”) blocks the Goblin Piker. The defending player sacrifices Mogg Fanatic during the declare blockers step to deal 1 damage to the Squadron Hawk. The Hawk is destroyed. The Piker deals and is dealt no combat damage this turn. If the defending player instead left Mogg Fanatic on the battlefield, the Fanatic and the Piker would have dealt lethal damage to one another, but the Squadron Hawk couldn’t have been dealt damage.
 .rule{id: "section-510-3"}
   .rule_id 510.3.
   .rule_text Third, the active player gets priority. (See rule <a href="#section-117">117</a>, “Timing and Priority.”)
@@ -4348,7 +4326,7 @@
   .rule_text A continuous effect generated by the resolution of a spell or ability lasts as long as stated by the spell or ability creating it (such as “until end of turn”). If no duration is stated, it lasts until the end of the game.
 .rule{id: "section-611-2b"}
   .rule_id 611.2b
-  .rule_text Some continuous effects generated by the resolution of a spell or ability have durations worded “for as long as . . . .” If the “for as long as” duration never starts, or it ends before the moment the effect would first be applied, the effect does nothing. It doesn’t start and immediately stop again, and it doesn’t last forever.
+  .rule_text Some continuous effects generated by the resolution of a spell or ability have durations worded “for as long as . . . .” If the “for as long as” duration never starts, the effect does nothing. Similarly, if that duration ends before the moment the effect would first be applied and doesn’t begin again during that spell or ability’s resolution, the effect does nothing. It doesn’t start and immediately stop again, and it doesn’t last forever.
   .rule_text Example: Master Thief has the ability “When Master Thief enters, gain control of target artifact for as long as you control Master Thief.” If you lose control of Master Thief before the ability resolves, it does nothing, because its duration—as long as you control Master Thief—was over before the effect began.
 .rule{id: "section-611-2c"}
   .rule_id 611.2c
@@ -4847,7 +4825,7 @@
   .rule_text One card, Stick Together, instructs players to choose a party from among creatures they control. To do so, for each of the creature types listed in rule <a href="#section-700-8">700.8</a>, each player chooses up to one creature they control of that type.
 .rule{id: "section-700-9"}
   .rule_id 700.9.
-  .rule_text Some cards refer to modified creatures. A creature is modified if it has one or more counters on it (see rule <a href="#section-122">122</a>), if it is equipped (see rule <a href="#section-301-5">301.5</a>), or if it is enchanted by an Aura that is controlled by that creature’s controller. (see rule <a href="#section-303-4">303.4</a>). If an ability of a permanent checks to see whether that permanent is modified, the answer is always no if that permanent isn’t a currently a creature.
+  .rule_text Some cards refer to modified permanents. A permanent is modified if it has one or more counters on it (see rule <a href="#section-122">122</a>), if it is equipped (see rule <a href="#section-301-5">301.5</a>), or if it is enchanted by an Aura that is controlled by that permanent’s controller (see rule <a href="#section-303-4">303.4</a>).
 .rule{id: "section-700-10"}
   .rule_id 700.10.
   .rule_text Some cards refer to a permanent “that was activated this turn.” This means that the permanent was the source of an ability that was activated this turn, regardless of whether that permanent still has that activated ability or the player who activated it is still in the game.
@@ -7594,7 +7572,7 @@
   .rule_text Prototype
 .rule{id: "section-702-160a"}
   .rule_id 702.160a
-  .rule_text Prototype is a static ability that appears on prototype cards that have a secondary set of power, toughness, and mana cost characteristics. A player who casts a spell with prototype can choose to cast that card “protoyped.” If they do, the alternative set of its power, toughness, and mana cost characteristics are used. See <a href="#section-718">718</a>, “Prototype Cards.”
+  .rule_text Prototype is a static ability that appears on prototype cards that have a secondary set of power, toughness, and mana cost characteristics. A player who casts a spell with prototype can choose to cast that card “prototyped.” If they do, the alternative set of its power, toughness, and mana cost characteristics are used. See <a href="#section-718">718</a>, “Prototype Cards.”
 .rule{id: "section-702-161"}
   .rule_id 702.161.
   .rule_text Living Metal
@@ -7800,11 +7778,11 @@
 .rule{id: "section-702-175b"}
   .rule_id 702.175b
   .rule_text If a spell has multiple instances of offspring, each is paid separately and triggers based on the payments made for it, not any other instances of offspring.
-.rule{id: "section-702-175"}
-  .rule_id 702.175.
+.rule{id: "section-702-176"}
+  .rule_id 702.176.
   .rule_text Impending
-.rule{id: "section-702-175a"}
-  .rule_id 702.175a
+.rule{id: "section-702-176a"}
+  .rule_id 702.176a
   .rule_text Impending is a keyword that represents four abilities. The first and second are static abilities that function while the spell with impending is on the stack. The third is a static ability that functions on the battlefield. The fourth is a triggered ability that functions on the battlefield. “Impending N—[cost]” means “You may choose to pay [cost] rather than pay this spell’s mana cost,” “If you chose to pay this spell’s impending cost, it enters with N time counters on it,” “As long as this permanent has a time counter on it, if it was cast for its impending cost, it’s not a creature,” and “At the beginning of your end step, if this permanent was cast for its impending cost and there is at least one time counter on it, remove a time counter from it.” Casting a spell for its impending cost follows the rules for paying alternative costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
   .rule_text  
   .rule_text <a href="#section-703">703</a>. Turn-Based Actions
@@ -7855,24 +7833,18 @@
   .rule_text Immediately after the declare blockers step begins, the defending player declares blockers. See rule <a href="#section-509-1">509.1</a>.
 .rule{id: "section-703-4k"}
   .rule_id 703.4k
-  .rule_text Immediately after blockers have been declared during the declare blockers step, for each attacking creature that’s become blocked by multiple creatures, the active player announces the damage assignment order among the blocking creatures. See rule <a href="#section-509-2">509.2</a>.
+  .rule_text Immediately after the combat damage step begins, each player in APNAP order announces how each attacking or blocking creature they control assigns its combat damage. See rule <a href="#section-510-1">510.1</a>.
 .rule{id: "section-703-4m"}
   .rule_id 703.4m
-  .rule_text Immediately after the active player has announced damage assignment orders (if necessary) during the declare blockers step, for each creature that’s blocking multiple creatures, the defending player announces the damage assignment order among the attacking creatures. See rule <a href="#section-509-3">509.3</a>.
+  .rule_text Immediately after combat damage has been assigned during the combat damage step, all combat damage is dealt simultaneously. See rule <a href="#section-510-2">510.2</a>.
 .rule{id: "section-703-4n"}
   .rule_id 703.4n
-  .rule_text Immediately after the combat damage step begins, each player in APNAP order announces how each attacking or blocking creature they control assigns its combat damage. See rule <a href="#section-510-1">510.1</a>.
+  .rule_text Immediately after the cleanup step begins, if the active player’s hand contains more cards than their maximum hand size (normally seven), they discard enough cards to reduce their hand size to that number. See rule <a href="#section-514-1">514.1</a>.
 .rule{id: "section-703-4p"}
   .rule_id 703.4p
-  .rule_text Immediately after combat damage has been assigned during the combat damage step, all combat damage is dealt simultaneously. See rule <a href="#section-510-2">510.2</a>.
+  .rule_text Immediately after the active player has discarded cards (if necessary) during the cleanup step, all damage is removed from permanents and all “until end of turn” and “this turn” effects end. These actions happen simultaneously. See rule <a href="#section-514-2">514.2</a>.
 .rule{id: "section-703-4q"}
   .rule_id 703.4q
-  .rule_text Immediately after the cleanup step begins, if the active player’s hand contains more cards than their maximum hand size (normally seven), they discard enough cards to reduce their hand size to that number. See rule <a href="#section-514-1">514.1</a>.
-.rule{id: "section-703-4r"}
-  .rule_id 703.4r
-  .rule_text Immediately after the active player has discarded cards (if necessary) during the cleanup step, all damage is removed from permanents and all “until end of turn” and “this turn” effects end. These actions happen simultaneously. See rule <a href="#section-514-2">514.2</a>.
-.rule{id: "section-703-4s"}
-  .rule_id 703.4s
   .rule_text When each step or phase ends, any unused mana left in a player’s mana pool empties. See rule <a href="#section-500-4">500.4</a>.
 .rule{id: "section-704"}
   .rule_id 704.
@@ -8776,7 +8748,7 @@
   .rule_id 720.5.
   .rule_text While controlling another player, a player makes all choices and decisions the controlled player is allowed to make or is told to make by the rules or by any objects. This includes choices and decisions about what to play, and choices and decisions called for by spells and abilities.
   .rule_text Example: The controller of another player decides which spells that player casts and what those spells target, and makes any required decisions when those spells resolve.
-  .rule_text Example: The controller of another player decides which of that player’s creatures attack, which player or planeswalker each one attacks, what the damage assignment order of the creatures that block them is (if any of the attacking creatures are blocked by multiple creatures), and how those attacking creatures assign their combat damage.
+  .rule_text Example: The controller of another player decides which of that player’s creatures attack, which player or planeswalker each one attacks, and how those attacking creatures assign their combat damage.
 .rule{id: "section-720-5a"}
   .rule_id 720.5a
   .rule_text The controller of another player can use only that player’s resources (cards, mana, and so on) to pay costs for that player.
@@ -9312,9 +9284,6 @@
   .rule_text When determining whether a defending player’s blocks are legal, ignore any creatures attacking other players and any blocking creatures controlled by other players.
 .rule{id: "section-802-5"}
   .rule_id 802.5.
-  .rule_text After blockers have been declared, if any creatures are blocking multiple creatures, each defending player in APNAP order announces the damage assignment order among the attacking creatures for each blocking creature they control. See rule <a href="#section-510">510</a>, “Combat Damage Step.”
-.rule{id: "section-802-6"}
-  .rule_id 802.6.
   .rule_text Combat damage is assigned in APNAP order. Other than that, the combat damage step proceeds just as in a two-player game. See rule <a href="#section-510">510</a>, “Combat Damage Step.”
 .rule{id: "section-803"}
   .rule_id 803.
@@ -9414,9 +9383,6 @@
   .rule_text Any rule, object, or effect that refers to a “defending player” refers to one specific defending player, not to all of the defending players. If an ability of an attacking creature refers to a defending player, or a spell or ability refers to both an attacking creature and a defending player, then unless otherwise specified, the defending player it’s referring to is the player that creature is attacking, the controller of the planeswalker that creature is attacking, or the protector of the battle that creature is attacking. If that creature is no longer attacking, the defending player it’s referring to is the player that creature was attacking before it was removed from combat, the controller of the planeswalker that creature was attacking before it was removed from combat, or the protector of the battle that creature was attacking before it was removed from combat. If a spell or ability could apply to multiple attacking creatures, the appropriate defending player is individually determined for each of those attacking creatures. If there are multiple defending players that could be chosen, the controller of the spell or ability chooses one.
 .rule{id: "section-805-10f"}
   .rule_id 805.10f
-  .rule_text Once blockers have been declared, for each attacking creature that’s become blocked by multiple creatures, the active team announces the damage assignment order among the blocking creatures. Then, for each creature that’s blocking multiple creatures, the defending team announces the damage assignment order among the attacking creatures.
-.rule{id: "section-805-10g"}
-  .rule_id 805.10g
   .rule_text As the combat damage step begins, the active team announces how each attacking creature will assign its combat damage. Then the defending team announces how each blocking creature will assign its combat damage. See rule <a href="#section-510-1">510.1</a>.
 .rule{id: "section-806"}
   .rule_id 806.
@@ -10567,8 +10533,8 @@
   .glossary_term Damage
   .glossary_definition Objects can deal “damage” to creatures, planeswalkers, and players. This is generally detrimental to the object or player that receives that damage. See rule <a href="#section-120">120</a>, “Damage.”
 .glossary_entry
-  .glossary_term Damage Assignment Order
-  .glossary_definition The order, announced during the declare blockers step, that an attacking creature will assign its combat damage among the multiple creatures blocking it, or that a blocking creature will assign its combat damage among the multiple creatures it’s blocking. See rules <a href="#section-509-2">509.2</a> and <a href="#section-509-3">509.3</a>.
+  .glossary_term Damage Assignment Order (Obsolete)
+  .glossary_definition Previously, if a creature blocks or becomes blocked by multiple creatures, the creature’s controller would be required to choose an order in which it would assign combat damage to the creatures blocking or blocked by it. Now, its controller no longer needs to assign an order, and simply divides its combat damage as they choose among all creatures it’s blocking or blocked by. See rules <a href="#section-510-1c">510.1c</a>-d.
 .glossary_entry
   .glossary_term Dash
   .glossary_definition A keyword ability found on creature cards that allows them to be cast for an alternative cost. See rule <a href="#section-702-109">702.109</a>, “Dash.”
@@ -11036,7 +11002,7 @@
   .glossary_definition Information printed directly below the text box that has no effect on game play. See rule <a href="#section-213">213</a>, “Information Below the Text Box.”
 .glossary_entry
   .glossary_term Impending
-  .glossary_definition An ability on some creatures that allows them to be cast for an alternative cost. If cast for its impending cost, it isn’t a creature for some period of time.
+  .glossary_definition An ability on some creatures that allows them to be cast for an alternative cost. If cast for its impending cost, it isn’t a creature for some period of time. See rule <a href="#section-702-176">702.176</a>, “Impending.”
 .glossary_entry
   .glossary_term Imprint
   .glossary_definition “Imprint” used to be a keyword ability. It is now an ability word and has no rules meaning. All cards printed with the imprint keyword have received errata in the Oracle card reference.
@@ -12211,7 +12177,7 @@
 %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cátinò, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (principal), Matt Tabak (principal), Nat Moes, Samantha Phelan, Michael Zhang, and Hans Ziegler Magic Rules Management: Jess Dunks, Eric Levine, and Eliana Rabinowitz
 %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cátinò, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
 %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-%p These rules are effective as of September 20, 2024.
+%p These rules are effective as of November 8, 2024.
 %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unfinity, Dominaria, Ikoria, Kaldheim, Baldur’s Gate, The Brothers’ War, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2024 Wizards. U.S. Pat. No. RE 37,957.
 %p Astartes, C’tan, Custodes, Necron, Primarch, and Tyranid ® &amp; © Games Workshop Limited 2022. All Rights Reserved.
 %p © 2023 Middle-earth Enterprises. Tales of Middle-earth and The Lord of the Rings and the names of the characters, events, items and places therein, are trademarks of Middle-earth Enterprises, LLC used under license by Wizards of the Coast LLC. All rights reserved.
