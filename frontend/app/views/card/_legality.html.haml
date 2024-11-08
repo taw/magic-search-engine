@@ -2,12 +2,16 @@
 %ul.legalities
   - legality = card.legality_information
   - if legality.legal_everywhere?
+    - unless card.paper? or card.mtgo? or card.arena?
+      %li This printing of #{card.name} is not legal. The card has other legal printings.
     %li
       #{card.name} is legal in every format.
   - elsif legality.legal_nowhere?
     %li
       #{card.name} is not legal in any format.
   - else
+    - unless card.paper? or card.mtgo? or card.arena?
+      %li This printing of #{card.name} is not legal. The card has other legal printings.
     - card.legality_information.to_h.sort.each do |format_name, status|
       %li
         - # Should this be in the engine?
