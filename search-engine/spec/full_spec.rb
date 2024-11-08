@@ -226,6 +226,7 @@ describe "Full Database Test" do
     assert_search_results "abyss not:funny",
       "Abyssal Gatekeeper",
       "Abyssal Gorestalker",
+      "Abyssal Harvester",
       "Abyssal Horror",
       "Abyssal Hunter",
       "Abyssal Nightstalker",
@@ -237,7 +238,7 @@ describe "Full Database Test" do
       "Peer into the Abyss",
       "Reaper from the Abyss",
       "The Abyss"
-    assert_search_results "snow is:funny", "Snow Mercy"
+    assert_search_results "snow is:funny", "Snow Mercy", "Princess Snowfall"
     assert_search_results "tiger is:funny", "Paper Tiger", "Stocking Tiger"
   end
 

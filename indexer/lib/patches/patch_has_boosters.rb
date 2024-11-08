@@ -13,6 +13,7 @@ class PatchHasBoosters < Patch
       sta
       sunf
       tsb
+      h2r
     ]
   end
 
