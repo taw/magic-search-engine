@@ -64,8 +64,8 @@ describe "frame type and effect queries" do
     assert_search_equal "e:emn frame:mooneldrazidfc r:uncommon", "e:emn r:uncommon //"
   end
 
-  it "frame:nyxtouched" do
-    assert_search_equal "e:ths frame:nyxtouched", "e:ths t:enchantment (t:creature or t:artifact)"
+  it "frame:enchantment" do
+    assert_search_equal "e:ths frame:enchantment", "e:ths t:enchantment (t:creature or t:artifact)"
   end
 
   it "frame:originpwdfc" do
