@@ -1,0 +1,15 @@
+# Data from https://wpn.wizards.com/en/news/xln-treasure-chest-more-rares-and-foils-box
+name: "{set_name} Treasure Chest Promo Booster"
+filter: "(e:xln or e:hou or e:akh or e:aer or e:kld) is:baseset"
+pack:
+  promo_transform_land: 1
+  foil: 2
+  foil_basic: 2
+  rare_mythic: 4
+sheets:
+  promo_transform_land:
+    foil: true
+    rawquery: "e:pxtc"
+  foil_basic:
+    foil: true
+    rawquery: "e:pss2"
