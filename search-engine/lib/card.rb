@@ -446,7 +446,6 @@ class Card
     "Corrupted Metalcraft",
     "Mirran Victory",
     "Mono Eminence",
-    "Mono eminence",
     "Old Companion",
     "Phyrexian Victory",
     "Rule Zero",

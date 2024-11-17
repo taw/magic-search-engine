@@ -246,6 +246,13 @@ class PatchMtgjsonVersions < Patch
         card["keywords"] = card["keywords"].map(&:downcase)
       end
 
+      # Numbering conflict in mtgjson data
+      # They have RZ15 (which we turn into RZ15a/RZ15b) and RZ15b
+      # We need to move that RZ15b away to something else
+      if card["number"] == "RZ15b" and card["set"]["official_code"] == "DA1"
+        card["number"] = "RZ15x"
+      end
+
       # At least for now:
       # "123a" but "U123"
       if card["number"]

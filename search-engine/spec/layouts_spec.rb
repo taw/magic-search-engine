@@ -27,6 +27,7 @@ describe "Card layouts" do
   it "rules" do
     # These rules are mostly here to detect mtgjson errors
     # It's totally possible that a card will get printed which does not follow them
+    # DA1 is basically all BS
     assert_search_equal "layout:scheme", "t:scheme"
     assert_search_equal "layout:planar", "t:plane or t:phenomenon"
     assert_search_equal "layout:flip", '// o:"flip it" or o:"flip ~" or o:flipped or o:"Fire Penguin"'
@@ -34,7 +35,7 @@ describe "Card layouts" do
     # It would probably make more sense to do layout:room as a separate thing
     assert_search_equal "layout:split", "(((t:instant or t:sorcery) // (t:instant or t:sorcery)) -(// o:aftermath) -(// t:adventure)) or (t:room // t:room)"
     assert_search_equal "layout:aftermath", "// o:aftermath"
-    assert_search_equal "layout:leveler", 'o:/level up \{/'
+    assert_search_equal "layout:leveler -e:da1", 'o:/level up \{/ -e:da1'
     assert_search_equal "layout:meld", "// (// o:meld)"
     assert_search_equal "layout:saga", "t:saga is:sfc" # DFC sagas have different layout
     assert_search_equal "layout:adventure", "t:adventure or (// t:adventure)"
