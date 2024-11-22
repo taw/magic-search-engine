@@ -128,7 +128,7 @@ describe "Card nicknames" do
       "Wind-Scarred Crag"
     assert_search_results "is:gainland",
       *cards_matching{|c|
-        c.text =~ %r[#{Regexp.escape c.name} enters tapped.\nWhen #{Regexp.escape c.name} enters, you gain 1 life.\n\{T\}: Add \{.\} or \{.\}.]}
+        c.text =~ %r[(This land|#{Regexp.escape c.name}) enters tapped.\nWhen (this land|#{Regexp.escape c.name}) enters, you gain 1 life.\n\{T\}: Add \{.\} or \{.\}.]}
   end
 
   # The name is unique
@@ -257,7 +257,7 @@ describe "Card nicknames" do
       "Temple of Silence",
       "Temple of Triumph"
     assert_search_equal "is:scryland",
-      'o:"~ enters tapped." o:"When ~ enters, scry 1." o:"} or {"'
+      '(o:"~ enters tapped." or o:"This land enters tapped") (o:"When ~ enters, scry 1." or o:"When this land enters, scry 1")  o:"} or {"'
   end
 
   # The name is unique
