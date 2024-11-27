@@ -110,6 +110,7 @@ describe "Unsets" do
       "1996 World Champion",
       "Chaos Wrap",
       "Deb Thomas",
+      "Eggnogger's 'Stache",
       "Forest",
       "Fraternal Exaltation",
       "Gifts Given",
@@ -129,6 +130,7 @@ describe "Unsets" do
     "is:black-bordered -e:unf".should return_cards(
       "1996 World Champion",
       "Chaos Wrap",
+      "Eggnogger's 'Stache",
       "Forest",
       "Fraternal Exaltation",
       "Gifts Given",
