@@ -1,0 +1,61 @@
+#!/usr/bin/env ruby
+
+require "pathname-glob"
+require_relative "../search-engine/lib/card_database"
+
+# I'm developing on OSX with case insensitive file system,
+# but the servers run Linux with case sensitive file system,
+# so we need to do some checks here
+
+class CardPrinting
+  def path_lq
+    "frontend/public/cards/#{set_code}/#{number}.png"
+  end
+
+  def path_hq
+    "frontend/public/cards_hq/#{set_code}/#{number}.png"
+  end
+end
+
+class FixPictureFileCapitalization
+  attr_reader :db
+
+  def initialize
+    @db = CardDatabase.load
+  end
+
+  def actual_pics
+    @actual_pics ||= Dir["frontend/public/cards/*/*.png"] + Dir["frontend/public/cards_hq/*/*.png"]
+  end
+
+  def actual_pic_capitalizations
+    @actual_pic_capitalizations ||= actual_pics.to_h{ [_1.downcase, _1] }
+  end
+
+  def handle_mismatch(current, expected)
+    current_bn = File.basename(current)
+    current_dn = File.dirname(current)
+    expected_bn = File.basename(expected)
+    Dir.chdir(File.realpath(current_dn)) do
+      puts "mv #{current_bn} #{expected_bn}"
+      system "git", "mv", current_bn, expected_bn
+    end
+  end
+
+  def call
+    db.printings.each do |card|
+      actual_hq = actual_pic_capitalizations[card.path_hq.downcase]
+      actual_lq = actual_pic_capitalizations[card.path_lq.downcase]
+
+      if actual_hq and actual_hq != card.path_hq
+        handle_mismatch actual_hq, card.path_hq
+      end
+
+      if actual_lq and actual_lq != card.path_lq
+        handle_mismatch actual_lq, card.path_lq
+      end
+    end
+  end
+end
+
+FixPictureFileCapitalization.new.call
