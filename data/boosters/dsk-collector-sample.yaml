@@ -1,0 +1,39 @@
+# Data from https://www.youtube.com/watch?v=0MPsIbXihKY&ab_channel=TCGLove
+pack:
+  foil_uncommon: 1
+  final:
+  - booster_fun: 1
+    chance: 2
+  - foil_booster_fun: 1
+    chance: 1
+queries:
+  lurking_evil: "e:{set} number:287-301"
+  showcase: "e:{set} number:302-327"
+  borderless: "e:{set} number:328-350"
+  double_exposure: "e:{set} number:351-367"
+  any_boosterfun: "{showcase} or {borderless} or {double_exposure}"
+  two_instances: "{any_boosterfun} ((alt:{showcase} alt:{borderless}) or (alt:{showcase} alt:{double_exposure}) or (alt:{borderless} alt:{double_exposure}))"
+sheets:
+  foil_uncommon:
+    # Showcase treatments 1/4 for relevant cards
+    foil: true
+    any:
+    - query: "r:u -alt:({lurking_evil} or {showcase})"
+      rate: 4
+    - query: "r:u alt:({lurking_evil} or {showcase})"
+      rate: 3
+    - rawquery: "r:u ({lurking_evil} or {showcase})"
+      rate: 1
+  booster_fun:
+    any:
+    - rawquery: "r:m {two_instances}"
+      rate: 1
+    - rawquery: "r:m {any_boosterfun} -alt:{two_instances}"
+      rate: 2
+    - rawquery: "r:r {two_instances}"
+      rate: 2
+    - rawquery: "r:r {any_boosterfun} -alt:{two_instances}"
+      rate: 4
+  foil_booster_fun:
+    foil: true
+    use: booster_fun
