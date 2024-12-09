@@ -1,0 +1,12 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-murders-at-karlov-manor
+pack:
+- promo: 1
+  bonus: 1
+sheets:
+  promo:
+    foil: true
+    filter: "e:PMKM promo:prerelease"
+    use: rare_mythic
+  bonus:
+    foil: true
+    rawquery: "e:mkm number:430-432"
