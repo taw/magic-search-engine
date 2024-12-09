@@ -1,0 +1,69 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-duskmourn
+pack:
+  foil_common: 5
+  foil_uncommon: 4
+  foil_basic: 1
+  foil_rare_mythic: 2
+  showcase_rare_mythic: 2
+  foil_booster_fun: 1
+queries:
+  borderless: "e:{set} number:292-361"
+  mana_foil: "e:{set} number:362-421"
+  jp_showcase: "e:{set} number:422-431"
+  fracture_foil": "e:{set} number:432-441"
+  extended: "e:{set} number:442-487"
+sheets:
+  foil_common:
+    # Showcase treatments 1/8 for relevant cards
+    foil: true
+    any:
+    - query: "r:c -alt:{borderless}"
+      rate: 8
+    - query: "r:c alt:{borderless}"
+      rate: 7
+    - rawquery: "r:c {borderless}"
+      rate: 1
+  foil_uncommon:
+    # Showcase treatments 1/8 for relevant cards
+    foil: true
+    any:
+    - query: "r:u -alt:{borderless}"
+      rate: 8
+    - query: "r:u alt:{borderless}"
+      rate: 7
+    - rawquery: "r:u {borderless}"
+      rate: 1
+  foil_basic:
+    foil: true
+    query: "t:basic is:fullart"
+  foil_rare_mythic:
+    foil: true
+    any:
+    - query: "r:r"
+      rate: 2
+    - query: "r:m"
+      rate: 1
+  showcase_rare_mythic:
+    any:
+    - rawquery: "r:r ({borderless} or {extended})"
+      rate: 2
+    - rawquery: "r:m ({borderless} or {extended})"
+      rate: 1
+  foil_booster_fun:
+    foil: true
+    any:
+    - rawquery: "r:r ({borderless} or {extended})"
+      chance: 345+296
+    - rawquery: "r:m ({borderless} or {extended})"
+      chance: 68+36
+    - rawquery: "r:r {mana_foil}"
+      chance: 84
+    - rawquery: "r:m {mana_foil}"
+      chance: 16
+    - set: spg
+      code: "FDN"
+      chance: 55
+    - rawquery: "{jp_showcase}"
+      chance: 90
+    - rawquery: "{fracture_foil}"
+      chance: 10

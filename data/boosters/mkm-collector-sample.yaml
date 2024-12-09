@@ -1,0 +1,22 @@
+# Data from https://www.youtube.com/watch?v=BDMNF79fD2Q&ab_channel=TheMagicTurn
+pack:
+  foil_common_uncommon_showcase: 1
+  rm:
+  - rare_mythic_showcase: 1
+    chance: 2
+  - foil_rare_mythic_showcase: 1
+    chance: 1
+sheets:
+  rare_mythic_showcase:
+    any:
+    - rawquery: "e:mkm promo:boosterfun r:m -is:serialized"
+      rate: 1
+    - rawquery: "e:mkm promo:boosterfun r:r -is:serialized"
+      rate: 2
+  foil_rare_mythic_showcase:
+    foil: true
+    any:
+    - rawquery: "e:mkm promo:boosterfun r:m -is:serialized"
+      rate: 1
+    - rawquery: "e:mkm promo:boosterfun r:r -is:serialized"
+      rate: 2

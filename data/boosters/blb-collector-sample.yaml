@@ -1,0 +1,50 @@
+# Data from https://www.youtube.com/watch?v=zjCVm9eVvC8&ab_channel=TCGLove
+pack:
+  foil_uncommon: 1
+  rm:
+  - showcase_rare_mythic: 1
+    chance: 2
+  - foil_showcase_rare_mythic: 1
+    chance: 1
+sheets:
+  showcase_rare_mythic:
+    any:
+    - rawquery: "e:blc r:r number:73-92"
+      rate: 4
+      count: 12
+    - rawquery: "e:blc r:m number:1-4,73-92"
+      rate: 2
+      count: 12
+    - rawquery: "e:blb r:r number:282-342,356-368 -(three tree city)"
+      rate: 4
+      count: 13+35+1
+    - rawquery: "e:blb number:337-340"
+      rate: 1
+      count: 4
+    - rawquery: "e:blb r:m number:282-342,356-368 -lumra"
+      rate: 2
+      count: 5+6+7+1
+    - rawquery: "e:blb number:282-342,356-368 Lumra"
+      rate: 1
+      count: 2
+  foil_showcase_rare_mythic:
+    foil: true
+    any:
+    - rawquery: "e:blc r:r number:73-92"
+      rate: 4
+      count: 12
+    - rawquery: "e:blc r:m number:1-4,73-92"
+      rate: 2
+      count: 12
+    - rawquery: "e:blb r:r number:282-342,356-368 -(three tree city)"
+      rate: 4
+      count: 13+35+1
+    - rawquery: "e:blb number:337-340"
+      rate: 1
+      count: 4
+    - rawquery: "e:blb r:m number:282-342,356-368 -lumra"
+      rate: 2
+      count: 5+6+7+1
+    - rawquery: "e:blb number:282-342,356-368 Lumra"
+      rate: 1
+      count: 2
