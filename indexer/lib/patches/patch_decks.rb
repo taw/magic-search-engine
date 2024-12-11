@@ -4,14 +4,24 @@ class PatchDecks < Patch
     @decks.select!{|d| valid_set_codes.include?(d["set_code"]) }
   end
 
+  def with_registered_fails(deck)
+    @registered_fails = []
+    yield
+    if @registered_fails.any?
+      warn "Skipping deck #{deck['set_name']} - #{deck['name']} due to errors:"
+      @registered_fails.each do |fail|
+        warn "* #{fail}"
+      end
+      true
+    else
+      false
+    end
+  end
+
   def resolve_printings
     @decks.delete_if do |deck|
-      begin
+      with_registered_fails(deck) do
         resolve_printings_for_deck(deck)
-        false
-      rescue
-        warn "Skipping deck #{deck['set_name']} - #{deck['name']} due to error: #{$!}"
-        true
       end
     end
   end
@@ -45,7 +55,12 @@ class PatchDecks < Patch
   end
 
   def resolve_printing(deck, card)
-    DeckPrintingResolver.new(@cards, @sets, @flavor_name_map, deck, card).call
+    begin
+      DeckPrintingResolver.new(@cards, @sets, @flavor_name_map, deck, card).call
+    rescue
+      @registered_fails << $!
+      nil
+    end
   end
 
   def format_token(token)
