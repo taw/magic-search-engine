@@ -5,10 +5,15 @@ pack:
   rare_mythic: 1
   variety: 1
   spells: 1
+  gate: 1
 sheets:
+  common:
+    query: "r:c -is:guildgate"
+  gate:
+    query: "is:guildgate"
   variety:
     any:
-    - query: "r:c"
+    - query: "r:c -is:guildgate"
       chance: 1
     - chance: 4
       any:
