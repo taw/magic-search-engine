@@ -1,10 +1,38 @@
 name: "Pioneer Masters Arena Draft Booster: Devotion"
 pack:
-  common: 9
-  uncommon: 4
+  common: 8
+  uncommon: 3
   rare_mythic: 1
+  variety: 1
   devotion: 1
+  gate: 1
 sheets:
+  common:
+    query: "r:c -is:guildgate"
+  gate:
+    query: "is:guildgate"
+  variety:
+    any:
+    - query: "r:c -is:guildgate"
+      chance: 1
+    - chance: 4
+      any:
+      - query: "r:u"
+        chance: 5
+      - chance: 1
+        any:
+        - query: "r:r"
+          chance: 4
+        - query: "r:m"
+          chance: 1
   devotion:
     filter: "e:pio number:279-318"
-    use: base_1248_by_rarity
+    any:
+    - chance: 10
+      any:
+      - chance: 4
+        query: "r:c"
+      - chance: 5
+        query: "r:u"
+    - chance: 1
+      query: "r:m"
