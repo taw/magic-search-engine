@@ -26,6 +26,10 @@ class PatchXmage < Patch
     @all_card_names ||= @cards.keys.map{|n| strip_accents(n)}
   end
 
+  def xmage_card_name_to_sets
+    @xmage_card_name_to_sets ||= xmage_cards.group_by(&:last).transform_values{ _1.map(&:first).uniq }
+  end
+
   def call
     matched = Set[]
 
@@ -46,7 +50,7 @@ class PatchXmage < Patch
     likely_typos = missed_cards.map(&:last) - all_card_names
     unless likely_typos.empty?
       likely_typos.each do |name|
-        puts "Likely typo or spoiler card in XMage card list: #{name}"
+        puts "Likely typo or spoiler card in XMage card list: #{name} (#{xmage_card_name_to_sets[name].join(", ")})"
       end
     end
   end
