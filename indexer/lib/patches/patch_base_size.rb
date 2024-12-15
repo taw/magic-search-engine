@@ -3,7 +3,6 @@
 class PatchBaseSize < Patch
   def call
     sizes = {
-      "pio" => 278
     }
 
     sizes.each do |code, size|
