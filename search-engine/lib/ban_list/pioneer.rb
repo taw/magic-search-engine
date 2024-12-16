@@ -89,4 +89,10 @@ BanList.for_format("pioneer") do
     "Amalia Benavides Aguirre" => "banned",
     "Sorin, Imperious Bloodlord" => "banned",
   )
+
+  change(
+    "2024-12-16",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-december-16-2024",
+    "Jegantha, the Wellspring" => "banned",
+  )
 end
