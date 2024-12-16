@@ -188,4 +188,16 @@ BanList.for_format("modern") do
     "Nadu, Winged Wisdom" => "banned",
     "Grief" => "banned",
   )
+
+  change(
+    "2024-12-16",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-december-16-2024",
+    "The One Ring" => "banned",
+    "Amped Raptor" => "banned",
+    "Jegantha, the Wellspring" => "banned",
+    "Mox Opal" => "legal",
+    "Green Sun's Zenith" => "legal",
+    "Faithless Looting" => "legal",
+    "Splinter Twin" => "legal",
+  )
 end

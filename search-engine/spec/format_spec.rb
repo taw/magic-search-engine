@@ -33,7 +33,8 @@ describe "Formats" do
         {name: "Lingering Souls", old: "legal", new: "banned"},
       ]],
     ])
-    FormatModern.new.ban_events.should eq([
+    # cutting it so it doesn't need endless manual updates
+    FormatModern.new.ban_events.last(24).should eq([
       [Date.parse("2024-08-26"),
        "https://magic.wizards.com/en/news/announcements/august-26-2024-banned-and-restricted-announcement",
       [

@@ -527,4 +527,11 @@ BanList.for_format("legacy") do
     "https://magic.wizards.com/en/news/announcements/august-26-2024-banned-and-restricted-announcement",
     "Grief" => "banned",
   )
+
+  change(
+    "2024-12-16",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-december-16-2024",
+    "Psychic Frog" => "banned",
+    "Vexing Bauble" => "banned",
+  )
 end
