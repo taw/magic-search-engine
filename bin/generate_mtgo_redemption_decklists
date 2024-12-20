@@ -1,0 +1,97 @@
+#!/usr/bin/env ruby
+
+require_relative "../search-engine/lib/card_database"
+require "pry"
+
+DECKS_ROOT = Pathname("#{ENV['HOME']}/github/magic-preconstructed-decks")
+DB = CardDatabase.load
+
+class GenerateSetRedemptionDecklists
+  def regular_path
+    DECKS_ROOT + "data/redemption/#{set.code}/#{set.name} Redemption.txt"
+  end
+
+  def foil_path
+    DECKS_ROOT + "data/redemption/#{set.code}/#{set.name} Foil Redemption.txt"
+  end
+
+  def initialize(source:, numbers:, set_code:)
+    @source = source
+    @numbers = numbers
+    @set_code = set_code
+  end
+
+  def set
+    @set ||= DB.sets[@set_code]
+  end
+
+  def regular_cards
+    @regular_cards ||= set.printings.select{ @numbers.include?(_1.number.to_i) and _1.mtgo? and _1.foiling != :nonfoil }.map{ PhysicalCard.for(_1) }.uniq
+  end
+
+  def foil_cards
+    @foil_cards ||= set.printings.select{ @numbers.include?(_1.number.to_i) and _1.mtgo? and _1.foiling != :foilonly }.map{ PhysicalCard.for(_1) }.uniq
+  end
+
+  def regular_name
+    "#{set.name} Redemption"
+  end
+
+  def foil_name
+    "#{set.name} Foil Redemption"
+  end
+
+  def call
+    raise "Wrong number of regular cards, expected #{@numbers}, got #{regular_cards.size}" if regular_cards.size != @numbers.size
+    raise "Wrong number of foil cards, expected #{@numbers}, got #{foil_cards.size}" if foil_cards.size != @numbers.size
+
+    regular_path.parent.mkpath
+    regular_path.open("w") do |fh|
+      fh.puts "// NAME: #{regular_name}"
+      fh.puts "// SOURCE: #{@source}"
+      fh.puts "// DATE: #{@set.release_date}"
+      regular_cards.each do |card|
+        fh.puts "1 #{card.name} [#{set.code.upcase}:#{card.number}]"
+      end
+    end
+
+    foil_path.open("w") do |fh|
+      fh.puts "// NAME: #{regular_name}"
+      fh.puts "// SOURCE: #{@source}"
+      fh.puts "// DATE: #{@set.release_date}"
+      foil_cards.each do |card|
+        fh.puts "1 #{card.name} [#{set.code.upcase}:#{card.number}] [foil]"
+      end
+    end
+  end
+end
+
+class GenerateMtgoRedemptionDecklists
+  def deck(source:, numbers:, set:)
+    GenerateSetRedemptionDecklists.new(
+      source: source,
+      numbers: numbers,
+      set_code: set
+    ).call
+  end
+
+  def call
+    deck(
+      source: "https://web.archive.org/web/20241218135430/https://www.mtgo.com/en/mtgo/redemption",
+      numbers: 1..286,
+      set: "otj"
+    )
+    deck(
+      source: "https://web.archive.org/web/20241218135430/https://www.mtgo.com/en/mtgo/redemption",
+      numbers: 1..281,
+      set: "blb"
+    )
+    deck(
+      source: "https://web.archive.org/web/20241218135430/https://www.mtgo.com/en/mtgo/redemption",
+      numbers: 1..286,
+      set: "dsk"
+    )
+  end
+end
+
+GenerateMtgoRedemptionDecklists.new.call
