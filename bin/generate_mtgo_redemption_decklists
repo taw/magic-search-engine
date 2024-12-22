@@ -3,11 +3,24 @@
 require_relative "../search-engine/lib/card_database"
 require "pry"
 
+# Nice rails stuff backfilled for convenience
+class String
+  def presence
+    empty? ? nil : self
+  end
+end
+
+class NilClass
+  def presence
+    nil
+  end
+end
+
 DECKS_ROOT = Pathname("#{ENV['HOME']}/github/magic-preconstructed-decks")
 DB = CardDatabase.load
 
 SET_DATA = <<EOF
-Name,Code,Date
+Name,Code,Date,Query,Card Count
 Duskmourn: House of Horror,DSK,2024-09-27
 Bloomburrow,BLB,2024-08-02
 Outlaws of Thunder Junction,OTJ,2024-04-19
@@ -43,8 +56,8 @@ Amonkhet,AKH,2017-04-28
 Aether Revolt,AER,2017-01-20
 Kaladesh,KLD,2016-09-30
 Shadows over Innistrad,SOI,2016-04-08
-Oath of the Gatewatch,OGW,2016-01-22
-Battle for Zendikar,BFZ,2015-10-02
+Oath of the Gatewatch,OGW,2016-01-22,-number:/a/
+Battle for Zendikar,BFZ,2015-10-02,-number:/a/
 Dragons of Tarkir,DTK,2015-03-27
 Fate Reforged,FRF,2015-01-23
 Khans of Tarkir,KTK,2014-09-26
@@ -67,7 +80,7 @@ Scars of Mirrodin,SOM,2010-10-01
 Magic 2011,M11,2010-07-16
 Rise of the Eldrazi,ROE,2010-04-23
 Worldwake,WWK,2010-02-05
-Zendikar,ZEN,2009-10-02
+Zendikar,ZEN,2009-10-02,-number:/a/
 Magic 2010,M10,2009-07-17
 Alara Reborn,ARB,2009-04-30
 Conflux,CON,2009-02-06
@@ -87,7 +100,7 @@ Ravnica: City of Guilds,RAV,2005-10-07
 Ninth Edition,9ED,2005-07-29
 Saviors of Kamigawa,SOK,2005-06-03
 Betrayers of Kamigawa,BOK,2005-02-04
-Champions of Kamigawa,CHK,2004-10-01
+Champions of Kamigawa,CHK,2004-10-01,,307
 Fifth Dawn,5DN,2004-06-04
 Darksteel,DST,2004-02-06
 Mirrodin,MRD,2003-10-02
@@ -100,7 +113,7 @@ Torment,TOR,2002-02-04
 Odyssey,ODY,2001-10-01
 Apocalypse,APC,2001-06-04
 Seventh Edition,7ED,2001-04-11
-Planeshift,PLS,2001-02-05
+Planeshift,PLS,2001-02-05,-is:foilonly
 Invasion,INV,2000-10-02
 EOF
 
@@ -113,28 +126,54 @@ class GenerateSetRedemptionDecklists
     DECKS_ROOT + "data/redemption/#{set.code}/#{set.name} Foil Redemption.txt"
   end
 
-  def initialize(source: nil, numbers: nil, date: nil, set_code:)
+  def initialize(source: nil, numbers: nil, date: nil, set_code:, query: nil, card_count: nil)
     @set_code = set_code
     @source = source
     @numbers = numbers
     @numbers = 1..set.base_set_size if @numbers.nil?
     @date = date || set.release_date
+    @query = query
+    @card_count = card_count || @numbers.size
   end
 
   def set
     @set ||= DB.sets[@set_code] or raise "Unknown set #{@set_code}"
   end
 
-  def regular_cards
-    @regular_cards ||= set.printings.select{
+  def regular_query
+    DB.search("e:#{@set_code} is:baseset game:mtgo #{@query} is:nonfoil").printings
+  end
+
+  def foil_query
+    DB.search("e:#{@set_code} is:baseset game:mtgo #{@query} is:nonfoil").printings
+  end
+
+  def regular_number_range
+    set.printings.select{
       @numbers.include?(_1.number.to_i) and _1.mtgo? and _1.foiling != :nonfoil and !_1.variant_foreign and !_1.variant_misprint
-    }.map{ PhysicalCard.for(_1) }.uniq
+    }
+  end
+
+  def foil_number_range
+    set.printings.select{
+      @numbers.include?(_1.number.to_i) and _1.mtgo? and _1.foiling != :foilonly and !_1.variant_foreign and !_1.variant_misprint
+    }
+  end
+
+  def regular_cards
+    @regular_cards ||= if @query
+      regular_query.map{ PhysicalCard.for(_1) }.uniq
+    else
+      regular_number_range.map{ PhysicalCard.for(_1) }.uniq
+    end
   end
 
   def foil_cards
-    @foil_cards ||= set.printings.select{
-      @numbers.include?(_1.number.to_i) and _1.mtgo? and _1.foiling != :foilonly and !_1.variant_foreign and !_1.variant_misprint
-    }.map{ PhysicalCard.for(_1) }.uniq
+    @foil_cards ||= if @query
+       foil_query.map{ PhysicalCard.for(_1) }.uniq
+    else
+      foil_number_range.map{ PhysicalCard.for(_1) }.uniq
+    end
   end
 
   def regular_name
@@ -147,8 +186,8 @@ class GenerateSetRedemptionDecklists
 
   def call
     if @numbers
-      warn "#{@set_code} Wrong number of regular cards, expected #{@numbers}, got #{regular_cards.size}" if regular_cards.size != @numbers.size
-      warn "#{@set_code} Wrong number of foil cards, expected #{@numbers}, got #{foil_cards.size}" if foil_cards.size != @numbers.size
+      warn "#{@set_code} Wrong number of regular cards, expected #{@card_count} (#{@numbers}), got #{regular_cards.size}" if regular_cards.size != @card_count
+      warn "#{@set_code} Wrong number of foil cards, expected #{@card_count} (#{@numbers}), got #{foil_cards.size}" if foil_cards.size != @card_count
     end
 
     regular_path.parent.mkpath
@@ -194,10 +233,12 @@ class GenerateMtgoRedemptionDecklists
     #   set_code: "dsk"
     # )
     SET_DATA.lines[1..].each do |line|
-      name, code, date = line.chomp.split(",")
+      name, code, date, query, card_count = line.chomp.split(",")
       deck(
         date: date,
-        set_code: code.downcase
+        set_code: code.downcase,
+        query: query.presence,
+        card_count: card_count.presence&.to_i
       )
     end
   end
