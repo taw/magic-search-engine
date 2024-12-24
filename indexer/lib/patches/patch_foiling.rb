@@ -37,12 +37,8 @@ class PatchFoiling < Patch
       next if card["alchemy"]
 
       case card["set_code"]
-      when "usg", "por", "mb1", "atq"
-        fix_to card, "nonfoil"
-      when "inv", "khm", "stx"
+      when "inv", "stx"
         fix_to card, "both"
-      when "zen"
-        fix_to card, "nonfoil" if card["number"] =~ /a/
       when "tsr"
         if card["number"] == "411"
           # I think?
