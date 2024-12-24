@@ -147,13 +147,23 @@ class PreprocessBooster
       sheet
     elsif sheet["rawquery"]
       query = sheet["rawquery"]
-      sheet.except("rawquery").merge("query" => query.gsub(@substitutions_rx){ @substitutions[$&] })
+      expanded_query = query.gsub(@substitutions_rx){ @substitutions[$&] }
+      warn_if_unresolved_template(expanded_query)
+      sheet.except("rawquery").merge("query" => expanded_query)
     elsif sheet["query"]
       query = sheet["query"]
       # filter already in and-form, doesn't need extra parentheses
-      sheet.merge("query" => "(#{filter}) (#{query})".gsub(@substitutions_rx){ @substitutions[$&] }.gsub("()", ""))
+      expanded_query = "(#{filter}) (#{query})".gsub(@substitutions_rx){ @substitutions[$&] }.gsub("()", "")
+      warn_if_unresolved_template(expanded_query)
+      sheet.merge("query" => expanded_query)
     else
       raise "Unknown sheet type #{sheet.keys.join(", ")}"
+    end
+  end
+
+  def warn_if_unresolved_template(query)
+    query.scan(/\{[^}]+\}/).each do |template|
+      warn "Unresolved template #{template} in query #{query}, available substitutions: #{@substitutions.keys.join(", ")}"
     end
   end
 
