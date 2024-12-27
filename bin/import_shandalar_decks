@@ -4,7 +4,7 @@ require "pathname"
 require "pry"
 
 DECKS_ROOT = Pathname("#{ENV['HOME']}/github/magic-preconstructed-decks")
-SHANDALAR_ROOT = Pathname("#{ENV['HOME']}/src/Shandalar")
+SHANDALAR_DATA_ROOT = Pathname(__dir__) + "../data/shandalar_decks"
 
 class Hash
   def delete_default_values
@@ -56,11 +56,6 @@ class ShandalarDeck
 
     @export_sideboard = {}
     color_sideboards = @sideboards.reject{ _1 == "none"}
-    cards_in_any_sideboard = color_sideboards.values.map(&:keys).inject{|a,b| a|b}
-    cards_in_any_sideboard.each do |card|
-      max_count = color_sideboards.values.map{ _1[card] }.max
-      @export_sideboard[card] = max_count
-    end
 
     guide = {}
     color_sideboards.each do |color, sideboard|
@@ -70,6 +65,13 @@ class ShandalarDeck
       end
       diff.delete_default_values
       guide[color] = diff
+    end
+
+    color_sideboard_adds = guide.values.map{|g| g.select{_2 > 0}}
+    cards_in_any_sideboard = color_sideboard_adds.map(&:keys).inject{|a,b| a|b}
+    cards_in_any_sideboard.each do |card|
+      max_count = color_sideboards.values.map{ _1[card] }.max
+      @export_sideboard[card] = max_count
     end
 
     @display = []
@@ -141,6 +143,8 @@ class ShandalarDeckParser
       "Circle of Protection White" => "Circle of Protection: White",
       "El-Hajjaj" => "El-Hajjâj",
       "Junun Efreet" => "Junún Efreet",
+      # This one is not obvious, but ID match in game data says so:
+      "Knights of the Rainbow Vale" => "Rainbow Knights",
       "Manaflare" => "Mana Flare",
       "Mishra's Factory" => "Mishra's Factory [ATQ:80a]",
       "Mons Goblin Raiders" => "Mons's Goblin Raiders",
@@ -204,12 +208,12 @@ end
 
 class ImportShandalarDecks
   def deck_paths
-    (SHANDALAR_ROOT + "Decks_original").glob("*.dck")
+    SHANDALAR_DATA_ROOT.glob("*.dck")
   end
 
   def decks
     @decks ||= deck_paths.map do |path|
-      source_url = "https://github.com/ShandalarMagic/Shandalar/blob/master/Decks_original/#{path.basename}"
+      source_url = "#{path.basename} from game files"
       ShandalarDeckParser.new(path.read, source_url).call
     end
   end
@@ -221,6 +225,5 @@ class ImportShandalarDecks
     end
   end
 end
-
 
 ImportShandalarDecks.new.call

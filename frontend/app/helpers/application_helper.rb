@@ -278,6 +278,6 @@ module ApplicationHelper
   end
 
   def format_display(text)
-    text.gsub(/(\[(.*?):(.*?)\])/) { link_to_query("e:#{$2} number:#{$3} ++") { $1 } }.html_safe
+    text.gsub(/(\[(.*?):(.*?)\])/) { link_to_query("e:#{$2} number:#{$3} ++") { $1 } }.gsub("\n", "<br/>").html_safe
   end
 end
