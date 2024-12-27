@@ -6,39 +6,128 @@ require "pry"
 DECKS_ROOT = Pathname("#{ENV['HOME']}/github/magic-preconstructed-decks")
 SHANDALAR_ROOT = Pathname("#{ENV['HOME']}/src/Shandalar")
 
-class ShandalarDeck
-  attr_reader :name, :comment, :cards, :sideboard
+class Hash
+  def delete_default_values
+    delete_if{ _2 == default }
+  end
+end
 
-  def initialize(options)
+class ShandalarDeck
+  attr_reader :name, :comment, :cards, :sideboards, :source_url
+  attr_reader :export_mainboard, :export_sideboard, :display
+
+  def initialize(options, source_url)
+    @source_url = source_url
     options = options.dup
     @name = options.delete(:name)
     @comment = options.delete(:comment)
     @cards = options.delete(:cards)
-    @sideboard = {}
+    @sideboards = {}
     options.each do |key, value|
       if key =~ /\Av_(.*)\z/
-        @sideboard[$1] = value
+        @sideboards[$1] = value
       else
         raise "Unknown key #{key}"
       end
     end
+    simplify_sideboards
+    calculate_output_fields
+  end
+
+  def simplify_sideboards
+    cards_in_all_sideboards = @sideboards.values.map(&:keys).inject{|a,b| a&b}
+    cards_in_all_sideboards.each do |card|
+      min_count = @sideboards.values.map{ _1[card] }.min
+      @sideboards.values.each do |sideboard|
+        sideboard[card] -= min_count
+        sideboard.delete_default_values
+      end
+      @cards[card] += min_count
+    end
+  end
+
+  def calculate_output_fields
+    @export_mainboard = @cards.dup
+    @export_sideboard = {}
+
+    @sideboards["none"].each do |card, count|
+      @export_mainboard[card] += count
+    end
+
+    @export_sideboard = {}
+    color_sideboards = @sideboards.reject{ _1 == "none"}
+    cards_in_any_sideboard = color_sideboards.values.map(&:keys).inject{|a,b| a|b}
+    cards_in_any_sideboard.each do |card|
+      max_count = color_sideboards.values.map{ _1[card] }.max
+      @export_sideboard[card] = max_count
+    end
+
+    guide = {}
+    color_sideboards.each do |color, sideboard|
+      diff = sideboard.dup
+      @sideboards["none"].each do |card, count|
+        diff[card] -= count
+      end
+      diff.delete_default_values
+      guide[color] = diff
+    end
+
+    @display = []
+    return if guide.values.all?(&:empty?)
+
+    @display = []
+    guide.each do |color, diff|
+      if diff.empty?
+        @display << "Against #{color.capitalize}: No changes"
+      else
+        subs = diff.select{ _2 < 0 }
+        adds = diff.select{ _2 > 0 }
+        @display << "Against #{color.capitalize}: #{subs.map{|card, count| "#{count} #{card}" }.join(", ")} #{adds.map{|card, count| "+#{count} #{card}" }.join(", ")}"
+      end
+    end
+  end
+
+  def export_string
+    result = []
+    result << "// NAME: #{name}"
+    result << "// SOURCE: #{source_url}"
+    result << "// DATE: 1997-04-01"
+
+    @display.each do |s|
+      result << "// DISPLAY: #{s}"
+    end
+
+    @export_mainboard.sort.each do |card, count|
+      result << "#{count} #{card}"
+    end
+
+    unless @export_sideboard.empty?
+      result << ""
+      result << "Sideboard"
+      @export_sideboard.sort.each do |card, count|
+        result << "#{count} #{card}"
+      end
+    end
+
+    result.map{|s| "#{s}\n" }.join
   end
 end
 
 class ShandalarDeckParser
-  def initialize(str)
+  def initialize(str, source_url)
     @str = str
     @current_section = :cards
+    @source_url = source_url
     @result = {
       name: nil,
       comment: nil,
-      cards: [],
-      v_none: [],
-      v_black: [],
-      v_blue: [],
-      v_green: [],
-      v_red: [],
-      v_white: []
+      cards: Hash.new(0),
+      v_none: Hash.new(0),
+      v_black: Hash.new(0),
+      v_blue: Hash.new(0),
+      v_green: Hash.new(0),
+      v_red: Hash.new(0),
+      v_white: Hash.new(0)
     }
   end
 
@@ -68,11 +157,11 @@ class ShandalarDeckParser
       if match = line.match(/^\.\d+\s+(\d+)\s+(.+)$/)
         count = match[1].to_i
         name = match[2].strip
-        @result[section_key(@current_section)] << [count, name]
+        @result[section_key(@current_section)][name] += count
       end
     end
 
-    ShandalarDeck.new(@result)
+    ShandalarDeck.new(@result, @source_url)
   end
 
   private
@@ -88,13 +177,20 @@ end
 
 class ImportShandalarDecks
   def deck_paths
-    (SHANDALAR_ROOT + "Decks - Original").glob("*.dck")
+    (SHANDALAR_ROOT + "Decks_original").glob("*.dck")
+  end
+
+  def decks
+    @decks ||= deck_paths.map do |path|
+      source_url = "https://github.com/ShandalarMagic/Shandalar/blob/master/Decks_original/#{path.basename}"
+      ShandalarDeckParser.new(path.read, source_url).call
+    end
   end
 
   def call
-    deck_paths.each do |path|
-      deck = ShandalarDeckParser.new(path.read)
-      pp deck.call
+    decks.each do |deck|
+      export_path = DECKS_ROOT + "data/shandalar/past" + "#{deck.name}.txt"
+      export_path.write(deck.export_string)
     end
   end
 end
