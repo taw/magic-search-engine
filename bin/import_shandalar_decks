@@ -131,6 +131,33 @@ class ShandalarDeckParser
     }
   end
 
+  def fix_card_name(name)
+    {
+      "Circle of Protection Black" => "Circle of Protection: Black",
+      "Circle of Protection Blue" => "Circle of Protection: Blue",
+      "Circle of Protection from Artifacts" => "Circle of Protection: Artifacts",
+      "Circle of Protection Green" => "Circle of Protection: Green",
+      "Circle of Protection Red" => "Circle of Protection: Red",
+      "Circle of Protection White" => "Circle of Protection: White",
+      "El-Hajjaj" => "El-Hajjâj",
+      "Junun Efreet" => "Junún Efreet",
+      "Manaflare" => "Mana Flare",
+      "Mishra's Factory" => "Mishra's Factory [ATQ:80a]",
+      "Mons Goblin Raiders" => "Mons's Goblin Raiders",
+      "Naf's Asp" => "Nafs Asp",
+      "Necropolis of Azaar" => "Necropolis of Azar",
+      "Ragman" => "Rag Man",
+      "Strip Mine" => "Strip Mine [ATQ:82a]",
+      "Stripmine" => "Strip Mine [ATQ:82a]",
+      "Tawnos' Wand" => "Tawnos's Wand",
+      "Tawnos' Weaponry" => "Tawnos's Weaponry",
+      "Will-O-The-Wisp" => "Will-o'-the-Wisp",
+      "Will-O'-The-Wisp" => "Will-o'-the-Wisp",
+      "Yotian Soldiers" => "Yotian Soldier",
+      "Zephyr Falcons" => "Zephyr Falcon",
+    }.fetch(name, name)
+  end
+
   def call
     lines = @str.split("\n")
 
@@ -156,7 +183,7 @@ class ShandalarDeckParser
       # Parse card entry
       if match = line.match(/^\.\d+\s+(\d+)\s+(.+)$/)
         count = match[1].to_i
-        name = match[2].strip
+        name = fix_card_name(match[2].strip)
         @result[section_key(@current_section)][name] += count
       end
     end
