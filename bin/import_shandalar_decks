@@ -1,0 +1,103 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+require "pry"
+
+DECKS_ROOT = Pathname("#{ENV['HOME']}/github/magic-preconstructed-decks")
+SHANDALAR_ROOT = Pathname("#{ENV['HOME']}/src/Shandalar")
+
+class ShandalarDeck
+  attr_reader :name, :comment, :cards, :sideboard
+
+  def initialize(options)
+    options = options.dup
+    @name = options.delete(:name)
+    @comment = options.delete(:comment)
+    @cards = options.delete(:cards)
+    @sideboard = {}
+    options.each do |key, value|
+      if key =~ /\Av_(.*)\z/
+        @sideboard[$1] = value
+      else
+        raise "Unknown key #{key}"
+      end
+    end
+  end
+end
+
+class ShandalarDeckParser
+  def initialize(str)
+    @str = str
+    @current_section = :cards
+    @result = {
+      name: nil,
+      comment: nil,
+      cards: [],
+      v_none: [],
+      v_black: [],
+      v_blue: [],
+      v_green: [],
+      v_red: [],
+      v_white: []
+    }
+  end
+
+  def call
+    lines = @str.split("\n")
+
+    # Parse name and comment from first line
+    if first_line = lines.shift
+      if match = first_line.match(/^(.+?)(\s*\(.*\)\s*)?$/)
+        @result[:name] = match[1].strip
+        @result[:comment] = match[2]&.strip
+      end
+    end
+
+    # Process remaining lines
+    lines.each do |line|
+      line = line.strip
+      next if line.empty?
+
+      # Check for section marker
+      if line.start_with?(".v")
+        @current_section = normalize_section(line)
+        next
+      end
+
+      # Parse card entry
+      if match = line.match(/^\.\d+\s+(\d+)\s+(.+)$/)
+        count = match[1].to_i
+        name = match[2].strip
+        @result[section_key(@current_section)] << [count, name]
+      end
+    end
+
+    ShandalarDeck.new(@result)
+  end
+
+  private
+
+  def normalize_section(line)
+    line.downcase.delete_prefix(".v").to_sym
+  end
+
+  def section_key(section)
+    section == :cards ? :cards : :"v_#{section}"
+  end
+end
+
+class ImportShandalarDecks
+  def deck_paths
+    (SHANDALAR_ROOT + "Decks - Original").glob("*.dck")
+  end
+
+  def call
+    deck_paths.each do |path|
+      deck = ShandalarDeckParser.new(path.read)
+      pp deck.call
+    end
+  end
+end
+
+
+ImportShandalarDecks.new.call
