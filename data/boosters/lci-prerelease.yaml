@@ -2,6 +2,6 @@ pack:
   prerelease_promo: 1
 sheets:
   prerelease_promo:
-    filter: "e:p{set} promo:prerelease number<=285s"
+    filter: 'e:p{set} promo:prerelease -type:adventure'
     use: rare_mythic
     foil: true
