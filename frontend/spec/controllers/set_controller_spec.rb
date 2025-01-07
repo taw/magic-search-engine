@@ -25,7 +25,7 @@ RSpec.describe SetController, type: :controller do
     get "show", params: {id: "prna"}
     assert_response 200
     expect(css_select(".results_summary").text).to match(/Released: 2019-01-25/)
-    expect(css_select(".results_summary").text).to match(/Individual cards released between 2019-01-25 and 2020-09-25/)
+    expect(css_select(".results_summary").text).to match(/Individual cards released between 2019-01-25 and 2021-12-08/)
   end
 
   it "fake set" do
