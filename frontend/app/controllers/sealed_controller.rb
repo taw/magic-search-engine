@@ -40,7 +40,7 @@ class SealedController < ApplicationController
         ]
       }
       decklist_entries = @cards.map do |c|
-        "[#{c.set_code.upcase}:#{c.number}] #{c.name}#{ c.foil ? ' [foil]' : ''}"
+        "#{c.name} [#{c.set_code.upcase}:#{c.number}]#{ c.foil ? ' [foil]' : ''}"
       end
       @deck = decklist_entries.group_by(&:itself).transform_values(&:size).map{|n,c| "#{c} #{n}\n"}.join
     end
