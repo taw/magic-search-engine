@@ -37,7 +37,7 @@ class PreconDeck < Deck
     output = []
     output << "// NAME: #{@name} - #{@set.name} #{@type}"
     output << "// URL: #{canonical_url}"
-    output << "// DISPLAY: #{@display}" if @display
+    output << "// DISPLAY: #{@display}" if @display.to_s != ""
     output << "// DATE: #{@release_date}" if @release_date
     @commander.each do |count, card|
       output << "COMMANDER: #{count} #{card}"
@@ -69,7 +69,7 @@ class PreconDeck < Deck
     output = []
     output << "// NAME: #{@name} - #{@set.name} #{@type}"
     output << "// URL: #{canonical_url}"
-    output << "// DISPLAY: #{@display}" if @display
+    output << "// DISPLAY: #{@display}" if @display.to_s != ""
     output << "// DATE: #{@release_date}" if @release_date
     @commander.each do |count, card|
       output << "COMMANDER: #{count} #{card_details(card)}"

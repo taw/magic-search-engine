@@ -87,6 +87,8 @@ describe Deck do
       ["funny", "Box Set"],
       ["memorabilia", "Box Set"],
       ["sdcc", "San Diego Comic Con Promos"],
+      ["core", "MTGO Redemption"],
+      ["expansion", "MTGO Redemption"],
     ]
 
     db.sets.each do |set_code, set|
@@ -275,12 +277,14 @@ describe Deck do
     end
 
     som_arc_trail = db.search("e:som arc trail").printings[0]
-    db.decks_containing(som_arc_trail).map{|deck| [deck.set_name, deck.name, deck.type] }.should eq([
+    db.decks_containing(som_arc_trail).map{|deck| [deck.set_name, deck.name, deck.type] }.should match_array([
       ["Scars of Mirrodin", "Relic Breaker", "Intro Pack"],
       ["Mirrodin Besieged", "Mirromancy", "Intro Pack"],
       ["Magic 2012", "Red Deck A", "Sample Deck"],
       ["Dark Ascension", "Gleeful Flames", "Event Deck"],
       ["Magic 2013", "Sweet Revenge", "Event Deck"],
+      ["Scars of Mirrodin", "Scars of Mirrodin Redemption", "MTGO Redemption"],
+      ["Scars of Mirrodin", "Scars of Mirrodin Foil Redemption", "MTGO Redemption"],
     ])
   end
 
