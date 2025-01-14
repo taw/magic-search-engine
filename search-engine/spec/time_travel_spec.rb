@@ -54,7 +54,7 @@ describe "Time Travel Test" do
 
   it "time travel scoped" do
     assert_search_equal "(time:KLD f:standard) -(time:AER f:standard)",
-      "(Emrakul, the Promised End -e:sir,sld) or (time:OGW Reflector Mage) or (Smuggler's Copter -e:nec -e:sld,plst)"
+      "(Emrakul, the Promised End -e:sir,sld,inr) or (time:OGW Reflector Mage) or (Smuggler's Copter -e:nec -e:sld,plst)"
     # Reprints complicate this
     assert_search_equal_cards "(time:OGW f:Standard) -(time:SOI f:Standard)",
       "(e:KTK or e:FRF) -t:basic -(Act of Treason) -(Dutiful Return) -(Naturalize)
