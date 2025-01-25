@@ -45,6 +45,7 @@ class FormatPioneer < Format
       "blb",
       "dsk",
       "fdn",
+      "dft",
     ]
   end
 end
