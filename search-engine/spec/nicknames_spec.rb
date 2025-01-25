@@ -335,7 +335,7 @@ describe "Card nicknames" do
       "Zagoth Triome",
       "Ziatora's Proving Ground"
     assert_search_equal "is:triome",
-      't:land o:tapped o:"cycling {3}"'
+      't:land o:tapped o:"cycling {3}" -(Night Market)'
     assert_search_equal "is:tricycleland", "is:triome"
   end
 

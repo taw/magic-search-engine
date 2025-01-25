@@ -28,7 +28,7 @@ class FormatStandard < Format
 
     {
       # FDN has special rotation
-      "2024-08-02" => ["dmu", "bro", "one", "mom", "mat", "woe", "lci", "mkm", "otj", "big", "blb", "dsk", "fdn"],
+      "2024-08-02" => ["dmu", "bro", "one", "mom", "mat", "woe", "lci", "mkm", "otj", "big", "blb", "dsk", "fdn", "dft"],
       # Standard changed so sets last 3 years so 2023 rotation skipped
       "2022-09-09" => ["mid", "vow", "neo", "snc", "dmu", "bro", "one", "mom", "mat", "woe", "lci", "mkm", "otj", "big"],
       # 4 blocks system, 1 rotation/year

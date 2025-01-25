@@ -68,6 +68,7 @@ class FormatModern < Format
       "blb",
       "dsk",
       "fdn",
+      "dft",
     ]
   end
 end
