@@ -4,26 +4,46 @@ require "nokogiri"
 require "pathname"
 require "open-uri"
 
-page_url = "https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules"
-doc = Nokogiri::HTML(URI.open(page_url).read)
-txt_url = doc.css("a")
-  .map{|a| a[:href]}
-  .find{|link| link =~ /(MagicComp ?Rules|Comprehensive Rules).*txt\z/}
-  .gsub(" ", "%20")
-  .gsub("downloadsMagic", "downloads/Magic") # broken link on the site
-raise "Can't find rules text url, please check the site manually" unless txt_url
-rules_txt = URI.open(txt_url).read
+class FetchComprehensiveRules
+  def page_url
+    "https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules"
+  end
 
-# Sometimes it's UTF-8, sometimes it's not
-if rules_txt[0,2].b == "\xFE\xFF".b
-  rules_txt = rules_txt.unpack("n*")[1..].pack("U*")
-else
-  begin
-    rules_txt = rules_txt.force_encoding("utf-8").tr("\uFEFF", "")
-  rescue
-    rules_txt = rules_txt.force_encoding("windows-1252").encode("utf-8")
+  def doc
+    Nokogiri::HTML(URI.open(page_url).read)
+  end
+
+  def rules_path
+    Pathname("#{__dir__}/../data/MagicCompRules.txt")
+  end
+
+  def rules_txt
+    txt_url = doc.css("a")
+      .map{|a| a[:href]}
+      .find{|link| link =~ /(MagicComp ?Rules|Comprehensive Rules).*txt\z/}
+      .gsub(" ", "%20")
+      .gsub("downloadsMagic", "downloads/Magic") # broken link on the site
+    raise "Can't find rules text url, please check the site manually" unless txt_url
+    rules_txt = URI.open(txt_url).read
+
+    # Sometimes it's UTF-8, sometimes it's not
+    if rules_txt[0,2].b == "\xFE\xFF".b
+      rules_txt = rules_txt.unpack("n*")[1..].pack("U*")
+    else
+      begin
+        rules_txt = rules_txt.force_encoding("utf-8").tr("\uFEFF", "")
+      rescue
+        rules_txt = rules_txt.force_encoding("windows-1252").encode("utf-8")
+      end
+    end
+
+    rules_txt.gsub!(/\r\n|\r|\n/, "\n")
+  end
+
+  def call
+    rules_path.write(rules_txt)
+  rescue Net::OpenTimeout
+    warn "#{$!}"
   end
 end
 
-rules_txt.gsub!(/\r\n|\r|\n/, "\n")
-Pathname("#{__dir__}/../data/MagicCompRules.txt").write(rules_txt)
