@@ -1,0 +1,96 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-innistrad-remastered
+pack:
+  land:
+  - basic: 1
+    chance: 4
+  - foil_basic: 1
+    chance: 1
+  sfc_common: 5
+  dfc_common: 1
+  uncommon: 3
+  wildcard: 1
+  rare_mythic_with_showcase: 1
+  retro: 1
+  foil: 1
+queries:
+  borderless: "e:{set} number:298-322"
+  showcase: "e:{set} number:323-328"
+  # movie_poster: "e:{set} number:481-491"
+  old_frame: "e:{set} number:329-480"
+  any_boosterfun: "{borderless} or {showcase}"
+  two_instances: ""
+sheets:
+  sfc_common:
+    query: "r:c is:sfc"
+  uncommon:
+    # Showcase treatments 1/4 for relevant cards
+    any:
+    - query: "r:u -alt:({showcase})"
+      rate: 4
+    - query: "r:u alt:({showcase})"
+      rate: 3
+    - rawquery: "r:u ({showcase})"
+      rate: 1
+  mythic_with_showcase:
+    # Showcase treatments 1/4 for relevant cards
+    any:
+    - rawquery: "r:m {any_boosterfun}"
+      rate: 1
+    - query: "r:m alt:{any_boosterfun}"
+      rate: 3
+    - query: "r:m -alt:{any_boosterfun}"
+      rate: 4
+  rare_with_showcase:
+    # Showcase treatments 1/4 for relevant cards
+    any:
+    - rawquery: "r:r {any_boosterfun}"
+      rate: 1
+    - query: "r:r alt:{any_boosterfun}"
+      rate: 3
+    - query: "r:r -alt:{any_boosterfun}"
+      rate: 4
+  rare_mythic_with_showcase:
+    any:
+    - use: rare_with_showcase
+      chance: 6
+    - use: mythic_with_showcase
+      chance: 1
+  wildcard:
+    any:
+    - chance: 700
+      any:
+      - rawquery: "r:c {any_boosterfun}"
+        rate: 1
+      - query: "r:c alt:{any_boosterfun}"
+        rate: 3
+      - query: "r:c -alt:{any_boosterfun}"
+        rate: 4
+    - chance: 175
+      any:
+      - rawquery: "r:u {any_boosterfun}"
+        rate: 1
+      - query: "r:u alt:{any_boosterfun}"
+        rate: 3
+      - query: "r:u -alt:{any_boosterfun}"
+        rate: 4
+    - chance: 125
+      use: rare_mythic_with_showcase
+  foil:
+    foil: true
+    any:
+    - chance: 12
+      - rawquery: "r:c {any_boosterfun}"
+        rate: 1
+      - query: "r:c alt:{any_boosterfun}"
+        rate: 3
+      - query: "r:c -alt:{any_boosterfun}"
+        rate: 4
+    - chance: 5
+      - rawquery: "r:u {any_boosterfun}"
+        rate: 1
+      - query: "r:u alt:{any_boosterfun}"
+        rate: 3
+      - query: "r:u -alt:{any_boosterfun}"
+        rate: 4
+    - chance: 3
+      use: rare_mythic_with_showcase
