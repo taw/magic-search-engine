@@ -79,6 +79,7 @@ sheets:
     foil: true
     any:
     - chance: 12
+      any:
       - rawquery: "r:c {any_boosterfun}"
         rate: 1
       - query: "r:c alt:{any_boosterfun}"
@@ -86,6 +87,7 @@ sheets:
       - query: "r:c -alt:{any_boosterfun}"
         rate: 4
     - chance: 5
+      any:
       - rawquery: "r:u {any_boosterfun}"
         rate: 1
       - query: "r:u alt:{any_boosterfun}"
