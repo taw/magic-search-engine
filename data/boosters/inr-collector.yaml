@@ -1,0 +1,57 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-innistrad-remastered
+pack:
+  foil_common: 4
+  foil_uncommon: 3
+  foil_basic: 1
+  showcase_common_uncommon:
+  - showcase_cu: 1
+    retro_cu: 1
+    chance: 76
+  - retro_cu: 2
+    chance: 924
+  foil_showcase_cu: 1
+  foil_rare_mythic: 1
+  booster_fun: 2
+  foil_booster_fun: 1
+queries:
+  borderless: "e:{set} number:298-322"
+  showcase: "e:{set} number:323-328"
+  movie_poster: "e:{set} number:481-490"
+  old_frame: "e:{set} number:329-480"
+  any_boosterfun: "{borderless} or {showcase} or {movie_poster}"
+  two_instances: "{any_boosterfun} ((alt:({borderless} or {showcase}) alt:{movie_poster}) or (alt:({borderless} or {showcase}) alt:{old_frame}) or (alt:{movie_poster} alt:{old_frame}))"
+sheets:
+  foil_rare_mythic:
+    foil: true
+    any:
+    - query: "r:r"
+      chance: 6
+    - query: "r:m"
+      chance: 1
+  showcase_cu:
+    filter: "{any_boosterfun}"
+    use: common_uncommon
+  retro_cu:
+    filter: "{old_frame}"
+    use: common_uncommon
+  foil_showcase_cu:
+    foil: true
+    filter: "{any_boosterfun} or {old_frame}"
+    use: common_uncommon
+  booster_fun:
+    any:
+    - rawquery: "r:m {two_instances}"
+      rate: 1
+    - rawquery: "r:m {any_boosterfun} -alt:{two_instances}"
+      rate: 2
+    - rawquery: "r:r {two_instances}"
+      rate: 2
+    - rawquery: "r:r {any_boosterfun} -alt:{two_instances}"
+      rate: 4
+  foil_booster_fun:
+    foil: true
+    any:
+    - use: booster_fun
+      chance: 995
+    - rawquery: "e:{set} number:491"
+      chance: 5
