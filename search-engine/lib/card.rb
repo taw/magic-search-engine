@@ -70,6 +70,7 @@ class Card
     "Undergrowth",
     "Will of the council",
     "Will of the Planeswalkers",
+    "You can never leave",
     # AFR flavor words
     "Acid Breath",
     "Animate Walking Statue",
