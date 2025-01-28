@@ -20,8 +20,16 @@ queries:
   any_boosterfun: "{borderless} or {showcase}"
   two_instances: ""
 sheets:
+  basic:
+    rawquery: "e:{set} t:basic"
+  foil_basic:
+    foil: true
+    rawquery: "e:{set} t:basic"
   sfc_common:
     query: "r:c is:sfc"
+  retro:
+    filter: "{old_frame}"
+    use: base_1248_by_rarity
   uncommon:
     # Showcase treatments 1/4 for relevant cards
     any:

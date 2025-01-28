@@ -21,6 +21,9 @@ queries:
   any_boosterfun: "{borderless} or {showcase} or {movie_poster}"
   two_instances: "{any_boosterfun} ((alt:({borderless} or {showcase}) alt:{movie_poster}) or (alt:({borderless} or {showcase}) alt:{old_frame}) or (alt:{movie_poster} alt:{old_frame}))"
 sheets:
+  foil_basic:
+    foil: true
+    rawquery: "e:{set} t:basic"
   foil_rare_mythic:
     foil: true
     any:
