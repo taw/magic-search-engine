@@ -18,7 +18,7 @@ queries:
   showcase: "e:{set} number:323-328"
   movie_poster: "e:{set} number:481-490"
   old_frame: "e:{set} number:329-480"
-  any_boosterfun: "{borderless} or {showcase} or {movie_poster}"
+  any_boosterfun: "{borderless} or {showcase} or {movie_poster} or {old_frame}"
   two_instances: "{any_boosterfun} ((alt:({borderless} or {showcase}) alt:{movie_poster}) or (alt:({borderless} or {showcase}) alt:{old_frame}) or (alt:{movie_poster} alt:{old_frame}))"
 sheets:
   foil_basic:
@@ -32,14 +32,14 @@ sheets:
     - query: "r:m"
       chance: 1
   showcase_cu:
-    filter: "{any_boosterfun}"
+    filter: "{any_boosterfun} -{old_frame}"
     use: common_uncommon
   retro_cu:
     filter: "{old_frame}"
     use: common_uncommon
   foil_showcase_cu:
     foil: true
-    filter: "{any_boosterfun} or {old_frame}"
+    filter: "{any_boosterfun}"
     use: common_uncommon
   booster_fun:
     any:
