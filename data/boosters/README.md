@@ -95,6 +95,7 @@ The `queries` section allows you to pre-define a set of re-useable query tags. T
 
 ```yaml
 queries:
+  # Get all retro border cards but don't include special promo card numbered 257
   retro_frame: "e:{set} frame:old -number:257"
 sheets:
   rare_retro:
@@ -131,7 +132,7 @@ Example from [war.yaml](war.yaml) that returns all core set uncommon planeswalke
 
 More complex sheets cam use `rawquery` to find cards outside the limitations of the `query` tag. The formatting for `rawquery` still matches the formatting of the mtg.wtf search bar.
 
-Example from [cmr-collector.yaml](cmr-collector.yaml) that returns uncommon rarity, etched frame legendary cards:
+Example from [cmr-collector.yaml](cmr-collector.yaml) that returns uncommon or special rarity, etched frame cards that aren't reprints:
 
 ```yaml
   etched_uncommon:
@@ -141,7 +142,7 @@ Example from [cmr-collector.yaml](cmr-collector.yaml) that returns uncommon rari
 
 #### Any
 
-Sheets can use the `any` tag to combine different subsheets together. Each subsheet can use any sheet variation but cannot change the parent foil parameters. There are two types of `any` sheets: `rate` and `chance`. The two variations cannot be mixed in the same set of subsheets.
+Sheets can use the `any` tag to combine different subsheets together. Each subsheet can use any sheet variation but cannot change the parent foil parameters. There are two types of `any` sheets: `rate` and `chance`. The two variations cannot be mixed in the same set of subsheets, but multi-layer `any` subsheets can use both `rate` and `chance` if they are consistent within a layer.
 
 ##### Rate
 
