@@ -8,4 +8,4 @@ Here's how booster data goes into the system:
 * booster indexer `booster_indexer/bin/booster_indexer` preprocesses these yaml files into single file `index/booster_index.json`, doing a lot of preprocessing, and hopefully providing some error handling
 * when the system starts, it uses `index/booster_index.json` for booster information, and resolves all the queries it contains
 
-If you want to learn about yaml files describing each booster, chck data/boosters/README.md
+If you want to learn about yaml files describing each booster, check data/boosters/README.md

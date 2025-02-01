@@ -6,11 +6,18 @@ This folder is a repository of different YAML files, which are compiled into sea
 
 File names should follow the following formatting:
 
-- `{set_code}.yaml` - draft booster
+- `{set_code}.yaml` - default booster (This booster type designates non-draftable core packs, which only existed prior to 5ed)
 - `{set_code}-{variant}.yaml` - other variants
-  - `{set_code}-arena.yaml` - arena booster
-  - `{set_code}-set.yaml` - set booster
+  - `{set_code}-play.yaml` - play booster
   - `{set_code}-collector.yaml` - collector booster
+  - `{set_code}-collector-sample.yaml` - collector booster sample pack
+  - `{set_code}-prerelease.yaml` - prerelease promo pack
+  - `{set_code}-arena.yaml` - arena booster
+  - `{set_code}-mtgo.yaml` - magic online booster
+- deprecated variants:
+  - `{set_code}-draft.yaml` - draft booster
+  - `{set_code}-set.yaml` - set booster
+  - `{set_code}-six.yaml` - six card booster
 - All codes can be appended with `-jp` to indicate Japanese booster variants
 
 If you are using a non-standard variant, you can add a `name:` parameter to the top of your file to indicate what the booster name should be. For example, the file `2xm-vip.yaml` includes the line:
@@ -18,7 +25,7 @@ If you are using a non-standard variant, you can add a `name:` parameter to the 
 
 ## Contents
 
-A booster YAML contains two core components: the `pack`, which lists what sheets constitute each slot of the booster; and the `sheets`, which detail which cards are available on each sheet. Here is a simple example file:
+A booster YAML contains two core components: the `pack`, which lists what sheets constitute each slot of the booster; and the `sheets`, which detail which cards are available on each sheet. A third `queries` section is optional and can help reduce the overhead related to sheet queries. Here is a simple example file:
 
 ```yaml
 # The top comment is where most information about the booster goes, including key
@@ -81,6 +88,20 @@ There are some useful features of variable slots:
 - Unlike sheets, variable slots can mix foil/non-foil cards. For slots that may or may not be foil, this is the proper way to indicate that variability.
 
 The `chance` parameter correlates to the relative rarity of each version. So for common draft foils, which appear in 1/3 packs, the `common` sheet would have `chance: 2` and the `foil` sheet would have `chance: 1`. The total number of variations is 3, and 1 of those variations is the `foil` sheet.
+
+### Queries
+
+The `queries` section allows you to pre-define a set of re-useable query tags. These tags can be used to simplify the text in the `sheets` section. A query is defined using the following syntax:
+
+```yaml
+queries:
+  retro_frame: "e:{set} frame:old -number:257"
+sheets:
+  rare_retro:
+    rawquery: "{retro_frame} rarity:rare"
+  mythic_retro:
+    rawquery: "{retro_frame} rarity:mythic"
+```
 
 ### Sheets
 
