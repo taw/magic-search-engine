@@ -6,11 +6,18 @@ This folder is a repository of different YAML files, which are compiled into sea
 
 File names should follow the following formatting:
 
-- `{set_code}.yaml` - draft booster
+- `{set_code}.yaml` - default booster (This booster type designates non-draftable core packs, which only existed prior to 5ed)
 - `{set_code}-{variant}.yaml` - other variants
-  - `{set_code}-arena.yaml` - arena booster
-  - `{set_code}-set.yaml` - set booster
+  - `{set_code}-play.yaml` - play booster
   - `{set_code}-collector.yaml` - collector booster
+  - `{set_code}-collector-sample.yaml` - collector booster sample pack
+  - `{set_code}-prerelease.yaml` - prerelease promo pack
+  - `{set_code}-arena.yaml` - arena booster
+  - `{set_code}-mtgo.yaml` - magic online booster
+- deprecated variants:
+  - `{set_code}-draft.yaml` - draft booster
+  - `{set_code}-set.yaml` - set booster
+  - `{set_code}-six.yaml` - six card booster
 - All codes can be appended with `-jp` to indicate Japanese booster variants
 
 If you are using a non-standard variant, you can add a `name:` parameter to the top of your file to indicate what the booster name should be. For example, the file `2xm-vip.yaml` includes the line:
@@ -18,7 +25,7 @@ If you are using a non-standard variant, you can add a `name:` parameter to the 
 
 ## Contents
 
-A booster YAML contains two core components: the `pack`, which lists what sheets constitute each slot of the booster; and the `sheets`, which detail which cards are available on each sheet. Here is a simple example file:
+A booster YAML contains two core components: the `pack`, which lists what sheets constitute each slot of the booster; and the `sheets`, which detail which cards are available on each sheet. A third `queries` section is optional and can help reduce the overhead related to sheet queries. Here is a simple example file:
 
 ```yaml
 # The top comment is where most information about the booster goes, including key
@@ -82,6 +89,21 @@ There are some useful features of variable slots:
 
 The `chance` parameter correlates to the relative rarity of each version. So for common draft foils, which appear in 1/3 packs, the `common` sheet would have `chance: 2` and the `foil` sheet would have `chance: 1`. The total number of variations is 3, and 1 of those variations is the `foil` sheet.
 
+### Queries
+
+The `queries` section allows you to pre-define a set of re-useable query tags. These tags can be used to simplify the text in the `sheets` section. A query is defined using the following syntax:
+
+```yaml
+queries:
+  # Get all retro border cards but don't include special promo card numbered 257
+  retro_frame: "e:{set} frame:old -number:257"
+sheets:
+  rare_retro:
+    rawquery: "{retro_frame} rarity:rare"
+  mythic_retro:
+    rawquery: "{retro_frame} rarity:mythic"
+```
+
 ### Sheets
 
 `sheets` is a mapping that connects the sheet names to the cards that can appear on that sheet.
@@ -110,7 +132,7 @@ Example from [war.yaml](war.yaml) that returns all core set uncommon planeswalke
 
 More complex sheets cam use `rawquery` to find cards outside the limitations of the `query` tag. The formatting for `rawquery` still matches the formatting of the mtg.wtf search bar.
 
-Example from [cmr-collector.yaml](cmr-collector.yaml) that returns uncommon rarity, etched frame legendary cards:
+Example from [cmr-collector.yaml](cmr-collector.yaml) that returns uncommon or special rarity, etched frame cards that aren't reprints:
 
 ```yaml
   etched_uncommon:
@@ -120,7 +142,7 @@ Example from [cmr-collector.yaml](cmr-collector.yaml) that returns uncommon rari
 
 #### Any
 
-Sheets can use the `any` tag to combine different subsheets together. Each subsheet can use any sheet variation but cannot change the parent foil parameters. There are two types of `any` sheets: `rate` and `chance`. The two variations cannot be mixed in the same set of subsheets.
+Sheets can use the `any` tag to combine different subsheets together. Each subsheet can use any sheet variation but cannot change the parent foil parameters. There are two types of `any` sheets: `rate` and `chance`. The two variations cannot be mixed in the same set of subsheets, but multi-layer `any` subsheets can use both `rate` and `chance` if they are consistent within a layer.
 
 ##### Rate
 
