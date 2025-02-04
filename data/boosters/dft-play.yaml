@@ -1,0 +1,89 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-aetherdrift
+pack:
+  land: 1
+  list_slot:
+    - common: 7
+      chance: 63
+    - common: 6
+      special_guest: 1
+      chance: 1
+  uncommon: 3
+  rare_mythic_with_boosterfun: 1
+  wildcard: 1
+  foil: 1
+queries:
+  revved_up_c_or_u: "e:{set} number:292-332 (r:c or r:u)"
+  revved_up_r_or_m: "e:{set} number:292-332 (r:r or r:m)"
+  rude_riders: "e:{set} number:333-346"
+  grafitti_giants: "e:{set} number:347-354"
+  borderless_rare: "e:{set} number: 355-375"
+  r_or_m_boosterfun: "{revved_up_r_or_m} or {rude_riders} or {grafitti_giants} or {borderless_rare}"
+  all_boosterfun: "{revved_up_c_or_u} or {revved_up_r_or_m} or {rude_riders} or {grafitti_giants} or {borderless_rare}"
+  dual_land: "e:{set} t:land r:c -raceway -market"
+  normal_basic: "e:{set} number: 277-291"
+  driver_basic: "e{set} number: 272-276"
+sheets:
+  common:
+    query: "r:c -{dual_land} -t:basic"
+  common_with_showcase:
+    any:
+    - rawquery: "{revved_up_c_or_u} r:c"
+      rate: 1
+    - query: "r:c -{dual_land} -t:basic alt:({revved_up_c_or_u} r:c)"
+      rate: 3
+    - query: "r:c -{dual_land} -t:basic -alt:({revved_up_c_or_u} r:c)"
+      rate: 4
+  uncommon_with_showcase:
+    any:
+    - rawquery: "{revved_up_c_or_u} r:u"
+      rate: 1
+    - query: "r:u alt:({revved_up_c_or_u} r:u)"
+      rate: 3
+    - query: "r:u -alt:({revved_up_c_or_u} r:u)"
+      rate: 4
+  land:
+    any:
+      - query: "{dual_land}"
+        chance: 4
+      - query: "{normal_basic}"
+        chance: 3
+      - query: "{driver_basic}"
+        chance: 1
+  rare_mythic_with_boosterfun:
+    # Assume showcase cards appear at 1/4 rate
+    any:
+    - any:
+      - rawquery: "{r_or_m_boosterfun} r:r"
+        rate: 1
+      - query: "r:r alt:({r_or_m_boosterfun} r:r)"
+        rate: 3
+      - query: "r:r -alt:({r_or_m_boosterfun} r:r)"
+        rate: 4
+      chance: 6
+    - any:
+      - rawquery: "{r_or_m_boosterfun} r:m"
+        rate: 1
+      - query: "r:m alt:({r_or_m_boosterfun} r:m)"
+        rate: 3
+      - query: "r:m -alt:({r_or_m_boosterfun} r:m)"
+        rate: 4
+      chance: 1
+  wildcard:
+    any:
+      - use: common_with_showcase
+        chance: 125
+      - use: uncommon_with_showcase
+        chance: 667
+      - use: rare_mythic_with_boosterfun
+        chance: 208
+  foil:
+    any:
+      - use: common_with_showcase
+        chance: 610
+      - use: uncommon_with_showcase
+        chance: 305
+      - use: rare_mythic_with_boosterfun
+        chance: 85
+  special_guest:
+    set: spg
+    code: "DFT"
