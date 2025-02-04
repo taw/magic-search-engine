@@ -24,11 +24,9 @@ queries:
   driver_basic: "e{set} number: 272-276"
 sheets:
   common:
-    any:
-    - query: "r:c -{dual_land} -t:basic"
+    query: "r:c -{dual_land} -t:basic"
   uncommon:
-      any:
-    - query: "r:u"  
+    query: "r:u"
   land:
     any:
     - query: "{dual_land}"
@@ -47,35 +45,35 @@ sheets:
       chance: 8
     - rawquery: "{r_or_m_boosterfun} r:m"
       chance: 1
-   wildcard:
-     any:
-     - use: common
-       chance: 83
-     - use: uncommon
-       chance: 625
-     - use: rare_mythic_with_boosterfun
-       chance: 208
-     - rawquery: "{revved_up_c_or_u}
-       chance: 83
-   foil:
-      any:
-      - use: common
-        chance: 605
-      - use: uncommon
-        chance: 300
-      - query: "r:r"
-        chance: 64
-      - query: "r:m:
-        chance: 11
-      #the documentation says there is a .5% chance of a common borderless card and a .5% chance of an uncommon borderless card. since all the C and U borderless cards are on the revved up query, I'm just using that
-      - rawquery: "{revved_up_c_or_u} r:c"
-        chance: 5
-       - rawquery: "{revved_up_c_or_u} r:u"
-        chance: 5  
-       - rawquery: "{r_or_m_boosterfun} r:r"
-        chance: 9 
-       - rawquery: "{r_or_m_boosterfun} r:m"
-        chance: 1  
+  wildcard:
+    any:
+    - use: common
+      chance: 83
+    - use: uncommon
+      chance: 625
+    - use: rare_mythic_with_boosterfun
+      chance: 208
+    - rawquery: "{revved_up_c_or_u}"
+      chance: 83
+  foil:
+    any:
+    - use: common
+      chance: 605
+    - use: uncommon
+      chance: 300
+    - query: "r:r"
+      chance: 64
+    - query: "r:m"
+      chance: 11
+    # the documentation says there is a .5% chance of a common borderless card and a .5% chance of an uncommon borderless card. since all the C and U borderless cards are on the revved up query, I'm just using that
+    - rawquery: "{revved_up_c_or_u} r:c"
+      chance: 5
+    - rawquery: "{revved_up_c_or_u} r:u"
+      chance: 5
+    - rawquery: "{r_or_m_boosterfun} r:r"
+      chance: 9
+    - rawquery: "{r_or_m_boosterfun} r:m"
+      chance: 1
   special_guest:
     set: spg
     code: "DFT"
