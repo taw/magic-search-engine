@@ -2,11 +2,11 @@
 pack:
   land: 1
   list_slot:
-  - common: 7
-    chance: 63
-  - common: 6
-    special_guest: 1
-    chance: 1
+    - common: 7
+      chance: 63
+    - common: 6
+      special_guest: 1
+      chance: 1
   uncommon: 3
   rare_mythic_with_boosterfun: 1
   wildcard: 1
@@ -24,58 +24,66 @@ queries:
   driver_basic: "e{set} number: 272-276"
 sheets:
   common:
+    query: "r:c -{dual_land} -t:basic"
+  common_with_showcase:
     any:
-    - query: "r:c -{dual_land} -t:basic"
-  uncommon:
-      any:
-    - query: "r:u"  
+    - rawquery: "{revved_up_c_or_u} r:c"
+      rate: 1
+    - query: "r:c -{dual_land} -t:basic alt:({revved_up_c_or_u} r:c)"
+      rate: 3
+    - query: "r:c -{dual_land} -t:basic -alt:({revved_up_c_or_u} r:c)"
+      rate: 4
+  uncommon_with_showcase:
+    any:
+    - rawquery: "{revved_up_c_or_u} r:u"
+      rate: 1
+    - query: "r:u alt:({revved_up_c_or_u} r:u)"
+      rate: 3
+    - query: "r:u -alt:({revved_up_c_or_u} r:u)"
+      rate: 4
   land:
     any:
-    - query: "{dual_land}"
-      chance: 4
-    - query: "{normal_basic}"
-      chance: 3
-    - query: "{driver_basic}"
-      chance: 1
+      - query: "{dual_land}"
+        chance: 4
+      - query: "{normal_basic}"
+        chance: 3
+      - query: "{driver_basic}"
+        chance: 1
   rare_mythic_with_boosterfun:
+    # Assume showcase cards appear at 1/4 rate
     any:
-    - query: "r:r"
-      chance: 78
-    - query: "r:m"
-      chance: 13
-    - rawquery: "{r_or_m_boosterfun} r:r"
-      chance: 8
-    - rawquery: "{r_or_m_boosterfun} r:m"
+    - any:
+      - rawquery: "{r_or_m_boosterfun} r:r"
+        rate: 1
+      - query: "r:r alt:({r_or_m_boosterfun} r:r)"
+        rate: 3
+      - query: "r:r -alt:({r_or_m_boosterfun} r:r)"
+        rate: 4
+      chance: 6
+    - any:
+      - rawquery: "{r_or_m_boosterfun} r:m"
+        rate: 1
+      - query: "r:m alt:({r_or_m_boosterfun} r:m)"
+        rate: 3
+      - query: "r:m -alt:({r_or_m_boosterfun} r:m)"
+        rate: 4
       chance: 1
-   wildcard:
-     any:
-     - use: common
-       chance: 83
-     - use: uncommon
-       chance: 625
-     - use: rare_mythic_with_boosterfun
-       chance: 208
-     - rawquery: "{revved_up_c_or_u}
-       chance: 83
-   foil:
-      any:
-      - use: common
-        chance: 605
-      - use: uncommon
-        chance: 300
-      - query: "r:r"
-        chance: 64
-      - query: "r:m:
-        chance: 11
-      #the documentation says there is a .5% chance of a common borderless card and a .5% chance of an uncommon borderless card. since all the C and U borderless cards are on the revved up query, I'm just using that
-      - rawquery: "{revved_up_c_or_u} r:c"
-        chance: 5
-       - rawquery: "{revved_up_c_or_u} r:u"
-        chance: 5  
-       - rawquery: "{r_or_m_boosterfun} r:r"
-        chance: 9 
-       - rawquery: "{r_or_m_boosterfun} r:m"
-        chance: 1  
+  wildcard:
+    any:
+      - use: common_with_showcase
+        chance: 125
+      - use: uncommon_with_showcase
+        chance: 667
+      - use: rare_mythic_with_boosterfun
+        chance: 208
+  foil:
+    any:
+      - use: common_with_showcase
+        chance: 610
+      - use: uncommon_with_showcase
+        chance: 305
+      - use: rare_mythic_with_boosterfun
+        chance: 85
   special_guest:
     set: spg
     code: "DFT"
