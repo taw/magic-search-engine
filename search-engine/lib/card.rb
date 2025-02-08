@@ -48,7 +48,6 @@ class Card
     "Legacy",
     "Lieutenant",
     "Magecraft",
-    "Max speed",
     "Metalcraft",
     "Morbid",
     "Parley",

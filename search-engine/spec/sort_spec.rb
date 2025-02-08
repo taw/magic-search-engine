@@ -367,9 +367,9 @@ describe "Sorting" do
 
   it "sort:firstprint" do
     ordered_search("c=c o:regenerate sort:firstprint", :name)[0,3].should eq([
+      ["Accursed Duneyard"],
       ["Birthing Hulk"],
       ["Unnatural Endurance"],
-      ["Skitterskin"],
     ])
   end
 

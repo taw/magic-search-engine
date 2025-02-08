@@ -27,6 +27,7 @@ describe "Ability Word Regexp" do
       "IV",
       # "V", # somehow skipped?
       "VI",
+      "Max speed",
       "Prize",
       "Ransom", # playtest cards
       "Solved",
