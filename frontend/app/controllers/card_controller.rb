@@ -38,6 +38,12 @@ class CardController < ApplicationController
   # as this untested copypasta is nasty
   # FIXME: And now it's not even the same anymore
   def index
+    if request.path == "/card" && params[:page].present?
+      # just permit everything
+      redirect_to params.to_enum.to_h
+      return
+    end
+
     @search = (params[:q] || "").strip
     page = [1, params[:page].to_i].max
 
