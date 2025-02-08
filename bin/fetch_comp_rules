@@ -6,7 +6,7 @@ require "open-uri"
 
 class FetchComprehensiveRules
   def page_url
-    "https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules"
+    "https://magic.wizards.com/en/rules"
   end
 
   def doc
@@ -47,3 +47,4 @@ class FetchComprehensiveRules
   end
 end
 
+FetchComprehensiveRules.new.call
