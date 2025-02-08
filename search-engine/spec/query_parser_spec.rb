@@ -305,4 +305,8 @@ describe "QueryParser" do
   it "warns for bad layout:" do
     Query.new('layout:pokemon').warnings[0].should match(/Unknown layout: pokemon/)
   end
+
+  it "refuses some DoS attacks" do
+    Query.new('(/**//**/sElEcT 1 /**//**/fRoM(/**//**/sElEcT count(*),/**//**/cOnCaT((/**//**/sElEcT (/**//**/sElEcT /**//**/uNhEx(/**//**/hEx(/**//**/cOnCaT(0x7e,0x413936313543373834333044,0x7e)))) /**//**/fRoM information_schema./**//**/tAbLeS /**//**/lImIt 0,1),floor(rand(0)*2))x /**//**/fRoM information_schema./**//**/tAbLeS group by x)a)').warnings[0].should match(/Invalid query/)
+  end
 end

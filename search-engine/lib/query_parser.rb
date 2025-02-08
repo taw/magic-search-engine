@@ -14,6 +14,13 @@ require_relative "query_tokenizer"
 class QueryParser
   def parse(query_string)
     str = query_string.strip
+
+    # SQL injection bot protections
+    # Just short circuit it here so we don't try to parse this crap
+    if str.include?("/**/")
+      return [nil, {}, ["Invalid query"]]
+    end
+
     if str =~ /\A(\+\+)?!(.*)\z/
       if $1 == "++"
         metadata = {ungrouped: true}
@@ -124,6 +131,7 @@ private
 
   def parse_cond
     return nil if @tokens.empty?
+
     case @tokens[0][0]
     when :open
       @tokens.shift
