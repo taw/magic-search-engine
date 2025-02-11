@@ -20,8 +20,8 @@ queries:
   r_or_m_boosterfun: "{revved_up_r_or_m} or {rude_riders} or {grafitti_giants} or {borderless_rare}"
   all_boosterfun: "{revved_up_c_or_u} or {revved_up_r_or_m} or {rude_riders} or {grafitti_giants} or {borderless_rare}"
   dual_land: "e:{set} t:land r:c -raceway -market"
-  normal_basic: "e:{set} number: 277-291"
-  driver_basic: "e{set} number: 272-276"
+  normal_basic: "e:{set} number:277-291"
+  driver_basic: "e:{set} number:272-276"
 sheets:
   common:
     query: "r:c -{dual_land} -t:basic"
