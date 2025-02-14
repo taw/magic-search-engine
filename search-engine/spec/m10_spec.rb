@@ -130,8 +130,15 @@ describe "Magic 2010" do
       "Windstorm"          # flying
   end
 
+  # 2025 Oracle changes removed a lot of these
   it "oracle_cardname" do
-    assert_search_results 'o:"whenever ~ deals combat damage"', "Lightwielder Paladin", "Sphinx Ambassador"
+    assert_search_results 'o:"~ deals X damage"',
+      "Chandra Nalaar",
+      "Consume Spirit",
+      "Earthquake",
+      "Fireball",
+      "Tendrils of Corruption",
+      "Windstorm"
   end
 
   it "flavor_text" do

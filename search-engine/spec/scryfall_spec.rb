@@ -231,14 +231,6 @@ describe "Scryfall" do
       "Tazeem Roilmage"
   end
 
-  it "oracle_tilde" do
-    # identical results, except for spoilers
-    assert_search_include 'o:"~ enters tapped"',
-      "Deadlock Trap",
-      "Port Town",
-      "Izzet Boilerworks"
-  end
-
   it "pow_gt_tou" do
     # identical results except uncards and spoilers
     assert_search_include "pow>tou c:w t:creature",
