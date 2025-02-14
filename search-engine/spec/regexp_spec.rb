@@ -36,14 +36,13 @@ describe "Regexp" do
   # end
 
   it "regexp oracle text" do
-    # This gets updated too much from SLD etc.
+    # This gets updated too much from SLD etc. so promos excluded
     assert_search_results 'o:/\d{3,}/ -is:promo -e:da1',
       "A Good Thing",
       "Ajani, Mentor of Heroes",
       "As Luck Would Have It",
       "Battle of Wits",
       "Bilbo, Birthday Celebrant",
-      "Celebr-8000",
       "Helix Pinnacle",
       "Mox Lotus",
       "Pyromancy 101",

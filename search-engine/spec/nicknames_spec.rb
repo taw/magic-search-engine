@@ -14,7 +14,7 @@ describe "Card nicknames" do
       "Stomping Ground",
       "Temple Garden",
       "Watery Grave"
-    assert_search_equal "is:shockland", %[o:"As ~ enters, you may pay 2 life. If you don't, it enters tapped."]
+    assert_search_equal "is:shockland", %[o:"As this land enters, you may pay 2 life. If you don't, it enters tapped."]
   end
 
   # The name is unique-ish
@@ -34,7 +34,7 @@ describe "Card nicknames" do
       "Wooded Foothills"
     assert_search_results "is:fetchland",
       *cards_matching{|c|
-        c.text =~ %r[\{T\}, Pay 1 life, Sacrifice #{Regexp.escape c.name}: Search your library for an? \S+ or \S+ card, put it onto the battlefield, then shuffle.] }
+        c.text =~ %r[\{T\}, Pay 1 life, Sacrifice this land: Search your library for an? \S+ or \S+ card, put it onto the battlefield, then shuffle.] }
   end
 
   # The name is also used for all lands that produce 2 mana colors
@@ -79,8 +79,8 @@ describe "Card nicknames" do
       "Simic Growth Chamber"
     assert_search_results "is:bounceland",
       *cards_matching{|c|
-        c.text =~ %r[#{Regexp.escape c.name} enters tapped.\nWhen #{Regexp.escape c.name} enters, return a land you control to its owner's hand.\n\{T\}: Add \{.\}\{.\}] or
-        c.text =~ %r[#{Regexp.escape c.name} enters tapped.\nWhen #{Regexp.escape c.name} enters, sacrifice it unless you return an? untapped \S+ you control to its owner's hand.\n\{T\}: Add \{.\}\{.\}]
+        c.text =~ %r[This land enters tapped.\nWhen this land enters, return a land you control to its owner's hand.\n\{T\}: Add \{.\}\{.\}] or
+        c.text =~ %r[This land enters tapped.\nWhen this land enters, sacrifice it unless you return an? untapped \S+ you control to its owner's hand.\n\{T\}: Add \{.\}\{.\}]
       }
     assert_search_equal "is:bounceland", "is:karoo"
   end
@@ -100,7 +100,7 @@ describe "Card nicknames" do
       "Spirebluff Canal"
     assert_search_results "is:fastland",
       *cards_matching{|c|
-        c.text =~ %r[#{Regexp.escape c.name} enters tapped unless you control two or fewer other lands.\n\{T\}: Add \{.\} or \{.\}.]
+        c.text =~ %r[This land enters tapped unless you control two or fewer other lands.\n\{T\}: Add \{.\} or \{.\}.]
       }
   end
 
@@ -146,7 +146,7 @@ describe "Card nicknames" do
       "Woodland Cemetery"
     assert_search_results "is:checkland",
       *cards_matching{|c|
-        c.text =~ %r[#{Regexp.escape c.name} enters tapped unless you control an? \S+ or an? \S+.\n\{T\}: Add \{.\} or \{.\}.]}
+        c.text =~ %r[This land enters tapped unless you control an? \S+ or an? \S+.\n\{T\}: Add \{.\} or \{.\}.]}
   end
 
   # This is a bit dubious
@@ -269,7 +269,7 @@ describe "Card nicknames" do
       "Cinder Glade",
       "Canopy Vista"
     assert_search_equal "is:battleland",
-      'o:"~ enters tapped unless you control two or more basic lands."'
+      'o:"This land enters tapped unless you control two or more basic lands."'
     assert_search_equal "is:battleland", "is:tangoland"
   end
 
@@ -348,7 +348,7 @@ describe "Card nicknames" do
       "Sunbaked Canyon",
       "Waterlogged Grove"
     assert_search_equal "is:canopyland",
-      't:land o:"pay 1 life" o:"{1}, {T}, Sacrifice ~: Draw a card." o:/\{T\}, Pay 1 life: Add \{.\} or \{.\}/'
+      't:land o:"pay 1 life" o:"{1}, {T}, Sacrifice this land: Draw a card." o:/\{T\}, Pay 1 life: Add \{.\} or \{.\}/'
     assert_search_equal "is:canland", "is:canopyland"
   end
 
@@ -365,7 +365,7 @@ describe "Card nicknames" do
       "Shineshadow Snarl",
       "Vineglimmer Snarl"
     assert_search_equal "is:shadowland",
-      %q[t:land o:/As (.*) enters, you may reveal an? \S+ or \S+/ o:"If you don't, ~ enters tapped"]
+      %q[t:land o:/As this land enters, you may reveal an? \S+ or \S+/ o:"If you don't, this land enters tapped"]
   end
 
   # This is quite questionable
