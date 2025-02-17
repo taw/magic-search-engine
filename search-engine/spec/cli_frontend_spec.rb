@@ -96,7 +96,7 @@ describe "CLI Frontend" do
         [mir]
         Creature - Dragon
         Trample
-        {1}{G}: this creature gains flying and loses trample until end of turn.
+        {1}{G}: This creature gains flying and loses trample until end of turn.
         4/4
 
         Destructor Dragon {4}{g}{g}
@@ -161,7 +161,7 @@ describe "CLI Frontend" do
         Legendary Planeswalker - Bolas
         (Color indicator: Nicol Bolas, the Arisen is blue, black, and red)
         [+2]: Draw two cards.
-        [−3]: Nicol Bolas, the Arisen deals 10 damage to target creature or planeswalker.
+        [−3]: Nicol Bolas deals 10 damage to target creature or planeswalker.
         [−4]: Put target creature or planeswalker card from a graveyard onto the battlefield under your control.
         [−12]: Exile all but the bottom card of target player's library.
         Loyalty: 7
