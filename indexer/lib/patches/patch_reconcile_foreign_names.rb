@@ -21,6 +21,7 @@ class PatchReconcileForeignNames < Patch
       "Hebrew",
       "Latin",
       "Phyrexian",
+      "Quenya",
       "Sanskrit",
     ]
   end
