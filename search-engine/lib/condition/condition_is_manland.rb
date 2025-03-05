@@ -40,6 +40,7 @@ class ConditionIsManland < ConditionNickname
       "restless spire",
       "restless vents",
       "restless vinestalk",
+      "rising chicane",
       "shambling vent",
       "soulstone sanctuary",
       "spawning pool",
