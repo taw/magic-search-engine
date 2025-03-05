@@ -4,6 +4,7 @@ describe "Spelling" do
   it do
     assert_search_results "related:cmc=9",
       "Golgothian Sylex",      # Colossus of Sardia
+      "Mitotic Slime",         # Mitotic Ultimus
       "Scalespeaker Shepherd", # Alchemy version
       "Sift Through Sands",    # The Unspeakable
       "Urborg Panther"         # Spirit of the Night

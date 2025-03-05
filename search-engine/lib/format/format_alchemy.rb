@@ -18,7 +18,7 @@ class FormatAlchemy < FormatStandard
         "blb", "yblb",
         "dsk", "ydsk",
         "fdn", # will likely have unusual rotation matching Standard
-        "dft",
+        "dft", "ydft",
       ],
       "2022-09-09" => [
         "anb",

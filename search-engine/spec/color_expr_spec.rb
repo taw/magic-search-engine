@@ -61,8 +61,9 @@ describe "Color Expr Test" do
       "Sisay, Weatherlight Captain",
       "Tazri, Beacon of Unity",
       "Tazri, Stalwart Survivor",
-      "You, Magic Playtester",
-      "Who"
+      "Who",
+      "You, Iterative Playtester",
+      "You, Magic Playtester"
   end
 
   it "number of color identity" do

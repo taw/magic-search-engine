@@ -228,6 +228,7 @@ describe "Card nicknames" do
       "Restless Spire",
       "Restless Vents",
       "Restless Vinestalk",
+      "Rising Chicane",
       "Shambling Vent",
       "Soulstone Sanctuary",
       "Spawning Pool",
