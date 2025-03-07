@@ -249,8 +249,17 @@ class PatchMtgjsonVersions < Patch
       # Numbering conflict in mtgjson data
       # They have RZ15 (which we turn into RZ15a/RZ15b) and RZ15b
       # We need to move that RZ15b away to something else
-      if card["number"] == "RZ15b" and card["set"]["official_code"] == "DA1"
-        card["number"] = "RZ15x"
+      # And same shit for CU12a, CU12b
+      if card["set"]["official_code"] == "DA1"
+        if card["number"] == "RZ15b" and
+          card["number"] = "RZ15x"
+        end
+        if card["number"] == "CU12a" and
+          card["number"] = "CU12x"
+        end
+        if card["number"] == "CU12b" and
+          card["number"] = "CU12y"
+        end
       end
 
       # At least for now:

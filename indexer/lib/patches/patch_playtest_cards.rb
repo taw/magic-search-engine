@@ -40,6 +40,18 @@ class PatchPlaytestCards < Patch
       end
     end
 
+    each_printing do |card|
+      next unless card["set_code"] == "da1"
+      if card["name"] == "Fast"
+        card["name"] = "Fast (DA1)"
+        card["names"] = ["Fast (DA1)", "Furious (DA1)"]
+      end
+      if card["name"] == "Furious"
+        card["name"] = "Furious (DA1)"
+        card["names"] = ["Fast (DA1)", "Furious (DA1)"]
+      end
+    end
+
     update_names_index
   end
 end
