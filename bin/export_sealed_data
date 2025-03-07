@@ -268,7 +268,7 @@ class ExportSealedData
     uuid_file_path.each_line do |line|
       s, n, u, _ = line.chomp.split("\t")
       @uuids[s] ||= {}
-      raise if @uuids[s][n]
+      raise "Card #{s}:#{n} has multiple uuids" if @uuids[s][n]
       @uuids[s][n] = u
     end
   end
