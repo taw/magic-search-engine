@@ -239,7 +239,7 @@ describe "Card nicknames" do
       "Treetop Village",
       "Urza's Hot Dog Stand",
       "Wandering Fumarole"
-    assert_search_equal "is:manland", "t:land o:becomes o:creature -(Tyrite Sanctum) -(Sorrow's Path) -(Mech Hangar)"
+    assert_search_equal "is:manland", "t:land o:becomes o:creature -(Tyrite Sanctum) -(Sorrow's Path) -(Mech Hangar) -(______)"
     assert_search_equal "is:manland", "is:creatureland"
   end
 

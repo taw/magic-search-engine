@@ -446,12 +446,21 @@ class Card
     # "Cosplay" and "Science" are in italics on the card, but wouldn't be according to normal templating system so mtgjson corrected it
     # it's debatable either way
     "Corrupted Metalcraft",
+    "Find Cards",
+    "Fixed commander ninjutsu",
+    "Go to Sleep",
+    "Make Friends",
+    "Max Speed",
     "Mirran Victory",
     "Mono Eminence",
     "Old Companion",
     "Phyrexian Victory",
     "Rule Zero",
     "Rulebreaker",
+    "Team Cloudspire",
+    "Team Cloudsprire",
+    "Team Speed Demons",
+    "Win Prize Tickets",
     # SLD Marvel
     "Ceaseless Tempest",
     "Genius Industrialist",
