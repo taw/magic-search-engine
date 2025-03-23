@@ -257,4 +257,10 @@ BanList.for_format("pauper") do
     "Yawgmoth Merfolk Soul" => "banned",
     "Zombie Cheese Magician" => "banned",
   )
+
+  change(
+    "2024-06-06",
+    "https://magic.wizards.com/en/news/announcements/pauper-bans-for-june-6-2024",
+    "Cranial Ram" => "banned",
+  )
 end
