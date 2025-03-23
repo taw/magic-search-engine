@@ -4,10 +4,11 @@ class PatchFunny < Patch
     funny_sets = @sets.select{|set| set["funny"]}.map{|set| set["code"].downcase}
 
     each_card do |name, printings|
-      funny = printings.all?{|card|
+      funny = printings.any?{|card| card["stamp"] == "acorn" or card["stamp"] == "heart" }
+      # For cards predating stamp system
+      funny ||= printings.all?{|card|
         funny_sets.include?(card["set_code"]) or
-        errata_sets.include?(card["set_code"]) or
-        card["stamp"] == "acorn"
+        errata_sets.include?(card["set_code"])
       }
 
       if funny

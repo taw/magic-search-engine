@@ -262,7 +262,7 @@ class QueryTokenizer
         if stamps.include?(kind)
           tokens << [:test, ConditionStamp.new(kind)]
         else
-          @warnings << "Unknown stamp: #{stamp}. Known stamp types are: #{stamps.join(", ")}."
+          @warnings << "Unknown stamp: #{kind}. Known stamp types are: #{stamps.join(", ")}."
         end
       elsif s.scan(/(is|not)\s*[:=]\s*(acorn|oval|triangle|circle|heart)/)
         tokens << [:not] if s[1].downcase == "not"

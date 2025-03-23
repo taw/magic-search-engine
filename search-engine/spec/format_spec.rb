@@ -354,4 +354,11 @@ describe "Formats" do
       alchemy_set_codes.include?(alchemy_code).should(be_truthy, "Alchemy should include #{alchemy_code} since Standard includes #{code}")
     end
   end
+
+  it "Alchemy-only sets are not in Vintage" do
+    vintage_excluded_set_codes = FormatVintage.new.excluded_sets
+    alchemy_set_codes = db.sets.values.select{|s| s.types.include?("alchemy") }.map(&:code)
+
+    vintage_excluded_set_codes.should include(*alchemy_set_codes)
+  end
 end

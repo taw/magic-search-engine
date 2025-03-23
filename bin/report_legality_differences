@@ -75,14 +75,12 @@ class ReportLegalityDifferences
     card_names.sort.each do |name|
       a = mtgjson_legalities[name]
       b = db_legalities[name]
-      # Conspiracies are "banned" on Gatherer / mtgjson, but "not in format" for us
-      # Ignore this difference
-      if a == "banned" and b == nil
-        card = @db.cards[name.downcase] or raise "No card #{name.downcase} in db"
-        if card.types.include?("conspiracy")
-          a = nil
-        end
+      # Just ignore "banned" vs "not in format" distinction
+      if (a || "banned") == (b || "banned")
+        statuses << [name, a, a]
+        next
       end
+
       # This is technically not a B&R issue
       if a == nil and b == "restricted" and ["alchemy", "historic"].include?(format.format_name)
         b = nil

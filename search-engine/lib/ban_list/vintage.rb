@@ -532,4 +532,10 @@ BanList.for_format("vintage") do
     "Urza's Saga" => "restricted",
     "Vexing Bauble" => "restricted",
   )
+
+  change(
+    "2025-03-11",
+    "https://magic.wizards.com/en/news/announcements/march-11-2024-banned-and-restricted-announcement",
+    "Ponder" => "legal",
+  )
 end
