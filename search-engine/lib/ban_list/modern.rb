@@ -200,4 +200,10 @@ BanList.for_format("modern") do
     "Faithless Looting" => "legal",
     "Splinter Twin" => "legal",
   )
+
+  change(
+    "2025-03-11",
+    "https://magic.wizards.com/en/news/announcements/march-11-2024-banned-and-restricted-announcement",
+    "Violent Outburst" => "banned",
+  )
 end

@@ -80,7 +80,7 @@ BanList.for_format("pioneer") do
     "https://magic.wizards.com/en/news/announcements/december-4-2023-banned-and-restricted-announcement",
     "Karn, the Great Creator" => "banned",
     "Geological Appraiser" => "banned",
-    "Smuggler's Copter" => "unbanned",
+    "Smuggler's Copter" => "legal",
   )
 
   change(

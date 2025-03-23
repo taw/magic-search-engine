@@ -23,6 +23,7 @@ class FormatVintage < Format
       j21
       oana
       past
+      pio
       pmic
       prm
       psdg
@@ -34,15 +35,17 @@ class FormatVintage < Format
       xana
       yblb
       ybro
+      ydft
       ydmu
+      ydsk
+      ylci
       ymid
+      ymkm
       yneo
       yone
+      yotj
       ysnc
       ywoe
-      ymkm
-      yotj
-      ydsk
     ]]
 
     # Portal / Starter sets used to not be tournament legal
