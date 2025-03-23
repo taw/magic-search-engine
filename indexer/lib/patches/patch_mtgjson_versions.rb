@@ -300,6 +300,11 @@ class PatchMtgjsonVersions < Patch
       # redundant with other fields, just predelete
       card.delete("type")
     end
+
+    # It's a reversible token not a card, so it shouldn't be in card data
+    delete_printing_if do |card|
+      card["name"] == "Mechtitan"
+    end
   end
 
   def cleanup_unicode_punctuation(text)
