@@ -293,4 +293,57 @@ BanList.for_format("historic") do
     "Sneak Attack" => "banned",
     "Spreading Seas" => "banned",
   )
+
+  change(
+    "2023-12-04",
+    "https://magic.wizards.com/en/news/mtg-arena/introducing-timeless-a-new-mtg-arena-format",
+    "Flooded Strand" => "banned",
+    "Polluted Delta" => "banned",
+    "Bloodstained Mire" => "banned",
+    "Wooded Foothills" => "banned",
+    "Windswept Heath" => "banned",
+  )
+
+  change(
+    "2024-02-05",
+    "https://magic.wizards.com/en/news/mtg-arena/mtg-arena-announcements-february-5-2024",
+    "Show and Tell" => "banned",
+  )
+
+  change(
+    "2024-04-08",
+    "https://magic.wizards.com/en/news/mtg-arena/mtg-arena-announcements-april-8-2024",
+    "Commandeer" => "banned",
+    "Force of Vigor" => "banned",
+    "Mana Drain" => "banned",
+    "Reanimate" => "banned",
+  )
+
+  change(
+    "2024-06-03",
+    "http://magic.wizards.com/en/news/mtg-arena/mtg-arena-announcements-june-3-2024",
+    "Harbinger of the Seas" => "banned",
+    "Winter Moon" => "banned",
+    "Solitude" => "banned",
+    "Subtlety" => "banned",
+    "Grief" => "banned",
+    "Fury" => "banned",
+    "Endurance" => "banned",
+    "Flare of Fortitude" => "banned",
+    "Flare of Denial" => "banned",
+    "Flare of Malice" => "banned",
+    "Flare of Duplication" => "banned",
+    "Flare of Cultivation" => "banned",
+    "Marsh Flats" => "banned",
+    "Scalding Tarn" => "banned",
+    "Verdant Catacombs" => "banned",
+    "Arid Mesa" => "banned",
+    "Misty Rainforest" => "banned",
+  )
+
+  change(
+    "2024-11-11",
+    "https://magic.wizards.com/en/news/mtg-arena/mtg-arena-announcements-november-11-2024",
+    "Temporal Manipulation" => "banned",
+  )
 end
