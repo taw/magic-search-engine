@@ -14,7 +14,16 @@ class FormatAlchemy < FormatStandard
     {
       "2024-08-02" => [
         "anb",
-        "dmu", "ydmu", "bro", "ybro", "one", "yone", "mom", "mat", "ltr", "woe", "ywoe", "lci", "ylci", "mkm", "ymkm", "otj", "big", "yotj",
+        "dmu", "ydmu",
+        "bro", "ybro",
+        "one", "yone",
+        "mom", "mat",
+        "ltr",
+        "woe", "ywoe",
+        "lci", "ylci",
+        "mkm", "ymkm",
+        "otj", "yotj",
+        "big",
         "blb", "yblb",
         "dsk", "ydsk",
         "fdn", # will likely have unusual rotation matching Standard
