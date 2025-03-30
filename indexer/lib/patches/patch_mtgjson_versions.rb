@@ -305,6 +305,11 @@ class PatchMtgjsonVersions < Patch
     delete_printing_if do |card|
       card["name"] == "Mechtitan"
     end
+
+    # spoiler set with some bad cards, remove this before release
+    delete_printing_if do |card|
+      card["setCode"] == "TDM" and (card["layout"] == "reversible_card" or card["layout"] == "adventure")
+    end
   end
 
   def cleanup_unicode_punctuation(text)
