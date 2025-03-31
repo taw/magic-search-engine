@@ -60,6 +60,7 @@ describe "Deck legality" do
       "Snow-Covered Swamp",
       "Snow-Covered Wastes",
       "Swamp",
+      "Tempest Hawk",
       "Templar Knight",
       "Wastes",
     ])

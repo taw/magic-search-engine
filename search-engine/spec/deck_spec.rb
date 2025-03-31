@@ -210,6 +210,8 @@ describe Deck do
         sets_found.should match_array ["dsk", "dsc"]
       when "drc"
         sets_found.should match_array ["dft", "drc"]
+      when "drc"
+        sets_found.should match_array ["tdc", "tdm"]
       else
         sets_found.should eq [set.code]
       end

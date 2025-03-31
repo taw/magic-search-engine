@@ -31,6 +31,7 @@ describe "DissentionTest" do
       "Relentless Rats",
       "Shadowborn Apostle",
       "Slime Against Humanity",
+      "Tempest Hawk",
       "Templar Knight"
   end
 end

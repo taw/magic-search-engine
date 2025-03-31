@@ -662,7 +662,9 @@ describe "Card nicknames" do
       "Astroquarium",
       "Focused Funambulist",
       "Juggletron",
-      "Knight in _____ Armor"
+      "Knight in _____ Armor",
+      # SLD
+      "Sticker sheet"
 
     # remove a few false positives due to "whenever you put ..."
     assert_search_equal "is:stickers", '(t:stickers or o:"put a sticker" or o:"put a name sticker" or o:"put an ability sticker" or o:"put a power and toughness sticker" or o:"put up to two name stickers" or o:"sticker kicker" or o:"put an art sticker" or o:"distribute up to two art stickers" or (Name Sticker Goblin)) -(Unlawful Entry) -(A Good Day to Pie)'
