@@ -46,6 +46,7 @@ class FormatPioneer < Format
       "dsk",
       "fdn",
       "dft",
+      "tdm",
     ]
   end
 end

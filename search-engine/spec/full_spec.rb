@@ -360,15 +360,12 @@ describe "Full Database Test" do
 
   # This test got messed up by latest Oracle changes replacing text by "this creature" etc.
   it "Oracle unicode" do
-    assert_search_equal %[o:"Lim-Dûl"], %[o:"Lim-Dul"]
-    assert_search_results %[o:"Lim-Dul"],
-      "Lim-Dûl's Cohort",
-      "Lim-Dûl's Hex",
-      "Lim-Dûl's High Guard",
-      "Lim-Dûl's Paladin",
-      "Oath of Lim-Dûl"
-    lim_duls_cohort = db.search("Lim-Dûl's Cohort").printings[0]
-    lim_duls_cohort.text.should eq("Whenever Lim-Dûl's Cohort blocks or becomes blocked by a creature, that creature can't be regenerated this turn.")
+    assert_search_equal %[o:"Éomer"], %[o:"Eomer"]
+    assert_search_results %[o:"Eomer"],
+      "Éomer of the Riddermark",
+      "Éomer, King of Rohan"
+    eomer = db.search("Éomer of the Riddermark").printings[0]
+    eomer.text.should eq("Haste\nWhenever Éomer attacks, if you control a creature with the greatest power among creatures on the battlefield, create a 1/1 white Human Soldier creature token.")
   end
 
   it "artist unicode" do

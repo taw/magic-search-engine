@@ -69,6 +69,7 @@ class FormatModern < Format
       "dsk",
       "fdn",
       "dft",
+      "tdm",
     ]
   end
 end

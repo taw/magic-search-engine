@@ -113,6 +113,8 @@ class ConditionIsStickers < ConditionNickname
       "focused funambulist",
       "juggletron",
       "knight in _____ armor",
+      # SLD
+      "sticker sheet",
     ]
   end
 

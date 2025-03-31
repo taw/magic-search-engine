@@ -100,7 +100,7 @@ describe "Scryfall" do
 
   it "restricted_vintage" do
     # Identical results
-    assert_count_cards "restricted:vintage", 52
+    assert_count_cards "restricted:vintage", 51
   end
 
   it "e_mm2" do
@@ -308,7 +308,7 @@ describe "Scryfall" do
     # (well, that's no longer true, tons of old frame reprints)
     # is:paper st:standard tries to ignore such promos
     # (and then MAT printed Nissa, Resurgent Animist in old frame)
-    assert_search_equal "is:new r:mythic is:paper st:standard -e:mat", "r:mythic is:paper st:standard -e:mat"
+    assert_search_equal "is:new r:mythic is:paper st:standard -e:mat -(Mox Jasper)", "r:mythic is:paper st:standard -e:mat -(Mox Jasper)"
   end
 
   it "scryfall bug cmc" do

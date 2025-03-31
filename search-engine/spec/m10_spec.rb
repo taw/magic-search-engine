@@ -163,13 +163,14 @@ describe "Magic 2010" do
   it "restricted" do
     assert_search_results "restricted:modern"
     assert_search_results "restricted:legacy"
-    assert_search_results "restricted:vintage", "Ponder"
+    # Ponder got unrestricted so this is not a very good spec
+    assert_search_results "restricted:vintage"
   end
 
   it "legal" do
     assert_search_exclude "legal:modern", "Ponder"
     assert_search_include "legal:legacy", "Ponder"
-    assert_search_exclude "legal:vintage", "Ponder"
+    assert_search_include "legal:vintage", "Ponder"
   end
 
   it "format" do
