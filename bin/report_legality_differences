@@ -7,9 +7,12 @@ require "pry"
 class ReportLegalityDifferences
   extend Memoist
 
+  attr_reader :mtgjson_legalities_data, :spoiler_cards, :non_spoiler_cards
+
   def initialize
     @db = CardDatabase.load
     @mtgjson = JSON.parse(Pathname("#{__dir__}/../tmp/AllSets.json").read)
+    load_mtgjson_legalities_data
   end
 
   # v4 vs v5
@@ -23,9 +26,13 @@ class ReportLegalityDifferences
 
   # This method mostly just verifies and filters out data
   # It's not in very convenient format
-  memoize def mtgjson_legalities_data
-    result = {}
+  def load_mtgjson_legalities_data
+    @mtgjson_legalities_data = {}
+    @spoiler_cards = Set[]
+    @non_spoiler_cards = Set[]
     all_sets.each do |set_code, set_data|
+      # skip spoiler sets, as legality information won't be there yet
+      spoiler_set = set_data["isPartialPreview"]
       # Name conflicts
       next if %W[CMB1 CMB2 TBTH].include?(set_code)
       # Cards not legal in any format
@@ -34,19 +41,24 @@ class ReportLegalityDifferences
         next if card["isOversized"]
         name = card["faceName"] || card["name"]
         name = alchemy_name_fix(name)
+        if spoiler_set
+          @spoiler_cards << name
+        else
+          @non_spoiler_cards << name
+        end
         legalities = card["legalities"].dup
         # Various non-legal oversized etc. cards, just ignore them
         next if legalities == {}
         # It's a stupid fake format not following per-card legality rules
         legalities.delete "oldschool"
-        result[name] ||= legalities
-        if result[name] != legalities
+        @mtgjson_legalities_data[name] ||= legalities
+        if @mtgjson_legalities_data[name] != legalities
           warn "Internally inconsistent legalities for #{name}"
           binding.pry
         end
       end
     end
-    result
+    @spoiler_cards -= @non_spoiler_cards
   end
 
   memoize def mtgjson_formats
@@ -73,6 +85,9 @@ class ReportLegalityDifferences
 
     statuses = []
     card_names.sort.each do |name|
+      # This isn't quite sufficient as spoiler set could bring
+      # an old card into Standard/Pioneer/Modern/etc.
+      next if @spoiler_cards.include?(name)
       a = mtgjson_legalities[name]
       b = db_legalities[name]
       # Just ignore "banned" vs "not in format" distinction
