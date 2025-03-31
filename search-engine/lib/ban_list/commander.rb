@@ -341,4 +341,11 @@ BanList.for_format("commander") do
     "Mana Crypt" => "banned",
     "Nadu, Winged Wisdom" => "banned",
   )
+
+  # No official announcement, just new card falling under old rule that all sticker cards are banned
+  change(
+    "2025-03-24",
+    nil,
+    "Sticker sheet" => "banned",
+  )
 end

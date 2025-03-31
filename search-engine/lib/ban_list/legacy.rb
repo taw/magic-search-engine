@@ -534,4 +534,11 @@ BanList.for_format("legacy") do
     "Psychic Frog" => "banned",
     "Vexing Bauble" => "banned",
   )
+
+  # No official announcement, just new card falling under old rule that all sticker cards are banned
+  change(
+    "2025-03-24",
+    nil,
+    "Sticker sheet" => "banned",
+  )
 end

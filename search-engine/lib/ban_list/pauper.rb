@@ -263,4 +263,11 @@ BanList.for_format("pauper") do
     "https://magic.wizards.com/en/news/announcements/pauper-bans-for-june-6-2024",
     "Cranial Ram" => "banned",
   )
+
+  # No official announcement, just new card falling under old rule that all sticker cards are banned
+  change(
+    "2025-03-24",
+    nil,
+    "Sticker sheet" => "banned",
+  )
 end
