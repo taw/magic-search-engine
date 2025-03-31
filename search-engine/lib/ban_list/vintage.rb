@@ -538,4 +538,11 @@ BanList.for_format("vintage") do
     "https://magic.wizards.com/en/news/announcements/march-11-2024-banned-and-restricted-announcement",
     "Ponder" => "legal",
   )
+
+  # No official announcement, just new card falling under old rule that all sticker cards are banned
+  change(
+    "2025-03-24",
+    nil,
+    "Sticker sheet" => "banned",
+  )
 end
