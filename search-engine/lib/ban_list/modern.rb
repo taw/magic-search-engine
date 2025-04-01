@@ -206,4 +206,10 @@ BanList.for_format("modern") do
     "https://magic.wizards.com/en/news/announcements/march-11-2024-banned-and-restricted-announcement",
     "Violent Outburst" => "banned",
   )
+
+  change(
+    "2025-03-31",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-announcement-march-31-2025",
+    "Underworld Breach" => "banned",
+  )
 end

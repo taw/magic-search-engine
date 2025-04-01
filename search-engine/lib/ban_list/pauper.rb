@@ -270,4 +270,14 @@ BanList.for_format("pauper") do
     nil,
     "Sticker sheet" => "banned",
   )
+
+  change(
+    "2025-03-31",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-announcement-march-31-2025",
+    "Basking Broodscale" => "banned",
+    "Kuldotha Rebirth" => "banned",
+    "Deadly Dispute" => "banned",
+    "Prophetic Prism" => "legal",
+    "High Tide" => "legal",
+  )
 end
