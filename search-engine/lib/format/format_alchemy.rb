@@ -4,15 +4,28 @@ class FormatAlchemy < FormatStandard
   end
 
   # Format announced 2021-12-02, so no previous rotations
-  # Rotation in 2023 cancelled
+  # Standard rotation in 2023 cancelled, but it was kept for Alchemy, so it desynced from Standard
   # ANB always legal
   # Non-Standard-legal LTR is Arena-legal
   # https://mtg.fandom.com/wiki/Alchemy
   #
-  # I really should automate this
+  # This is such a mess, I can't find historical data anywhere
   def rotation_schedule
     {
-      "2024-08-02" => [
+      "2024-08-02" => [ # rotation on BLB release?
+        "anb",
+        "woe", "ywoe",
+        "lci", "ylci",
+        "mkm", "ymkm",
+        "otj", "yotj",
+        "big",
+        "blb", "yblb",
+        "dsk", "ydsk",
+        "fdn", # will likely have unusual rotation matching Standard
+        "dft", "ydft",
+        "tdm",
+      ],
+      "2023-08-02" => [
         "anb",
         "dmu", "ydmu",
         "bro", "ybro",
@@ -24,11 +37,6 @@ class FormatAlchemy < FormatStandard
         "mkm", "ymkm",
         "otj", "yotj",
         "big",
-        "blb", "yblb",
-        "dsk", "ydsk",
-        "fdn", # will likely have unusual rotation matching Standard
-        "dft", "ydft",
-        "tdm",
       ],
       "2022-09-09" => [
         "anb",
