@@ -541,4 +541,11 @@ BanList.for_format("legacy") do
     nil,
     "Sticker sheet" => "banned",
   )
+
+  change(
+    "2025-03-31",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-announcement-march-31-2025",
+    "Sowing Mycospawn" => "banned",
+    "Troll of Khazad-dûm" => "banned",
+  )
 end
