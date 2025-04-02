@@ -250,7 +250,7 @@ class PatchMtgjsonVersions < Patch
       # They have RZ15 (which we turn into RZ15a/RZ15b) and RZ15b
       # We need to move that RZ15b away to something else
       # And same shit for CU12a, CU12b
-      if card["set"]["official_code"] == "DA1"
+      if card["set"]["official_code"] == "UNK"
         if card["number"] == "RZ15b" and
           card["number"] = "RZ15x"
         end
