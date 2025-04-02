@@ -444,7 +444,7 @@ class Card
     "Reward",
     "Scryfall",
     "Trade Routes",
-    # DA1
+    # DA1 / UNK
     # "Cosplay" and "Science" are in italics on the card, but wouldn't be according to normal templating system so mtgjson corrected it
     # it's debatable either way
     "Corrupted Metalcraft",
