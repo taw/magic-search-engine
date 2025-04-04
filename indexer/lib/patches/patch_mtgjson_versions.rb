@@ -91,12 +91,29 @@ class PatchMtgjsonVersions < Patch
     each_printing do |card|
       card["cmc"] = get_cmc(card)
 
-      # I don't know of any better way of handling them
+      # Reversible cards are totally ridiculous, and mtgjson shouldn't be pretending it's a single damn card.
+      # With SLD it was at least 2 faces we could split but TDM has ridiculous 4-faced cards.
       # These are two separate cards as far as game rules are concerned
       if card["layout"] == "reversible_card"
-        card["layout"] = "normal"
-        card.delete "names"
-        assign_number(card)
+        case card["set"]["official_code"]
+        when "SLD", "REX"
+          # These are at least easily fixable
+          card["layout"] = "normal"
+          card.delete "names"
+          assign_number(card)
+        when "TDM"
+          case card["name"]
+          when "Clarion Conqueror", "Magmatic Hellkite", "Ugin, Eye of the Storms"
+            # These are at least easily fixable
+            card["layout"] = "normal"
+            card.delete "names"
+            assign_number(card)
+          else
+            warn "Can't handle reversible card #{card["name"]} #{card["names"]} #{card["set"]["official_code"]} #{card["number"]}"
+          end
+        else
+          warn "Can't handle reversible card #{card["name"]} #{card["names"]} #{card["set"]["official_code"]} #{card["number"]}"
+        end
       end
 
       # This is text because of some X planeswalkers
@@ -308,7 +325,10 @@ class PatchMtgjsonVersions < Patch
 
     # spoiler set with some bad cards, remove this before release
     delete_printing_if do |card|
-      card["setCode"] == "TDM" and (card["layout"] == "reversible_card" or card["layout"] == "adventure")
+      # if card["name"] == "Claim Territory"
+      #   pp card.except("set", "identifiers", "purchaseUrls")
+      # end
+      card["setCode"] == "TDM" and card["layout"] == "reversible_card"
     end
   end
 
