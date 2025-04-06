@@ -10,6 +10,7 @@ class PatchReconcileOnSetPriority < Patch
       "subtypes",
       "supertypes",
       "rulings",
+      "keywords",
     ]
   end
 
@@ -25,7 +26,7 @@ class PatchReconcileOnSetPriority < Patch
           end
         else
           conflicting_sets = variants.values.map{|scs| scs.join(",") }
-          warn "Can't reconcile #{name} on #{field_name}, need to prioritize between #{ conflicting_sets.join(" vs ") }"
+          warn "Can't reconcile #{name} on #{field_name}, need to prioritize between #{ conflicting_sets.join(" vs ") }: #{variants.inspect}"
         end
       end
     end

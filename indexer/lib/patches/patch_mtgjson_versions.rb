@@ -108,6 +108,43 @@ class PatchMtgjsonVersions < Patch
             card["layout"] = "normal"
             card.delete "names"
             assign_number(card)
+          when "Marang River Regent"
+            card["layout"] = "adventure"
+            card["names"] = ["Marang River Regent", "Coil and Catch"]
+            assign_number(card)
+          when "Coil and Catch"
+            card["layout"] = "adventure"
+            card["names"] = ["Marang River Regent", "Coil and Catch"]
+            assign_number(card)
+            card.delete "power"
+            card.delete "toughness"
+            card.delete "keywords"
+            # it has typo in remainder text in mtgjson
+            card["text"] = "Draw three cards, then discard a card. (Then shuffle th is card into its owner's library.)"
+          when "Scavenger Regent"
+            card["layout"] = "adventure"
+            card["names"] = ["Scavenger Regent", "Exude Toxin"]
+            assign_number(card)
+          when "Exude Toxin"
+            card["layout"] = "adventure"
+            card["names"] = ["Scavenger Regent", "Exude Toxin"]
+            assign_number(card)
+            card.delete "power"
+            card.delete "toughness"
+            card.delete "keywords"
+            card["text"] = "Each non-Dragon creature gets -X/-X until end of turn. (Then shuffle this card into its owner's library.)"
+          when "Bloomvine Regent"
+            card["layout"] = "adventure"
+            card["names"] = ["Bloomvine Regent", "Claim Territory"]
+            assign_number(card)
+          when "Claim Territory"
+            card["layout"] = "adventure"
+            card["names"] = ["Bloomvine Regent", "Claim Territory"]
+            assign_number(card)
+            card.delete "power"
+            card.delete "toughness"
+            card.delete "keywords"
+            card["text"] = "Search your library for up to two basic Forest cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle."
           else
             warn "Can't handle reversible card #{card["name"]} #{card["names"]} #{card["set"]["official_code"]} #{card["number"]}"
           end
