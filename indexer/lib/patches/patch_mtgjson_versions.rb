@@ -120,7 +120,7 @@ class PatchMtgjsonVersions < Patch
             card.delete "toughness"
             card.delete "keywords"
             # it has typo in remainder text in mtgjson
-            card["text"] = "Draw three cards, then discard a card. (Then shuffle th is card into its owner's library.)"
+            card["text"] = "Draw three cards, then discard a card. (Then shuffle this card into its owner's library.)"
           when "Scavenger Regent"
             card["layout"] = "adventure"
             card["names"] = ["Scavenger Regent", "Exude Toxin"]
@@ -144,7 +144,7 @@ class PatchMtgjsonVersions < Patch
             card.delete "power"
             card.delete "toughness"
             card.delete "keywords"
-            card["text"] = "Search your library for up to two basic Forest cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle."
+            card["text"] = "Search your library for up to two basic Forest cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle. (Then shuffle this card into its owner's library.)"
           else
             warn "Can't handle reversible card #{card["name"]} #{card["names"]} #{card["set"]["official_code"]} #{card["number"]}"
           end
