@@ -10,6 +10,7 @@ require_relative "index_serializer"
 require_relative "products_serializer"
 require_relative "uuids_serializer"
 require_relative "decks_serializer"
+require_relative "token_uuids_serializer"
 require_relative "deck_printing_resolver"
 require_relative "scryfall_ids_serializer"
 
@@ -24,6 +25,7 @@ class Indexer
   def initialize(verbose=false)
     @save_path = INDEX_ROOT + "index.json"
     @uuids_path = INDEX_ROOT + "uuids.txt"
+    @token_uuids_path = INDEX_ROOT + "token_uuids.txt"
     @scryfall_ids_path = INDEX_ROOT + "scryfall_ids.txt"
     @products_path = INDEX_ROOT + "products.txt"
     @decks_path = INDEX_ROOT + "deck_index.json"
@@ -38,9 +40,14 @@ class Indexer
     apply_patches
     @save_path.write(IndexSerializer.new(@sets, @cards, @products).to_s)
     @uuids_path.write(UuidsSerializer.new(@cards).to_s)
+    @token_uuids_path.write(TokenUuidsSerializer.new(@tokens).to_s)
     @scryfall_ids_path.write(ScryfallIdsSerializer.new(@cards).to_s)
     @products_path.write(ProductsSerializer.new(@products).to_s)
     @decks_path.write(DecksSerializer.new(@decks).to_s)
+  end
+
+  def inspect
+    "#{self.class}"
   end
 
   private
@@ -147,6 +154,7 @@ class Indexer
     @sets = []
     @cards = {}
     @products = []
+    @tokens = []
 
     @data.each_set do |set_code, set_data|
       set = set_data.slice(
@@ -163,10 +171,15 @@ class Indexer
         "base_set_size" => set_data["baseSetSize"],
       ).compact
       @sets << set
-      set_data["cards"].each_with_index do |card_data, i|
+      set_data["cards"].each do |card_data|
         name = card_data["name"]
         card_data["set"] = set
         (@cards[name] ||= []) << card_data
+      end
+      set_data["tokens"].each do |token|
+        # There's no token name uniqueness
+        token["set"] = set
+        @tokens << token
       end
       (set_data["sealedProduct"] || []).each do |product|
         @products << product.except("identifiers", "purchaseUrls").merge("set_code" => set_code.downcase).compact
