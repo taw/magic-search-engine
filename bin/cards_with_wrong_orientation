@@ -48,7 +48,7 @@ class CheckCardOrientation
 
   def expected_orientation
     @expected_orientation ||= begin
-      if (@card.types & ["plane", "phenomenon", "battle"]).empty?
+      if (@card.types & ["plane", "phenomenon", "battle", "phenome-nom"]).empty?
         :vertical
       else
         :horizontal

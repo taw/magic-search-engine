@@ -16,6 +16,15 @@ class ExportDecksData
     output.join(" ")
   end
 
+  def serialize_token(count, name, set_code, number, foil)
+    output = ["#{count}"]
+    output << name
+    output << "[#{set_code}:#{number}]"
+    output << "[foil]" if foil
+    output << "[token]"
+    output.join(" ")
+  end
+
   def serialize_deck(deck)
     output = []
     output << "// NAME: #{deck.name}"
@@ -35,6 +44,10 @@ class ExportDecksData
 
     deck.sideboard.each do |c|
       output << serialize_card(*c)
+    end
+
+    deck.tokens.each do |c|
+      output << serialize_token(*c)
     end
 
     output.join("\n") + "\n"
