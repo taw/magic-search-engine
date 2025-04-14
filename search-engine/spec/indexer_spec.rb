@@ -31,9 +31,11 @@ describe "Indexer hacks" do
     end
   end
 
+  # This got complicated enough that I'm not sure it's worth maintaining
   it "is:funny" do
     # mb2 is complicated, so skip it
-    assert_search_equal_cards "is:funny -e:mb2", "(e:unh,ugl,uqc,hho,ust,pust,ppc1,h17,tbth,tdag,tfth,thp1,thp2,thp3,ptg,cmb1,cmb2,und,punh,ulst,unf,phtr,ph17,ph18,ph19,ph20,ph21,ph22,unk -(t:basic -Barry) -(Steamflogger Boss) -(Hall of Triumph) -(Zur the Enchanter) -is:shockland -(e:unf -is:acorn)) or (e:sld is:heart)"
+    # Also don't even bother with Arena and Shandalar cards
+    assert_search_equal_cards "is:funny -e:mb2 -game:arena -game:shandalar", "(e:unh,ugl,uqc,hho,ust,pust,ppc1,h17,tbth,tdag,tfth,thp1,thp2,thp3,ptg,cmb1,cmb2,und,punh,ulst,unf,phtr,ph17,ph18,ph19,ph20,ph21,ph22,unk -(t:basic -Barry) -(Steamflogger Boss) -(Hall of Triumph) -(Zur the Enchanter) -is:shockland -(e:unf -is:acorn)) or (e:sld is:heart) or (e:pf25 Second City) or (e:pf24 Convention Maro) -game:arena -game:shandalar"
   end
 
   it "Nissa's X loyallty" do

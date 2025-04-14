@@ -29,17 +29,18 @@ describe "Card layouts" do
     # It's totally possible that a card will get printed which does not follow them
     # DA1/UNK is basically all BS
     assert_search_equal "layout:scheme", "t:scheme"
-    assert_search_equal "layout:planar", "t:plane or t:phenomenon"
-    assert_search_equal "layout:flip", '// o:"flip it" or o:"flip ~" or o:flipped or o:"Fire Penguin"'
+    assert_search_equal "layout:planar", "t:plane or t:phenomenon or t:phenome-nom"
+    # flip templating used to be a lot easier to detect back when they used ~
+    assert_search_equal "layout:flip", '// o:/flip (it|this creature|Sasaya|Rune-Tail|Kuon|Erayo)/ or o:"flip ~" or o:flipped or o:"Fire Penguin"'
     assert_search_equal "layout:vanguard", "t:vanguard"
     # It would probably make more sense to do layout:room as a separate thing
     assert_search_equal "layout:split", "(((t:instant or t:sorcery) // (t:instant or t:sorcery)) -(// o:aftermath) -(// t:adventure)) or (t:room // t:room)"
-    assert_search_equal "layout:aftermath", "// o:aftermath"
+    assert_search_equal "layout:aftermath", "(// o:aftermath)"
     assert_search_equal "layout:leveler -e:unk", 'o:/level up \{/ -e:unk'
     assert_search_equal "layout:meld", "// (// o:meld)"
     assert_search_equal "layout:saga", "t:saga is:sfc" # DFC sagas have different layout
-    assert_search_equal "layout:adventure", "t:adventure or (// t:adventure)"
-    assert_search_equal "layout:modaldfc -e:pmei,slu,j21,prm,sld,pctb,plst,mh3", "// e:znr,pznr,khm,pkhm,stx,pstx"
+    assert_search_equal "layout:adventure", "t:adventure or (// t:adventure) or t:omen or (// t:omen)"
+    assert_search_equal "layout:modaldfc -e:pmei,slu,j21,prm,sld,pctb,plst,mh3,pio", "// e:znr,pznr,khm,pkhm,stx,pstx"
 
     # Alias
     assert_search_equal "layout:mdfc", "layout:modaldfc"

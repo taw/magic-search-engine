@@ -41,6 +41,8 @@ class Format
   end
 
   def in_format?(card)
+    # Funny check is disabled for Alchemy/Historic
+    # as Arena cards sometimes get paper reprints with acorn stamp like in MB2
     return false if card.funny
     return false if card.alchemy
     card.printings.each do |printing|

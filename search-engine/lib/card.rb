@@ -450,6 +450,7 @@ class Card
     "Corrupted Metalcraft",
     "Find Cards",
     "Fixed commander ninjutsu",
+    "From Downtown",
     "Go to Sleep",
     "Make Friends",
     "Max Speed",
