@@ -6,7 +6,9 @@ class ExportDecksData
   def initialize
     @db = CardDatabase.load
     @uuids_path = Pathname("#{__dir__}/../index/uuids.txt")
+    @token_uuids_path = Pathname("#{__dir__}/../index/token_uuids.txt")
     load_uuids
+    load_token_uuids
   end
 
   def load_uuids
@@ -19,8 +21,28 @@ class ExportDecksData
     end
   end
 
+  def load_token_uuids
+    @token_uuids = {}
+    @token_uuids_path.each_line do |line|
+      s, n, u, _ = line.chomp.split("\t")
+      @token_uuids[s] ||= {}
+      if @token_uuids[s][n]
+        # not supported yet
+        @token_uuids[s][n] = :double_sided_token
+      else
+        @token_uuids[s][n] = u
+      end
+    end
+  end
+
   def uuid_for(set_code, number)
     @uuids.fetch(set_code).fetch(number)
+  end
+
+  def token_uuid_for(set_code, number)
+    @token_uuids.fetch(set_code&.downcase).fetch(number)
+  rescue
+    "not_in_mtgjson"
   end
 
   def export_card(n, c)
@@ -32,6 +54,17 @@ class ExportDecksData
       count: n,
       multiverseid: c.main_front.multiverseid,
       mtgjson_uuid: uuid_for(c.set_code, c.number),
+    }.compact
+  end
+
+  def export_token(count, name, set_code, number, foil)
+    {
+      name: name,
+      set_code: set_code || "unknown",
+      number: number || "unknown",
+      foil: foil,
+      count: count,
+      mtgjson_uuid: token_uuid_for(set_code, number),
     }.compact
   end
 
@@ -52,6 +85,7 @@ class ExportDecksData
         displayCommander: deck.section("Display Commander").map{|n,c| export_card(n, c) },
         planarDeck: deck.section("Planar Deck").map{|n,c| export_card(n, c) },
         schemeDeck: deck.section("Scheme Deck").map{|n,c| export_card(n, c) },
+        tokens: deck.tokens.map{|c| export_token(*c) },
       }
     end
     open(output_path, "w") do |fh|
