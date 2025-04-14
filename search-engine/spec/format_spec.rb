@@ -339,14 +339,14 @@ describe "Formats" do
     assert_search_results "is:racist f:standard"
   end
 
-  it "alchemy follows standard plus appropriate Y* sets" do
-    standard_set_codes = FormatStandard.new.included_sets
+  # It used to check that all Standard legal sets are also Alchemy legal
+  # but rotation schedules are now separate
+  it "alchemy has all appropriate Y* sets" do
     alchemy_set_codes = FormatAlchemy.new.included_sets
-    standard_set_codes.each do |code|
-      alchemy_set_codes.include?(code).should(be_truthy, "Alchemy should include #{code} since Standard includes #{code}")
+    alchemy_set_codes.each do |code|
       alchemy_code = "y#{code}"
       next unless db.sets[alchemy_code]
-      alchemy_set_codes.include?(alchemy_code).should(be_truthy, "Alchemy should include #{alchemy_code} since Standard includes #{code}")
+      alchemy_set_codes.include?(alchemy_code).should(be_truthy, "Alchemy should include #{alchemy_code} since it includes #{code}")
     end
   end
 
