@@ -144,7 +144,7 @@ class PatchMtgjsonVersions < Patch
             card.delete "power"
             card.delete "toughness"
             card.delete "keywords"
-            card["text"] = "Search your library for up to two basic Forest cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle. (Then shuffle this card into its owner's library.)"
+            card["text"] = "Search your library for up to two basic\nForest cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle. (Also shuffle this card.)"
           else
             warn "Can't handle reversible card #{card["name"]} #{card["names"]} #{card["set"]["official_code"]} #{card["number"]}"
           end
