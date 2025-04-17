@@ -198,7 +198,9 @@ class Format
         "unsets"                     => FormatUnsets,
         "un-sets"                    => FormatUnsets,
         "standard"                   => FormatStandard,
-        "brawl"                      => FormatBrawl,
+        # Disabled for now, as this is "Standard Brawl" and the one that's actually being played is different "Historic Brawl"
+        # at some point it might be worth resurrecting the format
+        # "brawl"                      => FormatBrawl,
         "modern"                     => FormatModern,
         # I think the format is just dead
         # "frontier"                   => FormatFrontier,

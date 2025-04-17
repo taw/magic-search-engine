@@ -342,8 +342,14 @@ BanList.for_format("historic") do
   )
 
   change(
-    "2024-11-11",
+    "2024-11-12",
     "https://magic.wizards.com/en/news/mtg-arena/mtg-arena-announcements-november-11-2024",
     "Temporal Manipulation" => "banned",
+  )
+
+  change(
+    "2025-02-03",
+    "https://magic.wizards.com/en/news/mtg-arena/announcements-february-3-2025",
+    "Chrome Mox" => "banned",
   )
 end

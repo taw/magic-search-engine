@@ -154,4 +154,10 @@ BanList.for_format("alchemy") do
     "https://magic.wizards.com/en/news/mtg-arena/alchemy-rebalancing-for-july-18-2023",
     "Fable of the Mirror-Breaker" => "banned",
   )
+
+  change(
+    "2024-11-12",
+    "https://magic.wizards.com/en/news/mtg-arena/mtg-arena-announcements-november-11-2024",
+    "Monstrous Rage" => "banned",
+  )
 end

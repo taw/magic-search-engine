@@ -1,4 +1,4 @@
-# The fdormat looks completely dead
+# The format looks completely dead
 
 # describe "Formats - Frontier" do
 #   include_context "db"
