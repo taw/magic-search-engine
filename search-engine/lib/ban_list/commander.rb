@@ -348,4 +348,14 @@ BanList.for_format("commander") do
     nil,
     "Sticker sheet" => "banned",
   )
+
+  change(
+    "2025-04-22",
+    "https://magic.wizards.com/en/news/announcements/commander-bans-and-restrictions-april-22-2025",
+    "Gifts Ungiven" => "legal",
+    "Sway of the Stars" => "legal",
+    "Braids, Cabal Minion" => "legal",
+    "Coalition Victory" => "legal",
+    "Panoptic Mirror" => "legal",
+  )
 end

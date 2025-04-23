@@ -235,7 +235,7 @@ describe "Formats" do
   it "historic" do
     # including STA pre-banned
     # this is extra fun as some conjurable cards will be not banned
-    assert_count_cards "banned:historic", 55
+    assert_count_cards "banned:historic", 56
     assert_legality "historic", Date.parse("2023-08-01"), "Alora, Cheerful Assassin", "restricted"
     assert_legality "historic", Date.parse("2023-08-01"), "Black Lotus", "restricted"
     assert_legality "historic", Date.parse("2023-08-01"), "Lightning Bolt", "restricted"
@@ -283,7 +283,6 @@ describe "Formats" do
       banned:commander or
       banned:pauper or
       banned:duel or
-      banned:brawl or
       banned:historic or
       banned:"Mirrodin Block" or
       banned:"Urza Block" or
@@ -292,8 +291,8 @@ describe "Formats" do
       banned:"Mirage Block" or
       banned:"Innistrad Block" or
       banned:"Tempest Block" or
-      banned:"MTGO Commander" or
-      banned:premodern
+      banned:premodern or
+      banned:alchemy
     ]
   end
 
