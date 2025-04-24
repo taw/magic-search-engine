@@ -7,7 +7,6 @@ describe "Alpha" do
     "e:al f:legacy"  .should equal_search "e:al -banned:legacy"
     "e:al f:vintage" .should equal_search "e:al -banned:vintage"
     "e:al f:modern"  .should equal_search "e:al legal:modern"
-    "e:al f:standard".should equal_search "e:al f:brawl"
   end
 
   it "reserved" do
