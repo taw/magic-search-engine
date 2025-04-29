@@ -14,8 +14,10 @@
     %h4 Search by name
     %ul
       = search_help "channel", %[cards with "channel" in name]
-      = search_help "!channel", %[cards with name exactly "channel" (only works as complete query)]
+      = search_help 'name="channel"', %[cards with name exactly "channel"]
+      = search_help "!channel", %[cards with name exactly "channel" (only works as complete query, I recommend using name= instead)]
       = search_help %["sword of"], %[cards with "sword of" in name]
+      = search_help 'name>"Boros Guildgate" name<"Dimir Guildgate"', %[cards with name alphabetically after "Boros Guildgate" and before "Dimir Guildgate". This is mostly useful for guessing the gaps in incompletely spoiled set.]
 
     %h4 Search by type
     %div All cards including non-Standard cards (planes, vanguard, conspiracies etc.) and un-cards are searched. Tokens are not included.
