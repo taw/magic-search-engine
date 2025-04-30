@@ -45,6 +45,7 @@ class FormatVintage < Format
       yone
       yotj
       ysnc
+      ytdm
       ywoe
     ]]
 
