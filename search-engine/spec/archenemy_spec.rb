@@ -18,6 +18,7 @@ describe "Archenemy" do
       "Your Will Is Not Your Own"
   end
 
+  # this is testing a system that no longer exists
   it "! search doesnt require explicit flags" do
     assert_search_results "!Your Will Is Not Your Own", "Your Will Is Not Your Own"
   end

@@ -418,6 +418,16 @@ class QueryTokenizer
       elsif s.scan(/([^-!<>=:"\s&\/()][^<>=:"\s&\/()]*)(?=$|[\s&\/()])/i)
         # Veil-Cursed and similar silliness
         tokens << [:test, ConditionWord.new(s[1].tr("-", " "))]
+      elsif s.scan(/!\s*(.*)/)
+        name = s[1]
+        # This doesn't do the extra preprocessing doing ! as complete query would do
+        if name =~ %r[&|/] && name !~ /R&D|Dungeons\s*&\s*Dragons|Minsc\s*&|&\s*Boo/i
+          cond = ConditionExactMultipart.new(name)
+        else
+          cond = ConditionExact.new(name)
+        end
+
+        tokens << [:test, cond]
       else
         # layout:fail, protection: etc.
         s.scan(/(\S+)/i)
