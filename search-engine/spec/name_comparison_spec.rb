@@ -37,6 +37,12 @@ describe "Name Comparison" do
       "Grindstone"
   end
 
+  # queries starting with ! bypass the whole query system
+  it "! in complex query" do
+    assert_search_equal "e:leb !Island", %[e:leb name="Island"]
+    assert_search_equal "st:deck !Fire // Ice", %[st:deck (name="Fire" // name="Ice")]
+  end
+
   it "aliases" do
     assert_search_equal "name=bitterblossom", "n=bitterblossom"
     assert_search_equal "name=bitterblossom", "n:bitterblossom"

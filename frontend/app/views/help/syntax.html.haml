@@ -15,7 +15,7 @@
     %ul
       = search_help "channel", %[cards with "channel" in name]
       = search_help 'name="channel"', %[cards with name exactly "channel"]
-      = search_help "!channel", %[cards with name exactly "channel" (only works as complete query, I recommend using name= instead)]
+      = search_help "!channel", %[cards with name exactly "channel" (everything after ! is treated as card name, so add any extra conditions before !, or use name= instead)]
       = search_help %["sword of"], %[cards with "sword of" in name]
       = search_help 'name>"Boros Guildgate" name<"Dimir Guildgate"', %[cards with name alphabetically after "Boros Guildgate" and before "Dimir Guildgate". This is mostly useful for guessing the gaps in incompletely spoiled set.]
 
@@ -513,7 +513,9 @@
       = search_help 'ft:/\\d{3,}/', "cards with three digit numbers in flavor text"
       = search_help 'ft:/\bice\b/', 'cards with word "ice" in flavor text'
       = search_help 'a:/.{40}/', "cards with artist credit of 40 or more characters"
+      = search_help 'artist:/.{40}/', "cards with artist credit of 40 or more characters"
       = search_help 'n:/.{30}/', "cards with names of 30 or more characters"
+      = search_help 'name:/.{30}/', "cards with names of 30 or more characters"
       = search_help 'rulings:/twitter/', "cards with twitter mentioned in rulings"
       = search_help "e:war number:/★/", "WAR cards with numbers containing ★ character (in this case, Japanese alt versions)"
 
