@@ -160,4 +160,12 @@ BanList.for_format("alchemy") do
     "https://magic.wizards.com/en/news/mtg-arena/mtg-arena-announcements-november-11-2024",
     "Monstrous Rage" => "banned",
   )
+
+  # This isn't really a banlist change, a previously conjurable card (from Oyaminartok's spellbook)
+  # got printed into Alchemy-legal set FDN
+  change(
+    "2024-12-15",
+    nil,
+    "Voracious Greatshark" => "legal"
+  )
 end
