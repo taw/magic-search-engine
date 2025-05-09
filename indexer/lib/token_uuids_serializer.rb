@@ -9,7 +9,7 @@ class TokenUuidsSerializer
 
   def to_s
     @tokens
-      .map{|token| [token["set"]["code"], token["number"], token["uuid"], token["name"]] }
+      .map{|token| [token["set"]["code"], token["setCode"]&.downcase, token["number"], token["uuid"], token["name"]] }
       .sort_by{|sc,n,u,name| [sc, n.to_i, n, name, u || ""] }
       .map{|row| row.join("\t") + "\n" }
       .join
