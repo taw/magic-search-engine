@@ -24,7 +24,7 @@ class ExportDecksData
   def load_token_uuids
     @token_uuids = {}
     @token_uuids_path.each_line do |line|
-      s, n, u, _ = line.chomp.split("\t")
+      _, s, n, u, _ = line.chomp.split("\t")
       @token_uuids[s] ||= {}
       if @token_uuids[s][n]
         # not supported yet
