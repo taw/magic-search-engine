@@ -31,9 +31,9 @@ sheets:
     rawquery: "e:mh3 number:304-319 -number:309"
   foil_land:
     foil: true
-    rawquery: "e:mh3 number:304-319"
+    rawquery: "e:mh3 number:304-319 -number:309"
   new_uncommon:
-    query: "r:u -is:reprint -(Snow-Covered Wastes)"
+    query: "r:u -is:reprint"
   new_rare_mythic:
     any:
     - rawquery: "r:r -is:reprint -is:foilonly {two_instances}"
