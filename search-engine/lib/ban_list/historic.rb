@@ -101,10 +101,11 @@ BanList.for_format("historic") do
   change(
     "2021-08-26",
     nil,
-    "Tropical Island" => "restricted",
+    "Kraken Hatchling" => "restricted",
+    "Ponder" => "restricted",
     "Regal Force" => "restricted",
     "Stormfront Pegasus" => "restricted",
-    "Kraken Hatchling" => "restricted",
+    "Tropical Island" => "restricted",
   )
 
   change(
