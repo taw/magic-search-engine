@@ -10,7 +10,7 @@ class TokenUuidsSerializer
   def to_s
     @tokens
       .map{|token| token_data(token) }
-      .sort_by{|sc,n,u,name| [sc, n.to_i, n, name, u || ""] }
+      .sort_by{|sc,tsc,n,u,name| [sc, n.to_i, n, name, u || ""] }
       .map{|row| row.join("\t") + "\n" }
       .join
   end
@@ -19,7 +19,7 @@ class TokenUuidsSerializer
     [
       token["set"]["code"],
       token["setCode"]&.downcase,
-      token["number"],
+      token["number"] + (token["side"] || ""),
       token["uuid"],
       token["faceName"] || token["name"],
     ]
