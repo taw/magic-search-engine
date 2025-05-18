@@ -24,6 +24,7 @@ describe "Color Indicator Test" do
       "Arlinn, Embraced by the Moon",
       "Arlinn, the Moon's Fury",
       "Blaster, Morale Booster",
+      "Esper Terra",
       "Etali, Primal Sickness",
       "Lord of the Ulvenwald",
       "Plated Kilnbeast",
@@ -35,6 +36,7 @@ describe "Color Indicator Test" do
     assert_search_equal "ind:gr", "ind:rg"
     assert_search_equal "ind:grrgr", "ind:rg"
     assert_search_results "ind:ubr",
+      "Kefka, Ruler of Ruin",
       "Nicol Bolas, the Arisen"
     assert_search_results "ind:wrg",
       "Grimlock, Ferocious King",
@@ -57,7 +59,7 @@ describe "Color Indicator Test" do
   it "number" do
     assert_search_results "ind=5"
     assert_search_results "ind:wubrg"
-    assert_search_equal "ind<3 -e:bot", "ind:* -t:bolas -grimlock -e:bot -(roar fifth people) -(The Golden-Gear Colossus)"
+    assert_search_equal "ind<3 -e:bot", "ind:* -t:bolas -grimlock -e:bot -(roar fifth people) -(The Golden-Gear Colossus) -(Kefka, Ruler of Ruin)"
     assert_search_equal "ind<4", "ind:*"
     assert_search_results "ind<1"
   end

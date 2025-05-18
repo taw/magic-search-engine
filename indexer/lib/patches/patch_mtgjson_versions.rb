@@ -360,6 +360,13 @@ class PatchMtgjsonVersions < Patch
       card["name"] == "Mechtitan"
     end
 
+    # FIN temporarily without meld cards until it's fully spoiled
+    delete_printing_if do |card|
+      card["name"] == "Vanille, Cheerful l'Cie" or
+      card["name"] == "Fang, Fearless l'Cie" or
+      card["name"] == "Ragnarok, Divine Deliverance"
+    end
+
     # spoiler set with some bad cards, remove this before release
     delete_printing_if do |card|
       # if card["name"] == "Claim Territory"

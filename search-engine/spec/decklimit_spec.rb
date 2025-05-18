@@ -24,6 +24,7 @@ describe "DissentionTest" do
       "Omnipresent Impostor",
       "Wastes",
       # by card text
+      "Cid, Timeless Artificer",
       "Dragon's Approach",
       "Hare Apparent",
       "Persistent Petitioners",

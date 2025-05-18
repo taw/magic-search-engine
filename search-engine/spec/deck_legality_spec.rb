@@ -41,6 +41,7 @@ describe "Deck legality" do
   it "allowed_in_any_number?" do
     db.printings.select(&:allowed_in_any_number?).map(&:name).uniq.should match_array([
       "Barry's Land", # CMB1
+      "Cid, Timeless Artificer",
       "Dragon's Approach",
       "Forest",
       "Hare Apparent",
