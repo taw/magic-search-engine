@@ -86,6 +86,11 @@ class PatchPartner < Patch
           ["129", "132"],
           ["192", "207"],
         ],
+        "fic" => [
+          # Alphinaud Leveilleur / Alisaie Leveilleur
+          ["9", "33"],
+          ["129", "140"],
+        ],
       }
       partner_numbers = {}
       special_pairs.each do |set_code, pairs|

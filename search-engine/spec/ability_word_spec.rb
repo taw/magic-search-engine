@@ -25,7 +25,7 @@ describe "Ability Word Regexp" do
       "II",
       "III",
       "IV",
-      # "V", # somehow skipped?
+      "V",
       "VI",
       "Max speed",
       "Prize",

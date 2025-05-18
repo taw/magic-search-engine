@@ -44,11 +44,12 @@ describe "Regexp" do
       "Battle of Wits",
       "Bilbo, Birthday Celebrant",
       "Helix Pinnacle",
+      "Jumbo Cactuar",
       "Mox Lotus",
       "Pyromancy 101",
       "Rules Lawyer",
-      "TL;DR",
       "The Millennium Calendar",
+      "TL;DR",
       "Urza, Academy Headmaster",
       "Vexing Puzzlebox"
   end

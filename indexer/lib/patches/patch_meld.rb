@@ -34,6 +34,11 @@ class PatchMeld < Patch
       "Urza, Lord Protector",
       "Urza, Planeswalker",
     ],
+    [
+      "Vanille, Cheerful l'Cie",
+      "Fang, Fearless l'Cie",
+      "Ragnarok, Divine Deliverance",
+    ],
   ]
 
   def call
