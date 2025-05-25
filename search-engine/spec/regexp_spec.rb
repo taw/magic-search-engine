@@ -46,6 +46,7 @@ describe "Regexp" do
       "Helix Pinnacle",
       "Jumbo Cactuar",
       "Mox Lotus",
+      "Overkill",
       "Pyromancy 101",
       "Rules Lawyer",
       "The Millennium Calendar",
