@@ -505,6 +505,7 @@ class Card
     "Machina",
     "Mug",
     "Murasame",
+    "Mutsunokami",
     "My First Friend",
     "Play Arcanum",
     "Pray",
@@ -516,6 +517,7 @@ class Card
     "Rough Divide",
     "Royal Guard",
     "Scions' Secretary",
+    "Selfie Shot",
     "Shiva's Aid",
     "Shooting Star",
     "Sketch and Lore",
@@ -533,6 +535,7 @@ class Card
     "Trace Aether",
     "Trance",
     "Unlock Ability",
+    "Wave Cannon",
   ].sort
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 
