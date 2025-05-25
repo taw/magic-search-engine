@@ -24,6 +24,12 @@ class PatchMultipart < Patch
         ["Brisela, Voice of Nightmares", "1336b"] => {"Gisela, the Broken Blade" => "1335", "Bruna, the Fading Light" => "1336"},
         ["Brisela, Voice of Nightmares", "1388b"] => {"Gisela, the Broken Blade" => "1387", "Bruna, the Fading Light" => "1388"},
       },
+      "fin" => {
+        ["Ragnarok, Divine Deliverance", "99b"] => {"Vanille, Cheerful l'Cie" => "211", "Fang, Fearless l'Cie" => "99"},
+        ["Ragnarok, Divine Deliverance", "381b"] => {"Vanille, Cheerful l'Cie" => "392", "Fang, Fearless l'Cie" => "381"},
+        ["Ragnarok, Divine Deliverance", "446b"] => {"Vanille, Cheerful l'Cie" => "475", "Fang, Fearless l'Cie" => "446"},
+        ["Ragnarok, Divine Deliverance", "526b"] => {"Vanille, Cheerful l'Cie" => "537", "Fang, Fearless l'Cie" => "526"},
+      },
     }
   end
 
