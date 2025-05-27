@@ -1,9 +1,10 @@
 class PhysicalCard
-  attr_reader :front, :back, :foil
+  attr_reader :front, :back, :foil, :hash
   def initialize(front, back, foil)
     @front = front
     @back = back
     @foil = !!foil
+    @hash = [main_front, foil].hash
   end
 
   def name
@@ -122,10 +123,6 @@ class PhysicalCard
   # @back[0] doesn't, as two different meld cards can have same CardPrinting on the back
   def ==(other)
     other.instance_of?(PhysicalCard) and main_front == other.main_front and foil == other.foil
-  end
-
-  def hash
-    [main_front, foil].hash
   end
 
   def eql?(other)

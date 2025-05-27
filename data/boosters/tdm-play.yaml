@@ -30,7 +30,7 @@ sheets:
     any:
     - rawquery: "{draconic_showcase_c_or_u} r:c"
       rate: 1
-    - query: "r:c -{dual_land} -t:basic alt:(draconic_showcase_c_or_u} r:c)"
+    - query: "r:c -{dual_land} -t:basic alt:({draconic_showcase_c_or_u} r:c)"
       rate: 3
     - query: "r:c -{dual_land} -t:basic -alt:({draconic_showcase_c_or_u} r:c)"
       rate: 4

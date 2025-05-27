@@ -96,6 +96,7 @@ class CardPrinting
     @variant_foreign = data["vf"]
     @variant_misprint = data["vm"]
     @xmage = data["x"]
+    @baseset = calculate_baseset
 
     # Performance cache
     @stemmed_name = @card.stemmed_name
@@ -127,6 +128,10 @@ class CardPrinting
 
   def in_boosters?
     @in_boosters
+  end
+
+  def baseset?
+    @baseset
   end
 
   def rarity
@@ -294,5 +299,12 @@ class CardPrinting
 
   def nonfoilonly?
     foiling == :nonfoil
+  end
+
+  def calculate_baseset
+    return false if variant_foreign or variant_misprint or promo_types&.include?("reversibleback")
+    base_set_size = set.base_set_size
+    return false unless base_set_size
+    number_i >= 1 and number_i <= base_set_size
   end
 end
