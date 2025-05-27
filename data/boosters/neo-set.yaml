@@ -71,7 +71,7 @@ sheets:
     - set: plst
       code: "NEO"
       rate: 1
-    - query: "e:cmb1 ((Kaya, Ghost Haunter) or (Puresteel Angel))"
+    - query: 'e:cmb1 (name:"Kaya, Ghost Haunter" or name:"Puresteel Angel")'
       rate: 1
   foil_with_showcase:
     foil: true

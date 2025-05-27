@@ -51,5 +51,5 @@ sheets:
     - set: plst
       code: "MID"
       rate: 1
-    - query: "e:cmb1 ((Kaya, Ghost Haunter) or (Puresteel Angel))"
+    - query: 'e:cmb1 (name:"Kaya, Ghost Haunter" or name:"Puresteel Angel")'
       rate: 1

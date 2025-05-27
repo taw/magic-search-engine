@@ -31,7 +31,7 @@ sheets:
     query: "r:c"
     count: 141
   background:
-    filter: "e:clb t:background is:baseset -(Faceless One)"
+    filter: 'e:clb t:background is:baseset -name:"Faceless One"'
     use: base_1248_by_rarity
     count: 25
   legendary_with_showcase:
