@@ -542,4 +542,12 @@ BanList.for_format("duel commander") do
     nil,
     "Sticker sheet" => "banned",
   )
+
+  change(
+    "2025-05-27",
+    "https://www.mtgdc.info/announcements/2025/may-26-2025",
+    "Invert Polarity" => "banned",
+    "Zurgo Bellstriker" => "legal",
+    "Hogaak, Arisen Necropolis" => "restricted",
+  )
 end

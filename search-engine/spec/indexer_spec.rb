@@ -106,6 +106,18 @@ describe "Indexer hacks" do
       ["v17", "Brisela, Voice of Nightmares", "5b"],
       ["v17", "Bruna, the Fading Light", "5a"],
       ["v17", "Gisela, the Broken Blade", "10"],
+      ["fin", "Fang, Fearless l'Cie", "381"],
+      ["fin", "Fang, Fearless l'Cie", "446"],
+      ["fin", "Fang, Fearless l'Cie", "526"],
+      ["fin", "Fang, Fearless l'Cie", "99"],
+      ["fin", "Ragnarok, Divine Deliverance", "381b"],
+      ["fin", "Ragnarok, Divine Deliverance", "446b"],
+      ["fin", "Ragnarok, Divine Deliverance", "526b"],
+      ["fin", "Ragnarok, Divine Deliverance", "99b"],
+      ["fin", "Vanille, Cheerful l'Cie", "211"],
+      ["fin", "Vanille, Cheerful l'Cie", "392"],
+      ["fin", "Vanille, Cheerful l'Cie", "475"],
+      ["fin", "Vanille, Cheerful l'Cie", "537"],
     ])
   end
 
