@@ -487,6 +487,7 @@ class Card
     "Death Sickle",
     "Diana",
     "Double Overdrive",
+    "Dragonfire Dive",
     "Draw Arcanum",
     "Dualcast",
     "Echo of the Lost",

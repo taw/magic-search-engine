@@ -45,7 +45,7 @@ describe "Scryfall" do
 
   it "meld" do
     # identical behaviour, count both parts and melded cards
-    assert_count_cards "is:meld", 18
+    assert_count_cards "is:meld", 21
   end
 
   it "ft_designed" do
