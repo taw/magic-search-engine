@@ -27,7 +27,7 @@ pack:
 sheets:
   foil_uncommon:
     foil: true
-    query: "r:u -Nazgul"
+    query: 'r:u -name:"Nazgûl"'
   foil_basic:
     foil: true
     query: "r:b is:fullart"
@@ -44,7 +44,7 @@ sheets:
     any:
     - rawquery: "e:{set} r:u frame:showcase -number>451"
       chance: 91
-    - rawquery: "e:{set} Nazgul -number>451"
+    - rawquery: 'e:{set} name:"Nazgûl" -number>451'
       chance: 9
   rare_mythic_showcase:
     any:
@@ -92,7 +92,7 @@ sheets:
       chance: 418
     - rawquery: "e:{set} r:u number:399-451"
       chance: 326
-    - rawquery: "e:{set} Nazgul -number>451"
+    - rawquery: 'e:{set} name:"Nazgûl" -number>451'
       chance: 23
   nonfoil_sol_ring:
     any:

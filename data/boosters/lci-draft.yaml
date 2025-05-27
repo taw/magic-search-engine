@@ -10,7 +10,7 @@ pack:
   dfc_common_uncommon: 1
   sfc_uncommon_with_showcase: 3
   rare_mythic_with_showcase: 1
-sheets: 
+sheets:
   sfc_common:
     balanced: true
     query: "r:c is:sfc -t:cave"
@@ -28,9 +28,9 @@ sheets:
       chance: 12
   mythic_with_showcase:
     any:
-    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Quintorius Kand)"
+    - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -name:"Quintorius Kand"'
       rate: 1
-    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Quintorius Kand)"
+    - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper name:"Quintorius Kand"'
       rate: 2
     - use: mythic_has_showcase
       rate: 4

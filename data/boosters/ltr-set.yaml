@@ -38,11 +38,11 @@ sheets:
     filter: "e:{set} r:r -number>451"
     use: with_showcase
   uncommon_with_showcase:
-    filter: "e:{set} r:u -Nazgul -number>451"
+    filter: 'e:{set} r:u -name:"Nazgûl" -number>451'
     any:
     - use: with_showcase
       chance: 79
-    - rawquery: "e:{set} Nazgul -number>451"
+    - rawquery: 'e:{set} name:"Nazgûl" -number>451'
       chance: 1
   common_uncommon_showcase:
     any:

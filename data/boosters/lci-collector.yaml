@@ -45,9 +45,9 @@ sheets:
     any:
     - rawquery: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:r"
       rate: 4
-    - rawquery: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:m -(Quintorius Kand)"
+    - rawquery: 'e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:m -name:"Quintorius Kand"'
       rate: 2
-    - rawquery: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:m (Quintorius Kand)"
+    - rawquery: 'e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:m name:"Quintorius Kand"'
       rate: 1
   jurrasic_world:
     any:
@@ -70,9 +70,9 @@ sheets:
     any:
     - rawquery: "e:lci promo:boosterfun r:r"
       rate: 4
-    - rawquery: "e:lci promo:boosterfun r:m -promo:neonink -(Quintorius Kand)"
+    - rawquery: 'e:lci promo:boosterfun r:m -promo:neonink -name:"Quintorius Kand"'
       rate: 2
-    - rawquery: "e:lci promo:boosterfun r:m -promo:neonink (Quintorius Kand)"
+    - rawquery: 'e:lci promo:boosterfun r:m -promo:neonink name:"Quintorius Kand"'
       rate: 1
     - set: spg
       code: "LCICOLR"
