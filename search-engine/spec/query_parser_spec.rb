@@ -85,6 +85,12 @@ describe "QueryParser" do
     assert_search_parse "part:t:planeswalker", "part=t:planeswalker"
     assert_search_parse "related:t:planeswalker", "related=t:planeswalker"
     assert_search_parse "alt:t:planeswalker", "alt=t:planeswalker"
+    assert_search_parse "cn≥315 cn≤406", "number>=315 number<=406"
+    assert_search_parse "name≥Forest name≤Mountain", "name>=Forest name<=Mountain"
+    assert_search_parse "pow≥2 tou≤5", "pow>=2 tou<=5"
+    assert_search_parse "t≥goblin type≤creature", "type>=goblin t<=creature"
+    assert_search_parse "c≥u c≤wubrg", "c>=u c<=wubrg"
+    assert_search_parse "r≥u r≤rare", "r>=u r<=rare"
   end
 
   it "limits to : and = equivalence" do
