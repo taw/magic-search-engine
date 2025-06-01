@@ -30,6 +30,7 @@ sheets:
   common:
     query: "r:c -{dual_land} -t:basic" # We assume it can't be a dual but we are not sure
     # count: 80
+
   through_the_ages:
     any:
       - rawquery: "e:fca r:u" # Uncommons FCA
@@ -41,6 +42,7 @@ sheets:
       - rawquery: "e:fca r:m" # Mythics FCA
         chance: 700
         # count: 15
+        
   uncommon:
     any:
     - rawquery: "is:dfc r:u ({woodblock} or {character})" # Uncommon double faced woodblock or character
