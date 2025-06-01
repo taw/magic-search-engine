@@ -448,11 +448,8 @@ class Card
     # "Cosplay" and "Science" are in italics on the card, but wouldn't be according to normal templating system so mtgjson corrected it
     # it's debatable either way
     "Corrupted Metalcraft",
-    "Find Cards",
     "Fixed commander ninjutsu",
     "From Downtown",
-    "Go to Sleep",
-    "Make Friends",
     "Max Speed",
     "Mirran Victory",
     "Mono Eminence",
@@ -463,7 +460,6 @@ class Card
     "Team Cloudspire",
     "Team Cloudsprire",
     "Team Speed Demons",
-    "Win Prize Tickets",
     # SLD Marvel
     "Ceaseless Tempest",
     "Genius Industrialist",
@@ -475,6 +471,7 @@ class Card
     "Abraxas",
     "Angelo Cannon",
     "Bad Breath",
+    "Blessing of Light",
     "Blitzball Captain",
     "Blow Up",
     "Blue Magic",
@@ -500,6 +497,7 @@ class Card
     "Gae Bolg",
     "Grand Summon",
     "Hagneia",
+    "Hero's Sundering",
     "Immune",
     "Jenova Cells",
     "Jump",
@@ -533,6 +531,7 @@ class Card
     "Starfall",
     "Starscourge",
     "Steal",
+    "Summon",
     "Super Nova",
     "The Allagan Eye",
     "The Minstrel's Ballad",
