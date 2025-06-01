@@ -91,8 +91,11 @@ class QueryTokenizer
         end
       elsif s.scan(/(?:t|type)\s*:\s*(?:"(.*?)"|([’'\-\u2212\p{L}\p{Digit}_\*]+))/i)
         tokens << [:test, ConditionTypes.new(s[1] || s[2])]
-      elsif s.scan(/(?:t|type)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([’'\-\u2212\p{L}\p{Digit}_\*]+))/i)
-        tokens << [:test, ConditionTypeExpr.new(s[1], s[2] || s[3])]
+      elsif s.scan(/(?:t|type)\s*(>=|>|<=|<|=|≥|≤|:)\s*(?:"(.*?)"|([’'\-\u2212\p{L}\p{Digit}_\*]+))/i)
+        op = s[1]
+        op = ">=" if op == "≥"
+        op = "<=" if op == "≤"
+        tokens << [:test, ConditionTypeExpr.new(op, s[2] || s[3])]
       elsif s.scan(/(?:ft|flavor)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionFlavor.new(s[1] || s[2])]
       elsif s.scan(/(?:fn)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
@@ -116,9 +119,11 @@ class QueryTokenizer
         tokens << [:test, klass.new(s[2] || s[3])]
       elsif s.scan(/(?:f|format)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_\-\*]+))/i)
         tokens << [:test, ConditionFormat.new(s[1] || s[2])]
-      elsif s.scan(/(?:name|n)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([\p{L}\p{Digit}_\-]+))/i)
+      elsif s.scan(/(?:name|n)\s*(>=|>|<=|<|=|≥|≤|:)\s*(?:"(.*?)"|([\p{L}\p{Digit}_\-]+))/i)
         op = s[1]
         op = "=" if op == ":"
+        op = ">=" if op == "≥"
+        op = "<=" if op == "≤"
         tokens << [:test, ConditionNameComparison.new(op, s[2] || s[3])]
       elsif s.scan(/(?:e|set|edition)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         sets = [s[1] || s[2]]
@@ -128,8 +133,11 @@ class QueryTokenizer
         sets = [s[1] || s[2]]
         sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionSubset.new(*sets)]
-      elsif s.scan(/number\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
-        tokens << [:test, ConditionNumber.new(s[2] || s[3], s[1])]
+      elsif s.scan(/(?:number|cn)\s*(>=|>|<=|<|=|≥|≤|:)\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
+        op = s[1]
+        op = ">=" if op == "≥"
+        op = "<=" if op == "≤"
+        tokens << [:test, ConditionNumber.new(s[2] || s[3], op)]
       elsif s.scan(/(?:w|wm|watermark)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
         tokens << [:test, ConditionWatermark.new(s[1] || s[2])]
       elsif s.scan(/(?:sig|signature)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
@@ -148,7 +156,7 @@ class QueryTokenizer
         tokens << [:test, ConditionBooster.new(*booster)]
       elsif s.scan(/st\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionSetType.new(s[1] || s[2])]
-      elsif s.scan(/(c|ci|id|ind|color|identity|indicator)\s*(>=|>|<=|<|=|!|:)\s*(?:"(.*?)"|([\p{L}\p{Digit}_\*]+))/i)
+      elsif s.scan(/(c|ci|id|ind|color|identity|indicator)\s*(>=|>|<=|<|=|≥|≤|!|:)\s*(?:"(.*?)"|([\p{L}\p{Digit}_\*]+))/i)
         kind = s[1].downcase
         kind = "c" if kind == "color"
         kind = "ci" if kind == "id"
@@ -182,34 +190,44 @@ class QueryTokenizer
             cmp = ">="
           end
         end
+        cmp = ">=" if cmp == "≥"
+        cmp = "<=" if cmp == "≤"
         tokens << [:test, ConditionColorExpr.new(kind, cmp, color)]
-      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([\-[\p{L}\p{Digit}_]+]+))/i)
+      elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=|≥|≤|:)\s*(?:"(.*?)"|([\-[\p{L}\p{Digit}_]+]+))/i)
         op = s[2]
         op = "=" if op == ":"
+        op = ">=" if op == "≥"
+        op = "<=" if op == "≤"
         klass = Kernel.const_get("Condition#{s[1].capitalize}")
         tokens << [:test, klass.new(op, s[3] || s[4])]
-      elsif s.scan(/(?:r|rarity)\s*(>=|>|<=|<|=|:)\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+      elsif s.scan(/(?:r|rarity)\s*(>=|>|<=|<|=|≥|≤|:)\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         op = s[1]
         op = "=" if op == ":"
+        op = ">=" if op == "≥"
+        op = "<=" if op == "≤"
         rarity = s[2] || s[3]
         begin
           tokens << [:test, ConditionRarity.new(op, rarity)]
         rescue
           @warnings << "unknown rarity: #{rarity}"
         end
-      elsif s.scan(/(pow|power|loy|loyalty|tou|toughness|cmc|mv|year|sets|papersets|prints|paperprints|defen[cs]e|hand|life|decklimit)\s*(>=|>|<=|<|=|:)\s*(pow\b|power\b|tou\b|toughness\b|cmc\b|mv\b|loy\b|loyalty\b|year\b|defen[cs]e\b|hand\b|life\b|decklimit\b|any\b|[²\d\.\-\*\+½x∞\?]+|"[²\d\.\-\*\+½x∞\?]+")/i)
+      elsif s.scan(/(pow|power|loy|loyalty|tou|toughness|cmc|mv|year|sets|papersets|prints|paperprints|defen[cs]e|hand|life|decklimit)\s*(>=|>|<=|<|=|≥|≤|:)\s*(pow\b|power\b|tou\b|toughness\b|cmc\b|mv\b|loy\b|loyalty\b|year\b|defen[cs]e\b|hand\b|life\b|decklimit\b|any\b|[²\d\.\-\*\+½x∞\?]+|"[²\d\.\-\*\+½x∞\?]+")/i)
         aliases = {"power" => "pow", "loyalty" => "loy", "toughness" => "tou"}
         a = s[1].downcase
         a = aliases[a] || a
         op = s[2]
         op = "=" if op == ":"
+        op = ">=" if op == "≥"
+        op = "<=" if op == "≤"
         b = s[3].downcase
         b = b[1..-2] if b =~ /\A"(.*)"\z/
         b = aliases[b] || b
         tokens << [:test, ConditionExpr.new(a, op, b)]
-      elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|!=)\s*((?:[\dwubrgxyzchmnos]|\{.*?\})*)/i)
+      elsif s.scan(/(?:mana|m)\s*(>=|>|<=|<|=|:|≥|≤|!=)\s*((?:[\dwubrgxyzchmnos]|\{.*?\})*)/i)
         op = s[1]
         op = "=" if op == ":"
+        op = ">=" if op == "≥"
+        op = "<=" if op == "≤"
         mana = s[2]
         tokens << [:test, ConditionMana.new(op, mana)]
       elsif s.scan(/(?:cast)\s*(?:=|:)\s*((?:[\dwubrgxyzchmnos]|\{.*?\})*)/i)
