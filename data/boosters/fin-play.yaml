@@ -1,3 +1,5 @@
+# Data from: https://magic.wizards.com/en/news/feature/collecting-final-fantasy
+# And https://magic.wizards.com/en/products/final-fantasy/card-image-gallery
 pack:
   common_ta_slot:
     - common: 7
@@ -16,14 +18,12 @@ pack:
       chance: 20
 
 queries:
-  dual_land: "e:{set} r:c t:land -t:basic -inn -village" # Common lands that are not basic nor "Adventurer's Inn"
-
+  dual_land: "e:{set} r:c t:land -t:basic -inn -village"
   artist: "e:{set} (number:315-323 or number:577)"	
   woodblock: "e:{set} number:324-373"
   character: "e:{set} number:374-405"
   uncommon_without_cid: "r:u -cid"
   regular_cid: "e:{set} cid -frame:extendedart"
- 
   boosterfun: "e:{set} (number:310-518 or number:577)" # TODO: This query wouldn't be necessary if is:boosterfun works correctly
 
 sheets:
