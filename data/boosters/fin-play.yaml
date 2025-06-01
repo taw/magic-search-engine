@@ -18,17 +18,17 @@ pack:
       chance: 20
 
 queries:
-  dual_land: "e:{set} r:c t:land -t:basic -inn -village"
-  artist: "e:{set} (number:315-323 or number:577)"	
+  dual_land: 'r:c t:land -t:basic -name:"Adventurers Inn" -name:"Crossroads Village"'
+  artist: "e:{set} number:315-323,577"
   woodblock: "e:{set} number:324-373"
   character: "e:{set} number:374-405"
   uncommon_without_cid: "r:u -cid"
   regular_cid: "e:{set} cid -frame:extendedart"
-  boosterfun: "e:{set} (number:310-518 or number:577)" # TODO: This query wouldn't be necessary if is:boosterfun works correctly
+  boosterfun: "e:{set} number:310-518,577" # TODO: This query wouldn't be necessary if is:boosterfun works correctly
 
 sheets:
   common:
-    query: "r:c -{dual_land} -t:basic" # We assume it can't be a dual but we are not sure
+    query: "r:c -{dual_land} -t:basic" # Non dual non basic
     # count: 80
 
   through_the_ages:
@@ -42,7 +42,7 @@ sheets:
       - rawquery: "e:fca r:m" # Mythics FCA
         chance: 700
         # count: 15
-        
+
   uncommon:
     any:
     - rawquery: "is:dfc r:u ({woodblock} or {character})" # Uncommon double faced woodblock or character
@@ -57,7 +57,7 @@ sheets:
 
   wildcard:
     any:
-      - query: "r:c -t:basic" # We assume it can be a dual but we are not sure
+      - use: common
         chance: 167 # 16.7%
       - use: uncommon
         chance: 583 # 58.3%
@@ -75,7 +75,7 @@ sheets:
       chance: 800 # 80%
       # count: 74
     - query: "r:m"  # Regular mythic
-      chance: 10 # %10
+      chance: 100 # 10%
       count: 20
     # - rawquery: "e:{set} r:r is:borderless (number<519 or number:577)" # TODO: should work if all surge foils are correctly classified
     - rawquery: "e:{set} r:r is:borderless (number<519 or number:577)" # Borderless rare
@@ -94,7 +94,7 @@ sheets:
   foil:
     foil: true
     any:
-      - query: "r:c -t:basic" # We assume it can be a dual but we are not sure
+      - use: common
         chance: 5575 # 55.75%
       - query: "{uncommon_without_cid}"
         chance: 3590
