@@ -1,0 +1,129 @@
+# Data from: https://magic.wizards.com/en/news/feature/collecting-final-fantasy
+# And https://magic.wizards.com/en/products/final-fantasy/card-image-gallery
+pack:
+  common_ta_slot:
+    - common: 7
+      chance: 2
+    - common: 6
+      through_the_ages: 1
+      chance: 1 # 1 in 3 boosters have a Through the Ages card
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil: 1
+  land:
+    - non_foil_land: 1
+      chance: 80
+    - foil_land: 1
+      chance: 20
+
+queries:
+  dual_land: 'r:c t:land -t:basic -name:"Adventurers Inn" -name:"Crossroads Village"'
+  artist: "e:{set} number:315-323,577"
+  woodblock: "e:{set} number:324-373"
+  character: "e:{set} number:374-405"
+  uncommon_without_cid: "r:u -cid"
+  regular_cid: "e:{set} cid -frame:extendedart"
+  boosterfun: "e:{set} number:310-518,577" # TODO: This query wouldn't be necessary if is:boosterfun works correctly
+
+sheets:
+  common:
+    query: "r:c -{dual_land} -t:basic" # Non dual non basic
+    count: 80
+
+  through_the_ages:
+    any:
+      - rawquery: "e:fca r:u" # Uncommons FCA
+        chance: 6325
+        count: 17
+      - rawquery: "e:fca r:r" # Rares FCA
+        chance: 2975
+        count: 32
+      - rawquery: "e:fca r:m" # Mythics FCA
+        chance: 700
+        count: 15
+
+  uncommon:
+    any:
+    - rawquery: "is:dfc r:u ({woodblock} or {character})" # Uncommon double faced woodblock or character
+      chance: 327 # 0.3% = 3/1000 = 327/109000
+      count: 3
+    - query: "{uncommon_without_cid}"
+      chance: 107676 # 99.7% (997/1000) * 108/109 = 107676/109000
+      count: 108
+    - rawquery: "{regular_cid}"
+      chance: 997 # 99.7% * 0.9% = 997/109000
+      count: 15
+
+  wildcard:
+    any:
+      - use: common
+        chance: 167 # 16.7%
+      - use: uncommon
+        chance: 583 # 58.3%
+      - rawquery: "r:c {woodblock}" # Borderless woodblock common
+        chance: 26 # 2.6%
+        count: 3
+      - rawquery: "r:u ({woodblock} or {character})"
+        chance: 57 # 5.7%
+      - use: rare_mythic
+        chance: 167 # 16.7%
+
+  rare_mythic:
+    any:
+    - query: "r:r" # Regular rare
+      chance: 800 # 80%
+      count: 74
+    - query: "r:m"  # Regular mythic
+      chance: 100 # 10%
+      count: 20
+    # - rawquery: "e:{set} r:r is:borderless (number<519 or number:577)" # TODO: should work if all surge foils are correctly classified
+    - rawquery: "e:{set} r:r is:borderless (number<519 or number:577)" # Borderless rare
+      chance: 80 # 8%
+    - rawquery: "e:{set} r:m is:borderless (number<519 or number:577)" # Borderless mythic
+      chance: 10 # 1%
+    - rawquery: "r:r {artist}"
+      chance: 5 # 0.5%
+      count: 3
+    - rawquery: "r:m {artist}"
+      chance: 5 # 0.5%
+      count: 7
+
+  foil:
+    foil: true
+    any:
+      - use: common
+        chance: 5575 # 55.75%
+      - query: "{uncommon_without_cid}"
+        chance: 3590
+      - query: "r:r"
+        chance: 550
+        count: 74
+      - query: "r:m"
+        chance: 75
+        count: 20
+      - rawquery: "{boosterfun} r:c" # Common boosterfun
+        chance: 10
+        count: 3
+      - rawquery: "{boosterfun} r:u" # Uncommon boosterfun TODO: Should we exclude cid?
+        chance: 50
+      - rawquery: "{boosterfun} r:r"
+        chance: 100
+      - rawquery: "{boosterfun} r:m"
+        chance: 25
+      - rawquery: "{regular_cid}"
+        chance: 25
+        count: 15
+
+  non_foil_land:
+    any:
+      - query: "{dual_land}"
+        chance: 55
+        count: 10
+      # - query: "t:basic" # Not sure why this doesn't work
+      - rawquery: "e:{set} t:basic number<519" # Basic lands
+        chance: 45
+        count: 16
+  foil_land:
+    foil: true
+    use: non_foil_land
