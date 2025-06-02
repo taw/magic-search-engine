@@ -29,7 +29,7 @@ queries:
 sheets:
   common:
     query: "r:c -{dual_land} -t:basic" # Non dual non basic
-    # count: 80
+    count: 80
 
   through_the_ages:
     any:
@@ -38,10 +38,10 @@ sheets:
         count: 17
       - rawquery: "e:fca r:r" # Rares FCA
         chance: 2975
-        # count: 32
+        count: 32
       - rawquery: "e:fca r:m" # Mythics FCA
         chance: 700
-        # count: 15
+        count: 15
 
   uncommon:
     any:
@@ -50,7 +50,7 @@ sheets:
       count: 3
     - query: "{uncommon_without_cid}"
       chance: 107676 # 99.7% (997/1000) * 108/109 = 107676/109000
-      # count: 108
+      count: 108
     - rawquery: "{regular_cid}"
       chance: 997 # 99.7% * 0.9% = 997/109000
       count: 15
@@ -63,7 +63,7 @@ sheets:
         chance: 583 # 58.3%
       - rawquery: "r:c {woodblock}" # Borderless woodblock common
         chance: 26 # 2.6%
-        # count: 3
+        count: 3
       - rawquery: "r:u ({woodblock} or {character})"
         chance: 57 # 5.7%
       - use: rare_mythic
@@ -73,17 +73,15 @@ sheets:
     any:
     - query: "r:r" # Regular rare
       chance: 800 # 80%
-      # count: 74
+      count: 74
     - query: "r:m"  # Regular mythic
       chance: 100 # 10%
       count: 20
     # - rawquery: "e:{set} r:r is:borderless (number<519 or number:577)" # TODO: should work if all surge foils are correctly classified
     - rawquery: "e:{set} r:r is:borderless (number<519 or number:577)" # Borderless rare
       chance: 80 # 8%
-      # count: ?
     - rawquery: "e:{set} r:m is:borderless (number<519 or number:577)" # Borderless mythic
       chance: 10 # 1%
-      # count: ?
     - rawquery: "r:r {artist}"
       chance: 5 # 0.5%
       count: 3
@@ -100,13 +98,13 @@ sheets:
         chance: 3590
       - query: "r:r"
         chance: 550
-        # count: 74
+        count: 74
       - query: "r:m"
         chance: 75
         count: 20
       - rawquery: "{boosterfun} r:c" # Common boosterfun
         chance: 10
-        # count: 3
+        count: 3
       - rawquery: "{boosterfun} r:u" # Uncommon boosterfun TODO: Should we exclude cid?
         chance: 50
       - rawquery: "{boosterfun} r:r"
