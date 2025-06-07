@@ -70,6 +70,7 @@ class FormatModern < Format
       "fdn",
       "dft",
       "tdm",
+      "fin",
     ]
   end
 end
