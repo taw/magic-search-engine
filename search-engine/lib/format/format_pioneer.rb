@@ -47,6 +47,7 @@ class FormatPioneer < Format
       "fdn",
       "dft",
       "tdm",
+      "fin",
     ]
   end
 end

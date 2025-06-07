@@ -12,6 +12,8 @@
   - else
     - unless card.paper? or card.mtgo? or card.arena?
       %li This printing of #{card.name} is not legal. The card has other legal printings.
+    - if card.card.not_released_yet?
+      %li This card is not released yet. Legality information only applies after its release.
     - card.legality_information.to_h.sort.each do |format_name, status|
       %li
         - # Should this be in the engine?

@@ -24,6 +24,7 @@ class FormatAlchemy < FormatStandard
         "fdn", # will likely have unusual rotation matching Standard
         "dft", "ydft",
         "tdm", "ytdm",
+        "fin",
       ],
       "2023-08-02" => [
         "anb",

@@ -727,6 +727,10 @@ class Card
     @first_release_date ||= @printings.map(&:release_date).compact.min
   end
 
+  def not_released_yet?
+    first_release_date > Date.today
+  end
+
   # If a card has non-promo printing, pick oldest, ignore promos
   # If a card has only promo printings, pick oldest
   # This deals with prerelease promos and similar
