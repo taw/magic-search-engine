@@ -36,7 +36,7 @@ sheets:
       - rawquery: "e:fca r:u" # Uncommons FCA
         chance: 6325
         count: 17
-      - rawquery: "e:fca r:r" # Rares FCA
+      - rawquery: "e:fca r:r -is:alchemy" # Rares FCA
         chance: 2975
         count: 32
       - rawquery: "e:fca r:m" # Mythics FCA
