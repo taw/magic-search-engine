@@ -93,7 +93,8 @@ describe "Regexp" do
   it "regexp name text" do
     assert_search_results "f:modern n:/.{32}/",
       "Aetherwing, Golden-Scale Flagship",
-      "Okina, Temple to the Grandfathers"
+      "Okina, Temple to the Grandfathers",
+      "World Champion, Celestial Weapon"
   end
 
   it "regexp rulings text" do

@@ -4,7 +4,7 @@ describe "XMage" do
   it "has almost all Modern legal cards" do
     # st:modern to ignore reprints in promo sets
     # Most recent sets often come to XMage late or in parts, so this -e: clause needs periodic updating
-    assert_search_results "f:modern (st:std or st:modern) -in:xmage -e:acr,blb,dsk,fdn,dft,tdm",
+    assert_search_results "f:modern (st:std or st:modern) -in:xmage -e:acr,dsk",
       # mutate from graveyard
       "Brokkos, Apex of Forever",
       # text change
@@ -12,6 +12,9 @@ describe "XMage" do
       "Mind Bend",
       "Spectral Shift",
       "Swirl the Mists",
-      "Trait Doctoring"
+      "Trait Doctoring",
+      # other
+      "Heirloom Epic",
+      "Summon: Brynhildr"
   end
 end
