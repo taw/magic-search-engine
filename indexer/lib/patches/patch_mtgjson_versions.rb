@@ -353,6 +353,11 @@ class PatchMtgjsonVersions < Patch
 
       # redundant with other fields, just predelete
       card.delete("type")
+
+      # mtgjson bug, ydmu is correct, mb2 is not
+      if card["name"] == "Oracle of the Alpha"
+        card["spellbook"] = ["Ancestral Recall", "Black Lotus", "Mox Emerald", "Mox Jet", "Mox Pearl", "Mox Ruby", "Mox Sapphire", "Time Walk", "Timetwister"]
+      end
     end
 
     # It's a reversible token not a card, so it shouldn't be in card data
