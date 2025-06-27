@@ -96,6 +96,12 @@ class ReportLegalityDifferences
         next
       end
 
+      # mtgjson just can't handle meld for penny, no point reporting it
+      if format.format_name == "penny dreadful"
+        card = @db.cards[name.downcase]
+        next if card.layout =="meld" and card.names.size == 3
+      end
+
       # This is technically not a B&R issue
       if a == nil and b == "restricted" and ["alchemy", "historic"].include?(format.format_name)
         b = nil
