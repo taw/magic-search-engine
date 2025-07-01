@@ -168,4 +168,11 @@ BanList.for_format("alchemy") do
     nil,
     "Voracious Greatshark" => "legal"
   )
+
+  change(
+    "2025-06-30",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-june-30-2025",
+    # suspended (pending rebalance).
+    "Cori-Steel Cutter" => "banned",
+  )
 end

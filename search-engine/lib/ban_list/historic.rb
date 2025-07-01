@@ -353,4 +353,10 @@ BanList.for_format("historic") do
     "https://magic.wizards.com/en/news/mtg-arena/announcements-february-3-2025",
     "Chrome Mox" => "banned",
   )
+
+  change(
+    "2025-06-30",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-june-30-2025",
+    "Counterspell" => "legal",
+  )
 end
