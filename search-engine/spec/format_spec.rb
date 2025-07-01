@@ -10,7 +10,14 @@ describe "Formats" do
       %[
         e:dmu,bro,one,mom,mat,woe,lci,mkm,otj,big,blb,dsk,fdn,dft,tdm,fin
         -is:alchemy
-      ]
+        -(Cori-Steel Cutter)
+        -(Abuelo's Awakening)
+        -(Monstrous Rage)
+        -(Heartfire Hero)
+        -(Up the Beanstalk)
+        -(Hopeless Nightmare)
+        -(This Town Ain't Big Enough)
+        ]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
     assert_search_equal_cards 'f:"ravnica block"', 'b:ravnica'
@@ -235,7 +242,7 @@ describe "Formats" do
   it "historic" do
     # including STA pre-banned
     # this is extra fun as some conjurable cards will be not banned
-    assert_count_cards "banned:historic", 56
+    assert_count_cards "banned:historic", 55
     assert_legality "historic", Date.parse("2023-08-01"), "Alora, Cheerful Assassin", "restricted"
     assert_legality "historic", Date.parse("2023-08-01"), "Black Lotus", "restricted"
     assert_legality "historic", Date.parse("2023-08-01"), "Lightning Bolt", "restricted"

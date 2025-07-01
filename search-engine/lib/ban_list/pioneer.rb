@@ -95,4 +95,7 @@ BanList.for_format("pioneer") do
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-december-16-2024",
     "Jegantha, the Wellspring" => "banned",
   )
+
+  # "Pioneer Best-of-One on MTG Arena" ban on "Tibalt's Trickery" but it doesn't affect the whole format
+  # https://magic.wizards.com/en/news/announcements/banned-and-restricted-june-30-2025
 end

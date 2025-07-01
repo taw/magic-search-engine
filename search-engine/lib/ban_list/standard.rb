@@ -198,4 +198,16 @@ BanList.for_format("standard") do
     "Invoke Despair" => "banned",
     "Reckoner Bankbuster" => "banned",
   )
+
+  change(
+    "2025-06-30",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-june-30-2025",
+    "Cori-Steel Cutter" => "banned",
+    "Abuelo's Awakening" => "banned",
+    "Monstrous Rage" => "banned",
+    "Heartfire Hero" => "banned",
+    "Up the Beanstalk" => "banned",
+    "Hopeless Nightmare" => "banned",
+    "This Town Ain't Big Enough" => "banned",
+  )
 end
