@@ -1,25 +1,13 @@
 class DeckPrintingResolver
   # We know basics are ambiguous, we don't even care
-  # Basics and guildgates (without special effects), nobody really cares which one you'll get
+  # Basics (without special effects), nobody really cares which one you'll get
   # There are exception like JMP and WC* but they are annotated in data
-  #
-  # Guildgates should be doable manually
   CardsWithAllowedConflicts = [
     "Plains",
     "Island",
     "Swamp",
     "Mountain",
     "Forest",
-    "Azorius Guildgate",
-    "Boros Guildgate",
-    "Dimir Guildgate",
-    "Golgari Guildgate",
-    "Gruul Guildgate",
-    "Izzet Guildgate",
-    "Orzhov Guildgate",
-    "Rakdos Guildgate",
-    "Selesnya Guildgate",
-    "Simic Guildgate",
   ].to_set
 
   SetSearchList = {
