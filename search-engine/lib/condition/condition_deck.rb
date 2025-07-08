@@ -13,16 +13,6 @@ class ConditionDeck < Condition
     "Swamp",
     "Mountain",
     "Forest",
-    "Azorius Guildgate",
-    "Boros Guildgate",
-    "Dimir Guildgate",
-    "Golgari Guildgate",
-    "Gruul Guildgate",
-    "Izzet Guildgate",
-    "Orzhov Guildgate",
-    "Rakdos Guildgate",
-    "Selesnya Guildgate",
-    "Simic Guildgate",
   ].to_set
 
   def initialize(deck_name)
