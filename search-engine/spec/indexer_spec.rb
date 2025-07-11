@@ -50,7 +50,7 @@ describe "Indexer hacks" do
       ["bro", "Mishra, Claimed by Gix", "216"],
       ["bro", "Mishra, Lost to Phyrexia", "163b"],
       ["bro", "Phyrexian Dragon Engine", "163a"],
-      ["bro", "The Mightstone and Weakstone", "238a"],
+      ["bro", "The Mightstone and Weakstone", "238"],
       ["bro", "Titania, Gaea Incarnate", "256b"],
       ["bro", "Titania, Voice of Gaea", "193"],
       ["bro", "Urza, Lord Protector", "225"],
