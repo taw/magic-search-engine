@@ -24,19 +24,15 @@ pack:
 
   foil_boosterfun_rare_mythic_2: 1 # TODO: Find better name
 
-
 queries:
   uncommon_without_cid: "r:u -cid"
   regular_cid: "e:{set} cid -frame:extendedart"
   artist: "e:{set} number:315-323,577"
   woodblock: "e:{set} number:324-373"
-
   extended_art_legends: "e:{set} number:421-518"
   surge_foil_character: "e:{set} number:519-550"
-
-  secret_rendezvous: "e:FIC number:217-219"
-
   boosterfun: "e:{set} number:310-420,577" # Doesn't include extended-art legends
+  secret_rendezvous: "e:FIC number:217-219"
 
 sheets:
   foil_common:
@@ -92,39 +88,38 @@ sheets:
 
   foil_rare_mythic:
     any:
-    - query: "r:r" # Regular rare
-      chance: 8775 # 87.75%
-      count: 74
-    - query: "r:m"  # Regular mythic
-      chance: 1225 # 12.25%
-      count: 20
+      - query: "r:r" # Regular rare
+        chance: 8775 # 87.75%
+        count: 74
+      - query: "r:m"  # Regular mythic
+        chance: 1225 # 12.25%
+        count: 20
 
   non_foil_boosterfun_rare_mythic: # TODO: Think name
     any:
-      - rawquery: "e:fin {boosterfun} r:r" # Non-foil main set Booster Fun rare
-        chance:
-      - rawquery: "e:fin {boosterfun} r:m" # Non-foil main set Booster Fun mythic rare
-        chance:
+      - rawquery: "{boosterfun} r:r" # Non-foil main set Booster Fun rare
+        chance: 231 # 23.1%
+      - rawquery: "{boosterfun} r:m" # Non-foil main set Booster Fun mythic rare
+        chance: 38 # 3.8%
         count: 22
       - rawquery: "{extended_art_legends} r:r" # Non-foil extended-art legendary rares
-        chance: 
+        chance: 182 # 18.2%
         count: 44
       - rawquery: "{extended_art_legends} r:m" # Non-foil extended-art legendary mythic rares
-        chance: 
+        chance: 29 # 2.9%
         count: 14
       - rawquery: "e:fic number:194-200" # FIC borderless sagas (rares)
         # TODO: Put the numbers in the queries section
-        chance: # 2.9%
+        chance: 29 # 2.9%
         count: 7
-      - rawquery: "e:fic number:194-200" # FIC 
-        chance: # 3.3%
-        count: 16 # Wizards says 16 but I can only find 8
-
+      - rawquery: "e:fic number:201-208" # FIC borderless character
+        chance: 33 # 3.3%
+        # count: 16 # TODO: Wizards says 16 but I can only find 8
       - rawquery: "e:fic number:101-193 r:r" # FIC extended-art rares, combining legendary and non-legendary
-        chance: # 11.6% + 23.6%
+        chance: 352 # 35.2% = 11.6% + 23.6%
         count: 85
       - rawquery: "e:fic number:101-193 r:m" # FIC extended-art mythic rares
-        chance: # 1.6%
+        chance: 16 # 1.6%
         count: 8
 
   foil_boosterfun_rare_mythic:
@@ -132,16 +127,16 @@ sheets:
     any:
       - rawquery: "e:fic number:194-200" # FIC borderless sagas (rares)
         # TODO: Put the numbers in the queries section
-        chance: # 2.9%
+        chance: 14 # 1.4%
         count: 7
       - rawquery: "e:fic number:101-128" # FIC exteded-art rares non legendary creatures
-        chance: 
+        chance: 58 # 5.8%
         count: 28
-      - rawquery: "e:fic number:194-200" # FIC borderless character
-        chance:
+      - rawquery: "e:fic number:201-208" # FIC borderless character
+        chance: 8 # 0.8%
         count: 8
-      - rawquery: "e:fic number:194-200" # FIC surge foil borderless character
-        chance: 
+      - rawquery: "e:fic number:209-216" # FIC surge foil borderless character
+        chance: 10 # 1%
         count: 8
 
   non_foil_through_the_ages:
