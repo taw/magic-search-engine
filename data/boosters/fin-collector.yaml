@@ -1,0 +1,198 @@
+# Data from: https://magic.wizards.com/en/news/feature/collecting-final-fantasy
+# And https://magic.wizards.com/en/products/final-fantasy/card-image-gallery
+
+pack:
+  foil_common: 3
+  foil_uncommon: 1
+  boosterfun_common_uncommon: 1
+  foil_boostefun_common_uncommon: 1
+  foil_basic: 1
+  foil_rare_mythic: 1
+  boosterfun_rare_mythic_slot: # TODO: Double check this is correct
+    - non_foil_boosterfun_rare_mythic: 3
+      chance: 1
+      # chance: ? # TODO: Calculate
+    - non_foil_boosterfun_rare_mythic: 2
+      foil_boosterfun_rare_mythic: 1
+      chance: 1
+      # chance: ? # TODO: Calculate
+  through_the_ages:
+    - non_foil_through_the_ages: 1
+      chance: 1 # 50%
+    - foil_through_the_ages: 1
+      chance: 1 # 50%
+
+  foil_boosterfun_rare_mythic_2: 1 # TODO: Find better name
+
+
+queries:
+  uncommon_without_cid: "r:u -cid"
+  regular_cid: "e:{set} cid -frame:extendedart"
+  artist: "e:{set} number:315-323,577"
+  woodblock: "e:{set} number:324-373"
+
+  extended_art_legends: "e:{set} number:421-518"
+  surge_foil_character: "e:{set} number:519-550"
+
+  secret_rendezvous: "e:FIC number:217-219"
+
+  boosterfun: "e:{set} number:310-420,577" # Doesn't include extended-art legends
+
+sheets:
+  foil_common:
+    foil: true
+    query: "r:c -t:basic"
+    count: 90
+
+  foil_uncommon:
+    foil: true
+    any:
+    - query: "{uncommon_without_cid}"
+      chance: 107676 # 99.7% (997/1000) * 108/109 = 107676/109000
+      count: 108
+    - rawquery: "{regular_cid}"
+      chance: 997 # 99.7% * 0.9% = 997/109000
+      count: 15
+
+  boosterfun_common_uncommon:
+    any:
+      - rawquery: "r:u {extended_art_legends}" # Extended art legendary uncommon
+        chance: 667
+        count: 40
+      - rawquery: "{woodblock} r:c" # Main set Booster Fun common
+        chance: 50
+        count: 3
+      - rawquery: "{woodblock} r:u" # Main set Booster Fun uncommon
+        chance: 267
+        count: 12 # TODO: Wizards says 13 here? Which is the 13th booster fun uncommon?
+      - rawquery: "{secret_rendezvous}" # Alternate-art Secret Rendezvous
+        chance: 16
+        count: 3
+
+  foil_boostefun_common_uncommon:
+    foil: true
+    any:
+      - rawquery: "{woodblock} r:c" # Main set Booster Fun common
+        chance: 1375
+        count: 3
+      - rawquery: "{woodblock} r:u" # Main set Booster Fun uncommon
+        chance: 7275
+        count: 12 # TODO: Wizards says 13 here? Which is the 13th booster fun uncommon?
+      - rawquery: "{secret_rendezvous}" # Alternate-art Secret Rendezvous
+        chance: 450
+        count: 3
+      - rawquery: "{surge_foil_character} r:u" # Surge foil uncommon borderless character
+        chance: 900
+        count: 4
+
+  foil_basic:
+    foil: true
+    rawquery: "e:{set} t:basic number<519" # Basic lands
+    count: 16
+
+  foil_rare_mythic:
+    any:
+    - query: "r:r" # Regular rare
+      chance: 8775 # 87.75%
+      count: 74
+    - query: "r:m"  # Regular mythic
+      chance: 1225 # 12.25%
+      count: 20
+
+  non_foil_boosterfun_rare_mythic: # TODO: Think name
+    any:
+      - rawquery: "e:fin {boosterfun} r:r" # Non-foil main set Booster Fun rare
+        chance:
+      - rawquery: "e:fin {boosterfun} r:m" # Non-foil main set Booster Fun mythic rare
+        chance:
+        count: 22
+      - rawquery: "{extended_art_legends} r:r" # Non-foil extended-art legendary rares
+        chance: 
+        count: 44
+      - rawquery: "{extended_art_legends} r:m" # Non-foil extended-art legendary mythic rares
+        chance: 
+        count: 14
+      - rawquery: "e:fic number:194-200" # FIC borderless sagas (rares)
+        # TODO: Put the numbers in the queries section
+        chance: # 2.9%
+        count: 7
+      - rawquery: "e:fic number:194-200" # FIC 
+        chance: # 3.3%
+        count: 16 # Wizards says 16 but I can only find 8
+
+      - rawquery: "e:fic number:101-193 r:r" # FIC extended-art rares, combining legendary and non-legendary
+        chance: # 11.6% + 23.6%
+        count: 85
+      - rawquery: "e:fic number:101-193 r:m" # FIC extended-art mythic rares
+        chance: # 1.6%
+        count: 8
+
+  foil_boosterfun_rare_mythic:
+    foil: true
+    any:
+      - rawquery: "e:fic number:194-200" # FIC borderless sagas (rares)
+        # TODO: Put the numbers in the queries section
+        chance: # 2.9%
+        count: 7
+      - rawquery: "e:fic number:101-128" # FIC exteded-art rares non legendary creatures
+        chance: 
+        count: 28
+      - rawquery: "e:fic number:194-200" # FIC borderless character
+        chance:
+        count: 8
+      - rawquery: "e:fic number:194-200" # FIC surge foil borderless character
+        chance: 
+        count: 8
+
+  non_foil_through_the_ages:
+    any:
+      - rawquery: "e:fca r:u" # Uncommons FCA
+        chance: 683 # 68.3%
+        count: 17
+      - rawquery: "e:fca r:r -is:alchemy" # Rares FCA
+        chance: 257 # 25.7%
+        count: 32
+      - rawquery: "e:fca r:m" # Mythics FCA
+        chance: 60 # 6%
+        count: 15
+  foil_through_the_ages:
+    foil: true
+    use: non_foil_through_the_ages
+
+
+  foil_boosterfun_rare_mythic_2:
+    foil: true # TODO: Does this work if we have surge foils in this sheet?
+    any:
+      - rawquery: "{artist} r:r" # Artist rare
+        chance: 19 # 1.9%
+        count: 3
+      - rawquery: "{artist} r:m" # Artist mythic rare
+        chance: 22 # 2.2%
+        count: 7
+      - rawquery: "{woodblock} r:r" # Borderless woodblock rare
+        chance: 365 # 36.5%
+        count: 29
+      - rawquery: "{woodblock} r:m" # Borderless woodblock mythic rare
+        chance: 56 # 5.6%
+        count: 6
+        # TODO:  1 of 26 Traditional foil main set borderless rares (31.6%) or 9 mythic rares (5.6%)
+      # - rawquery:
+      #   chance:
+      #   count: 26
+      # - rawquery: 
+      #   chance:
+      #   count: 9
+      - rawquery: "{surge_foil_character} r:r" # Surge foil rare borderless character 
+        chance: 151 # 15.1%
+        count: 20
+      - rawquery: "{surge_foil_character} r:m" # Surge foil mythic rare borderless character 
+        chance: 30 # 3%
+        count: 8
+      # TODO: Add Colorful Traveling Chocobo in yellow, green, blue, pink, or black (less than 1%)
+      
+      # - rawquery:
+      #   chance:
+      #   count:
+
+  
+

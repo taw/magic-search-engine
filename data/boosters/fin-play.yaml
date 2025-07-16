@@ -25,6 +25,7 @@ queries:
   uncommon_without_cid: "r:u -cid"
   regular_cid: "e:{set} cid -frame:extendedart"
   boosterfun: "e:{set} number:310-518,577" # TODO: This query wouldn't be necessary if is:boosterfun works correctly
+  # TODO: I think boosterfun is not correct, extended art should not be included, they never appear in play boosters
 
 sheets:
   common:
