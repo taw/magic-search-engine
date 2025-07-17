@@ -27,12 +27,25 @@ pack:
 queries:
   uncommon_without_cid: "r:u -cid"
   regular_cid: "e:{set} cid -frame:extendedart"
+  adventure_lands: "e:{set} number:310-314"
   artist: "e:{set} number:315-323,577"
   woodblock: "e:{set} number:324-373"
+  character: "e:{set} number:374-405"
   extended_art_legends: "e:{set} number:421-518"
   surge_foil_character: "e:{set} number:519-550"
   boosterfun: "e:{set} number:310-420,577" # Doesn't include extended-art legends
+  borderless_traveling_chocobo: "e:{set} number:406"
+  colored_chocobo: "e:{set} number:551-551d"
+
   secret_rendezvous: "e:FIC number:217-219"
+  fic_base_commanders: "e:FIC number:1-8"
+  fic_extended_art: "e:FIC number:101-193"
+  # 101-193: Extended art (28 rares, 57 legendary rares, 8 legendary mythics)
+  # 194-200: borderless sagas (7)
+  # 201-208: borderless character / borderless commanders (8)
+  # 209-216: surge foil borderless character / borderless commanders (8)
+  # 217-219: Secret Rendezvous (the ones that appear in Collector Booster)
+
 
 sheets:
   foil_common:
@@ -112,15 +125,15 @@ sheets:
         # TODO: Put the numbers in the queries section
         chance: 29 # 2.9%
         count: 7
-      - rawquery: "e:fic number:201-208" # FIC borderless character
+      - rawquery: "e:fic (number:201-208 or number:1-8)" # FIC borderless character
         chance: 33 # 3.3%
-        # count: 16 # TODO: Wizards says 16 but I can only find 8
+        count: 16 # 
       - rawquery: "e:fic number:101-193 r:r" # FIC extended-art rares, combining legendary and non-legendary
         chance: 352 # 35.2% = 11.6% + 23.6%
         count: 85
-      - rawquery: "e:fic number:101-193 r:m" # FIC extended-art mythic rares
+      - rawquery: "({fic_extended_art} or {fic_base_commanders}) r:m" # FIC extended-art mythic rares
         chance: 16 # 1.6%
-        count: 8
+        count: 16
 
   foil_boosterfun_rare_mythic:
     foil: true
@@ -132,7 +145,7 @@ sheets:
       - rawquery: "e:fic number:101-128" # FIC exteded-art rares non legendary creatures
         chance: 58 # 5.8%
         count: 28
-      - rawquery: "e:fic number:201-208" # FIC borderless character
+      - rawquery: "e:fic number:201-208" # FIC borderless character # TODO: I think this is wrong, it's the extended art non legendary ones
         chance: 8 # 0.8%
         count: 8
       - rawquery: "e:fic number:209-216" # FIC surge foil borderless character
@@ -168,26 +181,20 @@ sheets:
         chance: 365 # 36.5%
         count: 29
       - rawquery: "{woodblock} r:m" # Borderless woodblock mythic rare
-        chance: 56 # 5.6%
+        chance: 38 # 3.8%
         count: 6
-        # TODO:  1 of 26 Traditional foil main set borderless rares (31.6%) or 9 mythic rares (5.6%)
-      # - rawquery:
-      #   chance:
-      #   count: 26
-      # - rawquery: 
-      #   chance:
-      #   count: 9
+      - rawquery: "({character} or {adventure_lands}) r:r"
+        chance: 316 # 31.6%
+        count: 25 # TODO: Wizards says it's 26
+      - rawquery: "({character} or {borderless_traveling_chocobo}) r:m"
+        chance: 56 # 5.6%
+        count: 9
       - rawquery: "{surge_foil_character} r:r" # Surge foil rare borderless character 
         chance: 151 # 15.1%
         count: 20
       - rawquery: "{surge_foil_character} r:m" # Surge foil mythic rare borderless character 
         chance: 30 # 3%
         count: 8
-      # TODO: Add Colorful Traveling Chocobo in yellow, green, blue, pink, or black (less than 1%)
-      
-      # - rawquery:
-      #   chance:
-      #   count:
-
-  
-
+      - rawquery: "{colored_chocobo}" # Technically the black chocobo should be rarer than the rest
+        chance: 3 # 0.3%
+        count: 5
