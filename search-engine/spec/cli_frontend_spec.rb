@@ -21,6 +21,7 @@ describe "CLI Frontend" do
         Cinder Glade
         Commercial District
         Dryad Arbor
+        Festering Thicket
         Fetching Garden
         Forest
         Gate to Manorborn
@@ -48,6 +49,7 @@ describe "CLI Frontend" do
         Temple Garden
         Tropical Island
         Underground Mortuary
+        Vernal Fen
         Wooded Ridgeline
         Woodland Chasm
         Zagoth Triome
