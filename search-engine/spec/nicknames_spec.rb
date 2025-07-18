@@ -264,12 +264,14 @@ describe "Card nicknames" do
   # The name is unique
   it "is:battleland" do
     assert_search_results "is:battleland",
-      "Prairie Stream",
-      "Sunken Hollow",
-      "Smoldering Marsh",
+      "Canopy Vista",
       "Cinder Glade",
-      "Canopy Vista"
-    assert_search_equal "is:battleland",
+      "Prairie Stream",
+      "Radiant Summit",
+      "Smoldering Marsh",
+      "Sunken Hollow",
+      "Vernal Fen"
+      assert_search_equal "is:battleland",
       'o:"This land enters tapped unless you control two or more basic lands."'
     assert_search_equal "is:battleland", "is:tangoland"
   end
@@ -457,7 +459,9 @@ describe "Card nicknames" do
   it "is:cycleland" do
     assert_search_results "is:cycleland",
       "Canyon Slough",
+      "Festering Thicket",
       "Fetid Pools",
+      "Glittering Massif",
       "Irrigated Farmland",
       "Scattered Groves",
       "Sheltered Thicket"
