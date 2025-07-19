@@ -1,0 +1,202 @@
+# Data from: https://magic.wizards.com/en/news/feature/collecting-final-fantasy
+# And https://magic.wizards.com/en/products/final-fantasy/card-image-gallery
+
+pack:
+  foil_common: 3
+  foil_uncommon: 1
+  boosterfun_common_uncommon: 1
+  foil_boosterfun_common_uncommon: 1
+  foil_basic: 1
+  foil_rare_mythic: 1
+  boosterfun_rare_mythic_slot:
+    - non_foil_boosterfun_rare_mythic: 3
+      chance: 753571 # 75.3571%
+    - non_foil_boosterfun_rare_mythic: 2
+      fic_foil_boosterfun_rare_mythic: 1
+      chance: 246429 # 24.6429%
+  through_the_ages:
+    - non_foil_through_the_ages: 1
+      chance: 1 # 50%
+    - foil_through_the_ages: 1
+      chance: 1 # 50%
+  foil_boosterfun_rare_mythic: 1
+
+queries:
+  uncommon_without_cid: "r:u -cid"
+  regular_cid: "e:{set} cid -frame:extendedart"
+  adventure_lands: "e:{set} number:310-314"
+  artist: "e:{set} number:315-323,577"
+  woodblock: "e:{set} number:324-373"
+  character: "e:{set} number:374-405"
+  extended_art_legends: "e:{set} number:421-518"
+  surge_foil_character: "e:{set} number:519-550"
+  boosterfun: "e:{set} number:310-420,577" # Doesn't include extended-art legends
+  borderless_traveling_chocobo: "e:{set} number:406"
+  colored_chocobo: "e:{set} number:551-551d"
+  fic_base_commanders: "e:FIC number:1-8"
+  fic_extended_art: "e:FIC number:101-193"
+  fic_borderless_sagas: "e:FIC number:194-200"
+  fic_borderless_character: "e:FIC number:201-208"
+  fic_surge_foil_borderless_character: "e:FIC number:209-216"
+  fic_secret_rendezvous: "e:FIC number:217-219"
+  fic_extended_art_rares_non_legendary_creatures: "e:FIC number:101-128"
+ 
+sheets:
+  foil_common:
+    foil: true
+    query: "r:c -t:basic"
+    count: 90
+
+  foil_uncommon:
+    foil: true
+    any:
+    - query: "{uncommon_without_cid}"
+      chance: 107676 # 99.7% (997/1000) * 108/109 = 107676/109000
+      count: 108
+    - rawquery: "{regular_cid}"
+      chance: 997 # 99.7% * 0.9% = 997/109000
+      count: 15
+
+  boosterfun_common_uncommon:
+    any:
+      - rawquery: "r:u {extended_art_legends}" # Extended art legendary uncommon
+        chance: 667
+        count: 40
+      - rawquery: "{woodblock} r:c" # Main set Booster Fun common
+        chance: 50
+        count: 3
+      - rawquery: "{woodblock} r:u" # Main set Booster Fun uncommon
+        chance: 267
+        count: 12 # TODO: Wizards says 13 here? Which is the 13th booster fun uncommon?
+      - rawquery: "{fic_secret_rendezvous}" # Alternate-art Secret Rendezvous
+        chance: 16
+        count: 3
+
+  foil_boosterfun_common_uncommon:
+    foil: true
+    any:
+      - rawquery: "{woodblock} r:c" # Main set Booster Fun common
+        chance: 1375
+        count: 3
+      - rawquery: "{woodblock} r:u" # Main set Booster Fun uncommon
+        chance: 7275
+        count: 12 # TODO: Wizards says 13 here? Which is the 13th booster fun uncommon?
+      - rawquery: "{fic_secret_rendezvous}" # Alternate-art Secret Rendezvous
+        chance: 450
+        count: 3
+      - rawquery: "{surge_foil_character} r:u" # Surge foil uncommon borderless character
+        chance: 900
+        count: 4
+
+  foil_basic:
+    foil: true
+    rawquery: "e:{set} t:basic number<519" # Basic lands
+    count: 16
+
+  foil_rare_mythic:
+    any:
+      - query: "r:r" # Regular rare
+        chance: 8775 # 87.75%
+        count: 74
+      - query: "r:m"  # Regular mythic
+        chance: 1225 # 12.25%
+        count: 20
+
+  non_foil_boosterfun_rare_mythic:
+    any:
+      - rawquery: "{boosterfun} r:r" # Non-foil main set Booster Fun rare
+        chance: 231 # 23.1%
+      - rawquery: "{boosterfun} r:m" # Non-foil main set Booster Fun mythic rare
+        chance: 38 # 3.8%
+        count: 22
+      - rawquery: "{extended_art_legends} r:r" # Non-foil extended-art legendary rares
+        chance: 182 # 18.2%
+        count: 44
+      - rawquery: "{extended_art_legends} r:m" # Non-foil extended-art legendary mythic rares
+        chance: 29 # 2.9%
+        count: 14
+      - rawquery: "{fic_borderless_sagas}" # FIC borderless sagas (rares)
+        chance: 29 # 2.9%
+        count: 7
+      - rawquery: "{fic_base_commanders} or {fic_borderless_character}"
+        chance: 33 # 3.3%
+        count: 16 # 
+      - rawquery: "{fic_extended_art} r:r" # FIC extended-art rares, combining legendary and non-legendary
+        chance: 352 # 35.2% = 11.6% + 23.6%
+        count: 85
+      - rawquery: "{fic_extended_art} r:m" # FIC extended-art mythic rares
+        chance: 16 # 1.6%
+        count: 8
+
+  fic_foil_boosterfun_rare_mythic:
+    foil: true
+    any:
+      - rawquery: "{fic_borderless_sagas}" # FIC borderless sagas (rares)
+        chance: 14 # 1.4%
+        count: 7
+      - rawquery: "{fic_extended_art_rares_non_legendary_creatures}" # FIC exteded-art rares non legendary creatures
+        chance: 58 # 5.8%
+        count: 28
+      - rawquery: "{fic_borderless_character}" # FIC borderless character
+        chance: 8 # 0.8%
+        count: 8
+      - rawquery: "{fic_surge_foil_borderless_character}" # FIC surge foil borderless character
+        chance: 10 # 1%
+        count: 8
+
+  non_foil_through_the_ages:
+    any:
+      - rawquery: "e:fca r:u" # Uncommons FCA
+        chance: 683 # 68.3%
+        count: 17
+      - rawquery: "e:fca r:r -is:alchemy" # Rares FCA
+        chance: 257 # 25.7%
+        count: 32
+      - rawquery: "e:fca r:m" # Mythics FCA
+        chance: 60 # 6%
+        count: 15
+  foil_through_the_ages:
+    foil: true
+    use: non_foil_through_the_ages
+
+
+  foil_boosterfun_rare_mythic:
+    foil: true
+    any:
+      - rawquery: "{artist} r:r" # Artist rare
+        chance: 19 # 1.9%
+        count: 3
+      - rawquery: "{artist} r:m" # Artist mythic rare
+        chance: 22 # 2.2%
+        count: 7
+      - rawquery: "{woodblock} r:r" # Borderless woodblock rare
+        chance: 365 # 36.5%
+        count: 29
+      - rawquery: "{woodblock} r:m" # Borderless woodblock mythic rare
+        chance: 38 # 3.8%
+        count: 6
+      - rawquery: "({character} or {adventure_lands}) r:r"
+        chance: 316 # 31.6%
+        count: 25 # TODO: Wizards says it's 26
+      - rawquery: "({character} or {borderless_traveling_chocobo}) r:m"
+        chance: 56 # 5.6%
+        count: 9
+      - rawquery: "{surge_foil_character} r:r" # Surge foil rare borderless character 
+        chance: 151 # 15.1%
+        count: 20
+      - rawquery: "{surge_foil_character} r:m" # Surge foil mythic rare borderless character 
+        chance: 30 # 3%
+        count: 8
+      - rawquery: "{colored_chocobo}" # Technically the black chocobo should be rarer than the rest
+        chance: 3 # 0.3%
+        count: 5
+
+
+# (*) Calculation for boosterfun_rare_mythic_slot
+# The rate for a foil is 9% but there can only be one foil maximum. So we have 2 scenarios:
+# 1. 3 non foil cards
+# 2. 2 non foil cards and one foil
+
+# The chances of scenario 1 are 91% * 91% * 91% = 75.3571%
+# The cnaces of scenario 2 are then 100% - 75.3571% = 24.6429%
+
