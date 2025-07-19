@@ -1,0 +1,67 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-aetherdrift
+pack:
+  foil_common: 4
+  foil_uncommon: 3
+  foil_driver_seat_land: 1
+  revved_up_cu: 1
+  foil_revved_up_cu: 1
+  rare_mythic: 1
+  commander:
+    - showcase_commander: 1
+      chance: 379
+    - foil_showcase_commander: 1
+      chance: 21
+  booster_fun: 2
+  foil_booster_fun: 1
+queries:
+  driver_basic: "e:{set} number:272-276"
+  revved_up_c_or_u: "e:{set} number:292-332 (r:c or r:u)"
+  revved_up_r_or_m: "e:{set} number:292-332 (r:r or r:m)"
+  rude_riders: "e:{set} number:333-346"
+  grafitti_giants: "e:{set} number:347-354"
+  borderless_rare: "e:{set} number: 355-375"
+  r_or_m_boosterfun: "{revved_up_r_or_m} or {rude_riders} or {grafitti_giants} or {borderless_rare}"
+  jp_showcase: "e:{set} number:397-406"
+  fracture_foil: "e:{set} number:407-416"
+sheets:
+  foil_driver_seat_land:
+    foil: true
+    query: "{driver_basic}"
+  revved_up_cu:
+    any:
+    - rawquery: "{revved_up_c_or_u} r:c"
+      chance: 15
+    - rawquery: "{revved_up_c_or_u} r:u"
+      chance: 17
+  foil_revved_up_cu:
+    foil: true
+    use: revved_up_cu
+  showcase_commander:
+    any:
+    - rawquery: "e:drc number<=4"
+      rate: 1
+    - rawquery: "e:drc frame:extendedart"
+      rate: 2
+  foil_showcase_commander:
+    foil: true
+    rawquery: "e:drc number<=4"
+  booster_fun:
+    any:
+    - rawquery: "{r_or_m_boosterfun} r:r"
+      rate: 2
+    - rawquery: "{r_or_m_boosterfun} r:m"
+      rate: 1
+  foil_booster_fun:
+    foil: true
+    any:
+    - rawquery: "{r_or_m_boosterfun} r:r"
+      chance: 746
+    - rawquery: "{r_or_m_boosterfun} r:m"
+      chance: 112
+    - rawquery: "{jp_showcase}"
+      chance: 90
+    - rawquery: "{fracture_foil}"
+      chance: 10
+    - set: spg
+      code: "DFT"
+      chance: 42

@@ -2,7 +2,7 @@
 pack:
 - foil_common: 4
   foil_uncommon: 3
-  eldrazi_land: 1
+  foil_eldrazi_land: 1
   retro_cu: 1
   foil_retro_cu: 1
   foil_rare_mythic: 1
@@ -14,7 +14,8 @@ pack:
   showcase_rm: 2
   foil_showcase_rm: 1
 sheets:
-  eldrazi_land:
+  foil_eldrazi_land:
+    foil: true
     rawquery: "e:mh3 number:304-308"
   retro_cu:
     any:
