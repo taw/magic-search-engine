@@ -1,11 +1,13 @@
 class ConditionIsBattleland < ConditionNickname
   def names
     [
-      "prairie stream",
-      "sunken hollow",
-      "smoldering marsh",
-      "cinder glade",
       "canopy vista",
+      "cinder glade",
+      "prairie stream",
+      "radiant summit",
+      "smoldering marsh",
+      "sunken hollow",
+      "vernal fen",
     ]
   end
 
