@@ -5,24 +5,21 @@ pack:
   foil_common: 3
   foil_uncommon: 1
   boosterfun_common_uncommon: 1
-  foil_boostefun_common_uncommon: 1
+  foil_boosterfun_common_uncommon: 1
   foil_basic: 1
   foil_rare_mythic: 1
-  boosterfun_rare_mythic_slot: # TODO: Double check this is correct
+  boosterfun_rare_mythic_slot:
     - non_foil_boosterfun_rare_mythic: 3
-      chance: 1
-      # chance: ? # TODO: Calculate
+      chance: 753571 # 75.3571%
     - non_foil_boosterfun_rare_mythic: 2
-      foil_boosterfun_rare_mythic: 1
-      chance: 1
-      # chance: ? # TODO: Calculate
+      fic_foil_boosterfun_rare_mythic: 1
+      chance: 246429 # 24.6429%
   through_the_ages:
     - non_foil_through_the_ages: 1
       chance: 1 # 50%
     - foil_through_the_ages: 1
       chance: 1 # 50%
-
-  foil_boosterfun_rare_mythic_2: 1 # TODO: Find better name
+  foil_boosterfun_rare_mythic: 1
 
 queries:
   uncommon_without_cid: "r:u -cid"
@@ -36,17 +33,14 @@ queries:
   boosterfun: "e:{set} number:310-420,577" # Doesn't include extended-art legends
   borderless_traveling_chocobo: "e:{set} number:406"
   colored_chocobo: "e:{set} number:551-551d"
-
-  secret_rendezvous: "e:FIC number:217-219"
   fic_base_commanders: "e:FIC number:1-8"
   fic_extended_art: "e:FIC number:101-193"
-  # 101-193: Extended art (28 rares, 57 legendary rares, 8 legendary mythics)
-  # 194-200: borderless sagas (7)
-  # 201-208: borderless character / borderless commanders (8)
-  # 209-216: surge foil borderless character / borderless commanders (8)
-  # 217-219: Secret Rendezvous (the ones that appear in Collector Booster)
-
-
+  fic_borderless_sagas: "e:FIC number:194-200"
+  fic_borderless_character: "e:FIC number:201-208"
+  fic_surge_foil_borderless_character: "e:FIC number:209-216"
+  fic_secret_rendezvous: "e:FIC number:217-219"
+  fic_extended_art_rares_non_legendary_creatures: "e:FIC number:101-128"
+ 
 sheets:
   foil_common:
     foil: true
@@ -74,11 +68,11 @@ sheets:
       - rawquery: "{woodblock} r:u" # Main set Booster Fun uncommon
         chance: 267
         count: 12 # TODO: Wizards says 13 here? Which is the 13th booster fun uncommon?
-      - rawquery: "{secret_rendezvous}" # Alternate-art Secret Rendezvous
+      - rawquery: "{fic_secret_rendezvous}" # Alternate-art Secret Rendezvous
         chance: 16
         count: 3
 
-  foil_boostefun_common_uncommon:
+  foil_boosterfun_common_uncommon:
     foil: true
     any:
       - rawquery: "{woodblock} r:c" # Main set Booster Fun common
@@ -87,7 +81,7 @@ sheets:
       - rawquery: "{woodblock} r:u" # Main set Booster Fun uncommon
         chance: 7275
         count: 12 # TODO: Wizards says 13 here? Which is the 13th booster fun uncommon?
-      - rawquery: "{secret_rendezvous}" # Alternate-art Secret Rendezvous
+      - rawquery: "{fic_secret_rendezvous}" # Alternate-art Secret Rendezvous
         chance: 450
         count: 3
       - rawquery: "{surge_foil_character} r:u" # Surge foil uncommon borderless character
@@ -108,7 +102,7 @@ sheets:
         chance: 1225 # 12.25%
         count: 20
 
-  non_foil_boosterfun_rare_mythic: # TODO: Think name
+  non_foil_boosterfun_rare_mythic:
     any:
       - rawquery: "{boosterfun} r:r" # Non-foil main set Booster Fun rare
         chance: 231 # 23.1%
@@ -121,34 +115,32 @@ sheets:
       - rawquery: "{extended_art_legends} r:m" # Non-foil extended-art legendary mythic rares
         chance: 29 # 2.9%
         count: 14
-      - rawquery: "e:fic number:194-200" # FIC borderless sagas (rares)
-        # TODO: Put the numbers in the queries section
+      - rawquery: "{fic_borderless_sagas}" # FIC borderless sagas (rares)
         chance: 29 # 2.9%
         count: 7
-      - rawquery: "e:fic (number:201-208 or number:1-8)" # FIC borderless character
+      - rawquery: "{fic_base_commanders} or {fic_borderless_character}"
         chance: 33 # 3.3%
         count: 16 # 
-      - rawquery: "e:fic number:101-193 r:r" # FIC extended-art rares, combining legendary and non-legendary
+      - rawquery: "{fic_extended_art} r:r" # FIC extended-art rares, combining legendary and non-legendary
         chance: 352 # 35.2% = 11.6% + 23.6%
         count: 85
-      - rawquery: "({fic_extended_art} or {fic_base_commanders}) r:m" # FIC extended-art mythic rares
+      - rawquery: "{fic_extended_art} r:m" # FIC extended-art mythic rares
         chance: 16 # 1.6%
-        count: 16
+        count: 8
 
-  foil_boosterfun_rare_mythic:
+  fic_foil_boosterfun_rare_mythic:
     foil: true
     any:
-      - rawquery: "e:fic number:194-200" # FIC borderless sagas (rares)
-        # TODO: Put the numbers in the queries section
+      - rawquery: "{fic_borderless_sagas}" # FIC borderless sagas (rares)
         chance: 14 # 1.4%
         count: 7
-      - rawquery: "e:fic number:101-128" # FIC exteded-art rares non legendary creatures
+      - rawquery: "{fic_extended_art_rares_non_legendary_creatures}" # FIC exteded-art rares non legendary creatures
         chance: 58 # 5.8%
         count: 28
-      - rawquery: "e:fic number:201-208" # FIC borderless character # TODO: I think this is wrong, it's the extended art non legendary ones
+      - rawquery: "{fic_borderless_character}" # FIC borderless character
         chance: 8 # 0.8%
         count: 8
-      - rawquery: "e:fic number:209-216" # FIC surge foil borderless character
+      - rawquery: "{fic_surge_foil_borderless_character}" # FIC surge foil borderless character
         chance: 10 # 1%
         count: 8
 
@@ -168,8 +160,8 @@ sheets:
     use: non_foil_through_the_ages
 
 
-  foil_boosterfun_rare_mythic_2:
-    foil: true # TODO: Does this work if we have surge foils in this sheet?
+  foil_boosterfun_rare_mythic:
+    foil: true
     any:
       - rawquery: "{artist} r:r" # Artist rare
         chance: 19 # 1.9%
@@ -198,3 +190,13 @@ sheets:
       - rawquery: "{colored_chocobo}" # Technically the black chocobo should be rarer than the rest
         chance: 3 # 0.3%
         count: 5
+
+
+# (*) Calculation for boosterfun_rare_mythic_slot
+# The rate for a foil is 9% but there can only be one foil maximum. So we have 2 scenarios:
+# 1. 3 non foil cards
+# 2. 2 non foil cards and one foil
+
+# The chances of scenario 1 are 91% * 91% * 91% = 75.3571%
+# The cnaces of scenario 2 are then 100% - 75.3571% = 24.6429%
+
