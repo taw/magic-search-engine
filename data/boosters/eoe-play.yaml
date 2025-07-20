@@ -1,0 +1,157 @@
+# Data from: https://magic.wizards.com/en/news/feature/collecting-edge-of-eternities
+# And https://magic.wizards.com/en/products/edge-of-eternities/card-image-gallery
+
+pack:
+  common_special_slot:
+    - common: 7
+      chance: 982 # 98.2%
+    - common: 6
+      special_guest: 1
+      chance: 18 # 1.8%
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil: 1
+  land:
+    - non_foil_land: 1
+      chance: 80
+    - foil_land: 1
+      chance: 20
+
+queries:
+   viewport: "e:{set} number:277-286"
+   triumphant: "e:{set} number:287-302"
+   surreal: "e:{set} number:303-316"
+   stellar_sights: "e:EOS number:1-45"
+
+sheets:
+  common:
+    query: "r:c" # Regular common
+    # count: 81
+
+  uncommon:
+    query: "r:u" # Regular uncommon
+    # count: 100
+
+  wildcard: # TODO: See if I can reuse other sheets
+    # TODO: Everything under 1% adds up to 0.9%
+    any:
+      - use: common
+        chance: 125 # 12.5%
+      - use: uncommon
+        chance: 625 # 62.5%
+      - query: "r:r" # Regular rare
+        chance: 106 # 10.6%
+        # count: 60
+      - query: "r:m" # Regular mythic
+        chance: 10 # TODO: < 1% ?? What should we use here? I can't be the same proportion as the rare slot, otherwise it'd be 1.87%
+        # count: 20
+      - rawquery: "{stellar_sights} r:r" # Rare Stellar Sights land
+        chance: 100 # 10%
+        # count: 30
+      - rawquery: "{stellar_sights} r:m" # Mythic rare Stellar Sights land
+        chance: 25 # 2.5%
+        # count: 15
+      - rawquery: "{viewport} r:r" # Rare viewport land
+        chance: 10 # TODO: < 1% ?? What should we use here? 
+        count: 5
+      - rawquery: "{viewport} r:m" # Mythic rare viewport land
+        chance: 10 # TODO: < 1% ?? What should we use here? 
+        count: 5
+      - rawquery: "{triumphant} r:r" # Rare triumphant
+        chance: 10 # TODO: < 1% ?? What should we use here? 
+        # count: 12
+      - rawquery: "{triumphant} r:m" # Mythic rare triumphant
+        chance: 10 # TODO: < 1% ?? What should we use here? 
+        # count: 4
+      - rawquery: "{surreal} r:r" # Rare surreal
+        chance: 10 # TODO: < 1% ?? What should we use here? 
+        # count: 11
+      - rawquery: "{surreal} r:m" # Mythic rare surreal
+        chance: 10 # TODO: < 1% ?? What should we use here? 
+        # count: 3
+
+  # TODO: Maybe I should create a regular_rare and resgular_mythic sheet
+
+  rare_mythic:
+    # TODO: Everything under 1% adds up to 1.4%
+    any:
+      - query: "r:r" # Regular rare
+        chance: 804 # 80.4%
+        # count: 60
+      - query: "r:m" # Regular mythic
+        chance: 142 # 14.2%
+        # count: 20
+      - rawquery: "{triumphant} r:r" # Rare triumphant
+        chance: 20 # 2%
+        # count: 12
+      - rawquery: "{triumphant} r:m" # Mythic rare triumphant
+        chance: 10 # TODO: < 1% ?? What should we use here? 
+        # count: 4
+      - rawquery: "{surreal} r:r" # Rare surreal
+        chance: 20 # 2%
+        # count: 11
+      - rawquery: "{surreal} r:m" # Mythic rare surreal
+        chance: 10 # TODO: < 1% ?? What should we use here? 
+        # count: 3
+      - rawquery: "{viewport} r:m" # Mythic rare viewport land
+        chance: 10 # TODO: < 1% ?? What should we use here? 
+        count: 5
+      
+  
+  foil:
+    # TODO: The unsepeificed slots add up to 1.5%
+    foil: true
+    any:
+      - use: common
+        chance: 580 # 58%
+      - use: uncommon
+        chance: 320 # 32%
+      - query: "r:r" # Regular rare
+        chance: 64 # 6.4%
+        # count: 60
+      - query: "r:m" # Regular mythic
+        chance: 11 # 1.1%
+        # count: 20
+      - rawquery: "{stellar_sights} r:r" # Rare Stellar Sights land
+        chance: 10 # 1%
+        # count: 30
+      - rawquery: "{stellar_sights} r:m" # Mythic rare Stellar Sights land
+        chance: 25 # 2.5%
+        # count: 15
+      - rawquery: "{viewport} r:r" # Rare viewport land
+        chance: 10 # TODO: < 1% ?? What should we use here? 
+        count: 5
+      - rawquery: "{viewport} r:m" # Mythic rare viewport land
+        chance: 10 # TODO: < 1% ?? What should we use here? 
+        count: 5
+      - rawquery: "{triumphant} r:r" # Rare triumphant
+        chance: 20 # 2%
+        # count: 12
+      - rawquery: "{triumphant} r:m" # Mythic rare triumphant
+        chance: 10 # TODO: < 1% ?? What should we use here? 
+        # count: 4
+      - rawquery: "{surreal} r:r" # Rare surreal
+        chance: 20 # 2%
+        # count: 11
+      - rawquery: "{surreal} r:m" # Mythic rare surreal
+        chance: 10 # TODO: < 1% ?? What should we use here? 
+        # count: 3
+
+  non_foil_land:
+    any:
+      - rawquery: "e:{set} number:267-276" # Normal basic land
+        chance: 4 # 64% / 16% = 4
+        count: 10
+      - rawquery: "e:{set} number:262-266" # Borderless Celestial basic lan
+        chance: 1
+        count: 5
+
+  foil_land:
+    foil: true
+    use: non_foil_land
+
+  special_guest:
+    set: spg
+    # code: "EOE" # TODO: Look liks this doesn't work yet
+    code: "TDM"
