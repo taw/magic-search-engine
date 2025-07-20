@@ -24,7 +24,7 @@ queries:
   character: "e:{set} number:374-405"
   uncommon_without_cid: "r:u -cid"
   regular_cid: "e:{set} cid -frame:extendedart"
-  boosterfun: "e:{set} number:310-518,577" # TODO: This query wouldn't be necessary if is:boosterfun works correctly
+  boosterfun: "e:{set} number:310-420,577" # Doesn't include extended art, they never appear in play boosters
 
 sheets:
   common:
@@ -77,7 +77,6 @@ sheets:
     - query: "r:m"  # Regular mythic
       chance: 100 # 10%
       count: 20
-    # - rawquery: "e:{set} r:r is:borderless (number<519 or number:577)" # TODO: should work if all surge foils are correctly classified
     - rawquery: "e:{set} r:r is:borderless (number<519 or number:577)" # Borderless rare
       chance: 80 # 8%
     - rawquery: "e:{set} r:m is:borderless (number<519 or number:577)" # Borderless mythic
@@ -105,7 +104,7 @@ sheets:
       - rawquery: "{boosterfun} r:c" # Common boosterfun
         chance: 10
         count: 3
-      - rawquery: "{boosterfun} r:u" # Uncommon boosterfun TODO: Should we exclude cid?
+      - rawquery: "{boosterfun} r:u" # Uncommon boosterfun
         chance: 50
       - rawquery: "{boosterfun} r:r"
         chance: 100
