@@ -1,6 +1,5 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-aetherdrift
 pack:
-  land: 1
   list_slot:
     - common: 7
       chance: 63
@@ -11,6 +10,7 @@ pack:
   rare_mythic_with_boosterfun: 1
   wildcard: 1
   foil: 1
+  land: 1
 queries:
   revved_up_c_or_u: "e:{set} number:292-332 (r:c or r:u)"
   revved_up_r_or_m: "e:{set} number:292-332 (r:r or r:m)"
