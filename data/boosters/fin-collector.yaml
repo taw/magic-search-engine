@@ -40,7 +40,7 @@ queries:
   fic_surge_foil_borderless_character: "e:FIC number:209-216"
   fic_secret_rendezvous: "e:FIC number:217-219"
   fic_extended_art_rares_non_legendary_creatures: "e:FIC number:101-128"
- 
+
 sheets:
   foil_common:
     foil: true
@@ -51,10 +51,10 @@ sheets:
     foil: true
     any:
     - query: "{uncommon_without_cid}"
-      chance: 107676 # 99.7% (997/1000) * 108/109 = 107676/109000
+      rate: 15
       count: 108
     - rawquery: "{regular_cid}"
-      chance: 997 # 99.7% * 0.9% = 997/109000
+      rate: 1
       count: 15
 
   boosterfun_common_uncommon:
@@ -120,7 +120,7 @@ sheets:
         count: 7
       - rawquery: "{fic_base_commanders} or {fic_borderless_character}"
         chance: 33 # 3.3%
-        count: 16 # 
+        count: 16 #
       - rawquery: "{fic_extended_art} r:r" # FIC extended-art rares, combining legendary and non-legendary
         chance: 352 # 35.2% = 11.6% + 23.6%
         count: 85
@@ -181,10 +181,10 @@ sheets:
       - rawquery: "({character} or {borderless_traveling_chocobo}) r:m"
         chance: 56 # 5.6%
         count: 9
-      - rawquery: "{surge_foil_character} r:r" # Surge foil rare borderless character 
+      - rawquery: "{surge_foil_character} r:r" # Surge foil rare borderless character
         chance: 151 # 15.1%
         count: 20
-      - rawquery: "{surge_foil_character} r:m" # Surge foil mythic rare borderless character 
+      - rawquery: "{surge_foil_character} r:m" # Surge foil mythic rare borderless character
         chance: 30 # 3%
         count: 8
       - rawquery: "{colored_chocobo}" # Technically the black chocobo should be rarer than the rest
