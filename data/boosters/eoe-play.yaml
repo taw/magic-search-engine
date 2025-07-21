@@ -33,110 +33,102 @@ sheets:
     query: "r:u" # Regular uncommon
     # count: 100
 
-  wildcard: # TODO: See if I can reuse other sheets
-    # TODO: Everything under 1% adds up to 0.9%
+  rare:
+    query: "r:r" # Regular rare
+    # count: 60
+
+  mythic:
+    query: "r:m" # Regular mythic
+    # count: 20
+
+  triumphant:
     any:
-      - use: common
-        chance: 125 # 12.5%
-      - use: uncommon
-        chance: 625 # 62.5%
-      - query: "r:r" # Regular rare
-        chance: 106 # 10.6%
-        # count: 60
-      - query: "r:m" # Regular mythic
-        chance: 10 # TODO: < 1% ?? What should we use here? I can't be the same proportion as the rare slot, otherwise it'd be 1.87%
-        # count: 20
+      - rawquery: "{triumphant} r:r" # Rare triumphant
+        rate: 2
+        # count: 12
+      - rawquery: "{triumphant} r:m" # Mythic rare triumphant
+        rate: 1
+        # count: 4
+
+  surreal:
+    any:
+      - rawquery: "{surreal} r:r" # Rare surreal
+        rate: 2
+        # count: 11
+      - rawquery: "{surreal} r:m" # Mythic rare surreal
+        rate: 1
+        # count: 3
+
+  stellar_sights:
+    any:
       - rawquery: "{stellar_sights} r:r" # Rare Stellar Sights land
-        chance: 100 # 10%
+        rate: 2
         # count: 30
       - rawquery: "{stellar_sights} r:m" # Mythic rare Stellar Sights land
-        chance: 25 # 2.5%
+        rate: 1
         # count: 15
-      - rawquery: "{viewport} r:r" # Rare viewport land
-        chance: 10 # TODO: < 1% ?? What should we use here? 
-        count: 5
-      - rawquery: "{viewport} r:m" # Mythic rare viewport land
-        chance: 10 # TODO: < 1% ?? What should we use here? 
-        count: 5
-      - rawquery: "{triumphant} r:r" # Rare triumphant
-        chance: 10 # TODO: < 1% ?? What should we use here? 
-        # count: 12
-      - rawquery: "{triumphant} r:m" # Mythic rare triumphant
-        chance: 10 # TODO: < 1% ?? What should we use here? 
-        # count: 4
-      - rawquery: "{surreal} r:r" # Rare surreal
-        chance: 10 # TODO: < 1% ?? What should we use here? 
-        # count: 11
-      - rawquery: "{surreal} r:m" # Mythic rare surreal
-        chance: 10 # TODO: < 1% ?? What should we use here? 
-        # count: 3
 
-  # TODO: Maybe I should create a regular_rare and resgular_mythic sheet
-
-  rare_mythic:
-    # TODO: Everything under 1% adds up to 1.4%
+  viewport:
     any:
-      - query: "r:r" # Regular rare
-        chance: 804 # 80.4%
-        # count: 60
-      - query: "r:m" # Regular mythic
-        chance: 142 # 14.2%
-        # count: 20
-      - rawquery: "{triumphant} r:r" # Rare triumphant
-        chance: 20 # 2%
-        # count: 12
-      - rawquery: "{triumphant} r:m" # Mythic rare triumphant
-        chance: 10 # TODO: < 1% ?? What should we use here? 
-        # count: 4
-      - rawquery: "{surreal} r:r" # Rare surreal
-        chance: 20 # 2%
-        # count: 11
-      - rawquery: "{surreal} r:m" # Mythic rare surreal
-        chance: 10 # TODO: < 1% ?? What should we use here? 
-        # count: 3
-      - rawquery: "{viewport} r:m" # Mythic rare viewport land
-        chance: 10 # TODO: < 1% ?? What should we use here? 
+      - rawquery: "{viewport} r:r" # Rare viewport land
+        rate: 2
         count: 5
-      
-  
-  foil:
-    # TODO: The unsepeificed slots add up to 1.5%
+      - rawquery: "{viewport} r:m" # Mythic rare viewport land
+        rate: 1
+        count: 5
+
+  wildcard: # See detailed calculations at the end of the file
+    any:
+      - use: common
+        chance: 12500 # 12.5%
+      - use: uncommon
+        chance: 62500 # 62.5%
+      - use: rare
+        chance: 10600 # 10.6%
+      - use: mythic
+        chance: 225 # 0.225%
+      - use: stellar_sights
+        chance: 12500 # 10% + 2.5% = 12.5%
+      - use: viewport
+        chance: 1225 # 1% + 0.225%
+      - use: triumphant
+        chance: 225 # 0.225%
+      - use: surreal
+        chance: 225 # 0.225%
+
+  rare_mythic: # See detailed calculations at the end of the file
+    any:
+      - use: rare
+        chance: 8040 # 80.4%
+      - use: mythic
+        chance: 1420 # 14.2%
+      - use: triumphant
+        chance: 233 # 2% + 0.33% = 2.33%
+      - use: surreal
+        chance: 227 # 2% + 0.27% = 2.27%
+      - rawquery: "{viewport} r:m" # Mythic rare viewport land
+        chance: 80 # 0.8%
+        count: 5
+
+  foil: # See detailed calculations at the end of the file
     foil: true
     any:
       - use: common
-        chance: 580 # 58%
+        chance: 5800 # 58%
       - use: uncommon
-        chance: 320 # 32%
-      - query: "r:r" # Regular rare
-        chance: 64 # 6.4%
-        # count: 60
-      - query: "r:m" # Regular mythic
-        chance: 11 # 1.1%
-        # count: 20
-      - rawquery: "{stellar_sights} r:r" # Rare Stellar Sights land
-        chance: 10 # 1%
-        # count: 30
-      - rawquery: "{stellar_sights} r:m" # Mythic rare Stellar Sights land
-        chance: 25 # 2.5%
-        # count: 15
-      - rawquery: "{viewport} r:r" # Rare viewport land
-        chance: 10 # TODO: < 1% ?? What should we use here? 
-        count: 5
-      - rawquery: "{viewport} r:m" # Mythic rare viewport land
-        chance: 10 # TODO: < 1% ?? What should we use here? 
-        count: 5
-      - rawquery: "{triumphant} r:r" # Rare triumphant
-        chance: 20 # 2%
-        # count: 12
-      - rawquery: "{triumphant} r:m" # Mythic rare triumphant
-        chance: 10 # TODO: < 1% ?? What should we use here? 
-        # count: 4
-      - rawquery: "{surreal} r:r" # Rare surreal
-        chance: 20 # 2%
-        # count: 11
-      - rawquery: "{surreal} r:m" # Mythic rare surreal
-        chance: 10 # TODO: < 1% ?? What should we use here? 
-        # count: 3
+        chance: 3200 # 32%
+      - use: rare
+        chance: 640 # 6.4%
+      - use: mythic
+        chance: 110 # 1.1%
+      - use: stellar_sights
+        chance: 125 # 1.25%
+      - use: viewport
+        chance: 42 # 0.42%
+      - use: triumphant
+        chance: 42 # 0.42%
+      - use: surreal
+        chance: 42 # 0.42%
 
   non_foil_land:
     any:
@@ -153,5 +145,53 @@ sheets:
 
   special_guest:
     set: spg
-    # code: "EOE" # TODO: Look liks this doesn't work yet
+    # code: "EOE" # TODO: Make this work
     code: "TDM"
+
+
+########## Calculations for the wildcard slot:
+# In this slot Wizards give 4 cateogries of cards with chances "less than 1%":
+# - mythic from the main set
+# - mythic viewport land
+# - rare or mythic triumphant
+# - rare or mythic surreal
+
+# Until more information is available, we'll have to make assumptions.
+# The sum of all chances that are detailed is 12.5% + 62.5% + 10.6% + 10% + 2.5% + 1% = 99.1%
+# So we have 0.9% to distribute among the 4 categories.
+
+# We'll give each category the same chance: 0.9% / 4 = 0.225%
+
+
+########## Calculations for the rare slot:
+# The sum of all chances that are detailed is 80.4% + 14.2% + 2% + 2% = 98.6%
+# So we have 1.4% to distribute.
+
+# We assume that both triumphant and surreal cards have a 2:1 rate for rare:mythic.
+# That gives us:
+#   - triumphant (12 rares, 4 mythics)
+#     - rare = 2%
+#     - mythic = 0.33%
+#   - surreal (11 rares, 3 mythics)
+#     - rare = 2%
+#     - mythic = 0.27%
+
+# Finally, the mythic viewport is 1.4% - 0.33% - 0.27% = 0.8%
+
+
+########## Calculations for the foil slot:
+# The sum of all chances that are detailed is 58% + 32% + 6.4% + 1.1% +1% = 98.5%
+# So we have 1.5% to distribute.
+
+# First we assume that Stellar Sights lands have a 2:1 rate for rare:mythic.
+# Stellar Sight lands are 30 rares, 15 mythics. That gives us 1% chance for a rare and 0.25% for a mythic.
+# Then we have 1.5% - 0.25% = 1.25% to distribute between viewport, tirumphant and surreal. We'll give 0.42% each.
+
+
+
+
+
+
+
+
+
