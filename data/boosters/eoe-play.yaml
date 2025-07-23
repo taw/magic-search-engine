@@ -27,46 +27,46 @@ queries:
 sheets:
   common:
     query: "r:c" # Regular common
-    # count: 81
+    count: 81
 
   uncommon:
     query: "r:u" # Regular uncommon
-    # count: 100
+    count: 100
 
   rare:
     query: "r:r" # Regular rare
-    # count: 60
+    count: 60
 
   mythic:
     query: "r:m" # Regular mythic
-    # count: 20
+    count: 20
 
   triumphant:
     any:
       - rawquery: "{triumphant} r:r" # Rare triumphant
         rate: 2
-        # count: 12
+        count: 12
       - rawquery: "{triumphant} r:m" # Mythic rare triumphant
         rate: 1
-        # count: 4
+        count: 4
 
   surreal:
     any:
       - rawquery: "{surreal} r:r" # Rare surreal
         rate: 2
-        # count: 11
+        count: 11
       - rawquery: "{surreal} r:m" # Mythic rare surreal
         rate: 1
-        # count: 3
+        count: 3
 
   stellar_sights:
     any:
       - rawquery: "{stellar_sights} r:r" # Rare Stellar Sights land
         rate: 2
-        # count: 30
+        count: 30
       - rawquery: "{stellar_sights} r:m" # Mythic rare Stellar Sights land
         rate: 1
-        # count: 15
+        count: 15
 
   viewport:
     any:
