@@ -451,6 +451,7 @@ class Card
     # DA1 / UNK
     # "Cosplay" and "Science" are in italics on the card, but wouldn't be according to normal templating system so mtgjson corrected it
     # it's debatable either way
+    "Advertising",
     "Corrupted Metalcraft",
     "Fixed commander ninjutsu",
     "From Downtown",
@@ -461,8 +462,8 @@ class Card
     "Phyrexian Victory",
     "Rule Zero",
     "Rulebreaker",
+    "Show",
     "Team Cloudspire",
-    "Team Cloudsprire",
     "Team Speed Demons",
     # SLD Marvel
     "Ceaseless Tempest",

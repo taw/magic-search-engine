@@ -48,6 +48,7 @@ class FormatPioneer < Format
       "dft",
       "tdm",
       "fin",
+      "eoe",
     ]
   end
 end
