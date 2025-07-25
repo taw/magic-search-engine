@@ -9,9 +9,14 @@ class PatchCommander < Patch
 
       next unless supertypes.include?("Legendary")
 
-      if types.include?("Creature")
+      if types.include?("Creature") or subtypes.include?("Vehicle")
         printing["commander"] = true
         printing["brawler"] = true
+      elsif subtypes.include?("Spacecraft")
+        if printing["power"]
+          printing["commander"] = true
+          printing["brawler"] = true
+        end
       elsif text.include?("can be your commander")
         printing["commander"] = true
         printing["brawler"] = true
