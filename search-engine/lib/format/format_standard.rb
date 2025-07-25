@@ -27,6 +27,7 @@ class FormatStandard < Format
     # says Coldsnap rotates out with Time Spiral block
 
     {
+      "2024-07-29" => ["woe", "lci", "mkm", "otj", "big", "blb", "dsk", "fdn", "dft", "tdm", "fin", "eoe"],
       # FDN has special rotation
       "2024-08-02" => ["dmu", "bro", "one", "mom", "mat", "woe", "lci", "mkm", "otj", "big", "blb", "dsk", "fdn", "dft", "tdm", "fin"],
       # Standard changed so sets last 3 years so 2023 rotation skipped

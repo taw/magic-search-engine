@@ -71,6 +71,7 @@ class FormatModern < Format
       "dft",
       "tdm",
       "fin",
+      "eoe",
     ]
   end
 end
