@@ -1,0 +1,97 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-tarkir-dragonstorm
+pack:
+  foil_common: 4
+  foil_uncommon: 3
+  non_foil_draconic_c_u: 1
+  foil_draconic_c_u: 1
+  land:
+  - non_foil_basic: 1
+    chance: 167
+  - foil_basic: 1
+    chance: 833
+  foil_rare_mythic: 1
+  commander: 1
+  booster_fun: 2
+  foil_booster_fun: 1
+queries:
+  presence_basic: "e:{set} number:272-276"
+  dragons_eye_basic: "e:{set} number:287-291"
+  draconic_showcase: "e:{set} number:292-326"
+  clan_card: "e:{set} number:327-376"
+  borderless_alternate_art: "e:{set} number:383-398"
+  reversible_dragons: "e:{set} number:377-382 -number=/.b/"
+
+sheets:
+  non_foil_draconic_c_u:
+    any:
+    - rawquery: "{draconic_showcase} r:c"
+      chance: 546
+    - rawquery: "{draconic_showcase} r:u"
+      chance: 454
+  foil_draconic_c_u:
+    foil: true
+    use: non_foil_draconic_c_u
+  non_foil_basic:
+    rawquery: "{dragons_eye_basic}"
+  foil_basic:
+    foil: true
+    any:
+    - rawquery: "{dragons_eye_basic}"
+      chance: 11
+    - rawquery: "{presence_basic}"
+      chance: 100
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
+  commander:
+    any:
+    - rawquery: "e:tdc number:1-10"
+      rate: 1
+    - rawquery: "e:tdc number:51-90"
+      rate: 2
+  booster_fun:
+    any:
+    - rawquery: "{draconic_showcase} r:r"
+      chance: 64
+    - rawquery: "{draconic_showcase} r:m"
+      chance: 46
+    - rawquery: "{clan_card} r:r"
+      chance: 515
+    - rawquery: "{clan_card} r:m"
+      chance: 82
+    - rawquery: "{borderless_alternate_art} r:r"
+      chance: 215
+    - rawquery: "{borderless_alternate_art} r:m"
+      chance: 7
+    - rawquery: "{reversible_dragons} r:r"
+      chance: 64
+    - rawquery: "{reversible_dragons} r:m"
+      chance: 7
+  foil_booster_fun:
+    foil: true
+    any:
+    - rawquery: "{draconic_showcase} r:r"
+      chance: 53
+    - rawquery: "{draconic_showcase} r:m"
+      chance: 39
+    - rawquery: "{clan_card} r:r"
+      chance: 427
+    - rawquery: "{clan_card} r:m"
+      chance: 68
+    - rawquery: "{borderless_alternate_art} r:r"
+      chance: 178
+    - rawquery: "{borderless_alternate_art} r:m"
+      chance: 6
+    - rawquery: "{reversible_dragons} r:r"
+      chance: 53
+    - rawquery: "{reversible_dragons} r:m"
+      chance: 6
+    - rawquery: "e:{set} number:399-408"
+      chance: 90
+    - rawquery: "e:{set} number:409-418"
+      chance: 10
+    - set: spg
+      code: "TDM"
+      chance: 60
+    - rawquery: "e:spg number:114-118"
+      chance: 10

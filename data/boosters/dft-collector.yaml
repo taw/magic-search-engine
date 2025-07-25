@@ -5,7 +5,7 @@ pack:
   foil_driver_seat_land: 1
   revved_up_cu: 1
   foil_revved_up_cu: 1
-  rare_mythic: 1
+  foil_rare_mythic: 1
   commander:
     - showcase_commander: 1
       chance: 379
@@ -36,6 +36,9 @@ sheets:
   foil_revved_up_cu:
     foil: true
     use: revved_up_cu
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic
   showcase_commander:
     any:
     - rawquery: "e:drc number<=4"
