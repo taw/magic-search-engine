@@ -336,6 +336,9 @@ describe Deck do
         # Box not deck
         next if deck.type == "Welcome Booster"
 
+        # verified on WotC site, unusual rare foil instead of mythic, in just one deck
+        next if deck.name == "Animated Army"
+
         # Exclude oversized cards from consideration
         deck_cards = deck.physical_cards.reject(&:oversized)
 
