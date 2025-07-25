@@ -1,0 +1,188 @@
+# Data from: https://magic.wizards.com/en/news/feature/collecting-edge-of-eternities
+# And https://magic.wizards.com/en/products/edge-of-eternities/card-image-gallery
+
+pack:
+  common_special_slot:
+    - common: 7
+      chance: 982 # 98.2%
+    - common: 6
+      special_guest: 1
+      chance: 18 # 1.8%
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil: 1
+  land:
+    - non_foil_land: 1
+      chance: 80
+    - foil_land: 1
+      chance: 20
+
+queries:
+   viewport: "e:{set} number:277-286"
+   triumphant: "e:{set} number:287-302"
+   surreal: "e:{set} number:303-316"
+   stellar_sights: "e:EOS number:1-45"
+
+sheets:
+  common:
+    query: "r:c" # Regular common
+    count: 81
+
+  uncommon:
+    query: "r:u" # Regular uncommon
+    count: 100
+
+  rare:
+    query: "r:r" # Regular rare
+    count: 60
+
+  mythic:
+    query: "r:m" # Regular mythic
+    count: 20
+
+  triumphant:
+    any:
+      - rawquery: "{triumphant} r:r" # Rare triumphant
+        rate: 2
+        count: 12
+      - rawquery: "{triumphant} r:m" # Mythic rare triumphant
+        rate: 1
+        count: 4
+
+  surreal:
+    any:
+      - rawquery: "{surreal} r:r" # Rare surreal
+        rate: 2
+        count: 11
+      - rawquery: "{surreal} r:m" # Mythic rare surreal
+        rate: 1
+        count: 3
+
+  stellar_sights:
+    any:
+      - rawquery: "{stellar_sights} r:r" # Rare Stellar Sights land
+        rate: 2
+        count: 30
+      - rawquery: "{stellar_sights} r:m" # Mythic rare Stellar Sights land
+        rate: 1
+        count: 15
+
+  viewport:
+    any:
+      - rawquery: "{viewport} r:r" # Rare viewport land
+        rate: 2
+        count: 5
+      - rawquery: "{viewport} r:m" # Mythic rare viewport land
+        rate: 1
+        count: 5
+
+  wildcard: # See detailed calculations at the end of the file
+    any:
+      - use: common
+        chance: 12500 # 12.5%
+      - use: uncommon
+        chance: 62500 # 62.5%
+      - use: rare
+        chance: 10600 # 10.6%
+      - use: mythic
+        chance: 225 # 0.225%
+      - use: stellar_sights
+        chance: 12500 # 10% + 2.5% = 12.5%
+      - use: viewport
+        chance: 1225 # 1% + 0.225%
+      - use: triumphant
+        chance: 225 # 0.225%
+      - use: surreal
+        chance: 225 # 0.225%
+
+  rare_mythic: # See detailed calculations at the end of the file
+    any:
+      - use: rare
+        chance: 8040 # 80.4%
+      - use: mythic
+        chance: 1420 # 14.2%
+      - use: triumphant
+        chance: 233 # 2% + 0.33% = 2.33%
+      - use: surreal
+        chance: 227 # 2% + 0.27% = 2.27%
+      - rawquery: "{viewport} r:m" # Mythic rare viewport land
+        chance: 80 # 0.8%
+        count: 5
+
+  foil: # See detailed calculations at the end of the file
+    foil: true
+    any:
+      - use: common
+        chance: 5800 # 58%
+      - use: uncommon
+        chance: 3200 # 32%
+      - use: rare
+        chance: 640 # 6.4%
+      - use: mythic
+        chance: 110 # 1.1%
+      - use: stellar_sights
+        chance: 125 # 1.25%
+      - use: viewport
+        chance: 42 # 0.42%
+      - use: triumphant
+        chance: 42 # 0.42%
+      - use: surreal
+        chance: 42 # 0.42%
+
+  non_foil_land:
+    any:
+      - rawquery: "e:{set} number:267-276" # Normal basic land
+        chance: 4 # 64% / 16% = 4
+        count: 10
+      - rawquery: "e:{set} number:262-266" # Borderless Celestial basic lan
+        chance: 1
+        count: 5
+
+  foil_land:
+    foil: true
+    use: non_foil_land
+
+  special_guest:
+    set: spg
+    # code: "EOE" # TODO: Make this work
+    code: "TDM"
+
+
+########## Calculations for the wildcard slot:
+# In this slot Wizards give 4 cateogries of cards with chances "less than 1%":
+# - mythic from the main set
+# - mythic viewport land
+# - rare or mythic triumphant
+# - rare or mythic surreal
+
+# Until more information is available, we'll have to make assumptions.
+# The sum of all chances that are detailed is 12.5% + 62.5% + 10.6% + 10% + 2.5% + 1% = 99.1%
+# So we have 0.9% to distribute among the 4 categories.
+
+# We'll give each category the same chance: 0.9% / 4 = 0.225%
+
+
+########## Calculations for the rare slot:
+# The sum of all chances that are detailed is 80.4% + 14.2% + 2% + 2% = 98.6%
+# So we have 1.4% to distribute.
+
+# We assume that both triumphant and surreal cards have a 2:1 rate for rare:mythic.
+# That gives us:
+#   - triumphant (12 rares, 4 mythics)
+#     - rare = 2%
+#     - mythic = 0.33%
+#   - surreal (11 rares, 3 mythics)
+#     - rare = 2%
+#     - mythic = 0.27%
+
+# Finally, the mythic viewport is 1.4% - 0.33% - 0.27% = 0.8%
+
+
+########## Calculations for the foil slot:
+# The sum of all chances that are detailed is 58% + 32% + 6.4% + 1.1% +1% = 98.5%
+# So we have 1.5% to distribute.
+
+# First we assume that Stellar Sights lands have a 2:1 rate for rare:mythic.
+# Stellar Sight lands are 30 rares, 15 mythics. That gives us 1% chance for a rare and 0.25% for a mythic.
+# Then we have 1.5% - 0.25% = 1.25% to distribute between viewport, tirumphant and surreal. We'll give 0.42% each.
