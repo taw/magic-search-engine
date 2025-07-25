@@ -27,7 +27,7 @@ class PatchXmage < Patch
   end
 
   def xmage_card_name_to_sets
-    @xmage_card_name_to_sets ||= xmage_cards.group_by(&:last).transform_values{ _1.map(&:first).uniq }
+    @xmage_card_name_to_sets ||= xmage_cards.group_by(&:last).transform_values{|c| c.map(&:first).uniq }
   end
 
   def call
