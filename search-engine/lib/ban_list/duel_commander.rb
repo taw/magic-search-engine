@@ -550,4 +550,13 @@ BanList.for_format("duel commander") do
     "Zurgo Bellstriker" => "legal",
     "Hogaak, Arisen Necropolis" => "restricted",
   )
+
+  change(
+    "2025-07-28",
+    "https://www.mtgdc.info/announcements/2025/july-28-2025",
+    "Blood Moon" => "banned",
+    "Dark Ritual" => "banned",
+    "Force of Will" => "banned",
+    "Underworld Breach" => "banned",
+  )
 end
