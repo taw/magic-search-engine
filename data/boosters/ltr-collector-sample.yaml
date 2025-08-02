@@ -8,10 +8,10 @@ pack:
   foil_uncommon_showcase: 1
 sheets:
   nonfoil_rare_mythic:
-    filter: "(e:ltr promo:boosterfun -is:foilonly) or (e:ltc promo:boosterfun -is:foilonly) -number>451"
+    filter: "(e:ltr promo:boosterfun -is:foilonly -promo:scroll -promo:poster) or (e:ltc promo:boosterfun -is:foilonly -promo:scroll -promo:poster) -number>451"
     use: rare_mythic
   foil_rare_mythic:
-    filter: "(e:ltr promo:boosterfun -is:foilonly) or (e:ltc promo:boosterfun -is:foilonly) -number>451"
+    filter: "(e:ltr promo:boosterfun -is:foilonly -promo:scroll -promo:poster) or (e:ltc promo:boosterfun -is:foilonly -promo:scroll -promo:poster) -number>451"
     foil: true
     use: rare_mythic
   foil_uncommon_showcase:
