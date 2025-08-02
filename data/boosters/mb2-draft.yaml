@@ -1,3 +1,4 @@
+#data from https://magic.wizards.com/en/news/feature/whats-inside-mystery-booster-2
 name: "Mystery Booster 2 Pack"
 pack:
   white: 2
@@ -7,7 +8,11 @@ pack:
   green: 2
   landmulticolorless: 1
   rare_mythic: 1
-  future_sight: 1
+  future_sight_or_acorn:
+  - future_sight: 1
+    chance: 992
+  - alchemy_acorn: 1
+    chance: 8 # In less than 1% of boosters, this slot is replaced with a traditional foil acorn Alchemy card.
   white_border: 1
   playtest: 1
 sheets:
@@ -33,8 +38,26 @@ sheets:
     set: plst
     code: "MBTWRM"
   future_sight:
-    rawquery: "e:mb2 frame:future"
+    any:
+    - query: "frame:future is:nonfoil"
+      use: common_uncommon
+      chance: 355 # This % is estimated
+    - query: "frame:future is:nonfoil"
+      use: rare_mythic
+      chance: 600 # There is a 60% chance for a rare or mythic rare.
+    - query: "frame:future is:foil"
+      chance: 45 # Less than 5% of Future Sight frame cards appear in traditional foil.
+      foil: true
+  alchemy_acorn:
+    - query: "is:acorn"
+      foil: true
   white_border:
-    rawquery: "e:mb2 border:white"
+    any:
+    - query: "border:white"
+      use: rare_mythic
+      chance: 4
+    - query: "border:white"
+      use: common_uncommon
+      chance: 6
   playtest:
-    rawquery: "e:mb2 is:funny"
+    query: "is:playtest"
