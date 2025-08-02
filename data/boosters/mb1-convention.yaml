@@ -53,8 +53,8 @@ sheets:
     set: plst
     code: "COLORLESS"
   old_frame:
-    set: plst
-    code: "OLDFRAME"
+    rawquery: "set:PLST sheet:OLDFRAME -number:/^JUD-127†$/"
+    count: 120
   rare:
     set: plst
     code: "RARE"
