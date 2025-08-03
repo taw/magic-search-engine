@@ -359,4 +359,12 @@ BanList.for_format("historic") do
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-june-30-2025",
     "Counterspell" => "legal",
   )
+
+  change(
+    "2025-07-21",
+    "https://magic.wizards.com/en/news/mtg-arena/announcements-july-21-2025",
+    "Ancient Tomb" => "banned",
+    "Strip Mine" => "banned",
+    "Magus of the Moon" => "banned",
+  )
 end
