@@ -39,25 +39,25 @@ sheets:
     code: "MBTWRM"
   future_sight:
     any:
-    - query: "frame:future is:nonfoil"
+    - filter: "e:{set} frame:future is:nonfoil"
       use: common_uncommon
       chance: 355 # This % is estimated
-    - query: "frame:future is:nonfoil"
+    - filter: "e:{set} frame:future is:nonfoil"
       use: rare_mythic
       chance: 600 # There is a 60% chance for a rare or mythic rare.
     - query: "frame:future is:foil"
       chance: 45 # Less than 5% of Future Sight frame cards appear in traditional foil.
       foil: true
   alchemy_acorn:
-    - query: "is:acorn"
-      foil: true
+    query: "is:acorn"
+    foil: true
   white_border:
     any:
-    - query: "border:white"
+    - filter: "e:{set} border:white"
       use: rare_mythic
       chance: 4
-    - query: "border:white"
+    - filter: "e:{set} border:white"
       use: common_uncommon
       chance: 6
   playtest:
-    query: "is:playtest"
+    rawquery: "e:{set} is:playtest"
