@@ -12,7 +12,7 @@ pack:
   - future_sight: 1
     chance: 947
   - future_sight_foil: 1
-    chance: 45
+    chance: 45 # Less than 5% of Future Sight frame cards appear in traditional foil.
   - alchemy_acorn: 1
     chance: 8 # In less than 1% of boosters, this slot is replaced with a traditional foil acorn Alchemy card.
   white_border: 1
@@ -43,10 +43,10 @@ sheets:
     any:
     - filter: "e:{set} frame:future is:nonfoil"
       use: common_uncommon
-      chance: 355 # This % is estimated
+      chance: 4
     - filter: "e:{set} frame:future is:nonfoil"
       use: rare_mythic
-      chance: 600 # There is a 60% chance for a rare or mythic rare.
+      chance: 6 # There is a 60% chance for a rare or mythic rare.
   future_sight_foil:
     query: "frame:future is:foil"
     foil: true
