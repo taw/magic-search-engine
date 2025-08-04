@@ -43,10 +43,10 @@ sheets:
     any:
     - filter: "e:{set} frame:future is:nonfoil"
       use: common_uncommon
-      chance: 355 # This % is estimated
+      chance: 4
     - filter: "e:{set} frame:future is:nonfoil"
       use: rare_mythic
-      chance: 600 # There is a 60% chance for a rare or mythic rare.
+      chance: 6 # There is a 60% chance for a rare or mythic rare.
   future_sight_foil:
     query: "frame:future is:foil"
     foil: true
