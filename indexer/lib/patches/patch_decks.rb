@@ -34,7 +34,7 @@ class PatchDecks < Patch
     sections.each do |section_name, section_cards|
       deck["tokens"].push *section_cards.select{|card| card["token"]}.map{|token| format_token(token)}
       section_cards = section_cards.reject{|card| card["token"]}
-      section_cards = section_cards.map{|card| resolve_printing(deck, card) }.compact
+      section_cards = section_cards.flat_map{|card| resolve_printing(deck, card) }.compact
 
       case section_name
       when "Main Deck", "Commander", "Sideboard", "Planar Deck", "Display Commander", "Scheme Deck"
