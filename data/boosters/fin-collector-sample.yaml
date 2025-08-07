@@ -1,0 +1,18 @@
+# Data from https://www.youtube.com/watch?v=CErJ_sNqAXs
+pack:
+  slot1:
+    - nonfoil: 1
+      chance: 2
+    - foil: 1
+      chance: 1
+  slot2:
+    - nonfoil: 1
+      chance: 2
+    - foil: 1
+      chance: 1
+sheets:
+  nonfoil:
+    rawquery: "e:fic number:101-208"
+  foil:
+    foil: true
+    use: nonfoil
