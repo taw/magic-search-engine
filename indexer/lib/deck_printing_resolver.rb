@@ -2,7 +2,7 @@ class DeckPrintingResolver
   # We know basics are ambiguous, we don't even care
   # Basics (without special effects), nobody really cares which one you'll get
   # There are exception like JMP and WC* but they are annotated in data
-  CardsWithAllowedConflicts = [
+  BasicLands = [
     "Plains",
     "Island",
     "Swamp",
@@ -161,7 +161,7 @@ class DeckPrintingResolver
     printings = resolve_set
     raise if printings.empty? # Shouldn't happen
 
-    if card_number
+    if card_number and card_number != "*"
       specified_card = printings.find{|c| c["number"].downcase == card_number}
       return specified_card if specified_card
       specified_card_a = printings.find{|c| c["number"].downcase == card_number + "a"}
@@ -204,7 +204,7 @@ class DeckPrintingResolver
 
     numbers = printings.map{|c| c["number"]}
 
-    return printings[0] if CardsWithAllowedConflicts.include?(card_name) and deck_set_code != "ptc"
+    # return printings[0] if BasicLands.include?(card_name) and deck_set_code != "ptc"
 
     # If there are variant cards († or ★), choose non-variant version
     # If this needs to be reversed, mark it explicitly in the data
@@ -215,17 +215,24 @@ class DeckPrintingResolver
       return base_variant if base_variant
     end
 
+    if card_number == "*"
+      return printings
+    end
+
     # Otherwise just get one with lowest number, but print a warning
     # Use same format as magic-preconstructed-decks for easy copypasta
     candidates = printings.map{|c| "[#{c["set_code"].upcase}:#{c["number"]}]" }
     candidates.each do |candidate|
       puts "bin/resolve_card #{deck_set_code.inspect} #{deck_name.inspect} #{card_name.inspect} #{candidate.inspect}"
     end
+    if BasicLands.include?(card_name)
+      round_robin = "[#{printings[0]["set_code"].upcase}:*]"
+      puts "bin/resolve_card #{deck_set_code.inspect} #{deck_name.inspect} #{card_name.inspect} #{round_robin.inspect}"
+    end
     printings[0]
   end
 
-  def call
-    printing_card = resolve_card
+  def finalize(printing_card, count = @card["count"])
     if @card["foil"]
       foil_res = ["foil"]
     elsif printing_card["foiling"] == "foilonly"
@@ -235,7 +242,26 @@ class DeckPrintingResolver
     else
       foil_res = []
     end
-    [@card["count"], printing_card["set_code"], printing_card["number"]] + foil_res
+    [count, printing_card["set_code"], printing_card["number"]] + foil_res
+  end
+
+  def finalize_round_robin(printings)
+    subcount = Hash.new(0)
+    @card["count"].times do |i|
+      subcount[printings[i % printings.size]] += 1
+    end
+    subcount.map do |printing, count|
+      finalize(printing, count)
+    end
+  end
+
+  def call
+    printing_card = resolve_card
+    if printing_card.is_a?(Array)
+      finalize_round_robin(printing_card)
+    else
+      [finalize(printing_card)]
+    end
   end
 
   def inspect
