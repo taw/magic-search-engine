@@ -1,0 +1,10 @@
+pack:
+  promos: 2
+sheets:
+  promos:
+    foil: true
+    # This is a bit of an assumption to make the counts work.
+    # I did find a video of someone pulling FIN:453a in a bundle
+    # and removing the two starter deck legends makes the math work
+    rawquery: "(e:fin or e:fic) ((t:legendary t:creature frame:extendedart) or number:453a) is:front -number:482 -number:505"
+    count: 161
