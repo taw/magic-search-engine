@@ -50,6 +50,8 @@ describe "Regexp" do
       "Overkill",
       "Pyromancy 101",
       "Rules Lawyer",
+      "Spider-Man 2099",
+      "Spider-Man 2099, Miguel O'Hara",
       "The Millennium Calendar",
       "TL;DR",
       "Urza, Academy Headmaster",
