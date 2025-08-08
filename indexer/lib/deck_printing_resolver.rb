@@ -157,6 +157,12 @@ class DeckPrintingResolver
     return most_recent_standard_printing
   end
 
+  def filter_preferred(list, &block)
+    preferred = list.select(&block)
+    return preferred unless preferred.empty?
+    list
+  end
+
   def resolve_card
     printings = resolve_set
     raise if printings.empty? # Shouldn't happen
@@ -184,28 +190,26 @@ class DeckPrintingResolver
     # If some printings have special frame effects, and others don't,
     # use ones without special frame effects
     min_effects = printings.map{|c| c["frame_effects"] || [] }.inject{|a,b| a&b}
-    printings_with_min_effects = printings.select{|c| (c["frame_effects"] || []) == min_effects}
-    printings = printings_with_min_effects unless printings_with_min_effects.empty?
+    printings = filter_preferred(printings) {|c| (c["frame_effects"] || []) == min_effects}
 
     # And same logic for full art cards
     # This is especially true for basics
-    printings_without_fullart = printings.select{|c| !c["fullart"] }
-    printings = printings_without_fullart unless printings_without_fullart.empty?
+    printings = filter_preferred(printings) {|c| !c["fullart"] }
 
     # And same logic for borderless cards
-    printings_with_borders = printings.select{|c| c["border"] != "borderless" }
-    printings = printings_with_borders unless printings_with_borders.empty?
+    printings = filter_preferred(printings) {|c| c["border"] != "borderless" }
 
     # And again to surgefoil
-    printings_without_surgefoil = printings.select{|c| !c["promo_types"]&.include?("surgefoil") }
-    printings = printings_without_surgefoil unless printings_without_surgefoil.empty?
+    printings = filter_preferred(printings) {|c| !c["promo_types"]&.include?("surgefoil") }
 
-    return printings[0] if printings.size == 1
+    # And non-English (needed for POR)
+    printings = filter_preferred(printings) {|c| !c["language"] }
 
     # prefer cards with matching foil status
     # this is also necessary to correctly round-robin 7ed/8ed/9ed
-    printings_with_matching_foiling = printings.select{|c| c["foiling"] != (@card["foil"] ? "nonfoil" : "foilonly") }
-    printings = printings_with_matching_foiling unless printings_with_matching_foiling.empty?
+    printings = filter_preferred(printings) {|c| c["foiling"] != (@card["foil"] ? "nonfoil" : "foilonly") }
+
+    return printings[0] if printings.size == 1
 
     numbers = printings.map{|c| c["number"]}
 
