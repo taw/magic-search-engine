@@ -202,6 +202,11 @@ class DeckPrintingResolver
 
     return printings[0] if printings.size == 1
 
+    # prefer cards with matching foil status
+    # this is also necessary to correctly round-robin 7ed/8ed/9ed
+    printings_with_matching_foiling = printings.select{|c| c["foiling"] != (@card["foil"] ? "nonfoil" : "foilonly") }
+    printings = printings_with_matching_foiling unless printings_with_matching_foiling.empty?
+
     numbers = printings.map{|c| c["number"]}
 
     # return printings[0] if BasicLands.include?(card_name) and deck_set_code != "ptc"
