@@ -196,8 +196,14 @@ describe PreconDeck do
       1 Fated Conflagration [BNG:94]
       2 Turn // Burn [DGM:134a]
       4 Izzet Guildgate [DGM:151]
-      12 Mountain [THS:242]
-      9 Island [THS:234]
+      3 Mountain [THS:242]
+      3 Mountain [THS:243]
+      3 Mountain [THS:244]
+      3 Mountain [THS:245]
+      3 Island [THS:234]
+      2 Island [THS:235]
+      2 Island [THS:236]
+      2 Island [THS:237]
 
       Sideboard
       2 Flames of the Firebrand [M14:139]
@@ -307,9 +313,12 @@ describe PreconDeck do
       1 Seaside Citadel [WHO:302]
       1 Command Tower [WHO:263]
       1 Path of Ancestry [WHO:293]
-      2 Plains [WHO:196]
-      2 Island [WHO:198]
-      3 Forest [WHO:204]
+      1 Plains [WHO:196]
+      1 Plains [WHO:197]
+      1 Island [WHO:198]
+      1 Island [WHO:199]
+      2 Forest [WHO:204]
+      1 Forest [WHO:205]
 
       Planar Deck
       1 The Pyramid of Mars [WHO:597]

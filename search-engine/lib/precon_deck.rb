@@ -42,19 +42,29 @@ class PreconDeck < Deck
     @commander.each do |count, card|
       output << "COMMANDER: #{count} #{card}"
     end
-    @cards.each do |count, card|
+    card_names.each do |count, card|
       output << "#{count} #{card}"
     end
     ["Sideboard", "Planar Deck", "Display Commander", "Scheme Deck"].each do |section_name|
       unless section(section_name).empty?
         output << ""
         output << section_name
-        section(section_name).each do |count, card|
+        card_names(section_name).each do |count, card|
           output << "#{count} #{card}"
         end
       end
     end
     output.join("\n") + "\n"
+  end
+
+  # This groups multiple different basics etc. together
+  def card_names(section_name=nil)
+    result = Hash.new(0)
+    ungrouped = section_name ? section(section_name) : @cards
+    ungrouped.each do |count, card|
+      result[card.to_s] += count
+    end
+    result.map{|k,v| [v,k]}
   end
 
   def card_details(card)
