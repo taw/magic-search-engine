@@ -258,7 +258,7 @@ describe "QueryParser" do
     assert_search_parse "++ pow=3 tou=2 c:g", "pow=3 ++ tou=2 c:g"
     assert_search_parse "++ c:g //", "c:g // ++"
     # FIXME: This is a bug, just documenting so it can get fixed someday
-    proc { Query.new("c:g ++ //") }.should raise_error(/Unknown token type/)
+    Query.new("c:g ++ //").warnings.should == ["Unknown token type [:slash_slash]"]
   end
 
   it "accepts alternative quotation marks" do
