@@ -62,7 +62,7 @@ class SingleSetUpdater
   end
 
   def bad_foregin_only_sets
-    %W[FBB 4BB REN RIN BCHR]
+    %W[FBB 4BB BCHR]
   end
 
   def call
