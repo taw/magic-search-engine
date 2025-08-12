@@ -84,6 +84,7 @@ class PatchPrintSheets < Patch
       "atq" => "Antiquities_Checklist.txt",
       "arn" => "Arabian_Nights_Checklist.txt",
       "chr" => "Chronicles_checklist.txt",
+      "rin" => "Rinascimento_Checklist.txt",
       "fem" => "Fallen_Empires_Checklist.txt",
       "hml" => "Homelands_Checklist.txt",
       "leg" => "Legends_Checklist.txt",
