@@ -25,7 +25,7 @@ class PreprocessBooster
       @filter = @data["filter"]
     end
     @name = data["name"]
-    @languages = data["languages"]
+    @languages = data.delete("languages")
   end
 
   def common
