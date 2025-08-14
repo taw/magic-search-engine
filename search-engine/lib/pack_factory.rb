@@ -140,6 +140,7 @@ class PackFactory
     pack.set = set
     pack.code = booster_code
     pack.name = data["name"]&.gsub("{set_name}", set.name) || booster_code
+    pack.languages = data["languages"] || set.languages
     pack
   end
 end
