@@ -94,6 +94,7 @@ class PatchTokens < Patch
       "type" => "token",
       "meta" => base_set["meta"],
       "releaseDate" => base_set["releaseDate"],
+      "languages" => base_set["languages"],
     }
     @sets << token_set
     token_set
