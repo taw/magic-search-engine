@@ -1,0 +1,119 @@
+# Data from: https://magic.wizards.com/en/news/feature/collecting-edge-of-eternities
+# And https://magic.wizards.com/en/products/edge-of-eternities/card-image-gallery
+
+pack:
+  foil_common: 5
+  common: 4
+  celestial_basic_land: 1
+  foil_rare_mythic: 1
+  commander: 1
+  non_foil_boosterfun: 1
+  sights_land:
+    - stellar_sights_land: 1 
+      chance: 67
+    - foil_stellar_sights_land: 1
+      chance: 32.5
+    - galaxy_stellar_sights_land: 1
+      chance: 10.5
+
+
+queries:
+  viewport: "e:{set} number:277-286"
+  triumphant: "e:{set} number:287-302"
+  surreal: "e:{set} number:303-316"
+  stellar_sights: "e:EOS number:1-45"
+  poster_stellar_sights: "e:EOS number:46-90"
+  galaxy_stellar_sights: "e:EOS number:91-135"
+  galaxy_poster_stellar_sights: "e:EOS number:136-180"
+  celestial_basic: "e:{set} number:262-266"
+  galaxy_celestial_basic: "e:{set} number:367-371"
+
+sheets:
+  common:
+    query: "r:c" # Regular common
+    count: 81
+
+  uncommon:
+    query: "r:u" # Regular uncommon
+    count: 100
+
+  rare:
+    query: "r:r" # Regular rare
+    count: 60
+
+  mythic:
+    query: "r:m" # Regular mythic
+    count: 20
+
+  foil_rare_mythic:
+    foil: true
+    rawquery: "e:{set} r>=r number=1-261" # Default Frame Rare/Mythic
+
+  celestial_basic_land:
+    foil: true
+    any:
+    - use: celestial_basic
+      chance: 2
+    - use: galaxy_celestial_basic
+      chance: 1
+
+  commander:
+    any:
+    - rawquery: "e:eoc r>=r is:fullart" # Full Art Commander Cards
+      chance: 9
+    - rawquery: "e:eoc r>=r is:extendedart" # Extended Art Commmander Cards
+      chance: 91
+
+  non_foil_boosterfun:
+    any:
+    - rawquery: "e:{set} r=r is:extendedart" # Extended Art Rare
+      chance: 47
+    - rawquery: "e:{set} r=m is:extendedart" # Extended Art Mythic
+      chance: 5
+    - rawquery: "{viewport} r=r" # Rare Viewport Land
+      chance: 7
+    - rawquery: "{viewport} r=m" # Mythic Viewport Land
+      chance: 4
+    - rawquery: "{triumphant} r=r" # Rare Triumphant
+      chance: 17
+    - rawquery: "{triumphant} r=m" # Mythic Trumphant
+      chance: 3
+    - rawquery: "{surreal} r=r" # Rare Surreal
+      chance: 15
+    - rawquery: "{surreal} r=m" # Mythic Surreal
+
+  stellar_sights_land:
+    # Chance of getting sheet = 67%
+    any:
+    - rawquery: "{stellar_sights} r=r"
+      rate: 537313 # 36 / 67 = 53.7313%
+    - rawquery: "{stellar_sights} r=r"
+      rate: 134328 # 9 / 67  = 13.4328%
+    - rawquery: "{poster_stellar_sights} r=r"
+      rate: 268656 # 18 / 67 = 26.8656%
+    - rawquery: "{poster_stellar_sights} r=r"
+      rate: 59701 # 4 / 67 = 5.9701%
+  foil_stellar_sights_land:
+    # Chance of getting sheet = 32.5%
+    foil: true
+    any:
+    - rawquery: "{stellar_sights} r=r"
+      rate: 369230 # 12 / 32.5 = 36.9230%
+    - rawquery: "{stellar_sights} r=m"
+      rate: 92307 # 3 / 32.5  = 9.2307%
+    - rawquery: "{poster_stellar_sights} r=r"
+      rate: 184615 # 6 / 32.5 = 18.4615%
+    - rawquery: "{poster_stellar_sights} r=m"
+      rate: 46153 # 1.5 / 32.5 = 4.6153%
+  galaxy_stellar_sights_land:
+  # Chance of getting sheet = 10.5% (+ "less than 1%") 
+    foil: true
+    any:
+    - rawquery: "{galaxy_stellar_sights} r=r"
+      rate: 571428 # 6 / 10.5 = 57.1428%
+    - rawquery: "{galaxy_stellar_sights} r=m"
+      rate: 142857 # 1.5 / 10.5  = 14.2857%
+    - rawquery: "{galaxy_poster_stellar_sights} r=r"
+      rate: 285714 # 3 / 10.5 = 28.5714%
+    - rawquery: "{galaxy_poster_stellar_sights} r=m"
+      rate: 1 # This is "less than 1%" and the rounding errors from the other items in this sheet leave 1 open so I am filling that here. Someone more experienced will need to step in here

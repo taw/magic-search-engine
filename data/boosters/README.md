@@ -148,7 +148,7 @@ Sheets can use the `any` tag to combine different subsheets together. Each subsh
 
 By defining the `rate` for each sheet, you define the relative rarity of each card independent of the number of cards. Rare cards are often twice as common as mythic cards in the same sheet, so you can use `rate: 2` for the rare cards, and `rate: 1` for the mythic cards.
 
-Example from [dmu.yaml](dmu.yaml) to track the rare/mythic legendary cards:
+Example from [dmu-draft.yaml](dmu-draft.yaml) to track the rare/mythic legendary cards:
 
 ```yaml
   legendary_rare_mythic:
