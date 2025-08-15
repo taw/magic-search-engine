@@ -10,11 +10,11 @@ pack:
   non_foil_boosterfun: 1
   sights_land:
     - stellar_sights_land: 1 
-      chance: 67
+      chance: 670
     - foil_stellar_sights_land: 1
-      chance: 32.5
+      chance: 325
     - galaxy_stellar_sights_land: 1
-      chance: 10.5
+      chance: 105
   foil_boosterfun: 1
 
 
@@ -90,66 +90,66 @@ sheets:
     foil: true
     any:
     - rawquery: "e:{set} r=r is:extendedart" # Extended Art Rare
-      chance: 38
+      chance: 380
     - rawquery: "e:{set} r=m is:extendedart" # Extended Art Mythic
-      chance: 4
+      chance: 40
     - rawquery: "{viewport} r=r" # Rare Viewport Land
-      chance: 6
+      chance: 60
     - rawquery: "{viewport} r=m" # Mythic Viewport Land
-      chance: 3
+      chance: 30
     - rawquery: "{triumphant} r=r" # Rare Triumphant
-      chance: 13
+      chance: 130
     - rawquery: "{triumphant} r=m" # Mythic Trumphant
-      chance: 2
+      chance: 20
     - rawquery: "{surreal} r=r" # Rare Surreal
-      chance: 12
+      chance: 120
     - rawquery: "{surreal} r=m" # Mythic Surreal
-      chance: 2
+      chance: 20
     - rawquery: "{special_guest}" # Special Guest
-      chance: 6
+      chance: 60
     - rawquery: "e:{set} number:357-366" # Japan Showcase
-      chance: 9
+      chance: 90
     - rawquery: "e:{set} number: 383-392" # Fracture Foil Japan Showcase
-      chance: 1
+      chance: 10
     - rawquery: "{galaxy_viewport} r=r" # Rare Galaxy Foil Viewport Land
-      chance: 2
+      chance: 20
     - rawquery: "{galaxy_viewport} r=m" # Mythic Galaxy Foil Viewport Land
-      chance: 1
+      chance: 10
     - rawquery: "e:{set} number=382" # Singularity Foil Sothera, The Supervoid
-      chance: 1 # This is where it gets weird. The collecting EOE website says there should be a full 1% left from the other buckets yet it is labelled as "less than 1%"
+      chance: 5 # Half as rare as mythic galaxy foil?
 
   stellar_sights_land:
     # Chance of getting sheet = 67%
     any:
-    - rawquery: "{stellar_sights} r=r"
+    - rawquery: "{stellar_sights} r=r" # Rare Stellar Sights
       rate: 537313 # 36 / 67 = 53.7313%
-    - rawquery: "{stellar_sights} r=r"
+    - rawquery: "{stellar_sights} r=m" # Mythic Stellar Sights
       rate: 134328 # 9 / 67  = 13.4328%
-    - rawquery: "{poster_stellar_sights} r=r"
+    - rawquery: "{poster_stellar_sights} r=r" # Rare Poster Stellar Sights
       rate: 268656 # 18 / 67 = 26.8656%
-    - rawquery: "{poster_stellar_sights} r=r"
+    - rawquery: "{poster_stellar_sights} r=m" # Mythic Poster Stellar Sights
       rate: 59701 # 4 / 67 = 5.9701%
   foil_stellar_sights_land:
     # Chance of getting sheet = 32.5%
     foil: true
     any:
-    - rawquery: "{stellar_sights} r=r"
+    - rawquery: "{stellar_sights} r=r"  # Foil Rare Stellar Sights
       rate: 369230 # 12 / 32.5 = 36.9230%
-    - rawquery: "{stellar_sights} r=m"
+    - rawquery: "{stellar_sights} r=m" # Foil Mythic Stellar Sights
       rate: 92307 # 3 / 32.5  = 9.2307%
-    - rawquery: "{poster_stellar_sights} r=r"
+    - rawquery: "{poster_stellar_sights} r=r" # Foil Rare Poster Stellar Sights
       rate: 184615 # 6 / 32.5 = 18.4615%
-    - rawquery: "{poster_stellar_sights} r=m"
+    - rawquery: "{poster_stellar_sights} r=m" # Foil Mythic Poster Stellar Sights
       rate: 46153 # 1.5 / 32.5 = 4.6153%
   galaxy_stellar_sights_land:
   # Chance of getting sheet = 10.5% (+ "less than 1%") 
     foil: true
     any:
-    - rawquery: "{galaxy_stellar_sights} r=r"
+    - rawquery: "{galaxy_stellar_sights} r=r" # Galaxy Foil Rare Stellar Sights
       rate: 571428 # 6 / 10.5 = 57.1428%
-    - rawquery: "{galaxy_stellar_sights} r=m"
+    - rawquery: "{galaxy_stellar_sights} r=m" # Galaxy Foil Mythic Stellar Sights
       rate: 142857 # 1.5 / 10.5  = 14.2857%
-    - rawquery: "{galaxy_poster_stellar_sights} r=r"
+    - rawquery: "{galaxy_poster_stellar_sights} r=r" # Galaxy Foil Rare Poster Stellar Sights
       rate: 285714 # 3 / 10.5 = 28.5714%
-    - rawquery: "{galaxy_poster_stellar_sights} r=m"
+    - rawquery: "{galaxy_poster_stellar_sights} r=m" # Galaxy Foil Mythic Poster Stellar Sights
       rate: 1 # This is "less than 1%" and the rounding errors from the other items in this sheet leave 1 open so I am filling that here. Someone more experienced will need to step in here
