@@ -80,10 +80,10 @@ class PatchPrintSheets < Patch
 
   def sources
     {
-      "all" => "Alliances_checklist.txt",
+      "all" => "Alliances_Checklist.txt",
       "atq" => "Antiquities_Checklist.txt",
       "arn" => "Arabian_Nights_Checklist.txt",
-      "chr" => "Chronicles_checklist.txt",
+      "chr" => "Chronicles_Checklist.txt",
       "fem" => "Fallen_Empires_Checklist.txt",
       "hml" => "Homelands_Checklist.txt",
       "leg" => "Legends_Checklist.txt",

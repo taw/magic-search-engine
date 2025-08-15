@@ -166,7 +166,8 @@ private
       @time = @tokens.shift[1]
       parse_cond
     else
-      @warnings << "Unknown token type #{@tokens[0]}"
+      @warnings << "Unknown token type #{@tokens.shift}"
+      parse_cond
     end
   end
 end

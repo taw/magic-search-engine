@@ -25,6 +25,7 @@ class PreprocessBooster
       @filter = @data["filter"]
     end
     @name = data["name"]
+    @languages = data.delete("languages")
   end
 
   def common
@@ -244,7 +245,8 @@ class PreprocessBooster
       "name" => @name,
       "pack" => @pack,
       "sheets" => @sheets.select{|k,v| sheets_in_use.include?(k)},
-    }
+      "languages" => @languages,
+    }.compact
   end
 end
 

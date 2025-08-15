@@ -14,7 +14,7 @@ class Pack
 
   ## Metadata
 
-  attr_accessor :set, :code, :name
+  attr_accessor :set, :code, :name, :languages
 
   def set_name
     @set&.name

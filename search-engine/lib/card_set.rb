@@ -3,7 +3,7 @@ class CardSet
   attr_reader :block_name, :block_code, :alternative_block_code
   attr_reader :border, :release_date, :printings, :types
   attr_reader :decks, :base_set_size
-  attr_reader :products, :subsets
+  attr_reader :products, :subsets, :languages
   attr_reader :normalized_name, :normalized_name_alt
 
   def initialize(db, data)
@@ -27,6 +27,7 @@ class CardSet
     @base_set_size = data["base_set_size"]
     @products = (data["products"] || []).map{|x| Product.new(self, x)}
     @subsets = data["subsets"]
+    @languages = data["languages"]
 
     # cache for better performance of e:
     @normalized_name = normalize_set_name(@name)

@@ -75,6 +75,7 @@ class Indexer
       PatchNormalizeColors,
       PatchDisplayPowerToughness,
       PatchNormalizeReleaseDate,
+      PatchSetLanguages,
 
       # Patch mtg.wtf bugs - these need to happen early to support patches below
       PatchMeld,
@@ -160,6 +161,7 @@ class Indexer
       set = set_data.slice(
         "border",
         "custom",
+        "languages",
         "meta",
         "name",
         "releaseDate",
