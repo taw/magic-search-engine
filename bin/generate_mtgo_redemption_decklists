@@ -91,7 +91,7 @@ class GenerateSetRedemptionDecklists
     end
 
     foil_path.open("w") do |fh|
-      fh.puts "// NAME: #{regular_name}"
+      fh.puts "// NAME: #{foil_name}"
       fh.puts "// SOURCE: #{@source}" if @source
       fh.puts "// DATE: #{@date}"
       foil_cards.each do |card|
@@ -121,7 +121,8 @@ class GenerateMtgoRedemptionDecklists
         date: row[:date],
         set_code: row[:code].downcase,
         query: row[:query],
-        card_count: row[:card_count]
+        card_count: row[:card_count],
+        source: row[:query] ? "database query with #{row[:query]}" : "default database query"
       ).call
     end
   end
