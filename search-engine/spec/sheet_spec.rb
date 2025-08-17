@@ -69,4 +69,13 @@ describe "sheet:" do
     assert_search_include "sheet:lea/c5", "Swamp"
     assert_search_exclude "sheet:lea/c1", "Swamp"
   end
+
+  it "sheet:*" do
+    # For old sets these are misprint cards
+    # For SPG etc. these are legit cards we didn't fully map yet
+    assert_search_results "e:drk -sheet:*",
+      "Fountain of Youth", # [drk/103†]
+      "Gaea's Touch",      # [drk/77†]
+      "Runesword"          # [drk/107†]
+  end
 end
