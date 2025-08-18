@@ -68,7 +68,7 @@ sheets:
     - rawquery: "e:eoc r=m is:fullart number:1,2,3,4" # Full Art Commander Cards. For some reason the numbers need to be specified because it returns non fullart cards. If that gets fixed, "number:1,2,3,4" can be removed.
       chance: 9
       count: 4
-    - rawquery: "e:eoc r>=r is:extendedart" # Extended Art Commmander Cards
+    - rawquery: "e:eoc r=r is:extendedart" # Extended Art Commmander Cards
       chance: 91
       count: 20
 
