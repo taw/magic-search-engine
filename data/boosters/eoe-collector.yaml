@@ -3,20 +3,19 @@
 
 pack:
   foil_common: 5
-  common: 4
+  foil_uncommon: 4
   celestial_basic_land: 1
   foil_rare_mythic: 1
   commander: 1
   non_foil_boosterfun: 1
   sights_land:
-    - stellar_sights_land: 1 
-      chance: 670
-    - foil_stellar_sights_land: 1
-      chance: 325
-    - galaxy_stellar_sights_land: 1
-      chance: 105
+  - stellar_sights_land: 1
+    chance: 670
+  - foil_stellar_sights_land: 1
+    chance: 225
+  - galaxy_stellar_sights_land: 1
+    chance: 105
   foil_boosterfun: 1
-
 
 queries:
   viewport: "e:{set} number:277-286"
@@ -50,7 +49,11 @@ sheets:
 
   foil_rare_mythic:
     foil: true
-    rawquery: "e:{set} r>=r number=1-261" # Default Frame Rare/Mythic
+    any:
+    - use: rare
+      rate: 2
+    - use: mythic
+      rate: 1
 
   celestial_basic_land:
     foil: true
@@ -62,29 +65,38 @@ sheets:
 
   commander:
     any:
-    - rawquery: "e:eoc r>=r is:fullart" # Full Art Commander Cards
+    - rawquery: "e:eoc r>=r is:fullart number:1,2,3,4" # Full Art Commander Cards. For some reason the numbers need to be specified because it returns non fullart cards. If that gets fixed, "number:1,2,3,4" can be removed.
       chance: 9
+      count: 4
     - rawquery: "e:eoc r>=r is:extendedart" # Extended Art Commmander Cards
       chance: 91
+      count: 20
 
   non_foil_boosterfun:
     any:
     - rawquery: "e:{set} r=r is:extendedart" # Extended Art Rare
       chance: 47
+      count: 33
     - rawquery: "e:{set} r=m is:extendedart" # Extended Art Mythic
       chance: 5
+      count: 7
     - rawquery: "{viewport} r=r" # Rare Viewport Land
       chance: 7
+      count: 5
     - rawquery: "{viewport} r=m" # Mythic Viewport Land
       chance: 4
     - rawquery: "{triumphant} r=r" # Rare Triumphant
       chance: 17
+      count: 12
     - rawquery: "{triumphant} r=m" # Mythic Trumphant
       chance: 3
+      count: 4
     - rawquery: "{surreal} r=r" # Rare Surreal
       chance: 15
+      count: 11
     - rawquery: "{surreal} r=m" # Mythic Surreal
       chance: 2
+      count: 3
 
   foil_boosterfun:
     foil: true
@@ -130,26 +142,26 @@ sheets:
     - rawquery: "{poster_stellar_sights} r=m" # Mythic Poster Stellar Sights
       rate: 4 # 4 / 67 = 5.9701%
   foil_stellar_sights_land:
-    # Chance of getting sheet = 32.5%
+    # Chance of getting sheet = 22.5%
     foil: true
     any:
-    - rawquery: "{stellar_sights} r=r"  # Foil Rare Stellar Sights
-      rate: 12 # 12 / 32.5 = 36.9230%
+    - rawquery: "{stellar_sights} r=r" # Foil Rare Stellar Sights
+      rate: 12 
     - rawquery: "{stellar_sights} r=m" # Foil Mythic Stellar Sights
-      rate: 30 # 3 / 32.5  = 9.2307%
+      rate: 30 
     - rawquery: "{poster_stellar_sights} r=r" # Foil Rare Poster Stellar Sights
-      rate: 60 # 6 / 32.5 = 18.4615%
+      rate: 60 
     - rawquery: "{poster_stellar_sights} r=m" # Foil Mythic Poster Stellar Sights
-      rate: 15 # 1.5 / 32.5 = 4.6153%
+      rate: 15 
   galaxy_stellar_sights_land:
-  # Chance of getting sheet = 10.5% (+ "less than 1%") 
+    # Chance of getting sheet = 10.5% (+ "less than 1%") 
     foil: true
     any:
     - rawquery: "{galaxy_stellar_sights} r=r" # Galaxy Foil Rare Stellar Sights
-      rate: 600 # 6 / 10.5 = 57.1428%
+      rate: 600 
     - rawquery: "{galaxy_stellar_sights} r=m" # Galaxy Foil Mythic Stellar Sights
-      rate: 150 # 1.5 / 10.5  = 14.2857%
+      rate: 150
     - rawquery: "{galaxy_poster_stellar_sights} r=r" # Galaxy Foil Rare Poster Stellar Sights
-      rate: 300 # 3 / 10.5 = 28.5714%
+      rate: 300 
     - rawquery: "{galaxy_poster_stellar_sights} r=m" # Galaxy Foil Mythic Poster Stellar Sights
-      rate: 1 # This is "less than 1%" and the rounding errors from the other items in this sheet leave 1 open so I am filling that here. Someone more experienced will need to step in here
+      rate: 175 
