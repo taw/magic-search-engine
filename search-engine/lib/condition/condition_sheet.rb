@@ -1,5 +1,10 @@
 class ConditionSheet < ConditionSimple
   def initialize(sheet)
+    if sheet == "*"
+      @any = true
+      return
+    end
+
     parts = sheet.downcase.split("/", 2)
     if parts.size == 2
       @set, sheet = parts[0], parts[1]
@@ -24,6 +29,7 @@ class ConditionSheet < ConditionSimple
 
   def match?(card)
     return false unless card.print_sheet
+    return true if @any
     if @set
       return false unless @set == card.set_code
     end
@@ -31,6 +37,10 @@ class ConditionSheet < ConditionSimple
   end
 
   def to_s
-    "sheet:#{maybe_quote("#{@set && "#{@set}/"}#{@sheet}#{@mult}")}"
+    if @any
+      "sheet:*"
+    else
+      "sheet:#{maybe_quote("#{@set && "#{@set}/"}#{@sheet}#{@mult}")}"
+    end
   end
 end
