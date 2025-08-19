@@ -8,7 +8,11 @@ pack:
   extended_rare_mythic: 1
   rare_mythic_showcase: 1
   foil_rare_mythic: 1
-  foil_rare_mythic_showcase: 1
+  foil_rare_mythic_altframe:
+  - foil_rare_mythic_showcase: 1
+    chance: 5
+  - foil_expedition: 1
+    chance: 1 # "about 1 in every 6 Collector Boosters"
 sheets:
   extended_rare_mythic:
     filter: "e:znr frame:extendedart"
@@ -20,3 +24,7 @@ sheets:
     foil: true
     filter: "e:znr promo:boosterfun -is:foilonly is:paper"
     use: rare_mythic
+  foil_expedition:
+    foil: true
+    rawquery: "e:zne is:foil"
+    count: 30
