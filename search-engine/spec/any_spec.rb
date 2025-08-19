@@ -241,7 +241,8 @@ describe "Any queries" do
 
     it "draft" do
       # 4 cards with draft in name
-      assert_search_equal "any:draft", "is:draft or draft or (o:draft e:ymid,yneo,ysnc,hbg,ydmu,ybro,yone,ylci,ymkm,yblb,ydsk,unk,ydft,ytdm)"
+      # There's a lot of Arena cards with "draft" in text
+      assert_search_equal "any:draft game:paper", "is:draft or draft"
     end
   end
 end

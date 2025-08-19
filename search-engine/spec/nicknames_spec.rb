@@ -407,6 +407,7 @@ describe "Card nicknames" do
       "Indominus Rex, Alpha",
       "Kathril, Aspect Warper",
       "Majestic Myriarch",
+      "Mutable Pupa",
       "Odric, Blood-Cursed",
       "Odric, Lunarch Marshal",
       "Priest of Possibility",
