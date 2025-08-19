@@ -17,6 +17,8 @@ class FormatVintage < Format
 
     excluded_sets = Set[*%w[
       30a
+      aa1
+      aa2
       ana
       anb
       hbg
@@ -38,6 +40,7 @@ class FormatVintage < Format
       ydft
       ydmu
       ydsk
+      yeoe
       ylci
       ymid
       ymkm

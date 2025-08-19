@@ -16,6 +16,7 @@ class ConditionIsKeywordsoup < ConditionNickname
       "indominus rex, alpha",
       "kathril, aspect warper",
       "majestic myriarch",
+      "mutable pupa",
       "odric, blood-cursed",
       "odric, lunarch marshal",
       "priest of possibility",
