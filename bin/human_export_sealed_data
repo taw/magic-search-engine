@@ -3,6 +3,7 @@
 # This export format is for debugging only
 
 require_relative "../search-engine/lib/card_database"
+require "pry"
 
 class HumanExportSealedData
   attr_reader :db, :uuids
@@ -21,6 +22,7 @@ class HumanExportSealedData
     result.set = pack.set
     result.code = pack.code
     result.name = pack.name
+    result.languages = pack.languages
     result
   end
 
@@ -62,6 +64,7 @@ class HumanExportSealedData
     path.open("w") do |file|
       file.puts "name: #{booster.name}"
       file.puts "code: #{booster.code}"
+      file.puts "languages: #{Array(booster.languages).join(' ')}"
       file.puts "packs:"
       booster.packs.each do |subpack, weight|
         file.puts "- chance: #{weight}"
