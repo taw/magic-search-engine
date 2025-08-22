@@ -19,15 +19,16 @@ class DeckDatabase
       display = deck["display"]
       date = date ? Date.parse(date) : nil
       deck = PreconDeck.new(
-        set,
-        deck["name"],
-        deck["type"],
-        deck["category"],
-        deck["format"],
-        date,
-        sections,
-        display,
-        deck["tokens"],
+        set: set,
+        name: deck["name"],
+        type: deck["type"],
+        category: deck["category"],
+        format: deck["format"],
+        release_date: date,
+        sections: sections,
+        display: display,
+        tokens: deck["tokens"],
+        languages: deck["languages"],
       )
       set.decks << deck
     end
