@@ -1,6 +1,6 @@
 class PreconDeck < Deck
-  attr_reader :set, :name, :type, :category, :format, :release_date, :slug, :source, :display, :normalized_name
-  def initialize(set, name, type, category, format, release_date, sections, display, tokens)
+  attr_reader :set, :name, :type, :category, :format, :release_date, :slug, :source, :display, :normalized_name, :languages
+  def initialize(set:, name:, type:, category:, format:, release_date:, sections:, display:, tokens:, languages:)
     super(sections, tokens)
     @set = set
     @name = name
@@ -11,6 +11,7 @@ class PreconDeck < Deck
     @slug = @name.downcase.gsub("'s", "s").gsub(/[^a-z0-9s]+/, "-").chomp("-")
     @display = display
     @normalized_name = @name.downcase.gsub("'s", "").delete(",").normalize_accents
+    @languages = Array(languages)
   end
 
   def inspect

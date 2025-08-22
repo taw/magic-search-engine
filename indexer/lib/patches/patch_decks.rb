@@ -67,10 +67,21 @@ class PatchDecks < Patch
     [token["count"], token["name"], token["set"], token["number"], !!token["foil"]]
   end
 
+  def annotate_languages
+    set_languages = @sets.to_h{|s| [s["code"], s["languages"]] }
+
+    @decks.each do |deck|
+      languages = Array(deck["languages"])
+      languages = set_languages[deck["set_code"]] if languages.empty?
+      deck["languages"] = languages
+    end
+  end
+
   def call
     @flavor_name_map = flavor_name_map
     remove_decks_for_unknown_sets
     resolve_printings
+    annotate_languages
   end
 
   def flavor_name_map

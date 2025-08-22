@@ -31,6 +31,7 @@ class ExportDecksData
     # We don't have this in the JSON:
     # output << "COMMENTS: #{deck.source_url}"
     output << "// DATE: #{deck.release_date}"
+    output << "// LANGUAGES: #{Array(deck.languages).join(' ')}"
 
     deck.commander.each do |c|
       output << "COMMANDER: #{serialize_card(*c)}"
