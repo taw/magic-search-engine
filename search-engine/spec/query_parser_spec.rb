@@ -221,6 +221,7 @@ describe "QueryParser" do
     assert_search_parse "c=3", "color=3"
     assert_search_parse "e:m12", "set:m12"
     assert_search_parse "e:m12", "edition:m12"
+    assert_search_parse "e:m12", "s:m12"
     assert_search_parse "f:modern", "format:modern"
     assert_search_parse %[ft:"here's some gold"], %[flavor:"here's some gold"]
     assert_search_parse %[ft:/here's some gold/], %[flavor:/here's some gold/]
@@ -257,6 +258,7 @@ describe "QueryParser" do
     assert_search_parse "++ pow=3 tou=2 c:g", "pow=3 tou=2 c:g ++"
     assert_search_parse "++ pow=3 tou=2 c:g", "pow=3 ++ tou=2 c:g"
     assert_search_parse "++ c:g //", "c:g // ++"
+    assert_search_parse "++ pow=3 tou=2 c:g", "pow=3 tou=2 c:g unique:prints"
     # FIXME: This is a bug, just documenting so it can get fixed someday
     Query.new("c:g ++ //").warnings.should == ["Unknown token type [:slash_slash]"]
   end

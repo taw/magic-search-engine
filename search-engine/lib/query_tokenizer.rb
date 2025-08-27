@@ -125,7 +125,7 @@ class QueryTokenizer
         op = ">=" if op == "≥"
         op = "<=" if op == "≤"
         tokens << [:test, ConditionNameComparison.new(op, s[2] || s[3])]
-      elsif s.scan(/(?:e|set|edition)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+      elsif s.scan(/(?:e|edition|s|set)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         sets = [s[1] || s[2]]
         sets << (s[1] || s[2]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionEdition.new(*sets)]
@@ -413,7 +413,7 @@ class QueryTokenizer
           @warnings << "Unknown view: #{view}. Known options are: #{known_views.join(", ")}, and default."
         end
         tokens << [:metadata, {view: view}]
-      elsif s.scan(/\+\+/i)
+      elsif s.scan(/\+\+|unique\s*:\s*prints\b/i)
         tokens << [:metadata, {ungrouped: true}]
       elsif s.scan(/time\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_\-]+))/i)
         # Parsing is downstream responsibility
