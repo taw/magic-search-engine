@@ -87,7 +87,6 @@ describe "Any queries" do
     assert_search_equal "in:pt", "pt: *"
     assert_search_equal "in:ru", "ru: *"
     assert_search_equal "in:sp", "sp: *"
-    assert_search_equal "in:cn", "cn: *"
     assert_search_equal "in:tw", "tw: *"
   end
 

@@ -27,7 +27,7 @@ class QueryTokenizer
       elsif s.scan(/\)/i)
         tokens << [:close]
       elsif s.scan(%r[
-        (o|oracle|fo|fulloracle|ft|flavor|a|art|artist|n|name|number|rulings)
+        (o|oracle|fo|fulloracle|ft|flavor|a|art|artist|n|name|cn|number|rulings)
         \s*[:=]\s*
         /(
           (?:[^\\/]|\\.)*
@@ -47,6 +47,7 @@ class QueryTokenizer
             "fo" => ConditionFullOracleRegexp,
             "fulloracle" => ConditionFullOracleRegexp,
             "number" => ConditionNumberRegexp,
+            "cn" => ConditionNumberRegexp,
             "rulings" => ConditionRulingsRegexp,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
           rx = Regexp.new(s[2], Regexp::IGNORECASE | Regexp::MULTILINE)
@@ -65,16 +66,17 @@ class QueryTokenizer
             "fo" => ConditionFullOracle,
             "fulloracle" => ConditionFullOracle,
             "number" => ConditionNumber,
+            "cn" => ConditionNumber,
             "rulings" => ConditionRulings,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
           @warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, cond.new(s[2])]
         end
-      elsif s.scan(/number\s*[:=]\s*(?:"(.*?[\,\-].*?)"|([\p{L}\p{Digit}\,\-]*[\,\-][\p{L}\p{Digit}\,\-]*))/)
+      elsif s.scan(/(?:number|cn)\s*[:=]\s*(?:"(.*?[\,\-].*?)"|([\p{L}\p{Digit}\,\-]*[\,\-][\p{L}\p{Digit}\,\-]*))/)
         ranges = s[1] || s[2]
         tokens << [:test, ConditionNumberRange.new(ranges)]
       elsif s.scan(%r[
-        (cn|tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|foreign)
+        (tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|foreign)
         \s*[:=]\s*
         /(
           (?:[^\\/]|\\.)*
@@ -110,7 +112,7 @@ class QueryTokenizer
         tokens << [:test, ConditionArtist.new(s[1] || s[2])]
       elsif s.scan(/(?:rulings)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionRulings.new(s[1] || s[2])]
-      elsif s.scan(/(cn|tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|foreign)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
+      elsif s.scan(/(tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|foreign)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionForeign.new(s[1], s[2] || s[3])]
       elsif s.scan(/any\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionAny.new(s[1] || s[2])]
@@ -291,7 +293,8 @@ class QueryTokenizer
         cond = s[2].capitalize
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/in\s*[:=]\s*(cs|ct|de|fr|it|jp|kr|pt|ru|sp|cn|tw)\b/i)
+      elsif s.scan(/in\s*[:=]\s*(cs|ct|de|fr|it|jp|kr|pt|ru|sp|tw)\b/i)
+        # cn used to alias cs, but it's number: now
         tokens << [:test, ConditionInForeign.new(s[1].downcase)]
       elsif s.scan(/in\s*[:=]\s*(paper|arena|mtgo|shandalar|xmage|foil|nonfoil|booster)\b/i)
         cond = s[1].capitalize
