@@ -8,8 +8,7 @@ describe "Avacyn Restored" do
     assert_search_results "mana>={R}{X}", "Bonfire of the Damned"
   end
 
-  it "cn" do
-    assert_search_results "cn:拱翼巨龙", "Archwing Dragon"
+  it "cs" do
     assert_search_results "cs:拱翼巨龙", "Archwing Dragon"
     assert_search_results "tw:拱翼巨龙"
     assert_search_results "ct:拱翼巨龙"
@@ -19,14 +18,12 @@ describe "Avacyn Restored" do
     assert_search_results "ct:拱翼巨龍", "Archwing Dragon"
     assert_search_results "tw:拱翼巨龍", "Archwing Dragon"
     assert_search_results "cs:拱翼巨龍"
-    assert_search_results "cn:拱翼巨龍"
   end
 
   it "fr" do
     assert_search_results "fr:Fragments", "Bone Splinters"
     assert_search_results %[fr:"Lumière d'albâtre"], "Bruna, Light of Alabaster"
     assert_search_results %[fr:"lumiere d'albatre"], "Bruna, Light of Alabaster"
-    #@
   end
 
   it "de" do

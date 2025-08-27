@@ -86,6 +86,8 @@ describe "QueryParser" do
     assert_search_parse "related:t:planeswalker", "related=t:planeswalker"
     assert_search_parse "alt:t:planeswalker", "alt=t:planeswalker"
     assert_search_parse "cn≥315 cn≤406", "number>=315 number<=406"
+    # This doesn't work like scryfall, as "cn=ELD-303" is parsed as numbe range query
+    assert_search_parse "cn:315 or cn=ELD-303 or cn:/a/ or cn:200-300", "number:315 or number=ELD-303 or number:/a/ or number:200-300"
     assert_search_parse "name≥Forest name≤Mountain", "name>=Forest name<=Mountain"
     assert_search_parse "pow≥2 tou≤5", "pow>=2 tou<=5"
     assert_search_parse "t≥goblin type≤creature", "type>=goblin t<=creature"
