@@ -51,58 +51,45 @@ sheets:
 
   commander:
     any:
-    - rawquery: "e:eoc r=m is:fullart number:1,2,3,4" # Full Art Commander Cards. For some reason the numbers need to be specified because it returns non fullart cards. If that gets fixed, "number:1,2,3,4" can be removed.
-      chance: 9
+    - rawquery: "e:eoc r=m is:fullart" # Full Art Commander Cards
+      rate: 1
       count: 4
     - rawquery: "e:eoc r=r is:extendedart" # Extended Art Commmander Cards
-      chance: 91
+      rate: 2
       count: 20
 
   non_foil_boosterfun:
     any:
     - rawquery: "e:{set} r=r is:extendedart" # Extended Art Rare
-      chance: 47
+      rate: 2
       count: 33
     - rawquery: "e:{set} r=m is:extendedart" # Extended Art Mythic
-      chance: 5
+      rate: 1
       count: 7
     - rawquery: "{viewport} r=r" # Rare Viewport Land
-      chance: 7
+      rate: 2
       count: 5
     - rawquery: "{viewport} r=m" # Mythic Viewport Land
-      chance: 4
+      rate: 1
+      count: 5
     - rawquery: "{triumphant} r=r" # Rare Triumphant
-      chance: 17
+      rate: 2
       count: 12
     - rawquery: "{triumphant} r=m" # Mythic Trumphant
-      chance: 3
+      rate: 1
       count: 4
     - rawquery: "{surreal} r=r" # Rare Surreal
-      chance: 15
+      rate: 2
       count: 11
     - rawquery: "{surreal} r=m" # Mythic Surreal
-      chance: 2
+      rate: 1
       count: 3
 
   foil_boosterfun:
     foil: true
     any:
-    - rawquery: "e:{set} r=r is:extendedart" # Extended Art Rare
-      chance: 380
-    - rawquery: "e:{set} r=m is:extendedart" # Extended Art Mythic
-      chance: 40
-    - rawquery: "{viewport} r=r" # Rare Viewport Land
-      chance: 60
-    - rawquery: "{viewport} r=m" # Mythic Viewport Land
-      chance: 30
-    - rawquery: "{triumphant} r=r" # Rare Triumphant
-      chance: 130
-    - rawquery: "{triumphant} r=m" # Mythic Trumphant
-      chance: 20
-    - rawquery: "{surreal} r=r" # Rare Surreal
-      chance: 120
-    - rawquery: "{surreal} r=m" # Mythic Surreal
-      chance: 20
+    - use: non_foil_boosterfun
+      chance: 800 # 38% + 4% + 6% +3% + 13% + 2% + 12% + 2% = 80%
     - rawquery: "{special_guest}" # Special Guest
       chance: 60
     - rawquery: "e:{set} number:357-366" # Japan Showcase
@@ -111,10 +98,12 @@ sheets:
       chance: 10
     - rawquery: "{galaxy_viewport} r=r" # Rare Galaxy Foil Viewport Land
       chance: 20
+      count: 5
     - rawquery: "{galaxy_viewport} r=m" # Mythic Galaxy Foil Viewport Land
       chance: 10
+      count: 5
     - rawquery: "e:{set} number=382" # Singularity Foil Sothera, The Supervoid
-      chance: 5 # Half as rare as mythic galaxy foil?
+      chance: 2 # Same rarity as a Mythic Galaxy Foil Viewport Land
 
   stellar_sights_land:
     # Chance of getting sheet = 36% + 9% + 18% + 4% = 67%
