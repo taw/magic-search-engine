@@ -86,6 +86,7 @@ class ExportDecksData
         planarDeck: deck.section("Planar Deck").map{|n,c| export_card(n, c) },
         schemeDeck: deck.section("Scheme Deck").map{|n,c| export_card(n, c) },
         tokens: deck.tokens.map{|c| export_token(*c) },
+        languages: Array(deck.languages),
       }
     end
     open(output_path, "w") do |fh|

@@ -111,6 +111,7 @@ class ExportFormatterBasic < ExportFormatter
       result << {
         name: booster.name,
         code: booster.code,
+        languages: Array(booster.languages),
         set_code: booster.set_code,
         set_name: booster.set_name,
         boosters: booster.packs.map{|subpack, weight|
@@ -160,6 +161,7 @@ class ExportFormatterExtended < ExportFormatter
       result << {
         name: booster.name,
         code: booster.code,
+        languages: Array(booster.languages),
         set_code: booster.set_code,
         set_name: booster.set_name,
         boosters: booster.packs.map{|subpack, weight|
@@ -237,6 +239,7 @@ class ExportFormatterExperimental < ExportFormatter
       result[set_code] ||= {}
       result[set_code][booster_type] = {
         name: booster_type == "default" ? nil : booster.name,
+        languages: Array(booster.languages),
         boosters: booster.packs.map{|subpack, weight|
           serialize_subpack(subpack, weight, sheets, booster.set_code)
         },
