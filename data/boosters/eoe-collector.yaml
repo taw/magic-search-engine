@@ -1,0 +1,149 @@
+# Data from: https://magic.wizards.com/en/news/feature/collecting-edge-of-eternities
+# And https://magic.wizards.com/en/products/edge-of-eternities/card-image-gallery
+
+pack:
+  foil_common: 5
+  foil_uncommon: 4
+  celestial_basic_land: 1
+  foil_rare_mythic: 1
+  commander: 1
+  non_foil_boosterfun: 1
+  sights_land:
+  - stellar_sights_land: 1
+    chance: 670
+  - foil_stellar_sights_land: 1
+    chance: 225
+  - galaxy_stellar_sights_land: 1
+    chance: 112 # Aprox 10.5% + 0.75%
+  foil_boosterfun: 1
+
+queries:
+  celestial_basic: "e:{set} number:262-266"
+  viewport: "e:{set} number:277-286"
+  triumphant: "e:{set} number:287-302"
+  surreal: "e:{set} number:303-316"
+  extended_art: "e:{set} number:317-356"
+  japan_showcase: "e:{set} number:357-366"
+  galaxy_celestial_basic: "e:{set} number:367-371"
+  galaxy_viewport: "e:{set} number:372-381"
+  fracture_japan_showcase: "e:{set} number:383-392"
+  stellar_sights: "e:EOS number:1-45"
+  poster_stellar_sights: "e:EOS number:46-90"
+  galaxy_stellar_sights: "e:EOS number:91-135"
+  galaxy_poster_stellar_sights: "e:EOS number:136-180"
+  special_guest: "e:spg number:119-128"
+
+sheets:
+  foil_rare_mythic:
+    foil: true
+    any:
+    - use: rare
+      rate: 2
+    - use: mythic
+      rate: 1
+
+  celestial_basic_land:
+    foil: true
+    any:
+    - rawquery: "{celestial_basic}"
+      chance: 2
+      count: 5
+    - rawquery: "{galaxy_celestial_basic}"
+      chance: 1
+      count: 5
+
+  commander:
+    any:
+    - rawquery: "e:eoc r=m is:fullart" # Full Art Commander Cards
+      rate: 1
+      count: 4
+    - rawquery: "e:eoc r=r is:extendedart" # Extended Art Commmander Cards
+      rate: 2
+      count: 20
+
+  non_foil_boosterfun:
+    any:
+    - rawquery: "{extended_art} r=r" # Extended Art Rare
+      rate: 2
+      count: 33
+    - rawquery: "{extended_art} r=m" # Extended Art Mythic
+      rate: 1
+      count: 7
+    - rawquery: "{viewport} r=r" # Rare Viewport Land
+      rate: 2
+      count: 5
+    - rawquery: "{viewport} r=m" # Mythic Viewport Land
+      rate: 1
+      count: 5
+    - rawquery: "{triumphant} r=r" # Rare Triumphant
+      rate: 2
+      count: 12
+    - rawquery: "{triumphant} r=m" # Mythic Trumphant
+      rate: 1
+      count: 4
+    - rawquery: "{surreal} r=r" # Rare Surreal
+      rate: 2
+      count: 11
+    - rawquery: "{surreal} r=m" # Mythic Surreal
+      rate: 1
+      count: 3
+
+  foil_boosterfun:
+    foil: true
+    any:
+    - use: non_foil_boosterfun
+      chance: 800 # 38% + 4% + 6% +3% + 13% + 2% + 12% + 2% = 80%
+    - rawquery: "{special_guest}" # Special Guest
+      chance: 60
+      count: 10
+    - rawquery: "{japan_showcase}" # Japan Showcase
+      chance: 90
+      count: 10
+    - rawquery: "{fracture_japan_showcase}" # Fracture Foil Japan Showcase
+      chance: 10
+      count: 10
+    - rawquery: "{galaxy_viewport} r=r" # Rare Galaxy Foil Viewport Land
+      chance: 20
+      count: 5
+    - rawquery: "{galaxy_viewport} r=m" # Mythic Galaxy Foil Viewport Land
+      chance: 10
+      count: 5
+    - rawquery: "e:{set} number=382" # Singularity Foil Sothera, The Supervoid
+      chance: 2 # Same rarity as a Mythic Galaxy Foil Viewport Land
+      count: 1
+
+  stellar_sights_land:
+    # Chance of getting sheet = 36% + 9% + 18% + 4% = 67%
+    any:
+    - rawquery: "{stellar_sights} r=r" # Rare Stellar Sights
+      chance: 36
+    - rawquery: "{stellar_sights} r=m" # Mythic Stellar Sights
+      chance: 9
+    - rawquery: "{poster_stellar_sights} r=r" # Rare Poster Stellar Sights
+      chance: 18
+    - rawquery: "{poster_stellar_sights} r=m" # Mythic Poster Stellar Sights
+      chance: 4
+  foil_stellar_sights_land:
+    # Chance of getting sheet = 22.5%
+    foil: true
+    any:
+    - rawquery: "{stellar_sights} r=r" # Foil Rare Stellar Sights
+      chance: 120 
+    - rawquery: "{stellar_sights} r=m" # Foil Mythic Stellar Sights
+      chance: 30 
+    - rawquery: "{poster_stellar_sights} r=r" # Foil Rare Poster Stellar Sights
+      chance: 60 
+    - rawquery: "{poster_stellar_sights} r=m" # Foil Mythic Poster Stellar Sights
+      chance: 15 
+  galaxy_stellar_sights_land:
+    # Chance of getting sheet = 10.5% (+ "less than 1%") 
+    foil: true
+    any:
+    - rawquery: "{galaxy_stellar_sights} r=r" # Galaxy Foil Rare Stellar Sights
+      chance: 600 
+    - rawquery: "{galaxy_stellar_sights} r=m" # Galaxy Foil Mythic Stellar Sights
+      chance: 150
+    - rawquery: "{galaxy_poster_stellar_sights} r=r" # Galaxy Foil Rare Poster Stellar Sights
+      chance: 300 
+    - rawquery: "{galaxy_poster_stellar_sights} r=m" # Galaxy Foil Mythic Poster Stellar Sights
+      chance: 75
