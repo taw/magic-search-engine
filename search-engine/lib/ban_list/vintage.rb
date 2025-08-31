@@ -1,5 +1,5 @@
 BanList.for_format("vintage") do
-  # 1994 doesn't quite agree with https://mtg.gamepedia.com/Banned_and_restricted_cards/Timeline
+  # 1994 doesn't quite agree with https://mtg.wiki/wiki/Banned_and_restricted_cards/Timeline
   format_start(
     nil,
     "Amulet of Quoz" => "banned",
