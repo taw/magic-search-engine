@@ -3,7 +3,7 @@
 
 # I trust unsourced mtg wiki claim here more
 # since this is definitely wrong
-# https://mtg.gamepedia.com/Duel_Decks:_Mirrodin_Pure_vs._New_Phyrexia
+# https://mtg.wiki/wiki/Duel_Decks:_Mirrodin_Pure_vs._New_Phyrexia
 class PatchReleaseDates < Patch
   def call
     each_set do |set|
