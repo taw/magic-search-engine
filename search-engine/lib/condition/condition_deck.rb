@@ -1,13 +1,8 @@
 class ConditionDeck < Condition
-  # This list should match CardsWithAllowedConflicts in DeckPrintingResolver
-  # For these we don't have exact printing information, so any printing from
-  # the same set will be considered matching
-  #
-  # There's two algorithms:
-  # * for cards with allowed conflicts, we only know from which set they are, not exact printing
-  # * for all other cards, we know exact printing
+  # We used to have "allowed conflicts" logic so basics from the same set would match
+  # but this is no longer necessary.
 
-  CardsWithAllowedConflicts = [
+  BasicLands = [
     "Plains",
     "Island",
     "Swamp",
@@ -28,29 +23,13 @@ class ConditionDeck < Condition
       warning %[Multiple decks matching "#{@deck_name}": #{deck_names.join(", ")}]
     end
 
-    # For exact matching
     results = Set[]
-    # For inexact matching
-    matching_card_names = {}
 
     decks.each do |deck|
       [*deck.cards, *deck.sideboard, *deck.commander].each do |count, card|
         card.parts.each do |cp|
-          if CardsWithAllowedConflicts.include?(cp.name)
-            matching_card_names[cp.set_code] ||= Set.new
-            matching_card_names[cp.set_code] << cp.name
-          else
-            results << cp
-          end
+          results << cp
         end
-      end
-    end
-
-    # Expand inexact matches
-    matching_card_names.each do |set_code, matching_names|
-      set = db.sets[set_code]
-      set.printings.each do |card_printing|
-        results << card_printing if matching_names.include?(card_printing.name)
       end
     end
 

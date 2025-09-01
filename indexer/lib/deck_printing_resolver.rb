@@ -1,7 +1,8 @@
 class DeckPrintingResolver
-  # We know basics are ambiguous, we don't even care
-  # Basics (without special effects), nobody really cares which one you'll get
-  # There are exception like JMP and WC* but they are annotated in data
+  # These are slightly ambiguous
+  # For basics (without special effects), we just annotate round-robin distribution
+  # like [LTR:*]. The counts can be slightly off but nobody cares if a boring basic is off by one.
+  # Any set with basics following specific logic like CLU, JMP, WC* etc. are annotated in data
   BasicLands = [
     "Plains",
     "Island",
