@@ -91,8 +91,8 @@ class CardDatabase
     @booster_data ||= JSON.parse(Pathname("#{__dir__}/../../index/booster_index.json").read)
   end
 
-  # We also need to include all other cards with same name from same set,
-  # as we don't know which Forest etc. is included
+  # This used to allow all other cards with same name from same set,
+  # but this is no longer the case
   def decks_containing(card_printing)
     set_code = card_printing.set_code
     name = card_printing.name
@@ -100,12 +100,7 @@ class CardDatabase
       next unless deck.all_set_codes.include?(set_code)
       [*deck.cards, *deck.sideboard, *deck.commander].any? do |_, physical_card|
         physical_card.parts.any? do |physical_card_part|
-          if ConditionDeck::CardsWithAllowedConflicts.include?(physical_card.name)
-            physical_card_part.set_code == card_printing.set_code and
-            physical_card_part.name == card_printing.name
-          else
-            physical_card_part == card_printing
-          end
+          physical_card_part == card_printing
         end
       end
     end
