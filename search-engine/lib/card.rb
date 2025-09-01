@@ -554,6 +554,9 @@ class Card
     "Trance",
     "Unlock Ability",
     "Wave Cannon",
+    # SPE
+    "Goblin Formula",
+    "Smear Campaign",
   ].sort
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 

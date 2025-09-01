@@ -218,6 +218,7 @@ describe "Full Database Test" do
       "Kird Ape",
       "Lotus Petal",
       "Rhystic Study",
+      "Shock",
       "Sol Ring"
   end
 
