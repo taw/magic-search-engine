@@ -23,6 +23,8 @@ gem "rails-assets-tether"
 gem "select2-rails"
 gem "net-smtp", require: false # Ruby 3.1 issue
 
+gem 'concurrent-ruby', '1.3.4' # 1.3.5 has some dependency issues
+
 # Use ActiveModel has_secure_password
 # gem "bcrypt", "~> 3.1.7"
 
