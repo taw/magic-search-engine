@@ -555,6 +555,7 @@ class Card
     "Unlock Ability",
     "Wave Cannon",
     # SPE
+    "Fateful Bite",
     "Goblin Formula",
     "Smear Campaign",
   ].sort
