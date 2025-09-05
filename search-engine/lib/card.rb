@@ -556,8 +556,18 @@ class Card
     "Wave Cannon",
     # SPE
     "Fateful Bite",
+    "Fear Gas",
     "Goblin Formula",
+    "Lizard Formula",
+    "Mind Swap",
+    "Nosh",
+    "Sensational Save",
+    "Share",
     "Smear Campaign",
+    "Top of the Food Chain",
+    "Undying Vengeance",
+    "Unreliable Visions",
+    "Venom Blast",
   ].sort
   ABILITY_WORD_RX = %r[^(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 
