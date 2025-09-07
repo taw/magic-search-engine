@@ -171,6 +171,7 @@ class Indexer
         "official_code" => set_data["code"],
         "online_only" => (set_data["onlineOnly"] || set_data["isOnlineOnly"]) ? true : nil,
         "base_set_size" => set_data["baseSetSize"],
+        "partial_preview" => set_data["isPartialPreview"],
       ).compact
       @sets << set
       set_data["cards"].each do |card_data|

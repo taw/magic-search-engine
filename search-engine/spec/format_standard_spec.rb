@@ -2,7 +2,7 @@ describe "Formats - Standard" do
   include_context "db"
 
   let(:regular_sets) { db.sets.values.select{|s|
-    s.types.include?("core") or s.types.include?("expansion") or s.name =~ /Welcome Deck/ or s.name =~ /M19 Gift Pack/
+    s.types.include?("core") or s.types.include?("expansion") or s.name =~ /Welcome Deck/ or s.name =~ /M19 Gift Pack/ and !s.types.include?("preview")
   }.to_set }
 
   describe "Standard legal sets" do
