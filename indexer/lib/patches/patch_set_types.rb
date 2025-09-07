@@ -133,6 +133,9 @@ class PatchSetTypes < Patch
         set_types << "commander" << "multiplayer"
       end
 
+      # Mostly there to drive specs
+      set_types << "preview" if set["partial_preview"]
+
       set["types"] = set_types.sort.uniq
     end
   end

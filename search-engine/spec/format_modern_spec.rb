@@ -4,7 +4,7 @@ describe "Formats - Modern" do
   let(:regular_sets) do
     db.sets.values.select do |s|
       # MD1 is a precon, it doesn't make sense to consider it either way, there are no new cards in it anyway
-      (s.types.include?("standard") or s.types.include?("modern")) and s.code != "md1"
+      (s.types.include?("standard") or s.types.include?("modern")) and s.code != "md1" and !s.types.include?("preview")
     end.to_set
   end
 
