@@ -555,6 +555,7 @@ class Card
     "Unlock Ability",
     "Wave Cannon",
     # SPE
+    "Darkforce Inversion",
     "Fateful Bite",
     "Fear Gas",
     "Goblin Formula",
@@ -564,6 +565,7 @@ class Card
     "Sensational Save",
     "Share",
     "Smear Campaign",
+    "Sonic Blast",
     "Top of the Food Chain",
     "Undying Vengeance",
     "Unreliable Visions",
