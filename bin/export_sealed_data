@@ -56,6 +56,7 @@ class ExportFormatter
     result.set = pack.set
     result.code = pack.code
     result.name = pack.name
+    result.languages = pack.languages
     result
   end
 
