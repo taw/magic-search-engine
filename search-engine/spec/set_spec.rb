@@ -34,6 +34,7 @@ describe "Sets" do
       "portal",
       "premiere shop",
       "premium deck",
+      "preview",
       "promo",
       "sdcc",
       "shandalar",

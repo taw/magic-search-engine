@@ -12,7 +12,8 @@ class PatchBlocks < Patch
     ["chk",  nil, "Champions of Kamigawa", "chk", "bok", "sok"],
     ["rav",  nil, "Ravnica", "rav", "gpt", "dis"],
     ["tsp", "ts", "Time Spiral", "tsp", "tsb", "plc", "fut"],
-    # Should Shadowmoor be its own block?
+    # Borderline that Shadowmoor be its own block,
+    # but the current logic assumes they're non-overlapping.
     ["lrw", "lw", "Lorwyn", "lrw", "mor", "shm", "eve"],
     ["ala",  nil, "Shards of Alara", "ala", "con", "arb"],
     ["zen",  nil, "Zendikar", "zen", "wwk", "roe"],
