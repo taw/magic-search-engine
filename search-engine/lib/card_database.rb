@@ -60,7 +60,7 @@ class CardDatabase
 
   def initialize
     @sets = {}
-    @blocks = Set[]
+    @blocks = {}
     @cards = {}
     @artists = {}
     yield(self)
@@ -352,12 +352,19 @@ class CardDatabase
     freeze_strings!(data)
     data["sets"].each do |set_code, set_data|
       @sets[set_code] = CardSet.new(self, set_data)
-      if set_data["block_code"]
-        @blocks << set_data["block_code"]
-        @blocks << set_data["alternative_block_code"] if set_data["alternative_block_code"]
-        @blocks << normalize_name(set_data["block_name"])
-      end
+      block_code = set_data["block_code"]
+      next unless block_code
+
+      # Make all of them point at the same object, so
+      # blocks["zen"] = blocks["wwk"] = Set["zen", "wwk", "roe"]
+      block = (@blocks[block_code] ||= Set[])
+      @blocks[set_data["alternative_block_code"]] ||= block if set_data["alternative_block_code"]
+      @blocks[normalize_name(set_data["block_name"])] ||= block
+      @blocks[set_code] ||= block
+      @blocks[normalize_name(set_data["name"])] ||= block
+      block << set_code
     end
+
     data["cards"].each do |card_name, card_data|
       # Indexer removes most tokens, we allow only a very selected group of very special ones
       # next if card_data["layout"] == "token"

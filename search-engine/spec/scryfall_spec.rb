@@ -114,9 +114,8 @@ describe "Scryfall" do
   end
 
   it "b_wwk" do
-    # scryfall allows any set code to be block code
-    # maybe that's a good idea
-    assert_count_printings "b:wwk", 0
+    # Identical results now
+    assert_count_printings "b:wwk", 662
   end
 
   it "frame_future" do

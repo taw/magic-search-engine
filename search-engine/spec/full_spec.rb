@@ -43,6 +43,11 @@ describe "Full Database Test" do
     assert_search_equal "b:lw", "b:lrw"
     assert_search_equal "b:mi", "b:mrd"
     assert_search_equal "b:mr", "b:mir"
+    # Querying by second or third set code or name
+    assert_search_equal "b:wwk", "b:zen"
+    assert_search_equal "b:worldwake", "b:zen"
+    assert_search_equal "b:unh", "b:un"
+    assert_search_equal "b:unstable", "b:un"
   end
 
   it "edition special characters" do

@@ -19,19 +19,17 @@ class ConditionBlock < Condition
   def matching_sets(db)
     sets = Set[]
     @blocks.each do |block|
-      db.sets.each do |set_code, set|
-        next unless set.block_code and set.block_name
-        if db.blocks.include?(block)
-          if set.block_code == block or set.alternative_block_code == block or normalize_name(set.block_name) == block
-            sets << set
-          end
+      if db.blocks[block]
+        sets += db.blocks[block]
+      else
+        matching = db.blocks.select{|name, sets| name.include?(block) }.values.sum(Set[])
+        if matching
+          sets += matching
         else
-          if normalize_name(set.block_name).include?(block)
-            sets << set
-          end
+          warning %[Unknown block "#{block}"]
         end
       end
     end
-    sets
+    sets.map{|set_code| db.sets[set_code]}.to_set
   end
 end
