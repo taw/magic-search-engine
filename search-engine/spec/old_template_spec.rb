@@ -1,6 +1,8 @@
 # Due to way mtgjson updates, old templates often stay for a while in db
 # Let's make sure to prevent regressions at least
 # These numbers decreasing is good. Increasing is bad.
+#
+# no more ~ tests as we redefined it
 describe "Old templates" do
   include_context "db"
 
@@ -19,10 +21,6 @@ describe "Old templates" do
   # Ertha Jo, Frontier Mentor
   it do
     assert_count_cards %[o:"creature or player"], 7
-  end
-
-  it do
-    assert_count_cards %[o:"~ can't be countered"], 0
   end
 
   ### On non-Gatherer cards only
