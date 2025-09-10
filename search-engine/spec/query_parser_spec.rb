@@ -261,6 +261,8 @@ describe "QueryParser" do
     assert_search_parse "++ pow=3 tou=2 c:g", "pow=3 ++ tou=2 c:g"
     assert_search_parse "++ c:g //", "c:g // ++"
     assert_search_parse "++ pow=3 tou=2 c:g", "pow=3 tou=2 c:g unique:prints"
+    assert_search_parse '!"Lightning Bolt" unique:prints', '++ !"Lightning Bolt"'
+    assert_search_parse 'unique:prints !"Lightning Bolt"', '!"Lightning Bolt" ++'
     # FIXME: This is a bug, just documenting so it can get fixed someday
     Query.new("c:g ++ //").warnings.should == ["Unknown token type [:slash_slash]"]
   end
