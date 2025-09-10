@@ -4,8 +4,8 @@ class ConditionForeign < ConditionSimple
   def initialize(lang, query)
     @lang = lang.downcase
     # Support both Gatherer and MCI naming conventions
-    @lang = "ct" if @lang == "tw"
-    @lang = "cs" if @lang == "cn"
+    @lang = "ct" if @lang == "tw" or @lang == "zht"
+    @lang = "cs" if @lang == "zhs"
     @lang = @lang.to_sym
     @lang_match_all = (@lang == :foreign)
     @query = hard_normalize(query)

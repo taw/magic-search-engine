@@ -76,7 +76,7 @@ class QueryTokenizer
         ranges = s[1] || s[2]
         tokens << [:test, ConditionNumberRange.new(ranges)]
       elsif s.scan(%r[
-        (tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|foreign)
+        (tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|zhs|zht|foreign)
         \s*[:=]\s*
         /(
           (?:[^\\/]|\\.)*
@@ -112,7 +112,7 @@ class QueryTokenizer
         tokens << [:test, ConditionArtist.new(s[1] || s[2])]
       elsif s.scan(/(?:rulings)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionRulings.new(s[1] || s[2])]
-      elsif s.scan(/(tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|foreign)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
+      elsif s.scan(/(tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|zhs|zht|foreign)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionForeign.new(s[1], s[2] || s[3])]
       elsif s.scan(/any\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionAny.new(s[1] || s[2])]
@@ -293,7 +293,7 @@ class QueryTokenizer
         cond = s[2].capitalize
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/in\s*[:=]\s*(cs|ct|de|fr|it|jp|kr|pt|ru|sp|tw)\b/i)
+      elsif s.scan(/in\s*[:=]\s*(cs|ct|de|fr|it|jp|kr|pt|ru|sp|tw|zht|zhs)\b/i)
         # cn used to alias cs, but it's number: now
         tokens << [:test, ConditionInForeign.new(s[1].downcase)]
       elsif s.scan(/in\s*[:=]\s*(paper|arena|mtgo|shandalar|xmage|foil|nonfoil|booster)\b/i)

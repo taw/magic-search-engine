@@ -3,7 +3,8 @@
 class ConditionInForeign < ConditionSimple
   def initialize(lang)
     @lang = lang.downcase
-    @lang = "ct" if @lang == "tw"
+    @lang = "ct" if @lang == "tw" or @lang == "zht"
+    @lang = "cs" if @lang == "zhs"
     @lang = @lang.to_sym
   end
 

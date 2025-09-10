@@ -10,14 +10,18 @@ describe "Avacyn Restored" do
 
   it "cs" do
     assert_search_results "cs:拱翼巨龙", "Archwing Dragon"
+    assert_search_results "zhs:拱翼巨龙", "Archwing Dragon"
     assert_search_results "tw:拱翼巨龙"
     assert_search_results "ct:拱翼巨龙"
+    assert_search_results "zht:拱翼巨龙"
   end
 
   it "chinese_traditional" do
     assert_search_results "ct:拱翼巨龍", "Archwing Dragon"
+    assert_search_results "zht:拱翼巨龍", "Archwing Dragon"
     assert_search_results "tw:拱翼巨龍", "Archwing Dragon"
     assert_search_results "cs:拱翼巨龍"
+    assert_search_results "zhs:拱翼巨龍"
   end
 
   it "fr" do
