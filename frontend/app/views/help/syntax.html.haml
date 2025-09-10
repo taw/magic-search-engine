@@ -43,6 +43,7 @@
     %h4 Search by Oracle text
     %div Reminder text is not included in Oracle search with <code>o:</code>, but is with <code>fo:</code>
     %div Reminder text is always kept on uncards, as it's meaningful there
+    %div You can use ~ as placeholder for name of the card. It also matches "This <type>" templating (with some edge cases). This doesn't support shortened card names like "Chandra deals damage" yet, and can't be mixed with regular expressions.
     %ul
       = search_help "o:delve", %[search cards with "delve" in Oracle text]
       = search_help %[o:"destroy target creature"], %[search cards with "destroy target creature" in Oracle text]
