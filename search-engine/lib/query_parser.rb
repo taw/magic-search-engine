@@ -21,13 +21,14 @@ class QueryParser
       return [nil, {}, ["Invalid query"]]
     end
 
-    if str =~ /\A(\+\+)?!(.*)\z/
-      if $1 == "++"
+    if str =~ /\A\s*(?:(?<flag1>\+\+|unique:prints)\s*)?!\s*(?<query>.*?)\s*(?:(?<flag2>\+\+|unique:prints))?\s*\z/
+      name = $~["query"]
+      if $~["flag1"] || $~["flag2"]
         metadata = {ungrouped: true}
       else
         metadata = {}
       end
-      name = $2
+
       # These cards need special treatment:
       # * "Ach! Hans, Run!"
       # * Look at Me, I'm R&D
