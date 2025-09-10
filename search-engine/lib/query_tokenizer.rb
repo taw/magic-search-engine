@@ -106,7 +106,7 @@ class QueryTokenizer
         tokens << [:test, ConditionOracle.new(s[1] || s[2])]
       elsif s.scan(/(?:fo|fulloracle)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionFullOracle.new(s[1] || s[2])]
-      elsif s.scan(/(?:keyword)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
+      elsif s.scan(/(?:kw|keyword)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionKeyword.new(s[1] || s[2])]
       elsif s.scan(/(?:a|art|artist)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionArtist.new(s[1] || s[2])]
