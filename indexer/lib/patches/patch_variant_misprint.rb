@@ -19,6 +19,8 @@ class PatchVariantMisprint < Patch
     when "dom"
       # Arena version not misprint, but I don't want a separate flag for a single card
       number =~ /y/
+    when "mkm"
+      number =~ /★/
     else
       number =~ /†/
     end
