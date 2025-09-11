@@ -10,7 +10,7 @@ pack:
       chance: 1
   uncommon_scene: 3
   wildcard: 1
-  rare_mythic: 1
+  rare_mythic_boosterfun: 1
   foil: 1
   land:
     - non_foil_land: 1
@@ -32,20 +32,8 @@ sheets:
     query: "r:c -{dual_land}" # Regular common, no dual lands
     count: 60
 
-  uncommon:
-    query: "r:u" # Regular uncommon
-    count: 55
-
-  rare:
-    query: "r:r" # Regular rare
-    count: 60
-
-  mythic:
-    query: "r:m" # Regular mythic
-    count: 20
-
   uncommon_scene:
-    any: # TODO: Is this correct? Does it generate all of them with the same odds?
+    any:
       - use: uncommon
         rate: 1
       - rawquery: "{scene} r:u" # Uncommon scene
@@ -61,7 +49,7 @@ sheets:
         rate: 1
         count: 3
 
-  boosterfun: # TODO: Lots of assumptions here. Numbers are so low it doesn't really matter.
+  boosterfun:
     any:
     - rawquery: "{web_slinger} r:r" # Rare web slinger
       rate: 2
@@ -76,7 +64,7 @@ sheets:
       rate: 1
       count: 4
     - rawquery: "{scene} r:u" # Uncommon scene
-      rate: 4 # TODO: CHECK THIS!!
+      rate: 6 # TODO: Assumes an uncommon scene is 3 times more common than a rare one
       count: 3
     - rawquery: "{scene} r:r" # Rare scene
       rate: 2
@@ -85,41 +73,34 @@ sheets:
       rate: 1
       count: 2
 
-  wildcard: # See detailed calculations at the end of the file
+  wildcard:
     any:
       - use: common
         chance: 708 # 70.8%
       - use: uncommon
         chance: 41 # 4.1%
-      - use: rare # TODO: maybe combine rare_mythic with a 2:1 rate?
-        chance: 209 # 20.9%
-      - use: mythic
-        chance: 29 # 2.9%
+      - use: rare_mythic
+        chance: 238 # 20.9% + 2.9% = 23.8%
       - use: boosterfun
         chance: 13 # 100% - 70.8% - 4.1% - 20.9% - 2.9% = 1.3%
       
-  rare_mythic: # See detailed calculations at the end of the file
+  rare_mythic_boosterfun:
     any:
-      - use: rare  # TODO: maybe combine rare_mythic with a 2:1 rate?
-        chance: 837 # 83.7%
-      - use: mythic
-        chance: 117 # 11.7%
-      - use: boosterfun
-        chance: 46 #100% - 83.7% - 11.7% = 4.6% left
-        filter: "r>=rare"
-        # TODO: Filter out uncommon
+      - use: rare_mythic
+        chance: 954 # 83.7% + 11.7% = 95.4%
+      - filter: "e:spm r>=rare" # TODO: I can't make this filter work. I want to filter out the uncommon scenes.
+        use: boosterfun
+        chance: 46 # 100% - 83.7% - 11.7% = 4.6% left
 
-  foil: # See detailed calculations at the end of the file
+  foil:
     foil: true
     any:
       - use: common
         chance: 658 # 65.8%
       - use: uncommon
         chance: 241 # 24.1%
-      - use: rare # TODO: maybe combine rare_mythic with a 2:1 rate?
-        chance: 78 # 7.8%
-      - use: mythic
-        chance: 11 # 1.1%
+      - use: rare_mythic
+        chance: 89 # 7.8% + 1.1% = 8.9%
       - use: boosterfun
         chance: 12 # 100% - 65.8% - 24.1% - 7.8% - 1.1% = 1.2%
 
@@ -143,6 +124,16 @@ sheets:
     rawquery: "{source_material}"
     count: 40
 
-# TODO: Update this
 
-########## Calculations for the wildcard slot:
+########## rare_mythic sheet:
+# It seems safe to assume rares and mythics are printed in a single sheet with a 2:1 ratio.
+# This ratio applies to all slots that contain rares and mythics (wildard, rare_mythic_boosterfun, foil).
+
+########## uncommon_scene sheet:
+# We are assumming that the 3 uncommon scene cards appear as often as the 55 uncommons from the main set.
+
+########## boosterfun sheet:
+# We are assumming that all boosterfun cards (web-slinger, panel and scene) have the same rarity
+# appear in a similar 2:1 rare:mythic ratio.
+# This doesn't exactly match the numbers provided by Wizards in the "Rare or mythic rare" slot
+# but it simplifies the work a lot. Numbers are so low for these cards that it's unlkely to be relevant.
