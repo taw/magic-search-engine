@@ -24,6 +24,8 @@ class FormatVintage < Format
       hbg
       j21
       oana
+      om1
+      omn
       past
       pio
       pmic
