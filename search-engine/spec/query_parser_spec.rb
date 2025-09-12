@@ -243,7 +243,6 @@ describe "QueryParser" do
     assert_search_parse_except_warning 'o:/draw ( card/', 'oracle:/draw ( card/'
     assert_search_parse "r>=uncommon", "rarity>=uncommon"
     assert_search_parse "r:rare", "rarity:rare"
-    assert_search_parse "sort:cmc", "order:cmc"
     assert_search_parse "t:goblin", "type:goblin"
     assert_search_parse "view:full", "display:full"
     assert_search_parse "w:abzan", "wm:abzan"
@@ -301,6 +300,18 @@ describe "QueryParser" do
     end
 
     fails.should eq(0)
+  end
+
+  # We support both our more powerful system, and Scryfall's less powerful syntax
+  it "sort" do
+    assert_search_parse "sort:cmc", "order:cmc"
+    assert_search_parse "sort:cmc direction:asc", "sort:cmc"
+    assert_search_parse "sort:cmc direction:desc", "sort:-cmc"
+    assert_search_parse "sort:-cmc direction:asc", "sort:-cmc"
+    assert_search_parse "sort:-cmc direction:desc", "sort:cmc"
+    assert_search_parse "sort:cmc,-rarity,name,-number direction:desc", "sort:-cmc,rarity,-name,number"
+
+    assert_search_parse "sort:cmc direction:desc", "SORT = MV DIRECTION = DESC"
   end
 
   it "warns for bad sort:" do

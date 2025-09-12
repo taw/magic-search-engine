@@ -50,11 +50,50 @@ class QueryParser
       @tokens, @warnings = QueryTokenizer.new.tokenize(str)
       @metadata = {}
       query = parse_query
+      normalize_metadata
       [query, @metadata, @warnings]
     end
   end
 
 private
+
+  def normalize_metadata
+    sort_order = @metadata.delete(:sort)&.split(",") || ["default"]
+
+    # Merge direction with sort
+    case @metadata.delete(:direction)
+    when "asc"
+      # alredy fine
+    when "desc"
+      sort_order = sort_order.map do |s|
+        s.start_with?("-") ? s[1..] : "-#{s}"
+      end
+    end
+    # Resolve some aliases
+    sort_order = sort_order.map do |s|
+      {
+        "cmc" => "mv",
+        "-cmc" => "-mv",
+        "pow" => "power",
+        "-pow" => "-power",
+        "tou" => "toughness",
+        "-tou" => "-toughness",
+        "rand" => "random",
+        "-rand" => "random",
+        "-random" => "random",
+        "identity" => "ci",
+        "-identity" => "-ci",
+        "released" => "newall",
+        "-oldall" => "newall",
+        "-released" => "oldall",
+        "-newall" => "oldall",
+        "-new" => "old",
+        "-old" => "new",
+      }[s] || s
+    end
+
+    @metadata[:sort] = sort_order.join(",") if sort_order != ["default"]
+  end
 
   def conds_to_query(conds)
     if conds.empty?
