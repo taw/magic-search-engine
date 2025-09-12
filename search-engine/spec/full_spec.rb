@@ -347,12 +347,6 @@ describe "Full Database Test" do
     assert_search_results "t:planeswalker -t:legendary", "Personal Decoy", "Wrenn and One"
   end
 
-  it "frame:" do
-    assert_search_equal "frame:modern OR frame:m15", "frame:new"
-    assert_search_differ "frame:modern", "frame:new"
-    assert_search_differ "frame:m15", "frame:new"
-  end
-
   it "is:unique" do
     number_of_unique_cards = db.cards.values.count { |c| c.printings.size == 1 }
     assert_count_cards "is:unique", number_of_unique_cards

@@ -1,20 +1,15 @@
-# We used to calculate it here,
-# now just trust mtgjson v4
+# This used to do patch v3 vs v4 frame system
+# but we just need to move on
 class PatchFrame < Patch
+  KNOWN_FRAMES = [
+    "1993", "1997", "2003", "2015", "future"
+  ]
+
   def call
     each_printing do |card|
-      fv = card.delete("frameVersion")
-      case fv
-      when "1993", "1997"
-        card["frame"] = "old"
-      when "2003"
-        card["frame"] = "modern"
-      when "2015"
-        card["frame"] = "m15"
-      when "future"
-        card["frame"] = "future"
-      else
-        card["frame"] = "m15"
+      card["frame"] = card.delete("frameVersion")
+      unless KNOWN_FRAMES.include?(card["frame"])
+        card["frame"] = "2015"
         puts "Unknown frame version: #{fv.inspect}"
       end
     end

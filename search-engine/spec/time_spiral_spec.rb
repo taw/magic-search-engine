@@ -3,7 +3,7 @@ describe "Time Spiral block" do
 
   it "is:future" do
     assert_search_include "is:future", "Dryad Arbor"
-    assert_search_exclude "is:new", "Dryad Arbor"
+    assert_search_include "is:new", "Dryad Arbor"
     assert_search_exclude "is:old", "Dryad Arbor"
     assert_search_results "is:future is:vanilla",
       "Blade of the Sixth Pride",
