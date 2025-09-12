@@ -64,6 +64,27 @@ sheets:
       rate: 1
       count: 2
 
+  boosterfun_without_uncommons:
+    any:
+    - rawquery: "{web_slinger} r:r" # Rare web slinger
+      rate: 2
+      count: 7
+    - rawquery: "{web_slinger} r:m" # Mythic web slinger
+      rate: 1
+      count: 3
+    - rawquery: "{panel} r:r" # Rare panel
+      rate: 2
+      count: 10
+    - rawquery: "{panel} r:m" # Mythic panel
+      rate: 1
+      count: 4
+    - rawquery: "{scene} r:r" # Rare scene
+      rate: 2
+      count: 4
+    - rawquery: "{scene} r:m" # Mythic scene
+      rate: 1
+      count: 2
+
   wildcard:
     any:
       - use: common
@@ -79,8 +100,7 @@ sheets:
     any:
       - use: rare_mythic
         chance: 954 # 83.7% + 11.7% = 95.4%
-      - filter: "e:spm r>=rare" # TODO: I can't make this filter work. I want to filter out the uncommon scenes.
-        use: boosterfun
+      - use: boosterfun_without_uncommons
         chance: 46 # 100% - 83.7% - 11.7% = 4.6% left
 
   foil:
