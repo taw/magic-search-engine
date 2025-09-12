@@ -2,7 +2,7 @@
 # And https://magic.wizards.com/en/products/marvel/spider-man/card-image-gallery
 
 pack:
-  common_source_slot:
+  common_source:
     - common: 7
       chance: 23
     - common: 6
@@ -37,15 +37,6 @@ sheets:
       - use: uncommon
         rate: 1
       - rawquery: "{scene} r:u" # Uncommon scene
-        rate: 1
-        count: 3
-
-  web_slinger:
-    any:
-      - rawquery: "{web_slinger} r:r" # Rare web slinger
-        rate: 2
-        count: 7
-      - rawquery: "{web_slinger} r:m" # Mythic web slinger
         rate: 1
         count: 3
 
