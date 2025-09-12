@@ -50,13 +50,13 @@ class Sorter
         [c.default_sort_index]
       when "-default"
         [-c.default_sort_index]
-      when "new", "-old"
+      when "new"
         [c.set.regular? ? 0 : 1, -c.release_date_i]
-      when "old", "-new"
+      when "old"
         [c.set.regular? ? 0 : 1, c.release_date_i]
-      when "newall", "-oldall", "released"
+      when "newall"
         [-c.release_date_i]
-      when "oldall", "-newall", "-released"
+      when "oldall"
         [c.release_date_i]
       when "firstprint"
         [-c.first_release_date.to_i_sort]
@@ -66,19 +66,19 @@ class Sorter
         [-c.last_release_date.to_i_sort]
       when "-lastprint"
         [c.last_release_date.to_i_sort]
-      when "cmc", "mv"
+      when "mv"
         [c.cmc ? 0 : 1, -c.cmc.to_i]
-      when "-cmc", "-mv"
+      when "-mv"
         [c.cmc ? 0 : 1, c.cmc.to_i]
-      when "pow", "power"
+      when "power"
         [c.power ? 0 : 1, -c.power.to_i]
-      when "-pow", "-power"
+      when "-power"
         [c.power ? 0 : 1, c.power.to_i]
-      when "tou", "toughness"
+      when "toughness"
         [c.toughness ? 0 : 1, -c.toughness.to_i]
-      when "-tou", "-toughness"
+      when "-toughness"
         [c.toughness ? 0 : 1, c.toughness.to_i]
-      when "rand", "-rand", "random", "-random"
+      when "random"
         [Digest::MD5.hexdigest(@seed + c.name)]
       when "number"
         [c.set.name, c.number_i, c.number]
@@ -92,9 +92,9 @@ class Sorter
         [COLOR_ORDER.fetch(c.colors)]
       when "-color"
         [-COLOR_ORDER.fetch(c.colors)]
-      when "ci", "identity"
+      when "ci"
         [COLOR_ORDER.fetch(c.color_identity)]
-      when "-ci", "-identity"
+      when "-ci"
         [-COLOR_ORDER.fetch(c.color_identity)]
       when "rarity"
         [-c.rarity_code]
