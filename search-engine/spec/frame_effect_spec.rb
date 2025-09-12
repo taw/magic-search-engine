@@ -92,4 +92,11 @@ describe "frame type and effect queries" do
   it "frame:lesson" do
     assert_include_search "is:lesson", "e:stx t:lesson"
   end
+
+  it "frame: types" do
+    assert_search_equal "frame:modern OR frame:m15 OR frame:future", "frame:new"
+    assert_search_equal "frame:1993 OR frame:1997", "frame:old"
+    assert_search_equal "frame:modern", "frame:2003"
+    assert_search_equal "frame:m15", "frame:2015"
+  end
 end

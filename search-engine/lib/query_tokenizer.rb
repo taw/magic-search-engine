@@ -377,7 +377,7 @@ class QueryTokenizer
       elsif s.scan(/(is|promo|not)\s*[:=]\s*((?:alchemy|ampersand|arenaleague|boosterfun|boxtopper|brawldeck|bringafriend|bundle|buyabox|commanderparty|concept|convention|datestamped|draculaseries|draftweekend|duels|event|fnm|galaxyfoil|gameday|giftbox|gilded|glossy|godzillaseries|instore|intropack|jpwalker|judgegift|league|mediainsert|neonink|oilslick|openhouse|planeswalkerstamped|playerrewards|playpromo|premiereshop|prerelease|promopack|rebalanced|release|schinesealtart|setextension|setpromo|stamped|stepandcompleat|surgefoil|textured|themepack|thick|tourney|wizardsplaynetwork|serialized|halofoil|doublerainbow|moonlitland|confettifoil|starterdeck|storechampionship|silverfoil|embossed|poster|scroll|invisibleink|dossier|magnified|ravnicacity|rainbow|reversiblefront|reversibleback|vault|raisedfoil|rainbowfoil|ripplefoil|portrait|imagine|playtest|upsidedown|upsidedownback|fracturefoil|doubleexposure|sldbonus|manafoil|resale|startercollection|beginnerbox|firstplacefoil|dragonscalefoil|commanderpromo|ff[ivx]*|singularityfoil|headliner|cosmicfoil)\b|\*)/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionPromoType.new(s[2].downcase)]
-      elsif s.scan(/(is|frame|not)\s*[:=]\s*(old|new|future|modern|m15)\b/i)
+      elsif s.scan(/(is|frame|not)\s*[:=]\s*(old|new|future|modern|m15|1993|1997|2003|2015)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrame.new(s[2].downcase)]
       elsif s.scan(/light\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
@@ -386,7 +386,7 @@ class QueryTokenizer
         tokens << [:test, ConditionLight.new(light)]
       elsif s.scan(/frame\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)
         frame = (s[1]||s[2]).downcase
-        frame_types = %W[old new future modern m15]
+        frame_types = %W[old new future modern m15 1993 1997 2003 2015]
         frame_effects = %W[compasslanddfc colorshifted devoid extendedart legendary miracle mooneldrazidfc enchantment originpwdfc sunmoondfc tombstone inverted etched draft showcase snow fullart companion waxingandwaningmoondfc nyxborn stamped promo spree].sort
         @warnings << "Unknown frame: #{frame}. Known frame types are: #{frame_types.join(", ")}. Known frame effects are: #{frame_effects.join(", ")}."
       elsif s.scan(/(is|not)\s*[:=]\s*(black-bordered|silver-bordered|white-bordered|gold-bordered)\b/i)
