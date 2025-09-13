@@ -1,0 +1,161 @@
+# Data from: https://magic.wizards.com/en/news/feature/collecting-marvels-spider-man
+# And https://magic.wizards.com/en/products/marvel/spider-man/card-image-gallery
+
+pack:
+  foil_common: 5
+  foil_uncommon: 4
+  foil_spiderweb_land: 1
+  foil_rare_mythic: 1
+  non_foil_boosterfun: 2
+  source_material:
+    - non_foil_source_material: 1
+      chance: 75
+    - foil_source_material: 1
+      chance: 25
+  foil_boosterfun: 1
+
+queries:
+  dual_land: "e:{set} number:181,183-186"
+  spiderweb_land: "e:{set} number:189-193"
+  basic_land: "e:{set} number:194-198"
+  scene: "e:{set} number:199-207"
+  web_slinger: "e:{set} number:208-217"
+  panel: "e:{set} number:218-231"
+  classic_comic: "e:{set} number:232-234"
+  custome_change: "e:{set} number:235-241"
+  cosmic_soul_stone: "e:{set} number:242"
+  gauntlet_soul_stone: "e:{set} number:243"
+  extended_art: "e:{set} number:244-283"
+  source_material: "e:MAR number:1-40"
+  welcome_deck: "e:SPE number:1-20"
+  scene_box: "e:SPE number:21-27"
+
+sheets:
+
+  foil_common:
+    foil: true
+    any:
+      - query: "r:c" # Commons and dual lands
+        rate: 1
+        count: 65
+      - rawquery: "{welcome_deck} r:c"
+        rate: 1
+        count: 5
+
+  foil_uncommon:
+    foil: true
+    any:
+      - query: "r:u"
+        rate: 1
+        count: 55
+      - rawquery: "{welcome_deck} r:u"
+        rate: 1
+        count: 5
+      - rawquery: "{scene} r:u"
+        rate: 1
+        count: 3
+
+
+  foil_spiderweb_land:
+    foil: true
+    rawquery: "{spiderweb_land}" # Spiderweb basic land
+    count: 5
+
+  foil_rare_mythic:
+    foil: true
+    any:
+    - use: rare
+      rate: 2
+      count: 53
+    - use: mythic
+      rate: 1
+      count: 15
+    - rawquery: "{welcome_deck} r:r"
+      rate: 2
+      count: 5
+    - rawquery: "{welcome_deck} r:m"
+      rate: 1
+      count: 5
+      
+  non_foil_boosterfun: # TODO: For some of these, the rates are not correct
+    any:
+    - rawquery: "{extended_art} r:r" # Rare extended art
+      rate: 2
+      count: 33
+    - rawquery: "{extended_art} r:m" # Mythic extended art
+      rate: 1
+      count: 7
+    - rawquery: "{web_slinger} r:r" # Rare web slinger
+      rate: 2
+      count: 7
+    - rawquery: "{web_slinger} r:m" # Mythic web slinger
+      rate: 1
+      count: 3
+    - rawquery: "{panel} r:r" # Rare panel
+      rate: 2
+      count: 10
+    - rawquery: "{panel} r:m" # Mythic panel
+      rate: 1
+      count: 4
+    - rawquery: "{scene} r:r" # Rare scene
+      rate: 2
+      count: 4
+    - rawquery: "{scene} r:m" # Mythic scene
+      rate: 1
+      count: 2
+    - rawquery: "{scene_box}" # Scene box
+      rate: 1
+      count: 6
+
+  non_foil_source_material:
+    rawquery: "{source_material}"
+    count: 40
+
+  foil_source_material:
+    foil: true
+    use: non_foil_source_material
+
+  foil_boosterfun_1: # TODO: For some of these, the rates are not correct
+    any:
+    - rawquery: "{extended_art} r:r" # Rare extended art
+      rate: 2
+      count: 33
+    - rawquery: "{extended_art} r:m" # Mythic extended art
+      rate: 1
+      count: 7
+    - rawquery: "{web_slinger} r:r" # Rare web slinger
+      rate: 2
+      count: 7
+    - rawquery: "{web_slinger} r:m" # Mythic web slinger
+      rate: 1
+      count: 3
+    - rawquery: "{panel} r:r" # Rare panel
+      rate: 2
+      count: 10
+    - rawquery: "{panel} r:m" # Mythic panel
+      rate: 1
+      count: 4
+    - rawquery: "{scene} r:r" # Rare scene
+      rate: 2
+      count: 4
+    - rawquery: "{scene} r:m" # Mythic scene
+      rate: 1
+      count: 2
+    - rawquery: "{classic_comic}" # Scene box
+      rate: 1
+      count: 3
+
+  foil_boosterfun:
+    foil: true
+    any:
+    - use: foil_boosterfun_1 # TODO: Find better name
+      chance: 9895 # 54% + 5.7% + 9.8% +1.6% + 16.4% + 3.2% + 4.9% + 0.85% + 2.5% = 98.95%
+    - rawquery: "{custome_change}"
+      chance: 90 # TODO: Random guess?
+      count: 7
+    - rawquery: "{gauntlet_soul_stone}"
+      chance: 10 # TODO: Random guess?
+      count: 1
+    - rawquery: "{cosmic_soul_stone}"
+      chance: 5 # TODO: Random guess?
+      count: 1
