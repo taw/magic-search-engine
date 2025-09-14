@@ -611,6 +611,7 @@ class Card
     :name,
     :names,
     :power,
+    :produces,
     :related,
     :reminder_text,
     :reserved,
@@ -695,6 +696,7 @@ class Card
       @keywords = data["k"].map{|k| -k}
     end
     @defense = data["df"]
+    @produces = data["pr"]&.freeze
     calculate_mana_hash
     calculate_color_indicator
     calculate_reminder_text
