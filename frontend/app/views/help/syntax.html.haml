@@ -148,6 +148,14 @@
       = search_help "is:hybrid", "has hybrid mana cost"
       = search_help "is:phyrexian", "has Phyrexian mana cost"
 
+    %h4 Search by devotion
+    %div You can search for devotion to a single color or two colors of mana. This excludes instants and sorceries.
+    %ul
+      = search_help "devotion=bb", "permanent cards with exactly 2 devotion to black"
+      = search_help "devotion>=ww", "permanent cards with 2 or more devotion to white"
+      = search_help "devotion<uuu", "permanent cards with less than 3 devotion to blue"
+      = search_help "devotion={u/b}{u/b}", "permanent cards with exactly 2 devotion to blue and black"
+
     %div This search supports variable symbols: "m", "n", and "o" each represent a single mana of any color but must each differ from the others; "h" represents a single hybrid mana.
     %ul
       = search_help "mana=m", "cards with mana cost of exactly 1 colored mana, of any color"
