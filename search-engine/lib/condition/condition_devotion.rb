@@ -4,6 +4,7 @@ class ConditionDevotion < ConditionSimple
     @mana = mana
     @query_mana = parse_query_mana(mana.downcase)
 
+    # we could add this warning:
     # warning %[devotion: query must only use same monocolored or hybrid mana symbol"]
   end
 
@@ -54,20 +55,12 @@ class ConditionDevotion < ConditionSimple
 
   def parse_query_mana(mana)
     pool = Hash.new(0)
-    mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrgxyzchmno])/) do
+    mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrgc])/) do
       if $1
-        m = $1.downcase.tr("/{}", "")
-        if m =~ /\A\d+\z/
-          pool["?"] += m.to_i
-        elsif m == "h"
-          pool[m] += 1
-        elsif m =~ /h/
-          pool[m.sub("h", "").chars.sort.join] += 0.5
-        elsif m != ""
+        m = $1.downcase.tr("/{}ph", "").gsub(/\d/, "")
+        if m != ""
           pool[m.chars.sort.join] += 1
         end
-      elsif $2
-        pool["?"] += $2.to_i
       elsif $3
         pool[$3] += 1
       end

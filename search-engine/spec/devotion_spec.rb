@@ -5,10 +5,13 @@ describe "devotion queries" do
     assert_search_equal "devotion:www", "DEVOTION={w}{w}{w}"
     assert_search_equal "devotion<bbb", "devotion<=bb"
     assert_search_equal "devotion:{ub}{ub}", "DEVOTION={B/U}{U/B}"
-  end
 
-  it "warnings" do
-    # TODO
+    # these are undocumented edge cases
+    # they work but are not recommended
+    assert_search_equal "devotion:{2/b}{2/b}", "DEVOTION={b}{b}"
+    assert_search_equal "devotion:{pb}{pb}", "DEVOTION={b}{b}"
+    assert_search_equal "devotion:{p/b}{2/b}{b}", "devotion:bbb"
+    assert_search_equal "devotion:ub", "devotion=u and devotion=b"
   end
 
   it "devotion to monocolored" do
