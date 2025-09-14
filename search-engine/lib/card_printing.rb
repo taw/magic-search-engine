@@ -210,6 +210,7 @@ class CardPrinting
     power
     primary?
     printings
+    produces
     related
     reminder_text
     reserved
