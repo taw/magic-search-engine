@@ -32,12 +32,13 @@ describe "Ability Word Regexp" do
       "Ransom", # playtest cards
       "Solved",
       "Target opponent chooses one",
+      "Target opponent faces a villainous choice",
       "To solve",
       "Visit",
     ]
 
     card_texts = db.cards.values.map(&:text)
-    dash_prefixes = card_texts.map{|t| t.scan(/^([a-zA-Z' ]+) —/)}.flatten.uniq.sort
+    dash_prefixes = card_texts.map{|t| t.scan(/(?<=^|— )([a-zA-Z' ]+) —/)}.flatten.uniq.sort
     ability_words = card_texts.map{|t| t.scan(Card::ABILITY_WORD_RX)}.flatten.uniq.sort
     (ability_words - dash_prefixes).should eq([])
     (dash_prefixes - ability_words).should match_array(other_phrases)
