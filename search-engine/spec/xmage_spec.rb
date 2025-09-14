@@ -14,7 +14,6 @@ describe "XMage" do
       "Swirl the Mists",
       "Trait Doctoring",
       # other
-      "Heirloom Epic",
-      "Summon: Brynhildr"
+      "Heirloom Epic"
   end
 end
