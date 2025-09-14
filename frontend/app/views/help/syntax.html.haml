@@ -148,14 +148,6 @@
       = search_help "is:hybrid", "has hybrid mana cost"
       = search_help "is:phyrexian", "has Phyrexian mana cost"
 
-    %h4 Search by devotion
-    %div You can search for devotion to a single color or two colors of mana. This excludes instants and sorceries.
-    %ul
-      = search_help "devotion=bb", "permanent cards with exactly 2 devotion to black"
-      = search_help "devotion>=ww", "permanent cards with 2 or more devotion to white"
-      = search_help "devotion<uuu", "permanent cards with less than 3 devotion to blue"
-      = search_help "devotion={u/b}{u/b}", "permanent cards with exactly 2 devotion to blue and black"
-
     %div This search supports variable symbols: "m", "n", and "o" each represent a single mana of any color but must each differ from the others; "h" represents a single hybrid mana.
     %ul
       = search_help "mana=m", "cards with mana cost of exactly 1 colored mana, of any color"
@@ -166,13 +158,25 @@
       = search_help "mana=hh", "cards that cost exactly two hybrid mana"
       = search_help "mana>h", "cards with at least one hybrid mana in their mana cost"
 
+    %h4 Search by devotion
+    %div You can search for devotion to a single color or two colors of mana. This excludes instants and sorceries.
+    %ul
+      = search_help "devotion=bb", "permanent cards with exactly 2 devotion to black"
+      = search_help "devotion>=ww", "permanent cards with 2 or more devotion to white"
+      = search_help "devotion<uuu", "permanent cards with less than 3 devotion to blue"
+      = search_help "devotion={u/b}{u/b}", "permanent cards with exactly 2 devotion to blue and black"
+
+    %h4 Search by mana types producted
+    %div There are 6 mana types - five colors and colorless. This query only checks for types, not amounts.
+    %ul
+      = search_help "t:artifact produces=uw", "artifacts that can produce blue and white mana and no other type"
+      = search_help "t:land produces>=cw", "lands that can produce white and colorless mana and possiby some other types"
+      = search_help "t:creature produces>=b produces<wubrg", "creatures that produce black mana but not all colors"
+
     %h4 Search by cards castable by sperific colors
     %div Supported queries are each color, colorless, and snow.
-
     %div Generic mana can by paid by anything so it always matches. So does Phyrexian and twobrid.
-
     %div Hybrid will be matched by either part.
-
     %div Lands and cards without mana costs will never be returned.
 
     %ul
