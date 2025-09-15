@@ -55,11 +55,11 @@ sheets:
     foil: true
   white_border:
     any:
-    - filter: "e:{set} border:white"
-      use: rare_mythic
+    - query: "border:white (r:r OR r:m)"
       chance: 4
-    - filter: "e:{set} border:white"
-      use: common_uncommon
+      count: 51
+    - query: "border:white (r:c OR r:u OR r:l)"
       chance: 6
+      count: 70
   playtest:
     rawquery: "e:{set} is:playtest"
