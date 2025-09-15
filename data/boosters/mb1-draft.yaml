@@ -47,7 +47,7 @@ sheets:
     set: plst
     code: "GREENB"
   multicolor:
-    rawquery: "set:PLST sheet:MULTICOLOR -number:/^EMA-203$/"
+    rawquery: "set:PLST sheet:MULTICOLOR -number:/^EMA-203$/ -number:/^C15-231$/"
     count: 121
   colorless:
     set: plst
