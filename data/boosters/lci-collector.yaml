@@ -40,10 +40,10 @@ sheets:
   foil_uncommon_showcase_or_borderless:
     foil: true
     any:
-    - query: "is:showcase t:legendary r:u"
+    - rawquery: "e:{set} is:showcase t:legendary r:u"
       count: 8
       rate: 55
-    - query: "is:borderless t:dinosaur r:u"
+    - rawquery: "e:{set} is:borderless t:dinosaur r:u"
       count: 6
       rate: 41
     - rawquery: "e:spg sheet:LCI r:u"
