@@ -57,10 +57,12 @@ sheets:
       chance: 1
   transformers:
     any:
-    - rawquery: "e:bot number<=15"
+    - rawquery: "e:bot number<16"
       rate: 7
+      count: 15
     - rawquery: "e:bot number>=16"
       rate: 1
+      count: 14
   foil_transformers:
     foil: true
     use: transformers
