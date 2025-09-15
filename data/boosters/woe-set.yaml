@@ -112,6 +112,9 @@ sheets:
     - any:
       - use: uncommon_showcase
         rate: 1
+      - rawquery: "e:woe r:u number:308-322"
+        rate: 1 # same as uncommon_showcase, no real indication given in the article
+        count: 10
       - use: uncommon_has_showcase
         rate: 2
       - use: uncommon_has_no_showcase
@@ -122,6 +125,9 @@ sheets:
     - any:
       - use: rare_showcase
         rate: 8
+      - rawquery: "e:woe r:r number:308-322"
+        rate: 8 # same as rare_showcase, no real indication given in the article
+        count: 5
       - use: rare_has_showcase
         rate: 16
       - use: rare_has_no_showcase
