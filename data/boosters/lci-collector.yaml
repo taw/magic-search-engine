@@ -3,7 +3,7 @@ pack:
   foil_fullart_land: 1
   foil_common: 4
   foil_uncommon: 3
-  foil_common_uncommon_showcase: 1
+  foil_uncommon_showcase_or_borderless: 1
   foil_rare_mythic: 1
   extended_main_rare_mythic: 1
   commander_extended:
@@ -37,6 +37,18 @@ sheets:
   extended_commander_rare_mythic:
     filter: "e:lcc frame:extendedart"
     use: rare_mythic
+  foil_uncommon_showcase_or_borderless:
+    foil: true
+    any:
+    - query: "is:showcase t:legendary r:u"
+      count: 8
+      rate: 55
+    - query: "is:borderless t:dinosaur r:u"
+      count: 6
+      rate: 41
+    - rawquery: "e:spg sheet:LCI r:u"
+      count: 5
+      rate: 3
   foil_extended_commander_rare_mythic:
     foil: true
     filter: "e:lcc frame:extendedart"
