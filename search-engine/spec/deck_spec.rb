@@ -159,11 +159,11 @@ describe Deck do
       when "c21"
         sets_found.should match_array ["c21", "stx", "oc21"]
       when "afc"
-        sets_found.should match_array ["afc", "afr"]
+        sets_found.should match_array ["afc", "afr", "oafc"]
       when "mic"
-        sets_found.should match_array ["mic", "mid"]
+        sets_found.should match_array ["mic", "mid", "omic"]
       when "voc"
-        sets_found.should match_array ["voc", "vow"]
+        sets_found.should match_array ["voc", "vow", "ovoc"]
       when "nec"
         sets_found.should match_array ["nec", "neo"]
       when "ncc"
