@@ -110,4 +110,14 @@ describe "Regexp" do
     assert_search_equal "rulings:flying", 'rulings:/\bflying\b/'
     assert_search_include 'rulings:/\d{5,}/', "Bloodletter"
   end
+
+  # Just some scryfall compatibility
+  it "regexp extensions" do
+    # Short-hand for a X/X power/toughness expression
+    assert_search_equal 'o:/\spt/', 'o:/(X|\d+)\/(X|\d+)/'
+    # Short-hand for a +X/+X power/toughness expression
+    assert_search_equal 'o:/\spp/', 'o:/\+(X|\d+)\/\+(X|\d+)/'
+    # Short-hand for a -X/-X power/toughness expression
+    assert_search_equal 'o:/\smm/', 'o:/\-(X|\d+)\/\-(X|\d+)/'
+  end
 end
