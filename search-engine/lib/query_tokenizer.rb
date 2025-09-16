@@ -50,7 +50,14 @@ class QueryTokenizer
             "cn" => ConditionNumberRegexp,
             "rulings" => ConditionRulingsRegexp,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
-          rx = Regexp.new(s[2], Regexp::IGNORECASE | Regexp::MULTILINE)
+          # Expand shortcuts
+          # \+ in gsub right side has special meaning
+          rx = s[2]
+          rx = rx.gsub('\spt', '(?:X|\d+)\/(?:X|\d+)')
+          rx = rx.gsub('\spp', '\\\\+(?:X|\d+)\/\\\\+(?:X|\d+)')
+          rx = rx.gsub('\smm', '-(?:X|\d+)\/-(?:X|\d+)')
+
+          rx = Regexp.new(rx, Regexp::IGNORECASE | Regexp::MULTILINE)
           tokens << [:test, cond.new(rx)]
         rescue RegexpError => e
           cond = {
