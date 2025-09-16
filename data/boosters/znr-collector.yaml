@@ -16,14 +16,14 @@ pack:
 sheets:
   extended_rare_mythic:
     rawquery: "(e:znr OR e:znc) frame:extendedart"
-    count: 77
+    count: 68
   foil_rare_mythic:
     foil: true
     use: rare_mythic
   foil_rare_mythic_showcase:
     foil: true
     rawquery: "(e:znr OR e:znc) promo:boosterfun is:paper (r:m OR r:r)"
-    count: 102
+    count: 86
   foil_expedition:
     foil: true
     rawquery: "e:zne is:foil"
