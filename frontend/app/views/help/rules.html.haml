@@ -1,7 +1,7 @@
 = content_for(:disable_turbolinks) do
   true
 %h4 Magic: The Gathering Comprehensive Rules
-%p These rules are effective as of July 25, 2025.
+%p These rules are effective as of September 19, 2025.
 %h3{id: "section-introduction"} Introduction
 %p This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
 %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules.
@@ -1080,7 +1080,7 @@
   .rule_text A Powerstone token is a colorless Powerstone artifact token with “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add <span class="manacost"><span class="mana mana-cost mana-c"><span class="sr-only">{C}</span></span></span>. This mana can’t be spent to cast a nonartifact spell.”
 .rule{id: "section-111-10i"}
   .rule_id 111.10i
-  .rule_text An Incubator token is a transforming double-faced token. Its front face is a colorless Incubator artifact with “<span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span></span>: Transform this token.” Its back face is a 0/0 colorless Phyrexian artifact creature named Phyrexian Token.
+  .rule_text An Incubator token is a double-faced token. Its front face is a colorless Incubator artifact with “<span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span></span>: Transform this token.” Its back face is a 0/0 colorless Phyrexian artifact creature named Phyrexian Token.
 .rule{id: "section-111-10j"}
   .rule_id 111.10j
   .rule_text A Cursed Role token is a colorless Aura Role enchantment token named Cursed with enchant creature and “Enchanted creature has base power and toughness 1/1.”
@@ -1857,10 +1857,10 @@
   .rule_text An ability that triggers “When/Whenever the Nth [kind] counter” is put on an object triggers when one or more counters of the appropriate kind are put on the object such that the object had fewer than N counters on it before the counters were put on it and N or more counters on it after.
 .rule{id: "section-122-8"}
   .rule_id 122.8.
-  .rule_text If a triggered ability instructs a player to put one object’s counters on another object and that ability’s trigger condition or effect checks that the object with those counters left the battlefield, the player doesn’t move counters from one object to the other. Rather, the player puts the same number of each kind of counter the first object had onto the second object.
+  .rule_text If a triggered ability instructs a player to put one object’s counters on another object and that ability’s trigger condition or effect checks that the object with those counters left the battlefield, the player doesn’t move counters from one object to the other. Rather, the player puts the same number of each kind of counter the first object had onto the second object. If the ability specifies what kind(s) of counters to place, the player puts the same number of each of those kinds of counter the first object had onto the second object.
 .rule{id: "section-122-9"}
   .rule_id 122.9.
-  .rule_text If an activated ability of an object instructs a player to put its counters on another object and sacrificing the object with those counters is a cost to activate that ability, the player doesn’t move counters from one object to the other. Rather, the player puts the same number of each kind of counter the first object had onto the second object.
+  .rule_text If an activated ability of an object instructs a player to put its counters on another object and sacrificing the object with those counters is a cost to activate that ability, the player doesn’t move counters from one object to the other. Rather, the player puts the same number of each kind of counter the first object had onto the second object. If the ability specified what kind(s) of counters to place, the player puts the same number of each of those kinds of counters the first object had onto the second object.
 .rule{id: "section-123"}
   .rule_id 123.
   .rule_text Stickers
@@ -2076,13 +2076,13 @@
   .rule_text Example: A mana cost of <span class="manacost"><span class="mana mana-cost mana-3"><span class="sr-only">{3}</span></span><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span></span> translates to a mana value of 5.
 .rule{id: "section-202-3a"}
   .rule_id 202.3a
-  .rule_text The mana value of an object with no mana cost is 0, unless that object is the back face of a transforming double-faced permanent or is a melded permanent.
+  .rule_text The mana value of an object with no mana cost is 0, unless that object is the back face of a nonmodal double-faced permanent or spell, or it is a melded permanent.
 .rule{id: "section-202-3b"}
   .rule_id 202.3b
-  .rule_text The mana value of a transforming double-faced permanent or spell’s back face is calculated as though it had the mana cost of its front face. If a permanent or spell is a copy of the back face of a transforming double-faced card (even if the card representing that copy is itself a double-faced card), the mana value of the copy is 0.
-  .rule_text Example: Huntmaster of the Fells is a transforming double-faced card with mana cost <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span><span class="mana mana-cost mana-g"><span class="sr-only">{G}</span></span></span>. Its mana value is 4. After it transforms to its other face (Ravager of the Fells), its mana value remains 4.
+  .rule_text The mana value of the back face of a nonmodal double-faced permanent or spell’s back face is calculated as though it had the mana cost of its front face. If a permanent or spell is a copy of the back face of a nonmodal double-faced object (even if the card representing that copy is itself a double-faced card), the mana value of the copy is 0.
+  .rule_text Example: Huntmaster of the Fells is a nonmodal double-faced card with mana cost <span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span><span class="mana mana-cost mana-r"><span class="sr-only">{R}</span></span><span class="mana mana-cost mana-g"><span class="sr-only">{G}</span></span></span>. Its mana value is 4. After it transforms to its other face (Ravager of the Fells), its mana value remains 4.
   .rule_text Example: A Clone enters the battlefield as a copy of Ravager of the Fells. Its mana value is 0.
-  .rule_text Example: Insectile Aberration is the back face of a transforming double-faced card whose front face has mana cost <span class="manacost"><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span></span>. It becomes a copy of Ravager of the Fells. Its mana value becomes 0.
+  .rule_text Example: Insectile Aberration is the back face of a nonmodal double-faced card whose front face has mana cost <span class="manacost"><span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span></span>. It becomes a copy of Ravager of the Fells. Its mana value becomes 0.
 .rule{id: "section-202-3c"}
   .rule_id 202.3c
   .rule_text The mana value of a melded permanent is calculated as though it had the combined mana cost of the front faces of each card that represents it. If a permanent is a copy of a melded permanent (even if that copy is represented by two other meld cards), the mana value of the copy is 0.
@@ -2171,7 +2171,7 @@
   .rule_text Many cards were printed with subtypes that are now obsolete. Many cards have retroactively received subtypes. Use the Oracle card reference to determine what a card’s subtypes are. (See rule <a href="#section-108-1">108.1</a>.)
 .rule{id: "section-205-3g"}
   .rule_id 205.3g
-  .rule_text Artifacts have their own unique set of subtypes; these subtypes are called artifact types. The artifact types are Attraction (see rule <a href="#section-717">717</a>), Blood, Bobblehead, Clue, Contraption, Equipment (see rule <a href="#section-301-5">301.5</a>), Food, Fortification (see rule <a href="#section-301-6">301.6</a>), Gold, Incubator, Junk, Lander, Map, Powerstone, Spacecraft, Treasure, and Vehicle (see rule <a href="#section-301-7">301.7</a>).
+  .rule_text Artifacts have their own unique set of subtypes; these subtypes are called artifact types. The artifact types are Attraction (see rule <a href="#section-717">717</a>), Blood, Bobblehead, Clue, Contraption, Equipment (see rule <a href="#section-301-5">301.5</a>), Food, Fortification (see rule <a href="#section-301-6">301.6</a>), Gold, Incubator, Infinity, Junk, Lander, Map, Powerstone, Spacecraft, Stone, Treasure, and Vehicle (see rule <a href="#section-301-7">301.7</a>).
 .rule{id: "section-205-3h"}
   .rule_id 205.3h
   .rule_text Enchantments have their own unique set of subtypes; these subtypes are called enchantment types. The enchantment types are Aura (see rule <a href="#section-303-4">303.4</a>), Background, Cartouche, Case (see rule <a href="#section-719">719</a>), Class (see rule <a href="#section-716">716</a>), Curse, Role (see rule <a href="#section-303-7">303.7</a>), Room, Rune, Saga (see rule <a href="#section-714">714</a>), Shard, and Shrine.
@@ -2186,7 +2186,7 @@
   .rule_text Instants and sorceries share their lists of subtypes; these subtypes are called spell types. The spell types are Adventure, Arcane, Lesson, Omen, and Trap.
 .rule{id: "section-205-3m"}
   .rule_id 205.3m
-  .rule_text Creatures and kindreds share their lists of subtypes; these subtypes are called creature types. One creature type is two words long: Time Lord. All other creature types are one word long: Advisor, Aetherborn, Alien, Ally, Angel, Antelope, Ape, Archer, Archon, Armadillo, Army, Artificer, Assassin, Assembly-Worker, Astartes, Atog, Aurochs, Avatar, Azra, Badger, Balloon, Barbarian, Bard, Basilisk, Bat, Bear, Beast, Beaver, Beeble, Beholder, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Capybara, Caribou, Carrier, Cat, Centaur, Child, Chimera, Citizen, Cleric, Clown, Cockatrice, Construct, Coward, Coyote, Crab, Crocodile, C’tan, Custodes, Cyberman, Cyclops, Dalek, Dauthi, Demigod, Demon, Deserter, Detective, Devil, Dinosaur, Djinn, Doctor, Dog, Dragon, Drake, Dreadnought, Drix, Drone, Druid, Dryad, Dwarf, Echidna, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Employee, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gamer, Gargoyle, Germ, Giant, Gith, Glimmer, Gnoll, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Guest, Hag, Halfling, Hamster, Harpy, Hedgehog, Hellion, Hero, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inkling, Inquisitor, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Llama, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Lobster, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mite, Mole, Monger, Mongoose, Monk, Monkey, Moogle, Moonfolk, Mount, Mouse, Mutant, Myr, Mystic, Nautilus, Necron, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Performer, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Porcupine, Possum, Praetor, Primarch, Prism, Processor, Qu, Rabbit, Raccoon, Ranger, Rat, Rebel, Reflection, Rhino, Rigger, Robot, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scientist, Scion, Scorpion, Scout, Sculpture, Seal, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Skunk, Slith, Sliver, Sloth, Slug, Snail, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Synth, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Tiefling, Toy, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Tyranid, Unicorn, Vampire, Varmint, Vedalken, Volver, Wall, Walrus, Warlock, Warrior, Weasel, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
+  .rule_text Creatures and kindreds share their lists of subtypes; these subtypes are called creature types. One creature type is two words long: Time Lord. All other creature types are one word long: Advisor, Aetherborn, Alien, Ally, Angel, Antelope, Ape, Archer, Archon, Armadillo, Army, Artificer, Assassin, Assembly-Worker, Astartes, Atog, Aurochs, Avatar, Azra, Badger, Balloon, Barbarian, Bard, Basilisk, Bat, Bear, Beast, Beaver, Beeble, Beholder, Berserker, Bird, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Capybara, Caribou, Carrier, Cat, Centaur, Child, Chimera, Citizen, Cleric, Clown, Cockatrice, Construct, Coward, Coyote, Crab, Crocodile, C’tan, Custodes, Cyberman, Cyclops, Dalek, Dauthi, Demigod, Demon, Deserter, Detective, Devil, Dinosaur, Djinn, Doctor, Dog, Dragon, Drake, Dreadnought, Drix, Drone, Druid, Dryad, Dwarf, Echidna, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Employee, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gamer, Gargoyle, Germ, Giant, Gith, Glimmer, Gnoll, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Guest, Hag, Halfling, Hamster, Harpy, Hedgehog, Hellion, Hero, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inkling, Inquisitor, Insect, Jackal, Jellyfish, Juggernaut, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Llama, Lamia, Lammasu, Leech, Leviathan, Lhurgoyf, Licid, Lizard, Lobster, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mite, Mole, Monger, Mongoose, Monk, Monkey, Moogle, Moonfolk, Mount, Mouse, Mutant, Myr, Mystic, Nautilus, Necron, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Performer, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Porcupine, Possum, Praetor, Primarch, Prism, Processor, Qu, Rabbit, Raccoon, Ranger, Rat, Rebel, Reflection, Rhino, Rigger, Robot, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scientist, Scion, Scorpion, Scout, Sculpture, Seal, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Skunk, Slith, Sliver, Sloth, Slug, Snail, Snake, Soldier, Soltari, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Symbiote, Synth, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Tiefling, Toy, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Tyranid, Unicorn, Vampire, Varmint, Vedalken, Villain, Volver, Wall, Walrus, Warlock, Warrior, Weasel, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
 .rule{id: "section-205-3n"}
   .rule_id 205.3n
   .rule_text Planes have their own unique set of subtypes; these subtypes are called planar types. The planar types are The Abyss, Alara, Alfava Metraxis, Amonkhet, Androzani Minor, Antausia, Apalapucia, Arcavios, Arkhos, Avishkar, Azgol, Belenon, Bolas’s Meditation Realm, Capenna, Cridhe, The Dalek Asylum, Darillium, Dominaria, Earth, Echoir, Eldraine, Equilor, Ergamon, Fabacin, Fiora, Gallifrey, Gargantikar, Gobakhan, Horsehead Nebula, Ikoria, Innistrad, Iquatana, Ir, Ixalan, Kaldheim, Kamigawa, Kandoka, Karsus, Kephalai, Kinshala, Kolbahan, Kylem, Kyneth, The Library, Lorwyn, Luvion, Mars, Mercadia, Mirrodin, Moag, Mongseng, Moon, Muraganda, Necros, New Earth, New Phyrexia, Outside Mutter’s Spiral, Phyrexia, Pyrulea, Rabiah, Rath, Ravnica, Regatha, Segovia, Serra’s Realm, Shadowmoor, Shandalar, Shenmeng, Skaro, Spacecraft, Tarkir, Theros, Time, Trenzalore, Ulgrotha, Unknown Planet, Valla, Vryn, Wildfire, Xerex, Zendikar, and Zhalfir.
@@ -4084,7 +4084,7 @@
   .rule_text An ability printed on an object within another ability that grants that ability to that object is considered to be “printed on” that object for these purposes.
 .rule{id: "section-607-1b"}
   .rule_id 607.1b
-  .rule_text An ability printed on either face of a transforming double-faced card (see rule <a href="#section-712">712</a>) is considered to be “printed on” that object for these purposes, regardless of which face is up.
+  .rule_text An ability printed on either face of a nonmodal double-faced object (see rule <a href="#section-712">712</a>) is considered to be “printed on” that object for these purposes, regardless of which face is up.
 .rule{id: "section-607-1c"}
   .rule_id 607.1c
   .rule_text An ability printed on an object that fulfills both criteria described in rule <a href="#section-607-1">607.1</a> is linked to itself.
@@ -4502,7 +4502,7 @@
   .rule_text A permanent receives a new timestamp each time it turns face up or face down.
 .rule{id: "section-613-7g"}
   .rule_id 613.7g
-  .rule_text A transforming double-faced permanent receives a new timestamp each time it transforms or converts.
+  .rule_text A double-faced permanent receives a new timestamp each time it transforms or converts.
 .rule{id: "section-613-7h"}
   .rule_id 613.7h
   .rule_text A face-up plane card, phenomenon card, or scheme card receives a timestamp at the time it’s turned face up.
@@ -4623,6 +4623,9 @@
   .rule_text If a replacement effect that modifies how a permanent enters the battlefield requires a choice, that choice is made before the permanent enters the battlefield.
 .rule{id: "section-614-12b"}
   .rule_id 614.12b
+  .rule_text If multiple replacement effects that require choices from a player would modify how multiple permanents enter the battlefield simultaneously, that player may not make choices for those effects that would cause the combined costs of those effects to not be payable.
+.rule{id: "section-614-12c"}
+  .rule_id 614.12c
   .rule_text Some replacement effects cause a permanent to enter the battlefield with its controller’s choice of one of two abilities, each marked with an anchor word and preceded by a bullet point. “[Anchor word] — [ability]” means “As long as [anchor word] was chosen as this permanent entered the battlefield, this permanent has [ability].” The abilities preceded by anchor words are each linked to the ability that causes a player to choose between them. See rule <a href="#section-607">607</a>, “Linked Abilities.”
 .rule{id: "section-614-13"}
   .rule_id 614.13.
@@ -5234,16 +5237,16 @@
   .rule_text Transform
 .rule{id: "section-701-27a"}
   .rule_id 701.27a
-  .rule_text To transform a permanent, turn it over so that its other face is up. Only transforming tokens and permanents represented by transforming double-faced cards can transform. (See rule <a href="#section-712">712</a>, “Double-Faced Cards.”)
+  .rule_text To transform a permanent, turn it over so that its other face is up. Only permanents represented by double-faced tokens and double-faced cards can transform. (See rule <a href="#section-712">712</a>, “Double-Faced Cards.”)
 .rule{id: "section-701-27b"}
   .rule_id 701.27b
   .rule_text Although transforming a permanent uses the same physical action as turning a permanent face up or face down, they are different game actions. Abilities that trigger when a permanent is turned face down won’t trigger when that permanent transforms, and so on.
 .rule{id: "section-701-27c"}
   .rule_id 701.27c
-  .rule_text If a spell or ability instructs a player to transform a permanent that isn’t represented by a transforming token or a transforming double-faced card, nothing happens.
+  .rule_text If a spell or ability instructs a player to transform a permanent that isn’t represented by a double-faced token or a double-faced card, nothing happens.
 .rule{id: "section-701-27d"}
   .rule_id 701.27d
-  .rule_text If a spell or ability instructs a player to transform a permanent, and the face that permanent would transform into is represented by an instant or sorcery card face, or is a transforming token that was created with an instant or sorcery face, nothing happens.
+  .rule_text If a spell or ability instructs a player to transform a permanent, and the face that permanent would transform into is an instant or sorcery face nothing happens.
 .rule{id: "section-701-27e"}
   .rule_id 701.27e
   .rule_text Some triggered abilities trigger when an object “transforms into” an object with a specified characteristic. Such an ability triggers if the object either transforms or converts (see rule <a href="#section-701-28">701.28</a>) and has the specified characteristic immediately after it does so.
@@ -5252,7 +5255,7 @@
   .rule_text If an activated or triggered ability of a permanent that isn’t a delayed triggered ability of that permanent tries to transform it, the permanent does so only if it hasn’t transformed or converted since the ability was put onto the stack. If a delayed triggered ability of a permanent tries to transform that permanent, the permanent does so only if it hasn’t transformed or converted since that delayed triggered ability was created. In both cases, if the permanent has already transformed or converted, an instruction to do either is ignored.
 .rule{id: "section-701-27g"}
   .rule_id 701.27g
-  .rule_text Some spells and abilities refer to a “transformed permanent.” This phrase refers to a permanent on the battlefield with its back face up that’s also a transforming double-faced card or a transforming token. A permanent with its front face up is never considered a transformed permanent, even if it had its back face up previously.
+  .rule_text Some spells and abilities refer to a “transformed permanent.” This phrase refers to a double-faced permanent on the battlefield with its back face up. A permanent with its front face up is never considered a transformed permanent, even if it had its back face up previously. Similarly, an object represented by more than one card, such as a melded or merged permanent, is never considered a transformed permanent, even if it has components that are back face up. See rules <a href="#section-701-42">701.42</a>, “Meld,” and <a href="#section-729">729</a>, “Merging with Permanents.”
 .rule{id: "section-701-28"}
   .rule_id 701.28.
   .rule_text Convert
@@ -5264,10 +5267,10 @@
   .rule_text Although converting a permanent uses the same physical action as turning a permanent face up or face down, they are different game actions. Abilities that trigger when a permanent is turned face down won’t trigger when that permanent converts, and so on.
 .rule{id: "section-701-28c"}
   .rule_id 701.28c
-  .rule_text If a spell or ability instructs a player to convert a permanent that isn’t represented by a transforming token or a transforming double-faced card, nothing happens.
+  .rule_text If a spell or ability instructs a player to convert a permanent that isn’t represented by a double-faced token or a double-faced card, nothing happens.
 .rule{id: "section-701-28d"}
   .rule_id 701.28d
-  .rule_text If a spell or ability instructs a player to convert a permanent, and the face that permanent would convert into is represented by an instant or sorcery card face, or is a transforming token that was created with an instant or sorcery face, nothing happens.
+  .rule_text If a spell or ability instructs a player to convert a permanent, and the face that permanent would convert into is an instant or sorcery face, nothing happens.
 .rule{id: "section-701-28e"}
   .rule_id 701.28e
   .rule_text If an activated or triggered ability of a permanent that isn’t a delayed triggered ability of that permanent tries to convert it, the permanent does so only if it hasn’t converted or transformed since the ability was put onto the stack. If a delayed triggered ability of a permanent tries to convert that permanent, the permanent does so only if it hasn’t converted or transformed since that delayed triggered ability was created. In both cases, if the permanent has already transformed or converted, an instruction to do either is ignored.
@@ -5463,7 +5466,7 @@
   .rule_text If a permanent changes zones before an effect causes it to explore, its last known information is used to determine which object explored and who controlled it.
 .rule{id: "section-701-44d"}
   .rule_id 701.44d
-  .rule_text If multiple permanents are instructed to explore at the same time, the first player in APNAP order who controls (or, in the case of a permanent no longer on the battlefield, last controlled; see rule <a href="#section-701-44c">701.44c</a>) one or more of those permanents chooses one of them and it explores. Then this process is repeated for each remaining instruction to explore,
+  .rule_text If multiple permanents are instructed to explore at the same time, the first player in APNAP order who controls (or, in the case of a permanent no longer on the battlefield, last controlled; see rule <a href="#section-701-44c">701.44c</a>) one or more of those permanents chooses one of them and it explores. Then this process is repeated for each remaining instruction to explore.
 .rule{id: "section-701-45"}
   .rule_id 701.45.
   .rule_text Assemble
@@ -5556,7 +5559,7 @@
   .rule_text To incubate N, create an Incubator token that enters the battlefield with N +1/+1 counters on it. See rule <a href="#section-111-10i">111.10i</a>.
 .rule{id: "section-701-53b"}
   .rule_id 701.53b
-  .rule_text An Incubator token is a transforming double-faced token. Its front face is a colorless Incubator artifact with “<span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span></span>: Transform this artifact.” Its back face is a 0/0 colorless Phyrexian artifact creature named “Phyrexian Token.”
+  .rule_text An Incubator token is a double-faced token. Its front face is a colorless Incubator artifact with “<span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span></span>: Transform this token.” Its back face is a 0/0 colorless Phyrexian artifact creature named “Phyrexian Token.”
 .rule{id: "section-701-54"}
   .rule_id 701.54.
   .rule_text The Ring Tempts You
@@ -5686,6 +5689,15 @@
 .rule{id: "section-701-63b"}
   .rule_id 701.63b
   .rule_text If a permanent is instructed to endure 0, nothing happens. No counters are put on that permanent and no tokens are created.
+.rule{id: "section-701-64"}
+  .rule_id 701.64.
+  .rule_text Harness
+.rule{id: "section-701-64a"}
+  .rule_id 701.64a
+  .rule_text “Harness [this permanent]” means “If this permanent isn’t harnessed, it becomes harnessed.”
+.rule{id: "section-701-64b"}
+  .rule_id 701.64b
+  .rule_text Harnessed is a designation that has no rules meaning other than to act as a marker that other spells and abilities can identify. Only permanents can be or become harnessed. Once a permanent becomes harnessed, it stays harnessed until it leaves the battlefield. Harnessed is neither an ability nor part of the permanent’s copiable values.
 .rule{id: "section-702"}
   .rule_id 702.
   .rule_text Keyword Abilities
@@ -6348,7 +6360,7 @@
   .rule_text Affinity
 .rule{id: "section-702-41a"}
   .rule_id 702.41a
-  .rule_text Affinity is a static ability that functions while the spell with affinity is on the stack. “Affinity for [text]” means “This spell costs you <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span></span> less to cast for each [text] you control.”
+  .rule_text Affinity is a static ability that functions while the spell with affinity is on the stack. “Affinity for [text]” means “This spell costs <span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span></span> less to cast for each [text] you control.”
 .rule{id: "section-702-41b"}
   .rule_id 702.41b
   .rule_text If a spell has multiple instances of affinity, each of them applies.
@@ -7466,10 +7478,10 @@
   .rule_text Daybound and Nightbound
 .rule{id: "section-702-145a"}
   .rule_id 702.145a
-  .rule_text Daybound and nightbound are found on opposite faces of some transforming double-faced cards (see rule <a href="#section-712">712</a>, “Double-Faced Cards”).
+  .rule_text Daybound and nightbound are found on opposite faces of some double-faced cards (see rule <a href="#section-712">712</a>, “Double-Faced Cards”).
 .rule{id: "section-702-145b"}
   .rule_id 702.145b
-  .rule_text Daybound is found on the front faces of some transforming double-faced cards and represents three static abilities. “Daybound” means “If it is night and this permanent is represented by a transforming double-faced card, it enters transformed,” “As it becomes night, if this permanent is front face up, transform it,” and “This permanent can’t transform except due to its daybound ability.” See rule <a href="#section-730">730</a>, “Day and Night.”
+  .rule_text Daybound is found on the front faces of some double-faced cards and represents three static abilities. “Daybound” means “If it is night and this permanent is represented by a double-faced card, it enters transformed,” “As it becomes night, if this permanent is front face up, transform it,” and “This permanent can’t transform except due to its daybound ability.” See rule <a href="#section-730">730</a>, “Day and Night.”
 .rule{id: "section-702-145c"}
   .rule_id 702.145c
   .rule_text Any time a player controls a permanent that is front face up with daybound and it’s night, that player transforms that permanent. This happens immediately and isn’t a state-based action.
@@ -7478,7 +7490,7 @@
   .rule_text Any time a player controls a permanent with daybound, if it’s neither day nor night, it becomes day.
 .rule{id: "section-702-145e"}
   .rule_id 702.145e
-  .rule_text Nightbound is found on the back faces of some transforming double-faced cards and represents two static abilities. “Nightbound” means “As it becomes day, if this permanent is back face up, transform it” and “This permanent can’t transform except due to its nightbound ability.”
+  .rule_text Nightbound is found on the back faces of some double-faced cards and represents two static abilities. “Nightbound” means “As it becomes day, if this permanent is back face up, transform it” and “This permanent can’t transform except due to its nightbound ability.”
 .rule{id: "section-702-145f"}
   .rule_id 702.145f
   .rule_text Any time a player controls a permanent that is back face up with nightbound and it’s day, that player transforms that permanent. This happens immediately and isn’t a state-based action.
@@ -7490,10 +7502,10 @@
   .rule_text Disturb
 .rule{id: "section-702-146a"}
   .rule_id 702.146a
-  .rule_text Disturb is an ability found on the front face of some transforming double-faced cards (see rule <a href="#section-712">712</a>, “Double-Faced Cards”). “Disturb [cost]” means “You may cast this card transformed from your graveyard by paying [cost] rather than its mana cost.” See rule <a href="#section-712-8c">712.8c</a>.
+  .rule_text Disturb is an ability found on the front face of some double-faced cards (see rule <a href="#section-712">712</a>, “Double-Faced Cards”). “Disturb [cost]” means “You may cast this card transformed from your graveyard by paying [cost] rather than its mana cost.” See rule <a href="#section-712-8c">712.8c</a>.
 .rule{id: "section-702-146b"}
   .rule_id 702.146b
-  .rule_text A resolving transforming double-faced spell that was cast using its disturb ability enters the battlefield with its back face up.
+  .rule_text A resolving double-faced spell that was cast using its disturb ability enters the battlefield with its back face up.
 .rule{id: "section-702-147"}
   .rule_id 702.147.
   .rule_text Decayed
@@ -7839,7 +7851,7 @@
   .rule_text Impending
 .rule{id: "section-702-176a"}
   .rule_id 702.176a
-  .rule_text Impending is a keyword that represents four abilities. The first and second are static abilities that function while the spell with impending is on the stack. The third is a static ability that functions on the battlefield. The fourth is a triggered ability that functions on the battlefield. “Impending N—[cost]” means “You may choose to pay [cost] rather than pay this spell’s mana cost,” “If you chose to pay this spell’s impending cost, it enters with N time counters on it,” “As long as this permanent’s impending cost was paid and it has a time counter on it, it’s not a creature,” and “At the beginning of your end step, if this permanent’s impending cost was paid and it has a time counter on it, remove a time counter from it.” Casting a spell for its impending cost follows the rules for paying alternative costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
+  .rule_text Impending is a keyword that represents four abilities. The first is a static ability that functions while the spell with impending is on the stack. The second is static ability that creates a replacement effect that may apply to the permanent with impending as it enters the battlefield from the stack. The third is a static ability that functions on the battlefield. The fourth is a triggered ability that functions on the battlefield. “Impending N—[cost]” means “You may choose to pay [cost] rather than pay this spell’s mana cost,” “If you chose to pay this permanent’s impending cost, it enters with N time counters on it,” “As long as this permanent’s impending cost was paid and it has a time counter on it, it’s not a creature,” and “At the beginning of your end step, if this permanent’s impending cost was paid and it has a time counter on it, remove a time counter from it.” Casting a spell for its impending cost follows the rules for paying alternative costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
   .rule_text  
   .rule_text <a href="#section-702-177">702.177</a>. Exhaust
 .rule{id: "section-702-177a"}
@@ -7884,7 +7896,7 @@
   .rule_text Harmonize
 .rule{id: "section-702-180a"}
   .rule_id 702.180a
-  .rule_text Harmonize represents three static abilities: one that functions while the card is in a player’s graveyard and two that function while the spell with harmonize is on the stack. “Harmonize [cost]” means “You may cast this spell from your graveyard by paying [cost] and tapping up to one untapped creature you control rather than paying this spell’s mana cost,” “If you cast this spell using its harmonize ability, its total cost is reduced by an amount of generic mana equal to the tapped creature’s power,” and “If the harmonize cost was paid, exile this card instead of putting it anywhere else any time it would leave the stack.” Casting a spell using its harmonize ability follows the rules for paying alternative costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
+  .rule_text Harmonize represents three static abilities: one that functions while the card is in a player’s graveyard and two that function while the spell with harmonize is on the stack. “Harmonize [cost]” means “You may cast this card from your graveyard by paying [cost] and tapping up to one untapped creature you control rather than paying this spell’s mana cost,” “If you cast this spell using its harmonize ability, its total cost is reduced by an amount of generic mana equal to the tapped creature’s power,” and “If the harmonize cost was paid, exile this card instead of putting it anywhere else any time it would leave the stack.” Casting a spell using its harmonize ability follows the rules for paying alternative costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
 .rule{id: "section-702-180b"}
   .rule_id 702.180b
   .rule_text You choose which creature to tap as you choose to pay a spell’s harmonize cost (see rule <a href="#section-601-2b">601.2b</a>), and then tap that creature as you pay the total cost.
@@ -7931,6 +7943,33 @@
 .rule{id: "section-702-185c"}
   .rule_id 702.185c
   .rule_text Some effects refer to whether “a spell was warped this turn.” This means that a spell was cast for its warp cost this turn.
+.rule{id: "section-702-186"}
+  .rule_id 702.186.
+  .rule_text ∞ (Infinity)
+.rule{id: "section-702-186a"}
+  .rule_id 702.186a
+  .rule_text ∞ (the mathematical symbol for infinity) is a keyword found on Infinity cards. “∞” is followed by ability text. Together, they represent a static ability.
+.rule{id: "section-702-186b"}
+  .rule_id 702.186b
+  .rule_text “∞ — [Ability]” means “As long as this permanent is harnessed, it has [ability].” See rule <a href="#section-701-64">701.64</a>, “Harness.”
+.rule{id: "section-702-187"}
+  .rule_id 702.187.
+  .rule_text Mayhem
+.rule{id: "section-702-187a"}
+  .rule_id 702.187a
+  .rule_text Mayhem is a static ability that functions while the card with mayhem is in a player’s graveyard.
+.rule{id: "section-702-187b"}
+  .rule_id 702.187b
+  .rule_text “Mayhem [cost]” means “As long as you discarded this card this turn, you may cast it from your graveyard by paying [cost] rather than paying its mana cost.” Casting a spell using its mayhem ability follows the rules for paying alternative costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
+.rule{id: "section-702-187c"}
+  .rule_id 702.187c
+  .rule_text “Mayhem” without a cost means “You may play this card from your graveyard if you discarded it this turn.”
+.rule{id: "section-702-188"}
+  .rule_id 702.188.
+  .rule_text Web-slinging
+.rule{id: "section-702-188a"}
+  .rule_id 702.188a
+  .rule_text Web-slinging is a static ability that functions while the spell with web-slinging is on the stack. “Web-slinging [cost]” means “You may cast this spell by paying [cost] and returning a tapped creature you control to its owner’s hand rather than paying its mana cost.” Casting a spell using its web-slinging ability follows the rules for paying alternative costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
 .rule{id: "section-703"}
   .rule_id 703.
   .rule_text Turn-Based Actions
@@ -8234,9 +8273,9 @@
   .rule_text When copying a melded permanent or other double-faced permanent, use the copiable values of the face that’s currently up to determine the characteristics of the copy. See rule <a href="#section-712">712</a>, “Double-Faced Cards.”
 .rule{id: "section-707-8a"}
   .rule_id 707.8a
-  .rule_text If an effect creates a token that is a copy of a transforming permanent or a transforming double-faced card not on the battlefield, the resulting token is a transforming token that has both a front face and a back face. The characteristics of each face are determined by the copiable values of the same face of the permanent it is a copy of, as modified by any other copy effects that apply to that permanent. If the token is a copy of a transforming permanent with its back face up, the token enters the battlefield with its back face up. This rule does not apply to tokens that are created with their own set of characteristics and enter the battlefield as a copy of a transforming permanent due to a replacement effect.
-  .rule_text Example: Afflicted Deserter is the front face of a transforming double-faced card, and the name of its back face is Werewolf Ransacker. If an effect creates a token that is a copy of that transforming permanent, the token also has the same two faces and can transform. It enters the battlefield with the same face up as the permanent that it is a copy of.
-  .rule_text Example: Clone is not a transforming double-faced card, so a token that is created as a copy of a Clone is not a transforming token, even if it enters the battlefield as a copy of a transforming permanent due to Clone’s replacement effect.
+  .rule_text If an effect creates a token that is a copy of a double-faced permanent or a double-faced card not on the battlefield, the resulting token is a double-faced token that has both a front face and a back face. The characteristics of each face are determined by the copiable values of the same face of the permanent or card it is a copy of, as modified by any other copy effects that apply to that object. If the token is a copy of a double-faced permanent with its back face up, the token enters the battlefield with its back face up. This rule does not apply to tokens that are created with their own set of characteristics and enter the battlefield as a copy of a double-faced object due to a replacement effect.
+  .rule_text Example: Afflicted Deserter is the front face of a double-faced card, and the name of its back face is Werewolf Ransacker. If an effect creates a token that is a copy of that permanent, the token also has the same two faces and can transform. It enters the battlefield with the same face up as the permanent that it is a copy of.
+  .rule_text Example: Clone is not a double-faced card, so a token that is created as a copy of a Clone is not a double-faced token, even if it enters the battlefield as a copy of a permanent due to Clone’s replacement effect.
 .rule{id: "section-707-9"}
   .rule_id 707.9.
   .rule_text Copy effects may include modifications or exceptions to the copying process.
@@ -8294,7 +8333,7 @@
   .rule_text Some effects copy a permanent spell. As that copy resolves, it ceases being a copy of a spell and becomes a token permanent. (See rule <a href="#section-608-3f">608.3f</a>.)
 .rule{id: "section-707-10g"}
   .rule_id 707.10g
-  .rule_text If an effect creates a copy of a transforming permanent spell, the copy is also a transforming permanent spell that has both a front face and a back face. The characteristics of its front and back face are determined by the copiable values of the same face of the spell it is a copy of, as modified by any other copy effects. If the spell it is a copy of has its back face up, the copy is created with its back face up. The token that’s put onto the battlefield as that spell resolves is a transforming token.
+  .rule_text If an effect creates a copy of a double-faced permanent spell, the copy is also a double-faced permanent spell that has both a front face and a back face. The characteristics of its front and back face are determined by the copiable values of the same face of the spell it is a copy of, as modified by any other copy effects. If the spell it is a copy of has its back face up, the copy is created with its back face up. The token that’s put onto the battlefield as that spell resolves is a double-faced token.
 .rule{id: "section-707-11"}
   .rule_id 707.11.
   .rule_text If an effect refers to a permanent by name, the effect still tracks that permanent even if it changes names or becomes a copy of something else.
@@ -8487,22 +8526,22 @@
   .rule_text Double-Faced Cards
 .rule{id: "section-712-1"}
   .rule_id 712.1.
-  .rule_text A double-faced card has a Magic card face on one side and either a Magic card face or half of an oversized card face on the other. (It does not have a Magic card back.) There are three kinds of double-faced cards: transforming double-faced cards, modal double-faced cards, and meld cards.
+  .rule_text A double-faced card has a Magic card face on one side and either a Magic card face or half of an oversized card face on the other. (It does not have a Magic card back.) There are three kinds of double-faced cards: nonmodal double-faced cards (previously called “transforming double-faced cards”), modal double-faced cards, and meld cards.
 .rule{id: "section-712-2"}
   .rule_id 712.2.
-  .rule_text Transforming double-faced cards have a Magic card face on each side and include abilities on one or both of their faces that allow the card to either “transform” or “convert” (turn over to its other face) and/or allow the card to be cast or enter the battlefield “transformed” or “converted” (with its back face up).
+  .rule_text Nonmodal double-faced cards have a Magic card face on each side and include abilities on one or both of their faces that allow the card to either “transform” or “convert” (turn over to its other face) and/or allow the card to be cast or enter the battlefield “transformed” or “converted” (with its back face up).
 .rule{id: "section-712-2a"}
   .rule_id 712.2a
-  .rule_text A transforming double-faced card’s front face is marked by a front-face symbol in its upper left corner. On cards printed starting with The Brothers’ War™ release, that symbol is a single white triangle pointed upward inside a black circle. Transforming double-faced cards printed in older sets have different front-face symbols. On Magic Origins™ and Core Set 2019 double-faced cards, the front-face symbol is a modified Planeswalker icon. On cards in the Innistrad® block, Shadows over Innistrad set, and Innistrad: Midnight Hunt set, as well as on Ulrich of the Krallenhorde in the Eldritch Moon™ set, the front-face symbol is a sun. On other Eldritch Moon double-faced cards, the front-face symbol is a full moon. On Ixalan® and Rivals of Ixalan™ cards, the front-face symbol is a compass rose. On Kamigawa®: Neon Dynasty double-faced cards, the front-face symbol is a closed fan.
+  .rule_text A nonmodal double-faced card’s front face is marked by a front-face symbol in its upper left corner. On cards printed starting with The Brothers’ War™ release, that symbol is a single white triangle pointed upward inside a black circle. Nonmodal double-faced cards printed in older sets have different front-face symbols. On Magic Origins™ and Core Set 2019 double-faced cards, the front-face symbol is a modified Planeswalker icon. On cards in the Innistrad® block, Shadows over Innistrad set, and Innistrad: Midnight Hunt set, as well as on Ulrich of the Krallenhorde in the Eldritch Moon™ set, the front-face symbol is a sun. On other Eldritch Moon double-faced cards, the front-face symbol is a full moon. On Ixalan® and Rivals of Ixalan™ cards, the front-face symbol is a compass rose. On Kamigawa®: Neon Dynasty double-faced cards, the front-face symbol is a closed fan.
 .rule{id: "section-712-2b"}
   .rule_id 712.2b
-  .rule_text A transforming double-faced card’s back face is marked by a back-face symbol in its upper left or upper right corner. On cards printed starting with The Brothers’ War release, that symbol is a single white triangle pointed downward inside a black circle. Transforming double-faced cards printed in older sets have different front-face symbols. On Magic Origins and Core Set 2019 double-faced cards, the back-face symbol is a full Planeswalker icon. On cards in the Innistrad block, Shadows over Innistrad set, and Innistrad: Midnight Hunt set, as well as on Ulrich, Uncontested Alpha in the Eldritch Moon set, the back-face symbol is a crescent moon. On other Eldritch Moon double-faced cards, the back-face symbol is a stylized image of Emrakul. On Ixalan and Rivals of Ixalan cards, the back-face symbol is a land icon. On Kamigawa: Neon Dynasty double-faced cards, the back-face symbol is an open fan.
+  .rule_text A nonmodal double-faced card’s back face is marked by a back-face symbol in its upper left or upper right corner. On cards printed starting with The Brothers’ War release, that symbol is a single white triangle pointed downward inside a black circle. Nonmodal double-faced cards printed in older sets have different front-face symbols. On Magic Origins and Core Set 2019 double-faced cards, the back-face symbol is a full Planeswalker icon. On cards in the Innistrad block, Shadows over Innistrad set, and Innistrad: Midnight Hunt set, as well as on Ulrich, Uncontested Alpha in the Eldritch Moon set, the back-face symbol is a crescent moon. On other Eldritch Moon double-faced cards, the back-face symbol is a stylized image of Emrakul. On Ixalan and Rivals of Ixalan cards, the back-face symbol is a land icon. On Kamigawa: Neon Dynasty double-faced cards, the back-face symbol is an open fan.
 .rule{id: "section-712-2c"}
   .rule_id 712.2c
-  .rule_text The front face of a transforming double-faced card whose back face is a creature has the back face’s power and toughness printed in gray above the power and toughness box. This is reminder text and has no effect on game play.
+  .rule_text The front face of a nonmodal double-faced card whose back face is a creature has the back face’s power and toughness printed in gray above the power and toughness box. This is reminder text and has no effect on game play.
 .rule{id: "section-712-3"}
   .rule_id 712.3.
-  .rule_text Modal double-faced cards have a Magic card face on each side. These faces are independent from one another.
+  .rule_text Modal double-faced cards have a Magic card face on each side. These faces are usually independent from one another, but they may have an ability that allows them to “transform” or “convert” on either face.
 .rule{id: "section-712-3a"}
   .rule_id 712.3a
   .rule_text A modal double-faced card’s front face is marked by a front-face symbol in its upper left corner. The front-face symbol is a single black triangle inside a sideways teardrop.
@@ -8521,6 +8560,9 @@
 .rule{id: "section-712-4b"}
   .rule_id 712.4b
   .rule_text The back faces of a meld pair are used only to determine the characteristics of the melded permanent that pair becomes on the battlefield. If a rule or effect references the back face of a meld card when not part of a melded permanent on the battlefield, it fails to determine its characteristics, regardless of which parts of the melded permanent is represented on that card’s back face.
+.rule{id: "section-712-4c"}
+  .rule_id 712.4c
+  .rule_text Unlike other double-faced cards, meld cards cannot be transformed or converted. Any instructions to do so are ignored.
 .rule{id: "section-712-5"}
   .rule_id 712.5.
   .rule_text There are seven specific meld pairs.
@@ -8553,7 +8595,7 @@
   .rule_text Players must ensure that double-faced cards in hidden zones are indistinguishable from other cards in the same zone. To do this, the owner of a double-faced card may use completely opaque card sleeves and/or a substitute card (see rule <a href="#section-713">713</a>). Sanctioned tournaments have additional rules for playing with double-faced cards. See rule <a href="#section-100-6">100.6</a>.
 .rule{id: "section-712-8"}
   .rule_id 712.8.
-  .rule_text Each face of a transforming or modal double-faced card has its own set of characteristics. The front face of each meld card and the combined face formed by a meld pair each has its own set of characteristics.
+  .rule_text Each face of a double-faced card that isn’t a meld card has its own set of characteristics. The front face of each meld card and the combined face formed by a meld pair each has its own set of characteristics.
 .rule{id: "section-712-8a"}
   .rule_id 712.8a
   .rule_text While a double-faced card is outside the game or in a zone other than the battlefield or stack, it has only the characteristics of its front face.
@@ -8562,13 +8604,13 @@
   .rule_text A meld card on the stack has only the characteristics of its front face.
 .rule{id: "section-712-8c"}
   .rule_id 712.8c
-  .rule_text Normally, a transforming double-faced spell has its front face up while on the stack and has only the characteristics of its front face. However, if an effect allows a player to cast a transforming double-faced card “transformed” or “converted,” the resulting spell will have its back face up and have only the characteristics of its back face. Its mana value is calculated using the mana cost of its front face.
+  .rule_text Normally, a nonmodal double-faced spell has its front face up while on the stack and has only the characteristics of its front face. However, if an effect allows a player to cast a nonmodal double-faced card “transformed” or “converted,” the resulting spell will have its back face up and have only the characteristics of its back face. Its mana value is calculated using the mana cost of its front face.
 .rule{id: "section-712-8d"}
   .rule_id 712.8d
   .rule_text While a double-faced permanent has its front face up, it has only the characteristics of its front face.
 .rule{id: "section-712-8e"}
   .rule_id 712.8e
-  .rule_text While a transforming double-faced permanent has its back face up, it has only the characteristics of its back face. However, its mana value is calculated using the mana cost of its front face. If a permanent is copying the back face of a transforming double-faced permanent (even if the object representing that copy is itself a double-faced permanent), the mana value of that permanent is 0. See rule <a href="#section-202-3b">202.3b</a>.
+  .rule_text While a nonmodal double-faced permanent has its back face up, it has only the characteristics of its back face. However, its mana value is calculated using the mana cost of its front face. If a permanent is copying the back face of a nonmodal double-faced permanent (even if the object representing that copy is itself a double-faced permanent), the mana value of that permanent is 0. See rule <a href="#section-202-3b">202.3b</a>.
 .rule{id: "section-712-8f"}
   .rule_id 712.8f
   .rule_text While a modal double-faced spell is on the stack or a modal double-faced permanent is on the battlefield, it has only the characteristics of the face that’s up.
@@ -8577,19 +8619,18 @@
   .rule_text While the two cards of a meld pair are on the battlefield as a melded permanent, the object represented by those cards has only the characteristics of the combined back face, and its mana value is the sum of the mana values of its front faces. If a permanent is copying a melded permanent, the mana value of the copy is 0. See rule <a href="#section-202-3c">202.3c</a>.
 .rule{id: "section-712-9"}
   .rule_id 712.9.
-  .rule_text Only transforming tokens and permanents represented by transforming double-faced cards can transform or convert. (See rule <a href="#section-701-27">701.27</a>, “Transform,” and rule <a href="#section-701-28">701.28</a>, “Convert.”) If a spell or ability instructs a player to transform or convert any permanent that isn’t a transforming token or isn’t represented by a transforming double-faced card, nothing happens.
-  .rule_text Example: A Clone enters the battlefield as a copy of Wildblood Pack (the back face of a transforming double-faced card). The Clone will be a copy of the Wildblood Pack. Because the Clone is itself not a transforming double-faced card, it can’t transform.
-  .rule_text Example: A player casts Cytoshape, causing a Kruin Outlaw (the front face of a transforming double-faced card) to become a copy of Elite Vanguard (a 2/1 Human Soldier creature) until end of turn. The player then casts Moonmist, which reads, in part, “Transform all Humans.” Because the copy of Elite Vanguard is a transforming double-faced card, it will transform. The resulting permanent will have its back face up, but it will still be a copy of Elite Vanguard that turn.
-  .rule_text Example: A player controls Blackbloom Rogue, a Human Rogue that’s the front face of a modal double-faced card. They cast Moonmist. Blackbloom Rogue doesn’t transform.
+  .rule_text Only permanents represented by double-faced tokens and double-faced cards that are not meld cards can transform or convert. (See rule <a href="#section-701-27">701.27</a>, “Transform,” and rule <a href="#section-701-28">701.28</a>, “Convert.”) If a spell or ability instructs a player to transform or convert any permanent that isn’t represented by a double-faced token or a double-faced card, nothing happens.
+  .rule_text Example: A Clone enters the battlefield as a copy of Wildblood Pack (the back face of a double-faced card). The Clone will be a copy of the Wildblood Pack. Because the Clone is itself not a double-faced card, it can’t transform.
+  .rule_text Example: A player casts Cytoshape, causing a Kruin Outlaw (the front face of a double-faced card) to become a copy of Elite Vanguard (a 2/1 Human Soldier creature) until end of turn. The player then casts Moonmist, which reads, in part, “Transform all Humans.” Because the copy of Elite Vanguard is a double-faced card, it will transform. The resulting permanent will have its back face up, but it will still be a copy of Elite Vanguard that turn.
 .rule{id: "section-712-10"}
   .rule_id 712.10.
-  .rule_text If a spell or ability instructs a player to transform or convert a permanent, and the face that permanent would transform or convert into is represented by an instant or sorcery card face, or is a transforming token that was created with an instant or sorcery face, nothing happens.
+  .rule_text If a spell or ability instructs a player to transform or convert a permanent, and the face that permanent would transform or convert into is an instant or sorcery card face, or is a double-faced token that was created with an instant or sorcery face, nothing happens.
 .rule{id: "section-712-11"}
   .rule_id 712.11.
   .rule_text A double-faced spell is cast with its front face up by default. See rule <a href="#section-601">601</a>, “Casting Spells.”
 .rule{id: "section-712-11a"}
   .rule_id 712.11a
-  .rule_text If a transforming double-faced card or a copy of a transforming double-faced card is cast as a spell “transformed” or “converted,” it’s put on the stack with its back face up.
+  .rule_text If a double-faced card or a copy of a double-faced card is cast as a spell “transformed” or “converted,” it’s put on the stack with its back face up.
 .rule{id: "section-712-11b"}
   .rule_id 712.11b
   .rule_text A player casting a modal double-faced card or a copy of a modal double-faced card as a spell chooses which face they are casting before putting it onto the stack.
@@ -8598,7 +8639,7 @@
   .rule_text Only the face that will be face up on the stack is evaluated to determine if it can be cast. Only that face is considered to be put onto the stack.
 .rule{id: "section-712-11d"}
   .rule_id 712.11d
-  .rule_text If an ability of a transforming double-faced card’s front face allows it to be cast “transformed” or “converted,” that ability is also considered when evaluating that spell to determine if it can be cast. This is an exception to <a href="#section-712-11c">712.11c</a>.
+  .rule_text If an ability of a double-faced card’s front face allows it to be cast “transformed” or “converted,” that ability is also considered when evaluating that spell to determine if it can be cast. This is an exception to <a href="#section-712-11c">712.11c</a>.
 .rule{id: "section-712-12"}
   .rule_id 712.12.
   .rule_text A player playing a modal double-faced card or a copy of a modal double-faced card as a land chooses one of its faces that’s a land before putting it onto the battlefield. It enters the battlefield with that face up. See rule <a href="#section-305">305</a>, “Lands.”
@@ -8607,14 +8648,14 @@
   .rule_text By default, a resolving double-faced spell that becomes a permanent is put onto the battlefield with the same face up that was face up on the stack.
 .rule{id: "section-712-13a"}
   .rule_id 712.13a
-  .rule_text Some abilities may cause a transforming double-faced spell with its front face up on the stack to enter the battlefield transformed or converted. If the back face of the card that represents that spell is an instant or sorcery card, or that spell is a copy of a double-faced card created with an instant or sorcery back face, it doesn’t enter the battlefield, and is instead put into its owner’s graveyard.
+  .rule_text Some abilities may cause a double-faced spell with its front face up on the stack to enter the battlefield transformed or converted. If the back face of the card that represents that spell is an instant or sorcery face, or that spell is a copy of a double-faced card created with an instant or sorcery back face, it doesn’t enter the battlefield, and is instead put into its owner’s graveyard.
   .rule_text Example: A player controls both Mycosynth Lattice and March of the Machines, the combined effects of which make all permanents artifact creatures in addition to their other types. They also control a Clone on the battlefield that is a copy of Bird Admirer, a creature with daybound. It is currently night, but that permanent can’t transform because it isn’t represented by a double-faced card. Its controller casts Mystic Reflection targeting it, then casts Invasion of Kylem, a Siege battle whose back face is a sorcery. Because Invasion of Kylem is entering the battlefield as a creature, Mystic Reflection’s replacement effect applies to it and it tries to enter the battlefield as a copy of Bird Admirer. Since it is night, the daybound ability would normally cause it to enter with its back face up. However, since its back face is a sorcery, it is instead put into its owner’s graveyard.
 .rule{id: "section-712-14"}
   .rule_id 712.14.
   .rule_text A double-faced card put onto the battlefield from a zone other than the stack enters the battlefield with its front face up by default.
 .rule{id: "section-712-14a"}
   .rule_id 712.14a
-  .rule_text If a spell or ability puts a transforming double-faced card onto the battlefield “transformed” or “converted,” it enters the battlefield with its back face up. If a player is instructed to put a card that isn’t a transforming double-faced card onto the battlefield transformed or converted, that card stays in its current zone.
+  .rule_text If a spell or ability puts a double-faced card onto the battlefield “transformed” or “converted,” it enters the battlefield with its back face up. If a player is instructed to put a card that isn’t a double-faced card onto the battlefield transformed or converted, that card stays in its current zone.
 .rule{id: "section-712-14b"}
   .rule_id 712.14b
   .rule_text If a player is instructed to put a modal double-faced card onto the battlefield and its front face isn’t a permanent card, the card stays in its current zone.
@@ -8626,7 +8667,7 @@
   .rule_text If an effect allows a player to cast a double-faced card as a face-down creature spell, or if a double-faced card enters the battlefield face down, it will have the characteristics given to it by the rule or effect that caused it to be face down. That card remains hidden, using a face-down substitute card (see rule <a href="#section-713">713</a>) and/or opaque sleeves. See rule <a href="#section-708">708</a>, “Face-Down Spells and Permanents.”
 .rule{id: "section-712-15a"}
   .rule_id 712.15a
-  .rule_text While face down, a transforming double-faced permanent can’t transform or convert. If it’s turned face up, it will have its front face up.
+  .rule_text While face down, a double-faced permanent can’t transform or convert. If it’s turned face up, it will have its front face up.
 .rule{id: "section-712-16"}
   .rule_id 712.16.
   .rule_text Melded permanents and other double-faced permanents can’t be turned face down. If a spell or ability tries to turn a double-faced permanent face down, nothing happens.
@@ -8635,14 +8676,14 @@
   .rule_text A double-faced card that is exiled face down remains hidden, using a face-down substitute card and/or opaque sleeves. See rule <a href="#section-713">713</a>, “Substitute Cards.”
 .rule{id: "section-712-18"}
   .rule_id 712.18.
-  .rule_text When a transforming double-faced permanent transforms or converts, it doesn’t become a new object. Any effects that applied to that permanent will continue to apply to it.
-  .rule_text Example: An effect gives Village Ironsmith (the front face of a transforming double-faced card) +2/+2 until end of turn and then Village Ironsmith transforms into Ironfang. Ironfang will continue to get +2/+2 until end of turn.
+  .rule_text When a double-faced permanent transforms or converts, it doesn’t become a new object. Any effects that applied to that permanent will continue to apply to it.
+  .rule_text Example: An effect gives Village Ironsmith (the front face of a double-faced card) +2/+2 until end of turn and then Village Ironsmith transforms into Ironfang. Ironfang will continue to get +2/+2 until end of turn.
 .rule{id: "section-712-19"}
   .rule_id 712.19.
-  .rule_text If an effect instructs a player to choose a card name, the player may choose the name of either face of a transforming or modal double-faced card but not both. Similarly, they may choose either the name of a front face of a meld card or the combined back face of a meld pair.
+  .rule_text If an effect instructs a player to choose a card name, the player may choose the name of either face of a double-faced card but not both. The player may choose the name of the combined back face of a meld pair.
 .rule{id: "section-712-20"}
   .rule_id 712.20.
-  .rule_text If a transforming double-faced card would have an “As [this permanent] transforms . . .” ability after it transforms or converts, that ability is applied while that permanent is transforming or converting, not afterward.
+  .rule_text If a double-faced card would have an “As [this permanent] transforms . . .” ability after it transforms or converts, that ability is applied while that permanent is transforming or converting, not afterward.
 .rule{id: "section-712-21"}
   .rule_id 712.21.
   .rule_text If a melded permanent leaves the battlefield, one permanent leaves the battlefield and two cards are put into the appropriate zone.
@@ -9204,7 +9245,7 @@
   .rule_text If a merged permanent contains a flip card (see rule <a href="#section-710">710</a>), that component’s alternative characteristics are used instead of its normal characteristics if the merged permanent is flipped.
 .rule{id: "section-729-2i"}
   .rule_id 729.2i
-  .rule_text A merged permanent is not a double-faced permanent even if it contains one or more double-faced components. If a merged permanent contains one or more transforming double-faced components (see rule <a href="#section-712">712</a>), transforming that permanent causes each of those double-faced components to turn so that its other face is up.
+  .rule_text A merged permanent is not a double-faced permanent even if it contains one or more double-faced components. If a merged permanent contains one or more double-faced components that can transform (see rule <a href="#section-712">712</a>), transforming or converting that permanent causes each of those double-faced components to turn so that its other face is up.
 .rule{id: "section-729-2j"}
   .rule_id 729.2j
   .rule_text A face-up merged permanent that contains a double-faced component can’t be turned face down.
@@ -11195,6 +11236,12 @@
   .glossary_term Harmonize
   .glossary_definition A keyword ability that lets a player cast a card from their graveyard for a specific cost and lets them tap a creature they control to reduce that cost. See rule <a href="#section-702-180">702.180</a>, “Harmonize.”
 .glossary_entry
+  .glossary_term Harness
+  .glossary_definition A keyword action that grants a permanent the harnessed designation. See rule <a href="#section-701-64">701.64</a>, “Harness.”
+.glossary_entry
+  .glossary_term Harnessed
+  .glossary_definition A designation permanents can have. Infinity permanents have their ∞ abilities as long as they are harnessed. See rule <a href="#section-701-64">701.64</a>, “Harness,” and rule <a href="#section-702-186">702.186</a>, “∞ (Infinity).”
+.glossary_entry
   .glossary_term Haste
   .glossary_definition A keyword ability that lets a creature ignore the “summoning sickness” rule. See rule <a href="#section-702-10">702.10</a>, “Haste,” and rule <a href="#section-302-6">302.6</a>.
 .glossary_entry
@@ -11268,7 +11315,7 @@
   .glossary_definition A keyword action that creates an Incubator token with a specified number of +1/+1 counters on it. See rule <a href="#section-701-53">701.53</a>, “Incubate.”
 .glossary_entry
   .glossary_term Incubator Token
-  .glossary_definition An Incubator token is a transforming double-faced token. Its front face is a colorless Incubator artifact with “<span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span></span>: Transform this token.” Its back face is a 0/0 colorless Phyrexian artifact creature named “Phyrexian Token.” For more information about predefined tokens, see rule <a href="#section-111-10">111.10</a>.
+  .glossary_definition An Incubator token is a double-faced token. Its front face is a colorless Incubator artifact with “<span class="manacost"><span class="mana mana-cost mana-2"><span class="sr-only">{2}</span></span></span>: Transform this token.” Its back face is a 0/0 colorless Phyrexian artifact creature named “Phyrexian Token.” For more information about predefined tokens, see rule <a href="#section-111-10">111.10</a>.
 .glossary_entry
   .glossary_term Independent
   .glossary_definition See Dependency.
@@ -11278,6 +11325,9 @@
 .glossary_entry
   .glossary_term Infect
   .glossary_definition A keyword ability that affects how an object deals damage to creatures and players. See rule <a href="#section-702-90">702.90</a>, “Infect.”
+.glossary_entry
+  .glossary_term Infinity
+  .glossary_definition 1. An artifact subtype. 2. ∞ is a keyword found on Infinity cards that grants an ability as long as that permanent is harnessed. See rule <a href="#section-702-186">702.186</a>, “∞ (Infinity),” and rule <a href="#section-701-64">701.64</a>, “Harness.”
 .glossary_entry
   .glossary_term Ingest
   .glossary_definition A keyword ability that can exile the top card of a player’s library. See rule <a href="#section-702-115">702.115</a>, “Ingest.”
@@ -11486,6 +11536,9 @@
   .glossary_term Maximum Hand Size
   .glossary_definition The number of cards in hand a player must discard down to during their cleanup step. See rule <a href="#section-402-2">402.2</a> and <a href="#section-514-1">514.1</a>.
 .glossary_entry
+  .glossary_term Mayhem
+  .glossary_definition A keyword ability that allows you to play cards you discarded this turn from your graveyard for an alternative cost. See rule <a href="#section-702-187">702.187</a>, “Mayhem.”
+.glossary_entry
   .glossary_term Megamorph
   .glossary_definition A variant of the morph ability that puts a +1/+1 counter on the creature as it turns face up. See rule <a href="#section-702-37">702.37</a>, “Morph.”
 .glossary_entry
@@ -11523,7 +11576,7 @@
   .glossary_definition A spell or ability is “modal” if it has two or more options in a bulleted list preceded by instructions for a player to choose a number of those options, such as “Choose one —.” See rule <a href="#section-700-2">700.2</a>.
 .glossary_entry
   .glossary_term Modal Double-Faced Cards
-  .glossary_definition One of two kinds of double-faced cards. Modal double-faced cards can be played with either of their two faces up and can’t transform. See rule <a href="#section-712">712</a>, “Double-Faced Cards.”
+  .glossary_definition One kind of double-faced card. Modal double-faced cards can be played with either of their two faces up. See rule <a href="#section-712">712</a>, “Double-Faced Cards.”
 .glossary_entry
   .glossary_term Modified
   .glossary_definition A modified creature is a creature that has a counter on it, is equipped, or is enchanted by an Aura its controller also controls. See rule <a href="#section-700-9">700.9</a>.
@@ -11602,6 +11655,9 @@
 .glossary_entry
   .glossary_term Nonbasic Land
   .glossary_definition Any land that doesn’t have the supertype “basic.” See rule <a href="#section-205-4">205.4</a>, “Supertypes.”
+.glossary_entry
+  .glossary_term Nonmodal Double-Faced Card
+  .glossary_definition One kind of double-faced card. Nonmodal double-faced cards default to being cast with their front faces up but can transform to their back faces in some way. See rule <a href="#section-712">712</a>, “Double-Faced Cards.”
 .glossary_entry
   .glossary_term Nontraditional Magic Card
   .glossary_definition A card not included in players’ decks. It may be oversized or have a card back other than a “Deckmaster” back. See rule <a href="#section-108-2">108.2</a>.
@@ -12275,8 +12331,8 @@
   .glossary_term Transform
   .glossary_definition To turn a double-faced card so its other face is up. See rule <a href="#section-701-27">701.27</a>, “Transform.”
 .glossary_entry
-  .glossary_term Transforming Double-Faced Cards
-  .glossary_definition One of two kinds of double-faced cards. Transforming double-faced cards default to their front faces but can transform to their back faces in some way. See rule <a href="#section-712">712</a>, “Double-Faced Cards.”
+  .glossary_term Transforming Double-Faced Cards (Obsolete)
+  .glossary_definition An older name for nonmodal double-faced cards. See rule <a href="#section-712">712</a>, “Double-Faced Cards.” 
 .glossary_entry
   .glossary_term Transmute
   .glossary_definition A keyword ability that lets a player search their library for a replacement card. See rule <a href="#section-702-53">702.53</a>, “Transmute.”
@@ -12425,6 +12481,9 @@
   .glossary_term Warp
   .glossary_definition A keyword ability found on permanent cards that allows them to be cast for an alternative cost. See rule <a href="#section-702-185">702.185</a>, “Warp.”
 .glossary_entry
+  .glossary_term Web-slinging
+  .glossary_definition A keyword ability that allows spells to be cast for an alternative cost by returning a tapped creature you control to its owner’s hand. See rule <a href="#section-702-188">702.188</a>, “Web-slinging.”
+.glossary_entry
   .glossary_term Win the Game
   .glossary_definition There are several ways to win the game. See rule <a href="#section-104">104</a>, “Ending the Game,” and rules <a href="#section-810-8">810.8</a> (for additional rules for Two-Headed Giant games) and rule <a href="#section-809-5">809.5</a> (for additional rules for Emperor games).
 .glossary_entry
@@ -12458,9 +12517,10 @@
 %p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cactino, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (principal), Matt Tabak (principal), Nat Moes, Samantha Phelan, Michael Zhang, and Hans Ziegler Magic Rules Management: Jess Dunks, Eric Levine, and Eliana Rabinowitz
 %p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cactino, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
 %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-%p These rules are effective as of July 25, 2025.
+%p These rules are effective as of September 19, 2025.
 %p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unfinity, Dominaria, Ikoria, Kaldheim, Baldur’s Gate, The Brothers’ War, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2025 Wizards. U.S. Pat. No. RE 37,957.
 %p Astartes, C’tan, Custodes, Necron, Primarch, and Tyranid ® &amp; © Games Workshop Limited 2022. All Rights Reserved.
 %p © 2023 Middle-earth Enterprises. Tales of Middle-earth and The Lord of the Rings and the names of the characters, events, items and places therein, are trademarks of Middle-earth Enterprises, LLC used under license by Wizards of the Coast LLC. All rights reserved.
 %p BBC, DOCTOR WHO, TARDIS, DALEK, CYBERMAN and K-9 (word marks and devices) are trade marks of the British Broadcasting Corporation and are used under licence. BBC logo © BBC 1996.
-%p Moogle; Qu; Fang, Fearless l’Cie; Vanille, Cheerful l’Cie; and Ragnarok, Divine Deliverance ® &amp; © SQUARE ENIX. 
+%p Moogle; Qu; Fang, Fearless l’Cie; Vanille, Cheerful l’Cie; and Ragnarok, Divine Deliverance ® &amp; © SQUARE ENIX.
+%p © 2025 MARVEL. 
