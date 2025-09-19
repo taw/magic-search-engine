@@ -69,7 +69,7 @@ sheets:
   foil_alt_art:
     foil: true
     any:
-    - rawquery: "(e:bro or e:brc) promo:boosterfun r:r -(Angel of the Ruins)" # Angel is improperly flagged as boosterfun
+    - rawquery: "(e:bro or e:brc) promo:boosterfun r:r"
       rate: 12
     - rawquery: "e:brr number<=63 r:r -number:/z/"
       rate: 10
