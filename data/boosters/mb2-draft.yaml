@@ -41,12 +41,12 @@ sheets:
     code: "MBTWRM"
   future_sight:
     any:
-    - filter: "e:{set} frame:future is:nonfoil"
-      use: common_uncommon
+    - query: "frame:future is:nonfoil (r:c OR r:u)"
       chance: 4
-    - filter: "e:{set} frame:future is:nonfoil"
-      use: rare_mythic
+      count: 51
+    - query: "frame:future is:nonfoil (r:r OR r:m)"
       chance: 6 # There is a 60% chance for a rare or mythic rare.
+      count: 70
   future_sight_foil:
     query: "frame:future is:foil"
     foil: true
