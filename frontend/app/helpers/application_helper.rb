@@ -202,10 +202,11 @@ module ApplicationHelper
       sym = $&.upcase
       mana = $1.delete("/").downcase
       if good_mana_symbols.include?(mana)
-        if mana[0] == "h"
-          %[<span class="mana mana-half"><span class="mana mana-cost mana-#{mana[1..-1]}"><span class="sr-only">#{sym}</span></span></span>]
-        elsif mana == "p" or mana == "chaos" or mana == "pw" or mana == "e"
+        if mana == "p" or mana == "chaos" or mana == "pw" or mana == "e" or mana == "h"
+          # No circle
           %[<span class="mana mana-#{mana}"><span class="sr-only">#{sym}</span></span>]
+        elsif mana[0] == "h"
+          %[<span class="mana mana-half"><span class="mana mana-cost mana-#{mana[1..-1]}"><span class="sr-only">#{sym}</span></span></span>]
         else
           %[<span class="mana mana-cost mana-#{mana}"><span class="sr-only">#{sym}</span></span>]
         end
@@ -223,7 +224,10 @@ module ApplicationHelper
       "w", "u", "b", "r", "g",
       "wu", "wb", "rw", "gw", "ub", "ur", "gu", "br", "bg", "rg",
       "2w", "2u", "2b", "2r", "2g",
-      "wp", "up", "bp", "rp", "gp", "p",
+      "wp", "up", "bp", "rp", "gp",
+      "cw", "cu", "cb", "cr", "cg",
+      "h",
+      "p",
       "s", "q", "t", "c", "e",
       "½", "1000000", "100", "∞",
       "chaos", "pw",
