@@ -2,7 +2,7 @@
 # - misprints with /†/
 # - foreign cards with /s/
 # - precon cards with with /d/
-filter: "e:{set} -number:/d/ -variant:misprint -variant:foreign"
+filter: "e:{set} (variant:misprint or -alt:(e:{set} variant:misprint)) -number:/d/ -variant:foreign"
 count: 215
 pack:
   basic: 2
