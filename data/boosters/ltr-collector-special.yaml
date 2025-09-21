@@ -1,6 +1,6 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-the-lord-of-the-rings-tales-of-middle-earth#ltrupdate
 name: "{set_name} Special Edition Collector Booster"
-filter: "(e:ltr number:452-730 -t:basic) or (e:ltc number:411-490)"
+filter: "(e:ltr number:452-833) or (e:ltc number:411-558) or (e:ltc number:/z/ -(Sol Ring))"
 pack:
   showcase_common: 2
   silver_showcase_common: 2
@@ -36,45 +36,51 @@ pack:
 sheets:
   showcase_common:
     query: "r:c"
+    count: 101
   silver_showcase_common:
-    query: "r:c"
+    use: showcase_common
+    count: 101
     foil: true
   showcase_uncommon:
     any:
     - query: "r:u -Nazgúl"
       rate: 9
+      count: 79
     - query: "r:u Nazgúl"
       rate: 1
+      count: 79
   silver_showcase_uncommon:
     foil: true
-    any:
-    - query: "r:u -Nazgúl"
-      rate: 9
-    - query: "r:u Nazgúl"
-      rate: 1
+    use: showcase_uncommon
   showcase_rare_mythic:
     use: rare_mythic
   silver_showcase_rare_mythic:
     foil: true
-    use: rare_mythic
+    use: showcase_rare_mythic
   surge_map_land:
     foil: true
     rawquery: "e:ltr number:713-722"
+    count: 10
   scene_jumpstart_rare_mythic:
     any:
     - rawquery: "e:ltc number:491-514 r:r"
       rate: 2
+      count: 20
     - rawquery: "e:ltc number:491-514 r:m"
       rate: 1
+      count: 4
     - rawquery: "e:ltr number:829-833"
       rate: 2
+      count: 5
   surge_extended_rare_mythic:
     foil: true
     any: 
     - rawquery: "e:ltr number:757-793 r:r"
       rate: 2
+      count: 28
     - rawquery: "e:ltr number:757-793 r:m"
       rate: 1
+      count: 9
   surge_booster_fun_u:
     foil: true
     rawquery: "e:ltr number:794-823 r:u"
@@ -98,11 +104,8 @@ sheets:
       count: 4
   serialized_topper:
     foil: true
-    any:
-    - rawquery: "e:ltc number:/z/ -(Sol Ring)"
-      rate: 1
-    - rawquery: "e:ltc number:378-407 -number:/z/ -alt:(e:ltc number:/z/)"
-      rate: 1
+    rawquery: "e:ltc number:/z/ -(Sol Ring)"
+    count: 30
   hildebrant_u:
     rawquery: "e:ltc number:515-534 r:u"
   silver_hildebrant_u:
@@ -127,8 +130,5 @@ sheets:
       rate: 1
   serialized_poster: 
     foil: true
-    any:
-    - rawquery: "e:ltr alt:(e:ltr number:731-750) number:/z/"
-      rate: 1
-    - rawquery: "e:ltr number:731-750 -alt:(e:ltr number:/z/)"
-      rate: 1
+    rawquery: "e:ltr alt:(e:ltr number:731-750) number:/z/"
+    count: 20
