@@ -121,9 +121,11 @@ describe "Regexp" do
     assert_search_equal 'o:/\ss/', 'o:/\{[^\}]+\}/'
 
     # TODO: \smr Short-hand for any repeated mana symbol. For example, {G}{G} matches \smr
-    # TODO: \smh Short-hand for any hybrid card symbol. Note that monocolor Phyrexian symbols aren’t considered hybrid.
-    # TODO: \smp Short-hand for any Phyrexian card symbol, e.g. {P}, {W/P}, or {G/W/P}.
 
+    # Short-hand for any hybrid card symbol. Note that monocolor Phyrexian symbols aren’t considered hybrid.
+    assert_search_equal 'o:/\smh/', 'o:/\{(?:[WUBRGC2])\/(?:[WUBRGC])(?:\/P)?\}/'
+    # Short-hand for any Phyrexian card symbol, e.g. {P}, {W/P}, or {G/W/P}.
+    assert_search_equal 'o:/\smp/', 'o:/\{(?:[WUBRG]\/P|H)\}/'
     # Short-hand for a X/X power/toughness expression
     assert_search_equal 'o:/\spt/', 'o:/(X|\d+)\/(X|\d+)/'
     # Short-hand for a +X/+X power/toughness expression
