@@ -29,7 +29,7 @@ sheets:
       rate: 3
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
       rate: 6
-    - rawquery: "(e:woe or e:woc) r:m frame:extendedart"
+    - rawquery: "(e:woe or e:woc) r:m frame:extendedart -number:381"
       rate: 6
     - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
       rate: 6
