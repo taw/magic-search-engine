@@ -27,12 +27,11 @@ sheets:
     foil: true
     use: rare_mythic
   extended_art:
-    filter: "(e:woe or e:woc) frame:extendedart"
+    filter: "(e:woe or e:woc) frame:extendedart -number:381"
     use: rare_mythic
   foil_extended_art:
     foil: true
-    filter: "(e:woe or e:woc) frame:extendedart"
-    use: rare_mythic
+    use: extended_art
   enchanting_tales_rare_mythic:
     any:
     - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"

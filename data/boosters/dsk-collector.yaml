@@ -73,9 +73,9 @@ sheets:
       rate: 1
     - rawquery: "r:m {any_boosterfun} -alt:{two_instances}"
       rate: 2
-    - rawquery: "r:r {two_instances}"
+    - rawquery: "r:r {two_instances} -number:417" # 417 is the BaB
       rate: 2
-    - rawquery: "r:r {any_boosterfun} -alt:{two_instances}"
+    - rawquery: "r:r {any_boosterfun} -alt:{two_instances} -number:417"
       rate: 4
   foil_booster_fun:
     foil: true
