@@ -51,13 +51,14 @@ class QueryTokenizer
             "rulings" => ConditionRulingsRegexp,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
           # Expand shortcuts
-          # \+ in gsub right side has special meaning
+          # \+ and \k in gsub right side has special meaning
           rx = s[2]
           rx = rx.gsub('\spt', '(?:X|\d+)\/(?:X|\d+)')
           rx = rx.gsub('\spp', '(?:\\\\+(?:X|\d+)\/\\\\+(?:X|\d+))')
           rx = rx.gsub('\smm', '(?:-(?:X|\d+)\/-(?:X|\d+))')
           rx = rx.gsub('\smp', '(?:\{(?:[WUBRG]\/P|H)\})')
           rx = rx.gsub('\smh', '(?:\{(?:[WUBRGC2])\/(?:[WUBRGC])(?:\/P)?\})')
+          rx = rx.gsub('\smr', '(?:(?<smr>\{[WUBRGCXSPH0-9½∞\/]+\})\\\\k<smr>+)')
           rx = rx.gsub('\sm', '(?:\{[WUBRGCXSPH0-9½∞\/]+\})')
           rx = rx.gsub('\sc', '(?:\{[WUBRGP\/\d]*[WUBRG][WUBRGP\/\d]*\})')
           rx = rx.gsub('\ss', '(?:\{[^\}]+\})')

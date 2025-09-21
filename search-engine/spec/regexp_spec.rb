@@ -112,6 +112,7 @@ describe "Regexp" do
   end
 
   # Just some scryfall compatibility
+  # TODO: this also copies scryfall bug where {P} matches as mana symbol even though it shouldn't (it's paw symbol)
   it "regexp extensions" do
     # Short-hand for any mana symbol
     assert_search_equal 'o:/\sm/', 'o:/\{[WUBRGCXSPH0-9½∞\/]+\}/'
@@ -119,9 +120,8 @@ describe "Regexp" do
     assert_search_equal 'o:/\sc/', 'o:/\{[WUBRGP\/\d]*[WUBRG][WUBRGP\/\d]*\}/'
     # Short-hand for any card symbol
     assert_search_equal 'o:/\ss/', 'o:/\{[^\}]+\}/'
-
-    # TODO: \smr Short-hand for any repeated mana symbol. For example, {G}{G} matches \smr
-
+    # Short-hand for any repeated mana symbol. For example, {G}{G} matches \smr
+    assert_search_equal 'o:/\smr/', 'o:/(?<smr>\{[WUBRGCXSPH0-9½∞\/]+\})\k<smr>+/'
     # Short-hand for any hybrid card symbol. Note that monocolor Phyrexian symbols aren’t considered hybrid.
     assert_search_equal 'o:/\smh/', 'o:/\{(?:[WUBRGC2])\/(?:[WUBRGC])(?:\/P)?\}/'
     # Short-hand for any Phyrexian card symbol, e.g. {P}, {W/P}, or {G/W/P}.
@@ -132,5 +132,14 @@ describe "Regexp" do
     assert_search_equal 'o:/\spp/', 'o:/\+(X|\d+)\/\+(X|\d+)/'
     # Short-hand for a -X/-X power/toughness expression
     assert_search_equal 'o:/\smm/', 'o:/\-(X|\d+)\/\-(X|\d+)/'
+
+    # Check that they're properly ()ed
+    assert_search_results 'o:/\smh{6,}/',
+      "Figure of Destiny"
+    assert_search_results 'o:/\sm{10,}/',
+      "Door to Nothingness",
+      "Meeting of the Five",
+      "Ramos, Dragon Engine",
+      "The World Tree"
   end
 end
