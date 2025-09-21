@@ -60,21 +60,27 @@ sheets:
   surge_map_land:
     foil: true
     rawquery: "e:ltr number:713-722"
+    count: 10
   scene_jumpstart_rare_mythic:
     any:
     - rawquery: "e:ltc number:491-514 r:r"
       rate: 2
+      count: 20
     - rawquery: "e:ltc number:491-514 r:m"
       rate: 1
+      count: 4
     - rawquery: "e:ltr number:829-833"
       rate: 2
+      count: 5
   surge_extended_rare_mythic:
     foil: true
     any: 
     - rawquery: "e:ltr number:757-793 r:r"
       rate: 2
+      count: 28
     - rawquery: "e:ltr number:757-793 r:m"
       rate: 1
+      count: 9
   surge_booster_fun_u:
     foil: true
     rawquery: "e:ltr number:794-823 r:u"
