@@ -42,15 +42,16 @@ sheets:
     count: 101
     foil: true
   showcase_uncommon:
+    count: 84 + 9
     any:
     - query: "r:u -Nazgúl"
       rate: 9
-      count: 79
     - query: "r:u Nazgúl"
       rate: 1
       count: 9
   silver_showcase_uncommon:
     foil: true
+    count: 84 + 9 + 10 # also surge foils
     use: showcase_uncommon
   showcase_rare_mythic:
     use: rare_mythic
