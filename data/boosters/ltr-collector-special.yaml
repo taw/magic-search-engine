@@ -36,27 +36,27 @@ pack:
 sheets:
   showcase_common:
     query: "r:c"
+    count: 101
   silver_showcase_common:
-    query: "r:c"
+    use: showcase_common
+    count: 101
     foil: true
   showcase_uncommon:
     any:
     - query: "r:u -Nazgúl"
       rate: 9
+      count: 79
     - query: "r:u Nazgúl"
       rate: 1
+      count: 79
   silver_showcase_uncommon:
     foil: true
-    any:
-    - query: "r:u -Nazgúl"
-      rate: 9
-    - query: "r:u Nazgúl"
-      rate: 1
+    use: showcase_uncommon
   showcase_rare_mythic:
     use: rare_mythic
   silver_showcase_rare_mythic:
     foil: true
-    use: rare_mythic
+    use: showcase_rare_mythic
   surge_map_land:
     foil: true
     rawquery: "e:ltr number:713-722"
