@@ -322,7 +322,7 @@ describe "Card nicknames" do
       "Savage Lands",
       "Seaside Citadel"
     assert_search_equal "is:triland",
-      't:land o:/\{T\}: Add \{.\}, \{.\}, or \{.\}/ -o:sacrifice o:tapped -o:cycling -(The Magical City, New) -o:graveyard'
+      't:land o:/\{T\}: Add \{.\}, \{.\}, or \{.\}/ -o:sacrifice o:tapped -o:cycling -(The Magical City, New) -(Urban Retreat) -o:graveyard'
   end
 
   it "is:triome" do
