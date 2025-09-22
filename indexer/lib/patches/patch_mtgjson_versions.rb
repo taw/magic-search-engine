@@ -358,11 +358,6 @@ class PatchMtgjsonVersions < Patch
       end
     end
 
-    # It's a reversible token not a card, so it shouldn't be in card data
-    delete_printing_if do |card|
-      card["name"] == "Mechtitan"
-    end
-
     # spoiler set with some bad cards, remove this before release
     delete_printing_if do |card|
       # if card["name"] == "Claim Territory"
