@@ -89,6 +89,8 @@ class PatchSetTypes < Patch
         set_types << "spellbook" << "box"
       when "clu"
         set_types << "box" << "booster"
+      when /\Aom[b1-9]\z/
+        set_types = ["alchemy"] # not quite but close enough
       end
 
       # Some of these are not actually funny sets, just promo sets mixing funny and regular cards (like plst)
