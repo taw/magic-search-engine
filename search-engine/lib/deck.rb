@@ -108,6 +108,15 @@ class Deck
     @sections.values.flat_map{|sc| sc.map{|_,card| card.set_code}}.to_set
   end
 
+  def all_token_set_codes
+    @tokens.map{|tok| tok[2].downcase }.to_set
+  end
+
+  # for export
+  def source_set_codes
+    (all_set_codes | all_token_set_codes).sort
+  end
+
   def all_cards
     @sections.values.flatten(1)
   end
