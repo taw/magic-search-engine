@@ -19,13 +19,15 @@ class FormatVintage < Format
       30a
       aa1
       aa2
+      aa3
+      aa4
       ana
       anb
       hbg
       j21
       oana
       om1
-      omn
+      omb
       past
       pio
       pmic
