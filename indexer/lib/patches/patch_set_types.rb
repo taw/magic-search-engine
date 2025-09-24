@@ -13,6 +13,7 @@ class PatchSetTypes < Patch
       # questionable all over
       main_set_type = "box" if set_code == "aa1"
       main_set_type = "box" if set_code == "aa2"
+      main_set_type = "alchemy" if set_code =~ /\Aom[b1-9]\z/
 
       set_types = [main_set_type]
 
@@ -89,8 +90,6 @@ class PatchSetTypes < Patch
         set_types << "spellbook" << "box"
       when "clu"
         set_types << "box" << "booster"
-      when /\Aom[b1-9]\z/
-        set_types = ["alchemy"] # not quite but close enough
       end
 
       # Some of these are not actually funny sets, just promo sets mixing funny and regular cards (like plst)
