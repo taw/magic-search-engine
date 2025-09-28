@@ -9,11 +9,13 @@ class PatchSetTypes < Patch
 
       main_set_type = set.delete("type").tr("_", " ")
 
-      main_set_type = "alchemy" if set_code == "ymkm" # mtgjson bug
-      # questionable all over
+      # These overrides are very questionable
       main_set_type = "box" if set_code == "aa1"
       main_set_type = "box" if set_code == "aa2"
       main_set_type = "alchemy" if set_code =~ /\Aom[b1-9]\z/
+
+      # Only legal in Commander, Legacy, and Vintage
+      main_set_type = "eternal" if set_code == "mar" or set_code == "spe"
 
       set_types = [main_set_type]
 
@@ -135,7 +137,14 @@ class PatchSetTypes < Patch
       end
 
       # Mostly there to drive specs
-      set_types << "preview" if set["partial_preview"]
+      if set["partial_preview"]
+        # if it's already released, clear the flag and accept the consequences
+        # mtgjson is sometimes slow to clear this flag
+        # We could even add a buffer here so we do format rotation in good time
+        if Date.parse(set["release_date"]) > Date.today
+          set_types << "preview"
+        end
+      end
 
       set["types"] = set_types.sort.uniq
     end

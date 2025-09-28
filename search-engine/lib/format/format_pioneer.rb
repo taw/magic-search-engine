@@ -49,6 +49,7 @@ class FormatPioneer < Format
       "tdm",
       "fin",
       "eoe",
+      "spm",
     ]
   end
 end

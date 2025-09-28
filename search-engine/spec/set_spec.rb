@@ -16,6 +16,7 @@ describe "Sets" do
       "draft innovation",
       "duel deck",
       "duels",
+      "eternal",
       "expansion",
       "fixed",
       "fnm",
