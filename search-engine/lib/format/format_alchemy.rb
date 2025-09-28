@@ -12,6 +12,17 @@ class FormatAlchemy < FormatStandard
   # This is such a mess, I can't find historical data anywhere
   def rotation_schedule
     {
+      "2025-08-01" => [ # rotation on EOE release
+        "anb",
+        "blb", "yblb",
+        "dsk", "ydsk",
+        "fdn", # will likely have unusual rotation matching Standard
+        "dft", "ydft",
+        "tdm", "ytdm",
+        "fin",
+        "eoe", "yeoe",
+        "spm",
+      ],
       "2024-08-02" => [ # rotation on BLB release?
         "anb",
         "woe", "ywoe",

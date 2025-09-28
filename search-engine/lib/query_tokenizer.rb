@@ -347,6 +347,7 @@ class QueryTokenizer
           "deck",
           "duel deck",
           "duels",
+          "eternal",
           "ex",
           "expansion",
           "fixed",

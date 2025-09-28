@@ -89,6 +89,7 @@ describe Deck do
       ["sdcc", "San Diego Comic Con Promos"],
       ["core", "MTGO Redemption"],
       ["expansion", "MTGO Redemption"],
+      ["eternal", "Box Set"],
     ]
 
     db.sets.each do |set_code, set|
