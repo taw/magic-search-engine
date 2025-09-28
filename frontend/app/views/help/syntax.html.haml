@@ -265,7 +265,7 @@
 
     %h4 Search by set type
     %div Set type includes both individual types of sets (like expansions, core sets, or duel decks) and broader categories (booster sets, multiplayer sets.)
-    %div All values are #{$CardDatabase.set_types.sort.map{|st| "<code>#{st}</code>" }.join(", ").html_safe}"
+    %div All values are #{$CardDatabase.set_types.sort.map{|st| "<code>#{st}</code>" }.join(", ").html_safe}
     %ul
       = search_help "st:archenemy", "Archenemy sets"
       = search_help "st:booster", "All sets sold in booster packs"
