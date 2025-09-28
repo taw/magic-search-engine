@@ -155,6 +155,10 @@ class CardDatabase
     @frame_effects ||= printings.flat_map(&:frame_effects).uniq.compact.to_set
   end
 
+  def set_types
+    @set_types ||= sets.values.flat_map(&:types).uniq.compact.to_set
+  end
+
   # CardPrinting.in_boosters is only available from this point
   def initialize_booster_flag
     @supported_booster_types.each_value do |booster|
