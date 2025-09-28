@@ -33,6 +33,8 @@ class FormatVintage < Format
       pmic
       prm
       psdg
+      ren
+      rin
       sir
       sis
       tafr
