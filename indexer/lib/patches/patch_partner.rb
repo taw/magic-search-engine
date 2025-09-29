@@ -14,7 +14,7 @@ class PatchPartner < Patch
       elsif text =~ /\bPartner with itself/
         card["is_partner"] = true
         card["partner"] = card["number"]
-      elsif text =~ /\bPartner with Knight/
+      elsif text =~ /\bPartner with Knight|\bPartner—\S+/
         card["is_partner"] = true
       elsif text =~ /\bPartner with ([^\n\(]*)/
         card["is_partner"] = true
