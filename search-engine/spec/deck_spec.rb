@@ -74,6 +74,7 @@ describe Deck do
       ["standard", "Historic Brawl Precon Deck"],
       ["shandalar", "Shandalar Enemy Deck"], # assigned to PAST, as there's no Shandalar set
       ["core", "Jumpstart"], # FDN
+      ["portal", "Demo Deck"],
       # Non-decks, this needs to be sorted out at some point
       ["box", "Box"],
       ["sld", "Secret Lair Drop"],
