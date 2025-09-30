@@ -559,4 +559,14 @@ BanList.for_format("duel commander") do
     "Force of Will" => "banned",
     "Underworld Breach" => "banned",
   )
+
+  change(
+    "2025-09-29",
+    "https://www.mtgdc.info/announcements/2025/september-29-2025",
+    "Asmoranomardicadaistinaculdacar" => "legal",
+    "Baral, Chief of Compliance" => "legal",
+    "Esior, Wardwing Familiar" => "legal",
+    "Rofellos, Llanowar Emissary" => "legal",
+    "Loyal Retainers" => "legal",
+  )
 end
