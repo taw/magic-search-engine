@@ -606,6 +606,8 @@ class Card
     "Undying Vengeance",
     "Unreliable Visions",
     "Venom Blast",
+    # SLD
+    "Distract the Horde",
   ].sort
   ABILITY_WORD_RX = %r[(?<=^|— )(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 
