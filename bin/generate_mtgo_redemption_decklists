@@ -7,6 +7,12 @@ require "pry"
 DECKS_ROOT = Pathname("#{ENV['HOME']}/github/magic-preconstructed-decks")
 DB = CardDatabase.load
 
+# Many of the dates are likely bad, but it's not a huge deal
+KNOWN_NOT_REDEEMABLE = [
+  "fdn", # https://www.mtgo.com/news/foundations-on-mtgo
+  "fin", # https://www.mtgo.com/news/final-fantasy-on-mtgo
+]
+
 class GenerateSetRedemptionDecklists
   def regular_path
     DECKS_ROOT + "data/redemption/#{set.code}/#{set.name} Redemption.txt"
@@ -74,10 +80,9 @@ class GenerateSetRedemptionDecklists
     "#{set.name} Foil Redemption"
   end
 
-  def call
+  def generate_regular
     if @numbers
       warn "#{@set_code} Wrong number of regular cards, expected #{@card_count} (#{@numbers}), got #{regular_cards.size}" if regular_cards.size != @card_count
-      warn "#{@set_code} Wrong number of foil cards, expected #{@card_count} (#{@numbers}), got #{foil_cards.size}" if foil_cards.size != @card_count
     end
 
     regular_path.parent.mkpath
@@ -89,6 +94,12 @@ class GenerateSetRedemptionDecklists
         fh.puts "1 #{card.name} [#{set.code.upcase}:#{card.number}]"
       end
     end
+  end
+
+  def generate_foil
+    if @numbers
+      warn "#{@set_code} Wrong number of foil cards, expected #{@card_count} (#{@numbers}), got #{foil_cards.size}" if foil_cards.size != @card_count
+    end
 
     foil_path.open("w") do |fh|
       fh.puts "// NAME: #{foil_name}"
@@ -97,6 +108,15 @@ class GenerateSetRedemptionDecklists
       foil_cards.each do |card|
         fh.puts "1 #{card.name} [#{set.code.upcase}:#{card.number}] [foil]"
       end
+    end
+  end
+
+  def call
+    generate_regular
+    # The End of Foil Redemption Sets, starting with Bloomburrow
+    # https://www.mtgo.com/news/mtgo-eofr-0302024
+    if @date < Date.parse("2024-08-02")
+      generate_foil
     end
   end
 end
@@ -115,6 +135,15 @@ class GenerateMtgoRedemptionDecklists
     )
   end
 
+  def warn_about_missing_redemptions
+    redeemable = set_data.map{|row| row[:code].downcase }
+    std_sets = DB.sets.values.select{|set| set.release_date >= Date.parse("2000-10-02") and set.types.include?("standard") }.map(&:code)
+    should_be_redeemable = std_sets - redeemable - KNOWN_NOT_REDEEMABLE
+    unless should_be_redeemable.empty?
+      warn "These sets should probably be redemable on MTGO: #{should_be_redeemable.join(" ")}"
+    end
+  end
+
   def call
     set_data.each do |row|
       GenerateSetRedemptionDecklists.new(
@@ -122,9 +151,12 @@ class GenerateMtgoRedemptionDecklists
         set_code: row[:code].downcase,
         query: row[:query],
         card_count: row[:card_count],
+        # source_url: row[:source],
         source: row[:query] ? "database query with #{row[:query]}" : "default database query"
       ).call
     end
+
+    warn_about_missing_redemptions
   end
 end
 
