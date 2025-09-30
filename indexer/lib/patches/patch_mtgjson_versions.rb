@@ -147,9 +147,13 @@ class PatchMtgjsonVersions < Patch
             card["text"] = "Search your library for up to two basic Forest cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle. (Also shuffle this card.)"
           else
             warn "Can't handle reversible card #{card["name"]} #{card["names"]} #{card["set"]["official_code"]} #{card["number"]}"
+            card["layout"] = "normal"
+            card.delete "names"
           end
         else
           warn "Can't handle reversible card #{card["name"]} #{card["names"]} #{card["set"]["official_code"]} #{card["number"]}"
+          card["layout"] = "normal"
+          card.delete "names"
         end
       end
 

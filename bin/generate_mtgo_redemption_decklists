@@ -14,12 +14,17 @@ KNOWN_NOT_REDEEMABLE = [
 ]
 
 class GenerateSetRedemptionDecklists
+  # : is not a legal character on Windows, so do this for compatibility
+  def set_name_path
+    set.name.gsub(":", "-")
+  end
+
   def regular_path
-    DECKS_ROOT + "data/redemption/#{set.code}/#{set.name} Redemption.txt"
+    DECKS_ROOT + "data/redemption/#{set.code}/#{set_name_path} Redemption.txt"
   end
 
   def foil_path
-    DECKS_ROOT + "data/redemption/#{set.code}/#{set.name} Foil Redemption.txt"
+    DECKS_ROOT + "data/redemption/#{set.code}/#{set_name_path} Foil Redemption.txt"
   end
 
   def initialize(source: nil, numbers: nil, date: nil, set_code:, query: nil, card_count: nil)
