@@ -28,7 +28,7 @@ sheets:
       rate: 1
   legendary:
     any:
-    # Not sure what's the rate, 4:2:1 is likely incorrect
+    # Not sure what's the rate, this is likely incorrect
     - query: "t:legendary r:u"
       count: 40
       rate: 4
@@ -37,6 +37,9 @@ sheets:
       rate: 2
     - query: "t:legendary r:m"
       count: 5
+      rate: 1
+    - rawquery: "e:cmr is:borderless"
+      count: 2
       rate: 1
   dedicated_foil:
     foil: true
@@ -50,10 +53,10 @@ sheets:
       chance: 13
   etched_foil:
     foil: true
-    filter: "e:cmr is:etched"
+    filter: "e:cmr (is:etched or is:borderless)"
     any:
     - use: base_1248_by_rarity
       chance: 245
     - rawquery: "e:cmr number:546"
       chance: 1
-    count: 101
+    count: 103

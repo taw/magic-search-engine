@@ -42,18 +42,17 @@ sheets:
     count: 101
     foil: true
   showcase_uncommon:
-    count: 84 + 9
+    count: 79 + 9
     any:
-    - query: "r:u -Nazgúl"
+    - query: "r:u is:scroll -Nazgúl"
       rate: 9
-    - query: "r:u Nazgúl"
+    - query: "r:u is:scroll Nazgúl"
       rate: 1
       count: 9
   silver_showcase_uncommon:
     foil: true
-    filter: "e:{set} -is:silverfoil"
-    count: 84 + 9
     use: showcase_uncommon
+    count: 79 + 9
   showcase_rare_mythic:
     use: rare_mythic
   silver_showcase_rare_mythic:
