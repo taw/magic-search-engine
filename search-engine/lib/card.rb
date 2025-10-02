@@ -608,6 +608,7 @@ class Card
     "Venom Blast",
     # SLD
     "Distract the Horde",
+    "No Mercy",
   ].sort
   ABILITY_WORD_RX = %r[(?<=^|— )(#{Regexp.union(ABILITY_WORD_LIST)}) —]i
 
