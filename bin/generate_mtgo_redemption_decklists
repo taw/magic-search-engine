@@ -32,7 +32,7 @@ class GenerateSetRedemptionDecklists
     @source = source
     @numbers = numbers
     @numbers = 1..set.base_set_size if @numbers.nil?
-    @date = date || set.release_date
+    @date = date || set.release_date + 30
     @query = query
     @card_count = card_count || @numbers.size
   end
