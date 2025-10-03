@@ -28,6 +28,7 @@ describe "Arena and MTGO Boosters" do
   end
 
   it "No reversibleback cards are in boosters" do
-    assert_search_results "is:booster is:reversibleback"
+    # ... except in TDM
+    assert_search_results "is:booster is:reversibleback -e:tdm"
   end
 end
