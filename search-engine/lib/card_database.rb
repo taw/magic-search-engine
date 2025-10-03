@@ -159,6 +159,10 @@ class CardDatabase
     @set_types ||= sets.values.flat_map(&:types).uniq.compact.to_set
   end
 
+  def token_set_code_to_set_code
+    @token_set_code_to_set_code ||= sets.values.select(&:token_set_code).to_h{|set| [set.token_set_code, set.code] }
+  end
+
   # CardPrinting.in_boosters is only available from this point
   def initialize_booster_flag
     @supported_booster_types.each_value do |booster|

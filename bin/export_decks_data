@@ -68,6 +68,10 @@ class ExportDecksData
     }.compact
   end
 
+  def deck_source_set_codes(deck)
+    (deck.all_set_codes | deck.all_token_set_codes.map{|code| @db.token_set_code_to_set_code.fetch(code) }).sort
+  end
+
   def call(output_path)
     exported_data = []
     @db.decks.each do |deck|
@@ -87,7 +91,7 @@ class ExportDecksData
         schemeDeck: deck.section("Scheme Deck").map{|n,c| export_card(n, c) },
         tokens: deck.tokens.map{|c| export_token(*c) },
         languages: Array(deck.languages),
-        sourceSetCodes: deck.source_set_codes,
+        sourceSetCodes: deck_source_set_codes(deck),
       }
     end
     open(output_path, "w") do |fh|
