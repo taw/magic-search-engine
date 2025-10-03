@@ -11,6 +11,7 @@ DB = CardDatabase.load
 KNOWN_NOT_REDEEMABLE = [
   "fdn", # https://www.mtgo.com/news/foundations-on-mtgo
   "fin", # https://www.mtgo.com/news/final-fantasy-on-mtgo
+  "big", # https://old.reddit.com/r/MTGO/comments/1c0oaty/will_the_big_score_be_redeemable/ (reddit comment by Daybreak Games employee Squiddy683)
 ]
 
 class GenerateSetRedemptionDecklists
@@ -150,14 +151,16 @@ class GenerateMtgoRedemptionDecklists
   end
 
   def call
+    # Name column is just for our convenient, we always use set name from db
     set_data.each do |row|
+      source = row[:query] ? "database query with #{row[:query]}" : "default database query"
+      source += "; #{row[:source]}" if row[:source]
       GenerateSetRedemptionDecklists.new(
         date: row[:date],
         set_code: row[:code].downcase,
         query: row[:query],
         card_count: row[:card_count],
-        # source_url: row[:source],
-        source: row[:query] ? "database query with #{row[:query]}" : "default database query"
+        source: source
       ).call
     end
 
