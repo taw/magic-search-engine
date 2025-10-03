@@ -12,6 +12,11 @@ KNOWN_NOT_REDEEMABLE = [
   "fdn", # https://www.mtgo.com/news/foundations-on-mtgo
   "fin", # https://www.mtgo.com/news/final-fantasy-on-mtgo
   "big", # https://old.reddit.com/r/MTGO/comments/1c0oaty/will_the_big_score_be_redeemable/ (reddit comment by Daybreak Games employee Squiddy683)
+  "mat", # https://old.reddit.com/r/magicTCG/comments/19cawcd/march_of_the_machine_and_mom_aftermath/ (just random redditors commenting)
+  "spm", # not on MTGO
+  "w16", # it's Standard-legal supplemental product, this kind of product is not typically redeemable
+  "w17", # it's Standard-legal supplemental product, this kind of product is not typically redeemable
+  "g18", # it's Standard-legal supplemental product, this kind of product is not typically redeemable
 ]
 
 class GenerateSetRedemptionDecklists
