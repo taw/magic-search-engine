@@ -5,6 +5,7 @@ class CardSet
   attr_reader :decks, :base_set_size
   attr_reader :products, :subsets, :languages
   attr_reader :normalized_name, :normalized_name_alt
+  attr_reader :token_set_code
 
   def initialize(db, data)
     @db = db
@@ -28,6 +29,7 @@ class CardSet
     @products = (data["products"] || []).map{|x| Product.new(self, x)}
     @subsets = data["subsets"]
     @languages = data["languages"]
+    @token_set_code = data["token_set_code"]
 
     # cache for better performance of e:
     @normalized_name = normalize_set_name(@name)
