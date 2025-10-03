@@ -1,6 +1,6 @@
 class PatchABUR < Patch
   def call
-    ["lea", "leb", "2ed", "3ed"].each do |set_code|
+    ["lea", "leb", "2ed", "3ed", "sum"].each do |set_code|
       assignment = sheet_assignments[set_code]
       cards = cards_by_set[set_code]
 
@@ -81,6 +81,10 @@ class PatchABUR < Patch
 
       ["3ed-c.txt", "3ed", "C"],
       ["3ed-u.txt", "3ed", "U"],
+
+      # SUM is just a special version of 3ED (and it's questionable if we should even have it as a set)
+      ["3ed-c.txt", "sum", "C"],
+      ["3ed-u.txt", "sum", "U"],
     ]
   end
 end
