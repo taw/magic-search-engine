@@ -1,10 +1,11 @@
 class PhysicalCard
-  attr_reader :front, :back, :foil, :hash
-  def initialize(front, back, foil)
+  attr_reader :front, :back, :foil, :etched, :hash
+  def initialize(front, back, foil, etched)
     @front = front
     @back = back
     @foil = !!foil
-    @hash = [main_front, foil].hash
+    @etched = !!etched
+    @hash = [main_front, foil, etched].hash
   end
 
   def name
@@ -36,6 +37,7 @@ class PhysicalCard
       @back != [] ? "; #{back_name}}" : "",
       "; #{set_code}/#{number}",
       foil ? "; foil" : "",
+      etched ? "; etched" : "",
       "]",
     ].join
   end
@@ -131,21 +133,21 @@ class PhysicalCard
 
   include Comparable
   def <=>(other)
-    [main_front, foil ? 1 : 0] <=> [other.main_front, other.foil ? 1 : 0]
+    [main_front, foil ? 1 : 0] <=> [other.main_front, other.foil ? 1 : 0, other.etched ? 1 : 0]
   end
 
-  def self.for(card, foil=false)
+  def self.for(card, foil=false, etched=false)
     # meld really doesn't fit this model, as we have one CardPrinting that's on two physical card backs
     # just fake something that works
     if card.back? and card.layout == "meld"
-      self.for(card.others[0], foil)
+      self.for(card.others[0], foil, etched)
     elsif !card.has_multiple_parts? or card.name == "B.F.M. (Big Furry Monster)" or card.name == "B.F.M. (Big Furry Monster, Right Side)"
-      PhysicalCard.new([card], [], foil)
+      PhysicalCard.new([card], [], foil, etched)
     else
       front_parts, back_parts = [card, *card.others].partition(&:front?)
       front_parts = front_parts.sort_by(&:number)
       back_parts = back_parts.sort_by(&:number)
-      PhysicalCard.new(front_parts, back_parts, foil)
+      PhysicalCard.new(front_parts, back_parts, foil, etched)
     end
   end
 end
