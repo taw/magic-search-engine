@@ -13,6 +13,7 @@ class ExportDecksData
     output << card.name
     output << "[#{card.set_code}:#{card.number}]"
     output << "[foil]" if card.foil
+    output << "[etched]" if card.etched
     output.join(" ")
   end
 
