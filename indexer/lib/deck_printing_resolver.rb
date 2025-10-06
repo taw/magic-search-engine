@@ -51,6 +51,10 @@ class DeckPrintingResolver
     @card["name"]
   end
 
+  def etched
+    @card["etched"]
+  end
+
   def set_search_list
     SetSearchList[deck_set_code]
   end
@@ -252,6 +256,7 @@ class DeckPrintingResolver
     else
       foil_res = []
     end
+    foil_res += ["etched"] if etched
     [count, printing_card["set_code"], printing_card["number"]] + foil_res
   end
 
