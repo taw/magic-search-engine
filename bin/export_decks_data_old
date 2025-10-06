@@ -51,6 +51,7 @@ class ExportDecksData
       set_code: c.set_code,
       number: c.number,
       foil: c.foil,
+      etched: c.etched ? true : nil,
       count: n,
       multiverseid: c.main_front.multiverseid,
       mtgjson_uuid: uuid_for(c.set_code, c.number),
