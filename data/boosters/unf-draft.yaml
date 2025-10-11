@@ -22,11 +22,11 @@ sheets:
     - query: "r:b number<240"
       count: 5
       chance: 3
-    - query: "r:b number>=240 number<245"
+    - query: "r:b number:240-244"
       count: 5
       chance: 1
   shock:
-    query: "number>=277 number<287"
+    query: "number:277-286"
     count: 10
   common:
     query: "r:c -t:attraction is:paper"
@@ -40,11 +40,11 @@ sheets:
       rate: 3
   rare_mythic_with_showcase:
     any:
-    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -t:attraction -t:background is:paper -t:land"
+    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -t:attraction -t:background is:paper -is:shockland"
       rate: 2
-    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background -t:land"
+    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background -is:shockland"
       rate: 4
-    - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background -t:land"
+    - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background -is:shockland"
       rate: 6
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -t:attraction -t:background is:paper"
       rate: 1
