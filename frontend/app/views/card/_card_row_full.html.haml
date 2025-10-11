@@ -80,7 +80,7 @@
   .col-6
     = render "printings_full", card: card, printings: printings_view_full(card, printings)
 
-    - if card.foreign_names
+    - if card.foreign_names.present?
       %h5 Foreign names
       %ul.foreign_names
         - card.foreign_names.sort.each do |language_code, foreign_names|
