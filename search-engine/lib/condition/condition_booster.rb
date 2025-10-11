@@ -1,5 +1,11 @@
 class ConditionBooster < Condition
-  def initialize(*codes)
+  def initialize(foiling, *codes)
+    @foiling = foiling
+    @query = {
+      "booster-foil" => :foil_cards,
+      "booster-nonfoil" => :nonfoil_cards,
+      "booster" => :cards,
+    }.fetch(foiling)
     @codes = codes
     @codes_star = @codes.include?("*")
   end
@@ -8,7 +14,7 @@ class ConditionBooster < Condition
     if @codes_star
       db.printings.select(&:in_boosters).to_set
     else
-      @codes.flat_map{|code| matching_boosters(db, code)}.uniq.flat_map(&:cards).flat_map(&:parts).to_set
+      @codes.flat_map{|code| matching_boosters(db, code)}.uniq.flat_map(&@query).flat_map(&:parts).to_set
     end
   end
 
@@ -22,6 +28,6 @@ class ConditionBooster < Condition
   end
 
   def to_s
-    "booster:#{maybe_quote(@codes.join(","))}"
+    "#{@foiling}:#{maybe_quote(@codes.join(","))}"
   end
 end
