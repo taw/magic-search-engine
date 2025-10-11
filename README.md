@@ -51,10 +51,3 @@ Whenever banned and restricted list is announced:
 
 * Update `BanlistTest` and/or `BanlistCommanderTest`
 * Update `Banlist` data
-
-### Ban lists
-
-* for official formats, wizards.com
-* Commander: http://mtgcommander.net/index.php/rules
-* MTGO Commander: https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/banned-restricted/magic-online-commander
-* Duel Commander: https://www.mtgdc.info/banned-restricted
