@@ -31,4 +31,17 @@ describe "booster:" do
     assert_search_equal "booster:mkm", "booster:mkm-play"
     assert_search_equal "booster:vma", "booster:vma-mtgo"
   end
+
+  it "supports booster-foil: and booster-nonfoil:" do
+    # everything available foil and nonfoil
+    assert_search_equal "booster-nonfoil:nph", "booster:nph"
+    assert_search_equal "booster-foil:nph", "booster:nph"
+    # there are no foils
+    assert_search_equal "booster-nonfoil:lea", "booster:lea"
+    assert_search_results "booster-foil:lea"
+    # masterpieces are foil only, the rest both ways
+    assert_search_equal "booster:akh-draft", "(e:akh is:baseset) or (e:mp2 cn:1-30)"
+    assert_search_equal "booster-nonfoil:akh-draft", "(e:akh is:baseset)"
+    assert_search_equal "booster-foil:akh-draft", "(e:akh is:baseset) or (e:mp2 cn:1-30)"
+  end
 end
