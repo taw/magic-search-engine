@@ -1,12 +1,13 @@
 /*
   Based on https://github.com/andrewgioia/Mana
   with the following changes:
-  * renamed .mana -> .mana
+  * renamed .ms -> .mana
   * renamed tap -> t
   * renamed untap -> q
   * renamed paw -> p
+  * renamed infinity -> ∞
   * added loyalty-n (for comprehensive rules)
-  * maybe these changes should be in application helper instead
+  * (maybe these changes should be in application helper instead of manually applied)
 */
 
 @font-face {
@@ -160,7 +161,7 @@
 .mana-1-2::before {
   content: "\e902";
 }
-.mana-infinity::before {
+.mana-∞::before {
   content: "\e903";
 }
 .mana-l::before {
