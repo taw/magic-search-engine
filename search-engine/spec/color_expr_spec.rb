@@ -57,6 +57,7 @@ describe "Color Expr Test" do
       "General Tazri",
       "Kenrith, the Returned King",
       "Kyodai, Soul of Kamigawa",
+      "Leonardo, the Balance",
       "Paragon of the Amesha",
       "Sisay, Weatherlight Captain",
       "Tazri, Beacon of Unity",
