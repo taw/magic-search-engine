@@ -112,7 +112,7 @@ sheets:
     foil: true
     use: non_foil_source_material
 
-  foil_boosterfun_1: # TODO: For some of these, the rates are not correct
+  foil_boosterfun_no_chase_cards: # TODO: For some of these, the rates are not correct
     any:
     - rawquery: "{extended_art} r:r" # Rare extended art
       rate: 2
@@ -145,14 +145,26 @@ sheets:
   foil_boosterfun:
     foil: true
     any:
-    - use: foil_boosterfun_1 # TODO: Find better name
+    - use: foil_boosterfun_no_chase_cards
       chance: 9895 # 54% + 5.7% + 9.8% +1.6% + 16.4% + 3.2% + 4.9% + 0.85% + 2.5% = 98.95%
     - rawquery: "{custome_change}"
-      chance: 90 # TODO: Random guess?
+      chance: 45
       count: 7
     - rawquery: "{gauntlet_soul_stone}"
-      chance: 10 # TODO: Random guess?
+      chance: 10
       count: 1
     - rawquery: "{cosmic_soul_stone}"
-      chance: 5 # TODO: Random guess?
+      chance: 1
       count: 1
+
+
+
+########## foil_boosterfun sheet:
+# The numbers for the Custome Change, Gaunlet Soul Stone and cosmic foil Soul Store are a mistery.
+# Based on information provided by Koda these are the numbers used:
+
+# 1 Costume Change card on 0.45% of boosters -> Each of the individual 7 cards appears in 0.06% of boosters.
+# 1 Gauntlet Soul Stone on 0.1% of boosters
+# 1 Cosmic Soul Stone on 0.01% of boosters
+
+# These numbers don't fully add to 100% if we combine them with the numbers provided by Wizards but it's the best guess available.
