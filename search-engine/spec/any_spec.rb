@@ -165,7 +165,7 @@ describe "Any queries" do
       assert_search_equal "any:painland", "is:painland"
       assert_search_equal "any:scryland", "is:scryland"
       assert_search_equal "any:shadowland", "is:shadowland"
-      assert_search_equal "any:shockland", "is:shockland"
+      assert_search_equal "any:shockland", "is:shockland or (May the Mana Be with You)"
       assert_search_equal "any:storageland", "is:storageland"
       assert_search_equal "any:tangoland", "is:tangoland"
       assert_search_equal "any:triland", "is:triland"

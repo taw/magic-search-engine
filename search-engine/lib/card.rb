@@ -457,9 +457,11 @@ class Card
     # "Cosplay" and "Science" are in italics on the card, but wouldn't be according to normal templating system so mtgjson corrected it
     # it's debatable either way
     "Advertising",
+    "Channelstorm",
     "Corrupted Metalcraft",
     "Fixed commander ninjutsu",
     "From Downtown",
+    "Landerfall",
     "Max Speed",
     "Mirran Victory",
     "Mono Eminence",

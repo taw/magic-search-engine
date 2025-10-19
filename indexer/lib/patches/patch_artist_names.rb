@@ -25,7 +25,7 @@ class PatchArtistNames < Patch
     # Prevent slug conflicts
     each_printing do |card|
       unless card["artist"]
-        unless card["set_code"] == "unk" or valid_no_art.include?([card["name"], card["set_code"], card["number"]])
+        unless card["set_code"] == "unk" or card["set_code"] == "punk" or valid_no_art.include?([card["name"], card["set_code"], card["number"]])
           warn "No artist for #{card["name"]} #{card["set_code"]} #{card["number"]}"
         end
         card["artist"] = "unknown"

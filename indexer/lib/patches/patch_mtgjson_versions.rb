@@ -335,6 +335,8 @@ class PatchMtgjsonVersions < Patch
         card["etched"] = true
       end
 
+      card.delete("alchemy") if card["name"] == "A-Town"
+
       # First https://github.com/mtgjson/mtgjson/issues/1094 but it keeps coming back
       # so a permanent fix here
       if card["subtypes"]&.include?("Saga") and card["layout"] == "normal"
@@ -378,7 +380,9 @@ class PatchMtgjsonVersions < Patch
   def alchemy_name_fix(name)
     return unless name
     name.split(" // ").map{|s|
-      if s =~ /\AA-(.*)/
+      # Not sure about A-Town joke card
+      # When I see it printed, I might decide if it should be A- or (Alchemy)
+      if s =~ /\AA-(.*)/ and s != "A-Town"
         "#{$1} (Alchemy)"
       else
         s

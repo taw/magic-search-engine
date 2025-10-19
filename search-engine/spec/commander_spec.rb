@@ -33,11 +33,11 @@ describe "is:commander" do
     # Why "Minsc Boo, Timeless Heroes (Alchemy)" doesnt't have "Minsc & Boo, Timeless Heroes can be your commander."? No idea
     assert_search_equal_cards "is:commander (is:primary t:legendary t:creature)", "is:primary t:legendary, t:creature"
     assert_search_equal_cards "is:commander -(is:primary t:legendary t:creature)",
-      "(is:primary t:legendary t:vehicle) OR (is:primary t:legendary t:spacecraft tou>0) OR (t:planeswalker e:c14,c18,bbd,cmr,dmc) OR (t:saga e:htr18) OR (Grand Calcutron) OR (Grist Hunger Tide) OR (Shorikai, Genesis Engine) OR (Tasha, the Witch Queen) OR (Minsc Boo, Timeless Heroes -is:alchemy) OR (Elminster t:planeswalker) OR (Byode, Inverse Sun) OR (Ersta, Friend to All) OR (The Legend of Arena) OR (Commodore Guff) OR (Heroes of Kamigawa) or (Svega, the Unconventional) or (Wizard from Beyond) OR (The Vegetable Car)"
+      "(is:primary t:legendary t:vehicle) OR (is:primary t:legendary t:spacecraft tou>0) OR (t:planeswalker e:c14,c18,bbd,cmr,dmc) OR (t:saga e:htr18) OR (Grand Calcutron) OR (Grist Hunger Tide) OR (Shorikai, Genesis Engine) OR (Tasha, the Witch Queen) OR (Minsc Boo, Timeless Heroes -is:alchemy) OR (Elminster t:planeswalker) OR (Byode, Inverse Sun) OR (Ersta, Friend to All) OR (The Legend of Arena) OR (Commodore Guff) OR (Heroes of Kamigawa) or (Svega, the Unconventional) or (Wizard from Beyond) OR (The Vegetable Car) OR (The Waffle Restaurant)"
   end
 
   it "is:brawler" do
-    assert_search_equal_cards "is:brawler", "(is:primary t:legendary t:creature) OR (is:primary t:legendary t:spacecraft tou>0) OR (is:primary t:legendary t:vehicle) OR (is:primary t:legendary t:planeswalker) OR (t:saga e:htr18) OR (Grand Calcutron) OR (Shorikai, Genesis Engine) OR (Byode, Inverse Sun) OR (The Legend of Arena) or (Wizard from Beyond) OR (The Vegetable Car)"
+    assert_search_equal_cards "is:brawler", "(is:primary t:legendary t:creature) OR (is:primary t:legendary t:spacecraft tou>0) OR (is:primary t:legendary t:vehicle) OR (is:primary t:legendary t:planeswalker) OR (t:saga e:htr18) OR (Grand Calcutron) OR (Shorikai, Genesis Engine) OR (Byode, Inverse Sun) OR (The Legend of Arena) or (Wizard from Beyond) OR (The Vegetable Car) OR (The Waffle Restaurant)"
   end
 
   it "Grist" do
