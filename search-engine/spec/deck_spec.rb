@@ -33,8 +33,8 @@ describe Deck do
       ["expansion", "Advanced Deck"],
       ["expansion", "Enhanced Deck"],
       ["core", "Advanced Pack"],
-      ["expansion", "Basic Deck"],
       ["expansion", "Clash Pack"],
+      ["expansion", "Basic Deck"],
       ["expansion", "Event Deck"],
       ["expansion", "Intro Pack"],
       ["expansion", "MTGO Theme Deck"],
@@ -51,8 +51,10 @@ describe Deck do
       ["starter", "Welcome Booster"],
       ["expansion", "Challenger Deck"],
       ["core", "Challenger Deck"],
-      ["box", "MTGO Theme Deck"], # MTGO
-      ["box", "Commander Deck"], # MTGO
+      ["box", "MTGO Theme Deck"],
+      ["box", "MTGO Commander Deck"],
+      ["sld", "Commander Deck"],
+      ["duel deck", "MTGO Duel Deck"],
       ["core", "Spellslinger Starter Kit"],
       ["modern", "Modern Event Deck"],
       ["funny", "Halfdeck"],
@@ -372,7 +374,7 @@ describe Deck do
   it "Commander decks have valid commander" do
     db.decks.each do |deck|
       case deck.type
-      when "Commander Deck"
+      when "Commander Deck", "MTGO Commander Deck"
         deck.should be_valid_commander
         # Brawler is superset of commander, so even though none of theme are Brawl decks, give it a go
         deck.should be_valid_brawler
