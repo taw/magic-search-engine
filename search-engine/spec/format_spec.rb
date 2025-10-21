@@ -254,7 +254,10 @@ describe "Formats" do
 
   # We don't keep historical legality for Petty Dreadful yet
   it "penny dreadful" do
-    assert_search_include 'f:"penny dreadful"', *FormatPennyDreadful::PrimaryCards
+    flavor_name_to_name = db.printings.select(&:flavor_name).to_h{|c| [c.flavor_name, c.name]}
+    expected_penny_dreadful_cards = FormatPennyDreadful::PrimaryCards.map{|cn| flavor_name_to_name[cn] || cn}.to_set
+
+    assert_search_include 'f:"penny dreadful"', *expected_penny_dreadful_cards
     # If card is in Penny Dreadful, its other side is as well
     # (except for meld cards)
     assert_search_results "f:pd other:-f:pd -is:meld"

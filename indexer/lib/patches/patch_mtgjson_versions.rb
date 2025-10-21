@@ -289,6 +289,17 @@ class PatchMtgjsonVersions < Patch
         card["flavor"] = card["flavor"].delete("*")
       end
 
+      # for some reason mtgjson started usnig these fields for foreign names, which makes NO SENSE WHATSOEVER
+      if card["printedName"] or card["facePrintedName"]
+        if card["language"] == "English"
+          # OK
+        else
+          # Garbage
+          card.delete("facePrintedName")
+          card.delete("printedName")
+        end
+      end
+
       card["flavor_name"] = card.delete("faceFlavorName") || card.delete("flavorName") || card.delete("facePrintedName") || card.delete("printedName")
 
       if card["rulings"]
