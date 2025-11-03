@@ -15,12 +15,12 @@ class CardSetsData
     .to_h
   end
 
-  def sets_path
-    Indexer::ROOT + "sets"
+  def sets_root
+    Indexer::SETS_ROOT
   end
 
   def set_paths
-    @set_paths ||= sets_path.glob("*.json").sort_by{|x| x.to_s.downcase}
+    @set_paths ||= sets_root.glob("*.json").sort_by{|x| x.to_s.downcase}
   end
 
   def each_set(&block)

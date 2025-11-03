@@ -18,8 +18,9 @@ require_relative "patches/patch"
 Dir["#{__dir__}/patches/*.rb"].each do |path| require_relative path end
 
 class Indexer
-  ROOT = Pathname(__dir__).parent.parent + "data"
-  INDEX_ROOT = Pathname(__dir__).parent.parent + "index"
+  ROOT = Pathname(__dir__) + "../../data"
+  SETS_ROOT = Pathname(__dir__) + "../../../magic-search-engine-data/data/sets"
+  INDEX_ROOT = Pathname(__dir__) + "../../index"
 
   # In verbose mode we validate each patch to make sure it actually does something
   def initialize(verbose=false)
@@ -34,6 +35,11 @@ class Indexer
   end
 
   def call
+    unless SETS_ROOT.exist?
+      warn "Could not find sets data, expected at #{SETS_ROOT}"
+      exit 1
+    end
+
     @save_path.parent.mkpath
     load_database
     load_decks
