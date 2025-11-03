@@ -5,7 +5,12 @@ describe "Opening packs smoke test" do
 
   it "Opening packs should return something" do
     db.supported_booster_types.each do |code, pack|
-      cards = pack.open
+      begin
+        cards = pack.open
+      rescue
+        warn "Error opening pack #{code}: #{$!}"
+        raise
+      end
       cards.should be_a(Array)
       cards.each do |card|
         card.should be_a(PhysicalCard)
