@@ -88,6 +88,52 @@ class PatchMtgjsonVersions < Patch
       end
     end
 
+    # https://github.com/mtgjson/mtgjson/issues/1335
+    each_printing do |card|
+      case card["name"]
+      when "Ishgard, the Holy See"
+        card.delete "manaCost"
+        card.delete "colors"
+        card["faceConvertedManaCost"] = 0
+      when "Faith & Grief"
+        card["manaCost"] = "{3}{W}{W}"
+        card["faceConvertedManaCost"] = 5
+        card["colors"] = ["W"]
+      when "Jidoor, Aristocratic Capital"
+        card.delete "manaCost"
+        card.delete "colors"
+        card["faceConvertedManaCost"] = 0
+      when "Overture"
+        card["manaCost"] = "{4}{U}{U}"
+        card["faceConvertedManaCost"] = 6
+        card["colors"] = ["U"]
+      when "Midgar, City of Mako"
+        card.delete "manaCost"
+        card.delete "colors"
+        card["faceConvertedManaCost"] = 0
+      when "Reactor Raid"
+        card["manaCost"] = "{2}{B}"
+        card["faceConvertedManaCost"] = 3
+        card["colors"] = ["B"]
+      when "Lindblum, Industrial Regency"
+        card.delete "manaCost"
+        card.delete "colors"
+        card["faceConvertedManaCost"] = 0
+      when "Mage Siege"
+        card["manaCost"] = "{2}{R}"
+        card["faceConvertedManaCost"] = 3
+        card["colors"] = ["R"]
+      when "Zanarkand, Ancient Metropolis"
+        card.delete "manaCost"
+        card.delete "colors"
+        card["faceConvertedManaCost"] = 0
+      when "Lasting Fayth"
+        card["manaCost"] = "{4}{G}{G}"
+        card["faceConvertedManaCost"] = 6
+        card["colors"] = ["G"]
+      end
+    end
+
     each_printing do |card|
       card["cmc"] = get_cmc(card)
 
@@ -188,14 +234,13 @@ class PatchMtgjsonVersions < Patch
       end
 
       # This conflicts with isTextless in annoying ways
-      if card["frame_effects"]
-        card["frame_effects"].delete("textless")
-      end
+      card["frame_effects"]&.delete("textless")
 
       # It's randomly added to Mount Doom, likely as a mistake
-      if card["frame_effects"]
-        card["frame_effects"].delete("boosterfun")
-      end
+      card["frame_effects"]&.delete("boosterfun")
+
+      # typo, they'll fix it eventually
+      card["frame_effects"]&.delete("ivnerted")
 
       # This is not quite set-based as there are Arena-specific fixed art cards
       # We used to have set-based logic, but it has no way of finding cards like znr/288†b

@@ -6,7 +6,7 @@ require "json"
 require "pry"
 
 class SplitMtgjson
-  SETS_DIR = Pathname(__dir__) + "../../data/sets"
+  SETS_DIR = Pathname(__dir__) + "../../../magic-search-engine-data/data/sets"
 
   def initialize(path, output_dir=SETS_DIR)
     @data = JSON.parse(open(path).read)

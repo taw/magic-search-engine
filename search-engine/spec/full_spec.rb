@@ -90,8 +90,10 @@ describe "Full Database Test" do
       "Blackbloom Rogue",
       "Boggart Bog",
       "Boggart Trawler",
+      "Midgar, City of Mako",
       "Pelakka Caverns",
-      "Pelakka Predation"
+      "Pelakka Predation",
+      "Reactor Raid"
   end
 
   it "color identity" do
