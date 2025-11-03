@@ -1,0 +1,18 @@
+version: v1.0
+name: Ruby
+agent:
+  machine:
+    type: f1-standard-2
+    os_image: ubuntu2204
+blocks:
+  - name: bundle exec rspec
+    task:
+      jobs:
+        - name: bundle install
+          commands:
+            - checkout
+            - sem-version ruby 3.3.9
+            - (cd search-engine; bundle install)
+            - (cd frontend; bundle install)
+            - (cd search-engine; bundle exec rspec)
+            - (cd frontend; bundle exec rspec)
