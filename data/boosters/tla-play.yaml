@@ -1,0 +1,190 @@
+# Magic: The Gathering | Avatar: The Last Airbender
+# Play Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-avatar-the-last-airbender
+# - https://magic.wizards.com/en/products/marvel/spider-man/card-image-gallery
+# - https://scryfall.com/sets/tla
+# - https://scryfall.com/sets/tle
+
+
+pack:
+  common_source:
+    - common: 7
+      chance: 25
+    - common: 6
+      source_material: 1
+      chance: 1
+  uncommon_scene: 3
+  wildcard: 1
+  rare_mythic_boosterfun: 1
+  foil: 1
+  land:
+    - non_foil_land: 1
+      chance: 80
+    - foil_land: 1
+      chance: 20
+
+
+queries:
+  # TODO: Double check all numbers
+
+  dual_land: "e:{set} number:1-100" # TODO: FIX numbers
+  basic_land: "e:{set} number:282-286"
+  appa_land: "e:{set} number:287-291"
+  journey_land: "e:{set} number:292-296"
+  scene: "e:{set} number:297-315"
+  field_notes: "e:{set} number:316-330"
+  battle_pose: "e:{set} number:331-335"
+  elemental_frame: "e:{set} number:336-353"
+  double_faced_saga: "e:{set} number:354-358"
+  neon_ink_battle_pose: "e:{set} number:359-362"
+  raised_foil_avatar: "e:{set} number:363"
+  extended_art: "e:{set} number:364-392"
+
+  source_material: "e:TLE number:1-61"
+  tle_scene_box: "e:TLE number:62-73"
+
+
+sheets:
+  common:
+    query: "r:c -{dual_land}" # Regular common, no dual lands
+    # count: 81
+
+  uncommon_scene:
+    any:
+      - use: uncommon
+        rate: 1
+        count: 110
+      - rawquery: "{scene} r:u" # Uncommon scene
+        rate: 1
+        # count: 4
+
+  boosterfun:
+    any:
+    - rawquery: "{scene} r:u" # Uncommon scene
+      rate: 6 # Assumes an uncommon scene is 3 times more common than a rare one
+      # count: 4
+    - rawquery: "{scene} r:r" # Rare scene
+      rate: 2
+      # count: ?
+    - rawquery: "{scene} r:m" # Mythic scene
+      rate: 1
+      # count: ?
+    - rawquery: "{field_notes} r:r" # Rare field notes
+      rate: 2
+      # count: 8
+    - rawquery: "{field_notes} r:m" # Mythic field notes
+      rate: 1
+      # count: 7
+    - rawquery: "{battle_pose} r:r" # Rare battle pose
+      rate: 2
+      # count: ?
+    - rawquery: "{battle_pose} r:m" # Mythic battle pose
+      rate: 1
+      # count: 
+    - rawquery: "{elemental_frame} r:r" # Rare elemental frame
+      rate: 2
+      # count: 15
+    - rawquery: "{elemental_frame} r:m" # Mythic elemental frame
+      rate: 1
+      # count: 5
+    - rawquery: "{double_faced_saga} r:u" # Double-faced saga
+      rate: 1
+      count: 5
+   
+
+  boosterfun_without_uncommons:
+    any:
+    - rawquery: "{scene} r:r" # Rare scene
+      rate: 2
+      # count: ?
+    - rawquery: "{scene} r:m" # Mythic scene
+      rate: 1
+      # count: ?
+    - rawquery: "{field_notes} r:r" # Rare field notes
+      rate: 2
+      # count: 8
+    - rawquery: "{field_notes} r:m" # Mythic field notes
+      rate: 1
+      # count: 7
+    - rawquery: "{battle_pose} r:r" # Rare battle pose
+      rate: 2
+      # count: ?
+    - rawquery: "{battle_pose} r:m" # Mythic battle pose
+      rate: 1
+      # count: 
+    - rawquery: "{elemental_frame} r:r" # Rare elemental frame
+      rate: 2
+      # count: 15
+    - rawquery: "{elemental_frame} r:m" # Mythic elemental frame
+      rate: 1
+      # count: 5
+    - rawquery: "{double_faced_saga} r:u" # Double-faced saga
+      rate: 1
+      count: 5
+
+  wildcard:
+    any:
+      - use: common
+        chance: 42 # 4.2%
+      - use: uncommon
+        chance: 741 # 74.1%
+      - use: rare_mythic
+        chance: 193 # 16.7% + 2.6% = 19.3%
+        # count: 170
+      - use: boosterfun
+        chance: 24 # 100% - 4.2% - 74.1% - 16.7% - 2.6% = 2.4%
+      
+  rare_mythic_boosterfun:
+    any:
+      - use: rare_mythic
+        chance: 926 # 80% + 12.6% = 92.6%
+      - use: boosterfun_without_uncommons
+        chance: 74 # 100% - 80% - 12.6% = 7.4%
+
+  foil:
+    foil: true
+    any:
+      - use: common
+        chance: 539 # 53.9%
+      - use: uncommon
+        chance: 367 # 36.7%
+      - use: rare_mythic
+        chance: 79 # 6.7% + 1.2% = 7.9%
+      - use: boosterfun
+        chance: 12 # 100% - 53.9% - 36.7% - 6.7% - 1.2% = 1.5%
+
+  non_foil_land:
+    any:
+    # TODO: Double check that it's ok to set the chances like this and I don't need to add them up to 100
+      - rawquery: "{dual_land}" # Common dual land
+        chance: 40
+        # count: 10
+      - rawquery: "{basic_land}" # Default frame basic land
+        chance: 20
+        count: 5
+      - rawquery: "{journey_land}" # Avatar's journey basic lan
+        chance: 10
+        count: 5
+      - rawquery: "{appa_land}" # Appa basic land
+        chance: 10
+        count: 5
+      
+
+  foil_land:
+    foil: true
+    use: non_foil_land
+
+  source_material:
+    rawquery: "{source_material}"
+    count: 61
+
+
+
+
+
+########## uncommon_scene sheet:
+# We have 110 uncommons from the main set and 4 uncommon scene cards.
+# Scene cards appear 3.6% of the time.
+# 4 / (110 + 4) = 3.508%
+# I think it's safe to assume that all uncommons appear at the same rate in this slot.

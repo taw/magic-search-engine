@@ -1,0 +1,242 @@
+# Magic: The Gathering | Avatar: The Last Airbender
+# Collector Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-avatar-the-last-airbender
+# - https://magic.wizards.com/en/products/marvel/spider-man/card-image-gallery
+# - https://scryfall.com/sets/tla
+# - https://scryfall.com/sets/tle
+
+
+pack:
+  foil_common: 3
+  foil_uncommon: 3
+  foil_tle_common: 2
+  foil_tle_scene_uncommon: 1
+  foil_land: 1
+  foil_rare_mythic: 1
+  foil_tle_rare_mythic: 1
+  non_foil_boosterfun: 1
+  source_material:
+    - non_foil_source_material: 1
+      chance: 75
+    - foil_source_material: 1
+      chance: 25
+  foil_boosterfun: 1
+
+
+queries:
+  # TODO: Double check all numbers
+
+  dual_land: "e:{set} number:?-?"
+  basic_land: "e:{set} number:282-286"
+  appa_land: "e:{set} number:287-291"
+  journey_land: "e:{set} number:292-296"
+  scene: "e:{set} number:297-315"
+  field_notes: "e:{set} number:316-330"
+  battle_pose: "e:{set} number:331-335"
+  elemental_frame: "e:{set} number:336-353"
+  double_faced_saga: "e:{set} number:354-358"
+  neon_ink_battle_pose: "e:{set} number:359-362"
+  raised_foil_avatar: "e:{set} number:363"
+  extended_art: "e:{set} number:364-392"
+
+  source_material: "e:TLE number:1-61"
+  tle_scene_box: "e:TLE number:62-73"
+
+  # TODO: Complete these, used dummy numbers for compilation
+  tle_jumpstart: "e:TLE number:1-300"
+  tle_beginner_box: "e:TLE number:1-300"
+  tle_jumpstart_extended_art: "e:TLE number:1-300"
+
+sheets:
+  foil_common:
+    foil: true
+    any:
+      - query: "r:c" # Commons and dual lands
+        rate: 1
+        # count: 91
+
+  foil_uncommon:
+    foil: true
+    any:
+      - query: "r:u"
+        rate: 1
+        # count: 110
+
+
+  foil_tle_common:
+    foil: true
+    any:
+      - rawquery: "{tle_jumpstart} r:c"
+        rate: 1
+        count: 22
+      - rawquery: "{tle_beginner_box} r:c"
+        rate: 1
+        count: 31
+
+  foil_tle_scene_uncommon:
+    foil: true
+    any:
+      - rawquery: "{scene} r:u"
+        rate: 1
+        # count: 4
+      - rawquery: "{tle_jumpstart} r:u"
+        rate: 1
+        # count: 32
+      - rawquery: "{tle_beginner_box} r:u"
+        rate: 1
+        # count: 14
+
+  foil_land:
+    foil: true
+    any:
+      - rawquery: "{journey_land}" # Avatar's journey basic lan
+        rate: 1
+        count: 5
+      - rawquery: "{appa_land}" # Appa basic land
+        rate: 1
+        count: 5
+
+  foil_rare_mythic:
+    foil: true
+    any:
+      - use: rare
+        rate: 2
+        count: 60
+      - use: mythic
+        rate: 1
+        count: 20
+
+  foil_tle_rare_mythic:
+    foil: true
+    any:
+      - rawquery: "{tle_jumpstart} r:r"
+        rate: 2
+        # count: 32
+      - rawquery: "{tle_jumpstart} r:m"
+        rate: 1
+        # count: 11
+      - rawquery: "{tle_beginner_box} r:r"
+        rate: 1
+        # count: 10
+      - rawquery: "{tle_jumpstart_extended_art} r:r" # TODO: Double check which one are these
+        rate: 2
+        # count: 28 # TODO: Why 28 and not 32?
+      - rawquery: "{tle_jumpstart_extended_art} r:m" # TODO: Double check which one are these
+        rate: 2 # This is strange but it's what Wizards numbers say
+        # count: 11
+
+      
+  non_foil_boosterfun:
+    any:
+      # TODO: Once the final count is up, double check that rates make sense
+      - rawquery: "{scene} r:r" # Rare scene
+        rate: 2
+        # count: ?
+      - rawquery: "{scene} r:m" # Mythic scene
+        rate: 1
+        # count: ?
+      - rawquery: "{field_notes} r:r" # Rare field notes
+        rate: 2
+        # count: 8
+      - rawquery: "{field_notes} r:m" # Mythic field notes
+        rate: 1
+        # count: 7
+      - rawquery: "{battle_pose} r:r" # Rare battle pose
+        rate: 2
+        # count: ?
+      - rawquery: "{battle_pose} r:m" # Mythic battle pose
+        rate: 1
+        # count: ?
+      - rawquery: "{elemental_frame} r:r" # Rare elemental frame
+        rate: 2
+        # count: 15
+      - rawquery: "{elemental_frame} r:m" # Mythic elemental frame
+        rate: 1
+        # count: 5
+      - rawquery: "{double_faced_saga} r:m" # Double-faced saga
+        rate: 1
+        # count: 5
+      - rawquery: "{extended_art} r:r"
+        rate: 2
+        # count: 28
+      - rawquery: "{extended_art} r:m"
+        rate: 1
+        # count: 1
+      - rawquery: "{tle_jumpstart_extended_art} r:r" # TODO: Double check which one are these
+        rate: 2
+        # count: 28 # TODO: Why 28 and not 32?
+      - rawquery: "{tle_jumpstart_extended_art} r:m" # TODO: Double check which one are these
+        rate: 1
+        # count: 11
+      - rawquery: "{tle_scene_box}"
+        rate: 2
+        # count: 12
+
+  non_foil_source_material:
+    rawquery: "{source_material}"
+    count: 61
+
+  foil_source_material:
+    foil: true
+    use: non_foil_source_material
+    
+  foil_boosterfun_no_chase_cards:
+    # TODO: This sheet is the same as non_foil_boosterfun but without the TLE cards. Maybe we can refactor it a bit.
+    any:
+      # TODO: Once the final count is up, double check that rates make sense
+      - rawquery: "{scene} r:r" # Rare scene
+        rate: 2
+        # count: ?
+      - rawquery: "{scene} r:m" # Mythic scene
+        rate: 1
+        # count: ?
+      - rawquery: "{field_notes} r:r" # Rare field notes
+        rate: 2
+        # count: 8
+      - rawquery: "{field_notes} r:m" # Mythic field notes
+        rate: 1
+        # count: 7
+      - rawquery: "{battle_pose} r:r" # Rare battle pose
+        rate: 2
+        # count: ?
+      - rawquery: "{battle_pose} r:m" # Mythic battle pose
+        rate: 1
+        # count: ?
+      - rawquery: "{elemental_frame} r:r" # Rare elemental frame
+        rate: 2
+        # count: 15
+      - rawquery: "{elemental_frame} r:m" # Mythic elemental frame
+        rate: 1
+        # count: 5
+      - rawquery: "{double_faced_saga} r:m" # Double-faced saga
+        rate: 1
+        # count: 5
+      - rawquery: "{extended_art} r:r"
+        rate: 2
+        # count: 28
+      - rawquery: "{extended_art} r:m"
+        rate: 1
+        # count: 1
+
+  foil_boosterfun:
+    foil: true
+    any:
+    - use: foil_boosterfun_no_chase_cards
+      chance: 9940 # 12.8% + 1.8% + 11.4% + 5% + 2.1% + 1.4% + 19.2% + 1.8% + 3.6% + 39.9% + 0.4% = 99.4% 
+    - rawquery: "{neon_ink_battle_pose}"
+      chance: 45 # 0.45% 
+      count: 4
+    - rawquery: "{raised_foil_avatar}"
+      chance: 5 # 0.05%
+      count: 1
+
+
+########## foil_boosterfun sheet:
+# Wizards says <1% for the extended-art mythic in this slot. Assuming 2:1 rate with the extended-art rares we get 0.4% for the mythic.
+
+# The numbers for the Neon Ink Battle Pose and the Raised Foil Avatar Aang are a mistery.
+# This is my initial guess:
+
+# 1 Neon Ink Battle Pose card in 0.45% of boosters -> Each of the individual 4 cards appears in 0.11% of boosters.
+# 1 Raised Foil Avatar Aang in 0.05% of boosters
