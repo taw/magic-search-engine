@@ -24,10 +24,7 @@ pack:
     - foil_land: 1
       chance: 20
 
-
 queries:
-  # TODO: Double check all numbers
-
   dual_land: "e:{set} number:265,267,269,271-275,279,280"
   basic_land: "e:{set} number:282-286"
   appa_land: "e:{set} number:287-291"
@@ -44,11 +41,10 @@ queries:
   source_material: "e:TLE number:1-61"
   tle_scene_box: "e:TLE number:62-73"
 
-
 sheets:
   common:
     query: "r:c -{dual_land}" # Regular common, no dual lands
-    # count: 81
+    count: 81
 
   uncommon_scene:
     any:
@@ -57,13 +53,13 @@ sheets:
         count: 110
       - rawquery: "{scene} r:u" # Uncommon scene
         rate: 1
-        # count: 4
+        count: 4
 
   boosterfun:
     any:
     - rawquery: "{scene} r:u" # Uncommon scene
       rate: 6 # Assumes an uncommon scene is 3 times more common than a rare one
-      # count: 4
+      count: 4
     - rawquery: "{scene} r:r" # Rare scene
       rate: 2
       # count: ?
@@ -72,22 +68,22 @@ sheets:
       # count: ?
     - rawquery: "{field_notes} r:r" # Rare field notes
       rate: 2
-      # count: 8
+      count: 8
     - rawquery: "{field_notes} r:m" # Mythic field notes
       rate: 1
-      # count: 7
+      count: 7
     - rawquery: "{battle_pose} r:r" # Rare battle pose
       rate: 2
-      # count: ?
+      count: 2
     - rawquery: "{battle_pose} r:m" # Mythic battle pose
       rate: 1
-      # count: 
+      count: 3
     - rawquery: "{elemental_frame} r:r" # Rare elemental frame
       rate: 2
-      # count: 15
+      count: 15
     - rawquery: "{elemental_frame} r:m" # Mythic elemental frame
       rate: 1
-      # count: 5
+      count: 5
     - rawquery: "{double_faced_saga} r:u" # Double-faced saga
       rate: 1
       count: 5
@@ -159,7 +155,7 @@ sheets:
     # TODO: Double check that it's ok to set the chances like this and I don't need to add them up to 100
       - rawquery: "{dual_land}" # Common dual land
         chance: 40
-        # count: 10
+        count: 10
       - rawquery: "{basic_land}" # Default frame basic land
         chance: 20
         count: 5
