@@ -67,10 +67,12 @@ sheets:
     count: 5
   etched_retold_uncommon:
     foil: true
+    etched: true
     rawquery: "e:dmc is:etched r:u"
     count: 5
   etched_retold_rare_mythic:
     foil: true
+    etched: true
     filter: "e:dmc is:etched alt:(number:29-48)"
     use: rare_mythic
     count: 15

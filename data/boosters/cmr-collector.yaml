@@ -45,15 +45,18 @@ sheets:
       chance: 2
   etched_uncommon:
     foil: true
+    etched: true
     rawquery: "e:cmr is:etched (r:u or r:s) -is:reprint"
     count: 41
   etched_reprint:
     foil: true
+    etched: true
     filter: "e:cmr is:etched is:reprint"
     use: rare_mythic
     count: 32
   etched_rare_mythic:
     foil: true
+    etched: true
     filter: "(e:cmr is:etched -is:reprint) OR (e:cmr t:planeswalker is:borderless)"
     use: rare_mythic
     count: 30

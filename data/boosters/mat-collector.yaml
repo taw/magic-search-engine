@@ -25,6 +25,7 @@ sheets:
     count: 15
   etched_uncommon:
     foil: true
+    etched: true
     rawquery: "e:{set} r:u is:etched"
     count: 15
   foil_rare_mythic:
@@ -41,6 +42,7 @@ sheets:
     count: 35
   etched_rare_mythic:
     foil: true
+    etched: true
     filter: "e:{set} is:etched"
     use: rare_mythic
     count: 35

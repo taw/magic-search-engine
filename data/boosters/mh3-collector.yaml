@@ -108,8 +108,10 @@ sheets:
       - rawquery: "e:h2r r:r"
         rate: 12
       - rawquery: "e:mh3 is:etched r:r"
+        etched: true
         rate: 6
       - rawquery: "e:mh3 is:etched r:m"
+        etched: true
         rate: 3
       - set: spg
         code: "MHTHREE"
