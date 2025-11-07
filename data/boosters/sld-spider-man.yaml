@@ -1,0 +1,15 @@
+name: "SLD Spider-Man bonus cards"
+pack:
+  spiderman_bonus: 1
+sheets:
+  spiderman_bonus:
+    any:
+    - rawquery: "e:sld number:7019,7020,7021"
+      chance: 100
+      count: 3
+    - rawquery: "e:sld number:7016,7017,7018"
+      chance: 10
+      count: 3
+    - rawquery: "e:sld number:7013,7014,7015"
+      chance: 1
+      count: 3
