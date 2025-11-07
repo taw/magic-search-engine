@@ -167,8 +167,18 @@ task "update" do
   Rake::Task["import:decks"].invoke
   Rake::Task["index"].invoke
   Rake::Task["xmage:update"].invoke
+  Rake::Task["update:decks:metadata"].invoke
   Rake::Task["update:sealed"].invoke
   Rake::Task["export:decks"].invoke
+end
+
+desc "Update magic-preconstructed-decks metadata"
+task "update:decks:metadata" do
+  # It would be better to do both steps from here, and to also include flavor names as valid names
+  sh "./search-engine/bin/find_cards '*' >~/github/magic-preconstructed-decks/lib/valid_card_names.txt"
+  Dir.chdir("#{ENV['HOME']}/github/magic-preconstructed-decks") do
+    sh "rake sets"
+  end
 end
 
 desc "Import deck data"
