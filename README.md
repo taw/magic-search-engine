@@ -5,7 +5,7 @@ Search engine for Magic: The Gathering cards.
 To run frontend like http://mtg.wtf/
 
     $ cd frontend
-    $ bundle
+    $ bundle install
     $ bundle exec rails s
 
 ### Command line
@@ -33,21 +33,4 @@ Tests for library and for Rails frontend are separate:
 
 ### How to update database
 
-Whenever new set is released:
-
-* Run `rake rules:update` in case Comprehensive Rules changed
-* If set is not Vintage-legal, add new set code to FormatVintage exclusions list
-* Add new set code and date to legalities in Standard, Modern, Pioneer, and Frontier if applicable
-* Update format tests
-* `rake pennydreadful:update`
-
-Then import cards:
-
-* Run `rake mtgjson:update` to fetch mtgjson data and index it
-  (this can fail if there are any mtgjson quality issues)
-* Run `rake test` and fix any tests failing due to data changes
-
-Whenever banned and restricted list is announced:
-
-* Update `BanlistTest` and/or `BanlistCommanderTest`
-* Update `Banlist` data
+Make sure all relevant repositories are checked out, then run `rake update` to do the update process.
