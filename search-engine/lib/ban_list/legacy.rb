@@ -548,4 +548,11 @@ BanList.for_format("legacy") do
     "Sowing Mycospawn" => "banned",
     "Troll of Khazad-dûm" => "banned",
   )
+
+  change(
+    "2025-11-10",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-november-10-2025",
+    "Entomb" => "banned",
+    "Nadu, Winged Wisdom" => "banned",
+  )
 end

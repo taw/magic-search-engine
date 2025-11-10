@@ -367,4 +367,15 @@ BanList.for_format("historic") do
     "Strip Mine" => "banned",
     "Magus of the Moon" => "banned",
   )
+
+  change(
+    "2025-11-10",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-november-10-2025",
+    # pre-banned
+    "Force of Negation" => "banned",
+    "Frantic Search" => "banned",
+    "Mystical Tutor" => "banned",
+    "Entomb" => "banned",
+    "Dark Depths" => "banned",
+  )
 end

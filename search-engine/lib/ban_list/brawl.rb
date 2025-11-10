@@ -67,4 +67,13 @@ BanList.for_format("brawl") do
     "https://twitter.com/Wizards_Help/status/1443994094200623122",
     "Pithing Needle" => "banned",
   )
+
+  change(
+    "2025-11-10",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-november-10-2025",
+    "Strip Mine" => "banned",
+    "Mana Drain" => "banned",
+    "Chrome Mox" => "banned",
+    "Ancient Tomb" => "banned",
+  )
 end

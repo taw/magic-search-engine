@@ -98,4 +98,10 @@ BanList.for_format("pioneer") do
 
   # "Pioneer Best-of-One on MTG Arena" ban on "Tibalt's Trickery" but it doesn't affect the whole format
   # https://magic.wizards.com/en/news/announcements/banned-and-restricted-june-30-2025
+
+  change(
+    "2025-11-10",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-november-10-2025",
+    "Heartfire Hero" => "banned",
+  )
 end

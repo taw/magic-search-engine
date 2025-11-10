@@ -280,4 +280,10 @@ BanList.for_format("pauper") do
     "Prophetic Prism" => "legal",
     "High Tide" => "legal",
   )
+
+  change(
+    "2025-11-10",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-november-10-2025",
+    "High Tide" => "banned",
+  )
 end

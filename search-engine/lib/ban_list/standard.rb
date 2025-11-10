@@ -210,4 +210,12 @@ BanList.for_format("standard") do
     "Hopeless Nightmare" => "banned",
     "This Town Ain't Big Enough" => "banned",
   )
+
+  change(
+    "2025-11-10",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-november-10-2025",
+    "Vivi Ornitier" => "banned",
+    "Screaming Nemesis" => "banned",
+    "Proft's Eidetic Memory" => "banned",
+  )
 end
