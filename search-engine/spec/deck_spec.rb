@@ -63,6 +63,7 @@ describe Deck do
       ["memorabilia", "World Championship Deck"], # WCxx
       ["memorabilia", "Pro Tour Deck"], # PTC
       ["expansion", "Jumpstart"],
+      ["eternal", "Jumpstart"], # TLE
       ["standard", "Arena Starter Kit"],
       ["standard", "Starter Kit"],
       ["standard", "Arena Starter Deck"],
