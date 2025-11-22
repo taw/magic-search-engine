@@ -1,0 +1,61 @@
+# Aetherdift
+# Box Topper
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-aetherdrift
+# - https://magic.wizards.com/en/products/aetherdrift/card-image-gallery
+# - https://scryfall.com/sets/dft
+# - https://scryfall.com/search?order=set&q=e%3Aspg+cn%E2%89%A584+cn%E2%89%A4103
+
+name: "{set_name} Box Topper"
+
+pack:
+  foil_land: 1
+  foil_first_place: 1
+
+queries:
+  first_place: "e:{set} number:427-506"
+  driver_seat: "e:{set} number:507-511"
+  panorama: "e:{set} number:512-516"
+  revved_up: "e:{set} number:517-531"
+  rude_rider: "e:{set} number:532-545"
+  grafitti_giant: "e:{set} number:546-553"
+  special_guest: "e:spg number:94-103"
+
+sheets:
+  foil_land:
+    foil: true
+    any:
+    - rawquery: "{driver_seat}" # Full-art driver's seat basic land
+      chance: 75
+      count: 5
+    - rawquery: "{panorama}" # Full-art panorama basic land
+      chance: 25
+      count: 5
+
+  foil_first_place:
+    foil: true
+    any:
+    - rawquery: "{first_place} r:r"
+      rate: 8
+      count: 60
+    - rawquery: "{first_place} r:m"
+      rate: 4
+      count: 20
+    - rawquery: "{rude_rider} r:r"
+      rate: 4
+      count: 13
+    - rawquery: "{revved_up} r:r"
+      rate: 4
+      count: 11
+    - rawquery: "{grafitti_giant}"
+      rate: 2
+      count: 8
+    - rawquery: "{revved_up} r:m"
+      rate: 2
+      count: 4
+    - rawquery: "{rude_rider} r:m"
+      rate: 2
+      count: 1
+    - rawquery: "{special_guest}"
+      rate: 1
+      count: 10
