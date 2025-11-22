@@ -73,6 +73,7 @@ class FormatModern < Format
       "fin",
       "eoe",
       "spm",
+      "tla",
     ]
   end
 end

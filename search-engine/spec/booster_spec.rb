@@ -24,7 +24,7 @@ describe "is:booster" do
 
       set_pp = "#{set.name} [#{set.code}]"
       should_have_boosters = (
-        %W[mb1 cmr dbl clb 30a zne who sld clu pip slc].include?(set_code) or (
+        %W[mb1 cmr dbl clb 30a zne who sld clu pip slc tle].include?(set_code) or (
           !(set_types_with_boosters & set.types).empty? and
           !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana oana fmb1 anb plst slx ulst sis md1 big h2r].include?(set.code)
         )

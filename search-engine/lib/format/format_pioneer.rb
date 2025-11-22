@@ -50,6 +50,7 @@ class FormatPioneer < Format
       "fin",
       "eoe",
       "spm",
+      "tla",
     ]
   end
 end

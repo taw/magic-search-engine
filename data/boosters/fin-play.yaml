@@ -33,7 +33,7 @@ sheets:
 
   through_the_ages:
     any:
-      - rawquery: "e:fca r:u" # Uncommons FCA
+      - rawquery: "e:fca r:u -variant:misprint" # Uncommons FCA
         chance: 6325
         count: 17
       - rawquery: "e:fca r:r -is:alchemy" # Rares FCA

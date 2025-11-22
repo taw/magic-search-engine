@@ -1,5 +1,6 @@
 class PatchHasBoosters < Patch
   # Maybe there's a way to do this automatically?
+  # Also how accurate is this even?
   def included_in_other_boosters
     %W[
       brr

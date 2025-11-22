@@ -147,7 +147,7 @@ sheets:
 
   non_foil_through_the_ages:
     any:
-      - rawquery: "e:fca r:u" # Uncommons FCA
+      - rawquery: "e:fca r:u -variant:misprint" # Uncommons FCA
         chance: 683 # 68.3%
         count: 17
       - rawquery: "e:fca r:r -is:alchemy" # Rares FCA
