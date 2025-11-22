@@ -1,11 +1,10 @@
-# Magic: The Gathering | Avatar: The Last Airbender
+# Aetherdift
 # Box Topper
 # Sources:
 # - https://magic.wizards.com/en/news/feature/collecting-aetherdrift
 # - https://magic.wizards.com/en/products/aetherdrift/card-image-gallery
 # - https://scryfall.com/sets/dft
 # - https://scryfall.com/search?order=set&q=e%3Adft+cn%E2%89%A5517+cn%E2%89%A4553
-
 
 name: "{set_name} Box Topper"
 
@@ -27,10 +26,10 @@ sheets:
   foil_land:
     foil: true
     any:
-    - rawquery: "{driver_seat}" # full-art driver's seat basic land
+    - rawquery: "{driver_seat}" # Full-art driver's seat basic land
       chance: 75
       count: 5
-    - rawquery: "{panorama}" # full-art panorama basic land
+    - rawquery: "{panorama}" # Full-art panorama basic land
       chance: 25
       count: 5
 
