@@ -10,7 +10,11 @@ pack:
   rare_mythic_with_boosterfun: 1
   wildcard: 1
   foil: 1
-  land: 1
+  land:
+    - non_foil_land: 1
+      chance: 80
+    - foil_land: 1
+      chance: 20
 queries:
   revved_up_c_or_u: "e:{set} number:292-332 (r:c or r:u)"
   revved_up_r_or_m: "e:{set} number:292-332 (r:r or r:m)"
@@ -41,7 +45,7 @@ sheets:
       rate: 3
     - query: "r:u -alt:({revved_up_c_or_u} r:u)"
       rate: 4
-  land:
+  non_foil_land:
     any:
       - query: "{dual_land}"
         chance: 4
@@ -49,6 +53,9 @@ sheets:
         chance: 3
       - query: "{driver_basic}"
         chance: 1
+  foil_land:
+    foil: true
+    use: non_foil_land
   rare_mythic_with_boosterfun:
     # Assume showcase cards appear at 1/4 rate
     any:
