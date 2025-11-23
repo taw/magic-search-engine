@@ -20,9 +20,10 @@ queries:
   rude_riders: "e:{set} number:333-346"
   grafitti_giants: "e:{set} number:347-354"
   borderless_rare: "e:{set} number: 355-375"
-  r_or_m_boosterfun: "{revved_up_r_or_m} or {rude_riders} or {grafitti_giants} or {borderless_rare}"
+  extended_art: "e:{set} number: 377-396"
   jp_showcase: "e:{set} number:397-406"
   fracture_foil: "e:{set} number:407-416"
+  r_or_m_boosterfun: "{revved_up_r_or_m} or {rude_riders} or {grafitti_giants} or {borderless_rare} or {extended_art}"
 sheets:
   foil_driver_seat_land:
     foil: true
