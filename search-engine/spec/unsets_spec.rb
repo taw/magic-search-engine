@@ -109,6 +109,7 @@ describe "Unsets" do
     "not:silver-bordered -t:contraption -e:unf".should return_cards(
       "1996 World Champion",
       "Chaos Wrap",
+      "Cheer",
       "Deb Thomas",
       "Eggnogger's 'Stache",
       "Forest",
@@ -130,6 +131,7 @@ describe "Unsets" do
     "is:black-bordered -e:unf".should return_cards(
       "1996 World Champion",
       "Chaos Wrap",
+      "Cheer",
       "Eggnogger's 'Stache",
       "Forest",
       "Fraternal Exaltation",
