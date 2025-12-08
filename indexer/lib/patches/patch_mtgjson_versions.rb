@@ -334,18 +334,20 @@ class PatchMtgjsonVersions < Patch
         card["flavor"] = card["flavor"].delete("*")
       end
 
-      # for some reason mtgjson started usnig these fields for foreign names, which makes NO SENSE WHATSOEVER
-      if card["printedName"] or card["facePrintedName"]
+      # for some reason mtgjson started using these fields for foreign names, which makes NO SENSE WHATSOEVER
+      # and there's some unrelated bug that make it mix printed* and flavor* randomly
+      if card["printedName"] or card["facePrintedName"] or card["flavorName"] or card["faceFlavorName"]
         if card["language"] == "English"
           # OK
+          card["flavor_name"] = card.delete("faceFlavorName") || card.delete("flavorName") || card.delete("facePrintedName") || card.delete("printedName")
         else
           # Garbage
           card.delete("facePrintedName")
           card.delete("printedName")
+          card.delete("faceFlaverName")
+          card.delete("flavorName")
         end
       end
-
-      card["flavor_name"] = card.delete("faceFlavorName") || card.delete("flavorName") || card.delete("facePrintedName") || card.delete("printedName")
 
       if card["rulings"]
         rulings_dates = card["rulings"].map{|x| x["date"] }
