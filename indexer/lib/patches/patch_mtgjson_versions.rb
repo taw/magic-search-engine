@@ -340,8 +340,12 @@ class PatchMtgjsonVersions < Patch
         if card["language"] == "English"
           # OK
           card["flavor_name"] = card.delete("faceFlavorName") || card.delete("flavorName") || card.delete("facePrintedName") || card.delete("printedName")
+        elsif card["language"] == "Japanese"
+          # Total bullshit going on here
+          # Only take it if it's actually English
+          card["flavor_name"] = [card["facePrintedName"], card["printedName"], card["faceFlavorName"], card["flavorName"]].compact.grep(/[a-z]/i).first
         else
-          # Garbage
+          # 100% of this is garbage
           card.delete("facePrintedName")
           card.delete("printedName")
           card.delete("faceFlaverName")
