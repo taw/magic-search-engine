@@ -3,7 +3,7 @@
 require "pathname"
 require "open-uri"
 
-url = "http://pdmtgo.com/legal_cards.txt"
+url = "https://pennydreadfulmtg.github.io/legal_cards.txt"
 path = Pathname("#{__dir__}/../index/penny_dreadful_legal_cards.txt")
 
 data = URI.open(url).read.gsub("\r", "")
