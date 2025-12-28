@@ -142,7 +142,11 @@ class PatchMtgjsonVersions < Patch
       # These are two separate cards as far as game rules are concerned
       if card["layout"] == "reversible_card"
         case card["set"]["official_code"]
-        when "SLD", "REX", "ECL", "SNC", "PSNC"
+        when "SNC", "PSNC"
+          # This looks like garbage data in mtgjson, these aren't reversible at all
+          card["layout"] = "normal"
+          card.delete "names"
+        when "SLD", "REX", "ECL"
           # These are at least easily fixable
           card["layout"] = "normal"
           card.delete "names"
