@@ -20,10 +20,8 @@ class PreprocessBooster
     @set_code, @variant = code.split("-", 2)
     @variant ||= "default"
     @data = data
-    @filter = "e:#{@set_code} is:baseset"
-    if @data["filter"]
-      @filter = @data["filter"]
-    end
+    @superfilter = @data["superfilter"] || ""
+    @filter = @data["filter"] || "e:#{@set_code} is:baseset"
     @name = data["name"]
     @languages = data.delete("languages")
   end
@@ -121,6 +119,11 @@ class PreprocessBooster
     end
   end
 
+  def clean_query(query)
+    # we could also cleanup () around it all
+    query.gsub(@substitutions_rx){ @substitutions[$&] }.gsub("()", "").strip
+  end
+
   def process_sheet(sheet, filter)
     if sheet["filter"]
       filter = sheet["filter"]
@@ -148,13 +151,13 @@ class PreprocessBooster
       sheet
     elsif sheet["rawquery"]
       query = sheet["rawquery"]
-      expanded_query = query.gsub(@substitutions_rx){ @substitutions[$&] }
+      expanded_query = clean_query("(#{@superfilter}) (#{query})")
       warn_if_unresolved_template(expanded_query)
       sheet.except("rawquery").merge("query" => expanded_query)
     elsif sheet["query"]
       query = sheet["query"]
       # filter already in and-form, doesn't need extra parentheses
-      expanded_query = "(#{filter}) (#{query})".gsub(@substitutions_rx){ @substitutions[$&] }.gsub("()", "")
+      expanded_query = clean_query("(#{@superfilter}) (#{filter}) (#{query})")
       warn_if_unresolved_template(expanded_query)
       sheet.merge("query" => expanded_query)
     else

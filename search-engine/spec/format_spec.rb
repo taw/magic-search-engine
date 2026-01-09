@@ -245,7 +245,7 @@ describe "Formats" do
   it "historic" do
     # including STA pre-banned
     # this is extra fun as some conjurable cards will be not banned
-    assert_count_cards "banned:historic", 63
+    assert_count_cards "banned:historic", 64
     assert_legality "historic", Date.parse("2023-08-01"), "Alora, Cheerful Assassin", "restricted"
     assert_legality "historic", Date.parse("2023-08-01"), "Black Lotus", "restricted"
     assert_legality "historic", Date.parse("2023-08-01"), "Lightning Bolt", "restricted"

@@ -1,6 +1,10 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-tarkir-dragonstorm
 pack:
-  land: 1
+  land_slot:
+    - land: 1
+      chance: 2
+    - foil_land: 1
+      chance: 1
   list_slot:
     - common: 7
       chance: 63
@@ -50,6 +54,9 @@ sheets:
         chance: 3
       - query: "{presence-basic}"
         chance: 1
+  foil_land:
+    foil: true
+    use: land
   rare_mythic_with_boosterfun:
     # Assume showcase cards appear at 1/4 rate
     any:

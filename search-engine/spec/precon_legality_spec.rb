@@ -14,6 +14,9 @@ describe Deck do
           verify_deck_is_casual(deck)
         when "commander", "modern", "standard", "brawl", "pioneer", "standard", "casual standard"
           verify_deck_is_legal(deck)
+        when nil
+          # random boxes etc.
+          # might accidentally be standard legal if all cards are basics etc., so just don't check
         else
           warn "Unrecognized format #{deck.format}"
         end

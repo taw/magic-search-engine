@@ -90,7 +90,6 @@ describe "Regexp" do
       "Jim \"Stop the Da Vinci Beatdown\" Pavelec",
       "Pete \"Yes the Urza's Legacy One\" Venters",
       "Alan \"Don't Feel Like You Have to Pick Me\" Pollack",
-      "Poison Project (USE ANDITYA DITA INSTEAD)",
     ])
   end
 
