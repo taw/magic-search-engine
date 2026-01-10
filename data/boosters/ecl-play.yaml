@@ -11,7 +11,7 @@ pack:
     - common: 7
       chance: 54
     - common: 6
-      source_material: 1
+      special_guest: 1
       chance: 1
   uncommon_fable: 3
   wildcard: 1
@@ -23,81 +23,51 @@ pack:
     - foil_land: 1
       chance: 20
 
-
 queries:
   basic_land: "e:{set} number:269-273"
   fullart_land: "e:{set} number:274-283"
   borderless: "e:{set} number:284-296"
   fable: "e:{set} number:297-346"
   reversible_shockland: "e:{set} number:347-351"
-
   boosterfun: "{borderless} or {fable} or {reversible_shockland}"
-
-
-
 
 sheets:
   common:
     query: "r:c" # Regular common
-    count: 81
+    # count: 81
 
   uncommon_fable:
     any:
       - use: uncommon
         rate: 1
-        count: 100
+        # count: 100
       - rawquery: "{fable} r:u" # Uncommon fable frame
         rate: 1
-        count: 10
+        # count: 10
 
   boosterfun:
   # Assumes all boosterfun use 2:1 ratio, even though that's for sure not true for the Collector Booster
     any:
     - rawquery: "{boosterfun} r:u"
       rate: 6 # Assumes an uncommon fable is 3 times more common than a rare one
-      count: 10
+      # count: 10
     - rawquery: "{boosterfun} r:r"
       rate: 2
-      count: ?
+      # count: ?
     - rawquery: "{boosterfun} r:m"
       rate: 1
-      count: ?
+      # count: ?
 
   boosterfun_without_uncommons:
   # Assumes all boosterfun use 2:1 ratio, even though that's for sure not true for the Collector Booster
     any:
     - rawquery: "{boosterfun} r:r"
       rate: 2
-      count: ?
+      # count: ?
     - rawquery: "{boosterfun} r:m"
       rate: 1
-      count: ?
+      # count: ?
 
-
-  # Maybe for the collector booster
-  # boosterfun:
-  # # Assumes all boosterfun use 2:1 ratio, even though that's for sure not true for the Collector Booster
-  #   any:
-  #   - rawquery: "{fable} r:u" # Uncommon fable frame
-  #     rate: 6 # Assumes an uncommon fable is 3 times more common than a rare one
-  #     count: 10
-  #   - rawquery: "{fable} r:r" # Rare fable frame
-  #     rate: 2
-  #     count: 26
-  #   - rawquery: "{fable} r:m" # Mythic fable frame
-  #     rate: 1
-  #     count: 14
-  #   - rawquery: "{borderless} r:r" # Rare borderless
-  #     rate: 2
-  #     count: 5
-  #   - rawquery: "{borderless} r:m" # Mythic borderless
-  #     rate: 1
-  #     count: 8
-  #   - rawquery: "{reversible_shockland}" # Reversible shockland
-  #     rate: 2
-  #     count: 5
-
-   
   wildcard:
     any:
       - use: common
@@ -106,13 +76,12 @@ sheets:
         chance: 58 # 58%
       - use: rare # R:M is not 2:1 in this slot so we put them separate
         chance: 19 # 19%
-        count: 65
+        # count: 65
       - use: mythic
         chance: 2 # 2%
-        count: 22
+        # count: 22
       - use: boosterfun
         chance: 3 # 100% - 18% - 58% - 19% - 2% = 3%
-
 
   rare_mythic_boosterfun:
     any:
@@ -136,46 +105,18 @@ sheets:
   non_foil_land:
     any:
       - rawquery: "{basic_land}" # Default frame basic land
-        rate: 2 # TODO: Double check that using rate works ok here
+        # rate: 2 # TODO: Double check that using rate works ok here
+        chance: 40
         count: 5
       - rawquery: "{fullart_land}" # Full-art land
-        rate: 1
-        count: 10
-
-  foil_land:
-    foil: true
-    use: non_foil_land
-
-
-
-#### AVATAR
-
-
-  foil:
-    foil: true
-    any:
-      - use: common
-        chance: 539 # 53.9%
-      - use: uncommon
-        chance: 367 # 36.7%
-      - use: rare_mythic
-        chance: 79 # 6.7% + 1.2% = 7.9%
-      - use: boosterfun
-        chance: 12 # 100% - 53.9% - 36.7% - 6.7% - 1.2% = 1.5%
-
-  non_foil_land:
-    any:
-      - rawquery: "{basic_land}"
+        # rate: 1
         chance: 40
         count: 10
-      - rawquery: "{fullart_land}"
-        chance: 20
-        count: 5
 
   foil_land:
     foil: true
     use: non_foil_land
 
-  source_material:
-    rawquery: "{source_material}"
-    count: 61
+  special_guest:
+    set: spg
+    code: "ECL"
