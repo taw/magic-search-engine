@@ -269,6 +269,7 @@ describe "Card nicknames" do
       "Prairie Stream",
       "Radiant Summit",
       "Smoldering Marsh",
+      "Sodden Verdure",
       "Sunken Hollow",
       "Vernal Fen"
       assert_search_equal "is:battleland",
@@ -464,6 +465,7 @@ describe "Card nicknames" do
       "Fetid Pools",
       "Glittering Massif",
       "Irrigated Farmland",
+      "Rain-Slicked Copse",
       "Scattered Groves",
       "Sheltered Thicket"
 
