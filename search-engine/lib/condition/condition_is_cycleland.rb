@@ -6,6 +6,7 @@ class ConditionIsCycleland < ConditionNickname
       "fetid pools",
       "glittering massif",
       "irrigated farmland",
+      "rain-slicked copse",
       "scattered groves",
       "sheltered thicket",
     ]

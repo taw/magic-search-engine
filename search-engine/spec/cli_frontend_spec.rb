@@ -36,12 +36,14 @@ describe "CLI Frontend" do
         Murmuring Bosk
         Overgrown Tomb
         Radiant Grove
+        Rain-Slicked Copse
         Rimewood Falls
         Sapseep Forest
         Savannah
         Scattered Groves
         Sheltered Thicket
         Snow-Covered Forest
+        Sodden Verdure
         Spara's Headquarters
         Stomping Ground
         Taiga
@@ -242,6 +244,7 @@ describe "CLI Frontend" do
   # The interface could be extended to support things like:
   # * syntax error reporting
   # * spelling suggestions
+
 
   def assert_cli(**args)
     expected_output = strip_indent(args[:output])

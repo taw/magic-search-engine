@@ -76,6 +76,7 @@ class Card
     "Treasure Hunter",
     "Underdog",
     "Undergrowth",
+    "Vivid",
     "Web Support",
     "Will of the council",
     "Will of the Planeswalkers",

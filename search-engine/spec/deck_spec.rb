@@ -222,6 +222,8 @@ describe Deck do
         sets_found.should match_array ["fic", "fin"]
       when "eoc"
         sets_found.should match_array ["eoc", "eoe"]
+      when "ecc"
+        sets_found.should match_array ["ecc", "ecl"]
       else
         sets_found.should eq [set.code]
       end

@@ -6,6 +6,7 @@ class ConditionIsBattleland < ConditionNickname
       "prairie stream",
       "radiant summit",
       "smoldering marsh",
+      "sodden verdure",
       "sunken hollow",
       "vernal fen",
     ]
