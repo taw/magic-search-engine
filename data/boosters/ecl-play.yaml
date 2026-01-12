@@ -34,39 +34,37 @@ queries:
 sheets:
   common:
     query: "r:c" # Regular common
-    # count: 81
+    count: 81
 
   uncommon_fable:
     any:
       - use: uncommon
         rate: 1
-        # count: 100
+        count: 100
       - rawquery: "{fable} r:u" # Uncommon fable frame
         rate: 1
-        # count: 10
+        count: 10
 
   boosterfun:
   # Assumes all boosterfun use 2:1 ratio, even though that's for sure not true for the Collector Booster
     any:
     - rawquery: "{boosterfun} r:u"
       rate: 6 # Assumes an uncommon fable is 3 times more common than a rare one
-      # count: 10
+      count: 10
     - rawquery: "{boosterfun} r:r"
       rate: 2
-      # count: ?
+      count: 36
     - rawquery: "{boosterfun} r:m"
       rate: 1
-      # count: ?
+      count: 22
 
   boosterfun_without_uncommons:
   # Assumes all boosterfun use 2:1 ratio, even though that's for sure not true for the Collector Booster
     any:
     - rawquery: "{boosterfun} r:r"
       rate: 2
-      # count: ?
     - rawquery: "{boosterfun} r:m"
       rate: 1
-      # count: ?
 
   wildcard:
     any:
@@ -76,10 +74,10 @@ sheets:
         chance: 58 # 58%
       - use: rare # R:M is not 2:1 in this slot so we put them separate
         chance: 19 # 19%
-        # count: 65
+        count: 65
       - use: mythic
         chance: 2 # 2%
-        # count: 22
+        count: 22
       - use: boosterfun
         chance: 3 # 100% - 18% - 58% - 19% - 2% = 3%
 
@@ -105,18 +103,17 @@ sheets:
   non_foil_land:
     any:
       - rawquery: "{basic_land}" # Default frame basic land
-        # rate: 2 # TODO: Double check that using rate works ok here
-        chance: 40
+        rate: 2
         count: 5
       - rawquery: "{fullart_land}" # Full-art land
-        # rate: 1
-        chance: 40
+        rate: 1
         count: 10
 
   foil_land:
     foil: true
     use: non_foil_land
 
+  # TODO: The special_guest is not working
   special_guest:
     set: spg
     code: "ECL"
