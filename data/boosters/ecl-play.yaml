@@ -6,6 +6,7 @@
 # - https://scryfall.com/sets/ecl
 # - https://scryfall.com/sets/ecc
 
+superfilter: "-is:reversibleback"
 pack:
   common_special_guest:
     - common: 7
@@ -106,7 +107,7 @@ sheets:
         count: 87
       - use: boosterfun_without_uncommons
         chance: 82 # 100% - 91.8% = 8.2%
-  
+
   foil:
     foil: true
     any:
