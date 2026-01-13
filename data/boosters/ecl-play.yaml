@@ -1,0 +1,137 @@
+# Lorwyn Eclipsed
+# Play Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-lorwyn-eclipsed
+# - https://magic.wizards.com/en/products/lorwyn-eclipsed/card-image-gallery
+# - https://scryfall.com/sets/ecl
+# - https://scryfall.com/sets/ecc
+
+pack:
+  common_special_guest:
+    - common: 7
+      chance: 54
+    - common: 6
+      special_guest: 1
+      chance: 1
+  uncommon_fable: 3
+  wildcard: 1
+  rare_mythic_boosterfun: 1
+  foil: 1
+  land:
+    - non_foil_land: 1
+      chance: 80
+    - foil_land: 1
+      chance: 20
+
+queries:
+  basic_land: "e:{set} number:269-273"
+  fullart_land: "e:{set} number:274-283"
+  borderless: "e:{set} number:284-296"
+  fable: "e:{set} number:297-346"
+  reversible_shockland: "e:{set} number:347-351"
+  boosterfun: "{borderless} or {fable} or {reversible_shockland}"
+
+sheets:
+  common:
+    query: "r:c" # Regular common
+    count: 81
+
+  # TODO: This sheet shouldn't be necessary but it fixes the count issue for some reason
+  rare:
+    rawquery: "e:{set} number:1-268 r:r" # Regular rare
+    count: 65
+
+  # TODO: This sheet shouldn't be necessary but it fixes the count issue for some reason
+  mythic:
+    rawquery: "e:{set} number:1-268 r:m" # Regular mythic
+    count: 22
+
+  # TODO: This sheet shouldn't be necessary but it fixes the count issue for some reason
+  rare_mythic:
+    any:
+      - rawquery: "e:{set} number:1-268 r:r" # Regular rare
+        rate: 2
+      - rawquery: "e:{set} number:1-268 r:m" # Regular mythic
+        rate: 1
+
+  uncommon_fable:
+    any:
+      - use: uncommon
+        rate: 1
+        count: 100
+      - rawquery: "{fable} r:u" # Uncommon fable frame
+        rate: 1
+        count: 10
+
+  boosterfun:
+  # Assumes all boosterfun use 2:1 ratio, even though that's for sure not true for the Collector Booster
+    any:
+    - rawquery: "{boosterfun} r:u"
+      rate: 6 # Assumes an uncommon fable is 3 times more common than a rare one
+      count: 10
+    - rawquery: "{boosterfun} r:r -is:reversibleback"
+      rate: 2
+      count: 36
+    - rawquery: "{boosterfun} r:m"
+      rate: 1
+      count: 22
+
+  boosterfun_without_uncommons:
+  # Assumes all boosterfun use 2:1 ratio, even though that's for sure not true for the Collector Booster
+    any:
+    - rawquery: "{boosterfun} r:r"
+      rate: 2
+    - rawquery: "{boosterfun} r:m"
+      rate: 1
+
+  wildcard:
+    any:
+      - use: common
+        chance: 18 # 18%
+      - use: uncommon
+        chance: 58 # 58%
+      - use: rare # R:M is not 2:1 in this slot so we put them separate
+        chance: 19 # 19%
+        count: 65
+      - use: mythic
+        chance: 2 # 2%
+        count: 22
+      - use: boosterfun
+        chance: 3 # 100% - 18% - 58% - 19% - 2% = 3%
+
+  rare_mythic_boosterfun:
+    any:
+      - use: rare_mythic
+        chance: 918 # 78.2% + 13.6% = 91.8%
+        count: 87
+      - use: boosterfun_without_uncommons
+        chance: 82 # 100% - 91.8% = 8.2%
+  
+  foil:
+    foil: true
+    any:
+      - use: common
+        chance: 604 # 60.4%
+      - use: uncommon
+        chance: 298 # 29.8%
+      - use: rare_mythic
+        chance: 76 # 6.5% + 1.1% = 7.6%
+      - use: boosterfun
+        chance: 22 # 100% - 60.4% - 29.8% - 7.6% = 2.2%
+
+  non_foil_land:
+    any:
+      - rawquery: "{basic_land}" # Default frame basic land
+        rate: 2
+        count: 5
+      - rawquery: "{fullart_land}" # Full-art land
+        rate: 1
+        count: 10
+
+  foil_land:
+    foil: true
+    use: non_foil_land
+
+  special_guest:
+    set: spg
+    code: "ECL"
