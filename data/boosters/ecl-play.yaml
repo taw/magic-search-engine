@@ -36,6 +36,24 @@ sheets:
     query: "r:c" # Regular common
     count: 81
 
+  # TODO: This sheet shouldn't be necessary but it fixes the count issue for some reason
+  rare:
+    rawquery: "e:{set} number:1-268 r:r" # Regular rare
+    count: 65
+
+  # TODO: This sheet shouldn't be necessary but it fixes the count issue for some reason
+  mythic:
+    rawquery: "e:{set} number:1-268 r:m" # Regular mythic
+    count: 22
+
+  # TODO: This sheet shouldn't be necessary but it fixes the count issue for some reason
+  rare_mythic:
+    any:
+      - rawquery: "e:{set} number:1-268 r:r" # Regular rare
+        rate: 2
+      - rawquery: "e:{set} number:1-268 r:m" # Regular mythic
+        rate: 1
+
   uncommon_fable:
     any:
       - use: uncommon
@@ -51,7 +69,7 @@ sheets:
     - rawquery: "{boosterfun} r:u"
       rate: 6 # Assumes an uncommon fable is 3 times more common than a rare one
       count: 10
-    - rawquery: "{boosterfun} r:r"
+    - rawquery: "{boosterfun} r:r -is:reversibleback"
       rate: 2
       count: 36
     - rawquery: "{boosterfun} r:m"
@@ -85,6 +103,7 @@ sheets:
     any:
       - use: rare_mythic
         chance: 918 # 78.2% + 13.6% = 91.8%
+        count: 87
       - use: boosterfun_without_uncommons
         chance: 82 # 100% - 91.8% = 8.2%
   
@@ -113,7 +132,6 @@ sheets:
     foil: true
     use: non_foil_land
 
-  # TODO: The special_guest is not working
   special_guest:
     set: spg
     code: "ECL"
