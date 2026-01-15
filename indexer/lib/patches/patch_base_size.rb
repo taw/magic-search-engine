@@ -3,6 +3,7 @@
 class PatchBaseSize < Patch
   def call
     sizes = {
+      "ecl" => 273, # up to the last normal basic
     }
 
     sizes.each do |code, size|
