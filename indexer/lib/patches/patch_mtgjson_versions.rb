@@ -58,13 +58,18 @@ class PatchMtgjsonVersions < Patch
     while @seen[[set_code, base_number, counter]]
       counter.succ!
     end
-    @seen[[set_code, base_number, counter]] = true
+    @seen[[set_code, base_number, counter]] = card["name"]
     card["promoTypes"] ||= []
     case counter
     when "a"
       card["promoTypes"] << "reversiblefront"
     when "b"
-      card["promoTypes"] << "reversibleback"
+      # A hack for 4 faced cards
+      if @seen[[set_code, base_number, counter]] == @seen[[set_code, base_number, "a"]]
+        card["promoTypes"] << "reversibleback"
+      else
+        card["promoTypes"] << "reversiblefront"
+      end
     else
       warn "More than two parts of same reversible card #{set_code} #{base_number}"
     end
