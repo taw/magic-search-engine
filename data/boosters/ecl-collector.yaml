@@ -88,15 +88,19 @@ sheets:
     foil: true
     any:
       - rawquery: "e:ecl r:r frame:extendedart"
-        chance: 304
+        chance: 1824 # 30.4% = 0.304 * 6000 = 1824
       - use: foil_booster_fun_rare_or_mythic_fable_frame
-        chance: 345
+        chance: 2070 # 27.2% + 7.3% = 34.5% = 0.345 * 6000
       - use: foil_booster_fun_rare_or_mythic_bordereless_nonland
-        chance: 94
+        chance: 564 # 5.2% + 4.2% = 9.4% = 0.094 * 6000 = 564
       - use: foil_reversable_shock_land
-        chance: 52
+        chance: 312 # 5.2% / 6000 = .052 * 6000 = 312
       - use: foil_special_guest
-        chance: 105
+        chance: 630 # 10.5% = .105 * 6000 = 630
+			- use: japan_showcase
+				chance: 600 # 9% + 1% = 10% = 0.10 * 6000 = 600
+      - rawquery: "e:ecl is:serialized"
+        chance: 1 # 1 out of 6000.
 
   # Foil Booster Fun — fable frame
   foil_booster_fun_rare_or_mythic_fable_frame:
