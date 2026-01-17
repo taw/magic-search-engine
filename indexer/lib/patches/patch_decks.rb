@@ -49,8 +49,9 @@ class PatchDecks < Patch
     end
 
     unless deck["release_date"]
-      warn "No release date for #{deck["set_code"]} #{deck["name"]}, defaulting to set release date"
-      deck["release_date"] = @sets.find{|s| s["code"] == deck["set_code"]}["release_date"]
+      set_release_date = @sets.find{|s| s["code"] == deck["set_code"]}["release_date"]
+      warn "No release date for #{deck["set_code"]} #{deck["name"]}, defaulting to set release date #{set_release_date}"
+      deck["release_date"] = set_release_date
     end
   end
 
