@@ -1,5 +1,7 @@
+---
 # Lorwyn Eclipsed
-# Collector Booster
+# Play Booster
+#
 # Sources:
 # - https://magic.wizards.com/en/news/feature/collecting-lorwyn-eclipsed
 # - https://magic.wizards.com/en/products/lorwyn-eclipsed/card-image-gallery
@@ -7,121 +9,127 @@
 # - https://scryfall.com/sets/ecc
 
 pack:
-	foil_common: 5
-	foil_uncommon: 4
-	foil_full_art_basic_land: 1
-	foil_rare_or_foil_mythic: 1
-	commander_rare_or_mythic: 1
-	booster_fun_rare_or_mythic: 2
-	foil_booster_fun_rare_or_mythic: 1
+  foil_common: 5
+  foil_uncommon: 4
+  foil_full_art_basic_land: 1
+  foil_rare_or_foil_mythic: 1
+  commander_rare_or_mythic: 1
+  booster_fun_rare_or_mythic: 2
+  foil_booster_fun_rare_or_mythic: 1
 
 sheets:
-	#	5 Traditional foil commons
-	foil_common:
-		foil: true
-		rawquery: "e:ecl r:c is:foil -t:basic" # Regular common foil, excludes basic lands.
+  # 5 Traditional foil commons
+  foil_common:
+    foil: true
+    rawquery: "e:ecl r:c is:foil -t:basic"
     count: 81
-    
-	# 4 Traditional foil uncommons
-	foil_uncommon:
-		foil: true
+
+  # 4 Traditional foil uncommons
+  foil_uncommon:
+    foil: true
     any:
-      - rawquery: "e:ecl number:1-268 r:u" # Foil uncommon
+      - rawquery: "e:ecl number:1-268 r:u"
         rate: 100
-      - rawquery: "e:ecl number:297-346 r:u" # Foil uncommon fable frame
+      - rawquery: "e:ecl number:297-346 r:u"
         rate: 10
-	
-	# 1 Traditional foil full-art basic land
-	foil_full_art_basic_land:
-		foil: true
-		rawquery: "e:ecl t:basic is:fullart unique:prints"
 
-	# 1 Traditional foil rare or mythic rare
-	foil_rare_or_foil_mythic:
-		foil: true
+  # 1 Traditional foil full-art basic land
+  foil_full_art_basic_land:
+    foil: true
+    rawquery: "e:ecl t:basic is:fullart unique:prints"
+
+  # 1 Traditional foil rare or mythic rare
+  foil_rare_or_foil_mythic:
+    foil: true
     any:
-      - rawquery: "e:ecl number:1-268 r:r" # Foil rare
+      - rawquery: "e:ecl number:1-268 r:r"
         rate: 1
-      - rawquery: "e:ecl number:1-268 r:m" # Foil mythic
+      - rawquery: "e:ecl number:1-268 r:m"
         rate: 1
-	
-	# 1 Non-foil Lorwyn Eclipsed Commander (ECC) rare or mythic rare
-	commander_rare_or_mythic:
-		any:
-      - rawquery: "e:ecc r:m is:borderless" # Commander set mythic borderless cards
+
+  # 1 Non-foil Lorwyn Eclipsed Commander (ECC) rare or mythic
+  commander_rare_or_mythic:
+    any:
+      - rawquery: "e:ecc r:m is:borderless"
         rate: 4
-      - rawquery: "e:ecc r:r frame:extendedart" # Commander set rare extended-art cards
+      - rawquery: "e:ecc r:r frame:extendedart"
         rate: 20
-	
-	# 2 Non-foil Booster Fun rares or mythic rares
-	booster_fun_rare_or_mythic:
-    any:
-      - rawquery: "e:ecl r:r frame:extendedart" # Rare extended-art cards
-        chance: 377 # 37.7%
-			- use: booster_fun_rare_or_mythic_fable_frame
-        chance: 428 # 33.7% + 9.1 = 42.8
-			- use: booster_fun_rare_or_mythic_bordereless_nonland
-        chance: 175 # 13% + 4.5 = 17.5
-			- rawquery: "e:ecl t:land is:borderless is:shockland" # Borderless reversible shock land
-        chance: 20 # 2%
-			
-	booster_fun_rare_or_mythic_fable_frame:
-    any:
-      - rawquery: "e:ecl number:297-346 r:r" # Rare fable frame
-        rate: 337 # 33.7
-      - rawquery: "e:ecl number:297-346 r:m" # Mythic fable frame
-        rate: 91 # 9.1
-        
-	booster_fun_rare_or_mythic_bordereless_nonland:
-    any:
-      - rawquery: "e:ecl -t:land is:borderless r:r" # Rare borderless nonland card
-        rate: 130 # 13%
-      - rawquery: ":ecl -t:land is:borderless r:m" # Mythic borderless nonland card
-        rate: 45 # 4.5%
-        
-	# 1 Foil Booster Fun rare or mythic rare card
-	foil_booster_fun_rare_or_mythic:
-		foil: true
-    any:
-      - rawquery: "e:ecl r:r frame:extendedart" # Rare extended-art cards
-        chance: 304 # 30.4%
-				count: 29
-			- use: foil_booster_fun_rare_or_mythic_fable_frame
-        chance: 345 # 27.2% + 7.3% = 34.5%
-			- use: foil_booster_fun_rare_or_mythic_bordereless_nonland
-        chance: 94 # 5.2% + 4.2% = 9.4%
-			- use: foil_reversable_shock_land
-        chance: 52 # 5.2%
-			- use: foil_special_guest
-        chance: 105 # 10.5%
-				
-	foil_booster_fun_rare_or_mythic_fable_frame:
-		foil: true
-    any:
-      - rawquery: "e:ecl number:297-346 r:r" # Rare fable frame
-        rate: 272 # 27.2%
-      - rawquery: "e:ecl number:297-346 r:m" # Mythic fable frame
-        rate: 73 # 7.3%
-        
-	foil_booster_fun_rare_or_mythic_bordereless_nonland:
-		foil: true
-    any:
-      - rawquery: "e:ecl -t:land is:borderless r:r" # Rare borderless nonland card
-        rate: 52 # 5.2%
-      - rawquery: ":ecl -t:land is:borderless r:m" # Mythic borderless nonland card
-        rate: 42 # 4.2%
-        
-	foil_reversable_shock_land:
-		foil: true
-		rawquery: "e:ecl t:land is:borderless is:shockland"
-		
-	foil_special_guest:
-		foil: true
-		rawquery: "e:spg cn≥129 cn≤148"
 
-	japan_showcase:
+  # 2 Non-foil Booster Fun rares or mythics
+  booster_fun_rare_or_mythic:
     any:
-      - rawquery: "e:ecl cn≥382 cn≤391" # Rare borderless nonland card
+      - rawquery: "e:ecl r:r frame:extendedart"
+        chance: 377
+      - use: booster_fun_rare_or_mythic_fable_frame
+        chance: 428
+      - use: booster_fun_rare_or_mythic_bordereless_nonland
+        chance: 175
+      - rawquery: "e:ecl t:land is:borderless is:shockland"
+        chance: 20
+
+  # Booster Fun — fable frame
+  booster_fun_rare_or_mythic_fable_frame:
+    any:
+      - rawquery: "e:ecl number:297-346 r:r"
+        rate: 337
+      - rawquery: "e:ecl number:297-346 r:m"
+        rate: 91
+
+  # Booster Fun — borderless nonland
+  booster_fun_rare_or_mythic_bordereless_nonland:
+    any:
+      - rawquery: "e:ecl -t:land is:borderless r:r"
+        rate: 130
+      - rawquery: "e:ecl -t:land is:borderless r:m"
+        rate: 45
+
+  # 1 Foil Booster Fun rare or mythic
+  foil_booster_fun_rare_or_mythic:
+    foil: true
+    any:
+      - rawquery: "e:ecl r:r frame:extendedart"
+        chance: 304
+      - use: foil_booster_fun_rare_or_mythic_fable_frame
+        chance: 345
+      - use: foil_booster_fun_rare_or_mythic_bordereless_nonland
+        chance: 94
+      - use: foil_reversable_shock_land
+        chance: 52
+      - use: foil_special_guest
+        chance: 105
+
+  # Foil Booster Fun — fable frame
+  foil_booster_fun_rare_or_mythic_fable_frame:
+    foil: true
+    any:
+      - rawquery: "e:ecl number:297-346 r:r"
+        rate: 272
+      - rawquery: "e:ecl number:297-346 r:m"
+        rate: 73
+
+  # Foil Booster Fun — borderless nonland
+  foil_booster_fun_rare_or_mythic_bordereless_nonland:
+    foil: true
+    any:
+      - rawquery: "e:ecl -t:land is:borderless r:r"
+        rate: 52
+      - rawquery: "e:ecl -t:land is:borderless r:m"
+        rate: 42
+
+  # Foil reversible shock land
+  foil_reversable_shock_land:
+    foil: true
+    rawquery: "e:ecl t:land is:borderless is:shockland"
+
+  # Foil Special Guest
+  foil_special_guest:
+    foil: true
+    rawquery: "e:spg cn>=129 cn<=148"
+
+  # Japan showcase
+  japan_showcase:
+    any:
+      - rawquery: "e:ecl cn>=382 cn<=391"
         rate: 9
-      - rawquery: "e:ecl cn≥392 cn≤401" # Mythic borderless nonland card
+      - rawquery: "e:ecl cn>=392 cn<=401"
         rate: 1
