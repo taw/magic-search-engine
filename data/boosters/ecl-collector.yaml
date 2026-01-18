@@ -9,6 +9,7 @@
 # - https://scryfall.com/sets/ecc
 # - https://cardgamebase.com/serialized-bitterbloom-bearer-odds/
 
+superfilter: "-is:reversibleback"
 pack:
   foil_common: 5
   foil_uncommon: 4
@@ -37,7 +38,8 @@ sheets:
   # 1 Traditional foil full-art basic land
   foil_full_art_basic_land:
     foil: true
-    rawquery: "e:ecl t:basic is:fullart unique:prints"
+    rawquery: "e:ecl t:basic is:fullart"
+    count: 10
 
   # 1 Traditional foil rare or mythic rare
   foil_rare_or_foil_mythic:
