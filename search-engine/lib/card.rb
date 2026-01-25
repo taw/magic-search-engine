@@ -25,6 +25,7 @@ class Card
     "Coven",
     "Delirium",
     "Dinosaur Formula",
+    "Disappear",
     "Domain",
     "Eerie",
     "Eminence",

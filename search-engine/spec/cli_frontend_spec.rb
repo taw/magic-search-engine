@@ -180,7 +180,7 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Steam Vents
-        [gpt rtr exp grn pgrn prm sld unf unf rvr rvr rvr rvr clu ecl ecl ecl]
+        [gpt rtr exp grn pgrn prm sld unf unf rvr rvr rvr rvr clu ecl ecl ecl pecl]
         Land - Island Mountain
         ({T}: Add {U} or {R}.)
         As this land enters, you may pay 2 life. If you don't, it enters tapped.
