@@ -74,6 +74,7 @@ class FormatModern < Format
       "eoe",
       "spm",
       "tla",
+      "ecl",
     ]
   end
 end
