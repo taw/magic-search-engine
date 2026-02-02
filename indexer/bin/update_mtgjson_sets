@@ -93,6 +93,7 @@ class SingleSetUpdater
     issues << :name if incoming_name != current_name
     issues << :code if incoming_code != current_code
     issues << :base_set_size if incoming_base_set_size != current_base_set_size
+    issues << :duplicated_cards if incoming_cards.uniq.size != incoming_cards.size
     if incoming_cards != current_cards
       if current_cards.map(&:first) != incoming_cards.map(&:first)
         issues << :card_names
@@ -131,7 +132,7 @@ class SingleSetUpdater
 
     # Print all issues
     if incoming_name != current_name
-      puts "  NAME: #{current_name} -> #{incoming_name}"
+      puts "  NAME: #{current_name.inspect} -> #{incoming_name.inspect}"
     end
 
     if incoming_base_set_size != current_base_set_size
@@ -148,6 +149,10 @@ class SingleSetUpdater
 
     (incoming_cards - current_cards).sort.each do |card, num|
       puts "  CARD ADD: #{num} #{card}"
+    end
+
+    if incoming_cards.uniq.size != incoming_cards.size
+      puts "  DUPLICATED CARDS: #{incoming_cards.size - incoming_cards.uniq.size}"
     end
   end
 end
