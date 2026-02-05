@@ -1,4 +1,5 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-innistrad-remastered
+# Serialized data from https://blog.mtgprice.com/2024/12/14/the-mana-math-of-innistrad-remastered/
 pack:
   foil_common: 4
   foil_uncommon: 3
@@ -55,6 +56,6 @@ sheets:
     foil: true
     any:
     - use: booster_fun
-      chance: 995
+      chance: 4999
     - rawquery: "e:{set} number:491"
-      chance: 5
+      chance: 1
