@@ -225,7 +225,11 @@ describe Deck do
       when "ecc"
         sets_found.should match_array ["ecc", "ecl"]
       else
-        sets_found.should eq [set.code]
+        if set.types.include?("preview")
+          # skip it, as it might not have precons data yet
+        else
+          sets_found.should eq [set.code]
+        end
       end
     end
   end

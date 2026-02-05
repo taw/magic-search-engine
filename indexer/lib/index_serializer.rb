@@ -144,7 +144,7 @@ class IndexSerializer
           "p" => printing["paper"],
           "pr" => printing["partner"],
           "ps" => printing["print_sheet"],
-          "pt" => printing["promo_types"],
+          "pt" => printing["promo_types"]&.sort,
           "r" => rarity_code,
           "sg" => printing["signature"],
           "sh" => printing["shandalar"],

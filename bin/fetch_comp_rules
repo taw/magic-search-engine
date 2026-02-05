@@ -42,7 +42,7 @@ class FetchComprehensiveRules
 
   def call
     rules_path.write(rules_txt)
-  rescue Net::OpenTimeout
+  rescue Net::OpenTimeout, OpenURI::HTTPError
     warn "#{$!}"
   end
 end

@@ -22,6 +22,8 @@ class FormatAlchemy < FormatStandard
         "fin",
         "eoe", "yeoe",
         "spm",
+        "tla",
+        "ecl", "yecl",
       ],
       "2024-08-02" => [ # rotation on BLB release?
         "anb",

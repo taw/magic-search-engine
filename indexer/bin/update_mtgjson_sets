@@ -7,6 +7,16 @@ require "pathname-glob"
 require "pathname"
 require "pry"
 
+LOCKED_SETS_PATH = Pathname(__dir__) + "../../.locked_mtgjson_sets"
+
+LOCKED_SETS = if LOCKED_SETS_PATH.exist?
+  LOCKED_SETS_PATH.read.upcase.split.to_set
+else
+  Set.new
+end
+
+p [:locked_sets, LOCKED_SETS.to_a.sort]
+
 class SingleSetUpdater
   extend Memoist
 
@@ -46,11 +56,11 @@ class SingleSetUpdater
   end
 
   memoize def incoming_cards
-    incoming_data["cards"].map{|c| [c["faceName"] || c["name"], c["number"]] }.sort
+    incoming_data["cards"].map{|c| [c["faceName"] || c["name"], c["number"], c["side"] || ""] }.sort
   end
 
   memoize def current_cards
-    current_data["cards"].map{|c| [c["faceName"] || c["name"], c["number"]] }.sort
+    current_data["cards"].map{|c| [c["faceName"] || c["name"], c["number"], c["side"] || ""] }.sort
   end
 
   memoize def current_base_set_size
@@ -93,12 +103,16 @@ class SingleSetUpdater
     issues << :name if incoming_name != current_name
     issues << :code if incoming_code != current_code
     issues << :base_set_size if incoming_base_set_size != current_base_set_size
+    issues << :duplicated_cards if incoming_cards.uniq.size != incoming_cards.size
     if incoming_cards != current_cards
       if current_cards.map(&:first) != incoming_cards.map(&:first)
         issues << :card_names
       else
         issues << :card_numbers
       end
+    end
+    if LOCKED_SETS.include?(current_code)
+      issues << :locked
     end
 
     if issues.empty?
@@ -131,7 +145,7 @@ class SingleSetUpdater
 
     # Print all issues
     if incoming_name != current_name
-      puts "  NAME: #{current_name} -> #{incoming_name}"
+      puts "  NAME: #{current_name.inspect} -> #{incoming_name.inspect}"
     end
 
     if incoming_base_set_size != current_base_set_size
@@ -148,6 +162,18 @@ class SingleSetUpdater
 
     (incoming_cards - current_cards).sort.each do |card, num|
       puts "  CARD ADD: #{num} #{card}"
+    end
+
+    if incoming_cards.uniq.size != incoming_cards.size
+      duplicated_cards = incoming_cards.tally.select{|k,v| v>1}.sort_by{|k,v| [-v, k[1], k[0]] }.sort
+      puts "  DUPLICATED CARDS:"
+      duplicated_cards.each do |(card, num), count|
+        puts "    #{count}x #{card} [#{num}]"
+      end
+    end
+
+    if LOCKED_SETS.include?(current_code)
+      puts "  MANUALLY LOCKED"
     end
   end
 end
