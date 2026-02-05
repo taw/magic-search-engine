@@ -7,6 +7,16 @@ require "pathname-glob"
 require "pathname"
 require "pry"
 
+LOCKED_SETS_PATH = Pathname(__dir__) + "../../.locked_mtgjson_sets"
+
+LOCKED_SETS = if LOCKED_SETS_PATH.exist?
+  LOCKED_SETS_PATH.read.upcase.split.to_set
+else
+  Set.new
+end
+
+p [:locked_sets, LOCKED_SETS.to_a.sort]
+
 class SingleSetUpdater
   extend Memoist
 
@@ -101,6 +111,9 @@ class SingleSetUpdater
         issues << :card_numbers
       end
     end
+    if LOCKED_SETS.include?(current_code)
+      issues << :locked
+    end
 
     if issues.empty?
       command_update
@@ -157,6 +170,10 @@ class SingleSetUpdater
       duplicated_cards.each do |(card, num), count|
         puts "    #{count}x #{card} [#{num}]"
       end
+    end
+
+    if LOCKED_SETS.include?(current_code)
+      puts "  MANUALLY LOCKED"
     end
   end
 end
