@@ -158,6 +158,18 @@ task "rules:update" do
   sh "bin/format_comp_rules"
 end
 
+desc "Check if there's new mtgjson version and update if needed"
+task "update:ifnew" do
+  current = `bin/current_mtgjson_version_number`.strip
+  latest = `bin/latest_mtgjson_version_number`.strip
+  if current != latest
+    puts "New mtgjson version available: #{latest} (current: #{current}), updating..."
+    Rake::Task["mtgjson:update"].invoke
+  else
+    puts "Mtgjson is up to date (version #{current})"
+  end
+end
+
 desc "Full update"
 task "update" do
   Pathname("tmp").mkpath
