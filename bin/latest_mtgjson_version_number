@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require "open-uri"
+require "json"
+
+uri = "https://mtgjson.com/api/v5/Meta.json"
+
+json = URI.open(uri).read
+data = JSON.parse(json)
+
+date    = data.dig("data", "date")
+version = data.dig("data", "version")
+
+puts version
