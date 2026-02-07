@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+require "json"
+
+data_sets_root = Pathname(__dir__) + "../../magic-search-engine-data/data/sets"
+
+# Just pick one that's unlikely to change and need locking
+set_data = JSON.parse((data_sets_root + "LEA.json").read)
+puts set_data["meta"]["version"]

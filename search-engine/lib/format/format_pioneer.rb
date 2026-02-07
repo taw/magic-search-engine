@@ -51,6 +51,7 @@ class FormatPioneer < Format
       "eoe",
       "spm",
       "tla",
+      "ecl",
     ]
   end
 end
