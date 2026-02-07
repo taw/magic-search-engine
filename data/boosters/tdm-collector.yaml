@@ -1,4 +1,12 @@
-# Data from https://magic.wizards.com/en/news/feature/collecting-tarkir-dragonstorm
+# Tarkir: Dragonstorm
+# Collector Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-tarkir-dragonstorm
+# - https://magic.wizards.com/en/products/tarkir-dragonstorm/card-image-gallery
+# - https://scryfall.com/sets/tdm
+# - https://scryfall.com/sets/tdc
+# - https://scryfall.com/sets/spg
+
 superfilter: "-is:reversibleback"
 pack:
   foil_common: 4
@@ -19,8 +27,11 @@ queries:
   dragons_eye_basic: "e:{set} number:287-291"
   draconic_showcase: "e:{set} number:292-326"
   clan_card: "e:{set} number:327-376"
+  reversible_dragons: "e:{set} number:377-382"
   borderless_alternate_art: "e:{set} number:383-398"
-  reversible_dragons: "e:{set} number:377-382 -number=/.b/"
+  ghostfire: "e:{set} number:399-408"
+  halo_foil_ghostfire: "e:{set} number:409-418"
+  serialized_mox: "e:{set} number:419"
 
 sheets:
   non_foil_draconic_c_u:
@@ -72,27 +83,35 @@ sheets:
     foil: true
     any:
     - rawquery: "{draconic_showcase} r:r"
-      chance: 53
+      chance: 530
     - rawquery: "{draconic_showcase} r:m"
-      chance: 39
+      chance: 390
     - rawquery: "{clan_card} r:r"
-      chance: 427
+      chance: 4270
     - rawquery: "{clan_card} r:m"
-      chance: 68
+      chance: 680
     - rawquery: "{borderless_alternate_art} r:r"
-      chance: 178
+      chance: 1780
     - rawquery: "{borderless_alternate_art} r:m"
-      chance: 6
+      chance: 60
     - rawquery: "{reversible_dragons} r:r"
-      chance: 53
+      chance: 530
     - rawquery: "{reversible_dragons} r:m"
-      chance: 6
-    - rawquery: "e:{set} number:399-408"
-      chance: 90
-    - rawquery: "e:{set} number:409-418"
-      chance: 10
+      chance: 60
+    - rawquery: "{ghostfire}"
+      chance: 900
+    - rawquery: "{halo_foil_ghostfire}"
+      chance: 100
     - set: spg
       code: "TDM"
-      chance: 60
+      chance: 600
     - rawquery: "e:spg number:114-118"
-      chance: 10
+      chance: 100
+    - rawquery: "{serialized_mox}"
+      chance: 2
+      count: 1
+
+
+########## foil_boosterfun sheet:
+# Best guessed by Koda
+# 1 Serialized Double Rainbow Foil Mox Jasper every 5000 boosters -> 0.02% of boosters. 
