@@ -1,7 +1,5 @@
----
 # Lorwyn Eclipsed
 # Collector Booster
-#
 # Sources:
 # - https://magic.wizards.com/en/news/feature/collecting-lorwyn-eclipsed
 # - https://magic.wizards.com/en/products/lorwyn-eclipsed/card-image-gallery
@@ -13,130 +11,115 @@ superfilter: "-is:reversibleback"
 pack:
   foil_common: 5
   foil_uncommon: 4
-  foil_full_art_basic_land: 1
-  foil_rare_or_foil_mythic: 1
-  commander_rare_or_mythic: 1
-  booster_fun_rare_or_mythic: 2
-  foil_booster_fun_rare_or_mythic: 1
+  foil_land: 1
+  foil_rare_mythic: 1
+  non_foil_ecc: 1
+  non_foil_boosterfun: 2
+  foil_boosterfun: 1
+
+queries:
+  basic_land: "e:{set} number:269-273"
+  fullart_land: "e:{set} number:274-283"
+  borderless: "e:{set} number:284-296"
+  fable: "e:{set} number:297-346"
+  reversible_shockland: "e:{set} number:347-351"
+  serialized_bitterbloom: "e:{set} number:352"
+  extended_art: "e:{set} number:353-381"
+  japanese_showcase: "e:{set} number:382-391"
+  fracture_foil_japanese_showcase: "e:{set} number:392-401"
+
+  boosterfun_2_1: "{borderless} or {fable} or {reversible_shockland} or {extended_art}"
+
+  ecc_mythic_borderless: "e:ECC number:1-4"
+  ecc_rare_extended: "e:ECC number:25-44"
 
 sheets:
-  # 5 Traditional foil commons
   foil_common:
     foil: true
-    rawquery: "e:ecl r:c is:foil -t:basic"
+    query: "r:c"
     count: 81
 
-  # 4 Traditional foil uncommons
   foil_uncommon:
     foil: true
     any:
-      - rawquery: "e:ecl number:1-268 r:u"
-        rate: 100
-      - rawquery: "e:ecl number:297-346 r:u"
-        rate: 10
+      - use: uncommon
+        chance: 636 # 63.6%
+        count: 100
+      - rawquery: "{fable} r:u" # Uncommon fable frame
+        chance: 364 # 36.4%
+        count: 10
 
-  # 1 Traditional foil full-art basic land
-  foil_full_art_basic_land:
+  foil_land:
     foil: true
-    rawquery: "e:ecl t:basic is:fullart"
+    rawquery: "{fullart_land}"
     count: 10
 
-  # 1 Traditional foil rare or mythic rare
-  foil_rare_or_foil_mythic:
+  foil_rare_mythic:
     foil: true
     any:
-      - rawquery: "e:ecl number:1-268 r:r"
+      - use: rare
+        rate: 2
+        count: 65
+      - use: mythic
         rate: 1
-      - rawquery: "e:ecl number:1-268 r:m"
+        count: 22
+
+  non_foil_ecc:
+    any:
+      - rawquery: "{ecc_rare_extended}"
+        rate: 2
+        count: 20
+      - rawquery: "{ecc_mythic_borderless}"
         rate: 1
+        count: 4
 
-  # 1 Non-foil Lorwyn Eclipsed Commander (ECC) rare or mythic
-  commander_rare_or_mythic:
+  non_foil_boosterfun:
     any:
-      - rawquery: "e:ecc r:m is:borderless"
-        rate: 4
-      - rawquery: "e:ecc r:r frame:extendedart"
-        rate: 20
+      - rawquery: "{extended_art}"
+        chance: 3770 # 37.7%
+        count: 29
+      - rawquery: "{fable} r:r"
+        chance: 3370 # 33.7%
+        count: 26
+      - rawquery: "{fable} r:m"
+        chance: 910 # 9.1%
+        count: 14
+      - rawquery: "{borderless} r:r"
+        chance: 130 # 13%
+        count: 5
+      - rawquery: "{borderless} r:m"
+        chance: 450 # 4.5%
+        count: 8
+      - rawquery: "{reversible_shockland}" # Reversible shock land
+        chance: 200 # 2%
+        count: 5
 
-  # 2 Non-foil Booster Fun rares or mythics
-  booster_fun_rare_or_mythic:
+  boosterfun_2_1_ratio:
+    # Japan Showcase and the serialized Bitterbloom are separate because they don't respect the 2:1 ratio
     any:
-      - rawquery: "e:ecl r:r frame:extendedart"
-        chance: 377
-      - use: booster_fun_rare_or_mythic_fable_frame
-        chance: 428
-      - use: booster_fun_rare_or_mythic_bordereless_nonland
-        chance: 175
-      - rawquery: "e:ecl t:land is:borderless is:shockland"
-        chance: 20
+    - rawquery: "{boosterfun_2_1} r:r"
+      rate: 2
+      count: 65 # 29 + 26 + 5 + 5 = 65
+    - rawquery: "{boosterfun_2_1} r:m"
+      rate: 1
+      count: 22 # 14 + 8 = 22
+    - set: spg
+      code: "ECL"
+      rate: 1
+      count: 20
 
-  # Booster Fun — fable frame
-  booster_fun_rare_or_mythic_fable_frame:
-    any:
-      - rawquery: "e:ecl number:297-346 r:r"
-        rate: 337
-      - rawquery: "e:ecl number:297-346 r:m"
-        rate: 91
-
-  # Booster Fun — borderless nonland
-  booster_fun_rare_or_mythic_bordereless_nonland:
-    any:
-      - rawquery: "e:ecl -t:land is:borderless r:r"
-        rate: 130
-      - rawquery: "e:ecl -t:land is:borderless r:m"
-        rate: 45
-
-  # 1 Foil Booster Fun rare or mythic
-  foil_booster_fun_rare_or_mythic:
+  foil_boosterfun:
     foil: true
     any:
-      - rawquery: "e:ecl r:r frame:extendedart"
-        chance: 1824  # 30.4% = 0.304 * 6000 = 1824
-      - use: foil_booster_fun_rare_or_mythic_fable_frame
-        chance: 2070  # 27.2% + 7.3% = 34.5% = 0.345 * 6000
-      - use: foil_booster_fun_rare_or_mythic_bordereless_nonland
-        chance: 564  # 5.2% + 4.2% = 9.4% = 0.094 * 6000 = 564
-      - use: foil_reversable_shock_land
-        chance: 312  # 5.2% = 0.052 * 6000 = 312
-      - use: foil_special_guest
-        chance: 630  # 10.5% = 0.105 * 6000 = 630
-      - use: japan_showcase
-        chance: 600  # 9% + 1% = 10% = 0.10 * 6000 = 600
-      - rawquery: "e:ecl is:serialized"
-        chance: 1  # 1 out of 6000.
-
-  # Foil Booster Fun — fable frame
-  foil_booster_fun_rare_or_mythic_fable_frame:
-    foil: true
-    any:
-      - rawquery: "e:ecl number:297-346 r:r"
-        rate: 272
-      - rawquery: "e:ecl number:297-346 r:m"
-        rate: 73
-
-  # Foil Booster Fun — borderless nonland
-  foil_booster_fun_rare_or_mythic_bordereless_nonland:
-    foil: true
-    any:
-      - rawquery: "e:ecl -t:land is:borderless r:r"
-        rate: 52
-      - rawquery: "e:ecl -t:land is:borderless r:m"
-        rate: 42
-
-  # Foil reversible shock land
-  foil_reversable_shock_land:
-    foil: true
-    rawquery: "e:ecl t:land is:borderless is:shockland"
-
-  # Foil Special Guest
-  foil_special_guest:
-    foil: true
-    rawquery: "e:spg cn>=129 cn<=148"
-
-  # Japan showcase
-  japan_showcase:
-    any:
-      - rawquery: "e:ecl cn>=382 cn<=391"
-        rate: 9
-      - rawquery: "e:ecl cn>=392 cn<=401"
-        rate: 1
+      - use: boosterfun_2_1_ratio
+        chance: 5400 # 30.4 + 27.2% + 7.3% + 5.2% + 4.2% + 5.2% + 10.5% = 90.2% -> adjusted down to 90%
+        # 0.9 * 6000 = 5400, to make everything add up to 6000
+      - rawquery: "{japanese_showcase}"
+        chance: 540 # 9% -> 0.09 * 6000 = 540
+        count: 10
+      - rawquery: "{fracture_foil_japanese_showcase}"
+        chance: 60 # 1% -> 0.01 * 6000 = 60
+        count: 10
+      - rawquery: "{serialized_bitterbloom}"
+        chance: 1 # 1 / 6000
+        count: 1
