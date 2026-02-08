@@ -55,6 +55,11 @@ sheets:
     foil: true
     any:
     - use: booster_fun
-      chance: 995
+      chance: 5000
     - rawquery: "e:{set} number:491"
-      chance: 5
+      chance: 1
+
+########## foil_booster_fun sheet:
+# this very much napkin math, using a drop rate from other collector boosters for
+# serialized cards and lowering it, since it's the only serialiazed card in the set
+# 1 Serialized Double Rainbow Foil Edgar Markov every 5000 boosters -> 0.02% of boosters
