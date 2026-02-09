@@ -358,4 +358,11 @@ BanList.for_format("commander") do
     "Coalition Victory" => "legal",
     "Panoptic Mirror" => "legal",
   )
+
+  change(
+    "2026-02-09",
+    "https://magic.wizards.com/en/news/announcements/commander-banned-and-restricted-february-9-2026",
+    "Biorhythm" => "legal",
+    "Lutri, the Spellchaser" => "restricted", # new "banned as companion status"
+  )
 end

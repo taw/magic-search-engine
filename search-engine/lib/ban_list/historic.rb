@@ -378,4 +378,20 @@ BanList.for_format("historic") do
     "Entomb" => "banned",
     "Dark Depths" => "banned",
   )
+
+  change(
+    "2026-02-09",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-february-9-2026",
+    "Eldrazi Temple" => "banned",
+    "Ajani, Nacatl Pariah" => "banned",
+    "Crop Rotation" => "banned",
+    "Scholar of the Lost Trove" => "banned",
+    "Magus of the Moon" => "legal",
+    "Harbinger of the Seas" => "legal",
+    "Force of Vigor" => "legal",
+    "Force of Negation" => "legal",
+    "Endurance" => "legal",
+    "Wilderness Reclamation" => "legal",
+    "Agent of Treachery" => "legal",
+  )
 end
