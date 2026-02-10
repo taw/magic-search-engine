@@ -13,7 +13,11 @@ class PatchFoiling < Patch
     end
 
     each_printing do |card|
-      case [card["hasNonFoil"], card["hasFoil"]]
+      foil = !!(card["finishes"].include?("foil") || card["hasFoil"])
+      nonfoil = !!(card["finishes"].include?("nonfoil") || card["hasNonFoil"])
+      etched = card["finishes"].include?("etched")
+
+      case [nonfoil, foil]
       when [true, true]
         card["foiling"] = "both"
       when [true, false]
@@ -21,7 +25,7 @@ class PatchFoiling < Patch
       when [false, true]
         card["foiling"] = "foilonly"
       else
-        if card["finishes"]&.include?("etched")
+        if etched
           card["foiling"] = "foilonly"
         else
           warn "Bad foiling information for #{card["name"]} #{card["number"]} in #{card["set_code"]}"
