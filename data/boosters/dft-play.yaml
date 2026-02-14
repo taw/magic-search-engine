@@ -16,13 +16,11 @@ pack:
     - foil_land: 1
       chance: 20
 queries:
-  revved_up_c_or_u: "e:{set} number:292-332 (r:c or r:u)"
-  revved_up_r_or_m: "e:{set} number:292-332 (r:r or r:m)"
+  revved_up: "e:{set} number:292-332"
   rude_riders: "e:{set} number:333-346"
   grafitti_giants: "e:{set} number:347-354"
   borderless_rare: "e:{set} number: 355-375"
-  r_or_m_boosterfun: "{revved_up_r_or_m} or {rude_riders} or {grafitti_giants} or {borderless_rare}"
-  all_boosterfun: "{revved_up_c_or_u} or {revved_up_r_or_m} or {rude_riders} or {grafitti_giants} or {borderless_rare}"
+  boosterfun: "{revved_up} or {rude_riders} or {grafitti_giants} or {borderless_rare}"
   dual_land: "e:{set} t:land r:c -raceway -market"
   normal_basic: "e:{set} number:277-291"
   driver_basic: "e:{set} number:272-276"
@@ -31,19 +29,22 @@ sheets:
     query: "r:c -{dual_land} -t:basic"
   common_with_showcase:
     any:
-    - rawquery: "{revved_up_c_or_u} r:c"
+    - rawquery: "{revved_up} r:c"
       rate: 1
-    - query: "r:c -{dual_land} -t:basic alt:({revved_up_c_or_u} r:c)"
+      count: 9
+    - query: "r:c -{dual_land} -t:basic alt:({revved_up})"
       rate: 3
-    - query: "r:c -{dual_land} -t:basic -alt:({revved_up_c_or_u} r:c)"
+      count: 9
+    - query: "r:c -{dual_land} -t:basic -alt:({revved_up})"
+      count: 72
       rate: 4
   uncommon_with_showcase:
     any:
-    - rawquery: "{revved_up_c_or_u} r:u"
+    - rawquery: "{revved_up} r:u"
       rate: 1
-    - query: "r:u alt:({revved_up_c_or_u} r:u)"
+    - query: "r:u alt:({revved_up})"
       rate: 3
-    - query: "r:u -alt:({revved_up_c_or_u} r:u)"
+    - query: "r:u -alt:({revved_up})"
       rate: 4
   non_foil_land:
     any:
@@ -60,19 +61,19 @@ sheets:
     # Assume showcase cards appear at 1/4 rate
     any:
     - any:
-      - rawquery: "{r_or_m_boosterfun} r:r"
+      - rawquery: "{boosterfun} r:r"
         rate: 1
-      - query: "r:r alt:({r_or_m_boosterfun} r:r)"
+      - query: "r:r alt:({boosterfun})"
         rate: 3
-      - query: "r:r -alt:({r_or_m_boosterfun} r:r)"
+      - query: "r:r -alt:({boosterfun})"
         rate: 4
       chance: 6
     - any:
-      - rawquery: "{r_or_m_boosterfun} r:m"
+      - rawquery: "{boosterfun} r:m"
         rate: 1
-      - query: "r:m alt:({r_or_m_boosterfun} r:m)"
+      - query: "r:m alt:({boosterfun})"
         rate: 3
-      - query: "r:m -alt:({r_or_m_boosterfun} r:m)"
+      - query: "r:m -alt:({boosterfun})"
         rate: 4
       chance: 1
   wildcard:
