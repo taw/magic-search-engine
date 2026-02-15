@@ -15,24 +15,24 @@ pack:
   foil_booster_fun: 1
 queries:
   driver_basic: "e:{set} number:272-276"
-  revved_up_c_or_u: "e:{set} number:292-332 (r:c or r:u)"
-  revved_up_r_or_m: "e:{set} number:292-332 (r:r or r:m)"
+  revved_up: "e:{set} number:292-332"
   rude_riders: "e:{set} number:333-346"
   grafitti_giants: "e:{set} number:347-354"
   borderless_rare: "e:{set} number: 355-375"
+  serialized_aetherspark: "e:{set} number:376"
   extended_art: "e:{set} number: 377-396"
   jp_showcase: "e:{set} number:397-406"
   fracture_foil: "e:{set} number:407-416"
-  r_or_m_boosterfun: "{revved_up_r_or_m} or {rude_riders} or {grafitti_giants} or {borderless_rare} or {extended_art}"
+  boosterfun: "{revved_up} or {rude_riders} or {grafitti_giants} or {borderless_rare} or {extended_art}"
 sheets:
   foil_driver_seat_land:
     foil: true
     query: "{driver_basic}"
   revved_up_cu:
     any:
-    - rawquery: "{revved_up_c_or_u} r:c"
+    - rawquery: "{revved_up} r:c"
       chance: 15
-    - rawquery: "{revved_up_c_or_u} r:u"
+    - rawquery: "{revved_up} r:u"
       chance: 17
   foil_revved_up_cu:
     foil: true
@@ -51,21 +51,27 @@ sheets:
     rawquery: "e:drc number<=4"
   booster_fun:
     any:
-    - rawquery: "{r_or_m_boosterfun} r:r"
+    - rawquery: "{boosterfun} r:r"
       rate: 2
-    - rawquery: "{r_or_m_boosterfun} r:m"
+    - rawquery: "{boosterfun} r:m"
       rate: 1
   foil_booster_fun:
     foil: true
     any:
-    - rawquery: "{r_or_m_boosterfun} r:r"
-      chance: 746
-    - rawquery: "{r_or_m_boosterfun} r:m"
-      chance: 112
+    - rawquery: "{boosterfun} r:r"
+      chance: 7460
+    - rawquery: "{boosterfun} r:m"
+      chance: 1120
     - rawquery: "{jp_showcase}"
-      chance: 90
+      chance: 900
     - rawquery: "{fracture_foil}"
-      chance: 10
+      chance: 100
     - set: spg
       code: "DFT"
-      chance: 42
+      chance: 420
+    - rawquery: "{serialized_aetherspark}"
+      chance: 2
+
+########## foil_booster_fun sheet:
+# Best guessed by Koda
+# 1 Serialized Double Rainbow Foil Aetherspark every 5000 boosters -> 0.02% of boosters.
