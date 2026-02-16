@@ -103,7 +103,7 @@ describe "Regexp" do
   it "regexp rulings text" do
     assert_search_results "rulings:fly",
       "Devil K. Nevil",
-      "Druid of Purification",
+      "Ebony Fly",
       "Wings of Hubris",
       "Sarah's Wings"
     assert_search_equal "rulings:flying", 'rulings:/\bflying\b/'
