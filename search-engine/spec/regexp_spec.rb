@@ -75,6 +75,7 @@ describe "Regexp" do
       "Remodel",
       "Salvation Engine",
       "Spinnerette, Arachnobat",
+      "Sunken Hollow",
       "Suppressor Skyguard",
       "Voyager Glidecar"
 

@@ -91,6 +91,11 @@ class PatchPartner < Patch
           ["9", "33"],
           ["129", "140"],
         ],
+        "tmc" => [
+          # Bebop, Skull & Crossbones / Rocksteady, Mutant Marauder
+          ["15", "33"],
+          ["87", "94"],
+        ]
       }
       partner_numbers = {}
       special_pairs.each do |set_code, pairs|
