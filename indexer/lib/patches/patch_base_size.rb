@@ -4,6 +4,7 @@ class PatchBaseSize < Patch
   def call
     sizes = {
       "ecl" => 273, # up to the last normal basic
+      "tmt" => 195, # up to first set of basics (but they are fancy ones, boring ones are have much higher numbers)
     }
 
     sizes.each do |code, size|
