@@ -183,7 +183,7 @@ sheets:
         rate: 1
         count: 30
       - query: "r:r alt:({boosterfun})"
-        rate: 3
+        rate: 3 # TODO: This is not perfect, we should separate sewer and scene cards since there are rares with both versions
         count: 26
       - query: "r:r -alt:({boosterfun})"
         rate: 4
@@ -217,16 +217,16 @@ sheets:
     - use: uncommon_legend
       chance: 196 # 13.1% + 6.5% = 19.6%
     - use: rare_mythic_legend
-      chance: 79 # 6.9% + 1% = 7.9% # TODO: COMBINE RARES AND MYTHICS
+      chance: 117 # 100% - 68.7% - 19.6% = 11.7%
 
   wildcard:
     any:
       - use: common_boosterfun
-        chance: 259 # TODO: 24.9% + < 1%?
+        chance: 252
       - use: uncommon_boosterfun
         chance: 660 # 62.1% + 1.3% + 2.6% = 66.0%
       - use: rare_mythic_boosterfun
-        chance: 208 # TODO: calculate correctly
+        chance: 1000 - 252 - 660
 
   rare_mythic:
     # Wizards doesn't say it explicitly but I assume that the rare/mythics that appear in the legendary turtle slot can't appear in this slot
@@ -237,13 +237,12 @@ sheets:
   foil:
     foil: true
     any:
-      # TODO: Just using the base chances for now
       - use: common_boosterfun
-        chance: 615 # TODO: Update
+        chance: 619
       - use: uncommon_boosterfun
-        chance: 277 # TODO: Update
+        chance: 283
       - use: rare_mythic_boosterfun
-        chance: 67 # TODO: Update
+        chance: 1000 - 619 - 283
 
   non_foil_land:
     any:
