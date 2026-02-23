@@ -1,0 +1,266 @@
+# Teenage Mutant Ninja Turtles
+# Play Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-teenage-mutant-ninja-turtles
+# - https://magic.wizards.com/en/products/teenage-mutant-ninja-turtles/card-image-gallery
+# - https://scryfall.com/sets/tmt
+# - https://scryfall.com/sets/tmc
+# - https://scryfall.com/sets/pza
+
+
+# Trying to standarize slot names as much as possible:
+#   - common, uncommon, rare_mythic, foil, land, wildcard
+pack:
+  common:
+    - common_no_legend: 7
+      chance: 27
+    - common_no_legend: 6
+      source_material: 1
+      chance: 1
+  uncommon: 2
+  legendary_turtle: 1
+  wildcard: 1
+  rare_mythic: 1
+  foil: 1
+  land:
+    - non_foil_land: 1
+      chance: 80
+    - foil_land: 1
+      chance: 20
+
+queries:
+  dual_land: "e:{set} number:183,185-187,189"
+  rooftop_basic: "e:{set} number:191-195"
+  scene: "e:{set} number:196-214"
+  sewer: "e:{set} number:223-252"
+  silhouette: "e:{set} number:215-222"
+
+  regular_common: "e:{set} r:c -{dual_land} -t:basic"
+  legendary_turtle_c: "e:{set} t:turtle t:legendary r:c"
+  legendary_turtle_u: "e:{set} number:16,38,101,120" # Only the 4 main turtles, not all uncommon legendary turtles
+  legendary_turtle_r: "e:{set} number:15,35,103,121" # Only the 4 main turtles, not all rare legendary turtles
+  legendary_turtle_m: "e:{set} number:17,36,102,119" # Only the 4 main turtles, not all mythic legendary turtles
+
+  boosterfun: "{scene} or {sewer} or {silhouette}" # " or {fable} or {reversible_shockland}"
+
+  source_material: "e:PZA number:1-20"
+
+sheets:
+  ### Intermediate sheets that are used to build other sheets ###
+
+  common_no_legend:
+    # Looks like a 1:2 ratio of boosterfun to regular commons
+    any:
+    - rawquery: "{scene} -alt:({legendary_turtle_c}) r:c" # Common boosterfun without the common legendary
+      rate: 1
+      count: 1
+    - query: "{regular_common} -{legendary_turtle_c} alt:({scene})"
+      rate: 2
+      count: 1
+    - query: "{regular_common} -{legendary_turtle_c} -alt:({scene})"
+      count: 56 # TODO: Wizards says it's one less card here. Why? Does the tunnel don't show up in this slot?
+      rate: 3
+      
+  common_legend:
+    any:
+    - rawquery: "{scene} alt:({legendary_turtle_c})" # Boosterfun version of the common legendary turtles
+      rate: 1
+      count: 1
+    - query: "{legendary_turtle_c} alt:({scene})" # Regular version of the common legendary turtles that have a boosterfun version
+      rate: 2
+      count: 1
+    - query: "{legendary_turtle_c} -alt:({scene})" # Regular version of the common legendary turtles that don't have a boosterfun version
+      rate: 3
+      count: 4
+
+  uncommon_no_legend:
+    # Looks like a 1:2 ratio of boosterfun to regular uncommons
+    any:
+    - rawquery: "{boosterfun} -alt:{legendary_turtle_u} r:u" # Uncommon boosterfun without the uncommon legendary turtles
+      rate: 1
+      count: 9
+    - query: "r:u -{legendary_turtle_u} alt:({boosterfun})" # Regular uncommons (non legendary turtles) cards that have a boosterfun version
+      rate: 2
+      count: 9
+    - query: "r:u -{legendary_turtle_u} -alt:({boosterfun})" # Regular uncommons (non legendary turtles) cards that don't have a boosterfun version
+      count: 42
+      rate: 3
+
+  uncommon_legend:
+    any:
+    - rawquery: "{boosterfun} alt:({legendary_turtle_u})" # Boosterfun version of the uncommon legendary turtles
+      rate: 1
+      count: 4
+    - query: "{legendary_turtle_u})" # Regular version of the uncommon legendary turtles that have a boosterfun version
+      rate: 3
+      count: 4
+
+  rare_no_legend:
+    any:
+    - rawquery: "{boosterfun} -alt:{legendary_turtle_r} r:r" # Rare boosterfun without the rare legendary turtles
+      rate: 1
+      count: 26
+    - query: "r:r -{legendary_turtle_r} alt:({boosterfun})" # Regular rares (non legendary turtles) cards that have a boosterfun version
+      rate: 2
+      count: 22
+    - query: "r:r -{legendary_turtle_r} -alt:({boosterfun})" # Regular rares (non legendary turtles) cards that don't have a boosterfun version
+      count: 27
+      rate: 3
+
+  rare_legend:
+    any:
+    - rawquery: "{boosterfun} alt:({legendary_turtle_r})" # Scene version of the rare legendary turtles
+      rate: 1
+      count: 4
+    - query: "{legendary_turtle_r}" # Regular version rare legendary turtles
+      rate: 3
+      count: 4
+
+  mythic_no_legend:
+    any:
+    - rawquery: "{boosterfun} -alt:{legendary_turtle_m} r:m" # Mythic boosterfun without the legendary turtles
+      rate: 1
+      count: 8
+    - query: "r:m -{legendary_turtle_m} alt:({boosterfun})" # Regular mythic (non legendary turtles) cards that have a boosterfun version
+      rate: 2
+      count: 8
+    - query: "r:m -{legendary_turtle_m} -alt:({boosterfun})" # Regular mythic (non legendary turtles) cards that don't have a boosterfun version
+      count: 3
+      rate: 3
+
+  mythic_legend:
+    any:
+    - rawquery: "{boosterfun} alt:({legendary_turtle_m})" # Silouette version of the mythic legendary turtles
+      rate: 1
+      count: 4
+    - query: "{legendary_turtle_m}" # Regular version mythic legendary turtles
+      rate: 3
+      count: 4
+
+  rare_mythic_legend:
+    any:
+      - use: rare_legend
+        chance: 2 # There are 4 rares and 4 mythics so this gives us a 2:1 ratio
+      - use: mythic_legend
+        chance: 1
+
+  rare_mythic_no_legend:
+    any:
+      - use: rare_no_legend
+        chance: 49 * 2 # Amount of rares * 2
+      - use: mythic_no_legend
+        chance: 11 # Amount of mythics
+
+  common_boosterfun:
+    any:
+    - rawquery: "{boosterfun} r:c" # Common boosterfun
+      rate: 1
+      count: 2
+    - query: "{regular_common} alt:({boosterfun})" # Regular common cards that have a boosterfun version
+      rate: 2
+      count: 2
+    - query: "{regular_common} -alt:({boosterfun})" # Regular common cards that don't have a boosterfun version
+      count: 60
+      rate: 3
+
+  uncommon_boosterfun:
+    any:
+    - rawquery: "{boosterfun} r:u" # Uncommon boosterfun
+      rate: 1
+      count: 13
+    - query: "r:u alt:({boosterfun})" # Regular uncommon cards that have a boosterfun version
+      rate: 2
+      count: 13
+    - query: "r:u -alt:({boosterfun})" # Regular uncommon cards that don't have a boosterfun version
+      count: 42
+      rate: 3
+
+  rare_mythic_boosterfun:
+    # Assume showcase cards appear at 1/4 rate
+    any:
+    - any:
+      - rawquery: "{boosterfun} r:r"
+        rate: 1
+        count: 30
+      - query: "r:r alt:({boosterfun})"
+        rate: 3
+        count: 26
+      - query: "r:r -alt:({boosterfun})"
+        rate: 4
+        count: 27
+      chance: 53 * 2 # 2 chances each rare
+    - any:
+      - rawquery: "{boosterfun} r:m"
+        rate: 1
+        count: 12
+      - query: "r:m alt:({boosterfun})"
+        rate: 3
+        count: 12
+      - query: "r:m -alt:({boosterfun})"
+        rate: 4
+        count: 3
+      chance: 15 # 1 chance for each mythic
+
+  #################################
+  ### Actual slots defined here ###
+  #################################
+
+  uncommon:
+    any:
+    - use: uncommon_no_legend
+      chance: 1
+
+  legendary_turtle:
+    any:
+    - use: common_legend
+      chance: 687 # 64.1% + 4.65% = 68.7%
+    - use: uncommon_legend
+      chance: 196 # 13.1% + 6.5% = 19.6%
+    - use: rare_mythic_legend
+      chance: 79 # 6.9% + 1% = 7.9% # TODO: COMBINE RARES AND MYTHICS
+
+  wildcard:
+    any:
+      - use: common_boosterfun
+        chance: 259 # TODO: 24.9% + < 1%?
+      - use: uncommon_boosterfun
+        chance: 660 # 62.1% + 1.3% + 2.6% = 66.0%
+      - use: rare_mythic_boosterfun
+        chance: 208 # TODO: calculate correctly
+
+  rare_mythic:
+    # Wizards doesn't say it explicitly but I assume that the rare/mythics that appear in the legendary turtle slot can't appear in this slot
+    any:
+      - use: rare_mythic_no_legend
+        chance: 1
+
+  foil:
+    foil: true
+    any:
+      # TODO: Just using the base chances for now
+      - use: common_boosterfun
+        chance: 615 # TODO: Update
+      - use: uncommon_boosterfun
+        chance: 277 # TODO: Update
+      - use: rare_mythic_boosterfun
+        chance: 67 # TODO: Update
+
+  non_foil_land:
+    any:
+      - rawquery: "{dual_land}"
+        rate: 4
+        count: 5
+      - rawquery: "{rooftop_basic}"
+        rate: 1
+        count: 5
+
+  foil_land:
+    foil: true
+    use: non_foil_land
+
+  source_material:
+    rawquery: "{source_material}"
+    count: 20
+
+
+  # TODO: Can I use 'filter' to simplify the legendary turtles madness?
