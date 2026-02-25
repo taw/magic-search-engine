@@ -92,6 +92,8 @@ class PatchSetTypes < Patch
         set_types << "spellbook" << "box"
       when "clu"
         set_types << "box" << "booster"
+      when "tmc"
+        set_types << "commander"
       end
 
       # Some of these are not actually funny sets, just promo sets mixing funny and regular cards (like plst)
