@@ -433,6 +433,16 @@ class PatchMtgjsonVersions < Patch
       if card["name"] == "Oracle of the Alpha"
         card["spellbook"] = ["Ancestral Recall", "Black Lotus", "Mox Emerald", "Mox Jet", "Mox Pearl", "Mox Ruby", "Mox Sapphire", "Time Walk", "Timetwister"]
       end
+
+      # Fix some names, as they contain impossible to search Unicode characters
+      # at some point I might decide to drop this and develop a better solution
+      if card["name"] == "Ratonhnhaké꞉ton"
+        card["name"] = "Ratonhnhakéton"
+      end
+
+      if card["name"] == "Human—Time Lord Meta-Crisis"
+        card["name"] = "Human-Time Lord Meta-Crisis"
+      end
     end
 
     # spoiler set with some bad cards, remove this before release

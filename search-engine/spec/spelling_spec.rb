@@ -123,6 +123,15 @@ describe "Spelling" do
     "Minsc and Boo".should include_cards("Minsc & Boo, Timeless Heroes")
   end
 
+  # Whatever we decide to be name of this card in the end,
+  # it should be findable under all these names
+  it "special handling of :" do
+    "Ratonhnhaketon".should include_cards("Ratonhnhakéton")
+    "Ratonhnhakéton".should include_cards("Ratonhnhakéton")
+    "Ratonhnhaké:ton".should include_cards("Ratonhnhakéton")
+    "Ratonhnhaké꞉ton".should include_cards("Ratonhnhakéton")
+  end
+
   it "no special handling of not" do
     "Erase (Not the Urza's Legacy One)".should include_cards("Erase (Not the Urza's Legacy One)")
     "Not Dead After All".should include_cards("Not Dead After All")

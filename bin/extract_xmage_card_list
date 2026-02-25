@@ -29,6 +29,8 @@ CARDS_NAME_FIXES = {
   "Kongming, Sleeping Dragon" => 'Kongming, "Sleeping Dragon"',
   "Pang Tong, Young Phoenix" => 'Pang Tong, "Young Phoenix"',
   "Henzie Toolbox Torre" => 'Henzie "Toolbox" Torre',
+  # confusing unicode
+  "Ratonhnhaketon" => "Ratonhnhakéton",
 }
 
 class ExtractXmageCardList
@@ -90,6 +92,11 @@ class ExtractXmageCardList
       @cards.map{|set_code,name,number| "#{set_code}\t#{name}\t#{number}\n"}.sort.uniq.join
     )
   end
+end
+
+unless ARGV[0]
+  puts "Usage: bin/extract_xmage_card_list <xmage_root>"
+  exit 1
 end
 
 ExtractXmageCardList.new(ARGV[0]).call
