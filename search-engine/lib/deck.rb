@@ -109,7 +109,7 @@ class Deck
   end
 
   def all_token_set_codes
-    @tokens.map{|tok| tok[2].downcase }.to_set
+    @tokens.map{|tok| tok[2]&.downcase }.compact.to_set
   end
 
   def all_cards
