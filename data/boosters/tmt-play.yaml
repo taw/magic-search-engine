@@ -32,8 +32,8 @@ queries:
   dual_land: "e:{set} number:183,185-187,189"
   rooftop_basic: "e:{set} number:191-195"
   scene: "e:{set} number:196-214"
-  sewer: "e:{set} number:223-252"
   silhouette: "e:{set} number:215-222"
+  sewer: "e:{set} number:223-252"
 
   regular_common: "e:{set} r:c -{dual_land} -t:basic"
   legendary_turtle_c: "e:{set} t:turtle t:legendary r:c"
@@ -41,7 +41,7 @@ queries:
   legendary_turtle_r: "e:{set} number:15,35,103,121" # Only the 4 main turtles, not all rare legendary turtles
   legendary_turtle_m: "e:{set} number:17,36,102,119" # Only the 4 main turtles, not all mythic legendary turtles
 
-  boosterfun: "{scene} or {sewer} or {silhouette}" # " or {fable} or {reversible_shockland}"
+  boosterfun: "{scene} or {sewer} or {silhouette}"
 
   source_material: "e:PZA number:1-20"
 
