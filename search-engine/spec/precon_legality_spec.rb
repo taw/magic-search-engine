@@ -7,6 +7,11 @@ describe Deck do
   it "categorizes format correctly" do
     decks_to_check.group_by(&:format).each do |format, decks|
       decks.each do |deck|
+        # Tokens only
+        if deck.all_cards.empty?
+          next
+        end
+
         case format
         when "jumpstart", "shandalar", "planechase", "archenemy", "planechase commander", "arena", "archenemy commander"
           # no risk of accidentally tagging them wrong

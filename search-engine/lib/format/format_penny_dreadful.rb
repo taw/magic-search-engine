@@ -25,6 +25,9 @@ class FormatPennyDreadful < FormatVintage
     cards_file.readlines.map(&:chomp).flat_map{|name|
       if name == "SP//dr, Piloted by Peni"
         [name]
+      elsif name == "Ratonhnhaké꞉ton"
+        # Technical limitation on our side
+        ["Ratonhnhakéton"]
       else
         name.split(%r[\s*//\s*])
       end

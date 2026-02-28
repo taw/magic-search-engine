@@ -93,7 +93,7 @@ class PatchSetTypes < Patch
       when "clu"
         set_types << "box" << "booster"
       when "tmc"
-        set_types << "commander"
+        set_types << "commander" << "multiplayer"
       end
 
       # Some of these are not actually funny sets, just promo sets mixing funny and regular cards (like plst)
