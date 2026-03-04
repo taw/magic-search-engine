@@ -1,0 +1,184 @@
+# Teenage Mutant Ninja Turtles
+# Collector Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-teenage-mutant-ninja-turtles
+# - https://magic.wizards.com/en/products/teenage-mutant-ninja-turtles/card-image-gallery
+# - https://scryfall.com/sets/tmt
+# - https://scryfall.com/sets/tmc
+# - https://scryfall.com/sets/pza
+
+
+pack:
+  foil_common: 5
+  foil_uncommon: 3
+  commander: 1
+  commander:
+  - non_foil_commander: 1
+    chance: 7
+  - surge_foil_commander: 1
+    chance: 3
+  foil_land: 1
+  foil_rare_mythic: 1
+  boosterfun: # 7:1 ratio
+  - non_foil_boosterfun_tmc: 2
+    chance: 49 # 7/8 * 7/8 = 49/64
+  - surge_foil_boosterfun_tmc: 2 # TODO: Is it really possibl to get 2 surge foils?
+    chance: 1 # 1/8 * 1/8 = 1/64
+  - non_foil_boosterfun_tmc: 1
+    surge_foil_boosterfun_tmc: 1
+    chance: 7 # 7/8 * 1/8 = 7/64
+  source_material:
+    - non_foil_source_material: 1
+      chance: 75
+    - foil_source_material: 1
+      chance: 25
+  foil_boosterfun: 1
+
+queries:
+  rooftop_basic: "e:{set} number:191-195"
+  scene: "e:{set} number:196-214"
+  silhouette: "e:{set} number:215-222"
+  sewer: "e:{set} number:223-252"
+  pizza_basic: "e:{set} number:253-257"
+  extended_art: "e:{set} number:258-280"
+  japanese_showcase: "e:{set} number:281-290"
+  fracture_foil_japanese_showcase: "e:{set} number:291-300"
+  headliner: "e:{set} number:301-304"
+  surge_rooftop_basic: "e:{set} number:305-309"
+  surge_pizza_basic: "e:{set} number:310-314"
+  boosterfun_2_1: "{scene} or {sewer} or {silhouette} or {extended_art}"
+
+  source_material: "e:PZA number:1-20"
+
+  tmc_face_commander: "e:TMC number:1-6"
+  tmc_new: "e:TMC number:7-43"
+  tmc_reprint: "e:TMC number:44-82"
+  tmc_pixel: "e:TMC number:83-97"
+  tmc_boosterfun_2_1: "{tmc_face_commander} or {tmc_new} or {tmc_reprint}"
+
+sheets:
+  foil_common:
+    foil: true
+    any:
+    - query: "r:c"
+      rate: 1
+      count: 67
+    - rawquery: "{boosterfun_2_1} r:c"
+      rate: 1
+      count: 2
+
+  foil_uncommon:
+    foil: true
+    any:
+    - query: "r:u"
+      rate: 1
+      count: 55
+    - rawquery: "{boosterfun_2_1} r:u"
+      rate: 1
+      count: 6 + 7 # 7 scene + 6 sewer
+
+  non_foil_commander:
+    any:
+    - rawquery: "{tmc_reprint} r:c"
+      chance: 3
+      count: 9
+    - rawquery: "{tmc_reprint} r:u"
+      chance: 1
+      count: 4
+  
+  surge_foil_commander:
+    foil: true # TODO: How do I say they are surge foil?
+    any:
+    - rawquery: "{tmc_reprint} r:c"
+      chance: 3
+      count: 9
+    - rawquery: "{tmc_reprint} r:u"
+      chance: 1
+      count: 4
+
+  foil_land:
+    foil: true
+    any:
+    - rawquery: "{pizza_basic}"
+      rate: 6
+      count: 5
+    - rawquery: "{surge_pizza_basic}"
+      rate: 1
+      count: 5
+    - rawquery: "{surge_rooftop_basic}"
+      rate: 2
+      count: 5
+
+  foil_rare_mythic:
+    foil: true
+    any:
+    - query: "r:r"
+      rate: 2
+      count: 53
+    - query: "r:m"
+      rate: 1
+      count: 15
+
+  non_foil_boosterfun_tmc:
+    any:
+    - rawquery: "{boosterfun_2_1} r:r"
+      rate: 2
+      count: 10 + 20 + 22
+    - rawquery: "{boosterfun_2_1} r:m"
+      rate: 1
+      count: 4 + 1 + 8
+    - rawquery: "{tmc_boosterfun_2_1} r:r"
+      rate: 2
+      count: 36 + 26
+    - rawquery: "{tmc_boosterfun_2_1} r:m"
+      rate: 2
+      count: 1 + 6
+
+  surge_foil_boosterfun_tmc:
+    foil: true
+    any:
+    - rawquery: "({tmc_new} or {tmc_reprint} or {tmc_pixel}) r:r"
+      rate: 2
+      count: 36 + 26 + 8
+    - rawquery: "({tmc_new} or {tmc_pixel}) r:m"
+      rate: 1
+      count: 1 + 7
+    - rawquery: "{tmc_boosterfun_2_1} r:r"
+      rate: 2
+      count: 36 + 26
+    - rawquery: "{tmc_boosterfun_2_1} r:m"
+      rate: 2
+      count: 1 + 6
+    
+  non_foil_source_material:
+      rawquery: "{source_material}"
+      count: 20
+
+  foil_source_material:
+    foil: true
+    use: non_foil_source_material
+
+  boosterfun_2_1_ratio:
+    any:
+    - rawquery: "{boosterfun_2_1} r:r"
+      rate: 2
+      count: 10 + 20 + 22
+    - rawquery: "{boosterfun_2_1} r:m"
+      rate: 1
+      count: 4 + 1 + 8
+
+  foil_boosterfun:
+    foil: true
+    any:
+      - use: boosterfun_2_1_ratio
+        chance: 8993
+      - rawquery: "{japanese_showcase}"
+        chance: 900 # 9%
+        count: 10
+      - rawquery: "{fracture_foil_japanese_showcase}"
+        chance: 100 # 1%
+        count: 10
+      - rawquery: "{headliner}"
+        chance: 5 # 1 headliner every 2000 packs
+        count: 4
+
