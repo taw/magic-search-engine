@@ -244,7 +244,7 @@ describe "Card nicknames" do
       "Treetop Village",
       "Urza's Hot Dog Stand",
       "Wandering Fumarole"
-    assert_search_equal "is:manland", "t:land o:becomes o:creature -(Tyrite Sanctum) -(Sorrow's Path) -(Mech Hangar) -(______)"
+    assert_search_equal "is:manland", "t:land o:becomes o:creature -(Tyrite Sanctum) -(Sorrow's Path) -(Mech Hangar) -(_____) -(________)"
     assert_search_equal "is:manland", "is:creatureland"
   end
 
@@ -578,7 +578,7 @@ describe "Card nicknames" do
       "Fight the _____ Fight",
       "Finishing Move",
       "Glitterflitter",
-      "_____ Goblin",
+      "________ Goblin",
       '"Name Sticker" Goblin', # not explicitly, it's just MTGO variant
       "Last Voyage of the _____",
       "Lineprancers",

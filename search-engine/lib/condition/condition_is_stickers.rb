@@ -16,7 +16,7 @@ class ConditionIsStickers < ConditionNickname
       "fight the _____ fight",
       "finishing move",
       "glitterflitter",
-      "_____ goblin",
+      "________ goblin",
       '"name sticker" goblin', # not explicitly, it's just MTGO variant
       "last voyage of the _____",
       "lineprancers",
