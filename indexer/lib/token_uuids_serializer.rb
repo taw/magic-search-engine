@@ -18,7 +18,7 @@ class TokenUuidsSerializer
   def token_data(token)
     [
       token["set"]["code"],
-      token["setCode"]&.downcase,
+      token["set"]["token_set_code"] || token["set"]["code"],
       token["number"] + (token["side"] || ""),
       token["uuid"],
       token["faceName"] || token["name"],
