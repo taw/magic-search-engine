@@ -1,0 +1,61 @@
+# Final Fantasy Chocobo Bundle - Chocobo Booster + Scene Card
+# Data from: https://magic.wizards.com/en/news/feature/collecting-final-fantasy
+# And: https://wpn.wizards.com/en/products/final-fantasy
+#
+# The Chocobo Bundle contains (full product):
+#   - 10 Final Fantasy Play Boosters (modeled by fin-play.yaml)
+#   - 1 Chocobo Booster (12 cards, random - modeled below)
+#   - 1 of 24 Borderless Scene Cards (random - modeled below)
+#   - 1 Traditional Foil alt-art Paradise Chocobo promo FIC #483 (fixed - mtgjson product data)
+#   - 32 Landmark Full-Art Basic Lands FIN #294-309 x2 (fixed - mtgjson product data)
+#   - Click Wheel life counter and Chocobo Edition card box (non-card items)
+#
+# This file models only the random components:
+#   Chocobo Booster:
+#     - 10 Chocobo Track Foil basic lands (2 of each type, FIC #478-482)
+#     - 2 of 20 Borderless Chocobo Bundle cards (equal rates, Chocobo Track Foil)
+#       FIN #564-571 (8 from main set) + FIC #466-477 (12 from commander)
+#   Scene Card:
+#     - 1 of 24 Borderless Scene Cards (FIC #442-465, non-foil, equal rates)
+#
+# NOTES:
+#   - Chocobo Track Foil basics use two fixed sheets of 5 to guarantee exactly
+#     2 of each basic land type (Plains, Island, Swamp, Mountain, Forest).
+#   - All 20 borderless Chocobo Bundle cards appear at equal rates per WotC.
+
+name: "{set_name} Chocobo Bundle"
+pack:
+  # Chocobo Booster (12 cards)
+  chocobo_basic_a: 5
+  chocobo_basic_b: 5
+  borderless_chocobo: 2
+  # Bundle scene card slot
+  scene_card: 1
+
+sheets:
+  # 10 Chocobo Track Foil basics (2 of each type)
+  # Two fixed sheets of 5 guarantees exactly one of each basic per sheet,
+  # totaling 2 Plains, 2 Islands, 2 Swamps, 2 Mountains, 2 Forests.
+  chocobo_basic_a:
+    fixed: true
+    foil: true
+    rawquery: "e:fic number:478-482"
+    count: 5
+
+  chocobo_basic_b:
+    fixed: true
+    foil: true
+    use: chocobo_basic_a
+
+  # 2 of 20 Borderless Chocobo Bundle cards
+  # All at equal rates, all Chocobo Track Foil.
+  # 8 from FIN main set (#564-571) + 12 from FIC commander (#466-477)
+  borderless_chocobo:
+    foil: true
+    rawquery: "(e:fin number:564-571) or (e:fic number:466-477)"
+    count: 20
+
+  # 1 of 24 Borderless Scene Cards (non-foil, equal rates)
+  scene_card:
+    rawquery: "e:fic number:442-465"
+    count: 24
