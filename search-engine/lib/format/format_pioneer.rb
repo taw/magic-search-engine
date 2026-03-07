@@ -52,6 +52,7 @@ class FormatPioneer < Format
       "spm",
       "tla",
       "ecl",
+      "tmt",
     ]
   end
 end

@@ -75,6 +75,7 @@ class FormatModern < Format
       "spm",
       "tla",
       "ecl",
+      "tmt",
     ]
   end
 end
