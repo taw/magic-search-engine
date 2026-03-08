@@ -22,6 +22,8 @@ describe "Unicode Normalization" do
         letter.normalize_accents.should eq("Oe")
       when "ı"
         letter.normalize_accents.should eq("i")
+      when "ˣ"
+        letter.normalize_accents.should eq("x")
       else
         letter.normalize_accents.should match(/\A[a-zA-Z]\z/)
         letter.normalize_accents.should eq(letter.unicode_normalize(:nfd).gsub(/[^A-Za-z]/, ""))
