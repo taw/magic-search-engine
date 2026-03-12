@@ -351,7 +351,7 @@ describe Deck do
         # Box not deck
         next if deck.type == "Welcome Booster"
         # basics and commons in foil too
-        next if deck.name == "Final Fantasy Bundle Bundle Land Pack"
+        next if deck.name == "Final Fantasy Bundle Land Pack"
 
         # verified on WotC site, unusual rare foil instead of mythic, in just one deck
         next if deck.name == "Animated Army"
