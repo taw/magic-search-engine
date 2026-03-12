@@ -1,3 +1,6 @@
+# Due to some drama, website migrated to https://www.duelcommander.org/announcements/archives/
+# I could relink everything
+
 BanList.for_format("duel commander") do
   format_start(
     nil,
@@ -568,5 +571,21 @@ BanList.for_format("duel commander") do
     "Esior, Wardwing Familiar" => "legal",
     "Rofellos, Llanowar Emissary" => "legal",
     "Loyal Retainers" => "legal",
+  )
+
+  change(
+    "2025-11-24",
+    "https://www.duelcommander.org/announcements/2025/11/24/",
+    "Nadu, Winged Wisdom" => "banned",
+    "Breya, Etherium Shaper" => "legal",
+  )
+
+  change(
+    "2026-01-26",
+    "https://www.duelcommander.org/announcements/2026/01/26/",
+    "Rograkh, Son of Rohgahh" => "restricted",
+    "Tasigur, the Golden Fang" => "legal",
+    "Trazyn the Infinite" => "legal",
+    "Necrotic Ooze" => "legal",
   )
 end
