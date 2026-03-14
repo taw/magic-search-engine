@@ -1,0 +1,25 @@
+name: "Ugin's Fate Event Booster Pack"
+pack:
+# rarity drop rate can be anything
+- altart: 2
+# any land from FRF
+- land: 1
+# there is also a Manifest token card
+sheets:
+  altart:
+    any:
+    - rawquery: "e:ugin r:m"
+      count: 1
+      rate: 1
+    - rawquery: "e:ugin r:r"
+      count: 7
+      rate: 2
+    - rawquery: "e:ugin r:u"
+      count: 8
+      rate: 4
+    - rawquery: "e:ugin r:c"
+      count: 10
+      rate: 8
+  land:
+  - query: "t:basic"
+    count: 10
