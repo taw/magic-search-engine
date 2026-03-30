@@ -56,7 +56,7 @@ class String
 end
 
 class CardDatabase
-  attr_reader :sets, :cards, :blocks, :artists, :cards_in_precons
+  attr_reader :sets, :cards, :blocks, :artists, :cards_in_precons, :products
 
   def initialize
     @sets = {}
@@ -403,6 +403,7 @@ class CardDatabase
   end
 
   def load_products!
+    @products = []
     products_data.each do |product_data|
       set = @sets[product_data["set_code"]]
       unless set
@@ -410,6 +411,7 @@ class CardDatabase
         next
       end
       product = Product.new(set, product_data)
+      @products << product
       set.products << product
     end
   end

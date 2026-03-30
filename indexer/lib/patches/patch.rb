@@ -1,8 +1,9 @@
 class Patch
-  def initialize(cards, sets, decks)
+  def initialize(cards, sets, decks, products)
     @cards = cards
     @sets = sets
     @decks = decks
+    @products = products
   end
 
   def each_card(&block)

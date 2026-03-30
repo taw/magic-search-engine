@@ -1,3 +1,18 @@
 %h3= @product.name
 %div= "#{@set.name} (#{@set.code.upcase})"
-%pre= JSON.pretty_generate(@product.data)
+%ul
+  - @product.contents.each do |count, type, *content|
+    %li
+      - if count > 1
+        = "#{count}x"
+      - if type == "deck"
+        - # All this resolving should already be done
+        - deck = $CardDatabase.decks.find{|d| d.set_code == content[0] and d.name == content[1] }
+        - if deck
+          = link_to_deck(deck) do
+            = "#{deck.name}"
+        - else
+          = "#{content[1]} (#{content[0]})"
+      - else
+        = "#{type}:"
+        = content.join(" ")
