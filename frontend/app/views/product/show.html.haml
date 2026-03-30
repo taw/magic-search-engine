@@ -1,34 +1,3 @@
 %h3= @product.name
 %div= "#{@set.name} (#{@set.code.upcase})"
-%ul
-  - @product.contents.each do |count, type, *content|
-    %li
-      - if count > 1
-        = "#{count}x"
-      - if type == "deck"
-        - # All this resolving should already be done
-        - deck = $CardDatabase.decks.find{|d| d.set_code == content[0] and d.name == content[1] }
-        - if deck
-          = link_to_deck(deck) do
-            = "#{deck.name}"
-        - else
-          = "deck: #{content[1]} (#{content[0]})"
-      - elsif type == "product"
-        - product = $CardDatabase.products.find{|p| p.set_code == content[0] and p.name == content[1] }
-        - if product
-          = link_to_product(product) do
-            = "#{product.name}"
-        - else
-          = "product: #{content[1]} (#{content[0]})"
-      - elsif type == "pack"
-        - code = content[1] == "default" ? content[0] : "#{content[0]}-#{content[1]}"
-        - pack = $CardDatabase.supported_booster_types[code]
-        - if pack
-          = link_to_pack(pack) do
-            = pack.name
-          = "(#{code.upcase})"
-        - else
-          = "pack: #{code}"
-      - else
-        = "#{type}:"
-        = content.join(" ")
+= render 'product/contents', product: @product

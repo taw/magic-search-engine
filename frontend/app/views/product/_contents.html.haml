@@ -1,0 +1,41 @@
+%ul
+  - product.contents.each do |count, type, *content|
+    %li
+      - if count > 1
+        = "#{count}x"
+      - if type == "deck"
+        - # All this resolving should already be done
+        - deck = $CardDatabase.decks.find{|d| d.set_code == content[0] and d.name == content[1] }
+        - if deck
+          = link_to_deck(deck) do
+            = "#{deck.name}"
+        - else
+          = "deck: #{content[1]} (#{content[0]})"
+      - elsif type == "product"
+        - subproduct = $CardDatabase.products.find{|p| p.set_code == content[0] and p.name == content[1] }
+        - if subproduct
+          = link_to_product(subproduct) do
+            = "#{subproduct.name}"
+            = render 'product/contents', product: subproduct
+        - else
+          = "product: #{content[1]} (#{content[0]})"
+      - elsif type == "pack"
+        - code = content[1] == "default" ? content[0] : "#{content[0]}-#{content[1]}"
+        - pack = $CardDatabase.supported_booster_types[code]
+        - if pack
+          = link_to_pack(pack) do
+            = pack.name
+          = "(#{code.upcase})"
+        - else
+          = "pack: #{code}"
+      - elsif type == "card"
+        - card = $CardDatabase.sets[content[0]].printings.find{|p| p.number == content[1]}
+        - label = "#{content[2]} [#{content[0].upcase}:#{content[1]}]#{ content[3] == ["foil"] ? " [foil]": ""}"
+        - if card
+          = link_to_card(card) do
+            = label
+        - else
+          = "card: #{label}"
+      - else
+        = "#{type}:"
+        = content.join(" ")
