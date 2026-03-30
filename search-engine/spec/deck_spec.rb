@@ -149,6 +149,9 @@ describe Deck do
     precon_sets.each do |set|
       sets_found = set.decks.flat_map(&:physical_cards).map(&:set).map(&:code).uniq
       case set.code
+      when "dd3"
+        # product-only set
+        sets_found.should match_array []
       when "e01"
         # Contains some Amonkhet cards
         sets_found.should match_array ["e01", "akh", "oe01"]
