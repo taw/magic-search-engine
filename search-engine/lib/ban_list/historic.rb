@@ -394,4 +394,10 @@ BanList.for_format("historic") do
     "Wilderness Reclamation" => "legal",
     "Agent of Treachery" => "legal",
   )
+
+  change(
+    "2026-03-23",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-march-23-2026",
+    "Food Chain" => "banned",
+  )
 end

@@ -588,4 +588,10 @@ BanList.for_format("duel commander") do
     "Trazyn the Infinite" => "legal",
     "Necrotic Ooze" => "legal",
   )
+
+  change(
+    "2026-03-30",
+    "https://www.duelcommander.org/announcements/2026/03/30/",
+    "Lutri, the Spellchaser" => "restricted", # banned as companion only, not as commander
+  )
 end
