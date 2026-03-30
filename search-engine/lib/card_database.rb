@@ -91,6 +91,10 @@ class CardDatabase
     @booster_data ||= JSON.parse(Pathname("#{__dir__}/../../index/booster_index.json").read)
   end
 
+  def products_data
+    @products_data ||= JSON.parse(Pathname("#{__dir__}/../../index/products.json").read)
+  end
+
   # This used to allow all other cards with same name from same set,
   # but this is no longer the case
   def decks_containing(card_printing)
@@ -394,7 +398,20 @@ class CardDatabase
     setup_artists!
     setup_sort_index!
     DeckDatabase.new(self).load!
+    load_products!
     index_cards_in_precons!
+  end
+
+  def load_products!
+    products_data.each do |product_data|
+      set = @sets[product_data["set_code"]]
+      unless set
+        warn "Can't find set #{product_data["set_code"]} for product #{product_data["name"]}"
+        next
+      end
+      product = Product.new(set, product_data)
+      set.products << product
+    end
   end
 
   # Change card number to CardPrinting reference

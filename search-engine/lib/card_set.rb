@@ -26,7 +26,7 @@ class CardSet
     @funny         = !!data["funny"]
     @decks         = []
     @base_set_size = data["base_set_size"]
-    @products = (data["products"] || []).map{|x| Product.new(self, x)}
+    @products = []
     @subsets = data["subsets"]
     @languages = data["languages"]
     @token_set_code = data["token_set_code"]

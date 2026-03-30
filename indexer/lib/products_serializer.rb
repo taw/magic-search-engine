@@ -4,15 +4,12 @@ class ProductsSerializer
   end
 
   def to_s
-    @products.map{|product|
-      [
-        product["set_code"],
-        product["name"],
-        product["category"],
-        product["subtype"],
-        product["uuid"],
-        product["releaseDate"],
-      ].join("\t") + "\n"
-    }.join
+    JSON.pretty_generate(
+      @products.map{|product|
+        product.merge(
+          "release_date" => product["releaseDate"],
+        ).compact.except("setCode", "releaseDate", "cardCount")
+      }.sort_by{|product| [product["set_code"], product["name"]]}
+    )
   end
 end
