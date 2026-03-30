@@ -15,7 +15,7 @@ describe Deck do
         case format
         when "jumpstart", "shandalar", "planechase", "archenemy", "planechase commander", "arena", "archenemy commander"
           # no risk of accidentally tagging them wrong
-        when "casual", "historic brawl"
+        when "casual", "historic brawl", "dandan"
           verify_deck_is_casual(deck)
         when "commander", "modern", "standard", "brawl", "pioneer", "standard", "casual standard"
           verify_deck_is_legal(deck)
