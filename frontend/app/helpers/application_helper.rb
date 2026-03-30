@@ -35,6 +35,10 @@ module ApplicationHelper
     link_to(controller: "pack", action: "show", id: pack.code, &blk)
   end
 
+  def link_to_product(product, &blk)
+    link_to(controller: "product", action: "show", set: product.set_code, id: product.slug, &blk)
+  end
+
   def link_to_deck(deck, &blk)
     link_to(controller: "deck", action: "show", set: deck.set_code, id: deck.slug, &blk)
   end

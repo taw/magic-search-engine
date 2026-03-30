@@ -4,4 +4,5 @@
   %ul
     - set.products.each do |product|
       %li
-        = product.name
+        = link_to_product(product) do
+          = "#{product.name}"

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get "/settings" => "settings#index"
   get "/" => "card#index"
   get "product" => "product#index"
+  get "product/:set/:id" => "product#show"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Temporary
