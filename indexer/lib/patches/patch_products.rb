@@ -41,7 +41,21 @@ class PatchProducts < Patch
       when "card"
         val.each do |v|
           foil = v["foil"] || v["finishes"] == ["foil"]
-          result << [1, "card", v["set"], v["number"], v["name"], !!foil]
+          set_code = v["set"]
+          number = v["number"]
+          name = v["name"]
+          if !@cards[name]
+            # Fail, but allow for now
+            result << [1, "card", set_code, number, name, !!foil]
+          elsif @cards[name].find{|p| p["set_code"] == set_code and p["number"] == number}
+            result << [1, "card", set_code, number, name, !!foil]
+          elsif @cards[name].find{|p| p["set_code"] == set_code and p["number"] == number + "a"}
+            # DFC
+            result << [1, "card", set_code, number + "a", name, !!foil]
+          else
+            # Fail, but allow for now
+            result << [1, "card", set_code, number, name, !!foil]
+          end
         end
       when "variable"
         raise unless val.size == 1 and val[0].keys == ["configs"]
