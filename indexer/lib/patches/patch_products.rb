@@ -10,7 +10,7 @@ class PatchProducts < Patch
   def parse_contents(contents)
     result = []
     if contents.empty?
-      result << [1, "unknown_contents"]
+      result << [1, "unknown"]
     end
 
     contents.each do |key, val|
@@ -21,7 +21,12 @@ class PatchProducts < Patch
         end
       when "pack"
         val.each do |v|
-          result << [1, "pack", v["set"], v["code"]]
+          if v["code"] == "default"
+            pack_code = v["set"]
+          else
+            pack_code = "#{v["set"]}-#{v["code"]}"
+          end
+          result << [1, "pack", pack_code]
         end
       when "other"
         # There's a lot of weird stuff here
@@ -38,8 +43,19 @@ class PatchProducts < Patch
           result << [1, "card", v["set"], v["number"], v["name"], v["finishes"]]
         end
       when "variable"
-        # For now I'll just skip them and implement the rest of the system
-        result << [1, "variable_contents", val]
+        raise unless val.size == 1 and val[0].keys == ["configs"]
+        configs = val[0]["configs"]
+        subproducts = configs.map do |config|
+          {
+            "chance" => config.dig("variable_config", 0, "chance") || 1,
+            "subproduct" => parse_contents(config.except("variable_config")),
+          }
+        end
+        total = subproducts.map{|c| c["chance"]}.sum
+        subproducts.each do |c|
+          c["total"] = total
+        end
+        result << [1, "variable", subproducts]
       else
         raise "Unknown product contents key: #{key}"
       end

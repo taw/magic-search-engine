@@ -1,5 +1,5 @@
 %ul
-  - product.contents.each do |count, type, *content|
+  - contents.each do |count, type, *content|
     %li
       - if count > 1
         = "#{count}x"
@@ -8,7 +8,7 @@
         - deck = $CardDatabase.decks.find{|d| d.set_code == content[0] and d.name == content[1] }
         - if deck
           = link_to_deck(deck) do
-            = "#{deck.name}"
+            = "#{deck.name} — #{deck.type}"
         - else
           = "deck: #{content[1]} (#{content[0]})"
       - elsif type == "product"
@@ -16,18 +16,17 @@
         - if subproduct
           = link_to_product(subproduct) do
             = "#{subproduct.name}"
-            = render 'product/contents', product: subproduct
+            = render 'product/contents', contents: subproduct.contents
         - else
           = "product: #{content[1]} (#{content[0]})"
       - elsif type == "pack"
-        - code = content[1] == "default" ? content[0] : "#{content[0]}-#{content[1]}"
-        - pack = $CardDatabase.supported_booster_types[code]
+        - pack = $CardDatabase.supported_booster_types[content[0]]
         - if pack
           = link_to_pack(pack) do
             = pack.name
-          = "(#{code.upcase})"
+          = "(#{content[0].upcase})"
         - else
-          = "pack: #{code}"
+          = "pack: #{content[0]}"
       - elsif type == "card"
         - card = $CardDatabase.sets[content[0]].printings.find{|p| p.number == content[1]}
         - label = "#{content[2]} [#{content[0].upcase}:#{content[1]}]#{ content[3] == ["foil"] ? " [foil]": ""}"
@@ -36,6 +35,15 @@
             = label
         - else
           = "card: #{label}"
+      - elsif type == "unknown"
+        Unknown contents
+      - elsif type == "variable"
+        Variable contents
+        %ul
+          - content[0].each do |option|
+            %li
+              = "#{option["chance"]}/#{option["total"]} (#{(100.0*option["chance"]/option["total"]).round(2)}%)"
+              = render 'product/contents', contents: option["subproduct"]
       - else
         = "#{type}:"
         = content.join(" ")
