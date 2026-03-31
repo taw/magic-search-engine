@@ -52,6 +52,8 @@ class PatchProducts < Patch
           elsif @cards[name].find{|p| p["set_code"] == set_code and p["number"] == number + "a"}
             # DFC
             result << [1, "card", set_code, number + "a", name, !!foil]
+          elsif @cards[name].find{|p| p["set_code"] == set_code and p["number"] == number.downcase}
+            result << [1, "card", set_code, number.downcase, name, !!foil]
           else
             # Fail, but allow for now
             result << [1, "card", set_code, number, name, !!foil]
