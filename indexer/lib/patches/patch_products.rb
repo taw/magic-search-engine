@@ -40,7 +40,8 @@ class PatchProducts < Patch
         end
       when "card"
         val.each do |v|
-          result << [1, "card", v["set"], v["number"], v["name"], v["finishes"]]
+          foil = v["foil"] || v["finishes"] == ["foil"]
+          result << [1, "card", v["set"], v["number"], v["name"], !!foil]
         end
       when "variable"
         raise unless val.size == 1 and val[0].keys == ["configs"]

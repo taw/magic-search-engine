@@ -29,7 +29,7 @@
           = "pack: #{content[0]}"
       - elsif type == "card"
         - card = $CardDatabase.sets[content[0]].printings.find{|p| p.number == content[1]}
-        - label = "#{content[2]} [#{content[0].upcase}:#{content[1]}]#{ content[3] == ["foil"] ? " [foil]": ""}"
+        - label = "#{content[2]} [#{content[0].upcase}:#{content[1]}]#{ content[3] ? " [foil]": ""}"
         - if card
           = link_to_card(card) do
             = label
