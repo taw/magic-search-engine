@@ -78,7 +78,8 @@ describe "Full Database Test" do
       "Callous Sell-Sword", "Burn Together",
       "Pollen-Shield Hare", "Hare Raising",
       "Kellan, Daring Traveler", "Journey On",
-      "Their", "There", "They're"
+      "Their", "There", "They're",
+      "Studious First-Year", "Rampant Growth (Prepared)"
     # Semantics of that changed
     # it used to match a lot of double-faced cards
     # then it all disappeared as DFCs share cmc
