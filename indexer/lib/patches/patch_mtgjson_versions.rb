@@ -443,6 +443,26 @@ class PatchMtgjsonVersions < Patch
       if card["name"] == "Human—Time Lord Meta-Crisis"
         card["name"] = "Human-Time Lord Meta-Crisis"
       end
+
+      # Rename prepared spells to keep them unique
+      # only those that also exist as standalone cards need special handling
+      prepared_spells = [
+        "Ancestral Recall",
+        "Braingeyser",
+        "Channel",
+        "Exsanguinate",
+        "Rampant Growth",
+        "Reanimate",
+        "Replenish",
+        "Secret Rendezvous",
+        "Wheel of Fortune",
+      ]
+      if card["names"]
+        if prepared_spells.include?(card["name"])
+          card["name"] = "#{card["name"]} (Prepared)"
+        end
+        card["names"] = card["names"].map{|n| prepared_spells.include?(n) ? "#{n} (Prepared)" : n }
+      end
     end
 
     # spoiler set with some bad cards, remove this before release
