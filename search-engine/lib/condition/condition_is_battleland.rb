@@ -3,8 +3,10 @@ class ConditionIsBattleland < ConditionNickname
     [
       "canopy vista",
       "cinder glade",
+      "eclipsed steppe",
       "prairie stream",
       "radiant summit",
+      "scorched geyser",
       "smoldering marsh",
       "sodden verdure",
       "sunken hollow",

@@ -2,6 +2,7 @@ class ConditionIsCycleland < ConditionNickname
   def names
     [
       "canyon slough",
+      "coastal peak",
       "festering thicket",
       "fetid pools",
       "glittering massif",
@@ -9,6 +10,7 @@ class ConditionIsCycleland < ConditionNickname
       "rain-slicked copse",
       "scattered groves",
       "sheltered thicket",
+      "umbral expanse",
     ]
   end
 

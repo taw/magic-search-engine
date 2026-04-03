@@ -224,7 +224,7 @@ describe "Any queries" do
     end
 
     it "spell" do
-      assert_search_equal "any:spell", "is:spell or o:spell"
+      assert_search_equal "any:spell", "is:spell or o:spell or ft:spell"
     end
 
     it "timeshifted" do

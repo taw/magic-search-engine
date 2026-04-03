@@ -244,7 +244,7 @@ describe "Card nicknames" do
       "Treetop Village",
       "Urza's Hot Dog Stand",
       "Wandering Fumarole"
-    assert_search_equal "is:manland", "t:land o:becomes o:creature -(Tyrite Sanctum) -(Sorrow's Path) -(Mech Hangar) -(_____) -(________)"
+    assert_search_equal "is:manland", "t:land o:becomes o:creature -(Tyrite Sanctum) -(Sorrow's Path) -(Mech Hangar) -(_____) -(________) -(Skycoach Waypoint)"
     assert_search_equal "is:manland", "is:creatureland"
   end
 
@@ -271,8 +271,10 @@ describe "Card nicknames" do
     assert_search_results "is:battleland",
       "Canopy Vista",
       "Cinder Glade",
+      "Eclipsed Steppe",
       "Prairie Stream",
       "Radiant Summit",
+      "Scorched Geyser",
       "Smoldering Marsh",
       "Sodden Verdure",
       "Sunken Hollow",
@@ -466,13 +468,15 @@ describe "Card nicknames" do
   it "is:cycleland" do
     assert_search_results "is:cycleland",
       "Canyon Slough",
+      "Coastal Peak",
       "Festering Thicket",
       "Fetid Pools",
       "Glittering Massif",
       "Irrigated Farmland",
       "Rain-Slicked Copse",
       "Scattered Groves",
-      "Sheltered Thicket"
+      "Sheltered Thicket",
+      "Umbral Expanse"
 
     assert_search_equal "is:cycleland", 't:land o:"cycling {2}" (t:plains or t:island or t:swamp or t:mountain or t:forest)'
     assert_search_equal "is:cycleland", "is:bicycleland"
