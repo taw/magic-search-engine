@@ -50,6 +50,8 @@ describe "CLI Frontend" do
         Tangled Islet
         Temple Garden
         Tropical Island
+        Turbulent Fen
+        Turbulent Wilderness
         Underground Mortuary
         Vernal Fen
         Wooded Ridgeline
@@ -229,6 +231,7 @@ describe "CLI Frontend" do
       verbose: false,
       output: <<-EOF,
         Ral Zarek
+        Ral Zarek, Guest Lecturer
         Ral, Caller of Storms
         Ral, Crackling Wit
         Ral, Izzet Viceroy
