@@ -28,6 +28,9 @@ class FormatPennyDreadful < FormatVintage
       elsif name == "Ratonhnhaké꞉ton"
         # Technical limitation on our side
         ["Ratonhnhakéton"]
+      elsif name == "With Great Power..."
+        # mtgjson renamed
+        ["With Great Power . . ."]
       else
         name.split(%r[\s*//\s*])
       end

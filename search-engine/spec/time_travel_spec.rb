@@ -26,10 +26,10 @@ describe "Time Travel Test" do
   end
 
   it "time travel standard legal reprints activate in modern" do
-    assert_search_results "f:legacy rancor", "Rancor"
-    assert_search_results "f:modern rancor", "Rancor"
-    assert_search_results "time:m11 f:legacy rancor", "Rancor"
-    assert_search_results "time:m11 f:modern rancor"
+    assert_search_results "f:legacy name=rancor", "Rancor"
+    assert_search_results "f:modern name=rancor", "Rancor"
+    assert_search_results "time:m11 f:legacy name=rancor", "Rancor"
+    assert_search_results "time:m11 f:modern name=rancor"
   end
 
   it "time travel eternal formats accept all black border sets (even UNF)" do
