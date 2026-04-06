@@ -34,7 +34,7 @@ class PatchMtgjsonVersions < Patch
 
     if fcmc
       case card["layout"]
-      when "split", "aftermath", "adventure"
+      when "split", "aftermath", "adventure", "prepare"
         cmc = fcmc
       when "transform"
         # ignore because
@@ -451,13 +451,14 @@ class PatchMtgjsonVersions < Patch
         "Braingeyser",
         "Channel",
         "Exsanguinate",
+        "Lightning Bolt",
         "Rampant Growth",
         "Reanimate",
         "Replenish",
         "Secret Rendezvous",
         "Wheel of Fortune",
       ]
-      if card["names"]
+      if card["layout"] == "prepare"
         if prepared_spells.include?(card["name"])
           card["name"] = "#{card["name"]} (Prepared)"
         end

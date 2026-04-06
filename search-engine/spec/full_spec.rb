@@ -79,7 +79,8 @@ describe "Full Database Test" do
       "Pollen-Shield Hare", "Hare Raising",
       "Kellan, Daring Traveler", "Journey On",
       "Their", "There", "They're",
-      "Studious First-Year", "Rampant Growth (Prepared)"
+      "Studious First-Year", "Rampant Growth (Prepared)",
+      "Emeritus of Conflict", "Lightning Bolt (Prepared)"
     # Semantics of that changed
     # it used to match a lot of double-faced cards
     # then it all disappeared as DFCs share cmc
@@ -283,7 +284,7 @@ describe "Full Database Test" do
     assert_search_equal "mana=mno", "mana={m}{n}{o}"
     assert_search_equal "mana=mmn", "mana=mnn"
     assert_search_equal "mana=mmn", "mana>=mnn mana <=mmn"
-    assert_count_cards "mana>=mh game:paper", 31
+    assert_count_cards "mana>=mh game:paper", 32
     assert_search_results "mana=mh game:paper",
       "Bant Sureblade",
       "Crystallization",

@@ -208,6 +208,7 @@ describe "Card nicknames" do
       "Forbidding Watchtower",
       "Frostwalk Bastion",
       "Ghitu Encampment",
+      "Great Hall of the Biblioplex",
       "Hall of Storm Giants",
       "Hissing Quagmire",
       "Hive of the Eye Tyrant",

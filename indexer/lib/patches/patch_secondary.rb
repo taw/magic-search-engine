@@ -19,7 +19,7 @@ class PatchSecondary < Patch
         else
           warn "No idea if DFC #{card["name"]} is primary or secondary"
         end
-      elsif card["layout"] == "flip" or card["layout"] == "aftermath" or card["layout"] == "adventure"
+      elsif card["layout"] == "flip" or card["layout"] == "aftermath" or card["layout"] == "adventure" or card["layout"] == "prepare"
         raise unless card["number"] =~ /[ab]\z/i
         card["secondary"] = true if card["number"] =~ /b\z/i
       elsif card["layout"] == "meld"
