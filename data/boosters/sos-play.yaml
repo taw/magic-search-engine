@@ -1,0 +1,150 @@
+# Secrets of Strixhaven
+# Play Booster (English)
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-secrets-of-strixhaven
+# - https://magic.wizards.com/en/products/secrets-of-strixhaven/card-image-gallery
+# - https://scryfall.com/sets/sos
+# - https://scryfall.com/sets/soc
+# - https://scryfall.com/sets/soa]
+# - https://mtgscribe.com/2026/04/03/secrets-of-strixhaven-play-booster-fact-sheet/
+
+
+
+# TODO: Should I add some language tag to make it explicit that this is for English boosters?
+
+superfilter: "-is:reversibleback" # TODO: Not sure if I need it here
+
+
+pack:
+  common_special_guest: # TODO: Can I call this "common"? 
+    - common: 6
+      chance: 54
+    - common: 5
+      special_guest: 1
+      chance: 1
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  mystical_archive: 1
+  foil: 1
+  land:
+    - non_foil_land: 1
+      chance: 80
+    - foil_land: 1
+      chance: 20
+
+queries:
+  dual_land: "e:{set} number:255,256,258,262,266"
+  spellcraft_land: "e:{set} number:267-271"
+  basic_land: "e:{set} number:272-281"
+  boosterfun: "e:{set} number:282-305"
+  mystical_archive: "e:SOA number:1-100" # TODO: Update numbers
+
+sheets:
+  common:
+    query: "r:c" # Regular common
+    count: 81
+
+  uncommon:
+    query: "r:u" # Regular uncommon
+    count: 100
+
+  rare:
+    # By doing the math on the percentages given by Wizards, we come to the 7:1 rate between normal and boosterfun rares and mythics.
+    any:
+      - rawquery: "{boosterfun} r:r"
+        rate: 1
+        # count: ?
+      - query: "r:r alt:({boosterfun})"
+        rate: 6
+        # count: ?
+      - query: "r:r -alt:({boosterfun})"
+        rate: 7
+        # count: ?
+
+  mythic:
+    # By doing the math on the percentages given by Wizards, we come to the 7:1 rate between normal and boosterfun rares and mythics.
+    any:
+      - rawquery: "{boosterfun} r:m"
+        rate: 1
+        # count: ?
+      - query: "r:m alt:({boosterfun})"
+        rate: 6
+        # count: ?
+      - query: "r:m -alt:({boosterfun})"
+        rate: 7
+        # count: ?
+
+  wildcard:
+    # We don't do 2:1 ratio for R:M because the numbers from Wizards paint a completely different picture
+    any:
+      - use: common
+        chance: 391
+      - use: uncommon
+        chance: 391
+      - use: rare
+        chance: 195 + 3 # There's an extra 0.4% for the boosterfun so we distribute it between rares and mythics
+      - use: mythic
+        chance: 19 + 1
+
+  rare_mythic:
+    any:
+      - use: rare
+        chance: 6
+      - use: mythic
+        chance: 1
+
+  mystical_archive:
+    any:
+    - rawquery: "{mystical_archive} r:u"
+      rate: 18
+      count: 25
+    - rawquery: "{mystical_archive} r:r"
+      rate: 2
+      count: 25
+    - rawquery: "{mystical_archive} r:m"
+      rate: 1
+      count: 15
+
+  foil:
+  # C:U seems to be 2:1 and R:M also 2:1
+  # For the Mystical Archive cards, we assume the same distribution as in the previous slot
+    foil: true
+    any:
+      - any:
+        - use: common
+          rate: 2
+        - use: uncommon
+          rate: 1
+        chance: 544 + 336 # 54.4% + 33.6% = 88%
+      - any:
+        - use: rare
+          chance: 6
+        - use: mythic
+          chance: 1
+        chance: 67 + 11 + 10 # Add the extra 1% for the boosterfun 
+      - use: mystical_archive
+        chance: 32
+
+  non_foil_land:
+    any:
+      - rawquery: "{basic_land}" # Default frame basic land
+        rate: 1
+        count: 10
+      - rawquery: "{spellcraft_land}"
+        rate: 1
+        count: 5
+      - rawquery: "{dual_land}"
+        rate: 3
+        count: 5
+
+  foil_land:
+    foil: true
+    use: non_foil_land
+
+  special_guest:
+    set: spg
+    code: "SOS"
+    count: 10
+
+  
