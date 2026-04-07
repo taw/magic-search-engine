@@ -81,7 +81,7 @@ sheets:
       - query: "r:r is:reprint -is:foilonly alt:{any_showcase}"
         count: 15
         rate: 4
-      - query: "r:r is:reprint -is:foilonly -alt:{any_showcase}"
+      - query: "e:mh3 r:r is:reprint -is:foilonly -alt:{any_showcase} -is:fetchland"
         count: 8
         rate: 6
     - chance: 23
