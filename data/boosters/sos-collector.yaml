@@ -1,0 +1,165 @@
+# Secrets of Strixhaven
+# Collector Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-secrets-of-strixhaven
+# - https://magic.wizards.com/en/products/secrets-of-strixhaven/card-image-gallery
+# - https://scryfall.com/sets/sos
+# - https://scryfall.com/sets/soc
+# - https://scryfall.com/sets/soa
+# - https://mtgscribe.com/2026/04/03/secrets-of-strixhaven-play-booster-fact-sheet/
+
+
+pack:
+  foil_common: 4
+  foil_uncommon: 3
+  uncommon_mystical_archive:
+    - non_foil_u_mystical_archive: 2
+      chance: 6333
+    - foil_u_mystical_archive: 2
+      chance: 3667
+  foil_land: 1
+  foil_rare_mythic: 1
+  commander: 1
+  boosterfun: 1
+  rare_mythic_mystical_archive:
+    - non_foil_u_mystical_archive: 1
+      chance: 2 # 25.6% + 7.7% + 25.6% + 7.7% = 66.6% -> 2/3
+    - foil_u_mystical_archive: 1
+      chance: 1
+  foil_boosterfun: 1
+
+queries:
+  dual_land: "e:{set} number:255,256,258,262,266"
+  spellcraft_land: "e:{set} number:267-271"
+  basic_land: "e:{set} number:272-281"
+  boosterfun: "e:{set} number:282-305"
+  serialized_emeritus: "e:{set} number:306"
+  extended_art: "e:{set} number:307-361" # TODO: Update numbers
+  mystical_archive: "e:SOA number:1-100" # TODO: Update numbers
+  japanese_mystical_archive: "e:SOA number:1-100" # TODO: Update numbers
+  silver_scroll_japanese_mystical_archive: "e:SOA number:1-100" # TODO: Update numbers
+  soc_mythic_borderless: "e:SOC number:1-10"
+  soc_rare_extended: "e:SOC number:61-108"
+
+sheets:
+  foil_common:
+    foil: true
+    query: "r:c"
+    count: 81
+
+  foil_uncommon:
+    foil: true
+    query: "r:u"
+    count: 100
+
+
+  non_foil_u_mystical_archive:
+    any:
+      - rawquery: "{mystical_archive} r:u"
+        rate: 1
+        count: 25
+      - rawquery: "{japanese_mystical_archive} r:u"
+        rate: 1
+        count: 25
+
+  foil_u_mystical_archive:
+    foil: true
+    any:
+      - rawquery: "{mystical_archive} r:u"
+        chance: 317
+        count: 25
+      - rawquery: "{silver_scroll_japanese_mystical_archive} r:u"
+        chance: 50
+        count: 25
+
+  foil_land:
+    foil: true
+    rawquery: "{spellcraft_land}"
+    count: 5
+
+  foil_rare_mythic:
+    foil: true
+    any:
+      - use: rare
+        rate: 2
+        count: 60
+      - use: mythic
+        rate: 1
+        count: 20
+
+  commander:
+    any:
+      - rawquery: "{soc_rare_extended}"
+        rate: 2
+        count: 48
+      - rawquery: "{soc_mythic_borderless}"
+        rate: 1
+        count: 10
+
+  boosterfun_2_1_ratio:
+    any:
+    - rawquery: "{boosterfun} r:r"
+      rate: 2
+      count: 5 + 6
+    - rawquery: "{boosterfun} r:m"
+      rate: 1
+      count: 7 + 6
+
+  boosterfun:
+    any:
+      - rawquery: "{extended_art} r:r" # TODO: Once we get the actual amounts, we can check if we can move to rates and remove the boosterfun_2_1_ratio sheet 
+        chance: 700 # 70%
+        # count: ? TODO: Update
+      - rawquery: "{extended_art} r:m"
+        chance: 50 # 5%
+         # count: ? TODO: Update
+      - use: boosterfun_2_1_ratio
+        chance: 250 # 25% = 100% - 70% - 5% = 25%
+
+
+  non_foil_r_m_mystical_archive:
+    any:
+      - rawquery: "{mystical_archive} r:r"
+        rate: 2
+        count: 25
+      - rawquery: "{mystical_archive} r:m"
+        rate: 1
+        count: 15
+      - rawquery: "{japanese_mystical_archive} r:r"
+        rate: 2
+        count: 25
+      - rawquery: "{japanese_mystical_archive} r:m"
+        rate: 1
+        count: 15
+
+  foil_r_m_mystical_archive:
+    foil: true
+    use: non_foil_r_m_mystical_archive
+
+  foil_boosterfun:
+  # TODO: Review these rates once we know the exact number of rare and mythic extended art
+    foil: true  
+    any:
+    - rawquery: "{extended_art} r:r"
+      rate: 8
+      # count: 
+    - rawquery: "{extended_art} r:r"
+      rate: 4
+      # count: 
+    - rawquery: "{boosterfun} r:r"
+      rate: 8
+      count: 5 + 6
+    - rawquery: "{boosterfun} r:m"
+      rate: 4
+      count: 7 + 6
+    - rawquery: "{silver_scroll_japanese_mystical_archive} r:r"
+      rate: 2
+      count: 25
+    - rawquery: "{silver_scroll_japanese_mystical_archive} r:m"
+      rate: 1
+      count: 15
+    - set: spg
+      code: "SOS"
+      rate: 1
+      count: 10
+    # Add serialized (but then rate doesn't really work here, we probably need to make this foil_boosterfun_ratio
