@@ -22,9 +22,9 @@ pack:
   commander: 1
   boosterfun: 1
   rare_mythic_mystical_archive:
-    - non_foil_u_mystical_archive: 1
+    - non_foil_r_m_mystical_archive: 1
       chance: 2 # 25.6% + 7.7% + 25.6% + 7.7% = 66.6% -> 2/3
-    - foil_u_mystical_archive: 1
+    - foil_r_m_mystical_archive: 1
       chance: 1
   foil_boosterfun: 1
 
@@ -34,10 +34,10 @@ queries:
   basic_land: "e:{set} number:272-281"
   boosterfun: "e:{set} number:282-305"
   serialized_emeritus: "e:{set} number:306"
-  extended_art: "e:{set} number:307-361" # TODO: Update numbers
-  mystical_archive: "e:SOA number:1-100" # TODO: Update numbers
-  japanese_mystical_archive: "e:SOA number:1-100" # TODO: Update numbers
-  silver_scroll_japanese_mystical_archive: "e:SOA number:1-100" # TODO: Update numbers
+  extended_art: "e:{set} number:307-362"
+  en_mystical_archive: "e:SOA number:1-65"
+  jp_mystical_archive: "e:SOA number:65-130"
+  silver_scroll_jp_mystical_archive: "e:SOA number:131-195"
   soc_mythic_borderless: "e:SOC number:1-10"
   soc_rare_extended: "e:SOC number:61-108"
 
@@ -55,20 +55,20 @@ sheets:
 
   non_foil_u_mystical_archive:
     any:
-      - rawquery: "{mystical_archive} r:u"
+      - rawquery: "{en_mystical_archive} r:u"
         rate: 1
         count: 25
-      - rawquery: "{japanese_mystical_archive} r:u"
+      - rawquery: "{jp_mystical_archive} r:u"
         rate: 1
         count: 25
 
   foil_u_mystical_archive:
     foil: true
     any:
-      - rawquery: "{mystical_archive} r:u"
+      - rawquery: "{en_mystical_archive} r:u"
         chance: 317
         count: 25
-      - rawquery: "{silver_scroll_japanese_mystical_archive} r:u"
+      - rawquery: "{silver_scroll_jp_mystical_archive} r:u"
         chance: 50
         count: 25
 
@@ -96,39 +96,33 @@ sheets:
         rate: 1
         count: 10
 
-  boosterfun_2_1_ratio:
-    any:
-    - rawquery: "{boosterfun} r:r"
-      rate: 2
-      count: 5 + 6
-    - rawquery: "{boosterfun} r:m"
-      rate: 1
-      count: 7 + 6
-
   boosterfun:
     any:
-      - rawquery: "{extended_art} r:r" # TODO: Once we get the actual amounts, we can check if we can move to rates and remove the boosterfun_2_1_ratio sheet 
-        chance: 700 # 70%
-        # count: ? TODO: Update
+      - rawquery: "{extended_art} r:r"
+        rate: 2
+        count: 49
       - rawquery: "{extended_art} r:m"
-        chance: 50 # 5%
-         # count: ? TODO: Update
-      - use: boosterfun_2_1_ratio
-        chance: 250 # 25% = 100% - 70% - 5% = 25%
-
+        rate: 1
+        count: 7
+      - rawquery: "{boosterfun} r:r"
+        rate: 2
+        count: 5 + 6
+      - rawquery: "{boosterfun} r:m"
+        rate: 1
+        count: 7 + 6
 
   non_foil_r_m_mystical_archive:
     any:
-      - rawquery: "{mystical_archive} r:r"
+      - rawquery: "{en_mystical_archive} r:r"
         rate: 2
         count: 25
-      - rawquery: "{mystical_archive} r:m"
+      - rawquery: "{en_mystical_archive} r:m"
         rate: 1
         count: 15
-      - rawquery: "{japanese_mystical_archive} r:r"
+      - rawquery: "{jp_mystical_archive} r:r"
         rate: 2
         count: 25
-      - rawquery: "{japanese_mystical_archive} r:m"
+      - rawquery: "{jp_mystical_archive} r:m"
         rate: 1
         count: 15
 
@@ -136,30 +130,36 @@ sheets:
     foil: true
     use: non_foil_r_m_mystical_archive
 
-  foil_boosterfun:
-  # TODO: Review these rates once we know the exact number of rare and mythic extended art
-    foil: true  
+  foil_boosterfun_no_serialized:
     any:
     - rawquery: "{extended_art} r:r"
       rate: 8
-      # count: 
-    - rawquery: "{extended_art} r:r"
+      count: 49
+    - rawquery: "{extended_art} r:m"
       rate: 4
-      # count: 
+      count: 
     - rawquery: "{boosterfun} r:r"
       rate: 8
       count: 5 + 6
     - rawquery: "{boosterfun} r:m"
       rate: 4
       count: 7 + 6
-    - rawquery: "{silver_scroll_japanese_mystical_archive} r:r"
+    - rawquery: "{silver_scroll_jp_mystical_archive} r:r"
       rate: 2
       count: 25
-    - rawquery: "{silver_scroll_japanese_mystical_archive} r:m"
+    - rawquery: "{silver_scroll_jp_mystical_archive} r:m"
       rate: 1
       count: 15
     - set: spg
       code: "SOS"
       rate: 1
       count: 10
-    # Add serialized (but then rate doesn't really work here, we probably need to make this foil_boosterfun_ratio
+
+  foil_boosterfun:
+    foil: true
+    any:
+      - use: foil_boosterfun_no_serialized
+        chance: 5999
+      - rawquery: "{serialized_emeritus}"
+        chance: 1 # 1 / 6000
+        count: 1

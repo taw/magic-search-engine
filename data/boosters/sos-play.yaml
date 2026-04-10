@@ -12,10 +12,8 @@
 
 # TODO: Should I add some language tag to make it explicit that this is for English boosters?
 
-# superfilter: "-is:reversibleback" # TODO: Not sure if I need it here, probably not
-
 pack:
-  common_special_guest: # TODO: Can I call this "common"? 
+  common_special_guest:
     - common: 6
       chance: 54
     - common: 5
@@ -37,7 +35,7 @@ queries:
   spellcraft_land: "e:{set} number:267-271"
   basic_land: "e:{set} number:272-281"
   boosterfun: "e:{set} number:282-305"
-  mystical_archive: "e:SOA number:1-100" # TODO: Update numbers
+  en_mystical_archive: "e:SOA number:1-65"
 
 sheets:
   common:
@@ -95,13 +93,13 @@ sheets:
 
   mystical_archive:
     any:
-    - rawquery: "{mystical_archive} r:u"
+    - rawquery: "{en_mystical_archive} r:u"
       rate: 18
       count: 25
-    - rawquery: "{mystical_archive} r:r"
+    - rawquery: "{en_mystical_archive} r:r"
       rate: 2
       count: 25
-    - rawquery: "{mystical_archive} r:m"
+    - rawquery: "{en_mystical_archive} r:m"
       rate: 1
       count: 15
 
