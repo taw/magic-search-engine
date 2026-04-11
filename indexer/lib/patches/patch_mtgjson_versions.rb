@@ -459,6 +459,8 @@ class PatchMtgjsonVersions < Patch
         "Regrowth",
         "Replenish",
         "Secret Rendezvous",
+        "Sign in Blood",
+        "Swords to Plowshares",
         "Wheel of Fortune",
       ]
       if card["layout"] == "prepare"
