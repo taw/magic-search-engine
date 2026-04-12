@@ -60,27 +60,31 @@ describe "Full Database Test" do
 
   it "part" do
     assert_search_results "part:cmc=1 part:cmc=2",
-      "Death", "Life",
-      "Tear", "Wear",
-      "What", "When", "Where", "Who", "Why",
-      "Failure", "Comply",
-      "Heaven", "Earth",
-      "Claim", "Fame",
       "Appeal", "Authority",
+      "Callous Sell-Sword", "Burn Together",
+      "Claim", "Fame",
       "Curious Pair", "Treats to Share",
+      "Death", "Life",
+      "Elite Interceptor", "Rejoinder",
       "Embereth Shieldbreaker", "Battle Display",
+      "Emeritus of Conflict", "Lightning Bolt (Prepared)",
       "Faerie Guidemother", "Gift of the Fae",
+      "Failure", "Comply",
+      "Ghost Lantern", "Bind Spirit",
+      "Goblin Glasswright", "Craft with Pride",
+      "Heaven", "Earth",
+      "Infirmary Healer", "Stream of Life (Prepared)",
+      "Kellan, Daring Traveler", "Journey On",
+      "Leech Collector", "Bloodletting",
+      "Pollen-Shield Hare", "Hare Raising",
       "Rimrock Knight", "Boulder Rush",
       "Shepherd of the Flock", "Usher to Safety",
-      "Smitten Swordmaster", "Curry Favor",
       "Smelt (CMB1)", "Herd", "Saw (CMB1)",
-      "Ghost Lantern", "Bind Spirit",
-      "Callous Sell-Sword", "Burn Together",
-      "Pollen-Shield Hare", "Hare Raising",
-      "Kellan, Daring Traveler", "Journey On",
-      "Their", "There", "They're",
+      "Smitten Swordmaster", "Curry Favor",
       "Studious First-Year", "Rampant Growth (Prepared)",
-      "Emeritus of Conflict", "Lightning Bolt (Prepared)"
+      "Tear", "Wear",
+      "Their", "There", "They're",
+      "What", "When", "Where", "Who", "Why"
     # Semantics of that changed
     # it used to match a lot of double-faced cards
     # then it all disappeared as DFCs share cmc
@@ -284,7 +288,7 @@ describe "Full Database Test" do
     assert_search_equal "mana=mno", "mana={m}{n}{o}"
     assert_search_equal "mana=mmn", "mana=mnn"
     assert_search_equal "mana=mmn", "mana>=mnn mana <=mmn"
-    assert_count_cards "mana>=mh game:paper", 33
+    assert_count_cards "mana>=mh game:paper", 34
     assert_search_results "mana=mh game:paper",
       "Bant Sureblade",
       "Crystallization",
