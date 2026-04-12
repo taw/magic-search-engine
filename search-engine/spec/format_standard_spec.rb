@@ -1,6 +1,7 @@
 describe "Formats - Standard" do
   include_context "db"
 
+  # Exclude preview from test on both actual and expected
   let(:regular_sets) { db.sets.values.select{|s|
     s.types.include?("core") or s.types.include?("expansion") or s.name =~ /Welcome Deck/ or s.name =~ /M19 Gift Pack/ and !s.types.include?("preview")
   }.to_set }
@@ -9,7 +10,7 @@ describe "Formats - Standard" do
     # Early Standard was not regular so we need to tweak expectations a bit
     let(:start_date) { db.sets["drk"].release_date }
     let(:expected) { regular_sets.select{|set| set.release_date >= start_date}.map(&:code) + ["3ed", "chr"] }
-    let(:actual) { FormatStandard.new.rotation_schedule.values.flatten.uniq }
+    let(:actual) { FormatStandard.new.rotation_schedule.values.flatten.uniq.reject{|code| db.sets[code].types.include?("preview") } }
     it do
       expected.should match_array(actual)
     end

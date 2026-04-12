@@ -53,6 +53,7 @@ class FormatPioneer < Format
       "tla",
       "ecl",
       "tmt",
+      "sos",
     ]
   end
 end

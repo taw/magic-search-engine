@@ -1,6 +1,7 @@
 describe "Formats - Pioneer" do
   include_context "db"
 
+  # Exclude preview from test on both actual and expected
   let(:regular_sets) do
     db.sets.values.select{|s|
       s.types.include?("core") or s.types.include?("expansion") or s.name =~ /Welcome Deck/ or s.name =~ /M19 Gift Pack/ and !s.types.include?("preview")
@@ -10,7 +11,7 @@ describe "Formats - Pioneer" do
   describe "Pioneer legal sets" do
     let(:start_date) { db.sets["rtr"].release_date }
     let(:expected) { regular_sets.select{|set| set.release_date >= start_date}.map(&:code).to_set }
-    let(:actual) { FormatPioneer.new.included_sets }
+    let(:actual) { FormatPioneer.new.included_sets.reject{|code| db.sets[code].types.include?("preview") }.to_set }
     it { expected.should eq actual }
   end
 
