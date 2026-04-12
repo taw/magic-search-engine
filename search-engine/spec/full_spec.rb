@@ -288,7 +288,7 @@ describe "Full Database Test" do
     assert_search_equal "mana=mno", "mana={m}{n}{o}"
     assert_search_equal "mana=mmn", "mana=mnn"
     assert_search_equal "mana=mmn", "mana>=mnn mana <=mmn"
-    assert_count_cards "mana>=mh game:paper", 34
+    assert_count_cards "mana>=mh game:paper", 36
     assert_search_results "mana=mh game:paper",
       "Bant Sureblade",
       "Crystallization",
