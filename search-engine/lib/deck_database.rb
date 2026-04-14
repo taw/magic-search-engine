@@ -29,6 +29,7 @@ class DeckDatabase
         display: display,
         tokens: deck["tokens"],
         languages: deck["languages"],
+        source: deck["source"],
       )
       set.decks << deck
     end

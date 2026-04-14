@@ -93,6 +93,7 @@ class ExportDecksData
         tokens: deck.tokens.map{|c| export_token(*c) },
         languages: Array(deck.languages),
         sourceSetCodes: deck_source_set_codes(deck),
+        source: deck.source,
       }
     end
     open(output_path, "w") do |fh|
