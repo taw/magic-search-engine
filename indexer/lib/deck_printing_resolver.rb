@@ -237,7 +237,7 @@ class DeckPrintingResolver
     # Use same format as magic-preconstructed-decks for easy copypasta
     printings.each do |printing|
       candidate = "[#{printing["set_code"].upcase}:#{printing["number"]}]"
-      puts "bin/resolve_card #{deck_set_code.inspect} #{deck_name.inspect} #{card_name.inspect} #{candidate.inspect}"
+      puts "bin/resolve_card #{deck_set_code.inspect} #{deck_name.inspect} #{card_name.inspect} #{candidate.inspect} # #{printing["promo_types"]&.join(' ')}"
     end
     if BasicLands.include?(card_name)
       round_robin = "[#{printings[0]["set_code"].upcase}:*]"
