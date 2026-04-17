@@ -19,6 +19,13 @@ class PatchSetLanguages < Patch
     "Spanish" => "sp",
   }
 
+  # Weird promo languages for single cards in otherwise normal sets, intentionally ignored
+  IGNORE_LANGUAGES = [
+    "Ancient Greek",
+    "Phyrexian",
+    "Quenya",
+  ]
+
   OVERRIDE = {
     # Promos in non-regular language
     "pinv" => ["en"], # Latin
@@ -69,7 +76,7 @@ class PatchSetLanguages < Patch
         next
       end
 
-      weird_languages = set["languages"] - LANGUAGES.keys
+      weird_languages = set["languages"] - LANGUAGES.keys - IGNORE_LANGUAGES
       unless weird_languages.empty?
         warn "#{set_desc} has weird languages #{weird_languages.join(", ")}, skipping extra languages."
       end
