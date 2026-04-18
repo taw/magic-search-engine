@@ -33,10 +33,10 @@ queries:
   spellcraft_land: "e:{set} number:267-271"
   basic_land: "e:{set} number:272-281"
   boosterfun: "e:{set} number:282-305"
-  serialized_emeritus: "e:{set} number:306"
+  serialized_emeritus: "e:{set} number:306a"
   extended_art: "e:{set} number:307-362"
   en_mystical_archive: "e:SOA number:1-65"
-  jp_mystical_archive: "e:SOA number:65-130"
+  jp_mystical_archive: "e:SOA number:66-130"
   silver_scroll_jp_mystical_archive: "e:SOA number:131-195"
   soc_mythic_borderless: "e:SOC number:1-10"
   soc_rare_extended: "e:SOC number:61-108"
@@ -45,7 +45,7 @@ sheets:
   foil_common:
     foil: true
     query: "r:c"
-    count: 81
+    count: 81 + 5 # commons + duals
 
   foil_uncommon:
     foil: true
