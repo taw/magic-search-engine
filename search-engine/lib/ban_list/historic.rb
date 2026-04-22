@@ -400,4 +400,20 @@ BanList.for_format("historic") do
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-march-23-2026",
     "Food Chain" => "banned",
   )
+
+  change(
+    "2026-03-30",
+    "https://magic.wizards.com/en/news/mtg-arena/arena-powered-cube-draft",
+    "Survival of the Fittest" => "banned",
+  )
+
+  change(
+    "2026-04-20",
+    "https://magic.wizards.com/en/news/mtg-arena/announcements-april-20-2026",
+    "Armageddon" => "banned",
+    "Daze" => "banned",
+    "Force of Will" => "banned",
+    "Vampiric Tutor" => "banned",
+    "Library of Alexandria" => "banned",
+  )
 end
