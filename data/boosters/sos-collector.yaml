@@ -12,11 +12,12 @@
 pack:
   foil_common: 4
   foil_uncommon: 3
-  uncommon_mystical_archive:
-    - non_foil_u_mystical_archive: 2
-      chance: 6333
-    - foil_u_mystical_archive: 2
-      chance: 3667
+  non_foil_u_mystical_archive: 1 # Full explanation at the end of the file
+  u_mystical_archive:
+    - non_foil_u_mystical_archive: 1
+      chance: 2666
+    - foil_u_mystical_archive: 1
+      chance: 7334
   foil_land: 1
   foil_rare_mythic: 1
   commander: 1
@@ -65,10 +66,10 @@ sheets:
     foil: true
     any:
       - rawquery: "{en_mystical_archive} r:u"
-        chance: 317
+        chance: 3167 * 2 # 2x31.67%
         count: 25
       - rawquery: "{silver_scroll_jp_mystical_archive} r:u"
-        chance: 50
+        chance: 500 * 2 # 2x5%
         count: 25
 
   foil_land:
@@ -162,3 +163,25 @@ sheets:
       - rawquery: "{serialized_emeritus}"
         chance: 1 # 1 / 6000
         count: 1
+
+
+####### Uncommon Mystical Archive Slot:
+# What Wizards says:
+# 2 Uncommon Mystical Archive cards
+# A non-foil (31.7%) or traditional foil (31.7%) Mystical Archive card
+# A non-foil (31.7%) or silver scroll foil (5%) Japanese Mystical Archive card
+
+# I took a look at these 3 box openings:
+# https://www.youtube.com/watch?v=MoaXQHIOxrM
+# https://www.youtube.com/watch?v=oXkQcz3M0Eg
+# https://www.youtube.com/watch?v=dS7LtK0hWfQ
+
+# This is what I noticed:
+# - The first slot is always a non-foil.
+# - The first slot is English 50% of the time, Japanese 50% of the time.
+# - The second slot can be anything.
+# - The overall distribution complies with what Wizard says.
+
+# It seems to me know that this is how the slots work:
+# - First uncommon mystical archive slot: non-foil English cards, non-foil Japanese (50-50 probability)
+# - Second uncommon mystical archive slot: silver scroll foil (10%, to make it 5% globally), foil english (63.4%, to make it 31.7% globally), non-foil English cards, non-foil Japanese (13.3% each).
