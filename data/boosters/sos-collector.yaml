@@ -1,0 +1,187 @@
+# Secrets of Strixhaven
+# Collector Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-secrets-of-strixhaven
+# - https://magic.wizards.com/en/products/secrets-of-strixhaven/card-image-gallery
+# - https://scryfall.com/sets/sos
+# - https://scryfall.com/sets/soc
+# - https://scryfall.com/sets/soa
+# - https://mtgscribe.com/2026/04/03/secrets-of-strixhaven-play-booster-fact-sheet/
+
+
+pack:
+  foil_common: 4
+  foil_uncommon: 3
+  non_foil_u_mystical_archive: 1 # Full explanation at the end of the file
+  u_mystical_archive:
+    - non_foil_u_mystical_archive: 1
+      chance: 2666
+    - foil_u_mystical_archive: 1
+      chance: 7334
+  foil_land: 1
+  foil_rare_mythic: 1
+  commander: 1
+  boosterfun: 1
+  rare_mythic_mystical_archive:
+    - non_foil_r_m_mystical_archive: 1
+      chance: 2 # 25.6% + 7.7% + 25.6% + 7.7% = 66.6% -> 2/3
+    - foil_r_m_mystical_archive: 1
+      chance: 1
+  foil_boosterfun: 1
+
+queries:
+  dual_land: "e:{set} number:255,256,258,262,266"
+  spellcraft_land: "e:{set} number:267-271"
+  basic_land: "e:{set} number:272-281"
+  boosterfun: "e:{set} number:282-305"
+  serialized_emeritus: "e:{set} number:306a"
+  extended_art: "e:{set} number:307-362"
+  en_mystical_archive: "e:SOA number:1-65"
+  jp_mystical_archive: "e:SOA number:66-130"
+  silver_scroll_jp_mystical_archive: "e:SOA number:131-195"
+  soc_mythic_borderless: "e:SOC number:1-10"
+  soc_rare_extended: "e:SOC number:61-108"
+
+sheets:
+  foil_common:
+    foil: true
+    query: "r:c"
+    count: 81 + 5 # commons + duals
+
+  foil_uncommon:
+    foil: true
+    query: "r:u"
+    count: 100
+
+  non_foil_u_mystical_archive:
+    any:
+      - rawquery: "{en_mystical_archive} r:u"
+        rate: 1
+        count: 25
+      - rawquery: "{jp_mystical_archive} r:u"
+        rate: 1
+        count: 25
+
+  foil_u_mystical_archive:
+    foil: true
+    any:
+      - rawquery: "{en_mystical_archive} r:u"
+        chance: 3167 * 2 # 2x31.67%
+        count: 25
+      - rawquery: "{silver_scroll_jp_mystical_archive} r:u"
+        chance: 500 * 2 # 2x5%
+        count: 25
+
+  foil_land:
+    foil: true
+    rawquery: "{spellcraft_land}"
+    count: 5
+
+  foil_rare_mythic:
+    foil: true
+    any:
+      - use: rare
+        rate: 2
+        count: 60
+      - use: mythic
+        rate: 1
+        count: 20
+
+  commander:
+    any:
+      - rawquery: "{soc_rare_extended}"
+        rate: 2
+        count: 48
+      - rawquery: "{soc_mythic_borderless}"
+        rate: 1
+        count: 10
+
+  boosterfun:
+    any:
+      - rawquery: "{extended_art} r:r"
+        rate: 2
+        count: 49
+      - rawquery: "{extended_art} r:m"
+        rate: 1
+        count: 7
+      - rawquery: "{boosterfun} r:r"
+        rate: 2
+        count: 5 + 6
+      - rawquery: "{boosterfun} r:m"
+        rate: 1
+        count: 7 + 6
+
+  non_foil_r_m_mystical_archive:
+    any:
+      - rawquery: "{en_mystical_archive} r:r"
+        rate: 2
+        count: 25
+      - rawquery: "{en_mystical_archive} r:m"
+        rate: 1
+        count: 15
+      - rawquery: "{jp_mystical_archive} r:r"
+        rate: 2
+        count: 25
+      - rawquery: "{jp_mystical_archive} r:m"
+        rate: 1
+        count: 15
+
+  foil_r_m_mystical_archive:
+    foil: true
+    use: non_foil_r_m_mystical_archive
+
+  foil_boosterfun_no_serialized:
+    any:
+    - rawquery: "{extended_art} r:r"
+      rate: 8
+      count: 49
+    - rawquery: "{extended_art} r:m"
+      rate: 4
+      count: 
+    - rawquery: "{boosterfun} r:r"
+      rate: 8
+      count: 5 + 6
+    - rawquery: "{boosterfun} r:m"
+      rate: 4
+      count: 7 + 6
+    - rawquery: "{silver_scroll_jp_mystical_archive} r:r"
+      rate: 2
+      count: 25
+    - rawquery: "{silver_scroll_jp_mystical_archive} r:m"
+      rate: 1
+      count: 15
+    - set: spg
+      code: "SOS"
+      rate: 1
+      count: 10
+
+  foil_boosterfun:
+    foil: true
+    any:
+      - use: foil_boosterfun_no_serialized
+        chance: 5999
+      - rawquery: "{serialized_emeritus}"
+        chance: 1 # 1 / 6000
+        count: 1
+
+
+####### Uncommon Mystical Archive Slot:
+# What Wizards says:
+# 2 Uncommon Mystical Archive cards
+# A non-foil (31.7%) or traditional foil (31.7%) Mystical Archive card
+# A non-foil (31.7%) or silver scroll foil (5%) Japanese Mystical Archive card
+
+# I took a look at these 3 box openings:
+# https://www.youtube.com/watch?v=MoaXQHIOxrM
+# https://www.youtube.com/watch?v=oXkQcz3M0Eg
+# https://www.youtube.com/watch?v=dS7LtK0hWfQ
+
+# This is what I noticed:
+# - The first slot is always a non-foil.
+# - The first slot is English 50% of the time, Japanese 50% of the time.
+# - The second slot can be anything.
+# - The overall distribution complies with what Wizard says.
+
+# It seems to me know that this is how the slots work:
+# - First uncommon mystical archive slot: non-foil English cards, non-foil Japanese (50-50 probability)
+# - Second uncommon mystical archive slot: silver scroll foil (10%, to make it 5% globally), foil english (63.4%, to make it 31.7% globally), non-foil English cards, non-foil Japanese (13.3% each).

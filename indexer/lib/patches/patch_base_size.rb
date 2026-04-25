@@ -5,6 +5,7 @@ class PatchBaseSize < Patch
     sizes = {
       "ecl" => 273, # up to the last normal basic
       "tmt" => 195, # up to first set of basics (but they are fancy ones, boring ones are have much higher numbers)
+      "sos" => 281, # up to and including all basic lands (fullart and normal ones)
     }
 
     sizes.each do |code, size|
