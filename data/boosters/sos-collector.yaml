@@ -127,8 +127,15 @@ sheets:
         count: 15
 
   foil_r_m_mystical_archive:
+    # Silver scroll JP Mystical Archive cards don't appear in this slot
     foil: true
-    use: non_foil_r_m_mystical_archive
+    any:
+      - rawquery: "{en_mystical_archive} r:r"
+        rate: 2
+        count: 25
+      - rawquery: "{en_mystical_archive} r:m"
+        rate: 1
+        count: 15
 
   foil_boosterfun_no_serialized:
     any:
