@@ -36,14 +36,14 @@ sheets:
     query: "r:u -is:reprint"
   new_rare_mythic:
     any:
-    - rawquery: "r:r -is:reprint -is:foilonly {two_instances}"
-      count: 36
+    - rawquery: "r:r (is:fetchland or -is:reprint) -is:foilonly {two_instances}"
+      count: 46
       rate: 2
     - rawquery: "r:r -is:reprint -is:foilonly {any_showcase} -{two_instances}"
       count: 18
       rate: 4
-    - query: "r:r -is:reprint -is:foilonly alt:{any_showcase}"
-      count: 36
+    - query: "r:r (is:fetchland or -is:reprint) -is:foilonly alt:{any_showcase}"
+      count: 41
       rate: 8
     - query: "r:r -is:reprint -is:foilonly -alt:{any_showcase}"
       count: 19
@@ -72,14 +72,11 @@ sheets:
         query: "r:u is:reprint -alt:(e:mh3 number:384-441)"
     - chance: 213
       any:
-      - rawquery: "r:r is:reprint -is:foilonly {two_instances}"
-        count: 10
-        rate: 1
       - rawquery: "r:r is:reprint -is:foilonly {any_showcase} -{two_instances}"
         count: 10
         rate: 2
-      - query: "r:r is:reprint -is:foilonly alt:{any_showcase}"
-        count: 15
+      - query: "r:r is:reprint -is:foilonly alt:{any_showcase} -is:fetchland"
+        count: 10
         rate: 4
       - query: "r:r is:reprint -is:foilonly -alt:{any_showcase}"
         count: 8
