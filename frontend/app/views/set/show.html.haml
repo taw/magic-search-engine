@@ -32,11 +32,20 @@
     - if @boosters.present?
       .col-12
         %div Boosters:
-        - @boosters.each do |code, pack|
-          %li
-            = link_to_pack(pack) do
-              = pack.name
-            = "(#{code.upcase})"
+        %ul
+          - @boosters.each do |code, pack|
+            %li
+              = link_to_pack(pack) do
+                = pack.name
+              = "(#{code.upcase})"
+    - if @set.products.present?
+      .col-12
+        %div Products:
+        %ul
+          - @set.products.each do |product|
+            %li
+              = link_to_product(product) do
+                = product.name
     - if @set.subsets.present?
       .col-12
         %div Subsets:
