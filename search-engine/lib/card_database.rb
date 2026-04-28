@@ -21,6 +21,7 @@ require_relative "pack"
 require_relative "physical_card"
 require_relative "precon_deck"
 require_relative "product"
+require_relative "product_variable_contents"
 require_relative "query"
 require_relative "sealed"
 require_relative "spelling_suggestions"
@@ -404,6 +405,7 @@ class CardDatabase
 
   def load_products!
     @products = []
+
     products_data.each do |product_data|
       set = @sets[product_data["set_code"]]
       unless set
@@ -414,6 +416,8 @@ class CardDatabase
       @products << product
       set.products << product
     end
+
+    Product.link_products(self)
   end
 
   # Change card number to CardPrinting reference

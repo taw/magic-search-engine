@@ -1,49 +1,28 @@
 %ul
-  - contents.each do |count, type, *content|
+  - contents.each do |count, item|
     %li
       - if count > 1
         = "#{count}x"
-      - if type == "deck"
-        - # All this resolving should already be done
-        - deck = $CardDatabase.decks.find{|d| d.set_code == content[0] and d.name == content[1] }
-        - if deck
-          = link_to_deck(deck) do
-            = "#{deck.name} — #{deck.type}"
-        - else
-          = "deck: #{content[1]} (#{content[0]})"
-      - elsif type == "product"
-        - subproduct = $CardDatabase.products.find{|p| p.set_code == content[0] and p.name == content[1] }
-        - if subproduct
-          = link_to_product(subproduct) do
-            = "#{subproduct.name}"
-            = render 'product/contents', contents: subproduct.contents
-        - else
-          = "product: #{content[1]} (#{content[0]})"
-      - elsif type == "pack"
-        - pack = $CardDatabase.supported_booster_types[content[0]]
-        - if pack
-          = link_to_pack(pack) do
-            = pack.name
-          = "(#{content[0].upcase})"
-        - else
-          = "pack: #{content[0]}"
-      - elsif type == "card"
-        - card = $CardDatabase.sets[content[0]].printings.find{|p| p.number == content[1]}
-        - label = "#{content[2]} [#{content[0].upcase}:#{content[1]}]#{ content[3] ? " [foil]": ""}"
-        - if card
-          = link_to_card(card) do
-            = label
-        - else
-          = "card: #{label}"
-      - elsif type == "unknown"
-        Unknown contents
-      - elsif type == "variable"
+      - if item.is_a?(Deck)
+        = link_to_deck(item) do
+          = "#{item.name} — #{item.type}"
+      - elsif item.is_a?(Product)
+        = link_to_product(item) do
+          = "#{item.name}"
+          = render 'product/contents', contents: item.contents
+      - elsif item.is_a?(Pack)
+        = link_to_pack(item) do
+          = item.name
+        = "(#{item.code.upcase})"
+      - elsif item.is_a?(PhysicalCard)
+        = link_to_card(item.main_front) do
+          = "#{item.name} [#{item.set_code.upcase}:#{item.number}]#{ item.foil ? " [foil]": ""}"
+      - elsif item.is_a?(ProductVariableContents)
         Variable contents
         %ul
-          - content[0].each do |option|
+          - item.options.each do |option|
             %li
-              = "#{option["chance"]}/#{option["total"]} (#{(100.0*option["chance"]/option["total"]).round(2)}%)"
-              = render 'product/contents', contents: option["subproduct"]
-      - else
-        = "#{type}:"
-        = content.join(" ")
+              = "#{option[:chance]}/#{option[:total]} (#{(100.0*option[:chance]/option[:total]).round(2)}%)"
+              = render 'product/contents', contents: option[:subproduct]
+      - else # String
+        = item

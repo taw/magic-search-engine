@@ -2,11 +2,7 @@
 describe "product queries" do
   include_context "db"
 
-  let(:valid_products) { db.products.map{|p| [p.set_code, p.name] }.to_set }
-  let(:valid_boosters) { db.supported_booster_types.keys.to_set }
-  let(:valid_decks) { db.decks.map{|d| [d.set_code, d.name] }.to_set }
-
-  # check that all linked cards, products, packs, and decks exist
+  # most of this mapping is already done in Product, so just report results here
   it "all linked cards, products, packs, and decks exist" do
     db.products.each do |product|
       verify_contents(product.name, product.contents)
@@ -14,44 +10,29 @@ describe "product queries" do
   end
 
   def verify_contents(product_name, contents)
-    contents.each do |count, type, *rest|
-      case type
-      when "product"
-        set_code, name = *rest
-        unless valid_products.include?([set_code, name])
-          warn "Product #{product_name} contains unknown product #{set_code} #{name}"
-        end
-      when "pack"
-        code, = *rest
-        unless valid_boosters.include?(code)
-          warn "Product #{product_name} contains unknown pack #{code}"
-        end
-      when "deck"
-        set_code, name = *rest
-        unless valid_decks.include?([set_code, name])
-          warn "Product #{product_name} contains unknown deck #{set_code} #{name}"
-        end
-      when "card"
-        set_code, number, name, foil = *rest
-        raise "Unknown set code" unless db.sets[set_code]
-        card = db.sets[set_code].printings.find{|p| p.name == name and p.number == number}
-        if card
-          if foil and card.foiling == :nonfoil
-            warn "Product #{product_name} contains foil card #{set_code} #{number} #{name}, but it's only available nonfoil"
-          elsif (!foil) and card.foiling == :foilonly
-            warn "Product #{product_name} contains nonfoil card #{set_code} #{number} #{name}, but it's only available foil"
-          end
-        else
-          warn "Product #{product_name} contains unknown card #{set_code} #{number} #{name}"
-        end
-      when "other", "unknown"
+    contents.each do |count, item|
+      case item
+      when Product, Pack, Deck
         # OK
-      when "variable"
-        rest[0].each do |subproduct|
-          verify_contents(product_name, subproduct["subproduct"])
+      when PhysicalCard
+        product_foil = item.foil
+        db_foiling = item.main_front.foiling
+        if item.foil and db_foiling == :nonfoil
+          warn "Product #{product_name} contains foil card #{item.set_code} #{item.number} #{item.name}, but it's only available nonfoil"
+        elsif (!item.foil) and db_foiling == :foilonly
+          warn "Product #{product_name} contains nonfoil card #{item.set_code} #{item.number} #{item.name}, but it's only available foil"
+        end
+      when String # other, variable, unknown contents, or unknown <type>
+        if item.start_with?("unknown") and item != "unknown contents"
+          warn "Product #{product_name} contains #{item}"
+        end
+      when ProductVariableContents
+        p product_name
+        item.options.each do |option|
+          verify_contents(product_name, option[:subproduct])
         end
       else
-        raise "Unknown content type: #{type}"
+        raise "Unknown content type: #{item.class}"
       end
     end
   end
