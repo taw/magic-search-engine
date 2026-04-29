@@ -41,7 +41,7 @@ describe "Card layouts" do
     assert_search_equal "layout:saga", "t:saga is:sfc" # DFC sagas have different layout
     assert_search_equal "layout:adventure", "t:adventure or (// t:adventure) or t:omen or (// t:omen)"
     assert_search_equal "layout:modaldfc -e:pmei,slu,j21,prm,sld,pctb,plst,mh3,pio,om1,omn", "// e:znr,pznr,khm,pkhm,stx,pstx,spm,pspm,msh"
-    assert_search_equal "layout:prepare", "t:creature // (t:instant or t:sorcery) -t:adventure e:sos,soc,soa"
+    assert_search_equal "layout:prepare", "t:creature // (t:instant or t:sorcery) -t:adventure e:sos,soc,soa,psos"
 
     # Alias
     assert_search_equal "layout:mdfc", "layout:modaldfc"
