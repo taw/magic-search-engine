@@ -1,0 +1,12 @@
+name: "{set_name}"
+packs:
+- nonfoil: 8
+  foil: 1
+sheets:
+  nonfoil:
+    deck: "ss3/Signature Spellbook: Chandra"
+    count: 8
+  foil:
+    query: "e:{set}"
+    foil: true
+    count: 8

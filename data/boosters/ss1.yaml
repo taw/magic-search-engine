@@ -1,0 +1,12 @@
+name: "{set_name}"
+packs:
+- nonfoil: 8
+  foil: 1
+sheets:
+  nonfoil:
+    deck: "ss1/Signature Spellbook: Jace"
+    count: 8
+  foil:
+    query: "e:{set}"
+    foil: true
+    count: 8
