@@ -24,7 +24,7 @@ class PatchPartner < Patch
       elsif text =~ /Partner\s*\z/ or text =~ /as though they each had partner/
         # CMR, some have no remainder text
         card["is_partner"] = true
-      elsif text =~ /Flying, protection, and partner are all keywords|In Limited, it can partner like other monocolored legends/
+      elsif text =~ /Flying, protection, and partner are all keywords|In Limited, it can partner like other monocolored legends/ or text =~ /random tournament-legal card with partner/
         # reminder text in funny set, ignore
       elsif text =~ /\bpartner\b/i
         raise "Unknown partner text"

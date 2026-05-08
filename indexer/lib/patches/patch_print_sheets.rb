@@ -18,6 +18,9 @@ class PatchPrintSheets < Patch
       assign_print_sheet_information(cards, checklist)
       return
     end
+
+    warn "Not yet sure how to deal with #{set_code} #{name} #{cards.size} #{checklist}"
+
     # At this point 27 cards which need special decisions
     #
     # If they're all by same artist, then we have no information which is which
