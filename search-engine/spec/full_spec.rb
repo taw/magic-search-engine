@@ -61,6 +61,7 @@ describe "Full Database Test" do
   it "part" do
     assert_search_results "part:cmc=1 part:cmc=2",
       "Appeal", "Authority",
+      "Bloodline Recollector", "Ancestral Craving",
       "Callous Sell-Sword", "Burn Together",
       "Claim", "Fame",
       "Curious Pair", "Treats to Share",
@@ -70,6 +71,7 @@ describe "Full Database Test" do
       "Emeritus of Conflict", "Lightning Bolt (Prepared)",
       "Faerie Guidemother", "Gift of the Fae",
       "Failure", "Comply",
+      "Fear (Not the Alpha One)", "Loathing",
       "Ghost Lantern", "Bind Spirit",
       "Goblin Glasswright", "Craft with Pride",
       "Heaven", "Earth",

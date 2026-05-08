@@ -6,7 +6,7 @@ describe "partner queries" do
       ((o:"partner with") or
        (o:"partner" t:legendary t:creature) or
        (o:"partner" t:legendary t:planeswalker e:cmr))
-      -is:promo -e:plst,prm
+      -is:promo -e:plst,prm -(Playful Winners)
     ]
   end
 

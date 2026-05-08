@@ -241,6 +241,7 @@ describe "Card nicknames" do
       "Stalking Stones",
       "Stirring Wildwood",
       "Svogthos, the Restless Tomb",
+      "The Goblin Sparring Grounds",
       "The Magical City, New",
       "Treetop Village",
       "Urza's Hot Dog Stand",

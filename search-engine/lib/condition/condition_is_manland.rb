@@ -44,6 +44,7 @@ class ConditionIsManland < ConditionNickname
       "rising chicane",
       "shambling vent",
       "soulstone sanctuary",
+      "the goblin sparring grounds",
       "spawning pool",
       "stalking stones",
       "stirring wildwood",
