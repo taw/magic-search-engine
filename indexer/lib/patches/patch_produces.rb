@@ -23,6 +23,7 @@ class PatchProduces < Patch
     # Uncards and playtest cards
     "Mons's Goblin Waiters" => "r", # {HR}
     "Sole Performer" => nil, # {T}
+    "The Salubrious Philosopher" => nil, # in remainder text only
     "Unglued Pea-Brained Dinosaur" => "c", # {2} that should have been Oracled into {C}{C}
   }
 
