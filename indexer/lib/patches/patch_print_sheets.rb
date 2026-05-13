@@ -7,6 +7,41 @@ class PatchPrintSheets < Patch
 
   private
 
+  OVERRIDES = {
+    "atq" => {
+      "Mishra's Factory" => {
+        "80a" => "C1", # "Mishra's Factory, spring"
+        "80b" => "U1", # "Mishra's Factory, summer"
+        "80c" => "U1", # "Mishra's Factory, autumn"
+        "80d" => "U1", # "Mishra's Factory, winter"
+      },
+      "Strip Mine" => {
+        "82a" => "C1", # "Strip Mine, no horizon"
+        "82b" => "U1", # "Strip Mine, horizon, uneven stripe",
+        "82c" => "U1", # "Strip Mine, small tower in forest"
+        "82d" => "U1", # "Strip Mine, horizon, even stripe"
+      },
+      "Urza's Mine" => {
+        "83a" => "C1", # "Urza's Mine, pulley"
+        "83b" => "C1", # "Urza's Mine, mouth"
+        "83c" => "C2", # "Urza's Mine, clawed sphere"
+        "83d" => "C2", # "Urza's Mine, tower"
+      },
+      "Urza's Power Plant" => {
+        "84a" => "C2", # "Urza's Power Plant, sphere"
+        "84b" => "C1", # "Urza's Power Plant, columns"
+        "84c" => "C2", # "Urza's Power Plant, bug"
+        "84d" => "C1", # "Urza's Power Plant, rock in pot"
+      },
+      "Urza's Tower" => {
+        "85a" => "C2", # "Urza's Tower, forest"
+        "85b" => "C1", # "Urza's Tower, shore"
+        "85c" => "C1", # "Urza's Tower, plains"
+        "85d" => "C1", # "Urza's Tower, mountains"
+      },
+    },
+  }
+
   def assign_print_sheet_information(cards, checklist)
     cards.zip(checklist).each do |card, checklist_entry|
       card["print_sheet"] = checklist_entry.last
@@ -16,6 +51,19 @@ class PatchPrintSheets < Patch
   def add_print_sheet_information_for_card(set_code, name, cards, checklist)
     if checklist.map(&:last).uniq.size == 1
       assign_print_sheet_information(cards, checklist)
+      return
+    end
+
+    overrides = cards.map{|c| OVERRIDES.dig(set_code, name, c["number"]) }
+
+    # We have information about print sheets, but it's only human readable descriptions
+    # Card order in mtgjson is not generally going to match card order on checklist documents
+    if overrides.all?
+      raise "Overrides incorrect" unless checklist.map(&:last).sort == overrides.sort
+      cards.zip(overrides).each do |card, print_sheet|
+        card["print_sheet"] = print_sheet
+      end
+
       return
     end
 
