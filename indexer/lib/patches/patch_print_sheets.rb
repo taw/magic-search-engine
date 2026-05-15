@@ -40,6 +40,24 @@ class PatchPrintSheets < Patch
         "85d" => "C1", # "Urza's Tower, mountains"
       },
     },
+    # light, dark
+    # Source: https://old.reddit.com/r/mtgfinance/comments/nftv4w/light_vs_dark_arabian_nights/gynjknw/
+    "arn" => {
+      "Army of Allah"         => { "2†"  => "C1", "2"  => "C3" },
+      "Bird Maiden"           => { "37†" => "C2", "37" => "C2" },
+      "Erg Raiders"           => { "25†" => "C2", "25" => "C3" },
+      "Fishliver Oil"         => { "13†" => "C1", "13" => "C3" },
+      "Giant Tortoise"        => { "15†" => "C1", "15" => "C3" },
+      "Hasran Ogress"         => { "27†" => "C2", "27" => "C3" },
+      "Moorish Cavalry"       => { "7†"  => "C1", "7"  => "C4" },
+      "Nafs Asp"              => { "52†" => "C2", "52" => "C3" },
+      "Oubliette"             => { "31†" => "C2", "31" => "C2" },
+      "Piety"                 => { "8†"  => "C1", "8"  => "C3" },
+      "Rukh Egg"              => { "43†" => "C1", "43" => "C3" },
+      "Stone-Throwing Devils" => { "33†" => "C1", "33" => "C3" }, # reddit says C1/C4 incorrectly
+      "War Elephant"          => { "11†" => "C1", "11" => "C3" },
+      "Wyluli Wolf"           => { "55†" => "C1", "55" => "C4" },
+    }
   }
 
   def assign_print_sheet_information(cards, checklist)
@@ -59,7 +77,7 @@ class PatchPrintSheets < Patch
     # We have information about print sheets, but it's only human readable descriptions
     # Card order in mtgjson is not generally going to match card order on checklist documents
     if overrides.all?
-      raise "Overrides incorrect" unless checklist.map(&:last).sort == overrides.sort
+      raise "Overrides incorrect for #{set_code} #{name}" unless checklist.map(&:last).sort == overrides.sort
       cards.zip(overrides).each do |card, print_sheet|
         card["print_sheet"] = print_sheet
       end
