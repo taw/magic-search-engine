@@ -555,4 +555,10 @@ BanList.for_format("legacy") do
     "Entomb" => "banned",
     "Nadu, Winged Wisdom" => "banned",
   )
+
+  change(
+    "2026-05-18",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-may-18-2026",
+    "Undercity Informer" => "banned",
+  )
 end

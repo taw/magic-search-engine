@@ -104,4 +104,10 @@ BanList.for_format("pioneer") do
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-november-10-2025",
     "Heartfire Hero" => "banned",
   )
+
+  change(
+    "2026-05-18",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-may-18-2026",
+    "Cori-Steel Cutter" => "banned",
+  )
 end

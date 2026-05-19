@@ -175,4 +175,10 @@ BanList.for_format("alchemy") do
     # suspended (pending rebalance).
     "Cori-Steel Cutter" => "banned",
   )
+
+  change(
+    "2026-05-18",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-may-18-2026",
+    "Sewer-veillance Cam" => "banned",
+  )
 end

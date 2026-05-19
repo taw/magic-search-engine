@@ -212,4 +212,13 @@ BanList.for_format("modern") do
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-announcement-march-31-2025",
     "Underworld Breach" => "banned",
   )
+
+  change(
+    "2026-05-18",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-may-18-2026",
+    "Phlage, Titan of Fire's Fury" => "banned",
+    "Lotus Field" => "banned",
+    "Violent Outburst" => "legal",
+    "Umezawa's Jitte" => "legal",
+  )
 end

@@ -286,4 +286,10 @@ BanList.for_format("pauper") do
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-november-10-2025",
     "High Tide" => "banned",
   )
+
+  change(
+    "2026-05-18",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-may-18-2026",
+    "Bonder's Ornament" => "legal",
+  )
 end
