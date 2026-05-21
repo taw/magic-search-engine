@@ -76,6 +76,18 @@ class PatchMtgjsonVersions < Patch
     card["number"] = "#{base_number}#{counter}"
   end
 
+  # List of prepared spells to rename
+  def calculate_prepared_spells
+    @prepared_spells = Set[]
+
+    each_card do |name, printings|
+      layouts = printings.map{|c| c["layout"]}.uniq
+      if layouts.include?("prepare") and layouts.size > 1
+        @prepared_spells << name
+      end
+    end
+  end
+
   def call
     # Fix Alchemy cards names into something search engine can work with
     # mtgjson "A-Akki Ronin" turns into "Akki Ronin (Alchemy)"
@@ -138,6 +150,8 @@ class PatchMtgjsonVersions < Patch
         card["colors"] = ["G"]
       end
     end
+
+    calculate_prepared_spells
 
     each_printing do |card|
       card["cmc"] = get_cmc(card)
@@ -449,34 +463,11 @@ class PatchMtgjsonVersions < Patch
 
       # Rename prepared spells to keep them unique
       # only those that also exist as standalone cards need special handling
-      prepared_spells = [
-        "Ancestral Recall",
-        "Boltwave", # YSOS
-        "Braingeyser",
-        "Brainstorm",
-        "Careful Study",
-        "Channel",
-        "Demonic Tutor",
-        "Exsanguinate",
-        "Jump",
-        "Lightning Bolt",
-        "Raise Dead",
-        "Rampant Growth",
-        "Reanimate",
-        "Regrowth",
-        "Replenish",
-        "Secret Rendezvous",
-        "Seething Song",
-        "Sign in Blood",
-        "Stream of Life",
-        "Swords to Plowshares",
-        "Wheel of Fortune",
-      ]
       if card["layout"] == "prepare"
-        if prepared_spells.include?(card["name"])
+        if @prepared_spells.include?(card["name"])
           card["name"] = "#{card["name"]} (Prepared)"
         end
-        card["names"] = card["names"].map{|n| prepared_spells.include?(n) ? "#{n} (Prepared)" : n }
+        card["names"] = card["names"].map{|n| @prepared_spells.include?(n) ? "#{n} (Prepared)" : n }
       end
     end
 

@@ -7,6 +7,10 @@ class Patch
   end
 
   def each_card(&block)
+    # A bit of a hack, but state management of printing renames got too compilcated,
+    # so for now just recalculate grouping by name whenever it's called
+    @cards = @cards.values.flatten(1).group_by{|c| c["name"]}
+
     @cards.each(&block)
   end
 

@@ -64,6 +64,7 @@ describe "Full Database Test" do
       "Bloodline Recollector", "Ancestral Craving",
       "Callous Sell-Sword", "Burn Together",
       "Claim", "Fame",
+      "Crescendo Conductor", "Boltwave (Prepared)",
       "Curious Pair", "Treats to Share",
       "Death", "Life",
       "Elite Interceptor", "Rejoinder",
