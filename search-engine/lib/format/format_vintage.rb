@@ -57,6 +57,7 @@ class FormatVintage < Format
       ytdm
       ywoe
       yecl
+      ysos
     ]]
 
     # Portal / Starter sets used to not be tournament legal

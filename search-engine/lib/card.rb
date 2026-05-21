@@ -23,6 +23,7 @@ class Card
     "Corrupted",
     "Council's dilemma",
     "Coven",
+    "Covercast",
     "Delirium",
     "Dinosaur Formula",
     "Disappear",
