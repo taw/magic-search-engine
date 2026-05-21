@@ -451,6 +451,7 @@ class PatchMtgjsonVersions < Patch
       # only those that also exist as standalone cards need special handling
       prepared_spells = [
         "Ancestral Recall",
+        "Boltwave", # YSOS
         "Braingeyser",
         "Brainstorm",
         "Careful Study",
