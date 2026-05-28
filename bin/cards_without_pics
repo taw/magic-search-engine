@@ -20,12 +20,14 @@ class CardsWithoutPics
     @db = CardDatabase.load
   end
 
-  def call
-    missing = db
+  def missing
+    @missing ||= db
       .printings
       .reject{|card| card.path_hq.exist? or card.path_lq.exist? }
       .sort_by{|c| [c.set, c.number.to_i, c.number] }
+  end
 
+  def call
     missing.each do |c|
       puts "#{c.set_code}/#{c.number} #{c.name}"
       if c.number =~ /\A(.*)[ab]/
@@ -38,6 +40,15 @@ class CardsWithoutPics
       end
     end
   end
+
+  def show_sets
+    missing_sets = missing.map(&:set_code).uniq.sort
+    puts missing_sets.join("\n") unless missing_sets.empty?
+  end
 end
 
-CardsWithoutPics.new.call
+if ARGV[0] == "--sets"
+  CardsWithoutPics.new.show_sets
+else
+  CardsWithoutPics.new.call
+end
