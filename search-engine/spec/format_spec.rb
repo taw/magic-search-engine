@@ -233,7 +233,7 @@ describe "Formats" do
   # maybe add it at some later point
   it "duel commander" do
     assert_count_cards 'banned:"duel commander"', 227
-    assert_count_cards 'restricted:"duel commander"', 30
+    assert_count_cards 'restricted:"duel commander"', 27
   end
 
   # Used to be Lurrus

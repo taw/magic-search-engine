@@ -594,4 +594,12 @@ BanList.for_format("duel commander") do
     "https://www.duelcommander.org/announcements/2026/03/30/",
     "Lutri, the Spellchaser" => "restricted", # banned as companion only, not as commander
   )
+
+  change(
+    "2026-05-26",
+    "https://www.duelcommander.org/announcements/2026/05/25/",
+    "Emry, Lurker of the Loch" => "legal",
+    "Najeela, the Blade-Blossom" => "legal",
+    "Winota, Joiner of Forces" => "legal",
+  )
 end
