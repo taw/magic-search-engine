@@ -35,6 +35,7 @@ class CardsWithoutPicsFast
     to_update = sets_with_missing_pictures
     return if to_update.empty?
 
+    puts "Fetching new pictures from sets: #{to_update.join(" ")}"
     Dir.chdir(ENV["HOME"]) do
       system "./checkout_mtg_pics #{to_update.join(" ")}"
     end
