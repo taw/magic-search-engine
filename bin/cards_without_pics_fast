@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+
+# This doesn't load the DB, so it's much more reasonable to use on a memory constrained server
+require "json"
+require "pathname-glob"
+require "pathname"
+
+class CardsWithoutPicsFast
+  def index_path
+    Pathname(__dir__) + "../index/index.json"
+  end
+
+  def card_list
+    `jq -c '.cards[] | .["*"][] | [.[0], .[1]["n"]]' <"#{index_path}"`.lines.map{|line| JSON.parse(line)}
+  end
+
+  def cards_with_missing_pictures
+    card_list.reject{|set_code, number|
+      Pathname("frontend/public/cards/#{set_code}/#{number}.png").exist? ||
+      Pathname("frontend/public/cards_hq/#{set_code}/#{number}.png").exist?
+    }
+  end
+
+  def sets_with_missing_pictures
+    cards_with_missing_pictures.map(&:first).uniq
+  end
+
+  def show_sets
+    sets_with_missing_pictures.each do |set|
+      puts set
+    end
+  end
+
+  def update
+    to_update = sets_with_missing_pictures
+    return if to_update.empty?
+
+    Dir.chdir(ENV["HOME"]) do
+      system "./checkout_mtg_pics #{to_update.join(" ")}"
+    end
+  end
+
+  def show_cards
+    cards_with_missing_pictures.each do |set, number|
+      puts "#{set}/#{number}"
+    end
+  end
+end
+
+if ARGV[0] == "--sets"
+  CardsWithoutPicsFast.new.show_sets
+elsif ARGV[0] == "--update"
+  CardsWithoutPicsFast.new.update
+else
+  CardsWithoutPicsFast.new.show_cards
+end
