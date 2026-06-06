@@ -58,6 +58,7 @@ describe "Color Expr Test" do
       "Kenrith, the Returned King",
       "Kyodai, Soul of Kamigawa",
       "Leonardo, the Balance",
+      "Nick Fury, Agent of S.H.I.E.L.D.",
       "Paragon of the Amesha",
       "Sisay, Weatherlight Captain",
       "Tazri, Beacon of Unity",

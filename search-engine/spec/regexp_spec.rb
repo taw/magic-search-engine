@@ -69,6 +69,7 @@ describe "Regexp" do
       "Gilded Lotus",
       "Goblin Secret Agent",
       "Gore Vassal",
+      "Hidden Lair",
       "Invoke the Divine",
       "Mise",
       "Nalathni Dragon",
