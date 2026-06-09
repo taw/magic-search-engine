@@ -586,6 +586,7 @@ class Card
     "Wark",
     "Warp Blast",
     "Warp Vortex",
+    "Wasp's Sting",
     "Water Always Wins",
     "Wave Cannon",
     "Web Support",
