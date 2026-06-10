@@ -254,7 +254,8 @@ describe "Full Database Test" do
       "Magus of the Abyss",
       "Peer into the Abyss",
       "Reaper from the Abyss",
-      "The Abyss"
+      "The Abyss",
+      "Tiger Shark, Abyssal Hunter"
     assert_search_results "snow is:funny", "Snow Mercy", "Princess Snowfall"
     assert_search_results "tiger is:funny", "Paper Tiger", "Stocking Tiger"
   end

@@ -24,6 +24,7 @@ class ConditionIsKeywordsoup < ConditionNickname
       "selective adaptation",
       "soulflayer",
       "sproutwatch dryad",
+      "super-adaptoid",
       "thunderous orator",
       "urborg scavengers",
       "wretched bonemass",
