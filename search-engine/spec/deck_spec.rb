@@ -430,7 +430,7 @@ describe Deck do
   end
 
   describe "#cards_in_all_zones adds up mainboard and sideboard and commander" do
-    let(:deck) { db.sets["eld"].deck_named("Savage Hunter") }
+    let(:deck) { db.sets["eld"].deck_named("Savage Hunger") }
     let(:main) { deck.cards }
     let(:side) { deck.sideboard }
     let(:commander) { deck.commander }
