@@ -1,0 +1,151 @@
+# Marvel Super Heroes
+# Play Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-marvel-super-heroes
+# - https://magic.wizards.com/en/products/marvel/marvel-super-heroes/card-image-gallery
+# - https://scryfall.com/sets/msh
+# - https://scryfall.com/sets/msc
+# - https://scryfall.com/sets/mar
+
+pack:
+  common_source:
+    - common: 7
+      chance: 23
+    - common: 6
+      source_material: 1
+      chance: 1
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil: 1
+  land:
+    - non_foil_land: 1
+      chance: 80
+    - foil_land: 1
+      chance: 20
+
+
+queries:
+  dual_land: "e:{set} number:257-259,262,265,268,270-273"
+  city_calm_chaos: "e:{set} number:277-286"
+  basic_land: "e:{set} number:287-296"
+  boosterfun: "e:{set} number:297-379"
+# 380-384: Borderless Lands (5R) (5)
+  source_material: "e:MAR number:41-100"
+
+ 
+sheets:
+  common:
+    # By doing the math on the percentages given by Wizards, we come to the 3:1 rate between normal and scene commons.
+    any:
+      - rawquery: "{boosterfun} r:c"
+        rate: 1
+        count: 3
+      # - query: "r:c alt:({boosterfun})"
+      #   rate: 2
+      #   count: 3
+      # - query: "r:c -alt:({boosterfun}) -{dual_land}"
+      #   rate: 3
+      #   count: 81 - 3
+
+  uncommon:
+    # By doing the math on the percentages given by Wizards, we come to the 3:1 rate between normal and scene uncommons.
+    any:
+      - rawquery: "{boosterfun} r:u"
+        rate: 1
+        count: 12
+      - query: "r:u alt:({boosterfun})"
+        rate: 2
+        count: 12
+      - query: "r:u -alt:({boosterfun})"
+        rate: 3
+        count: 100 - 12
+
+  rare:
+    # TODO: Define correct ratio after all cards are spoiled
+    # By doing the math on the percentages given by Wizards, we come to the 7:1 rate between normal and boosterfun rares and mythics.
+    any:
+      - rawquery: "{boosterfun} r:r" # TODO: Make sure this boosterfun doesn't include rare borderless land
+        rate: 1
+        count: 34 # TODO: Only if all boosterfun rares are different
+      - query: "r:r alt:({boosterfun})"
+        rate: 6 # TODO: Update
+        count: 34
+      - query: "r:r -alt:({boosterfun})"
+        rate: 7 # TODO: Update
+        count: 60 - 34
+
+  mythic:
+    # TODO: Define correct ratio after all cards are spoiled
+    # By doing the math on the percentages given by Wizards, we come to the 7:1 rate between normal and boosterfun rares and mythics.
+    any:
+      - rawquery: "{boosterfun} r:m"
+        rate: 1
+        count: 34 # TODO: Only if all boosterfun mythics are different
+      - query: "r:m alt:({boosterfun})"
+        rate: 6 # TODO: Update
+        count: 34
+      - query: "r:m -alt:({boosterfun})"
+        rate: 7 # TODO: Update
+        count: 60 - 34
+
+  rare_mythic:
+    any:
+      - use: rare
+        chance: 6
+      - use: mythic
+        chance: 1
+
+  wildcard:
+    any:
+      - use: common
+        chance: 130
+      - use: uncommon
+        chance: 667
+      - use: rare_mythic
+        chance: 203
+      # TODO: Add rare borderless land
+
+  foil:
+  # C:U seems to be 2:1 and R:M also 2:1 # TODO: Update, review all chances in this slot
+    foil: true
+    any:
+      - any:
+        - use: common
+          rate: 2
+        - use: uncommon
+          rate: 1
+        chance: 544 + 336 # 54.4% + 33.6% = 88% # TODO: Update
+      - any: # TODO: Just use rare_mythic
+        - use: rare
+          chance: 6
+        - use: mythic
+          chance: 1
+        chance: 67 + 11 + 10 # Add the extra 1% for the boosterfun 
+
+  non_foil_land:
+    any:
+      - rawquery: "{basic_land}" # Default frame basic land
+        rate: 1
+        count: 10
+      - rawquery: "{city_calm_chaos}"
+        rate: 1
+        count: 10
+      - rawquery: "{dual_land}"
+        rate: 2
+        count: 10
+
+  foil_land:
+    foil: true
+    use: non_foil_land
+
+  source_material:
+    rawquery: "{source_material}"
+    count: 40
+
+
+  
+
+ 
+
+  
