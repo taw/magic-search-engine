@@ -41,12 +41,12 @@ sheets:
       - rawquery: "{boosterfun} r:c"
         rate: 1
         count: 3
-      # - query: "r:c alt:({boosterfun})"
-      #   rate: 2
-      #   count: 3
-      # - query: "r:c -alt:({boosterfun}) -{dual_land}"
-      #   rate: 3
-      #   count: 81 - 3
+      - query: "r:c alt:({boosterfun})"
+        rate: 2
+        count: 3
+      - query: "r:c -alt:({boosterfun}) -{dual_land}"
+        rate: 3
+        count: 81 - 3
 
   uncommon:
     # By doing the math on the percentages given by Wizards, we come to the 3:1 rate between normal and scene uncommons.
