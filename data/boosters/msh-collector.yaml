@@ -1,0 +1,233 @@
+# Marvel Super Heroes
+# Collector Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-marvel-super-heroes
+# - https://magic.wizards.com/en/products/marvel/marvel-super-heroes/card-image-gallery
+# - https://scryfall.com/sets/msh
+# - https://scryfall.com/sets/msc
+# - https://scryfall.com/sets/mar
+
+
+pack:
+  foil_common: 3
+  foil_uncommon: 2
+  foil_common_commander: 2
+  foil_uncommon_commander: 1
+  foil_c_u_scene: 1
+  foil_land: 1
+  foil_rare_mythic: 1
+  boosterfun_commander: 1
+  boosterfun: 1
+  source_material:
+    - non_foil_source_material: 1
+      chance: 75
+    - foil_source_material: 1
+      chance: 25
+  foil_boosterfun: 1
+
+queries:
+  # dual_land: "e:{set} number:257-259,262,265,268,270-273"
+  city_calm_chaos: "e:{set} number:277-286"
+  panel: "e:{set} number:297-313"
+  scene: "e:{set} number:314-351"
+  logo: "e:{set} number:352-379"
+  borderless_land: "e:{set} number:380-384"
+  gauntlet_mind_stone: "e:{set} number:385"
+  cosmic_mind_stone: "e:{set} number:386"
+  classic_comic: "e:{set} number:387-401"
+  msh_extended_art: "e:{set} number:402-429"
+
+  source_material: "e:MAR number:41-100"
+
+  msc_face_commander: "e:MSC number:1-7"
+  msc_extended_art: "e:MSC number:291-500"
+  msc_scene_box: "e:MSC number:501-512"
+  jumpstart_new: "e:MSC number:583-767"
+  jumpstart_reprint: "e:MSC number:583-767,874"
+  welcome_deck: "e:MSC number:829-833"
+
+sheets:
+  foil_common:
+    foil: true
+    query: "r:c"
+    count: 81 + 10 # commons + duals
+
+  foil_uncommon:
+    foil: true
+    query: "r:u"
+    count: 100
+
+
+  foil_common_commander:
+    foil: true
+    any:
+      - rawquery: "{jumpstart_reprint} r:c"
+        rate: 1
+        count: 37
+      - rawquery: "{jumpstart_new} r:c"
+        rate: 1
+        count: 37
+
+  foil_uncommon_commander:
+    foil: true
+    any:
+      - rawquery: "{jumpstart_reprint} r:u"
+        rate: 1
+        count: 21
+      - rawquery: "{jumpstart_new} r:u"
+        rate: 1
+        count: 92
+
+  foil_c_u_scene:
+    foil: true
+    any:
+      - rawquery: "{scene} r:c"
+        rate: 1
+        count: 3
+      - rawquery: "{scene} r:u"
+        rate: 1
+        count: 12
+
+  foil_land:
+    foil: true
+    rawquery: "{city_calm_chaos}"
+    count: 10
+
+  foil_rare_mythic_no_dfc:
+    foil: true
+    any:
+    - use: rare
+      rate: 2
+      count: 60
+    - use: mythic
+      rate: 1
+      count: 25
+      # TODO: Maybe just rare_mythic here?
+    - rawquery: "{jumpstart_new} r:r"
+      rate: 2
+      count: 45
+    - rawquery: "{jumpstart_new} r:m"
+      rate: 1
+      count: 11
+    - rawquery: "{jumpstart_reprint} r:r"
+      rate: 2
+      count: 4
+    - rawquery: "{welcome_deck} r:m"
+      rate: 1
+      count: 5
+
+  foil_rare_mythic:
+    # Everything in this sheet is 2:1 R:M ratio except the double faced cards
+    foil: true
+    any:
+    - use: foil_rare_mythic_no_dfc
+      chance: 972 # 100% - 1.4% - 1.4% = 97.2%
+    - rawquery: "{scene} is:dfc"
+      chance: 14 # 1.4%
+      count: 5
+    - rawquery: "{logo} is:dfc"
+      chance: 14 # 1.4%
+      count: 5
+
+  boosterfun_commander:
+    any:
+    - rawquery: "{msc_extended_art} r:r"
+      rate: 1
+      count: 203
+    - rawquery: "{msc_extended_art} r:m"
+      rate: 1 # It's weird that they have the same rate as the rares but that's what Wizard's numbers say
+      count: 7
+    - rawquery: "{msc_face_commander} r:r"
+      rate: 1
+      count: 7
+
+  msh_extended_art:
+    any:
+    - rawquery: "{msh_extended_art} r:r"
+      rate: 2
+      count: 24
+    - rawquery: "{msh_extended_art} r:m"
+      rate: 1
+      count: 4
+
+  non_foil_source_material:
+    rawquery: "{source_material}"
+    count: 60
+
+  foil_source_material:
+    foil: true
+    use: non_foil_source_material
+
+  boosterfun:
+  # I tried to use rates but I couldn't get many clear rates from Wizard's numbers
+    any:
+    - use: msh_extended_art
+      chance: 278 + 23 # 27.8% + 2.3%
+      count: 28
+    - rawquery: "{scene} r:r"
+      chance: 64 # 6.4%
+      count: 8
+    - rawquery: "{scene} r:m"
+      chance: 49 # 4.9%
+      count: 15
+    - rawquery: "{logo} r:r"
+      chance: 151 # 15.1%
+      count: 15
+    - rawquery: "{logo} r:m"
+      chance: 46 # 4.6%
+      count: 13
+    - rawquery: "{panel} r:r"
+      chance: 121 # 12.1%
+      count: 11
+    - rawquery: "{panel} r:m"
+      chance: 26 # 2.6%
+      count: 6
+    - rawquery: "{msc_scene_box}"
+      chance: 139 # 13.9%
+      count: 12
+    - rawquery: "{borderless_land}"
+      chance: 58 # 5.8%
+      count: 5
+    - use: non_foil_source_material
+      chance: 45 # 4.5%
+
+  foil_boosterfun:
+    foil: true
+  # I tried to use rates but I couldn't get many clear rates from Wizard's numbers
+    any:
+    - use: msh_extended_art
+      chance: 318 + 27 # 31.8% + 2.7%
+      count: 28
+    - rawquery: "{scene} r:r"
+      chance: 73 # 7.3%
+      count: 8
+    - rawquery: "{scene} r:m -is:dfc"
+      chance: 40 # 4%
+      count: 10
+    - rawquery: "{logo} r:r"
+      chance: 172 # 17.2%
+      count: 15
+    - rawquery: "{logo} r:m -is:dfc"
+      chance: 36 # 3.6%
+      count: 8
+    - rawquery: "{panel} r:r"
+      chance: 139 # 13.9%
+      count: 11
+    - rawquery: "{panel} r:m"
+      chance: 30 # 3%
+      count: 6
+    - rawquery: "{borderless_land}"
+      chance: 66 # 6.6%
+      count: 5
+    - rawquery: "{classic_comic}"
+      chance: 99 # 9.9%
+      count: 15
+    
+      chance: 1 # TODO: Update
+      count: 1
+
+  
+
+
+
+# TODO: Double check all foil tags!
