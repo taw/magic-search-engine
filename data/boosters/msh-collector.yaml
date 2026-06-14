@@ -26,7 +26,6 @@ pack:
   foil_boosterfun: 1
 
 queries:
-  # dual_land: "e:{set} number:257-259,262,265,268,270-273"
   city_calm_chaos: "e:{set} number:277-286"
   panel: "e:{set} number:297-313"
   scene: "e:{set} number:314-351"
@@ -43,7 +42,7 @@ queries:
   msc_extended_art: "e:MSC number:291-500"
   msc_scene_box: "e:MSC number:501-512"
   jumpstart_new: "e:MSC number:583-767"
-  jumpstart_reprint: "e:MSC number:583-767,874"
+  jumpstart_reprint: "e:MSC number:768-828,874"
   welcome_deck: "e:MSC number:829-833"
 
 sheets:
@@ -56,7 +55,6 @@ sheets:
     foil: true
     query: "r:u"
     count: 100
-
 
   foil_common_commander:
     foil: true
@@ -137,7 +135,7 @@ sheets:
     - rawquery: "{msc_extended_art} r:m"
       rate: 1 # It's weird that they have the same rate as the rares but that's what Wizard's numbers say
       count: 7
-    - rawquery: "{msc_face_commander} r:r"
+    - rawquery: "{msc_face_commander}"
       rate: 1
       count: 7
 
