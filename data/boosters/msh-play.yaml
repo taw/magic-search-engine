@@ -32,6 +32,9 @@ queries:
   borderless_land: "e:{set} number:380-384"
   source_material: "e:MAR number:41-100"
 
+  rare_with_two_boosterfun: "e:{set} number:25,97,213,220,244"
+  mythic_with_two_boosterfun: "e:{set} number:6,9,11,18,23,49,80,89,95,146,156,219,245"
+
 sheets:
   common:
     # By doing the math on the percentages given by Wizards, we come to the 3:1 rate between normal and scene commons.
@@ -64,10 +67,10 @@ sheets:
       - rawquery: "{boosterfun_no_land} r:r" # Rare boosterfun
         rate: 1
         count: 34
-      - query: "r:r alt:({boosterfun_no_land})" # Rare with one boosterfun version # TODO: Define properly
+      - query: "r:r alt:({boosterfun_no_land}) -{rare_with_two_boosterfun}" # Rare with one boosterfun version # TODO: Define properly
         rate: 6
         count: 24
-      - query: "r:r alt:({boosterfun_no_land})" # Rare with two boosterfun versions # TODO: Define properly
+      - query: "{rare_with_two_boosterfun})" # Rare with two boosterfun versions
         rate: 7
         count: 5
       - query: "r:r -alt:({boosterfun_no_land})" # Rare without boosterfun version
@@ -76,16 +79,16 @@ sheets:
 
   mythic:
     any:
-      - rawquery: "{boosterboosterfun_no_landfun} r:m" # Mythic boosterfun
+      - rawquery: "{boosterfun_no_land} r:m" # Mythic boosterfun
         rate: 1
         count: 34
-      - query: "r:m alt:({boosterfun})" # Mythic with one boosterfun version # TODO: Define properly
+      - query: "r:m alt:({boosterfun_no_land}) -{mythic_with_two_boosterfun}" # Mythic with one boosterfun version # TODO: Define properly
         rate: 12
-        count: 13
-      - query: "r:m alt:({boosterfun})" # Mythic with two boosterfun version # TODO: Define properly
-        rate: 13
         count: 8
-      - query: "r:m -alt:({boosterfun})" # Mythic without boosterfun version
+      - query: "{mythic_with_two_boosterfun}" # Mythic with two boosterfun version
+        rate: 13
+        count: 13
+      - query: "r:m -alt:({boosterfun_no_land})" # Mythic without boosterfun version
         rate: 14
         count: 25 - 13 - 5
 
@@ -116,16 +119,12 @@ sheets:
     any:
       - use: common
         chance: 608
-        count: 81
       - use: uncommon
         chance: 308
-        count: 100
       - use: rare_mythic
         chance: 75
-        count: 85
       - rawquery: "{borderless_land}"
         chance: 9
-        count: 5
 
   non_foil_land:
     any:
@@ -145,7 +144,7 @@ sheets:
 
   source_material:
     rawquery: "{source_material}"
-    count: 40
+    count: 60
 
 
   
