@@ -67,7 +67,7 @@ sheets:
       - rawquery: "{boosterfun_no_land} r:r" # Rare boosterfun
         rate: 1
         count: 34
-      - query: "r:r alt:({boosterfun_no_land}) -{rare_with_two_boosterfun}" # Rare with one boosterfun version # TODO: Define properly
+      - query: "r:r alt:({boosterfun_no_land}) -{rare_with_two_boosterfun}" # Rare with one boosterfun version
         rate: 6
         count: 24
       - query: "{rare_with_two_boosterfun})" # Rare with two boosterfun versions
@@ -82,7 +82,7 @@ sheets:
       - rawquery: "{boosterfun_no_land} r:m" # Mythic boosterfun
         rate: 1
         count: 34
-      - query: "r:m alt:({boosterfun_no_land}) -{mythic_with_two_boosterfun}" # Mythic with one boosterfun version # TODO: Define properly
+      - query: "r:m alt:({boosterfun_no_land}) -{mythic_with_two_boosterfun}" # Mythic with one boosterfun version
         rate: 12
         count: 8
       - query: "{mythic_with_two_boosterfun}" # Mythic with two boosterfun version
@@ -90,7 +90,7 @@ sheets:
         count: 13
       - query: "r:m -alt:({boosterfun_no_land})" # Mythic without boosterfun version
         rate: 14
-        count: 25 - 13 - 5
+        count: 25 - 13 - 8
 
   rare_mythic:
     any:
@@ -145,7 +145,6 @@ sheets:
   source_material:
     rawquery: "{source_material}"
     count: 60
-
 
   
 ####### Rare and Mythic slots:
