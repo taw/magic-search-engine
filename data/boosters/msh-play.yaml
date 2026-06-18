@@ -1,0 +1,152 @@
+# Marvel Super Heroes
+# Play Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-marvel-super-heroes
+# - https://magic.wizards.com/en/products/marvel/marvel-super-heroes/card-image-gallery
+# - https://scryfall.com/sets/msh
+# - https://scryfall.com/sets/msc
+# - https://scryfall.com/sets/mar
+
+pack:
+  common_source:
+    - common: 7
+      chance: 23
+    - common: 6
+      source_material: 1
+      chance: 1
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil: 1
+  land:
+    - non_foil_land: 1
+      chance: 80
+    - foil_land: 1
+      chance: 20
+
+queries:
+  dual_land: "e:{set} number:257-259,262,265,268,270-273"
+  city_calm_chaos: "e:{set} number:277-286"
+  basic_land: "e:{set} number:287-296"
+  boosterfun_no_land: "e:{set} number:297-379"
+  borderless_land: "e:{set} number:380-384"
+  source_material: "e:MAR number:41-100"
+
+  rare_with_two_boosterfun: "e:{set} number:25,97,213,220,244"
+  mythic_with_two_boosterfun: "e:{set} number:6,9,11,18,23,49,80,89,95,146,156,219,245"
+
+sheets:
+  common:
+    # By doing the math on the percentages given by Wizards, we come to the 3:1 rate between normal and scene commons.
+    any:
+      - rawquery: "{boosterfun_no_land} r:c"
+        rate: 1
+        count: 3
+      - query: "r:c alt:({boosterfun_no_land})"
+        rate: 2
+        count: 3
+      - query: "r:c -alt:({boosterfun_no_land}) -{dual_land}"
+        rate: 3
+        count: 81 - 3
+
+  uncommon:
+    # By doing the math on the percentages given by Wizards, we come to the 3:1 rate between normal and scene uncommons.
+    any:
+      - rawquery: "{boosterfun_no_land} r:u"
+        rate: 1
+        count: 12
+      - query: "r:u alt:({boosterfun_no_land})"
+        rate: 2
+        count: 12
+      - query: "r:u -alt:({boosterfun_no_land})"
+        rate: 3
+        count: 100 - 12
+
+  rare:
+    any:
+      - rawquery: "{boosterfun_no_land} r:r" # Rare boosterfun
+        rate: 1
+        count: 34
+      - query: "r:r alt:({boosterfun_no_land}) -{rare_with_two_boosterfun}" # Rare with one boosterfun version
+        rate: 6
+        count: 24
+      - query: "{rare_with_two_boosterfun})" # Rare with two boosterfun versions
+        rate: 7
+        count: 5
+      - query: "r:r -alt:({boosterfun_no_land})" # Rare without boosterfun version
+        rate: 8
+        count: 60 - 24 - 5
+
+  mythic:
+    any:
+      - rawquery: "{boosterfun_no_land} r:m" # Mythic boosterfun
+        rate: 1
+        count: 34
+      - query: "r:m alt:({boosterfun_no_land}) -{mythic_with_two_boosterfun}" # Mythic with one boosterfun version
+        rate: 12
+        count: 8
+      - query: "{mythic_with_two_boosterfun}" # Mythic with two boosterfun version
+        rate: 13
+        count: 13
+      - query: "r:m -alt:({boosterfun_no_land})" # Mythic without boosterfun version
+        rate: 14
+        count: 25 - 13 - 8
+
+  rare_mythic:
+    any:
+      - use: rare
+        chance: 2 * 60 # Equivalent to 2:1 rate
+      - use: mythic
+        chance: 1 * 25
+
+  wildcard:
+    any:
+      - use: common
+        chance: 130
+      - use: uncommon
+        chance: 667
+      - use: rare
+        # R:M don't seem to be 2:1 in this slot
+        chance: 172
+      - use: mythic
+        chance: 21
+      - rawquery: "{borderless_land}"
+        chance: 10
+        count: 5
+      
+  foil:
+    foil: true
+    any:
+      - use: common
+        chance: 608
+      - use: uncommon
+        chance: 308
+      - use: rare_mythic
+        chance: 75
+      - rawquery: "{borderless_land}"
+        chance: 9
+
+  non_foil_land:
+    any:
+      - rawquery: "{basic_land}" # Default frame basic land
+        rate: 1
+        count: 10
+      - rawquery: "{city_calm_chaos}"
+        rate: 1
+        count: 10
+      - rawquery: "{dual_land}"
+        rate: 2
+        count: 10
+
+  foil_land:
+    foil: true
+    use: non_foil_land
+
+  source_material:
+    rawquery: "{source_material}"
+    count: 60
+
+  
+####### Rare and Mythic slots:
+# These slots are getting quite complicated. Rares and mythics can have 0,1 or 2 boosterfun alternatives.
+# I did what I could to work with Wizards numbers and to keep all rares/mythics equally likely independently of the number of boosterfun versions.
