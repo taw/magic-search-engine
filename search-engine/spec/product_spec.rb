@@ -27,7 +27,7 @@ describe "product queries" do
           warn "Product #{product_name} contains #{item}"
         end
       when ProductVariableContents
-        p product_name
+        # p product_name
         item.options.each do |option|
           verify_contents(product_name, option[:subproduct])
         end
