@@ -1,7 +1,7 @@
 = content_for(:disable_turbolinks) do
   true
 %h4 Magic: The Gathering Comprehensive Rules
-%p These rules are effective as of April 17, 2026.
+%p These rules are effective as of June 19, 2026.
 %h3{id: "section-introduction"} Introduction
 %p This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)
 %p Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules.
@@ -1116,6 +1116,9 @@
 .rule{id: "section-111-10v"}
   .rule_id 111.10v
   .rule_text A Mutagen token is a colorless Mutagen artifact token with “<span class="manacost"><span class="mana mana-cost mana-1"><span class="sr-only">{1}</span></span></span>, <span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery.”
+.rule{id: "section-111-10w"}
+  .rule_id 111.10w
+  .rule_text A Vibranium token is a colorless Vibranium artifact token with indestructible and “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add <span class="manacost"><span class="mana mana-cost mana-c"><span class="sr-only">{C}</span></span></span>. This mana can’t be spent to cast a nonartifact spell.”
 .rule{id: "section-111-11"}
   .rule_id 111.11.
   .rule_text If an effect instructs a player to create a token by name, doesn’t define any other characteristics for that token, and the name is not one of the types in the list of predefined tokens above, that player uses the card with that name in the Oracle card reference to determine the characteristics of that token.
@@ -2176,10 +2179,10 @@
   .rule_text Many cards were printed with subtypes that are now obsolete. Many cards have retroactively received subtypes. Use the Oracle card reference to determine what a card’s subtypes are. (See rule <a href="#section-108-1">108.1</a>.)
 .rule{id: "section-205-3g"}
   .rule_id 205.3g
-  .rule_text Artifacts have their own unique set of subtypes; these subtypes are called artifact types. The artifact types are Attraction (see rule <a href="#section-717">717</a>), Blood, Bobblehead, Book, Clue, Contraption, Equipment (see rule <a href="#section-301-5">301.5</a>), Food, Fortification (see rule <a href="#section-301-6">301.6</a>), Gold, Incubator, Infinity, Junk, Lander, Map, Mutagen, Powerstone, Spacecraft, Stone, Treasure, and Vehicle (see rule <a href="#section-301-7">301.7</a>).
+  .rule_text Artifacts have their own unique set of subtypes; these subtypes are called artifact types. The artifact types are Attraction (see rule <a href="#section-717">717</a>), Blood, Bobblehead, Book, Clue, Contraption, Equipment (see rule <a href="#section-301-5">301.5</a>), Food, Fortification (see rule <a href="#section-301-6">301.6</a>), Gold, Incubator, Infinity, Junk, Lander, Map, Mutagen, Powerstone, Spacecraft, Stone, Treasure, Vehicle (see rule <a href="#section-301-7">301.7</a>), and Vibranium.
 .rule{id: "section-205-3h"}
   .rule_id 205.3h
-  .rule_text Enchantments have their own unique set of subtypes; these subtypes are called enchantment types. The enchantment types are Aura (see rule <a href="#section-303-4">303.4</a>), Background, Cartouche, Case (see rule <a href="#section-719">719</a>), Class (see rule <a href="#section-716">716</a>), Curse, Role (see rule <a href="#section-303-7">303.7</a>), Room, Rune, Saga (see rule <a href="#section-714">714</a>), Shard, and Shrine.
+  .rule_text Enchantments have their own unique set of subtypes; these subtypes are called enchantment types. The enchantment types are Aura (see rule <a href="#section-303-4">303.4</a>), Background, Cartouche, Case (see rule <a href="#section-719">719</a>), Class (see rule <a href="#section-716">716</a>), Curse, Plan, Role (see rule <a href="#section-303-7">303.7</a>), Room, Rune, Saga (see rule <a href="#section-714">714</a>), Shard, and Shrine.
 .rule{id: "section-205-3i"}
   .rule_id 205.3i
   .rule_text Lands have their own unique set of subtypes; these subtypes are called land types. The land types are Cave, Desert, Forest, Gate, Island, Lair, Locus, Mine, Mountain, Plains, Planet, Power-Plant, Sphere, Swamp, Tower, Town, and Urza’s. Of that list, Forest, Island, Mountain, Plains, and Swamp are the basic land types. See rule <a href="#section-305-6">305.6</a>.
@@ -2191,7 +2194,7 @@
   .rule_text Instants and sorceries share their lists of subtypes; these subtypes are called spell types. The spell types are Adventure, Arcane, Lesson, Omen, and Trap.
 .rule{id: "section-205-3m"}
   .rule_id 205.3m
-  .rule_text Creatures and kindreds share their lists of subtypes; these subtypes are called creature types. One creature type is two words long: Time Lord. All other creature types are one word long: Advisor, Aetherborn, Alien, Ally, Angel, Antelope, Ape, Archer, Archon, Armadillo, Army, Artificer, Assassin, Assembly-Worker, Astartes, Atog, Aurochs, Avatar, Azra, Badger, Balloon, Barbarian, Bard, Basilisk, Bat, Bear, Beast, Beaver, Beeble, Beholder, Berserker, Bird, Bison, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Capybara, Caribou, Carrier, Cat, Centaur, Child, Chimera, Citizen, Cleric, Clown, Cockatrice, Construct, Coward, Coyote, Crab, Crocodile, C’tan, Custodes, Cyberman, Cyclops, Dalek, Dauthi, Demigod, Demon, Deserter, Detective, Devil, Dinosaur, Djinn, Doctor, Dog, Dragon, Drake, Dreadnought, Drix, Drone, Druid, Dryad, Dwarf, Echidna, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Employee, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gamer, Gargoyle, Germ, Giant, Giraffe, Gith, Glimmer, Gnoll, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Guest, Hag, Halfling, Hamster, Harpy, Hedgehog, Hellion, Hero, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inkling, Inquisitor, Insect, Jackal, Jellyfish, Juggernaut, Kangaroo, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Llama, Lamia, Lammasu, Leech, Lemur, Leviathan, Lhurgoyf, Licid, Lizard, Lobster, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mite, Mole, Monger, Mongoose, Monk, Monkey, Moogle, Moonfolk, Mount, Mouse, Mutant, Myr, Mystic, Nautilus, Necron, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Performer, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Platypus, Porcupine, Possum, Praetor, Primarch, Prism, Processor, Qu, Rabbit, Raccoon, Ranger, Rat, Rebel, Reflection, Rhino, Rigger, Robot, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scientist, Scion, Scorpion, Scout, Sculpture, Seal, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Siren, Skeleton, Skunk, Slith, Sliver, Sloth, Slug, Snail, Snake, Soldier, Soltari, Sorcerer, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Squid, Squirrel, Starfish, Surrakar, Survivor, Symbiote, Synth, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Tiefling, Toy, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Tyranid, Unicorn, Utrom, Vampire, Varmint, Vedalken, Villain, Volver, Wall, Walrus, Warlock, Warrior, Weasel, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
+  .rule_text Creatures and kindreds share their lists of subtypes; these subtypes are called creature types. One creature type is two words long: Time Lord. All other creature types are one word long: Advisor, Aetherborn, Alien, Ally, Angel, Antelope, Ape, Archer, Archon, Armadillo, Army, Artificer, Assassin, Assembly-Worker, Astartes, Atog, Aurochs, Avatar, Azra, Badger, Balloon, Barbarian, Bard, Basilisk, Bat, Bear, Beast, Beaver, Beeble, Beholder, Berserker, Bird, Bison, Blinkmoth, Boar, Bringer, Brushwagg, Camarid, Camel, Capybara, Caribou, Carrier, Cat, Centaur, Child, Chimera, Citizen, Cleric, Clown, Cockatrice, Construct, Coward, Coyote, Crab, Crocodile, C’tan, Custodes, Cyberman, Cyclops, Dalek, Dauthi, Demigod, Demon, Deserter, Detective, Devil, Dinosaur, Djinn, Doctor, Dog, Dragon, Drake, Dreadnought, Drix, Drone, Druid, Dryad, Dwarf, Echidna, Efreet, Egg, Elder, Eldrazi, Elemental, Elephant, Elf, Elk, Employee, Eternal, Eye, Faerie, Ferret, Fish, Flagbearer, Fox, Fractal, Frog, Fungus, Gamer, Gamma, Gargoyle, Germ, Giant, Giraffe, Gith, Glimmer, Gnoll, Gnome, Goat, Goblin, God, Golem, Gorgon, Graveborn, Gremlin, Griffin, Guest, Hag, Halfling, Hamster, Harpy, Hedgehog, Hellion, Hero, Hippo, Hippogriff, Homarid, Homunculus, Horror, Horse, Human, Hydra, Hyena, Illusion, Imp, Incarnation, Inhuman, Inkling, Inquisitor, Insect, Jackal, Jellyfish, Juggernaut, Kangaroo, Kavu, Kirin, Kithkin, Knight, Kobold, Kor, Kraken, Kree, Llama, Lamia, Lammasu, Leech, Lemur, Leviathan, Lhurgoyf, Licid, Lizard, Lobster, Manticore, Masticore, Mercenary, Merfolk, Metathran, Minion, Minotaur, Mite, Mole, Monger, Mongoose, Monk, Monkey, Moogle, Moonfolk, Mount, Mouse, Mutant, Myr, Mystic, Nautilus, Necron, Nephilim, Nightmare, Nightstalker, Ninja, Noble, Noggle, Nomad, Nymph, Octopus, Ogre, Ooze, Orb, Orc, Orgg, Otter, Ouphe, Ox, Oyster, Pangolin, Peasant, Pegasus, Pentavite, Performer, Pest, Phelddagrif, Phoenix, Phyrexian, Pilot, Pincher, Pirate, Plant, Platypus, Porcupine, Possum, Praetor, Primarch, Prism, Processor, Qu, Rabbit, Raccoon, Ranger, Rat, Rebel, Reflection, Rhino, Rigger, Robot, Rogue, Sable, Salamander, Samurai, Sand, Saproling, Satyr, Scarecrow, Scientist, Scion, Scorpion, Scout, Sculpture, Seal, Serf, Serpent, Servo, Shade, Shaman, Shapeshifter, Shark, Sheep, Shi’ar, Siren, Skeleton, Skrull, Skunk, Slith, Sliver, Sloth, Slug, Snail, Snake, Soldier, Soltari, Sorcerer, Spawn, Specter, Spellshaper, Sphinx, Spider, Spike, Spirit, Splinter, Sponge, Spy, Squid, Squirrel, Starfish, Surrakar, Survivor, Symbiote, Synth, Tentacle, Tetravite, Thalakos, Thopter, Thrull, Tiefling, Toy, Treefolk, Trilobite, Triskelavite, Troll, Turtle, Tyranid, Unicorn, Utrom, Vampire, Varmint, Vedalken, Villain, Volver, Wall, Walrus, Warlock, Warrior, Weasel, Weird, Werewolf, Whale, Wizard, Wolf, Wolverine, Wombat, Worm, Wraith, Wurm, Yeti, Zombie, and Zubera.
 .rule{id: "section-205-3n"}
   .rule_id 205.3n
   .rule_text Planes have their own unique set of subtypes; these subtypes are called planar types. The planar types are The Abyss, Alara, Alfava Metraxis, Amonkhet, Androzani Minor, Antausia, Apalapucia, Arcavios, Arkhos, Avishkar, Azgol, Belenon, Bolas’s Meditation Realm, Capenna, Cridhe, The Dalek Asylum, Darillium, Dominaria, Earth, Echoir, Eldraine, Equilor, Ergamon, Fabacin, Fiora, Gallifrey, Gargantikar, Gobakhan, Horsehead Nebula, Ikoria, Innistrad, Iquatana, Ir, Ixalan, Kaldheim, Kamigawa, Kandoka, Karsus, Kephalai, Kinshala, Kolbahan, Kylem, Kyneth, The Library, Lorwyn, Luvion, Mars, Mercadia, Mirrodin, Moag, Mongseng, Moon, Muraganda, Necros, New Earth, New Phyrexia, Outside Mutter’s Spiral, Phyrexia, Pyrulea, Rabiah, Rath, Ravnica, Regatha, Segovia, Serra’s Realm, Shadowmoor, Shandalar, Shenmeng, Skaro, Spacecraft, Tarkir, Theros, Time, Trenzalore, Ulgrotha, Unknown Planet, Valla, Vryn, Wildfire, Xerex, Zendikar, and Zhalfir.
@@ -3293,7 +3296,7 @@
   .rule_text Only the first main phase of the turn is a precombat main phase. All other main phases are postcombat main phases. This includes the second main phase of a turn in which the combat phase has been skipped. It is also true of a turn in which an effect has caused an additional combat phase and an additional main phase to be created.
 .rule{id: "section-505-1b"}
   .rule_id 505.1b
-  .rule_text In card text, phrases such as “first main phase,” “second main phase,” and so on count the number of main phases that have occurred only in the current turn unless that text specifies otherwise.
+  .rule_text Phrases such as “first main phase,” “second main phase,” and so on count the number of main phases that have occurred only in the current turn unless that text specifies otherwise.
 .rule{id: "section-505-2"}
   .rule_id 505.2.
   .rule_text The main phase has no steps, so a main phase ends when all players pass in succession while the stack is empty. (See rule <a href="#section-500-2">500.2</a>.)
@@ -3764,21 +3767,24 @@
   .rule_text Example: Inscription of Abundance is a modal spell with kicker and the text “Choose one. If this spell was kicked, choose any number instead.” When announcing the chosen modes for the spell, its controller may choose any number of modes, even though choosing to pay the kicker cost is normally done later in the announcement process.
 .rule{id: "section-601-5"}
   .rule_id 601.5.
-  .rule_text If a player is no longer allowed to cast a spell after completing its proposal (see rules <a href="#section-601-2a">601.2a</a>–d), the casting of the spell is illegal and the game returns to the moment before the casting of that spell was proposed (see rule <a href="#section-733">733</a>, “Handling Illegal Actions”). It doesn’t matter if a rule or effect would make the casting of the spell illegal while determining and paying that spell’s costs (see rules <a href="#section-601-2f">601.2f</a>–h) or any time after the spell has been cast.
-.rule{id: "section-601-5a"}
-  .rule_id 601.5a
-  .rule_text Once a player has begun casting a spell that had flash because certain conditions were met or that could be cast as though it had flash because certain conditions were met (see <a href="#section-601-3d">601.3d</a>), they may continue to cast that spell as though it had flash even if those conditions stop being met.
+  .rule_text While announcing the choices of any targets and/or the division or distribution of any effects as described in rules <a href="#section-601-2c">601.2c</a>–d, some options may be available to a player only if other choices are made later in spellcasting process. In that case, the spell’s controller may consider any other choices to be made during that process, including the choice of any objects that may be used to pay costs for that spell.
 .rule{id: "section-601-6"}
   .rule_id 601.6.
-  .rule_text Some spells specify that one of their controller’s opponents does something the controller would normally do while it’s being cast, such as choose a mode or choose targets. In these cases, the opponent does so when the spell’s controller normally would do so.
+  .rule_text If a player is no longer allowed to cast a spell after completing its proposal (see rules <a href="#section-601-2a">601.2a</a>–d), the casting of the spell is illegal and the game returns to the moment before the casting of that spell was proposed (see rule <a href="#section-733">733</a>, “Handling Illegal Actions”). It doesn’t matter if a rule or effect would make the casting of the spell illegal while determining and paying that spell’s costs (see rules <a href="#section-601-2f">601.2f</a>–h) or any time after the spell has been cast.
 .rule{id: "section-601-6a"}
   .rule_id 601.6a
-  .rule_text If there is more than one opponent who could make such a choice, the spell’s controller decides which of those opponents will make the choice.
-.rule{id: "section-601-6b"}
-  .rule_id 601.6b
-  .rule_text If the spell instructs its controller and another player to do something at the same time as the spell is being cast, the spell’s controller goes first, then the other player. This is an exception to rule <a href="#section-101-4">101.4</a>.
+  .rule_text Once a player has begun casting a spell that had flash because certain conditions were met or that could be cast as though it had flash because certain conditions were met (see <a href="#section-601-3d">601.3d</a>), they may continue to cast that spell as though it had flash even if those conditions stop being met.
 .rule{id: "section-601-7"}
   .rule_id 601.7.
+  .rule_text Some spells specify that one of their controller’s opponents does something the controller would normally do while it’s being cast, such as choose a mode or choose targets. In these cases, the opponent does so when the spell’s controller normally would do so.
+.rule{id: "section-601-7a"}
+  .rule_id 601.7a
+  .rule_text If there is more than one opponent who could make such a choice, the spell’s controller decides which of those opponents will make the choice.
+.rule{id: "section-601-7b"}
+  .rule_id 601.7b
+  .rule_text If the spell instructs its controller and another player to do something at the same time as the spell is being cast, the spell’s controller goes first, then the other player. This is an exception to rule <a href="#section-101-4">101.4</a>.
+.rule{id: "section-601-8"}
+  .rule_id 601.8.
   .rule_text Casting a spell that alters costs won’t affect spells and abilities that are already on the stack.
 .rule{id: "section-602"}
   .rule_id 602.
@@ -3996,7 +4002,7 @@
   .rule_text Example: Heart-Piercer Manticore has an ability that reads “When this creature enters, you may sacrifice another creature. When you do, this creature deals damage equal to that creature’s power to any target.” The reflexive triggered ability triggers only when you sacrifice another creature due to the original triggered ability, and not if you sacrifice a creature for any other reason.
 .rule{id: "section-603-12a"}
   .rule_id 603.12a
-  .rule_text Normally, if the trigger event or events occur multiple times during the resolution of the spell or ability that created it, the reflexive triggered ability will trigger once for each of those times. However, if a resolving spell or ability includes a choice to pay a cost “any number of times” and creates a triggered ability that triggers “when [a player] pays [that cost] one or more times,” paying that cost one or more times causes the reflexive triggered ability to trigger only once.
+  .rule_text Normally, if the trigger event or events occur multiple times during the resolution of the spell or ability that created it, the reflexive triggered ability will trigger once for each of those times. However, if a resolving spell or ability includes a choice to pay a cost multiple times and creates a triggered ability that triggers when that payment is made, paying that cost one or more times causes the reflexive triggered ability to trigger only once.
 .rule{id: "section-604"}
   .rule_id 604.
   .rule_text Handling Static Abilities
@@ -4884,6 +4890,9 @@
 .rule{id: "section-700-15"}
   .rule_id 700.15.
   .rule_text The term enter[s] is short for “enter[s] the battlefield.”
+.rule{id: "section-700-16"}
+  .rule_id 700.16.
+  .rule_text Some cards refer to worthy creatures. A creature is worthy if it’s legendary, isn’t a Villain, and is red and/or white.
 .rule{id: "section-701"}
   .rule_id 701.
   .rule_text Keyword Actions
@@ -5483,7 +5492,7 @@
   .rule_text A permanent “explores” after the process described in rule <a href="#section-701-44a">701.44a</a> is complete, even if some or all of those actions were impossible.
 .rule{id: "section-701-44c"}
   .rule_id 701.44c
-  .rule_text If a permanent changes zones before an effect causes it to explore, its last known information is used to determine which object explored and who controlled it.
+  .rule_text If a permanent is no longer on the battlefield as an effect instructs it to explore, its last known information is used to determine which object explored and who controlled it.
 .rule{id: "section-701-44d"}
   .rule_id 701.44d
   .rule_text If multiple permanents are instructed to explore at the same time, the first player in APNAP order who controls (or, in the case of a permanent no longer on the battlefield, last controlled; see rule <a href="#section-701-44c">701.44c</a>) one or more of those permanents chooses one of them and it explores. Then this process is repeated for each remaining instruction to explore.
@@ -5543,16 +5552,19 @@
   .rule_text Certain spells and abilities instruct a permanent to connive. To do so, that permanent’s controller draws a card, then discards a card. If a nonland card is discarded this way, that player puts a +1/+1 counter on the conniving permanent.
 .rule{id: "section-701-50b"}
   .rule_id 701.50b
-  .rule_text A permanent “connives” after the process described in rule <a href="#section-701-50a">701.50a</a> is complete, even if some or all of those actions were impossible.
+  .rule_text If a permanent is no longer on the battlefield as an effect instructs it to connive, its last known information is used to determine which object connived and who controlled it.
 .rule{id: "section-701-50c"}
   .rule_id 701.50c
-  .rule_text If a permanent changes zones before an effect causes it to connive, its last known information is used to determine which object connived and who controlled it.
+  .rule_text If multiple permanents are instructed to connive at the same time, the first player in APNAP order who controls (or, in the case of a permanent no longer on the battlefield, last controlled; see rule <a href="#section-701-50b">701.50b</a>) one or more of those permanents chooses one of them and it connives. Then this process is repeated for each remaining instruction to connive.
 .rule{id: "section-701-50d"}
   .rule_id 701.50d
-  .rule_text If multiple permanents are instructed to connive at the same time, the first player in APNAP order who controls (or, in the case of a permanent no longer on the battlefield, last controlled; see rule <a href="#section-701-50c">701.50c</a>) one or more of those permanents chooses one of them and it connives. Then this process is repeated for each remaining instruction to connive.
+  .rule_text Connive N is a variant of connive. To have a permanent connive N, the permanent’s controller draws N cards, discards N cards, then puts a number of +1/+1 counters on the permanent equal to the number of nonland cards discarded this way.
 .rule{id: "section-701-50e"}
   .rule_id 701.50e
-  .rule_text Connive N is a variant of connive. The permanent’s controller draws N cards, discards N cards, then puts a number of +1/+1 counters on the permanent equal to the number of nonland cards discarded this way.
+  .rule_text If a permanent would connive 0, no connive event occurs. Abilities that trigger whenever a permanent connives won’t trigger.
+.rule{id: "section-701-50f"}
+  .rule_id 701.50f
+  .rule_text A permanent “connives” after the process described in either rule <a href="#section-701-50a">701.50a</a> or <a href="#section-701-50d">701.50d</a> is complete, even if some or all of those actions were impossible.
 .rule{id: "section-701-51"}
   .rule_id 701.51.
   .rule_text Open an Attraction
@@ -5766,6 +5778,12 @@
 .rule{id: "section-701-68d"}
   .rule_id 701.68d
   .rule_text An ability that triggers whenever a player blights triggers after the process described in rule <a href="#section-701-68a">701.68a</a> is complete, regardless of what events actually occurred.
+.rule{id: "section-701-69"}
+  .rule_id 701.69.
+  .rule_text Heal
+.rule{id: "section-701-69a"}
+  .rule_id 701.69a
+  .rule_text To heal damage already dealt to a permanent, remove that marked damage from that permanent. If an effect states that damage already dealt to a permanent “is healed,” that permanent’s controller removes all marked damage from that permanent.
 .rule{id: "section-702"}
   .rule_id 702.
   .rule_text Keyword Abilities
@@ -5805,7 +5823,7 @@
   .rule_text The deathtouch rules function no matter what zone an object with deathtouch deals damage from.
 .rule{id: "section-702-2e"}
   .rule_id 702.2e
-  .rule_text If an object changes zones before an effect causes it to deal damage, its last known information is used to determine whether it had deathtouch.
+  .rule_text If an object is no longer in the zone it’s expected to be in as an effect causes it to deal damage, its last known information is used to determine whether it had deathtouch.
 .rule{id: "section-702-2f"}
   .rule_id 702.2f
   .rule_text Multiple instances of deathtouch on the same object are redundant.
@@ -6004,7 +6022,7 @@
   .rule_text Damage dealt by a source with lifelink causes that source’s controller, or its owner if it has no controller, to gain that much life (in addition to any other results that damage causes). See rule <a href="#section-120-3">120.3</a>.
 .rule{id: "section-702-15c"}
   .rule_id 702.15c
-  .rule_text If an object changes zones before an effect causes it to deal damage, its last known information is used to determine whether it had lifelink.
+  .rule_text If an object is no longer in the zone it’s expected to be in as an effect causes it to deal damage, its last known information is used to determine whether it had lifelink.
 .rule{id: "section-702-15d"}
   .rule_id 702.15d
   .rule_text The lifelink rules function no matter what zone an object with lifelink deals damage from.
@@ -6582,7 +6600,7 @@
   .rule_text Bloodthirst is a static ability. “Bloodthirst N” means “If an opponent was dealt damage this turn, this permanent enters with N +1/+1 counters on it.”
 .rule{id: "section-702-54b"}
   .rule_id 702.54b
-  .rule_text “Bloodthirst X” is a special form of bloodthirst. “Bloodthirst X” means “This permanent enters with X +1/+1 counters on it, where X is the total damage your opponents have been dealt this turn.”
+  .rule_text “Bloodthirst X” is a variant of the bloodthirst ability. “Bloodthirst X” means “This permanent enters with X +1/+1 counters on it, where X is the total damage your opponents have been dealt this turn.”
 .rule{id: "section-702-54c"}
   .rule_id 702.54c
   .rule_text If an object has multiple instances of bloodthirst, each applies separately.
@@ -6612,7 +6630,7 @@
   .rule_text Forecast
 .rule{id: "section-702-57a"}
   .rule_id 702.57a
-  .rule_text A forecast ability is a special kind of activated ability that can be activated only from a player’s hand. It’s written “Forecast — [Activated ability].”
+  .rule_text A forecast ability is an activated ability that can be activated only from a player’s hand. It’s written “Forecast — [Activated ability].”
 .rule{id: "section-702-57b"}
   .rule_id 702.57b
   .rule_text A forecast ability may be activated only during the upkeep step of the card’s owner and only once each turn. The controller of the forecast ability reveals the card with that ability from their hand as the ability is activated. That player plays with that card revealed in their hand until it leaves the player’s hand or until a step or phase that isn’t an upkeep step begins, whichever comes first.
@@ -6830,7 +6848,7 @@
   .rule_text Wither is a static ability. Damage dealt to a creature by a source with wither isn’t marked on that creature. Rather, it causes that source’s controller to put that many -1/-1 counters on that creature. See rule <a href="#section-120-3">120.3</a>.
 .rule{id: "section-702-80b"}
   .rule_id 702.80b
-  .rule_text If an object changes zones before an effect causes it to deal damage, its last known information is used to determine whether it had wither.
+  .rule_text If an object is no longer in the zone it’s expected to be in as an effect causes it to deal damage, its last known information is used to determine whether it had wither.
 .rule{id: "section-702-80c"}
   .rule_id 702.80c
   .rule_text The wither rules function no matter what zone an object with wither deals damage from.
@@ -6938,7 +6956,7 @@
   .rule_text Damage dealt to a creature by a source with infect isn’t marked on that creature. Rather, it causes that source’s controller to put that many -1/-1 counters on that creature. See rule <a href="#section-120-3">120.3</a>.
 .rule{id: "section-702-90d"}
   .rule_id 702.90d
-  .rule_text If an object changes zones before an effect causes it to deal damage, its last known information is used to determine whether it had infect.
+  .rule_text If an object is no longer in the zone it’s expected to be in as an effect causes it to deal damage, its last known information is used to determine whether it had infect.
 .rule{id: "section-702-90e"}
   .rule_id 702.90e
   .rule_text The infect rules function no matter what zone an object with infect deals damage from.
@@ -7276,9 +7294,12 @@
   .rule_text A creature “crews a Vehicle” when it’s tapped to pay the cost to activate a Vehicle’s crew ability.
 .rule{id: "section-702-122c"}
   .rule_id 702.122c
-  .rule_text If an effect states that a creature “can’t crew Vehicles,” that creature can’t be tapped to pay the crew cost of a Vehicle.
+  .rule_text A Vehicle is “crewed by” a creature if that creature was tapped to pay the cost to activate that Vehicle’s crew ability.
 .rule{id: "section-702-122d"}
   .rule_id 702.122d
+  .rule_text If an effect states that a creature “can’t crew Vehicles,” that creature can’t be tapped to pay the crew cost of a Vehicle.
+.rule{id: "section-702-122e"}
+  .rule_id 702.122e
   .rule_text Some Vehicles have abilities that trigger when they become crewed. “Whenever [this Vehicle] becomes crewed” means “Whenever a crew ability of [this Vehicle] resolves.” If that ability has an intervening “if” clause that refers to information about the creatures that crewed it, it means only creatures that were tapped to pay the cost of the crew ability that caused it to trigger.
 .rule{id: "section-702-123"}
   .rule_id 702.123.
@@ -7510,7 +7531,7 @@
   .rule_text Boast
 .rule{id: "section-702-142a"}
   .rule_id 702.142a
-  .rule_text A boast ability is a special kind of activated ability. “Boast — [Cost]: [Effect]” means “[Cost]: [Effect]. Activate only if this creature attacked this turn and only once each turn.”
+  .rule_text Boast is a keyword that adds additional rules to the activated ability that follows it. “Boast — [Cost]: [Effect]” means “[Cost]: [Effect]. Activate only if this creature attacked this turn and only once each turn.”
 .rule{id: "section-702-142b"}
   .rule_id 702.142b
   .rule_text Effects may refer to boast abilities. If an effect refers to a creature boasting, it means its boast ability being activated.
@@ -7924,7 +7945,7 @@
   .rule_text <a href="#section-702-177">702.177</a>. Exhaust
 .rule{id: "section-702-177a"}
   .rule_id 702.177a
-  .rule_text An exhaust ability is a special kind of activated ability. “Exhaust — [Cost]: [Effect]” means “[Cost]: [Effect]. Activate only once.”
+  .rule_text Exhaust is a keyword that adds additional rules to the activated ability that follows it. “Exhaust — [Cost]: [Effect]” means “[Cost]: [Effect]. Activate only once.”
 .rule{id: "section-702-177b"}
   .rule_id 702.177b
   .rule_text An effect may allow you to take an action as long as you haven’t activated an exhaust ability this turn. Such an effect allows that action only if you haven’t begun to activate an exhaust ability this turn.
@@ -7934,7 +7955,7 @@
   .rule_text Max Speed
 .rule{id: "section-702-178a"}
   .rule_id 702.178a
-  .rule_text A max speed ability is a special kind of static ability. “Max speed — [Ability]” means “As long as your speed is 4, this object has ‘[Ability].’” See rule <a href="#section-702-179">702.179</a>, “Start Your Engines!”
+  .rule_text A max speed ability is a static ability. “Max speed — [Ability]” means “As long as your speed is 4, this object has ‘[Ability].’” See rule <a href="#section-702-179">702.179</a>, “Start Your Engines!”
 .rule{id: "section-702-178b"}
   .rule_id 702.178b
   .rule_text If an ability granted by a max speed ability states which zones it functions from, the max speed ability that grants that ability functions from those zones. (See rule <a href="#section-113-6c">113.6c</a>.)
@@ -8071,6 +8092,27 @@
 .rule{id: "section-702-192a"}
   .rule_id 702.192a
   .rule_text Paradigm represents two spell abilities, one of which creates a delayed triggered ability. Paradigm means “If this is the first time a spell you control with this spell’s name has resolved this game, at the beginning of each of your precombat main phases for the rest of the game, create a copy of this object in exile. You may cast the copy without paying its mana cost” and “Exile this spell.” See rule <a href="#section-707-10">707.10</a>.
+.rule{id: "section-702-193"}
+  .rule_id 702.193.
+  .rule_text Power-up
+.rule{id: "section-702-193a"}
+  .rule_id 702.193a
+  .rule_text Power-up is a keyword that adds additional rules to the activated ability that follows it. “Power-up — [Cost]: [Effect]” means “[Cost]: [Effect]. If this permanent entered this turn, this ability’s cost is reduced by this permanent’s mana cost. Activate this ability only once.”
+.rule{id: "section-702-193b"}
+  .rule_id 702.193b
+  .rule_text Generic mana in the permanent’s mana cost reduces generic mana in the cost to activate its power-up ability. Colored and colorless mana in the permanent’s mana cost reduces mana of the same type, and any excess reduces that much generic mana. (See rule <a href="#section-118-7">118.7</a>.)
+.rule{id: "section-702-194"}
+  .rule_id 702.194.
+  .rule_text Teamwork
+.rule{id: "section-702-194a"}
+  .rule_id 702.194a
+  .rule_text Teamwork represents a static ability that functions while the spell with teamwork is on the stack. “Teamwork N” means “As an additional cost to cast this spell, you may tap any number of creatures you control with total power N or more.” Paying a spell’s teamwork cost follows the rules for paying additional costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.
+.rule{id: "section-702-194b"}
+  .rule_id 702.194b
+  .rule_text Abilities may refer to a spell cast “using teamwork” or similar. Such phrases refer to whether the player who cast the spell declared the intention to pay the spell’s teamwork cost as they cast that spell.
+.rule{id: "section-702-194c"}
+  .rule_id 702.194c
+  .rule_text If part of a spell’s ability has its effect only if teamwork was used to cast it, and that part of the ability includes any targets, the spell’s controller chooses those targets only if teamwork was used to cast that spell. Otherwise, the spell is cast as if it did not have those targets. See rule <a href="#section-601-2c">601.2c</a>.
 .rule{id: "section-703"}
   .rule_id 703.
   .rule_text Turn-Based Actions
@@ -8442,6 +8484,9 @@
 .rule{id: "section-707-12"}
   .rule_id 707.12.
   .rule_text An effect that instructs a player to cast a copy of an object (and not just copy a spell) follows the rules for casting spells, except that the copy is created in the same zone the object is in and then cast while another spell or ability is resolving. Casting a copy of an object follows steps <a href="#section-601-2a">601.2a</a>–h of rule <a href="#section-601">601</a>, “Casting Spells,” and then the copy becomes cast. Once cast, the copy is a spell on the stack, and just like any other spell it can resolve or be countered.
+.rule{id: "section-707-12a"}
+  .rule_id 707.12a
+  .rule_text An effect that creates multiple copies and says a player “may cast” those objects allows that player to choose individually, for each of those objects, whether or not to cast it.
 .rule{id: "section-707-13"}
   .rule_id 707.13.
   .rule_text One card (Garth One-Eye) instructs a player to create a copy of a card defined by name rather than by indicating an object to be copied. To do so, the player uses the Oracle card reference to determine the characteristics of the copy and creates the copy outside of the game.
@@ -8462,7 +8507,7 @@
   .rule_text If a face-up permanent is turned face down by a spell or ability that doesn’t list any characteristics for that object, it becomes a 2/2 face-down creature with no text, no name, no subtypes, and no mana cost. A permanent that enters the battlefield face down also has these characteristics unless otherwise specified by the effect that put it onto the battlefield face down or allowed it to be cast face down. These values are the copiable values of that object’s characteristics.
 .rule{id: "section-708-2b"}
   .rule_id 708.2b
-  .rule_text A face-down permanent can’t be turned face-down. If a spell or ability attempts to turn a face-down permanent face down, nothing happens and that effect doesn’t change any of its characteristics or their copiable values.
+  .rule_text A face-down permanent can’t be turned face down. If a spell or ability attempts to turn a face-down permanent face down, nothing happens and that effect doesn’t change any of its characteristics or their copiable values.
 .rule{id: "section-708-3"}
   .rule_id 708.3.
   .rule_text Objects that are put onto the battlefield face down are turned face down before they enter the battlefield, so the permanent’s enters-the-battlefield abilities won’t trigger (if triggered) or have any effect (if static).
@@ -8771,7 +8816,7 @@
   .rule_text While face down, a double-faced permanent can’t transform or convert. If it’s turned face up, it will have its front face up.
 .rule{id: "section-712-16"}
   .rule_id 712.16.
-  .rule_text Melded permanents and other double-faced permanents can’t be turned face down. If a spell or ability tries to turn a double-faced permanent face down, nothing happens.
+  .rule_text Melded permanents and other double-faced permanents can’t be turned face down. If a spell or ability tries to turn a double-faced permanent face down, nothing happens and that effect doesn’t change any of its characteristics or their copiable values.
 .rule{id: "section-712-17"}
   .rule_id 712.17.
   .rule_text A double-faced card that is exiled face down remains hidden, using a face-down substitute card and/or opaque sleeves. See rule <a href="#section-713">713</a>, “Substitute Cards.”
@@ -9392,7 +9437,7 @@
   .rule_text A merged permanent is not a double-faced permanent even if it contains one or more double-faced components. If a merged permanent contains one or more double-faced components that can transform (see rule <a href="#section-712">712</a>), transforming or converting that permanent causes each of those double-faced components to turn so that its other face is up.
 .rule{id: "section-730-2j"}
   .rule_id 730.2j
-  .rule_text A face-up merged permanent that contains a double-faced component can’t be turned face down.
+  .rule_text A face-up merged permanent that contains a double-faced component can’t be turned face down. If a spell or ability tries to turn a face-up merged permanent that contains a double-faced component face down, nothing happens and that effect doesn’t change any of its characteristics or their copiable values.
 .rule{id: "section-730-3"}
   .rule_id 730.3.
   .rule_text If a merged permanent leaves the battlefield, one permanent leaves the battlefield and each of the individual components are put into the appropriate zone.
@@ -9533,7 +9578,7 @@
   .rule_text If a rule requires a player who has left the game to make a choice, the next player in turn order makes that choice.
 .rule{id: "section-800-4i"}
   .rule_id 800.4i
-  .rule_text If an effect requires information about a specific player, the effect uses the current information about that player if they are still in the game; otherwise, the effect uses the last known information about that player before they left the game. If an effect requires information from the game about actions players have taken, the effect can find actions that were taken by a player who has left the game.
+  .rule_text If an effect requires information about a specific player, the effect uses the current information about that player if they are still in the game; otherwise, the effect uses the last known information about that player before they left the game. If an effect requires information from the game about actions players have taken, the effect can find actions that were taken by a player who has left the game. If an effect requires information from the game about actions players have taken during their “last turn,” it can find the actions that were taken by a player who has left the game only until that player’s next turn after leaving the game would have begun.
 .rule{id: "section-800-4j"}
   .rule_id 800.4j
   .rule_text If a player leaves the game during their turn, that turn continues to its completion without an active player. If the active player would receive priority, instead the next player in turn order receives priority, or the top object on the stack resolves, or the phase or step ends, whichever is appropriate.
@@ -10730,7 +10775,7 @@
   .glossary_definition A keyword ability that can have a creature enter the battlefield with +1/+1 counters on it. See rule <a href="#section-702-54">702.54</a>, “Bloodthirst.”
 .glossary_entry
   .glossary_term Boast
-  .glossary_definition A special kind of activated ability that can be activated only once each turn if the creature with the boast ability attacked that turn. See rule <a href="#section-702-142">702.142</a>, “Boast.”
+  .glossary_definition An activated ability that can be activated only once each turn if the creature with the boast ability attacked that turn. See rule <a href="#section-702-142">702.142</a>, “Boast.”
 .glossary_entry
   .glossary_term Bolster
   .glossary_definition A keyword action that puts +1/+1 counters on the weakest creature a player controls. See rule <a href="#section-701-39">701.39</a>, “Bolster.”
@@ -11213,7 +11258,7 @@
   .glossary_definition A keyword action that stops a permanent from untapping during the next untap step of the player who exerted it. See rule <a href="#section-701-43">701.43</a>, “Exert.”
 .glossary_entry
   .glossary_term Exhaust
-  .glossary_definition A special kind of activated ability that may be activated only once. See rule <a href="#section-702-177">702.177</a>, “Exhaust.”
+  .glossary_definition An activated ability that may be activated only once. See rule <a href="#section-702-177">702.177</a>, “Exhaust.”
 .glossary_entry
   .glossary_term Exile
   .glossary_definition 1. A zone. Exile is essentially a holding area for cards. It used to be known as the “removed-from-the-game” zone. 2. To put an object into the exile zone from whatever zone it’s currently in. An “exiled” card is one that’s been put into the exile zone. See rule <a href="#section-406">406</a>, “Exile.”
@@ -11400,6 +11445,9 @@
 .glossary_entry
   .glossary_term Haunt
   .glossary_definition A keyword ability that exiles cards. A card exiled this way “haunts” a creature targeted by the haunt ability. See rule <a href="#section-702-55">702.55</a>, “Haunt.”
+.glossary_entry
+  .glossary_term Heal
+  .glossary_definition To remove damage marked on a permanent. See rule <a href="#section-701-69">701.69</a>, “Heal.”
 .glossary_entry
   .glossary_term Hexproof
   .glossary_definition A keyword ability that precludes a permanent or player from being targeted by an opponent. See rule <a href="#section-702-11">702.11</a>, “Hexproof.”
@@ -11995,6 +12043,9 @@
   .glossary_term Powerstone Token
   .glossary_definition A Powerstone token is a colorless artifact token with “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add <span class="manacost"><span class="mana mana-cost mana-c"><span class="sr-only">{C}</span></span></span>. This mana can’t be spent to cast a nonartifact spell.” For more information about predefined tokens, see rule <a href="#section-111-10">111.10</a>.
 .glossary_entry
+  .glossary_term Power-up
+  .glossary_definition A one-time activated ability found on permanents that costs less during the turn the permanent with the ability entered the battlefield. See rule <a href="#section-702-193">702.193</a>, “Power-up.”
+.glossary_entry
   .glossary_term Precombat Main Phase
   .glossary_definition The first main phase of a turn. See Main Phase.
 .glossary_entry
@@ -12433,6 +12484,9 @@
   .glossary_term Teammate
   .glossary_definition In a multiplayer game between teams, a player’s teammates are the other players on their team. See rule <a href="#section-102-3">102.3</a>.
 .glossary_entry
+  .glossary_term Teamwork
+  .glossary_definition A keyword ability that represents an optional additional cost of tapping creatures. See rule <a href="#section-702-194">702.194</a>, “Teamwork.”
+.glossary_entry
   .glossary_term Text Box
   .glossary_definition Part of a card. The text box is printed on the lower half of the card and contains the card’s rules text, reminder text, and flavor text. See rule <a href="#section-207">207</a>, “Text Box.”
 .glossary_entry
@@ -12628,6 +12682,9 @@
   .glossary_term Venture Marker
   .glossary_definition A marker used to track which room of a dungeon card a player is currently in. See rule <a href="#section-309">309</a>, “Dungeons.”
 .glossary_entry
+  .glossary_term Vibranium Token
+  .glossary_definition A Vibranium token is a colorless Vibranium artifact token with indestructible and “<span class="manacost"><span class="mana mana-cost mana-t"><span class="sr-only">{T}</span></span></span>: Add <span class="manacost"><span class="mana mana-cost mana-c"><span class="sr-only">{C}</span></span></span>. This mana can’t be spent to cast a nonartifact spell.” For more information about predefined tokens, see rule <a href="#section-111-10">111.10</a>.
+.glossary_entry
   .glossary_term Vigilance
   .glossary_definition A keyword ability that lets a creature attack without tapping. See rule <a href="#section-702-20">702.20</a>, “Vigilance.”
 .glossary_entry
@@ -12670,6 +12727,9 @@
   .glossary_term World Rule
   .glossary_definition A state-based action that causes all permanents with the world supertype except the one that has had the world supertype for the shortest amount of time are put into their owners’ graveyards. See rule <a href="#section-704-5k">704.5k</a>.
 .glossary_entry
+  .glossary_term Worthy
+  .glossary_definition A rules term used to describe a creature that’s legendary, not a Villain, and red and/or white. See rule <a href="#section-700-16">700.16</a>. 
+.glossary_entry
   .glossary_term X
   .glossary_definition A placeholder for a number that needs to be determined. See rule <a href="#section-107-3">107.3</a>.
 .glossary_entry
@@ -12685,11 +12745,11 @@
   .glossary_term Zone-Change Triggers
   .glossary_definition Trigger events that involve objects changing zones. See rule <a href="#section-603-6">603.6</a>.
 %h3{id: "section-credits"} Credits
-%p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cactino, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (principal), Matt Tabak (principal), Nat Moes, Samantha Phelan, Michael Zhang, and Hans Ziegler Magic Rules Management: Jess Dunks, Eric Levine, and Eliana Rabinowitz
-%p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cactino, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
+%p Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cathero, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (principal), Matt Tabak (principal), Nat Moes, Samantha Phelan, Michael Zhang, and Hans Ziegler Magic Rules Management: Jess Dunks, Eric Levine, and Eliana Rabinowitz
+%p The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cathero, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.
 %p Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.
-%p These rules are effective as of April 17, 2026.
-%p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unfinity, Dominaria, Ikoria, Kaldheim, Baldur’s Gate, The Brothers’ War, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2025 Wizards. U.S. Pat. No. RE 37,957.
+%p These rules are effective as of June 19, 2026.
+%p Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unfinity, Dominaria, Ikoria, Kaldheim, Baldur’s Gate, The Brothers’ War, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2026 Wizards. U.S. Pat. No. RE 37,957.
 %p Astartes, C’tan, Custodes, Necron, Primarch, and Tyranid ® &amp; © Games Workshop Limited 2022. All Rights Reserved.
 %p © 2023 Middle-earth Enterprises. Tales of Middle-earth and The Lord of the Rings and the names of the characters, events, items and places therein, are trademarks of Middle-earth Enterprises, LLC used under license by Wizards of the Coast LLC. All rights reserved.
 %p BBC, DOCTOR WHO, TARDIS, DALEK, CYBERMAN and K-9 (word marks and devices) are trade marks of the British Broadcasting Corporation and are used under licence. BBC logo © BBC 1996.
