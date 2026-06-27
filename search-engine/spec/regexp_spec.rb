@@ -98,8 +98,12 @@ describe "Regexp" do
   it "regexp name text" do
     assert_search_results "f:modern n:/.{32}/",
       "Aetherwing, Golden-Scale Flagship",
+      "Captain America, Wings of Freedom",
+      "Captain Marvel, Earth's Protector",
+      "Nick Fury, Agent of S.H.I.E.L.D.",
       "Okina, Temple to the Grandfathers",
-      "World Champion, Celestial Weapon"
+      "World Champion, Celestial Weapon",
+      "Yellowjacket, Heartless Marauder"
   end
 
   it "regexp rulings text" do
