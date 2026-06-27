@@ -25,6 +25,8 @@ class DeckPrintingResolver
     "me2" => ["me1"],
     # Shandalar doesn't really have meaningful printings
     "past" => ["drk", "leg", "atq", "arn", "3ed", "2ed", "leb", "lea"],
+    # MSH Jumpstart includes MSC cards
+    "msh" => ["msh", "msc"],
   }
 
   def initialize(cards, sets, flavor_name_map, deck, card)
@@ -146,7 +148,7 @@ class DeckPrintingResolver
     }.last
 
     unless most_recent_standard_printing
-      raise "No Standard legal printing found for #{set_code} #{card_name}"
+      raise "No Standard legal printing found for #{deck_set_code} #{card_name}"
     end
 
     mrsp_date = release_date(most_recent_standard_set)
