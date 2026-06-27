@@ -77,6 +77,7 @@ class FormatModern < Format
       "ecl",
       "tmt",
       "sos",
+      "msh",
     ]
   end
 end

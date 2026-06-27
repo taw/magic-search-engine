@@ -54,6 +54,7 @@ class FormatPioneer < Format
       "ecl",
       "tmt",
       "sos",
+      "msh",
     ]
   end
 end

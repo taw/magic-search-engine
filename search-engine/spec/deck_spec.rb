@@ -233,6 +233,8 @@ describe Deck do
         sets_found.should match_array ["tmc", "tmt"]
       when "soc"
         sets_found.should match_array ["soc", "sos"]
+      when "msh", "msc"
+        sets_found.should match_array ["msh", "msc"]
       else
         if set.types.include?("preview")
           # skip it, as it might not have precons data yet
