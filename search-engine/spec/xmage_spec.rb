@@ -4,7 +4,7 @@ describe "XMage" do
   it "has almost all Modern legal cards" do
     # st:modern to ignore reprints in promo sets
     # Most recent sets often come to XMage late or in parts, so this -e: clause needs periodic updating
-    assert_search_results "f:modern (st:std or st:modern) -in:xmage -e:acr,dsk,spm,tla,tmt,sos",
+    assert_search_results "f:modern (st:std or st:modern) -in:xmage -e:acr,spm,msh",
       # text change
       "Glamerdye",
       "Mind Bend",
@@ -12,6 +12,8 @@ describe "XMage" do
       "Swirl the Mists",
       "Trait Doctoring",
       # other
-      "Heirloom Epic"
+      "Heirloom Epic",
+      "Lorehold, the Historian",
+      "Secret of Bloodbending"
   end
 end
