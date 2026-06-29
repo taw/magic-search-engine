@@ -292,4 +292,10 @@ BanList.for_format("pauper") do
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-may-18-2026",
     "Bonder's Ornament" => "legal",
   )
+
+  change(
+    "2026-06-29",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-june-29-2026",
+    "Seeker of Skybreak" => "banned",
+  )
 end

@@ -76,4 +76,15 @@ BanList.for_format("brawl") do
     "Chrome Mox" => "banned",
     "Ancient Tomb" => "banned",
   )
+
+  change(
+    "2026-06-29",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-june-29-2026",
+    "Force of Will" => "banned",
+    "Subtlety" => "banned",
+    "Wash Away" => "banned",
+    "Ugin's Labyrinth" => "banned",
+    "Time Warp" => "banned",
+    "Temporal Manipulation" => "banned",
+  )
 end
