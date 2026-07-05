@@ -8,6 +8,26 @@ pack:
     chance: 2
   - foil_showcase_rm: 1
     chance: 1
+queries:
+  # the four showcase treatments a rare/mythic can appear in
+  borderless: "e:{set} number:320-361,381-383,442-446a"
+  profile:    "e:{set} number:362-380"
+  retro:      "e:{set} number:384-441"
+  textured:   "e:{set} number:447-467"
+  # a card shows up once per treatment it was printed in; these buckets pick
+  # cards by how many of the four treatments exist, so each is weighted right.
+  # exactly one treatment:
+  one_version: "({borderless} -alt:{profile} -alt:{retro} -alt:{textured}) or (-alt:{borderless} {profile} -alt:{retro} -alt:{textured}) or (-alt:{borderless} -alt:{profile} {retro} -alt:{textured}) or (-alt:{borderless} -alt:{profile} -alt:{retro} {textured})"
+  # two or more treatments (mythics top out at two):
+  two_plus_versions: "(alt:{borderless} alt:{profile}) or (alt:{borderless} alt:{retro}) or (alt:{profile} alt:{retro}) or (alt:{textured} alt:{borderless}) or (alt:{textured} alt:{profile}) or (alt:{textured} alt:{retro})"
+  # exactly two treatments (rares can have three, so this is spelled out):
+  two_versions: "(alt:{borderless} alt:{profile} -alt:{retro} -alt:{textured}) or (alt:{borderless} -alt:{profile} alt:{retro} -alt:{textured}) or (-alt:{borderless} alt:{profile} alt:{retro} -alt:{textured}) or (alt:{borderless} -alt:{profile} -alt:{retro} alt:{textured}) or (-alt:{borderless} alt:{profile} -alt:{retro} alt:{textured}) or (-alt:{borderless} -alt:{profile} alt:{retro} alt:{textured})"
+  # foil showcases drop the retro treatment (its foils would be retro foils),
+  # so the foil sheet only counts borderless/profile/textured.
+  # exactly one non-retro treatment:
+  one_version_nonretro: "({borderless} -alt:{profile} -alt:{textured}) or (-alt:{borderless} {profile} -alt:{textured}) or (-alt:{borderless} -alt:{profile} {textured})"
+  # two or more non-retro treatments (mythics top out at two):
+  two_plus_versions_nonretro: "(alt:{borderless} alt:{profile}) or (alt:{borderless} alt:{textured}) or (alt:{profile} alt:{textured})"
 sheets:
   foil_retro:
     foil: true
@@ -22,18 +42,18 @@ sheets:
       rate: 8
   showcase_rm:
     any:
-    - # two versions mythic
-      rawquery: "e:mh3 number:320-467 r:m alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:320-361,381-383,442-446a)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:384-441))) -is:foilonly"
+    - # mythic in two showcase treatments
+      rawquery: "e:{set} number:320-467 r:m alt:{two_plus_versions} -is:foilonly"
       rate: 3
-    - # one version mythic
-      rawquery: "e:mh3 r:m (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) (e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) (e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) (e:mh3 number:447-467))) -is:foilonly"
+    - # mythic in one showcase treatment
+      rawquery: "e:{set} r:m {one_version} -is:foilonly"
       rate: 6
-    - # two versions rare
-      # (the only three-version rares are the fetchlands, which don't appear in this product)
-      rawquery: "e:mh3 number:320-467 r:r -is:fetchland alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467))) -is:foilonly"
+    - # rare in two showcase treatments
+      # (the only three-version rares are the fetchlands, which aren't in this product)
+      rawquery: "e:{set} number:320-467 r:r -is:fetchland alt:{two_versions} -is:foilonly"
       rate: 6
-    - # one version rare
-      rawquery: "e:mh3 r:r (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) (e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) (e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) (e:mh3 number:447-467))) -is:foilonly"
+    - # rare in one showcase treatment
+      rawquery: "e:{set} r:r {one_version} -is:foilonly"
       rate: 12
     - rawquery: "e:h2r r:m"
       rate: 6
@@ -51,21 +71,21 @@ sheets:
       rate: 12
       count: 52
   foil_showcase_rm:
-    # same as showcase_rm, but without the retro frame cards (e:mh3 number:384-441
-    # and e:h2r, whose foils would be retro foils) and without the m3c rares
-    # (whose foils are ripple foils), so version counts differ
+    # like showcase_rm, but without the retro-frame cards (e:mh3 number:384-441 and
+    # e:h2r, whose foils would be retro foils) and without the m3c rares (whose foils
+    # are ripple foils), so the version counts differ
     foil: true
     any:
-    - # two versions mythic
-      rawquery: "e:mh3 number:320-383,442-467 r:m alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:447-467))) -is:foilonly"
+    - # mythic in two non-retro showcase treatments
+      rawquery: "e:{set} number:320-383,442-467 r:m alt:{two_plus_versions_nonretro} -is:foilonly"
       rate: 3
-    - # one version mythic
-      rawquery: "e:mh3 r:m (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) (e:mh3 number:362-380) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) (e:mh3 number:447-467))) -is:foilonly"
+    - # mythic in one non-retro showcase treatment
+      rawquery: "e:{set} r:m {one_version_nonretro} -is:foilonly"
       rate: 6
-    - # one version rare
-      # (without the retro versions no rare has two versions left, except the
-      # fetchlands, which don't appear in this product)
-      rawquery: "e:mh3 r:r (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) (e:mh3 number:362-380) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) (e:mh3 number:447-467))) -is:foilonly"
+    - # rare in one non-retro showcase treatment
+      # (without the retro version no rare has two versions left, except the
+      # fetchlands, which aren't in this product)
+      rawquery: "e:{set} r:r {one_version_nonretro} -is:foilonly"
       rate: 12
     - rawquery: "e:m3c number:9-16"
       rate: 6
