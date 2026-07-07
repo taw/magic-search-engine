@@ -51,7 +51,11 @@ sheets:
       rate: 3
   foil_extended_commander_rare_mythic:
     foil: true
-    filter: "e:lcc frame:extendedart"
+    # The traditional-foil version of this slot is not just the extended-art
+    # commanders: the article says it also includes "the new Commander content
+    # found in Set Boosters" - i.e. the regular #1-16 and showcase #17-20
+    # commander cards - in foil. Without number:1-20 their foils are productless.
+    filter: "e:lcc (number:1-20 or frame:extendedart)"
     use: rare_mythic
   showcase_rare_mythic:
     any:
