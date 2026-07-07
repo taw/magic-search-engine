@@ -38,11 +38,21 @@ sheets:
         rate: 4
       - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
         rate: 6
+      # foil versions of the commander (brc #1-28) and set-booster-exclusive
+      # (#288-292) cards that the nonfoil wildcard carries but this foil slot was
+      # missing (the slot filter is e:bro is:baseset, which excludes them);
+      # rates are half the wildcard's, matching the rest of this foil slot
+      - rawquery: "e:brc r:r number<=28"
+        rate: 6
+      - rawquery: "e:{set} number:288-292"
+        rate: 6
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper"
         rate: 1
       - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
         rate: 2
       - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+        rate: 3
+      - rawquery: "e:brc r:m number<=28"
         rate: 3
       chance: 3
   basic:
