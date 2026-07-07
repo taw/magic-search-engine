@@ -15,7 +15,7 @@ pack:
     the_list: 1
     chance: 1
   finale_2:
-  - foil_with_showcase: 1
+  - mom_foil_with_showcase: 1
     chance: 24
   - foil_etched: 1
     chance: 1
@@ -58,18 +58,21 @@ sheets:
       - rawquery: "e:mom r:r number:323-337 is:paper"
         chance: 2 * 5
         count: 5
-      - rawquery: "e:moc r:r number:1-46 is:paper"
-        chance: 2 * 36
-        count: 36
+      # #72-79 (Planeswalker's Talents cycle etc.) only appear in Set and
+      # Collector Boosters, not the Commander decks, so their nonfoil is added
+      # to this commander bucket alongside #1-46
+      - rawquery: "e:moc r:r number:1-46,72-79 is:paper"
+        chance: 2 * 42
+        count: 42
       - rawquery: "e:mul r:r -is:foilonly is:paper"
         chance: 2 * 30
         count: 30
       - use: mythic_with_showcase
         count: 33
         chance: 20
-      - rawquery: "e:moc r:m number:1-46 is:paper"
-        chance: 10
-        count: 10
+      - rawquery: "e:moc r:m number:1-46,72-79 is:paper"
+        chance: 12
+        count: 12
       - rawquery: "e:mul r:m -is:foilonly is:paper"
         chance: 15
         count: 15
@@ -84,3 +87,10 @@ sheets:
     filter: "e:mul is:etched"
     use: base_1248_by_rarity
     count: 65
+  mom_foil_with_showcase:
+    # the shared base-set foil slot, but with its filter widened to also include
+    # the Jumpstart cards (#323-337): per the collecting article they appear in
+    # Set Boosters in traditional foil, but they are not is:baseset so the
+    # default e:mom is:baseset filter misses them
+    filter: "(e:mom is:baseset) or (e:mom number:323-337)"
+    use: foil_with_showcase
