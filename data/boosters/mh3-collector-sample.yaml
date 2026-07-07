@@ -9,21 +9,14 @@ pack:
   - foil_showcase_rm: 1
     chance: 1
 queries:
-  # the four showcase treatments a rare/mythic can appear in
+  # the showcase treatments a rare/mythic can appear in. The sample has no
+  # retro-frame (e:{set} number:384-441) rares/mythics, so the retro treatment is
+  # deliberately not among them.
   borderless: "e:{set} number:320-361,381-383,442-446a"
   profile:    "e:{set} number:362-380"
-  retro:      "e:{set} number:384-441"
   textured:   "e:{set} number:447-467"
-  # a card shows up once per treatment it was printed in; these buckets pick
-  # cards by how many of the four treatments exist, so each is weighted right.
-  # exactly one treatment:
-  one_version: "({borderless} -alt:{profile} -alt:{retro} -alt:{textured}) or (-alt:{borderless} {profile} -alt:{retro} -alt:{textured}) or (-alt:{borderless} -alt:{profile} {retro} -alt:{textured}) or (-alt:{borderless} -alt:{profile} -alt:{retro} {textured})"
-  # two or more treatments (mythics top out at two):
-  two_plus_versions: "(alt:{borderless} alt:{profile}) or (alt:{borderless} alt:{retro}) or (alt:{profile} alt:{retro}) or (alt:{textured} alt:{borderless}) or (alt:{textured} alt:{profile}) or (alt:{textured} alt:{retro})"
-  # exactly two treatments (rares can have three, so this is spelled out):
-  two_versions: "(alt:{borderless} alt:{profile} -alt:{retro} -alt:{textured}) or (alt:{borderless} -alt:{profile} alt:{retro} -alt:{textured}) or (-alt:{borderless} alt:{profile} alt:{retro} -alt:{textured}) or (alt:{borderless} -alt:{profile} -alt:{retro} alt:{textured}) or (-alt:{borderless} alt:{profile} -alt:{retro} alt:{textured}) or (-alt:{borderless} -alt:{profile} alt:{retro} alt:{textured})"
-  # foil showcases drop the retro treatment (its foils would be retro foils),
-  # so the foil sheet only counts borderless/profile/textured.
+  # a card shows up once per treatment it was printed in; these buckets pick cards
+  # by how many of the three treatments exist, so each is weighted right.
   # exactly one non-retro treatment:
   one_version_nonretro: "({borderless} -alt:{profile} -alt:{textured}) or (-alt:{borderless} {profile} -alt:{textured}) or (-alt:{borderless} -alt:{profile} {textured})"
   # two or more non-retro treatments (mythics top out at two):
@@ -41,23 +34,21 @@ sheets:
     - rawquery: "e:h2r r:c"
       rate: 8
   showcase_rm:
+    # community review (https://github.com/taw/magic-search-engine/issues/442): the
+    # sample has no retro-frame rares/mythics, so like foil_showcase_rm this drops the
+    # retro treatment (e:mh3 number:384-441) and the retro-frame h2r timeshifts. The
+    # m3c cards stay (these are nonfoil; only their foils would be ripple foils).
     any:
-    - # mythic in two showcase treatments
-      rawquery: "e:{set} number:320-467 r:m alt:{two_plus_versions} -is:foilonly"
+    - # mythic in two non-retro showcase treatments
+      rawquery: "e:{set} number:320-383,442-467 r:m alt:{two_plus_versions_nonretro} -is:foilonly"
       rate: 3
-    - # mythic in one showcase treatment
-      rawquery: "e:{set} r:m {one_version} -is:foilonly"
+    - # mythic in one non-retro showcase treatment
+      rawquery: "e:{set} r:m {one_version_nonretro} -is:foilonly"
       rate: 6
-    - # rare in two showcase treatments
-      # (the only three-version rares are the fetchlands, which aren't in this product)
-      rawquery: "e:{set} number:320-467 r:r -is:fetchland alt:{two_versions} -is:foilonly"
-      rate: 6
-    - # rare in one showcase treatment
-      rawquery: "e:{set} r:r {one_version} -is:foilonly"
-      rate: 12
-    - rawquery: "e:h2r r:m"
-      rate: 6
-    - rawquery: "e:h2r r:r"
+    - # rare in one non-retro showcase treatment
+      # (without the retro version no rare has two versions left, except the
+      # fetchlands, which aren't in this product)
+      rawquery: "e:{set} r:r {one_version_nonretro} -is:foilonly"
       rate: 12
     - rawquery: "e:m3c number:9-16"
       rate: 6
@@ -71,9 +62,8 @@ sheets:
       rate: 12
       count: 52
   foil_showcase_rm:
-    # like showcase_rm, but without the retro-frame cards (e:mh3 number:384-441 and
-    # e:h2r, whose foils would be retro foils) and without the m3c rares (whose foils
-    # are ripple foils), so the version counts differ
+    # like showcase_rm (no retro-frame cards), but also without the m3c rares, whose
+    # foils would be ripple foils; only the m3c mythic showcases remain in foil
     foil: true
     any:
     - # mythic in two non-retro showcase treatments
