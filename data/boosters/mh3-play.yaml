@@ -93,98 +93,80 @@ sheets:
         count: 4
         rate: 4
   wildcard:
+    # Rarity/treatment mix per the WOTC "Collecting Modern Horizons 3" article's
+    # Wildcard slot. Each treatment is its own top-level chance, so the marginal
+    # probabilities match the published percentages exactly.
+    # https://magic.wizards.com/en/news/feature/collecting-modern-horizons-3
     any:
-    - any:
-      - query: "r:c -alt:(number:384-441) -is:reprint"
-        rate: 3
-      - query: "r:c alt:(number:384-441) -is:reprint"
-        rate: 2
-      - rawquery: "e:mh3 r:c number:384-441"
-        rate: 1
-      - rawquery: "e:mh3 number:309"
-        rate: 3
-      chance: 700
-    - any:
-      - query: "r:u -alt:(number:384-441) -is:reprint"
-        rate: 3
-      - query: "r:u alt:(number:384-441) -is:reprint"
-        rate: 2
-      - rawquery: "e:mh3 r:u number:384-441"
-        rate: 1
-      chance: 175
-    - any:
-      - rawquery: "r:r -is:reprint -is:foilonly {two_instances}"
-        count: 36
-        rate: 2
-      - rawquery: "r:r -is:reprint -is:foilonly {any_showcase} -{two_instances}"
-        count: 18
-        rate: 4
-      - query: "r:r -is:reprint -is:foilonly alt:{any_showcase}"
-        count: 36
-        rate: 8
-      - query: "r:r -is:reprint -is:foilonly -alt:{any_showcase}"
-        count: 19
-        rate: 12
-      - rawquery: "r:m -is:reprint -is:foilonly {two_instances}"
-        count: 12
-        rate: 1
-      - rawquery: "r:m -is:reprint -is:foilonly {any_showcase} -{two_instances}"
-        count: 13
-        rate: 2
-      - rawquery: "e:m3c number:9-16"
-        rate: 2
-      - query: "r:m -is:reprint -is:foilonly alt:{any_showcase}"
-        count: 19
-        rate: 4
+    - # common 41.7%
+      chance: 417
+      query: "r:c"
+    - # uncommon 33.4%
+      chance: 334
+      query: "r:u -is:reprint -is:dfc"
+    - # double-faced uncommon 8.3%
+      chance: 83
+      query: "r:u -is:reprint is:dfc"
+    - # rare 6.7% (fetchlands included; new-to-Modern reprints have their own slot)
+      chance: 67
+      query: "r:r (is:fetchland or -is:reprint) -is:foilonly"
+    - # mythic 1.1%
+      chance: 11
+      query: "r:m -is:reprint -is:foilonly"
+    - # borderless / profile showcase rare or mythic 0.4%
+      chance: 4
+      rawquery: "e:mh3 -is:reprint -is:foilonly (r:r or r:m) ({borderless} or {profile})"
+    - # retro frame, any rarity 4.2%
+      chance: 42
+      rawquery: "e:mh3 number:384-441"
+    - # Commander mythic 4.2%
+      chance: 42
+      any:
       - rawquery: "e:m3c number:1-8"
         rate: 4
-      - query: "r:m -is:reprint -is:foilonly -alt:{any_showcase}"
-        count: 1
-        rate: 6
-      chance: 125
+      - rawquery: "e:m3c number:9-16"
+        rate: 2
+    - # full-art Snow-Covered Wastes <0.1%
+      chance: 1
+      rawquery: "e:mh3 number:309"
   foil_with_showcase:
+    # Traditional foil slot. The article says it mirrors the Wildcard slot's
+    # contents (plus foil new-to-Modern cards) but publishes no separate per-rarity
+    # numbers, so it reuses the Wildcard slot's treatment weighting. Unlike the
+    # Wildcard slot it keeps the new-to-Modern reprints (they appear here in foil).
     foil: true
     any:
-    - any:
-      - query: "r:c -alt:(number:384-441)"
-        rate: 3
-      - query: "r:c alt:(number:384-441)"
-        rate: 2
-      - rawquery: "e:mh3 r:c number:384-441"
-        rate: 1
-      - rawquery: "e:mh3 number:309"
-        rate: 3
-      chance: 700
-    - any:
-      - query: "r:u -alt:(number:384-441)"
-        rate: 3
-      - query: "r:u alt:(number:384-441)"
-        rate: 2
-      - rawquery: "e:mh3 r:u number:384-441"
-        rate: 1
-      chance: 175
-    - any:
-      - rawquery: "r:r -is:foilonly {two_instances}"
-        rate: 2
-      - rawquery: "r:r -is:foilonly {any_showcase} -{two_instances}"
-        rate: 4
-      - query: "r:r -is:foilonly alt:{any_showcase}"
-        rate: 8
-      - query: "r:r -is:foilonly -alt:{any_showcase}"
-        rate: 12
-      - rawquery: "r:m -is:foilonly {two_instances}"
-        rate: 1
-      - rawquery: "r:m -is:foilonly {any_showcase} -{two_instances}"
-        rate: 2
-      - rawquery: "e:m3c number:9-16"
-        rate: 2
-      - query: "r:m -is:foilonly alt:{any_showcase}"
-        rate: 4
+    - # common 41.7%
+      chance: 417
+      query: "r:c"
+    - # uncommon 33.4%
+      chance: 334
+      query: "r:u -is:dfc"
+    - # double-faced uncommon 8.3%
+      chance: 83
+      query: "r:u is:dfc"
+    - # rare 6.7%
+      chance: 67
+      query: "r:r -is:foilonly"
+    - # mythic 1.1%
+      chance: 11
+      query: "r:m -is:foilonly"
+    - # borderless / profile showcase rare or mythic 0.4%
+      chance: 4
+      rawquery: "e:mh3 -is:foilonly (r:r or r:m) ({borderless} or {profile})"
+    - # retro frame, any rarity 4.2%
+      chance: 42
+      rawquery: "e:mh3 number:384-441"
+    - # Commander mythic 4.2%
+      chance: 42
+      any:
       - rawquery: "e:m3c number:1-8"
         rate: 4
-      - query: "r:m -is:foilonly -alt:{any_showcase}"
-        rate: 6
-      chance: 125
+      - rawquery: "e:m3c number:9-16"
+        rate: 2
+    - # full-art Snow-Covered Wastes <0.1%
+      chance: 1
+      rawquery: "e:mh3 number:309"
   special_guest:
     set: spg
     code: "MHTHREE"
