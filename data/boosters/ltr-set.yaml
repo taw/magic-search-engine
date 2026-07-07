@@ -67,6 +67,15 @@ sheets:
       chance: 120
     - use: mythic_with_showcase
       chance: 20
+    # Cards that appear in the Set Booster but aren't is:baseset, so the sheets
+    # above miss them: the 5 Jumpstart rares (#282-286, also nonfoil from
+    # Jumpstart) and the 8 mythic Commander legends (#1-8, also foil from the
+    # decks). This sheet feeds both the wildcard (nonfoil) and the foil slot, so
+    # it covers both finishes at once.
+    - rawquery: "e:ltr number:282-286"
+      chance: 10
+    - rawquery: "e:ltc number:1-8"
+      chance: 8
   wildcard:
     any:
     - use: common_with_showcase
