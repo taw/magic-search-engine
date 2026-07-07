@@ -101,6 +101,10 @@ sheets:
         rate: 12
       - use: rare_has_no_showcase
         rate: 16
+      # foil version of the new-to-Magic Commander cards that only appear in Set
+      # and Collector Boosters (nec #31-38); mirrors the nonfoil wildcard slot
+      - rawquery: "e:nec number:31-38 r:r"
+        rate: 16
       - rawquery: "e:{set} promo:boosterfun (Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor) number<=416"
         rate: 1
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor)"
@@ -108,5 +112,7 @@ sheets:
       - use: mythic_has_showcase
         rate: 6
       - use: mythic_has_no_showcase
+        rate: 8
+      - rawquery: "e:nec number:31-38 r:m"
         rate: 8
       chance: 3

@@ -55,6 +55,9 @@ sheets:
     use: ninja_common_uncommon
   foil_rare_mythic:
     foil: true
+    # also carries the new-to-Magic Commander cards that only appear in Set and
+    # Collector Boosters (nec #31-38); without them their foils are productless
+    filter: "(e:neo is:baseset) or (e:nec number:31-38)"
     use: rare_mythic
   extended_commander:
     filter: "e:nec frame:extendedart"
