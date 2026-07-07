@@ -31,7 +31,12 @@ sheets:
     use: rare_mythic
   foil_extended_art:
     foil: true
-    use: extended_art
+    # The traditional-foil version of this slot also carries the new-to-Magic
+    # Commander cards (woc #21-28) in regular frame, not just extended-art: the
+    # article says it includes "the new Commander content found in Set Boosters".
+    # Without number:21-28 their foils are productless.
+    filter: "((e:woe or e:woc) frame:extendedart -number:381) or (e:woc number:21-28)"
+    use: rare_mythic
   enchanting_tales_rare_mythic:
     any:
     - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
