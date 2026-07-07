@@ -147,9 +147,22 @@ sheets:
       chance: 5
     - any:
       - any:
-        - use: rare_with_showcase
+        # foil versions of the commander (onc) and jumpstart (#404-408) cards that
+        # the nonfoil wildcard slot carries but this foil slot was missing, mirroring
+        # the wildcard's rare/mythic structure
+        - any: # Rare with commander and jumpstart options
+          - use: rare_with_showcase
+            chance: 60
+          - rawquery: "e:onc r:r is:baseset"
+            chance: 22
+          - rawquery: "e:{set} r:r number:404-408"
+            chance: 5
           chance: 6
-        - use: mythic_with_showcase
+        - any: # Mythic with commander options
+          - use: mythic_with_showcase
+            chance: 10
+          - rawquery: "e:onc r:m is:baseset"
+            chance: 3
           chance: 1
         chance: 59
       - use: prototype_praetor
