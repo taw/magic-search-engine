@@ -1,0 +1,33 @@
+# Secrets of Strixhaven seeded prerelease pack -- Witherbloom (Black-Green).
+# The seeded pile is a plain non-foil pile of the college's colors (id<=bg):
+# 9 commons + 4 uncommons + 1 rare/mythic (normal rate), no basic lands (14 cards).
+# Plus 1 traditional-foil rare/mythic promo from the base set = 15 cards total.
+pack:
+  common: 9
+  uncommon: 4
+  rare_mythic: 1
+  promo: 1
+queries:
+  college: "id<=bg"
+sheets:
+  common:
+    query: "r:c {college}"
+  uncommon:
+    query: "r:u {college}"
+  rare:
+    rawquery: "e:sos r:r number<=254 {college}"
+  mythic:
+    rawquery: "e:sos r:m number<=254 {college}"
+  rare_mythic:
+    any:
+    - use: rare
+      rate: 2
+    - use: mythic
+      rate: 1
+  promo:
+    foil: true
+    any:
+    - rawquery: "e:sos r:r number<=254"
+      rate: 2
+    - rawquery: "e:sos r:m number<=254"
+      rate: 1
