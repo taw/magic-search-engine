@@ -23,10 +23,13 @@ sheets:
     foil: true
     any:
     - query: "r:u"
+      count: 15
       chance: 5
     - any:
       - query: "r:r"
+        count: 25
         rate: 2
       - query: "r:m"
+        count: 10
         rate: 1
       chance: 1

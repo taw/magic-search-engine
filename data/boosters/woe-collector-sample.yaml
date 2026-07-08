@@ -10,60 +10,81 @@ sheets:
   foil_enchanting_tales_uncommon:
     foil: true
     rawquery: "e:wot r:u number<=63"
+    count: 18
   alt_frame_foil:
     foil: true
     any:
     - use: rare_showcase
       rate: 12
     - rawquery: "(e:woe or e:woc) r:r frame:extendedart"
+      count: 46
       rate: 12
     - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
+      count: 25
       rate: 12
     - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
+      count: 5
       rate: 8
     - rawquery: "e:wot r:r number:64-83"
+      count: 5
       rate: 4
     - rawquery: "e:wot r:r number:84-103"
+      count: 5
       rate: 4
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Kellan)"
+      count: 2
       rate: 3
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
+      count: 11
       rate: 6
     - rawquery: "(e:woe or e:woc) r:m frame:extendedart -number:381"
+      count: 14
       rate: 6
     - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
       rate: 6
     - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
+      count: 15
       rate: 4
     - rawquery: "e:wot r:m number:64-83"
+      count: 15
       rate: 2
     - rawquery: "e:wot r:m number:84-103"
+      count: 15
       rate: 2
   alt_frame:
     any:
     - use: rare_showcase
       rate: 12
     - rawquery: "(e:woe or e:woc) r:r frame:extendedart"
+      count: 66
       rate: 12
     - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
+      count: 25
       rate: 12
     - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
+      count: 5
       rate: 8
     - rawquery: "e:wot r:r number:64-83"
+      count: 5
       rate: 4
     - rawquery: "e:wot r:r number:84-103"
       rate: 4
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Kellan)"
+      count: 2
       rate: 3
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
+      count: 11
       rate: 6
     - rawquery: "(e:woe or e:woc) r:m frame:extendedart"
+      count: 14
       rate: 6
     - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
       rate: 6
     - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
+      count: 15
       rate: 4
     - rawquery: "e:wot r:m number:64-83"
+      count: 15
       rate: 2
     - rawquery: "e:wot r:m number:84-103"
       rate: 2

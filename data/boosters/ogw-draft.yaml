@@ -20,8 +20,10 @@ sheets:
     - use: rare_mythic
       chance: 3*8
     - query: "r:u"
+      count: 60
       chance: 5*8
     - rawquery: "(e:ogw r:c) or (e:bfz r:b -number:/a/)"
+      count: 95
       chance: 12*8-2
     - rawquery: "e:exp number>=26"
       count: 20

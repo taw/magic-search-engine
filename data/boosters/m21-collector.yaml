@@ -22,12 +22,16 @@ sheets:
     foil: true
     any:
     - query: "r:r"
+      count: 53
       rate: 4
     - rawquery: "e:m21 r:r frame:extendedart"
+      count: 45
       rate: 2
     - query: "r:m"
+      count: 15
       rate: 2
     - rawquery: "e:m21 r:m frame:extendedart -(Rin and Seri, Inseparable)"
+      count: 7
       rate: 1
   extended_art:
     filter: "e:m21 frame:extendedart"
@@ -35,3 +39,4 @@ sheets:
   foil_showcase_basic:
     foil: true
     rawquery: "e:m21 frame:showcase t:basic"
+    count: 5

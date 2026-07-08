@@ -12,10 +12,13 @@ sheets:
   intro_set:
     fixed: true
     query: "(t:land id:0) or (r:c c:3)"
+    count: 2
   land:
     query: "t:land id:2"
+    count: 2
   common:
     query: "r:c -t:land -(r:c c:3)"
+    count: 43
   prerelease_promo:
     filter: "e:psnc promo:prerelease"
     use: rare_mythic

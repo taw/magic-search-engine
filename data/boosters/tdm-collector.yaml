@@ -37,20 +37,25 @@ sheets:
   non_foil_draconic_c_u:
     any:
     - rawquery: "{draconic_showcase} r:c"
+      count: 6
       chance: 546
     - rawquery: "{draconic_showcase} r:u"
+      count: 15
       chance: 454
   foil_draconic_c_u:
     foil: true
     use: non_foil_draconic_c_u
   non_foil_basic:
     rawquery: "{dragons_eye_basic}"
+    count: 5
   foil_basic:
     foil: true
     any:
     - rawquery: "{dragons_eye_basic}"
+      count: 5
       chance: 11
     - rawquery: "{presence_basic}"
+      count: 5
       chance: 100
   foil_rare_mythic:
     foil: true
@@ -58,54 +63,75 @@ sheets:
   commander:
     any:
     - rawquery: "e:tdc number:1-10"
+      count: 10
       rate: 1
     - rawquery: "e:tdc number:51-90"
+      count: 40
       rate: 2
   booster_fun:
     any:
     - rawquery: "{draconic_showcase} r:r"
+      count: 5
       chance: 64
     - rawquery: "{draconic_showcase} r:m"
+      count: 9
       chance: 46
     - rawquery: "{clan_card} r:r"
+      count: 36
       chance: 515
     - rawquery: "{clan_card} r:m"
+      count: 14
       chance: 82
     - rawquery: "{borderless_alternate_art} r:r"
+      count: 15
       chance: 215
     - rawquery: "{borderless_alternate_art} r:m"
+      count: 1
       chance: 7
     - rawquery: "{reversible_dragons} r:r"
+      count: 5
       chance: 64
     - rawquery: "{reversible_dragons} r:m"
+      count: 1
       chance: 7
   foil_booster_fun:
     foil: true
     any:
     - rawquery: "{draconic_showcase} r:r"
+      count: 5
       chance: 530
     - rawquery: "{draconic_showcase} r:m"
+      count: 9
       chance: 390
     - rawquery: "{clan_card} r:r"
+      count: 36
       chance: 4270
     - rawquery: "{clan_card} r:m"
+      count: 14
       chance: 680
     - rawquery: "{borderless_alternate_art} r:r"
+      count: 15
       chance: 1780
     - rawquery: "{borderless_alternate_art} r:m"
+      count: 1
       chance: 60
     - rawquery: "{reversible_dragons} r:r"
+      count: 5
       chance: 530
     - rawquery: "{reversible_dragons} r:m"
+      count: 1
       chance: 60
     - rawquery: "{ghostfire}"
+      count: 10
       chance: 900
     - rawquery: "{halo_foil_ghostfire}"
+      count: 10
       chance: 100
     - set: spg
       code: "TDM"
       chance: 600
     - rawquery: "e:spg number:114-118"
+      count: 5
       chance: 100
     - rawquery: "{serialized_mox}"
       chance: 2

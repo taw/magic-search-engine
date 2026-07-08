@@ -26,10 +26,13 @@ pack:
 sheets:
   common:
     query: "r:c"
+    count: 130
   nonlegendary_uncommon:
     rawquery: "e:cmm r:u -t:legendary is:baseset"
+    count: 80
   legendary_uncommon:
     rawquery: "e:cmm r:u t:legendary is:baseset"
+    count: 55
   nonlegendary_rare_mythic:
     filter: "e:cmm -t:legendary is:baseset"
     use: rare_mythic
@@ -55,6 +58,7 @@ sheets:
       - use: common_with_showcase
         chance: 130
       - query: "r:b"
+        count: 15
         chance: 15
       chance: 12
     - use: uncommon_with_showcase

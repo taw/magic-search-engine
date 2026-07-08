@@ -20,13 +20,17 @@ pack:
 sheets:
   sfc_common:
     query: "r:c is:sfc"
+    count: 111
   basic_or_gainland:
     any:
     - query: "r:b is:fullart"
+      count: 10
       chance: 7
     - query: "is:gainland"
+      count: 10
       chance: 7
     - query: "r:b -is:fullart"
+      count: 10
       chance: 3
   dfc_common_uncommon:
     any:
@@ -42,6 +46,7 @@ sheets:
       - use: common
         rate: 1
       - query: "r:b is:fullart"
+        count: 10
         rate: 1
       chance: 700
     - use: uncommon
@@ -54,16 +59,20 @@ sheets:
       - use: rare_has_no_showcase
         rate: 16
       - rawquery: "e:nec number<=38 r:r"
+        count: 32
         rate: 16
       - rawquery: "e:{set} promo:boosterfun (Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor) number<=416"
+        count: 10
         rate: 1
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor)"
+        count: 13
         rate: 2
       - use: mythic_has_showcase
         rate: 6
       - use: mythic_has_no_showcase
         rate: 8
       - rawquery: "e:nec number<=38 r:m"
+        count: 6
         rate: 8
       chance: 125
   the_list:
@@ -104,15 +113,19 @@ sheets:
       # foil version of the new-to-Magic Commander cards that only appear in Set
       # and Collector Boosters (nec #31-38); mirrors the nonfoil wildcard slot
       - rawquery: "e:nec number:31-38 r:r"
+        count: 6
         rate: 16
       - rawquery: "e:{set} promo:boosterfun (Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor) number<=416"
+        count: 10
         rate: 1
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor)"
+        count: 13
         rate: 2
       - use: mythic_has_showcase
         rate: 6
       - use: mythic_has_no_showcase
         rate: 8
       - rawquery: "e:nec number:31-38 r:m"
+        count: 2
         rate: 8
       chance: 3

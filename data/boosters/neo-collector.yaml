@@ -25,6 +25,7 @@ sheets:
   foil_fullart_land:
     foil: true
     query: "r:b is:fullart"
+    count: 10
   foil_sfc_common:
     foil: true
     balanced: false
@@ -68,19 +69,25 @@ sheets:
   rare_mythic_showcase:
     any:
     - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+      count: 59
       rate: 4
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor)"
+      count: 13
       rate: 2
     - rawquery: "e:{set} promo:boosterfun (Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor) number<=416"
+      count: 10
       rate: 1
   foil_rare_mythic_showcase:
     foil: true
     any:
     - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -promo:neonink is:paper"
+      count: 118
       rate: 6
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly is:paper number<=505 -Jin-Gitaxias"
+      count: 34
       rate: 3
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly is:paper number<=505 Jin-Gitaxias"
+      count: 3
       rate: 2
   etched_rare_mythic:
     foil: true
@@ -92,8 +99,11 @@ sheets:
     foil: true
     any:
     - rawquery: "e:neo number:429"
+      count: 1
       rate: 1
     - rawquery: "e:neo number:430"
+      count: 1
       rate: 4
     - rawquery: "e:neo number:431"
+      count: 1
       rate: 8

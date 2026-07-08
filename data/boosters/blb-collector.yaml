@@ -16,12 +16,16 @@ sheets:
     foil: true
     any:
     - query: "number:262,266,270,274,278"
+      count: 5
       chance: 4
     - query: "number:263,267,271,275,279"
+      count: 5
       chance: 3
     - query: "number:264,268,272,276,280"
+      count: 5
       chance: 2
     - query: "number:265,269,273,277,281"
+      count: 5
       chance: 1
   foil_rare_mythic:
     foil: true
@@ -41,6 +45,7 @@ sheets:
   foil_commander:
     foil: true
     rawquery: "e:blc number:41-44"
+    count: 4
   showcase_rare_mythic:
     any:
     - rawquery: "e:blc r:r number:73-92"

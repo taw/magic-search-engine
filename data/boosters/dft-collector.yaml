@@ -28,11 +28,14 @@ sheets:
   foil_driver_seat_land:
     foil: true
     query: "{driver_basic}"
+    count: 5
   revved_up_cu:
     any:
     - rawquery: "{revved_up} r:c"
+      count: 9
       chance: 15
     - rawquery: "{revved_up} r:u"
+      count: 17
       chance: 17
   foil_revved_up_cu:
     foil: true
@@ -43,33 +46,43 @@ sheets:
   showcase_commander:
     any:
     - rawquery: "e:drc number<=4"
+      count: 4
       rate: 1
     - rawquery: "e:drc frame:extendedart"
+      count: 16
       rate: 2
   foil_showcase_commander:
     foil: true
     rawquery: "e:drc number<=4"
+    count: 4
   booster_fun:
     any:
     - rawquery: "{boosterfun} r:r"
+      count: 60
       rate: 2
     - rawquery: "{boosterfun} r:m"
+      count: 18
       rate: 1
   foil_booster_fun:
     foil: true
     any:
     - rawquery: "{boosterfun} r:r"
+      count: 60
       chance: 7460
     - rawquery: "{boosterfun} r:m"
+      count: 18
       chance: 1120
     - rawquery: "{jp_showcase}"
+      count: 10
       chance: 900
     - rawquery: "{fracture_foil}"
+      count: 10
       chance: 100
     - set: spg
       code: "DFT"
       chance: 420
     - rawquery: "{serialized_aetherspark}"
+      count: 1
       chance: 2
 
 ########## foil_booster_fun sheet:

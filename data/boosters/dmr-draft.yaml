@@ -39,16 +39,22 @@ sheets:
   rare_mythic_with_showcase:
     any:
     - rawquery: "e:{set} r:r is:borderless"
+      count: 23
       rate: 2
     - query: "r:r alt:(e:{set} r:r is:borderless)"
+      count: 23
       rate: 4
     - query: "r:r -alt:(e:{set} r:r is:borderless)"
+      count: 37
       rate: 6
     - rawquery: "e:{set} r:m is:borderless"
+      count: 17
       rate: 1
     - query: "r:m alt:(e:{set} r:m is:borderless)"
+      count: 17
       rate: 2
     - query: "r:m -alt:(e:{set} r:m is:borderless)"
+      count: 3
       rate: 3
   rare_mythic_retro:
     filter: "e:{set} frame:old"

@@ -18,9 +18,11 @@ sheets:
   foil_basic:
     foil: true
     rawquery: "e:pip t:basic -promo:surgefoil"
+    count: 10
   surge_basic:
     foil: true
     rawquery: "e:pip t:basic promo:surgefoil"
+    count: 10
   foil_rare_mythic:
     filter: "e:pip number<=316"
     use: rare_mythic
@@ -31,57 +33,76 @@ sheets:
     foil: true
   foil_hail_caesar:
     rawquery: "e:pip deck:\"Hail, Caesar\" number<=316"
+    count: 86
     foil: true
   surge_hail_caesar:
     rawquery: "e:pip alt:(deck:\"Hail, Caesar\") number:529-854"
+    count: 92
     foil: true
   foil_scrappy_survivors:
     rawquery: "e:pip deck:\"Scrappy Survivors\" number<=316"
+    count: 88
     foil: true
   surge_scrappy_survivors:
     rawquery: "e:pip alt:(deck:\"Scrappy Survivors\") number:529-854"
+    count: 94
     foil: true
   foil_science:
     rawquery: "e:pip deck:\"Science!\" number<=316"
+    count: 87
     foil: true
   surge_science:
     rawquery: "e:pip alt:(deck:\"Science!\") number:529-854"
+    count: 93
     foil: true
   foil_mutant_menace:
     rawquery: "e:pip deck:\"Mutant Menace\" number<=316"
+    count: 85
     foil: true
   surge_mutant_menace:
     rawquery: "e:pip alt:(deck:\"Mutant Menace\") number:529-854"
+    count: 91
     foil: true
   extended_reprint:
     rawquery: "e:pip number:447-528"
+    count: 82
   extended_new:
     rawquery: "e:pip number:362-446"
+    count: 85
   foil_extended_reprint:
     rawquery: "e:pip number:447-528"
+    count: 82
     foil: true
   foil_extended_new:
     rawquery: "e:pip number:362-446"
+    count: 85
     foil: true
   surge_extended_reprint:
     rawquery: "e:pip number:975-1056"
+    count: 82
     foil: true
   surge_extended_new:
     rawquery: "e:pip number:890-974"
+    count: 85
     foil: true
   surge_wildcard:
     rawquery: "e:pip number:529-854,890-975 -t:basic"
+    count: 402
     foil: true
   showcase:
     rawquery: "e:pip number:327-361"
+    count: 35
   foil_showcase:
     rawquery: "e:pip number:327-361"
+    count: 35
     foil: true
   surge_showcase:
     rawquery: "e:pip number:855-889"
+    count: 35
     foil: true
   serialized:
     rawquery: "e:pip number:1057-1063"
+    count: 7
     foil: true
   land:
     foil: true

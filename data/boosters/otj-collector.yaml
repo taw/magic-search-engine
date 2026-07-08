@@ -17,12 +17,15 @@ pack:
 sheets:
   foil_uncommon:
     query: "r:u"
+    count: 100
     foil: true
   foil_fullart_land:
     query: "number:272-276"
+    count: 5
     foil: true
   otp_uncommon:
     rawquery: "e:otp r:u number<=65"
+    count: 20
   foil_otp_uncommon:
     use: otp_uncommon
     foil: true
@@ -30,10 +33,13 @@ sheets:
     foil: true
     any:
     - query: "r:r"
+      count: 60
       rate: 2
     - query: "r:m"
+      count: 20
       rate: 1
     - rawquery: "e:big number<=30"
+      count: 30
       rate: 1
   showcase_rare_mythic:
     filter: "(e:otj number:278-367) or (e:big number:31-60,66-95)"
@@ -41,6 +47,7 @@ sheets:
   foil_commander:
     foil: true
     rawquery: "e:otc number:41-44"
+    count: 4
   commander:
     filter: "e:otc number:1-4,41-76"
     use: rare_mythic

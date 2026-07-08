@@ -116,34 +116,46 @@ sheets:
     # Chance of getting sheet = 36% + 9% + 18% + 4% = 67%
     any:
     - rawquery: "{stellar_sights} r=r" # Rare Stellar Sights
+      count: 30
       chance: 36
     - rawquery: "{stellar_sights} r=m" # Mythic Stellar Sights
+      count: 15
       chance: 9
     - rawquery: "{poster_stellar_sights} r=r" # Rare Poster Stellar Sights
+      count: 30
       chance: 18
     - rawquery: "{poster_stellar_sights} r=m" # Mythic Poster Stellar Sights
+      count: 15
       chance: 4
   foil_stellar_sights_land:
     # Chance of getting sheet = 22.5%
     foil: true
     any:
     - rawquery: "{stellar_sights} r=r" # Foil Rare Stellar Sights
+      count: 30
       chance: 120 
     - rawquery: "{stellar_sights} r=m" # Foil Mythic Stellar Sights
+      count: 15
       chance: 30 
     - rawquery: "{poster_stellar_sights} r=r" # Foil Rare Poster Stellar Sights
+      count: 30
       chance: 60 
     - rawquery: "{poster_stellar_sights} r=m" # Foil Mythic Poster Stellar Sights
+      count: 15
       chance: 15 
   galaxy_stellar_sights_land:
     # Chance of getting sheet = 10.5% (+ "less than 1%") 
     foil: true
     any:
     - rawquery: "{galaxy_stellar_sights} r=r" # Galaxy Foil Rare Stellar Sights
+      count: 30
       chance: 600 
     - rawquery: "{galaxy_stellar_sights} r=m" # Galaxy Foil Mythic Stellar Sights
+      count: 15
       chance: 150
     - rawquery: "{galaxy_poster_stellar_sights} r=r" # Galaxy Foil Rare Poster Stellar Sights
+      count: 30
       chance: 300 
     - rawquery: "{galaxy_poster_stellar_sights} r=m" # Galaxy Foil Mythic Poster Stellar Sights
+      count: 15
       chance: 75

@@ -27,6 +27,7 @@ queries:
 sheets:
   common:
     query: "r:c -{dual_land} -t:basic"
+    count: 81
   common_with_showcase:
     any:
     - rawquery: "{revved_up} r:c"
@@ -41,18 +42,24 @@ sheets:
   uncommon_with_showcase:
     any:
     - rawquery: "{revved_up} r:u"
+      count: 17
       rate: 1
     - query: "r:u alt:({revved_up})"
+      count: 17
       rate: 3
     - query: "r:u -alt:({revved_up})"
+      count: 83
       rate: 4
   non_foil_land:
     any:
       - query: "{dual_land}"
+        count: 10
         chance: 4
       - query: "{normal_basic}"
+        count: 15
         chance: 3
       - query: "{driver_basic}"
+        count: 5
         chance: 1
   foil_land:
     foil: true
@@ -62,18 +69,24 @@ sheets:
     any:
     - any:
       - rawquery: "{boosterfun} r:r"
+        count: 45
         rate: 1
       - query: "r:r alt:({boosterfun})"
+        count: 45
         rate: 3
       - query: "r:r -alt:({boosterfun})"
+        count: 15
         rate: 4
       chance: 6
     - any:
       - rawquery: "{boosterfun} r:m"
+        count: 13
         rate: 1
       - query: "r:m alt:({boosterfun})"
+        count: 13
         rate: 3
       - query: "r:m -alt:({boosterfun})"
+        count: 7
         rate: 4
       chance: 1
   wildcard:

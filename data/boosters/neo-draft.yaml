@@ -36,26 +36,34 @@ sheets:
     # Showcase treatments 1/4 for relevant cards
     any:
     - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper"
+      count: 17
       rate: 1
     - query: "r:c alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+      count: 17
       rate: 3
     - query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart) is:sfc -is:gainland"
+      count: 84
       rate: 4
   sfc_uncommon_with_showcase:
     # Showcase treatments 1/4 for relevant cards
     any:
     - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:sfc is:paper"
+      count: 15
       rate: 1
     - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+      count: 15
       rate: 3
     - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) is:sfc"
+      count: 65
       rate: 4
   rare_with_showcase:
     # Showcase treatments 1/4 for relevant cards
     any:
     - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+      count: 59
       rate: 1
     - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+      count: 59
       rate: 3
     - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 4
@@ -63,10 +71,13 @@ sheets:
     # Showcase treatments 1/4 for relevant cards
     any:
     - rawquery: "e:{set} promo:boosterfun (Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor) number<=416"
+      count: 10
       rate: 1
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor)"
+      count: 13
       rate: 2
     - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+      count: 18
       rate: 6
     - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 8
@@ -105,8 +116,10 @@ sheets:
       - use: rare_has_no_showcase
         rate: 16
       - rawquery: "e:{set} promo:boosterfun (Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor) number<=416"
+        count: 10
         rate: 1
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor)"
+        count: 13
         rate: 2
       - use: mythic_has_showcase
         rate: 6

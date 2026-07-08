@@ -22,44 +22,58 @@ pack:
 sheets:
   common:
     query: "r:c"
+    count: 101
   foil_with_showcase:
     # Copied from base set
     filter: "(e:bro is:baseset -number:268-277) or (e:brr -number:/z/)"
     foil: true
     any:
     - query: "r<=c"
+      count: 111
       chance: 12
     - query: "r:u"
+      count: 116
       chance: 5
     - any:
       - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        count: 6
         rate: 2
       - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 6
         rate: 4
       - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 117
         rate: 6
       # foil versions of the commander (brc #1-28) and set-booster-exclusive
       # (#288-292) cards that the nonfoil wildcard carries but this foil slot was
       # missing (the slot filter is e:bro is:baseset, which excludes them);
       # rates are half the wildcard's, matching the rest of this foil slot
       - rawquery: "e:brc r:r number<=28"
+        count: 6
         rate: 6
       - rawquery: "e:{set} number:288-292"
+        count: 5
         rate: 6
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        count: 2
         rate: 1
       - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 2
         rate: 2
       - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 51
         rate: 3
       - rawquery: "e:brc r:m number<=28"
+        count: 6
         rate: 3
       chance: 3
   basic:
     any:
     - rawquery: "e:bro number:268-277"
+      count: 10
       rate: 5
     - rawquery: "e:bro number:278-287"
+      count: 10
       rate: 2
   foil_basic:
     foil: true
@@ -70,38 +84,54 @@ sheets:
       chance: 700
     - any:
       - query: "r:u"
+        count: 80
         rate: 6
       - rawquery: "e:brr r:u number<=63"
+        count: 18
         rate: 5
       - rawquery: "e:brr r:u number>=64"
+        count: 18
         rate: 1
       chance: 175
     - any:
       - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        count: 6
         rate: 4
       - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 6
         rate: 8
       - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 57
         rate: 12
       - rawquery: "e:brr r:r number<=63"
+        count: 30
         rate: 10
       - rawquery: "e:brr r:r number>=64"
+        count: 30
         rate: 2
       - rawquery: "e:brc r:r number<=28"
+        count: 22
         rate: 12
       - rawquery: "e:{set} number:288-292"
+        count: 5
         rate: 12
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        count: 2
         rate: 2
       - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 2
         rate: 4
       - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 21
         rate: 6
       - rawquery: "e:brr r:m number<=63"
+        count: 15
         rate: 5
       - rawquery: "e:brr r:m number>=64"
+        count: 15
         rate: 1
       - rawquery: "e:brc r:m number<=28"
+        count: 6
         rate: 6
       chance: 125
     # A Transformers card appears in ~10% of Set Boosters via the wildcard
@@ -109,6 +139,7 @@ sheets:
     # outcome, not part of the rare/mythic tier. With 2 wildcard slots,
     # chance 54 (~5.12% per wildcard) gives ~10% per pack.
     - rawquery: "e:bot number<=15"
+      count: 14
       chance: 54
   brr_retro_artifact:
     filter: "e:brr -number:/z/"

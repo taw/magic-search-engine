@@ -15,8 +15,10 @@ sheets:
     - use: rare_mythic
       chance: 3*8
     - query: "r:u"
+      count: 60
       chance: 5*8
     - rawquery: "(e:aer r:c) or (e:kld r:b)"
+      count: 85
       chance: 12*8-2
     - rawquery: "e:mps number>=31"
       count: 24
@@ -24,3 +26,4 @@ sheets:
   basic:
     # borrowed basics
     rawquery: "e:kld r:b"
+    count: 15

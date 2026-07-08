@@ -9,8 +9,10 @@ sheets:
   cave_basic_land:
     any:
     - query: "t:cave r:c"
+      count: 7
       chance: 7
     - rawquery: "e:lci number:393-402"
+      count: 10
       chance: 3
   dfc_common_uncommon:
     any:

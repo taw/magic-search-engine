@@ -26,12 +26,16 @@ sheets:
     foil: true
     any:
     - rawquery: "e:mh3 r:u number:384-441"
+      count: 16
       rate: 4
     - rawquery: "e:mh3 r:c number:384-441"
+      count: 7
       rate: 8
     - rawquery: "e:h2r r:u"
+      count: 6
       rate: 4
     - rawquery: "e:h2r r:c"
+      count: 2
       rate: 8
   showcase_rm:
     # community review (https://github.com/taw/magic-search-engine/issues/442): the
@@ -41,14 +45,17 @@ sheets:
     any:
     - # mythic in two non-retro showcase treatments
       rawquery: "e:{set} number:320-383,442-467 r:m alt:{two_plus_versions_nonretro} -is:foilonly"
+      count: 2
       rate: 3
     - # mythic in one non-retro showcase treatment
       rawquery: "e:{set} r:m {one_version_nonretro} -is:foilonly"
+      count: 20
       rate: 6
     - # rare in one non-retro showcase treatment
       # (without the retro version no rare has two versions left, except the
       # fetchlands, which aren't in this product)
       rawquery: "e:{set} r:r {one_version_nonretro} -is:foilonly"
+      count: 58
       rate: 12
     - rawquery: "e:m3c number:9-16"
       rate: 6
@@ -68,14 +75,17 @@ sheets:
     any:
     - # mythic in two non-retro showcase treatments
       rawquery: "e:{set} number:320-383,442-467 r:m alt:{two_plus_versions_nonretro} -is:foilonly"
+      count: 2
       rate: 3
     - # mythic in one non-retro showcase treatment
       rawquery: "e:{set} r:m {one_version_nonretro} -is:foilonly"
+      count: 20
       rate: 6
     - # rare in one non-retro showcase treatment
       # (without the retro version no rare has two versions left, except the
       # fetchlands, which aren't in this product)
       rawquery: "e:{set} r:r {one_version_nonretro} -is:foilonly"
+      count: 58
       rate: 12
     - rawquery: "e:m3c number:9-16"
       rate: 6

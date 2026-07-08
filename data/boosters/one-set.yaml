@@ -129,6 +129,7 @@ sheets:
   common:
     balanced: false
     query: "r:c"
+    count: 101
   prototype_praetor:
     rawquery: "promo:concept -promo:stepandcompleat e:one,neo,dmu,snc,khm"
     count: 5
@@ -154,14 +155,17 @@ sheets:
           - use: rare_with_showcase
             chance: 60
           - rawquery: "e:onc r:r is:baseset"
+            count: 6
             chance: 22
           - rawquery: "e:{set} r:r number:404-408"
+            count: 5
             chance: 5
           chance: 6
         - any: # Mythic with commander options
           - use: mythic_with_showcase
             chance: 10
           - rawquery: "e:onc r:m is:baseset"
+            count: 6
             chance: 3
           chance: 1
         chance: 59

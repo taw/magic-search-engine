@@ -25,57 +25,76 @@ sheets:
     foil: true
     any:
     - query: "r:c -alt:{lurking_evil} -(t:land -terramorphic)"
+      count: 79
       rate: 4
     - query: "r:c alt:{lurking_evil}"
+      count: 2
       rate: 3
     - rawquery: "r:c {lurking_evil}"
+      count: 2
       rate: 1
   foil_uncommon:
     # Showcase treatments 1/4 for relevant cards
     foil: true
     any:
     - query: "r:u -alt:({lurking_evil} or {showcase})"
+      count: 92
       rate: 4
     - query: "r:u alt:({lurking_evil} or {showcase})"
+      count: 8
       rate: 3
     - rawquery: "r:u ({lurking_evil} or {showcase})"
+      count: 8
       rate: 1
   foil_basic:
     foil: true
     query: "t:basic is:fullart"
+    count: 5
   foil_rare_mythic:
     foil: true
     any:
     - rawquery: "r:r {lurking_evil}"
+      count: 7
       rate: 2
     - query: "r:r alt:{lurking_evil}"
+      count: 7
       rate: 6
     - query: "r:r -alt:{lurking_evil}"
+      count: 53
       rate: 8
     - rawquery: "r:m {lurking_evil}"
+      count: 2
       rate: 1
     - query: "r:m alt:{lurking_evil}"
+      count: 2
       rate: 3
     - query: "r:m -alt:{lurking_evil}"
+      count: 18
       rate: 4
   showcase_commander:
     any:
     - rawquery: "e:dsc number<=8"
+      count: 8
       rate: 1
     - rawquery: "e:dsc frame:extendedart"
+      count: 27
       rate: 2
   foil_showcase_commander:
     foil: true
     rawquery: "e:dsc number<=8"
+    count: 8
   booster_fun:
     any:
     - rawquery: "r:m {two_instances}"
+      count: 2
       rate: 1
     - rawquery: "r:m {any_boosterfun} -alt:{two_instances}"
+      count: 19
       rate: 2
     - rawquery: "r:r {two_instances} -number:417" # 417 is the BaB
       rate: 2
     - rawquery: "r:r {any_boosterfun} -alt:{two_instances} -number:417"
+      count: 59
       rate: 4
   foil_booster_fun:
     foil: true
@@ -83,10 +102,13 @@ sheets:
     - use: booster_fun
       chance: 859
     - rawquery: "e:{set} number:386-395"
+      count: 10
       chance: 90
     - rawquery: "e:{set} number:396-405"
+      count: 10
       chance: 10
     - rawquery: "e:{set} number:406-410"
+      count: 5
       chance: 10
     - set: spg
       code: "DSK"

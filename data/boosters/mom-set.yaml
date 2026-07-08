@@ -42,8 +42,10 @@ sheets:
     count: 65
     any:
     - query: "r:u"
+      count: 20
       chance: 2
     - query: "r:r or r:m"
+      count: 45
       chance: 1
   wildcard:
     any:
@@ -96,8 +98,10 @@ sheets:
     count: 65
     any:
     - query: "r:u"
+      count: 20
       chance: 2
     - query: "r:r or r:m"
+      count: 45
       chance: 1
   mom_foil_with_showcase:
     # the shared base-set foil slot, but with its filter widened to also include

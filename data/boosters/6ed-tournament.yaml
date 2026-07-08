@@ -9,9 +9,12 @@ sheets:
   basic:
     duplicates: true
     query: "r:b"
+    count: 20
   common_with_duplicates:
     query: "r:c"
+    count: 110
     duplicates: true
   uncommon_with_duplicates:
     query: "r:u"
+    count: 110
     duplicates: true

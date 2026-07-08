@@ -18,6 +18,8 @@ sheets:
     foil: true
     any:
     - rawquery: "e:brr number<=63 -number:/z/ r:u"
+      count: 18
       rate: 5
     - rawquery: "e:brr number>63 -number:/z/ r:u"
+      count: 18
       rate: 1

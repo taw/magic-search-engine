@@ -20,22 +20,30 @@ sheets:
     any:
     - any:
       - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly (Aurelia or Lazav or Niv-Mizzet or Teysa) -number:/z/"
+        count: 8
         rate: 1
       - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -(r:r t:land) -(Aurelia or Lazav or Niv-Mizzet or Teysa)"
+        count: 22
         rate: 2
       - query: "r:r -(r:r t:land) alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -(r:r t:land))"
+        count: 26
         rate: 4
       - query: "r:r -(r:r t:land) -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -(r:r t:land))"
+        count: 34
         rate: 6
       chance: 120
     - any:
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly (Vannifar or Rakdos or Trostani) -number:/z/"
+        count: 6
         rate: 1
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Vannifar or Rakdos or Trostani)"
+        count: 13
         rate: 2
       - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper)"
+        count: 16
         rate: 4
       - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper)"
+        count: 4
         rate: 6
       chance: 20
   wildcard:
@@ -43,8 +51,10 @@ sheets:
     - chance: 1
       any:
       - rawquery: "e:{set} r:r t:land -promo:boosterfun"
+        count: 10
         chance: 7
       - rawquery: "e:{set} r:r t:land promo:boosterfun"
+        count: 10
         chance: 1
     - chance: 5
       any:
@@ -65,22 +75,30 @@ sheets:
       any:
       - any:
         - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly (Aurelia or Lazav or Niv-Mizzet or Teysa) -number:/z/"
+          count: 8
           rate: 1
         - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Aurelia or Lazav or Niv-Mizzet or Teysa)"
+          count: 32
           rate: 2
         - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper)"
+          count: 36
           rate: 4
         - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper)"
+          count: 34
           rate: 6
         chance: 140
       - any:
         - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly (Vannifar or Rakdos or Trostani) -number:/z/"
+          count: 6
           rate: 1
         - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Vannifar or Rakdos or Trostani)"
+          count: 13
           rate: 2
         - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper)"
+          count: 16
           rate: 4
         - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper)"
+          count: 4
           rate: 6
         chance: 20
   the_list:
