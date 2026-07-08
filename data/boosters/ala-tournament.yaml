@@ -1,10 +1,14 @@
 # Data from https://www.cardkingdom.com/mtg/shards-of-alara/shards-of-alara-tournament-pack
+# Shards of Alara introduced the mythic rare, and per mtg.wiki each rare slot
+# -- in boosters AND tournament packs -- could be a rare or a mythic rare
+# (https://mtg.wiki/page/Tournament_pack). Use the shared rare_mythic sheet so
+# the three rare slots can yield mythics, matching the draft booster.
 name: "{set_name} Tournament Deck"
 pack:
   basic: 29
   common: 33
   uncommon: 10
-  rare: 3
+  rare_mythic: 3
 sheets:
   uncommon:
     duplicates: true
