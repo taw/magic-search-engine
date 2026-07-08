@@ -97,6 +97,7 @@ describe Deck do
       ["expansion", "MTGO Redemption"],
       ["eternal", "Box Set"],
       ["standard", "Bundle Land Pack"],
+      ["modern", "Bundle Land Pack"],
     ]
 
     db.sets.each do |set_code, set|
