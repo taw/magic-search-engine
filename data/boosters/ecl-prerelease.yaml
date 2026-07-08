@@ -1,0 +1,15 @@
+# Lorwyn Eclipsed Prerelease Pack promo: 1 traditional-foil rare or mythic from
+# the base set (usual play-booster rare:mythic rate). ECL has no dedicated
+# stamped prerelease promo, so this is a normal base-set rare/mythic in foil.
+pack:
+  promo: 1
+sheets:
+  promo:
+    foil: true
+    any:
+    - rawquery: "e:ecl r:r is:baseset"
+      rate: 2
+      count: 65
+    - rawquery: "e:ecl r:m is:baseset"
+      rate: 1
+      count: 22
