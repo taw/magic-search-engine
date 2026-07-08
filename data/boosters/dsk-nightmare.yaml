@@ -1,0 +1,17 @@
+# Duskmourn: House of Horror Nightmare Bundle Booster (2 cards).
+# From the Nightmare Bundle: 1 borderless alt-art reprint (Crypt Ghast, Damn,
+# or Exhume) + 1 "Movie Poster" card (Archon of Cruelty, Goryo's Vengeance, or
+# Living Death). All are traditional foil, in the Duskmourn Commander set (dsc).
+# Source: https://magic.wizards.com/en/news/feature/collecting-duskmourn
+#         + Nightmare Bundle product listings (cardgamebase.com, Amazon).
+name: "{set_name} Nightmare Bundle Booster"
+pack:
+  borderless: 1
+  movie_poster: 1
+sheets:
+  borderless:
+    foil: true
+    rawquery: "e:dsc promo:bundle -promo:poster"
+  movie_poster:
+    foil: true
+    rawquery: "e:dsc promo:poster"
