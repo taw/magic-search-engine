@@ -103,9 +103,13 @@ sheets:
         rate: 1
       - rawquery: "e:brc r:m number<=28"
         rate: 6
-      - rawquery: "e:bot number<=15"
-        rate: 6
       chance: 125
+    # A Transformers card appears in ~10% of Set Boosters via the wildcard
+    # slots (non-foil, no shattered glass) -- so it's a top-level wildcard
+    # outcome, not part of the rare/mythic tier. With 2 wildcard slots,
+    # chance 54 (~5.12% per wildcard) gives ~10% per pack.
+    - rawquery: "e:bot number<=15"
+      chance: 54
   brr_retro_artifact:
     filter: "e:brr -number:/z/"
     any:
