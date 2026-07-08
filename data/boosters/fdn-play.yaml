@@ -19,13 +19,18 @@ queries:
   borderless: "e:{set} number:292-361"
 sheets:
   land:
+    # Article: 1 of 10 character lands (25%, the full-art basics), 1 of 10
+    # common dual lands (50%), or 1 of 10 regular-frame basic lands (25%).
     any:
-    - query: "r:c t:land -uncharted -evolving"
+    - query: "t:basic is:fullart"
       chance: 1
       count: 10
-    - query: "t:basic"
+    - query: "r:c t:land -uncharted -evolving"
+      chance: 2
+      count: 10
+    - query: "t:basic -is:fullart"
       chance: 1
-      count: 20
+      count: 10
   common:
     query: "r:c -(e:{set} t:land -uncharted -evolving)"
     count: 80
