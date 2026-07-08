@@ -14,25 +14,17 @@ queries:
   extended: "e:{set} number:442-487"
 sheets:
   foil_common:
-    # Showcase treatments 1/8 for relevant cards
+    # FDN's borderless commons appear at full (uniform) rate, not a reduced
+    # showcase rate: 2 borderless + 90 base-set commons -> borderless
+    # 2/92 = 2.2%, dual lands 10/92 = 10.9%, other commons 80/92 = 87%,
+    # matching the article. (The old 8/7/1 reduction gave borderless ~0.28%.)
     foil: true
-    any:
-    - query: "r:c -alt:{borderless}"
-      rate: 8
-    - query: "r:c alt:{borderless}"
-      rate: 7
-    - rawquery: "r:c {borderless}"
-      rate: 1
+    rawquery: "e:{set} r:c (is:baseset or number:292-361)"
+    count: 92
   foil_uncommon:
-    # Showcase treatments 1/8 for relevant cards
+    # Same as foil_common: FDN borderless uncommons appear at full rate.
     foil: true
-    any:
-    - query: "r:u -alt:{borderless}"
-      rate: 8
-    - query: "r:u alt:{borderless}"
-      rate: 7
-    - rawquery: "r:u {borderless}"
-      rate: 1
+    rawquery: "e:{set} r:u (is:baseset or number:292-361)"
   foil_basic:
     foil: true
     query: "t:basic is:fullart"
