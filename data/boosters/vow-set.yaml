@@ -53,10 +53,15 @@ sheets:
         - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
           rate: 3
         chance: 20
-      - rawquery: "e:voc number<=38 r:r"
-        chance: 32*2
-      - rawquery: "e:voc number<=38 r:m"
-        chance: 6
+      # Only the 8 new-to-Commander cards designed for Set Boosters appear
+      # here (VOC #31-38: 6 rares + 2 mythics -- the Soulbonders cycle,
+      # Hollowhenge Overlord, Wedding Ring, Umbris). The rest of VOC (the
+      # Commander-deck cards) are NOT in Set Boosters. Per-card weight kept
+      # at rare 2 : mythic 1, matching the main-set R/M tier.
+      - rawquery: "e:voc number:31-38 r:r"
+        chance: 6*2
+      - rawquery: "e:voc number:31-38 r:m"
+        chance: 2
       chance: 125
   the_list:
     any:
