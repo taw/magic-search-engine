@@ -16,19 +16,24 @@ sheets:
   foil_showcase_uncommon:
     foil: true
     rawquery: "e:{set} frame:showcase r:u"
+    count: 9
   etched_uncommon:
     foil: true
     etched: true
     rawquery: "e:{set} is:etched r:u"
+    count: 49
   foil_basic:
     foil: true
     rawquery: "e:{set} t:basic is:fullart"
+    count: 10
   borderless_scene:
     foil: true
     any:
     - rawquery: "e:{set} number:111-116 r:r"
+      count: 5
       rate: 2
     - rawquery: "e:{set} number:111-116 r:m"
+      count: 1
       rate: 1
   foil_rare_mythic:
     foil: true
@@ -40,8 +45,10 @@ sheets:
   nonfoil_extended:
     any:
     - rawquery: "e:{set} frame:extendedart r:r"
+      count: 16
       rate: 2
     - rawquery: "e:{set} frame:extendedart r:m"
+      count: 1
       rate: 1
   foil_showcase_rare_mythic:
     foil: true

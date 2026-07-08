@@ -22,11 +22,14 @@ queries:
 sheets:
   basic:
     rawquery: "e:{set} t:basic"
+    count: 10
   foil_basic:
     foil: true
     rawquery: "e:{set} t:basic"
+    count: 10
   sfc_common:
     query: "r:c is:sfc"
+    count: 75
   retro:
     filter: "{old_frame}"
     use: base_1248_by_rarity
@@ -34,28 +37,37 @@ sheets:
     # Showcase treatments 1/4 for relevant cards
     any:
     - query: "r:u -alt:({showcase})"
+      count: 102
       rate: 4
     - query: "r:u alt:({showcase})"
+      count: 2
       rate: 3
     - rawquery: "r:u ({showcase})"
+      count: 2
       rate: 1
   mythic_with_showcase:
     # Showcase treatments 1/4 for relevant cards
     any:
     - rawquery: "r:m {any_boosterfun}"
+      count: 6
       rate: 1
     - query: "r:m alt:{any_boosterfun}"
+      count: 6
       rate: 3
     - query: "r:m -alt:{any_boosterfun}"
+      count: 17
       rate: 4
   rare_with_showcase:
     # Showcase treatments 1/4 for relevant cards
     any:
     - rawquery: "r:r {any_boosterfun}"
+      count: 17
       rate: 1
     - query: "r:r alt:{any_boosterfun}"
+      count: 17
       rate: 3
     - query: "r:r -alt:{any_boosterfun}"
+      count: 55
       rate: 4
   rare_mythic_with_showcase:
     any:
@@ -68,18 +80,24 @@ sheets:
     - chance: 700
       any:
       - rawquery: "r:c {any_boosterfun}"
+        count: 4
         rate: 1
       - query: "r:c alt:{any_boosterfun}"
+        count: 4
         rate: 3
       - query: "r:c -alt:{any_boosterfun}"
+        count: 84
         rate: 4
     - chance: 175
       any:
       - rawquery: "r:u {any_boosterfun}"
+        count: 4
         rate: 1
       - query: "r:u alt:{any_boosterfun}"
+        count: 4
         rate: 3
       - query: "r:u -alt:{any_boosterfun}"
+        count: 100
         rate: 4
     - chance: 125
       use: rare_mythic_with_showcase
@@ -89,18 +107,24 @@ sheets:
     - chance: 12
       any:
       - rawquery: "r:c {any_boosterfun}"
+        count: 4
         rate: 1
       - query: "r:c alt:{any_boosterfun}"
+        count: 4
         rate: 3
       - query: "r:c -alt:{any_boosterfun}"
+        count: 84
         rate: 4
     - chance: 5
       any:
       - rawquery: "r:u {any_boosterfun}"
+        count: 4
         rate: 1
       - query: "r:u alt:{any_boosterfun}"
+        count: 4
         rate: 3
       - query: "r:u -alt:{any_boosterfun}"
+        count: 100
         rate: 4
     - chance: 3
       use: rare_mythic_with_showcase

@@ -20,6 +20,7 @@ pack:
 sheets:
   sfc_common:
     query: "r:c is:sfc"
+    count: 90
   equinox_common_uncommon:
     any:
     - use: common_showcase
@@ -42,8 +43,10 @@ sheets:
       - use: mythic_with_showcase
         chance: 20
       - rawquery: "e:mic number<=38 r:r"
+        count: 32
         chance: 32*2
       - rawquery: "e:mic number<=38 r:m"
+        count: 6
         chance: 6
       chance: 125
   the_list:

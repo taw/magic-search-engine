@@ -27,6 +27,7 @@ pack:
 sheets:
   foil_fullart_land:
     query: "t:basic is:fullart"
+    count: 5
     foil: true
   foil_rare_mythic:
     foil: true
@@ -65,33 +66,42 @@ sheets:
     - rawquery: "e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:r"
       rate: 4
     - rawquery: 'e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:m -name:"Quintorius Kand"'
+      count: 4
       rate: 2
     - rawquery: 'e:lcc promo:boosterfun -frame:extendedart -promo:neonink r:m name:"Quintorius Kand"'
       rate: 1
   jurrasic_world:
     any:
     - rawquery: "e:rex -t:basic -promo:embossed -is:reversibleback"
+      count: 21
       rate: 1
     - rawquery: "e:rex t:basic -promo:embossed -is:reversibleback"
+      count: 5
       rate: 4
   foil_jurrasic_world:
     foil: true
     any:
     - rawquery: "e:rex -t:basic -promo:embossed -is:reversibleback"
+      count: 21
       rate: 1
     - rawquery: "e:rex t:basic -promo:embossed -is:reversibleback"
+      count: 5
       rate: 4
   emblem_jurrasic_world:
     foil: true
     rawquery: "e:rex promo:embossed"
+    count: 19
   foil_showcase_rare_mythic:
     foil: true
     any:
     - rawquery: "e:lci promo:boosterfun r:r"
+      count: 64
       rate: 4
     - rawquery: 'e:lci promo:boosterfun r:m -promo:neonink -name:"Quintorius Kand"'
+      count: 21
       rate: 2
     - rawquery: 'e:lci promo:boosterfun r:m -promo:neonink name:"Quintorius Kand"'
+      count: 2
       rate: 1
     - set: spg
       code: "LCICOLR"
@@ -107,13 +117,18 @@ sheets:
       chance: 1
     - any:
       - rawquery: "e:lci number:410a"
+        count: 1
         rate: 1
       - rawquery: "e:lci number:410e"
+        count: 1
         rate: 2
       - rawquery: "e:lci number:410d"
+        count: 1
         rate: 4
       - rawquery: "e:lci number:410c"
+        count: 1
         rate: 8
       - rawquery: "e:lci number:410f"
+        count: 1
         rate: 16
       chance: 1

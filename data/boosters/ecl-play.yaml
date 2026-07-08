@@ -51,8 +51,10 @@ sheets:
   rare_mythic:
     any:
       - rawquery: "e:{set} number:1-268 r:r" # Regular rare
+        count: 65
         rate: 2
       - rawquery: "e:{set} number:1-268 r:m" # Regular mythic
+        count: 22
         rate: 1
 
   uncommon_fable:
@@ -81,8 +83,10 @@ sheets:
   # Assumes all boosterfun use 2:1 ratio, even though that's for sure not true for the Collector Booster
     any:
     - rawquery: "{boosterfun} r:r"
+      count: 36
       rate: 2
     - rawquery: "{boosterfun} r:m"
+      count: 22
       rate: 1
 
   wildcard:

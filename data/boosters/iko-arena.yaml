@@ -16,12 +16,16 @@ sheets:
   nongainland_common_baseset:
     balanced: true
     query: "r:c -is:gainland is:baseset"
+    count: 101
   uncommon_baseset:
     query: "r:u is:baseset"
+    count: 80
   rare_mythic_baseset:
     any:
     - query: "r:r is:baseset"
+      count: 53
       rate: 2
     - query: "r:m is:baseset"
+      count: 15
       rate: 1
 

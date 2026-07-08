@@ -29,6 +29,7 @@ sheets:
   foil_fullart_basic:
     foil: true
     query: "r:b is:fullart"
+    count: 10
   foil_rare_mythic:
     foil: true
     use: rare_mythic
@@ -40,8 +41,10 @@ sheets:
     use: rare_mythic
   brr_retro_artifact_uncommon:
     rawquery: "e:brr number<=63 r:u -number:/z/"
+    count: 18
   brr_schematic_uncommon:
     rawquery: "e:brr number>=64 r:u -number:/z/"
+    count: 18
   brr_retro_artifact_rare_mythic:
     filter: "e:brr number<=63 -number:/z/"
     use: rare_mythic
@@ -70,16 +73,22 @@ sheets:
     foil: true
     any:
     - rawquery: "(e:bro or e:brc) promo:boosterfun r:r"
+      count: 68
       rate: 12
     - rawquery: "e:brr number<=63 r:r -number:/z/"
+      count: 30
       rate: 10
     - rawquery: "e:brr number>=64 r:r -number:/z/"
+      count: 30
       rate: 2
     - rawquery: "(e:bro or e:brc) promo:boosterfun r:m"
+      count: 27
       rate: 6
     - rawquery: "e:brr number<=63 r:m -number:/z/"
+      count: 15
       rate: 5
     - rawquery: "e:brr number>=64 r:m -number:/z/"
+      count: 15
       rate: 1
   double_rainbow_serialized:
     foil: true

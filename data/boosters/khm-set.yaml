@@ -35,15 +35,19 @@ pack:
 sheets:
   common:
     query: "r:c"
+    count: 111
   snow_showcase_theme: # Assuming standard 1/2/4/8 distribution for this slot
     any:
     - query: "r:c t:snow"
+      count: 20
       rate: 8
     - query: "r:u t:snow"
+      count: 11
       rate: 4
     - use: uncommon_showcase
       rate: 4
     - rawquery: "e:khm r:r number:374-393"
+      count: 5
       rate: 2
   rare_mythic_with_showcase:
     any:

@@ -19,20 +19,26 @@ sheets:
     foil: true
     any:
     - query: "r:u -alt:({lurking_evil} or {showcase})"
+      count: 92
       rate: 4
     - query: "r:u alt:({lurking_evil} or {showcase})"
+      count: 8
       rate: 3
     - rawquery: "r:u ({lurking_evil} or {showcase})"
+      count: 8
       rate: 1
   booster_fun:
     any:
     - rawquery: "r:m {two_instances}"
+      count: 2
       rate: 1
     - rawquery: "r:m {any_boosterfun} -alt:{two_instances}"
+      count: 14
       rate: 2
     - rawquery: "r:r {two_instances}"
       rate: 2
     - rawquery: "r:r {any_boosterfun} -alt:{two_instances}"
+      count: 46
       rate: 4
   foil_booster_fun:
     foil: true

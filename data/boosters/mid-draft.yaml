@@ -35,11 +35,15 @@ sheets:
       chance: 11 * 2
     - any:
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper t:planeswalker"
+        count: 2
         rate: 1
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:dfc is:paper -t:planeswalker"
+        count: 1
         rate: 2
       - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+        count: 2
         rate: 4
       - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) is:dfc"
+        count: 3
         rate: 6
       chance: 5

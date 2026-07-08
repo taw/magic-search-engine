@@ -47,6 +47,7 @@ sheets:
     - use: rare_mythic
       chance: 1
     - query: "r:u"
+      count: 120
       chance: 3
     - query: "r:c or r:s"
       count: 141 + 1
@@ -59,5 +60,6 @@ sheets:
     - use: base_1248_by_rarity
       chance: 245
     - rawquery: "e:cmr number:546"
+      count: 1
       chance: 1
     count: 103

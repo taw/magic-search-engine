@@ -47,11 +47,14 @@ sheets:
     foil: true
     any:
     - rawquery: "(e:emn r:c) or (e:soi r:b)"
+      count: 89
       chance: 12
     - query: "r:u"
+      count: 70
       chance: 5
     - use: rare_mythic
       chance: 3
   basic:
     # borrowed basics
     rawquery: "e:soi r:b"
+    count: 15

@@ -10,8 +10,10 @@ sheets:
   promo_teamup:
     any:
     - rawquery: "e:moc promo:prerelease -frame:showcase"
+      count: 3
       chance: 2
     - rawquery: "e:moc promo:prerelease frame:showcase"
+      count: 3
       chance: 1
   promo_teamup_foil:
     foil: true

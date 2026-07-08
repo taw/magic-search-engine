@@ -45,6 +45,7 @@ sheets:
     count: 79 + 9
     any:
     - query: "r:u is:scroll -Nazgûl"
+      count: 79
       rate: 9
     - query: "r:u is:scroll Nazgûl"
       rate: 1
@@ -85,6 +86,7 @@ sheets:
   surge_booster_fun_u:
     foil: true
     rawquery: "e:ltr number:794-823 r:u"
+    count: 10
   surge_booster_fun_rm:
     foil: true
     any:
@@ -109,25 +111,33 @@ sheets:
     count: 30
   hildebrant_u:
     rawquery: "e:ltc number:515-534 r:u"
+    count: 5
   silver_hildebrant_u:
     foil: true
     rawquery: "e:ltc number:515-534 r:u"
+    count: 5
   hildebrant_poster_rm:
     any:
     - rawquery: "e:ltc number:515-534 r:r"
+      count: 10
       rate: 2
     - rawquery: "e:ltc number:515-534 r:m"
+      count: 5
       rate: 1
     - rawquery: "e:ltr number:731-750"
+      count: 20
       rate: 1
   foil_hildebrant_poster_rm:
     foil: true
     any:
     - rawquery: "e:ltc number:515-534 r:r"
+      count: 10
       rate: 2
     - rawquery: "e:ltc number:515-534 r:m"
+      count: 5
       rate: 1
     - rawquery: "e:ltr number:731-750 -number:/z/"
+      count: 20
       rate: 1
   serialized_poster:
     foil: true

@@ -36,13 +36,16 @@ pack:
 sheets:
   basic:
     rawquery: "e:stx t:basic"
+    count: 10
   foil_basic:
     foil: true
     use: basic
   common:
     query: "r:c -t:lesson"
+    count: 96
   uncommon:
     query: "r:u -t:lesson"
+    count: 75
   wildcard:
     any:
     - use: common
@@ -51,12 +54,14 @@ sheets:
       - use: uncommon
         rate: 2
       - rawquery: "e:sta r:u "
+        count: 36
         rate: 1
       chance: 175
     - any:
       - use: rare
         rate: 12
       - rawquery: "e:sta r:r"
+        count: 60
         rate: 6
       - use: mythic_showcase
         rate: 2
@@ -65,6 +70,7 @@ sheets:
       - use: mythic_has_no_showcase
         rate: 6
       - rawquery: "e:sta r:m"
+        count: 30
         rate: 3
       chance: 125
   foil_with_showcase:
@@ -76,12 +82,14 @@ sheets:
       - use: uncommon
         rate: 2
       - rawquery: "e:sta r:u"
+        count: 36
         rate: 1
       chance: 5
     - any:
       - use: rare
         rate: 12
       - rawquery: "e:sta r:r"
+        count: 60
         rate: 6
       - use: mythic_showcase
         rate: 2
@@ -90,6 +98,7 @@ sheets:
       - use: mythic_has_no_showcase
         rate: 6
       - rawquery: "e:sta r:m"
+        count: 30
         rate: 3
       chance: 3
   sta:

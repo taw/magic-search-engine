@@ -25,10 +25,13 @@ sheets:
     foil: true
     any:
     - rawquery: "e:khm promo:boosterfun r:r"
+      count: 54
       rate: 4
     - rawquery: "e:khm promo:boosterfun r:m -(Vorinclex or Valki)"
+      count: 18
       rate: 2
     - rawquery: "e:khm promo:boosterfun r:m (Vorinclex or Valki) number<=400"
+      count: 4
       rate: 1
   rare_mythic_showcase:
     any:

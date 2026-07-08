@@ -19,6 +19,7 @@ pack:
 sheets:
   common:
     query: "r:c -number>451"
+    count: 101
   with_showcase:
     any:
     - query: "promo:boosterfun alt:(number:302-331,340-345) alt:(e:{set} number:399-451) -number:299-300 -number>451"
@@ -27,6 +28,9 @@ sheets:
       rate: 2
     - query: "-alt:(e:{set} number:302-331,340-345) number:399-451"
       rate: 2
+    # No count: this sheet is used via `use:` with per-rarity filters
+    # (common/uncommon/rare/mythic_with_showcase), so these queries resolve to a
+    # different pool in each context and can't take a single static count.
     - query: "is:baseset alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 4
     - query: "is:baseset -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
@@ -43,20 +47,25 @@ sheets:
     - use: with_showcase
       chance: 79
     - rawquery: 'e:{set} name:"Nazgûl" -number>451'
+      count: 9
       chance: 1
   common_uncommon_showcase:
     any:
     - rawquery: "e:{set} r:c -alt:(number:302-331,340-345) number:399-451"
+      count: 9
       rate: 4
     - rawquery: "e:{set} r:c number:302-331,340-345 -alt:(e:{set} number:399-451)"
       rate: 4
     - rawquery: "e:{set} r:c promo:boosterfun alt:(number:302-331,340-345) alt:(e:{set} number:399-451) -number:299-300 -number>451"
       rate: 2
     - rawquery: "e:{set} r:u -alt:(number:302-331,340-345) number:399-451"
+      count: 10
       rate: 2
     - rawquery: "e:{set} r:u number:302-331,340-345 -alt:(e:{set} number:399-451)"
+      count: 6
       rate: 2
     - rawquery: "e:{set} r:u promo:boosterfun alt:(number:302-331,340-345) alt:(e:{set} number:399-451) -number:299-300 -number>451"
+      count: 8
       rate: 1
   mythic_with_showcase:
     filter: "e:{set} r:m -number>451"
@@ -73,8 +82,10 @@ sheets:
     # decks). This sheet feeds both the wildcard (nonfoil) and the foil slot, so
     # it covers both finishes at once.
     - rawquery: "e:ltr number:282-286"
+      count: 5
       chance: 10
     - rawquery: "e:ltc number:1-8"
+      count: 8
       chance: 8
   wildcard:
     any:

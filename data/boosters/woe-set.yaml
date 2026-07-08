@@ -19,6 +19,7 @@ pack:
 sheets:
   common:
     query: "r:c"
+    count: 101
   wildcard:
     any:
     - use: common
@@ -27,8 +28,10 @@ sheets:
       - use: uncommon
         rate: 1
       - rawquery: "e:wot r:u -is:foilonly"
+        count: 18
         rate: 1
       - rawquery: "e:woe r:u number:308-322"
+        count: 10
         rate: 1
       chance: 175
     - any:
@@ -42,16 +45,21 @@ sheets:
         count: 22
       - any:
         - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
+          count: 25
           rate: 6
         - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
+          count: 5
           rate: 4
         - rawquery: "e:wot r:r number:64-83"
+          count: 5
           rate: 2
         chance: 2 * 30
       - any:
         - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Kellan)"
+          count: 2
           rate: 1
         - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
+          count: 11
           rate: 2
         - use: mythic_has_showcase
           rate: 4
@@ -65,26 +73,34 @@ sheets:
         - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
           rate: 3
         - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
+          count: 15
           rate: 2
         - rawquery: "e:wot r:m number:64-83"
+          count: 15
           rate: 1
         chance: 15
       chance: 125
   enchanting_tales:
     any:
     - rawquery: "e:wot r:u number<64"
+      count: 18
       rate: 16
     - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
+      count: 25
       rate: 8
     - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
+      count: 5
       rate: 6
     - rawquery: "e:wot r:r number:64-83"
+      count: 5
       rate: 2
     - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
       rate: 4
     - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
+      count: 15
       rate: 3
     - rawquery: "e:wot r:m number:64-83"
+      count: 15
       rate: 1
   the_list:
     any:
@@ -120,6 +136,7 @@ sheets:
       - use: uncommon_has_no_showcase
         rate: 3
       - rawquery: "e:wot r:u number<64"
+        count: 18
         rate: 3
       chance: 5
     - any:
@@ -133,20 +150,27 @@ sheets:
       - use: rare_has_no_showcase
         rate: 24
       - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
+        count: 25
         rate: 24
       - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
+        count: 5
         rate: 18
       - rawquery: "e:wot r:r number:64-83"
+        count: 5
         rate: 6
       - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
         rate: 12
       - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
+        count: 15
         rate: 9
       - rawquery: "e:wot r:m number:64-83"
+        count: 15
         rate: 3
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Kellan)"
+        count: 2
         rate: 2
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
+        count: 11
         rate: 4
       - use: mythic_has_showcase
         rate: 8

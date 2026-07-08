@@ -25,37 +25,49 @@ sheets:
     # Same as foil_common: FDN borderless uncommons appear at full rate.
     foil: true
     rawquery: "e:{set} r:u (is:baseset or number:292-361)"
+    count: 109
   foil_basic:
     foil: true
     query: "t:basic is:fullart"
+    count: 10
   foil_rare_mythic:
     foil: true
     any:
     - query: "r:r"
+      count: 60
       rate: 2
     - query: "r:m"
+      count: 20
       rate: 1
   showcase_rare_mythic:
     any:
     - rawquery: "r:r ({borderless} or {extended})"
+      count: 80
       rate: 2
     - rawquery: "r:m ({borderless} or {extended})"
+      count: 26
       rate: 1
   foil_booster_fun:
     foil: true
     any:
     - rawquery: "r:r ({borderless} or {extended})"
+      count: 80
       chance: 345+296
     - rawquery: "r:m ({borderless} or {extended})"
+      count: 26
       chance: 68+36
     - rawquery: "r:r {mana_foil}"
+      count: 43
       chance: 84
     - rawquery: "r:m {mana_foil}"
+      count: 17
       chance: 16
     - set: spg
       code: "FDN"
       chance: 55
     - rawquery: "{jp_showcase}"
+      count: 10
       chance: 90
     - rawquery: "{fracture_foil}"
+      count: 10
       chance: 10

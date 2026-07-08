@@ -26,23 +26,31 @@ sheets:
     duplicates: true
     any:
     - query: "r:c"
+      count: 41
       rate: 1
     - query: "r:c -id:c"
+      count: 30
       rate: 3
   uncommon:
     duplicates: true
     any:
     - query: "r:u"
+      count: 29
       rate: 1
     - query: "r:u -id:c"
+      count: 20
       rate: 3
   rare_mythic:
     any:
     - query: "r:r"
+      count: 19
       rate: 2
     - query: "r:r -id:c"
+      count: 14
       rate: 6
     - query: "r:m"
+      count: 3
       rate: 1
     - query: "r:m -id:c"
+      count: 3
       rate: 3

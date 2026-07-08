@@ -13,14 +13,19 @@ sheets:
     foil: true
     any:
     - query: "r<=c"
+      count: 101
       chance: 12
     - query: "r:u"
+      count: 80
       chance: 5
     - any:
       - query: "r:r"
+        count: 105
         rate: 4
       - query: "r:m"
+        count: 30
         rate: 2
       - query: "r:s"
+        count: 9
         rate: 1
       chance: 3

@@ -15,8 +15,10 @@ sheets:
     - use: rare_mythic
       chance: 3*8
     - query: "r:u"
+      count: 80
       chance: 5*8
     - query: "r<=c"
+      count: 116
       chance: 12*8-2
     - rawquery: "e:mps number<=30"
       count: 30

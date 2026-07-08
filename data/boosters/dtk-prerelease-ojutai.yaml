@@ -8,10 +8,13 @@ pack:
 sheets:
   common:
     query: "r:c"
+    count: 26
   promo:
     foil: true
     any:
     - rawquery: "e:pdtk r:m (w:ojutai or (id<=wu and -w:*)) promo:prerelease"
+      count: 1
       rate: 1
     - rawquery: "e:pdtk r:r (w:ojutai or (id<=wu and -w:*)) promo:prerelease"
+      count: 7
       rate: 2

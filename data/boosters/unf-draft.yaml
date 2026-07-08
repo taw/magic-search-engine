@@ -30,27 +30,37 @@ sheets:
     count: 10
   common:
     query: "r:c -t:attraction is:paper"
+    count: 80
   uncommon_with_showcase:
     any:
     - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart -t:attraction is:paper"
+      count: 10
       rate: 1
     - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction"
+      count: 10
       rate: 2
     - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction"
+      count: 50
       rate: 3
   rare_mythic_with_showcase:
     any:
     - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -t:attraction -t:background is:paper -is:shockland"
+      count: 14
       rate: 2
     - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background -is:shockland"
+      count: 14
       rate: 4
     - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background -is:shockland"
+      count: 27
       rate: 6
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -t:attraction -t:background is:paper"
+      count: 8
       rate: 1
     - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background"
+      count: 8
       rate: 2
     - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background"
+      count: 10
       rate: 3
   attraction:
     query: "t:attraction"

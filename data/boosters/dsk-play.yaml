@@ -27,19 +27,25 @@ sheets:
     # Showcase treatments 1/4 for relevant cards
     any:
     - query: "r:c -alt:{lurking_evil} -(t:land -terramorphic)"
+      count: 79
       rate: 4
     - query: "r:c alt:{lurking_evil}"
+      count: 2
       rate: 3
     - rawquery: "r:c {lurking_evil}"
+      count: 2
       rate: 1
   uncommon:
     # Showcase treatments 1/4 for relevant cards
     any:
     - query: "r:u -alt:({lurking_evil} or {showcase})"
+      count: 92
       rate: 4
     - query: "r:u alt:({lurking_evil} or {showcase})"
+      count: 8
       rate: 3
     - rawquery: "r:u ({lurking_evil} or {showcase})"
+      count: 8
       rate: 1
   land:
     # Article: full-art manor lands 16.7% (the 5 full-art basics), regular
@@ -48,10 +54,13 @@ sheets:
     # with the regular basics.
     any:
     - query: "t:basic is:fullart"
+      count: 5
       chance: 1
     - query: "t:basic -is:fullart"
+      count: 10
       chance: 2
     - query: "r:c t:land -terramorphic"
+      count: 10
       chance: 3
   foil_land:
     foil: true
@@ -60,23 +69,31 @@ sheets:
     # Showcase treatments 1/4 for relevant cards
     any:
     - rawquery: "r:m {two_instances}"
+      count: 6
       rate: 1
     - rawquery: "r:m {any_boosterfun} -alt:{two_instances}"
+      count: 12
       rate: 2
     - query: "r:m alt:{any_boosterfun}"
+      count: 15
       rate: 6
     - query: "r:m -alt:{any_boosterfun}"
+      count: 5
       rate: 8
   rare_with_showcase:
     # Showcase treatments 1/4 for relevant cards
     any:
     - rawquery: "r:r {two_instances}"
+      count: 14
       rate: 1
     - rawquery: "r:r {any_boosterfun} -alt:{two_instances}"
+      count: 39
       rate: 2
     - query: "r:r alt:{any_boosterfun}"
+      count: 46
       rate: 6
     - query: "r:r -alt:{any_boosterfun}"
+      count: 14
       rate: 8
   rare_mythic_with_showcase:
     any:

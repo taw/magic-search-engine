@@ -14,11 +14,14 @@ pack:
 sheets:
   basic:
     query: "t:basic -is:fullart"
+    count: 10
   common:
     query: "r:c"
+    count: 81
   rare_mythic:
     any:
     - query: "r:r -t:land"
+      count: 60
       chance: 120
     - use: mythic
       chance: 20
@@ -26,6 +29,7 @@ sheets:
     any:
     - chance: 1
       query: "r:r t:land"
+      count: 10
     - chance: 5
       any:
       - chance: 700
@@ -50,6 +54,8 @@ sheets:
   the_list:
     any:
     - rawquery: "sheet:MKM_ARENA_CU"
+      count: 30
       rate: 2
     - rawquery: "sheet:MKM_ARENA_RM"
+      count: 20
       rate: 1

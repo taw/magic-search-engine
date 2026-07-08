@@ -10,13 +10,17 @@ sheets:
   rare_mythic_showcase:
     any:
     - rawquery: "e:mkm promo:boosterfun r:m -is:serialized"
+      count: 23
       rate: 1
     - rawquery: "e:mkm promo:boosterfun r:r -is:serialized"
+      count: 69
       rate: 2
   foil_rare_mythic_showcase:
     foil: true
     any:
     - rawquery: "e:mkm promo:boosterfun r:m -is:serialized"
+      count: 37
       rate: 1
     - rawquery: "e:mkm promo:boosterfun r:r -is:serialized"
+      count: 69
       rate: 2

@@ -14,11 +14,14 @@ sheets:
   sfc_common:
     balanced: true
     query: "r:c is:sfc -t:cave"
+    count: 96
   cave_fullart_land:
     any:
     - query: "t:cave r:c"
+      count: 7
       chance: 7
     - query: "is:fullart t:basic"
+      count: 5
       chance: 3
   dfc_common_uncommon:
     any:
@@ -29,8 +32,10 @@ sheets:
   mythic_with_showcase:
     any:
     - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -name:"Quintorius Kand"'
+      count: 19
       rate: 1
     - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper name:"Quintorius Kand"'
+      count: 2
       rate: 2
     - use: mythic_has_showcase
       rate: 4

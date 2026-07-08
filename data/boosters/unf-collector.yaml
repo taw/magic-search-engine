@@ -41,24 +41,31 @@ sheets:
     foil: true
     any:
     - rawquery: "e:unf r:b number:486-490"
+      count: 5
       chance: 3
     - rawquery: "e:unf r:b number:491-495"
+      count: 5
       chance: 1
   foil_shock:
     foil: true
     rawquery: "e:unf number:277-286"
+    count: 10
   galaxy_shock:
     foil: true
     rawquery: "e:unf number:528-537"
+    count: 10
   foil_common:
     foil: true
     query: "r:c -t:attraction is:paper"
+    count: 80
   foil_uncommon:
     foil: true
     query: "r:u -t:attraction"
+    count: 60
   foil_attraction:
     foil: true
     query: "t:attraction"
+    count: 135
   foil_rare_mythic:
     foil: true
     any:
@@ -71,6 +78,7 @@ sheets:
   foil_un-list:
     foil: true
     rawquery: "e:ulst"
+    count: 62
   galaxy_common_uncommon:
     foil: true
     filter: "e:unf number:287-485"
@@ -82,6 +90,7 @@ sheets:
   foil_uncommon_showcase:
     foil: true
     rawquery: "e:unf number:245-276 r:u"
+    count: 10
   foil_rare_mythic_showcase:
     foil: true
     filter: "e:unf number:245-276"
@@ -89,6 +98,7 @@ sheets:
   galaxy_uncommon_showcase:
     foil: true
     rawquery: "e:unf number:496-527 r:u"
+    count: 10
   galaxy_rare_mythic_showcase:
     foil: true
     filter: "e:unf number:496-527"

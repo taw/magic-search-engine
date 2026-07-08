@@ -30,12 +30,16 @@ sheets:
     foil: true
     any:
     - rawquery: "e:iko r:r frame:extendedart"
+      count: 43
       rate: 2
     - query: "r:r"
+      count: 53
       rate: 4
     - rawquery: "e:iko r:m frame:extendedart"
+      count: 7
       rate: 1
     - query: "r:m"
+      count: 15
       rate: 2
   common_uncommon_showcase:
     filter: "e:iko promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"

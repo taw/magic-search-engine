@@ -50,8 +50,10 @@ sheets:
     foil: true
     any:
     - query: "-t:conspiracy r<=c"
+      count: 85
       chance: 12
     - query: "-t:conspiracy r:u"
+      count: 65
       chance: 5
     - use: nonconspiracy_rare_mythic
       chance: 3

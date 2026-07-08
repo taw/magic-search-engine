@@ -20,11 +20,14 @@ pack:
 sheets:
   sfc_common:
     query: "r:c is:sfc"
+    count: 90
   showcase_common_uncommon:
     any:
     - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+      count: 7
       rate: 2
     - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+      count: 10
       rate: 1
     - use: dfc_common
       rate: 2
@@ -39,18 +42,24 @@ sheets:
     - any:
       - any:
         - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+          count: 25
           rate: 1
         - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+          count: 24
           rate: 2
         - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+          count: 40
           rate: 3
         chance: 64*2
       - any:
         - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+          count: 9
           rate: 1
         - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+          count: 8
           rate: 2
         - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+          count: 12
           rate: 3
         chance: 20
       # Only the 8 new-to-Commander cards designed for Set Boosters appear
@@ -59,8 +68,10 @@ sheets:
       # Commander-deck cards) are NOT in Set Boosters. Per-card weight kept
       # at rare 2 : mythic 1, matching the main-set R/M tier.
       - rawquery: "e:voc number:31-38 r:r"
+        count: 6
         chance: 6*2
       - rawquery: "e:voc number:31-38 r:m"
+        count: 2
         chance: 2
       chance: 125
   the_list:
@@ -75,33 +86,45 @@ sheets:
     any:
     - any:
       - rawquery: "e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+        count: 7
         rate: 1
       - query: "r:c alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        count: 7
         rate: 2
       - query: "r:c -alt:(e:{set} r:c promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        count: 93
         rate: 3
       - use: basic
         rate: 3
       chance: 12
     - any:
       - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+        count: 10
         rate: 1
       - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        count: 10
         rate: 2
       - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        count: 73
         rate: 3
       chance: 5
     - any:
       - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+        count: 25
         rate: 2
       - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        count: 24
         rate: 4
       - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        count: 40
         rate: 6
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -promo:draculaseries"
+        count: 9
         rate: 1
       - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        count: 8
         rate: 2
       - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -promo:draculaseries)"
+        count: 12
         rate: 3
       chance: 3
