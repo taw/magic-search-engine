@@ -1,20 +1,22 @@
 # data from https://magic.wizards.com/en/news/feature/introducing-double-masters-vip-edition-2020-07-17
+# Each VIP Edition has 33 cards (23 foil): the 12 full-art basics are
+# 10 non-foil (one of each design, #373-382) plus 2 random traditional foil.
 name: "{set_name} VIP Edition"
 pack:
   foil_rare_mythic_borderless: 2
   foil_rare_mythic: 2
   foil_uncommon: 8
   foil_common: 9
-  foil_plains_1: 1
-  foil_plains_2: 1
-  foil_island_1: 1
-  foil_island_2: 1
-  foil_swamp_1: 1
-  foil_swamp_2: 1
-  foil_mountain_1: 1
-  foil_mountain_2: 1
-  foil_forest_1: 1
-  foil_forest_2: 1
+  plains_1: 1
+  plains_2: 1
+  island_1: 1
+  island_2: 1
+  swamp_1: 1
+  swamp_2: 1
+  mountain_1: 1
+  mountain_2: 1
+  forest_1: 1
+  forest_2: 1
   foil_basic: 2
 sheets:
   foil_rare_mythic_borderless:
@@ -24,37 +26,26 @@ sheets:
   foil_rare_mythic:
     foil: true
     use: rare_mythic
-  foil_plains_1:
-    foil: true
+  plains_1:
     rawquery: "e:2xm number:373"
-  foil_plains_2:
-    foil: true
+  plains_2:
     rawquery: "e:2xm number:374"
-  foil_island_1:
-    foil: true
+  island_1:
     rawquery: "e:2xm number:375"
-  foil_island_2:
-    foil: true
+  island_2:
     rawquery: "e:2xm number:376"
-  foil_swamp_1:
-    foil: true
+  swamp_1:
     rawquery: "e:2xm number:377"
-  foil_swamp_2:
-    foil: true
+  swamp_2:
     rawquery: "e:2xm number:378"
-  foil_mountain_1:
-    foil: true
+  mountain_1:
     rawquery: "e:2xm number:379"
-  foil_mountain_2:
-    foil: true
+  mountain_2:
     rawquery: "e:2xm number:380"
-  foil_forest_1:
-    foil: true
+  forest_1:
     rawquery: "e:2xm number:381"
-  foil_forest_2:
-    foil: true
+  forest_2:
     rawquery: "e:2xm number:382"
   foil_basic:
     foil: true
     rawquery: "e:2xm t:basic"
-  
