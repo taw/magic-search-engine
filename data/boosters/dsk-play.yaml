@@ -42,11 +42,17 @@ sheets:
     - rawquery: "r:u ({lurking_evil} or {showcase})"
       rate: 1
   land:
+    # Article: full-art manor lands 16.7% (the 5 full-art basics), regular
+    # basic lands 33.3%, common dual lands 50% (1:2:3). The old sheet
+    # weighted dual : all-basics 1:1 and lumped the full-art manor basics in
+    # with the regular basics.
     any:
+    - query: "t:basic is:fullart"
+      chance: 1
+    - query: "t:basic -is:fullart"
+      chance: 2
     - query: "r:c t:land -terramorphic"
-      chance: 1
-    - query: "t:basic"
-      chance: 1
+      chance: 3
   foil_land:
     foil: true
     use: land
