@@ -74,34 +74,39 @@ sheets:
       rate: 1
       count: 5
       
-  non_foil_boosterfun: # TODO: For some of these, the rates are not correct
+  non_foil_boosterfun:
+    # Article non-foil Booster Fun rates (rare / mythic): extended-art
+    # 50.8/5.4, web-slinger 9.2/1.5, panel 15.4/3.1, scene 4.6/0.8, scene
+    # box 9.2. The old rate x pool weighting skewed web-slinger and scene
+    # high and scene box to half (4.6% vs 9.2%). Use fixed weights (x10 of
+    # the article %, summing to 1000) so the slot matches exactly.
     any:
     - rawquery: "{extended_art} r:r" # Rare extended art
-      rate: 2
+      chance: 508
       count: 33
     - rawquery: "{extended_art} r:m" # Mythic extended art
-      rate: 1
+      chance: 54
       count: 7
     - rawquery: "{web_slinger} r:r" # Rare web slinger
-      rate: 2
+      chance: 92
       count: 7
     - rawquery: "{web_slinger} r:m" # Mythic web slinger
-      rate: 1
+      chance: 15
       count: 3
     - rawquery: "{panel} r:r" # Rare panel
-      rate: 2
+      chance: 154
       count: 10
     - rawquery: "{panel} r:m" # Mythic panel
-      rate: 1
+      chance: 31
       count: 4
     - rawquery: "{scene} r:r" # Rare scene
-      rate: 2
+      chance: 46
       count: 4
     - rawquery: "{scene} r:m" # Mythic scene
-      rate: 1
+      chance: 8
       count: 2
     - rawquery: "{scene_box}" # Scene box
-      rate: 1
+      chance: 92
       count: 6
 
   non_foil_source_material:
