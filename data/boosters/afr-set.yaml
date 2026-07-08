@@ -46,7 +46,10 @@ sheets:
         chance: 60*2
       - use: mythic_with_showcase
         chance: 20
-      chance: 125
+      # Article: 30% of Set Boosters have >=2 rare/mythic (27% exactly two,
+      # 3% three). With 1 guaranteed R/M + 2 wildcards, that needs each
+      # wildcard R/M ~16.35% (was 12.5% = 125), reproducing both figures.
+      chance: 171
   the_list:
     set: plst
     code: "AFR"
