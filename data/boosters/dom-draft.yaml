@@ -11,6 +11,13 @@
 # I suspect there's a chance to get 2 or 3 legend uncommons in a pack
 # (9/64 and 1/64 if DOM was a regular set), so we could add more cases
 # and adjus numbers accordingly
+#
+# Audit note (left as-is): this print-run model yields P(legendary at the
+# rare/mythic slot) ~29.8% vs the documented 25%, and legendary_rare_mythic's
+# t:"legendary creature" query catches 14 rares / 8 mythics vs the lethe.xyz
+# collation's 12 / 6. Reaching exactly 25% would require reworking the
+# print-run weights below, and the specific rares/mythics the collation
+# excludes from the legendary slot are not documented.
 pack:
 - basic: 1
   common: 9
