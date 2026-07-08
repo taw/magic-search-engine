@@ -19,8 +19,10 @@ pack:
     the_list: 1
     chance: 1
   foil_slot:
+  # Article: a gilded card appears in ~4% of Set Boosters (3% common/
+  # uncommon + 1% rare/mythic), i.e. 1 in 25.
   - foil_with_showcase: 1
-    chance: 14
+    chance: 24
   - gilded_foil: 1
     chance: 1
 sheets:
@@ -108,9 +110,15 @@ sheets:
         rate: 6
       chance: 3
   gilded_foil:
+    # Article: gilded common/uncommon 3% : gilded rare/mythic 1% (3:1),
+    # i.e. 75% C/U, 25% R/M of the 4% gilded slot.
     foil: true
     filter: "e:snc promo:gilded"
-    use: base_1248_by_rarity
+    any:
+    - query: "r:c or r:u"
+      chance: 3
+    - query: "r:r or r:m"
+      chance: 1
   the_list:
     any:
     - set: plst
