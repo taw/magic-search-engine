@@ -32,7 +32,10 @@ sheets:
     foil: true
     use: rare_mythic
   extended_main_rare_mythic:
-    filter: "e:lci frame:extendedart"
+    # The Buy-a-Box promo (Jadelight Spelunker, lci #403) shares the extended-art
+    # frame but is a WPN store promo, not a Collector Booster card - exclude it,
+    # as every other set does (cf. dmu/khm/mom/mat collector sheets).
+    filter: "e:lci frame:extendedart -promo:buyabox"
     use: rare_mythic
   extended_commander_rare_mythic:
     filter: "e:lcc frame:extendedart"
