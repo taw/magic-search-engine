@@ -48,13 +48,16 @@ sheets:
     use: rare_mythic
     count: 51+7+13+3
   foil_rare_mythic:
+    # Article: this foil slot is 88% rares / 12% mythics (shock lands
+    # excluded). rate 2:1 over the 60/20 pools gave 85.7/14.3; use fixed
+    # 88:12 group weights.
     foil: true
     any:
     - query: "r:r -(is:shockland or Chromatic Lantern)"
-      rate: 2
+      chance: 88
       count: 60
     - query: "r:m"
-      rate: 1
+      chance: 12
       count: 20
   borderless_rare_mythic:
     filter: "e:{set} is:borderless -is:foilonly"
