@@ -7,9 +7,9 @@ sheets:
   promo:
     foil: true
     any:
-    - rawquery: "e:tmt r:r number<196"
+    - rawquery: "e:tmt r:r is:baseset"
       rate: 2
       count: 53
-    - rawquery: "e:tmt r:m number<196"
+    - rawquery: "e:tmt r:m is:baseset"
       rate: 1
       count: 15
