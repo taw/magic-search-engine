@@ -1,11 +1,15 @@
-# Pre-mythic tournament pack: 30 basics, 32 commons, 10 uncommons, 3 rares.
-# https://mtg.wiki/wiki/Tournament_pack
+# Time Spiral tournament pack: 75 cards -- 30 basics, 29 commons, 10 uncommons,
+# 3 rares, and 3 timeshifted cards. Per Wikipedia, "The 'Timeshifted' cards are
+# distributed one per booster pack and three per tournament pack (taking the
+# place of common cards)." https://en.wikipedia.org/wiki/Time_Spiral
+# Timeshifted cards are their own set (e:tsb, rarity "special").
 name: "{set_name} Tournament Pack"
 pack:
   basic_with_duplicates: 30
-  common_with_duplicates: 32
+  common_with_duplicates: 29
   uncommon_with_duplicates: 10
   rare: 3
+  timeshifted: 3
 sheets:
   basic_with_duplicates:
     duplicates: true
@@ -16,3 +20,6 @@ sheets:
   uncommon_with_duplicates:
     duplicates: true
     query: "r:u"
+  timeshifted:
+    rawquery: "e:tsb"
+    count: 121
