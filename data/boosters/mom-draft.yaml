@@ -79,9 +79,16 @@ sheets:
     use: rare_mythic
     count: 16
   multiverse_legend:
+    # Article: ~one third of non-foil Multiverse Legends are rare/mythic.
+    # base_1248_by_rarity over the 20u/30r/15m pool gave ~48%; use a 2:1
+    # uncommon : rare/mythic split instead.
     filter: "e:mul -is:foilonly is:paper"
-    use: base_1248_by_rarity
     count: 65
+    any:
+    - query: "r:u"
+      chance: 2
+    - query: "r:r or r:m"
+      chance: 1
   foil_with_showcase_and_mul:
     foil: true
     any:

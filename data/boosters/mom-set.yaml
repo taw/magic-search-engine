@@ -35,9 +35,16 @@ sheets:
     query: "r:u t:battle"
     count: 20
   multiverse_legend:
+    # Article: ~one third of non-foil Multiverse Legends are rare/mythic.
+    # base_1248_by_rarity over the 20u/30r/15m pool gave ~48%; use a 2:1
+    # uncommon : rare/mythic split instead.
     filter: "e:mul -is:foilonly is:paper"
-    use: base_1248_by_rarity
     count: 65
+    any:
+    - query: "r:u"
+      chance: 2
+    - query: "r:r or r:m"
+      chance: 1
   wildcard:
     any:
     - use: common
@@ -84,9 +91,14 @@ sheets:
   foil_etched:
     foil: true
     etched: true
+    # Article: ~one third of foil-etched Multiverse Legends are rare/mythic.
     filter: "e:mul is:etched"
-    use: base_1248_by_rarity
     count: 65
+    any:
+    - query: "r:u"
+      chance: 2
+    - query: "r:r or r:m"
+      chance: 1
   mom_foil_with_showcase:
     # the shared base-set foil slot, but with its filter widened to also include
     # the Jumpstart cards (#323-337): per the collecting article they appear in
