@@ -7,17 +7,19 @@ pack:
   uncommon: 4
   rare_mythic: 1
   promo: 1
-queries:
-  college: "id<=bg"
 sheets:
   common:
-    query: "r:c {college}"
+    query: "r:c id<=bg"
+    count: 34
   uncommon:
-    query: "r:u {college}"
+    query: "r:u id<=bg"
+    count: 36
   rare:
-    rawquery: "e:sos r:r number<=254 {college}"
+    rawquery: "e:sos r:r number<=254 id<=bg"
+    count: 18
   mythic:
-    rawquery: "e:sos r:m number<=254 {college}"
+    rawquery: "e:sos r:m number<=254 id<=bg"
+    count: 9
   rare_mythic:
     any:
     - use: rare
@@ -29,5 +31,7 @@ sheets:
     any:
     - rawquery: "e:sos r:r number<=254"
       rate: 2
+      count: 55
     - rawquery: "e:sos r:m number<=254"
       rate: 1
+      count: 20
