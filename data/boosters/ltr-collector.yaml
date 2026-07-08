@@ -2,14 +2,16 @@
 pack:
   foil_common: 3
   the_rings:
+  # Article rates: non-foil Sol Ring ~0.65% total (Elven <0.1% / Dwarven <0.25% / Human <0.3%),
+  # serialized Sol Ring ~0.065% total, The One Ring (1/1) <0.00003%; otherwise a foil common.
   - foil_common: 1
-    chance: 2366779 # This number is based on a 7.5% chance to pull any sol ring
+    chance: 9928497 # ~99.285% foil common (remainder)
   - nonfoil_sol_ring: 1
-    chance: 190000
+    chance: 65000 # 0.65% non-foil Sol Ring
   - serialized_sol_ring: 1
-    chance: 1900
+    chance: 6500 # 0.065% serialized Sol Ring
   - the_one_ring: 1
-    chance: 1
+    chance: 3 # ~0.00003% The One Ring
   foil_uncommon: 2
   foil_basic: 1
   foil_rare_mythic: 1
