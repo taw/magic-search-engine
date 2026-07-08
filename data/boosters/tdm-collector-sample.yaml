@@ -1,0 +1,47 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-tarkir-dragonstorm
+# Collector Booster Sample Pack (included in Commander decks): 2 cards --
+# 1 traditional-foil common/uncommon showcase draconic-frame card, and
+# 1 Booster Fun rare/mythic (non-foil or traditional foil). The article does not
+# state the foil split; modeled 4:1 non-foil:foil as in the sibling DFT sample.
+superfilter: "-is:reversibleback"
+pack:
+  foil_draconic_c_u: 1
+  boosterfun_slot:
+  - booster_fun: 1
+    chance: 4
+  - foil_booster_fun: 1
+    chance: 1
+queries:
+  draconic_showcase: "e:{set} number:292-326"
+  clan_card: "e:{set} number:327-376"
+  reversible_dragons: "e:{set} number:377-382"
+  borderless_alternate_art: "e:{set} number:383-398"
+sheets:
+  foil_draconic_c_u:
+    foil: true
+    any:
+    - rawquery: "{draconic_showcase} r:c"
+      chance: 546
+    - rawquery: "{draconic_showcase} r:u"
+      chance: 454
+  booster_fun:
+    any:
+    - rawquery: "{draconic_showcase} r:r"
+      chance: 64
+    - rawquery: "{draconic_showcase} r:m"
+      chance: 46
+    - rawquery: "{clan_card} r:r"
+      chance: 515
+    - rawquery: "{clan_card} r:m"
+      chance: 82
+    - rawquery: "{borderless_alternate_art} r:r"
+      chance: 215
+    - rawquery: "{borderless_alternate_art} r:m"
+      chance: 7
+    - rawquery: "{reversible_dragons} r:r"
+      chance: 64
+    - rawquery: "{reversible_dragons} r:m"
+      chance: 7
+  foil_booster_fun:
+    foil: true
+    use: booster_fun
