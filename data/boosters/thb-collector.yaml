@@ -31,6 +31,7 @@ pack:
     foil_uncommon: 7
     chance: 20
   showcase: 1
+  foil_showcase: 1
   ancillary: 1
   rm_extended: 1
   foil_rare_mythic: 1
@@ -48,6 +49,12 @@ sheets:
       rate: 1
     - query: "r:m t:saga"
       rate: 1
+  foil_showcase:
+    # 15th Collector slot: a traditional-foil constellation/showcase card
+    # (article: foil showcase demigods/rares/borderless PWs). Same pool as
+    # the non-foil showcase slot, foil.
+    foil: true
+    use: showcase
   ancillary:
     # C/U/R/M rates guessed to be at 8x/4x/2x/1x multiples
     filter: "e:thb -promo:boosterfun number:269-297"
