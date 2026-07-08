@@ -1,0 +1,18 @@
+# Pre-mythic tournament pack: 30 basics, 32 commons, 10 uncommons, 3 rares.
+# https://mtg.wiki/wiki/Tournament_pack
+name: "{set_name} Tournament Pack"
+pack:
+  basic_with_duplicates: 30
+  common_with_duplicates: 32
+  uncommon_with_duplicates: 10
+  rare: 3
+sheets:
+  basic_with_duplicates:
+    duplicates: true
+    use: basic
+  common_with_duplicates:
+    duplicates: true
+    query: "r:c"
+  uncommon_with_duplicates:
+    duplicates: true
+    query: "r:u"
