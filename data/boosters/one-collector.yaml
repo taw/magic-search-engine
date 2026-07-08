@@ -18,8 +18,10 @@ sheets:
   foil_basic:
     foil: true
     any:
+    # Panorama (262-266) and Phyrexianized (267-271) basics appear at an
+    # equal rate to one another per the collecting article.
     - query: "t:basic number:262-266"
-      rate: 3
+      rate: 1
       count: 5
     - query: "t:basic number:267-271"
       rate: 1
