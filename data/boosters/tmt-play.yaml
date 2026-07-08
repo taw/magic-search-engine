@@ -247,12 +247,15 @@ sheets:
         chance: 1000 - 619 - 283
 
   non_foil_land:
+    # Article: dual land 48% non-foil / 12% foil; rooftop basic 32% non-foil
+    # / 8% foil -> dual : rooftop = 60 : 40 (3:2), not 4:1. Both pools are 5
+    # cards, so rate 3:2 gives the 60/40 split.
     any:
       - rawquery: "{dual_land}"
-        rate: 4
+        rate: 3
         count: 5
       - rawquery: "{rooftop_basic}"
-        rate: 1
+        rate: 2
         count: 5
 
   foil_land:
