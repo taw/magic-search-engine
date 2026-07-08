@@ -37,9 +37,12 @@ sheets:
   nonlesson_common:
     balanced: true
     query: "-t:lesson r:c"
+    count: 96
   nonlesson_rare_mythic:
     any:
     - query: "-t:lesson r:r"
+      count: 64
       rate: 2
     - query: "-t:lesson r:m"
+      count: 20
       rate: 1

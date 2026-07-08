@@ -10,21 +10,27 @@ pack:
 sheets:
   common:
     query: "r:c -is:guildgate"
+    count: 81
   gate:
     query: "is:guildgate"
+    count: 10
   variety:
     any:
     - query: "r:c -is:guildgate"
+      count: 81
       chance: 1
     - chance: 4
       any:
       - query: "r:u"
+        count: 100
         chance: 5
       - chance: 1
         any:
         - query: "r:r"
+          count: 60
           chance: 4
         - query: "r:m"
+          count: 27
           chance: 1
   devotion:
     filter: "e:pio number:279-318"
@@ -33,7 +39,10 @@ sheets:
       any:
       - chance: 4
         query: "r:c"
+        count: 5
       - chance: 5
         query: "r:u"
+        count: 20
     - chance: 1
       query: "r:m"
+      count: 15

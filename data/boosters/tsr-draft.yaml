@@ -11,6 +11,7 @@ pack:
 sheets:
   special:
     rawquery: "e:{set} r:s"
+    count: 121
   foil:
     # no idea about the rates
     foil: true
@@ -18,8 +19,11 @@ sheets:
     - use: rare_mythic
       chance: 1
     - query: "r:u"
+      count: 100
       chance: 2
     - query: "r:c"
+      count: 121
       chance: 4
     - rawquery: "e:{set} r:s"
+      count: 121
       chance: 1

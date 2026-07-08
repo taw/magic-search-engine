@@ -38,20 +38,26 @@ sheets:
     any:
     # no idea about ratios
     - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
+      count: 30
       rate: 4
     - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+      count: 30
       rate: 8
     - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
       rate: 12
     - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
+      count: 25
       rate: 2
     - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+      count: 25
       rate: 4
     - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background -t:land"
       rate: 6
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
+      count: 5
       rate: 1
     - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+      count: 5
       rate: 2
     - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
       rate: 3
@@ -69,10 +75,13 @@ sheets:
       - use: rare_has_no_showcase
         rate: 12
       - rawquery: "e:clb number:646-685 r:r"
+        count: 28
         rate: 12
       - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper t:"elder dragon"'
+        count: 10
         rate: 1
       - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -t:"elder dragon"'
+        count: 10
         rate: 2
       - use: mythic_has_showcase
         rate: 4
@@ -91,8 +100,10 @@ sheets:
     filter: "e:clb is:etched number<=552"
     any:
     - query: "r:c or r:u"
+      count: 50
       chance: 2
     - query: "r:r or r:m"
+      count: 32
       chance: 1
   foil_with_showcase:
     foil: true
@@ -119,8 +130,10 @@ sheets:
       - use: rare_has_no_showcase
         rate: 12
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart t:dragon is:paper"
+        count: 10
         rate: 1
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -t:dragon is:paper"
+        count: 10
         rate: 2
       - use: mythic_has_showcase
         rate: 4

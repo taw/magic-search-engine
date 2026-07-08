@@ -36,11 +36,13 @@ pack:
 sheets:
   basic:
     rawquery: "e:mh2 t:basic"
+    count: 10
   foil_basic:
     foil: true
     use: basic
   common:
     query: "r:c"
+    count: 101
   wildcard: # 30% chance for rare/mythic is known, but ratio of common/uncommon is guessed.
     any:
     - use: common
@@ -55,8 +57,10 @@ sheets:
       - use: rare_has_no_showcase
         rate: 12
       - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
+        count: 18
         rate: 1
       - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
+        count: 16
         rate: 2
       - use: mythic_has_showcase
         rate: 4
@@ -69,8 +73,10 @@ sheets:
       chance: 78
     - any:
       - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
+        count: 18
         rate: 1
       - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
+        count: 16
         rate: 2
       - use: mythic_has_showcase
         rate: 4
@@ -92,12 +98,16 @@ sheets:
       chance: 12
     - any:
       - rawquery: "e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        count: 25
         rate: 5
       - query: "r:u alt:(e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 25
         rate: 10
       - query: "r:u alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 2
         rate: 13
       - query: "r:u -alt:(e:mh2 promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 73
         rate: 15
       chance: 5
     - any:
@@ -108,8 +118,10 @@ sheets:
       - use: rare_has_no_showcase
         rate: 12
       - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
+        count: 18
         rate: 1
       - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
+        count: 16
         rate: 2
       - use: mythic_has_showcase
         rate: 4
@@ -119,22 +131,31 @@ sheets:
   reprint_to_modern: 
     any:
     - rawquery: "e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper is:reprint"
+      count: 1
       rate: 5
     - query: "r:u alt:(e:mh2 r:u promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      count: 1
       rate: 10
     - query: "r:u alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      count: 2
       rate: 13
     - query: "r:u -alt:(e:mh2 promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      count: 17
       rate: 15
     - rawquery: "e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper (is:reprint -is:fetchland)"
+      count: 6
       rate: 2
     - query: "r:r alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart) (is:reprint -is:fetchland)"
+      count: 3
       rate: 4
     - query: "r:r -alt:(e:mh2 r:r promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      count: 15
       rate: 6
     - rawquery: "e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper is:reprint"
+      count: 5
       rate: 1
     - query: "r:m alt:(e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
+      count: 4
       rate: 2
     - query: "r:m -alt:(e:mh2 r:m promo:boosterfun -is:foilonly -frame:extendedart) is:reprint"
       rate: 3

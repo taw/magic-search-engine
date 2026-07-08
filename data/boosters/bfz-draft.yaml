@@ -18,8 +18,10 @@ sheets:
     - use: rare_mythic
       chance: 3*8
     - query: "r:u"
+      count: 80
       chance: 5*8
     - query: "r<=c"
+      count: 126
       chance: 12*8-2
     - rawquery: "e:exp number<=25"
       count: 25

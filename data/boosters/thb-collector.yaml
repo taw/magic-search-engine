@@ -41,14 +41,17 @@ sheets:
     # U/R/M rates guessed to be at 4x/2x/1x multiples
     any:
     - query: "r:u t:saga"
+      count: 5
       rate: 4
     - use: uncommon_showcase
       rate: 4
     - query: "r:r t:saga"
+      count: 4
       rate: 2
     - use: mythic_showcase
       rate: 1
     - query: "r:m t:saga"
+      count: 1
       rate: 1
   foil_showcase:
     # 15th Collector slot: a traditional-foil constellation/showcase card
@@ -67,10 +70,14 @@ sheets:
     foil: true
     any:
     - rawquery: "e:thb r:r promo:boosterfun"
+      count: 49
       rate: 2
     - query: "r:r"
+      count: 53
       rate: 4
     - rawquery: "e:thb r:m promo:boosterfun"
+      count: 14
       rate: 1
     - query: "r:m"
+      count: 15
       rate: 2

@@ -21,11 +21,14 @@ sheets:
   booster_fun:
     any:
     - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -is:extendedart"
+      count: 9
       chance: 5
     - any:
       - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -is:extendedart -number:/z/ -number:111-116"
+        count: 16
         rate: 2
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -is:extendedart -number:/z/ -number:111-116"
+        count: 13
         rate: 1
       chance: 1
   booster_fun_foil:
@@ -36,10 +39,13 @@ sheets:
     foil: true
     any:
     - query: "r:u"
+      count: 54
       chance: 5
     - any:
       - query: "r:r"
+        count: 32
         rate: 2
       - query: "r:m"
+        count: 14
         rate: 1
       chance: 1

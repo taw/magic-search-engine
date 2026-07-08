@@ -49,9 +49,11 @@ sheets:
       count: 70
   future_sight_foil:
     query: "frame:future is:foil"
+    count: 114
     foil: true
   alchemy_acorn:
     query: "is:acorn"
+    count: 7
     foil: true
   white_border:
     any:
@@ -63,3 +65,4 @@ sheets:
       count: 70
   playtest:
     rawquery: "e:{set} is:playtest"
+    count: 120

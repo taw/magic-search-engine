@@ -21,14 +21,18 @@ sheets:
     foil: true
     any:
     - rawquery: "{revved_up} r:c"
+      count: 9
       chance: 15
     - rawquery: "{revved_up} r:u"
+      count: 17
       chance: 17
   booster_fun:
     any:
     - rawquery: "{boosterfun} r:r"
+      count: 60
       rate: 2
     - rawquery: "{boosterfun} r:m"
+      count: 18
       rate: 1
   foil_booster_fun:
     foil: true

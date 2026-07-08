@@ -8,10 +8,13 @@ pack:
 sheets:
   basics:
     query: "r:b"
+    count: 20
     duplicates: true
   common_with_duplicates:
     query: "r:c"
+    count: 110
     duplicates: true
   uncommon_with_duplicates:
     query: "r:u"
+    count: 89
     duplicates: true

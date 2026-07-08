@@ -27,13 +27,17 @@ queries:
 sheets:
   common:
     query: "r:c"
+    count: 80
   land:
     rawquery: "e:mh3 number:304-319 -number:309"
+    count: 15
   foil_land:
     foil: true
     rawquery: "e:mh3 number:304-319 -number:309"
+    count: 15
   new_uncommon:
     query: "r:u -is:reprint"
+    count: 101
   new_rare_mythic:
     any:
     - rawquery: "r:r (is:fetchland or -is:reprint) -is:foilonly {two_instances}"
@@ -66,10 +70,13 @@ sheets:
       any:
       - rate: 1
         rawquery: "e:mh3 r:u number:384-441 is:reprint"
+        count: 4
       - rate: 2
         query: "r:u alt:(e:mh3 number:384-441) is:reprint"
+        count: 4
       - rate: 3
         query: "r:u is:reprint -alt:(e:mh3 number:384-441)"
+        count: 16
     - chance: 213
       any:
       - rawquery: "r:r is:reprint -is:foilonly {any_showcase} -{two_instances}"
@@ -101,34 +108,44 @@ sheets:
     - # common 41.7%
       chance: 417
       query: "r:c"
+      count: 80
     - # uncommon 33.4%
       chance: 334
       query: "r:u -is:reprint -is:dfc"
+      count: 81
     - # double-faced uncommon 8.3%
       chance: 83
       query: "r:u -is:reprint is:dfc"
+      count: 20
     - # rare 6.7% (fetchlands included; new-to-Modern reprints have their own slot)
       chance: 67
       query: "r:r (is:fetchland or -is:reprint) -is:foilonly"
+      count: 60
     - # mythic 1.1%
       chance: 11
       query: "r:m -is:reprint -is:foilonly"
+      count: 20
     - # borderless / profile showcase rare or mythic 0.4%
       chance: 4
       rawquery: "e:mh3 -is:reprint -is:foilonly (r:r or r:m) ({borderless} or {profile})"
+      count: 52
     - # retro frame, any rarity 4.2%
       chance: 42
       rawquery: "e:mh3 number:384-441"
+      count: 58
     - # Commander mythic 4.2%
       chance: 42
       any:
       - rawquery: "e:m3c number:1-8"
+        count: 8
         rate: 4
       - rawquery: "e:m3c number:9-16"
+        count: 8
         rate: 2
     - # full-art Snow-Covered Wastes <0.1%
       chance: 1
       rawquery: "e:mh3 number:309"
+      count: 1
   foil_with_showcase:
     # Traditional foil slot. The article says it mirrors the Wildcard slot's
     # contents (plus foil new-to-Modern cards) but publishes no separate per-rarity
@@ -139,34 +156,44 @@ sheets:
     - # common 41.7%
       chance: 417
       query: "r:c"
+      count: 80
     - # uncommon 33.4%
       chance: 334
       query: "r:u -is:dfc"
+      count: 101
     - # double-faced uncommon 8.3%
       chance: 83
       query: "r:u is:dfc"
+      count: 20
     - # rare 6.7%
       chance: 67
       query: "r:r -is:foilonly"
+      count: 78
     - # mythic 1.1%
       chance: 11
       query: "r:m -is:foilonly"
+      count: 24
     - # borderless / profile showcase rare or mythic 0.4%
       chance: 4
       rawquery: "e:mh3 -is:foilonly (r:r or r:m) ({borderless} or {profile})"
+      count: 69
     - # retro frame, any rarity 4.2%
       chance: 42
       rawquery: "e:mh3 number:384-441"
+      count: 58
     - # Commander mythic 4.2%
       chance: 42
       any:
       - rawquery: "e:m3c number:1-8"
+        count: 8
         rate: 4
       - rawquery: "e:m3c number:9-16"
+        count: 8
         rate: 2
     - # full-art Snow-Covered Wastes <0.1%
       chance: 1
       rawquery: "e:mh3 number:309"
+      count: 1
   special_guest:
     set: spg
     code: "MHTHREE"

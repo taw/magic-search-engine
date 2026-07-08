@@ -9,16 +9,21 @@ pack:
 sheets:
   foil_uncommon_breakingnews:
     rawquery: "e:otp r:u number<=65"
+    count: 20
     foil: true
   rare_mythic_showcase:
     any:
     - rawquery: "e:otp r:r number<=65"
+      count: 30
       rate: 2
     - rawquery: "e:otp r:m number<=65"
+      count: 15
       rate: 1
     - rawquery: "e:otj r:r number:287-367"
+      count: 60
       rate: 2
     - rawquery: "e:otj r:m number:287-367"
+      count: 21
       rate: 1
   foil_rare_mythic_showcase:
     foil: true

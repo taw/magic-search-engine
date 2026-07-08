@@ -17,9 +17,11 @@ sheets:
   common_with_duplicates:
     duplicates: true
     query: "r:c"
+    count: 121
   uncommon_with_duplicates:
     duplicates: true
     query: "r:u"
+    count: 80
   timeshifted:
     rawquery: "e:tsb"
     count: 121

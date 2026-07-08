@@ -8,12 +8,16 @@ sheets:
     foil: true
     any:
       - query: "r<=c"
+        count: 91
         chance: 8
       - query: "r:u"
+        count: 80
         chance: 3
       - any:
         - query: "r:r"
+          count: 121
           rate: 2
         - query: "r:m"
+          count: 40
           rate: 1
         chance: 2

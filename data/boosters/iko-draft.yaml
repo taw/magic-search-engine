@@ -19,34 +19,46 @@ sheets:
     balanced: true
     any:
     - rawquery: "e:iko r:c promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+      count: 5
       rate: 1
     - query: "r:c alt:(e:iko r:c promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart)"
+      count: 5
       rate: 2
     - query: "r:c -alt:(e:iko r:c promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart) -is:gainland"
+      count: 96
       rate: 3
   uncommon_with_showcase:
     any:
     - rawquery: "e:iko r:u promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+      count: 15
       rate: 1
     - query: "r:u alt:(e:iko r:u promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart)"
+      count: 15
       rate: 2
     - query: "r:u -alt:(e:iko r:u promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart)"
+      count: 65
       rate: 3
   rare_with_showcase:
     any:
     - rawquery: "e:iko r:r promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+      count: 10
       rate: 1
     - query: "r:r alt:(e:iko r:r promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart)"
+      count: 10
       rate: 2
     - query: "r:r -alt:(e:iko r:r promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart)"
+      count: 43
       rate: 3
   mythic_with_showcase:
     any:
     - rawquery: "e:iko r:m promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+      count: 8
       rate: 1
     - query: "r:m alt:(e:iko r:m promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart)"
+      count: 8
       rate: 2
     - query: "r:m -alt:(e:iko r:m promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart)"
+      count: 7
       rate: 3
   basic_or_gainland:
     # These also have L2/L3 codes, but these aren't actually used by the code

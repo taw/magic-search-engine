@@ -33,39 +33,52 @@ sheets:
     # Showcase treatments 1/3 for relevant cards
     any:
     - rawquery: "{common_boosterfun} is:sfc is:paper"
+      count: 7
       rate: 1
     - query: "r:c alt:{common_boosterfun} is:sfc"
+      count: 7
       rate: 2
     - query: "r:c -alt:{common_boosterfun} is:sfc"
+      count: 83
       rate: 3
   sfc_uncommon_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
     - rawquery: "{uncommon_boosterfun} is:sfc is:paper"
+      count: 6
       rate: 1
     - query: "r:u alt:{uncommon_boosterfun} is:sfc"
+      count: 6
       rate: 2
     - query: "r:u -alt:{uncommon_boosterfun} is:sfc"
+      count: 54
       rate: 3
   sfc_rare_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
     - rawquery: "{rare_boosterfun} is:sfc is:paper"
+      count: 19
       rate: 1
     - query: "r:r alt:{rare_boosterfun} is:sfc"
+      count: 19
       rate: 2
     - query: "r:r -alt:{rare_boosterfun} is:sfc"
+      count: 34
       rate: 3
   sfc_mythic_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
     - rawquery: "{mythic_boosterfun} is:sfc is:paper t:sorin"
+      count: 2
       rate: 1
     - rawquery: "{mythic_boosterfun} is:sfc is:paper -t:sorin"
+      count: 5
       rate: 2
     - query: "r:m alt:{mythic_boosterfun} is:sfc"
+      count: 6
       rate: 4
     - query: "r:m -alt:{mythic_boosterfun} is:sfc"
+      count: 9
       rate: 6
   dfc_common_with_showcase:
     # Showcase treatments 1/3 for relevant cards
@@ -75,35 +88,46 @@ sheets:
     - query: "r:c alt:{common_boosterfun} is:dfc"
       rate: 2
     - query: "r:c -alt:{common_boosterfun} is:dfc"
+      count: 10
       rate: 3
   dfc_uncommon_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
     - rawquery: "{uncommon_boosterfun} is:dfc is:paper"
+      count: 4
       rate: 1
     - query: "r:u alt:{uncommon_boosterfun} is:dfc"
+      count: 4
       rate: 2
     - query: "r:u -alt:{uncommon_boosterfun} is:dfc"
+      count: 19
       rate: 3
   dfc_rare_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
     - rawquery: "{rare_boosterfun} is:dfc is:paper (Runo Stromkirk)"
+      count: 2
       rate: 1
     - rawquery: "{rare_boosterfun} is:dfc is:paper -(Runo Stromkirk)"
+      count: 4
       rate: 2
     - query: "r:r alt:{rare_boosterfun} is:dfc"
+      count: 5
       rate: 4
     - query: "r:r -alt:{rare_boosterfun} is:dfc"
+      count: 6
       rate: 6
   dfc_mythic_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
     - rawquery: "{mythic_boosterfun} is:dfc is:paper"
+      count: 2
       rate: 1
     - query: "r:m alt:{mythic_boosterfun} is:dfc"
+      count: 2
       rate: 2
     - query: "r:m -alt:{mythic_boosterfun} is:dfc"
+      count: 3
       rate: 3
   sfc_rare_mythic_with_showcase:
     any:

@@ -55,8 +55,10 @@ sheets:
     foil: true
     any:
     - query: "-is:draft r:c"
+      count: 80
       chance: 12
     - query: "-is:draft r:u"
+      count: 60
       chance: 5
     - use: nondraft_rare_mythic
       chance: 3

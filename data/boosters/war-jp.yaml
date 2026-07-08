@@ -57,20 +57,27 @@ sheets:
     foil: true
     any:
     - query: "r<=c"
+      count: 116
       chance: 12
     - any:
       - query: "r:u -t:planeswalker"
+        count: 60
         rate: 2
       - query: "r:u t:planeswalker"
+        count: 40
         rate: 1
       chance: 5
     - any:
       - query: "r:r -t:planeswalker"
+        count: 40
         rate: 4
       - query: "r:r t:planeswalker"
+        count: 26
         rate: 2
       - query: "r:m -t:planeswalker"
+        count: 12
         rate: 2
       - query: "r:m t:planeswalker"
+        count: 6
         rate: 1
       chance: 3

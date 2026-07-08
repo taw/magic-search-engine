@@ -16,10 +16,13 @@ sheets:
     foil: true
     any:
     - query: "r:r"
+      count: 80
       chance: 1
     - query: "r:u"
+      count: 80
       chance: 2
     - query: "r<=c"
+      count: 141
       chance: 4
     - rawquery: "e:tsb"
       count: 121

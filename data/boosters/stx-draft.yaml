@@ -46,6 +46,7 @@ sheets:
   nonlesson_common:
     balanced: true
     query: "-t:lesson r:c"
+    count: 96
   nonlesson_rare_mythic:
     any:
     - query: "-t:lesson r:r"
@@ -69,12 +70,14 @@ sheets:
       - use: uncommon
         rate: 1
       - rawquery: "e:sta r:u is:baseset"
+        count: 18
         rate: 1
       chance: 5
     - any:
       - use: rare
         rate: 6
       - rawquery: "e:sta r:r is:baseset"
+        count: 30
         rate: 6
       - use: mythic_showcase
         rate: 1
@@ -83,5 +86,6 @@ sheets:
       - use: mythic_has_no_showcase
         rate: 3
       - rawquery: "e:sta r:m is:baseset"
+        count: 15
         rate: 3
       chance: 3

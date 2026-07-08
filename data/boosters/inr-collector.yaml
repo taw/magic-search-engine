@@ -24,12 +24,15 @@ sheets:
   foil_basic:
     foil: true
     rawquery: "e:{set} t:basic"
+    count: 10
   foil_rare_mythic:
     foil: true
     any:
     - query: "r:r"
+      count: 72
       chance: 6
     - query: "r:m"
+      count: 23
       chance: 1
   showcase_cu:
     filter: "{any_boosterfun} -{old_frame}"
@@ -44,12 +47,16 @@ sheets:
   booster_fun:
     any:
     - rawquery: "r:m {two_instances}"
+      count: 20
       rate: 1
     - rawquery: "r:m {any_boosterfun} -alt:{two_instances}"
+      count: 10
       rate: 2
     - rawquery: "r:r {two_instances}"
+      count: 22
       rate: 2
     - rawquery: "r:r {any_boosterfun} -alt:{two_instances}"
+      count: 22
       rate: 4
   foil_booster_fun:
     foil: true
@@ -57,6 +64,7 @@ sheets:
     - use: booster_fun
       chance: 5000
     - rawquery: "e:{set} number:491"
+      count: 1
       chance: 1
 
 ########## foil_booster_fun sheet:

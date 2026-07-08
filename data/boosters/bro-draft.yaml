@@ -34,21 +34,29 @@ sheets:
     foil: true
     any:
     - query: "r<=c"
+      count: 111
       chance: 12
     - query: "r:u"
+      count: 116
       chance: 5
     - any:
       - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        count: 6
         rate: 2
       - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 6
         rate: 4
       - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 117
         rate: 6
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper"
+        count: 2
         rate: 1
       - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 2
         rate: 2
       - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart)"
+        count: 51
         rate: 3
       chance: 3
   mech_basic:

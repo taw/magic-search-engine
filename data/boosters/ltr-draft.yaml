@@ -20,6 +20,9 @@ sheets:
       rate: 2
     - query: "-alt:(e:{set} number:302-331,340-345) number:399-451"
       rate: 2
+    # No count: this sheet is used via `use:` with per-rarity filters
+    # (common/uncommon/rare/mythic_with_showcase), so these queries resolve to a
+    # different pool in each context and can't take a single static count.
     - query: "is:baseset alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
       rate: 4
     - query: "is:baseset -alt:(e:{set} promo:boosterfun -is:foilonly -frame:extendedart)"
@@ -37,6 +40,7 @@ sheets:
     - use: with_showcase
       chance: 79
     - rawquery: 'e:{set} name:"Nazgûl" -number>451'
+      count: 9
       chance: 1
   mythic_with_showcase:
     filter: "e:{set} r:m"
