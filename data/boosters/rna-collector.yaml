@@ -1,0 +1,13 @@
+# Experimental Ravnica Allegiance Collector Booster -- a very limited 2019 test
+# run (Japan and North America only), before Collector Boosters became a regular
+# feature with Throne of Eldraine. 15 cards: 10 uncommons, 3 rares/mythics
+# (mythic ~1:8 in that slot, which the default rare_mythic weighting already
+# gives for RNA), and 2 foils of any rarity. RNA predates showcase/borderless
+# frames and no special foil odds are documented, so the two foils simply reuse
+# the standard any-rarity foil sheet (the same one the RNA draft booster uses).
+# Sources: https://mtg.wiki/page/Ravnica_Allegiance
+#          https://mtg.fandom.com/wiki/Collector_Booster
+pack:
+  uncommon: 10
+  rare_mythic: 3
+  foil: 2
