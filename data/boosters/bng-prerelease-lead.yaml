@@ -1,0 +1,22 @@
+# Born of the Gods "Hero's Path" seeded prerelease pack -- Destined to Lead (White).
+# Per the Born of the Gods Prerelease Primer, the seeded booster favors the
+# chosen destiny's color (plus colorless/off-color). Modeled like the RTR/GTC
+# guild prereleases: 11 common + 3 uncommon + 1 rare/mythic = 15, filtered to the
+# color's identity. The foil promo (Silent Sentinel) and the Hero's Path card are listed
+# as fixed content on the product in mtg-sealed-content.
+name: "Born of the Gods Prerelease Pack Destined to Lead"
+filter: "e:bng id<=w is:baseset"
+pack:
+  common: 11
+  uncommon: 3
+  rare_mythic: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 12
+  uncommon:
+    query: "r:u"
+    count: 13
+  rare_mythic:
+    rawquery: "e:bng (r:r or r:m) id<=w is:baseset"
+    count: 9
