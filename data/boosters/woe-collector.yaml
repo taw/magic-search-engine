@@ -53,33 +53,38 @@ sheets:
       rate: 1
   alt_frame_foil:
     foil: true
+    # Per the article, 2.8% of this slot is confetti foil (the 20 anime borderless
+    # Enchanting Tales cards, wot #84-103: 5 rares = 1.1% + 15 mythics = 1.7%);
+    # every other treatment in the slot appears in traditional foil (97.2%).
     any:
-    - use: rare_showcase
-      rate: 12
-    - rawquery: "(e:woe or e:woc) r:r frame:extendedart"
-      rate: 12
-    - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
-      rate: 12
-    - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
-      rate: 8
-    - rawquery: "e:wot r:r number:64-83"
-      rate: 4
+    - any:
+      - use: rare_showcase
+        rate: 12
+      - rawquery: "(e:woe or e:woc) r:r frame:extendedart"
+        rate: 12
+      - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
+        rate: 12
+      - rawquery: "e:wot r:r alt:(e:wot number:64-83) number<64"
+        rate: 8
+      - rawquery: "e:wot r:r number:64-83"
+        rate: 4
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Kellan)"
+        rate: 3
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
+        rate: 6
+      - rawquery: "(e:woe or e:woc) r:m frame:extendedart"
+        rate: 6
+      - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
+        rate: 6
+      - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
+        rate: 4
+      - rawquery: "e:wot r:m number:64-83"
+        rate: 2
+      chance: 972
     - rawquery: "e:wot r:r number:84-103"
-      rate: 4
-    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper (Kellan)"
-      rate: 3
-    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
-      rate: 6
-    - rawquery: "(e:woe or e:woc) r:m frame:extendedart"
-      rate: 6
-    - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
-      rate: 6
-    - rawquery: "e:wot r:m alt:(e:wot number:64-83) number<64"
-      rate: 4
-    - rawquery: "e:wot r:m number:64-83"
-      rate: 2
+      chance: 11
     - rawquery: "e:wot r:m number:84-103"
-      rate: 2
+      chance: 17
   rare_mythic_showcase:
     any:
     - use: rare_showcase
