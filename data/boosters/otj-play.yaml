@@ -45,11 +45,11 @@ sheets:
       chance: 1
   wildcard:
     any:
-    - chance: 700
+    - chance: 880
       use: common
-    - chance: 175
+    - chance: 220
       use: uncommon
-    - chance: 125
+    - chance: 100 # wildcard is a rare/mythic in 1 of 12 Play Boosters
       use: rare_mythic_with_showcase
   foil:
     foil: true
@@ -61,14 +61,25 @@ sheets:
     - chance: 3
       use: rare_mythic_with_showcase
   the_list:
+    # The List slot is 1/5 of packs and holds 30 Big Score + 10 Special
+    # Guests cards, but a non-foil Special Guests appears in only 1/64 packs
+    # (1.5625% overall = 7.8125% of this slot). Weight Big Score : SPG =
+    # 118 : 10 (not per-card equal) -> Big Score ~18.4%, SPG 1/64.
     any:
     - rawquery: "e:big number<=30"
-      rate: 1
+      chance: 118
     - set: spg
       code: "OTJ"
-      rate: 1
+      chance: 10
   common:
     query: "r:c -(number:251-264 -(Mirage Mesa) -(Conduit Pylons))"
   breaking_news:
+    # Article: in 1 of 3 Play Boosters the Breaking News card is a rare or
+    # mythic. base_1248_by_rarity over this commonless pool gave ~48%; use an
+    # explicit 2:1 uncommon : rare/mythic split.
     filter: "e:otp number<=65"
-    use: base_1248_by_rarity
+    any:
+    - query: "r:u"
+      chance: 2
+    - query: "r:r or r:m"
+      chance: 1
