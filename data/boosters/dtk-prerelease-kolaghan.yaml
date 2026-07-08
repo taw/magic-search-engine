@@ -11,7 +11,7 @@ sheets:
   promo:
     foil: true
     any:
-    - rawquery: "e:pdtk r:m (w:kolaghan) promo:prerelease"
+    - rawquery: "e:pdtk r:m (w:kolaghan or (id<=br and -w:*)) promo:prerelease"
       rate: 1
-    - rawquery: "e:pdtk r:r (w:kolaghan) promo:prerelease"
+    - rawquery: "e:pdtk r:r (w:kolaghan or (id<=br and -w:*)) promo:prerelease"
       rate: 2
