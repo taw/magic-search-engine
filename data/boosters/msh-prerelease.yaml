@@ -1,0 +1,15 @@
+# Marvel Super Heroes Prerelease Pack promo: 1 traditional-foil rare or mythic
+# from the base set (normal rare:mythic rate). No dedicated stamped prerelease
+# promo exists for MSH, so this is a base-set rare/mythic in foil.
+pack:
+  promo: 1
+sheets:
+  promo:
+    foil: true
+    any:
+    - rawquery: "e:msh r:r number<277"
+      rate: 2
+      count: 60
+    - rawquery: "e:msh r:m number<277"
+      rate: 1
+      count: 25
