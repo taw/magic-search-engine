@@ -1088,7 +1088,8 @@ describe PackFactory do
 
     context "normal" do
       it do
-        ev[common].should eq Rational(69, 70) * Rational(11, 121)
+        ev[basic].should eq Rational(69, 70) * Rational(1, 20)
+        ev[common].should eq Rational(69, 70) * Rational(10, 121)
         ev[uncommon].should eq Rational(69, 70) * Rational(3, 121)
         ev[rare].should eq Rational(69, 70) * Rational(1, 121)
       end
@@ -1098,7 +1099,8 @@ describe PackFactory do
       let(:foil) { true }
 
       it do
-        ev[common].should eq Rational(1, 70) * Rational(11, 121)
+        ev[basic].should eq Rational(1, 70) * Rational(1, 20)
+        ev[common].should eq Rational(1, 70) * Rational(10, 121)
         ev[uncommon].should eq Rational(1, 70) * Rational(3, 121)
         ev[rare].should eq Rational(1, 70) * Rational(1, 121)
       end

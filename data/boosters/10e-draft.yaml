@@ -1,9 +1,11 @@
-# Tenth Edition boosters held 15 game cards (1 rare, 3 uncommon, 11 common)
-# plus a marketing card; there was NO basic land in the pack.
-# Source: https://mtg.wiki/page/Tenth_Edition
-# Premium (foil) versions of any card were randomly inserted; the per-slot
-# rolls below are an approximation (independent, so totals run a little high).
+# I couldn't find information about foils in core sets, so I'm somewhat guessing here
+# Treating all of these as independent, totals look hilariously high
 pack:
+  basic_maybe_foil:
+  - basic: 1
+    chance: 70 - 1
+  - foil_basic: 1
+    chance: 1
   rare_maybe_foil:
   - rare: 1
     chance: 70 - 1
@@ -16,8 +18,8 @@ pack:
     foil_uncommon: 1
     chance: 3
   common_maybe_foil:
-  - common: 11
-    chance: 70 - 11
   - common: 10
+    chance: 70 - 10
+  - common: 9
     foil_common: 1
-    chance: 11
+    chance: 10
