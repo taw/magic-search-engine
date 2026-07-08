@@ -9,16 +9,16 @@ pack:
   promo: 1
 sheets:
   common:
-    query: "r:c id<=wb"
+    query: "r:c is:baseset id<=wb"
     count: 34
   uncommon:
-    query: "r:u id<=wb"
+    query: "r:u is:baseset id<=wb"
     count: 36
   rare:
-    rawquery: "e:sos r:r number<=254 id<=wb"
-    count: 17
+    rawquery: "e:sos r:r is:baseset id<=wb"
+    count: 20
   mythic:
-    rawquery: "e:sos r:m number<=254 id<=wb"
+    rawquery: "e:sos r:m is:baseset id<=wb"
     count: 8
   rare_mythic:
     any:
@@ -29,9 +29,9 @@ sheets:
   promo:
     foil: true
     any:
-    - rawquery: "e:sos r:r number<=254"
+    - rawquery: "e:sos r:r is:baseset"
       rate: 2
-      count: 55
-    - rawquery: "e:sos r:m number<=254"
+      count: 60
+    - rawquery: "e:sos r:m is:baseset"
       rate: 1
       count: 20
