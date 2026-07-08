@@ -35,12 +35,12 @@ sheets:
   etched_common_uncommon:
     foil: true
     etched: true
-    filter: "e:mh2 is:etched"
+    filter: "(e:mh2 or e:h1r) is:etched"
     use: common_uncommon
-    count: 13+30
+    count: 66 # 13 commons + 53 uncommons (incl. the MH1/h1r retro etched)
   etched_rare_mythic:
     foil: true
     etched: true
-    filter: "e:mh2 is:etched"
+    filter: "(e:mh2 or e:h1r) is:etched"
     use: rare_mythic
-    count: 50+10
+    count: 78 # incl. the MH1/h1r retro etched rares & mythics
