@@ -1,0 +1,15 @@
+# Teenage Mutant Ninja Turtles Prerelease Pack promo: 1 traditional-foil rare
+# or mythic from the base set (normal rare:mythic rate). No dedicated stamped
+# prerelease promo exists for TMT, so this is a base-set rare/mythic in foil.
+pack:
+  promo: 1
+sheets:
+  promo:
+    foil: true
+    any:
+    - rawquery: "e:tmt r:r is:baseset"
+      rate: 2
+      count: 53
+    - rawquery: "e:tmt r:m is:baseset"
+      rate: 1
+      count: 15
