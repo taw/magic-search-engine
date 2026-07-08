@@ -1,0 +1,35 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-aetherdrift
+# Collector Booster Sample Pack (included in Commander decks): 2 game cards --
+# 1 traditional-foil revved-up common/uncommon, and 1 Booster Fun rare/mythic
+# (80% non-foil, 20% traditional foil). Also holds a reference card (not modeled).
+pack:
+  foil_revved_up_cu: 1
+  boosterfun_slot:
+  - booster_fun: 1
+    chance: 4
+  - foil_booster_fun: 1
+    chance: 1
+queries:
+  revved_up: "e:{set} number:292-332"
+  rude_riders: "e:{set} number:333-346"
+  grafitti_giants: "e:{set} number:347-354"
+  borderless_rare: "e:{set} number:355-375"
+  extended_art: "e:{set} number:377-396"
+  boosterfun: "{revved_up} or {rude_riders} or {grafitti_giants} or {borderless_rare} or {extended_art}"
+sheets:
+  foil_revved_up_cu:
+    foil: true
+    any:
+    - rawquery: "{revved_up} r:c"
+      chance: 15
+    - rawquery: "{revved_up} r:u"
+      chance: 17
+  booster_fun:
+    any:
+    - rawquery: "{boosterfun} r:r"
+      rate: 2
+    - rawquery: "{boosterfun} r:m"
+      rate: 1
+  foil_booster_fun:
+    foil: true
+    use: booster_fun
